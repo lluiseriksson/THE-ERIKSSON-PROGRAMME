@@ -506,6 +506,155 @@ import YangMills.RG.AppendixFHsharpSourceResidual
 -- canonical-root half-budget/profile conditions feed the residual theorem
 -- without exposing the intermediate K# activity hypothesis.
 import YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot
+-- hRpoly P3.5 brick B2: bounded-hole cardinality compression
+-- #X ≤ (1+3^d·B)·(d_M(X)+1), discharging the carried card-le-metric binder of
+-- the K#-estimate tilt lemmas; with bulk-exactness and genuine-hole strict
+-- non-vacuity guards (method deviation vs Dimock's Gaussian hole payment
+-- recorded in docs/HRPOLY-CAMPAIGN-PLAN.md §3bis).
+import YangMills.RG.AppendixFHoleCompression
+-- hRpoly P3.5 brick B1: numeric parameter witness — κ₀(d) collapses the
+-- Appendix-F geometric smallness to EXACTLY e⁻¹; root/moment/leaf constants
+-- bounded (2/2/16); the O2 joint witness (κ₀, 4κ₀+3, H₀=1/256) with factor-2
+-- half-budget margin; plus the θ-shifted residual budget identity for B3.
+import YangMills.RG.AppendixFParameterWitness
+-- hRpoly P4-CT bricks CT1+CT2 (O1 attack, propagator-decay leg): the coercive
+-- Combes-Thomas route on PHYSICAL gauge cochains — exponential tilt algebra,
+-- conjugation entry identity, range preservation, block Schur bound
+-- ‖A‖ ≤ β·N_R, tilt perturbation bound ‖K_θ−K‖ ≤ M(e^{θR}−1)N_R, and
+-- coercivity survival for the tilted operator.  Interface = the same probes
+-- and predicates as PhysicalGaugeCovarianceLocalization, so CT4 can
+-- instantiate literally on flatGaugeFixedPrecision/CovarianceCLM.
+import YangMills.RG.PhysicalCoerciveCombesThomas
+-- hRpoly P4-CT, owner obligation 1: the CONCRETE physicalBondDist —
+-- circular ZMod distance (four-case min triangle), Chebyshev site distance,
+-- discrete direction join; symmetry, triangle, dist p p = 0, and the
+-- explicit ball bound N_R = (2(R+1))^d · d consumed by the CT2 Schur bound.
+import YangMills.RG.PhysicalBondDistance
+-- hRpoly P4-CT, toward owner obligation 2: Gram-kernel calculus for adjoint
+-- compositions B†B — probe Gram identity, finite range from probe-image
+-- orthogonality, kernel bound M² via the ‖y‖² trick, and sum/smul assembly
+-- combinators for K₀ + a·Q†Q.  The concrete D1/div/Q stencil inputs are the
+-- next brick; nothing here localizes flatGaugeFixedPrecisionCLM yet.
+import YangMills.RG.PhysicalGramKernel
+-- hRpoly P4-CT, owner obligation 2 FIRST SHELL TERM: concrete locality of the
+-- flat curl D1†D1 — plaquette bond slots within distance 1 of the base slot,
+-- Gram orthogonality beyond distance 2, probe-image bound 4d via per-slot
+-- plaquette counting; endpoints FiniteRange (D1†D1) physicalBondDist 2 and
+-- KernelBound (4d)² for the CONCRETE operator at trivial background.
+import YangMills.RG.PhysicalShellLocalityD1
+-- hRpoly P4-CT, owner obligation 2 SECOND SHELL TERM: concrete locality of
+-- the flat backward divergence div†div — both slot sites within distance 1
+-- of the evaluation site, Gram orthogonality beyond 2, probe-image bound 2
+-- (each slot family has exactly one global match via shiftBack bijectivity);
+-- endpoints FiniteRange (div†div) physicalBondDist 2 and KernelBound 2².
+-- Common range 2 with the curl term for the K₀ assembly.
+import YangMills.RG.PhysicalShellLocalityDiv
+-- hRpoly P4-CT, owner obligations 2 (COMPLETE) + 3: the long-stencil block
+-- constraint Q†Q — same-block diameter L−1, iterate-shift reach, Gram
+-- orthogonality beyond 3L, probe bound L via block partition + shift^[k]
+-- bijectivity (no block counting); assembled base precision K₀ + a·Q†Q at
+-- range 3L with bound (4d)²+4+|a|L²; and the named zeroSigma free shell:
+-- flatGaugeFixedPrecisionCLM with the Empty Sigma family IS the base
+-- precision (empty tsum, nothing hidden in norm hypotheses).
+import YangMills.RG.PhysicalShellLocalityQ
+-- hRpoly P4-CT bricks CT3+CT4: the tilted inverse at the θ-budget
+-- M(e^{θR}−1)N_R ≤ c/2 (coercivity survives at c/2, two-sided inverse of
+-- norm ≤ 2/c via covarianceOfIsCoerciveCLM) and the Combes–Thomas kernel
+-- extraction at r := source — any right inverse of a coercive finite-range
+-- operator satisfies PhysicalCovarianceExponentialKernelBound C dist (2/c) θ;
+-- plus the explicit positive-tilt witness θ = log(1+c/(2MN_R))/(R+1).
+import YangMills.RG.PhysicalCoerciveCombesThomasInverse
+-- hRpoly P4-CT ENDPOINT CT_fixedVolume (owner acceptance criterion): the
+-- fixed-volume flat physical covariance at the zeroSigma free shell is
+-- exponentially localized in physicalBondDist with amplitude 2/c at the
+-- proved shell constants (M = (4d)²+4+|a|L², R = 3L, N_R = (2(3L+1))^d·d,
+-- c = min 1 a / CP), including the positive-rate existence form.
+import YangMills.RG.PhysicalShellCombesThomasEndpoint
+-- P4-CT non-vacuity audit (external-review finding 2026-07-13): the NAMED
+-- trivial SUNAdjointModel witness (exact for the flat lane, where only
+-- adCLM 1 is consumed), Nonempty for the ρ-generic hypothesis class, and
+-- the capstone CT_fixedVolume_nonvacuous — model, Poincaré constant, and
+-- positive rate all EXIST for every volume and every a > 0, every
+-- structural hypothesis discharged by proved theorems.  The TRUE matricial
+-- adjoint model is registered open (plan §3ter, P4-ADJ).
+import YangMills.RG.SUNAdjointModelWitness
+-- P4-ADJ brick 1 (plan §3ter): the matricial su(n) substrate — su(n) as a
+-- real submodule of complex matrices (skew-Hermitian + traceless), the trace
+-- form re tr(Xᴴ·Y) with symmetry/positivity/definiteness (PSD trace order),
+-- and the adjoint action Ad(g)X = g·X·gᴴ of the special unitary group:
+-- preserves the submodule, preserves the trace form (the ad_inner
+-- orthogonality at matrix level), and is a real-linear group action.
+-- Bricks 2-3 (coordinate isometry with SUNLieCoord, finrank = n²−1, the
+-- SUNAdjointModel instance) remain open.
+import YangMills.RG.SUNAdjointMatrixSubstrate
+-- P4-ADJ brick 2a: the inner-product packaging of su(n) — SuLie n type
+-- synonym (anti-diamond), the trace form as a genuine InnerProductSpace ℝ
+-- instance via PreInnerProductSpace.Core + definite, and the adjoint action
+-- packaged as a linear map on the subtype with inner/norm preservation and
+-- the group-action laws.  Brick 2b (finrank = n²−1) and brick 3 (isometric
+-- transport to SUNLieCoord + the SUNAdjointModel instance) remain open.
+import YangMills.RG.SUNAdjointInnerSpace
+-- P4-ADJ brick 2b (THE HARD PIECE): finrank ℝ su(n) = n²−1 — explicit
+-- Hermitian/skew decomposition Matrix ≃ self × skew, multiplication-by-i
+-- equivalence self ≃ skew, ambient real dimension 2n² via the entry-module
+-- generalized finrank_matrix, hence finrank skew = n²; the imaginary-trace
+-- functional (composition of linear maps, surjective via i·𝟙) with
+-- su(n) ≃ its kernel, and rank-nullity closes the count.  Brick 3 (the
+-- isometric transport to SUNLieCoord + the SUNAdjointModel instance)
+-- remains open.
+import YangMills.RG.SUNAdjointDimension
+-- P4-ADJ brick 3 (THE LAST BRICK — P4-ADJ CLOSED): the TRUE adjoint model.
+-- Module.Finite ℝ su(n) by the Noetherian route (subtype injection into the
+-- finite ambient matrix space), the isometric coordinate transport
+-- suLieCoordIso : SuLie n ≃ₗᵢ[ℝ] SUNLieCoord n (stdOrthonormalBasis reindexed
+-- along the brick-2b count), and matrixSUNAdjointModel : SUNAdjointModel n —
+-- Ad(g) X = g·X·gᴴ read through fixed orthonormal coordinates, with
+-- ad_one/ad_mul from the brick-2a action laws and ad_inner from
+-- inner_suAdActLin transported by inner_map_map.  The Addendum-477 trivial
+-- witness is no longer the only instance.
+import YangMills.RG.SUNAdjointModelInstance
+-- The volume-uniform Poincaré WALL (post-P4-ADJ lane, W-1): the fixed-volume
+-- constant-sector audit promoted to the honest obstruction — every flat
+-- block-Poincaré constant obeys L^d/L^2 ≤ CP (witness discharged, Nc ≥ 2),
+-- hence L ≤ CP for d ≥ 3; the CT coercivity min 1 a / CP through this route
+-- dies as L → ∞ (no positive c₀ survives all volumes,
+-- no_volumeUniform_coercivity_via_flatPoincare), and the uniform-constant
+-- gate VolumeUniformFlatPoincareGate is PROVED FALSE.  Non-vacuity: the
+-- per-volume constants exist (perVolume_flatPoincare_family).  A
+-- volume-uniform CT must re-route (rescaled block map, sector quotient, or
+-- interacting-Hessian coercivity).
+import YangMills.RG.PhysicalPoincareWall
+-- W-2 (continuation (b) of the wall): the constant-sector quotient interface.
+-- The constant sector packaged as a linear inclusion (harmonic under the flat
+-- Hodge operator — WHY it is the dangerous sector), the fluctuation space as
+-- generator-wise orthogonality (IsFluctuationCochain; the Submodule.orthogonal
+-- route whnf-times-out at this pin), the quotient Poincaré predicate, full →
+-- quotient at the same constant, fixed-volume non-vacuity, THE NON-TRANSFER
+-- LEMMA (the W-1 wall witness is excluded from the fluctuation space by
+-- construction), and the volume-uniform quotient gate — REGISTERED OPEN,
+-- neither proved nor refuted; W-3 (the lowest-mode falsifier) is ONE-SIDED:
+-- it can refute the gate (second wall) but a bounded mode only keeps the
+-- route open — proving the gate needs an all-modes/spectral estimate.
+import YangMills.RG.PhysicalPoincareSectorQuotient
+-- W-3a (the falsifier's witness family, first brick of the W-3 ladder): the
+-- half-period ±1 square profile on even circles (exact zero-sum identity, no
+-- trigonometry), the lowest-mode cochain (oscillation direction j, bond
+-- direction i, internal vector w), EXACT orthogonality to every constant
+-- generator (IsFluctuationCochain proved), the exact norm (M+M)^d·‖w‖²,
+-- genuine non-constancy, and non-vacuity of the fluctuation space (Nc ≥ 2).
+-- W-3 remains a ONE-SIDED falsifier; the quadratic-form evaluation (Hodge
+-- term W-3b, block term + Rayleigh quotient + endpoint W-3c) is registered,
+-- and no gate claim is made in either direction.
+import YangMills.RG.PhysicalPoincareLowModeFalsifier
+-- W-3b (the exact Hodge term on the falsifier family): the two-interface
+-- square mode has flat-Hodge energy exactly 8·(M+M)^(d-1)·‖w‖².  The
+-- mechanism is separated: i=j gives zero curl and the full divergence
+-- energy; i≠j gives zero divergence and the full curl energy in the unique
+-- ordered {i,j} plane.  Even side, positive dimension/half-period/internal
+-- rank remain explicit.  W-3c below supplies the physical block response,
+-- Rayleigh lower-bound divergence, and the resulting second wall.
+import YangMills.RG.PhysicalPoincareLowModeHodge
+import YangMills.RG.PhysicalPoincareLowModeBlock
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
@@ -550,3 +699,156 @@ import YangMills.SUSY.FiniteBerezin
 -- Ward-cancelled polymer activities: exact/approximate Ward decomposition
 -- hypotheses feed the source-facing `Ω`-active skeleton-tail consumer.
 import YangMills.SUSY.WardPolymer
+import YangMills.RG.CorrelatorBridge
+-- RG-provenant correlator bridge (C6 B-1'): step-generated effective family,
+-- telescoping decomposition theorem, Rsc PRODUCED not selected, honest gate.
+import YangMills.RG.CorrelatorBridgeProvenance
+
+-- Concrete gauge RG step (C6 B-1''): defined decimation blockMap 2M -> M,
+-- effective measure BY CONSTRUCTION (no step field), multi-scale tower over
+-- sizes 2^n*M0, produced Rsc, volume-uniform gate (constants before volumes).
+import YangMills.RG.ConcreteGaugeRGStep
+
+-- Physical fidelity of the concrete RG step (C6 B-1'''): plaquette-embedding
+-- metric transport (factor-3 general bound; naive factor 2 refuted; EXACT
+-- factor 2 on the canonical pair family), canonical/sup correlators replacing
+-- the Classical.choose ray pair, scale-corrected tower telescoping at ONE
+-- physical separation, Wilson probability instances threaded through the
+-- tower, typed dyadic sufficiency (cofinality + literal-gate implication).
+import YangMills.RG.ConcreteGaugeRGFidelity
+
+-- Literal-gate integration + de-lacunarization + observable-support
+-- transport (C6 B-1''''): integrated literal fidelity gate (one constant
+-- pack before base AND depth, honest M0 >= 4 guard), covering arithmetic
+-- with the formalized odd/small-t refutations, the all-separations
+-- (thermodynamic-form) canonical gate with the unconditional literal->
+-- forall-t and forall-t->dyadic implications, the named open
+-- doubling-domination clause with the proved conditional tower
+-- de-lacunarization, blockPlaquetteSupport (the 2x2 fine loop, 8 edges,
+-- pullback locality, radius-2 ball) and the canonical support separation
+-- lower bound 2*tau - 3 (walk and dist forms); k-step support object as a
+-- definition (metric theorem open).
+import YangMills.RG.ConcreteGaugeRGLiteralGate
+import YangMills.RG.ConcreteGaugeRGTerminalGate
+import YangMills.RG.ConcreteGaugeRGPhysicalGate
+-- B-1^7 (Amendment 7): the operational support theorem - the k-fold
+-- composed block map (towerMeasure as literal pushforward), the k-step
+-- pullback-support congruence, the three-term integration identity, the
+-- terminal support bridge importing the B-1^6 separation metric onto the
+-- operational supports, and the capstone terminal_support_certified in
+-- the exact objects of the physical gate's IR clause.
+import YangMills.RG.ConcreteGaugeRGSupport
+-- O-1 (charter docs/O-BRIDGE-CHARTER.md, audit docs/O-BRIDGE-AUDIT-20260727.md):
+-- the OPERATOR-side bridge, a lane structurally independent of the Euclidean
+-- correlator bridge (C6/B-1 + B-2).  Euclidean exponential clustering of the
+-- CONNECTED two-point function is proved EQUIVALENT to the spectral-gap bound
+-- `‖T − |Ω⟩⟨Ω|‖ ≤ r` for a symmetric transfer operator with a fixed unit
+-- vacuum, plus the dense-family version (which needs a uniformly quadratic
+-- constant), the volume-uniform corollary, and non-vacuity witnesses with a
+-- nonzero fluctuation sector.  NOTE: this constructs no Osterwalder–Seiler
+-- Hilbert space for any gauge theory, proves no reflection positivity of the
+-- Wilson measure, and identifies no Euclidean correlator with a matrix
+-- element — those are O-2/O-3 and they are OPEN.  Nothing here is a claim
+-- about Yang–Mills, the continuum limit, or the Clay problem.
+import YangMills.OS.TransferGap
+-- O-1b (charter Amendment 1): THE SHARP FORM, and the formal content of this
+-- desk's retraction of its own "scissors" reading.  The decay domain
+-- {v | exists C, forall n, ‖Sⁿ v‖ ≤ C rⁿ} is a SUBMODULE, so per-observable
+-- constants close up under linear combination with no uniformity; and if it is
+-- merely DENSE then ‖S‖ ≤ r.  Hence exponential growth of a clustering constant
+-- in the observable's support is NOT an obstruction to the transfer-operator
+-- gap, and `gap_of_dense_clustering`'s uniformly-quadratic hypothesis is a
+-- requirement of that proof, not of the theorem.  Over a COMPLEX Hilbert space
+-- (Mathlib's real CFC is derived from the complex one); the ℝ↔ℂ bridge to O-1 is
+-- NOT claimed.
+import YangMills.OS.DenseClustering
+-- O-1c (charter Amendment 2): the COMPOSITION brick.  Rebuilds the bridge's own
+-- objects over C - vacuumProjectionC, projectedTransferC, connCorrC,
+-- VacuumTransferC - so O-1b's sharp theorem applies to a transfer operator with
+-- a vacuum rather than to a bare self-adjoint operator.  Headline
+-- sharp_clustering_iff_gap is an EQUIVALENCE between the spectral-gap bound and
+-- decay of the connected correlator on a family whose span is dense, with
+-- per-observable constants and NO relation assumed between them.  Adds no new
+-- mathematics beyond O-1b.  The R<->C bridge to O-1 remains unproved and
+-- unclaimed (Mathlib has no complexification of a real inner-product space).
+import YangMills.OS.SharpBridge
+-- O-3a (charter Amendment 6): substrate for the finite-gauge-group
+-- Osterwalder-Seiler chain.  Configurations of a Z_N gauge system, the Wilson
+-- Gibbs weight, the partition function, expectations as finite sums, and the
+-- time reflection.  The lattice geometry is carried as DATA, so this covers
+-- Z_N gauge theory on any lattice with any reflection.  Substrate only: it
+-- proves nothing about positivity of the reflection pairing, which is O-3b.
+import YangMills.OS.ZNSubstrate
+-- O-3b(i) (charter Amendment 6): the analytic heart of reflection positivity.
+-- Kernels of the form K x y = sum_i c_i * phi_i x * conj (phi_i y) with c_i >= 0
+-- are positive semidefinite, the class is closed under products (which replaces
+-- the Schur product theorem here) and under conjugation by a positive diagonal
+-- (which absorbs the half-space factors of the Gibbs weight).  Depends on no
+-- spectral or matrix-positivity API.  It is NOT claimed that the Wilson weight
+-- is such a combination -- that is where the physics enters and it is open.
+import YangMills.OS.PSDKernel
+-- O-3b(ii): the GEOMETRIC half.  A splitting Config = Half x Half under which
+-- the reflection is the swap and the Gibbs weight factors as w(x) w(y) K(x,y);
+-- the Osterwalder-Seiler pairing is then EXACTLY the quadratic form of
+-- w(x) K(x,y) w(y), so a PSD crossing kernel gives reflection positivity.
+import YangMills.OS.ReflectionSplitting
+-- O-3b(iii): where the physics enters.  A weight with non-negative character
+-- coefficients gives a PSD convolution kernel; and the GENUINE Z_2 Wilson
+-- weight exp(beta s) has coefficients (e^b + e^-b)/2 and (e^b - e^-b)/2, both
+-- non-negative exactly when beta >= 0.  NOT established for Z_N with N > 2,
+-- where the coefficients are discrete Bessel-type sums.
+import YangMills.OS.WilsonCharCombo
+-- O-3b ENDPOINT: one named statement carrying all four ingredients at once -
+-- a gauge system with a nontrivial time reflection, a concrete splitting of its
+-- configuration space, the GENUINE Z_2 Wilson weight at beta >= 0, and the
+-- conclusion of reflection positivity.  The single plaquette straddles the
+-- plane (its holonomy is x - y in Z_2), so the whole Gibbs weight IS the
+-- crossing kernel.  Small lattice; a full temporal box is not treated.
+import YangMills.OS.Z2Endpoint
+
+-- O-3c: the transfer operator of the `Z_2` system, read off the Gibbs weight,
+-- and its spectral gap `tanh β`.  Closes the arc measure -> operator -> gap ->
+-- clustering for one system, removing the arc's `r*1 + (1-r)P` gameability
+-- residue.  Fixed finite size; not volume-uniform, not `SU(N)`, not Clay.
+import YangMills.OS.Z2Transfer
+
+-- O-3d: the Osterwalder-Seiler identification for the Z_2 chain, and the exact
+-- two-point function of the measure.  The measure side is defined from
+-- Real.exp and the bond sign alone; the identification is the theorem that it
+-- agrees with a matrix element of the O-3c operator.  One spatial variable,
+-- fixed finite size; not volume-uniform, not SU(N), not Clay.
+import YangMills.OS.Z2Identification
+
+-- O-3e: the Gelfand-Naimark-Segal quotient, exercised on a genuinely
+-- degenerate reflection pairing.  Two-slice half-space observables are
+-- 4-dimensional while the physical space is 2-dimensional, so the null
+-- space is provably nonzero and the quotient does work.  Two slices, not m;
+-- still Z_2, fixed finite size, not volume-uniform, not SU(N), not Clay.
+import YangMills.OS.Z2Quotient
+
+-- O-3f: spatial extent.  Slices carry L spins, so the transfer space has
+-- dimension 2^L.  DECOUPLED: row sums constant at every L, uniform vacuum
+-- survives, single-site mode has volume-independent rate tanh b -- but that
+-- is L non-interacting copies and is physically empty.  COUPLED: row sums are
+-- NOT constant, so T*Omega = Omega FAILS.  No gap for the coupled system is
+-- proved or claimed.  Not SU(N), not continuum, not Clay.
+import YangMills.OS.SpatialExtent
+
+-- O-3g: the SECOND elementary route.  When constant row sums fail, the
+-- textbook replacement is the Hilbert projective metric / Birkhoff
+-- contraction.  BLINDNESS: the projective cross-ratio is invariant under any
+-- nowhere-zero SOURCE-ONLY weight, so the metric assigns the coupled and the
+-- decoupled kernels the same diameter -- it cannot see gamma at all.
+-- DEGENERATION: two constant configurations realise cross-ratio exp(4 b L),
+-- so every admissible diameter is >= 4 b L and every contraction factor is
+-- >= tanh(b L), within 2 exp(-2 b L) of the trivial bound 1 -- while the
+-- decoupled truth is tanh b at every L.  The loss is the method's.
+import YangMills.OS.SpatialBirkhoff
+
+-- O-3h: the object O-3f showed the elementary route stops producing, written
+-- down at L = 2.  In the character basis the coupled kernel splits into two
+-- 2x2 blocks; an explicit STRICTLY POSITIVE eigenvector is exhibited, plus a
+-- second exact eigenpair.  The identity A - B = 4 drives every estimate.  NOT
+-- claimed: spectral radius (no Perron-Frobenius in the pinned mathlib),
+-- completeness of the spectrum, or anything at L > 2.
+import YangMills.OS.SpatialPerron

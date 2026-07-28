@@ -1,0 +1,623 @@
+# C5 CHARTER — "Optimal Amos-type barriers at real order: classifying the calibration constant"
+
+Registered 2026-07-12, BEFORE the page.  Owner decision (evaluator
+verdict on record): publish C4 clean (release blocked solely on the
+two viXra ids), and open C5 as a clearly separate arc whose GOAL is
+new mathematical content, not more formal hygiene — "the next
+increment is turning the machinery into a factory of new theorems."
+All C1-C4 lessons bind, PLUS the new rules: registering amendments
+land in their OWN COMMIT strictly before the fabrication they
+govern (C4 checklist MEDIUM); TeX/Lean content never through
+non-raw Python string literals (C4 Amendment 8); annotated tags
+only; post-push ids only.
+
+## What the paper IS (honest scope, fixed now)
+
+For the one-parameter family
+  B_{nu,c}(x) = x / (nu + c + sqrt((nu+c)^2 + x^2)),
+classify the constants c for which the upper bound holds uniformly:
+
+  TARGET (classification):
+    (forall nu >= 0, forall x > 0 :
+       besselIReal (nu+1) x / besselIReal nu x < B_{nu,c}(x))
+    <-> c <= 1/2.
+
+C4 is the boundary case c = 1/2.  The registered mathematical
+skeleton (derived at this desk BEFORE registration, to be verified
+in fabrication):
+
+1. GENERAL-c NULLCLINE IDENTITY (pure algebra): with a = nu+c,
+   s = sqrt(a^2+x^2), B = x/(a+s) = (s-a)/x:
+     Q(B_{nu,c}) = ((2c-1)/x) * B_{nu,c}
+   where Q(y) = 1 - ((2nu+1)/x) y - y^2 is the C4 Riccati quadratic.
+   Sign trichotomy in c: zero iff c = 1/2 (C4's calibration),
+   positive iff c > 1/2, negative iff c < 1/2.
+2. SUFFICIENCY (c <= 1/2): a |-> x/(a + sqrt(a^2+x^2)) is strictly
+   decreasing in a, so B_{nu,c} >= B_{nu,1/2} for c <= 1/2, and
+   C4's amosBoundReal_holds closes it.  LOW RISK.
+3. NECESSITY (every c > 1/2 fails): requires a LOWER bound on rho
+   sharp to FIRST order in 1/x at infinity.  Registered route: the
+   RS16-type lower bound
+     L_nu(x) = x / (nu + 1/2 + sqrt((nu+3/2)^2 + x^2))
+   (large-x: L ~ 1 - (nu+1/2)/x + O(1/x^2), matching rho, while
+   B_{nu,c} ~ 1 - (nu+c)/x — so L > B_{nu,c} for x large when
+   c > 1/2).  Computed at this desk: Q(L) = (2nu+2) L / (x (a+s')),
+   a = nu+1/2, s' = sqrt((nu+3/2)^2+x^2) — positive, explicit; the
+   reversed barrier needs L' < Q(L) at touches (L' via the sqrt
+   chain rule, machinery in place; the psi-trick does NOT transfer
+   since L's calibration is not the nullcline: direct barrier).
+4. COUNTEREXAMPLE ASSEMBLY: for each c > 1/2 an EXPLICIT witness
+   x_0(c) (at nu = 0; one order suffices to kill uniformity) with
+   L_0(x_0) > B_{0,c}(x_0) — an algebraic sqrt inequality in (c, x),
+   target shape x_0(c) = K/(2c-1); no asymptotic limits in Lean,
+   only the explicit instance.
+5. CLASSIFICATION THEOREM: combine 2-4.
+
+## THE REGISTERED HARD CORE (named now, before fabrication)
+
+The lower bound's ZONE is a SECOND-ORDER fight: any valid lower
+bound matches rho's first Taylor coefficient x/(2(nu+1)), so the
+small-x comparison is decided at the next order — the exact reason
+the old two-sided idea was deferred at C4 registration.  The zone
+for L must compare two-term expansions with explicit q^2-tail
+control (the C2/C4 product-form toolkit extended one order).  This
+is where C5 lives or dies; it gets its own phase and budget.
+
+## LITERATURE HONESTY CLAUSE (registered now)
+
+HG13/HG24 prove in-family optimality results and RS16 prove
+sharpness at both parameter ends: the classification c <= 1/2 (or
+its correct orientation) MAY ALREADY BE KNOWN in equivalent form.
+MANDATORY at paper phase: collate against HG13 Thms (G_{alpha,beta}
+family), HG24, RS16 BEFORE any novelty sentence.  Registered
+fallback wording: if the classification is classical, the paper's
+contribution is "the first machine-checked classification,
+uniform in real order, with certified counterexamples" — and the
+absolute-importance expectation moderates accordingly.  No novelty
+inflation; the evaluator's >7 estimate is CONDITIONAL on genuine
+novelty or substantially sharper form.
+
+## Phases, judges, budgets
+
+- Phase 1 (LOW RISK): BFamily.lean — B_{nu,c} definition, general-c
+  calibration Q(B_c) = ((2c-1)/x)B_c with sign trichotomy,
+  monotonicity in c, SUFFICIENCY theorem (c <= 1/2) via C4.
+  J-C5-1: green + oracle, sufficiency closed.
+- Phase 2 (THE HARD CORE): the lower bound L — zone at second order
+  (2a), reversed barrier (2b), besselLowerReal_holds.  J-C5-2.
+- Phase 3: explicit counterexample family x_0(c) + THE
+  CLASSIFICATION THEOREM.  J-C5-3.
+- Phase 4: certified companion — pre-registered grid over (nu, x)
+  for L, plus certified FALSIFICATION points for sample c > 1/2
+  (points fixed at a later amendment IN ITS OWN COMMIT before the
+  run, per the new rule).  J-C5-4.
+- Phase 5: paper + five-role audit + release c5-v1.0 (annotated).
+  J-C5-5.
+Budgets: 3 attempts per phase; exhaustion -> diagnosis +
+re-registration amendment in its own commit.
+
+## Fallback ladder (declared now)
+
+- If phase 2a (second-order zone) exhausts: honest partial =
+  general-c calibration + sufficiency classification (c <= 1/2
+  suffices, BY THEOREM) + certified numerical falsification of
+  sample c > 1/2 (certified, not exact) — publishable as "the
+  sufficiency half of the classification, with certified evidence
+  for necessity"; necessity stays a named open target.
+- If phase 2b (reversed barrier) exhausts with 2a green: the zone
+  bound itself is a standalone real-order lower-tail theorem;
+  same partial framing.
+- No axioms, no vacuous weakening, no silent scope creep.
+
+## AMENDMENT 1 (2026-07-12, own commit, BEFORE any fabrication —
+external review of the registered target: THE PIVOT)
+
+FINDING 1 (literature clause fired): the registered classification
+is EQUIVALENT TO A KNOWN RESULT — RS16's family b_alpha with
+lambda = mu + (alpha-1)/2 maps to ours by mu = nu+1, c = (alpha+1)/2
+(so alpha <= 0 <-> c <= 1/2); RS16 prove alpha <= 0 are upper
+bounds, alpha >= 1 lower bounds, intermediates NOT global bounds,
+extremes best-in-family.  The classification is NOT novel; any
+claim about it is "first machine-checked, uniform in real order,
+constructive counterexamples" AT MOST.
+
+FINDING 2 (the hard core dissolves): L_nu = x/(nu+1/2+
+sqrt((nu+3/2)^2+x^2)) is a SHORT COROLLARY of C4, no new zone or
+barrier: 1/rho_nu = 2(nu+1)/x + rho_{nu+1} (recurrence), C4 bounds
+rho_{nu+1} < B_{nu+1,1/2}, inversion is decreasing on positives,
+and the algebra collapses via x^2/(b+s') = s'-b (VERIFIED at this
+desk: denominator 2(nu+1) + s' - b = nu + 1/2 + s').  Phase 2 is
+REDEFINED accordingly: derive L by recurrence + inversion; the
+second-order zone campaign is CANCELLED.
+
+FINDING 3 (constructive witness): x_0(c) = 2/(2c-1) at nu = 0 as
+the explicit counterexample for every c > 1/2 (algebraic sqrt
+inequality L_0(x_0) > B_{0,c}(x_0); no limits in Lean).
+
+NEW MAIN TARGET (registered now; this is where >7 lives): THE
+CROSSING THEOREM for intermediate parameters 1/2 < c < 1 —
+existence, UNIQUENESS, orientation, and quantitative localization
+of the crossing point x_*(nu,c):
+  rho_nu < B_{nu,c} on (0, x_*),  equality at x_*,
+  rho_nu > B_{nu,c} on (x_*, oo),
+plus  A_-(nu,c)/(2c-1) <= x_*(nu,c) <= A_+(nu,c)/(2c-1)  with
+explicit A_±, and the c -> 1/2+ scale x_* ~ 1/(2c-1).
+RS16 show intermediates are not global bounds; existence/
+uniqueness/orientation/scale of the crossing AS A THEOREM is not
+stated there — the novelty collation for THIS target is still
+mandatory at paper phase.
+
+DESK-DERIVED REFORMULATION (to verify in fabrication; found while
+registering this amendment): by the general-c calibration
+1/B_c - B_c = 2(nu+c)/x,
+  rho_nu(x) < B_{nu,c}(x)  <->  psi_nu(x) > 2(nu+c)
+with psi_nu = x(1/rho_nu - rho_nu) — C4's OWN barrier variable.
+Hence the crossing theorem for ALL c in (1/2,1) SIMULTANEOUSLY is
+equivalent to: psi_nu is STRICTLY DECREASING on (0,oo) with
+psi_nu(0+) = 2nu+2 and psi_nu(oo) = 2nu+1 (endpoint values
+paper-level; the Lean form needs only strict monotonicity plus the
+constructive witnesses for level attainment).  Candidate route:
+psi' < 0 from the C4 psi-derivative formula + the Riccati system —
+equivalently x(rho_nu - rho_{nu+1}) strictly increasing (a
+quantitative sharpening of the unit step).  THIS monotonicity is
+the genuinely new analytic content; it gets the hard-core phase
+and budget that the cancelled zone campaign vacates.
+
+REVISED PHASES: 1 = BFamily + trichotomy + sufficiency (unchanged);
+2 = L by recurrence-inversion + witness x_0(c) + the KNOWN-result
+classification (all low risk); 3 = THE CROSSING THEOREM (psi
+monotonicity route; 3 attempts; fallback: classification-only
+paper with the crossing as named open target); 4 = certified
+companion (grid points for L, falsification points for sample
+c > 1/2, crossing-localization probes for x_*; protocol in own
+commit before run); 5 = paper (novelty ONLY on the crossing
+theorem, classification presented as machine-checked known result)
++ five roles + release c5-v1.0.
+
+## AMENDMENT 2 (2026-07-12, own commit, pre-fabrication — external
+verdict on the pivot: CORRECT, ">7 via defensible")
+
+CORRECTION REGISTERED: the nu = 0 witness x_0(c) closes the UNIFORM
+classification but NOT per-(nu,c) crossing existence.  The
+parametrized crossing theorem needs TWO witnesses for EACH (nu,c),
+both now registered explicitly (no asymptotics):
+- SMALL SIDE: x_-(c) = sqrt(1-c), uniform in nu.  Route: C4's
+  product bounds give rho < x/(2(nu+1)(1-q_{nu+1})); with
+  sqrt(a^2+x^2) <= a + x^2/(2a), a = nu+c, the comparison reduces
+  to 2(1-c) > (x^2/2)(1/(nu+c) + (nu+1)/(nu+2)); at x = x_-(c) the
+  parenthesis is < 3 < 4 (1/(nu+c) < 2 for c > 1/2, ratio < 1),
+  and q_{nu+1} = x_-^2/(4(nu+2)) < 1/16 auto-discharges the
+  product-bound premise.
+- LARGE SIDE: x_+(nu,c) = 2D/(2c-1), D = (nu+3/2)^2 - (nu+c)^2.
+  Route: sqrt(b^2+x^2) - sqrt(a^2+x^2) = D/(sum of roots) < D/(2x),
+  so L_nu(x_+) > B_{nu,c}(x_+), and rho > L closes the side.
+
+TWO UNIQUENESS ROUTES REGISTERED (fabrication may use either; both
+deliver the full crossing theorem):
+- STRONG: psi_nu' < 0 globally (the Amendment-1 route).
+- EXACT FALLBACK (transversality): at any zero of D_{nu,c} =
+  rho - B_{nu,c},
+    D'(crossing) = (B/x) * (2c-1 - (nu+c)/sqrt((nu+c)^2+x^2))
+  (from Q(B_c) = ((2c-1)/x)B_c and B_c' = (a/(sx))B_c), which is
+  POSITIVE iff x > x_dagger(nu,c) = (nu+c) sqrt(1/(2c-1)^2 - 1).
+  Route: no crossing before x_dagger (local bound), every crossing
+  after x_dagger is transversal with D' > 0, existence from the two
+  witnesses => uniqueness + orientation.
+
+LITERATURE COLLATION EXPANDED (mandatory, pre-novelty-sentence):
+RS16 (intermediates "must cross" - but no explicit existence/
+uniqueness/orientation/localization classification found in this
+review); Segura 2021 double-ratio monotonicity (arXiv:2105.02524 -
+close but not x(rho_nu - rho_{nu+1})); the 2026 Bernstein paper
+(arXiv:2607.05538, W_nu(sqrt s) Bernstein via zeros of J_{nu+1} -
+may imply parts via a stronger property; check the transfer).
+Search terms fixed: normalized Turanian, adjacent-ratio difference,
+double-ratio monotonicity, Bernstein/Stieltjes representations,
+monotonicity of W_{nu-1} - W_nu.
+
+REVISED SCORE LADDER ON RECORD (evaluator): phases 1-2 only:
+6.90-7.00; + crossing uniqueness/orientation with per-(nu,c)
+witnesses: 7.10-7.25; + global psi' < 0 (novelty confirmed):
+7.25-7.45; + quantitative scale x_* ~ (nu+1)/(2c-1) with explicit
+constants: 7.40-7.60.
+
+## AMENDMENT 3 (2026-07-12, own commit, pre-fabrication — phase-3
+assault plan; J-C5-2 verdict recorded: 6.98, lane ~7.00, artifact
+9.20, "no new blocker before phase 3")
+
+DESK-DERIVED STRUCTURE (verify in fabrication):
+- THE SANDWICH: 2nu+1 < psi_nu < 2nu+2 globally.  Upper half is
+  NEW and cheap: L_nu > B_{nu,1} everywhere (root-difference
+  sqrt((nu+3/2)^2+x^2) - sqrt((nu+1)^2+x^2) < 1/2 since the root
+  sum strictly exceeds a+b = 2nu+5/2), so rho > B_{nu,1}, i.e.
+  psi < 2nu+2 by the general calibration.  COROLLARY killing all
+  c >= 1: B_{nu,c} is a uniform LOWER bound (antitonicity in c) —
+  RS16's alpha >= 1 half, machine-checked for free.
+- CROSSING IDENTITY AT ANY ZERO of D = rho - B_c:
+  D'(zero) = (B_c/x)(2c-1 - (nu+c)/s), s = sqrt((nu+c)^2+x^2) —
+  an IDENTITY at zeros, sign = sign(x - x_dagger),
+  x_dagger = 2(nu+c)sqrt(c(1-c))/(2c-1); at the threshold
+  B_c(x_dagger) = sqrt((1-c)/c) (desk-checked consistency with the
+  psi-level formulation).
+- BLOCKS (fabrication order, each committed green):
+  A. Sandwich + c >= 1 lower-bound corollary (LOW RISK).
+  B. Existence: D < 0 near 0 (leading-order comparison via the C4
+     product bounds at x_-(c) = sqrt(1-c), Amendment-2 route),
+     D > 0 at x_+(nu,c) = 2D/(2c-1) (L-vs-B_c algebra), IVT from
+     HasDerivAt-continuity => a crossing exists in (x_-, x_+).
+  C. NO ZERO BELOW THE THRESHOLD: zeros in (0, x_dagger) all have
+     D' < 0 strictly (identity), incompatible with a first zero
+     approached from D < 0 (C4-style sInf slope argument) => the
+     crossing set lies in [x_dagger, oo).
+  D. AT MOST ONE ZERO ABOVE: two zeros > x_dagger are both
+     transversal upward; between an upward zero (D > 0 after) and
+     a later zero approached from above the slope at the second is
+     <= 0 — contradiction => uniqueness in the open region.
+  E. ORIENTATION + LOCALIZATION + SCALE: rho < B_c before the
+     crossing, rho > after; x_dagger <= x_* <= x_+, both ends
+     ~ 1/(2c-1): the scale law (2c-1) x_* in
+     [2(nu+c)sqrt(c(1-c)), 2((nu+3/2)^2-(nu+c)^2)] with explicit
+     ends — at c -> 1/2+ this is [~(nu+1/2), 4(nu+1)], the
+     evaluator's x_* ~ (nu+1)/(2c-1).
+- HONEST CAVEAT REGISTERED NOW: the single boundary point
+  x = x_dagger admits a POSSIBLE TANGENCY (D = D' = 0) that the
+  sign-discipline argument cannot exclude; ruling it out needs
+  second-derivative information (B'' infrastructure).  The phase-3
+  theorem is therefore stated with the equality set contained in
+  {x_dagger} union {the transversal crossing}, i.e. AT MOST ONE
+  crossing in (x_dagger, oo) plus an explicitly named possible
+  degenerate touch at x_dagger; TANGENCY EXCLUSION and the strong
+  route psi' < 0 are NAMED OPEN REFINEMENTS (not silently claimed).
+  If fabrication finds the exclusion cheap, it upgrades; if not,
+  the paper states the caveat.  The psi' < 0 reduction on record:
+  psi' < 0 at a level point psi = 2(nu+c) <=> rho > sqrt((1-c)/c)
+  there — equivalent to the same threshold geometry.
+
+Budgets: blocks A-B share attempt 1 scope; C-D-E the registered
+hard part (3 attempts as one phase).  Fallback per charter: blocks
+A+B alone (sandwich + both-sided family classification + existence)
+are already publishable content on top of phases 1-2.
+
+## AMENDMENT 4 (2026-07-12, own commit, PROVENANCE CORRECTION on
+block A — audit-mandated before block B)
+
+FINDING (external audit of de38eff0, Lean correct, novelty NOT
+sustained): the upper sandwich psi_nu < 2nu+2 is CLASSICAL.  By the
+ratio recurrence, psi_nu = 2nu+2 - x(rho_nu - rho_{nu+1}), so
+  psi_nu < 2nu+2  <->  rho_nu > rho_{nu+1}
+  <->  I_{nu+1}(x)^2 > I_nu(x) I_{nu+2}(x)
+— EXACTLY the Turan inequality for I at mu = nu+1 (literature:
+Baricz, "On Turan type inequalities for modified Bessel functions",
+arXiv:1010.3346, with antecedents Gronwall,
+Thiruvenkatachar-Nanjundiah, Amos; log-concavity of mu -> I_mu(x);
+range nu >= 0 amply included).
+
+CORRECTIONS (this amendment + the A' commit):
+- every "NEW" label on block A becomes "new machine-checked
+  endpoint of the formal development" — the honest description is
+  "a machine-checked real-order Turan inequality, expressed as the
+  upper half of the psi-sandwich";
+- the equivalence psi < 2nu+2 <-> Turan is REGISTERED and gets a
+  NAMED endpoint (block A'): besselIReal_turan, the Turan
+  inequality at real order as an explicit theorem (connects to the
+  lane's Turan paper 2607.0017);
+- the fallback sentence "A+B publishable" is qualified: publishable
+  AS FORMALIZATION; the sandwich and both uniform halves of the
+  family are classical mathematics — no novelty implication;
+- the >7 increment continues to depend EXCLUSIVELY on the global
+  crossing structure for 1/2 < c < 1 (existence per (nu,c),
+  uniqueness/orientation, tangency exclusion, quantitative
+  localization) — score impact of block A: ~+0.01, per the
+  evaluator.
+
+## AMENDMENT 5 (2026-07-12, own commit — C-D-E verdict recorded +
+NAMING CORRECTION + phase 3F registered)
+
+VERDICT RECORDED (external, fce2c323): **7.32/10 provisional** —
+the programme's first score above 7.  Ladder on record: novelty
+collation confirms no equivalent for threshold-uniqueness-scale =>
+~7.42-7.48; degenerate contact EXCLUDED (unconditional global
+uniqueness/orientation) => ~7.55-7.62; an equivalent antecedent
+found => 7.05-7.15.
+
+NAMING CORRECTION (audit-mandated, adopted VERBATIM everywhere the
+result is described): "the crossing theorem is complete" is
+stronger than what is proved.  The exact name is
+  "QUANTITATIVE CROSSING THEOREM WITH UNIQUENESS AND ORIENTATION
+   OUTSIDE THE POSSIBLE DEGENERATE CRITICAL CONTACT"
+- uniqueness/orientation are conditional on the strict threshold;
+the degenerate contact exactly at x_dagger remains the named open
+point.  The paper may NOT use "complete" until 3F closes.
+
+PHASE 3F REGISTERED (tangency exclusion; the 7.55-7.62 lever):
+DESK ROUTE: at x_dagger the slope factor (2c-1 - a/s) vanishes
+IDENTICALLY, so any crossing there is automatically a critical
+point of D.  All quantities at such a contact are EXPLICIT
+algebraic functions of (nu, c): rho = B = sqrt((1-c)/c),
+s = a/(2c-1), x = 2a sqrt(c(1-c))/(2c-1).  Differentiating the
+Riccati along the flow: rho'' = (rho/x^2)[(2nu+1)2(1-c)
+- 2(2c-1) rho x]; and B'' = -a(x/s)(a+2s)/(s^2(a+s)^2).  DESIGN
+PROBE (scripts/c5_tangency_probe_design.txt, VERIFIED-design, not
+certified): D'' = rho'' - B'' > 0 at ALL 90 probe points across
+nu in [0,100], c in [0.501, 0.999].  FORMAL PLAN: (i) second
+derivative infrastructure - HasDerivAt of the derivative functions
+(x -> Q_x(rho x) via two-argument chain rule from existing pieces;
+x -> B'(x) via the sqrt calculus); (ii) THE ALGEBRAIC INEQUALITY
+D''(critical) > 0 in (nu, c) (nlinarith with sqrt facts - explicit
+data, no analysis); (iii) contradiction: D'(x_dagger) = 0 +
+D'' > 0 => D strictly decreasing just left => D(y) > 0 there,
+contradicting crossing_orientation_below.  DELIVERABLE: crossing
+at x_dagger impossible => crossing_threshold upgrades to STRICT =>
+crossing_unique/orientation become UNCONDITIONAL.  Budget: 3
+attempts.  Fallback: the caveat stands as currently stated (the
+7.32 result is already publishable).
+
+COLLATION PLAN (pre-paper, per Amendment 2 + this verdict):
+theorem-by-theorem comparison against RS16, Segura 2105.02524,
+Bernstein 2607.05538, AND the post-RS16 literature on optimal
+tangencies / unique sign changes in generalized families; the
+package claimed as candidate-new is EXACTLY: explicit finite
+window + necessary threshold + transversal uniqueness +
+orientation + two-sided explicit scale.
+
+## AMENDMENT 6 (2026-07-12, own commit, pre-3F-fabrication — the
+external desk's EXACT IDENTITY replaces the probe)
+
+THE IDENTITY (external desk, verified against the 90/90 probe to
+all printed digits at (0, 0.6): 0.0181444):
+  D''(x_dagger) = (2c-1)^3 * B_{nu,c}(x_dagger) / (nu+c)^2  > 0,
+uniformly — no delicate estimates.  Compressed derivation ON
+RECORD: with a = nu+c, t = 2c-1, s = a/t at the contact,
+Bx = s-a = a(1-t)/t, 2nu+1 = 2a-t, x^2 = a^2(1-t)(1+t)/t^2:
+  rho'' = (B/x^2)[(2nu+1)(1-t) - 2tBx] = -t^3 B/(a^2(1+t)),
+  B''   = -a(x/s)(a+2s)/(s^2(a+s)^2) = -t^3 B(t+2)/(a^2(t+1)),
+  D''   = rho'' - B'' = t^3 B / a^2.
+REGISTERED LEAN FORM (division-free, audit-recommended):
+  (nu+c)^2 * D''(x_dagger) = (2c-1)^3 * amosFamily nu c x_dagger,
+sign from 0 < 2c-1, 0 < nu+c, 0 < B.  The registered "single
+algebraic inequality" is now AN IDENTITY plus three positivity
+facts.
+
+3F FABRICATION PLAN (refined): module AmosTangency.lean —
+(i) amosDeriv def (the B' value function a/(s(a+s))) + HasDerivAt
+of D with value function D1 = Q-along-flow minus amosDeriv (both
+pieces exist); (ii) HasDerivAt of D1 at the contact (inv/mul/pow
+assembly for the Q-part; sqrt calculus for the amosDeriv part);
+(iii) at a critical contact (heq + a = t*s): D1 = 0 (pure algebra,
+the slope factor vanishes) and the IDENTITY above => D2 > 0;
+(iv) slope dance: D1 < 0 on a left interval
+(mem_nhdsWithin_Iio_iff_exists_Ioo_subset), strictAntiOn_of_deriv_neg
+on [y, x_dagger] => D(y) > D(x_dagger) = 0; but y < x_dagger is
+STRICTLY below threshold (s strictly increasing), so
+crossing_orientation_below gives D(y) < 0 — contradiction;
+(v) crossing_no_critical_contact => crossing_threshold_STRICT =>
+UNCONDITIONAL crossing_unique / orientation + the packaged global
+crossing theorem (exists-unique with three zones and scale).
+Local contradiction phrasing per the audit: articulate via D' < 0
+on a left interval + monotonicity, not via a bare "strictly
+decreasing just left".
+
+Score protocol confirmed: nota stays 7.32 until the Lean theorem
+compiles and enters the oracle; 7.55-7.62 then opens, conditional
+on the collation.
+
+## AMENDMENT 7 (2026-07-12, own commit — 3F verdict 7.58 + THE
+DIRECTED COLLATION, the paper's related-work skeleton)
+
+VERDICT RECORDED: **7.58/10** — the tangency exclusion and global
+theorem verified in-tree (110/110, 8175 jobs, no local axioms);
+"a global quantitative classification, unconditional and
+machine-checked, not a collection of known bounds."  Not 7.62:
+qualitative existence + the family are RS16 prior art, and the
+final paper + external reproduction are pending.
+
+THE COLLATION (verbatim substance, MANDATORY in the paper):
+1. RS16 (exact antecedent of family + qualitative existence): under
+   mu = nu+1, alpha = 2c-1 their b_alpha family IS B_{nu,c};
+   for 1/2 < c < 1 they observe non-global-boundness and that the
+   graphs "must cross" (asymptotic end signs).  NO uniqueness,
+   orientation, strict threshold, tangency exclusion, or
+   quantitative localization there.  DECLARE EXPRESSLY: family and
+   mere existence of some crossing are prior art.
+2. HG13 (the most dangerous antecedent): characterizes which
+   G_{alpha,beta} are upper/lower bounds; describes minimal upper
+   bounds tangent at a single point.  DIFFERENT from classifying
+   the FIXED DIAGONAL G_{nu+c,nu+c} = B_{nu,c} (not a global
+   bound).  No located theorem giving unique simple crossing +
+   bilateral orientation + explicit threshold + scale law for the
+   diagonal.  MUST be cited and compared PARAMETER BY PARAMETER.
+3. Segura 2022/23 (osculatory tangencies): unique tangential
+   contact for OPTIMIZED coefficients chosen as functions of the
+   tangency point — there the function is a global bound and
+   tangent; here B_{nu,c} is FIXED in advance, the contact is
+   EXCLUDED, and the meeting is transversal.  Close, not
+   equivalent.
+4. HG24: their "single sign change" is BOUND VERSUS BOUND within
+   their generalized family; C5's is RATIO VERSUS NON-BOUND family
+   member.  DISAMBIGUATE the terminology explicitly.
+5. Segura 2021 (nullclines/Riccati monotonicity) and Salazar 2026
+   (Bernstein certificates): neither presents the quantitative
+   diagonal package.
+
+SURVIVING NOVELTY CORE (paper formulation, fixed now): for nu >= 0
+and 1/2 < c < 1, the diagonal member B_{nu,c} crosses
+I_{nu+1}/I_nu EXACTLY ONCE; the crossing is transversal, satisfies
+an explicit strict threshold, determines the sign globally on both
+sides, lies in a constructive finite window, and obeys an explicit
+two-sided scale law.  PRUDENT PRIORITY SENTENCE (verbatim): "We
+are not aware of a previous theorem giving this complete
+quantitative crossing classification for the diagonal family."
+DO NOT claim the crossing PHENOMENON is new (RS16 detects it
+qualitatively).
+
+## AMENDMENT 8 (2026-07-13, own commit, BEFORE the companion script
+— J-C5-4 protocol, independence conditions audit-mandated)
+
+INDEPENDENCE CONDITION: the certified companion verifies the
+crossing phenomenon WITHOUT using amosFamily_global_crossing,
+crossing_orientation or the scale law in its verdict logic.  Only
+ball signs of D and D' decide.  The C4 backward-recurrence harness
+for rho is REUSED (methodologically independent, no giant I_nu).
+
+GRID (30 pairs, forcing the hard regimes, fixed now):
+  nu in {0, 1/2, 1, pi, 10, 100} x c in {0.501, 0.6, 0.75, 0.9,
+  0.999} — includes c -> 1/2+ (x_* blowup), c -> 1- (B(x_dagger)
+  -> 0), nu = 0, moderate/large orders, and doubly-extreme pairs.
+
+SEARCH INTERVAL BY FIXED NUMERICAL RULE (independent of the Lean
+window; the theoretical window is checked AFTERWARD, not used to
+search): L0 = (1-c)/4, U0 = 8(nu+2)^2/(2c-1).  If either endpoint
+sign fails to certify, the row is UNDECIDED (precision escalation
+only, NEVER ad-hoc widening — no retrospective contamination).
+
+PER-PAIR CERTIFICATES (all four, ball arithmetic):
+1. BOX: sup D(L0) < 0, inf D(U0) > 0, then certified bisection
+   (exact dyadic midpoints; cap 200 steps; stop when the midpoint
+   ball straddles 0) yielding X = [lo, hi] with certified opposite
+   endpoint signs;
+2. TRANSVERSALITY: inf_{x in X} D'(x) > 0 by interval evaluation
+   of D' = Q_x(rho) - B' over the hull ball of X;
+3. WINDOW INCLUSION: X inside [x_dagger, x_plus] with
+   x_dagger = 2(nu+c)sqrt(c(1-c))/(2c-1),
+   x_plus = 2((nu+3/2)^2-(nu+c)^2)/(2c-1), certified ball
+   comparisons (upper(x_dagger) <= lo, hi <= lower(x_plus));
+4. SCALE LAW: 2(nu+c)sqrt(c(1-c)) <= (2c-1)*lo and
+   (2c-1)*hi <= 2((nu+3/2)^2-(nu+c)^2), interval-verified on both
+   sides.
+Precision ladder 128 -> 4096 on UNDECIDED, never forced verdicts;
+pi as arb ball; per-row record: nu, c, prec, recurrence depth, X
+with width, the four certificate booleans; independent mpmath pass
+(VERIFIED label, not certified) locating x_* by float bisection and
+checking containment in X.  Transcript committed day-one; script
+provenance header.
+
+### Amendment 8 — TECHNICAL NOTE (registered before the run, own
+commit; method deviation disclosed in advance, the C4-Amendment-1
+precedent)
+
+1. ANCHOR DEVIATION.  The C4 harness's series anchor (q <= 1/4,
+   depth N ~ x^2) is INFEASIBLE at the registered U0: for
+   (nu, c) = (100, 0.501), U0 ~ 4.2e7 forces N ~ 1.7e15.  The
+   companion therefore seeds the backward recurrence with the
+   INTERVAL [0, 1] at order nu + N: validity of the seed is
+   besselIReal_pos (ratio > 0) plus amosBoundReal_holds (ratio
+   < B_{1/2} < 1), both in-tree oracle-verified theorems of the
+   RELEASED C4 lane and NOT in the forbidden set (the three
+   crossing theorems).  Propagation stays pure ball arithmetic on
+   the exact recurrence (besselIReal_ratio_recurrence).  Depth
+   N = ceil(sqrt(max(x,1) * prec)) + 40, recomputed per ladder
+   rung; contraction is certified A POSTERIORI by the final ball
+   width — a too-wide ball can only produce UNDECIDED, never a
+   wrong verdict.
+2. BISECTION EARLY STOP.  Besides the two registered stops
+   (midpoint ball straddles 0; 200-step cap), the bisection may
+   stop early once the bracket's relative width is <= 2^-60.
+   This is conservative: a WIDER box makes every one of the four
+   certificates strictly harder, never easier.
+3. VERDICT REFINEMENT.  A CERTIFIED wrong sign at an endpoint of
+   the fixed search interval (e.g. D(L0) > 0 proven by ball) is
+   FAIL — full stop + autopsy; only an uncertifiable sign
+   (straddling ball) is UNDECIDED with ladder escalation.
+4. DEPTH CORRECTION (pre-run; from a DISCLOSED dev width probe at
+   the heavy point U0(100, 0.501) ~ 4.16e7, no certified result
+   observed): the singly-scaled depth of item 1 leaves the final
+   ball at width 2.5e-5 — the measured ball contraction is slower
+   than the derivative model — while DOUBLING it reaches the
+   prec-128 floor 3.5e-32.  Registered depth becomes
+   N = ceil(2 * sqrt(max(x,1) * prec)) + 40.  Ball verdicts are
+   sound at ANY depth (too-wide is UNDECIDED, never wrong); this
+   fixes performance, not soundness.
+
+## AMENDMENT 9 (2026-07-13, own commit — EXTERNAL ABSOLUTE-SCALE
+VERDICT ON v1.2 + THE FIRST EXTERNAL REPRODUCTION, both on record)
+
+VERDICT RECORDED: **5.90/10 ON THE ABSOLUTE SCALE** (the external
+evaluator's calibration: 10 = resolution of historic magnitude;
+component notes: soundness 8.70, formalization/auditability 9.00,
+reproducibility 8.60, novelty 6.10, exposition 7.20, scope/impact
+3.90, editorial maturity 5.20).  This is a DIFFERENT SCALE from the
+lane evaluator's 7.58 (Amendment 7); both stand, neither converts
+into the other; the paper cites neither.
+
+THE FIRST EXTERNAL REPRODUCTION (the Amendment-7 "external
+reproduction pending" item, now delivered): the evaluator, from the
+public ZIP at 99144dd8, verified byte-identity of the shipped PDF,
+all four manifest hashes, zero sorry/admit/axioms in AmosClosure,
+statement-level correspondence of the headline Lean theorems, the
+110-entry oracle transcript — and RE-RAN THE COMPANION with
+python-flint 0.9.0 on Python 3.13.5: **30/30 PASS, 0 FAIL,
+0 UNDECIDED, output identical to the committed transcript except
+the Python version line.**  Registered as the first
+outside-this-desk witness of the certified companion.
+
+EVALUATOR'S CONDITIONS FOR 6.30–6.60 (registered verbatim as the
+post-release ladder): (1) a clean `lake build AmosClosure`
+reproduced end-to-end by a third party (the evaluator's environment
+lacked the Lean toolchain; static inspection only); (2) positive
+refereeing by an independent special-functions expert; (3)
+bibliographic confirmation of priority beyond a search (named
+specialist); (4) a stable release/preprint (the evaluator verified
+99144dd8 public but noted the manifest is PRELIMINARY and the tag
+list still ends at c4-v1.0 — assessment: "very advanced release
+candidate", not a closed release).
+
+DISPOSITION: (1) and (4) are exactly the in-flight J-C5-5 closure —
+the authoritative clean-clone release check (script v3 at 4bce8a7f;
+runs 1–2 failed on registered environment defects, diagnoses in
+their own commits; run 3 in flight from the short-path frozen
+clone) followed by the release commit + annotated tag c5-v1.0.
+(2) and (3) are post-release by nature (referee + specialist); they
+join the viXra-id item in the post-tag queue and CANNOT be closed
+from this desk — no self-arbitration.  Scope/impact 3.90 is
+accepted as-is: the honest-scope sections already state the narrow
+reach; no wording change is warranted or permitted (no importance
+inflation).  The internal-definition limitation (Gamma-series, no
+external real-order library object to identify with at the pinned
+Mathlib) is already declared in the paper's Scope section and
+stands as a named future item (upstreaming the API).
+
+## AMENDMENT 10 (2026-07-13, own commit, POST-TAG — release
+verification verdict + one LOW finding)
+
+VERDICT RECORDED: **6.00/10 ON THE ABSOLUTE SCALE** (up from 5.90;
+components moved: reproducibility 8.60 -> 8.85, editorial maturity
+5.20 -> 6.40; mathematics/novelty/scope unchanged by design — the
+release changed maturity, not content).  The evaluator VERIFIED the
+release materially: tag `c5-v1.0` public on `d80acd4d`, tag-ZIP PDF
+byte-identical to the previously evaluated PDF (sha `4E8C564F...`),
+canonical tex/companion/transcript hashes matching, run-3
+transcript showing the 8175-job completion, manuscript unchanged
+from the evaluated v1.2.  Condition (4) of the Amendment-9 ladder
+(stable release) is CLOSED BY THE EVALUATOR; conditions (1)–(3)
+(third-party build, specialist referee, independent priority
+confirmation) remain open — the 6.30–6.60 band is NOT yet reached.
+
+LOW FINDING (evaluator, accepted): the manifest row for
+`scripts/c5_release_check_transcript_run3_GREEN.txt` recorded
+`87D28919...`, which is the sha256 of the CRLF WORKTREE bytes (the
+PowerShell-redirected file, hashed before staging), while the
+manifest's own EOL rule mandates the git-blob/LF representation,
+whose sha256 is `D115F2ED...`.  Provenance-labeling defect only:
+transcript content, the four canonical artifact hashes, and the
+run's validity are unaffected.  FIX (post-tag patch, this
+amendment's sibling commit, per the tags-never-move rule): the
+manifest row now records BOTH, explicitly labeled
+(git-blob/LF `D115F2ED...`; Windows worktree/CRLF `87D28919...`).
+MECHANISM BANKED with the R1 lesson: PowerShell `*>` redirection
+writes CRLF; `sha256sum` on the worktree pre-staging hashes those
+bytes; git normalizes at blob formation — for any committed-text
+hash row, hash `git show <rev>:path`, NEVER the worktree file (the
+run-3 GREEN transcript was produced on this box and fell into
+exactly the footgun the audit had named for reproducers).
+
+## Known traps carried forward
+
+The full C2-C4 bank (orphan rings after field_simp, rpow domain,
+Gamma_add_one side goals, zero-suffix lemma names, cast-atom
+push_cast, rw-at-hypothesis-not-goal for def-eta lemmas, explicit
+root-module + Oracle imports with the +1 job-count witness,
+le_total not le_or_lt, HasDerivAt.rpow_const value shape) plus:
+sqrt-of-shifted-square calculus for L' (Real.sqrt HasDerivAt at
+positive argument), and the second-order tail comparisons will
+need explicit two-term partial sums (sum_le_tsum with range 2 as
+in zero_lt, extended to range 3 if needed).

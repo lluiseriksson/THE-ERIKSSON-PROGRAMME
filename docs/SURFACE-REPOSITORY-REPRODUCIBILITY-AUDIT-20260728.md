@@ -81,6 +81,27 @@ FINAL-SEAL PASS: terminal gates, manuscript, and PDF are present
 
 - terminal weak-main seal: `PASS`;
 - claim audit of the frozen paper: `READY_FOR_CLAIM_AUDIT`;
-- full repository / PR #31 integration: `BLOCKED`;
-- merge to `main`: not performed;
-- submission: owner action, not performed by this repair.
+- full repository / PR #31 integration before merge: one deliberate
+  changed-artifact coverage failure remained;
+- merge to `main`: explicitly authorized by the owner after the terminal
+  mathematical seal and the public-clone checks;
+- submission package: `papers/surface-complete/SUBMISSION-INFO.txt`.
+
+## Public-closure recheck
+
+An external desk subsequently reported two additional failures because it
+classified source anchors `0919aa10` and `1fed14e` as outside the published
+ancestry.  Before changing either anchor, a new full HTTPS clone was made with
+`git clone --no-local` and the public Surface branch was checked out detached.
+On that clone both literal commands
+
+```text
+git merge-base --is-ancestor 0919aa10 HEAD
+git merge-base --is-ancestor 1fed14e HEAD
+```
+
+returned exit code zero, and the two allegedly failing tests completed as
+`2 passed`.  The recorded anchors are therefore in the public commit closure
+and were not rewritten.  The likely failure mode of the contrary audit is an
+incomplete or stale object/ref view; this diagnosis does not alter its valid
+earlier catches of EOL-sensitive hashes and unversioned dependencies.

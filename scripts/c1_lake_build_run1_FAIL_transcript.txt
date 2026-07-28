@@ -1,0 +1,210 @@
+ℹ [8158/8244] Built YangMills.KP.PlaneTreeCatalan (53s)
+info: YangMills/KP/PlaneTreeCatalan.lean:211:0: 'RootedTreeCatalan.PlaneTree.card_treesOfSizeSucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:212:0: 'RootedTreeCatalan.PlaneTree.mem_treesOfSizeSucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:213:0: 'RootedTreeCatalan.PlaneTree.numNodes_forestToBin' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:214:0: 'RootedTreeCatalan.sum_card_eq_card_sigma' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8159/8244] Built YangMills.KP.LabeledPlaneTreeCatalan (9.3s)
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:377:0: 'RootedTreeCatalan.mem_headZeroPerms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:378:0: 'RootedTreeCatalan.card_headZeroPerms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:379:0: 'RootedTreeCatalan.decorate_shape_labels' depends on axioms: [propext]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:380:0: 'RootedTreeCatalan.labels_decorate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:381:0: 'RootedTreeCatalan.mem_labeledTreesOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:382:0: 'RootedTreeCatalan.card_labeledTreesOn'' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8160/8244] Built YangMills.RG.CouplingFlowBridge (195s)
+✔ [8161/8244] Built YangMills.L0_Lattice.FiniteLattice (195s)
+✔ [8162/8244] Built YangMills.Paper.UVSummation (195s)
+✔ [8163/8244] Built YangMills.KP.Basic (196s)
+✔ [8164/8244] Built YangMills.Paper.MassGapAssembly (195s)
+✔ [8165/8244] Built YangMills.RG.LocalFunctional (195s)
+✔ [8166/8244] Built YangMills.RG.AnimalCount (195s)
+✔ [8167/8244] Built YangMills.KP.WalkBound (196s)
+✔ [8168/8244] Built YangMills.KP.Cluster (24s)
+✔ [8169/8244] Built YangMills.RG.RawMayerWithHoles (24s)
+✔ [8170/8244] Built YangMills.L0_Lattice.GaugeConfigurations (25s)
+✔ [8171/8244] Built YangMills.RG.CouplingFlow (26s)
+⚠ [8172/8244] Built YangMills.KP.PinnedWalk (27s)
+warning: YangMills/KP/PinnedWalk.lean:107:51: This simp argument is unused:
+  zero_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [Option.elim_none, Option.elim_some, zero_m̵u̵l̵,̵ ̵z̵e̵r̵o̵_̵add] at key
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/KP/PinnedWalk.lean:107:61: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  simp only [Option.elim_none, Option.elim_some, zero_mul,̵ ̵z̵e̵r̵o̵_̵a̵d̵d̵] at key
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8173/8244] Built YangMills.KP.Criterion (25s)
+✔ [8174/8244] Built YangMills.KP.PenrosePrep (26s)
+✔ [8175/8244] Built YangMills.L0_Lattice.WilsonAction (26s)
+✔ [8176/8244] Built YangMills.ClayCore.WilsonLine (27s)
+✔ [8177/8244] Built YangMills.KP.Ursell (28s)
+✔ [8178/8244] Built YangMills.RG.MarginalCoupling (37s)
+✔ [8179/8244] Built YangMills.RG.PolymerRemainder (37s)
+✔ [8180/8244] Built YangMills.KP.SharpMajorant (25s)
+✔ [8181/8244] Built YangMills.KP.Convergence (25s)
+✔ [8182/8244] Built YangMills.L0_Lattice.GaugeInvariance (24s)
+✔ [8183/8244] Built YangMills.KP.PenroseScheme (24s)
+✔ [8184/8244] Built YangMills.KP.Expansion (24s)
+✔ [8185/8244] Built YangMills.RG.AnimalTour (23s)
+⚠ [8186/8244] Built YangMills.Paper.ClusteringToGap (23s)
+warning: YangMills/Paper/ClusteringToGap.lean:204:9: unused variable `d`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/Paper/ClusteringToGap.lean:214:9: unused variable `d`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/Paper/ClusteringToGap.lean:219:19: unused variable `d`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8187/8244] Built YangMills.KP.PenroseBFS (23s)
+✔ [8188/8244] Built YangMills.KP.ClusterWeight (23s)
+✔ [8189/8244] Built YangMills.L0_Lattice.FiniteLatticeGeometryInstance (24s)
+✔ [8190/8244] Built YangMills.RG.CubeLattice (24s)
+✔ [8191/8244] Built YangMills.RG.UVMassGap (23s)
+✔ [8192/8244] Built YangMills.KP.PinnedCluster (22s)
+✔ [8193/8244] Built YangMills.L1_GibbsMeasure.GibbsMeasure (22s)
+✔ [8194/8244] Built YangMills.KP.PenroseFiber (23s)
+✔ [8195/8244] Built YangMills.RG.ModifiedMetric (28s)
+✔ [8196/8244] Built YangMills.RG.SingleScaleUVDecay (24s)
+⚠ [8197/8244] Built YangMills.L1_GibbsMeasure.CenterInvariance (25s)
+warning: YangMills/L1_GibbsMeasure/CenterInvariance.lean:57:0: automatically included section variable(s) unused in theorem `YangMills.centerAct_apply_pos`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/CenterInvariance.lean:108:0: automatically included section variable(s) unused in theorem `YangMills.wilsonLine_center_smul_of_mem`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8198/8244] Built YangMills.KP.RootedChildCount (26s)
+✔ [8199/8244] Built YangMills.KP.KPBound (28s)
+⚠ [8200/8244] Built YangMills.KP.SharpShell (39s)
+warning: YangMills/KP/SharpShell.lean:404:23: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead
+warning: YangMills/KP/SharpShell.lean:491:4: Try this: intro pl _ hadm
+✔ [8201/8244] Built YangMills.RG.OmegaConnectedCover (26s)
+✔ [8202/8244] Built YangMills.RG.MarginalUVMassGap (27s)
+⚠ [8203/8244] Built YangMills.L1_GibbsMeasure.PolymerExpansion (26s)
+warning: YangMills/L1_GibbsMeasure/PolymerExpansion.lean:138:0: automatically included section variable(s) unused in theorem `YangMills.config_apply_neg`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/PolymerExpansion.lean:405:10: This simp argument is unused:
+  measure_univ
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵m̵e̵a̵s̵u̵r̵e̵_̵u̵n̵i̵v̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8204/8244] Built YangMills.KP.RootedLeafSummation (26s)
+⚠ [8205/8244] Built YangMills.KP.RootedCatalanBridge (30s)
+warning: YangMills/KP/RootedCatalanBridge.lean:683:0: automatically included section variable(s) unused in theorem `YangMills.KP.rootLabel_mem_labels`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/KP/RootedCatalanBridge.lean:776:0: automatically included section variable(s) unused in theorem `YangMills.KP.disjoint_labels_of_ne_of_pairwise`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/KP/RootedCatalanBridge.lean:1183:7: unused variable `h1`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: YangMills/KP/RootedCatalanBridge.lean:1267:0: 'YangMills.KP.penroseTree_eq_of_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1268:0: 'YangMills.KP.card_of_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1269:0: 'YangMills.KP.bfsLevel_le_of_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1270:0: 'YangMills.KP.mem_fiberListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1271:0: 'YangMills.KP.card_fiberListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1272:0: 'YangMills.KP.card_childListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1273:0: 'YangMills.KP.sum_prod_factorial_eq_card_sigma_childListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1274:0: 'YangMills.KP.rootLabel_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1275:0: 'YangMills.KP.bfsLevel_parIter' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1276:0: 'YangMills.KP.mem_labels_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1277:0: 'YangMills.KP.nodup_labels_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1278:0: 'YangMills.KP.orderedBFSTree_mem_labeledTreesOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1279:0: 'YangMills.KP.childrenOf_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1280:0: 'YangMills.KP.spanningTree_eq_of_listings_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1281:0: 'YangMills.KP.orderedBFSTree_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1282:0: 'YangMills.KP.orderedBFSTree_eq_of_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1283:0: 'YangMills.KP.orderedBFSTree_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1284:0: 'YangMills.KP.treeEdges_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1285:0: 'YangMills.KP.rootedChildren_treeEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1286:0: 'YangMills.KP.card_sigma_childListings_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1287:0: 'YangMills.KP.sum_prod_rootedChildCount_factorial_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8206/8244] Built YangMills.KP.SharpKP (21s)
+✔ [8207/8244] Built YangMills.KP.RootedCatalan (20s)
+✔ [8208/8244] Built YangMills.L1_GibbsMeasure.PolymerFactorization (21s)
+✔ [8209/8244] Built YangMills.RG.HolePolymerSystem (25s)
+ℹ [8210/8244] Built YangMills.KP.RootedCatalanIdentityProof (22s)
+info: YangMills/KP/RootedCatalanIdentityProof.lean:61:0: 'YangMills.KP.rootedChildFactorialCatalanIdentity_holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanIdentityProof.lean:62:0: 'YangMills.KP.rootedChildFactorialTreeSumNormalized_le_catalan' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [8211/8244] Built YangMills.L1_GibbsMeasure.EdgeFactorization (21s)
+✔ [8212/8244] Built YangMills.KP.RootedCatalanExact (26s)
+✔ [8213/8244] Built YangMills.RG.UltralocalFactorization (28s)
+✔ [8214/8244] Built YangMills.KP.MayerInversion (96s)
+⚠ [8215/8244] Built YangMills.KP.Restriction (321s)
+warning: YangMills/KP/Restriction.lean:33:14: unused variable `X`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/KP/Restriction.lean:33:16: unused variable `Y`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/KP/Restriction.lean:34:14: unused variable `X`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8216/8244] Built YangMills.RG.MayerCoverFactorization (358s)
+✔ [8217/8244] Built YangMills.RG.AppendixFFiniteCover (28s)
+✔ [8218/8244] Built YangMills.RG.LocalKP (31s)
+✔ [8219/8244] Built YangMills.RG.PolymerClusterWithHolesBridge (29s)
+✔ [8220/8244] Built YangMills.RG.ClusterDecay (31s)
+✔ [8221/8244] Built YangMills.RG.AppendixFHoleTarget (23s)
+✔ [8222/8244] Built YangMills.RG.AppendixFHoleTargetFamily (22s)
+✔ [8223/8244] Built YangMills.RG.AppendixFQuantitative (26s)
+✔ [8224/8244] Built YangMills.RG.AppendixFKsharp (27s)
+✔ [8225/8244] Built YangMills.RG.AppendixFFiberEntropy (26s)
+✔ [8226/8244] Built YangMills.RG.AppendixFSecondGas (41s)
+✔ [8227/8244] Built YangMills.RG.AppendixFLocalSummability (108s)
+✔ [8228/8244] Built YangMills.RG.AppendixFHsharp (93s)
+✔ [8229/8244] Built YangMills.RG.AppendixFHsharpResidual (112s)
+✔ [8230/8244] Built YangMills.RG.AppendixFHsharpPartial (73s)
+✔ [8231/8244] Built YangMills.RG.AppendixFHsharpLimit (85s)
+✔ [8232/8244] Built YangMills.RG.AppendixFHsharpConvergence (89s)
+✔ [8233/8244] Built YangMills.RG.AppendixFHsharpMajorant (70s)
+✔ [8234/8244] Built YangMills.RG.AppendixFHsharpGeometricMajorant (62s)
+✔ [8235/8244] Built YangMills.RG.AppendixFHsharpSourceMajorant (64s)
+✔ [8236/8244] Built YangMills.RG.AppendixFSecondUrsellSource (65s)
+✔ [8237/8244] Built YangMills.RG.AppendixFSecondUrsellWeightedTree (74s)
+✔ [8238/8244] Built YangMills.RG.AppendixFSecondUrsellGeometry (107s)
+✔ [8239/8244] Built YangMills.RG.AppendixFSecondUrsellMarkedFugacity (110s)
+✔ [8240/8244] Built YangMills.RG.AppendixFSecondUrsellLeafSummation (79s)
+✔ [8241/8244] Built MarkedRootedClosure.PaperTheorems (54s)
+✖ [8242/8244] Building MarkedRootedClosure.NonVacuity (55s)
+trace: .> LEAN_PATH=C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean c:\Users\lluis\.elan\toolchains\leanprover--lean4---v4.29.0-rc6\bin\lean.exe C:\Users\lluis\AppData\Local\Temp\eriksson-push2\MarkedRootedClosure\NonVacuity.lean -o C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\MarkedRootedClosure\NonVacuity.olean -i C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\MarkedRootedClosure\NonVacuity.ilean -c C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\MarkedRootedClosure\NonVacuity.c --setup C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\MarkedRootedClosure\NonVacuity.setup.json --json
+error: MarkedRootedClosure/NonVacuity.lean:44:37: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: MarkedRootedClosure/NonVacuity.lean:47:63: failed to synthesize
+  Decidable (noEdgesBetweenHoles (cubeAdj 2 8) witnessHoles.holes)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: MarkedRootedClosure/NonVacuity.lean:50:49: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+error: MarkedRootedClosure/NonVacuity.lean:62:4: No goals to be solved
+error: Lean exited with code 1
+Some required targets logged failures:
+- MarkedRootedClosure.NonVacuity
+error: build failed

@@ -1,77 +1,56 @@
 # Current State
 
-**Surface correction (2026-07-28): G2 restored; G6 sealed.**  The endpoint `Y`
-assembler and its full-moment error propagators double-counted the exact
-leading ratio `H0/K0`; values were smaller than the physical target by
-`8*cos(t/4)` and uniform error charges by `8*cmin`.  The K2 endpoint and every
-regular extension loading those helpers are quarantined.  The independent
-positive-delta order-eight campaign is unaffected.  The incident and
-supersession scope are in
-[`docs/INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md`](docs/INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md)
-and
-[`docs/SURFACE-K2-NORMALIZATION-SUPERSESSION-20260728.md`](docs/SURFACE-K2-NORMALIZATION-SUPERSESSION-20260728.md).
-
-**Surface high-beta closure (2026-07-28): `G2=CERTIFIED`.**  The
-correct two-stage main/mirror/rest assembly reduces the missing `lambda>=3`
-step to the weak bound `X_main >= -1/20`.  The exact rational relay and the
-validator loading the actual `lambda=3` transcript have reproducible passing
-outputs.  Two adjacent division-free covariance production/replay pairs now
-certify the weak premise on the full `t` interval: 576 rows on each of
-`[0,21/10]` and `[21/10,31415927/10000000]`, with explicit decision
-endpoints, byte-identical replay, empty stderr and independent decimal
-validation.  The exact terminal-union audit returns
-`G2_WEAK_TERMINAL_COVER_PROVED`.  The unconditional manuscript has been
-rebuilt in two pdfTeX passes, its TeX/PDF hashes are frozen, and the
-executable final audit reconstructs all terminal prerequisites, the weak G2
-union, and the closed-form anchors before returning `FINAL-SEAL PASS`.
-An external LF checkout initially refuted portability: two dependency
-validators were EOL-sensitive and one recorded source dependency was absent
-from the Git tree.  Both comparisons now accept only LF/CRLF-equivalent
-content, the omitted module is versioned, and the entire seal passes from a
-clean detached LF worktree with no untracked-file access.  Consequently
-`G6=SEALED` and the paper is ready for an external claim audit.
-See
-[`docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md`](docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md)
-and
-[`docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md)
-and
-[`docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md).
-The portability repair is documented in
-[`docs/SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md`](docs/SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md).
-
-**Repository integration remains blocked.**  The terminal seal and frozen
-paper reproduce, but the full control-plane workflow does not: the 6,047-file
-PR diff has 2,015 uncovered computational artifacts and the legacy run-manifest
-validator reports 624 invalid files.  A second test-layer portability repair
-versions the missing Bessel-gap module, preserves corrected negative results
-from the superseded sharp route, and makes unchanged transcript bindings
-LF/CRLF-stable.  This does not weaken the workflow guards or imply CI green.
-See
+**Surface Theorem closed and terminally sealed (2026-07-28).**  The paper
+*Global Ratio Monotonicity for a Killed von Mises Bridge* proves
+`F_B(t)>0` and `E'(t)<0` for every `beta>0` and `0<t<pi`.  The last
+`lambda>=3` lane is discharged by the exact main--mirror--rest relay and two
+adjacent division-free Arb covariance certificates.  Production/replay
+pairs are byte-identical, all decision endpoints are printed explicitly,
+and `python scripts/audit_surface_final_seal.py` returns `FINAL-SEAL PASS`
+from a clean public checkout.  The frozen 33-page TeX/PDF live in
+[`papers/surface-complete/`](papers/surface-complete/); the terminal chain,
+hashes, supersessions, and repository-level caveats are recorded in
+[`docs/SURFACE-CLOSURE-NOTES.md`](docs/SURFACE-CLOSURE-NOTES.md) and
 [`docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`](docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md).
+This closes the Bessel/surface theorem only; it does not assert a
+four-dimensional continuum Yang--Mills mass gap.
 
-K4 and S1'''/S2''' are not claimed solved: they are scoped to the superseded
-stronger `X_main>0` research route and carry no load in the certified
-weak-main Surface-Theorem chain.
-
-**Independent O-lane submission (owner report, 2026-07-28).**  The frozen
-v1.3 paper *From the Gibbs Weight to the Spectral Gap: A Complete
-Machine-Checked Osterwalder-Seiler Chain for the Z_2 Lattice Gauge Chain* has
-been submitted, with its public identifier still pending.  It verifies the
-measure-to-transfer-operator-to-correlation chain for the finite `Z_2`
-one-variable-per-slice model.  Its submission does not change any Surface
-Theorem gate and supplies no `SU(N)`, volume-uniform, continuum, or
-Yang--Mills mass-gap premise.  Provenance is recorded in
-[`docs/O-LANE-SUBMISSION-OS-CHAIN-Z2-20260728.md`](docs/O-LANE-SUBMISSION-OS-CHAIN-Z2-20260728.md).
-
-**Control-plane front door refreshed:** 2026-07-11.  **Latest recorded Lean
-verification checkpoint:** see [`project-state.json`](project-state.json),
-[`docs/PROJECT-STATE.md`](docs/PROJECT-STATE.md), and
-[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
+**Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
+checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
-Catalan/Schur series through Addendum 257 plus the 2026-07-04 diamagnetic
-unitary bridge Addendum 258.  The recorded source checkpoint is `0919aa10` with
-the same latest recorded **8369-job** full core build.  It must not be confused
-with the moving repository HEAD.
+Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
+unitary bridge Addendum 466.  The latest measured source checkpoint is
+`a17d7816` (on `main`) with the latest recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 508; the STANDALONE PAPER v1.2 (Addendum 508) lives at `papers/poincare-wall/` — TeX+PDF same editorial commit `61d56ce6`, submission-ready, formal freeze = `a17d7816`/8412).
+
+**PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
+is paper commit `193bb675`: all 24 theorem-map names link to the immutable
+`a17d7816` Lean sources, and the oracle, ledger, repository provenance, and
+eight actually cited programme papers are clickable.  This supersedes the
+Addendum-508 pre-link PDF without changing its mathematics or formal freeze.
+
+**W-3b DONE — exact Hodge term, endpoint-neutral** (2026-07-14,
+`PhysicalPoincareLowModeHodge.lean`, ledger Addendum 506).  On the even torus
+of side `N = M + M`, with `d > 0`, `M > 0`, and `Nc > 0` explicit, the
+two-interface witness satisfies
+`⟪A, K₀ A⟫ = 8 * (M + M)^(d - 1) * ‖w‖²` exactly.  The mechanism is split:
+for `i = j` the curl vanishes and divergence carries the full energy; for
+`i ≠ j` divergence vanishes and curl carries the full energy in the unique
+ordered `{i,j}` plane.  No `Nc ≥ 2` or `w ≠ 0` assumption is needed for the
+identity.  At the W-3b checkpoint alone this did not decide the gate; W-3c
+below supplies the block response and the registered one-sided endpoint.
+
+**W-3c DONE — quotient Poincaré second wall** (2026-07-14,
+`PhysicalPoincareLowModeBlock.lean`, ledger Addendum 507).  A canonical
+linear-isometric reindexing places the witness on the exact fine side
+`(M+M)*N'` and is proved to preserve constants, fluctuations, curl,
+divergence, norm, and flat Hodge energy.  For `d ≥ 3`, the current physical
+block map obeys `‖QA‖² ≤ (M+M)⁻¹‖A‖²`, while the exact Hodge ratio is
+`8/((M+M)N')`.  Hence the Rayleigh numerator is at most
+`9/(M+M)‖A‖²`, forcing every quotient Poincaré constant to satisfy
+`(M+M)/9 ≤ CP`.  Therefore `VolumeUniformQuotientPoincareGate` is PROVED
+FALSE for every positive `N'`, `d ≥ 3`, `Nc ≥ 2`, and every adjoint model.
+This refutes the registered gate under its current unscaled `Q` and
+unweighted coarse norm; it does not address a rescaled or weighted gate.
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
@@ -79,9 +58,9 @@ The public static dashboard now lives at
 the HORIZON/M3 dependency DAG as curated green/amber/open nodes and is guarded
 by `scripts/validate_dashboard.py`.
 
-The section above is the live front door; the rest of this file is a cumulative
-technical narrative.  Historical plans and ledgers are retained, but the
-canonical snapshot is the machine-readable state file linked above.
+This file is the short, live entry point. Historical plans and ledgers are kept
+because they matter, but this page is the first place a new reader should look
+before deciding what is actually proved and what remains open.
 
 Adversarial source-claim status, contradicted attributions, provenance fields,
 and the remaining Balaban extraction queue are tracked separately in
@@ -457,17 +436,20 @@ Wilson-loop product, with vanishing when the two center charges differ modulo
 
 ## Human Progress Dashboard
 
-These labels describe proof state, not estimated probability of completion.
+These bars are reader-facing estimates, not theorem probabilities.  They are
+meant to make the state easy to scan; the authoritative record is still Lean,
+the axiom oracle, and the verification ledger.
 
-| Track | Status | Current reading |
-|---|---|---|
-| Verified core integrity | **PROVED** | zero `sorry`, zero project axioms, standard Lean axioms only |
-| Strong-coupling lattice package | **PROVED** | KP/Mayer, clustering, and Wilson-loop area laws are theorem-fed |
-| IR side of M3 lattice gap | **PROVED** | no carried IR hypothesis remains |
-| M3 assembly | **CONDITIONAL** | the assembly is verified; the UV producer remains explicit |
-| Appendix-F/H# and P4 operator layers | **PARTIAL** | verified interfaces and consumers exist; source estimates and physical decay remain unproved |
-| Concrete `hRpoly` discharge | **OPEN** | the live analytic estimates remain open |
-| Strict Clay result | **OPEN** | no continuum construction or reconstruction theorem |
+| Track | Bar | Current reading |
+|---|---:|---|
+| Verified core integrity | `100% [##########]` | zero `sorry`, zero project axioms, standard Lean axioms only |
+| Strong-coupling lattice package | `100% [##########]` | KP/Mayer, clustering, and Wilson-loop area laws are theorem-fed |
+| IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
+| Conditional M3 assembly | `94% [#########.]` | the assembly is verified; the UV producer remains explicit |
+| Appendix-F/H# bridge to UV consumer | `98% [##########]` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, newly oracle-covered Appendix-F hole target geometry/family targets, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
+| P4 physical-operator vertical slice | `94% [#########.]` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
+| Concrete `hRpoly` discharge | `76% [########..]` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Catalan/Schur budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
+| Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
 The full human-readable progress board now lives directly in
 [`README.md`](README.md#progress-dashboard), so it is visible on the repository
@@ -475,7 +457,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8369 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8412 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.

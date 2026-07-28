@@ -1,0 +1,26 @@
+✖ [8164/8166] Building AmosClosure.AmosBarrier (27s)
+trace: .> LEAN_PATH=C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean c:\Users\lluis\.elan\toolchains\leanprover--lean4---v4.29.0-rc6\bin\lean.exe C:\Users\lluis\AppData\Local\Temp\eriksson-push2\AmosClosure\AmosBarrier.lean -o C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\AmosBarrier.olean -i C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\AmosBarrier.ilean -c C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\AmosBarrier.c --setup C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\AmosBarrier.setup.json --json
+error: AmosClosure/AmosBarrier.lean:91:20: Unknown identifier `Ioo_mem_nhdsWithin_Iio`
+error: AmosClosure/AmosBarrier.lean:92:28: Invalid projection: Type of
+  hy
+is not known; cannot resolve projection `1`
+error: AmosClosure/AmosBarrier.lean:92:33: Invalid projection: Type of
+  hy
+is not known; cannot resolve projection `2`
+error: AmosClosure/AmosBarrier.lean:110:4: Type mismatch: After simplification, term
+  h
+ has type
+  HasDerivAt (besselPsi n) ((besselRatio n c)⁻¹ - besselRatio n c) c
+but is expected to have type
+  HasDerivAt (besselPsi n) ((2 * ↑n + 1) / c) c
+error: AmosClosure/AmosBarrier.lean:130:20: Unknown identifier `Ioo_mem_nhdsWithin_Iio`
+error: AmosClosure/AmosBarrier.lean:131:18: Invalid projection: Type of
+  hy
+is not known; cannot resolve projection `1`
+error: AmosClosure/AmosBarrier.lean:131:23: Invalid projection: Type of
+  hy
+is not known; cannot resolve projection `2`
+error: Lean exited with code 1
+Some required targets logged failures:
+- AmosClosure.AmosBarrier
+error: build failed

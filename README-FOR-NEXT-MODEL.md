@@ -9,18 +9,16 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 
 ---
 
-## Live handoff (control-plane refresh 2026-07-11; Lean checkpoint 2026-07-04)
+## Live snapshot (updated 2026-07-04; source checkpoint 2026-07-04)
 
-Read [`project-state.json`](project-state.json),
-[`docs/PROJECT-STATE.md`](docs/PROJECT-STATE.md), and
-[`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
+Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
 handoff below.  The latest verification-ledger checkpoint records the verified
-core green at **8369 jobs**, with Mathlib pinned and every headline oracle-clean
+core green at **8412 jobs**, with Mathlib pinned and every headline oracle-clean
 at `[propext, Classical.choice, Quot.sound]`.  The ledger includes the earlier
 Addendum 444/date-stamped checkpoint material plus the 2026-07-03
-Catalan/Schur series through Addendum 257 and the 2026-07-04 diamagnetic
-unitary bridge Addendum 258, at Lean source checkpoint `0919aa10`.  Do not infer
-that this hash is the moving repository HEAD.
+Catalan/Schur series through Addendum 465 and the 2026-07-04 diamagnetic
+unitary bridge Addendum 466, while the latest measured source checkpoint is
+`a17d7816` (on `main`).
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
@@ -113,7 +111,7 @@ git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6
 lake exe cache get          # fetch prebuilt Mathlib oleans — do NOT build Mathlib from source
-lake build YangMillsCore    # 8369 jobs at the latest recorded checkpoint; fast with warm cache
+lake build YangMillsCore    # 8412 jobs at the latest recorded checkpoint; fast with warm cache
 ```
 
 ---

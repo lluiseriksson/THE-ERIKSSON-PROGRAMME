@@ -1,0 +1,13 @@
+'MarkedRootedClosure.normalizedRootedChildFactorialTreeBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MarkedRootedClosure.normalizedRootedChildFactorialTreeCatalanIdentity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'MarkedRootedClosure.markedRootCatalanBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MarkedRootedClosure.markedRootLeafGeometricBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MarkedRootedClosure.targetPreservingWeightedTreeBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MarkedRootedClosure.NonVacuity.nonvacuous_markedRootLeafGeometricBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'MarkedRootedClosure.NonVacuity.nonvacuous_targetPreservingWeightedTreeBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

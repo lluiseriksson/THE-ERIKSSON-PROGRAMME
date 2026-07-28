@@ -1,0 +1,53 @@
+✖ [8161/8163] Building AmosClosure.BesselDeriv (216s)
+trace: .> LEAN_PATH=C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean c:\Users\lluis\.elan\toolchains\leanprover--lean4---v4.29.0-rc6\bin\lean.exe C:\Users\lluis\AppData\Local\Temp\eriksson-push2\AmosClosure\BesselDeriv.lean -o C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\BesselDeriv.olean -i C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\BesselDeriv.ilean -c C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\BesselDeriv.c --setup C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\BesselDeriv.setup.json --json
+info: AmosClosure/BesselDeriv.lean:44:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+error: AmosClosure/BesselDeriv.lean:29:72: unsolved goals
+case h.e'_8.h
+n k : ℕ
+y : ℝ
+h1 : HasDerivAt (fun z => z / 2) (1 / 2) y
+h2 :
+  HasDerivAt (fun x => ((fun z => z / 2) ^ (n + 2 * k)) x / ↑(k.factorial * (n + k).factorial)) (besselTermDeriv n k y)
+    y
+hval : ↑(n + 2 * k) * (y / 2) ^ (n + 2 * k - 1) * (1 / 2) / ↑(k.factorial * (n + k).factorial) = besselTermDeriv n k y
+x✝ : ℝ
+⊢ x✝ ^ n * x✝ ^ (k * 2) * (↑k.factorial)⁻¹ * (↑(n + k).factorial)⁻¹ * (1 / 2) ^ n * (1 / 2) ^ (k * 2) =
+    (↑k.factorial)⁻¹ * (↑(n + k).factorial)⁻¹ * ((fun z => z * (1 / 2)) ^ (n + k * 2)) x✝
+error: AmosClosure/BesselDeriv.lean:100:24: Unknown constant `Nat.lt_two_pow`
+error: AmosClosure/BesselDeriv.lean:104:10: No goals to be solved
+error: AmosClosure/BesselDeriv.lean:147:40: Application type mismatch: The argument
+  summable_besselDerivBound n x
+has type
+  Summable (besselDerivBound n x)
+but is expected to have type
+  ∀ (i : ?m.205), ‖?m.209 i‖ ≤ ?m.210 i
+in the application
+  Summable.of_norm_bounded ?m.211 (summable_besselDerivBound n x)
+error: AmosClosure/BesselDeriv.lean:148:6: No goals to be solved
+error: AmosClosure/BesselDeriv.lean:159:8: No goals to be solved
+info: AmosClosure/BesselDeriv.lean:178:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+error: AmosClosure/BesselDeriv.lean:182:6: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: AmosClosure/BesselDeriv.lean:126:0: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: AmosClosure/BesselDeriv.lean:212:8: (kernel) unknown constant 'AmosClosure.besselI_hasDerivAt'
+error: Lean exited with code 1
+Some required targets logged failures:
+- AmosClosure.BesselDeriv
+error: build failed

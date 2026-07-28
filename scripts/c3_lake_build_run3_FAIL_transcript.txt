@@ -1,0 +1,49 @@
+✖ [8163/8165] Building AmosClosure.AmosBoundProof (39s)
+trace: .> LEAN_PATH=C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean c:\Users\lluis\.elan\toolchains\leanprover--lean4---v4.29.0-rc6\bin\lean.exe C:\Users\lluis\AppData\Local\Temp\eriksson-push2\AmosClosure\AmosBoundProof.lean -o C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\AmosBoundProof.olean -i C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\AmosBoundProof.ilean -c C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\AmosBoundProof.c --setup C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\AmosBoundProof.setup.json --json
+error: AmosClosure/AmosBoundProof.lean:85:28: unsolved goals
+n : ℕ
+x : ℝ
+hx : 0 < x
+hq : (x / 2) ^ 2 / (↑n + 1) < 1
+hq0 : 0 ≤ (x / 2) ^ 2 / (↑n + 1)
+hgeo : Summable fun k => besselTerm n 0 x * ((x / 2) ^ 2 / (↑n + 1)) ^ k
+hle : ∑' (i : ℕ), besselTerm n i x ≤ ∑' (i : ℕ), besselTerm n 0 x * ((x / 2) ^ 2 / (↑n + 1)) ^ i
+hsum : ∑' (k : ℕ), besselTerm n 0 x * ((x / 2) ^ 2 / (↑n + 1)) ^ k = besselTerm n 0 x * (1 - (x / 2) ^ 2 / (↑n + 1))⁻¹
+h1q : 0 < 1 - (x / 2) ^ 2 / (↑n + 1)
+hI : besselI n x ≤ besselTerm n 0 x * (1 - (x / 2) ^ 2 / (↑n + 1))⁻¹
+⊢ (2 ^ 2 * (↑n + 1) - x ^ 2) * besselTerm n 0 x / (2 ^ 2 * (↑n + 1) - x ^ 2) = besselTerm n 0 x
+error: AmosClosure/AmosBoundProof.lean:132:50: unsolved goals
+case h.e'_9
+n : ℕ
+x : ℝ
+hx : 0 < x
+hρ : 0 < besselRatio n x
+hρ' : besselRatio n x ≠ 0
+hR : HasDerivAt (besselRatio n) (riccatiQ n x (besselRatio n x)) x
+hinv : HasDerivAt (fun y => 1 / besselRatio n y) (-riccatiQ n x (besselRatio n x) / besselRatio n x ^ 2) x
+hsub :
+  HasDerivAt ((fun y => 1 / besselRatio n y) - besselRatio n)
+    (-riccatiQ n x (besselRatio n x) / besselRatio n x ^ 2 - riccatiQ n x (besselRatio n x)) x
+hprod :
+  HasDerivAt (id * ((fun y => 1 / besselRatio n y) - besselRatio n))
+    (1 * ((fun y => 1 / besselRatio n y) - besselRatio n) x +
+      id x * (-riccatiQ n x (besselRatio n x) / besselRatio n x ^ 2 - riccatiQ n x (besselRatio n x)))
+    x
+hfun : besselPsi n = fun y => y * (1 / besselRatio n y - besselRatio n y)
+⊢ -besselRatio n x + (besselRatio n x)⁻¹ +
+      (-((besselRatio n x)⁻¹ ^ 2 * x * riccatiQ n x (besselRatio n x)) - x * riccatiQ n x (besselRatio n x)) =
+    -((besselRatio n x)⁻¹ ^ 2 * riccatiQ n x (besselRatio n x) * id x) - riccatiQ n x (besselRatio n x) * id x +
+      ((fun y => (besselRatio n y)⁻¹) - besselRatio n) x
+error: AmosClosure/AmosBoundProof.lean:208:7: failed to synthesize instance of type class
+  MulRightStrictMono ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: AmosClosure/AmosBoundProof.lean:217:4: No goals to be solved
+error: AmosClosure/AmosBoundProof.lean:223:7: failed to synthesize instance of type class
+  MulRightStrictMono ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Lean exited with code 1
+Some required targets logged failures:
+- AmosClosure.AmosBoundProof
+error: build failed
