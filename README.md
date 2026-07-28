@@ -467,6 +467,8 @@ proves the global ratio-monotonicity statement
 `F_B(t)>0` and `(F_A/F_B)'(t)<0` for every `beta>0` and `0<t<pi`.
 Its exact bridge identities, interval certificates, production/replay
 transcripts, and executable terminal seal are archived in this repository.
+The executable gate state is summarized in
+[`docs/SURFACE-CLOSURE-GATES.md`](docs/SURFACE-CLOSURE-GATES.md).
 The older [`surface-theorem/`](surface-theorem/) material is the historical
 partial-stage record and is superseded for theorem status by
 [`papers/surface-complete/`](papers/surface-complete/).  This is a
