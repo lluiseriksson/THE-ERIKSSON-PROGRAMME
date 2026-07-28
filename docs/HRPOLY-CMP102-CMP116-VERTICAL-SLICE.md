@@ -187,21 +187,53 @@ V''_k branch:
     -> concrete residual -> (1.36) -> (2.20)
 ```
 
-No current module constructs the Lemma-1 sector or the resulting complete
-`V''_k`.  The next accepted producer must first construct that missing sector
-from the source expression in (1.33).  The literal input localized there is
-the difference displayed in CMP109 (2.12):
+The first representation layer of the Lemma-1 sector is now present in
+`BalabanCMP109LocalizedActionExpansion.lean`.  It records the finite-volume
+source form
+
+```text
+E_k = sum over (scale j, localization term X) of E^(j)(X),
+```
+
+with every term supported on the literal bilateral bond carrier of a
+nonempty face-connected `CMP116LocalizationDomain`.  The term index is kept
+separate from the domain so that different scales or source species may share
+the same carrier.  For two physical gauge backgrounds, the module constructs
+canonically the finite set of positive bonds on which their values differ and
+proves the exact cancellation identity
+
+```text
+changed(U_perturbed,U_base) = {b : U_perturbed(b) != U_base(b)}
+
+E_k(U_perturbed) - E_k(U_base)
+  = sum over terms whose local support meets changed(U_perturbed,U_base)
+      [E^(j)(X,U_perturbed) - E^(j)(X,U_base)].
+```
+
+It also proves that every surviving term's physical domain contains a changed
+bond.  Thus neither the carrier nor the agreement-away-from-carrier property
+is supplied by the caller.  This is the first source-faithful representation
+of the energy difference, but it is not yet the analytic localization
+estimate.
+
+The next accepted producer must instantiate the two backgrounds by the
+literal difference displayed in CMP109 (2.12):
 
 ```text
 E_k(U_k(exp(i [g_k C B - h D_tilde(g_k C B)]) V^(k)))
   - E_k(U_k(V^(k))).
 ```
 
-The repository currently has no representation of the inductive effective
-action `E_k` and no constructor for this difference.  After that sector is
-constructed, the full residual must be defined and its (1.36) estimate proved.
-A record which merely accepts an arbitrary residual and an `h136` field will
-document the frontier but will not count as discharging it.
+and derive the termwise Cauchy/Lipschitz gain from the analytic inductive
+bound (CMP109 (1.18)).  That gain, together with rooted-domain resummation,
+must construct the corresponding localized residual sector and contribute to
+the full `V''_k`.
+
+The current checkpoint does **not** change the terminal score:
+the physical `TermSource` remains unconstructed and zero of the five terminal
+analytic boundaries are discharged.  A record which merely accepts an
+arbitrary residual and an `h136` field would document the frontier but would
+not count as discharging it.
 
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete
