@@ -26696,3 +26696,83 @@ vector is constructed; no spectral bound; no volume uniformity; the model
 remains `Z_2`; and there is no mass gap for any spatially interacting theory
 here.  Nothing in the frozen paper claims otherwise, which is why the freeze is
 clean.
+
+## Addendum 525 (2026-07-28, **O-3g + O-3h: the SECOND elementary route is `gamma`-blind and volume-degenerate, and the object the first route stopped producing, written down at `L = 2`**)
+
+The frozen spatial-extent paper ended on a fork it declined to resolve: a
+Perron--Frobenius route to the vacuum at spatial extent, or a statement that the
+elementary methods end there.  This campaign answers, and the answer has both
+signs.
+
+**S-0 - THE PREREQUISITE, ANSWERED, AND IT IS A NO.**  The pinned `mathlib`
+carries **no** Perron--Frobenius theorem.  What it carries is the layer beneath:
+`Mathlib.LinearAlgebra.Matrix.Irreducible`, a quiver-theoretic treatment of
+irreducibility and primitivity for entrywise-nonnegative matrices.  There is no
+statement that an irreducible nonnegative matrix has a positive eigenvector
+whose eigenvalue is the spectral radius, and there is no Hilbert projective
+metric and no Birkhoff contraction coefficient anywhere in the library.  Two
+consequences, both of which shaped what follows: the cross-ratio had to be built
+from nothing, and general existence of the vacuum would have been a campaign
+rather than a brick - which is why S-2 was done in closed form instead.
+
+**S-1 - THE WALL (`YangMills/OS/SpatialBirkhoff.lean`).**  Two independent
+failures of the Hilbert/Birkhoff route, both proved.
+
+* **BLINDNESS.**  The projective cross-ratio is invariant under multiplication
+  by *any* nowhere-zero function of the **source** alone
+  (`crossRatio_sourceWeighted`).  The coupled kernel is exactly such a product,
+  so the metric assigns the interacting and the non-interacting kernels the same
+  diameter, at every spatial extent, for every `gamma`.  The hypothesis is not
+  chosen to make a proof work: it is *precisely* the structural feature the
+  frozen paper used to break the row sums.  One property, two opposite-looking
+  failures.
+* **VOLUME DEGENERATION.**  The two constant configurations realise cross-ratio
+  `exp (4 beta L)` exactly (`crossRatio_const`), so every admissible diameter is
+  at least `4 beta L` (`projDiameter_ge`) and every contraction factor is at
+  least `tanh (beta L)` (`birkhoff_bound_ge`), which is itself within
+  `2 exp (-2 beta L)` of the trivial bound `1` (`birkhoff_bound_near_one`).
+* **AND NOT TIGHT** (`birkhoff_bound_not_tight`): for the decoupled kernel the
+  frozen paper computes the subdominant ratio exactly - `tanh beta`, at every
+  `L` - so in the one case where the answer is known the route already returns a
+  number that degenerates while the truth does not.  The loss is the method's.
+
+**S-2 - THE OBJECT (`YangMills/OS/SpatialPerron.lean`).**  In the character
+basis `1, s0, s1, s0s1` the coupled two-site kernel splits into two `2 x 2`
+blocks, because the spatial weight is **affine in the top character**
+(`spatialWeight_eq`).  Delivered: an explicit eigenvector with eigenvalue
+`evenTop` (`coupled_perron_eigen`), **strictly positive** at every configuration
+for `beta, gamma > 0` (`perronVec_pos`); a second exact eigenpair
+(`coupled_odd_eigen`); and the two are **ordered**, `mu+ < lambda+`
+(`oddEigen_lt_evenTop`).  Two exponential identities carry every estimate:
+`A - B = 4` and `A + B - 2 mu0 = 4 e^{-2 beta}`.
+
+NOT claimed, and said in the paper: that `evenTop` is the spectral radius (that
+is Perron--Frobenius, absent per S-0); that the spectrum is exhausted; anything
+at `L > 2`.
+
+**S-3 - one-sided, and it stays that way.**  The general-`L` behaviour is
+recorded as MEASURED and NOT PROVED, in the paper and in
+`docs/O-LANE-CONTINUATION-20260728.md`.  No gate claim in either direction.
+
+**Method note that generalises.**  The two-site computation never enumerates the
+four configurations.  Writing every vector in the character basis turns each sum
+into an instance of the frozen module's factorisation lemma, so the proofs are
+the same length at `L = 2` as they would be at any `L` where the sector closed.
+
+**House note: cofactors computed, not guessed.**  Four `linear_combination`
+coefficients and two square-root estimates were obtained by polynomial division
+in a computer-algebra system before being written into Lean, rather than
+searched for by trial.  The division also proved something useful: the ordering
+identity needs only `cosh^2 - sinh^2 = 1` and NOT `e^beta e^{-beta} = 1`, which
+removed a hypothesis from the estimate.
+
+**Infrastructure ghost (new, and it will recur).**  The build clone lives under
+`%TEMP%`, and a disk cleaner running on the host had deleted every dependency
+checkout under `.lake/packages` - leaving `.git` directories without `HEAD`, so
+`lake` failed with `git exited with code 128` and the misleading message *"URL
+has changed"*.  The fix is to delete the corrupted package directories and
+re-fetch; the lesson is that a Lean build tree must not live in a directory a
+cleaner owns.
+
+**Measured.**  Anchor `f181ed90e93f432159a46afd703c8f3b9898f6d2`, full core build **8426 jobs**, **2534 oracle commands**, axioms exactly
+`{propext, Quot.sound, Classical.choice}`, zero `sorryAx`, zero project axioms.

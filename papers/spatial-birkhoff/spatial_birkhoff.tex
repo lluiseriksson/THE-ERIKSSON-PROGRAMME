@@ -1,0 +1,510 @@
+% The second elementary route: blindness, and the two-site positive eigenvector.
+% Lane: O (operator bridge), modules YangMills/OS/**.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\anchor}{f181ed90e93f432159a46afd703c8f3b9898f6d2}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Om}{\Omega}
+
+\title{Blind to the Coupling:\\
+a Second Machine-Checked Obstruction at Spatial Extent\\
+\large and the strictly positive eigenvector the elementary route failed to
+produce, in closed form at two sites}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A companion paper proved that when a spatial coupling is switched on in a
+$\Z_2$ lattice gauge slice, the transfer kernel loses constant row sums, so the
+uniform vector is no longer fixed and the elementary route to the vacuum
+stops.  The standard replacement, when row sums fail, is the Hilbert projective
+metric: a strictly positive kernel contracts it, and the contraction factor
+bounds the subdominant spectral ratio.  This paper asks what that replacement
+gives here, and answers in Lean~4 with \texttt{mathlib}.
+
+It gives nothing, for two independent reasons, and both are proved.  First,
+\emph{blindness}: the projective cross-ratio is invariant under multiplication
+by any nowhere-zero function of the source configuration alone.  The coupled
+kernel is exactly such a product, so the metric assigns the interacting and the
+non-interacting kernels the same diameter at every spatial extent --- the route
+cannot see the coupling at all.  Second, \emph{volume degeneration}: two
+constant configurations realise the cross-ratio $e^{4\beta L}$, so every
+admissible projective diameter is at least $4\beta L$ and every contraction
+factor obtainable this way is at least $\tanh(\beta L)$, which lies within
+$2e^{-2\beta L}$ of the trivial bound $1$.  At the one place where the truth is
+known --- the decoupled kernel, whose subdominant ratio the companion paper
+computes to be exactly $\tanh\beta$ at every $L$ --- this route already returns
+$\tanh(\beta L)$ instead.  The degeneration is the method's, not the model's.
+
+We then hand over the object the elementary route stopped producing, at the
+smallest interacting size.  In the character basis the coupled two-site kernel
+splits into two $2\times2$ blocks, and we exhibit a \emph{strictly positive}
+eigenvector in closed form, together with a second exact eigenpair.  The
+identity $A-B=4$ between the two even-sector eigenvalues drives every estimate.
+
+\textbf{No volume-uniform statement about an interacting system is proved here,
+and none is claimed}; the general-$L$ behaviour is recorded separately as
+measured and unproved.  Nothing in this paper is a claim about $\SU(N)$, the
+continuum limit, or the Yang--Mills mass gap.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{What the predecessor left}
+
+The companion paper \cite{ErikssonSpatial} proved, for a $\Z_2$ slice carrying
+$L$ spins, that the decoupled transfer kernel has constant row sums at every
+$L$ --- so the uniform vacuum survives --- and that switching on a coupling
+inside the slice destroys that constancy, because the spatial weight depends on
+the \emph{source} only and therefore factors out of the sum over the target.
+With constant row sums goes $T\Om=\Om$, and with it the starting point of every
+later step of the reconstruction.
+
+That paper ended by naming two honest continuations: a Perron--Frobenius route
+to the vacuum at spatial extent, or a statement that the elementary methods end
+there.  It declined to say which.  This paper answers, and the answer has both
+signs: the natural elementary replacement is proved useless here, and the
+object it failed to produce is written down at the smallest interacting size ---
+as a strictly positive eigenvector in closed form, which is what is proved about
+it.
+
+\subsection{The natural next attempt, and why it is the right one to test}
+
+When constant row sums fail, the textbook instrument is the \emph{Hilbert
+projective metric}.  A strictly positive kernel contracts it, the contraction
+factor is $\tanh(\Delta/4)$ where $\Delta$ is the projective diameter
+\cite{Birkhoff,Bushell}, and that factor bounds the subdominant spectral ratio
+without any need to know the leading eigenvector.  It is exactly the tool one
+reaches for when the eigenvector is unavailable, which is the situation
+\cite{ErikssonSpatial} created.  So it is the right next thing to test, and
+testing it is what this paper does.
+
+\subsection{What is proved}
+
+Write $k_\beta$ for the Boltzmann bond weight, $Z_\beta = e^\beta + e^{-\beta}$,
+$K(\sigma,\tau)=\prod_j k_\beta(\sigma_j,\tau_j)$ for the decoupled kernel, and
+$w$ for a weight depending on the source configuration only.  Define the
+projective cross-ratio
+\[
+  R_A(\sigma,\sigma';\tau,\tau') \;=\;
+  \frac{A(\sigma,\tau)\,A(\sigma',\tau')}{A(\sigma,\tau')\,A(\sigma',\tau)} .
+\]
+
+\medskip
+\noindent\textbf{Blindness.}
+\begin{itemize}
+\item $R_{wK} = R_K$ for \emph{every} nowhere-zero source-only weight $w$, at
+      every spatial extent.  The weight occurs once above and once below the
+      bar, at the same two configurations, and cancels identically.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Volume degeneration.}
+\begin{itemize}
+\item at the all-$0$ and all-$1$ configurations, $R_K = e^{4\beta L}$ exactly;
+\item hence every $D$ with $\log R_K \le D$ everywhere satisfies $4\beta L \le
+      D$, and every contraction factor $\tanh(D/4)$ obtainable this way
+      satisfies $\tanh(\beta L)\le \tanh(D/4)$;
+\item and $1-\tanh(\beta L)\le 2e^{-2\beta L}$: that lower bound is itself
+      exponentially close, in the volume, to the trivial bound $1$;
+\item while the truth for the decoupled kernel is $\tanh\beta$ at every $L$
+      \cite{ErikssonSpatial}, strictly better for $L\ge2$, $\beta>0$.
+\end{itemize}
+
+\medskip
+\noindent\textbf{The two-site positive eigenvector.}  With
+$A=(e^\beta+e^{-\beta})^2$ and $B=(e^\beta-e^{-\beta})^2$:
+\begin{itemize}
+\item the coupled kernel preserves the two-dimensional span of the constant and
+      the top character, acting there by
+      $\bigl(\begin{smallmatrix} A\cosh\gamma & B\sinh\gamma\\
+      A\sinh\gamma & B\cosh\gamma\end{smallmatrix}\bigr)$;
+\item the vector $\alpha\cdot 1+\delta\cdot s_0s_1$ with
+      $\alpha = B\sinh\gamma$ and
+      $\delta=\lambda_+-A\cosh\gamma$ is an eigenvector with eigenvalue
+      $\lambda_+ = \tfrac12\bigl((A+B)\cosh\gamma+\sqrt{(A+B)^2\cosh^2\gamma-4AB}\bigr)$,
+      and it is \emph{strictly positive} at every configuration for
+      $\beta>0$, $\gamma>0$;
+\item $s_0+s_1$ is a second eigenvector, with eigenvalue
+      $\mu_+ = (e^\beta-e^{-\beta})Z_\beta e^{\gamma}$, and it does not vanish;
+\item $\mu_+<\lambda_+$ for $\beta>0$, $\gamma>0$, so the two exhibited
+      eigenpairs are ordered.  The identity $A+B-2(e^\beta-e^{-\beta})Z_\beta
+      =4e^{-2\beta}$, companion of $A-B=4$, reduces that to one line.
+\end{itemize}
+
+\subsection{What is deliberately not claimed}
+
+\begin{enumerate}
+\item \textbf{No volume-uniform statement about an interacting system.}  None is
+proved here and none is claimed.  Section~\ref{sec:measured} records what is
+\emph{measured} about general $L$ and says explicitly that it is not proved.
+\item \textbf{No claim that contraction arguments cannot work.}  What is proved
+is that this one --- the Hilbert metric applied to this kernel --- is blind and
+degenerate.  A different metric, a power of the kernel, or a Dobrushin-type
+condition are untouched by these theorems.
+\item \textbf{The two-site eigenvector is not claimed to be the spectral
+radius.}  It is a strictly positive eigenvector.  That a strictly positive
+eigenvector of a positive matrix carries the spectral radius is the
+Perron--Frobenius theorem; that classical identification is \emph{not}
+machine-checked in this development, and Remark~\ref{rem:pf} says so.
+\item \textbf{No completeness of the two-site spectrum.}  Two eigenpairs are
+exhibited.  That they and their partners exhaust the four-dimensional space is
+not formalised.
+\item \textbf{Still $\Z_2$}, one variable per site, and the closed form is at
+$L=2$.
+\item \textbf{Nothing about $\SU(N)$, the continuum limit, or the Clay problem}
+\cite{Clay}.  No reduction is claimed and none is known to the author.
+\end{enumerate}
+
+\section{The projective cross-ratio}
+
+\begin{definition}\label{def:cr}
+For a kernel $A:X\times X\to\R$ on a set $X$,
+\[
+  R_A(\sigma,\sigma';\tau,\tau') \;=\;
+  \frac{A(\sigma,\tau)\,A(\sigma',\tau')}{A(\sigma,\tau')\,A(\sigma',\tau)} .
+\]
+\end{definition}
+
+\osline{SpatialBirkhoff}{121}{crossRatio}.  The Hilbert projective diameter of
+a strictly positive kernel is $\sup\log R_A$, and the Birkhoff contraction
+factor is $\tanh(\Delta/4)$ \cite{Birkhoff,Bushell}.  Everything below is
+phrased so that only $R_A$ itself is formalised: the two classical facts just
+quoted are used as \emph{context}, never as hypotheses of a theorem.
+
+\section{Blindness: no source-only weight is visible}
+
+\begin{theorem}[The metric cannot see a source-only weight]\label{thm:blind}
+Let $w$ be nowhere zero and depend on the source only, and let
+$(wK)(\sigma,\tau) = w(\sigma)K(\sigma,\tau)$.  Then
+$R_{wK} = R_{K}$ at every four configurations, at every spatial extent.
+\end{theorem}
+
+\begin{proof}
+$w(\sigma)$ and $w(\sigma')$ each occur once in the numerator and once in the
+denominator, so they cancel.
+\end{proof}
+
+\osline{SpatialBirkhoff}{136}{crossRatio\_sourceWeighted}, and for the
+coupled kernel of \cite{ErikssonSpatial} as the special case
+\osline{SpatialBirkhoff}{156}{crossRatio\_coupledKernel}.
+
+\begin{remark}
+The hypothesis is not a technicality chosen to make the proof work: it is
+\emph{exactly} the structural feature that \cite{ErikssonSpatial} used to break
+the row sums.  The same one-line fact --- the weight depends on the source only
+--- destroys the first route and makes the second route unable to detect that
+anything happened.  One property, two opposite-looking failures.
+\end{remark}
+
+\section{Volume degeneration}
+
+\begin{theorem}[The witness]\label{thm:witness}
+$R_K$ at the all-$0$ and all-$1$ configurations equals $e^{4\beta L}$.
+\end{theorem}
+
+\begin{proof}
+The four kernel values are $e^{\beta L}$, $e^{\beta L}$, $e^{-\beta L}$,
+$e^{-\beta L}$.
+\end{proof}
+
+\osline{SpatialBirkhoff}{192}{crossRatio\_const}.
+
+\begin{theorem}[The wall]\label{thm:wall}
+If $D$ satisfies $\log R_K \le D$ at every four configurations, then
+$4\beta L\le D$, and consequently $\tanh(\beta L)\le\tanh(D/4)$.
+\end{theorem}
+
+\osline{SpatialBirkhoff}{207}{projDiameter\_ge},
+\osline{SpatialBirkhoff}{216}{birkhoff\_bound\_ge}.
+
+\begin{theorem}[The degeneration is exponential in the volume]\label{thm:degen}
+For $\beta\ge0$, $\;1-\tanh(\beta L)\le 2e^{-2\beta L}$.
+\end{theorem}
+
+\osline{SpatialBirkhoff}{228}{birkhoff\_bound\_near\_one}.
+
+\begin{theorem}[And the bound is not tight]\label{thm:nottight}
+For $\beta>0$ and $L\ge2$, $\;\tanh\beta<\tanh(\beta L)$.
+\end{theorem}
+
+\osline{SpatialBirkhoff}{237}{birkhoff\_bound\_not\_tight}.
+
+\begin{remark}
+Theorem~\ref{thm:nottight} is what makes Theorem~\ref{thm:degen} a statement
+about the \emph{method}.  For the decoupled kernel the companion paper computes
+the subdominant ratio exactly --- it is $\tanh\beta$, independent of $L$ --- so
+in the one case where the answer is known, the route already returns a number
+that degenerates while the truth does not.  Nothing about the model forces the
+loss; the instrument loses it.
+\end{remark}
+
+\section{The positive eigenvector, in closed form at two sites}
+
+The obstruction of \cite{ErikssonSpatial} says the vacuum stops being handed
+to us.  It does not say the vacuum is unavailable.  At $L=2$ the object it
+stopped handing over can be written down, and this section does so --- as what
+is actually proved about it, an eigen-equation together with strict positivity;
+Remark~\ref{rem:pf} says precisely what would be needed to call it the vacuum
+and why that step is absent.
+
+\begin{definition}
+$s_i(\sigma)$ is the sign of site $i$, and $s_0s_1$ is the top character.  The
+four characters $1,s_0,s_1,s_0s_1$ span the functions on a two-site slice.
+\end{definition}
+
+\begin{lemma}[The weight is affine in the top character]\label{lem:affine}
+$w_\gamma(\sigma)=\cosh\gamma+\sinh\gamma\,(s_0s_1)(\sigma)$.
+\end{lemma}
+
+\osline{SpatialPerron}{153}{spatialWeight\_eq}.  The exponent takes only the
+values $\pm\gamma$, which is the whole content.
+
+\begin{lemma}[The decoupled kernel is diagonal in this basis]\label{lem:diag}
+$\sum_\tau K(\sigma,\tau)=Z_\beta^{L}$,
+$\sum_\tau K(\sigma,\tau)s_i(\tau)=(e^\beta-e^{-\beta})Z_\beta^{L-1}s_i(\sigma)$
+\emph{\cite{ErikssonSpatial}}, and
+$\sum_\tau K(\sigma,\tau)(s_0\cdots s_{L-1})(\tau)
+ = (e^\beta-e^{-\beta})^{L}(s_0\cdots s_{L-1})(\sigma)$.
+\end{lemma}
+
+\osline{SpatialPerron}{132}{spatialKernel\_allSign} for the third; the first
+two are theorems of the companion development.
+
+\begin{theorem}[The even sector closes]\label{thm:even}
+With $A=Z_\beta^2$ and $B=(e^\beta-e^{-\beta})^2$, the coupled kernel maps
+$\alpha\cdot1+\delta\cdot s_0s_1$ to
+$(\cosh\gamma\,\alpha A+\sinh\gamma\,\delta B)\cdot 1
+ +(\cosh\gamma\,\delta B+\sinh\gamma\,\alpha A)\cdot s_0s_1$.
+\end{theorem}
+
+\osline{SpatialPerron}{194}{coupled\_even\_action}.
+
+\begin{lemma}[The identity that drives every estimate]\label{lem:AB}
+$A-B=4$.
+\end{lemma}
+
+\osline{SpatialPerron}{183}{evenA\_sub\_evenB}.  Indeed
+$(a+b)^2-(a-b)^2=4ab$ and $e^{\beta}e^{-\beta}=1$.
+
+\begin{theorem}[A strictly positive eigenvector, in closed form]\label{thm:vacuum}
+Let $\lambda_+=\tfrac12\bigl((A+B)\cosh\gamma+\sqrt{(A+B)^2\cosh^2\gamma-4AB}\bigr)$.
+Then $\alpha=B\sinh\gamma$, $\delta=\lambda_+-A\cosh\gamma$ gives an
+eigenvector of the coupled kernel with eigenvalue $\lambda_+$, and for
+$\beta>0$ and $\gamma>0$ that eigenvector is strictly positive at every
+configuration.
+\end{theorem}
+
+\osline{SpatialPerron}{249}{coupled\_perron\_eigen},
+\osline{SpatialPerron}{261}{perronVec\_pos}; the discriminant is nonnegative
+by \osline{SpatialPerron}{216}{evenDisc\_nonneg}, using $\cosh\gamma\ge1$.
+
+\begin{proof}[Proof of positivity]
+The vector takes the two values $\alpha\pm\delta$, so positivity is
+$|\,2\delta\,|<2\alpha$, i.e.
+$4\cosh\gamma-2B\sinh\gamma<\sqrt{\Delta}<4\cosh\gamma+2B\sinh\gamma$ after
+using $A-B=4$.  Squaring, the two gaps are
+$16B\sinh\gamma(\sinh\gamma+\cosh\gamma)$ and
+$16B\sinh\gamma(\cosh\gamma-\sinh\gamma)$, both positive.
+\end{proof}
+
+\begin{theorem}[A second exact eigenpair]\label{thm:odd}
+$s_0+s_1$ is an eigenvector with eigenvalue
+$(e^\beta-e^{-\beta})Z_\beta e^{\gamma}$, and it takes the value $2$ at the
+constant configuration, so it does not vanish identically.
+\end{theorem}
+
+\osline{SpatialPerron}{310}{coupled\_odd\_eigen},
+\osline{SpatialPerron}{304}{oddVec\_cfgFlat}.
+
+\begin{theorem}[The two exhibited eigenpairs are ordered]\label{thm:order}
+For $\beta>0$ and $\gamma>0$, $\;\mu_+<\lambda_+$.
+\end{theorem}
+
+\osline{SpatialPerron}{358}{oddEigen\_lt\_evenTop}.  The proof squares once
+and uses the identity
+$A+B-2(e^\beta-e^{-\beta})Z_\beta = 4e^{-2\beta}$
+(\osline{SpatialPerron}{347}{evenSum\_sub\_two\_odd}) together with
+$AB=\bigl((e^\beta-e^{-\beta})Z_\beta\bigr)^2$
+(\osline{SpatialPerron}{339}{evenA\_mul\_evenB}); the resulting gap is
+$4\mu_0\cosh\gamma\cdot 4e^{-2\beta}(\cosh\gamma+\sinh\gamma)>0$.  So the ratio
+$\mu_+/\lambda_+$ is a genuine number strictly below $1$ --- between the two
+eigenpairs this paper exhibits.  Whether it is \emph{the} subdominant ratio
+depends on completeness of the spectrum, which is not formalised.
+
+\begin{remark}[What Perron--Frobenius would add, and that we do not use it]
+\label{rem:pf}
+For a strictly positive matrix, Perron--Frobenius says a strictly positive
+eigenvector is unique up to scale and its eigenvalue is the spectral radius ---
+so Theorem~\ref{thm:vacuum} would identify $\lambda_+$ as the top of the
+spectrum and the vector as \emph{the} vacuum.  We do not invoke that, and the
+reason is worth recording because it is a fact about the tools rather than about
+the mathematics.  The \texttt{mathlib} revision pinned by this development
+carries \emph{no} Perron--Frobenius theorem.  What it carries is the layer
+underneath: \texttt{Mathlib.LinearAlgebra.Matrix.Irreducible}, a quiver-theoretic
+treatment of irreducibility and primitivity for entrywise-nonnegative matrices.
+The statement that an irreducible nonnegative matrix has a positive eigenvector
+whose eigenvalue is the spectral radius is not there, and neither is the Hilbert
+projective metric nor the Birkhoff contraction coefficient --- which is why
+Definition~\ref{def:cr} builds the cross-ratio from nothing.  So the
+identification would have to be constructed before it could be used, and this
+paper does not construct it.  What is machine-checked is exactly what is stated:
+an eigen-equation, and strict positivity of the eigenvector.
+\end{remark}
+
+\section{What is measured and not proved}\label{sec:measured}
+
+A reader will ask what happens for $L>2$.  We have looked, numerically, and we
+report the result with its label attached and no theorem behind it.
+
+Exact dense diagonalisation of the $2^L\times2^L$ coupled kernel over
+$\beta\in\{0.3,0.8\}$, $\gamma\in\{0,0.4,1.2\}$, $L\in\{2,3,4\}$ gives a
+subdominant ratio that rises towards $1$ with $L$ over much of that grid --- for
+instance $0.908, 0.977, 0.994$ at $\beta=0.8$, $\gamma=1.2$.  The rows where it
+stays bounded away from $1$ are those with $\sinh 2\beta\,\sinh 2\gamma<1$.
+Both statements are \textbf{verified} in the numerical sense and \textbf{not
+proved}; the identification of that threshold with the Kramers--Wannier
+disordered line of the two-dimensional Ising transfer matrix is standard
+literature and is not established here.  The probe and its transcript are in the
+repository, and their consequence for the programme is recorded there too: a
+volume-uniform statement about the coupled system, asserted without an explicit
+smallness hypothesis, is aiming at something the numbers say is false.
+
+Nothing in this section is used by any theorem of this paper.
+
+\section{Formalisation notes}
+
+\paragraph{One structural fact, two failures.}  That the spatial weight depends
+on the source only is what broke the row sums in \cite{ErikssonSpatial} and what
+makes the projective metric blind here.  The same hypothesis appears in both
+proofs, with opposite-looking consequences.
+
+\paragraph{Characters instead of enumeration.}  The two-site computation never
+enumerates the four configurations.  Writing every vector in the character basis
+turns each sum into an instance of the companion module's factorisation lemma,
+so the proofs are the same length at $L=2$ as they would be at any $L$ where the
+sector closed.
+
+\paragraph{One identity carries the estimates.}  $A-B=4$
+(Lemma~\ref{lem:AB}) reduces both positivity inequalities to
+$16B\sinh\gamma(\cosh\gamma\pm\sinh\gamma)>0$.  Without it the same
+inequalities are opaque to automation.
+
+\paragraph{Cofactors computed, not guessed.}  The coefficients of the
+\texttt{linear\_combination} steps and the two square-root estimates were
+obtained by polynomial division in a computer algebra system before being
+written into Lean.  The division also returned something useful: the ordering
+identity of Theorem~\ref{thm:order} needs only $\cosh^2-\sinh^2=1$ and
+\emph{not} $e^{\beta}e^{-\beta}=1$, which removed a hypothesis from the
+estimate.  Guessing those coefficients by trial would have cost more compiler
+round-trips than the algebra cost.
+
+\paragraph{Self-contained hyperbolic facts, and a naming tax.}
+\texttt{cosh}/\texttt{sinh} lemmas were re-derived from \texttt{Real.cosh\_eq}
+and \texttt{Real.sinh\_eq} rather than searched for by name, after the search
+cost more than the derivation.  Where a library lemma was unavoidable the name
+still had to be read out of the pinned source: the division-comparison lemmas
+this development needs carry a \texttt{\textsubscript{0}} suffix in this
+revision, and one \texttt{simp} normal form silently undoes
+$e^{\gamma}=\cosh\gamma+\sinh\gamma$, so that rewrite has to be carried as a
+term in the linear combination instead.
+
+\section{Reproducibility}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}
+of \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Every link
+was resolved against that commit, and checked to point at an actual declaration
+line, before compilation.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8426 jobs, success \\
+Oracle commands & 2534 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
+Project axioms & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The design probe of Section~\ref{sec:measured} is
+\repofile{scripts/probe\_spatial\_birkhoff.py}{scripts/probe\_spatial\_birkhoff.py}
+with transcript
+\repofile{docs/O-LANE-PROBE-TRANSCRIPT-20260728.txt}{docs/O-LANE-PROBE-TRANSCRIPT-20260728.txt};
+the continuation ladder it fixed is
+\repofile{docs/O-LANE-CONTINUATION-20260728.md}{docs/O-LANE-CONTINUATION-20260728.md}.
+Verdicts are in
+\repofile{docs/VERIFICATION-LEDGER.md}{docs/VERIFICATION-LEDGER.md}.  The oracle
+script is \repofile{oracle\_check.lean}{oracle\_check.lean}.
+
+\begin{thebibliography}{9}
+
+\bibitem{ErikssonSpatial}
+L.~Eriksson,
+\emph{Where the Elementary Reconstruction Stops: Spatial Coupling Breaks the
+Uniform Vacuum, Machine-Checked}, viXra, 2026.
+
+\bibitem{Birkhoff}
+G.~Birkhoff,
+\emph{Extensions of Jentzsch's theorem},
+Transactions of the American Mathematical Society \textbf{85} (1957), 219--227.
+
+\bibitem{Bushell}
+P.~J.~Bushell,
+\emph{Hilbert's metric and positive contraction mappings in a Banach space},
+Archive for Rational Mechanics and Analysis \textbf{52} (1973), 330--338.
+
+\bibitem{ErikssonOSChain}
+L.~Eriksson,
+\emph{From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked
+Osterwalder--Seiler Chain for the $\Z_2$ Lattice Gauge Chain}, viXra, 2026.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+CADE-28, Lecture Notes in Computer Science \textbf{12699} (2021), 625--635.
+
+\bibitem{Mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+CPP 2020, 367--381.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills theory},
+Clay Mathematics Institute Millennium Prize Problem description, 2000.
+
+\end{thebibliography}
+
+\end{document}
