@@ -1,6 +1,6 @@
 # Current State
 
-**Surface correction (2026-07-28): `DO_NOT_SUBMIT`.**  The endpoint `Y`
+**Surface correction (2026-07-28): G2 restored; G6 sealed.**  The endpoint `Y`
 assembler and its full-moment error propagators double-counted the exact
 leading ratio `H0/K0`; values were smaller than the physical target by
 `8*cos(t/4)` and uniform error charges by `8*cmin`.  The K2 endpoint and every
@@ -11,18 +11,30 @@ supersession scope are in
 and
 [`docs/SURFACE-K2-NORMALIZATION-SUPERSESSION-20260728.md`](docs/SURFACE-K2-NORMALIZATION-SUPERSESSION-20260728.md).
 
-**Surface high-beta reorientation (2026-07-28): still `DO_NOT_SUBMIT`.**  The
+**Surface high-beta closure (2026-07-28): `G2=CERTIFIED`.**  The
 correct two-stage main/mirror/rest assembly reduces the missing `lambda>=3`
 step to the weak bound `X_main >= -1/20`.  The exact rational relay and the
 validator loading the actual `lambda=3` transcript have reproducible passing
-outputs.  The remaining division-free covariance certificate is
-preregistered on
-`delta in [0,9/1000]`, `t in [21/10,31415927/10000000]`, but no production
-Flint/Arb result exists yet.  This is a reduction of the open obligation, not
-a certification of it; G2 and G6 remain blocked.  See
+outputs.  Two adjacent division-free covariance production/replay pairs now
+certify the weak premise on the full `t` interval: 576 rows on each of
+`[0,21/10]` and `[21/10,31415927/10000000]`, with explicit decision
+endpoints, byte-identical replay, empty stderr and independent decimal
+validation.  The exact terminal-union audit returns
+`G2_WEAK_TERMINAL_COVER_PROVED`.  The unconditional manuscript has been
+rebuilt in two pdfTeX passes, its TeX/PDF hashes are frozen, and the
+executable final audit reconstructs all terminal prerequisites, the weak G2
+union, and the closed-form anchors before returning `FINAL-SEAL PASS`.
+Consequently `G6=SEALED` and the paper is ready for an external claim audit.
+See
 [`docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md`](docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md)
 and
-[`docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md).
+[`docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md)
+and
+[`docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md).
+
+K4 and S1'''/S2''' are not claimed solved: they are scoped to the superseded
+stronger `X_main>0` research route and carry no load in the certified
+weak-main Surface-Theorem chain.
 
 **Independent O-lane submission (owner report, 2026-07-28).**  The frozen
 v1.3 paper *From the Gibbs Weight to the Spectral Gap: A Complete

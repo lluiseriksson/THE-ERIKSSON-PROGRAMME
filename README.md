@@ -27,44 +27,39 @@ Every headline result depends on exactly `[propext, Classical.choice, Quot.sound
 — Lean's three standard axioms. **No `sorry`. No project axioms.** Gaps are
 carried as explicit theorem *hypotheses*, never assumed silently.
 
-> **Surface Theorem quarantine — 2026-07-28.**  The endpoint `Y` assembler
+> **Surface Theorem correction — 2026-07-28.**  The endpoint `Y` assembler
 > and its full-moment error propagators applied the leading ratio
 > `H0/K0=1/(8 cos(t/4))` twice.  The error is an exact missing factor
 > `8 cos(t/4)` in values and `8*cmin` in the uniform error charge, not a
 > rounding issue.  All K2 endpoint and regular-extension evidence is
-> superseded pending
-> regeneration.  The positive-delta order-eight S1/S2 campaign is
-> independent and continues.  The claimed complete Surface Theorem paper is
-> `DO_NOT_SUBMIT` until the corrected endpoint and final-seal audits pass.
+> superseded.  The replacement theorem route does not reuse that evidence.
 > See
 > [`INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md`](docs/INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md).
 >
-> **Post-incident K2 progress.**  The degree-eight fixed-square polynomial
-> surrogate now has reproduced pointwise complex geometry at
-> `rho=17/2000` and a reproduced Rouché certificate for its integrated KD:
-> `|KD(0)|>=2.04813729` while
-> `max_|delta|=rho |KD(delta)-KD(0)|<=1.01556829`.  Thus that surrogate KD
-> is zero-free in the disk.  This does **not** restore K2: the exact R7/R8
-> expression engine was nonterminal, its sparse exact replacement and
-> independent numerical corroboration are pending, and the true-companion
-> plus exterior real-axis charges remain open.  `DO_NOT_SUBMIT` is unchanged.
-> See
-> [`SURFACE-K2-R8-KD-ROUCHE-PREREG-20260728.md`](docs/SURFACE-K2-R8-KD-ROUCHE-PREREG-20260728.md)
-> and
-> [`INCIDENT-R7-R8-EXPRESSION-ENGINE-NONTERMINAL-20260728.md`](docs/INCIDENT-R7-R8-EXPRESSION-ENGINE-NONTERMINAL-20260728.md).
+> **Sharp K2 research lane.**  The degree-eight fixed-square/Rouché work,
+> K4 and the S1'''/S2''' weighted judges remain documented research toward
+> the stronger `X_main>0` statement.  They are not claimed solved and carry
+> no load in the replacement weak-main theorem route.
 >
-> **High-beta relay reorientation (2026-07-28).**  The exact two-stage
+> **High-beta relay closure (2026-07-28).**  The exact two-stage
 > main/mirror/rest identity shows that the `lambda>=3` lane needs only the
 > weak uniform premise `X_main >= -1/20`, rather than the superseded sharp
 > positivity claim.  The rational relay and its tighter extraction from the
 > existing `lambda=3` transcript have passed independent production/replay
-> checks.  A division-free covariance certificate for the remaining weak
-> premise is preregistered on the full parameter rectangle, but has not yet
-> produced a Flint/Arb transcript.  Consequently G2 is not restored and
-> `DO_NOT_SUBMIT` is unchanged.  See
+> checks.  Two adjacent 576-row division-free covariance pairs now certify
+> the weak premise on the full parameter rectangle; each pair is
+> byte-identical, stderr-empty and independently validated.  The terminal
+> composition returns `G2_WEAK_TERMINAL_COVER_PROVED`, so `G2=CERTIFIED`.
+> The unconditional 33-page manuscript was then rebuilt in two pdfTeX
+> passes, visually inspected, and frozen by TeX/PDF hashes.  The executable
+> final audit reconstructs the terminal prerequisites, weak G2 union, and
+> closed-form anchors and returns `FINAL-SEAL PASS`; therefore `G6=SEALED`
+> and the paper is ready for external claim audit.  See
 > [`SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md`](docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md)
 > and
-> [`SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md).
+> [`SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md)
+> and
+> [`SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md).
 
 **Independent O-lane submission (owner report, 2026-07-28).**  Version 1.3 of
 *From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked

@@ -1,7 +1,7 @@
 # Surface Theorem closure gates
 
 **Status date:** 2026-07-28
-**Submission state:** `DO_NOT_SUBMIT`
+**Submission state:** `READY_FOR_CLAIM_AUDIT`
 
 ## Prior terminal promotion withdrawn
 
@@ -15,10 +15,10 @@ to `BLOCKED`; see
 
 The finite cover and the three moving-edge lanes
 `lambda in [0,3/2]`, `[3/2,2]`, and `[2,3]` remain unaffected certified
-artifacts.  G3, G4, and G5 likewise remain certified.  None of those local
-facts closes the missing `lambda>=3` relay.  A corrected K2 production/replay
-chain, true-companion and exterior charges, a new final-seal audit, and a
-fresh PDF/build manifest are required before any terminal promotion.
+artifacts.  G3, G4, and G5 likewise remain certified.  The superseding
+weak-main route below has now restored G2 without restoring the invalidated
+sharp-positive K2 chain.  A new final-seal audit and a fresh PDF/build
+manifest have now been rebuilt and audited for G6 and submission readiness.
 
 ## Weak-main replacement route (2026-07-28)
 
@@ -38,12 +38,23 @@ With the already certified bounds `Q>19/20`, `rho<7/200`,
 ```
 
 The relay and its actual-transcript input validator have independently
-reproduced passing outputs.  The premise itself is not yet certified.  Its
-preregistered route writes
-`X_main = 4 Cov_P(F/D,(H/K)D)` and evaluates division-free centred integral
-numerators on the full frozen rectangle.  Until that production/replay
-certificate and an independent transcript validator pass, this section
-changes no gate: `G2=BLOCKED`, `G6=BLOCKED`, and `DO_NOT_SUBMIT`.
+reproduced passing outputs.  The premise is now certified by two adjacent
+division-free covariance rectangles.  The near and far production/replay
+pairs contain 576 rows each, are byte-identical within each pair, have empty
+stderr, and pass the independent decimal validator with SHA-256 values
+recorded in dual LF/CRLF form in
+`SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md`.  The exact union audit returns
+`G2_WEAK_TERMINAL_COVER_PROVED`; consequently `G2=CERTIFIED`.
+
+The adaptive grid counts and printed worst lower endpoints are execution
+diagnostics, not analytic margins.  A floor-grid-48 diagnostic confirms the
+early-stop effect and carries no theorem load.  Full details are recorded in
+`SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md`.
+
+K4 and the S1'''/S2''' weighted-remainder judges belong to the superseded
+sharp-positive `X_main>0` route.  They remain documented research obligations
+for that stronger statement but are not prerequisites of the weak-main G2
+route or of the Surface Theorem.  They are not claimed solved.
 
 The 2026-07-27 moving-seam audit correction is recorded in
 `INCIDENT-G2-AUDIT-BETA-HI-20260727.md`.  The production ladder was already
@@ -450,7 +461,7 @@ are recorded in
 |---|---|---|---|
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | optional local mirror refinement `(H_cube)` | `REMOVED_FROM_TERMINAL_PAPER` | the preceding manuscript step already proves the mirror bound `M` unconditionally and the optional `M_sharp` subsection explicitly carried no relay load.  A static audit now requires `H_cube`, `M_sharp`, and the conditional subsection to be absent while retaining unconditional `M` and its corollary.  K4 remains a documented research lane but is not a theorem or submission gate |
-| G2 | bulk closure above beta 20 | `WITHDRAWN_PENDING_REGENERATION` | The finite Arb cover through `1000/9` and high-beta moving-edge lanes through `lambda=3` remain certified.  The `lambda>=3` joint-remainder/K2 relay was withdrawn after the exact double-normalization incident.  Terminal evidence now requires corrected K2 production/replay, exact-head corroboration, true-companion and exterior charges, and a fresh exact-domain union audit. |
+| G2 | bulk closure above beta 20 | `CERTIFIED` | The finite Arb cover closes `20<=beta<=1000/9`; the four high-beta lanes close `beta>=1000/9`.  For `lambda>=3`, two adjacent 576-row weak-main covariance production/replay pairs prove `X_main>-1/20` on `t in [0,21/10]` and `[21/10,31415927/10000000]`.  The independent validators check explicit decision endpoints, frozen hashes and exact partitions.  Exact near/far relays, mirror/rest charges, closed-form anchors and the domain-union audit return `G2_WEAK_TERMINAL_COVER_PROVED`.  The superseded sharp K2/K4/S1'''/S2''' lane carries no terminal load. |
 
 ### Seeded-grid diagnostic for the first G2 gap (2026-07-25)
 
@@ -516,8 +527,8 @@ parameter widening and leaves the centred positive-delta lane as the required
 next construction.
 | G3 | compact relay `[6,20]` | `CERTIFIED` | two bivariate beta/t Taylor Arb covers: 179 contiguous beta boxes, 7,958 strict t boxes, transcripts + manifests + executable coverage validators |
 | G4 | left edge `t in (0,0.6]` | `CERTIFIED` | `[3,20]` is closed by the manifested `W/t^3` + ordinary Taylor splice.  For `20<=beta<=1000/9`, the exact scaled paired-moment bridge through `t^16` uses the fixed `19/100` splice: 912/912 atomic production intervals and 4,636 rows pass the grouped coverage/sign validator, and a fresh independent grouped replay reproduces all 912 intervals and 4,636 rows exactly after parsing.  The production and replay transcripts carry the same frozen head and dependency hashes.  The infinite Fourier-tail contract is audited in `SURFACE-FINITE-BETA-BRIDGE-TAIL-CONTRACT.md` and `verify_surface_scaled_tail_contract.py`.  This closes G4; it does not close the scaled bulk, K2, K4, or G6. |
-| G5 | moving right edge | `CERTIFIED` | the manifested compact union closes `3<=beta<=20`.  The relocated-splice design continues to beta 25, but the fixed diagnostic band `[1/25,1/20]` for `20<=beta<25` fails at the adversarial endpoint (`H_lower=-0.178827...`; see `INC-G5-BETA20-25-ENDPOINT.md`); that rejected route is not used.  The preregistered cached compact extension closes `[20,25]`: four frozen units, 721/721 beta boxes, 18,659 regular boxes, production validation and a fresh replay agree exactly, with frozen dependency hashes and configuration.  The lower finite bridge has authoritative production plus fresh independent replay: 225/225 rows on `25<=beta<=30`, exact row equality, worst `H` lower `0.0199195495...` at `(2,74)`.  The upper finite bridge now also has production plus fresh independent replay: 375/375 rows on `30<=beta<=125`, exact row equality, worst `H` lower `0.0258956127...` at `(3,74)`.  For `beta>=125`, exact divided differences reduce the target to five scaled families with `H=P0/(4 B0^2)`: all 600 frozen design cells and all 600 production cells from source commit `1da7e414` pass, and the union validator gives worst `H` lower `0.0538267940...` at `(0,74)`.  The independent rerun reproduces all 600 rows byte-for-byte after JSON parsing from that same commit.  The order-only validator incident is documented without changing transcripts.  G5 is closed; the scaled bulk, K2, K4, and G6 remain open. |
-| G6 | global theorem and paper seal | `BLOCKED` | G3--G5 remain certified, but G2 is withdrawn.  A seal requires restored G2, removal of the quarantine banner only after all load-bearing audits pass, a fresh pdfTeX build and hash manifest, reference/citation audit, and a green executable final seal. |
+| G5 | moving right edge | `CERTIFIED` | the manifested compact union closes `3<=beta<=20`.  The relocated-splice design continues to beta 25, but the fixed diagnostic band `[1/25,1/20]` for `20<=beta<25` fails at the adversarial endpoint (`H_lower=-0.178827...`; see `INC-G5-BETA20-25-ENDPOINT.md`); that rejected route is not used.  The preregistered cached compact extension closes `[20,25]`: four frozen units, 721/721 beta boxes, 18,659 regular boxes, production validation and a fresh replay agree exactly, with frozen dependency hashes and configuration.  The lower finite bridge has authoritative production plus fresh independent replay: 225/225 rows on `25<=beta<=30`, exact row equality, worst `H` lower `0.0199195495...` at `(2,74)`.  The upper finite bridge now also has production plus fresh independent replay: 375/375 rows on `30<=beta<=125`, exact row equality, worst `H` lower `0.0258956127...` at `(3,74)`.  For `beta>=125`, exact divided differences reduce the target to five scaled families with `H=P0/(4 B0^2)`: all 600 frozen design cells and all 600 production cells from source commit `1da7e414` pass, and the union validator gives worst `H` lower `0.0538267940...` at `(0,74)`.  The independent rerun reproduces all 600 rows byte-for-byte after JSON parsing from that same commit.  The order-only validator incident is documented without changing transcripts.  G5 is closed; the superseded sharp K2/K4 lane carries no terminal load. |
+| G6 | global theorem and paper seal | `SEALED` | G0--G5 have their terminal states.  The manuscript contains the unconditional Surface Theorem and the weak-main high-beta proof, with no submission banner or unresolved slot.  A fresh two-pass pdfTeX build has zero fatal errors, undefined references, undefined citations, or overfull boxes; its TeX/PDF hashes are frozen in `SURFACE-FINAL-BUILD-20260728.json`.  The terminal-prerequisite reconstruction, weak G2 union, closed-form anchor gate, 26 focused tests, and executable final-seal audit all pass. |
 
 K2 provenance maintenance (2026-07-24): the two historical regular-extension
 transcripts (158 boxes total) now validate against the current worktree through

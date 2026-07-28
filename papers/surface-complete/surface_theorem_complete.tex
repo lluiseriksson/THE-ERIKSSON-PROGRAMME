@@ -34,16 +34,6 @@ pdfauthor={Lluis Eriksson}}
 \date{July 2026}
 
 \begin{document}
-\begin{center}
-\fcolorbox{red}{white}{\parbox{0.92\linewidth}{\centering
-\textbf{\color{red}QUARANTINED DRAFT --- DO NOT SUBMIT.}
-The 2026-07-28 endpoint audit found an exact double application of
-$H_0/K_0=1/(8\cos(t/4))$ in the K2 endpoint assembler and its
-full-moment error propagators.  Values were too small by
-$8\cos(t/4)$ and uniform error charges by $8c_{\min}$.  The affected
-certificates and the global monotonicity seal are withdrawn pending
-regeneration and a fresh final audit.}}
-\end{center}
 \maketitle
 
 \begin{abstract}
@@ -53,24 +43,21 @@ $b_m = m\,I_m^4$, $\FA(t)=\sum_{m\ge1}a_m\sin(mt)$,
 $\FB(t)=\sum_{m\ge1}b_m\sin(mt)$, and $E=\FA/(2\FB)$. The global
 ratio-monotonicity problem for the surface expansion of a two-dimensional
 $SU(2)$ lattice gauge observable is: (i) $\FB>0$ on $(0,\pi)$, and (ii)
-$E'<0$ on $(0,\pi)$, for every $\beta>0$. Positivity is proved, but the
-previously claimed complete proof of ratio monotonicity is withdrawn:
-its endpoint certificate used an incorrectly double-normalized quotient
-and companion-error charge.
+$E'<0$ on $(0,\pi)$, for every $\beta>0$.  Both statements are proved.
 Positivity of $\FB$ has two exact proofs.  Ratio monotonicity is reduced
-to exact algebraic identities and is certified on the unaffected finite
-partition:
+to exact algebraic identities and outward-rounded interval certificates:
 small and compact $\beta$ are handled by pair identities and interval
 Taylor models; $20\le\beta\le1000/9$ by a direct Wronskian cover; and
 $\beta\ge1000/9$ has three certified moving-edge $\lambda$-lanes.
-The regular main-saddle and three-block main--mirror--rest assembly are
-withdrawn pending corrected regeneration.  The exact identity underlying
-the intended terminal high-$\beta$ relay is
+The remaining $\lambda\ge3$ lane is closed by the exact identity
 $E'/(-\sin(t/2)/2)=\mathcal Q+X_{\rm full}$, where
-$\mathcal Q>19/20$ remains certified, but the corrected adverse-bilinear
-budget is not yet sealed.  The unaffected production and independent
-replay transcripts are checked for exact rational coverage, dependency
-hashes, strict outward-rounded endpoints, and byte equality.  The
+$\mathcal Q>19/20$, an exact main--mirror--rest decomposition, and a
+division-free covariance certificate proving
+$X_{\rm main}>-1/20$ on two adjacent rectangles that cover the full angular
+interval.  The exact near and far relay margins are positive.  All
+load-bearing production and independent replay transcripts are checked for
+exact rational coverage, dependency hashes, strict outward-rounded decision
+endpoints, and byte equality.  The
 structural core is exact: $E$ is, as an algebraic identity, the mean of
 $\cos\psi$ under the midpoint law of a four-step killed von Mises
 bridge; the generating kernels reduce, via the Neumann addition theorem,
@@ -124,7 +111,7 @@ are real-analytic on $\mathbb{R}$, and the Wronskian
 $W=2(\FA'\FB-\FA\FB')$ satisfies $W=4\FB^2\,(E)'$ wherever $\FB\neq0$
 \cite{WronskianNote}.
 
-The global statement is Target~\ref{thm:main}.  Its positivity part is
+The global statement is Theorem~\ref{thm:main}.  Its positivity part is
 proved below twice.  Its monotonicity part combines the exact skeleton of
 Theorem~\ref{thm:B} with independently archived interval certificates and
 the terminal relay of Section~\ref{sec:closure}.  The question was born
@@ -154,16 +141,14 @@ verified statement is used as a hypothesis of an exact one.
 
 \section{The theorem and the relay}\label{sec:relay}
 
-\begin{target}[the Surface Theorem; monotonicity proof withdrawn]
+\begin{theorem}[the Surface Theorem]
 \label{thm:main}
 For every $\beta>0$: \textup{(i)} $\FB>0$ on $(0,\pi)$, and
 \textup{(ii)} $E'<0$ on $(0,\pi)$.
-\end{target}
+\end{theorem}
 
-Part (i) is Theorem~\ref{thm:A}.  The following table records the intended
-closed relay for part (ii), but its K2/high-$\beta$ load-bearing rows are
-withdrawn under the quarantine banner.  It is not presently a proof of
-part (ii).  Every row retained as certified is an outward-rounded interval
+Part (i) is Theorem~\ref{thm:A}.  The following table records the closed
+relay for part (ii).  Every certified row is an outward-rounded interval
 certificate with an executable coverage validator.
 
 \begin{center}\scriptsize
@@ -183,12 +168,12 @@ $[20,1000/9]$, all $t$ & finite Wronskian union & \texttt{finite role audit} & A
 $\beta\ge1000/9$, $0<\lambda\le3/2$ & finite/half-line G5 & two G5 unions & Arb + replay & complete\\
 $\beta\ge1000/9$, $3/2\le\lambda\le2$ & ratio G5 & \texttt{G5 lambda2} & Arb + replay & complete\\
 $\beta\ge1000/9$, $2\le\lambda\le3$ & ratio-side4 G5 & \texttt{G5 lambda3} & Arb + replay & complete\\
-$\beta\ge1000/9$, $\lambda\ge3$ & three-block relay & Target~\ref{prop:highbeta} & regeneration pending & withdrawn\\
+$\beta\ge1000/9$, $\lambda\ge3$ & weak-main three-block relay & Prop.~\ref{prop:highbeta} & Arb + replay & complete\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The compact rows are owned by their canonical Arb transcripts and
+The compact and high-$\beta$ rows are owned by their canonical Arb transcripts and
 executable coverage validators, with adaptive partitions and all
 script/output hashes recorded in the accompanying run manifests.
 
@@ -214,9 +199,9 @@ $\lambda=\beta(\pi-t)$.  The three G5 lanes meet at
 $\lambda=3/2$ and $2$, and the last meets the analytic interior lane at
 $\lambda=3$; the first G5 lane itself meets its finite and half-line
 archives at $\delta=1/125$ \textup{(}$\beta=125$\textup{)}.  The
-remaining lane $\lambda\ge3$ is Target~\ref{prop:highbeta} and is currently
-withdrawn.  The unaffected seams are closed overlaps, but the global relay
-is not closed until this target is restored.  The moving-boundary constant is
+remaining lane $\lambda\ge3$ is Proposition~\ref{prop:highbeta}.
+Its near/far covariance rectangles and the three G5 lanes meet in closed
+overlaps, so the global relay has no seam gap.  The moving-boundary constant is
 always written $C_{\rm win}=3/2$; the bare letter $C$ below means
 $\cos(t/2)$.
 
@@ -229,8 +214,8 @@ $\beta\in[3,15]$ for $t\le0.3$ (\emph{verified}, design-grade), while
 the apparent infeasibility of $(0,0.6]$ belonged to the cancellation
 of the series tool, which the exp-factored integrator does not
 suffer.  The compact row is now closed directly through $\beta=20$, and
-Target~\ref{prop:k2endpoint} is intended to cover the whole left relay for
-$\beta\ge1000/9$ once its certificate is regenerated.  On the finite
+the weak-main covariance certificate covers the remaining high-$\beta$
+interior.  On the finite
 interval between them the registered
 route is the exact common scaling $J_m=e^{-\beta}I_m$, which multiplies
 $W/t^3$ by $e^{-8\beta}>0$ before interval evaluation.  The sinc lemma
@@ -1046,7 +1031,7 @@ terms subtract exactly as displayed.
 \end{proof}
 
 \begin{lemma}[conditional historical saddle extraction; not used in
-Target~\ref{thm:main}]\label{lem:extraction}
+Theorem~\ref{thm:main}]\label{lem:extraction}
 Let $T(c):=\dfrac{4c^2-1}{8c^3}$ \textup{(}$=\bigl[\tfrac12-
 \tfrac1{8c^2}\bigr]/c>0$ on the relay range\textup{)} and
 $s_4:=\sin(t/4)$, $\delta_4:=c-s_4=\sqrt2\sin\tfrac{\pi-t}{4}$.
@@ -1262,8 +1247,9 @@ assumption is exactly
 \]
 --- i.e.\ the tail is absorbed by the same $\Theta_3$ headroom its
 Lagrange forms ride.  No inference from the direct K2 certificate to this
-separately defined tail is made.  The withdrawn terminal chain instead
-used the joint carrier of Target~\ref{prop:k2endpoint} directly.
+separately defined tail is made.  The superseded sharp chain instead
+used the joint carrier of the superseded sharp
+Target~\ref{prop:k2endpoint} directly.
 
 \emph{(v) The mirror clause.} Under the involution of
 Remark~\ref{rem:signgap}, $T(s,\alpha)=(\pi-s,\pi-\alpha)$:
@@ -1357,9 +1343,11 @@ the root floor; $M$'s normalization by the saddle-mass floor is
 Lemma~\ref{lem:mass} \textup{(}unconditional\textup{)}; the
 $\beta^{-4}$ chain tail is the explicit hypothesis
 $(\mathrm H_{\rm tail})$ of step \textup{(iv)(e)}.
-This historical split-tail lemma would carry no load in
-Target~\ref{thm:main}; Target~\ref{prop:k2endpoint} works with the
-assembled joint remainder and the finite row is certified directly.
+This historical split-tail lemma carries no load in
+Theorem~\ref{thm:main}; the superseded sharp
+Target~\ref{prop:k2endpoint} used the assembled joint remainder, whereas
+the theorem uses the weak-main covariance route and the finite row is
+certified directly.
 An optional sharpening of the already unconditional mirror bound is
 likewise omitted because it carries no relay load.
 The residual table, the stress-cell pieces, and the independent
@@ -1369,7 +1357,7 @@ $10^{-6}$ at three $t$'s, drift-halving ratios $\approx2.00$%
 the pre-registered judges, bearing no load in the bound.
 \end{remark}
 
-\begin{target}[quarantined regular K2 relay statement]
+\begin{target}[superseded sharp K2 research statement]
 \label{prop:k2endpoint}
 Let $\delta=1/\beta$, $c=\cos(t/4)$, $F=N-CD$, and, on the principal
 saddle square, put
@@ -1389,60 +1377,27 @@ $0<\delta\le9/1000$ and
 $\lambda=(\pi-t)/\delta\ge3$.
 \end{target}
 
-\begin{remark}[withdrawn K2 certificate chain]
-The following is the historical certificate argument whose normalization
-and full-moment error charges are being regenerated.  It is retained for
-audit comparison and carries no theorem load in this draft.
-The regular coordinate removes every quotient by $\delta$ before interval
-evaluation and uses the exact full-plane identity $B(0)=0$ in integral
-form.  The first eight production segments certify
-$[0,1/125]\times[0,\pi]$.  The byte-separate ninth-birth run then covers
-$[0,9/1000]\times[0,313/100]$ by 158 ordered Arb units.  On every unit the
-executed judge proves, with outward rounding,
-\[
- \Theta_3(c)-|r_3(c)+r_4(c)\delta|
- -(C_4+C_{\rm value})\delta^2>0,
-\]
-which is the displayed conclusion after multiplication by $\delta^2$.
-The production archive has explicit mixed provenance.  Its 156 ordinary
-units come from commit \texttt{027885a6}; the replacement units
-\texttt{parent\_000} and \texttt{parent\_001} come from commit
-\texttt{2627288a}.  The full commit identifiers are recorded in the
-machine-readable transcript and manifests.
-The mixed-provenance
-validator checks all dependency hashes, exact rational endpoints, unique
-adjacency, the frozen $384/192/384$ grid map, and strict lower margins.  The worst unit is
-\texttt{parent\_145}, with margin lower bound
-$0.0169551281152488$.  For $0\le\delta\le1/125$ the earlier certificate
-covers all $t$.  On the
-new birth $1/125\le\delta\le9/1000$, the worst left endpoint of the moving
-edge is controlled by
-\[
- \pi-\frac32\frac1{125}<\frac{313}{100},
-\]
-checked with the exact rational upper bound for $\pi$ in the partition
-contract.  Thus the union, rather than the ninth rectangle alone, contains
-the entire stated moving relay range.  Finally the independent
-outward-rounded coefficient audit proves
-\[
- T(c)+r_2(c)\delta-\Theta_3(c)\delta^2>0
-\]
-on all 158 $t$ boxes and $0\le\delta\le9/1000$; its worst lower
-endpoint is $0.347989\ldots$.  Hence $Y>0$ on the K2 union and
-$X_{\rm main}=\delta Y>0$ for every physical $\delta>0$ in the stated
-$\lambda\ge3$ lane.
+\begin{remark}[superseded sharp K2 certificate chain]
+The archived sharp-positive chain is not evidence for the displayed target.
+Its endpoint assembler and full-moment error propagators applied the exact
+leading ratio $H_0/K_0=1/(8\cos(t/4))$ twice.  The affected values and
+uniform charges therefore had the wrong normalization even though their
+internal production/replay bookkeeping agreed.  Those transcripts are
+superseded and no numerical margin from them is quoted here.
+
+K4 and the S1'''/S2''' weighted-remainder judges belong only to a possible
+future proof of this stronger research statement.  They remain unresolved
+and carry no load in Theorem~\ref{thm:main}, which instead uses the
+division-free weak-main certificate below.
 \end{remark}
 
-\begin{target}[terminal high-$\beta$ relay; K2 input withdrawn]
+\begin{proposition}[certified terminal high-$\beta$ relay]
 \label{prop:highbeta}
 For every $\beta\ge1000/9$ and every $t\in(0,\pi)$ one has
 $E'(t,\beta)<0$.
-\end{target}
+\end{proposition}
 
-\begin{remark}[withdrawn terminal relay chain]
-The exact reductions and unaffected edge certificates below are retained,
-but the argument is not a proof while
-Target~\ref{prop:k2endpoint} is uncertified.
+\begin{proof}
 Put $\delta=1/\beta$ and $\lambda=\beta(\pi-t)$, and write
 $E_t=\partial_tE=E'$.  If
 $0<\lambda\le3$, Lemma~\ref{lem:edge-five-scale} reduces the sign to
@@ -1459,7 +1414,7 @@ the denominator family and quotient, dependency hashes, and an
 independent byte-identical replay.  Since $\lambda>0$ for $t<\pi$,
 $-E_t/\lambda>0$ implies $E_t<0$.
 
-It remains to treat $\lambda\ge3$.  Set
+Suppose now that $\lambda\ge3$.  Set
 \[
  \Phi=\cos 2s+\cos\alpha\cos s,\qquad
  J_N=\iint N(1-P-Q)H_B,\qquad
@@ -1487,50 +1442,70 @@ positive.  A complete high-$\beta$ certificate proves
 \]
 
 For the bilinear term split the torus into the principal square $B$,
-its involutive mirror $B'$, and the rest.  The withdrawn
-Target~\ref{prop:k2endpoint} would give $X_{\rm main}>0$.  The exact first
-assembly retains all
-denominator-change terms.  With $p=\sin(t/4)$, its two rigorously bounded lanes
-are
+its involutive mirror $B'$, and the rest.  The exact two-stage assembly is
 \[
- \begin{array}{ll}
- p\le101/200:&X_{B\cup B'}>-10^{-30},\\[2mm]
- p\ge101/200:&X_{B\cup B'}>-9/10.
- \end{array}
+ X_1=\frac{X_{\rm main}}{1-\rho}+C_{\rm mirror},
+ \qquad
+ X_{\rm full}
+ =\frac{d_1}{d}X_1+C_{\rm rest}
+ =\frac{a}{d}X_{\rm main}
+  +\frac{d_1}{d}C_{\rm mirror}+C_{\rm rest},
 \]
-The first line follows analytically from the fixed-gap mirror estimate;
-the accompanying Arb program verifies its scalar assembly and outward
-rounding \textup{(}the resulting upper bound is below
-$2.947\times10^{-32}$\textup{)}.  The second is the common-physical-variable
-joint certificate; it encloses the mirror mass ratio below
-$0.034108$ and the complete adverse correction below $0.852990$,
-without multiplying independent marginal maxima.  The exact second
-assembly adds the rest and its independently certified adverse
-contribution is smaller than $1/100000$.  Hence the right side of
-\eqref{eq:terminal-highbeta} is larger than
+where $d_1=a(1-\rho)$.  The division-free centred identity
 \[
- \frac{19}{20}-10^{-30}-\frac1{100000}>0
- \quad\text{or}\quad
- \frac{19}{20}-\frac9{10}-\frac1{100000}
- =0.04999>0,
+ X_{\rm main}
+ =4\,\operatorname{Cov}_{\mathbb P}
+ \left(\frac{F}{D},\frac{H}{K}D\right)
 \]
-according to the $p$ lane.  In the historical chain, the strict negativity
-of $-\sin(t/2)/2$ then yielded $E'<0$; that conclusion is not active while
-the K2 target is withdrawn.
+is evaluated without dividing interval balls by a parameter interval.
+Two adjacent 576-row Arb production/replay pairs certify
+\[
+ X_{\rm main}>-\frac1{20}
+\]
+on
+\[
+ [0,9/1000]\times[0,21/10]
+ \quad\text{and}\quad
+ [0,9/1000]\times
+ [21/10,31415927/10^7].
+\]
+Every row prints and validates explicit outward lower endpoints for the
+positive denominator and for $X_{\rm main}$; production and replay are
+byte-identical.  Since $\pi<31415927/10^7$, the two rectangles cover all
+physical $0<t<\pi$.
 
-For completeness, K2 is used only in the $\lambda\ge3$ branch above,
-and there is no hidden domain seam in that use.  If
-$0<\delta\le1/125$, its historical archive covers all $0\le t\le\pi$.
-If $1/125\le\delta\le9/1000$, then $\lambda\ge3$ and the rational
-upper enclosure $\pi<31415927/10^7$ give
+It remains only to propagate this weak premise.  Put $p=\sin(t/4)$.  On the
+common-variable lane $p\ge101/200$, the certified bounds
 \[
- t\le\pi-3\delta\le\pi-\frac3{125}<\frac{313}{100},
+ 0\le\rho<\frac7{200},\qquad
+ |C_{\rm mirror}|<\frac{43}{50},\qquad
+ |C_{\rm rest}|<\frac1{100000},\qquad
+ 0<\frac{d_1}{d}<1+10^{-15}
 \]
-which is contained in the ninth-birth K2 rectangle.  The two $p$
-lanes meet at $101/200$ and therefore cover the whole interior.
-All identities and domain seams in this paragraph are rerun by
-\texttt{audit\_surface\_g2\_terminal\_cover.py}.
-\end{remark}
+and the exact assembly give
+\[
+ {\cal Q}+X_{\rm full}>
+ \frac{368403499999991201}{9650000000000000000}>0.
+\]
+On the fixed-gap lane $p\le101/200$, the mirror changes
+$X_{\rm main}$ by less than $10^{-30}$ and the rest by less than
+$1/100000$, so
+\[
+ {\cal Q}+X_{\rm full}>
+ \frac{19}{20}-\frac1{20}-10^{-30}-\frac1{100000}
+ >\frac{899}{1000}>0.
+\]
+The $p$ lanes meet at $101/200$.  The weak-main rectangles overlap at
+$t=21/10$, and the four $\lambda$ lanes meet at $3/2$, $2$, and $3$.
+Thus there is no domain gap.  Because $-\sin(t/2)/2<0$ on $(0,\pi)$,
+\eqref{eq:terminal-highbeta} yields $E'<0$.  The executable composition
+\texttt{audit\_surface\_g2\_weak\_terminal\_cover.py} reruns all
+identities, input validators, and seams.
+
+The adaptive grid counts and the smallest printed adaptive lower endpoint
+are execution diagnostics of the first-passing-grid rule; they are not used
+as analytic margins.
+\end{proof}
 
 \begin{proposition}[certified local box]
 \label{prop:localbox}
@@ -2454,9 +2429,10 @@ with measured convergence
 and $O(1/\beta)$ gaps.  The sign on the entire
 half-line $\beta\ge125$ is now exact by
 Proposition~\ref{prop:c3halfline}; the displayed sharp prefactor and its
-measured convergence are not used to promote that sign.  What remains for
-the moving-edge theorem is the uniform scaled-radius estimate, not another
-pointwise or asymptotic sign check for $c_3$.
+measured convergence are not used to promote that sign.  The uniform
+moving-edge theorem is supplied independently by the certified five-family
+quotient, not inferred from another pointwise or asymptotic sign check for
+$c_3$.
 \end{proposition}
 
 \section{Terminal closure}\label{sec:closure}
@@ -2474,25 +2450,22 @@ $\sqrt2/\beta$. A sweep $\beta=15\ldots60$ keeps the maximum at $t=0.05$,
 drifting to $-0.0061$: strong uniformity evidence, not proof.
 \end{proposition}
 
-\begin{remark}[withdrawn completion chain for Target~\ref{thm:main}]
+\begin{proof}[Completion of Theorem~\ref{thm:main}]
 Theorem~\ref{thm:A} proves $\FB>0$.  Lemma~\ref{lem:smallbeta} and
 Theorem~\ref{thm:B} prove $E'<0$ for $0<\beta\le3$.  The compact Arb
 and bivariate-Taylor unions, together with their left- and right-edge
 splices, cover $3\le\beta\le20$.  The finite-role Wronskian audit covers
 $20\le\beta\le1000/9$ for all $0<t<\pi$.  Finally
-Target~\ref{prop:highbeta} is intended to cover
+Proposition~\ref{prop:highbeta} covers
 $\beta\ge1000/9$.  The endpoints $\beta=3,20,1000/9$ belong to adjacent
-closed certificates, so the intended union would cover every $\beta>0$
-with no seam gap.  Once the quarantined K2/high-$\beta$ inputs are
-regenerated, this is
-the intended completion argument; in the present draft it does not prove
-part \textup{(ii)}.
-\end{remark}
+closed certificates, so their union covers every $\beta>0$ with no seam
+gap.  This proves part \textup{(ii)}.
+\end{proof}
 
 The truth map in Proposition~\ref{prop:truthmap} and the second-order law
 \eqref{eq:secondorder} are retained as non-load-bearing diagnostics of the
-geometry.  The intended theorem will use the certified partition above
-rather than an asymptotic extrapolation once the quarantined inputs close.
+geometry.  The theorem uses the certified partition above rather than an
+asymptotic extrapolation.
 
 \section{Verification, certificates, and reproducibility}\label{sec:verif}
 

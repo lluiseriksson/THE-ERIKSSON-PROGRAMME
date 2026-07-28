@@ -157,10 +157,10 @@ def audit() -> list[str]:
             scripts = ROOT / "scripts"
             if str(scripts) not in sys.path:
                 sys.path.insert(0, str(scripts))
-            import audit_surface_g2_terminal_cover as g2_terminal
+            import audit_surface_g2_weak_terminal_cover as g2_terminal
 
             g2 = g2_terminal.audit()
-            if g2.get("promotion") != "G2_TERMINAL_COVER_PROVED":
+            if g2.get("promotion") != "G2_WEAK_TERMINAL_COVER_PROVED":
                 errors.append("G2 terminal domain audit did not promote")
         except Exception as exc:
             errors.append(f"G2 terminal domain audit failed: {exc}")
