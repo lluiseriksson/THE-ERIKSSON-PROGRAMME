@@ -26,6 +26,20 @@ noncomputable section
 variable {d M N' Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc]
 
+/-- Fully generated value budget for the represented nonlinear block. -/
+def cmp102SourceAmbientNonlinearBlockValueBudget
+    (M : ℕ) (r q : ℝ) : ℝ :=
+  cmp102SourceExpAverageValueBudget q *
+    cmp102SourceCoarseContourValueBudget M r
+
+/-- Fully generated value-Lipschitz budget for the represented block. -/
+def cmp102SourceAmbientNonlinearBlockValueLipschitzBudget
+    (d M : ℕ) (r q : ℝ) : ℝ :=
+  cmp102SourceExpAverageValueLipschitzBudget d M r q *
+      cmp102SourceCoarseContourValueBudget M r +
+    cmp102SourceExpAverageValueBudget q *
+      cmp102SourceCoarseContourValueLipschitzBudget M r
+
 /-- Fully generated derivative budget for the represented nonlinear block. -/
 def cmp102SourceAmbientNonlinearBlockDerivativeBudget
     (d M : ℕ) (r q : ℝ) : ℝ :=
@@ -130,6 +144,30 @@ theorem cmp102SourceAmbientNonlinearBlockDerivativeBudget_nonneg
       (cmp102SourceExpAverageValueBudget_nonneg hq0)
       (cmp98AmbientWilsonLineDerivativeBudget_nonneg hr _))
 
+theorem cmp102SourceAmbientNonlinearBlockValueBudget_nonneg
+    {M : ℕ} {r q : ℝ} (hr : 0 ≤ r) (hq0 : 0 ≤ q) :
+    0 ≤ cmp102SourceAmbientNonlinearBlockValueBudget M r q := by
+  unfold cmp102SourceAmbientNonlinearBlockValueBudget
+    cmp102SourceCoarseContourValueBudget
+  exact mul_nonneg
+    (cmp102SourceExpAverageValueBudget_nonneg hq0)
+    (cmp98AmbientWilsonLineValueBudget_nonneg hr _)
+
+theorem cmp102SourceAmbientNonlinearBlockValueLipschitzBudget_nonneg
+    {d M : ℕ} {r q : ℝ} (hr : 0 ≤ r) (hq0 : 0 ≤ q) :
+    0 ≤ cmp102SourceAmbientNonlinearBlockValueLipschitzBudget d M r q := by
+  unfold cmp102SourceAmbientNonlinearBlockValueLipschitzBudget
+    cmp102SourceCoarseContourValueBudget
+    cmp102SourceCoarseContourValueLipschitzBudget
+  exact add_nonneg
+    (mul_nonneg
+      (cmp102SourceExpAverageValueLipschitzBudget_nonneg
+        (d := d) (M := M) hr hq0)
+      (cmp98AmbientWilsonLineValueBudget_nonneg hr _))
+    (mul_nonneg
+      (cmp102SourceExpAverageValueBudget_nonneg hq0)
+      (cmp98AmbientWilsonLineValueLipschitzBudget_nonneg hr _))
+
 theorem cmp102SourceAmbientNonlinearBlockDerivativeLipschitzBudget_nonneg
     {d M : ℕ} {r q : ℝ} (hr : 0 ≤ r) (hq0 : 0 ≤ q) :
     0 ≤ cmp102SourceAmbientNonlinearBlockDerivativeLipschitzBudget d M r q := by
@@ -162,6 +200,116 @@ theorem cmp102SourceAmbientNonlinearBlockDerivativeLipschitzBudget_nonneg
       (add_nonneg (mul_nonneg hDDE hC) (mul_nonneg hDE hLC))
       (mul_nonneg hLE hDC))
     (mul_nonneg hE hDDC)
+
+/-- The represented-block value is generated solely from the source data. -/
+theorem norm_cmp102AmbientNonlinearBlock_le_sourceBudget
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (b : PhysicalBond d N')
+    (Z : PhysicalAmbientMatrixTangent d (M * N') Nc)
+    {r q : ℝ} (hr : 0 ≤ r) (hq0 : 0 ≤ q) (hq1 : q < 1)
+    (hZ : ‖Z‖ ≤ r)
+    (hD : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x Z‖ ≤ q) :
+    ‖cmp102AmbientNonlinearBlock U b Z‖ ≤
+      cmp102SourceAmbientNonlinearBlockValueBudget M r q := by
+  have hpath :
+      ∀ e ∈ cmp98SourceCoarseBondPath (Nc := Nc) b,
+        ‖Z (physicalBondOfEdge e)‖ ≤ r := by
+    intro e _
+    exact (norm_physicalAmbientMatrixTangent_apply_le Z _).trans hZ
+  unfold cmp102AmbientNonlinearBlock
+    cmp102SourceAmbientNonlinearBlockValueBudget
+  exact (norm_mul_le _ _).trans
+    (mul_le_mul
+      (norm_cmp98UbarExpAverage_le_sourceBudget U b Z hq0 hq1 hD)
+      (by
+        simpa only [cmp102SourceCoarseContourValueBudget,
+          cmp98SourceCoarseBondPath_length] using
+          norm_cmp98AmbientWilsonLineMatrix_le U Z
+            (cmp98SourceCoarseBondPath (Nc := Nc) b) hr hpath)
+      (norm_nonneg _)
+      (cmp102SourceExpAverageValueBudget_nonneg hq0))
+
+/-- The represented-block value-Lipschitz estimate is generated solely from
+the two source fields and their common radius data. -/
+theorem norm_cmp102AmbientNonlinearBlock_sub_le_sourceBudget
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (b : PhysicalBond d N')
+    (Z W : PhysicalAmbientMatrixTangent d (M * N') Nc)
+    {r q : ℝ} (hr : 0 ≤ r) (hq0 : 0 ≤ q) (hq1 : q < 1)
+    (hZ : ‖Z‖ ≤ r) (hW : ‖W‖ ≤ r)
+    (hDZ : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x Z‖ ≤ q)
+    (hDW : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x W‖ ≤ q) :
+    ‖cmp102AmbientNonlinearBlock U b Z -
+        cmp102AmbientNonlinearBlock U b W‖ ≤
+      cmp102SourceAmbientNonlinearBlockValueLipschitzBudget d M r q *
+        ‖Z - W‖ := by
+  let EZ := cmp98UbarExpAverage U b Z
+  let EW := cmp98UbarExpAverage U b W
+  let CZ := cmp98AmbientWilsonLineMatrix U Z
+    (cmp98SourceCoarseBondPath (Nc := Nc) b)
+  let CW := cmp98AmbientWilsonLineMatrix U W
+    (cmp98SourceCoarseBondPath (Nc := Nc) b)
+  have hZpath :
+      ∀ e ∈ cmp98SourceCoarseBondPath (Nc := Nc) b,
+        ‖Z (physicalBondOfEdge e)‖ ≤ r := by
+    intro e _
+    exact (norm_physicalAmbientMatrixTangent_apply_le Z _).trans hZ
+  have hWpath :
+      ∀ e ∈ cmp98SourceCoarseBondPath (Nc := Nc) b,
+        ‖W (physicalBondOfEdge e)‖ ≤ r := by
+    intro e _
+    exact (norm_physicalAmbientMatrixTangent_apply_le W _).trans hW
+  have hC : ‖CZ‖ ≤ cmp102SourceCoarseContourValueBudget M r := by
+    simpa only [CZ, cmp102SourceCoarseContourValueBudget,
+      cmp98SourceCoarseBondPath_length] using
+      norm_cmp98AmbientWilsonLineMatrix_le U Z
+        (cmp98SourceCoarseBondPath (Nc := Nc) b) hr hZpath
+  have hE : ‖EW‖ ≤ cmp102SourceExpAverageValueBudget q := by
+    simpa [EW] using
+      norm_cmp98UbarExpAverage_le_sourceBudget U b W hq0 hq1 hDW
+  have hEdiff : ‖EZ - EW‖ ≤
+      cmp102SourceExpAverageValueLipschitzBudget d M r q *
+        ‖Z - W‖ := by
+    simpa [EZ, EW] using
+      norm_cmp98UbarExpAverage_sub_le_sourceBudget
+        U b Z W hr hq0 hq1 hZ hW hDZ hDW
+  have hCdiff : ‖CZ - CW‖ ≤
+      cmp102SourceCoarseContourValueLipschitzBudget M r *
+        ‖Z - W‖ := by
+    simpa only [CZ, CW, cmp102SourceCoarseContourValueLipschitzBudget,
+      cmp98SourceCoarseBondPath_length] using
+      norm_cmp98AmbientWilsonLineMatrix_sub_le U Z W
+        (cmp98SourceCoarseBondPath (Nc := Nc) b) hr hZpath hWpath
+  have halg : EZ * CZ - EW * CW =
+      (EZ - EW) * CZ + EW * (CZ - CW) := by
+    noncomm_ring
+  change ‖EZ * CZ - EW * CW‖ ≤ _
+  rw [halg]
+  calc
+    ‖(EZ - EW) * CZ + EW * (CZ - CW)‖
+        ≤ ‖EZ - EW‖ * ‖CZ‖ + ‖EW‖ * ‖CZ - CW‖ :=
+      (norm_add_le _ _).trans (add_le_add (norm_mul_le _ _) (norm_mul_le _ _))
+    _ ≤
+        (cmp102SourceExpAverageValueLipschitzBudget d M r q *
+            ‖Z - W‖) *
+            cmp102SourceCoarseContourValueBudget M r +
+          cmp102SourceExpAverageValueBudget q *
+            (cmp102SourceCoarseContourValueLipschitzBudget M r *
+              ‖Z - W‖) := by
+      apply add_le_add
+      · exact mul_le_mul hEdiff hC (norm_nonneg CZ)
+          (mul_nonneg
+            (cmp102SourceExpAverageValueLipschitzBudget_nonneg hr hq0)
+            (norm_nonneg _))
+      · exact mul_le_mul hE hCdiff (norm_nonneg (CZ - CW))
+          (cmp102SourceExpAverageValueBudget_nonneg hq0)
+    _ = cmp102SourceAmbientNonlinearBlockValueLipschitzBudget d M r q *
+          ‖Z - W‖ := by
+      unfold cmp102SourceAmbientNonlinearBlockValueLipschitzBudget
+      ring
 
 /-- The represented-block derivative is generated solely from source
 contour, ambient-radius, and Mercator-radius data. -/
