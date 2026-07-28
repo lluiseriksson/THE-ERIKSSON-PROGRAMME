@@ -102,3 +102,25 @@ The exact lower margin is
 
 This promotes the algebraic implication only.  In particular, the required
 uniform certificate `X_main>=-1/20` is still open.
+
+The independent pure-Python validator also accepts the immutable
+lambda-three production/replay pair under the tighter rational consequences
+
+```text
+rho upper
+  = 0.0341072187462838524042703468319050363474788735654540831
+  < 7/200,
+
+joint adverse upper
+  = 0.85298907851649301560318735231689559017239430228998323
+  < 43/50.
+```
+
+Its repaired production and replay have empty stderr and identical SHA-256
+
+```text
+311447B9005D03BE2F5DFA7CF47BF9332448A33EB2F8D5E11D94262976FA1D36
+```
+
+The initial Python-3.8 harness failure is preserved and scoped in
+`INCIDENT-WEAK-RELAY-VALIDATOR-PY38-20260728.md`.
