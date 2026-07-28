@@ -129,7 +129,8 @@ theorem norm_iteratedFDeriv_two_fixedPoint_le
     {L B q : ℝ}
     (hL0 : 0 ≤ L) (hB0 : 0 ≤ B) (hq1 : q < 1)
     (hfix : g = fun y => T (y, g y))
-    (hg : ContDiff ℝ 2 g) (hT : ContDiff ℝ 2 T)
+    (hg : ContDiff ℝ 2 g)
+    (hT : ∀ y ∈ s, DifferentiableAt ℝ T (y, g y))
     (hglip : LipschitzOnWith ⟨L, hL0⟩ g s)
     (hjoint : ∀ y ∈ s, ∀ z ∈ s,
       ‖fderiv ℝ T (y, g y) - fderiv ℝ T (z, g z)‖ ≤
@@ -146,15 +147,14 @@ theorem norm_iteratedFDeriv_two_fixedPoint_le
         (mul_nonneg hB0 (sq_nonneg (max 1 L))) hden⟩
   have hdiff : ContDiff ℝ 1 (fderiv ℝ g) :=
     hg.fderiv_right (by norm_num)
-  have hderivEq : ∀ y,
+  have hderivEq : ∀ y ∈ s,
       fderiv ℝ g y =
         (fderiv ℝ T (y, g y)).comp
           (fixedPointGraphDerivative (fderiv ℝ g y)) := by
-    intro y
+    intro y hy
     have hgAt : DifferentiableAt ℝ g y :=
       (hg.differentiable (by decide)).differentiableAt
-    have hTAt : DifferentiableAt ℝ T (y, g y) :=
-      (hT.differentiable (by decide)).differentiableAt
+    have hTAt : DifferentiableAt ℝ T (y, g y) := hT y hy
     have hgraph :
         HasFDerivAt (fun z => (z, g z))
           (fixedPointGraphDerivative (fderiv ℝ g y)) y := by
@@ -204,7 +204,7 @@ theorem norm_iteratedFDeriv_two_fixedPoint_le
         (fderiv ℝ g y) (fderiv ℝ g z)
         (fderiv ℝ T (y, g y)) (fderiv ℝ T (z, g z))
         hDy hjoint' (hvertical z hz) hq1
-        (hderivEq y) (hderivEq z)
+        (hderivEq y hy) (hderivEq z hz)
     rw [dist_eq_norm]
     have hqne : 1 - q ≠ 0 := (sub_pos.mpr hq1).ne'
     have hrearrange :

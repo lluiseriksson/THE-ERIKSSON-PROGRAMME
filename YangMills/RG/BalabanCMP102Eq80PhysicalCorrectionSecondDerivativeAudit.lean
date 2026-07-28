@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalCorrectionSecondDerivative
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalBackgroundCorrectionSecondDerivativeBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_cmp102Eq80PhysicalBackgroundCorrection_sup_le_sourceBudget
