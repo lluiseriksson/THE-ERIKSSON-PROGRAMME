@@ -461,4 +461,68 @@ theorem evenTop_dominates {β γ : ℝ} (hβ : 0 < β) (hγ : 0 < γ)
     (fun σ => perronVec_pos hβ hγ σ) (evenTop β γ)
     (coupled_perron_eigen β γ) w σ₁ hw mu hmu
 
+/-! ## §7  The same bound over `ℂ`, which removes the `real` modifier -/
+
+/-- **The Perron-type bound holds for complex eigenpairs.**  The proof is the
+real one with the complex modulus in place of the absolute value: scale the
+competing eigenvector until it touches the positive one, and read the triangle
+inequality at the touching index.  With this, the eigenvalue of a strictly
+positive eigenvector is the spectral radius outright, not merely the largest
+among real eigenvalues. -/
+theorem norm_eigenvalue_le_of_pos_eigenvector {ι : Type*} [Fintype ι]
+    (A : ι → ι → ℝ) (hA : ∀ i j, 0 ≤ A i j)
+    (v : ι → ℝ) (hv : ∀ i, 0 < v i) (lam : ℝ)
+    (hlam : ∀ i, ∑ j, A i j * v j = lam * v i)
+    (w : ι → ℂ) (i₁ : ι) (hw : w i₁ ≠ 0) (mu : ℂ)
+    (hmu : ∀ i, ∑ j, (A i j : ℂ) * w j = mu * w i) :
+    ‖mu‖ ≤ lam := by
+  obtain ⟨i₀, -, hmax⟩ :=
+    Finset.exists_max_image Finset.univ (fun i => ‖w i‖ / v i)
+      ⟨i₁, Finset.mem_univ _⟩
+  have hv₀ : 0 < v i₀ := hv i₀
+  set t : ℝ := ‖w i₀‖ / v i₀ with ht
+  have ht₁ : 0 < ‖w i₁‖ / v i₁ := div_pos (norm_pos_iff.mpr hw) (hv i₁)
+  have htpos : 0 < t := lt_of_lt_of_le ht₁ (hmax i₁ (Finset.mem_univ _))
+  have hw₀ : ‖w i₀‖ = t * v i₀ := by
+    rw [ht]; field_simp
+  have hbound : ∀ j, ‖w j‖ ≤ t * v j := by
+    intro j
+    have hle := hmax j (Finset.mem_univ _)
+    rw [ht] at hle
+    rw [div_le_div_iff₀ (hv j) hv₀] at hle
+    have := hv j
+    nlinarith [hle, hv₀, this]
+  have hpos : 0 < ‖w i₀‖ := by rw [hw₀]; positivity
+  have key : ‖mu‖ * ‖w i₀‖ ≤ lam * ‖w i₀‖ := by
+    have h3 : ∀ j ∈ (Finset.univ : Finset ι),
+        ‖(A i₀ j : ℂ) * w j‖ ≤ A i₀ j * (t * v j) := by
+      intro j _
+      rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (hA i₀ j)]
+      exact mul_le_mul_of_nonneg_left (hbound j) (hA i₀ j)
+    have h4 : ∑ j, A i₀ j * (t * v j) = t * (lam * v i₀) := by
+      rw [← hlam i₀, Finset.mul_sum]
+      exact Finset.sum_congr rfl fun j _ => by ring
+    calc ‖mu‖ * ‖w i₀‖ = ‖mu * w i₀‖ := (norm_mul _ _).symm
+      _ = ‖∑ j, (A i₀ j : ℂ) * w j‖ := by rw [hmu i₀]
+      _ ≤ ∑ j, ‖(A i₀ j : ℂ) * w j‖ := norm_sum_le _ _
+      _ ≤ ∑ j, A i₀ j * (t * v j) := Finset.sum_le_sum h3
+      _ = t * (lam * v i₀) := h4
+      _ = lam * (t * v i₀) := by ring
+      _ = lam * ‖w i₀‖ := by rw [hw₀]
+  exact le_of_mul_le_mul_right key hpos
+
+/-- **`evenTop` is the spectral radius of the coupled two-site kernel**, with no
+`real` modifier: every complex eigenvalue is dominated by it, and it is itself
+an eigenvalue (`coupled_perron_eigen`) with a strictly positive eigenvector
+(`perronVec_pos`). -/
+theorem evenTop_dominates_complex {β γ : ℝ} (hβ : 0 < β) (hγ : 0 < γ)
+    (w : (Fin 2 → Fin 2) → ℂ) (σ₁ : Fin 2 → Fin 2) (hw : w σ₁ ≠ 0) (mu : ℂ)
+    (hmu : ∀ σ : Fin 2 → Fin 2,
+      ∑ τ : Fin 2 → Fin 2, ((coupledKernel β γ σ τ : ℝ) : ℂ) * w τ = mu * w σ) :
+    ‖mu‖ ≤ evenTop β γ :=
+  norm_eigenvalue_le_of_pos_eigenvector (coupledKernel β γ)
+    (coupledKernel_nonneg β γ) (perronVec β γ)
+    (fun σ => perronVec_pos hβ hγ σ) (evenTop β γ)
+    (coupled_perron_eigen β γ) w σ₁ hw mu hmu
+
 end YangMills.OS

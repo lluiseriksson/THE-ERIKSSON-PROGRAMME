@@ -2857,3 +2857,5 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.abs_eigenvalue_le_of_pos_eigenvector
 #print axioms YangMills.OS.coupledKernel_nonneg
 #print axioms YangMills.OS.evenTop_dominates
+#print axioms YangMills.OS.norm_eigenvalue_le_of_pos_eigenvector
+#print axioms YangMills.OS.evenTop_dominates_complex
