@@ -40,3 +40,39 @@ exists on the sealing desk's shared worktree), or (b) quarantine the
 six superseded-route tests (skip-if-missing or move out of
 `testpaths`), then re-run the clean-tree suite and restate the test
 count. One commit either way.
+
+## Addendum: re-verification of 3596957b (post-repair, 2026-07-28)
+
+CONFIRMED on this desk's clean checkout of 3596957b:
+- TeX/PDF hashes UNCHANGED (ebe57872... / e8cc61a1...) - the repair
+  did not touch the theorem or the paper.
+- `surface_bessel_gap_taylor.py` versioned; the six collection
+  errors are gone.
+- **`FINAL-SEAL PASS` reproduced end-to-end again.**
+
+NOT CONFIRMED: the claim "699 passed, 1 failed". This desk's fresh
+run of `python -m pytest -q` on the published branch gives
+**3 failed, 697 passed** (same total, 700). The two failures beyond
+the declared manifest-coverage one:
+- `test_project_state.py::test_repository_project_state_is_valid`
+- `test_source_db.py::test_head_refs_prints_source_metadata_commit_anchors`
+
+ROOT CAUSE (third instance of the species): the branch's own state
+files reference commits OUTSIDE the published closure. Measured:
+`project-state.json` records `lean_core.source_checkpoint =
+0919aa10`, and the source-db metadata anchors include `1fed14e`;
+`git merge-base --is-ancestor` shows NEITHER is an ancestor of the
+codex branch HEAD - and 0919aa10 is not an ancestor of main either.
+Both live on unpublished/unmerged branches. Any faithful clone of
+the published refs fails these two tests; the sealing desk's local
+repository evidently contains ancestry the published refs do not.
+(First instance of the species: EOL-single-valued hash; second:
+unversioned modules in provenance/test layers; third: state anchors
+escaping the published branch.)
+
+NO mathematical load: the FINAL-SEAL consults neither test. But
+"claims-ready" requires the published refs to self-validate.
+PRESCRIPTION: point the state anchors at commits reachable from the
+branch (or publish/merge the referenced lane branches), rerun, and
+restate the count from a faithful clone of the PUBLISHED refs -
+not from the sealing desk's local repository.
