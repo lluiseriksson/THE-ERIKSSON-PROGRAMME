@@ -1844,3 +1844,4 @@ import YangMills.RG.BalabanCMP102AmbientFourContourCollapseAudit
 import YangMills.RG.BalabanCMP102AmbientFourContourUniformBudgetAudit
 import YangMills.RG.BalabanCMP102AmbientLocalNearLogBudgetAudit
 import YangMills.RG.BalabanCMP102AmbientLogAverageBudgetAudit
+import YangMills.RG.BalabanCMP102AmbientExpAverageBudgetAudit
