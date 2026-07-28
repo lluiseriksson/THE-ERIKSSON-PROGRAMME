@@ -386,6 +386,28 @@ whose support meets the canonical changed-positive-bond set.  No correction
 field, perturbation carrier, or minimizer is supplied to the terminal
 existence theorem.
 
+`BalabanCMP109Lemma1ResidualFamily.lean` now performs the next exact source
+step.  It takes the finite image of the domains actually carried by those
+surviving inductive activities and defines
+
+```text
+V'_Lemma1(Y)
+  = sum of the affected local-activity differences with domainOf(i) = Y.
+```
+
+Lean proves both
+
+```text
+E_k(U_perturbed) - E_k(U_base) = sum_Y V'_Lemma1(Y)
+```
+
+and that a domain outside the canonical affected-domain image contributes
+zero.  This is a literal domain-indexed residual family, not an arbitrary
+`remainder` supplied by the caller.  It is one source summand of `V''_k`;
+the non-dangerous directly bounded terms of `F^(k)` remain to be added.
+The only estimate used here is the triangle inequality inside each domain
+fiber, so (1.36) is still neither assumed nor proved.
+
 This advances the source dictionary but not the terminal analytic-boundary
 count.  `CMP109LocalizedActionExpansion.activity` is intentionally an
 arbitrary source local functional and carries no Lipschitz or decay data.
