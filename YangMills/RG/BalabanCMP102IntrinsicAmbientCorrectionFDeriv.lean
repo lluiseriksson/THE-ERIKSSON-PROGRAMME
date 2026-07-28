@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP102PhysicalIntrinsicCorrectionAnalytic
+import YangMills.RG.NoncommutativePowerLipschitz
 
 /-!
 # Derivative of the intrinsic CMP102 ambient correction
@@ -220,6 +221,154 @@ theorem fderiv_cmp102IntrinsicAmbientCorrectionBond_sub_apply
           (0 : PhysicalGaugeOneCochain d (M * N') Nc) b - 1)).map_sub]
   simp only [ContinuousLinearMap.sub_apply]
   abel
+
+/-- Explicit budget obtained after the Mercator derivative is discharged.
+The four remaining parameters respectively bound the relative-deviation
+Lipschitz rate, the represented-block derivative, its Lipschitz rate, and
+the fixed right normalizer. -/
+def cmp102IntrinsicAmbientCorrectionDerivativeLipschitzBudget
+    (r Ldev Lblock LblockDeriv K : ℝ) : ℝ :=
+  nearLogSecondDerivativeBudget r * Ldev * Lblock * K +
+    nearLogDerivativeBudget r * LblockDeriv * K
+
+/-- Quantitative consequence of the exact derivative factorization.  Both
+Mercator contributions are generated internally from their audited series
+budgets.  The only residual analytic inputs concern the literal represented
+block and its fixed right normalizer. -/
+theorem norm_fderiv_cmp102IntrinsicAmbientCorrectionBond_sub_apply_le
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (b : PhysicalBond d N')
+    (Z W H : PhysicalAmbientMatrixTangent d (M * N') Nc)
+    {r Ldev Lblock LblockDeriv K : ℝ}
+    (hr0 : 0 ≤ r) (hr1 : r < 1)
+    (hLdev : 0 ≤ Ldev) (hLblock : 0 ≤ Lblock)
+    (hLblockDeriv : 0 ≤ LblockDeriv)
+    (hlocalZ : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x Z‖ < 1)
+    (hlocalW : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x W‖ < 1)
+    (hdevZ :
+      ‖cmp102AmbientNonlinearBlock U b Z *
+          cmp98Eq119NonlinearBlockInverseAtZero U
+            (0 : PhysicalGaugeOneCochain d (M * N') Nc) b - 1‖ ≤ r)
+    (hdevW :
+      ‖cmp102AmbientNonlinearBlock U b W *
+          cmp98Eq119NonlinearBlockInverseAtZero U
+            (0 : PhysicalGaugeOneCochain d (M * N') Nc) b - 1‖ ≤ r)
+    (hdevDiff :
+      ‖(cmp102AmbientNonlinearBlock U b Z *
+            cmp98Eq119NonlinearBlockInverseAtZero U
+              (0 : PhysicalGaugeOneCochain d (M * N') Nc) b - 1) -
+          (cmp102AmbientNonlinearBlock U b W *
+            cmp98Eq119NonlinearBlockInverseAtZero U
+              (0 : PhysicalGaugeOneCochain d (M * N') Nc) b - 1)‖ ≤
+        Ldev * ‖Z - W‖)
+    (hblock :
+      ‖fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z‖ ≤ Lblock)
+    (hblockDeriv :
+      ‖fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z -
+          fderiv ℝ (cmp102AmbientNonlinearBlock U b) W‖ ≤
+        LblockDeriv * ‖Z - W‖)
+    (hI :
+      ‖cmp98Eq119NonlinearBlockInverseAtZero U
+          (0 : PhysicalGaugeOneCochain d (M * N') Nc) b‖ ≤ K) :
+    ‖(fderiv ℝ (cmp102IntrinsicAmbientCorrectionBond U b) Z -
+        fderiv ℝ (cmp102IntrinsicAmbientCorrectionBond U b) W) H‖ ≤
+      cmp102IntrinsicAmbientCorrectionDerivativeLipschitzBudget
+          r Ldev Lblock LblockDeriv K *
+        ‖Z - W‖ * ‖H‖ := by
+  let I :=
+    cmp98Eq119NonlinearBlockInverseAtZero U
+      (0 : PhysicalGaugeOneCochain d (M * N') Nc) b
+  let DZ :=
+    cmp102AmbientNonlinearBlock U b Z * I - 1
+  let DW :=
+    cmp102AmbientNonlinearBlock U b W * I - 1
+  have hrelativeZ : ‖DZ‖ < 1 := by
+    exact (show ‖DZ‖ ≤ r by simpa [DZ, I] using hdevZ).trans_lt hr1
+  have hrelativeW : ‖DW‖ < 1 := by
+    exact (show ‖DW‖ ≤ r by simpa [DW, I] using hdevW).trans_lt hr1
+  have hlogDiff :
+      ‖fderiv ℝ nearLog DZ - fderiv ℝ nearLog DW‖ ≤
+        nearLogSecondDerivativeBudget r * (Ldev * ‖Z - W‖) := by
+    calc
+      ‖fderiv ℝ nearLog DZ - fderiv ℝ nearLog DW‖
+          ≤ nearLogSecondDerivativeBudget r * ‖DZ - DW‖ :=
+        norm_fderiv_nearLog_sub_le_secondDerivativeBudget
+          hr0 hr1 (by simpa [DZ, I] using hdevZ)
+            (by simpa [DW, I] using hdevW)
+      _ ≤ nearLogSecondDerivativeBudget r * (Ldev * ‖Z - W‖) := by
+        gcongr
+        exact nearLogSecondDerivativeBudget_nonneg r hr0
+  have hlogW :
+      ‖fderiv ℝ nearLog DW‖ ≤ nearLogDerivativeBudget r :=
+    norm_fderiv_nearLog_le_derivativeBudget
+      hr0 hr1 (by simpa [DW, I] using hdevW)
+  have hblockApply :
+      ‖fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z H * I‖ ≤
+        (Lblock * ‖H‖) * K := by
+    calc
+      ‖fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z H * I‖
+          ≤ ‖fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z H‖ * ‖I‖ :=
+        norm_mul_le _ _
+      _ ≤ (‖fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z‖ * ‖H‖) *
+            ‖I‖ := by
+        gcongr
+        exact ContinuousLinearMap.le_opNorm _ H
+      _ ≤ (Lblock * ‖H‖) * K := by
+        gcongr
+  have hblockDerivApply :
+      ‖(fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z -
+          fderiv ℝ (cmp102AmbientNonlinearBlock U b) W) H * I‖ ≤
+        ((LblockDeriv * ‖Z - W‖) * ‖H‖) * K := by
+    calc
+      ‖(fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z -
+          fderiv ℝ (cmp102AmbientNonlinearBlock U b) W) H * I‖
+          ≤ ‖(fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z -
+              fderiv ℝ (cmp102AmbientNonlinearBlock U b) W) H‖ * ‖I‖ :=
+        norm_mul_le _ _
+      _ ≤ (‖fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z -
+              fderiv ℝ (cmp102AmbientNonlinearBlock U b) W‖ * ‖H‖) *
+            ‖I‖ := by
+        gcongr
+        exact ContinuousLinearMap.le_opNorm _ H
+      _ ≤ ((LblockDeriv * ‖Z - W‖) * ‖H‖) * K := by
+        gcongr
+  rw [fderiv_cmp102IntrinsicAmbientCorrectionBond_sub_apply
+    U b Z W H hlocalZ hrelativeZ hlocalW hrelativeW]
+  calc
+    ‖(fderiv ℝ nearLog DZ - fderiv ℝ nearLog DW)
+          (fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z H * I) +
+        fderiv ℝ nearLog DW
+          ((fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z -
+            fderiv ℝ (cmp102AmbientNonlinearBlock U b) W) H * I)‖
+        ≤ ‖(fderiv ℝ nearLog DZ - fderiv ℝ nearLog DW)
+              (fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z H * I)‖ +
+            ‖fderiv ℝ nearLog DW
+              ((fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z -
+                fderiv ℝ (cmp102AmbientNonlinearBlock U b) W) H * I)‖ :=
+          norm_add_le _ _
+    _ ≤ ‖fderiv ℝ nearLog DZ - fderiv ℝ nearLog DW‖ *
+            ‖fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z H * I‖ +
+          ‖fderiv ℝ nearLog DW‖ *
+            ‖(fderiv ℝ (cmp102AmbientNonlinearBlock U b) Z -
+              fderiv ℝ (cmp102AmbientNonlinearBlock U b) W) H * I‖ := by
+        gcongr
+        · exact ContinuousLinearMap.le_opNorm _ _
+        · exact ContinuousLinearMap.le_opNorm _ _
+    _ ≤ (nearLogSecondDerivativeBudget r * (Ldev * ‖Z - W‖)) *
+            ((Lblock * ‖H‖) * K) +
+          nearLogDerivativeBudget r *
+            (((LblockDeriv * ‖Z - W‖) * ‖H‖) * K) := by
+        gcongr
+        · exact mul_nonneg
+            (nearLogSecondDerivativeBudget_nonneg r hr0)
+            (mul_nonneg hLdev (norm_nonneg _))
+        · exact nearLogDerivativeBudget_nonneg r hr0
+    _ = cmp102IntrinsicAmbientCorrectionDerivativeLipschitzBudget
+          r Ldev Lblock LblockDeriv K * ‖Z - W‖ * ‖H‖ := by
+        unfold cmp102IntrinsicAmbientCorrectionDerivativeLipschitzBudget
+        ring
 
 end
 

@@ -2,3 +2,4 @@ import YangMills.RG.BalabanCMP102IntrinsicAmbientCorrectionFDeriv
 
 #print axioms YangMills.RG.fderiv_cmp102IntrinsicAmbientCorrectionBond_apply
 #print axioms YangMills.RG.fderiv_cmp102IntrinsicAmbientCorrectionBond_sub_apply
+#print axioms YangMills.RG.norm_fderiv_cmp102IntrinsicAmbientCorrectionBond_sub_apply_le
