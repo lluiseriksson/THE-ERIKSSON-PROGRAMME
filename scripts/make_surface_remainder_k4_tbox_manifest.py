@@ -68,7 +68,7 @@ def main():
                    "validator": f"K4 GENERIC TBOX VALIDATION PASS {args.unit}"},
         "promotion": "NONE",
     }
-    out = ROOT / "run-manifests" / (
+    out = ROOT / "run-records" / "local-staging" / (
         f"surface-remainder-k4-tbox-{args.unit}-20260726.json")
     out.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(out.relative_to(ROOT))

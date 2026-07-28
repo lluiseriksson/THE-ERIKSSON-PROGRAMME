@@ -15,7 +15,7 @@ ratio                                      = 0.3891546907376339005...
 ```
 
 The manifest is
-`run-manifests/surface-h-tail-companion-order5-20260721.json`.
+`run-records/legacy/surface-h-tail-companion-order5-20260721.json`.
 This is an analytic input candidate only. It does not include the outer-tail
 completion, the joint signed carrier inequality, the weighted S1'''/S2'''
 sum, or the sign-to-`H_tail` relay; `H_tail`, G2, G6, and the final seal remain

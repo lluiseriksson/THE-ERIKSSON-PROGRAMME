@@ -60,7 +60,7 @@ if __name__ == "__main__":
                    "all_seven_totals_strictly_below_one": True},
         "promotion": "NONE",
     }
-    out = ROOT / "run-manifests" / f"surface-remainder-k4-tbox-rescue2304-{args.unit}-20260726.json"
+    out = ROOT / "run-records" / "local-staging" / f"surface-remainder-k4-tbox-rescue2304-{args.unit}-20260726.json"
     out.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(out.relative_to(ROOT))
 

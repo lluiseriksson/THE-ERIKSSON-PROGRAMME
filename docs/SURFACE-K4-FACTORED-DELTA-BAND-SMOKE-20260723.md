@@ -12,5 +12,5 @@ Production and replay are byte-identical and pass
 weighted fraction is `nuD_main=0.0003439366459453`.  This is a narrow scaled
 core band only: the moving outer band, the remaining delta range, the global
 `t`-union, and the literal S1'''/S2''' judges are absent.  The manifest is
-`run-manifests/surface-k4-factored-delta-band-0660-0661-20260723.json` and
+`run-records/legacy/surface-k4-factored-delta-band-0660-0661-20260723.json` and
 explicitly carries `promotion: NONE`.

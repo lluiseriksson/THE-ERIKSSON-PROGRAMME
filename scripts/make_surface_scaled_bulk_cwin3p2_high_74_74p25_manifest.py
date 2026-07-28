@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "run-manifests" / "surface-scaled-bulk-cwin3p2-high-74-74p25-20260721.json"
+OUT = ROOT / "run-records" / "local-staging" / "surface-scaled-bulk-cwin3p2-high-74-74p25-20260721.json"
 
 
 def artifact(relative: str) -> dict:

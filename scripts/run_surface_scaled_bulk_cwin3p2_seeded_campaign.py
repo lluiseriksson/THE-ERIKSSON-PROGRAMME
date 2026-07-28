@@ -72,7 +72,7 @@ def run_one(lo: Fraction, hi: Fraction, seed_step: Fraction) -> int:
         "result": {"production_replay_byte_equal": True},
         "promotion": "NONE",
     }
-    manifest_path = ROOT / "run-manifests" / f"{manifest['run_id']}.json"
+    manifest_path = ROOT / "run-records" / "local-staging" / f"{manifest['run_id']}.json"
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(f"PASS {unit} manifest={manifest_path.name}", flush=True)
     return 0

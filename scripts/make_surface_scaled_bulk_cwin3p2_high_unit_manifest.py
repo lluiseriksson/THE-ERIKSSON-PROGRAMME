@@ -61,7 +61,7 @@ def main() -> None:
         "superseded_by": None,
         "quarantine_reason": None,
     }
-    out = ROOT / "run-manifests" / f"{args.run_id}.json"
+    out = ROOT / "run-records" / "local-staging" / f"{args.run_id}.json"
     out.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
     print("WROTE", out.relative_to(ROOT))
 

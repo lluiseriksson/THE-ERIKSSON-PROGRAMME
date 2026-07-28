@@ -2,9 +2,11 @@ from pathlib import Path
 import json
 
 import importlib.util
+import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
 SPEC = importlib.util.spec_from_file_location(
     "audit_surface_g2_relay_admissibility",
     ROOT / "scripts" / "audit_surface_g2_relay_admissibility.py",
@@ -46,19 +48,23 @@ def test_terminal_promotion_is_bound_to_the_frozen_ownership_fingerprint():
 
 
 def test_nested_manifest_schema_is_normalized():
+    from run_record_archive import frozen_record_path
+
     manifest = json.loads(
-        (ROOT / "run-manifests" /
-         "surface-scaled-bulk-cwin3p2-high-101p625-101p6875-20260720.json")
-        .read_text(encoding="utf-8")
+        frozen_record_path(
+            "surface-scaled-bulk-cwin3p2-high-101p625-101p6875-20260720.json"
+        ).read_text(encoding="utf-8")
     )
     assert len(MOD.output_groups(manifest)) == 2
 
 
 def test_flat_manifest_schema_recovers_every_pair():
+    from run_record_archive import frozen_record_path
+
     manifest = json.loads(
-        (ROOT / "run-manifests" /
-         "surface-scaled-bulk-cwin3p2-high-100p3125-100p5625-20260719.json")
-        .read_text(encoding="utf-8")
+        frozen_record_path(
+            "surface-scaled-bulk-cwin3p2-high-100p3125-100p5625-20260719.json"
+        ).read_text(encoding="utf-8")
     )
     groups = MOD.output_groups(manifest)
     assert len(groups) == 4

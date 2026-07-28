@@ -15,7 +15,7 @@ slices:
 All 506 rows are strictly negative for the normalized `W^J` predicate, and
 each production transcript has a byte-identical replay.  The combined
 manifest is
-`run-manifests/surface-scaled-bulk-cwin3p2-unit82-rescue-order30-combined-20260723.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-unit82-rescue-order30-combined-20260723.json`.
 
 This closes only a finite normalized-sign cover.  It does not establish the
 absolute relay to `(H_tail)`, supply `M_supremum`, or change the authoritative

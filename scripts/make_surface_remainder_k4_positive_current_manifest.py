@@ -9,7 +9,7 @@ import subprocess
 from validate_surface_remainder_k4_positive_0305_0500 import BANDS
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "run-manifests" / "surface-remainder-k4-positive-0305-0500-current-20260724.json"
+OUT = ROOT / "run-records" / "local-staging" / "surface-remainder-k4-positive-0305-0500-current-20260724.json"
 
 
 def digest(relative: str, normalize_lf: bool = False) -> str:

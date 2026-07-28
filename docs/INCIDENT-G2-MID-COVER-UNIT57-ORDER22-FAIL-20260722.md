@@ -21,5 +21,5 @@ That separate repair is preregistered at
 `docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION-PREREG-20260722.md`.
 Order 24 passes units 57--59 with 635 rows in fresh production and replay,
 byte-for-byte; the result is archived as quarantined evidence in
-`run-manifests/surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-unit57-20260722.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-unit57-20260722.json`.
 It remains sign evidence only and carries no relay or theorem load.

@@ -8,6 +8,11 @@ from pathlib import Path
 import re
 import subprocess
 
+try:
+    from surface_eol_hashes import sha256_variants
+except ModuleNotFoundError:  # Imported as scripts.validate_surface_bulk_3_6.
+    from scripts.surface_eol_hashes import sha256_variants
+
 ROOT = Path(__file__).resolve().parents[1]
 TRANSCRIPT = ROOT / "scripts" / "certify_bulk_arb_transcript.txt"
 SCRIPT = ROOT / "scripts" / "certify_bulk_arb.py"
@@ -30,7 +35,7 @@ def validate(path: Path = TRANSCRIPT) -> dict[str, object]:
     if "narrowing beta step to 0.000500 at beta=5.5280" not in text:
         raise AssertionError("unexpected adaptive refinement location")
     script_raw = SCRIPT.read_bytes()
-    if hashlib.sha256(script_raw).hexdigest() != SCRIPT_SHA256:
+    if SCRIPT_SHA256 not in sha256_variants(SCRIPT):
         raise AssertionError("worktree script hash mismatch")
     blob = subprocess.check_output(
         ["git", "-c", f"safe.directory={ROOT.as_posix()}", "show",

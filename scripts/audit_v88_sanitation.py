@@ -266,6 +266,12 @@ def audit(root: Path = ROOT) -> tuple[list[str], dict[str, Any]]:
     for relative in visible:
         if not relative:
             continue
+        # ``run-records/`` is an explicitly frozen non-live archive.  Its
+        # purpose is to retain byte-exact superseded/pre-schema records and an
+        # immutable historical-artifact baseline.  Those strings must remain
+        # auditable there, but they are not live evidence references.
+        if relative.replace("\\", "/").startswith("run-records/"):
+            continue
         path = root / relative
         if not path.is_file() or path.resolve() in allowed_reference_files:
             continue

@@ -13,8 +13,10 @@ import re
 from decimal import Decimal, getcontext
 from pathlib import Path
 
+from run_record_archive import frozen_record_path
+
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "run-manifests" / (
+MANIFEST = frozen_record_path(
     "surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-extension5-20260723.json"
 )
 ROW_RE = re.compile(

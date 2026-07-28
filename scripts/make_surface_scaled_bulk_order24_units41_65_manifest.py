@@ -13,7 +13,7 @@ import re
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "run-manifests" / "surface-scaled-bulk-cwin3p2-mid-cover-order24-units41-47-20260724.json"
+OUT = ROOT / "run-records" / "local-staging" / "surface-scaled-bulk-cwin3p2-mid-cover-order24-units41-47-20260724.json"
 START = 41
 END = 48
 DRIVER = "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py"

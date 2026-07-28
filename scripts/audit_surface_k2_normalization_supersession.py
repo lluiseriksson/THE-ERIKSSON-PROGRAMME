@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from run_record_archive import MANIFEST_DIR, iter_auditable_run_records
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGET_PATH = "scripts/surface_remainder_delta0_series_design.py"
@@ -53,7 +54,13 @@ def contains_withdrawn_dependency(value: Any) -> bool:
 def audit(manifest_directory: Path) -> tuple[list[Path], list[Path]]:
     affected: list[Path] = []
     current: list[Path] = []
-    for path in sorted(manifest_directory.glob("*.json")):
+    if manifest_directory.resolve() == MANIFEST_DIR.resolve():
+        paths = [
+            path for _, path in iter_auditable_run_records("*.json")
+        ]
+    else:
+        paths = sorted(manifest_directory.glob("*.json"))
+    for path in paths:
         data = json.loads(path.read_text(encoding="utf-8"))
         if not contains_withdrawn_dependency(data):
             continue

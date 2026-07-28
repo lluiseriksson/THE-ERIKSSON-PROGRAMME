@@ -8,9 +8,12 @@ import re
 from decimal import Decimal, getcontext
 from pathlib import Path
 
+from run_record_archive import frozen_record_path
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "run-manifests" / "surface-remainder-signed-bilinear-endpoint-candidate-20260722.json"
+MANIFEST = frozen_record_path(
+    "surface-remainder-signed-bilinear-endpoint-candidate-20260722.json"
+)
 PI_UP = Decimal("3.1415926535897932384626433832795028841971693993751")
 getcontext().prec = 80
 ROW = re.compile(

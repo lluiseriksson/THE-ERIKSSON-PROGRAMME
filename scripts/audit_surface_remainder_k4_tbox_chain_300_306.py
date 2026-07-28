@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 
 from flint import arb, ctx
+from run_record_archive import frozen_record_path
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,8 +35,7 @@ def main() -> int:
     ctx.prec = 140
     records = []
     for unit in UNITS:
-        manifest = ROOT / "run-manifests" / (
-            f"{PREFIX}{unit}-20260723.json")
+        manifest = frozen_record_path(f"{PREFIX}{unit}-20260723.json")
         data = json.loads(manifest.read_text(encoding="utf-8"))
         assert data["status"] == "K4_T_BOX_CERTIFIED_CANDIDATE"
         assert data["promotion"] == "NONE"

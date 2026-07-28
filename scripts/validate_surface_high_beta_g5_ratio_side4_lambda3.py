@@ -10,6 +10,7 @@ from pathlib import Path
 from flint import arb
 
 import certify_surface_high_beta_g5_ratio_side4_lambda3 as cert
+from run_record_archive import frozen_record_path
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,10 +25,8 @@ REPLAY = (
     / "surface_high_beta_g5_ratio_side4_lambda3_replay_20260728"
 )
 SOURCE_HEAD = "4a5e9a6d8e4cfdd07b1277a6a61172e23e3ba7be"
-MANIFEST = (
-    ROOT
-    / "run-manifests"
-    / "surface-high-beta-g5-ratio-side4-lambda3-20260728.json"
+MANIFEST = frozen_record_path(
+    "surface-high-beta-g5-ratio-side4-lambda3-20260728.json"
 )
 
 

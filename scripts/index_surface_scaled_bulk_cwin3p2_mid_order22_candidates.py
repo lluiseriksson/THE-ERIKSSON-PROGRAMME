@@ -98,7 +98,7 @@ def main() -> int:
             "promotion": "NONE",
             "supersedes": [],
         }
-        target = ROOT / "run-manifests" / f"{manifest['run_id']}.json"
+        target = ROOT / "run-records" / "local-staging" / f"{manifest['run_id']}.json"
         target.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
         indexed += 1
         print("INDEXED", unit, lo, hi, "rows", rows, flush=True)

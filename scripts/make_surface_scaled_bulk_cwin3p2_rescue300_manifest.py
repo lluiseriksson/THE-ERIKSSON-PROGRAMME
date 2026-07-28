@@ -58,7 +58,7 @@ if __name__ == "__main__":
                    "validator": f"CWIN3P2 RESCUE300 VALIDATION PASS {args.unit}",
                    "promotion": "NONE"},
     }
-    out = ROOT / "run-manifests" / (
+    out = ROOT / "run-records" / "local-staging" / (
         f"surface-scaled-bulk-cwin3p2-rescue300-{args.tag}-20260726.json")
     out.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(out.relative_to(ROOT))

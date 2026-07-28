@@ -15,6 +15,7 @@ on:
       - "scripts/check_remainder_localization.py"
       - "scripts/surface_remainder*.py"
       - "scripts/validate_run_manifests.py"
+      - "scripts/run_record_archive.py"
       - "scripts/validate_changed_run_coverage.py"
       - "scripts/audit_v88_sanitation.py"
       - "scripts/**transcript*.txt"
@@ -22,6 +23,7 @@ on:
       - "scripts/test_monotone_nodes.py"
       - "scripts/cascade*.py"
       - "run-manifests/**"
+      - "run-records/**"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
       - "docs/SURFACE-REMAINDER-PREREG.md"
@@ -51,6 +53,7 @@ on:
       - "scripts/check_remainder_localization.py"
       - "scripts/surface_remainder*.py"
       - "scripts/validate_run_manifests.py"
+      - "scripts/run_record_archive.py"
       - "scripts/validate_changed_run_coverage.py"
       - "scripts/audit_v88_sanitation.py"
       - "scripts/**transcript*.txt"
@@ -58,6 +61,7 @@ on:
       - "scripts/test_monotone_nodes.py"
       - "scripts/cascade*.py"
       - "run-manifests/**"
+      - "run-records/**"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
       - "docs/SURFACE-REMAINDER-PREREG.md"
@@ -95,6 +99,9 @@ jobs:
 
       - name: Validate committed run manifests
         run: python scripts/validate_run_manifests.py --require-nonempty
+
+      - name: Validate frozen legacy run records
+        run: python scripts/run_record_archive.py check
 
       - name: Require manifests for changed computational artifacts
         env:

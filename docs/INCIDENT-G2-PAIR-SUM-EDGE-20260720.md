@@ -100,7 +100,7 @@ The adjacent beta cell
 `[3259/32,815/8] x [3/2,19/10]` has now passed with the same frozen configuration
 and an independent byte-identical replay (`total_upper` about
 `-3.97e-109`).  The two-cell exact-rational union is audited by
-`run-manifests/surface-scaled-pair-mean-value-cover-beta101p8125-101p875-lambda150-190-20260720.json`.
+`run-records/legacy/surface-scaled-pair-mean-value-cover-beta101p8125-101p875-lambda150-190-20260720.json`.
 This is a finite candidate cover only; it does not alter the G2/G6 board.
 
 A third contiguous unit, `beta=[815/8,3261/32]` with the same lambda band,
@@ -146,7 +146,7 @@ The next exact-rational campaign covered eight adjacent beta cells,
 `lambda=[3/2,19/10]`, `M=115`, orders `(50,50)`, and 500 Arb bits.  All eight
 production runs and their independent replays passed with `failures=0`.
 The manifest
-`run-manifests/surface-scaled-pair-mean-value-cover-beta100p46875-100p71875-lambda150-190-20260720.json`
+`run-records/legacy/surface-scaled-pair-mean-value-cover-beta100p46875-100p71875-lambda150-190-20260720.json`
 records the eight transcript/replay hashes.  The exact-rational cover audit
 reports `SCALED PAIR MEAN-VALUE COVER AUDIT PASS` and verifies a Cartesian
 tiling with no gaps or overlaps.
@@ -162,7 +162,7 @@ The following exact-rational campaign covered eight more adjacent beta cells,
 `beta=[3223/32,3231/32]=[100.71875,100.96875]`, with
 `lambda=[3/2,19/10]`, `M=115`, orders `(50,50)`, and 500 Arb bits.  All eight
 production runs and independent replays passed (`failures=0`).  The manifest
-`run-manifests/surface-scaled-pair-mean-value-cover-beta100p71875-100p96875-lambda150-190-20260720.json`
+`run-records/legacy/surface-scaled-pair-mean-value-cover-beta100p71875-100p96875-lambda150-190-20260720.json`
 records the hashes, and the exact-rational cover audit verifies the Cartesian
 tiling with no gaps or overlaps.
 
@@ -175,7 +175,7 @@ An additional exact-rational campaign covered
 `beta=[3231/32,3239/32]=[100.96875,101.21875]`, again with
 `lambda=[3/2,19/10]`, `M=115`, orders `(50,50)`, and 500 Arb bits.  All eight
 production/replay pairs passed (`failures=0`).  The manifest
-`run-manifests/surface-scaled-pair-mean-value-cover-beta100p96875-101p21875-lambda150-190-20260720.json`
+`run-records/legacy/surface-scaled-pair-mean-value-cover-beta100p96875-101p21875-lambda150-190-20260720.json`
 and its cover audit record the exact tiling and byte-identical hashes.
 
 This remains candidate evidence only (`promotion=NONE`); neither G2 nor G6

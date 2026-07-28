@@ -28,6 +28,7 @@ from audit_surface_g2_relay_admissibility import (
     parse_transcript,
     verify_outputs,
 )
+from run_record_archive import iter_auditable_run_records
 
 
 def beta_union(units):
@@ -53,7 +54,7 @@ def beta_union(units):
 
 def scan():
     units = []
-    for path in sorted((ROOT / "run-manifests").glob("surface-scaled-bulk-*.json")):
+    for _, path in iter_auditable_run_records("surface-scaled-bulk-*.json"):
         try:
             manifest = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):

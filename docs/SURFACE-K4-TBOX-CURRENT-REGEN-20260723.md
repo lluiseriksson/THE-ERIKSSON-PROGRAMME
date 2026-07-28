@@ -20,7 +20,7 @@ production/replay byte equality PASS
 cell-by-cell equality with the historical transcripts after stripping only
 the expected `git_head` line and the stale carrier digest.  Thus the
 regeneration changes provenance, not the numerical evidence.  The manifest is
-`run-manifests/surface-remainder-k4-tbox-current-regen-20260723.json`.
+`run-records/legacy/surface-remainder-k4-tbox-current-regen-20260723.json`.
 
 This still does **not** prove the weighted K4 statement or the global
 `S1'''/S2'''` remainder: endpoint regularity, overlaps, weighted transport,

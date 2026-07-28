@@ -5,7 +5,7 @@ import hashlib
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "run-manifests" / "surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-extension5-20260723.json"
+OUT = ROOT / "run-records" / "local-staging" / "surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-extension5-20260723.json"
 DRIVER = "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair_extension5.py"
 PREREG = "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION5-PREREG-20260723.md"
 VALIDATOR = "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair_extension5.py"

@@ -47,6 +47,29 @@ The canonical machine-readable proof-state contract is
 [`project-state.json`](project-state.json); repository HEAD and paper commits
 may advance without changing that recorded Lean checkpoint.
 
+### Evidence control plane
+
+Numerical provenance now has two explicit, non-interchangeable namespaces:
+
+* [`run-manifests/`](run-manifests/) contains only strict schema-v1 execution
+  manifests.  Every entry passes
+  `python scripts/validate_run_manifests.py --require-nonempty`.
+* [`run-records/legacy/`](run-records/legacy/) contains byte-preserved
+  pre-schema and specialized historical ledgers.  Their original paths and
+  raw hashes are frozen in
+  [`run-records/legacy-index.json`](run-records/legacy-index.json).  They can
+  support a claim only through a named domain validator that rechecks the
+  underlying artifacts; they are never accepted as generic execution
+  manifests.
+
+The pre-guard transcript inventory is frozen separately in
+[`run-records/historical-artifact-baseline.json`](run-records/historical-artifact-baseline.json).
+That baseline cannot satisfy changed-artifact coverage: every new or modified
+computational transcript still requires a strict manifest.  The permanent
+gate is `python scripts/run_record_archive.py check`; the migration rationale
+and terminal criteria are recorded in
+[`docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md`](docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md).
+
 The bars below are communication estimates for humans, not theorem
 probabilities.  The formal record remains the compiler, `oracle_check.lean`,
 and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).

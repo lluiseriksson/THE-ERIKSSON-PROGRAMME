@@ -5,6 +5,8 @@
 # Scratch / build artifacts
 build_log.txt
 run_build.bat
+__pycache__/
+*.py[cod]
 *.log
 build_and_push_*.ps1
 commit_and_push_*.ps1
@@ -17,3 +19,8 @@ source-packets/out/*.zip
 docs/source-db/*.sqlite-wal
 docs/source-db/*.sqlite-shm
 # END ERIKSSON SOURCE DATABASE PRIVATE ARTIFACTS
+
+# Historical/custom run-record generators write here for local inspection.
+# JSON must be converted to a strict manifest or explicitly indexed evidence
+# before it can be committed.
+run-records/local-staging/*.json

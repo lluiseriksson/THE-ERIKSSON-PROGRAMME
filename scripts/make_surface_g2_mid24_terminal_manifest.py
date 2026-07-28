@@ -9,7 +9,7 @@ from pathlib import Path
 from validate_surface_g2_mid24_terminal import validate
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "run-manifests" / "surface-scaled-bulk-cwin3p2-mid24-terminal-20260725.json"
+OUT = ROOT / "run-records" / "local-staging" / "surface-scaled-bulk-cwin3p2-mid24-terminal-20260725.json"
 
 
 def sha(path: Path) -> str:

@@ -1,14 +1,17 @@
 import json
 from pathlib import Path
+import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
 
 
 def test_kd_floor_union_has_contiguous_zero_failure_partition():
+    from run_record_archive import frozen_record_path
+
     manifest = json.loads(
-        (ROOT / "run-manifests/surface-kd-floor-union-20260721.json")
-        .read_text()
+        frozen_record_path("surface-kd-floor-union-20260721.json").read_text()
     )
     assert manifest["status"] == "PROBE_ONLY"
     assert manifest["total_rows"] == 3002

@@ -17,6 +17,19 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
+**Repository evidence control plane repaired (2026-07-29).**  The former
+`run-manifests/` directory mixed 33 strict executable manifests with hundreds
+of pre-schema, candidate and domain-specific ledgers.  The strict directory
+is now schema-pure; 590 byte-preserved records live under
+[`run-records/legacy/`](run-records/legacy/) behind a hash-bound index, and
+2,139 historical computational text artifacts have a frozen baseline that
+does not exempt future changes from manifest coverage.  Specialized Surface
+validators resolve old ledgers through that index and reproduce the original
+501-owner terminal fingerprint.  The strict checker, archive checker, all
+workflow state gates, the Surface final seal and the full 704-test suite pass.
+See
+[`docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md`](docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md).
+
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03

@@ -18,6 +18,7 @@ from fractions import Fraction
 from pathlib import Path
 
 from flint import arb, ctx
+from run_record_archive import iter_auditable_run_records
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -322,15 +323,18 @@ def terminal_fingerprint(units: list[dict], ownership: list[dict]) -> str:
             ).encode("utf-8")
         )
         digest.update(b"\0")
-        for relative in (
-            f"run-manifests/{row['manifest']}",
-            unit["production"],
-            unit["replay"],
+        for logical, physical in (
+            (
+                f"run-manifests/{row['manifest']}",
+                ROOT / unit["record_path"],
+            ),
+            (unit["production"], ROOT / unit["production"]),
+            (unit["replay"], ROOT / unit["replay"]),
         ):
-            digest.update(relative.encode("utf-8"))
+            digest.update(logical.encode("utf-8"))
             digest.update(b"\0")
             digest.update(
-                (ROOT / relative).read_bytes().replace(b"\r\n", b"\n")
+                physical.read_bytes().replace(b"\r\n", b"\n")
             )
             digest.update(b"\0")
     return digest.hexdigest()
@@ -340,7 +344,7 @@ def audit_summary() -> dict:
     ctx.prec = 180
     units = []
     skipped = []
-    for path in sorted((ROOT / "run-manifests").glob(MANIFEST_GLOB)):
+    for logical_path, path in iter_auditable_run_records(MANIFEST_GLOB):
         try:
             manifest = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):
@@ -361,7 +365,9 @@ def audit_summary() -> dict:
             continue
         groups = output_groups(manifest)
         if not groups:
-            units.append({"manifest": path.name, "status": manifest.get("status"),
+            units.append({"manifest": path.name,
+                          "record_path": path.relative_to(ROOT).as_posix(),
+                          "status": manifest.get("status"),
                           "ok": False, "reasons": ["production_or_replay_missing"]})
             continue
         for group_name, production, replay in groups:
@@ -371,7 +377,9 @@ def audit_summary() -> dict:
                       if production_path.is_file()
                       else {"ok": False, "reasons": ["no_production_transcript"]})
             reasons.extend(parsed.get("reasons", []))
-            units.append({"manifest": path.name, "unit": group_name,
+            units.append({"manifest": path.name,
+                          "record_path": path.relative_to(ROOT).as_posix(),
+                          "unit": group_name,
                           "status": manifest.get("status"),
                           "ok": not reasons and parsed.get("ok", False),
                           "reasons": sorted(set(reasons)),

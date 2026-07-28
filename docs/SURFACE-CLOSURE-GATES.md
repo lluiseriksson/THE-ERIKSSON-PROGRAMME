@@ -1,11 +1,17 @@
 # Surface Theorem closure gates
 
-**Status date:** 2026-07-28
+**Status date:** 2026-07-29
 **Submission state:** `READY_FOR_CLAIM_AUDIT`
 
-**Repository integration state:** `BLOCKED` — the terminal weak-main seal
-reproduces, but PR #31 still fails the unchanged run-manifest and changed-
-artifact coverage guards.  See
+**Repository integration state:** `PASS` — the terminal weak-main seal
+reproduces after the repository-wide run-record migration.  Strict schema-v1
+execution manifests remain in `run-manifests/`; byte-preserved pre-schema and
+specialized ledgers moved to the hash-indexed `run-records/legacy/` namespace.
+The Surface domain validators resolve their frozen ledgers through that index,
+recheck the underlying artifacts, and reproduce the original 501-owner
+terminal fingerprint.  The historical artifact baseline cannot satisfy
+changed-artifact coverage.  See
+`RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md` and
 `SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`.
 
 ## External portability audit and repair
@@ -234,7 +240,7 @@ Arb-300 production and replay transcripts contain 246 adjacent strict-negative
 rows and are byte-identical; the independent validator is
 `scripts/validate_surface_scaled_bulk_cwin3p2_rescue300.py`.  The owner
 manifest is
-`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-101p84375-101p90625-20260724.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-rescue300-101p84375-101p90625-20260724.json`.
 This is candidate-only evidence: it does not establish the sign-to-`(H_tail)`
 relay, does not close the remaining beta intervals, and does not change G2 or
 G6.
@@ -242,7 +248,7 @@ G6.
 A second 300-bit rescue box `[3261/32,102]` also completed with 259
 byte-identical production/replay rows under the same strict contract.  Its
 manifest is
-`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-101p90625-102-20260724.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-rescue300-101p90625-102-20260724.json`.
 The candidate topology therefore reaches beta `102`; the remaining
 `[102,1000/9]` interval and the sign-to-tail relay remain open.
 
@@ -256,7 +262,7 @@ fixed unit `[102,1633/16]`.  The unchanged CWIN=`3/2`, order-40/order-50,
 300-bit rescue contract completed production and replay with 246 adjacent
 strict-negative rows; the two transcripts are byte-identical and pass the
 independent rescue validator.  The owner manifest is
-`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102-102p0625-20260724.json`
+`run-records/legacy/surface-scaled-bulk-cwin3p2-rescue300-102-102p0625-20260724.json`
 and the preregistration is
 `docs/SURFACE-G2-CWIN3P2-RESCUE300-102-102P0625-PREREG-20260724.md`.
 This advances candidate topology only to `1633/16`; the remaining frontier
@@ -266,14 +272,14 @@ blocked and the paper remains `DO_NOT_SUBMIT`.
 The immediately adjacent rescue `[1633/16,817/8]` then completed under the
 same frozen contract with 247 byte-identical production/replay rows and an
 independent validator pass.  Its owner manifest is
-`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102p0625-102p125-20260724.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-rescue300-102p0625-102p125-20260724.json`.
 The candidate component now reaches `817/8`; this remains sign evidence only,
 with the finite-beta relay and G2/G6 unchanged.
 
 The next adjacent rescue `[817/8,1635/16]` also passed the frozen contract:
 247 strict-negative rows, byte-identical replay, and independent validation.
 Its manifest is
-`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102p125-102p1875-20260724.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-rescue300-102p125-102p1875-20260724.json`.
 The candidate component now reaches `1635/16`; no terminal gate changes.
 
 The read-only aggregate candidate audit
@@ -293,7 +299,7 @@ contain 230 adjacent strict-negative rows, are byte-identical at SHA-256
 `45742F630DF8BAFFD5A5C7A7D6893A7E7AC366EF556B4D462A060FCC15FF06E8`, and
 pass `scripts/validate_surface_scaled_bulk_cwin3p2_rescue300.py`.  The
 candidate manifest is
-`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-101p8125-101p84375-20260724.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-rescue300-101p8125-101p84375-20260724.json`.
 The normalized candidate union now reaches beta `102` with three remaining
 gaps, `[765/16,69]`, `[81,401/4]`, and `[102,1000/9]`; the finite-beta relay
 still reports `RELAY_LEMMA_UNPROVED`, so no G2 or G6 promotion follows.
@@ -386,7 +392,7 @@ The current-source replay pair was independently rechecked on 2026-07-24:
 `05CED729DC5260F8D5DC68813D6E221185B7560E28F2D1B6FD41B712DE8D5DA4`, and
 the exact B(0) coefficient audit pass.  Its source hashes match the current
 worktree and are recorded in
-`run-manifests/surface-remainder-k2-signed-bilinear-current-source-20260724.json`.
+`run-records/legacy/surface-remainder-k2-signed-bilinear-current-source-20260724.json`.
 This is a provenance repair only; it remains candidate evidence and carries
 no K2/G2/G6 promotion.
 
@@ -499,7 +505,7 @@ endpoint is strictly negative and the two transcripts are byte-identical.
 The executable replay validator is
 `scripts/validate_surface_scaled_bulk_cwin3p2_seeded_grid.py`, and provenance
 is in
-`run-manifests/surface-scaled-bulk-cwin3p2-seeded-85-85p25-20260725.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-seeded-85-85p25-20260725.json`.
 This is a useful candidate witness and a reproducible performance repair, but
 it remains explicitly `current-candidate`: the authoritative G2 union still
 has the full `[85,401/4]` gap and the finite-sign-to-`(H_tail)` relay is not a
@@ -514,7 +520,7 @@ promotion mechanism.
 
 The adjacent unit `[341/4,171/2]` was then completed with the same protocol:
 270 rows, strict negative Arb upper endpoints, byte-identical replay, and
-manifest `run-manifests/surface-scaled-bulk-cwin3p2-seeded-85p25-85p5-20260725.json`.
+manifest `run-records/legacy/surface-scaled-bulk-cwin3p2-seeded-85p25-85p5-20260725.json`.
 This extends the candidate sign witness to `[85,85.5]`; it does not alter the
 authoritative G2 union or the unresolved analytic relay.
 
@@ -1277,7 +1283,7 @@ unchanged order-30/order-37, 180-bit contract.  The retained empty capture is
 the incident record is `docs/INCIDENT-SCALED-BULK-101P75-101P8125-20260720.md`.
 The preceding unit `[101.6875,101.75]` did pass production and replay and is
 manifested at
-`run-manifests/surface-scaled-bulk-cwin3p2-high-101p6875-101p75-20260720.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-high-101p6875-101p75-20260720.json`.
 Neither record changes the candidate-only status of the scaled campaign or
 promotes G2/G6; a transformed-coordinate or asymptotic replacement requires
 its own preregistration and an independent sign-to-`(H_tail)` relay.
@@ -1320,7 +1326,7 @@ K4 positive-band continuation (2026-07-19): the preregistered isolated
 campaign `[0.0305,0.05]` passed all 39 adjacent bands in production and fresh
 replay, with 89,856 terminal cells and worst normalized fraction
 `0.501618819006`.  The provenance manifest is
-`run-manifests/surface-remainder-k4-positive-0305-0500-20260719.json`.
+`run-records/legacy/surface-remainder-k4-positive-0305-0500-20260719.json`.
 This is candidate local evidence only; the regular endpoint, `t`-union,
 regular-ball overlap, and literal S1'''/S2''' judges remain open, so K4/G6 are
 unchanged.
@@ -1328,13 +1334,13 @@ unchanged.
 Current-head provenance supersession (2026-07-24): the same 39 production/replay
 pairs pass the current unit and union validators with 89,856 cells and worst
 fraction `0.501826306922418`.  The superseding manifest is
-`run-manifests/surface-remainder-k4-positive-0305-0500-current-20260724.json`.
+`run-records/legacy/surface-remainder-k4-positive-0305-0500-current-20260724.json`.
 It remains `current-candidate-local-only` with `promotion: NONE`; no K4,
 S1'''/S2''', G2, or G6 claim is carried.
 
 The separate current-head t-box chain on `t\in[3,\pi]` was likewise
 re-manifested as
-`run-manifests/surface-remainder-k4-tbox-current-20260724.json`: 15 adjacent
+`run-records/legacy/surface-remainder-k4-tbox-current-20260724.json`: 15 adjacent
 units, 34,560 cells, and byte-identical production/replay.  This is still a
 local candidate union; it does not provide the delta cover, regular-ball
 overlap, or the global weighted S1'''/S2''' judge.
@@ -1344,23 +1350,23 @@ every admitted transcript now gives one component `[20,101.625]`, with exact
 remaining gap `[101.625,1000/9]`.  The historical unpaired run on
 `[78.125,78.25]` remains intentionally excluded; the replacement
 production/replay pair is admitted and manifested in
-`run-manifests/surface-scaled-bulk-cwin3p2-high-78-seam-20260719.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-high-78-seam-20260719.json`.
 The successors `[100.25,100.3125]` and `[100.3125,100.5625]` subsequently
 passed production, independent replay, and strict validation (303 rows and
 1,220 rows respectively), with manifests
-`run-manifests/surface-scaled-bulk-cwin3p2-high-100p25-20260719.json`; the
+`run-records/legacy/surface-scaled-bulk-cwin3p2-high-100p25-20260719.json`; the
 second manifest is
-`run-manifests/surface-scaled-bulk-cwin3p2-high-100p3125-100p5625-20260719.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-high-100p3125-100p5625-20260719.json`.
 The continuation `[100.8125,101.0625]` and the fresh continuation
 `[101.0625,101.3125]` also passed production, independent replay, strict
 validation, and exact adjacency; the latter is owned by
-`run-manifests/surface-scaled-bulk-cwin3p2-high-101p0625-101p3125-20260719.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-high-101p0625-101p3125-20260719.json`.
 The next continuation `[101.3125,101.5625]` also passed under the same
 contract and is owned by
-`run-manifests/surface-scaled-bulk-cwin3p2-high-101p3125-101p5625-20260719.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-high-101p3125-101p5625-20260719.json`.
 The single-unit continuation `[101.5625,101.625]` then passed production,
 independent replay, and strict validation (320 rows), and is owned by
-`run-manifests/surface-scaled-bulk-cwin3p2-high-101p5625-101p625-20260720.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-high-101p5625-101p625-20260720.json`.
 The immediately following standard unit hit `min_dt` at `t=2.306947011918975`;
 the failed transcript and isolated order-40/order-45 rescue timeout are
 recorded in `docs/INCIDENT-SCALED-BULK-101P625-BOUNDARY-20260719.md` and
@@ -1771,7 +1777,7 @@ the replay is a determinism check at one code head, not an independent
 implementation, and the moving-edge complement is assigned to G5.  It does
 not promote K2 globally, discharge `(H_tail)`, or alter G2, K4, S1'''/S2''',
 or G6.  The authoritative nonpromotion manifest is
-`run-manifests/surface-remainder-k2-hybrid009-current-head-replay-20260722.json`.
+`run-records/legacy/surface-remainder-k2-hybrid009-current-head-replay-20260722.json`.
 
 ## First finite-beta gap rerun (2026-07-24)
 
@@ -1781,7 +1787,7 @@ bulk gap, `beta in [765/16,193/4]`, was rerun at the current head with
 unit contains 198 adjacent strict-negative t rows.  A fresh replay is
 byte-identical and the dedicated validator passes.  The current dual-hash
 record is
-`run-manifests/surface-scaled-bulk-cwin3p2-mid-gap-765-16-193-4-current-20260724.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-mid-gap-765-16-193-4-current-20260724.json`.
 This repairs one coverage gap as candidate sign evidence only; the remaining
 gaps and the sign-to-`(H_tail)` relay still keep G2 blocked.
 
@@ -1801,7 +1807,7 @@ upper-bound test) without changing any transcript or promoting the candidate
 evidence.
 
 The current-hash two-box endpoint strip was then regenerated and validated
-against the worktree (`run-manifests/surface-remainder-k4-endpoint-strip-current-20260724.json`):
+against the worktree (`run-records/legacy/surface-remainder-k4-endpoint-strip-current-20260724.json`):
 3456 cells, seven aggregate fractions, worst `nuD_main=0.7995617222...`.
 Its scope remains local `t=2.9`, `delta=[0.048,0.05]`; it carries no global K4
 or S1'''/S2''' load.
@@ -1826,7 +1832,7 @@ A fresh current-head production/replay pair on
 fallbacks; all seven literal fractions are strictly below one, with maximum
 `nuD_main=0.418711012655733...`.  The validator and manifest are
 `scripts/validate_surface_remainder_k4_gapbranch_tbox.py` and
-`run-manifests/surface-remainder-k4-gapbranch-t300-310-20260724.json`.
+`run-records/legacy/surface-remainder-k4-gapbranch-t300-310-20260724.json`.
 This is dependency-safe local candidate evidence only: the regular-ball
 endpoint, global delta/t union, overlap, and weighted S1'''/S2''' judge remain
 open, so K4 and G6 are unchanged.
@@ -1854,7 +1860,7 @@ two `t` units (`parent_000`, `parent_001`) under the current head. Both units
 satisfy the frozen order-4 hybrid contract with grid 384 and positive outward
 margins `0.8821849531...` and `0.8821344393...`. The partial provenance
 record is
-`run-manifests/surface-remainder-k2-hybrid009-current-head-parent000-001-20260724.json`.
+`run-records/legacy/surface-remainder-k2-hybrid009-current-head-parent000-001-20260724.json`.
 The independent replay for the complete 158-unit birth is still pending, so
 these two units remain quarantined and carry no K2/G2/G6 promotion.
 
@@ -1863,7 +1869,7 @@ The provenance discrepancy is now audited explicitly rather than hidden:
 passes all 158 production rows against the independent replay after
 normalising only the provenance-head and wall-clock lines.  It records the
 actual split (156 units at `027885a6`, two replacements at `2627288a`) in
-`run-manifests/surface-remainder-k2-hybrid009-mixed-provenance-20260724.json`.
+`run-records/legacy/surface-remainder-k2-hybrid009-mixed-provenance-20260724.json`.
 This validates the regular K2 lane's deterministic fields and positive margins,
 but deliberately does not promote K2's moving-edge complement, G2, K4,
 S1'''/S2''', or G6; the manuscript must not claim a single-source-head run.
@@ -1871,7 +1877,7 @@ S1'''/S2''', or G6; the manuscript must not claim a single-source-head run.
 The K4 current-regeneration hash drift is recorded in
 `INCIDENT-K4-CURRENT-REGEN-HASH-DRIFT-20260724.md`: the superseded 15-unit
 archive carried a stale carrier hash.  A fresh production/replay rerun now
-exists in `run-manifests/surface-remainder-k4-tbox-current-20260724.json`:
+exists in `run-records/legacy/surface-remainder-k4-tbox-current-20260724.json`:
 15/15 units and 34,560 cells pass byte-equality and current dependency checks,
 with source head recorded separately from the manifest-generation head.  This
 removes the provenance quarantine for that local t-box candidate only.  It
@@ -1881,7 +1887,7 @@ unpromoted.
 
 The 39 positive K4 bands at `t=2.9` were likewise regenerated under the
 current carrier.  The manifest
-`run-manifests/surface-remainder-k4-positive-0305-0500-current-20260724.json`
+`run-records/legacy/surface-remainder-k4-positive-0305-0500-current-20260724.json`
 and `scripts/audit_surface_remainder_k4_positive_current_regen.py` record
 78/78 production/replay transcripts, 89,856 cells, current dependency hashes,
 and strictly subunit fractions.  This closes the provenance issue for that
@@ -1889,14 +1895,14 @@ local positive-delta lane only; it still supplies neither the regular
 delta=0 splice nor the global delta/t union or weighted judges.
 
 The centred lower K4 prefix was also regenerated under the current carrier:
-`run-manifests/surface-remainder-k4-centered-lower-current-20260724.json`
+`run-records/legacy/surface-remainder-k4-centered-lower-current-20260724.json`
 records 6/6 production/replay units and 55,296 cells with current dependency
 hashes and byte equality.  It is still a local candidate union and carries no
 K4/G2/G6/S1'''/S2''' promotion.
 
 The G5 five-family half-line archive now has an explicit historical-source
 audit in `scripts/validate_surface_right_edge_five_family_halfline_historical.py`
-and `run-manifests/surface-right-edge-five-family-halfline-historical-audit-20260724.json`.
+and `run-records/legacy/surface-right-edge-five-family-halfline-historical-audit-20260724.json`.
 It validates all 600 production/replay rows against source head
 `1da7e4148f03ebafa350756e0981f647a3e8954e`, including dependency hashes and
 positive margins.  This records the stated historical G5 scope; it does not

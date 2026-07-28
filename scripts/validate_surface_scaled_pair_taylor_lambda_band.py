@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from flint import arb, ctx
+from run_record_archive import frozen_record_path
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,9 +41,11 @@ def main() -> int:
     assert production.read_bytes() == replay.read_bytes()
     h1, h2 = validate(production), validate(replay)
     assert h1 == h2
-    manifest = json.loads((ROOT /
-        "run-manifests/surface-scaled-pair-taylor-band-20260720.json")
-                          .read_text(encoding="utf-8"))
+    manifest = json.loads(
+        frozen_record_path(
+            "surface-scaled-pair-taylor-band-20260720.json"
+        ).read_text(encoding="utf-8")
+    )
     assert manifest["git_head"] == h1.split(" ", 1)[1]
     assert manifest["transcript_sha256"] == sha256(production)
     assert manifest["replay_sha256"] == sha256(replay)

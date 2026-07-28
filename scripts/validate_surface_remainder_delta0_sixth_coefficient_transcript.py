@@ -4,7 +4,10 @@ import hashlib
 from pathlib import Path
 import subprocess
 
-from surface_eol_hashes import sha256_variants
+try:
+    from surface_eol_hashes import sha256_variants
+except ModuleNotFoundError:  # Loaded directly by a test module.
+    from scripts.surface_eol_hashes import sha256_variants
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSCRIPT = ROOT/"scripts"/"surface_remainder_delta0_sixth_coefficient_transcript.txt"

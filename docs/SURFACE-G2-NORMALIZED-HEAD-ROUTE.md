@@ -98,6 +98,6 @@ with the frozen λ-domain `[3/2,19/10]`, 115 modes, order 50 in both
 parameters, and 500 Arb bits. Production and independent replay are
 byte-identical on both cells; the executable cover audit reports two cells
 and strict negative `total_upper` on each. The manifest is
-`run-manifests/surface-scaled-pair-mean-value-cover-beta6527p64-6531p64-lambda150-190-20260721.json`.
+`run-records/legacy/surface-scaled-pair-mean-value-cover-beta6527p64-6531p64-lambda150-190-20260721.json`.
 This extends only the candidate inventory. It supplies no complex-disk tail,
 no exhaustive finite-β union, no scaled-tail splice, and no G2/G6 promotion.

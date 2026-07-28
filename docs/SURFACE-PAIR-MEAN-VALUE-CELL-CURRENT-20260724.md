@@ -12,7 +12,7 @@ under the current source head with 115 modes, beta/lambda Taylor orders
 - Outward-rounded `total_upper`:
   `-4.290376557020880438567038819302428324274214220431999351767500629117481403525452902853241537784427322e-109 +/- 4.80e-209`.
 - The current-head manifest is
-  `run-manifests/surface-scaled-pair-mean-value-cell-beta101p8125-101p84375-current-20260724.json`.
+  `run-records/legacy/surface-scaled-pair-mean-value-cell-beta101p8125-101p84375-current-20260724.json`.
 - The executable provenance check is
   `scripts/validate_surface_scaled_pair_mean_value_current_cell.py`; it
   rechecks the production/replay hash, all six dependency hashes, rational

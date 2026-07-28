@@ -8,7 +8,7 @@ from fractions import Fraction
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "run-manifests" / "surface-remainder-k4-tbox-current-regen-20260723.json"
+OUT = ROOT / "run-records" / "local-staging" / "surface-remainder-k4-tbox-current-regen-20260723.json"
 PI_HI = Fraction(31415927, 10_000_000)
 UNITS = [(f"{i:03d}_{i+1:03d}", Fraction(i, 100), Fraction(i + 1, 100))
          for i in range(300, 314)] + [("314_pi", Fraction(157, 50), PI_HI)]

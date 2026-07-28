@@ -210,7 +210,7 @@ point `t=2.95` on the two adjacent endpoint boxes `[0.048,0.049]` and
 weighted totals have strict outward upper endpoint below one.  The executable
 validator and manifest are
 `scripts/validate_surface_remainder_k4_endpoint_strip_t295.py` and
-`run-manifests/surface-remainder-k4-endpoint-strip-t295-20260726.json`.
+`run-records/legacy/surface-remainder-k4-endpoint-strip-t295-20260726.json`.
 This is a second scoped witness only: it does not supply the missing t-union,
 regular endpoint patch, low-z tail, overlap theorem, or global S1'''/S2'''
 certificate, so `NO_K4_PROMOTION` remains unchanged.
@@ -310,20 +310,20 @@ The isolated successor campaign on `[0.0305,0.05]` now has all 39 adjacent
 rational bands validated in production and replay.  Its aggregate is 89,856
 terminal cells with worst normalized fraction `0.501618819006`; provenance is
 recorded in
-`run-manifests/surface-remainder-k4-positive-0305-0500-20260719.json`.
+`run-records/legacy/surface-remainder-k4-positive-0305-0500-20260719.json`.
 This is a local positive-delta candidate result only.  The regular endpoint,
 the `t`-union, overlap with the regular-ball patch, and literal S1'''/S2'''
 weighted judges remain open, so K4 and G6 remain unpromoted.
 
 On 2026-07-24 the 39 pairs were re-audited against the current worktree and
 given a separate current-head provenance manifest,
-`run-manifests/surface-remainder-k4-positive-0305-0500-current-20260724.json`.
+`run-records/legacy/surface-remainder-k4-positive-0305-0500-current-20260724.json`.
 The current union has the same 89,856 cells and worst fraction
 `0.501826306922418`; this is a provenance repair only and remains local
 candidate evidence with `promotion: NONE`.
 
 The independent t-box chain has also received a current-head manifest,
-`run-manifests/surface-remainder-k4-tbox-current-20260724.json`, covering
+`run-records/legacy/surface-remainder-k4-tbox-current-20260724.json`, covering
 15 adjacent units and 34,560 cells on `t\in[3,\pi]` at the registered delta
 band.  Its replay and local fraction checks pass, but it does not close the
 delta union, regular-ball overlap, or the weighted global judge.
@@ -373,7 +373,7 @@ The preregistered band was executed with production and an independent replay:
 both contain 9,216 terminal cells, 268 fallback cells, and the validator passes.
 The seven normalized carrier fractions are all below one; the largest is
 `nuD_main = 0.275772063752004...`.  The candidate manifest is
-`run-manifests/surface-remainder-k4-centered-00295-0030-20260720.json`.
+`run-records/legacy/surface-remainder-k4-centered-00295-0030-20260720.json`.
 This is only a local contraction-boundary witness.  It supplies no regular
 ball, overlap, `t`-union, or global S1'''/S2''' judge, so `NO_K4_PROMOTION`
 remains unchanged.
@@ -406,7 +406,7 @@ largest is `MD2r_mirror=0.503333970406320...`. The two transcripts have SHA-256
 `994e62e6cff74680b3ee1168eba326b0f542bbf42e80c16d239c1b282cdf5089`.
 
 This is recorded as
-`run-manifests/surface-remainder-k4-tbox-delta0040-t220-222-20260721.json`.
+`run-records/legacy/surface-remainder-k4-tbox-delta0040-t220-222-20260721.json`.
 It is a single closed parameter box, not a `t`-union: the regular-ball
 construction, overlap argument, literal weighted judges, and the remaining
 delta domain are still absent. Therefore `NO_K4_PROMOTION`, G2, G6, and the
@@ -419,7 +419,7 @@ refreshing `k4p_00`. All 39 adjacent bands on `[61/2000,1/20]` have
 production/replay agreement, 89,856 terminal cells, and seven literal
 fractions below one. The current worst fraction is
 `nuD_main = 0.501826306922...` on `k4p_00`. The manifest is
-`run-manifests/surface-remainder-k4-positive-0305-0500-20260719.json`.
+`run-records/legacy/surface-remainder-k4-positive-0305-0500-20260719.json`.
 This remains a centred-delta candidate only: it supplies no regular-ball
 construction, overlap theorem, t-union, or global weighted S1'''/S2''' judge,
 and therefore does not alter `NO_K4_PROMOTION` or G6.
@@ -430,7 +430,7 @@ The fixed 2,304-cell centred probe was extended to `t=[77/25,309/100]`.
 Production and replay are byte-identical and all seven literal carrier
 fractions remain strictly below one; the largest is
 `nuD_main = 0.141516484658933...`.  The artifact is
-`run-manifests/surface-remainder-k4-tbox-delta0040-t308-309-20260723.json`.
+`run-records/legacy/surface-remainder-k4-tbox-delta0040-t308-309-20260723.json`.
 This is still a single-box witness: it does not supply the regular-ball
 construction, the overlap theorem, a global `t`-union, or the weighted
 `S1'''/S2'''` relay, so K4 and G6 remain unpromoted.
@@ -483,7 +483,7 @@ majorant while retaining the signed carrier sum.  A separate production/replay
 driver now passes on `t=[2.97,2.975]`: all seven aggregate fractions are
 strictly below one, with total `nuD_main=0.540092394010015...` and byte-equal
 transcripts.  The self-contained record is
-`run-manifests/surface-remainder-k4-tbox-rescue2304-2970_2975-20260726.json`.
+`run-records/legacy/surface-remainder-k4-tbox-rescue2304-2970_2975-20260726.json`.
 
 This is a current-hash, single-box scoped witness only.  It does not repair
 the regular-ball construction, establish a global t-union, discharge the

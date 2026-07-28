@@ -18,6 +18,7 @@ from pathlib import Path
 from flint import arb, ctx
 
 import audit_surface_g2_relay_admissibility as g2
+from run_record_archive import iter_auditable_run_records
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,7 +40,9 @@ def main() -> int:
     units: list[dict] = []
     rejected: list[dict] = []
     seen = set()
-    for manifest_path in sorted((ROOT / "run-manifests").glob("surface-scaled-bulk-*.json")):
+    for _, manifest_path in iter_auditable_run_records(
+        "surface-scaled-bulk-*.json"
+    ):
         try:
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):

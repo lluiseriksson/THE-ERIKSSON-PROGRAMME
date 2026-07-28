@@ -4,9 +4,10 @@ import hashlib
 import json
 from pathlib import Path
 
+from run_record_archive import frozen_record_path
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "run-manifests/surface-kd-floor-union-20260721.json"
+MANIFEST = frozen_record_path("surface-kd-floor-union-20260721.json")
 
 
 def sha256(path):

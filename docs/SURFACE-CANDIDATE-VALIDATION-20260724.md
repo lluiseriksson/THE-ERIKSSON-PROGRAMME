@@ -29,7 +29,7 @@ The same rescue-300 protocol was then run on the frontier unit
 `[102,1633/16]`.  Production and replay each contain 246 adjacent strict-
 negative rows and are byte-identical; the independent validator passes.  The
 owner is
-`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102-102p0625-20260724.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-rescue300-102-102p0625-20260724.json`.
 This is still candidate-only evidence: the normalized union now reaches
 `1633/16`, while the gaps below `1000/9` and the sign-to-`(H_tail)` relay
 remain open.
@@ -37,14 +37,14 @@ remain open.
 An adjacent rescue unit `[1633/16,817/8]` also passed the unchanged 300-bit
 production/replay contract with 247 strict-negative rows and byte identity.
 Its manifest is
-`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102p0625-102p125-20260724.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-rescue300-102p0625-102p125-20260724.json`.
 This extends candidate topology only and does not alter the relay or gate
 state.
 
 The next adjacent unit `[817/8,1635/16]` passed as well, with 247 strict-
 negative rows and byte-identical production/replay.  It remains candidate-only
 and leaves the relay and gate state unchanged; see its owner manifest
-`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102p125-102p1875-20260724.json`.
+`run-records/legacy/surface-scaled-bulk-cwin3p2-rescue300-102p125-102p1875-20260724.json`.
 
 ## K4 candidate unions
 

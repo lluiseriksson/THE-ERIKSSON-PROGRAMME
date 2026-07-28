@@ -70,7 +70,7 @@ def main():
         "promotion": "NONE",
         "notes": "Topology, dependency hashes, local fractions, and replay equality pass; regular-ball overlap, delta union, and literal global S1'''/S2''' remain open.",
     }
-    out = ROOT / "run-manifests" / "surface-remainder-k4-tbox-current-20260724.json"
+    out = ROOT / "run-records" / "local-staging" / "surface-remainder-k4-tbox-current-20260724.json"
     out.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
     print("WROTE", out, "units", len(entries), "cells", data["total_cells"])
 

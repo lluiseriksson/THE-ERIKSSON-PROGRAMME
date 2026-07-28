@@ -54,4 +54,4 @@ python -m pytest -q tests/test_surface_high_beta_g5_ratio_side4_lambda3_validato
 ```
 
 The complete timing, dependency and per-file hash record is
-`run-manifests/surface-high-beta-g5-ratio-side4-lambda3-20260728.json`.
+`run-records/legacy/surface-high-beta-g5-ratio-side4-lambda3-20260728.json`.

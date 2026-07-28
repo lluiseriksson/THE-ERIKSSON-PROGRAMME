@@ -47,17 +47,24 @@ def _blob(relative: str) -> bytes:
     )
 
 
+def _matches_eol_bound(data: bytes, raw_digest: str, lf_digest: str) -> bool:
+    normalized = data.replace(b"\r\n", b"\n")
+    digest = hashlib.sha256(data).hexdigest()
+    return (
+        digest in {raw_digest, lf_digest}
+        and hashlib.sha256(normalized).hexdigest() == lf_digest
+    )
+
+
 def validate() -> dict[str, object]:
     script_bytes = SCRIPT.read_bytes()
     transcript_bytes = TRANSCRIPT.read_bytes()
-    assert hashlib.sha256(script_bytes).hexdigest() == SCRIPT_SHA256
-    assert hashlib.sha256(transcript_bytes).hexdigest() == TRANSCRIPT_SHA256
-    assert hashlib.sha256(script_bytes.replace(b"\r\n", b"\n")).hexdigest() == (
-        SCRIPT_LF_SHA256
+    assert _matches_eol_bound(
+        script_bytes, SCRIPT_SHA256, SCRIPT_LF_SHA256
     )
-    assert hashlib.sha256(
-        transcript_bytes.replace(b"\r\n", b"\n")
-    ).hexdigest() == TRANSCRIPT_LF_SHA256
+    assert _matches_eol_bound(
+        transcript_bytes, TRANSCRIPT_SHA256, TRANSCRIPT_LF_SHA256
+    )
     assert hashlib.sha256(_blob("scripts/certify_bulk_arb.py")).hexdigest() == (
         SCRIPT_LF_SHA256
     )

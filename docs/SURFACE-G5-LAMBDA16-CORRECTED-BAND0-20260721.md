@@ -39,7 +39,7 @@ Artifacts:
 - scripts/surface_right_edge_five_family_finite_lambda16_corrected_band0_production.txt
 - scripts/surface_right_edge_five_family_finite_lambda16_corrected_band0_replay.txt
 - scripts/validate_surface_right_edge_five_family_finite_lambda16_corrected.py
-- run-manifests/surface-right-edge-five-family-lambda16-corrected-band0-20260721.json
+- run-records/legacy/surface-right-edge-five-family-lambda16-corrected-band0-20260721.json
 
 The remaining finite-beta seam is a bulk obligation, not a G5 wedge
 obligation: a certificate is still required on

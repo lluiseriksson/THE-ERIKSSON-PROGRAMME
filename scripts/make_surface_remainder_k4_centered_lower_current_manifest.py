@@ -10,7 +10,7 @@ UNITS = (
     "k4_00275_00280", "k4_00280_00285", "k4_00285_00290",
     "k4_00290_00295", "k4_00295_0030", "k4_0030",
 )
-OUT = ROOT / "run-manifests" / "surface-remainder-k4-centered-lower-current-20260724.json"
+OUT = ROOT / "run-records" / "local-staging" / "surface-remainder-k4-centered-lower-current-20260724.json"
 
 
 def digest(path: Path, lf: bool = False) -> str:

@@ -22,7 +22,7 @@ nuD_main = 0.9846732229353782...
 
 The production and replay transcripts are byte-identical and pass the
 independent validator.  The manifest is
-`run-manifests/surface-k4-lowz-dispatch-weighted-smoke-20260723.json`.
+`run-records/legacy/surface-k4-lowz-dispatch-weighted-smoke-20260723.json`.
 
 ## Scope boundary
 

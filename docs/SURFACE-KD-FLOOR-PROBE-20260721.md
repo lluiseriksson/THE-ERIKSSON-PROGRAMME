@@ -36,7 +36,7 @@ respectively, `864AA36CEA0E98C5AE535B9B6B5754EE3A20E7F5333755F64ED48A73033EF988`
 and `40B8F8F3CAF36CECCC9A28E56577827E441CDB034DB36D7C28C0DC0D6BEEE739`.
 
 An aggregate delta-union replay is now also recorded in
-`run-manifests/surface-kd-floor-union-20260721.json`: three delicate
+`run-records/legacy/surface-kd-floor-union-20260721.json`: three delicate
 sub-unions use a 16x16 grid and the remaining interval uses 8x8, for **3002
 rows and zero failures** over the full `[1/1000,1/15]` delta interval. Its
 executable validator is `scripts/validate_surface_kd_floor_union.py`.

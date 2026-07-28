@@ -10,6 +10,7 @@ from pathlib import Path
 from flint import arb, ctx
 
 from validate_surface_g2_unit82_terminal import validate
+from run_record_archive import frozen_record_path
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -20,7 +21,9 @@ def sha(path: Path) -> str:
 
 def main() -> int:
     ctx.prec = 240
-    manifest_path = ROOT / "run-manifests" / "surface-scaled-bulk-cwin3p2-unit82-terminal-20260725.json"
+    manifest_path = frozen_record_path(
+        "surface-scaled-bulk-cwin3p2-unit82-terminal-20260725.json"
+    )
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert manifest["status"] == "terminal_direct_sign_certified"
     assert manifest["promotion"] == "NONE"

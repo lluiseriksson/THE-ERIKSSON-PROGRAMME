@@ -48,7 +48,7 @@ The first nonzero-width production band is now frozen and replayed:
 `beta=[1629/16,407251/4000]`, `lambda=[3/2,151/100]`, 115 modes,
 orders `(50,50)`, and 500-bit Arb. Its total upper endpoint is about
 `-6.548e-109`; the paired transcript and byte-identical replay are owned by
-`run-manifests/surface-scaled-pair-taylor-band-20260720.json`. This remains a
+`run-records/legacy/surface-scaled-pair-taylor-band-20260720.json`. This remains a
 single beta/lambda band and is not a global finite-beta bridge.
 
 The beta-dependence can be enclosed without micro-subdivision by a mean-value
@@ -56,7 +56,7 @@ form. On the full beta cell `[1629/16,3259/32]` and the same lambda band
 `[3/2,151/100]`, the centre, slope, mode-tail derivative, and Taylor-remainder
 charges give total upper endpoint `-5.9884206602e-109`. Production and replay
 are byte-identical and owned by
-`run-manifests/surface-scaled-pair-mean-value-cell-20260720.json`. The
+`run-records/legacy/surface-scaled-pair-mean-value-cell-20260720.json`. The
 mean-value route is still a single local band; it does not close the global
 finite-beta bridge or alter G2.
 

@@ -8,9 +8,12 @@ from fractions import Fraction
 from pathlib import Path
 
 from validate_surface_g2_mid24_terminal import validate
+from run_record_archive import frozen_record_path
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "run-manifests" / "surface-scaled-bulk-cwin3p2-mid24-terminal-20260725.json"
+MANIFEST = frozen_record_path(
+    "surface-scaled-bulk-cwin3p2-mid24-terminal-20260725.json"
+)
 
 
 def sha(path: Path) -> str:

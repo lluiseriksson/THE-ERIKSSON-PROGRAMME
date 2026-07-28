@@ -32,3 +32,19 @@ def test_dependency_hash_accepts_only_eol_equivalent_bytes(tmp_path: Path) -> No
     dependency.write_bytes(b"first line\nchanged line\n")
     assert not validator.dependency_hash_matches(dependency, lf_digest)
     assert not validator.dependency_hash_matches(dependency, crlf_digest)
+
+
+def test_transcript_hash_accepts_only_eol_equivalent_bytes(
+    tmp_path: Path,
+) -> None:
+    transcript = tmp_path/"transcript.txt"
+    lf = b"ROW 0\nPASS\n"
+    crlf = lf.replace(b"\n", b"\r\n")
+    transcript.write_bytes(lf)
+    assert validator.transcript_hash_matches(
+        transcript, hashlib.sha256(crlf).hexdigest()
+    )
+    transcript.write_bytes(b"ROW 0\nFAIL\n")
+    assert not validator.transcript_hash_matches(
+        transcript, hashlib.sha256(crlf).hexdigest()
+    )

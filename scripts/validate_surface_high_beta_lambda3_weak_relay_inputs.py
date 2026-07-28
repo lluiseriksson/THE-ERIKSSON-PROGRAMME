@@ -48,6 +48,12 @@ def dependency_hash_matches(path: Path, expected: str) -> bool:
     return expected.lower() in sha256_variants(path)
 
 
+def transcript_hash_matches(path: Path, expected: str) -> bool:
+    """Bind an immutable transcript modulo Git's LF/CRLF representation."""
+
+    return expected.lower() in sha256_variants(path)
+
+
 def upper_endpoint(text: str) -> Decimal:
     match = INTERVAL.fullmatch(text)
     if match is None:
@@ -62,7 +68,7 @@ def validate() -> dict[str, object]:
     if production != replay:
         raise AssertionError("lambda-three production/replay byte mismatch")
     digest = hashlib.sha256(production).hexdigest()
-    if digest != EXPECTED_SHA256:
+    if not transcript_hash_matches(PRODUCTION, EXPECTED_SHA256):
         raise AssertionError(f"unexpected lambda-three digest: {digest}")
     lines = production.decode("utf-8").splitlines()
     recorded = {
@@ -97,7 +103,8 @@ def validate() -> dict[str, object]:
     if not adverse_upper < ADVERSE_THRESHOLD:
         raise AssertionError((adverse_upper, ADVERSE_THRESHOLD))
     return {
-        "transcript_sha256": digest,
+        "transcript_sha256": EXPECTED_SHA256,
+        "checkout_sha256": digest,
         "dependency_count": len(recorded),
         "rho_upper": rho_upper,
         "adverse_upper": adverse_upper,

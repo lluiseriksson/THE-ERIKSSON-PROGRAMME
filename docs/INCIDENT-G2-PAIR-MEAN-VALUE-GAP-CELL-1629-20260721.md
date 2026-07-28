@@ -20,7 +20,7 @@ cover audit.  The strict production upper endpoint is approximately
 The two-cell continuation adds the adjacent cell
 `[3259/32,815/8]`, whose strict upper endpoint is approximately
 `-3.96777275359578e-109`.  The combined manifest is
-`run-manifests/surface-scaled-pair-mean-value-cover-beta1629p16-815p8-lambda150-190-20260721.json`.
+`run-records/legacy/surface-scaled-pair-mean-value-cover-beta1629p16-815p8-lambda150-190-20260721.json`.
 This removes only the first `1/16` beta segment of the former topology gap;
 the next dyadic cell `[1631/16,13049/128]` was subsequently run with the
 same production/replay contract and passed with

@@ -63,7 +63,7 @@ identical and validate with
 `total_upper = -3.196183918960269...e-109`.
 
 The manifest is
-`run-manifests/surface-scaled-pair-mean-value-gap-cell-20260722.json`.
+`run-records/legacy/surface-scaled-pair-mean-value-gap-cell-20260722.json`.
 This is a checked single-cell candidate, not a G2 promotion: the remaining
 beta interval, moving-t cover, scaled-tail splice, and global relay are still
 open.
@@ -71,7 +71,7 @@ open.
 The same repaired production/replay contract also closes the adjacent cell
 `beta=[101.984375,102]`, `lambda=[1.5,1.9]`, with
 `total_upper = -3.072363298465311...e-109`.  The two-cell candidate cover is
-manifested in `run-manifests/surface-scaled-pair-mean-value-gap-cover-20260722.json`;
+manifested in `run-records/legacy/surface-scaled-pair-mean-value-gap-cover-20260722.json`;
 it remains local evidence and does not promote G2.
 
 The same repaired backend was then split at the former order-60 failure
@@ -82,7 +82,7 @@ Arb bits, both half-cells passed in independent production/replay processes:
 * `[102.46875,102.5]`, with `total_upper = -4.339696063927147...e-110`.
 
 The byte-equal transcripts and their manifest are recorded in
-`run-manifests/surface-scaled-pair-mean-value-gap-cover-beta102p4375-102p5-order80-20260722.json`.
+`run-records/legacy/surface-scaled-pair-mean-value-gap-cover-beta102p4375-102p5-order80-20260722.json`.
 These are still candidate cells only: no moving-`t` cover, scaled-tail splice,
 global relay, or G2/G6 promotion is claimed.
 
@@ -90,7 +90,7 @@ One further adjacent cell, `[102.5,102.53125]` at the same lambda box and
 configuration, also passed production/replay with
 `total_upper = -3.338071158877775...e-110`.  Its current-head transcript pair
 and hash are recorded in
-`run-manifests/surface-scaled-pair-mean-value-gap-cell-beta102p5-102p53125-order80-20260722.json`.
+`run-records/legacy/surface-scaled-pair-mean-value-gap-cell-beta102p5-102p53125-order80-20260722.json`.
 The cell is deliberately isolated because the preceding two-cell manifest was
 produced at the prior clean head; this preserves exact provenance rather than
 silently mixing executions.

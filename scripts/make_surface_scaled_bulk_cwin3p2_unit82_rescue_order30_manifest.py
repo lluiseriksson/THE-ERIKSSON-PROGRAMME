@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "run-manifests/surface-scaled-bulk-cwin3p2-unit82-rescue-order30-20260723.json"
+OUT = ROOT / "run-records/local-staging/surface-scaled-bulk-cwin3p2-unit82-rescue-order30-20260723.json"
 
 
 def sha(path: Path) -> str:

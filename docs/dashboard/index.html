@@ -525,6 +525,7 @@ footer {
     Ground truth is the compiler, <code>oracle_check.lean</code>, and the
     <a href="${meta.ledger}">verification ledger</a>. Milestone labels are logical
     proof states, not theorem probabilities or completion estimates.
+    ${meta.control_plane ? `<br><strong>Evidence control plane:</strong> ${escapeHtml(meta.control_plane)}` : ""}
     <a href="${meta.state}">Canonical state</a>. Data: <a href="./data.json">data.json</a>.
   `;
 

@@ -15,7 +15,7 @@ carrier fractions are strictly below one; the largest is
 `994e62e6cff74680b3ee1168eba326b0f542bbf42e80c16d239c1b282cdf5089`.
 
 The manifest is
-`run-manifests/surface-remainder-k4-tbox-delta0040-t220-222-20260721.json`.
+`run-records/legacy/surface-remainder-k4-tbox-delta0040-t220-222-20260721.json`.
 This is a `K4_T_BOX_CERTIFIED_CANDIDATE` with promotion `NONE`. It does not
 prove a union in `t`, the regular-ball endpoint, overlap, the weighted
 S1'''/S2''' judges, or G6. The global theorem and the final seal therefore

@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "run-manifests/surface-scaled-bulk-cwin3p2-unit82-rescue-order30-combined-20260723.json"
+OUT = ROOT / "run-records/local-staging/surface-scaled-bulk-cwin3p2-unit82-rescue-order30-combined-20260723.json"
 SLICES = (
     ("slice1", "surface_scaled_bulk_unit82_rescue_order30", "275/4", "1101/16", 167),
     ("slice2", "surface_scaled_bulk_unit82_rescue_order30_slice2", "1101/16", "1103/16", 172),
