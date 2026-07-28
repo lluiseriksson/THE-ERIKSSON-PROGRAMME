@@ -2765,3 +2765,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.kForm_self
 #print axioms YangMills.OS.kForm_nonneg
 #print axioms YangMills.OS.kForm_definite
+
+-- definiteness genuinely fails at zero coupling (paper v1.2)
+#print axioms YangMills.OS.altVec
+#print axioms YangMills.OS.altVec_ne_zero
+#print axioms YangMills.OS.kForm_altVec_zero_coupling
+#print axioms YangMills.OS.kForm_not_definite_at_zero

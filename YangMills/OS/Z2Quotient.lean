@@ -363,4 +363,40 @@ theorem kForm_definite {β : ℝ} (hβ : 0 < β) (v : Fin 2 → ℂ) :
     rw [h0, h1]
     simp
 
+/-! ## §10  Definiteness genuinely fails at zero coupling
+
+Every definiteness statement above carries `0 < β`.  That hypothesis is not
+bookkeeping: at `β = 0` the coefficient `e^β - e^{-β}` vanishes, the form
+collapses to `|v₀ + v₁|²`, and the whole line `v₀ = -v₁` becomes null.  The null
+space of the pairing is then strictly larger than the kernel of the
+reconstruction map, and the reconstructed space drops from two dimensions to
+one.  The witness below proves that, so the restriction is recorded as a
+theorem rather than asserted in prose. -/
+
+/-- The alternating vector of the physical space. -/
+noncomputable def altVec : Fin 2 → ℂ
+  | 0 => 1
+  | 1 => -1
+
+theorem altVec_zero : altVec 0 = 1 := rfl
+
+theorem altVec_one : altVec 1 = -1 := rfl
+
+theorem altVec_ne_zero : altVec ≠ 0 := by
+  intro h
+  have h0 : altVec 0 = 0 := by rw [h]; rfl
+  rw [altVec_zero] at h0
+  exact one_ne_zero h0
+
+theorem kForm_altVec_zero_coupling : kForm 0 altVec altVec = 0 := by
+  rw [kForm_self, altVec_zero, altVec_one]
+  simp
+
+/-- **Definiteness fails at zero coupling.**  Hence `0 < β` in
+`kForm_definite` and `reflPairing_self_eq_zero_iff` is a genuine restriction,
+not a convenience: at `β = 0` the reconstructed space is one-dimensional. -/
+theorem kForm_not_definite_at_zero :
+    ∃ v : Fin 2 → ℂ, v ≠ 0 ∧ kForm 0 v v = 0 :=
+  ⟨altVec, altVec_ne_zero, kForm_altVec_zero_coupling⟩
+
 end YangMills.OS
