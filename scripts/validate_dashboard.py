@@ -13,6 +13,7 @@ Run from the repo root:
 from __future__ import annotations
 
 import datetime as _dt
+import hashlib
 import json
 import pathlib
 import sys
@@ -217,6 +218,58 @@ def validate_milestones(data: dict[str, Any], meta: dict[str, Any]) -> None:
         err("milestone M3 must remain explicitly CONDITIONAL while hRpoly is open")
 
 
+def validate_recent_papers(data: dict[str, Any]) -> None:
+    papers = require_list(data.get("recent_papers"), "recent_papers")
+    required = {
+        "id",
+        "title",
+        "date",
+        "status",
+        "path",
+        "record",
+        "anchor",
+        "paper_commit",
+        "sha256",
+        "scope",
+    }
+    ids: list[str] = []
+    for i, paper in enumerate(papers):
+        item = require_dict(paper, f"recent_papers[{i}]")
+        missing = required - item.keys()
+        for field in sorted(missing):
+            err(f"recent_papers[{i}]: missing field {field!r}")
+        pid = item.get("id")
+        if not isinstance(pid, str) or not pid:
+            err(f"recent_papers[{i}].id must be a nonempty string")
+        else:
+            ids.append(pid)
+        try:
+            _dt.date.fromisoformat(str(item.get("date", "")))
+        except ValueError:
+            err(f"recent_papers[{i}].date is not ISO: {item.get('date')!r}")
+        for field in ("path", "record"):
+            rel = item.get(field)
+            if not isinstance(rel, str) or not repo_path_exists(rel):
+                err(f"recent paper {pid}: {field} does not exist: {rel!r}")
+        digest = item.get("sha256")
+        if (
+            not isinstance(digest, str)
+            or len(digest) != 64
+            or any(char not in "0123456789abcdef" for char in digest.lower())
+        ):
+            err(f"recent paper {pid}: invalid sha256")
+        else:
+            artifact = ROOT / pathlib.Path(*pathlib.PurePosixPath(item["path"]).parts)
+            if artifact.is_file():
+                actual = hashlib.sha256(artifact.read_bytes()).hexdigest()
+                if actual != digest.lower():
+                    err(f"recent paper {pid}: sha256 does not match {item['path']}")
+    counts = Counter(ids)
+    for pid, count in counts.items():
+        if count > 1:
+            err(f"duplicate recent paper id: {pid}")
+
+
 def main() -> int:
     try:
         data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -230,6 +283,7 @@ def main() -> int:
     nodes = validate_nodes(data_obj, group_ids)
     validate_edges(data_obj, nodes)
     validate_milestones(data_obj, meta)
+    validate_recent_papers(data_obj)
 
     if errors:
         print(f"validate_dashboard: {len(errors)} problem(s)")

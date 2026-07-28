@@ -923,3 +923,29 @@ reconstruction ports to spatial extent unchanged; the elementary route to the
 gap does not, and here is exactly where it stops.*  The negative half is the
 contribution.  A paper that leads with the positive half has misread its own
 result.  Submission remains the owner's decision.
+
+## AMENDMENT 11 (2026-07-29, POST-FABRICATION) — O-3g/O-3h CLOSED AND PAPER 6 SUBMITTED
+
+The design ladder in `docs/O-LANE-CONTINUATION-20260728.md` produced the S-1
+wall theorem and then one bounded strengthening at `L=2`.  The submitted paper
+is *Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial
+Extent*, v1.2.1, frozen at paper commit `3d313d92` and formal anchor
+`a70426f4`.  The owner reports submission on 2026-07-29; the public ai.viXra
+identifier is pending and is not guessed here.
+
+**Closed by theorem:** source- and target-factor blindness of the projective
+cross-ratio; the symmetrised-kernel corollary; the exact
+`exp(4 * beta * L)` witness and consequent volume degeneration; exact
+two-site block eigenpairs; a strictly positive eigenvector; and domination of
+every real or complex eigenvalue, making its eigenvalue the spectral radius.
+
+**Still open and explicitly outside the submission:** a general-`L`
+Perron--Frobenius theorem, uniqueness and simplicity, a volume-uniform gap for
+an interacting system, and any `SU(N)`, continuum, or Clay conclusion.  The
+unrestricted interacting volume-uniform target is contradicted by the recorded
+numerical probe and is not a valid future goal; any positive gap target must
+state an explicit small-coupling/high-temperature region.
+
+The immutable artifact hashes, exact submission fields, and scope boundary are
+recorded in
+`docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`.

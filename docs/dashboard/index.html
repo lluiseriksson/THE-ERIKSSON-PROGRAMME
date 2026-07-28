@@ -173,6 +173,22 @@ h1 {
 .dot.partial { background: var(--amber); }
 .dot.open { background: var(--open); }
 h2 { margin: 30px 0 10px; font-size: 20px; letter-spacing: 0; }
+.papers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+.paper-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent-2);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.paper-card h3 { margin: 0 0 6px; font-size: 16px; }
+.paper-card .paper-meta { color: var(--muted); font-size: 12.5px; }
+.paper-card p { margin: 8px 0; color: var(--muted); font-size: 13px; }
+.paper-card .paper-links { display: flex; flex-wrap: wrap; gap: 8px 14px; }
 .miles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(166px, 1fr));
@@ -390,6 +406,11 @@ footer {
 
   <div class="counts" id="counts" aria-label="Node counts"></div>
 
+  <section aria-labelledby="papers-title">
+    <h2 id="papers-title">Recent Submitted Artifacts</h2>
+    <div class="papers" id="recent-papers"></div>
+  </section>
+
   <section aria-labelledby="milestones-title">
     <h2 id="milestones-title">Milestone Spine</h2>
     <div class="miles" id="miles"></div>
@@ -506,6 +527,19 @@ footer {
     `<span><span class="dot ${status}"></span><b>${counts[status]}</b> ${status}</span>`
   ).join("") + `<span>${nodes.length} nodes, ${edges.length} edges</span>`;
 
+  const recentPapers = Array.isArray(data.recent_papers) ? data.recent_papers : [];
+  $("recent-papers").innerHTML = recentPapers.length ? recentPapers.map(paper => `
+    <article class="paper-card">
+      <h3>${escapeHtml(paper.title)}</h3>
+      <div class="paper-meta">${escapeHtml(paper.date)} · ${escapeHtml(paper.status)} · formal anchor ${escapeHtml(paper.anchor)}</div>
+      <p>${escapeHtml(paper.scope)}</p>
+      <div class="paper-links">
+        <a href="${meta.blob}${paper.path}">PDF</a>
+        <a href="${meta.blob}${paper.record}">submission record</a>
+      </div>
+    </article>
+  `).join("") : "<p>No submitted artifact has been registered.</p>";
+
   $("miles").innerHTML = data.milestones.map(milestone => `
     <article class="mile">
       <div class="id">${escapeHtml(milestone.id)}</div>
@@ -526,6 +560,7 @@ footer {
     <a href="${meta.ledger}">verification ledger</a>. Milestone labels are logical
     proof states, not theorem probabilities or completion estimates.
     ${meta.control_plane ? `<br><strong>Evidence control plane:</strong> ${escapeHtml(meta.control_plane)}` : ""}
+    ${meta.submission_notice ? `<br><strong>Latest submission:</strong> ${escapeHtml(meta.submission_notice)}` : ""}
     <a href="${meta.state}">Canonical state</a>. Data: <a href="./data.json">data.json</a>.
   `;
 

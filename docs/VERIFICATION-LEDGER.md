@@ -26886,3 +26886,28 @@ green in this campaign).  Anchor `a70426f4c8a0ed733b4eee94fb01b158bc81fd08`, ful
 axioms exactly `{propext, Quot.sound, Classical.choice}` with no other name
 anywhere in the transcript, zero `sorryAx`, zero project axioms, zero errors.
 Paper 9pp, 32 permalinks re-verified at the anchor commit itself.
+
+## Addendum 528 (2026-07-29, **O-lane Paper 6 submitted; live documentation and artifact record synchronized**)
+
+The owner reports submission of *Blind to the Coupling: a Second
+Machine-Checked Obstruction at Spatial Extent* in Physics - Mathematical
+Physics.  The public ai.viXra identifier is pending and is deliberately not
+invented.
+
+The submitted edition is v1.2.1 at paper commit
+`3d313d9291b53dc9c470051fddc721013fe9d9dd`, with formal Lean anchor
+`a70426f4c8a0ed733b4eee94fb01b158bc81fd08`.  The 9-page PDF has 118,268 bytes
+and SHA-256
+`42617528c0df0ad3e813ee77c11722c53e5ea1b4b97dc93f22d9ece45d29e4cb`;
+the TeX SHA-256 is
+`196a8cd8ff00747531a3eecc3318d8cb43ed7e825953384a4fa2f4c886c842a2`.
+Both hashes were recomputed from the public `main` tree before registration.
+
+Claim boundary unchanged from Addendum 527: two-sided coupling-blindness,
+volume degeneration, exact two-site eigenpairs, strict positivity, and
+domination of every real or complex eigenvalue are proved.  No
+volume-uniform interacting gap, general-`L` Perron theorem, uniqueness,
+simplicity, spectral completeness, `SU(N)`, continuum, or Clay statement is
+proved or claimed.  The exact submission fields and permanent record live at
+`papers/spatial-birkhoff/SUBMISSION-INFO.txt` and
+`docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`.

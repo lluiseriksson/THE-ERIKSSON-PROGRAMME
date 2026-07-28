@@ -1,5 +1,15 @@
 # O lane — continuation after the spatial-extent freeze (2026-07-28)
 
+> **Outcome update (2026-07-29).**  The S-1 wall brick below was completed,
+> strengthened through two-sided blindness and spectral-radius domination at
+> `L=2`, written as *Blind to the Coupling: a Second Machine-Checked
+> Obstruction at Spatial Extent*, and submitted by the owner.  The public
+> identifier is pending.  Frozen paper commit: `3d313d92`; formal anchor:
+> `a70426f4`; submission record:
+> [`O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`](O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md).
+> This file remains the preregistered design record; its S-2/S-3 entries are
+> open continuations, not claims made by the submitted paper.
+
 Status of the predecessor: **frozen and submitted**, v1.3, paper commit
 `959076f2`, freeze declared in ledger Addendum 524.  Nothing below modifies it.
 

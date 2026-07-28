@@ -4,7 +4,7 @@
 
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)
 ![Mathlib](https://img.shields.io/badge/Mathlib-pinned_commit-blue)
-![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8412_jobs)-success)
+![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8426_jobs)-success)
 ![sorry](https://img.shields.io/badge/sorry-0-success)
 ![project axioms](https://img.shields.io/badge/project_axioms-0-success)
 ![Clay distance](https://img.shields.io/badge/distance_to_Clay-~0%25_(%3C0.1%25)-lightgrey)
@@ -19,7 +19,7 @@ proved. The defining principle is **honesty over progress**: a smaller true
 claim always beats a larger hollow one.
 
 ```bash
-lake build YangMillsCore          # the verified core — green, 8412 jobs
+lake build YangMillsCore          # the verified core — green, 8426 jobs
 lake env lean oracle_check.lean   # prints the axiom oracle for every headline
 ```
 
@@ -36,13 +36,11 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 proved / partial / open and linked to Lean sources, docs, or the verification
 ledger.
 
-**Documentation snapshot updated:** 2026-07-04.  **Latest public source
-checkpoint:** 2026-07-14, measured at `a17d7816` (on `main`).  The verification
-ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
-257 and the 2026-07-04 diamagnetic unitary bridge Addendum 466, after the
-earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
-core build remains
-`lake build YangMillsCore` green at **8412 jobs**.
+**Documentation snapshot updated:** 2026-07-29.  **Latest public source
+checkpoint:** `a70426f4` (on `main`).  The verification ledger records the
+full `lake build YangMillsCore` green at **8426 jobs**, 2,542 oracle answers,
+axioms exactly `[propext, Classical.choice, Quot.sound]`, zero `sorryAx`, and
+zero project axioms.
 The canonical machine-readable proof-state contract is
 [`project-state.json`](project-state.json); repository HEAD and paper commits
 may advance without changing that recorded Lean checkpoint.
@@ -69,6 +67,24 @@ computational transcript still requires a strict manifest.  The permanent
 gate is `python scripts/run_record_archive.py check`; the migration rationale
 and terminal criteria are recorded in
 [`docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md`](docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md).
+
+### Latest submitted paper
+
+The owner reports the 2026-07-29 submission of:
+
+> *Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial
+> Extent*, L. Eriksson, 2026 —
+> [`papers/spatial-birkhoff/spatial_birkhoff.pdf`](papers/spatial-birkhoff/spatial_birkhoff.pdf).
+
+The public viXra identifier is still pending.  The submission artifact is the
+9-page v1.2.1 PDF at commit `3d313d92`, SHA-256
+`42617528c0df0ad3e813ee77c11722c53e5ea1b4b97dc93f22d9ece45d29e4cb`.
+It proves coupling-blindness and volume degeneration of the projective-metric
+route, and supplies exact two-site eigenpairs plus spectral-radius domination.
+It does **not** prove a volume-uniform interacting gap, a general-`L` Perron
+theorem, an `SU(N)` result, or any continuum/Clay statement.  The exact
+submission record is
+[`docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`](docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md).
 
 The bars below are communication estimates for humans, not theorem
 probabilities.  The formal record remains the compiler, `oracle_check.lean`,
@@ -198,8 +214,8 @@ explicit:
   cards to their source dictionary fields; the Eq229 Cammarota blocker remains
   explicit;
 * the area-law paper artifact is now tracked under `paper/area-law/`;
-* the latest recorded full core build is the 8412-job core build, while
-  the measured checkpoint has advanced to `a17d7816` (on `main`).
+* the latest recorded full core build is the 8426-job core build at measured
+  source checkpoint `a70426f4` (on `main`).
 
 The practical effect is that one more finite combinatorial/RG-budget lane is
 closed before the source estimates arrive.  The remaining work is still the
@@ -388,7 +404,7 @@ part of any claim this README makes.
 
 ```mermaid
 graph TD
-    subgraph core["YangMillsCore  (8412 jobs, oracle-clean)"]
+    subgraph core["YangMillsCore  (8426 jobs, oracle-clean)"]
         L0["L0_Lattice<br/>geometry, gauge fields, Wilson action,<br/>chain complex + N-ality area"]
         L1["L1_GibbsMeasure<br/>Gibbs measure, polymer representation,<br/>weighted gas, exp-activity expansion"]
         KP["KP layer<br/>Ursell, Penrose-BFS, sharp KP bound,<br/>Mayer inversion Ξ = exp(clusterSum),<br/>pinned clusters"]
@@ -417,7 +433,7 @@ Green: unconditional flagship. Amber: conditional on the named UV hypothesis.
 |---|---|---|
 | Toolchain | `elan` picks up [`lean-toolchain`](lean-toolchain) | `leanprover/lean4:v4.29.0-rc6` |
 | Mathlib cache | `lake exe cache get` | downloads the pinned-commit `.olean` cache |
-| Build the core | `lake build YangMillsCore` | `Build completed successfully (8412 jobs)` |
+| Build the core | `lake build YangMillsCore` | `Build completed successfully (8426 jobs)` |
 | Axiom oracle | `lake env lean oracle_check.lean` | every line ends `[propext, Classical.choice, Quot.sound]` |
 | Sorry scan | `python scripts/check_consistency.py` | `0` forbidden tokens |
 | Source citation lookup | `python scripts/source_citations.py show cmp116.eq231.p-bond-sum` | compact primary-source locator |

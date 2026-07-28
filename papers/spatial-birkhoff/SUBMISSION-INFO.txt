@@ -1,0 +1,65 @@
+SUBMISSION STATUS
+Submitted by the owner on 2026-07-29.
+Public ai.viXra identifier: pending.
+
+CATEGORY
+Physics - Mathematical Physics
+
+TITLE
+Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial Extent
+
+AUTHOR
+Lluis Eriksson
+
+ABSTRACT
+A companion paper proved that when a spatial coupling is switched on in a Z_2
+lattice gauge slice, the transfer kernel loses constant row sums, so the uniform
+vector is no longer fixed and the elementary route to the vacuum stops. The
+standard replacement, when row sums fail, is the Hilbert projective metric: a
+strictly positive kernel contracts it, and the contraction factor bounds the
+subdominant spectral ratio. This paper asks what that replacement gives here, and
+answers in Lean 4 with mathlib.
+
+It gives no coupling-sensitive and no volume-uniform information, for two
+independent reasons, and both are proved. First, BLINDNESS: the projective
+cross-ratio is invariant under multiplication by any nowhere-zero function of the
+source configuration alone. The coupled kernel is exactly such a product, so the
+metric assigns the interacting and the non-interacting kernels the same diameter
+at every spatial extent - the route cannot see the coupling at all. Second,
+VOLUME DEGENERATION: two constant configurations realise the cross-ratio
+e^(4 beta L), so every admissible projective diameter is at least 4 beta L and
+every contraction factor obtainable this way is at least tanh(beta L), which lies
+within 2 e^(-2 beta L) of the trivial bound 1. At the one place where the truth
+is known - the decoupled kernel, whose subdominant ratio the companion paper
+computes to be exactly tanh beta at every L - this route already returns
+tanh(beta L) instead. The degeneration is the method's, not the model's.
+
+We then hand over the object the elementary route stopped producing, at the
+smallest interacting size. In the character basis the coupled two-site kernel
+splits into two 2x2 blocks, and we exhibit a strictly positive eigenvector in
+closed form, together with a second exact eigenpair. The identity A - B = 4
+between the two decoupled even-sector eigenvalues drives every estimate. The
+blindness is proved two-sided, so it covers the symmetrised convention
+w^(1/2) K w^(1/2) as well, and the positive eigenvector is proved to dominate
+every eigenvalue, real or complex - so its eigenvalue is the spectral radius,
+which is the Perron statement this development needs and proves without a
+Perron-Frobenius theorem in the library.
+
+NO VOLUME-UNIFORM STATEMENT ABOUT AN INTERACTING SYSTEM IS PROVED HERE, AND NONE
+IS CLAIMED; the general-L behaviour is recorded separately as measured and
+unproved. Nothing in this paper is a claim about SU(N), the continuum limit, or
+the Yang-Mills mass gap.
+
+COMMENTS
+9 pages. Lean 4 / mathlib formalization; full core build 8426 jobs, 2542 oracle
+commands (2519 with axiom dependencies + 23 axiom-free), axiom set exactly
+{propext, Quot.sound, Classical.choice}, zero sorry and zero project axioms. All
+verification links anchored at a fixed commit.
+
+FROZEN ARTIFACT
+Paper commit: 3d313d9291b53dc9c470051fddc721013fe9d9dd
+Lean anchor: a70426f4c8a0ed733b4eee94fb01b158bc81fd08
+PDF path: papers/spatial-birkhoff/spatial_birkhoff.pdf
+PDF bytes: 118268
+PDF SHA-256: 42617528c0df0ad3e813ee77c11722c53e5ea1b4b97dc93f22d9ece45d29e4cb
+TeX SHA-256: 196a8cd8ff00747531a3eecc3318d8cb43ed7e825953384a4fa2f4c886c842a2

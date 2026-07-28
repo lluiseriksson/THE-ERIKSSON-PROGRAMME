@@ -3,7 +3,7 @@
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
     "updated": "2026-07-29",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
+    "checkpoint": "latest recorded lake build YangMillsCore - 8426 jobs green; measured source checkpoint a70426f4 (on main)",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
@@ -16,7 +16,8 @@
     "knowledge_tree": "https://lluiseriksson.github.io/physmath-knowledge-tree/",
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
-    "control_plane": "REPAIRED (2026-07-29). run-manifests contains only strict schema-v1 execution manifests. Frozen pre-schema and specialized ledgers are hash-indexed under run-records/legacy and remain usable only through explicit domain validators. The historical artifact baseline never exempts a changed transcript from strict manifest coverage."
+    "control_plane": "REPAIRED (2026-07-29). run-manifests contains only strict schema-v1 execution manifests. Frozen pre-schema and specialized ledgers are hash-indexed under run-records/legacy and remain usable only through explicit domain validators. The historical artifact baseline never exempts a changed transcript from strict manifest coverage.",
+    "submission_notice": "O-lane Paper 6 was submitted by the owner on 2026-07-29. Its public ai.viXra identifier is pending; no identifier is inferred."
   },
   "status_legend": {
     "proved": "Machine-checked theorem reachable from YangMillsCore; oracle-clean on Lean's three standard axioms.",
@@ -29,6 +30,20 @@
     "C": "Genuinely open continuum / Clay mathematics",
     "D": "Repository plumbing and public audit infrastructure"
   },
+  "recent_papers": [
+    {
+      "id": "o-paper-6",
+      "title": "Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial Extent",
+      "date": "2026-07-29",
+      "status": "submitted; public identifier pending",
+      "path": "papers/spatial-birkhoff/spatial_birkhoff.pdf",
+      "record": "docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md",
+      "anchor": "a70426f4",
+      "paper_commit": "3d313d92",
+      "sha256": "42617528c0df0ad3e813ee77c11722c53e5ea1b4b97dc93f22d9ece45d29e4cb",
+      "scope": "Proves projective-metric coupling-blindness and volume degeneration, plus exact two-site eigenpairs and spectral-radius domination. It does not prove a volume-uniform interacting gap or any continuum Yang-Mills statement."
+    }
+  ],
   "milestones": [
     {
       "id": "M0",

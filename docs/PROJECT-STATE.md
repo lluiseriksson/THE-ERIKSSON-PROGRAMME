@@ -14,9 +14,10 @@ It deliberately does **not** record the current repository HEAD. A file cannot c
 hash of the commit that contains itself without a circular update. Instead,
 `lean_core.source_checkpoint` is required to exist and be an ancestor of the checkout.
 
-It also excludes architectural completion percentages and the active Surface Theorem desk.
-Percentages are editorial judgments, not mechanically derivable facts. The paper track has
-its own acta and must not be overwritten by the Part II control plane.
+It also excludes architectural completion percentages and editorial submission state.
+Percentages and publication decisions are not mechanically derivable facts.  Paper tracks
+have their own acta and submission records and must not be overwritten by the Part II
+control plane.
 
 Validate the file with:
 
