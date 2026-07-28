@@ -38,6 +38,20 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 > `DO_NOT_SUBMIT` until the corrected endpoint and final-seal audits pass.
 > See
 > [`INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md`](docs/INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md).
+>
+> **Post-incident K2 progress.**  The degree-eight fixed-square polynomial
+> surrogate now has reproduced pointwise complex geometry at
+> `rho=17/2000` and a reproduced Rouché certificate for its integrated KD:
+> `|KD(0)|>=2.04813729` while
+> `max_|delta|=rho |KD(delta)-KD(0)|<=1.01556829`.  Thus that surrogate KD
+> is zero-free in the disk.  This does **not** restore K2: the exact R7/R8
+> expression engine was nonterminal, its sparse exact replacement and
+> independent numerical corroboration are pending, and the true-companion
+> plus exterior real-axis charges remain open.  `DO_NOT_SUBMIT` is unchanged.
+> See
+> [`SURFACE-K2-R8-KD-ROUCHE-PREREG-20260728.md`](docs/SURFACE-K2-R8-KD-ROUCHE-PREREG-20260728.md)
+> and
+> [`INCIDENT-R7-R8-EXPRESSION-ENGINE-NONTERMINAL-20260728.md`](docs/INCIDENT-R7-R8-EXPRESSION-ENGINE-NONTERMINAL-20260728.md).
 
 ---
 
