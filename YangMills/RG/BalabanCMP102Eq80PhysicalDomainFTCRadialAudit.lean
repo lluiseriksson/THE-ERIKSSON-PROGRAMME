@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCRadial
+
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFTCRadialOperator
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFTCContribution_eq_radial
