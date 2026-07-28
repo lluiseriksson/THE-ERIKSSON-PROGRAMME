@@ -2758,3 +2758,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.mem_nullSubmodule_iff
 #print axioms YangMills.OS.nullSubmodule_ne_bot
 #print axioms YangMills.OS.quotEquivPhysical
+
+-- the inner product the quotient carries (paper v1.1)
+#print axioms YangMills.OS.kForm
+#print axioms YangMills.OS.reflPairing_eq_kForm
+#print axioms YangMills.OS.kForm_self
+#print axioms YangMills.OS.kForm_nonneg
+#print axioms YangMills.OS.kForm_definite

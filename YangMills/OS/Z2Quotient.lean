@@ -284,4 +284,83 @@ noncomputable def quotEquivPhysical (β : ℝ) :
     ((Fin 2 → Fin 2 → ℂ) ⧸ nullSubmodule β) ≃ₗ[ℂ] (Fin 2 → ℂ) :=
   (slicePhiLin β).quotKerEquivOfSurjective (slicePhi_surjective β)
 
+/-! ## §9  The inner product the quotient actually carries
+
+`quotEquivPhysical` is a LINEAR isomorphism.  The Gelfand-Naimark-Segal inner
+product does not transport to the standard Euclidean structure of the
+physical space: it transports to the kernel-weighted form below.  That form
+is proved here to be positive definite, so the quotient is a genuine
+pre-Hilbert space; an ISOMETRIC identification with standard Euclidean space
+would additionally require the positive square root of the kernel, which is
+NOT constructed here. -/
+
+/-- The transfer kernel read as a sesquilinear form on the physical space. -/
+noncomputable def kForm (β : ℝ) (v w : Fin 2 → ℂ) : ℂ :=
+  ∑ b, ∑ c, (starRingEnd ℂ) (v b) * ((z2Bond β b c : ℝ) : ℂ) * w c
+
+/-- **The pairing IS the kernel form pulled back along the reconstruction
+map.**  This is the precise sense in which the quotient carries the
+Gelfand-Naimark-Segal inner product. -/
+theorem reflPairing_eq_kForm (β : ℝ) (A B : Fin 2 → Fin 2 → ℂ) :
+    reflPairing β A B = kForm β (slicePhi β A) (slicePhi β B) := by
+  unfold kForm
+  exact reflPairing_eq β A B
+
+/-- The same sum-of-two-non-negative-terms identity, for an arbitrary vector
+of the physical space rather than one in the image of the map. -/
+theorem kForm_self (β : ℝ) (v : Fin 2 → ℂ) :
+    kForm β v v
+      = (((Real.exp β - Real.exp (-β)) *
+            (Complex.normSq (v 0) + Complex.normSq (v 1))
+          + Real.exp (-β) * Complex.normSq (v 0 + v 1) : ℝ) : ℂ) := by
+  unfold kForm
+  rw [Fin.sum_univ_two, Fin.sum_univ_two, Fin.sum_univ_two]
+  rw [z2Bond_same, z2Bond_same, z2Bond_ne (by decide) β,
+    z2Bond_ne (by decide : (1:Fin 2) ≠ 0) β]
+  simp only [Complex.ext_iff, Complex.normSq_apply, Complex.add_re, Complex.add_im,
+    Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im,
+    Complex.conj_re, Complex.conj_im]
+  constructor <;> ring
+
+theorem kForm_nonneg {β : ℝ} (hβ : 0 ≤ β) (v : Fin 2 → ℂ) :
+    0 ≤ (kForm β v v).re := by
+  rw [kForm_self]
+  simp only [Complex.ofReal_re]
+  have h : Real.exp (-β) ≤ Real.exp β := Real.exp_le_exp.mpr (by linarith)
+  have h1 : (0:ℝ) ≤ Real.exp (-β) := (Real.exp_pos _).le
+  nlinarith [Complex.normSq_nonneg (v 0), Complex.normSq_nonneg (v 1),
+    Complex.normSq_nonneg (v 0 + v 1)]
+
+/-- **The transported form is POSITIVE DEFINITE**, so the quotient is a
+genuine pre-Hilbert space and not merely a vector space. -/
+theorem kForm_definite {β : ℝ} (hβ : 0 < β) (v : Fin 2 → ℂ) :
+    kForm β v v = 0 ↔ v = 0 := by
+  have hgap : 0 < Real.exp β - Real.exp (-β) := by
+    have : Real.exp (-β) < Real.exp β := Real.exp_lt_exp.mpr (by linarith)
+    linarith
+  have hq : (0:ℝ) < Real.exp (-β) := Real.exp_pos _
+  constructor
+  · intro h
+    rw [kForm_self] at h
+    have hr : (Real.exp β - Real.exp (-β)) *
+        (Complex.normSq (v 0) + Complex.normSq (v 1))
+        + Real.exp (-β) * Complex.normSq (v 0 + v 1) = 0 := by
+      exact_mod_cast h
+    have e0 : Complex.normSq (v 0) = 0 := by
+      nlinarith [Complex.normSq_nonneg (v 0), Complex.normSq_nonneg (v 1),
+        Complex.normSq_nonneg (v 0 + v 1)]
+    have e1 : Complex.normSq (v 1) = 0 := by
+      nlinarith [Complex.normSq_nonneg (v 0), Complex.normSq_nonneg (v 1),
+        Complex.normSq_nonneg (v 0 + v 1)]
+    funext c
+    fin_cases c
+    · simpa using Complex.normSq_eq_zero.mp e0
+    · simpa using Complex.normSq_eq_zero.mp e1
+  · intro h
+    rw [kForm_self]
+    have h0 : v 0 = 0 := by rw [h]; rfl
+    have h1 : v 1 = 0 := by rw [h]; rfl
+    rw [h0, h1]
+    simp
+
 end YangMills.OS
