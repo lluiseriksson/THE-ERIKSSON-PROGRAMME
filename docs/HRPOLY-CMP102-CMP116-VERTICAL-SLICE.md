@@ -124,16 +124,21 @@ part of that derivation is now closed in
 
 ```lean
 norm_cmp102Eq80PhysicalFineHeadTailDomainFTCContributionSecondFieldDerivative_le_sourceMetric
+abs_inner_cmp102Eq80PhysicalFineHeadTailDomainFTCRadialOperator_le_sourceMetric
 ```
 
 It integrates the existing order-three source-jet estimate through the
 literal affine FTC and multiplies it by the already proved
 cardinality/tree-metric decay of the reconstructed domain coefficient.  Its
 right-hand side is the explicit producer-side quantity
-`cmp102Eq80PhysicalDomainFTCSecondFieldSourceMetricMajorant`.  The remaining
-equation-(1.43) step is the uniform control of those source jets along the
-radial segment and the scalar comparison of this producer majorant with the
-printed constants `C3`, `epsilon1`, `C2`, and `kappa1`.
+`cmp102Eq80PhysicalDomainFTCSecondFieldSourceMetricMajorant`.  The second
+endpoint applies that estimate uniformly along the radial segment and
+produces the corresponding matrix-element bound for the literal radial
+operator, retaining the two probe norms and introducing no equation-(1.43)
+assumption.  The remaining equation-(1.43) step is therefore the physical
+production of the uniform source-jet inputs and the scalar comparison of
+this explicit majorant with the printed constants `C3`, `epsilon1`, `C2`,
+and `kappa1`.
 
 The scalar cancellation
 
