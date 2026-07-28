@@ -18,12 +18,11 @@ def test_endpoint_margin_requires_strict_lower_endpoint() -> None:
     assert not bool(arb("+/- 0.1").lower() > 0)
 
 
-def test_endpoint_cover_driver_exposes_strict_predicate() -> None:
-    # The registered late-edge box has a positive lower endpoint, even though
-    # Arb's compact `str()` rendering hides the midpoint and prints a
-    # symmetric hull.  The driver must return only after the lower endpoint
-    # test succeeds.
-    _, _, _, margin = cover.judge_box(
-        cover.Fraction(149, 50), cover.Fraction(3, 1), grids=(96,)
-    )
-    assert margin.lower() > 0
+def test_corrected_endpoint_cover_rejects_the_historical_late_edge() -> None:
+    # After the full-moment normalization repair, the historical grid-96
+    # sufficient route no longer resolves this late-edge box.  Preserve the
+    # obstruction instead of treating the superseded route as terminal.
+    with pytest.raises(RuntimeError, match="unresolved endpoint series box"):
+        cover.judge_box(
+            cover.Fraction(149, 50), cover.Fraction(3, 1), grids=(96,)
+        )

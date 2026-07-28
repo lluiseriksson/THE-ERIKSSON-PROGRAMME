@@ -4,6 +4,7 @@ import hashlib
 from pathlib import Path
 import subprocess
 
+from surface_eol_hashes import sha256_variants
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSCRIPT = ROOT/"scripts"/"surface_remainder_delta0_sixth_coefficient_transcript.txt"
@@ -33,9 +34,11 @@ def validate(path=TRANSCRIPT):
     if lines != expected:
         raise AssertionError("sixth-head provenance/coefficient mismatch")
     for rel, digest in ((SCRIPT, SCRIPT_SHA), (DEPENDENCY, DEPENDENCY_SHA)):
-        if hashlib.sha256((ROOT/rel).read_bytes()).hexdigest() != digest:
+        if digest not in sha256_variants(ROOT / rel):
             raise AssertionError("sixth-head worktree hash mismatch: "+rel)
-        blob = subprocess.check_output(["git", "show", HEAD+":"+rel], cwd=ROOT)
+        blob = subprocess.check_output(
+            ["git", "-c", f"safe.directory={ROOT.as_posix()}", "show",
+             HEAD+":"+rel], cwd=ROOT)
         if hashlib.sha256(blob).hexdigest() != digest:
             raise AssertionError("sixth-head executed blob mismatch: "+rel)
     lf = raw.replace(b"\r\n", b"\n")

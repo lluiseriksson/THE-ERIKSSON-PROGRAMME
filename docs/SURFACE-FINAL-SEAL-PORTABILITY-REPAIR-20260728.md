@@ -56,6 +56,16 @@ Surface closure gate board OK
 FINAL-SEAL PASS: terminal gates, manuscript, and PDF are present
 ```
 
+## Test-layer follow-up
+
+The clean terminal seal above is confirmed externally, but it was not a full
+repository test run.  A later clean `python -m pytest -q` exposed an
+unversioned Bessel-gap test dependency and then historical tests whose
+positive assumptions had been superseded by the full-moment normalization
+repair.  The follow-up and the separate, still-blocked repository integration
+state are recorded in
+`SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`.
+
 The full seal reconstructed the finite bridge, tail contract, right-edge
 archives, weak-main terminal union, and closed-form anchors.
 

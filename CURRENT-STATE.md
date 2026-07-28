@@ -39,6 +39,16 @@ and
 The portability repair is documented in
 [`docs/SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md`](docs/SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md).
 
+**Repository integration remains blocked.**  The terminal seal and frozen
+paper reproduce, but the full control-plane workflow does not: the 6,047-file
+PR diff has 2,015 uncovered computational artifacts and the legacy run-manifest
+validator reports 624 invalid files.  A second test-layer portability repair
+versions the missing Bessel-gap module, preserves corrected negative results
+from the superseded sharp route, and makes unchanged transcript bindings
+LF/CRLF-stable.  This does not weaken the workflow guards or imply CI green.
+See
+[`docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`](docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md).
+
 K4 and S1'''/S2''' are not claimed solved: they are scoped to the superseded
 stronger `X_main>0` research route and carry no load in the certified
 weak-main Surface-Theorem chain.

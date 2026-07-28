@@ -14,9 +14,12 @@ WITHDRAWN_SHA256_LF = (
     "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063"
 )
 
+# This inventory is defined by the committed evidence tree.  A local
+# ``surface-remainder-k2-hybrid009-current-20260717T085239Z.json`` was never
+# versioned and no longer validates against the corrected normalization
+# blobs, so it is deliberately not promoted into this set post hoc.
 EXPECTED_CURRENT_WITHDRAWALS = {
     "surface-remainder-k2-endpoint-20260712T125718Z.json",
-    "surface-remainder-k2-hybrid009-current-20260717T085239Z.json",
     "surface-remainder-k2-r4-regular008-0-13-20260714T050257Z.json",
     "surface-remainder-k2-r4-regular008-13-25-20260714T050257Z.json",
     "surface-remainder-k2-r4-regular008-25-38-20260714T050257Z.json",

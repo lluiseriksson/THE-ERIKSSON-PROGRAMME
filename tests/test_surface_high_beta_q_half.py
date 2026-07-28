@@ -3,6 +3,7 @@ from fractions import Fraction
 from pathlib import Path
 
 from scripts.certify_surface_high_beta_q_half import certify
+from scripts.surface_eol_hashes import sha256_variants
 from scripts.verify_surface_high_beta_q_half_algebra import verify
 
 
@@ -25,6 +26,10 @@ def test_transcript_binds_executed_script():
         ROOT / "scripts" / "surface_high_beta_q_half_transcript_20260727.txt"
     ).read_text(encoding="utf-8").splitlines()
     script = ROOT / "scripts" / "certify_surface_high_beta_q_half.py"
-    digest = hashlib.sha256(script.read_bytes()).hexdigest()
-    assert f"PROVENANCE script_sha256={digest}" in transcript
+    recorded = next(
+        line.split("=", 1)[1]
+        for line in transcript
+        if line.startswith("PROVENANCE script_sha256=")
+    )
+    assert recorded in sha256_variants(script)
     assert transcript[-1].startswith("CERTIFIED: <Phi>-(19/20)<D>>0")

@@ -12,8 +12,11 @@ MOD = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MOD)
 
 
-def test_authoritative_k2_endpoint_transcript_validates():
-    assert MOD.validate()["t_boxes"] == 158
+def test_historical_k2_endpoint_transcript_is_rejected_after_normalization():
+    # Its 158-row content remains parseable, but the corrected full-moment
+    # sources must not be accepted as the blobs that produced this transcript.
+    with pytest.raises(AssertionError, match="worktree hash mismatch"):
+        MOD.validate()
 
 
 def test_k2_endpoint_validator_rejects_nonpositive_margin(tmp_path):

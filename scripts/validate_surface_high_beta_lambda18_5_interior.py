@@ -8,6 +8,7 @@ from pathlib import Path
 from flint import arb
 
 import certify_surface_high_beta_lambda18_5_interior as cert
+from surface_eol_hashes import validate_recorded_dependencies
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,10 +35,11 @@ def validate() -> dict[str, object]:
     lines = production_bytes.decode("utf-8").splitlines()
     if lines[0] != f"PROVENANCE git_head {SOURCE_HEAD}":
         raise AssertionError("wrong source head")
-    for relative in cert.DEPENDENCIES:
-        expected = f"DEPENDENCY {relative} {digest(ROOT / relative)}"
-        if expected not in lines:
-            raise AssertionError(f"dependency drift: {relative}")
+    recorded = {
+        line.split()[1]: line.split()[2]
+        for line in lines if line.startswith("DEPENDENCY ")
+    }
+    validate_recorded_dependencies(recorded, cert.DEPENDENCIES, ROOT)
     pass_line = (
         "HIGH-BETA LAMBDA18_5 INTERIOR ABSOLUTE-MOMENT PASS"
     )

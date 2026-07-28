@@ -4,6 +4,7 @@ import hashlib
 from pathlib import Path
 import subprocess
 
+from surface_eol_hashes import sha256_variants
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSCRIPT = ROOT/"scripts"/"surface_remainder_delta0_fifth_coefficient_transcript.txt"
@@ -30,10 +31,11 @@ def validate(path=TRANSCRIPT):
     if len(lines) != 7 or lines[5] != COEFFICIENT or \
             lines[6] != "TARGET MATCH: fifth coefficient r5(c)":
         raise AssertionError("fifth-head coefficient block mismatch")
-    worktree = (ROOT/SCRIPT).read_bytes()
-    if hashlib.sha256(worktree).hexdigest() != SCRIPT_SHA:
+    if SCRIPT_SHA not in sha256_variants(ROOT / SCRIPT):
         raise AssertionError("fifth-head worktree hash mismatch")
-    blob = subprocess.check_output(["git", "show", HEAD+":"+SCRIPT], cwd=ROOT)
+    blob = subprocess.check_output(
+        ["git", "-c", f"safe.directory={ROOT.as_posix()}", "show",
+         HEAD+":"+SCRIPT], cwd=ROOT)
     if hashlib.sha256(blob).hexdigest() != SCRIPT_SHA:
         raise AssertionError("fifth-head executed blob mismatch")
     lf = raw.replace(b"\r\n", b"\n")

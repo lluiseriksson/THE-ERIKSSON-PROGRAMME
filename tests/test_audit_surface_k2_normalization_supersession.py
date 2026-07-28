@@ -27,8 +27,8 @@ def manifest(status: str, digest: str) -> dict[str, object]:
 
 def test_repository_withdrawal_scope_is_exact() -> None:
     affected, current = audit.audit(ROOT / "run-manifests")
-    assert len(affected) == 22
-    assert len(current) == 12
+    assert len(affected) == 21
+    assert len(current) == 11
 
 
 def test_corrected_future_blob_is_not_withdrawn(

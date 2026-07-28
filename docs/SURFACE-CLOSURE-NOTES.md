@@ -4391,3 +4391,49 @@ The v90 executable objection and both editorial debts are discharged.
 `G6=SEALED` and `READY_FOR_CLAIM_AUDIT` are restored on the repaired tree.
 This is not a merge to main and not a submission; those remain separate owner
 actions.
+
+## v92 (2026-07-28) - TERMINAL SEAL CONFIRMED; FULL-REPOSITORY
+INTEGRATION SEPARATED AND BLOCKED
+
+[external re-verification context: a8a161f8305177aadcafbf5851e698b47ce7621f;
+repair parent: f7c54b628adb8c48c2452281fda47c532aa32e01]
+
+The external Claude desk reproduced `FINAL-SEAL PASS`, the artifact hashes,
+the versioned moving-tail dependency, and the explicit `4 beta^3` covariance
+factor.  It then found that `python -m pytest -q` could not collect because
+`scripts/surface_bessel_gap_taylor.py` existed only in the shared worktree.
+The finding is confirmed.  The module is now versioned and its rigorous smoke
+passes; the six importing tests are not hidden.
+
+Collection exposed further historical drift outside the terminal chain.  The
+committed K2-normalization supersession inventory is 21 affected manifests,
+11 still current: an expected `hybrid009` ledger was never versioned, and the
+local copy is stale, so it is not promoted post hoc.  The corrected
+order-five companion route gives `order5/budget = 2.201391366... > 1`; its
+test is now a rigorous negative result.  The historical endpoint and K4
+candidate tests now preserve their exact non-promotion/supersession status.
+Unchanged transcript dependencies accept only raw/LF/CRLF-equivalent hashes;
+semantic drift still fails.
+
+A Fable 5 High policy audit was run with the explicitly selected
+`masterythief` profile and verified model `claude-fable-5`.  It independently
+recommended versioning the module, excluding the never-committed stale
+manifest, and retaining the companion computation as a negative falsifier.
+All adopted conclusions were then checked locally; Fable's conditional
+expectation that the entire suite would pass was not accepted without
+execution.
+
+The repository-wide workflow remains blocked independently of the theorem:
+PR #31 is a 6,047-file / 1,338,152-insertion diff; the unchanged
+changed-artifact guard reports 2,015 outputs without ledgers, while the legacy
+manifest validator reports 624 invalid files and 4,113 errors.  No guard is
+weakened.  Therefore:
+
+    terminal weak-main seal = PASS
+    frozen paper claim audit = READY_FOR_CLAIM_AUDIT
+    repository / PR integration = BLOCKED
+    merge to main = NOT DONE
+    submission = OWNER ACTION
+
+The complete reproduction record is
+`docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`.

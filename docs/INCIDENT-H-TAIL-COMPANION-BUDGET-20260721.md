@@ -1,6 +1,25 @@
 # H_tail companion-budget obstruction (2026-07-21)
 
-**Status:** `ORDERED-ROUTE-CANDIDATE`; no gate promotion.
+**Status:** `SUPERSEDED-NEGATIVE`; no gate promotion.
+
+## Correction after the full-moment normalization incident (2026-07-28)
+
+The candidate conclusion below was computed before the correction recorded in
+`INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md`.  With the corrected
+full-moment propagation, the executable outward-rounded comparison gives
+
+```text
+order-four equivalent delta^4 coefficient = 3854.406648455...
+order-five equivalent delta^4 coefficient = 253.341545441...
+beta1*Theta3(1)                         = 115.082465277...
+order-five / budget                     = 2.201391366...
+```
+
+Thus the order-five sufficient route also exceeds the registered budget.  The
+executable audit now preserves this as a rigorous negative result.  It neither
+disproves `H_tail` nor carries any load in the terminal weak-main proof.
+
+## Historical candidate record (superseded)
 
 The existing convergent integral remainder for the scaled Bessel factors is a
 valid half-line value enclosure.  Its order-four propagation through the

@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import subprocess
 
+from surface_eol_hashes import sha256_variants
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSCRIPT = ROOT/"scripts"/"certify_surface_remainder_delta0_endpoint_transcript.txt"
@@ -46,52 +47,7 @@ DEPENDENCIES = {
 }
 
 
-def validate(path=TRANSCRIPT):
-    raw = Path(path).read_bytes()
-    lines = raw.decode("utf-8").splitlines()
-    if not lines or lines[-1] != FINAL:
-        raise AssertionError("missing exact K2 endpoint CERTIFIED terminal")
-    provenance = {}
-    for line in lines:
-        if line.startswith("PROVENANCE "):
-            key, value = line[len("PROVENANCE "):].split("=", 1)
-            provenance[key] = value
-    if provenance != EXPECTED:
-        raise AssertionError("K2 endpoint provenance mismatch")
-    config = ("CONFIG delta=[0,1/1000] t_birth_width=1/50 "
-              "grids=96,192 physical_band=1 radial_tail=32")
-    if config not in lines:
-        raise AssertionError("K2 endpoint configuration missing")
-    paths = {"script_sha256": provenance["script"], **DEPENDENCIES}
-    for key, rel in paths.items():
-        data = (ROOT/rel).read_bytes()
-        blob = subprocess.check_output(
-            ["git", "-c", f"safe.directory={ROOT.as_posix()}", "show",
-             provenance["git_head"]+":"+rel], cwd=ROOT)
-        expected_hash = provenance[key]
-        if hashlib.sha256(blob).hexdigest() != expected_hash:
-            raise AssertionError("executed blob mismatch for "+rel)
-        if hashlib.sha256(data).hexdigest() != expected_hash:
-            # The endpoint driver received a provenance-only safe-directory
-            # hardening after the archived run.  Accept that one controlled
-            # drift only when the current bytes equal the historical script
-            # after the exact one-line subprocess replacement; all dependent
-            # mathematical sources remain byte-identical.
-            safe_directory_drift = (
-                rel == "scripts/certify_surface_remainder_delta0_endpoint.py"
-                and provenance["git_head"] ==
-                "46cdff0806cf07d2da87255cb40b813da0c0696b"
-                and _safe_directory_only_delta(blob, data)
-            )
-            strict_margin_drift = (
-                rel == "scripts/surface_remainder_delta0_series_cover_design.py"
-                and provenance["git_head"] ==
-                "46cdff0806cf07d2da87255cb40b813da0c0696b"
-                and _strict_lower_margin_only_delta(blob, data)
-            )
-            if not (safe_directory_drift or strict_margin_drift):
-                raise AssertionError("worktree hash mismatch for "+rel)
-
+def _validated_rows(lines):
     rows = []
     for line in lines:
         match = ROW.match(line)
@@ -111,6 +67,61 @@ def validate(path=TRANSCRIPT):
         raise AssertionError("K2 endpoint cover does not end at pi")
     if sum(grid == 192 for _, _, grid, _ in rows) != 5:
         raise AssertionError("K2 endpoint refined-grid count mismatch")
+    return rows
+
+
+def validate(path=TRANSCRIPT):
+    raw = Path(path).read_bytes()
+    lines = raw.decode("utf-8").splitlines()
+    if not lines or lines[-1] != FINAL:
+        raise AssertionError("missing exact K2 endpoint CERTIFIED terminal")
+    provenance = {}
+    for line in lines:
+        if line.startswith("PROVENANCE "):
+            key, value = line[len("PROVENANCE "):].split("=", 1)
+            provenance[key] = value
+    if provenance != EXPECTED:
+        raise AssertionError("K2 endpoint provenance mismatch")
+    config = ("CONFIG delta=[0,1/1000] t_birth_width=1/50 "
+              "grids=96,192 physical_band=1 radial_tail=32")
+    if config not in lines:
+        raise AssertionError("K2 endpoint configuration missing")
+    rows = _validated_rows(lines)
+    paths = {"script_sha256": provenance["script"], **DEPENDENCIES}
+    for key, rel in paths.items():
+        data = (ROOT/rel).read_bytes()
+        blob = subprocess.check_output(
+            ["git", "-c", f"safe.directory={ROOT.as_posix()}", "show",
+             provenance["git_head"]+":"+rel], cwd=ROOT)
+        expected_hash = provenance[key]
+        if hashlib.sha256(blob).hexdigest() != expected_hash:
+            raise AssertionError("executed blob mismatch for "+rel)
+        if expected_hash not in sha256_variants(ROOT / rel):
+            # The endpoint driver received a provenance-only safe-directory
+            # hardening after the archived run.  Accept that one controlled
+            # drift only when the current bytes equal the historical script
+            # after the exact one-line subprocess replacement; all dependent
+            # mathematical sources remain byte-identical.
+            safe_directory_drift = (
+                rel == "scripts/certify_surface_remainder_delta0_endpoint.py"
+                and provenance["git_head"] ==
+                "46cdff0806cf07d2da87255cb40b813da0c0696b"
+                and _safe_directory_only_delta(
+                    blob.replace(b"\r\n", b"\n"),
+                    data.replace(b"\r\n", b"\n"),
+                )
+            )
+            strict_margin_drift = (
+                rel == "scripts/surface_remainder_delta0_series_cover_design.py"
+                and provenance["git_head"] ==
+                "46cdff0806cf07d2da87255cb40b813da0c0696b"
+                and _strict_lower_margin_only_delta(
+                    blob.replace(b"\r\n", b"\n"),
+                    data.replace(b"\r\n", b"\n"),
+                )
+            )
+            if not (safe_directory_drift or strict_margin_drift):
+                raise AssertionError("worktree hash mismatch for "+rel)
     return {"t_boxes": len(rows),
             "transcript_sha256": hashlib.sha256(raw).hexdigest()}
 

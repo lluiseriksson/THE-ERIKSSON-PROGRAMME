@@ -3,6 +3,11 @@
 **Status date:** 2026-07-28
 **Submission state:** `READY_FOR_CLAIM_AUDIT`
 
+**Repository integration state:** `BLOCKED` — the terminal weak-main seal
+reproduces, but PR #31 still fails the unchanged run-manifest and changed-
+artifact coverage guards.  See
+`SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`.
+
 ## External portability audit and repair
 
 The first nominal seal at `97a9a7f2` did not reproduce from an LF archive.

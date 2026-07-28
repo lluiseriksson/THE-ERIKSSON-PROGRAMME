@@ -4,6 +4,7 @@ import hashlib
 from pathlib import Path
 
 from flint import arb
+from surface_eol_hashes import validate_recorded_dependencies
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,8 +35,7 @@ def validate():
         line.split()[1]: line.split()[3]
         for line in lines if line.startswith("dependency ")
     }
-    assert dependencies == {relative: sha256(ROOT / relative)
-                            for relative in DEPENDENCIES}
+    validate_recorded_dependencies(dependencies, DEPENDENCIES, ROOT)
     fractions = {
         line.split()[1]: arb(line.split(maxsplit=2)[2])
         for line in lines if line.startswith("fraction ")

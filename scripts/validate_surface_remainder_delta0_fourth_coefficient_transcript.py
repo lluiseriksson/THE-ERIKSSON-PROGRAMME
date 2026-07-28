@@ -4,6 +4,7 @@ import hashlib
 from pathlib import Path
 import subprocess
 
+from surface_eol_hashes import sha256_variants
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSCRIPT = ROOT/"scripts"/"surface_remainder_delta0_fourth_coefficient_transcript.txt"
@@ -37,11 +38,13 @@ def validate(path=TRANSCRIPT):
     )
     if tuple(lines[5:9]) != required:
         raise AssertionError("exact coefficient block mismatch")
-    worktree = (ROOT/provenance["script"]).read_bytes()
-    if hashlib.sha256(worktree).hexdigest() != provenance["script_sha256"]:
+    if provenance["script_sha256"] not in sha256_variants(
+        ROOT / provenance["script"]
+    ):
         raise AssertionError("fourth-head worktree hash mismatch")
     blob = subprocess.check_output(
-        ["git", "show", provenance["git_head"]+":"+provenance["script"]],
+        ["git", "-c", f"safe.directory={ROOT.as_posix()}", "show",
+         provenance["git_head"]+":"+provenance["script"]],
         cwd=ROOT)
     if hashlib.sha256(blob).hexdigest() != provenance["script_sha256"]:
         raise AssertionError("fourth-head executed commit blob mismatch")

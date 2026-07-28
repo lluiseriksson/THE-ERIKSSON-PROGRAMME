@@ -1,11 +1,12 @@
-"""Audit the current Bessel-companion error against the H_tail budget.
+"""Falsify the superseded Bessel-companion route against the H_tail budget.
 
 This is deliberately an obstruction audit, not a certificate.  The existing
 integral remainder gives a uniform value error for the four carrier moments;
 the quotient perturbation then gives a sufficient bound for the induced error
-in ``Y``.  We compare that bound with the registered endpoint budget.  A
-failure means that the current companion enclosure cannot discharge H_tail;
-it does not imply that H_tail is false.
+in ``Y``.  After the full-moment normalization repair, both the order-four and
+order-five bounds exceed the registered endpoint budget.  This proves only
+that the historical sufficient route cannot discharge H_tail; it does not
+imply that H_tail is false and carries no load in the terminal weak-main proof.
 """
 
 from flint import arb, ctx
@@ -53,9 +54,9 @@ def main() -> int:
     print("order4_over_budget", (old_equiv/budget).str(30))
     print("order5_over_budget", (new_equiv/budget).str(30))
     assert old_equiv > budget
-    assert new_equiv < budget
-    print("ORDER5_COMPANION_ROUTE_PASSES_BUDGET_AUDIT")
-    print("SCOPE: candidate analytic input only; outer-tail, joint carrier, and global H_tail relay remain open")
+    assert new_equiv > budget
+    print("ORDER5_COMPANION_ROUTE_EXCEEDS_BUDGET")
+    print("SCOPE: rigorous falsifier of a superseded sufficient route; no terminal weak-main load")
     return 0
 
 

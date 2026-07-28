@@ -67,6 +67,17 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 > [`SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md).
 > The portability incident and repair are recorded in
 > [`SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md`](docs/SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md).
+>
+> **Repository integration warning.**  A second external checkout confirmed
+> the terminal seal but found an unversioned module imported by the full test
+> suite.  That omission and several stale historical test semantics are now
+> repaired without changing the paper.  The much broader PR remains
+> integration-blocked: its 6,047-file diff has 2,015 computational artifacts
+> without covering ledgers, and the legacy manifest validator reports 624
+> invalid files.  Therefore `FINAL-SEAL PASS` applies to the terminal
+> weak-main claim chain; it is not a claim that the full repository CI is
+> green.  See
+> [`SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`](docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md).
 
 **Independent O-lane submission (owner report, 2026-07-28).**  Version 1.3 of
 *From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked
