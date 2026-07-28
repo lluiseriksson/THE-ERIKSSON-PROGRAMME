@@ -25886,3 +25886,83 @@ O-Bridge and reflection-positivity papers are FROZEN and are not modified.
 `E[A·θ_n B] = ⟪AΩ, T^n BΩ⟫` (O-3d), then a GNS quotient exercised on a
 DEGENERATE pairing (O-3e), then spatial extent (O-3f), then volume-uniformity
 (O-3g).  O-3d is the one that would justify the third paper.
+
+## Addendum 512 (2026-07-28, **O-3d: THE IDENTIFICATION — the chain closes for one system; all five pre-registered judges pass**)
+
+Amendment 8 opened O-3d and fixed five judges before any Lean existed.  All
+five pass.  `YangMills/OS/Z2Identification.lean` is in the core root and
+oracle-exercised.
+
+**JUDGE 1 — non-circularity: PASS.**  The measure side is defined from
+`Real.exp` and the bond sign and from nothing else.  Verified MECHANICALLY, not
+by reading: printing the six definitions exposes the whole transitive closure
+
+    z2Sign -> (nothing)
+    z2Bond -> Real.exp, z2Sign
+    z2PathWeight -> z2Bond
+    z2Partition, z2PathSum -> z2PathWeight
+    z2Expect -> z2PathSum, z2Partition
+
+and it contains no `z2TransferOp`, no `z2A`, no `z2B`, no `z2Kernel`.  The
+closure being closed is what makes this a complete check rather than a sample.
+(Erratum on my own audit tooling: a grep for `z2B` also matches `z2Bond`; the
+printouts, not the grep, are the evidence.)
+
+**JUDGE 2 — the partition function: PASS.**  `z2Partition_eq` proves
+`Z_n = 2·(e^β+e^{-β})^n` exactly.  It is computed from `T·1 = 1`, i.e. from
+`a + b = 1`, not assumed and not symbolically cancelled.
+
+**JUDGE 3 — full quantification: PASS.**  `z2_identification` is stated
+`∀ (β : ℝ) (n : ℕ) (A B : Fin 2 → ℂ)`.  No subfamily of observables, no bound
+on `n`.
+
+**JUDGE 4 — non-vacuity: PASS.**  `z2_two_point_ne_zero` exhibits `β > 0` and
+the sign observable, where both sides are nonzero for every `n`, and
+`z2_two_point_tanh` shows the value genuinely depends on `n`.
+
+**JUDGE 5 — the endpoint: PASS, at exactly the pre-registered value.**
+
+    z2_two_point_tanh :  E_n[f(σ_0)·f(σ_n)] = (tanh β)^n
+
+`f` the sign observable.  The left-hand side mentions no operator; the proof
+goes through one.  `z2_measure_clustering` states the same as a norm identity,
+and `z2_measure_rate_lt_one` records `tanh β < 1`.  This is the first statement
+in the lane that is ABOUT A MEASURE, is proved THROUGH the transfer operator,
+and whose rate IS the spectral gap of O-3c.
+
+**What the lane now holds, for the `Z_2` chain and for nothing larger:** a
+complete machine-checked chain
+
+    Gibbs weight -> reflection positivity -> Hilbert space -> transfer
+    operator -> identification -> spectral gap -> exponential clustering
+
+with every arrow a theorem and no arrow assumed.
+
+**What is still NOT delivered, unchanged from Amendment 8 and restated so no
+later reader can inflate it.**  One `Z_2` variable per time slice, so the
+spatial slice is a point and `T` is `2 x 2`; a lattice with spatial extent is
+untouched.  Fixed finite size — **NOT volume-uniform**; at this size the
+question does not arise, which is precisely why this is not evidence about the
+volume-uniform case.  The pairing here is definite, so the GNS quotient is the
+identity and remains **ABSENT rather than closed**; a system with a degenerate
+pairing still needs it.  `Z_N` for `N > 2` untouched (the Bessel-type
+coefficients remain unproved).  The mathematics of the one-dimensional chain is
+**textbook** — Osterwalder–Seiler 1978, and the transfer matrix of the Ising
+chain is older still.  Nothing here concerns `SU(N)`, the continuum limit, or
+the Clay problem; the Clay distance is unchanged at ~0% and stays
+ledger-internal per hard rule 6.
+
+**On the paper.**  Amendment 8 fixed in advance that a paper is honest here
+only as a FORMALIZATION paper: the claim is that the interfaces compose,
+exhibited on the smallest system, with the novelty being mechanical
+verification end to end — not new mathematics.  The paper written for this
+addendum makes exactly that claim and no larger one.  The two previously
+submitted papers stay FROZEN and unmodified.  Submission remains the owner's
+decision.
+
+**Registered continuation, unchanged in substance:** O-3e — a GNS quotient
+exercised on a genuinely DEGENERATE pairing, where the quotient does work
+rather than being the identity.  Then O-3f (spatial extent, so that `T` acts on
+a space growing with the volume) and O-3g (volume-uniformity, which is the
+first point at which any of this could bear on a mass gap).  O-3f is where the
+present construction is expected to stop being easy.
