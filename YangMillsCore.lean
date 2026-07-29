@@ -866,3 +866,16 @@ import YangMills.OS.SpatialPerron
 -- radius.  NOT claimed: algebraic simplicity, irreducible (non-strict) kernels,
 -- periodicity, and NO SPECTRAL GAP of any kind.
 import YangMills.OS.PerronKernel
+
+-- O-3j: THE GAP AT EVERY FINITE EXTENT, and why that is not the statement
+-- one wants.  O-3i listed PERIPHERAL SEPARATION as out of scope, and that was
+-- not cosmetic: |mu| <= lam leaves mu = -lam open, so no gap follows at all.
+-- Here -lam is proved NOT an eigenvalue - WITHOUT the equality case of the
+-- triangle inequality, via p = |w| - w and q = |w| + w satisfying A p = lam q
+-- and A q = lam p - hence every real eigenvalue other than the Perron one is
+-- STRICTLY smaller in modulus, at every extent.  Also: the vacuum in Euclidean
+-- normalisation (norm 1, T Omega = Omega) and symmetry of the symmetrised
+-- kernel, the two interfaces the next module needs.  THE GAP IS STRICT AND NOT
+-- QUANTITATIVE: no modulus of separation, nothing uniform in the extent, and
+-- the measured ratios collapse towards 1 outside the disordered region.
+import YangMills.OS.PerronGap

@@ -2883,3 +2883,24 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.spatialWeightRing_pos
 #print axioms YangMills.OS.coupled_ring_vacuum_exists
 #print axioms YangMills.OS.coupled_ring_normalized_vacuum
+
+-- O-3j: the strict gap at every finite extent
+#print axioms YangMills.OS.exists_pos_left_eigenvector
+#print axioms YangMills.OS.left_eigenvalue_eq
+#print axioms YangMills.OS.subeigen_eq
+#print axioms YangMills.OS.neg_not_eigenvalue
+#print axioms YangMills.OS.abs_lt_of_ne_perron
+#print axioms YangMills.OS.eucNorm
+#print axioms YangMills.OS.eucNorm_pos
+#print axioms YangMills.OS.unitVacuum
+#print axioms YangMills.OS.unitVacuum_pos
+#print axioms YangMills.OS.unitVacuum_norm
+#print axioms YangMills.OS.unitVacuum_fixed
+#print axioms YangMills.OS.symWeighted
+#print axioms YangMills.OS.symWeighted_symm
+#print axioms YangMills.OS.symWeighted_pos
+#print axioms YangMills.OS.eigenvalue_real_of_symm
+#print axioms YangMills.OS.coupled_gap_of_sourceWeight
+#print axioms YangMills.OS.sourceWeighted_eq_sym
+#print axioms YangMills.OS.coupled_eigenvalue_real
+#print axioms YangMills.OS.coupled_gap_all_eigenvalues

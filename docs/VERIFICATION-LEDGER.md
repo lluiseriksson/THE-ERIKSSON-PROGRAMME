@@ -27073,7 +27073,200 @@ O-3g obstructions stand: the projective metric is still blind to the coupling
 and still degenerates in the volume.  The first object of the chain being back
 is a precondition for the analytic work, not a substitute for it, and the paper
 says so in two separate remarks.
-## Addendum 531 (2026-07-29, **O-lane Paper 6 submitted; live documentation and artifact record synchronized**)
+## Addendum 531 (2026-07-29, **O-3j: the STRICT spectral gap at every finite extent -- the step without which O-3i supported no spectral conclusion -- and the modulus it does not provide**)
+
+**What was missing, and it was not cosmetic.**  O-3i listed peripheral
+separation among its exclusions.  With only `|mu| <= lam`, the case
+`mu = -lam` SATURATES the bound, so the second-largest modulus may equal the
+largest and **no gap statement exists at all**, at any extent.  The first half
+of this module is therefore not an improvement of O-3i; it is the step without
+which O-3i supports no spectral conclusion.
+
+**Proved.**  `neg_not_eigenvalue`: `-lam` is not an eigenvalue.  Hence
+`abs_lt_of_ne_perron`: every real eigenvalue other than the Perron one is
+STRICTLY smaller in modulus; `coupled_gap_of_sourceWeight` specialises it to
+every extent `L`, every `beta`, every strictly positive source weight.
+
+**The proof avoids the equality case of the triangle inequality**, which is
+where the classical argument spends its effort and which in Lean costs either
+complex-phase reasoning or a sign decomposition of the index set.  With
+`u = |w|`, the vectors `p = u - w` and `q = u + w` satisfy `A p = lam q` and
+`A q = lam p`; a nonzero `p` would make `A p` strictly positive, hence `q`
+strictly positive, hence `w` nonnegative, hence `p = 0`.  The only tool is
+strict positivity of the image of a nonnegative nonzero vector -- a lemma O-3i
+already had.
+
+**The hinge was free.**  `exists_pos_left_eigenvector` is O-3i's existence
+theorem applied to the transposed kernel; `left_eigenvalue_eq` is one pairing;
+and `subeigen_eq` then turns `A u >= lam u` into an equality.  That single
+object carries the whole argument.  A pattern worth naming: **the theorem that
+unlocks a proof is often the one you already proved, applied to a transposed or
+dual object.**
+
+**Two interfaces delivered for the next module.**  The vacuum in EUCLIDEAN
+normalisation (`unitVacuum`, `unitVacuum_norm`, `unitVacuum_fixed`: norm 1 and
+`T Omega = Omega`, the form the Osterwalder--Seiler side asks for, complementing
+O-3i's simplex normalisation), and `symWeighted_symm`, the symmetrised kernel is
+symmetric because the decoupled one is -- the bridge to a self-adjoint operator.
+Self-adjointness itself and the variational characterisation it unlocks belong
+to the consuming module and are NOT proved here.
+
+**THE GAP IS STRICT AND NOT QUANTITATIVE, and that is the headline rather than
+a caveat.**  `abs_lt_of_ne_perron` is an inequality between two reals: no
+epsilon, no dependence on `L`, therefore no information about how the
+separation behaves as the extent grows.  Every use of it that sounds
+quantitative is a misuse.  The measured ratios collapse towards 1 outside the
+disordered region -- `0.9205, 0.9829, 0.9964, 0.9992` at `L = 2,3,4,5` for
+`beta = 0.8, gamma = 1.2`, against `0.4665, 0.5518, 0.5938, 0.6159` at
+`beta = 0.3, gamma = 0.4` where `sinh 2beta sinh 2gamma < 1`.  That is recorded
+as measured-and-unproved, no theorem depends on it, and its function is to stop
+a misreading: a strict gap at each `L` and a uniform gap in `L` are different
+statements and only the first is proved.
+
+**NOT claimed.**  Any modulus of separation; anything uniform in `L`; any proof
+that a volume-uniform gap FAILS (the collapse is a finite grid, not a theorem);
+complex peripheral separation; algebraic simplicity.
+
+**Tooling ghost (minor, caught before it did damage).**  The paper's
+line-anchor placeholders were substituted by plain string replacement, and
+`GAPLINE` is a substring of `CGAPLINE`, so the shorter name clobbered the longer
+one.  The assertion that every placeholder still be present caught it before any
+file was written.  Fix: substitute longest-first, and assert no placeholder is a
+substring of another.  Rule: *a placeholder scheme substituted by string
+replacement needs a collision check, because the failure is silent and produces
+a plausible wrong line number rather than an error.*
+
+**Measured.**  Anchor `6aa26bcedc4b008f4e5acaa708da343bf1f1100b`; full core
+build **8428 jobs** EXIT 0, zero errors (8427 + 1); oracle 2564 -> **2579
+commands -> 2579 answers** (2556 with axiom dependencies + 23 axiom-free);
+targeted run over the module's **15** declarations, all with exactly
+`{propext, Classical.choice, Quot.sound}`; an extraction over the whole
+transcript shows no axiom name outside that set; zero `sorryAx`; zero real
+errors.  Paper 5pp, 12 line-anchored permalinks verified at the anchor commit.
+
+## Addendum 532 (2026-07-29, **O-3j v1.1: every eigenvalue of the coupled kernel is REAL, so the strict separation is a statement about the whole spectrum and the title is literally supported**)
+
+**The reservation this removes was load-bearing**, and it was the Addendum 521
+rule applied to v1.0's own title.  Excluding `mu = -lam` separates the REAL
+eigenvalues; for a real NON-SYMMETRIC kernel that is not yet a statement about
+the spectrum, because nothing excluded a peripheral pair
+`mu = lam exp(+/- i theta)`.  A title reading *a spectral gap at every finite
+extent* was therefore claiming more than the theorems gave.
+
+**The bridge, in three steps.**
+
+* `eigenvalue_real_of_symm` — every complex eigenvalue of a real SYMMETRIC
+  kernel is real.  Proved from scratch, with no spectral theory: pair the
+  eigenvector against its image twice; because the kernel is real and symmetric
+  the second computation returns the conjugate of the first, giving
+  `conj(mu) * N = mu * N` with `N = sum |y i|^2 > 0`.  The whole argument is two
+  rearrangements of a double sum.
+* `sourceWeighted_eq_sym` — the source-weighted kernel is conjugate,
+  coordinatewise, to the symmetrised one by the positive diagonal `diag(sqrt w)`.
+* `coupled_eigenvalue_real` — hence every complex eigenvalue of the coupled
+  kernel is an eigenvalue of the symmetrised one, hence real.
+
+**Consequence.**  There are no complex peripheral eigenvalues left to exclude,
+so excluding `-lam` over the reals IS excluding it over the whole spectrum.  The
+v1.0 scope item restricting the claim to real eigenpairs is **deleted because it
+became false**, not softened because it was awkward.
+
+**Architectural note worth keeping.**  The bridge was already half-built inside
+the paper: `symWeighted_symm` had been proved in v1.0 and labelled an interface
+*for the module that consumes this one*.  The consuming module turned out to be
+the same paper, two sections further down.  Rule: *when a development sets a
+lemma aside as premature, ask whether the `later` is the present paper --- the
+reason the lemma looked premature can be the same reason the main theorem was
+incomplete.*
+
+**Unchanged, and still the headline.**  Making the separation cover the whole
+spectrum changes nothing about its QUANTITATIVE content, which remains empty.
+No modulus, nothing uniform in the extent, no proof that a volume-uniform gap
+fails, no algebraic simplicity.  A dedicated remark says exactly this so the
+upgrade cannot be misread as progress towards a uniform bound.
+
+**Measured.**  Anchor `ff24cf46cfc8859dffa8b2f18252763e0c75def9`; full core
+build **8428 jobs** EXIT 0, zero errors; oracle 2579 -> **2582 commands -> 2582
+answers** (2559 with axiom dependencies + 23 axiom-free); targeted run over the
+module's **18** declarations, all with exactly
+`{propext, Classical.choice, Quot.sound}`; zero `sorryAx`; zero real errors.
+Paper 6pp, 15 line-anchored permalinks recomputed BY NAME and re-verified at the
+anchor commit itself.
+
+## Addendum 533 (2026-07-29, **O-3j v1.2: the terminal endpoint - the whole-spectrum gap becomes ONE named theorem, clickable from the corollary that states it**)
+
+**What was missing was a name, and a name is not a decoration.**  v1.1 proved
+the two halves and left their composition to the reader: every eigenvalue is
+real (`coupled_eigenvalue_real`), and every real eigenvalue other than `lam` is
+strictly smaller in modulus (`abs_lt_of_ne_perron`).  A paper whose title
+claims a spectral gap should be able to point at the single theorem that IS the
+claim.  The external evaluator asked for exactly that, and the request was
+correct: a corollary supported only by prose composition is the one place where
+a machine-checked paper quietly stops being machine-checked.
+
+**The endpoint.**  `coupled_gap_all_eigenvalues` (`YangMills/OS/PerronGap.lean`)
+- for every finite extent `L`, every strictly positive source weight `w`, every
+`beta`, and every COMPLEX eigenvalue `mu` of the coupled kernel with
+`mu != lam`: `||mu|| < lam`.
+
+**How it composes, and why reality is what makes it work.**  Write `mu` as a
+real number (Addendum 532).  Then the real and imaginary parts of the
+eigenvector satisfy the SAME real eigen-equation with eigenvalue `mu.re` --- the
+complex equation splits componentwise precisely because `mu.im = 0`.  A nonzero
+eigenvector has a nonzero real part or a nonzero imaginary part; either one is a
+witness for `abs_lt_of_ne_perron`.  The case split is on which component
+survives, not on any property of the kernel.
+
+**What was deliberately NOT added, and why.**  The existential corollary
+`exists eps > 0, ||mu|| <= (1 - eps) lam` for a GIVEN `mu` was declined: over
+the reals it is logically EQUIVALENT to `||mu|| < lam`, so it would restate the
+same content in language that sounds quantitative.  The version that would say
+something --- ONE `eps` valid for ALL `mu` --- requires the spectrum as an
+enumerated finite set, which this development does not have.  Adding the weaker
+one would have been house-rule 3 (no vacuous weakening) inverted: not a smaller
+true claim, but the same claim dressed larger.
+
+**Measured, not asserted.**  Core **8428 jobs**, success.  The count did NOT
+increment, and that is the correct outcome: hard rule 7 predicts an increment
+when a MODULE is added to the core; here a theorem was added to a module that
+was already there.  Oracle **2583 commands -> 2583 answers** (2580 distinct,
+the same three known duplicates), 2560 with axioms + 23 axiom-free, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  The endpoint answers
+`[propext, Classical.choice, Quot.sound]`.  Paper: 6pp, 16 permalinks, each
+verified against the BLOB AT THE ANCHOR COMMIT (not the working copy) to land on
+a line that literally declares the name it displays, and each verified again
+inside the compiled PDF after inflating its streams.
+
+**TOOLING GHOST #27 --- a parser that could not read its own output.**  The
+first reconciliation reported *4 commands with no answer*.  All four names end
+in a prime: `sinh_pos'`, `one_le_cosh'`, `cosh_sq_sub_sinh_sq'`,
+`pow_succ_apply'`.  Lean prints `'NAME'' depends on axioms:`, and a regex of the
+form `'([^']+)'` stops at the INTERNAL prime, so a real answer is read as
+missing.  Nothing was wrong with the build.  The failure mode is the mirror of
+ghost #26: there, the extractor mistook prose for code and INVENTED an entry;
+here, the auditor mistook a real entry for an absence.  Both are invisible
+except by reconciling commands against answers NAME BY NAME --- a total that
+merely looks plausible proves nothing.  Recorded with it: per-line greps for
+`error` and for nonstandard axioms are both meaningless against this log (Lean
+WRAPS long axiom lists across lines, and declaration names contain the substring
+`Error`, e.g. `YMActivityErrorBudget`); the naive greps reported 31 errors and
+1195 nonstandard-axiom answers where there are zero of each.
+
+**A second tooling note, caught before it could do harm.**  The script that
+inserts the endpoint link first anchored on the FIRST `\end{corollary}` in the
+document.  The document happens to contain exactly one corollary, so the link
+landed correctly --- by luck, not by logic.  Re-anchored on `\label{cor:whole}`.
+Rule: *when a script locates an insertion point, it must key on the identifier
+of the target, never on the first instance of its delimiter; the failure is
+silent and produces a plausible result.*
+
+**Unchanged, and still the headline.**  The gap is **STRICT and NOT
+QUANTITATIVE**: no `eps`, no dependence on `L`, nothing uniform in volume.  The
+probe still shows the subdominant ratio climbing toward 1 with `L` outside the
+disordered region.  NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct
+unchanged.  Anchor `ac897963`.
+
+## Addendum 534 (2026-07-29, **O-lane Paper 6 submitted; live documentation and artifact record synchronized**)
 
 The owner reports submission of *Blind to the Coupling: a Second
 Machine-Checked Obstruction at Spatial Extent* in Physics - Mathematical
@@ -27098,7 +27291,7 @@ statement is proved or claimed.  The exact submission fields and permanent
 record live at `papers/spatial-birkhoff/SUBMISSION-INFO.txt` and
 `docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`.
 
-## Addendum 532 (2026-07-29, **public O-lane IDs `[89]`--`[93]` verified by binary identity; live state advanced to the Perron checkpoint**)
+## Addendum 535 (2026-07-29, **public O-lane IDs `[89]`--`[93]` verified by binary identity; live state advanced to the Perron checkpoint**)
 
 The public author page was rechecked rather than inferred from submission
 order.  Its newest visible entries are:
