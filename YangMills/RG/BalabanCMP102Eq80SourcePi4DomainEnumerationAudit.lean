@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4DomainEnumeration
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4DomainAt_mem
+#print axioms YangMills.RG.cmp102Eq80SourcePi4DomainAt_injective
+#print axioms YangMills.RG.image_cmp102Eq80SourcePi4DomainAt_univ
+#print axioms YangMills.RG.cmp102Eq80SourcePi4LocalizationDomain_bondSupport_subset_centeredRegionInterior
+#print axioms YangMills.RG.cmp102Eq80SourcePi4IndexedLocalizationDomain_bondSupport_subset_centeredRegionInterior
