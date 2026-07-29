@@ -878,3 +878,87 @@ cutoff_energy_bound installed in the centered terminal record : open
 `alpha = potentialRate + r2Rate + gamma`; it is not counted as an analytic
 discharge.  No complete centered conditioned `TermSource` has yet been
 constructed, and neither `hraw` nor `hRpoly` is proved.
+
+## Equation-(80), the indexed cutoff estimate, and the missing residual
+
+The canonical Pi4 indexing and the one-domain cutoff estimate are available,
+but the latter has not been identified with Balaban's `V''_k`.
+
+`BalabanCMP102Eq80SourcePi4DomainEnumeration.lean` canonically enumerates a
+selected finite family
+
+```text
+D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor)
+```
+
+and supplies its literal localization domain, tree metric, block cardinality,
+centered region, and bilateral support inclusion.  The indexed cutoff theorem
+estimates the radial Taylor residual of an arbitrary supplied function after
+the physical precomposition
+
+```text
+B |-> f (g_k C B)
+```
+
+and projection to the bond support of the individual domain.  This is a valid
+conditional estimate, but no theorem identifies that radial residual with
+`V''_k`.
+
+The source-faithful finite Faà di Bruno lane already proves a stronger and
+decisive identity for equation (80):
+
+```text
+equation80(B)
+  = fullyDecoupledLeaf(B)
+    + sum_W connectedDomainActivity(W,B)
+  = (1/2) <B, completeRadialQuadratic(B) B>.
+```
+
+`BalabanCMP102Eq80SourcePi4DecoupledLeafRadial.lean` proves that even the
+all-zero weakening leaf belongs to this field-radial quadratic sector.  Its
+module documentation explicitly forbids identifying that leaf with
+Balaban's residual.  Weakening order and field Taylor order are different
+decompositions.
+
+Consequently, lifting third derivatives through
+`cmp102Eq80CorrectedPhysicalCompleteDomainFTCActivity` and its two `tsum`
+layers would refine the quadratic-operator/(1.43) lane; it would not by itself
+produce the residual majorant (1.36) consumed by `Eq220`.  The scalar
+summability of the complete activity is also insufficient for differentiating
+either `tsum`, so that lift remains a legitimate but separate Q-lane task.
+
+The currently installed CMP116 potential still has two source mismatches:
+`withCMP102FineHeadTailPotential` installs a bare fine-head/tail contribution
+on the common `Z0` projection, whereas the indexed cutoff theorem concerns
+`f (g_k C B)` on each individual domain support.  No equality between those
+objects is asserted.  The finite Faà di Bruno reassembly gives the preferable
+source dictionary for equation (80), so a new installer should use that exact
+finite decomposition rather than select one summand or silently replace it by
+the complete Neumann activity.
+
+The residual frontier is therefore outside the equation-(80)-only identity:
+one must construct the complete localized fluctuation activity of (1.41),
+identify its quadratic `Q(Y,B)` contribution, and define the remaining
+`V''_k(Y,B)` from the other fluctuation-action terms.  Only that literal
+remainder may be compared with
+
+```text
+cmp116Eq136ResidualMajorant
+```
+
+and then summed into `cmp116Eq220ResidualDomainWeight`.
+
+The next acceptable bridge is:
+
+```text
+literal localized activity V_k(Y,B) of (1.41)
+  -> source-faithful Q(Y,B) including the equation-(80) quadratic sector
+  -> literal remainder V''_k(Y,B)
+  -> estimate (1.36)
+  -> Eq220 residual weights
+  -> centered potential_bound.
+```
+
+No theorem should call a weakening leaf, an arbitrary radial Taylor residual,
+or the residual of the currently installed bare summand `V''_k` without this
+identity.
