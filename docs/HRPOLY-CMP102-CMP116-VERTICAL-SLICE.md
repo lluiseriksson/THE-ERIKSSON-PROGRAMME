@@ -1080,6 +1080,121 @@ The term-by-term producer audit is therefore:
 | `-V(H_1 B')` | the equation-(80) four-term potential and its Pi4 localization | equality with this CMP109 species after corrected-field substitution, sign, `g_k^(-2)`, and domain regrouping |
 | energy difference in braces | `BalabanCMP109Lemma1ResidualFamily.lean` | the source analytic comparison giving (1.36) |
 
+The first row has an exact coordinate route once the local implicit branch
+`g(A) = D_tilde(A)` has been constructed.  At a certified source point its
+literal fine-field Jacobian is the endomorphism
+
+```text
+J_h(A)
+  = cmp96ConstraintPivotInsertionCLM
+      ∘ physicalGaugeOneCochainSupEquiv.symm
+      ∘ Dg(A).
+```
+
+`BalabanCMP116PhysicalEndomorphismMatrix.lean` already transports a physical
+fine-cochain endomorphism to the canonical bond--Lie matrix and preserves
+composition and the identity exactly.  Therefore the source expression is
+not an arbitrary determinant density: after proving the relevant Mercator
+smallness it must be installed literally as
+
+```text
+trace (nearLog (-(cmp116PhysicalEndomorphismComplexMatrix J_h(A))))
+```
+
+because `nearLog X` represents `log(I + X)` and CMP109 prints
+`Tr log(I - h D D_tilde)`.  The sign and the derivative evaluation point must
+be checked in this form before localization.  Direct visual inspection of
+CMP109 page 268, equation (2.12), confirms that the derivative of
+`D_tilde` is evaluated at `g_k C B`; the displayed Jacobian does **not**
+differentiate the outer substitution `B ↦ g_k C B`, so no extra `g_k C`
+factor belongs in `J_h`.  The later covariance determinant is a different
+object and cannot serve as this producer.
+
+The symbol `h` also has a source-facing dictionary obligation.  The current
+producer `cmp96ConstraintPivotInsertion` is proved to be the sparse right
+inverse of the formalized **flat** block constraint.  CMP109 page 267
+describes `h(c)` as `L⁻¹` times the inverse coefficient of the pivot variable
+in the printed linear constraint `Q_tilde`.  If the corridor gauge makes that
+coefficient definitionally equal to the flat scalar used by
+`cmp96ConstraintPivotInsertion`, this must be stated and proved; otherwise
+the background-dependent pivot coefficient has to be constructed.  The
+right-inverse theorem for flat `Q` alone is not yet that source dictionary.
+A direct construction that preserves the printed sparsity is:
+
+```text
+Qlin_U
+  := physical Lie-coordinate form of
+       [D(cmp102AmbientNonlinearBlock U)(0)] · block(U,0)⁻¹,
+K_U
+  := Qlin_U ∘ cmp96ConstraintPivotInsertion,
+h_U
+  := cmp96ConstraintPivotInsertion ∘ K_U⁻¹.
+```
+
+The required source lemmas are then `‖K_U-I‖<1`, the Neumann inverse,
+`Qlin_U ∘ h_U = I`, pivot support, and block-diagonality of `K_U⁻¹`
+(hence source-local dependence at each pivot).
+At the trivial background one should prove `K_U=I`, recovering the current
+flat insertion.  This route uses the literal linear term already subtracted
+in `cmp102IntrinsicAmbientCorrectionBond`; it does not introduce a new
+constraint operator by hypothesis.
+
+The first algebraic part of this construction is now explicit.
+`BalabanCMP109PhysicalLinearConstraint.lean` defines the displayed
+`Qlin_U = L Q̃_U` from the raw Fréchet derivative of the represented
+nonlinear block and defines its physical pivot response `K_U`.  This matches
+the source identity `L Q̃ h = I`; no additional inverse block length belongs
+in `Qlin_U`.
+`BalabanCMP109PhysicalConstraintRightInverse.lean` names the defect
+`K_U-I`, constructs its inverse as the convergent Neumann series, defines
+a physical right-inverse candidate `h_U`, and proves the exact identity
+
+```text
+Qlin_U ∘ h_U = I
+```
+
+under the visible contraction `‖K_U-I‖<1`.  This does not discharge the
+source estimate: the contraction, the trivial-background equality `K_U=I`,
+and the block-diagonal/source-local dependence of the physical inverse remain
+to be proved from the literal small background.  In particular the
+contraction is not to be propagated as an endpoint hypothesis.
+`BalabanCMP109PhysicalConstraintRightInverseSupport.lean` now proves
+pointwise that `h_U D` vanishes away from the literal pivot image and that
+its value at `b₀(c)` is exactly
+`L^(d-1) • (K_U⁻¹ D)(c)`.  Thus fine-field pivot support is closed.  What is
+still missing is the no-mixing theorem showing that `(K_U⁻¹ D)(c)` depends
+only on `D(c)`; without it the candidate is not yet identified with the
+printed local formula `hB(b₀(c)) = h(c)B(c)`.
+The source-faithful next endpoint is therefore the off-diagonal vanishing
+
+```text
+c ≠ c'  =>
+  (K_U (singlePhysicalBondCochain c v))(c') = 0.
+```
+
+It must be derived from the literal corridor paths and pivot geometry.  It
+must not be replaced by a supplied diagonal certificate.  Once this is
+proved, the diagonal coefficient of `K_U` can be inverted pointwise to
+construct the printed Lie-algebra operator `h(c)`.
+
+There is one non-definitional selection issue before this Jacobian is
+available.  Intrinsic fixed points obtained from any two source certificates
+at the **same** fine field agree: their zero-centred radii are comparable, so
+the fixed point in the smaller certified ball also lies in the larger one,
+where Banach uniqueness applies.  This does not by itself make an arbitrary
+field-indexed family of certificates continuous.  To identify the canonical
+choice with the local implicit branch near `A`, the branch must be shown to
+remain in one common certified ball (for example from strict interior
+membership), or a genuinely global uniqueness theorem must be supplied.
+The presently proved weak membership `‖D_tilde(A)‖ ≤ ρ(A)` is not enough at a
+boundary point and must not be silently treated as such.  The source-faithful
+alternative, already used by the CMP102 equation-(80) correction, is to fix
+the physical contour radii `r,s` and prove a two-field Lipschitz estimate for
+the selected fixed points directly from the literal correction estimate.
+That gives continuity of `A ↦ D_tilde(A)` without any regularity assumption
+on the certificate family and is the preferred route for the CMP109
+implicit-branch comparison.
+
 Here the symbol `D₃` accepted by the abstract equation-(80) functional must
 not be identified by notation alone with CMP109's
 `D_tilde_3`.  Such an identification requires a theorem fixing the Taylor

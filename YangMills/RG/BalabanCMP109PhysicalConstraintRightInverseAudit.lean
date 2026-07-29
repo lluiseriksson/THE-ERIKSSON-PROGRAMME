@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP109PhysicalConstraintRightInverse
+
+#print axioms YangMills.RG.cmp109PhysicalPivotResponse_comp_inverse
+#print axioms YangMills.RG.cmp109PhysicalPivotInverse_comp_response
+#print axioms YangMills.RG.cmp109PhysicalLinearConstraint_comp_rightInverse
+#print axioms YangMills.RG.cmp109PhysicalLinearConstraint_rightInverse_apply
