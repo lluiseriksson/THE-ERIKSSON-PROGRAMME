@@ -1,0 +1,392 @@
+% Perron-Frobenius for positive kernels, and the vacuum at every spatial extent.
+% Lane: O (operator bridge), modules YangMills/OS/**.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\anchor}{6f3121d693e4f0f560a2ff01c63f4aacf1a49390}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Om}{\Omega}
+
+\title{The Vacuum Was Never Absent:\\
+Perron--Frobenius for Strictly Positive Kernels in Lean~4,\\
+and the Coupled-Slice Vacuum at Every Spatial Extent\\
+\large existence by compactness, in a library with no fixed-point theorem}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Two companion papers established, for a $\Z_2$ lattice gauge slice with a
+spatial coupling, that the elementary route to the vacuum stops
+\cite{ErikssonSpatial} and that the natural replacement --- the Hilbert
+projective metric --- is blind to the coupling and degenerates in the volume
+\cite{ErikssonBirkhoff}.  Both had to work around the same absence: the pinned
+\texttt{mathlib} carries no Perron--Frobenius theorem.  The first paper could
+therefore only say the vacuum had become unavailable; the second had to build
+its domination bound from scratch, and could exhibit the vacuum in closed form
+only at two sites.
+
+This paper discharges that dependency.  For a strictly positive kernel on a
+finite nonempty type we prove, in Lean~4 with \texttt{mathlib}: a strictly
+positive eigenvector \emph{exists}; its eigenvalue is strictly positive; any two
+strictly positive eigenvectors are proportional and share their eigenvalue; and
+every real eigenvector for that eigenvalue is a scalar multiple of it.  Together
+with the domination theorem of \cite{ErikssonBirkhoff} this gives the
+Perron statement the lane needs: the eigenvalue is the spectral radius.
+
+The existence proof does not use a fixed-point theorem, because the library has
+none.  It maximises $r$ over the compact set of pairs $(r,x)$ with $x$ in the
+simplex and $rx\le Ax$; maximality forces equality, since a strict inequality
+anywhere would let one further application of $A$ produce an admissible pair with
+a larger $r$.  The bound that keeps the set compact is obtained by summing the
+constraint: $r=r\sum x\le\sum(Ax)$.
+
+The application is the point.  At \emph{every} spatial extent, and for
+\emph{every} strictly positive weight on the source configuration --- the class
+that contains the coupled kernel of \cite{ErikssonSpatial} --- the vacuum exists,
+is unique up to scale, and carries the spectral radius.  The obstruction of the
+first paper was never an absence; it was an unavailability, and it was an
+unavailability of one route rather than of the object.
+
+\textbf{No spectral gap is proved here, uniform in the volume or otherwise, and
+none is claimed.}  Nothing in this paper is a claim about $\SU(N)$, the
+continuum limit, or the Yang--Mills mass gap.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{A dependency that bit twice}
+
+\cite{ErikssonSpatial} proved that switching on a coupling inside a slice
+destroys the constancy of the row sums, so the uniform vector stops being fixed
+and the elementary construction of the vacuum halts.  It phrased the conclusion
+carefully: the vacuum becomes a Perron vector that row-sum normalisation no
+longer supplies.  It did not claim the vacuum was gone --- but it could not
+produce it either.
+
+\cite{ErikssonBirkhoff} then showed the natural replacement fails for two
+independent reasons, and wrote the vacuum down at $L=2$ in closed form.  To
+identify its eigenvalue as the spectral radius it had to prove a domination
+bound from first principles, for the same reason: no Perron--Frobenius in the
+library.
+
+A dependency that forces a detour twice is not bad luck.  This paper removes it.
+
+\subsection{What is proved}
+
+Throughout, $\iota$ is a finite nonempty type and $A:\iota\times\iota\to\R$ is
+\emph{strictly positive}, $A_{ij}>0$.  Vectors are functions $\iota\to\R$ and
+$(Ax)_i=\sum_j A_{ij}x_j$.
+
+\begin{itemize}
+\item \textbf{Existence.}  There are $v$ and $\lambda$ with $v_i>0$ for all $i$,
+      $\lambda>0$, and $Av=\lambda v$.
+\item \textbf{Uniqueness up to scale.}  If $v,w$ are strictly positive
+      eigenvectors with eigenvalues $\lambda,\mu$, then $\lambda=\mu$ and
+      $w=cv$ for some $c>0$.
+\item \textbf{Geometric simplicity.}  Every real eigenvector for $\lambda$ is a
+      scalar multiple of $v$.
+\item \textbf{Spectral radius.}  Every eigenvalue, real or complex, is dominated
+      in modulus by $\lambda$ \cite{ErikssonBirkhoff}.
+\end{itemize}
+
+\medskip
+\noindent\textbf{The application.}  For every spatial extent $L$ and every
+strictly positive $w$ on configurations, the kernel
+$K_w(\sigma,\tau)=w(\sigma)K(\sigma,\tau)$ --- with $K$ the decoupled kernel of
+\cite{ErikssonSpatial} --- has all four properties.  The coupled kernel of that
+paper is the case of a single spatial bond, and a bond around the slice is
+another.
+
+\subsection{What is deliberately not claimed}
+
+\begin{enumerate}
+\item \textbf{No spectral gap.}  Nothing here bounds the subdominant eigenvalue,
+at any $L$, in any region of parameters.  That is a different problem and this
+paper does not touch it.  In particular nothing here contradicts, or improves
+on, the obstructions of \cite{ErikssonBirkhoff}.
+\item \textbf{Algebraic simplicity is not proved.}  The eigenspace is shown to
+be one-dimensional; that the eigenvalue is a simple root of the characteristic
+polynomial is not formalised.
+\item \textbf{Strict positivity is assumed, not irreducibility.}  The
+Perron--Frobenius theory of merely irreducible nonnegative kernels, and the
+periodicity theory, are outside this development.
+\item \textbf{Still $\Z_2$}, one variable per site, in the application.
+\item \textbf{Nothing about $\SU(N)$, the continuum limit, or the Clay problem}
+\cite{Clay}.  No reduction is claimed and none is known to the author.
+\end{enumerate}
+
+\section{One comparison, used three times}
+
+\begin{lemma}[Positivity of the image]\label{lem:img}
+If $z\ge0$ and $z_{j_0}>0$ for some $j_0$, then $(Az)_i>0$ for every $i$.
+\end{lemma}
+
+\osline{PerronKernel}{78}{apply\_pos\_of\_nonneg}.
+
+\begin{lemma}[The vanishing comparison]\label{lem:van}
+If $z\ge0$, $Az=\lambda z$ and $z_{i_0}=0$ for some $i_0$, then $z=0$.
+\end{lemma}
+
+\begin{proof}
+Otherwise $z$ is positive somewhere, so $(Az)_{i_0}>0$ by
+Lemma~\ref{lem:img}; but $(Az)_{i_0}=\lambda z_{i_0}=0$.
+\end{proof}
+
+\osline{PerronKernel}{100}{eq\_zero\_of\_nonneg\_of\_eigen\_of\_zero}.  This
+single lemma carries both uniqueness statements: in each case one subtracts the
+largest multiple of one eigenvector that still fits under the other, which
+produces a nonnegative eigenvector with a zero entry.
+
+\begin{lemma}[Positivity of the eigenvalue]\label{lem:eigpos}
+If $v>0$ and $Av=\lambda v$ then $\lambda>0$.
+\end{lemma}
+
+\osline{PerronKernel}{87}{eigenvalue\_pos}.
+
+\section{Uniqueness and geometric simplicity}
+
+\begin{theorem}[Geometric simplicity]\label{thm:simple}
+If $v>0$ with $Av=\lambda v$, then every $w$ with $Aw=\lambda w$ satisfies
+$w=cv$ for some $c\in\R$.
+\end{theorem}
+
+\begin{proof}
+Let $c=\min_i w_i/v_i$, attained at $i_0$.  Then $z=w-cv\ge0$ by the choice of
+$c$, $z_{i_0}=0$, and $Az=\lambda z$ by linearity.  Lemma~\ref{lem:van} gives
+$z=0$.
+\end{proof}
+
+\osline{PerronKernel}{113}{eigenvector\_eq\_smul\_of\_pos}.
+
+\begin{theorem}[Uniqueness up to scale]\label{thm:unique}
+Two strictly positive eigenvectors have the same eigenvalue, and are positive
+multiples of one another.
+\end{theorem}
+
+\begin{proof}
+Both eigenvalues are positive by Lemma~\ref{lem:eigpos}, and each dominates the
+other in modulus by the domination theorem of \cite{ErikssonBirkhoff}, so they
+are equal; then Theorem~\ref{thm:simple} applies, and the constant is positive
+because both vectors are.
+\end{proof}
+
+\osline{PerronKernel}{148}{pos\_eigenvector\_unique}.
+
+\section{Existence, by compactness}
+
+The library has no Brouwer fixed-point theorem, so existence is obtained without
+one.
+
+\begin{definition}
+$\Delta=\{x:\iota\to\R\mid x\ge0,\ \sum_i x_i=1\}$.
+\end{definition}
+
+\osline{PerronKernel}{176}{simplexSet}, compact by
+\osline{PerronKernel}{184}{isCompact\_simplexSet}: it is a closed subset
+of $[0,1]^{\iota}$, and $x_i\le\sum_j x_j=1$ puts it there.
+
+\begin{lemma}[Summing the constraint bounds the multiplier]\label{lem:bound}
+If $x\in\Delta$ and $rx\le Ax$ then $r\le R:=\sum_{i}\beta$, where $\beta$ is the
+largest entry of $A$.
+\end{lemma}
+
+\begin{proof}
+Sum the constraint over $i$: the left side is $r\sum_i x_i=r$, and the right side
+is $\sum_i(Ax)_i\le\sum_i\beta\sum_j x_j=R$.
+\end{proof}
+
+\osline{PerronKernel}{201}{exists\_pos\_eigenvector} contains this step.  It
+is what makes the constraint set compact without any estimate on how small the
+entries of $x$ can be --- the usual device of restricting to a thickened simplex
+is not needed.
+
+\begin{theorem}[Existence]\label{thm:exist}
+A strictly positive kernel has a strictly positive eigenvector, with strictly
+positive eigenvalue.
+\end{theorem}
+
+\begin{proof}
+Let $K=\{(r,x)\in[0,R]\times\Delta\mid rx\le Ax\}$.  It is nonempty (take $r=0$
+and $x$ a vertex) and compact (a closed constraint on a product of compacta), so
+$r$ attains a maximum on it, at $(\lambda,v)$ say.
+
+Since $v\in\Delta$ it is nonnegative and not zero, so $Av>0$ entrywise by
+Lemma~\ref{lem:img}.  Suppose $Av\neq\lambda v$.  Then $z=Av-\lambda v\ge0$ is
+nonzero, so $Az>0$ entrywise, i.e.\ $A(Av)>\lambda\,Av$ entrywise.  Put
+$y=Av/\sum_i(Av)_i\in\Delta$; by homogeneity $Ay>\lambda y$ entrywise, and $y>0$,
+so
+$\varepsilon=\min_i\bigl((Ay)_i-\lambda y_i\bigr)/y_i>0$
+satisfies $(\lambda+\varepsilon)y\le Ay$.  By Lemma~\ref{lem:bound},
+$\lambda+\varepsilon\le R$, so $(\lambda+\varepsilon,y)\in K$ --- contradicting
+maximality.  Hence $Av=\lambda v$, and then $\lambda v_i=(Av)_i>0$ forces
+$\lambda>0$ and $v>0$.
+\end{proof}
+
+\osline{PerronKernel}{201}{exists\_pos\_eigenvector}.
+
+\begin{remark}[Why the maximiser is automatically positive]
+The simplex admits points with zero entries, and nothing in the definition of
+$K$ excludes them.  They are excluded \emph{a posteriori}: once $Av=\lambda v$
+is known, $v_i=(Av)_i/\lambda>0$.  Restricting the search to strictly positive
+vectors in advance would have cost a compactness argument that this order of
+steps avoids.
+\end{remark}
+
+\section{The vacuum at every spatial extent}
+
+\begin{definition}
+For a weight $w$ on configurations, $K_w(\sigma,\tau)=w(\sigma)K(\sigma,\tau)$
+with $K$ the decoupled kernel of \cite{ErikssonSpatial}.
+\end{definition}
+
+\osline{PerronKernel}{357}{sourceWeightedKernelL}, strictly positive when $w$
+is: \osline{PerronKernel}{361}{sourceWeightedKernelL\_pos}.
+
+\begin{theorem}[The vacuum, at every $L$]\label{thm:vac}
+For every $L$, every $\beta$, and every strictly positive $w$, the kernel $K_w$
+has a strictly positive eigenvector with strictly positive eigenvalue; it is
+unique up to positive scale; and its eigenvalue dominates every eigenvalue, real
+or complex.
+\end{theorem}
+
+\osline{PerronKernel}{371}{vacuum\_exists\_of\_sourceWeight},
+\osline{PerronKernel}{378}{vacuum\_unique\_of\_sourceWeight},
+\osline{PerronKernel}{389}{vacuum\_spectral\_radius\_of\_sourceWeight}.
+For the concrete slice with a bond around the ring,
+\osline{PerronKernel}{401}{spatialWeightRing} and
+\osline{PerronKernel}{410}{coupled\_ring\_vacuum\_exists}.
+
+\begin{remark}[What this settles about the first paper]
+\cite{ErikssonSpatial} proved that the elementary route stops producing the
+vacuum, and was careful to claim no more: it did not assert the vacuum was
+absent, and it said a positive kernel on a finite set has a Perron vector.  That
+sentence was prose there, cited from the classical theory.  Here it is a
+theorem, and it applies to exactly the kernels that paper studied, at every $L$.
+So the obstruction is now located precisely: not in the object, and not in the
+model, but in the route.
+\end{remark}
+
+\begin{remark}[And what it does not settle]
+Nothing in this paper produces a spectral gap.  The obstructions of
+\cite{ErikssonBirkhoff} are untouched: the projective metric is still blind to
+the coupling and still degenerates in the volume, and knowing that the vacuum
+exists does not repair either failure.  Having the first object of the chain
+back is a precondition for the analytic work, not a substitute for it.
+\end{remark}
+
+\section{Formalisation notes}
+
+\paragraph{The order of the steps did the work.}  The compactness argument is
+run on the plain simplex, which contains points with zero entries, and strict
+positivity of the maximiser is recovered afterwards from the eigen-equation.
+Attempting the reverse --- searching only among strictly positive vectors ---
+requires a thickened simplex and an invariance estimate; the version here needs
+neither.
+
+\paragraph{Summing the constraint replaced an estimate.}  The bound keeping the
+constraint set compact is $r=r\sum_i x_i\le\sum_i(Ax)_i$, obtained by summing
+the very inequality that defines the set.  A first design bounded $r$ through
+the smallest entry of a thickened simplex and needed the ratio of the extreme
+entries of $A$; summing removed that entire layer, together with two auxiliary
+constants.
+
+\paragraph{One lemma, both uniqueness statements.}  Lemma~\ref{lem:van} is used
+for geometric simplicity and, through it, for uniqueness up to scale.  In both
+cases the input is produced the same way: subtract the largest multiple that
+still fits underneath, and read the resulting zero entry.
+
+\paragraph{A dependency discharged rather than routed around.}  The two
+companion developments each paid for the absence of Perron--Frobenius in a
+different currency --- a weaker statement in one case, a bespoke proof in the
+other.  Building the theorem once cost less than the second detour did.
+
+\section{Reproducibility}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}
+of \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Every link
+was resolved against that commit, and checked to point at an actual declaration
+line, before compilation.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8427 jobs, success \\
+Oracle commands & 2559 \\
+\quad with axiom dependencies & 2536 \\
+\quad axiom-free & 23 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
+Project axioms & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Verdicts are in
+\repofile{docs/VERIFICATION-LEDGER.md}{docs/VERIFICATION-LEDGER.md}.  The oracle
+script is \repofile{oracle\_check.lean}{oracle\_check.lean}.
+
+\begin{thebibliography}{9}
+
+\bibitem{ErikssonSpatial}
+L.~Eriksson,
+\emph{Where the Elementary Reconstruction Stops: Spatial Coupling Breaks the
+Uniform Vacuum, Machine-Checked}, viXra, 2026.
+
+\bibitem{ErikssonBirkhoff}
+L.~Eriksson,
+\emph{Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial
+Extent}, viXra, 2026.
+
+\bibitem{PerronFrobenius}
+E.~Seneta,
+\emph{Non-negative Matrices and Markov Chains},
+2nd ed., Springer, 2006.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+CADE-28, Lecture Notes in Computer Science \textbf{12699} (2021), 625--635.
+
+\bibitem{Mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+CPP 2020, 367--381.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills theory},
+Clay Mathematics Institute Millennium Prize Problem description, 2000.
+
+\end{thebibliography}
+
+\end{document}

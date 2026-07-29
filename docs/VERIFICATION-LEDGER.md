@@ -26886,3 +26886,70 @@ green in this campaign).  Anchor `a70426f4c8a0ed733b4eee94fb01b158bc81fd08`, ful
 axioms exactly `{propext, Quot.sound, Classical.choice}` with no other name
 anywhere in the transcript, zero `sorryAx`, zero project axioms, zero errors.
 Paper 9pp, 32 permalinks re-verified at the anchor commit itself.
+
+## Addendum 528 (2026-07-29, **O-3i: PERRON--FROBENIUS IN LEAN 4 for strictly positive kernels, and the coupled vacuum at EVERY spatial extent -- a dependency discharged instead of routed around a third time**)
+
+**Why.**  The pinned `mathlib` has no Perron--Frobenius theorem, and its absence
+had already forced a detour twice: O-3f could only say the vacuum had become
+*unavailable*, and O-3h had to build its domination bound from scratch and could
+exhibit the vacuum in closed form only at two sites.  A dependency that bites
+twice is structural.
+
+**Proved, for any strictly positive kernel on a finite nonempty type.**
+`exists_pos_eigenvector` (a strictly positive eigenvector exists, with strictly
+positive eigenvalue); `pos_eigenvector_unique` (any two are proportional and
+share their eigenvalue); `eigenvector_eq_smul_of_pos` (geometric simplicity);
+and, with O-3h's complex domination, the eigenvalue is the **spectral radius**.
+
+**Existence is by COMPACTNESS, not by a fixed-point theorem** - the library has
+no Brouwer.  Maximise `r` over the compact set of pairs `(r, x)` with `x` in the
+simplex and `r x <= A x`; maximality forces equality, since a strict inequality
+anywhere would let one further application of `A` produce an admissible pair
+with a larger `r`.
+
+**Two design findings, both of which removed work rather than adding it.**
+
+1. **Summing the constraint replaced an estimate.**  The bound keeping the set
+   compact is `r = r * sum x <= sum (A x)`, obtained by summing the very
+   inequality that defines the set.  The first design bounded `r` through the
+   smallest entry of a *thickened* simplex and needed the ratio of the extreme
+   entries of `A`; summing deleted that layer and two auxiliary constants.
+2. **The order of the steps did the work.**  Compactness runs on the plain
+   simplex, which contains points with zero entries, and strict positivity of
+   the maximiser is recovered *afterwards* from the eigen-equation.  Searching
+   only among strictly positive vectors would have needed a thickened simplex
+   and an invariance estimate.
+
+**Application.**  `sourceWeightedKernelL` is O-3f's decoupled kernel times ANY
+strictly positive weight on the SOURCE configuration, at ANY extent - the class
+containing O-3f's coupled kernel.  At every `L`: the vacuum exists, is unique up
+to scale, and carries the spectral radius.  The obstruction of O-3f is thereby
+located exactly: not in the object, not in the model, but in the route.
+
+**NOT claimed.**  Algebraic simplicity; Perron--Frobenius for merely irreducible
+kernels; periodicity; and **no spectral gap of any kind**.  The obstructions of
+O-3g stand untouched - having the first object of the chain back is a
+precondition for the analytic work, not a substitute for it.
+
+**GHOST #26 - AN ORACLE LIST THAT COULD NOT TELL CODE FROM PROSE.**  The oracle
+commands for a new module are generated from its source by a regex.  A docstring
+continuation line beginning with the word `theorem` produced the bogus entry
+`YangMills.OS.of`.  Lean rejected that constant and the reconciliation -
+17 answers for 18 commands - exposed it.  **That is the lucky case.**  Had the
+docstring wrapped as `theorem foo of ...`, the regex would have emitted
+`YangMills.OS.foo`: a VALID DUPLICATE that answers cleanly, inflating the
+published command count with no error anywhere in the transcript.  Fixed at both
+levels - the docstring reflowed (the trigger) and the extractor taught to track
+`/- -/` nesting (the class).  The earlier modules were re-checked with the
+hardened extractor and give identical counts, so **no published counter is
+affected**.  The rule this buys: *an oracle list generated from source is code,
+not documentation; reconciling commands against answers is not bookkeeping, it
+is the only check that catches this.*
+
+**Measured.**  Anchor `6f3121d693e4f0f560a2ff01c63f4aacf1a49390`; full core
+build **8427 jobs** (8426 + 1, the increment being this module), EXIT 0, zero
+errors; oracle 2542 -> **2559 commands -> 2559 answers** (2536 with axiom
+dependencies + 23 axiom-free); extraction over the whole transcript including
+wrapped continuations shows the only axiom names anywhere are `propext`,
+`Classical.choice`, `Quot.sound`; zero `sorryAx`; zero real errors.  Paper 6pp,
+16 line-anchored permalinks verified at the anchor commit itself.
