@@ -32,9 +32,15 @@ This module supplies it, and spends the result on both debts at once.
 * `gibbs_pathSum_bound_unconditional` — the bridge module's bound with its
   hypothesis removed.  Its rate is `specGap`, so on its own it bounds the GROWTH
   of the fluctuation contribution; it does not exhibit decay.
-* `gibbs_pathSum_relative_decay` — the decay statement: suppression by
-  `specRatio ^ N` **relative to the Perron scale** `λ ^ N`.  This is the one that
-  is called decay, and the only one.
+* `gibbs_pathSum_relative_decay` — the decay statement for the NUMERATOR:
+  suppression by `specRatio ^ N` **relative to the Perron scale** `λ ^ N`.
+* `quadForm_split` / `quadForm_lower` — the DENOMINATOR.  Splitting the dressed
+  constant observable along the Perron direction kills both cross terms by
+  symmetry alone, and bounds the partition function below by
+  `c² · λ ^ N − specGap ^ N · ‖u‖²`.  No eigenbasis index is identified.
+* `gibbsCorr_decay_fixed_extent` — the composed endpoint: the **normalised**
+  two-point function is bounded by `C · specRatio ^ N` past an explicit
+  threshold, at a fixed extent.
 
 ## The one step that does not come from the inequalities
 
@@ -46,21 +52,25 @@ rather than merely bound it.
 
 ## What is NOT proved, and is not claimed
 
-The endpoint bounds the **unnormalised** two-point sum --- the same quantity the
-bridge module bounded, since what is removed here is its hypothesis and nothing
-else.  Turning it into a statement about the **normalised** expectation needs a
-lower bound on the partition function of order `lam^N`, which would in turn need
-the top eigenvalue's index to be identified and its overlap with the dressed
-constant observable bounded below.  None of that is done here, so the word
-*clustering* is deliberately not used for the endpoint.
+An earlier version of this module asserted here that turning the numerator bound
+into a statement about the **normalised** expectation requires identifying the
+index of the top eigenvalue.  **That was wrong**, and §8 now proves the
+denominator bound with no index at all.  The sentence is kept, in its corrected
+form, because a false claim about what is *hard* discourages work in a way a
+false claim about what is proved does not.
 
-`specGap` **depends on the extent**.  Nothing here bounds it away from `λ`
+What is genuinely not proved: that `specGap` **equals** the operator norm on the
+fluctuation sector.  Only `≤` is proved.  The probe reports attainment as
+*verified*; no theorem here says it.
+
+`specRatio` **depends on the extent**.  Nothing here bounds it away from `1`
 uniformly in the size of the configuration space, and the numerical evidence
-recorded in the gap paper is that the ratio approaches `1` with the extent
-outside the disordered region.  A geometric bound whose rate tends to `1` is
-empty in the limit, and no claim to the contrary is made or implied.  In
-particular this module does **not** produce a mass gap, and reflection
-positivity remains untouched.
+recorded in the gap paper is that it approaches `1` with the extent outside the
+disordered region.  A geometric bound whose rate tends to `1` is empty in the
+limit, and no claim to the contrary is made or implied.  So the endpoint is
+**not clustering**: clustering is a statement that survives the infinite-volume
+limit, and this one does not.  In particular this module does **not** produce a
+mass gap, and reflection positivity remains untouched.
 
 Nothing here concerns `SU(N)`, the continuum limit, or the Clay problem.
 
@@ -394,8 +404,9 @@ The bridge module bounded the Gibbs two-point sum under a contraction
 hypothesis.  The hypothesis is now a theorem, so the bound is unconditional at
 every finite extent.  But its rate is `specGap`, which is below `lam` and NOT
 below one, so that bound controls GROWTH.  The decay statement is the second one
-below, relative to the Perron scale `lam ^ N`.  Nothing here is a statement about
-the normalised Gibbs expectation, and nothing is uniform in the extent. -/
+below, relative to the Perron scale `lam ^ N`.  Both theorems in this section
+bound the NUMERATOR only; the denominator is §8 and the normalised statement is
+§10.  Nothing in any of them is uniform in the extent. -/
 
 /-- **THE BRIDGE MODULE'S BOUND, WITHOUT ITS HYPOTHESIS.**  The rate is
 `specGap`, which is below `lam` but NOT below one --- the kernel is unnormalised
@@ -433,11 +444,10 @@ theorem gibbs_pathSum_bound_unconditional {L : ℕ} {w : (Fin L → Fin 2) → �
 fluctuation contribution to the Gibbs two-point sum is suppressed geometrically,
 at a rate `specRatio < 1`, with no carried hypothesis.
 
-This is the honest form of the endpoint.  The unnormalised bound above has rate
-`specGap`, which is typically far ABOVE one; only after comparison with `lam ^ N`
-does a geometric factor below one appear.  It is still not the normalised Gibbs
-expectation --- that needs a lower bound on the partition function, which is not
-proved here --- but it is a decay statement rather than a growth statement.
+The unnormalised bound above has rate `specGap`, which is typically far ABOVE
+one; only after comparison with `lam ^ N` does a geometric factor below one
+appear.  This is still the NUMERATOR alone: dividing by the partition function
+needs the lower bound of §8, and the two are composed in §10.
 
 `specRatio` depends on the extent, and the measured evidence is that it
 approaches `1` outside the disordered region, where the bound is empty in the
@@ -660,5 +670,99 @@ theorem gibbsCorr_bound_of_partition_lower {L : ℕ} {w : (Fin L → Fin 2) → 
   rw [abs_div, abs_of_pos hZ]
   rw [div_le_div_iff₀ hZ hDpos]
   nlinarith [hB, hD, hBnn, hDpos, abs_nonneg (gibbsPathSum w β N A A)]
+
+/-! ## §10  The composed endpoint
+
+§7 bounds the numerator, §8 bounds the denominator below, §9 divides one by the
+other.  Nothing is left to prose: the quantifiers, the choice of threshold and
+the positivity of the overlap are assembled here into a single statement about
+the **normalised** two-point function. -/
+
+/-- **THE ENDPOINT.**  At a fixed spatial extent, the normalised Gibbs two-point
+function of a fluctuation observable decays geometrically, at the rate
+`specRatio < 1`, with no carried hypothesis.
+
+The constant is explicit in the proof --- it is
+`2‖dress A‖² / ⟨Ω, dress 1⟩² ` up to the `+1` that makes it positive even for
+the zero observable --- and the threshold `N₀` is where the fluctuation part of
+the partition function has dropped below half of its Perron part.
+
+**This is a fixed-`L` statement and nothing more.**  `specRatio` depends on the
+extent, the measured evidence is that it tends to `1`, and therefore this is
+*not* clustering: nothing here survives the infinite-volume limit. -/
+theorem gibbsCorr_decay_fixed_extent {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    {v : (Fin L → Fin 2) → ℝ} (hv : ∀ σ, 0 < v σ) {lam : ℝ}
+    (hvE : ∀ σ, ∑ τ, symWeighted w β σ τ * v τ = lam * v σ)
+    {A : (Fin L → Fin 2) → ℝ} (hperp : ∑ σ, v σ * dress w A σ = 0) :
+    ∃ C > 0, ∃ N₀ : ℕ, ∀ N, N₀ ≤ N →
+      |gibbsCorr w β N A A|
+        ≤ C * specRatio (symWeighted_symm w β) lam ^ N := by
+  classical
+  have hKpos : ∀ σ τ, 0 < symWeighted w β σ τ := symWeighted_pos hw β
+  have hlam : 0 < lam := eigenvalue_pos hKpos hv hvE
+  have hOmpos : ∀ i, 0 < unitVacuum v i := fun i => unitVacuum_pos hv i
+  have hOmE : ∀ i, ∑ j, symWeighted w β i j * unitVacuum v j
+      = lam * unitVacuum v i := unitVacuum_eigen hv hvE
+  have hOm1 : ∑ i, unitVacuum v i * unitVacuum v i = 1 := unitVacuum_norm hv
+  have hbpos : ∀ i, 0 < dress w (fun _ => (1 : ℝ)) i := by
+    intro i
+    show 0 < Real.sqrt (w i) * 1
+    rw [mul_one]
+    exact Real.sqrt_pos.mpr (hw i)
+  -- the overlap of the vacuum with the dressed constant observable
+  set c : ℝ := ∑ k, unitVacuum v k * dress w (fun _ => (1 : ℝ)) k with hcdef
+  have hcpos : 0 < c :=
+    Finset.sum_pos (fun k _ => mul_pos (hOmpos k) (hbpos k)) Finset.univ_nonempty
+  have hc2 : 0 < c ^ 2 := pow_pos hcpos 2
+  set nu : ℝ :=
+    eucNorm (fun j => dress w (fun _ => (1 : ℝ)) j - c * unitVacuum v j) with hnudef
+  have hnu : 0 ≤ nu := eucNorm_nonneg _
+  set rho : ℝ := specRatio (symWeighted_symm w β) lam with hrhodef
+  have hrho0 : 0 ≤ rho := specRatio_nonneg hKpos (symWeighted_symm w β) hv hvE
+  have hrho1 : rho < 1 := specRatio_lt_one hKpos (symWeighted_symm w β) hv hvE
+  -- the threshold: past it, the fluctuation part is below half the Perron part
+  obtain ⟨N₀, hN₀⟩ : ∃ n : ℕ, rho ^ n < c ^ 2 / (2 * (nu * nu + 1)) :=
+    exists_pow_lt_of_lt_one (by positivity) hrho1
+  have hdA : (0:ℝ) ≤ eucNorm (dress w A) * eucNorm (dress w A) := mul_self_nonneg _
+  have hCnn : (0:ℝ) ≤ 2 * (eucNorm (dress w A) * eucNorm (dress w A)) / c ^ 2 :=
+    div_nonneg (by linarith) (le_of_lt hc2)
+  refine ⟨2 * (eucNorm (dress w A) * eucNorm (dress w A)) / c ^ 2 + 1, by linarith,
+    N₀, ?_⟩
+  intro N hN
+  have hlamN : 0 < lam ^ N := pow_pos hlam N
+  have hrhoN : (0:ℝ) ≤ rho ^ N := pow_nonneg hrho0 N
+  -- the fluctuation part of the partition function, past the threshold
+  have hsmall : rho ^ N * (nu * nu) ≤ c ^ 2 / 2 := by
+    have hmono : rho ^ N ≤ rho ^ N₀ := pow_le_pow_of_le_one hrho0 (le_of_lt hrho1) hN
+    have hlt : rho ^ N < c ^ 2 / (2 * (nu * nu + 1)) := lt_of_le_of_lt hmono hN₀
+    have hden : (0:ℝ) < 2 * (nu * nu + 1) := by positivity
+    rw [lt_div_iff₀ hden] at hlt
+    nlinarith [hlt, hnu, hrhoN]
+  -- the denominator, from below
+  have hZ : lam ^ N * (c ^ 2 / 2) ≤ gibbsPartition w β N := by
+    have hq := quadForm_lower hKpos (symWeighted_symm w β) hOmpos hOmE hOm1
+      (dress w (fun _ => (1 : ℝ))) N
+    rw [← gibbsPartition_eq_iterate hw β N, ← hcdef, ← hnudef] at hq
+    have hgap : specGap (symWeighted_symm w β) lam ^ N = rho ^ N * lam ^ N := by
+      rw [hrhodef,
+        specGap_eq_specRatio_mul (symWeighted_symm w β) (ne_of_gt hlam), mul_pow]
+    rw [hgap] at hq
+    nlinarith [hq, hsmall, hlamN]
+  have hDpos : 0 < lam ^ N * (c ^ 2 / 2) := mul_pos hlamN (by linarith)
+  -- the numerator, from above
+  have hnum := (gibbs_pathSum_relative_decay hw β hv hvE hperp N).1
+  have hbnd := gibbsCorr_bound_of_partition_lower (A := A) β N hDpos hZ hnum
+  refine le_trans hbnd ?_
+  rw [div_le_iff₀ hDpos]
+  have hexp : (2 * (eucNorm (dress w A) * eucNorm (dress w A)) / c ^ 2 + 1)
+      * rho ^ N * (lam ^ N * (c ^ 2 / 2))
+      = rho ^ N * (lam ^ N * (eucNorm (dress w A) * eucNorm (dress w A)))
+        + rho ^ N * lam ^ N * (c ^ 2 / 2) := by
+    field_simp
+  rw [hexp]
+  have hpos : (0:ℝ) ≤ rho ^ N * lam ^ N * (c ^ 2 / 2) :=
+    mul_nonneg (mul_nonneg hrhoN (le_of_lt hlamN)) (by positivity)
+  linarith
 
 end YangMills.OS

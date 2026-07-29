@@ -27657,3 +27657,90 @@ same reading notes it is likewise not blocked, and we say so rather than claim
 it); anything uniform in the extent --- `specRatio(L)` still tends to 1 outside
 the disordered region, so nothing here survives the volume limit and the word
 *clustering* is still not used.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 541 (2026-07-29, **S block v1.4: the composed endpoint stops being a
+sentence and becomes a theorem --- and the prose finally gets a checker**)
+
+**Context.**  Fifth external reading of the S block.  It confirmed the
+denominator argument of 540 as correct, and raised three things: the strongest
+result still lived in PROSE ("combining Theorem 5.1 with Theorem 7.1 gives a
+bound of the form const * specRatio^N") rather than in a Lean statement with
+its quantifiers; the module header at the anchor still said the opposite of
+what the new sections prove; and two editorial slips (a scope section titled
+"three things" listing four, and `specGap^N` written where the quantity that
+tends to 1 is `specRatio(L)`).
+
+**1. The endpoint is now a theorem.**  `gibbsCorr_decay_fixed_extent`:
+
+    exists C > 0, exists N0, forall N >= N0,
+      |gibbsCorr w beta N A A| <= C * specRatio (symWeighted_symm w beta) lam ^ N
+
+No eigenbasis index anywhere.  The constant is `2*||dress A||^2 / c^2 + 1`
+(the `+1` only so that it stays positive for the zero observable) with
+`c = <Om, dress 1>` the overlap of the unit Perron vacuum with the dressed
+constant observable, positive because both factors are; the threshold `N0` is
+the first index at which the fluctuation part of the partition function has
+fallen below half of its Perron part, obtained from `exists_pow_lt_of_lt_one`
+since `specRatio < 1`.  Composing 540's three pieces is arithmetic, but it is
+arithmetic WITH QUANTIFIERS in it, and the house rule is that quantifiers live
+in Lean and not in a sentence.
+
+**2. The header at the anchor contradicted the module.**  Sections 8 and 9 of
+540 proved the denominator bound; the module header, three hundred lines above
+them, still said that a normalised statement "would in turn need the top
+eigenvalue's index to be identified" and that "none of that is done here".
+Corrected, and the corrected sentence is kept rather than deleted, because a
+false claim about what is HARD is the thing this ledger is trying to stop
+repeating.
+
+**3. A guard that reads the prose: `scripts/check_module_prose.py`.**  This is
+the fourth consecutive reading whose finding was a comment, not a proof.  The
+diagnosis has been recorded three times and repaired by hand three times, so it
+now has a script.  For each module it checks that every backticked identifier
+in the module header resolves to a real declaration --- under `YangMills/`, or
+in the pinned mathlib, since a header may legitimately cite either --- and that
+every `section N` cross-reference names a heading that exists in that file.
+Names introduced expressly to say they do NOT exist are exempt by an explicit
+negation before the backtick.
+
+It found two live defects in ALREADY PUBLISHED modules, both prose-only:
+
+  * `YangMills/OS/SpatialGibbs.lean` (paper 9) advertised `iterate_perp_le`;
+    the declaration is `iterate_perp`.
+  * `YangMills/OS/PerronKernel.lean` (paper 7) advertised `coupledKernelL`,
+    which is no declaration anywhere; the object meant is `spatialWeightRing`.
+
+Neither name is cited by either paper, so no permalink was broken and no
+published PDF needs replacing.  Both are fixed here.  **The whole `YangMills/OS`
+lane is now clean under the guard (18 modules, 0 findings).**
+
+**Honest limit of the guard, measured not asserted.**  Run over the whole tree
+it reports 150 findings in 74 of 320 modules.  Most are NOT stale declarations:
+they are hypothesis and variable names used as terms of art in prose (`hRpoly`
+alone accounts for 70), plus mathlib names whose declaration line this script's
+regex does not match.  So the guard is a gate for the O lane and an unsorted
+signal everywhere else.  Sorting the other lanes is registered, not done, and
+not claimed.
+
+**4. The probe now checks the endpoint, not just the operator.**  Check (4) of
+`scripts/probe_spatial_spectral.py` recomputes the Gibbs partition function and
+two-point sum BY BRUTE FORCE over all paths --- no transfer matrix, no dressing
+identity --- and compares them with `C * specRatio^N`.  It also re-derives the
+bridge itself (brute-force path sums against the matrix elements) and the
+section-8 lower bound.  All PASS; worst observed lhs/rhs is 0.145.
+
+**Measured.**  Core **8430 jobs** (unchanged: declarations were added to an
+existing module, no module was added to the core).  Oracle **2666 commands ->
+2666 answers** (2663 distinct, the same three known duplicates), 23 axiom-free
++ 2640 with axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero
+errors.  **40** declarations in the module, all 40 in the oracle list.
+`gibbsCorr_decay_fixed_extent` prints exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+**Still not proved.**  Sharpness of `specGap` (stated as not blocked, and not
+claimed as done).  Anything uniform in the extent: the rate of the new endpoint
+is `specRatio(L)`, which the tabulated evidence says tends to 1, so the
+endpoint does NOT survive the volume limit and the word *clustering* remains
+unused.  Reflection positivity untouched.  Clay ~0 pct.

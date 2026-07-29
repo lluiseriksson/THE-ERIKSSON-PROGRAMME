@@ -33,7 +33,7 @@ slice is `Fin L → Fin 2` rather than `Fin 2`.
 * `symVacuum_exists` — the symmetrised kernel has its own strictly positive
   Perron vacuum, so the object the bridge lands on is the object papers 7 and 8
   analysed.
-* `perp_invariant`, `iterate_perp_le` and `connected_decay` — the fluctuation
+* `perp_invariant`, `iterate_perp` and `connected_decay` — the fluctuation
   sector is invariant, and under an explicit contraction hypothesis on that
   sector the connected two-point function decays geometrically in the time
   separation.
