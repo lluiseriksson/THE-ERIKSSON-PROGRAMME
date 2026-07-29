@@ -712,12 +712,24 @@ ContDiffAt R 3 T (x,g(x)),
 ```
 
 which is the regularity form already produced on admissible CMP102 charts;
-no global smoothness of `T` is requested.  This remains an algebraic closure
-rather than the physical quantitative instantiation.  The next accepted
-checkpoint must produce the order-one through order-three joint-jet bounds
-of the literal CMP102 map `T` at the graph point and feed them to the local
-endpoint.  Taking those jets as unexplained physical hypotheses would only
-rename the remaining obligation.
+no global smoothness of `T` is requested.
+
+`BalabanCMP102PhysicalIntrinsicFixedPointJetZero.lean` now proves from the
+literal CMP98 subtraction that the first derivative of the intrinsic
+correction vanishes at zero, through the Lie-coordinate transport, the
+physical sup-norm equivalence, and the joint source map.  Combining that
+identity with the existing source-generated derivative-Lipschitz estimate,
+`BalabanCMP102PhysicalIntrinsicFixedPointFirstJet.lean` produces
+
+```text
+|D T(p)| <= B_source |p|.
+```
+
+Thus the physical order-one joint jet is no longer a caller-supplied
+budget.  The order-two and order-three joint jets of the same literal map
+remain the next quantitative obligations before the local coefficient
+endpoint can be instantiated.  Taking either remaining jet as an
+unexplained physical hypothesis would only rename the obligation.
 
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete
