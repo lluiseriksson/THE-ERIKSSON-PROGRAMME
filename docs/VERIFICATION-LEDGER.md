@@ -27008,3 +27008,68 @@ build **8427 jobs** EXIT 0, zero errors; oracle 2559 -> **2564 commands ->
 the module's **22** declarations, all with exactly
 `{propext, Classical.choice, Quot.sound}`; zero `sorryAx`; zero real errors.
 Paper 6pp, 20 line-anchored permalinks re-verified at the anchor commit itself.
+
+## Addendum 530 (2026-07-29, **Perron-kernel paper: FREEZE DECLARED at v1.1 / `316648e2`, and the continuation fixed -- including the one endpoint deliberately NOT added here**)
+
+The external review reports no remaining defect and says explicitly that the
+remaining microinterface should not reopen the manuscript.  Per the C6 /
+Poincare-wall / spatial-extent precedent the freeze is written down rather than
+left implicit, and nothing further is edited in this paper.
+
+**FROZEN OBJECT.**  `papers/perron-kernel/perron_kernel.{tex,pdf}` at paper
+commit `316648e2`, 6 pages.  Lean anchor
+`08a9050201287a31d20fc4339cc5c6c64b1391fb`.  Full core build **8427 jobs**,
+oracle **2564 commands -> 2564 answers** (2541 with axiom dependencies + 23
+axiom-free), axioms exactly `{propext, Quot.sound, Classical.choice}`, zero
+`sorryAx`, zero project axioms, zero errors.  20 line-anchored permalinks,
+verified at the anchor commit itself before each compile.  Submission is the
+owner's click and no agent performs it.
+
+**THE EDITORIAL ARC, for the record.**  Three review rounds, and every defect
+was in the STATEMENT layer rather than in the proofs:
+
+* **528 -> 529, the title.**  *Perron--Frobenius* oversold by one word; the scope
+  list already drew the line the title did not.
+* **529, the missing conjunct.**  The existence proof produced its vector inside
+  the simplex all along; `sum v = 1` only had to be *stated* before anything
+  downstream could use it.
+* **529, the library claim.**  A statement about a moving library was rewritten
+  as a statement about a pinned revision.
+
+None of the three touched a proof.  That is the signature of a development whose
+Lean is ahead of its prose, and the correction cost is small precisely because
+the prose is where it is cheap to be wrong -- which is also why it must be
+audited as hard as the theorems.
+
+**THE ENDPOINT DELIBERATELY NOT ADDED.**  The review named one further
+interface: the Osterwalder--Seiler side conventionally wants a vector of unit
+HILBERT norm, `norm(Omega) = 1`, whereas this paper normalises on the simplex,
+`sum Omega = 1`.  The corollary is immediate -- rescale by the norm -- and it is
+NOT added here, for two reasons.  First, the review itself says it is packaging
+for consumption rather than mathematics, and a frozen paper does not grow
+packaging.  Second, and decisively, the natural home for it is the module that
+CONSUMES the vacuum, together with the self-adjointness of the symmetrised
+operator, which likewise belongs to that bridge and not to a Perron theorem.
+Recorded here so the next campaign starts from a named brick rather than
+rediscovering it.
+
+**CONTINUATION, fixed here and without a schedule.**
+
+1. **The consumption module.**  Unit-Hilbert-norm vacuum from this paper's
+   `Omega`; self-adjointness of the symmetrised kernel (the similarity is
+   already a theorem of O-3g); and the `transfer data` interface instantiated at
+   every finite `L`.
+2. **The analytic target.**  A bound on the non-vacuum sector under an EXPLICIT
+   regime hypothesis.  That the hypothesis is mandatory rather than a
+   convenience is not an opinion: the design probe of
+   `docs/O-LANE-CONTINUATION-20260728.md` measured the subdominant ratio rising
+   towards 1 with `L` outside the disordered region, so an unrestricted
+   volume-uniform target is aiming at something the numbers say is false.
+3. Failing 2: **a precise no-go** for the tools this lane owns.  Either outcome
+   is publishable.
+
+**What the freeze does NOT do.**  Recovering the vacuum bounds nothing.  The
+O-3g obstructions stand: the projective metric is still blind to the coupling
+and still degenerates in the volume.  The first object of the chain being back
+is a precondition for the analytic work, not a substitute for it, and the paper
+says so in two separate remarks.
