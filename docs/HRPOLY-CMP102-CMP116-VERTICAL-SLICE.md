@@ -377,6 +377,26 @@ residual indexed by `Y` reads a carrier `S(Y) ⊆ Y0`.  Until that dictionary
 and the physical third-jet decay are installed, `interaction_bound` remains
 at `0/5`.
 
+`BalabanCMP102Eq80SourcePi4CutoffCarrier.lean` then constructs the missing
+inclusion rather than receiving it as a premise.  Every connected physical
+equation-(80) label is converted to the literal
+`CMP116LocalizationDomain M (2*Q)` with the same block carrier.  For a
+selected finite family `D`, its source cutoff carrier is defined by
+
+```text
+Y0(D) = union over W in D of bondSupport(W),
+```
+
+where `bondSupport(W)` requires both physical endpoints to lie in `W`.
+Lean proves `bondSupport(W) ⊆ Y0(D)` for every `W ∈ D`, and combines this
+with the cutoff theorem to obtain the source sup-norm bound on the field
+projected to `bondSupport(W)`.  Thus the geometric inclusion and the norm
+transport are now physical end to end.  The remaining locality statement is
+functional rather than set-theoretic: the connected equation-(80) activity
+must be shown unchanged when its ambient field is replaced by that bond
+projection.  Only after that theorem can the domain-decaying physical
+third-jet estimate be installed as (1.36).
+
 The final assembly must also reconcile three domain index layers:
 
 ```text
