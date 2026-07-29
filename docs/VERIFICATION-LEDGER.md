@@ -27266,3 +27266,95 @@ QUANTITATIVE**: no `eps`, no dependence on `L`, nothing uniform in volume.  The
 probe still shows the subdominant ratio climbing toward 1 with `L` outside the
 disordered region.  NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct
 unchanged.  Anchor `ac897963`.
+
+## Addendum 534 (2026-07-29, **O-2: the measure the spectral results were about --- the transfer bridge for the SPATIAL slice**)
+
+**What was missing, stated exactly.**  Papers 5-8 exhibited a kernel on
+`(Z2)^L`, its Perron vacuum, and the strict separation of its spectrum.  All
+three are statements about a MATRIX.  No Gibbs measure, no partition function
+and no correlation function existed anywhere in the spatial tree --- so the
+vacuum was an eigenvector, the gap was a statement about eigenvalues, and
+neither was yet about a statistical-mechanical system.
+
+**A correction to an earlier working note, recorded because it changes the
+diagnosis.**  It was written that there was *no transfer operator in the tree*.
+That is wrong as stated: `Z2Transfer`/`Z2Identification` carry a full bridge
+for the ONE-DIMENSIONAL chain, where `z2PathWeight` is defined from Boltzmann
+weights alone and `z2PathSum_eq_iterate` identifies path sums with operator
+iterates.  What the SPATIAL object had was the operator and NOT the measure.
+The gap was real; its location was misrecorded.  Rule reaffirmed: *before
+claiming a piece is absent from the tree, grep the tree.*
+
+**The content.**
+
+* `pathSum_eq_iterate` --- the generic bridge.  For ANY symmetric kernel on ANY
+  finite type, the sum over space-time paths of
+  `A(first) * B(last) * (product of bond weights)` equals the matrix element
+  `<A, K^N B>`.  The definition side mentions no operator; the conclusion side
+  mentions nothing else.  Symmetry is needed at exactly one point: absorbing a
+  bond into the left observable.
+* `gibbsWeight_eq_dressed` --- **THE DRESSING IDENTITY.**  The honest
+  two-dimensional Gibbs weight (spatial factor at EVERY slice, time bonds
+  between consecutive slices) equals `sqrt(w(first)) * sqrt(w(last))` times the
+  path weight of the SYMMETRISED kernel.  Self-adjointness costs exactly two
+  boundary factors and NOTHING in the bulk.
+* `gibbsPathSum_eq_iterate`, `gibbsPartition_eq_iterate` --- hence every Gibbs
+  correlation of the spatial system is a matrix element of an iterated
+  SELF-ADJOINT transfer operator between boundary-dressed observables.
+* `symVacuum_exists` --- the operator the bridge lands on is the one papers 7-8
+  analysed.  A bridge landing on a DIFFERENT operator would have proved nothing
+  about the earlier papers, which is why this is stated rather than assumed.
+* `perp_invariant`, `iterate_perp`, `connected_decay`, `gibbs_connected_decay`
+  --- the fluctuation sector is invariant, and under an explicit contraction
+  hypothesis the connected two-point function decays geometrically in the time
+  separation.
+
+**THE HYPOTHESIS IS CARRIED, NOT DISCHARGED**, and this is the honest core.
+Papers 7-8 give a STRICT gap with NO MODULUS.  A strict inequality among
+finitely many eigenvalues does not by itself produce the OPERATOR-NORM bound a
+decay rate needs; converting one into the other requires the spectral maximum
+over the fluctuation sector together with the spectral decomposition that makes
+the norm equal to it, and none of that exists in this development.  No rate is
+derived here from the earlier papers, and **NOTHING UNIFORM IN `L`** is
+obtained or suggested --- with `r = r(L) -> 1` the bound is empty in the limit.
+This is the same missing piece the external evaluator of paper 8 identified as
+the spectral maximum; it is infrastructure, and it is still not built.
+
+**Non-vacuity audited (hard rule 3).**  `gapWitness_contracts`: for any unit
+vector and any `r >= 0`, the kernel `Om_i Om_j + r(delta_ij - Om_i Om_j)` is
+symmetric, fixes the vacuum, and contracts the fluctuation sector by EXACTLY
+`r` --- so the hypotheses are jointly satisfiable at every rate, including
+`0 < r < 1` where the conclusion is non-trivial.  `exists_nonzero_perp`: with
+two distinct states and a strictly positive vacuum the fluctuation sector holds
+a nonzero vector, so the decay theorem is not quantified over an empty set.
+
+**VERIFIED, not proved, and no theorem depends on it.**  A Lean proof
+guarantees the definitions are internally consistent; it does NOT guarantee
+they model what the prose says.  `scripts/probe_spatial_gibbs.py` recomputes
+both load-bearing identities by brute force from the Boltzmann weights, with no
+access to the formalisation, over ALL space-time configurations for `L <= 3`,
+`N <= 3`, with a configuration-dependent strictly positive spatial weight.
+Worst relative discrepancy **9.1e-16** --- machine precision.  This excludes the
+one failure mode a proof assistant cannot: *a formally correct theorem about the
+wrong definition.*  Recorded as a standing practice for bridge modules, where
+the risk is highest because the definitions are new rather than inherited.
+
+**Measured.**  Core **8429 jobs** (8428 + 1 --- the increment hard rule 7
+predicts when a MODULE joins the core, and the confirmation that `SpatialGibbs`
+is genuinely in it).  Oracle **2624 commands -> 2624 answers** (2621 distinct,
+the same three known duplicates), 23 axiom-free + 2601 with axioms, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  41 new declarations.  Paper:
+6pp, 14 permalinks, each verified against the BLOB AT THE ANCHOR COMMIT and
+again inside the compiled PDF after inflating its streams.
+
+**House note (proof engineering).**  The dressing identity combines three
+product identities, and rewriting them in sequence FAILS: the second rewrite
+consumes the subterm the third one needs.  They must be combined into a single
+equation first.  The failure is benign in kind --- a stuck goal, not a wrong
+theorem --- but the shape recurs whenever two truncations of one product appear
+on the same side, so it is recorded.
+
+**Unchanged.**  Reflection positivity is NOT addressed --- the bridge gives a
+self-adjoint operator and a positive measure, not Osterwalder--Schrader
+positivity.  NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct unchanged.
+Anchor `863e894c`.

@@ -1,0 +1,393 @@
+% The measure the spectral results were about: the O-2 transfer bridge.
+% Lane: O (operator bridge), module YangMills/OS/SpatialGibbs.lean.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\anchor}{863e894c4fa07f34d078906c9ccee957c8f88c67}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Om}{\Omega}
+
+\title{The Measure the Spectral Results Were About:\\
+a Machine-Checked Transfer Bridge for the Spatial $\Z_2$ Slice\\
+\large the dressing identity, and the modulus\\
+that a strict gap does not supply}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Four companion papers studied an \emph{operator}: a strictly positive kernel on
+the spatial configuration space of a $\Z_2$ slice, its Perron vacuum, and the
+strict separation of its spectrum \cite{ErikssonSpatial,ErikssonBirkhoff,%
+ErikssonPerron,ErikssonGap}.  None of them exhibited a \emph{measure}.  That
+omission is the kind this programme is built to notice: a transfer operator is
+a matrix until something says which Boltzmann weights it transfers, and until
+then a vacuum is an eigenvector and a gap is a statement about eigenvalues.
+Neither is yet a statement about a statistical-mechanical system.
+
+\textbf{Proved.}  We define the two-dimensional Gibbs weight of the spatial
+system from Boltzmann factors alone --- a spatial factor at every time slice, a
+time-bond factor between consecutive slices --- and prove the \emph{dressing
+identity}: that weight equals the path weight of the \emph{symmetrised} kernel
+multiplied by a factor supported entirely on the two boundary slices.  Hence
+every Gibbs two-point function of the spatial system is a matrix element of an
+iterated \emph{self-adjoint} transfer operator between boundary-dressed
+observables.  The generic half holds for an arbitrary symmetric kernel on an
+arbitrary finite type; no positivity and no structure of the configuration
+space enter it.  We further show that the operator the bridge lands on is the
+one the companion papers analysed, that the fluctuation sector is invariant,
+and that under an explicit contraction hypothesis the connected two-point
+function decays geometrically in the time separation.
+
+\textbf{Not proved, and this is the point of the last section.}  The
+contraction hypothesis is carried as a theorem hypothesis and is \emph{not}
+discharged.  The companion papers prove a \emph{strict} gap with no modulus,
+and a strict inequality among finitely many eigenvalues does not by itself
+produce the operator-norm bound a decay rate requires.  Converting one into the
+other needs the spectral maximum over the fluctuation sector, which is not
+constructed here.  In particular \textbf{nothing uniform in the spatial extent}
+is obtained, and none is suggested.
+
+Reflection positivity is not addressed.  Nothing in this paper is a claim about
+$\SU(N)$, the continuum limit, or the Yang--Mills mass gap.
+\end{abstract}
+
+\section{What was missing}\label{sec:missing}
+
+The one-dimensional $\Z_2$ chain in this repository already has the bridge this
+paper builds.  There the path weight is written from Boltzmann factors, with no
+operator occurring in its definition or in any definition it depends on, and a
+separate theorem identifies path sums with iterates of the transfer operator.
+That is what makes the chain's spectral statements statements about a measure.
+
+The spatial development took a different route.  Its object is a kernel on
+$(\Z_2)^L$ --- the configurations of a single time slice --- and it proceeded
+directly to the vacuum and the spectrum.  The results are real, but each of
+them is a statement about a matrix.  The following is the honest inventory of
+what the four papers established and what they did not:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Object & Established & By \\
+\midrule
+Kernel on $(\Z_2)^L$ & yes & \cite{ErikssonSpatial} \\
+Vacuum (Perron vector) & yes, every $L$ & \cite{ErikssonPerron} \\
+Strict spectral separation & yes, every $L$ & \cite{ErikssonGap} \\
+Gibbs measure & \textbf{no} & --- \\
+Partition function & \textbf{no} & --- \\
+Correlations as matrix elements & \textbf{no} & --- \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The last three rows are what this paper supplies.  They are not a refinement of
+the earlier work; they are the reason the earlier work is about anything.
+
+\section{The generic bridge}\label{sec:generic}
+
+Nothing in this section uses positivity, the two-element site, or the product
+structure of the configuration space.  Let $\iota$ be a finite type and
+$K:\iota\times\iota\to\R$ any kernel.
+
+\begin{definition}
+For $X:\{0,\dots,N\}\to\iota$ the \emph{path weight} is
+$W_K(X)=\prod_{t=0}^{N-1}K(X_t,X_{t+1})$, and for observables $A,B:\iota\to\R$
+the \emph{path sum} is
+\[
+  S_K(N;A,B)\;=\;\sum_{X}A(X_0)\,B(X_N)\,W_K(X).
+\]
+\end{definition}
+
+\osline{SpatialGibbs}{73}{pathWeight},
+\osline{SpatialGibbs}{100}{pathSum}.
+No operator occurs in either definition.
+
+\begin{theorem}[the bridge, generic form]\label{thm:generic}
+If $K$ is symmetric then
+$S_K(N;A,B)=\sum_i \bigl(T_K^{\,N}A\bigr)(i)\,B(i)$, where
+$(T_KA)(i)=\sum_j K(i,j)A(j)$.
+\end{theorem}
+
+\osline{SpatialGibbs}{130}{pathSum\_eq\_iterate}.
+
+The proof is an induction that absorbs one bond into the left observable at
+each step; symmetry of $K$ is exactly what allows the bond to be read in either
+direction.  The base case is the empty product.
+
+\section{The spatial Gibbs measure}\label{sec:measure}
+
+Now the physics.  A configuration of the two-dimensional system is a map
+$X:\{0,\dots,N\}\to(\Z_2)^L$: $N+1$ time slices, each a spatial configuration.
+
+\begin{definition}\label{def:gibbs}
+With $w$ a strictly positive spatial weight and $K_\beta$ the decoupled
+time-bond kernel of \cite{ErikssonSpatial},
+\[
+  \mathcal{W}(X)\;=\;\Bigl(\prod_{t=0}^{N}w(X_t)\Bigr)
+    \Bigl(\prod_{t=0}^{N-1}K_\beta(X_t,X_{t+1})\Bigr).
+\]
+\end{definition}
+
+\osline{SpatialGibbs}{160}{gibbsWeight}.
+The spatial factor appears at \emph{every} slice and the time-bond factor
+between consecutive slices; this is the ordinary two-dimensional Boltzmann
+weight, written without reference to any operator.
+
+The obstacle is that the natural transfer kernel $w(\sigma)K_\beta(\sigma,\tau)$
+is \emph{not} symmetric, so it is not self-adjoint and no spectral theory
+applies to it directly.  The companion paper introduced the symmetrised form
+$\widetilde K(\sigma,\tau)=\sqrt{w(\sigma)}\,K_\beta(\sigma,\tau)\sqrt{w(\tau)}$
+and proved it symmetric.  The following identity is what that symmetrisation
+costs.
+
+\begin{theorem}[the dressing identity]\label{thm:dress}
+For every space-time configuration $X$,
+\[
+  \mathcal{W}(X)\;=\;\sqrt{w(X_0)}\;\sqrt{w(X_N)}\;\;W_{\widetilde K}(X).
+\]
+\end{theorem}
+
+\osline{SpatialGibbs}{205}{gibbsWeight\_eq\_dressed}.
+
+\begin{remark}
+The entire discrepancy between the honest Gibbs weight and the path weight of
+the self-adjoint kernel is two factors, each supported on one boundary slice.
+Nothing is changed in the bulk.  The proof is the observation that the
+truncated products $\prod_t\sqrt{w(X_t)}$ over the first $N$ and over the last
+$N$ slices are the full product with one endpoint removed, so their product
+with the two boundary factors is the full product squared.
+\end{remark}
+
+\begin{corollary}[correlations are matrix elements]\label{cor:bridge}
+For all observables $A,B$,
+\[
+  \sum_X A(X_0)B(X_N)\,\mathcal{W}(X)
+  \;=\;\sum_\sigma\bigl(T_{\widetilde K}^{\,N}(\sqrt{w}A)\bigr)(\sigma)\,
+        \bigl(\sqrt{w}B\bigr)(\sigma),
+\]
+and the partition function is the same expression at $A=B=1$.
+\end{corollary}
+
+\osline{SpatialGibbs}{253}{gibbsPathSum\_eq\_iterate},
+\osline{SpatialGibbs}{262}{gibbsPartition\_eq\_iterate}.
+
+This is the statement the four companion papers were missing.  Their spectral
+results are now results about the correlations of a measure.
+
+\section{The operator is the one that was analysed}\label{sec:vacuum}
+
+The bridge lands on $\widetilde K$, which is strictly positive whenever $w$ is,
+so the existence theory of \cite{ErikssonPerron} applies verbatim: it has a
+strictly positive Perron vacuum, and after normalising by its eigenvalue the
+vacuum is a genuine fixed point of unit Euclidean norm.
+
+\osline{SpatialGibbs}{280}{symVacuum\_exists}.
+
+That this needs saying at all is the point.  A bridge that landed on a
+\emph{different} operator would have proved nothing about the earlier papers.
+
+\section{The fluctuation sector, and what decay would need}\label{sec:decay}
+
+\begin{theorem}[invariance]\label{thm:perp}
+If $K$ is symmetric and $T_K\Om=\Om$, then $\langle\Om,u\rangle=0$ implies
+$\langle\Om,T_Ku\rangle=0$, and hence $\langle\Om,T_K^{\,n}u\rangle=0$ for all
+$n$.
+\end{theorem}
+
+\osline{SpatialGibbs}{346}{perp\_invariant},
+\osline{SpatialGibbs}{352}{iterate\_perp}.
+
+\begin{theorem}[geometric decay under an explicit hypothesis]\label{thm:decay}
+Suppose in addition that for some $r\ge0$,
+$\|T_Ku\|\le r\|u\|$ for every $u$ orthogonal to $\Om$.  Then for every such
+$u$ and every $n$,
+\[
+  \bigl|\langle u,\;T_K^{\,n}u\rangle\bigr|\;\le\;r^{\,n}\,\|u\|^{2}.
+\]
+\end{theorem}
+
+\osline{SpatialGibbs}{382}{connected\_decay}.
+Specialised through the dressing identity, this bounds the Gibbs two-point
+function of the spatial system itself:
+\osline{SpatialGibbs}{505}{gibbs\_connected\_decay}.
+
+\begin{remark}[the hypothesis is not vacuous, and not trivial]\label{rem:nonvac}
+A hypothesis-carrying theorem is worth nothing if nothing satisfies the
+hypothesis.  For any unit vector $\Om$ and any $r\ge0$ the kernel
+$\Om_i\Om_j+r(\delta_{ij}-\Om_i\Om_j)$ is symmetric, fixes $\Om$, and contracts
+the fluctuation sector by exactly $r$ --- so the hypotheses are jointly
+satisfiable at every rate, including $0<r<1$ where the conclusion is
+non-trivial.  Separately, whenever there are two distinct states and the vacuum
+is strictly positive, the fluctuation sector contains a nonzero vector, so
+Theorem~\ref{thm:decay} is not quantified over an empty set.
+\end{remark}
+
+\osline{SpatialGibbs}{457}{gapWitness\_contracts},
+\osline{SpatialGibbs}{469}{exists\_nonzero\_perp}.
+
+\section{Scope: what this paper does not give}\label{sec:scope}
+
+\paragraph{The contraction hypothesis is not discharged.}  This is the
+substantive limitation and it is not a formality.  The companion
+paper \cite{ErikssonGap} proves that every eigenvalue other than the Perron
+eigenvalue is \emph{strictly} smaller in modulus.  That is a statement about
+finitely many strict inequalities.  The hypothesis of Theorem~\ref{thm:decay}
+is an \emph{operator-norm} bound on the fluctuation sector.  In finite
+dimension the first does imply the second --- take the maximum of
+$|\mu|/\lambda$ over the finitely many non-Perron eigenvalues --- but that
+maximum has to be constructed, together with the enumeration of the spectrum
+and the spectral decomposition of the symmetric kernel that makes the norm
+equal to it.  None of that exists in this development, so no rate is derived
+here from the earlier papers.
+
+\paragraph{Nothing uniform in the spatial extent.}  Even granting the previous
+paragraph, the constructed $r$ would depend on $L$.  The measured evidence
+in \cite{ErikssonGap} is that it approaches $1$ with $L$ outside the disordered
+region.  This paper adds nothing to that question in either direction, and the
+reader should not read the geometric decay of Theorem~\ref{thm:decay} as a
+mass gap of any kind: with $r=r(L)\to1$ the bound is empty in the limit.
+
+\paragraph{Reflection positivity is untouched.}  The bridge gives a
+self-adjoint transfer operator and a positive measure; it does not give the
+Osterwalder--Schrader positivity that a reconstruction theorem would need, and
+no claim in that direction is made.
+
+\paragraph{No claim about the physical target.}  Nothing here concerns
+$\SU(N)$, the continuum limit, or the Clay problem \cite{Clay}.  The distance
+to that problem is unchanged by this paper, and remains effectively total.
+
+\section{What is verified and not proved}\label{sec:verified}
+
+A machine-checked proof guarantees that the definitions are internally
+consistent.  It does not guarantee that they model the object the prose claims
+they model.  For that reason both load-bearing identities --- the dressing
+identity and the bridge corollary --- were recomputed by brute force from the
+Boltzmann weights, by an independent script that has no access to the
+formalisation, over all space-time configurations for $L\le3$ and $N\le3$ with
+a genuinely configuration-dependent strictly positive spatial weight.  The
+worst relative discrepancy over all cases was $9.1\times10^{-16}$, at machine
+precision.
+
+This is \textbf{verified}, not proved, and no theorem depends on it.  Its
+function is to exclude the failure mode a proof assistant cannot exclude: a
+formally correct theorem about the wrong definition.  The script and its
+transcript are in the repository.
+
+\section{Formalisation notes}\label{sec:formal}
+
+\paragraph{The generic half carries the work.}  Theorem~\ref{thm:generic} is
+stated for an arbitrary symmetric kernel on an arbitrary finite type, and the
+spatial content enters only when it is applied.  This was not generality for
+its own sake: the induction that proves it is exactly the induction the
+one-dimensional chain already used, and stating it generically is what let the
+proof be reused rather than rewritten.
+
+\paragraph{Where symmetry is actually needed.}  Only in
+Theorem~\ref{thm:generic}, to absorb a bond into the left observable.  The
+dressing identity itself is an identity between products and uses no symmetry
+at all; it is what \emph{supplies} the symmetric kernel that
+Theorem~\ref{thm:generic} then consumes.
+
+\paragraph{A rewrite that had to be done in one step.}  The dressing identity
+combines three product identities.  Rewriting them in sequence fails: the
+second rewrite consumes the subterm the third one needs.  They are combined
+into a single equation before rewriting.  The failure is silent in the sense
+that matters --- it produces a stuck goal, not a wrong theorem --- but it is
+recorded because the same shape recurs whenever two truncations of one product
+appear on the same side.
+
+\section{Reproducibility}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}
+of the repository.  Every hyperlink in this paper was resolved against that
+commit, and checked to point at an actual declaration line, before compilation.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8429 jobs, success \\
+Oracle commands & 2624 \\
+\quad with axiom dependencies & 2601 \\
+\quad axiom-free & 23 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
+Project axioms & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The module is
+\repofile{YangMills/OS/SpatialGibbs.lean}{YangMills/OS/SpatialGibbs.lean}.
+The numerical probe is
+\repofile{scripts/probe\_spatial\_gibbs.py}{scripts/probe\_spatial\_gibbs.py}.
+Verdicts are in
+\repofile{docs/VERIFICATION-LEDGER.md}{docs/VERIFICATION-LEDGER.md}.
+
+\begin{thebibliography}{9}
+
+\bibitem{ErikssonSpatial}
+L.~Eriksson,
+\emph{Where the Spatial Coupling Stops: a Machine-Checked Obstruction},
+viXra:2607.0035.
+
+\bibitem{ErikssonBirkhoff}
+L.~Eriksson,
+\emph{Blind to the Coupling: the Hilbert--Birkhoff Route is
+Volume-Degenerate}, lane O.
+
+\bibitem{ErikssonPerron}
+L.~Eriksson,
+\emph{The Vacuum Was Never Absent: a Machine-Checked Perron Theorem for
+Strictly Positive Kernels}, lane O.
+
+\bibitem{ErikssonGap}
+L.~Eriksson,
+\emph{Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite
+Extent of the Coupled Slice}, lane O.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 Theorem Prover and Programming Language},
+CADE 28 (2021), 625--635.
+
+\bibitem{Mathlib}
+The mathlib Community,
+\emph{The Lean Mathematical Library},
+CPP 2020, 367--381.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills Theory},
+Clay Mathematics Institute Millennium Problem Description, 2000.
+
+\end{thebibliography}
+
+\end{document}
