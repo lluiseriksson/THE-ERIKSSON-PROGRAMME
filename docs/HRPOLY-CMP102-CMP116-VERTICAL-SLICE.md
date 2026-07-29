@@ -700,14 +700,24 @@ three at `(x,g(x))`, it proves
 
 The graph-input jets are generated internally from `Dg` and `D^2g`.
 Consequently neither `C1`, `C2`, nor `D^3 g` remains a generic premise.
-This is still an algebraic closure rather than the physical CMP102
-instantiation.  The concrete source map is currently proved smooth locally
-at admissible graph points, whereas this first quantitative composition
-theorem uses global `ContDiff`.  The next accepted checkpoint must localize
-the estimate to the physical tube (or construct a source-faithful uniform
-smooth tube) and produce the order-three joint jet of the literal CMP102 map
-`T`.  Taking either that jet or global smoothness as an unexplained physical
-hypothesis would only rename the remaining obligation.
+`LocalQuantitativeComposition.lean` and
+`QuantitativeFixedPointCoefficientJetsLocal.lean` close the local/global
+regularity mismatch.  The composition estimate is now available from
+`ContDiffAt` for the outer map at the physical graph point and global
+smoothness only for the explicit graph input.  The same coefficient and
+derived-map bounds therefore hold from
+
+```text
+ContDiffAt R 3 T (x,g(x)),
+```
+
+which is the regularity form already produced on admissible CMP102 charts;
+no global smoothness of `T` is requested.  This remains an algebraic closure
+rather than the physical quantitative instantiation.  The next accepted
+checkpoint must produce the order-one through order-three joint-jet bounds
+of the literal CMP102 map `T` at the graph point and feed them to the local
+endpoint.  Taking those jets as unexplained physical hypotheses would only
+rename the remaining obligation.
 
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete

@@ -1,0 +1,4 @@
+import YangMills.RG.LocalQuantitativeComposition
+
+#print axioms YangMills.RG.norm_iteratedFDeriv_comp_le_at
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_bilinear_le_at
