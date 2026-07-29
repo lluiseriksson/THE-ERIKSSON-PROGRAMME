@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP102Eq80PhysicalDomainCoefficientThirdFieldDerivative
 import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailSourceMetricDecay
+import YangMills.RG.BalabanCMP102Eq80RectangularOrderFourJetRadius
 
 /-!
 # Source-metric bound for the literal CMP102 domain third field jet
@@ -240,6 +241,106 @@ theorem
       mul_le_mul_of_nonneg_left hmatrixReconstruct hsource0
     _ = _ := by
       rfl
+
+/-- Source-metric third-jet bound with the auxiliary inner-map radius
+discharged from the literal value and first four jets of `D`.  The remaining
+source obligations are componentwise: derivatives of `D`, derivatives of
+`V₀` at the literal remainder point, and the explicit `D₃` jets retained in
+the displayed source majorant. -/
+theorem
+    norm_iteratedFDeriv_three_cmp102Eq80PhysicalFineHeadTailDomainCoefficient_le_sourceMetric_of_correctionJets
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : MetricFineField M Q Nc →L[ℝ] MetricFineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      MetricCoarseField Q Nc →L[ℝ] MetricCoarseField Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hsmallContour :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (layerWord : Fin n → ℕ)
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (D D₃ : MetricFineField M Q Nc → MetricCoarseField Q Nc)
+    (V₀ : MetricFineField M Q Nc → ℝ)
+    (H : MetricRectangularFieldMap M Q Nc)
+    (Δπ : MetricFineField M Q Nc →L[ℝ] MetricFineField M Q Nc)
+    (J A : MetricFineField M Q Nc)
+    (Y : CMP116LocalizationDomain M (2 * Q))
+    (hD : ContDiff ℝ ⊤ D) (hD₃ : ContDiff ℝ ⊤ D₃)
+    (hV₀ : ContDiff ℝ ⊤ V₀)
+    (B₀ B₁ B₂ B₃ B₄ C : ℝ)
+    (hD₀ : ‖D A‖ ≤ B₀)
+    (hD₁ : ‖iteratedFDeriv ℝ 1 D A‖ ≤ B₁)
+    (hD₂ : ‖iteratedFDeriv ℝ 2 D A‖ ≤ B₂)
+    (hD₃jet : ‖iteratedFDeriv ℝ 3 D A‖ ≤ B₃)
+    (hD₄ : ‖iteratedFDeriv ℝ 4 D A‖ ≤ B₄)
+    (hC : ∀ i, i ≤ 4 →
+      ‖iteratedFDeriv ℝ i V₀
+        (cmp102Eq80JointRemainderInner D (H, A))‖ ≤ C)
+    {cardRatio metricRatio summationRatio κcard κmetric : ℝ}
+    (hcardRatio0 : 0 ≤ cardRatio)
+    (hmetricRatio0 : 0 ≤ metricRatio)
+    (hsummation0 : 0 ≤ summationRatio)
+    (hκcard : 0 ≤ κcard)
+    (hκmetric : 0 ≤ κmetric)
+    (hsplit :
+      cmp102Eq80PhysicalFineHeadTailWalkRatio
+          (M := M) baseCoarseCovariance Ahead rho rate Rweak ≤
+        cardRatio * (metricRatio * summationRatio))
+    (hcardDecay :
+      cardRatio ≤ Real.exp (-(κcard * 10000)))
+    (hmetricDecay :
+      metricRatio ≤ Real.exp (-(κmetric * 10000)))
+    (hsmall :
+      ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+        summationRatio < 1) :
+    ‖iteratedFDeriv ℝ 3
+        (fun X =>
+          cmp102Eq80PhysicalFineHeadTailDomainCoefficient
+            anchor K hc hmass hK baseCoarseCovariance
+            sigma layerWord choice D D₃ H Δπ J X
+            (fderiv ℝ V₀ (X - H (D X))) Y.blocks)
+        A‖ ≤
+      cmp102Eq80PhysicalDomainThirdFieldSourceMetricMajorant
+        D D₃ H Δπ J A C
+        (cmp102Eq80RectangularOrderFourJetRadius
+          ‖H‖ B₀ B₁ B₂ B₃ B₄)
+        baseCoarseCovariance κcard κmetric summationRatio
+        layerWord Y Δ := by
+  apply
+    norm_iteratedFDeriv_three_cmp102Eq80PhysicalFineHeadTailDomainCoefficient_le_sourceMetric
+      anchor K hc hmass hK baseCoarseCovariance
+      hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+      sigma hRweak hcap hsmallContour layerWord choice
+      D D₃ V₀ H Δπ J A Y hD hD₃ hV₀ C
+      (cmp102Eq80RectangularOrderFourJetRadius
+        ‖H‖ B₀ B₁ B₂ B₃ B₄)
+      hC
+      ?_
+      hcardRatio0 hmetricRatio0 hsummation0 hκcard hκmetric
+      hsplit hcardDecay hmetricDecay hsmall
+  intro i hi₁ hi₄
+  exact
+    cmp102Eq80JointRemainderRadius_orderFour_of_correctionJets
+      D hD H A B₀ B₁ B₂ B₃ B₄
+      hD₀ hD₁ hD₂ hD₃jet hD₄ i hi₁ hi₄
 
 end
 
