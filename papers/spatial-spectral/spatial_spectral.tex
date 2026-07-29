@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{7f3c5add2aa78757203c3dc74758fcd6233df83d}
+\newcommand{\anchor}{d775f39f521cb18c9bad0cbba93fa97d6275bc56}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -77,9 +77,15 @@ so the top term of the spectral sum vanishes instead of merely being bounded.
 nothing here bounds it away from $\lambda$ uniformly.  Direct diagonalisation
 gives $\mathrm{specGap}/\lambda = 0.9205, 0.9829, 0.9964, 0.9992$ at
 $L = 2,3,4,5$ for one parameter pair: a geometric bound whose rate tends to $1$
-is empty in the limit, and that is reported, not hidden.  The relative decay is
-still not the normalised Gibbs \emph{expectation}: that needs a lower bound on
-the partition function, which is not proved here.  Reflection
+is empty in the limit, and that is reported, not hidden.
+
+\textbf{And a correction to our own previous scope claim.}  An earlier version
+said that bounding the partition function below requires identifying the index
+of the top eigenvalue.  That was \emph{wrong}, as an external reading pointed
+out.  Splitting the dressed constant observable along the Perron direction makes
+both cross terms vanish by symmetry alone, and the resulting lower bound turns
+the relative statement into a bound on the \emph{normalised} Gibbs two-point
+function.  Both are now proved.  Reflection
 positivity is untouched, and nothing in this paper is a claim about $\SU(N)$,
 the continuum limit, or the Yang--Mills mass gap.
 \end{abstract}
@@ -120,7 +126,7 @@ Let $\mu_j$ be the eigenvalues of $K$ and set
 \]
 \end{definition}
 
-\osline{SpatialSpectral}{166}{specGap}.
+\osline{SpatialSpectral}{172}{specGap}.
 Eigenvalues equal to $\lambda$ contribute $0$ rather than $\lambda$.  That is
 legitimate --- and it is the whole content of §\ref{sec:invisible}.
 
@@ -128,7 +134,7 @@ legitimate --- and it is the whole content of §\ref{sec:invisible}.
 $\mathrm{specGap} < \lambda$.
 \end{theorem}
 
-\osline{SpatialSpectral}{178}{specGap\_lt}.
+\osline{SpatialSpectral}{184}{specGap\_lt}.
 Each term of the maximum is either $0 < \lambda$, or $|\mu_j| < \lambda$ by the
 gap paper applied to the $j$-th basis vector, which is a nonzero eigenvector
 because it has unit norm.
@@ -140,7 +146,7 @@ If $\mu_j = \lambda$ and $u$ is orthogonal to the Perron vector, then $u$ has no
 component along the $j$-th eigenvector.
 \end{theorem}
 
-\osline{SpatialSpectral}{199}{inner\_specBasis\_eq\_zero\_of\_top}.
+\osline{SpatialSpectral}{205}{inner\_specBasis\_eq\_zero\_of\_top}.
 
 \begin{remark}
 This is the step that does not come from the inequalities, and it is why
@@ -163,12 +169,12 @@ For every $u$ with $\langle v,u\rangle = 0$,
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{256}{norm\_act\_le\_specGap}.
+\osline{SpatialSpectral}{263}{norm\_act\_le\_specGap}.
 
 The proof is the expansion in the eigenbasis.  Writing $c_j$ for the coordinates
 of $u$, the coordinates of $Ku$ are $\mu_jc_j$
-(\osline{SpatialSpectral}{217}{inner\_specBasis\_act}), so by Parseval
-(\osline{SpatialSpectral}{239}{eucNorm\_sq\_eq\_sum})
+(\osline{SpatialSpectral}{223}{inner\_specBasis\_act}), so by Parseval
+(\osline{SpatialSpectral}{245}{eucNorm\_sq\_eq\_sum})
 \[
   \|Ku\|^2=\sum_j \mu_j^2c_j^2,\qquad \|u\|^2=\sum_j c_j^2 ,
 \]
@@ -181,9 +187,9 @@ definition.
 The bridge paper's fluctuation sector is invariant under a kernel that
 \emph{fixes} the vacuum.  Here the kernel is unnormalised and the vacuum is an
 eigenvector with eigenvalue $\lambda$, so invariance is reproved in that form
-(\osline{SpatialSpectral}{349}{perp\_invariant\_eigen}); the scalar drops out
+(\osline{SpatialSpectral}{356}{perp\_invariant\_eigen}); the scalar drops out
 because the pairing is bilinear.  Iterating gives
-\osline{SpatialSpectral}{362}{iterate\_norm\_le\_specGap}.
+\osline{SpatialSpectral}{371}{iterate\_norm\_le\_specGap}.
 
 \begin{theorem}[the bridge bound, without its hypothesis]\label{thm:endpoint}
 For the coupled spatial system, at every finite extent $L$, every $\beta$, and
@@ -196,7 +202,7 @@ to the Perron vector, then for every $N$
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{395}{gibbs\_pathSum\_bound\_unconditional}.
+\osline{SpatialSpectral}{404}{gibbs\_pathSum\_bound\_unconditional}.
 
 \begin{remark}[why that is not yet decay]\label{rem:notdecay}
 $\mathrm{specGap}<\lambda$ does not give $\mathrm{specGap}<1$.  The kernel is
@@ -219,16 +225,16 @@ Equivalently, the normalised kernel $\lambda^{-1}K$ contracts the fluctuation
 sector by $\mathrm{specRatio}<1$.
 \end{theorem}
 
-\osline{SpatialSpectral}{436}{gibbs\_pathSum\_relative\_decay},
-\osline{SpatialSpectral}{305}{specRatio\_lt\_one},
-\osline{SpatialSpectral}{328}{norm\_act\_normalizedKernel\_le}.
+\osline{SpatialSpectral}{445}{gibbs\_pathSum\_relative\_decay},
+\osline{SpatialSpectral}{312}{specRatio\_lt\_one},
+\osline{SpatialSpectral}{335}{norm\_act\_normalizedKernel\_le}.
 
 \begin{remark}[non-vacuity]
 Dressing is multiplication by a strictly positive function, so every fluctuation
 vector is the dressing of an observable: whenever the configuration space has
 two points there is a \emph{nonzero} $A$ satisfying the hypothesis, and
 Theorem~\ref{thm:endpoint} is not quantified over an empty set
-(\osline{SpatialSpectral}{462}{exists\_nonzero\_dressed\_fluctuation}).
+(\osline{SpatialSpectral}{471}{exists\_nonzero\_dressed\_fluctuation}).
 \end{remark}
 
 \section{Scope: three things this does not give}\label{sec:scope}
@@ -250,25 +256,72 @@ $\mathrm{specGap}^N$ says nothing in the limit.  These numbers are
 are printed because a paper that reported only Theorem~\ref{thm:endpoint} would
 be reporting the half that does not settle the question.
 
-\paragraph{Relative decay, not the Gibbs expectation.}
-Theorem~\ref{thm:reldecay} compares with $\lambda^N$, which is the growth scale
-of the partition function but is \emph{not} the partition function.  Turning it
-into a statement about the normalised expectation needs a lower bound on that
-partition function of order $\lambda^N$ --- which needs the index of the top
-eigenvalue identified and its overlap with the dressed constant observable
-bounded below.  Neither is done here, and the word \emph{clustering} is
-deliberately not used.
-
 \paragraph{A bound, not an identification.}  We prove
-$\|Ku\|\le\mathrm{specGap}\|u\|$ on the fluctuation sector.  We do not prove
-that $\mathrm{specGap}$ equals the restricted operator norm; that would need a
-nonzero vector attaining it, hence the index of the top eigenvalue, which is the
-same missing ingredient as in the previous paragraph.  The probe reports
-attainment as \textbf{verified}.
+$\|Ku\|\le\mathrm{specGap}\|u\|$ on the fluctuation sector.  We do \emph{not}
+prove that $\mathrm{specGap}$ equals the restricted operator norm.  The probe
+reports attainment as \textbf{verified}, and §\ref{sec:denominator} explains
+why we now expect this to be cheap rather than blocked.
+
+\paragraph{Still not clustering in the infinite-volume sense.}
+Theorem~\ref{thm:corr} bounds the normalised two-point function at each fixed
+extent.  It says nothing about the limit: the rate is
+$\mathrm{specRatio}(L)$, and the measured evidence is that it tends to $1$.
+The word \emph{clustering} is reserved for a statement that survives that limit,
+and no such statement is made.
 
 \paragraph{No claim about the physical target.}  Reflection positivity is
 untouched, and nothing here concerns $\SU(N)$, the continuum limit, or the Clay
 problem \cite{Clay}.  The distance to that problem is unchanged.
+
+\section{The denominator, and a retraction}\label{sec:denominator}
+
+The first version of this paper asserted, in its scope section, that a lower
+bound on the partition function needs the index of the top eigenvalue
+identified.  \textbf{That was wrong.}  An external reading supplied the argument
+below, and it uses no index at all.
+
+Let $b$ be the dressed constant observable, $\Om$ the unit Perron vacuum,
+$c=\langle\Om,b\rangle$ and $u=b-c\,\Om$, so that $u\perp\Om$.  Then
+\[
+  \langle b,K^{N}b\rangle
+  \;=\; c^{2}\lambda^{N}+\langle u,K^{N}u\rangle ,
+\]
+because \emph{both} cross terms vanish: $\langle\Om,K^{N}u\rangle
+=\langle K^{N}\Om,u\rangle=\lambda^{N}\langle\Om,u\rangle=0$ by symmetry and
+the eigen-equation, and the other by the same computation.  Nothing here asks
+which basis vector carries $\lambda$.
+
+\osline{SpatialSpectral}{558}{quadForm\_split}.
+
+\begin{theorem}[the partition function from below]\label{thm:denom}
+$\langle b,K^{N}b\rangle \;\ge\; c^{2}\lambda^{N}
+ -\mathrm{specGap}^{\,N}\|u\|^{2}$, and the left-hand side is the partition
+function.
+\end{theorem}
+
+\osline{SpatialSpectral}{596}{quadForm\_lower}.
+Since $c>0$ (both $\Om$ and $b$ are strictly positive) and
+$\mathrm{specRatio}<1$, the right-hand side is positive for all large $N$.
+
+\begin{theorem}[the normalised two-point function]\label{thm:corr}
+For any $B$ bounding the unnormalised sum and any $D>0$ bounding the partition
+function below,
+\[
+  \bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr|\;\le\;B/D .
+\]
+Combining Theorem~\ref{thm:endpoint} with Theorem~\ref{thm:denom} gives a bound
+of the form $\mathrm{const}\cdot\mathrm{specRatio}^{\,N}$ at fixed extent.
+\end{theorem}
+
+\osline{SpatialSpectral}{652}{gibbsCorr\_bound\_of\_partition\_lower}.
+
+\begin{remark}
+The same reading observes that the \emph{sharpness} of $\mathrm{specGap}$ is
+likewise not blocked by the missing index: the maximum defining it is attained
+at some basis vector, that vector is orthogonal to the Perron vector because
+eigenvectors with different eigenvalues are, and it realises the bound.  We have
+not formalised this, and say so rather than claim it.
+\end{remark}
 
 \section{What is verified and not proved}\label{sec:verified}
 
@@ -314,8 +367,8 @@ actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8430 jobs, success \\
-Oracle commands & 2655 \\
-\quad with axiom dependencies & 2632 \\
+Oracle commands & 2665 \\
+\quad with axiom dependencies & 2642 \\
 \quad axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
