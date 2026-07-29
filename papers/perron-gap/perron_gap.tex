@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{ff24cf46cfc8859dffa8b2f18252763e0c75def9}
+\newcommand{\anchor}{ac8979631c1541b059b3c10f590ca174b0b5f6be}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -275,6 +275,8 @@ For the coupled slice, Theorem~\ref{thm:gap} separates \emph{every} eigenvalue
 from $\lambda$, not merely the real ones.
 \end{corollary}
 
+\osline{PerronGap}{483}{coupled\_gap\_all\_eigenvalues}.
+
 \begin{remark}[What this does not turn into]
 Making the separation a statement about the whole spectrum changes nothing about
 its \emph{quantitative} content, which remains empty.  Self-adjointness on an
@@ -341,8 +343,8 @@ line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8428 jobs, success \\
-Oracle commands & 2582 \\
-\quad with axiom dependencies & 2559 \\
+Oracle commands & 2583 \\
+\quad with axiom dependencies & 2560 \\
 \quad axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\

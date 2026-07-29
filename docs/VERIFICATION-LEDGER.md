@@ -27193,3 +27193,76 @@ module's **18** declarations, all with exactly
 `{propext, Classical.choice, Quot.sound}`; zero `sorryAx`; zero real errors.
 Paper 6pp, 15 line-anchored permalinks recomputed BY NAME and re-verified at the
 anchor commit itself.
+
+## Addendum 533 (2026-07-29, **O-3j v1.2: the terminal endpoint - the whole-spectrum gap becomes ONE named theorem, clickable from the corollary that states it**)
+
+**What was missing was a name, and a name is not a decoration.**  v1.1 proved
+the two halves and left their composition to the reader: every eigenvalue is
+real (`coupled_eigenvalue_real`), and every real eigenvalue other than `lam` is
+strictly smaller in modulus (`abs_lt_of_ne_perron`).  A paper whose title
+claims a spectral gap should be able to point at the single theorem that IS the
+claim.  The external evaluator asked for exactly that, and the request was
+correct: a corollary supported only by prose composition is the one place where
+a machine-checked paper quietly stops being machine-checked.
+
+**The endpoint.**  `coupled_gap_all_eigenvalues` (`YangMills/OS/PerronGap.lean`)
+- for every finite extent `L`, every strictly positive source weight `w`, every
+`beta`, and every COMPLEX eigenvalue `mu` of the coupled kernel with
+`mu != lam`: `||mu|| < lam`.
+
+**How it composes, and why reality is what makes it work.**  Write `mu` as a
+real number (Addendum 532).  Then the real and imaginary parts of the
+eigenvector satisfy the SAME real eigen-equation with eigenvalue `mu.re` --- the
+complex equation splits componentwise precisely because `mu.im = 0`.  A nonzero
+eigenvector has a nonzero real part or a nonzero imaginary part; either one is a
+witness for `abs_lt_of_ne_perron`.  The case split is on which component
+survives, not on any property of the kernel.
+
+**What was deliberately NOT added, and why.**  The existential corollary
+`exists eps > 0, ||mu|| <= (1 - eps) lam` for a GIVEN `mu` was declined: over
+the reals it is logically EQUIVALENT to `||mu|| < lam`, so it would restate the
+same content in language that sounds quantitative.  The version that would say
+something --- ONE `eps` valid for ALL `mu` --- requires the spectrum as an
+enumerated finite set, which this development does not have.  Adding the weaker
+one would have been house-rule 3 (no vacuous weakening) inverted: not a smaller
+true claim, but the same claim dressed larger.
+
+**Measured, not asserted.**  Core **8428 jobs**, success.  The count did NOT
+increment, and that is the correct outcome: hard rule 7 predicts an increment
+when a MODULE is added to the core; here a theorem was added to a module that
+was already there.  Oracle **2583 commands -> 2583 answers** (2580 distinct,
+the same three known duplicates), 2560 with axioms + 23 axiom-free, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  The endpoint answers
+`[propext, Classical.choice, Quot.sound]`.  Paper: 6pp, 16 permalinks, each
+verified against the BLOB AT THE ANCHOR COMMIT (not the working copy) to land on
+a line that literally declares the name it displays, and each verified again
+inside the compiled PDF after inflating its streams.
+
+**TOOLING GHOST #27 --- a parser that could not read its own output.**  The
+first reconciliation reported *4 commands with no answer*.  All four names end
+in a prime: `sinh_pos'`, `one_le_cosh'`, `cosh_sq_sub_sinh_sq'`,
+`pow_succ_apply'`.  Lean prints `'NAME'' depends on axioms:`, and a regex of the
+form `'([^']+)'` stops at the INTERNAL prime, so a real answer is read as
+missing.  Nothing was wrong with the build.  The failure mode is the mirror of
+ghost #26: there, the extractor mistook prose for code and INVENTED an entry;
+here, the auditor mistook a real entry for an absence.  Both are invisible
+except by reconciling commands against answers NAME BY NAME --- a total that
+merely looks plausible proves nothing.  Recorded with it: per-line greps for
+`error` and for nonstandard axioms are both meaningless against this log (Lean
+WRAPS long axiom lists across lines, and declaration names contain the substring
+`Error`, e.g. `YMActivityErrorBudget`); the naive greps reported 31 errors and
+1195 nonstandard-axiom answers where there are zero of each.
+
+**A second tooling note, caught before it could do harm.**  The script that
+inserts the endpoint link first anchored on the FIRST `\end{corollary}` in the
+document.  The document happens to contain exactly one corollary, so the link
+landed correctly --- by luck, not by logic.  Re-anchored on `\label{cor:whole}`.
+Rule: *when a script locates an insertion point, it must key on the identifier
+of the target, never on the first instance of its delimiter; the failure is
+silent and produces a plausible result.*
+
+**Unchanged, and still the headline.**  The gap is **STRICT and NOT
+QUANTITATIVE**: no `eps`, no dependence on `L`, nothing uniform in volume.  The
+probe still shows the subdominant ratio climbing toward 1 with `L` outside the
+disordered region.  NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct
+unchanged.  Anchor `ac897963`.
