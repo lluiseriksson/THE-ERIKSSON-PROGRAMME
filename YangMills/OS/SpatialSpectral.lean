@@ -22,15 +22,19 @@ This module supplies it, and spends the result on both debts at once.
   data `(Ω, λ)`, it is the largest `|μ|` over the eigenvalues `μ ≠ λ`, and
   `specGap_lt` proves `specGap < λ`.  This is the modulus the gap paper did not
   provide.
-* `norm_mulVec_le_specGap` — the operator bound.  For every observable
-  orthogonal to the vacuum, `‖K u‖ ≤ specGap · ‖u‖`.  This is exactly the
-  hypothesis the bridge paper carried.
-* `gibbs_pathSum_decay_unconditional` — the endpoint.  The bridge module's
-  decay theorem, with its hypothesis removed: for the coupled spatial system, at
-  every finite extent, every `β` and every strictly positive source weight, the
-  **unnormalised** Gibbs two-point sum of a dressed fluctuation observable decays
-  geometrically in the time separation, with a rate strictly below the Perron
-  eigenvalue and **no carried hypothesis**.
+* `norm_act_le_specGap` — the operator bound.  For every observable orthogonal
+  to the vacuum, `‖K u‖ ≤ specGap · ‖u‖`.  This is exactly the hypothesis the
+  bridge paper carried.
+* `specRatio` / `specRatio_lt_one` — the rate that is actually below one.
+  `specGap < λ` is **not** `specGap < 1`: the kernel is unnormalised, so both are
+  typically far above one and `specGap ^ N` GROWS.  The rate below one is the
+  relative one, `specRatio = specGap / λ`.
+* `gibbs_pathSum_bound_unconditional` — the bridge module's bound with its
+  hypothesis removed.  Its rate is `specGap`, so on its own it bounds the GROWTH
+  of the fluctuation contribution; it does not exhibit decay.
+* `gibbs_pathSum_relative_decay` — the decay statement: suppression by
+  `specRatio ^ N` **relative to the Perron scale** `λ ^ N`.  This is the one that
+  is called decay, and the only one.
 
 ## The one step that does not come from the inequalities
 
@@ -375,11 +379,14 @@ theorem iterate_norm_le_specGap (hpos : ∀ i j, 0 < K i j)
 
 end Spectral
 
-/-! ## §7  The endpoint — clustering with no hypothesis left
+/-! ## §7  The endpoint — an unconditional sub-Perron bound, and relative decay
 
-The bridge module proved geometric decay of the Gibbs two-point sum under a
-contraction hypothesis.  The hypothesis is now a theorem, so the decay is
-unconditional at every finite extent. -/
+The bridge module bounded the Gibbs two-point sum under a contraction
+hypothesis.  The hypothesis is now a theorem, so the bound is unconditional at
+every finite extent.  But its rate is `specGap`, which is below `lam` and NOT
+below one, so that bound controls GROWTH.  The decay statement is the second one
+below, relative to the Perron scale `lam ^ N`.  Nothing here is a statement about
+the normalised Gibbs expectation, and nothing is uniform in the extent. -/
 
 /-- **THE BRIDGE MODULE'S BOUND, WITHOUT ITS HYPOTHESIS.**  The rate is
 `specGap`, which is below `lam` but NOT below one --- the kernel is unnormalised

@@ -27570,3 +27570,41 @@ in the volume limit.  Still not the normalised Gibbs expectation: `lam ^ N` is
 the growth SCALE of the partition function, not the partition function, and the
 lower bound remains the registered next item.  Reflection positivity untouched.
 NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct unchanged.
+
+## Addendum 539 (2026-07-29, **S block v1.2: the module's own prose still said what the paper had stopped saying**)
+
+**The residual.**  Addendum 538 corrected the paper, the names and the theorems.
+It did not correct the module's DOCSTRING.  The header still listed a retired
+endpoint name, still said the UNNORMALISED Gibbs sum *decays geometrically*, and
+the §7 heading still read *clustering with no hypothesis left*.  External review
+caught it.  No Lean statement was affected --- and that is exactly why it
+survived a green build, a clean oracle and a full reconciliation.
+
+**A second one, found while fixing the first.**  The header also cited
+`norm_mulVec_le_specGap`, which was never the name of anything: the theorem is
+`norm_act_le_specGap`.  The review had not flagged this one.  A wrong name in a
+docstring is invisible to every check this project runs, because none of them
+read prose.
+
+**The guard now in the tooling.**  The fix script asserts that EVERY backticked
+identifier in the module header resolves to an actual declaration in that
+module, and fails otherwise.  Rule: *a name in prose is a claim; check it
+against the declaration list the way a permalink is checked against the blob.*
+This is the third time in this session that a defect lived in prose rather than
+in code --- the invented citation, the numerator called a correlation, and now a
+docstring describing a theorem that had been renamed.  The pattern is stable
+enough to name: **the build checks the code; nothing checks what the code says
+about itself.**
+
+**Scope.**  Comment-only change; no declaration added, removed or restated.  The
+full oracle transcript was NOT re-run, and that is stated rather than glossed:
+`oracle_check.lean` is byte-identical and no declaration changed, so the 2655
+count is a property of an unchanged file.  Core rebuilt (**8430 jobs**) and the
+module's own declarations re-oracled to confirm they still answer
+`[propext, Classical.choice, Quot.sound]`.  Line numbers shifted, so every paper
+permalink was re-resolved by name and the paper re-anchored.
+
+Nothing else changes: `specRatio` still depends on the extent, the relative
+decay is still not the normalised Gibbs expectation, `specGap` is still only
+proved to DOMINATE the restricted operator norm, reflection positivity is still
+untouched, and the Clay distance is still ~0 pct.
