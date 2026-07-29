@@ -742,6 +742,30 @@ is now the sole remaining `T` jet before the local coefficient endpoint
 can be instantiated.  Taking it as an unexplained physical hypothesis
 would only rename the obligation.
 
+The order-three analytic primitives are no longer black boxes.
+`AnalyticThirdDerivativeChangeOriginBound.lean` derives the full third
+Fréchet derivative from the six permutations of the literal
+changed-origin power-series coefficient and bounds that coefficient
+uniformly on every strict sub-ball.  The specializations in
+`NearLogExpThirdDerivativeChangeOriginBound.lean` consequently provide
+source-generated third-jet budgets for both the Mercator logarithm and the
+noncommutative exponential.  `LocalThirdJetFromSecondJetLipschitz.lean`
+also records the exact final converse mean-value step.
+
+The quantitative composition step is local on both sides.  The new
+`norm_iteratedFDeriv_comp_le_at_of_both_local` endpoint shrinks the inner
+chart to an open neighborhood whose image remains in the outer chart before
+applying the within-set Faà di Bruno estimate.  In particular, transporting
+the third jet through the Mercator logarithm no longer requires the false
+global premise that the logarithm is smooth on the whole ambient matrix
+space.
+
+What remains at order three is therefore the physical ordered-product
+assembly: propagate those primitive budgets through the Wilson line,
+log/exp average, represented nonlinear block, fixed right normalizer,
+physical coordinate map, and the literal shift.  No third jet of that
+composite map is accepted as a premise.
+
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete
 `CMP116Eq226PhysicalContourTermSource` can discharge `interaction_bound`.

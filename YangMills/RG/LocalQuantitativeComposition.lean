@@ -91,6 +91,75 @@ theorem norm_iteratedFDeriv_comp_le_at
     hsUnique hcompAt hx] at hmain
   exact hmain
 
+/-- **Fully local quantitative Faà di Bruno bound.**  Both maps are required
+to be `C^n` only at the points involved.  The proof shrinks the inner chart
+to an open neighborhood whose image remains inside an outer chart, then
+applies the within-set estimate there.  This is the form needed for physical
+Mercator coordinates, whose logarithm is smooth only near the identity. -/
+theorem norm_iteratedFDeriv_comp_le_at_of_both_local
+    {outer : F → G} {inner : E → F}
+    {n : ℕ} {x : E} {C D : ℝ}
+    (houter : ContDiffAt 𝕜 n outer (inner x))
+    (hinner : ContDiffAt 𝕜 n inner x)
+    (hC : ∀ i, i ≤ n →
+      ‖iteratedFDeriv 𝕜 i outer (inner x)‖ ≤ C)
+    (hD : ∀ i, 1 ≤ i → i ≤ n →
+      ‖iteratedFDeriv 𝕜 i inner x‖ ≤ D ^ i) :
+    ‖iteratedFDeriv 𝕜 n (outer ∘ inner) x‖ ≤
+      (n.factorial : ℝ) * C * D ^ n := by
+  rcases houter.contDiffOn
+      (m := (n : WithTop ℕ∞)) le_rfl (by simp) with
+    ⟨u, hu, houterU⟩
+  rcases mem_nhds_iff.mp hu with
+    ⟨t, htu, htOpen, hfx⟩
+  have houterT : ContDiffOn 𝕜 n outer t :=
+    houterU.mono htu
+  rcases hinner.contDiffOn
+      (m := (n : WithTop ℕ∞)) le_rfl (by simp) with
+    ⟨v, hv, hinnerV⟩
+  have hpreimage : inner ⁻¹' t ∈ nhds x :=
+    hinner.continuousAt (htOpen.mem_nhds hfx)
+  rcases mem_nhds_iff.mp (Filter.inter_mem hv hpreimage) with
+    ⟨s, hsv, hsOpen, hx⟩
+  have hinnerS : ContDiffOn 𝕜 n inner s :=
+    hinnerV.mono fun y hy => (hsv hy).1
+  have hmaps : Set.MapsTo inner s t := by
+    intro y hy
+    exact (hsv hy).2
+  have htUnique : UniqueDiffOn 𝕜 t :=
+    htOpen.uniqueDiffOn
+  have hsUnique : UniqueDiffOn 𝕜 s :=
+    hsOpen.uniqueDiffOn
+  have hCWithin : ∀ i, i ≤ n →
+      ‖iteratedFDerivWithin 𝕜 i outer t (inner x)‖ ≤ C := by
+    intro i hi
+    have hin :
+        (i : WithTop ℕ∞) ≤ (n : WithTop ℕ∞) :=
+      WithTop.coe_le_coe.mpr (WithTop.coe_le_coe.mpr hi)
+    rw [iteratedFDerivWithin_eq_iteratedFDeriv
+      htUnique (houter.of_le hin) hfx]
+    exact hC i hi
+  have hDWithin : ∀ i, 1 ≤ i → i ≤ n →
+      ‖iteratedFDerivWithin 𝕜 i inner s x‖ ≤ D ^ i := by
+    intro i hi hinNat
+    have hin :
+        (i : WithTop ℕ∞) ≤ (n : WithTop ℕ∞) :=
+      WithTop.coe_le_coe.mpr
+        (WithTop.coe_le_coe.mpr hinNat)
+    rw [iteratedFDerivWithin_eq_iteratedFDeriv
+      hsUnique (hinner.of_le hin) hx]
+    exact hD i hi hinNat
+  have hmain :=
+    norm_iteratedFDerivWithin_comp_le
+      houterT hinnerS le_rfl
+      htUnique hsUnique hmaps hx hCWithin hDWithin
+  have hcompAt :
+      ContDiffAt 𝕜 n (outer ∘ inner) x :=
+    houter.comp x hinner
+  rw [iteratedFDerivWithin_eq_iteratedFDeriv
+    hsUnique hcompAt hx] at hmain
+  exact hmain
+
 /-- Local second-jet Leibniz bound for a bilinear map.  The left factor
 need only be `C²` at `x`; the right factor is globally `C²`. -/
 theorem norm_iteratedFDeriv_two_bilinear_le_at
