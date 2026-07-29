@@ -188,6 +188,23 @@ variable
     {alpha outerBound outerRate sourceRate : ℝ}
     {Y0 P : Finset (Cube d L)} {Z0 : Finset (FinBox d N')}
 
+/-- The source threshold is nonnegative and `epsilon1` is strictly positive,
+so the nonzero physical coupling appearing in
+`threshold = epsilon1 / gk` is necessarily positive. -/
+theorem gk_pos
+    (S : CMP116Eq226PhysicalContourTermSource
+      (nDelta := nDelta) (nY := nY) (d := d) (M := M) (N' := N')
+      (Nc := Nc) (L := L) (lieDim := lieDim) (E := E) Dict
+      E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+      alpha outerBound outerRate sourceRate Y0 P Z0) :
+    0 < gk := by
+  rcases lt_or_gt_of_ne S.gk_ne with hgk | hgk
+  · have hneg : epsilon1 / gk < 0 :=
+      div_neg_of_pos_of_neg S.epsilon1_pos hgk
+    rw [← S.threshold_eq] at hneg
+    exact (not_lt_of_ge S.threshold_nonneg hneg).elim
+  · exact hgk
+
 /-- The literal equation-(2.26) weight attached to a source term. -/
 def termWeight
     (S : CMP116Eq226PhysicalContourTermSource

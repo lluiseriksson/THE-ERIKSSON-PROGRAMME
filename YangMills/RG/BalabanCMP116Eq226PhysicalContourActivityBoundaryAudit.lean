@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP116Eq226PhysicalContourActivityBoundary
 
+#print axioms YangMills.RG.CMP116Eq226PhysicalContourTermSource.gk_pos
 #print axioms YangMills.RG.CMP116Eq226PhysicalContourTermSource.interaction_bound
 #print axioms YangMills.RG.CMP116Eq226PhysicalContourTermSource.norm_term_le_termWeight
 #print axioms YangMills.RG.globalEval_cmp116Eq226PhysicalContourActivity
