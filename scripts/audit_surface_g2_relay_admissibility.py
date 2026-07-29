@@ -58,7 +58,8 @@ def fraction(value: str) -> Fraction:
 def artifact_path(recorded: str) -> Path:
     """Resolve one repository-relative artifact path from legacy metadata.
 
-    Some frozen manifests were emitted on Windows and recorded ``scripts\...``.
+    Some frozen manifests were emitted on Windows and recorded
+    ``scripts\\...``.
     A POSIX checkout must interpret that spelling as a repository path without
     rewriting the byte-preserved historical record.
     """
