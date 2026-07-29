@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP116Eq226PhysicalContourResidualLedger
+import YangMills.RG.BalabanCMP116Eq226PhysicalContourCutoffSupportResidualLedger
 import YangMills.RG.BalabanCMP116Eq214LocalActivityIdentification
 import YangMills.RG.BalabanCMP116Lemma3ScaleFamily
 
@@ -109,6 +109,8 @@ structure CMP116Eq226PhysicalContourTermSource
       CMP116Eq214ShiftedPolydisc nDelta contour.deltaRadius sigma →
       CMP116Eq214ShiftedPolydisc nY contour.yRadius tau →
       ∀ b,
+        contour.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+            Y0 P b ≠ 0 →
         (contour.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
             sigma tau psi phi b).re +
           (gamma / 2) *
@@ -186,7 +188,7 @@ theorem norm_term_le_termWeight
         Y0 P psi phi‖ ≤
       S.termWeight := by
   exact
-    S.contour.norm_term_le_eq226SourceTermWeight_of_outerInteractionEnergy_residualLedger
+    S.contour.norm_term_le_eq226SourceTermWeight_of_outerInteractionEnergy_cutoffSupport_residualLedger
       Dict Y0 P Z0 psi phi
       alpha outerBound S.outerCost outerRate sourceRate gamma S.source
       S.domainMetric S.domainSupport S.gapScale S.gapCard
