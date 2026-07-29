@@ -420,6 +420,35 @@ source construction of the domain-decaying third-jet bound on that ball
 (or, equivalently, a source locality theorem strong enough to derive it),
 followed by its scalar comparison with equation (1.36).
 
+The first source-faithful producer for that analytic frontier is now present.
+`BalabanCMP102Eq80SourcePi4ThirdFieldDerivative.lean` extracts the final three
+physical-field variables directly from the literal joint equation-(80) jet:
+
+```text
+joint jet of order n+3
+  -> three-variable physical continuous multilinear map
+  -> norm <= joint-jet norm * product of propagator-direction norms.
+```
+
+`BalabanCMP102Eq80PhysicalDomainCoefficientThirdFieldDerivative.lean`
+specializes this construction to the reconstructed rectangular domain
+coefficient.  Its terminal estimate is
+
+```text
+norm(third field jet of the literal domain coefficient)
+  <= order-four joint source-jet majorant(D,D3,V0)
+       * norm(literal reconstructed domain matrix).
+```
+
+This is a genuine physical producer: neither the complete third derivative
+nor its bound is supplied as an input.  It also preserves the exact
+source-metric factor carried by the reconstructed domain matrix.  What is
+not yet claimed is the final identification of this mixed-jet extractor with
+`iteratedFDeriv 3` of the cutoff-localized assembled activity, or a uniform
+small-field bound on the order-four component jets.  Those are the next two
+source obligations needed to feed the cutoff theorem and equation (1.36);
+the unrestricted Gaussian `interaction_bound` remains open.
+
 The final assembly must also reconcile three domain index layers:
 
 ```text

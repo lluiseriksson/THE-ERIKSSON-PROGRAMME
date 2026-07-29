@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainCoefficientThirdFieldDerivative
+
+#print axioms YangMills.RG.cmp102PartialPropagatorJetThirdFieldDerivative_apply
+#print axioms YangMills.RG.norm_cmp102PartialPropagatorJetThirdFieldDerivative_le
+#print axioms YangMills.RG.norm_cmp102Eq80PhysicalFineHeadTailDomainCoefficientThirdFieldDerivative_le_sourceJets
