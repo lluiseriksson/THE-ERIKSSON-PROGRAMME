@@ -2980,3 +2980,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.gibbs_pathSum_bound_unconditional
 #print axioms YangMills.OS.gibbs_pathSum_relative_decay
 #print axioms YangMills.OS.exists_nonzero_dressed_fluctuation
+#print axioms YangMills.OS.act_add
+#print axioms YangMills.OS.act_smul
+#print axioms YangMills.OS.iterate_act_add
+#print axioms YangMills.OS.iterate_act_smul
+#print axioms YangMills.OS.iterate_act_eigen
+#print axioms YangMills.OS.iterate_pairing_symm
+#print axioms YangMills.OS.quadForm_split
+#print axioms YangMills.OS.quadForm_lower
+#print axioms YangMills.OS.unitVacuum_eigen
+#print axioms YangMills.OS.gibbsCorr_bound_of_partition_lower

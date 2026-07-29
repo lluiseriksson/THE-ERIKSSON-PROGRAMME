@@ -2,7 +2,7 @@ import YangMills.OS.SpatialGibbs
 import Mathlib.Analysis.Matrix.Spectrum
 
 /-!
-# The S block — the operator bound, and clustering without a hypothesis
+# The S block — the operator bound, and what it does and does not give
 
 Two companion papers were left carrying the same debt from opposite sides.  The
 gap paper proved that every eigenvalue other than the Perron eigenvalue is
@@ -159,10 +159,16 @@ theorem specBasis_ne_zero (hK : ∀ i j, K i j = K j i) (j : ι) :
 
 /-! ## §4  The modulus the gap paper did not provide -/
 
-/-- **The spectral gap of the fluctuation sector.**  The largest `|μ|` over the
-eigenvalues different from the Perron eigenvalue --- eigenvalues equal to `lam`
-contribute `0`, which is legitimate precisely because §5 shows they are
-invisible to a fluctuation observable. -/
+/-- **The subdominant spectral modulus.**  The largest `|μ|` over the
+eigenvalues different from the Perron eigenvalue.
+
+This is NOT the quantity usually called a spectral *gap*: that would be
+`lam - specGap`, or `1 - specRatio` after normalising.  The identifier is kept
+for continuity with the companion papers; this sentence, not the name, is the
+statement.
+
+Eigenvalues equal to `lam` contribute `0`, which is legitimate precisely because
+§5 shows they are invisible to a fluctuation observable. -/
 noncomputable def specGap (hK : ∀ i j, K i j = K j i) (lam : ℝ) : ℝ :=
   Finset.univ.sup' Finset.univ_nonempty
     (fun j => if specEigen hK j = lam then 0 else |specEigen hK j|)
@@ -251,8 +257,9 @@ theorem eucNorm_sq_eq_sum (hK : ∀ i j, K i j = K j i) (u : ι → ℝ) :
     rw [OrthonormalBasis.repr_apply_apply]
 
 /-- **THE OPERATOR BOUND.**  On the orthogonal complement of the Perron vector
-the kernel contracts by `specGap`.  This is precisely the hypothesis the bridge
-module carried and did not discharge. -/
+the image of the kernel is bounded by the factor `specGap`.  This is NOT a
+contraction: `specGap` is below `lam` and typically far ABOVE one.  It is
+precisely the hypothesis the bridge module carried and did not discharge. -/
 theorem norm_act_le_specGap (hpos : ∀ i j, 0 < K i j) (hK : ∀ i j, K i j = K j i)
     {v : ι → ℝ} (hv : ∀ i, 0 < v i) {lam : ℝ}
     (hvE : ∀ i, ∑ j, K i j * v j = lam * v i)
@@ -358,7 +365,9 @@ theorem perp_invariant_eigen (hK : ∀ i j, K i j = K j i) {v : ι → ℝ} {lam
     ring
   rw [Finset.sum_congr rfl fun i _ => hstep i, ← Finset.mul_sum, hperp, mul_zero]
 
-/-- Iterates of a fluctuation observable contract geometrically. -/
+/-- Iterates of a fluctuation observable satisfy a geometric bound with ratio
+`specGap` --- again NOT a contraction unless `specGap < 1`, which it need not
+be. -/
 theorem iterate_norm_le_specGap (hpos : ∀ i j, 0 < K i j)
     (hK : ∀ i j, K i j = K j i) {v : ι → ℝ} (hv : ∀ i, 0 < v i) {lam : ℝ}
     (hvE : ∀ i, ∑ j, K i j * v j = lam * v i)
@@ -478,5 +487,178 @@ theorem exists_nonzero_dressed_fluctuation {L : ℕ} {w : (Fin L → Fin 2) → 
     have := congrFun hzero σ
     simp only [Pi.zero_apply, div_eq_zero_iff, hs, or_false] at this
     simpa using this
+
+/-! ## §8  The partition function from below
+
+The first version's scope section asserted that a lower bound on the partition
+function needs the index of the top eigenvalue identified.  **That was wrong**,
+and an external reading supplied the correction used here: split the observable
+along the Perron direction, and both cross terms vanish by symmetry alone.  No
+eigenvalue index is located anywhere in this section. -/
+
+section Denominator
+
+variable {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι] {K : ι → ι → ℝ}
+
+theorem act_add (K : ι → ι → ℝ) (u z : ι → ℝ) :
+    act K (fun i => u i + z i) = fun i => act K u i + act K z i := by
+  funext i
+  show (∑ j, K i j * (u j + z j)) = (∑ j, K i j * u j) + ∑ j, K i j * z j
+  rw [← Finset.sum_add_distrib]
+  exact Finset.sum_congr rfl fun j _ => by ring
+
+theorem act_smul (K : ι → ι → ℝ) (c : ℝ) (u : ι → ℝ) :
+    act K (fun i => c * u i) = fun i => c * act K u i := by
+  funext i
+  show (∑ j, K i j * (c * u j)) = c * ∑ j, K i j * u j
+  rw [Finset.mul_sum]
+  exact Finset.sum_congr rfl fun j _ => by ring
+
+theorem iterate_act_add (K : ι → ι → ℝ) (n : ℕ) (u z : ι → ℝ) :
+    (act K)^[n] (fun i => u i + z i)
+      = fun i => (act K)^[n] u i + (act K)^[n] z i := by
+  induction n generalizing u z with
+  | zero => rfl
+  | succ n ih =>
+      rw [Function.iterate_succ_apply, act_add, ih, Function.iterate_succ_apply,
+        Function.iterate_succ_apply]
+
+theorem iterate_act_smul (K : ι → ι → ℝ) (c : ℝ) (n : ℕ) (u : ι → ℝ) :
+    (act K)^[n] (fun i => c * u i) = fun i => c * (act K)^[n] u i := by
+  induction n generalizing u with
+  | zero => rfl
+  | succ n ih =>
+      rw [Function.iterate_succ_apply, act_smul, ih, Function.iterate_succ_apply]
+
+/-- Iterating on an eigenvector multiplies by the eigenvalue. -/
+theorem iterate_act_eigen {v : ι → ℝ} {lam : ℝ}
+    (hvE : ∀ i, ∑ j, K i j * v j = lam * v i) (n : ℕ) :
+    (act K)^[n] v = fun i => lam ^ n * v i := by
+  induction n with
+  | zero => funext i; simp
+  | succ n ih =>
+      rw [Function.iterate_succ_apply', ih, act_smul]
+      funext i
+      rw [show act K v i = lam * v i from hvE i]
+      ring
+
+/-- The pairing stays symmetric under iterates. -/
+theorem iterate_pairing_symm (hK : ∀ i j, K i j = K j i) (n : ℕ) (u z : ι → ℝ) :
+    ∑ i, (act K)^[n] u i * z i = ∑ i, u i * (act K)^[n] z i := by
+  induction n generalizing u z with
+  | zero => rfl
+  | succ n ih =>
+      rw [Function.iterate_succ_apply, Function.iterate_succ_apply']
+      rw [ih (act K u) z, act_pairing_symm hK u ((act K)^[n] z)]
+
+/-- **The split.**  For a unit eigenvector `Om`, the quadratic form separates
+into the Perron part and a fluctuation part, with **no cross term** --- and the
+proof uses only symmetry and the eigen-equation, never the position of `lam` in
+any enumeration of the spectrum. -/
+theorem quadForm_split (hK : ∀ i j, K i j = K j i) {Om : ι → ℝ} {lam : ℝ}
+    (hOmE : ∀ i, ∑ j, K i j * Om j = lam * Om i)
+    (hOm1 : ∑ i, Om i * Om i = 1) (b : ι → ℝ) (N : ℕ) :
+    ∑ i, (act K)^[N] b i * b i
+      = (∑ k, Om k * b k) ^ 2 * lam ^ N
+        + ∑ i, (act K)^[N] (fun j => b j - (∑ k, Om k * b k) * Om j) i
+              * (b i - (∑ k, Om k * b k) * Om i) := by
+  set c : ℝ := ∑ k, Om k * b k with hc
+  set u : ι → ℝ := fun j => b j - c * Om j with hu
+  have hb : ∀ i, b i = c * Om i + u i := by intro i; simp only [hu]; ring
+  have hperp : ∑ i, Om i * u i = 0 := by
+    have hstep : ∀ i, Om i * u i = Om i * b i - c * (Om i * Om i) := by
+      intro i; simp only [hu]; ring
+    rw [Finset.sum_congr rfl fun i _ => hstep i, Finset.sum_sub_distrib,
+      ← Finset.mul_sum, hOm1, mul_one, ← hc, sub_self]
+  have hOmN : (act K)^[N] Om = fun i => lam ^ N * Om i := iterate_act_eigen hOmE N
+  have hcross : ∑ i, (act K)^[N] u i * Om i = 0 := by
+    rw [iterate_pairing_symm hK N u Om, hOmN]
+    have hstep : ∀ i, u i * (lam ^ N * Om i) = lam ^ N * (Om i * u i) := by
+      intro i; ring
+    rw [Finset.sum_congr rfl fun i _ => hstep i, ← Finset.mul_sum, hperp, mul_zero]
+  have hbN : (act K)^[N] b = fun i => c * (lam ^ N * Om i) + (act K)^[N] u i := by
+    conv_lhs => rw [show b = fun i => c * Om i + u i from funext hb]
+    rw [iterate_act_add, iterate_act_smul, hOmN]
+  rw [hbN]
+  have hexp : ∀ i, (c * (lam ^ N * Om i) + (act K)^[N] u i) * b i
+      = c ^ 2 * lam ^ N * (Om i * Om i) + c * lam ^ N * (Om i * u i)
+        + c * ((act K)^[N] u i * Om i) + (act K)^[N] u i * u i := by
+    intro i
+    rw [show b i = c * Om i + u i from hb i]
+    ring
+  rw [Finset.sum_congr rfl fun i _ => hexp i, Finset.sum_add_distrib,
+    Finset.sum_add_distrib, Finset.sum_add_distrib, ← Finset.mul_sum,
+    ← Finset.mul_sum, ← Finset.mul_sum, hOm1, hperp, hcross]
+  ring
+
+/-- **The partition form from below.**  The Perron term is exact; the
+fluctuation term is controlled by the module's own operator bound. -/
+theorem quadForm_lower (hpos : ∀ i j, 0 < K i j) (hK : ∀ i j, K i j = K j i)
+    {Om : ι → ℝ} (hOm : ∀ i, 0 < Om i) {lam : ℝ}
+    (hOmE : ∀ i, ∑ j, K i j * Om j = lam * Om i)
+    (hOm1 : ∑ i, Om i * Om i = 1) (b : ι → ℝ) (N : ℕ) :
+    (∑ k, Om k * b k) ^ 2 * lam ^ N
+        - specGap hK lam ^ N
+          * (eucNorm (fun j => b j - (∑ k, Om k * b k) * Om j)
+             * eucNorm (fun j => b j - (∑ k, Om k * b k) * Om j))
+      ≤ ∑ i, (act K)^[N] b i * b i := by
+  set c : ℝ := ∑ k, Om k * b k with hc
+  set u : ι → ℝ := fun j => b j - c * Om j with hu
+  have hperp : ∑ i, Om i * u i = 0 := by
+    have hstep : ∀ i, Om i * u i = Om i * b i - c * (Om i * Om i) := by
+      intro i; simp only [hu]; ring
+    rw [Finset.sum_congr rfl fun i _ => hstep i, Finset.sum_sub_distrib,
+      ← Finset.mul_sum, hOm1, mul_one, ← hc, sub_self]
+  have hbound : |∑ i, (act K)^[N] u i * u i|
+      ≤ specGap hK lam ^ N * (eucNorm u * eucNorm u) := by
+    have hcomm : ∑ i, (act K)^[N] u i * u i = ∑ i, u i * (act K)^[N] u i :=
+      Finset.sum_congr rfl fun i _ => mul_comm _ _
+    rw [hcomm]
+    calc |∑ i, u i * (act K)^[N] u i| ≤ eucNorm u * eucNorm ((act K)^[N] u) :=
+          abs_sum_mul_le _ _
+      _ ≤ eucNorm u * (specGap hK lam ^ N * eucNorm u) :=
+          mul_le_mul_of_nonneg_left
+            (iterate_norm_le_specGap hpos hK hOm hOmE hperp N) (eucNorm_nonneg _)
+      _ = specGap hK lam ^ N * (eucNorm u * eucNorm u) := by ring
+  rw [quadForm_split hK hOmE hOm1 b N]
+  have := abs_le.mp hbound
+  linarith [this.1]
+
+/-- The Euclidean-normalised vacuum satisfies the same eigen-equation. -/
+theorem unitVacuum_eigen {A : ι → ι → ℝ} {v : ι → ℝ} (hv : ∀ i, 0 < v i) {lam : ℝ}
+    (hvE : ∀ i, ∑ j, A i j * v j = lam * v i) :
+    ∀ i, ∑ j, A i j * unitVacuum v j = lam * unitVacuum v i := by
+  intro i
+  have hn : eucNorm v ≠ 0 := ne_of_gt (eucNorm_pos hv)
+  have hstep : ∀ j, A i j * unitVacuum v j = (A i j * v j) / eucNorm v := by
+    intro j
+    unfold unitVacuum
+    field_simp
+  rw [Finset.sum_congr rfl fun j _ => hstep j, ← Finset.sum_div, hvE i]
+  unfold unitVacuum
+  field_simp
+
+end Denominator
+
+/-! ## §9  The normalised expectation
+
+The two halves compose: any lower bound on the partition function divides the
+numerator bound.  Stated for an arbitrary lower bound `D`, so that §8 supplies
+it and this theorem does not have to repeat it. -/
+
+/-- **The normalised Gibbs two-point function, bounded.**  With `B` any bound on
+the unnormalised sum (§7) and `D` any positive lower bound on the partition
+function (§8), the expectation in the measure is bounded by `B / D`. -/
+theorem gibbsCorr_bound_of_partition_lower {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (β : ℝ) (N : ℕ) {A : (Fin L → Fin 2) → ℝ} {B D : ℝ}
+    (hDpos : 0 < D) (hD : D ≤ gibbsPartition w β N)
+    (hB : |gibbsPathSum w β N A A| ≤ B) :
+    |gibbsCorr w β N A A| ≤ B / D := by
+  have hZ : 0 < gibbsPartition w β N := lt_of_lt_of_le hDpos hD
+  have hBnn : 0 ≤ B := le_trans (abs_nonneg _) hB
+  unfold gibbsCorr
+  rw [abs_div, abs_of_pos hZ]
+  rw [div_le_div_iff₀ hZ hDpos]
+  nlinarith [hB, hD, hBnn, hDpos, abs_nonneg (gibbsPathSum w β N A A)]
 
 end YangMills.OS

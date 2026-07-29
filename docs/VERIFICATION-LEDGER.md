@@ -27608,3 +27608,52 @@ Nothing else changes: `specRatio` still depends on the extent, the relative
 decay is still not the normalised Gibbs expectation, `specGap` is still only
 proved to DOMINATE the restricted operator norm, reflection positivity is still
 untouched, and the Clay distance is still ~0 pct.
+
+## Addendum 540 (2026-07-29, **S block v1.3: a WRONG SCOPE CLAIM retracted, and the denominator proved**)
+
+**We asserted an obstruction that does not exist.**  The v1.1/v1.2 scope section
+said a lower bound on the partition function requires identifying the index of
+the top eigenvalue in the spectral basis.  An external reading showed that is
+FALSE, and supplied the argument.  Split the dressed constant observable as
+`b = c*Om + u` with `u` orthogonal to the unit Perron vacuum.  Then
+
+    <b, K^N b> = c^2 lam^N + <u, K^N u>,
+
+because BOTH cross terms vanish: `<Om, K^N u> = <K^N Om, u> = lam^N <Om,u> = 0`
+by symmetry and the eigen-equation alone.  No index is located anywhere.
+
+**This is a different class of error from the previous three.**  Those were
+prose describing the code wrongly.  This one was the paper asserting a
+MATHEMATICAL obstruction that is not there --- a false claim about what is hard,
+which is worse than a false claim about what is proved, because it discourages
+the work.  Rule: *before writing that a step is blocked, try it.*  The proof
+below is forty lines and compiled on the first attempt.
+
+**Proved (§8, §9).**  `quadForm_split` (the exact split), `quadForm_lower` (the
+partition function from below, the fluctuation term controlled by the module's
+own operator bound), `gibbsCorr_bound_of_partition_lower` (any numerator bound
+divided by any positive lower bound on the partition function).  Composing them
+gives a bound of the form `const * specRatio^N` on the NORMALISED Gibbs
+two-point function at fixed extent --- the statement the previous version said
+was out of reach.  Supporting: `act_add`, `act_smul`, `iterate_act_add`,
+`iterate_act_smul`, `iterate_act_eigen`, `iterate_pairing_symm`,
+`unitVacuum_eigen`.
+
+**Also corrected, from the same review: four semantic residues in the module
+prose.**  The header advertised *clustering without a hypothesis*; `specGap` was
+called *the spectral gap* when it is the subdominant MODULUS (the gap would be
+`lam - specGap`); and two docstrings said the kernel and its iterates
+*contract*, when `specGap` can be 52.37.  All four are claims in sentences, not
+wrong names --- which is precisely the limit of the backtick guard added in 539,
+and that limit is now recorded with it.
+
+**Measured.**  Core **8430 jobs** (unchanged).  Oracle **2665 commands -> 2665
+answers** (2662 distinct, same three known duplicates), 23 axiom-free + 2642
+with axioms, zero `sorryAx`, zero nonstandard axioms, zero errors.  39
+declarations in the module.
+
+**Still not proved, and now the list is shorter.**  Sharpness of `specGap` (the
+same reading notes it is likewise not blocked, and we say so rather than claim
+it); anything uniform in the extent --- `specRatio(L)` still tends to 1 outside
+the disordered region, so nothing here survives the volume limit and the word
+*clustering* is still not used.  Reflection positivity untouched.  Clay ~0 pct.
