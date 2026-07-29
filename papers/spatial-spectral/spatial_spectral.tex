@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{bd86ee2eeff8c064cbe1322526ed40a3de0dca90}
+\newcommand{\anchor}{7f3c5add2aa78757203c3dc74758fcd6233df83d}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -120,7 +120,7 @@ Let $\mu_j$ be the eigenvalues of $K$ and set
 \]
 \end{definition}
 
-\osline{SpatialSpectral}{162}{specGap}.
+\osline{SpatialSpectral}{166}{specGap}.
 Eigenvalues equal to $\lambda$ contribute $0$ rather than $\lambda$.  That is
 legitimate --- and it is the whole content of §\ref{sec:invisible}.
 
@@ -128,7 +128,7 @@ legitimate --- and it is the whole content of §\ref{sec:invisible}.
 $\mathrm{specGap} < \lambda$.
 \end{theorem}
 
-\osline{SpatialSpectral}{174}{specGap\_lt}.
+\osline{SpatialSpectral}{178}{specGap\_lt}.
 Each term of the maximum is either $0 < \lambda$, or $|\mu_j| < \lambda$ by the
 gap paper applied to the $j$-th basis vector, which is a nonzero eigenvector
 because it has unit norm.
@@ -140,7 +140,7 @@ If $\mu_j = \lambda$ and $u$ is orthogonal to the Perron vector, then $u$ has no
 component along the $j$-th eigenvector.
 \end{theorem}
 
-\osline{SpatialSpectral}{195}{inner\_specBasis\_eq\_zero\_of\_top}.
+\osline{SpatialSpectral}{199}{inner\_specBasis\_eq\_zero\_of\_top}.
 
 \begin{remark}
 This is the step that does not come from the inequalities, and it is why
@@ -163,12 +163,12 @@ For every $u$ with $\langle v,u\rangle = 0$,
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{252}{norm\_act\_le\_specGap}.
+\osline{SpatialSpectral}{256}{norm\_act\_le\_specGap}.
 
 The proof is the expansion in the eigenbasis.  Writing $c_j$ for the coordinates
 of $u$, the coordinates of $Ku$ are $\mu_jc_j$
-(\osline{SpatialSpectral}{213}{inner\_specBasis\_act}), so by Parseval
-(\osline{SpatialSpectral}{235}{eucNorm\_sq\_eq\_sum})
+(\osline{SpatialSpectral}{217}{inner\_specBasis\_act}), so by Parseval
+(\osline{SpatialSpectral}{239}{eucNorm\_sq\_eq\_sum})
 \[
   \|Ku\|^2=\sum_j \mu_j^2c_j^2,\qquad \|u\|^2=\sum_j c_j^2 ,
 \]
@@ -181,9 +181,9 @@ definition.
 The bridge paper's fluctuation sector is invariant under a kernel that
 \emph{fixes} the vacuum.  Here the kernel is unnormalised and the vacuum is an
 eigenvector with eigenvalue $\lambda$, so invariance is reproved in that form
-(\osline{SpatialSpectral}{345}{perp\_invariant\_eigen}); the scalar drops out
+(\osline{SpatialSpectral}{349}{perp\_invariant\_eigen}); the scalar drops out
 because the pairing is bilinear.  Iterating gives
-\osline{SpatialSpectral}{358}{iterate\_norm\_le\_specGap}.
+\osline{SpatialSpectral}{362}{iterate\_norm\_le\_specGap}.
 
 \begin{theorem}[the bridge bound, without its hypothesis]\label{thm:endpoint}
 For the coupled spatial system, at every finite extent $L$, every $\beta$, and
@@ -196,7 +196,7 @@ to the Perron vector, then for every $N$
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{388}{gibbs\_pathSum\_bound\_unconditional}.
+\osline{SpatialSpectral}{395}{gibbs\_pathSum\_bound\_unconditional}.
 
 \begin{remark}[why that is not yet decay]\label{rem:notdecay}
 $\mathrm{specGap}<\lambda$ does not give $\mathrm{specGap}<1$.  The kernel is
@@ -219,16 +219,16 @@ Equivalently, the normalised kernel $\lambda^{-1}K$ contracts the fluctuation
 sector by $\mathrm{specRatio}<1$.
 \end{theorem}
 
-\osline{SpatialSpectral}{429}{gibbs\_pathSum\_relative\_decay},
-\osline{SpatialSpectral}{301}{specRatio\_lt\_one},
-\osline{SpatialSpectral}{324}{norm\_act\_normalizedKernel\_le}.
+\osline{SpatialSpectral}{436}{gibbs\_pathSum\_relative\_decay},
+\osline{SpatialSpectral}{305}{specRatio\_lt\_one},
+\osline{SpatialSpectral}{328}{norm\_act\_normalizedKernel\_le}.
 
 \begin{remark}[non-vacuity]
 Dressing is multiplication by a strictly positive function, so every fluctuation
 vector is the dressing of an observable: whenever the configuration space has
 two points there is a \emph{nonzero} $A$ satisfying the hypothesis, and
 Theorem~\ref{thm:endpoint} is not quantified over an empty set
-(\osline{SpatialSpectral}{455}{exists\_nonzero\_dressed\_fluctuation}).
+(\osline{SpatialSpectral}{462}{exists\_nonzero\_dressed\_fluctuation}).
 \end{remark}
 
 \section{Scope: three things this does not give}\label{sec:scope}
