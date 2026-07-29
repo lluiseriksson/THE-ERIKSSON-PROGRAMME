@@ -678,12 +678,36 @@ and identically zero second jet.  Consequently, on `|A| <= L1`,
 
 where `C1` and `C2` bound the first and second jets of the literal
 coefficient `(x,A) |-> DT(x,g(x))`.  No third derivative of the fixed point
-is assumed.  Together with the preceding fixed-point absorption theorem,
-this makes the remaining source-facing generic obligation precise: derive
-these two coefficient-jet bounds from the physical joint jets of `T` through
-order three and the already constructed first and second jets of `g`.
-Supplying `C1` or `C2` as unexplained physical hypotheses would only rename
-that obligation and is not accepted.
+is assumed.
+
+`QuantitativeFixedPointCoefficientJets.lean` now derives those two
+coefficient budgets as well.  With
+
+```text
+R = max(max(1,L1),L2)
+```
+
+and a common bound `J` for the literal jets of `T` of orders one through
+three at `(x,g(x))`, it proves
+
+```text
+|D coefficient|   <= J R,
+|D^2 coefficient| <= 2 J R^2,
+
+|D^2 fixedPointFirstDerivativeMap|
+  <= 2(J R) + (2 J R^2) max(1,L1).
+```
+
+The graph-input jets are generated internally from `Dg` and `D^2g`.
+Consequently neither `C1`, `C2`, nor `D^3 g` remains a generic premise.
+This is still an algebraic closure rather than the physical CMP102
+instantiation.  The concrete source map is currently proved smooth locally
+at admissible graph points, whereas this first quantitative composition
+theorem uses global `ContDiff`.  The next accepted checkpoint must localize
+the estimate to the physical tube (or construct a source-faithful uniform
+smooth tube) and produce the order-three joint jet of the literal CMP102 map
+`T`.  Taking either that jet or global smoothness as an unexplained physical
+hypothesis would only rename the remaining obligation.
 
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete
