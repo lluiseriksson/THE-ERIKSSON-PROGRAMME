@@ -766,6 +766,15 @@ log/exp average, represented nonlinear block, fixed right normalizer,
 physical coordinate map, and the literal shift.  No third jet of that
 composite map is accepted as a premise.
 
+The first physical transport is now closed.
+`BalabanCMP102AmbientOrientedEdgeThirdJetBound.lean` proves that the literal
+oriented edge `exp(Z_b) U_b` has third derivative bounded by the generated
+exponential strict-ball budget.  Bond evaluation is contractive, right
+multiplication by the unitary background has norm at most one, and the
+reverse-orientation conjugate transpose is also contractive.  Hence no
+edge-level third-jet certificate remains.  The next producer is the
+ordered-product jet for a complete Wilson line.
+
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete
 `CMP116Eq226PhysicalContourTermSource` can discharge `interaction_bound`.
