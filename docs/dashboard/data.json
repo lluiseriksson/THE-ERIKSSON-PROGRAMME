@@ -3,7 +3,7 @@
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
     "updated": "2026-07-29",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8428 jobs green; measured source checkpoint ac897963 (on main)",
+    "checkpoint": "latest recorded lake build YangMillsCore - 8429 jobs green; 2626 oracle answers; measured source checkpoint c4fa6a9e (on main)",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
@@ -17,7 +17,7 @@
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "control_plane": "REPAIRED (2026-07-29). run-manifests contains only strict schema-v1 execution manifests. Frozen pre-schema and specialized ledgers are hash-indexed under run-records/legacy and remain usable only through explicit domain validators. The historical artifact baseline never exempts a changed transcript from strict manifest coverage.",
-    "submission_notice": "Public author-list entries [89]-[93] were rechecked on 2026-07-29 and their v1 PDFs are byte-identical to the repository artifacts. O-lane Papers 6 and 8 are submitted with public IDs pending; Paper 7 remains frozen and is not reported submitted."
+    "submission_notice": "Public author-list entries [89]-[93] were rechecked on 2026-07-29 and their v1 PDFs are byte-identical to the repository artifacts. O-lane Papers 6, 8, and 9 are submitted with public IDs pending; Paper 7 remains frozen and is not reported submitted."
   },
   "status_legend": {
     "proved": "Machine-checked theorem reachable from YangMillsCore; oracle-clean on Lean's three standard axioms.",
@@ -31,6 +31,18 @@
     "D": "Repository plumbing and public audit infrastructure"
   },
   "recent_papers": [
+    {
+      "id": "o-paper-9",
+      "title": "The Measure the Spectral Results Were About: a Machine-Checked Transfer Bridge for the Spatial Z_2 Slice",
+      "date": "2026-07-29",
+      "status": "submitted; public identifier pending",
+      "path": "papers/spatial-gibbs/spatial_gibbs.pdf",
+      "record": "docs/O-LANE-SUBMISSION-SPATIAL-GIBBS-20260729.md",
+      "anchor": "c4fa6a9e",
+      "paper_commit": "dc2935eb",
+      "sha256": "92c8235c54c8c6cafa7325d1a126f8b962ea486ac9e95d2e0872ec25969ce243",
+      "scope": "Proves the finite Gibbs weight-to-transfer dressing identity, the unnormalised two-point-sum matrix element, and the normalised expectation ratio with positive denominator. Connected decay remains conditional on an explicit contraction hypothesis; nothing is uniform in the extent and reflection positivity is not addressed."
+    },
     {
       "id": "o-paper-8",
       "title": "Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite Extent of the Coupled Slice",

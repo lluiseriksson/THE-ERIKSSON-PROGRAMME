@@ -27351,3 +27351,206 @@ The canonical live checkpoint is now anchor `ac897963`: full core build
 dependencies and 23 axiom-free), axioms exactly
 `{propext, Classical.choice, Quot.sound}`, zero `sorryAx`, zero project axioms,
 and zero errors.  This changes no `SU(N)`, continuum, or Clay boundary.
+
+## Addendum 537 (2026-07-29, **O-2: the measure the spectral results were about --- the transfer bridge for the SPATIAL slice**)
+
+**What was missing, stated exactly.**  Papers 5-8 exhibited a kernel on
+`(Z2)^L`, its Perron vacuum, and the strict separation of its spectrum.  All
+three are statements about a MATRIX.  No Gibbs measure, no partition function
+and no correlation function existed anywhere in the spatial tree --- so the
+vacuum was an eigenvector, the gap was a statement about eigenvalues, and
+neither was yet about a statistical-mechanical system.
+
+**A correction to an earlier working note, recorded because it changes the
+diagnosis.**  It was written that there was *no transfer operator in the tree*.
+That is wrong as stated: `Z2Transfer`/`Z2Identification` carry a full bridge
+for the ONE-DIMENSIONAL chain, where `z2PathWeight` is defined from Boltzmann
+weights alone and `z2PathSum_eq_iterate` identifies path sums with operator
+iterates.  What the SPATIAL object had was the operator and NOT the measure.
+The gap was real; its location was misrecorded.  Rule reaffirmed: *before
+claiming a piece is absent from the tree, grep the tree.*
+
+**The content.**
+
+* `pathSum_eq_iterate` --- the generic bridge.  For ANY symmetric kernel on ANY
+  finite type, the sum over space-time paths of
+  `A(first) * B(last) * (product of bond weights)` equals the matrix element
+  `<A, K^N B>`.  The definition side mentions no operator; the conclusion side
+  mentions nothing else.  Symmetry is needed at exactly one point: absorbing a
+  bond into the left observable.
+* `gibbsWeight_eq_dressed` --- **THE DRESSING IDENTITY.**  The honest
+  two-dimensional Gibbs weight (spatial factor at EVERY slice, time bonds
+  between consecutive slices) equals `sqrt(w(first)) * sqrt(w(last))` times the
+  path weight of the SYMMETRISED kernel.  Self-adjointness costs exactly two
+  boundary factors and NOTHING in the bulk.
+* `gibbsPathSum_eq_iterate`, `gibbsPartition_eq_iterate` --- hence every Gibbs
+  correlation of the spatial system is a matrix element of an iterated
+  SELF-ADJOINT transfer operator between boundary-dressed observables.
+* `symVacuum_exists` --- the operator the bridge lands on is the one papers 7-8
+  analysed.  A bridge landing on a DIFFERENT operator would have proved nothing
+  about the earlier papers, which is why this is stated rather than assumed.
+* `perp_invariant`, `iterate_perp`, `connected_decay`, `gibbs_connected_decay`
+  --- the fluctuation sector is invariant, and under an explicit contraction
+  hypothesis the connected two-point function decays geometrically in the time
+  separation.
+
+**THE HYPOTHESIS IS CARRIED, NOT DISCHARGED**, and this is the honest core.
+Papers 7-8 give a STRICT gap with NO MODULUS.  A strict inequality among
+finitely many eigenvalues does not by itself produce the OPERATOR-NORM bound a
+decay rate needs; converting one into the other requires the spectral maximum
+over the fluctuation sector together with the spectral decomposition that makes
+the norm equal to it, and none of that exists in this development.  No rate is
+derived here from the earlier papers, and **NOTHING UNIFORM IN `L`** is
+obtained or suggested --- with `r = r(L) -> 1` the bound is empty in the limit.
+This is the same missing piece the external evaluator of paper 8 identified as
+the spectral maximum; it is infrastructure, and it is still not built.
+
+**Non-vacuity audited (hard rule 3).**  `gapWitness_contracts`: for any unit
+vector and any `r >= 0`, the kernel `Om_i Om_j + r(delta_ij - Om_i Om_j)` is
+symmetric, fixes the vacuum, and contracts the fluctuation sector by EXACTLY
+`r` --- so the hypotheses are jointly satisfiable at every rate, including
+`0 < r < 1` where the conclusion is non-trivial.  `exists_nonzero_perp`: with
+two distinct states and a strictly positive vacuum the fluctuation sector holds
+a nonzero vector, so the decay theorem is not quantified over an empty set.
+
+**VERIFIED, not proved, and no theorem depends on it.**  A Lean proof
+guarantees the definitions are internally consistent; it does NOT guarantee
+they model what the prose says.  `scripts/probe_spatial_gibbs.py` recomputes
+both load-bearing identities by brute force from the Boltzmann weights, with no
+access to the formalisation, over ALL space-time configurations for `L <= 3`,
+`N <= 3`, with a configuration-dependent strictly positive spatial weight.
+Worst relative discrepancy **9.1e-16** --- machine precision.  This excludes the
+one failure mode a proof assistant cannot: *a formally correct theorem about the
+wrong definition.*  Recorded as a standing practice for bridge modules, where
+the risk is highest because the definitions are new rather than inherited.
+
+**Measured.**  Core **8429 jobs** (8428 + 1 --- the increment hard rule 7
+predicts when a MODULE joins the core, and the confirmation that `SpatialGibbs`
+is genuinely in it).  Oracle **2624 commands -> 2624 answers** (2621 distinct,
+the same three known duplicates), 23 axiom-free + 2601 with axioms, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  41 new declarations.  Paper:
+6pp, 14 permalinks, each verified against the BLOB AT THE ANCHOR COMMIT and
+again inside the compiled PDF after inflating its streams.
+
+**House note (proof engineering).**  The dressing identity combines three
+product identities, and rewriting them in sequence FAILS: the second rewrite
+consumes the subterm the third one needs.  They must be combined into a single
+equation first.  The failure is benign in kind --- a stuck goal, not a wrong
+theorem --- but the shape recurs whenever two truncations of one product appear
+on the same side, so it is recorded.
+
+**Unchanged.**  Reflection positivity is NOT addressed --- the bridge gives a
+self-adjoint operator and a positive measure, not Osterwalder--Schrader
+positivity.  NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct unchanged.
+Anchor `863e894c`.
+
+## Addendum 538 (2026-07-29, **O-2 v1.1: the normalised expectation is a RATIO, and now it is a theorem**)
+
+**The external evaluator found a real precision defect, and a loose end behind
+it.**  The v1.0 abstract said *every Gibbs two-point FUNCTION is a matrix
+element*.  What Corollary 3.4 identified was the UNNORMALISED numerator; the
+correlation the measure assigns divides by the partition function, so it is a
+RATIO of two matrix elements of the same operator.  Stating only the numerator
+left the word *correlation* doing work no theorem had done.
+
+**The loose end is the part worth recording.**  `gibbsCorr` --- the normalised
+quantity --- was DEFINED in the v1.0 module and no theorem ever mentioned it.
+A definition with no theorem about it is exactly where a paper's prose can
+drift away from its formalisation without any build ever failing: the module
+compiles, the oracle is clean, the counters are honest, and the abstract still
+claims something nothing states.  The reading that caught it came from outside.
+Rule: *a definition that no theorem mentions is a place where the prose can
+outrun the formalisation --- either state something about it or delete it.*
+
+**Fixed in both places.**  `gibbsCorr_eq_ratio_iterate` gives the expectation
+as `<sqrt(w)A, T^N sqrt(w)B> / <sqrt(w), T^N sqrt(w)>`;
+`gibbsCorr_denom_pos` gives strict positivity of the denominator, so the
+identity is not an artefact of division by zero.  The abstract now says
+*unnormalised Gibbs two-point SUM* for the numerator and states the ratio
+separately, and a new corollary plus a remark make the distinction explicit
+rather than leaving it to the reader.
+
+**Measured.**  Core **8429 jobs** (unchanged, and correct: theorems were added
+to an existing module, not a module to the core).  Oracle **2626 commands ->
+2626 answers** (2623 distinct, the same three known duplicates), 23 axiom-free
++ 2603 with axioms, zero `sorryAx`, zero nonstandard axioms, zero errors.  Both
+new endpoints answer `[propext, Classical.choice, Quot.sound]`.  Paper: 6pp, 16
+permalinks, verified against the blob at the anchor and inside the compiled PDF.
+
+Anchor `c4fa6a9e`.  Everything else unchanged: the contraction hypothesis is
+still NOT discharged, nothing uniform in `L`, reflection positivity untouched,
+Clay distance ~0 pct.
+
+## Addendum 539 (2026-07-29, **O-2 FROZEN at v1.1 --- and the continuation fixed**)
+
+The transfer-bridge paper is **frozen** at anchor `c4fa6a9e` / paper
+`dc2935eb`.  Any continuation is a NEW module and a NEW paper; this one is not
+reopened to absorb it.  The external preflight recorded no remaining objection
+after Addendum 538, and the one it had raised --- the numerator being called a
+correlation --- was removed at the source rather than reworded.
+
+**THE CONTINUATION, in the order it has to happen.**  The next work is NOT more
+bridge.  It is the operator-norm bound on the fluctuation sector, which is the
+single missing piece that both this paper and O-3j (paper 8) are blocked on:
+
+1. **At FIXED volume.**  Construct the spectrum of the symmetrised kernel as an
+   enumerated finite set, take `max |mu|/lambda` over the non-Perron
+   eigenvalues, and prove that this maximum IS the operator norm on the
+   orthogonal complement of the vacuum --- the spectral decomposition step, which
+   is the part that does not follow from finitely many strict inequalities.
+   Discharging this turns the hypothesis `r` of `connected_decay` into a
+   theorem, and simultaneously supplies the `exists eps > 0 forall mu` statement
+   that O-3j declined to fake.  ONE construction, TWO papers unblocked.
+2. **Uniformly in `L`, if at all.**  Only then does the question of whether
+   `r(L)` stays away from 1 become askable as a theorem.  The measured evidence
+   says it does NOT, outside the disordered region --- so the honest target is a
+   bound in an EXPLICIT high-temperature region, with the possibility that the
+   outcome is a wall rather than a bound.  Either outcome is publishable under
+   the tricotomy; neither is assumed here.
+
+**What must NOT be done**: adding further corollaries to the bridge.  The
+bridge is closed --- measure to operator, both directions of the correspondence
+stated, numerator and normalised expectation separated.  Extending it further
+would be the adjacent-theorem trap the charter names.
+
+Unchanged and standing: the contraction hypothesis is carried, not discharged;
+nothing uniform in `L`; reflection positivity untouched; NOT `hRpoly`, NOT the
+mass gap; Clay distance ~0 pct.
+
+## Addendum 540 (2026-07-29, **O-lane Paper 9 submitted; the Gibbs measure-to-transfer bridge becomes the live checkpoint**)
+
+The owner reports submission of *The Measure the Spectral Results Were About:
+a Machine-Checked Transfer Bridge for the Spatial Z_2 Slice* in Mathematics -
+Functional Analysis.  The public ai.viXra identifier is pending and is
+deliberately not inferred from submission order.  A fresh public-page check on
+2026-07-29 still ended at author-list item `[93]`,
+`ai.viXra.org:2607.0078`.
+
+The submitted edition is v1.1 at paper commit
+`dc2935eb7f4b299aada889c39a119d415b533951`, with formal Lean anchor
+`c4fa6a9e6769496a7270981ef0908b2d644c230b`.  The 6-page PDF has 86,847 bytes
+and SHA-256
+`92c8235c54c8c6cafa7325d1a126f8b962ea486ac9e95d2e0872ec25969ce243`;
+the TeX SHA-256 is
+`abebc74cf56a2feec5efd157a5be6bd8e364516aa220b8df6f7f3b05b2fb0bbe`.
+The PDF at the owner's submission path is byte-identical to the repository
+artifact.  Exact fields and the permanent record live at
+`papers/spatial-gibbs/SUBMISSION-INFO.txt` and
+`docs/O-LANE-SUBMISSION-SPATIAL-GIBBS-20260729.md`.
+
+The theorem boundary is unchanged from Addenda 537--539.  The finite Gibbs
+weight is identified with the symmetrised transfer path under boundary
+dressing; the unnormalised two-point sum becomes an iterated self-adjoint
+matrix element; `gibbsCorr_eq_ratio_iterate` gives the normalised expectation
+as a ratio and `gibbsCorr_denom_pos` proves its denominator positive.
+Fluctuation-sector invariance and conditional connected decay are proved.
+The contraction hypothesis is explicit and remains undischarged.  No
+extent-uniform rate, reflection positivity, `SU(N)`, continuum, mass-gap, or
+Clay conclusion is claimed.
+
+The canonical live checkpoint is anchor `c4fa6a9e`: full core build **8429
+jobs**, oracle **2626 commands -> 2626 answers** (2603 with axiom dependencies
+and 23 axiom-free), axioms exactly
+`{propext, Classical.choice, Quot.sound}`, zero `sorryAx`, zero project axioms,
+and zero errors.  The independent brute-force probe for `L <= 3`, `N <= 3` is
+recorded as verified numerical evidence only; no theorem depends on it.

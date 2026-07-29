@@ -999,3 +999,33 @@ uniform in the spatial extent.  The reported collapse of finite-dimensional
 ratios is measured and unproved.  No `SU(N)`, continuum, or Clay conclusion is
 claimed.  The next analytic target therefore remains a non-vacuum bound under
 an explicit regime hypothesis, or a precise no-go theorem.
+
+## AMENDMENT 14 (2026-07-29) — PAPER 9 SUBMITTED; THE SPATIAL GIBBS MEASURE-TO-TRANSFER BRIDGE IS NOW EXPLICIT
+
+The owner reports submission of *The Measure the Spectral Results Were About:
+a Machine-Checked Transfer Bridge for the Spatial Z_2 Slice*, v1.1.  The
+public ai.viXra identifier is pending and is not inferred from nearby records.
+
+The frozen paper is `papers/spatial-gibbs/spatial_gibbs.pdf` at paper commit
+`dc2935eb`, SHA-256
+`92c8235c54c8c6cafa7325d1a126f8b962ea486ac9e95d2e0872ec25969ce243`.
+Its formal anchor is `c4fa6a9e`; the normalised ratio and positive-denominator
+endpoints are `gibbsCorr_eq_ratio_iterate` and `gibbsCorr_denom_pos` in
+`YangMills/OS/SpatialGibbs.lean`.  The exact fields, artifact hashes, and scope
+boundary are recorded in
+`docs/O-LANE-SUBMISSION-SPATIAL-GIBBS-20260729.md`.
+
+**Closed by theorem:** the honest finite two-dimensional Gibbs weight is
+exactly the symmetrised-kernel path weight with boundary dressing; its
+unnormalised two-point sum is an iterated self-adjoint transfer-matrix
+element; its normalised expectation is the ratio of two such elements with
+strictly positive denominator; and the fluctuation sector is invariant.
+Connected decay is proved only under an explicit contraction hypothesis.
+
+**Not closed:** Paper 8's pointwise strict spectral separation has not been
+converted into the operator-norm contraction required by that decay theorem.
+There is no quantitative modulus, nothing uniform in the spatial extent, and
+no reflection-positivity theorem in this paper.  No `SU(N)`, continuum,
+mass-gap, or Clay conclusion is claimed.  The next construction remains the
+fixed-volume spectral maximum/operator-norm bridge, followed—only if the
+mathematics permits—by a regime-explicit uniform estimate.

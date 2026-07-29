@@ -31,12 +31,12 @@ See
 [`docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md`](docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md).
 
 **Live-state snapshot updated:** 2026-07-29.  **Latest recorded verification
-checkpoint:** `ac897963` (on `main`), with `lake build YangMillsCore` green at
-**8428 jobs** and 2,583 oracle answers.  The only axiom names in the complete
+checkpoint:** `c4fa6a9e` (on `main`), with `lake build YangMillsCore` green at
+**8429 jobs** and 2,626 oracle answers.  The only axiom names in the complete
 oracle transcript are `propext`, `Classical.choice`, and `Quot.sound`; there are
 zero `sorryAx` and zero project axioms.  See
-[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addenda 533 and
-536.
+[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addenda 538 and
+539.
 
 **Recent public papers checked (2026-07-29).**  Author-list entries `[89]` to
 `[93]` are public as ai.viXra `2607.0070`, `2607.0073`, `2607.0075`,
@@ -53,7 +53,13 @@ Uniform*, is submitted by owner report at paper `b03766bd` and Lean anchor
 `ac897963`, with public ID pending.  Its terminal theorem proves strict
 separation of all non-Perron complex eigenvalues at every fixed finite extent.
 It provides no quantitative modulus and nothing uniform in the extent, and
-does not remove the projective-metric volume obstruction.
+does not remove the projective-metric volume obstruction.  Paper 9, *The
+Measure the Spectral Results Were About*, is submitted by owner report at
+paper `dc2935eb` and Lean anchor `c4fa6a9e`, with public ID pending.  It proves
+the exact spatial Gibbs weight-to-transfer dressing, the normalised
+expectation ratio and denominator positivity, and conditional connected decay.
+The contraction hypothesis remains explicit and undischarged; reflection
+positivity and extent-uniform decay remain outside the paper.
 
 **PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
 is paper commit `193bb675`: all 24 theorem-map names link to the immutable
@@ -490,7 +496,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8428 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8429 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.

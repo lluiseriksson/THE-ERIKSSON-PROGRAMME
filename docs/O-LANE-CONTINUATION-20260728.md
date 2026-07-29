@@ -12,8 +12,12 @@
 > at every finite extent.  Paper 8 then closes strict peripheral separation
 > for the whole finite spectrum at Lean anchor `ac897963` and paper commit
 > `b03766bd`; it was submitted by the owner on 2026-07-29 with public ID
-> pending.  This is strict pointwise-in-extent separation only: S-3 remains
-> open and must carry an explicit regime hypothesis.  This file remains the
+> pending.  Paper 9 then supplies the missing finite Gibbs
+> measure-to-transfer bridge at Lean anchor `c4fa6a9e` and paper commit
+> `dc2935eb`; it too was submitted by the owner on 2026-07-29 with public ID
+> pending.  Its connected-decay theorem carries an explicit contraction
+> hypothesis and does not derive a rate from Paper 8.  Thus S-3 remains open
+> and must carry an explicit regime hypothesis.  This file remains the
 > preregistered design record; its original ladder is historical, not a claim
 > made by the submitted papers.
 
