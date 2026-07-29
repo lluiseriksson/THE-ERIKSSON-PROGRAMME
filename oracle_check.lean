@@ -2903,3 +2903,4 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.coupled_gap_of_sourceWeight
 #print axioms YangMills.OS.sourceWeighted_eq_sym
 #print axioms YangMills.OS.coupled_eigenvalue_real
+#print axioms YangMills.OS.coupled_gap_all_eigenvalues

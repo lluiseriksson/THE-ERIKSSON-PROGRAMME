@@ -473,4 +473,54 @@ theorem coupled_eigenvalue_real {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
   rw [hstep, hxE σ, hy]
   field_simp
 
+/-- **THE HEADLINE, AS ONE ENDPOINT.**  At every extent, for every strictly
+positive source weight: every eigenvalue of the coupled transfer operator, real
+or complex, other than the Perron eigenvalue, is strictly smaller in modulus.
+
+This composes `coupled_eigenvalue_real` with `coupled_gap_of_sourceWeight`.  It
+is stated separately so that the paper's headline has a single declaration to
+point at, rather than asking the reader to assemble two. -/
+theorem coupled_gap_all_eigenvalues {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    {v : (Fin L → Fin 2) → ℝ} (hv : ∀ σ, 0 < v σ) {lam : ℝ}
+    (hvE : ∀ σ, ∑ τ : Fin L → Fin 2,
+      sourceWeightedKernelL w β σ τ * v τ = lam * v σ)
+    {x : (Fin L → Fin 2) → ℂ} {σ₁ : Fin L → Fin 2} (hx : x σ₁ ≠ 0) {mu : ℂ}
+    (hxE : ∀ σ, ∑ τ : Fin L → Fin 2,
+      ((sourceWeightedKernelL w β σ τ : ℝ) : ℂ) * x τ = mu * x σ)
+    (hne : mu ≠ (lam : ℂ)) :
+    ‖mu‖ < lam := by
+  classical
+  have hconj := coupled_eigenvalue_real hw β hx hxE
+  have hmuim : mu.im = 0 := by
+    have h := congrArg Complex.im hconj
+    simp only [Complex.conj_im] at h
+    linarith
+  have hmur : mu = ((mu.re : ℝ) : ℂ) := by
+    apply Complex.ext <;> simp [hmuim]
+  have hrne : mu.re ≠ lam := by
+    intro hc
+    exact hne (by rw [hmur, hc])
+  have hnorm : ‖mu‖ = |mu.re| := by
+    conv_lhs => rw [hmur]
+    rw [Complex.norm_real, Real.norm_eq_abs]
+  -- with the eigenvalue real, both parts of the eigenvector are real eigenvectors
+  have hre : ∀ σ, ∑ τ : Fin L → Fin 2,
+      sourceWeightedKernelL w β σ τ * (x τ).re = mu.re * (x σ).re := by
+    intro σ
+    have h := congrArg Complex.re (hxE σ)
+    rw [Complex.re_sum] at h
+    simpa [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, hmuim] using h
+  have himE : ∀ σ, ∑ τ : Fin L → Fin 2,
+      sourceWeightedKernelL w β σ τ * (x τ).im = mu.re * (x σ).im := by
+    intro σ
+    have h := congrArg Complex.im (hxE σ)
+    rw [Complex.im_sum] at h
+    simpa [Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, hmuim] using h
+  rw [hnorm]
+  by_cases hzr : (x σ₁).re = 0
+  · have hzi : (x σ₁).im ≠ 0 := fun h => hx (Complex.ext hzr h)
+    exact abs_lt_of_ne_perron (sourceWeightedKernelL_pos hw β) hv hvE hzi himE hrne
+  · exact abs_lt_of_ne_perron (sourceWeightedKernelL_pos hw β) hv hvE hzr hre hrne
+
 end YangMills.OS
