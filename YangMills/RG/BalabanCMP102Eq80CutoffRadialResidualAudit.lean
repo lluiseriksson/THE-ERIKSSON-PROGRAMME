@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80CutoffRadialResidual
+
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_smul
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_le_of_mem_segment_zero
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_eq80DomainProjection_segment_le_threshold_of_cutoffFactor_ne_zero
+#print axioms YangMills.RG.abs_half_inner_cmp116RadialTaylorResidualOperator_eq80DomainProjection_le_of_cutoff

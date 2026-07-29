@@ -59,7 +59,7 @@ Its current status against the CMP102 lane is:
 | positivity/smallness scalars | many scalar lemmas exist; no complete source record |
 | `outer_bound` | no CMP102-to-contour theorem |
 | `inner_bound` | no CMP102-to-contour theorem |
-| contour `potential` summand | **partially constructed**: the complete CMP102 equation-(80) radial operator is installed, and its fixed quadratic part `Q₈₀(0)` is now separated exactly from the genuine field-dependent residual `Q₈₀(B) - Q₈₀(0)`; the Lemma-1 residual family is separately domain-indexed; the remaining source summands and (1.36) are open |
+| contour `potential` summand | **partially constructed**: the complete CMP102 equation-(80) radial operator is installed, and its fixed quadratic part `Q₈₀(0)` is now separated exactly from the genuine field-dependent residual `Q₈₀(B) - Q₈₀(0)`; the Lemma-1 residual family is separately domain-indexed; the literal cutoff now keeps every radial point of each selected domain projection inside the source small-field ball; the physical third-jet decay, remaining source summands, and (1.36) are open |
 | `interaction_bound` | **open**: its terminal residual is `cmp116Eq220ResidualDomainWeight`, so it requires a concrete `V''_k` satisfying (1.36); closing the `Q_Y` branch through (1.43)/(2.19) does not discharge this field |
 | `source_bound` | operator/source bounds exist parametrically; no installed contour source |
 | `domain_nonempty`, `domain_subset` | geometric ingredients exist; no source-record construction |
@@ -391,11 +391,34 @@ where `bondSupport(W)` requires both physical endpoints to lie in `W`.
 Lean proves `bondSupport(W) ⊆ Y0(D)` for every `W ∈ D`, and combines this
 with the cutoff theorem to obtain the source sup-norm bound on the field
 projected to `bondSupport(W)`.  Thus the geometric inclusion and the norm
-transport are now physical end to end.  The remaining locality statement is
-functional rather than set-theoretic: the connected equation-(80) activity
-must be shown unchanged when its ambient field is replaced by that bond
-projection.  Only after that theorem can the domain-decaying physical
-third-jet estimate be installed as (1.36).
+transport are now physical end to end.
+
+An audit of the literal connected-activity definition rules out one tempting
+but unjustified next step.  The current constructor accepts global functions
+`D`, `D₃`, and `V₀`; its type supplies no locality certificate for them.
+Consequently an equality asserting that the activity is unchanged after
+projecting the ambient field to `bondSupport(W)` is not derivable from the
+current interface.  Such an equality may only be introduced after the
+source constructors of those functions prove the required locality.  It
+must not be treated as a generic property of the FTC decomposition.
+
+`BalabanCMP102Eq80CutoffRadialResidual.lean` takes the source-safe route that
+is already available.  It proves exact homogeneity of
+`cmp98SourceFieldSupNorm`, proves that its closed balls are star-shaped, and
+therefore derives, on nonzero literal cutoff support,
+
+```text
+X in segment(0, projection_bondSupport(W)(B))
+  -> cmp98SourceFieldSupNorm X <= threshold.
+```
+
+The terminal theorem consumes a third-jet estimate required only on this
+small-field ball and feeds it directly into the exact `Lambda/6` cubic
+radial-residual estimate.  Thus no global-in-the-Gaussian-coordinate
+third-jet premise remains in this bridge.  The analytic frontier is now the
+source construction of the domain-decaying third-jet bound on that ball
+(or, equivalently, a source locality theorem strong enough to derive it),
+followed by its scalar comparison with equation (1.36).
 
 The final assembly must also reconcile three domain index layers:
 
