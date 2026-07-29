@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq222CutoffSupNormTransport
+
+#print axioms YangMills.RG.norm_physicalBondProjection_cmp116SourcePhysicalCoordinateCochain_le_threshold
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_physicalBondProjection_le_threshold
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_physicalBondProjection_le_threshold_of_cutoffFactor_ne_zero

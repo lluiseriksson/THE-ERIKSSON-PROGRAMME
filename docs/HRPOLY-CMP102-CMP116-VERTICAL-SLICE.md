@@ -356,6 +356,27 @@ to the norm bound on the assembled `B'` used by (1.36), including whatever
 collar/support relation is needed between `Y0`, `Z0`, and the domain `Y`.
 This does not yet move the terminal `interaction_bound` counter.
 
+`BalabanCMP116Eq222CutoffSupNormTransport.lean` closes the norm-transport
+part of that bridge.  For every physical bond carrier `S ⊆ Y0`, nonvanishing
+of the literal signed cutoff implies
+
+```text
+cmp98SourceFieldSupNorm
+  (physicalBondProjection S (cmp116SourcePhysicalCoordinateCochain b))
+    ≤ threshold.
+```
+
+This uses the already certified `PiLp ∞` realization of the source norm, so
+there is no ambient-volume or support-cardinality loss.  It also answers the
+unbounded-`b` objection precisely: outside cutoff support the integrand is
+zero, while on cutoff support every localized field whose carrier lies in
+`Y0` remains in the printed small-field ball.  The theorem does not claim
+that the entire interior-bond carrier of `Z0` lies in `Y0`; the remaining
+source obligation is the locality dictionary showing that each equation-(80)
+residual indexed by `Y` reads a carrier `S(Y) ⊆ Y0`.  Until that dictionary
+and the physical third-jet decay are installed, `interaction_bound` remains
+at `0/5`.
+
 The final assembly must also reconcile three domain index layers:
 
 ```text
