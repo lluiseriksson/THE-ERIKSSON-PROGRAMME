@@ -768,12 +768,19 @@ composite map is accepted as a premise.
 
 The first physical transport is now closed.
 `BalabanCMP102AmbientOrientedEdgeThirdJetBound.lean` proves that the literal
-oriented edge `exp(Z_b) U_b` has third derivative bounded by the generated
-exponential strict-ball budget.  Bond evaluation is contractive, right
+oriented edge `exp(Z_b) U_b` has every jet through order three bounded by one
+generated strict-ball budget.  Bond evaluation is contractive, right
 multiplication by the unitary background has norm at most one, and the
 reverse-orientation conjugate transpose is also contractive.  Hence no
-edge-level third-jet certificate remains.  The next producer is the
-ordered-product jet for a complete Wilson line.
+edge-level third-jet certificate remains.
+
+`BalabanCMP102AmbientWilsonLineThirdJetBound.lean` now propagates those
+source-generated jets through the complete noncommutative ordered product.
+Matrix multiplication is bundled as a contractive real bilinear map and the
+quantitative Leibniz rule gives one recursive budget for orders zero through
+three.  Its only geometric input is the contour length; no ambient-volume
+cardinality enters.  The next producer is the four-contour/logarithmic
+average jet used by the literal nonlinear block.
 
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete

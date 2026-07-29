@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102AmbientWilsonLineThirdJetBound
+
+#print axioms YangMills.RG.norm_cmp102AmbientMatrixMulCLM_le_one
+#print axioms YangMills.RG.cmp102AmbientWilsonLineOrderThreeJetBudget
+#print axioms YangMills.RG.cmp102AmbientWilsonLineOrderThreeJetBudget_nonneg
+#print axioms YangMills.RG.norm_iteratedFDeriv_cmp98AmbientWilsonLineMatrix_le_orderThreeBudget

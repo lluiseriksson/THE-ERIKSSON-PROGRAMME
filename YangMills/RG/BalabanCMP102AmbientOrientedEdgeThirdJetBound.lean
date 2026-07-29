@@ -3,7 +3,8 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP102AmbientOrientedEdgeFDerivBound
+import YangMills.RG.BalabanCMP102AmbientWilsonLineFDerivBound
+import YangMills.RG.LocalSecondJetFromDerivativeLipschitz
 import YangMills.RG.NearLogExpThirdDerivativeChangeOriginBound
 
 /-!
@@ -244,6 +245,89 @@ theorem norm_iteratedFDeriv_three_ambientOrientedEdgeMatrix_le
         gcongr
         exact norm_matrixConjTransposeCLM_le_one
       _ = _ := one_mul _
+
+/-- The second edge jet is generated from the already audited Lipschitz
+variation of the first derivative on every strict radius ball. -/
+theorem norm_iteratedFDeriv_two_ambientOrientedEdgeMatrix_le
+    (U : PhysicalGaugeBackground d N Nc)
+    (Z : PhysicalAmbientMatrixTangent d N Nc)
+    (e : ConcreteEdge d N) {r : ℝ}
+    (hZ : ‖Z (physicalBondOfEdge e)‖ < r) :
+    ‖iteratedFDeriv ℝ 2
+        (fun W => ambientOrientedEdgeMatrix U W e) Z‖ ≤
+      expSecondDerivativeBudget r := by
+  let b := physicalBondOfEdge e
+  have hr0 : 0 ≤ r :=
+    (norm_nonneg (Z b)).trans hZ.le
+  have hcoord :
+      ContinuousAt
+        (fun W : PhysicalAmbientMatrixTangent d N Nc =>
+          ‖W b‖) Z :=
+    (physicalAmbientBondEvalCLM
+      (Nc := Nc) b).continuous.continuousAt.norm
+  have hinside :
+      ∀ᶠ W : PhysicalAmbientMatrixTangent d N Nc in nhds Z,
+        ‖W b‖ < r :=
+    hcoord (Iio_mem_nhds hZ)
+  apply norm_iteratedFDeriv_two_le_of_eventually_fderiv_lipschitz
+    (fun W => ambientOrientedEdgeMatrix U W e) Z
+      (expSecondDerivativeBudget_nonneg r hr0)
+  filter_upwards [hinside] with W hW
+  exact norm_fderiv_ambientOrientedEdgeMatrix_sub_le
+    U W Z e hW.le hZ.le
+
+/-- A single source-generated radius dominating the value and all first
+three edge jets. -/
+def cmp102AmbientEdgeOrderThreeJetBudget (r : NNReal) : ℝ :=
+  max (cmp102AmbientEdgeValueBudget r)
+    (max (expDerivativeBudget r)
+      (max (expSecondDerivativeBudget r)
+        (expThirdDerivativeBallBudget
+          (A := Matrix (Fin Nc) (Fin Nc) ℂ) r)))
+
+set_option maxHeartbeats 800000 in
+/-- Every jet of one oriented edge through order three is controlled by the
+single explicit edge budget. -/
+theorem norm_iteratedFDeriv_ambientOrientedEdgeMatrix_le_orderThreeBudget
+    {M N' : ℕ} [NeZero M] [NeZero N']
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (Z : PhysicalAmbientMatrixTangent d (M * N') Nc)
+    (e : ConcreteEdge d (M * N')) (r : NNReal)
+    (hZ : ‖Z (physicalBondOfEdge e)‖ < r)
+    (i : ℕ) (hi : i ≤ 3) :
+    ‖iteratedFDeriv ℝ i
+        (fun W => ambientOrientedEdgeMatrix U W e) Z‖ ≤
+      cmp102AmbientEdgeOrderThreeJetBudget
+        (Nc := Nc) r := by
+  interval_cases i
+  · have hvalue :=
+      norm_ambientOrientedEdgeMatrix_le U Z e r.2 hZ.le
+    calc
+      ‖iteratedFDeriv ℝ 0
+          (fun W => ambientOrientedEdgeMatrix U W e) Z‖ =
+          ‖ambientOrientedEdgeMatrix U Z e‖ :=
+        norm_iteratedFDeriv_zero
+      _ ≤ _ := hvalue.trans (le_max_left _ _)
+  · calc
+      ‖iteratedFDeriv ℝ 1
+          (fun W => ambientOrientedEdgeMatrix U W e) Z‖ =
+          ‖fderiv ℝ
+            (fun W => ambientOrientedEdgeMatrix U W e) Z‖ :=
+        norm_iteratedFDeriv_one _
+      _ ≤ _ :=
+        (norm_fderiv_ambientOrientedEdgeMatrix_le
+          U Z e hZ.le).trans
+            ((le_max_left _ _).trans (le_max_right _ _))
+  · exact
+      (norm_iteratedFDeriv_two_ambientOrientedEdgeMatrix_le
+        U Z e hZ).trans
+        ((le_max_left _ _).trans
+          ((le_max_right _ _).trans (le_max_right _ _)))
+  · exact
+      (norm_iteratedFDeriv_three_ambientOrientedEdgeMatrix_le
+        U Z e r (by exact_mod_cast hZ.le)).trans
+        ((le_max_right _ _).trans
+          ((le_max_right _ _).trans (le_max_right _ _)))
 
 end
 
