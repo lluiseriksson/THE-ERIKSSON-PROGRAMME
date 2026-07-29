@@ -27891,3 +27891,51 @@ with axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
 the only substantive gap.  `specRatio(L) -> 1` outside the disordered region, so
 the gap is a property of the result chosen and not of the technique.  Reflection
 positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 544 (2026-07-29, **S block v1.7: the paper printed a theorem without
+the hypothesis its Lean statement carries, and the reproducibility table did not
+add up**)
+
+**Context.**  Eighth external reading.  Two residues, both real, both in the
+manuscript rather than in the formalisation.
+
+**1. Theorem 8.2 was printed WITHOUT its nontriviality hypothesis.**  Theorem 8.1
+says "suppose the state space has two distinct points"; Theorem 8.2, immediately
+after, asserted that the set of norm ratios has a greatest element and said
+nothing about the state space.  `specGap_isGreatest` in Lean has `(hne : i₀ ≠ i₁)`,
+so the formalisation was never wrong --- the printed statement was.
+
+**And it is not an inherited-context convenience.**  With fewer than two states
+there is no nonzero fluctuation observable at all, so the set of ratios is
+**empty**, and an empty set has no greatest element.  The theorem as printed was
+therefore FALSE, not merely imprecise.  Fixed, with that reason given in the
+paper rather than left to the reader.
+
+Note the shape: the previous reading (543) found a statement WEAKER than its
+proof; this one found a statement STRONGER than its proof.  Both are the same
+defect --- the printed statement drifting from the machine-checked one --- and
+neither is visible to a green build.  The name guard added in 541 does not see
+either, because both are about quantifiers rather than identifiers.
+
+**2. The reproducibility table did not add up.**  It printed 2672 commands, 2646
+with axiom dependencies, 23 axiom-free; `2646 + 23 = 2669`.  The missing three
+are the known duplicate commands, and that explanation lived only in the ledger.
+A table a reader is meant to check has to be checkable without the ledger, so it
+now prints the distinct count and the duplicate count as their own rows.
+
+**3. Terminology.**  "Rayleigh ratios" replaced by "norm ratios" throughout: a
+Rayleigh quotient is `⟪u, Ku⟫ / ‖u‖²`, which is a different number from
+`‖Ku‖ / ‖u‖`.  The module docstring is corrected too, since it introduced the
+term.
+
+**Measured.**  Core **8430 jobs** (unchanged; the only Lean change is a
+docstring).  Oracle **2672 commands -> 2672 answers** (2669 distinct, three
+known duplicates), 23 axiom-free + 2646 with axiom dependencies, zero `sorryAx`,
+zero nonstandard axioms, zero errors.  **46** declarations in the module,
+all 46 in the oracle list.  `check_module_prose.py`: OS lane 18 modules,
+0 findings.
+
+**Still not proved.**  Anything uniform in the extent --- unchanged, and the only
+substantive gap.  Reflection positivity untouched.  Clay ~0 pct.

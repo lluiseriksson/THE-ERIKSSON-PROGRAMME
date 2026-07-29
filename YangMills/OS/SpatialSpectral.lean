@@ -920,9 +920,13 @@ theorem exists_attaining_fluctuation (hpos : ∀ i j, 0 < K i j)
     rw [hact, eucNorm_smul, hgap]
 
 /-- **`specGap` IS the restricted operator norm**, said about an object rather
-than about two separate inequalities: the set of Rayleigh ratios
-`‖Ku‖ / ‖u‖` over nonzero fluctuation observables has a **greatest element**,
-and it is `specGap`.
+than about two separate inequalities: the set of norm ratios `‖Ku‖ / ‖u‖` over
+nonzero fluctuation observables has a **greatest element**, and it is `specGap`.
+
+(Norm ratios, not *Rayleigh* quotients: those are `⟪u, Ku⟫ / ‖u‖²`, a different
+number.)  The two distinct states are needed here for the same reason as in
+`exists_attaining_fluctuation`, and for one more: with fewer, the set is EMPTY,
+and an empty set has no greatest element.
 
 `IsGreatest` is deliberately weaker machinery than a `Submodule` plus a
 `ContinuousLinearMap` plus `‖·‖`: it says the supremum exists and is attained,
