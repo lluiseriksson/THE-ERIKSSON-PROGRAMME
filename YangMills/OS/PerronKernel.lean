@@ -199,7 +199,7 @@ theorem isCompact_simplexSet : IsCompact (simplexSet ι) := by
 
 /-- **A strictly positive eigenvector exists.** -/
 theorem exists_pos_eigenvector (A : ι → ι → ℝ) (hA : ∀ i j, 0 < A i j) :
-    ∃ (v : ι → ℝ) (lam : ℝ), (∀ i, 0 < v i) ∧ 0 < lam ∧
+    ∃ (v : ι → ℝ) (lam : ℝ), (∀ i, 0 < v i) ∧ (∑ i, v i = 1) ∧ 0 < lam ∧
       ∀ i, ∑ j, A i j * v j = lam * v i := by
   classical
   obtain ⟨pmax, -, hmaxp⟩ :=
@@ -346,7 +346,38 @@ theorem exists_pos_eigenvector (A : ι → ι → ℝ) (hA : ∀ i j, 0 < A i j)
     have h1 := hApos i
     rw [hEq i] at h1
     nlinarith [h1, hlampos, hvnn i]
-  exact ⟨p₀.2, p₀.1, hvpos, hlampos, hEq⟩
+  exact ⟨p₀.2, p₀.1, hvpos, hvsum, hlampos, hEq⟩
+
+/-! ### §3b  The normalised transfer operator fixes the vacuum -/
+
+/-- The kernel divided by its own eigenvalue: the transfer operator for which
+the Perron vector is a genuine fixed point. -/
+noncomputable def normalizedKernel (A : ι → ι → ℝ) (lam : ℝ) (i j : ι) : ℝ :=
+  A i j / lam
+
+/-- **`T Ω = Ω`.**  Companion papers obtained the vacuum from the property that
+the *uniform* vector is fixed by the normalised kernel, and O-3f proved that
+property FAILS once a spatial coupling is present.  Here the same equation holds
+again --- for the Perron vector rather than the uniform one. -/
+theorem normalizedKernel_fixes_eigenvector {A : ι → ι → ℝ} {v : ι → ℝ} {lam : ℝ}
+    (hlam : lam ≠ 0) (hvE : ∀ i, ∑ j, A i j * v j = lam * v i) :
+    ∀ i, ∑ j, normalizedKernel A lam i j * v j = v i := by
+  intro i
+  unfold normalizedKernel
+  have hsplit : ∑ j, A i j / lam * v j = (∑ j, A i j * v j) / lam := by
+    rw [Finset.sum_div]
+    exact Finset.sum_congr rfl fun j _ => by ring
+  rw [hsplit, hvE i]
+  field_simp
+
+/-- **The normalised vacuum, packaged.**  A strictly positive `Ω` with
+`∑ Ω = 1` fixed by the normalised transfer operator. -/
+theorem exists_normalized_vacuum (A : ι → ι → ℝ) (hA : ∀ i j, 0 < A i j) :
+    ∃ (Om : ι → ℝ) (lam : ℝ), (∀ i, 0 < Om i) ∧ (∑ i, Om i = 1) ∧ 0 < lam ∧
+      ∀ i, ∑ j, normalizedKernel A lam i j * Om j = Om i := by
+  obtain ⟨v, lam, hvpos, hvsum, hlampos, hvE⟩ := exists_pos_eigenvector A hA
+  exact ⟨v, lam, hvpos, hvsum, hlampos,
+    normalizedKernel_fixes_eigenvector (ne_of_gt hlampos) hvE⟩
 
 end PositiveKernel
 
@@ -370,9 +401,22 @@ elementary route stops producing: it was never absent, only unavailable to that
 route. -/
 theorem vacuum_exists_of_sourceWeight {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hw : ∀ σ, 0 < w σ) (β : ℝ) :
-    ∃ (v : (Fin L → Fin 2) → ℝ) (lam : ℝ), (∀ σ, 0 < v σ) ∧ 0 < lam ∧
+    ∃ (v : (Fin L → Fin 2) → ℝ) (lam : ℝ), (∀ σ, 0 < v σ) ∧ (∑ σ, v σ = 1) ∧
+      0 < lam ∧
       ∀ σ, ∑ τ : Fin L → Fin 2, sourceWeightedKernelL w β σ τ * v τ = lam * v σ :=
   exists_pos_eigenvector _ (sourceWeightedKernelL_pos hw β)
+
+/-- **THE NORMALISED VACUUM AT EVERY SPATIAL EXTENT.**  `T Ω = Ω` with `Ω > 0`
+and `∑ Ω = 1`, for every `L` and every strictly positive source weight.  O-3f
+proved this equation false for the *uniform* `Ω` as soon as a coupling is
+present; it is true again for the Perron `Ω`, at every extent. -/
+theorem normalized_vacuum_of_sourceWeight {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) :
+    ∃ (Om : (Fin L → Fin 2) → ℝ) (lam : ℝ), (∀ σ, 0 < Om σ) ∧ (∑ σ, Om σ = 1) ∧
+      0 < lam ∧
+      ∀ σ, ∑ τ : Fin L → Fin 2,
+        normalizedKernel (sourceWeightedKernelL w β) lam σ τ * Om τ = Om σ :=
+  exists_normalized_vacuum _ (sourceWeightedKernelL_pos hw β)
 
 /-- **Unique up to scale, with a common eigenvalue.** -/
 theorem vacuum_unique_of_sourceWeight {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
@@ -408,9 +452,19 @@ theorem spatialWeightRing_pos (γ : ℝ) {L : ℕ} (σ : Fin (L + 1) → Fin 2) 
 
 /-- **The concrete coupled slice, at every extent, has its vacuum.** -/
 theorem coupled_ring_vacuum_exists (β γ : ℝ) (L : ℕ) :
-    ∃ (v : (Fin (L + 1) → Fin 2) → ℝ) (lam : ℝ), (∀ σ, 0 < v σ) ∧ 0 < lam ∧
+    ∃ (v : (Fin (L + 1) → Fin 2) → ℝ) (lam : ℝ), (∀ σ, 0 < v σ) ∧
+      (∑ σ, v σ = 1) ∧ 0 < lam ∧
       ∀ σ, ∑ τ : Fin (L + 1) → Fin 2,
         sourceWeightedKernelL (spatialWeightRing γ) β σ τ * v τ = lam * v σ :=
   vacuum_exists_of_sourceWeight (spatialWeightRing_pos γ) β
+
+/-- **And the ring slice has its normalised vacuum, at every extent.** -/
+theorem coupled_ring_normalized_vacuum (β γ : ℝ) (L : ℕ) :
+    ∃ (Om : (Fin (L + 1) → Fin 2) → ℝ) (lam : ℝ), (∀ σ, 0 < Om σ) ∧
+      (∑ σ, Om σ = 1) ∧ 0 < lam ∧
+      ∀ σ, ∑ τ : Fin (L + 1) → Fin 2,
+        normalizedKernel (sourceWeightedKernelL (spatialWeightRing γ) β) lam σ τ
+          * Om τ = Om σ :=
+  normalized_vacuum_of_sourceWeight (spatialWeightRing_pos γ) β
 
 end YangMills.OS

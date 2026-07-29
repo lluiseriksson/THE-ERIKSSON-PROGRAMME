@@ -2870,11 +2870,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.simplexSet_le_one
 #print axioms YangMills.OS.isCompact_simplexSet
 #print axioms YangMills.OS.exists_pos_eigenvector
+#print axioms YangMills.OS.normalizedKernel
+#print axioms YangMills.OS.normalizedKernel_fixes_eigenvector
+#print axioms YangMills.OS.exists_normalized_vacuum
 #print axioms YangMills.OS.sourceWeightedKernelL
 #print axioms YangMills.OS.sourceWeightedKernelL_pos
 #print axioms YangMills.OS.vacuum_exists_of_sourceWeight
+#print axioms YangMills.OS.normalized_vacuum_of_sourceWeight
 #print axioms YangMills.OS.vacuum_unique_of_sourceWeight
 #print axioms YangMills.OS.vacuum_spectral_radius_of_sourceWeight
 #print axioms YangMills.OS.spatialWeightRing
 #print axioms YangMills.OS.spatialWeightRing_pos
 #print axioms YangMills.OS.coupled_ring_vacuum_exists
+#print axioms YangMills.OS.coupled_ring_normalized_vacuum
