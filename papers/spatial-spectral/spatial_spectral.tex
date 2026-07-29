@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{4ceb3f7c67b906f2a95f1bd5d193b49a86b6e9af}
+\newcommand{\anchor}{bd86ee2eeff8c064cbe1322526ed40a3de0dca90}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -55,10 +55,17 @@ eigenvalues different from the Perron eigenvalue $\lambda$, and prove
 $\mathrm{specGap} < \lambda$.  We then prove the operator bound: for every
 observable $u$ orthogonal to the Perron vector,
 $\|Ku\| \le \mathrm{specGap}\cdot\|u\|$.  That is exactly the hypothesis the
-bridge paper carried, so its decay theorem becomes unconditional: at every
-finite extent, every $\beta$ and every strictly positive source weight, the
-unnormalised Gibbs two-point sum of a dressed fluctuation observable is bounded
-by $\mathrm{specGap}^{N}$ times a constant, with no carried hypothesis.
+bridge paper carried, so its bound becomes unconditional.
+
+\textbf{And a warning we state before anyone else has to.}  $\mathrm{specGap}
+<\lambda$ is \emph{not} $\mathrm{specGap}<1$: the kernel is unnormalised, so
+both are typically far above one and $\mathrm{specGap}^{N}$ \emph{grows}.  On
+its own the unnormalised bound therefore controls growth, it does not exhibit
+decay.  The rate that is below one is the \emph{relative} one,
+$\mathrm{specRatio}=\mathrm{specGap}/\lambda<1$, and the decay statement is
+that the fluctuation contribution is suppressed by $\mathrm{specRatio}^{N}$
+\emph{relative to the Perron scale} $\lambda^{N}$.  Both forms are proved; only
+the second is called decay.
 
 The step that does not follow from the inequalities is the one about
 eigenvectors \emph{at} $\lambda$: geometric simplicity, proved in the Perron
@@ -70,9 +77,9 @@ so the top term of the spectral sum vanishes instead of merely being bounded.
 nothing here bounds it away from $\lambda$ uniformly.  Direct diagonalisation
 gives $\mathrm{specGap}/\lambda = 0.9205, 0.9829, 0.9964, 0.9992$ at
 $L = 2,3,4,5$ for one parameter pair: a geometric bound whose rate tends to $1$
-is empty in the limit, and that is reported, not hidden.  The endpoint also
-bounds the \emph{unnormalised} sum; the normalised expectation would need a
-lower bound on the partition function, which is not proved here.  Reflection
+is empty in the limit, and that is reported, not hidden.  The relative decay is
+still not the normalised Gibbs \emph{expectation}: that needs a lower bound on
+the partition function, which is not proved here.  Reflection
 positivity is untouched, and nothing in this paper is a claim about $\SU(N)$,
 the continuum limit, or the Yang--Mills mass gap.
 \end{abstract}
@@ -86,12 +93,16 @@ precisely why these are one debt and not two.
 A strict inequality $|\mu| < \lambda$ for each of finitely many eigenvalues does
 give $\max|\mu| < \lambda$ --- taking a maximum over a finite set is not the
 difficulty.  The difficulty is that $\max|\mu|$ over the non-Perron eigenvalues
-is not, by itself, known to be the \emph{operator norm} on the orthogonal
-complement of the Perron vector.  Identifying the two requires the spectral
-decomposition: an orthonormal basis of eigenvectors, so that an observable can
-be expanded and its image measured coordinate by coordinate.
+is not, by itself, known to \emph{dominate the operator} on the orthogonal
+complement of the Perron vector.  Getting from one to the other requires the
+spectral decomposition: an orthonormal basis of eigenvectors, so that an
+observable can be expanded and its image measured coordinate by coordinate.
 
 That is what this paper supplies, and it pays both debts with one construction.
+We prove the inequality $\|Ku\|\le\mathrm{specGap}\|u\|$; we do \emph{not}
+prove that $\mathrm{specGap}$ \emph{equals} the restricted operator norm.  The
+numerical section reports that the bound is attained, but attainment is
+\textbf{verified}, not proved, and no theorem here depends on it.
 
 \section{The construction}\label{sec:constr}
 
@@ -170,11 +181,11 @@ definition.
 The bridge paper's fluctuation sector is invariant under a kernel that
 \emph{fixes} the vacuum.  Here the kernel is unnormalised and the vacuum is an
 eigenvector with eigenvalue $\lambda$, so invariance is reproved in that form
-(\osline{SpatialSpectral}{287}{perp\_invariant\_eigen}); the scalar drops out
+(\osline{SpatialSpectral}{345}{perp\_invariant\_eigen}); the scalar drops out
 because the pairing is bilinear.  Iterating gives
-\osline{SpatialSpectral}{300}{iterate\_norm\_le\_specGap}.
+\osline{SpatialSpectral}{358}{iterate\_norm\_le\_specGap}.
 
-\begin{theorem}[the bridge theorem, without its hypothesis]\label{thm:endpoint}
+\begin{theorem}[the bridge bound, without its hypothesis]\label{thm:endpoint}
 For the coupled spatial system, at every finite extent $L$, every $\beta$, and
 every strictly positive source weight $w$: if the dressing of $A$ is orthogonal
 to the Perron vector, then for every $N$
@@ -185,14 +196,39 @@ to the Perron vector, then for every $N$
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{340}{gibbs\_pathSum\_decay\_unconditional}.
+\osline{SpatialSpectral}{388}{gibbs\_pathSum\_bound\_unconditional}.
+
+\begin{remark}[why that is not yet decay]\label{rem:notdecay}
+$\mathrm{specGap}<\lambda$ does not give $\mathrm{specGap}<1$.  The kernel is
+unnormalised: in the probe of §\ref{sec:verified}, $L=2$ with $\beta=0.8$,
+$\gamma=1.2$ gives $\lambda\approx56.89$ and
+$\mathrm{specGap}\approx52.37$, so $\mathrm{specGap}^{N}$ grows.
+Theorem~\ref{thm:endpoint} is a \emph{sub-Perron growth} bound.  The decay is
+Theorem~\ref{thm:reldecay}.
+\end{remark}
+
+\begin{theorem}[the decay statement]\label{thm:reldecay}
+With $\mathrm{specRatio}=\mathrm{specGap}/\lambda$, under the same hypotheses,
+\[
+  \Bigl|\sum_X A(X_0)A(X_N)\,\mathcal{W}(X)\Bigr|
+  \;\le\; \mathrm{specRatio}^{\,N}\;\Bigl(\lambda^{N}
+  \bigl\|\sqrt{w}A\bigr\|^{2}\Bigr),
+  \qquad \mathrm{specRatio}<1 .
+\]
+Equivalently, the normalised kernel $\lambda^{-1}K$ contracts the fluctuation
+sector by $\mathrm{specRatio}<1$.
+\end{theorem}
+
+\osline{SpatialSpectral}{429}{gibbs\_pathSum\_relative\_decay},
+\osline{SpatialSpectral}{301}{specRatio\_lt\_one},
+\osline{SpatialSpectral}{324}{norm\_act\_normalizedKernel\_le}.
 
 \begin{remark}[non-vacuity]
 Dressing is multiplication by a strictly positive function, so every fluctuation
 vector is the dressing of an observable: whenever the configuration space has
 two points there is a \emph{nonzero} $A$ satisfying the hypothesis, and
 Theorem~\ref{thm:endpoint} is not quantified over an empty set
-(\osline{SpatialSpectral}{371}{exists\_nonzero\_dressed\_fluctuation}).
+(\osline{SpatialSpectral}{455}{exists\_nonzero\_dressed\_fluctuation}).
 \end{remark}
 
 \section{Scope: three things this does not give}\label{sec:scope}
@@ -214,14 +250,21 @@ $\mathrm{specGap}^N$ says nothing in the limit.  These numbers are
 are printed because a paper that reported only Theorem~\ref{thm:endpoint} would
 be reporting the half that does not settle the question.
 
-\paragraph{The unnormalised sum, not the expectation.}  Theorem~\ref{thm:endpoint}
-bounds the same quantity the bridge paper bounded; what is removed is the
-hypothesis, not the normalisation.  The normalised expectation divides by the
-partition function, and a decay statement about it needs a lower bound on that
+\paragraph{Relative decay, not the Gibbs expectation.}
+Theorem~\ref{thm:reldecay} compares with $\lambda^N$, which is the growth scale
+of the partition function but is \emph{not} the partition function.  Turning it
+into a statement about the normalised expectation needs a lower bound on that
 partition function of order $\lambda^N$ --- which needs the index of the top
 eigenvalue identified and its overlap with the dressed constant observable
 bounded below.  Neither is done here, and the word \emph{clustering} is
-deliberately not used for the endpoint.
+deliberately not used.
+
+\paragraph{A bound, not an identification.}  We prove
+$\|Ku\|\le\mathrm{specGap}\|u\|$ on the fluctuation sector.  We do not prove
+that $\mathrm{specGap}$ equals the restricted operator norm; that would need a
+nonzero vector attaining it, hence the index of the top eigenvalue, which is the
+same missing ingredient as in the previous paragraph.  The probe reports
+attainment as \textbf{verified}.
 
 \paragraph{No claim about the physical target.}  Reflection positivity is
 untouched, and nothing here concerns $\SU(N)$, the continuum limit, or the Clay
@@ -271,8 +314,8 @@ actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8430 jobs, success \\
-Oracle commands & 2648 \\
-\quad with axiom dependencies & 2625 \\
+Oracle commands & 2655 \\
+\quad with axiom dependencies & 2632 \\
 \quad axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
@@ -306,6 +349,31 @@ Extent of the Coupled Slice}, viXra, 2026.
 L.~Eriksson,
 \emph{The Measure the Spectral Results Were About: a Machine-Checked Transfer
 Bridge for the Spatial $\Z_2$ Slice}, viXra, 2026.
+
+\bibitem{HornJohnson}
+R.~A.~Horn and C.~R.~Johnson,
+\emph{Matrix Analysis}, 2nd ed., Cambridge Univ.\ Press, 2013.
+(Spectral theorem for Hermitian matrices; the operator norm of a self-adjoint
+matrix as the spectral radius.)
+
+\bibitem{Seneta}
+E.~Seneta,
+\emph{Non-negative Matrices and Markov Chains}, 2nd ed., Springer, 1981.
+(Perron--Frobenius theory, simplicity of the dominant eigenvalue, and the
+subdominant ratio as the rate of convergence.)
+
+\bibitem{Baladi}
+V.~Baladi,
+\emph{Positive Transfer Operators and Decay of Correlations},
+World Scientific, 2000.
+(Transfer operators, the spectral gap, and decay of correlations relative to the
+leading eigenvalue.)
+
+\bibitem{Simon}
+B.~Simon,
+\emph{The Statistical Mechanics of Lattice Gases, Volume I},
+Princeton Univ.\ Press, 1993.
+(Transfer-matrix formulation of lattice Gibbs measures and correlation decay.)
 
 \bibitem{Lean4}
 L.~de~Moura and S.~Ullrich,
