@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP102AmbientLocalNearLogThirdJetBound
+
+#print axioms YangMills.RG.cmp102SourceNearLogOrderThreeOuterBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_nearLog_le_orderThreeOuterBudget
+#print axioms YangMills.RG.cmp102SourceFourContourCompositionRadius
+#print axioms YangMills.RG.cmp102SourceLocalNearLogThirdJetBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_nearLog_cmp98UbarAmbientDeviationMatrix_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_nearLog_cmp98UbarAmbientDeviationMatrix_le

@@ -779,8 +779,28 @@ source-generated jets through the complete noncommutative ordered product.
 Matrix multiplication is bundled as a contractive real bilinear map and the
 quantitative Leibniz rule gives one recursive budget for orders zero through
 three.  Its only geometric input is the contour length; no ambient-volume
-cardinality enters.  The next producer is the four-contour/logarithmic
-average jet used by the literal nonlinear block.
+cardinality enters.
+
+The next four layers are now closed as well.
+`BalabanCMP102AmbientFourContourThirdJetBound.lean` first uses the literal
+source collapse of the four-factor contour and bounds all positive jets
+through order three by the physical source contour length.  The constant
+identity term disappears automatically at positive order.
+`BalabanCMP102AmbientLocalNearLogThirdJetBound.lean` transports those jets
+through the locally analytic Mercator logarithm with the local Faà di Bruno
+theorem.  `BalabanCMP102AmbientLogAverageThirdJetBound.lean` differentiates
+the normalized finite block sum and cancels its exact cardinality
+`|blockOf| = M^d`, so no block-volume factor survives.  Finally,
+`BalabanCMP102AmbientExpAverageThirdJetBound.lean` transports the resulting
+orders one through three through the literal noncommutative exponential.
+All outer exponential jets come from its factorial power series; the
+slightly enlarged radius used for the open second-derivative ball is
+generated internally.
+
+Thus the full `cmp98UbarExpAverage` third jet is physical and
+volume-uniform.  The next producer is the third jet of the represented
+nonlinear block, followed by the fixed right normalizer, the physical
+coordinate map, and the literal shift.
 
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete

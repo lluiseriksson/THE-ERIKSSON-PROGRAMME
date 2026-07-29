@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102AmbientLogAverageThirdJetBound
+
+#print axioms YangMills.RG.iteratedFDeriv_finset_sum_apply_of_contDiffAt
+#print axioms YangMills.RG.iteratedFDeriv_cmp98UbarLogAverage_eq_normalized_sum
+#print axioms YangMills.RG.iteratedFDeriv_three_cmp98UbarLogAverage_eq_normalized_sum
+#print axioms YangMills.RG.norm_iteratedFDeriv_cmp98UbarLogAverage_le_sourceBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_cmp98UbarLogAverage_le_sourceBudget
