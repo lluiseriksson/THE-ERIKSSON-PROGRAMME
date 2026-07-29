@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{6aa26bcedc4b008f4e5acaa708da343bf1f1100b}
+\newcommand{\anchor}{ff24cf46cfc8859dffa8b2f18252763e0c75def9}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -59,9 +59,16 @@ proof of peripheral separation avoids the equality case of the triangle
 inequality, which is where the classical argument spends its effort: writing
 $u=|w|$, $p=u-w$ and $q=u+w$, one gets $Ap=\lambda q$ and $Aq=\lambda p$, so a
 nonzero $p$ would make $Ap$ strictly positive, hence $q$ strictly positive,
-hence $w$ nonnegative, hence $p=0$.  We also deliver the vacuum in Euclidean
-normalisation, $\|\Om\|=1$ with $T\Om=\Om$, and the symmetry of the symmetrised
-kernel --- the two interfaces the next module needs.
+hence $w$ nonnegative, hence $p=0$.
+
+The separation is then extended from the real eigenvalues to \emph{all} of them.
+The coupled kernel is conjugate by a positive diagonal to its symmetrised form,
+which is symmetric; and a real symmetric kernel has real eigenvalues, by a
+computation that pairs the eigenvector against its image twice and is two
+rearrangements of a double sum.  So there are no complex peripheral eigenvalues
+left to exclude, and the strict gap is a statement about the whole spectrum.  We
+also deliver the vacuum in Euclidean normalisation, $\|\Om\|=1$ with
+$T\Om=\Om$.
 
 \textbf{Not proved, and this is the title.}  The gap is \emph{strict}, not
 \emph{quantitative}: the theorem provides no modulus of separation, and in
@@ -104,7 +111,11 @@ with $Av=\lambda v$.
 \item specialised: at every extent $L$, every $\beta$, and every strictly
       positive source weight, the coupled transfer operator has a strict gap;
 \item the vacuum in Euclidean normalisation: $\|\Om\|=1$ and $T\Om=\Om$;
-\item the symmetrised kernel is symmetric, and strictly positive.
+\item the symmetrised kernel is symmetric, and strictly positive;
+\item \emph{every} eigenvalue of the coupled kernel is real --- the kernel is
+      conjugate by a positive diagonal to the symmetrised one --- so the strict
+      separation above is a statement about the whole spectrum, not only about
+      its real part.
 \end{itemize}
 
 \subsection{What is deliberately not claimed}
@@ -117,10 +128,7 @@ paper's own headline and Section~\ref{sec:measured} says what the numbers show.
 Section~\ref{sec:measured} is measured on a finite grid, is labelled as such,
 and carries no theorem.  What \emph{is} established is that this paper does not
 provide a uniform bound --- not that none exists.
-\item \textbf{Real eigenpairs.}  Peripheral separation is proved for real
-eigenvalues.  Complex eigenvalues are dominated in modulus by $\lambda$
-\cite{ErikssonBirkhoff} but are not separated from it here.
-\item \textbf{Algebraic simplicity} is still not proved, and neither is
+\item \textbf{Algebraic simplicity} is not proved, and neither is
 Perron--Frobenius for merely irreducible kernels.
 \item \textbf{Nothing about $\SU(N)$, the continuum limit, or the Clay problem}
 \cite{Clay}.
@@ -198,7 +206,7 @@ excluded by Theorem~\ref{thm:periph}.
 \end{proof}
 
 \osline{PerronGap}{246}{abs\_lt\_of\_ne\_perron}, and for the coupled slice
-at every extent \osline{PerronGap}{353}{coupled\_gap\_of\_sourceWeight}.
+at every extent \osline{PerronGap}{414}{coupled\_gap\_of\_sourceWeight}.
 
 \begin{remark}[What the statement does and does not contain]
 Theorem~\ref{thm:gap} is a strict inequality between two real numbers.  It
@@ -229,9 +237,50 @@ strictly positive when $w$ is.
 
 \osline{PerronGap}{328}{symWeighted\_symm},
 \osline{PerronGap}{335}{symWeighted\_pos}.  It is symmetric because the
-decoupled kernel is.  This is the bridge to a self-adjoint operator; the
-self-adjointness itself, and the variational characterisation it unlocks, belong
-to the module that consumes it and are not proved here.
+decoupled kernel is.
+
+\section{Every eigenvalue is real, so the gap is about the whole spectrum}
+\label{sec:real}
+
+Theorem~\ref{thm:gap} separates the \emph{real} eigenvalues.  For a real
+non-symmetric kernel that is not yet a statement about the spectrum: nothing so
+far excludes a peripheral pair $\mu=\lambda e^{\pm i\theta}$.  The symmetry just
+established closes exactly that gap in the argument.
+
+\begin{theorem}[A real symmetric kernel has real eigenvalues]\label{thm:symreal}
+If $S$ is real and symmetric and $Sy=\mu y$ with $y\neq0$ complex, then
+$\bar\mu=\mu$.
+\end{theorem}
+
+\begin{proof}
+Pair $y$ against $Sy$: the result is $\mu N$ with $N=\sum_i|y_i|^2>0$.
+Conjugating and using that $S$ is real and symmetric returns the same quantity,
+so $\bar\mu N=\mu N$.
+\end{proof}
+
+\osline{PerronGap}{349}{eigenvalue\_real\_of\_symm}.  No spectral theory
+is invoked; the computation is two rearrangements of a double sum.
+
+\begin{theorem}[Every eigenvalue of the coupled kernel is real]\label{thm:allreal}
+$K_w$ is conjugate to $\widetilde K_w$ by the positive diagonal
+$\mathrm{diag}(w^{1/2})$, so every complex eigenvalue of $K_w$ is an eigenvalue
+of $\widetilde K_w$, hence real.
+\end{theorem}
+
+\osline{PerronGap}{428}{sourceWeighted\_eq\_sym},
+\osline{PerronGap}{443}{coupled\_eigenvalue\_real}.
+
+\begin{corollary}\label{cor:whole}
+For the coupled slice, Theorem~\ref{thm:gap} separates \emph{every} eigenvalue
+from $\lambda$, not merely the real ones.
+\end{corollary}
+
+\begin{remark}[What this does not turn into]
+Making the separation a statement about the whole spectrum changes nothing about
+its \emph{quantitative} content, which remains empty.  Self-adjointness on an
+inner-product space, and the variational characterisation that would supply a
+modulus, still belong to the module that consumes this one.
+\end{remark}
 
 \section{What is measured and not proved}\label{sec:measured}
 
@@ -292,8 +341,8 @@ line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8428 jobs, success \\
-Oracle commands & 2579 \\
-\quad with axiom dependencies & 2556 \\
+Oracle commands & 2582 \\
+\quad with axiom dependencies & 2559 \\
 \quad axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\

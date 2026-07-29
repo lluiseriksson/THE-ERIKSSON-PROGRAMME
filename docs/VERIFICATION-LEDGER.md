@@ -27144,3 +27144,52 @@ targeted run over the module's **15** declarations, all with exactly
 `{propext, Classical.choice, Quot.sound}`; an extraction over the whole
 transcript shows no axiom name outside that set; zero `sorryAx`; zero real
 errors.  Paper 5pp, 12 line-anchored permalinks verified at the anchor commit.
+
+## Addendum 532 (2026-07-29, **O-3j v1.1: every eigenvalue of the coupled kernel is REAL, so the strict separation is a statement about the whole spectrum and the title is literally supported**)
+
+**The reservation this removes was load-bearing**, and it was the Addendum 521
+rule applied to v1.0's own title.  Excluding `mu = -lam` separates the REAL
+eigenvalues; for a real NON-SYMMETRIC kernel that is not yet a statement about
+the spectrum, because nothing excluded a peripheral pair
+`mu = lam exp(+/- i theta)`.  A title reading *a spectral gap at every finite
+extent* was therefore claiming more than the theorems gave.
+
+**The bridge, in three steps.**
+
+* `eigenvalue_real_of_symm` — every complex eigenvalue of a real SYMMETRIC
+  kernel is real.  Proved from scratch, with no spectral theory: pair the
+  eigenvector against its image twice; because the kernel is real and symmetric
+  the second computation returns the conjugate of the first, giving
+  `conj(mu) * N = mu * N` with `N = sum |y i|^2 > 0`.  The whole argument is two
+  rearrangements of a double sum.
+* `sourceWeighted_eq_sym` — the source-weighted kernel is conjugate,
+  coordinatewise, to the symmetrised one by the positive diagonal `diag(sqrt w)`.
+* `coupled_eigenvalue_real` — hence every complex eigenvalue of the coupled
+  kernel is an eigenvalue of the symmetrised one, hence real.
+
+**Consequence.**  There are no complex peripheral eigenvalues left to exclude,
+so excluding `-lam` over the reals IS excluding it over the whole spectrum.  The
+v1.0 scope item restricting the claim to real eigenpairs is **deleted because it
+became false**, not softened because it was awkward.
+
+**Architectural note worth keeping.**  The bridge was already half-built inside
+the paper: `symWeighted_symm` had been proved in v1.0 and labelled an interface
+*for the module that consumes this one*.  The consuming module turned out to be
+the same paper, two sections further down.  Rule: *when a development sets a
+lemma aside as premature, ask whether the `later` is the present paper --- the
+reason the lemma looked premature can be the same reason the main theorem was
+incomplete.*
+
+**Unchanged, and still the headline.**  Making the separation cover the whole
+spectrum changes nothing about its QUANTITATIVE content, which remains empty.
+No modulus, nothing uniform in the extent, no proof that a volume-uniform gap
+fails, no algebraic simplicity.  A dedicated remark says exactly this so the
+upgrade cannot be misread as progress towards a uniform bound.
+
+**Measured.**  Anchor `ff24cf46cfc8859dffa8b2f18252763e0c75def9`; full core
+build **8428 jobs** EXIT 0, zero errors; oracle 2579 -> **2582 commands -> 2582
+answers** (2559 with axiom dependencies + 23 axiom-free); targeted run over the
+module's **18** declarations, all with exactly
+`{propext, Classical.choice, Quot.sound}`; zero `sorryAx`; zero real errors.
+Paper 6pp, 15 line-anchored permalinks recomputed BY NAME and re-verified at the
+anchor commit itself.
