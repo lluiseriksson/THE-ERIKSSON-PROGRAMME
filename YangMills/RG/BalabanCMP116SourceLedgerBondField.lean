@@ -221,6 +221,35 @@ theorem withSourceLedgerBondField_norm_lt_of_cutoffFactor_ne_zero
     Y0 P b hcutoff hq
   exact h
 
+/-- The installed literal field discharges the exact `cutoff_energy_bound`
+shape consumed by the equation-(2.26) source record. -/
+theorem withSourceLedgerBondField_cutoff_energy_bound
+    {nDelta nY d M N' Nc L : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero (Nc ^ 2 - 1)]
+    {Site : Type*} {Psi Phi : Site → Type*}
+    (Dict : PhysicalGaugeCMP116Dictionary
+      d (M * N') Nc d L (Nc ^ 2 - 1))
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (Cube d L) Site Psi Phi (SUNLieCoord Nc) (Nc ^ 2 - 1))
+    (threshold : ℝ)
+    {Dset : Finset (Finset (FinBox d N'))}
+    {P : Finset (Cube d L)}
+    {Z0 : Finset (FinBox d N')}
+    (hZ0 : CMP116LocalizationAdmissible
+      Dset (Dict.physicalBondsOfCells P) Z0) :
+    ∀ b : CMP116Eq214GaussianCoordinate (Cube d L) (Nc ^ 2 - 1),
+      (∑ e ∈ P,
+          ‖((C.withSourceLedgerBondField threshold).toLocalFiniteGaussianData
+            ).toFiniteGaussianData.bondField b e‖ ^ 2) ≤
+        b ⬝ᵥ
+          Matrix.mulVec
+            (cmp116Eq223CoordinateProjection
+              (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)) b := by
+  intro b
+  exact sum_norm_sq_cmp116SourceLedgerCoordinateCochain_le_dotProduct
+    Dict hZ0 b
+
 end CMP116Eq214PhysicalContourDensity
 
 end
