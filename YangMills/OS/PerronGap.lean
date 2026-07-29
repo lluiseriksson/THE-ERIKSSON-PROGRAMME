@@ -340,6 +340,67 @@ theorem symWeighted_pos {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 
   have h3 : 0 < spatialKernel β σ τ := spatialKernel_pos β σ τ
   positivity
 
+/-! ### §5b  A real symmetric kernel has real eigenvalues -/
+
+/-- **Every complex eigenvalue of a real symmetric kernel is real.**  Proved
+from scratch, by the classical one-line argument: `⟨y, S y⟩` equals its own
+conjugate because `S` is real and symmetric, and pairing it against `y` twice
+gives `conj mu * N = mu * N` with `N = ∑ ‖y i‖² > 0`. -/
+theorem eigenvalue_real_of_symm {S : ι → ι → ℝ} (hsymm : ∀ i j, S i j = S j i)
+    {y : ι → ℂ} {i₁ : ι} (hy : y i₁ ≠ 0) {mu : ℂ}
+    (hyE : ∀ i, ∑ j, (S i j : ℂ) * y j = mu * y i) :
+    (starRingEnd ℂ) mu = mu := by
+  set N : ℂ := ∑ i, y i * (starRingEnd ℂ) (y i) with hN
+  have hNre : (starRingEnd ℂ) N = N := by
+    rw [hN, map_sum]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [map_mul, Complex.conj_conj]
+    ring
+  have hNne : N ≠ 0 := by
+    rw [hN]
+    have hterm : ∀ i, y i * (starRingEnd ℂ) (y i) = ((Complex.normSq (y i) : ℝ) : ℂ) :=
+      fun i => Complex.mul_conj (y i)
+    rw [Finset.sum_congr rfl fun i _ => hterm i]
+    rw [← Complex.ofReal_sum]
+    have hpos : 0 < ∑ i, Complex.normSq (y i) := by
+      refine Finset.sum_pos' (fun i _ => Complex.normSq_nonneg (y i)) ?_
+      exact ⟨i₁, Finset.mem_univ _, Complex.normSq_pos.mpr hy⟩
+    exact_mod_cast ne_of_gt hpos
+  -- the pairing, computed two ways
+  set Q : ℂ := ∑ i, (starRingEnd ℂ) (y i) * (∑ j, (S i j : ℂ) * y j) with hQ
+  have hQ1 : Q = mu * N := by
+    rw [hQ, Finset.mul_sum]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [hyE i]
+    ring
+  have hQ2 : (starRingEnd ℂ) Q = mu * N := by
+    have hstep : (starRingEnd ℂ) Q
+        = ∑ i, ∑ j, (S i j : ℂ) * (y i * (starRingEnd ℂ) (y j)) := by
+      rw [hQ, map_sum]
+      refine Finset.sum_congr rfl fun i _ => ?_
+      rw [map_mul, Complex.conj_conj, map_sum, Finset.mul_sum]
+      refine Finset.sum_congr rfl fun j _ => ?_
+      rw [map_mul, Complex.conj_ofReal]
+      ring
+    rw [hstep, Finset.sum_comm]
+    have hswap : ∑ j, ∑ i, (S i j : ℂ) * (y i * (starRingEnd ℂ) (y j))
+        = ∑ j, (starRingEnd ℂ) (y j) * (∑ i, (S j i : ℂ) * y i) := by
+      refine Finset.sum_congr rfl fun j _ => ?_
+      rw [Finset.mul_sum]
+      refine Finset.sum_congr rfl fun i _ => ?_
+      rw [hsymm i j]
+      ring
+    rw [hswap]
+    rw [Finset.mul_sum]
+    refine Finset.sum_congr rfl fun j _ => ?_
+    rw [hyE j]
+    ring
+  have : (starRingEnd ℂ) mu * N = mu * N := by
+    have h := hQ2
+    rw [hQ1, map_mul, hNre] at h
+    exact h
+  exact mul_right_cancel₀ hNne this
+
 end Gap
 
 /-! ### §6  The gap for the coupled slice, at every extent -/
@@ -359,5 +420,57 @@ theorem coupled_gap_of_sourceWeight {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hne : mu ≠ lam) :
     |mu| < lam :=
   abs_lt_of_ne_perron (sourceWeightedKernelL_pos hw β) hv hvE hu huE hne
+
+/-! ### §7  Every eigenvalue of the coupled kernel is real -/
+
+/-- The diagonal similarity: the source-weighted kernel and its symmetrised
+form are conjugate by `diag(√w)`, coordinatewise. -/
+theorem sourceWeighted_eq_sym {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (σ τ : Fin L → Fin 2) :
+    sourceWeightedKernelL w β σ τ
+      = Real.sqrt (w σ) * symWeighted w β σ τ / Real.sqrt (w τ) := by
+  have hτ : Real.sqrt (w τ) ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr (hw τ))
+  have hσ : Real.sqrt (w σ) * Real.sqrt (w σ) = w σ :=
+    Real.mul_self_sqrt (le_of_lt (hw σ))
+  unfold sourceWeightedKernelL symWeighted
+  field_simp
+  nlinarith [hσ, spatialKernel_pos β σ τ]
+
+/-- **Every complex eigenvalue of the coupled kernel is real.**  The kernel is
+conjugate by a positive diagonal to the symmetrised one, which is symmetric, so
+the eigenvalue is inherited and `eigenvalue_real_of_symm` applies.  This is what
+upgrades the gap of §3 from *real eigenvalues* to *all eigenvalues*. -/
+theorem coupled_eigenvalue_real {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    {x : (Fin L → Fin 2) → ℂ} {σ₁ : Fin L → Fin 2} (hx : x σ₁ ≠ 0) {mu : ℂ}
+    (hxE : ∀ σ, ∑ τ : Fin L → Fin 2,
+      ((sourceWeightedKernelL w β σ τ : ℝ) : ℂ) * x τ = mu * x σ) :
+    (starRingEnd ℂ) mu = mu := by
+  classical
+  set d : (Fin L → Fin 2) → ℝ := fun σ => Real.sqrt (w σ) with hd
+  have hdpos : ∀ σ, 0 < d σ := fun σ => Real.sqrt_pos.mpr (hw σ)
+  set y : (Fin L → Fin 2) → ℂ := fun σ => x σ / ((d σ : ℝ) : ℂ) with hy
+  have hdne : ∀ σ, ((d σ : ℝ) : ℂ) ≠ 0 := fun σ => by
+    exact_mod_cast ne_of_gt (hdpos σ)
+  have hyne : y σ₁ ≠ 0 := by
+    rw [hy]
+    exact div_ne_zero hx (hdne σ₁)
+  refine eigenvalue_real_of_symm (symWeighted_symm w β) hyne (mu := mu) ?_
+  intro σ
+  have hstep : ∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * y τ
+      = (((d σ : ℝ) : ℂ))⁻¹ *
+        ∑ τ : Fin L → Fin 2, ((sourceWeightedKernelL w β σ τ : ℝ) : ℂ) * x τ := by
+    rw [Finset.mul_sum]
+    refine Finset.sum_congr rfl fun τ _ => ?_
+    rw [sourceWeighted_eq_sym hw β σ τ, hy]
+    simp only [hd]
+    have hsg : ((Real.sqrt (w σ) : ℝ) : ℂ) ≠ 0 := by
+      exact_mod_cast ne_of_gt (Real.sqrt_pos.mpr (hw σ))
+    have hst : ((Real.sqrt (w τ) : ℝ) : ℂ) ≠ 0 := by
+      exact_mod_cast ne_of_gt (Real.sqrt_pos.mpr (hw τ))
+    push_cast
+    field_simp
+  rw [hstep, hxE σ, hy]
+  field_simp
 
 end YangMills.OS

@@ -2899,4 +2899,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.symWeighted
 #print axioms YangMills.OS.symWeighted_symm
 #print axioms YangMills.OS.symWeighted_pos
+#print axioms YangMills.OS.eigenvalue_real_of_symm
 #print axioms YangMills.OS.coupled_gap_of_sourceWeight
+#print axioms YangMills.OS.sourceWeighted_eq_sym
+#print axioms YangMills.OS.coupled_eigenvalue_real
