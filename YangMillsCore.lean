@@ -70,6 +70,13 @@ import YangMills.L1_GibbsMeasure.WilsonObservable
 import YangMills.L1_GibbsMeasure.PolymerFactorization
 import YangMills.L1_GibbsMeasure.LatticePolymerSystem
 import YangMills.L1_GibbsMeasure.ConnectedEntropy
+import YangMills.L1_GibbsMeasure.LocalObservableSubstrate
+import YangMills.L1_GibbsMeasure.FiniteTranslation
+import YangMills.L1_GibbsMeasure.LocalMarkedExpansion
+import YangMills.L1_GibbsMeasure.LocalMarginal
+import YangMills.L1_GibbsMeasure.LocalWindowGeometry
+import YangMills.L1_GibbsMeasure.LocalWindowActivity
+import YangMills.L1_GibbsMeasure.LocalWindowCluster
 import YangMills.L1_GibbsMeasure.ClusterGeometry
 import YangMills.L1_GibbsMeasure.PolymerRepresentation
 import YangMills.L1_GibbsMeasure.WeightedGas

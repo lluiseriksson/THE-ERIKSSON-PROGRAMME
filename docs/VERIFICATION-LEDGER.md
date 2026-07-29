@@ -27431,3 +27431,65 @@ would be the adjacent-theorem trap the charter names.
 Unchanged and standing: the contraction hypothesis is carried, not discharged;
 nothing uniform in `L`; reflection positivity untouched; NOT `hRpoly`, NOT the
 mass gap; Clay distance ~0 pct.
+
+## Addendum 537 (2026-07-29, **local Gibbs thermodynamic-limit campaign: exact finite-volume and common-window substrate, limit still OPEN**)
+
+**Scope and separation.**  This checkpoint starts the campaign recorded in
+`docs/THERMODYNAMIC-LIMIT-KP-PLAN.md`.  It modifies no file under
+`YangMills/RG/**` or `YangMills/OS/**`; it does not discharge `hRpoly`, touch a
+continuum limit, or alter the recorded Clay distance.  Its target is the
+strong-coupling lattice thermodynamic limit of bounded compatible local Gibbs
+observables under the uniform KP criterion.
+
+**The exact algebra now in the core.**
+
+* `LocalObservableSubstrate.lean` defines volume-compatible bounded local
+  observables and the genuine normalized Gibbs expectation, proves
+  measurability/integrability, positivity and normalization, and sums
+  `connectedLattice_pinned_tail_volumeUniform` over a finite support anchor
+  without a volume factor.
+* `FiniteTranslation.lean` proves exact covariance of realization and
+  invariance of the finite-volume Gibbs expectation under each unit
+  translation generator and finite lists of generators.
+* `LocalMarkedExpansion.lean` gives the exact numerator expansion and the
+  normalized identity
+  `local marked factor * exp(clusterSum farRegion - clusterSum full)`.
+  The extensive gas is cancelled algebraically at one volume.  Neither the
+  numerator nor the partition function is claimed to converge separately.
+* `LocalMarginal.lean`, `LocalWindowGeometry.lean`, and
+  `LocalWindowActivity.lean` supply volume-independent window coordinates,
+  no-wrap geometry, exact product-marginal transport, and equality of marked
+  and unmarked component integrals between fitting tori.
+* `LocalWindowCluster.lean` defines the volume-independent index
+  `WindowPolymer`, proves exact preservation of incompatibility and activity,
+  and hence equality of Ursell coefficients and complete cluster monomials
+  in any two fitting volumes.  Its specialization to the connected Wilson
+  lattice gas is definitionally equal (`rfl`) to the system used by the
+  uniform pinned-tail theorem.
+
+**Measured checkpoint.**  On the Colab Pro+ high-RAM runtime, from the exact
+source archive corresponding to this branch:
+
+```text
+Build completed successfully (8437 jobs).
+CORE_EXIT=0
+```
+
+The complete `oracle_check.lean` then terminated with `ORACLE_EXIT=0`.  The six
+new common-window cluster endpoints
+`weightedLatticePolymerSystem_plaquetteWeight`,
+`WindowPolymer.incomp_toWeightedPolymer_iff`,
+`WindowPolymer.activity_toWeightedPolymer_eq`,
+`KP.ursell_eq_of_incomp`, `KP.clusterSum_eq_of_equiv`, and
+`WindowPolymer.clusterMonomial_toWeightedPolymer_eq` each printed exactly
+`[propext, Classical.choice, Quot.sound]`; the earlier local-observable,
+translation, marked-expansion, marginal, geometry, and activity endpoints
+remain in the same full oracle run.
+
+**The brick is not closed.**  There is not yet a theorem that the complete
+finite-volume sequence is Cauchy, no infinite-volume functional, no
+boundary-condition independence theorem, and no passage of the truncated
+correlation estimate.  Compactness or a convergent subsequence would not close
+this campaign.  The next exact step is to split pinned clusters into those
+decoding to the common window and those leaving it; only the latter may then
+be bounded by `connectedLattice_pinned_tail_volumeUniform`.

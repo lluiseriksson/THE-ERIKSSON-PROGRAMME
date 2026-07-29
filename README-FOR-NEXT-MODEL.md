@@ -65,6 +65,17 @@ activity-domain zero-free polydisc.  Do not replace
 `hRpoly` by an axiom or a hollow interface; build it from source-grounded
 constructive-QFT bricks or leave it as an explicit theorem hypothesis.
 
+An independent finite-volume campaign is active in
+[`docs/THERMODYNAMIC-LIMIT-KP-PLAN.md`](docs/THERMODYNAMIC-LIMIT-KP-PLAN.md).
+Its green substrate gives genuine local Gibbs expectations, exact finite
+translations, an exact marked one-volume expansion with algebraic cancellation
+of the far gas, common-window marginals and activities, and exact transport of
+Ursell cluster monomials between fitting volumes.  The thermodynamic limit
+itself is **not yet proved**: the open step is the decomposition into exact
+common-window terms and clusters leaving the window, followed by the
+`connectedLattice_pinned_tail_volumeUniform` estimate.  No compactness or
+subsequence result counts as closure.
+
 For a fast human-readable progress scan, read the progress dashboard near the
 top of [`README.md`](README.md#progress-dashboard) and the static dashboard in
 [`docs/dashboard/`](docs/dashboard/).

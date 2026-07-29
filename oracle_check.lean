@@ -147,6 +147,23 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.catalanScaledClosedMajorant_barrier
 #print axioms YangMills.KP.mul_catalanMajorantPartial_le_scaledClosed
 
+/-! ## Local-observable thermodynamic-limit substrate -/
+#print axioms YangMills.CompatibleLocalObservable.measurable_realize
+#print axioms YangMills.CompatibleLocalObservable.abs_realize_le
+#print axioms YangMills.CompatibleLocalObservable.edgeAt_injective
+#print axioms YangMills.CompatibleLocalObservable.realize_const
+#print axioms YangMills.CompatibleLocalObservable.plaquetteHolonomy
+#print axioms YangMills.integrable_realize_gibbs
+#print axioms YangMills.localGibbsExpectation_nonneg
+#print axioms YangMills.localGibbsExpectation_one
+#print axioms YangMills.pinnedBoundaryRemainder_le_volumeUniform
+#print axioms YangMills.wilsonAction_latticeShift
+#print axioms YangMills.integral_latticeShift_gibbs
+#print axioms YangMills.CompatibleLocalObservable.translate
+#print axioms YangMills.CompatibleLocalObservable.edgeAt_translate
+#print axioms YangMills.CompatibleLocalObservable.realize_latticeShiftForward
+#print axioms YangMills.localGibbsExpectation_translate
+
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound
 #print axioms YangMills.gibbs_truncated_correlation_bound
@@ -2949,3 +2966,27 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.gapWitness_contracts
 #print axioms YangMills.OS.exists_nonzero_perp
 #print axioms YangMills.OS.gibbs_connected_decay
+
+-- Thermodynamic-limit campaign: finite-volume local-observable bridges
+#print axioms YangMills.CompatibleLocalObservable.realize_latticeShiftForward
+#print axioms YangMills.localGibbsExpectation_translate
+#print axioms YangMills.localGibbsExpectation_translateList
+#print axioms YangMills.localGibbsExpectation_eq_markedSum_div
+#print axioms YangMills.localGibbsExpectation_eq_markedClusterSum
+#print axioms YangMills.supportPinnedBoundaryRemainder_le_volumeUniform
+#print axioms YangMills.integral_pi_eq_supportMarginal
+#print axioms YangMills.integral_pi_eq_of_supportEquiv
+#print axioms YangMills.integral_gaugeMeasureFrom_eq_of_supportEquiv
+#print axioms YangMills.WindowPlaquette.toConcrete_edge_pos
+#print axioms YangMills.WindowPlaquette.toConcrete_injective
+#print axioms YangMills.WindowPlaquette.isConnectedPolymer_realizedFinset_iff
+#print axioms YangMills.ConcretePlaquette.siteMargin_of_touchWalk
+#print axioms YangMills.integral_prod_plaquetteWeight_realizedFinset_eq
+#print axioms YangMills.CompatibleLocalObservable.realizedFinset_windowSupport
+#print axioms YangMills.integral_realize_mul_prod_plaquetteWeight_realizedFinset_eq
+#print axioms YangMills.weightedLatticePolymerSystem_plaquetteWeight
+#print axioms YangMills.WindowPolymer.incomp_toWeightedPolymer_iff
+#print axioms YangMills.WindowPolymer.activity_toWeightedPolymer_eq
+#print axioms YangMills.KP.ursell_eq_of_incomp
+#print axioms YangMills.KP.clusterSum_eq_of_equiv
+#print axioms YangMills.WindowPolymer.clusterMonomial_toWeightedPolymer_eq
