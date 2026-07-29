@@ -27358,3 +27358,40 @@ on the same side, so it is recorded.
 self-adjoint operator and a positive measure, not Osterwalder--Schrader
 positivity.  NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct unchanged.
 Anchor `863e894c`.
+
+## Addendum 535 (2026-07-29, **O-2 v1.1: the normalised expectation is a RATIO, and now it is a theorem**)
+
+**The external evaluator found a real precision defect, and a loose end behind
+it.**  The v1.0 abstract said *every Gibbs two-point FUNCTION is a matrix
+element*.  What Corollary 3.4 identified was the UNNORMALISED numerator; the
+correlation the measure assigns divides by the partition function, so it is a
+RATIO of two matrix elements of the same operator.  Stating only the numerator
+left the word *correlation* doing work no theorem had done.
+
+**The loose end is the part worth recording.**  `gibbsCorr` --- the normalised
+quantity --- was DEFINED in the v1.0 module and no theorem ever mentioned it.
+A definition with no theorem about it is exactly where a paper's prose can
+drift away from its formalisation without any build ever failing: the module
+compiles, the oracle is clean, the counters are honest, and the abstract still
+claims something nothing states.  The reading that caught it came from outside.
+Rule: *a definition that no theorem mentions is a place where the prose can
+outrun the formalisation --- either state something about it or delete it.*
+
+**Fixed in both places.**  `gibbsCorr_eq_ratio_iterate` gives the expectation
+as `<sqrt(w)A, T^N sqrt(w)B> / <sqrt(w), T^N sqrt(w)>`;
+`gibbsCorr_denom_pos` gives strict positivity of the denominator, so the
+identity is not an artefact of division by zero.  The abstract now says
+*unnormalised Gibbs two-point SUM* for the numerator and states the ratio
+separately, and a new corollary plus a remark make the distinction explicit
+rather than leaving it to the reader.
+
+**Measured.**  Core **8429 jobs** (unchanged, and correct: theorems were added
+to an existing module, not a module to the core).  Oracle **2626 commands ->
+2626 answers** (2623 distinct, the same three known duplicates), 23 axiom-free
++ 2603 with axioms, zero `sorryAx`, zero nonstandard axioms, zero errors.  Both
+new endpoints answer `[propext, Classical.choice, Quot.sound]`.  Paper: 6pp, 16
+permalinks, verified against the blob at the anchor and inside the compiled PDF.
+
+Anchor `c4fa6a9e`.  Everything else unchanged: the contraction hypothesis is
+still NOT discharged, nothing uniform in `L`, reflection positivity untouched,
+Clay distance ~0 pct.

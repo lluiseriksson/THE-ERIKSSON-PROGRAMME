@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{863e894c4fa07f34d078906c9ccee957c8f88c67}
+\newcommand{\anchor}{c4fa6a9e6769496a7270981ef0908b2d644c230b}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -54,9 +54,11 @@ system from Boltzmann factors alone --- a spatial factor at every time slice, a
 time-bond factor between consecutive slices --- and prove the \emph{dressing
 identity}: that weight equals the path weight of the \emph{symmetrised} kernel
 multiplied by a factor supported entirely on the two boundary slices.  Hence
-every Gibbs two-point function of the spatial system is a matrix element of an
-iterated \emph{self-adjoint} transfer operator between boundary-dressed
-observables.  The generic half holds for an arbitrary symmetric kernel on an
+every \emph{unnormalised} Gibbs two-point sum of the spatial system is a matrix
+element of an iterated \emph{self-adjoint} transfer operator between
+boundary-dressed observables, and the normalised expectation in the measure is
+the \emph{ratio} of two such matrix elements --- the numerator alone is not the
+correlation.  The generic half holds for an arbitrary symmetric kernel on an
 arbitrary finite type; no positivity and no structure of the configuration
 space enter it.  We further show that the operator the bridge lands on is the
 one the companion papers analysed, that the fluctuation sector is invariant,
@@ -183,18 +185,39 @@ $N$ slices are the full product with one endpoint removed, so their product
 with the two boundary factors is the full product squared.
 \end{remark}
 
-\begin{corollary}[correlations are matrix elements]\label{cor:bridge}
+\begin{corollary}[unnormalised sums are matrix elements]\label{cor:bridge}
 For all observables $A,B$,
 \[
   \sum_X A(X_0)B(X_N)\,\mathcal{W}(X)
-  \;=\;\sum_\sigma\bigl(T_{\widetilde K}^{\,N}(\sqrt{w}A)\bigr)(\sigma)\,
-        \bigl(\sqrt{w}B\bigr)(\sigma),
+  \;=\;\bigl\langle \sqrt{w}A,\;T_{\widetilde K}^{\,N}(\sqrt{w}B)\bigr\rangle,
 \]
 and the partition function is the same expression at $A=B=1$.
 \end{corollary}
 
 \osline{SpatialGibbs}{253}{gibbsPathSum\_eq\_iterate},
 \osline{SpatialGibbs}{262}{gibbsPartition\_eq\_iterate}.
+
+\begin{corollary}[the expectation is a ratio]\label{cor:ratio}
+The normalised two-point function in the measure is
+\[
+  \mathbb{E}\bigl[A(X_0)B(X_N)\bigr]
+  \;=\;
+  \frac{\bigl\langle \sqrt{w}A,\;T_{\widetilde K}^{\,N}(\sqrt{w}B)\bigr\rangle}
+       {\bigl\langle \sqrt{w},\;T_{\widetilde K}^{\,N}\sqrt{w}\bigr\rangle},
+\]
+and the denominator is strictly positive.
+\end{corollary}
+
+\osline{SpatialGibbs}{277}{gibbsCorr\_eq\_ratio\_iterate},
+\osline{SpatialGibbs}{288}{gibbsCorr\_denom\_pos}.
+
+\begin{remark}
+The distinction between the two corollaries is not pedantry.  A single matrix
+element is the \emph{unnormalised} sum; the correlation the measure actually
+assigns divides by the partition function, so it is a ratio of two matrix
+elements of the same operator.  Stating only the numerator would leave the
+word \emph{correlation} doing work no theorem had done.
+\end{remark}
 
 This is the statement the four companion papers were missing.  Their spectral
 results are now results about the correlations of a measure.
@@ -206,7 +229,7 @@ so the existence theory of \cite{ErikssonPerron} applies verbatim: it has a
 strictly positive Perron vacuum, and after normalising by its eigenvalue the
 vacuum is a genuine fixed point of unit Euclidean norm.
 
-\osline{SpatialGibbs}{280}{symVacuum\_exists}.
+\osline{SpatialGibbs}{303}{symVacuum\_exists}.
 
 That this needs saying at all is the point.  A bridge that landed on a
 \emph{different} operator would have proved nothing about the earlier papers.
@@ -219,8 +242,8 @@ $\langle\Om,T_Ku\rangle=0$, and hence $\langle\Om,T_K^{\,n}u\rangle=0$ for all
 $n$.
 \end{theorem}
 
-\osline{SpatialGibbs}{346}{perp\_invariant},
-\osline{SpatialGibbs}{352}{iterate\_perp}.
+\osline{SpatialGibbs}{369}{perp\_invariant},
+\osline{SpatialGibbs}{375}{iterate\_perp}.
 
 \begin{theorem}[geometric decay under an explicit hypothesis]\label{thm:decay}
 Suppose in addition that for some $r\ge0$,
@@ -231,10 +254,10 @@ $u$ and every $n$,
 \]
 \end{theorem}
 
-\osline{SpatialGibbs}{382}{connected\_decay}.
+\osline{SpatialGibbs}{405}{connected\_decay}.
 Specialised through the dressing identity, this bounds the Gibbs two-point
 function of the spatial system itself:
-\osline{SpatialGibbs}{505}{gibbs\_connected\_decay}.
+\osline{SpatialGibbs}{528}{gibbs\_connected\_decay}.
 
 \begin{remark}[the hypothesis is not vacuous, and not trivial]\label{rem:nonvac}
 A hypothesis-carrying theorem is worth nothing if nothing satisfies the
@@ -247,8 +270,8 @@ is strictly positive, the fluctuation sector contains a nonzero vector, so
 Theorem~\ref{thm:decay} is not quantified over an empty set.
 \end{remark}
 
-\osline{SpatialGibbs}{457}{gapWitness\_contracts},
-\osline{SpatialGibbs}{469}{exists\_nonzero\_perp}.
+\osline{SpatialGibbs}{480}{gapWitness\_contracts},
+\osline{SpatialGibbs}{492}{exists\_nonzero\_perp}.
 
 \section{Scope: what this paper does not give}\label{sec:scope}
 
@@ -333,8 +356,8 @@ commit, and checked to point at an actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8429 jobs, success \\
-Oracle commands & 2624 \\
-\quad with axiom dependencies & 2601 \\
+Oracle commands & 2626 \\
+\quad with axiom dependencies & 2603 \\
 \quad axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
