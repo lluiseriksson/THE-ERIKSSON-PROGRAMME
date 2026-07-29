@@ -35,6 +35,19 @@ def test_moving_right_seam_uses_beta_hi_not_beta_lo():
     assert beta_hi > beta_lo
 
 
+def test_legacy_windows_artifact_path_is_portable():
+    expected = ROOT / "scripts" / "surface_scaled_bulk_87_87p5.txt"
+    assert MOD.artifact_path(r"scripts\surface_scaled_bulk_87_87p5.txt") == expected
+    assert MOD.artifact_path("scripts/surface_scaled_bulk_87_87p5.txt") == expected
+
+
+def test_legacy_artifact_path_rejects_parent_escape():
+    import pytest
+
+    with pytest.raises(ValueError, match="unsafe recorded artifact path"):
+        MOD.artifact_path(r"..\outside.txt")
+
+
 def test_terminal_promotion_is_bound_to_the_frozen_ownership_fingerprint():
     result = MOD.audit_summary()
     assert result["relay_status"] == "DIRECT_WRONSKIAN_SIGN_ARCHIVE_CERTIFIED"

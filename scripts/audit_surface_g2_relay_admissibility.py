@@ -55,6 +55,21 @@ def fraction(value: str) -> Fraction:
     return Fraction(value)
 
 
+def artifact_path(recorded: str) -> Path:
+    """Resolve one repository-relative artifact path from legacy metadata.
+
+    Some frozen manifests were emitted on Windows and recorded ``scripts\...``.
+    A POSIX checkout must interpret that spelling as a repository path without
+    rewriting the byte-preserved historical record.
+    """
+
+    normalized = recorded.replace("\\", "/")
+    relative = Path(normalized)
+    if relative.is_absolute() or ".." in relative.parts:
+        raise ValueError(f"unsafe recorded artifact path: {recorded!r}")
+    return ROOT.joinpath(*relative.parts)
+
+
 def parse_cwin(config_line: str) -> Fraction | None:
     match = re.search(r"\bCWIN\s+([^\s]+)", config_line)
     return fraction(match.group(1)) if match else None
@@ -189,13 +204,14 @@ def output_groups(manifest: dict) -> list[tuple[str, dict, dict]]:
 
 def verify_outputs(production: dict, replay: dict) -> list[str]:
     reasons = []
-    pp, rp = ROOT / production["path"], ROOT / replay["path"]
+    pp = artifact_path(str(production["path"]))
+    rp = artifact_path(str(replay["path"]))
     if not pp.is_file() or not rp.is_file():
         return ["production_or_replay_file_missing"]
     if pp.read_bytes() != rp.read_bytes():
         reasons.append("production_replay_byte_mismatch")
     for item in (production, replay):
-        path = ROOT / item["path"]
+        path = artifact_path(str(item["path"]))
         recorded = item.get("sha256")
         recorded_lf = item.get("sha256_lf")
         if (recorded
@@ -328,8 +344,8 @@ def terminal_fingerprint(units: list[dict], ownership: list[dict]) -> str:
                 f"run-manifests/{row['manifest']}",
                 ROOT / unit["record_path"],
             ),
-            (unit["production"], ROOT / unit["production"]),
-            (unit["replay"], ROOT / unit["replay"]),
+            (unit["production"], artifact_path(unit["production"])),
+            (unit["replay"], artifact_path(unit["replay"])),
         ):
             digest.update(logical.encode("utf-8"))
             digest.update(b"\0")
@@ -372,7 +388,7 @@ def audit_summary() -> dict:
             continue
         for group_name, production, replay in groups:
             reasons = verify_outputs(production, replay)
-            production_path = ROOT / production["path"]
+            production_path = artifact_path(str(production["path"]))
             parsed = (parse_transcript(production_path)
                       if production_path.is_file()
                       else {"ok": False, "reasons": ["no_production_transcript"]})

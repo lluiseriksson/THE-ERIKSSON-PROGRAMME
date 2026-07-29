@@ -26,7 +26,7 @@ is now schema-pure; 590 byte-preserved records live under
 does not exempt future changes from manifest coverage.  Specialized Surface
 validators resolve old ledgers through that index and reproduce the original
 501-owner terminal fingerprint.  The strict checker, archive checker, all
-workflow state gates, the Surface final seal and the full 710-test suite pass.
+workflow state gates, the Surface final seal and the full 712-test suite pass.
 See
 [`docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md`](docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md).
 

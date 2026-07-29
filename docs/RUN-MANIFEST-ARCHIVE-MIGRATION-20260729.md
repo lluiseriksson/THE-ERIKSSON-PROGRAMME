@@ -81,7 +81,7 @@ The migration completed with:
   owners, and the unchanged terminal fingerprint
   `86029ed96f88c53fd0fe18769e33577d4eee56aed553f36943dd490f09b7ae80`;
 - `FINAL-SEAL PASS` with the sealed Surface TeX/PDF unchanged;
-- all independent workflow gates green and `710 passed` in the full pytest
+- all independent workflow gates green and `712 passed` in the full pytest
   suite.
 
 No historical timestamps, commands, environments or dependency hashes were
@@ -89,3 +89,10 @@ reconstructed.  Old documentation links were mechanically redirected to the
 frozen namespace; logical `run-manifests/<name>` identifiers remain only
 inside the terminal fingerprint algorithm so the already published
 content-binding fingerprint is preserved.
+
+The specialized relay reader also normalizes repository-relative separators
+at lookup time.  Thirty frozen records contain historical
+`scripts\...` Windows spellings; their bytes remain unchanged, while Linux
+now resolves those paths to the same artifacts.  Parent traversal and absolute
+paths are rejected, and the terminal fingerprint continues to hash the
+original logical spelling.
