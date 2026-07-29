@@ -948,6 +948,77 @@ cmp116Eq136ResidualMajorant
 
 and then summed into `cmp116Eq220ResidualDomainWeight`.
 
+### The finite source list behind the missing residual
+
+The primary CMP109 display (2.12) makes the missing family finite and
+checkable.  Before localization, its `P^(k)` sector is the sum of the seven
+displayed terms
+
+```text
+Tr log(I - h (delta D_tilde / delta B)(g_k C B))
+
++ log sigma(g_k C B - h D_tilde(g_k C B))
+
++ g_k^(-2) <H_1 h D_tilde_3(g_k C B), J>
+
+- g_k^(-2) G_3(g_k B)
+
++ g_k^(-2)
+    <H_1 g_k C B, Delta_1 H_1 h D_tilde(g_k C B)>
+
+- g_k^(-2)
+    <H_1 h D_tilde(g_k C B),
+      Delta_1 H_1 h D_tilde(g_k C B)>
+
+- g_k^(-2)
+    V(H_1 (g_k C B - h D_tilde(g_k C B))).
+```
+
+The eighth displayed contribution is the curly-bracket energy difference
+
+```text
+E_k(U_k(exp(i [g_k C B - h D_tilde(g_k C B)]) V^(k)))
+  - E_k(U_k(V^(k))).
+```
+
+CMP116 Lemma 1 localizes that eighth contribution into `V'_k(Y)` and proves
+the bound (1.36).  CMP116 pages 10--11 then localize every term of `P^(k)`,
+extract its second-order field Taylor form, and finally group equal domains.
+Thus the source-faithful residual has the schematic finite form
+
+```text
+V''_k(Y)
+  = V'_k(Y)
+    + sum over the seven P^(k) species of
+        (localized species at Y - its quadratic Taylor core).
+```
+
+This is stronger than the previous phrase “the other terms of `F^(k)`”:
+the missing species and their signs are explicitly fixed by CMP109 (2.12).
+
+The repository currently realizes only two portions of this list:
+
+* `BalabanCMP109Lemma1ResidualFamily.lean` constructs and exactly regroups
+  the `V'_k(Y)` family, but does not yet prove the CMP109 (1.18) analytic
+  comparison that yields (1.36);
+* the CMP102 equation-(80) development constructs the literal four-term
+  functional `V`, its Pi4 localization, and its quadratic/radial identities.
+  It has not yet installed the complete source term
+  `-g_k^(-2) V(H_1(g_k C B - h D_tilde(g_k C B)))` with that sign, scaling,
+  affine field substitution, and domain assignment into the CMP116 family.
+
+No source-faithful constructors were found for the trace-Jacobian term,
+`log sigma`, `G_3`, or the two displayed mixed correction pairings.  Generic
+Jacobian budgets and contour determinant bounds elsewhere in the tree are
+not definitions of these CMP109 terms.
+
+Consequently the next code object cannot honestly be another arbitrary
+`remainder : Y -> B -> R`.  It must be the literal finite, tagged family of
+the eight CMP109 (2.12) species, together with the exact equality that its
+domain regrouping is the fluctuation action in (1.41).  Only after that
+equality may the seven Taylor remainders be added to the already constructed
+Lemma-1 family and named `V''_k`.
+
 The next acceptable bridge is:
 
 ```text
