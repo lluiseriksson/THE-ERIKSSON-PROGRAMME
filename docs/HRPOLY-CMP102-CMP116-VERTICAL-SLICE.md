@@ -866,6 +866,47 @@ fixed block ratio, not the ambient volume.  This inequality, together with
 `contour_series_small`, `neumann_small`, `neumann_transpose_small`, and the
 patched-parametrix contraction, is a named open scalar frontier.
 
+These smallness conditions must eventually be witnessed **jointly**.  They
+must not be audited by assigning arbitrary numerical values to norms of
+operators that are themselves part of the physical producer.  The current
+terminal record separates as follows:
+
+```text
+pure scalar once the displayed parameters are fixed:
+  shell_small
+  contour_series_small
+
+scalar inequalities with physical quantities still inside:
+  neumann_small                 (contains ||K||)
+  neumann_transpose_small       (contains ||K^T||)
+  root_small                    (contains ||conditionedRoot||)
+  outer_small                   (contains the physical R1/R3 budgets)
+
+genuinely operator-valued obligations:
+  patchedDefect_small
+  the pending pivot contraction ||K_U - I|| < 1.
+```
+
+Thus a numerical witness for freely named values such as `||K||`,
+`||root||`, or the patched defect would prove only compatibility of an
+abstract envelope, not nonvacuity of the physical record.  The honest
+eventual witness must consist of:
+
+1. physical upper-bound theorems tying every scalar envelope to the literal
+   operators;
+2. one simultaneous scalar specialization satisfying all resulting
+   inequalities.
+
+At the level of the explicit final contour bound, increasing `rate` does not
+create the suspected direct conflict between `shell_small` and the Neumann
+conditions: `cmp99PhysicalBondGeometricRowSum 4 rate` decreases toward its
+finite shell prefactor as `rate` increases.  A real tension may nevertheless
+re-enter through the producer of `CMP99PhysicalPatchWeightedCertificate`,
+where the same rate is constrained by the residual rates
+`kappa - sigma - mu` and `kappa - 3*sigma - mu` and by the tilted coercivity
+budget.  Those producer constraints must be included in the eventual joint
+witness.
+
 The analytic denominator is three, not four:
 
 ```text
@@ -883,6 +924,29 @@ constructed, and neither `hraw` nor `hRpoly` is proved.
 
 The canonical Pi4 indexing and the one-domain cutoff estimate are available,
 but the latter has not been identified with Balaban's `V''_k`.
+
+The target object is now fixed as the **complete physical activity for one
+domain**, not an isolated fine-head/tail summand.  The following chain still
+feeds that target directly:
+
+```text
+BalabanCMP102Eq80GlobalPotential
+BalabanCMP102Eq80PhysicalDomainFTCThirdFieldSourceMetricBound
+BalabanCMP102Eq80CouplingScaledThirdJet
+BalabanCMP102Eq80CutoffRadialResidual
+BalabanCMP102Eq80CutoffCenteredResidual
+BalabanCMP102Eq80SourcePi4DomainEnumeration
+BalabanCMP102Eq80SourcePi4IndexedCutoffResidual
+```
+
+By contrast, the modules named
+`BalabanCMP102Eq80PhysicalFineHeadTail*` control individual walk/summand
+layers and remain reusable inputs for decay and summability.  They do not by
+themselves construct the complete domain activity consumed by
+`potential_bound`, and no such module is to be counted as a terminal
+discharge until an exact reassembly theorem identifies its sum with that
+activity.  This distinction prevents the old fine-head/tail candidate from
+surviving silently after the target object changed.
 
 `BalabanCMP102Eq80SourcePi4DomainEnumeration.lean` canonically enumerates a
 selected finite family
@@ -1176,6 +1240,19 @@ It must be derived from the literal corridor paths and pivot geometry.  It
 must not be replaced by a supplied diagonal certificate.  Once this is
 proved, the diagonal coefficient of `K_U` can be inverted pointwise to
 construct the printed Lie-algebra operator `h(c)`.
+
+The first support layer for that proof is now closed.
+`BalabanCMP98ContourFirstVariationSupport.lean` proves that the oriented
+Wilson generator is zero when the underlying positive-bond coordinate is
+zero, propagates this fact through the literal recursive contour variation,
+and identifies it with the ambient Fréchet derivative.  In particular, a
+single-bond probe has exactly zero first variation on every contour which
+avoids that physical bond.  The result is exact support, not exponential
+smallness and not a supplied kernel certificate.  It remains to prove from
+the definitions of the three `cmp99SourceUbarGamma` paths and the coarse
+bond path that, for `c ≠ c'`, all four contours appearing in the row `c'`
+avoid the pivot bond `b₀(c)`.  That source geometry will then feed this
+support theorem to produce the off-diagonal vanishing of `K_U`.
 
 There is one non-definitional selection issue before this Jacobian is
 available.  Intrinsic fixed points obtained from any two source certificates
