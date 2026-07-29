@@ -44,6 +44,14 @@ theorem
     (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
     (psi : ∀ s, Psi s) (phi : ∀ s, Phi s)
     (SInner SOuter : Finset (Bond × Fin lieDim))
+    (conditionedCovariance :
+      Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
+    (hconditionedRoot :
+      MatrixConditionedGaussianRootCertificate
+        conditionedCovariance C.referenceRoot SInner)
+    (hnondegenerate :
+      MatrixConditionedGaussianCovarianceLowerCertificate
+        conditionedCovariance SInner)
     (alpha sourceRate determinantBound gamma residual : ℝ)
     (r : CMP116Eq214GaussianCoordinate Bond lieDim →
       Bond × Fin lieDim → ℝ)
@@ -61,19 +69,20 @@ theorem
       ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
           sigma tau psi phi x b‖ ≤
         Real.exp (∑ i, r x i * b i))
-    (hinteraction : ∀ b,
-      C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
-          Y0 P b ≠ 0 →
-      (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
-          sigma tau psi phi b).re +
-        (gamma / 2) *
-          (∑ e ∈ P,
-            ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
-              b e‖ ^ 2) ≤
-        -((b ⬝ᵥ
-          Matrix.mulVec
-            (-(alpha • cmp116Eq223CoordinateProjection SInner)) b) / 2) +
-          residual)
+    (hinteraction :
+      ∀ᵐ b ∂matrixGaussianPi C.referenceRoot,
+        C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+            Y0 P b ≠ 0 →
+        (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
+            sigma tau psi phi b).re +
+          (gamma / 2) *
+            (∑ e ∈ P,
+              ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
+                b e‖ ^ 2) ≤
+          -((b ⬝ᵥ
+            Matrix.mulVec
+              (-(alpha • cmp116Eq223CoordinateProjection SInner)) b) / 2) +
+            residual)
     (hsource : ∀ x,
       (r x) ⬝ᵥ (r x) ≤
         sourceRate * (∑ i ∈ SOuter, x i ^ 2) + 0)
@@ -181,7 +190,7 @@ theorem
       filter_upwards [] with x
       rw [norm_mul]
       have hinnerIntegral :=
-        G.norm_innerIntegral_le_exp_residual_sub_cardPenalty_mul_eq224Majorant_of_cutoffSupport
+        G.norm_innerIntegral_le_exp_residual_sub_cardPenalty_mul_eq224Majorant_of_ae_cutoffSupport
           Y0 P sigma tau psi phi x
           (-(alpha • cmp116Eq223CoordinateProjection SInner)) (r x)
           gamma residual
@@ -265,6 +274,14 @@ theorem
     (Y0 P : Finset Bond)
     (psi : ∀ s, Psi s) (phi : ∀ s, Phi s)
     (SInner SOuter : Finset (Bond × Fin lieDim))
+    (conditionedCovariance :
+      Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
+    (hconditionedRoot :
+      MatrixConditionedGaussianRootCertificate
+        conditionedCovariance C.referenceRoot SInner)
+    (hnondegenerate :
+      MatrixConditionedGaussianCovarianceLowerCertificate
+        conditionedCovariance SInner)
     (alpha sourceRate determinantBound gamma residual : ℝ)
     (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
       CMP116Eq214GaussianCoordinate Bond lieDim →
@@ -292,19 +309,19 @@ theorem
     (hinteraction : ∀ sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
       CMP116Eq214CenteredPolydisc nY C.yRadius tau →
-      ∀ b,
-      C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
-          Y0 P b ≠ 0 →
-      (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
-          sigma tau psi phi b).re +
-        (gamma / 2) *
-          (∑ e ∈ P,
-            ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
-              b e‖ ^ 2) ≤
-        -((b ⬝ᵥ
-          Matrix.mulVec
-            (-(alpha • cmp116Eq223CoordinateProjection SInner)) b) / 2) +
-          residual)
+      ∀ᵐ b ∂matrixGaussianPi C.referenceRoot,
+        C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+            Y0 P b ≠ 0 →
+        (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
+            sigma tau psi phi b).re +
+          (gamma / 2) *
+            (∑ e ∈ P,
+              ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
+                b e‖ ^ 2) ≤
+          -((b ⬝ᵥ
+            Matrix.mulVec
+              (-(alpha • cmp116Eq223CoordinateProjection SInner)) b) / 2) +
+            residual)
     (hsource : ∀ sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
       CMP116Eq214CenteredPolydisc nY C.yRadius tau →
@@ -353,7 +370,8 @@ theorem
   intro sigma tau hsigma htau
   apply
     C.norm_analyticIntegrand_le_of_conditionedOuterTraceInteractionEnergy_cutoffSupport
-      Y0 P sigma tau psi phi SInner SOuter alpha sourceRate
+      Y0 P sigma tau psi phi SInner SOuter
+      conditionedCovariance hconditionedRoot hnondegenerate alpha sourceRate
       determinantBound gamma residual (r sigma tau) halpha hrootSmall
       (hdet sigma tau hsigma htau) hgamma hthreshold
       (hinner sigma tau hsigma htau)

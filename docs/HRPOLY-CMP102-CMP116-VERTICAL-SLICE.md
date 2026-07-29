@@ -818,3 +818,63 @@ the quadratic and residual branches and the concrete
 
 No theorem is to be accepted if it takes that equality, `interaction_bound`,
 the complete `TermSource`, `hraw`, or `hprofile` as a renamed premise.
+
+## Current centered-conditioned acceptance boundary
+
+The centered conditioned lane reaches the same
+`SingleScaleUVDecay (LocalizedCubeHsharpRemainder ...)` proposition as the
+general lane after specializing to the physical dimension `d = 4`.  It does
+not reduce the number of physical obligations: it replaces abstract
+`outer_bound`, `inner_bound`, and `source_bound` assumptions by the explicit
+coercivity, patched-parametrix, contour-series, Neumann, transpose-Neumann,
+conditioned-root, and root-smallness certificates.
+
+The cutoff-sensitive conditioned trace theorem now accepts the interaction
+inequality almost everywhere for the conditioned Gaussian, but only as an
+implication from the literal nonvanishing cutoff.  This is the correct
+intersection of the covariance carrier and the small-field carrier.  Because
+the producer controls that Gaussian measure, the terminal source record also
+requires a quantitative lower covariance certificate:
+
+```text
+lambda_min > 0,
+SInner nonempty,
+lambda_min * <v,v> <= <v, conditionedCovariance v>
+  for every v supported on SInner.
+```
+
+Thus the zero-root/Dirac-measure choice cannot discharge the almost-everywhere
+interaction obligation vacuously.  The old pointwise theorem remains
+available; the new interface is accepted only together with this named
+nondegeneracy debt.
+
+The scalar wall is now visible in the terminal data:
+
+```text
+(potentialRate + r2Rate + gamma) * ||conditionedRoot||^2 < 1.
+```
+
+For the physical coercive inverse this is controlled schematically by
+
+```text
+potentialRate + r2Rate + gamma
+  <~ (min(1,a) - perturbation budget) / CP,
+```
+
+and in four dimensions the Poincare constant scales like the square of the
+fixed block ratio, not the ambient volume.  This inequality, together with
+`contour_series_small`, `neumann_small`, `neumann_transpose_small`, and the
+patched-parametrix contraction, is a named open scalar frontier.
+
+The analytic denominator is three, not four:
+
+```text
+potential_bound : open
+r2_bound        : open
+cutoff_energy_bound installed in the centered terminal record : open
+```
+
+`interaction_budget` is only the optimal normalization
+`alpha = potentialRate + r2Rate + gamma`; it is not counted as an analytic
+discharge.  No complete centered conditioned `TermSource` has yet been
+constructed, and neither `hraw` nor `hRpoly` is proved.

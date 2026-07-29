@@ -128,6 +128,41 @@ theorem CMP116Eq214FiniteGaussianData.ae_norm_innerIntegrand_le_exp_residual_sub
       Y0 P sigma tau psi phi x b b A r gamma residual
         hgamma hthreshold (hinner b) (hinteraction b)
 
+/-- Almost-everywhere version of the cutoff-support contract.  This is the
+source-faithful interface for a conditioned Gaussian: support of the
+covariance and support of the literal cutoff may both be used without
+strengthening either statement to every ambient coordinate. -/
+theorem CMP116Eq214FiniteGaussianData.ae_norm_innerIntegrand_le_exp_residual_sub_cardPenalty_mul_realGaussian_of_ae_cutoffSupport
+    {nDelta nY lieDim : ℕ} {Bond Ψ Φ E : Type*}
+    [Fintype Bond] [Norm E]
+    (G : CMP116Eq214FiniteGaussianData nDelta nY Bond Ψ Φ E lieDim)
+    (Y0 P : Finset Bond)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : Ψ) (phi : Φ)
+    (x : CMP116Eq214GaussianCoordinate Bond lieDim)
+    (A : Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
+    (r : Bond × Fin lieDim → ℝ) (gamma residual : ℝ)
+    (hgamma : 0 ≤ gamma) (hthreshold : 0 ≤ G.threshold)
+    (hinner : ∀ b,
+      ‖G.innerWeight sigma tau psi phi x b‖ ≤
+        Real.exp (∑ i, r i * b i))
+    (hinteraction :
+      ∀ᵐ b ∂matrixGaussianPi (G.covarianceRoot sigma tau),
+        G.toAnalyticData.cutoffFactor Y0 P b ≠ 0 →
+          (G.interactionExponent sigma tau psi phi b).re +
+              (gamma / 2) * (∑ e ∈ P, ‖G.bondField b e‖ ^ 2) ≤
+            -((b ⬝ᵥ (A *ᵥ b)) / 2) + residual) :
+    ∀ᵐ b ∂matrixGaussianPi (G.covarianceRoot sigma tau),
+      ‖G.toAnalyticData.innerIntegrand Y0 P sigma tau psi phi x b‖ ≤
+        Real.exp
+            (residual - gamma / 2 * G.threshold ^ 2 * (P.card : ℝ)) *
+          cmp116Eq223RealGaussian A r b := by
+  filter_upwards [hinteraction] with b hb
+  exact
+    G.toAnalyticData.norm_innerIntegrand_le_exp_residual_sub_cardPenalty_mul_realGaussian_of_cutoffSupport
+      Y0 P sigma tau psi phi x b b A r gamma residual
+        hgamma hthreshold (hinner b) hb
+
 /-- Integrated equation-(2.22)--(2.24) bound from a support-sensitive
 interaction estimate. -/
 theorem CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_exp_residual_sub_cardPenalty_mul_eq224Majorant_of_cutoffSupport
@@ -173,6 +208,69 @@ theorem CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_exp_residual_sub_car
         ∂matrixGaussianPi (G.covarianceRoot sigma tau) :=
       norm_integral_le_of_norm_le hscaled
         (G.ae_norm_innerIntegrand_le_exp_residual_sub_cardPenalty_mul_realGaussian_of_cutoffSupport
+          Y0 P sigma tau psi phi x A r gamma residual
+            hgamma hthreshold hinner hinteraction)
+    _ = scale *
+        (∫ b, cmp116Eq223RealGaussian A r b
+          ∂matrixGaussianPi (G.covarianceRoot sigma tau)) := by
+      rw [integral_const_mul]
+    _ = scale *
+        cmp116Eq224GaussianMajorant
+          (G.covarianceRoot sigma tau) A (fun i => (r i : ℂ)) := by
+      rw [integral_cmp116Eq223RealGaussian_matrixGaussianPi_eq_majorant
+        (G.covarianceRoot sigma tau) A hpos r]
+    _ = Real.exp
+          (residual - gamma / 2 * G.threshold ^ 2 * (P.card : ℝ)) *
+        cmp116Eq224GaussianMajorant (G.covarianceRoot sigma tau) A
+          (fun i => (r i : ℂ)) := rfl
+
+/-- Integrated equation-(2.22)--(2.24) bound when the support-sensitive
+interaction estimate itself is known almost everywhere for the conditioned
+Gaussian. -/
+theorem CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_exp_residual_sub_cardPenalty_mul_eq224Majorant_of_ae_cutoffSupport
+    {nDelta nY lieDim : ℕ} {Bond Ψ Φ E : Type*}
+    [Fintype Bond] [DecidableEq Bond] [Norm E]
+    (G : CMP116Eq214FiniteGaussianData nDelta nY Bond Ψ Φ E lieDim)
+    (Y0 P : Finset Bond)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : Ψ) (phi : Φ)
+    (x : CMP116Eq214GaussianCoordinate Bond lieDim)
+    (A : Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
+    (r : Bond × Fin lieDim → ℝ) (gamma residual : ℝ)
+    (hgamma : 0 ≤ gamma) (hthreshold : 0 ≤ G.threshold)
+    (hpos :
+      (1 + (G.covarianceRoot sigma tau)ᵀ * A *
+        G.covarianceRoot sigma tau).PosDef)
+    (hinner : ∀ b,
+      ‖G.innerWeight sigma tau psi phi x b‖ ≤
+        Real.exp (∑ i, r i * b i))
+    (hinteraction :
+      ∀ᵐ b ∂matrixGaussianPi (G.covarianceRoot sigma tau),
+        G.toAnalyticData.cutoffFactor Y0 P b ≠ 0 →
+          (G.interactionExponent sigma tau psi phi b).re +
+              (gamma / 2) * (∑ e ∈ P, ‖G.bondField b e‖ ^ 2) ≤
+            -((b ⬝ᵥ (A *ᵥ b)) / 2) + residual) :
+    ‖∫ b, G.toAnalyticData.innerIntegrand Y0 P sigma tau psi phi x b
+        ∂G.toAnalyticData.conditionedMeasure sigma tau‖ ≤
+      Real.exp
+          (residual - gamma / 2 * G.threshold ^ 2 * (P.card : ℝ)) *
+        cmp116Eq224GaussianMajorant (G.covarianceRoot sigma tau) A
+          (fun i => (r i : ℂ)) := by
+  rw [G.toAnalyticData_conditionedMeasure]
+  let scale : ℝ := Real.exp
+    (residual - gamma / 2 * G.threshold ^ 2 * (P.card : ℝ))
+  have hgaussian := integrable_cmp116Eq223RealGaussian_matrixGaussianPi
+    (G.covarianceRoot sigma tau) A hpos r
+  have hscaled : Integrable (fun b => scale * cmp116Eq223RealGaussian A r b)
+      (matrixGaussianPi (G.covarianceRoot sigma tau)) :=
+    hgaussian.const_mul scale
+  calc
+    ‖∫ b, G.toAnalyticData.innerIntegrand Y0 P sigma tau psi phi x b
+        ∂matrixGaussianPi (G.covarianceRoot sigma tau)‖ ≤
+      ∫ b, scale * cmp116Eq223RealGaussian A r b
+        ∂matrixGaussianPi (G.covarianceRoot sigma tau) :=
+      norm_integral_le_of_norm_le hscaled
+        (G.ae_norm_innerIntegrand_le_exp_residual_sub_cardPenalty_mul_realGaussian_of_ae_cutoffSupport
           Y0 P sigma tau psi phi x A r gamma residual
             hgamma hthreshold hinner hinteraction)
     _ = scale *

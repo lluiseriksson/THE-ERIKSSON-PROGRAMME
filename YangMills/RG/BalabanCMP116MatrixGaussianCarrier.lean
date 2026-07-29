@@ -90,6 +90,19 @@ structure MatrixConditionedGaussianRootCertificate
   root_square : R * R = C
   covariance_supported : MatrixRangeSupportedOn C S
 
+/-- Quantitative nondegeneracy of a conditioned covariance on its physical
+carrier.  This certificate is deliberately separate from the upper/smallness
+certificate: it prevents an almost-everywhere interaction obligation from
+being discharged by choosing the zero Gaussian root. -/
+structure MatrixConditionedGaussianCovarianceLowerCertificate
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (C : Matrix ι ι ℝ) (S : Finset ι) where
+  lowerBound : ℝ
+  lowerBound_pos : 0 < lowerBound
+  carrier_nonempty : S.Nonempty
+  covariance_lower : ∀ v : ι → ℝ, VectorSupportedOn S v →
+    lowerBound * dotProduct v v ≤ dotProduct v (C.mulVec v)
+
 /-- The conditioned-root certificate generates exact carrier support of the
 Gaussian coordinate map. -/
 theorem MatrixConditionedGaussianRootCertificate.root_supported

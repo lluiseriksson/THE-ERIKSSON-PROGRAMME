@@ -153,6 +153,10 @@ structure CMP116Eq226CenteredConditionedPhysicalTermSource
       conditionedCovariance
       (cmp116PhysicalEndomorphismRealMatrix root)
       (cmp116SourcePhysicalLocalizedCoordinates Dict Z0)
+  conditionedCovariance_nondegenerate :
+    MatrixConditionedGaussianCovarianceLowerCertificate
+      conditionedCovariance
+      (cmp116SourcePhysicalLocalizedCoordinates Dict Z0)
   E0_pos : 0 < E0
   epsilon1_pos : 0 < epsilon1
   C1_pos : 0 < C1
