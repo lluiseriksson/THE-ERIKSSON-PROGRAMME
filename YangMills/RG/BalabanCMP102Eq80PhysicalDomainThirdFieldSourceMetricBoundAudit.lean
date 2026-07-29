@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainThirdFieldSourceMetricBound
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalDomainThirdFieldSourceMetricMajorant
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_cmp102Eq80PhysicalFineHeadTailDomainCoefficient_le_sourceMetric
