@@ -879,3 +879,14 @@ import YangMills.OS.PerronKernel
 -- QUANTITATIVE: no modulus of separation, nothing uniform in the extent, and
 -- the measured ratios collapse towards 1 outside the disordered region.
 import YangMills.OS.PerronGap
+
+-- O-2 — the measure the spectral results were about.  Papers 5-8 studied an
+-- operator and never exhibited a Gibbs measure; this module builds the bridge
+-- the one-dimensional chain already had.  The dressing identity writes the
+-- honest two-dimensional Gibbs weight as the path weight of the SYMMETRISED
+-- kernel times boundary factors, so every Gibbs correlation is a matrix element
+-- of a self-adjoint transfer operator between dressed observables.  The
+-- geometric decay of §4 carries its contraction hypothesis EXPLICITLY: papers
+-- 7-8 give a strict gap with no modulus, which does not by itself produce an
+-- operator-norm bound.  NOTHING UNIFORM IN THE EXTENT is obtained here.
+import YangMills.OS.SpatialGibbs
