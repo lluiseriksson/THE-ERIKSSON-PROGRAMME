@@ -27493,3 +27493,39 @@ correlation estimate.  Compactness or a convergent subsequence would not close
 this campaign.  The next exact step is to split pinned clusters into those
 decoding to the common window and those leaving it; only the latter may then
 be bounded by `connectedLattice_pinned_tail_volumeUniform`.
+
+## Addendum 538 (2026-07-29, **common-window inverse and cluster transport; Cauchy still OPEN**)
+
+`LocalWindowCauchy.lean` adds the inverse direction needed for the finite
+window comparison.  For every finite weighted connected-lattice cluster it
+constructs an actual plaquette-touching walk between arbitrary plaquettes in
+the tuple, with length at most twice the total plaquette cardinality.  Thus,
+if one pinned plaquette has seam margin equal to that bound, every plaquette
+of every polymer has zero-margin representatives and the whole tuple decodes
+to volume-independent `WindowPolymer`s.
+
+The decoding is exact: each decoded support fits the source volume,
+re-realization recovers the original weighted polymer pointwise, and total
+cluster cardinality is preserved.  The generic endpoint
+`WindowPolymer.weightedClusterMonomial_eq_of_commonWindow` then identifies
+the complete Ursell-times-activities monomial of any source tuple with the
+monomial obtained by realizing the same common-window tuple in a second
+fitting volume.  This endpoint deliberately separates exact free-gas
+transport from the later normalized Gibbs cancellation.
+
+The Colab Pro+ focal compilation of the complete new module terminated
+literally with:
+
+```text
+CAUCHY11_EXIT=0
+```
+
+The four new focal `#print axioms` endpoints then terminated with
+`CAUCHY_AUDIT_EXIT=0`; each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+This is a focal checkpoint, not yet a new canonical full-core measurement.
+No file below `YangMills/RG/**` or `YangMills/OS/**` is modified.  The finite
+sum reindexing, KP domination of the complementary tail, Cauchy theorem,
+infinite state, boundary-condition independence, and correlation-limit
+theorems remain open.

@@ -2990,3 +2990,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.KP.ursell_eq_of_incomp
 #print axioms YangMills.KP.clusterSum_eq_of_equiv
 #print axioms YangMills.WindowPolymer.clusterMonomial_toWeightedPolymer_eq
+#print axioms YangMills.WindowPolymer.weighted_exists_touchWalk_le
+#print axioms YangMills.WindowPolymer.cluster_siteMargin_zero
+#print axioms YangMills.WindowPolymer.toWeightedPolymer_decodedClusterTuple
+#print axioms YangMills.WindowPolymer.weightedClusterMonomial_eq_of_commonWindow

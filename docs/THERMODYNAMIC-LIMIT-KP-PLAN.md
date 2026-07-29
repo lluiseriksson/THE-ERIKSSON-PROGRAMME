@@ -57,9 +57,12 @@ subsequence does not close any brick.
 5. **Common-window cluster monomials — green.**
    `WindowPolymer`, exact preservation of incompatibility and activity, and
    equality of Ursell-weighted cluster monomials in any two fitting tori.
-6. **Window decomposition and boundary estimate — open.**
-   Split pinned clusters into common-window terms and clusters leaving the
-   window.  Reindex the first class exactly and dominate the second with
+6. **Window decomposition and boundary estimate — in progress.**
+   `LocalWindowCauchy.lean` now proves that a pinned cluster has a touching
+   walk of length at most twice its total plaquette cardinality, decodes every
+   seam-avoiding tuple exactly, and identifies its full Ursell/activity
+   monomial in any second fitting volume.  It remains to package the finite
+   reindexing and dominate the complementary large-cluster class with
    `connectedLattice_pinned_tail_volumeUniform`.
 7. **Cauchy and infinite state — open.**
    Prove a quantitative Cauchy modulus for every observable, define the limit
@@ -74,13 +77,14 @@ subsequence does not close any brick.
 
 ## Current exact frontier
 
-The next theorem is the finite tuple decomposition.  A cluster with a marked
-plaquette having sufficient seam margin and total polymer cardinality below
-the chosen cutoff decodes to a tuple of `WindowPolymer`s.  Re-realization is
-exact, so `WindowPolymer.clusterMonomial_toWeightedPolymer_eq` identifies its
-term in two volumes.  Failure to decode forces the cluster to cross the
-window seam; the touching-path estimate converts that event into a lower
-bound on total cluster size, which is exactly the tail variable used by
+The next theorem is the finite-sum reindexing.  A cluster with a marked
+plaquette having seam margin at least twice its total polymer cardinality now
+decodes to a tuple of `WindowPolymer`s, re-realizes pointwise to the source
+tuple, and has exactly the same complete monomial in every other fitting
+volume.  The remaining work is to express the small pinned contribution as
+the image of this decoding map and prove that a tuple outside the image must
+have total size beyond the cutoff.  That complementary class is precisely
+the tail variable used by
 `connectedLattice_pinned_tail_volumeUniform`.
 
 No theorem in the current checkpoint asserts Cauchy convergence or the
