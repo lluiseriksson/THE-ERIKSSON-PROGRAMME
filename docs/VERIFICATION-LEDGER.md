@@ -27313,10 +27313,41 @@ Paper 6 remains submitted by owner report with public identifier pending.
 Paper 7 is frozen but not reported submitted.  No identifier is assigned to
 either.
 
-The canonical live checkpoint is now the Perron anchor `08a90502`: full core
-build **8427 jobs**, oracle **2564 commands -> 2564 answers**, axioms exactly
+The checkpoint recorded by this addendum is the Perron anchor `08a90502`: full
+core build **8427 jobs**, oracle **2564 commands -> 2564 answers**, axioms exactly
 `{propext, Classical.choice, Quot.sound}`, zero `sorryAx`, zero project
 axioms.  This checkpoint closes finite-kernel Perron existence, positive
 uniqueness, geometric simplicity, and normalized-vacuum packaging.  It does
 not close a spectral gap, strict peripheral separation, or any continuum
 obligation.
+
+## Addendum 536 (2026-07-29, **O-lane Paper 8 submitted; strict whole-spectrum gap checkpoint becomes live**)
+
+The owner reports submission of *Strict but Not Uniform: a Machine-Checked
+Spectral Gap at Every Finite Extent of the Coupled Slice* in Mathematics -
+Functional Analysis.  The public ai.viXra identifier is pending and is
+deliberately not inferred from submission order.
+
+The submitted edition is v1.2 at paper commit
+`b03766bde54dca1d30c2febea8c008483d53751e`, with formal Lean anchor
+`ac8979631c1541b059b3c10f590ca174b0b5f6be`.  The 6-page PDF has 83,708 bytes
+and SHA-256
+`e8063013965ea1699718d08f2bce1646e73f0dd2b970a518bb9e6339c68d78a0`;
+the TeX SHA-256 is
+`b8d8f14470d8df16ad08e2bd52ef94b9a992c55e15afec62eddb03ec2f89cd2b`.
+The PDF at the owner's submission path is byte-identical to the repository
+artifact.  Exact fields and the permanent record live at
+`papers/perron-gap/SUBMISSION-INFO.txt` and
+`docs/O-LANE-SUBMISSION-PERRON-GAP-20260729.md`.
+
+The terminal theorem is `coupled_gap_all_eigenvalues`,
+`YangMills/OS/PerronGap.lean:483`: every complex non-Perron eigenvalue has
+strictly smaller modulus at every fixed finite extent.  The claim remains
+non-quantitative: there is no separation modulus and nothing uniform in the
+extent.  The measured ratios in the paper are not theorem inputs.
+
+The canonical live checkpoint is now anchor `ac897963`: full core build
+**8428 jobs**, oracle **2583 commands -> 2583 answers** (2560 with axiom
+dependencies and 23 axiom-free), axioms exactly
+`{propext, Classical.choice, Quot.sound}`, zero `sorryAx`, zero project axioms,
+and zero errors.  This changes no `SU(N)`, continuum, or Clay boundary.

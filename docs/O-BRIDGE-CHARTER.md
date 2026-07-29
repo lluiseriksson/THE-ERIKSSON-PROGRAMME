@@ -973,3 +973,29 @@ This does not retroactively widen paper 6.  It also proves no strict peripheral
 separation and no volume-uniform interacting gap.  The next analytic target
 remains a non-vacuum bound under an explicit regime hypothesis, or a precise
 no-go theorem for the available tools.
+
+## AMENDMENT 13 (2026-07-29) — PAPER 8 SUBMITTED; STRICT WHOLE-SPECTRUM GAP AT EACH FINITE EXTENT
+
+The owner reports submission of *Strict but Not Uniform: a Machine-Checked
+Spectral Gap at Every Finite Extent of the Coupled Slice*, v1.2.  The public
+ai.viXra identifier is pending and is not inferred from nearby records.
+
+The frozen paper is `papers/perron-gap/perron_gap.pdf` at paper commit
+`b03766bd`, SHA-256
+`e8063013965ea1699718d08f2bce1646e73f0dd2b970a518bb9e6339c68d78a0`.
+Its formal anchor is `ac897963`; the terminal endpoint
+`coupled_gap_all_eigenvalues` is at
+`YangMills/OS/PerronGap.lean:483`.  The exact fields and hashes are recorded in
+`docs/O-LANE-SUBMISSION-PERRON-GAP-20260729.md`.
+
+**Closed by theorem:** at every fixed finite extent, for every beta and every
+strictly positive source weight, every complex eigenvalue distinct from the
+Perron eigenvalue has strictly smaller modulus.  The normalized vacuum is also
+packaged in the convention consumed by the Osterwalder--Seiler lane.
+
+**Not closed:** the strict inequality carries no quantitative modulus, no
+single epsilon uniform over the spectrum has been packaged, and nothing is
+uniform in the spatial extent.  The reported collapse of finite-dimensional
+ratios is measured and unproved.  No `SU(N)`, continuum, or Clay conclusion is
+claimed.  The next analytic target therefore remains a non-vacuum bound under
+an explicit regime hypothesis, or a precise no-go theorem.

@@ -1,0 +1,70 @@
+SUBMISSION STATUS
+Submitted by the owner on 2026-07-29.
+Public ai.viXra identifier: pending.
+
+CATEGORY
+Mathematics - Functional Analysis
+
+TITLE
+Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite Extent of the Coupled Slice
+
+AUTHOR
+Lluis Eriksson
+
+ABSTRACT
+A companion paper supplied the vacuum of the coupled Z_2 slice at every spatial
+extent: a strictly positive eigenvector, unique up to scale, carrying the
+spectral radius. It listed PERIPHERAL SEPARATION as out of scope, and that
+omission is not cosmetic - without it |mu| <= lambda leaves mu = -lambda open,
+and no gap follows at all.
+
+This paper closes it, and then draws the consequence that matters, which is
+negative.
+
+PROVED. For a strictly positive kernel on a finite nonempty type, -lambda is not
+an eigenvalue, hence every real eigenvalue other than the Perron eigenvalue is
+STRICTLY smaller in absolute value. Specialised to the coupled slice: at every
+extent L, every beta, and every strictly positive source weight, the transfer
+operator has a strict spectral gap. The proof of peripheral separation avoids
+the equality case of the triangle inequality, which is where the classical
+argument spends its effort: writing u = |w|, p = u - w and q = u + w, one gets
+A p = lambda q and A q = lambda p, so a nonzero p would make A p strictly
+positive, hence q strictly positive, hence w nonnegative, hence p = 0.
+
+The separation is then extended from the real eigenvalues to ALL of them. The
+coupled kernel is conjugate by a positive diagonal to its symmetrised form,
+which is symmetric; and a real symmetric kernel has real eigenvalues, by a
+computation that pairs the eigenvector against its image twice and is two
+rearrangements of a double sum. So there are no complex peripheral eigenvalues
+left to exclude, and the strict gap is a statement about the whole spectrum.
+That composition is itself a single machine-checked theorem
+(coupled_gap_all_eigenvalues), not a step left to the reader. We also deliver
+the vacuum in Euclidean normalisation, norm(Omega) = 1 with T Omega = Omega.
+
+NOT PROVED, AND THIS IS THE TITLE. The gap is STRICT, not QUANTITATIVE: the
+theorem provides no modulus of separation, and in particular nothing uniform in
+L. Direct numerical diagonalisation shows the subdominant ratio running
+0.9205, 0.9829, 0.9964, 0.9992 at L = 2,3,4,5 for beta = 0.8, gamma = 1.2 -
+collapsing towards 1. That computation is reported as measured and unproved, and
+no theorem here depends on it; its role is to say that a paper reporting only
+the positive half would be reporting the half that does not matter.
+
+Nothing in this paper is a claim about SU(N), the continuum limit, or the
+Yang-Mills mass gap.
+
+COMMENTS
+6 pages. Lean 4 / mathlib formalization; full core build 8428 jobs, 2583 oracle
+commands (2560 with axiom dependencies + 23 axiom-free), axiom set exactly
+{propext, Quot.sound, Classical.choice}, zero sorry and zero project axioms.
+All verification links anchored at a fixed commit.
+
+FROZEN ARTIFACT
+Submission edition: v1.2.
+Paper commit: b03766bde54dca1d30c2febea8c008483d53751e
+Lean anchor: ac8979631c1541b059b3c10f590ca174b0b5f6be
+Lean endpoint: YangMills/OS/PerronGap.lean:483, coupled_gap_all_eigenvalues
+PDF path: papers/perron-gap/perron_gap.pdf
+PDF bytes: 83708
+PDF SHA-256: e8063013965ea1699718d08f2bce1646e73f0dd2b970a518bb9e6339c68d78a0
+TeX bytes: 17561
+TeX SHA-256: b8d8f14470d8df16ad08e2bd52ef94b9a992c55e15afec62eddb03ec2f89cd2b

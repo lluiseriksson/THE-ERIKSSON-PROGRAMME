@@ -9,9 +9,13 @@
 > [`O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`](O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md).
 > S-2 subsequently closed in the separate Perron paper at Lean anchor
 > `08a90502` and paper commit `316648e2`: a normalized Perron vacuum now exists
-> at every finite extent.  S-3 remains open and must carry an explicit regime
-> hypothesis.  This file remains the preregistered design record; its original
-> ladder is historical, not a claim made by the submitted paper.
+> at every finite extent.  Paper 8 then closes strict peripheral separation
+> for the whole finite spectrum at Lean anchor `ac897963` and paper commit
+> `b03766bd`; it was submitted by the owner on 2026-07-29 with public ID
+> pending.  This is strict pointwise-in-extent separation only: S-3 remains
+> open and must carry an explicit regime hypothesis.  This file remains the
+> preregistered design record; its original ladder is historical, not a claim
+> made by the submitted papers.
 
 Status of the predecessor: **frozen and submitted**, v1.3, paper commit
 `959076f2`, freeze declared in ledger Addendum 524.  Nothing below modifies it.

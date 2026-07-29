@@ -3,7 +3,7 @@
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
     "updated": "2026-07-29",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8427 jobs green; measured source checkpoint 08a90502 (on main)",
+    "checkpoint": "latest recorded lake build YangMillsCore - 8428 jobs green; measured source checkpoint ac897963 (on main)",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
@@ -17,7 +17,7 @@
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "control_plane": "REPAIRED (2026-07-29). run-manifests contains only strict schema-v1 execution manifests. Frozen pre-schema and specialized ledgers are hash-indexed under run-records/legacy and remain usable only through explicit domain validators. The historical artifact baseline never exempts a changed transcript from strict manifest coverage.",
-    "submission_notice": "Public author-list entries [89]-[93] were rechecked on 2026-07-29 and their v1 PDFs are byte-identical to the repository artifacts. O-lane Paper 6 is submitted with public ID pending; the Perron paper is frozen and not reported submitted."
+    "submission_notice": "Public author-list entries [89]-[93] were rechecked on 2026-07-29 and their v1 PDFs are byte-identical to the repository artifacts. O-lane Papers 6 and 8 are submitted with public IDs pending; Paper 7 remains frozen and is not reported submitted."
   },
   "status_legend": {
     "proved": "Machine-checked theorem reachable from YangMillsCore; oracle-clean on Lean's three standard axioms.",
@@ -31,6 +31,18 @@
     "D": "Repository plumbing and public audit infrastructure"
   },
   "recent_papers": [
+    {
+      "id": "o-paper-8",
+      "title": "Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite Extent of the Coupled Slice",
+      "date": "2026-07-29",
+      "status": "submitted; public identifier pending",
+      "path": "papers/perron-gap/perron_gap.pdf",
+      "record": "docs/O-LANE-SUBMISSION-PERRON-GAP-20260729.md",
+      "anchor": "ac897963",
+      "paper_commit": "b03766bd",
+      "sha256": "e8063013965ea1699718d08f2bce1646e73f0dd2b970a518bb9e6339c68d78a0",
+      "scope": "Proves strict separation of every non-Perron complex eigenvalue at each fixed finite extent and packages the unit vacuum. It supplies no quantitative modulus, no bound uniform in the extent, and no continuum Yang-Mills statement."
+    },
     {
       "id": "o-paper-7",
       "title": "A Machine-Checked Perron Theorem for Strictly Positive Kernels, and the Coupled-Slice Vacuum at Every Spatial Extent",

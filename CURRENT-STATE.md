@@ -31,11 +31,12 @@ See
 [`docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md`](docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md).
 
 **Live-state snapshot updated:** 2026-07-29.  **Latest recorded verification
-checkpoint:** `08a90502` (on `main`), with `lake build YangMillsCore` green at
-**8427 jobs** and 2,564 oracle answers.  The only axiom names in the complete
+checkpoint:** `ac897963` (on `main`), with `lake build YangMillsCore` green at
+**8428 jobs** and 2,583 oracle answers.  The only axiom names in the complete
 oracle transcript are `propext`, `Classical.choice`, and `Quot.sound`; there are
 zero `sorryAx` and zero project axioms.  See
-[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addenda 529--530.
+[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addenda 533 and
+536.
 
 **Recent public papers checked (2026-07-29).**  Author-list entries `[89]` to
 `[93]` are public as ai.viXra `2607.0070`, `2607.0073`, `2607.0075`,
@@ -47,10 +48,12 @@ commits, and Lean anchors are in
 **O-lane continuation.**  Paper 6, *Blind to the Coupling*, is submitted by
 owner report with public ID pending.  Paper 7, *A Machine-Checked Perron
 Theorem for Strictly Positive Kernels*, is frozen at paper `316648e2` and Lean
-anchor `08a90502`; submission is not reported.  The latter closes the
-general-finite-kernel existence/positive-uniqueness/normalized-vacuum
-dependency that paper 6 left outside, but proves no spectral gap and does not
-remove the projective-metric volume obstruction.
+anchor `08a90502`; submission is not reported.  Paper 8, *Strict but Not
+Uniform*, is submitted by owner report at paper `b03766bd` and Lean anchor
+`ac897963`, with public ID pending.  Its terminal theorem proves strict
+separation of all non-Perron complex eigenvalues at every fixed finite extent.
+It provides no quantitative modulus and nothing uniform in the extent, and
+does not remove the projective-metric volume obstruction.
 
 **PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
 is paper commit `193bb675`: all 24 theorem-map names link to the immutable
@@ -487,7 +490,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8427 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8428 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.

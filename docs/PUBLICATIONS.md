@@ -37,6 +37,7 @@ are byte-identical.
 
 | State | Artifact | Exact repository identity |
 |---|---|---|
+| Submitted on 2026-07-29, owner report; public ID pending | *Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite Extent of the Coupled Slice* | paper `b03766bd`, Lean `ac897963`, PDF SHA-256 `e8063013965ea1699718d08f2bce1646e73f0dd2b970a518bb9e6339c68d78a0`; see the [submission record](O-LANE-SUBMISSION-PERRON-GAP-20260729.md) |
 | Submitted on 2026-07-29, owner report; public ID pending | *Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial Extent* | paper `3d313d92`, Lean `a70426f4`, PDF SHA-256 `42617528c0df0ad3e813ee77c11722c53e5ea1b4b97dc93f22d9ece45d29e4cb`; see the [submission record](O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md) |
 | Frozen v1.1; submission not reported | *A Machine-Checked Perron Theorem for Strictly Positive Kernels, and the Coupled-Slice Vacuum at Every Spatial Extent* | paper `316648e2`, Lean `08a90502`, PDF SHA-256 `6349c8e555f10fde30e0457f54c841da9d05e252cf34e65f6a8064d463318e74` |
 
@@ -51,6 +52,7 @@ The O-lane sequence verifies finite or exactly specified reconstruction
 interfaces: the dense-family criterion, finite abelian reflection positivity,
 the smallest complete `Z_2` chain, a genuinely degenerate quotient, the
 spatial-extent obstruction, projective-metric blindness, and a Perron vacuum
-for strictly positive finite kernels.  It does **not** provide a
-volume-uniform interacting spectral gap, a four-dimensional continuum limit,
-or the Clay Yang--Mills mass gap.
+for strictly positive finite kernels.  Paper 8 adds strict separation of every
+non-Perron eigenvalue at each fixed finite extent.  It does **not** provide a
+quantitative separation modulus or a volume-uniform interacting spectral gap,
+a four-dimensional continuum limit, or the Clay Yang--Mills mass gap.
