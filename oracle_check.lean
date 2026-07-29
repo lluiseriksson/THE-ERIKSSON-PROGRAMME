@@ -2929,6 +2929,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.gibbsPathSum_eq_symPathSum
 #print axioms YangMills.OS.gibbsPathSum_eq_iterate
 #print axioms YangMills.OS.gibbsPartition_eq_iterate
+#print axioms YangMills.OS.gibbsCorr_eq_ratio_iterate
+#print axioms YangMills.OS.gibbsCorr_denom_pos
 #print axioms YangMills.OS.symVacuum_exists
 #print axioms YangMills.OS.act_normalized_unitVacuum
 #print axioms YangMills.OS.eucNorm_nonneg

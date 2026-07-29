@@ -269,6 +269,29 @@ theorem gibbsPartition_eq_iterate {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     exact Finset.sum_congr rfl fun X _ => by ring
   rw [h, gibbsPathSum_eq_iterate hw β N]
 
+/-- **The normalised expectation is a RATIO of two matrix elements.**  The
+bridge above identifies the unnormalised two-point SUM; the expectation in the
+measure divides it by the partition function, which is the same matrix element
+at the constant observable.  Stated separately because the distinction is real:
+the numerator alone is not the correlation. -/
+theorem gibbsCorr_eq_ratio_iterate {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (N : ℕ) (A B : (Fin L → Fin 2) → ℝ) :
+    gibbsCorr w β N A B
+      = (∑ σ, (act (symWeighted w β))^[N] (dress w A) σ * dress w B σ)
+        / (∑ σ, (act (symWeighted w β))^[N] (dress w (fun _ => 1)) σ
+              * dress w (fun _ => 1) σ) := by
+  unfold gibbsCorr
+  rw [gibbsPathSum_eq_iterate hw β N A B, gibbsPartition_eq_iterate hw β N]
+
+/-- The denominator of that ratio is strictly positive, so the expectation is
+well defined and the identity is not an artefact of division by zero. -/
+theorem gibbsCorr_denom_pos {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (N : ℕ) :
+    0 < ∑ σ, (act (symWeighted w β))^[N] (dress w (fun _ => 1)) σ
+          * dress w (fun _ => 1) σ := by
+  rw [← gibbsPartition_eq_iterate hw β N]
+  exact gibbsPartition_pos hw β N
+
 /-! ## §3  The vacuum of the symmetrised kernel
 
 The bridge lands on `symWeighted`.  This section checks that the object it lands
