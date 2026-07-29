@@ -7,8 +7,11 @@
 > identifier is pending.  Frozen paper commit: `3d313d92`; formal anchor:
 > `a70426f4`; submission record:
 > [`O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`](O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md).
-> This file remains the preregistered design record; its S-2/S-3 entries are
-> open continuations, not claims made by the submitted paper.
+> S-2 subsequently closed in the separate Perron paper at Lean anchor
+> `08a90502` and paper commit `316648e2`: a normalized Perron vacuum now exists
+> at every finite extent.  S-3 remains open and must carry an explicit regime
+> hypothesis.  This file remains the preregistered design record; its original
+> ladder is historical, not a claim made by the submitted paper.
 
 Status of the predecessor: **frozen and submitted**, v1.3, paper commit
 `959076f2`, freeze declared in ledger Addendum 524.  Nothing below modifies it.

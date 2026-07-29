@@ -949,3 +949,27 @@ state an explicit small-coupling/high-temperature region.
 The immutable artifact hashes, exact submission fields, and scope boundary are
 recorded in
 `docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`.
+
+## AMENDMENT 12 (2026-07-29) — PUBLIC IDS VERIFIED; S-2 CLOSED IN A SEPARATE FROZEN PAPER
+
+The public author page now lists the five preceding O-lane papers as
+ai.viXra `2607.0070`, `2607.0073`, `2607.0075`, `2607.0076`, and
+`2607.0078`.  Their public v1 PDFs were downloaded and each SHA-256 matches
+the corresponding repository PDF exactly.  The permanent crosswalk is
+`docs/PUBLICATIONS.md`.
+
+Paper 6 remains submitted by owner report with public ID pending; no nearby
+identifier is assigned by inference.
+
+The item listed as still open in Amendment 11 has since been discharged in a
+**separate** paper: `YangMills/OS/PerronKernel.lean` at anchor `08a90502`
+proves, for strictly positive finite kernels, existence and positive
+uniqueness of a normalized Perron vacuum, geometric simplicity, and the
+spectral-radius statement.  The manuscript *A Machine-Checked Perron Theorem
+for Strictly Positive Kernels, and the Coupled-Slice Vacuum at Every Spatial
+Extent* is frozen at `316648e2`; submission is not reported.
+
+This does not retroactively widen paper 6.  It also proves no strict peripheral
+separation and no volume-uniform interacting gap.  The next analytic target
+remains a non-vacuum bound under an explicit regime hypothesis, or a precise
+no-go theorem for the available tools.

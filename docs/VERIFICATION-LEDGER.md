@@ -26887,7 +26887,193 @@ axioms exactly `{propext, Quot.sound, Classical.choice}` with no other name
 anywhere in the transcript, zero `sorryAx`, zero project axioms, zero errors.
 Paper 9pp, 32 permalinks re-verified at the anchor commit itself.
 
-## Addendum 528 (2026-07-29, **O-lane Paper 6 submitted; live documentation and artifact record synchronized**)
+## Addendum 528 (2026-07-29, **O-3i: PERRON--FROBENIUS IN LEAN 4 for strictly positive kernels, and the coupled vacuum at EVERY spatial extent -- a dependency discharged instead of routed around a third time**)
+
+**Why.**  The pinned `mathlib` has no Perron--Frobenius theorem, and its absence
+had already forced a detour twice: O-3f could only say the vacuum had become
+*unavailable*, and O-3h had to build its domination bound from scratch and could
+exhibit the vacuum in closed form only at two sites.  A dependency that bites
+twice is structural.
+
+**Proved, for any strictly positive kernel on a finite nonempty type.**
+`exists_pos_eigenvector` (a strictly positive eigenvector exists, with strictly
+positive eigenvalue); `pos_eigenvector_unique` (any two are proportional and
+share their eigenvalue); `eigenvector_eq_smul_of_pos` (geometric simplicity);
+and, with O-3h's complex domination, the eigenvalue is the **spectral radius**.
+
+**Existence is by COMPACTNESS, not by a fixed-point theorem** - the library has
+no Brouwer.  Maximise `r` over the compact set of pairs `(r, x)` with `x` in the
+simplex and `r x <= A x`; maximality forces equality, since a strict inequality
+anywhere would let one further application of `A` produce an admissible pair
+with a larger `r`.
+
+**Two design findings, both of which removed work rather than adding it.**
+
+1. **Summing the constraint replaced an estimate.**  The bound keeping the set
+   compact is `r = r * sum x <= sum (A x)`, obtained by summing the very
+   inequality that defines the set.  The first design bounded `r` through the
+   smallest entry of a *thickened* simplex and needed the ratio of the extreme
+   entries of `A`; summing deleted that layer and two auxiliary constants.
+2. **The order of the steps did the work.**  Compactness runs on the plain
+   simplex, which contains points with zero entries, and strict positivity of
+   the maximiser is recovered *afterwards* from the eigen-equation.  Searching
+   only among strictly positive vectors would have needed a thickened simplex
+   and an invariance estimate.
+
+**Application.**  `sourceWeightedKernelL` is O-3f's decoupled kernel times ANY
+strictly positive weight on the SOURCE configuration, at ANY extent - the class
+containing O-3f's coupled kernel.  At every `L`: the vacuum exists, is unique up
+to scale, and carries the spectral radius.  The obstruction of O-3f is thereby
+located exactly: not in the object, not in the model, but in the route.
+
+**NOT claimed.**  Algebraic simplicity; Perron--Frobenius for merely irreducible
+kernels; periodicity; and **no spectral gap of any kind**.  The obstructions of
+O-3g stand untouched - having the first object of the chain back is a
+precondition for the analytic work, not a substitute for it.
+
+**GHOST #26 - AN ORACLE LIST THAT COULD NOT TELL CODE FROM PROSE.**  The oracle
+commands for a new module are generated from its source by a regex.  A docstring
+continuation line beginning with the word `theorem` produced the bogus entry
+`YangMills.OS.of`.  Lean rejected that constant and the reconciliation -
+17 answers for 18 commands - exposed it.  **That is the lucky case.**  Had the
+docstring wrapped as `theorem foo of ...`, the regex would have emitted
+`YangMills.OS.foo`: a VALID DUPLICATE that answers cleanly, inflating the
+published command count with no error anywhere in the transcript.  Fixed at both
+levels - the docstring reflowed (the trigger) and the extractor taught to track
+`/- -/` nesting (the class).  The earlier modules were re-checked with the
+hardened extractor and give identical counts, so **no published counter is
+affected**.  The rule this buys: *an oracle list generated from source is code,
+not documentation; reconciling commands against answers is not bookkeeping, it
+is the only check that catches this.*
+
+**Measured.**  Anchor `6f3121d693e4f0f560a2ff01c63f4aacf1a49390`; full core
+build **8427 jobs** (8426 + 1, the increment being this module), EXIT 0, zero
+errors; oracle 2542 -> **2559 commands -> 2559 answers** (2536 with axiom
+dependencies + 23 axiom-free); extraction over the whole transcript including
+wrapped continuations shows the only axiom names anywhere are `propext`,
+`Classical.choice`, `Quot.sound`; zero `sorryAx`; zero real errors.  Paper 6pp,
+16 line-anchored permalinks verified at the anchor commit itself.
+
+## Addendum 529 (2026-07-29, **O-3i v1.1: the normalised vacuum -- `T Omega = Omega`, the very equation O-3f proved false, holding again at every extent**)
+
+An external review named one addition that would turn the result from a loose
+pair `(v, lambda)` into an object the Osterwalder--Seiler interfaces can consume,
+plus two precision corrections.  All three are applied and the module was green
+on the first attempt.
+
+**1. THE NORMALISED VACUUM.**  `normalizedKernel A lam = A / lam`, and
+`normalizedKernel_fixes_eigenvector`: the Perron vector is a genuine fixed point
+of the normalised transfer operator.  `exists_normalized_vacuum` and
+`normalized_vacuum_of_sourceWeight` package it with `Omega > 0` and
+`sum Omega = 1`; `coupled_ring_normalized_vacuum` instantiates the ring slice.
+
+**Why this is more than packaging.**  It is *which* equation it is.  The
+companion chain obtained the vacuum from `T Omega = Omega` for the **uniform**
+`Omega`, and O-3f proved exactly that statement FALSE as soon as a spatial
+coupling is present.  Here the same equation holds again -- for the **Perron**
+`Omega` instead of the uniform one, at every extent.  The lane's loop closes
+with the equation it opened with.
+
+**A small lesson of its own.**  The normalisation `sum Omega = 1` was FREE: the
+existence proof already produces its vector inside the simplex, so the conjunct
+only had to be *stated*.  `exists_pos_eigenvector` now carries it and every
+downstream statement inherits it.  Rule: *a proof can establish more than its
+statement advertises, and the gap stays invisible until something downstream
+needs the missing conjunct -- so when a construction passes through a normalised
+object, say so in the statement.*
+
+**2. TITLE PRECISION.**  *Perron--Frobenius* names, classically, a package that
+includes strict separation `|mu| < lambda` off the peripheral eigenvalue,
+algebraic simplicity, and peripheral uniqueness.  This development proves
+existence, positive uniqueness, GEOMETRIC simplicity and the spectral radius --
+not those three.  The scope list said so, but the title did not, so the title
+now reads *A Machine-Checked **Perron Theorem** for Strictly Positive Kernels*.
+This is the Addendum 521 rule applied to a title that was overselling by a
+single word.
+
+**3. CLAIMS ABOUT THE LIBRARY, TIME-LOCALISED.**  *"in a library with no
+fixed-point theorem"* became *"without invoking a fixed-point theorem in the
+pinned `mathlib` revision"*, and the body adds that this is a statement about
+that revision and not about the library in perpetuity.  A claim about a moving
+library expires; a claim about a pinned revision does not.
+
+**Left as it stands, deliberately.**  The spectral-radius statement depends
+modularly on the domination theorem of O-3h rather than re-proving it here.
+That dependency is real and is declared in the paper; duplicating the theorem to
+make one paper self-contained would trade an honest citation for redundant code.
+
+**Measured.**  Anchor `08a9050201287a31d20fc4339cc5c6c64b1391fb`; full core
+build **8427 jobs** EXIT 0, zero errors; oracle 2559 -> **2564 commands ->
+2564 answers** (2541 with axiom dependencies + 23 axiom-free); targeted run over
+the module's **22** declarations, all with exactly
+`{propext, Classical.choice, Quot.sound}`; zero `sorryAx`; zero real errors.
+Paper 6pp, 20 line-anchored permalinks re-verified at the anchor commit itself.
+
+## Addendum 530 (2026-07-29, **Perron-kernel paper: FREEZE DECLARED at v1.1 / `316648e2`, and the continuation fixed -- including the one endpoint deliberately NOT added here**)
+
+The external review reports no remaining defect and says explicitly that the
+remaining microinterface should not reopen the manuscript.  Per the C6 /
+Poincare-wall / spatial-extent precedent the freeze is written down rather than
+left implicit, and nothing further is edited in this paper.
+
+**FROZEN OBJECT.**  `papers/perron-kernel/perron_kernel.{tex,pdf}` at paper
+commit `316648e2`, 6 pages.  Lean anchor
+`08a9050201287a31d20fc4339cc5c6c64b1391fb`.  Full core build **8427 jobs**,
+oracle **2564 commands -> 2564 answers** (2541 with axiom dependencies + 23
+axiom-free), axioms exactly `{propext, Quot.sound, Classical.choice}`, zero
+`sorryAx`, zero project axioms, zero errors.  20 line-anchored permalinks,
+verified at the anchor commit itself before each compile.  Submission is the
+owner's click and no agent performs it.
+
+**THE EDITORIAL ARC, for the record.**  Three review rounds, and every defect
+was in the STATEMENT layer rather than in the proofs:
+
+* **528 -> 529, the title.**  *Perron--Frobenius* oversold by one word; the scope
+  list already drew the line the title did not.
+* **529, the missing conjunct.**  The existence proof produced its vector inside
+  the simplex all along; `sum v = 1` only had to be *stated* before anything
+  downstream could use it.
+* **529, the library claim.**  A statement about a moving library was rewritten
+  as a statement about a pinned revision.
+
+None of the three touched a proof.  That is the signature of a development whose
+Lean is ahead of its prose, and the correction cost is small precisely because
+the prose is where it is cheap to be wrong -- which is also why it must be
+audited as hard as the theorems.
+
+**THE ENDPOINT DELIBERATELY NOT ADDED.**  The review named one further
+interface: the Osterwalder--Seiler side conventionally wants a vector of unit
+HILBERT norm, `norm(Omega) = 1`, whereas this paper normalises on the simplex,
+`sum Omega = 1`.  The corollary is immediate -- rescale by the norm -- and it is
+NOT added here, for two reasons.  First, the review itself says it is packaging
+for consumption rather than mathematics, and a frozen paper does not grow
+packaging.  Second, and decisively, the natural home for it is the module that
+CONSUMES the vacuum, together with the self-adjointness of the symmetrised
+operator, which likewise belongs to that bridge and not to a Perron theorem.
+Recorded here so the next campaign starts from a named brick rather than
+rediscovering it.
+
+**CONTINUATION, fixed here and without a schedule.**
+
+1. **The consumption module.**  Unit-Hilbert-norm vacuum from this paper's
+   `Omega`; self-adjointness of the symmetrised kernel (the similarity is
+   already a theorem of O-3g); and the `transfer data` interface instantiated at
+   every finite `L`.
+2. **The analytic target.**  A bound on the non-vacuum sector under an EXPLICIT
+   regime hypothesis.  That the hypothesis is mandatory rather than a
+   convenience is not an opinion: the design probe of
+   `docs/O-LANE-CONTINUATION-20260728.md` measured the subdominant ratio rising
+   towards 1 with `L` outside the disordered region, so an unrestricted
+   volume-uniform target is aiming at something the numbers say is false.
+3. Failing 2: **a precise no-go** for the tools this lane owns.  Either outcome
+   is publishable.
+
+**What the freeze does NOT do.**  Recovering the vacuum bounds nothing.  The
+O-3g obstructions stand: the projective metric is still blind to the coupling
+and still degenerates in the volume.  The first object of the chain being back
+is a precondition for the analytic work, not a substitute for it, and the paper
+says so in two separate remarks.
+## Addendum 531 (2026-07-29, **O-lane Paper 6 submitted; live documentation and artifact record synchronized**)
 
 The owner reports submission of *Blind to the Coupling: a Second
 Machine-Checked Obstruction at Spatial Extent* in Physics - Mathematical
@@ -26906,8 +27092,38 @@ Both hashes were recomputed from the public `main` tree before registration.
 Claim boundary unchanged from Addendum 527: two-sided coupling-blindness,
 volume degeneration, exact two-site eigenpairs, strict positivity, and
 domination of every real or complex eigenvalue are proved.  No
-volume-uniform interacting gap, general-`L` Perron theorem, uniqueness,
-simplicity, spectral completeness, `SU(N)`, continuum, or Clay statement is
-proved or claimed.  The exact submission fields and permanent record live at
-`papers/spatial-birkhoff/SUBMISSION-INFO.txt` and
+volume-uniform interacting gap, uniqueness, algebraic simplicity, peripheral
+uniqueness, strict peripheral separation, `SU(N)`, continuum, or Clay
+statement is proved or claimed.  The exact submission fields and permanent
+record live at `papers/spatial-birkhoff/SUBMISSION-INFO.txt` and
 `docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`.
+
+## Addendum 532 (2026-07-29, **public O-lane IDs `[89]`--`[93]` verified by binary identity; live state advanced to the Perron checkpoint**)
+
+The public author page was rechecked rather than inferred from submission
+order.  Its newest visible entries are:
+
+* `[89]` `2607.0070`, O-bridge;
+* `[90]` `2607.0073`, reflection positivity;
+* `[91]` `2607.0075`, spatial extent;
+* `[92]` `2607.0076`, degenerate quotient;
+* `[93]` `2607.0078`, complete finite `Z_2` OS chain.
+
+Each public v1 PDF was downloaded.  Its byte length and SHA-256 equal the
+corresponding repository PDF exactly; the five hashes, timestamps, paper
+commits, Lean anchors, and public links are frozen in
+`docs/PUBLICATIONS.md`.  This is stronger than matching titles or dates and
+prevents a later local revision from being mislabeled as the submitted
+edition.
+
+Paper 6 remains submitted by owner report with public identifier pending.
+Paper 7 is frozen but not reported submitted.  No identifier is assigned to
+either.
+
+The canonical live checkpoint is now the Perron anchor `08a90502`: full core
+build **8427 jobs**, oracle **2564 commands -> 2564 answers**, axioms exactly
+`{propext, Classical.choice, Quot.sound}`, zero `sorryAx`, zero project
+axioms.  This checkpoint closes finite-kernel Perron existence, positive
+uniqueness, geometric simplicity, and normalized-vacuum packaging.  It does
+not close a spectral gap, strict peripheral separation, or any continuum
+obligation.

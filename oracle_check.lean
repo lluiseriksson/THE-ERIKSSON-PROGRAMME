@@ -2859,3 +2859,27 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.evenTop_dominates
 #print axioms YangMills.OS.norm_eigenvalue_le_of_pos_eigenvector
 #print axioms YangMills.OS.evenTop_dominates_complex
+
+-- O-3i: Perron-Frobenius for positive kernels, and the vacuum at every L
+#print axioms YangMills.OS.apply_pos_of_nonneg
+#print axioms YangMills.OS.eigenvalue_pos
+#print axioms YangMills.OS.eq_zero_of_nonneg_of_eigen_of_zero
+#print axioms YangMills.OS.eigenvector_eq_smul_of_pos
+#print axioms YangMills.OS.pos_eigenvector_unique
+#print axioms YangMills.OS.simplexSet
+#print axioms YangMills.OS.simplexSet_le_one
+#print axioms YangMills.OS.isCompact_simplexSet
+#print axioms YangMills.OS.exists_pos_eigenvector
+#print axioms YangMills.OS.normalizedKernel
+#print axioms YangMills.OS.normalizedKernel_fixes_eigenvector
+#print axioms YangMills.OS.exists_normalized_vacuum
+#print axioms YangMills.OS.sourceWeightedKernelL
+#print axioms YangMills.OS.sourceWeightedKernelL_pos
+#print axioms YangMills.OS.vacuum_exists_of_sourceWeight
+#print axioms YangMills.OS.normalized_vacuum_of_sourceWeight
+#print axioms YangMills.OS.vacuum_unique_of_sourceWeight
+#print axioms YangMills.OS.vacuum_spectral_radius_of_sourceWeight
+#print axioms YangMills.OS.spatialWeightRing
+#print axioms YangMills.OS.spatialWeightRing_pos
+#print axioms YangMills.OS.coupled_ring_vacuum_exists
+#print axioms YangMills.OS.coupled_ring_normalized_vacuum

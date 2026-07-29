@@ -3,7 +3,7 @@
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
     "updated": "2026-07-29",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8426 jobs green; measured source checkpoint a70426f4 (on main)",
+    "checkpoint": "latest recorded lake build YangMillsCore - 8427 jobs green; measured source checkpoint 08a90502 (on main)",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
@@ -17,7 +17,7 @@
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "control_plane": "REPAIRED (2026-07-29). run-manifests contains only strict schema-v1 execution manifests. Frozen pre-schema and specialized ledgers are hash-indexed under run-records/legacy and remain usable only through explicit domain validators. The historical artifact baseline never exempts a changed transcript from strict manifest coverage.",
-    "submission_notice": "O-lane Paper 6 was submitted by the owner on 2026-07-29. Its public ai.viXra identifier is pending; no identifier is inferred."
+    "submission_notice": "Public author-list entries [89]-[93] were rechecked on 2026-07-29 and their v1 PDFs are byte-identical to the repository artifacts. O-lane Paper 6 is submitted with public ID pending; the Perron paper is frozen and not reported submitted."
   },
   "status_legend": {
     "proved": "Machine-checked theorem reachable from YangMillsCore; oracle-clean on Lean's three standard axioms.",
@@ -32,6 +32,18 @@
   },
   "recent_papers": [
     {
+      "id": "o-paper-7",
+      "title": "A Machine-Checked Perron Theorem for Strictly Positive Kernels, and the Coupled-Slice Vacuum at Every Spatial Extent",
+      "date": "2026-07-29",
+      "status": "frozen v1.1; submission not reported",
+      "path": "papers/perron-kernel/perron_kernel.pdf",
+      "record": "docs/PUBLICATIONS.md",
+      "anchor": "08a90502",
+      "paper_commit": "316648e2",
+      "sha256": "6349c8e555f10fde30e0457f54c841da9d05e252cf34e65f6a8064d463318e74",
+      "scope": "Proves existence, positive uniqueness, geometric simplicity, a normalized fixed vacuum, and the spectral-radius statement for strictly positive finite kernels. It does not prove a spectral gap or strict peripheral separation."
+    },
+    {
       "id": "o-paper-6",
       "title": "Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial Extent",
       "date": "2026-07-29",
@@ -42,6 +54,81 @@
       "paper_commit": "3d313d92",
       "sha256": "42617528c0df0ad3e813ee77c11722c53e5ea1b4b97dc93f22d9ece45d29e4cb",
       "scope": "Proves projective-metric coupling-blindness and volume degeneration, plus exact two-site eigenpairs and spectral-radius domination. It does not prove a volume-uniform interacting gap or any continuum Yang-Mills statement."
+    },
+    {
+      "id": "ai-vixra-2607-0078",
+      "title": "From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked Osterwalder-Seiler Chain for the Z_2 Lattice Gauge Chain",
+      "date": "2026-07-28",
+      "status": "public as ai.viXra.org:2607.0078",
+      "path": "papers/os-chain-z2/os_chain_z2.pdf",
+      "record": "docs/PUBLICATIONS.md",
+      "anchor": "bd2c1839",
+      "paper_commit": "0df60332",
+      "sha256": "8b52725dfa42a40b119b4dc4a34dd4b5b326fc11bca2cd008dfa384f3675f3c4",
+      "public_id": "2607.0078",
+      "public_url": "https://ai.vixra.org/abs/2607.0078",
+      "public_pdf_url": "https://ai.vixra.org/pdf/2607.0078v1.pdf",
+      "scope": "Checks the full finite Z_2 chain from Gibbs weight through reconstruction, transfer operator, spectral gap, and clustering. The spatial slice is a point and no volume-uniform interacting result is claimed."
+    },
+    {
+      "id": "ai-vixra-2607-0076",
+      "title": "The Quotient That Is Not the Identity: A Machine-Checked Degenerate Reflection Pairing and Its Gelfand-Naimark-Segal Quotient",
+      "date": "2026-07-28",
+      "status": "public as ai.viXra.org:2607.0076",
+      "path": "papers/os-quotient/os_quotient.pdf",
+      "record": "docs/PUBLICATIONS.md",
+      "anchor": "673d1df1",
+      "paper_commit": "fddecd37",
+      "sha256": "ee99c158af94fced1eecfc0aa0a26121aadea576e7dd0ba33d7e2538c309dd1f",
+      "public_id": "2607.0076",
+      "public_url": "https://ai.vixra.org/abs/2607.0076",
+      "public_pdf_url": "https://ai.vixra.org/pdf/2607.0076v1.pdf",
+      "scope": "Computes a genuinely degenerate reflection pairing, its exact null space, and the induced finite GNS quotient. It is a two-slice finite model, not a thermodynamic or continuum construction."
+    },
+    {
+      "id": "ai-vixra-2607-0075",
+      "title": "Where the Elementary Reconstruction Stops: Spatial Coupling Breaks the Uniform Vacuum, Machine-Checked",
+      "date": "2026-07-28",
+      "status": "public as ai.viXra.org:2607.0075",
+      "path": "papers/spatial-extent/spatial_extent.pdf",
+      "record": "docs/PUBLICATIONS.md",
+      "anchor": "d8187d7f",
+      "paper_commit": "959076f2",
+      "sha256": "c519a6a1592ee25b36df6e1710c7d629d2305ee3885f0c7993b60a2b6639bef4",
+      "public_id": "2607.0075",
+      "public_url": "https://ai.vixra.org/abs/2607.0075",
+      "public_pdf_url": "https://ai.vixra.org/pdf/2607.0075v1.pdf",
+      "scope": "Proves the decoupled finite-spatial-extent identities and the coupled obstruction to the uniform-vacuum route. It does not prove that the interacting vacuum or spectral gap is absent."
+    },
+    {
+      "id": "ai-vixra-2607-0073",
+      "title": "A Machine-Checked Reflection-Positivity Framework for Z_N Lattice Gauge Theory, with the Z_2 Wilson Instance",
+      "date": "2026-07-27",
+      "status": "public as ai.viXra.org:2607.0073",
+      "path": "papers/reflection-positivity/reflection_positivity.pdf",
+      "record": "docs/PUBLICATIONS.md",
+      "anchor": "bbadf68c",
+      "paper_commit": "b93d82b7",
+      "sha256": "95c85d5b89f10b07e83fc699af0e03d45b35aec75851dda0d263b3c788e8f47c",
+      "public_id": "2607.0073",
+      "public_url": "https://ai.vixra.org/abs/2607.0073",
+      "public_pdf_url": "https://ai.vixra.org/pdf/2607.0073v1.pdf",
+      "scope": "Formalizes finite abelian reflection positivity and the Z_2 Wilson instance. It is finite-volume infrastructure and does not establish a spectral or continuum gap."
+    },
+    {
+      "id": "ai-vixra-2607-0070",
+      "title": "Clustering and the Transfer-Operator Gap: A Machine-Checked Dense-Family Criterion",
+      "date": "2026-07-27",
+      "status": "public as ai.viXra.org:2607.0070",
+      "path": "papers/o-bridge/o_bridge.pdf",
+      "record": "docs/PUBLICATIONS.md",
+      "anchor": "ad9c93d7",
+      "paper_commit": "d97ba949",
+      "sha256": "56dcba9f6c88452570c427d337fa4e00a0ff9bfeb9087faa28826094d1f72ad5",
+      "public_id": "2607.0070",
+      "public_url": "https://ai.vixra.org/abs/2607.0070",
+      "public_pdf_url": "https://ai.vixra.org/pdf/2607.0070v1.pdf",
+      "scope": "Machine-checks the dense-family operator criterion relating common-rate clustering to a transfer-operator norm bound. It does not construct a gauge-theory Hilbert space or transfer operator."
     }
   ],
   "milestones": [

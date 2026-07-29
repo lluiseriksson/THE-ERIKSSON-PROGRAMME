@@ -407,7 +407,7 @@ footer {
   <div class="counts" id="counts" aria-label="Node counts"></div>
 
   <section aria-labelledby="papers-title">
-    <h2 id="papers-title">Recent Submitted Artifacts</h2>
+    <h2 id="papers-title">Recent Papers and Submissions</h2>
     <div class="papers" id="recent-papers"></div>
   </section>
 
@@ -533,10 +533,12 @@ footer {
       <h3>${escapeHtml(paper.title)}</h3>
       <div class="paper-meta">${escapeHtml(paper.date)} · ${escapeHtml(paper.status)} · formal anchor ${escapeHtml(paper.anchor)}</div>
       <p>${escapeHtml(paper.scope)}</p>
-      <div class="paper-links">
-        <a href="${meta.blob}${paper.path}">PDF</a>
-        <a href="${meta.blob}${paper.record}">submission record</a>
-      </div>
+        <div class="paper-links">
+          <a href="${meta.blob}${paper.path}">PDF</a>
+          <a href="${meta.blob}${paper.record}">registry record</a>
+          ${paper.public_url ? `<a href="${paper.public_url}">public abstract</a>` : ""}
+          ${paper.public_pdf_url ? `<a href="${paper.public_pdf_url}">public PDF</a>` : ""}
+        </div>
     </article>
   `).join("") : "<p>No submitted artifact has been registered.</p>";
 

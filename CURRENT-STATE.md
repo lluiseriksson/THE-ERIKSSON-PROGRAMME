@@ -31,22 +31,26 @@ See
 [`docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md`](docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md).
 
 **Live-state snapshot updated:** 2026-07-29.  **Latest recorded verification
-checkpoint:** `a70426f4` (on `main`), with `lake build YangMillsCore` green at
-**8426 jobs** and 2,542 oracle answers.  The only axiom names in the complete
+checkpoint:** `08a90502` (on `main`), with `lake build YangMillsCore` green at
+**8427 jobs** and 2,564 oracle answers.  The only axiom names in the complete
 oracle transcript are `propext`, `Classical.choice`, and `Quot.sound`; there are
 zero `sorryAx` and zero project axioms.  See
-[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addendum 527.
+[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addenda 529--530.
 
-**O-lane Paper 6 submitted (owner report, 2026-07-29).**  *Blind to the
-Coupling: a Second Machine-Checked Obstruction at Spatial Extent* is frozen at
-v1.2.1, commit `3d313d92`; its 118,268-byte PDF has SHA-256
-`42617528c0df0ad3e813ee77c11722c53e5ea1b4b97dc93f22d9ece45d29e4cb`.
-The public viXra identifier is pending.  It proves projective-metric
-coupling-blindness and volume degeneration, exact coupled two-site eigenpairs,
-and domination of every real or complex eigenvalue by the positive
-spectral-radius eigenvalue.  It does not prove a volume-uniform interacting
-gap or a general-`L` Perron theorem.  See the
-[`submission record`](docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md).
+**Recent public papers checked (2026-07-29).**  Author-list entries `[89]` to
+`[93]` are public as ai.viXra `2607.0070`, `2607.0073`, `2607.0075`,
+`2607.0076`, and `2607.0078`.  Each downloaded public v1 PDF is byte-identical
+to its repository counterpart.  Exact titles, timestamps, hashes, paper
+commits, and Lean anchors are in
+[`docs/PUBLICATIONS.md`](docs/PUBLICATIONS.md).
+
+**O-lane continuation.**  Paper 6, *Blind to the Coupling*, is submitted by
+owner report with public ID pending.  Paper 7, *A Machine-Checked Perron
+Theorem for Strictly Positive Kernels*, is frozen at paper `316648e2` and Lean
+anchor `08a90502`; submission is not reported.  The latter closes the
+general-finite-kernel existence/positive-uniqueness/normalized-vacuum
+dependency that paper 6 left outside, but proves no spectral gap and does not
+remove the projective-metric volume obstruction.
 
 **PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
 is paper commit `193bb675`: all 24 theorem-map names link to the immutable
@@ -483,7 +487,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8426 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8427 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.

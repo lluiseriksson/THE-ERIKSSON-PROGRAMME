@@ -17,7 +17,9 @@ hash of the commit that contains itself without a circular update. Instead,
 It also excludes architectural completion percentages and editorial submission state.
 Percentages and publication decisions are not mechanically derivable facts.  Paper tracks
 have their own acta and submission records and must not be overwritten by the Part II
-control plane.
+control plane.  The public-ID-to-artifact crosswalk is maintained separately in
+[`PUBLICATIONS.md`](PUBLICATIONS.md), where a public PDF is registered only after its
+SHA-256 has been compared with the repository artifact.
 
 Validate the file with:
 

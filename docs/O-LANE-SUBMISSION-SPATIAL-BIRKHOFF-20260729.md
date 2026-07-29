@@ -4,6 +4,12 @@
 identifier had not yet been assigned when this record was written; it must
 remain `pending` until the public catalog supplies it.
 
+**Public recheck:** on 2026-07-29 the author page ended at `[93]`,
+`ai.viXra.org:2607.0078`, and did not yet list this title.  The five preceding
+O-lane public PDFs were matched byte-for-byte to the repository; see
+[`PUBLICATIONS.md`](PUBLICATIONS.md).  This paper keeps its pending state until
+the public title and PDF can be checked the same way.
+
 ## Frozen artifact
 
 - Title: *Blind to the Coupling: a Second Machine-Checked Obstruction at

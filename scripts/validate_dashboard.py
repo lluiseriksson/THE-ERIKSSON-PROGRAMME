@@ -16,6 +16,7 @@ import datetime as _dt
 import hashlib
 import json
 import pathlib
+import re
 import sys
 from collections import Counter, deque
 from typing import Any
@@ -233,6 +234,7 @@ def validate_recent_papers(data: dict[str, Any]) -> None:
         "scope",
     }
     ids: list[str] = []
+    public_ids: list[str] = []
     for i, paper in enumerate(papers):
         item = require_dict(paper, f"recent_papers[{i}]")
         missing = required - item.keys()
@@ -264,10 +266,39 @@ def validate_recent_papers(data: dict[str, Any]) -> None:
                 actual = hashlib.sha256(artifact.read_bytes()).hexdigest()
                 if actual != digest.lower():
                     err(f"recent paper {pid}: sha256 does not match {item['path']}")
+        public_id = item.get("public_id")
+        public_url = item.get("public_url")
+        public_pdf_url = item.get("public_pdf_url")
+        is_public = str(item.get("status", "")).startswith("public as ")
+        if is_public and not public_id:
+            err(f"recent paper {pid}: public status requires public_id")
+        if public_id is not None:
+            if not isinstance(public_id, str) or not re.fullmatch(r"\d{4}\.\d{4}", public_id):
+                err(f"recent paper {pid}: invalid public_id {public_id!r}")
+            else:
+                public_ids.append(public_id)
+                expected_url = f"https://ai.vixra.org/abs/{public_id}"
+                expected_pdf_url = f"https://ai.vixra.org/pdf/{public_id}v1.pdf"
+                if public_url != expected_url:
+                    err(
+                        f"recent paper {pid}: public_url must be {expected_url!r}, "
+                        f"got {public_url!r}"
+                    )
+                if public_pdf_url != expected_pdf_url:
+                    err(
+                        f"recent paper {pid}: public_pdf_url must be "
+                        f"{expected_pdf_url!r}, got {public_pdf_url!r}"
+                    )
+        elif public_url is not None or public_pdf_url is not None:
+            err(f"recent paper {pid}: public URLs require public_id")
     counts = Counter(ids)
     for pid, count in counts.items():
         if count > 1:
             err(f"duplicate recent paper id: {pid}")
+    public_counts = Counter(public_ids)
+    for public_id, count in public_counts.items():
+        if count > 1:
+            err(f"duplicate recent paper public_id: {public_id}")
 
 
 def main() -> int:
