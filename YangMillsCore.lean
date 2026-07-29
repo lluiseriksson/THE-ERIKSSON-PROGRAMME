@@ -78,6 +78,7 @@ import YangMills.L1_GibbsMeasure.LocalWindowGeometry
 import YangMills.L1_GibbsMeasure.LocalWindowActivity
 import YangMills.L1_GibbsMeasure.LocalWindowCluster
 import YangMills.L1_GibbsMeasure.LocalWindowCauchy
+import YangMills.L1_GibbsMeasure.LocalRootedTail
 import YangMills.L1_GibbsMeasure.ClusterGeometry
 import YangMills.L1_GibbsMeasure.PolymerRepresentation
 import YangMills.L1_GibbsMeasure.WeightedGas

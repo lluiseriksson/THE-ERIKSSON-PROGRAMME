@@ -61,9 +61,12 @@ subsequence does not close any brick.
    `LocalWindowCauchy.lean` now proves that a pinned cluster has a touching
    walk of length at most twice its total plaquette cardinality, decodes every
    seam-avoiding tuple exactly, and identifies its full Ursell/activity
-   monomial in any second fitting volume.  It remains to package the finite
-   reindexing and dominate the complementary large-cluster class with
-   `connectedLattice_pinned_tail_volumeUniform`.
+   monomial in any second fitting volume.  `LocalRootedTail.lean` records the
+   intrinsic `n+1` rooting factor, absorbs it with a unit-cardinality tilt,
+   and proves the volume-uniform support boundary estimate using
+   `connectedLattice_pinned_tail_volumeUniform` plus the necessary tilted
+   tail.  It remains to connect the exact correction series to this remainder
+   and package the finite reindexing.
 7. **Cauchy and infinite state — open.**
    Prove a quantitative Cauchy modulus for every observable, define the limit
    by completeness, and prove linearity, positivity, normalization, generator
@@ -84,8 +87,13 @@ tuple, and has exactly the same complete monomial in every other fitting
 volume.  The remaining work is to express the small pinned contribution as
 the image of this decoding map and prove that a tuple outside the image must
 have total size beyond the cutoff.  That complementary class is precisely
-the tail variable used by
-`connectedLattice_pinned_tail_volumeUniform`.
+the tail variable used by the rooted support remainder.
+
+The honest local-correction regime is the uniformly double-tilted KP window
+at exponent `t + ε + 1`.  The extra `+1` is not an artefact: passing from the
+symmetric predicate “some tuple member meets the marked region” to a pin at
+coordinate zero costs `n+1`.  `LocalRootedTail.lean` proves this cost and does
+not silently claim that the untilted pinned tail alone controls it.
 
 No theorem in the current checkpoint asserts Cauchy convergence or the
 existence of the infinite-volume state.

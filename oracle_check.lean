@@ -2994,3 +2994,5 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.WindowPolymer.cluster_siteMargin_zero
 #print axioms YangMills.WindowPolymer.toWeightedPolymer_decodedClusterTuple
 #print axioms YangMills.WindowPolymer.weightedClusterMonomial_eq_of_commonWindow
+#print axioms YangMills.WindowPolymer.connectedLattice_rootedPinnedTail_volumeUniform
+#print axioms YangMills.WindowPolymer.supportRootedBoundaryRemainder_le_volumeUniform

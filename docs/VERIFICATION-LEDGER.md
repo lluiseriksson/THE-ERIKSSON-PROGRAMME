@@ -27524,8 +27524,53 @@ The four new focal `#print axioms` endpoints then terminated with
 `CAUCHY_AUDIT_EXIT=0`; each reported exactly
 `[propext, Classical.choice, Quot.sound]`.
 
-This is a focal checkpoint, not yet a new canonical full-core measurement.
+The exact pushed checkpoint `407c9d62` was then pulled into a clean Colab
+checkout and the canonical root build terminated literally with:
+
+```text
+Build completed successfully (8438 jobs).
+CORE_407C_EXIT=0
+```
+
+The complete `oracle_check.lean` run at the same checkpoint then terminated
+with `ORACLE_407C_EXIT=0`; the four new endpoints again reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
 No file below `YangMills/RG/**` or `YangMills/OS/**` is modified.  The finite
 sum reindexing, KP domination of the complementary tail, Cauchy theorem,
 infinite state, boundary-condition independence, and correlation-limit
 theorems remain open.
+
+## Addendum 539 (2026-07-29, **rooted local tail and volume-uniform support boundary bound**)
+
+The local correction is supported on tuples for which *some* coordinate
+meets the marked region.  Pinning that symmetric condition at coordinate zero
+has the intrinsic combinatorial factor `n+1`.  Static cross-audit against
+`PinnedCluster.lean`, `ClusterTail.lean`, and `PolymerRepresentation.lean`
+found no valid reindexing that removes it: storing a chosen coordinate merely
+reintroduces the same multiplicity.
+
+`LocalRootedTail.lean` now records this cost explicitly.
+`weighted_rootFactor_pinnedClusterWeightGE_le` bounds the rooted layer by the
+ordinary pinned size layer plus its unit-cardinality tilt.
+`connectedLattice_rootedPinnedTail_volumeUniform` applies the literal
+`connectedLattice_pinned_tail_volumeUniform` to the first layer and the
+unit-tilted KP tail to the second.  The resulting honest smallness window
+therefore contains `t + ε + 1`; no claim is made that the tail without the
+extra `+1` controls a local cluster correction.
+
+Finally,
+`supportRootedBoundaryRemainder_le_volumeUniform` sums the rooted tail over
+all polymers touching a plaquette incident to the observable edge support.
+Its prefactor is volume-free:
+
+```text
+exp(-ε L) * ((2 t) * (|SF| * 4d)).
+```
+
+The complete module compiled on Colab Pro+ with the literal terminal line
+`ROOTTAIL3_EXIT=0`.  Its two headline `#print axioms` checks terminated with
+`ROOTTAIL_AUDIT_EXIT=0` and each reported exactly
+`[propext, Classical.choice, Quot.sound]`.  The endpoint is not yet the
+Cauchy theorem: the exact correction series still has to be reindexed into
+the common-window part plus this complementary rooted remainder.
