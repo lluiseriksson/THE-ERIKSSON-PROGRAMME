@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116CenteredConditionedSmallnessCompatibility
+
+#print axioms YangMills.RG.cmp116CenteredSmallnessWitness_shell
+#print axioms YangMills.RG.cmp116CenteredSmallnessWitness_contourRatio
+#print axioms YangMills.RG.cmp116CenteredSmallnessWitness_contourDefect
+#print axioms YangMills.RG.cmp116CenteredConditioned_scalarSmallness_nonempty
