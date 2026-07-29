@@ -852,3 +852,17 @@ import YangMills.OS.SpatialBirkhoff
 -- claimed: spectral radius (no Perron-Frobenius in the pinned mathlib),
 -- completeness of the spectrum, or anything at L > 2.
 import YangMills.OS.SpatialPerron
+
+-- O-3i: PERRON-FROBENIUS for strictly positive kernels, and the coupled
+-- vacuum at EVERY spatial extent.  The pinned mathlib has no Perron-Frobenius,
+-- and its absence had forced a detour twice (O-3f could only call the vacuum
+-- unavailable; O-3h had to build its domination bound from scratch), so the
+-- dependency is discharged here.  EXISTENCE IS BY COMPACTNESS, NOT BY A FIXED
+-- POINT THEOREM - the library has no Brouwer: maximise r over the compact set
+-- of pairs (r,x) with x in the simplex and r x <= A x, and maximality forces
+-- equality.  The bound keeping that set compact comes from SUMMING THE
+-- CONSTRAINT: r = r * sum x <= sum (A x).  Also: uniqueness up to scale,
+-- geometric simplicity, and - with O-3h's complex domination - the spectral
+-- radius.  NOT claimed: algebraic simplicity, irreducible (non-strict) kernels,
+-- periodicity, and NO SPECTRAL GAP of any kind.
+import YangMills.OS.PerronKernel
