@@ -118,6 +118,81 @@ theorem norm_cmp102PartialPropagatorJetThirdFieldDerivative_le
       dsimp [C]
       ring
 
+/-- Restricting a smooth joint map between normed spaces to a fixed
+first-coordinate slice cannot increase an iterated-derivative norm. -/
+theorem norm_iteratedFDeriv_fixedFirstSlice_normed_le
+    {G : Type*} [NormedAddCommGroup G] [NormedSpace ℝ G]
+    (Φ : H × E → G) (hΦ : ContDiff ℝ ⊤ Φ)
+    (n : ℕ) (h : H) (x : E) :
+    ‖iteratedFDeriv ℝ n (fun y => Φ (h, y)) x‖ ≤
+      ‖iteratedFDeriv ℝ n Φ (h, x)‖ := by
+  let e : E →L[ℝ] H × E := ContinuousLinearMap.inr ℝ H E
+  let Φshift : H × E → G := fun p => Φ (p + (h, 0))
+  have hshift : ContDiff ℝ ⊤ Φshift :=
+    hΦ.comp (contDiff_id.add contDiff_const)
+  have hfun : (fun y : E => Φ (h, y)) = Φshift ∘ e := by
+    funext y
+    simp [Φshift, e]
+  rw [hfun, e.iteratedFDeriv_comp_right hshift x le_top]
+  rw [iteratedFDeriv_comp_add_right (𝕜 := ℝ) (f := Φ)
+    n (h, 0) (e x)]
+  calc
+    ‖(iteratedFDeriv ℝ n Φ (e x + (h, 0))).compContinuousLinearMap
+        (fun _ => e)‖ ≤
+        ‖iteratedFDeriv ℝ n Φ (e x + (h, 0))‖ *
+          ∏ _ : Fin n, ‖e‖ :=
+      ContinuousMultilinearMap.norm_compContinuousLinearMap_le _ _
+    _ ≤ ‖iteratedFDeriv ℝ n Φ (e x + (h, 0))‖ * 1 := by
+      gcongr
+      exact Finset.prod_le_one
+        (fun _ _ => norm_nonneg e)
+        (fun _ _ => by
+          simpa [e] using
+            (ContinuousLinearMap.norm_inr_le_one ℝ H E))
+    _ = ‖iteratedFDeriv ℝ n Φ (h, x)‖ := by
+      simp [e]
+
+/-- The actual third iterated derivative of a one-direction partial
+propagator jet is bounded by the literal joint order-four jet times the
+exact propagator-direction norm.  Equation (80) uses precisely this
+one-direction specialization. -/
+theorem norm_iteratedFDeriv_three_cmp102PartialPropagatorJet_one_le
+    (F : H × E → ℝ) (hF : ContDiff ℝ ⊤ F)
+    (h v : H) (x : E) :
+    ‖iteratedFDeriv ℝ 3
+        (cmp102PartialPropagatorJet F 1 h (fun _ => v)) x‖ ≤
+      ‖iteratedFDeriv ℝ 4 F (h, x)‖ * ‖v‖ := by
+  let direction : H × E := (v, 0)
+  have hderiv : ContDiff ℝ ⊤ (fderiv ℝ F) :=
+    hF.fderiv_right (by simp)
+  have happly :
+      ContDiff ℝ ⊤ (fun p : H × E => fderiv ℝ F p direction) :=
+    hderiv.clm_apply contDiff_const
+  have hfun :
+      cmp102PartialPropagatorJet F 1 h (fun _ => v) =
+        fun y : E => fderiv ℝ F (h, y) direction := by
+    funext y
+    simp [cmp102PartialPropagatorJet, direction]
+  rw [hfun]
+  have hslice :
+      ‖iteratedFDeriv ℝ 3
+          (fun y : E => fderiv ℝ F (h, y) direction) x‖ ≤
+        ‖iteratedFDeriv ℝ 3
+          (fun p : H × E => fderiv ℝ F p direction) (h, x)‖ :=
+    norm_iteratedFDeriv_fixedFirstSlice_normed_le
+      (fun p : H × E => fderiv ℝ F p direction)
+      happly 3 h x
+  have heval :
+      ‖iteratedFDeriv ℝ 3
+          (fun p : H × E => fderiv ℝ F p direction) (h, x)‖ ≤
+        ‖direction‖ *
+          ‖iteratedFDeriv ℝ 3 (fderiv ℝ F) (h, x)‖ :=
+    norm_iteratedFDeriv_clm_apply_const
+      hderiv.contDiffAt (by simp)
+  have htotal := hslice.trans heval
+  rw [norm_iteratedFDeriv_fderiv] at htotal
+  simpa [direction, mul_comm] using htotal
+
 end MixedJets
 
 end

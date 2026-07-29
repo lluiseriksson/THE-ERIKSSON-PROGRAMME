@@ -442,12 +442,26 @@ norm(third field jet of the literal domain coefficient)
 
 This is a genuine physical producer: neither the complete third derivative
 nor its bound is supplied as an input.  It also preserves the exact
-source-metric factor carried by the reconstructed domain matrix.  What is
-not yet claimed is the final identification of this mixed-jet extractor with
-`iteratedFDeriv 3` of the cutoff-localized assembled activity, or a uniform
-small-field bound on the order-four component jets.  Those are the next two
-source obligations needed to feed the cutoff theorem and equation (1.36);
-the unrestricted Gaussian `interaction_bound` remains open.
+source-metric factor carried by the reconstructed domain matrix.
+
+The consumer-facing derivative identification is now also closed.  A
+normed-space slice theorem and the exact order-one propagator extraction
+give
+
+```text
+norm(iteratedFDeriv 3 of the literal reconstructed coefficient at A)
+  <= norm(order-four joint equation-(80) jet at (H,A))
+       * norm(literal reconstructed domain matrix).
+```
+
+The component source-jet majorant is then substituted on the right.  Thus
+the cutoff theorem no longer has to consume a separate mixed-jet extractor:
+its `iteratedFDeriv 3` object is the derivative of the literal reconstructed
+coefficient function itself.  The remaining source obligation is a
+**uniform small-field** order-four component-jet bound with the printed
+domain decay, followed by the scalar comparison with equation (1.36).
+Neither that bound nor the unrestricted Gaussian `interaction_bound` is
+claimed here.
 
 The final assembly must also reconcile three domain index layers:
 
