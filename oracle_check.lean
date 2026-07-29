@@ -2949,3 +2949,27 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.gapWitness_contracts
 #print axioms YangMills.OS.exists_nonzero_perp
 #print axioms YangMills.OS.gibbs_connected_decay
+
+-- S: the operator bound on the fluctuation sector
+#print axioms YangMills.OS.isHermitian_of_symm
+#print axioms YangMills.OS.mulVec_eq_act
+#print axioms YangMills.OS.emb
+#print axioms YangMills.OS.emb_ofLp
+#print axioms YangMills.OS.inner_emb
+#print axioms YangMills.OS.norm_emb
+#print axioms YangMills.OS.specEigen
+#print axioms YangMills.OS.specBasis
+#print axioms YangMills.OS.specBasis_eigen
+#print axioms YangMills.OS.inner_basis_eq_sum
+#print axioms YangMills.OS.specBasis_ne_zero
+#print axioms YangMills.OS.specGap
+#print axioms YangMills.OS.specGap_nonneg
+#print axioms YangMills.OS.specGap_lt
+#print axioms YangMills.OS.inner_specBasis_eq_zero_of_top
+#print axioms YangMills.OS.inner_specBasis_act
+#print axioms YangMills.OS.eucNorm_sq_eq_sum
+#print axioms YangMills.OS.norm_act_le_specGap
+#print axioms YangMills.OS.perp_invariant_eigen
+#print axioms YangMills.OS.iterate_norm_le_specGap
+#print axioms YangMills.OS.gibbs_pathSum_decay_unconditional
+#print axioms YangMills.OS.exists_nonzero_dressed_fluctuation
