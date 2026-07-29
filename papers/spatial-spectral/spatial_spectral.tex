@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{2c089eae9016671ea32cc1786eb2f7e9e96e6da4}
+\newcommand{\anchor}{d6b2260adc97d0179fd68f2edd0e76c19d7588c0}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -56,9 +56,10 @@ $\mathrm{specGap} < \lambda$.  We then prove the operator bound: for every
 observable $u$ orthogonal to the Perron vector,
 $\|Ku\| \le \mathrm{specGap}\cdot\|u\|$.  That is exactly the hypothesis the
 bridge paper carried, so its bound becomes unconditional.  The bound is
-\emph{sharp}: some fluctuation observable attains it, by an argument that
-splits at $\mathrm{specGap}=0$, where the maximiser may be a top index and no
-eigenvector is available.
+\emph{sharp}: whenever the state space has at least two points, some nonzero
+fluctuation observable attains it.  The argument splits at
+$\mathrm{specGap}=0$, where the maximising index need not supply a
+\emph{non-Perron} eigenvector at all.
 
 \textbf{And a warning we state before anyone else has to.}  $\mathrm{specGap}
 <\lambda$ is \emph{not} $\mathrm{specGap}<1$: the kernel is unnormalised, so
@@ -135,7 +136,7 @@ Let $\mu_j$ be the eigenvalues of $K$ and set
 \]
 \end{definition}
 
-\osline{SpatialSpectral}{188}{specGap}.
+\osline{SpatialSpectral}{194}{specGap}.
 Eigenvalues equal to $\lambda$ contribute $0$ rather than $\lambda$.  That is
 legitimate --- and it is the whole content of §\ref{sec:invisible}.
 
@@ -143,7 +144,7 @@ legitimate --- and it is the whole content of §\ref{sec:invisible}.
 $\mathrm{specGap} < \lambda$.
 \end{theorem}
 
-\osline{SpatialSpectral}{200}{specGap\_lt}.
+\osline{SpatialSpectral}{206}{specGap\_lt}.
 Each term of the maximum is either $0 < \lambda$, or $|\mu_j| < \lambda$ by the
 gap paper applied to the $j$-th basis vector, which is a nonzero eigenvector
 because it has unit norm.
@@ -155,7 +156,7 @@ If $\mu_j = \lambda$ and $u$ is orthogonal to the Perron vector, then $u$ has no
 component along the $j$-th eigenvector.
 \end{theorem}
 
-\osline{SpatialSpectral}{221}{inner\_specBasis\_eq\_zero\_of\_top}.
+\osline{SpatialSpectral}{227}{inner\_specBasis\_eq\_zero\_of\_top}.
 
 \begin{remark}
 This is the step that does not come from the inequalities, and it is why
@@ -178,12 +179,12 @@ For every $u$ with $\langle v,u\rangle = 0$,
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{279}{norm\_act\_le\_specGap}.
+\osline{SpatialSpectral}{285}{norm\_act\_le\_specGap}.
 
 The proof is the expansion in the eigenbasis.  Writing $c_j$ for the coordinates
 of $u$, the coordinates of $Ku$ are $\mu_jc_j$
-(\osline{SpatialSpectral}{239}{inner\_specBasis\_act}), so by Parseval
-(\osline{SpatialSpectral}{261}{eucNorm\_sq\_eq\_sum})
+(\osline{SpatialSpectral}{245}{inner\_specBasis\_act}), so by Parseval
+(\osline{SpatialSpectral}{267}{eucNorm\_sq\_eq\_sum})
 \[
   \|Ku\|^2=\sum_j \mu_j^2c_j^2,\qquad \|u\|^2=\sum_j c_j^2 ,
 \]
@@ -196,9 +197,9 @@ definition.
 The bridge paper's fluctuation sector is invariant under a kernel that
 \emph{fixes} the vacuum.  Here the kernel is unnormalised and the vacuum is an
 eigenvector with eigenvalue $\lambda$, so invariance is reproved in that form
-(\osline{SpatialSpectral}{372}{perp\_invariant\_eigen}); the scalar drops out
+(\osline{SpatialSpectral}{378}{perp\_invariant\_eigen}); the scalar drops out
 because the pairing is bilinear.  Iterating gives
-\osline{SpatialSpectral}{387}{iterate\_norm\_le\_specGap}.
+\osline{SpatialSpectral}{393}{iterate\_norm\_le\_specGap}.
 
 \begin{theorem}[the bridge bound, without its hypothesis]\label{thm:endpoint}
 For the coupled spatial system, at every finite extent $L$, every $\beta$, and
@@ -211,7 +212,7 @@ to the Perron vector, then for every $N$
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{421}{gibbs\_pathSum\_bound\_unconditional}.
+\osline{SpatialSpectral}{427}{gibbs\_pathSum\_bound\_unconditional}.
 
 \begin{remark}[why that is not yet decay]\label{rem:notdecay}
 $\mathrm{specGap}<\lambda$ does not give $\mathrm{specGap}<1$.  The kernel is
@@ -234,16 +235,16 @@ Equivalently, the normalised kernel $\lambda^{-1}K$ contracts the fluctuation
 sector by $\mathrm{specRatio}<1$.
 \end{theorem}
 
-\osline{SpatialSpectral}{461}{gibbs\_pathSum\_relative\_decay},
-\osline{SpatialSpectral}{328}{specRatio\_lt\_one},
-\osline{SpatialSpectral}{351}{norm\_act\_normalizedKernel\_le}.
+\osline{SpatialSpectral}{467}{gibbs\_pathSum\_relative\_decay},
+\osline{SpatialSpectral}{334}{specRatio\_lt\_one},
+\osline{SpatialSpectral}{357}{norm\_act\_normalizedKernel\_le}.
 
 \begin{remark}[non-vacuity]
 Dressing is multiplication by a strictly positive function, so every fluctuation
 vector is the dressing of an observable: whenever the configuration space has
 two points there is a \emph{nonzero} $A$ satisfying the hypothesis, and
 Theorem~\ref{thm:endpoint} is not quantified over an empty set
-(\osline{SpatialSpectral}{487}{exists\_nonzero\_dressed\_fluctuation}).
+(\osline{SpatialSpectral}{493}{exists\_nonzero\_dressed\_fluctuation}).
 \end{remark}
 
 \section{Scope: four things this does not give}\label{sec:scope}
@@ -303,7 +304,7 @@ because \emph{both} cross terms vanish: $\langle\Om,K^{N}u\rangle
 the eigen-equation, and the other by the same computation.  Nothing here asks
 which basis vector carries $\lambda$.
 
-\osline{SpatialSpectral}{574}{quadForm\_split}.
+\osline{SpatialSpectral}{580}{quadForm\_split}.
 
 \begin{theorem}[the partition function from below]\label{thm:denom}
 $\langle b,K^{N}b\rangle \;\ge\; c^{2}\lambda^{N}
@@ -311,7 +312,7 @@ $\langle b,K^{N}b\rangle \;\ge\; c^{2}\lambda^{N}
 function.
 \end{theorem}
 
-\osline{SpatialSpectral}{612}{quadForm\_lower}.
+\osline{SpatialSpectral}{618}{quadForm\_lower}.
 Since $c>0$ (both $\Om$ and $b$ are strictly positive) and
 $\mathrm{specRatio}<1$, the right-hand side is positive for all large $N$.
 
@@ -323,7 +324,7 @@ function below,
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{668}{gibbsCorr\_bound\_of\_partition\_lower}.
+\osline{SpatialSpectral}{674}{gibbsCorr\_bound\_of\_partition\_lower}.
 
 Composing the three is arithmetic, but it is arithmetic with quantifiers in it
 --- a threshold has to be chosen and the overlap has to be shown positive --- so
@@ -339,7 +340,7 @@ There exist $C>0$ and $N_0$ such that for all $N \ge N_0$,
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{699}{gibbsCorr\_decay\_fixed\_extent}.
+\osline{SpatialSpectral}{805}{gibbsCorr\_decay\_fixed\_extent}.
 The constant is explicit in the proof, $C = 2\|\sqrt{w}A\|^{2}/c^{2}$ up to the
 $+1$ that keeps it positive for the zero observable.  The threshold is
 \emph{characterised, not computed}: the proof takes any $N_0$ with
@@ -348,10 +349,29 @@ $+1$ that keeps it positive for the zero observable.  The threshold is
 \]
 which exists because $\mathrm{specRatio}<1$, and past which the fluctuation
 part of the partition function is below half of its Perron part.  It is not a
-closed formula and not the least such index; and it depends on the observable
-only through $c$ and $u$, which do not.  \textbf{This is a fixed-$L$ statement and nothing more}: the
+closed formula and not the least such index.
+
+\textbf{And it does not depend on $A$.}  Both $c$ and $u$ are built from the
+dressed \emph{constant} observable and the vacuum, so once $L$, $\beta$, $w$ and
+the Perron data are fixed, one $N_0$ serves \emph{every} fluctuation observable
+at once; only $C$ ever sees $A$.  A statement should publish the strength it
+has, so that is the order of quantifiers actually proved:
+
+\begin{theorem}[one threshold for all observables]\label{thm:uniformN0}
+There is an $N_0$ such that for \emph{every} observable $A$ whose dressing is
+orthogonal to the Perron vector there is a $C_A>0$ with
+$\bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr| \le C_A\,\mathrm{specRatio}^{\,N}$ for all
+$N \ge N_0$.
+\end{theorem}
+
+\osline{SpatialSpectral}{764}{gibbsCorr\_decay\_uniform\_threshold}, resting on
+\osline{SpatialSpectral}{702}{exists\_partition\_threshold}, which is where
+the observable-blindness lives: that theorem quantifies over no $A$ at all.
+Theorem~\ref{thm:fixedL} is its three-line consequence in the familiar order.
+
+\textbf{This is a fixed-$L$ statement and nothing more}: the
 rate is $\mathrm{specRatio}(L)$, the tabulated evidence above is that it tends
-to $1$, and therefore the theorem does not survive the infinite-volume limit.
+to $1$, and therefore neither theorem survives the infinite-volume limit.
 
 \section{Sharpness: the bound is attained}\label{sec:sharp}
 
@@ -368,13 +388,13 @@ $u$ with $u \perp v$, $\|u\| \ne 0$ and
 $\|Ku\| = \mathrm{specGap}\cdot\|u\|$.
 \end{theorem}
 
-\osline{SpatialSpectral}{841}{exists\_attaining\_fluctuation}.
+\osline{SpatialSpectral}{884}{exists\_attaining\_fluctuation}.
 The two branches are genuinely different arguments.  If
 $\mathrm{specGap}>0$, the maximiser cannot be a top index --- those contribute
 $0$ --- so it supplies an eigenvector with eigenvalue $\ne\lambda$, which is
 orthogonal to $v$ because moving $K$ across the pairing scales by $\lambda$ on
 one side and by that eigenvalue on the other
-(\osline{SpatialSpectral}{806}{inner\_perron\_specBasis\_eq\_zero}); its norm
+(\osline{SpatialSpectral}{849}{inner\_perron\_specBasis\_eq\_zero}); its norm
 is $1$ and it realises $|\mu| = \mathrm{specGap}$.  If $\mathrm{specGap}=0$,
 that route is unavailable, but Theorem~\ref{thm:bound} already forces
 $\|Ku\|=0$ for \emph{every} fluctuation observable, so any nonzero one attains
@@ -382,11 +402,21 @@ the value --- and this is the branch that needs the fluctuation sector to be
 nonempty, hence the two distinct points.  At $L=0$ there are no two distinct
 points, the fluctuation sector is trivial, and the theorem says nothing there.
 
-Together with Theorem~\ref{thm:bound} this is the statement that
-$\mathrm{specGap}$ \emph{is} the operator norm of $K$ on the fluctuation
-sector.  We do not additionally introduce that norm as a defined object and
-prove an equation between it and $\mathrm{specGap}$; a bound together with its
-attainment carries the same content, and we say which of the two we did.
+Together with Theorem~\ref{thm:bound} this says that $\mathrm{specGap}$
+\emph{is} the operator norm of $K$ on the fluctuation sector.  Since that is a
+statement about an object, we also state it about one:
+
+\begin{theorem}[the restricted norm, as an object]\label{thm:isgreatest}
+The set of Rayleigh ratios $\|Ku\|/\|u\|$, over fluctuation observables of
+nonzero norm, has a greatest element, and it is $\mathrm{specGap}$.
+\end{theorem}
+
+\osline{SpatialSpectral}{932}{specGap\_isGreatest}.
+This is \texttt{IsGreatest}, deliberately lighter machinery than a subspace
+plus a continuous linear map plus its norm: it says the supremum exists and is
+attained, which is the whole content, without committing the module to an
+operator-norm interface it does not otherwise use.  Anyone who wants the
+$\sup$ formulation gets it from \texttt{IsGreatest.csSup\_eq}.
 
 
 \section{What is verified and not proved}\label{sec:verified}
@@ -444,8 +474,8 @@ actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8430 jobs, success \\
-Oracle commands & 2669 \\
-\quad with axiom dependencies & 2643 \\
+Oracle commands & 2672 \\
+\quad with axiom dependencies & 2646 \\
 \quad axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
