@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{d6b2260adc97d0179fd68f2edd0e76c19d7588c0}
+\newcommand{\anchor}{3297e07105c1bf25e3a57d2d61c7126f340c74d3}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -407,11 +407,18 @@ Together with Theorem~\ref{thm:bound} this says that $\mathrm{specGap}$
 statement about an object, we also state it about one:
 
 \begin{theorem}[the restricted norm, as an object]\label{thm:isgreatest}
-The set of Rayleigh ratios $\|Ku\|/\|u\|$, over fluctuation observables of
-nonzero norm, has a greatest element, and it is $\mathrm{specGap}$.
+Suppose, as in Theorem~\ref{thm:sharp}, that the state space has two distinct
+points.  Then the set of norm ratios $\|Ku\|/\|u\|$, over fluctuation
+observables of nonzero norm, has a greatest element, and it is
+$\mathrm{specGap}$.
 \end{theorem}
 
-\osline{SpatialSpectral}{932}{specGap\_isGreatest}.
+\osline{SpatialSpectral}{936}{specGap\_isGreatest}.
+The hypothesis is not decoration inherited from the previous theorem: with
+fewer than two states the set of ratios is \emph{empty}, and an empty set has
+no greatest element.  (Norm ratios, not \emph{Rayleigh} quotients --- those are
+$\langle u,Ku\rangle/\|u\|^{2}$, a different number.)
+
 This is \texttt{IsGreatest}, deliberately lighter machinery than a subspace
 plus a continuous linear map plus its norm: it says the supremum exists and is
 attained, which is the whole content, without committing the module to an
@@ -474,9 +481,11 @@ actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8430 jobs, success \\
-Oracle commands & 2672 \\
-\quad with axiom dependencies & 2646 \\
-\quad axiom-free & 23 \\
+Oracle commands, and answers & 2672 \\
+\quad distinct declarations & 2669 \\
+\quad commands listed twice & 3 \\
+\quad distinct, with axiom dependencies & 2646 \\
+\quad distinct, axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
 Project axioms & 0 \\
