@@ -27504,3 +27504,69 @@ deliberately not used for it.  The normalised expectation would need a lower
 bound on the partition function of order `lam^N`, which is the registered next
 item.  Reflection positivity untouched.  NOT `hRpoly`, NOT the mass gap; Clay
 distance ~0 pct unchanged.  Anchor `4ceb3f7c`.
+
+## Addendum 538 (2026-07-29, **S block v1.1: `specGap < lam` IS NOT `specGap < 1` --- the bound was sub-Perron GROWTH, and calling it decay was wrong**)
+
+**The defect, stated plainly.**  External review found that the v1.0 endpoint
+was named and described as a DECAY theorem when it is not one.  `specGap < lam`
+does not give `specGap < 1`: the kernel is UNNORMALISED, so `lam` and `specGap`
+are both typically far above one.  In the module's own probe, `L = 2` with
+`beta = 0.8`, `gamma = 1.2` gives `lam ~ 56.89` and `specGap ~ 52.37`, so
+`specGap ^ N` GROWS.  The bound is a **sub-Perron growth** bound: the
+fluctuation contribution grows at a strictly smaller exponential rate than the
+Perron sector.  That is a real statement, and it is not decay.
+
+The review is correct and the correction is adopted without hedging.  The word
+*decay* was doing work no theorem supported --- the same failure mode as the
+numerator-called-a-correlation defect two addenda ago, and from the same cause:
+a name chosen for what the result was FOR rather than for what it SAYS.
+
+**The fix, which is also the right theorem.**
+
+* `specRatio := specGap / lam`, with `specRatio_lt_one` --- the rate that IS
+  below one.
+* `norm_act_normalizedKernel_le` --- the NORMALISED kernel `lam^{-1} K` is a
+  genuine contraction of the fluctuation sector, by `specRatio < 1`.
+* `gibbs_pathSum_relative_decay` --- the decay statement: the fluctuation
+  contribution is suppressed by `specRatio ^ N` RELATIVE to the Perron scale
+  `lam ^ N`.
+* The v1.0 endpoint is renamed `gibbs_pathSum_bound_unconditional`.  It is kept,
+  because the growth bound is what actually discharges the bridge module's
+  hypothesis; it simply is not the decay statement.
+
+**Three further corrections from the same review, all real.**
+
+1. *An identification was claimed and not proved.*  The introduction said the
+   spectral decomposition IDENTIFIES `max |mu|` with the restricted operator
+   norm.  Only the inequality `||Ku|| <= specGap ||u||` is proved; attainment is
+   VERIFIED by the probe, not proved.  The prose now says *dominate*, and a
+   scope paragraph states the non-identification explicitly.
+2. *The ledger did not match the anchor.*  The v1.0 paper cited
+   `VERIFICATION-LEDGER.md` through its `\anchor`, but the addendum recording
+   the work landed in the PAPER commit, one commit later --- so at the cited
+   checkpoint the ledger still described the operator bound as future work.
+   Fixed structurally: **this addendum is committed WITH the code, in the anchor
+   commit itself.**  Rule: *if a paper cites the ledger at its anchor, the
+   ledger entry belongs in the anchor commit, not in the paper commit.*
+3. *The probe was not bit-reproducible.*  `random.seed` was set but the
+   fluctuation vectors come from `numpy.random.randn`, whose seed was not.  The
+   PASS verdict was unaffected, but the worst-ratio column was not reproducible.
+   `np.random.seed` is now pinned.
+
+**Bibliography.**  Standard references added (Horn--Johnson for the spectral
+theorem and the self-adjoint operator norm, Seneta for Perron--Frobenius and the
+subdominant ratio, Baladi for transfer operators and decay of correlations,
+Simon for the transfer-matrix formulation of lattice Gibbs measures).  The v1.0
+list was six entries, three of them companions --- too thin for a claim that
+leans on classical spectral theory.
+
+**Measured.**  Core **8430 jobs** (unchanged: theorems were added to an existing
+module).  Oracle **2655 commands -> 2655 answers**, 23 axiom-free, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  29 declarations in the module.
+
+**Unchanged.**  `specRatio` still DEPENDS ON THE EXTENT --- it is exactly the
+measured ratio going to 1 outside the disordered region, so the decay is empty
+in the volume limit.  Still not the normalised Gibbs expectation: `lam ^ N` is
+the growth SCALE of the partition function, not the partition function, and the
+lower bound remains the registered next item.  Reflection positivity untouched.
+NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct unchanged.

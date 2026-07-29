@@ -14,11 +14,15 @@ Run:  python scripts/probe_spatial_spectral.py
 import itertools, math, random
 
 random.seed(20260729)
+_NUMPY_SEED = 20260729
 
 try:
     import numpy as np
 except ImportError:  # pragma: no cover
     raise SystemExit("numpy required for this probe")
+
+np.random.seed(_NUMPY_SEED)   # the random fluctuation vectors below use numpy,
+                              # so seeding `random` alone does not pin them
 
 
 def configs(L):

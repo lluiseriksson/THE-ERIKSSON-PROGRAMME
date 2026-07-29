@@ -2969,7 +2969,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.inner_specBasis_act
 #print axioms YangMills.OS.eucNorm_sq_eq_sum
 #print axioms YangMills.OS.norm_act_le_specGap
+#print axioms YangMills.OS.specRatio
+#print axioms YangMills.OS.specRatio_nonneg
+#print axioms YangMills.OS.specRatio_lt_one
+#print axioms YangMills.OS.specGap_eq_specRatio_mul
+#print axioms YangMills.OS.act_normalizedKernel
+#print axioms YangMills.OS.norm_act_normalizedKernel_le
 #print axioms YangMills.OS.perp_invariant_eigen
 #print axioms YangMills.OS.iterate_norm_le_specGap
-#print axioms YangMills.OS.gibbs_pathSum_decay_unconditional
+#print axioms YangMills.OS.gibbs_pathSum_bound_unconditional
+#print axioms YangMills.OS.gibbs_pathSum_relative_decay
 #print axioms YangMills.OS.exists_nonzero_dressed_fluctuation

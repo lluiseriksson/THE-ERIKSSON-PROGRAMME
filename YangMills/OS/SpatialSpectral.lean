@@ -277,6 +277,64 @@ theorem norm_act_le_specGap (hpos : ∀ i j, 0 < K i j) (hK : ∀ i j, K i j = K
   have hn : 0 ≤ eucNorm (act K u) := eucNorm_nonneg _
   nlinarith [eucNorm_nonneg u, hn, hsum, mul_nonneg hr0 (eucNorm_nonneg u)]
 
+/-! ### §5b  The rate that is actually below one
+
+`specGap` is below `lam`, which is NOT the same as below one: the kernel is
+unnormalised, so `lam` and `specGap` are both typically far above one and
+`specGap ^ N` GROWS.  The number that is below one is the rate relative to the
+Perron scale, and it is what makes the endpoint a decay statement rather than a
+statement about growing more slowly than the top of the spectrum. -/
+
+/-- The contraction rate of the fluctuation sector **relative to the Perron
+eigenvalue**.  Unlike `specGap`, this is genuinely below one. -/
+noncomputable def specRatio (hK : ∀ i j, K i j = K j i) (lam : ℝ) : ℝ :=
+  specGap hK lam / lam
+
+theorem specRatio_nonneg (hpos : ∀ i j, 0 < K i j) (hK : ∀ i j, K i j = K j i)
+    {v : ι → ℝ} (hv : ∀ i, 0 < v i) {lam : ℝ}
+    (hvE : ∀ i, ∑ j, K i j * v j = lam * v i) :
+    0 ≤ specRatio hK lam :=
+  div_nonneg (specGap_nonneg hK lam) (le_of_lt (eigenvalue_pos hpos hv hvE))
+
+/-- **`specRatio < 1`.**  This, and not `specGap < lam`, is the statement that
+makes a geometric bound mean decay. -/
+theorem specRatio_lt_one (hpos : ∀ i j, 0 < K i j) (hK : ∀ i j, K i j = K j i)
+    {v : ι → ℝ} (hv : ∀ i, 0 < v i) {lam : ℝ}
+    (hvE : ∀ i, ∑ j, K i j * v j = lam * v i) :
+    specRatio hK lam < 1 := by
+  have hlam : 0 < lam := eigenvalue_pos hpos hv hvE
+  rw [specRatio, div_lt_one hlam]
+  exact specGap_lt hpos hK hv hvE
+
+theorem specGap_eq_specRatio_mul (hK : ∀ i j, K i j = K j i) {lam : ℝ}
+    (hlam : lam ≠ 0) : specGap hK lam = specRatio hK lam * lam := by
+  rw [specRatio, div_mul_cancel₀ _ hlam]
+
+/-- Acting with the kernel divided by its Perron eigenvalue. -/
+theorem act_normalizedKernel (K : ι → ι → ℝ) {lam : ℝ} (hlam : lam ≠ 0)
+    (u : ι → ℝ) :
+    act (normalizedKernel K lam) u = fun i => lam⁻¹ * act K u i := by
+  funext i
+  unfold act normalizedKernel
+  rw [Finset.mul_sum]
+  exact Finset.sum_congr rfl fun j _ => by field_simp
+
+/-- **The NORMALISED kernel is a genuine contraction of the fluctuation
+sector**, with rate `specRatio < 1`. -/
+theorem norm_act_normalizedKernel_le (hpos : ∀ i j, 0 < K i j)
+    (hK : ∀ i j, K i j = K j i) {v : ι → ℝ} (hv : ∀ i, 0 < v i) {lam : ℝ}
+    (hvE : ∀ i, ∑ j, K i j * v j = lam * v i)
+    {u : ι → ℝ} (hperp : ∑ i, v i * u i = 0) :
+    eucNorm (act (normalizedKernel K lam) u) ≤ specRatio hK lam * eucNorm u := by
+  have hlam : 0 < lam := eigenvalue_pos hpos hv hvE
+  rw [act_normalizedKernel K (ne_of_gt hlam) u, eucNorm_smul,
+    abs_of_nonneg (le_of_lt (inv_pos.mpr hlam))]
+  have hb := norm_act_le_specGap hpos hK hv hvE hperp
+  rw [specRatio, div_mul_eq_mul_div, le_div_iff₀ hlam]
+  calc lam⁻¹ * eucNorm (act K u) * lam = eucNorm (act K u) := by
+        field_simp
+    _ ≤ specGap hK lam * eucNorm u := hb
+
 /-! ## §6b  Invariance of the fluctuation sector at an eigenvector
 
 The bridge module proved invariance for a vector the kernel *fixes*.  Here the
@@ -323,21 +381,11 @@ The bridge module proved geometric decay of the Gibbs two-point sum under a
 contraction hypothesis.  The hypothesis is now a theorem, so the decay is
 unconditional at every finite extent. -/
 
-/-- **THE BRIDGE MODULE'S DECAY THEOREM, WITHOUT ITS HYPOTHESIS.**  For the
-coupled spatial system at every finite extent, every `β`, and every strictly
-positive source weight, the UNNORMALISED Gibbs two-point sum of an observable
-whose dressing is orthogonal to the vacuum decays geometrically in the time
-separation --- with a rate strictly below the Perron eigenvalue and no carried
-hypothesis.
-
-This is the same quantity the bridge module bounded; what is removed is the
-assumption, not the normalisation.  The normalised expectation would additionally
-need a lower bound on the partition function, which is not proved here.
-
-The rate depends on the extent.  Nothing here bounds it away from `lam`
-uniformly, and the measured evidence is that the ratio approaches `1` outside
-the disordered region, where the bound is therefore empty in the limit. -/
-theorem gibbs_pathSum_decay_unconditional {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+/-- **THE BRIDGE MODULE'S BOUND, WITHOUT ITS HYPOTHESIS.**  The rate is
+`specGap`, which is below `lam` but NOT below one --- the kernel is unnormalised
+--- so on its own this bounds the growth of the fluctuation contribution, it does
+not exhibit decay.  The decay statement is the relative one below. -/
+theorem gibbs_pathSum_bound_unconditional {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hw : ∀ σ, 0 < w σ) (β : ℝ)
     {v : (Fin L → Fin 2) → ℝ} (hv : ∀ σ, 0 < v σ) {lam : ℝ}
     (hvE : ∀ σ, ∑ τ, symWeighted w β σ τ * v τ = lam * v σ)
@@ -363,6 +411,42 @@ theorem gibbs_pathSum_decay_unconditional {L : ℕ} {w : (Fin L → Fin 2) → �
             hv hvE hperp N) (eucNorm_nonneg _)
     _ = specGap (symWeighted_symm w β) lam ^ N
           * (eucNorm (dress w A) * eucNorm (dress w A)) := by ring
+
+
+/-- **THE DECAY STATEMENT.**  Relative to the Perron scale `lam ^ N`, the
+fluctuation contribution to the Gibbs two-point sum is suppressed geometrically,
+at a rate `specRatio < 1`, with no carried hypothesis.
+
+This is the honest form of the endpoint.  The unnormalised bound above has rate
+`specGap`, which is typically far ABOVE one; only after comparison with `lam ^ N`
+does a geometric factor below one appear.  It is still not the normalised Gibbs
+expectation --- that needs a lower bound on the partition function, which is not
+proved here --- but it is a decay statement rather than a growth statement.
+
+`specRatio` depends on the extent, and the measured evidence is that it
+approaches `1` outside the disordered region, where the bound is empty in the
+limit. -/
+theorem gibbs_pathSum_relative_decay {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    {v : (Fin L → Fin 2) → ℝ} (hv : ∀ σ, 0 < v σ) {lam : ℝ}
+    (hvE : ∀ σ, ∑ τ, symWeighted w β σ τ * v τ = lam * v σ)
+    {A : (Fin L → Fin 2) → ℝ} (hperp : ∑ σ, v σ * dress w A σ = 0) (N : ℕ) :
+    |gibbsPathSum w β N A A|
+      ≤ specRatio (symWeighted_symm w β) lam ^ N
+        * (lam ^ N * (eucNorm (dress w A) * eucNorm (dress w A)))
+      ∧ specRatio (symWeighted_symm w β) lam < 1 := by
+  have hlam : 0 < lam := eigenvalue_pos (symWeighted_pos hw β) hv hvE
+  refine ⟨?_, specRatio_lt_one (symWeighted_pos hw β) (symWeighted_symm w β) hv hvE⟩
+  have hb := (gibbs_pathSum_bound_unconditional hw β hv hvE hperp N).1
+  have hsplit : specGap (symWeighted_symm w β) lam ^ N
+      = specRatio (symWeighted_symm w β) lam ^ N * lam ^ N := by
+    rw [specGap_eq_specRatio_mul (symWeighted_symm w β) (ne_of_gt hlam), mul_pow]
+  rw [hsplit] at hb
+  calc |gibbsPathSum w β N A A|
+      ≤ specRatio (symWeighted_symm w β) lam ^ N * lam ^ N
+          * (eucNorm (dress w A) * eucNorm (dress w A)) := hb
+    _ = specRatio (symWeighted_symm w β) lam ^ N
+          * (lam ^ N * (eucNorm (dress w A) * eucNorm (dress w A))) := by ring
 
 /-- **The endpoint is not quantified over an empty set.**  Because dressing is
 multiplication by a strictly positive function, every fluctuation vector arises
