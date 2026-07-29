@@ -26953,3 +26953,58 @@ dependencies + 23 axiom-free); extraction over the whole transcript including
 wrapped continuations shows the only axiom names anywhere are `propext`,
 `Classical.choice`, `Quot.sound`; zero `sorryAx`; zero real errors.  Paper 6pp,
 16 line-anchored permalinks verified at the anchor commit itself.
+
+## Addendum 529 (2026-07-29, **O-3i v1.1: the normalised vacuum -- `T Omega = Omega`, the very equation O-3f proved false, holding again at every extent**)
+
+An external review named one addition that would turn the result from a loose
+pair `(v, lambda)` into an object the Osterwalder--Seiler interfaces can consume,
+plus two precision corrections.  All three are applied and the module was green
+on the first attempt.
+
+**1. THE NORMALISED VACUUM.**  `normalizedKernel A lam = A / lam`, and
+`normalizedKernel_fixes_eigenvector`: the Perron vector is a genuine fixed point
+of the normalised transfer operator.  `exists_normalized_vacuum` and
+`normalized_vacuum_of_sourceWeight` package it with `Omega > 0` and
+`sum Omega = 1`; `coupled_ring_normalized_vacuum` instantiates the ring slice.
+
+**Why this is more than packaging.**  It is *which* equation it is.  The
+companion chain obtained the vacuum from `T Omega = Omega` for the **uniform**
+`Omega`, and O-3f proved exactly that statement FALSE as soon as a spatial
+coupling is present.  Here the same equation holds again -- for the **Perron**
+`Omega` instead of the uniform one, at every extent.  The lane's loop closes
+with the equation it opened with.
+
+**A small lesson of its own.**  The normalisation `sum Omega = 1` was FREE: the
+existence proof already produces its vector inside the simplex, so the conjunct
+only had to be *stated*.  `exists_pos_eigenvector` now carries it and every
+downstream statement inherits it.  Rule: *a proof can establish more than its
+statement advertises, and the gap stays invisible until something downstream
+needs the missing conjunct -- so when a construction passes through a normalised
+object, say so in the statement.*
+
+**2. TITLE PRECISION.**  *Perron--Frobenius* names, classically, a package that
+includes strict separation `|mu| < lambda` off the peripheral eigenvalue,
+algebraic simplicity, and peripheral uniqueness.  This development proves
+existence, positive uniqueness, GEOMETRIC simplicity and the spectral radius --
+not those three.  The scope list said so, but the title did not, so the title
+now reads *A Machine-Checked **Perron Theorem** for Strictly Positive Kernels*.
+This is the Addendum 521 rule applied to a title that was overselling by a
+single word.
+
+**3. CLAIMS ABOUT THE LIBRARY, TIME-LOCALISED.**  *"in a library with no
+fixed-point theorem"* became *"without invoking a fixed-point theorem in the
+pinned `mathlib` revision"*, and the body adds that this is a statement about
+that revision and not about the library in perpetuity.  A claim about a moving
+library expires; a claim about a pinned revision does not.
+
+**Left as it stands, deliberately.**  The spectral-radius statement depends
+modularly on the domination theorem of O-3h rather than re-proving it here.
+That dependency is real and is declared in the paper; duplicating the theorem to
+make one paper self-contained would trade an honest citation for redundant code.
+
+**Measured.**  Anchor `08a9050201287a31d20fc4339cc5c6c64b1391fb`; full core
+build **8427 jobs** EXIT 0, zero errors; oracle 2559 -> **2564 commands ->
+2564 answers** (2541 with axiom dependencies + 23 axiom-free); targeted run over
+the module's **22** declarations, all with exactly
+`{propext, Classical.choice, Quot.sound}`; zero `sorryAx`; zero real errors.
+Paper 6pp, 20 line-anchored permalinks re-verified at the anchor commit itself.

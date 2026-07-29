@@ -20,7 +20,7 @@
 \tolerance=2000
 
 \newcommand{\lean}[1]{\texttt{#1}}
-\newcommand{\anchor}{6f3121d693e4f0f560a2ff01c63f4aacf1a49390}
+\newcommand{\anchor}{08a9050201287a31d20fc4339cc5c6c64b1391fb}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -32,9 +32,10 @@
 \newcommand{\Om}{\Omega}
 
 \title{The Vacuum Was Never Absent:\\
-Perron--Frobenius for Strictly Positive Kernels in Lean~4,\\
+A Machine-Checked Perron Theorem for Strictly Positive Kernels,\\
 and the Coupled-Slice Vacuum at Every Spatial Extent\\
-\large existence by compactness, in a library with no fixed-point theorem}
+\large existence by compactness, without invoking a fixed-point theorem
+in the pinned \texttt{mathlib} revision}
 \author{Lluis Eriksson}
 \date{}
 
@@ -60,8 +61,8 @@ every real eigenvector for that eigenvalue is a scalar multiple of it.  Together
 with the domination theorem of \cite{ErikssonBirkhoff} this gives the
 Perron statement the lane needs: the eigenvalue is the spectral radius.
 
-The existence proof does not use a fixed-point theorem, because the library has
-none.  It maximises $r$ over the compact set of pairs $(r,x)$ with $x$ in the
+The existence proof does not use a fixed-point theorem, because the pinned
+\texttt{mathlib} revision contains none.  It maximises $r$ over the compact set of pairs $(r,x)$ with $x$ in the
 simplex and $rx\le Ax$; maximality forces equality, since a strict inequality
 anywhere would let one further application of $A$ produce an admissible pair with
 a larger $r$.  The bound that keeps the set compact is obtained by summing the
@@ -201,8 +202,9 @@ because both vectors are.
 
 \section{Existence, by compactness}
 
-The library has no Brouwer fixed-point theorem, so existence is obtained without
-one.
+The pinned \texttt{mathlib} revision has no Brouwer fixed-point theorem, so
+existence is obtained without one.  That is a statement about this revision, not
+about the library in perpetuity.
 
 \begin{definition}
 $\Delta=\{x:\iota\to\R\mid x\ge0,\ \sum_i x_i=1\}$.
@@ -266,8 +268,8 @@ For a weight $w$ on configurations, $K_w(\sigma,\tau)=w(\sigma)K(\sigma,\tau)$
 with $K$ the decoupled kernel of \cite{ErikssonSpatial}.
 \end{definition}
 
-\osline{PerronKernel}{357}{sourceWeightedKernelL}, strictly positive when $w$
-is: \osline{PerronKernel}{361}{sourceWeightedKernelL\_pos}.
+\osline{PerronKernel}{388}{sourceWeightedKernelL}, strictly positive when $w$
+is: \osline{PerronKernel}{392}{sourceWeightedKernelL\_pos}.
 
 \begin{theorem}[The vacuum, at every $L$]\label{thm:vac}
 For every $L$, every $\beta$, and every strictly positive $w$, the kernel $K_w$
@@ -276,12 +278,33 @@ unique up to positive scale; and its eigenvalue dominates every eigenvalue, real
 or complex.
 \end{theorem}
 
-\osline{PerronKernel}{371}{vacuum\_exists\_of\_sourceWeight},
-\osline{PerronKernel}{378}{vacuum\_unique\_of\_sourceWeight},
-\osline{PerronKernel}{389}{vacuum\_spectral\_radius\_of\_sourceWeight}.
+\osline{PerronKernel}{402}{vacuum\_exists\_of\_sourceWeight},
+\osline{PerronKernel}{422}{vacuum\_unique\_of\_sourceWeight},
+\osline{PerronKernel}{433}{vacuum\_spectral\_radius\_of\_sourceWeight}.
 For the concrete slice with a bond around the ring,
-\osline{PerronKernel}{401}{spatialWeightRing} and
-\osline{PerronKernel}{410}{coupled\_ring\_vacuum\_exists}.
+\osline{PerronKernel}{445}{spatialWeightRing} and
+\osline{PerronKernel}{454}{coupled\_ring\_vacuum\_exists}.
+
+\begin{theorem}[The normalised vacuum: $T\Om=\Om$ again]\label{thm:norm}
+Let $T=\lambda^{-1}K_w$.  Then at every $L$ there is $\Om$ with $\Om>0$,
+$\sum_\sigma\Om(\sigma)=1$, and $T\Om=\Om$.
+\end{theorem}
+
+\osline{PerronKernel}{355}{normalizedKernel},
+\osline{PerronKernel}{362}{normalizedKernel\_fixes\_eigenvector},
+\osline{PerronKernel}{413}{normalized\_vacuum\_of\_sourceWeight}, and for
+the ring slice
+\osline{PerronKernel}{462}{coupled\_ring\_normalized\_vacuum}.
+
+\begin{remark}[The equation that failed, holding again]
+This is worth stating separately because of \emph{which} equation it is.  The
+companion chain obtained the vacuum from $T\Om=\Om$ for the \emph{uniform}
+$\Om$, and \cite{ErikssonSpatial} proved exactly that statement false as soon as
+a spatial coupling is present.  Theorem~\ref{thm:norm} restores the same
+equation --- for the Perron $\Om$ instead of the uniform one, at every extent.
+The normalisation $\sum\Om=1$ is free: the existence proof already produces its
+vector inside the simplex.
+\end{remark}
 
 \begin{remark}[What this settles about the first paper]
 \cite{ErikssonSpatial} proved that the elementary route stops producing the
@@ -340,8 +363,8 @@ line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8427 jobs, success \\
-Oracle commands & 2559 \\
-\quad with axiom dependencies & 2536 \\
+Oracle commands & 2564 \\
+\quad with axiom dependencies & 2541 \\
 \quad axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
