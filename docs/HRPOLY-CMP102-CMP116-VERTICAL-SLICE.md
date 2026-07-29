@@ -1012,6 +1012,82 @@ No source-faithful constructors were found for the trace-Jacobian term,
 Jacobian budgets and contour determinant bounds elsewhere in the tree are
 not definitions of these CMP109 terms.
 
+There is nevertheless one additional source-faithful primitive below the
+seven-term list.  `BalabanCMP109ConstraintCorrectionFixedPoint.lean` proves
+existence and uniqueness in a certified ball for the literal CMP109 equation
+
+```text
+D = C(A - h D),
+```
+
+and `BalabanCMP109ConstraintCorrectedFluctuation.lean` defines
+
+```text
+B'(B,D) = g_k C B - h D
+```
+
+and proves the complete nonlinear block constraint when `D` is that fixed
+point.  This is not yet the analytic map `B |-> D_tilde(g_k C B)` used in
+CMP109 (2.12): the terminal producer is an existential theorem for each
+field, and no repository definition chooses the unique solution as a
+field-dependent function.  In particular, the tree currently has no
+regularity theorem for the `h`-based fixed point as the input field varies.
+The smooth implicit-function development for the background-minimizer
+correction is a different fixed-point equation and cannot be substituted
+definitionally.
+
+This makes the first implementation dependency more precise:
+
+```text
+family of certified CMP109 correction data over A
+  -> chosen unique function D_tilde(A)
+  -> D_tilde(A) = C(A - h D_tilde(A))
+  -> regularity / jets of D_tilde
+  -> literal seven P^(k) species.
+```
+
+The first two arrows are a canonical choice from an already proved unique
+existence theorem; the regularity arrow is analytic work.  Merely adding an
+arbitrary function field called `D_tilde`, or reusing the unrelated
+background-minimizer correction, would rename the missing source
+construction.
+
+The functional-analytic theorem itself need not be invented:
+`isContDiffImplicitAt_fixedPoint_of_vertical_norm_lt_one` already turns a
+jointly smooth fixed-point map with vertical derivative norm below one into
+a smooth implicit function.  The source-specific obligation is to instantiate
+it with
+
+```text
+(A,D) |-> C_intrinsic(A - h D),
+```
+
+where `h` is `cmp96ConstraintPivotInsertion`, and to prove the corresponding
+joint smoothness and vertical derivative budget.  The existing CMP102
+instantiation instead uses the background minimizer `H`; it is a proof
+template, not the CMP109 map.
+
+The term-by-term producer audit is therefore:
+
+| CMP109 (2.12) species | Reusable substrate | Missing source theorem |
+|---|---|---|
+| `Tr log(I - h D D_tilde)` | finite matrix realization and `NearLog`/trace bounds | the analytic `D_tilde` map, its derivative, and the equality with this Jacobian |
+| `log sigma(B')` | none specific to the axial-to-Landau change of variables | the literal Jacobian density `sigma` and its normalization/localization |
+| `<H_1 h D_tilde_3,J>` | `h`, the correction fixed point, and generic jet calculus | the Taylor remainder `D_tilde_3` of that same correction and the source operator dictionary |
+| `-G_3(g_k B)` | quadratic gauge-fixing operators only | the nonlinear gauge-fixing functional and its cubic remainder |
+| `<H_1 g_k C B, Delta_1 H_1 h D_tilde>` | physical `C`, `h`, Hessian/covariance operators | exact `H_1`/`Delta_1` dictionary and the literal composed term |
+| `-<H_1 h D_tilde, Delta_1 H_1 h D_tilde>` | the same operator substrate | the literal composed term with its printed sign and scaling |
+| `-V(H_1 B')` | the equation-(80) four-term potential and its Pi4 localization | equality with this CMP109 species after corrected-field substitution, sign, `g_k^(-2)`, and domain regrouping |
+| energy difference in braces | `BalabanCMP109Lemma1ResidualFamily.lean` | the source analytic comparison giving (1.36) |
+
+Here the symbol `D₃` accepted by the abstract equation-(80) functional must
+not be identified by notation alone with CMP109's
+`D_tilde_3`.  Such an identification requires a theorem fixing the Taylor
+order, the sparse insertion `h`, the sign, and the field coordinates.
+Likewise, the determinant and `NearLog` developments used for the later
+Gaussian covariance are not the Jacobian of the nonlinear CMP109 change of
+variables.
+
 Consequently the next code object cannot honestly be another arbitrary
 `remainder : Y -> B -> R`.  It must be the literal finite, tagged family of
 the eight CMP109 (2.12) species, together with the exact equality that its
