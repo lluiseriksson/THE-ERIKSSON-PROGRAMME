@@ -1,0 +1,353 @@
+% Strict but not uniform: the spectral gap at every finite extent.
+% Lane: O (operator bridge), modules YangMills/OS/**.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\anchor}{6aa26bcedc4b008f4e5acaa708da343bf1f1100b}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Om}{\Omega}
+
+\title{Strict but Not Uniform:\\
+a Machine-Checked Spectral Gap at Every Finite Extent\\
+of the Coupled Slice\\
+\large peripheral separation without an equality case,\\
+and the modulus the theorem does not provide}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A companion paper supplied the vacuum of the coupled $\Z_2$ slice at every
+spatial extent: a strictly positive eigenvector, unique up to scale, carrying
+the spectral radius \cite{ErikssonPerron}.  It listed \emph{peripheral
+separation} as out of scope, and that omission is not cosmetic --- without it
+$|\mu|\le\lambda$ leaves $\mu=-\lambda$ open, and no gap follows at all.
+
+This paper closes it, and then draws the consequence that matters, which is
+negative.
+
+\textbf{Proved.}  For a strictly positive kernel on a finite nonempty type,
+$-\lambda$ is not an eigenvalue, hence every real eigenvalue other than the
+Perron eigenvalue is \emph{strictly} smaller in absolute value.  Specialised to
+the coupled slice: at every extent $L$, every $\beta$, and every strictly
+positive source weight, the transfer operator has a strict spectral gap.  The
+proof of peripheral separation avoids the equality case of the triangle
+inequality, which is where the classical argument spends its effort: writing
+$u=|w|$, $p=u-w$ and $q=u+w$, one gets $Ap=\lambda q$ and $Aq=\lambda p$, so a
+nonzero $p$ would make $Ap$ strictly positive, hence $q$ strictly positive,
+hence $w$ nonnegative, hence $p=0$.  We also deliver the vacuum in Euclidean
+normalisation, $\|\Om\|=1$ with $T\Om=\Om$, and the symmetry of the symmetrised
+kernel --- the two interfaces the next module needs.
+
+\textbf{Not proved, and this is the title.}  The gap is \emph{strict}, not
+\emph{quantitative}: the theorem provides no modulus of separation, and in
+particular nothing uniform in $L$.  That is not a limitation we expect to remove
+by working harder in this direction.  Direct numerical diagonalisation shows the
+subdominant ratio running $0.9205,\,0.9829,\,0.9964,\,0.9992$ at $L=2,3,4,5$ for
+$\beta=0.8$, $\gamma=1.2$ --- collapsing towards $1$.  That computation is
+reported as measured and unproved, and no theorem here depends on it; its role
+is to say that a paper reporting only the positive half would be reporting the
+half that does not matter.
+
+Nothing in this paper is a claim about $\SU(N)$, the continuum limit, or the
+Yang--Mills mass gap.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{What was missing, and why it was not cosmetic}
+
+\cite{ErikssonPerron} proved that the coupled slice has a vacuum at every finite
+extent --- strictly positive, unique up to scale, carrying the spectral radius
+--- and listed among its exclusions that \emph{peripheral separation} was not
+proved.  Read quickly, that looks like a technical refinement.  It is not.  The
+domination statement is $|\mu|\le\lambda$; the case $\mu=-\lambda$ saturates it.
+Until that case is excluded, the second-largest modulus may equal the largest,
+and \emph{no gap statement exists at all}, at any extent.
+
+So the first half of this paper is not an improvement of the previous one.  It
+is the step without which the previous one supports no spectral conclusion.
+
+\subsection{What is proved}
+
+Throughout $A$ is a strictly positive kernel on a finite nonempty type, $v>0$
+with $Av=\lambda v$.
+
+\begin{itemize}
+\item $-\lambda$ is not an eigenvalue of $A$;
+\item hence for every real eigenpair $(\mu,w)$ with $w\neq0$ and $\mu\neq\lambda$,
+      $\;|\mu|<\lambda$ --- a strict gap;
+\item specialised: at every extent $L$, every $\beta$, and every strictly
+      positive source weight, the coupled transfer operator has a strict gap;
+\item the vacuum in Euclidean normalisation: $\|\Om\|=1$ and $T\Om=\Om$;
+\item the symmetrised kernel is symmetric, and strictly positive.
+\end{itemize}
+
+\subsection{What is deliberately not claimed}
+
+\begin{enumerate}
+\item \textbf{No modulus of separation, and nothing uniform in $L$.}  The gap
+theorem is a strict inequality with no quantitative content.  This is the
+paper's own headline and Section~\ref{sec:measured} says what the numbers show.
+\item \textbf{No proof that a volume-uniform gap fails.}  The collapse in
+Section~\ref{sec:measured} is measured on a finite grid, is labelled as such,
+and carries no theorem.  What \emph{is} established is that this paper does not
+provide a uniform bound --- not that none exists.
+\item \textbf{Real eigenpairs.}  Peripheral separation is proved for real
+eigenvalues.  Complex eigenvalues are dominated in modulus by $\lambda$
+\cite{ErikssonBirkhoff} but are not separated from it here.
+\item \textbf{Algebraic simplicity} is still not proved, and neither is
+Perron--Frobenius for merely irreducible kernels.
+\item \textbf{Nothing about $\SU(N)$, the continuum limit, or the Clay problem}
+\cite{Clay}.
+\end{enumerate}
+
+\section{The positive left eigenvector, and what it buys}
+
+\begin{lemma}[Left eigenvector]\label{lem:left}
+$A^{\mathsf T}$ is strictly positive, so it too has a strictly positive
+eigenvector $\varphi$, and its eigenvalue equals $\lambda$.
+\end{lemma}
+
+\osline{PerronGap}{74}{exists\_pos\_left\_eigenvector},
+\osline{PerronGap}{82}{left\_eigenvalue\_eq}.  Equality of the two
+eigenvalues follows from pairing: $\langle\varphi,Av\rangle$ evaluates to
+$\lambda\langle\varphi,v\rangle$ one way and $\nu\langle\varphi,v\rangle$ the
+other, and $\langle\varphi,v\rangle>0$.
+
+\begin{lemma}[A nonnegative sub-eigenvector is an eigenvector]\label{lem:sub}
+If $u\ge0$ and $Au\ge\lambda u$ then $Au=\lambda u$.
+\end{lemma}
+
+\begin{proof}
+Let $z=Au-\lambda u\ge0$.  Then $\langle\varphi,z\rangle
+=\langle A^{\mathsf T}\varphi,u\rangle-\lambda\langle\varphi,u\rangle=0$, and a
+nonnegative vector with zero positive-weighted sum vanishes.
+\end{proof}
+
+\osline{PerronGap}{114}{subeigen\_eq}.  This is the standard device, and it
+is what makes the next section cheap.
+
+\section{Peripheral separation, without an equality case}
+
+\begin{theorem}[$-\lambda$ is not an eigenvalue]\label{thm:periph}
+There is no $w\neq0$ with $Aw=-\lambda w$.
+\end{theorem}
+
+\begin{proof}
+Let $u=|w|$ entrywise.  From $\lambda u_i=|\,(Aw)_i\,|\le(Au)_i$ we get
+$Au\ge\lambda u$, so $Au=\lambda u$ by Lemma~\ref{lem:sub}.  Put $p=u-w\ge0$ and
+$q=u+w\ge0$.  Then
+\[
+  Ap = Au - Aw = \lambda u + \lambda w = \lambda q,
+  \qquad
+  Aq = Au + Aw = \lambda u - \lambda w = \lambda p .
+\]
+Suppose $p\neq0$.  Then $Ap>0$ entrywise, so $\lambda q>0$, so $q_i>0$ for every
+$i$; but $q_i=|w_i|+w_i$, which vanishes wherever $w_i<0$, so $w\ge0$ --- and
+then $u=w$, i.e.\ $p=0$, a contradiction.  Hence $p=0$, so $w=u\ge0$, so
+$Aw=\lambda w$; with $Aw=-\lambda w$ and $\lambda>0$ this forces $w=0$.
+\end{proof}
+
+\osline{PerronGap}{163}{neg\_not\_eigenvalue}.
+
+\begin{remark}[Why this route was taken]
+The classical proof of peripheral separation goes through the equality case of
+the triangle inequality: from $\bigl|\sum_j A_{ij}w_j\bigr|=\sum_j
+A_{ij}|w_j|$ one concludes that the $w_j$ share a phase.  Formalising an
+equality case is markedly more work than formalising an inequality, and it is
+avoidable here.  The pair $(p,q)$ carries the same information in a form that
+only ever needs \emph{strict positivity of the image of a nonnegative nonzero
+vector} --- a lemma the companion development already had.
+\end{remark}
+
+\section{The gap}
+
+\begin{theorem}[Strict gap]\label{thm:gap}
+If $Aw=\mu w$ with $w\neq0$ real and $\mu\neq\lambda$, then $|\mu|<\lambda$.
+\end{theorem}
+
+\begin{proof}
+$|\mu|\le\lambda$ by the domination theorem of \cite{ErikssonBirkhoff}.  If
+$|\mu|=\lambda$ then $\mu=\lambda$, excluded by hypothesis, or $\mu=-\lambda$,
+excluded by Theorem~\ref{thm:periph}.
+\end{proof}
+
+\osline{PerronGap}{246}{abs\_lt\_of\_ne\_perron}, and for the coupled slice
+at every extent \osline{PerronGap}{353}{coupled\_gap\_of\_sourceWeight}.
+
+\begin{remark}[What the statement does and does not contain]
+Theorem~\ref{thm:gap} is a strict inequality between two real numbers.  It
+contains no $\varepsilon$, no dependence on $L$, and therefore no information
+whatever about how the separation behaves as the extent grows.  Every use of it
+that sounds quantitative is a misuse.
+\end{remark}
+
+\section{The two interfaces the next module needs}
+
+\begin{theorem}[Euclidean-normalised vacuum]\label{thm:unit}
+With $T=\lambda^{-1}A$ there is $\Om>0$ with $\sum_i\Om_i^2=1$ and $T\Om=\Om$.
+\end{theorem}
+
+\osline{PerronGap}{270}{eucNorm},
+\osline{PerronGap}{279}{unitVacuum},
+\osline{PerronGap}{286}{unitVacuum\_norm},
+\osline{PerronGap}{303}{unitVacuum\_fixed}.  The companion paper normalised
+on the simplex, which is what its existence proof produced; the
+Osterwalder--Seiler side asks for unit Euclidean norm, and the passage between
+them is a rescaling.
+
+\begin{theorem}[The symmetrised kernel is symmetric]\label{thm:sym}
+$\widetilde K_w(\sigma,\tau)=w(\sigma)^{1/2}K(\sigma,\tau)w(\tau)^{1/2}$
+satisfies $\widetilde K_w(\sigma,\tau)=\widetilde K_w(\tau,\sigma)$, and is
+strictly positive when $w$ is.
+\end{theorem}
+
+\osline{PerronGap}{328}{symWeighted\_symm},
+\osline{PerronGap}{335}{symWeighted\_pos}.  It is symmetric because the
+decoupled kernel is.  This is the bridge to a self-adjoint operator; the
+self-adjointness itself, and the variational characterisation it unlocks, belong
+to the module that consumes it and are not proved here.
+
+\section{What is measured and not proved}\label{sec:measured}
+
+Direct dense numerical diagonalisation of the $2^L\times2^L$ coupled kernel
+gives, for $\beta=0.8$ and $\gamma=1.2$, subdominant ratios
+\[
+  0.9205,\quad 0.9829,\quad 0.9964,\quad 0.9992
+  \qquad\text{at } L=2,3,4,5,
+\]
+and for $\beta=0.3$, $\gamma=0.4$,
+\[
+  0.4665,\quad 0.5518,\quad 0.5938,\quad 0.6159 .
+\]
+The first family collapses towards $1$; the second does not, and the parameters
+of the second satisfy $\sinh 2\beta\,\sinh 2\gamma<1$.  All of this is
+\textbf{verified} in the numerical sense and \textbf{not proved}; the
+identification of that threshold with the Kramers--Wannier line of the
+two-dimensional Ising transfer matrix is standard literature and is not
+established here.  The probe and its transcript are in the repository.
+
+No theorem of this paper depends on this section.  Its function is to prevent a
+misreading: Theorem~\ref{thm:gap} holds at every finite extent, and the numbers
+show that this is compatible with the separation vanishing in the limit.  A
+strict gap at each $L$ and a uniform gap in $L$ are different statements, and
+only the first is proved here.
+
+\section{Formalisation notes}
+
+\paragraph{An inequality instead of an equality case.}  The one design decision
+that shaped the module is described in the remark after
+Theorem~\ref{thm:periph}: the $(p,q)$ pair replaces the equality case of the
+triangle inequality by two applications of a positivity lemma that already
+existed.  The saving is not marginal --- an equality case would have required
+either complex-phase reasoning or a sign decomposition of the index set.
+
+\paragraph{The left eigenvector was free.}  Existence for $A^{\mathsf T}$ is the
+companion theorem applied to a transposed kernel, and equality of the two
+eigenvalues is one pairing.  That single object converts the sub-eigenvector
+inequality into an equality, which is the hinge of the whole argument.
+
+\paragraph{Normalisation conventions are interfaces, not mathematics.}  The
+companion paper produced $\sum\Om=1$ because its existence proof lives on the
+simplex; this one adds $\|\Om\|=1$ because that is what the consuming side
+asks.  Both are one rescaling from each other, and neither is a theorem about
+the model.  They are recorded as separate endpoints so that no later module has
+to guess which convention is in force.
+
+\section{Reproducibility}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}
+of \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Every link
+was resolved against that commit, and checked to point at an actual declaration
+line, before compilation.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8428 jobs, success \\
+Oracle commands & 2579 \\
+\quad with axiom dependencies & 2556 \\
+\quad axiom-free & 23 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
+Project axioms & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The numerical probe is
+\repofile{scripts/probe\_spatial\_birkhoff.py}{scripts/probe\_spatial\_birkhoff.py}
+with transcript
+\repofile{docs/O-LANE-PROBE-TRANSCRIPT-20260728.txt}{docs/O-LANE-PROBE-TRANSCRIPT-20260728.txt}.
+Verdicts are in
+\repofile{docs/VERIFICATION-LEDGER.md}{docs/VERIFICATION-LEDGER.md}.
+
+\begin{thebibliography}{9}
+
+\bibitem{ErikssonPerron}
+L.~Eriksson,
+\emph{The Vacuum Was Never Absent: A Machine-Checked Perron Theorem for Strictly
+Positive Kernels, and the Coupled-Slice Vacuum at Every Spatial Extent},
+viXra, 2026.
+
+\bibitem{ErikssonBirkhoff}
+L.~Eriksson,
+\emph{Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial
+Extent}, viXra, 2026.
+
+\bibitem{ErikssonSpatial}
+L.~Eriksson,
+\emph{Where the Elementary Reconstruction Stops: Spatial Coupling Breaks the
+Uniform Vacuum, Machine-Checked}, viXra, 2026.
+
+\bibitem{Seneta}
+E.~Seneta,
+\emph{Non-negative Matrices and Markov Chains},
+2nd ed., Springer, 2006.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+CADE-28, Lecture Notes in Computer Science \textbf{12699} (2021), 625--635.
+
+\bibitem{Mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+CPP 2020, 367--381.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills theory},
+Clay Mathematics Institute Millennium Prize Problem description, 2000.
+
+\end{thebibliography}
+
+\end{document}
