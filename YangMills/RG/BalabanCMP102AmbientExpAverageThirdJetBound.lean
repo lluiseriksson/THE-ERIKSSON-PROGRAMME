@@ -147,18 +147,18 @@ def cmp102SourceExpAverageThirdJetBudget
         (Nc := Nc) d M r q ^ 3
 
 set_option maxHeartbeats 1200000 in
-/-- The third derivative of the literal exponential block average is
-controlled by source-generated physical budgets, uniformly in the ambient
-periodic volume. -/
-theorem norm_iteratedFDeriv_three_cmp98UbarExpAverage_le_sourceBudget
+/-- Every positive jet through order three of the literal exponential block
+average is controlled by the same source-generated physical budget. -/
+theorem norm_iteratedFDeriv_cmp98UbarExpAverage_le_sourceThirdJetBudget
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (b : PhysicalBond d N')
     (Z : PhysicalAmbientMatrixTangent d (M * N') Nc)
     (r q : NNReal) (hZ : ‖Z‖ < r)
     (hq : (q : ℝ) < 1)
     (hD : ∀ x ∈ blockOf M N' b.1,
-      ‖cmp98UbarAmbientDeviationMatrix U b x Z‖ < q) :
-    ‖iteratedFDeriv ℝ 3 (cmp98UbarExpAverage U b) Z‖ ≤
+      ‖cmp98UbarAmbientDeviationMatrix U b x Z‖ < q)
+    (i : ℕ) (hi1 : 1 ≤ i) (hi3 : i ≤ 3) :
+    ‖iteratedFDeriv ℝ i (cmp98UbarExpAverage U b) Z‖ ≤
       cmp102SourceExpAverageThirdJetBudget
         (Nc := Nc) d M r q := by
   let inner := cmp98UbarLogAverage U b
@@ -173,46 +173,82 @@ theorem norm_iteratedFDeriv_three_cmp98UbarExpAverage_le_sourceBudget
   have hsmall : ∀ x ∈ blockOf M N' b.1,
       ‖cmp98UbarAmbientDeviationMatrix U b x Z‖ < 1 :=
     fun x hx => (hD x hx).trans hq
-  have hinner : ContDiffAt ℝ 3 inner Z :=
+  have hinner : ContDiffAt ℝ i inner Z :=
     (analyticAt_cmp98UbarLogAverage_of_norm_lt_one U b Z hsmall
       ).contDiffAt.of_le le_top
-  have houter : ContDiffAt ℝ 3 outer (inner Z) :=
+  have houter : ContDiffAt ℝ i outer (inner Z) :=
     (NormedSpace.exp_analytic (𝕂 := ℝ) (inner Z)).contDiffAt.of_le le_top
   have hY :
       ‖inner Z‖ ≤ cmp102SourceLogAverageRadius q := by
     simpa [inner] using
       norm_cmp98UbarLogAverage_le_sourceBudget
         U b Z q.2 hq (fun x hx => (hD x hx).le)
-  have hC : ∀ i, i ≤ 3 →
-      ‖iteratedFDeriv ℝ i outer (inner Z)‖ ≤ C := by
-    intro i hi
+  have hC : ∀ j, j ≤ i →
+      ‖iteratedFDeriv ℝ j outer (inner Z)‖ ≤ C := by
+    intro j hj
     exact norm_iteratedFDeriv_exp_le_orderThreeOuterBudget
-      q hY i hi
+      q hY j (hj.trans hi3)
   have hDone : 1 ≤ D := le_max_left _ _
-  have hDjets : ∀ i, 1 ≤ i → i ≤ 3 →
-      ‖iteratedFDeriv ℝ i inner Z‖ ≤ D ^ i := by
-    intro i hi1 hi3
+  have hDjets : ∀ j, 1 ≤ j → j ≤ i →
+      ‖iteratedFDeriv ℝ j inner Z‖ ≤ D ^ j := by
+    intro j hj1 hji
     have hraw :
-        ‖iteratedFDeriv ℝ i inner Z‖ ≤
+        ‖iteratedFDeriv ℝ j inner Z‖ ≤
           cmp102SourceLocalNearLogThirdJetBudget
             (Nc := Nc) d M r q := by
       exact
         norm_iteratedFDeriv_cmp98UbarLogAverage_le_sourceBudget
-          U b Z r q hZ hq hD i hi1 hi3
+          U b Z r q hZ hq hD j hj1 (hji.trans hi3)
     calc
-      ‖iteratedFDeriv ℝ i inner Z‖
+      ‖iteratedFDeriv ℝ j inner Z‖
           ≤ cmp102SourceLocalNearLogThirdJetBudget
               (Nc := Nc) d M r q := hraw
       _ ≤ D := le_max_right _ _
       _ = D ^ 1 := (pow_one D).symm
-      _ ≤ D ^ i := pow_le_pow_right₀ hDone hi1
+      _ ≤ D ^ j := pow_le_pow_right₀ hDone hj1
   have hmain :=
     norm_iteratedFDeriv_comp_le_at_of_both_local
       houter hinner hC hDjets
+  have hCnonneg : 0 ≤ C :=
+    (norm_nonneg (iteratedFDeriv ℝ 0 outer (inner Z))).trans
+      (hC 0 (Nat.zero_le i))
+  have hDnonneg : 0 ≤ D := zero_le_one.trans hDone
+  have hfac : (i.factorial : ℝ) ≤ 6 := by
+    interval_cases i <;> norm_num
+  have hpow : D ^ i ≤ D ^ 3 :=
+    pow_le_pow_right₀ hDone hi3
   change
-    ‖iteratedFDeriv ℝ 3 (outer ∘ inner) Z‖ ≤ _ at hmain
-  simpa [cmp102SourceExpAverageThirdJetBudget, C, D, outer, inner,
-    cmp98UbarExpAverage] using hmain
+    ‖iteratedFDeriv ℝ i (outer ∘ inner) Z‖ ≤ _ at hmain
+  change
+    ‖iteratedFDeriv ℝ i (cmp98UbarExpAverage U b) Z‖ ≤ _
+  calc
+    ‖iteratedFDeriv ℝ i (cmp98UbarExpAverage U b) Z‖ =
+        ‖iteratedFDeriv ℝ i (outer ∘ inner) Z‖ := rfl
+    _ ≤ (i.factorial : ℝ) * C * D ^ i := hmain
+    _ ≤ 6 * C * D ^ 3 := by
+      exact mul_le_mul
+        (mul_le_mul_of_nonneg_right hfac hCnonneg) hpow
+        (pow_nonneg hDnonneg i) (mul_nonneg (by norm_num) hCnonneg)
+    _ = cmp102SourceExpAverageThirdJetBudget
+        (Nc := Nc) d M r q := rfl
+
+set_option maxHeartbeats 1200000 in
+/-- The third derivative of the literal exponential block average is
+controlled by source-generated physical budgets, uniformly in the ambient
+periodic volume. -/
+theorem norm_iteratedFDeriv_three_cmp98UbarExpAverage_le_sourceBudget
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (b : PhysicalBond d N')
+    (Z : PhysicalAmbientMatrixTangent d (M * N') Nc)
+    (r q : NNReal) (hZ : ‖Z‖ < r)
+    (hq : (q : ℝ) < 1)
+    (hD : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x Z‖ < q) :
+    ‖iteratedFDeriv ℝ 3 (cmp98UbarExpAverage U b) Z‖ ≤
+      cmp102SourceExpAverageThirdJetBudget
+        (Nc := Nc) d M r q :=
+  norm_iteratedFDeriv_cmp98UbarExpAverage_le_sourceThirdJetBudget
+    U b Z r q hZ hq hD 3 (by omega) (by omega)
 
 end
 

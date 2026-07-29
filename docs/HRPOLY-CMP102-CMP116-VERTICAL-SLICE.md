@@ -798,9 +798,19 @@ slightly enlarged radius used for the open second-derivative ball is
 generated internally.
 
 Thus the full `cmp98UbarExpAverage` third jet is physical and
-volume-uniform.  The next producer is the third jet of the represented
-nonlinear block, followed by the fixed right normalizer, the physical
-coordinate map, and the literal shift.
+volume-uniform.
+
+`BalabanCMP102AmbientNonlinearBlockThirdJetBound.lean` now closes the next
+ordered product.  It combines the exponential block average with the
+straight coarse Wilson contour using the noncommutative quantitative
+Leibniz rule on a genuine local Mercator neighborhood.  The common budget
+controls all orders zero through three and depends only on source radii,
+dimensions, and contour length.  No represented-block third derivative is
+accepted from the caller.
+
+The remaining physical transports before the order-three joint jet of `T`
+are the fixed right normalizer, the physical coordinate map, and the
+literal shift.
 
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete
