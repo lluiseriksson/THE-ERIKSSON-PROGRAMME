@@ -27744,3 +27744,85 @@ claimed as done).  Anything uniform in the extent: the rate of the new endpoint
 is `specRatio(L)`, which the tabulated evidence says tends to 1, so the
 endpoint does NOT survive the volume limit and the word *clustering* remains
 unused.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 542 (2026-07-29, **S block v1.5: the sharpness of `specGap` stops
+being a remark, and the case that made the remark wrong is the case that makes
+the theorem work**)
+
+**Context.**  Sixth external reading.  It confirmed the composed endpoint of 541
+and raised three residues, one of which was mathematical.
+
+**1. The sharpness remark was WRONG where `specGap = 0`, and that is now the
+proof.**  The v1.4 remark argued: the maximum defining `specGap` is attained at
+some basis vector; that vector is orthogonal to the Perron vector because
+eigenvectors with different eigenvalues are; so it realises the bound.  The
+reading pointed out that this **fails at `specGap = 0`**: there the maximiser may
+perfectly well be one of the TOP indices, since those contribute `0` by
+definition, and it hands over no non-Perron eigenvector at all.
+
+The fix is not a caveat, it is a second branch, and the branch is short:
+
+  * `specGap > 0` --- the maximiser cannot be a top index (they contribute `0`,
+    which is not `> 0`), so it is a genuine non-Perron eigenvector.  Orthogonality
+    to the Perron vector is one line of symmetry: moving `K` across the pairing
+    scales by `lam` on one side and by the other eigenvalue on the other, so
+    `(lam - mu) * <v, b> = 0`.  Its norm is `1` and it realises `|mu|`.
+  * `specGap = 0` --- no eigenvector is available, but §6 ALREADY forces
+    `||K u|| = 0` for every fluctuation observable, so any nonzero one attains
+    the value.
+
+**This second branch is the only reason the theorem needs the state space to
+have two distinct points.**  At `L = 0` there are none, the fluctuation sector
+is trivial, and the theorem is vacuous there -- which is correct, and is stated
+rather than hidden.
+
+**Proved (§11).**  `exists_attaining_fluctuation` (the bound is attained),
+`inner_perron_specBasis_eq_zero` (eigenvectors off the top are orthogonal to the
+Perron vector --- the mirror of §5), `eucNorm_pos_of_ne_zero`.  Together with
+`norm_act_le_specGap` this is the statement that `specGap` IS the operator norm
+on the fluctuation sector.  We do NOT introduce that norm as a defined object and
+prove an equation about it; bound-plus-attainment carries the same content, and
+the paper and the module both say which of the two was done.
+
+**Pattern, again, and it is worth naming.**  The v1.4 remark was a sketch of a
+proof written in prose.  Prose does not have to handle a degenerate case for the
+sentence to read well; Lean does.  The case that broke the sketch is the case
+that gives the theorem its hypothesis.  *A sketch that is never elaborated never
+finds out where it is wrong.*
+
+**2. "past an explicit threshold" was an overstatement.**  The theorem gives
+EXISTENCE of `N0`, characterised by
+`specRatio ^ N0 < c^2 / (2 (||u||^2 + 1))`.  That is a quantitative
+characterisation, not a closed formula and not the least such index.  The
+abstract and §8 now say exactly that.  Noted for the record: `N0` depends on the
+observable only through `c` and `u`, which are built from the dressed CONSTANT
+observable -- so it is in fact observable-independent, and the statement could be
+strengthened to exhibit that.  Registered, not done.
+
+**3. The verification section described three probe checks; the script runs
+four.**  The fourth (added in 541) is now in the paper, and is described as what
+it is: a spot-check at ONE observable per parameter set, at small `N`, not a
+sweep.  The generality lives in the Lean theorem.
+
+**And two places the reading did not name.**  §1 of the paper and the module
+header both still said sharpness was numerical only.  Found by re-reading every
+occurrence of the retired claim rather than only the one that was flagged --
+which is the discipline the 541 guard exists to enforce, in the region the guard
+cannot reach (claims in sentences, not names).
+
+**Measured.**  Core **8430 jobs** (unchanged; declarations added to an existing
+module).  Oracle **2669 commands -> 2669 answers** (2666 distinct, the same
+three known duplicates), 23 axiom-free + 2643 with axiom dependencies, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  **43** declarations in
+the module, all 43 in the oracle list.  `exists_attaining_fluctuation`
+prints exactly `[propext, Classical.choice, Quot.sound]`.  Probe: all four
+checks PASS, worst endpoint ratio 0.145.  `check_module_prose.py`: OS lane
+18 modules, 0 findings.
+
+**Still not proved.**  Anything uniform in the extent.  That is now the ONLY
+substantive gap, it is a limitation of the result chosen rather than a defect of
+the paper, and `specRatio(L) -> 1` outside the disordered region says the gap is
+real and not an artefact of technique.  Reflection positivity untouched.
+Clay ~0 pct.

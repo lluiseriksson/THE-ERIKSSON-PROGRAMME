@@ -2991,3 +2991,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.unitVacuum_eigen
 #print axioms YangMills.OS.gibbsCorr_bound_of_partition_lower
 #print axioms YangMills.OS.gibbsCorr_decay_fixed_extent
+#print axioms YangMills.OS.eucNorm_pos_of_ne_zero
+#print axioms YangMills.OS.inner_perron_specBasis_eq_zero
+#print axioms YangMills.OS.exists_attaining_fluctuation

@@ -39,8 +39,11 @@ This module supplies it, and spends the result on both debts at once.
   symmetry alone, and bounds the partition function below by
   `c² · λ ^ N − specGap ^ N · ‖u‖²`.  No eigenbasis index is identified.
 * `gibbsCorr_decay_fixed_extent` — the composed endpoint: the **normalised**
-  two-point function is bounded by `C · specRatio ^ N` past an explicit
-  threshold, at a fixed extent.
+  two-point function is bounded by `C · specRatio ^ N` past a threshold, at a
+  fixed extent.  The threshold is characterised by an inequality, not computed.
+* `exists_attaining_fluctuation` — the bound of §6 is **sharp**: some
+  fluctuation observable attains it.  The proof splits at `specGap = 0`, where
+  the maximiser may be a top index and hands over no eigenvector at all.
 
 ## The one step that does not come from the inequalities
 
@@ -59,9 +62,12 @@ denominator bound with no index at all.  The sentence is kept, in its corrected
 form, because a false claim about what is *hard* discourages work in a way a
 false claim about what is proved does not.
 
-What is genuinely not proved: that `specGap` **equals** the operator norm on the
-fluctuation sector.  Only `≤` is proved.  The probe reports attainment as
-*verified*; no theorem here says it.
+The same held, until §11, for the sharpness of `specGap`.  It no longer does:
+the bound **and** its attainment are both proved, which is what it means for
+`specGap` to be the operator norm on the fluctuation sector.  What is still not
+done is introducing that norm as a defined object and proving an equation about
+it — a bound together with its attainment carries the same content, and this
+sentence says which of the two we did.
 
 `specRatio` **depends on the extent**.  Nothing here bounds it away from `1`
 uniformly in the size of the configuration space, and the numerical evidence
@@ -764,5 +770,112 @@ theorem gibbsCorr_decay_fixed_extent {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
   have hpos : (0:ℝ) ≤ rho ^ N * lam ^ N * (c ^ 2 / 2) :=
     mul_nonneg (mul_nonneg hrhoN (le_of_lt hlamN)) (by positivity)
   linarith
+
+/-! ## §11  Sharpness: the bound of §6 is attained
+
+§6 proves an inequality.  This section proves it is an equality --- some
+fluctuation observable realises `specGap` --- so `specGap` IS the operator norm
+of the kernel restricted to the fluctuation sector, not a loose over-estimate.
+
+**The proof splits, and the split is the content.**  When `specGap > 0` the
+index attaining the maximum cannot be one of the top ones, because those
+contribute `0` by definition; so it hands over a genuine non-Perron
+eigenvector, and eigenvectors with different eigenvalues are orthogonal.  When
+`specGap = 0` that reasoning fails outright --- the maximiser may perfectly well
+be a top index --- but there the §6 bound already annihilates every fluctuation
+observable, so any nonzero one attains the value.  It is the second branch that
+needs the fluctuation sector to be nonempty, which is why two distinct states
+are assumed. -/
+
+section Sharp
+
+variable {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι] {K : ι → ι → ℝ}
+
+theorem eucNorm_pos_of_ne_zero {u : ι → ℝ} (hu : u ≠ 0) : 0 < eucNorm u := by
+  obtain ⟨i, hi⟩ : ∃ i, u i ≠ 0 := by
+    by_contra hcon
+    push_neg at hcon
+    exact hu (funext fun i => hcon i)
+  refine Real.sqrt_pos.mpr (Finset.sum_pos' (fun k _ => mul_self_nonneg _) ?_)
+  exact ⟨i, Finset.mem_univ i, mul_self_pos.mpr hi⟩
+
+/-- Eigenvectors whose eigenvalue is **not** the Perron one are orthogonal to
+the Perron vector.  This is the mirror of §5, and it is one line of symmetry:
+moving the kernel across the pairing scales by `lam` on one side and by the
+other eigenvalue on the other. -/
+theorem inner_perron_specBasis_eq_zero (hK : ∀ i j, K i j = K j i)
+    {v : ι → ℝ} {lam : ℝ} (hvE : ∀ i, ∑ j, K i j * v j = lam * v i) {j : ι}
+    (hne : specEigen hK j ≠ lam) :
+    ∑ i, v i * (specBasis hK j).ofLp i = 0 := by
+  have hsym := iterate_pairing_symm hK 1 v ((specBasis hK j).ofLp)
+  simp only [Function.iterate_one] at hsym
+  have hL : ∑ i, act K v i * (specBasis hK j).ofLp i
+      = lam * ∑ i, v i * (specBasis hK j).ofLp i := by
+    have hstep : ∀ i, act K v i * (specBasis hK j).ofLp i
+        = lam * (v i * (specBasis hK j).ofLp i) := by
+      intro i
+      unfold act
+      rw [hvE i]
+      ring
+    rw [Finset.sum_congr rfl fun i _ => hstep i, ← Finset.mul_sum]
+  have hR : ∑ i, v i * act K ((specBasis hK j).ofLp) i
+      = specEigen hK j * ∑ i, v i * (specBasis hK j).ofLp i := by
+    have hstep : ∀ i, v i * act K ((specBasis hK j).ofLp) i
+        = specEigen hK j * (v i * (specBasis hK j).ofLp i) := by
+      intro i
+      unfold act
+      rw [specBasis_eigen hK j i]
+      ring
+    rw [Finset.sum_congr rfl fun i _ => hstep i, ← Finset.mul_sum]
+  rw [hL, hR] at hsym
+  have hfac : (lam - specEigen hK j) * (∑ i, v i * (specBasis hK j).ofLp i) = 0 := by
+    rw [sub_mul]
+    linarith
+  rcases mul_eq_zero.mp hfac with h | h
+  · exact absurd (by linarith : specEigen hK j = lam) hne
+  · exact h
+
+/-- **THE BOUND IS SHARP.**  Some fluctuation observable attains `specGap`, so
+the inequality of §6 identifies the restricted operator norm rather than merely
+bounding it.  Both branches of the proof are needed; see the section note. -/
+theorem exists_attaining_fluctuation (hpos : ∀ i j, 0 < K i j)
+    (hK : ∀ i j, K i j = K j i) {v : ι → ℝ} (hv : ∀ i, 0 < v i) {lam : ℝ}
+    (hvE : ∀ i, ∑ j, K i j * v j = lam * v i) {i₀ i₁ : ι} (hne : i₀ ≠ i₁) :
+    ∃ u : ι → ℝ, (∑ i, v i * u i = 0) ∧ eucNorm u ≠ 0 ∧
+      eucNorm (act K u) = specGap hK lam * eucNorm u := by
+  rcases eq_or_lt_of_le (specGap_nonneg hK lam) with hzero | hgt
+  · -- `specGap = 0`: the maximiser may be a top index, so no eigenvector is
+    -- available; but §6 already annihilates the whole fluctuation sector.
+    obtain ⟨u, hu, hune⟩ := exists_nonzero_perp hv hne
+    refine ⟨u, hu, ne_of_gt (eucNorm_pos_of_ne_zero hune), ?_⟩
+    have hle := norm_act_le_specGap hpos hK hv hvE hu
+    rw [← hzero, zero_mul] at hle ⊢
+    exact le_antisymm hle (eucNorm_nonneg _)
+  · -- `specGap > 0`: the maximiser is necessarily non-Perron.
+    obtain ⟨j, -, hj⟩ := Finset.exists_mem_eq_sup' (Finset.univ_nonempty (α := ι))
+      (fun j : ι => if specEigen hK j = lam then 0 else |specEigen hK j|)
+    have hj' : specGap hK lam
+        = (if specEigen hK j = lam then 0 else |specEigen hK j|) := by
+      unfold specGap
+      exact hj
+    have hjne : specEigen hK j ≠ lam := by
+      intro htop
+      rw [hj', if_pos htop] at hgt
+      exact lt_irrefl 0 hgt
+    have hgap : specGap hK lam = |specEigen hK j| := by
+      rw [hj', if_neg hjne]
+    have hone : eucNorm ((specBasis hK j).ofLp) = 1 := by
+      rw [← norm_emb]
+      exact (specBasis hK).orthonormal.1 j
+    refine ⟨(specBasis hK j).ofLp,
+      inner_perron_specBasis_eq_zero hK hvE hjne, by rw [hone]; exact one_ne_zero, ?_⟩
+    have hact : act K ((specBasis hK j).ofLp)
+        = fun i => specEigen hK j * (specBasis hK j).ofLp i := by
+      funext i
+      unfold act
+      exact specBasis_eigen hK j i
+    rw [hact, eucNorm_smul, hgap]
+
+end Sharp
 
 end YangMills.OS
