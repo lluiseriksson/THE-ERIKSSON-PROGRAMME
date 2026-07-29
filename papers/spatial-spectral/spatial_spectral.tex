@@ -1,0 +1,327 @@
+% The modulus: the operator bound on the fluctuation sector (S block).
+% Lane: O (operator bridge), module YangMills/OS/SpatialSpectral.lean.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\anchor}{4ceb3f7c67b906f2a95f1bd5d193b49a86b6e9af}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Om}{\Omega}
+
+\title{The Modulus:\\
+a Machine-Checked Operator Bound on the Fluctuation Sector\\
+of the Coupled $\Z_2$ Slice\\
+\large one construction, two debts --- and the one it does not pay}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Two companion papers were left carrying the same debt from opposite sides.  The
+gap paper proved that every eigenvalue of the coupled slice other than the
+Perron eigenvalue is \emph{strictly} smaller in modulus, and said plainly that
+this provides \emph{no modulus of separation} \cite{ErikssonGap}.  The bridge
+paper proved that the Gibbs correlations of the spatial system are matrix
+elements of a self-adjoint transfer operator, and obtained geometric decay only
+\emph{under a contraction hypothesis it did not discharge} \cite{ErikssonGibbs}.
+The missing step is identical in both: finitely many strict inequalities are not
+an operator-norm bound.
+
+\textbf{Proved.}  We construct $\mathrm{specGap}$, the largest $|\mu|$ over the
+eigenvalues different from the Perron eigenvalue $\lambda$, and prove
+$\mathrm{specGap} < \lambda$.  We then prove the operator bound: for every
+observable $u$ orthogonal to the Perron vector,
+$\|Ku\| \le \mathrm{specGap}\cdot\|u\|$.  That is exactly the hypothesis the
+bridge paper carried, so its decay theorem becomes unconditional: at every
+finite extent, every $\beta$ and every strictly positive source weight, the
+unnormalised Gibbs two-point sum of a dressed fluctuation observable is bounded
+by $\mathrm{specGap}^{N}$ times a constant, with no carried hypothesis.
+
+The step that does not follow from the inequalities is the one about
+eigenvectors \emph{at} $\lambda$: geometric simplicity, proved in the Perron
+paper for an arbitrary eigenvector rather than a positive one
+\cite{ErikssonPerron}, makes them \emph{invisible} to a fluctuation observable,
+so the top term of the spectral sum vanishes instead of merely being bounded.
+
+\textbf{Not proved.}  $\mathrm{specGap}$ \emph{depends on the extent}, and
+nothing here bounds it away from $\lambda$ uniformly.  Direct diagonalisation
+gives $\mathrm{specGap}/\lambda = 0.9205, 0.9829, 0.9964, 0.9992$ at
+$L = 2,3,4,5$ for one parameter pair: a geometric bound whose rate tends to $1$
+is empty in the limit, and that is reported, not hidden.  The endpoint also
+bounds the \emph{unnormalised} sum; the normalised expectation would need a
+lower bound on the partition function, which is not proved here.  Reflection
+positivity is untouched, and nothing in this paper is a claim about $\SU(N)$,
+the continuum limit, or the Yang--Mills mass gap.
+\end{abstract}
+
+\section{The same debt, from two sides}\label{sec:debt}
+
+The gap paper's headline is a strict separation without a modulus.  The bridge
+paper's decay theorem carries a contraction hypothesis.  It is worth stating
+precisely why these are one debt and not two.
+
+A strict inequality $|\mu| < \lambda$ for each of finitely many eigenvalues does
+give $\max|\mu| < \lambda$ --- taking a maximum over a finite set is not the
+difficulty.  The difficulty is that $\max|\mu|$ over the non-Perron eigenvalues
+is not, by itself, known to be the \emph{operator norm} on the orthogonal
+complement of the Perron vector.  Identifying the two requires the spectral
+decomposition: an orthonormal basis of eigenvectors, so that an observable can
+be expanded and its image measured coordinate by coordinate.
+
+That is what this paper supplies, and it pays both debts with one construction.
+
+\section{The construction}\label{sec:constr}
+
+Let $K$ be a strictly positive symmetric kernel on a finite nonempty type, with
+Perron data $(v,\lambda)$: $v > 0$ pointwise and $Kv = \lambda v$.
+
+\begin{definition}\label{def:gap}
+Let $\mu_j$ be the eigenvalues of $K$ and set
+\[
+  \mathrm{specGap} \;=\; \max_j
+  \begin{cases}
+    0 & \text{if } \mu_j = \lambda,\\
+    |\mu_j| & \text{otherwise.}
+  \end{cases}
+\]
+\end{definition}
+
+\osline{SpatialSpectral}{162}{specGap}.
+Eigenvalues equal to $\lambda$ contribute $0$ rather than $\lambda$.  That is
+legitimate --- and it is the whole content of §\ref{sec:invisible}.
+
+\begin{theorem}[the modulus]\label{thm:gaplt}
+$\mathrm{specGap} < \lambda$.
+\end{theorem}
+
+\osline{SpatialSpectral}{174}{specGap\_lt}.
+Each term of the maximum is either $0 < \lambda$, or $|\mu_j| < \lambda$ by the
+gap paper applied to the $j$-th basis vector, which is a nonzero eigenvector
+because it has unit norm.
+
+\section{Why eigenvectors at the top may be discarded}\label{sec:invisible}
+
+\begin{theorem}\label{thm:invisible}
+If $\mu_j = \lambda$ and $u$ is orthogonal to the Perron vector, then $u$ has no
+component along the $j$-th eigenvector.
+\end{theorem}
+
+\osline{SpatialSpectral}{195}{inner\_specBasis\_eq\_zero\_of\_top}.
+
+\begin{remark}
+This is the step that does not come from the inequalities, and it is why
+Definition~\ref{def:gap} may assign $0$ to the top of the spectrum.  The Perron
+paper proves geometric simplicity for an \emph{arbitrary} eigenvector with
+eigenvalue $\lambda$, not merely a positive one \cite{ErikssonPerron}; hence the
+$j$-th basis vector is a multiple of $v$, and orthogonality to $v$ kills the
+coordinate outright.  Had only the positive case been available, the top term
+could have been bounded but not removed, and the maximum in
+Definition~\ref{def:gap} would have had to include $\lambda$ --- making
+Theorem~\ref{thm:gaplt} false and the whole construction vacuous.
+\end{remark}
+
+\section{The operator bound}\label{sec:bound}
+
+\begin{theorem}[the bound]\label{thm:bound}
+For every $u$ with $\langle v,u\rangle = 0$,
+\[
+  \|Ku\| \;\le\; \mathrm{specGap}\cdot\|u\| .
+\]
+\end{theorem}
+
+\osline{SpatialSpectral}{252}{norm\_act\_le\_specGap}.
+
+The proof is the expansion in the eigenbasis.  Writing $c_j$ for the coordinates
+of $u$, the coordinates of $Ku$ are $\mu_jc_j$
+(\osline{SpatialSpectral}{213}{inner\_specBasis\_act}), so by Parseval
+(\osline{SpatialSpectral}{235}{eucNorm\_sq\_eq\_sum})
+\[
+  \|Ku\|^2=\sum_j \mu_j^2c_j^2,\qquad \|u\|^2=\sum_j c_j^2 ,
+\]
+and each term is dominated: if $\mu_j=\lambda$ then $c_j=0$ by
+Theorem~\ref{thm:invisible}, and otherwise $|\mu_j|\le\mathrm{specGap}$ by
+definition.
+
+\section{The endpoint}\label{sec:endpoint}
+
+The bridge paper's fluctuation sector is invariant under a kernel that
+\emph{fixes} the vacuum.  Here the kernel is unnormalised and the vacuum is an
+eigenvector with eigenvalue $\lambda$, so invariance is reproved in that form
+(\osline{SpatialSpectral}{287}{perp\_invariant\_eigen}); the scalar drops out
+because the pairing is bilinear.  Iterating gives
+\osline{SpatialSpectral}{300}{iterate\_norm\_le\_specGap}.
+
+\begin{theorem}[the bridge theorem, without its hypothesis]\label{thm:endpoint}
+For the coupled spatial system, at every finite extent $L$, every $\beta$, and
+every strictly positive source weight $w$: if the dressing of $A$ is orthogonal
+to the Perron vector, then for every $N$
+\[
+  \Bigl|\sum_X A(X_0)A(X_N)\,\mathcal{W}(X)\Bigr|
+  \;\le\; \mathrm{specGap}^{\,N}\;\bigl\|\sqrt{w}A\bigr\|^{2},
+  \qquad \mathrm{specGap}<\lambda .
+\]
+\end{theorem}
+
+\osline{SpatialSpectral}{340}{gibbs\_pathSum\_decay\_unconditional}.
+
+\begin{remark}[non-vacuity]
+Dressing is multiplication by a strictly positive function, so every fluctuation
+vector is the dressing of an observable: whenever the configuration space has
+two points there is a \emph{nonzero} $A$ satisfying the hypothesis, and
+Theorem~\ref{thm:endpoint} is not quantified over an empty set
+(\osline{SpatialSpectral}{371}{exists\_nonzero\_dressed\_fluctuation}).
+\end{remark}
+
+\section{Scope: three things this does not give}\label{sec:scope}
+
+\paragraph{Nothing uniform in the extent.}  This is the substantive limitation.
+$\mathrm{specGap}$ is built from the spectrum at a fixed extent and depends on
+it.  Direct dense diagonalisation gives, for $\beta=0.8$, $\gamma=1.2$,
+\[
+  \mathrm{specGap}/\lambda \;=\; 0.6640,\;0.9205,\;0.9829,\;0.9964,\;0.9992
+  \qquad\text{at } L=1,\dots,5,
+\]
+and for $\beta=0.3$, $\gamma=0.4$,
+\[
+  0.2913,\;0.4665,\;0.5518,\;0.5938,\;0.6159 .
+\]
+The first family collapses towards $1$, where a bound of the form
+$\mathrm{specGap}^N$ says nothing in the limit.  These numbers are
+\textbf{verified} and \textbf{not proved}, no theorem depends on them, and they
+are printed because a paper that reported only Theorem~\ref{thm:endpoint} would
+be reporting the half that does not settle the question.
+
+\paragraph{The unnormalised sum, not the expectation.}  Theorem~\ref{thm:endpoint}
+bounds the same quantity the bridge paper bounded; what is removed is the
+hypothesis, not the normalisation.  The normalised expectation divides by the
+partition function, and a decay statement about it needs a lower bound on that
+partition function of order $\lambda^N$ --- which needs the index of the top
+eigenvalue identified and its overlap with the dressed constant observable
+bounded below.  Neither is done here, and the word \emph{clustering} is
+deliberately not used for the endpoint.
+
+\paragraph{No claim about the physical target.}  Reflection positivity is
+untouched, and nothing here concerns $\SU(N)$, the continuum limit, or the Clay
+problem \cite{Clay}.  The distance to that problem is unchanged.
+
+\section{What is verified and not proved}\label{sec:verified}
+
+A machine-checked proof guarantees that the definitions are internally
+consistent, not that they name the object the prose claims.  The construction was
+therefore recomputed by direct dense diagonalisation, by a script with no access
+to the formalisation.  Three things were checked: that
+$\mathrm{specGap} < \lambda$ in every case; that
+$\|Ku\|\le \mathrm{specGap}\|u\|$ on $400$ random fluctuation vectors per case;
+and that the bound is \emph{attained} by the subdominant eigenvector, so it is
+sharp rather than a loose over-estimate.  All cases pass.
+
+One consequence is worth recording.  The measured $\mathrm{specGap}/\lambda$
+reproduces, digit for digit, the subdominant ratios the gap paper reported as
+measured and unnamed \cite{ErikssonGap}.  The object constructed here is that
+number.
+
+\section{Formalisation notes}\label{sec:formal}
+
+\paragraph{The library had the hard half.}  mathlib provides an orthonormal
+eigenbasis and real eigenvalues for a Hermitian matrix in finite dimension.  The
+work in this module is not the spectral theorem; it is the bridging --- writing
+the kernel as a Hermitian matrix, matching mathlib's eigen-equation to the form
+the companion papers state, and translating norms and pairings between the two
+spellings.  That bridging is where the effort went, and it is the usual place.
+
+\paragraph{Where the unnormalised kernel forced a reproof.}  The bridge module's
+invariance lemma assumes the vacuum is \emph{fixed}.  Its kernel is
+unnormalised, so the vacuum is an eigenvector with eigenvalue $\lambda\neq1$ in
+general, and the lemma does not apply verbatim.  Rather than reopen a frozen
+module, the invariance is reproved here in the eigenvector form.  It is three
+lines, because the eigenvalue factors out of a bilinear pairing.
+
+\section{Reproducibility}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}.
+Every hyperlink was resolved against that commit, and checked to point at an
+actual declaration line, before compilation.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8430 jobs, success \\
+Oracle commands & 2648 \\
+\quad with axiom dependencies & 2625 \\
+\quad axiom-free & 23 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
+Project axioms & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The module is
+\repofile{YangMills/OS/SpatialSpectral.lean}{YangMills/OS/SpatialSpectral.lean};
+the probe is
+\repofile{scripts/probe\_spatial\_spectral.py}{scripts/probe\_spatial\_spectral.py};
+verdicts are in
+\repofile{docs/VERIFICATION-LEDGER.md}{docs/VERIFICATION-LEDGER.md}.
+
+\begin{thebibliography}{9}
+
+\bibitem{ErikssonPerron}
+L.~Eriksson,
+\emph{The Vacuum Was Never Absent: A Machine-Checked Perron Theorem for
+Strictly Positive Kernels, and the Coupled-Slice Vacuum at Every Spatial
+Extent}, viXra, 2026.
+
+\bibitem{ErikssonGap}
+L.~Eriksson,
+\emph{Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite
+Extent of the Coupled Slice}, viXra, 2026.
+
+\bibitem{ErikssonGibbs}
+L.~Eriksson,
+\emph{The Measure the Spectral Results Were About: a Machine-Checked Transfer
+Bridge for the Spatial $\Z_2$ Slice}, viXra, 2026.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 Theorem Prover and Programming Language},
+CADE 28 (2021), 625--635.
+
+\bibitem{Mathlib}
+The mathlib Community,
+\emph{The Lean Mathematical Library},
+CPP 2020, 367--381.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills Theory},
+Clay Mathematics Institute Millennium Problem Description, 2000.
+
+\end{thebibliography}
+
+\end{document}

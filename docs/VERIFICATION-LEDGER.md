@@ -27431,3 +27431,76 @@ would be the adjacent-theorem trap the charter names.
 Unchanged and standing: the contraction hypothesis is carried, not discharged;
 nothing uniform in `L`; reflection positivity untouched; NOT `hRpoly`, NOT the
 mass gap; Clay distance ~0 pct.
+
+## Addendum 537 (2026-07-29, **S block: THE MODULUS --- one construction pays the debt papers 8 and 9 were carrying from opposite sides**)
+
+**Why it was one debt and not two.**  Paper 8 proved every eigenvalue other
+than the Perron eigenvalue is STRICTLY smaller in modulus, with no modulus of
+separation.  Paper 9 proved the Gibbs correlations are matrix elements of a
+self-adjoint transfer operator, and obtained geometric decay only under a
+contraction hypothesis it did not discharge.  Taking a maximum over finitely
+many strict inequalities is NOT the difficulty; the difficulty is that
+`max |mu|` over the non-Perron eigenvalues is not, by itself, known to be the
+OPERATOR NORM on the orthogonal complement of the vacuum.  Identifying the two
+is the spectral decomposition, and that is what was missing in both papers.
+
+**The content.**
+
+* `specGap` / `specGap_lt` --- the largest `|mu|` over eigenvalues `!= lam`, and
+  the proof that it is strictly below `lam`.  This is the modulus paper 8
+  declined to fake.
+* `norm_act_le_specGap` --- the operator bound `||Ku|| <= specGap*||u||` for
+  every `u` orthogonal to the Perron vector: EXACTLY the hypothesis paper 9
+  carried.
+* `gibbs_pathSum_decay_unconditional` --- paper 9's decay theorem with the
+  hypothesis removed.
+* `perp_invariant_eigen` --- paper 9's invariance lemma assumes the vacuum is
+  FIXED; this kernel is unnormalised, so the vacuum is an eigenvector with
+  eigenvalue `lam` and the lemma does not apply verbatim.  Rather than reopen a
+  FROZEN module the invariance is reproved here in eigenvector form.  Three
+  lines: the eigenvalue factors out of a bilinear pairing.  Rule confirmed:
+  *a freeze is not an obstacle --- it is a prompt to state the generalisation
+  where it belongs, in the new module.*
+
+**THE STEP THAT DOES NOT COME FROM THE INEQUALITIES, and the load it carries.**
+`specGap` assigns `0`, not `lam`, to eigenvalues equal to `lam`.  That is
+legitimate only because eigenvectors at the top are INVISIBLE to a fluctuation
+observable --- geometric simplicity --- and paper 7 proved it for an ARBITRARY
+eigenvector, not merely a positive one.  Had only the positive case been
+available, the top term could have been bounded but not REMOVED, `specGap`
+would have had to include `lam`, and `specGap_lt` would be FALSE.  The whole
+construction rests on a generality that looked free when it was proved.
+
+**What the library gave, stated so nobody overstates the work.**  mathlib has
+the finite-dimensional spectral theorem (`Matrix.IsHermitian.eigenvalues` /
+`eigenvectorBasis`), and `mulVec_eigenvectorBasis` is already in the `mulVec`
+spelling that IS this project's `act`.  The work in this module is NOT the
+spectral theorem; it is the bridging --- Hermitian packaging, matching mathlib's
+eigen-equation to the companion form, translating norms and pairings.  That is
+the usual place the effort goes, and saying so is the honest report.
+
+**VERIFIED, not proved, and no theorem depends on it.**
+`scripts/probe_spatial_spectral.py` recomputes by dense diagonalisation, with
+no access to the formalisation: `specGap < lam` in every case; the bound holds
+on 400 random fluctuation vectors per case; and it is ATTAINED by the
+subdominant eigenvector --- i.e. SHARP, not a loose over-estimate.  Consequence
+worth recording: the measured `specGap/lam` reproduces DIGIT FOR DIGIT the
+subdominant ratios paper 8 reported as measured and unnamed (0.9205, 0.9829,
+0.9964, 0.9992 at `L = 2..5`).  The object constructed here is that number.
+
+**Measured.**  Core **8430 jobs** (8429 + 1 --- the increment hard rule 7
+predicts when a MODULE joins the core).  Oracle **2648 commands -> 2648
+answers** (2645 distinct, the same three known duplicates), 23 axiom-free +
+2625 with axioms, zero `sorryAx`, zero nonstandard axioms, zero errors.  22 new
+declarations.  Paper: 5pp, 10 permalinks verified against the blob at the
+anchor and again inside the compiled PDF.
+
+**NOT CLAIMED.**  `specGap` DEPENDS ON THE EXTENT and nothing here bounds it
+away from `lam` uniformly; the probe shows the ratio going to `1` outside the
+disordered region, where the bound is empty in the limit.  The endpoint bounds
+the UNNORMALISED two-point sum --- the same quantity paper 9 bounded; what is
+removed is the ASSUMPTION, not the normalisation --- so the word *clustering* is
+deliberately not used for it.  The normalised expectation would need a lower
+bound on the partition function of order `lam^N`, which is the registered next
+item.  Reflection positivity untouched.  NOT `hRpoly`, NOT the mass gap; Clay
+distance ~0 pct unchanged.  Anchor `4ceb3f7c`.
