@@ -27395,3 +27395,39 @@ permalinks, verified against the blob at the anchor and inside the compiled PDF.
 Anchor `c4fa6a9e`.  Everything else unchanged: the contraction hypothesis is
 still NOT discharged, nothing uniform in `L`, reflection positivity untouched,
 Clay distance ~0 pct.
+
+## Addendum 536 (2026-07-29, **O-2 FROZEN at v1.1 --- and the continuation fixed**)
+
+The transfer-bridge paper is **frozen** at anchor `c4fa6a9e` / paper
+`dc2935eb`.  Any continuation is a NEW module and a NEW paper; this one is not
+reopened to absorb it.  The external preflight recorded no remaining objection
+after Addendum 535, and the one it had raised --- the numerator being called a
+correlation --- was removed at the source rather than reworded.
+
+**THE CONTINUATION, in the order it has to happen.**  The next work is NOT more
+bridge.  It is the operator-norm bound on the fluctuation sector, which is the
+single missing piece that both this paper and O-3j (paper 8) are blocked on:
+
+1. **At FIXED volume.**  Construct the spectrum of the symmetrised kernel as an
+   enumerated finite set, take `max |mu|/lambda` over the non-Perron
+   eigenvalues, and prove that this maximum IS the operator norm on the
+   orthogonal complement of the vacuum --- the spectral decomposition step, which
+   is the part that does not follow from finitely many strict inequalities.
+   Discharging this turns the hypothesis `r` of `connected_decay` into a
+   theorem, and simultaneously supplies the `exists eps > 0 forall mu` statement
+   that O-3j declined to fake.  ONE construction, TWO papers unblocked.
+2. **Uniformly in `L`, if at all.**  Only then does the question of whether
+   `r(L)` stays away from 1 become askable as a theorem.  The measured evidence
+   says it does NOT, outside the disordered region --- so the honest target is a
+   bound in an EXPLICIT high-temperature region, with the possibility that the
+   outcome is a wall rather than a bound.  Either outcome is publishable under
+   the tricotomy; neither is assumed here.
+
+**What must NOT be done**: adding further corollaries to the bridge.  The
+bridge is closed --- measure to operator, both directions of the correspondence
+stated, numerator and normalised expectation separated.  Extending it further
+would be the adjacent-theorem trap the charter names.
+
+Unchanged and standing: the contraction hypothesis is carried, not discharged;
+nothing uniform in `L`; reflection positivity untouched; NOT `hRpoly`, NOT the
+mass gap; Clay distance ~0 pct.
