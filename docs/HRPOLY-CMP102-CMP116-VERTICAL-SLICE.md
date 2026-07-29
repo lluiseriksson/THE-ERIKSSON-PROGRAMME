@@ -482,11 +482,13 @@ uniform bound on D2 g -> Lipschitz bound on Dg,
 vertical contraction of T -> vertical contraction of the derived map.
 ```
 
-Consequently the only new quantitative source obligation is the variation
-of the full derivative of the derived map along the physical fixed-point
-graph.  This is a bound generated from the second and third joint jets of
-the literal intrinsic map `T`, not a renamed bound on `D3 g`.  Once produced,
-the existing physical second-jet budget feeds the recurrence directly.
+The variation premise is also generated internally from a uniform second
+derivative of this *literal derived map*.  By its definition that derivative
+depends on jets of `T` only through order three and on jets of `g` only
+through order two; it cannot contain the target `D3 g`.  Consequently the
+only new source obligation is now an explicit bound for that derived-map
+second derivative from the physical second/third joint jets of `T`.  The
+existing physical second-jet budget for `g` feeds the recurrence directly.
 
 The final assembly must also reconcile three domain index layers:
 
