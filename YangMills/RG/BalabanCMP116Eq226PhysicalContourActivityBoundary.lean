@@ -6,6 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP116Eq226PhysicalContourCutoffSupportResidualLedger
 import YangMills.RG.BalabanCMP116Eq214LocalActivityIdentification
 import YangMills.RG.BalabanCMP116Lemma3ScaleFamily
+import YangMills.RG.BalabanCMP116Eq221OperatorForms
 
 /-!
 # Literal equation-(2.26) terms as a Lemma-3 activity boundary
@@ -104,27 +105,49 @@ structure CMP116Eq226PhysicalContourTermSource
         ‖contour.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
             sigma tau psi phi x b‖ ≤
           Real.exp (∑ i, source sigma tau x i * b i)
-  interaction_bound :
+  potentialRate : ℝ
+  r2Rate : ℝ
+  potentialRate_nonneg : 0 ≤ potentialRate
+  potential_bound :
     ∀ psi phi sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta contour.deltaRadius sigma →
       CMP116Eq214ShiftedPolydisc nY contour.yRadius tau →
       ∀ b,
         contour.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
             Y0 P b ≠ 0 →
-        (contour.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
-            sigma tau psi phi b).re +
-          (gamma / 2) *
-            (∑ e ∈ P,
-              ‖contour.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
-                b e‖ ^ 2) ≤
-        -((b ⬝ᵥ
-          Matrix.mulVec
-            (-(alpha • cmp116Eq223CoordinateProjection
-              (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0))) b) /
-            2) +
+        (contour.potential sigma tau psi phi b).re ≤
+          potentialRate / 2 *
+            (b ⬝ᵥ
+              Matrix.mulVec
+                (cmp116Eq223CoordinateProjection
+                  (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)) b) +
           ∑ Y : Fin nY,
             cmp116Eq220ResidualDomainWeight alpha4 delta kappa
               (domainMetric Y : ℝ)
+  r2_bound :
+    ∀ psi phi sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta contour.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY contour.yRadius tau →
+      ∀ b,
+        contour.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+            Y0 P b ≠ 0 →
+        (cmp116Eq214ComplexQuadratic
+            (contour.r2Matrix sigma tau psi phi) b).re ≤
+          r2Rate / 2 *
+            (b ⬝ᵥ
+              Matrix.mulVec
+                (cmp116Eq223CoordinateProjection
+                  (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)) b)
+  cutoff_energy_bound :
+    ∀ b,
+      (∑ e ∈ P,
+          ‖contour.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
+            b e‖ ^ 2) ≤
+        b ⬝ᵥ
+          Matrix.mulVec
+            (cmp116Eq223CoordinateProjection
+              (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)) b
+  interaction_budget : potentialRate + r2Rate + gamma ≤ alpha
   source_bound :
     ∀ sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta contour.deltaRadius sigma →
@@ -175,6 +198,106 @@ def termWeight
   cmp116Eq226SourceTermWeight E0 epsilon1 C1 alpha4 M q
     C2 kappa1 delta kappa gamma gk S.gapScale S.gapCard
     S.volumeRate alpha Z0.card S.domainMetric Finset.univ P
+
+/-- The four source-facing component bounds reproduce the former literal
+`interaction_bound` contract exactly.  This theorem is intentionally public:
+future changes to the source record must continue to imply this same
+cutoff-supported inequality. -/
+theorem interaction_bound
+    (S : CMP116Eq226PhysicalContourTermSource
+      (nDelta := nDelta) (nY := nY) (d := d) (M := M) (N' := N')
+      (Nc := Nc) (L := L) (lieDim := lieDim) (E := E) Dict
+      E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+      alpha outerBound outerRate sourceRate Y0 P Z0)
+    (psi phi : PhysicalGaugeField d (M * N') Nc) :
+    ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta S.contour.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY S.contour.yRadius tau →
+      ∀ b,
+        S.contour.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+            Y0 P b ≠ 0 →
+        (S.contour.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
+            sigma tau psi phi b).re +
+          (gamma / 2) *
+            (∑ e ∈ P,
+              ‖S.contour.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
+                b e‖ ^ 2) ≤
+        -((b ⬝ᵥ
+          Matrix.mulVec
+            (-(alpha • cmp116Eq223CoordinateProjection
+              (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0))) b) /
+            2) +
+          ∑ Y : Fin nY,
+            cmp116Eq220ResidualDomainWeight alpha4 delta kappa
+              (S.domainMetric Y : ℝ) := by
+  intro sigma tau hsigma htau b hcutoff
+  let localizedCoordinates :=
+    Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0
+  let energyB :=
+    b ⬝ᵥ
+      Matrix.mulVec
+        (cmp116Eq223CoordinateProjection localizedCoordinates) b
+  let energyP :=
+    ∑ e ∈ P,
+      ‖S.contour.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
+        b e‖ ^ 2
+  let residual :=
+    ∑ Y : Fin nY,
+      cmp116Eq220ResidualDomainWeight alpha4 delta kappa
+        (S.domainMetric Y : ℝ)
+  let localPsi :=
+    restrictGlobal S.contour.spectatorSupport psi
+  let localPhi :=
+    restrictGlobal S.contour.fluctuationSupport phi
+  have henergyB : 0 ≤ energyB := by
+    exact
+      (cmp116Eq223CoordinateProjection_posSemidef localizedCoordinates)
+        |>.dotProduct_mulVec_nonneg b
+  have hcombined :=
+    cmp116Eq220_eq221_eq222_absorb_into_alpha5
+      (potentialTerm :=
+        (S.contour.potential sigma tau localPsi localPhi b).re)
+      (operatorTerm :=
+        (cmp116Eq214ComplexQuadratic
+          (S.contour.r2Matrix sigma tau localPsi localPhi) b).re)
+      (potentialRate := S.potentialRate)
+      (operatorRate := S.r2Rate)
+      (cutoff := gamma)
+      (alpha5 := alpha)
+      (energyP := energyP)
+      (energyX := 0)
+      (energyB := energyB)
+      (residual20 := residual)
+      (residual21 := 0)
+      (S.potential_bound localPsi localPhi sigma tau hsigma htau b hcutoff)
+      (by
+        simpa [energyB] using
+          S.r2_bound localPsi localPhi sigma tau hsigma htau b hcutoff)
+      (by simpa [energyP, energyB] using S.cutoff_energy_bound b)
+      S.potentialRate_nonneg S.gamma_nonneg (by norm_num) henergyB
+      S.interaction_budget
+  change
+    (cmp116Eq214ComplexQuadratic
+          (S.contour.r2Matrix sigma tau localPsi localPhi) b).re +
+        (S.contour.potential sigma tau localPsi localPhi b).re +
+          gamma / 2 * energyP ≤
+      -((b ⬝ᵥ Matrix.mulVec
+        (-(alpha • cmp116Eq223CoordinateProjection localizedCoordinates)) b) /
+          2) + residual
+  have hmatrix :
+      -((b ⬝ᵥ Matrix.mulVec
+        (-(alpha • cmp116Eq223CoordinateProjection localizedCoordinates)) b) /
+          2) =
+        alpha / 2 * energyB := by
+    rw [show
+      -(alpha • cmp116Eq223CoordinateProjection localizedCoordinates) =
+        (-alpha) • cmp116Eq223CoordinateProjection localizedCoordinates by
+          simp]
+    rw [Matrix.smul_mulVec, dotProduct_smul]
+    simp [energyB, smul_eq_mul]
+    ring
+  rw [hmatrix]
+  linarith
 
 /-- The source record produces the termwise estimate; it does not assume it. -/
 theorem norm_term_le_termWeight
