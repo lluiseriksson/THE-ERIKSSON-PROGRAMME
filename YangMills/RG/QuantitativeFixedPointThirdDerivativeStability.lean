@@ -273,6 +273,74 @@ theorem norm_iteratedFDeriv_three_fixedPoint_le_of_derivedSecond
   · intro y _
     exact hvertical y
 
+/-- The bounded tube around the derivative graph on which the literal
+derived-map second jet has to be controlled. -/
+def fixedPointDerivativeTube
+    (s : Set E) (L₁ : ℝ) :
+    Set (E × (E →L[ℝ] F)) :=
+  s ×ˢ Metric.closedBall 0 L₁
+
+/-- The source-useful third-jet theorem.  Unlike the global convenience
+corollary above, it asks for the second-jet bound of the derived map only
+on the convex tube `x ∈ s`, `‖A‖ ≤ L₁`.  The actual graph belongs to this
+tube by the supplied first-jet estimate.  Hence no impossible uniform
+control for arbitrary linear maps `A` is introduced. -/
+theorem norm_iteratedFDeriv_three_fixedPoint_le_of_derivedSecond_on_tube
+    (T : E × F → F) (g : E → F)
+    (s : Set E) (hsOpen : IsOpen s) (hsConvex : Convex ℝ s)
+    (x : E) (hx : x ∈ s)
+    {L₁ L₂ B₂ q₂ : ℝ}
+    (hL₂0 : 0 ≤ L₂)
+    (hB₂0 : 0 ≤ B₂) (hq₂1 : q₂ < 1)
+    (hfix : g = fun y => T (y, g y))
+    (hg : ContDiff ℝ 3 g)
+    (hT : ∀ y, DifferentiableAt ℝ T (y, g y))
+    (hderived :
+      ContDiff ℝ 2 (fixedPointFirstDerivativeMap T g))
+    (hfirst : ∀ y ∈ s, ‖fderiv ℝ g y‖ ≤ L₁)
+    (hsecond : ∀ y ∈ s,
+      ‖iteratedFDeriv ℝ 2 g y‖ ≤ L₂)
+    (hderivedSecond :
+      ∀ p ∈ fixedPointDerivativeTube (E := E) (F := F) s L₁,
+        ‖iteratedFDeriv ℝ 2
+          (fixedPointFirstDerivativeMap T g) p‖ ≤ B₂)
+    (hvertical : ∀ y ∈ s,
+      ‖(fderiv ℝ T (y, g y)).comp
+        (ContinuousLinearMap.inr ℝ E F)‖ ≤ q₂) :
+    ‖iteratedFDeriv ℝ 3 g x‖ ≤
+      B₂ * (max 1 L₂) ^ 2 / (1 - q₂) := by
+  let tube :=
+    fixedPointDerivativeTube (E := E) (F := F) s L₁
+  have htubeConvex : Convex ℝ tube := by
+    exact hsConvex.prod (convex_closedBall 0 L₁)
+  have hgraphMem : ∀ y ∈ s,
+      (y, fderiv ℝ g y) ∈ tube := by
+    intro y hy
+    refine ⟨hy, ?_⟩
+    simpa [tube, fixedPointDerivativeTube, Metric.mem_closedBall,
+      dist_eq_norm] using hfirst y hy
+  have hderivedLip :
+      LipschitzOnWith ⟨B₂, hB₂0⟩
+        (fderiv ℝ (fixedPointFirstDerivativeMap T g)) tube :=
+    lipschitzOnWith_fderiv_of_iteratedFDeriv_two_le
+      (fixedPointFirstDerivativeMap T g) tube hB₂0
+      hderived (by
+        intro p hp
+        exact hderivedSecond p hp) htubeConvex
+  apply norm_iteratedFDeriv_three_fixedPoint_le
+      T g s hsOpen x hx hL₂0 hB₂0 hq₂1 hfix hg hT
+  · intro y _
+    exact hderived.differentiable (by decide)
+      (y, fderiv ℝ g y)
+  · exact hsecond
+  · exact hsConvex
+  · intro y hy z hz
+    simpa only [NNReal.coe_mk, dist_eq_norm] using
+      hderivedLip.dist_le_mul
+        (y, fderiv ℝ g y) (hgraphMem y hy)
+        (z, fderiv ℝ g z) (hgraphMem z hz)
+  · exact hvertical
+
 end
 
 end YangMills.RG

@@ -482,13 +482,21 @@ uniform bound on D2 g -> Lipschitz bound on Dg,
 vertical contraction of T -> vertical contraction of the derived map.
 ```
 
-The variation premise is also generated internally from a uniform second
-derivative of this *literal derived map*.  By its definition that derivative
-depends on jets of `T` only through order three and on jets of `g` only
-through order two; it cannot contain the target `D3 g`.  Consequently the
-only new source obligation is now an explicit bound for that derived-map
-second derivative from the physical second/third joint jets of `T`.  The
-existing physical second-jet budget for `g` feeds the recurrence directly.
+The variation premise is also generated internally from a second derivative
+of this *literal derived map*.  The source-useful endpoint does not ask for
+that bound on arbitrary linear maps: it constructs the convex tube
+
+```text
+x in source domain,  norm(A) <= first-jet budget,
+```
+
+proves that `(x,Dg(x))` lies in it, and requires the derived-map second jet
+only there.  By definition that derivative depends on jets of `T` only
+through order three and on jets of `g` only through order two; it cannot
+contain the target `D3 g`.  Consequently the only new source obligation is
+an explicit tube-local bound for that derivative from the physical
+second/third joint jets of `T`.  The existing first- and second-jet budgets
+for `g` feed the recurrence directly.
 
 The final assembly must also reconcile three domain index layers:
 
