@@ -726,10 +726,21 @@ identity with the existing source-generated derivative-Lipschitz estimate,
 ```
 
 Thus the physical order-one joint jet is no longer a caller-supplied
-budget.  The order-two and order-three joint jets of the same literal map
-remain the next quantitative obligations before the local coefficient
-endpoint can be instantiated.  Taking either remaining jet as an
-unexplained physical hypothesis would only rename the obligation.
+budget.  `LocalSecondJetFromDerivativeLipschitz.lean` applies the converse
+local mean-value estimate to the derivative map, and
+`BalabanCMP102PhysicalIntrinsicFixedPointSecondJet.lean` verifies that the
+physical source conditions persist in a neighborhood of every interior
+chart point.  It consequently proves
+
+```text
+|D^2 T(p)| <= B_source
+```
+
+from strict source-radius and no-winding slack.  No second-jet budget is
+supplied by the caller.  The order-three joint jet of the same literal map
+is now the sole remaining `T` jet before the local coefficient endpoint
+can be instantiated.  Taking it as an unexplained physical hypothesis
+would only rename the obligation.
 
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete

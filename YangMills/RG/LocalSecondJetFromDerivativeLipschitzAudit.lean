@@ -1,0 +1,3 @@
+import YangMills.RG.LocalSecondJetFromDerivativeLipschitz
+
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_le_of_eventually_fderiv_lipschitz
