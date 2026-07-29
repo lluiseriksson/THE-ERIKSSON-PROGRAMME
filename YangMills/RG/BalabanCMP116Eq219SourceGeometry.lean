@@ -235,6 +235,41 @@ theorem cmp116LocalizationDomain_sourceCard_eq
   rw [Finset.card_biUnion (cmp116LocalizationDomain_blocks_pairwiseDisjoint Y)]
   simp [blockOf_card, Nat.mul_comm]
 
+/-- The bilateral physical bond support is controlled by one source site and
+one of the four positive directions.  The bound depends only on the domain,
+not on the ambient periodic volume. -/
+theorem card_cmp116LocalizationDomain_bondSupport_le
+    {M N' : ℕ} [NeZero M] [NeZero N']
+    (Y : CMP116LocalizationDomain M N') :
+    Y.bondSupport.card ≤ Y.sourceCard * 4 := by
+  classical
+  let carrier : Finset (PhysicalBond 4 (M * N')) :=
+    Y.siteSupport ×ˢ (Finset.univ : Finset (Fin 4))
+  have hsubset : Y.bondSupport ⊆ carrier := by
+    intro b hb
+    have hbBlock :=
+      mem_cmp116LocalizationDomain_bondSupport_sourceBlock hb
+    have hbSite : b.1 ∈ Y.siteSupport := by
+      unfold CMP116LocalizationDomain.siteSupport
+      apply Finset.mem_biUnion.mpr
+      refine ⟨cmp116BondSourceBlock b, hbBlock, ?_⟩
+      rw [mem_blockOf]
+      rfl
+    exact Finset.mem_product.mpr ⟨hbSite, Finset.mem_univ _⟩
+  calc
+    Y.bondSupport.card ≤ carrier.card := Finset.card_le_card hsubset
+    _ = Y.sourceCard * 4 := by
+      rw [Finset.card_product, Finset.card_univ, Fintype.card_fin]
+      rfl
+
+/-- Block-normalized form of the local bond-support bound. -/
+theorem card_cmp116LocalizationDomain_bondSupport_le_blockCard
+    {M N' : ℕ} [NeZero M] [NeZero N']
+    (Y : CMP116LocalizationDomain M N') :
+    Y.bondSupport.card ≤ (M ^ 4 * Y.blocks.card) * 4 := by
+  simpa [cmp116LocalizationDomain_sourceCard_eq Y] using
+    card_cmp116LocalizationDomain_bondSupport_le Y
+
 /-- Face connectivity supplies a walk no longer than twice the number of
 edges in a spanning tree of the block family. -/
 theorem cmp116LocalizationDomain_exists_short_walk

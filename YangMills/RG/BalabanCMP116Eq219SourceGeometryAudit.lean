@@ -12,6 +12,8 @@ import YangMills.RG.BalabanCMP116Eq219SourceGeometry
 #print axioms YangMills.RG.cmp116CoarseFaceAdj_degree_le_eight
 #print axioms YangMills.RG.cmp116LocalizationDomain_blocks_pairwiseDisjoint
 #print axioms YangMills.RG.cmp116LocalizationDomain_sourceCard_eq
+#print axioms YangMills.RG.card_cmp116LocalizationDomain_bondSupport_le
+#print axioms YangMills.RG.card_cmp116LocalizationDomain_bondSupport_le_blockCard
 #print axioms YangMills.RG.cmp116LocalizationDomain_exists_short_walk
 #print axioms YangMills.RG.cmp116BondSource_to_blockCorner_dist_le
 #print axioms YangMills.RG.physicalBondDist_le_four_mul_cmp116DomainBlockCard

@@ -31,6 +31,51 @@ namespace YangMills.RG
 
 noncomputable section
 
+/-- The `L²` norm of a field restricted to finitely many bonds is controlled
+by its source sup norm with the exact square-root cardinality cost.  This is
+the missing norm conversion between the literal cutoff and the cubic radial
+residual theorem. -/
+theorem norm_physicalBondProjection_le_sqrt_card_mul_sourceSupNorm
+    {d M N' Nc : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')] [NeZero Nc]
+    (S : Finset (PhysicalBond d (M * N')))
+    (A : PhysicalGaugeOneCochain d (M * N') Nc) :
+    ‖physicalBondProjection S A‖ ≤
+      Real.sqrt (S.card : ℝ) * cmp98SourceFieldSupNorm A := by
+  have hsq :
+      ‖physicalBondProjection S A‖ ^ 2 ≤
+        (S.card : ℝ) * cmp98SourceFieldSupNorm A ^ 2 := by
+    rw [PiLp.norm_sq_eq_of_L2]
+    calc
+      (∑ b, ‖physicalBondProjection S A b‖ ^ 2) =
+          ∑ b ∈ S, ‖A b‖ ^ 2 := by
+        classical
+        conv_rhs =>
+          rw [show S = Finset.univ.filter (fun b => b ∈ S) by ext; simp]
+        rw [Finset.sum_filter]
+        apply Finset.sum_congr rfl
+        intro b _hb
+        by_cases hbS : b ∈ S
+        · simp [hbS, physicalBondProjection_apply_mem S hbS]
+        · simp [hbS, physicalBondProjection_apply_not_mem S hbS]
+      _ ≤ ∑ _b ∈ S, cmp98SourceFieldSupNorm A ^ 2 := by
+        gcongr with b hb
+        exact norm_apply_le_cmp98SourceFieldSupNorm A b
+      _ = (S.card : ℝ) * cmp98SourceFieldSupNorm A ^ 2 := by
+        simp
+  have hsqrt0 : 0 ≤ Real.sqrt (S.card : ℝ) := Real.sqrt_nonneg _
+  have hsup0 : 0 ≤ cmp98SourceFieldSupNorm A :=
+    cmp98SourceFieldSupNorm_nonneg A
+  have hsqrtSq :
+      (Real.sqrt (S.card : ℝ) *
+          cmp98SourceFieldSupNorm A) ^ 2 =
+        (S.card : ℝ) * cmp98SourceFieldSupNorm A ^ 2 := by
+    rw [mul_pow, Real.sq_sqrt (by positivity)]
+  apply (sq_le_sq₀ (norm_nonneg _)
+    (mul_nonneg hsqrt0 hsup0)).mp
+  rw [hsqrtSq]
+  exact hsq
+
 /-- The source sup norm is exactly homogeneous under real scalar
 multiplication. -/
 theorem cmp98SourceFieldSupNorm_smul
@@ -104,6 +149,58 @@ theorem cmp98SourceFieldSupNorm_eq80DomainProjection_segment_le_threshold_of_cut
       cmp98SourceFieldSupNorm_eq80DomainProjection_le_threshold_of_cutoffFactor_ne_zero
         anchor D W hW P threshold b hthreshold hcutoff
   · exact hX
+
+/-- A bound on the source sup norm of a projected field converts to the
+corresponding `L²` bound with no ambient-volume factor. -/
+theorem norm_physicalBondProjection_le_sqrt_card_mul_of_projected_sourceSupNorm_le
+    {d M N' Nc : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')] [NeZero Nc]
+    (S : Finset (PhysicalBond d (M * N')))
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (threshold : ℝ)
+    (hsup :
+      cmp98SourceFieldSupNorm (physicalBondProjection S A) ≤ threshold) :
+    ‖physicalBondProjection S A‖ ≤
+      Real.sqrt (S.card : ℝ) * threshold := by
+  have hidem :
+      physicalBondProjection S (physicalBondProjection S A) =
+        physicalBondProjection S A := by
+    ext b
+    by_cases hbS : b ∈ S
+    · simp [physicalBondProjection_apply_mem S hbS]
+    · simp [physicalBondProjection_apply_not_mem S hbS]
+  have hraw :=
+    norm_physicalBondProjection_le_sqrt_card_mul_sourceSupNorm
+      S (physicalBondProjection S A)
+  rw [hidem] at hraw
+  exact hraw.trans
+    (mul_le_mul_of_nonneg_left hsup (Real.sqrt_nonneg _))
+
+/-- Source-domain specialization: the `L²` cost of the cutoff ball is
+explicit in the block cardinality and remains independent of the ambient
+periodic volume. -/
+theorem norm_cmp116LocalizationDomainProjection_le_explicitBlockCard_mul_threshold
+    {M N' Nc : ℕ}
+    [NeZero M] [NeZero N'] [NeZero (M * N')] [NeZero Nc]
+    (Y : CMP116LocalizationDomain M N')
+    (A : PhysicalGaugeOneCochain 4 (M * N') Nc)
+    (threshold : ℝ) (hthreshold : 0 ≤ threshold)
+    (hsup :
+      cmp98SourceFieldSupNorm (physicalBondProjection Y.bondSupport A) ≤
+        threshold) :
+    ‖physicalBondProjection Y.bondSupport A‖ ≤
+      Real.sqrt (((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ) * threshold := by
+  calc
+    ‖physicalBondProjection Y.bondSupport A‖ ≤
+        Real.sqrt (Y.bondSupport.card : ℝ) * threshold :=
+      norm_physicalBondProjection_le_sqrt_card_mul_of_projected_sourceSupNorm_le
+        Y.bondSupport A threshold hsup
+    _ ≤ Real.sqrt (((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ) *
+          threshold := by
+      apply mul_le_mul_of_nonneg_right _ hthreshold
+      apply Real.sqrt_le_sqrt
+      exact_mod_cast
+        card_cmp116LocalizationDomain_bondSupport_le_blockCard Y
 
 /-- A third-jet estimate required only on the source small-field ball yields
 the exact cubic residual estimate for the literal field projected to one
