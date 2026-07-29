@@ -660,6 +660,31 @@ analytic boundaries are discharged.  A record which merely accepts an
 arbitrary residual and an `h136` field would document the frontier but would
 not count as discharging it.
 
+The quantitative fixed-point route has nevertheless removed one generic
+regularity obstruction.  `QuantitativeFixedPointDerivedMapSecondJet.lean`
+uses the literal derived map
+
+```text
+(x,A) |-> DT(x,g(x)) o (id,A)
+```
+
+and proves that its graph factor is affine, with first-jet norm at most one
+and identically zero second jet.  Consequently, on `|A| <= L1`,
+
+```text
+|D^2 fixedPointFirstDerivativeMap(x,A)|
+  <= 2 C1 + C2 max(1,L1),
+```
+
+where `C1` and `C2` bound the first and second jets of the literal
+coefficient `(x,A) |-> DT(x,g(x))`.  No third derivative of the fixed point
+is assumed.  Together with the preceding fixed-point absorption theorem,
+this makes the remaining source-facing generic obligation precise: derive
+these two coefficient-jet bounds from the physical joint jets of `T` through
+order three and the already constructed first and second jets of `g`.
+Supplying `C1` or `C2` as unexplained physical hypotheses would only rename
+that obligation and is not accepted.
+
 After that producer exists, the closed seed contour density can install both
 the quadratic and residual branches and the concrete
 `CMP116Eq226PhysicalContourTermSource` can discharge `interaction_bound`.
