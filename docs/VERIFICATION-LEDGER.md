@@ -27826,3 +27826,68 @@ substantive gap, it is a limitation of the result chosen rather than a defect of
 the paper, and `specRatio(L) -> 1` outside the disordered region says the gap is
 real and not an artefact of technique.  Reflection positivity untouched.
 Clay ~0 pct.
+
+---
+
+## Addendum 543 (2026-07-29, **S block v1.6: a truncated sentence was hiding a
+stronger theorem, and the restricted norm becomes an object**)
+
+**Context.**  Seventh external reading.  No mathematical objection remained; all
+three items were about the statement being weaker or less precise than the
+proof.
+
+**1. A truncated sentence, and what it was hiding.**  §8 ended with *"it depends
+on the observable only through `c` and `u`, which do not"* --- a sentence that
+simply stops.  The reading repaired it and, in repairing it, pointed at the
+stronger fact the broken sentence was gesturing at: `c` and `u` are built from
+the dressed **constant** observable, so **`N_0` does not depend on `A` at all**.
+One threshold serves every fluctuation observable at once; only `C` sees `A`.
+
+That was already true of the proof and false of the statement.  So the proof was
+split, and the true order of quantifiers is now what is proved:
+
+    exists_partition_threshold :
+      exists N0 D, 0 < D and forall N >= N0, D * lam^N <= gibbsPartition w beta N
+
+    gibbsCorr_decay_uniform_threshold :
+      exists N0, forall A, (dress A perp v) -> exists C > 0, forall N >= N0,
+        |gibbsCorr w beta N A A| <= C * specRatio^N
+
+`exists_partition_threshold` is where the observable-blindness lives: it
+quantifies over no `A` whatsoever.  `gibbsCorr_decay_fixed_extent` is now its
+three-line consequence, kept because it is the shape a reader expects.
+
+**Rule.**  *A statement should publish the strength it has.*  A theorem whose
+proof never used a hypothesis, or never let a bound depend on a parameter, is
+carrying a weaker statement than it earned --- and nothing in a green build
+notices.
+
+**2. The abstract asserted sharpness with no hypothesis.**  Theorem 8.1 assumes
+two distinct states; the abstract did not say so, and at `L = 0` the fluctuation
+sector is trivial.  Fixed.  Also *"no eigenvector is available"* was imprecise:
+at `specGap = 0` the maximising index need not supply a **non-Perron**
+eigenvector, which is the accurate claim.
+
+**3. The restricted operator norm, as an object.**  `specGap_isGreatest`:
+
+    IsGreatest {r | exists u, dress-perp u and ||u|| /= 0 and
+                    r = ||K u|| / ||u||}  (specGap hK lam)
+
+Membership is `exists_attaining_fluctuation`; the upper bound is
+`norm_act_le_specGap`.  `IsGreatest` is chosen over a `Submodule` +
+`ContinuousLinearMap` + norm interface deliberately: it carries the content ---
+the supremum exists and is attained --- without committing the module to
+machinery it does not otherwise use, and `IsGreatest.csSup_eq` gives the `sSup`
+form to anyone who wants it.  The heavier interface remains registered, not
+done, and is a convenience for reuse rather than additional content.
+
+**Measured.**  Core **8430 jobs** (unchanged).  Oracle **2672 commands -> 2672
+answers** (2669 distinct, the same three known duplicates), 23 axiom-free + 2646
+with axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
+**46** declarations in the module, all 46 in the oracle list.
+`check_module_prose.py`: OS lane 18 modules, 0 findings.
+
+**Still not proved.**  Anything uniform in the extent --- unchanged, and still
+the only substantive gap.  `specRatio(L) -> 1` outside the disordered region, so
+the gap is a property of the result chosen and not of the technique.  Reflection
+positivity untouched.  Clay ~0 pct.

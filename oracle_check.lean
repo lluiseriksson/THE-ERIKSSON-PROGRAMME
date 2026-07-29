@@ -2994,3 +2994,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.eucNorm_pos_of_ne_zero
 #print axioms YangMills.OS.inner_perron_specBasis_eq_zero
 #print axioms YangMills.OS.exists_attaining_fluctuation
+#print axioms YangMills.OS.exists_partition_threshold
+#print axioms YangMills.OS.gibbsCorr_decay_uniform_threshold
+#print axioms YangMills.OS.specGap_isGreatest

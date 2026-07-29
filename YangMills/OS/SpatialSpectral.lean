@@ -38,12 +38,18 @@ This module supplies it, and spends the result on both debts at once.
   constant observable along the Perron direction kills both cross terms by
   symmetry alone, and bounds the partition function below by
   `c² · λ ^ N − specGap ^ N · ‖u‖²`.  No eigenbasis index is identified.
-* `gibbsCorr_decay_fixed_extent` — the composed endpoint: the **normalised**
-  two-point function is bounded by `C · specRatio ^ N` past a threshold, at a
-  fixed extent.  The threshold is characterised by an inequality, not computed.
-* `exists_attaining_fluctuation` — the bound of §6 is **sharp**: some
-  fluctuation observable attains it.  The proof splits at `specGap = 0`, where
-  the maximiser may be a top index and hands over no eigenvector at all.
+* `gibbsCorr_decay_uniform_threshold` — the composed endpoint: the
+  **normalised** two-point function is bounded by `C · specRatio ^ N`, at a
+  fixed extent, past **one threshold that serves every observable at once**.
+  The threshold is characterised by an inequality, not computed, and it is
+  built from the dressed CONSTANT observable, so it never sees `A`.
+  `gibbsCorr_decay_fixed_extent` is its consequence in the familiar order.
+* `exists_attaining_fluctuation` — the bound of §6 is **sharp**: whenever the
+  state space has two distinct points, some nonzero fluctuation observable
+  attains it.  The proof splits at `specGap = 0`, where the maximising index
+  need not supply a non-Perron eigenvector.
+* `specGap_isGreatest` — the same, said about an object: the set of Rayleigh
+  ratios on the fluctuation sector has a greatest element, equal to `specGap`.
 
 ## The one step that does not come from the inequalities
 
@@ -63,11 +69,11 @@ form, because a false claim about what is *hard* discourages work in a way a
 false claim about what is proved does not.
 
 The same held, until §11, for the sharpness of `specGap`.  It no longer does:
-the bound **and** its attainment are both proved, which is what it means for
-`specGap` to be the operator norm on the fluctuation sector.  What is still not
-done is introducing that norm as a defined object and proving an equation about
-it — a bound together with its attainment carries the same content, and this
-sentence says which of the two we did.
+the bound, its attainment, and the `IsGreatest` statement about the set of
+Rayleigh ratios are all proved.  What is still not done is a `Submodule` /
+`ContinuousLinearMap` / `‖·‖` interface for the restricted operator; that would
+be a convenience for later reuse, not additional content, and this sentence
+says which of the two we did.
 
 `specRatio` **depends on the extent**.  Nothing here bounds it away from `1`
 uniformly in the size of the configuration space, and the numerical evidence
@@ -681,29 +687,24 @@ theorem gibbsCorr_bound_of_partition_lower {L : ℕ} {w : (Fin L → Fin 2) → 
 
 §7 bounds the numerator, §8 bounds the denominator below, §9 divides one by the
 other.  Nothing is left to prose: the quantifiers, the choice of threshold and
-the positivity of the overlap are assembled here into a single statement about
-the **normalised** two-point function. -/
+the positivity of the overlap are assembled here.
 
-/-- **THE ENDPOINT.**  At a fixed spatial extent, the normalised Gibbs two-point
-function of a fluctuation observable decays geometrically, at the rate
-`specRatio < 1`, with no carried hypothesis.
+**The threshold does not depend on the observable.**  It is built from the
+dressed CONSTANT observable and the vacuum, so it is fixed once the extent, the
+weight and `β` are; only the constant `C` ever sees `A`.  That is visible in the
+order of quantifiers of `gibbsCorr_decay_uniform_threshold`, which is therefore
+the statement proved, and `gibbsCorr_decay_fixed_extent` is its three-line
+consequence in the more familiar order. -/
 
-The constant is explicit in the proof --- it is
-`2‖dress A‖² / ⟨Ω, dress 1⟩² ` up to the `+1` that makes it positive even for
-the zero observable --- and the threshold `N₀` is where the fluctuation part of
-the partition function has dropped below half of its Perron part.
-
-**This is a fixed-`L` statement and nothing more.**  `specRatio` depends on the
-extent, the measured evidence is that it tends to `1`, and therefore this is
-*not* clustering: nothing here survives the infinite-volume limit. -/
-theorem gibbsCorr_decay_fixed_extent {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+/-- **The partition function stays above `D · lam ^ N`, past a threshold that
+knows about no observable at all.**  Both `D` and `N₀` are built from the dressed
+constant observable and the vacuum; nothing here quantifies over `A`. -/
+theorem exists_partition_threshold {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hw : ∀ σ, 0 < w σ) (β : ℝ)
     {v : (Fin L → Fin 2) → ℝ} (hv : ∀ σ, 0 < v σ) {lam : ℝ}
-    (hvE : ∀ σ, ∑ τ, symWeighted w β σ τ * v τ = lam * v σ)
-    {A : (Fin L → Fin 2) → ℝ} (hperp : ∑ σ, v σ * dress w A σ = 0) :
-    ∃ C > 0, ∃ N₀ : ℕ, ∀ N, N₀ ≤ N →
-      |gibbsCorr w β N A A|
-        ≤ C * specRatio (symWeighted_symm w β) lam ^ N := by
+    (hvE : ∀ σ, ∑ τ, symWeighted w β σ τ * v τ = lam * v σ) :
+    ∃ (N₀ : ℕ) (D : ℝ), 0 < D ∧
+      ∀ N, N₀ ≤ N → D * lam ^ N ≤ gibbsPartition w β N := by
   classical
   have hKpos : ∀ σ τ, 0 < symWeighted w β σ τ := symWeighted_pos hw β
   have hlam : 0 < lam := eigenvalue_pos hKpos hv hvE
@@ -730,11 +731,7 @@ theorem gibbsCorr_decay_fixed_extent {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
   -- the threshold: past it, the fluctuation part is below half the Perron part
   obtain ⟨N₀, hN₀⟩ : ∃ n : ℕ, rho ^ n < c ^ 2 / (2 * (nu * nu + 1)) :=
     exists_pow_lt_of_lt_one (by positivity) hrho1
-  have hdA : (0:ℝ) ≤ eucNorm (dress w A) * eucNorm (dress w A) := mul_self_nonneg _
-  have hCnn : (0:ℝ) ≤ 2 * (eucNorm (dress w A) * eucNorm (dress w A)) / c ^ 2 :=
-    div_nonneg (by linarith) (le_of_lt hc2)
-  refine ⟨2 * (eucNorm (dress w A) * eucNorm (dress w A)) / c ^ 2 + 1, by linarith,
-    N₀, ?_⟩
+  refine ⟨N₀, c ^ 2 / 2, by linarith, ?_⟩
   intro N hN
   have hlamN : 0 < lam ^ N := pow_pos hlam N
   have hrhoN : (0:ℝ) ≤ rho ^ N := pow_nonneg hrho0 N
@@ -745,31 +742,77 @@ theorem gibbsCorr_decay_fixed_extent {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     have hden : (0:ℝ) < 2 * (nu * nu + 1) := by positivity
     rw [lt_div_iff₀ hden] at hlt
     nlinarith [hlt, hnu, hrhoN]
-  -- the denominator, from below
-  have hZ : lam ^ N * (c ^ 2 / 2) ≤ gibbsPartition w β N := by
-    have hq := quadForm_lower hKpos (symWeighted_symm w β) hOmpos hOmE hOm1
-      (dress w (fun _ => (1 : ℝ))) N
-    rw [← gibbsPartition_eq_iterate hw β N, ← hcdef, ← hnudef] at hq
-    have hgap : specGap (symWeighted_symm w β) lam ^ N = rho ^ N * lam ^ N := by
-      rw [hrhodef,
-        specGap_eq_specRatio_mul (symWeighted_symm w β) (ne_of_gt hlam), mul_pow]
-    rw [hgap] at hq
-    nlinarith [hq, hsmall, hlamN]
-  have hDpos : 0 < lam ^ N * (c ^ 2 / 2) := mul_pos hlamN (by linarith)
-  -- the numerator, from above
+  have hq := quadForm_lower hKpos (symWeighted_symm w β) hOmpos hOmE hOm1
+    (dress w (fun _ => (1 : ℝ))) N
+  rw [← gibbsPartition_eq_iterate hw β N, ← hcdef, ← hnudef] at hq
+  have hgap : specGap (symWeighted_symm w β) lam ^ N = rho ^ N * lam ^ N := by
+    rw [hrhodef,
+      specGap_eq_specRatio_mul (symWeighted_symm w β) (ne_of_gt hlam), mul_pow]
+  rw [hgap] at hq
+  nlinarith [hq, hsmall, hlamN]
+
+/-- **THE ENDPOINT, with the threshold in front of the observable.**  At a fixed
+spatial extent there is ONE `N₀` that works for **every** fluctuation observable
+at once; only the constant `C` depends on `A`.  That is not a strengthening
+bought with extra work --- the threshold never looked at `A` in the first place
+--- but a statement has to publish the strength it has, and the previous order
+of quantifiers did not.
+
+**This is a fixed-`L` statement and nothing more.**  `specRatio` depends on the
+extent, the measured evidence is that it tends to `1`, and therefore this is
+*not* clustering: nothing here survives the infinite-volume limit. -/
+theorem gibbsCorr_decay_uniform_threshold {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    {v : (Fin L → Fin 2) → ℝ} (hv : ∀ σ, 0 < v σ) {lam : ℝ}
+    (hvE : ∀ σ, ∑ τ, symWeighted w β σ τ * v τ = lam * v σ) :
+    ∃ N₀ : ℕ, ∀ A : (Fin L → Fin 2) → ℝ, (∑ σ, v σ * dress w A σ = 0) →
+      ∃ C > 0, ∀ N, N₀ ≤ N →
+        |gibbsCorr w β N A A|
+          ≤ C * specRatio (symWeighted_symm w β) lam ^ N := by
+  obtain ⟨N₀, D, hDpos, hD⟩ := exists_partition_threshold hw β hv hvE
+  have hKpos : ∀ σ τ, 0 < symWeighted w β σ τ := symWeighted_pos hw β
+  have hlam : 0 < lam := eigenvalue_pos hKpos hv hvE
+  have hrho0 : 0 ≤ specRatio (symWeighted_symm w β) lam :=
+    specRatio_nonneg hKpos (symWeighted_symm w β) hv hvE
+  refine ⟨N₀, fun A hperp => ?_⟩
+  have hdA : (0:ℝ) ≤ eucNorm (dress w A) * eucNorm (dress w A) := mul_self_nonneg _
+  have hCnn : (0:ℝ) ≤ eucNorm (dress w A) * eucNorm (dress w A) / D :=
+    div_nonneg hdA (le_of_lt hDpos)
+  refine ⟨eucNorm (dress w A) * eucNorm (dress w A) / D + 1, by linarith, ?_⟩
+  intro N hN
+  have hlamN : 0 < lam ^ N := pow_pos hlam N
+  have hrhoN : (0:ℝ) ≤ specRatio (symWeighted_symm w β) lam ^ N :=
+    pow_nonneg hrho0 N
+  have hDlam : 0 < D * lam ^ N := mul_pos hDpos hlamN
   have hnum := (gibbs_pathSum_relative_decay hw β hv hvE hperp N).1
-  have hbnd := gibbsCorr_bound_of_partition_lower (A := A) β N hDpos hZ hnum
+  have hbnd :=
+    gibbsCorr_bound_of_partition_lower (A := A) β N hDlam (hD N hN) hnum
   refine le_trans hbnd ?_
-  rw [div_le_iff₀ hDpos]
-  have hexp : (2 * (eucNorm (dress w A) * eucNorm (dress w A)) / c ^ 2 + 1)
-      * rho ^ N * (lam ^ N * (c ^ 2 / 2))
-      = rho ^ N * (lam ^ N * (eucNorm (dress w A) * eucNorm (dress w A)))
-        + rho ^ N * lam ^ N * (c ^ 2 / 2) := by
+  rw [div_le_iff₀ hDlam]
+  have hexp : (eucNorm (dress w A) * eucNorm (dress w A) / D + 1)
+      * specRatio (symWeighted_symm w β) lam ^ N * (D * lam ^ N)
+      = specRatio (symWeighted_symm w β) lam ^ N
+          * (lam ^ N * (eucNorm (dress w A) * eucNorm (dress w A)))
+        + specRatio (symWeighted_symm w β) lam ^ N * lam ^ N * D := by
     field_simp
   rw [hexp]
-  have hpos : (0:ℝ) ≤ rho ^ N * lam ^ N * (c ^ 2 / 2) :=
-    mul_nonneg (mul_nonneg hrhoN (le_of_lt hlamN)) (by positivity)
+  have hp : (0:ℝ) ≤ specRatio (symWeighted_symm w β) lam ^ N * lam ^ N * D :=
+    mul_nonneg (mul_nonneg hrhoN (le_of_lt hlamN)) (le_of_lt hDpos)
   linarith
+
+/-- **THE ENDPOINT, in the familiar order.**  The three-line consequence of the
+uniform statement above, kept because it is the shape a reader expects. -/
+theorem gibbsCorr_decay_fixed_extent {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    {v : (Fin L → Fin 2) → ℝ} (hv : ∀ σ, 0 < v σ) {lam : ℝ}
+    (hvE : ∀ σ, ∑ τ, symWeighted w β σ τ * v τ = lam * v σ)
+    {A : (Fin L → Fin 2) → ℝ} (hperp : ∑ σ, v σ * dress w A σ = 0) :
+    ∃ C > 0, ∃ N₀ : ℕ, ∀ N, N₀ ≤ N →
+      |gibbsCorr w β N A A|
+        ≤ C * specRatio (symWeighted_symm w β) lam ^ N := by
+  obtain ⟨N₀, h⟩ := gibbsCorr_decay_uniform_threshold hw β hv hvE
+  obtain ⟨C, hC, hb⟩ := h A hperp
+  exact ⟨C, hC, N₀, hb⟩
 
 /-! ## §11  Sharpness: the bound of §6 is attained
 
@@ -875,6 +918,29 @@ theorem exists_attaining_fluctuation (hpos : ∀ i j, 0 < K i j)
       unfold act
       exact specBasis_eigen hK j i
     rw [hact, eucNorm_smul, hgap]
+
+/-- **`specGap` IS the restricted operator norm**, said about an object rather
+than about two separate inequalities: the set of Rayleigh ratios
+`‖Ku‖ / ‖u‖` over nonzero fluctuation observables has a **greatest element**,
+and it is `specGap`.
+
+`IsGreatest` is deliberately weaker machinery than a `Submodule` plus a
+`ContinuousLinearMap` plus `‖·‖`: it says the supremum exists and is attained,
+which is exactly the content, without committing the module to an operator-norm
+interface it does not otherwise use.  `IsGreatest.csSup_eq` turns this into a
+statement about `sSup` for anyone who wants one. -/
+theorem specGap_isGreatest (hpos : ∀ i j, 0 < K i j)
+    (hK : ∀ i j, K i j = K j i) {v : ι → ℝ} (hv : ∀ i, 0 < v i) {lam : ℝ}
+    (hvE : ∀ i, ∑ j, K i j * v j = lam * v i) {i₀ i₁ : ι} (hne : i₀ ≠ i₁) :
+    IsGreatest {r : ℝ | ∃ u : ι → ℝ, (∑ i, v i * u i = 0) ∧ eucNorm u ≠ 0 ∧
+                  r = eucNorm (act K u) / eucNorm u} (specGap hK lam) := by
+  constructor
+  · obtain ⟨u, hu, hune, hattain⟩ :=
+      exists_attaining_fluctuation hpos hK hv hvE hne
+    exact ⟨u, hu, hune, by rw [hattain, mul_div_assoc, div_self hune, mul_one]⟩
+  · rintro r ⟨u, hu, hune, rfl⟩
+    rw [div_le_iff₀ (lt_of_le_of_ne (eucNorm_nonneg u) (Ne.symm hune))]
+    exact norm_act_le_specGap hpos hK hv hvE hu
 
 end Sharp
 
