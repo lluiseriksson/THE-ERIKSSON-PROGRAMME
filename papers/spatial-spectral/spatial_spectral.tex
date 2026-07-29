@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{781961ab684950e68163ada3b962644c558c47b3}
+\newcommand{\anchor}{5a2713cb16db7d501473f92ceb67521314e485da}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -85,7 +85,10 @@ of the top eigenvalue.  That was \emph{wrong}, as an external reading pointed
 out.  Splitting the dressed constant observable along the Perron direction makes
 both cross terms vanish by symmetry alone, and the resulting lower bound turns
 the relative statement into a bound on the \emph{normalised} Gibbs two-point
-function.  Both are now proved.  Reflection
+function.  Both are proved, and so is their composition: at a fixed extent the
+normalised two-point function is bounded by $C\,\mathrm{specRatio}^{N}$ past an
+explicit threshold.  That rate depends on the extent, so this is not
+clustering.  Reflection
 positivity is untouched, and nothing in this paper is a claim about $\SU(N)$,
 the continuum limit, or the Yang--Mills mass gap.
 \end{abstract}
@@ -126,7 +129,7 @@ Let $\mu_j$ be the eigenvalues of $K$ and set
 \]
 \end{definition}
 
-\osline{SpatialSpectral}{172}{specGap}.
+\osline{SpatialSpectral}{182}{specGap}.
 Eigenvalues equal to $\lambda$ contribute $0$ rather than $\lambda$.  That is
 legitimate --- and it is the whole content of §\ref{sec:invisible}.
 
@@ -134,7 +137,7 @@ legitimate --- and it is the whole content of §\ref{sec:invisible}.
 $\mathrm{specGap} < \lambda$.
 \end{theorem}
 
-\osline{SpatialSpectral}{184}{specGap\_lt}.
+\osline{SpatialSpectral}{194}{specGap\_lt}.
 Each term of the maximum is either $0 < \lambda$, or $|\mu_j| < \lambda$ by the
 gap paper applied to the $j$-th basis vector, which is a nonzero eigenvector
 because it has unit norm.
@@ -146,7 +149,7 @@ If $\mu_j = \lambda$ and $u$ is orthogonal to the Perron vector, then $u$ has no
 component along the $j$-th eigenvector.
 \end{theorem}
 
-\osline{SpatialSpectral}{205}{inner\_specBasis\_eq\_zero\_of\_top}.
+\osline{SpatialSpectral}{215}{inner\_specBasis\_eq\_zero\_of\_top}.
 
 \begin{remark}
 This is the step that does not come from the inequalities, and it is why
@@ -169,12 +172,12 @@ For every $u$ with $\langle v,u\rangle = 0$,
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{263}{norm\_act\_le\_specGap}.
+\osline{SpatialSpectral}{273}{norm\_act\_le\_specGap}.
 
 The proof is the expansion in the eigenbasis.  Writing $c_j$ for the coordinates
 of $u$, the coordinates of $Ku$ are $\mu_jc_j$
-(\osline{SpatialSpectral}{223}{inner\_specBasis\_act}), so by Parseval
-(\osline{SpatialSpectral}{245}{eucNorm\_sq\_eq\_sum})
+(\osline{SpatialSpectral}{233}{inner\_specBasis\_act}), so by Parseval
+(\osline{SpatialSpectral}{255}{eucNorm\_sq\_eq\_sum})
 \[
   \|Ku\|^2=\sum_j \mu_j^2c_j^2,\qquad \|u\|^2=\sum_j c_j^2 ,
 \]
@@ -187,9 +190,9 @@ definition.
 The bridge paper's fluctuation sector is invariant under a kernel that
 \emph{fixes} the vacuum.  Here the kernel is unnormalised and the vacuum is an
 eigenvector with eigenvalue $\lambda$, so invariance is reproved in that form
-(\osline{SpatialSpectral}{356}{perp\_invariant\_eigen}); the scalar drops out
+(\osline{SpatialSpectral}{366}{perp\_invariant\_eigen}); the scalar drops out
 because the pairing is bilinear.  Iterating gives
-\osline{SpatialSpectral}{371}{iterate\_norm\_le\_specGap}.
+\osline{SpatialSpectral}{381}{iterate\_norm\_le\_specGap}.
 
 \begin{theorem}[the bridge bound, without its hypothesis]\label{thm:endpoint}
 For the coupled spatial system, at every finite extent $L$, every $\beta$, and
@@ -202,7 +205,7 @@ to the Perron vector, then for every $N$
 \]
 \end{theorem}
 
-\osline{SpatialSpectral}{404}{gibbs\_pathSum\_bound\_unconditional}.
+\osline{SpatialSpectral}{415}{gibbs\_pathSum\_bound\_unconditional}.
 
 \begin{remark}[why that is not yet decay]\label{rem:notdecay}
 $\mathrm{specGap}<\lambda$ does not give $\mathrm{specGap}<1$.  The kernel is
@@ -225,19 +228,19 @@ Equivalently, the normalised kernel $\lambda^{-1}K$ contracts the fluctuation
 sector by $\mathrm{specRatio}<1$.
 \end{theorem}
 
-\osline{SpatialSpectral}{445}{gibbs\_pathSum\_relative\_decay},
-\osline{SpatialSpectral}{312}{specRatio\_lt\_one},
-\osline{SpatialSpectral}{335}{norm\_act\_normalizedKernel\_le}.
+\osline{SpatialSpectral}{455}{gibbs\_pathSum\_relative\_decay},
+\osline{SpatialSpectral}{322}{specRatio\_lt\_one},
+\osline{SpatialSpectral}{345}{norm\_act\_normalizedKernel\_le}.
 
 \begin{remark}[non-vacuity]
 Dressing is multiplication by a strictly positive function, so every fluctuation
 vector is the dressing of an observable: whenever the configuration space has
 two points there is a \emph{nonzero} $A$ satisfying the hypothesis, and
 Theorem~\ref{thm:endpoint} is not quantified over an empty set
-(\osline{SpatialSpectral}{471}{exists\_nonzero\_dressed\_fluctuation}).
+(\osline{SpatialSpectral}{481}{exists\_nonzero\_dressed\_fluctuation}).
 \end{remark}
 
-\section{Scope: three things this does not give}\label{sec:scope}
+\section{Scope: four things this does not give}\label{sec:scope}
 
 \paragraph{Nothing uniform in the extent.}  This is the substantive limitation.
 $\mathrm{specGap}$ is built from the spectrum at a fixed extent and depends on
@@ -250,8 +253,10 @@ and for $\beta=0.3$, $\gamma=0.4$,
 \[
   0.2913,\;0.4665,\;0.5518,\;0.5938,\;0.6159 .
 \]
-The first family collapses towards $1$, where a bound of the form
-$\mathrm{specGap}^N$ says nothing in the limit.  These numbers are
+The first family collapses towards $1$.  The quantity tabulated \emph{is}
+$\mathrm{specRatio}(L)=\mathrm{specGap}/\lambda$, so what says nothing in the
+limit is a bound of the form $\mathrm{specRatio}(L)^{N}$ --- which is exactly
+the rate of Theorem~\ref{thm:fixedL}.  These numbers are
 \textbf{verified} and \textbf{not proved}, no theorem depends on them, and they
 are printed because a paper that reported only Theorem~\ref{thm:endpoint} would
 be reporting the half that does not settle the question.
@@ -263,7 +268,7 @@ reports attainment as \textbf{verified}, and §\ref{sec:denominator} explains
 why we now expect this to be cheap rather than blocked.
 
 \paragraph{Still not clustering in the infinite-volume sense.}
-Theorem~\ref{thm:corr} bounds the normalised two-point function at each fixed
+Theorem~\ref{thm:fixedL} bounds the normalised two-point function at each fixed
 extent.  It says nothing about the limit: the rate is
 $\mathrm{specRatio}(L)$, and the measured evidence is that it tends to $1$.
 The word \emph{clustering} is reserved for a statement that survives that limit,
@@ -291,7 +296,7 @@ because \emph{both} cross terms vanish: $\langle\Om,K^{N}u\rangle
 the eigen-equation, and the other by the same computation.  Nothing here asks
 which basis vector carries $\lambda$.
 
-\osline{SpatialSpectral}{558}{quadForm\_split}.
+\osline{SpatialSpectral}{568}{quadForm\_split}.
 
 \begin{theorem}[the partition function from below]\label{thm:denom}
 $\langle b,K^{N}b\rangle \;\ge\; c^{2}\lambda^{N}
@@ -299,7 +304,7 @@ $\langle b,K^{N}b\rangle \;\ge\; c^{2}\lambda^{N}
 function.
 \end{theorem}
 
-\osline{SpatialSpectral}{596}{quadForm\_lower}.
+\osline{SpatialSpectral}{606}{quadForm\_lower}.
 Since $c>0$ (both $\Om$ and $b$ are strictly positive) and
 $\mathrm{specRatio}<1$, the right-hand side is positive for all large $N$.
 
@@ -309,11 +314,31 @@ function below,
 \[
   \bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr|\;\le\;B/D .
 \]
-Combining Theorem~\ref{thm:endpoint} with Theorem~\ref{thm:denom} gives a bound
-of the form $\mathrm{const}\cdot\mathrm{specRatio}^{\,N}$ at fixed extent.
 \end{theorem}
 
-\osline{SpatialSpectral}{652}{gibbsCorr\_bound\_of\_partition\_lower}.
+\osline{SpatialSpectral}{662}{gibbsCorr\_bound\_of\_partition\_lower}.
+
+Composing the three is arithmetic, but it is arithmetic with quantifiers in it
+--- a threshold has to be chosen and the overlap has to be shown positive --- so
+we state it as a theorem rather than assert it in prose.
+
+\begin{theorem}[the fixed-extent endpoint]\label{thm:fixedL}
+Let $A$ be an observable whose dressing is orthogonal to the Perron vector.
+There exist $C>0$ and $N_0$ such that for all $N \ge N_0$,
+\[
+  \bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr|
+  \;\le\; C\,\mathrm{specRatio}^{\,N} ,
+  \qquad \mathrm{specRatio} < 1 .
+\]
+\end{theorem}
+
+\osline{SpatialSpectral}{693}{gibbsCorr\_decay\_fixed\_extent}.
+The constant is explicit in the proof, $C = 2\|\sqrt{w}A\|^{2}/c^{2}$ up to the
+$+1$ that keeps it positive for the zero observable, and $N_0$ is the index past
+which the fluctuation part of the partition function has fallen below half of
+its Perron part.  \textbf{This is a fixed-$L$ statement and nothing more}: the
+rate is $\mathrm{specRatio}(L)$, the tabulated evidence above is that it tends
+to $1$, and therefore the theorem does not survive the infinite-volume limit.
 
 \begin{remark}
 The same reading observes that the \emph{sharpness} of $\mathrm{specGap}$ is
@@ -367,8 +392,8 @@ actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8430 jobs, success \\
-Oracle commands & 2665 \\
-\quad with axiom dependencies & 2642 \\
+Oracle commands & 2666 \\
+\quad with axiom dependencies & 2640 \\
 \quad axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
