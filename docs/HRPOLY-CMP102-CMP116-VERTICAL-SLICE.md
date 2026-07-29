@@ -463,6 +463,31 @@ domain decay, followed by the scalar comparison with equation (1.36).
 Neither that bound nor the unrestricted Gaussian `interaction_bound` is
 claimed here.
 
+The quantitative implicit-function route to the missing component jets has
+now advanced one derivative.  The selected physical correction satisfies a
+literal fixed-point equation `g x = T (x, g x)`.  The new module
+`QuantitativeFixedPointThirdDerivativeStability.lean` differentiates that
+identity once and constructs the derived fixed-point map
+
+```text
+A -> DT(x,g(x)) o (id,A)
+```
+
+for `A = Dg(x)`.  Applying the already proved second-jet absorption theorem
+to this literal map yields a third-jet bound for `g`; no estimate for `D3 g`
+is assumed.  Two apparent auxiliary debts are eliminated internally:
+
+```text
+uniform bound on D2 g -> Lipschitz bound on Dg,
+vertical contraction of T -> vertical contraction of the derived map.
+```
+
+Consequently the only new quantitative source obligation is the variation
+of the full derivative of the derived map along the physical fixed-point
+graph.  This is a bound generated from the second and third joint jets of
+the literal intrinsic map `T`, not a renamed bound on `D3 g`.  Once produced,
+the existing physical second-jet budget feeds the recurrence directly.
+
 The final assembly must also reconcile three domain index layers:
 
 ```text
