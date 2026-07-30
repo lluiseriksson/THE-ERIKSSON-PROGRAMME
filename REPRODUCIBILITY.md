@@ -46,8 +46,40 @@ lake exe cache get        # downloads prebuilt Mathlib .olean (fast)
 lake build YangMillsCore
 ```
 
-Expected: `Build completed successfully (8430 jobs).` (the job count is
-recorded in `CLAUDE.md` rule 7 and updated on every core change).
+At source checkpoint `0be45284` the literal terminal line is:
+
+```text
+Build completed successfully (8460 jobs).
+```
+
+That line records the thermodynamic-limit branch before integration.  The
+merge checkpoint `71fc7701`, with `main` first parent `d370ddff` and
+thermodynamic-limit second parent `8df8adc2`, was rebuilt as a single combined
+core and terminated with:
+
+```text
+Build completed successfully (8463 jobs).
+```
+
+`origin/main` advanced once more to PAPER 12 v1.2 at `a00cea06` before
+publication.  The final non-rebase integration checkpoint `7460e035` was
+therefore rebuilt a third time; it also terminated with
+`Build completed successfully (8463 jobs)`.
+
+Both builds used the pinned Lean 4.29.0-rc6 toolchain and all nine manifest
+revisions. On the ownership-mismatched Windows checkout, Git was given
+`safe.directory = *` through a process-local configuration file only; no
+dependency, pin, checkout, or global Git configuration was changed.
+
+While the first merge was being published, `origin/main` advanced to
+`418227b6` with the PAPER 12 v1.1 spatial-reflection corrections.  Those
+commits were integrated by a second non-rebase merge at `93c8e521`.  The
+combined L1+OS tree was rebuilt again and retained the same literal terminal
+line:
+
+```text
+Build completed successfully (8463 jobs).
+```
 
 ## Committed oracle transcripts
 
@@ -71,6 +103,22 @@ lake env lean <scratch>.lean
 
 The standing oracle script is `oracle_check.lean` (covers the headline
 results).  Run it with `lake env lean oracle_check.lean`.
+
+The complete merged script was run on published `main` checkpoint
+`f0720ba7` after the final 8463-job build.  The command terminated `exit 0`
+after 1575.8 seconds and produced 5083 output lines.  The appended
+thermodynamic-limit, integer-translation, and spatial-reflection endpoints
+each reported exactly `[propext, Classical.choice, Quot.sound]`; the
+pre-existing oracle body retained its previously audited standard or
+axiom-free outputs.
+
+The publication checkpoint `d6282a83` changes only reproducibility prose and
+the verification ledger after that oracle run.  Its `oracle_check.lean`
+contains 2,752 `#print axioms` commands.  The submitted thermodynamic-limit PDF
+at `output/pdf/local_gibbs_thermodynamic_limit.pdf` is 104,063 bytes with
+SHA-256
+`0a494cd745da4760428ad4e915075469c95eab7e638856b5e49925ec662a0919`;
+the owner-supplied upload file was compared byte-for-byte with that Git blob.
 
 For the lightweight CI-style source scan, run:
 

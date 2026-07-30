@@ -14,13 +14,15 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
 handoff below.  The latest verification-ledger checkpoint records the verified
-core green at **8430 jobs**, with Mathlib pinned and every headline oracle-clean
+merged core green at **8463 jobs**, with Mathlib pinned and every headline oracle-clean
 at `[propext, Classical.choice, Quot.sound]`.  The ledger includes the earlier
 Addendum 444/date-stamped checkpoint material plus the 2026-07-03
 Catalan/Schur series through Addendum 465 and the 2026-07-04 diamagnetic
-unitary bridge Addendum 466, while the latest measured source checkpoint is
-`9704b3f3` (on `main`).  The current publication crosswalk, including the five
-byte-matched public O-lane PDFs and the five pending/frozen artifacts, is
+unitary bridge Addendum 466.  The latest merged build checkpoint is
+`7460e035`; the full merged oracle record and thermodynamic-limit artifact are
+public at `d6282a83` (on `main`).  The current publication crosswalk, including
+the five byte-matched public O-lane PDFs and the submitted thermodynamic-limit
+artifact, is
 [`docs/PUBLICATIONS.md`](docs/PUBLICATIONS.md).
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
@@ -66,6 +68,33 @@ majorant / Schur-budget / physical-precision covariance lane, and the KP
 activity-domain zero-free polydisc.  Do not replace
 `hRpoly` by an axiom or a hollow interface; build it from source-grounded
 constructive-QFT bricks or leave it as an explicit theorem hypothesis.
+
+The independent campaign in
+[`docs/THERMODYNAMIC-LIMIT-KP-PLAN.md`](docs/THERMODYNAMIC-LIMIT-KP-PLAN.md)
+has now constructed the complete-sequence thermodynamic limit of genuine
+local Gibbs expectations in the uniform KP regime.  Exact far-gas
+cancellation, common-window transport, and the literal consumer of
+`connectedLattice_pinned_tail_volumeUniform` give a quantitative Cauchy
+modulus; completeness then yields a positive normalized real local state,
+carrying a genuine `ℤ^d` action and invariant under every integer translation,
+including inverses.  A concrete
+`d=2`, `SU(2)` physical Wilson instance is proved for
+`0 < |β| ≤ 10^-5`, and a separate physical lattice-dimension `d=4` instance
+is proved for `0 < |β| ≤ 10^-6`.  These radii are explicitly conservative
+and unoptimized.  An explicit cofinal sequence of genuine centered free
+boxes converges to the same value as periodic boundary conditions, and the
+normalized finite two-plaquette truncated-correlation bound passes to the
+state under its explicit eventual realization/separation hypotheses.  This
+does not claim arbitrary boundary conditions, a `C*`-state, a continuum
+limit, or OS reconstruction.  The focal modules, twenty headline oracles,
+and a direct root elaboration are green.  The branch's canonical
+Lake root build also terminated literally with
+`Build completed successfully (8460 jobs).` at source checkpoint `0be45284`;
+the final merged checkpoint `7460e035` completed successfully at **8463 jobs**,
+with empty stderr after supplying
+a process-local `safe.directory` setting for the ownership-mismatched
+checkout.  All nine dependency HEADs matched the manifest; no dependency was
+deleted or updated and no global Git configuration was changed.
 
 For a fast human-readable progress scan, read the progress dashboard near the
 top of [`README.md`](README.md#progress-dashboard) and the static dashboard in
@@ -114,7 +143,7 @@ git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6
 lake exe cache get          # fetch prebuilt Mathlib oleans — do NOT build Mathlib from source
-lake build YangMillsCore    # 8430 jobs at the latest recorded checkpoint; fast with warm cache
+lake build YangMillsCore    # 8463 jobs at the latest merged checkpoint; fast with warm cache
 ```
 
 ---

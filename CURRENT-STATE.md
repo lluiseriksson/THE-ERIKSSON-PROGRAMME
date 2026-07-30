@@ -31,12 +31,12 @@ See
 [`docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md`](docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md).
 
 **Live-state snapshot updated:** 2026-07-30.  **Latest recorded verification
-checkpoint:** `9704b3f3` (on `main`), with `lake build YangMillsCore` green at
-**8430 jobs** and 2,672 oracle answers.  The only axiom names in the complete
-oracle transcript are `propext`, `Classical.choice`, and `Quot.sound`; there are
-zero `sorryAx` and zero project axioms.  See
-[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addenda 546 and
-551.
+checkpoint:** merged core build `7460e035`, with
+`lake build YangMillsCore` green at **8463 jobs**; the full merged oracle run
+is recorded at public checkpoint `d6282a83`.  The oracle file contains 2,752
+commands, and the completed run reports only `propext`, `Classical.choice`,
+and `Quot.sound`, with zero `sorryAx` and zero project axioms.  See
+[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addenda 564--566.
 
 **Recent public papers checked (2026-07-30).**  Author-list entries `[89]` to
 `[93]` are public as ai.viXra `2607.0070`, `2607.0073`, `2607.0075`,
@@ -66,6 +66,22 @@ non-Perron modulus, proves the sharp fluctuation-sector operator bound and the
 relative rate below one, and closes the normalised two-point estimate at fixed
 extent.  Its rate remains extent-dependent; it does not establish clustering
 uniform in volume.
+
+**Local Gibbs thermodynamic-limit submission.**  The owner reports that
+*A Machine-Checked Thermodynamic Limit for Local Lattice Gauge Gibbs States*
+was submitted to arXiv on 2026-07-30, with identifier pending.  The exact
+seven-page PDF is committed at `d6282a83`, SHA-256
+`0a494cd745da4760428ad4e915075469c95eab7e638856b5e49925ec662a0919`.
+The formal source checkpoint named in the paper is `0be45284`; the complete
+merged core was rebuilt at `7460e035` and the full oracle was rerun before the
+public record at `d6282a83`.  The theorem constructs the whole-sequence local
+Gibbs limit in an explicit uniform-KP regime, its positive normalized real
+state, full integer-translation invariance, equality with one centered
+free-boundary exhaustion, and passage of the stated two-plaquette bound.  It
+does not claim arbitrary boundary conditions, a `C*`-algebraic state, a
+continuum limit, OS reconstruction, or Clay progress.  Exact metadata and the
+binary audit are in
+[`docs/SUBMISSION-LOCAL-GIBBS-THERMODYNAMIC-LIMIT-20260730.md`](docs/SUBMISSION-LOCAL-GIBBS-THERMODYNAMIC-LIMIT-20260730.md).
 
 **PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
 is paper commit `193bb675`: all 24 theorem-map names link to the immutable
@@ -502,8 +518,8 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8430 jobs** in the latest recorded
-  verification checkpoint.
+* `lake build YangMillsCore` is green at **8463 jobs** in the latest recorded
+  merged verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree

@@ -3,7 +3,7 @@
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
     "updated": "2026-07-30",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8430 jobs green; 2672 oracle answers; measured source checkpoint 9704b3f3 (on main)",
+    "checkpoint": "latest merged lake build YangMillsCore - 8463 jobs green at 7460e035; full merged oracle recorded at d6282a83; 2752 oracle commands",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
@@ -17,7 +17,7 @@
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "control_plane": "REPAIRED (2026-07-29). run-manifests contains only strict schema-v1 execution manifests. Frozen pre-schema and specialized ledgers are hash-indexed under run-records/legacy and remain usable only through explicit domain validators. The historical artifact baseline never exempts a changed transcript from strict manifest coverage.",
-    "submission_notice": "Public author-list entries [89]-[93] were rechecked on 2026-07-30 and their v1 PDFs are byte-identical to the repository artifacts. O-lane Papers 6, 8, 9, and 10 are submitted with public IDs pending; Paper 7 remains frozen and is not reported submitted."
+    "submission_notice": "Public author-list entries [89]-[93] were rechecked on 2026-07-30 and their v1 PDFs are byte-identical to the repository artifacts. O-lane Papers 6, 8, 9, and 10 are submitted with public IDs pending; Paper 7 remains frozen and is not reported submitted. The independent local Gibbs thermodynamic-limit paper was submitted to arXiv on 2026-07-30; its identifier is pending and its exact PDF is frozen at d6282a83."
   },
   "status_legend": {
     "proved": "Machine-checked theorem reachable from YangMillsCore; oracle-clean on Lean's three standard axioms.",
@@ -31,6 +31,18 @@
     "D": "Repository plumbing and public audit infrastructure"
   },
   "recent_papers": [
+    {
+      "id": "local-gibbs-thermodynamic-limit",
+      "title": "A Machine-Checked Thermodynamic Limit for Local Lattice Gauge Gibbs States",
+      "date": "2026-07-30",
+      "status": "submitted to arXiv; public identifier pending",
+      "path": "output/pdf/local_gibbs_thermodynamic_limit.pdf",
+      "record": "docs/SUBMISSION-LOCAL-GIBBS-THERMODYNAMIC-LIMIT-20260730.md",
+      "anchor": "0be45284",
+      "paper_commit": "d6282a83",
+      "sha256": "0a494cd745da4760428ad4e915075469c95eab7e638856b5e49925ec662a0919",
+      "scope": "Constructs the complete-sequence local Gibbs thermodynamic limit in a uniform KP regime, a positive normalized real local state with a genuine Z^d action, agreement with one centered free-boundary exhaustion, and passage of the stated two-plaquette bound. It does not prove arbitrary boundary-condition independence, a C*-algebraic state, OS reconstruction, a continuum limit, or the Clay mass gap."
+    },
     {
       "id": "o-paper-10",
       "title": "The Modulus: a Machine-Checked Operator Bound on the Fluctuation Sector of the Coupled Z_2 Slice",

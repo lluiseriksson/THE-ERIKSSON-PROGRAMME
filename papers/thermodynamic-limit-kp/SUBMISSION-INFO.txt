@@ -1,0 +1,33 @@
+TITLE
+A Machine-Checked Thermodynamic Limit for Local Lattice Gauge Gibbs States
+
+AUTHOR
+Lluis Eriksson
+
+STATUS
+Submitted by owner report on 2026-07-30. Public arXiv identifier pending.
+
+ARXIV PRIMARY
+cs.LO
+
+ARXIV CROSS-LIST
+math-ph
+
+COMMENTS
+7 pages, no figures. Lean 4 formalization. Verification artifact:
+https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/d6282a83
+
+PDF
+output/pdf/local_gibbs_thermodynamic_limit.pdf
+
+PDF SHA-256
+0a494cd745da4760428ad4e915075469c95eab7e638856b5e49925ec662a0919
+
+PUBLIC REPOSITORY CHECKPOINT
+d6282a83
+
+FORMAL SOURCE CHECKPOINT NAMED IN THE PDF
+0be45284
+
+CANONICAL SUBMISSION RECORD
+docs/SUBMISSION-LOCAL-GIBBS-THERMODYNAMIC-LIMIT-20260730.md

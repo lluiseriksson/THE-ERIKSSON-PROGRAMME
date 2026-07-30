@@ -37,6 +37,7 @@ are byte-identical.
 
 | State | Artifact | Exact repository identity |
 |---|---|---|
+| Submitted to arXiv on 2026-07-30, owner report; public ID pending | *A Machine-Checked Thermodynamic Limit for Local Lattice Gauge Gibbs States* | repository checkpoint `d6282a83`, formal source checkpoint `0be45284`, PDF SHA-256 `0a494cd745da4760428ad4e915075469c95eab7e638856b5e49925ec662a0919`; see the [submission record](SUBMISSION-LOCAL-GIBBS-THERMODYNAMIC-LIMIT-20260730.md) |
 | Submitted on 2026-07-30, owner report; public ID pending | *The Modulus: a Machine-Checked Operator Bound on the Fluctuation Sector of the Coupled Z_2 Slice* | paper `21199f40`, Lean `9704b3f3`, PDF SHA-256 `200cfe770180f86aa725683d20424772e009ccc980c991faa7f03f99b42287b8`; see the [submission record](O-LANE-SUBMISSION-SPATIAL-SPECTRAL-20260730.md) |
 | Submitted on 2026-07-29, owner report; public ID pending | *The Measure the Spectral Results Were About: a Machine-Checked Transfer Bridge for the Spatial Z_2 Slice* | submitted v1.1: paper `dc2935eb`, Lean `c4fa6a9e`, PDF SHA-256 `92c8235c54c8c6cafa7325d1a126f8b962ea486ac9e95d2e0872ec25969ce243`; current repository erratum v1.2: paper `b0b4a32c`, PDF SHA-256 `0a0acc85773ff6557ca65b5a49027c29aeee99cd45e7861c474bd0bbe876ca18`; see the [submission record](O-LANE-SUBMISSION-SPATIAL-GIBBS-20260729.md) |
 | Submitted on 2026-07-29, owner report; public ID pending | *Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite Extent of the Coupled Slice* | paper `b03766bd`, Lean `ac897963`, PDF SHA-256 `e8063013965ea1699718d08f2bce1646e73f0dd2b970a518bb9e6339c68d78a0`; see the [submission record](O-LANE-SUBMISSION-PERRON-GAP-20260729.md) |
@@ -45,8 +46,12 @@ are byte-identical.
 
 No identifier is inferred from ordering, submission time, or a nearby archive
 number.  A pending row moves into the public table only after it appears on the
-public author page and its public PDF has been compared with the repository
-artifact.
+relevant public archive and its public PDF has been compared with the
+repository artifact.
+
+The thermodynamic-limit paper is not part of the numbered O-lane sequence.
+It belongs to the independent uniform-KP lattice campaign recorded in
+[`docs/THERMODYNAMIC-LIMIT-KP-PLAN.md`](THERMODYNAMIC-LIMIT-KP-PLAN.md).
 
 ## Claim boundary
 
@@ -64,3 +69,10 @@ the sharp non-Perron modulus and its relative rate, and proves the normalised
 two-point bound at fixed extent.  The rate remains extent-dependent.  The
 sequence provides no volume-uniform interacting spectral gap, four-dimensional
 continuum limit, or Clay Yang--Mills mass gap.
+
+The local Gibbs thermodynamic-limit paper proves whole-sequence convergence
+and a positive normalized real local state in an explicit strong-coupling KP
+regime, with full integer-translation invariance, equality with one centered
+free-boundary exhaustion, and passage of its stated two-plaquette bound.  It
+does not claim arbitrary boundary conditions, a `C*`-algebraic state,
+Osterwalder--Schrader reconstruction, a continuum limit, or the Clay mass gap.

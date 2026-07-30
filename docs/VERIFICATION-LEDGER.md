@@ -28143,3 +28143,1033 @@ all 46 in the oracle list.  `check_module_prose.py`: OS lane 18 modules,
 
 **Still not proved.**  Anything uniform in the extent --- unchanged, and the only
 substantive gap.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 547 (2026-07-30, **PAPER 11 OPENED AND CLOSED: the rate without the
+extent --- and a pre-registered judge that failed and stays failed**)
+
+**Context.**  Every rate in this lane was a fixed-`L` rate.  Paper 8 proved
+strict separation at each extent and said it was not uniform; paper 10 gave the
+separation a modulus and measured that modulus tending to `1` outside the
+disordered region.  Nothing survived `L -> infinity`, and *clustering* was never
+used.  This addendum records the first statement that does.
+
+**0. THE JUDGE CAME FIRST, AND HALF OF IT FAILED.**  Two falsifiable predictions
+were committed BEFORE any Lean was written, thresholds fixed in the file:
+
+  * JUDGE 1 --- the decoupled rate is exactly `tanh(beta)` at every extent.
+    **PASS**, to 1e-16, beta in {0.2, 0.5, 0.9}, L = 1..8.  This authorised the
+    fabrication below, and only this.
+  * JUDGE 2 --- the coupled uniformity boundary is the Onsager curve
+    `sinh(2b) sinh(2g) = 1`.  **FAIL**: seven of eight cells agree, and the cell
+    (0.1, 1.0) --- disordered, so predicted to saturate --- gives
+    specRatio(12) = 0.6266 with drift 3.5e-2 from L = 10, above the
+    pre-registered 1e-2.  Undecided at L <= 12, so the judge does not pass.
+
+The autopsy prints the failing cell's whole sequence rather than re-running the
+judge with a larger MAXL: increments decay geometrically with q = 0.835,
+extrapolating to ~0.707, so it is saturation not yet reached and not a crawl to
+1.  **Raising the extent until the cell passed would have been choosing the
+judge to pass, and was not done.**  Consequence, binding: the Onsager boundary
+claim is reported in the paper as NOT ESTABLISHED, and no theorem rests on it.
+
+**1. The theorem.**  For the decoupled kernel, at EVERY extent,
+
+    specGap = tanh(beta) * Z^L,   hence   specRatio = tanh(beta),
+
+with `L` nowhere in the rate.  `spatialKernel_specGap_eq`.  Both directions:
+the upper bound is `spatialKernel_fluct_bound`, the lower is the single-site
+sign observable paper 5 already built (`sum_siteSign` supplies the missing fact
+that it has mean zero).
+
+**2. The proof is an induction, not a spectral decomposition.**  The kernel is a
+product over sites, so the tensor route exists --- and needs the spectrum of a
+Kronecker power, which mathlib does not carry.  It is not needed:
+`specGap_isGreatest` (Addendum 543) makes an upper bound on `specGap` *exactly*
+an operator inequality, and that falls to induction on the extent.  Split at the
+first site; the even part keeps mean zero and inherits the rate; the odd part
+keeps nothing and gets only Schur's test with rate 1; and the two recombine
+
+    tanh(beta) * Z = D
+
+**exactly**, `Z` the row sum and `D` the odd eigenvalue of one bond.  That single
+identity is why the constant does not pick up a factor per site.  Note the
+dependency: yesterday's `IsGreatest` statement, added as an interface nicety,
+is what made today's theorem cheap.
+
+**3. The payoff.**  `gibbs_clustering_uniform_rate`: composing with paper 10's
+uniform-threshold endpoint, the normalised Gibbs two-point function obeys
+`|E[A(X_0)A(X_N)]| <= C_A * tanh(beta)^N` past one threshold, and the RATE
+contains no `L`.  First statement in the lane that survives the volume limit.
+
+**4. What it is not, said in the module and in the paper.**  At constant source
+weight the spatial slices are independent, so this is a statement about a
+PRODUCT measure --- which is exactly why it is reachable.  What it establishes is
+narrower than it sounds: not that the coupled model clusters uniformly, but that
+**the obstruction to uniformity is the source weight and not the extent**.  The
+constant `C_A` is not claimed uniform; only the rate is.
+
+**5. An exact identification, kept separate from the failed judge.**  With the
+ring source weight the kernel is `D_w^{1/2} T D_w^{1/2}` --- the symmetrised
+transfer matrix of the 2D Ising model, vertical `beta`, horizontal `gamma`.  That
+is algebra and is stated as such.  The BOUNDARY claim built on it is the one
+Judge 2 failed, and the two are not allowed to borrow each other's status.
+
+**Measured.**  Core **8431 jobs** --- INCREMENTED from 8430, as required when a
+module joins the core (rule 7).  Oracle **2689 commands -> 2689 answers**
+(2686 distinct, the same three known duplicates), 23 axiom-free + 2663 with
+axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
+**17** declarations in the new module, all 17 in the oracle list.
+`check_module_prose.py`: OS lane 19 modules, 0 findings --- and it earned its
+keep again, catching a `section 11` cross-reference in the new header that
+pointed at another module's section, not this one's.
+
+**Still not proved.**  Anything uniform in the extent for the COUPLED kernel.
+That is now the lane's single open analytic question, it is a 2D Ising
+high-temperature statement, and the measurements say it is true and hard rather
+than false.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 548 (2026-07-30, **S-UNIFORM v1.1: we did not respect our own
+pre-registered gate, and "survives the volume limit" was an overclaim we could
+have proved instead**)
+
+**Context.**  First external reading of paper 11.  Six findings, two of them
+serious, and one of the two is about process rather than mathematics.
+
+**1. WE FAILED OUR OWN GATE, and this is the entry that matters.**  The
+pre-registered script ends in a SINGLE JOINT gate:
+
+    CAMPAIGN GATE: PASS -- fabrication authorised   iff ok1 and ok2
+
+Judge 2 failed, so the artefact printed `FAIL -- do not fabricate`.  **We
+fabricated anyway**, and Addendum 547 narrated this as "judge 1 authorised the
+decoupled work" --- which is a retroactive split of a joint gate into two, i.e.
+exactly the manoeuvre pre-registration exists to prevent.  The reading caught
+it.
+
+The theorems are unaffected: they rest on their proofs, not on the gate.  What
+is forfeited is the METHODOLOGICAL claim, and it cannot be recovered for this
+campaign --- writing two gates now, after seeing the results, would be the same
+error a second time.  **Rule, and it is the expensive kind: a pre-registration
+is only worth what its gate is worth, and the gate must be as fine-grained as
+the decisions it is meant to license, WRITTEN BEFORE LOOKING.**  A joint gate
+over independent targets is a design error that only shows up when half of it
+fails.  Recorded in the paper's scope section, not softened there either.
+
+**2. "Survives the volume limit" exceeded the quantifiers --- so we proved the
+statement that does not.**  `gibbs_decay_extent_free_rate` fixes `L` before
+choosing `N0` and `C_A`, so both may diverge with the extent; a bound
+`C(L) rho^N` with `C(L) -> infinity` says nothing as the system grows however
+small `rho` is.  Calling that "the first statement in this lane that survives
+the volume limit" was wrong, and the Lean name `gibbs_clustering_uniform_rate`
+was wrong twice over --- *clustering* is the word this lane refused for ten
+papers.  Renamed.
+
+The reading noted the repair should be cheap in the product case.  It is, and
+it was done rather than merely retitled: `gibbsCorr_one_uniform_bound` computes
+instead of composing.  At constant weight the dressed constant observable IS the
+Perron vector and the partition function is exactly `2^L Z^{LN}`, so
+
+    |E[A(X_0)A(X_N)]| <= <A^2> * tanh(beta)^N   for EVERY N, no threshold,
+
+with `<A^2>` the mean square in the uniform measure --- at most 1 for
+`|A| <= 1`, at every extent.  Here the whole bound is uniform, not merely its
+rate.  Supporting: `dress_one`, `sum_act_eq_zero`, `iterate_fluct_bound`,
+`gibbsPartition_one`.  *Clustering* is still not used: no infinite-volume state
+is constructed.
+
+**3. `beta >= 0` was load-bearing and missing from every printed statement.**
+Lean carried `hbeta : 0 <= beta` throughout; the paper carried it nowhere.  At
+`beta < 0` the odd bond eigenvalue `D` is negative while `specGap` is
+non-negative by definition, so the printed Theorem 4.1 asserted that a
+non-negative quantity is negative.  This is the SAME class as Addendum 544 (the
+printed statement stronger than its Lean statement) and the third occurrence of
+it; it remains invisible to the build, to the oracle, and to
+`check_module_prose.py`, which reads identifiers and not hypotheses.
+
+**4. Three smaller ones, all real.**  The judge's cells split 4-4 by the Onsager
+curve, not 5-3 as the paper said.  The autopsy concluded "saturation and not a
+crawl to 1" from a SINGLE increment ratio; that ratio is consistent with
+saturation and excludes nothing, and the paper now says so.  And "the
+obstruction is the source weight and not the extent" overstated the causality:
+what is shown is that the extent ALONE does not degrade the rate in the product
+kernel.
+
+**Measured.**  Core **8431 jobs**.  Oracle **2694 commands -> 2694 answers**
+(2691 distinct, the same three known duplicates), 23 axiom-free + 2668 with
+axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
+**22** declarations in the module, all 22 in the oracle list.
+`check_module_prose.py`: OS lane 19 modules, 0 findings.
+
+**Still not proved.**  Uniformity in the extent for the COUPLED kernel, and any
+infinite-volume statement whatsoever.  Reflection positivity untouched.
+Clay ~0 pct.
+
+---
+
+## Addendum 549 (2026-07-30, **S-UNIFORM v1.2: "every extent" had an exception,
+"the slices are independent" was false as written, and the RHS can lose its last
+`L`**)
+
+Second external reading of paper 11.  Three residues, all real.
+
+**1. The section-7 prose still carried the retracted claim.**  Addendum 548
+corrected the module HEADER but not the `§7` section note (`The payoff: a rate
+that survives the volume limit`) nor the docstring of
+`gibbs_decay_extent_free_rate` (`CLUSTERING, with an extent-independent rate ...
+it is why the word is finally used`).  Fourth occurrence of the same pattern in
+this session, and the same lesson each time: **a claim withdrawn in one place
+has to be searched for everywhere, because the guard reads identifiers and not
+sentences.**
+
+**2. "at every extent" has an exception.**  At `L = 0` the configuration space is
+a single point, the only eigenvalue is the Perron one and `specRatio = 0`, which
+is not `tanh beta` for `beta > 0`.  The Lean statement is parameterised by
+`M + 1` and was right; the abstract and header said "every extent" and were not.
+Now "every POSITIVE extent", with the reason.
+
+**3. "the spatial slices are independent" is false as written.**  The slices
+`X_0, ..., X_N` are coupled in time --- that coupling is exactly what `tanh beta`
+measures.  What factorises at constant weight is across SITES: the Gibbs measure
+is a product of `L` independent one-dimensional temporal chains.  Corrected in
+the module and in the paper.
+
+**Two endpoints added, both suggested by the reading and both cheap.**
+`gibbsCov_one_uniform_bound`: centring in the uniform measure discharges the
+mean-zero hypothesis, so the bound holds for an ARBITRARY observable with its
+variance as the constant.  `gibbsCorr_one_le_of_bounded`: for a mean-zero
+observable bounded by `1`, `|E[A(X_0)A(X_N)]| <= (tanh beta)^N` --- **no
+threshold, no constant, and no `L` anywhere on the right**.  That is the
+sharpest form the product case admits, and it existed only as a sentence.
+
+**Measured.**  Core **8431 jobs**.  Oracle **2697 -> 2697** (2694 distinct, the
+same three known duplicates), 23 axiom-free + 2671 with axiom dependencies, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  **25** declarations in the
+module, all 25 in the oracle list.  `check_module_prose.py`: OS lane 19 modules,
+0 findings.
+
+**Still not proved.**  Uniformity in the extent for the COUPLED kernel, and any
+infinite-volume statement.  Clay ~0 pct.
+
+---
+
+## Addendum 550 (2026-07-30, **S-UNIFORM v1.4: fifth time the same pattern, and a
+numerical grid quoted as if it were the theorem's scope**)
+
+Third external reading of paper 11.  Two residues, no mathematics.
+
+**1. FIFTH occurrence, this session, of "corrected in one place, not the other".**
+Addendum 549 changed the PAPER's "the only place that paper is used" to "the only
+SPECTRAL use", because §5 uses the S block again for its Gibbs endpoint.  The
+matching comment in `SpatialUniform.lean` §4 was left saying *"That is the only
+place the S block is used"*, which is false of the module for the same reason.
+Corrected.
+
+The tally for this session, all the same class and all found by readers rather
+than by tooling: 539 (docstring naming a retracted endpoint), 544 (printed
+theorem missing a hypothesis Lean carried), 546 (three sentences true of an
+earlier proof), 549 (§7 note still saying *clustering*), and now 550.  The
+identifier guard reads names; none of these was a name.  **The standing remedy is
+unchanged and is a discipline, not a tool: when a claim is retired, grep for the
+claim, not for the file you were editing.**
+
+**2. A pre-registered GRID quoted as the theorem's scope.**  The paper said the
+first prediction --- "the decoupled rate is exactly `tanh(beta)` at every extent"
+--- "passed to 1e-16".  The judge checks `beta` in {0.2, 0.5, 0.9} and
+`L = 1..8`.  That is a grid, and it is the grid the file fixes in advance; the
+all-`L` statement is `spatialKernel_specGap_eq`, which is PROVED and not
+sampled.  Attributing the proof's universality to the measurement is the
+inverse of the usual defect in this lane and just as wrong.  The abstract and
+§6 now separate the two explicitly.
+
+**Measured.**  Core **8431 jobs**.  Oracle **2697 -> 2697** (2694 distinct, the
+same three known duplicates), 23 axiom-free + 2671 with axiom dependencies, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  25 declarations, all 25 in the
+oracle list.  `check_module_prose.py`: OS lane 19 modules, 0 findings.  The only
+Lean change is a comment; the build and the oracle were re-run anyway, because a
+measurement is only about the tree it was taken from.
+
+**Note on the lane.**  Paper 10 (*The Modulus*) has been submitted by the owner.
+Paper 11 remains pending his click.
+
+---
+
+## Addendum 551 (2026-07-30, **PAPER 12: reflection positivity --- the first
+statement in this lane that survives the source weight --- and a gate that failed
+because I repeated my own design error one level down**)
+
+**Context.**  Eleven papers end with "reflection positivity is untouched".  The
+lane's open question is uniformity in the extent for the COUPLED kernel, which
+is a 2D Ising high-temperature statement and out of reach.  Reflection
+positivity is not: it is the SIGN of a quadratic form, and conjugation by
+`sqrt(w)` is a CONGRUENCE, so the weight that destroys uniformity cannot touch
+it.
+
+**0. THE GATES, and the one that failed.**  Three predictions were committed
+before any Lean.  The design lesson of Addendum 548 was applied at the top
+level: gate A and gate B separate, each licensing one theorem.
+
+  * **GATE A** (site reflection, `N` even, EVERY beta): **PASS**.
+  * **GATE B** (bond reflection): **FAIL** --- and the reason is that **I made
+    the same design error one level down**.  Gate B bundled `(B1)` the
+    `beta >= 0` theorem with `(B2)` its sharpness witness behind
+    `PASS iff B1 and B2`.  Those are different claims about different regions.
+    B1 passed everywhere; B2 missed one cell; the bundle failed.
+
+**The autopsy measured why, rather than asserting it.**  At the failing cell
+(`L=1`, `N=3`, `beta=-0.1`) the violating direction carries
+`|D|^N / Z^N ~ 1e-3` of the weight, so a uniformly random observable lands in
+the violating cone with probability `~2e-2` and sixty draws miss it about a
+third of the time.  **An EXISTENCE claim was being tested by SAMPLING.**
+Searched along the odd direction instead, the violation appears exactly.
+
+**The repair is a REDESIGN, committed before being run and declared as such.**
+Gate B stays failed and is not superseded.  The two new gates are separate, and
+B2 stops sampling and predicts a NUMBER --- the closed form `2(e^b - e^-b)^N` to
+1e-12 --- which is strictly HARDER than "some draw goes negative".  Both pass.
+Nothing was loosened; an instrument was fixed.
+
+**1. Proved.**  `sum_iterate_even_nonneg`: at even separation the reflected sum
+is a square, hence non-negative for a symmetric kernel at EVERY beta, negative
+coupling included --- symmetry is all it uses.  `spatialKernel_posSemidef`: the
+decoupled kernel is PSD for `beta >= 0`, by the same first-site induction the
+uniformity module runs, recombining the even and odd parts with `Z > 0` and
+`D >= 0`.  `posSemidef_congr` + `symWeighted_posSemidef`: **positivity transports
+through the source weight**, one reindexing, and this is the whole reason the
+COUPLED case is reachable.  `sum_iterate_odd_nonneg`, then
+`gibbsPathSum_nonneg_even` and `gibbsPathSum_nonneg` through the bridge.
+
+**2. And the hypothesis is ACTIVE.**  `gibbsPathSum_siteSign_eq` gives the
+reflected sum in closed form at one site: exactly `2 (e^b - e^-b)^N`, using the
+extent paper's sign observable as an eigenvector.  `gibbsPathSum_neg_of_neg_beta`
+turns that into a strict negativity below zero at odd separation.  The boundary
+`beta = 0` is sharp and exhibited, not inferred.
+
+**3. What is NOT done, and is stated in the module and the paper.**  Reflection
+positivity is ONE Osterwalder--Schrader axiom.  **No reconstruction**: the
+physical Hilbert space as the quotient of the past algebra by the null space of
+this form is not built.  Observables are the bridge's ENDPOINT ones; a general
+past-half-chain observable is not treated.  Nothing here is about uniformity in
+the extent, which remains the lane's open analytic question.
+
+**Measured.**  Core **8432 jobs** --- INCREMENTED from 8431, as required when a
+module joins the core (rule 7).  Oracle **2708 commands -> 2708 answers** (2705
+distinct, the same three known duplicates), 23 axiom-free + 2682 with axiom
+dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.  **11**
+declarations in the new module, all 11 in the oracle list.
+`check_module_prose.py`: OS lane 20 modules, 0 findings.
+
+## Addendum 552 (2026-07-29, **local Gibbs thermodynamic-limit campaign: exact finite-volume and common-window substrate, limit still OPEN**)
+
+**Scope and separation.**  This checkpoint starts the campaign recorded in
+`docs/THERMODYNAMIC-LIMIT-KP-PLAN.md`.  It modifies no file under
+`YangMills/RG/**` or `YangMills/OS/**`; it does not discharge `hRpoly`, touch a
+continuum limit, or alter the recorded Clay distance.  Its target is the
+strong-coupling lattice thermodynamic limit of bounded compatible local Gibbs
+observables under the uniform KP criterion.
+
+**The exact algebra now in the core.**
+
+* `LocalObservableSubstrate.lean` defines volume-compatible bounded local
+  observables and the genuine normalized Gibbs expectation, proves
+  measurability/integrability, positivity and normalization, and sums
+  `connectedLattice_pinned_tail_volumeUniform` over a finite support anchor
+  without a volume factor.
+* `FiniteTranslation.lean` proves exact covariance of realization and
+  invariance of the finite-volume Gibbs expectation under each unit
+  translation generator and finite lists of generators.
+* `LocalMarkedExpansion.lean` gives the exact numerator expansion and the
+  normalized identity
+  `local marked factor * exp(clusterSum farRegion - clusterSum full)`.
+  The extensive gas is cancelled algebraically at one volume.  Neither the
+  numerator nor the partition function is claimed to converge separately.
+* `LocalMarginal.lean`, `LocalWindowGeometry.lean`, and
+  `LocalWindowActivity.lean` supply volume-independent window coordinates,
+  no-wrap geometry, exact product-marginal transport, and equality of marked
+  and unmarked component integrals between fitting tori.
+* `LocalWindowCluster.lean` defines the volume-independent index
+  `WindowPolymer`, proves exact preservation of incompatibility and activity,
+  and hence equality of Ursell coefficients and complete cluster monomials
+  in any two fitting volumes.  Its specialization to the connected Wilson
+  lattice gas is definitionally equal (`rfl`) to the system used by the
+  uniform pinned-tail theorem.
+
+**Measured checkpoint.**  On the Colab Pro+ high-RAM runtime, from the exact
+source archive corresponding to this branch:
+
+```text
+Build completed successfully (8437 jobs).
+CORE_EXIT=0
+```
+
+The complete `oracle_check.lean` then terminated with `ORACLE_EXIT=0`.  The six
+new common-window cluster endpoints
+`weightedLatticePolymerSystem_plaquetteWeight`,
+`WindowPolymer.incomp_toWeightedPolymer_iff`,
+`WindowPolymer.activity_toWeightedPolymer_eq`,
+`KP.ursell_eq_of_incomp`, `KP.clusterSum_eq_of_equiv`, and
+`WindowPolymer.clusterMonomial_toWeightedPolymer_eq` each printed exactly
+`[propext, Classical.choice, Quot.sound]`; the earlier local-observable,
+translation, marked-expansion, marginal, geometry, and activity endpoints
+remain in the same full oracle run.
+
+**The brick is not closed.**  There is not yet a theorem that the complete
+finite-volume sequence is Cauchy, no infinite-volume functional, no
+boundary-condition independence theorem, and no passage of the truncated
+correlation estimate.  Compactness or a convergent subsequence would not close
+this campaign.  The next exact step is to split pinned clusters into those
+decoding to the common window and those leaving it; only the latter may then
+be bounded by `connectedLattice_pinned_tail_volumeUniform`.
+
+## Addendum 553 (2026-07-29, **common-window inverse and cluster transport; Cauchy still OPEN**)
+
+`LocalWindowCauchy.lean` adds the inverse direction needed for the finite
+window comparison.  For every finite weighted connected-lattice cluster it
+constructs an actual plaquette-touching walk between arbitrary plaquettes in
+the tuple, with length at most twice the total plaquette cardinality.  Thus,
+if one pinned plaquette has seam margin equal to that bound, every plaquette
+of every polymer has zero-margin representatives and the whole tuple decodes
+to volume-independent `WindowPolymer`s.
+
+The decoding is exact: each decoded support fits the source volume,
+re-realization recovers the original weighted polymer pointwise, and total
+cluster cardinality is preserved.  The generic endpoint
+`WindowPolymer.weightedClusterMonomial_eq_of_commonWindow` then identifies
+the complete Ursell-times-activities monomial of any source tuple with the
+monomial obtained by realizing the same common-window tuple in a second
+fitting volume.  This endpoint deliberately separates exact free-gas
+transport from the later normalized Gibbs cancellation.
+
+The Colab Pro+ focal compilation of the complete new module terminated
+literally with:
+
+```text
+CAUCHY11_EXIT=0
+```
+
+The four new focal `#print axioms` endpoints then terminated with
+`CAUCHY_AUDIT_EXIT=0`; each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The exact pushed checkpoint `407c9d62` was then pulled into a clean Colab
+checkout and the canonical root build terminated literally with:
+
+```text
+Build completed successfully (8438 jobs).
+CORE_407C_EXIT=0
+```
+
+The complete `oracle_check.lean` run at the same checkpoint then terminated
+with `ORACLE_407C_EXIT=0`; the four new endpoints again reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+No file below `YangMills/RG/**` or `YangMills/OS/**` is modified.  The finite
+sum reindexing, KP domination of the complementary tail, Cauchy theorem,
+infinite state, boundary-condition independence, and correlation-limit
+theorems remain open.
+
+## Addendum 554 (2026-07-29, **rooted local tail and volume-uniform support boundary bound**)
+
+The local correction is supported on tuples for which *some* coordinate
+meets the marked region.  Pinning that symmetric condition at coordinate zero
+has the intrinsic combinatorial factor `n+1`.  Static cross-audit against
+`PinnedCluster.lean`, `ClusterTail.lean`, and `PolymerRepresentation.lean`
+found no valid reindexing that removes it: storing a chosen coordinate merely
+reintroduces the same multiplicity.
+
+`LocalRootedTail.lean` now records this cost explicitly.
+`weighted_rootFactor_pinnedClusterWeightGE_le` bounds the rooted layer by the
+ordinary pinned size layer plus its unit-cardinality tilt.
+`connectedLattice_rootedPinnedTail_volumeUniform` applies the literal
+`connectedLattice_pinned_tail_volumeUniform` to the first layer and the
+unit-tilted KP tail to the second.  The resulting honest smallness window
+therefore contains `t + ε + 1`; no claim is made that the tail without the
+extra `+1` controls a local cluster correction.
+
+Finally,
+`supportRootedBoundaryRemainder_le_volumeUniform` sums the rooted tail over
+all polymers touching a plaquette incident to the observable edge support.
+Its prefactor is volume-free:
+
+```text
+exp(-ε L) * ((2 t) * (|SF| * 4d)).
+```
+
+The complete module compiled on Colab Pro+ with the literal terminal line
+`ROOTTAIL3_EXIT=0`.  Its two headline `#print axioms` checks terminated with
+`ROOTTAIL_AUDIT_EXIT=0` and each reported exactly
+`[propext, Classical.choice, Quot.sound]`.  The endpoint is not yet the
+Cauchy theorem: the exact correction series still has to be reindexed into
+the common-window part plus this complementary rooted remainder.
+
+## Addendum 555 (2026-07-30, **exact local-correction reindexing into the rooted tail**)
+
+`LocalCorrectionTail.lean` closes the finite combinatorial bridge left open
+in Addendum 554.  The new generic symmetrization theorem retains an arbitrary
+permutation-invariant predicate on the whole tuple.  Instantiating it with
+the total plaquette-cardinality cutoff proves that moving “some polymer meets
+the marked region” to the root `X 0` costs exactly `n+1`; the cutoff is not
+lost during reindexing.
+
+The position-zero sum is then fibered exactly over the rooted polymer.  A
+finite union bound over `supportPlaquettes SF` and the literal incompatibility
+of every polymer containing the selected plaquette with its singleton anchor
+give
+
+```text
+localCorrectionTailPartial μ pe β SF L K
+  <= supportRootedBoundaryRemainder μ pe β SF L K
+  <= exp(-ε L) * ((2 t) * (|SF| * 4d)).
+```
+
+Thus the exact unrooted norm majorant produced by the restriction identity is
+now connected to the literal `connectedLattice_pinned_tail_volumeUniform`
+consumer, together with the unavoidable unit-cardinality tilt and hypotheses
+at `t+ε+1`.  No volume-cardinality factor and no free `bulk` hypothesis occur.
+
+The Colab Pro+ focal compilation terminated literally with
+`CORRTAIL7_EXIT=0`.  The three focal oracles
+`sum_marked_le_succ_mul_pinned_of_invariant`,
+`localCorrectionTailLayer_le_rooted`, and
+`localCorrectionTailPartial_le_volumeUniform` terminated with
+`CORRTAIL_AUDIT_EXIT=0`; each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+After adding both `LocalRootedTail` and `LocalCorrectionTail` to the root
+target, the canonical Colab build terminated literally with:
+
+```text
+Build completed successfully (8440 jobs).
+CORE_CORRTAIL2_EXIT=0
+```
+
+The full-series identification, common-window cancellation, Cauchy theorem,
+infinite-volume state, boundary-condition independence, and correlation
+limit remain open.  This addendum does not declare the campaign closed.
+
+## Addendum 556 (2026-07-30, **exact common-window Cauchy bound for the local correction exponent**)
+
+`LocalCorrectionSeries.lean` turns the restriction correction into its exact
+complex tuple series.  Each layer is norm-majorized by the rooted tail from
+Addendum 555, the full and cutoff series are summable, and the exact
+restriction identity is recorded without estimating the two extensive
+cluster sums separately.
+
+The centering and transport chain `LocalCentering.lean` →
+`LocalCenteredWindow.lean` → `LocalSmallClusterTransport.lean` moves an
+arbitrary compatible observable away from the periodic seam, decodes every
+below-cutoff cluster into a volume-independent window tuple, and constructs
+an actual equivalence between the finite connected-cluster layers in any two
+admissible volumes.  Marked incidence, total plaquette cardinality, the
+Ursell coefficient, and the complete activity monomial are preserved exactly.
+
+`LocalSmallCorrectionCauchy.lean` removes disconnected tuples using the
+vanishing of their Ursell coefficient, identifies every below-cutoff series
+layer with the common-window subtype sum, and proves the direct two-volume
+estimate
+
+```text
+norm_localCorrectionSeries_centered_sub_le_volumeUniform:
+  ‖correction_N - correction_M‖
+    ≤ 2 * exp (-ε L) * ((2 t) * (Fintype.card O.Support * 4d)).
+```
+
+This is a whole-sequence Cauchy modulus for the exact local normalization
+correction.  It follows from exact finite transport plus the literal
+`connectedLattice_pinned_tail_volumeUniform` consumer; it uses neither
+compactness nor a subsequence.
+
+The focal Colab compilation terminated literally with:
+
+```text
+Build completed successfully (8223 jobs).
+SMALLCAUCHY11_EXIT=0
+```
+
+After importing the complete correction/centering/transport chain into the
+root target, the canonical Colab build terminated literally with:
+
+```text
+Build completed successfully (8445 jobs).
+CORE_CAUCHY2_EXIT=0
+```
+
+The six focal `#print axioms` checks for
+`localCorrectionTail_summable_volumeUniform`,
+`clusterSum_sub_localFarRegion_eq_localCorrectionSeries`,
+`centeredSmallClusterEquiv`,
+`localCorrectionSmallSeriesTerm_centered_eq`,
+`localCorrectionSmallSeries_centered_eq`, and
+`norm_localCorrectionSeries_centered_sub_le_volumeUniform` terminated with
+`CAUCHY_CHECKPOINT_AUDIT_EXIT=0`; every endpoint reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The campaign remains open.  This endpoint is not yet a Cauchy theorem for the
+genuine Gibbs expectation because the outer marked-set sum in
+`localGibbsExpectation_eq_markedClusterSum` still has to be uniformly
+majorized, truncated, and transported.  Consequently no infinite-volume
+state, boundary-condition independence, or correlation-limit theorem is
+claimed in this addendum.
+
+## Addendum 557 (2026-07-30, **uniform tail for the complete outer marked Gibbs sum**)
+
+`LocalMarkedTail.lean` controls the part of the exact normalized Gibbs
+formula that remained outside the Ursell correction.  It reuses the
+component decomposition from `SupportFactorization.lean`: every set satisfying
+`localNear SF S₀ = S₀` is decomposed into connected components, every
+component is charged to a plaquette in `supportPlaquettes SF`, and
+`sum_connectedPolymers_through_le` supplies a volume-uniform rooted animal
+sum.  Because components, rather than tuple coordinates, are pinned, no
+factor `n+1` occurs in this resummation.
+
+The marked integral is bounded by
+`O.bound * (exp (|β| B) - 1)^|S₀|`.  Separately, the exact normalized
+far-gas factor is first rewritten through
+`clusterSum_sub_localFarRegion_eq_localCorrectionSeries` and then bounded by
+an exponential linear in `|S₀|`.  Absorbing this linear growth defines
+`localMarkedEffectiveWeight`.  Tilting that elementary weight by `η` gives
+an explicit `exp (-η L)` tail for all marked sets with `L ≤ |S₀|`.
+
+The terminal consumer
+`norm_localGibbsExpectation_sub_localMarkedClusterSmallSum_le_volumeUniform`
+therefore proves that the genuine finite-volume Gibbs expectation is
+uniformly close to its below-cutoff normalized marked sum.  This is a bound
+on the exact expectation, not on a free `bulk` surrogate.
+
+The focal Colab build terminated literally with:
+
+```text
+Build completed successfully (8224 jobs).
+MARKEDTAIL18_EXIT=0
+```
+
+After importing the module into the root target, the canonical Colab build
+terminated literally with:
+
+```text
+Build completed successfully (8446 jobs).
+CORE_MARKED_TAIL_EXIT=0
+```
+
+The six focal oracles
+`localConnectedMarkedWeight_le_volumeUniform`,
+`localPinnedSetTailWeight_le_exp_volumeUniform`,
+`localGibbsExpectation_eq_localMarkedClusterSum`,
+`norm_exp_localFarClusterDiff_le_volumeUniform`,
+`localMarkedClusterTailNorm_le_volumeUniform`, and
+`norm_localGibbsExpectation_sub_localMarkedClusterSmallSum_le_volumeUniform`
+terminated with `MARKED_TAIL_AUDIT_EXIT=0`; each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The thermodynamic-limit campaign remains open.  The finite below-cutoff
+normalized marked sums have not yet been transported jointly between
+volumes; hence no Cauchy theorem for the genuine expectation and no
+infinite-volume state are claimed here.
+
+## Addendum 558 (2026-07-30, **whole-sequence local Gibbs state and genuine free-box limit**)
+
+The terminal local thermodynamic chain is now theorem-fed at its explicit
+scope.
+
+`ThermodynamicLimit.lean` proves
+`cauchySeq_localGibbsExpectation_kpUniform` for the complete sequence of
+genuine normalized Gibbs expectations.  The proof first chooses a single
+marked cutoff `q`, then the explicit common-window threshold, and applies the
+two-volume estimate whose boundary term is ultimately the literal
+`connectedLattice_pinned_tail_volumeUniform` consumer.  No compactness or
+subsequence is used.  Completeness of `ℂ` defines
+`infiniteLocalGibbsExpectation`; its real part is bundled as
+`infiniteLocalGibbsState`, a positive normalized real linear functional
+invariant under every positive unit translation generator and every finite
+word in those generators.
+
+`ThermodynamicNonvacuity.lean` constructs the packaged uniform KP regime for
+the physical `d=2`, `SU(2)` Wilson energy throughout
+
+```text
+0 < |β| ≤ 10^-5.
+```
+
+The energy is proved nonconstant and the group, Haar probability measure,
+measurability, and boundedness instances are all concrete.
+
+`LocalFreeBoundary.lean` deletes the centered seam and identifies its gas
+literally with a polymer restriction.  `LocalBoundaryCorrection.lean` proves
+that the normalized periodic/free discrepancy is the absolutely summable
+series of clusters which meet both the marked support and the deleted seam.
+The same-volume endpoint is
+`norm_localGibbsExpectation_sub_freeBoundary_le_kpUniform`.
+
+`FreeBoundaryThermodynamicLimit.lean` chooses the cofinal sequence
+
+```text
+freeBoundaryVolumeIndex O q
+  = thermodynamicVolumeThreshold O q + q
+```
+
+and proves `tendsto_freeBoundaryThermodynamicExpectation`: the complete
+explicit free-box sequence converges to the same infinite value as periodic
+boundary conditions.  This proves independence between the periodic and
+centered free boundaries actually constructed; no arbitrary-boundary theorem
+is claimed.
+
+`ThermodynamicCorrelation.lean` rewrites
+`two_plaquette_correlator_bound_normalized` exactly as a bound on
+`localGibbsTruncatedCorrelation` and passes it unchanged to
+`infiniteLocalGibbsTruncatedCorrelation` under the explicit eventual
+plaquette-realization and separation hypotheses.  The geometric
+instantiation is not hidden.
+
+Direct focal compilation terminated `exit 0` for
+`LocalFreeBoundary.lean`, `ThermodynamicNonvacuity.lean`,
+`LocalBoundaryCorrection.lean`, `FreeBoundaryThermodynamicLimit.lean`, and
+`ThermodynamicCorrelation.lean`.  Direct elaboration of `YangMillsCore.lean`
+also terminated `exit 0`.
+
+The ten focal oracles for
+`connectedLattice_pinned_tail_volumeUniform`,
+`cauchySeq_localGibbsExpectation_kpUniform`,
+`infiniteLocalGibbsState`,
+`su2UniformLocalKPRegimeOfBound`,
+`su2InfiniteLocalGibbsStateOnPuncturedInterval`,
+`norm_localGibbsExpectation_sub_freeBoundary_le_kpUniform`,
+`tendsto_freeBoundaryThermodynamicExpectation`,
+`abs_infiniteLocalGibbsTruncatedCorrelation_le_twoPlaquette`,
+`localGibbsExpectation_translate`, and
+`CompatibleLocalObservable.realize_latticeShiftForward`
+each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Static inspection showed that all nine dependency HEADs equal their
+`lake-manifest.json` revisions and that Mathlib's configured remote equals the
+declared URL.  The earlier pre-planning failure was Git's repository-ownership
+safety check: Lake could not read the remote/HEAD, misdiagnosed this as a
+changed URL, then attempted a fetch blocked at port 443.  Supplying
+`safe.directory=*` only through the build process environment removed that
+false update path without changing global Git configuration or deleting a
+dependency.
+
+The canonical fixed-toolchain root build then terminated with empty stderr
+and the literal final line:
+
+```text
+Build completed successfully (8458 jobs).
+```
+
+Thus the mathematical modules, direct root, ten headline axiom oracles, and
+rule 7 canonical evidence are all green at this checkpoint.
+
+## Addendum 559 (2026-07-30, **physical d=4 non-vacuity and paper framing**)
+
+Source checkpoint: `ca355eb1`.
+
+`ThermodynamicNonvacuity.lean` now contains a second explicit physical
+interval:
+
+```text
+0 < |β| ≤ 10^-6,  d = 4,  G = SU(2),  B = 2.
+```
+
+The packaged parameters remain `t = ε = η = 10^-2`.  The proof uses the
+same quadratic activity estimate as the `d=2` interval, while discharging
+the exact four-dimensional constants
+
+```text
+(16 * 4 + 1)^2 = 4225,   16 * 4 = 64,
+```
+
+and the marked exponent `129/100` against a conservative rational
+exponential majorant.  The master inequality
+`10625 * intervalMasterWeightD4 < 1` simultaneously implies the radius and
+smallness fields.  No optimized strong-coupling radius is claimed.
+
+The new headline endpoints are
+`su2D4UniformLocalKPRegimeOfBound` and
+`su2D4InfiniteLocalGibbsStateOnPuncturedInterval`.  Both focal axiom oracles
+reported exactly
+
+```text
+[propext, Classical.choice, Quot.sound].
+```
+
+Together with the ten thermodynamic-limit oracles in Addendum 558, this
+gives twelve headline checks.  The canonical fixed-toolchain root build at
+`ca355eb1` terminated `exit 0` with the literal final line
+
+```text
+Build completed successfully (8458 jobs).
+```
+
+The accompanying paper now cites Osterwalder-Seiler in the body to state
+classical priority, identifies the mechanically checked bridge and explicit
+inhabitation as its contribution, and says explicitly that the certified
+`10^-5`/`10^-6` radii are much smaller than customary analytic
+strong-coupling domains.  The `d=4` result remains a lattice statement; no
+continuum limit or OS reconstruction is inferred.
+
+## Addendum 560 (2026-07-30, **integer translations and integration into `main`**)
+
+The local observable substrate now carries a genuine additive
+`ℤ^d`-translation action.  `IntegerTranslation.lean` proves the action laws at
+the abstract local-coordinate level and relates realization of an arbitrary
+integer translate to the periodic lattice action.  In particular,
+`integerLocalGibbsExpectation_vadd` gives invariance of the infinite-volume
+expectation under every `z : Fin d → ℤ`, including inverse translations,
+without iterating a volume-dependent torus word.
+
+The full thermodynamic chain therefore yields a positive normalized real
+local state, whole-sequence convergence, invariance under the complete
+integer translation group, agreement between periodic volume and the
+specific centered free exhaustion constructed in the campaign, and passage
+of the stated finite-volume truncated-correlation estimate under its explicit
+eventual realization and separation hypotheses.  It still does not claim
+arbitrary boundary conditions, a `C*`-algebraic completion, a continuum
+limit, or Osterwalder--Schrader reconstruction.
+
+The published thermodynamic-limit branch ends at `8df8adc2`; its code source
+checkpoint `0be45284` had already passed the canonical 8460-job root build.
+It was merged, without rebasing, at checkpoint `71fc7701`, with `main` first
+parent `d370ddff`.  The combined merge was rebuilt using the pinned Lean
+4.29.0-rc6 toolchain and terminated `exit 0` with the literal line
+
+```text
+Build completed successfully (8463 jobs).
+```
+
+No file under `YangMills/RG/**` or `YangMills/OS/**` was changed while
+resolving the merge; their additional `main` modules were nevertheless
+included in the combined root build.
+---
+
+## Addendum 561 (2026-07-30, **PAPER 12 v1.1: the title said an axiom the module
+does not prove --- and two motivational sentences were simply false**)
+
+**Context.**  First external reading of paper 12.  One structural finding and two
+false claims, plus an artefact defect.
+
+**1. THE TITLE OVERCLAIMED, and this is the house rule "title versus theorems".**
+The module proves that the reflected two-point form is non-negative for REAL
+observables of a SINGLE slice, at the two ENDS of a path.  The
+Osterwalder--Schrader axiom quantifies over observables of the whole PAST
+HALF-CHAIN, complex-valued, with the matrix `<Theta F_i, F_j>` positive
+semidefinite.  No reflection map, no half-chain algebra and no sesquilinear form
+exist in the module.  Calling it "Machine-Checked Reflection Positivity" claimed
+the axiom.
+
+Fixed in **both directions**: retitled to *Endpoint* Reflection Positivity with
+the domain stated in the abstract's first sentence AND in Theorem 4.1 --- and
+some of what the old title promised was actually proved:
+
+  * `gibbsPathSum_gram_nonneg` / `_even` with `gibbsPathSum_combo` --- the GRAM
+    statement.  Reflection positivity is a matrix being PSD, not one diagonal
+    entry; the matrix form follows by bilinearity and is now stated so the two
+    are not confused.
+  * `symWeighted_quadForm_neg_of_neg_beta` --- sharpness for **every** strictly
+    positive weight, not only the constant one.  Congruence is INVERTIBLE, so
+    inertia transports both ways and the sign observable divided by `sqrt(w)`
+    witnesses indefiniteness of the COUPLED kernel at every extent with at least
+    one site.  The old witness only refuted the universally quantified claim.
+  * `spatialKernel_posSemidef_zero` --- the `L = 0` exception, recorded: one
+    configuration, kernel `1`, a square at every beta.  "Exactly beta >= 0" is a
+    statement from one site upwards.
+
+The remaining gap is now identified as a CONSTRUCTION and not a further
+inequality: collapsing each half-chain to its boundary vector reduces the site
+case to `sum_iterate_even_nonneg` and the bond case to `symWeighted_posSemidef`,
+both already proved; the real-to-complex step is then free for a real symmetric
+kernel.  Registered, not done, not claimed.
+
+**2. "The first statement in this lane that holds for the coupled kernel" was
+FALSE.**  *The Modulus* proves `specGap < lam` for the coupled slice, and so do
+the Perron and gap papers.  What is actually distinctive is narrower and is now
+what the paper says: this result is UNCHANGED by the weight --- same hypothesis,
+same conclusion, no constant that depends on `w` --- whereas every earlier
+coupled-kernel statement contains a number that moves when `w` does.
+
+**3. "The weight that destroys uniformity" was also not proved.**  What exists is
+a MEASUREMENT that `specRatio(L)` degenerates under a ring weight, and the
+absence of any uniform bound for it.  Corrected in module and paper.
+
+**4. An artefact defect: the judges only PRINTED their verdicts.**  Both scripts
+reached the end after printing `FAIL` and exited `0`.  A gate that cannot fail a
+CI run is a report, not a gate.  Both now `sys.exit(1)` on failure --- which
+means `judge_spatial_reflection.py` now genuinely exits non-zero, since its gate
+B did fail.  The verdict is unchanged; only its enforceability is.
+
+**Measured.**  Core **8432 jobs**.  Oracle **2715 commands -> 2715 answers**
+(2712 distinct, the same three known duplicates), 23 axiom-free + 2689 with
+axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
+**18** declarations in the module, all 18 in the oracle list.
+`check_module_prose.py`: OS lane 20 modules, 0 findings.
+
+## Addendum 562 (2026-07-30, **final main integration after concurrent PAPER 12 update**)
+
+The first publication attempt found that `origin/main` had advanced during
+the thermodynamic-limit merge validation.  No force-push or rebase was used.
+The three remote commits ending at `418227b6` were fetched and integrated by
+the second merge checkpoint `93c8e521`, whose parents are the documented
+thermodynamic merge line `9548fade` and remote `main` `418227b6`.
+
+The two textual conflicts were resolved additively: the thermodynamic
+Addenda 552--560 and all forty appended thermodynamic/integer-translation
+oracle commands were retained; the concurrent spatial-reflection audit was
+retained as Addendum 561 together with its seven new oracle commands.  No
+mathematical declaration was weakened or discarded.
+
+Because the remote update changes `YangMills/OS/SpatialReflection.lean`, the
+combined tree was rebuilt rather than inheriting either parent's evidence.
+Using the pinned Lean 4.29.0-rc6 toolchain, the canonical root terminated
+`exit 0` with the literal line
+
+```text
+Build completed successfully (8463 jobs).
+```
+
+The unchanged count is expected: the remote update adds declarations inside
+an existing core module rather than adding a new module/job.
+## Addendum 563 (2026-07-30, **PAPER 12 v1.2: the Gram matrix was printed
+WITHOUT its dressing, and one exception was two objects wearing one name**)
+
+**Context.**  Second external reading of paper 12 (96.00/100).  Three necessary
+corrections, all of the same family: a printed formula that is a true statement
+about a DIFFERENT object than the one Lean proves.
+
+**1. THE GRAM MATRIX LOST ITS DRESSING.**  Theorem 4.2 was printed as
+
+    sum_ij c_i c_j <A_i, K^N A_j>  >=  0
+
+while the theorem in Lean is about `gibbsPathSum`, which is
+
+    sum_ij c_i c_j <sqrt(w) A_i, K_w^N sqrt(w) A_j>,   K_w = sqrt(w) K sqrt(w).
+
+The bare form is not false --- it is the constant-weight case --- but it is a
+statement about a different operator, and printing it under the theorem's name
+silently drops the entire point of the paper, which is precisely that the
+DRESSING is where the weight goes and that congruence is why it costs nothing.
+The paper now prints the two sides of the identity together, and says in prose
+that the `sqrt(w)` are the bridge's dressing and the reason the operator is
+self-adjoint, not decoration.
+
+**Class.** This is the "printed object is not the proved object" family, and it
+is the same shape as Addenda 539/544/546/549/550 --- corrected in one place, not
+the other.  Here the correction was never made anywhere: the dressing lives in
+the Lean statement and in the bridge paper, and the display was written from the
+IDEA of the theorem rather than from the theorem.  **Rule, added:** a displayed
+formula is transcribed from the Lean statement, not from memory of what it says.
+
+**2. `L = 0` WAS TWO KERNELS UNDER ONE SENTENCE.**  The recorded exception said
+"at `L=0` the kernel is the number `1`".  That is the DECOUPLED kernel.  The
+WEIGHTED kernel at `L=0` is the positive scalar `w(empty)`, which need not be
+`1`; the two forms are `u^2` and `w(empty) u^2`.  Both are squares at every
+`beta`, so the exception survives --- but it is two facts, and the paper claimed
+one of them for both.  New theorem `symWeighted_posSemidef_zero` (via
+`posSemidef_congr` applied to `spatialKernel_posSemidef_zero`), and the paragraph
+now names both objects and both forms.
+
+**3. THE DOCSTRING STILL CARRIED THE RETRACTED CLAIM.**  Addendum 552 retracted
+"the weight that destroys uniformity" from the paper --- and left it standing in
+the docstring of `symWeighted_posSemidef`, which is the module's own prose about
+the module's own theorem.  **Sixth occurrence of the one-place correction.**  The
+docstring now says what is true: the weight for which no extent-uniform spectral
+bound is presently proved, and under which degeneration has been MEASURED.  This
+is exactly the failure mode `scripts/check_module_prose.py` was built for and
+exactly the one it cannot catch: it reads IDENTIFIERS, not CLAIMS.  Recorded as
+a known limit of the guard rather than patched over.
+
+**4. Minor.**  "Three gates" now reads "three ACTIVE gates", with the failed
+original Gate B preserved and explicitly not counted --- four objects, three
+live.
+
+**MEASURED (v1.2).**
+
+  * `lake build YangMillsCore` -> **Build completed successfully (8432 jobs)**.
+    UNCHANGED from v1.1, and that is the expected reading: rule 7 is about a new
+    MODULE joining the core.  A new theorem inside an existing module adds a
+    declaration, not a build job.
+  * `lake env lean oracle_check.lean` -> **2716 commands, 2716 answers**; 2713
+    distinct (the three known duplicates); **23 axiom-free + 2690 with axioms**;
+    zero `sorryAx`, zero non-standard axioms, zero Lean errors.
+  * **19 declarations in the module, 19 in the oracle**, reconciled by name.
+  * `scripts/check_module_prose.py YangMills/OS` -> 20 modules, 0 findings.
+
+**Concurrency note.**  A separate session was merging an unrelated branch into
+`main` while this was measured.  The counters above are for THIS tree
+(`main` + this module), measured here; no number from that merge is reused, and
+none of ours is offered for it.
+
+## Addendum 564 (2026-07-30, **final integration with PAPER 12 v1.2**)
+
+Before the Addendum 562 integration could be published, `origin/main`
+advanced again to PAPER 12 v1.2 at `a00cea06`.  Its correction and new
+`symWeighted_posSemidef_zero` oracle were retained, and its ledger entry was
+renumbered Addendum 563 so that neither concurrent history was overwritten.
+The final non-rebase merge checkpoint is `7460e035`, with parents
+`3a24a24c` and `a00cea06`.
+
+Because v1.2 again changes `YangMills/OS/SpatialReflection.lean`, the combined
+core was rebuilt in the integration checkout.  It terminated `exit 0` with:
+
+```text
+Build completed successfully (8463 jobs).
+```
+
+Thus the 8463 count applies to the tree containing the complete
+thermodynamic-limit campaign and both spatial-reflection correction rounds,
+not to either branch in isolation.
+
+## Addendum 565 (2026-07-30, **full oracle on the published merged tree**)
+
+The remaining post-merge verification debt is discharged at published
+checkpoint `f0720ba7`.  With no concurrent Lean/Lake process, the pinned
+toolchain command
+
+```text
+lake env lean oracle_check.lean
+```
+
+ran to completion in 1575.8 seconds, produced 5083 output lines, and
+terminated `exit 0`.  The final merged block covers all appended
+thermodynamic common-window endpoints, the complete integer-translation
+state, and the PAPER 12 v1.1/v1.2 spatial-reflection endpoints; every one of
+those declarations printed exactly
+
+```text
+[propext, Classical.choice, Quot.sound]
+```
+
+The pre-existing oracle body had already been machine-audited on the parent
+checkpoint as standard or axiom-free.  This final whole-file run verifies
+that the additive conflict resolution is syntactically and semantically
+valid on the published merged tree.  Together with the canonical
+`Build completed successfully (8463 jobs).` line, the merge now satisfies the
+repository's root-build and headline-oracle checkpoint standard.
+
+## Addendum 566 (2026-07-30, **local Gibbs thermodynamic-limit paper submitted;
+binary identity frozen**)
+
+The owner reports submission to arXiv of *A Machine-Checked Thermodynamic Limit
+for Local Lattice Gauge Gibbs States*, with public identifier pending.  The
+canonical submission record is
+`docs/SUBMISSION-LOCAL-GIBBS-THERMODYNAMIC-LIMIT-20260730.md`; the metadata
+mirror is `papers/thermodynamic-limit-kp/SUBMISSION-INFO.txt`.
+
+The owner-supplied upload file and the Git blob
+`d6282a83:output/pdf/local_gibbs_thermodynamic_limit.pdf` are byte-identical:
+104,063 bytes, SHA-256
+`0a494cd745da4760428ad4e915075469c95eab7e638856b5e49925ec662a0919`.
+`pdfinfo` reports seven A4 pages, PDF 1.4, no encryption, JavaScript, active
+form, or suspect content.  All seven rendered pages were inspected.  Cambria
+regular/bold/italic are embedded subsets; the ReportLab base-14 Helvetica and
+Courier fonts are not embedded and remain recorded as a submission-portability
+warning without changing the frozen binary.
+
+The paper names formal source checkpoint `0be45284`.  The integrated tree was
+subsequently rebuilt at `7460e035` with 8463 jobs, and the full merged oracle
+run was sealed before the public documentation checkpoint `d6282a83`; the
+current oracle file contains 2,752 `#print axioms` commands.  Submission does
+not widen the theorem: arbitrary boundary conditions, a `C*`-algebraic state,
+continuum limit, Osterwalder--Schrader reconstruction, and the Clay mass gap
+remain explicitly unclaimed.

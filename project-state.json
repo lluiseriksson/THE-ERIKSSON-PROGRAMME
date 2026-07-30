@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "lean_core": {
-    "source_checkpoint": "9704b3f3",
+    "source_checkpoint": "7460e035",
     "toolchain": "leanprover/lean4:v4.29.0-rc6",
     "mathlib_commit": "07642720480157414db592fa85b626dafb71355b",
     "latest_recorded_build": {
       "status": "green",
-      "jobs": 8430,
+      "jobs": 8463,
       "evidence": "docs/VERIFICATION-LEDGER.md"
     },
     "allowed_oracle": [

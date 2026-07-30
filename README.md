@@ -4,7 +4,7 @@
 
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)
 ![Mathlib](https://img.shields.io/badge/Mathlib-pinned_commit-blue)
-![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8430_jobs)-success)
+![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8463_jobs)-success)
 ![sorry](https://img.shields.io/badge/sorry-0-success)
 ![project axioms](https://img.shields.io/badge/project_axioms-0-success)
 ![Clay distance](https://img.shields.io/badge/distance_to_Clay-~0%25_(%3C0.1%25)-lightgrey)
@@ -19,7 +19,7 @@ proved. The defining principle is **honesty over progress**: a smaller true
 claim always beats a larger hollow one.
 
 ```bash
-lake build YangMillsCore          # the verified core — green, 8430 jobs
+lake build YangMillsCore          # the verified core — green, 8463 jobs
 lake env lean oracle_check.lean   # prints the axiom oracle for every headline
 ```
 
@@ -36,11 +36,11 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 proved / partial / open and linked to Lean sources, docs, or the verification
 ledger.
 
-**Documentation snapshot updated:** 2026-07-30.  **Latest public source
-checkpoint:** `9704b3f3` (on `main`).  The verification ledger records the
-full `lake build YangMillsCore` green at **8430 jobs**, 2,672 oracle answers,
-axioms exactly `[propext, Classical.choice, Quot.sound]`, zero `sorryAx`, and
-zero project axioms.
+**Documentation snapshot updated:** 2026-07-30. **Latest public source
+checkpoint:** `d6282a83` (on `main`). The verification ledger records the
+merged `lake build YangMillsCore` green at **8463 jobs** at `7460e035` and the
+full merged oracle run at `d6282a83`, with zero `sorryAx` and zero project
+axioms.
 The canonical machine-readable proof-state contract is
 [`project-state.json`](project-state.json); repository HEAD and paper commits
 may advance without changing that recorded Lean checkpoint.
@@ -104,6 +104,19 @@ commit `21199f40` and Lean anchor `9704b3f3`; its public ID is pending.  It
 constructs the sharp non-Perron modulus, proves the relative rate below one,
 and closes the normalised two-point bound at each fixed extent.  It proves
 nothing uniform in the extent.
+
+The owner also reports the 2026-07-30 arXiv submission of
+*A Machine-Checked Thermodynamic Limit for Local Lattice Gauge Gibbs States*.
+The submitted seven-page PDF is frozen at public repository checkpoint
+`d6282a83`, SHA-256
+`0a494cd745da4760428ad4e915075469c95eab7e638856b5e49925ec662a0919`;
+its public arXiv identifier is pending.  This independent uniform-KP campaign
+constructs the whole-sequence local Gibbs limit, a positive normalized real
+local state invariant under every integer translation, equality with one
+centered free-boundary exhaustion, and the stated two-plaquette limit bound.
+It claims neither arbitrary boundary conditions nor a `C*`-state, continuum
+limit, OS reconstruction, or Clay progress.  See the
+[submission record](docs/SUBMISSION-LOCAL-GIBBS-THERMODYNAMIC-LIMIT-20260730.md).
 
 The bars below are communication estimates for humans, not theorem
 probabilities.  The formal record remains the compiler, `oracle_check.lean`,
@@ -203,8 +216,9 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 ### Latest movement
 
 The latest 2026-07-30 source checkpoint did not change the Clay boundary.  It
-adds a finite-kernel Perron theorem and preserves the earlier combinatorial and
-RG interfaces while keeping the analytic frontier explicit:
+adds the complete local Gibbs thermodynamic-limit campaign and preserves the
+earlier combinatorial and RG interfaces while keeping the analytic frontier
+explicit:
 
 * `YangMills/OS/PerronKernel.lean` proves existence, positive uniqueness,
   geometric simplicity, normalization, and the spectral-radius statement for
@@ -243,10 +257,10 @@ RG interfaces while keeping the analytic frontier explicit:
   cards to their source dictionary fields; the Eq229 Cammarota blocker remains
   explicit;
 * the area-law paper artifact is now tracked under `paper/area-law/`;
-* the latest recorded full core build is the 8430-job core build at measured
-  source checkpoint `9704b3f3` (on `main`), including the finite-kernel Perron
-  and strict-gap endpoints, the spatial Gibbs bridge, and the sharp
-  fluctuation-sector modulus/relative-decay endpoints.
+* the thermodynamic-limit branch was verified at 8460 jobs at source
+  checkpoint `0be45284`; after merging it with `main`, the combined core
+  was verified at 8463 jobs at `7460e035`, and its full merged oracle run was
+  recorded at `d6282a83`;
 
 The practical effect is that one more finite combinatorial/RG-budget lane is
 closed before the source estimates arrive.  The remaining work is still the
@@ -435,7 +449,7 @@ part of any claim this README makes.
 
 ```mermaid
 graph TD
-    subgraph core["YangMillsCore  (8430 jobs, oracle-clean)"]
+    subgraph core["YangMillsCore  (8463 jobs, oracle-clean)"]
         L0["L0_Lattice<br/>geometry, gauge fields, Wilson action,<br/>chain complex + N-ality area"]
         L1["L1_GibbsMeasure<br/>Gibbs measure, polymer representation,<br/>weighted gas, exp-activity expansion"]
         KP["KP layer<br/>Ursell, Penrose-BFS, sharp KP bound,<br/>Mayer inversion Ξ = exp(clusterSum),<br/>pinned clusters"]
@@ -464,7 +478,7 @@ Green: unconditional flagship. Amber: conditional on the named UV hypothesis.
 |---|---|---|
 | Toolchain | `elan` picks up [`lean-toolchain`](lean-toolchain) | `leanprover/lean4:v4.29.0-rc6` |
 | Mathlib cache | `lake exe cache get` | downloads the pinned-commit `.olean` cache |
-| Build the core | `lake build YangMillsCore` | `Build completed successfully (8430 jobs)` |
+| Build the core | `lake build YangMillsCore` | `Build completed successfully (8463 jobs)` |
 | Axiom oracle | `lake env lean oracle_check.lean` | every line ends `[propext, Classical.choice, Quot.sound]` |
 | Sorry scan | `python scripts/check_consistency.py` | `0` forbidden tokens |
 | Source citation lookup | `python scripts/source_citations.py show cmp116.eq231.p-bond-sum` | compact primary-source locator |

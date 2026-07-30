@@ -3,7 +3,8 @@
 > **STATUS STAMP (updated 2026-07-30; source checkpoint 2026-07-30).** This brief is background.  The current
 > repository state is substantially later: strong-coupling area laws and IR
 > clustering are closed; the latest verification-ledger checkpoint records
-> `YangMillsCore` green at **8430 jobs** at source checkpoint `9704b3f3`.
+> `YangMillsCore` green at **8463 jobs** at merged build checkpoint `7460e035`;
+> the full-oracle record is `d6282a83`.
 > The latest public-paper crosswalk is `docs/PUBLICATIONS.md`.  The live
 > frontier remains `hRpoly`, the
 > concrete Yang-Mills cluster-expansion-with-holes activity-decay estimate for
@@ -65,7 +66,7 @@ git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6   # if not present
 lake exe cache get        # fetch prebuilt Mathlib oleans (do this; building Mathlib from source takes hours)
-lake build YangMillsCore  # 8430 jobs at the latest recorded checkpoint; fast if cache is warm
+lake build YangMillsCore  # 8463 jobs at the latest recorded checkpoint; fast if cache is warm
 ```
 
 ---
