@@ -14,7 +14,13 @@ Paper 12 proved the reflected two-point form non-negative for **real** observabl
 of a **single** slice, at the two **ends** of a path.  The Osterwalder--Schrader
 axiom asks for more: a **complex** observable of the whole **past half-chain**,
 and the matrix `⟨Θ Fᵢ, Fⱼ⟩` positive semidefinite.  The gap was identified there
-as a CONSTRUCTION rather than a further inequality, and this module builds it.
+as a CONSTRUCTION rather than a further inequality.  This module builds the
+CANDIDATE half-chain forms and proves their positivity.  **Their identification
+with the reflected Gibbs sum over whole paths is NOT proved here** --- it is
+verified to `1e-12` by the pre-registered gates against brute-force enumeration,
+and until it is a theorem the forms below are candidates for the
+Osterwalder--Schrader pairing and not that pairing.  The finite-family Gram
+statement is proved; the assembly bijection is not.
 
 ## The objects
 
@@ -108,8 +114,9 @@ each half and by whatever the reflection plane contributes.  Through a bond that
 is one kernel factor; through a site it is the shared slice, whose weight must
 not be counted twice --- hence the division. -/
 
-/-- The Osterwalder--Schrader pairing of a half-chain observable against its
-reflection, through a BOND (`N = 2m+1`). -/
+/-- The CANDIDATE reflected form of a half-chain observable, through a BOND
+(`N = 2m+1`).  Called a candidate deliberately: that it equals the reflected
+Gibbs sum over whole paths is verified numerically and not proved. -/
 noncomputable def osPairingBond {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
     (m : ℕ) (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) : ℂ :=
   ∑ a : Fin (m + 1) → (Fin L → Fin 2), ∑ b : Fin (m + 1) → (Fin L → Fin 2),
@@ -117,9 +124,10 @@ noncomputable def osPairingBond {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : 
       ((gibbsWeight w β a * spatialKernel β (edgeOf a) (edgeOf b)
           * gibbsWeight w β b : ℝ) : ℂ)
 
-/-- The Osterwalder--Schrader pairing through a SITE (`N = 2m`).  Only pairs of
+/-- The CANDIDATE reflected form through a SITE (`N = 2m`).  Only pairs of
 halves agreeing on the shared slice come from a path, and that slice's weight is
-carried by both halves, so it is divided out once. -/
+carried by both halves, so it is divided out once.  Candidate for the same
+reason as the bond form. -/
 noncomputable def osPairingSite {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
     (m : ℕ) (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) : ℂ :=
   ∑ σ : Fin L → Fin 2, ∑ a ∈ halvesAt L m σ, ∑ b ∈ halvesAt L m σ,
@@ -284,8 +292,8 @@ theorem osPairingBond_eq {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (m
 
 /-- **THROUGH A BOND, EXACTLY FOR `β ≥ 0`.**  The pairing of a COMPLEX
 observable of the WHOLE past half-chain against its reflection is a non-negative
-real.  This is the Osterwalder--Schrader form, for this slice, at odd
-separation. -/
+real.  `β ≥ 0` is proved SUFFICIENT here; that it is also necessary is the
+separate witness below, and it is exhibited only from one site upwards. -/
 theorem osPairingBond_nonneg {L : ℕ} (w : (Fin L → Fin 2) → ℝ) {β : ℝ}
     (hβ : 0 ≤ β) (m : ℕ) (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
     ∃ r : ℝ, 0 ≤ r ∧ osPairingBond w β m F = (r : ℂ) := by
@@ -310,5 +318,148 @@ theorem osPairingBond_nonneg {L : ℕ} (w : (Fin L → Fin 2) → ℝ) {β : ℝ
        have h2 := hquad (fun σ => (z σ).im)
        linarith, ?_⟩
   rw [osPairingBond_eq, complexQuad_eq hsym z]
+
+/-! ## §6  The Gram statement
+
+Reflection positivity is a statement about a MATRIX over a finite family being
+positive semidefinite, not about one diagonal entry.  The cross form is defined,
+its factorisation proved, and the matrix assembled from it. -/
+
+/-- Reordering a four-fold sum.  Stated separately because it is the only step
+in the Gram assembly, and burying it inside a proof would hide that. -/
+theorem sum_comm4 {A B C D : Type*} [Fintype A] [Fintype B] [Fintype C]
+    [Fintype D] (f : A → B → C → D → ℂ) :
+    (∑ i, ∑ j, ∑ s, ∑ u, f i j s u) = ∑ s, ∑ u, ∑ i, ∑ j, f i j s u := by
+  have h1 : (∑ i, ∑ j, ∑ s, ∑ u, f i j s u)
+      = ∑ i, ∑ s, ∑ j, ∑ u, f i j s u :=
+    Finset.sum_congr rfl fun _ _ => Finset.sum_comm
+  have h2 : (∑ i, ∑ s, ∑ j, ∑ u, f i j s u)
+      = ∑ s, ∑ i, ∑ j, ∑ u, f i j s u := Finset.sum_comm
+  have h3 : (∑ s, ∑ i, ∑ j, ∑ u, f i j s u)
+      = ∑ s, ∑ i, ∑ u, ∑ j, f i j s u :=
+    Finset.sum_congr rfl fun _ _ =>
+      Finset.sum_congr rfl fun _ _ => Finset.sum_comm
+  have h4 : (∑ s, ∑ i, ∑ u, ∑ j, f i j s u)
+      = ∑ s, ∑ u, ∑ i, ∑ j, f i j s u :=
+    Finset.sum_congr rfl fun _ _ => Finset.sum_comm
+  rw [h1, h2, h3, h4]
+
+/-- The CROSS form through a bond: one observable against the reflection of
+another.  Its diagonal is the form of §2. -/
+noncomputable def osPairingBondCross {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
+    (m : ℕ) (F G : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) : ℂ :=
+  ∑ a : Fin (m + 1) → (Fin L → Fin 2), ∑ b : Fin (m + 1) → (Fin L → Fin 2),
+    (starRingEnd ℂ) (F a) * G b *
+      ((gibbsWeight w β a * spatialKernel β (edgeOf a) (edgeOf b)
+          * gibbsWeight w β b : ℝ) : ℂ)
+
+/-- The diagonal of the cross form is the form itself. -/
+theorem osPairingBondCross_self {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (m : ℕ)
+    (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    osPairingBondCross w β m F F = osPairingBond w β m F := rfl
+
+/-- The collapse of a linear combination is the combination of the collapses. -/
+theorem collapse_sum {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (m : ℕ)
+    {ι : Type*} [Fintype ι] (c : ι → ℂ)
+    (F : ι → (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) (σ : Fin L → Fin 2) :
+    collapse w β m (fun a => ∑ i, c i * F i a) σ
+      = ∑ i, c i * collapse w β m (F i) σ := by
+  unfold collapse
+  simp only [Finset.mul_sum]
+  rw [Finset.sum_comm]
+  exact Finset.sum_congr rfl fun i _ =>
+    Finset.sum_congr rfl fun a _ => by ring
+
+/-- The cross form factors through the collapse, exactly as the diagonal one
+does. -/
+theorem osPairingBondCross_eq {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (m : ℕ)
+    (F G : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    osPairingBondCross w β m F G
+      = ∑ σ : Fin L → Fin 2, ∑ τ : Fin L → Fin 2,
+          (starRingEnd ℂ) (collapse w β m F σ)
+            * ((spatialKernel β σ τ : ℝ) : ℂ) * collapse w β m G τ := by
+  have hinner : ∀ a : Fin (m + 1) → (Fin L → Fin 2),
+      (∑ b : Fin (m + 1) → (Fin L → Fin 2), (starRingEnd ℂ) (F a) * G b *
+          ((gibbsWeight w β a * spatialKernel β (edgeOf a) (edgeOf b)
+              * gibbsWeight w β b : ℝ) : ℂ))
+        = ∑ τ : Fin L → Fin 2,
+            (starRingEnd ℂ) ((gibbsWeight w β a : ℂ) * F a)
+              * ((spatialKernel β (edgeOf a) τ : ℝ) : ℂ)
+              * collapse w β m G τ := by
+    intro a
+    rw [← sum_halves_by_edge (m := m)
+          (f := fun b => (starRingEnd ℂ) (F a) * G b *
+            ((gibbsWeight w β a * spatialKernel β (edgeOf a) (edgeOf b)
+                * gibbsWeight w β b : ℝ) : ℂ))]
+    refine Finset.sum_congr rfl fun τ _ => ?_
+    unfold collapse
+    rw [Finset.mul_sum]
+    refine Finset.sum_congr rfl fun b hb => ?_
+    have hbτ : edgeOf b = τ := (Finset.mem_filter.mp hb).2
+    rw [hbτ]
+    simp only [map_mul, Complex.conj_ofReal]
+    push_cast
+    ring
+  unfold osPairingBondCross
+  rw [Finset.sum_congr rfl fun a _ => hinner a]
+  rw [← sum_halves_by_edge (m := m)
+        (f := fun a => ∑ τ : Fin L → Fin 2,
+          (starRingEnd ℂ) ((gibbsWeight w β a : ℂ) * F a)
+            * ((spatialKernel β (edgeOf a) τ : ℝ) : ℂ) * collapse w β m G τ)]
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  rw [Finset.sum_comm]
+  refine Finset.sum_congr rfl fun τ _ => ?_
+  have hedge : ∀ a ∈ halvesAt L m σ,
+      (starRingEnd ℂ) ((gibbsWeight w β a : ℂ) * F a)
+          * ((spatialKernel β (edgeOf a) τ : ℝ) : ℂ) * collapse w β m G τ
+        = (starRingEnd ℂ) ((gibbsWeight w β a : ℂ) * F a)
+            * (((spatialKernel β σ τ : ℝ) : ℂ) * collapse w β m G τ) := by
+    intro a ha
+    rw [(Finset.mem_filter.mp ha).2]
+    ring
+  rw [Finset.sum_congr rfl hedge, ← Finset.sum_mul, ← map_sum]
+  unfold collapse
+  ring
+
+/-- **THE GRAM MATRIX.**  The finite-family statement, which is the shape the
+axiom actually has.  It equals the form of the combined observable, so
+positivity transports to it rather than being re-proved. -/
+theorem osPairingBond_gram {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (m : ℕ)
+    {ι : Type*} [Fintype ι] (c : ι → ℂ)
+    (F : ι → (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    (∑ i, ∑ j, (starRingEnd ℂ) (c i) * c j * osPairingBondCross w β m (F i) (F j))
+      = osPairingBond w β m (fun a => ∑ i, c i * F i a) := by
+  have hL : ∀ i j, (starRingEnd ℂ) (c i) * c j * osPairingBondCross w β m (F i) (F j)
+      = ∑ σ : Fin L → Fin 2, ∑ τ : Fin L → Fin 2,
+          ((starRingEnd ℂ) (c i) * (starRingEnd ℂ) (collapse w β m (F i) σ))
+            * ((spatialKernel β σ τ : ℝ) : ℂ) * (c j * collapse w β m (F j) τ) := by
+    intro i j
+    rw [osPairingBondCross_eq, Finset.mul_sum]
+    refine Finset.sum_congr rfl fun σ _ => ?_
+    rw [Finset.mul_sum]
+    exact Finset.sum_congr rfl fun τ _ => by ring
+  rw [Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => hL i j]
+  rw [sum_comm4]
+  rw [osPairingBond_eq]
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  refine Finset.sum_congr rfl fun τ _ => ?_
+  rw [collapse_sum, collapse_sum, map_sum, Finset.sum_mul, Finset.sum_mul]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  rw [Finset.mul_sum]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  simp only [map_mul]
+  try ring
+
+/-- **THE AXIOM SHAPE, for `β ≥ 0`.**  For every finite family of complex
+observables of the whole past half-chain, and every complex coefficients, the
+Gram matrix of the bond form is positive semidefinite. -/
+theorem osPairingBond_gram_nonneg {L : ℕ} (w : (Fin L → Fin 2) → ℝ) {β : ℝ}
+    (hβ : 0 ≤ β) (m : ℕ) {ι : Type*} [Fintype ι] (c : ι → ℂ)
+    (F : ι → (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    ∃ r : ℝ, 0 ≤ r ∧
+      (∑ i, ∑ j, (starRingEnd ℂ) (c i) * c j
+        * osPairingBondCross w β m (F i) (F j)) = (r : ℂ) := by
+  rw [osPairingBond_gram]
+  exact osPairingBond_nonneg w hβ m _
 
 end YangMills.OS
