@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "lane": "CONT-C0",
+  "audit_base_sha": "7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a",
+  "producer_ref": null,
+  "producer_sha": null,
+  "pr_url": null,
+  "artifact_paths": [],
+  "regulator_family": {},
+  "tightness_argument": "",
+  "uniqueness_argument": "",
+  "nontriviality_test": "",
+  "core_integration": {
+    "status": "pending",
+    "baseline_sha": "7460e035",
+    "baseline_jobs": 8463,
+    "observed_jobs": null,
+    "command_transcript": null
+  },
+  "checks": [
+    {
+      "id": "CONT-C0-1-REGULATORS",
+      "criterion": "The family specifies a, physical volume, boundary conditions, bare and renormalised parameters, and observables.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-1-LIMIT-ORDER",
+      "criterion": "The directed or joint order of a, volume, and other regulator limits is literal and compatible with the theorem proved.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-2-NONARBITRARY",
+      "criterion": "The candidate is forced by convergence of the regulated family, not selected arbitrarily, postulated, or defined to equal the desired answer.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-2-NONCIRCULAR",
+      "criterion": "No hypothesis is definitionally or logically equivalent to convergence to the advertised candidate.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-3-TOPOLOGY",
+      "criterion": "The topology and sigma-algebra support the exact fields, distributions, or observables claimed in the limit.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-3-TIGHTNESS",
+      "criterion": "Tightness/precompactness or a stronger direct construction is proved uniformly in every regulator removed at this stage.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-3-SUBSEQUENCE",
+      "criterion": "Subsequence existence is not described as convergence of the full family.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-3-UNIQUENESS",
+      "criterion": "Uniqueness or independence of subsequence is proved before full-family convergence is credited.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-4-SCALE",
+      "criterion": "A renormalised physical scale is defined and survives the limit; fixed-lattice units are not silently retained.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-4-RENORMALISATION",
+      "criterion": "Counterterms and parameter tuning are explicit functions of the regulators and are proved sufficient for the claimed convergence.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-4-NONTRIVIALITY",
+      "criterion": "A separating observable or cumulant excludes zero, Gaussian/free, ultralocal, and constant limiting theories as appropriate.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C0-HOUSE-PROSE",
+      "criterion": "Prose and headlines match literal declarations and stated hypotheses.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No producer module or paper."]
+    },
+    {
+      "id": "CONT-C0-HOUSE-CORE",
+      "criterion": "If integrated into YangMillsCore, canonical build is green, oracle is clean, consistency passes, and the job count exceeds 8463.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No integrated producer module or clean-checkout transcript."]
+    }
+  ]
+}
