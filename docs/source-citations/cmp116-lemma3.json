@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "cmp116-lemma3",
-  "updated": "2026-06-28",
+  "updated": "2026-07-30",
   "sources": {
     "cmp116": {
       "short": "Balaban CMP116",
@@ -160,14 +160,20 @@
       "key": "cmp116.lemma3.window.2.14-2.38",
       "source_id": "cmp116",
       "locator": {
-        "printed_pages": "15-20",
-        "pdf_pages": "15-20",
-        "equations": ["2.14", "2.26", "2.27", "2.29", "2.31", "2.32", "2.37", "2.38"],
+        "printed_pages": "15-21",
+        "pdf_pages": "15-21",
+        "equations": ["2.14", "2.26", "2.27", "2.29", "2.31", "2.32", "2.37", "2.38", "2.39", "2.40", "2.41"],
         "local_text": "cmp116-pages-15-20.txt lines 1-334",
-        "renders": ["render_source_18", "render_source_19", "render_source_20"]
+        "renders": ["render_source_18", "render_source_19", "render_source_20", "render_source_21"]
       },
-      "status": "ocr_corrupted",
-      "summary": "Main resummation window for the activity H(Z), ending in Lemma 3 and the final exponential activity estimate.",
+      "status": "visual_confirmed",
+      "summary": "Main resummation window for H(Z). Direct inspection of the rendered primary PDF confirms the Lemma 3 endpoint constants on page 20 and the post-Lemma-3 delta choice on page 21; the preceding termwise source-to-Lean dictionary remains open.",
+      "extracted_claims": [
+        "Rendered primary PDF page 20 gives C3 = 2 (L+2)^4 O(1)^2 E0 C1 alpha4^-1 alpha6^-1 M^q exp(C2 kappa1).",
+        "Rendered primary PDF page 20 gives |H(Z)| <= C3 epsilon1 exp(-(1-8 delta)(L/2) kappa d_{k+1}(Z)) in Eq. (2.38).",
+        "Rendered primary PDF page 21 fixes (1-10 delta)(L/2)=1, equivalently delta=(1/10)(1-2/L), and uses O(1) C3 epsilon1 <= E0/2.",
+        "The earlier OCR reading alpha1^-1 alphaL^-1 and the OCR parsing of (L/2) as a square-root factor are rejected."
+      ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",
         "CMP116Eq231PBondBoundary",
@@ -176,10 +182,11 @@
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [
+        "Exact visual source anchor for the confirmed C3 formula, Eq. (2.38) endpoint rate, and post-Lemma-3 delta choice.",
         "Navigation to the exact source region for the remaining Lemma 3 boundary discharges."
       ],
       "do_not_use_for": [
-        "Do not cite the OCR text as exact formula data.",
+        "Do not cite the OCR text as exact formula data outside the visually confirmed endpoint claims listed here.",
         "Do not use this broad window as a single monolithic Lean hypothesis."
       ],
       "open_questions": [
@@ -778,7 +785,7 @@
         "The source assumes (LM)^4*alpha0, (LM)^4*alpha1, (LM)^4*alpha4, and (LM)^4*gamma2 are bounded by an M-independent constant, for example by 1.",
         "Under those bounds, O(1)*(LM)^4*alpha5 + exp(-(1/2)*(kappa1 - 1)) is bounded by an absolute constant.",
         "Balaban then uses the factor exp(-(delta/2)*L*kappa*d_{k+1}(Z)) and Eq. (2.30) to bound the remaining exponentials by 1, leaves one factor 2*(L+2)^4*O(1)*epsilon2, and estimates the remaining factors by 1.",
-        "The visual definition of the final Lemma-3 constant is C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1), followed by Lemma 3's |H(Z)| <= C3*epsilon1*exp(-((1 - 8*delta)/2)*L*kappa*d_{k+1}(Z))."
+        "The visual definition of the final Lemma-3 constant is C3 = 2*(L+2)^4*O(1)^2*E0*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1), followed by Lemma 3's |H(Z)| <= C3*epsilon1*exp(-((1 - 8*delta)/2)*L*kappa*d_{k+1}(Z))."
       ],
       "lean_targets": [
         "CMP116Lemma3Parameters",
@@ -821,6 +828,10 @@
       },
       "status": "visual_confirmed",
       "summary": "Final Lemma 3 activity estimate for H(Z), after all restrictions and resummations.",
+      "extracted_claims": [
+        "Rendered primary PDF page 20 gives |H(Z)| <= C3 epsilon1 exp(-(1-8 delta)(L/2) kappa d_{k+1}(Z)).",
+        "The factor is multiplication by L/2, not the square-root parsing found in the corrupted OCR."
+      ],
       "lean_targets": [
         "CMP116Lemma3ActivityEstimateScaleFamily",
         "BalabanCMP116Lemma3SourceAssumptions",
@@ -833,7 +844,6 @@
         "Do not use (2.38) to pretend the upstream Eq. (2.31) or post-P source boundaries have been proved separately."
       ],
       "open_questions": [
-        "Exact exponent convention: OCR and existing notes differ on visible half-power/one-half formatting.",
         "Full restriction list preceding Lemma 3."
       ]
     },
@@ -849,6 +859,10 @@
       },
       "status": "visual_confirmed",
       "summary": "Post-Lemma-3 insertion of the H(Z) bound into the effective-action estimate.",
+      "extracted_claims": [
+        "Rendered primary PDF page 21 gives the effective-action decay rate (1-10 delta)(L/2) kappa.",
+        "The source fixes (1-10 delta)(L/2)=1, equivalently delta=(1/10)(1-2/L), and imposes O(1) C3 epsilon1 <= E0/2."
+      ],
       "lean_targets": [
         "post_lemma3_effective_action_consumer",
         "docs/BALABAN-SOURCE-BOUNDS.md B5d"

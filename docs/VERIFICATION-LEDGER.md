@@ -12877,10 +12877,10 @@ estimate
 
 ```
 |E^(k+1)(X)| <= O(1) C_3 epsilon_1
-  * exp (-(1 - 10 delta)^(1/2) L kappa d_{k+1}(X)).
+  * exp (-(1 - 10 delta) * (1/2) * L * kappa * d_{k+1}(X)).
 ```
 
-The following paragraphs fix `(1 - 10 delta)^(1/2) L = 1`, assume
+The following paragraphs fix `(1 - 10 delta) * (1/2) * L = 1`, assume
 `O(1) C_3 epsilon_1 <= E_0/2`, and handle the extra
 `[log Z^(k)(U_{k+1}) - log Z^(k)(1)]` normalization term by a separate
 generalized random-walk expansion with `kappa` replaced by `delta_0 M`.
@@ -15803,7 +15803,7 @@ This checkpoint upgrades two CMP116 Lemma-3 citation entries from
   the boundedness assumptions on `(LM)^4*alpha0`, `(LM)^4*alpha1`,
   `(LM)^4*alpha4`, `(LM)^4*gamma2`, the resulting absolute-constant
   majorization, and the displayed final
-  `C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1)`
+  `C3 = 2*(L+2)^4*O(1)^2*E0*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1)`
   shape feeding Lemma 3 / Eq. (2.38).
 
 The extraction also records the source-design conclusion already reflected in

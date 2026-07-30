@@ -18,7 +18,7 @@
       "exactness": "normalized_formula",
       "confidence": "visual",
       "statement": "Visual normalized transcription of C3.",
-      "formula_ascii": "C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)",
+      "formula_ascii": "C3 = 2*(L+2)^4*O(1)^2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)",
       "formula_latex": null,
       "conclusion": null,
       "source_verified": true,

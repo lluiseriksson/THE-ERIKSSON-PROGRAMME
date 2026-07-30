@@ -6,12 +6,12 @@
       "citation_key": "cmp116.lemma3.window.2.14-2.38",
       "source_id": "cmp116",
       "short": "Balaban CMP116",
-      "status": "ocr_corrupted",
-      "summary": "Main resummation window for H(Z), retained as navigation only until each formula is extracted separately.",
-      "printed_pages": "15-20",
-      "pdf_pages": "15-20",
+      "status": "visual_confirmed",
+      "summary": "Direct inspection of the rendered primary PDF confirms the Lemma 3 endpoint on page 20: C3 = 2 (L+2)^4 O(1)^2 E0 C1 alpha4^-1 alpha6^-1 M^q exp(C2 kappa1), and (2.38) has rate (1-8 delta)(L/2)kappa. Page 21 fixes (1-10 delta)(L/2)=1, hence delta=(1/10)(1-2/L). The earlier OCR readings alpha1^-1 alphaL^-1 and a square-root factor are rejected. The preceding part of the window still requires termwise extraction and a source-to-Lean dictionary.",
+      "printed_pages": "15-21",
+      "pdf_pages": "15-21",
       "questions": [
-        "Exact D/P/Z0/Z0' dictionary and full constant hierarchy."
+        "Exact D/P/Z0/Z0' dictionary and the remaining termwise constant hierarchy before the visually confirmed Lemma 3 endpoint."
       ]
     },
     {

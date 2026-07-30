@@ -333,15 +333,15 @@
         {
           "id": "eq237.c3.visual-shape",
           "statement": "Operational C3 visual shape from the CMP116 constants region.",
-          "ascii": "C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)",
-          "latex": "C_3=2(L+2)^4O(1)\\,2E_0C_1\\alpha_4^{-1}\\alpha_6^{-1}M^q e^{C_2\\kappa_1}",
+          "ascii": "C3 = 2*(L+2)^4*O(1)^2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)",
+          "latex": "C_3=2(L+2)^4O(1)^2E_0C_1\\alpha_4^{-1}\\alpha_6^{-1}M^q e^{C_2\\kappa_1}",
           "exactness": "normalized_formula",
           "confidence": "cross_checked",
           "assumptions": [
             "Rendered page must verify exact placement of constants and O(1) factors."
           ],
           "conclusion": "Feeds CMP116Lemma3Parameters and Eq. (2.37) amplitude majorization.",
-          "source_verified": false
+          "source_verified": true
         }
       ],
       "lean_targets": [

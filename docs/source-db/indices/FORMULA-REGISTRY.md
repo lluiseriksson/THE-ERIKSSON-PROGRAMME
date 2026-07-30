@@ -6,7 +6,7 @@ Total formulas: **66**. Source-verified records: **57**. Unverified/inferred rou
 
 | Formula id | Source | Status | Equations | Verified | Exactness | ASCII |
 |---|---:|---|---|---:|---|---|
-| `cmp116.c3.visual` | Balaban CMP116 | `visual_confirmed` | 2.37, 2.38 | yes | normalized_formula | `C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)` |
+| `cmp116.c3.visual` | Balaban CMP116 | `visual_confirmed` | 2.37, 2.38 | yes | normalized_formula | `C3 = 2*(L+2)^4*O(1)^2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)` |
 | `cmp116.eq229.main` | Balaban CMP116 | `visual_confirmed` | 2.27, 2.28, 2.29, 2.30 | yes | normalized_formula | `sum_D prod_{Y in D} alpha6 * exp(-delta*kappa*d_k(Y)) <= 1` |
 | `cmp116.eq230.metric` | Balaban CMP116 | `visual_confirmed` | 2.27, 2.28, 2.29, 2.30 | yes | normalized_formula | `(3*2^3)^(-1)*M^(-4)*\|Y\| <= d_k(Y) <= M^(-4)*\|Y\| - 1` |
 | `cmp116.eq231.rho` | Balaban CMP116 | `visual_confirmed` | 2.31 | yes | normalized_formula | `rho = gamma2*epsilon1^2/(20*gk^2)` |
