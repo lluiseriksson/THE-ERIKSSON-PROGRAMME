@@ -29010,3 +29010,30 @@ Build completed successfully (8463 jobs).
 Thus the 8463 count applies to the tree containing the complete
 thermodynamic-limit campaign and both spatial-reflection correction rounds,
 not to either branch in isolation.
+
+## Addendum 565 (2026-07-30, **full oracle on the published merged tree**)
+
+The remaining post-merge verification debt is discharged at published
+checkpoint `f0720ba7`.  With no concurrent Lean/Lake process, the pinned
+toolchain command
+
+```text
+lake env lean oracle_check.lean
+```
+
+ran to completion in 1575.8 seconds, produced 5083 output lines, and
+terminated `exit 0`.  The final merged block covers all appended
+thermodynamic common-window endpoints, the complete integer-translation
+state, and the PAPER 12 v1.1/v1.2 spatial-reflection endpoints; every one of
+those declarations printed exactly
+
+```text
+[propext, Classical.choice, Quot.sound]
+```
+
+The pre-existing oracle body had already been machine-audited on the parent
+checkpoint as standard or axiom-free.  This final whole-file run verifies
+that the additive conflict resolution is syntactically and semantically
+valid on the published merged tree.  Together with the canonical
+`Build completed successfully (8463 jobs).` line, the merge now satisfies the
+repository's root-build and headline-oracle checkpoint standard.

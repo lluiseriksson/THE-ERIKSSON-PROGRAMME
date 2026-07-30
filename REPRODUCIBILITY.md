@@ -88,6 +88,14 @@ lake env lean <scratch>.lean
 The standing oracle script is `oracle_check.lean` (covers the headline
 results).  Run it with `lake env lean oracle_check.lean`.
 
+The complete merged script was run on published `main` checkpoint
+`f0720ba7` after the final 8463-job build.  The command terminated `exit 0`
+after 1575.8 seconds and produced 5083 output lines.  The appended
+thermodynamic-limit, integer-translation, and spatial-reflection endpoints
+each reported exactly `[propext, Classical.choice, Quot.sound]`; the
+pre-existing oracle body retained its previously audited standard or
+axiom-free outputs.
+
 For the lightweight CI-style source scan, run:
 
 ```sh
