@@ -48,7 +48,7 @@ This module supplies it, and spends the result on both debts at once.
   state space has two distinct points, some nonzero fluctuation observable
   attains it.  The proof splits at `specGap = 0`, where the maximising index
   need not supply a non-Perron eigenvector.
-* `specGap_isGreatest` — the same, said about an object: the set of Rayleigh
+* `specGap_isGreatest` — the same, said about an object: the set of norm
   ratios on the fluctuation sector has a greatest element, equal to `specGap`.
 
 ## The one step that does not come from the inequalities
@@ -70,7 +70,7 @@ false claim about what is proved does not.
 
 The same held, until §11, for the sharpness of `specGap`.  It no longer does:
 the bound, its attainment, and the `IsGreatest` statement about the set of
-Rayleigh ratios are all proved.  What is still not done is a `Submodule` /
+norm ratios are all proved.  What is still not done is a `Submodule` /
 `ContinuousLinearMap` / `‖·‖` interface for the restricted operator; that would
 be a convenience for later reuse, not additional content, and this sentence
 says which of the two we did.

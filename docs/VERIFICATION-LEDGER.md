@@ -27939,3 +27939,46 @@ all 46 in the oracle list.  `check_module_prose.py`: OS lane 18 modules,
 
 **Still not proved.**  Anything uniform in the extent --- unchanged, and the only
 substantive gap.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 545 (2026-07-30, **S block v1.8: the terminology fix of 544 said
+"throughout" and reached two places out of four**)
+
+**Context.**  Ninth external reading.  Two microresidues, both documentary, and
+one of them is a small lesson about how 544 was applied.
+
+**1. "Rayleigh ratios" survived in the module header.**  Addendum 544 recorded
+the substitution as done "throughout".  It was done in the paper and in the
+docstring of `specGap_isGreatest` --- the two places the term was *noticed* ---
+and not in the module header, which used it twice: once in the list of results
+and once in "What is NOT proved".  A term introduced in one place and repeated
+in four is not fixed by editing the two that were in view.  *A substitution
+claimed as global has to be executed by search, not by memory of where the word
+was written.*  Both remaining occurrences replaced by "norm ratios".
+
+**2. The abstract's threshold was visually ambiguous.**  It printed
+`specRatio^N0 < c^2/2(||u||^2+1)`, which on one line reads as
+`(c^2/2)(||u||^2+1)` --- the reciprocal of the intended bound.  The theorem
+section already used a display fraction; the abstract now does too.  No
+statement changed; the risk was that a reader would take the abstract at face
+value and find the paper self-contradictory.
+
+**3. And one the reading did not flag, from the same sweep.**  §1 of the paper
+still said "what we do not do is introduce that norm as a defined object and
+prove an equation about it".  Since 543 that is wrong: `specGap_isGreatest` IS a
+statement about an object.  What is not built is the
+`Submodule` + `ContinuousLinearMap` + `‖·‖` interface, and §1 now says that
+instead.  Found by re-reading the neighbourhood of the flagged text rather than
+only the flagged text --- the same discipline this addendum's own item 1 shows
+is necessary.
+
+**Measured.**  Core **8430 jobs** (unchanged; the only Lean change is a
+docstring).  Oracle **2672 commands -> 2672 answers** (2669 distinct, three
+known duplicates), 23 axiom-free + 2646 with axiom dependencies, zero `sorryAx`,
+zero nonstandard axioms, zero errors.  **46** declarations in the module,
+all 46 in the oracle list.  `check_module_prose.py`: OS lane 18 modules,
+0 findings.
+
+**Still not proved.**  Anything uniform in the extent --- unchanged, and the only
+substantive gap.  Reflection positivity untouched.  Clay ~0 pct.
