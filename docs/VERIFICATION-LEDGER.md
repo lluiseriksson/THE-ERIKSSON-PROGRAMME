@@ -29173,3 +29173,56 @@ formalises the endpoint form rather than the reflected algebra.  That ranking is
 recorded, not disputed: it is the same gap the paper's own scope section names,
 and closing it is the registered continuation (half-chain algebra, the
 reflection map, the complex sesquilinear form).
+
+## Addendum 568 (2026-07-30, **the retracted sentence was still alive in the one
+artefact that actually leaves the building**)
+
+**Context.**  The owner asked for the submission fields.  Reading the form
+before handing it over --- rather than after --- found that its abstract was a
+hand-typed parallel copy of the paper's, and that it still carried
+
+    "the same weight that destroys uniformity leaves positivity exactly where
+     it was"
+
+retracted from the paper in Addendum 561 (then 552) and purged from the module
+docstring in Addendum 563 (then 553).  **EIGHTH occurrence of "corrected in one
+place, not the other", and the worst placement of the eight:** every previous
+one was internal, and this one was queued to be published.  The form also still
+had the pre-v1.3 one-kernel `L=0` sentence and the pre-v1.4 opening without its
+hypotheses.
+
+**Why it survived three corrections.**  Because nothing derived it.  The paper's
+abstract and the form's abstract were two texts saying the same thing, and only
+one of them had a reader.  This is exactly the counter-row failure of Addendum
+566 in prose form: a text that no process derives from the source is not a copy,
+it is a fork, and forks drift silently in the direction of whoever last edited
+the other branch.
+
+**Fixed structurally.**  `scripts/form_from_tex.py` now DERIVES the form's
+abstract from `egin{abstract}` in the .tex --- de-TeXing the constructs that
+actually occur, and **failing loudly** on any math token it does not recognise
+rather than guessing --- and asserts the retracted sentence is absent before
+writing.  Retyping the abstract into the form is no longer a step that exists.
+
+**Also corrected in the form.**  The one-line summary repeated the SHAPE of the
+retracted claim ("the first result that survives the weight"); it now says
+UNCHANGED BY, which is the narrower true statement, and mentions the Gram
+matrix.  Section [9] said "reflection positivity" where the paper says ENDPOINT
+reflection positivity.
+
+**One claim CHECKED rather than assumed.**  While auditing the form, the
+pre-registration sentence --- "three active gates committed before any Lean was
+written" --- was verified against the commit order instead of memory, because it
+is the most load-bearing process claim the paper makes and B1/B2 were written
+after Gate B failed, which could easily have put them after the module:
+
+    judge v1 (Gates A, B)      4db0db2d   16:58
+    judge v2 (Gates B1, B2)    7dfc72ea   17:01
+    module SpatialReflection   c6a992a5   17:34
+
+`git merge-base --is-ancestor 7dfc72ea c6a992a5` succeeds.  The claim is TRUE.
+Recorded because a verified claim and an unverified one read identically on the
+page, and the difference only exists in the ledger.
+
+**No re-measurement.**  Nothing in the repository's Lean changed; the anchor and
+every printed counter stand.
