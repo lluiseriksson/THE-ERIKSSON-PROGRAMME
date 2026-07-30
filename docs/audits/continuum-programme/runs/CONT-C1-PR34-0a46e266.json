@@ -203,7 +203,7 @@
       "evidence": [
         {
           "kind": "theorem",
-          "locator": "eventually_not_kpRadiusAtUnit_of_tendsto is stated on an arbitrary filter and takes no thermodynamic or continuum measure limit."
+          "locator": "eventually_not_kpRadiusAtUnit_of_tendsto is stated on an arbitrary filter and takes no thermodynamic or continuum measure limit; it contains no a, volume, cutoff, regulator, or renormalisation object."
         }
       ]
     },
@@ -214,7 +214,7 @@
       "evidence": [
         {
           "kind": "theorem",
-          "locator": "The cap follows algebraically from KPRadiusAtUnit; Tendsto beta atTop is used only to route eventual failure, with no continuum-existence conclusion."
+          "locator": "The cap follows algebraically from KPRadiusAtUnit; Tendsto beta atTop is used only to route eventual failure, with no continuum-existence conclusion. The concrete hsmall premise is algebraically equivalent to kpBetaCap <= beta2D, so that theorem is a threshold corollary rather than an independent scale construction."
         }
       ]
     },
@@ -237,11 +237,21 @@
         {
           "kind": "file",
           "locator": "TightnessScaleNoGo.lean:45-46 and GibbsMeasure.lean:83-106 expose opposite signs for the advertised positive Wilson trajectory."
+        },
+        {
+          "kind": "theorem",
+          "locator": "The producer fixes t=epsilon=1 although the checked consumer permits arbitrary nonnegative values; a uniform exp(1) cap for the full family is available by monotonicity but absent."
+        },
+        {
+          "kind": "theorem",
+          "locator": "not_kpRadiusAtUnit_beta2D uses a declared two-dimensional coupling formula while quantifying over arbitrary d; its hsmall premise is exactly the cap-crossing threshold."
         }
       ],
       "witness": [
         "OBLIGATION-MATRIX.md calls beta(a)=1/(g2*a^2) the continuum trajectory consumed by the existing theorem, but the checked consumer's positive beta multiplies ReTr with a minus sign.",
-        "The Lean headline proves the atTop branch, not the physical atBot branch induced by the repository's hard-coded ReTr convention."
+        "The Lean headline proves the atTop branch, not the physical atBot branch induced by the repository's hard-coded ReTr convention.",
+        "No theorem at the audited head proves a cap uniform over all nonnegative t and epsilon.",
+        "The explicit beta2D theorem has arbitrary d in its type but no physical d-dimensional tuning law beyond the lane-local 2D formula."
       ]
     },
     {

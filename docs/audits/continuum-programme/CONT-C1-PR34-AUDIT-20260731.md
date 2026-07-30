@@ -46,6 +46,14 @@ All earlier checkouts are historical only. The dispositive static, canary,
 direct-Lean, target-build, and sign-witness checks were repeated at
 `0a46e266`.
 
+The later statement-level feedback written against `b06fb6b8` is adjudicated
+separately in `CONT-C1-PR34-FEEDBACK-ADJUDICATION-20260731.md`. Its original
+typed-drift blocker is closed at this head. Its surviving scope observations
+do not change the cap theorem, but narrow what may be advertised: the producer
+still proves only `t=epsilon=1`; its explicit `beta2D` wrapper is 2D despite
+quantifying over `d`; and its terminal `Tendsto` result contains no cutoff
+object.
+
 At the audited head the draft PR was open, with 16 changed files, 1,313
 additions, no deletions, and a successful “CI – Epistemic
 Honesty Enforcement” check.
@@ -124,6 +132,32 @@ Lines 215-226 prove eventual failure for a trajectory tending to `atTop`, with
 fixed positive `s`. This is sufficient for the producer's explicitly stated
 nonnegative convention. It is not a theorem about construction of a
 continuum measure, and the PR does not claim one.
+
+Almost all mathematical content is in `beta_lt_kpBetaCap`. The eventual
+theorem is the cap plus the definition of `Tendsto ... atTop`; it contains no
+`a`, volume, cutoff, regulator, or renormalisation object. The label
+“Structural no-go” should therefore be read as routing prose, not as an
+additional continuum theorem.
+
+The concrete `beta2D` corollary is similarly thin: since `g2*a^2>0`, its
+`hsmall` premise is equivalent to `kpBetaCap <= beta2D`. It is a valid explicit
+threshold, not a construction or an independent scale estimate.
+
+### E1-D — full `(t, epsilon)` family: BLOCKED, strengthening available
+
+The checked consumer allows arbitrary nonnegative `t` and `epsilon`; the
+producer fixes both to one. Monotonicity gives
+`exp(t+epsilon+1) >= exp(1)`, so a stronger cap with `exp(1)` would be uniform
+over the whole family. No such typed theorem occurs at the audited head.
+
+The unit-slice result remains **PASS**. A claim that no choice of
+`(t,epsilon)` can preserve the radius is **BLOCKED** until this monotonicity
+step is formalized.
+
+The explicit `beta2D=1/(g2*a^2)` convention is documented as 2D, whereas
+`not_kpRadiusAtUnit_beta2D` quantifies over arbitrary `d`. The Lean arithmetic
+is valid, but the physical reading is not dimension-generic. For `d!=2`, only
+the abstract divergent-trajectory theorem is currently available.
 
 ### U1 — physical Wilson sign and normalisation: FAIL with witness
 
