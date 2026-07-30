@@ -150,6 +150,36 @@ theorem cmp102Eq80CouplingScaledTotalTaylorResidual_eq_radial
     cmp102Eq80CouplingScaledTotalTaylorResidual]
   ring
 
+/-- On a `C²` potential, the proof-independent fixed Hessian has exactly the
+same diagonal quadratic form as the radial operator frozen at zero.  This is
+the bridge that permits a total source potential without choosing an
+arbitrary extension outside the physical contour. -/
+theorem inner_cmp102Eq80CouplingScaledFixedHessian_eq_fixedQuadratic
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (gk : ℝ) (f : CoupledField M Q Nc → ℝ)
+    (hf : ContDiff ℝ 2 f) (B : CoupledField M Q Nc) :
+    inner ℝ B (cmp102Eq80CouplingScaledFixedHessian gk f B) =
+      inner ℝ B (cmp102Eq80CouplingScaledFixedQuadratic gk f hf B) := by
+  let fscaled := cmp102Eq80CouplingScaledPotential gk f
+  have hfscaled : ContDiff ℝ 2 fscaled := by
+    simpa [fscaled, cmp102Eq80CouplingScaledPotential] using
+      hf.comp
+        (cmp109ConstrainedLinearFluctuationCLM
+          (M := M) (Q := Q) (Nc := Nc) gk).contDiff
+  calc
+    inner ℝ B (cmp102Eq80CouplingScaledFixedHessian gk f B) =
+        cmp116FDerivHessian fscaled 0 B B := by
+      rw [real_inner_comm]
+      exact inner_realBilinearRiesz
+        (cmp116FDerivHessian fscaled 0) B B
+    _ =
+        inner ℝ B (cmp102Eq80CouplingScaledFixedQuadratic gk f hf B) := by
+      simpa [fscaled, cmp102Eq80CouplingScaledFixedQuadratic] using
+        (inner_cmp116RadialTaylorOperator_zero
+          fscaled B B hfscaled).symm
+
 /-- Exact fixed-quadratic plus Taylor-residual split after the physical
 coupling substitution. -/
 theorem cmp102Eq80CouplingScaledPotential_eq_fixed_add_residual
@@ -185,6 +215,30 @@ theorem cmp102Eq80CouplingScaledPotential_eq_fixed_add_residual
     cmp102Eq80CouplingScaledTaylorResidual] using
       (cmp116RadialTaylorOperator_eq_fixed_add_residual_of_normalized
         fscaled B hfscaled hfscaled0 hdfscaled0)
+
+/-- Exact proof-independent Taylor split after the physical coupling
+substitution.  Both terms on the right are total definitions: no contour
+certificate, `if`-extension, or free residual is stored in the resulting
+potential. -/
+theorem cmp102Eq80CouplingScaledPotential_eq_fixedHessian_add_totalResidual
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (gk : ℝ) (f : CoupledField M Q Nc → ℝ)
+    (hf : ContDiff ℝ 2 f)
+    (hf0 : f 0 = 0) (hdf0 : fderiv ℝ f 0 = 0)
+    (B : CoupledField M Q Nc) :
+    cmp102Eq80CouplingScaledPotential gk f B =
+      (1 / 2 : ℝ) * inner ℝ B
+        (cmp102Eq80CouplingScaledFixedHessian gk f B) +
+      cmp102Eq80CouplingScaledTotalTaylorResidual gk f B := by
+  rw [
+    inner_cmp102Eq80CouplingScaledFixedHessian_eq_fixedQuadratic
+      gk f hf B,
+    cmp102Eq80CouplingScaledTotalTaylorResidual_eq_radial gk f hf B]
+  exact
+    cmp102Eq80CouplingScaledPotential_eq_fixed_add_residual
+      gk f hf hf0 hdf0 B
 
 end
 

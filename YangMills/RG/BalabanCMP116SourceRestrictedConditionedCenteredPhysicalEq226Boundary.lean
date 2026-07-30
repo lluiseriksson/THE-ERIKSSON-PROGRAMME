@@ -117,6 +117,10 @@ theorem
         conditionedCovariance
         (cmp116PhysicalEndomorphismRealMatrix root)
         (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
+    (hconditionedNondegenerate :
+      MatrixConditionedGaussianCovarianceLowerCertificate
+        conditionedCovariance
+        (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
     (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1)
     (hC1 : 0 < C1) (halpha4 : 0 < alpha4)
     (hC3 : 0 ≤ C3) (hC3upper : C3 ≤ E0 * C1)
@@ -179,6 +183,11 @@ theorem
     (h136 : ∀ sigma,
       CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
       ∀ b y,
+      (-1 : ℂ) ^ P.card *
+          cmp116SmallFieldCutoff Y0 threshold
+            (cmp116SourcePhysicalCoordinateCochain b) *
+          cmp116LargeFieldCutoff P threshold
+            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0 →
       |residual sigma
         (restrictGlobal C.spectatorSupport psi)
         (restrictGlobal C.fluctuationSupport phi) y
@@ -328,7 +337,9 @@ theorem
       hsourceRange hfiniteRange hc hmass hK hD
       hAhead hrho hrate hgeom Cert htri hDelta hDelta1
       hradius hradiusCapPhysical hseries hneumann hneumannTranspose
-      Y0 P psi phi alpha gamma hq0 hq1
+      Y0 P psi phi conditionedCovariance
+      (by simpa [Cphysical, quadratic] using hconditionedRoot)
+      hconditionedNondegenerate alpha gamma hq0 hq1
       domainMetric domainSupport
       (cmp116Eq220CenteredSourceResidualWeight
         (fun y => (domainMetric y : ℝ))
@@ -351,7 +362,8 @@ theorem
             hradius hradiusCap hseries hneumann hneumannTranspose
             total residual hsmooth kernelSupport domainMetric domainCard
             E0 epsilon1 C1 alpha4 C3 C2 kappa1 delta kappa rowSum threshold
-            P psi phi conditionedCovariance hconditionedRoot
+            Y0 P psi phi conditionedCovariance hconditionedRoot
+            hconditionedNondegenerate
             hE0 hepsilon1 hC1 halpha4 hC3 hC3upper hM hq hkappa1 hkappa
             hdomainDist
             (by

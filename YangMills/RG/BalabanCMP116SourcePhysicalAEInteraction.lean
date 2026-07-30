@@ -67,6 +67,72 @@ theorem ae_interactionExponent_le_withConditionedOuterCarrier
   simpa [withConditionedOuterCarrier, toLocalFiniteGaussianData, r2Matrix]
     using h
 
+/-- The conditioned outer-carrier transport preserves any pointwise support
+predicate on the Gaussian coordinate.  Instantiating `support` with the
+literal cutoff-factor predicate avoids embedding the entire analytic-data
+projection in this transport interface. -/
+theorem ae_interactionExponent_le_withConditionedOuterCarrier_of_support
+    {nDelta nY lieDim : ℕ} {Bond Site E : Type*}
+    {Psi Phi : Site → Type*}
+    [Fintype Bond] [DecidableEq Bond] [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (SOuter SInner : Finset (Bond × Fin lieDim))
+    (support : CMP116Eq214GaussianCoordinate Bond lieDim → Prop)
+    (P : Finset Bond)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (gamma alpha residual : ℝ)
+    (h :
+      ∀ᵐ b ∂matrixGaussianPi C.referenceRoot,
+        support b →
+        (C.toLocalFiniteGaussianData.interactionExponent
+            sigma tau psi phi b).re +
+          gamma / 2 * (∑ bond ∈ P, ‖C.bondField b bond‖ ^ 2) ≤
+          alpha / 2 * (∑ i ∈ SInner, b i ^ 2) + residual) :
+    ∀ᵐ b ∂matrixGaussianPi
+        (C.withConditionedOuterCarrier SOuter).referenceRoot,
+      support b →
+      ((C.withConditionedOuterCarrier SOuter).toLocalFiniteGaussianData.interactionExponent
+          sigma tau
+            (show RestrictedField
+                (C.withConditionedOuterCarrier SOuter).spectatorSupport Psi
+              from psi)
+            (show RestrictedField
+                (C.withConditionedOuterCarrier SOuter).fluctuationSupport Phi
+              from phi)
+            b).re +
+        gamma / 2 *
+          (∑ bond ∈ P,
+            ‖(C.withConditionedOuterCarrier SOuter).bondField b bond‖ ^ 2) ≤
+        alpha / 2 * (∑ i ∈ SInner, b i ^ 2) + residual := by
+  simpa [withConditionedOuterCarrier, toLocalFiniteGaussianData, r2Matrix]
+    using h
+
+@[simp]
+theorem cutoffFactor_withConditionedOuterCarrier
+    {nDelta nY lieDim : ℕ} {Bond Site E : Type*}
+    {Psi Phi : Site → Type*}
+    [Fintype Bond] [DecidableEq Bond] [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (S : Finset (Bond × Fin lieDim))
+    (Y0 P : Finset Bond)
+    (b : CMP116Eq214GaussianCoordinate Bond lieDim) :
+    (C.withConditionedOuterCarrier S).toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+        Y0 P b =
+      C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+        Y0 P b := by
+  change
+    (-1 : ℂ) ^ P.card *
+        cmp116SmallFieldCutoff Y0 C.threshold (C.bondField b) *
+        cmp116LargeFieldCutoff P C.threshold (C.bondField b) =
+      (-1 : ℂ) ^ P.card *
+        cmp116SmallFieldCutoff Y0 C.threshold (C.bondField b) *
+        cmp116LargeFieldCutoff P C.threshold (C.bondField b)
+  rfl
+
 /-- A direct potential estimate on the literal physical bond field is enough
 to produce the almost-everywhere `alpha5` interaction bound.
 

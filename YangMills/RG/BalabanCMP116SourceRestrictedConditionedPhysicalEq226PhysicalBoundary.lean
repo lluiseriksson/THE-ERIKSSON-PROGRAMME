@@ -120,6 +120,10 @@ theorem
         conditionedCovariance
         (cmp116PhysicalEndomorphismRealMatrix root)
         (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
+    (hconditionedNondegenerate :
+      MatrixConditionedGaussianCovarianceLowerCertificate
+        conditionedCovariance
+        (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
     (hrowSum : 0 ≤ rowSum)
     (hrow : ∀ target : PhysicalBond 4 (M * (2 * Q)),
       ∑ source : PhysicalBond 4 (M * (2 * Q)),
@@ -272,7 +276,9 @@ theorem
       hsourceRange hfiniteRange hc hmass hK hD
       hAhead hrho hrate hgeom Cert htri hDelta hDelta1
       hradius hradiusCapPhysical hseries hneumann hneumannTranspose
-      Y0 P psi phi alpha gamma hq0 hq1
+      Y0 P psi phi conditionedCovariance
+      (by simpa [Cphysical] using hconditionedRoot)
+      hconditionedNondegenerate alpha gamma hq0 hq1
       domainMetric domainSupport
       (fun Y =>
         cmp116Eq220ResidualDomainWeight alpha4 delta kappa
@@ -301,7 +307,9 @@ theorem
             hquadratic hremainder hpotentialRate hgamma hinteractionBudget
         dsimp only at hold ⊢
         intro sigma tau hsigma htau
-        exact hold sigma tau hsigma htau.toShifted)
+        filter_upwards [hold sigma tau hsigma htau.toShifted] with b hb
+        intro _
+        exact hb)
       (fun Y =>
         mul_nonneg halpha4.le (Real.exp_nonneg _))
       hne hsub hrootNonneg hroot hvolumeBudget

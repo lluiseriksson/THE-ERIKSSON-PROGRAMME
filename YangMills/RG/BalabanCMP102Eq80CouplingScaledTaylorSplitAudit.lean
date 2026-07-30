@@ -2,9 +2,15 @@ import YangMills.RG.BalabanCMP102Eq80CouplingScaledTaylorSplit
 
 #print axioms YangMills.RG.cmp102Eq80CouplingScaledFixedQuadratic
 #print axioms YangMills.RG.cmp102Eq80CouplingScaledTaylorResidual
+#print axioms YangMills.RG.cmp102Eq80CouplingScaledFixedHessian
+#print axioms YangMills.RG.cmp102Eq80CouplingScaledTotalTaylorResidual
 #print axioms
   YangMills.RG.hasFDerivAt_cmp102Eq80CouplingScaledPotential_zero
 #print axioms
   YangMills.RG.cmp102Eq80CouplingScaledPotential_eq_fixed_add_residual
 #print axioms
   YangMills.RG.cmp102Eq80CouplingScaledTotalTaylorResidual_eq_radial
+#print axioms
+  YangMills.RG.inner_cmp102Eq80CouplingScaledFixedHessian_eq_fixedQuadratic
+#print axioms
+  YangMills.RG.cmp102Eq80CouplingScaledPotential_eq_fixedHessian_add_totalResidual

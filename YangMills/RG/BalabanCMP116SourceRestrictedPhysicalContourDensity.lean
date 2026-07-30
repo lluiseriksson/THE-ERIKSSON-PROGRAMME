@@ -236,41 +236,13 @@ def withSourcePi4RestrictedComplexGaussianOfPhysicalContour
       hradius
       (by linarith)
   · intro d
-    by_cases hd : d ∈ contourCarrier
-    · exact
-        (norm_cmp116SourceRestrictedShiftedCoupling_sub_one_le
-          contourCarrier e C.deltaRadius z hz hd).trans
-            (hradiusCap (e.symm ⟨d, hd⟩))
-    · rw [norm_cmp116SourceRestrictedShiftedCoupling_sub_one_of_not_mem
-        contourCarrier e z hd]
-      exact hradius
+    exact
+      norm_cmp116SourceRestrictedShiftedCoupling_sub_one_le_global
+        contourCarrier e C.deltaRadius z hz hradius hradiusCap d
   · intro d
-    calc
-      ‖cmp116SourceRestrictedShiftedCoupling contourCarrier e z d‖
-          = ‖(cmp116SourceRestrictedShiftedCoupling
-              contourCarrier e z d - 1) + 1‖ := by
-              ring_nf
-      _ ≤ ‖cmp116SourceRestrictedShiftedCoupling
-              contourCarrier e z d - 1‖ + 1 := by
-            simpa using norm_add_le
-              (cmp116SourceRestrictedShiftedCoupling
-                contourCarrier e z d - 1)
-              (1 : ℂ)
-      _ ≤ radius + 1 := by
-            have hdev :
-                ‖cmp116SourceRestrictedShiftedCoupling
-                  contourCarrier e z d - 1‖ ≤
-                  radius := by
-              by_cases hd : d ∈ contourCarrier
-              · exact
-                  (norm_cmp116SourceRestrictedShiftedCoupling_sub_one_le
-                    contourCarrier e C.deltaRadius z hz hd).trans
-                      (hradiusCap (e.symm ⟨d, hd⟩))
-              · rw [norm_cmp116SourceRestrictedShiftedCoupling_sub_one_of_not_mem
-                  contourCarrier e z hd]
-                exact hradius
-            linarith
-      _ = 1 + radius := by ring
+    exact
+      norm_cmp116SourceRestrictedShiftedCoupling_le_one_add_global
+        contourCarrier e C.deltaRadius z hz hradius hradiusCap d
   · exact hseries
   · exact hneumann
 

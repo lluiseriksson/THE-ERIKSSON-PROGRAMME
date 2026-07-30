@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116PartialResidualAssembly
+
+#print axioms YangMills.RG.cmp116PartialResidualTotal
+#print axioms YangMills.RG.cmp116PartialResidual
+#print axioms YangMills.RG.cmp116Eq142PhysicalQuadraticCore_partialResidual
+#print axioms YangMills.RG.contDiff_cmp116Eq142PhysicalQuadraticCore_partialResidual
+#print axioms YangMills.RG.cmp116Eq136ResidualMajorant_add_E0
+#print axioms YangMills.RG.cmp116Eq136ResidualMajorant_mono_E0
+#print axioms YangMills.RG.abs_cmp116PartialResidual_le_eq136

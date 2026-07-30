@@ -102,7 +102,7 @@ theorem
     (domainMetric : Fin nY → ℕ) (domainCard : Fin nY → ℕ)
     (E0 epsilon1 C1 alpha4 C3 C2 kappa1 delta kappa rowSum threshold :
       ℝ)
-    (P : Finset (PhysicalBond 4 (M * (2 * Q))))
+    (Y0 P : Finset (PhysicalBond 4 (M * (2 * Q))))
     (psi : ∀ s, Psi s) (phi : ∀ s, Phi s)
     (conditionedCovariance :
       Matrix
@@ -112,6 +112,10 @@ theorem
       MatrixConditionedGaussianRootCertificate
         conditionedCovariance
         (cmp116PhysicalEndomorphismRealMatrix root)
+        (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
+    (hnondegenerate :
+      MatrixConditionedGaussianCovarianceLowerCertificate
+        conditionedCovariance
         (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
     (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1)
     (hC1 : 0 < C1) (halpha4 : 0 < alpha4)
@@ -180,6 +184,11 @@ theorem
     (h136 : ∀ sigma,
       CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
       ∀ b y,
+      (-1 : ℂ) ^ P.card *
+          cmp116SmallFieldCutoff Y0 threshold
+            (cmp116SourcePhysicalCoordinateCochain b) *
+          cmp116LargeFieldCutoff P threshold
+            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0 →
       |residual sigma
         (restrictGlobal C.spectatorSupport psi)
         (restrictGlobal C.fluctuationSupport phi) y
@@ -218,6 +227,8 @@ theorem
       CMP116Eq214ShiftedPolydisc nDelta Csource.deltaRadius sigma →
       CMP116Eq214CenteredPolydisc nY Csource.yRadius tau →
       ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
+        Csource.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+            Y0 P b ≠ 0 →
         (Csource.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
             sigma tau psi phi b).re +
           gamma / 2 *
@@ -292,11 +303,12 @@ theorem
       Dict Finset.univ total residual hsmooth kernelSupport
       (fun y => (domainMetric y : ℝ)) domainCard
       E0 epsilon1 C1 alpha4 C3 C2 kappa1 delta kappa rowSum threshold
-      Z0 P sigma tau
+      Y0 Z0 P sigma tau
       (restrictGlobal CrawBase.spectatorSupport psi)
       (restrictGlobal CrawBase.fluctuationSupport phi)
       conditionedCovariance
       (by simpa [CrawBase] using hroot)
+      hnondegenerate
       hE0 hepsilon1 hC1 halpha4 hC3 hC3upper hM hq hkappa1 hkappa
       (fun y _ => hdomainDist y) htauC hrow
       (fun y _ => hgeometry y)
@@ -305,8 +317,12 @@ theorem
       (fun b y _ => h136 sigma hsigmaC b y)
       hR2 hgamma hbudget
   have houter :=
-    Cpost.ae_interactionExponent_le_withConditionedOuterCarrier
-      SOuter SInner P sigma tau
+    Cpost.ae_interactionExponent_le_withConditionedOuterCarrier_of_support
+      SOuter SInner
+      (fun b =>
+        Cpost.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+          Y0 P b ≠ 0)
+      P sigma tau
       (restrictGlobal Cpost.spectatorSupport psi)
       (restrictGlobal Cpost.fluctuationSupport phi)
       gamma alpha
@@ -315,6 +331,15 @@ theorem
         E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4)
       (by simpa [Cpost, CrawBase, quadratic, SInner] using hinner)
   filter_upwards [houter] with b hb
+  intro hcutoff
+  have hcutoff' :
+      Cpost.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+          Y0 P b ≠ 0 := by
+    change
+      (Cpost.withConditionedOuterCarrier SOuter).toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+          Y0 P b ≠ 0
+      at hcutoff
+    simpa only [cutoffFactor_withConditionedOuterCarrier] using hcutoff
   have hprojection :
       -((b ⬝ᵥ Matrix.mulVec
           (-(alpha • cmp116Eq223CoordinateProjection SInner)) b) / 2) =
@@ -325,7 +350,7 @@ theorem
     simp only [smul_eq_mul]
     ring
   simpa [Csource, Cpost, CrawBase, quadratic, SInner, SOuter, hprojection]
-    using hb
+    using hb hcutoff'
 
 end CMP116Eq214PhysicalContourDensity
 

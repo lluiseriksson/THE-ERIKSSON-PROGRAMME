@@ -4,7 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq220CenteredSourcePotential
-import YangMills.RG.BalabanCMP116SourcePhysicalAEInteraction
+import YangMills.RG.BalabanCMP116SourcePhysicalCutoffInteraction
 
 /-!
 # Source-faithful AE interaction on centered source contours
@@ -123,6 +123,7 @@ theorem ae_interactionExponent_le_sourcePhysicalAlpha5_of_centeredSource
     (domainDist : Fin nY → ℝ) (domainCard : Fin nY → ℕ)
     (E0 epsilon1 C1 alpha4 C3 C2 kappa1 delta kappa rowSum threshold :
       ℝ)
+    (Y0 : Finset (PhysicalBond d (M * N')))
     (Z0 : Finset (FinBox d N'))
     (P : Finset (PhysicalBond d (M * N')))
     (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
@@ -134,6 +135,10 @@ theorem ae_interactionExponent_le_sourcePhysicalAlpha5_of_centeredSource
     (hroot :
       MatrixConditionedGaussianRootCertificate
         conditionedCovariance C.referenceRoot
+        (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
+    (hnondegenerate :
+      MatrixConditionedGaussianCovarianceLowerCertificate
+        conditionedCovariance
         (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
     (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1)
     (hC1 : 0 < C1) (halpha4 : 0 < alpha4)
@@ -188,6 +193,11 @@ theorem ae_interactionExponent_le_sourcePhysicalAlpha5_of_centeredSource
           cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
             (domainDist y) (domainCard y) * ‖v‖ * ‖w‖)
     (h136 : ∀ b y, y ∈ D →
+      (-1 : ℂ) ^ P.card *
+          cmp116SmallFieldCutoff Y0 threshold
+            (cmp116SourcePhysicalCoordinateCochain b) *
+          cmp116LargeFieldCutoff P threshold
+            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0 →
       |residual sigma psi phi y
         (physicalBondProjection
           (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
@@ -211,6 +221,8 @@ theorem ae_interactionExponent_le_sourcePhysicalAlpha5_of_centeredSource
       (C.withSourcePhysicalComplexTauPotential
         Dict D quadratic residual Z0).withSourcePhysicalBondField threshold
     ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
+      Csource.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+          Y0 P b ≠ 0 →
       (Csource.toLocalFiniteGaussianData.interactionExponent
           sigma tau psi phi b).re +
         gamma / 2 *
@@ -239,12 +251,15 @@ theorem ae_interactionExponent_le_sourcePhysicalAlpha5_of_centeredSource
       E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4
   have hpotential :
       ∀ᵐ b ∂matrixGaussianPi Cpotential.referenceRoot,
+        ((Cpotential.withSourcePhysicalBondField threshold).toLocalFiniteGaussianData
+          ).toFiniteGaussianData.toAnalyticData.cutoffFactor Y0 P b ≠ 0 →
         (Cpotential.potential sigma tau psi phi b).re ≤
           potentialRate / 2 *
               (∑ ba ∈ cmp116SourcePhysicalLocalizedCoordinates Dict Z0,
                 b ba ^ 2) +
             potentialResidual := by
     filter_upwards [] with b
+    intro hcutoff
     let B := physicalBondProjection S
       (cmp116SourcePhysicalCoordinateCochain b)
     have hsupportB : ∀ i, i ∉ S → B i = 0 := by
@@ -257,7 +272,10 @@ theorem ae_interactionExponent_le_sourcePhysicalAlpha5_of_centeredSource
         E0 epsilon1 C1 alpha4 C3 C2 kappa1 delta kappa M q rowSum
         hE0 hepsilon1 hC1 halpha4 hC3 hC3upper hM hq hkappa1 hkappa
         hdomainDist hcentered hrow hsupportB hgeometry
-        (hzeroB b) (h143 b) (h136 b)
+        (hzeroB b) (h143 b)
+        (fun y hy => h136 b y hy (by
+          simpa [Cpotential, CMP116Eq214AnalyticData.cutoffFactor] using
+            hcutoff))
     have henergy :
         (∑ bond ∈ S, ‖B bond‖ ^ 2) =
           ∑ ba ∈ cmp116SourcePhysicalLocalizedCoordinates Dict Z0,
@@ -277,9 +295,10 @@ theorem ae_interactionExponent_le_sourcePhysicalAlpha5_of_centeredSource
       cmp116SourcePhysicalComplexTauPotentialCoordinate,
       potentialRate, potentialResidual, S, B, henergy] using hp
   have hresult :=
-    Cpotential.ae_interactionExponent_le_sourcePhysicalAlpha5_of_potential
-      Dict Z0 P threshold sigma tau psi phi conditionedCovariance
+    Cpotential.ae_interactionExponent_le_sourcePhysicalAlpha5_of_potential_cutoffSupport
+      Dict Y0 Z0 P threshold sigma tau psi phi conditionedCovariance
       (by simpa [Cpotential] using hroot)
+      (by simpa [Cpotential] using hnondegenerate)
       hpotential
       (by simpa [Cpotential] using hR2)
       hgamma

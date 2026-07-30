@@ -4,7 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalOuterBoundary
-import YangMills.RG.BalabanCMP116Eq225ConditionedOuterTraceInteractionResidual
+import YangMills.RG.BalabanCMP116Eq225ConditionedOuterTraceInteractionCutoffSupport
 
 /-!
 # Residual-preserving conditioned physical outer boundary
@@ -83,6 +83,19 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
         K Delta Ahead rho rate radius (1 + radius) < 1)
     (Y0 P : Finset (PhysicalBond 4 (M * (2 * Q))))
     (psi : ∀ s, Psi s) (phi : ∀ s, Phi s)
+    (conditionedCovariance :
+      Matrix
+        (PhysicalGaugeCoordIndex 4 (M * (2 * Q)) Nc)
+        (PhysicalGaugeCoordIndex 4 (M * (2 * Q)) Nc) ℝ)
+    (hconditionedRoot :
+      MatrixConditionedGaussianRootCertificate
+        conditionedCovariance
+        (cmp116PhysicalEndomorphismRealMatrix root)
+        (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
+    (hnondegenerate :
+      MatrixConditionedGaussianCovarianceLowerCertificate
+        conditionedCovariance
+        (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
     (alpha gamma residual : ℝ)
     (halpha : 0 ≤ alpha)
     (hrootSmall :
@@ -127,6 +140,8 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
       CMP116Eq214ShiftedPolydisc nDelta Csource.deltaRadius sigma →
       CMP116Eq214CenteredPolydisc nY Csource.yRadius tau →
       ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
+      Csource.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+          Y0 P b ≠ 0 →
       (Csource.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
           sigma tau psi phi b).re +
         (gamma / 2) *
@@ -189,8 +204,10 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
       (cmp116SourcePi4PhysicalComplexR1TraceMultiplierBound
         K root hc hmass hK Z0 Delta
           Ahead rho rate radius (1 + radius))
-  apply Csource.nestedCauchyBoundaryBound_of_conditionedOuterTraceInteractionEnergy_cutoff_onShiftedCenteredPolydiscs
-    Y0 P psi phi SInner SOuter alpha sourceRate determinantBound gamma residual
+  apply Csource.nestedCauchyBoundaryBound_of_conditionedOuterTraceInteractionEnergy_cutoffSupport_onShiftedCenteredPolydiscs
+    Y0 P psi phi SInner SOuter conditionedCovariance
+    (by simpa [Csource, Craw] using hconditionedRoot)
+    hnondegenerate alpha sourceRate determinantBound gamma residual
     (fun sigma tau x =>
       Csource.r3RealSource sigma tau
         (restrictGlobal Csource.spectatorSupport psi)

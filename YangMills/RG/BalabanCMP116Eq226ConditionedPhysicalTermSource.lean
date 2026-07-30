@@ -43,7 +43,11 @@ private abbrev SourceEndomorphism (M Q Nc : ℕ)
 
 Every proof field is either a structural certificate, a printed source
 estimate ((1.43)/(1.36)), or an explicit scalar/rooted ledger.  There is no
-field equivalent to the final termwise estimate. -/
+field equivalent to the final termwise estimate.  The equation-(1.36)
+estimate is consumed only on the literal cutoff support; outside that support
+the analytic integrand vanishes identically.  The mandatory covariance-lower
+certificate prevents this almost-everywhere contract from being discharged
+by a degenerate conditioned Gaussian. -/
 structure CMP116Eq226ConditionedPhysicalTermSource
     {nDelta nY M Q Nc L lieDim : ℕ}
     [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
@@ -163,6 +167,10 @@ structure CMP116Eq226ConditionedPhysicalTermSource
     MatrixConditionedGaussianRootCertificate
       conditionedCovariance
       (cmp116PhysicalEndomorphismRealMatrix root)
+      (cmp116SourcePhysicalLocalizedCoordinates Dict Z0)
+  conditionedCovariance_nondegenerate :
+    MatrixConditionedGaussianCovarianceLowerCertificate
+      conditionedCovariance
       (cmp116SourcePhysicalLocalizedCoordinates Dict Z0)
   rowSum_nonneg : 0 ≤ rowSum
   exponential_row_bound : ∀ target : SourceBond M Q,
@@ -432,7 +440,8 @@ theorem norm_term_le_termWeight
       Y0 P psi phi S.alpha S.gamma S.qBound_nonneg S.qBound_lt_one
       S.domainMetric S.domainSupport S.gapScale S.gapCard S.rootBound
       S.volumeRate S.rowSum S.threshold S.potentialRate
-      S.conditionedCovariance S.conditionedRoot S.rowSum_nonneg
+      S.conditionedCovariance S.conditionedRoot
+      S.conditionedCovariance_nondegenerate S.rowSum_nonneg
       S.exponential_row_bound hquadratic
       (S.remainder_bound psi phi) S.potential_rate_bound
       S.interaction_budget S.deltaRadius_eq S.normalizedGap S.yRadius_eq

@@ -32,7 +32,9 @@ private abbrev CenteredSourceEndomorphism (M Q Nc : ℕ)
 
 /-- Physical source data for one centered conditioned equation-(2.14)
 summand.  The only analytic proof fields are literal source estimates,
-geometric support facts, and explicit scalar/rooted ledgers. -/
+geometric support facts, and explicit scalar/rooted ledgers.  Equation (1.36)
+is required on the literal cutoff support, which is the exact support of the
+integrand; covariance nondegeneracy remains a mandatory independent field. -/
 structure CMP116Eq226CenteredConditionedPhysicalTermSource
     {nDelta nY M Q Nc L lieDim : ℕ}
     [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
@@ -223,6 +225,11 @@ structure CMP116Eq226CenteredConditionedPhysicalTermSource
   eq136 : ∀ psi phi sigma,
     CMP116Eq214ShiftedPolydisc nDelta base.deltaRadius sigma →
     ∀ b y,
+      (-1 : ℂ) ^ P.card *
+          cmp116SmallFieldCutoff Y0 threshold
+            (cmp116SourcePhysicalCoordinateCochain b) *
+          cmp116LargeFieldCutoff P threshold
+            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0 →
       |residual sigma
         (restrictGlobal base.spectatorSupport psi)
         (restrictGlobal base.fluctuationSupport phi) y
@@ -407,6 +414,7 @@ theorem norm_term_le_termWeight
       S.delta S.kappa S.gk S.rowSum S.threshold S.alpha S.gamma
       S.gapScale S.gapCard S.qBound_nonneg S.qBound_lt_one
       S.rootBound S.volumeRate S.conditionedCovariance S.conditionedRoot
+      S.conditionedCovariance_nondegenerate
       S.E0_pos S.epsilon1_pos S.C1_pos S.alpha4_pos S.C3_nonneg S.C3_le
       S.one_le_M S.eight_le_q S.one_lt_kappa1 S.source_budget
       S.domainMetric_nonneg S.exponential_row_bound S.metric_budget

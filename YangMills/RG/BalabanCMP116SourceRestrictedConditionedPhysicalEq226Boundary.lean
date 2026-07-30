@@ -93,6 +93,19 @@ theorem
         K Delta Ahead rho rate radius (1 + radius) < 1)
     (Y0 P : Finset (PhysicalBond 4 (M * (2 * Q))))
     (psi : ∀ s, Psi s) (phi : ∀ s, Phi s)
+    (conditionedCovariance :
+      Matrix
+        (PhysicalGaugeCoordIndex 4 (M * (2 * Q)) Nc)
+        (PhysicalGaugeCoordIndex 4 (M * (2 * Q)) Nc) ℝ)
+    (hconditionedRoot :
+      MatrixConditionedGaussianRootCertificate
+        conditionedCovariance
+        (cmp116PhysicalEndomorphismRealMatrix root)
+        (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
+    (hnondegenerate :
+      MatrixConditionedGaussianCovarianceLowerCertificate
+        conditionedCovariance
+        (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
     (alpha gamma : ℝ)
     {qBound : ℝ} (hq0 : 0 ≤ qBound) (hq1 : qBound < 1)
     {E0 epsilon1 C1 alpha4 : ℝ} {q : ℕ}
@@ -171,6 +184,8 @@ theorem
         CMP116Eq214ShiftedPolydisc nDelta Csource.deltaRadius sigma →
         CMP116Eq214CenteredPolydisc nY Csource.yRadius tau →
         ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
+        Csource.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.cutoffFactor
+            Y0 P b ≠ 0 →
         (Csource.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
             sigma tau psi phi b).re +
           (gamma / 2) *
@@ -272,7 +287,8 @@ theorem
         hsourceRange hfiniteRange hc hmass hK hD
         hAhead hrho hrate hgeom Cert htri hDelta hDelta1
         hradius hradiusCap hseries hneumann hneumannTranspose
-        Y0 P psi phi alpha gamma
+        Y0 P psi phi conditionedCovariance hconditionedRoot hnondegenerate
+        alpha gamma
         (∑ Y : Fin nY, residualWeight Y)
         halpha hrootSmall hgamma hthresholdNonneg hq0 hq1 hOuterSmall
         (by

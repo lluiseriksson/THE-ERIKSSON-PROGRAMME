@@ -91,6 +91,57 @@ theorem norm_cmp116SourceRestrictedShiftedCoupling_sub_one_le
     carrier e z hd]
   exact hz (e.symm ⟨d, hd⟩)
 
+/-- A single global radius dominating all shifted coordinate radii controls
+the source weakening uniformly on the ambient cube.  Outside the contour
+carrier the deviation is exactly zero. -/
+theorem norm_cmp116SourceRestrictedShiftedCoupling_sub_one_le_global
+    {n : ℕ} {Δ : Type*} [DecidableEq Δ]
+    (carrier : Finset Δ) (e : Fin n ≃ ↥carrier)
+    (radius : Fin n → ℝ) (z : Fin n → ℂ)
+    (hz : CMP116Eq214ShiftedPolydisc n radius z)
+    {globalRadius : ℝ} (hglobal : 0 ≤ globalRadius)
+    (hcap : ∀ i, 1 + radius i ≤ globalRadius) (d : Δ) :
+    ‖cmp116SourceRestrictedShiftedCoupling carrier e z d - 1‖ ≤
+      globalRadius := by
+  by_cases hd : d ∈ carrier
+  · exact
+      (norm_cmp116SourceRestrictedShiftedCoupling_sub_one_le
+        carrier e radius z hz hd).trans
+        (hcap (e.symm ⟨d, hd⟩))
+  · rw [norm_cmp116SourceRestrictedShiftedCoupling_sub_one_of_not_mem
+      carrier e z hd]
+    exact hglobal
+
+/-- Uniform norm control for the restricted source weakening.  This is the
+`Rweak = 1 + globalRadius` cap consumed by the physical random-walk
+estimates. -/
+theorem norm_cmp116SourceRestrictedShiftedCoupling_le_one_add_global
+    {n : ℕ} {Δ : Type*} [DecidableEq Δ]
+    (carrier : Finset Δ) (e : Fin n ≃ ↥carrier)
+    (radius : Fin n → ℝ) (z : Fin n → ℂ)
+    (hz : CMP116Eq214ShiftedPolydisc n radius z)
+    {globalRadius : ℝ} (hglobal : 0 ≤ globalRadius)
+    (hcap : ∀ i, 1 + radius i ≤ globalRadius) (d : Δ) :
+    ‖cmp116SourceRestrictedShiftedCoupling carrier e z d‖ ≤
+      1 + globalRadius := by
+  calc
+    ‖cmp116SourceRestrictedShiftedCoupling carrier e z d‖ =
+        ‖(cmp116SourceRestrictedShiftedCoupling carrier e z d - 1) + 1‖ := by
+      ring_nf
+    _ ≤
+        ‖cmp116SourceRestrictedShiftedCoupling carrier e z d - 1‖ + 1 :=
+      by
+        simpa using
+          (norm_add_le
+            (cmp116SourceRestrictedShiftedCoupling carrier e z d - 1)
+            (1 : ℂ))
+    _ ≤ globalRadius + 1 := by
+      gcongr
+      exact
+        norm_cmp116SourceRestrictedShiftedCoupling_sub_one_le_global
+          carrier e radius z hz hglobal hcap d
+    _ = 1 + globalRadius := by ring
+
 /-- When the local contour carrier lies in the literal `sigma₀` partition,
 the distinguished `Pi⁴` collar remains exactly at full coupling. -/
 theorem cmp116SourceRestrictedShiftedCoupling_eq_one_of_not_mem_sigmaZero

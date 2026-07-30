@@ -102,6 +102,28 @@ noncomputable def cmp102Eq80SourcePi4IndexedDomainMetric
     (cmp102Eq80SourcePi4IndexedLocalizationDomain
       (M := M) anchor D i) : ℝ)
 
+/-- Natural-valued source `d_k(Y)` dictionary used by the terminal CMP116
+record.  Its real coercion is definitionally the printed metric above; no
+rounding or auxiliary enumeration is introduced. -/
+noncomputable def cmp102Eq80SourcePi4IndexedDomainMetricNat
+    {M Q : ℕ} [NeZero M] [NeZero Q] (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (i : Fin (CMP102Eq80SourcePi4DomainCount anchor D)) : ℕ :=
+  cmp116CubeEdgeTreeMetric
+    (cmp102Eq80SourcePi4IndexedLocalizationDomain
+      (M := M) anchor D i)
+
+/-- The real and natural terminal dictionaries are literally the same tree
+metric after coercion. -/
+theorem cmp102Eq80SourcePi4IndexedDomainMetric_eq_natCast
+    {M Q : ℕ} [NeZero M] [NeZero Q] (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (i : Fin (CMP102Eq80SourcePi4DomainCount anchor D)) :
+    cmp102Eq80SourcePi4IndexedDomainMetric (M := M) anchor D i =
+      (cmp102Eq80SourcePi4IndexedDomainMetricNat
+        (M := M) anchor D i : ℝ) := by
+  rfl
+
 /-- Source block cardinality used by the equation-(1.43) rate. -/
 noncomputable def cmp102Eq80SourcePi4IndexedDomainCard
     {M Q : ℕ} [NeZero Q] (anchor : FinBox 4 Q)
@@ -168,6 +190,44 @@ theorem cmp102Eq80SourcePi4IndexedLocalizationDomain_bondSupport_subset_centered
     cmp102Eq80SourcePi4LocalizationDomain_bondSupport_subset_centeredRegionInterior
       anchor D P (cmp102Eq80SourcePi4DomainAt anchor D i)
       (cmp102Eq80SourcePi4DomainAt_mem anchor D i)
+
+/-- Projecting first to the canonical centered region and then to one
+enumerated source domain is exactly the direct source-domain projection.  This
+is the field dictionary needed when the terminal contour consumer supplies its
+`Z₀`-localized Gaussian field to the literal per-domain residual. -/
+theorem physicalBondProjection_indexedSourceDomain_centeredRegion
+    {M Q Nc L lieDim : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (M * (2 * Q))]
+    [NeZero Nc] [NeZero (Nc ^ 2 - 1)] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary
+      4 (M * (2 * Q)) Nc 4 L lieDim)
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (P : Finset (PhysicalBond 4 (M * (2 * Q))))
+    (i : Fin (CMP102Eq80SourcePi4DomainCount anchor D))
+    (A : PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc) :
+    let Y := cmp102Eq80SourcePi4IndexedLocalizationDomain
+      (M := M) anchor D i
+    let Z0 := cmp102Eq80SourcePi4CenteredRegion anchor D P
+    physicalBondProjection Y.bondSupport
+        (physicalBondProjection
+          (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
+          A) =
+      physicalBondProjection Y.bondSupport A := by
+  dsimp only
+  apply PiLp.ext
+  intro bond
+  by_cases hbond : bond ∈
+      (cmp102Eq80SourcePi4IndexedLocalizationDomain
+        (M := M) anchor D i).bondSupport
+  · have hinterior :
+        bond ∈
+          PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds
+            (cmp102Eq80SourcePi4CenteredRegion anchor D P) :=
+      cmp102Eq80SourcePi4IndexedLocalizationDomain_bondSupport_subset_centeredRegionInterior
+        anchor D P i hbond
+    simp [physicalBondProjection_apply_mem, hbond, hinterior]
+  · simp [physicalBondProjection_apply_not_mem, hbond]
 
 end
 
