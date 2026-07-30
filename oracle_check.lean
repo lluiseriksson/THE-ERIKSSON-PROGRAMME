@@ -2996,3 +2996,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.WindowPolymer.weightedClusterMonomial_eq_of_commonWindow
 #print axioms YangMills.WindowPolymer.connectedLattice_rootedPinnedTail_volumeUniform
 #print axioms YangMills.WindowPolymer.supportRootedBoundaryRemainder_le_volumeUniform
+
+-- Full integer-coordinate translation group and terminal state
+#print axioms YangMills.IntegerLocalObservable.neg_vadd_vadd
+#print axioms YangMills.integerLocalGibbsExpectation_vadd
+#print axioms YangMills.cauchySeq_integerLocalGibbsExpectation
+#print axioms YangMills.tendsto_integerInfiniteLocalGibbsStateValue_comp
+#print axioms YangMills.integerInfiniteLocalGibbsStateValue_vadd
+#print axioms YangMills.integerInfiniteLocalGibbsState
+#print axioms YangMills.tendsto_integerFreeBoundaryThermodynamicExpectation
+#print axioms YangMills.abs_integerInfiniteLocalGibbsTruncatedCorrelation_le_of_eventually

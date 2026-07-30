@@ -264,7 +264,7 @@ story.append(
     P(
         "THE ERIKSSON PROGRAMME - Lean 4 artifact, branch "
         "<font name='Courier'>codex/thermodynamic-limit-kp</font>, "
-        "verified source checkpoint <font name='Courier'>ca355eb1</font>",
+        "verified source checkpoint <font name='Courier'>0be45284</font>",
         "PaperMeta",
     )
 )
@@ -282,8 +282,9 @@ story.append(
         "<font name='Courier'>connectedLattice_pinned_tail_volumeUniform</font>. "
         "The resulting explicit Cauchy modulus tends to zero, so completeness "
         "constructs an infinite-volume positive normalized real local state. "
-        "The state is invariant under each positive unit translation generator "
-        "and every finite word in those generators. For SU(2), Haar "
+        "On the intrinsic integer-coordinate local-observable algebra, the "
+        "state carries a genuine additive action of Z^d and is invariant under "
+        "every integer translation, including inverses. For SU(2), Haar "
         "probability measure, and the physical Wilson plaquette energy "
         "Re tr(U), the hypotheses are discharged throughout the explicit "
         "punctured intervals <b>0 &lt; |beta| &lt;= 10^-5</b> in d=2 and "
@@ -294,8 +295,8 @@ story.append(
         "conditions. Finally, the normalized finite-volume two-plaquette "
         "truncated-correlation bound passes unchanged to the state under "
         "explicit eventual realization and separation hypotheses. We do not "
-        "claim arbitrary boundary conditions, inverse-translation invariance, "
-        "a C*-algebraic state, a continuum limit, Osterwalder-Schrader "
+        "claim arbitrary boundary conditions, a C*-algebraic state, a "
+        "continuum limit, Osterwalder-Schrader "
         "reconstruction, or progress on the continuum Yang-Mills mass-gap "
         "problem.",
         "AbstractText",
@@ -462,13 +463,26 @@ story.append(
     )
 )
 story.append(
+    P(
+        "To obtain an honest translation group rather than a semigroup of "
+        "positive shifts, we introduce local observables whose edge coordinates "
+        "lie in Z^d. Periodic realization uses integer remainders and is defined "
+        "at every volume. A canonical finite lower shift moves each observable "
+        "into the existing natural-coordinate chart; beyond its explicit "
+        "coordinate bound the two realizations agree literally. This eventual "
+        "equality transfers the complete-sequence Cauchy theorem and its cofinal "
+        "uniqueness without introducing a subsequence or a compactness argument.",
+    )
+)
+story.append(
     theorem(
         "Infinite local Gibbs state.",
         "The constructed functional omega_infinity is real linear, positive, "
-        "and normalized on the ordered local-observable space with unit. It "
-        "satisfies omega_infinity(T_i O)=omega_infinity(O) for each positive "
-        "unit translation generator i and for every finite word in those "
-        "generators.",
+        "and normalized on the ordered integer-coordinate local-observable "
+        "space with unit. For every z in Z^d it satisfies "
+        "omega_infinity(z + O)=omega_infinity(O). The acting object is an "
+        "additive group, so inverse translations are part of the same literal "
+        "action rather than volume-dependent positive words.",
     )
 )
 story.append(
@@ -587,7 +601,7 @@ story.append(
         "Concrete two-dimensional strong-coupling regime.",
         "For every real beta with 0<|beta|<=10^-5, the d=2 SU(2) Wilson theory "
         "has the constructed infinite local Gibbs state. Positivity, "
-        "normalization, generator/finite-word invariance, and periodic-versus-"
+        "normalization, full Z^d-translation invariance, and periodic-versus-"
         "centered-free convergence are therefore non-vacuous physical "
         "statements on an interval.",
     )
@@ -606,7 +620,7 @@ story.append(
         "Concrete four-dimensional lattice regime.",
         "For every real beta with 0<|beta|<=10^-6, the d=4 SU(2) Wilson lattice "
         "theory has the constructed infinite local Gibbs state, with the same "
-        "positivity, normalization, generator/finite-word invariance, and "
+        "positivity, normalization, full Z^d-translation invariance, and "
         "periodic-versus-centered-free convergence conclusions. This is a "
         "four-dimensional lattice statement, not a continuum limit.",
     )
@@ -618,6 +632,8 @@ data = [
     [P("connectedLattice_pinned_tail_volumeUniform", "Caption"), P("Banked volume-uniform rooted KP tail", "Caption")],
     [P("cauchySeq_localGibbsExpectation_kpUniform", "Caption"), P("Complete-sequence Cauchy theorem", "Caption")],
     [P("infiniteLocalGibbsState", "Caption"), P("Positive normalized local state", "Caption")],
+    [P("integerLocalGibbsExpectation_vadd", "Caption"), P("Exact finite invariance for every z in Z^d", "Caption")],
+    [P("integerInfiniteLocalGibbsState", "Caption"), P("Positive normalized state with the full translation action", "Caption")],
     [P("su2InfiniteLocalGibbsStateOnPuncturedInterval", "Caption"), P("Physical nonzero interval", "Caption")],
     [P("su2D4InfiniteLocalGibbsStateOnPuncturedInterval", "Caption"), P("Physical d=4 lattice interval", "Caption")],
     [P("norm_localGibbsExpectation_sub_freeBoundary_le_kpUniform", "Caption"), P("Same-volume periodic/free bound", "Caption")],
@@ -633,8 +649,8 @@ tbl.setStyle(
             ("VALIGN", (0, 0), (-1, -1), "TOP"),
             ("LEFTPADDING", (0, 0), (-1, -1), 2.2 * mm),
             ("RIGHTPADDING", (0, 0), (-1, -1), 2.2 * mm),
-            ("TOPPADDING", (0, 0), (-1, -1), 1.7 * mm),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 1.7 * mm),
+            ("TOPPADDING", (0, 0), (-1, -1), 1.0 * mm),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 1.0 * mm),
         ]
     )
 )
@@ -644,14 +660,14 @@ story.append(
     P(
         "Direct focal elaboration of all terminal modules and direct "
         "elaboration of the root <font name='Courier'>YangMillsCore.lean</font> "
-        "terminated with exit code 0 under Lean 4.29.0-rc6. Twelve headline "
+        "terminated with exit code 0 under Lean 4.29.0-rc6. Twenty headline "
         "<font name='Courier'>#print axioms</font> checks reported exactly "
         "<font name='Courier'>[propext, Classical.choice, Quot.sound]</font>."
         "<br/>All nine dependency HEADs matched the manifest. After supplying "
         "a process-local safe.directory setting for the ownership-mismatched "
         "checkout, the fixed-toolchain canonical root build completed with "
         "empty stderr and the literal final line "
-        "<font name='Courier'>Build completed successfully (8458 jobs).</font> "
+        "<font name='Courier'>Build completed successfully (8460 jobs).</font> "
         "No dependency was deleted or updated and no global Git configuration "
         "was changed.",
     )
@@ -662,7 +678,7 @@ scope_rows = [
     [P("<b>Proved here</b>", "Caption"), P("<b>Not proved here</b>", "Caption")],
     [P("Complete periodic expectation sequence is Cauchy", "Caption"), P("Continuum or lattice-spacing limit", "Caption")],
     [P("Positive normalized real local state", "Caption"), P("C*-completion or C*-state", "Caption")],
-    [P("Positive generators and finite words", "Caption"), P("An action of the full translation group with inverses", "Caption")],
+    [P("Genuine Z^d action, including inverse translations", "Caption"), P("Finite-cutoff covariance of the centered free exhaustion under every z", "Caption")],
     [P("Periodic and one genuine centered free exhaustion", "Caption"), P("Arbitrary boundary conditions", "Caption")],
     [P("Two-plaquette bound passes under explicit geometry", "Caption"), P("Geometry-free clustering for arbitrary local observables", "Caption")],
     [P("d=2 and d=4 SU(2) lattice instances", "Caption"), P("Four-dimensional continuum Yang-Mills or OS reconstruction", "Caption")],
@@ -677,8 +693,8 @@ scope_tbl.setStyle(
             ("VALIGN", (0, 0), (-1, -1), "TOP"),
             ("LEFTPADDING", (0, 0), (-1, -1), 2.2 * mm),
             ("RIGHTPADDING", (0, 0), (-1, -1), 2.2 * mm),
-            ("TOPPADDING", (0, 0), (-1, -1), 1.7 * mm),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 1.7 * mm),
+            ("TOPPADDING", (0, 0), (-1, -1), 1.0 * mm),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 1.0 * mm),
         ]
     )
 )
@@ -686,9 +702,9 @@ story.append(scope_tbl)
 story.append(Spacer(1, 3 * mm))
 story.append(
     P(
-        "The next mathematical extensions are to package inverse translations "
-        "as an honest local action, instantiate the eventual separated-"
-        "plaquette geometry for explicit translated observables, and formulate "
+        "The next mathematical extensions are to instantiate the eventual "
+        "separated-plaquette geometry for explicit signed translated "
+        "observables, and formulate "
         "additional physical boundary conditions as concrete polymer "
         "restrictions. These are separate theorems; none is required for the "
         "whole-sequence periodic and centered-free limits established above.",

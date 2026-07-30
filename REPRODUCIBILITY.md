@@ -30,8 +30,16 @@ lake exe cache get        # downloads prebuilt Mathlib .olean (fast)
 lake build YangMillsCore
 ```
 
-Expected: `Build completed successfully (8412 jobs).` (the job count is
-recorded in `CLAUDE.md` rule 7 and updated on every core change).
+At source checkpoint `0be45284` the literal terminal line is:
+
+```text
+Build completed successfully (8460 jobs).
+```
+
+The build used the pinned Lean 4.29.0-rc6 toolchain and all nine manifest
+revisions. On the ownership-mismatched Windows checkout, Git was given
+`safe.directory = *` through a process-local configuration file only; no
+dependency, pin, checkout, or global Git configuration was changed.
 
 ## Committed oracle transcripts
 
