@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{2427eb49a36e755c480e6161b2f7beeeeef2ea52}
+\newcommand{\anchor}{247de2b31c8b2b6edb2cffe5fd6d96d6aa5c8a7a}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -84,8 +84,9 @@ the odd eigenvalue of a single bond.
 
 \textbf{Not proved, and a gate we failed to respect.}  The \emph{coupled} kernel
 is untouched.  Before any of this was written we pre-registered two falsifiable
-predictions.  The first --- the decoupled rate is exactly $\tanh\beta$ at every
-extent --- passed to $10^{-16}$.  The second --- the coupled uniformity boundary
+predictions.  The first --- the decoupled rate is exactly $\tanh\beta$ ---
+passed on its pre-registered grid to $10^{-16}$; the statement for \emph{all}
+$L\ge1$ is then proved in Lean, not measured.  The second --- the coupled uniformity boundary
 is the Onsager curve --- failed on one of eight cells.  \textbf{The script we
 committed had a single joint gate, and with the second prediction failing that
 gate read \texttt{FAIL -- do not fabricate}.  We fabricated anyway.}  The
@@ -286,8 +287,10 @@ not a numerical claim.
 of the above was written we committed two falsifiable predictions with their
 thresholds fixed in advance
 \repofile{scripts/judge\_spatial\_uniform.py}{scripts/judge\_spatial\_uniform.py}.
-The first --- the decoupled rate is exactly $\tanh\beta$ at every extent ---
-passed to $10^{-16}$.  The second --- that the \emph{coupled} uniformity boundary
+The first --- the decoupled rate is exactly $\tanh\beta$ --- passed to
+$10^{-16}$ on the grid it fixes in advance, $\beta\in\{0.2,0.5,0.9\}$ and
+$L=1,\dots,8$.  That grid is what was checked; the statement for all $L\ge1$ is
+Theorem~\ref{thm:sharp}, and is proved rather than sampled.  The second --- that the \emph{coupled} uniformity boundary
 is the Onsager curve $\sinh 2\beta \sinh 2\gamma = 1$ --- predicted saturation
 below $1$ on the four disordered cells and a rate tending to $1$ on the four
 ordered ones.  Seven of eight cells agreed.
