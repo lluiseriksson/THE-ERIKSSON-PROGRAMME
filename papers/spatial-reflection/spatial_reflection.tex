@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{730857fb700a31409c457ff4b0d03b4582e4d2f5}
+\newcommand{\anchor}{3c9065f9eeda141d59581c4d3d6b26ca3a6a22c3}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -75,8 +75,9 @@ $2(e^{\beta}-e^{-\beta})^{N}$, which is negative.  Congruence is invertible, so
 the same witness divided by $\sqrt{w}$ shows the \emph{coupled} kernel is
 indefinite below zero for \emph{every} strictly positive weight, at every extent
 with at least one site.  At $L=0$ there is nothing to witness --- one
-configuration, kernel $1$ --- and that exception is recorded rather than left to
-be found.  The boundary $\beta=0$ is sharp and exhibited, not inferred.
+configuration, and there the decoupled kernel is $1$ while the coupled one is
+the positive scalar $w(\varnothing)$ --- and that exception is recorded rather
+than left to be found.  The boundary $\beta=0$ is sharp and exhibited, not inferred.
 
 \textbf{What this is not.}  Neither the full axiom (above) nor any
 reconstruction: the physical Hilbert space as the quotient of the past algebra
@@ -211,10 +212,10 @@ module produces \cite{ErikssonGibbs}, and they are what makes the operator
 self-adjoint; the same matrix written with undressed $A_i$ and the bare $K$
 would be a true inequality about a \emph{different} object.
 
-\osline{SpatialReflection}{484}{gibbsPathSum\_gram\_nonneg} and
-\osline{SpatialReflection}{491}{gibbsPathSum\_gram\_nonneg\_even}, with
+\osline{SpatialReflection}{485}{gibbsPathSum\_gram\_nonneg} and
+\osline{SpatialReflection}{492}{gibbsPathSum\_gram\_nonneg\_even}, with
 the bilinearity that makes the matrix visible at
-\osline{SpatialReflection}{459}{gibbsPathSum\_combo}.
+\osline{SpatialReflection}{460}{gibbsPathSum\_combo}.
 
 \section{Sharpness: the hypothesis is active}\label{sec:sharp}
 
@@ -248,15 +249,15 @@ $\beta<0$, the quadratic form of $\sqrt{w}\,K\,\sqrt{w}$ takes the value
 $(e^{\beta}-e^{-\beta})\,Z^{L-1}\,2^{L} < 0$.
 \end{theorem}
 
-\osline{SpatialReflection}{364}{symWeighted\_quadForm\_neg\_of\_neg\_beta}.
+\osline{SpatialReflection}{365}{symWeighted\_quadForm\_neg\_of\_neg\_beta}.
 
 \paragraph{The exception, recorded --- and it is two kernels, not one.}  At
 $L=0$ the configuration space is a point, and there are two objects to keep
 apart.  The \emph{decoupled} kernel is the number $1$
-(\osline{SpatialReflection}{417}{spatialKernel\_posSemidef\_zero}); the
+(\osline{SpatialReflection}{418}{spatialKernel\_posSemidef\_zero}); the
 \emph{weighted} kernel is the positive scalar $w(\varnothing)$, which need not
 be $1$
-(\osline{SpatialReflection}{437}{symWeighted\_posSemidef\_zero}).  Both quadratic
+(\osline{SpatialReflection}{438}{symWeighted\_posSemidef\_zero}).  Both quadratic
 forms are squares at every $\beta$ --- $u^2$ and $w(\varnothing)u^2$ --- so
 Theorem~\ref{thm:sharpw} has nothing to witness there, and ``exactly
 $\beta\ge0$'' is a statement from one site upwards.
@@ -329,18 +330,30 @@ problem is unchanged.
 
 All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}.
 Every hyperlink was resolved against that commit, and checked to point at an
-actual declaration line, before compilation.
+actual declaration line, before compilation.  Every counter below was measured
+in a window with no other elaborator running on the host, on commit
+\texttt{3ee8b1c7}, whose Lean sources, \texttt{oracle\_check.lean},
+\texttt{lakefile.lean} and \texttt{lake-manifest.json} are byte-identical to this
+checkpoint --- the only change between them is the ledger entry recording the
+measurement, and
+\verb|git diff 3ee8b1c7 |\anchor\verb| -- '*.lean' oracle_check.lean| is empty.
+
+Between the previous version of this paper and this one, an unrelated branch was
+merged into \texttt{main} by a concurrent session.  It adds no declaration to
+this module and changes none of its proofs, but it does enlarge the
+\emph{repository-wide} oracle, which is why the totals below are larger than
+those printed in the previous version.  The module's own row is unchanged.
 
 \begin{center}
 \begin{tabular}{ll}
 \toprule
 Quantity & Value \\
 \midrule
-Full core build & 8432 jobs, success \\
-Oracle commands, and answers & 2716 \\
-\quad distinct declarations & 2712 \\
+Full core build & 8463 jobs, success \\
+Oracle commands, and answers & 2752 \\
+\quad distinct declarations & 2749 \\
 \quad commands listed twice & 3 \\
-\quad distinct, with axiom dependencies & 2690 \\
+\quad distinct, with axiom dependencies & 2726 \\
 \quad distinct, axiom-free & 23 \\
 Declarations in this module & 19 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
