@@ -28244,3 +28244,44 @@ module, all 25 in the oracle list.  `check_module_prose.py`: OS lane 19 modules,
 
 **Still not proved.**  Uniformity in the extent for the COUPLED kernel, and any
 infinite-volume statement.  Clay ~0 pct.
+
+---
+
+## Addendum 550 (2026-07-30, **S-UNIFORM v1.4: fifth time the same pattern, and a
+numerical grid quoted as if it were the theorem's scope**)
+
+Third external reading of paper 11.  Two residues, no mathematics.
+
+**1. FIFTH occurrence, this session, of "corrected in one place, not the other".**
+Addendum 549 changed the PAPER's "the only place that paper is used" to "the only
+SPECTRAL use", because §5 uses the S block again for its Gibbs endpoint.  The
+matching comment in `SpatialUniform.lean` §4 was left saying *"That is the only
+place the S block is used"*, which is false of the module for the same reason.
+Corrected.
+
+The tally for this session, all the same class and all found by readers rather
+than by tooling: 539 (docstring naming a retracted endpoint), 544 (printed
+theorem missing a hypothesis Lean carried), 546 (three sentences true of an
+earlier proof), 549 (§7 note still saying *clustering*), and now 550.  The
+identifier guard reads names; none of these was a name.  **The standing remedy is
+unchanged and is a discipline, not a tool: when a claim is retired, grep for the
+claim, not for the file you were editing.**
+
+**2. A pre-registered GRID quoted as the theorem's scope.**  The paper said the
+first prediction --- "the decoupled rate is exactly `tanh(beta)` at every extent"
+--- "passed to 1e-16".  The judge checks `beta` in {0.2, 0.5, 0.9} and
+`L = 1..8`.  That is a grid, and it is the grid the file fixes in advance; the
+all-`L` statement is `spatialKernel_specGap_eq`, which is PROVED and not
+sampled.  Attributing the proof's universality to the measurement is the
+inverse of the usual defect in this lane and just as wrong.  The abstract and
+§6 now separate the two explicitly.
+
+**Measured.**  Core **8431 jobs**.  Oracle **2697 -> 2697** (2694 distinct, the
+same three known duplicates), 23 axiom-free + 2671 with axiom dependencies, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  25 declarations, all 25 in the
+oracle list.  `check_module_prose.py`: OS lane 19 modules, 0 findings.  The only
+Lean change is a comment; the build and the oracle were re-run anyway, because a
+measurement is only about the tree it was taken from.
+
+**Note on the lane.**  Paper 10 (*The Modulus*) has been submitted by the owner.
+Paper 11 remains pending his click.

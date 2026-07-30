@@ -364,8 +364,8 @@ theorem spatialKernel_fluct_bound {β : ℝ} (hβ : 0 ≤ β) (L : ℕ)
 
 `specGap` is the GREATEST norm ratio on the fluctuation sector (`specGap_isGreatest`),
 so an upper bound for the ratios is an upper bound for `specGap`.  That is the
-only place the S block is used, and it is used as a bound, not as a spectral
-decomposition. -/
+only SPECTRAL use of the S block here, and it is used as a bound, not as a
+decomposition --- §7 uses that module again, for its Gibbs endpoint. -/
 
 /-- The constant observable is the Perron vector of the decoupled kernel, with
 eigenvalue the row sum `Zᴸ`. -/
