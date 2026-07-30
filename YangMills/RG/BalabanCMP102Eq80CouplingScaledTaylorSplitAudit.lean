@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP102Eq80CouplingScaledTaylorSplit
+
+#print axioms YangMills.RG.cmp102Eq80CouplingScaledFixedQuadratic
+#print axioms YangMills.RG.cmp102Eq80CouplingScaledTaylorResidual
+#print axioms
+  YangMills.RG.hasFDerivAt_cmp102Eq80CouplingScaledPotential_zero
+#print axioms
+  YangMills.RG.cmp102Eq80CouplingScaledPotential_eq_fixed_add_residual
