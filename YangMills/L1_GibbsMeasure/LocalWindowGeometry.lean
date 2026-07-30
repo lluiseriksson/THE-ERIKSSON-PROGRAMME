@@ -667,6 +667,18 @@ private lemma plaquetteSupport_base_bounds_of_source_pos
   · rw [h, (plaquette_pos_edges p).2.2.2]
     simp
 
+/-- A positive edge read by a plaquette controls every base coordinate of
+that plaquette up to one lattice unit, provided the edge source is away from
+the lower periodic seam.  This public wrapper is used to turn a centered
+observable support into a bilateral cluster window. -/
+theorem ConcretePlaquette.site_bounds_of_mem_plaquetteSupport
+    {d N : ℕ} [NeZero N] (p : ConcretePlaquette d N)
+    {e : PosEdge d N} (he : e ∈ plaquetteSupport p) (j : Fin d)
+    (hpos : 0 < (e.1.source j).val) :
+    (e.1.source j).val - 1 ≤ (p.site j).val ∧
+      (p.site j).val ≤ (e.1.source j).val :=
+  plaquetteSupport_base_bounds_of_source_pos p he j hpos
+
 /-- **One contact consumes one margin unit.**  A plaquette touching one with
 margin `r+1` has margin `r`.  In particular, a touching path of length `L`
 starting with margin `L` never wraps around the torus. -/
@@ -719,6 +731,63 @@ theorem ConcretePlaquette.siteMargin_of_touchWalk
         ConcretePlaquette.siteMargin_of_touches hu ht
       exact ih hv
 
+/-- Along a seam-avoiding touching walk, no base coordinate can increase by
+more than the walk length.  This is the one-sided estimate needed to realize
+a cluster decoded in one torus inside a second, larger common window. -/
+theorem ConcretePlaquette.site_le_add_length_of_touchWalk
+    {d N : ℕ} [NeZero N] {p q : ConcretePlaquette d N}
+    (W : (touchGraph d N).Walk p q)
+    (hp : p.SiteMargin W.length) (j : Fin d) :
+    (q.site j).val ≤ (p.site j).val + W.length := by
+  induction W with
+  | nil =>
+      simp
+  | @cons u v w h W ih =>
+      have ht : plaquetteTouches u v := by
+        rw [touchGraph, SimpleGraph.fromRel_adj] at h
+        rcases h.2 with huv | hvu
+        · exact huv
+        · exact plaquetteTouches_symm hvu
+      have hu : u.SiteMargin (W.length + 1) := by
+        simpa [SimpleGraph.Walk.length_cons, Nat.add_comm] using hp
+      have huupper : ∀ k, (u.site k).val + 1 < N := by
+        intro k
+        have := (hu k).2
+        omega
+      obtain ⟨e, heu, hev⟩ := Finset.not_disjoint_iff.mp ht
+      have hue :=
+        plaquetteSupport_source_bounds_of_noWrap u huupper heu j
+      have hepos : 0 < (e.1.source j).val := by
+        have := (hu j).1
+        omega
+      have hve :=
+        plaquetteSupport_base_bounds_of_source_pos v hev j hepos
+      have huv : (v.site j).val ≤ (u.site j).val + 1 := by
+        omega
+      have hv : v.SiteMargin W.length := by
+        simpa [Nat.add_comm] using
+          (ConcretePlaquette.siteMargin_of_touches hu ht)
+      have hi := ih hv
+      simp only [SimpleGraph.Walk.length_cons]
+      omega
+
+/-- If the source anchor has enough upper coordinate room in a second box,
+then the endpoint of a source-torus touching walk has enough upper room to
+fit there after decoding.  No global map between gauge configurations is
+used. -/
+theorem ConcretePlaquette.site_add_one_lt_of_touchWalk
+    {d N M : ℕ} [NeZero N]
+    {p q : ConcretePlaquette d N}
+    (W : (touchGraph d N).Walk p q)
+    (hp : p.SiteMargin W.length)
+    (hM : ∀ j, (p.site j).val + W.length + 1 < M) :
+    ∀ j, (q.site j).val + 1 < M := by
+  intro j
+  have hq :=
+    ConcretePlaquette.site_le_add_length_of_touchWalk W hp j
+  have hMj := hM j
+  omega
+
 /-- Every plaquette of a connected polymer remains in the common window
 when one marked plaquette has margin equal to the polymer cardinality. -/
 theorem siteMargin_zero_of_mem_connected
@@ -758,5 +827,14 @@ theorem ConcretePlaquette.toConcrete_toWindow {d N : ℕ}
   cases p with
   | mk site dir1 dir2 hlt =>
       congr 1
+
+/-- Realizing a fitting common-window plaquette and decoding its ordinary
+coordinates is exactly the identity. -/
+@[simp]
+theorem WindowPlaquette.toWindow_toConcrete {d N : ℕ}
+    (p : WindowPlaquette d) (hp : p.Fits N) :
+    (p.toConcrete hp).toWindow = p := by
+  cases p
+  rfl
 
 end YangMills

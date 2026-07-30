@@ -250,6 +250,42 @@ theorem ursell_toWeightedPolymer_eq
       (hM i) (hM j)]
 
 open Classical in
+/-- Corresponding tuples of common-window polymers form a cluster in one
+fitting volume exactly when they form a cluster in any other. -/
+theorem isCluster_toWeightedPolymer_iff
+    {d N M n : ℕ} [NeZero d] [NeZero N] [NeZero M]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G)
+    (wN : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    (wM : GaugeConfig d M G → ConcretePlaquette d M → ℝ)
+    (X : Fin n → WindowPolymer d)
+    (hN : ∀ i, (X i).Fits N) (hM : ∀ i, (X i).Fits M) :
+    KP.IsCluster
+        (weightedLatticePolymerSystem (d := d) (N := N) μ wN)
+        (fun i => (X i).toWeightedPolymer μ wN (hN i))
+      ↔
+    KP.IsCluster
+        (weightedLatticePolymerSystem (d := d) (N := M) μ wM)
+        (fun i => (X i).toWeightedPolymer μ wM (hM i)) := by
+  unfold KP.IsCluster
+  have hg :
+      KP.incompGraph
+          (weightedLatticePolymerSystem (d := d) (N := N) μ wN)
+          (fun i => (X i).toWeightedPolymer μ wN (hN i))
+        =
+      KP.incompGraph
+          (weightedLatticePolymerSystem (d := d) (N := M) μ wM)
+          (fun i => (X i).toWeightedPolymer μ wM (hM i)) := by
+    ext i j
+    rw [KP.incompGraph_adj, KP.incompGraph_adj]
+    refine and_congr_right fun _ => ?_
+    rw [(X i).incomp_toWeightedPolymer_iff μ wN (X j)
+        (hN i) (hN j),
+      (X i).incomp_toWeightedPolymer_iff μ wM (X j)
+        (hM i) (hM j)]
+  rw [hg]
+
+open Classical in
 /-- The complete cluster monomial (Ursell coefficient times activities) of a
 common-window tuple is identical in two fitting tori. -/
 theorem clusterMonomial_toWeightedPolymer_eq

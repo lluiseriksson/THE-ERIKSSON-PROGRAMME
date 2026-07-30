@@ -27619,3 +27619,67 @@ CORE_CORRTAIL2_EXIT=0
 The full-series identification, common-window cancellation, Cauchy theorem,
 infinite-volume state, boundary-condition independence, and correlation
 limit remain open.  This addendum does not declare the campaign closed.
+
+## Addendum 541 (2026-07-30, **exact common-window Cauchy bound for the local correction exponent**)
+
+`LocalCorrectionSeries.lean` turns the restriction correction into its exact
+complex tuple series.  Each layer is norm-majorized by the rooted tail from
+Addendum 540, the full and cutoff series are summable, and the exact
+restriction identity is recorded without estimating the two extensive
+cluster sums separately.
+
+The centering and transport chain `LocalCentering.lean` →
+`LocalCenteredWindow.lean` → `LocalSmallClusterTransport.lean` moves an
+arbitrary compatible observable away from the periodic seam, decodes every
+below-cutoff cluster into a volume-independent window tuple, and constructs
+an actual equivalence between the finite connected-cluster layers in any two
+admissible volumes.  Marked incidence, total plaquette cardinality, the
+Ursell coefficient, and the complete activity monomial are preserved exactly.
+
+`LocalSmallCorrectionCauchy.lean` removes disconnected tuples using the
+vanishing of their Ursell coefficient, identifies every below-cutoff series
+layer with the common-window subtype sum, and proves the direct two-volume
+estimate
+
+```text
+norm_localCorrectionSeries_centered_sub_le_volumeUniform:
+  ‖correction_N - correction_M‖
+    ≤ 2 * exp (-ε L) * ((2 t) * (Fintype.card O.Support * 4d)).
+```
+
+This is a whole-sequence Cauchy modulus for the exact local normalization
+correction.  It follows from exact finite transport plus the literal
+`connectedLattice_pinned_tail_volumeUniform` consumer; it uses neither
+compactness nor a subsequence.
+
+The focal Colab compilation terminated literally with:
+
+```text
+Build completed successfully (8223 jobs).
+SMALLCAUCHY11_EXIT=0
+```
+
+After importing the complete correction/centering/transport chain into the
+root target, the canonical Colab build terminated literally with:
+
+```text
+Build completed successfully (8445 jobs).
+CORE_CAUCHY2_EXIT=0
+```
+
+The six focal `#print axioms` checks for
+`localCorrectionTail_summable_volumeUniform`,
+`clusterSum_sub_localFarRegion_eq_localCorrectionSeries`,
+`centeredSmallClusterEquiv`,
+`localCorrectionSmallSeriesTerm_centered_eq`,
+`localCorrectionSmallSeries_centered_eq`, and
+`norm_localCorrectionSeries_centered_sub_le_volumeUniform` terminated with
+`CAUCHY_CHECKPOINT_AUDIT_EXIT=0`; every endpoint reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The campaign remains open.  This endpoint is not yet a Cauchy theorem for the
+genuine Gibbs expectation because the outer marked-set sum in
+`localGibbsExpectation_eq_markedClusterSum` still has to be uniformly
+majorized, truncated, and transported.  Consequently no infinite-volume
+state, boundary-condition independence, or correlation-limit theorem is
+claimed in this addendum.

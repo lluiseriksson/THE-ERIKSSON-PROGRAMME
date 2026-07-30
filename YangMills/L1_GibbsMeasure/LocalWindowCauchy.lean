@@ -202,6 +202,121 @@ theorem toWeightedPolymer_ofWeightedPolymer
   apply Subtype.ext
   exact realizedFinset_decodedSupport μ w c hmargin
 
+/-- Every plaquette in the realization of a fitting common-window polymer
+has margin zero in that volume. -/
+theorem toWeightedPolymer_siteMargin_zero
+    {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G)
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    (c : WindowPolymer d) (hN : c.Fits N) :
+    ∀ p ∈ (c.toWeightedPolymer μ w hN).1, p.SiteMargin 0 := by
+  intro p hp
+  rw [toWeightedPolymer_val] at hp
+  obtain ⟨q, hq⟩ :=
+    WindowPlaquette.mem_realizedFinset_iff.mp hp
+  rw [← hq]
+  intro j
+  change 0 ≤ q.1.site j ∧ q.1.site j + 0 + 1 < N
+  exact ⟨Nat.zero_le _, hN q.1 q.2 j⟩
+
+/-- Decoding the realization of a fitting common-window polymer recovers
+its support exactly. -/
+theorem decodedSupport_toWeightedPolymer
+    {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G)
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    (c : WindowPolymer d) (hN : c.Fits N) :
+    decodedSupport μ w (c.toWeightedPolymer μ w hN) = c.support := by
+  ext p
+  constructor
+  · intro hp
+    obtain ⟨q, hq, hqp⟩ := Finset.mem_image.mp hp
+    rw [toWeightedPolymer_val] at hq
+    obtain ⟨r, hr⟩ :=
+      WindowPlaquette.mem_realizedFinset_iff.mp hq
+    have hqr : q.toWindow = r.1 := by
+      rw [← hr]
+      exact WindowPlaquette.toWindow_toConcrete r.1 (hN r.1 r.2)
+    rw [← hqp, hqr]
+    exact r.2
+  · intro hp
+    apply Finset.mem_image.mpr
+    refine ⟨p.toConcrete (hN p hp), ?_, ?_⟩
+    · rw [toWeightedPolymer_val]
+      apply WindowPlaquette.mem_realizedFinset_iff.mpr
+      exact ⟨⟨p, hp⟩, rfl⟩
+    · exact WindowPlaquette.toWindow_toConcrete p (hN p hp)
+
+/-- Window polymers are determined by their finite plaquette support; the
+nonempty and connected fields are propositions. -/
+theorem eq_of_support_eq {d : ℕ} {c c' : WindowPolymer d}
+    (h : c.support = c'.support) : c = c' := by
+  cases c
+  cases c'
+  cases h
+  rfl
+
+/-- Realizing and then decoding a fitting common-window polymer is the
+opposite exact inverse to `toWeightedPolymer_ofWeightedPolymer`. -/
+theorem ofWeightedPolymer_toWeightedPolymer
+    {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G)
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    (c : WindowPolymer d) (hN : c.Fits N) :
+    ofWeightedPolymer μ w (c.toWeightedPolymer μ w hN)
+        (toWeightedPolymer_siteMargin_zero μ w c hN) = c := by
+  apply eq_of_support_eq
+  exact decodedSupport_toWeightedPolymer μ w c hN
+
+/-- Realization is injective on fitting common-window polymers. -/
+theorem toWeightedPolymer_injective_of_fits
+    {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G)
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    {c c' : WindowPolymer d} (hc : c.Fits N) (hc' : c'.Fits N)
+    (h :
+      c.toWeightedPolymer μ w hc =
+        c'.toWeightedPolymer μ w hc') :
+    c = c' := by
+  apply eq_of_support_eq
+  calc
+    c.support =
+        decodedSupport μ w (c.toWeightedPolymer μ w hc) :=
+      (decodedSupport_toWeightedPolymer μ w c hc).symm
+    _ = decodedSupport μ w (c'.toWeightedPolymer μ w hc') :=
+      congrArg (decodedSupport μ w) h
+    _ = c'.support :=
+      decodedSupport_toWeightedPolymer μ w c' hc'
+
+/-- Congruent fitting window polymers have congruent realizations, with
+fitting proof arguments erased by proof irrelevance. -/
+theorem toWeightedPolymer_congr
+    {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G)
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    {c c' : WindowPolymer d} (hc : c.Fits N) (hc' : c'.Fits N)
+    (h : c = c') :
+    c.toWeightedPolymer μ w hc =
+      c'.toWeightedPolymer μ w hc' := by
+  cases h
+  rfl
+
+/-- Realization preserves the cardinality of a common-window polymer. -/
+theorem card_toWeightedPolymer
+    {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G)
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    (c : WindowPolymer d) (hN : c.Fits N) :
+    (c.toWeightedPolymer μ w hN).1.card = c.support.card := by
+  rw [toWeightedPolymer_val]
+  exact WindowPlaquette.card_realizedFinset hN
+
 /-- Seam-avoiding decoding preserves the polymer cardinality exactly. -/
 theorem card_ofWeightedPolymer
     {d N : ℕ} [NeZero d] [NeZero N]
@@ -251,6 +366,42 @@ theorem decodedClusterTuple_fits_source
   intro j
   exact ofWeightedPolymer_fits μ w (X j)
     (cluster_siteMargin_zero μ w hX hp hmargin j)
+
+/-- Every decoded cluster polymer also fits in a second box when the marked
+source plaquette has enough upper coordinate room there.  The proof uses the
+actual cluster touching walk and the one-sided coordinate estimate; it does
+not construct a map between complete finite-volume configurations. -/
+theorem decodedClusterTuple_fits_target
+    {d N M n : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G)
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    {X : Fin n →
+      (weightedLatticePolymerSystem (d := d) (N := N) μ w).Polymer}
+    (hX : KP.IsCluster
+      (weightedLatticePolymerSystem (d := d) (N := N) μ w) X)
+    {i₀ : Fin n} {p : ConcretePlaquette d N}
+    (hp : p ∈ (X i₀).1)
+    (hmargin : p.SiteMargin (2 * ∑ i, (X i).1.card))
+    (hM : ∀ k,
+      (p.site k).val + (2 * ∑ i, (X i).1.card) + 1 < M) :
+    ∀ j, (decodedClusterTuple μ w hX hp hmargin j).Fits M := by
+  intro j q hq
+  change q ∈ decodedSupport μ w (X j) at hq
+  obtain ⟨r, hr, hrq⟩ := Finset.mem_image.mp hq
+  rw [← hrq]
+  obtain ⟨W, hW⟩ :=
+    weighted_exists_touchWalk_le μ w hX hp hr
+  have hpW : p.SiteMargin W.length :=
+    hmargin.mono hW
+  have hMW : ∀ k, (p.site k).val + W.length + 1 < M := by
+    intro k
+    have hk := hM k
+    omega
+  have hrM :=
+    ConcretePlaquette.site_add_one_lt_of_touchWalk W hpW hMW
+  intro k
+  simpa [ConcretePlaquette.toWindow, WindowPlaquette.Fits] using hrM k
 
 /-- Realizing the decoded tuple in the source volume recovers the original
 tuple pointwise. -/

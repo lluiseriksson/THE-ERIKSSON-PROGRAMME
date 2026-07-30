@@ -57,7 +57,7 @@ subsequence does not close any brick.
 5. **Common-window cluster monomials — green.**
    `WindowPolymer`, exact preservation of incompatibility and activity, and
    equality of Ursell-weighted cluster monomials in any two fitting tori.
-6. **Window decomposition and boundary estimate — in progress.**
+6. **Window decomposition and local-correction Cauchy estimate — green.**
    `LocalWindowCauchy.lean` now proves that a pinned cluster has a touching
    walk of length at most twice its total plaquette cardinality, decodes every
    seam-avoiding tuple exactly, and identifies its full Ursell/activity
@@ -65,16 +65,24 @@ subsequence does not close any brick.
    intrinsic `n+1` rooting factor, absorbs it with a unit-cardinality tilt,
    and proves the volume-uniform support boundary estimate using
    `connectedLattice_pinned_tail_volumeUniform` plus the necessary tilted
-   tail.  `LocalCorrectionTail.lean` now performs the missing finite
+   tail.  `LocalCorrectionTail.lean` performs the finite
    reindexing: it preserves the global total-size predicate through tuple
    symmetrization, fibers exactly over `X 0`, and proves that every finite
-   partial correction tail is bounded by that rooted remainder.  It remains
-   to identify the corresponding `tsum` from `clusterSum_sub_restrict`, split
-   its common-window and tail pieces, and take the infinite partial-sum bound.
+   partial correction tail is bounded by that rooted remainder.
+   `LocalCorrectionSeries.lean` identifies the exact
+   `clusterSum_sub_restrict` correction with a summable complex series and
+   splits it into below-cutoff and tail parts.  The centering, common-window,
+   and small-cluster transport modules then identify every below-cutoff layer
+   exactly in two admissible volumes.  `LocalSmallCorrectionCauchy.lean`
+   combines that equality with the two rooted tails to obtain a direct
+   two-volume estimate for the complete local correction exponent.
 7. **Cauchy and infinite state — open.**
-   Prove a quantitative Cauchy modulus for every observable, define the limit
-   by completeness, and prove linearity, positivity, normalization, generator
-   invariance, and hence finite-translation invariance.
+   The normalization-cluster correction now has a quantitative Cauchy
+   modulus.  It remains to sum and transport the outer marked activities in
+   the exact Gibbs formula, thereby obtain a Cauchy modulus for the genuine
+   expectation, define the limit by completeness, and prove linearity,
+   positivity, normalization, generator invariance, and hence
+   finite-translation invariance.
 8. **Boundary-condition independence and correlations — open.**
    Compare admissible boundary realizations by the same pinned-tail estimate
    and pass the finite-volume truncated-correlation bound to the limit.
@@ -84,19 +92,25 @@ subsequence does not close any brick.
 
 ## Current exact frontier
 
-The finite unrooted-to-rooted reindexing is now theorem-fed:
-`localCorrectionTailPartial_le_volumeUniform` gives
+The complete normalized local correction is now theorem-fed.
+`norm_localCorrectionSeries_centered_sub_le_volumeUniform` gives, for any two
+admissible volumes,
 
 ```text
-finite correction tail
-  <= exp(-ε L) * ((2 t) * (|SF| * 4d)).
+|correction_N - correction_M|
+  <= 2 * exp(-ε L) * ((2 t) * (|support(O)| * 4d)).
 ```
 
-The next theorem identifies the exact `clusterSum_sub_restrict` correction
-with its size-filtered and complementary tuple series.  Clusters below the
-cutoff which have sufficient seam margin decode to `WindowPolymer`s,
-re-realize pointwise, and have exactly the same complete monomial in any
-second fitting volume.  The complementary class is the tail just bounded.
+This is a whole-sequence comparison, not a compactness or subsequence
+argument.  Its below-cutoff parts agree exactly through a finite common-window
+equivalence; both complementary parts are controlled by the rooted KP tail.
+
+The next honest frontier is the *outer marked-set sum* in
+`localGibbsExpectation_eq_markedClusterSum`.  The marked integral must be
+majorized and its below-cutoff sets transported through the same common
+window, while the normalization correction above is retained as a separate
+factor.  Until that outer sum is controlled, there is no Cauchy theorem for
+the genuine Gibbs expectation and no infinite-volume state.
 
 The honest local-correction regime is the uniformly double-tilted KP window
 at exponent `t + ε + 1`.  The extra `+1` is not an artefact: passing from the
@@ -104,5 +118,5 @@ symmetric predicate “some tuple member meets the marked region” to a pin at
 coordinate zero costs `n+1`.  `LocalRootedTail.lean` proves this cost and does
 not silently claim that the untilted pinned tail alone controls it.
 
-No theorem in the current checkpoint asserts Cauchy convergence or the
-existence of the infinite-volume state.
+No theorem in the current checkpoint asserts Cauchy convergence of the
+genuine Gibbs expectations or the existence of the infinite-volume state.

@@ -80,6 +80,11 @@ import YangMills.L1_GibbsMeasure.LocalWindowCluster
 import YangMills.L1_GibbsMeasure.LocalWindowCauchy
 import YangMills.L1_GibbsMeasure.LocalRootedTail
 import YangMills.L1_GibbsMeasure.LocalCorrectionTail
+import YangMills.L1_GibbsMeasure.LocalCorrectionSeries
+import YangMills.L1_GibbsMeasure.LocalCentering
+import YangMills.L1_GibbsMeasure.LocalCenteredWindow
+import YangMills.L1_GibbsMeasure.LocalSmallClusterTransport
+import YangMills.L1_GibbsMeasure.LocalSmallCorrectionCauchy
 import YangMills.L1_GibbsMeasure.ClusterGeometry
 import YangMills.L1_GibbsMeasure.PolymerRepresentation
 import YangMills.L1_GibbsMeasure.WeightedGas

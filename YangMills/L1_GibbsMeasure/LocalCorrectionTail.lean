@@ -503,6 +503,73 @@ theorem localCorrectionTailPartial_le_volumeUniform
     (supportRootedBoundaryRemainder_le_volumeUniform
       μ hpe β t ε ht0 hε0 hr₀ hsmall₀ hr₁ hsmall₁ SF L K)
 
+/-- Every layer of the local correction norm majorant is nonnegative. -/
+theorem localCorrectionTailLayer_nonneg
+    {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) (pe : G → ℝ) (β : ℝ)
+    (SF : Finset (PosEdge d N)) (L n : ℕ) :
+    0 ≤ localCorrectionTailLayer μ pe β SF L n := by
+  classical
+  unfold localCorrectionTailLayer
+  refine mul_nonneg (by positivity) ?_
+  refine Finset.sum_nonneg fun X _ => ?_
+  exact mul_nonneg (abs_nonneg _)
+    (Finset.prod_nonneg fun i _ => norm_nonneg _)
+
+/-- **Summed local correction tail.**
+
+The whole sequence of size layers is summable, and its `tsum` obeys the same
+volume-uniform exponential boundary estimate as every finite partial sum. -/
+theorem localCorrectionTail_summable_volumeUniform
+    {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} {B : ℝ} (hpe : ∀ g, |pe g| ≤ B) (β : ℝ)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr₀ : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (|β| * B) - 1) * Real.exp (t + ε)) < 1)
+    (hsmall₀ : ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (|β| * B) - 1) * Real.exp (t + ε)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (|β| * B) - 1) * Real.exp (t + ε)))) ≤ t)
+    (hr₁ : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (|β| * B) - 1) * Real.exp (t + ε + 1)) < 1)
+    (hsmall₁ : ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (|β| * B) - 1) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (|β| * B) - 1) * Real.exp (t + ε + 1)))) ≤ t)
+    (SF : Finset (PosEdge d N)) (L : ℕ) :
+    Summable (fun n => localCorrectionTailLayer μ pe β SF L n) ∧
+      ∑' n, localCorrectionTailLayer μ pe β SF L n
+        ≤ Real.exp (-(ε * L)) *
+          ((2 * t) * ((SF.card : ℝ) * (4 * (d : ℝ)))) := by
+  classical
+  let C : ℝ := Real.exp (-(ε * L)) *
+    ((2 * t) * ((SF.card : ℝ) * (4 * (d : ℝ))))
+  have hpartial : ∀ M : ℕ,
+      ∑ n ∈ Finset.range M,
+          localCorrectionTailLayer μ pe β SF L n ≤ C := by
+    intro M
+    cases M with
+    | zero =>
+        simp only [Finset.range_zero, Finset.sum_empty]
+        dsimp [C]
+        positivity
+    | succ K =>
+        exact localCorrectionTailPartial_le_volumeUniform
+          μ hpe β t ε ht0 hε0 hr₀ hsmall₀ hr₁ hsmall₁ SF L K
+  have hsum :
+      Summable (fun n => localCorrectionTailLayer μ pe β SF L n) :=
+    summable_of_sum_range_le
+      (fun n => localCorrectionTailLayer_nonneg μ pe β SF L n)
+      hpartial
+  exact ⟨hsum, Real.tsum_le_of_sum_range_le
+    (fun n => localCorrectionTailLayer_nonneg μ pe β SF L n)
+    hpartial⟩
+
 end WindowPolymer
 
 end YangMills
