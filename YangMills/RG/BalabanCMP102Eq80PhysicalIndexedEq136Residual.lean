@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP102Eq80PhysicalIndexedCutoffResidualSourceMetric
 import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCEq136Residual
+import YangMills.RG.BalabanCMP102Eq80CouplingScaledTaylorSplit
 
 /-!
 # The literal indexed equation-(80) residual satisfies equation (1.36)
@@ -38,6 +39,65 @@ private abbrev Eq136RectangularFieldMap (M Q Nc : ℕ)
     [NeZero M] [NeZero Q] [NeZero (2 * Q)]
     [NeZero (M * (2 * Q))] :=
   Eq136CoarseField Q Nc →L[ℝ] Eq136FineField M Q Nc
+
+/-- The literal coupling-scaled Taylor residual of the indexed physical
+equation-(80) FTC potential.  This is the concrete `V''_k(Y, B)` supplied to
+the CMP116 residual slot. -/
+noncomputable def cmp102Eq80PhysicalIndexedCouplingScaledResidual
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (M * (2 * Q))]
+    [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (domains : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (i : Fin (CMP102Eq80SourcePi4DomainCount anchor domains))
+    (K : Eq136FineField M Q Nc →L[ℝ] Eq136FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      Eq136CoarseField Q Nc →L[ℝ] Eq136CoarseField Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hsmallContour :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (layerWord : Fin n → ℕ)
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (D D₃ : Eq136FineField M Q Nc → Eq136CoarseField Q Nc)
+    (V₀ : Eq136FineField M Q Nc → ℝ)
+    (Pprop T : Eq136RectangularFieldMap M Q Nc)
+    (Δπ : Eq136FineField M Q Nc →L[ℝ] Eq136FineField M Q Nc)
+    (J : Eq136FineField M Q Nc)
+    (hD : ContDiff ℝ ⊤ D) (hD₃ : ContDiff ℝ ⊤ D₃)
+    (hV₀ : ContDiff ℝ ⊤ V₀)
+    (gk : ℝ) (B : Eq136FineField M Q Nc) : ℝ :=
+  let Y :=
+    cmp102Eq80SourcePi4IndexedLocalizationDomain
+      (M := M) anchor domains i
+  let f : Eq136FineField M Q Nc → ℝ := fun A =>
+    cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
+      anchor K hc hmass hK baseCoarseCovariance
+      sigma layerWord choice D D₃ V₀ Pprop T Δπ J A Y.blocks
+  let hf3 : ContDiff ℝ 3 f := by
+    simpa [f] using
+      (contDiff_three_cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
+      anchor K hc hmass hK baseCoarseCovariance
+      hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+      sigma hRweak hcap hsmallContour layerWord choice
+      D D₃ V₀ Pprop T Δπ J Y.blocks hD hD₃ hV₀)
+  let hf2 : ContDiff ℝ 2 f := hf3.of_le (by norm_num)
+  cmp102Eq80CouplingScaledTaylorResidual gk f hf2 B
 
 /-- The literal indexed equation-(80) radial residual satisfies the printed
 equation-(1.36) majorant.  All field-dependent and domain-dependent estimates
@@ -151,21 +211,11 @@ theorem
         (M := M) anchor domains i
     let B := physicalBondProjection Y.bondSupport
       (cmp116SourcePhysicalCoordinateCochain b)
-    let f : Eq136FineField M Q Nc → ℝ := fun A =>
-      cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
-        anchor K hc hmass hK baseCoarseCovariance
-        sigma layerWord choice D D₃ V₀ Pprop T Δπ J A Y.blocks
-    |(1 / 2 : ℝ) * inner ℝ B
-        (cmp116RadialTaylorResidualOperator
-          (cmp102Eq80CouplingScaledPotential gk f) B
-          (((contDiff_three_cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
-              anchor K hc hmass hK baseCoarseCovariance
-              hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
-              sigma hRweak hcap hsmallContour layerWord choice
-              D D₃ V₀ Pprop T Δπ J Y.blocks hD hD₃ hV₀).comp
-            (cmp109ConstrainedLinearFluctuationCLM
-              (M := M) (Q := Q) (Nc := Nc) gk).contDiff).of_le
-                (by norm_num)) B)| ≤
+    |cmp102Eq80PhysicalIndexedCouplingScaledResidual
+        anchor domains i K hc hmass hK baseCoarseCovariance
+        hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+        sigma hRweak hcap hsmallContour layerWord choice
+        D D₃ V₀ Pprop T Δπ J hD hD₃ hV₀ gk B| ≤
       cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
         C2 kappa1 delta kappa
           (cmp116CubeEdgeTreeMetric Y : ℝ) := by
@@ -241,7 +291,9 @@ theorem
       f hf sourceMajorant hsourceMajorant hsource
       E0 C1 q C2 kappa1 delta kappa
       (by simpa [hY] using hprinted)
-  simpa [W, Y, f, hY] using hterminal
+  simpa [W, Y, f, hY,
+    cmp102Eq80PhysicalIndexedCouplingScaledResidual,
+    cmp102Eq80CouplingScaledTaylorResidual] using hterminal
 
 end
 
