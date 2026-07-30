@@ -825,8 +825,10 @@ index attaining the maximum cannot be one of the top ones, because those
 contribute `0` by definition; so it hands over a genuine non-Perron
 eigenvector, and eigenvectors with different eigenvalues are orthogonal.  When
 `specGap = 0` that reasoning fails outright --- the maximiser may perfectly well
-be a top index --- but there the §6 bound already annihilates every fluctuation
-observable, so any nonzero one attains the value.  It is the second branch that
+be a top index, and such an index supplies an eigenvector (the Perron one) but
+no NON-PERRON eigenvector, hence none in the fluctuation sector.  There the §6
+bound already annihilates every fluctuation observable, so any nonzero one
+attains the value.  It is the second branch that
 needs the fluctuation sector to be nonempty, which is why two distinct states
 are assumed. -/
 
@@ -887,8 +889,9 @@ theorem exists_attaining_fluctuation (hpos : ∀ i j, 0 < K i j)
     ∃ u : ι → ℝ, (∑ i, v i * u i = 0) ∧ eucNorm u ≠ 0 ∧
       eucNorm (act K u) = specGap hK lam * eucNorm u := by
   rcases eq_or_lt_of_le (specGap_nonneg hK lam) with hzero | hgt
-  · -- `specGap = 0`: the maximiser may be a top index, so no eigenvector is
-    -- available; but §6 already annihilates the whole fluctuation sector.
+  · -- `specGap = 0`: the maximiser may be a top index.  Such an index DOES
+    -- supply an eigenvector -- the Perron one -- but not a non-Perron one, so
+    -- none in the fluctuation sector.  §6 already annihilates that sector.
     obtain ⟨u, hu, hune⟩ := exists_nonzero_perp hv hne
     refine ⟨u, hu, ne_of_gt (eucNorm_pos_of_ne_zero hune), ?_⟩
     have hle := norm_act_le_specGap hpos hK hv hvE hu

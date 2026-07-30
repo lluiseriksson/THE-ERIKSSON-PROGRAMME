@@ -27982,3 +27982,55 @@ all 46 in the oracle list.  `check_module_prose.py`: OS lane 18 modules,
 
 **Still not proved.**  Anything uniform in the extent --- unchanged, and the only
 substantive gap.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 546 (2026-07-30, **S block v1.9: three sentences that were true of an
+earlier version, and a symbol that meant two things one paragraph apart**)
+
+**Context.**  Tenth external reading.  No mathematical objection; three
+statements that no longer matched what is proved, or that could be read as
+saying the opposite of what is proved.
+
+**1. The scope paragraph still denied §9.**  It was headed "Attainment, but no
+norm object" and said "what we do not do is introduce that norm as a defined
+object" --- three pages before §9, titled "The restricted norm, as an object",
+proves `specGap_isGreatest`.  The distinction meant is real (a set-theoretic
+object identifying the norm is not a `ContinuousLinearMap` on a `Submodule`),
+but the sentence as written contradicted the section.  Rewritten as "Norm
+identified, but no restricted-operator interface", naming the interface that is
+missing instead of denying the object that is there.
+
+**2. "no eigenvector is obtained" at `specGap = 0` was false as stated.**  A top
+index does supply an eigenvector --- the Perron one.  What it does not supply is
+a NON-PERRON eigenvector, hence none in the fluctuation sector, which is the
+thing the argument needed.  Corrected in the paper and in the two places the
+module said it (the §11 section note and an inline comment in the proof).
+
+**3. `u` meant two different things one paragraph apart in the abstract.**
+Earlier it is a generic fluctuation observable, in `‖Ku‖ ≤ specGap·‖u‖`; in the
+threshold it is the orthogonal component of the dressed CONSTANT observable.  A
+reader could take the threshold to depend on `A` --- the exact opposite of the
+uniform-threshold theorem of 543.  The abstract now writes `b_perp` there,
+defines it and `c`, and says in the same sentence that neither comes from `A`.
+§8 notes that its `u` is that `b_perp`.
+
+**The shape of the last three readings, worth recording together.**  543 found a
+statement WEAKER than its proof; 544 found one STRONGER than its proof; 546
+found three that were true of an EARLIER proof.  All three are the same defect
+class --- printed statement drifting from machine-checked statement --- and none
+of them is visible to `lake build`, to the oracle, or to
+`check_module_prose.py`, which checks identifiers rather than claims.  That the
+guard cannot reach them is not a reason to stop looking; it is the reason the
+re-reading is done by hand, on the neighbourhood of every flagged line rather
+than on the flagged line alone.
+
+**Measured.**  Core **8430 jobs** (unchanged; the only Lean changes are
+comments).  Oracle **2672 commands -> 2672 answers** (2669 distinct, three
+known duplicates), 23 axiom-free + 2646 with axiom dependencies, zero `sorryAx`,
+zero nonstandard axioms, zero errors.  **46** declarations in the module,
+all 46 in the oracle list.  `check_module_prose.py`: OS lane 18 modules,
+0 findings.
+
+**Still not proved.**  Anything uniform in the extent --- unchanged, and the only
+substantive gap.  Reflection positivity untouched.  Clay ~0 pct.
