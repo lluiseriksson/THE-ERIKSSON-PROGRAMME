@@ -28285,3 +28285,70 @@ measurement is only about the tree it was taken from.
 
 **Note on the lane.**  Paper 10 (*The Modulus*) has been submitted by the owner.
 Paper 11 remains pending his click.
+
+---
+
+## Addendum 551 (2026-07-30, **PAPER 12: reflection positivity --- the first
+statement in this lane that survives the source weight --- and a gate that failed
+because I repeated my own design error one level down**)
+
+**Context.**  Eleven papers end with "reflection positivity is untouched".  The
+lane's open question is uniformity in the extent for the COUPLED kernel, which
+is a 2D Ising high-temperature statement and out of reach.  Reflection
+positivity is not: it is the SIGN of a quadratic form, and conjugation by
+`sqrt(w)` is a CONGRUENCE, so the weight that destroys uniformity cannot touch
+it.
+
+**0. THE GATES, and the one that failed.**  Three predictions were committed
+before any Lean.  The design lesson of Addendum 548 was applied at the top
+level: gate A and gate B separate, each licensing one theorem.
+
+  * **GATE A** (site reflection, `N` even, EVERY beta): **PASS**.
+  * **GATE B** (bond reflection): **FAIL** --- and the reason is that **I made
+    the same design error one level down**.  Gate B bundled `(B1)` the
+    `beta >= 0` theorem with `(B2)` its sharpness witness behind
+    `PASS iff B1 and B2`.  Those are different claims about different regions.
+    B1 passed everywhere; B2 missed one cell; the bundle failed.
+
+**The autopsy measured why, rather than asserting it.**  At the failing cell
+(`L=1`, `N=3`, `beta=-0.1`) the violating direction carries
+`|D|^N / Z^N ~ 1e-3` of the weight, so a uniformly random observable lands in
+the violating cone with probability `~2e-2` and sixty draws miss it about a
+third of the time.  **An EXISTENCE claim was being tested by SAMPLING.**
+Searched along the odd direction instead, the violation appears exactly.
+
+**The repair is a REDESIGN, committed before being run and declared as such.**
+Gate B stays failed and is not superseded.  The two new gates are separate, and
+B2 stops sampling and predicts a NUMBER --- the closed form `2(e^b - e^-b)^N` to
+1e-12 --- which is strictly HARDER than "some draw goes negative".  Both pass.
+Nothing was loosened; an instrument was fixed.
+
+**1. Proved.**  `sum_iterate_even_nonneg`: at even separation the reflected sum
+is a square, hence non-negative for a symmetric kernel at EVERY beta, negative
+coupling included --- symmetry is all it uses.  `spatialKernel_posSemidef`: the
+decoupled kernel is PSD for `beta >= 0`, by the same first-site induction the
+uniformity module runs, recombining the even and odd parts with `Z > 0` and
+`D >= 0`.  `posSemidef_congr` + `symWeighted_posSemidef`: **positivity transports
+through the source weight**, one reindexing, and this is the whole reason the
+COUPLED case is reachable.  `sum_iterate_odd_nonneg`, then
+`gibbsPathSum_nonneg_even` and `gibbsPathSum_nonneg` through the bridge.
+
+**2. And the hypothesis is ACTIVE.**  `gibbsPathSum_siteSign_eq` gives the
+reflected sum in closed form at one site: exactly `2 (e^b - e^-b)^N`, using the
+extent paper's sign observable as an eigenvector.  `gibbsPathSum_neg_of_neg_beta`
+turns that into a strict negativity below zero at odd separation.  The boundary
+`beta = 0` is sharp and exhibited, not inferred.
+
+**3. What is NOT done, and is stated in the module and the paper.**  Reflection
+positivity is ONE Osterwalder--Schrader axiom.  **No reconstruction**: the
+physical Hilbert space as the quotient of the past algebra by the null space of
+this form is not built.  Observables are the bridge's ENDPOINT ones; a general
+past-half-chain observable is not treated.  Nothing here is about uniformity in
+the extent, which remains the lane's open analytic question.
+
+**Measured.**  Core **8432 jobs** --- INCREMENTED from 8431, as required when a
+module joins the core (rule 7).  Oracle **2708 commands -> 2708 answers** (2705
+distinct, the same three known duplicates), 23 axiom-free + 2682 with axiom
+dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.  **11**
+declarations in the new module, all 11 in the oracle list.
+`check_module_prose.py`: OS lane 20 modules, 0 findings.

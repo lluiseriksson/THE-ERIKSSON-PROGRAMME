@@ -3022,3 +3022,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.card_config_real
 #print axioms YangMills.OS.gibbsCov_one_uniform_bound
 #print axioms YangMills.OS.gibbsCorr_one_le_of_bounded
+#print axioms YangMills.OS.sum_iterate_even_nonneg
+#print axioms YangMills.OS.act_spatialKernel_cons
+#print axioms YangMills.OS.spatialKernel_posSemidef
+#print axioms YangMills.OS.posSemidef_congr
+#print axioms YangMills.OS.symWeighted_posSemidef
+#print axioms YangMills.OS.sum_iterate_odd_nonneg
+#print axioms YangMills.OS.gibbsPathSum_nonneg_even
+#print axioms YangMills.OS.gibbsPathSum_nonneg
+#print axioms YangMills.OS.sum_siteSign_sq_one
+#print axioms YangMills.OS.gibbsPathSum_siteSign_eq
+#print axioms YangMills.OS.gibbsPathSum_neg_of_neg_beta

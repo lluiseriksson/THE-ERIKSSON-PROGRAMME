@@ -901,3 +901,4 @@ import YangMills.OS.SpatialGibbs
 -- UNNORMALISED two-point sum, not the normalised expectation.
 import YangMills.OS.SpatialSpectral
 import YangMills.OS.SpatialUniform
+import YangMills.OS.SpatialReflection
