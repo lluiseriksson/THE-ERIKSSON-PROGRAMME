@@ -40,7 +40,7 @@ private abbrev IndexedResidualRectangularFieldMap (M Q Nc : ℕ)
 equation-(80) FTC potential.  This is the concrete `V''_k(Y, B)` supplied to
 the CMP116 residual slot. -/
 noncomputable def cmp102Eq80PhysicalIndexedCouplingScaledResidual
-    {M Q Nc R Δ n : ℕ}
+    {M Q Nc R n : ℕ}
     [NeZero M] [NeZero Q] [NeZero (M * (2 * Q))]
     [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
     (anchor : FinBox 4 Q)
@@ -53,23 +53,7 @@ noncomputable def cmp102Eq80PhysicalIndexedCouplingScaledResidual
     (baseCoarseCovariance :
       IndexedResidualCoarseField Q Nc →L[ℝ]
         IndexedResidualCoarseField Q Nc)
-    {Ahead rho rate Rweak : ℝ}
-    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
-    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
-    (Cert : CMP99PhysicalPatchWeightedCertificate
-      (cmp99SourcePi4Charts :
-        Finset (CMP99SourcePi4Chart Unit Q))
-      K cmp99SourcePi4ChartEnlarged
-      (cmp99SourcePi4ChartCore (M := M))
-      hc hmass hK physicalBondDist Ahead rho rate)
-    (hrange : R + 1 ≤ 4 * M)
-    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
-    (hΔ1 : 1 ≤ Δ)
     (sigma : FinBox 4 (2 * Q) → ℂ)
-    (hRweak : 1 ≤ Rweak)
-    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
-    (hsmallContour :
-      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
     (layerWord : Fin n → ℕ)
     (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
     (D D₃ : IndexedResidualFineField M Q Nc →
@@ -79,8 +63,6 @@ noncomputable def cmp102Eq80PhysicalIndexedCouplingScaledResidual
     (Δπ : IndexedResidualFineField M Q Nc →L[ℝ]
       IndexedResidualFineField M Q Nc)
     (J : IndexedResidualFineField M Q Nc)
-    (hD : ContDiff ℝ ⊤ D) (hD₃ : ContDiff ℝ ⊤ D₃)
-    (hV₀ : ContDiff ℝ ⊤ V₀)
     (gk : ℝ) (B : IndexedResidualFineField M Q Nc) : ℝ :=
   let Y :=
     cmp102Eq80SourcePi4IndexedLocalizationDomain
@@ -89,15 +71,7 @@ noncomputable def cmp102Eq80PhysicalIndexedCouplingScaledResidual
     cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
       anchor K hc hmass hK baseCoarseCovariance
       sigma layerWord choice D D₃ V₀ Pprop T Δπ J A Y.blocks
-  let hf3 : ContDiff ℝ 3 f := by
-    simpa [f] using
-      (contDiff_three_cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
-        anchor K hc hmass hK baseCoarseCovariance
-        hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
-        sigma hRweak hcap hsmallContour layerWord choice
-        D D₃ V₀ Pprop T Δπ J Y.blocks hD hD₃ hV₀)
-  let hf2 : ContDiff ℝ 2 f := hf3.of_le (by norm_num)
-  cmp102Eq80CouplingScaledTaylorResidual gk f hf2 B
+  cmp102Eq80CouplingScaledTotalTaylorResidual gk f B
 
 end
 

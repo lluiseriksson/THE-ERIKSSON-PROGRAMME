@@ -154,9 +154,7 @@ theorem
       (cmp116SourcePhysicalCoordinateCochain b)
     |cmp102Eq80PhysicalIndexedCouplingScaledResidual
         anchor domains i K hc hmass hK baseCoarseCovariance
-        hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
-        sigma hRweak hcap hsmallContour layerWord choice
-        D D₃ V₀ Pprop T Δπ J hD hD₃ hV₀ gk B| ≤
+        sigma layerWord choice D D₃ V₀ Pprop T Δπ J gk B| ≤
       cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
         C2 kappa1 delta kappa
           (cmp116CubeEdgeTreeMetric Y : ℝ) := by
@@ -232,9 +230,14 @@ theorem
       f hf sourceMajorant hsourceMajorant hsource
       E0 C1 q C2 kappa1 delta kappa
       (by simpa [hY] using hprinted)
-  simpa [W, Y, f, hY,
-    cmp102Eq80PhysicalIndexedCouplingScaledResidual,
-    cmp102Eq80CouplingScaledTaylorResidual] using hterminal
+  change
+    |cmp102Eq80CouplingScaledTotalTaylorResidual gk f
+      (physicalBondProjection Y.bondSupport
+        (cmp116SourcePhysicalCoordinateCochain b))| ≤ _
+  rw [cmp102Eq80CouplingScaledTotalTaylorResidual_eq_radial
+    gk f (hf.of_le (by norm_num))]
+  rw [hY]
+  exact hterminal
 
 end
 

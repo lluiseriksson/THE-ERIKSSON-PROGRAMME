@@ -157,9 +157,7 @@ theorem
         summationRatio layerWord Y Δ
     |cmp102Eq80PhysicalIndexedCouplingScaledResidual
         anchor domains i K hc hmass hK baseCoarseCovariance
-        hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
-        sigma hRweak hcap hsmallContour layerWord choice
-        D D₃ V₀ Pprop T Δπ J hD hD₃ hV₀ gk B| ≤
+        sigma layerWord choice D D₃ V₀ Pprop T Δπ J gk B| ≤
       (sourceMajorant *
           (gk ^ 2 * (1 + (M : ℝ) ^ 3) ^ 3) *
           (Real.sqrt (((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ) *
@@ -214,8 +212,13 @@ theorem
     abs_half_inner_cmp116RadialTaylorResidualOperator_eq80IndexedCouplingScaledDomainProjection_le_centeredEnergy_of_printedCutoff
       Dict anchor domains i Pcut epsilon1 gk b
       hepsilon1 hgk hcutoff f hf sourceMajorant hsourceMajorant hsource
-  simpa [f, cmp102Eq80PhysicalIndexedCouplingScaledResidual,
-    cmp102Eq80CouplingScaledTaylorResidual] using hterminal
+  change
+    |cmp102Eq80CouplingScaledTotalTaylorResidual gk f
+      (physicalBondProjection Y.bondSupport
+        (cmp116SourcePhysicalCoordinateCochain b))| ≤ _
+  rw [cmp102Eq80CouplingScaledTotalTaylorResidual_eq_radial
+    gk f (hf.of_le (by norm_num))]
+  exact hterminal
 
 end
 
