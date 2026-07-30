@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "lane": "CONT-C1",
+  "audit_base_sha": "7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a",
+  "producer_ref": "origin/codex/continuum-c1",
+  "producer_sha": "0a46e266fc4808332ed20d2ab4611bfc271b208b",
+  "pr_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/34",
+  "artifact_paths": [
+    ".github/workflows/ci.yml",
+    "YangMills/Continuum/TightnessScaleNoGo.lean",
+    "docs/continuum-c1/ARITHMETIC-AUDIT-TRANSCRIPT.md",
+    "docs/continuum-c1/AUTHORSHIP.md",
+    "docs/continuum-c1/BUILD-TRANSCRIPT.md",
+    "docs/continuum-c1/FABLE-AUDIT.md",
+    "docs/continuum-c1/HAAR-BETA-ZERO-APPENDIX.md",
+    "docs/continuum-c1/INTEGRATION-NOTE.md",
+    "docs/continuum-c1/OBLIGATION-MATRIX.md",
+    "docs/continuum-c1/PREREGISTRATION.md",
+    "docs/continuum-c1/REPOSITORY-AUDIT.md",
+    "docs/continuum-c1/SOURCE-PACKET.md",
+    "docs/continuum-c1/TECHNICAL-REPORT.md",
+    "scripts/continuum_c1_beta_cap_audit.py",
+    "scripts/continuum_c1_tail_audit.py",
+    "scripts/continuum_c1_window_canary.py"
+  ],
+  "constants": [
+    {
+      "name": "KPRadiusAtUnit(d,Nc,beta,s)",
+      "definition": "(16d+1)^2 * ((exp(abs(beta)*Nc)-1)+s+(exp(abs(beta)*Nc)-1)*s) * exp(3) < 1",
+      "units": "dimensionless proposition; beta and s must be dimensionless",
+      "validity_domain": "d,Nc natural; consumed with Nc>0 and s>0; beta arbitrary in the predicate",
+      "source_locator": "producer TightnessScaleNoGo.lean:57-62; checked consumer TwoPlaquetteCorrelator.lean:710-727",
+      "depends_on": {
+        "lattice_spacing_a": "no",
+        "lattice_extent": "no",
+        "physical_volume": "no",
+        "uv_cutoff": "no",
+        "ir_regulator": "no",
+        "bare_coupling": "yes",
+        "renormalised_coupling": "no",
+        "observable_support": "no",
+        "renormalisation_scale": "no"
+      },
+      "uniform_in": [
+        "lattice extent",
+        "physical volume",
+        "lattice spacing"
+      ]
+    },
+    {
+      "name": "kpBetaCap(d,Nc)",
+      "definition": "log(1 + 1 / (((16d+1)^2)*exp(3))) / Nc",
+      "units": "dimensionless repository coupling parameter",
+      "validity_domain": "finite for all d; strictly positive when Nc>0; necessary, not sufficient",
+      "source_locator": "producer TightnessScaleNoGo.lean:129-148",
+      "depends_on": {
+        "lattice_spacing_a": "no",
+        "lattice_extent": "no",
+        "physical_volume": "no",
+        "uv_cutoff": "no",
+        "ir_regulator": "no",
+        "bare_coupling": "no",
+        "renormalised_coupling": "no",
+        "observable_support": "no",
+        "renormalisation_scale": "no"
+      },
+      "uniform_in": [
+        "lattice extent",
+        "physical volume",
+        "lattice spacing",
+        "positive deformation s"
+      ]
+    },
+    {
+      "name": "ScaleDict.beta2D",
+      "definition": "1 / (g2 * a^2)",
+      "units": "dimensionless under the semantic convention [a]=length and [g2]=length^-2",
+      "validity_domain": "a>0 and g2>0; lane-local two-dimensional convention only",
+      "source_locator": "producer TightnessScaleNoGo.lean:29-51",
+      "depends_on": {
+        "lattice_spacing_a": "yes",
+        "lattice_extent": "no",
+        "physical_volume": "no",
+        "uv_cutoff": "yes",
+        "ir_regulator": "no",
+        "bare_coupling": "yes",
+        "renormalised_coupling": "no",
+        "observable_support": "no",
+        "renormalisation_scale": "no"
+      },
+      "uniform_in": []
+    },
+    {
+      "name": "lattice correlator decay rate at t=epsilon=1",
+      "definition": "exp(-k) in lattice separation, subject to the checked KP radius and remaining source hypotheses",
+      "units": "inverse lattice steps; physical comparison would divide the exponent by a",
+      "validity_domain": "bounded measurable plaquette observable; checked hsmall, separation, and hone hypotheses; finite KP window",
+      "source_locator": "checked consumer TwoPlaquetteCorrelator.lean:710-761",
+      "depends_on": {
+        "lattice_spacing_a": "no",
+        "lattice_extent": "no",
+        "physical_volume": "no",
+        "uv_cutoff": "no",
+        "ir_regulator": "no",
+        "bare_coupling": "yes",
+        "renormalised_coupling": "no",
+        "observable_support": "yes",
+        "renormalisation_scale": "no"
+      },
+      "uniform_in": [
+        "finite lattice extent inside the full validity domain"
+      ]
+    }
+  ],
+  "core_integration": {
+    "status": "not_applicable",
+    "baseline_sha": "7460e035",
+    "baseline_jobs": 8463,
+    "observed_jobs": null,
+    "command_transcript": null
+  },
+  "checks": [
+    {
+      "id": "CONT-C1-1-DEPENDENCY-TABLE",
+      "criterion": "Every named constant has an explicit yes/no dependency entry for a, extent, physical volume, UV/IR cutoffs, couplings, support, and renormalisation scale.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "derivation",
+          "locator": "Four-row dependency table in this manifest and CONT-C1-PR34-AUDIT-20260731.md."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C1-1-VALIDITY-DOMAIN",
+      "criterion": "The domain of validity is audited as part of each constant; a volume-free formula with a volume-dependent admissible domain is not uniform.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "TightnessScaleNoGo.lean:153-226 and TwoPlaquetteCorrelator.lean:710-761; all positivity, KP, bounded-observable, and remaining consumer hypotheses retained."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C1-2-UNITS",
+      "criterion": "All bounds are dimensionally balanced before and after rescaling, with the convention for every numerical rate recorded.",
+      "verdict": "FAIL",
+      "evidence": [
+        {
+          "kind": "derivation",
+          "locator": "ScaleDict.beta2D is dimensionless under the stated 2D semantic units, but no action-convention bridge connects it to the checked consumer."
+        },
+        {
+          "kind": "command",
+          "locator": "Executable one-plaquette unit-energy sign witness; audit_status PASS and claim_verdict FAIL.",
+          "path": "docs/audits/continuum-programme/audit_cont_c1_pr34_sign.py",
+          "sha256": "53C3AEC13B5A22B27C63A6419FEA94393F990C77DF8E634E4B3D705C8B3482E6"
+        }
+      ],
+      "witness": [
+        "For one plaquette of energy one and beta>0, the C1 positive Wilson sign uses exp(beta), while GibbsMeasure.lean uses exp(-beta).",
+        "The physical positive inverse coupling therefore maps to a negative checked parameter (plus any trace normalisation), but eventually_not_kpRadiusAtUnit_of_tendsto assumes beta tends to +infinity."
+      ]
+    },
+    {
+      "id": "CONT-C1-2-A-SCALING",
+      "criterion": "A lattice-unit correlation rate or transfer eigenvalue is converted using the correct factor of a and remains controlled as a tends to zero.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "derivation",
+          "locator": "The producer correctly records k=ceil(r/a) and physical decay scale c/a, then refuses to promote the finite-window lattice rate to a continuum mass."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C1-3-VOLUME-UNIFORMITY",
+      "criterion": "Every estimate used after volume removal is uniform in both volume and its validity domain.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "kpBetaCap contains only d and Nc; the checked KP radius has no lattice extent, and the producer makes no post-volume positive continuum claim."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C1-3-CUTOFF-UNIFORMITY",
+      "criterion": "Every estimate used after UV/IR cutoff removal is uniform in the removed cutoff after stated renormalisation.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "derivation",
+          "locator": "The cap is a-uniform only as a negative obstruction; the report explicitly denies a positive cutoff-uniform estimate or continuum measure."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C1-3-LIMIT-ORDER",
+      "criterion": "The proof uses estimates uniform for the exact limit order or joint net that the conclusion takes.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "eventually_not_kpRadiusAtUnit_of_tendsto is stated on an arbitrary filter and takes no thermodynamic or continuum measure limit."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C1-4-CIRCULARITY",
+      "criterion": "Continuum existence, OS axioms, nontriviality, or a uniform physical gap is not assumed through an interface consumed to claim the same item.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "The cap follows algebraically from KPRadiusAtUnit; Tendsto beta atTop is used only to route eventual failure, with no continuum-existence conclusion."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C1-4-PHYSICAL-GAP",
+      "criterion": "Any gap identifies the Hilbert space, vacuum sector, operator, units, a-scaling, regulator uniformity, and limiting spectral statement.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "source",
+          "locator": "TECHNICAL-REPORT.md and PR body make no physical mass-gap claim; no gap credit is assigned."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C1-HOUSE-PROSE",
+      "criterion": "Prose and headlines match literal declarations, constants, and domains.",
+      "verdict": "FAIL",
+      "evidence": [
+        {
+          "kind": "file",
+          "locator": "TightnessScaleNoGo.lean:45-46 and GibbsMeasure.lean:83-106 expose opposite signs for the advertised positive Wilson trajectory."
+        }
+      ],
+      "witness": [
+        "OBLIGATION-MATRIX.md calls beta(a)=1/(g2*a^2) the continuum trajectory consumed by the existing theorem, but the checked consumer's positive beta multiplies ReTr with a minus sign.",
+        "The Lean headline proves the atTop branch, not the physical atBot branch induced by the repository's hard-coded ReTr convention."
+      ]
+    },
+    {
+      "id": "CONT-C1-HOUSE-CORE",
+      "criterion": "If integrated into YangMillsCore, canonical build is green, oracle is clean, consistency passes, and the job count exceeds 8463.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "command",
+          "locator": "Clean detached checkout at 0a46e266: direct Lean and lake build YangMills.Continuum.TightnessScaleNoGo exited 0, target graph completed 8198 jobs, canary mutation self-test passed, and all seven oracle queries reported only propext, Classical.choice, Quot.sound; module is intentionally outside YangMillsCore."
+        }
+      ]
+    }
+  ]
+}
