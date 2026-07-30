@@ -65,19 +65,24 @@ activity-domain zero-free polydisc.  Do not replace
 `hRpoly` by an axiom or a hollow interface; build it from source-grounded
 constructive-QFT bricks or leave it as an explicit theorem hypothesis.
 
-An independent finite-volume campaign is active in
-[`docs/THERMODYNAMIC-LIMIT-KP-PLAN.md`](docs/THERMODYNAMIC-LIMIT-KP-PLAN.md).
-Its green substrate gives genuine local Gibbs expectations, exact finite
-translations, an exact marked one-volume expansion with algebraic cancellation
-of the far gas, common-window marginals and activities, and exact transport of
-Ursell cluster monomials between fitting volumes.  The thermodynamic limit
-itself is **not yet proved**.  The unrooted local correction tail has now been
-reindexed exactly into rooted size layers and bounded, uniformly in volume,
-by `connectedLattice_pinned_tail_volumeUniform` plus the honest
-unit-cardinality tilt required by the intrinsic `n+1` rooting factor.  The open
-step is to identify the corresponding infinite `clusterSum_sub_restrict`
-series, match all below-cutoff terms through the common window, and derive the
-Cauchy modulus.  No compactness or subsequence result counts as closure.
+The independent campaign in
+[`docs/THERMODYNAMIC-LIMIT-KP-PLAN.md`](docs/THERMODYNAMIC-LIMIT-KP-PLAN.md)
+has now constructed the complete-sequence thermodynamic limit of genuine
+local Gibbs expectations in the uniform KP regime.  Exact far-gas
+cancellation, common-window transport, and the literal consumer of
+`connectedLattice_pinned_tail_volumeUniform` give a quantitative Cauchy
+modulus; completeness then yields a positive normalized real local state,
+invariant under positive translation generators and finite words.  A concrete
+`d=2`, `SU(2)` physical Wilson instance is proved for
+`0 < |β| ≤ 10^-5`.  An explicit cofinal sequence of genuine centered free
+boxes converges to the same value as periodic boundary conditions, and the
+normalized finite two-plaquette truncated-correlation bound passes to the
+state under its explicit eventual realization/separation hypotheses.  This
+does not claim arbitrary boundary conditions, inverse translations, a
+`C*`-state, a continuum limit, or OS reconstruction.  The focal modules,
+ten headline oracles, and a direct root elaboration are green; the canonical
+Lake root build remains to be captured from a shell whose `git` can reach the
+changed Mathlib URL.
 
 For a fast human-readable progress scan, read the progress dashboard near the
 top of [`README.md`](README.md#progress-dashboard) and the static dashboard in

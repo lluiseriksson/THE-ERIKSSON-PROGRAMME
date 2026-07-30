@@ -27738,3 +27738,84 @@ The thermodynamic-limit campaign remains open.  The finite below-cutoff
 normalized marked sums have not yet been transported jointly between
 volumes; hence no Cauchy theorem for the genuine expectation and no
 infinite-volume state are claimed here.
+
+## Addendum 543 (2026-07-30, **whole-sequence local Gibbs state and genuine free-box limit**)
+
+The terminal local thermodynamic chain is now theorem-fed at its explicit
+scope.
+
+`ThermodynamicLimit.lean` proves
+`cauchySeq_localGibbsExpectation_kpUniform` for the complete sequence of
+genuine normalized Gibbs expectations.  The proof first chooses a single
+marked cutoff `q`, then the explicit common-window threshold, and applies the
+two-volume estimate whose boundary term is ultimately the literal
+`connectedLattice_pinned_tail_volumeUniform` consumer.  No compactness or
+subsequence is used.  Completeness of `ℂ` defines
+`infiniteLocalGibbsExpectation`; its real part is bundled as
+`infiniteLocalGibbsState`, a positive normalized real linear functional
+invariant under every positive unit translation generator and every finite
+word in those generators.
+
+`ThermodynamicNonvacuity.lean` constructs the packaged uniform KP regime for
+the physical `d=2`, `SU(2)` Wilson energy throughout
+
+```text
+0 < |β| ≤ 10^-5.
+```
+
+The energy is proved nonconstant and the group, Haar probability measure,
+measurability, and boundedness instances are all concrete.
+
+`LocalFreeBoundary.lean` deletes the centered seam and identifies its gas
+literally with a polymer restriction.  `LocalBoundaryCorrection.lean` proves
+that the normalized periodic/free discrepancy is the absolutely summable
+series of clusters which meet both the marked support and the deleted seam.
+The same-volume endpoint is
+`norm_localGibbsExpectation_sub_freeBoundary_le_kpUniform`.
+
+`FreeBoundaryThermodynamicLimit.lean` chooses the cofinal sequence
+
+```text
+freeBoundaryVolumeIndex O q
+  = thermodynamicVolumeThreshold O q + q
+```
+
+and proves `tendsto_freeBoundaryThermodynamicExpectation`: the complete
+explicit free-box sequence converges to the same infinite value as periodic
+boundary conditions.  This proves independence between the periodic and
+centered free boundaries actually constructed; no arbitrary-boundary theorem
+is claimed.
+
+`ThermodynamicCorrelation.lean` rewrites
+`two_plaquette_correlator_bound_normalized` exactly as a bound on
+`localGibbsTruncatedCorrelation` and passes it unchanged to
+`infiniteLocalGibbsTruncatedCorrelation` under the explicit eventual
+plaquette-realization and separation hypotheses.  The geometric
+instantiation is not hidden.
+
+Direct focal compilation terminated `exit 0` for
+`LocalFreeBoundary.lean`, `ThermodynamicNonvacuity.lean`,
+`LocalBoundaryCorrection.lean`, `FreeBoundaryThermodynamicLimit.lean`, and
+`ThermodynamicCorrelation.lean`.  Direct elaboration of `YangMillsCore.lean`
+also terminated `exit 0`.
+
+The ten focal oracles for
+`connectedLattice_pinned_tail_volumeUniform`,
+`cauchySeq_localGibbsExpectation_kpUniform`,
+`infiniteLocalGibbsState`,
+`su2UniformLocalKPRegimeOfBound`,
+`su2InfiniteLocalGibbsStateOnPuncturedInterval`,
+`norm_localGibbsExpectation_sub_freeBoundary_le_kpUniform`,
+`tendsto_freeBoundaryThermodynamicExpectation`,
+`abs_infiniteLocalGibbsTruncatedCorrelation_le_twoPlaquette`,
+`localGibbsExpectation_translate`, and
+`CompatibleLocalObservable.realize_latticeShiftForward`
+each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The canonical Lake root acta is still pending and this addendum does not
+pretend otherwise.  In the Codex sandbox, the fixed local `lake.exe` stops
+before build planning because it detects the changed Mathlib URL, invokes
+`git`, and cannot reach port 443.  A networked owner shell must capture the
+literal terminal job count.  The mathematical modules and direct root are
+green; rule 7's canonical evidence is not yet recorded here.

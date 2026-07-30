@@ -76,56 +76,77 @@ subsequence does not close any brick.
    exactly in two admissible volumes.  `LocalSmallCorrectionCauchy.lean`
    combines that equality with the two rooted tails to obtain a direct
    two-volume estimate for the complete local correction exponent.
-7. **Cauchy and infinite state — open.**
-   The normalization-cluster correction now has a quantitative Cauchy
-   modulus.  `LocalMarkedTail.lean` now also resums the outer marked sets by
-   connected components and proves that the genuine Gibbs expectation is
-   uniformly close to its below-cutoff normalized marked sum.  It remains to
-   transport those finite normalized marked sums between admissible volumes,
-   thereby obtain a Cauchy modulus for the genuine expectation, define the
-   limit by completeness, and prove linearity, positivity, normalization,
-   generator invariance, and hence finite-translation invariance.
-8. **Boundary-condition independence and correlations — open.**
-   Compare admissible boundary realizations by the same pinned-tail estimate
-   and pass the finite-volume truncated-correlation bound to the limit.
-9. **Canonical verification and paper — open.**
-   Full `YangMillsCore` build, headline axiom oracles, ledger checkpoint, and
-   an honest paper whose theorem claims do not run ahead of Lean.
+7. **Cauchy and infinite state — green.**
+   `ThermodynamicLimit.lean` proves a quantitative Cauchy theorem for the
+   complete finite-volume sequence, defines the limit by completeness of
+   `ℂ`, and bundles its real part as a positive normalized real linear
+   functional.  It is invariant under each positive unit translation
+   generator and every finite word in those generators.  No compactness or
+   subsequence is used.  `ThermodynamicNonvacuity.lean` constructs the
+   uniform regime for the physical `SU(2)`, `d=2` Wilson energy throughout
+   the explicit punctured interval `0 < |β| ≤ 10^-5`.
+8. **Boundary-condition comparison and correlations — green, with explicit
+   scope.**
+   `LocalFreeBoundary.lean` constructs the genuine centered free box by
+   deleting the seam and identifies its polymer gas literally with a
+   restriction.  `LocalBoundaryCorrection.lean` proves the exact
+   inclusion-exclusion identity and a same-volume periodic/free estimate
+   from the support-to-seam pinned tail.
+   `FreeBoundaryThermodynamicLimit.lean` defines an explicit cofinal
+   sequence of centered free boxes and proves that the complete sequence
+   converges to the same infinite value as periodic boundary conditions.
+   This is independence between the two boundary realizations actually
+   constructed here; it is not a theorem about arbitrary boundary
+   conditions.  `ThermodynamicCorrelation.lean` identifies the normalized
+   two-plaquette quotient bound with the local truncated correlation and
+   passes it to the infinite state under the explicit eventual realization
+   and separation hypotheses.
+9. **Canonical verification and paper — in progress.**
+   All focal modules, the direct `YangMillsCore.lean` root, and ten headline
+   axiom oracles are green.  The canonical Lake invocation is still pending:
+   in the Codex sandbox, Lake checks the changed Mathlib URL by invoking
+   `git`, which cannot reach port 443 and fails before build planning.  The
+   paper must retain the exact coupling range, generator/finite-word
+   translation scope, and periodic-versus-centered-free boundary scope.
 
 ## Current exact frontier
 
-The complete normalized local correction is now theorem-fed.
-`norm_localCorrectionSeries_centered_sub_le_volumeUniform` gives, for any two
-admissible volumes,
+The mathematical bricks are closed at the stated scope.  The terminal
+whole-sequence endpoints are
 
 ```text
-|correction_N - correction_M|
-  <= 2 * exp(-ε L) * ((2 t) * (|support(O)| * 4d)).
+cauchySeq_localGibbsExpectation_kpUniform
+tendsto_infiniteLocalGibbsExpectation
+infiniteLocalGibbsState
+tendsto_freeBoundaryThermodynamicExpectation
+abs_infiniteLocalGibbsTruncatedCorrelation_le_twoPlaquette
 ```
 
-This is a whole-sequence comparison, not a compactness or subsequence
-argument.  Its below-cutoff parts agree exactly through a finite common-window
-equivalence; both complementary parts are controlled by the rooted KP tail.
+The Cauchy modulus is
 
-The outer marked-set tail is now controlled separately.
-`localPinnedSetTailWeight_le_exp_volumeUniform` resums connected components
-with no Ursell rooting factor, and
-`norm_localGibbsExpectation_sub_localMarkedClusterSmallSum_le_volumeUniform`
-shows that the genuine expectation is exponentially close to the finite
-below-cutoff normalized marked sum.
+```text
+thermodynamicCauchyBound(q)
+  = 2 * markedOuterTailBound(q)
+    + markedSmallLayerCauchyBound(q,q),
+```
 
-The next honest frontier is exact/common-window transport of that finite
-sum.  A marked set and every correction cluster coupled to it must be
-transported jointly, because the correction is pinned to the union of the
-observable and marked supports.  Until this finite truncated object is
-identified between volumes, there is no Cauchy theorem for the genuine Gibbs
-expectation and no infinite-volume state.
+and tends to zero.  The small-layer term contains the literal
+support-pinned boundary remainder proved from
+`connectedLattice_pinned_tail_volumeUniform`; the intrinsic tuple-rooting
+factor is absorbed by the honest unit-cardinality tilt.
 
-The honest local-correction regime is the uniformly double-tilted KP window
-at exponent `t + ε + 1`.  The extra `+1` is not an artefact: passing from the
-symmetric predicate “some tuple member meets the marked region” to a pin at
-coordinate zero costs `n+1`.  `LocalRootedTail.lean` proves this cost and does
-not silently claim that the untilted pinned tail alone controls it.
+The free exhaustion uses
+`freeBoundaryVolumeIndex O q = thermodynamicVolumeThreshold O q + q`.
+At that same volume the norm of periodic minus free expectation is eventually
+bounded by `thermodynamicCauchyBound(q)`.  Since the chosen volumes are
+cofinal, the periodic subsequence converges to the already constructed
+whole-sequence limit, and the free error tends to zero by squeezing.  This
+proves convergence of the complete explicitly indexed free sequence, not an
+existence statement obtained from compactness.
 
-No theorem in the current checkpoint asserts Cauchy convergence of the
-genuine Gibbs expectations or the existence of the infinite-volume state.
+Remaining work is verification and exposition, not an unproved
+thermodynamic-limit bridge: run the canonical Lake root build in a networked
+shell, record its literal job count, commit/push the terminal modules and
+acta, and produce the paper.  Full translation-group invariance and arbitrary
+boundary conditions are outside the proved API and must not be inferred from
+the generator/finite-word and periodic/centered-free endpoints.
