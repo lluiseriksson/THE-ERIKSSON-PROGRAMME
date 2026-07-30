@@ -28895,3 +28895,29 @@ B did fail.  The verdict is unchanged; only its enforceability is.
 axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
 **18** declarations in the module, all 18 in the oracle list.
 `check_module_prose.py`: OS lane 20 modules, 0 findings.
+
+## Addendum 562 (2026-07-30, **final main integration after concurrent PAPER 12 update**)
+
+The first publication attempt found that `origin/main` had advanced during
+the thermodynamic-limit merge validation.  No force-push or rebase was used.
+The three remote commits ending at `418227b6` were fetched and integrated by
+the second merge checkpoint `93c8e521`, whose parents are the documented
+thermodynamic merge line `9548fade` and remote `main` `418227b6`.
+
+The two textual conflicts were resolved additively: the thermodynamic
+Addenda 552--560 and all forty appended thermodynamic/integer-translation
+oracle commands were retained; the concurrent spatial-reflection audit was
+retained as Addendum 561 together with its seven new oracle commands.  No
+mathematical declaration was weakened or discarded.
+
+Because the remote update changes `YangMills/OS/SpatialReflection.lean`, the
+combined tree was rebuilt rather than inheriting either parent's evidence.
+Using the pinned Lean 4.29.0-rc6 toolchain, the canonical root terminated
+`exit 0` with the literal line
+
+```text
+Build completed successfully (8463 jobs).
+```
+
+The unchanged count is expected: the remote update adds declarations inside
+an existing core module rather than adding a new module/job.

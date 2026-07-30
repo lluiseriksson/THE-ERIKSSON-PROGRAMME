@@ -50,6 +50,16 @@ revisions. On the ownership-mismatched Windows checkout, Git was given
 `safe.directory = *` through a process-local configuration file only; no
 dependency, pin, checkout, or global Git configuration was changed.
 
+While the first merge was being published, `origin/main` advanced to
+`418227b6` with the PAPER 12 v1.1 spatial-reflection corrections.  Those
+commits were integrated by a second non-rebase merge at `93c8e521`.  The
+combined L1+OS tree was rebuilt again and retained the same literal terminal
+line:
+
+```text
+Build completed successfully (8463 jobs).
+```
+
 ## Committed oracle transcripts
 
 Full raw oracle outputs for recent checkpoints are committed under
