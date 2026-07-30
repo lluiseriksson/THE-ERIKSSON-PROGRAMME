@@ -3,6 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import YangMills.L1_GibbsMeasure.LocalMarkedSmallCauchy
+import YangMills.L1_GibbsMeasure.LocalObservableAlgebra
 import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
 
 /-!
@@ -248,6 +249,460 @@ theorem cauchySeq_localGibbsExpectation_kpUniform
         hqCorrection hrMarked
   rw [dist_eq_norm]
   exact hpair.trans_lt hqBound
+
+/-- The volume-independent high-temperature data used by every local
+observable. -/
+structure UniformLocalKPRegime (d : ℕ) [NeZero d] (B β : ℝ) where
+  t : ℝ
+  ε : ℝ
+  η : ℝ
+  t_nonneg : 0 ≤ t
+  ε_pos : 0 < ε
+  η_pos : 0 < η
+  radius_tilt :
+    ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (|β| * B) - 1) * Real.exp (t + ε)) < 1
+  small_tilt :
+    ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (|β| * B) - 1) * Real.exp (t + ε)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (|β| * B) - 1) *
+            Real.exp (t + ε)))) ≤ t
+  radius_unitTilt :
+    ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (|β| * B) - 1) *
+        Real.exp (t + ε + 1)) < 1
+  small_unitTilt :
+    ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (|β| * B) - 1) *
+          Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (|β| * B) - 1) *
+            Real.exp (t + ε + 1)))) ≤ t
+  marked_radius :
+    ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      (localMarkedEffectiveWeight d B β t * Real.exp η) < 1
+
+/-- Cauchy convergence supplied by a packaged uniform KP regime. -/
+theorem UniformLocalKPRegime.cauchySeq
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O : CompatibleLocalObservable d G) :
+    CauchySeq
+      (fun n => (localGibbsExpectation μ pe β O n : ℂ)) :=
+  cauchySeq_localGibbsExpectation_kpUniform
+    μ hpe_meas hpe β κ.t κ.ε κ.η κ.t_nonneg κ.ε_pos κ.η_pos
+      κ.radius_tilt κ.small_tilt κ.radius_unitTilt κ.small_unitTilt
+      O κ.marked_radius
+
+/-- The actual infinite-volume value of a local observable.  It is the limit
+of the complete finite-volume sequence, selected from completeness of `ℂ`
+after the explicit Cauchy theorem has been proved. -/
+noncomputable def infiniteLocalGibbsExpectation
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O : CompatibleLocalObservable d G) : ℂ :=
+  Classical.choose
+    (cauchySeq_tendsto_of_complete
+      (κ.cauchySeq μ hpe_meas hpe O))
+
+/-- The full finite-volume sequence converges to the constructed value. -/
+theorem tendsto_infiniteLocalGibbsExpectation
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O : CompatibleLocalObservable d G) :
+    Tendsto
+      (fun n => (localGibbsExpectation μ pe β O n : ℂ))
+      atTop
+      (𝓝 (infiniteLocalGibbsExpectation μ hpe_meas hpe κ O)) :=
+  Classical.choose_spec
+    (cauchySeq_tendsto_of_complete
+      (κ.cauchySeq μ hpe_meas hpe O))
+
+/-- Although the limit is constructed in `ℂ`, it is real because every
+finite-volume Gibbs expectation is real. -/
+theorem infiniteLocalGibbsExpectation_im
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O : CompatibleLocalObservable d G) :
+    (infiniteLocalGibbsExpectation μ hpe_meas hpe κ O).im = 0 := by
+  have him :=
+    Complex.continuous_im.tendsto
+      (infiniteLocalGibbsExpectation μ hpe_meas hpe κ O) |>.comp
+      (tendsto_infiniteLocalGibbsExpectation μ hpe_meas hpe κ O)
+  have hzero :
+      Tendsto (fun _ : ℕ => (0 : ℝ)) atTop (𝓝 0) :=
+    tendsto_const_nhds
+  have himzero :
+      Tendsto
+        (fun n =>
+          ((localGibbsExpectation μ pe β O n : ℂ)).im)
+        atTop (𝓝 0) := by
+    convert hzero using 1 <;> simp
+  apply tendsto_nhds_unique him
+  exact himzero
+
+/-- Real-valued form of the infinite local Gibbs functional. -/
+noncomputable def infiniteLocalGibbsStateValue
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O : CompatibleLocalObservable d G) : ℝ :=
+  (infiniteLocalGibbsExpectation μ hpe_meas hpe κ O).re
+
+/-- The genuine real expectations converge to the real state value. -/
+theorem tendsto_infiniteLocalGibbsStateValue
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O : CompatibleLocalObservable d G) :
+    Tendsto
+      (fun n => localGibbsExpectation μ pe β O n)
+      atTop
+      (𝓝 (infiniteLocalGibbsStateValue μ hpe_meas hpe κ O)) := by
+  have h :=
+    Complex.continuous_re.tendsto
+      (infiniteLocalGibbsExpectation μ hpe_meas hpe κ O) |>.comp
+      (tendsto_infiniteLocalGibbsExpectation μ hpe_meas hpe κ O)
+  simpa [infiniteLocalGibbsStateValue] using h
+
+/-- Every cofinal volume schedule converges to the same local state value.
+This is the schedule-independence consequence of convergence of the complete
+sequence, not a compactness or subsequence argument. -/
+theorem tendsto_infiniteLocalGibbsStateValue_comp
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O : CompatibleLocalObservable d G)
+    (volume : ℕ → ℕ) (hvolume : Tendsto volume atTop atTop) :
+    Tendsto
+      (fun k => localGibbsExpectation μ pe β O (volume k))
+      atTop
+      (𝓝 (infiniteLocalGibbsStateValue μ hpe_meas hpe κ O)) :=
+  (tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ O).comp
+    hvolume
+
+/-- Normalization of the infinite-volume local Gibbs functional. -/
+theorem infiniteLocalGibbsStateValue_one
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β) :
+    infiniteLocalGibbsStateValue μ hpe_meas hpe κ
+      (CompatibleLocalObservable.const (d := d) (G := G) 1) = 1 := by
+  apply tendsto_nhds_unique
+    (tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ
+      (CompatibleLocalObservable.const (d := d) (G := G) 1))
+  simpa [localGibbsExpectation_one μ hpe_meas hpe β] using
+    (tendsto_const_nhds :
+      Tendsto (fun _ : ℕ => (1 : ℝ)) atTop (𝓝 1))
+
+/-- Positivity passes from pointwise nonnegative local kernels to the
+infinite-volume functional. -/
+theorem infiniteLocalGibbsStateValue_nonneg
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O : CompatibleLocalObservable d G)
+    (hO : ∀ x, 0 ≤ O.kernel x) :
+    0 ≤ infiniteLocalGibbsStateValue μ hpe_meas hpe κ O := by
+  apply ge_of_tendsto'
+    (tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ O)
+  intro n
+  apply localGibbsExpectation_nonneg
+  intro A
+  unfold CompatibleLocalObservable.realize
+  split_ifs
+  · exact hO _
+  · exact le_rfl
+
+/-- Invariance of the infinite-volume functional under each positive unit
+translation generator. -/
+theorem infiniteLocalGibbsStateValue_translate
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O : CompatibleLocalObservable d G) (i : Fin d) :
+    infiniteLocalGibbsStateValue μ hpe_meas hpe κ (O.translate i) =
+      infiniteLocalGibbsStateValue μ hpe_meas hpe κ O := by
+  have hO :=
+    tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ O
+  have hT :=
+    tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ (O.translate i)
+  have hEq :
+      ∀ᶠ n in atTop,
+        localGibbsExpectation μ pe β (O.translate i) n =
+          localGibbsExpectation μ pe β O n := by
+    filter_upwards
+      [eventually_ge_atTop (O.translate i).minVolume] with n hn
+    exact localGibbsExpectation_translate μ pe β O i n hn
+  have hEq' :
+      ∀ᶠ n in atTop,
+        localGibbsExpectation μ pe β O n =
+          localGibbsExpectation μ pe β (O.translate i) n :=
+    hEq.mono fun _ hn => hn.symm
+  exact tendsto_nhds_unique hT (hO.congr' hEq')
+
+/-- Invariance under every finite word in the positive unit translation
+generators.  This packages the generator statement without changing its
+honest scope into a claim about a separately formalized `ℤ^d` action. -/
+theorem infiniteLocalGibbsStateValue_translateList
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O : CompatibleLocalObservable d G) (is : List (Fin d)) :
+    infiniteLocalGibbsStateValue μ hpe_meas hpe κ
+        (O.translateList is) =
+      infiniteLocalGibbsStateValue μ hpe_meas hpe κ O := by
+  induction is generalizing O with
+  | nil => rfl
+  | cons i is ih =>
+      exact (ih (O := O.translate i)).trans
+        (infiniteLocalGibbsStateValue_translate
+          μ hpe_meas hpe κ O i)
+
+/-- Additivity of the infinite-volume functional on the exact coordinate
+union of two local observables. -/
+theorem infiniteLocalGibbsStateValue_add
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O P : CompatibleLocalObservable d G) :
+    infiniteLocalGibbsStateValue μ hpe_meas hpe κ
+        (CompatibleLocalObservable.add O P) =
+      infiniteLocalGibbsStateValue μ hpe_meas hpe κ O +
+        infiniteLocalGibbsStateValue μ hpe_meas hpe κ P := by
+  have hAdd :=
+    tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ
+      (CompatibleLocalObservable.add O P)
+  have hSum :=
+    (tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ O).add
+      (tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ P)
+  have hEq :
+      ∀ᶠ n in atTop,
+        localGibbsExpectation μ pe β
+            (CompatibleLocalObservable.add O P) n =
+          localGibbsExpectation μ pe β O n +
+            localGibbsExpectation μ pe β P n := by
+    filter_upwards
+      [eventually_ge_atTop (max O.minVolume P.minVolume)] with n hn
+    exact localGibbsExpectation_add μ hpe_meas hpe β O P n hn
+  have hEq' :
+      ∀ᶠ n in atTop,
+        localGibbsExpectation μ pe β O n +
+            localGibbsExpectation μ pe β P n =
+          localGibbsExpectation μ pe β
+            (CompatibleLocalObservable.add O P) n := by
+    filter_upwards [hEq] with n hn
+    exact hn.symm
+  exact tendsto_nhds_unique hAdd (hSum.congr' hEq')
+
+/-- Real scalar linearity of the infinite-volume functional. -/
+theorem infiniteLocalGibbsStateValue_smul
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (c : ℝ) (O : CompatibleLocalObservable d G) :
+    infiniteLocalGibbsStateValue μ hpe_meas hpe κ
+        (CompatibleLocalObservable.smul c O) =
+      c * infiniteLocalGibbsStateValue μ hpe_meas hpe κ O := by
+  have hScalar :=
+    tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ
+      (CompatibleLocalObservable.smul c O)
+  have hMul :=
+    (tendsto_const_nhds.mul
+      (tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ O) :
+      Tendsto
+        (fun n : ℕ => c * localGibbsExpectation μ pe β O n)
+        atTop
+        (𝓝 (c * infiniteLocalGibbsStateValue μ hpe_meas hpe κ O)))
+  have hEq :
+      ∀ᶠ n in atTop,
+        localGibbsExpectation μ pe β
+            (CompatibleLocalObservable.smul c O) n =
+          c * localGibbsExpectation μ pe β O n := by
+    filter_upwards [eventually_ge_atTop O.minVolume] with n hn
+    exact localGibbsExpectation_smul μ pe β c O n hn
+  have hEq' :
+      ∀ᶠ n in atTop,
+        c * localGibbsExpectation μ pe β O n =
+          localGibbsExpectation μ pe β
+            (CompatibleLocalObservable.smul c O) n := by
+    filter_upwards [hEq] with n hn
+    exact hn.symm
+  exact tendsto_nhds_unique hScalar (hMul.congr' hEq')
+
+/-- Finite-volume truncated correlation of two compatible local
+observables. -/
+noncomputable def localGibbsTruncatedCorrelation
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (pe : G → ℝ) (β : ℝ)
+    (O P : CompatibleLocalObservable d G) (n : ℕ) : ℝ :=
+  localGibbsExpectation μ pe β (CompatibleLocalObservable.mul O P) n -
+    localGibbsExpectation μ pe β O n *
+      localGibbsExpectation μ pe β P n
+
+/-- Truncated correlation in the constructed infinite-volume state. -/
+noncomputable def infiniteLocalGibbsTruncatedCorrelation
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O P : CompatibleLocalObservable d G) : ℝ :=
+  infiniteLocalGibbsStateValue μ hpe_meas hpe κ
+      (CompatibleLocalObservable.mul O P) -
+    infiniteLocalGibbsStateValue μ hpe_meas hpe κ O *
+      infiniteLocalGibbsStateValue μ hpe_meas hpe κ P
+
+/-- The complete finite-volume sequence of truncated correlations converges
+to the truncated correlation of the infinite-volume state. -/
+theorem tendsto_infiniteLocalGibbsTruncatedCorrelation
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O P : CompatibleLocalObservable d G) :
+    Tendsto
+      (localGibbsTruncatedCorrelation μ pe β O P)
+      atTop
+      (𝓝 (infiniteLocalGibbsTruncatedCorrelation
+        μ hpe_meas hpe κ O P)) := by
+  exact
+    (tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ
+      (CompatibleLocalObservable.mul O P)).sub
+      ((tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ O).mul
+        (tendsto_infiniteLocalGibbsStateValue μ hpe_meas hpe κ P))
+
+/-- Any eventual volume-uniform bound on genuine finite Gibbs truncated
+correlations passes unchanged to the infinite-volume state. -/
+theorem abs_infiniteLocalGibbsTruncatedCorrelation_le_of_eventually
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β)
+    (O P : CompatibleLocalObservable d G) (C : ℝ)
+    (hC : ∀ᶠ n in atTop,
+      |localGibbsTruncatedCorrelation μ pe β O P n| ≤ C) :
+    |infiniteLocalGibbsTruncatedCorrelation
+      μ hpe_meas hpe κ O P| ≤ C := by
+  exact le_of_tendsto
+    ((tendsto_infiniteLocalGibbsTruncatedCorrelation
+      μ hpe_meas hpe κ O P).abs) hC
+
+/-- A positive normalized real state on the algebra of compatible local
+observables, invariant under every positive unit translation generator and
+every finite word in those generators.
+
+This is an explicitly bundled positive normalized real linear functional on
+the ordered local-observable space with unit.  It is not advertised as a
+`C*`-algebraic state: no `C*` norm or completion is part of this file. -/
+structure PositiveNormalizedLocalState
+    (d : ℕ) [NeZero d]
+    (G : Type*) [Group G] [MeasurableSpace G] where
+  value : CompatibleLocalObservable d G → ℝ
+  map_add : ∀ O P,
+    value (CompatibleLocalObservable.add O P) = value O + value P
+  map_smul : ∀ c O,
+    value (CompatibleLocalObservable.smul c O) = c * value O
+  map_one :
+    value (CompatibleLocalObservable.const (d := d) (G := G) 1) = 1
+  nonneg : ∀ O, (∀ x, 0 ≤ O.kernel x) → 0 ≤ value O
+  translate : ∀ O i, value (O.translate i) = value O
+  translateList : ∀ O is, value (O.translateList is) = value O
+
+instance
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G] :
+    CoeFun (PositiveNormalizedLocalState d G)
+      (fun _ => CompatibleLocalObservable d G → ℝ) :=
+  ⟨PositiveNormalizedLocalState.value⟩
+
+/-- **The infinite-volume positive, normalized local Gibbs state, invariant
+under all finite words in the positive translation generators.** -/
+noncomputable def infiniteLocalGibbsState
+    {d : ℕ} [NeZero d]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B β : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (κ : UniformLocalKPRegime d B β) :
+    PositiveNormalizedLocalState d G where
+  value := infiniteLocalGibbsStateValue μ hpe_meas hpe κ
+  map_add := infiniteLocalGibbsStateValue_add μ hpe_meas hpe κ
+  map_smul := infiniteLocalGibbsStateValue_smul μ hpe_meas hpe κ
+  map_one := infiniteLocalGibbsStateValue_one μ hpe_meas hpe κ
+  nonneg := infiniteLocalGibbsStateValue_nonneg μ hpe_meas hpe κ
+  translate := infiniteLocalGibbsStateValue_translate μ hpe_meas hpe κ
+  translateList :=
+    infiniteLocalGibbsStateValue_translateList μ hpe_meas hpe κ
 
 end WindowPolymer
 

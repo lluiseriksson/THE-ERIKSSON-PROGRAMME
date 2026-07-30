@@ -90,7 +90,11 @@ import YangMills.L1_GibbsMeasure.LocalMarkedTransport
 import YangMills.L1_GibbsMeasure.LocalMarkedCorrectionTransport
 import YangMills.L1_GibbsMeasure.LocalMarkedCorrectionCauchy
 import YangMills.L1_GibbsMeasure.LocalMarkedSmallCauchy
+import YangMills.L1_GibbsMeasure.LocalObservableAlgebra
 import YangMills.L1_GibbsMeasure.ThermodynamicLimit
+import YangMills.L1_GibbsMeasure.ThermodynamicNonvacuity
+import YangMills.L1_GibbsMeasure.LocalFreeBoundary
+import YangMills.L1_GibbsMeasure.LocalBoundaryCorrection
 import YangMills.L1_GibbsMeasure.ClusterGeometry
 import YangMills.L1_GibbsMeasure.PolymerRepresentation
 import YangMills.L1_GibbsMeasure.WeightedGas
