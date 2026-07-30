@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{af88cd6abc95c871495f7ac911690e938dc177b3}
+\newcommand{\anchor}{3843435533c573a0fbca32c4da691c20d1a5b247}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -29,9 +29,9 @@
 \newcommand{\SU}{\mathrm{SU}}
 
 \title{The Rate Without the Extent:\\
-a Machine-Checked Uniform Spectral Modulus\\
+a Machine-Checked Extent-Independent Spectral Rate\\
 for the Decoupled $\Z_2$ Slice\\
-\large and a pre-registered judge that failed at the coupled one}
+\large and a pre-registered gate we failed to respect}
 \author{Lluis Eriksson}
 \date{}
 
@@ -47,16 +47,26 @@ tends to $1$ outside the disordered region \cite{ErikssonSpectral}.  A geometric
 bound whose rate tends to $1$ is empty in the volume limit, so nothing in the
 lane survived $L\to\infty$, and the word \emph{clustering} was never used.
 
-\textbf{Proved.}  For the \emph{decoupled} kernel --- the transfer kernel at
-constant source weight --- the modulus is
+\textbf{Proved, for $\beta\ge0$ throughout.}  For the \emph{decoupled} kernel ---
+the transfer kernel at constant source weight --- the modulus is
 $\mathrm{specRatio} = \tanh\beta$ at \emph{every} extent, with $L$ nowhere in
 it.  Both directions: an operator bound by induction on the extent, and
 attainment by the single-site observable the extent paper already built
-\cite{ErikssonExtent}.  Composing with the modulus paper's endpoint, the
-normalised Gibbs two-point function obeys
-$|\mathbb{E}[A(X_0)A(X_N)]| \le C_A\,(\tanh\beta)^N$ past one threshold serving
-every observable --- a bound whose \emph{rate} contains no $L$, and therefore
-the first statement in this lane that survives the volume limit.
+\cite{ErikssonExtent}.  The hypothesis $\beta\ge0$ is load-bearing, not a
+convention: at negative coupling the odd bond eigenvalue is negative and
+$\tanh\beta\cdot Z^L$ is not $\mathrm{specGap}$.
+
+\textbf{And a bound that is uniform, not only a rate that is.}  An
+extent-independent rate settles nothing on its own: $C(L)\,\rho^N$ with
+$C(L)\to\infty$ is empty as the system grows however small $\rho$ is.  At
+constant source weight everything is explicit, so the uniform bound is computed
+rather than composed: for \emph{every} $N$, with no threshold,
+\[
+  \bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr| \;\le\; \langle A^2\rangle\,(\tanh\beta)^N ,
+\]
+with $\langle A^2\rangle$ the mean square in the uniform measure --- at most $1$
+for $|A|\le1$, at every extent.  We do \emph{not} call this clustering: no
+infinite-volume state is constructed here, and none is claimed.
 
 \textbf{Why the proof is not the spectral decomposition.}  The decoupled kernel
 is a product over sites, so its spectrum is a product; that route needs the
@@ -69,16 +79,20 @@ part keeps nothing and gets only Schur's test, and the two recombine
 \emph{exactly}, because $\tanh\beta \cdot Z = D$ with $Z$ the row sum and $D$
 the odd eigenvalue of a single bond.
 
-\textbf{Not proved, and a judge that failed.}  The \emph{coupled} kernel is
-untouched.  Before any of this was written we pre-registered two falsifiable
-predictions.  The first --- that the decoupled rate is exactly $\tanh\beta$ at
-every extent --- passed to $10^{-16}$, and authorised the work above.  The
-second --- that the coupled uniformity boundary is the Onsager curve --- failed
-on one of eight pre-registered cells, and it stays failed: that claim is
-therefore reported as \textbf{not established}, not softened.  At constant
-source weight the spatial slices are independent, so what is proved here is a
-statement about a product measure; that is exactly why it is reachable, and it
-is said here rather than left to be noticed.  Reflection positivity is
+\textbf{Not proved, and a gate we failed to respect.}  The \emph{coupled} kernel
+is untouched.  Before any of this was written we pre-registered two falsifiable
+predictions.  The first --- the decoupled rate is exactly $\tanh\beta$ at every
+extent --- passed to $10^{-16}$.  The second --- the coupled uniformity boundary
+is the Onsager curve --- failed on one of eight cells.  \textbf{The script we
+committed had a single joint gate, and with the second prediction failing that
+gate read \texttt{FAIL -- do not fabricate}.  We fabricated anyway.}  The
+theorems below do not depend on either prediction and stand on their proofs; the
+\emph{process} claim does not, and \S\ref{sec:scope} records the violation
+rather than reinterpreting the gate after the fact.  The Onsager boundary claim
+is reported as \textbf{not established}.  At constant source weight the spatial
+slices are independent, so what is proved here is a statement about a product
+measure; that is exactly why it is reachable, and it is said here rather than
+left to be noticed.  Reflection positivity is
 untouched, and nothing in this paper is a claim about $\SU(N)$, the continuum
 limit, or the Yang--Mills mass gap \cite{Clay}.
 \end{abstract}
@@ -97,6 +111,13 @@ and the answer is exact.
 
 \section{The construction}\label{sec:constr}
 
+\textbf{Standing hypothesis: $\beta\ge0$.}  Every statement below carries it,
+and it is load-bearing.  At $\beta<0$ the number $D$ is negative while
+$\mathrm{specGap}$ is by definition non-negative, so Theorem~\ref{thm:sharp}
+would assert that a non-negative quantity is negative.  (The all-$\beta$ form
+would read $|\tanh\beta|$; we simply assume $\beta\ge0$, as the formalisation
+does.)
+
 Let $Z = e^{\beta}+e^{-\beta}$ and $D = e^{\beta}-e^{-\beta}$, and let $K$ be the
 decoupled kernel on $\{0,1\}^L$: a product over sites of the single-bond matrix.
 Its row sums are all $Z^L$, so the constant observable is its Perron vector with
@@ -107,19 +128,20 @@ A symmetric nonnegative kernel all of whose row sums equal $R$ satisfies
 $\|Ku\| \le R\,\|u\|$.
 \end{lemma}
 
-\osline{SpatialUniform}{83}{norm\_act\_le\_of\_rowSum}.
+\osline{SpatialUniform}{105}{norm\_act\_le\_of\_rowSum}.
 One Cauchy--Schwarz per row, then summing.  This is the only bound the odd part
 of the induction is given, and it is all it needs.
 
 \begin{theorem}[the uniform operator bound]\label{thm:uniform}
-For every extent $L$ and every observable $u$ with $\sum_\sigma u(\sigma)=0$,
+Let $\beta\ge0$.  For every extent $L$ and every observable $u$ with
+$\sum_\sigma u(\sigma)=0$,
 \[
   \|Ku\| \;\le\; \tanh\beta \cdot Z^{L} \cdot \|u\| .
 \]
 \end{theorem}
 
-\osline{SpatialUniform}{318}{spatialKernel\_fluct\_bound}, from the squared
-form \osline{SpatialUniform}{176}{spatialKernel\_fluct\_sq}, which is what the
+\osline{SpatialUniform}{340}{spatialKernel\_fluct\_bound}, from the squared
+form \osline{SpatialUniform}{198}{spatialKernel\_fluct\_sq}, which is what the
 induction runs on --- a square root in the inductive hypothesis would be a
 square root at every step.
 
@@ -143,7 +165,7 @@ $\tfrac12 Z^{2}(\tanh\beta\,Z^{L})^{2}\|p\|^{2}
   \tanh\beta \cdot Z \;=\; D .
 \]
 
-\osline{SpatialUniform}{167}{tanh\_mul\_z2Norm}.
+\osline{SpatialUniform}{189}{tanh\_mul\_z2Norm}.
 That single identity is the whole reason the constant survives: the rate given
 up on the odd part is exactly the odd eigenvalue of one bond, at every step.
 Lose it and the constant would pick up a factor per site.
@@ -153,51 +175,71 @@ Lose it and the constant would pick up a factor per site.
 Theorem~\ref{thm:uniform} is an inequality.  It is attained.
 
 \begin{theorem}[the rate is exactly $\tanh\beta$]\label{thm:sharp}
-At every extent with at least one site,
+Let $\beta\ge0$.  At every extent with at least one site,
 $\mathrm{specGap} = \tanh\beta \cdot Z^{L}$, hence
 $\mathrm{specRatio} = \tanh\beta$.
 \end{theorem}
 
-\osline{SpatialUniform}{404}{spatialKernel\_specGap\_eq}.
+\osline{SpatialUniform}{426}{spatialKernel\_specGap\_eq}.
 The upper bound is Theorem~\ref{thm:uniform} together with the fact that
 $\mathrm{specGap}$ is the \emph{greatest} norm ratio on the fluctuation sector
 \cite{ErikssonSpectral} --- which is the only place that paper is used, and it
 is used as a bound, never as a spectral decomposition.  The lower bound is the
 single-site sign observable of the extent paper \cite{ErikssonExtent}: it has
-mean zero (\osline{SpatialUniform}{376}{sum\_siteSign}), it is nonzero, and
+mean zero (\osline{SpatialUniform}{398}{sum\_siteSign}), it is nonzero, and
 its eigenvalue $D\,Z^{L-1}$ realises the bound exactly.
 
 \section{The payoff}\label{sec:payoff}
 
-\begin{theorem}[a rate that survives the volume limit]\label{thm:cluster}
-At constant source weight there is an $N_0$ such that for every observable $A$
-whose dressing has mean zero there is a $C_A>0$ with
-\[
-  \bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr| \;\le\; C_A\,(\tanh\beta)^{N},
-  \qquad N \ge N_0 ,
-\]
+\begin{theorem}[an extent-independent rate]\label{thm:ratefree}
+Let $\beta\ge0$.  At constant source weight there is an $N_0$ such that for every
+observable $A$ whose dressing has mean zero there is a $C_A>0$ with
+$\bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr| \le C_A\,(\tanh\beta)^{N}$ for $N \ge N_0$,
 and $\tanh\beta$ does not depend on the extent.
 \end{theorem}
 
-\osline{SpatialUniform}{499}{gibbs\_clustering\_uniform\_rate}, composing
+\osline{SpatialUniform}{521}{gibbs\_decay\_extent\_free\_rate}, composing
 Theorem~\ref{thm:sharp} with the modulus paper's endpoint
-\cite{ErikssonSpectral}.  The hypothesis is not vacuous: that paper's
-non-vacuity lemma supplies a nonzero observable satisfying it whenever the state
-space has two points.
+\cite{ErikssonSpectral}.
 
-\textbf{What is uniform and what is not.}  The \emph{rate} is uniform in $L$.
-The constant $C_A$ is not claimed to be, and depends on the observable; the
-threshold $N_0$ does not depend on the observable, by the modulus paper's
-uniform-threshold theorem, but is not claimed uniform in $L$ either.
+\textbf{This is not a volume limit, and the previous version said it was.}  In
+Theorem~\ref{thm:ratefree} the extent is fixed before $N_0$ and $C_A$ are
+chosen, so both may in principle diverge with $L$, and a bound $C(L)\rho^N$ with
+$C(L)\to\infty$ says nothing as the system grows however small $\rho$ is.  An
+extent-independent rate is a necessary ingredient of an infinite-volume
+statement, not a sufficient one.
+
+\begin{theorem}[the bound, and not merely the rate, is uniform]\label{thm:uniformbound}
+Let $\beta\ge0$.  At constant source weight, for every observable $A$ with
+$\sum_\sigma A(\sigma)=0$ and \emph{every} $N$ --- no threshold ---
+\[
+  \bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr| \;\le\; \langle A^{2}\rangle \,(\tanh\beta)^{N},
+  \qquad
+  \langle A^{2}\rangle = 2^{-L}\!\sum_\sigma A(\sigma)^{2} .
+\]
+\end{theorem}
+
+\osline{SpatialUniform}{633}{gibbsCorr\_one\_uniform\_bound}.
+Here nothing is left to depend on the extent except through the observable
+itself: for $|A|\le1$ the constant is at most $1$ at every $L$.  It is computed
+rather than composed --- at constant weight the dressed constant observable
+\emph{is} the Perron vector and the partition function is exactly
+$2^{L}Z^{LN}$, so the endpoint's threshold machinery is not needed at all.
+
+\textbf{We still do not call this clustering.}  No infinite-volume state is
+constructed in this paper, and a uniform finite-volume bound for a fixed
+sequence of observables is not by itself such a construction.
 
 \section{Scope, and a judge that failed}\label{sec:scope}
 
 \paragraph{This is a product measure.}  At constant source weight the spatial
 slices decouple, so the Gibbs measure is a product across sites and the
 statement above is, in substance, the one-dimensional chain repeated.  That is
-why it is reachable.  What it establishes is narrower than it may sound: not
-that the coupled model clusters uniformly, but that the \emph{obstruction to
-uniformity is the source weight and not the extent}.
+why it is reachable.  What it establishes is narrower than it may sound: that
+\emph{the extent alone does not degrade the rate} in the product kernel, so the
+unresolved dependence enters only once the spatial source weight is switched on.
+It does not show that every nonconstant weight destroys uniformity, nor that the
+weight is the sole cause of the coupled model's degradation.
 
 \paragraph{The coupled kernel is exactly a 2D Ising transfer matrix.}  With the
 ring source weight, $K = D_w^{1/2} T D_w^{1/2}$ where $T$ is the inter-slice
@@ -206,26 +248,39 @@ transfer matrix of the two-dimensional Ising model, vertical coupling $\beta$
 and horizontal coupling $\gamma$.  This is an exact algebraic identification,
 not a numerical claim.
 
-\paragraph{And a pre-registered judge that failed.}  Before any of the above was
-written we committed two falsifiable predictions with their thresholds fixed in
-advance \repofile{scripts/judge\_spatial\_uniform.py}{scripts/judge\_spatial\_uniform.py}.
+\paragraph{The pre-registered gate, and our failure to respect it.}  Before any
+of the above was written we committed two falsifiable predictions with their
+thresholds fixed in advance
+\repofile{scripts/judge\_spatial\_uniform.py}{scripts/judge\_spatial\_uniform.py}.
 The first --- the decoupled rate is exactly $\tanh\beta$ at every extent ---
-passed to $10^{-16}$ and authorised this paper.  The second --- that the
-\emph{coupled} uniformity boundary is the Onsager curve
-$\sinh 2\beta \sinh 2\gamma = 1$ --- predicted saturation below $1$ on the five
-disordered cells and a rate tending to $1$ on the three ordered ones.  Seven of
-eight cells agreed.  The cell $(\beta,\gamma)=(0.1,1.0)$, disordered, gave
+passed to $10^{-16}$.  The second --- that the \emph{coupled} uniformity boundary
+is the Onsager curve $\sinh 2\beta \sinh 2\gamma = 1$ --- predicted saturation
+below $1$ on the four disordered cells and a rate tending to $1$ on the four
+ordered ones.  Seven of eight cells agreed.
+
+\textbf{But the script we committed ends in a single joint gate}, printing
+\texttt{PASS -- fabrication authorised} only when \emph{both} predictions hold.
+With the second failing, the artefact printed \texttt{FAIL -- do not fabricate},
+and we proceeded to prove the decoupled theorem anyway.  Deciding afterwards
+that the two predictions had separate gates is exactly the retroactive
+reinterpretation pre-registration exists to prevent, so we do not claim it:
+the gate was joint, it read \textsc{fail}, and we did not respect it.  The
+theorems of \S\S\ref{sec:constr}--\ref{sec:payoff} rest on their proofs and are
+unaffected; what is forfeited is the methodological claim, and the correct
+remedy --- writing the two gates separately \emph{before} looking --- is
+available only to the next campaign, not to this one.  The cell $(\beta,\gamma)=(0.1,1.0)$, disordered, gave
 $\mathrm{specRatio}(12)=0.6266$ --- nowhere near $1$ --- but with drift from
 $L=10$ of $3.5\times10^{-2}$, above the pre-registered $10^{-2}$, so the cell is
 \emph{undecided at $L\le12$} and the judge does not pass.
 
 We did not raise the extent until the cell passed.  The autopsy
 \repofile{scripts/judge\_spatial\_uniform\_autopsy.py}{scripts/judge\_spatial\_uniform\_autopsy.py}
-prints the whole sequence instead: its increments decay geometrically with ratio
-$0.835$, extrapolating to about $0.707$, so this is saturation not yet reached
-and not a crawl to $1$.  That is a diagnosis, not a pass.  \textbf{The Onsager
-identification of the boundary is therefore reported as not established}, and no
-statement in this paper rests on it.
+prints the whole sequence instead: its last increment ratio is $0.835$, and a
+geometric extrapolation from it gives about $0.707$.  That single local ratio is
+\emph{consistent with} saturation below one; it does not exclude a later change
+of regime, and $L\le12$ does not establish a limiting value.  \textbf{The Onsager
+identification of the boundary is reported as not established}, and no statement
+in this paper rests on it.
 
 \paragraph{No claim about the physical target.}  Reflection positivity is
 untouched, and nothing here concerns $\SU(N)$, the continuum limit, or the Clay
@@ -266,12 +321,12 @@ actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8431 jobs, success \\
-Oracle commands, and answers & 2689 \\
-\quad distinct declarations & 2686 \\
+Oracle commands, and answers & 2694 \\
+\quad distinct declarations & 2691 \\
 \quad commands listed twice & 3 \\
-\quad distinct, with axiom dependencies & 2663 \\
+\quad distinct, with axiom dependencies & 2668 \\
 \quad distinct, axiom-free & 23 \\
-Declarations in this module & 17 \\
+Declarations in this module & 22 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
 Project axioms & 0 \\
@@ -310,6 +365,26 @@ the Coupled $\Z_2$ Slice}, viXra, 2026.
 L.~Onsager,
 \emph{Crystal statistics I: a two-dimensional model with an order-disorder
 transition}, Phys.\ Rev.\ \textbf{65} (1944), 117--149.
+
+\bibitem{Kac}
+M.~Kac and J.~C.~Ward,
+\emph{A combinatorial solution of the two-dimensional Ising model},
+Phys.\ Rev.\ \textbf{88} (1952), 1332--1337.
+
+\bibitem{SchultzMattisLieb}
+T.~D.~Schultz, D.~C.~Mattis and E.~H.~Lieb,
+\emph{Two-dimensional Ising model as a soluble problem of many fermions},
+Rev.\ Mod.\ Phys.\ \textbf{36} (1964), 856--871.
+
+\bibitem{LevinPeres}
+D.~A.~Levin and Y.~Peres,
+\emph{Markov Chains and Mixing Times}, 2nd ed., AMS, 2017.
+(Tensorisation of the spectral gap for product chains; Chapter 12.)
+
+\bibitem{DiaconisSaloffCoste}
+P.~Diaconis and L.~Saloff-Coste,
+\emph{Comparison theorems for reversible Markov chains},
+Ann.\ Appl.\ Probab.\ \textbf{3} (1993), 696--730.
 
 \bibitem{Seneta}
 E.~Seneta,
