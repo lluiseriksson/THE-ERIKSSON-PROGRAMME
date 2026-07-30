@@ -51,8 +51,9 @@ lane survived $L\to\infty$, and the word \emph{clustering} was never used.
 the transfer kernel at constant source weight --- the modulus is
 $\mathrm{specRatio} = \tanh\beta$ at every \emph{positive} extent, with $L$
 nowhere in it.  (At $L=0$ there is a single configuration, the only eigenvalue
-is the Perron one and $\mathrm{specRatio}=0$; every statement below is for
-$L\ge1$, as the formalisation is.)  Both directions: an operator bound by induction on the extent, and
+is the Perron one and $\mathrm{specRatio}=0$.  The exact identity is stated for
+$L\ge1$; the operator and Gibbs inequalities below also hold at $L=0$, where
+they are trivial.)  Both directions: an operator bound by induction on the extent, and
 attainment by the single-site observable the extent paper already built
 \cite{ErikssonExtent}.  The hypothesis $\beta\ge0$ is load-bearing, not a
 convention: at negative coupling the odd bond eigenvalue is negative and
@@ -187,8 +188,9 @@ $\mathrm{specRatio} = \tanh\beta$.
 \osline{SpatialUniform}{436}{spatialKernel\_specGap\_eq}.
 The upper bound is Theorem~\ref{thm:uniform} together with the fact that
 $\mathrm{specGap}$ is the \emph{greatest} norm ratio on the fluctuation sector
-\cite{ErikssonSpectral} --- which is the only place that paper is used, and it
-is used as a bound, never as a spectral decomposition.  The lower bound is the
+\cite{ErikssonSpectral} --- which is the only \emph{spectral} use of that paper
+here, and it is used as a bound, never as a decomposition.  (\S\ref{sec:payoff}
+uses that paper again, for its Gibbs endpoint.)  The lower bound is the
 single-site sign observable of the extent paper \cite{ErikssonExtent}: it has
 mean zero (\osline{SpatialUniform}{408}{sum\_siteSign}), it is nonzero, and
 its eigenvalue $D\,Z^{L-1}$ realises the bound exactly.
