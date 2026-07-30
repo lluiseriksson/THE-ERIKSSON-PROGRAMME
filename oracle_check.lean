@@ -3080,3 +3080,4 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.gibbsPathSum_combo
 #print axioms YangMills.OS.gibbsPathSum_gram_nonneg
 #print axioms YangMills.OS.gibbsPathSum_gram_nonneg_even
+#print axioms YangMills.OS.symWeighted_posSemidef_zero

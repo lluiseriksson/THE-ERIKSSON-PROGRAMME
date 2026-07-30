@@ -56,9 +56,11 @@ For a transfer chain the reflected two-point sum is `⟨v, Kᴺ v⟩` with
   positive weight and every extent with at least one site, the COUPLED kernel is
   indefinite below zero.  Congruence is invertible, so the inertia transports
   both ways and the witness is the sign observable divided by `√w`.
-* `spatialKernel_posSemidef_zero` — the exception, recorded rather than left to
-  be found: at `L = 0` the space is a point, the kernel is `1`, and the form is
-  a square at every `β`.  The boundary is sharp from one site upwards.
+* `spatialKernel_posSemidef_zero` / `symWeighted_posSemidef_zero` — the
+  exception, recorded rather than left to be found.  At `L = 0` the space is a
+  point; the DECOUPLED kernel is the number `1` and the COUPLED one is the
+  positive scalar `w ∅`, which need not be `1`.  Both forms are non-negative at
+  every `β`, so the boundary is sharp from one site upwards.
 * `gibbsPathSum_gram_nonneg` / `gibbsPathSum_gram_nonneg_even` — the GRAM
   statement: positivity of the whole matrix over a family of observables, not
   only of one diagonal entry.  `gibbsPathSum_combo` is the bilinearity that
@@ -218,7 +220,8 @@ theorem posSemidef_congr {ι : Type*} [Fintype ι] {K : ι → ι → ℝ}
   exact hK _
 
 /-- **THE COUPLED KERNEL IS PSD.**  For `β ≥ 0` and **any** strictly positive
-source weight --- the weight that destroys uniformity in the extent leaves
+source weight --- the weight for which no extent-uniform spectral bound is
+presently proved, and under which degeneration has been MEASURED, leaves
 positivity exactly where it was. -/
 theorem symWeighted_posSemidef {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 ≤ β) (u : (Fin L → Fin 2) → ℝ) :
@@ -426,6 +429,19 @@ theorem spatialKernel_posSemidef_zero (β : ℝ) (u : (Fin 0 → Fin 2) → ℝ)
     simp
   rw [Finset.sum_congr rfl fun σ _ => by rw [hone σ]]
   exact Finset.sum_nonneg fun σ _ => mul_self_nonneg _
+
+/-- **The `L = 0` exception for the COUPLED kernel.**  The decoupled kernel there
+is the number `1`; the weighted one is the positive scalar `w ∅`, which need not
+be `1`.  Both forms are non-negative at every `β`, and the two objects are kept
+apart rather than conflated. -/
+theorem symWeighted_posSemidef_zero {w : (Fin 0 → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (u : (Fin 0 → Fin 2) → ℝ) :
+    0 ≤ ∑ σ, u σ * act (symWeighted w β) u σ := by
+  have h := posSemidef_congr (K := spatialKernel β)
+    (fun v => spatialKernel_posSemidef_zero β v) (fun σ => Real.sqrt (w σ)) u
+  have hfun : (fun σ τ => Real.sqrt (w σ) * spatialKernel β σ τ * Real.sqrt (w τ))
+      = symWeighted w β := rfl
+  rwa [hfun] at h
 
 /-! ## §8  The Gram form: positivity of the whole matrix, not only its diagonal
 
