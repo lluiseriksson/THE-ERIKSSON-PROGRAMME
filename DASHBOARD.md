@@ -1,5 +1,5 @@
 # DASHBOARD (generado por bot cada hora — no editar a mano)
-_Última pasada: 2026-07-30T20:41:33Z_
+_Última pasada: 2026-07-30T22:34:44Z_
 
 ## Satélites con STATUS.json
 
@@ -7,7 +7,7 @@ _Última pasada: 2026-07-30T20:41:33Z_
 |---|---|---|---|---|---|---|
 | lean-gaussian-field | green |  | 0 | 0 | true | 0h |
 | lean-transfer-matrix | green |  | 0 | 0 | true | 0h |
-| lean-os-positivity | green |  | 0 | 0 | true | 1h |
+| lean-os-positivity | green |  | 0 | 0 | true | 0h |
 | lean-connes-kreimer | green |  | 0 | 0 | true | 0h |
 | lean-2d-yang-mills | green |  | 4 | 0 | true | 0h |
 | lean-zero-free-regions | green |  | 0 | 0 | true | 0h |
