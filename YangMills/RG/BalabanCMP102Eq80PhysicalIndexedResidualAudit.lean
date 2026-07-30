@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalIndexedResidual
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalIndexedCouplingScaledResidual

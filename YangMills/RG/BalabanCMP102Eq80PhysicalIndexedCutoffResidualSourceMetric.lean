@@ -6,6 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCThirdFieldContDiff
 import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCThirdFieldSourceMetricBound
 import YangMills.RG.BalabanCMP102Eq80SourcePi4IndexedCutoffResidual
+import YangMills.RG.BalabanCMP102Eq80PhysicalIndexedResidual
 
 /-!
 # Physical source-metric producer for the indexed cubic residual
@@ -150,25 +151,15 @@ theorem
     let Z0 := cmp102Eq80SourcePi4CenteredRegion anchor domains Pcut
     let B := physicalBondProjection Y.bondSupport
       (cmp116SourcePhysicalCoordinateCochain b)
-    let f : FineField M Q Nc → ℝ := fun A =>
-      cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
-        anchor K hc hmass hK baseCoarseCovariance
-        sigma layerWord choice D D₃ V₀ Pprop T Δπ J A Y.blocks
     let sourceMajorant :=
       cmp102Eq80PhysicalDomainFTCThirdFieldSourceMetricMajorant
         baseCoarseCovariance sourceJetBound κcard κmetric
         summationRatio layerWord Y Δ
-    |(1 / 2 : ℝ) * inner ℝ B
-        (cmp116RadialTaylorResidualOperator
-          (cmp102Eq80CouplingScaledPotential gk f) B
-          (((contDiff_three_cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
-              anchor K hc hmass hK baseCoarseCovariance
-              hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
-              sigma hRweak hcap hsmallContour layerWord choice
-              D D₃ V₀ Pprop T Δπ J Y.blocks hD hD₃ hV₀).comp
-            (cmp109ConstrainedLinearFluctuationCLM
-              (M := M) (Q := Q) (Nc := Nc) gk).contDiff).of_le
-                (by norm_num)) B)| ≤
+    |cmp102Eq80PhysicalIndexedCouplingScaledResidual
+        anchor domains i K hc hmass hK baseCoarseCovariance
+        hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+        sigma hRweak hcap hsmallContour layerWord choice
+        D D₃ V₀ Pprop T Δπ J hD hD₃ hV₀ gk B| ≤
       (sourceMajorant *
           (gk ^ 2 * (1 + (M : ℝ) ^ 3) ^ 3) *
           (Real.sqrt (((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ) *
@@ -219,10 +210,12 @@ theorem
     simpa using hdiv
   have hsourceMajorant : 0 ≤ sourceMajorant :=
     le_trans (norm_nonneg _) (hsource 0 hzero)
-  exact
+  have hterminal :=
     abs_half_inner_cmp116RadialTaylorResidualOperator_eq80IndexedCouplingScaledDomainProjection_le_centeredEnergy_of_printedCutoff
       Dict anchor domains i Pcut epsilon1 gk b
       hepsilon1 hgk hcutoff f hf sourceMajorant hsourceMajorant hsource
+  simpa [f, cmp102Eq80PhysicalIndexedCouplingScaledResidual,
+    cmp102Eq80CouplingScaledTaylorResidual] using hterminal
 
 end
 
