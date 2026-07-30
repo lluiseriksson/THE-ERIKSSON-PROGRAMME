@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{1f79a73d3b88bf055292cd48ec6ab0aff0252967}
+\newcommand{\anchor}{730857fb700a31409c457ff4b0d03b4582e4d2f5}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -86,10 +86,11 @@ theorem here or elsewhere in the lane says the weight destroys uniformity, only
 that no uniform bound is proved for it.  Nothing here concerns uniformity in the
 extent, $\SU(N)$, the continuum limit, or the Yang--Mills mass gap \cite{Clay}.
 
-\textbf{On the pre-registration.}  Three gates were committed before any Lean was
-written, and \S\ref{sec:gates} reports what happened to them --- including one
-that failed because of a design error of ours, and the redesign that replaced
-it.
+\textbf{On the pre-registration.}  Three \emph{active} gates were committed
+before any Lean was written, and \S\ref{sec:gates} reports what happened to
+each.  A fourth is preserved there and not counted: the original Gate~B, which
+failed because of a design error of ours, and which two of the three active
+gates replaced.
 \end{abstract}
 
 \section{Why this one survives the weight}\label{sec:why}
@@ -120,7 +121,7 @@ Let $K$ be any symmetric kernel.  For every $m$ and every observable $u$,
 \]
 \end{theorem}
 
-\osline{SpatialReflection}{103}{sum\_iterate\_even\_nonneg}.
+\osline{SpatialReflection}{105}{sum\_iterate\_even\_nonneg}.
 Move half the iterates across the pairing --- which is what symmetry buys --- and
 the sum becomes $\sum_i (K^{m}u)(i)^2$.  No positivity of $K$ is used, and no
 hypothesis on $\beta$: this holds at negative coupling, where the bond
@@ -133,7 +134,7 @@ For $\beta\ge0$, every extent $L$ and every observable $u$,
 $\sum_\sigma u(\sigma)\,(Ku)(\sigma) \ge 0$.
 \end{theorem}
 
-\osline{SpatialReflection}{145}{spatialKernel\_posSemidef}.
+\osline{SpatialReflection}{147}{spatialKernel\_posSemidef}.
 By induction on the extent, splitting an observable at the first site into its
 even and odd parts.  Each part inherits positivity from the inductive
 hypothesis, and the two are recombined with the two bond eigenvalues,
@@ -145,7 +146,7 @@ hypothesis, and the two are recombined with the two bond eigenvalues,
 which is precisely where the hypothesis enters.  It is the same induction the
 companion uniformity paper runs \cite{ErikssonUniform}, with different
 bookkeeping; the split lemma is shared and stated once
-(\osline{SpatialReflection}{124}{act\_spatialKernel\_cons}).
+(\osline{SpatialReflection}{126}{act\_spatialKernel\_cons}).
 
 \begin{theorem}[congruence, and the coupled kernel]\label{thm:congr}
 If $K$ is positive semidefinite then so is $c\,K\,c$ for any function $c$.
@@ -153,8 +154,8 @@ Hence for $\beta\ge0$ and \emph{any} strictly positive source weight $w$, the
 symmetrised kernel $\sqrt{w}\,K\,\sqrt{w}$ is positive semidefinite.
 \end{theorem}
 
-\osline{SpatialReflection}{207}{posSemidef\_congr} and
-\osline{SpatialReflection}{223}{symWeighted\_posSemidef}.
+\osline{SpatialReflection}{209}{posSemidef\_congr} and
+\osline{SpatialReflection}{226}{symWeighted\_posSemidef}.
 This is the step \S\ref{sec:why} advertised, and it costs one reindexing.
 
 \begin{theorem}[bond reflection]\label{thm:bond}
@@ -162,7 +163,7 @@ For $\beta\ge0$, every $m$ and every observable,
 $\sum_i (K^{2m+1}u)(i)\,u(i) \ge 0$.
 \end{theorem}
 
-\osline{SpatialReflection}{237}{sum\_iterate\_odd\_nonneg}.
+\osline{SpatialReflection}{240}{sum\_iterate\_odd\_nonneg}.
 
 \section{The same statements, about the measure}\label{sec:measure}
 
@@ -176,9 +177,9 @@ two ends of the path.  For any strictly positive source weight, at every extent:
 \begin{enumerate}
 \item at even separation the reflected two-point sum is non-negative for
 \emph{every} $\beta$
-(\osline{SpatialReflection}{264}{gibbsPathSum\_nonneg\_even});
+(\osline{SpatialReflection}{267}{gibbsPathSum\_nonneg\_even});
 \item for $\beta\ge0$ it is non-negative at \emph{every} separation
-(\osline{SpatialReflection}{273}{gibbsPathSum\_nonneg}).
+(\osline{SpatialReflection}{276}{gibbsPathSum\_nonneg}).
 \end{enumerate}
 \end{theorem}
 
@@ -196,15 +197,24 @@ stated so the two are not confused:
 For every finite family $A_1,\dots,A_k$ of endpoint observables and every real
 $c_1,\dots,c_k$,
 \[
-  \sum_{i,j} c_i c_j \, \bigl\langle A_i, K^{N} A_j \bigr\rangle \;\ge\; 0
+  \sum_{i,j} c_i c_j \,
+    \operatorname{gibbsPathSum}(w,\beta,N,A_i,A_j) \;=\;
+  \sum_{i,j} c_i c_j \,
+    \bigl\langle \sqrt{w}\,A_i,\; K_w^{\,N}\, \sqrt{w}\,A_j \bigr\rangle
+  \;\ge\; 0
 \]
-under the hypotheses of Theorem~\ref{thm:rp}.
+under the hypotheses of Theorem~\ref{thm:rp}, where $K_w=\sqrt{w}\,K\sqrt{w}$.
 \end{theorem}
 
-\osline{SpatialReflection}{468}{gibbsPathSum\_gram\_nonneg} and
-\osline{SpatialReflection}{475}{gibbsPathSum\_gram\_nonneg\_even}, with
+The factors $\sqrt{w}$ are not decoration.  They are the dressing the bridge
+module produces \cite{ErikssonGibbs}, and they are what makes the operator
+self-adjoint; the same matrix written with undressed $A_i$ and the bare $K$
+would be a true inequality about a \emph{different} object.
+
+\osline{SpatialReflection}{484}{gibbsPathSum\_gram\_nonneg} and
+\osline{SpatialReflection}{491}{gibbsPathSum\_gram\_nonneg\_even}, with
 the bilinearity that makes the matrix visible at
-\osline{SpatialReflection}{443}{gibbsPathSum\_combo}.
+\osline{SpatialReflection}{459}{gibbsPathSum\_combo}.
 
 \section{Sharpness: the hypothesis is active}\label{sec:sharp}
 
@@ -219,8 +229,8 @@ At one site and constant weight, the single-site sign observable gives
 exactly.  For $\beta<0$ and $N$ odd this is negative.
 \end{theorem}
 
-\osline{SpatialReflection}{305}{gibbsPathSum\_siteSign\_eq} and
-\osline{SpatialReflection}{327}{gibbsPathSum\_neg\_of\_neg\_beta}.
+\osline{SpatialReflection}{308}{gibbsPathSum\_siteSign\_eq} and
+\osline{SpatialReflection}{330}{gibbsPathSum\_neg\_of\_neg\_beta}.
 The observable is the one the extent paper already built
 \cite{ErikssonExtent}; it is an eigenvector of the decoupled kernel with
 eigenvalue $D$, so the iterate is $D^{N}$ times it, and the norm counts the two
@@ -238,12 +248,18 @@ $\beta<0$, the quadratic form of $\sqrt{w}\,K\,\sqrt{w}$ takes the value
 $(e^{\beta}-e^{-\beta})\,Z^{L-1}\,2^{L} < 0$.
 \end{theorem}
 
-\osline{SpatialReflection}{361}{symWeighted\_quadForm\_neg\_of\_neg\_beta}.
+\osline{SpatialReflection}{364}{symWeighted\_quadForm\_neg\_of\_neg\_beta}.
 
-\paragraph{The exception, recorded.}  At $L=0$ the configuration space is a
-point, the kernel is the number $1$, and the form is a square at every $\beta$
-(\osline{SpatialReflection}{414}{spatialKernel\_posSemidef\_zero}).  So
-``exactly $\beta\ge0$'' is a statement from one site upwards.
+\paragraph{The exception, recorded --- and it is two kernels, not one.}  At
+$L=0$ the configuration space is a point, and there are two objects to keep
+apart.  The \emph{decoupled} kernel is the number $1$
+(\osline{SpatialReflection}{417}{spatialKernel\_posSemidef\_zero}); the
+\emph{weighted} kernel is the positive scalar $w(\varnothing)$, which need not
+be $1$
+(\osline{SpatialReflection}{437}{symWeighted\_posSemidef\_zero}).  Both quadratic
+forms are squares at every $\beta$ --- $u^2$ and $w(\varnothing)u^2$ --- so
+Theorem~\ref{thm:sharpw} has nothing to witness there, and ``exactly
+$\beta\ge0$'' is a statement from one site upwards.
 
 \section{The three gates, and the one that failed}\label{sec:gates}
 
@@ -321,12 +337,12 @@ actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8432 jobs, success \\
-Oracle commands, and answers & 2715 \\
+Oracle commands, and answers & 2716 \\
 \quad distinct declarations & 2712 \\
 \quad commands listed twice & 3 \\
-\quad distinct, with axiom dependencies & 2689 \\
+\quad distinct, with axiom dependencies & 2690 \\
 \quad distinct, axiom-free & 23 \\
-Declarations in this module & 18 \\
+Declarations in this module & 19 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
 Project axioms & 0 \\
