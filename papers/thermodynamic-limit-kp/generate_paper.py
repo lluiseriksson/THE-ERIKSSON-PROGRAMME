@@ -110,8 +110,8 @@ styles.add(
         fontSize=14,
         leading=17,
         textColor=ACCENT,
-        spaceBefore=5 * mm,
-        spaceAfter=2.5 * mm,
+        spaceBefore=4.2 * mm,
+        spaceAfter=2.2 * mm,
         keepWithNext=True,
     )
 )
@@ -122,8 +122,8 @@ styles.add(
         fontSize=11,
         leading=14,
         textColor=BASE,
-        spaceBefore=3 * mm,
-        spaceAfter=1.5 * mm,
+        spaceBefore=2.5 * mm,
+        spaceAfter=1.2 * mm,
         keepWithNext=True,
     )
 )
@@ -132,10 +132,10 @@ styles.add(
         name="BodyText2",
         fontName="PaperSerif",
         fontSize=9.4,
-        leading=13.4,
+        leading=12.7,
         alignment=TA_JUSTIFY,
         textColor=BASE,
-        spaceAfter=2.2 * mm,
+        spaceAfter=1.8 * mm,
     )
 )
 styles.add(
@@ -143,7 +143,7 @@ styles.add(
         name="TheoremText",
         fontName="PaperSerif",
         fontSize=9.1,
-        leading=13,
+        leading=12.5,
         textColor=BASE,
         leftIndent=4 * mm,
         rightIndent=4 * mm,
@@ -177,12 +177,24 @@ styles.add(
     ParagraphStyle(
         name="Reference",
         fontName="PaperSerif",
-        fontSize=8.1,
-        leading=11,
+        fontSize=7.8,
+        leading=9.7,
         textColor=BASE,
         leftIndent=5 * mm,
         firstLineIndent=-5 * mm,
-        spaceAfter=1.5 * mm,
+        spaceAfter=0.8 * mm,
+    )
+)
+styles.add(
+    ParagraphStyle(
+        name="ReferenceHead",
+        fontName="PaperSerif-Bold",
+        fontSize=12,
+        leading=14,
+        textColor=ACCENT,
+        spaceBefore=2 * mm,
+        spaceAfter=1 * mm,
+        keepWithNext=True,
     )
 )
 
@@ -349,7 +361,261 @@ story.append(
     )
 )
 
-story.append(P("2. Finite-volume setting", "SectionHead"))
+story.append(P("2. Formal-design lessons", "SectionHead"))
+story.append(
+    P(
+        "The main formal contribution is not the invention of a new cluster "
+        "expansion, but the choice of interfaces that make every analytic "
+        "bridge auditable. Several mathematically plausible shortcuts were "
+        "rejected because they could support a formally correct endpoint while "
+        "leaving the intended Gibbs statement unproved. This section records "
+        "the four design decisions that most strongly shaped the development. "
+        "They are reusable beyond this model because each concerns the boundary "
+        "between an abstract convergence theorem and the concrete object that "
+        "is supposed to converge.",
+    )
+)
+
+story.append(P("2.1. Rejecting a free bulk hypothesis", "SubHead"))
+story.append(
+    P(
+        "A tempting interface is to assume that the normalized expectation has "
+        "already been decomposed into a volume-independent bulk term plus a "
+        "small boundary correction. Such a theorem can be useful after the "
+        "decomposition has been proved, but it cannot itself establish the "
+        "thermodynamic limit of the genuine Gibbs integral. If the bulk term is "
+        "an unconstrained argument, the caller may instantiate it without any "
+        "connection to the numerator or the partition function. The resulting "
+        "Cauchy theorem is then conditional on exactly the identity that carries "
+        "the mathematical content.",
+    )
+)
+story.append(
+    P(
+        "The accepted interface therefore starts from "
+        "<font name='Courier'>localGibbsExpectation</font> and proves a literal "
+        "one-volume identity. The Boltzmann product is expanded into plaquette "
+        "subsets, connected components disjoint from the insertion are "
+        "factorized as the ordinary gas, and the unique sector touching the "
+        "finite support is retained as a marked activity. Only after this exact "
+        "factorization is the common far gas cancelled between numerator and "
+        "denominator. Thus the later error term is not postulated: it is the "
+        "restriction difference left by an algebraic equality. A terminal "
+        "theorem is accepted only if its conclusion names the genuine Gibbs "
+        "expectation and its hypotheses contain no free bulk or cancellation "
+        "oracle.",
+    )
+)
+
+story.append(P("2.2. Local coordinate charts instead of global volume embeddings", "SubHead"))
+story.append(
+    P(
+        "Comparing torus sizes N and M might suggest constructing a global map "
+        "between their edge sets or gauge-configuration spaces. There is no "
+        "canonical such map compatible with periodic wraparound: a coordinate "
+        "that is local in one torus can cross a seam in another, and a global "
+        "configuration map would impose choices irrelevant to a local "
+        "observable. Building a universal-cover theory for entire "
+        "configurations would also mix the finite product measure with geometry "
+        "that is needed only on a bounded window.",
+    )
+)
+story.append(
+    P(
+        "Instead, an observable stores a finite coordinate chart independent "
+        "of the ambient volume. A comparison chooses one non-wrapping window "
+        "large enough for the support and for every cluster below the current "
+        "size cutoff. Plaquettes, polymer activities, incompatibility, Ursell "
+        "coefficients, and the marked integral are transported exactly inside "
+        "that window; no map between complete gauge configurations is required. "
+        "The residual terms are precisely clusters that leave the chart, so the "
+        "geometric failure of transport becomes the event controlled by the "
+        "pinned tail.",
+    )
+)
+story.append(
+    P(
+        "The same principle resolves inverse translations. Natural-number "
+        "coordinates support positive shifts but do not form a translation "
+        "group with a volume-independent guard. The final observable type uses "
+        "coordinates in Z^d and realizes them periodically by integer "
+        "remainders. A finite lower shift places any given observable in the "
+        "old natural-coordinate chart, and the two realizations agree literally "
+        "beyond an explicit bound. This is an eventual chart comparison, not a "
+        "volume-dependent simulation of a negative shift by N-1 positive "
+        "steps.",
+    )
+)
+
+story.append(P("2.3. Keeping the rooted multiplicity", "SubHead"))
+story.append(
+    P(
+        "At cluster order n, an Ursell tuple has n+1 polymer coordinates. The "
+        "boundary event says that some coordinate meets the marked region and "
+        "some coordinate leaves the common window. Existing KP tails are rooted "
+        "at coordinate zero. Reindexing an arbitrary witness to zero therefore "
+        "introduces a factor n+1. Choosing the first witness does not remove the "
+        "factor in general: once the mark is forgotten, as many as n+1 marked "
+        "tuples can map to the same unmarked tuple. Without an additional "
+        "uniqueness theorem for the touching polymer, the multiplicity is "
+        "intrinsic.",
+    )
+)
+story.append(
+    P(
+        "The development exposes this combinatorial derivative rather than "
+        "hiding it in a coarse constant. The factorial normalization obeys "
+        "(n+1)/(n+1)! = 1/n!, and the remaining cardinality cost is absorbed by "
+        "one unit of activity tilt. Consequently the honest hypothesis is the "
+        "KP criterion at t+epsilon+1, not merely at t+epsilon. This stronger "
+        "field propagates through the boundary theorem and is visible in the "
+        "non-vacuity calculation. Recording the factor at the reindexing site "
+        "prevents a downstream estimate from appearing stronger than the "
+        "combinatorics justify.",
+    )
+)
+
+story.append(P("2.4. Treating non-vacuity as part of the API", "SubHead"))
+story.append(
+    P(
+        "A packaged KP theorem may be internally consistent while having no "
+        "proved interacting instance. In particular, beta=0 annihilates every "
+        "Mayer activity and yields only the free product measure. It is a useful "
+        "normalization check, but it does not demonstrate that the simultaneous "
+        "radius, smallness, tilted, and marked-radius hypotheses can hold away "
+        "from the trivial point. Declaring the abstract structure inhabited only "
+        "at beta=0 would therefore make the advertised strong-coupling result "
+        "mathematically empty.",
+    )
+)
+story.append(
+    P(
+        "For this reason the abstract regime and its physical constructor are "
+        "separate audited endpoints. The constructor proves measurability, an "
+        "explicit activity majorant, all tilted inequalities, and "
+        "nonconstancy of the Wilson energy on punctured rational intervals. The "
+        "d=2 and d=4 witnesses use conservative constants because their role is "
+        "logical: they certify an open interacting range, not an optimized "
+        "strong-coupling threshold. This separation also makes future constant "
+        "improvements local; they can replace the constructor without changing "
+        "the thermodynamic-limit proof.",
+    )
+)
+
+story.append(P("2.5. A typed chain of evidence", "SubHead"))
+story.append(
+    P(
+        "The proof is deliberately not packaged as one theorem with a large "
+        "record of opaque hypotheses. It is a chain of certificates whose "
+        "codomain is the next layer's input. Equalities are established in the "
+        "finite combinatorial layers; inequalities enter only when the terms "
+        "that cross the common window have been isolated. Completeness is used "
+        "only after a numerical Cauchy modulus has been produced. This ordering "
+        "makes it impossible to replace a missing algebraic bridge by a later "
+        "analytic estimate.",
+    )
+)
+bridge_data = [
+    [
+        P("<b>Interface</b>", "Caption"),
+        P("<b>Exported certificate</b>", "Caption"),
+        P("<b>Downstream role</b>", "Caption"),
+    ],
+    [
+        P("Gibbs integral / polymer gas", "Caption"),
+        P("Exact marked one-volume expansion", "Caption"),
+        P("Cancels the far gas without a bulk oracle", "Caption"),
+    ],
+    [
+        P("Two torus volumes", "Caption"),
+        P("Common-window equality of local terms", "Caption"),
+        P("Identifies every contribution below the cutoff", "Caption"),
+    ],
+    [
+        P("Cluster leaves the window", "Caption"),
+        P("Rooted tail at t+epsilon+1", "Caption"),
+        P("Gives a bound uniform in both volumes", "Caption"),
+    ],
+    [
+        P("Uniform numerical bound", "Caption"),
+        P("Explicit Cauchy modulus tending to zero", "Caption"),
+        P("Constructs the complete-sequence limit", "Caption"),
+    ],
+    [
+        P("Signed local coordinates", "Caption"),
+        P("Literal Z^d action and eventual chart equality", "Caption"),
+        P("Transfers finite covariance, including inverses", "Caption"),
+    ],
+    [
+        P("Centered seam deletion", "Caption"),
+        P("Gas restriction plus inclusion-exclusion", "Caption"),
+        P("Compares periodic with the proved free exhaustion", "Caption"),
+    ],
+    [
+        P("Finite correlation estimate", "Caption"),
+        P("Eventual realization and separation bridge", "Caption"),
+        P("Passes the quantitative bound to the state", "Caption"),
+    ],
+]
+bridge_tbl = Table(
+    bridge_data,
+    colWidths=[48 * mm, 58 * mm, 58 * mm],
+    repeatRows=1,
+    hAlign="CENTER",
+)
+bridge_tbl.setStyle(
+    TableStyle(
+        [
+            ("BACKGROUND", (0, 0), (-1, 0), PALE),
+            ("GRID", (0, 0), (-1, -1), 0.35, RULE),
+            ("VALIGN", (0, 0), (-1, -1), "TOP"),
+            ("LEFTPADDING", (0, 0), (-1, -1), 2 * mm),
+            ("RIGHTPADDING", (0, 0), (-1, -1), 2 * mm),
+            ("TOPPADDING", (0, 0), (-1, -1), 1.1 * mm),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 1.1 * mm),
+        ]
+    )
+)
+story.append(bridge_tbl)
+story.append(Spacer(1, 2.5 * mm))
+story.append(
+    P(
+        "This layering is also a debugging protocol. If a proposed endpoint "
+        "mentions a new hypothesis that already states the next row's "
+        "certificate, the bridge has been skipped. If a reindexing changes the "
+        "summation domain, its multiplicity must appear before a norm bound is "
+        "taken. If a cross-volume equality depends on a global configuration "
+        "map, the window interface has leaked. These checks forced two early "
+        "prototypes to be replaced even though their conditional endpoints "
+        "elaborated.",
+    )
+)
+story.append(
+    P(
+        "The organization keeps claim scope in the types as well. The free "
+        "boundary object is one concrete restriction, not a parameter ranging "
+        "over unspecified boundary conditions. The infinite functional is "
+        "bundled with linearity, order, a unit, and the Z^d action, but not with "
+        "a C*-norm that has not been constructed. The correlation consumer asks "
+        "for eventual plaquette realization and separation rather than "
+        "silently assigning a distance to every abstract observable. The final "
+        "paper ledger is therefore derived from available interfaces, not from "
+        "the informal theorem one might hope to state.",
+    )
+)
+story.append(
+    theorem(
+        "Interface discipline.",
+        "Every terminal conclusion is connected to the genuine finite Gibbs "
+        "integral by exact equalities before estimates are applied; every "
+        "multiplicity introduced by rooting is charged explicitly; every "
+        "cross-volume comparison is local to a common chart; and the abstract "
+        "uniform KP package is accompanied by a nonzero physical instance.",
+    )
+)
+story.append(PageBreak())
+
+story.append(P("3. Finite-volume setting", "SectionHead"))
 story.append(
     P(
         "Fix a dimension d, a measurable group G with measurable multiplication "
@@ -381,7 +647,7 @@ story.append(
     )
 )
 
-story.append(P("3. Exact marked expansion and cancellation", "SectionHead"))
+story.append(P("4. Exact marked expansion and cancellation", "SectionHead"))
 story.append(
     P(
         "Expanding each plaquette Boltzmann factor into 1 plus its Mayer "
@@ -407,7 +673,7 @@ story.append(
     )
 )
 
-story.append(P("4. Uniform pinned boundary control", "SectionHead"))
+story.append(P("5. Uniform pinned boundary control", "SectionHead"))
 story.append(
     P(
         "For a fixed marked set, the remaining exponent is a restriction "
@@ -443,7 +709,8 @@ story.append(code(
     "Delta_O(q) -> 0 as q -> infinity."
 ))
 
-story.append(P("5. Whole-sequence thermodynamic state", "SectionHead"))
+story.append(PageBreak())
+story.append(P("6. Whole-sequence thermodynamic state", "SectionHead"))
 story.append(
     theorem(
         "Complete-sequence Cauchy theorem.",
@@ -493,7 +760,7 @@ story.append(
     )
 )
 
-story.append(P("6. Genuine free boundary and uniqueness at the proved scope", "SectionHead"))
+story.append(P("7. Genuine free boundary and uniqueness at the proved scope", "SectionHead"))
 story.append(
     P(
         "The periodic torus is cut along a centered seam. Plaquettes crossing "
@@ -535,7 +802,7 @@ story.append(
     )
 )
 
-story.append(P("7. Truncated correlations", "SectionHead"))
+story.append(P("8. Truncated correlations", "SectionHead"))
 story.append(
     P(
         "For local observables O and P, define the finite truncated correlation "
@@ -565,7 +832,7 @@ story.append(
     )
 )
 
-story.append(P("8. Explicit non-vacuous SU(2) intervals", "SectionHead"))
+story.append(P("9. Explicit non-vacuous SU(2) intervals", "SectionHead"))
 story.append(
     P(
         "A conditional KP theorem can be mathematically empty if its hypotheses "
@@ -626,7 +893,7 @@ story.append(
     )
 )
 
-story.append(P("9. Formal verification record", "SectionHead"))
+story.append(P("10. Formal verification record", "SectionHead"))
 data = [
     [P("<b>Endpoint</b>", "Caption"), P("<b>Role</b>", "Caption")],
     [P("connectedLattice_pinned_tail_volumeUniform", "Caption"), P("Banked volume-uniform rooted KP tail", "Caption")],
@@ -673,7 +940,7 @@ story.append(
     )
 )
 
-story.append(P("10. Scope and open directions", "SectionHead"))
+story.append(P("11. Scope and open directions", "SectionHead"))
 scope_rows = [
     [P("<b>Proved here</b>", "Caption"), P("<b>Not proved here</b>", "Caption")],
     [P("Complete periodic expectation sequence is Cauchy", "Caption"), P("Continuum or lattice-spacing limit", "Caption")],
@@ -711,7 +978,7 @@ story.append(
     )
 )
 
-story.append(P("References", "SectionHead"))
+story.append(P("References", "ReferenceHead"))
 refs = [
     (
         "[1] R. Kotecky and D. Preiss, <i>Cluster expansion for abstract "
@@ -739,10 +1006,10 @@ refs = [
         "doi:10.1145/3372885.3373824</link>."
     ),
     (
-        "[5] L. Eriksson, <i>THE ERIKSSON PROGRAMME</i>, Lean 4 source "
-        "repository and verification ledger. "
+        "[5] L. Eriksson, <i>THE ERIKSSON PROGRAMME</i>, Lean 4 artifact "
+        "and verification ledger, "
         "<link href='https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME'>"
-        "github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME</link>."
+        "repository</link>."
     ),
 ]
 for ref in refs:
