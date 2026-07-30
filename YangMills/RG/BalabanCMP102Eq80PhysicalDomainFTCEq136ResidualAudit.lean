@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCEq136Residual
+
+#print axioms YangMills.RG.cmp102Eq80Eq136ResidualMetricRate
+#print axioms YangMills.RG.cmp102Eq80Eq136ThirdJetProducerPrefactor
+#print axioms YangMills.RG.CMP102Eq80Eq136ThirdJetProducerBudget
+#print axioms YangMills.RG.cmp102Eq80PhysicalDomainFTCThirdFieldCubicCutoffMajorant_le_eq136
