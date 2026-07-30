@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{3843435533c573a0fbca32c4da691c20d1a5b247}
+\newcommand{\anchor}{2427eb49a36e755c480e6161b2f7beeeeef2ea52}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -49,8 +49,10 @@ lane survived $L\to\infty$, and the word \emph{clustering} was never used.
 
 \textbf{Proved, for $\beta\ge0$ throughout.}  For the \emph{decoupled} kernel ---
 the transfer kernel at constant source weight --- the modulus is
-$\mathrm{specRatio} = \tanh\beta$ at \emph{every} extent, with $L$ nowhere in
-it.  Both directions: an operator bound by induction on the extent, and
+$\mathrm{specRatio} = \tanh\beta$ at every \emph{positive} extent, with $L$
+nowhere in it.  (At $L=0$ there is a single configuration, the only eigenvalue
+is the Perron one and $\mathrm{specRatio}=0$; every statement below is for
+$L\ge1$, as the formalisation is.)  Both directions: an operator bound by induction on the extent, and
 attainment by the single-site observable the extent paper already built
 \cite{ErikssonExtent}.  The hypothesis $\beta\ge0$ is load-bearing, not a
 convention: at negative coupling the odd bond eigenvalue is negative and
@@ -89,10 +91,12 @@ gate read \texttt{FAIL -- do not fabricate}.  We fabricated anyway.}  The
 theorems below do not depend on either prediction and stand on their proofs; the
 \emph{process} claim does not, and \S\ref{sec:scope} records the violation
 rather than reinterpreting the gate after the fact.  The Onsager boundary claim
-is reported as \textbf{not established}.  At constant source weight the spatial
-slices are independent, so what is proved here is a statement about a product
-measure; that is exactly why it is reachable, and it is said here rather than
-left to be noticed.  Reflection positivity is
+is reported as \textbf{not established}.  At constant source weight the Gibbs
+measure factorises across spatial \emph{sites} into $L$ independent
+one-dimensional temporal chains --- the slices $X_0,\dots,X_N$ themselves stay
+coupled in time, which is what the rate $\tanh\beta$ measures --- so what is
+proved here is a statement about a product measure over sites; that is exactly
+why it is reachable, and it is said here rather than left to be noticed.  Reflection positivity is
 untouched, and nothing in this paper is a claim about $\SU(N)$, the continuum
 limit, or the Yang--Mills mass gap \cite{Clay}.
 \end{abstract}
@@ -128,7 +132,7 @@ A symmetric nonnegative kernel all of whose row sums equal $R$ satisfies
 $\|Ku\| \le R\,\|u\|$.
 \end{lemma}
 
-\osline{SpatialUniform}{105}{norm\_act\_le\_of\_rowSum}.
+\osline{SpatialUniform}{115}{norm\_act\_le\_of\_rowSum}.
 One Cauchy--Schwarz per row, then summing.  This is the only bound the odd part
 of the induction is given, and it is all it needs.
 
@@ -140,8 +144,8 @@ $\sum_\sigma u(\sigma)=0$,
 \]
 \end{theorem}
 
-\osline{SpatialUniform}{340}{spatialKernel\_fluct\_bound}, from the squared
-form \osline{SpatialUniform}{198}{spatialKernel\_fluct\_sq}, which is what the
+\osline{SpatialUniform}{350}{spatialKernel\_fluct\_bound}, from the squared
+form \osline{SpatialUniform}{208}{spatialKernel\_fluct\_sq}, which is what the
 induction runs on --- a square root in the inductive hypothesis would be a
 square root at every step.
 
@@ -165,7 +169,7 @@ $\tfrac12 Z^{2}(\tanh\beta\,Z^{L})^{2}\|p\|^{2}
   \tanh\beta \cdot Z \;=\; D .
 \]
 
-\osline{SpatialUniform}{189}{tanh\_mul\_z2Norm}.
+\osline{SpatialUniform}{199}{tanh\_mul\_z2Norm}.
 That single identity is the whole reason the constant survives: the rate given
 up on the odd part is exactly the odd eigenvalue of one bond, at every step.
 Lose it and the constant would pick up a factor per site.
@@ -180,13 +184,13 @@ $\mathrm{specGap} = \tanh\beta \cdot Z^{L}$, hence
 $\mathrm{specRatio} = \tanh\beta$.
 \end{theorem}
 
-\osline{SpatialUniform}{426}{spatialKernel\_specGap\_eq}.
+\osline{SpatialUniform}{436}{spatialKernel\_specGap\_eq}.
 The upper bound is Theorem~\ref{thm:uniform} together with the fact that
 $\mathrm{specGap}$ is the \emph{greatest} norm ratio on the fluctuation sector
 \cite{ErikssonSpectral} --- which is the only place that paper is used, and it
 is used as a bound, never as a spectral decomposition.  The lower bound is the
 single-site sign observable of the extent paper \cite{ErikssonExtent}: it has
-mean zero (\osline{SpatialUniform}{398}{sum\_siteSign}), it is nonzero, and
+mean zero (\osline{SpatialUniform}{408}{sum\_siteSign}), it is nonzero, and
 its eigenvalue $D\,Z^{L-1}$ realises the bound exactly.
 
 \section{The payoff}\label{sec:payoff}
@@ -198,7 +202,7 @@ $\bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr| \le C_A\,(\tanh\beta)^{N}$ for $N \ge N_0$
 and $\tanh\beta$ does not depend on the extent.
 \end{theorem}
 
-\osline{SpatialUniform}{521}{gibbs\_decay\_extent\_free\_rate}, composing
+\osline{SpatialUniform}{532}{gibbs\_decay\_extent\_free\_rate}, composing
 Theorem~\ref{thm:sharp} with the modulus paper's endpoint
 \cite{ErikssonSpectral}.
 
@@ -219,12 +223,37 @@ $\sum_\sigma A(\sigma)=0$ and \emph{every} $N$ --- no threshold ---
 \]
 \end{theorem}
 
-\osline{SpatialUniform}{633}{gibbsCorr\_one\_uniform\_bound}.
+\osline{SpatialUniform}{644}{gibbsCorr\_one\_uniform\_bound}.
 Here nothing is left to depend on the extent except through the observable
 itself: for $|A|\le1$ the constant is at most $1$ at every $L$.  It is computed
 rather than composed --- at constant weight the dressed constant observable
 \emph{is} the Perron vector and the partition function is exactly
 $2^{L}Z^{LN}$, so the endpoint's threshold machinery is not needed at all.
+
+Two immediate consequences are worth stating as theorems rather than left to
+the reader, since each removes a hypothesis or a symbol.
+
+\begin{corollary}[arbitrary observable, in covariance form]\label{cor:cov}
+Let $\beta\ge0$.  For \emph{every} observable $A$, centring in the uniform
+measure gives
+$\bigl|\mathbb{E}[\bar A(X_0)\bar A(X_N)]\bigr| \le
+ \mathrm{Var}_{\mathrm{unif}}(A)\,(\tanh\beta)^{N}$, where
+$\bar A = A - \langle A\rangle_{\mathrm{unif}}$.
+\end{corollary}
+
+\osline{SpatialUniform}{683}{gibbsCov\_one\_uniform\_bound}.
+
+\begin{corollary}[no $L$ on the right at all]\label{cor:bounded}
+Let $\beta\ge0$.  If $A$ has mean zero and $|A|\le1$ pointwise, then for every
+$N$,
+\[
+  \bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr| \;\le\; (\tanh\beta)^{N} .
+\]
+\end{corollary}
+
+\osline{SpatialUniform}{699}{gibbsCorr\_one\_le\_of\_bounded}.
+Every symbol on the right is free of the extent, and there is no threshold and
+no constant.  This is the sharpest form the product case admits.
 
 \textbf{We still do not call this clustering.}  No infinite-volume state is
 constructed in this paper, and a uniform finite-volume bound for a fixed
@@ -233,8 +262,11 @@ sequence of observables is not by itself such a construction.
 \section{Scope, and a judge that failed}\label{sec:scope}
 
 \paragraph{This is a product measure.}  At constant source weight the spatial
-slices decouple, so the Gibbs measure is a product across sites and the
-statement above is, in substance, the one-dimensional chain repeated.  That is
+slices decouple across \emph{sites}: the Gibbs measure factorises into $L$
+independent one-dimensional temporal chains, and the statement above is, in
+substance, one such chain repeated.  The slices $X_0,\dots,X_N$ are of course
+not independent of each other --- their dependence is precisely what
+$\tanh\beta$ bounds.  That is
 why it is reachable.  What it establishes is narrower than it may sound: that
 \emph{the extent alone does not degrade the rate} in the product kernel, so the
 unresolved dependence enters only once the spatial source weight is switched on.
@@ -321,12 +353,12 @@ actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8431 jobs, success \\
-Oracle commands, and answers & 2694 \\
-\quad distinct declarations & 2691 \\
+Oracle commands, and answers & 2697 \\
+\quad distinct declarations & 2694 \\
 \quad commands listed twice & 3 \\
-\quad distinct, with axiom dependencies & 2668 \\
+\quad distinct, with axiom dependencies & 2671 \\
 \quad distinct, axiom-free & 23 \\
-Declarations in this module & 22 \\
+Declarations in this module & 25 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
 Project axioms & 0 \\
