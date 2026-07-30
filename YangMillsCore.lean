@@ -931,3 +931,4 @@ import YangMills.OS.SpatialGibbs
 import YangMills.OS.SpatialSpectral
 import YangMills.OS.SpatialUniform
 import YangMills.OS.SpatialReflection
+import YangMills.OS.SpatialOS
