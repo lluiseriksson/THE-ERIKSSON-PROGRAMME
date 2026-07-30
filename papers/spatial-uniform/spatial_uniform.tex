@@ -1,0 +1,325 @@
+% The rate without the extent (paper 11 of the O lane).
+% Lane: O (operator bridge), module YangMills/OS/SpatialUniform.lean.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\anchor}{af88cd6abc95c871495f7ac911690e938dc177b3}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+
+\title{The Rate Without the Extent:\\
+a Machine-Checked Uniform Spectral Modulus\\
+for the Decoupled $\Z_2$ Slice\\
+\large and a pre-registered judge that failed at the coupled one}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Every rate in this lane so far has been a fixed-extent rate.  The gap paper
+proved strict spectral separation at each extent and said plainly that it was
+not uniform \cite{ErikssonGap}; the modulus paper gave that separation a
+number, $\mathrm{specRatio}(L)$, and reported measurements saying the number
+tends to $1$ outside the disordered region \cite{ErikssonSpectral}.  A geometric
+bound whose rate tends to $1$ is empty in the volume limit, so nothing in the
+lane survived $L\to\infty$, and the word \emph{clustering} was never used.
+
+\textbf{Proved.}  For the \emph{decoupled} kernel --- the transfer kernel at
+constant source weight --- the modulus is
+$\mathrm{specRatio} = \tanh\beta$ at \emph{every} extent, with $L$ nowhere in
+it.  Both directions: an operator bound by induction on the extent, and
+attainment by the single-site observable the extent paper already built
+\cite{ErikssonExtent}.  Composing with the modulus paper's endpoint, the
+normalised Gibbs two-point function obeys
+$|\mathbb{E}[A(X_0)A(X_N)]| \le C_A\,(\tanh\beta)^N$ past one threshold serving
+every observable --- a bound whose \emph{rate} contains no $L$, and therefore
+the first statement in this lane that survives the volume limit.
+
+\textbf{Why the proof is not the spectral decomposition.}  The decoupled kernel
+is a product over sites, so its spectrum is a product; that route needs the
+spectrum of a Kronecker power, which the library does not carry.  It is not
+needed.  The modulus paper proved that $\mathrm{specGap}$ is the \emph{greatest}
+norm ratio on the fluctuation sector, so bounding it above is an operator
+inequality and nothing else, and the operator inequality falls to induction: the
+even part of an observable keeps its mean zero and inherits the rate, the odd
+part keeps nothing and gets only Schur's test, and the two recombine
+\emph{exactly}, because $\tanh\beta \cdot Z = D$ with $Z$ the row sum and $D$
+the odd eigenvalue of a single bond.
+
+\textbf{Not proved, and a judge that failed.}  The \emph{coupled} kernel is
+untouched.  Before any of this was written we pre-registered two falsifiable
+predictions.  The first --- that the decoupled rate is exactly $\tanh\beta$ at
+every extent --- passed to $10^{-16}$, and authorised the work above.  The
+second --- that the coupled uniformity boundary is the Onsager curve --- failed
+on one of eight pre-registered cells, and it stays failed: that claim is
+therefore reported as \textbf{not established}, not softened.  At constant
+source weight the spatial slices are independent, so what is proved here is a
+statement about a product measure; that is exactly why it is reachable, and it
+is said here rather than left to be noticed.  Reflection positivity is
+untouched, and nothing in this paper is a claim about $\SU(N)$, the continuum
+limit, or the Yang--Mills mass gap \cite{Clay}.
+\end{abstract}
+
+\section{Ten papers of fixed-extent rates}\label{sec:debt}
+
+The lane's rates have all been local in the extent.  That is not a stylistic
+complaint: a rate $r(L)$ with $r(L)\to 1$ gives, at fixed $N$, a bound that
+becomes vacuous as the system grows, and the infinite-volume statement one
+actually wants --- exponential decay of correlations with a fixed rate --- is
+not implied by any amount of fixed-$L$ information.
+
+So the honest question is whether \emph{some} kernel in this family has a rate
+that does not move with $L$.  This paper answers it for the decoupled kernel,
+and the answer is exact.
+
+\section{The construction}\label{sec:constr}
+
+Let $Z = e^{\beta}+e^{-\beta}$ and $D = e^{\beta}-e^{-\beta}$, and let $K$ be the
+decoupled kernel on $\{0,1\}^L$: a product over sites of the single-bond matrix.
+Its row sums are all $Z^L$, so the constant observable is its Perron vector with
+eigenvalue $\lambda = Z^L$.
+
+\begin{lemma}[Schur's test]\label{lem:schur}
+A symmetric nonnegative kernel all of whose row sums equal $R$ satisfies
+$\|Ku\| \le R\,\|u\|$.
+\end{lemma}
+
+\osline{SpatialUniform}{83}{norm\_act\_le\_of\_rowSum}.
+One Cauchy--Schwarz per row, then summing.  This is the only bound the odd part
+of the induction is given, and it is all it needs.
+
+\begin{theorem}[the uniform operator bound]\label{thm:uniform}
+For every extent $L$ and every observable $u$ with $\sum_\sigma u(\sigma)=0$,
+\[
+  \|Ku\| \;\le\; \tanh\beta \cdot Z^{L} \cdot \|u\| .
+\]
+\end{theorem}
+
+\osline{SpatialUniform}{318}{spatialKernel\_fluct\_bound}, from the squared
+form \osline{SpatialUniform}{176}{spatialKernel\_fluct\_sq}, which is what the
+induction runs on --- a square root in the inductive hypothesis would be a
+square root at every step.
+
+\section{Why the constant does not degrade}\label{sec:exact}
+
+Split an observable at the first site, $u = (u_0,u_1)$, and set $p = u_0+u_1$,
+$m = u_0-u_1$.  Then $p$ still has mean zero, so the inductive hypothesis
+applies to it with rate $\tanh\beta$; $m$ has no orthogonality left and gets
+only Lemma~\ref{lem:schur}, with rate $1$.  Acting with the kernel and
+collecting,
+\[
+  \|Ku\|^{2} \;=\; \tfrac12\bigl(Z^{2}\|Kp\|^{2} + D^{2}\|Km\|^{2}\bigr),
+  \qquad
+  \|u\|^{2} \;=\; \tfrac12\bigl(\|p\|^{2}+\|m\|^{2}\bigr).
+\]
+Feeding in the two bounds gives
+$\tfrac12 Z^{2}(\tanh\beta\,Z^{L})^{2}\|p\|^{2}
+ + \tfrac12 D^{2}(Z^{L})^{2}\|m\|^{2}$, and the two coefficients are
+\emph{equal}, because
+\[
+  \tanh\beta \cdot Z \;=\; D .
+\]
+
+\osline{SpatialUniform}{167}{tanh\_mul\_z2Norm}.
+That single identity is the whole reason the constant survives: the rate given
+up on the odd part is exactly the odd eigenvalue of one bond, at every step.
+Lose it and the constant would pick up a factor per site.
+
+\section{Sharpness}\label{sec:sharp}
+
+Theorem~\ref{thm:uniform} is an inequality.  It is attained.
+
+\begin{theorem}[the rate is exactly $\tanh\beta$]\label{thm:sharp}
+At every extent with at least one site,
+$\mathrm{specGap} = \tanh\beta \cdot Z^{L}$, hence
+$\mathrm{specRatio} = \tanh\beta$.
+\end{theorem}
+
+\osline{SpatialUniform}{404}{spatialKernel\_specGap\_eq}.
+The upper bound is Theorem~\ref{thm:uniform} together with the fact that
+$\mathrm{specGap}$ is the \emph{greatest} norm ratio on the fluctuation sector
+\cite{ErikssonSpectral} --- which is the only place that paper is used, and it
+is used as a bound, never as a spectral decomposition.  The lower bound is the
+single-site sign observable of the extent paper \cite{ErikssonExtent}: it has
+mean zero (\osline{SpatialUniform}{376}{sum\_siteSign}), it is nonzero, and
+its eigenvalue $D\,Z^{L-1}$ realises the bound exactly.
+
+\section{The payoff}\label{sec:payoff}
+
+\begin{theorem}[a rate that survives the volume limit]\label{thm:cluster}
+At constant source weight there is an $N_0$ such that for every observable $A$
+whose dressing has mean zero there is a $C_A>0$ with
+\[
+  \bigl|\mathbb{E}[A(X_0)A(X_N)]\bigr| \;\le\; C_A\,(\tanh\beta)^{N},
+  \qquad N \ge N_0 ,
+\]
+and $\tanh\beta$ does not depend on the extent.
+\end{theorem}
+
+\osline{SpatialUniform}{499}{gibbs\_clustering\_uniform\_rate}, composing
+Theorem~\ref{thm:sharp} with the modulus paper's endpoint
+\cite{ErikssonSpectral}.  The hypothesis is not vacuous: that paper's
+non-vacuity lemma supplies a nonzero observable satisfying it whenever the state
+space has two points.
+
+\textbf{What is uniform and what is not.}  The \emph{rate} is uniform in $L$.
+The constant $C_A$ is not claimed to be, and depends on the observable; the
+threshold $N_0$ does not depend on the observable, by the modulus paper's
+uniform-threshold theorem, but is not claimed uniform in $L$ either.
+
+\section{Scope, and a judge that failed}\label{sec:scope}
+
+\paragraph{This is a product measure.}  At constant source weight the spatial
+slices decouple, so the Gibbs measure is a product across sites and the
+statement above is, in substance, the one-dimensional chain repeated.  That is
+why it is reachable.  What it establishes is narrower than it may sound: not
+that the coupled model clusters uniformly, but that the \emph{obstruction to
+uniformity is the source weight and not the extent}.
+
+\paragraph{The coupled kernel is exactly a 2D Ising transfer matrix.}  With the
+ring source weight, $K = D_w^{1/2} T D_w^{1/2}$ where $T$ is the inter-slice
+product and $D_w$ the intra-slice ring weight --- which is the symmetrised
+transfer matrix of the two-dimensional Ising model, vertical coupling $\beta$
+and horizontal coupling $\gamma$.  This is an exact algebraic identification,
+not a numerical claim.
+
+\paragraph{And a pre-registered judge that failed.}  Before any of the above was
+written we committed two falsifiable predictions with their thresholds fixed in
+advance \repofile{scripts/judge\_spatial\_uniform.py}{scripts/judge\_spatial\_uniform.py}.
+The first --- the decoupled rate is exactly $\tanh\beta$ at every extent ---
+passed to $10^{-16}$ and authorised this paper.  The second --- that the
+\emph{coupled} uniformity boundary is the Onsager curve
+$\sinh 2\beta \sinh 2\gamma = 1$ --- predicted saturation below $1$ on the five
+disordered cells and a rate tending to $1$ on the three ordered ones.  Seven of
+eight cells agreed.  The cell $(\beta,\gamma)=(0.1,1.0)$, disordered, gave
+$\mathrm{specRatio}(12)=0.6266$ --- nowhere near $1$ --- but with drift from
+$L=10$ of $3.5\times10^{-2}$, above the pre-registered $10^{-2}$, so the cell is
+\emph{undecided at $L\le12$} and the judge does not pass.
+
+We did not raise the extent until the cell passed.  The autopsy
+\repofile{scripts/judge\_spatial\_uniform\_autopsy.py}{scripts/judge\_spatial\_uniform\_autopsy.py}
+prints the whole sequence instead: its increments decay geometrically with ratio
+$0.835$, extrapolating to about $0.707$, so this is saturation not yet reached
+and not a crawl to $1$.  That is a diagnosis, not a pass.  \textbf{The Onsager
+identification of the boundary is therefore reported as not established}, and no
+statement in this paper rests on it.
+
+\paragraph{No claim about the physical target.}  Reflection positivity is
+untouched, and nothing here concerns $\SU(N)$, the continuum limit, or the Clay
+problem \cite{Clay}.  The distance to that problem is unchanged.
+
+\section{What is verified and not proved}\label{sec:verified}
+
+The measured $\mathrm{specRatio}(L)$ for the coupled kernel, extended past the
+five points the modulus paper printed:
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+$(\beta,\gamma)$ & $L=1$ & $L=12$ & increments \\
+\midrule
+$(0.2,0.2)$ & $0.1974$ & $0.294449$ & geometric, ratio $0.278$ \\
+$(0.3,0.4)$ & $0.2913$ & $0.646895$ & geometric, ratio $0.648$ \\
+$(0.1,1.0)$ & $0.0997$ & $0.626639$ & geometric, ratio $0.835$ \\
+$(0.8,1.2)$ & $0.6640$ & $1.000000$ & to $1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+These are \textbf{verified} and \textbf{not proved}; no theorem depends on them.
+They are printed because they are the reason the coupled case is believed hard
+rather than false, and because the last row is the one the whole lane has been
+reporting as its limitation.
+
+\section{Reproducibility}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}.
+Every hyperlink was resolved against that commit, and checked to point at an
+actual declaration line, before compilation.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8431 jobs, success \\
+Oracle commands, and answers & 2689 \\
+\quad distinct declarations & 2686 \\
+\quad commands listed twice & 3 \\
+\quad distinct, with axiom dependencies & 2663 \\
+\quad distinct, axiom-free & 23 \\
+Declarations in this module & 17 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
+Project axioms & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The module is
+\repofile{YangMills/OS/SpatialUniform.lean}{YangMills/OS/SpatialUniform.lean};
+the pre-registered judge and its autopsy are
+\repofile{scripts/judge\_spatial\_uniform.py}{scripts/judge\_spatial\_uniform.py}
+and
+\repofile{scripts/judge\_spatial\_uniform\_autopsy.py}{scripts/judge\_spatial\_uniform\_autopsy.py};
+verdicts are in
+\repofile{docs/VERIFICATION-LEDGER.md}{docs/VERIFICATION-LEDGER.md}.
+
+\begin{thebibliography}{9}
+
+\bibitem{ErikssonExtent}
+L.~Eriksson,
+\emph{Where the Elementary Reconstruction Stops: a Machine-Checked Obstruction
+at the Coupled $\Z_2$ Slice}, viXra:2607.0075, 2026.
+
+\bibitem{ErikssonGap}
+L.~Eriksson,
+\emph{Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite
+Extent}, viXra, 2026.
+
+\bibitem{ErikssonSpectral}
+L.~Eriksson,
+\emph{The Modulus: a Machine-Checked Operator Bound on the Fluctuation Sector of
+the Coupled $\Z_2$ Slice}, viXra, 2026.
+
+\bibitem{Onsager}
+L.~Onsager,
+\emph{Crystal statistics I: a two-dimensional model with an order-disorder
+transition}, Phys.\ Rev.\ \textbf{65} (1944), 117--149.
+
+\bibitem{Seneta}
+E.~Seneta,
+\emph{Non-negative Matrices and Markov Chains}, 2nd ed., Springer, 1981.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills theory}, Clay Mathematics Institute Millennium Prize
+problem description, 2000.
+
+\end{thebibliography}
+
+\end{document}
