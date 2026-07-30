@@ -4,8 +4,16 @@ Status: **REGISTERED**
 Registration date: 2026-07-30 (Europe/Stockholm)  
 Repository: `https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME`  
 Public comparison base: `origin/main` at
-`81721890ad3e111d73cbe45074d42ec698ce07b2`  
+`7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`  
 Audit branch: `codex/continuum-source-audit`
+
+Baseline supersession: the initially registered base
+`81721890ad3e111d73cbe45074d42ec698ce07b2` was superseded on 2026-07-30
+after a fresh `git fetch origin main` showed that public `main` had advanced
+by one commit to `7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`.
+The intervening commit adds `papers/spatial-os/spatial_os.{tex,pdf}`. The old
+base and this correction remain in Git history; no claim is silently moved
+between them.
 
 ## 1. Independence and order of operations
 
@@ -34,6 +42,17 @@ links/plaquettes, orientation convention, and action are specified.
 SU2-2. The Wilson Boltzmann weight admits the claimed reflected splitting:
 a positive-side factor times its reflected/conjugated factor times crossing
 terms having a positive-semidefinite coefficient kernel.
+
+SU2-2G (gluing gate). If the artefact defines its reflected form by summing
+over pairs of half-configurations, it proves that the two halves, their shared
+or boundary variables, the crossing factor, and product Haar measure assemble
+the original full-lattice Gibbs integral exactly. The proof must include the
+actual measure-preserving reindexing/factorisation and all boundary
+normalisations. A finite `Z_2` brute-force check, analogy, or citation does not
+establish this identity for continuous `SU(2)`. If instead the artefact treats
+only real observables of one time slice, it may receive credit for exactly that
+restricted statement but fails any advertised full OS-positivity or
+reconstruction claim.
 
 SU2-3. Every use of Haar integration, Peter--Weyl orthogonality, characters,
 matrix coefficients, representation dimensions, and Wilson coupling uses one
@@ -69,39 +88,42 @@ OS-4. A positive mass gap is not inferred from reflection positivity alone.
 Any gap statement identifies the operator, Hilbert space, vacuum sector,
 uniformity, units, and relation to connected correlations.
 
-### C0: existence of a continuum candidate
+### CONT-C0: existence of a continuum candidate
 
-C0-1. The regulator family is explicit: lattice spacing `a`, physical volume,
+The `CONT-` prefix is mandatory in reports and manifests. It avoids collision
+with the repository's pre-existing paper-lane charters `C1` through `C6`.
+
+CONT-C0-1. The regulator family is explicit: lattice spacing `a`, physical volume,
 boundary conditions, bare/renormalized parameters, gauge fixing or
 gauge-invariant observables, and the directed order (or joint manner) of
 limits.
 
-C0-2. A claimed limit is not an arbitrary selected functional, definition by
+CONT-C0-2. A claimed limit is not an arbitrary selected functional, definition by
 the desired answer, constant family, or limit theorem whose hypotheses already
 encode convergence to that same answer.
 
-C0-3. Tightness/precompactness or an equally strong construction is proved in
+CONT-C0-3. Tightness/precompactness or an equally strong construction is proved in
 a topology that supports the claimed observables/distributions. Subsequence
 existence, uniqueness, and full-family convergence are kept distinct.
 
-C0-4. The candidate has a physical scale and is nontrivial. Normalization,
+CONT-C0-4. The candidate has a physical scale and is nontrivial. Normalization,
 renormalization, and the possibility of a Gaussian, zero, ultralocal, or
 otherwise degenerate limit are addressed rather than assumed away.
 
-### C1: uniform continuum control
+### CONT-C1: uniform continuum control
 
-C1-1. Every constant is traced through dependence on lattice spacing, lattice
+CONT-C1-1. Every constant is traced through dependence on lattice spacing, lattice
 extent/physical volume, ultraviolet cutoff, infrared regulator, coupling,
 observable support, and renormalization scale.
 
-C1-2. Dimensions and units balance before and after rescaling. A lattice-unit
+CONT-C1-2. Dimensions and units balance before and after rescaling. A lattice-unit
 gap or correlation length is not called a positive physical mass without the
 required `a`-scaling.
 
-C1-3. Bounds used for compactness, removal of cutoffs, clustering, or a mass
+CONT-C1-3. Bounds used for compactness, removal of cutoffs, clustering, or a mass
 gap are uniform in exactly the regulators subsequently removed.
 
-C1-4. No circular input appears under a renamed interface: the continuum
+CONT-C1-4. No circular input appears under a renamed interface: the continuum
 limit, nontriviality, a uniform physical gap, OS axioms, or the desired
 renormalized estimates may not be hypotheses of a theorem advertised as
 proving that item.
@@ -190,3 +212,18 @@ Source packets, executable templates, run manifests, and verdicts live only
 under `docs/audits/continuum-programme/` or in clearly isolated audit scripts.
 This desk will not merge producer PRs or edit producer files, repository state,
 ledgers, dashboards, the oracle, or `YangMillsCore`.
+
+## 7. Baseline correction log
+
+`BASELINE-20260730-01` — **CORRECTED, not erased.**
+
+- Initial base: `81721890ad3e111d73cbe45074d42ec698ce07b2`.
+- Authoritative recheck:
+  `git fetch origin main --prune && git rev-parse origin/main`.
+- Corrected base: `7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`.
+- Changed material: commit `7c6aaab2`, adding the Paper 13 TeX/PDF.
+- Provenance boundary: `YangMills/OS/SpatialOS.lean` and
+  `scripts/judge_spatial_os.py` already exist at the old base; the Paper 13
+  TeX/PDF do not. No assertion from the absent TeX/PDF is credited at the old
+  SHA. The clean-checkout numerical run at the old SHA remains a run on that
+  old artefact and will be labelled as such.
