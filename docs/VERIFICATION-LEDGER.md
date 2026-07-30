@@ -28198,3 +28198,49 @@ axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
 **Still not proved.**  Uniformity in the extent for the COUPLED kernel, and any
 infinite-volume statement whatsoever.  Reflection positivity untouched.
 Clay ~0 pct.
+
+---
+
+## Addendum 549 (2026-07-30, **S-UNIFORM v1.2: "every extent" had an exception,
+"the slices are independent" was false as written, and the RHS can lose its last
+`L`**)
+
+Second external reading of paper 11.  Three residues, all real.
+
+**1. The section-7 prose still carried the retracted claim.**  Addendum 548
+corrected the module HEADER but not the `§7` section note (`The payoff: a rate
+that survives the volume limit`) nor the docstring of
+`gibbs_decay_extent_free_rate` (`CLUSTERING, with an extent-independent rate ...
+it is why the word is finally used`).  Fourth occurrence of the same pattern in
+this session, and the same lesson each time: **a claim withdrawn in one place
+has to be searched for everywhere, because the guard reads identifiers and not
+sentences.**
+
+**2. "at every extent" has an exception.**  At `L = 0` the configuration space is
+a single point, the only eigenvalue is the Perron one and `specRatio = 0`, which
+is not `tanh beta` for `beta > 0`.  The Lean statement is parameterised by
+`M + 1` and was right; the abstract and header said "every extent" and were not.
+Now "every POSITIVE extent", with the reason.
+
+**3. "the spatial slices are independent" is false as written.**  The slices
+`X_0, ..., X_N` are coupled in time --- that coupling is exactly what `tanh beta`
+measures.  What factorises at constant weight is across SITES: the Gibbs measure
+is a product of `L` independent one-dimensional temporal chains.  Corrected in
+the module and in the paper.
+
+**Two endpoints added, both suggested by the reading and both cheap.**
+`gibbsCov_one_uniform_bound`: centring in the uniform measure discharges the
+mean-zero hypothesis, so the bound holds for an ARBITRARY observable with its
+variance as the constant.  `gibbsCorr_one_le_of_bounded`: for a mean-zero
+observable bounded by `1`, `|E[A(X_0)A(X_N)]| <= (tanh beta)^N` --- **no
+threshold, no constant, and no `L` anywhere on the right**.  That is the
+sharpest form the product case admits, and it existed only as a sentence.
+
+**Measured.**  Core **8431 jobs**.  Oracle **2697 -> 2697** (2694 distinct, the
+same three known duplicates), 23 axiom-free + 2671 with axiom dependencies, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  **25** declarations in the
+module, all 25 in the oracle list.  `check_module_prose.py`: OS lane 19 modules,
+0 findings.
+
+**Still not proved.**  Uniformity in the extent for the COUPLED kernel, and any
+infinite-volume statement.  Clay ~0 pct.

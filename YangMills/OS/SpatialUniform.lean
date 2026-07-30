@@ -11,7 +11,9 @@ bound whose rate tends to `1` is empty in the volume limit, so no rate in the
 lane was extent-free, and the word *clustering* was never used.
 
 For the **decoupled** kernel this module gives an extent-free rate, sharply:
-`specRatio = tanh β` at **every** extent.  Throughout, `β ≥ 0` --- at negative
+`specRatio = tanh β` at every **positive** extent.  (At `L = 0` there is one
+configuration, the only eigenvalue is the Perron one, and `specRatio = 0`; the
+statement is about `L ≥ 1`, as `spatialKernel_specGap_eq` is.)  Throughout, `β ≥ 0` --- at negative
 coupling the odd bond eigenvalue `D` is negative and `tanh β · Z^L` is not
 `specGap`, so the hypothesis is load-bearing and not a convention.
 
@@ -67,6 +69,11 @@ odd part is precisely compensated by the odd bond eigenvalue, at every step.
   no threshold, `|E[A(X₀)A(X_N)]| ≤ ⟨A²⟩ · (tanh β)^N`, the mean square being
   taken in the uniform measure.  For `|A| ≤ 1` the constant is at most `1` at
   every extent, so here the whole bound is uniform, not merely its rate.
+* `gibbsCov_one_uniform_bound` — the same for an ARBITRARY observable, centred:
+  the constant becomes its variance in the uniform measure.
+* `gibbsCorr_one_le_of_bounded` — and the form with **no `L` on the right at
+  all**: for a mean-zero observable bounded by `1`, the two-point function is
+  below `(tanh β) ^ N`, with no threshold and no constant.
 
 ## What is NOT proved, and is not claimed
 
@@ -75,8 +82,11 @@ touched.  Nothing here says its rate is uniform, and the measured evidence in
 the S block is that it is not, outside the disordered region.  The constant `C`
 in the payoff still depends on the observable; only the rate is uniform.
 
-At constant source weight the spatial slices are independent, so the statement
-proved here is a statement about a product measure.  That is exactly why it is
+At constant source weight the Gibbs measure **factorises across spatial sites**
+into `L` independent one-dimensional temporal chains --- the slices `X₀, …, X_N`
+themselves remain coupled in time, which is exactly what the rate `tanh β`
+measures.  So the statement proved here is a statement about a product measure
+over sites.  That is exactly why it is
 reachable, and it is said here rather than left for a reader to notice.  What it
 establishes is narrower than it sounds: **the extent alone does not degrade the
 rate** in the product kernel.  It does not show that every nonconstant weight
@@ -503,21 +513,22 @@ theorem symWeighted_one_specRatio_le {β : ℝ} (hβ : 0 ≤ β) {L : ℕ}
   rw [div_le_iff₀ hZL]
   linarith
 
-/-! ## §7  The payoff: a rate that survives the volume limit
+/-! ## §7  An extent-independent rate --- which is NOT a volume limit
 
 The S-block endpoint bounds the normalised two-point function by
 `C · specRatio ^ N` past one threshold serving every observable.  Its rate
 depended on the extent, and the S block said so.  At constant source weight it
 no longer does. -/
 
-/-- **CLUSTERING, with an extent-independent rate.**  At constant source weight,
-the normalised Gibbs two-point function of a fluctuation observable is bounded
-by `C · (tanh β) ^ N` past a threshold, and **`tanh β` does not depend on `L`**.
-This is the first statement in the lane whose rate survives `L → ∞`, and it is
-why the word is finally used.
+/-- **Finite-volume decay with an extent-independent exponential rate.**  At
+constant source weight, the normalised Gibbs two-point function of a fluctuation
+observable is bounded by `C · (tanh β) ^ N` past a threshold, and `tanh β` does
+not depend on `L`.
 
-The constant `C` still depends on the observable, and nothing here is claimed
-for a nonconstant source weight. -/
+**The constant and the threshold are NOT asserted uniform in `L`**: the extent is
+fixed before either is chosen, so both may in principle diverge with it.  No
+infinite-volume statement and no clustering theorem is claimed here --- §8 is
+where the whole bound, and not merely its rate, becomes uniform. -/
 theorem gibbs_decay_extent_free_rate {β : ℝ} (hβ : 0 ≤ β) {L : ℕ}
     {σ₀ σ₁ : Fin L → Fin 2} (hne : σ₀ ≠ σ₁) :
     ∃ N₀ : ℕ, ∀ A : (Fin L → Fin 2) → ℝ,
@@ -659,6 +670,50 @@ theorem gibbsCorr_one_uniform_bound {β : ℝ} (hβ : 0 ≤ β) (N : ℕ)
           * (2 ^ L * ((z2Norm β) ^ L) ^ N) := by
         rw [mul_pow]
         field_simp
+
+/-- The number of configurations, as a real. -/
+theorem card_config_real :
+    ((Finset.univ : Finset (Fin L → Fin 2)).card : ℝ) = 2 ^ L := by
+  rw [Finset.card_univ, Fintype.card_fun]
+  simp
+
+/-- **The covariance form, for an ARBITRARY observable.**  Centring an
+observable in the uniform measure discharges the mean-zero hypothesis, so the
+bound applies to every `A` with its variance as the constant. -/
+theorem gibbsCov_one_uniform_bound {β : ℝ} (hβ : 0 ≤ β) (N : ℕ)
+    (A : (Fin L → Fin 2) → ℝ) :
+    |gibbsCorr (fun _ => (1:ℝ)) β N
+        (fun σ => A σ - (∑ τ, A τ) / 2 ^ L) (fun σ => A σ - (∑ τ, A τ) / 2 ^ L)|
+      ≤ ((∑ σ, (A σ - (∑ τ, A τ) / 2 ^ L) * (A σ - (∑ τ, A τ) / 2 ^ L)) / 2 ^ L)
+        * Real.tanh β ^ N := by
+  refine gibbsCorr_one_uniform_bound hβ N ?_
+  have hc : (0:ℝ) < 2 ^ L := by positivity
+  rw [Finset.sum_sub_distrib, Finset.sum_const, nsmul_eq_mul, card_config_real]
+  field_simp
+  ring
+
+/-- **THE ENDPOINT WITH NO `L` ON THE RIGHT AT ALL.**  For an observable of mean
+zero bounded by `1`, the normalised two-point function is below `(tanh β)^N` --
+every symbol on the right-hand side is free of the extent, and there is no
+threshold. -/
+theorem gibbsCorr_one_le_of_bounded {β : ℝ} (hβ : 0 ≤ β) (N : ℕ)
+    {A : (Fin L → Fin 2) → ℝ} (hA : ∑ σ, A σ = 0) (hb : ∀ σ, |A σ| ≤ 1) :
+    |gibbsCorr (fun _ => (1:ℝ)) β N A A| ≤ Real.tanh β ^ N := by
+  have hc : (0:ℝ) < 2 ^ L := by positivity
+  have hsq : (∑ σ, A σ * A σ) ≤ 2 ^ L := by
+    calc (∑ σ, A σ * A σ) ≤ ∑ _σ : Fin L → Fin 2, (1:ℝ) := by
+          refine Finset.sum_le_sum fun σ _ => ?_
+          have := hb σ
+          nlinarith [abs_nonneg (A σ), sq_abs (A σ), abs_mul_abs_self (A σ)]
+      _ = 2 ^ L := by
+          rw [Finset.sum_const, nsmul_eq_mul, card_config_real, mul_one]
+  calc |gibbsCorr (fun _ => (1:ℝ)) β N A A|
+      ≤ ((∑ σ, A σ * A σ) / 2 ^ L) * Real.tanh β ^ N :=
+        gibbsCorr_one_uniform_bound hβ N hA
+    _ ≤ 1 * Real.tanh β ^ N :=
+        mul_le_mul_of_nonneg_right (by rw [div_le_one hc]; exact hsq)
+          (pow_nonneg (tanh_nonneg hβ) N)
+    _ = Real.tanh β ^ N := one_mul _
 
 end Uniform
 

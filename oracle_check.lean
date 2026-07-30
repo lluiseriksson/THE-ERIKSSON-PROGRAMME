@@ -3019,3 +3019,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.iterate_fluct_bound
 #print axioms YangMills.OS.gibbsPartition_one
 #print axioms YangMills.OS.gibbsCorr_one_uniform_bound
+#print axioms YangMills.OS.card_config_real
+#print axioms YangMills.OS.gibbsCov_one_uniform_bound
+#print axioms YangMills.OS.gibbsCorr_one_le_of_bounded
