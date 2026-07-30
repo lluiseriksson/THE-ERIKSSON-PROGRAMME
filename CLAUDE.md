@@ -185,7 +185,7 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (latest recorded checkpoint: 8412, ledger Addendum 507).
+   incremented** (latest merged-core checkpoint: 8463 jobs at `7460e035`).
 
 ## The autonomous loop
 
@@ -225,7 +225,9 @@ Lean; they save hours.
 
 ## Current state (updated 2026-07-04; source checkpoint 2026-07-04)
 
-* Latest recorded core checkpoint: **8412 jobs**, zero sorry, zero axioms.
+* Latest recorded merged-core checkpoint: **8463 jobs** at `7460e035`, zero sorry,
+  zero nonstandard axioms.  The thermodynamic-limit branch itself was
+  measured at 8460 jobs at `0be45284`.
   Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
   ledger includes the earlier Addendum 444/date-stamped checkpoint material
   plus the 2026-07-03 Catalan/Schur series through Addendum 465 and the

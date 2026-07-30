@@ -3033,6 +3033,46 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.sum_siteSign_sq_one
 #print axioms YangMills.OS.gibbsPathSum_siteSign_eq
 #print axioms YangMills.OS.gibbsPathSum_neg_of_neg_beta
+
+-- Thermodynamic-limit campaign: finite-volume local-observable bridges
+#print axioms YangMills.CompatibleLocalObservable.realize_latticeShiftForward
+#print axioms YangMills.localGibbsExpectation_translate
+#print axioms YangMills.localGibbsExpectation_translateList
+#print axioms YangMills.localGibbsExpectation_eq_markedSum_div
+#print axioms YangMills.localGibbsExpectation_eq_markedClusterSum
+#print axioms YangMills.supportPinnedBoundaryRemainder_le_volumeUniform
+#print axioms YangMills.integral_pi_eq_supportMarginal
+#print axioms YangMills.integral_pi_eq_of_supportEquiv
+#print axioms YangMills.integral_gaugeMeasureFrom_eq_of_supportEquiv
+#print axioms YangMills.WindowPlaquette.toConcrete_edge_pos
+#print axioms YangMills.WindowPlaquette.toConcrete_injective
+#print axioms YangMills.WindowPlaquette.isConnectedPolymer_realizedFinset_iff
+#print axioms YangMills.ConcretePlaquette.siteMargin_of_touchWalk
+#print axioms YangMills.integral_prod_plaquetteWeight_realizedFinset_eq
+#print axioms YangMills.CompatibleLocalObservable.realizedFinset_windowSupport
+#print axioms YangMills.integral_realize_mul_prod_plaquetteWeight_realizedFinset_eq
+#print axioms YangMills.weightedLatticePolymerSystem_plaquetteWeight
+#print axioms YangMills.WindowPolymer.incomp_toWeightedPolymer_iff
+#print axioms YangMills.WindowPolymer.activity_toWeightedPolymer_eq
+#print axioms YangMills.KP.ursell_eq_of_incomp
+#print axioms YangMills.KP.clusterSum_eq_of_equiv
+#print axioms YangMills.WindowPolymer.clusterMonomial_toWeightedPolymer_eq
+#print axioms YangMills.WindowPolymer.weighted_exists_touchWalk_le
+#print axioms YangMills.WindowPolymer.cluster_siteMargin_zero
+#print axioms YangMills.WindowPolymer.toWeightedPolymer_decodedClusterTuple
+#print axioms YangMills.WindowPolymer.weightedClusterMonomial_eq_of_commonWindow
+#print axioms YangMills.WindowPolymer.connectedLattice_rootedPinnedTail_volumeUniform
+#print axioms YangMills.WindowPolymer.supportRootedBoundaryRemainder_le_volumeUniform
+
+-- Full integer-coordinate translation group and terminal state
+#print axioms YangMills.IntegerLocalObservable.neg_vadd_vadd
+#print axioms YangMills.integerLocalGibbsExpectation_vadd
+#print axioms YangMills.cauchySeq_integerLocalGibbsExpectation
+#print axioms YangMills.tendsto_integerInfiniteLocalGibbsStateValue_comp
+#print axioms YangMills.integerInfiniteLocalGibbsStateValue_vadd
+#print axioms YangMills.integerInfiniteLocalGibbsState
+#print axioms YangMills.tendsto_integerFreeBoundaryThermodynamicExpectation
+#print axioms YangMills.abs_integerInfiniteLocalGibbsTruncatedCorrelation_le_of_eventually
 #print axioms YangMills.OS.unweightedSign
 #print axioms YangMills.OS.symWeighted_quadForm_neg_of_neg_beta
 #print axioms YangMills.OS.spatialKernel_posSemidef_zero
