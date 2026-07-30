@@ -77,6 +77,31 @@ noncomputable def cmp102Eq80CouplingScaledTaylorResidual
           (M := M) (Q := Q) (Nc := Nc) gk).contDiff).of_le
             (by norm_num)) B)
 
+/-- Proof-independent fixed Hessian operator of the coupling-scaled potential.
+Unlike the radial construction, this definition is total in the potential and
+does not carry a regularity certificate as data. -/
+noncomputable def cmp102Eq80CouplingScaledFixedHessian
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (gk : ℝ) (f : CoupledField M Q Nc → ℝ) :
+    CoupledEndomorphism M Q Nc :=
+  realBilinearRiesz
+    (cmp116FDerivHessian (cmp102Eq80CouplingScaledPotential gk f) 0)
+
+/-- Total scalar Taylor residual after the physical substitution `g_k C`.
+It is defined for every potential by subtracting the proof-independent
+Hessian at the origin. -/
+noncomputable def cmp102Eq80CouplingScaledTotalTaylorResidual
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (gk : ℝ) (f : CoupledField M Q Nc → ℝ)
+    (B : CoupledField M Q Nc) : ℝ :=
+  cmp102Eq80CouplingScaledPotential gk f B -
+    (1 / 2 : ℝ) * inner ℝ B
+      (cmp102Eq80CouplingScaledFixedHessian gk f B)
+
 /-- A normalized source potential remains normalized after precomposition
 with the physical linear fluctuation `g_k C`. -/
 theorem hasFDerivAt_cmp102Eq80CouplingScaledPotential_zero
@@ -105,6 +130,49 @@ theorem hasFDerivAt_cmp102Eq80CouplingScaledPotential_zero
     simpa using hf0
   have hcomp := hfL0.comp (0 : CoupledField M Q Nc) L.hasFDerivAt
   simpa [cmp102Eq80CouplingScaledPotential, L] using hcomp
+
+/-- On a normalized `C²` potential, the total proof-independent residual is
+exactly the radial residual used by the cubic cutoff estimate. -/
+theorem cmp102Eq80CouplingScaledTotalTaylorResidual_eq_radial
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (gk : ℝ) (f : CoupledField M Q Nc → ℝ)
+    (hf : ContDiff ℝ 2 f)
+    (hf0 : f 0 = 0) (hdf0 : fderiv ℝ f 0 = 0)
+    (B : CoupledField M Q Nc) :
+    cmp102Eq80CouplingScaledTotalTaylorResidual gk f B =
+      cmp102Eq80CouplingScaledTaylorResidual gk f hf B := by
+  let fscaled := cmp102Eq80CouplingScaledPotential gk f
+  have hfscaled : ContDiff ℝ 2 fscaled := by
+    simpa [fscaled, cmp102Eq80CouplingScaledPotential] using
+      hf.comp
+        (cmp109ConstrainedLinearFluctuationCLM
+          (M := M) (Q := Q) (Nc := Nc) gk).contDiff
+  have hfscaled0 : fscaled 0 = 0 := by
+    change f
+      (cmp109ConstrainedLinearFluctuationCLM
+        (M := M) (Q := Q) (Nc := Nc) gk 0) = 0
+    rw [map_zero, hf0]
+  have hdfscaled0 : fderiv ℝ fscaled 0 = 0 :=
+    (hasFDerivAt_cmp102Eq80CouplingScaledPotential_zero
+      gk f hf hdf0).fderiv
+  have hfixed :
+      inner ℝ B (cmp102Eq80CouplingScaledFixedHessian gk f B) =
+        inner ℝ B (cmp116RadialTaylorOperator fscaled 0 hfscaled B) := by
+    calc
+      inner ℝ B (cmp102Eq80CouplingScaledFixedHessian gk f B) =
+          cmp116FDerivHessian fscaled 0 B B := by
+            rw [real_inner_comm]
+            exact inner_realBilinearRiesz _ _ _
+      _ = inner ℝ B (cmp116RadialTaylorOperator fscaled 0 hfscaled B) := by
+            symm
+            exact inner_cmp116RadialTaylorOperator_zero
+              fscaled B B hfscaled
+  rw [cmp102Eq80CouplingScaledTotalTaylorResidual,
+    cmp102Eq80CouplingScaledTaylorResidual, hfixed]
+  exact cmp116RadialTaylor_scalarResidual_eq
+    fscaled B hfscaled hfscaled0 hdfscaled0
 
 /-- Exact fixed-quadratic plus Taylor-residual split after the physical
 coupling substitution. -/
