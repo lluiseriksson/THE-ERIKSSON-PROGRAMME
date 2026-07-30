@@ -101,13 +101,15 @@ subsequence does not close any brick.
    two-plaquette quotient bound with the local truncated correlation and
    passes it to the infinite state under the explicit eventual realization
    and separation hypotheses.
-9. **Canonical verification and paper — in progress.**
+9. **Canonical verification and paper — complete.**
    All focal modules, the direct `YangMillsCore.lean` root, and ten headline
-   axiom oracles are green.  The canonical Lake invocation is still pending:
-   in the Codex sandbox, Lake checks the changed Mathlib URL by invoking
-   `git`, which cannot reach port 443 and fails before build planning.  The
-   paper must retain the exact coupling range, generator/finite-word
-   translation scope, and periodic-versus-centered-free boundary scope.
+   axiom oracles are green.  With all nine dependency HEADs matching
+   `lake-manifest.json` and a process-local `safe.directory` setting for the
+   ownership-mismatched checkout, the canonical invocation terminated
+   literally with `Build completed successfully (8458 jobs).` and empty
+   stderr.  No dependency was deleted or updated.  The paper retains the
+   exact coupling range, generator/finite-word translation scope, and
+   periodic-versus-centered-free boundary scope.
 
 ## Current exact frontier
 

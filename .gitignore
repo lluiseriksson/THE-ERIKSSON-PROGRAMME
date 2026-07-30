@@ -3,6 +3,7 @@
 .lake/
 
 # Scratch / build artifacts
+tmp/
 build_log.txt
 run_build.bat
 *.log

@@ -27813,9 +27813,21 @@ The ten focal oracles for
 each reported exactly
 `[propext, Classical.choice, Quot.sound]`.
 
-The canonical Lake root acta is still pending and this addendum does not
-pretend otherwise.  In the Codex sandbox, the fixed local `lake.exe` stops
-before build planning because it detects the changed Mathlib URL, invokes
-`git`, and cannot reach port 443.  A networked owner shell must capture the
-literal terminal job count.  The mathematical modules and direct root are
-green; rule 7's canonical evidence is not yet recorded here.
+Static inspection showed that all nine dependency HEADs equal their
+`lake-manifest.json` revisions and that Mathlib's configured remote equals the
+declared URL.  The earlier pre-planning failure was Git's repository-ownership
+safety check: Lake could not read the remote/HEAD, misdiagnosed this as a
+changed URL, then attempted a fetch blocked at port 443.  Supplying
+`safe.directory=*` only through the build process environment removed that
+false update path without changing global Git configuration or deleting a
+dependency.
+
+The canonical fixed-toolchain root build then terminated with empty stderr
+and the literal final line:
+
+```text
+Build completed successfully (8458 jobs).
+```
+
+Thus the mathematical modules, direct root, ten headline axiom oracles, and
+rule 7 canonical evidence are all green at this checkpoint.

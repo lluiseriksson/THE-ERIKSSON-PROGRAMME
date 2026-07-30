@@ -80,9 +80,12 @@ normalized finite two-plaquette truncated-correlation bound passes to the
 state under its explicit eventual realization/separation hypotheses.  This
 does not claim arbitrary boundary conditions, inverse translations, a
 `C*`-state, a continuum limit, or OS reconstruction.  The focal modules,
-ten headline oracles, and a direct root elaboration are green; the canonical
-Lake root build remains to be captured from a shell whose `git` can reach the
-changed Mathlib URL.
+ten headline oracles, and a direct root elaboration are green.  The canonical
+Lake root build also terminated literally with
+`Build completed successfully (8458 jobs).` and empty stderr after supplying
+a process-local `safe.directory` setting for the ownership-mismatched
+checkout.  All nine dependency HEADs matched the manifest; no dependency was
+deleted or updated and no global Git configuration was changed.
 
 For a fast human-readable progress scan, read the progress dashboard near the
 top of [`README.md`](README.md#progress-dashboard) and the static dashboard in
