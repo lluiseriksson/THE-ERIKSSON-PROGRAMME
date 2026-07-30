@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{3c9065f9eeda141d59581c4d3d6b26ca3a6a22c3}
+\newcommand{\anchor}{854ff223396630a8a75b0a95a3ada6413f3a395d}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -42,8 +42,10 @@ and one of them sharp}
 \begin{abstract}
 \textbf{What is proved, stated before anything else.}  The reflected two-point
 form of the Gibbs measure, at the two \emph{ends} of a path, for \emph{real}
-observables of a \emph{single} slice, is non-negative; and the Gram matrix of a
-finite family of such observables is positive semidefinite.  \textbf{This is not
+observables of a \emph{single} slice, is non-negative under the parity and
+coupling hypotheses stated below --- at even separation for every $\beta$, and
+at every separation exactly for $\beta\ge0$ --- and the Gram matrix of a finite
+family of such observables is positive semidefinite under the same hypotheses.  \textbf{This is not
 yet the Osterwalder--Schrader axiom}, which quantifies over observables of the
 whole past half-chain and over complex ones.  The half-chain algebra, the
 reflection map and the sesquilinear form are not built here; \S\ref{sec:scope}
@@ -294,11 +296,12 @@ harder than asking some draw to go negative.  Both pass.
 
 \section{Scope}\label{sec:scope}
 
-\paragraph{One axiom, not a reconstruction.}  Reflection positivity is one of the
-Osterwalder--Schrader axioms.  Building the physical Hilbert space --- the
-quotient of the past algebra by the null space of this form, with the transfer
-operator descending to a self-adjoint contraction --- is not done here and is
-not claimed.
+\paragraph{An endpoint form, not the full axiom and not a reconstruction.}
+Reflection positivity is one of the Osterwalder--Schrader axioms, and what is
+proved here is its endpoint form rather than the axiom itself.  Building the
+physical Hilbert space --- the quotient of the past algebra by the null space of
+this form, with the transfer operator descending to a self-adjoint contraction
+--- is a further step again, and is neither done here nor claimed.
 
 \paragraph{Endpoint observables only --- and what the full axiom would need.}
 The bridge module supplies correlations of observables at the two ends of the
