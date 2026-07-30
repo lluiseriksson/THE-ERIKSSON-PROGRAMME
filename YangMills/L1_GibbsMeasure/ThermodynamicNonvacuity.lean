@@ -419,6 +419,165 @@ noncomputable def su2UniformLocalKPRegimeOfBound
     have hrad := interval_radius_of_le_master z hz0 hz
     convert hrad using 1 <;> norm_num [z]
 
+/-! ## A non-vacuous four-dimensional interval -/
+
+/-- Explicit strong-coupling radius for the physical lattice dimension
+`d = 4`.  The smaller radius absorbs the larger lattice-animal constant and
+the marked-observable tilt without claiming optimized constants. -/
+noncomputable def explicitStrongCouplingRadiusD4 : ℝ :=
+  ((10 : ℝ) ^ 6)⁻¹
+
+theorem explicitStrongCouplingRadiusD4_pos :
+    0 < explicitStrongCouplingRadiusD4 := by
+  norm_num [explicitStrongCouplingRadiusD4]
+
+/-- One rational exponential majorant covers every exponent in the
+four-dimensional KP package: `0.02`, `1.02`, and `1.29`. -/
+private theorem exp_le_nine_of_le_two
+    (x : ℝ) (hx : x ≤ 2) :
+    Real.exp x ≤ 9 := by
+  calc
+    Real.exp x ≤ Real.exp 2 := Real.exp_le_exp.mpr hx
+    _ = Real.exp 1 * Real.exp 1 := by
+      rw [show (2 : ℝ) = 1 + 1 by norm_num, Real.exp_add]
+    _ ≤ 3 * 3 := by
+      exact mul_le_mul Real.exp_one_lt_three.le
+        Real.exp_one_lt_three.le (Real.exp_pos _).le (by norm_num)
+    _ = 9 := by norm_num
+
+private noncomputable def intervalMasterWeightD4 : ℝ :=
+  (21 / 10 : ℝ) * explicitStrongCouplingRadiusD4 * 9
+
+/-- Exact rational margin simultaneously stronger than the `d = 4` radius
+condition and the `64`-fold smallness condition at `t = 10⁻²`. -/
+private theorem intervalMasterWeightD4_margin :
+    10625 * intervalMasterWeightD4 < 1 := by
+  norm_num [intervalMasterWeightD4, explicitStrongCouplingRadiusD4]
+
+private theorem interval_weight_le_masterD4
+    (β s : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadiusD4)
+    (hs : Real.exp s ≤ 9) :
+    (Real.exp (|β| * 2) - 1) * Real.exp s ≤
+      intervalMasterWeightD4 := by
+  unfold intervalMasterWeightD4
+  have hactivity :
+      Real.exp (|β| * 2) - 1 ≤
+        (21 / 10 : ℝ) * explicitStrongCouplingRadiusD4 := by
+    have hradius :
+        explicitStrongCouplingRadiusD4 ≤
+          explicitStrongCouplingRadius := by
+      norm_num [explicitStrongCouplingRadiusD4,
+        explicitStrongCouplingRadius]
+    exact
+      (interval_activity_le β (hβ.trans hradius)).trans
+        (mul_le_mul_of_nonneg_left hβ (by norm_num))
+  exact mul_le_mul hactivity hs
+    (Real.exp_pos _).le
+    (mul_nonneg (by norm_num) explicitStrongCouplingRadiusD4_pos.le)
+
+private theorem interval_radiusD4_of_le_master
+    (z : ℝ) (hz0 : 0 ≤ z) (hz : z ≤ intervalMasterWeightD4) :
+    4225 * z < 1 := by
+  have h10625 : 10625 * z < 1 := by
+    exact (mul_le_mul_of_nonneg_left hz (by norm_num)).trans_lt
+      intervalMasterWeightD4_margin
+  nlinarith
+
+private theorem interval_smallD4_of_le_master
+    (z : ℝ) (hz0 : 0 ≤ z) (hz : z ≤ intervalMasterWeightD4) :
+    64 * (z / (1 - 4225 * z)) ≤ (1 / 100 : ℝ) := by
+  have h10625 : 10625 * z < 1 := by
+    exact (mul_le_mul_of_nonneg_left hz (by norm_num)).trans_lt
+      intervalMasterWeightD4_margin
+  have hden : 0 < 1 - 4225 * z := by nlinarith
+  rw [← mul_div_assoc, div_le_iff₀ hden]
+  nlinarith
+
+/-- **Uniform KP regime in the physical lattice dimension.**
+
+Every coupling with `|β| ≤ 10⁻⁶` satisfies all five uniform KP inequalities
+for `d = 4`, `G = SU(2)`, plaquette bound `B = 2`, and
+`t = ε = η = 10⁻²`.  The constants are deliberately conservative and are
+not presented as optimized strong-coupling radii. -/
+noncomputable def su2D4UniformLocalKPRegimeOfBound
+    (β : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadiusD4) :
+    UniformLocalKPRegime 4 2 β where
+  t := 1 / 100
+  ε := 1 / 100
+  η := 1 / 100
+  t_nonneg := by norm_num
+  ε_pos := by norm_num
+  η_pos := by norm_num
+  radius_tilt := by
+    let z := (Real.exp (|β| * 2) - 1) *
+      Real.exp ((1 / 100 : ℝ) + 1 / 100)
+    have hz0 : 0 ≤ z :=
+      mul_nonneg (interval_activity_nonneg β) (Real.exp_pos _).le
+    have hz : z ≤ intervalMasterWeightD4 := by
+      apply interval_weight_le_masterD4 β
+        ((1 / 100 : ℝ) + 1 / 100) hβ
+      apply exp_le_nine_of_le_two
+      norm_num
+    have hrad := interval_radiusD4_of_le_master z hz0 hz
+    convert hrad using 1 <;> norm_num [z]
+  small_tilt := by
+    let z := (Real.exp (|β| * 2) - 1) *
+      Real.exp ((1 / 100 : ℝ) + 1 / 100)
+    have hz0 : 0 ≤ z :=
+      mul_nonneg (interval_activity_nonneg β) (Real.exp_pos _).le
+    have hz : z ≤ intervalMasterWeightD4 := by
+      apply interval_weight_le_masterD4 β
+        ((1 / 100 : ℝ) + 1 / 100) hβ
+      apply exp_le_nine_of_le_two
+      norm_num
+    have hsmall := interval_smallD4_of_le_master z hz0 hz
+    convert hsmall using 1 <;> norm_num [z]
+  radius_unitTilt := by
+    let z := (Real.exp (|β| * 2) - 1) *
+      Real.exp ((1 / 100 : ℝ) + 1 / 100 + 1)
+    have hz0 : 0 ≤ z :=
+      mul_nonneg (interval_activity_nonneg β) (Real.exp_pos _).le
+    have hz : z ≤ intervalMasterWeightD4 := by
+      apply interval_weight_le_masterD4 β
+        ((1 / 100 : ℝ) + 1 / 100 + 1) hβ
+      apply exp_le_nine_of_le_two
+      norm_num
+    have hrad := interval_radiusD4_of_le_master z hz0 hz
+    convert hrad using 1 <;> norm_num [z]
+  small_unitTilt := by
+    let z := (Real.exp (|β| * 2) - 1) *
+      Real.exp ((1 / 100 : ℝ) + 1 / 100 + 1)
+    have hz0 : 0 ≤ z :=
+      mul_nonneg (interval_activity_nonneg β) (Real.exp_pos _).le
+    have hz : z ≤ intervalMasterWeightD4 := by
+      apply interval_weight_le_masterD4 β
+        ((1 / 100 : ℝ) + 1 / 100 + 1) hβ
+      apply exp_le_nine_of_le_two
+      norm_num
+    have hsmall := interval_smallD4_of_le_master z hz0 hz
+    convert hsmall using 1 <;> norm_num [z]
+  marked_radius := by
+    let z := localMarkedEffectiveWeight 4 2 β (1 / 100) *
+      Real.exp (1 / 100)
+    have hz0 : 0 ≤ z := by
+      dsimp only [z, localMarkedEffectiveWeight]
+      exact mul_nonneg
+        (mul_nonneg (interval_activity_nonneg β) (Real.exp_pos _).le)
+        (Real.exp_pos _).le
+    have hz : z ≤ intervalMasterWeightD4 := by
+      calc
+        z = (Real.exp (|β| * 2) - 1) *
+            Real.exp (129 / 100 : ℝ) := by
+          dsimp only [z, localMarkedEffectiveWeight]
+          rw [mul_assoc, ← Real.exp_add]
+          norm_num
+        _ ≤ intervalMasterWeightD4 := by
+          apply interval_weight_le_masterD4 β (129 / 100) hβ
+          apply exp_le_nine_of_le_two
+          norm_num
+    have hrad := interval_radiusD4_of_le_master z hz0 hz
+    convert hrad using 1 <;> norm_num [z]
+
 end WindowPolymer
 
 /-! ## Concrete physical endpoint -/
@@ -500,5 +659,20 @@ noncomputable def su2InfiniteLocalGibbsStateOnPuncturedInterval
     measurable_su2FundamentalPlaquetteEnergy
     su2FundamentalPlaquetteEnergy_bounded
     (WindowPolymer.su2UniformLocalKPRegimeOfBound β hβ)
+
+/-- **Concrete four-dimensional family on a punctured interval.**
+
+For every real `β` with `0 < |β| ≤ 10⁻⁶`, this is the positive normalized
+infinite-volume state of the nonconstant physical `SU(2)` plaquette energy in
+the physical lattice dimension `d = 4`. -/
+noncomputable def su2D4InfiniteLocalGibbsStateOnPuncturedInterval
+    (β : ℝ) (_hβpos : 0 < |β|)
+    (hβ : |β| ≤ WindowPolymer.explicitStrongCouplingRadiusD4) :
+    WindowPolymer.PositiveNormalizedLocalState 4 SU2GaugeGroup :=
+  WindowPolymer.infiniteLocalGibbsState
+    (sunHaarProb 2)
+    measurable_su2FundamentalPlaquetteEnergy
+    su2FundamentalPlaquetteEnergy_bounded
+    (WindowPolymer.su2D4UniformLocalKPRegimeOfBound β hβ)
 
 end YangMills
