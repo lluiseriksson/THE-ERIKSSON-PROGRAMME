@@ -900,3 +900,4 @@ import YangMills.OS.SpatialGibbs
 -- EXTENT; nothing here is uniform in it, and the endpoint bounds the
 -- UNNORMALISED two-point sum, not the normalised expectation.
 import YangMills.OS.SpatialSpectral
+import YangMills.OS.SpatialUniform

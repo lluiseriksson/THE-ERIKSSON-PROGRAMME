@@ -28034,3 +28034,89 @@ all 46 in the oracle list.  `check_module_prose.py`: OS lane 18 modules,
 
 **Still not proved.**  Anything uniform in the extent --- unchanged, and the only
 substantive gap.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 547 (2026-07-30, **PAPER 11 OPENED AND CLOSED: the rate without the
+extent --- and a pre-registered judge that failed and stays failed**)
+
+**Context.**  Every rate in this lane was a fixed-`L` rate.  Paper 8 proved
+strict separation at each extent and said it was not uniform; paper 10 gave the
+separation a modulus and measured that modulus tending to `1` outside the
+disordered region.  Nothing survived `L -> infinity`, and *clustering* was never
+used.  This addendum records the first statement that does.
+
+**0. THE JUDGE CAME FIRST, AND HALF OF IT FAILED.**  Two falsifiable predictions
+were committed BEFORE any Lean was written, thresholds fixed in the file:
+
+  * JUDGE 1 --- the decoupled rate is exactly `tanh(beta)` at every extent.
+    **PASS**, to 1e-16, beta in {0.2, 0.5, 0.9}, L = 1..8.  This authorised the
+    fabrication below, and only this.
+  * JUDGE 2 --- the coupled uniformity boundary is the Onsager curve
+    `sinh(2b) sinh(2g) = 1`.  **FAIL**: seven of eight cells agree, and the cell
+    (0.1, 1.0) --- disordered, so predicted to saturate --- gives
+    specRatio(12) = 0.6266 with drift 3.5e-2 from L = 10, above the
+    pre-registered 1e-2.  Undecided at L <= 12, so the judge does not pass.
+
+The autopsy prints the failing cell's whole sequence rather than re-running the
+judge with a larger MAXL: increments decay geometrically with q = 0.835,
+extrapolating to ~0.707, so it is saturation not yet reached and not a crawl to
+1.  **Raising the extent until the cell passed would have been choosing the
+judge to pass, and was not done.**  Consequence, binding: the Onsager boundary
+claim is reported in the paper as NOT ESTABLISHED, and no theorem rests on it.
+
+**1. The theorem.**  For the decoupled kernel, at EVERY extent,
+
+    specGap = tanh(beta) * Z^L,   hence   specRatio = tanh(beta),
+
+with `L` nowhere in the rate.  `spatialKernel_specGap_eq`.  Both directions:
+the upper bound is `spatialKernel_fluct_bound`, the lower is the single-site
+sign observable paper 5 already built (`sum_siteSign` supplies the missing fact
+that it has mean zero).
+
+**2. The proof is an induction, not a spectral decomposition.**  The kernel is a
+product over sites, so the tensor route exists --- and needs the spectrum of a
+Kronecker power, which mathlib does not carry.  It is not needed:
+`specGap_isGreatest` (Addendum 543) makes an upper bound on `specGap` *exactly*
+an operator inequality, and that falls to induction on the extent.  Split at the
+first site; the even part keeps mean zero and inherits the rate; the odd part
+keeps nothing and gets only Schur's test with rate 1; and the two recombine
+
+    tanh(beta) * Z = D
+
+**exactly**, `Z` the row sum and `D` the odd eigenvalue of one bond.  That single
+identity is why the constant does not pick up a factor per site.  Note the
+dependency: yesterday's `IsGreatest` statement, added as an interface nicety,
+is what made today's theorem cheap.
+
+**3. The payoff.**  `gibbs_clustering_uniform_rate`: composing with paper 10's
+uniform-threshold endpoint, the normalised Gibbs two-point function obeys
+`|E[A(X_0)A(X_N)]| <= C_A * tanh(beta)^N` past one threshold, and the RATE
+contains no `L`.  First statement in the lane that survives the volume limit.
+
+**4. What it is not, said in the module and in the paper.**  At constant source
+weight the spatial slices are independent, so this is a statement about a
+PRODUCT measure --- which is exactly why it is reachable.  What it establishes is
+narrower than it sounds: not that the coupled model clusters uniformly, but that
+**the obstruction to uniformity is the source weight and not the extent**.  The
+constant `C_A` is not claimed uniform; only the rate is.
+
+**5. An exact identification, kept separate from the failed judge.**  With the
+ring source weight the kernel is `D_w^{1/2} T D_w^{1/2}` --- the symmetrised
+transfer matrix of the 2D Ising model, vertical `beta`, horizontal `gamma`.  That
+is algebra and is stated as such.  The BOUNDARY claim built on it is the one
+Judge 2 failed, and the two are not allowed to borrow each other's status.
+
+**Measured.**  Core **8431 jobs** --- INCREMENTED from 8430, as required when a
+module joins the core (rule 7).  Oracle **2689 commands -> 2689 answers**
+(2686 distinct, the same three known duplicates), 23 axiom-free + 2663 with
+axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
+**17** declarations in the new module, all 17 in the oracle list.
+`check_module_prose.py`: OS lane 19 modules, 0 findings --- and it earned its
+keep again, catching a `section 11` cross-reference in the new header that
+pointed at another module's section, not this one's.
+
+**Still not proved.**  Anything uniform in the extent for the COUPLED kernel.
+That is now the lane's single open analytic question, it is a 2D Ising
+high-temperature statement, and the measurements say it is true and hard rather
+than false.  Reflection positivity untouched.  Clay ~0 pct.
