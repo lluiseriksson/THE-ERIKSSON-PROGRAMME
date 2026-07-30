@@ -28485,3 +28485,66 @@ live.
 `main` while this was measured.  The counters above are for THIS tree
 (`main` + this module), measured here; no number from that merge is reused, and
 none of ours is offered for it.
+
+## Addendum 554 (2026-07-30, **PAPER 12 v1.3: a counter row that was never wired
+to a measurement, and the same L=0 sentence surviving in two twins**)
+
+**Context.**  Third external reading of paper 12 (97.00/100).  No mathematical
+finding: both defects are documentary, and both are instances of patterns this
+ledger already names.
+
+**1. THE ORACLE TABLE DID NOT CLOSE ARITHMETICALLY --- and the reason is worse
+than the number.**  The printed table said 2716 commands, **2712** distinct, 3
+duplicates, 2690 with axioms, 23 axiom-free.  A reader added the column:
+2690 + 23 = 2713, and 2713 + 3 = 2716.  The measurement was right --- Addendum
+553 records 2713 --- and the paper was wrong.
+
+The mechanism is the point.  The re-anchoring script took **two** of the five
+oracle rows as arguments (total, and with-axioms) and left the other three as
+literal ink from the previous version.  Two of those three happened not to
+change; the third did, and drifted silently.  **A number that no script owns is
+not a measurement, it is ink that once agreed with one.**
+
+Fixed structurally, not by editing the digit: the script now takes ALL seven
+counters and REFUSES TO WRITE unless they close ---
+
+    TOT  == DIST + DUP        every command is a distinct name or a repeat
+    DIST == AX  + FREE        every distinct answer has axioms or has none
+    len(declarations in the module) == NDECL
+
+so a stale row cannot survive a re-anchor, and a typo cannot survive the sum.
+The declaration count is read from the module rather than passed as a claim.
+
+**2. THE OLD `L=0` SENTENCE SURVIVED IN TWO TWINS.**  v1.2 split the `L=0`
+exception into its two kernels in the body of the paper --- and left the
+superseded one-kernel phrasing in the ABSTRACT ("one configuration, kernel `1`",
+one sentence after naming the COUPLED kernel, where it reads as false) and in
+the module's own §7 SECTION block, which is neither the module header that
+`check_module_prose.py` reads nor a declaration docstring.  Extending the guard
+to those blocks would NOT have caught it: the stale sentence contains no
+identifier and no §-reference, only a claim.  Both now
+name the decoupled `1` and the coupled `w ∅` explicitly.
+
+**This is the seventh occurrence of "corrected in one place, not the other"**
+(Addenda 539, 544, 546, 549, 550, 553, 554), and the third in which the surviving
+twin was Lean PROSE rather than paper prose.  The rule the ledger already carries
+--- when a claim is retired, grep for the CLAIM, not for the file you were
+editing --- was followed for the sentence that changed and not for the sentence
+that was merely nearby.  The narrower operational form, recorded now: **when a
+statement is SPLIT into two, every paraphrase of the unsplit version is stale,
+including the ones that are still literally true of one half.**
+
+**MEASURED (v1.3).**
+
+  * `lake build YangMillsCore` -> **Build completed successfully (8432 jobs)**.
+  * `lake env lean oracle_check.lean` -> **2716 commands, 2716 answers**;
+    2713 distinct + 3 duplicates; **23 axiom-free + 2690 with axioms**;
+    zero `sorryAx`, zero non-standard axioms, zero Lean errors.
+  * **19 declarations in the module, 19 in the oracle**, by name.
+  * `scripts/check_module_prose.py YangMills/OS` -> 20 modules, 0 findings.
+
+**Machine discipline.**  Another session was measuring a merge on this host with
+0.9 GB of physical memory free.  This run WAITED for a window --- zero foreign
+`lake`/`lean` and at least 4 GB free --- rather than elaborating alongside it.
+Two elaborators on a 16 GB box do not produce two measurements; they produce two
+paging processes and one unreliable number each.

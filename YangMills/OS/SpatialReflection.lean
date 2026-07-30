@@ -346,9 +346,10 @@ transports in BOTH directions, and the same sign observable divided by `√w`
 witnesses indefiniteness of the coupled kernel at every extent with at least one
 site.
 
-At `L = 0` there is nothing to witness: the configuration space is a point, the
-kernel is the number `1`, and it is positive semidefinite for every `β`.  So the
-boundary `β ≥ 0` is sharp exactly from one site upwards. -/
+At `L = 0` there is nothing to witness: the configuration space is a point, and
+there are two objects.  The DECOUPLED kernel is the number `1`; the COUPLED one
+is the positive scalar `w ∅`, which need not be `1`.  Both forms are squares at
+every `β`, so the boundary `β ≥ 0` is sharp exactly from one site upwards. -/
 
 /-- The sign observable, undressed by the weight.  This is the vector congruence
 sends to the decoupled witness. -/
