@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP116Eq214CMP102FineHeadTailTaylorSplit
+
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFixedQuadraticFamily
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainTaylorResidualFamily
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainTaylorResidualFamily_eq
+#print axioms
+  YangMills.RG.cmp116Eq142PhysicalPotentialTerm_fixedTaylorSplit_eq_cmp102Eq80FineHeadTailDomainFTCContribution
