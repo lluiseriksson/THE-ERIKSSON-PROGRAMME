@@ -28352,3 +28352,66 @@ distinct, the same three known duplicates), 23 axiom-free + 2682 with axiom
 dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.  **11**
 declarations in the new module, all 11 in the oracle list.
 `check_module_prose.py`: OS lane 20 modules, 0 findings.
+
+---
+
+## Addendum 552 (2026-07-30, **PAPER 12 v1.1: the title said an axiom the module
+does not prove --- and two motivational sentences were simply false**)
+
+**Context.**  First external reading of paper 12.  One structural finding and two
+false claims, plus an artefact defect.
+
+**1. THE TITLE OVERCLAIMED, and this is the house rule "title versus theorems".**
+The module proves that the reflected two-point form is non-negative for REAL
+observables of a SINGLE slice, at the two ENDS of a path.  The
+Osterwalder--Schrader axiom quantifies over observables of the whole PAST
+HALF-CHAIN, complex-valued, with the matrix `<Theta F_i, F_j>` positive
+semidefinite.  No reflection map, no half-chain algebra and no sesquilinear form
+exist in the module.  Calling it "Machine-Checked Reflection Positivity" claimed
+the axiom.
+
+Fixed in **both directions**: retitled to *Endpoint* Reflection Positivity with
+the domain stated in the abstract's first sentence AND in Theorem 4.1 --- and
+some of what the old title promised was actually proved:
+
+  * `gibbsPathSum_gram_nonneg` / `_even` with `gibbsPathSum_combo` --- the GRAM
+    statement.  Reflection positivity is a matrix being PSD, not one diagonal
+    entry; the matrix form follows by bilinearity and is now stated so the two
+    are not confused.
+  * `symWeighted_quadForm_neg_of_neg_beta` --- sharpness for **every** strictly
+    positive weight, not only the constant one.  Congruence is INVERTIBLE, so
+    inertia transports both ways and the sign observable divided by `sqrt(w)`
+    witnesses indefiniteness of the COUPLED kernel at every extent with at least
+    one site.  The old witness only refuted the universally quantified claim.
+  * `spatialKernel_posSemidef_zero` --- the `L = 0` exception, recorded: one
+    configuration, kernel `1`, a square at every beta.  "Exactly beta >= 0" is a
+    statement from one site upwards.
+
+The remaining gap is now identified as a CONSTRUCTION and not a further
+inequality: collapsing each half-chain to its boundary vector reduces the site
+case to `sum_iterate_even_nonneg` and the bond case to `symWeighted_posSemidef`,
+both already proved; the real-to-complex step is then free for a real symmetric
+kernel.  Registered, not done, not claimed.
+
+**2. "The first statement in this lane that holds for the coupled kernel" was
+FALSE.**  *The Modulus* proves `specGap < lam` for the coupled slice, and so do
+the Perron and gap papers.  What is actually distinctive is narrower and is now
+what the paper says: this result is UNCHANGED by the weight --- same hypothesis,
+same conclusion, no constant that depends on `w` --- whereas every earlier
+coupled-kernel statement contains a number that moves when `w` does.
+
+**3. "The weight that destroys uniformity" was also not proved.**  What exists is
+a MEASUREMENT that `specRatio(L)` degenerates under a ring weight, and the
+absence of any uniform bound for it.  Corrected in module and paper.
+
+**4. An artefact defect: the judges only PRINTED their verdicts.**  Both scripts
+reached the end after printing `FAIL` and exited `0`.  A gate that cannot fail a
+CI run is a report, not a gate.  Both now `sys.exit(1)` on failure --- which
+means `judge_spatial_reflection.py` now genuinely exits non-zero, since its gate
+B did fail.  The verdict is unchanged; only its enforceability is.
+
+**Measured.**  Core **8432 jobs**.  Oracle **2715 commands -> 2715 answers**
+(2712 distinct, the same three known duplicates), 23 axiom-free + 2689 with
+axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
+**18** declarations in the module, all 18 in the oracle list.
+`check_module_prose.py`: OS lane 20 modules, 0 findings.

@@ -1,18 +1,26 @@
 import YangMills.OS.SpatialUniform
 
 /-!
-# Reflection positivity for the coupled slice
+# Endpoint reflection positivity for the coupled slice
 
-Eleven papers in this lane end with the same sentence: *reflection positivity is
-untouched*.  It is touched here, and — unlike everything else the lane has
-proved — **the source weight cannot break it**.
+**What this module proves, stated before anything else.**  The reflected
+two-point form of the Gibbs measure, at the two ENDS of a path, for REAL
+observables of a SINGLE slice, is non-negative --- and the Gram matrix of a
+family of them is positive semidefinite.  That is not yet the
+Osterwalder–Schrader axiom, which quantifies over observables of the whole past
+half-chain and over complex ones.  The half-chain algebra, the reflection map
+and the sesquilinear form are **not** built here; see the closing section.
 
-That contrast is the point.  Uniformity in the extent dies the moment the
-spatial weight is switched on: the rate `specRatio(L)` runs to `1` outside the
-disordered region, and no theorem in this lane survives it.  Reflection
-positivity is congruence-invariant, so the same weight that destroys uniformity
-leaves positivity exactly where it was.  This is the first statement here that
-holds for the **coupled** kernel.
+Eleven papers in this lane end with *reflection positivity is untouched*.  This
+touches the endpoint form of it, and the interesting part is what the source
+weight does --- namely nothing.
+
+Earlier papers do prove statements about the coupled kernel: `specGap < lam`
+holds there too.  What is new is that this result is **unchanged** by the
+weight: same hypothesis, same conclusion, no constant that depends on `w`.
+Every earlier coupled-kernel statement has a number in it that moves when `w`
+does.  Positivity is the SIGN of a quadratic form, and conjugating by `√w` is a
+congruence, so there is nothing for the weight to move.
 
 ## Two reflections, two hypotheses
 
@@ -25,7 +33,9 @@ For a transfer chain the reflected two-point sum is `⟨v, Kᴺ v⟩` with
 * **Through a bond** (`N` odd).  Now the sum is `⟨Kᵐv, K Kᵐv⟩`, which needs `K`
   itself positive semidefinite.  That holds exactly for `β ≥ 0`, and the
   boundary is sharp: at `β < 0` the single-site sign observable makes the sum
-  equal to `2(e^β − e^{-β})ᴺ`, which is negative.
+  equal to `2(e^β − e^{-β})ᴺ`, which is negative --- and, since congruence is
+  invertible, the coupled kernel is indefinite below zero for EVERY positive
+  weight, at every extent with at least one site.
 
 ## What is proved
 
@@ -42,17 +52,37 @@ For a transfer chain the reflected two-point sum is `⟨v, Kᴺ v⟩` with
 * `gibbsPathSum_neg_of_neg_beta` — **sharpness**: at `β < 0` and odd `N` the sign
   observable gives exactly `2(e^β − e^{-β})ᴺ < 0`.  The hypothesis `β ≥ 0` is
   therefore active, not decorative.
+* `symWeighted_quadForm_neg_of_neg_beta` — and sharper: for **every** strictly
+  positive weight and every extent with at least one site, the COUPLED kernel is
+  indefinite below zero.  Congruence is invertible, so the inertia transports
+  both ways and the witness is the sign observable divided by `√w`.
+* `spatialKernel_posSemidef_zero` — the exception, recorded rather than left to
+  be found: at `L = 0` the space is a point, the kernel is `1`, and the form is
+  a square at every `β`.  The boundary is sharp from one site upwards.
+* `gibbsPathSum_gram_nonneg` / `gibbsPathSum_gram_nonneg_even` — the GRAM
+  statement: positivity of the whole matrix over a family of observables, not
+  only of one diagonal entry.  `gibbsPathSum_combo` is the bilinearity that
+  makes the matrix form visible.
 
 ## What is NOT proved, and is not claimed
 
-Reflection positivity is one Osterwalder–Schrader axiom.  **No reconstruction is
-carried out here**: the physical Hilbert space as the quotient of the past
-algebra by the null space of this form is not built, and nothing here is a
-statement about it.  Observables are the endpoint ones the bridge module
-supplies; general past-algebra observables are not treated.
+**This is not the Osterwalder–Schrader axiom yet.**  That axiom is about a
+general observable `F` of the past half-chain, complex-valued, with the matrix
+`⟨ΘFᵢ, Fⱼ⟩` positive semidefinite.  Here the observables are REAL and depend on a
+SINGLE slice, at the two ends of the path; no reflection map `Θ` is defined and
+no half-chain algebra is built.  The missing step is the collapse of each half
+to its boundary vector, after which `sum_iterate_even_nonneg` and
+`symWeighted_posSemidef` are exactly the two facts needed --- so the gap is a
+construction, not a further inequality.  It is registered, not done, and not
+claimed.
 
-Nothing here concerns uniformity in the extent, `SU(N)`, the continuum limit, or
-the Clay problem.
+**And no reconstruction.**  The physical Hilbert space as the quotient of the
+past algebra by the null space of this form is not built.
+
+The measured degeneration of `specRatio(L)` for a ring weight is exactly that,
+measured; no theorem says the weight *destroys* uniformity, only that no uniform
+bound is proved for it.  Nothing here concerns uniformity in the extent,
+`SU(N)`, the continuum limit, or the Clay problem.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`.  No sorry, no axioms.
 -/
@@ -303,5 +333,149 @@ theorem gibbsPathSum_neg_of_neg_beta {β : ℝ} (hβ : β < 0) (m : ℕ) :
   have hodd : Odd (2 * m + 1) := ⟨m, rfl⟩
   have := hodd.pow_neg hD
   linarith
+
+/-! ## §7  Sharpness for EVERY positive weight, not only the constant one
+
+The witness above sits at one site and constant weight, so it refutes the
+universally quantified statement but says nothing about a particular coupled
+kernel.  Congruence is invertible --- `√w` is nowhere zero --- so the inertia
+transports in BOTH directions, and the same sign observable divided by `√w`
+witnesses indefiniteness of the coupled kernel at every extent with at least one
+site.
+
+At `L = 0` there is nothing to witness: the configuration space is a point, the
+kernel is the number `1`, and it is positive semidefinite for every `β`.  So the
+boundary `β ≥ 0` is sharp exactly from one site upwards. -/
+
+/-- The sign observable, undressed by the weight.  This is the vector congruence
+sends to the decoupled witness. -/
+noncomputable def unweightedSign {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (i : Fin L)
+    (σ : Fin L → Fin 2) : ℝ :=
+  siteSign i σ / Real.sqrt (w σ)
+
+/-- **THE COUPLED KERNEL IS INDEFINITE BELOW ZERO, for EVERY positive weight.**
+At every extent with at least one site and every strictly positive `w`, the
+quadratic form of `symWeighted w β` takes a negative value when `β < 0`.  So
+`β ≥ 0` is not merely sufficient for the bond reflection: below it the coupled
+kernel itself fails, whatever the weight. -/
+theorem symWeighted_quadForm_neg_of_neg_beta {M : ℕ}
+    {w : (Fin (M + 1) → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : β < 0) :
+    ∑ σ, unweightedSign w 0 σ * act (symWeighted w β) (unweightedSign w 0) σ
+      = (Real.exp β - Real.exp (-β)) * (z2Norm β) ^ M * 2 ^ (M + 1)
+    ∧ ∑ σ, unweightedSign w 0 σ * act (symWeighted w β) (unweightedSign w 0) σ < 0 := by
+  have hsq : ∀ σ : Fin (M + 1) → Fin 2, Real.sqrt (w σ) ≠ 0 := fun σ =>
+    ne_of_gt (Real.sqrt_pos.mpr (hw σ))
+  -- the weight cancels: congruence carries the witness across
+  have hstep : ∀ σ : Fin (M + 1) → Fin 2,
+      unweightedSign w 0 σ * act (symWeighted w β) (unweightedSign w 0) σ
+        = (Real.exp β - Real.exp (-β)) * (z2Norm β) ^ M
+          * (siteSign 0 σ * siteSign 0 σ) := by
+    intro σ
+    have hact : act (symWeighted w β) (unweightedSign w 0) σ
+        = Real.sqrt (w σ) * ((Real.exp β - Real.exp (-β)) * (z2Norm β) ^ M
+            * siteSign 0 σ) := by
+      show (∑ τ, symWeighted w β σ τ * unweightedSign w 0 τ) = _
+      have hin : ∀ τ, symWeighted w β σ τ * unweightedSign w 0 τ
+          = Real.sqrt (w σ) * (spatialKernel β σ τ * siteSign 0 τ) := by
+        intro τ
+        show Real.sqrt (w σ) * spatialKernel β σ τ * Real.sqrt (w τ)
+            * (siteSign 0 τ / Real.sqrt (w τ)) = _
+        field_simp [hsq τ]
+      rw [Finset.sum_congr rfl fun τ _ => hin τ, ← Finset.mul_sum,
+        spatialKernel_siteSign β (0 : Fin (M + 1)) σ]
+      simp
+    rw [hact]
+    unfold unweightedSign
+    field_simp [hsq σ]
+  have hsum : ∑ σ : Fin (M + 1) → Fin 2, siteSign 0 σ * siteSign 0 σ
+      = 2 ^ (M + 1) := by
+    have hone : ∀ σ : Fin (M + 1) → Fin 2, siteSign 0 σ * siteSign 0 σ = 1 := by
+      intro σ
+      unfold siteSign z2Sign
+      by_cases h : σ 0 = 0 <;> simp [h]
+    rw [Finset.sum_congr rfl fun σ _ => hone σ, Finset.sum_const, Finset.card_univ,
+      Fintype.card_fun]
+    simp
+  have hval : ∑ σ, unweightedSign w 0 σ * act (symWeighted w β) (unweightedSign w 0) σ
+      = (Real.exp β - Real.exp (-β)) * (z2Norm β) ^ M * 2 ^ (M + 1) := by
+    rw [Finset.sum_congr rfl fun σ _ => hstep σ, ← Finset.mul_sum, hsum]
+  refine ⟨hval, ?_⟩
+  rw [hval]
+  have hD : Real.exp β - Real.exp (-β) < 0 :=
+    sub_neg.mpr (Real.exp_lt_exp.mpr (by linarith))
+  have h1 : (0:ℝ) < (z2Norm β) ^ M := pow_pos (z2Norm_pos β) M
+  have h2 : (0:ℝ) < 2 ^ (M + 1) := by positivity
+  exact mul_neg_of_neg_of_pos (mul_neg_of_neg_of_pos hD h1) h2
+
+/-- **At `L = 0` there is nothing to witness.**  One configuration, the kernel is
+the number `1`, and the form is a square at every `β`.  The sharpness of the
+boundary is a statement from one site upwards, and this records the exception
+rather than leaving it to be discovered. -/
+theorem spatialKernel_posSemidef_zero (β : ℝ) (u : (Fin 0 → Fin 2) → ℝ) :
+    0 ≤ ∑ σ, u σ * act (spatialKernel β) u σ := by
+  have hone : ∀ σ : Fin 0 → Fin 2, act (spatialKernel β) u σ = u σ := by
+    intro σ
+    show (∑ τ, spatialKernel β σ τ * u τ) = u σ
+    have h : ∑ τ : Fin 0 → Fin 2, spatialKernel β σ τ * u τ
+        = spatialKernel β σ σ * u σ :=
+      Finset.sum_eq_single σ
+        (fun b _ hb => absurd (Subsingleton.elim b σ) hb)
+        (fun h => absurd (Finset.mem_univ σ) h)
+    rw [h]
+    show (∏ _j : Fin 0, _) * u σ = u σ
+    simp
+  rw [Finset.sum_congr rfl fun σ _ => by rw [hone σ]]
+  exact Finset.sum_nonneg fun σ _ => mul_self_nonneg _
+
+/-! ## §8  The Gram form: positivity of the whole matrix, not only its diagonal
+
+Reflection positivity is a statement about a MATRIX being positive
+semidefinite, not about one diagonal entry.  For the endpoint observables the
+matrix version follows from the diagonal one by bilinearity, and is stated so
+that the diagonal is not mistaken for the whole. -/
+
+/-- A real combination of observables. -/
+noncomputable def combo {L k : ℕ} (c : Fin k → ℝ)
+    (A : Fin k → (Fin L → Fin 2) → ℝ) (σ : Fin L → Fin 2) : ℝ :=
+  ∑ i, c i * A i σ
+
+/-- The reflected form is bilinear, so a combination pulls out. -/
+theorem gibbsPathSum_combo {L k : ℕ} {w : (Fin L → Fin 2) → ℝ} (β : ℝ) (N : ℕ)
+    (c : Fin k → ℝ) (A : Fin k → (Fin L → Fin 2) → ℝ) :
+    gibbsPathSum w β N (combo c A) (combo c A)
+      = ∑ i, ∑ j, c i * c j * gibbsPathSum w β N (A i) (A j) := by
+  unfold gibbsPathSum combo
+  have hpt : ∀ X : Fin (N + 1) → (Fin L → Fin 2),
+      (∑ i, c i * A i (X 0)) * (∑ j, c j * A j (X (Fin.last N)))
+          * gibbsWeight w β X
+        = ∑ i, ∑ j, c i * c j
+            * (A i (X 0) * A j (X (Fin.last N)) * gibbsWeight w β X) := by
+    intro X
+    rw [Finset.sum_mul_sum, Finset.sum_mul]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [Finset.sum_mul]
+    exact Finset.sum_congr rfl fun j _ => by ring
+  rw [Finset.sum_congr rfl fun X _ => hpt X, Finset.sum_comm]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  rw [Finset.sum_comm]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  rw [Finset.mul_sum]
+
+/-- **THE GRAM MATRIX IS POSITIVE SEMIDEFINITE.**  For `β ≥ 0`, every family of
+endpoint observables and every real combination, the reflected form of the
+combination is non-negative --- which is the matrix statement, with the
+single-observable theorem as its diagonal. -/
+theorem gibbsPathSum_gram_nonneg {L k : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 ≤ β) (N : ℕ)
+    (c : Fin k → ℝ) (A : Fin k → (Fin L → Fin 2) → ℝ) :
+    0 ≤ gibbsPathSum w β N (combo c A) (combo c A) :=
+  gibbsPathSum_nonneg hw hβ N (combo c A)
+
+/-- The same at even separation, where no hypothesis on `β` is needed. -/
+theorem gibbsPathSum_gram_nonneg_even {L k : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (m : ℕ)
+    (c : Fin k → ℝ) (A : Fin k → (Fin L → Fin 2) → ℝ) :
+    0 ≤ gibbsPathSum w β (2 * m) (combo c A) (combo c A) :=
+  gibbsPathSum_nonneg_even hw β m (combo c A)
 
 end YangMills.OS

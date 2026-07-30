@@ -44,6 +44,7 @@ GATE B authorises only the beta >= 0 theorem and its sharpness witness.
 Neither authorises the other.  Reported as VERIFIED, never as proved.
 """
 import itertools
+import sys
 import math
 
 import numpy as np
@@ -140,3 +141,6 @@ print("GATE A:", "PASS" if okA else "FAIL", " (site reflection, every beta)")
 print("GATE B:", "PASS" if (okB1 and okB2) else "FAIL",
       " (bond reflection, beta >= 0, plus its failure below 0)")
 print("Each gate licenses its own theorem only.")
+
+# A gate that only PRINTS its verdict is a report, not a gate.
+sys.exit(0 if (okA and okB1 and okB2) else 1)
