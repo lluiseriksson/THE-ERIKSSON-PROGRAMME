@@ -28415,3 +28415,73 @@ B did fail.  The verdict is unchanged; only its enforceability is.
 axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
 **18** declarations in the module, all 18 in the oracle list.
 `check_module_prose.py`: OS lane 20 modules, 0 findings.
+
+## Addendum 553 (2026-07-30, **PAPER 12 v1.2: the Gram matrix was printed
+WITHOUT its dressing, and one exception was two objects wearing one name**)
+
+**Context.**  Second external reading of paper 12 (96.00/100).  Three necessary
+corrections, all of the same family: a printed formula that is a true statement
+about a DIFFERENT object than the one Lean proves.
+
+**1. THE GRAM MATRIX LOST ITS DRESSING.**  Theorem 4.2 was printed as
+
+    sum_ij c_i c_j <A_i, K^N A_j>  >=  0
+
+while the theorem in Lean is about `gibbsPathSum`, which is
+
+    sum_ij c_i c_j <sqrt(w) A_i, K_w^N sqrt(w) A_j>,   K_w = sqrt(w) K sqrt(w).
+
+The bare form is not false --- it is the constant-weight case --- but it is a
+statement about a different operator, and printing it under the theorem's name
+silently drops the entire point of the paper, which is precisely that the
+DRESSING is where the weight goes and that congruence is why it costs nothing.
+The paper now prints the two sides of the identity together, and says in prose
+that the `sqrt(w)` are the bridge's dressing and the reason the operator is
+self-adjoint, not decoration.
+
+**Class.** This is the "printed object is not the proved object" family, and it
+is the same shape as Addenda 539/544/546/549/550 --- corrected in one place, not
+the other.  Here the correction was never made anywhere: the dressing lives in
+the Lean statement and in the bridge paper, and the display was written from the
+IDEA of the theorem rather than from the theorem.  **Rule, added:** a displayed
+formula is transcribed from the Lean statement, not from memory of what it says.
+
+**2. `L = 0` WAS TWO KERNELS UNDER ONE SENTENCE.**  The recorded exception said
+"at `L=0` the kernel is the number `1`".  That is the DECOUPLED kernel.  The
+WEIGHTED kernel at `L=0` is the positive scalar `w(empty)`, which need not be
+`1`; the two forms are `u^2` and `w(empty) u^2`.  Both are squares at every
+`beta`, so the exception survives --- but it is two facts, and the paper claimed
+one of them for both.  New theorem `symWeighted_posSemidef_zero` (via
+`posSemidef_congr` applied to `spatialKernel_posSemidef_zero`), and the paragraph
+now names both objects and both forms.
+
+**3. THE DOCSTRING STILL CARRIED THE RETRACTED CLAIM.**  Addendum 552 retracted
+"the weight that destroys uniformity" from the paper --- and left it standing in
+the docstring of `symWeighted_posSemidef`, which is the module's own prose about
+the module's own theorem.  **Sixth occurrence of the one-place correction.**  The
+docstring now says what is true: the weight for which no extent-uniform spectral
+bound is presently proved, and under which degeneration has been MEASURED.  This
+is exactly the failure mode `scripts/check_module_prose.py` was built for and
+exactly the one it cannot catch: it reads IDENTIFIERS, not CLAIMS.  Recorded as
+a known limit of the guard rather than patched over.
+
+**4. Minor.**  "Three gates" now reads "three ACTIVE gates", with the failed
+original Gate B preserved and explicitly not counted --- four objects, three
+live.
+
+**MEASURED (v1.2).**
+
+  * `lake build YangMillsCore` -> **Build completed successfully (8432 jobs)**.
+    UNCHANGED from v1.1, and that is the expected reading: rule 7 is about a new
+    MODULE joining the core.  A new theorem inside an existing module adds a
+    declaration, not a build job.
+  * `lake env lean oracle_check.lean` -> **2716 commands, 2716 answers**; 2713
+    distinct (the three known duplicates); **23 axiom-free + 2690 with axioms**;
+    zero `sorryAx`, zero non-standard axioms, zero Lean errors.
+  * **19 declarations in the module, 19 in the oracle**, reconciled by name.
+  * `scripts/check_module_prose.py YangMills/OS` -> 20 modules, 0 findings.
+
+**Concurrency note.**  A separate session was merging an unrelated branch into
+`main` while this was measured.  The counters above are for THIS tree
+(`main` + this module), measured here; no number from that merge is reused, and
+none of ours is offered for it.
