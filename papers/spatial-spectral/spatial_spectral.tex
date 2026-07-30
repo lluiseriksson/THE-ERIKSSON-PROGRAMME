@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{b2c7e27a041a704118bf700aafa66461fcb30836}
+\newcommand{\anchor}{9704b3f3c0d576bb40c43caa5360fbd64dfa1643}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -92,8 +92,11 @@ the relative statement into a bound on the \emph{normalised} Gibbs two-point
 function.  Both are proved, and so is their composition: at a fixed extent the
 normalised two-point function is bounded by $C\,\mathrm{specRatio}^{N}$ past a
 machine-checked threshold $N_0$ --- characterised by
-$\mathrm{specRatio}^{N_0} < \frac{c^{2}}{2(\|u\|^{2}+1)}$, not given as a closed
-formula and not the least such index.  That rate depends on the extent, so this
+$\mathrm{specRatio}^{N_0} < \frac{c^{2}}{2(\|b_{\perp}\|^{2}+1)}$, not given as a
+closed formula and not the least such index.  Here $c$ and $b_{\perp}$ are the
+Perron coefficient and the orthogonal component of the dressed \emph{constant}
+observable --- \emph{not} of $A$, so the threshold does not depend on the
+observable and only $C$ does.  That rate depends on the extent, so this
 is not clustering.  Reflection
 positivity is untouched, and nothing in this paper is a claim about $\SU(N)$,
 the continuum limit, or the Yang--Mills mass gap.
@@ -269,12 +272,13 @@ the rate of Theorem~\ref{thm:fixedL}.  These numbers are
 are printed because a paper that reported only Theorem~\ref{thm:endpoint} would
 be reporting the half that does not settle the question.
 
-\paragraph{Attainment, but no norm object.}  Since v1.5 we prove both the
-bound and its attainment (Theorem~\ref{thm:sharp}), which is what it means for
-$\mathrm{specGap}$ to be the operator norm on the fluctuation sector.  What we
-do \emph{not} do is introduce that norm as a defined object and prove an
-equation about it; and the attainment theorem is empty when the state space has
-fewer than two points.
+\paragraph{Norm identified, but no restricted-operator interface.}
+Theorems~\ref{thm:sharp} and~\ref{thm:isgreatest} identify $\mathrm{specGap}$ as
+the greatest norm ratio on the fluctuation sector, so the norm \emph{is} pinned
+down, and by a statement about an object.  What is not built is a
+\texttt{Submodule} carrying $v^{\perp}$, with a \texttt{ContinuousLinearMap} on
+it and an equation for \emph{its} norm.  Both theorems are also empty when the
+state space has fewer than two points.
 
 \paragraph{Still not clustering in the infinite-volume sense.}
 Theorem~\ref{thm:fixedL} bounds the normalised two-point function at each fixed
@@ -295,7 +299,8 @@ identified.  \textbf{That was wrong.}  An external reading supplied the argument
 below, and it uses no index at all.
 
 Let $b$ be the dressed constant observable, $\Om$ the unit Perron vacuum,
-$c=\langle\Om,b\rangle$ and $u=b-c\,\Om$, so that $u\perp\Om$.  Then
+$c=\langle\Om,b\rangle$ and $u=b-c\,\Om$, so that $u\perp\Om$.  (This $u$ is the
+$b_{\perp}$ of the abstract; it is built from $b$, never from $A$.)  Then
 \[
   \langle b,K^{N}b\rangle
   \;=\; c^{2}\lambda^{N}+\langle u,K^{N}u\rangle ,
@@ -380,8 +385,10 @@ Section~\ref{sec:bound} proves an inequality.  A previous version said the
 matching \emph{sharpness} was not blocked but not formalised, and sketched an
 argument.  A sixth reading pointed out that the sketch is incomplete exactly
 where $\mathrm{specGap}=0$: there the maximiser may perfectly well be one of the
-top indices, since those contribute $0$ by definition, and no eigenvector is
-obtained.  The correct proof splits, and the split is now in the formalisation.
+top indices, since those contribute $0$ by definition.  Such an index does
+supply an eigenvector --- the Perron one --- but not a \emph{non-Perron} one,
+hence none in the fluctuation sector, which is what the argument needed.  The
+correct proof splits, and the split is now in the formalisation.
 
 \begin{theorem}[the bound is attained]\label{thm:sharp}
 Suppose the state space has two distinct points.  Then there is an observable
@@ -389,13 +396,13 @@ $u$ with $u \perp v$, $\|u\| \ne 0$ and
 $\|Ku\| = \mathrm{specGap}\cdot\|u\|$.
 \end{theorem}
 
-\osline{SpatialSpectral}{884}{exists\_attaining\_fluctuation}.
+\osline{SpatialSpectral}{886}{exists\_attaining\_fluctuation}.
 The two branches are genuinely different arguments.  If
 $\mathrm{specGap}>0$, the maximiser cannot be a top index --- those contribute
 $0$ --- so it supplies an eigenvector with eigenvalue $\ne\lambda$, which is
 orthogonal to $v$ because moving $K$ across the pairing scales by $\lambda$ on
 one side and by that eigenvalue on the other
-(\osline{SpatialSpectral}{849}{inner\_perron\_specBasis\_eq\_zero}); its norm
+(\osline{SpatialSpectral}{851}{inner\_perron\_specBasis\_eq\_zero}); its norm
 is $1$ and it realises $|\mu| = \mathrm{specGap}$.  If $\mathrm{specGap}=0$,
 that route is unavailable, but Theorem~\ref{thm:bound} already forces
 $\|Ku\|=0$ for \emph{every} fluctuation observable, so any nonzero one attains
@@ -414,7 +421,7 @@ observables of nonzero norm, has a greatest element, and it is
 $\mathrm{specGap}$.
 \end{theorem}
 
-\osline{SpatialSpectral}{936}{specGap\_isGreatest}.
+\osline{SpatialSpectral}{939}{specGap\_isGreatest}.
 The hypothesis is not decoration inherited from the previous theorem: with
 fewer than two states the set of ratios is \emph{empty}, and an empty set has
 no greatest element.  (Norm ratios, not \emph{Rayleigh} quotients --- those are
