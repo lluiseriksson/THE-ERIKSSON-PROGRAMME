@@ -30,8 +30,24 @@ lake exe cache get        # downloads prebuilt Mathlib .olean (fast)
 lake build YangMillsCore
 ```
 
-Expected: `Build completed successfully (8412 jobs).` (the job count is
-recorded in `CLAUDE.md` rule 7 and updated on every core change).
+At source checkpoint `0be45284` the literal terminal line is:
+
+```text
+Build completed successfully (8460 jobs).
+```
+
+That line records the thermodynamic-limit branch before integration.  The
+staged merge of `main` first parent `d370ddff` with thermodynamic-limit second
+parent `8df8adc2` was rebuilt as a single combined core and terminated with:
+
+```text
+Build completed successfully (8463 jobs).
+```
+
+Both builds used the pinned Lean 4.29.0-rc6 toolchain and all nine manifest
+revisions. On the ownership-mismatched Windows checkout, Git was given
+`safe.directory = *` through a process-local configuration file only; no
+dependency, pin, checkout, or global Git configuration was changed.
 
 ## Committed oracle transcripts
 

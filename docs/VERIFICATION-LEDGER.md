@@ -28352,3 +28352,484 @@ distinct, the same three known duplicates), 23 axiom-free + 2682 with axiom
 dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.  **11**
 declarations in the new module, all 11 in the oracle list.
 `check_module_prose.py`: OS lane 20 modules, 0 findings.
+
+## Addendum 552 (2026-07-29, **local Gibbs thermodynamic-limit campaign: exact finite-volume and common-window substrate, limit still OPEN**)
+
+**Scope and separation.**  This checkpoint starts the campaign recorded in
+`docs/THERMODYNAMIC-LIMIT-KP-PLAN.md`.  It modifies no file under
+`YangMills/RG/**` or `YangMills/OS/**`; it does not discharge `hRpoly`, touch a
+continuum limit, or alter the recorded Clay distance.  Its target is the
+strong-coupling lattice thermodynamic limit of bounded compatible local Gibbs
+observables under the uniform KP criterion.
+
+**The exact algebra now in the core.**
+
+* `LocalObservableSubstrate.lean` defines volume-compatible bounded local
+  observables and the genuine normalized Gibbs expectation, proves
+  measurability/integrability, positivity and normalization, and sums
+  `connectedLattice_pinned_tail_volumeUniform` over a finite support anchor
+  without a volume factor.
+* `FiniteTranslation.lean` proves exact covariance of realization and
+  invariance of the finite-volume Gibbs expectation under each unit
+  translation generator and finite lists of generators.
+* `LocalMarkedExpansion.lean` gives the exact numerator expansion and the
+  normalized identity
+  `local marked factor * exp(clusterSum farRegion - clusterSum full)`.
+  The extensive gas is cancelled algebraically at one volume.  Neither the
+  numerator nor the partition function is claimed to converge separately.
+* `LocalMarginal.lean`, `LocalWindowGeometry.lean`, and
+  `LocalWindowActivity.lean` supply volume-independent window coordinates,
+  no-wrap geometry, exact product-marginal transport, and equality of marked
+  and unmarked component integrals between fitting tori.
+* `LocalWindowCluster.lean` defines the volume-independent index
+  `WindowPolymer`, proves exact preservation of incompatibility and activity,
+  and hence equality of Ursell coefficients and complete cluster monomials
+  in any two fitting volumes.  Its specialization to the connected Wilson
+  lattice gas is definitionally equal (`rfl`) to the system used by the
+  uniform pinned-tail theorem.
+
+**Measured checkpoint.**  On the Colab Pro+ high-RAM runtime, from the exact
+source archive corresponding to this branch:
+
+```text
+Build completed successfully (8437 jobs).
+CORE_EXIT=0
+```
+
+The complete `oracle_check.lean` then terminated with `ORACLE_EXIT=0`.  The six
+new common-window cluster endpoints
+`weightedLatticePolymerSystem_plaquetteWeight`,
+`WindowPolymer.incomp_toWeightedPolymer_iff`,
+`WindowPolymer.activity_toWeightedPolymer_eq`,
+`KP.ursell_eq_of_incomp`, `KP.clusterSum_eq_of_equiv`, and
+`WindowPolymer.clusterMonomial_toWeightedPolymer_eq` each printed exactly
+`[propext, Classical.choice, Quot.sound]`; the earlier local-observable,
+translation, marked-expansion, marginal, geometry, and activity endpoints
+remain in the same full oracle run.
+
+**The brick is not closed.**  There is not yet a theorem that the complete
+finite-volume sequence is Cauchy, no infinite-volume functional, no
+boundary-condition independence theorem, and no passage of the truncated
+correlation estimate.  Compactness or a convergent subsequence would not close
+this campaign.  The next exact step is to split pinned clusters into those
+decoding to the common window and those leaving it; only the latter may then
+be bounded by `connectedLattice_pinned_tail_volumeUniform`.
+
+## Addendum 553 (2026-07-29, **common-window inverse and cluster transport; Cauchy still OPEN**)
+
+`LocalWindowCauchy.lean` adds the inverse direction needed for the finite
+window comparison.  For every finite weighted connected-lattice cluster it
+constructs an actual plaquette-touching walk between arbitrary plaquettes in
+the tuple, with length at most twice the total plaquette cardinality.  Thus,
+if one pinned plaquette has seam margin equal to that bound, every plaquette
+of every polymer has zero-margin representatives and the whole tuple decodes
+to volume-independent `WindowPolymer`s.
+
+The decoding is exact: each decoded support fits the source volume,
+re-realization recovers the original weighted polymer pointwise, and total
+cluster cardinality is preserved.  The generic endpoint
+`WindowPolymer.weightedClusterMonomial_eq_of_commonWindow` then identifies
+the complete Ursell-times-activities monomial of any source tuple with the
+monomial obtained by realizing the same common-window tuple in a second
+fitting volume.  This endpoint deliberately separates exact free-gas
+transport from the later normalized Gibbs cancellation.
+
+The Colab Pro+ focal compilation of the complete new module terminated
+literally with:
+
+```text
+CAUCHY11_EXIT=0
+```
+
+The four new focal `#print axioms` endpoints then terminated with
+`CAUCHY_AUDIT_EXIT=0`; each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The exact pushed checkpoint `407c9d62` was then pulled into a clean Colab
+checkout and the canonical root build terminated literally with:
+
+```text
+Build completed successfully (8438 jobs).
+CORE_407C_EXIT=0
+```
+
+The complete `oracle_check.lean` run at the same checkpoint then terminated
+with `ORACLE_407C_EXIT=0`; the four new endpoints again reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+No file below `YangMills/RG/**` or `YangMills/OS/**` is modified.  The finite
+sum reindexing, KP domination of the complementary tail, Cauchy theorem,
+infinite state, boundary-condition independence, and correlation-limit
+theorems remain open.
+
+## Addendum 554 (2026-07-29, **rooted local tail and volume-uniform support boundary bound**)
+
+The local correction is supported on tuples for which *some* coordinate
+meets the marked region.  Pinning that symmetric condition at coordinate zero
+has the intrinsic combinatorial factor `n+1`.  Static cross-audit against
+`PinnedCluster.lean`, `ClusterTail.lean`, and `PolymerRepresentation.lean`
+found no valid reindexing that removes it: storing a chosen coordinate merely
+reintroduces the same multiplicity.
+
+`LocalRootedTail.lean` now records this cost explicitly.
+`weighted_rootFactor_pinnedClusterWeightGE_le` bounds the rooted layer by the
+ordinary pinned size layer plus its unit-cardinality tilt.
+`connectedLattice_rootedPinnedTail_volumeUniform` applies the literal
+`connectedLattice_pinned_tail_volumeUniform` to the first layer and the
+unit-tilted KP tail to the second.  The resulting honest smallness window
+therefore contains `t + ε + 1`; no claim is made that the tail without the
+extra `+1` controls a local cluster correction.
+
+Finally,
+`supportRootedBoundaryRemainder_le_volumeUniform` sums the rooted tail over
+all polymers touching a plaquette incident to the observable edge support.
+Its prefactor is volume-free:
+
+```text
+exp(-ε L) * ((2 t) * (|SF| * 4d)).
+```
+
+The complete module compiled on Colab Pro+ with the literal terminal line
+`ROOTTAIL3_EXIT=0`.  Its two headline `#print axioms` checks terminated with
+`ROOTTAIL_AUDIT_EXIT=0` and each reported exactly
+`[propext, Classical.choice, Quot.sound]`.  The endpoint is not yet the
+Cauchy theorem: the exact correction series still has to be reindexed into
+the common-window part plus this complementary rooted remainder.
+
+## Addendum 555 (2026-07-30, **exact local-correction reindexing into the rooted tail**)
+
+`LocalCorrectionTail.lean` closes the finite combinatorial bridge left open
+in Addendum 554.  The new generic symmetrization theorem retains an arbitrary
+permutation-invariant predicate on the whole tuple.  Instantiating it with
+the total plaquette-cardinality cutoff proves that moving “some polymer meets
+the marked region” to the root `X 0` costs exactly `n+1`; the cutoff is not
+lost during reindexing.
+
+The position-zero sum is then fibered exactly over the rooted polymer.  A
+finite union bound over `supportPlaquettes SF` and the literal incompatibility
+of every polymer containing the selected plaquette with its singleton anchor
+give
+
+```text
+localCorrectionTailPartial μ pe β SF L K
+  <= supportRootedBoundaryRemainder μ pe β SF L K
+  <= exp(-ε L) * ((2 t) * (|SF| * 4d)).
+```
+
+Thus the exact unrooted norm majorant produced by the restriction identity is
+now connected to the literal `connectedLattice_pinned_tail_volumeUniform`
+consumer, together with the unavoidable unit-cardinality tilt and hypotheses
+at `t+ε+1`.  No volume-cardinality factor and no free `bulk` hypothesis occur.
+
+The Colab Pro+ focal compilation terminated literally with
+`CORRTAIL7_EXIT=0`.  The three focal oracles
+`sum_marked_le_succ_mul_pinned_of_invariant`,
+`localCorrectionTailLayer_le_rooted`, and
+`localCorrectionTailPartial_le_volumeUniform` terminated with
+`CORRTAIL_AUDIT_EXIT=0`; each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+After adding both `LocalRootedTail` and `LocalCorrectionTail` to the root
+target, the canonical Colab build terminated literally with:
+
+```text
+Build completed successfully (8440 jobs).
+CORE_CORRTAIL2_EXIT=0
+```
+
+The full-series identification, common-window cancellation, Cauchy theorem,
+infinite-volume state, boundary-condition independence, and correlation
+limit remain open.  This addendum does not declare the campaign closed.
+
+## Addendum 556 (2026-07-30, **exact common-window Cauchy bound for the local correction exponent**)
+
+`LocalCorrectionSeries.lean` turns the restriction correction into its exact
+complex tuple series.  Each layer is norm-majorized by the rooted tail from
+Addendum 555, the full and cutoff series are summable, and the exact
+restriction identity is recorded without estimating the two extensive
+cluster sums separately.
+
+The centering and transport chain `LocalCentering.lean` →
+`LocalCenteredWindow.lean` → `LocalSmallClusterTransport.lean` moves an
+arbitrary compatible observable away from the periodic seam, decodes every
+below-cutoff cluster into a volume-independent window tuple, and constructs
+an actual equivalence between the finite connected-cluster layers in any two
+admissible volumes.  Marked incidence, total plaquette cardinality, the
+Ursell coefficient, and the complete activity monomial are preserved exactly.
+
+`LocalSmallCorrectionCauchy.lean` removes disconnected tuples using the
+vanishing of their Ursell coefficient, identifies every below-cutoff series
+layer with the common-window subtype sum, and proves the direct two-volume
+estimate
+
+```text
+norm_localCorrectionSeries_centered_sub_le_volumeUniform:
+  ‖correction_N - correction_M‖
+    ≤ 2 * exp (-ε L) * ((2 t) * (Fintype.card O.Support * 4d)).
+```
+
+This is a whole-sequence Cauchy modulus for the exact local normalization
+correction.  It follows from exact finite transport plus the literal
+`connectedLattice_pinned_tail_volumeUniform` consumer; it uses neither
+compactness nor a subsequence.
+
+The focal Colab compilation terminated literally with:
+
+```text
+Build completed successfully (8223 jobs).
+SMALLCAUCHY11_EXIT=0
+```
+
+After importing the complete correction/centering/transport chain into the
+root target, the canonical Colab build terminated literally with:
+
+```text
+Build completed successfully (8445 jobs).
+CORE_CAUCHY2_EXIT=0
+```
+
+The six focal `#print axioms` checks for
+`localCorrectionTail_summable_volumeUniform`,
+`clusterSum_sub_localFarRegion_eq_localCorrectionSeries`,
+`centeredSmallClusterEquiv`,
+`localCorrectionSmallSeriesTerm_centered_eq`,
+`localCorrectionSmallSeries_centered_eq`, and
+`norm_localCorrectionSeries_centered_sub_le_volumeUniform` terminated with
+`CAUCHY_CHECKPOINT_AUDIT_EXIT=0`; every endpoint reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The campaign remains open.  This endpoint is not yet a Cauchy theorem for the
+genuine Gibbs expectation because the outer marked-set sum in
+`localGibbsExpectation_eq_markedClusterSum` still has to be uniformly
+majorized, truncated, and transported.  Consequently no infinite-volume
+state, boundary-condition independence, or correlation-limit theorem is
+claimed in this addendum.
+
+## Addendum 557 (2026-07-30, **uniform tail for the complete outer marked Gibbs sum**)
+
+`LocalMarkedTail.lean` controls the part of the exact normalized Gibbs
+formula that remained outside the Ursell correction.  It reuses the
+component decomposition from `SupportFactorization.lean`: every set satisfying
+`localNear SF S₀ = S₀` is decomposed into connected components, every
+component is charged to a plaquette in `supportPlaquettes SF`, and
+`sum_connectedPolymers_through_le` supplies a volume-uniform rooted animal
+sum.  Because components, rather than tuple coordinates, are pinned, no
+factor `n+1` occurs in this resummation.
+
+The marked integral is bounded by
+`O.bound * (exp (|β| B) - 1)^|S₀|`.  Separately, the exact normalized
+far-gas factor is first rewritten through
+`clusterSum_sub_localFarRegion_eq_localCorrectionSeries` and then bounded by
+an exponential linear in `|S₀|`.  Absorbing this linear growth defines
+`localMarkedEffectiveWeight`.  Tilting that elementary weight by `η` gives
+an explicit `exp (-η L)` tail for all marked sets with `L ≤ |S₀|`.
+
+The terminal consumer
+`norm_localGibbsExpectation_sub_localMarkedClusterSmallSum_le_volumeUniform`
+therefore proves that the genuine finite-volume Gibbs expectation is
+uniformly close to its below-cutoff normalized marked sum.  This is a bound
+on the exact expectation, not on a free `bulk` surrogate.
+
+The focal Colab build terminated literally with:
+
+```text
+Build completed successfully (8224 jobs).
+MARKEDTAIL18_EXIT=0
+```
+
+After importing the module into the root target, the canonical Colab build
+terminated literally with:
+
+```text
+Build completed successfully (8446 jobs).
+CORE_MARKED_TAIL_EXIT=0
+```
+
+The six focal oracles
+`localConnectedMarkedWeight_le_volumeUniform`,
+`localPinnedSetTailWeight_le_exp_volumeUniform`,
+`localGibbsExpectation_eq_localMarkedClusterSum`,
+`norm_exp_localFarClusterDiff_le_volumeUniform`,
+`localMarkedClusterTailNorm_le_volumeUniform`, and
+`norm_localGibbsExpectation_sub_localMarkedClusterSmallSum_le_volumeUniform`
+terminated with `MARKED_TAIL_AUDIT_EXIT=0`; each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The thermodynamic-limit campaign remains open.  The finite below-cutoff
+normalized marked sums have not yet been transported jointly between
+volumes; hence no Cauchy theorem for the genuine expectation and no
+infinite-volume state are claimed here.
+
+## Addendum 558 (2026-07-30, **whole-sequence local Gibbs state and genuine free-box limit**)
+
+The terminal local thermodynamic chain is now theorem-fed at its explicit
+scope.
+
+`ThermodynamicLimit.lean` proves
+`cauchySeq_localGibbsExpectation_kpUniform` for the complete sequence of
+genuine normalized Gibbs expectations.  The proof first chooses a single
+marked cutoff `q`, then the explicit common-window threshold, and applies the
+two-volume estimate whose boundary term is ultimately the literal
+`connectedLattice_pinned_tail_volumeUniform` consumer.  No compactness or
+subsequence is used.  Completeness of `ℂ` defines
+`infiniteLocalGibbsExpectation`; its real part is bundled as
+`infiniteLocalGibbsState`, a positive normalized real linear functional
+invariant under every positive unit translation generator and every finite
+word in those generators.
+
+`ThermodynamicNonvacuity.lean` constructs the packaged uniform KP regime for
+the physical `d=2`, `SU(2)` Wilson energy throughout
+
+```text
+0 < |β| ≤ 10^-5.
+```
+
+The energy is proved nonconstant and the group, Haar probability measure,
+measurability, and boundedness instances are all concrete.
+
+`LocalFreeBoundary.lean` deletes the centered seam and identifies its gas
+literally with a polymer restriction.  `LocalBoundaryCorrection.lean` proves
+that the normalized periodic/free discrepancy is the absolutely summable
+series of clusters which meet both the marked support and the deleted seam.
+The same-volume endpoint is
+`norm_localGibbsExpectation_sub_freeBoundary_le_kpUniform`.
+
+`FreeBoundaryThermodynamicLimit.lean` chooses the cofinal sequence
+
+```text
+freeBoundaryVolumeIndex O q
+  = thermodynamicVolumeThreshold O q + q
+```
+
+and proves `tendsto_freeBoundaryThermodynamicExpectation`: the complete
+explicit free-box sequence converges to the same infinite value as periodic
+boundary conditions.  This proves independence between the periodic and
+centered free boundaries actually constructed; no arbitrary-boundary theorem
+is claimed.
+
+`ThermodynamicCorrelation.lean` rewrites
+`two_plaquette_correlator_bound_normalized` exactly as a bound on
+`localGibbsTruncatedCorrelation` and passes it unchanged to
+`infiniteLocalGibbsTruncatedCorrelation` under the explicit eventual
+plaquette-realization and separation hypotheses.  The geometric
+instantiation is not hidden.
+
+Direct focal compilation terminated `exit 0` for
+`LocalFreeBoundary.lean`, `ThermodynamicNonvacuity.lean`,
+`LocalBoundaryCorrection.lean`, `FreeBoundaryThermodynamicLimit.lean`, and
+`ThermodynamicCorrelation.lean`.  Direct elaboration of `YangMillsCore.lean`
+also terminated `exit 0`.
+
+The ten focal oracles for
+`connectedLattice_pinned_tail_volumeUniform`,
+`cauchySeq_localGibbsExpectation_kpUniform`,
+`infiniteLocalGibbsState`,
+`su2UniformLocalKPRegimeOfBound`,
+`su2InfiniteLocalGibbsStateOnPuncturedInterval`,
+`norm_localGibbsExpectation_sub_freeBoundary_le_kpUniform`,
+`tendsto_freeBoundaryThermodynamicExpectation`,
+`abs_infiniteLocalGibbsTruncatedCorrelation_le_twoPlaquette`,
+`localGibbsExpectation_translate`, and
+`CompatibleLocalObservable.realize_latticeShiftForward`
+each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Static inspection showed that all nine dependency HEADs equal their
+`lake-manifest.json` revisions and that Mathlib's configured remote equals the
+declared URL.  The earlier pre-planning failure was Git's repository-ownership
+safety check: Lake could not read the remote/HEAD, misdiagnosed this as a
+changed URL, then attempted a fetch blocked at port 443.  Supplying
+`safe.directory=*` only through the build process environment removed that
+false update path without changing global Git configuration or deleting a
+dependency.
+
+The canonical fixed-toolchain root build then terminated with empty stderr
+and the literal final line:
+
+```text
+Build completed successfully (8458 jobs).
+```
+
+Thus the mathematical modules, direct root, ten headline axiom oracles, and
+rule 7 canonical evidence are all green at this checkpoint.
+
+## Addendum 559 (2026-07-30, **physical d=4 non-vacuity and paper framing**)
+
+Source checkpoint: `ca355eb1`.
+
+`ThermodynamicNonvacuity.lean` now contains a second explicit physical
+interval:
+
+```text
+0 < |β| ≤ 10^-6,  d = 4,  G = SU(2),  B = 2.
+```
+
+The packaged parameters remain `t = ε = η = 10^-2`.  The proof uses the
+same quadratic activity estimate as the `d=2` interval, while discharging
+the exact four-dimensional constants
+
+```text
+(16 * 4 + 1)^2 = 4225,   16 * 4 = 64,
+```
+
+and the marked exponent `129/100` against a conservative rational
+exponential majorant.  The master inequality
+`10625 * intervalMasterWeightD4 < 1` simultaneously implies the radius and
+smallness fields.  No optimized strong-coupling radius is claimed.
+
+The new headline endpoints are
+`su2D4UniformLocalKPRegimeOfBound` and
+`su2D4InfiniteLocalGibbsStateOnPuncturedInterval`.  Both focal axiom oracles
+reported exactly
+
+```text
+[propext, Classical.choice, Quot.sound].
+```
+
+Together with the ten thermodynamic-limit oracles in Addendum 558, this
+gives twelve headline checks.  The canonical fixed-toolchain root build at
+`ca355eb1` terminated `exit 0` with the literal final line
+
+```text
+Build completed successfully (8458 jobs).
+```
+
+The accompanying paper now cites Osterwalder-Seiler in the body to state
+classical priority, identifies the mechanically checked bridge and explicit
+inhabitation as its contribution, and says explicitly that the certified
+`10^-5`/`10^-6` radii are much smaller than customary analytic
+strong-coupling domains.  The `d=4` result remains a lattice statement; no
+continuum limit or OS reconstruction is inferred.
+
+## Addendum 560 (2026-07-30, **integer translations and integration into `main`**)
+
+The local observable substrate now carries a genuine additive
+`ℤ^d`-translation action.  `IntegerTranslation.lean` proves the action laws at
+the abstract local-coordinate level and relates realization of an arbitrary
+integer translate to the periodic lattice action.  In particular,
+`integerLocalGibbsExpectation_vadd` gives invariance of the infinite-volume
+expectation under every `z : Fin d → ℤ`, including inverse translations,
+without iterating a volume-dependent torus word.
+
+The full thermodynamic chain therefore yields a positive normalized real
+local state, whole-sequence convergence, invariance under the complete
+integer translation group, agreement between periodic volume and the
+specific centered free exhaustion constructed in the campaign, and passage
+of the stated finite-volume truncated-correlation estimate under its explicit
+eventual realization and separation hypotheses.  It still does not claim
+arbitrary boundary conditions, a `C*`-algebraic completion, a continuum
+limit, or Osterwalder--Schrader reconstruction.
+
+The published thermodynamic-limit branch ends at `8df8adc2`; its code source
+checkpoint `0be45284` had already passed the canonical 8460-job root build.
+It was merged, without rebasing, with `main` first parent `d370ddff`.  The
+combined staged merge was then rebuilt using the pinned Lean 4.29.0-rc6
+toolchain and terminated `exit 0` with the literal line
+
+```text
+Build completed successfully (8463 jobs).
+```
+
+No file under `YangMills/RG/**` or `YangMills/OS/**` was changed while
+resolving the merge; their additional `main` modules were nevertheless
+included in the combined root build.
