@@ -44,6 +44,7 @@ GATE B2 -- the sharpness witness, by exact prediction.
   Licenses: the sharpness witness.  Nothing else.
 """
 import itertools
+import sys
 import math
 
 import numpy as np
@@ -119,3 +120,6 @@ print("GATE B1:", "PASS" if okB1 else "FAIL", "  (beta >= 0 theorem)")
 print("GATE B2:", "PASS" if okB2 else "FAIL", "  (sharpness witness)")
 print("v1's GATE B remains FAILED and is not superseded; these are new gates")
 print("for the two claims it should never have bundled.")
+
+# A gate that only PRINTS its verdict is a report, not a gate.
+sys.exit(0 if (okB1 and okB2) else 1)

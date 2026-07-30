@@ -3073,3 +3073,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.integerInfiniteLocalGibbsState
 #print axioms YangMills.tendsto_integerFreeBoundaryThermodynamicExpectation
 #print axioms YangMills.abs_integerInfiniteLocalGibbsTruncatedCorrelation_le_of_eventually
+#print axioms YangMills.OS.unweightedSign
+#print axioms YangMills.OS.symWeighted_quadForm_neg_of_neg_beta
+#print axioms YangMills.OS.spatialKernel_posSemidef_zero
+#print axioms YangMills.OS.combo
+#print axioms YangMills.OS.gibbsPathSum_combo
+#print axioms YangMills.OS.gibbsPathSum_gram_nonneg
+#print axioms YangMills.OS.gibbsPathSum_gram_nonneg_even
