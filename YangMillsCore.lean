@@ -96,6 +96,8 @@ import YangMills.L1_GibbsMeasure.ThermodynamicNonvacuity
 import YangMills.L1_GibbsMeasure.LocalFreeBoundary
 import YangMills.L1_GibbsMeasure.LocalBoundaryCorrection
 import YangMills.L1_GibbsMeasure.FreeBoundaryThermodynamicLimit
+import YangMills.L1_GibbsMeasure.IntegerTranslation
+import YangMills.L1_GibbsMeasure.IntegerThermodynamicLimit
 import YangMills.L1_GibbsMeasure.ThermodynamicCorrelation
 import YangMills.L1_GibbsMeasure.ClusterGeometry
 import YangMills.L1_GibbsMeasure.PolymerRepresentation
