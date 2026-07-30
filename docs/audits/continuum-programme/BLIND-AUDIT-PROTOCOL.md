@@ -227,3 +227,14 @@ ledgers, dashboards, the oracle, or `YangMillsCore`.
   TeX/PDF do not. No assertion from the absent TeX/PDF is credited at the old
   SHA. The clean-checkout numerical run at the old SHA remains a run on that
   old artefact and will be labelled as such.
+
+`BASELINE-20260731-02` — **SUPERSEDED CLAIM BY CLAIM.**
+
+- New public main: `1e6113a10c407ba2964af2713aef26c62bbd1157`.
+- Changed material: Paper 13 v1.1, its `SpatialOS` Gram declarations, and
+  oracle coverage.
+- Superseding report:
+  `PAPER13-v1.1-AUDIT-20260731.md`.
+- Effect: the bond finite-family Gram gap is closed and the coupling headline
+  is narrowed to sufficiency. The half-to-whole-path assembly/gluing gap is
+  unchanged. No earlier SHA-level transcript is rewritten.
