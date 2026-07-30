@@ -28990,3 +28990,23 @@ live.
 `main` while this was measured.  The counters above are for THIS tree
 (`main` + this module), measured here; no number from that merge is reused, and
 none of ours is offered for it.
+
+## Addendum 564 (2026-07-30, **final integration with PAPER 12 v1.2**)
+
+Before the Addendum 562 integration could be published, `origin/main`
+advanced again to PAPER 12 v1.2 at `a00cea06`.  Its correction and new
+`symWeighted_posSemidef_zero` oracle were retained, and its ledger entry was
+renumbered Addendum 563 so that neither concurrent history was overwritten.
+The final non-rebase merge checkpoint is `7460e035`, with parents
+`3a24a24c` and `a00cea06`.
+
+Because v1.2 again changes `YangMills/OS/SpatialReflection.lean`, the combined
+core was rebuilt in the integration checkout.  It terminated `exit 0` with:
+
+```text
+Build completed successfully (8463 jobs).
+```
+
+Thus the 8463 count applies to the tree containing the complete
+thermodynamic-limit campaign and both spatial-reflection correction rounds,
+not to either branch in isolation.

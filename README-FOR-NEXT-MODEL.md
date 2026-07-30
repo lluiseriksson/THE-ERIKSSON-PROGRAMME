@@ -86,7 +86,7 @@ limit, or OS reconstruction.  The focal modules, twenty headline oracles,
 and a direct root elaboration are green.  The branch's canonical
 Lake root build also terminated literally with
 `Build completed successfully (8460 jobs).` at source checkpoint `0be45284`;
-the final merged checkpoint `93c8e521` completed successfully at **8463 jobs**,
+the final merged checkpoint `7460e035` completed successfully at **8463 jobs**,
 with empty stderr after supplying
 a process-local `safe.directory` setting for the ownership-mismatched
 checkout.  All nine dependency HEADs matched the manifest; no dependency was

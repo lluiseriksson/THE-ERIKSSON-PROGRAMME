@@ -45,6 +45,11 @@ core and terminated with:
 Build completed successfully (8463 jobs).
 ```
 
+`origin/main` advanced once more to PAPER 12 v1.2 at `a00cea06` before
+publication.  The final non-rebase integration checkpoint `7460e035` was
+therefore rebuilt a third time; it also terminated with
+`Build completed successfully (8463 jobs)`.
+
 Both builds used the pinned Lean 4.29.0-rc6 toolchain and all nine manifest
 revisions. On the ownership-mismatched Windows checkout, Git was given
 `safe.directory = *` through a process-local configuration file only; no
