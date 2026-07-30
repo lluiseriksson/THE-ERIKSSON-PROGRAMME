@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{3297e07105c1bf25e3a57d2d61c7126f340c74d3}
+\newcommand{\anchor}{b2c7e27a041a704118bf700aafa66461fcb30836}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -92,7 +92,7 @@ the relative statement into a bound on the \emph{normalised} Gibbs two-point
 function.  Both are proved, and so is their composition: at a fixed extent the
 normalised two-point function is bounded by $C\,\mathrm{specRatio}^{N}$ past a
 machine-checked threshold $N_0$ --- characterised by
-$\mathrm{specRatio}^{N_0} < c^{2}/2(\|u\|^{2}+1)$, not given as a closed
+$\mathrm{specRatio}^{N_0} < \frac{c^{2}}{2(\|u\|^{2}+1)}$, not given as a closed
 formula and not the least such index.  That rate depends on the extent, so this
 is not clustering.  Reflection
 positivity is untouched, and nothing in this paper is a claim about $\SU(N)$,
@@ -114,11 +114,12 @@ spectral decomposition: an orthonormal basis of eigenvectors, so that an
 observable can be expanded and its image measured coordinate by coordinate.
 
 That is what this paper supplies, and it pays both debts with one construction.
-We prove the inequality $\|Ku\|\le\mathrm{specGap}\|u\|$, and
-(§\ref{sec:sharp}) that it is \emph{attained}, which together say that
-$\mathrm{specGap}$ is the operator norm on the fluctuation sector.  What we do
-not do is introduce that norm as a defined object and prove an equation about
-it.
+We prove the inequality $\|Ku\|\le\mathrm{specGap}\|u\|$, that it is
+\emph{attained}, and that the set of norm ratios has $\mathrm{specGap}$ as its
+greatest element (§\ref{sec:sharp}) --- so $\mathrm{specGap}$ \emph{is} the
+operator norm on the fluctuation sector, said about the set as well as about
+the two inequalities.  What we do not build is a subspace-plus-continuous-linear-map
+interface carrying that norm; see §\ref{sec:sharp} for why.
 
 \section{The construction}\label{sec:constr}
 
