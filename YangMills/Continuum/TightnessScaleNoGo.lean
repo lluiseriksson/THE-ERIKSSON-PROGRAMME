@@ -54,11 +54,11 @@ end ScaleDict
 
 /-- The binding radius hypothesis of the checked two-plaquette theorem at
 `t=ε=1`. -/
-def KPRadiusAtUnit (d Nc : ℕ) (β s : ℝ) : Prop :=
+def KPRadiusAtUnit (d N_c : ℕ) (β s : ℝ) : Prop :=
   ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
-      ((Real.exp (|β| * (Nc : ℝ)) - 1) + s +
-        (Real.exp (|β| * (Nc : ℝ)) - 1) * s) *
-      Real.exp 3 < 1
+    (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+      (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+      Real.exp (1 + 1 + 1)) < 1
 
 /-- Typed identification with the radius conjunct in the checked
 `sun_clustering_window_nonempty` theorem. -/
@@ -68,10 +68,7 @@ theorem kpRadiusAtUnit_iff_checkedWindow (d Nc : ℕ) (β s : ℝ) :
         (((Real.exp (|β| * (Nc : ℝ)) - 1) + s +
           (Real.exp (|β| * (Nc : ℝ)) - 1) * s) *
           Real.exp (1 + 1 + 1)) < 1) := by
-  have hthree : (1 + 1 + 1 : ℝ) = 3 := by norm_num
-  constructor <;> intro h
-  · simpa [KPRadiusAtUnit, hthree, mul_assoc] using h
-  · simpa [KPRadiusAtUnit, hthree, mul_assoc] using h
+  rfl
 
 /-- The checked repository window supplies a positive-coupling witness for
 `KPRadiusAtUnit`; the no-go is therefore not a statement about an empty
@@ -174,7 +171,8 @@ theorem beta_lt_kpBetaCap
   have hactivity : w < w + s + w * s := by
     nlinarith [mul_nonneg hw0 hs.le]
   have hKP' : C * (w + s + w * s) < 1 := by
-    simpa [KPRadiusAtUnit, C, w, abs_of_nonneg hβ, mul_assoc,
+    have hthree : (1 + 1 + 1 : ℝ) = 3 := by norm_num
+    simpa [KPRadiusAtUnit, C, w, hthree, abs_of_nonneg hβ, mul_assoc,
       mul_left_comm, mul_comm] using hKP
   have hCw : C * w < 1 :=
     (mul_lt_mul_of_pos_left hactivity hC).trans hKP'
@@ -228,8 +226,9 @@ theorem eventually_not_kpRadiusAtUnit_of_tendsto
       (hcap.le.trans hi) hs hKP
   exact (not_lt_of_ge hi) hlt
 
-/-- A concrete scale dictionary whose two-dimensional coupling lies beyond
-the four-dimensional three-color KP cap. -/
+/-- The endpoint `a=1`, `g²=1` of the concrete family `0<a≤1`. Since the
+threshold hypothesis is `g²a² β_cap≤1`, this endpoint is the hardest member;
+every smaller positive `a` satisfies the same inequality a fortiori. -/
 noncomputable def unitScale : ScaleDict where
   a := 1
   a_pos := by norm_num

@@ -67,6 +67,23 @@ YangMills/Continuum/TightnessScaleNoGo.lean    OK
 modules checked: 1  failures: 0
 ```
 
+## Automated window canary
+
+```text
+python scripts/continuum_c1_window_canary.py --self-test
+```
+
+```text
+CONTINUUM-C1 window canary + mutation self-test: PASS
+```
+
+The script extracts `KPRadiusAtUnit` and the actual `hr` argument of
+`sun_two_plaquette_correlator_bound`, specializes the exponent text to
+`t=ε=1`, and compares the whitespace-normalized bodies. Its self-test changes
+the exponent to `1+1+2` and requires the comparison to differ. The GitHub
+`honesty` job invokes this command; the canary is an automated drift alarm,
+not a mathematical proof.
+
 ## Static checks
 
 - `git diff --check`: clean.

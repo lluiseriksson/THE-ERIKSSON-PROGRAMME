@@ -43,6 +43,12 @@ argument. The remaining hypothesis/result type is inferred by Lean. Thus a
 change to the consumer's radius argument, even if an old non-vacuity lemma
 survived, also breaks C1.
 
+Hosted CI cannot compile Lean. The `honesty` job therefore runs the secondary
+textual alarm `continuum_c1_window_canary.py --self-test`. It compares the
+literal radius bodies and checks its own sensitivity by mutating the exponent.
+This alarm does not replace the typed adapter or upgrade any theorem; it makes
+drift visible automatically and signals that the direct Lean build must run.
+
 Thus the existing volume-uniform clustering theorem cannot be sampled along
 any continuum trajectory whose bare inverse coupling diverges. Volume
 uniformity and cutoff uniformity are different obligations.
@@ -126,6 +132,8 @@ says nothing about `β>0`.
   assumes only `β→+∞`.
 - The window has both a producer-derived positive-coupling witness and a
   fully numerical witness.
+- The `a=1`, `g²=1` scale witness is the hardest member of `0<a≤1`, since
+  `g²a² β_max≤1` only becomes weaker as `a` decreases.
 - E2/G1 and E2/G2 remain unproved and are labelled as such.
 - Fable High returned HTTP 429 and contributed nothing.
 

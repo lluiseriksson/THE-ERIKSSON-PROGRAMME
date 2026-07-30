@@ -6,7 +6,8 @@ C1 owns only:
 
 - `docs/continuum-c1/**`;
 - `YangMills/Continuum/TightnessScaleNoGo.lean`;
-- `scripts/continuum_c1_*`.
+- `scripts/continuum_c1_*`;
+- only the CONTINUUM-C1 canary step in `.github/workflows/ci.yml`.
 
 It does not edit or import Continuum-C0 files. It also does not edit
 `YangMillsCore.lean`, the global oracle, README/dashboard/ledger/project-state
@@ -86,3 +87,18 @@ python scripts/check_module_prose.py \
 The file imports the checked two-plaquette producer directly. It remains
 absent from the global oracle and core import graph, but its own build now
 fails if the checked window ceases to supply `KPRadiusAtUnit`.
+
+Because hosted CI does not compile Lean, `scripts/continuum_c1_window_canary.py`
+also compares the copied radius body with the actual `hr` argument text. The
+`honesty` workflow runs it with an adversarial mutation self-test on every PR.
+The textual canary is not a proof and does not replace the typed adapter; it
+only ensures that automated CI triggers the manual Lean rebuild obligation.
+
+## External handoff
+
+- C1 does not edit `docs/VERIFICATION-LEDGER.md`. Recording the proved no-go
+  there remains an explicit project-owner decision.
+- The reusable E2 handoff is `besselIReal_integral_repr_zero/one`.
+  `AmosClosure.besselIReal` is a Γ-series, while the pinned Mathlib tree has
+  no Bessel development; the integral representation must therefore be built
+  from the available real-analysis primitives.
