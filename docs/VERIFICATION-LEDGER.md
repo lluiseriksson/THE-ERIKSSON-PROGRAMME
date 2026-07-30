@@ -28120,3 +28120,81 @@ pointed at another module's section, not this one's.
 That is now the lane's single open analytic question, it is a 2D Ising
 high-temperature statement, and the measurements say it is true and hard rather
 than false.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 548 (2026-07-30, **S-UNIFORM v1.1: we did not respect our own
+pre-registered gate, and "survives the volume limit" was an overclaim we could
+have proved instead**)
+
+**Context.**  First external reading of paper 11.  Six findings, two of them
+serious, and one of the two is about process rather than mathematics.
+
+**1. WE FAILED OUR OWN GATE, and this is the entry that matters.**  The
+pre-registered script ends in a SINGLE JOINT gate:
+
+    CAMPAIGN GATE: PASS -- fabrication authorised   iff ok1 and ok2
+
+Judge 2 failed, so the artefact printed `FAIL -- do not fabricate`.  **We
+fabricated anyway**, and Addendum 547 narrated this as "judge 1 authorised the
+decoupled work" --- which is a retroactive split of a joint gate into two, i.e.
+exactly the manoeuvre pre-registration exists to prevent.  The reading caught
+it.
+
+The theorems are unaffected: they rest on their proofs, not on the gate.  What
+is forfeited is the METHODOLOGICAL claim, and it cannot be recovered for this
+campaign --- writing two gates now, after seeing the results, would be the same
+error a second time.  **Rule, and it is the expensive kind: a pre-registration
+is only worth what its gate is worth, and the gate must be as fine-grained as
+the decisions it is meant to license, WRITTEN BEFORE LOOKING.**  A joint gate
+over independent targets is a design error that only shows up when half of it
+fails.  Recorded in the paper's scope section, not softened there either.
+
+**2. "Survives the volume limit" exceeded the quantifiers --- so we proved the
+statement that does not.**  `gibbs_decay_extent_free_rate` fixes `L` before
+choosing `N0` and `C_A`, so both may diverge with the extent; a bound
+`C(L) rho^N` with `C(L) -> infinity` says nothing as the system grows however
+small `rho` is.  Calling that "the first statement in this lane that survives
+the volume limit" was wrong, and the Lean name `gibbs_clustering_uniform_rate`
+was wrong twice over --- *clustering* is the word this lane refused for ten
+papers.  Renamed.
+
+The reading noted the repair should be cheap in the product case.  It is, and
+it was done rather than merely retitled: `gibbsCorr_one_uniform_bound` computes
+instead of composing.  At constant weight the dressed constant observable IS the
+Perron vector and the partition function is exactly `2^L Z^{LN}`, so
+
+    |E[A(X_0)A(X_N)]| <= <A^2> * tanh(beta)^N   for EVERY N, no threshold,
+
+with `<A^2>` the mean square in the uniform measure --- at most 1 for
+`|A| <= 1`, at every extent.  Here the whole bound is uniform, not merely its
+rate.  Supporting: `dress_one`, `sum_act_eq_zero`, `iterate_fluct_bound`,
+`gibbsPartition_one`.  *Clustering* is still not used: no infinite-volume state
+is constructed.
+
+**3. `beta >= 0` was load-bearing and missing from every printed statement.**
+Lean carried `hbeta : 0 <= beta` throughout; the paper carried it nowhere.  At
+`beta < 0` the odd bond eigenvalue `D` is negative while `specGap` is
+non-negative by definition, so the printed Theorem 4.1 asserted that a
+non-negative quantity is negative.  This is the SAME class as Addendum 544 (the
+printed statement stronger than its Lean statement) and the third occurrence of
+it; it remains invisible to the build, to the oracle, and to
+`check_module_prose.py`, which reads identifiers and not hypotheses.
+
+**4. Three smaller ones, all real.**  The judge's cells split 4-4 by the Onsager
+curve, not 5-3 as the paper said.  The autopsy concluded "saturation and not a
+crawl to 1" from a SINGLE increment ratio; that ratio is consistent with
+saturation and excludes nothing, and the paper now says so.  And "the
+obstruction is the source weight and not the extent" overstated the causality:
+what is shown is that the extent ALONE does not degrade the rate in the product
+kernel.
+
+**Measured.**  Core **8431 jobs**.  Oracle **2694 commands -> 2694 answers**
+(2691 distinct, the same three known duplicates), 23 axiom-free + 2668 with
+axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
+**22** declarations in the module, all 22 in the oracle list.
+`check_module_prose.py`: OS lane 19 modules, 0 findings.
+
+**Still not proved.**  Uniformity in the extent for the COUPLED kernel, and any
+infinite-volume statement whatsoever.  Reflection positivity untouched.
+Clay ~0 pct.

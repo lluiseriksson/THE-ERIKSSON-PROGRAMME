@@ -3013,4 +3013,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.spatialKernel_specGap_eq
 #print axioms YangMills.OS.symWeighted_one
 #print axioms YangMills.OS.symWeighted_one_specRatio_le
-#print axioms YangMills.OS.gibbs_clustering_uniform_rate
+#print axioms YangMills.OS.gibbs_decay_extent_free_rate
+#print axioms YangMills.OS.dress_one
+#print axioms YangMills.OS.sum_act_eq_zero
+#print axioms YangMills.OS.iterate_fluct_bound
+#print axioms YangMills.OS.gibbsPartition_one
+#print axioms YangMills.OS.gibbsCorr_one_uniform_bound

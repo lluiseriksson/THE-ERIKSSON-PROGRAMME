@@ -7,11 +7,20 @@ Every rate in this lane so far has been a fixed-`L` rate.  The gap paper proved
 strict separation at each extent and said plainly it was not uniform; the S
 block gave the separation a modulus, `specRatio(L)`, and reported measurements
 saying that modulus tends to `1` outside the disordered region.  A geometric
-bound whose rate tends to `1` is empty in the volume limit, so nothing in the
-lane survived `L → ∞`, and the word *clustering* was never used.
+bound whose rate tends to `1` is empty in the volume limit, so no rate in the
+lane was extent-free, and the word *clustering* was never used.
 
-This module removes that for the **decoupled** kernel, and the removal is
-sharp: `specRatio = tanh β` at **every** extent.
+For the **decoupled** kernel this module gives an extent-free rate, sharply:
+`specRatio = tanh β` at **every** extent.  Throughout, `β ≥ 0` --- at negative
+coupling the odd bond eigenvalue `D` is negative and `tanh β · Z^L` is not
+`specGap`, so the hypothesis is load-bearing and not a convention.
+
+**An extent-free rate is not a volume limit.**  A bound `C(L) · ρ^N` with
+`C(L) → ∞` says nothing as the system grows however small `ρ` is, so the rate
+alone settles nothing.  §8 supplies what actually is uniform here: at constant
+weight the constant is the observable's mean square, the threshold is absent,
+and both are uniform in `L`.  The word *clustering* is still not used, because
+no infinite-volume state is constructed.
 
 ## The proof, and why it is not the spectral decomposition
 
@@ -49,9 +58,15 @@ odd part is precisely compensated by the odd bond eigenvalue, at every step.
   number.
 * `symWeighted_one_specRatio_le` — the same for the kernel the S-block endpoint
   is phrased with, since at constant weight the two coincide.
-* `gibbs_clustering_uniform_rate` — the payoff.  Composing with the S-block
-  endpoint, the normalised Gibbs two-point function is bounded by
-  `C · (tanh β) ^ N` past one threshold, and **the rate contains no `L`**.
+* `gibbs_decay_extent_free_rate` — composing with the S-block endpoint, the
+  normalised Gibbs two-point function is bounded by `C · (tanh β) ^ N` past one
+  threshold.  The RATE contains no `L`; its `C` and its threshold come from that
+  endpoint and are **not** claimed uniform in the extent.
+* `gibbsCorr_one_uniform_bound` — and the bound that IS uniform, computed
+  directly rather than composed: at constant weight, for **every** `N` and with
+  no threshold, `|E[A(X₀)A(X_N)]| ≤ ⟨A²⟩ · (tanh β)^N`, the mean square being
+  taken in the uniform measure.  For `|A| ≤ 1` the constant is at most `1` at
+  every extent, so here the whole bound is uniform, not merely its rate.
 
 ## What is NOT proved, and is not claimed
 
@@ -62,7 +77,14 @@ in the payoff still depends on the observable; only the rate is uniform.
 
 At constant source weight the spatial slices are independent, so the statement
 proved here is a statement about a product measure.  That is exactly why it is
-reachable, and it is said here rather than left for a reader to notice.
+reachable, and it is said here rather than left for a reader to notice.  What it
+establishes is narrower than it sounds: **the extent alone does not degrade the
+rate** in the product kernel.  It does not show that every nonconstant weight
+destroys uniformity, nor that the weight is the sole cause of the coupled
+model's degradation.
+
+No infinite-volume state is constructed anywhere in this module, and no
+statement here is about one.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`.  No sorry, no axioms.
 -/
@@ -496,7 +518,7 @@ why the word is finally used.
 
 The constant `C` still depends on the observable, and nothing here is claimed
 for a nonconstant source weight. -/
-theorem gibbs_clustering_uniform_rate {β : ℝ} (hβ : 0 ≤ β) {L : ℕ}
+theorem gibbs_decay_extent_free_rate {β : ℝ} (hβ : 0 ≤ β) {L : ℕ}
     {σ₀ σ₁ : Fin L → Fin 2} (hne : σ₀ ≠ σ₁) :
     ∃ N₀ : ℕ, ∀ A : (Fin L → Fin 2) → ℝ,
       (∑ σ, (1:ℝ) * dress (fun _ => (1:ℝ)) A σ = 0) →
@@ -514,5 +536,130 @@ theorem gibbs_clustering_uniform_rate {β : ℝ} (hβ : 0 ≤ β) {L : ℕ}
   exact specRatio_nonneg (fun i j => symWeighted_pos (fun _ => one_pos) β i j)
     (symWeighted_symm (L := L) (fun _ => (1:ℝ)) β) (fun _ => one_pos)
     (by rw [symWeighted_one β (L := L)]; exact spatialKernel_perron β (L := L))
+
+/-! ## §8  Uniform in the extent, and not only in the rate
+
+`gibbs_decay_extent_free_rate` gives a rate with no `L` in it, but its constant
+and its threshold are produced by the S-block endpoint and are **not** claimed
+uniform in the extent.  A rate alone does not survive a volume limit: a bound
+`C(L) · ρ^N` with `C(L) → ∞` says nothing in the limit however small `ρ` is.
+
+At constant source weight everything in sight is explicit, so the uniform bound
+can simply be computed instead of composed.  The dressed constant observable IS
+the Perron vector, the partition function is exactly `2ᴸ · Z^{LN}`, and what
+comes out is a bound valid **from `N = 0`**, with constant the mean square of
+the observable in the uniform measure --- at most `1` for any observable bounded
+by `1`, at every extent. -/
+
+section Uniform
+
+variable {L : ℕ}
+
+/-- Dressing by the constant weight is the identity. -/
+theorem dress_one (A : (Fin L → Fin 2) → ℝ) :
+    dress (fun _ => (1:ℝ)) A = A := by
+  funext σ
+  show Real.sqrt 1 * A σ = A σ
+  rw [Real.sqrt_one, one_mul]
+
+/-- The fluctuation sector is invariant: the decoupled kernel preserves mean
+zero, because its columns sum to the same `Zᴸ` its rows do. -/
+theorem sum_act_eq_zero (β : ℝ) {u : (Fin L → Fin 2) → ℝ} (hu : ∑ σ, u σ = 0) :
+    ∑ σ, act (spatialKernel β) u σ = 0 := by
+  have hcol : ∀ τ : Fin L → Fin 2,
+      ∑ σ, spatialKernel β σ τ = (z2Norm β) ^ L := by
+    intro τ
+    rw [← sum_spatialKernel β τ]
+    exact Finset.sum_congr rfl fun σ _ => spatialKernel_symm β σ τ
+  calc ∑ σ, act (spatialKernel β) u σ
+      = ∑ σ, ∑ τ, spatialKernel β σ τ * u τ := rfl
+    _ = ∑ τ, ∑ σ, spatialKernel β σ τ * u τ := Finset.sum_comm
+    _ = ∑ τ, (∑ σ, spatialKernel β σ τ) * u τ :=
+        Finset.sum_congr rfl fun τ _ => by rw [Finset.sum_mul]
+    _ = (z2Norm β) ^ L * ∑ τ, u τ := by
+        rw [Finset.mul_sum]
+        exact Finset.sum_congr rfl fun τ _ => by rw [hcol τ]
+    _ = 0 := by rw [hu, mul_zero]
+
+/-- Iterating the uniform bound.  The rate is a power; nothing accumulates. -/
+theorem iterate_fluct_bound {β : ℝ} (hβ : 0 ≤ β) (N : ℕ) :
+    ∀ u : (Fin L → Fin 2) → ℝ, (∑ σ, u σ = 0) →
+      eucNorm ((act (spatialKernel β))^[N] u)
+        ≤ (Real.tanh β * (z2Norm β) ^ L) ^ N * eucNorm u := by
+  induction N with
+  | zero => intro u _; simpa using le_refl (eucNorm u)
+  | succ N ih =>
+    intro u hu
+    rw [Function.iterate_succ_apply]
+    calc eucNorm ((act (spatialKernel β))^[N] (act (spatialKernel β) u))
+        ≤ (Real.tanh β * (z2Norm β) ^ L) ^ N
+            * eucNorm (act (spatialKernel β) u) :=
+          ih _ (sum_act_eq_zero β hu)
+      _ ≤ (Real.tanh β * (z2Norm β) ^ L) ^ N
+            * (Real.tanh β * (z2Norm β) ^ L * eucNorm u) :=
+          mul_le_mul_of_nonneg_left (spatialKernel_fluct_bound hβ L u hu)
+            (pow_nonneg (mul_nonneg (tanh_nonneg hβ)
+              (le_of_lt (pow_pos (z2Norm_pos β) L))) N)
+      _ = (Real.tanh β * (z2Norm β) ^ L) ^ (N + 1) * eucNorm u := by ring
+
+/-- The partition function at constant weight, exactly. -/
+theorem gibbsPartition_one (β : ℝ) (N : ℕ) :
+    gibbsPartition (fun _ : Fin L → Fin 2 => (1:ℝ)) β N
+      = 2 ^ L * ((z2Norm β) ^ L) ^ N := by
+  have hiter : ∀ n : ℕ, (act (spatialKernel β))^[n] (fun _ => (1:ℝ))
+      = fun _ : Fin L → Fin 2 => ((z2Norm β) ^ L) ^ n := by
+    intro n
+    induction n with
+    | zero => rfl
+    | succ n ihn =>
+      rw [Function.iterate_succ_apply', ihn]
+      funext σ
+      unfold act
+      rw [← Finset.sum_mul, sum_spatialKernel β σ]
+      ring
+  rw [gibbsPartition_eq_iterate (fun _ => one_pos) β N, symWeighted_one β (L := L),
+    dress_one]
+  rw [hiter N]
+  simp [Finset.sum_const, Finset.card_univ, Fintype.card_fun]
+
+/-- **UNIFORM IN THE EXTENT, not only in the rate.**  At constant source weight,
+for every mean-zero observable and **every** `N` --- no threshold ---
+\[
+  |\mathbb{E}[A(X_0)A(X_N)]| \le \langle A^2\rangle \cdot (\tanh β)^N ,
+\]
+where `⟨A²⟩` is the mean square of `A` in the uniform measure.  For an
+observable bounded by `1` the constant is at most `1`, **at every extent**, so
+here the whole bound and not merely its rate is uniform in `L`. -/
+theorem gibbsCorr_one_uniform_bound {β : ℝ} (hβ : 0 ≤ β) (N : ℕ)
+    {A : (Fin L → Fin 2) → ℝ} (hA : ∑ σ, A σ = 0) :
+    |gibbsCorr (fun _ => (1:ℝ)) β N A A|
+      ≤ ((∑ σ, A σ * A σ) / 2 ^ L) * Real.tanh β ^ N := by
+  have hZ : (0:ℝ) < (z2Norm β) ^ L := pow_pos (z2Norm_pos β) L
+  have hcard : (0:ℝ) < 2 ^ L := by positivity
+  have hden : gibbsPartition (fun _ => (1:ℝ)) β N = 2 ^ L * ((z2Norm β) ^ L) ^ N :=
+    gibbsPartition_one β N
+  have hnum : |gibbsPathSum (fun _ => (1:ℝ)) β N A A|
+      ≤ (Real.tanh β * (z2Norm β) ^ L) ^ N * (eucNorm A * eucNorm A) := by
+    rw [gibbsPathSum_eq_iterate (fun _ => one_pos) β N A A, symWeighted_one β (L := L),
+      dress_one]
+    calc |∑ σ, (act (spatialKernel β))^[N] A σ * A σ|
+        ≤ eucNorm ((act (spatialKernel β))^[N] A) * eucNorm A := abs_sum_mul_le _ _
+      _ ≤ ((Real.tanh β * (z2Norm β) ^ L) ^ N * eucNorm A) * eucNorm A :=
+          mul_le_mul_of_nonneg_right (iterate_fluct_bound hβ N A hA) (eucNorm_nonneg A)
+      _ = (Real.tanh β * (z2Norm β) ^ L) ^ N * (eucNorm A * eucNorm A) := by ring
+  have hZpos : (0:ℝ) < 2 ^ L * ((z2Norm β) ^ L) ^ N :=
+    mul_pos hcard (pow_pos hZ N)
+  unfold gibbsCorr
+  rw [hden, abs_div, abs_of_pos hZpos, div_le_iff₀ hZpos]
+  calc |gibbsPathSum (fun _ => (1:ℝ)) β N A A|
+      ≤ (Real.tanh β * (z2Norm β) ^ L) ^ N * (eucNorm A * eucNorm A) := hnum
+    _ = (Real.tanh β * (z2Norm β) ^ L) ^ N * (∑ σ, A σ * A σ) := by
+        rw [eucNorm_mul_self A]
+    _ = (∑ σ, A σ * A σ) / 2 ^ L * Real.tanh β ^ N
+          * (2 ^ L * ((z2Norm β) ^ L) ^ N) := by
+        rw [mul_pow]
+        field_simp
+
+end Uniform
 
 end YangMills.OS
