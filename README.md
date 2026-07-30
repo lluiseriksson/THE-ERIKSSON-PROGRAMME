@@ -175,8 +175,8 @@ explicit:
   cards to their source dictionary fields; the Eq229 Cammarota blocker remains
   explicit;
 * the area-law paper artifact is now tracked under `paper/area-law/`;
-* the latest recorded full core build is the 8412-job core build, while
-  the measured checkpoint has advanced to `a17d7816` (on `main`).
+* the latest recorded full core build on this branch is the 8460-job build
+  at verified source checkpoint `0be45284`.
 
 The practical effect is that one more finite combinatorial/RG-budget lane is
 closed before the source estimates arrive.  The remaining work is still the
