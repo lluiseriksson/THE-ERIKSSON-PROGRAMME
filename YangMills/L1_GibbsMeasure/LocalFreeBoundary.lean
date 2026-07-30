@@ -491,6 +491,26 @@ variable {d N : ℕ} [NeZero d] [NeZero N]
 variable {G : Type*} [Group G] [MeasurableSpace G]
 variable [MeasurableMul₂ G] [MeasurableInv G]
 
+/-- Every complete marked set below a centered cutoff is itself retained by
+the standard free box. -/
+theorem markedSet_subset_freeBoundaryPlaquettes
+    {n : ℕ}
+    (O : CompatibleLocalObservable d G) (R K : ℕ)
+    (hC : (O.center (R + 2)).minVolume ≤ n)
+    (hroom :
+      O.minVolume + (R + 2) + 1 + R + 1 < n + 1)
+    {S₀ : Finset (ConcretePlaquette d (n + 1))}
+    (hpin : localNear
+      ((O.center (R + 2)).realizedSupport n hC) S₀ = S₀)
+    (hcard : S₀.card ≤ K) (hKR : K ≤ R) :
+    S₀ ⊆
+      FreeBoundary.freeBoundaryPlaquettes (d := d) (N := n + 1) := by
+  intro q hq
+  have hqMargin : q.SiteMargin 0 :=
+    markedSet_siteMargin_residual
+      O R K 0 hC hroom hpin hcard (by omega) hq
+  exact FreeBoundary.mem_freeBoundaryPlaquettes_of_siteMargin_zero q hqMargin
+
 /-- **A small support-rooted cluster cannot see the free boundary.**
 
 The centered support starts with margin `2L`.  Cluster connectivity supplies

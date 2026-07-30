@@ -20,6 +20,14 @@ with normalized Haar measure, the plaquette energy `Re tr U`, and
 Thus this is not the free `β = 0` theory.  The deliberately tiny rational
 coupling leaves a large exact margin after the marked-set estimate, whose
 largest exponential factor is bounded using `exp 1 < 3`.
+
+The point witness is strengthened below to the explicit interval
+
+`0 < |β| ≤ 10⁻⁵`,
+
+using `t = ε = η = 10⁻²`.  The interval estimate uses the quadratic
+remainder of the exponential, rather than the deliberately coarse pointwise
+majorant used by the original witness.
 -/
 
 namespace YangMills
@@ -213,6 +221,204 @@ noncomputable def explicitSU2UniformLocalKPRegime :
     have hrad := radius_of_le_master z hz0 hz
     convert hrad using 1 <;> norm_num [z]
 
+/-- Explicit radius of the rigorously verified interacting interval. -/
+noncomputable def explicitStrongCouplingRadius : ℝ :=
+  ((10 : ℝ) ^ 5)⁻¹
+
+theorem explicitStrongCouplingRadius_pos :
+    0 < explicitStrongCouplingRadius := by
+  norm_num [explicitStrongCouplingRadius]
+
+private theorem interval_activity_nonneg (β : ℝ) :
+    0 ≤ Real.exp (|β| * 2) - 1 := by
+  rw [sub_nonneg, ← Real.exp_zero]
+  exact Real.exp_le_exp.mpr (mul_nonneg (abs_nonneg β) (by norm_num))
+
+/-- On the whole explicit interval, the physical Mayer activity is at most
+`2.1 |β|`.  The improvement over the coarse factor `4` comes from the
+quadratic remainder estimate for `exp`. -/
+private theorem interval_activity_le
+    (β : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadius) :
+    Real.exp (|β| * 2) - 1 ≤ (21 / 10 : ℝ) * |β| := by
+  let b : ℝ := |β|
+  let x : ℝ := b * 2
+  have hb0 : 0 ≤ b := by simp [b]
+  have hb : b ≤ (1 / 100000 : ℝ) := by
+    calc
+      b ≤ explicitStrongCouplingRadius := by simpa [b] using hβ
+      _ = (1 / 100000 : ℝ) := by
+        norm_num [explicitStrongCouplingRadius]
+  have hx0 : 0 ≤ x := mul_nonneg hb0 (by norm_num)
+  have hx1 : |x| ≤ 1 := by
+    rw [abs_of_nonneg hx0]
+    dsimp only [x]
+    nlinarith
+  have hrem := Real.abs_exp_sub_one_sub_id_le hx1
+  have hupper :
+      Real.exp x - 1 - x ≤ x ^ 2 :=
+    (le_abs_self (Real.exp x - 1 - x)).trans hrem
+  have hmul : 0 ≤ b * ((1 / 40 : ℝ) - b) :=
+    mul_nonneg hb0 (by nlinarith)
+  calc
+    Real.exp (|β| * 2) - 1 = Real.exp x - 1 := by
+      rfl
+    _ ≤ x + x ^ 2 := by linarith
+    _ ≤ (21 / 10 : ℝ) * |β| := by
+      dsimp only [x, b]
+      nlinarith
+
+private theorem exp_one_fiftieth_le :
+    Real.exp (1 / 50 : ℝ) ≤ (50 / 49 : ℝ) := by
+  have h := Real.exp_bound_div_one_sub_of_interval
+    (x := (1 / 50 : ℝ)) (by norm_num) (by norm_num)
+  norm_num at h ⊢
+  exact h
+
+private theorem exp_fifty_one_fiftieth_le :
+    Real.exp (51 / 50 : ℝ) ≤ (150 / 49 : ℝ) := by
+  rw [show (51 / 50 : ℝ) = 1 + 1 / 50 by norm_num, Real.exp_add]
+  calc
+    Real.exp 1 * Real.exp (1 / 50 : ℝ)
+        ≤ 3 * (50 / 49 : ℝ) := by
+      exact mul_le_mul Real.exp_one_lt_three.le exp_one_fiftieth_le
+        (Real.exp_pos _).le (by norm_num)
+    _ = (150 / 49 : ℝ) := by ring
+
+private theorem exp_two_hundredths_le :
+    Real.exp (2 / 100 : ℝ) ≤ (150 / 49 : ℝ) := by
+  calc
+    Real.exp (2 / 100 : ℝ) = Real.exp (1 / 50 : ℝ) := by norm_num
+    _ ≤ (50 / 49 : ℝ) := exp_one_fiftieth_le
+    _ ≤ (150 / 49 : ℝ) := by norm_num
+
+private theorem exp_sixty_five_hundredths_le :
+    Real.exp (65 / 100 : ℝ) ≤ (150 / 49 : ℝ) := by
+  calc
+    Real.exp (65 / 100 : ℝ) ≤ Real.exp 1 :=
+      Real.exp_le_exp.mpr (by norm_num)
+    _ ≤ 3 := Real.exp_one_lt_three.le
+    _ ≤ (150 / 49 : ℝ) := by norm_num
+
+private noncomputable def intervalMasterWeight : ℝ :=
+  (21 / 10 : ℝ) * explicitStrongCouplingRadius * (150 / 49 : ℝ)
+
+private theorem intervalMasterWeight_margin :
+    4289 * intervalMasterWeight < 1 := by
+  norm_num [intervalMasterWeight, explicitStrongCouplingRadius]
+
+private theorem interval_weight_le_master
+    (β s : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadius)
+    (hs : Real.exp s ≤ (150 / 49 : ℝ)) :
+    (Real.exp (|β| * 2) - 1) * Real.exp s ≤
+      intervalMasterWeight := by
+  unfold intervalMasterWeight
+  have hactivity :
+      Real.exp (|β| * 2) - 1 ≤
+        (21 / 10 : ℝ) * explicitStrongCouplingRadius :=
+    (interval_activity_le β hβ).trans
+      (mul_le_mul_of_nonneg_left hβ (by norm_num))
+  exact mul_le_mul hactivity hs
+    (Real.exp_pos _).le
+    (mul_nonneg (by norm_num) explicitStrongCouplingRadius_pos.le)
+
+private theorem interval_radius_of_le_master
+    (z : ℝ) (hz0 : 0 ≤ z) (hz : z ≤ intervalMasterWeight) :
+    1089 * z < 1 := by
+  have h4289 : 4289 * z < 1 := by
+    exact (mul_le_mul_of_nonneg_left hz (by norm_num)).trans_lt
+      intervalMasterWeight_margin
+  nlinarith
+
+private theorem interval_small_of_le_master
+    (z : ℝ) (hz0 : 0 ≤ z) (hz : z ≤ intervalMasterWeight) :
+    32 * (z / (1 - 1089 * z)) ≤ (1 / 100 : ℝ) := by
+  have h4289 : 4289 * z < 1 := by
+    exact (mul_le_mul_of_nonneg_left hz (by norm_num)).trans_lt
+      intervalMasterWeight_margin
+  have hden : 0 < 1 - 1089 * z := by nlinarith
+  rw [← mul_div_assoc, div_le_iff₀ hden]
+  nlinarith
+
+/-- **Uniform KP regime on a nontrivial interval.**
+
+Every coupling with `|β| ≤ 10⁻⁵` satisfies all five uniform KP
+inequalities for `d = 2`, `B = 2`, and
+`t = ε = η = 10⁻²`.  The punctured interval gives genuinely interacting
+models. -/
+noncomputable def su2UniformLocalKPRegimeOfBound
+    (β : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadius) :
+    UniformLocalKPRegime 2 2 β where
+  t := 1 / 100
+  ε := 1 / 100
+  η := 1 / 100
+  t_nonneg := by norm_num
+  ε_pos := by norm_num
+  η_pos := by norm_num
+  radius_tilt := by
+    let z := (Real.exp (|β| * 2) - 1) *
+      Real.exp ((1 / 100 : ℝ) + 1 / 100)
+    have hz0 : 0 ≤ z :=
+      mul_nonneg (interval_activity_nonneg β) (Real.exp_pos _).le
+    have hz : z ≤ intervalMasterWeight := by
+      apply interval_weight_le_master β
+        ((1 / 100 : ℝ) + 1 / 100) hβ
+      convert exp_two_hundredths_le using 1 <;> norm_num
+    have hrad := interval_radius_of_le_master z hz0 hz
+    convert hrad using 1 <;> norm_num [z]
+  small_tilt := by
+    let z := (Real.exp (|β| * 2) - 1) *
+      Real.exp ((1 / 100 : ℝ) + 1 / 100)
+    have hz0 : 0 ≤ z :=
+      mul_nonneg (interval_activity_nonneg β) (Real.exp_pos _).le
+    have hz : z ≤ intervalMasterWeight := by
+      apply interval_weight_le_master β
+        ((1 / 100 : ℝ) + 1 / 100) hβ
+      convert exp_two_hundredths_le using 1 <;> norm_num
+    have hsmall := interval_small_of_le_master z hz0 hz
+    convert hsmall using 1 <;> norm_num [z]
+  radius_unitTilt := by
+    let z := (Real.exp (|β| * 2) - 1) *
+      Real.exp ((1 / 100 : ℝ) + 1 / 100 + 1)
+    have hz0 : 0 ≤ z :=
+      mul_nonneg (interval_activity_nonneg β) (Real.exp_pos _).le
+    have hz : z ≤ intervalMasterWeight := by
+      apply interval_weight_le_master β
+        ((1 / 100 : ℝ) + 1 / 100 + 1) hβ
+      convert exp_fifty_one_fiftieth_le using 1 <;> norm_num
+    have hrad := interval_radius_of_le_master z hz0 hz
+    convert hrad using 1 <;> norm_num [z]
+  small_unitTilt := by
+    let z := (Real.exp (|β| * 2) - 1) *
+      Real.exp ((1 / 100 : ℝ) + 1 / 100 + 1)
+    have hz0 : 0 ≤ z :=
+      mul_nonneg (interval_activity_nonneg β) (Real.exp_pos _).le
+    have hz : z ≤ intervalMasterWeight := by
+      apply interval_weight_le_master β
+        ((1 / 100 : ℝ) + 1 / 100 + 1) hβ
+      convert exp_fifty_one_fiftieth_le using 1 <;> norm_num
+    have hsmall := interval_small_of_le_master z hz0 hz
+    convert hsmall using 1 <;> norm_num [z]
+  marked_radius := by
+    let z := localMarkedEffectiveWeight 2 2 β (1 / 100) *
+      Real.exp (1 / 100)
+    have hz0 : 0 ≤ z := by
+      dsimp only [z, localMarkedEffectiveWeight]
+      exact mul_nonneg
+        (mul_nonneg (interval_activity_nonneg β) (Real.exp_pos _).le)
+        (Real.exp_pos _).le
+    have hz : z ≤ intervalMasterWeight := by
+      calc
+        z = (Real.exp (|β| * 2) - 1) *
+            Real.exp (65 / 100 : ℝ) := by
+          dsimp only [z, localMarkedEffectiveWeight]
+          rw [mul_assoc, ← Real.exp_add]
+          norm_num
+        _ ≤ intervalMasterWeight :=
+          interval_weight_le_master β (65 / 100) hβ
+            exp_sixty_five_hundredths_le
+    have hrad := interval_radius_of_le_master z hz0 hz
+    convert hrad using 1 <;> norm_num [z]
+
 end WindowPolymer
 
 /-! ## Concrete physical endpoint -/
@@ -278,5 +484,21 @@ noncomputable def explicitSU2InfiniteLocalGibbsState :
     measurable_su2FundamentalPlaquetteEnergy
     su2FundamentalPlaquetteEnergy_bounded
     WindowPolymer.explicitSU2UniformLocalKPRegime
+
+/-- **Concrete family on the punctured strong-coupling interval.**
+
+For every real `β` with `0 < |β| ≤ 10⁻⁵`, this is the positive normalized
+infinite-volume state of the nonconstant physical `SU(2)` plaquette energy.
+The positivity hypothesis is recorded explicitly so this endpoint cannot be
+mistaken for the free theory. -/
+noncomputable def su2InfiniteLocalGibbsStateOnPuncturedInterval
+    (β : ℝ) (_hβpos : 0 < |β|)
+    (hβ : |β| ≤ WindowPolymer.explicitStrongCouplingRadius) :
+    WindowPolymer.PositiveNormalizedLocalState 2 SU2GaugeGroup :=
+  WindowPolymer.infiniteLocalGibbsState
+    (sunHaarProb 2)
+    measurable_su2FundamentalPlaquetteEnergy
+    su2FundamentalPlaquetteEnergy_bounded
+    (WindowPolymer.su2UniformLocalKPRegimeOfBound β hβ)
 
 end YangMills
