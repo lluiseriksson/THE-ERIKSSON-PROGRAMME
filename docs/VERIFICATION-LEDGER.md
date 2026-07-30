@@ -28822,9 +28822,9 @@ limit, or Osterwalder--Schrader reconstruction.
 
 The published thermodynamic-limit branch ends at `8df8adc2`; its code source
 checkpoint `0be45284` had already passed the canonical 8460-job root build.
-It was merged, without rebasing, with `main` first parent `d370ddff`.  The
-combined staged merge was then rebuilt using the pinned Lean 4.29.0-rc6
-toolchain and terminated `exit 0` with the literal line
+It was merged, without rebasing, at checkpoint `71fc7701`, with `main` first
+parent `d370ddff`.  The combined merge was rebuilt using the pinned Lean
+4.29.0-rc6 toolchain and terminated `exit 0` with the literal line
 
 ```text
 Build completed successfully (8463 jobs).

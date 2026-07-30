@@ -37,8 +37,9 @@ Build completed successfully (8460 jobs).
 ```
 
 That line records the thermodynamic-limit branch before integration.  The
-staged merge of `main` first parent `d370ddff` with thermodynamic-limit second
-parent `8df8adc2` was rebuilt as a single combined core and terminated with:
+merge checkpoint `71fc7701`, with `main` first parent `d370ddff` and
+thermodynamic-limit second parent `8df8adc2`, was rebuilt as a single combined
+core and terminated with:
 
 ```text
 Build completed successfully (8463 jobs).
