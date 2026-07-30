@@ -71,10 +71,13 @@ Its green substrate gives genuine local Gibbs expectations, exact finite
 translations, an exact marked one-volume expansion with algebraic cancellation
 of the far gas, common-window marginals and activities, and exact transport of
 Ursell cluster monomials between fitting volumes.  The thermodynamic limit
-itself is **not yet proved**: the open step is the decomposition into exact
-common-window terms and clusters leaving the window, followed by the
-`connectedLattice_pinned_tail_volumeUniform` estimate.  No compactness or
-subsequence result counts as closure.
+itself is **not yet proved**.  The unrooted local correction tail has now been
+reindexed exactly into rooted size layers and bounded, uniformly in volume,
+by `connectedLattice_pinned_tail_volumeUniform` plus the honest
+unit-cardinality tilt required by the intrinsic `n+1` rooting factor.  The open
+step is to identify the corresponding infinite `clusterSum_sub_restrict`
+series, match all below-cutoff terms through the common window, and derive the
+Cauchy modulus.  No compactness or subsequence result counts as closure.
 
 For a fast human-readable progress scan, read the progress dashboard near the
 top of [`README.md`](README.md#progress-dashboard) and the static dashboard in

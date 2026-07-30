@@ -27574,3 +27574,48 @@ The complete module compiled on Colab Pro+ with the literal terminal line
 `[propext, Classical.choice, Quot.sound]`.  The endpoint is not yet the
 Cauchy theorem: the exact correction series still has to be reindexed into
 the common-window part plus this complementary rooted remainder.
+
+## Addendum 540 (2026-07-30, **exact local-correction reindexing into the rooted tail**)
+
+`LocalCorrectionTail.lean` closes the finite combinatorial bridge left open
+in Addendum 539.  The new generic symmetrization theorem retains an arbitrary
+permutation-invariant predicate on the whole tuple.  Instantiating it with
+the total plaquette-cardinality cutoff proves that moving “some polymer meets
+the marked region” to the root `X 0` costs exactly `n+1`; the cutoff is not
+lost during reindexing.
+
+The position-zero sum is then fibered exactly over the rooted polymer.  A
+finite union bound over `supportPlaquettes SF` and the literal incompatibility
+of every polymer containing the selected plaquette with its singleton anchor
+give
+
+```text
+localCorrectionTailPartial μ pe β SF L K
+  <= supportRootedBoundaryRemainder μ pe β SF L K
+  <= exp(-ε L) * ((2 t) * (|SF| * 4d)).
+```
+
+Thus the exact unrooted norm majorant produced by the restriction identity is
+now connected to the literal `connectedLattice_pinned_tail_volumeUniform`
+consumer, together with the unavoidable unit-cardinality tilt and hypotheses
+at `t+ε+1`.  No volume-cardinality factor and no free `bulk` hypothesis occur.
+
+The Colab Pro+ focal compilation terminated literally with
+`CORRTAIL7_EXIT=0`.  The three focal oracles
+`sum_marked_le_succ_mul_pinned_of_invariant`,
+`localCorrectionTailLayer_le_rooted`, and
+`localCorrectionTailPartial_le_volumeUniform` terminated with
+`CORRTAIL_AUDIT_EXIT=0`; each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+After adding both `LocalRootedTail` and `LocalCorrectionTail` to the root
+target, the canonical Colab build terminated literally with:
+
+```text
+Build completed successfully (8440 jobs).
+CORE_CORRTAIL2_EXIT=0
+```
+
+The full-series identification, common-window cancellation, Cauchy theorem,
+infinite-volume state, boundary-condition independence, and correlation
+limit remain open.  This addendum does not declare the campaign closed.

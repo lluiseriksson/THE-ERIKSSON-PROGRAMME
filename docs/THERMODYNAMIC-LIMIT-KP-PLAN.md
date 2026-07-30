@@ -65,8 +65,12 @@ subsequence does not close any brick.
    intrinsic `n+1` rooting factor, absorbs it with a unit-cardinality tilt,
    and proves the volume-uniform support boundary estimate using
    `connectedLattice_pinned_tail_volumeUniform` plus the necessary tilted
-   tail.  It remains to connect the exact correction series to this remainder
-   and package the finite reindexing.
+   tail.  `LocalCorrectionTail.lean` now performs the missing finite
+   reindexing: it preserves the global total-size predicate through tuple
+   symmetrization, fibers exactly over `X 0`, and proves that every finite
+   partial correction tail is bounded by that rooted remainder.  It remains
+   to identify the corresponding `tsum` from `clusterSum_sub_restrict`, split
+   its common-window and tail pieces, and take the infinite partial-sum bound.
 7. **Cauchy and infinite state — open.**
    Prove a quantitative Cauchy modulus for every observable, define the limit
    by completeness, and prove linearity, positivity, normalization, generator
@@ -80,14 +84,19 @@ subsequence does not close any brick.
 
 ## Current exact frontier
 
-The next theorem is the finite-sum reindexing.  A cluster with a marked
-plaquette having seam margin at least twice its total polymer cardinality now
-decodes to a tuple of `WindowPolymer`s, re-realizes pointwise to the source
-tuple, and has exactly the same complete monomial in every other fitting
-volume.  The remaining work is to express the small pinned contribution as
-the image of this decoding map and prove that a tuple outside the image must
-have total size beyond the cutoff.  That complementary class is precisely
-the tail variable used by the rooted support remainder.
+The finite unrooted-to-rooted reindexing is now theorem-fed:
+`localCorrectionTailPartial_le_volumeUniform` gives
+
+```text
+finite correction tail
+  <= exp(-ε L) * ((2 t) * (|SF| * 4d)).
+```
+
+The next theorem identifies the exact `clusterSum_sub_restrict` correction
+with its size-filtered and complementary tuple series.  Clusters below the
+cutoff which have sufficient seam margin decode to `WindowPolymer`s,
+re-realize pointwise, and have exactly the same complete monomial in any
+second fitting volume.  The complementary class is the tail just bounded.
 
 The honest local-correction regime is the uniformly double-tilted KP window
 at exponent `t + ε + 1`.  The extra `+1` is not an artefact: passing from the
