@@ -27,6 +27,22 @@ The same file proves two consequences:
 2. for every abstract trajectory `β(i)→+∞`, the KP hypothesis is eventually
    false.
 
+It also proves non-vacuity in two independent ways:
+
+- `kpRadiusAtUnit_nonempty_from_checkedWindow` consumes the repository theorem
+  `sun_clustering_window_nonempty` and returns a witness with `β>0`;
+- `kpRadiusAtUnit_witness_4_3` verifies the numerical point
+  `(d,N_c,β,s)=(4,3,0,1/200000)`.
+
+The first theorem is the typed producer bridge: an incompatible change to the
+checked window now breaks the C1 build.
+
+`checkedCorrelatorAfterKPRadiusAtUnit` goes one step further and partially
+applies the actual `sun_two_plaquette_correlator_bound` through its `hr`
+argument. The remaining hypothesis/result type is inferred by Lean. Thus a
+change to the consumer's radius argument, even if an old non-vacuity lemma
+survived, also breaks C1.
+
 Thus the existing volume-uniform clustering theorem cannot be sampled along
 any continuum trajectory whose bare inverse coupling diverges. Volume
 uniformity and cutoff uniformity are different obligations.
@@ -52,8 +68,8 @@ physicalArea(n)=a² n
 beta2D=1/(g²a²)
 ```
 
-It imports only Mathlib. It does not import, assume, or edit Continuum-C0, RG,
-hRpoly, or thermodynamic-limit infrastructure.
+It imports the checked two-plaquette producer, but does not edit or assume
+Continuum-C0, RG, hRpoly, or thermodynamic-limit infrastructure.
 
 ## Status of the positive target E2
 
@@ -64,51 +80,41 @@ The preregistered two-dimensional free-boundary `U(1)` target was
   ≤ 3 g⁴ A a².
 ```
 
-It was not proved, and no claim of it is made. The exact first blocker is G1:
-the repository has no `U(1)` configuration/measure, axial-gauge, or
-free-boundary plaquette-independence theorem from which to derive
+It was not proved, and no claim of it is made. The first blocker is analytic,
+before the finite-lattice factorization. The Amos development defines
+`besselIReal` by a Γ-power series, whereas the `U(1)` Haar computation
+produces
 
 ```text
-⟨W_a⟩ = (I₁(β(a))/I₀(β(a)))^ceil(A/a²).
+∫ exp(β cos θ) dθ
+and
+∫ exp(β cos θ) cos θ dθ.
 ```
 
-The existing Amos real bounds provide the right analytic bracket for G2, and
-Driver's Theorems 8.8/8.10 establish convergence in a related planar setting,
-but neither substitutes for G1 or supplies the preregistered constant.
-Building the missing gauge substrate here would duplicate infrastructure
-outside this lane's ownership.
-
-The minimal successor contract is:
+The pinned Mathlib tree contains no Bessel development that identifies these
+integrals with the repository series. The minimal successor contract is
+therefore:
 
 ```text
-freeBoundaryU1WilsonFactorization :
-  expectation WilsonLoop =
-    (Real.besseli 1 beta / Real.besseli 0 beta) ^ enclosedPlaquettes
+besselIReal_integral_repr_zero (x>0) :
+  besselIReal 0 x = (1/π) ∫₀^π exp(x cos θ) dθ
+
+besselIReal_integral_repr_one (x>0) :
+  besselIReal 1 x = (1/π) ∫₀^π exp(x cos θ) cos θ dθ
 ```
 
-with the finite domain, boundary condition, orientation, and normalization in
-the theorem type. Only after this bridge exists is the Amos-to-`O(a²)`
-inequality a valid C1 target.
+After that bridge, the finite free-boundary `U(1)` factorization is a separate
+and likely smaller obligation. Driver's Theorems 8.8/8.10 give related planar
+convergence but not either missing theorem or the preregistered constant.
 
-## Auxiliary Haar obstruction
+A heat-kernel/Villain version is a useful warm-up: its character coefficients
+give an exact fixed-area expectation with rate zero. It would validate the
+factorization machinery, but is not the Wilson `O(a²)` result and must not be
+presented as such.
 
-At the independently controlled Haar endpoint, the checked repository
-identities `|Re Tr U|≤N_c` and `E Re Tr U=0` imply, for `N_c≥2`,
-
-```text
-P(a⁻⁴(N_c-Re Tr U) ≥ N_c/(2a⁴)) ≥ 1/3.
-```
-
-Indeed `X=N_c-Re Tr U` satisfies `0≤X≤2N_c` and `E X=N_c`; splitting at
-`N_c/2` gives
-
-```text
-N_c ≤ N_c/2 + (3N_c/2) P(X≥N_c/2).
-```
-
-This calculation is diagnostic evidence, not a C1 Lean artifact and not a
-claim about a tuned weak-coupling law. Transport to a lattice plaquette still
-requires an explicit Haar pushforward premise.
+The elementary Haar calculation has been removed from the body. It is isolated
+in `HAAR-BETA-ZERO-APPENDIX.md`, whose title and scope state explicitly that it
+says nothing about `β>0`.
 
 ## Adversarial audit
 
@@ -118,12 +124,14 @@ requires an explicit Haar pushforward premise.
   or for continuum Yang--Mills itself.
 - The physical `a` and `g²` are explicit and positive; the abstract no-go
   assumes only `β→+∞`.
+- The window has both a producer-derived positive-coupling witness and a
+  fully numerical witness.
 - E2/G1 and E2/G2 remain unproved and are labelled as such.
 - Fable High returned HTTP 429 and contributed nothing.
 
 ## Verification and classification
 
-The direct Lean build succeeds. The three oracle queries report exactly
+The direct Lean build succeeds. All seven oracle queries report exactly
 `[propext, Classical.choice, Quot.sound]`; the prose checker reports one
 module and zero failures. There are no `sorry` declarations or project
 axioms.

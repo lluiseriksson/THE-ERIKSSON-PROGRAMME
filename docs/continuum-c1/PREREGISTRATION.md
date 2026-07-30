@@ -108,7 +108,7 @@ project axiom.  Run `scripts/check_module_prose.py` before claiming
 
 G4 does not count as evidence for G1, G2, or G3.
 
-## Auxiliary Haar obstruction
+## Auxiliary endpoint check, exactly β = 0
 
 For normalized Haar `U∈SU(N_c)`,
 
@@ -116,5 +116,18 @@ For normalized Haar `U∈SU(N_c)`,
 P(a⁻⁴(N_c-Re Tr U) ≥ N_c/(2a⁴)) ≥ 1/3.
 ```
 
-This remains a valid auxiliary negative result, but it is not substituted for
-E1 or E2.
+This remains a valid endpoint calculation, but it is not substituted for E1
+or E2 and says nothing about any `β>0` law. Its proof and diagnostic are
+isolated in `HAAR-BETA-ZERO-APPENDIX.md`.
+
+## Round-two dependency correction
+
+This note does not alter the frozen G1--G4 success criteria. It corrects the
+dependency order discovered during adversarial audit: before the Wilson
+`U(1)` factorization can consume the Amos bounds, one must identify the
+Γ-series `AmosClosure.besselIReal` at orders zero and one with the
+corresponding Fourier integrals of `exp(β cos θ)`. The pinned Mathlib tree
+does not provide that bridge.
+
+A heat-kernel/Villain factorization may be developed first as a separate
+rate-zero warm-up. It does not satisfy the frozen Wilson-action G1 or G2.

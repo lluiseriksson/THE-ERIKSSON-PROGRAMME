@@ -22,7 +22,7 @@
 
 The Lean theorem, rather than this binary64 computation, proves the cap.
 
-## Auxiliary Haar arithmetic
+## Auxiliary Haar arithmetic, exactly β = 0
 
 - Command:
   `python scripts/continuum_c1_tail_audit.py --nc 2 --a-num 1 --a-den 10 --radius 1000`
@@ -40,7 +40,7 @@ The Lean theorem, rather than this binary64 computation, proves the cap.
     "compact_radius": 1000,
     "nc": 2
   },
-    "python": "3.12.13",
+  "python": "3.12.13",
   "tail_mass_lower_bound": "1/3",
   "tail_threshold": "10000/1",
   "threshold_strictly_outside_compact": true
@@ -48,4 +48,5 @@ The Lean theorem, rather than this binary64 computation, proves the cap.
 ```
 
 No randomness, external package, credential, network call, or Colab runtime
-is involved.
+is involved. This diagnostic says nothing about any `β>0` law; see
+`HAAR-BETA-ZERO-APPENDIX.md`.

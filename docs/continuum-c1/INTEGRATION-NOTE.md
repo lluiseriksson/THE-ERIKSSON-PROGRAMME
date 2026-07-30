@@ -46,18 +46,32 @@ No C0 file needs to import C1 until that contract is chosen.
 
 ## Positive successor boundary
 
-E2 requires a separate theorem for free-boundary `U(1)`:
+The first missing theorem is not the finite-lattice factorization. It is the
+analytic identification between the repository's Γ-series and the Fourier
+integrals produced by `U(1)` Haar measure:
 
 ```text
-freeBoundaryU1WilsonFactorization :
-  expectation WilsonLoop =
-    (Real.besseli 1 beta / Real.besseli 0 beta) ^ enclosedPlaquettes
+besselIReal_integral_repr_zero (x>0) :
+  AmosClosure.besselIReal 0 x =
+    (1/π) ∫ θ in 0..π, exp(x*cos θ)
+
+besselIReal_integral_repr_one (x>0) :
+  AmosClosure.besselIReal 1 x =
+    (1/π) ∫ θ in 0..π, exp(x*cos θ)*cos θ
 ```
 
-Its type must expose the finite domain, boundary condition, plaquette count,
-orientation, and action normalization. Periodic tori are not accepted without
-their global plaquette constraint. C1 has not constructed or assumed this
-bridge.
+Only after these identities can a separate free-boundary theorem identify the
+Wilson-loop expectation with
+`(besselIReal 1 beta / besselIReal 0 beta)^enclosedPlaquettes`. Its type must
+expose the finite domain, boundary condition, plaquette count, orientation,
+and action normalization. Periodic tori are not accepted without their global
+plaquette constraint.
+
+A lower-cost warm-up is the two-dimensional `U(1)` heat-kernel/Villain
+action: its character coefficients give exact subdivision invariance and an
+exact fixed-area Wilson expectation. Such a theorem would validate the
+factorization machinery with rate zero, but must be labelled as a heat-kernel
+result rather than the Wilson `O(a²)` target.
 
 ## Build boundary
 
@@ -69,5 +83,6 @@ python scripts/check_module_prose.py \
   YangMills/Continuum/TightnessScaleNoGo.lean
 ```
 
-The file is intentionally absent from the global oracle and core import
-graph.
+The file imports the checked two-plaquette producer directly. It remains
+absent from the global oracle and core import graph, but its own build now
+fails if the checked window ceases to supply `KPRadiusAtUnit`.

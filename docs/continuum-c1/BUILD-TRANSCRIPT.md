@@ -5,7 +5,7 @@
 - Source branch: `codex/continuum-c1`
 - Source base: `81721890ad3e111d73cbe45074d42ec698ce07b2`
 - Dependency worktree: same source SHA, with existing Lake artifacts
-- Date: 2026-07-30
+- Latest run: 2026-07-31
 
 The lane worktree's Mathlib package checkout was incomplete. The source file
 was therefore compiled by absolute path from another worktree at the exact
@@ -20,6 +20,18 @@ lake env lean <C1-worktree>/YangMills/Continuum/TightnessScaleNoGo.lean
 Exit code: `0`.
 
 ```text
+'YangMills.ContinuumC1.kpRadiusAtUnit_nonempty_from_checkedWindow'
+depends on axioms:
+[propext, Classical.choice, Quot.sound]
+
+'YangMills.ContinuumC1.checkedCorrelatorAfterKPRadiusAtUnit'
+depends on axioms:
+[propext, Classical.choice, Quot.sound]
+
+'YangMills.ContinuumC1.kpRadiusAtUnit_witness_4_3'
+depends on axioms:
+[propext, Classical.choice, Quot.sound]
+
 'YangMills.ContinuumC1.beta_lt_kpBetaCap' depends on axioms:
 [propext, Classical.choice, Quot.sound]
 
@@ -29,9 +41,18 @@ Exit code: `0`.
 'YangMills.ContinuumC1.eventually_not_kpRadiusAtUnit_of_tendsto'
 depends on axioms:
 [propext, Classical.choice, Quot.sound]
+
+'YangMills.ContinuumC1.unitScale_kpCap_small' depends on axioms:
+[propext, Classical.choice, Quot.sound]
 ```
 
-No project axiom appears.
+No project axiom appears. The run emitted no warning.
+
+The non-vacuity theorem invokes `sun_clustering_window_nonempty`.
+`checkedCorrelatorAfterKPRadiusAtUnit` also partially applies the actual
+`sun_two_plaquette_correlator_bound` through `hr`; Lean infers the remaining
+dependent function type. Together these are compile-time guards connecting
+`KPRadiusAtUnit` to both the witness producer and the checked consumer.
 
 ## Prose checker
 

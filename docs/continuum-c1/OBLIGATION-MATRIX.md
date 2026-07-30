@@ -21,8 +21,8 @@ not wait for, import, or edit Continuum-C0.
 
 | Observable | Physical normalization and `a` dependence | Existing evidence | Exact gap |
 |---|---|---|---|
-| Wilson loop at fixed physical area `A` | In two dimensions use `n_p(a)=⌈A/a²⌉`, `β(a)=1/(g²a²)`, and compare `⟨W_a⟩` with `exp(-g²A/2)`. | The repo proves real-order Amos upper and lower bounds for `I_{ν+1}/I_ν`; at `ν=0` they bracket `I₁/I₀`.  The strong-coupling area law is uniform only in volume. | With free boundary conditions, prove the exact U(1) factorization and turn the Amos bracket into an explicit `O(g⁴Aa²)` rate, carrying the ceiling error. |
-| Smeared curvature / plaquette | In two dimensions a curvature-scale plaquette observable has an `a⁻²` normalization; in four-dimensional action density the normalization is `a⁻⁴`. | The checked Haar identities imply the auxiliary estimate `P(a⁻⁴(N_c-Re Tr U) ≥ N_c/(2a⁴)) ≥ 1/3`; its elementary proof is recorded in the report, not as a C1 Lean theorem. | A positive result needs a scale-dependent weak-coupling law plus centering/smearing and a uniform moment.  The Haar calculation shows fixed strong coupling cannot supply it. |
+| Wilson loop at fixed physical area `A` | In two dimensions use `n_p(a)=⌈A/a²⌉`, `β(a)=1/(g²a²)`, and compare `⟨W_a⟩` with `exp(-g²A/2)`. | The repo proves real-order Amos upper and lower bounds for its Γ-series definition of `I_{ν+1}/I_ν`. The strong-coupling area law is uniform only in volume. | First prove the integral representation of `besselIReal` at `ν=0,1`; only then identify the `U(1)` Haar Fourier coefficient, prove free-boundary factorization, and apply Amos with the ceiling error. |
+| Smeared curvature / plaquette | In two dimensions a curvature-scale plaquette observable has an `a⁻²` normalization; in four-dimensional action density the normalization is `a⁻⁴`. | The checked Haar identities give an elementary diagnostic at exactly `β=0`, isolated in `HAAR-BETA-ZERO-APPENDIX.md`. | A positive result needs a scale-dependent weak-coupling law plus centering/smearing and a uniform moment. The `β=0` diagnostic says nothing about any `β>0` trajectory. |
 | Connected correlator at fixed physical separation `r` | Lattice separation is `k(a)=⌈r/a⌉`; a lattice rate `exp(-c k)` corresponds to physical mass `c/a`. | `sun_two_plaquette_correlator_bound` gives a volume-uniform lattice-distance rate in a finite small-`β` window. | The continuum trajectory has `β(a)→∞`, while the KP hypothesis forces `|β|<β_max(d,N_c)<∞`; the existing result cannot be evaluated along sufficiently small `a`. |
 
 ## Independently derived KP cap
@@ -56,7 +56,9 @@ constructed by `sun_clustering_window_nonempty`.
 
 ## Decision
 
-E1 is the guaranteed theorem: any trajectory with `β(a)→∞` is eventually
-incompatible with the checked KP radius hypothesis.  E2 is the positive
-two-dimensional target: a free-boundary U(1) Wilson loop with an explicit
-uniform `O(a²)` rate.  Neither result uses the occupied `hRpoly` producer.
+E1 is proved: any trajectory with `β(a)→∞` is eventually incompatible with
+the checked KP radius hypothesis. Its non-vacuity theorem consumes
+`sun_clustering_window_nonempty` directly, so the connection is compiler
+checked. E2 remains the positive two-dimensional target. Its first missing
+analytic bridge is the integral representation of the repository's
+Γ-series `besselIReal` at orders zero and one.
