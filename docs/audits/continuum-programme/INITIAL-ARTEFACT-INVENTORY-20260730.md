@@ -197,3 +197,49 @@ future producer SHA.
 All mathematical and repository conclusions in this report were checked by
 this desk from primary sources or executable artefacts. Neither external model
 is a source.
+
+## Supersession: independent Lean re-execution completed
+
+Timestamp: `2026-07-31T00:11:16+02:00`.
+
+The earlier `BLOCKED` result under “Lean re-execution” above is superseded.
+The missing-olean diagnosis was an audit-environment defect, not an artefact
+defect.
+
+The local cache
+`C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages`
+contained 7,788 Mathlib oleans. Before using it, the desk compared the
+checkout and cache-owner inputs:
+
+| Input | SHA-256 | Result |
+|---|---|---|
+| `lean-toolchain` | `8C46C0308E92095E478BCFAE7C357327E88C5A624B54ABF5AD1660EE0E51DF5A` | MATCH |
+| `lake-manifest.json` | `E2F2D45A5FEF5AE352E6F8BE858726D603D83FDE30D740A14A8A2A588579381D` | MATCH |
+| `lakefile.lean` | `09D3FF29B030A20C396CDD5F729230EEB7BCDE3AE91CDA519C0643AC6B715BD5` | MATCH |
+
+A new public clone was checked out detached at
+`7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`. Only
+`.lake/packages` was junctioned to the verified cache; `.lake/build` remained
+local to the clean clone. `git status --porcelain=v2` was empty before the
+run.
+
+Commands and results:
+
+```text
+lake env lean YangMills/OS/PSDKernel.lean
+exit 0; elapsed 334641 ms
+
+lake build YangMills.OS.SpatialOS
+exit 0; elapsed 959995 ms
+Build completed successfully (8173 jobs).
+```
+
+The first direct `SpatialOS.lean` attempt failed only because its project
+imports had not yet been built in the new clone. The target build above is the
+correct clean-checkout re-execution and replaces that intermediate failure.
+No producer worktree or shared project build directory was read or modified.
+
+Revised verdict: **PASS** for independent Lean compilation of
+`YangMills.OS.SpatialOS` at the corrected public base. This does not alter the
+separate **FAIL** for any claim that Paper 13 proves the missing gluing
+identity or the full OS axiom.
