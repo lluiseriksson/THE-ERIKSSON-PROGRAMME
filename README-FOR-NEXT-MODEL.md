@@ -74,15 +74,18 @@ cancellation, common-window transport, and the literal consumer of
 modulus; completeness then yields a positive normalized real local state,
 invariant under positive translation generators and finite words.  A concrete
 `d=2`, `SU(2)` physical Wilson instance is proved for
-`0 < |β| ≤ 10^-5`.  An explicit cofinal sequence of genuine centered free
+`0 < |β| ≤ 10^-5`, and a separate physical lattice-dimension `d=4` instance
+is proved for `0 < |β| ≤ 10^-6`.  These radii are explicitly conservative
+and unoptimized.  An explicit cofinal sequence of genuine centered free
 boxes converges to the same value as periodic boundary conditions, and the
 normalized finite two-plaquette truncated-correlation bound passes to the
 state under its explicit eventual realization/separation hypotheses.  This
 does not claim arbitrary boundary conditions, inverse translations, a
 `C*`-state, a continuum limit, or OS reconstruction.  The focal modules,
-ten headline oracles, and a direct root elaboration are green.  The canonical
+twelve headline oracles, and a direct root elaboration are green.  The canonical
 Lake root build also terminated literally with
-`Build completed successfully (8458 jobs).` and empty stderr after supplying
+`Build completed successfully (8458 jobs).` at source checkpoint `ca355eb1`,
+with empty stderr after supplying
 a process-local `safe.directory` setting for the ownership-mismatched
 checkout.  All nine dependency HEADs matched the manifest; no dependency was
 deleted or updated and no global Git configuration was changed.

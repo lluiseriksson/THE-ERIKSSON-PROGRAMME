@@ -27831,3 +27831,51 @@ Build completed successfully (8458 jobs).
 
 Thus the mathematical modules, direct root, ten headline axiom oracles, and
 rule 7 canonical evidence are all green at this checkpoint.
+
+## Addendum 544 (2026-07-30, **physical d=4 non-vacuity and paper framing**)
+
+Source checkpoint: `ca355eb1`.
+
+`ThermodynamicNonvacuity.lean` now contains a second explicit physical
+interval:
+
+```text
+0 < |β| ≤ 10^-6,  d = 4,  G = SU(2),  B = 2.
+```
+
+The packaged parameters remain `t = ε = η = 10^-2`.  The proof uses the
+same quadratic activity estimate as the `d=2` interval, while discharging
+the exact four-dimensional constants
+
+```text
+(16 * 4 + 1)^2 = 4225,   16 * 4 = 64,
+```
+
+and the marked exponent `129/100` against a conservative rational
+exponential majorant.  The master inequality
+`10625 * intervalMasterWeightD4 < 1` simultaneously implies the radius and
+smallness fields.  No optimized strong-coupling radius is claimed.
+
+The new headline endpoints are
+`su2D4UniformLocalKPRegimeOfBound` and
+`su2D4InfiniteLocalGibbsStateOnPuncturedInterval`.  Both focal axiom oracles
+reported exactly
+
+```text
+[propext, Classical.choice, Quot.sound].
+```
+
+Together with the ten thermodynamic-limit oracles in Addendum 543, this
+gives twelve headline checks.  The canonical fixed-toolchain root build at
+`ca355eb1` terminated `exit 0` with the literal final line
+
+```text
+Build completed successfully (8458 jobs).
+```
+
+The accompanying paper now cites Osterwalder-Seiler in the body to state
+classical priority, identifies the mechanically checked bridge and explicit
+inhabitation as its contribution, and says explicitly that the certified
+`10^-5`/`10^-6` radii are much smaller than customary analytic
+strong-coupling domains.  The `d=4` result remains a lattice statement; no
+continuum limit or OS reconstruction is inferred.

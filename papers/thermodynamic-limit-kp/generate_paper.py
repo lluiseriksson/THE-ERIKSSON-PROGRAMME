@@ -264,7 +264,7 @@ story.append(
     P(
         "THE ERIKSSON PROGRAMME - Lean 4 artifact, branch "
         "<font name='Courier'>codex/thermodynamic-limit-kp</font>, "
-        "checkpoint <font name='Courier'>58c1f64a</font>",
+        "verified source checkpoint <font name='Courier'>ca355eb1</font>",
         "PaperMeta",
     )
 )
@@ -283,10 +283,12 @@ story.append(
         "The resulting explicit Cauchy modulus tends to zero, so completeness "
         "constructs an infinite-volume positive normalized real local state. "
         "The state is invariant under each positive unit translation generator "
-        "and every finite word in those generators. For d=2, SU(2), Haar "
+        "and every finite word in those generators. For SU(2), Haar "
         "probability measure, and the physical Wilson plaquette energy "
         "Re tr(U), the hypotheses are discharged throughout the explicit "
-        "punctured interval <b>0 &lt; |beta| &lt;= 10^-5</b>. We also construct "
+        "punctured intervals <b>0 &lt; |beta| &lt;= 10^-5</b> in d=2 and "
+        "<b>0 &lt; |beta| &lt;= 10^-6</b> in the physical lattice dimension "
+        "d=4. We also construct "
         "a genuine centered free-boundary exhaustion and prove that its complete "
         "cofinal sequence converges to the same state as periodic boundary "
         "conditions. Finally, the normalized finite-volume two-plaquette "
@@ -312,6 +314,17 @@ story.append(
         "normalized Gibbs expectations. This connection is delicate because "
         "the numerator and partition function are both extensive; neither is "
         "expected to converge separately.",
+    )
+)
+story.append(
+    P(
+        "The underlying strong-coupling existence and clustering statement is "
+        "classical; in particular, it belongs to the lattice gauge theory "
+        "framework of Osterwalder and Seiler [2]. The contribution claimed here "
+        "is not a new analytic thermodynamic-limit theorem, but a mechanically "
+        "checked derivation from the finite Gibbs integral through every "
+        "marked-expansion, cancellation, tail, and completeness bridge, together "
+        "with an explicit proof that the packaged KP hypotheses are inhabited.",
     )
 )
 story.append(
@@ -538,7 +551,7 @@ story.append(
     )
 )
 
-story.append(P("8. Explicit non-vacuous SU(2) interval", "SectionHead"))
+story.append(P("8. Explicit non-vacuous SU(2) intervals", "SectionHead"))
 story.append(
     P(
         "A conditional KP theorem can be mathematically empty if its hypotheses "
@@ -562,17 +575,40 @@ story.append(
     P(
         "Elementary rational upper bounds on the remaining exponentials then "
         "discharge the radius, smallness, unit-tilt, and marked-radius fields of "
-        "the uniform regime.",
+        "the uniform regime. These constants are deliberately unoptimized: the "
+        "certified radii below are far smaller than the order-one "
+        "strong-coupling domains customarily obtained by analytic treatments. "
+        "They certify non-vacuity of this formal package, not a competitive "
+        "estimate of the strong-coupling boundary.",
     )
 )
 story.append(
     theorem(
-        "Concrete strong-coupling regime.",
+        "Concrete two-dimensional strong-coupling regime.",
         "For every real beta with 0<|beta|<=10^-5, the d=2 SU(2) Wilson theory "
         "has the constructed infinite local Gibbs state. Positivity, "
         "normalization, generator/finite-word invariance, and periodic-versus-"
         "centered-free convergence are therefore non-vacuous physical "
         "statements on an interval.",
+    )
+)
+story.append(
+    P(
+        "The same rational proof is instantiated separately in the physical "
+        "lattice dimension d=4. Here the animal constant grows from "
+        "(16*2+1)^2=1089 to (16*4+1)^2=4225 and the smallness prefactor from "
+        "32 to 64. A deliberately conservative exponential majorant then "
+        "discharges all five fields on 0<|beta|<=10^-6.",
+    )
+)
+story.append(
+    theorem(
+        "Concrete four-dimensional lattice regime.",
+        "For every real beta with 0<|beta|<=10^-6, the d=4 SU(2) Wilson lattice "
+        "theory has the constructed infinite local Gibbs state, with the same "
+        "positivity, normalization, generator/finite-word invariance, and "
+        "periodic-versus-centered-free convergence conclusions. This is a "
+        "four-dimensional lattice statement, not a continuum limit.",
     )
 )
 
@@ -583,6 +619,7 @@ data = [
     [P("cauchySeq_localGibbsExpectation_kpUniform", "Caption"), P("Complete-sequence Cauchy theorem", "Caption")],
     [P("infiniteLocalGibbsState", "Caption"), P("Positive normalized local state", "Caption")],
     [P("su2InfiniteLocalGibbsStateOnPuncturedInterval", "Caption"), P("Physical nonzero interval", "Caption")],
+    [P("su2D4InfiniteLocalGibbsStateOnPuncturedInterval", "Caption"), P("Physical d=4 lattice interval", "Caption")],
     [P("norm_localGibbsExpectation_sub_freeBoundary_le_kpUniform", "Caption"), P("Same-volume periodic/free bound", "Caption")],
     [P("tendsto_freeBoundaryThermodynamicExpectation", "Caption"), P("Complete free sequence has the same limit", "Caption")],
     [P("abs_infiniteLocalGibbsTruncatedCorrelation_le_twoPlaquette", "Caption"), P("Finite normalized bound passes to the state", "Caption")],
@@ -607,7 +644,7 @@ story.append(
     P(
         "Direct focal elaboration of all terminal modules and direct "
         "elaboration of the root <font name='Courier'>YangMillsCore.lean</font> "
-        "terminated with exit code 0 under Lean 4.29.0-rc6. Ten headline "
+        "terminated with exit code 0 under Lean 4.29.0-rc6. Twelve headline "
         "<font name='Courier'>#print axioms</font> checks reported exactly "
         "<font name='Courier'>[propext, Classical.choice, Quot.sound]</font>."
         "<br/>All nine dependency HEADs matched the manifest. After supplying "
@@ -628,7 +665,7 @@ scope_rows = [
     [P("Positive generators and finite words", "Caption"), P("An action of the full translation group with inverses", "Caption")],
     [P("Periodic and one genuine centered free exhaustion", "Caption"), P("Arbitrary boundary conditions", "Caption")],
     [P("Two-plaquette bound passes under explicit geometry", "Caption"), P("Geometry-free clustering for arbitrary local observables", "Caption")],
-    [P("d=2 SU(2), 0<|beta|<=10^-5 instance", "Caption"), P("Four-dimensional continuum Yang-Mills or OS reconstruction", "Caption")],
+    [P("d=2 and d=4 SU(2) lattice instances", "Caption"), P("Four-dimensional continuum Yang-Mills or OS reconstruction", "Caption")],
 ]
 scope_tbl = Table(scope_rows, colWidths=[82 * mm, 82 * mm], repeatRows=1, hAlign="CENTER")
 scope_tbl.setStyle(
