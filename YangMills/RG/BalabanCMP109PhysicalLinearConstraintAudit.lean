@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP109PhysicalLinearConstraint
+
+#print axioms YangMills.RG.cmp109PhysicalLinearConstraint
+#print axioms YangMills.RG.cmp109PhysicalLinearConstraint_apply
+#print axioms YangMills.RG.cmp109PhysicalLinearConstraint_add
+#print axioms YangMills.RG.cmp109PhysicalLinearConstraint_smul
+#print axioms YangMills.RG.cmp109PhysicalLinearConstraintCLM
+#print axioms YangMills.RG.cmp109PhysicalLinearConstraintCLM_apply
+#print axioms YangMills.RG.cmp109PhysicalPivotResponseCLM
+#print axioms YangMills.RG.cmp109PhysicalPivotResponseCLM_apply
