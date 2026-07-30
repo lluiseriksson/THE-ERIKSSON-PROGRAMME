@@ -27683,3 +27683,58 @@ genuine Gibbs expectation because the outer marked-set sum in
 majorized, truncated, and transported.  Consequently no infinite-volume
 state, boundary-condition independence, or correlation-limit theorem is
 claimed in this addendum.
+
+## Addendum 542 (2026-07-30, **uniform tail for the complete outer marked Gibbs sum**)
+
+`LocalMarkedTail.lean` controls the part of the exact normalized Gibbs
+formula that remained outside the Ursell correction.  It reuses the
+component decomposition from `SupportFactorization.lean`: every set satisfying
+`localNear SF S₀ = S₀` is decomposed into connected components, every
+component is charged to a plaquette in `supportPlaquettes SF`, and
+`sum_connectedPolymers_through_le` supplies a volume-uniform rooted animal
+sum.  Because components, rather than tuple coordinates, are pinned, no
+factor `n+1` occurs in this resummation.
+
+The marked integral is bounded by
+`O.bound * (exp (|β| B) - 1)^|S₀|`.  Separately, the exact normalized
+far-gas factor is first rewritten through
+`clusterSum_sub_localFarRegion_eq_localCorrectionSeries` and then bounded by
+an exponential linear in `|S₀|`.  Absorbing this linear growth defines
+`localMarkedEffectiveWeight`.  Tilting that elementary weight by `η` gives
+an explicit `exp (-η L)` tail for all marked sets with `L ≤ |S₀|`.
+
+The terminal consumer
+`norm_localGibbsExpectation_sub_localMarkedClusterSmallSum_le_volumeUniform`
+therefore proves that the genuine finite-volume Gibbs expectation is
+uniformly close to its below-cutoff normalized marked sum.  This is a bound
+on the exact expectation, not on a free `bulk` surrogate.
+
+The focal Colab build terminated literally with:
+
+```text
+Build completed successfully (8224 jobs).
+MARKEDTAIL18_EXIT=0
+```
+
+After importing the module into the root target, the canonical Colab build
+terminated literally with:
+
+```text
+Build completed successfully (8446 jobs).
+CORE_MARKED_TAIL_EXIT=0
+```
+
+The six focal oracles
+`localConnectedMarkedWeight_le_volumeUniform`,
+`localPinnedSetTailWeight_le_exp_volumeUniform`,
+`localGibbsExpectation_eq_localMarkedClusterSum`,
+`norm_exp_localFarClusterDiff_le_volumeUniform`,
+`localMarkedClusterTailNorm_le_volumeUniform`, and
+`norm_localGibbsExpectation_sub_localMarkedClusterSmallSum_le_volumeUniform`
+terminated with `MARKED_TAIL_AUDIT_EXIT=0`; each reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The thermodynamic-limit campaign remains open.  The finite below-cutoff
+normalized marked sums have not yet been transported jointly between
+volumes; hence no Cauchy theorem for the genuine expectation and no
+infinite-volume state are claimed here.

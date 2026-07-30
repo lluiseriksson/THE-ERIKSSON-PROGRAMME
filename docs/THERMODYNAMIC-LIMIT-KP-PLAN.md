@@ -78,11 +78,13 @@ subsequence does not close any brick.
    two-volume estimate for the complete local correction exponent.
 7. **Cauchy and infinite state — open.**
    The normalization-cluster correction now has a quantitative Cauchy
-   modulus.  It remains to sum and transport the outer marked activities in
-   the exact Gibbs formula, thereby obtain a Cauchy modulus for the genuine
-   expectation, define the limit by completeness, and prove linearity,
-   positivity, normalization, generator invariance, and hence
-   finite-translation invariance.
+   modulus.  `LocalMarkedTail.lean` now also resums the outer marked sets by
+   connected components and proves that the genuine Gibbs expectation is
+   uniformly close to its below-cutoff normalized marked sum.  It remains to
+   transport those finite normalized marked sums between admissible volumes,
+   thereby obtain a Cauchy modulus for the genuine expectation, define the
+   limit by completeness, and prove linearity, positivity, normalization,
+   generator invariance, and hence finite-translation invariance.
 8. **Boundary-condition independence and correlations — open.**
    Compare admissible boundary realizations by the same pinned-tail estimate
    and pass the finite-volume truncated-correlation bound to the limit.
@@ -105,12 +107,19 @@ This is a whole-sequence comparison, not a compactness or subsequence
 argument.  Its below-cutoff parts agree exactly through a finite common-window
 equivalence; both complementary parts are controlled by the rooted KP tail.
 
-The next honest frontier is the *outer marked-set sum* in
-`localGibbsExpectation_eq_markedClusterSum`.  The marked integral must be
-majorized and its below-cutoff sets transported through the same common
-window, while the normalization correction above is retained as a separate
-factor.  Until that outer sum is controlled, there is no Cauchy theorem for
-the genuine Gibbs expectation and no infinite-volume state.
+The outer marked-set tail is now controlled separately.
+`localPinnedSetTailWeight_le_exp_volumeUniform` resums connected components
+with no Ursell rooting factor, and
+`norm_localGibbsExpectation_sub_localMarkedClusterSmallSum_le_volumeUniform`
+shows that the genuine expectation is exponentially close to the finite
+below-cutoff normalized marked sum.
+
+The next honest frontier is exact/common-window transport of that finite
+sum.  A marked set and every correction cluster coupled to it must be
+transported jointly, because the correction is pinned to the union of the
+observable and marked supports.  Until this finite truncated object is
+identified between volumes, there is no Cauchy theorem for the genuine Gibbs
+expectation and no infinite-volume state.
 
 The honest local-correction regime is the uniformly double-tilted KP window
 at exponent `t + ε + 1`.  The extra `+1` is not an artefact: passing from the
