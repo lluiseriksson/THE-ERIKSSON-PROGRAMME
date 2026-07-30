@@ -29115,3 +29115,24 @@ at thermodynamic-limit material.  Recorded rather than silently repaired.
 is part of the published record and does not move; the block that shifts in
 an append-only merge is the UNPUBLISHED one.  Two sessions appending to one
 ledger need that convention, or every merge rewrites someone's citations.
+
+**RE-MEASURED ON THE MERGED TREE (`3ee8b1c7`), which is what the paper anchors
+to.**  The measurement above is real and describes commit `667fb155` --- the
+tree before the merge --- and is kept for that reason.  But a paper must anchor
+to the tree it is published from, so the merged tree was measured too, in its
+own exclusive window:
+
+  * `lake build YangMillsCore` -> **Build completed successfully (8463 jobs)**.
+    Measured here, independently of the session that produced the merge, and it
+    agrees with theirs.  No number of theirs was reused.
+  * `lake env lean oracle_check.lean` -> **2752 commands, 2752 answers**; 2749
+    distinct + 3 duplicates; **23 axiom-free + 2726 with axioms**; zero
+    `sorryAx`, zero non-standard axioms, zero Lean errors.
+  * **19 declarations in this module, 19 in the oracle**, by name --- unchanged
+    by the merge, which touches no file of this module.
+  * `scripts/check_module_prose.py YangMills/OS` -> 20 modules, 0 findings.
+
+The repository-wide totals move because the merged branch adds `L1` modules and
+their oracle lines; the module's own row does not.  The paper's Reproducibility
+section now says this in one sentence, so a reader comparing v1.2's table with
+v1.3's does not have to suspect this module.
