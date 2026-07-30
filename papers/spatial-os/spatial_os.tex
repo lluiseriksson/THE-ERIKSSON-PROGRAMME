@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{81721890ad3e111d73cbe45074d42ec698ce07b2}
+\newcommand{\anchor}{56b3d5ef315f13670494fb9e13669ae2d1975554}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -44,8 +44,12 @@ and the one link that is verified but not yet proved}
 \textbf{What is proved, stated before anything else.}  For a complex-valued
 observable $F$ of an \emph{entire past half-path} of the coupled $\Z_2$ slice,
 the reflected form $\langle \Theta F, F\rangle$ is a non-negative real: through
-a \emph{site} for every coupling $\beta$, and through a \emph{bond} exactly for
-$\beta\ge0$.  The mechanism is a single map --- summing out the interior of a
+a \emph{site} for every coupling $\beta$, and through a \emph{bond} for
+$\beta\ge0$.  That hypothesis is proved \emph{sufficient} and is not proved
+necessary here --- and at $L=0$ it could not be, since the bare kernel is then
+the scalar $1$ and the bond form is non-negative at every $\beta$.  The witness
+that would make the boundary exact from one site upwards is authorised by a gate
+and is not written (\S\ref{sec:open}).  The mechanism is a single map --- summing out the interior of a
 half sends $F$ to a vector indexed by its boundary slice alone --- after which
 both cases reduce to kernel facts already machine-checked in the companion paper
 \cite{ErikssonRefl}.
@@ -92,17 +96,22 @@ non-negative --- but for \emph{real} observables of a \emph{single} slice,
 evaluated at the two \emph{ends} of a path \cite{ErikssonRefl}.  The
 Osterwalder--Schrader axiom asks for something wider in three directions at
 once: the observable should be a function of the whole past half-chain, it
-should be complex, and the statement should be about a matrix, not a number.
+should be complex, and the statement should be about a matrix, not a number
+\cite{OS73,OS75}.  Reflection positivity is one axiom among several, and on a
+lattice it is the one that yields a self-adjoint transfer operator by the
+standard reconstruction \cite{OSeiler,GJ}.
 
 That paper also said, in its scope section, that the missing step is a
 \emph{construction} and not a further inequality: collapse each half to a
 boundary vector and the two inequalities you need are the ones already proved.
 This paper carries out that construction and reports how far it gets.
 
-\paragraph{Two of the three directions are closed here.}  The observables are
-now complex and depend on the entire half-path.  The third --- the Gram matrix
-over finite families --- is not in this paper, and neither is the identification
-of the form with the path measure (\S\ref{sec:open}).
+\paragraph{All three directions are closed here; the identification is not.}
+The observables are now complex, they depend on the entire half-path, and the
+statement is about a Gram matrix (Theorem~\ref{thm:gram}).  What remains open is
+not one of the three directions but the identification of the form with the path
+measure (\S\ref{sec:open}), and that is the one that decides what the theorems
+are about.
 
 \section{The objects}\label{sec:objects}
 
@@ -126,11 +135,11 @@ this work}.  The reflection $\Theta$ is path reversal.
 $\displaystyle (\Phi F)(\sigma)\;=\;\sum_{a\,:\,a_m=\sigma} W(a)\,F(a).$
 \end{definition}
 
-\osline{SpatialOS}{76}{collapse}, with its linearity at
-\osline{SpatialOS}{81}{collapse\_add} and
-\osline{SpatialOS}{90}{collapse\_smul}.  The regrouping of a sum over halves by
+\osline{SpatialOS}{82}{collapse}, with its linearity at
+\osline{SpatialOS}{87}{collapse\_add} and
+\osline{SpatialOS}{96}{collapse\_smul}.  The regrouping of a sum over halves by
 boundary slice --- the only combinatorial fact either factorisation needs --- is
-\osline{SpatialOS}{99}{sum\_halves\_by\_edge}.
+\osline{SpatialOS}{105}{sum\_halves\_by\_edge}.
 
 \section{Through a site: every $\beta$}\label{sec:site}
 
@@ -142,7 +151,7 @@ $\displaystyle \langle\Theta F,F\rangle_{\mathrm{site}}
    \;=\;\sum_\sigma \frac{|(\Phi F)(\sigma)|^{2}}{w(\sigma)}.$
 \end{theorem}
 
-\osline{SpatialOS}{134}{osPairingSite\_eq}.  Nothing about $K$ enters: the
+\osline{SpatialOS}{142}{osPairingSite\_eq}.  Nothing about $K$ enters: the
 halves communicate only through the shared slice.
 
 \begin{corollary}\label{cor:site}
@@ -150,7 +159,7 @@ For every strictly positive $w$ and \emph{every} $\beta$ --- negative coupling
 included --- the form is a non-negative real.
 \end{corollary}
 
-\osline{SpatialOS}{162}{osPairingSite\_nonneg}.
+\osline{SpatialOS}{170}{osPairingSite\_nonneg}.
 
 \section{Real to complex, once and generically}\label{sec:complex}
 
@@ -161,13 +170,13 @@ $\sum_{i,j}\overline{z_i}K_{ij}z_j
 with $z=x+iy$.
 \end{lemma}
 
-\osline{SpatialOS}{192}{complexQuad\_eq}, resting on the cancellation of the
+\osline{SpatialOS}{200}{complexQuad\_eq}, resting on the cancellation of the
 cross terms at
-\osline{SpatialOS}{181}{sum\_cross\_antisymm}.  This is the entire content of
+\osline{SpatialOS}{189}{sum\_cross\_antisymm}.  This is the entire content of
 ``real observables to complex ones'', and it costs exactly symmetry.  It is
 stated for an arbitrary finite index type, so it is reusable outside this lane.
 
-\section{Through a bond: exactly $\beta\ge0$}\label{sec:bond}
+\section{Through a bond: sufficiency of $\beta\ge0$}\label{sec:bond}
 
 \begin{theorem}[bond factorisation]\label{thm:bond}
 $\displaystyle \langle\Theta F,F\rangle_{\mathrm{bond}}
@@ -175,7 +184,7 @@ $\displaystyle \langle\Theta F,F\rangle_{\mathrm{bond}}
        (\Phi F)(\tau).$
 \end{theorem}
 
-\osline{SpatialOS}{236}{osPairingBond\_eq}.  The source weight is not conjugated
+\osline{SpatialOS}{244}{osPairingBond\_eq}.  The source weight is not conjugated
 away; it is summed away, into $\Phi$.  What is left at the boundary is the bare
 kernel.
 
@@ -185,9 +194,34 @@ F,F\rangle_{\mathrm{bond}}$ is a non-negative real, for every complex observable
 $F$ of the whole past half-chain.
 \end{theorem}
 
-\osline{SpatialOS}{289}{osPairingBond\_nonneg}, which is
+\osline{SpatialOS}{297}{osPairingBond\_nonneg}, which is
 Theorem~\ref{thm:bond} composed with Lemma~\ref{lem:complex} and the companion
 paper's positive semidefiniteness of $K$ at $\beta\ge0$ \cite{ErikssonRefl}.
+
+\paragraph{The matrix, not one diagonal entry.}  The axiom is about a Gram
+matrix.  The cross form $\langle\Theta F,G\rangle_{\mathrm{bond}}$ is defined
+separately, factors through the collapse by the same argument, and the matrix is
+assembled from it.
+
+\begin{theorem}[the Gram identity]\label{thm:gram}
+For every finite family $F_1,\dots,F_k$ of complex half-chain observables and
+every complex $c_1,\dots,c_k$,
+\[
+  \sum_{i,j}\overline{c_i}\,c_j\,\langle\Theta F_i,F_j\rangle_{\mathrm{bond}}
+  \;=\;\Bigl\langle \Theta\Bigl(\sum_i c_i F_i\Bigr),
+                    \sum_i c_i F_i\Bigr\rangle_{\mathrm{bond}},
+\]
+and for $\beta\ge0$ both sides are the same non-negative real.
+\end{theorem}
+
+\osline{SpatialOS}{427}{osPairingBond\_gram} and
+\osline{SpatialOS}{456}{osPairingBond\_gram\_nonneg}, with the cross form at
+\osline{SpatialOS}{349}{osPairingBondCross}, its factorisation at
+\osline{SpatialOS}{375}{osPairingBondCross\_eq}, the linearity of the collapse at
+\osline{SpatialOS}{362}{collapse\_sum}, and the four-fold reindexing the assembly
+needs stated on its own at \osline{SpatialOS}{330}{sum\_comm4}.  Positivity is
+\emph{transported} to the matrix rather than re-proved: the identity says the
+Gram sum \emph{is} the form of the combined observable.
 
 \section{The four gates}\label{sec:gates}
 
@@ -231,11 +265,12 @@ is, the theorems above are positivity statements about a form the numerics
 identify with the Osterwalder--Schrader pairing, and not about that pairing.}
 This is the first thing a reader should check when the next version appears.
 
-\paragraph{The Gram matrix.}  The axiom is a statement about a matrix over a
-finite family being positive semidefinite.  Bilinearity of $\Phi$ is proved
-(\S\ref{sec:objects}); the matrix statement is not assembled here.
-
 \paragraph{The sharpness witness.}  Gate C authorises it and it is not written.
+Consequently $\beta\ge0$ appears above as a sufficient hypothesis only.  The
+route is identified: at $m=0$ the collapse is multiplication by $w$, hence
+surjective when $w>0$, so an observable can be chosen whose boundary vector is
+the sign observable that the companion paper already drives negative below zero
+\cite{ErikssonRefl}.
 
 \paragraph{No reconstruction.}  The quotient by the null space of this form,
 with the transfer operator descending to a self-adjoint contraction, is not
@@ -254,23 +289,48 @@ actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8464 jobs, success \\
-\quad previous checkpoint & 8463 jobs \\
-Declarations in this module & 14 \\
-Occurrences of \texttt{sorry} & 0 \\
+\quad checkpoint before this module & 8463 jobs \\
+Oracle commands, and answers & 2773 \\
+\quad distinct declarations & 2770 \\
+\quad commands listed twice & 3 \\
+\quad distinct, with axiom dependencies & 2746 \\
+\quad distinct, axiom-free & 24 \\
+Declarations in this module & 21 \\
+\quad of them in the oracle & 21 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound},
+  \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
 Project axioms & 0 \\
+Errors & 0 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The job count incremented when the module joined the core, which is the
-repository's standing check that a new module is actually being elaborated.  The
-axiom oracle for this module is not reported in this version.
+The job count incremented from 8463 to 8464 when the module joined the core,
+which is this repository's standing check that a new module is really being
+elaborated.  It did not move again when declarations were added to an existing
+module, which is the correct reading of that check rather than a failure of it.
+The oracle counters close: $2746+24=2770$ and $2770+3=2773$, the three repeats
+being long-standing duplicate lines elsewhere in the file.  Every declaration of
+this module appears in the oracle, reconciled by name.
 
 The module is \repofile{YangMills/OS/SpatialOS.lean}{YangMills/OS/SpatialOS.lean}
 and the companion is
 \repofile{YangMills/OS/SpatialReflection.lean}{YangMills/OS/SpatialReflection.lean}.
 
 \begin{thebibliography}{9}
+\bibitem{OS73} K. Osterwalder and R. Schrader,
+  \emph{Axioms for Euclidean Green's functions},
+  Comm. Math. Phys. \textbf{31} (1973), 83--112.
+\bibitem{OS75} K. Osterwalder and R. Schrader,
+  \emph{Axioms for Euclidean Green's functions II},
+  Comm. Math. Phys. \textbf{42} (1975), 281--305.
+\bibitem{OSeiler} K. Osterwalder and E. Seiler,
+  \emph{Gauge field theories on a lattice},
+  Ann. Physics \textbf{110} (1978), 440--471.
+\bibitem{GJ} J. Glimm and A. Jaffe,
+  \emph{Quantum Physics: A Functional Integral Point of View},
+  2nd ed., Springer, 1987.
 \bibitem{ErikssonRefl} L. Eriksson,
   \emph{The Weight That Could Not Break It: Machine-Checked Endpoint Reflection
   Positivity for the Coupled $\Z_2$ Slice}, 2026.
