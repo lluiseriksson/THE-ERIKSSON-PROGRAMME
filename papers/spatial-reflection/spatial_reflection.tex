@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{c6a992a5d2abe453396989f40123487134f19e0c}
+\newcommand{\anchor}{1f79a73d3b88bf055292cd48ec6ab0aff0252967}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -29,9 +29,10 @@
 \newcommand{\SU}{\mathrm{SU}}
 
 \title{The Weight That Could Not Break It:\\
-Machine-Checked Reflection Positivity\\
+Machine-Checked \emph{Endpoint} Reflection Positivity\\
 for the Coupled $\Z_2$ Slice\\
-\large two reflections, two hypotheses, and one of them sharp}
+\large real single-slice observables --- two reflections, two hypotheses,
+and one of them sharp}
 \author{Lluis Eriksson}
 \date{}
 
@@ -39,19 +40,25 @@ for the Coupled $\Z_2$ Slice\\
 \maketitle
 
 \begin{abstract}
-Eleven papers in this lane end with the same sentence: \emph{reflection
-positivity is untouched}.  It is touched here, and the reason it is reachable is
-the exact reason uniformity in the extent was not.
+\textbf{What is proved, stated before anything else.}  The reflected two-point
+form of the Gibbs measure, at the two \emph{ends} of a path, for \emph{real}
+observables of a \emph{single} slice, is non-negative; and the Gram matrix of a
+finite family of such observables is positive semidefinite.  \textbf{This is not
+yet the Osterwalder--Schrader axiom}, which quantifies over observables of the
+whole past half-chain and over complex ones.  The half-chain algebra, the
+reflection map and the sesquilinear form are not built here; \S\ref{sec:scope}
+says what is missing and why it is a construction rather than a further
+inequality.
 
-Everything this lane has proved about rates dies when the spatial source weight
-is switched on: the modulus $\mathrm{specRatio}(L)$ runs to $1$ outside the
-disordered region \cite{ErikssonSpectral}, and the extent-independent rate of
-the companion paper holds only at constant weight \cite{ErikssonUniform}.
-Reflection positivity is different in kind: conjugation by $\sqrt{w}$ is a
-\emph{congruence}, and a congruence cannot change the sign of a quadratic form.
-So the same weight that destroys uniformity leaves positivity exactly where it
-was.  \textbf{This is the first statement in this lane that holds for the
-coupled kernel.}
+Eleven papers in this lane end with \emph{reflection positivity is untouched}.
+This touches the endpoint form of it, and the interesting part is what the
+spatial source weight does --- namely nothing.  Earlier papers do prove
+statements about the coupled kernel; $\mathrm{specGap}<\lambda$ holds there too
+\cite{ErikssonSpectral}.  What is new is that this result is \emph{unchanged} by
+the weight: same hypothesis, same conclusion, and no constant that depends on
+$w$.  Every earlier coupled-kernel statement contains a number that moves when
+$w$ does.  Positivity is the \emph{sign} of a quadratic form, and conjugation by
+$\sqrt{w}$ is a congruence, so there is nothing for the weight to move.
 
 \textbf{Two reflections, two hypotheses.}  The reflected two-point sum is
 $\langle v, K^{N} v\rangle$ with $v$ the dressed observable, and the two cases
@@ -64,16 +71,20 @@ induction on the extent.
 
 \textbf{And the second hypothesis is active.}  At $\beta<0$ and odd separation
 the single-site sign observable gives the reflected sum in closed form,
-$2(e^{\beta}-e^{-\beta})^{N}$, which is negative.  The boundary $\beta=0$ is
-therefore sharp and exhibited, not inferred.
+$2(e^{\beta}-e^{-\beta})^{N}$, which is negative.  Congruence is invertible, so
+the same witness divided by $\sqrt{w}$ shows the \emph{coupled} kernel is
+indefinite below zero for \emph{every} strictly positive weight, at every extent
+with at least one site.  At $L=0$ there is nothing to witness --- one
+configuration, kernel $1$ --- and that exception is recorded rather than left to
+be found.  The boundary $\beta=0$ is sharp and exhibited, not inferred.
 
-\textbf{What this is not.}  Reflection positivity is one Osterwalder--Schrader
-axiom.  \emph{No reconstruction is carried out}: the physical Hilbert space as
-the quotient of the past algebra by the null space of this form is not built,
-and nothing here is a statement about it.  The observables are the endpoint ones
-the bridge module supplies \cite{ErikssonGibbs}; general past-algebra
-observables are not treated.  Nothing here concerns uniformity in the extent,
-$\SU(N)$, the continuum limit, or the Yang--Mills mass gap \cite{Clay}.
+\textbf{What this is not.}  Neither the full axiom (above) nor any
+reconstruction: the physical Hilbert space as the quotient of the past algebra
+by the null space of this form is not built.  And the degeneration of
+$\mathrm{specRatio}(L)$ under a ring weight is \emph{measured}, not proved; no
+theorem here or elsewhere in the lane says the weight destroys uniformity, only
+that no uniform bound is proved for it.  Nothing here concerns uniformity in the
+extent, $\SU(N)$, the continuum limit, or the Yang--Mills mass gap \cite{Clay}.
 
 \textbf{On the pre-registration.}  Three gates were committed before any Lean was
 written, and \S\ref{sec:gates} reports what happened to them --- including one
@@ -86,8 +97,9 @@ it.
 The lane's obstruction has a shape.  Every rate statement it has produced is a
 statement about $\mathrm{specGap}$ or $\mathrm{specRatio}$, and those are
 spectral data: conjugating the kernel by $\sqrt{w}$ moves eigenvalues around,
-and the measured evidence is that with a ring weight it moves them all the way
-to degeneracy outside the disordered region.
+and the \emph{measured} evidence is that with a ring weight it moves them to
+degeneracy outside the disordered region.  (Measured: no theorem in this lane
+proves that, and none is claimed here.)
 
 Positivity is not spectral data in that sense.  It is the \emph{sign} of a
 quadratic form, and
@@ -108,7 +120,7 @@ Let $K$ be any symmetric kernel.  For every $m$ and every observable $u$,
 \]
 \end{theorem}
 
-\osline{SpatialReflection}{73}{sum\_iterate\_even\_nonneg}.
+\osline{SpatialReflection}{103}{sum\_iterate\_even\_nonneg}.
 Move half the iterates across the pairing --- which is what symmetry buys --- and
 the sum becomes $\sum_i (K^{m}u)(i)^2$.  No positivity of $K$ is used, and no
 hypothesis on $\beta$: this holds at negative coupling, where the bond
@@ -121,7 +133,7 @@ For $\beta\ge0$, every extent $L$ and every observable $u$,
 $\sum_\sigma u(\sigma)\,(Ku)(\sigma) \ge 0$.
 \end{theorem}
 
-\osline{SpatialReflection}{115}{spatialKernel\_posSemidef}.
+\osline{SpatialReflection}{145}{spatialKernel\_posSemidef}.
 By induction on the extent, splitting an observable at the first site into its
 even and odd parts.  Each part inherits positivity from the inductive
 hypothesis, and the two are recombined with the two bond eigenvalues,
@@ -133,7 +145,7 @@ hypothesis, and the two are recombined with the two bond eigenvalues,
 which is precisely where the hypothesis enters.  It is the same induction the
 companion uniformity paper runs \cite{ErikssonUniform}, with different
 bookkeeping; the split lemma is shared and stated once
-(\osline{SpatialReflection}{94}{act\_spatialKernel\_cons}).
+(\osline{SpatialReflection}{124}{act\_spatialKernel\_cons}).
 
 \begin{theorem}[congruence, and the coupled kernel]\label{thm:congr}
 If $K$ is positive semidefinite then so is $c\,K\,c$ for any function $c$.
@@ -141,8 +153,8 @@ Hence for $\beta\ge0$ and \emph{any} strictly positive source weight $w$, the
 symmetrised kernel $\sqrt{w}\,K\,\sqrt{w}$ is positive semidefinite.
 \end{theorem}
 
-\osline{SpatialReflection}{177}{posSemidef\_congr} and
-\osline{SpatialReflection}{193}{symWeighted\_posSemidef}.
+\osline{SpatialReflection}{207}{posSemidef\_congr} and
+\osline{SpatialReflection}{223}{symWeighted\_posSemidef}.
 This is the step \S\ref{sec:why} advertised, and it costs one reindexing.
 
 \begin{theorem}[bond reflection]\label{thm:bond}
@@ -150,7 +162,7 @@ For $\beta\ge0$, every $m$ and every observable,
 $\sum_i (K^{2m+1}u)(i)\,u(i) \ge 0$.
 \end{theorem}
 
-\osline{SpatialReflection}{207}{sum\_iterate\_odd\_nonneg}.
+\osline{SpatialReflection}{237}{sum\_iterate\_odd\_nonneg}.
 
 \section{The same statements, about the measure}\label{sec:measure}
 
@@ -158,14 +170,15 @@ The bridge of the companion paper \cite{ErikssonGibbs} identifies the reflected
 two-point sum of the Gibbs measure with $\langle v, K^{N} v\rangle$, so both
 theorems transfer verbatim.
 
-\begin{theorem}[reflection positivity in the measure]\label{thm:rp}
-For any strictly positive source weight, at every extent:
+\begin{theorem}[endpoint reflection positivity in the measure]\label{thm:rp}
+Let $A$ be a \emph{real} observable of a \emph{single} slice, evaluated at the
+two ends of the path.  For any strictly positive source weight, at every extent:
 \begin{enumerate}
 \item at even separation the reflected two-point sum is non-negative for
 \emph{every} $\beta$
-(\osline{SpatialReflection}{234}{gibbsPathSum\_nonneg\_even});
+(\osline{SpatialReflection}{264}{gibbsPathSum\_nonneg\_even});
 \item for $\beta\ge0$ it is non-negative at \emph{every} separation
-(\osline{SpatialReflection}{243}{gibbsPathSum\_nonneg}).
+(\osline{SpatialReflection}{273}{gibbsPathSum\_nonneg}).
 \end{enumerate}
 \end{theorem}
 
@@ -173,6 +186,25 @@ The statement is about the \emph{unnormalised} sum, which is the object
 reflection positivity is about; the partition function is positive, so the
 normalised expectation has the same sign, but that is a remark and not the
 theorem.
+
+\paragraph{The whole matrix, not one diagonal entry.}  Reflection positivity is
+a statement about a Gram matrix being positive semidefinite.  For these
+observables the matrix form follows from the diagonal one by bilinearity, and is
+stated so the two are not confused:
+
+\begin{theorem}[the Gram matrix]\label{thm:gram}
+For every finite family $A_1,\dots,A_k$ of endpoint observables and every real
+$c_1,\dots,c_k$,
+\[
+  \sum_{i,j} c_i c_j \, \bigl\langle A_i, K^{N} A_j \bigr\rangle \;\ge\; 0
+\]
+under the hypotheses of Theorem~\ref{thm:rp}.
+\end{theorem}
+
+\osline{SpatialReflection}{468}{gibbsPathSum\_gram\_nonneg} and
+\osline{SpatialReflection}{475}{gibbsPathSum\_gram\_nonneg\_even}, with
+the bilinearity that makes the matrix visible at
+\osline{SpatialReflection}{443}{gibbsPathSum\_combo}.
 
 \section{Sharpness: the hypothesis is active}\label{sec:sharp}
 
@@ -187,12 +219,31 @@ At one site and constant weight, the single-site sign observable gives
 exactly.  For $\beta<0$ and $N$ odd this is negative.
 \end{theorem}
 
-\osline{SpatialReflection}{275}{gibbsPathSum\_siteSign\_eq} and
-\osline{SpatialReflection}{297}{gibbsPathSum\_neg\_of\_neg\_beta}.
+\osline{SpatialReflection}{305}{gibbsPathSum\_siteSign\_eq} and
+\osline{SpatialReflection}{327}{gibbsPathSum\_neg\_of\_neg\_beta}.
 The observable is the one the extent paper already built
 \cite{ErikssonExtent}; it is an eigenvector of the decoupled kernel with
 eigenvalue $D$, so the iterate is $D^{N}$ times it, and the norm counts the two
 configurations.
+
+\paragraph{And for every weight, not only the constant one.}  That witness sits
+at constant weight, so on its own it refutes only the universally quantified
+statement.  Congruence is \emph{invertible} --- $\sqrt{w}$ is nowhere zero ---
+so inertia transports in both directions, and the same observable divided by
+$\sqrt{w}$ witnesses indefiniteness of the coupled kernel itself.
+
+\begin{theorem}[sharp for every positive weight]\label{thm:sharpw}
+For every extent with at least one site, every strictly positive $w$ and every
+$\beta<0$, the quadratic form of $\sqrt{w}\,K\,\sqrt{w}$ takes the value
+$(e^{\beta}-e^{-\beta})\,Z^{L-1}\,2^{L} < 0$.
+\end{theorem}
+
+\osline{SpatialReflection}{361}{symWeighted\_quadForm\_neg\_of\_neg\_beta}.
+
+\paragraph{The exception, recorded.}  At $L=0$ the configuration space is a
+point, the kernel is the number $1$, and the form is a square at every $\beta$
+(\osline{SpatialReflection}{414}{spatialKernel\_posSemidef\_zero}).  So
+``exactly $\beta\ge0$'' is a statement from one site upwards.
 
 \section{The three gates, and the one that failed}\label{sec:gates}
 
@@ -232,10 +283,23 @@ quotient of the past algebra by the null space of this form, with the transfer
 operator descending to a self-adjoint contraction --- is not done here and is
 not claimed.
 
-\paragraph{Endpoint observables only.}  The bridge module supplies correlations
-of observables at the two ends of the path.  Reflection positivity for a general
-observable of the whole past half-chain is not treated; the theorems above are
-about the endpoint form.
+\paragraph{Endpoint observables only --- and what the full axiom would need.}
+The bridge module supplies correlations of observables at the two ends of the
+path.  The Osterwalder--Schrader axiom is about a general observable $F$ of the
+past half-chain, complex-valued, with the matrix
+$\bigl(\langle\Theta F_i, F_j\rangle\bigr)_{ij}$ positive semidefinite.  Here
+the observables are real and single-slice, and no reflection map $\Theta$ is
+defined.
+
+The missing step is identifiable and is a \emph{construction}, not a further
+inequality: summing out the interior of each half collapses $F$ to a boundary
+vector $G_F$, after which the site reflection reduces to
+$\sum_\sigma G_F(\sigma)^2 \ge 0$ and the bond reflection to
+$\langle G_F, K_w G_F\rangle \ge 0$ --- which are Theorem~\ref{thm:site} and
+Theorem~\ref{thm:congr}, already proved.  Extending from real to complex
+observables is then immediate for a real symmetric kernel, since
+$z^{*}Kz = x^{\top}Kx + y^{\top}Ky$ with the cross terms cancelling by symmetry.
+Both layers are registered as the next step and neither is claimed here.
 
 \paragraph{Nothing about uniformity.}  This paper says nothing about how any
 rate behaves as the extent grows.  The coupled kernel's uniformity is still the
@@ -257,12 +321,12 @@ actual declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8432 jobs, success \\
-Oracle commands, and answers & 2708 \\
-\quad distinct declarations & 2705 \\
+Oracle commands, and answers & 2715 \\
+\quad distinct declarations & 2712 \\
 \quad commands listed twice & 3 \\
-\quad distinct, with axiom dependencies & 2682 \\
+\quad distinct, with axiom dependencies & 2689 \\
 \quad distinct, axiom-free & 23 \\
-Declarations in this module & 11 \\
+Declarations in this module & 18 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
 Project axioms & 0 \\
