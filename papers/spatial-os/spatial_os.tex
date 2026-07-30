@@ -1,0 +1,283 @@
+% The half-chain collapse for the coupled slice (paper 13 of the O lane).
+% Lane: O (operator bridge), module YangMills/OS/SpatialOS.lean.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\anchor}{81721890ad3e111d73cbe45074d42ec698ce07b2}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+
+\title{The Collapse:\\
+A Machine-Checked Half-Chain Reflection Form\\
+for the Coupled $\Z_2$ Slice\\
+\large complex observables of a whole half --- two reflections,
+and the one link that is verified but not yet proved}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{What is proved, stated before anything else.}  For a complex-valued
+observable $F$ of an \emph{entire past half-path} of the coupled $\Z_2$ slice,
+the reflected form $\langle \Theta F, F\rangle$ is a non-negative real: through
+a \emph{site} for every coupling $\beta$, and through a \emph{bond} exactly for
+$\beta\ge0$.  The mechanism is a single map --- summing out the interior of a
+half sends $F$ to a vector indexed by its boundary slice alone --- after which
+both cases reduce to kernel facts already machine-checked in the companion paper
+\cite{ErikssonRefl}.
+
+\textbf{And what is NOT proved, stated second.}  The form is \emph{defined} here
+as a sum over pairs of halves.  The lemma identifying it with the Gibbs sum over
+whole paths --- that the two halves and the crossing factor assemble into one
+path, bijectively --- is \emph{verified} to $10^{-12}$ against a brute-force
+enumeration of every path, and is \emph{not proved}.  Until it is, this paper
+does not establish the Osterwalder--Schrader axiom; it establishes positivity of
+a form that the numerics say is that pairing.  The distinction is the whole
+reason this sentence is in the abstract and not in a footnote.
+
+\textbf{Where the two reflections differ, and it is not cosmetic.}  Through a
+bond the two halves are disjoint and meet through one kernel factor, so
+positivity needs the kernel itself positive semidefinite --- which holds exactly
+for $\beta\ge0$.  Through a site the halves \emph{share} the middle slice; the
+form is then a sum of squared moduli divided by the weight of that slice, so it
+is non-negative for \emph{every} $\beta$, negative coupling included, and no
+property of the kernel is used at all.
+
+\textbf{What the source weight does.}  In the companion paper the weight was
+handled by congruence: conjugation by $\sqrt{w}$ cannot change the sign of a
+quadratic form.  Here it is not conjugated away, it is \emph{summed} away: the
+weight of every interior slice is absorbed into the collapse, and what survives
+at the boundary is the kernel alone.  Two different reasons, same conclusion ---
+nothing in the hypotheses depends on $w$ beyond positivity.
+
+\textbf{What this is not.}  No reconstruction: the physical Hilbert space as the
+quotient of the past algebra by the null space of this form is not built.
+Nothing here concerns uniformity in the extent, $\SU(N)$, the continuum limit,
+or the Yang--Mills mass gap \cite{Clay}.
+
+\textbf{On the pre-registration.}  Four gates were committed before a line of
+the module was written; \S\ref{sec:gates} reports what happened to each.  Two of
+them read a minimum eigenvalue rather than sampling observables, which is the
+instrument the previous campaign's autopsy said was needed.
+\end{abstract}
+
+\section{The gap this paper attacks}\label{sec:gap}
+
+The companion paper proves the reflected two-point form of the Gibbs measure
+non-negative --- but for \emph{real} observables of a \emph{single} slice,
+evaluated at the two \emph{ends} of a path \cite{ErikssonRefl}.  The
+Osterwalder--Schrader axiom asks for something wider in three directions at
+once: the observable should be a function of the whole past half-chain, it
+should be complex, and the statement should be about a matrix, not a number.
+
+That paper also said, in its scope section, that the missing step is a
+\emph{construction} and not a further inequality: collapse each half to a
+boundary vector and the two inequalities you need are the ones already proved.
+This paper carries out that construction and reports how far it gets.
+
+\paragraph{Two of the three directions are closed here.}  The observables are
+now complex and depend on the entire half-path.  The third --- the Gram matrix
+over finite families --- is not in this paper, and neither is the identification
+of the form with the path measure (\S\ref{sec:open}).
+
+\section{The objects}\label{sec:objects}
+
+A slice is $\sigma:\{1,\dots,L\}\to\Z_2$ and the decoupled kernel is
+\[
+  K(\sigma,\tau)\;=\;\prod_{j} e^{\beta\, s(\sigma_j,\tau_j)},
+  \qquad s=+1 \text{ if equal},\ -1 \text{ otherwise}.
+\]
+A \emph{past half-path} is a map $a:\{0,\dots,m\}\to\{\text{slices}\}$, and an
+observable of the past half-chain is a function $F$ of one, valued in $\C$.  Its
+weight is the ordinary Gibbs weight of that half,
+\[
+  W(a)\;=\;\Bigl(\prod_{t=0}^{m} w(a_t)\Bigr)
+           \Bigl(\prod_{t=0}^{m-1} K(a_t,a_{t+1})\Bigr),
+\]
+which is the same function the bridge module already uses for whole paths
+\cite{ErikssonGibbs}; \textbf{no new notion of weight is introduced anywhere in
+this work}.  The reflection $\Theta$ is path reversal.
+
+\begin{definition}[the collapse]\label{def:collapse}
+$\displaystyle (\Phi F)(\sigma)\;=\;\sum_{a\,:\,a_m=\sigma} W(a)\,F(a).$
+\end{definition}
+
+\osline{SpatialOS}{76}{collapse}, with its linearity at
+\osline{SpatialOS}{81}{collapse\_add} and
+\osline{SpatialOS}{90}{collapse\_smul}.  The regrouping of a sum over halves by
+boundary slice --- the only combinatorial fact either factorisation needs --- is
+\osline{SpatialOS}{99}{sum\_halves\_by\_edge}.
+
+\section{Through a site: every $\beta$}\label{sec:site}
+
+With the plane through slice $m$ the two halves share that slice.  Its weight is
+carried by both, so it is counted once.
+
+\begin{theorem}[site factorisation]\label{thm:site}
+$\displaystyle \langle\Theta F,F\rangle_{\mathrm{site}}
+   \;=\;\sum_\sigma \frac{|(\Phi F)(\sigma)|^{2}}{w(\sigma)}.$
+\end{theorem}
+
+\osline{SpatialOS}{134}{osPairingSite\_eq}.  Nothing about $K$ enters: the
+halves communicate only through the shared slice.
+
+\begin{corollary}\label{cor:site}
+For every strictly positive $w$ and \emph{every} $\beta$ --- negative coupling
+included --- the form is a non-negative real.
+\end{corollary}
+
+\osline{SpatialOS}{162}{osPairingSite\_nonneg}.
+
+\section{Real to complex, once and generically}\label{sec:complex}
+
+\begin{lemma}\label{lem:complex}
+For a real \emph{symmetric} kernel,
+$\sum_{i,j}\overline{z_i}K_{ij}z_j
+  = \sum_{i,j}K_{ij}\,x_ix_j + \sum_{i,j}K_{ij}\,y_iy_j$
+with $z=x+iy$.
+\end{lemma}
+
+\osline{SpatialOS}{192}{complexQuad\_eq}, resting on the cancellation of the
+cross terms at
+\osline{SpatialOS}{181}{sum\_cross\_antisymm}.  This is the entire content of
+``real observables to complex ones'', and it costs exactly symmetry.  It is
+stated for an arbitrary finite index type, so it is reusable outside this lane.
+
+\section{Through a bond: exactly $\beta\ge0$}\label{sec:bond}
+
+\begin{theorem}[bond factorisation]\label{thm:bond}
+$\displaystyle \langle\Theta F,F\rangle_{\mathrm{bond}}
+   \;=\;\sum_{\sigma,\tau}\overline{(\Phi F)(\sigma)}\,K(\sigma,\tau)\,
+       (\Phi F)(\tau).$
+\end{theorem}
+
+\osline{SpatialOS}{236}{osPairingBond\_eq}.  The source weight is not conjugated
+away; it is summed away, into $\Phi$.  What is left at the boundary is the bare
+kernel.
+
+\begin{theorem}[the form, for $\beta\ge0$]\label{thm:bondpos}
+For every strictly positive $w$ and every $\beta\ge0$, $\langle\Theta
+F,F\rangle_{\mathrm{bond}}$ is a non-negative real, for every complex observable
+$F$ of the whole past half-chain.
+\end{theorem}
+
+\osline{SpatialOS}{289}{osPairingBond\_nonneg}, which is
+Theorem~\ref{thm:bond} composed with Lemma~\ref{lem:complex} and the companion
+paper's positive semidefiniteness of $K$ at $\beta\ge0$ \cite{ErikssonRefl}.
+
+\section{The four gates}\label{sec:gates}
+
+\repofile{scripts/judge\_spatial\_os.py}{scripts/judge\_spatial\_os.py},
+committed before a line of the module existed.
+
+The plan for this campaign announced \emph{three} gates.  Writing them down
+showed that the site collapse and the bond collapse are two different identities
+licensing two different theorems, and this lane has twice been punished for
+putting two claims behind one verdict.  The count was moved to four, in public,
+before anything was run.  Raising a pre-registration before it executes is
+legitimate; discovering afterwards that one gate was really two is not.
+
+\begin{itemize}
+\item \textbf{A1, A2} --- the two collapse identities, as \emph{matrix}
+  identities to $10^{-12}$, against a pairing matrix built by brute-force
+  enumeration of every path, so that they do not presuppose the factorisation
+  they test.  Both \textsc{pass}.
+\item \textbf{B} --- the \emph{minimum eigenvalue} of that matrix at
+  $\beta\ge0$.  The previous campaign's autopsy measured that drawing random
+  observables can miss a violating direction carrying $10^{-3}$ of the weight;
+  an eigenvalue cannot miss it.  \textsc{pass}.
+\item \textbf{C} --- below zero at odd separation the minimum eigenvalue must be
+  strictly negative, and in the cell $(L=1,m=0,w\equiv1)$ it must equal
+  $e^{\beta}-e^{-\beta}$ to $10^{-12}$.  Measured agreement: $\le2.2\times
+  10^{-16}$.  \textsc{pass}.
+\end{itemize}
+
+Gate C licenses a sharpness witness that this paper does not yet contain
+(\S\ref{sec:open}).  A passed gate is a permission, not a theorem.
+
+\section{What is open, and which part is load-bearing}\label{sec:open}
+
+\paragraph{The link that decides what this paper is.}  The two forms are
+\emph{defined} as sums over pairs of halves.  That this equals the Gibbs sum
+over whole paths requires the assembly map --- past half, crossing factor,
+reversed future half --- to be a bijection onto paths, and the half weights to
+multiply to the path weight.  Gates A1 and A2 verify exactly this, to
+$10^{-12}$, against brute-force enumeration; it is not proved.  \textbf{Until it
+is, the theorems above are positivity statements about a form the numerics
+identify with the Osterwalder--Schrader pairing, and not about that pairing.}
+This is the first thing a reader should check when the next version appears.
+
+\paragraph{The Gram matrix.}  The axiom is a statement about a matrix over a
+finite family being positive semidefinite.  Bilinearity of $\Phi$ is proved
+(\S\ref{sec:objects}); the matrix statement is not assembled here.
+
+\paragraph{The sharpness witness.}  Gate C authorises it and it is not written.
+
+\paragraph{No reconstruction.}  The quotient by the null space of this form,
+with the transfer operator descending to a self-adjoint contraction, is not
+built.  Nothing here concerns uniformity in the extent, $\SU(N)$, the continuum
+limit, or the Clay problem \cite{Clay}.
+
+\section{Reproducibility}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}.
+Every hyperlink was resolved against that commit, and checked to point at an
+actual declaration line, before compilation.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8464 jobs, success \\
+\quad previous checkpoint & 8463 jobs \\
+Declarations in this module & 14 \\
+Occurrences of \texttt{sorry} & 0 \\
+Project axioms & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The job count incremented when the module joined the core, which is the
+repository's standing check that a new module is actually being elaborated.  The
+axiom oracle for this module is not reported in this version.
+
+The module is \repofile{YangMills/OS/SpatialOS.lean}{YangMills/OS/SpatialOS.lean}
+and the companion is
+\repofile{YangMills/OS/SpatialReflection.lean}{YangMills/OS/SpatialReflection.lean}.
+
+\begin{thebibliography}{9}
+\bibitem{ErikssonRefl} L. Eriksson,
+  \emph{The Weight That Could Not Break It: Machine-Checked Endpoint Reflection
+  Positivity for the Coupled $\Z_2$ Slice}, 2026.
+\bibitem{ErikssonGibbs} L. Eriksson,
+  \emph{The Measure the Spectral Results Were About}, 2026.
+\bibitem{Clay} A. Jaffe and E. Witten,
+  \emph{Quantum Yang--Mills Theory}, Clay Mathematics Institute, 2000.
+\end{thebibliography}
+
+\end{document}
