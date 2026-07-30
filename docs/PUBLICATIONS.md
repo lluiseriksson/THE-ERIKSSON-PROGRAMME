@@ -4,7 +4,7 @@ This is the repository's live crosswalk between public preprints and the exact
 artifacts committed here.  It records publication metadata; it does not widen
 the theorem statements of any paper.
 
-**Last public check:** 2026-07-29 against
+**Last public check:** 2026-07-30 against
 [`ai.viXra.org/author/lluis_eriksson`](https://ai.vixra.org/author/lluis_eriksson).
 The newest public entry visible in that check is author-list item `[93]`,
 `ai.viXra.org:2607.0078`.
@@ -37,7 +37,8 @@ are byte-identical.
 
 | State | Artifact | Exact repository identity |
 |---|---|---|
-| Submitted on 2026-07-29, owner report; public ID pending | *The Measure the Spectral Results Were About: a Machine-Checked Transfer Bridge for the Spatial Z_2 Slice* | paper `dc2935eb`, Lean `c4fa6a9e`, PDF SHA-256 `92c8235c54c8c6cafa7325d1a126f8b962ea486ac9e95d2e0872ec25969ce243`; see the [submission record](O-LANE-SUBMISSION-SPATIAL-GIBBS-20260729.md) |
+| Submitted on 2026-07-30, owner report; public ID pending | *The Modulus: a Machine-Checked Operator Bound on the Fluctuation Sector of the Coupled Z_2 Slice* | paper `21199f40`, Lean `9704b3f3`, PDF SHA-256 `200cfe770180f86aa725683d20424772e009ccc980c991faa7f03f99b42287b8`; see the [submission record](O-LANE-SUBMISSION-SPATIAL-SPECTRAL-20260730.md) |
+| Submitted on 2026-07-29, owner report; public ID pending | *The Measure the Spectral Results Were About: a Machine-Checked Transfer Bridge for the Spatial Z_2 Slice* | submitted v1.1: paper `dc2935eb`, Lean `c4fa6a9e`, PDF SHA-256 `92c8235c54c8c6cafa7325d1a126f8b962ea486ac9e95d2e0872ec25969ce243`; current repository erratum v1.2: paper `b0b4a32c`, PDF SHA-256 `0a0acc85773ff6557ca65b5a49027c29aeee99cd45e7861c474bd0bbe876ca18`; see the [submission record](O-LANE-SUBMISSION-SPATIAL-GIBBS-20260729.md) |
 | Submitted on 2026-07-29, owner report; public ID pending | *Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite Extent of the Coupled Slice* | paper `b03766bd`, Lean `ac897963`, PDF SHA-256 `e8063013965ea1699718d08f2bce1646e73f0dd2b970a518bb9e6339c68d78a0`; see the [submission record](O-LANE-SUBMISSION-PERRON-GAP-20260729.md) |
 | Submitted on 2026-07-29, owner report; public ID pending | *Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial Extent* | paper `3d313d92`, Lean `a70426f4`, PDF SHA-256 `42617528c0df0ad3e813ee77c11722c53e5ea1b4b97dc93f22d9ece45d29e4cb`; see the [submission record](O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md) |
 | Frozen v1.1; submission not reported | *A Machine-Checked Perron Theorem for Strictly Positive Kernels, and the Coupled-Slice Vacuum at Every Spatial Extent* | paper `316648e2`, Lean `08a90502`, PDF SHA-256 `6349c8e555f10fde30e0457f54c841da9d05e252cf34e65f6a8064d463318e74` |
@@ -58,6 +59,8 @@ non-Perron eigenvalue at each fixed finite extent.  Paper 9 supplies the
 finite Gibbs measure-to-transfer bridge: unnormalised two-point sums become
 matrix elements, normalised expectations become ratios with positive
 denominator, and connected decay follows under an explicit contraction
-hypothesis.  That hypothesis is **not** discharged.  The sequence provides no
-quantitative separation modulus or volume-uniform interacting spectral gap,
-four-dimensional continuum limit, or Clay Yang--Mills mass gap.
+hypothesis.  Paper 10 discharges that fixed-extent hypothesis by constructing
+the sharp non-Perron modulus and its relative rate, and proves the normalised
+two-point bound at fixed extent.  The rate remains extent-dependent.  The
+sequence provides no volume-uniform interacting spectral gap, four-dimensional
+continuum limit, or Clay Yang--Mills mass gap.

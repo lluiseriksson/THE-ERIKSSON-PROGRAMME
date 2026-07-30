@@ -1029,3 +1029,31 @@ no reflection-positivity theorem in this paper.  No `SU(N)`, continuum,
 mass-gap, or Clay conclusion is claimed.  The next construction remains the
 fixed-volume spectral maximum/operator-norm bridge, followed—only if the
 mathematics permits—by a regime-explicit uniform estimate.
+
+## AMENDMENT 15 (2026-07-30) — PAPER 10 SUBMITTED; THE FIXED-EXTENT MODULUS IS CLOSED
+
+The owner reports submission of *The Modulus: a Machine-Checked Operator Bound
+on the Fluctuation Sector of the Coupled Z_2 Slice*, v1.9.  The public
+ai.viXra identifier is pending and is not inferred from nearby records.
+
+The frozen paper is
+`papers/spatial-spectral/spatial_spectral.pdf` at paper commit `21199f40`,
+SHA-256
+`200cfe770180f86aa725683d20424772e009ccc980c991faa7f03f99b42287b8`.
+Its formal anchor is `9704b3f3`; exact fields and immutable artifact metadata
+are recorded in
+`docs/O-LANE-SUBMISSION-SPATIAL-SPECTRAL-20260730.md`.
+
+**Closed by theorem:** `specGap` is the largest non-Perron eigenvalue modulus
+and is strictly below the Perron eigenvalue; it is the sharp
+fluctuation-sector operator bound; `specRatio = specGap / lambda` is below
+one; Paper 9's fixed-extent contraction hypothesis is discharged; and the
+normalised Gibbs two-point bound holds past an explicit threshold independent
+of the observable.
+
+**Not closed:** `specRatio` depends on the spatial extent and is not bounded
+uniformly away from one.  The measured approach to one remains evidence, not
+a theorem input.  Reflection positivity, `SU(N)`, the continuum limit, the
+Yang--Mills mass gap, and the Clay problem are untouched.  The next positive
+target must therefore state an explicit regime in which a volume-uniform
+estimate could be true; an unrestricted uniform target is not authorized.

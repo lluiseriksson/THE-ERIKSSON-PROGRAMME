@@ -185,7 +185,7 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (latest recorded checkpoint: 8429, ledger Addendum 538).
+   incremented** (latest recorded checkpoint: 8430, ledger Addendum 546).
 
 ## The autonomous loop
 
@@ -223,14 +223,14 @@ are recorded **in the campaign plans** — primarily
 `README-FOR-NEXT-MODEL.md`. Read them before writing analysis-flavoured
 Lean; they save hours.
 
-## Current state (updated 2026-07-29; source checkpoint 2026-07-29)
+## Current state (updated 2026-07-30; source checkpoint 2026-07-30)
 
-* Latest recorded core checkpoint: **8429 jobs**, zero sorry, zero project axioms.
+* Latest recorded core checkpoint: **8430 jobs**, zero sorry, zero project axioms.
   Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
   ledger includes the earlier Addendum 444/date-stamped checkpoint material
   plus the 2026-07-03 Catalan/Schur series through Addendum 465 and the
   2026-07-04 diamagnetic unitary bridge Addendum 466; the latest measured
-  source checkpoint is `c4fa6a9e` (on `main`).  See
+  source checkpoint is `9704b3f3` (on `main`).  See
   `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.

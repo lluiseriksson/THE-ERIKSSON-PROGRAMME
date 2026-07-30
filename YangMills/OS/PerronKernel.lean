@@ -43,8 +43,8 @@ structural, so it is discharged here.
 
 `sourceWeightedKernelL` is the decoupled kernel of O-3f times **any** strictly
 positive weight on the source configuration, at **any** spatial extent.  The
-coupled kernel of O-3f is one instance and `coupledKernelL` (a bond around the
-slice) is another.  For all of them, at every `L`, a strictly positive
+coupled kernel of O-3f is one instance and `spatialWeightRing` (a bond around
+the slice) is another.  For all of them, at every `L`, a strictly positive
 eigenvector exists, is unique up to scale, and its eigenvalue dominates every
 eigenvalue, real or complex.
 

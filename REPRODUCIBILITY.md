@@ -20,6 +20,22 @@ Because every dependency is pinned to a commit SHA (not a moving branch),
 lakefile (rather than `@ "master"`) means even `lake update` reproduces.
 **Do not run `lake update`** unless you intend to move the pin.
 
+### Windows checkout prerequisite
+
+The repository contains five audited RG proof-obligation cards whose paths
+exceed the legacy Windows path limit.  A fresh Windows clone without long-path
+support can therefore report `Filename too long` even though the Git objects
+and every O-lane paper are intact.  Enable Git's long-path support before the
+first clone:
+
+```powershell
+git config --global core.longpaths true
+```
+
+This is a checkout portability requirement, not a theorem or paper
+dependency.  The five affected paths live under
+`docs/idea-db/ym-creative-expansion/proof_obligation_cards/`.
+
 ## Rebuild
 
 ```sh
@@ -30,7 +46,7 @@ lake exe cache get        # downloads prebuilt Mathlib .olean (fast)
 lake build YangMillsCore
 ```
 
-Expected: `Build completed successfully (8429 jobs).` (the job count is
+Expected: `Build completed successfully (8430 jobs).` (the job count is
 recorded in `CLAUDE.md` rule 7 and updated on every core change).
 
 ## Committed oracle transcripts

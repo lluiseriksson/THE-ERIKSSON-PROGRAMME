@@ -1,0 +1,99 @@
+SUBMISSION STATUS
+Submitted by the owner on 2026-07-30.
+Public ai.viXra identifier: pending.
+
+CATEGORY
+Mathematics - Functional Analysis
+
+TITLE
+The Modulus: a Machine-Checked Operator Bound on the Fluctuation Sector of the Coupled Z_2 Slice
+
+AUTHOR
+Lluis Eriksson
+
+ABSTRACT
+Two companion papers were left carrying the same debt from opposite sides. The
+gap paper proved that every eigenvalue of the coupled slice other than the
+Perron eigenvalue is STRICTLY smaller in modulus, and said plainly that this
+provides NO MODULUS of separation. The bridge paper proved that the Gibbs
+correlations of the spatial system are matrix elements of a self-adjoint
+transfer operator, and obtained geometric decay only UNDER A CONTRACTION
+HYPOTHESIS IT DID NOT DISCHARGE. The missing step is identical in both: finitely
+many strict inequalities are not an operator-norm bound.
+
+PROVED. We construct specGap, the largest |mu| over the eigenvalues different
+from the Perron eigenvalue lambda, and prove specGap < lambda. We then prove the
+operator bound: for every observable u orthogonal to the Perron vector,
+||Ku|| <= specGap*||u||. That is exactly the hypothesis the bridge paper
+carried, so its bound becomes unconditional. The bound is SHARP: whenever the
+state space has at least two points, some nonzero fluctuation observable attains
+it. The argument splits at specGap = 0, where the maximising index need not
+supply a NON-PERRON eigenvector (it does supply the Perron one), hence none in
+the fluctuation sector. Stated about an object too: the set of Rayleigh norm
+ratios on the fluctuation sector has a greatest element, equal to specGap (same
+two-point hypothesis: with fewer, that set is empty).
+
+A WARNING WE STATE BEFORE ANYONE ELSE HAS TO. specGap < lambda is NOT
+specGap < 1: the kernel is unnormalised, so both are typically far above one and
+specGap^N GROWS. On its own the unnormalised bound controls growth, it does not
+exhibit decay. The rate that is below one is the RELATIVE one,
+specRatio = specGap/lambda < 1, and the decay statement is that the fluctuation
+contribution is suppressed by specRatio^N RELATIVE to the Perron scale
+lambda^N. Both forms are proved; only the second is called decay.
+
+The step that does not follow from the inequalities is the one about
+eigenvectors AT lambda: geometric simplicity, proved in the Perron paper for an
+arbitrary eigenvector rather than a positive one, makes them INVISIBLE to a
+fluctuation observable, so the top term of the spectral sum vanishes instead of
+merely being bounded.
+
+NOT PROVED. specGap DEPENDS ON THE EXTENT, and nothing here bounds it away from
+lambda uniformly. Direct diagonalisation gives specGap/lambda = 0.9205, 0.9829,
+0.9964, 0.9992 at L = 2,3,4,5 for one parameter pair: a geometric bound whose
+rate tends to 1 is empty in the limit, and that is reported, not hidden. The
+normalised Gibbs EXPECTATION is now bounded too: splitting the dressed constant
+observable along the Perron direction bounds the partition function below with
+no eigenbasis index identified, so at a fixed extent the two-point function is
+bounded by C*specRatio^N past an explicit threshold. That rate depends on the
+extent, so this is not clustering. The bound and its attainment are both
+proved, which is what it means for specGap to be the operator norm on the
+fluctuation sector; what is NOT done is introducing that norm as a defined
+object and proving an equation about it. And the threshold N_0 does not depend
+on the observable: it is built from the dressed CONSTANT observable, so ONE N_0
+serves every fluctuation observable at once and only C sees A. Reflection
+positivity is untouched, and nothing in this paper is a claim about SU(N), the
+continuum limit, or the Yang-Mills mass gap.
+
+COMMENTS
+8 pages. Lean 4/mathlib; core build 8430 jobs, 2672 oracle commands (2669
+distinct + 3 duplicates), axioms exactly {propext, Quot.sound,
+Classical.choice}, zero sorry, zero project axioms. Links anchored at commit
+9704b3f3. Bound independently verified and found sharp.
+
+FROZEN ARTIFACT
+Submission edition: v1.9.
+Paper commit: 21199f408dba86db2af2f8d2c58190b0f19b7da4
+Lean anchor: 9704b3f3c0d576bb40c43caa5360fbd64dfa1643
+PDF path: papers/spatial-spectral/spatial_spectral.pdf
+PDF bytes: 106838
+PDF SHA-256: 200cfe770180f86aa725683d20424772e009ccc980c991faa7f03f99b42287b8
+TeX bytes: 27073
+TeX SHA-256: a0d6708aecadc07b3ea67a34349876184b553a0d83dcdce7a950fd74c0eabf64
+
+VERIFICATION CHECKPOINT
+Core build: 8430 jobs, success.
+Oracle: 2672 commands and 2672 answers; 2669 distinct plus three known
+  duplicates, 2646 with axiom dependencies and 23 axiom-free.
+Axiom set: exactly {propext, Quot.sound, Classical.choice}.
+Zero sorryAx, zero project axioms, zero errors.
+Module declarations: 46, all represented in the oracle.
+Independent dense-diagonalisation probe: four blocks PASS, worst ratio
+  0.144525; verified numerical evidence only, and no theorem depends on it.
+
+CLAIM BOUNDARY
+At fixed finite extent the paper constructs the largest non-Perron eigenvalue
+modulus, proves the sharp operator bound on the fluctuation sector, proves the
+relative rate below one, discharges the spatial-Gibbs contraction hypothesis,
+and proves a normalised two-point bound past an explicit observable-independent
+threshold. It proves no bound uniform in the spatial extent, no reflection
+positivity, and no SU(N), continuum, mass-gap, or Clay statement.

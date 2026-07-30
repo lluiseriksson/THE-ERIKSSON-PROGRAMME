@@ -30,15 +30,15 @@ workflow state gates, the Surface final seal and the full 712-test suite pass.
 See
 [`docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md`](docs/RUN-MANIFEST-ARCHIVE-MIGRATION-20260729.md).
 
-**Live-state snapshot updated:** 2026-07-29.  **Latest recorded verification
-checkpoint:** `c4fa6a9e` (on `main`), with `lake build YangMillsCore` green at
-**8429 jobs** and 2,626 oracle answers.  The only axiom names in the complete
+**Live-state snapshot updated:** 2026-07-30.  **Latest recorded verification
+checkpoint:** `9704b3f3` (on `main`), with `lake build YangMillsCore` green at
+**8430 jobs** and 2,672 oracle answers.  The only axiom names in the complete
 oracle transcript are `propext`, `Classical.choice`, and `Quot.sound`; there are
 zero `sorryAx` and zero project axioms.  See
-[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addenda 538 and
-539.
+[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addenda 546 and
+551.
 
-**Recent public papers checked (2026-07-29).**  Author-list entries `[89]` to
+**Recent public papers checked (2026-07-30).**  Author-list entries `[89]` to
 `[93]` are public as ai.viXra `2607.0070`, `2607.0073`, `2607.0075`,
 `2607.0076`, and `2607.0078`.  Each downloaded public v1 PDF is byte-identical
 to its repository counterpart.  Exact titles, timestamps, hashes, paper
@@ -60,6 +60,12 @@ the exact spatial Gibbs weight-to-transfer dressing, the normalised
 expectation ratio and denominator positivity, and conditional connected decay.
 The contraction hypothesis remains explicit and undischarged; reflection
 positivity and extent-uniform decay remain outside the paper.
+Paper 10, *The Modulus*, is submitted by owner report at paper `21199f40` and
+Lean anchor `9704b3f3`, with public ID pending.  It constructs the largest
+non-Perron modulus, proves the sharp fluctuation-sector operator bound and the
+relative rate below one, and closes the normalised two-point estimate at fixed
+extent.  Its rate remains extent-dependent; it does not establish clustering
+uniform in volume.
 
 **PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
 is paper commit `193bb675`: all 24 theorem-map names link to the immutable
@@ -496,7 +502,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8429 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8430 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.

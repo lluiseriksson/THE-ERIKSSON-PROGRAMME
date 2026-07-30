@@ -33,6 +33,22 @@ byte-for-byte with the repository PDF on 2026-07-29 and was identical.  The
 hashes and byte counts above were recomputed locally after synchronizing with
 public `main`.
 
+## Post-submission repository erratum
+
+Commit `b0b4a32c4c637ceaf051fd1adc394e01486a50d9` prepares v1.2 after
+submission.  It corrects one companion-paper title and a viXra identifier that
+belonged to a different paper, and replaces internal lane labels in three
+references with proper citations.  Lean, the formal anchor, theorem
+statements, page count, and verification counters are unchanged.
+
+The current repository PDF has 86,757 bytes and SHA-256
+`0a0acc85773ff6557ca65b5a49027c29aeee99cd45e7861c474bd0bbe876ca18`;
+the current TeX has 18,539 bytes and SHA-256
+`ad39794e315349b6f53866ce06983b9ba95ee19f95a037ed039e45c4ee727e1f`.
+This section does **not** assert that the public archive has accepted or
+replaced the submitted v1.1 artifact.  Until that is reported and the public
+PDF is compared, the frozen submission identity above remains authoritative.
+
 ## Machine-checked boundary
 
 The paper defines the finite two-dimensional Gibbs weight of the spatial

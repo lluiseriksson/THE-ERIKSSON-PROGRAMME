@@ -27073,6 +27073,7 @@ O-3g obstructions stand: the projective metric is still blind to the coupling
 and still degenerates in the volume.  The first object of the chain being back
 is a precondition for the analytic work, not a substitute for it, and the paper
 says so in two separate remarks.
+
 ## Addendum 531 (2026-07-29, **O-3j: the STRICT spectral gap at every finite extent -- the step without which O-3i supported no spectral conclusion -- and the modulus it does not provide**)
 
 **What was missing, and it was not cosmetic.**  O-3i listed peripheral
@@ -27266,93 +27267,7 @@ probe still shows the subdominant ratio climbing toward 1 with `L` outside the
 disordered region.  NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct
 unchanged.  Anchor `ac897963`.
 
-## Addendum 534 (2026-07-29, **O-lane Paper 6 submitted; live documentation and artifact record synchronized**)
-
-The owner reports submission of *Blind to the Coupling: a Second
-Machine-Checked Obstruction at Spatial Extent* in Physics - Mathematical
-Physics.  The public ai.viXra identifier is pending and is deliberately not
-invented.
-
-The submitted edition is v1.2.1 at paper commit
-`3d313d9291b53dc9c470051fddc721013fe9d9dd`, with formal Lean anchor
-`a70426f4c8a0ed733b4eee94fb01b158bc81fd08`.  The 9-page PDF has 118,268 bytes
-and SHA-256
-`42617528c0df0ad3e813ee77c11722c53e5ea1b4b97dc93f22d9ece45d29e4cb`;
-the TeX SHA-256 is
-`196a8cd8ff00747531a3eecc3318d8cb43ed7e825953384a4fa2f4c886c842a2`.
-Both hashes were recomputed from the public `main` tree before registration.
-
-Claim boundary unchanged from Addendum 527: two-sided coupling-blindness,
-volume degeneration, exact two-site eigenpairs, strict positivity, and
-domination of every real or complex eigenvalue are proved.  No
-volume-uniform interacting gap, uniqueness, algebraic simplicity, peripheral
-uniqueness, strict peripheral separation, `SU(N)`, continuum, or Clay
-statement is proved or claimed.  The exact submission fields and permanent
-record live at `papers/spatial-birkhoff/SUBMISSION-INFO.txt` and
-`docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`.
-
-## Addendum 535 (2026-07-29, **public O-lane IDs `[89]`--`[93]` verified by binary identity; live state advanced to the Perron checkpoint**)
-
-The public author page was rechecked rather than inferred from submission
-order.  Its newest visible entries are:
-
-* `[89]` `2607.0070`, O-bridge;
-* `[90]` `2607.0073`, reflection positivity;
-* `[91]` `2607.0075`, spatial extent;
-* `[92]` `2607.0076`, degenerate quotient;
-* `[93]` `2607.0078`, complete finite `Z_2` OS chain.
-
-Each public v1 PDF was downloaded.  Its byte length and SHA-256 equal the
-corresponding repository PDF exactly; the five hashes, timestamps, paper
-commits, Lean anchors, and public links are frozen in
-`docs/PUBLICATIONS.md`.  This is stronger than matching titles or dates and
-prevents a later local revision from being mislabeled as the submitted
-edition.
-
-Paper 6 remains submitted by owner report with public identifier pending.
-Paper 7 is frozen but not reported submitted.  No identifier is assigned to
-either.
-
-The checkpoint recorded by this addendum is the Perron anchor `08a90502`: full
-core build **8427 jobs**, oracle **2564 commands -> 2564 answers**, axioms exactly
-`{propext, Classical.choice, Quot.sound}`, zero `sorryAx`, zero project
-axioms.  This checkpoint closes finite-kernel Perron existence, positive
-uniqueness, geometric simplicity, and normalized-vacuum packaging.  It does
-not close a spectral gap, strict peripheral separation, or any continuum
-obligation.
-
-## Addendum 536 (2026-07-29, **O-lane Paper 8 submitted; strict whole-spectrum gap checkpoint becomes live**)
-
-The owner reports submission of *Strict but Not Uniform: a Machine-Checked
-Spectral Gap at Every Finite Extent of the Coupled Slice* in Mathematics -
-Functional Analysis.  The public ai.viXra identifier is pending and is
-deliberately not inferred from submission order.
-
-The submitted edition is v1.2 at paper commit
-`b03766bde54dca1d30c2febea8c008483d53751e`, with formal Lean anchor
-`ac8979631c1541b059b3c10f590ca174b0b5f6be`.  The 6-page PDF has 83,708 bytes
-and SHA-256
-`e8063013965ea1699718d08f2bce1646e73f0dd2b970a518bb9e6339c68d78a0`;
-the TeX SHA-256 is
-`b8d8f14470d8df16ad08e2bd52ef94b9a992c55e15afec62eddb03ec2f89cd2b`.
-The PDF at the owner's submission path is byte-identical to the repository
-artifact.  Exact fields and the permanent record live at
-`papers/perron-gap/SUBMISSION-INFO.txt` and
-`docs/O-LANE-SUBMISSION-PERRON-GAP-20260729.md`.
-
-The terminal theorem is `coupled_gap_all_eigenvalues`,
-`YangMills/OS/PerronGap.lean:483`: every complex non-Perron eigenvalue has
-strictly smaller modulus at every fixed finite extent.  The claim remains
-non-quantitative: there is no separation modulus and nothing uniform in the
-extent.  The measured ratios in the paper are not theorem inputs.
-
-The canonical live checkpoint is now anchor `ac897963`: full core build
-**8428 jobs**, oracle **2583 commands -> 2583 answers** (2560 with axiom
-dependencies and 23 axiom-free), axioms exactly
-`{propext, Classical.choice, Quot.sound}`, zero `sorryAx`, zero project axioms,
-and zero errors.  This changes no `SU(N)`, continuum, or Clay boundary.
-
-## Addendum 537 (2026-07-29, **O-2: the measure the spectral results were about --- the transfer bridge for the SPATIAL slice**)
+## Addendum 534 (2026-07-29, **O-2: the measure the spectral results were about --- the transfer bridge for the SPATIAL slice**)
 
 **What was missing, stated exactly.**  Papers 5-8 exhibited a kernel on
 `(Z2)^L`, its Perron vacuum, and the strict separation of its spectrum.  All
@@ -27444,7 +27359,7 @@ self-adjoint operator and a positive measure, not Osterwalder--Schrader
 positivity.  NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct unchanged.
 Anchor `863e894c`.
 
-## Addendum 538 (2026-07-29, **O-2 v1.1: the normalised expectation is a RATIO, and now it is a theorem**)
+## Addendum 535 (2026-07-29, **O-2 v1.1: the normalised expectation is a RATIO, and now it is a theorem**)
 
 **The external evaluator found a real precision defect, and a loose end behind
 it.**  The v1.0 abstract said *every Gibbs two-point FUNCTION is a matrix
@@ -27481,12 +27396,12 @@ Anchor `c4fa6a9e`.  Everything else unchanged: the contraction hypothesis is
 still NOT discharged, nothing uniform in `L`, reflection positivity untouched,
 Clay distance ~0 pct.
 
-## Addendum 539 (2026-07-29, **O-2 FROZEN at v1.1 --- and the continuation fixed**)
+## Addendum 536 (2026-07-29, **O-2 FROZEN at v1.1 --- and the continuation fixed**)
 
 The transfer-bridge paper is **frozen** at anchor `c4fa6a9e` / paper
 `dc2935eb`.  Any continuation is a NEW module and a NEW paper; this one is not
 reopened to absorb it.  The external preflight recorded no remaining objection
-after Addendum 538, and the one it had raised --- the numerator being called a
+after Addendum 535, and the one it had raised --- the numerator being called a
 correlation --- was removed at the source rather than reworded.
 
 **THE CONTINUATION, in the order it has to happen.**  The next work is NOT more
@@ -27517,40 +27432,714 @@ Unchanged and standing: the contraction hypothesis is carried, not discharged;
 nothing uniform in `L`; reflection positivity untouched; NOT `hRpoly`, NOT the
 mass gap; Clay distance ~0 pct.
 
-## Addendum 540 (2026-07-29, **O-lane Paper 9 submitted; the Gibbs measure-to-transfer bridge becomes the live checkpoint**)
+## Addendum 537 (2026-07-29, **S block: THE MODULUS --- one construction pays the debt papers 8 and 9 were carrying from opposite sides**)
+
+**Why it was one debt and not two.**  Paper 8 proved every eigenvalue other
+than the Perron eigenvalue is STRICTLY smaller in modulus, with no modulus of
+separation.  Paper 9 proved the Gibbs correlations are matrix elements of a
+self-adjoint transfer operator, and obtained geometric decay only under a
+contraction hypothesis it did not discharge.  Taking a maximum over finitely
+many strict inequalities is NOT the difficulty; the difficulty is that
+`max |mu|` over the non-Perron eigenvalues is not, by itself, known to be the
+OPERATOR NORM on the orthogonal complement of the vacuum.  Identifying the two
+is the spectral decomposition, and that is what was missing in both papers.
+
+**The content.**
+
+* `specGap` / `specGap_lt` --- the largest `|mu|` over eigenvalues `!= lam`, and
+  the proof that it is strictly below `lam`.  This is the modulus paper 8
+  declined to fake.
+* `norm_act_le_specGap` --- the operator bound `||Ku|| <= specGap*||u||` for
+  every `u` orthogonal to the Perron vector: EXACTLY the hypothesis paper 9
+  carried.
+* `gibbs_pathSum_decay_unconditional` --- paper 9's decay theorem with the
+  hypothesis removed.
+* `perp_invariant_eigen` --- paper 9's invariance lemma assumes the vacuum is
+  FIXED; this kernel is unnormalised, so the vacuum is an eigenvector with
+  eigenvalue `lam` and the lemma does not apply verbatim.  Rather than reopen a
+  FROZEN module the invariance is reproved here in eigenvector form.  Three
+  lines: the eigenvalue factors out of a bilinear pairing.  Rule confirmed:
+  *a freeze is not an obstacle --- it is a prompt to state the generalisation
+  where it belongs, in the new module.*
+
+**THE STEP THAT DOES NOT COME FROM THE INEQUALITIES, and the load it carries.**
+`specGap` assigns `0`, not `lam`, to eigenvalues equal to `lam`.  That is
+legitimate only because eigenvectors at the top are INVISIBLE to a fluctuation
+observable --- geometric simplicity --- and paper 7 proved it for an ARBITRARY
+eigenvector, not merely a positive one.  Had only the positive case been
+available, the top term could have been bounded but not REMOVED, `specGap`
+would have had to include `lam`, and `specGap_lt` would be FALSE.  The whole
+construction rests on a generality that looked free when it was proved.
+
+**What the library gave, stated so nobody overstates the work.**  mathlib has
+the finite-dimensional spectral theorem (`Matrix.IsHermitian.eigenvalues` /
+`eigenvectorBasis`), and `mulVec_eigenvectorBasis` is already in the `mulVec`
+spelling that IS this project's `act`.  The work in this module is NOT the
+spectral theorem; it is the bridging --- Hermitian packaging, matching mathlib's
+eigen-equation to the companion form, translating norms and pairings.  That is
+the usual place the effort goes, and saying so is the honest report.
+
+**VERIFIED, not proved, and no theorem depends on it.**
+`scripts/probe_spatial_spectral.py` recomputes by dense diagonalisation, with
+no access to the formalisation: `specGap < lam` in every case; the bound holds
+on 400 random fluctuation vectors per case; and it is ATTAINED by the
+subdominant eigenvector --- i.e. SHARP, not a loose over-estimate.  Consequence
+worth recording: the measured `specGap/lam` reproduces DIGIT FOR DIGIT the
+subdominant ratios paper 8 reported as measured and unnamed (0.9205, 0.9829,
+0.9964, 0.9992 at `L = 2..5`).  The object constructed here is that number.
+
+**Measured.**  Core **8430 jobs** (8429 + 1 --- the increment hard rule 7
+predicts when a MODULE joins the core).  Oracle **2648 commands -> 2648
+answers** (2645 distinct, the same three known duplicates), 23 axiom-free +
+2625 with axioms, zero `sorryAx`, zero nonstandard axioms, zero errors.  22 new
+declarations.  Paper: 5pp, 10 permalinks verified against the blob at the
+anchor and again inside the compiled PDF.
+
+**NOT CLAIMED.**  `specGap` DEPENDS ON THE EXTENT and nothing here bounds it
+away from `lam` uniformly; the probe shows the ratio going to `1` outside the
+disordered region, where the bound is empty in the limit.  The endpoint bounds
+the UNNORMALISED two-point sum --- the same quantity paper 9 bounded; what is
+removed is the ASSUMPTION, not the normalisation --- so the word *clustering* is
+deliberately not used for it.  The normalised expectation would need a lower
+bound on the partition function of order `lam^N`, which is the registered next
+item.  Reflection positivity untouched.  NOT `hRpoly`, NOT the mass gap; Clay
+distance ~0 pct unchanged.  Anchor `4ceb3f7c`.
+
+## Addendum 538 (2026-07-29, **S block v1.1: `specGap < lam` IS NOT `specGap < 1` --- the bound was sub-Perron GROWTH, and calling it decay was wrong**)
+
+**The defect, stated plainly.**  External review found that the v1.0 endpoint
+was named and described as a DECAY theorem when it is not one.  `specGap < lam`
+does not give `specGap < 1`: the kernel is UNNORMALISED, so `lam` and `specGap`
+are both typically far above one.  In the module's own probe, `L = 2` with
+`beta = 0.8`, `gamma = 1.2` gives `lam ~ 56.89` and `specGap ~ 52.37`, so
+`specGap ^ N` GROWS.  The bound is a **sub-Perron growth** bound: the
+fluctuation contribution grows at a strictly smaller exponential rate than the
+Perron sector.  That is a real statement, and it is not decay.
+
+The review is correct and the correction is adopted without hedging.  The word
+*decay* was doing work no theorem supported --- the same failure mode as the
+numerator-called-a-correlation defect two addenda ago, and from the same cause:
+a name chosen for what the result was FOR rather than for what it SAYS.
+
+**The fix, which is also the right theorem.**
+
+* `specRatio := specGap / lam`, with `specRatio_lt_one` --- the rate that IS
+  below one.
+* `norm_act_normalizedKernel_le` --- the NORMALISED kernel `lam^{-1} K` is a
+  genuine contraction of the fluctuation sector, by `specRatio < 1`.
+* `gibbs_pathSum_relative_decay` --- the decay statement: the fluctuation
+  contribution is suppressed by `specRatio ^ N` RELATIVE to the Perron scale
+  `lam ^ N`.
+* The v1.0 endpoint is renamed `gibbs_pathSum_bound_unconditional`.  It is kept,
+  because the growth bound is what actually discharges the bridge module's
+  hypothesis; it simply is not the decay statement.
+
+**Three further corrections from the same review, all real.**
+
+1. *An identification was claimed and not proved.*  The introduction said the
+   spectral decomposition IDENTIFIES `max |mu|` with the restricted operator
+   norm.  Only the inequality `||Ku|| <= specGap ||u||` is proved; attainment is
+   VERIFIED by the probe, not proved.  The prose now says *dominate*, and a
+   scope paragraph states the non-identification explicitly.
+2. *The ledger did not match the anchor.*  The v1.0 paper cited
+   `VERIFICATION-LEDGER.md` through its `\anchor`, but the addendum recording
+   the work landed in the PAPER commit, one commit later --- so at the cited
+   checkpoint the ledger still described the operator bound as future work.
+   Fixed structurally: **this addendum is committed WITH the code, in the anchor
+   commit itself.**  Rule: *if a paper cites the ledger at its anchor, the
+   ledger entry belongs in the anchor commit, not in the paper commit.*
+3. *The probe was not bit-reproducible.*  `random.seed` was set but the
+   fluctuation vectors come from `numpy.random.randn`, whose seed was not.  The
+   PASS verdict was unaffected, but the worst-ratio column was not reproducible.
+   `np.random.seed` is now pinned.
+
+**Bibliography.**  Standard references added (Horn--Johnson for the spectral
+theorem and the self-adjoint operator norm, Seneta for Perron--Frobenius and the
+subdominant ratio, Baladi for transfer operators and decay of correlations,
+Simon for the transfer-matrix formulation of lattice Gibbs measures).  The v1.0
+list was six entries, three of them companions --- too thin for a claim that
+leans on classical spectral theory.
+
+**Measured.**  Core **8430 jobs** (unchanged: theorems were added to an existing
+module).  Oracle **2655 commands -> 2655 answers**, 23 axiom-free, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  29 declarations in the module.
+
+**Unchanged.**  `specRatio` still DEPENDS ON THE EXTENT --- it is exactly the
+measured ratio going to 1 outside the disordered region, so the decay is empty
+in the volume limit.  Still not the normalised Gibbs expectation: `lam ^ N` is
+the growth SCALE of the partition function, not the partition function, and the
+lower bound remains the registered next item.  Reflection positivity untouched.
+NOT `hRpoly`, NOT the mass gap; Clay distance ~0 pct unchanged.
+
+## Addendum 539 (2026-07-29, **S block v1.2: the module's own prose still said what the paper had stopped saying**)
+
+**The residual.**  Addendum 538 corrected the paper, the names and the theorems.
+It did not correct the module's DOCSTRING.  The header still listed a retired
+endpoint name, still said the UNNORMALISED Gibbs sum *decays geometrically*, and
+the §7 heading still read *clustering with no hypothesis left*.  External review
+caught it.  No Lean statement was affected --- and that is exactly why it
+survived a green build, a clean oracle and a full reconciliation.
+
+**A second one, found while fixing the first.**  The header also cited
+`norm_mulVec_le_specGap`, which was never the name of anything: the theorem is
+`norm_act_le_specGap`.  The review had not flagged this one.  A wrong name in a
+docstring is invisible to every check this project runs, because none of them
+read prose.
+
+**The guard now in the tooling.**  The fix script asserts that EVERY backticked
+identifier in the module header resolves to an actual declaration in that
+module, and fails otherwise.  Rule: *a name in prose is a claim; check it
+against the declaration list the way a permalink is checked against the blob.*
+This is the third time in this session that a defect lived in prose rather than
+in code --- the invented citation, the numerator called a correlation, and now a
+docstring describing a theorem that had been renamed.  The pattern is stable
+enough to name: **the build checks the code; nothing checks what the code says
+about itself.**
+
+**Scope.**  Comment-only change; no declaration added, removed or restated.  The
+full oracle transcript was NOT re-run, and that is stated rather than glossed:
+`oracle_check.lean` is byte-identical and no declaration changed, so the 2655
+count is a property of an unchanged file.  Core rebuilt (**8430 jobs**) and the
+module's own declarations re-oracled to confirm they still answer
+`[propext, Classical.choice, Quot.sound]`.  Line numbers shifted, so every paper
+permalink was re-resolved by name and the paper re-anchored.
+
+Nothing else changes: `specRatio` still depends on the extent, the relative
+decay is still not the normalised Gibbs expectation, `specGap` is still only
+proved to DOMINATE the restricted operator norm, reflection positivity is still
+untouched, and the Clay distance is still ~0 pct.
+
+## Addendum 540 (2026-07-29, **S block v1.3: a WRONG SCOPE CLAIM retracted, and the denominator proved**)
+
+**We asserted an obstruction that does not exist.**  The v1.1/v1.2 scope section
+said a lower bound on the partition function requires identifying the index of
+the top eigenvalue in the spectral basis.  An external reading showed that is
+FALSE, and supplied the argument.  Split the dressed constant observable as
+`b = c*Om + u` with `u` orthogonal to the unit Perron vacuum.  Then
+
+    <b, K^N b> = c^2 lam^N + <u, K^N u>,
+
+because BOTH cross terms vanish: `<Om, K^N u> = <K^N Om, u> = lam^N <Om,u> = 0`
+by symmetry and the eigen-equation alone.  No index is located anywhere.
+
+**This is a different class of error from the previous three.**  Those were
+prose describing the code wrongly.  This one was the paper asserting a
+MATHEMATICAL obstruction that is not there --- a false claim about what is hard,
+which is worse than a false claim about what is proved, because it discourages
+the work.  Rule: *before writing that a step is blocked, try it.*  The proof
+below is forty lines and compiled on the first attempt.
+
+**Proved (§8, §9).**  `quadForm_split` (the exact split), `quadForm_lower` (the
+partition function from below, the fluctuation term controlled by the module's
+own operator bound), `gibbsCorr_bound_of_partition_lower` (any numerator bound
+divided by any positive lower bound on the partition function).  Composing them
+gives a bound of the form `const * specRatio^N` on the NORMALISED Gibbs
+two-point function at fixed extent --- the statement the previous version said
+was out of reach.  Supporting: `act_add`, `act_smul`, `iterate_act_add`,
+`iterate_act_smul`, `iterate_act_eigen`, `iterate_pairing_symm`,
+`unitVacuum_eigen`.
+
+**Also corrected, from the same review: four semantic residues in the module
+prose.**  The header advertised *clustering without a hypothesis*; `specGap` was
+called *the spectral gap* when it is the subdominant MODULUS (the gap would be
+`lam - specGap`); and two docstrings said the kernel and its iterates
+*contract*, when `specGap` can be 52.37.  All four are claims in sentences, not
+wrong names --- which is precisely the limit of the backtick guard added in 539,
+and that limit is now recorded with it.
+
+**Measured.**  Core **8430 jobs** (unchanged).  Oracle **2665 commands -> 2665
+answers** (2662 distinct, same three known duplicates), 23 axiom-free + 2642
+with axioms, zero `sorryAx`, zero nonstandard axioms, zero errors.  39
+declarations in the module.
+
+**Still not proved, and now the list is shorter.**  Sharpness of `specGap` (the
+same reading notes it is likewise not blocked, and we say so rather than claim
+it); anything uniform in the extent --- `specRatio(L)` still tends to 1 outside
+the disordered region, so nothing here survives the volume limit and the word
+*clustering* is still not used.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 541 (2026-07-29, **S block v1.4: the composed endpoint stops being a
+sentence and becomes a theorem --- and the prose finally gets a checker**)
+
+**Context.**  Fifth external reading of the S block.  It confirmed the
+denominator argument of 540 as correct, and raised three things: the strongest
+result still lived in PROSE ("combining Theorem 5.1 with Theorem 7.1 gives a
+bound of the form const * specRatio^N") rather than in a Lean statement with
+its quantifiers; the module header at the anchor still said the opposite of
+what the new sections prove; and two editorial slips (a scope section titled
+"three things" listing four, and `specGap^N` written where the quantity that
+tends to 1 is `specRatio(L)`).
+
+**1. The endpoint is now a theorem.**  `gibbsCorr_decay_fixed_extent`:
+
+    exists C > 0, exists N0, forall N >= N0,
+      |gibbsCorr w beta N A A| <= C * specRatio (symWeighted_symm w beta) lam ^ N
+
+No eigenbasis index anywhere.  The constant is `2*||dress A||^2 / c^2 + 1`
+(the `+1` only so that it stays positive for the zero observable) with
+`c = <Om, dress 1>` the overlap of the unit Perron vacuum with the dressed
+constant observable, positive because both factors are; the threshold `N0` is
+the first index at which the fluctuation part of the partition function has
+fallen below half of its Perron part, obtained from `exists_pow_lt_of_lt_one`
+since `specRatio < 1`.  Composing 540's three pieces is arithmetic, but it is
+arithmetic WITH QUANTIFIERS in it, and the house rule is that quantifiers live
+in Lean and not in a sentence.
+
+**2. The header at the anchor contradicted the module.**  Sections 8 and 9 of
+540 proved the denominator bound; the module header, three hundred lines above
+them, still said that a normalised statement "would in turn need the top
+eigenvalue's index to be identified" and that "none of that is done here".
+Corrected, and the corrected sentence is kept rather than deleted, because a
+false claim about what is HARD is the thing this ledger is trying to stop
+repeating.
+
+**3. A guard that reads the prose: `scripts/check_module_prose.py`.**  This is
+the fourth consecutive reading whose finding was a comment, not a proof.  The
+diagnosis has been recorded three times and repaired by hand three times, so it
+now has a script.  For each module it checks that every backticked identifier
+in the module header resolves to a real declaration --- under `YangMills/`, or
+in the pinned mathlib, since a header may legitimately cite either --- and that
+every `section N` cross-reference names a heading that exists in that file.
+Names introduced expressly to say they do NOT exist are exempt by an explicit
+negation before the backtick.
+
+It found two live defects in ALREADY PUBLISHED modules, both prose-only:
+
+  * `YangMills/OS/SpatialGibbs.lean` (paper 9) advertised `iterate_perp_le`;
+    the declaration is `iterate_perp`.
+  * `YangMills/OS/PerronKernel.lean` (paper 7) advertised `coupledKernelL`,
+    which is no declaration anywhere; the object meant is `spatialWeightRing`.
+
+Neither name is cited by either paper, so no permalink was broken and no
+published PDF needs replacing.  Both are fixed here.  **The whole `YangMills/OS`
+lane is now clean under the guard (18 modules, 0 findings).**
+
+**Honest limit of the guard, measured not asserted.**  Run over the whole tree
+it reports 150 findings in 74 of 320 modules.  Most are NOT stale declarations:
+they are hypothesis and variable names used as terms of art in prose (`hRpoly`
+alone accounts for 70), plus mathlib names whose declaration line this script's
+regex does not match.  So the guard is a gate for the O lane and an unsorted
+signal everywhere else.  Sorting the other lanes is registered, not done, and
+not claimed.
+
+**4. The probe now checks the endpoint, not just the operator.**  Check (4) of
+`scripts/probe_spatial_spectral.py` recomputes the Gibbs partition function and
+two-point sum BY BRUTE FORCE over all paths --- no transfer matrix, no dressing
+identity --- and compares them with `C * specRatio^N`.  It also re-derives the
+bridge itself (brute-force path sums against the matrix elements) and the
+section-8 lower bound.  All PASS; worst observed lhs/rhs is 0.145.
+
+**Measured.**  Core **8430 jobs** (unchanged: declarations were added to an
+existing module, no module was added to the core).  Oracle **2666 commands ->
+2666 answers** (2663 distinct, the same three known duplicates), 23 axiom-free
++ 2640 with axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero
+errors.  **40** declarations in the module, all 40 in the oracle list.
+`gibbsCorr_decay_fixed_extent` prints exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+**Still not proved.**  Sharpness of `specGap` (stated as not blocked, and not
+claimed as done).  Anything uniform in the extent: the rate of the new endpoint
+is `specRatio(L)`, which the tabulated evidence says tends to 1, so the
+endpoint does NOT survive the volume limit and the word *clustering* remains
+unused.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 542 (2026-07-29, **S block v1.5: the sharpness of `specGap` stops
+being a remark, and the case that made the remark wrong is the case that makes
+the theorem work**)
+
+**Context.**  Sixth external reading.  It confirmed the composed endpoint of 541
+and raised three residues, one of which was mathematical.
+
+**1. The sharpness remark was WRONG where `specGap = 0`, and that is now the
+proof.**  The v1.4 remark argued: the maximum defining `specGap` is attained at
+some basis vector; that vector is orthogonal to the Perron vector because
+eigenvectors with different eigenvalues are; so it realises the bound.  The
+reading pointed out that this **fails at `specGap = 0`**: there the maximiser may
+perfectly well be one of the TOP indices, since those contribute `0` by
+definition, and it hands over no non-Perron eigenvector at all.
+
+The fix is not a caveat, it is a second branch, and the branch is short:
+
+  * `specGap > 0` --- the maximiser cannot be a top index (they contribute `0`,
+    which is not `> 0`), so it is a genuine non-Perron eigenvector.  Orthogonality
+    to the Perron vector is one line of symmetry: moving `K` across the pairing
+    scales by `lam` on one side and by the other eigenvalue on the other, so
+    `(lam - mu) * <v, b> = 0`.  Its norm is `1` and it realises `|mu|`.
+  * `specGap = 0` --- no eigenvector is available, but §6 ALREADY forces
+    `||K u|| = 0` for every fluctuation observable, so any nonzero one attains
+    the value.
+
+**This second branch is the only reason the theorem needs the state space to
+have two distinct points.**  At `L = 0` there are none, the fluctuation sector
+is trivial, and the theorem is vacuous there -- which is correct, and is stated
+rather than hidden.
+
+**Proved (§11).**  `exists_attaining_fluctuation` (the bound is attained),
+`inner_perron_specBasis_eq_zero` (eigenvectors off the top are orthogonal to the
+Perron vector --- the mirror of §5), `eucNorm_pos_of_ne_zero`.  Together with
+`norm_act_le_specGap` this is the statement that `specGap` IS the operator norm
+on the fluctuation sector.  We do NOT introduce that norm as a defined object and
+prove an equation about it; bound-plus-attainment carries the same content, and
+the paper and the module both say which of the two was done.
+
+**Pattern, again, and it is worth naming.**  The v1.4 remark was a sketch of a
+proof written in prose.  Prose does not have to handle a degenerate case for the
+sentence to read well; Lean does.  The case that broke the sketch is the case
+that gives the theorem its hypothesis.  *A sketch that is never elaborated never
+finds out where it is wrong.*
+
+**2. "past an explicit threshold" was an overstatement.**  The theorem gives
+EXISTENCE of `N0`, characterised by
+`specRatio ^ N0 < c^2 / (2 (||u||^2 + 1))`.  That is a quantitative
+characterisation, not a closed formula and not the least such index.  The
+abstract and §8 now say exactly that.  Noted for the record: `N0` depends on the
+observable only through `c` and `u`, which are built from the dressed CONSTANT
+observable -- so it is in fact observable-independent, and the statement could be
+strengthened to exhibit that.  Registered, not done.
+
+**3. The verification section described three probe checks; the script runs
+four.**  The fourth (added in 541) is now in the paper, and is described as what
+it is: a spot-check at ONE observable per parameter set, at small `N`, not a
+sweep.  The generality lives in the Lean theorem.
+
+**And two places the reading did not name.**  §1 of the paper and the module
+header both still said sharpness was numerical only.  Found by re-reading every
+occurrence of the retired claim rather than only the one that was flagged --
+which is the discipline the 541 guard exists to enforce, in the region the guard
+cannot reach (claims in sentences, not names).
+
+**Measured.**  Core **8430 jobs** (unchanged; declarations added to an existing
+module).  Oracle **2669 commands -> 2669 answers** (2666 distinct, the same
+three known duplicates), 23 axiom-free + 2643 with axiom dependencies, zero
+`sorryAx`, zero nonstandard axioms, zero errors.  **43** declarations in
+the module, all 43 in the oracle list.  `exists_attaining_fluctuation`
+prints exactly `[propext, Classical.choice, Quot.sound]`.  Probe: all four
+checks PASS, worst endpoint ratio 0.145.  `check_module_prose.py`: OS lane
+18 modules, 0 findings.
+
+**Still not proved.**  Anything uniform in the extent.  That is now the ONLY
+substantive gap, it is a limitation of the result chosen rather than a defect of
+the paper, and `specRatio(L) -> 1` outside the disordered region says the gap is
+real and not an artefact of technique.  Reflection positivity untouched.
+Clay ~0 pct.
+
+---
+
+## Addendum 543 (2026-07-29, **S block v1.6: a truncated sentence was hiding a
+stronger theorem, and the restricted norm becomes an object**)
+
+**Context.**  Seventh external reading.  No mathematical objection remained; all
+three items were about the statement being weaker or less precise than the
+proof.
+
+**1. A truncated sentence, and what it was hiding.**  §8 ended with *"it depends
+on the observable only through `c` and `u`, which do not"* --- a sentence that
+simply stops.  The reading repaired it and, in repairing it, pointed at the
+stronger fact the broken sentence was gesturing at: `c` and `u` are built from
+the dressed **constant** observable, so **`N_0` does not depend on `A` at all**.
+One threshold serves every fluctuation observable at once; only `C` sees `A`.
+
+That was already true of the proof and false of the statement.  So the proof was
+split, and the true order of quantifiers is now what is proved:
+
+    exists_partition_threshold :
+      exists N0 D, 0 < D and forall N >= N0, D * lam^N <= gibbsPartition w beta N
+
+    gibbsCorr_decay_uniform_threshold :
+      exists N0, forall A, (dress A perp v) -> exists C > 0, forall N >= N0,
+        |gibbsCorr w beta N A A| <= C * specRatio^N
+
+`exists_partition_threshold` is where the observable-blindness lives: it
+quantifies over no `A` whatsoever.  `gibbsCorr_decay_fixed_extent` is now its
+three-line consequence, kept because it is the shape a reader expects.
+
+**Rule.**  *A statement should publish the strength it has.*  A theorem whose
+proof never used a hypothesis, or never let a bound depend on a parameter, is
+carrying a weaker statement than it earned --- and nothing in a green build
+notices.
+
+**2. The abstract asserted sharpness with no hypothesis.**  Theorem 8.1 assumes
+two distinct states; the abstract did not say so, and at `L = 0` the fluctuation
+sector is trivial.  Fixed.  Also *"no eigenvector is available"* was imprecise:
+at `specGap = 0` the maximising index need not supply a **non-Perron**
+eigenvector, which is the accurate claim.
+
+**3. The restricted operator norm, as an object.**  `specGap_isGreatest`:
+
+    IsGreatest {r | exists u, dress-perp u and ||u|| /= 0 and
+                    r = ||K u|| / ||u||}  (specGap hK lam)
+
+Membership is `exists_attaining_fluctuation`; the upper bound is
+`norm_act_le_specGap`.  `IsGreatest` is chosen over a `Submodule` +
+`ContinuousLinearMap` + norm interface deliberately: it carries the content ---
+the supremum exists and is attained --- without committing the module to
+machinery it does not otherwise use, and `IsGreatest.csSup_eq` gives the `sSup`
+form to anyone who wants it.  The heavier interface remains registered, not
+done, and is a convenience for reuse rather than additional content.
+
+**Measured.**  Core **8430 jobs** (unchanged).  Oracle **2672 commands -> 2672
+answers** (2669 distinct, the same three known duplicates), 23 axiom-free + 2646
+with axiom dependencies, zero `sorryAx`, zero nonstandard axioms, zero errors.
+**46** declarations in the module, all 46 in the oracle list.
+`check_module_prose.py`: OS lane 18 modules, 0 findings.
+
+**Still not proved.**  Anything uniform in the extent --- unchanged, and still
+the only substantive gap.  `specRatio(L) -> 1` outside the disordered region, so
+the gap is a property of the result chosen and not of the technique.  Reflection
+positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 544 (2026-07-29, **S block v1.7: the paper printed a theorem without
+the hypothesis its Lean statement carries, and the reproducibility table did not
+add up**)
+
+**Context.**  Eighth external reading.  Two residues, both real, both in the
+manuscript rather than in the formalisation.
+
+**1. Theorem 8.2 was printed WITHOUT its nontriviality hypothesis.**  Theorem 8.1
+says "suppose the state space has two distinct points"; Theorem 8.2, immediately
+after, asserted that the set of norm ratios has a greatest element and said
+nothing about the state space.  `specGap_isGreatest` in Lean has `(hne : i₀ ≠ i₁)`,
+so the formalisation was never wrong --- the printed statement was.
+
+**And it is not an inherited-context convenience.**  With fewer than two states
+there is no nonzero fluctuation observable at all, so the set of ratios is
+**empty**, and an empty set has no greatest element.  The theorem as printed was
+therefore FALSE, not merely imprecise.  Fixed, with that reason given in the
+paper rather than left to the reader.
+
+Note the shape: the previous reading (543) found a statement WEAKER than its
+proof; this one found a statement STRONGER than its proof.  Both are the same
+defect --- the printed statement drifting from the machine-checked one --- and
+neither is visible to a green build.  The name guard added in 541 does not see
+either, because both are about quantifiers rather than identifiers.
+
+**2. The reproducibility table did not add up.**  It printed 2672 commands, 2646
+with axiom dependencies, 23 axiom-free; `2646 + 23 = 2669`.  The missing three
+are the known duplicate commands, and that explanation lived only in the ledger.
+A table a reader is meant to check has to be checkable without the ledger, so it
+now prints the distinct count and the duplicate count as their own rows.
+
+**3. Terminology.**  "Rayleigh ratios" replaced by "norm ratios" throughout: a
+Rayleigh quotient is `⟪u, Ku⟫ / ‖u‖²`, which is a different number from
+`‖Ku‖ / ‖u‖`.  The module docstring is corrected too, since it introduced the
+term.
+
+**Measured.**  Core **8430 jobs** (unchanged; the only Lean change is a
+docstring).  Oracle **2672 commands -> 2672 answers** (2669 distinct, three
+known duplicates), 23 axiom-free + 2646 with axiom dependencies, zero `sorryAx`,
+zero nonstandard axioms, zero errors.  **46** declarations in the module,
+all 46 in the oracle list.  `check_module_prose.py`: OS lane 18 modules,
+0 findings.
+
+**Still not proved.**  Anything uniform in the extent --- unchanged, and the only
+substantive gap.  Reflection positivity untouched.  Clay ~0 pct.
+
+## Addendum 547 (2026-07-29, **O-lane Paper 6 submitted; artifact identity and claim boundary registered**)
+
+The owner reports submission of *Blind to the Coupling: a Second
+Machine-Checked Obstruction at Spatial Extent*.  The public ai.viXra
+identifier is pending and is not inferred.  The submitted v1.2.1 artifact is
+paper commit `3d313d9291b53dc9c470051fddc721013fe9d9dd`, Lean anchor
+`a70426f4c8a0ed733b4eee94fb01b158bc81fd08`, PDF SHA-256
+`42617528c0df0ad3e813ee77c11722c53e5ea1b4b97dc93f22d9ece45d29e4cb`.
+The exact submission record is
+`docs/O-LANE-SUBMISSION-SPATIAL-BIRKHOFF-20260729.md`.
+
+The paper proves two-sided projective-metric coupling blindness, volume
+degeneration, exact two-site eigenpairs, strict positivity, and domination of
+every real or complex eigenvalue.  It proves no volume-uniform interacting
+gap, uniqueness, strict peripheral separation, `SU(N)`, continuum, or Clay
+statement.
+
+## Addendum 548 (2026-07-29, **public O-lane IDs `[89]`--`[93]` verified by binary identity**)
+
+The public author page was rechecked rather than inferred from submission
+order.  Entries `[89]`--`[93]` are ai.viXra `2607.0070`, `2607.0073`,
+`2607.0075`, `2607.0076`, and `2607.0078`.  Each downloaded public v1 PDF is
+byte-identical to its repository counterpart.  Exact timestamps, sizes,
+hashes, paper commits, Lean anchors, and links are frozen in
+`docs/PUBLICATIONS.md`.
+
+Paper 6 remained submitted with public ID pending; Paper 7 remained frozen
+without a reported submission.  No identifier was assigned by proximity.
+
+## Addendum 549 (2026-07-29, **O-lane Paper 8 submitted; strict whole-spectrum finite-extent gap registered**)
+
+The owner reports submission of *Strict but Not Uniform: a Machine-Checked
+Spectral Gap at Every Finite Extent of the Coupled Slice*.  The submitted
+v1.2 artifact is paper commit
+`b03766bde54dca1d30c2febea8c008483d53751e`, Lean anchor
+`ac8979631c1541b059b3c10f590ca174b0b5f6be`, PDF SHA-256
+`e8063013965ea1699718d08f2bce1646e73f0dd2b970a518bb9e6339c68d78a0`.
+The exact record is `docs/O-LANE-SUBMISSION-PERRON-GAP-20260729.md`.
+
+The terminal endpoint `coupled_gap_all_eigenvalues` gives strict separation
+of every non-Perron complex eigenvalue at each fixed finite extent.  It
+supplies no quantitative modulus and nothing uniform in the extent.
+
+## Addendum 550 (2026-07-29, **O-lane Paper 9 submitted; the spatial Gibbs measure-to-transfer bridge registered**)
 
 The owner reports submission of *The Measure the Spectral Results Were About:
-a Machine-Checked Transfer Bridge for the Spatial Z_2 Slice* in Mathematics -
+a Machine-Checked Transfer Bridge for the Spatial Z_2 Slice*.  The submitted
+v1.1 artifact is paper commit
+`dc2935eb7f4b299aada889c39a119d415b533951`, Lean anchor
+`c4fa6a9e6769496a7270981ef0908b2d644c230b`, PDF SHA-256
+`92c8235c54c8c6cafa7325d1a126f8b962ea486ac9e95d2e0872ec25969ce243`.
+The submitted PDF was byte-identical to the repository artifact.  Exact
+fields live in `papers/spatial-gibbs/SUBMISSION-INFO.txt`; the permanent
+record is `docs/O-LANE-SUBMISSION-SPATIAL-GIBBS-20260729.md`.
+
+The theorem boundary is that of Addenda 534--536: Gibbs weights become
+symmetrised transfer paths under boundary dressing; the unnormalised
+two-point sum becomes a matrix element; the normalised expectation becomes a
+ratio with positive denominator; and connected decay is conditional on an
+explicit contraction hypothesis.  No extent-uniform rate or reflection
+positivity is proved.
+
+Post-submission repository erratum `b0b4a32c` corrects only the bibliography:
+one wrong companion title and transplanted viXra identifier, plus three
+internal lane labels.  The current v1.2 repository PDF is 86,757 bytes,
+SHA-256
+`0a0acc85773ff6557ca65b5a49027c29aeee99cd45e7861c474bd0bbe876ca18`.
+No archive replacement is inferred; the submitted v1.1 identity above remains
+the submission record until a public artifact is available for comparison.
+
+## Addendum 551 (2026-07-30, **O-lane Paper 10 submitted; the fixed-extent spectral modulus and relative-decay checkpoint becomes live**)
+
+The owner reports submission of *The Modulus: a Machine-Checked Operator Bound
+on the Fluctuation Sector of the Coupled Z_2 Slice* in Mathematics -
 Functional Analysis.  The public ai.viXra identifier is pending and is
-deliberately not inferred from submission order.  A fresh public-page check on
-2026-07-29 still ended at author-list item `[93]`,
-`ai.viXra.org:2607.0078`.
+deliberately not inferred; a fresh public-page check on 2026-07-30 still ended
+at author-list item `[93]`, `ai.viXra.org:2607.0078`.
 
-The submitted edition is v1.1 at paper commit
-`dc2935eb7f4b299aada889c39a119d415b533951`, with formal Lean anchor
-`c4fa6a9e6769496a7270981ef0908b2d644c230b`.  The 6-page PDF has 86,847 bytes
-and SHA-256
-`92c8235c54c8c6cafa7325d1a126f8b962ea486ac9e95d2e0872ec25969ce243`;
-the TeX SHA-256 is
-`abebc74cf56a2feec5efd157a5be6bd8e364516aa220b8df6f7f3b05b2fb0bbe`.
+The submitted edition is v1.9 at paper commit
+`21199f408dba86db2af2f8d2c58190b0f19b7da4`, with formal Lean anchor
+`9704b3f3c0d576bb40c43caa5360fbd64dfa1643`.  The 8-page PDF has 106,838
+bytes and SHA-256
+`200cfe770180f86aa725683d20424772e009ccc980c991faa7f03f99b42287b8`;
+the TeX has 27,073 bytes and SHA-256
+`a0d6708aecadc07b3ea67a34349876184b553a0d83dcdce7a950fd74c0eabf64`.
 The PDF at the owner's submission path is byte-identical to the repository
-artifact.  Exact fields and the permanent record live at
-`papers/spatial-gibbs/SUBMISSION-INFO.txt` and
-`docs/O-LANE-SUBMISSION-SPATIAL-GIBBS-20260729.md`.
+artifact.
 
-The theorem boundary is unchanged from Addenda 537--539.  The finite Gibbs
-weight is identified with the symmetrised transfer path under boundary
-dressing; the unnormalised two-point sum becomes an iterated self-adjoint
-matrix element; `gibbsCorr_eq_ratio_iterate` gives the normalised expectation
-as a ratio and `gibbsCorr_denom_pos` proves its denominator positive.
-Fluctuation-sector invariance and conditional connected decay are proved.
-The contraction hypothesis is explicit and remains undischarged.  No
-extent-uniform rate, reflection positivity, `SU(N)`, continuum, mass-gap, or
-Clay conclusion is claimed.
+The load-bearing endpoints are `specGap_lt`, `norm_act_le_specGap`,
+`specRatio_lt_one`, `gibbs_pathSum_relative_decay`,
+`gibbsCorr_decay_fixed_extent`, `exists_attaining_fluctuation`, and
+`specGap_isGreatest` in `YangMills/OS/SpatialSpectral.lean`.  They construct
+the largest non-Perron eigenvalue modulus, prove its strict separation and
+sharp fluctuation-sector operator bound, distinguish sub-Perron growth from
+relative decay, discharge Paper 9's fixed-extent contraction hypothesis, and
+give the normalised two-point bound at fixed extent.
 
-The canonical live checkpoint is anchor `c4fa6a9e`: full core build **8429
-jobs**, oracle **2626 commands -> 2626 answers** (2603 with axiom dependencies
-and 23 axiom-free), axioms exactly
+The rate `specRatio` depends on the extent and is not bounded uniformly away
+from one.  Reflection positivity is untouched.  Nothing here is an `SU(N)`,
+continuum, mass-gap, or Clay claim.  The independent dense-diagonalisation
+probe is verified numerical evidence only; no theorem depends on it.
+
+The canonical live checkpoint is anchor `9704b3f3`: full core build **8430
+jobs**, oracle **2672 commands -> 2672 answers** (2669 distinct, three known
+duplicates; 2646 with axiom dependencies and 23 axiom-free), axioms exactly
 `{propext, Classical.choice, Quot.sound}`, zero `sorryAx`, zero project axioms,
-and zero errors.  The independent brute-force probe for `L <= 3`, `N <= 3` is
-recorded as verified numerical evidence only; no theorem depends on it.
+and zero errors.  The module contributes 46 declarations, all represented in
+the oracle.
+
+---
+
+## Addendum 545 (2026-07-30, **S block v1.8: the terminology fix of 544 said
+"throughout" and reached two places out of four**)
+
+**Context.**  Ninth external reading.  Two microresidues, both documentary, and
+one of them is a small lesson about how 544 was applied.
+
+**1. "Rayleigh ratios" survived in the module header.**  Addendum 544 recorded
+the substitution as done "throughout".  It was done in the paper and in the
+docstring of `specGap_isGreatest` --- the two places the term was *noticed* ---
+and not in the module header, which used it twice: once in the list of results
+and once in "What is NOT proved".  A term introduced in one place and repeated
+in four is not fixed by editing the two that were in view.  *A substitution
+claimed as global has to be executed by search, not by memory of where the word
+was written.*  Both remaining occurrences replaced by "norm ratios".
+
+**2. The abstract's threshold was visually ambiguous.**  It printed
+`specRatio^N0 < c^2/2(||u||^2+1)`, which on one line reads as
+`(c^2/2)(||u||^2+1)` --- the reciprocal of the intended bound.  The theorem
+section already used a display fraction; the abstract now does too.  No
+statement changed; the risk was that a reader would take the abstract at face
+value and find the paper self-contradictory.
+
+**3. And one the reading did not flag, from the same sweep.**  §1 of the paper
+still said "what we do not do is introduce that norm as a defined object and
+prove an equation about it".  Since 543 that is wrong: `specGap_isGreatest` IS a
+statement about an object.  What is not built is the
+`Submodule` + `ContinuousLinearMap` + `‖·‖` interface, and §1 now says that
+instead.  Found by re-reading the neighbourhood of the flagged text rather than
+only the flagged text --- the same discipline this addendum's own item 1 shows
+is necessary.
+
+**Measured.**  Core **8430 jobs** (unchanged; the only Lean change is a
+docstring).  Oracle **2672 commands -> 2672 answers** (2669 distinct, three
+known duplicates), 23 axiom-free + 2646 with axiom dependencies, zero `sorryAx`,
+zero nonstandard axioms, zero errors.  **46** declarations in the module,
+all 46 in the oracle list.  `check_module_prose.py`: OS lane 18 modules,
+0 findings.
+
+**Still not proved.**  Anything uniform in the extent --- unchanged, and the only
+substantive gap.  Reflection positivity untouched.  Clay ~0 pct.
+
+---
+
+## Addendum 546 (2026-07-30, **S block v1.9: three sentences that were true of an
+earlier version, and a symbol that meant two things one paragraph apart**)
+
+**Context.**  Tenth external reading.  No mathematical objection; three
+statements that no longer matched what is proved, or that could be read as
+saying the opposite of what is proved.
+
+**1. The scope paragraph still denied §9.**  It was headed "Attainment, but no
+norm object" and said "what we do not do is introduce that norm as a defined
+object" --- three pages before §9, titled "The restricted norm, as an object",
+proves `specGap_isGreatest`.  The distinction meant is real (a set-theoretic
+object identifying the norm is not a `ContinuousLinearMap` on a `Submodule`),
+but the sentence as written contradicted the section.  Rewritten as "Norm
+identified, but no restricted-operator interface", naming the interface that is
+missing instead of denying the object that is there.
+
+**2. "no eigenvector is obtained" at `specGap = 0` was false as stated.**  A top
+index does supply an eigenvector --- the Perron one.  What it does not supply is
+a NON-PERRON eigenvector, hence none in the fluctuation sector, which is the
+thing the argument needed.  Corrected in the paper and in the two places the
+module said it (the §11 section note and an inline comment in the proof).
+
+**3. `u` meant two different things one paragraph apart in the abstract.**
+Earlier it is a generic fluctuation observable, in `‖Ku‖ ≤ specGap·‖u‖`; in the
+threshold it is the orthogonal component of the dressed CONSTANT observable.  A
+reader could take the threshold to depend on `A` --- the exact opposite of the
+uniform-threshold theorem of 543.  The abstract now writes `b_perp` there,
+defines it and `c`, and says in the same sentence that neither comes from `A`.
+§8 notes that its `u` is that `b_perp`.
+
+**The shape of the last three readings, worth recording together.**  543 found a
+statement WEAKER than its proof; 544 found one STRONGER than its proof; 546
+found three that were true of an EARLIER proof.  All three are the same defect
+class --- printed statement drifting from machine-checked statement --- and none
+of them is visible to `lake build`, to the oracle, or to
+`check_module_prose.py`, which checks identifiers rather than claims.  That the
+guard cannot reach them is not a reason to stop looking; it is the reason the
+re-reading is done by hand, on the neighbourhood of every flagged line rather
+than on the flagged line alone.
+
+**Measured.**  Core **8430 jobs** (unchanged; the only Lean changes are
+comments).  Oracle **2672 commands -> 2672 answers** (2669 distinct, three
+known duplicates), 23 axiom-free + 2646 with axiom dependencies, zero `sorryAx`,
+zero nonstandard axioms, zero errors.  **46** declarations in the module,
+all 46 in the oracle list.  `check_module_prose.py`: OS lane 18 modules,
+0 findings.
+
+**Still not proved.**  Anything uniform in the extent --- unchanged, and the only
+substantive gap.  Reflection positivity untouched.  Clay ~0 pct.

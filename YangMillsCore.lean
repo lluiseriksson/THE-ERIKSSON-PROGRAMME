@@ -890,3 +890,13 @@ import YangMills.OS.PerronGap
 -- 7-8 give a strict gap with no modulus, which does not by itself produce an
 -- operator-norm bound.  NOTHING UNIFORM IN THE EXTENT is obtained here.
 import YangMills.OS.SpatialGibbs
+
+-- S block - the operator bound, and the bridge module's decay theorem without
+-- its hypothesis.  specGap is the modulus the gap paper declined to fake: the
+-- largest |mu| over eigenvalues other than the Perron eigenvalue, proved to be
+-- strictly below it.  The step that does not follow from the inequalities is
+-- geometric simplicity, which makes eigenvectors at the top INVISIBLE to a
+-- fluctuation observable rather than merely bounded.  specGap DEPENDS ON THE
+-- EXTENT; nothing here is uniform in it, and the endpoint bounds the
+-- UNNORMALISED two-point sum, not the normalised expectation.
+import YangMills.OS.SpatialSpectral

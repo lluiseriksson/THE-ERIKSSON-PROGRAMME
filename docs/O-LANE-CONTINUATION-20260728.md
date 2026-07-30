@@ -1,6 +1,6 @@
 # O lane — continuation after the spatial-extent freeze (2026-07-28)
 
-> **Outcome update (2026-07-29).**  The S-1 wall brick below was completed,
+> **Outcome update (2026-07-30).**  The S-1 wall brick below was completed,
 > strengthened through two-sided blindness and spectral-radius domination at
 > `L=2`, written as *Blind to the Coupling: a Second Machine-Checked
 > Obstruction at Spatial Extent*, and submitted by the owner.  The public
@@ -17,7 +17,12 @@
 > `dc2935eb`; it too was submitted by the owner on 2026-07-29 with public ID
 > pending.  Its connected-decay theorem carries an explicit contraction
 > hypothesis and does not derive a rate from Paper 8.  Thus S-3 remains open
-> and must carry an explicit regime hypothesis.  This file remains the
+> and must carry an explicit regime hypothesis.  Paper 10 subsequently closes
+> the fixed-extent spectral-maximum/operator-bound step at Lean anchor
+> `9704b3f3` and paper commit `21199f40`: the relative rate is below one and
+> the normalised two-point estimate is unconditional at each fixed extent.
+> The rate still depends on the extent, so the volume-uniform part of S-3
+> remains open and must carry an explicit regime hypothesis.  This file remains the
 > preregistered design record; its original ladder is historical, not a claim
 > made by the submitted papers.
 

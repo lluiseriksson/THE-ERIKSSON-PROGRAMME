@@ -1,9 +1,9 @@
 # AGENT ONBOARDING — everything another AI needs to advance this project
 
-> **STATUS STAMP (updated 2026-07-29; source checkpoint 2026-07-29).** This brief is background.  The current
+> **STATUS STAMP (updated 2026-07-30; source checkpoint 2026-07-30).** This brief is background.  The current
 > repository state is substantially later: strong-coupling area laws and IR
 > clustering are closed; the latest verification-ledger checkpoint records
-> `YangMillsCore` green at **8429 jobs** at source checkpoint `c4fa6a9e`.
+> `YangMillsCore` green at **8430 jobs** at source checkpoint `9704b3f3`.
 > The latest public-paper crosswalk is `docs/PUBLICATIONS.md`.  The live
 > frontier remains `hRpoly`, the
 > concrete Yang-Mills cluster-expansion-with-holes activity-decay estimate for
@@ -60,11 +60,12 @@ theorem, hence formalizable.
 
 ### First-time setup
 ```powershell
+git config --global core.longpaths true  # required for five long RG documentation paths on Windows
 git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6   # if not present
 lake exe cache get        # fetch prebuilt Mathlib oleans (do this; building Mathlib from source takes hours)
-lake build YangMillsCore  # 8429 jobs at the latest recorded checkpoint; fast if cache is warm
+lake build YangMillsCore  # 8430 jobs at the latest recorded checkpoint; fast if cache is warm
 ```
 
 ---
