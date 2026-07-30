@@ -29136,3 +29136,40 @@ The repository-wide totals move because the merged branch adds `L1` modules and
 their oracle lines; the module's own row does not.  The paper's Reproducibility
 section now says this in one sentence, so a reader comparing v1.2's table with
 v1.3's does not have to suspect this module.
+
+## Addendum 567 (2026-07-30, **PAPER 12 v1.4: two openings that borrowed their
+hypotheses from the paragraph after them**)
+
+**Context.**  Fourth external reading of paper 12 (97.50/100).  No mandatory
+finding of any kind --- the reading states there is no required mathematical
+revision.  Two optional wording adjustments were named and both were taken,
+because both are the same defect in miniature: a sentence that is only true once
+you have read the next one.
+
+  1. The abstract's opening said the reflected form "is non-negative", full
+     stop, and the parity and coupling hypotheses arrived a few lines later.
+     Read alone --- which is how an abstract's first sentence gets read --- it
+     overstates.  It now carries them: even separation for every `beta`, every
+     separation exactly for `beta >= 0`, and the Gram clause inherits the same.
+  2. The scope heading "One axiom, not a reconstruction" named the axiom as the
+     thing achieved and reserved the disclaimer for the reconstruction.  But the
+     axiom is not achieved either; the endpoint form is.  Now: "An endpoint
+     form, not the full axiom and not a reconstruction", with the paragraph
+     spelling out that these are three different distances, not two.
+
+**NO RE-MEASUREMENT, and the reason is checkable.**  Both edits are confined to
+`papers/spatial-reflection/spatial_reflection.tex`.  No Lean file, no
+`oracle_check.lean`, no `lakefile.lean` changed, so the anchor stays at
+`3c9065f9` and every counter printed in the paper still describes exactly the
+tree it points at.  A version bump is not a licence to reprint numbers; when
+nothing measurable moved, the honest act is to leave the measurement alone and
+say why.  The permalinks were nevertheless re-verified three ways --- against
+the blob at the anchor, inside the recompiled PDF, and live over HTTP --- since
+the PDF is a new artefact even when the sources it cites are not.
+
+**Standing note.**  The reading also places this paper third in the O lane,
+behind *The Modulus* and *The Rate Without the Extent*, on the ground that it
+formalises the endpoint form rather than the reflected algebra.  That ranking is
+recorded, not disputed: it is the same gap the paper's own scope section names,
+and closing it is the registered continuation (half-chain algebra, the
+reflection map, the complex sesquilinear form).
