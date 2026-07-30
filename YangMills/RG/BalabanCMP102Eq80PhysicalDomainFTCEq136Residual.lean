@@ -4,6 +4,8 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCThirdFieldSourceMetricBound
+import YangMills.RG.BalabanCMP102Eq80CutoffRadialResidual
+import YangMills.RG.BalabanCMP102Eq80CouplingScaledThirdJet
 import YangMills.RG.BalabanCMP116DomainCardinalityAbsorption
 import YangMills.RG.BalabanCMP116Eq136To220
 
@@ -247,6 +249,171 @@ theorem
       unfold cmp116Eq136ResidualMajorant
       dsimp [metricDecay, cmp102Eq80Eq136ResidualMetricRate]
       ring
+
+/-- The source small-field third jet and the scalar equation-(1.36)
+comparison control the literal radial Taylor residual after the physical
+substitution `B ↦ g_k C B`.
+
+The proof uses the cutoff to bound the complete radial segment, and the
+factor `g_k³` from the third derivative cancels the cube of the printed
+cutoff radius `epsilon1 / gk` exactly. -/
+theorem
+    abs_half_inner_cmp116RadialTaylorResidualOperator_eq80CouplingScaledDomainProjection_le_eq136_of_source
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (M * (2 * Q))]
+    [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (W : CMP102Eq80SourcePi4PhysicalDomainLabel anchor)
+    (hW : W ∈ D)
+    (P : Finset (PhysicalBond 4 (M * (2 * Q))))
+    (epsilon1 gk : ℝ)
+    (b : CMP116Eq214GaussianCoordinate
+      (PhysicalBond 4 (M * (2 * Q))) (Nc ^ 2 - 1))
+    (hepsilon1 : 0 ≤ epsilon1) (hgk : 0 < gk)
+    (hcutoff :
+      (-1 : ℂ) ^ P.card *
+          cmp116SmallFieldCutoff
+            (cmp102Eq80SourcePi4PhysicalY0 (M := M) anchor D)
+            (epsilon1 / gk) (cmp116SourcePhysicalCoordinateCochain b) *
+          cmp116LargeFieldCutoff P (epsilon1 / gk)
+            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0)
+    (f : PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc → ℝ)
+    (hf : ContDiff ℝ 3 f)
+    (sourceMajorant : ℝ) (hsourceMajorant : 0 ≤ sourceMajorant)
+    (hsource : ∀ X,
+      cmp98SourceFieldSupNorm X ≤ epsilon1 / gk →
+        ‖iteratedFDeriv ℝ 3 f
+          (cmp109ConstrainedLinearFluctuation (L := M) gk X)‖ ≤
+            sourceMajorant)
+    (E0 C1 : ℝ) (q : ℕ) (C2 kappa1 delta kappa : ℝ)
+    (hprinted :
+      sourceMajorant * (1 + (M : ℝ) ^ 3) ^ 3 *
+          Real.sqrt
+            ((((M ^ 4 *
+              (cmp102Eq80SourcePi4LocalizationDomain
+                (M := M) anchor W).blocks.card) * 4 : ℕ) : ℝ)) ^ 3 *
+          epsilon1 ^ 3 / 6 ≤
+        cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+          C2 kappa1 delta kappa
+            (cmp116CubeEdgeTreeMetric
+              (cmp102Eq80SourcePi4LocalizationDomain
+                (M := M) anchor W) : ℝ)) :
+    let Y := cmp102Eq80SourcePi4LocalizationDomain (M := M) anchor W
+    let B := physicalBondProjection Y.bondSupport
+      (cmp116SourcePhysicalCoordinateCochain b)
+    |(1 / 2 : ℝ) * inner ℝ B
+        (cmp116RadialTaylorResidualOperator
+          (cmp102Eq80CouplingScaledPotential gk f) B
+          ((hf.comp
+            (cmp109ConstrainedLinearFluctuationCLM
+              (M := M) (Q := Q) (Nc := Nc) gk).contDiff).of_le
+                (by norm_num)) B)| ≤
+      cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+        C2 kappa1 delta kappa
+          (cmp116CubeEdgeTreeMetric Y : ℝ) := by
+  dsimp only
+  let Y := cmp102Eq80SourcePi4LocalizationDomain (M := M) anchor W
+  let A := cmp116SourcePhysicalCoordinateCochain b
+  let B := physicalBondProjection Y.bondSupport A
+  let constraintCost := 1 + (M : ℝ) ^ 3
+  let localThreshold :=
+    Real.sqrt ((((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ)) *
+      (epsilon1 / gk)
+  let fscaled :=
+    cmp102Eq80CouplingScaledPotential
+      (M := M) (Q := Q) (Nc := Nc) gk f
+  have hthreshold : 0 ≤ epsilon1 / gk :=
+    div_nonneg hepsilon1 hgk.le
+  have hfscaled : ContDiff ℝ 3 fscaled := by
+    simpa [fscaled, cmp102Eq80CouplingScaledPotential] using
+      hf.comp
+        (cmp109ConstrainedLinearFluctuationCLM
+          (M := M) (Q := Q) (Nc := Nc) gk).contDiff
+  have hthirdScaled : ∀ X,
+      cmp98SourceFieldSupNorm X ≤ epsilon1 / gk →
+        ‖iteratedFDeriv ℝ 3 fscaled X‖ ≤
+          sourceMajorant * (|gk| * constraintCost) ^ 3 := by
+    intro X hX
+    simpa [fscaled, constraintCost] using
+      norm_iteratedFDeriv_three_cmp102Eq80CouplingScaledPotential_le_of_source
+        gk f hf X sourceMajorant (hsource X hX)
+  have hscaledMajorant :
+      0 ≤ sourceMajorant * (|gk| * constraintCost) ^ 3 :=
+    mul_nonneg hsourceMajorant (pow_nonneg (mul_nonneg (abs_nonneg _) (by
+      dsimp [constraintCost]
+      positivity)) _)
+  have hcubic :
+      |(1 / 2 : ℝ) * inner ℝ B
+          (cmp116RadialTaylorResidualOperator
+            fscaled B (hfscaled.of_le (by norm_num)) B)| ≤
+        (sourceMajorant * (|gk| * constraintCost) ^ 3 / 6) *
+          ‖B‖ ^ 3 := by
+    simpa [Y, A, B, fscaled] using
+      abs_half_inner_cmp116RadialTaylorResidualOperator_eq80DomainProjection_le_of_cutoff
+        anchor D W hW P (epsilon1 / gk) b hthreshold hcutoff
+        fscaled hfscaled
+        (sourceMajorant * (|gk| * constraintCost) ^ 3)
+        hthirdScaled
+  have hsup :
+      cmp98SourceFieldSupNorm B ≤ epsilon1 / gk := by
+    simpa [Y, A, B] using
+      cmp98SourceFieldSupNorm_eq80DomainProjection_le_threshold_of_cutoffFactor_ne_zero
+        anchor D W hW P (epsilon1 / gk) b hthreshold hcutoff
+  have hBnorm : ‖B‖ ≤ localThreshold := by
+    simpa [Y, A, B, localThreshold] using
+      norm_cmp116LocalizationDomainProjection_le_explicitBlockCard_mul_threshold
+        Y A (epsilon1 / gk) hthreshold hsup
+  have hBcube : ‖B‖ ^ 3 ≤ localThreshold ^ 3 :=
+    pow_le_pow_left₀ (norm_nonneg _) hBnorm 3
+  calc
+    |(1 / 2 : ℝ) * inner ℝ B
+        (cmp116RadialTaylorResidualOperator
+          (cmp102Eq80CouplingScaledPotential gk f) B
+          ((hf.comp
+            (cmp109ConstrainedLinearFluctuationCLM
+              (M := M) (Q := Q) (Nc := Nc) gk).contDiff).of_le
+                (by norm_num)) B)|
+        ≤ (sourceMajorant * (|gk| * constraintCost) ^ 3 / 6) *
+            ‖B‖ ^ 3 := by
+          simpa [fscaled, hfscaled] using hcubic
+    _ ≤ (sourceMajorant * (|gk| * constraintCost) ^ 3 / 6) *
+          localThreshold ^ 3 :=
+      mul_le_mul_of_nonneg_left hBcube
+        (div_nonneg hscaledMajorant (by norm_num))
+    _ =
+        sourceMajorant * constraintCost ^ 3 *
+          Real.sqrt ((((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ)) ^ 3 *
+          epsilon1 ^ 3 / 6 := by
+      rw [show localThreshold =
+        Real.sqrt ((((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ)) *
+          (epsilon1 / gk) by rfl]
+      calc
+        (sourceMajorant * (|gk| * constraintCost) ^ 3 / 6) *
+              (Real.sqrt ((((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ)) *
+                (epsilon1 / gk)) ^ 3 =
+            sourceMajorant / 6 *
+              Real.sqrt
+                ((((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ)) ^ 3 *
+              ((|gk| * constraintCost) ^ 3 *
+                (epsilon1 / gk) ^ 3) := by ring
+        _ =
+            sourceMajorant / 6 *
+              Real.sqrt
+                ((((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ)) ^ 3 *
+              (constraintCost ^ 3 * epsilon1 ^ 3) := by
+          rw [coupling_cube_mul_threshold_cube
+            gk epsilon1 constraintCost hgk]
+        _ =
+            sourceMajorant * constraintCost ^ 3 *
+              Real.sqrt
+                ((((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ)) ^ 3 *
+              epsilon1 ^ 3 / 6 := by ring
+    _ ≤
+        cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+          C2 kappa1 delta kappa
+            (cmp116CubeEdgeTreeMetric Y : ℝ) := by
+      simpa [Y, constraintCost] using hprinted
 
 end
 
