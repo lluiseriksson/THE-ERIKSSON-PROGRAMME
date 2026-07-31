@@ -128,7 +128,8 @@ ODD --- which is the same sector paper 11's induction runs in.
 
 That reduces the obligation but does not discharge it.  What a proof still owes:
 
-  * that the Perron vector is even (Perron--Frobenius plus flip invariance);
+  * ~~that the Perron vector is even~~ --- PROVED, `perron_even` in
+    `YangMills/OS/SpatialRing.lean`, together with `J K = K J`;
   * the bound on the ODD block, which is where the induction lives;
   * **and a bound on the EVEN block's non-Perron eigenvalues**, which the
     numerics say are smaller but which no argument here covers.  This is the
@@ -157,4 +158,14 @@ though they had been part of it.
 ## Status
 
 Gate PASS, stress sweeps clean, hypotheses exhibited as active, subdominant
-sector identified.  **No Lean written.  Nothing here is proved.**
+sector identified.
+
+**TWO OF THE FOUR SKELETON PIECES ARE MACHINE-CHECKED** in
+`YangMills/OS/SpatialRing.lean`: the kernel commutes with the global spin flip,
+so the space splits into even and odd sectors, and the Perron vector lies in the
+even one.  Both are reusable regardless of what happens to the bound.
+
+**THE BOUND ITSELF IS NOT PROVED, AND NOTHING NEAR IT IS.**  The odd-block and
+the non-Perron even-block estimates are both open, and they are the entire
+content.  Pieces 1 and 2 are symmetry bookkeeping: standard, cheap, and not a
+theorem anybody would publish on their own.

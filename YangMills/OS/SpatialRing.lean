@@ -202,4 +202,58 @@ theorem perron_even (β γ : ℝ) (L : ℕ) :
     unfold flipObs at this
     rw [this, hone, one_mul]⟩
 
+/-! ## §5  Transport to the symmetrised kernel
+
+`specRatio` is defined for the SYMMETRISED kernel `S = √w · K · √w`, while
+`perron_even` above is about the source-weighted one `A = w · K`.  The two are
+similar and the transport is three lines --- but until it is written the parity
+result is about a neighbouring operator, not about the one the target names. -/
+
+/-- Dividing an eigenvector of the source-weighted kernel by `√w` gives an
+eigenvector of the symmetrised one, with the same eigenvalue. -/
+theorem symWeighted_eigen_of_sourceWeighted {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β lam : ℝ) {v : (Fin L → Fin 2) → ℝ}
+    (hv : ∀ σ, ∑ τ, sourceWeightedKernelL w β σ τ * v τ = lam * v σ)
+    (σ : Fin L → Fin 2) :
+    ∑ τ, symWeighted w β σ τ * (v τ / Real.sqrt (w τ))
+      = lam * (v σ / Real.sqrt (w σ)) := by
+  have hs : ∀ τ, Real.sqrt (w τ) ≠ 0 := fun τ =>
+    ne_of_gt (Real.sqrt_pos.mpr (hw τ))
+  have hsq : ∀ τ, Real.sqrt (w τ) * Real.sqrt (w τ) = w τ := fun τ =>
+    Real.mul_self_sqrt (hw τ).le
+  have hstep : ∀ τ, symWeighted w β σ τ * (v τ / Real.sqrt (w τ))
+      = (sourceWeightedKernelL w β σ τ * v τ) / Real.sqrt (w σ) := by
+    intro τ
+    unfold symWeighted sourceWeightedKernelL
+    have h1 : Real.sqrt (w σ) * spatialKernel β σ τ * Real.sqrt (w τ)
+          * (v τ / Real.sqrt (w τ))
+        = Real.sqrt (w σ) * spatialKernel β σ τ * v τ := by
+      field_simp [hs τ]
+    have h2 : w σ * spatialKernel β σ τ * v τ / Real.sqrt (w σ)
+        = Real.sqrt (w σ) * spatialKernel β σ τ * v τ := by
+      rw [div_eq_iff (hs σ)]
+      linear_combination (spatialKernel β σ τ * v τ) * (hsq σ).symm
+    rw [h1, h2]
+  rw [Finset.sum_congr rfl fun τ _ => hstep τ, ← Finset.sum_div, hv σ]
+  field_simp
+
+/-- **THE PARITY, ON THE OPERATOR THE TARGET IS ABOUT.**  The symmetrised
+ring-weighted kernel has a strictly positive eigenvector which is EVEN under the
+global spin flip.  This is `perron_even` transported across the similarity, so
+that the sector decomposition applies to the operator `specRatio` is defined
+from and not merely to a neighbouring one. -/
+theorem symWeighted_perron_even (β γ : ℝ) (L : ℕ) :
+    ∃ (Ω : (Fin (L + 1) → Fin 2) → ℝ) (lam : ℝ), (∀ σ, 0 < Ω σ) ∧ 0 < lam ∧
+      (∀ σ, ∑ τ : Fin (L + 1) → Fin 2,
+        symWeighted (spatialWeightRing γ) β σ τ * Ω τ = lam * Ω σ) ∧
+      ∀ σ, Ω (flipCfg σ) = Ω σ := by
+  obtain ⟨v, lam, hpos, -, hlam, heig, hflip⟩ := perron_even β γ L
+  refine ⟨fun σ => v σ / Real.sqrt (spatialWeightRing γ σ), lam, fun σ => ?_,
+    hlam, fun σ => ?_, fun σ => ?_⟩
+  · exact div_pos (hpos σ) (Real.sqrt_pos.mpr (spatialWeightRing_pos γ σ))
+  · exact symWeighted_eigen_of_sourceWeighted (spatialWeightRing_pos γ) β lam heig σ
+  · show v (flipCfg σ) / Real.sqrt (spatialWeightRing γ (flipCfg σ))
+      = v σ / Real.sqrt (spatialWeightRing γ σ)
+    rw [hflip σ, spatialWeightRing_flip γ σ]
+
 end YangMills.OS

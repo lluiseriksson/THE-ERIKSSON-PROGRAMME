@@ -3133,3 +3133,5 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.act_flip_comm_ring
 #print axioms YangMills.OS.sourceWeightedKernelL_flip
 #print axioms YangMills.OS.perron_even
+#print axioms YangMills.OS.symWeighted_eigen_of_sourceWeighted
+#print axioms YangMills.OS.symWeighted_perron_even
