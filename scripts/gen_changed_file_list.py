@@ -56,14 +56,18 @@ def main() -> int:
     else:
         listing = "nothing else"
 
+    # The gloss must not enumerate categories.  A hand-written paraphrase of a
+    # derived list desynchronises the moment the list grows -- which is exactly
+    # what happened when a second script joined the diff and the sentence still
+    # spoke of "the comparison script" in the singular.
     para = (r"Between that commit and this checkpoint "
             r"\verb|git diff --name-only| returns exactly " + listing +
             r" together with " + tt(lean) +
-            r""".  Only the last of those is elaborated, and it changed
-\emph{only in comments}; the others are this manuscript in its previous version,
-the ledger, the comparison script and a generated dashboard, none of which Lean
-ever sees.  This list is produced from the command's output rather than typed,
-because twice it was typed and twice it was wrong.""")
+            r""".  Of those, only """ + tt(lean) +
+            r""" is elaborated, and it changed \emph{only in comments}; every
+other file listed is a non-Lean artefact that the elaborator never sees.  Both
+the list and this sentence are produced from the command's output rather than
+typed, because twice the list was typed and twice it was wrong.""")
 
     t = io.open(tex, encoding="utf-8", newline="").read()
     nl = "\r\n" if "\r\n" in t else "\n"
