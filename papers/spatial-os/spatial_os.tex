@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{821920975e4ab1e3124227c294217f38db2228d6}
+\newcommand{\anchor}{0896cdfe9d8d984f8b7154d9f108bf5145588687}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -90,10 +90,13 @@ property of the kernel is used at all.
 
 \textbf{What the source weight does.}  In the companion paper the weight was
 handled by congruence: conjugation by $\sqrt{w}$ cannot change the sign of a
-quadratic form.  Here it is not conjugated away, it is \emph{summed} away: the
-weight of every interior slice is absorbed into the collapse, and what survives
-at the boundary is the kernel alone.  Two different reasons, same conclusion ---
-nothing in the hypotheses depends on $w$ beyond positivity.
+quadratic form.  Here it is not conjugated away, it is \emph{summed} away --- and
+what is left over differs between the two geometries.  In the bond case every
+source weight is absorbed into the collapse and the bare kernel remains; in the
+site case the shared boundary slice survives as a factor $1/w(\sigma)$, because
+each half carries that slice's weight and the product would count it twice.
+Different reasons, same conclusion: nothing in the hypotheses depends on $w$
+beyond positivity.
 
 \textbf{What this is not.}  No reconstruction: the physical Hilbert space as the
 quotient of the past algebra by the null space of this form is not built.
@@ -424,10 +427,13 @@ limit, or the Clay problem \cite{Clay}.
 
 \section{Reproducibility}\label{sec:repro}
 
-All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}.
-Every hyperlink was resolved against that commit, and checked to point at an
-actual declaration line, before compilation, again inside the compiled PDF, and
-again live over HTTP.
+All \emph{code and verification} artifacts --- the module, the oracle, the
+judges, the ledger --- are at source checkpoint \texttt{\anchor} on branch
+\texttt{main}.  This manuscript and its PDF are not: they are committed on top of
+that checkpoint, in the commit whose parent it is, since a document cannot cite
+the commit that introduces it.  Every hyperlink was resolved against
+\texttt{\anchor}, and checked to point at an actual declaration line, before
+compilation, again inside the compiled PDF, and again live over HTTP.
 
 \paragraph{Where the counters were measured, and why not at this commit.}  They
 were measured on commit \texttt{e232819d}, in a window with no other elaborator
@@ -440,9 +446,13 @@ which is elaborated.
 That is a checkable claim rather than a promise:
 \repofile{scripts/check\_code\_identical.py}{scripts/check\_code\_identical.py}
 takes a repository and \emph{two revisions}, reads both from git, strips every
-comment from each and compares what remains.  On
-\texttt{e232819d} against this checkpoint it reports \textsc{identical}, $23178$
-code characters on both sides.  The counters were not re-measured because the
+comment from each and compares what remains.  It keeps all other whitespace,
+because indentation is syntax in Lean and a comparator that collapsed it could
+call two files identical when they parse differently; it drops only lines left
+entirely blank, which carry no column information; and it respects string
+literals, so a \verb|--| inside a string does not open a comment.  On
+\texttt{e232819d} against the code checkpoint it reports \textsc{identical},
+$25602$ code characters on both sides.  The counters were not re-measured because the
 host's Lean dependency tree was destroyed between the two versions
 (\S\ref{sec:host}), and re-running them requires a full restore.
 
