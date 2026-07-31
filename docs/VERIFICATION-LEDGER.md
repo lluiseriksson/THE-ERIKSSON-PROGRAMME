@@ -25776,3 +25776,46 @@ open.  Claude Fable 5 High independently audited the native rooted-residual
 design through the Fable Bridge using profile `default` and the explicitly
 selected account `luis.ebikeride@gmail.com`; only conclusions independently
 checked against the Lean tree are recorded here.
+
+## Addendum 511 (2026-07-31, **common Eq.-(80)/Lemma-1 centered region: boundary-complete `domain_subset` geometry GREEN**)
+
+The direct Eq.-(80) and native CMP109 Lemma-1 sectors now have a single
+canonical centered block region.  Its generator family is the literal union
+of the direct physical block-domain family with the finite image of every
+coarsened native support.  The native terminal indices and their native tree
+metrics are not quotiented: `Finset.image` is used only to generate the
+idempotent block carrier `Z0`.  No boundary domain is filtered out and no
+support is assumed to lie in the old direct region.
+
+The module proves monotonicity of the localization core, inclusion of the old
+direct centered region in the common region, inclusion of every indexed
+native coarsened support, and preservation of the bilateral direct-domain
+interior statement after enlargement.  Thus it closes the geometric shape
+needed to derive terminal `domain_subset` for the later disjoint direct/native
+index compositor.  It does not yet construct that compositor and therefore
+does not claim the terminal record field itself.
+
+**Clean remote focal replay.**  The exact three-file v2 overlay has SHA-256
+`7CFFF3039BF51F9201A1417CEDEDFF196D5EF9526ED7701FBF2D5C3A0578EC80`
+and is archived at
+<https://drive.google.com/file/d/1jfTOExmO59zxvIKCxse-stcha1-i8Vzb/view>.
+It was replayed over base
+`ccfc85d4e42e94965677896af673110f4b0fdb9a`, with toolchain
+`leanprover/lean4:v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`.  The exact terminal line was
+`Build completed successfully (8749 jobs).` and the wrapper recorded
+`Z0V2_EXIT_0`.  All eight focal declarations report exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+**Quantitative boundary.**  This checkpoint proves no cardinality estimate
+for the enlarged `Z0`.  The already proved native bound
+`cmp109Lemma1NativeIndexed_rooted_residual_le` remains indexed by every
+literal native domain and therefore retains multiplicity even when supports
+coincide.  Still open are the direct-sector rooted estimate, the joint choice
+`rootBound_direct + cmp109Lemma1NativeRootBound`, and the single terminal
+`volume_budget` evaluated with the enlarged common region.  Claude Fable 5
+High independently audited this separation through profile `default` and the
+verified account `luis.ebikeride@gmail.com`; its claim that the native rooted
+estimate was still open was rejected after direct inspection of the theorem
+above.
