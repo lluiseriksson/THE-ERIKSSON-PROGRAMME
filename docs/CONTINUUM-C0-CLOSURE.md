@@ -101,4 +101,3 @@ successor campaigns:
 5. a geometric reflection-positive producer on the continuum-facing test
    algebra; and
 6. reconstruction and a continuum spectral gap.
-
