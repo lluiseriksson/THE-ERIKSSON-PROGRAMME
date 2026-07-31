@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{fb304e62ad144ce807eaf531b868e995b3c1345b}
+\newcommand{\anchor}{3bf0a785eddbd6dfb2f49c007961155e660b14e3}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -440,8 +440,10 @@ were measured on commit \texttt{e232819d}, in a window with no other elaborator
 running on the host.  Between that commit and this checkpoint the \emph{only}
 Lean file touched is \texttt{YangMills/OS/SpatialOS.lean}, and it changed only in
 comments --- prose corrections to its header and three docstrings.  The rest of
-the checkpoint's changes are this manuscript, the ledger and a script, none of
-which is elaborated.
+the checkpoint's changes are this manuscript, the ledger, the comparison script
+and the generated dashboard.  None of them is elaborated, and the list is
+exhaustive: \verb|git diff --name-only| between the measured commit and this
+checkpoint returns exactly those files and \texttt{SpatialOS.lean}.
 
 That is a checkable claim rather than a promise:
 \repofile{scripts/check\_code\_identical.py}{scripts/check\_code\_identical.py}
@@ -449,7 +451,8 @@ takes a repository and \emph{two revisions}, reads both from git, strips every
 comment from each and compares what remains.  It keeps all other whitespace,
 because indentation is syntax in Lean and a comparator that collapsed it could
 call two files identical when they parse differently; it drops only lines left
-blank lines and trailing space, on the lines where neither carries meaning; it
+entirely blank and trims trailing space, on the lines where neither carries
+meaning; it
 replaces each comment by \emph{spaces of that comment's own width}, one per
 character; and it treats string literals as data.
 
