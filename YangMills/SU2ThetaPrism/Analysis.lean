@@ -236,9 +236,9 @@ def relativeCoordinateEquiv : (SU2 × SU2) ≃ᵐ (SU2 × SU2) where
   left_inv p := by simp [div_eq_mul_inv]
   right_inv p := by simp [div_eq_mul_inv]
   measurable_toFun :=
-    (measurable_fst.mul measurable_snd).prod_mk measurable_snd
+    (measurable_fst.mul measurable_snd).prodMk measurable_snd
   measurable_invFun :=
-    (measurable_fst.div measurable_snd).prod_mk measurable_snd
+    (measurable_fst.div measurable_snd).prodMk measurable_snd
 
 @[simp] theorem relativeCoordinateEquiv_apply (p : SU2 × SU2) :
     relativeCoordinateEquiv p = (p.1 * p.2, p.2) := rfl
@@ -256,14 +256,14 @@ the separately proved Haar-invariant coordinate change above. -/
 def fubiniCoordinatesConcrete : FubiniCoordinateSteps where
   u_exchange phi hphi := by
     rw [pairingU, integral_prod _ hphi]
-    apply integral_congr
-    intro U
-    rw [conditionalU, ← integral_mul_const]
+    apply integral_congr_ae
+    exact ae_of_all _ fun U => by
+      rw [conditionalU, ← integral_mul_const]
   v_exchange phi hphi := by
     rw [pairingV, integral_prod_symm _ hphi]
-    apply integral_congr
-    intro V
-    rw [conditionalV, ← integral_mul_const]
+    apply integral_congr_ae
+    exact ae_of_all _ fun V => by
+      rw [conditionalV, ← integral_mul_const]
   relative_coordinate_exchange phi hphi := by
     let f : SU2 × SU2 → ℂ := fun p =>
       witness p.1 p.2 * star (phi (p.1 * p.2⁻¹))
@@ -282,11 +282,11 @@ def fubiniCoordinatesConcrete : FubiniCoordinateSteps where
       _ = ∫ X, ∫ W, f (e (X, W)) ∂haarSU2 ∂haarSU2 :=
         integral_prod _ hcomp
       _ = ∫ X, conditionalRelative X * star (phi X) ∂haarSU2 := by
-        apply integral_congr
-        intro X
-        simp only [e, relativeCoordinateEquiv_apply, f, Prod.fst, Prod.snd]
-        simp only [mul_inv_cancel_right]
-        rw [conditionalRelative, ← integral_mul_const]
+        apply integral_congr_ae
+        exact ae_of_all _ fun X => by
+          simp only [e, relativeCoordinateEquiv_apply, f, Prod.fst, Prod.snd]
+          simp only [mul_inv_cancel_right]
+          rw [conditionalRelative, ← integral_mul_const]
 
 def CompleteUOrthogonality : Prop :=
   ∀ phi, UPairingIntegrable phi → pairingU phi = 0
