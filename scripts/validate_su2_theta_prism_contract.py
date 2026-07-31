@@ -44,6 +44,8 @@ review_text = REVIEW.read_text(encoding="utf-8") if REVIEW.exists() else ""
 for marker in ("Technical input", "Artefact lemmas used", "Headline derived"):
     if marker not in review_text:
         errors.append(f"manual review: missing column {marker!r}")
+if "PENDING" in review_text:
+    errors.append("manual review: unresolved PENDING participation row")
 
 if errors:
     for error in errors:
@@ -51,4 +53,3 @@ if errors:
     raise SystemExit(1)
 
 print(f"PASS: checked {len(lean_files)} Lean files; loaded-hypothesis rule visible")
-
