@@ -1,0 +1,185 @@
+=== PDFLATEX PASS 1 ===
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(front_note.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+ (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+)))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty) (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty)))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def)
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0041-v4\artifacts\2602_0041_v4_front.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0041-v4\artifacts\2602_0041_v4_front.out)
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0041-v4\artifacts\2602_0041_v4_front.out) [1{C:/Use
+rs/lluis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/lluis/AppDa
+ta/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0041-v4\artifacts\2602_0041_v4_front.aux) )<C:/User
+s/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/User
+s/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/User
+s/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users
+/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
+Output written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-C
+ODEX-AUTOPILOT\output\publication-audit\2602.0041-v4\artifacts\2602_0041_v4_fro
+nt.pdf (1 page, 116542 bytes).
+Transcript written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAM
+ME-CODEX-AUTOPILOT\output\publication-audit\2602.0041-v4\artifacts\2602_0041_v4
+_front.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.
+
+
+=== PDFLATEX PASS 2 ===
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(front_note.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+ (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+)))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty) (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty)))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def)
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0041-v4\artifacts\2602_0041_v4_front.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0041-v4\artifacts\2602_0041_v4_front.out)
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0041-v4\artifacts\2602_0041_v4_front.out) [1{C:/Use
+rs/lluis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/lluis/AppDa
+ta/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0041-v4\artifacts\2602_0041_v4_front.aux) )<C:/User
+s/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/User
+s/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/User
+s/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users
+/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
+Output written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-C
+ODEX-AUTOPILOT\output\publication-audit\2602.0041-v4\artifacts\2602_0041_v4_fro
+nt.pdf (1 page, 116542 bytes).
+Transcript written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAM
+ME-CODEX-AUTOPILOT\output\publication-audit\2602.0041-v4\artifacts\2602_0041_v4
+_front.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.
+
+
+=== BUILD RESULT ===
+{
+  "status": "BUILT-NOT-INDEPENDENTLY-AUDITED",
+  "final_pdf": "2602.0041v4-d268921d-12pp.pdf",
+  "final_sha256": "d268921dd8fd3a1ee4b1440118692ffc53472e1c3ef84f84736b95016b1ba93d",
+  "pages": 12,
+  "front_pages": 1,
+  "public_v3_pages": 11,
+  "public_v3_sha256": "f67dea05d521ce5ea59caf79edca8038f0eb850b5c2256282394ca665c01afbb",
+  "source_sha256": "4582fa1762a5f57c661afd94d1bc2cbc8e30ac877dc8a408b3b7231b6a105b20"
+}

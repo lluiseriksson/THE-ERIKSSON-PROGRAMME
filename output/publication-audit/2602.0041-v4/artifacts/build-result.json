@@ -1,0 +1,10 @@
+{
+  "status": "BUILT-NOT-INDEPENDENTLY-AUDITED",
+  "final_pdf": "2602.0041v4-d268921d-12pp.pdf",
+  "final_sha256": "d268921dd8fd3a1ee4b1440118692ffc53472e1c3ef84f84736b95016b1ba93d",
+  "pages": 12,
+  "front_pages": 1,
+  "public_v3_pages": 11,
+  "public_v3_sha256": "f67dea05d521ce5ea59caf79edca8038f0eb850b5c2256282394ca665c01afbb",
+  "source_sha256": "4582fa1762a5f57c661afd94d1bc2cbc8e30ac877dc8a408b3b7231b6a105b20"
+}

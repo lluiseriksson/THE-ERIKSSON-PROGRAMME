@@ -1,0 +1,40 @@
+STATUS: HOLD - BUILT, NOT YET INDEPENDENTLY AUDITED
+PUBLICATION ACTION: REPLACE VERSION
+PUBLICATION: ai.viXra.org:2602.0038
+CATEGORY: Quantum Physics
+
+TITLE:
+Zero-Momentum Propagator Bound in a Simplified Gribov-Zwanziger Lattice Measure
+
+AUTHOR:
+Lluis Eriksson
+
+ABSTRACT:
+This replacement corrects the title and headline scope while preserving public version 2 in full. For the simplified quadratic Gribov-Zwanziger lattice measure defined in the manuscript, the zero-momentum propagator obeys the stated volume-uniform bound and its thermodynamic-limit value is computed. Finiteness of D(0) is only the necessary condition identified in Definition 4: it does not by itself prove exponential clustering, a transfer-operator spectral gap, a mass gap for the simplified measure, or a mass gap for Wilson Yang-Mills theory. The former title's phrases "Mass Gap" and "A Non-Perturbative Proof" are withdrawn. No continuum-limit or Clay-problem conclusion is claimed.
+
+COMMENTS:
+11 pages. v3: 1-page retitling/scope correction followed by the preserved 10-page v2.
+
+CHANGE NOTE:
+The title is narrowed to the theorem actually proved. The analytic bound for the simplified quadratic measure is retained; mass-gap, exponential-clustering, Wilson-theory and continuum implications are explicitly not claimed. Public v2 is preserved after the correction page.
+
+FILE:
+artifacts/2602.0038v3-4bcadc2d-11pp.pdf
+
+PUBLIC ABSTRACT URL:
+https://ai.vixra.org/abs/2602.0038
+
+CURRENT PUBLIC PDF URL:
+https://ai.vixra.org/pdf/2602.0038v2.pdf
+
+CURRENT PUBLIC PDF SHA-256:
+306d2336ad3c415fce994ba20ee0488ba20739ed5002877fc7a79745c530da16
+
+IMMUTABLE GITHUB SOURCE LINK:
+PENDING UNTIL COMMIT AND PUSH
+
+OWNER ORDER:
+HOLD UNTIL SUPERSESSION MATRIX IS CLOSED
+
+OWNER ACTION:
+DO NOT UPLOAD OR CLICK SUBMIT.

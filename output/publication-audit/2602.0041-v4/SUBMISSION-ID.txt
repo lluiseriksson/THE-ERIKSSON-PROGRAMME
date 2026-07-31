@@ -1,0 +1,40 @@
+STATUS: HOLD - BUILT, NOT YET INDEPENDENTLY AUDITED
+PUBLICATION ACTION: REPLACE VERSION
+PUBLICATION: ai.viXra.org:2602.0041
+CATEGORY: Mathematical Physics
+
+TITLE:
+Uniform Log-Sobolev Inequality and Mass Gap for Lattice Yang-Mills Theory: A Conditional Reduction
+
+AUTHOR:
+Lluis Eriksson
+
+ABSTRACT:
+This replacement corrects the title and foregrounds the logical status already partly recorded in public version 3. The uniform log-Sobolev conclusion requires the cross-scale derivative hypothesis (H-XSD), whose purported companion-paper discharge is not re-verified here. The mass-gap conclusion additionally requires the Dobrushin-type hypothesis (H-DOB), or an independently valid alternative DLR-LSI/mixing route. Neither input is proved by this manuscript alone. No unconditional weak-coupling lattice mass gap, continuum construction, Osterwalder-Schrader reconstruction, or Clay-problem result is claimed. The preserved version 3 follows the correction page for provenance.
+
+COMMENTS:
+12 pages. v4: 1-page retitling/scope correction followed by the preserved 11-page v3.
+
+CHANGE NOTE:
+The public title is changed to say "A Conditional Reduction". The correction page makes H-XSD and H-DOB explicit, retains the parameter-window caveat, and prevents finite numerical checks or companion citations from being read as an unconditional discharge.
+
+FILE:
+artifacts/2602.0041v4-d268921d-12pp.pdf
+
+PUBLIC ABSTRACT URL:
+https://ai.vixra.org/abs/2602.0041
+
+CURRENT PUBLIC PDF URL:
+https://ai.vixra.org/pdf/2602.0041v3.pdf
+
+CURRENT PUBLIC PDF SHA-256:
+f67dea05d521ce5ea59caf79edca8038f0eb850b5c2256282394ca665c01afbb
+
+IMMUTABLE GITHUB SOURCE LINK:
+PENDING UNTIL COMMIT AND PUSH
+
+OWNER ORDER:
+HOLD UNTIL SUPERSESSION MATRIX IS CLOSED
+
+OWNER ACTION:
+DO NOT UPLOAD OR CLICK SUBMIT.
