@@ -7,6 +7,7 @@ Authors: Lluis Eriksson
 import Mathlib
 import YangMills.OS.SpatialGibbs
 import YangMills.OS.PerronKernel
+import YangMills.OS.SpatialSpectral
 
 /-!
 # The ring weight, and the symmetry that splits its spectrum
@@ -144,6 +145,298 @@ theorem act_flip_comm_ring {L : ℕ} (γ β : ℝ)
     act (symWeighted (spatialWeightRing γ) β) (flipObs u)
       = flipObs (act (symWeighted (spatialWeightRing γ) β) u) :=
   act_flip_comm (fun σ τ => symWeighted_flip (spatialWeightRing_flip γ) β σ τ) u
+
+/-! ## §3b  The abstract sector interface
+
+The two analytic estimates still missing from the uniformity target live on
+different eigenspaces of the flip.  This section makes that reduction an actual
+Lean interface before any diagonalisation is attempted.  It is deliberately
+independent of the ring kernel except for the two invariance lemmas at the end.
+-/
+
+@[simp] theorem flipObs_flip {L : ℕ} (u : (Fin L → Fin 2) → ℝ) :
+    flipObs (flipObs u) = u := by
+  funext σ
+  simp [flipObs]
+
+/-- Membership in the even sector of the global spin flip. -/
+def IsFlipEven {L : ℕ} (u : (Fin L → Fin 2) → ℝ) : Prop :=
+  flipObs u = u
+
+/-- Membership in the odd sector of the global spin flip. -/
+def IsFlipOdd {L : ℕ} (u : (Fin L → Fin 2) → ℝ) : Prop :=
+  flipObs u = -u
+
+theorem isFlipEven_iff {L : ℕ} {u : (Fin L → Fin 2) → ℝ} :
+    IsFlipEven u ↔ ∀ σ, u (flipCfg σ) = u σ := by
+  constructor
+  · intro h σ
+    simpa [IsFlipEven, flipObs] using congrFun h σ
+  · intro h
+    unfold IsFlipEven
+    funext σ
+    exact h σ
+
+theorem isFlipOdd_iff {L : ℕ} {u : (Fin L → Fin 2) → ℝ} :
+    IsFlipOdd u ↔ ∀ σ, u (flipCfg σ) = -u σ := by
+  constructor
+  · intro h σ
+    simpa [IsFlipOdd, flipObs] using congrFun h σ
+  · intro h
+    unfold IsFlipOdd
+    funext σ
+    simpa using h σ
+
+/-- The projector `u₊ = (u + Ju) / 2` onto the even flip sector. -/
+noncomputable def evenPart {L : ℕ} (u : (Fin L → Fin 2) → ℝ) :
+    (Fin L → Fin 2) → ℝ :=
+  fun σ => (u σ + flipObs u σ) / 2
+
+/-- The projector `u₋ = (u - Ju) / 2` onto the odd flip sector. -/
+noncomputable def oddPart {L : ℕ} (u : (Fin L → Fin 2) → ℝ) :
+    (Fin L → Fin 2) → ℝ :=
+  fun σ => (u σ - flipObs u σ) / 2
+
+/-- Every observable is the sum of its even and odd parts. -/
+theorem evenPart_add_oddPart {L : ℕ} (u : (Fin L → Fin 2) → ℝ) :
+    (fun σ => evenPart u σ + oddPart u σ) = u := by
+  funext σ
+  simp only [evenPart, oddPart]
+  ring
+
+/-- The even projector lands in the even sector. -/
+theorem isFlipEven_evenPart {L : ℕ} (u : (Fin L → Fin 2) → ℝ) :
+    IsFlipEven (evenPart u) := by
+  unfold IsFlipEven
+  funext σ
+  simp [evenPart, flipObs]
+  ring
+
+/-- The odd projector lands in the odd sector. -/
+theorem isFlipOdd_oddPart {L : ℕ} (u : (Fin L → Fin 2) → ℝ) :
+    IsFlipOdd (oddPart u) := by
+  unfold IsFlipOdd
+  funext σ
+  simp [oddPart, flipObs]
+  ring
+
+/-- The two flip sectors are orthogonal for the Euclidean pairing. -/
+theorem flipEven_flipOdd_orthogonal {L : ℕ}
+    {u v : (Fin L → Fin 2) → ℝ} (hu : IsFlipEven u) (hv : IsFlipOdd v) :
+    ∑ σ, u σ * v σ = 0 := by
+  have huflip : ∀ σ, u (flipCfg σ) = u σ := by
+    intro σ
+    simpa [IsFlipEven, flipObs] using congrFun hu σ
+  have hvflip : ∀ σ, v (flipCfg σ) = -v σ := by
+    intro σ
+    simpa [IsFlipOdd, flipObs] using congrFun hv σ
+  have hreindex : ∑ σ, u (flipCfg σ) * v (flipCfg σ) = ∑ σ, u σ * v σ := by
+    exact Equiv.sum_comp (flipEquiv L) (fun σ => u σ * v σ)
+  have hneg : ∑ σ, u (flipCfg σ) * v (flipCfg σ) = -∑ σ, u σ * v σ := by
+    calc
+      ∑ σ, u (flipCfg σ) * v (flipCfg σ) = ∑ σ, -(u σ * v σ) := by
+        exact Finset.sum_congr rfl fun σ _ => by rw [huflip, hvflip]; ring
+      _ = -∑ σ, u σ * v σ := by rw [Finset.sum_neg_distrib]
+  linarith
+
+/-- In particular, the canonical even and odd parts are orthogonal. -/
+theorem evenPart_oddPart_orthogonal {L : ℕ} (u : (Fin L → Fin 2) → ℝ) :
+    ∑ σ, evenPart u σ * oddPart u σ = 0 :=
+  flipEven_flipOdd_orthogonal (isFlipEven_evenPart u) (isFlipOdd_oddPart u)
+
+/-- Pythagoras for two observables whose Euclidean pairing vanishes. -/
+theorem eucNorm_add_sq_of_orthogonal {L : ℕ}
+    {u v : (Fin L → Fin 2) → ℝ} (horth : ∑ σ, u σ * v σ = 0) :
+    eucNorm (fun σ => u σ + v σ) * eucNorm (fun σ => u σ + v σ)
+      = eucNorm u * eucNorm u + eucNorm v * eucNorm v := by
+  rw [eucNorm_mul_self, eucNorm_mul_self, eucNorm_mul_self]
+  calc
+    ∑ σ, (u σ + v σ) * (u σ + v σ)
+        = ∑ σ, (u σ * u σ + (2 * (u σ * v σ) + v σ * v σ)) := by
+          exact Finset.sum_congr rfl fun σ _ => by ring
+    _ = (∑ σ, u σ * u σ) + (2 * ∑ σ, u σ * v σ) + ∑ σ, v σ * v σ := by
+          rw [Finset.sum_add_distrib, Finset.sum_add_distrib, Finset.mul_sum]
+    _ = (∑ σ, u σ * u σ) + ∑ σ, v σ * v σ := by rw [horth]; ring
+
+/-- The sector decomposition is orthogonal, hence norm-square preserving. -/
+theorem evenPart_oddPart_norm_sq {L : ℕ} (u : (Fin L → Fin 2) → ℝ) :
+    eucNorm u * eucNorm u
+      = eucNorm (evenPart u) * eucNorm (evenPart u)
+        + eucNorm (oddPart u) * eucNorm (oddPart u) := by
+  rw [← evenPart_add_oddPart u]
+  exact eucNorm_add_sq_of_orthogonal (evenPart_oddPart_orthogonal u)
+
+/-- A flip-invariant kernel preserves the even sector. -/
+theorem act_preserves_flipEven {L : ℕ}
+    {K : (Fin L → Fin 2) → (Fin L → Fin 2) → ℝ}
+    (hK : ∀ σ τ, K (flipCfg σ) (flipCfg τ) = K σ τ)
+    {u : (Fin L → Fin 2) → ℝ} (hu : IsFlipEven u) :
+    IsFlipEven (act K u) := by
+  unfold IsFlipEven at hu ⊢
+  rw [← act_flip_comm hK u, hu]
+
+/-- A flip-invariant kernel preserves the odd sector. -/
+theorem act_preserves_flipOdd {L : ℕ}
+    {K : (Fin L → Fin 2) → (Fin L → Fin 2) → ℝ}
+    (hK : ∀ σ τ, K (flipCfg σ) (flipCfg τ) = K σ τ)
+    {u : (Fin L → Fin 2) → ℝ} (hu : IsFlipOdd u) :
+    IsFlipOdd (act K u) := by
+  unfold IsFlipOdd at hu ⊢
+  calc
+    flipObs (act K u) = act K (flipObs u) := (act_flip_comm hK u).symm
+    _ = act K (-u) := by rw [hu]
+    _ = -act K u := by
+      simpa using act_smul K (-1 : ℝ) u
+
+/-- Because an even vacuum is orthogonal to the whole odd sector, every odd
+observable is automatically a fluctuation observable. -/
+theorem flipOdd_perp_of_flipEven {L : ℕ}
+    {Ω u : (Fin L → Fin 2) → ℝ} (hΩ : IsFlipEven Ω) (hu : IsFlipOdd u) :
+    ∑ σ, Ω σ * u σ = 0 :=
+  flipEven_flipOdd_orthogonal hΩ hu
+
+/-- If `u` is orthogonal to an even vacuum, then its even projection is still
+orthogonal to that vacuum. -/
+theorem evenPart_perp_of_perp {L : ℕ}
+    {Ω u : (Fin L → Fin 2) → ℝ} (hΩ : IsFlipEven Ω)
+    (hperp : ∑ σ, Ω σ * u σ = 0) :
+    ∑ σ, Ω σ * evenPart u σ = 0 := by
+  have hodd : ∑ σ, Ω σ * oddPart u σ = 0 :=
+    flipOdd_perp_of_flipEven hΩ (isFlipOdd_oddPart u)
+  have hsplit : ∑ σ, Ω σ * u σ
+      = (∑ σ, Ω σ * evenPart u σ) + ∑ σ, Ω σ * oddPart u σ := by
+    rw [← Finset.sum_add_distrib]
+    exact Finset.sum_congr rfl fun σ _ => by
+      have hs := congrFun (evenPart_add_oddPart u) σ
+      rw [← hs]
+      ring
+  linarith
+
+/-- The abstract recombination lemma.  If the two invariant flip sectors obey
+the same norm bound, then their orthogonal sum obeys it too.  For the even
+sector only the part orthogonal to the even vacuum is required. -/
+theorem norm_act_le_of_flip_sector_bounds {L : ℕ}
+    {K : (Fin L → Fin 2) → (Fin L → Fin 2) → ℝ}
+    (hK : ∀ σ τ, K (flipCfg σ) (flipCfg τ) = K σ τ)
+    {Ω : (Fin L → Fin 2) → ℝ} (hΩ : IsFlipEven Ω) {r : ℝ} (hr : 0 ≤ r)
+    (hodd : ∀ u, IsFlipOdd u → eucNorm (act K u) ≤ r * eucNorm u)
+    (heven : ∀ u, IsFlipEven u → (∑ σ, Ω σ * u σ = 0) →
+      eucNorm (act K u) ≤ r * eucNorm u)
+    {u : (Fin L → Fin 2) → ℝ} (hperp : ∑ σ, Ω σ * u σ = 0) :
+    eucNorm (act K u) ≤ r * eucNorm u := by
+  have hpEven : IsFlipEven (evenPart u) := isFlipEven_evenPart u
+  have hmOdd : IsFlipOdd (oddPart u) := isFlipOdd_oddPart u
+  have hpPerp : ∑ σ, Ω σ * evenPart u σ = 0 := evenPart_perp_of_perp hΩ hperp
+  have hpBound := heven (evenPart u) hpEven hpPerp
+  have hmBound := hodd (oddPart u) hmOdd
+  have hpActEven : IsFlipEven (act K (evenPart u)) := act_preserves_flipEven hK hpEven
+  have hmActOdd : IsFlipOdd (act K (oddPart u)) := act_preserves_flipOdd hK hmOdd
+  have hactOrth : ∑ σ, act K (evenPart u) σ * act K (oddPart u) σ = 0 :=
+    flipEven_flipOdd_orthogonal hpActEven hmActOdd
+  have hactSplit : act K u = fun σ => act K (evenPart u) σ + act K (oddPart u) σ := by
+    rw [← evenPart_add_oddPart u, act_add]
+  have hactSq : eucNorm (act K u) * eucNorm (act K u)
+      = eucNorm (act K (evenPart u)) * eucNorm (act K (evenPart u))
+        + eucNorm (act K (oddPart u)) * eucNorm (act K (oddPart u)) := by
+    rw [hactSplit]
+    exact eucNorm_add_sq_of_orthogonal hactOrth
+  have huSq := evenPart_oddPart_norm_sq u
+  have hpSq : eucNorm (act K (evenPart u)) * eucNorm (act K (evenPart u))
+      ≤ (r * eucNorm (evenPart u)) * (r * eucNorm (evenPart u)) := by
+    nlinarith [eucNorm_nonneg (act K (evenPart u)), eucNorm_nonneg (evenPart u),
+      mul_nonneg hr (eucNorm_nonneg (evenPart u))]
+  have hmSq : eucNorm (act K (oddPart u)) * eucNorm (act K (oddPart u))
+      ≤ (r * eucNorm (oddPart u)) * (r * eucNorm (oddPart u)) := by
+    nlinarith [eucNorm_nonneg (act K (oddPart u)), eucNorm_nonneg (oddPart u),
+      mul_nonneg hr (eucNorm_nonneg (oddPart u))]
+  have hsq : eucNorm (act K u) * eucNorm (act K u)
+      ≤ (r * eucNorm u) * (r * eucNorm u) := by
+    nlinarith
+  nlinarith [eucNorm_nonneg (act K u), eucNorm_nonneg u,
+    mul_nonneg hr (eucNorm_nonneg u)]
+
+/-- The ring-weighted transfer operator preserves the even flip sector. -/
+theorem act_ring_preserves_flipEven {L : ℕ} (γ β : ℝ)
+    {u : (Fin (L + 1) → Fin 2) → ℝ} (hu : IsFlipEven u) :
+    IsFlipEven (act (symWeighted (spatialWeightRing γ) β) u) :=
+  act_preserves_flipEven
+    (fun σ τ => symWeighted_flip (spatialWeightRing_flip γ) β σ τ) hu
+
+/-- The ring-weighted transfer operator preserves the odd flip sector. -/
+theorem act_ring_preserves_flipOdd {L : ℕ} (γ β : ℝ)
+    {u : (Fin (L + 1) → Fin 2) → ℝ} (hu : IsFlipOdd u) :
+    IsFlipOdd (act (symWeighted (spatialWeightRing γ) β) u) :=
+  act_preserves_flipOdd
+    (fun σ τ => symWeighted_flip (spatialWeightRing_flip γ) β σ τ) hu
+
+/-! ## §3c  The two remaining analytic obligations, typed
+
+Both propositions include `β ≥ 0` and `γ ≥ 0` as data because the measured
+negative-coupling counterexamples show that neither sign assumption is cosmetic.
+They are obligations, not results proved in this file.
+-/
+
+/-- **ODD-BLOCK OBLIGATION.**  Under `β ≥ 0` and `γ ≥ 0`, the odd flip sector
+contracts at the candidate rate `tanh β · exp(2γ)` relative to the Perron scale. -/
+def SpatialRingOddSectorBound (β γ : ℝ) (L : ℕ) (lam : ℝ) : Prop :=
+  0 ≤ β ∧ 0 ≤ γ ∧
+    ∀ u : (Fin (L + 1) → Fin 2) → ℝ, IsFlipOdd u →
+      eucNorm (act (symWeighted (spatialWeightRing γ) β) u)
+        ≤ (Real.tanh β * Real.exp (2 * γ) * lam) * eucNorm u
+
+/-- **EVEN NON-PERRON OBLIGATION.**  Under `β ≥ 0` and `γ ≥ 0`, the part of
+the even flip sector orthogonal to the Perron vector contracts at the same
+candidate rate. -/
+def SpatialRingEvenFluctuationBound (β γ : ℝ) (L : ℕ)
+    (Ω : (Fin (L + 1) → Fin 2) → ℝ) (lam : ℝ) : Prop :=
+  0 ≤ β ∧ 0 ≤ γ ∧
+    ∀ u : (Fin (L + 1) → Fin 2) → ℝ, IsFlipEven u →
+      (∑ σ, Ω σ * u σ = 0) →
+      eucNorm (act (symWeighted (spatialWeightRing γ) β) u)
+        ≤ (Real.tanh β * Real.exp (2 * γ) * lam) * eucNorm u
+
+/-- **SECTOR REDUCTION OF THE UNIFORM RING TARGET.**  For `β ≥ 0` and
+`γ ≥ 0`, the two explicit sector obligations above imply exactly
+`specRatio ≤ tanh β · exp(2γ)`.  No analytic sector estimate is hidden here. -/
+theorem spatialRing_specRatio_le_of_sector_bounds (β γ : ℝ)
+    (hβ : 0 ≤ β) (hγ : 0 ≤ γ) (L : ℕ)
+    {Ω : (Fin (L + 1) → Fin 2) → ℝ} {lam : ℝ} (hΩpos : ∀ σ, 0 < Ω σ)
+    (hΩeig : ∀ σ, ∑ τ, symWeighted (spatialWeightRing γ) β σ τ * Ω τ = lam * Ω σ)
+    (hΩeven : IsFlipEven Ω)
+    (hodd : SpatialRingOddSectorBound β γ L lam)
+    (heven : SpatialRingEvenFluctuationBound β γ L Ω lam) :
+    specRatio (symWeighted_symm (spatialWeightRing γ) β) lam
+      ≤ Real.tanh β * Real.exp (2 * γ) := by
+  let S := symWeighted (spatialWeightRing γ) β
+  have hSpos : ∀ σ τ, 0 < S σ τ := symWeighted_pos (spatialWeightRing_pos γ) β
+  have hSflip : ∀ σ τ, S (flipCfg σ) (flipCfg τ) = S σ τ :=
+    fun σ τ => symWeighted_flip (spatialWeightRing_flip γ) β σ τ
+  have hlam : 0 < lam := eigenvalue_pos hSpos hΩpos hΩeig
+  have hq : 0 ≤ Real.tanh β * Real.exp (2 * γ) :=
+    mul_nonneg (tanh_nonneg hβ) (Real.exp_pos _).le
+  have hfull : ∀ u : (Fin (L + 1) → Fin 2) → ℝ, (∑ σ, Ω σ * u σ = 0) →
+      eucNorm (act S u) ≤
+        (Real.tanh β * Real.exp (2 * γ) * lam) * eucNorm u := by
+    intro u hu
+    exact norm_act_le_of_flip_sector_bounds hSflip hΩeven
+      (mul_nonneg hq hlam.le) hodd.2.2 heven.2.2 hu
+  have hne : ((fun _ => (0 : Fin 2)) : Fin (L + 1) → Fin 2)
+      ≠ ((fun _ => (1 : Fin 2)) : Fin (L + 1) → Fin 2) := by
+    intro h
+    have hc := congrFun h (0 : Fin (L + 1))
+    exact absurd hc (by decide)
+  obtain ⟨⟨u, hu, hune, hval⟩, -⟩ :=
+    specGap_isGreatest hSpos (symWeighted_symm (spatialWeightRing γ) β)
+      hΩpos hΩeig hne
+  have hunorm : 0 < eucNorm u :=
+    lt_of_le_of_ne (eucNorm_nonneg u) (Ne.symm hune)
+  have hgap : specGap (symWeighted_symm (spatialWeightRing γ) β) lam
+      ≤ (Real.tanh β * Real.exp (2 * γ)) * lam := by
+    rw [hval, div_le_iff₀ hunorm]
+    simpa [S, mul_assoc] using hfull u hu
+  unfold specRatio
+  rw [div_le_iff₀ hlam]
+  exact hgap
 
 /-! ## §4  The Perron vector is even
 
