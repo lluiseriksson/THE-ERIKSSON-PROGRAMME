@@ -5,3 +5,6 @@ import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedRootedResidual
 #print axioms YangMills.RG.cmp116Eq80Lemma1CombinedRootBound
 #print axioms YangMills.RG.cmp116Eq80Lemma1CombinedRootBound_nonneg
 #print axioms YangMills.RG.cmp116Eq80Lemma1Combined_rooted_residual_le
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedPhysicalRootBound
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedPhysicalRootBound_nonneg
+#print axioms YangMills.RG.cmp116Eq80Lemma1Combined_rooted_residual_le_physical

@@ -25896,3 +25896,52 @@ terminal term-source constructor.  In particular, it does not count the
 combined `rooted_residual` field as closed: it reduces that field to one named
 direct analytic input and exposes the literal root bound that `volume_budget`
 must consume.
+
+## Addendum 514 (2026-07-31, **direct Eq.-(80) animal sum and combined terminal `rooted_residual` GREEN**)
+
+The remaining direct rooted input from Addendum 513 is now constructed.  The
+selected equation-(80) labels already live on the terminal coarse graph
+`cmp116CoarseFaceAdj 4 (2 * Q)`.  Their canonical `Fin` enumeration is
+reindexed exactly back to the selected label family; carrier injectivity is
+the subtype injection, connectivity is the literal source-label property,
+the graph degree is eight, and the shifted equation-(2.30) theorem transports
+the tree metric to cardinality decay.
+
+The explicit bound `cmp102Eq80SourcePi4DirectRootBound` contains no `M^4`
+factor: unlike the native sector, no fine-to-coarse root fibre is present.
+It consumes exactly the two animal windows already used by the native
+estimate and introduces no new smallness parameter or rooted-sum hypothesis.
+The theorem `cmp102Eq80SourcePi4Indexed_rooted_residual_le` proves this direct
+ledger for every coarse root.
+
+The compositor now defines
+`cmp116Eq80Lemma1CombinedPhysicalRootBound` as the literal sum of the direct
+and native explicit bounds.  The terminal-form theorem
+`cmp116Eq80Lemma1Combined_rooted_residual_le_physical` invokes both producers
+internally and has no rooted estimate as a premise.  Together with Addendum
+512, the concrete combined dictionary therefore discharges the three fields
+`domain_nonempty`, `domain_subset`, and `rooted_residual`.
+
+**Pinned consolidated replay.**  The exact six-file overlay has SHA-256
+`C5D5138F6DD0D97DF9A7C60F04FF0E72EE56FF62F11E96E60D620C1837F85983`
+and is archived at
+<https://drive.google.com/file/d/1QEzHniqdZ-j6nLPqsvmAiVe0dyRGe0yd/view>.
+It was validated in the same Colab Pro+ high-RAM checkout and pins recorded in
+Addendum 513.  The root terminal line was
+`Build completed successfully (10317 jobs).`  The eight direct and eight
+combined focal declarations all report exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+**Scope boundary.**  Enlarging `Z0` to retain every boundary domain still has
+two visible costs.  The scalar `volume_budget` must consume the literal
+combined root bound and the enlarged Gaussian cardinality.  Separately, the
+analytic `outer_bound` must be proved for the enlarged exterior integration;
+the easier inequality `outerBound_le_exp_card` is not counted as payment for
+that analytic cost.  No `CMP116Eq226CenteredConditionedPhysicalTermSource`
+instance is claimed in this addendum, and the analytic Eq. (1.36) proof for
+the Lemma-1 source certificate remains open.
+
+Claude Fable 5 High, using profile `default` and the verified account
+`luis.ebikeride@gmail.com`, proposed the direct animal argument.  Its result
+was accepted only after independent inspection of the enumeration,
+connectivity, degree, metric, and smallness declarations in the Lean tree.

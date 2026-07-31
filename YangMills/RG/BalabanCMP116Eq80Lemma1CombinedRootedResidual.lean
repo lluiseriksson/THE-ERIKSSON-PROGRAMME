@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedDomainDictionary
 import YangMills.RG.BalabanCMP109Lemma1NativeRootedResidual
+import YangMills.RG.BalabanCMP102Eq80SourcePi4RootedResidual
 
 /-!
 # Direct/native rooted residual composition
@@ -158,6 +159,79 @@ theorem cmp116Eq80Lemma1Combined_rooted_residual_le
     (cmp109Lemma1NativeIndexed_rooted_residual_le
       E root E0 epsilon1 C1 C2 kappa1 delta kappa alpha4
       hE0 hepsilon1 hC1 halpha4 hrate1 hrate2 hsmall1 hsmall2)
+
+/-- Literal physical common bound after discharging both the direct and
+native rooted ledgers. -/
+noncomputable def cmp116Eq80Lemma1CombinedPhysicalRootBound
+    (E0 epsilon1 C1 : ℝ) (M q : ℕ)
+    (C2 kappa1 delta kappa alpha4 : ℝ) : ℝ :=
+  cmp102Eq80SourcePi4DirectRootBound
+      E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4 +
+    cmp109Lemma1NativeRootBound
+      E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4
+
+/-- The combined physical root bound is nonnegative under exactly the two
+animal windows used by its sector estimates. -/
+theorem cmp116Eq80Lemma1CombinedPhysicalRootBound_nonneg
+    {E0 epsilon1 C1 C2 kappa1 delta kappa alpha4 : ℝ}
+    {M q : ℕ}
+    (hE0 : 0 ≤ E0) (hepsilon1 : 0 ≤ epsilon1)
+    (hC1 : 0 ≤ C1) (halpha4 : 0 ≤ alpha4)
+    (hsmall1 :
+      64 * Real.exp (-(((1 - 2 * delta) * kappa) / 24)) < 1)
+    (hsmall2 :
+      64 * Real.exp (-((delta * kappa) / 24)) < 1) :
+    0 ≤ cmp116Eq80Lemma1CombinedPhysicalRootBound
+      E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4 := by
+  unfold cmp116Eq80Lemma1CombinedPhysicalRootBound
+  exact add_nonneg
+    (cmp102Eq80SourcePi4DirectRootBound_nonneg
+      hE0 hepsilon1 hC1 halpha4 hsmall1 hsmall2)
+    (cmp109Lemma1NativeRootBound_nonneg
+      hE0 hepsilon1 hC1 halpha4 hsmall1 hsmall2)
+
+/-- Both physical sector estimates discharge the exact rooted residual
+ledger for the canonical combined index.  No rooted sum is a premise. -/
+theorem cmp116Eq80Lemma1Combined_rooted_residual_le_physical
+    {Index : Type*} {M Q Nc q : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)]
+    [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (E : CMP109LocalizedActionExpansion Index 2 (M * (2 * Q)) Nc)
+    (E0 epsilon1 C1 C2 kappa1 delta kappa alpha4 : ℝ)
+    (hE0 : 0 ≤ E0) (hepsilon1 : 0 ≤ epsilon1)
+    (hC1 : 0 ≤ C1) (halpha4 : 0 ≤ alpha4)
+    (hrate1 : 0 ≤ (1 - 2 * delta) * kappa)
+    (hrate2 : 0 ≤ delta * kappa)
+    (hsmall1 :
+      64 * Real.exp (-(((1 - 2 * delta) * kappa) / 24)) < 1)
+    (hsmall2 :
+      64 * Real.exp (-((delta * kappa) / 24)) < 1)
+    (root : FinBox 4 (2 * Q)) :
+    (∑ Y ∈ (Finset.univ.filter fun Y :
+          Fin (CMP116Eq80Lemma1CombinedDomainCount anchor D E) =>
+        root ∈ cmp116Eq80Lemma1CombinedDomainSupport anchor D E Y),
+      cmp116Eq220CenteredSourceResidualWeight
+        (fun y =>
+          (cmp116Eq80Lemma1CombinedDomainMetric anchor D E y : ℝ))
+        E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4 Y) ≤
+      cmp116Eq80Lemma1CombinedPhysicalRootBound
+        E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4 := by
+  change _ ≤ cmp116Eq80Lemma1CombinedRootBound
+    (cmp102Eq80SourcePi4DirectRootBound
+      E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4)
+    E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4
+  exact cmp116Eq80Lemma1Combined_rooted_residual_le
+    anchor D E
+    (cmp102Eq80SourcePi4DirectRootBound
+      E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4)
+    E0 epsilon1 C1 C2 kappa1 delta kappa alpha4
+    (fun r =>
+      cmp102Eq80SourcePi4Indexed_rooted_residual_le
+        anchor D r E0 epsilon1 C1 C2 kappa1 delta kappa alpha4
+        hE0 hepsilon1 hC1 halpha4 hrate1 hrate2 hsmall1 hsmall2)
+    hE0 hepsilon1 hC1 halpha4 hrate1 hrate2 hsmall1 hsmall2 root
 
 end
 
