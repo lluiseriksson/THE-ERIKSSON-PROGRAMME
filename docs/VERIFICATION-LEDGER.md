@@ -26091,3 +26091,31 @@ Hessian producer for one localization domain.  The terminal combined
 direct quadratic core with its projected fixed-Hessian term, followed by the
 already-green combined direct/native compositor from Addendum 517.  No
 terminal `TermSource` instance is claimed here.
+
+## Addendum 519 (2026-07-31, **indexed direct equation-(1.43) bridge GREEN**)
+
+The literal indexed equation-(80) core is now identified exactly with one
+half of the diagonal of its projected coupling-scaled Hessian at zero.  The
+Taylor residual cancels algebraically from `total - residual`; the remaining
+Riesz operator is unfolded to the same Fréchet Hessian used by the physical
+CMP102 source-metric producer.
+
+`BalabanCMP116QuadraticCoreHessian.lean` proves the exact Hessian of
+`z ↦ (1/2) H z z` without assuming symmetry of `H`.  A matrix-element bound
+for `H` transfers with constant exactly one, and inserting a continuous
+linear projection costs nothing when its operator norm is at most one.
+Using the already proved nonexpansivity of `physicalBondProjection`,
+`abs_cmp116FDerivHessian_cmp116Eq142PhysicalQuadraticCore_indexedContour_le_eq143`
+then derives the printed equation-(1.43) majorant directly from the physical
+CMP102 component jets, patch-walk ratios, source-metric decay, contour cap,
+and coupled producer budget.  It accepts neither a free Hessian estimate nor
+a pointwise equation-(1.43) hypothesis.
+
+**Focal validation.**  The two new audits built with the literal terminal
+line `Build completed successfully (8875 jobs).`  All six audited
+declarations report exactly `[propext, Classical.choice, Quot.sound]`.
+The clean remote root replay and recursive tracked-import guard are recorded
+separately once the checkpoint is committed.  No terminal
+`CMP116Eq226CenteredConditionedPhysicalTermSource` instance is claimed here;
+the next composition step feeds this direct producer into the already-green
+direct/native equation-(1.43) ledger.

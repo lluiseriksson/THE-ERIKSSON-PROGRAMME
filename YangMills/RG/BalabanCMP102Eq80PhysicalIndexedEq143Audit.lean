@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalIndexedEq143
+
+#print axioms YangMills.RG.cmp116Eq142PhysicalQuadraticCore_indexedContour_eq_half_projectedHessian
+#print axioms YangMills.RG.abs_cmp116FDerivHessian_cmp116Eq142PhysicalQuadraticCore_indexedContour_le_eq143

@@ -135,10 +135,9 @@ right-hand side is the explicit producer-side quantity
 endpoint applies that estimate uniformly along the radial segment and
 produces the corresponding matrix-element bound for the literal radial
 operator, retaining the two probe norms and introducing no equation-(1.43)
-assumption.  The remaining equation-(1.43) step is therefore the physical
-production of the uniform source-jet inputs and the scalar comparison of
-this explicit majorant with the printed constants `C3`, `epsilon1`, `C2`,
-and `kappa1`.
+assumption.  The source-jet inputs and the scalar comparison with the printed
+constants `C3`, `epsilon1`, `C2`, and `kappa1` are now composed physically in
+`BalabanCMP102Eq80CouplingScaledEq143SourceMetric.lean`.
 
 That scalar comparison is now isolated in
 `BalabanCMP102Eq80PhysicalDomainFTCEq143SourceMetric.lean`.  It selects
@@ -153,6 +152,15 @@ The reconstruction offsets `exp(kappaCard * 10000)` and
 `exp(kappaMetric * 10000)` remain visible in that budget.  They are fixed
 smallness thresholds on the walk ratios, not additional decay in the domain
 metric.
+
+`BalabanCMP102Eq80PhysicalIndexedEq143.lean` closes the remaining indexed
+bridge.  It identifies the literal direct core `total - residual` exactly
+with one half of the projected coupling-scaled Hessian at zero.  The exact
+Hessian formula for a quadratic diagonal and
+`norm_physicalBondProjection_le_one_anyVolume` then transport the physical
+CMP102 producer with constant one.  The resulting endpoint derives (1.43)
+from the component jets, walk ratios, contour cap, and coupled producer
+budget; it takes neither a pointwise Hessian bound nor (1.43) as an input.
 
 The role of `10000` must nevertheless be stated precisely.  It is the proved
 uniform upper budget for the large-block carrier contributed by one literal
@@ -286,8 +294,9 @@ it is not yet the source-level `V''_k`, and it does not prove its
 equation-(1.36) bound.  That identification still requires the domain/scale
 assembly, while the bound requires a quantitative modulus for the variation
 of the physical Hessian along the segment.  Independently, the complete
-radial operator can become Balaban's source `Q(Y,B)` only after the domain
-dictionary and the matrix-element estimate (1.43) are proved.
+radial operator can become Balaban's complete source `Q(Y,B)` only after the
+remaining source-domain assembly; the indexed direct matrix-element estimate
+(1.43) itself is now proved by the bridge above.
 
 The same module records the exact third-order gain that the future producer
 must preserve.  If
