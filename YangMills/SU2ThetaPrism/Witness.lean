@@ -45,6 +45,15 @@ def negIdentitySU2 : SU2 := by
 @[simp] theorem chi_negIdentity : chi negIdentitySU2 = -2 := by
   simp [negIdentitySU2, chi, Matrix.trace_one]
 
+/-- Left multiplication by the central element `-I₂` negates the fundamental
+character. -/
+@[simp] theorem chi_negIdentity_mul (g : SU2) :
+    chi (negIdentitySU2 * g) = -chi g := by
+  change Matrix.trace (((-1 : ℂ) • (1 : Matrix (Fin 2) (Fin 2) ℂ)) * g.val) =
+    -Matrix.trace g.val
+  rw [smul_mul]
+  simp
+
 /-- Concrete anti-singleton witness `I₂ ≠ -I₂`. -/
 theorem one_ne_negIdentity : (1 : SU2) ≠ negIdentitySU2 := by
   intro h

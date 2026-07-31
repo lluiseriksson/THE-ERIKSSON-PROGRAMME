@@ -64,23 +64,6 @@ theorem singletProjectionCoefficient_eq_half :
     singletProjectionCoefficient = 1 / 2 := by
   norm_num [singletProjectionCoefficient, representationDimension]
 
-/-- Multiplicity of twice-spin `j` in the `n`th tensor power of the
-fundamental, using the standard adjacent-binomial formula. -/
-def halfTensorMultiplicity (n j : ℕ) : ℕ :=
-  if _h : j ≤ n ∧ Even (n - j) then
-    let k := (n - j) / 2
-    if k = 0 then 1 else Nat.choose n k - Nat.choose n (k - 1)
-  else 0
-
-theorem halfTensorMultiplicity_one_half : halfTensorMultiplicity 1 1 = 1 := by
-  norm_num [halfTensorMultiplicity, Even]
-
-theorem halfTensorMultiplicity_two_singlet : halfTensorMultiplicity 2 0 = 1 := by
-  norm_num [halfTensorMultiplicity, Even]
-
-theorem halfTensorMultiplicity_two_triplet : halfTensorMultiplicity 2 2 = 1 := by
-  norm_num [halfTensorMultiplicity, Even]
-
 /-- Deleting a branch destroys the three-distinct-leg realization even though
 the abstract label coupling remains a valid representation-theoretic rule. -/
 theorem reduced_cell_has_no_theta_three_leg :

@@ -1,5 +1,6 @@
 import YangMills.SU2ThetaPrism.Representation
 import YangMills.SU2ThetaPrism.Analysis
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
 
 /-!
 # Character coefficients, central multipliers, and the fixed beta gate
@@ -67,6 +68,92 @@ def alpha (characters : RealProbeFamily) (beta : ℝ) (j : TwiceSpin) : ℝ :=
   ∫ g : SU2,
     Real.exp ((beta / 2) * (chi g).re) * characters j g
       ∂haarSU2
+
+private theorem chi_re_continuous : Continuous (fun g : SU2 => (chi g).re) :=
+  Complex.continuous_re.comp chi_continuous
+
+private theorem exp_mul_chi_re_integrable (a : ℝ) :
+    Integrable (fun g : SU2 => Real.exp (a * (chi g).re) * (chi g).re) haarSU2 := by
+  exact ((Real.continuous_exp.comp (continuous_const.mul chi_re_continuous)).mul
+    chi_re_continuous).integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)
+
+/-- Central Haar symmetry rewrites the spin-half coefficient as an integral
+of `u * sinh ((beta / 2) * u)`, with `u = re (chi g)`. -/
+theorem alpha_spinHalf_eq_integral_mul_sinh (beta : ℝ) :
+    alpha su2WeylPolynomial beta 1 =
+      ∫ g : SU2, (chi g).re * Real.sinh ((beta / 2) * (chi g).re) ∂haarSU2 := by
+  let a : ℝ := beta / 2
+  let f : SU2 → ℝ := fun g => Real.exp (a * (chi g).re) * (chi g).re
+  let fneg : SU2 → ℝ := fun g => Real.exp (-a * (chi g).re) * (chi g).re
+  have hf : Integrable f haarSU2 := by
+    simpa [f] using exp_mul_chi_re_integrable a
+  have hfneg : Integrable fneg haarSU2 := by
+    simpa [fneg] using exp_mul_chi_re_integrable (-a)
+  have hsym : (∫ g, f g ∂haarSU2) = -(∫ g, fneg g ∂haarSU2) := by
+    calc
+      (∫ g, f g ∂haarSU2) = ∫ g, f (negIdentitySU2 * g) ∂haarSU2 :=
+        (integral_mul_left_eq_self (μ := haarSU2) f negIdentitySU2).symm
+      _ = ∫ g, -fneg g ∂haarSU2 := by
+        apply integral_congr_ae
+        exact ae_of_all _ fun g => by
+          simp [f, fneg]
+          ring
+      _ = -(∫ g, fneg g ∂haarSU2) := integral_neg _
+  change (∫ g, f g ∂haarSU2) = _
+  calc
+    (∫ g, f g ∂haarSU2) =
+        (1 / 2 : ℝ) * ((∫ g, f g ∂haarSU2) - ∫ g, fneg g ∂haarSU2) := by
+      rw [hsym]
+      ring
+    _ = (1 / 2 : ℝ) * ∫ g, (f - fneg) g ∂haarSU2 := by
+      rw [integral_sub hf hfneg]
+    _ = ∫ g, (1 / 2 : ℝ) * (f - fneg) g ∂haarSU2 := by
+      rw [integral_const_mul]
+    _ = ∫ g : SU2, (chi g).re * Real.sinh (a * (chi g).re) ∂haarSU2 := by
+      apply integral_congr_ae
+      exact ae_of_all _ fun g => by
+        rw [Real.sinh_eq]
+        simp only [f, fneg, Pi.sub_apply]
+        ring
+    _ = ∫ g : SU2, (chi g).re *
+        Real.sinh ((beta / 2) * (chi g).re) ∂haarSU2 := by rfl
+
+private theorem scaled_sq_le_mul_sinh {a u : ℝ} (ha : 0 ≤ a) :
+    a * u ^ 2 ≤ u * Real.sinh (a * u) := by
+  by_cases hu : 0 ≤ u
+  · have hsinh : a * u ≤ Real.sinh (a * u) :=
+      Real.self_le_sinh_iff.mpr (mul_nonneg ha hu)
+    nlinarith
+  · have hu' : u ≤ 0 := le_of_not_ge hu
+    have hsinh : Real.sinh (a * u) ≤ a * u :=
+      Real.sinh_le_self_iff.mpr (mul_nonpos_of_nonneg_of_nonpos ha hu')
+    nlinarith
+
+/-- Direct spin-half coefficient bound.  It uses only central Haar symmetry,
+the elementary `sinh` inequality, and the already proved Schur second moment;
+no character series or Peter--Weyl completeness enters. -/
+theorem alpha_spinHalf_lower {beta : ℝ} (hbeta : 0 ≤ beta) :
+    beta / 2 ≤ alpha su2WeylPolynomial beta 1 := by
+  rw [alpha_spinHalf_eq_integral_mul_sinh]
+  have ha : 0 ≤ beta / 2 := div_nonneg hbeta (by norm_num)
+  have hleft : Integrable (fun g : SU2 =>
+      (beta / 2) * (chi g).re ^ 2) haarSU2 := by
+    exact ((continuous_const.mul (chi_re_continuous.pow 2)).integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _))
+  have hright : Integrable (fun g : SU2 =>
+      (chi g).re * Real.sinh ((beta / 2) * (chi g).re)) haarSU2 := by
+    exact (chi_re_continuous.mul
+      (Real.continuous_sinh.comp (continuous_const.mul chi_re_continuous)))
+        .integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
+  calc
+    beta / 2 = (beta / 2) * ∫ g : SU2, (chi g).re ^ 2 ∂haarSU2 := by
+      rw [chi_re_sq_integral_one, mul_one]
+    _ = ∫ g : SU2, (beta / 2) * (chi g).re ^ 2 ∂haarSU2 := by
+      rw [integral_const_mul]
+    _ ≤ ∫ g : SU2, (chi g).re * Real.sinh ((beta / 2) * (chi g).re) ∂haarSU2 := by
+      exact integral_mono_ae hleft hright
+        (ae_of_all _ fun g => scaled_sq_le_mul_sinh ha)
 
 /-- Central convolution multiplier `alpha_j/(2j+1)`, with the denominator
 derived from the general representation dimension. -/

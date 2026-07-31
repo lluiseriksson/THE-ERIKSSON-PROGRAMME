@@ -468,6 +468,27 @@ private theorem chiNormSq_integral_one :
     _ = (1 / 2 : ℂ) * chi 1 := trace_convolution 1
     _ = 1 := by norm_num [chi_one]
 
+/-- The real fundamental character has normalized Haar second moment one. -/
+theorem chi_re_sq_integral_one :
+    (∫ W : SU2, (chi W).re ^ 2 ∂haarSU2) = 1 := by
+  have hcast :
+      (((∫ W : SU2, (chi W).re ^ 2 ∂haarSU2) : ℝ) : ℂ) =
+        ∫ W : SU2, chiNormSq W ∂haarSU2 := by
+    calc
+      (((∫ W : SU2, (chi W).re ^ 2 ∂haarSU2) : ℝ) : ℂ) =
+          ∫ W : SU2, (((chi W).re ^ 2 : ℝ) : ℂ) ∂haarSU2 :=
+        integral_ofReal.symm
+      _ = ∫ W : SU2, chiNormSq W ∂haarSU2 := by
+        apply integral_congr_ae
+        exact ae_of_all _ fun W => by
+          have him : (chi W).im = 0 := by
+            have h := congrArg Complex.im (chi_star_eq W)
+            simp only [map_star, Complex.star_def, Complex.conj_im] at h
+            linarith
+          apply Complex.ext <;> simp [chiNormSq, chi_star_eq, him, pow_two]
+  rw [chiNormSq_integral_one] at hcast
+  exact_mod_cast hcast
+
 private theorem productCharacter_continuous : Continuous productCharacter :=
   (chi_continuous.comp continuous_fst).mul (chi_continuous.comp continuous_snd)
 
