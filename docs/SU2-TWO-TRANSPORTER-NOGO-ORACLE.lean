@@ -1,0 +1,9 @@
+import YangMills.OS.TwoTransporterHaarProjection
+
+#print axioms YangMills.OS.TwoTransporterHaarProjection.integral_weight_mul_inv_eq
+#print axioms YangMills.OS.TwoTransporterHaarProjection.orientationD_inner_projection
+#print axioms YangMills.OS.TwoTransporterHaarProjection.orientationD_twoTransporter_projection
+#print axioms YangMills.OS.TwoTransporterHaarProjection.orientationE_uv_projection
+#print axioms YangMills.OS.TwoTransporterHaarProjection.orientationE_twoTransporter_projection
+#print axioms YangMills.OS.TwoTransporterHaarProjection.quadraticD_eq_partition_mul_mean_sq
+#print axioms YangMills.OS.TwoTransporterHaarProjection.quadraticE_eq_partition_mul_mean_sq
