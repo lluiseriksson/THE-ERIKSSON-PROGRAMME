@@ -204,10 +204,15 @@ theorem trace_convolution (B : SU2) :
             fun W => B.val j i * (W.val i j * star (W.val k k)) by
           funext W
           ring]
-        rw [integral_const_mul,
-          YangMills.ClayCore.sunHaarProb_fundamental_entry_orthogonality]
+        calc
+          (∫ W, B.val j i * (W.val i j * star (W.val k k)) ∂haarSU2) =
+              B.val j i * ∫ W, W.val i j * star (W.val k k) ∂haarSU2 :=
+            integral_const_mul _ _
+          _ = B.val j i * (if i = k ∧ j = k then (1 : ℂ) / 2 else 0) := by
+            rw [YangMills.ClayCore.sunHaarProb_fundamental_entry_orthogonality]
       simp_rw [hterm]
       simp [chi, Matrix.trace]
+      ring
 
 /-- Concrete inhabitant of the Haar/Schur integration interface. -/
 def haarSchurConcrete : HaarSchurSteps where
@@ -220,7 +225,7 @@ def haarSchurConcrete : HaarSchurSteps where
   two_character A₁ A₂ := by
     let B := A₂⁻¹ * A₁
     let f : SU2 → ℂ := fun X => chi (X * B) * chi X
-    have hshift := integral_mul_right_eq_self f A₂
+    have hshift := integral_mul_right_eq_self (μ := haarSU2) f A₂
     have hpoint : (fun W : SU2 => f (W * A₂)) =
         fun W => chi (W * A₁) * chi (W * A₂) := by
       funext W
