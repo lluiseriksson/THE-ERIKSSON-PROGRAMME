@@ -131,6 +131,89 @@ structure HaarSchurSteps : Prop where
   right_translate : ∀ A : SU2,
     (∫ W, chi (W * A) ∂haarSU2) = ∫ W, chi W ∂haarSU2
 
+theorem chi_continuous : Continuous chi :=
+  YangMills.continuous_trace_sub 2
+
+theorem chi_integrable_concrete : Integrable chi haarSU2 :=
+  YangMills.trace_integrable 2
+
+private theorem chi_mul_expand (W B : SU2) :
+    chi (W * B) = ∑ i : Fin 2, ∑ j : Fin 2, W.val i j * B.val j i := by
+  simp [chi, Matrix.trace, Matrix.mul_apply]
+
+private theorem star_chi_expand (W : SU2) :
+    star (chi W) = ∑ k : Fin 2, star (W.val k k) := by
+  simp [chi, Matrix.trace, map_sum]
+
+private def traceConvolutionTerm (B : SU2) (i j k : Fin 2) (W : SU2) : ℂ :=
+  (W.val i j * B.val j i) * star (W.val k k)
+
+private theorem traceConvolutionTerm_integrable (B : SU2) (i j k : Fin 2) :
+    Integrable (traceConvolutionTerm B i j k) haarSU2 := by
+  apply Continuous.integrable_of_hasCompactSupport
+  · exact (((YangMills.ClayCore.continuous_val_entry i j).mul continuous_const).mul
+      ((YangMills.ClayCore.continuous_val_entry k k).star))
+  · exact HasCompactSupport.of_compactSpace _
+
+/-- Fundamental trace convolution, reduced entrywise to the Schur theorem
+already proved in `SchurFundamentalOrthogonality`. -/
+theorem trace_convolution (B : SU2) :
+    (∫ W, chi (W * B) * chi W ∂haarSU2) = (1 / 2 : ℂ) * chi B := by
+  classical
+  have hfun : (fun W : SU2 => chi (W * B) * chi W) =
+      fun W => ∑ i : Fin 2, ∑ j : Fin 2, ∑ k : Fin 2,
+        traceConvolutionTerm B i j k W := by
+    funext W
+    rw [show chi W = star (chi W) from (chi_star_eq W).symm,
+      chi_mul_expand, star_chi_expand]
+    simp only [Finset.sum_mul, Finset.mul_sum, traceConvolutionTerm]
+  rw [hfun]
+  rw [integral_finset_sum]
+  swap
+  · intro i _
+    exact Finset.integrable_sum _ fun j _ =>
+      Finset.integrable_sum _ fun k _ => traceConvolutionTerm_integrable B i j k
+  rw [Finset.sum_congr rfl fun i _ => integral_finset_sum _ fun j _ =>
+    Finset.integrable_sum _ fun k _ => traceConvolutionTerm_integrable B i j k]
+  rw [Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ =>
+    integral_finset_sum _ fun k _ => traceConvolutionTerm_integrable B i j k]
+  simp only [traceConvolutionTerm]
+  have hterm (i j k : Fin 2) :
+      (∫ W, (W.val i j * B.val j i) * star (W.val k k) ∂haarSU2) =
+        B.val j i * (if i = k ∧ j = k then (1 : ℂ) / 2 else 0) := by
+    rw [show (fun W : SU2 => (W.val i j * B.val j i) * star (W.val k k)) =
+        fun W => B.val j i * (W.val i j * star (W.val k k)) by
+      funext W
+      ring]
+    rw [integral_const_mul,
+      YangMills.ClayCore.sunHaarProb_fundamental_entry_orthogonality]
+  simp_rw [hterm]
+  simp [chi, Matrix.trace]
+
+/-- Concrete inhabitant of the Haar/Schur integration interface. -/
+def haarSchurConcrete : HaarSchurSteps where
+  character_integrable := chi_integrable_concrete
+  character_mean_zero := YangMills.sunHaarProb_trace_complex_integral_zero 2 (by norm_num)
+  two_character_integrable A₁ A₂ := by
+    exact (chi_integrable_concrete.comp_mul_right A₁).mul
+      (chi_integrable_concrete.comp_mul_right A₂)
+  two_character A₁ A₂ := by
+    let B := A₂⁻¹ * A₁
+    let f : SU2 → ℂ := fun X => chi (X * B) * chi X
+    have hshift := integral_mul_right_eq_self f A₂
+    have hpoint : (fun W : SU2 => f (W * A₂)) =
+        fun W => chi (W * A₁) * chi (W * A₂) := by
+      funext W
+      simp [f, B, mul_assoc]
+    rw [hpoint] at hshift
+    exact hshift.trans (trace_convolution B)
+  left_inverse_translate_integrable A := by
+    simpa [div_eq_mul_inv] using chi_integrable_concrete.comp_div_left A
+  left_inverse_translate A := by
+    simpa [div_eq_mul_inv] using integral_div_left_eq_self chi haarSU2 A
+  right_translate_integrable A := chi_integrable_concrete.comp_mul_right A
+  right_translate A := integral_mul_right_eq_self chi A
+
 def conditionalU (U : SU2) : ℂ :=
   ∫ V, witness U V ∂haarSU2
 
