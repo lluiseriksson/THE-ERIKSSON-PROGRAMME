@@ -1,8 +1,16 @@
-# External audit record
+> **Scope limitation — read before the title.** `Cross` does not participate
+> in the effective weight or pairing, and reflection-induced inversion of
+> `Cross` is not exercised. The product-form auxiliary weight is not a
+> derivation of a lattice plaquette factorization. The analytic Haar
+> positivity theorem for every continuous observable and the exact
+> `Qβ(tr) ≥ β/4` bound are not weakened by this repair.
+
+# Audit and repair record
 
 Date: 2026-07-31
 
-Status: **NOT PASSED — external service failure**
+Status: **REPAIR COMPLETE; NOT AUTOAUDITED; FRESH BLIND PRE-AUDIT PENDING;
+GATE 7 SUSPENDED**
 
 No model output described below is used as mathematical evidence.
 
@@ -23,18 +31,15 @@ The remediation adds:
 - `su2OnePlaquetteReflectedPairing`, which integrates left, crossing, and
   right SU(2) variables against normalized Haar measure; and
 - `su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm`, the exact bridge
-  consumed by the final positivity endpoint.
+  consumed by the analytic positivity theorem.
 
-The general `leftWeight`/`rightWeight` factorization theorem is only an
-algebraic splitting identity; no positivity is claimed for arbitrary complex
-half weights.  The certified physical endpoint is the unit-internal-weight
-one-plaquette cut, not a theorem for an arbitrary lattice action.
-
-A second read-only pass confirmed that the reflected-pairing and crossing
-integration findings are closed for this minimal declared model.  The residual
-scope boundary remains explicit: this weight is not derived from the
-repository's `GaugeConfig.plaquetteHolonomy`/`wilsonAction` API, and it does
-not instantiate the finite `ReflectionSplitting` consumer.
+The earlier remediation was incomplete. The product-form definition
+`su2OnePlaquetteCutWeight` had been advertised as if a geometric
+factorization had been derived. The theorem now named
+`su2OnePlaquetteCutWeight_eq_undressedKernel` proves only that the common
+gauge-pure transporter can be removed from the dressed kernel. No positivity
+is claimed for arbitrary complex half weights, no lattice action is derived,
+and the finite `ReflectionSplitting` consumer is not instantiated.
 
 A later manufacturer-side audit of public PR #35 added three limitations:
 
@@ -49,11 +54,13 @@ The first and third are now explicit in `CERTIFICATION.md` and
 manufacturer-side review and route design are not counted as terminal
 external audit.
 
-A fresh read-only Codex pass, performed after the sharp chain was complete,
-found no blocking error in conjugation orientation, the `β / 2` coefficient,
-the Schur moments, the degree-`n + 2` tail, tail PSD, the shifted limit, or the
-reflected-pairing bridge.  It independently rebuilt the endpoint and oracle.
-This is an internal adversarial check, not the terminal external audit.
+A later blind pre-audit found three blocking presentation/identification
+defects despite the valid analytic chain: front-door overclaiming, geometric
+vacuity of `Cross`, and presentation of a definitionally factorized weight as
+a derived physical factorization. This repair addresses those findings
+without changing the analytic Haar, Schur, exact `β / 4`, or tail-PSD
+theorems. The repair is not permitted to certify itself; a new blind
+pre-audit is pending.
 
 ## Fable High
 
@@ -89,16 +96,16 @@ an audit.
 
 ## Consequence
 
-The Lean endpoint, local build, and axiom oracle are complete, but terminal
-gate 7 remains externally blocked.  No paper is created, and this draft PR
-must not be described as independently audited until a later compliant model
-call returns and its conclusions are checked against the source.
+The local build and axiom oracle are executable evidence only. Gate 7 is
+suspended: no external audit is consumed, no paper is created, and this draft
+PR must not be described as independently audited. The immediate next check
+is a fresh blind pre-audit of the repaired source.
 
 ## Parked-state policy
 
 Recorded on 2026-07-31 by the owner:
 
-- gate 7 is unchanged and still requires a certified Fable audit;
+- Gate 7 is unchanged in substance and is now explicitly suspended;
 - the owner chooses to wait rather than amend the gate;
 - there is no known quota-reset cadence, so none is inferred or scheduled;
 - exactly one retry is permitted, and only after independent evidence that
@@ -109,3 +116,8 @@ A possible independence-based amendment was discussed but **not adopted**.
 It is not part of the current contract and no amendment document is committed.
 Only the owner may decide to adopt such an amendment if the external service
 becomes indefinitely unavailable.
+
+## Repair stop statement
+
+**REPAIR COMPLETE; NOT AUTOAUDITED; FRESH BLIND PRE-AUDIT PENDING; GATE 7
+SUSPENDED.**

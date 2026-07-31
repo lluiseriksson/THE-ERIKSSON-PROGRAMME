@@ -53,8 +53,12 @@ as proved by numerical evidence.
   crossing kernel: `su2Trace_crossing_lower`.
 - **CLOSED:** the declared reflected one-plaquette pairing is a real number
   `r ≥ β / 4 > 0` for `β > 0`:
-  `su2OnePlaquette_trace_reflection_positive_sharp`.
+  `su2GaugePureCut_trace_pairing_positive_sharp`.
 
 The finite head is proved by bare integral linearity and the repository's
 fundamental Schur theorem, not by unfolding the eight-real-feature positive
 presentation.  The positive-presentation machinery is reserved for the tail.
+
+This sharp analytic gate does not use `Cross`: the auxiliary transporter's
+inversion is not exercised, and no geometric factorization claim is part of
+the `β / 4` result.

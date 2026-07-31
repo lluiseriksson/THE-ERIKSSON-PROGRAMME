@@ -1,3 +1,10 @@
+> **Scope limitation — read before the title.** In the present producer,
+> `Cross` is gauge-pure and does not participate in the effective weight or
+> pairing; its inversion is not exercised. This note does not claim a
+> physical cut or a derived lattice plaquette factorization. These geometric
+> limits do not weaken Haar positivity for every continuous observable or the
+> sharp `β/4` theorem.
+
 # Integration note for the Paper 13 owner
 
 ## Current structural mismatch
@@ -21,6 +28,11 @@ Consequently, importing `ReflectionSplitting.lean` does not provide a typed
 route to the SU(2) endpoint.  This is not a missing instance and must not be
 worked around by assigning a false `Fintype SU2`.
 
+The current auxiliary equality is weaker than the downstream seam described
+below: `su2OnePlaquetteCutWeight` is defined in product form, and
+`su2OnePlaquetteCutWeight_eq_undressedKernel` only removes its common
+gauge-pure transporter. It does not establish a geometric factorization.
+
 ## Requested downstream seam
 
 The integrator can connect the owned SU(2) producer after Paper 13 exposes an
@@ -38,8 +50,8 @@ integral-valued analogue with:
 No change to the finite `ZMod N` theorem is required.  A sibling theorem or a
 group/measure-parametric generalization is sufficient.
 
-The old theorem is recovered as the special case `Cross = Unit`; this task
-does not claim the converse.
+The existing finite `ReflectionSplitting` theorem is not consumed here. This
+task neither proves that the proposed seam exists nor claims a converse.
 
 ## Ownership
 

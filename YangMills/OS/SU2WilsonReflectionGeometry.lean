@@ -8,15 +8,24 @@ Authors: Lluis Eriksson
 import YangMills.OS.SU2WilsonReflectionKernel
 
 /-!
-# A finite SU(2) reflection cut
+**Scope limitation — read before the title.**  The `Cross` variable is a
+gauge-pure auxiliary transporter.  It does not participate in the effective
+weight or pairing after cancellation, and its inversion by `reflectSU2Cut` is
+not exercised by the positivity result.  This geometric limitation does not
+weaken the separately proved complex Haar positivity for every continuous
+observable or the sharp trace bound `β/4`.
 
-This file contains only the geometry and the exact splitting identity.  Kernel
-positivity remains in `SU2WilsonReflectionKernel`; the endpoint combines them
-in `SU2WilsonReflectionEndpoint`.
+# An auxiliary SU(2) reflection cut
 
-The configuration shape is explicitly `Half × Cross × Half`.  This avoids the
-fixed-edge obstruction of a bare `Half × Half` swap.  Reflection exchanges the
-two halves and inverts every oriented crossing link.
+This file defines the auxiliary cut and proves exact cancellation identities.
+It does not derive a lattice plaquette Wilson weight or a physical
+factorization theorem.  Kernel positivity remains in
+`SU2WilsonReflectionKernel`; `SU2WilsonReflectionEndpoint` transports it to
+the declared auxiliary pairing.
+
+The configuration shape is `Half × Cross × Half`.  Reflection exchanges the
+two halves and inverts every oriented crossing link at the type level, but the
+effective weight and pairing below are independent of `Cross`.
 -/
 
 noncomputable section
@@ -29,8 +38,9 @@ namespace YangMills.OS
 abbrev SU2CutConfig (Half Cross : Type*) :=
   (Half → SU2) × (Cross → SU2) × (Half → SU2)
 
-/-- Physical link reflection: swap the half-configurations and reverse the
-orientation of crossing links by group inversion. -/
+/-- Auxiliary typed reflection: swap the half-configurations and reverse the
+orientation of crossing links by group inversion.  The effective result below
+does not depend on the crossing links. -/
 def reflectSU2Cut {Half Cross : Type*} :
     SU2CutConfig Half Cross → SU2CutConfig Half Cross :=
   fun cfg => (cfg.2.2, fun e => (cfg.2.1 e)⁻¹, cfg.1)
@@ -41,8 +51,8 @@ theorem reflectSU2Cut_involutive {Half Cross : Type*} :
   intro cfg
   ext <;> simp [reflectSU2Cut]
 
-/-- The declared minimal finite cut: one boundary variable in each half and
-one oriented crossing link. -/
+/-- The declared minimal auxiliary cut: one boundary variable in each half
+and one gauge-pure crossing transporter. -/
 abbrev SU2OnePlaquetteCut := SU2CutConfig Unit Unit
 
 def mkSU2OnePlaquetteCut (x c y : SU2) : SU2OnePlaquetteCut :=
@@ -102,10 +112,10 @@ theorem su2WilsonCrossingKernel_dressed (β : ℝ)
           ((z : SU2) : Matrix (Fin 2) (Fin 2) ℂ)).re) : ℝ) : ℂ))
     hcancel
 
-/-- Exact finite-cut Wilson weight.  `leftWeight` and `rightWeight` collect
-plaquettes wholly contained in the two halves; the middle factor is the single
-physical crossing plaquette, written in the common frame selected by the
-crossing link. -/
+/-- A declared factorized auxiliary weight.  `leftWeight` and `rightWeight`
+are arbitrary factors, and the middle factor is the dressed kernel.  This is
+a definition in product form, not a derivation from a lattice plaquette
+Wilson weight. -/
 def su2OnePlaquetteCutWeight (β : ℝ)
     (leftWeight rightWeight : SU2 → ℂ) (cfg : SU2OnePlaquetteCut) : ℂ :=
   leftWeight (onePlaquetteLeft cfg) *
@@ -113,9 +123,10 @@ def su2OnePlaquetteCutWeight (β : ℝ)
       (onePlaquetteDressedLeft cfg) (onePlaquetteDressedRight cfg) *
     rightWeight (onePlaquetteRight cfg)
 
-/-- Gate (4): the concrete finite geometry splits into left, crossing, and
-right factors with the exact Wilson crossing kernel. -/
-theorem su2OnePlaquetteCutWeight_splitting (β : ℝ)
+/-- Exact cancellation equality: in the already factorized auxiliary weight,
+the common gauge-pure transporter can be removed from the dressed kernel.
+This does not derive a physical plaquette factorization. -/
+theorem su2OnePlaquetteCutWeight_eq_undressedKernel (β : ℝ)
     (leftWeight rightWeight : SU2 → ℂ) (cfg : SU2OnePlaquetteCut) :
     su2OnePlaquetteCutWeight β leftWeight rightWeight cfg =
       leftWeight (onePlaquetteLeft cfg) *
@@ -124,8 +135,8 @@ theorem su2OnePlaquetteCutWeight_splitting (β : ℝ)
         rightWeight (onePlaquetteRight cfg) := by
   rw [su2OnePlaquetteCutWeight, su2WilsonCrossingKernel_dressed]
 
-/-- The exact Wilson weight of the minimal cut.  There are no plaquettes
-strictly inside either half, so both internal half weights are one. -/
+/-- The unit-half specialization of the declared auxiliary weight.  This
+specialization is not derived from the repository's lattice Wilson action. -/
 def su2OnePlaquetteWilsonWeight (β : ℝ)
     (cfg : SU2OnePlaquetteCut) : ℂ :=
   su2OnePlaquetteCutWeight β (fun _ => 1) (fun _ => 1) cfg
@@ -136,7 +147,7 @@ theorem su2OnePlaquetteWilsonWeight_eq_kernel (β : ℝ)
       su2WilsonCrossingKernel β
         (onePlaquetteLeft cfg) (onePlaquetteRight cfg) := by
   simp [su2OnePlaquetteWilsonWeight,
-    su2OnePlaquetteCutWeight_splitting]
+    su2OnePlaquetteCutWeight_eq_undressedKernel]
 
 /-- A half-observable is read on the right half.  Reflection moves it to the
 left half and complex conjugation supplies the OS antilinearity. -/
@@ -170,9 +181,10 @@ def su2OnePlaquetteReflectedPairing (β : ℝ) (F : SU2 → ℂ) : ℂ :=
     su2OnePlaquetteReflectedIntegrand β F x c y ∂μ ∂μ ∂μ
 
 set_option maxHeartbeats 10000 in
-/-- The geometry/splitting bridge: the full reflected cut pairing is exactly
-the analytic crossing-kernel quadratic form.  The middle Haar integral is one
-because the common crossing transporter cancels from the relative holonomy. -/
+/-- The auxiliary-pairing bridge: the declared reflected pairing is exactly
+the analytic kernel quadratic form.  The middle Haar integral is one because
+the common gauge-pure transporter cancels, so its inversion under reflection
+does not contribute to this equality or to the resulting positivity theorem. -/
 theorem su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm
     (β : ℝ) (F : SU2 → ℂ) :
     su2OnePlaquetteReflectedPairing β F =

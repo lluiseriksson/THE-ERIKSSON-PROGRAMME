@@ -1,13 +1,20 @@
-# SU(2) Wilson reflection-positivity contract
+> **Scope limitation — read before the title.** `Cross` is a gauge-pure
+> auxiliary variable. It does not participate in the effective weight or
+> pairing, and its inversion under reflection is not exercised by this
+> result. No lattice plaquette Wilson weight or physical factorization is
+> derived. This geometric limitation does not weaken complex Haar positivity
+> for every continuous `F : SU2 → ℂ` or the sharp bound `Qβ(tr) ≥ β/4`.
+
+# SU(2) Wilson Haar-positivity contract
 
 ## Freeze
 
 - Published base: `origin/main`
 - Full base SHA: `7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`
 - Branch: `codex/su2-wilson-reflection-positivity`
-- Scope: finite lattice geometry and compact SU(2) link variables only.
+- Scope: an exact compact-SU(2) Haar kernel and a gauge-pure auxiliary cut.
 - Excluded: continuum limits, OS/Wightman reconstruction, transfer-operator
-  mass gaps, and the Clay problem.
+  mass gaps, the Clay problem, and a derived lattice plaquette geometry.
 
 ## Physical convention
 
@@ -38,16 +45,15 @@ opposite convention and is not imported as the definition of this kernel.
 3. **CLOSED.** Prove the complex quadratic form is non-negative with respect to
    `sunHaarProb 2`, for every continuous complex observable in the declared
    domain: `su2WilsonCrossing_isHaarPSDKernel`.
-4. **CLOSED for the declared one-plaquette geometry.** Declare and prove the
-   splitting identity for a finite temporal-gauge cut
-   of shape `Half × Cross × Half`, keeping geometry and integration over
-   crossing variables separate from kernel positivity:
-   `su2WilsonCrossingKernel_dressed` and
-   `su2OnePlaquetteCutWeight_splitting`.  The physical specialization has
-   unit internal-half weights, integrates all three Haar variables, and is
-   bridged exactly to the kernel form by
-   `su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm`.
-5. **CLOSED.** Prove a non-empty SU(2) endpoint at `β > 0`.  The kernel is
+The product-form auxiliary identity below is explicitly not a gate:
+`su2OnePlaquetteCutWeight` is defined in product form, and
+`su2OnePlaquetteCutWeight_eq_undressedKernel` proves only that its common
+gauge-pure transporter cancels from the dressed kernel. Consequently,
+`su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm` identifies the
+declared auxiliary pairing with the analytic kernel form; it does not derive
+a lattice Wilson weight or exercise inversion of `Cross`.
+
+5. **CLOSED.** Prove a non-empty analytic SU(2) result at `β > 0`.  The kernel is
    non-constant, its value changes with `β` at an explicit pair, and the
    pairing is strictly positive for an explicit continuous observable.
    Closed by
@@ -56,13 +62,14 @@ opposite convention and is not imported as the definition of this kernel.
    `su2OnePlaquette_constant_pairing_strict`.
    The stronger preregistered zero-mean character gate
    `Qβ(trace) ≥ β / 4` is also closed by
-   `su2OnePlaquette_trace_reflection_positive_sharp`; see `SHARP-GATE.md`.
+   `su2GaugePureCut_trace_pairing_positive_sharp`; see `SHARP-GATE.md`.
 6. **CLOSED.** Build all owned Lean modules with no `sorry` or project axiom
    and record `#print axioms` output for every headline.  See
    `CERTIFICATION.md`, `SU2OSOracle.lean`, and `ORACLE-TRANSCRIPT.txt`.
-7. **BLOCKED EXTERNALLY.** Obtain an independent audit satisfying the
-   model/account validation, or record the precise external-audit failure
-   without upgrading the result.  See `AUDIT.md`.
+   The documentary canary `scripts/check_su2_os_honesty.py` rejects the
+   reintroduction of the removed geometric labels.
+7. **SUSPENDED.** No terminal external audit is consumed by this repair.
+   A fresh blind pre-audit of the repaired source is pending; see `AUDIT.md`.
 
 ## Outcome and stop rule
 
@@ -72,9 +79,9 @@ pinned toolchain.  Uniform Taylor convergence follows from
 the iterated Haar form to the limit.  No Fubini swap over a product measure is
 used.
 
-The remaining blocker is not mathematical: the requested external model audit
-did not return a response satisfying its validation contract.  The result is
-therefore shipped as compiled Lean code and a draft PR, not as an audited paper.
+This repair does not declare its own audit result. Gate 7 is suspended and a
+fresh blind pre-audit of the repaired source is pending. The result remains
+compiled Lean code in a draft PR, not an audited paper.
 
 There is also a typed integration blocker outside the owned producer: the
 published `ReflectionSplitting` theorem cannot consume compact SU(2).  The

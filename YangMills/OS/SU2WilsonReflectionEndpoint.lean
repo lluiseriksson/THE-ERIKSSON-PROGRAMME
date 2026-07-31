@@ -10,12 +10,19 @@ import YangMills.OS.SU2WilsonReflectionSharp
 import YangMills.ClayCore.SchurNormOne
 
 /-!
-# Non-vacuous finite SU(2) Wilson reflection-positivity endpoint
+**Scope limitation — read before the title.**  The `Cross` variable in the
+auxiliary cut does not participate in the effective weight or pairing, and
+its inversion under reflection is not exercised by any theorem in this file.
+No physical lattice plaquette factorization is derived.  This geometric
+limitation does not weaken complex Haar positivity for every continuous
+observable or the sharp trace bound `β/4`.
 
-This endpoint consumes the exact producer from
-`SU2WilsonReflectionKernel` and the concrete cut from
-`SU2WilsonReflectionGeometry`.  It makes no continuum, reconstruction,
-mass-gap, or Clay-problem claim.
+# SU(2) Wilson Haar positivity and the sharp trace bound
+
+This module consumes the exact analytic producer from
+`SU2WilsonReflectionKernel` and transports it through the gauge-pure auxiliary
+pairing from `SU2WilsonReflectionGeometry`.  It makes no continuum,
+reconstruction, mass-gap, Clay-problem, or general lattice-geometry claim.
 -/
 
 noncomputable section
@@ -24,8 +31,8 @@ open Matrix Complex MeasureTheory
 
 namespace YangMills.OS
 
-/-- The one-crossing-plaquette OS inequality for a continuous complex
-half-observable. -/
+/-- Complex Haar-kernel positivity for every continuous observable, expressed
+through the gauge-pure auxiliary pairing. -/
 theorem su2OnePlaquette_reflection_positive
     (β : ℝ) (hβ : 0 < β) (F : SU2 → ℂ) (hF : Continuous F) :
     ∃ r : ℝ, 0 ≤ r ∧
@@ -43,9 +50,9 @@ theorem su2OnePlaquette_trace_pairing_lower
   exact su2Trace_crossing_lower β hβ.le
 
 set_option maxHeartbeats 400000 in
-/-- Final SU(2)/Wilson endpoint: the reflected pairing is a real number at
-least `β/4`, hence strictly positive for every physical coupling. -/
-theorem su2OnePlaquette_trace_reflection_positive_sharp
+/-- Sharp analytic trace certificate: the auxiliary pairing is a real number
+at least `β/4`, hence strictly positive for every `β > 0`. -/
+theorem su2GaugePureCut_trace_pairing_positive_sharp
     (β : ℝ) (hβ : 0 < β) :
     ∃ r : ℝ, β / 4 ≤ r ∧ 0 < r ∧
       su2OnePlaquetteReflectedPairing β su2TraceObservable = (r : ℂ) := by

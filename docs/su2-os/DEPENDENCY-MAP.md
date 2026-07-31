@@ -18,10 +18,10 @@ SU2WilsonReflectionKernel.lean
         |                          |
         v                          v
 SU2WilsonReflectionGeometry.lean   SU2WilsonReflectionEndpoint.lean
-  - finite cut data                - β > 0
-  - Half × Cross × Half            - exact endpoint
-  - orientation inversion          - strict non-vacuity
-  - factorization identity         - full reflected pairing
+  - auxiliary cut data             - β > 0
+  - Half × Cross × Half            - sharp trace certificate
+  - typed orientation inversion    - strict analytic non-vacuity
+  - gauge-pure cancellation        - auxiliary reflected pairing
   - triple Haar pairing            - non-constant witness
         |                          - Haar inequality
         +-------------+------------+
@@ -34,17 +34,19 @@ SU2WilsonReflectionGeometry.lean   SU2WilsonReflectionEndpoint.lean
 
 ## Separation of obligations
 
-- **Splitting identity:** an equality of the declared gauge-fixed weight with
-  two half weights times the crossing kernel.
+- **Gauge-pure cancellation equality:** the declared weight is already
+  factorized; the proved equality only removes the common transporter from
+  its dressed kernel.
 - **Kernel PSD:** the Taylor/Fock sum-of-squares theorem; no geometry is used.
-- **Cut geometry:** a finite set of crossing plaquettes and an explicit swap
-  reflection, with separately integrated crossing variables; no analytic
-  positivity is used.
+- **Auxiliary cut:** an explicit swap/inversion map and separately integrated
+  `Cross` variable. The effective weight and pairing are independent of
+  `Cross`, so inversion is not exercised by the result.
 - **Haar quadratic positivity:** an integral theorem obtained from the kernel
   expansion, uniform bounds, and the finite probability Haar measure.
-- **Final instance:** combines only the already-proved pieces and includes a
+- **Analytic result:** combines only the already-proved pieces and includes a
   non-constant SU(2) witness.  Its left, crossing, and right variables are all
-  integrated against normalized Haar measure.
+  integrated against normalized Haar measure, with the crossing integrand
+  constant.
 
 ## Executed dependency chain
 
