@@ -15,7 +15,8 @@ it was corrected.
 
 The 2026-07-31 design note
 [`docs/SU2-TWO-TRANSPORTER-NOGO-20260731.md`](docs/SU2-TWO-TRANSPORTER-NOGO-20260731.md)
-derives that, for each of the two explicitly stated orientations, two
+derives and Lean-formalizes for the concrete reduced SU(2) Wilson weight that,
+for each of the two explicitly stated orientations, two
 independent freely Haar-integrated transporters absent from the observable
 project the quadratic form to the trivial sector.  The derivation uses only
 left Haar invariance plus pointwise SU(2) trace identities.  This is a limited

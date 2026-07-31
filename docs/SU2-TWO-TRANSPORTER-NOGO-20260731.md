@@ -20,11 +20,12 @@ SU(2) congelado y no convierte una elección auxiliar en una fijación de gauge.
   exacta en `Q(sqrt(2))` el testigo de cuaterniones y, mediante palabras libres
   reducidas, las identidades algebraicas finitas. El programa declara en su
   salida que **no** prueba las identidades integrales generales.
-- **Verificado por Lean, proyección Haar general:** el módulo nuevo e
-  independiente `YangMills/OS/TwoTransporterHaarProjection.lean` prueba los
-  dos colapsos completos para todo grupo medible, toda medida de probabilidad
-  invariante por la izquierda y todo peso complejo que satisfaga puntualmente
-  `w(a z⁻¹ a⁻¹)=w(z)`. No importa ni edita el carril congelado.
+- **Verificado por Lean, general y Wilson SU(2) concreto:** el módulo nuevo e
+  independiente `YangMills/OS/TwoTransporterHaarProjection.lean` prueba primero
+  los dos colapsos para todo peso con `w(a z⁻¹ a⁻¹)=w(z)`. Después define
+  localmente el peso Wilson `su2WilsonWeight`, prueba esa simetría en SU(2) y
+  especializa ambos formularios cuadráticos. No importa ni edita el carril
+  congelado.
 - **Certificación congelada ajena a este artefacto:** el bound reducido
   `Qβ(tr) ≥ β/4` se cita al SHA de solo lectura
   `a66b1c7da3c7441e06864e327b5c4efa43e9c79d`. No se atribuye a este documento
@@ -301,9 +302,10 @@ con su ausencia en `F`, no una propiedad adicional de invariancia derecha.
 ## Formalización Lean separada
 
 El módulo nuevo
-`YangMills/OS/TwoTransporterHaarProjection.lean` importa solo Mathlib. Define
-`ConjugationInverseInvariant w` y prueba, entre otros, los siguientes
-headlines:
+`YangMills/OS/TwoTransporterHaarProjection.lean` importa únicamente
+`YangMills/L0_Lattice/SU2Basic.lean`, que a su vez importa Mathlib. No importa
+ningún módulo `SU2WilsonReflection*`. Define `ConjugationInverseInvariant w` y
+prueba, entre otros, los siguientes headlines genéricos:
 
 ```text
 integral_weight_mul_inv_eq
@@ -321,19 +323,46 @@ Los dos últimos concluyen exactamente
 Q_A(F) = (∫w dμ) conjugate(∫F dμ) (∫F dμ),       A ∈ {D,E}.
 ```
 
+La sección concreta define en el propio módulo
+
+```text
+su2WilsonWeight β g = exp((β/2) Re tr(g))
+```
+
+y cierra la descarga algebraica mediante
+
+```text
+su2_trace_conjugate_inverse
+su2_trace_inv_eq
+su2WilsonWeight_conjugationInverseInvariant
+```
+
+Aquí `su2_trace_inv_eq` usa `det z = 1` y la fórmula exacta de la adjugada de
+una matriz `2×2`; no usa prosa como sustituto de un teorema. Los cuatro bloques
+de transportadores se especializan como
+
+```text
+su2Wilson_orientationD_inner_projection
+su2Wilson_orientationD_twoTransporter_projection
+su2Wilson_orientationE_uv_projection
+su2Wilson_orientationE_twoTransporter_projection
+```
+
+y los dos titulares concretos son
+
+```text
+su2Wilson_quadraticD_eq_partition_mul_mean_sq
+su2Wilson_quadraticE_eq_partition_mul_mean_sq
+```
+
+Por tanto, para toda medida de probabilidad invariante por la izquierda sobre
+SU(2), todo `β ∈ R` y todo `F : SU2 → C`, Lean prueba la identidad Wilson
+concreta `Q_A(F)=Zβ conjugate(∫F)(∫F)` para `A∈{D,E}`.
+
 El oráculo independiente es
 `docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean`. La formalización no usa `sorry`,
 `admit`, axiomas de proyecto ni definiciones vacías. `#print axioms` reporta
 solo `[propext, Classical.choice, Quot.sound]` para cada headline.
-
-**Obligación explícita no cerrada en este módulo:** instanciar dentro de Lean
-`ConjugationInverseInvariant` para la definición concreta `wβ` de SU(2). La
-instanciación no se añadió porque hacerlo sin importar el carril congelado
-requiere duplicar o mover definiciones concretas. Matemáticamente, la descarga
-es la identidad puntual ya expuesta:
-`Re tr(a z⁻¹ a⁻¹)=Re tr(z⁻¹)=Re tr(z)`. Esta obligación no afecta al alcance
-del certificado genérico, pero impide presentar el oráculo como una
-formalización end-to-end del peso Wilson concreto.
 
 Comandos de comprobación:
 
@@ -365,8 +394,6 @@ presenta como prueba de la identidad integral general.
   de gauge físicamente derivada; esa es una **interpretación no probada**.
 - El certificado Python finito no formaliza la proyección Haar general; esa
   función corresponde exclusivamente al módulo Lean separado.
-- El módulo Lean genérico no instancia el peso Wilson SU(2) concreto; la
-  obligación puntual se declara arriba y no se oculta como supuesto físico.
 - No se obtiene positividad no trivial para observables de media cero.
 - No se hace ninguna afirmación de continuo, reconstrucción OS/Wightman, gap
   de masa o problema de Clay.
