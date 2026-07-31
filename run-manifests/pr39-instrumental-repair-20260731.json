@@ -1,0 +1,63 @@
+{
+  "schema": "pr-instrumental-repair-v1",
+  "date": "2026-07-31",
+  "repository": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+  "pull_request": 39,
+  "pull_request_state": "draft",
+  "remote_branch": "codex/su2-two-transporter-nogo-20260731",
+  "published_base": "e211ac96af8862c05b961ee16037ba34dcc7bccf",
+  "audited_incoming_head": "1fa29e657c43ed71a249808611bf3aea64f2b115",
+  "public_source_commit": "7b709c4200ba4b2eb1acc9838ee66cd2eebba6ae",
+  "transcript_commit": "132aa61d93bcd68bcf585269297ebb54d3fa8506",
+  "transcript": "docs/oracle-transcripts/PR39-INSTRUMENTAL-REPAIR-20260731.txt",
+  "host": {
+    "surface": "Google Colab Pro+ public clone",
+    "credentials_supplied": false,
+    "push_performed_from_host": false,
+    "uname": "Linux 98c482c00161 6.6.122+ #1 SMP Thu Apr 30 18:17:14 UTC 2026 x86_64 GNU/Linux",
+    "processors_measured": 2
+  },
+  "toolchain": {
+    "elan": "4.2.3 (b6cec7e10 2026-06-08)",
+    "lake": "5.0.0-src+00659f8",
+    "lean": "4.29.0-rc6",
+    "lean_commit": "00659f8e6071d7e46131ed643bf8003b99b044e9"
+  },
+  "certificate": {
+    "scope": "finite free-word arithmetic and one exact Q(sqrt(2)) unit-quaternion witness; not Haar integration",
+    "expected_checks": 14,
+    "observed_checks": 14,
+    "commands": {
+      "python_normal_1": 0,
+      "python_normal_2": 0,
+      "python_optimized_1": 0,
+      "python_optimized_2": 0,
+      "self_test_normal": 0,
+      "self_test_optimized": 0
+    },
+    "stdout_raw_sha256": "a241ef37805085b51860490ae53f0c97674f3d79f3466c980cb18d55f5ea67db",
+    "stdout_lf_sha256": "a241ef37805085b51860490ae53f0c97674f3d79f3466c980cb18d55f5ea67db",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "eol_policy": "raw Linux output is LF; LF normalization removes CR bytes only",
+    "mutations": {
+      "decisive_trace": { "exit_code": 1, "result_pass_hits": 0 },
+      "witness_condition": { "exit_code": 1, "result_pass_hits": 0 },
+      "omit_check": { "exit_code": 1, "result_pass_hits": 0 }
+    }
+  },
+  "lean": {
+    "build_command": "lake build YangMills.OS.TwoTransporterHaarProjection",
+    "build_exit_code": 0,
+    "build_jobs": 8159,
+    "build_stdout_sha256": "a01cd7b7577a0da3fb2ce1d7ce28508ff5df49eff37985f6aa534a1910ac4f1d",
+    "build_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "oracle_command": "lake env lean docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean",
+    "oracle_exit_code": 0,
+    "oracle_headlines": 16,
+    "oracle_stdout_sha256": "3ca4fb93c0c212a98dc6b0845d32245406f1ac041e97d5444482e010b8eaaa2f",
+    "oracle_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"],
+    "forbidden_token_matches": 0
+  },
+  "audit_status": "fresh independent audit required"
+}

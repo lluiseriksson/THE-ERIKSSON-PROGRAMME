@@ -406,7 +406,9 @@ exactamente 14 comprobaciones explícitas, también bajo `python -O`. El modo
 `--self-test` exige el rechazo de tres mutaciones: traza decisiva, condición de
 unidad del testigo y omisión de una comprobación. El transcript reproducible
 de la reparación instrumental está en
-`docs/oracle-transcripts/PR39-INSTRUMENTAL-REPAIR-20260731.txt`.
+`docs/oracle-transcripts/PR39-INSTRUMENTAL-REPAIR-20260731.txt`; su manifiesto
+de procedencia está en
+`run-manifests/pr39-instrumental-repair-20260731.json`.
 
 ## No-claims
 
