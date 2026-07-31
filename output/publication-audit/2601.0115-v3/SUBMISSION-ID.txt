@@ -15,5 +15,5 @@ FILE_PAGES: 9
 CURRENT_PUBLIC_VERSION: https://ai.vixra.org/pdf/2601.0115v2.pdf
 CURRENT_PUBLIC_SHA256: e845b2d9906714b04d525b82ed1c3c53d38238c3377ecb23417a69391a0e1382
 SUBMISSION_ORDER: 9 of 9. Submit only after all eight P0/P1 replacements are public and verified.
-IMMUTABLE_GITHUB_LINK: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/2f57c7cb/output/publication-audit/2601.0115-v3
+IMMUTABLE_GITHUB_LINK: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/2f57c7cb03f3e90ee9a45578515ae23c566a2396/output/publication-audit/2601.0115-v3
 FINAL_CLICK: OWNER ONLY

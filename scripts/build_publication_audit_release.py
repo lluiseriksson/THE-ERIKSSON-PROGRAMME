@@ -40,6 +40,14 @@ def parse_submission(path: Path) -> dict[str, str]:
         match = re.search(rf"(?m)^{re.escape(key)}:\s*(.+)$", text)
         if match:
             fields[key] = match.group(1).strip()
+    if "PUBLICATION ACTION" not in fields:
+        match = re.search(r"(?m)^ACTION:\s*(.+)$", text)
+        if match:
+            fields["PUBLICATION ACTION"] = match.group(1).strip()
+    if "PUBLICATION" not in fields:
+        match = re.search(r"(?m)^PUBLIC RECORD:\s*https?://[^\s]+/(\d{4}\.\d{4})\s*$", text)
+        if match:
+            fields["PUBLICATION"] = f"ai.viXra.org:{match.group(1)}"
     if "FILE" not in fields:
         raise ValueError(f"missing FILE field in {path}")
     return fields
@@ -54,7 +62,7 @@ def payload_files(package: Path, final_rel: str) -> list[Path]:
     for path in package.iterdir():
         if not path.is_file():
             continue
-        if path.name.startswith("MANIFEST-") or path.name.endswith("-SHA256.txt"):
+        if path.name.upper().startswith("MANIFEST") or path.name.endswith("-SHA256.txt"):
             continue
         if path.suffix.lower() in {".py", ".md", ".txt", ".json"}:
             keep.add(path)

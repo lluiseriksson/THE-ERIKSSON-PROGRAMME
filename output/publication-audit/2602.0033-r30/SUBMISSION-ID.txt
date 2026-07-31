@@ -52,7 +52,7 @@ CURRENT PUBLIC PDF SHA-256:
 91a7d95e1decc1771c548533748916d9941a77f02937fddf90fb13e348730bfe
 
 IMMUTABLE GITHUB SOURCE LINK:
-https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/cae239d1/output/publication-audit/2602.0033-r30
+https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/cae239d1452310fcaae3464ffa2d77599f97b800/output/publication-audit/2602.0033-r30
 
 OWNER ORDER:
 3 of 9. Submit only after the new public versions of 2602.0052 and 2602.0036 have
