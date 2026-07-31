@@ -1,4 +1,4 @@
-import Mathlib
+import YangMills.L0_Lattice.SU2Basic
 
 /-!
 # Haar projection for two free transporters
@@ -7,10 +7,10 @@ This module is independent of the frozen SU(2) Wilson-reflection lane.  It
 isolates the measure-theoretic no-go used by
 `docs/SU2-TWO-TRANSPORTER-NOGO-20260731.md`.
 
-Only left invariance of the probability measure is consumed.  The weight
-hypothesis is pointwise algebra: `w (a * z⁻¹ * a⁻¹) = w z`.  For the reduced
-SU(2) Wilson weight it follows from conjugation invariance of trace and
-`Re (tr z⁻¹) = Re (tr z)`.
+Only left invariance of the probability measure is consumed.  The generic
+weight hypothesis is pointwise algebra: `w (a * z⁻¹ * a⁻¹) = w z`.  The final
+section discharges that hypothesis for a concrete SU(2) Wilson weight defined
+in this module and specializes every projection theorem to it.
 -/
 
 open MeasureTheory
@@ -195,5 +195,120 @@ theorem quadraticE_eq_partition_mul_mean_sq
     rw [orientationE_twoTransporter_projection μ w hw x y]
   simp_rw [htransport]
   exact separated_quadratic_eq μ (∫ z, w z ∂μ) F
+
+/-! ## Concrete SU(2) Wilson specialization -/
+
+noncomputable local instance su2MatrixMeasurableSpace :
+    MeasurableSpace (Matrix (Fin 2) (Fin 2) ℂ) := by
+  change MeasurableSpace (Fin 2 → Fin 2 → ℂ)
+  infer_instance
+
+local instance su2MatrixBorelSpace :
+    BorelSpace (Matrix (Fin 2) (Fin 2) ℂ) := by
+  change BorelSpace (Fin 2 → Fin 2 → ℂ)
+  infer_instance
+
+noncomputable local instance su2MeasurableSpace : MeasurableSpace SU2 := inferInstance
+local instance su2BorelSpace : BorelSpace SU2 := inferInstance
+
+/-- The reduced SU(2) Wilson weight, defined locally so that this module stays
+independent of the frozen Wilson-reflection lane. -/
+noncomputable def su2WilsonWeight (β : ℝ) (g : SU2) : ℂ :=
+  Real.exp ((β / 2) *
+    (Matrix.trace ((g : SU2) : Matrix (Fin 2) (Fin 2) ℂ)).re)
+
+/-- Trace is invariant under conjugation by an SU(2) element. -/
+theorem su2_trace_conjugate_inverse (a z : SU2) :
+    Matrix.trace
+        (((a * z⁻¹ * a⁻¹ : SU2) : Matrix (Fin 2) (Fin 2) ℂ)) =
+      Matrix.trace (((z⁻¹ : SU2) : Matrix (Fin 2) (Fin 2) ℂ)) := by
+  change Matrix.trace (a.val * (z⁻¹).val * (a⁻¹).val) =
+    Matrix.trace (z⁻¹).val
+  rw [Matrix.trace_mul_cycle]
+  have ha := congrArg Subtype.val (inv_mul_cancel a)
+  change (a⁻¹).val * a.val = (1 : Matrix (Fin 2) (Fin 2) ℂ) at ha
+  rw [ha, Matrix.one_mul]
+
+/-- Every determinant-one two-by-two matrix has inverse with the same trace;
+in particular this holds for SU(2). -/
+theorem su2_trace_inv_eq (z : SU2) :
+    Matrix.trace (((z⁻¹ : SU2) : Matrix (Fin 2) (Fin 2) ℂ)) =
+      Matrix.trace ((z : SU2) : Matrix (Fin 2) (Fin 2) ℂ) := by
+  have hz_right := congrArg Subtype.val (mul_inv_cancel z)
+  change z.val * (z⁻¹).val = (1 : Matrix (Fin 2) (Fin 2) ℂ) at hz_right
+  have hz_det : Matrix.det z.val = 1 := z.property.2
+  have hadj_left : Matrix.adjugate z.val * z.val = 1 := by
+    rw [Matrix.adjugate_mul, hz_det, one_smul]
+  have hinv : (z⁻¹).val = Matrix.adjugate z.val := by
+    calc
+      (z⁻¹).val = 1 * (z⁻¹).val := by simp
+      _ = (Matrix.adjugate z.val * z.val) * (z⁻¹).val :=
+        (congrArg (fun M => M * (z⁻¹).val) hadj_left).symm
+      _ = Matrix.adjugate z.val * (z.val * (z⁻¹).val) :=
+        Matrix.mul_assoc _ _ _
+      _ = Matrix.adjugate z.val := by rw [hz_right, Matrix.mul_one]
+  change Matrix.trace (z⁻¹).val = Matrix.trace z.val
+  rw [hinv, Matrix.adjugate_fin_two]
+  simp [Matrix.trace_fin_two, add_comm]
+
+/-- The concrete reduced SU(2) Wilson weight has the exact pointwise symmetry
+required by the generic left-Haar projection. -/
+theorem su2WilsonWeight_conjugationInverseInvariant (β : ℝ) :
+    ConjugationInverseInvariant (su2WilsonWeight β) := by
+  intro a z
+  simp only [su2WilsonWeight]
+  rw [su2_trace_conjugate_inverse, su2_trace_inv_eq]
+
+theorem su2Wilson_orientationD_inner_projection
+    (μ : Measure SU2) [μ.IsMulLeftInvariant]
+    (β : ℝ) (x c₁ y : SU2) :
+    (∫ c₂, su2WilsonWeight β (x * c₁ * y⁻¹ * c₂⁻¹) ∂μ) =
+      ∫ z, su2WilsonWeight β z ∂μ :=
+  orientationD_inner_projection μ (su2WilsonWeight β)
+    (su2WilsonWeight_conjugationInverseInvariant β) x c₁ y
+
+theorem su2Wilson_orientationD_twoTransporter_projection
+    (μ : Measure SU2) [μ.IsMulLeftInvariant] [IsProbabilityMeasure μ]
+    (β : ℝ) (x y : SU2) :
+    (∫ c₁, ∫ c₂, su2WilsonWeight β (x * c₁ * y⁻¹ * c₂⁻¹) ∂μ ∂μ) =
+      ∫ z, su2WilsonWeight β z ∂μ :=
+  orientationD_twoTransporter_projection μ (su2WilsonWeight β)
+    (su2WilsonWeight_conjugationInverseInvariant β) x y
+
+theorem su2Wilson_orientationE_uv_projection
+    (μ : Measure SU2) [μ.IsMulLeftInvariant] [IsProbabilityMeasure μ]
+    (β : ℝ) :
+    (∫ u, ∫ v, su2WilsonWeight β (u * v⁻¹) ∂μ ∂μ) =
+      ∫ z, su2WilsonWeight β z ∂μ :=
+  orientationE_uv_projection μ (su2WilsonWeight β)
+    (su2WilsonWeight_conjugationInverseInvariant β)
+
+theorem su2Wilson_orientationE_twoTransporter_projection
+    (μ : Measure SU2) [μ.IsMulLeftInvariant] [IsProbabilityMeasure μ]
+    (β : ℝ) (x y : SU2) :
+    (∫ c₁, ∫ c₂, su2WilsonWeight β (x * c₁ * c₂⁻¹ * y⁻¹) ∂μ ∂μ) =
+      ∫ z, su2WilsonWeight β z ∂μ :=
+  orientationE_twoTransporter_projection μ (su2WilsonWeight β)
+    (su2WilsonWeight_conjugationInverseInvariant β) x y
+
+/-- Concrete orientation-D Wilson no-go on SU(2). -/
+theorem su2Wilson_quadraticD_eq_partition_mul_mean_sq
+    (μ : Measure SU2) [μ.IsMulLeftInvariant] [IsProbabilityMeasure μ]
+    (β : ℝ) (F : SU2 → ℂ) :
+    quadraticD μ (su2WilsonWeight β) F =
+      (∫ z, su2WilsonWeight β z ∂μ) *
+        (starRingEnd ℂ) (∫ x, F x ∂μ) * (∫ y, F y ∂μ) :=
+  quadraticD_eq_partition_mul_mean_sq μ (su2WilsonWeight β)
+    (su2WilsonWeight_conjugationInverseInvariant β) F
+
+/-- Concrete orientation-E Wilson no-go on SU(2). -/
+theorem su2Wilson_quadraticE_eq_partition_mul_mean_sq
+    (μ : Measure SU2) [μ.IsMulLeftInvariant] [IsProbabilityMeasure μ]
+    (β : ℝ) (F : SU2 → ℂ) :
+    quadraticE μ (su2WilsonWeight β) F =
+      (∫ z, su2WilsonWeight β z ∂μ) *
+        (starRingEnd ℂ) (∫ x, F x ∂μ) * (∫ y, F y ∂μ) :=
+  quadraticE_eq_partition_mul_mean_sq μ (su2WilsonWeight β)
+    (su2WilsonWeight_conjugationInverseInvariant β) F
 
 end YangMills.OS.TwoTransporterHaarProjection
