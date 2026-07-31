@@ -162,6 +162,13 @@ CMP102 producer with constant one.  The resulting endpoint derives (1.43)
 from the component jets, walk ratios, contour cap, and coupled producer
 budget; it takes neither a pointwise Hessian bound nor (1.43) as an input.
 
+`BalabanCMP102Eq80PhysicalCombinedEq143.lean` then installs that producer on
+the canonical disjoint direct/native ledger.  The direct branch reduces to
+the indexed theorem above, while the native Lemma-1 branch has identically
+zero quadratic core because its literal residual occurs in both `total` and
+`residual`.  Thus the combined terminal `eq143` obligation is discharged
+without a native Hessian hypothesis.
+
 The role of `10000` must nevertheless be stated precisely.  It is the proved
 uniform upper budget for the large-block carrier contributed by one literal
 walk unit, not a replacement for `domainMetric Y`.  The source-metric

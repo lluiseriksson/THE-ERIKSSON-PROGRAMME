@@ -26119,3 +26119,26 @@ separately once the checkpoint is committed.  No terminal
 `CMP116Eq226CenteredConditionedPhysicalTermSource` instance is claimed here;
 the next composition step feeds this direct producer into the already-green
 direct/native equation-(1.43) ledger.
+
+## Addendum 520 (2026-07-31, **combined physical equation-(1.43) field GREEN**)
+
+The indexed physical producer of Addendum 519 is now composed with the
+canonical direct/native quadratic-core ledger.  On a direct index, the
+combined metric and cardinality reduce definitionally to the literal
+equation-(80) tree metric and block cardinality, so the full physical CMP102
+producer applies.  On a native Lemma-1 index, the existing compositor proves
+that the quadratic core is exactly zero and discharges the bound from
+nonnegativity of the printed majorant.
+
+The endpoint
+`abs_cmp116FDerivHessian_cmp116Eq80Lemma1CombinedPhysical_le_eq143` therefore
+proves equation (1.43) for every index of
+`CMP116Eq80Lemma1CombinedDomainCount`.  It accepts neither a direct
+pointwise equation-(1.43) premise nor any native Hessian estimate.  The
+source-scale identification is visible as `Msource = M` in the coupled
+producer budget.
+
+This discharges the sixth substantive field intended for the partial
+centered-conditioned term-source assembly.  It does not construct the final
+record: the remaining analytic/scalar fields and the named Lemma-1
+equation-(1.36) certificate are still assembled separately.
