@@ -51,8 +51,7 @@ character. -/
     chi (negIdentitySU2 * g) = -chi g := by
   change Matrix.trace (((-1 : ℂ) • (1 : Matrix (Fin 2) (Fin 2) ℂ)) * g.val) =
     -Matrix.trace g.val
-  rw [smul_mul]
-  simp
+  simp [Matrix.trace, Matrix.mul_apply]
 
 /-- Concrete anti-singleton witness `I₂ ≠ -I₂`. -/
 theorem one_ne_negIdentity : (1 : SU2) ≠ negIdentitySU2 := by
