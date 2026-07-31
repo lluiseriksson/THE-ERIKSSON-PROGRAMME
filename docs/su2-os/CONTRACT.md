@@ -43,7 +43,10 @@ opposite convention and is not imported as the definition of this kernel.
    of shape `Half × Cross × Half`, keeping geometry and integration over
    crossing variables separate from kernel positivity:
    `su2WilsonCrossingKernel_dressed` and
-   `su2OnePlaquetteCutWeight_splitting`.
+   `su2OnePlaquetteCutWeight_splitting`.  The physical specialization has
+   unit internal-half weights, integrates all three Haar variables, and is
+   bridged exactly to the kernel form by
+   `su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm`.
 5. **CLOSED.** Prove a non-empty SU(2) endpoint at `β > 0`.  The pre-registered strict
    gate is: the kernel is non-constant, its value changes with `β` at an
    explicit pair, and the pairing is strictly positive for an explicit
@@ -69,6 +72,11 @@ used.
 The remaining blocker is not mathematical: the requested external model audit
 did not return a response satisfying its validation contract.  The result is
 therefore shipped as compiled Lean code and a draft PR, not as an audited paper.
+
+There is also a typed integration blocker outside the owned producer: the
+published `ReflectionSplitting` theorem cannot consume compact SU(2).  The
+autonomous endpoint uses the new Haar producer directly; it is not represented
+as an instance of the finite `ZMod N` theorem.  See `INTEGRATION-NOTE.md`.
 
 A finite Taylor truncation is never called the exact Wilson weight, and a
 `ZMod N` model is never called SU(2).

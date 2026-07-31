@@ -21,7 +21,8 @@ SU2WilsonReflectionGeometry.lean   SU2WilsonReflectionEndpoint.lean
   - finite cut data                - β > 0
   - Half × Cross × Half            - exact endpoint
   - orientation inversion          - strict non-vacuity
-  - factorization identity         - non-constant witness
+  - factorization identity         - full reflected pairing
+  - triple Haar pairing            - non-constant witness
         |                          - Haar inequality
         +-------------+------------+
                       |
@@ -42,7 +43,8 @@ SU2WilsonReflectionGeometry.lean   SU2WilsonReflectionEndpoint.lean
 - **Haar quadratic positivity:** an integral theorem obtained from the kernel
   expansion, uniform bounds, and the finite probability Haar measure.
 - **Final instance:** combines only the already-proved pieces and includes a
-  non-constant SU(2) witness.
+  non-constant SU(2) witness.  Its left, crossing, and right variables are all
+  integrated against normalized Haar measure.
 
 ## Executed dependency chain
 
@@ -55,6 +57,7 @@ su2_trace_mul_inv_eq_sum_entries
   -> su2WilsonInnerIntegral_tendsto
   -> su2WilsonKernelIntegralForm_tendsto
   -> su2WilsonCrossing_isHaarPSDKernel
+  -> su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm
   -> su2OnePlaquette_reflection_positive
 ```
 

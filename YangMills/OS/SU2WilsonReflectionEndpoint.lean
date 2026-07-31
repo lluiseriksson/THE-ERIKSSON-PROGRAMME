@@ -28,9 +28,9 @@ half-observable. -/
 theorem su2OnePlaquette_reflection_positive
     (β : ℝ) (hβ : 0 < β) (F : SU2 → ℂ) (hF : Continuous F) :
     ∃ r : ℝ, 0 ≤ r ∧
-      kernelIntegralForm (sunHaarProb 2)
-        (su2WilsonCrossingKernel β) F = (r : ℂ) :=
-  su2WilsonCrossing_isHaarPSDKernel β hβ.le F hF
+      su2OnePlaquetteReflectedPairing β F = (r : ℂ) := by
+  rw [su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm]
+  exact su2WilsonCrossing_isHaarPSDKernel β hβ.le F hF
 
 /-- At the identity boundary configuration the physical crossing factor is
 `e^β`, so the endpoint genuinely depends on the coupling. -/
@@ -71,8 +71,8 @@ the zero quadratic form. -/
 theorem su2OnePlaquette_constant_pairing_strict
     (β : ℝ) (hβ : 0 < β) :
     ∃ r : ℝ, 0 < r ∧
-      kernelIntegralForm (sunHaarProb 2)
-        (su2WilsonCrossingKernel β) (fun _ => (1 : ℂ)) = (r : ℂ) := by
+      su2OnePlaquetteReflectedPairing β
+        (fun _ => (1 : ℂ)) = (r : ℂ) := by
   let μ : Measure SU2 := sunHaarProb 2
   let G : SU2 → ℝ := fun x =>
     ∫ y, (su2WilsonCrossingKernel β x y).re ∂μ
@@ -144,9 +144,14 @@ theorem su2OnePlaquette_constant_pairing_strict
       _ = ∫ x, G x ∂μ := by rfl
   rcases su2OnePlaquette_reflection_positive β hβ
       (fun _ => (1 : ℂ)) continuous_const with ⟨r, hr, heq⟩
+  have heqKernel :
+      kernelIntegralForm (sunHaarProb 2)
+        (su2WilsonCrossingKernel β) (fun _ => (1 : ℂ)) = (r : ℂ) := by
+    rw [← su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm]
+    exact heq
   refine ⟨r, ?_, heq⟩
   have hre : r = ∫ x, G x ∂μ := by
-    have hreal := congrArg Complex.re heq
+    have hreal := congrArg Complex.re heqKernel
     calc
       r = (kernelIntegralForm (sunHaarProb 2)
           (su2WilsonCrossingKernel β) (fun _ => (1 : ℂ))).re := by

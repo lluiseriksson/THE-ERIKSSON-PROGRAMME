@@ -6,6 +6,36 @@ Status: **NOT PASSED — external service failure**
 
 No model output described below is used as mathematical evidence.
 
+## Internal adversarial review
+
+A separate read-only Codex review correctly found that the first endpoint
+called the Haar kernel producer without connecting it to the declared cut,
+that `Cross` was not integrated, and that the general algebraic split allowed
+arbitrary unrelated half weights.  Those findings were treated as blocking,
+not waived.
+
+The remediation adds:
+
+- `su2OnePlaquetteWilsonWeight`, the physical minimal-cut specialization with
+  unit internal-half weights;
+- `su2OnePlaquetteReflectedIntegrand`, which explicitly applies reflection and
+  complex conjugation to the half-observable;
+- `su2OnePlaquetteReflectedPairing`, which integrates left, crossing, and
+  right SU(2) variables against normalized Haar measure; and
+- `su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm`, the exact bridge
+  consumed by the final positivity endpoint.
+
+The general `leftWeight`/`rightWeight` factorization theorem is only an
+algebraic splitting identity; no positivity is claimed for arbitrary complex
+half weights.  The certified physical endpoint is the unit-internal-weight
+one-plaquette cut, not a theorem for an arbitrary lattice action.
+
+A second read-only pass confirmed that the reflected-pairing and crossing
+integration findings are closed for this minimal declared model.  The residual
+scope boundary remains explicit: this weight is not derived from the
+repository's `GaugeConfig.plaquetteHolonomy`/`wilsonAction` API, and it does
+not instantiate the finite `ReflectionSplitting` consumer.
+
 ## Fable High
 
 The required account preflight was performed with profile `masterythief`.

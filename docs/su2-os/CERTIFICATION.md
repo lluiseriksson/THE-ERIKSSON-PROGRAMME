@@ -17,6 +17,9 @@
   halves and inverts each crossing variable.  The crossing link transports
   both boundary holonomies to a common frame and cancels exactly from their
   relative Wilson holonomy.
+- The full reflected pairing integrates left, crossing, and right variables
+  against normalized Haar measure and is bridged by a proved identity to the
+  analytic kernel quadratic form.
 - At `β > 0`, the kernel is non-constant and the constant observable has
   strictly positive pairing.
 
