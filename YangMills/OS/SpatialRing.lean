@@ -252,19 +252,33 @@ theorem eucNorm_add_sq_of_orthogonal {L : ℕ}
   rw [eucNorm_mul_self, eucNorm_mul_self, eucNorm_mul_self]
   calc
     ∑ σ, (u σ + v σ) * (u σ + v σ)
-        = ∑ σ, (u σ * u σ + (2 * (u σ * v σ) + v σ * v σ)) := by
+        = ∑ σ, (u σ * u σ + (u σ * v σ + (v σ * u σ + v σ * v σ))) := by
           exact Finset.sum_congr rfl fun σ _ => by ring
-    _ = (∑ σ, u σ * u σ) + (2 * ∑ σ, u σ * v σ) + ∑ σ, v σ * v σ := by
-          rw [Finset.sum_add_distrib, Finset.sum_add_distrib, Finset.mul_sum]
-    _ = (∑ σ, u σ * u σ) + ∑ σ, v σ * v σ := by rw [horth]; ring
+    _ = (∑ σ, u σ * u σ) +
+        ((∑ σ, u σ * v σ) + ((∑ σ, v σ * u σ) + ∑ σ, v σ * v σ)) := by
+          simp only [Finset.sum_add_distrib]
+    _ = (∑ σ, u σ * u σ) + ∑ σ, v σ * v σ := by
+          have horth' : ∑ σ, v σ * u σ = 0 := by
+            calc
+              ∑ σ, v σ * u σ = ∑ σ, u σ * v σ :=
+                Finset.sum_congr rfl fun σ _ => mul_comm _ _
+              _ = 0 := horth
+          rw [horth, horth']
+          ring
 
 /-- The sector decomposition is orthogonal, hence norm-square preserving. -/
 theorem evenPart_oddPart_norm_sq {L : ℕ} (u : (Fin L → Fin 2) → ℝ) :
     eucNorm u * eucNorm u
       = eucNorm (evenPart u) * eucNorm (evenPart u)
         + eucNorm (oddPart u) * eucNorm (oddPart u) := by
-  rw [← evenPart_add_oddPart u]
-  exact eucNorm_add_sq_of_orthogonal (evenPart_oddPart_orthogonal u)
+  calc
+    eucNorm u * eucNorm u =
+        eucNorm (fun σ => evenPart u σ + oddPart u σ) *
+          eucNorm (fun σ => evenPart u σ + oddPart u σ) := by
+            rw [evenPart_add_oddPart u]
+    _ = eucNorm (evenPart u) * eucNorm (evenPart u) +
+        eucNorm (oddPart u) * eucNorm (oddPart u) :=
+      eucNorm_add_sq_of_orthogonal (evenPart_oddPart_orthogonal u)
 
 /-- A flip-invariant kernel preserves the even sector. -/
 theorem act_preserves_flipEven {L : ℕ}
@@ -334,7 +348,10 @@ theorem norm_act_le_of_flip_sector_bounds {L : ℕ}
   have hactOrth : ∑ σ, act K (evenPart u) σ * act K (oddPart u) σ = 0 :=
     flipEven_flipOdd_orthogonal hpActEven hmActOdd
   have hactSplit : act K u = fun σ => act K (evenPart u) σ + act K (oddPart u) σ := by
-    rw [← evenPart_add_oddPart u, act_add]
+    calc
+      act K u = act K (fun σ => evenPart u σ + oddPart u σ) :=
+        congrArg (act K) (evenPart_add_oddPart u).symm
+      _ = fun σ => act K (evenPart u) σ + act K (oddPart u) σ := act_add K _ _
   have hactSq : eucNorm (act K u) * eucNorm (act K u)
       = eucNorm (act K (evenPart u)) * eucNorm (act K (evenPart u))
         + eucNorm (act K (oddPart u)) * eucNorm (act K (oddPart u)) := by
@@ -351,7 +368,18 @@ theorem norm_act_le_of_flip_sector_bounds {L : ℕ}
       mul_nonneg hr (eucNorm_nonneg (oddPart u))]
   have hsq : eucNorm (act K u) * eucNorm (act K u)
       ≤ (r * eucNorm u) * (r * eucNorm u) := by
-    nlinarith
+    calc
+      eucNorm (act K u) * eucNorm (act K u) =
+          eucNorm (act K (evenPart u)) * eucNorm (act K (evenPart u)) +
+            eucNorm (act K (oddPart u)) * eucNorm (act K (oddPart u)) := hactSq
+      _ ≤ (r * eucNorm (evenPart u)) * (r * eucNorm (evenPart u)) +
+          (r * eucNorm (oddPart u)) * (r * eucNorm (oddPart u)) :=
+        add_le_add hpSq hmSq
+      _ = (r * r) *
+          (eucNorm (evenPart u) * eucNorm (evenPart u) +
+            eucNorm (oddPart u) * eucNorm (oddPart u)) := by ring
+      _ = (r * r) * (eucNorm u * eucNorm u) := by rw [← huSq]
+      _ = (r * eucNorm u) * (r * eucNorm u) := by ring
   nlinarith [eucNorm_nonneg (act K u), eucNorm_nonneg u,
     mul_nonneg hr (eucNorm_nonneg u)]
 
@@ -405,9 +433,10 @@ theorem spatialRing_specRatio_le_of_sector_bounds (β γ : ℝ)
     (hΩeven : IsFlipEven Ω)
     (hodd : SpatialRingOddSectorBound β γ L lam)
     (heven : SpatialRingEvenFluctuationBound β γ L Ω lam) :
-    specRatio (symWeighted_symm (spatialWeightRing γ) β) lam
+    specRatio (symWeighted_symm (L := L + 1) (spatialWeightRing γ) β) lam
       ≤ Real.tanh β * Real.exp (2 * γ) := by
-  let S := symWeighted (spatialWeightRing γ) β
+  let S : (Fin (L + 1) → Fin 2) → (Fin (L + 1) → Fin 2) → ℝ :=
+    symWeighted (spatialWeightRing γ) β
   have hSpos : ∀ σ τ, 0 < S σ τ := symWeighted_pos (spatialWeightRing_pos γ) β
   have hSflip : ∀ σ τ, S (flipCfg σ) (flipCfg τ) = S σ τ :=
     fun σ τ => symWeighted_flip (spatialWeightRing_flip γ) β σ τ
@@ -426,11 +455,12 @@ theorem spatialRing_specRatio_le_of_sector_bounds (β γ : ℝ)
     have hc := congrFun h (0 : Fin (L + 1))
     exact absurd hc (by decide)
   obtain ⟨⟨u, hu, hune, hval⟩, -⟩ :=
-    specGap_isGreatest hSpos (symWeighted_symm (spatialWeightRing γ) β)
+    specGap_isGreatest hSpos
+      (symWeighted_symm (L := L + 1) (spatialWeightRing γ) β)
       hΩpos hΩeig hne
   have hunorm : 0 < eucNorm u :=
     lt_of_le_of_ne (eucNorm_nonneg u) (Ne.symm hune)
-  have hgap : specGap (symWeighted_symm (spatialWeightRing γ) β) lam
+  have hgap : specGap (symWeighted_symm (L := L + 1) (spatialWeightRing γ) β) lam
       ≤ (Real.tanh β * Real.exp (2 * γ)) * lam := by
     rw [hval, div_le_iff₀ hunorm]
     simpa [S, mul_assoc] using hfull u hu
