@@ -113,6 +113,10 @@ sequence with the RG lane's `scaleSpacing`/`towerSize` convention.
   outcome in this strong-coupling lane, not construction of a continuum
   field law.  The uniform limit also carries no information that
   distinguishes one allowed schedule `β k` from another.
+  Quantitatively, the proof uses the deliberately coarse envelope
+  `C exp(-k/100)` with `C = 3.2·10¹³`; its right-hand side falls below `1`
+  only around `k = 3110` (lattice offset about `6220`).  It is an asymptotic
+  tail certificate, not a useful moderate-separation numerical estimate.
 - A fully discharged `d=4`, `SU(2)`, `β=10⁻⁶` example uses normalized
   `Re tr U`, an origin plaquette, and a second plaquette at the genuinely
   varying offset `2k`.  Its actual constructed infinite-volume Gibbs

@@ -675,8 +675,10 @@ theorem tendsto_d4ScaleIndexedTruncatedCorrelation_zero
   exact squeeze_zero'
     (Eventually.of_forall fun _ => abs_nonneg _) hbound hExpC
 
-/-- A single endpoint in which the declared physical separation and the
-actual state correlation share the same scale index. -/
+/-- A bookkeeping pair in which the declared physical separation and the
+actual state correlation share the same scale index.  Its limit theorem is
+the conjunction of two independent limit statements in the product
+topology; C0 proves no dependence relation between the two components. -/
 noncomputable def d4ScaleIndexedTwoPointData
     (β : ℕ → ℝ)
     (hβ : ∀ k, |β k| ≤ explicitStrongCouplingRadiusD4)
