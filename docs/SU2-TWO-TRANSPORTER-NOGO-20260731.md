@@ -408,7 +408,7 @@ unidad del testigo y omisión de una comprobación. El transcript reproducible
 de la reparación instrumental está en
 `docs/oracle-transcripts/PR39-INSTRUMENTAL-REPAIR-20260731.txt`; su manifiesto
 de procedencia está en
-`run-manifests/pr39-instrumental-repair-20260731.json`.
+`docs/oracle-transcripts/PR39-INSTRUMENTAL-REPAIR-MANIFEST-20260731.json`.
 
 ## No-claims
 
