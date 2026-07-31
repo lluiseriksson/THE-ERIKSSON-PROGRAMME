@@ -30,6 +30,11 @@ SU(2) congelado y no convierte una elección auxiliar en una fijación de gauge.
   `Qβ(tr) ≥ β/4` se cita al SHA de solo lectura
   `a66b1c7da3c7441e06864e327b5c4efa43e9c79d`. No se atribuye a este documento
   el PASS asociado a ese SHA.
+- **División exacta de la etiqueta no-go:** Lean formaliza el colapso Wilson
+  SU(2) de las orientaciones D y E. No formaliza en el mismo grafo la separación
+  estricta frente a `Qβ(tr) ≥ β/4 > 0`; esa segunda mitad vive en este documento
+  como comparación matemática citada al SHA congelado. La etiqueta **no-go**
+  combina esas dos piezas de evidencia y no debe atribuirse solo al módulo Lean.
 - **Interpretación no probada:** que el transportador común del carril reducido
   sea una fijación de gauge físicamente derivada. Nada aquí lo establece.
 
@@ -256,6 +261,14 @@ en particular `docs/su2-os/SHARP-GATE.md` y los teoremas
 `su2GaugePureCut_trace_pairing_positive_sharp`. Esta cita compara resultados;
 no importa el carril, no relanza sus gates y no atribuye su PASS al presente
 artefacto.
+
+La división de evidencia es deliberada y exacta: el módulo Lean nuevo certifica
+`Q_D(tr)=Q_E(tr)=0` a partir de la media Haar nula una vez suministrada esa
+identidad; la desigualdad estricta del kernel reducido no está en su cierre de
+imports. La afirmación de **no-go** resulta al comparar ese colapso formalizado
+con `Qβ(tr)≥β/4>0`, probado únicamente en el objeto congelado citado. Esta
+comparación es una derivación documental entre dos artefactos, no un theorem
+Lean conjunto.
 
 ## 5. Conclusión limitada
 

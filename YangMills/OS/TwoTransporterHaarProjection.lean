@@ -94,14 +94,20 @@ theorem orientationE_twoTransporter_projection
         _ = ∫ v, w (u * v⁻¹) ∂μ := by simp [mul_assoc]
     _ = ∫ z, w z ∂μ := orientationE_uv_projection μ w hw
 
-/-- The four-fold quadratic form for orientation D. -/
+/-- The four-fold quadratic form for orientation D.
+
+No integrability hypothesis is imposed: Mathlib totalizes the Bochner integral
+to zero on non-integrable functions.  Its probabilistic interpretation therefore
+requires a separate integrability hypothesis (for example, continuous data on
+a compact group). -/
 noncomputable def quadraticD
     (μ : Measure G) (w F : G → ℂ) : ℂ :=
   ∫ x, ∫ y, ∫ c₁, ∫ c₂,
     (starRingEnd ℂ) (F x) * w (x * c₁ * y⁻¹ * c₂⁻¹) * F y
     ∂μ ∂μ ∂μ ∂μ
 
-/-- The four-fold quadratic form for orientation E. -/
+/-- The four-fold quadratic form for orientation E, with the same totalized
+Bochner-integral convention as `quadraticD`. -/
 noncomputable def quadraticE
     (μ : Measure G) (w F : G → ℂ) : ℂ :=
   ∫ x, ∫ y, ∫ c₁, ∫ c₂,
@@ -291,7 +297,9 @@ theorem su2Wilson_orientationE_twoTransporter_projection
   orientationE_twoTransporter_projection μ (su2WilsonWeight β)
     (su2WilsonWeight_conjugationInverseInvariant β) x y
 
-/-- Concrete orientation-D Wilson no-go on SU(2). -/
+/-- Concrete orientation-D Wilson collapse on SU(2).  For non-integrable `F`,
+the equality uses Mathlib's totalized-zero convention rather than expectation
+semantics. -/
 theorem su2Wilson_quadraticD_eq_partition_mul_mean_sq
     (μ : Measure SU2) [μ.IsMulLeftInvariant] [IsProbabilityMeasure μ]
     (β : ℝ) (F : SU2 → ℂ) :
@@ -301,7 +309,9 @@ theorem su2Wilson_quadraticD_eq_partition_mul_mean_sq
   quadraticD_eq_partition_mul_mean_sq μ (su2WilsonWeight β)
     (su2WilsonWeight_conjugationInverseInvariant β) F
 
-/-- Concrete orientation-E Wilson no-go on SU(2). -/
+/-- Concrete orientation-E Wilson collapse on SU(2).  For non-integrable `F`,
+the equality uses Mathlib's totalized-zero convention rather than expectation
+semantics. -/
 theorem su2Wilson_quadraticE_eq_partition_mul_mean_sq
     (μ : Measure SU2) [μ.IsMulLeftInvariant] [IsProbabilityMeasure μ]
     (β : ℝ) (F : SU2 → ℂ) :
