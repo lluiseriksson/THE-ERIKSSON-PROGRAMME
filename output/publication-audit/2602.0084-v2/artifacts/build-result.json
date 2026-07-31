@@ -1,0 +1,10 @@
+{
+  "status": "BUILT-NOT-INDEPENDENTLY-AUDITED",
+  "final_pdf": "2602.0084v2-4099349d-21pp.pdf",
+  "final_sha256": "4099349dc23496d5938e5dee8092de991083c92dea15481a3a69d2c1ba008bc9",
+  "pages": 21,
+  "erratum_pages": 6,
+  "public_v1_pages": 15,
+  "public_v1_sha256": "633c08d3f3528b60cdbcaf0d13c257aa49f6df68f4717802170dc50beeb52211",
+  "source_sha256": "a4cfb23906c88a35370aca44072c5ca5e0aaf77089ebaf59c7e58ba5ebf15e6a"
+}

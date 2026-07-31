@@ -1,0 +1,33 @@
+PYTHON_OPTIMIZE_LEVEL 0
+PASS final exists and SHA
+PASS public v1 SHA
+PASS final unencrypted 21 pages
+PASS all 21 MediaBoxes are US Letter
+PASS scope phrase: principal results of version 1 are withdrawn
+PASS scope phrase: Defects A-G are included
+PASS scope phrase: Lemma 3.3 is false as printed
+PASS scope phrase: Nothing in this note proves the intended almost-reflection-positivity conclusion false
+PASS stale Lemma 3.3 claim absent
+PASS no assertion statements
+PASS render 2602.0084v2-4099349d-21pp.pdf
+PASS render 2602.0084v1-public.pdf
+PASS rendered page counts
+PASS final page 7 pixel-equals public v1 page 1
+PASS final page 8 pixel-equals public v1 page 2
+PASS final page 9 pixel-equals public v1 page 3
+PASS final page 10 pixel-equals public v1 page 4
+PASS final page 11 pixel-equals public v1 page 5
+PASS final page 12 pixel-equals public v1 page 6
+PASS final page 13 pixel-equals public v1 page 7
+PASS final page 14 pixel-equals public v1 page 8
+PASS final page 15 pixel-equals public v1 page 9
+PASS final page 16 pixel-equals public v1 page 10
+PASS final page 17 pixel-equals public v1 page 11
+PASS final page 18 pixel-equals public v1 page 12
+PASS final page 19 pixel-equals public v1 page 13
+PASS final page 20 pixel-equals public v1 page 14
+PASS final page 21 pixel-equals public v1 page 15
+PASS font inventory readable and embedded
+STATUS SELF-VERIFIED-NOT-INDEPENDENT
+FINAL 2602.0084v2-4099349d-21pp.pdf
+SHA256 4099349dc23496d5938e5dee8092de991083c92dea15481a3a69d2c1ba008bc9

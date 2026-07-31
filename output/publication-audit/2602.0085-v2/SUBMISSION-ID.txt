@@ -1,0 +1,40 @@
+STATUS: HOLD - BUILT, NOT YET INDEPENDENTLY AUDITED
+PUBLICATION ACTION: REPLACE VERSION
+PUBLICATION: ai.viXra.org:2602.0085
+CATEGORY: Mathematical Physics
+
+TITLE:
+Ultraviolet Stability of Wilson-Loop Expectations in 4D Lattice Yang-Mills Theory Via Multiscale Gradient-Flow Smoothing
+
+AUTHOR:
+Lluis Eriksson
+
+ABSTRACT:
+VERSION 2 RETRACTION AND ERRATUM. The principal results of version 1 are withdrawn. Lemma 3.6, Eq. (16), falsely identifies the Wilson-flow linearisation with a connected weighted scalar Laplacian plus a pointwise adjoint term. At the trivial configuration, gauge invariance forces the true Hessian to annihilate a pure-gauge subspace of dimension at least (|V|-1)(N^2-1), incompatible with the printed connected-Laplacian kernel; if the positive-weight graph is disconnected, the single stationary heat-kernel term used downstream is itself false. Consequently Lemma 3.8, Proposition 3.9, Theorem 3.11 and Theorem 1.1 are withdrawn. Lemma 2.2 and Proposition 1.3 remain intact. Lemma 3.2 is only recoverable as a separately specified scalar heat-kernel theorem; its original instantiation is withdrawn. Reflection positivity, Osterwalder-Schrader reconstruction, thermodynamic limit and mass gap remain open. The five-page erratum is followed by the preserved 21-page version 1.
+
+COMMENTS:
+26 pages. v2: 5-page retraction/erratum plus preserved 21-page v1. Lemma 2.2 and Proposition 1.3 stand; Lemma 3.2 is only independently recoverable and its original instantiation is withdrawn.
+
+CHANGE NOTE:
+Withdraws the false Eq. (16) linearisation and every dependent UV theorem; supplies an exact gauge-kernel counterexample and corrects the status of Lemma 3.2. Version 1 is preserved after the erratum.
+
+FILE:
+artifacts/2602.0085v2-deff7be4-26pp.pdf
+
+PUBLIC ABSTRACT URL:
+https://ai.vixra.org/abs/2602.0085
+
+CURRENT PUBLIC PDF URL:
+https://ai.vixra.org/pdf/2602.0085v1.pdf
+
+CURRENT PUBLIC PDF SHA-256:
+930e7ea90a21b78a71fe73bfcc48519b0ee17c66f9fe23bdf7fead21829dfd8d
+
+IMMUTABLE GITHUB SOURCE LINK:
+PENDING UNTIL COMMIT AND PUSH
+
+OWNER ORDER:
+1 AMONG THE TWO COUPLED RETRACTIONS; GLOBAL ORDER PENDING
+
+OWNER ACTION:
+DO NOT UPLOAD OR CLICK SUBMIT.

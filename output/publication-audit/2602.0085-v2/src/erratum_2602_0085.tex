@@ -1,0 +1,309 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{array,tabularx}
+\pagestyle{plain}
+\setlength{\parskip}{4pt}
+\setlength{\emergencystretch}{2em}
+
+\newcommand{\su}{\mathfrak{su}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Retraction of Theorems 1.1 and 3.11, and Erratum (v2)}\\[5pt]
+{\large Gradient Flow Observables and Ultraviolet Closure without\\
+Blocking-Map Hypotheses for Lattice Yang--Mills Theory in Four Dimensions}\\[6pt]
+Lluis Eriksson \quad\textbullet\quad ai.viXra:2602.0085 \quad\textbullet\quad July 2026
+\end{center}
+
+\noindent\rule{\textwidth}{0.8pt}
+
+\vspace{2pt}
+\noindent
+\textbf{The principal results of this paper are withdrawn.} Lemma 3.6 is false as
+stated, and with it Lemma 3.8, Proposition 3.9, Theorem 3.11 and Theorem 1.1. The
+defect is not a gap to be filled: the operator identity on which the whole
+ultraviolet estimate rests is contradicted at the simplest configuration on the
+lattice. This note states the refutation, delimits exactly what survives, and
+records the repair route. The v1 manuscript follows unmodified, so that the claim
+and its refutation can be read against each other.
+
+\section{Status}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.43\textwidth}|X|}
+\hline
+\textbf{Statement} & \textbf{Status as of v2}\\
+\hline
+Lemma 2.2 (gauge covariance of the flow) & Stands\\
+\hline
+Lemma 3.2 (Gaussian bound for the scalar kernel $p_\tau$)
+ & \textbf{Recoverable} as an independently\\
+ & specified scalar heat-kernel statement;\\
+ & the original instantiation is \textbf{withdrawn}\\
+\hline
+Proposition 1.3 (flow--reflection commutation) & Stands\\
+\hline
+Lemma 3.6, Eq.~(16) (structure of $\mathcal L_\tau$) & \textbf{FALSE} (\S2)\\
+\hline
+Lemma 3.8 (domination by scalar heat semigroup) & \textbf{Withdrawn}\\
+\hline
+Proposition 3.9 ($\ell^2$ column bound) & \textbf{Withdrawn}\\
+\hline
+Theorem 3.11 (squared-oscillation summability) & \textbf{Withdrawn}\\
+\hline
+Theorem 1.1 (UV closure) & \textbf{Withdrawn}\\
+\hline
+Reflection positivity, OS, thermodynamic limit, mass gap & Open (as in v1)\\
+\hline
+\end{tabularx}
+\end{center}
+
+\section{The refutation}
+
+Equation~(16) of Lemma 3.6 asserts that the linearization of the Wilson flow, in
+transported coordinates, has the form
+\[
+\mathcal L_\tau \;=\; \Delta^{\mathrm{cov}}_{V_\tau} + A_{V_\tau},
+\qquad
+(\Delta^{\mathrm{cov}}_{V_\tau}X)(e)=\sum_{e'\sim e} a_{e,e'}\bigl[T_{e,e'}(\tau)X(e')-X(e)\bigr],
+\]
+with weights $a_{e,e'}\ge 0$ \emph{depending only on the lattice geometry}, $T_{e,e'}(\tau)$
+fibre isometries, and $A_{V_\tau}$ acting pointwise by adjoint commutators. Lemma 3.8
+and Proposition 3.9 use nothing about the flow except this structure.
+
+\paragraph{The test configuration.}
+Take $U\equiv \mathbf 1$ on the torus. Every plaquette is trivial, so $U$ is a global
+minimum of the Wilson action $S_W$ and a fixed point of the flow: $V_\tau\equiv\mathbf 1$
+for all $\tau$. At this configuration all parallel transports are trivial,
+$T_{e,e'}(\tau)=\mathrm{id}$, and the plaquette holonomies entering $A_{V_\tau}$ are
+trivial, so $A_{V_\tau}=0$. Equation~(16) therefore asserts that $\mathcal L_\tau$ is
+\emph{exactly} a graph Laplacian with non-negative weights,
+$(\mathcal L X)(e)=\sum_{e'\sim e}a_{e,e'}[X(e')-X(e)]$.
+
+\paragraph{A dimension count that (16) cannot survive.}
+Let $\mathcal G_+$ be the subgraph of the link graph formed by those pairs $e\sim e'$
+with \emph{strictly} positive weight $a_{e,e'}>0$. The two cases below are exhaustive,
+and the chain of \S3.3 breaks in each.
+
+\emph{Case 2: $\mathcal G_+$ is disconnected.} Then the scalar comparison semigroup
+$P_\tau=e^{\tau\Delta}$, which by construction carries the \emph{same} weights, is
+reducible: $p_\tau(\cdot,e_0)$ remains supported in the connected component
+$C(e_0)\subsetneq\mathcal G_k$, and $p_{2\tau}(e_0,e_0)\to 1/|C(e_0)|>1/|\mathcal G_k|$
+as $\tau\to\infty$. The scalar-kernel bound invoked in the proof of Proposition 3.9,
+$\sum_e p_\tau(e,e_0)^2=p_{2\tau}(e_0,e_0)\le C_{\mathrm{jac}}(\tau+1)^{-2}
++1/|\mathcal G_k|$, is then false for $\tau$ large. The argument fails before the gauge
+modes are reached: the single global stationary term $1/|\mathcal G_k|$ presupposes
+irreducibility.
+
+\emph{Case 1: $\mathcal G_+$ is connected.} Then the kernel of the claimed weighted
+Laplacian is exactly the space of constant $\su(N)$-valued functions, of dimension
+$\dim\su(N)=N^2-1$ --- and this is contradicted by the gauge count that follows.
+
+The true linearization at a fixed point of a gradient flow is minus the Hessian:
+$\mathcal L=-\operatorname{Hess}S_W(\mathbf 1)$. Now $S_W$ is gauge invariant, and the
+gauge orbit of $\mathbf 1$ consists entirely of pure-gauge configurations
+$U^g(e)=g(x)g(y)^{-1}$, all of whose plaquettes are trivial; hence $S_W$ is
+\emph{constant, at its minimum,} along the whole orbit, which is therefore a manifold
+of minima. (Constancy and minimality are all that is used; whether the constant is
+zero depends on the normalization chosen for the action.) The Hessian annihilates the
+tangent space to a manifold of minima, so
+\[
+\mathcal L\,X^\lambda=0
+\qquad\text{for every }
+X^\lambda(e):=\lambda(x)-\lambda(y),\quad e=(x,y),\ \ \lambda:\Lambda^0_k\to\su(N).
+\]
+The gauge-tangent subspace $\{X^\lambda\}$ has dimension $(|\Lambda^0_k|-1)(N^2-1)$
+(the constant $\lambda$ act trivially). Only a \emph{lower} bound is needed, and only
+a lower bound is claimed --- $\mathcal L$ may well have further null modes, and none
+need be excluded:
+\[
+\dim\ker\mathcal L\;\ge\;(|\Lambda^0_k|-1)(N^2-1)\;>\;N^2-1
+\qquad\text{whenever }|\Lambda^0_k|>2,
+\]
+in particular on every lattice of the refinement sequence considered here (the
+inequality is an equality, not a strict one, at exactly two vertices).
+whereas the claimed connected weighted Laplacian has kernel of dimension
+\emph{exactly} $N^2-1$. \textbf{The two conclusions about $\dim\ker\mathcal L$ are
+incompatible.} Equation~(16) is false, and it is false already at $U\equiv\mathbf 1$,
+with no asymptotics and no field-dependence involved.
+
+So in Case 1 the asserted operator identity is refuted outright, and in Case 2 the
+heat-kernel estimate built on it is refuted outright. No reading of ``weighted
+connected graph'' rescues \S3.3.
+
+\paragraph{The same defect, measured against Proposition 3.9.}
+Take $\lambda$ supported at a single vertex $x_0$ with $|\lambda(x_0)|=1$. Then $X^\lambda$
+is supported on the $2d$ links incident to $x_0$, with $|X^\lambda(e)|=1$ on each, and by
+the above it is \emph{exactly stationary}: $X^\lambda_\tau=X^\lambda_0$ and
+$\sum_e|X^\lambda_\tau(e)|^2=2d$ for all $\tau$. But $X^\lambda$ is a signed sum of $2d$
+single-link initial data, so linearity of~(15) and the triangle inequality in
+$\ell^2(\mathcal G_k)$ give, from Proposition 3.9,
+\[
+\sqrt{2d}\;=\;\bigl\|X^\lambda_\tau\bigr\|_{\ell^2}
+\;\le\; 2d\,\sqrt{\frac{C_{\mathrm{jac}}}{(\tau+1)^2}+\frac{1}{|\mathcal G_k|}}\,.
+\]
+Choosing $\tau$ large enough that $C_{\mathrm{jac}}(\tau+1)^{-2}\le|\mathcal G_k|^{-1}$
+yields $|\mathcal G_k|\le 4d$. For $d=4$ every torus with more than $16$ links
+contradicts the proposition. The $1/|\mathcal G_k|$ term that Remark 3.10 dismisses as
+subdominant is precisely where the gauge modes were lost.
+
+\paragraph{Where the proof of Lemma 3.6 goes wrong.}
+Differentiating the staple products in $\partial_{x,\mu}S_W$ produces, besides the
+nearest-neighbour transport--difference terms and the on-site adjoint commutators, a
+term of divergence type --- in the continuum linearization
+$\partial_\tau b_\mu=D^2b_\mu+2[G_{\mu\nu},b_\nu]-D_\mu(D_\nu b_\nu)$, the summand
+$-D_\mu(D_\nu b_\nu)$. It is second order, it is neither a non-negative-weight
+transport--difference nor a pointwise adjoint commutator, and it is exactly the term
+that annihilates longitudinal (gauge) modes. The proof of Lemma 3.6 sorts the
+differentiated terms into two buckets and has no bucket for it. This is the same
+object that L\"uscher and Weisz damp by hand with the parameter $\alpha_0$: in the
+linearized flow the transverse part carries $e^{-\tau p^2}$ and the longitudinal part
+$e^{-\alpha_0\tau p^2}$, so at $\alpha_0=0$ --- the flow used in this paper --- the
+longitudinal part does not decay at all.
+
+\section{What this costs, and what it does not}
+
+Theorem 3.11 has no other proof in the paper, and Theorem 1.1 obtains its influence
+bound (\S4.4, Proposition 4.4) from Theorem 3.11. Both are withdrawn. In particular
+the paper's central assertion --- that the oscillation summability which was an
+\emph{assumption} on the blocking map in the companion paper is here a \emph{theorem}
+--- is retracted; that assumption is not discharged by this work.
+
+Two results of the author stand exactly as printed, and a third scalar estimate is
+recoverable but not standing; none of them uses (16):
+\begin{itemize}
+\item \textbf{Lemma 2.2}, gauge covariance of the flow. It not only survives, it is the
+instrument of the refutation above.
+\item \textbf{Lemma 3.2}, the Gaussian upper bound for the scalar heat kernel $p_\tau$
+on the link graph --- but only in a restricted sense, and the restriction matters. As
+a statement about a graph Laplacian that is \emph{specified independently}, connected
+and uniformly elliptic, it is standard and survives; it has no gauge content. What
+does \emph{not} survive is its role in this paper: the weights defining $p_\tau$ were
+taken from the decomposition (16), which is false, so $p_\tau$ is no longer the
+dominating semigroup of anything, and in the disconnected branch of \S2 the bound with
+the single stationary term $1/|\mathcal G_k|$ is itself false. Lemma 3.2 has no
+remaining implication for the Wilson-flow variational equation.
+\item \textbf{Proposition 1.3}, $W_\tau\circ\Theta=\Theta\circ W_\tau$. Proved from
+invariance of the action under reflection and uniqueness for the flow ODE. It is
+elementary, and the paper already states that it does not by itself give reflection
+positivity for the smoothed observables.
+\end{itemize}
+
+\noindent
+The proofs of the two surviving results of the author were re-read for this note,
+rather than cleared by inspecting what they depend on: Lemma 2.2 follows from gauge
+invariance of $S_W$, covariance of the link derivative under gauge transformations,
+and uniqueness for the flow ODE; Proposition 1.3 from $\Theta$-symmetry of the action,
+$S_W(\Theta U)=S_W(U)$, and the same uniqueness. Both are sound. The distinction is
+not pedantry: in the companion retraction (ai.viXra:2602.0084 v2) a statement cleared
+the other way --- by checking its dependencies without reading its proof --- turned
+out to be false as printed.
+
+\paragraph{A dangling forward pointer.} Remark 5.1 of the manuscript refers the reader
+to a companion paper in which ``Strategy (a)'' --- approximation by
+half-space-supported observables via conditional expectation, with Gaussian
+localization controlling the $L^2$ error uniformly in $k$ --- ``is carried out in
+detail''. That companion is \textbf{ai.viXra:2602.0084}, whose corresponding results
+are withdrawn in its own v2, in part \emph{because} they depend on Theorem 1.1 of the
+present paper. The two manuscripts cite each other across this gap, and neither
+supplies what the other assumes. The forward pointer of Remark 5.1 is open, not
+delivered.
+
+\emph{And it is more open than this paper's defect alone would imply.} What the
+present retraction propagates to that companion is one defect: the non-existence of
+the limit state. Its own v2 records four further defects that owe nothing to the
+gradient flow --- in its variance--oscillation estimate, in the periodic support
+geometry of the torus, in a chain rule applied to a nonlinear map, and in its
+finite-volume heat-kernel input. Repairing the present paper would therefore not
+repair that one; the damped-flow and orbit-space routes of \S4 below address only the
+defect propagated from here.
+
+\paragraph{Effect on companion manuscripts and on the formalized lane.}
+No compiled theorem in the Lean core of the repository
+\texttt{THE-ERIKSSON-PROGRAMME} discharges a hypothesis of the present paper, and none
+is affected by this retraction; the formalized lane and this paper do not meet.
+At the level of manuscripts the situation is not empty, and is stated here so that it
+is not discovered later:
+\begin{itemize}
+\item \textbf{ai.viXra:2602.0084} (\emph{Almost Reflection Positivity for
+Gradient-Flow Observables via Gaussian Localization}) imports the withdrawn Lemma 3.6
+by citation, as its own Lemma 3.1, in exactly the form refuted here (a bound
+$\|X_\tau(\ell,\ell_0)\|_{\mathrm{op}}\le p_\tau(\ell,\ell_0)$ on the Jacobian
+columns). Its Gaussian-localization conclusion is therefore \emph{not presently
+established}, and must be stated conditionally on a corrected damped or transverse
+estimate. \textbf{This retraction does not by itself prove that that conclusion is
+false}: its consumers there require gauge-invariant observables, for which repair
+route (b) below remains open.
+\item \textbf{ai.viXra:2602.0077} is unaffected. Its summability input is an explicit
+\emph{hypothesis} concerning the blocking map $Q_{\ell,k}$, not a theorem about the
+Wilson flow, and that paper's own v2 had already downgraded its discharge statuses.
+\end{itemize}
+
+\section{Repair route (a route, not a result)}
+
+The obstruction is specific: the unfixed Wilson flow has undamped gauge directions, so
+\emph{no} bound of the form ``every Jacobian column decays'' can hold. Two observations
+make a repair plausible, and neither is carried out here.
+
+\begin{enumerate}
+\item[(a)] For a \emph{gauge-invariant} $F$, the composed observables coincide as
+functions on configuration space, $F\circ W^{(\alpha_0)}_\tau=F\circ W^{(0)}_\tau$,
+because the two flows differ by a $\tau$-dependent gauge transformation. Hence
+$\operatorname{osc}_e$ of the two is literally equal, and it suffices to prove the
+oscillation bound for the damped flow $\alpha_0>0$, whose linearization is uniformly
+parabolic in \emph{all} directions. The structure (16) is then not obviously wrong ---
+but it must be re-derived, with the damping term included and its sign controlled.
+\item[(b)] Alternatively, work on the orbit space and estimate only transverse to the
+gauge directions. This requires a Jacobian estimate on a quotient, not on
+$\su(N)^{\mathcal G_k}$, and the counting above shows the two are genuinely different
+problems.
+\end{enumerate}
+
+\noindent
+Either route needs a new proof of the oscillation bound. Until one exists, the
+ultraviolet closure of this paper stands at the same place as the companion paper's:
+conditional on an unproved summability input.
+
+\section{Erratum: the archive metadata of v1}
+
+Separately from the mathematics, the v1 archive record carried the title and abstract
+of an \emph{earlier draft}, claiming ``\emph{Wilson-loop expectations \ldots\ with
+compact gauge group $G$ admit a universal continuum limit}''. Even before the
+retraction above, Theorem 1.1 was narrower on five axes: fixed finite torus (the
+thermodynamic limit is Open, \S6.4); gradient-flow observable families at fixed
+physical flow time $t>0$, not Wilson loops (the limit $t\downarrow 0$ is never taken);
+$\mathrm{SU}(N)$ rather than general compact $G$; weak coupling $g_0\in(0,g_*]$ only;
+and conditional on Assumption A together with the hypotheses (H1)--(H2) imported in
+\S4.3. The manuscript itself never made the stronger claim. The record's title and
+abstract have been corrected.
+
+Two further overstatements internal to v1 are withdrawn, and would have been withdrawn
+even without the refutation: the abstract's description of Assumption A as ``verified
+automatically for all standard physical observables'', and the corresponding row of the
+\S6.7 table. Remark 4.3 is titled ``\emph{Expected} verification of Assumption A'' and
+states that the estimate ``is \emph{expected} to hold''; it sketches a two-region
+mechanism without explicit constants. The label ``unconditional'' is withdrawn from the
+title of \S4 and from \S6.7.
+
+\vspace{4pt}
+\noindent\rule{\textwidth}{0.8pt}
+
+\noindent\footnotesize
+\textbf{Provenance and credit.} The metadata defect was measured on 2026-07-29 by
+comparing the archive metadata of every record in the author's viXra listing against
+the cover page of the served PDF (93 records; 5 genuine mismatches). \textbf{The
+refutation in \S2 originates in an external adversarial review of this paper}, which
+identified the undamped gauge directions of the unfixed Wilson flow as incompatible
+with Lemma 3.6 and cited L\"uscher--Weisz (arXiv:1101.0963) for the role of $\alpha_0$;
+the reviewer's argument was verified line by line against the manuscript before this
+note was written, and the kernel-dimension form of the contradiction given in \S2 was
+obtained in that verification. A second round of the same review supplied the case
+split on $\mathcal G_+$ in \S2, without which the dimension count would have rested on
+an unstated connectivity assumption, and required the lower-bound form of
+$\dim\ker\mathcal L$. The error was the author's; the catch was not.
+
+\end{document}

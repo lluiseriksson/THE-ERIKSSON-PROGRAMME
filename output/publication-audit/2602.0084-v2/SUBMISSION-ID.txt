@@ -1,0 +1,40 @@
+STATUS: HOLD - BUILT, NOT YET INDEPENDENTLY AUDITED
+PUBLICATION ACTION: REPLACE VERSION
+PUBLICATION: ai.viXra.org:2602.0084
+CATEGORY: Mathematical Physics
+
+TITLE:
+Almost Reflection Positivity for Gradient-Flow Observables via Gaussian Localization in Lattice Yang-Mills Theory
+
+AUTHOR:
+Lluis Eriksson
+
+ABSTRACT:
+VERSION 2 RETRACTION AND STATUS NOTE. The principal results of version 1 are withdrawn. Theorem 4.4 and Proposition 3.8 depend on the false Wilson-flow linearisation retracted in ai.viXra:2602.0085 and on further false statements. Lemma 3.1 omits the stationary heat-kernel term; Lemma A.1 gives a variance-oscillation bound that fails for correlated non-product measures; Theorem 5.1 does not obtain a positive self-adjoint generator from its stated hypotheses; Lemma 3.3 uses a non-periodic separation across the torus boundary; and Lemma 3.5 bounds a nonlinear map by a differential at one endpoint rather than an integrated or uniform Jacobian. Definitions 2.2, 2.5 and 2.6 remain definitions, and the cited lattice reflection-positivity Theorem 4.1 is not retracted here. Nothing in this note proves the intended almost-reflection-positivity conclusion false; the printed proof and several printed statements fail. The six-page erratum is followed by the preserved 15-page version 1.
+
+COMMENTS:
+21 pages. v2: 6-page retraction/status note plus preserved 15-page v1. Defects A-G are included; Lemma 3.3 is false as printed and is not listed as unaffected.
+
+CHANGE NOTE:
+Withdraws Theorem 4.4, Proposition 3.8 and their dependent chain; records exact defects in the imported flow bound, heat-kernel term, non-product variance inequality, OS-generator step, periodic support geometry and nonlinear oscillation estimate.
+
+FILE:
+artifacts/2602.0084v2-4099349d-21pp.pdf
+
+PUBLIC ABSTRACT URL:
+https://ai.vixra.org/abs/2602.0084
+
+CURRENT PUBLIC PDF URL:
+https://ai.vixra.org/pdf/2602.0084v1.pdf
+
+CURRENT PUBLIC PDF SHA-256:
+633c08d3f3528b60cdbcaf0d13c257aa49f6df68f4717802170dc50beeb52211
+
+IMMUTABLE GITHUB SOURCE LINK:
+PENDING UNTIL COMMIT AND PUSH
+
+OWNER ORDER:
+2 AMONG THE TWO COUPLED RETRACTIONS, AFTER 2602.0085; GLOBAL ORDER PENDING
+
+OWNER ACTION:
+DO NOT UPLOAD OR CLICK SUBMIT.
