@@ -460,9 +460,15 @@ The current hRpoly branch retains each literal CMP109 Lemma-1 native domain as
 a distinct finite index, maps only its support to the terminal coarse lattice,
 and derives the complete centered rooted-residual sum with explicit
 `64 * exp(-rate/24) < 1` windows.  Do not quotient coincident coarse supports:
-that would reintroduce a fibre-multiplicity obligation.  The analytic (1.36)
-field of `CMP109Lemma1Eq136SourceCertificate`, final `domain_subset`, and
-`volume_budget` remain open.  Start from
+that would reintroduce a fibre-multiplicity obligation.  The combined
+`domain_nonempty`, `domain_subset`, `domainMetric_nonneg`, `rooted_residual`,
+and `volume_budget` fields are now derived, as are the combined physical
+equation-(1.43) field and the cutoff-supported terminal form of equation
+(1.36).  The latter consumes exactly the still-open analytic field `bound` of
+`CMP109Lemma1Eq136SourceCertificate`; it does not prove Lemma 1.  The next
+milestone is the first complete partial centered-conditioned term-source
+instance, with that certificate as its sole named Lemma-1 analytic input.
+Start from
 `docs/source-db/reports/CMP109-LEMMA1-NATIVE-RESIDUAL-AUDIT.md` and
 `docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md`; do not count the certificate as
 a proof of Lemma 1.

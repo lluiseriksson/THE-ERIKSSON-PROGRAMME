@@ -26142,3 +26142,61 @@ This discharges the sixth substantive field intended for the partial
 centered-conditioned term-source assembly.  It does not construct the final
 record: the remaining analytic/scalar fields and the named Lemma-1
 equation-(1.36) certificate are still assembled separately.
+
+## Addendum 521 (2026-07-31, **combined cutoff-supported equation-(1.36) field GREEN**)
+
+The direct equation-(80) and native CMP109 Lemma-1 residuals now share one
+literal terminal cutoff carrier: all bilateral interior bonds of the combined
+direct/native centered region.  This choice is necessary because the native
+residual evaluates the global correction `D(P_Z0 B)` and therefore cannot be
+replaced by a fictitious domain-local correction.  The theorem
+`cmp109Lemma1SourceSmallField_combinedInteriorProjection_of_cutoff` derives the
+native small-field premise from nonvanishing of that common cutoff, while
+`physicalBondProjection_indexedSourceDomain_combinedCenteredRegion` proves
+that the larger projection leaves every direct source-domain contribution
+unchanged.
+
+The common carrier is stronger than the individual-domain small-field region
+printed in (1.34).  Accordingly the headline theorem is deliberately
+described as the **cutoff-supported terminal form** of (1.36), not as an
+extension of the source estimate to every field in every individual-domain
+region.  The non-vacuity/field-identity guard
+`norm_cmp116SourcePhysicalCoordinateCochain_lt_of_combinedInteriorCutoff`
+also proves that the enlarged cutoff controls the same literal physical
+coordinate cochain installed by `withSourcePhysicalBondField`; the Eq.-(1.36)
+and cutoff-energy/cubic routes have not drifted to different `bondField`s.
+
+The endpoint
+`abs_cmp116Eq80Lemma1CombinedPhysicalResidual_le_eq136` performs the exact
+`Fin.addCases` split of the canonical direct/native ledger.  The direct branch
+derives the physical equation-(80) estimate internally from the third-jet,
+patch-walk, metric-decay, and scalar-budget producers.  The native branch
+consumes only the source-pinned field `CMP109Lemma1Eq136SourceCertificate.bound`.
+Both branches are normalized by the explicit amplitude
+`E0Direct + lemma1.E0`; no pointwise Eq.-(1.36) premise, arbitrary reindexing
+map, zero native residual, or false locality hypothesis is accepted.
+
+**Pinned clean Colab Pro+ high-RAM focal.**  Starting from committed base
+`be3dcb8dc90321e03b0ed08e5fad0084ec750f78`, the exact overlay SHA-256 was
+`D8D70D99BDAA6C5FAE7989363563490D170BF3AFFD948579E494D4CFF17D7778`.
+The common-carrier target finished with the literal line
+`Build completed successfully (8769 jobs).`; the combined Eq.-(1.36) target
+finished with `Build completed successfully (8903 jobs).`  The seven carrier
+declarations and three combined declarations each report exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+This is the seventh substantive field intended for the first partial
+centered-conditioned term-source assembly.  It is conditional on the single
+named Lemma-1 source certificate and does not prove that certificate, build a
+complete `CMP116Eq226CenteredConditionedPhysicalTermSource`, discharge the
+remaining analytic/scalar windows, prove `hRpoly`, or change the distance to
+Clay (still approximately zero, below 0.1%).
+
+**Eq. (2.29) boundary.**  Visual extraction confirms that (2.29) is the
+Cammarota-type sum over subfamilies whose union is `Y0`; it does not print the
+injective `DIndex/DParts` representation used by a later Lean bridge.
+Reference [26] is C. Cammarota, *Decay of correlations for infinite range
+interactions in unbounded spin systems*, CMP 85 (1982).  Its usable theorem,
+thresholds, and dictionary remain `source_pending`, but this downstream
+Eq.-(2.29) obligation is not a field of the present term source and does not
+block the cutoff-supported Eq.-(1.36) producer.

@@ -318,7 +318,13 @@ the certificate.
 
 Conditional on that named source bound, the finite native-domain enumeration,
 exact energy-difference sum, and centered equation-(2.20) rooted residual sum
-are derived.  The terminal frontier still contains `domain_subset`,
-`volume_budget`, the joint scalar regime, and construction of the complete
-centered conditioned term source.  No `hRpoly`, continuum, OS, or Clay claim
-follows; distance to Clay remains approximately zero (below 0.1%).
+are derived.  The joint direct/native dictionary now also derives terminal
+`domain_nonempty`, `domain_subset`, `domainMetric_nonneg`, the combined
+rooted-residual bound, and `volume_budget`.  The combined physical
+equation-(1.43) field is unconditional on any native Hessian estimate, and the
+terminal cutoff-supported equation-(1.36) field is derived from the physical
+equation-(80) producer plus exactly this named Lemma-1 certificate.  The
+remaining frontier is the joint scalar/analytic regime and construction of
+the complete centered conditioned term source.  No `hRpoly`, continuum, OS,
+or Clay claim follows; distance to Clay remains approximately zero (below
+0.1%).
