@@ -58,8 +58,8 @@ theorem su2WeylPolynomial_spinOne_tensor_square_bridge (g : SU2) :
     (su2WeylPolynomial 2 g : ℂ) + 1 =
       (YangMills.ClayCore.ContinuousUnitaryMatrixRep.character fundamentalRep g) ^ 2 := by
   rw [← su2WeylPolynomial_spinHalf_representation_bridge]
-  simp only [su2WeylPolynomial_spinOne]
-  push_cast
+  simp only [su2WeylPolynomial_spinOne, su2WeylPolynomial_spinHalf]
+  norm_cast
   ring
 
 /-- Registered coefficient integral. -/
