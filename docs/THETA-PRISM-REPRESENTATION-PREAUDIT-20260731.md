@@ -2,16 +2,22 @@
 
 ## Status and scope
 
-**Independent, read-only algebra audit: PASS for the representation-theoretic
-claims 3--7.**  This is evidence about an abstract product-Haar calculation,
+**Independent, read-only algebra audits: PASS.**  A representation specialist
+passed claims 3--7, and a separate full-paper-calculation auditor passed all
+eight registered claims.  Together with the independent geometry audit, these
+are three PASS reports on the abstract object.  This is evidence about an
+abstract product-Haar calculation,
 not a Lean theorem, a physical `GaugeConfig` cell, a `ReflectionSplitting`
 instance, reflection positivity, or SU(2) Gate 7.
 
-The auditor arrived cold and used the raw repository object
+The representation auditor arrived cold and used the raw repository object
 `a66b1c7da3c7441e06864e327b5c4efa43e9c79d` only for conventions.  Resolving
 the separately supplied annotated tag exposed a verdict-bearing tag message;
 the resulting procedural contamination is recorded below.  The auditor states
-that it did not use that message in the derivations.
+that it did not use that message in the derivations.  The full-calculation
+auditor independently disclosed a second, non-material contamination: an
+overbroad search in the authorized tree printed unrelated reports under
+`outputs/`.  It states that none was used in the derivation.
 
 Let `G=SU(2)` with normalized Haar measure, `chi=Tr` in the fundamental
 representation, and
@@ -47,6 +53,12 @@ auditor also obtained the explicit absolute bound
 on normalized Haar measure, which justifies the Fubini rearrangements used in
 the abstract calculation.
 
+The full-calculation auditor reached the same coefficient by a fourth route,
+distinct from the matrix-coefficient and singlet-projector calculations:
+substitute `Z=W A1`, use `chi(Z C)=chi(Z^-1 C^-1)`, and apply the character
+convolution identity `chi*chi=chi/2`.  It again gives
+`(1/2) chi(A2^-1 A1)`.
+
 ## Endpoint and sign discipline
 
 At `beta=0`, `F` remains nonzero and sector-pure but its pairing is zero.
@@ -62,6 +74,10 @@ The registered gate was only the inequality for `0<beta<=1`.  Its extension
 to all `beta>0`, and the preceding witness-specific observation for `beta<0`,
 are **post-hoc strengthenings** and were not part of the pre-registered gate.
 
+Deleting `A2`, `B2`, and the third plaquette kills the specific theta sector
+`(1,1/2,1/2)`, **not every one-cycle sector**.  No front door may paraphrase
+this as collapse to the zero space.
+
 ## Failed attacks
 
 1. A residual component in `L^2(U)`, `L^2(V)`, or `L^2(UV^-1)` was sought.
@@ -74,7 +90,7 @@ are **post-hoc strengthenings** and were not part of the pre-registered gate.
    coefficient orthogonality fixes the result as
    `(1/2) chi(A2^-1 A1)`.
 
-## Procedural incident: annotated tags leak verdicts
+## Procedural incidents: references and broad reads leak context
 
 An annotated tag can expose its message merely when an auditor resolves the
 reference.  Here the supplied tag message contained a prior verdict, so the
@@ -84,6 +100,14 @@ derived independently.
 Rule purchased on 2026-07-31: **blind-audit instructions must identify the
 object by raw commit SHA only, never by an annotated tag; tag messages must not
 contain verdicts.  An anchor identifies an object, it does not adjudicate it.**
+
+The second incident shows that a raw SHA is necessary but not sufficient.  A
+repository tree can itself contain reports from other lanes, and a broad `rg`
+can print them even when the auditor never seeks them.  Additional rule
+purchased on 2026-07-31: **a blind-audit contract must enumerate the readable
+files; read-only access to an entire tree is not a blind boundary.**  Both
+auditors self-declared their exposures and judged them immaterial, but future
+contracts must prevent the mechanism rather than rely on disclosure.
 
 ## Remaining gates
 

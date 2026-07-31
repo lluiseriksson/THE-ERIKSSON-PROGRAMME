@@ -96,8 +96,8 @@ For a fast human-readable progress scan, read the progress dashboard near the
 top of [`README.md`](README.md#progress-dashboard) and the static dashboard in
 [`docs/dashboard/`](docs/dashboard/).
 
-The abstract two-transporter SU(2) theta-prism proposal has passed separate
-read-only **geometric and representation pre-audits**.  The physical half is a theta multigraph with
+The abstract two-transporter SU(2) theta-prism proposal has three independent
+read-only **geometry/algebra PASS reports**.  The physical half is a theta multigraph with
 `b1=2`; `K(2,3)` names its incidence subdivision; residual gauge leaves
 `G^2 / Ad G`; and `theta(H_i)=s^-1 H_i^-1 s` holds pointwise.  Do not promote
 The representation calculation independently gives a nonzero witness
@@ -112,6 +112,10 @@ and
 before designing that lane.  In particular, a one-incidence edge cannot be
 Haar-eliminated when the observable itself depends on it, and a blind audit
 must identify its object by raw SHA rather than an annotated tag.
+It must also whitelist readable files: a second auditor's broad search in the
+authorized tree exposed unrelated reports under `outputs/`.  Deleting the
+third branch kills the theta sector, not all one-cycle sectors, and the
+witness-specific negative-coupling bound is not general kernel positivity.
 
 A distinct draft, PR #39 at `1fa29e65`, formalizes a no-go for two *freely and
 independently* Haar-integrated transporters that are absent from the observable.

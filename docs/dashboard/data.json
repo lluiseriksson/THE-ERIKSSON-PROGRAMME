@@ -748,7 +748,7 @@
       "group": "os",
       "col": 8,
       "row": 5,
-      "note": "Separate read-only pre-audits pass the abstract geometry and representation calculation: theta-half b1=2, residual quotient G^2/Ad G, pointwise reflection compatibility, pure (1,1/2,1/2) witness, factor 1/16, and the registered beta^4/512 bound. Physical GaugeConfig realization, OS positivity, Lean and Gate 7 remain open; the representation audit disclosed annotated-tag contamination.",
+      "note": "Three independent read-only reports pass the registered abstract geometry/algebra claims: theta-half b1=2, quotient G^2/Ad G, pointwise reflection compatibility, pure (1,1/2,1/2) witness, factor 1/16, and beta^4/512. Tag and broad-tree-search contamination were self-declared, so future blind contracts require raw SHAs plus file whitelists. Physical GaugeConfig, OS positivity, Lean and Gate 7 remain open.",
       "links": [
         {
           "label": "Geometry pre-audit",

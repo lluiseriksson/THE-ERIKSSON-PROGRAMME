@@ -61,7 +61,8 @@ the HORIZON/M3 dependency DAG as curated green/amber/open nodes and is guarded
 by `scripts/validate_dashboard.py`.
 
 **Two-transporter SU(2) theta-prism pilot: geometry and algebra pre-audited
-(2026-07-31).**  A fresh read-only adversarial auditor independently confirmed
+(2026-07-31).**  Three independent read-only reports pass the registered
+abstract geometry/algebra claims.  A geometry auditor independently confirmed
 that each three-parallel-edge half is a theta multigraph with `b1=2`, that its
 incidence subdivision (not the physical graph) is `K(2,3)`, and that gauge
 reduction leaves two loop variables modulo simultaneous conjugation.  It also
@@ -74,8 +75,14 @@ edge.  A separate read-only representation audit independently rederived the
 `||F||^2=3/4`, the pure `(1,1/2,1/2)` sector, the factor `1/16`, and the
 pre-registered `beta^4/512` bound for `0<beta<=1`.  That audit disclosed that
 an annotated tag leaked a previous verdict, so future blind contracts must use
-raw SHAs only.  Neither result is in Lean or realizes a physical `GaugeConfig`
-cell; neither proves OS positivity or counts as SU(2) Gate 7.  See
+raw SHAs only.  A full-calculation auditor then passed all eight claims and
+obtained the coefficient `1/2` by the independent character-convolution route;
+it disclosed that a broad tree search printed unrelated reports.  Future blind
+contracts therefore whitelist readable files instead of authorizing an entire
+tree.  Removing the third branch kills the theta sector, not all one-cycle
+sectors; and the witness-specific `beta<0` bound does not extend general kernel
+positivity.  None of these results is in Lean or realizes a physical `GaugeConfig`
+cell; none proves OS positivity or counts as SU(2) Gate 7.  See
 [`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md)
 and
 [`docs/THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md`](docs/THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md).
