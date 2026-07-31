@@ -19,19 +19,39 @@ DEFAULT_PATH = "YangMills/OS/SpatialOS.lean"
 
 
 def strip_comments(src: str) -> str:
-    """Drop `--` line comments and nested `/- -/` blocks, then normalise space.
+    """Drop `--` line comments and nested `/- -/` blocks, keeping ALL other space.
 
-    Whitespace is collapsed so that RE-WRAPPING a comment cannot be mistaken for
-    a code change.
+    Indentation is syntax in Lean: `by`, `do` and structure instances are column
+    sensitive, so a comparator that collapses whitespace could call two files
+    identical when they parse differently.  An earlier version of this script did
+    exactly that.  Here every character outside a comment is preserved verbatim,
+    including leading whitespace, and only lines that become entirely blank are
+    dropped --- blank lines carry no column information, so removing them makes
+    the check insensitive to how long a comment was without weakening it.
+
+    String literals are respected, so `--` and `/-` inside a string do not open
+    a comment.
     """
     out, i, depth = [], 0, 0
     n = len(src)
     while i < n:
-        if src.startswith("/-", i):
+        if depth == 0 and src[i] == '"':
+            out.append(src[i])
+            i += 1
+            while i < n:
+                if src[i] == "\\" and i + 1 < n:
+                    out.append(src[i:i + 2])
+                    i += 2
+                    continue
+                out.append(src[i])
+                i += 1
+                if src[i - 1] == '"':
+                    break
+        elif src.startswith("/-", i):
             depth += 1
             i += 2
-        elif src.startswith("-/", i):
-            depth = max(0, depth - 1)
+        elif depth > 0 and src.startswith("-/", i):
+            depth -= 1
             i += 2
         elif depth == 0 and src.startswith("--", i):
             while i < n and src[i] != "\n":
@@ -40,7 +60,8 @@ def strip_comments(src: str) -> str:
             if depth == 0:
                 out.append(src[i])
             i += 1
-    return " ".join("".join(out).split())
+    stripped = "".join(out)
+    return "\n".join(ln for ln in stripped.splitlines() if ln.strip())
 
 
 def blob(repo: str, rev: str, path: str) -> str:
