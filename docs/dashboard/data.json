@@ -12,11 +12,13 @@
     "blob": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/",
     "ledger": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/VERIFICATION-LEDGER.md",
     "state": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/project-state.json",
+    "publications": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PUBLICATIONS.md",
+    "author_index": "https://www.ai.vixra.org/author/lluis_eriksson",
     "horizon": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/HORIZON.md",
     "knowledge_tree": "https://lluiseriksson.github.io/physmath-knowledge-tree/",
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "continuum_c1": "CLOSED NEGATIVELY at frozen branch head 0a46e266, outside main. The current t=epsilon=1 strong-coupling KP window has a finite beta cap and cannot follow beta -> +infinity. This rules out one route and proves no positive continuum theorem.",
-    "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem."
+    "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28), public as ai.viXra:2607.0089. The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem."
   },
   "status_legend": {
     "proved": "Machine-checked theorem at the linked recorded checkpoint; core reachability or an external frozen evidence ref is stated explicitly in the node.",
@@ -524,7 +526,7 @@
       "group": "gas",
       "col": 4,
       "row": 5,
-      "note": "Finite-volume and volume-uniform, linearized and exact-activity area-law variants.",
+      "note": "Finite-volume and volume-uniform, linearized and exact-activity area-law variants. The paper is public as ai.viXra:2607.0005.",
       "links": [
         {
           "label": "RestrictedGate.lean",
@@ -533,6 +535,10 @@
         {
           "label": "AREA-LAW-EXACT-PLAN.md",
           "path": "docs/AREA-LAW-EXACT-PLAN.md"
+        },
+        {
+          "label": "Area-law paper PDF",
+          "path": "paper/area-law/paper.pdf"
         }
       ]
     },

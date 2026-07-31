@@ -12,6 +12,8 @@ from a clean public checkout.  The frozen 33-page TeX/PDF live in
 hashes, supersessions, and repository-level caveats are recorded in
 [`docs/SURFACE-CLOSURE-NOTES.md`](docs/SURFACE-CLOSURE-NOTES.md) and
 [`docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`](docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md).
+The definitive manuscript is public as
+[ai.viXra:2607.0089](https://ai.vixra.org/abs/2607.0089).
 This closes the Bessel/surface theorem only; it does not assert a
 four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
@@ -23,6 +25,15 @@ full-core checkpoint is `f0720ba7`: `lake build YangMillsCore` completed at
 only `[propext, Classical.choice, Quot.sound]`.  Historical intermediate
 checkpoints and their exact scopes remain in
 [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
+
+**Publication snapshot verified:** 2026-07-31.  The canonical
+[`publication register`](docs/PUBLICATIONS.md) maps 28 distinct public
+programme papers to their ai.viXra records, including 26 with a canonical PDF
+in this repository.  Its machine-readable source is
+[`docs/publications.json`](docs/publications.json).  Two public PDFs remain to
+be mirrored into canonical paper directories, and two repository manuscripts
+have no public identifier on the live author index; neither condition is
+silently represented by a placeholder.
 
 **CONTINUUM-C1 CLOSED NEGATIVELY** (2026-07-31, frozen branch head
 `0a46e266`, draft PR #34, not merged).  The checked `t=epsilon=1`
@@ -68,8 +79,9 @@ unweighted coarse norm; it does not address a rescaled or weighted gate.
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
 `https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/`.  It mirrors
-the HORIZON/M3 dependency DAG as curated green/amber/open nodes and is guarded
-by `scripts/validate_dashboard.py`.
+the HORIZON/M3 dependency DAG as curated green/amber/open nodes, renders the
+latest entries from the canonical publication register, and is guarded by
+`scripts/validate_dashboard.py` and `scripts/validate_publications.py`.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look

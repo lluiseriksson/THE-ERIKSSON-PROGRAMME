@@ -152,6 +152,44 @@ h1 {
 .clay .big { color: var(--red); }
 .clay .gauge i { background: var(--red); }
 .checkpoint .big { color: var(--accent-2); font-size: 20px; line-height: 1.25; }
+.publication-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 10px 24px;
+  margin: 26px 0 10px;
+}
+.publication-head h2 { margin: 0; }
+.publication-head p { max-width: 760px; margin: 0; color: var(--muted); }
+.pub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+  gap: 10px;
+}
+.pub-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-height: 142px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+.pub-card .pub-id {
+  color: var(--accent-2);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+.pub-card strong { line-height: 1.35; }
+.pub-card .pub-links { margin-top: auto; font-size: 13px; }
+.pub-summary {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
 .counts {
   display: flex;
   flex-wrap: wrap;
@@ -388,6 +426,18 @@ footer {
     </article>
   </section>
 
+  <section aria-labelledby="publications-title">
+    <div class="publication-head">
+      <div>
+        <h2 id="publications-title">Verified Publication Record</h2>
+        <p id="publication-copy">Loading the canonical publication crosswalk...</p>
+      </div>
+      <a id="publication-register" href="#">Open full publication register</a>
+    </div>
+    <div class="pub-grid" id="publications"></div>
+    <div class="pub-summary" id="publication-summary"></div>
+  </section>
+
   <div class="counts" id="counts" aria-label="Node counts"></div>
 
   <section aria-labelledby="milestones-title">
@@ -474,6 +524,15 @@ footer {
     throw error;
   }
 
+  let publicationData;
+  try {
+    const response = await fetch("../publications.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    publicationData = await response.json();
+  } catch (error) {
+    publicationData = null;
+  }
+
   const meta = data.meta;
   const nodes = data.nodes;
   const edges = data.edges;
@@ -487,9 +546,47 @@ footer {
     ["Canonical state", meta.state],
     ["HORIZON.md DAG", meta.horizon],
     ["Verification ledger", meta.ledger],
+    ["Publications", meta.publications],
     ["Knowledge tree", meta.knowledge_tree]
   ].map(([label, href]) => `<a href="${href}" rel="noreferrer">${label}</a>`).join("");
   $("ledgerlink").href = meta.ledger;
+  $("publication-register").href = meta.publications;
+
+  if (publicationData && Array.isArray(publicationData.entries)) {
+    const publicEntries = publicationData.entries.filter(entry =>
+      entry.status === "published" || entry.status === "published-unmirrored"
+    );
+    const mirroredEntries = publicEntries.filter(entry => entry.artifact);
+    const repositoryOnly = publicationData.entries.filter(entry =>
+      entry.status === "repository-only"
+    );
+    const latest = publicEntries.slice(0, 6);
+    $("publication-copy").textContent =
+      `${publicEntries.length} distinct public programme papers verified on ` +
+      `${publicationData.verified_on}; ${mirroredEntries.length} have a canonical PDF in this repository.`;
+    $("publications").innerHTML = latest.map(entry => {
+      const publicHref = `https://ai.vixra.org/abs/${encodeURIComponent(entry.id)}`;
+      const artifact = entry.artifact
+        ? ` · <a href="${meta.blob + entry.artifact}">repository PDF</a>`
+        : " · PDF mirror pending";
+      return `
+        <article class="pub-card">
+          <a class="pub-id" href="${publicHref}" rel="noreferrer">ai.viXra:${escapeHtml(entry.id)}</a>
+          <strong>${escapeHtml(entry.title)}</strong>
+          <div class="pub-links"><a href="${publicHref}" rel="noreferrer">public record</a>${artifact}</div>
+        </article>
+      `;
+    }).join("");
+    $("publication-summary").innerHTML =
+      `Showing the six newest verified records. ` +
+      `${repositoryOnly.length} repository manuscript(s) currently have no public identifier. ` +
+      `<a href="${meta.publications}">See all mappings and exceptions</a>.`;
+  } else {
+    $("publication-copy").textContent =
+      "The publication crosswalk could not be loaded; use the full repository register.";
+    $("publication-summary").innerHTML =
+      `<a href="${meta.publications}">Open the canonical publication register</a>.`;
+  }
 
   $("m3state").textContent = m3.display;
   $("claypct").textContent = meta.clay_distance;
@@ -525,7 +622,10 @@ footer {
     Ground truth is the compiler, <code>oracle_check.lean</code>, and the
     <a href="${meta.ledger}">verification ledger</a>. Milestone labels are logical
     proof states, not theorem probabilities or completion estimates.
-    <a href="${meta.state}">Canonical state</a>. Data: <a href="./data.json">data.json</a>.
+    <a href="${meta.state}">Canonical state</a>.
+    <a href="${meta.publications}">Publication register</a>.
+    Data: <a href="./data.json">dashboard</a> ·
+    <a href="../publications.json">publications</a>.
   `;
 
   const filters = [

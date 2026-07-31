@@ -26,4 +26,6 @@ python scripts/validate_project_state.py
 
 The validator compares the state against `lean-toolchain`, `lakefile.lean`,
 `lake-manifest.json`, Git history, and the named evidence files. Updating prose documents
-from this file is a later, separately reviewed step.
+from this file is a separately reviewed step.  The current canonical entry is
+the merged full-core checkpoint `f0720ba7` (8463 jobs), whose build and oracle
+transcripts are recorded in `docs/VERIFICATION-LEDGER.md`.

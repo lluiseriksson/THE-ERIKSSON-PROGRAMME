@@ -38,6 +38,8 @@ REQUIRED_META = {
     "blob",
     "ledger",
     "state",
+    "publications",
+    "author_index",
     "horizon",
     "knowledge_tree",
     "dashboard_url",

@@ -6,11 +6,13 @@ the iron rules, the complete map of what is proved, and the exact open targets. 
 top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 `FOUNDATIONS.md`, `HORIZON.md`, `ROADMAP.md`, `docs/HANDOFF-KP.md`,
 `docs/SOURCE-CLAIM-AUDIT.md`, and the canonical machine-readable
-[`project-state.json`](project-state.json).)
+[`project-state.json`](project-state.json).  Publication metadata lives in
+[`docs/PUBLICATIONS.md`](docs/PUBLICATIONS.md) and
+[`docs/publications.json`](docs/publications.json).)
 
 ---
 
-## Live snapshot (updated 2026-07-04; source checkpoint 2026-07-04)
+## Live snapshot (updated 2026-07-31; full-core checkpoint `f0720ba7`)
 
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
 handoff below.  The latest verification-ledger checkpoint records the verified
@@ -18,8 +20,9 @@ merged core green at **8463 jobs**, with Mathlib pinned and every headline oracl
 at `[propext, Classical.choice, Quot.sound]`.  The ledger includes the earlier
 Addendum 444/date-stamped checkpoint material plus the 2026-07-03
 Catalan/Schur series through Addendum 465 and the 2026-07-04 diamagnetic
-unitary bridge Addendum 466, while the latest measured source checkpoint is
-`a17d7816` (on `main`).
+unitary bridge Addendum 466.  The canonical repository-wide checkpoint and
+job count are in [`project-state.json`](project-state.json); do not substitute
+an older paper anchor for that full-core checkpoint.
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
@@ -94,7 +97,9 @@ deleted or updated and no global Git configuration was changed.
 
 For a fast human-readable progress scan, read the progress dashboard near the
 top of [`README.md`](README.md#progress-dashboard) and the static dashboard in
-[`docs/dashboard/`](docs/dashboard/).
+[`docs/dashboard/`](docs/dashboard/).  For paper identifiers and canonical
+repository PDFs, use [`docs/PUBLICATIONS.md`](docs/PUBLICATIONS.md), never an
+old submission form or a placeholder in a frozen release note.
 
 Clay distance remains **~0% (<0.1%)**: no continuum limit, no OS/Wightman
 reconstruction, no continuum mass gap.

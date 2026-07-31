@@ -29,3 +29,6 @@ jobs:
       - name: Zero sorry (proof tree) + zero axioms (verified-core tree)
         # Comment-aware scanner; the core dirs/files are listed in the script.
         run: python scripts/check_consistency.py
+
+      - name: Validate publication register and public front doors
+        run: python scripts/validate_publications.py

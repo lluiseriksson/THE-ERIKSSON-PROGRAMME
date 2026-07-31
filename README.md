@@ -36,6 +36,13 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 proved / partial / open and linked to Lean sources, docs, or the verification
 ledger.
 
+**Publication register:** [`docs/PUBLICATIONS.md`](docs/PUBLICATIONS.md) —
+the verified crosswalk between public ai.viXra records and repository PDFs.
+Its machine-readable source is
+[`docs/publications.json`](docs/publications.json); it was checked against the
+[live author index](https://www.ai.vixra.org/author/lluis_eriksson) on
+2026-07-31.
+
 **Documentation snapshot updated:** 2026-07-31.  The latest recorded merged
 full-core checkpoint is `f0720ba7`: `lake build YangMillsCore` green at
 **8463 jobs**, followed by a complete `oracle_check.lean` run with only the
@@ -229,7 +236,8 @@ volume-uniform, each linearized and exact).
 > *A Machine-Checked Volume-Uniform Wilson-Loop Area Law via a Formalized
 > Cluster Expansion*, L. Eriksson, 2026 —
 > [`paper/area-law/paper.pdf`](paper/area-law/paper.pdf).
-> Preprint: ai.viXra:XXXX.XXXX (add the ID when published).
+> Preprint:
+> [ai.viXra:2607.0005](https://ai.vixra.org/abs/2607.0005).
 
 A reusable repackaging `area_law_to_exp_area_decay` turns either headline into
 **manifest exponential area decay** N<sub>c</sub>·e<sup>−τ·Area(C)</sup> with a
@@ -417,6 +425,7 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 | Document | What it is |
 |---|---|
 | [`docs/dashboard/`](docs/dashboard/) | The static public "Distance to the Mass Gap" dashboard: curated DAG data, linked evidence, and a no-dependency GitHub Pages front end. |
+| [`docs/PUBLICATIONS.md`](docs/PUBLICATIONS.md) · [`docs/publications.json`](docs/publications.json) | Canonical human- and machine-readable crosswalk between public ai.viXra identifiers and repository paper artifacts. |
 | [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, earlier Addenda 1-444, date-stamped checkpoints, the 2026-07-03 Catalan/Schur series through Addendum 465, and the 2026-07-04 diamagnetic bridge Addendum 466. Start here to check any claim. |
 | [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md) | The executable M3 frontier dependency graph, mirrored for humans. |
 | [`docs/SOURCE-CITATIONS.md`](docs/SOURCE-CITATIONS.md) | The compact primary-source lookup for CMP116 Lemma 3: visual anchors, blockers, and source targets without repeated OCR hunting. |
@@ -456,20 +465,26 @@ are never paid for twice.
 
 ## The notes series (July 2026): the Bessel/surface track
 
-Four short, adversarially-reviewed notes, each with completed Lean verification
-(standard axiom oracle, zero `sorry`), live in [`papers/`](papers/):
+The first four short, adversarially-reviewed notes, each with completed Lean
+verification (standard axiom oracle, zero `sorry`), live in
+[`papers/`](papers/).  Public identifiers are taken from the canonical
+[`publication register`](docs/PUBLICATIONS.md):
 
-| Note | Folder | Core result |
-|---|---|---|
-| Bessel-Amos / F-H 2D | [`papers/bessel-amos-fh`](papers/bessel-amos-fh) | unit-step order-monotonicity of (log I_nu)' via the exactly calibrated Amos bound; all 2D Wilson sector gaps strictly decreasing in beta |
-| Parity Barriers | [`papers/parity-barriers`](papers/parity-barriers) | no certifying bounded-order comparison inequality exists (parametric-in-r Lean) |
-| phi-lemma | [`papers/phi-lemma`](papers/phi-lemma) | weighted Turan-type monotonicity => determinant ordering c_mn < 0 of the pi-local surface expansion |
-| Wronskian reduction | [`papers/wronskian-reduction`](papers/wronskian-reduction) | the surface double sum IS a Wronskian; the asterisk = global sine-series ratio monotonicity; naive route provably dead |
+| Note | Folder | Publication | Core result |
+|---|---|---|---|
+| Bessel-Amos / F-H 2D | [`papers/bessel-amos-fh`](papers/bessel-amos-fh) | [2607.0020](https://ai.vixra.org/abs/2607.0020) | unit-step order-monotonicity of (log I_nu)' via the exactly calibrated Amos bound; all 2D Wilson sector gaps strictly decreasing in beta |
+| Parity Barriers | [`papers/parity-barriers`](papers/parity-barriers) | [2607.0018](https://ai.vixra.org/abs/2607.0018) | no certifying bounded-order comparison inequality exists (parametric-in-r Lean) |
+| phi-lemma | [`papers/phi-lemma`](papers/phi-lemma) | [2607.0017](https://ai.vixra.org/abs/2607.0017) | weighted Turan-type monotonicity => determinant ordering c_mn < 0 of the pi-local surface expansion |
+| Wronskian reduction | [`papers/wronskian-reduction`](papers/wronskian-reduction) | repository only; no public ID found on 2026-07-31 | the surface double sum IS a Wronskian; the asterisk = global sine-series ratio monotonicity; naive route provably dead |
 
 **Closed theorem (2026-07-28).**  The definitive 33-page manuscript
 [`papers/surface-complete/surface_theorem_complete.pdf`](papers/surface-complete/surface_theorem_complete.pdf)
 proves the global ratio-monotonicity statement
 `F_B(t)>0` and `(F_A/F_B)'(t)<0` for every `beta>0` and `0<t<pi`.
+The definitive public preprint is
+[ai.viXra:2607.0089](https://ai.vixra.org/abs/2607.0089); the earlier
+two-scale closure-map manuscript is
+[ai.viXra:2607.0023](https://ai.vixra.org/abs/2607.0023).
 Its exact bridge identities, interval certificates, production/replay
 transcripts, and executable terminal seal are archived in this repository.
 The executable gate state is summarized in

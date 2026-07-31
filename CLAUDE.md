@@ -1,16 +1,17 @@
 # CLAUDE.md — standing instructions (one repo, two programmes)
 
-This repo hosts TWO programmes. PART I is the Surface Theorem closure
-(the paper track): ACTIVE and prioritized by owner instruction of
-2026-07-10 — read it first and work its task queue. PART II is the
-Yang–Mills Lean formalization programme: its rules remain binding for
-any work under YangMills/**, and it is precisely the “claimed bridge”
-that Part I’s Yang–Mills instruction says must be audited link-by-link
-(after the paper ships) before any importance transfers.
+This repo hosts TWO programmes. PART I, the Surface Theorem closure, is
+**CLOSED, terminally sealed, and public as
+ai.viXra:2607.0089**. Its old task queue below is retained as an audit
+record and MUST NOT be treated as live work. PART II is the Yang–Mills
+Lean formalization programme; its rules remain binding for work under
+`YangMills/**`. Read `CURRENT-STATE.md`, `project-state.json`, and
+`docs/PUBLICATIONS.md` before relying on any older checkpoint or
+submission note.
 
 ---
 
-# PART I — SURFACE THEOREM CLOSURE (paper track — ACTIVE, owner priority 2026-07-10)
+# PART I — SURFACE THEOREM CLOSURE (CLOSED 2026-07-28)
 
 Hash rule: every relay/commit message carries its hash context on the
 first line. Read this file FIRST, then docs/SURFACE-CLOSURE-NOTES.md
@@ -19,11 +20,13 @@ diverges, THE MOST RECENT HASH RULES).
 
 ## What this is
 
-An audit-first mathematical research programme closing the SURFACE
-THEOREM: for all beta > 0, (i) F_B > 0 on (0, pi) [proved twice] and
-(ii) E' < 0 on (0, pi) [relay in progress]. The live manuscript is
-papers/surface-complete/surface_theorem_complete.tex (+pdf, always
-same commit). DO NOT SUBMIT while any [SLOT] lives.
+An audit-first mathematical research programme that proved the SURFACE
+THEOREM: for all beta > 0, (i) F_B > 0 on (0, pi) and (ii) E' < 0 on
+(0, pi). The terminal manuscript is
+`papers/surface-complete/surface_theorem_complete.tex` with its paired
+PDF; `python scripts/audit_surface_final_seal.py` is the executable
+seal. The public record is
+https://ai.vixra.org/abs/2607.0089. No live `[SLOT]` remains.
 
 ## REGIME (non-negotiable, before any work)
 
@@ -93,7 +96,11 @@ same commit). DO NOT SUBMIT while any [SLOT] lives.
   SHA256(f2ea0d0-ASCII | box-id), box-id = exact rational coords;
   ONE mismatch = full stop + autopsy).
 
-## TASK QUEUE (strict order)
+## HISTORICAL TASK QUEUE (CLOSED — DO NOT EXECUTE)
+
+The following list records the route that was used to close the paper. It is
+not a current task queue. Current work is routed by `CURRENT-STATE.md`,
+`HYPOTHESIS_FRONTIER.md`, and the active campaign plan.
 
 1. PASS 2 of THE PAGE (bilinear saddle extraction lemma): extract
    X_1 (pure-K bilinear r(z_s)[<D><ND> - <N><D^2>], five v5-templated
@@ -185,7 +192,8 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (latest merged-core checkpoint: 8463 jobs at `7460e035`).
+   incremented** (latest recorded merged full-core checkpoint: 8463 jobs at
+   `f0720ba7`; canonical record: `project-state.json`).
 
 ## The autonomous loop
 

@@ -1,9 +1,9 @@
 # AGENT ONBOARDING — everything another AI needs to advance this project
 
-> **STATUS STAMP (updated 2026-07-04; source checkpoint 2026-07-04).** This brief is background.  The current
+> **STATUS STAMP (updated 2026-07-31; full-core checkpoint `f0720ba7`).** This brief is background.  The current
 > repository state is substantially later: strong-coupling area laws and IR
 > clustering are closed; the latest verification-ledger checkpoint records
-> `YangMillsCore` green at **8412 jobs**.  The live frontier is `hRpoly`, the
+> `YangMillsCore` green at **8463 jobs**.  The live frontier is `hRpoly`, the
 > concrete Yang-Mills cluster-expansion-with-holes activity-decay estimate for
 > the actual gauge RG operator, now surrounded by source-only UV routes,
 > finite-carrier/profile wrappers, Appendix-F certified-tail/source-fed
@@ -20,6 +20,7 @@
 > `README-FOR-NEXT-MODEL.md` (live frontier) →
 > `README.md` progress dashboard (human progress board) →
 > `docs/dashboard/` (public DAG dashboard) →
+> `docs/PUBLICATIONS.md` (public IDs and repository PDFs) →
 > `docs/VERIFICATION-LEDGER.md` (the record). Everything below remains valid
 > as background.
 
@@ -62,7 +63,7 @@ git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6   # if not present
 lake exe cache get        # fetch prebuilt Mathlib oleans (do this; building Mathlib from source takes hours)
-lake build YangMillsCore  # 8412 jobs at the latest recorded checkpoint; fast if cache is warm
+lake build YangMillsCore  # 8463 jobs at the latest recorded checkpoint; fast if cache is warm
 ```
 
 ---
