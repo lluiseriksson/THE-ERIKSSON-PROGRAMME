@@ -29315,3 +29315,64 @@ recorded because the record is what the next campaign reads.  Ten versions of a
 paper is exactly when the ledger entry stops feeling urgent and starts being
 necessary.  Written now, after the fact, and dated as such rather than
 back-dated.
+
+## Addendum 570 (2026-07-31, **TASK 14: abstract spatial-ring sector interface**)
+
+**EXACT.**  The target remains, for every extent and with both active sign
+hypotheses `0 <= beta` and `0 <= gamma`,
+`specRatio <= tanh(beta) * exp(2*gamma)`.  This addendum does NOT claim that
+target.  `SpatialRingOddSectorBound` and
+`SpatialRingEvenFluctuationBound` are explicit propositions carrying both sign
+hypotheses; neither is proved.  The new conditional theorem
+`spatialRing_specRatio_le_of_sector_bounds` proves exactly the target from those
+two obligations and Perron data.  The abstract interface constructs the even
+and odd projectors, proves reconstruction and orthogonality, proves both sectors
+invariant under a flip-commuting kernel, transports perpendicularity to the even
+part, and recombines equal sector norm bounds by Pythagoras.  No Jordan--Wigner,
+domain-wall, or analytic block estimate has been opened yet.
+
+**VERIFIED FAILURES, retained.**  The first Colab metadata probe stopped before
+clone because an optional `nvidia-smi` executable was absent; the diagnosis is
+`INC-SPATIAL-RING-COLAB-METADATA-001.md`.  The first Lean elaboration of
+`5da2453f` reached job 8171/8171 and reported five source errors; the second,
+at `303fe056`, reduced them to the single nonexistent name `tanh_nonneg`.
+Both failed closed before oracle/core and are preserved in
+`INC-SPATIAL-RING-SECTOR-LEAN-001.md` and
+`INC-SPATIAL-RING-SECTOR-LEAN-002.md`.  No failed attempt was deleted or
+relabelled as evidence.
+
+**CERTIFIED IN THE ISOLATED COLAB PLANE at `4e061a23`.**  The notebook checked
+out exactly `4e061a23552b98edc1fee9ef4ddb9aa5bc42a0cc`, rejected pin drift, and
+recorded Lean `v4.29.0-rc6` (commit `00659f8e`), Mathlib
+`07642720480157414db592fa85b626dafb71355b`, Linux `6.6.122+`, 8 Intel Xeon
+logical CPUs, `53467192 kB` RAM, Python `3.12.13`, and no GPU.  The official
+Mathlib cache was obtained only inside that ephemeral Linux runtime.
+
+The following all returned exit 0: `lake build YangMills.OS.SpatialRing`, the
+24-declaration axiom oracle, `python3 scripts/check_consistency.py`, and
+`lake build YangMillsCore`.  The oracle reports only
+`{propext, Classical.choice, Quot.sound}` for every new declaration, with no
+`sorryAx`; the consistency judge reports zero source `sorry` and zero project
+axioms.  The core counter is MEASURED at 8465 jobs, one above the inherited
+8464-job measurement in Addendum 569 because the existing core path now also
+loads `SpatialSpectral` through `SpatialRing`.  This is a measured dependency
+edge, not a handwritten counter.
+
+**ARTIFACT INTEGRITY, VERIFIED ON THE WINDOWS DESKTOP WITHOUT RUNNING LEAN.**
+The downloaded ZIP SHA-256 is
+`29bfbb8ff3f1440b4977827d61d35d81a22e21c9abcb30e6871a62c0f713a046`.
+After extraction, `metadata.json` hashes to
+`79c55ed59f6ccb70018d9f387ff04b611760cc452e3126f57e41ae7dcd736389`
+and `transcript.txt` to
+`5ed8a53ee47453fcceda970d107b18dde4e7a64841277cda7257bb187738065e`;
+both equal the archive's `SHA256SUMS`.  The metadata records UTC end
+`2026-07-31T21:16:10.208708+00:00` and 8465 jobs.
+
+**NOT YET A SECOND LOCAL CERTIFICATE.**  Foreign Lean/Lake processes occupied
+the shared Windows host throughout the campaign, and the owner explicitly
+forbade launching a competing local elaborator.  The critical target must still
+be reproduced locally when the host is exclusive, and CI remains the third
+testimony.  Therefore this milestone is CERTIFIED by Colab plus desktop hash
+verification, not yet independently reproduced on Windows.  The mathematical
+debt is unchanged and exact: prove the odd block at rate
+`tanh(beta) * exp(2*gamma)`, then prove the even block off Perron at that rate.
