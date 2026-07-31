@@ -441,8 +441,13 @@ theorem spatialRing_specRatio_le_of_sector_bounds (β γ : ℝ)
   have hSflip : ∀ σ τ, S (flipCfg σ) (flipCfg τ) = S σ τ :=
     fun σ τ => symWeighted_flip (spatialWeightRing_flip γ) β σ τ
   have hlam : 0 < lam := eigenvalue_pos hSpos hΩpos hΩeig
+  have htanh : 0 ≤ Real.tanh β := by
+    rw [Real.tanh_eq]
+    exact div_nonneg
+      (sub_nonneg.mpr (Real.exp_le_exp.mpr (by linarith)))
+      (add_nonneg (Real.exp_pos _).le (Real.exp_pos _).le)
   have hq : 0 ≤ Real.tanh β * Real.exp (2 * γ) :=
-    mul_nonneg (tanh_nonneg hβ) (Real.exp_pos _).le
+    mul_nonneg htanh (Real.exp_pos _).le
   have hfull : ∀ u : (Fin (L + 1) → Fin 2) → ℝ, (∑ σ, Ω σ * u σ = 0) →
       eucNorm (act S u) ≤
         (Real.tanh β * Real.exp (2 * γ) * lam) * eucNorm u := by
