@@ -1,6 +1,10 @@
-# SU(2) theta-prism artefact: contract and charter
+# (9) Fabricante del prisma theta: contract and charter
 
 Status: **PRE-REGISTERED BEFORE THE FINAL BUILD RESULTS**
+
+Canonical task number and name: **(9) Fabricante del prisma theta**.  The
+artefact, delivery summary, branch description, and draft pull request must use
+that exact numbering; no suffixed or alternate task number is permitted.
 
 This charter fixes the scope of a post-pre-audit manufacturing pass.  It is
 not an external audit verdict.  The artefact built under this charter must not
@@ -93,6 +97,25 @@ without expanding the contract, are:
 
 Every such brick must occur in Lean as a named hypothesis or structure field.
 No prose-only hole is permitted.
+
+### Loaded-hypothesis rule
+
+A loaded hypothesis must state the missing **technical step**, never restate a
+headline conclusion.  In particular, if an endpoint concludes `X = c * Y`, it
+is forbidden to load `h : X = c * Y`.  Permitted inputs are concrete missing
+steps such as a measure-preserving coordinate change, a Fubini exchange with
+its integrability premises, a Schur integral, or a convergence/lower-bound
+lemma for a coefficient series; the endpoint equality must then be derived by
+the artefact's own definitions and lemmas.
+
+Operational participation test: after a loaded hypothesis is discharged, the
+proof of each headline must still invoke a substantive lemma defined by this
+artefact.  If removing the artefact lemmas leaves the headline as a direct use
+of the hypothesis, that hypothesis is malformed and the endpoint must be
+reduced.  The repository validator for this task must make this rule visible by
+rejecting hypothesis/field declarations that contain a headline constant or a
+headline equality verbatim, followed by a recorded manual participation review
+for cases that syntax alone cannot decide.
 
 ## Sign discipline
 
