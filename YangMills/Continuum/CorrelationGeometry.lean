@@ -18,6 +18,11 @@ lower bound on `touchGraph.dist` needed by the correlation theorem.  They
 also expose the remaining obligation: reachability and sufficient margin for
 a shortest walk must be constructed for the concrete embedded plaquettes in
 each sufficiently large thermodynamic volume.
+
+This is an alternative geometry adapter for general embedded plaquettes.  It
+is not used by the canonical axis-pair endpoint in
+`TwoPointFactorization.lean`, which instead discharges the geometry with the
+repository's exact `RG.canonicalPlaquette_dist_eq` theorem.
 -/
 
 namespace YangMills.Continuum

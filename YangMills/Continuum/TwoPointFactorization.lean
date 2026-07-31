@@ -471,10 +471,235 @@ private theorem positiveCoupling_axis_small :
   rw [← mul_div_assoc, div_le_iff₀ hden]
   nlinarith
 
-/-- A compiled, genuinely scale-varying discrete-to-distribution example.
-The first plaquette stays at the origin, the second is at lattice offset
-`2k`, and their connected correlation in the actual constructed SU(2)
-infinite-volume Gibbs state tends to zero. -/
+/-- Uniform marked-pair weight for every coupling in the proved `d=4`
+strong-coupling window. -/
+private noncomputable def d4AxisWeight (β : ℝ) : ℝ :=
+  ((Real.exp (|β| * 2) - 1) + (1 / 1000000 : ℝ) +
+    (Real.exp (|β| * 2) - 1) * (1 / 1000000 : ℝ)) *
+      Real.exp (51 / 50 : ℝ)
+
+private noncomputable def d4AxisRatio (β : ℝ) : ℝ :=
+  d4AxisWeight β / (1 - 4225 * d4AxisWeight β)
+
+private theorem d4Window_activity_nonneg (β : ℝ) :
+    0 ≤ Real.exp (|β| * 2) - 1 := by
+  rw [sub_nonneg, ← Real.exp_zero]
+  exact Real.exp_le_exp.mpr
+    (mul_nonneg (abs_nonneg _) (by norm_num))
+
+private theorem d4Window_activity_le
+    (β : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadiusD4) :
+    Real.exp (|β| * 2) - 1 ≤ 4 / 1000000 := by
+  have hx0 : 0 ≤ |β| * 2 := by positivity
+  have hx1 : |(|β| * 2)| ≤ 1 := by
+    rw [abs_of_nonneg hx0]
+    have hr :
+        explicitStrongCouplingRadiusD4 = (1 / 1000000 : ℝ) := by
+      norm_num [explicitStrongCouplingRadiusD4]
+    rw [hr] at hβ
+    nlinarith [abs_nonneg β]
+  have ha0 := d4Window_activity_nonneg β
+  have h := Real.abs_exp_sub_one_le (x := |β| * 2) hx1
+  rw [abs_of_nonneg ha0, abs_of_nonneg hx0] at h
+  have hr :
+      explicitStrongCouplingRadiusD4 = (1 / 1000000 : ℝ) := by
+    norm_num [explicitStrongCouplingRadiusD4]
+  rw [hr] at hβ
+  nlinarith
+
+private theorem d4AxisWeight_nonneg
+    (β : ℝ) :
+    0 ≤ d4AxisWeight β := by
+  unfold d4AxisWeight
+  exact mul_nonneg
+    (add_nonneg
+      (add_nonneg (d4Window_activity_nonneg β) (by norm_num))
+      (mul_nonneg (d4Window_activity_nonneg β) (by norm_num)))
+    (Real.exp_pos _).le
+
+private theorem d4AxisWeight_le
+    (β : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadiusD4) :
+    d4AxisWeight β ≤ 46 / 1000000 := by
+  have ha := d4Window_activity_le β hβ
+  have ha0 := d4Window_activity_nonneg β
+  have he := exp_fifty_one_fiftieth_le_nine
+  unfold d4AxisWeight
+  nlinarith
+
+private theorem d4Window_axis_radius
+    (β : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadiusD4) :
+    4225 * d4AxisWeight β < 1 := by
+  have hz := d4AxisWeight_le β hβ
+  nlinarith
+
+private theorem d4AxisRatio_nonneg
+    (β : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadiusD4) :
+    0 ≤ d4AxisRatio β := by
+  have hden : 0 < 1 - 4225 * d4AxisWeight β := by
+    linarith [d4Window_axis_radius β hβ]
+  exact div_nonneg (d4AxisWeight_nonneg β) hden.le
+
+private theorem d4AxisRatio_le_one
+    (β : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadiusD4) :
+    d4AxisRatio β ≤ 1 := by
+  have hz := d4AxisWeight_le β hβ
+  have hz0 := d4AxisWeight_nonneg β
+  have hden : 0 < 1 - 4225 * d4AxisWeight β := by
+    linarith [d4Window_axis_radius β hβ]
+  unfold d4AxisRatio
+  rw [div_le_iff₀ hden]
+  nlinarith
+
+private theorem d4Window_axis_small
+    (β : ℝ) (hβ : |β| ≤ explicitStrongCouplingRadiusD4) :
+    64 * d4AxisRatio β ≤ (1 / 100 : ℝ) := by
+  have hz := d4AxisWeight_le β hβ
+  have hden : 0 < 1 - 4225 * d4AxisWeight β := by
+    linarith [d4Window_axis_radius β hβ]
+  unfold d4AxisRatio
+  rw [← mul_div_assoc, div_le_iff₀ hden]
+  nlinarith
+
+/-- The actual infinite-volume connected correlation at scale index `k`.
+Both the state (`β k`) and the second observable (`2k`) vary with the same
+index. -/
+noncomputable def d4ScaleIndexedTruncatedCorrelation
+    (β : ℕ → ℝ)
+    (hβ : ∀ k, |β k| ≤ explicitStrongCouplingRadiusD4)
+    (k : ℕ) : ℝ :=
+  infiniteLocalGibbsTruncatedCorrelation
+    (sunHaarProb 2)
+    measurable_su2FundamentalPlaquetteEnergy
+    su2FundamentalPlaquetteEnergy_bounded
+    (su2D4UniformLocalKPRegimeOfBound (β k) (hβ k))
+    (axisPlaquetteObservable (d := 4) (G := SU2GaugeGroup)
+      (by omega) 0 normalizedSU2PlaquetteEnergy
+      measurable_normalizedSU2PlaquetteEnergy 1 (by norm_num)
+      normalizedSU2PlaquetteEnergy_abs_le_one)
+    (axisPlaquetteObservable (d := 4) (G := SU2GaugeGroup)
+      (by omega) (2 * k) normalizedSU2PlaquetteEnergy
+      measurable_normalizedSU2PlaquetteEnergy 1 (by norm_num)
+      normalizedSU2PlaquetteEnergy_abs_le_one)
+
+/-- Uniform clustering for a genuinely scale-indexed family of constructed
+states. No relation among the values `β k` is assumed beyond membership in
+the proved KP window. -/
+theorem tendsto_d4ScaleIndexedTruncatedCorrelation_zero
+    (β : ℕ → ℝ)
+    (hβ : ∀ k, |β k| ≤ explicitStrongCouplingRadiusD4) :
+    Tendsto
+      (d4ScaleIndexedTruncatedCorrelation β hβ)
+      atTop (𝓝 0) := by
+  let C : ℝ := 32000000000000
+  have hExp :
+      Tendsto
+        (fun k : ℕ => Real.exp (-((1 / 100 : ℝ) * (k : ℝ))))
+        atTop (𝓝 0) := by
+    exact Real.tendsto_exp_neg_atTop_nhds_zero.comp
+      (tendsto_natCast_atTop_atTop.const_mul_atTop (by norm_num))
+  have hFour :
+      ∀ᶠ k : ℕ in atTop,
+        4 * Real.exp (-((1 / 100 : ℝ) * (k : ℝ))) ≤ 1 := by
+    have ht :
+        Tendsto
+          (fun k : ℕ =>
+            4 * Real.exp (-((1 / 100 : ℝ) * (k : ℝ))))
+          atTop (𝓝 0) := by
+      simpa only [mul_zero] using hExp.const_mul 4
+    exact ((tendsto_order.1 ht).2 1 (by norm_num)).mono
+      fun _ hk => hk.le
+  have hbound :
+      ∀ᶠ k : ℕ in atTop,
+        |d4ScaleIndexedTruncatedCorrelation β hβ k| ≤
+          C * Real.exp (-((1 / 100 : ℝ) * (k : ℝ))) := by
+    filter_upwards [eventually_ge_atTop 1, hFour] with k hk hfour
+    have hq0 := d4AxisRatio_nonneg (β k) (hβ k)
+    have hq1 := d4AxisRatio_le_one (β k) (hβ k)
+    have hone :
+        4 * Real.exp (-((1 / 100 : ℝ) * (k : ℝ))) *
+            d4AxisRatio (β k) ≤ 1 := by
+      calc
+        4 * Real.exp (-((1 / 100 : ℝ) * (k : ℝ))) *
+              d4AxisRatio (β k)
+            ≤ 4 * Real.exp (-((1 / 100 : ℝ) * (k : ℝ))) * 1 := by
+              gcongr
+        _ ≤ 1 := by simpa using hfour
+    have hraw :=
+      abs_infiniteTruncatedCorrelation_axisPair_le
+        (sunHaarProb 2)
+        measurable_su2FundamentalPlaquetteEnergy
+        su2FundamentalPlaquetteEnergy_bounded
+        (su2D4UniformLocalKPRegimeOfBound (β k) (hβ k))
+        (by omega)
+        normalizedSU2PlaquetteEnergy
+        measurable_normalizedSU2PlaquetteEnergy
+        normalizedSU2PlaquetteEnergy_abs_le_one
+        (s := 1 / 1000000) (by norm_num)
+        (1 / 100) (1 / 100) (by norm_num) (by norm_num)
+        (by
+          convert d4Window_axis_radius (β k) (hβ k) using 1 <;>
+            norm_num [d4AxisWeight])
+        (by
+          convert d4Window_axis_small (β k) (hβ k) using 1 <;>
+            norm_num [d4AxisWeight, d4AxisRatio])
+        k hk (by
+          convert hone using 1 <;>
+            norm_num [d4AxisWeight, d4AxisRatio])
+    have hcoef :
+        (8 * d4AxisRatio (β k) *
+            (1 + (1 / 1000000 : ℝ)) ^ 2 /
+              (1 / 1000000 : ℝ) ^ 2) ≤ C := by
+      dsimp [C]
+      norm_num
+      nlinarith
+    have hexp0 :
+        0 ≤ Real.exp (-((1 / 100 : ℝ) * (k : ℝ))) :=
+      (Real.exp_pos _).le
+    have hraw' :
+        |d4ScaleIndexedTruncatedCorrelation β hβ k| ≤
+          (8 * d4AxisRatio (β k) *
+              (1 + (1 / 1000000 : ℝ)) ^ 2 /
+                (1 / 1000000 : ℝ) ^ 2) *
+            Real.exp (-((1 / 100 : ℝ) * (k : ℝ))) := by
+      convert hraw using 1 <;>
+        norm_num [d4ScaleIndexedTruncatedCorrelation,
+          d4AxisWeight, d4AxisRatio]
+    exact hraw'.trans (mul_le_mul_of_nonneg_right hcoef hexp0)
+  have hExpC :
+      Tendsto
+        (fun k : ℕ =>
+          C * Real.exp (-((1 / 100 : ℝ) * (k : ℝ))))
+        atTop (𝓝 0) := by
+    simpa only [mul_zero] using hExp.const_mul C
+  rw [tendsto_zero_iff_abs_tendsto_zero]
+  exact squeeze_zero'
+    (Eventually.of_forall fun _ => abs_nonneg _) hbound hExpC
+
+/-- A single endpoint in which the declared physical separation and the
+actual state correlation share the same scale index. -/
+noncomputable def d4ScaleIndexedTwoPointData
+    (β : ℕ → ℝ)
+    (hβ : ∀ k, |β k| ≤ explicitStrongCouplingRadiusD4)
+    (k : ℕ) : ℝ × ℝ :=
+  (axisPairPhysicalSeparation reciprocalScale k,
+    d4ScaleIndexedTruncatedCorrelation β hβ k)
+
+theorem tendsto_d4ScaleIndexedTwoPointData
+    (β : ℕ → ℝ)
+    (hβ : ∀ k, |β k| ≤ explicitStrongCouplingRadiusD4) :
+    Tendsto
+      (d4ScaleIndexedTwoPointData β hβ)
+      atTop (𝓝 (2, 0)) := by
+  have h :=
+    tendsto_axisPairPhysicalSeparation_reciprocal.prodMk
+      (tendsto_d4ScaleIndexedTruncatedCorrelation_zero β hβ)
+  simpa [d4ScaleIndexedTwoPointData, nhds_prod_eq] using h
+
+/-- A compiled, separation-varying fixed-coupling example.  The first
+plaquette stays at the origin, the second is at lattice offset `2k`, and
+their connected correlation in the actual constructed SU(2) infinite-volume
+Gibbs state tends to zero.  Scale-indexed states are handled by
+`tendsto_d4ScaleIndexedTruncatedCorrelation_zero` above. -/
 theorem exampleD4_twoPoint_connected_tendsto_zero :
     Tendsto
       (fun k : ℕ =>

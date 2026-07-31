@@ -48,6 +48,10 @@ Literal output:
 'YangMills.Continuum.tendsto_infiniteTruncatedCorrelation_axisPair_zero' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'YangMills.Continuum.tendsto_d4ScaleIndexedTruncatedCorrelation_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.Continuum.tendsto_d4ScaleIndexedTwoPointData' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YangMills.Continuum.exampleD4_twoPoint_connected_tendsto_zero' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]

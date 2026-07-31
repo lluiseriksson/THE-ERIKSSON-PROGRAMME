@@ -30,4 +30,6 @@ import YangMills.Continuum.TwoPointFactorization
 #print axioms YangMills.Continuum.tendsto_axisPairPhysicalSeparation_reciprocal
 #print axioms YangMills.Continuum.abs_infiniteTruncatedCorrelation_axisPair_le
 #print axioms YangMills.Continuum.tendsto_infiniteTruncatedCorrelation_axisPair_zero
+#print axioms YangMills.Continuum.tendsto_d4ScaleIndexedTruncatedCorrelation_zero
+#print axioms YangMills.Continuum.tendsto_d4ScaleIndexedTwoPointData
 #print axioms YangMills.Continuum.exampleD4_twoPoint_connected_tendsto_zero
