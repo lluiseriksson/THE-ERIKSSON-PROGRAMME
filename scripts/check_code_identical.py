@@ -32,11 +32,17 @@ def strip_comments(src: str) -> str:
     String literals are respected, so `--` and `/-` inside a string do not open
     a comment.
 
-    A comment is replaced by a SPACE, not by nothing: `foo/- c -/bar` is two
-    identifiers and `foobar` is one, and a stripper that deleted the comment
-    outright would call them equal.  Newlines inside a block comment are kept so
-    that line structure is not silently joined; the blank lines that leaves are
-    dropped below.
+    A comment is replaced by SPACES OF ITS OWN WIDTH, one per character, not by
+    nothing and not by a single space.  Deleting it outright would map
+    `foo/- c -/bar` and `foobar` to the same text although the first is two
+    identifiers and the second is one.  Collapsing it to one space would erase
+    the column at which the code AFTER an inline comment sits, and in Lean a
+    column decides whether a token belongs to a nested block.  Newlines inside a
+    comment are kept, so line structure is never joined.
+
+    The cost of exact width is that the check can only ever report a false
+    NEGATIVE --- two files it calls different might still parse alike --- and
+    never a false positive, which is the direction a certificate must err in.
     """
     out, i, depth = [], 0, 0
     n = len(src)
@@ -54,22 +60,22 @@ def strip_comments(src: str) -> str:
                 if src[i - 1] == '"':
                     break
         elif src.startswith("/-", i):
-            if depth == 0:
-                out.append(" ")
             depth += 1
+            out.append("  ")
             i += 2
         elif depth > 0 and src.startswith("-/", i):
             depth -= 1
+            out.append("  ")
             i += 2
         elif depth == 0 and src.startswith("--", i):
-            out.append(" ")
             while i < n and src[i] != "\n":
+                out.append(" ")
                 i += 1
         else:
             if depth == 0:
                 out.append(src[i])
-            elif src[i] == "\n":
-                out.append("\n")
+            else:
+                out.append("\n" if src[i] == "\n" else " ")
             i += 1
     # Trailing whitespace is never syntax in Lean, and removing a comment at end
     # of line leaves some; LEADING whitespace is syntax and is untouched.
