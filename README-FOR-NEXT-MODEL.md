@@ -8,6 +8,19 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 `docs/SOURCE-CLAIM-AUDIT.md`, and the canonical machine-readable
 [`project-state.json`](project-state.json).)
 
+## Publication-audit hand-off — read before changing public status
+
+The 2026-07-31 ai.viXra census and retrospective claim audit are frozen under
+[`docs/publication-audit/`](docs/publication-audit/).  They cover 103 records and
+every one of the 102 available current PDFs / 922 pages.  Nine replacement packages
+are independently audited `LISTO-LOCAL` in the exact owner order recorded by
+`SUPERSESSION-MATRIX.md`; four claim-level supersessions point to already-public
+successors; 26 records remain `REVIEW-PENDING`.  Do not infer publication from a
+local PDF, ZIP, green verifier or manifest.  Only the owner may use the replacement
+form, and only a fresh public-page/PDF download may move a record from
+`ENVIADO/PENDIENTE` to `PUBLICADO`.  Do not upload R29: it was rejected and never
+submitted; R30 is the audited local replacement for `2602.0033v2`.
+
 ---
 
 ## Live snapshot (updated 2026-07-04; source checkpoint 2026-07-04)

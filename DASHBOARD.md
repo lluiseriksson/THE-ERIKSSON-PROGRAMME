@@ -1,6 +1,16 @@
 # DASHBOARD (generado por bot cada hora — no editar a mano)
 _Última pasada: 2026-07-31T20:02:37Z_
 
+## Auditoría pública (checkpoint manual 2026-07-31T22:48:17Z)
+
+| censo | PDFs/páginas inspeccionadas | KEEP | REPLACE | SUPERSEDE | REVIEW-PENDING | envíos |
+|---:|---:|---:|---:|---:|---:|---:|
+| 103 | 102 / 922 | 64 | 9 | 4 | 26 | 0 |
+
+Los nueve reemplazos están `LISTO-LOCAL` y sellados bajo
+`output/publication-audit/`; el click final es del owner.  El replay global de Lean
+sigue `INCONCLUSIVE / NOT A PASS`, por lo que no eleva ninguna fila pendiente.
+
 ## Satélites con STATUS.json
 
 | repo | build | milestone | sorries | blocked | toolchain | frescura |

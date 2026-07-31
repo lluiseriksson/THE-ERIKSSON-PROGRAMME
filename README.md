@@ -10,6 +10,21 @@
 ![Clay distance](https://img.shields.io/badge/distance_to_Clay-~0%25_(%3C0.1%25)-lightgrey)
 ![License](https://img.shields.io/badge/license-AGPL--3.0-lightgrey)
 
+## Public-paper audit freeze — 2026-07-31
+
+The ai.viXra author record has been frozen and audited as 103 publications.  The
+102 available current PDFs (922 pages) were hashed, rendered and visually reviewed;
+`2512.0081v2` remains unavailable at its current public PDF URL.  The resulting
+ledger classifies 64 records `KEEP`, 9 `REPLACE-VERSION`, 4
+`SUPERSEDE-BY-NEW-PAPER` and 26 `REVIEW-PENDING`.  All nine replacement packages
+are independently audited and `LISTO-LOCAL`, but none has been uploaded or
+submitted.  Start with
+[`docs/publication-audit/PUBLICATION-CENSUS-20260731.md`](docs/publication-audit/PUBLICATION-CENSUS-20260731.md),
+[`docs/publication-audit/PAPER-AUDIT-LEDGER.md`](docs/publication-audit/PAPER-AUDIT-LEDGER.md),
+[`docs/publication-audit/SUPERSESSION-MATRIX.md`](docs/publication-audit/SUPERSESSION-MATRIX.md)
+and the owner-only
+[`docs/publication-audit/OWNER-SUBMISSION-CHECKLIST.md`](docs/publication-audit/OWNER-SUBMISSION-CHECKLIST.md).
+
 This repository contains a **sound, self-contained, machine-verified core** of
 lattice Yang–Mills mathematics (`YangMillsCore`: SU(N) Haar selection rules, a
 Kotecký–Preiss cluster-expansion layer, an unconditional IR clustering bound, and
