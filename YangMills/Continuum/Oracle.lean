@@ -3,6 +3,7 @@ repository-wide `oracle_check.lean`. -/
 import YangMills.Continuum.Example
 import YangMills.Continuum.RegimeObstruction
 import YangMills.Continuum.CorrelationGeometry
+import YangMills.Continuum.TwoPointFactorization
 
 #print axioms YangMills.Continuum.reciprocalScale_spacing_ne_zero
 #print axioms YangMills.WindowPolymer.UniformLocalKPRegime.abs_beta_lt
@@ -25,3 +26,8 @@ import YangMills.Continuum.CorrelationGeometry
 #print axioms YangMills.Continuum.tendsto_exampleD4PlaquetteTest
 #print axioms YangMills.Continuum.exampleD4_weakLimit_one
 #print axioms YangMills.Continuum.exampleD4_weakLimit_translate
+#print axioms YangMills.Continuum.axisPlaquetteObservable_realize
+#print axioms YangMills.Continuum.tendsto_axisPairPhysicalSeparation_reciprocal
+#print axioms YangMills.Continuum.abs_infiniteTruncatedCorrelation_axisPair_le
+#print axioms YangMills.Continuum.tendsto_infiniteTruncatedCorrelation_axisPair_zero
+#print axioms YangMills.Continuum.exampleD4_twoPoint_connected_tendsto_zero
