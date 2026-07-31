@@ -25991,3 +25991,35 @@ remaining downstream scalar comparison.  No
 `CMP116Eq226CenteredConditionedPhysicalTermSource` instance is constructed
 here; the analytic Eq. (1.36) proof for the Lemma-1 source certificate and the
 full source-scale inequality remain open.
+
+## Addendum 516 (2026-07-31, **combined source cardinality and terminal `domainMetric_nonneg` GREEN**)
+
+The canonical appended direct/native dictionary now carries its third literal
+coordinate, `cmp116Eq80Lemma1CombinedDomainCard`, alongside support and tree
+metric.  On the direct branch it reduces to the selected Eq.-(80) domain
+cardinality; on the Lemma-1 branch it reduces to the native order-two block
+cardinality before support coarsification.  Thus coincident coarsened supports
+do not alter either the native metric or the native cardinality used by
+equation (1.43).
+
+The terminal field `domainMetric_nonneg` is discharged directly from the
+natural-valued combined metric.  This is bookkeeping, not an analytic decay
+estimate, and is recorded separately from the still-open `eq143` field.
+
+**Pinned remote focal.**  The combined dictionary and its expanded audit
+finished with exit zero and the literal line
+`Build completed successfully (8750 jobs).`  The four new declarations and
+all earlier declarations in that audit report exactly
+`[propext, Classical.choice, Quot.sound]`.
+The complete root replay then finished with
+`Build completed successfully (10319 jobs).`
+
+**Downstream dictionary boundary.**  Static inspection of
+`hscalar_eq226_fixed` found an additional, later representation obligation:
+it requires an injective family `Fin nY → Finset (Cube 4 L)` whose source-tree
+metric and image family are the literal `DParts`.  The current combined
+terminal dictionary intentionally permits distinct native indices with equal
+coarsened `FinBox 4 (2*Q)` support.  The repository source database continues
+to mark the Eq.-(2.29) Cammarota `DIndex/DParts` dictionary as
+`source_pending`.  No injectivity is inferred from coarsened supports and no
+fictitious cube labels are introduced here.

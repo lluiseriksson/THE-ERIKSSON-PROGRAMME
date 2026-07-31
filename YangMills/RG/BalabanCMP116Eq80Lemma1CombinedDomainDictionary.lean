@@ -16,8 +16,9 @@ metric dictionaries reduce literally on the two branches.
 The common centered region constructed in the preceding module contains both
 families, so the combined dictionary discharges `domain_nonempty` and
 `domain_subset`.  Coincident native supports remain distinct indices and keep
-their native metrics.  This file does not sum the two rooted estimates and
-does not claim `volume_budget` or a terminal `TermSource`.
+their native metrics and native cardinalities.  This file does not sum the
+two rooted estimates and does not claim `volume_budget` or a terminal
+`TermSource`.
 -/
 
 namespace YangMills.RG
@@ -65,6 +66,20 @@ noncomputable def cmp116Eq80Lemma1CombinedDomainMetric
   Fin.append
     (cmp102Eq80SourcePi4IndexedDomainMetricNat (M := M) anchor D)
     (cmp109Lemma1NativeIndexedDomainMetric E)
+
+/-- Literal block cardinalities on the same disjoint direct/native ledger.
+The native branch is measured before support coarsification. -/
+noncomputable def cmp116Eq80Lemma1CombinedDomainCard
+    {Index : Type*} {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)]
+    [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (E : CMP109LocalizedActionExpansion Index 2 (M * (2 * Q)) Nc) :
+    Fin (CMP116Eq80Lemma1CombinedDomainCount anchor D E) → ℕ :=
+  Fin.append
+    (cmp102Eq80SourcePi4IndexedDomainCard (M := M) anchor D)
+    (cmp109Lemma1NativeIndexedDomainCard E)
 
 @[simp] theorem cmp116Eq80Lemma1CombinedDomainSupport_direct
     {Index : Type*} {M Q Nc : ℕ}
@@ -118,6 +133,46 @@ noncomputable def cmp116Eq80Lemma1CombinedDomainMetric
         (Fin.natAdd (CMP102Eq80SourcePi4DomainCount anchor D) i) =
       cmp109Lemma1NativeIndexedDomainMetric E i := by
   simp [cmp116Eq80Lemma1CombinedDomainMetric]
+
+@[simp] theorem cmp116Eq80Lemma1CombinedDomainCard_direct
+    {Index : Type*} {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)]
+    [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (E : CMP109LocalizedActionExpansion Index 2 (M * (2 * Q)) Nc)
+    (i : Fin (CMP102Eq80SourcePi4DomainCount anchor D)) :
+    cmp116Eq80Lemma1CombinedDomainCard anchor D E
+        (Fin.castAdd (CMP109Lemma1NativeDomainCount E) i) =
+      cmp102Eq80SourcePi4IndexedDomainCard (M := M) anchor D i := by
+  simp [cmp116Eq80Lemma1CombinedDomainCard]
+
+@[simp] theorem cmp116Eq80Lemma1CombinedDomainCard_native
+    {Index : Type*} {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)]
+    [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (E : CMP109LocalizedActionExpansion Index 2 (M * (2 * Q)) Nc)
+    (i : Fin (CMP109Lemma1NativeDomainCount E)) :
+    cmp116Eq80Lemma1CombinedDomainCard anchor D E
+        (Fin.natAdd (CMP102Eq80SourcePi4DomainCount anchor D) i) =
+      cmp109Lemma1NativeIndexedDomainCard E i := by
+  simp [cmp116Eq80Lemma1CombinedDomainCard]
+
+/-- The terminal real-valued metric nonnegativity field is automatic for the
+literal natural source metrics; no analytic decay hypothesis is used. -/
+theorem cmp116Eq80Lemma1CombinedDomainMetric_nonneg
+    {Index : Type*} {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)]
+    [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (E : CMP109LocalizedActionExpansion Index 2 (M * (2 * Q)) Nc) :
+    ∀ Y : Fin (CMP116Eq80Lemma1CombinedDomainCount anchor D E),
+      0 ≤ (cmp116Eq80Lemma1CombinedDomainMetric anchor D E Y : ℝ) := by
+  intro Y
+  exact Nat.cast_nonneg _
 
 /-- Every direct indexed block carrier is one of the generators of the
 common localization core. -/
