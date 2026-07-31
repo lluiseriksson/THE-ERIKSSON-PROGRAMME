@@ -124,14 +124,20 @@ Q(F) = Z_beta * | integral_G F dmu |^2.
 El modo de media Haar cero desaparece. En particular, esto cubre las dos
 orientaciones libres estudiadas en el artefacto de dos transportadores.
 
-**VERIFICADO.** El colapso general por Haar izquierda y su especialización al
-peso Wilson SU(2) están formalizados en la rama draft anclada en
-`1fa29e657c43ed71a249808611bf3aea64f2b115`, rutas
+**VERIFICADO (mecanismo, no montaje C).** El mismo mecanismo de colapso por
+Haar izquierda y su especialización al peso Wilson SU(2) están formalizados
+para las orientaciones de dos transportadores `H_D` y `H_E` en la rama draft,
+commit `1fa29e657c43ed71a249808611bf3aea64f2b115`, rutas
 `YangMills/OS/TwoTransporterHaarProjection.lean` y
-`docs/SU2-TWO-TRANSPORTER-NOGO-20260731.md`. Su estado de integración está
-registrado en
-`3d1a51b9a489edf70d152ad16baf808c9d30414f:docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md`:
-draft, no fusionado y fuera de `YangMillsCore`.
+`docs/SU2-TWO-TRANSPORTER-NOGO-20260731.md`. El montaje específico de C
+—fijar `c1=1` e integrar el transportador relativo `r`— comparte ese mecanismo,
+pero no está formalizado en dicho módulo.
+
+El estado del artefacto está **registrado en** el PR draft #41, commit
+`3d1a51b9a489edf70d152ad16baf808c9d30414f`, ruta
+`docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md`; no está mergeado y queda
+fuera de `YangMillsCore`. Ese commit archiva un informe de estado/auditoría:
+no verifica por sí mismo las afirmaciones que registra.
 
 **EXACTO.** Si, en cambio, se fija el transportador relativo a la identidad,
 se impone la misma correlación diagonal del diseño B.
@@ -161,12 +167,13 @@ b1 = E - V + 1 = 2 - 2 + 1 = 1.
 Por ello cada mitad porta un solo lazo independiente. Eliminar la tercera rama
 de la celda abstracta de tres ramas produce exactamente este conteo.
 
-**VERIFICADO.** El cálculo topológico `b1=1` al retirar la tercera rama está
-registrado en
-`268d7576c4edf38ff21185901e33495bc429065f:docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`.
-El alcance allí es
-topológico; la desaparición de sectores de representación quedó fuera de esa
-preauditoría.
+**VERIFICADO (informe registrado).** El cálculo topológico `b1=1` al retirar
+la tercera rama aparece en el informe de auditoría **registrado en** el PR
+draft #41, commit `268d7576c4edf38ff21185901e33495bc429065f`, ruta
+`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`; no está mergeado. El commit
+archiva el informe, no certifica por sí mismo su contenido. El alcance del
+informe es topológico; la desaparición de sectores de representación quedó
+fuera de esa preauditoría.
 
 **INTERPRETACIÓN.** Un 2-core no vacío evita este lavado por hojas, pero no
 crea un segundo ciclo. El no-go es topológico para el objetivo de dos ciclos;
@@ -259,12 +266,14 @@ enlace hoja cuando el observable no depende de él. Aun con 2-core no vacío,
 hay que demostrar por separado la supervivencia Haar, el rango gauge, la
 pertenencia al álgebra de mitad y la positividad OS.
 
-El antecedente público es la celda abstracta analizada en
-`268d7576c4edf38ff21185901e33495bc429065f:docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`,
-donde el conteo
-topológico de tres ramas da `b1=2`. Ese registro no demuestra que exista una
-celda física, no proporciona un puente a `GaugeConfig` y no certifica el
-prisma theta.
+El antecedente está registrado en el PR draft #41, commit
+`268d7576c4edf38ff21185901e33495bc429065f`, ruta
+`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`; no está mergeado. Allí el
+informe de auditoría consigna que el conteo topológico de tres ramas da
+`b1=2`. La cadena de procedencia es afirmación → informe de auditoría → commit
+que lo archiva: el commit no sustituye la verificación. Ese registro no
+demuestra que exista una celda física, no proporciona un puente a
+`GaugeConfig` y no certifica el prisma theta.
 
 ## Fuentes y límites de procedencia
 
@@ -278,10 +287,13 @@ prisma theta.
   transportadores libres; rama draft, no integrada.
 - `3d1a51b9a489edf70d152ad16baf808c9d30414f`,
   `docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md`: estado de integración y
-  límites de procedencia del artefacto anterior.
+  límites de procedencia del artefacto anterior; registrado en el PR draft
+  #41, no mergeado. El commit archiva el informe, no verifica sus afirmaciones.
 - `268d7576c4edf38ff21185901e33495bc429065f`,
   `docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`: conteos
-  `b1=2`/`b1=1`, cociente gauge abstracto y caveat de incidencia.
+  `b1=2`/`b1=1`, cociente gauge abstracto y caveat de incidencia; informe de
+  auditoría registrado en el PR draft #41, no mergeado. El commit lo archiva,
+  no certifica por sí mismo el contenido.
 - Diseños A, D+, construcción de `F_perp` y comparación conjunta A/B/C/D/D+:
   **registro consolidado de análisis; pendiente de formalización** donde no
   exista una ruta pública más fuerte citada arriba.
