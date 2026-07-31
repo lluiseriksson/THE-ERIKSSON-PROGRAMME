@@ -1,0 +1,24 @@
+STATUS: BUILD-PENDING-INDEPENDENT-AUDIT; OWNER CLICK REQUIRED
+PUBLICATION ACTION: REPLACE VERSION
+ORDER: 12 of 13
+PUBLICATION: ai.viXra.org:2607.0035
+CATEGORY: Mathematical Physics
+TITLE: Exact Two-Dimensional SU(2) Yang-Mills in Lean: Weyl Integration, Heat-Kernel Convolution, Migdal Invariance, and the Exact Simple-Loop Area Law
+AUTHOR: Lluis Eriksson
+
+ABSTRACT:
+SUPERSEDED BY AI.VIXRA:2607.0039V1 FOR THE ORIGINAL-EDGE AND TREE-COTREE CLOSURE. This replacement preserves public version 1 and corrects its publication-level scope. Version 1 establishes the compact-group analytic chain, heat-kernel reductions, schedule independence and reduced-model results, but pages 7 and 9 leave open the bridge from the post-gauge-fixed evaluator to the original-edge physical integral for arbitrary cellulations. ai.viXra:2607.0039v1 supplies the missing original-edge gauge fixing, simultaneous face-holonomy transport and compatible tree-cotree closure and is therefore the authoritative source for the full exact simple-loop area-law theorem at the stated finite two-dimensional SU(2) heat-kernel scope. Neither paper constructs four-dimensional continuum Yang-Mills theory or proves a four-dimensional mass gap. The preserved version 1 follows the two-page notice unchanged.
+
+COMMENTS:
+11 pages. v2 adds a two-page supersession/scope correction, removes the stray metadata suffix Author(s), and preserves the nine-page v1. Full closure: ai.viXra:2607.0039v1.
+
+CHANGE NOTE:
+Separates the exact reduced-schedule results from the missing original-edge bridge; identifies 2607.0039v1 as the authoritative tree-cotree closure; preserves v1 for provenance.
+
+FILE: artifacts/2607.0035v2-supersession.pdf
+CURRENT PUBLIC PDF: https://ai.vixra.org/pdf/2607.0035v1.pdf
+CURRENT PUBLIC SHA256: 99413dfa1431d12b6f572fced7b1a9237498a011d73f0c2de6311f614aa4887b
+SUCCESSOR: https://ai.vixra.org/abs/2607.0039
+SUCCESSOR PDF SHA256: acb7b9b41d3a23fea3bfcb0df59571742592c0925bdd2bbabcbc7a4d425528b1
+IMMUTABLE GITHUB SOURCE LINK: PENDING-AUDITED-COMMIT
+OWNER ACTION: DO NOT UPLOAD OR CLICK SUBMIT UNTIL INDEPENDENT AUDIT PASSES.

@@ -1,0 +1,13 @@
+{
+  "status": "BUILT-NOT-INDEPENDENTLY-AUDITED",
+  "final_pdf": "2601.0047v3-supersession.pdf",
+  "final_sha256": "a4779474c2ff4b967f463ee93dd0f1e829eaa193e0f6cb3e2d7cd961d888e43c",
+  "final_bytes": 563912,
+  "final_pages": 7,
+  "notice_pages": 2,
+  "historical_pdf": "2601.0047v2-public.pdf",
+  "historical_sha256": "b2682f9620ca25db3a6cc271a9e9fa52dda30419170fca0e9646d5771de76369",
+  "historical_pages": 5,
+  "successor_pdf": "2601.0051v2-successor.pdf",
+  "successor_sha256": "f10520e4d78d1ea5c12e6b6893aa692981c1f05dd93911f18b64e01444d94186"
+}

@@ -1,0 +1,37 @@
+{
+  "record": "2601.0047",
+  "new_version": "3",
+  "title": "Petz Recoverability Versus Wilson-Loop Diagnostics in Z2 Lattice Gauge Theory (2+1D): Exact Diagonalization Benchmark on Small Open Lattices",
+  "author": "Lluis Eriksson",
+  "headline": "SUPERSEDED BY AI.VIXRA:2601.0051V2 FOR THE CONSOLIDATED BENCHMARK",
+  "historical_pdf": "2601.0047v2-public.pdf",
+  "historical_sha256": "b2682f9620ca25db3a6cc271a9e9fa52dda30419170fca0e9646d5771de76369",
+  "historical_pages": 5,
+  "successor_record": "2601.0051",
+  "successor_pdf": "2601.0051v2-successor.pdf",
+  "successor_sha256": "f10520e4d78d1ea5c12e6b6893aa692981c1f05dd93911f18b64e01444d94186",
+  "final_filename": "2601.0047v3-supersession.pdf",
+  "summary": [
+    "This replacement preserves public version 2 and makes the series relation explicit. The exact-diagonalization benchmark remains a valid finite-size component, but ai.viXra:2601.0051v2 is the consolidated source because it retains that benchmark and adds tensor-network ladder calculations and their scope controls.",
+    "The observed Petz/Wilson rank alignment is not upgraded to a confinement-specific or thermodynamic theorem. Its absolute values remain prescription dependent, and the spectral-gap covariate leaves confinement specificity unresolved at the tested sizes."
+  ],
+  "citation_rule": "Cite ai.viXra:2601.0051v2 for the combined exact-diagonalization and tensor-network benchmark. Cite this record only when discussing the standalone small-open-lattice exact-diagonalization component or its history.",
+  "status_boundary": "This supersession is consolidation rather than a wholesale refutation. The finite exact-diagonalization data and stated limitations survive; the successor is authoritative for the combined benchmark and later comparison claims.",
+  "retained": [
+    "The n=8 small-open-lattice exact-diagonalization sweep and reported rank alignment remain finite-size numerical evidence.",
+    "The prescription dependence of absolute Petz-type recovery errors remains an explicit limitation.",
+    "The equal correlation with the spectral gap means the tested data do not isolate confinement physics."
+  ],
+  "superseded": [
+    "This paper is no longer the preferred standalone citation for the programme's Petz-versus-Wilson benchmark.",
+    "Any reading of the finite-size correlation as a universal confinement discriminator is excluded.",
+    "The benchmark scope is superseded by the combined ED-plus-ladder presentation in the successor."
+  ],
+  "successor_adds": [
+    "Tensor-network ladder calculations alongside the retained exact-diagonalization benchmark.",
+    "Explicit separation between the ED BFS collar and the MPS-contiguous buffer proxy.",
+    "Additional replication, stability and confinement-versus-gap limitations."
+  ],
+  "evidence": "Both records provide finite numerical benchmarks. They do not establish a thermodynamic confinement criterion, universal recovery law or continuum theorem.",
+  "provenance": "Notice pages 1-2 are new. The following five pages reproduce public version 2 with identical rendered content. Frozen copies of public v2 and successor v2 are included in the package."
+}

@@ -1,0 +1,24 @@
+STATUS: BUILD-PENDING-INDEPENDENT-AUDIT; OWNER CLICK REQUIRED
+PUBLICATION ACTION: REPLACE VERSION
+ORDER: 10 of 13
+PUBLICATION: ai.viXra.org:2512.0073
+CATEGORY: Quantum Physics
+TITLE: Finite-Dimensional Davies Interface Lemmas and TFIM Witness Tests for the Heisenberg Cut as a Resource Boundary
+AUTHOR: Lluis Eriksson
+
+ABSTRACT:
+SUPERSEDED BY AI.VIXRA:2601.0023V2. This replacement preserves public version 1 and adds an explicit correction and supersession record. The Davies-channel Bohr decomposition, zero-frequency identity, constants, proof interfaces and TFIM witness interpretation printed in version 1 must not be used without the corrections in the successor. The historical resource-boundary motivation and finite-system witness programme remain as provenance; they do not establish a thermodynamic, continuum or universal resource-boundary theorem. The authoritative source for the corrected finite-dimensional lemmas, explicit envelope hypotheses, constants and compact TFIM witness implementation is ai.viXra:2601.0023v2. The preserved version 1 follows the two-page notice unchanged.
+
+COMMENTS:
+24 pages. v2 adds a two-page correction/supersession and claim map, then preserves the 22-page v1. Corrected technical source: ai.viXra:2601.0023v2.
+
+CHANGE NOTE:
+Adds an uppercase supersession notice in the PDF and abstract; identifies the affected Davies/Bohr, omega=0, constant and envelope claims; preserves valid motivation and historical content; points to the corrected successor.
+
+FILE: artifacts/2512.0073v2-supersession.pdf
+CURRENT PUBLIC PDF: https://ai.vixra.org/pdf/2512.0073v1.pdf
+CURRENT PUBLIC SHA256: 6fcfe5275362944c31c4587dde38ff1784386c5a9377a64b92f8ea2edd196ff6
+SUCCESSOR: https://ai.vixra.org/abs/2601.0023
+SUCCESSOR PDF SHA256: 871fcced1cf481047c650541f2d1285388f8708a67bb3c32c6d997fce932a819
+IMMUTABLE GITHUB SOURCE LINK: PENDING-AUDITED-COMMIT
+OWNER ACTION: DO NOT UPLOAD OR CLICK SUBMIT UNTIL INDEPENDENT AUDIT PASSES.

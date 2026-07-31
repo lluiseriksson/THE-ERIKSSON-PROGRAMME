@@ -1,0 +1,37 @@
+{
+  "record": "2512.0073",
+  "new_version": "2",
+  "title": "Finite-Dimensional Davies Interface Lemmas and TFIM Witness Tests for the Heisenberg Cut as a Resource Boundary",
+  "author": "Lluis Eriksson",
+  "headline": "SUPERSEDED BY AI.VIXRA:2601.0023V2",
+  "historical_pdf": "2512.0073v1-public.pdf",
+  "historical_sha256": "6fcfe5275362944c31c4587dde38ff1784386c5a9377a64b92f8ea2edd196ff6",
+  "historical_pages": 22,
+  "successor_record": "2601.0023",
+  "successor_pdf": "2601.0023v2-successor.pdf",
+  "successor_sha256": "871fcced1cf481047c650541f2d1285388f8708a67bb3c32c6d997fce932a819",
+  "final_filename": "2512.0073v2-supersession.pdf",
+  "summary": [
+    "This replacement preserves public version 1 and adds an explicit correction and supersession record. The affected Davies-channel Bohr decomposition, zero-frequency identity, constants, proof interfaces and TFIM witness interpretation must not be used from version 1 without the corrections in ai.viXra:2601.0023v2.",
+    "The historical paper is not erased. Its motivating resource-boundary discussion and finite-system witness programme remain provenance, while the corrected finite-dimensional lemmas and hypotheses are controlled by the successor."
+  ],
+  "citation_rule": "For the corrected Davies interface lemmas, constants and TFIM witness implementation, cite ai.viXra:2601.0023v2. Cite this record only for historical provenance, together with this supersession notice.",
+  "status_boundary": "SUPERSEDED does not mean that every sentence of version 1 is false. It means that load-bearing technical statements were corrected in the named successor and version 1 is no longer the authoritative mathematical source for them.",
+  "retained": [
+    "The operational motivation connecting coherence maintenance, finite control resources and finite-dimensional tests remains a programme-level interpretation.",
+    "The finite TFIM exact-diagonalization witness protocol remains a historical numerical test design, subject to the corrected observable and normalization conventions.",
+    "No thermodynamic, continuum or universal resource-boundary theorem is retained from the finite tests alone."
+  ],
+  "superseded": [
+    "The printed Davies Bohr-sector decomposition and the affected zero-frequency Dirichlet identity are superseded where the successor records proof corrections.",
+    "Envelope constants and inheritance statements are superseded; a separation-dependent lower envelope requires explicit infrared and quasi-local tail hypotheses.",
+    "The inline appendix/listing and any numerical conclusions depending on the superseded normalization are not authoritative."
+  ],
+  "successor_adds": [
+    "A corrected finite-dimensional Davies-channel decomposition and omega=0 identity.",
+    "Corrected constants and explicit hypotheses for envelope inheritance.",
+    "A compact, machine-verified finite TFIM witness implementation with narrower conclusions."
+  ],
+  "evidence": "The surviving lemmas are exact finite-dimensional statements under named hypotheses; the TFIM tests are finite numerical or machine-verified evidence. No general lower envelope follows without the successor's assumptions.",
+  "provenance": "Notice pages 1-2 are new. The following 22 pages reproduce public version 1 with identical rendered content. Frozen copies of both public v1 and the public successor v2 are included in the audited package."
+}

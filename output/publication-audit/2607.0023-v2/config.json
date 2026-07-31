@@ -1,0 +1,37 @@
+{
+  "record": "2607.0023",
+  "new_version": "2",
+  "title": "Ratio Monotonicity for a Killed von Mises Bridge: Exact Bridge Structure, Certified Negative Results, a Single-Bessel Reduction, and a Two-Scale Closure Map for a Surface Expansion in Two-Dimensional Lattice Gauge Theory",
+  "author": "Lluis Eriksson",
+  "headline": "SUPERSEDED BY AI.VIXRA:2607.0089V1 FOR THE TERMINAL GLOBAL-SIGN CLAIM; INDEPENDENT REPLAY PENDING",
+  "historical_pdf": "2607.0023v1-public.pdf",
+  "historical_sha256": "88d4cbd1bd2fce81370b79b56ec5b78c990513c7782263bbb06d3e05902bbf66",
+  "historical_pages": 13,
+  "successor_record": "2607.0089",
+  "successor_pdf": "2607.0089v1-successor.pdf",
+  "successor_sha256": "e8cc61a1c370d941baff0ae9019dde4c0d528dbeb42f7c81b221667c1e67333e",
+  "final_filename": "2607.0023v2-supersession.pdf",
+  "summary": [
+    "This replacement preserves public version 1 and records the later terminal-claim paper without overstating its audit status. Version 1 proves positivity of F_B, the ratio sign for 0 < beta <= 3, exact bridge and single-Bessel reductions, certified negative results, asymptotic structure and a two-scale closure map; pages 11-13 leave the global sign as a quantified conjecture.",
+    "ai.viXra:2607.0089v1 claims the global ratio-monotonicity theorem using exact identities and outward-rounded interval certificates. It supersedes this record for that terminal claim, but the independent replay of every exact-to-Arb handoff and interval regime remains pending in the present audit."
+  ],
+  "citation_rule": "Cite this record for the exact reductions, certified negative results and beta <= 3 theorem. Cite ai.viXra:2607.0089v1 for the claimed global closure, while retaining the explicit independent-replay-pending qualification until that audit is complete.",
+  "status_boundary": "SUPERSEDED FOR THE TERMINAL CLAIM does not convert a pending hybrid certificate into an independently verified theorem. The successor is the later claim source; its global certificate remains REVIEW-PENDING here.",
+  "retained": [
+    "The two proofs of F_B > 0 and the certified E' < 0 result for 0 < beta <= 3.",
+    "The killed von Mises bridge identity, single-Bessel reductions and exact saddle-deficit structure.",
+    "The certified negative coupling results, asymptotic coefficients and two-scale closure map as labelled in version 1."
+  ],
+  "superseded": [
+    "Pages 11-13 are no longer the terminal location of the global ratio-monotonicity programme.",
+    "The quantified conjecture is superseded as a claim target by the later paper's stated global theorem.",
+    "No independent-replay PASS is inferred from the successor's printed certificates or green transcripts."
+  ],
+  "successor_adds": [
+    "A full proof partition for the claimed global sign across analytic and interval-certified regimes.",
+    "Outward-rounded interval certificates and replay/production transcripts for the remaining parameter ranges.",
+    "A terminal global ratio-monotonicity claim that was conjectural in version 1 of this record."
+  ],
+  "evidence": "Version 1 combines exact identities, certified finite regimes, numerical verification and an explicit conjectural endpoint. The successor reports a hybrid analytic/machine-certified theorem, but independent replay of its interval coverage and exact-to-numeric interfaces is still required.",
+  "provenance": "Notice pages 1-2 are new. The following 13 pages reproduce public version 1 with identical rendered content. Frozen copies of version 1 and the 33-page successor are included in the package."
+}

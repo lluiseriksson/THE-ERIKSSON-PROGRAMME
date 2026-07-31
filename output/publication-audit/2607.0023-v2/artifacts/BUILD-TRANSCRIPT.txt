@@ -1,0 +1,14 @@
+SOURCE_DATE_EPOCH=1785614400
+{
+  "status": "BUILT-NOT-INDEPENDENTLY-AUDITED",
+  "final_pdf": "2607.0023v2-supersession.pdf",
+  "final_sha256": "7aa4ba1e0304105992b1e3cc4b5dd778ed946dba5e4809bcb9a69725951923c5",
+  "final_bytes": 534914,
+  "final_pages": 15,
+  "notice_pages": 2,
+  "historical_pdf": "2607.0023v1-public.pdf",
+  "historical_sha256": "88d4cbd1bd2fce81370b79b56ec5b78c990513c7782263bbb06d3e05902bbf66",
+  "historical_pages": 13,
+  "successor_pdf": "2607.0089v1-successor.pdf",
+  "successor_sha256": "e8cc61a1c370d941baff0ae9019dde4c0d528dbeb42f7c81b221667c1e67333e"
+}
