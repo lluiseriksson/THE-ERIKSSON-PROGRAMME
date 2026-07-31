@@ -14,7 +14,7 @@ series obligation.
 | `haarSchur` | PROVED | `haarSchurConcrete`, `sunHaarProb_fundamental_entry_orthogonality` | three conditional-zero identities |
 | `fubiniCoordinates` | PROVED | `fubiniCoordinatesConcrete`, `relativeCoordinateEquiv_measurePreserving` | three complete orthogonalities |
 | `normMoments` | PROVED | `normMomentsConcrete`, `witnessNormSq_eq_three_quarters` | `witnessNormSq = 3/4` |
-| `coefficientSeries` | OPEN / GENUINELY LOADED | `coefficient_half_lower`, `coefficient_one_lower`, `certifiedThetaPairing_gate` | concrete-probe local gate inequality |
+| `coefficientSeries` | OPEN / GENUINELY LOADED | planned direct spin-half Haar-symmetry bound; spin-one fourth-moment/remainder brick absent | concrete-probe local gate inequality |
 | `weightMeasurability` | PROVED | `weightMeasurabilityConcrete`, `cellWeight_integrable` | concrete `cellHaar` weight integrability |
 
 The remaining field does not contain the pairing equality, the witness norm,
@@ -23,3 +23,31 @@ closed inhabitant of `ManufacturingTechnicalInputs 1` has yet been built, so
 the beta-one anti-vacuity criterion and the uniform gate remain **OPEN**.
 
 This document cannot assign an external audit verdict.
+
+## Preregistered direct-coefficient repair route
+
+The exact dependency pin is Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  A source search at that pin
+found no SU(2) Weyl integration formula.  In particular,
+`MeasureTheory/Constructions/HaarToSphere.lean` constructs angular measure
+from additive Haar measure on a real normed space; it does not identify SU(2),
+its normalized Haar measure, or the trace pushforward.
+
+The repository proves the second moment
+`sunHaarProb_trace_normSq_integral_eq_one`.  It does not prove the fourth
+moment `integral (chi ^ 4) = 2`.  The generic Schur API applies to constructed
+irreducible representations, while the current label-two bridge is only the
+pointwise character-ring identity `chi_1 + 1 = chi_fund ^ 2`.  Therefore the
+missing brick for the proposed spin-one estimate is one of:
+
+- an SU(2) Haar/Weyl trace-pushforward formula with its normalization; or
+- a concrete irreducible spin-one representation together with a proved
+  decomposition of the fundamental tensor square and the resulting fourth
+  moment.
+
+The next bounded campaign will prove only the independent spin-half estimate
+`beta / 2 <= alpha su2WeylPolynomial beta 1`, using left-Haar invariance under
+the explicit central element `-I`, the oddness of the fundamental trace, and
+`Real.self_le_sinh_iff`.  It will not introduce Peter--Weyl completeness or a
+general tensor-power multiplicity formula, and it will not present
+`coefficientSeries` as closed.

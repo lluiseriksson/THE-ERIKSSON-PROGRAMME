@@ -68,6 +68,13 @@ remote-CI pass and remains open evidence debt.
 
 - Prove `CoefficientRemainderSteps` for `su2WeylPolynomial`, at minimum for
   `beta = 1`; no inhabitant of `ManufacturingTechnicalInputs 1` exists yet.
+- A pin-exact search found no SU(2) Weyl integration formula.  The available
+  `HaarToSphere` construction is not an SU(2)-Haar identification.  The
+  repository has the trace second moment but not `integral (chi ^ 4) = 2`;
+  closing the proposed spin-one bound therefore requires that normalized
+  one-variable integration brick or a concrete irreducible spin-one
+  decomposition.  The direct spin-half Haar-symmetry bound is preregistered
+  separately and does not close this field by itself.
 - Strengthen the label-two character-ring bridge to a constructed spin-one
   representation if the independent audit requires an actual complement
   rather than the explicit tensor-square identity.
