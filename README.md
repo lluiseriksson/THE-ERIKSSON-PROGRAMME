@@ -417,7 +417,7 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 | [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md) | The executable M3 frontier dependency graph, mirrored for humans. |
 | [`docs/SOURCE-CITATIONS.md`](docs/SOURCE-CITATIONS.md) | The compact primary-source lookup for CMP116 Lemma 3: visual anchors, blockers, and source targets without repeated OCR hunting. |
 | [`docs/source-db/README.md`](docs/source-db/README.md) | The broader source-spine database: coverage, crosswalks, artifact manifests, proof obligations, and frontier queues. |
-| [`docs/SU2-TRANSPORTER-CARRIERS-CONSOLIDATED-NOGO-20260731.md`](docs/SU2-TRANSPORTER-CARRIERS-CONSOLIDATED-NOGO-20260731.md) | Editorial A/B/C/D/D+ consolidation for SU(2) transporter carriers: exact identities, verified evidence, interpretations, 2-core caveats and strictly local no-go scopes; it is not part of the verified core. |
+| [`docs/SU2-TRANSPORTER-CARRIERS-CONSOLIDATED-NOGO-20260731.md`](docs/SU2-TRANSPORTER-CARRIERS-CONSOLIDATED-NOGO-20260731.md) | **(11) Fabricante del consolidado A/B/C/D/D+.** Editorial SU(2) transporter-carrier consolidation with exact identities, verified evidence, interpretations, 2-core caveats and strictly local no-go scopes; it is not part of the verified core. Task `(8)` is the closed geometry auditor; `(12)` is the next free number. |
 | [`HYPOTHESIS_FRONTIER.md`](HYPOTHESIS_FRONTIER.md) | The carried hypotheses, audited. Currently exactly one (§6.3 UV), now sharpened to a per-scale RG contraction. |
 | [`FOUNDATIONS.md`](FOUNDATIONS.md) | What "proved" means here; the vacuity audit doctrine. |
 | [`CLEANUP_PLAN.md`](CLEANUP_PLAN.md) | How the sound core was carved out of the legacy sprawl. |

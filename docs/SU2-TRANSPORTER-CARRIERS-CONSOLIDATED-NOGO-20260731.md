@@ -1,8 +1,12 @@
-# Portadores SU(2): informe consolidado A/B/C/D/D+
+# (11) Fabricante del consolidado A/B/C/D/D+
 
 **Fecha:** 2026-07-31
 **Estado:** informe editorial consolidado; no es un teorema Lean ni una
 certificación de una celda física.
+**Numeración canónica:** esta tarea es `(11)`. La tarea `(8)` corresponde al
+auditor de geometría ya cerrado; el siguiente número libre es `(12)`. Los dos
+commits publicados antes de esta corrección conservan su historia y esta
+etiqueta humana se corrige mediante un commit posterior.
 
 ## Alcance y lenguaje de evidencia
 
