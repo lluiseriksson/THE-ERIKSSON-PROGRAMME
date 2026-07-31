@@ -48,6 +48,23 @@ def main() -> int:
         print("the Lean file", lean, "is not in the diff")
         return 2
 
+    # The generated sentence says every OTHER changed file is a non-Lean
+    # artefact the elaborator never sees.  That is a claim about the diff, so
+    # the diff has to be gated on it: a second `.lean` file, or a change to the
+    # toolchain or manifest, would make the sentence false while the file list
+    # around it stayed correct.  Refuse rather than print it.
+    lean_files = [f for f in files if f.endswith(".lean")]
+    if lean_files != [lean]:
+        print("unexpected Lean files in the diff:", lean_files)
+        print("the generated sentence would claim they are not elaborated")
+        return 2
+    config = [f for f in files
+              if f in ("lean-toolchain", "lake-manifest.json")]
+    if config:
+        print("elaboration environment changed in the diff:", config)
+        print("the inherited measurement cannot be carried across that")
+        return 2
+
     others = [f for f in files if f != lean]
     if len(others) > 1:
         listing = ", ".join(tt(f) for f in others[:-1]) + " and " + tt(others[-1])

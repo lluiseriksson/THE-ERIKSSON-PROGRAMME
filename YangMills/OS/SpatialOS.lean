@@ -55,9 +55,12 @@ where the two cases genuinely differ.
 
   `collapse w β m F σ = ∑ a, [a (last) = σ] * gibbsWeight w β a * F a`
 
-Everything in this module is a corollary of the two identities saying the
-pairing is a quadratic form in `collapse F` --- `osPairingSite_eq` and
-`osPairingBond_eq` --- together with the kernel facts of paper 12.
+Every POSITIVITY result for the two half-chain forms is a corollary of the two
+identities saying the pairing is a quadratic form in `collapse F` ---
+`osPairingSite_eq` and `osPairingBond_eq` --- together with the kernel facts of
+paper 12.  Identifying the BOND form with the full-path Gibbs measure needs a
+second layer that is not a corollary of those: the assembly `joinBond`, the
+equivalence `bondEquiv`, and the weight identity `gibbsWeight_joinBond`.
 
 ## Pre-registration
 
