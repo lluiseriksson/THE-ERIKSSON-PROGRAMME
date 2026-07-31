@@ -3,7 +3,15 @@
 Fecha de corte: 2026-07-31  
 Modo: adversarial, solo lectura sobre `output/publication-audit/2602.0038-v3` y `output/publication-audit/2602.0041-v4`; los unicos ficheros escritos por esta auditoria estan bajo `tmp/publication-audit/title-replacements-independent`.
 
-## Resultado ejecutivo
+## Cierre posterior de paquete
+
+Los bloqueos de seleccion y empaquetado se cerraron sin modificar el PDF auditado:
+se eliminaron los dos artefactos obsoletos regenerables, se genero un manifiesto y
+ZIP determinista por paquete, y las fichas apuntan al commit inmutable `8c836f0d`.
+El estado final de ambos paquetes es **LISTO-LOCAL**. La tabla siguiente conserva
+el veredicto adversarial previo a esos cierres.
+
+## Resultado ejecutivo previo al cierre
 
 | Paquete | Resultado material | Veredicto de paquete | Motivo bloqueante |
 |---|---|---|---|
