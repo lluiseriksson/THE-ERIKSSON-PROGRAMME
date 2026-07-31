@@ -741,13 +741,62 @@ theorem witnessNormSq_eq_three_quarters (moments : NormMomentSteps) :
     moments.cross_reverse_moment, moments.relative_moment]
   norm_num
 
-variable [MeasurableSpace CellConfiguration]
-
 /-- Measurability is the only loaded step needed to turn the concrete pointwise
 weight bound into integrability against any finite measure. -/
 structure WeightMeasurabilityStep (mu : Measure CellConfiguration)
     (beta : ℝ) : Prop where
   measurable : AEStronglyMeasurable (cellWeight beta) mu
+
+private theorem measurable_cell_A (i : Branch) :
+    Measurable (fun c : CellConfiguration => c.A i) := by
+  change Measurable (fun c : CellConfiguration =>
+    cellConfigurationEquiv.symm c (.upper i))
+  exact (measurable_pi_apply (.upper i)).comp
+    measurable_cellConfigurationEquiv_symm
+
+private theorem measurable_cell_B (i : Branch) :
+    Measurable (fun c : CellConfiguration => c.B i) := by
+  change Measurable (fun c : CellConfiguration =>
+    cellConfigurationEquiv.symm c (.lower i))
+  exact (measurable_pi_apply (.lower i)).comp
+    measurable_cellConfigurationEquiv_symm
+
+private theorem measurable_cell_s :
+    Measurable (fun c : CellConfiguration => c.s) := by
+  change Measurable (fun c : CellConfiguration =>
+    cellConfigurationEquiv.symm c .transversalS)
+  exact (measurable_pi_apply .transversalS).comp
+    measurable_cellConfigurationEquiv_symm
+
+private theorem measurable_cell_t :
+    Measurable (fun c : CellConfiguration => c.t) := by
+  change Measurable (fun c : CellConfiguration =>
+    cellConfigurationEquiv.symm c .transversalT)
+  exact (measurable_pi_apply .transversalT).comp
+    measurable_cellConfigurationEquiv_symm
+
+private theorem holonomy_measurable (i : Branch) :
+    Measurable (fun c : CellConfiguration => holonomy c i) := by
+  exact ((measurable_cell_s.mul (measurable_cell_A i)).mul
+    measurable_cell_t.inv).mul (measurable_cell_B i).inv
+
+private theorem branchWeight_measurable (beta : ℝ) :
+    Measurable (branchWeight beta) := by
+  exact Real.continuous_exp.measurable.comp
+    (measurable_const.mul
+      (Complex.measurable_re.comp chi_continuous.measurable))
+
+theorem cellWeight_measurable (beta : ℝ) :
+    Measurable (cellWeight beta) := by
+  unfold cellWeight
+  exact Finset.measurable_prod _ fun i _ =>
+    (branchWeight_measurable beta).comp (holonomy_measurable i)
+
+/-- The concrete eight-coordinate Haar product discharges weight measurability
+for every coupling; this is not a loaded technical input. -/
+def weightMeasurabilityConcrete (beta : ℝ) :
+    WeightMeasurabilityStep cellHaar beta :=
+  ⟨(cellWeight_measurable beta).aestronglyMeasurable⟩
 
 theorem cellWeight_integrable {mu : Measure CellConfiguration} [IsFiniteMeasure mu]
     (bound : CharacterBoundCertificate) (beta : ℝ)
