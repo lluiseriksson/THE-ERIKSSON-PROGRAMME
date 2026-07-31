@@ -31,6 +31,12 @@ def strip_comments(src: str) -> str:
 
     String literals are respected, so `--` and `/-` inside a string do not open
     a comment.
+
+    A comment is replaced by a SPACE, not by nothing: `foo/- c -/bar` is two
+    identifiers and `foobar` is one, and a stripper that deleted the comment
+    outright would call them equal.  Newlines inside a block comment are kept so
+    that line structure is not silently joined; the blank lines that leaves are
+    dropped below.
     """
     out, i, depth = [], 0, 0
     n = len(src)
@@ -48,20 +54,27 @@ def strip_comments(src: str) -> str:
                 if src[i - 1] == '"':
                     break
         elif src.startswith("/-", i):
+            if depth == 0:
+                out.append(" ")
             depth += 1
             i += 2
         elif depth > 0 and src.startswith("-/", i):
             depth -= 1
             i += 2
         elif depth == 0 and src.startswith("--", i):
+            out.append(" ")
             while i < n and src[i] != "\n":
                 i += 1
         else:
             if depth == 0:
                 out.append(src[i])
+            elif src[i] == "\n":
+                out.append("\n")
             i += 1
-    stripped = "".join(out)
-    return "\n".join(ln for ln in stripped.splitlines() if ln.strip())
+    # Trailing whitespace is never syntax in Lean, and removing a comment at end
+    # of line leaves some; LEADING whitespace is syntax and is untouched.
+    lines = (ln.rstrip() for ln in "".join(out).splitlines())
+    return "\n".join(ln for ln in lines if ln)
 
 
 def blob(repo: str, rev: str, path: str) -> str:
