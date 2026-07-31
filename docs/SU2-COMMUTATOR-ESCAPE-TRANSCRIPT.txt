@@ -40,8 +40,11 @@ Result:
 ORACLE
 Command:
   lake env lean YangMills/Derived/SU2CommutatorEscapeOracle.lean
-Result for every printed title:
+Result for every `#print axioms` title:
   [propext, Classical.choice, Quot.sound]
+The separate `#print SU2CommutatorFubiniSwap` expands to exactly the equality
+between orders c1,c2,u,y and u,y,c1,c2 shown in the source; it contains no
+factor 1/4 and no quadratic-form target.
 Titles checked:
   su2Commutator_self
   su2Commutator_inv
@@ -50,8 +53,11 @@ Titles checked:
   su2_commutator_entry_moment
   su2_commutator_inv_entry_moment
   su2_commutator_inv_star_entry_moment
+  su2_average_right_translated_trace
   integral_integral_swap_of_integrable
   su2_conditioned_right_translation
+  su2CommutatorQuadraticForm_eq_postTranslation
+  su2CommutatorQuadraticForm_eq_quarter
   su2CommutatorQuadraticForm_lower
   su2CommutatorQuadraticForm_strict
   su2TraceObservable_one_nonzero
@@ -70,13 +76,13 @@ Scope emitted by the certificate:
 
 ARTIFACT SHA-256 (BINARY = LF FOR NEW TEXT FILES AT THIS CHECKPOINT)
 YangMills/Derived/SU2CommutatorEscape.lean
-  b503eeacab5e281ff09d32e81ec72bc461e4e8f9425c1197f2a07c341455776e
+  48499894d96778d005415a598310d7540f3ed9eba629d2019d66a8390d42cadd
 YangMills/Derived/SU2CommutatorEscapeOracle.lean
-  36116c02f0959fc2b6336d6ddc22294bf7864aa0f5eef6b27d18b2701c3659b2
+  4b6f86e4758e52cdfeea4130ae542238a7a2ddf03897574851ed848271317c2f
 scripts/verify_su2_commutator_moments.py
   c5d18025cf0f5267fc9b33bb951c8825fa8f990e87077a2358c2d64bf559fbe1
 docs/SU2-COMMUTATOR-ESCAPE.md
-  e32f15913522091140f9e532d260ce23d13f10a8aae9de032abdf27508d18a6c
+  e971fa2a60be0e21bdd3052c2d12b009dfab990dab129ae48a38314b597051ab
 Pinned inputs (binary / LF):
 lean-toolchain
   8c46c0308e92095e478bcfae7c357327e88c5a624b54abf5ad1660ee0e51df5a
@@ -94,11 +100,13 @@ VALIDATORS
   and every pre-existing Lean file
 
 FORMAL LIMITATION
-The complete four-Haar Fubini assembly proving
+The sole remaining obligation is `SU2CommutatorFubiniSwap beta`, which states
+only the change from integration order c1,c2,u,y to u,y,c1,c2 for the
+post-substitution integrand. It contains neither the factor 1/4 nor the target
+identity. Under the named hypothesis `hSwap`, Lean derives
   su2CommutatorQuadraticForm beta = (1/4) * su2BaseQuadraticForm beta
-is carried as the named explicit hypothesis `hFubiniBridge` in every terminal
-commutator theorem. The concrete unscaled four-Haar definition, both entrywise
-moments, inverse-law transport, generic Fubini gate, conditioned right
-translation, and the conditional lower/strict commutator conclusions are
-Lean certified. The bridge hypothesis still has to be discharged. The
-mathematical derivation is exact in the companion document.
+by the conditioned translation and the certified scalar contraction of the
+inverse-commutator moment. The conditional lower/strict commutator conclusions
+therefore carry a measure-theory step, not their destination. The swap still
+has to be discharged from the documented integrability bound. The mathematical
+derivation is exact in the companion document.

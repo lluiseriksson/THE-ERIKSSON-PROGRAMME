@@ -14,8 +14,12 @@ the pre-audit status of commit `a66b1c7d`.
 #print axioms YangMills.Derived.su2_commutator_entry_moment
 #print axioms YangMills.Derived.su2_commutator_inv_entry_moment
 #print axioms YangMills.Derived.su2_commutator_inv_star_entry_moment
+#print axioms YangMills.Derived.su2_average_right_translated_trace
 #print axioms YangMills.Derived.integral_integral_swap_of_integrable
 #print axioms YangMills.Derived.su2_conditioned_right_translation
+#print YangMills.Derived.SU2CommutatorFubiniSwap
+#print axioms YangMills.Derived.su2CommutatorQuadraticForm_eq_postTranslation
+#print axioms YangMills.Derived.su2CommutatorQuadraticForm_eq_quarter
 #print axioms YangMills.Derived.su2CommutatorQuadraticForm_lower
 #print axioms YangMills.Derived.su2CommutatorQuadraticForm_strict
 #print axioms YangMills.Derived.su2TraceObservable_one_nonzero

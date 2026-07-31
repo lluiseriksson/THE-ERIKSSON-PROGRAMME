@@ -65,7 +65,10 @@ El dominio es un producto de cuatro espacios compactos con medidas de
 probabilidad. Esta constante es integrable; las funciones son continuas.
 Fubini/Tonelli para Bochner se aplica. En Lean, el gate genérico
 `integral_integral_swap_of_integrable` mantiene la integrabilidad como
-hipótesis visible antes de instanciarlo con Haar.
+hipótesis visible antes de instanciarlo con Haar. La obligación concreta se
+llama `SU2CommutatorFubiniSwap β`: afirma únicamente que el orden
+`c₁,c₂,u,y` del integrando posterior a la sustitución puede cambiarse a
+`u,y,c₁,c₂`. Su definición no contiene el factor `1/4` ni la identidad final.
 
 ### Cambio condicionado y colapso
 
@@ -107,22 +110,26 @@ axiomas de proyecto; la obligación abierta viaja como hipótesis explícita:
 - los dos momentos matriciales entrada por entrada;
 - los momentos `(1/4)I` de `k` y `k⁻¹`;
 - el momento conjugado entrada por entrada;
+- la contracción escalar
+  `∫∫conj(χ(u k⁻¹))=(1/4)conj(χ(u))`, derivada de esos momentos;
 - la traslación derecha condicionada exacta en `x`, que elimina `k` del peso;
 - un gate genérico de Fubini con integrabilidad explícita;
+- el teorema puente `su2CommutatorQuadraticForm_eq_quarter`, que deriva
+  `Qβ^C(χ)=(1/4)Qβ(χ)` usando la traslación, `hSwap` y la contracción anterior;
 - los titulares condicionales
   `su2CommutatorQuadraticForm_lower`, `_strict` y `_one_strict` sobre la
-  integral concreta del conmutador; cada uno exige en su tipo la hipótesis
-  nombrada `hFubiniBridge : Qβ^C(χ) = (1/4) Qβ(χ)`;
+  integral concreta del conmutador; cada uno exige solamente
+  `hSwap : SU2CommutatorFubiniSwap β`;
 - no vacuidad mediante `χ(1)≠0`, Haar no nula y el acoplamiento concreto
   `β=1`; el certificado exacto añade una matriz SU(2) distinta de la identidad.
 
-Obligación formal restante: descargar `hFubiniBridge` ensamblando en Lean los
-intercambios de Fubini de la integral cuádruple con la contracción finita de
-la traza. La identidad integral completa es **EXACTA en la derivación
-anterior, pero todavía no es un titular Lean CERTIFICADO**. El hueco ya no es
-una ausencia: aparece literalmente en el tipo de todos los resultados
-terminales sobre el conmutador. No se introduce un axioma ni se altera la
-definición concreta de `su2CommutatorQuadraticForm` para codificar `1/4`.
+Obligación formal restante: demostrar `SU2CommutatorFubiniSwap β` a partir de
+la cota e integrabilidad anteriores. La identidad integral es **EXACTA** en la
+derivación y es un titular Lean **CERTIFICADO bajo esa única hipótesis de
+intercambio**. La contracción que produce `1/4` ya está cerrada en Lean; no se
+asume el resultado del puente. El hueco aparece literalmente como `hSwap` en
+el tipo de los resultados terminales. No se introduce un axioma ni se altera
+la definición concreta de `su2CommutatorQuadraticForm` para codificar `1/4`.
 
 El oracle separado imprime los axiomas de cada titular realmente certificado.
 El certificado Python comprueba dos veces, con racionales exactos, las
