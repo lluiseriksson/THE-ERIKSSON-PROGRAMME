@@ -1,0 +1,210 @@
+{
+  "schema_version": 2,
+  "lane": "CONT-C0",
+  "audit_base_sha": "1e6113a10c407ba2964af2713aef26c62bbd1157",
+  "observed_main_sha": "1f81ec43404ae2a8c72a8c934807d4b03b8680c9",
+  "observed_at_utc": "2026-07-31T07:17:04.7583792Z",
+  "producer_ref": "origin/codex/continuum-c0",
+  "producer_sha": "7fe64bbced729337f6a1060d731e661384863c42",
+  "pr_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/36",
+  "freshness_check": {
+    "status": "stable",
+    "checked_at_utc": "2026-07-31T07:32:50.7440095Z",
+    "producer_sha": "7fe64bbced729337f6a1060d731e661384863c42",
+    "observed_main_sha": "f8592f626a98c061474ed4eca9b75cdb505bccc6"
+  },
+  "artifact_paths": [
+    "YangMills/Continuum/Scale.lean",
+    "YangMills/Continuum/ObservableEmbedding.lean",
+    "YangMills/Continuum/GibbsSequence.lean",
+    "YangMills/Continuum/RegimeObstruction.lean",
+    "YangMills/Continuum/CorrelationGeometry.lean",
+    "YangMills/Continuum/WeakLimit.lean",
+    "YangMills/Continuum/Example.lean",
+    "YangMills/Continuum/TwoPointFactorization.lean",
+    "YangMills/Continuum/Oracle.lean"
+  ],
+  "regulator_family": {
+    "lattice_spacing": "ScaleSequence with positive spacing tending to zero; reciprocalScale is 1/(n+1).",
+    "physical_volume": "No scale-indexed finite physical volume. Each S.state n is already the repository thermodynamic infinite-volume state.",
+    "boundary_conditions": "Inherited inside the thermodynamic producer; no C0 boundary-condition family is parameterized.",
+    "bare_parameters": "A coupling sequence constrained pointwise by UniformLocalKPRegime; the discharged two-point family assumes |beta(k)| <= 10^-6.",
+    "renormalised_parameters": "Absent; no counterterm, field-strength factor, or renormalised coupling is constructed.",
+    "observables": "IntegerLocalObservable tests, point cylinders, and a canonical pair of plaquette-energy observables at offsets 0 and 2k.",
+    "directed_limit": "For the canonical pair, the thermodynamic limit is internal at each fixed k, followed by k->infinity with a_k=1/(k+1).",
+    "topology": "Pointwise convergence of real expectations; CandidateLawRealization names but does not instantiate a common topological measurable law space."
+  },
+  "tightness_argument": "No tightness proof. UniformlyTight is only a named proposition on a still-uninstantiated CandidateLawRealization.",
+  "uniqueness_argument": "weakLimit_unique proves uniqueness of pointwise real comparison functionals for a fixed full expectation sequence; no candidate-law or measure uniqueness theorem.",
+  "nontriviality_test": "HasFluctuatingLimit names positive limiting variance but is not proved. The scale-indexed connected correlation instead tends to zero at declared physical separation 2.",
+  "core_integration": {
+    "status": "not_applicable",
+    "baseline_sha": "7460e035",
+    "baseline_jobs": 8463,
+    "observed_jobs": null,
+    "command_transcript": "Producer modules are outside YangMillsCore. TwoPointFactorization was re-elaborated directly at cb8fec00 (exit 0, 122407 ms) and after the documentation-only delta at 7fe64bbc (exit 0, 83076 ms); exact-head producer and independent oracles exited 0 in 67619 ms and 72576 ms; target build attempts were resource-terminated, not Lean failures."
+  },
+  "checks": [
+    {
+      "id": "CONT-C0-1-REGULATORS",
+      "criterion": "The family specifies a, physical volume, boundary conditions, bare and renormalised parameters, and observables.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "file",
+          "locator": "ScaleSequence and GibbsStateSequence give a and bare data, but S.state n has already taken the thermodynamic limit and no renormalised parameters occur."
+        }
+      ],
+      "missing_data": [
+        "Scale-indexed physical-volume/boundary family, renormalised parameters, and their relation to the bare coupling."
+      ]
+    },
+    {
+      "id": "CONT-C0-1-LIMIT-ORDER",
+      "criterion": "The directed or joint order of a, volume, and other regulator limits is literal and compatible with the theorem proved.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "d4ScaleIndexedTruncatedCorrelation uses the constructed infinite-volume state at each k; tendsto_d4ScaleIndexedTwoPointData then sends k to infinity with a_k and offset 2k sharing the index."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C0-2-NONARBITRARY",
+      "criterion": "The candidate is forced by convergence of the regulated family, not selected arbitrarily, postulated, or defined to equal the desired answer.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "weakLimitValue is selected only from HasWeakLimit of actual S.expectation values, and tendsto_weakLimitValue consumes the corresponding choose_spec."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C0-2-NONCIRCULAR",
+      "criterion": "No hypothesis is definitionally or logically equivalent to convergence to the advertised candidate.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "The producer advertises HasWeakLimit as an input obligation and transport layer, not a proof of general convergence; its concrete identity/point-cylinder examples derive convergence from constant states and translation invariance."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C0-3-TOPOLOGY",
+      "criterion": "The topology and sigma-algebra support the exact fields, distributions, or observables claimed in the limit.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "file",
+          "locator": "WeakLimit.lean uses only the ordinary topology of R for each expectation; CandidateLawRealization is uninstantiated and imposes no Borel compatibility."
+        }
+      ],
+      "missing_data": [
+        "A common continuum configuration/distribution space, compatible topology and sigma algebra, and actual probability laws realizing all tests."
+      ]
+    },
+    {
+      "id": "CONT-C0-3-TIGHTNESS",
+      "criterion": "Tightness/precompactness or a stronger direct construction is proved uniformly in every regulator removed at this stage.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "file",
+          "locator": "UniformlyTight is defined at WeakLimit.lean:322-329 but no theorem constructs a CandidateLawRealization or proves the predicate."
+        }
+      ],
+      "missing_data": [
+        "Candidate laws and a uniform compact-containment proof."
+      ]
+    },
+    {
+      "id": "CONT-C0-3-SUBSEQUENCE",
+      "criterion": "Subsequence existence is not described as convergence of the full family.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "All credited convergence declarations use Tendsto atTop for the full natural-number sequence; no subsequence theorem is promoted."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C0-3-UNIQUENESS",
+      "criterion": "Uniqueness or independence of subsequence is proved before full-family convergence is credited.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "weakLimit_unique proves pointwise uniqueness for any two functionals to which the same actual expectation sequence converges; no stronger law uniqueness is claimed."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C0-4-SCALE",
+      "criterion": "A renormalised physical scale is defined and survives the limit; fixed-lattice units are not silently retained.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "tendsto_axisPairPhysicalSeparation_reciprocal proves a_k*(2k)->2 for a declared numerical convention, while ScaleConventionCompatible and GeometricScalingCompatibility remain uninstantiated."
+        }
+      ],
+      "missing_data": [
+        "A physical scale tied to the action/RG convention and compatible scaling for the full observable family."
+      ]
+    },
+    {
+      "id": "CONT-C0-4-RENORMALISATION",
+      "criterion": "Counterterms and parameter tuning are explicit functions of the regulators and are proved sufficient for the claimed convergence.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "The scale-indexed endpoint allows arbitrary beta(k) only inside |beta(k)|<=10^-6; RegimeObstruction proves the current producer cannot reach beta->infinity."
+        }
+      ],
+      "missing_data": [
+        "Renormalised coupling/field normalization, regulator-dependent counterterms, and a trajectory outside the strong-coupling wall."
+      ]
+    },
+    {
+      "id": "CONT-C0-4-NONTRIVIALITY",
+      "criterion": "A separating observable or cumulant excludes zero, Gaussian/free, ultralocal, and constant limiting theories as appropriate.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "HasFluctuatingLimit is only defined. tendsto_d4ScaleIndexedTwoPointData proves the connected correlation tends to zero while the declared physical separation tends to 2."
+        }
+      ],
+      "missing_data": [
+        "Positive limiting variance or another separating cumulant excluding deterministic, Gaussian/free, and ultralocal limits."
+      ]
+    },
+    {
+      "id": "CONT-C0-HOUSE-PROSE",
+      "criterion": "Prose and headlines match literal declarations and stated hypotheses.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "source",
+          "locator": "The charter and modules expressly deny continuum-law, tightness, nontriviality, reconstruction, and Clay claims. check_module_prose has one expected false positive because the header backticks the explicitly absent name ContinuumState."
+        }
+      ]
+    },
+    {
+      "id": "CONT-C0-HOUSE-CORE",
+      "criterion": "If integrated into YangMillsCore, canonical build is green, oracle is clean, consistency passes, and the job count exceeds 8463.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "command",
+          "locator": "Not integrated into YangMillsCore. Clean direct elaboration of the changed load-bearing TwoPointFactorization source exited 0; consistency and source catalog checks passed. Oracle evidence is recorded in the report."
+        }
+      ]
+    }
+  ]
+}
