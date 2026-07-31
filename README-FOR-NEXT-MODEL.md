@@ -97,9 +97,10 @@ top of [`README.md`](README.md#progress-dashboard) and the static dashboard in
 [`docs/dashboard/`](docs/dashboard/).
 
 The abstract two-transporter SU(2) theta-prism proposal has three independent
-read-only **geometry/algebra PASS reports**.  The physical half is a theta multigraph with
+read-only **geometry/algebra PASS reports**.  The physical half is a theta
+multigraph with
 `b1=2`; `K(2,3)` names its incidence subdivision; residual gauge leaves
-`G^2 / Ad G`; and `theta(H_i)=s^-1 H_i^-1 s` holds pointwise.  Do not promote
+`G^2 / Ad G`; and `theta(H_i)=s^-1 H_i^-1 s` holds pointwise.
 The representation calculation independently gives a nonzero witness
 orthogonal to all three one-cycle subspaces, norm squared `3/4`, pure sector
 `(1,1/2,1/2)`, central factor `1/16`, and the registered `beta^4/512` bound on

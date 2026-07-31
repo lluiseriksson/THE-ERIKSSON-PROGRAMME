@@ -155,9 +155,10 @@ explicit:
   SU(2) theta-prism cell passed the topological `b1=2` calculation, the
   `G^2 / Ad G` residual gauge quotient, and the pointwise identity
   `theta(H_i)=s^-1 H_i^-1 s`; it also corrected an overbroad one-incidence
-  elimination rule.  This is pre-audit evidence only: the sector calculation,
-  physical cell, `GaugeConfig` bridge, reflection positivity, Lean proof and
-  terminal audit remain open.  See
+  elimination rule.  This geometric report did not test the sector calculation;
+  the separate algebra reports in the next item do.  The physical cell,
+  `GaugeConfig` bridge, reflection positivity, Lean proof and terminal audit
+  remain open.  See
   [`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md);
 * a separate read-only SU(2) representation audit passed the exact
   two-character coefficient `1/2`, orthogonality to all three one-cycle
