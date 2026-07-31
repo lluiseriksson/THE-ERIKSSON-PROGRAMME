@@ -6,12 +6,16 @@ This is the repository's canonical publication crosswalk.  It was checked on
 The machine-readable source is
 [`docs/publications.json`](publications.json); the README and public dashboard
 link here instead of maintaining independent publication lists.
+The offline validator also binds every public identifier and exact title to the
+frozen author-index snapshot
+[`publications-author-index-20260731.json`](publications-author-index-20260731.json),
+so deleting a public record or silently changing its title is a failing change.
 
 The crosswalk currently contains:
 
-- **28 distinct public programme papers** in the July 2026 sequence;
+- **29 distinct public programme papers** in the July 2026 sequence;
 - **26 public papers with a canonical PDF in this repository**;
-- **2 public papers whose PDF has not yet been mirrored into a canonical paper
+- **3 public papers whose PDF has not yet been mirrored into a canonical paper
   directory**; and
 - **2 repository manuscripts for which no public ai.viXra identifier was found
   on the live author index**.
@@ -57,6 +61,7 @@ change the repository's explicit continuum boundary.
 |---|---|---|
 | [2607.0044](https://ai.vixra.org/abs/2607.0044) | *Machine-Checked CMP116 Fluctuation Reduction: Physical Constraint Coordinates and the Interacting-Hessian Frontier* | Public record verified; no canonical in-tree PDF found on 2026-07-31. |
 | [2607.0039](https://ai.vixra.org/abs/2607.0039) | *Exact Two-Dimensional SU(2) Yang-Mills in Lean: Weyl Integration, Heat-Kernel Convolution, Migdal Invariance, and the Exact Simple-Loop Area Law* | Public record verified; no canonical in-tree PDF found on 2026-07-31. |
+| [2607.0001](https://ai.vixra.org/abs/2607.0001) | *A Machine-Verified Bijective Proof of the Rooted Child-Factorial Catalan Identity over Spanning Trees of the Complete Graph* | Public programme record verified; the canonical artifact lives in the companion Catalan repository and is not mirrored here. |
 
 The live author index also contains `2607.0035`, a duplicate malformed record
 for the exact two-dimensional paper whose title ends in “Author(s)”.  The
@@ -74,8 +79,9 @@ crosswalk records it as an exception and does not count it as a distinct work.
 When a paper is submitted or published:
 
 1. update `docs/publications.json` from the live public record;
-2. add or correct its row here;
-3. update any paper-specific sentence in `README.md`;
-4. run `python scripts/validate_publications.py`; and
-5. do not rewrite frozen release manifests merely because an identifier was
+2. refresh the dated author-index snapshot from that same public record;
+3. add or correct its row here;
+4. update any paper-specific sentence in `README.md`;
+5. run `python scripts/validate_publications.py`; and
+6. do not rewrite frozen release manifests merely because an identifier was
    pending at the time of that historical release.

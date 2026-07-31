@@ -194,8 +194,14 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (latest recorded merged full-core checkpoint: 8463 jobs at
-   `f0720ba7`; canonical record: `project-state.json`).
+   incremented** (latest recorded merged full-core build: 8463 jobs at
+   `7460e035`; subsequent full oracle: `f0720ba7` on the same Lean source
+   graph; canonical record: `project-state.json`).
+8. **An audit certifies an exact SHA, not a moving branch.** Preserve a
+   terminally certified commit as an ancestor by merge commit or fast-forward;
+   never squash or rebase it away.  Any post-audit commit requires a new audit
+   before it inherits the terminal verdict.  Tags are immutable citation aids,
+   not substitutes for checking the peeled target.
 
 ## The autonomous loop
 

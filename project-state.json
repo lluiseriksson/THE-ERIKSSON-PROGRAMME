@@ -7,8 +7,15 @@
     "latest_recorded_build": {
       "status": "green",
       "jobs": 8463,
+      "checkpoint": "7460e035",
       "evidence": "docs/VERIFICATION-LEDGER.md"
     },
+    "latest_recorded_oracle": {
+      "status": "green",
+      "checkpoint": "f0720ba7",
+      "evidence": "docs/VERIFICATION-LEDGER.md"
+    },
+    "checkpoint_relation": "f0720ba7 is the source-identical child of build checkpoint 7460e035; it changes documentation only and records the subsequent full oracle run.",
     "allowed_oracle": [
       "propext",
       "Classical.choice",

@@ -43,9 +43,17 @@ REQUIRED_META = {
     "horizon",
     "knowledge_tree",
     "dashboard_url",
+    "continuum_c0",
+    "continuum_c1",
+    "su2_os",
 }
 REQUIRED_NODE = {"id", "label", "status", "cls", "group", "col", "row", "note"}
 REQUIRED_MILESTONES = {"M0", "M1", "M2", "M3", "M4", "M5"}
+EXPECTED_AUDITS = {
+    "SU2R": (3, 0, 0),
+    "C1N": (9, 2, 0),
+    "C0S": (7, 0, 6),
+}
 
 
 errors: list[str] = []
@@ -153,6 +161,20 @@ def validate_nodes(data: dict[str, Any], group_ids: set[str]) -> list[dict[str, 
             if not repo_path_exists(rel):
                 err(f"node {nid}: linked path does not exist in repo: {rel}")
 
+        audit = n.get("audit_trichotomy")
+        if audit is not None:
+            audit_obj = require_dict(audit, f"node {nid}.audit_trichotomy")
+            if not isinstance(audit_obj.get("label"), str) or not audit_obj.get("label"):
+                err(f"node {nid}: audit_trichotomy.label must be nonempty")
+            values = tuple(audit_obj.get(key) for key in ("pass", "fail", "blocked"))
+            if any(not isinstance(value, int) or value < 0 for value in values):
+                err(f"node {nid}: audit trichotomy counts must be nonnegative integers")
+            expected = EXPECTED_AUDITS.get(nid)
+            if expected is not None and values != expected:
+                err(f"node {nid}: audit trichotomy {values} != frozen {expected}")
+            if expected is not None and n.get("status") != "partial":
+                err(f"node {nid}: audited external/open-gate lane must remain partial")
+
     counts = Counter(ids)
     for nid, count in counts.items():
         if count > 1:
@@ -160,6 +182,10 @@ def validate_nodes(data: dict[str, Any], group_ids: set[str]) -> list[dict[str, 
     frontier_nodes = [n.get("id") for n in nodes if n.get("frontier") is True]
     if len(frontier_nodes) != 1:
         err(f"expected exactly one frontier node, found {frontier_nodes}")
+    node_map = {n.get("id"): n for n in nodes}
+    for nid in EXPECTED_AUDITS:
+        if nid not in node_map:
+            err(f"required audited node missing: {nid}")
     return nodes
 
 

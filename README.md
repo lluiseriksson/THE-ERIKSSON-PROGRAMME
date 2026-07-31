@@ -44,11 +44,14 @@ Its machine-readable source is
 2026-07-31.
 
 **Documentation snapshot updated:** 2026-07-31.  The latest recorded merged
-full-core checkpoint is `f0720ba7`: `lake build YangMillsCore` green at
-**8463 jobs**, followed by a complete `oracle_check.lean` run with only the
-three standard Lean axioms.  The separate CONTINUUM-C1 no-go artifact is frozen
-at `0a46e266` in draft PR #34, while the CONTINUUM-C0 scale-limit substrate is
-frozen at `7fe64bbc` in draft PR #36.  Both are deliberately outside `main`.
+full-core build is **8463 jobs at `7460e035`**; the subsequent complete
+`oracle_check.lean` run is recorded at `f0720ba7` with only the three standard
+Lean axioms.  The child changes documentation only and has the same Lean source
+graph; the build and oracle checkpoints remain separately attributed.  The
+separate CONTINUUM-C1 no-go artifact (external audit `9 PASS / 2 FAIL / 0
+BLOCKED`) is frozen at `0a46e266` in draft PR #34, while the CONTINUUM-C0
+scale-limit substrate (external audit `7 PASS / 0 FAIL / 6 BLOCKED`) is frozen
+at `7fe64bbc` in draft PR #36.  Both are deliberately outside `main`.
 The canonical machine-readable proof-state contract is
 [`project-state.json`](project-state.json); repository HEAD and paper commits
 may advance without changing that recorded Lean checkpoint.
@@ -71,8 +74,9 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | P4 physical-operator vertical slice | `PARTIAL` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian records, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
 | Concrete YM activity decay `hRpoly` | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Eq. (2.31) `gapCubes`, Appendix-F certified-tail, Catalan/Schur precision-budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, CMP116 Lemma 3 / Eq. (2.29) / Eq. (2.37) route is source-audited and source-locked in places; the real Balaban/Dimock estimates remain open |
 | Peter-Weyl / character infrastructure | `PARTIAL` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
-| Continuum C0 scale-limit substrate | `CLOSED / ULTRALOCAL` | scale-indexed discrete states, a proved KP regime wall, and `(separation, correlation) → (2,0)` as two independent limits; no continuum law or physical scale-coupling relation |
-| Continuum C1 strong-coupling-window test | `PROVED NO-GO` | the current `t=epsilon=1` KP radius imposes a finite beta cap and is eventually incompatible with every `beta -> +infinity` trajectory; this closes one invalid route, not the continuum problem |
+| Reduced SU(2) Wilson-kernel reflection positivity | `PRE-AUDIT PASS / GATE 7 OPEN` | blind internal pre-audit `3 PASS / 0 FAIL / 0 BLOCKED` at immutable tag `su2-os-preaudit-pass-a66b1c7d`; exact reduced Haar-kernel result only, outside `YangMillsCore`, with no GaugeConfig gluing or two-transporter plaquette theorem |
+| Continuum C0 scale-limit substrate | `MIXED: CLOSED SUBSTRATE` | external audit `7 PASS / 0 FAIL / 6 BLOCKED`; scale-indexed discrete states, a KP wall, and two independent limits are proved, while continuum law, tightness, scale-coupling and reconstruction remain blocked |
+| Continuum C1 strong-coupling-window test | `MIXED: NO-GO PROVED` | external audit `9 PASS / 2 FAIL / 0 BLOCKED`; the finite-beta-cap no-go is proved, while two witnessed integration/physical-identification failures prevent a globally green lane |
 | Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 
 ### Human estimates
@@ -101,12 +105,16 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 * `hRpoly` is still the live mathematical frontier: the concrete Yang-Mills
   cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
   operator.
-* CONTINUUM-C1 has closed negatively: the existing strong-coupling
+* CONTINUUM-C1 has closed negatively on the KP-window claim; its frozen
+  external audit remains **9 PASS / 2 FAIL / 0 BLOCKED**, so the lane is not a
+  global PASS.  The existing strong-coupling
   two-plaquette KP window cannot be sampled along a continuum trajectory with
   diverging bare inverse coupling.  See
   [`docs/CONTINUUM-C1-CLOSURE.md`](docs/CONTINUUM-C1-CLOSURE.md).  This removes
   a false route but supplies no positive tightness or continuum theorem.
-* CONTINUUM-C0 has closed on its registered substrate: it formalizes
+* CONTINUUM-C0 has closed on its registered substrate; its frozen external
+  audit remains **7 PASS / 0 FAIL / 6 BLOCKED**, so the unresolved continuum
+  gates stay visible.  It formalizes
   scale-indexed discrete states and limit transport, proves the `1/8450`
   four-dimensional KP wall, and pairs two independent limits into
   `(separation, correlation) -> (2,0)`.  The endpoint is explicitly
@@ -435,6 +443,7 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 |---|---|
 | [`docs/dashboard/`](docs/dashboard/) | The static public "Distance to the Mass Gap" dashboard: curated DAG data, linked evidence, and a no-dependency GitHub Pages front end. |
 | [`docs/PUBLICATIONS.md`](docs/PUBLICATIONS.md) · [`docs/publications.json`](docs/publications.json) | Canonical human- and machine-readable crosswalk between public ai.viXra identifiers and repository paper artifacts. |
+| [`docs/SU2-OS-PREAUDIT-STATUS.md`](docs/SU2-OS-PREAUDIT-STATUS.md) | Frozen status of the reduced SU(2) Wilson-kernel lane: internal blind pre-audit `3 PASS / 0 FAIL / 0 BLOCKED`, exact scope, queued infrastructure debts, and Gate 7 still open. |
 | [`docs/CONTINUUM-C0-CLOSURE.md`](docs/CONTINUUM-C0-CLOSURE.md) · [`docs/CONTINUUM-C1-CLOSURE.md`](docs/CONTINUUM-C1-CLOSURE.md) | Frozen external continuum-facing closure records: C0's typed but ultralocal scale-limit substrate and C1's no-go for reusing the present strong-coupling KP radius. Neither is a positive continuum theorem. |
 | [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, earlier Addenda 1-444, date-stamped checkpoints, the 2026-07-03 Catalan/Schur series through Addendum 465, and the 2026-07-04 diamagnetic bridge Addendum 466. Start here to check any claim. |
 | [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md) | The executable M3 frontier dependency graph, mirrored for humans. |

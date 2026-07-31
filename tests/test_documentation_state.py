@@ -25,7 +25,10 @@ def documentation_fixture(root: Path) -> None:
     )
     for relative in validator.FRONT_DOORS:
         (root / relative).write_text(
-            "Canonical state: project-state.json; recorded checkpoint abcdef0.\n",
+            "Canonical state: project-state.json; recorded checkpoint abcdef0. "
+            "Audits: 3 PASS / 0 FAIL / 0 BLOCKED; "
+            "7 PASS / 0 FAIL / 6 BLOCKED; "
+            "9 PASS / 2 FAIL / 0 BLOCKED.\n",
             encoding="utf-8",
         )
     (root / "docs" / "dashboard" / "data.json").write_text(
@@ -79,3 +82,12 @@ def test_dashboard_percentage_and_m3_promotion_are_rejected(tmp_path: Path) -> N
     errors = validator.validate_documentation(tmp_path)
     assert any("milestone M3 uses pct" in error for error in errors)
     assert any("M3 must display CONDITIONAL" in error for error in errors)
+
+
+def test_public_front_door_cannot_hide_audit_failures(tmp_path: Path) -> None:
+    documentation_fixture(tmp_path)
+    (tmp_path / "README.md").write_text(
+        "Canonical: project-state.json. Audit passed.\n", encoding="utf-8"
+    )
+    errors = validator.validate_documentation(tmp_path)
+    assert any("missing frozen audit trichotomy" in error for error in errors)

@@ -19,6 +19,16 @@ FRONT_DOORS = (
     "README-FOR-NEXT-MODEL.md",
     "SATELLITES.md",
 )
+AUDIT_FRONT_DOORS = (
+    "README.md",
+    "CURRENT-STATE.md",
+    "HYPOTHESIS_FRONTIER.md",
+)
+AUDIT_TRICHOTOMIES = (
+    "3 PASS / 0 FAIL / 0 BLOCKED",
+    "7 PASS / 0 FAIL / 6 BLOCKED",
+    "9 PASS / 2 FAIL / 0 BLOCKED",
+)
 SUBJECTIVE_PERCENT = re.compile(r"(?<![0-9])(?:3|15|25|58|76|94|98|99)%")
 MOVING_HEAD_AS_CHECKPOINT = re.compile(
     r"current\s+`?origin/main`?[^\n]{0,80}(?:source|Lean)\s+checkpoint",
@@ -59,6 +69,17 @@ def validate_documentation(root: Path = ROOT) -> list[str]:
             errors.append(f"{relative}: contains a non-canonical completion percentage")
         if MOVING_HEAD_AS_CHECKPOINT.search(text):
             errors.append(f"{relative}: presents moving origin/main as the Lean checkpoint")
+
+    for relative in AUDIT_FRONT_DOORS:
+        path = root / relative
+        if not path.is_file():
+            continue
+        normalized = " ".join(path.read_text(encoding="utf-8").split())
+        for trichotomy in AUDIT_TRICHOTOMIES:
+            if trichotomy not in normalized:
+                errors.append(
+                    f"{relative}: missing frozen audit trichotomy {trichotomy}"
+                )
 
     dashboard = _load_json(
         root / "docs" / "dashboard" / "data.json", "docs/dashboard/data.json", errors

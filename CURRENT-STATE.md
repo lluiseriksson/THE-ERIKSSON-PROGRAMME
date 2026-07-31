@@ -20,22 +20,43 @@ The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
 **Live-state snapshot updated:** 2026-07-31.  The latest recorded merged
-full-core checkpoint is `f0720ba7`: `lake build YangMillsCore` completed at
-**8463 jobs**, and the subsequent complete `oracle_check.lean` run returned
-only `[propext, Classical.choice, Quot.sound]`.  Historical intermediate
+full-core build completed at **8463 jobs at `7460e035`**.  The subsequent
+complete `oracle_check.lean` run is recorded at `f0720ba7` and returned only
+`[propext, Classical.choice, Quot.sound]`.  The child changes documentation
+only and shares the Lean source graph; the two transcripts remain separately
+attributed.  Historical intermediate
 checkpoints and their exact scopes remain in
 [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 
 **Publication snapshot verified:** 2026-07-31.  The canonical
-[`publication register`](docs/PUBLICATIONS.md) maps 28 distinct public
+[`publication register`](docs/PUBLICATIONS.md) maps 29 distinct public
 programme papers to their ai.viXra records, including 26 with a canonical PDF
 in this repository.  Its machine-readable source is
-[`docs/publications.json`](docs/publications.json).  Two public PDFs remain to
+[`docs/publications.json`](docs/publications.json).  Three public works remain
 be mirrored into canonical paper directories, and two repository manuscripts
 have no public identifier on the live author index; neither condition is
-silently represented by a placeholder.
+silently represented by a placeholder.  The frozen author-index snapshot used
+by CI is [`docs/publications-author-index-20260731.json`](docs/publications-author-index-20260731.json).
 
-**CONTINUUM-C0 CLOSED ON ITS REGISTERED SCOPE** (2026-07-31, frozen
+**SU2 REDUCED WILSON-KERNEL LANE — INTERNAL BLIND PRE-AUDIT PASS; GATE 7
+OPEN** (2026-07-31).  At source checkpoint `a66b1c7d`, a fresh adversarial
+auditor returned **3 PASS / 0 FAIL / 0 BLOCKED**, with no contamination, after
+an 8182-job endpoint build, a 16-headline standard-axiom oracle, independent
+`beta/4` reconstruction, physical sign/normalization checks, and manual source
+review.  The immutable annotated tag
+`su2-os-preaudit-pass-a66b1c7d` resolves exactly to that commit.  This certifies
+only the current claims: the exact reduced SU(2) Wilson Haar kernel and its
+auxiliary gauge-pure pairing.  It does not derive a plaquette factorization
+from `GaugeConfig`, handle two independent transporters, enter
+`YangMillsCore`, or advance the Clay continuum problem.  Gate 7 remains open;
+Fable must not be retried without independent evidence that quota has renewed.
+The documentation guard is known to admit contradictory prose mutations, and
+raw worktree hashes are EOL-dependent; both repairs are queued after Gate 7 so
+the audited SHA remains unchanged.  See
+[`docs/SU2-OS-PREAUDIT-STATUS.md`](docs/SU2-OS-PREAUDIT-STATUS.md).
+
+**CONTINUUM-C0 CLOSED ON ITS REGISTERED SCOPE; EXTERNAL AUDIT 7 PASS / 0
+FAIL / 6 BLOCKED** (2026-07-31, frozen
 branch head `7fe64bbc`, draft PR #36, not merged).  The artifact supplies
 scale-indexed discrete Gibbs states and weak-limit transport, proves the
 four-dimensional `B=2` KP wall `|beta|<1/8450`, and obtains
@@ -50,7 +71,8 @@ recorded in
 tightness, physical scale--coupling law, reconstruction, or continuum mass gap
 is claimed.
 
-**CONTINUUM-C1 CLOSED NEGATIVELY** (2026-07-31, frozen branch head
+**CONTINUUM-C1 CLOSED NEGATIVELY; EXTERNAL AUDIT 9 PASS / 2 FAIL / 0
+BLOCKED** (2026-07-31, frozen branch head
 `0a46e266`, draft PR #34, not merged).  The checked `t=epsilon=1`
 two-plaquette KP radius forces a finite, volume-independent upper bound on
 `beta`; therefore it is eventually false along every trajectory
@@ -489,8 +511,9 @@ the axiom oracle, and the verification ledger.
 | Appendix-F/H# bridge to UV consumer | `PARTIAL` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, newly oracle-covered Appendix-F hole target geometry/family targets, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
 | P4 physical-operator vertical slice | `PARTIAL` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
 | Concrete `hRpoly` discharge | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Catalan/Schur budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
-| Continuum C0 scale-limit substrate | `CLOSED / ULTRALOCAL` | typed limit transport and the paired `(2,0)` endpoint are proved on the frozen branch; continuum laws, tightness, physical scale--coupling, and reconstruction remain open |
-| Continuum C1 KP-window route | `CLOSED NEGATIVELY` | the present strong-coupling correlator window has a finite beta cap and cannot follow `beta -> +infinity`; a genuinely cutoff-uniform producer remains open |
+| Reduced SU(2) Wilson-kernel RP | `PRE-AUDIT PASS / GATE 7 OPEN` | internal blind audit `3 PASS / 0 FAIL / 0 BLOCKED` at tagged `a66b1c7d`; exact reduced kernel only, outside core, with no GaugeConfig or two-transporter gluing |
+| Continuum C0 scale-limit substrate | `MIXED: 7 PASS / 0 FAIL / 6 BLOCKED` | typed limit transport and the paired `(2,0)` endpoint are proved on the frozen branch; continuum laws, tightness, physical scale--coupling, and reconstruction remain blocked |
+| Continuum C1 KP-window route | `MIXED: 9 PASS / 2 FAIL / 0 BLOCKED` | the finite-beta-cap no-go is proved, but two witnessed failures remain; a genuinely cutoff-uniform producer remains open |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
 The full human-readable progress board now lives directly in
@@ -499,8 +522,9 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8463 jobs** in the latest recorded
-  merged verification checkpoint `f0720ba7`.
+* `lake build YangMillsCore` is green at **8463 jobs** at build checkpoint
+  `7460e035`; the subsequent full oracle checkpoint is `f0720ba7` on the same
+  Lean source graph.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree

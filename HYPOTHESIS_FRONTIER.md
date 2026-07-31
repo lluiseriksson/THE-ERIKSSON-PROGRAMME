@@ -1,9 +1,11 @@
 # Hypothesis Frontier — THE ERIKSSON PROGRAMME
 
-**Control-plane review: 2026-07-31; verified-core content through the recorded
-merged checkpoint `f0720ba7`, with the separate CONTINUUM-C0 substrate frozen
-at `7fe64bbc` and the CONTINUUM-C1 negative artifact frozen at `0a46e266`,
-both outside `main`.**  The canonical stable snapshot is
+**Control-plane review: 2026-07-31; verified-core content with the 8463-job
+build recorded at `7460e035` and the subsequent complete oracle at
+`f0720ba7` on the same Lean source graph, with the separate CONTINUUM-C0
+substrate frozen at `7fe64bbc` (`7 PASS / 0 FAIL / 6 BLOCKED`) and the
+CONTINUUM-C1 negative artifact frozen at `0a46e266` (`9 PASS / 2 FAIL / 0
+BLOCKED`), both outside `main`.**  The canonical stable snapshot is
 [`project-state.json`](project-state.json).  This document states the honest assumption
 frontier of the **verified core** (`YangMillsCore`).  Read the current
 section first; the legacy section at the bottom is **archived, pre-cleanup
@@ -36,7 +38,7 @@ the import closure of `YangMillsCore`.  Gaps are carried as explicit
 | **UV single-scale bound** (§6.3 Bałaban) | **CARRIED**, and now *decomposed*. The geometric-profile conditional `lattice_mass_gap_of_cluster_and_coupling` and the marginal-coupling conditional in `RG/MarginalUVMassGap.lean` are oracle-clean; coupling/summability/kernel/Gaussian scaffolding has been theorem-fed. The remaining carried input is `hRpoly`: the concrete Yang-Mills cluster-expansion-with-holes remainder activity bound for the actual gauge RG operator. It is a theorem hypothesis — never an axiom. |
 | **Continuum limit / OS–Wightman reconstruction / continuum mass gap** (M4–M5, the actual Clay problem) | **OPEN MATHEMATICS.** Not carried, not axiomatized, not claimed. **Distance to the Clay prize: ~0% (<0.1%).** |
 
-### CONTINUUM-C0 closed substrate
+### CONTINUUM-C0 closed substrate — external audit 7 PASS / 0 FAIL / 6 BLOCKED
 
 The frozen C0 artifact at `7fe64bbc` makes the continuum-facing interface
 explicit without declaring a continuum state.  It constructs scale-indexed
@@ -54,7 +56,7 @@ nontrivial variance, geometric reflection positivity, reconstruction, and the
 continuum mass gap open.  The stable evidence record is
 [`docs/CONTINUUM-C0-CLOSURE.md`](docs/CONTINUUM-C0-CLOSURE.md).
 
-### CONTINUUM-C1 negative closure
+### CONTINUUM-C1 negative closure — external audit 9 PASS / 2 FAIL / 0 BLOCKED
 
 The current volume-uniform two-plaquette theorem is a strong-coupling result,
 not a cutoff-uniform continuum producer.  The frozen C1 artifact at
@@ -71,6 +73,18 @@ of that particular window.  It does not close the continuum/tightness
 obligation, which now explicitly requires a different cutoff-uniform producer.
 The evidence and non-claims are summarized in
 [`docs/CONTINUUM-C1-CLOSURE.md`](docs/CONTINUUM-C1-CLOSURE.md).
+
+### Reduced SU(2) Wilson-kernel reflection positivity
+
+The separate PR #35 artifact is frozen and tagged at `a66b1c7d`.  A fresh
+internal blind pre-audit returned **3 PASS / 0 FAIL / 0 BLOCKED** without
+contamination.  The proved object is the exact reduced SU(2) Wilson Haar kernel
+and an auxiliary gauge-pure pairing; the front doors explicitly exclude a
+derivation from `GaugeConfig`, a two-independent-transporter plaquette, and
+membership in `YangMillsCore`.  Gate 7 remains open, so this is not a terminal
+audit or a paper authorization.  The exact status and queued guard/provenance
+repairs are in
+[`docs/SU2-OS-PREAUDIT-STATUS.md`](docs/SU2-OS-PREAUDIT-STATUS.md).
 
 The UV frontier now also has a theorem-fed error-budget landing pad:
 `YangMills.RG.YMActivityBudget.activity_decay_of_source_and_defects`.  It

@@ -18,6 +18,9 @@ MATHLIB_LAKEFILE = re.compile(
     r'require\s+mathlib\s+from\s+git\s+"[^"]+"\s*@\s*"([0-9a-f]{40})"',
     re.DOTALL,
 )
+RECORDED_BUILD_JOBS = 8463
+RECORDED_BUILD_CHECKPOINT = "7460e035"
+RECORDED_ORACLE_CHECKPOINT = "f0720ba7"
 
 
 def _safe_file(root: Path, value: Any, field: str, errors: list[str]) -> Path | None:
@@ -43,6 +46,28 @@ def _safe_file(root: Path, value: Any, field: str, errors: list[str]) -> Path | 
 def _default_ancestor_check(root: Path, commit: str) -> bool:
     result = subprocess.run(
         ["git", "merge-base", "--is-ancestor", commit, "HEAD"],
+        cwd=root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    return result.returncode == 0
+
+
+def _source_graph_identical(root: Path, left: str, right: str) -> bool:
+    result = subprocess.run(
+        [
+            "git",
+            "diff",
+            "--quiet",
+            left,
+            right,
+            "--",
+            "*.lean",
+            "lean-toolchain",
+            "lakefile.lean",
+            "lake-manifest.json",
+        ],
         cwd=root,
         check=False,
         capture_output=True,
@@ -125,11 +150,79 @@ def validate_state(
             errors.append("lean_core.latest_recorded_build.status: expected green")
         if not isinstance(build.get("jobs"), int) or build.get("jobs", 0) <= 0:
             errors.append("lean_core.latest_recorded_build.jobs: expected a positive integer")
+        build_checkpoint = build.get("checkpoint")
+        if not isinstance(build_checkpoint, str) or not COMMIT.fullmatch(
+            build_checkpoint
+        ):
+            errors.append(
+                "lean_core.latest_recorded_build.checkpoint: expected a commit"
+            )
+        elif not ancestor_check(root, build_checkpoint):
+            errors.append(
+                "lean_core.latest_recorded_build.checkpoint: commit is missing or not an ancestor"
+            )
         _safe_file(
             root,
             build.get("evidence"),
             "lean_core.latest_recorded_build.evidence",
             errors,
+        )
+
+    oracle = core.get("latest_recorded_oracle")
+    if not isinstance(oracle, dict):
+        errors.append("lean_core.latest_recorded_oracle: expected an object")
+    else:
+        if oracle.get("status") != "green":
+            errors.append("lean_core.latest_recorded_oracle.status: expected green")
+        oracle_checkpoint = oracle.get("checkpoint")
+        if not isinstance(oracle_checkpoint, str) or not COMMIT.fullmatch(
+            oracle_checkpoint
+        ):
+            errors.append(
+                "lean_core.latest_recorded_oracle.checkpoint: expected a commit"
+            )
+        elif not ancestor_check(root, oracle_checkpoint):
+            errors.append(
+                "lean_core.latest_recorded_oracle.checkpoint: commit is missing or not an ancestor"
+            )
+        _safe_file(
+            root,
+            oracle.get("evidence"),
+            "lean_core.latest_recorded_oracle.evidence",
+            errors,
+        )
+
+    relation = core.get("checkpoint_relation")
+    if not isinstance(relation, str) or "source-identical" not in relation:
+        errors.append(
+            "lean_core.checkpoint_relation: must disclose source-identical inheritance"
+        )
+
+    if isinstance(build, dict) and build.get("jobs") == RECORDED_BUILD_JOBS:
+        if build.get("checkpoint") != RECORDED_BUILD_CHECKPOINT:
+            errors.append(
+                "lean_core.latest_recorded_build.checkpoint: the 8463-job build "
+                f"belongs to {RECORDED_BUILD_CHECKPOINT}"
+            )
+    if checkpoint == RECORDED_ORACLE_CHECKPOINT and isinstance(oracle, dict):
+        if oracle.get("checkpoint") != RECORDED_ORACLE_CHECKPOINT:
+            errors.append(
+                "lean_core.latest_recorded_oracle.checkpoint: the recorded full "
+                f"oracle belongs to {RECORDED_ORACLE_CHECKPOINT}"
+            )
+    if (
+        root.resolve() == ROOT.resolve()
+        and isinstance(build, dict)
+        and isinstance(oracle, dict)
+        and isinstance(build.get("checkpoint"), str)
+        and isinstance(oracle.get("checkpoint"), str)
+        and not _source_graph_identical(
+            root, build["checkpoint"], oracle["checkpoint"]
+        )
+    ):
+        errors.append(
+            "lean_core.checkpoint_relation: build and oracle checkpoints do not "
+            "have an identical Lean/toolchain source graph"
         )
 
     if core.get("allowed_oracle") != [

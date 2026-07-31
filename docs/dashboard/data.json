@@ -3,7 +3,7 @@
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
     "updated": "2026-07-31",
-    "checkpoint": "latest recorded merged lake build YangMillsCore - 8463 jobs green; full oracle checkpoint f0720ba7",
+    "checkpoint": "latest recorded merged lake build YangMillsCore - 8463 jobs at 7460e035; subsequent full oracle at f0720ba7 on the same Lean source graph",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
@@ -17,13 +17,14 @@
     "horizon": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/HORIZON.md",
     "knowledge_tree": "https://lluiseriksson.github.io/physmath-knowledge-tree/",
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
-    "continuum_c0": "CLOSED on its registered frozen-branch scope at 7fe64bbc, outside main. It provides scale-indexed discrete states, a KP regime wall, and the paired endpoint (2,0) as two independent limits. It proves no continuum law, component dependence, tightness, reconstruction, or continuum mass gap.",
-    "continuum_c1": "CLOSED NEGATIVELY at frozen branch head 0a46e266, outside main. The current t=epsilon=1 strong-coupling KP window has a finite beta cap and cannot follow beta -> +infinity. This rules out one route and proves no positive continuum theorem.",
+    "continuum_c0": "External audit 7 PASS / 0 FAIL / 6 BLOCKED at frozen branch head 7fe64bbc, outside main. The typed substrate and two independent limits are proved; continuum law, scale-coupling, tightness and reconstruction remain blocked.",
+    "continuum_c1": "External audit 9 PASS / 2 FAIL / 0 BLOCKED at frozen branch head 0a46e266, outside main. The finite-beta-cap no-go is proved, but the lane is not a global PASS and supplies no positive continuum theorem.",
+    "su2_os": "Internal blind pre-audit 3 PASS / 0 FAIL / 0 BLOCKED at tagged a66b1c7d; Gate 7 remains open. Exact reduced SU(2) Wilson Haar kernel only: no GaugeConfig gluing, two-transporter plaquette, YangMillsCore integration or Clay claim.",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28), public as ai.viXra:2607.0089. The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem."
   },
   "status_legend": {
     "proved": "Machine-checked theorem at the linked recorded checkpoint; core reachability or an external frozen evidence ref is stated explicitly in the node.",
-    "partial": "Substantial verified infrastructure exists, but the headline statement is conditional or still awaits a named source theorem.",
+    "partial": "Substantial verified infrastructure exists, or an external lane has a mixed PASS/FAIL/BLOCKED audit or an open terminal gate. Read the node's explicit trichotomy.",
     "open": "Open work: either known mathematics still missing from the formal library, or genuinely open continuum mathematics."
   },
   "class_legend": {
@@ -66,7 +67,7 @@
       "label": "Continuum limit",
       "display": "OPEN",
       "status": "open",
-      "note": "Open mathematics for 4D non-abelian Yang-Mills. C1 rules out reusing the present strong-coupling KP window but supplies no positive continuum construction."
+      "note": "Open mathematics for 4D non-abelian Yang-Mills. The C1 external audit is 9 PASS / 2 FAIL / 0 BLOCKED: it rules out reusing the present strong-coupling KP window but supplies no positive continuum construction."
     },
     {
       "id": "M5",
@@ -252,6 +253,28 @@
         {
           "label": "HORIZON.md",
           "path": "HORIZON.md"
+        }
+      ]
+    },
+    {
+      "id": "SU2R",
+      "label": "Reduced SU2 Wilson RP kernel",
+      "status": "partial",
+      "cls": "A",
+      "group": "found",
+      "col": 6,
+      "row": 0,
+      "note": "Internal blind pre-audit PASS at tagged a66b1c7d; Gate 7 remains open. Exact reduced Wilson Haar kernel and auxiliary pairing only, outside YangMillsCore, with no GaugeConfig or two-transporter plaquette derivation.",
+      "audit_trichotomy": {
+        "label": "internal blind pre-audit",
+        "pass": 3,
+        "fail": 0,
+        "blocked": 0
+      },
+      "links": [
+        {
+          "label": "SU2-OS-PREAUDIT-STATUS.md",
+          "path": "docs/SU2-OS-PREAUDIT-STATUS.md"
         }
       ]
     },
@@ -767,12 +790,18 @@
     {
       "id": "C1N",
       "label": "C1 - strong-coupling KP window no-go",
-      "status": "proved",
+      "status": "partial",
       "cls": "A",
       "group": "asm",
       "col": 10,
       "row": 1,
-      "note": "Frozen external Lean artifact 0a46e266, not merged into main: the current t=epsilon=1 KP radius imposes a finite beta cap and is eventually false for every beta -> +infinity trajectory. This closes one invalid route, not the continuum obligation.",
+      "note": "External audit 9 PASS / 2 FAIL / 0 BLOCKED at frozen artifact 0a46e266, outside main. The finite-beta-cap no-go is proved, but two witnessed failures remain and no positive continuum theorem follows.",
+      "audit_trichotomy": {
+        "label": "external closure audit",
+        "pass": 9,
+        "fail": 2,
+        "blocked": 0
+      },
       "links": [
         {
           "label": "CONTINUUM-C1-CLOSURE.md",
@@ -787,12 +816,18 @@
     {
       "id": "C0S",
       "label": "C0 - scale-limit substrate",
-      "status": "proved",
+      "status": "partial",
       "cls": "C",
       "group": "asm",
       "col": 10,
       "row": 2,
-      "note": "Frozen external Lean artifact 7fe64bbc, not merged into main: scale-indexed discrete states, a d=4 KP wall, and (separation, correlation) -> (2,0) as two independent limits. No continuum law or physical dependence is proved.",
+      "note": "External audit 7 PASS / 0 FAIL / 6 BLOCKED at frozen artifact 7fe64bbc, outside main. The typed substrate and two independent limits are proved; six continuum-facing obligations remain blocked.",
+      "audit_trichotomy": {
+        "label": "external closure audit",
+        "pass": 7,
+        "fail": 0,
+        "blocked": 6
+      },
       "links": [
         {
           "label": "CONTINUUM-C0-CLOSURE.md",
@@ -812,7 +847,7 @@
       "group": "asm",
       "col": 11,
       "row": 1,
-      "note": "The lattice spacing must be tied to the RG trajectory. C1 proves that the present strong-coupling KP window cannot follow beta -> +infinity, so a genuinely cutoff-uniform producer is still required.",
+      "note": "The lattice spacing must be tied to the RG trajectory. C1's external audit is 9 PASS / 2 FAIL / 0 BLOCKED: its proved no-go shows that the present strong-coupling KP window cannot follow beta -> +infinity, while the mixed lane still requires a genuinely cutoff-uniform producer.",
       "links": [
         {
           "label": "HORIZON.md",

@@ -14,6 +14,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "docs" / "publications.json"
 REGISTER_PATH = ROOT / "docs" / "PUBLICATIONS.md"
+SNAPSHOT_PATH = ROOT / "docs" / "publications-author-index-20260731.json"
 PUBLIC_ID = re.compile(r"^26\d{2}\.\d{4}$")
 PLACEHOLDER = re.compile(
     r"ai\.viXra(?:\.org)?:\s*(?:X{4}\.X{4}|TBD|PENDING)|"
@@ -61,9 +62,56 @@ def _load_data(errors: list[str]) -> dict[str, Any]:
     return data
 
 
+def _load_snapshot(errors: list[str]) -> dict[str, Any]:
+    try:
+        snapshot = json.loads(SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        errors.append(f"{SNAPSHOT_PATH.relative_to(ROOT)}: {exc}")
+        return {}
+    if not isinstance(snapshot, dict):
+        errors.append(
+            "docs/publications-author-index-20260731.json: expected a JSON object"
+        )
+        return {}
+    if snapshot.get("schema_version") != 1:
+        errors.append(
+            "docs/publications-author-index-20260731.json: schema_version must be 1"
+        )
+    if snapshot.get("source") != "https://www.ai.vixra.org/author/lluis_eriksson":
+        errors.append(
+            "docs/publications-author-index-20260731.json: unexpected source"
+        )
+    return snapshot
+
+
+def _compare_public_snapshot(
+    published: dict[str, dict[str, Any]],
+    snapshot_public: dict[str, str],
+) -> list[str]:
+    errors: list[str] = []
+    manifest_ids = set(published)
+    snapshot_ids = set(snapshot_public)
+    for paper_id in sorted(snapshot_ids - manifest_ids):
+        errors.append(
+            "docs/publications.json: public snapshot entry is missing: " + paper_id
+        )
+    for paper_id in sorted(manifest_ids - snapshot_ids):
+        errors.append(
+            "docs/publications.json: public entry is absent from frozen snapshot: "
+            + paper_id
+        )
+    for paper_id in sorted(manifest_ids & snapshot_ids):
+        if published[paper_id].get("title") != snapshot_public[paper_id]:
+            errors.append(
+                f"docs/publications.json: title disagrees with frozen snapshot for {paper_id}"
+            )
+    return errors
+
+
 def validate_publications() -> list[str]:
     errors: list[str] = []
     data = _load_data(errors)
+    snapshot = _load_snapshot(errors)
     if data.get("schema_version") != 1:
         errors.append("docs/publications.json: schema_version must be 1")
     try:
@@ -89,6 +137,7 @@ def validate_publications() -> list[str]:
     )
     if not register:
         errors.append("docs/PUBLICATIONS.md: missing or empty")
+    register_flat = " ".join(register.split())
 
     for index, raw in enumerate(entries):
         label = f"entries[{index}]"
@@ -135,6 +184,32 @@ def validate_publications() -> list[str]:
             "docs/publications.json: public entries must be sorted by descending id"
         )
 
+    snapshot_entries = snapshot.get("entries")
+    snapshot_public: dict[str, str] = {}
+    if not isinstance(snapshot_entries, list):
+        errors.append(
+            "docs/publications-author-index-20260731.json: entries must be an array"
+        )
+    else:
+        for index, raw in enumerate(snapshot_entries):
+            label = f"snapshot.entries[{index}]"
+            if not isinstance(raw, dict):
+                errors.append(f"{label}: expected an object")
+                continue
+            paper_id = raw.get("id")
+            title = raw.get("title")
+            if not isinstance(paper_id, str) or not PUBLIC_ID.fullmatch(paper_id):
+                errors.append(f"{label}: invalid public id")
+                continue
+            if paper_id in snapshot_public:
+                errors.append(f"{label}: duplicate public id {paper_id}")
+            if not isinstance(title, str) or not title.strip():
+                errors.append(f"{label}: title must be non-empty")
+                continue
+            snapshot_public[paper_id] = title
+
+    errors.extend(_compare_public_snapshot(published, snapshot_public))
+
     area_law = published.get("2607.0005")
     if not area_law or area_law.get("artifact") != "paper/area-law/paper.pdf":
         errors.append(
@@ -179,10 +254,81 @@ def validate_publications() -> list[str]:
     if meta.get("author_index") != data.get("author_index"):
         errors.append("docs/dashboard/data.json: author index disagrees with crosswalk")
 
+    public_count = len(published)
+    mirrored_count = sum(
+        1 for entry in published.values() if isinstance(entry.get("artifact"), str)
+    )
+    unmirrored_count = public_count - mirrored_count
+    repository_only_count = sum(
+        1 for entry in entries if isinstance(entry, dict) and entry.get("status") == "repository-only"
+    )
+    expected_counts = {
+        "29 distinct public programme papers": public_count == 29,
+        "26 public papers with a canonical PDF": mirrored_count == 26,
+        "3 public papers whose PDF has not yet been mirrored": unmirrored_count == 3,
+        "2 repository manuscripts": repository_only_count == 2,
+    }
+    for phrase, count_ok in expected_counts.items():
+        if not count_ok:
+            errors.append(f"publication count contract failed: {phrase}")
+        if phrase not in register_flat:
+            errors.append(f"docs/PUBLICATIONS.md: missing count statement {phrase!r}")
+
+    return errors
+
+
+def _self_test() -> list[str]:
+    errors: list[str] = []
+    load_errors: list[str] = []
+    data = _load_data(load_errors)
+    snapshot = _load_snapshot(load_errors)
+    if load_errors:
+        return load_errors
+    published = {
+        entry["id"]: dict(entry)
+        for entry in data.get("entries", [])
+        if isinstance(entry, dict)
+        and entry.get("status") in {"published", "published-unmirrored"}
+        and isinstance(entry.get("id"), str)
+    }
+    snapshot_public = {
+        entry["id"]: entry["title"]
+        for entry in snapshot.get("entries", [])
+        if isinstance(entry, dict)
+        and isinstance(entry.get("id"), str)
+        and isinstance(entry.get("title"), str)
+    }
+
+    deleted = dict(published)
+    deleted.pop("2607.0001", None)
+    if not any(
+        "2607.0001" in error
+        for error in _compare_public_snapshot(deleted, snapshot_public)
+    ):
+        errors.append("self-test: deleting public record 2607.0001 was not detected")
+
+    retitled = {paper_id: dict(entry) for paper_id, entry in published.items()}
+    if "2607.0089" in retitled:
+        retitled["2607.0089"]["title"] = "Incorrect official title"
+    if not any(
+        "title disagrees" in error and "2607.0089" in error
+        for error in _compare_public_snapshot(retitled, snapshot_public)
+    ):
+        errors.append("self-test: changing title 2607.0089 was not detected")
     return errors
 
 
 def main() -> int:
+    if "--self-test" in sys.argv[1:]:
+        errors = _self_test()
+        if errors:
+            print(f"publication validator self-test: {len(errors)} problem(s)")
+            for error in errors:
+                print(f"  - {error}")
+            return 1
+        print("publication validator self-test OK - deletion and retitle detected")
+        return 0
+
     errors = validate_publications()
     if errors:
         print(f"publication validation: {len(errors)} problem(s)")

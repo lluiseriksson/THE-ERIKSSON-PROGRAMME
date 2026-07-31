@@ -55,8 +55,15 @@ def repo_fixture(root: Path) -> dict:
             "latest_recorded_build": {
                 "status": "green",
                 "jobs": 1,
+                "checkpoint": "abcdee0",
                 "evidence": "docs/VERIFICATION-LEDGER.md",
             },
+            "latest_recorded_oracle": {
+                "status": "green",
+                "checkpoint": "abcdef0",
+                "evidence": "docs/VERIFICATION-LEDGER.md",
+            },
+            "checkpoint_relation": "source-identical fixture checkpoints",
             "allowed_oracle": ["propext", "Classical.choice", "Quot.sound"],
         },
         "frontier": {
@@ -115,3 +122,10 @@ def test_continuum_cannot_be_promoted_silently(tmp_path: Path) -> None:
     data["continuum"]["status"] = "proved"
     errors = validator.validate_state(data, tmp_path, accepts_checkpoint)
     assert any("continuum.status: expected open" in error for error in errors)
+
+
+def test_recorded_8463_build_cannot_be_misattributed(tmp_path: Path) -> None:
+    data = repo_fixture(tmp_path)
+    data["lean_core"]["latest_recorded_build"]["jobs"] = 8463
+    errors = validator.validate_state(data, tmp_path, accepts_checkpoint)
+    assert any("8463-job build belongs to 7460e035" in error for error in errors)

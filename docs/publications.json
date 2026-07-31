@@ -173,6 +173,12 @@
       "artifact": "paper/area-law/paper.pdf"
     },
     {
+      "id": "2607.0001",
+      "title": "A Machine-Verified Bijective Proof of the Rooted Child-Factorial Catalan Identity over Spanning Trees of the Complete Graph",
+      "status": "published-unmirrored",
+      "artifact": null
+    },
+    {
       "id": null,
       "title": "The Collapse: A Machine-Checked Half-Chain Reflection Form for the Coupled Z_2 Slice",
       "status": "repository-only",

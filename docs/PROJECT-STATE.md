@@ -3,9 +3,10 @@
 `project-state.json` records the small set of stable, machine-checkable facts that were
 previously repeated across several status documents:
 
-- the Lean source checkpoint supporting the latest recorded full build;
+- the Lean source checkpoint supporting the recorded build/oracle pair;
 - the pinned Lean toolchain and Mathlib commit;
-- the recorded build size and its ledger;
+- the build checkpoint, oracle checkpoint, their source-identical relation,
+  the recorded build size, and their ledger;
 - the standard axiom oracle;
 - the live theorem-hypothesis frontier;
 - the unchanged continuum boundary.
@@ -26,6 +27,8 @@ python scripts/validate_project_state.py
 
 The validator compares the state against `lean-toolchain`, `lakefile.lean`,
 `lake-manifest.json`, Git history, and the named evidence files. Updating prose documents
-from this file is a separately reviewed step.  The current canonical entry is
-the merged full-core checkpoint `f0720ba7` (8463 jobs), whose build and oracle
-transcripts are recorded in `docs/VERIFICATION-LEDGER.md`.
+from this file is a separately reviewed step.  The current canonical pair is
+the **8463-job build at `7460e035`** and the subsequent complete oracle at
+`f0720ba7`.  The child changes documentation only, so it inherits the same Lean
+source graph; it does not retroactively relocate the build transcript.  Both
+records are in `docs/VERIFICATION-LEDGER.md`.

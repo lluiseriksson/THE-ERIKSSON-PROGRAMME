@@ -616,7 +616,9 @@ footer {
     All machine-checked progress above is lattice or finite-volume unless explicitly
     marked otherwise. Closing the current frontier would close the M3 lattice mass gap,
     not the Clay problem. The continuum limit and OS/Wightman reconstruction remain
-    open mathematics. Distance to Clay: <b>${escapeHtml(meta.clay_distance)}</b>.
+    open mathematics. External lanes with mixed or incomplete reviews display their
+    exact PASS / FAIL / BLOCKED trichotomy in the node panel. Distance to Clay:
+    <b>${escapeHtml(meta.clay_distance)}</b>.
   `;
   $("footer").innerHTML = `
     Ground truth is the compiler, <code>oracle_check.lean</code>, and the
@@ -750,11 +752,14 @@ footer {
   function showNode(node) {
     $("p-title").textContent = node.id + " - " + node.label;
     const statusEl = $("p-status");
-    statusEl.textContent = node.status === "proved"
-      ? "Proved - oracle-clean"
-      : node.status === "partial"
-        ? "Partial / conditional"
-        : "Open";
+    const audit = node.audit_trichotomy;
+    statusEl.textContent = audit
+      ? `${audit.label}: ${audit.pass} PASS / ${audit.fail} FAIL / ${audit.blocked} BLOCKED`
+      : node.status === "proved"
+        ? "Proved - oracle-clean"
+        : node.status === "partial"
+          ? "Partial / conditional"
+          : "Open";
     statusEl.className = "status " + node.status;
     $("p-cls").textContent = "Class " + node.cls + " - " + data.class_legend[node.cls];
     $("p-note").textContent = node.note;
