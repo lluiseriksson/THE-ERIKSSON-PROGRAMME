@@ -1,0 +1,19 @@
+STATUS: REVIEW-PENDING - DO NOT UPLOAD
+ACTION: REPLACE-VERSION
+ORDER: 1 (before 2602.0036, 2602.0033 R30, and 2602.0035)
+PUBLIC RECORD: https://ai.vixra.org/abs/2602.0052
+CATEGORY: Quantum Physics
+TITLE: Interface Lemmas for the Multiscale Proof of the Lattice Yang-Mills Mass Gap
+AUTHOR: Lluis Eriksson
+FILE: artifacts/2602.0052v3.pdf
+
+ABSTRACT:
+This replacement restores the paper originally submitted as version 1 and retracts its claimed unconditional closure of the weak-coupling lattice Yang-Mills mass-gap chain. The principal-logarithm construction in Lemma A.1 fails at central elements such as -I in SU(2), and the printed argument does not establish the required measurable conditional kernel. The proof of Lemma 6.2 applies the Holley-Stroock comparison in the wrong direction: it does not give a coupling-uniform per-block log-Sobolev bound on the unbounded range beta >= beta_0. A bounded beta window can control that per-block estimate, but it does not prove Lemma 6.3, which separately requires an inter-block contraction hypothesis. Three numerical samples and an upper bound on the oscillation are recorded only as numerical evidence; they do not prove linear growth of the optimum or a vanishing infimum. The remaining horizon-transfer, analyticity, and boundary-uniform interfaces are classified as conditional or not established. Corollary 7.3 and the abstract's unconditional mass-gap conclusion are withdrawn. No numbered lemma is declared false unless the corrective note supplies the stated counterargument; otherwise the status is expressly "not established."
+
+COMMENTS:
+16 pages. v3 restores the authentic v1, adds a 5-page erratum/retraction, and corrects a prior cross-record file association. No external verifier is claimed.
+
+CHANGE NOTE:
+Restores the authentic Interface Lemmas paper; retracts unconditional closure; separates Lemma 6.2 (per-block bound, window-limited) from Lemma 6.3 (additional unproved inter-block input); labels numerical samples as evidence only.
+
+OWNER ACTION: HOLD pending independent mathematical audit and global supersession matrix. Do not upload.

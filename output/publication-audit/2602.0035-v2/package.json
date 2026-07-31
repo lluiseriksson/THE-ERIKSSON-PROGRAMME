@@ -1,0 +1,14 @@
+{
+  "id": "2602.0035",
+  "version": 2,
+  "title": "Morse-Bott Spectral Reduction and the Yang-Mills Mass Gap on the Lattice",
+  "note_source": "src/erratum_2602_0035.tex",
+  "note_pdf": "erratum_2602_0035.pdf",
+  "output_pdf": "2602.0035v2.pdf",
+  "expected_pages": 21,
+  "segments": [
+    {"path": "$NOTE", "pages": [1, 7], "role": "corrective note"},
+    {"path": "inputs/OBJECT-PROVENANCE-f3c2e1cb-4pp.pdf", "pages": [1, 4], "role": "object provenance"},
+    {"path": "inputs/2602.0052v2-misfiled-public.pdf", "pages": [1, 10], "role": "misfiled corrected Morse-Bott revision"}
+  ]
+}

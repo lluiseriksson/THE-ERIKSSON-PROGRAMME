@@ -1,0 +1,9 @@
+VERIFY PASS
+mode=O1
+id=2602.0036v3
+pdf=2602.0036v3.pdf
+sha256=7e86eb7ba4e3ac1d79345632d20140b4b5fc8407fb9f55a171ec2bf79dd0b12f
+pages=19
+checks=36
+pixel_pages=19
+status=SELF-VERIFIED; REVIEW-PENDING

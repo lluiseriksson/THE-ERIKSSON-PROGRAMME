@@ -1,0 +1,7 @@
+BUILD PASS
+optimize=0
+pdf=2602.0052v3.pdf
+sha256=4ce8cb39d5e47b59c27c88a3398660ca61985dff1f7589cf04c8ea472e09733b
+pages=16
+source_date_epoch=1785456000
+overfull=0

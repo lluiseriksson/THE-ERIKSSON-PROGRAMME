@@ -1,0 +1,374 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\pagestyle{plain}
+\setlength{\parskip}{4pt}
+\newcommand{\A}{\mathcal A}
+\newcommand{\G}{\mathcal G}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Object Provenance for the Orbit-Space Gap Chain}\\[4pt]
+{\normalsize A common page, reproduced verbatim in
+ai.viXra:2602.0033, 2602.0035 and 2602.0036}\\[4pt]
+Lluis Eriksson \quad\textbullet\quad July 2026
+\end{center}
+
+\noindent\rule{\textwidth}{0.8pt}
+
+\vspace{2pt}
+\noindent
+\textbf{Why this page exists.} Four papers of this series state, prove, or consume
+spectral claims about objects that are routinely called ``the gap on the orbit
+space''. They are not the same object. A pointwise curvature \emph{claim} stated in
+one of them was consumed, in three places, as if it were established and as if it
+applied to the same object. It is neither: its printed proof is not presently
+established, and the sound synthetic result available elsewhere concerns a measure and
+an operator that \emph{have not been identified} with the ones the consuming steps
+need. The error was invisible because every paper used
+the same word. This page fixes the dictionary. \textbf{A citation discharges a
+hypothesis only when all four columns agree.}
+
+\section*{Notation barrier}
+
+\textbf{This page writes $\nu$ for $\nu_{\rm push}:=\pi_\#\mathrm{Vol}_{\A}$, and never
+for anything else.} The host papers of this chain use the same letter for a different
+object: \texttt{2602.0033} (Theorem 3.1, Step 3) and \texttt{2602.0035} (Theorem 5.3,
+Step 2) both write ``the uniform measure $\nu$'' for the normalised Riemannian volume
+\[
+\nu_{\rm Vol}:=d\mathrm{Vol}_B/\mathrm{Vol}_B(B).
+\]
+\textbf{$\nu_{\rm push}$ and $\nu_{\rm Vol}$ are not identified}, and identifying them
+is exactly what (I2b) below forbids without a statement about the orbit-volume density.
+A reader who carries the host's $\nu$ into this page, or this page's $\nu$ into the
+host's Step 3, will read a printed derivation as though it already used the corrected
+measure. \emph{Where the distinction bites, the subscripts are written out.}
+
+\section*{The dictionary}
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Source} & \textbf{Space, measure} & \textbf{Operator} & \textbf{What it can conclude}\\
+\hline
+\texttt{2602.0036}
+ & $B_{\rm reg}$, $d\mathrm{Vol}_B$
+ & $\mathcal K_B^{\rm reg}$: unweighted
+ & \emph{targets} a pointwise Ricci\\
+ & & Laplace--Beltrami \emph{expression};
+ & bound on the regular stratum;\\
+ & & global realisation unspecified
+ & printed proof not presently\\
+ & & & established\\
+\hline
+\texttt{2602.0046}
+ & $B$, $\nu=\pi_\#\mathrm{Vol}_{\A}$
+ & $K_\nu\ge0$, operator of the
+ & global Poincar\'e/LSI,\\
+ & & form on $L^2(B,\nu)$ & singular locus included\\
+\hline
+\texttt{2602.0033},
+ & spatial orbit space; printed
+ & weighted diffusion of
+ & neither a Poincar\'e/LSI\\
+as printed
+ & \emph{regular-stratum formula}
+ & $\mu_{\rm print}$, \emph{if} a global
+ & statement nor a Hamiltonian\\
+ & $d\mu_{\rm print}=Z_{\rm print}^{-1}e^{-S_{\rm eff}}d\mathrm{Vol}_B$
+ & closed form is constructed
+ & gap is presently\\
+ & on $B_{\rm reg}$, \textbf{against $\mathrm{Vol}_B$, not $\nu$};
+ &
+ & established\\
+ & \emph{no global extension specified} & & \\
+\hline
+route (A):
+ & $(B,\nu)$; a candidate \emph{global}
+ & weighted form
+ & needs $w$ globally, and\\
+keep $\mu_{\rm print}$
+ & \emph{extension} of $\mu_{\rm print}$,
+ & over $K_\nu$
+ & $\operatorname{osc}(S_{\rm eff}+\log w)$\\
+ & exponent $S_{\rm eff}+\log w$ & & \\
+\hline
+route (B):
+ & $(B,\nu)$; a \emph{separately}
+ & weighted form
+ & needs a theorem that\\
+new measure
+ & \emph{defined candidate} measure
+ & over $K_\nu$
+ & this is the right object\\
+ & $d\widetilde\mu=\widetilde Z^{-1}e^{-S_{\rm eff}}d\nu$ & & \\
+\hline
+\texttt{2602.0035},
+ & $L^2(B,d\mathrm{Vol}_B)$, global
+ & Hamiltonian on
+ & parts (i) and (ii) are not\\
+as printed
+ & realisation not fixed;
+ & $L^2(B,d\mathrm{Vol}_B)$;
+ & established by the printed\\
+ & $\mu_{0,\rm print}
+ =\psi_{0,\rm print}^2\,d\mathrm{Vol}_B$
+ & diffusion of $\mu_{0,\rm print}$
+ & proofs\\
+\hline
+candidate
+ & $L^2(\A)^{\G}\cong L^2(B,\nu)$;
+ & $H_\nu=\frac{g^2}{2}K_\nu
+ +V_{\rm pot}$;
+ & qualitative fixed-volume\\
+physical
+ & $\mu_{0,\nu}=\psi_{0,\nu}^2\,\nu$
+ & then diffusion of
+ & positivity; a rate only\\
+restatement
+ &
+ & $\mu_{0,\nu}$
+ & under $(\text{A-osc})_\nu$\\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{The four identifications that must never be silent}
+
+\paragraph{(I1) $\;L^2(B,\nu)\cong L^2(\A,\mathrm{Vol}_{\A})^{\G}$ --- exact, and free.}
+Pullback $f\mapsto f\circ\pi$ gives
+$\int_B|f|^2\,d\nu=\int_{\A}|f\circ\pi|^2\,d\mathrm{Vol}_{\A}$, which is the
+definition of $\nu=\pi_\#\mathrm{Vol}_{\A}$. This is an isometry, not an
+approximation, and it holds across the singular locus. It is the reason the
+metric-measure quotient is the natural physical object: gauge-invariant functions on
+the smooth compact $\A$ \emph{are} $L^2(B,\nu)$.
+
+\paragraph{(I2) $\;K_\nu$ versus $\mathcal K_B^{\rm reg}$ --- not free, and not even
+the same kind of object.}
+Fix the convention here, so that nothing depends on the host paper's. On the regular
+stratum write $d\nu=w\,d\mathrm{Vol}_B$, with $w$ the orbit-volume density, and define
+the \emph{formal differential expressions}
+\[
+\mathcal L_B^{\rm reg}:=\operatorname{div}_B\nabla,
+\qquad
+\mathcal L_\nu^{\rm reg}:=w^{-1}\operatorname{div}_B(w\nabla),
+\qquad
+\mathcal K_\bullet^{\rm reg}:=-\mathcal L_\bullet^{\rm reg},
+\]
+so that
+\[
+\mathcal L_\nu^{\rm reg} f=\mathcal L_B^{\rm reg} f+\langle\nabla\log w,\nabla f\rangle .
+\]
+Let $K_\nu\ge0$ denote the \emph{global} self-adjoint operator associated with the
+closed Dirichlet form on $L^2(B,\nu)$.
+
+\textbf{No global self-adjoint realisation of $\mathcal K_B^{\rm reg}$ is fixed by
+this page.} $B_{\rm reg}$ is the regular stratum with the singular locus removed and
+is in general an incomplete manifold; $\mathcal K_B^{\rm reg}$ on
+$C_c^\infty(B_{\rm reg})$ is symmetric and non-negative, but it has not been shown to
+be essentially self-adjoint, and it may admit several self-adjoint extensions.
+Choosing the Friedrichs extension is already a decision about behaviour across
+$B\setminus B_{\rm reg}$, and must be specified and justified separately --- this is
+one of the gaps that forces the withdrawal of the global corollary in
+\texttt{2602.0036}.
+
+The two \emph{regular-stratum differential expressions} coincide only if $w$ is
+constant on each relevant component. \emph{Constant stabiliser type does not
+by itself imply constant orbit volume} --- on the principal stratum all stabilisers
+are already conjugate, and the induced metric on the orbits, hence their volume, may
+still vary with the configuration; reducible connections make a global identification
+less tenable still. \textbf{A spectral bound for the global $K_\nu$ does not by itself
+transfer to any chosen self-adjoint realisation of $\mathcal K_B^{\rm reg}$, or
+conversely.} Comparison theorems under further hypotheses are not excluded; what does
+not exist is a free identification --- and on the $\mathcal K_B^{\rm reg}$ side, there
+is not yet a single global operator for such a theorem to be about.
+
+\paragraph{(I2b) $\;d\mathrm{Vol}_B$ versus $\nu$ \emph{at the level of the perturbed
+measure} --- also not free.}
+This is a separate step from (I2), and it is the one most easily skipped, because both
+measures are written with the same exponent. On $B_{\rm reg}$,
+$d\nu=w\,d\mathrm{Vol}_B$ with $w$ the orbit-volume density, so the measure a paper
+prints against $\mathrm{Vol}_B$ is, written against $\nu$,
+\[
+d\mu_{\rm print}=Z_{\rm print}^{-1}e^{-S_{\rm eff}}\,d\mathrm{Vol}_B
+=Z_{\rm print}^{-1}e^{-(S_{\rm eff}+\log w)}\,d\nu
+\qquad\text{on }B_{\rm reg},
+\]
+an \emph{exact} rewriting of one and the same measure, with the same normaliser. The
+candidate $\nu$-based measure $d\widetilde\mu=\widetilde Z^{-1}e^{-S_{\rm eff}}d\nu$
+carries the exponent $S_{\rm eff}$ and, in general, a \emph{different} normaliser.
+\textbf{On $B_{\rm reg}$ the printed measure has exponent $S_{\rm eff}+\log w$
+relative to $\nu$, whereas the candidate $\nu$-based measure has exponent
+$S_{\rm eff}$. They coincide only under an additional constancy or identification
+statement for $w$, none of which is established here. Replacing $d\mathrm{Vol}_B$ by
+$d\nu$ under a fixed exponent is therefore not a free rewriting.}
+
+\emph{And the converse is not asserted either.} This page does not claim the two
+measures are \emph{proved} distinct: that would need $w$ non-constant, up to
+normalisation, on the relevant domain. Reducible connections make a gratuitous global
+identification implausible, but implausible is not proved, and the discipline this
+page enforces cuts both ways --- ``no identification has been proved'' must not become
+``an inequality has been proved''.
+
+\emph{Two routes are open, and they are not the same route.}
+\textbf{(A) Keep the printed measure.} Put $\Phi_{\rm print}=S_{\rm eff}+\log w$, so
+that $d\mu_{\rm print}=Z_{\rm print}^{-1}e^{-\Phi_{\rm print}}d\nu$. This needs a
+global construction of the measure from the regular-stratum formula, control of $w$
+approaching the singular locus, and a bound on
+$\operatorname{osc}(S_{\rm eff}+\log w)$ --- for which a bound on
+$\operatorname{osc}(S_{\rm eff})$ alone does not suffice: if $w$ degenerates at strata
+of enlarged stabiliser, $\log w$ is exactly the term that destroys a
+bounded-perturbation argument. \textbf{No such control is supplied anywhere in this
+chain.}
+\textbf{(B) Change to the $\nu$-natural measure} $\widetilde\mu$, which is
+\emph{a separately defined candidate measure} and not the one the paper printed. Here
+\texttt{2602.0046} can supply the base functional inequality for $K_\nu$, but a new
+theorem is required to show that $\widetilde\mu$, and not $\mu_{\rm print}$, is the
+correct Euclidean or transfer-theoretic object. Note that route (A) is not free
+either: ``keep the printed measure'' still means \emph{constructing a global extension
+of a regular-stratum formula}, which is itself one of the open obligations. \textbf{A $\nu$-based base inequality is therefore an input to one of these
+two routes, not a repair of a printed $\mathrm{Vol}_B$-based derivation by change of
+reference measure.} Neither route by itself supplies the four-dimensional-action to
+three-dimensional-space step, the identification with $\mu_0$, or a transfer-operator
+construction.
+
+\paragraph{(I3) $\;\mu_{\rm print}$ has not been identified with $\mu_0=\psi_0^2\nu$
+--- not free, and the load-bearing gap.}
+With $K_\nu\ge0$ as in (I2) --- equivalently, by (I1), the operator of the kinetic
+form $\mathcal E_\nu(f,f)=\int_B|\nabla f|^2\,d\nu$ on
+$L^2(\A,\mathrm{Vol}_{\A})^{\G}$ --- \textbf{let $V_{\rm mult}$ be a specified real
+multiplication potential} and set
+$H_{\rm mult}=\frac{g^2}{2}K_\nu+V_{\rm mult}$, with a normalised, strictly positive
+ground state $\psi_0$, and put $d\mu_0=\psi_0^2\,d\nu$. \emph{The subscripted name is
+deliberate. This page is reproduced verbatim inside papers that have already bound
+$V$ to a gauge-fixed potential and $W$ to the Weyl group, so no bare letter is safe
+here: a page written to prevent symbol collisions must not cause one.} The
+ground-state transformation \emph{then} gives
+\[
+E_1-E_0=\tfrac{g^2}{2}\,\lambda_1(\mu_0),\qquad f_0=-\log\psi_0^2 ,
+\]
+where $E_1$ denotes the first spectral value strictly above the simple ground-state
+energy $E_0$, and, \emph{defined explicitly to avoid the reciprocal ambiguity in the
+term ``Poincar\'e constant''},
+\[
+\lambda_1(\mu_0):=\inf\Bigl\{\mathcal E_{\mu_0}(f,f)\;:\;
+f\in\operatorname{Dom}\mathcal E_{\mu_0},\ \textstyle\int f\,d\mu_0=0,\
+\|f\|_{L^2(\mu_0)}=1\Bigr\}.
+\]
+That is, $\lambda_1(\mu_0)$ is the Poincar\'e \emph{spectral gap} --- the largest
+$\rho\ge0$ with $\operatorname{Var}_{\mu_0}(f)\le\rho^{-1}\mathcal E_{\mu_0}(f,f)$ for
+all admissible $f$ --- and \emph{not} the constant $C_P=\rho^{-1}$ of the variance
+inequality, which some authors also call the Poincar\'e constant.
+
+The Gibbs measure of a Euclidean effective action is \emph{a priori} a distinct
+mathematical object, and its weighted Dirichlet-form gap is \emph{a priori} a distinct
+spectral quantity. In the symbols fixed above,
+\[
+\boxed{\;\text{No globally defined printed or corrected Euclidean measure has been
+identified with }\mu_0=\psi_0^2\,\nu.\;}
+\]
+That covers $\mu_{\rm print}$, route (A)'s global extension of it, and route (B)'s
+$\widetilde\mu$ alike --- stated this way so that (I3) neither singles out one
+candidate nor silently presupposes (I2b). No such
+identification has been proved here; in special models the objects may coincide, but
+passing from one to the other in general requires a transfer-operator or
+Osterwalder--Seiler identification theorem, not a change of notation. \textbf{An
+oscillation bound for $S_{\rm eff}$ does not by itself bound
+$\operatorname{osc}(-\log\psi_0^2)$.}
+
+\section*{Constants travel with their metric normalisation}
+
+$\operatorname{Ric}\ge N_c/2$ for $\langle X,Y\rangle=-\operatorname{tr}(XY)$ and
+$\operatorname{Ric}\ge N_c/4$ for $-2\operatorname{tr}(XY)$ are the \emph{same} bound
+in two normalisations, not a sharpening of one by the other. Any statement quoting
+$N_c/2$ or $N_c/4$ must name its inner product.
+
+\section*{How to use this page}
+
+Before writing that a companion result discharges a hypothesis, fill the four columns
+for the result and for the hypothesis. If any column differs, the citation does not
+discharge; at most it supplies an input to a further identification, which must then
+be stated as its own step. In particular:
+
+\begin{itemize}
+\item \texttt{2602.0046} supplies global geometry on the metric-measure object
+identified by (I1): a bound for $K_\nu$ on $L^2(B,\nu)$. It does not supply (I1) ---
+that is free --- and it does \emph{not} supply a bound for any realisation of the
+unweighted $\mathcal K_B^{\rm reg}$; nor does it attempt pointwise bounds on
+$B_{\rm reg}$, as its own text says. Note that it reaches its conclusion by synthetic
+quotient stability and \emph{explicitly bypasses the O'Neill computation}. That is now
+the only sound geometric input in this chain: the O'Neill trace printed in
+\texttt{2602.0036} omits the mixed horizontal--vertical sectional terms and does not
+establish its own conclusion (see that record's erratum). \textbf{No pointwise Ricci
+bound on $B_{\rm reg}$ may be cited as available.}
+\item \texttt{2602.0033}, as printed, targets a weighted diffusion for
+$d\mu_{\rm print}=Z_{\rm print}^{-1}e^{-S_{\rm eff}}d\mathrm{Vol}_B$ on
+$B_{\rm reg}$ --- against $\mathrm{Vol}_B$, \emph{not} against $\nu$, and with no
+global extension or associated closed Dirichlet form specified. It does not presently
+establish a Euclidean Poincar\'e/LSI statement, and it does not establish a
+Hamiltonian or transfer-operator gap without (I3). \textbf{Citing \texttt{2602.0046}
+does not repair it by writing the same exponent against $\nu$}: by (I2b) that is not a
+free rewriting. Either route (A) is taken and
+$\operatorname{osc}(S_{\rm eff}+\log w)$ is controlled, or route (B) is taken and the
+new measure is shown to be the right object.
+\item \texttt{2602.0035} v2 \textbf{already uses a ground-state measure}, so
+\textbf{(I3) is not the missing bridge in its printed quantitative proof} --- that was
+the correction its v2 made to its own v1. Its printed-to-physical transition
+\textbf{crosses (I2) and (I2b)}: the unweighted realisation against $K_\nu$, and
+$d\mathrm{Vol}_B$ against $\nu$. The candidate physical restatement then requires
+$(\text{A-osc})_\nu$, a hypothesis about \emph{its own} ground state.
+\textbf{Identification (I3) re-enters only if that Hamiltonian construction is used to
+identify a Euclidean or transfer-operator object}, as in the route towards (H1) of
+\texttt{2602.0033}. Among the four identifications on this page, its qualitative
+fixed-volume positivity needs only (I1); it additionally uses the standard
+compact-elliptic and positivity-improving inputs --- self-adjoint realisation, compact
+resolvent, connectedness --- and it does not require any treatment of the quotient
+singularities. \emph{An earlier version of this page said flatly that the paper needs
+(I3) for its quantitative bound. That was wrong, and it is the kind of error this page
+exists to catch: it named the wrong hypothesis for a citation to discharge.}
+\end{itemize}
+
+\vspace{4pt}
+\noindent\rule{\textwidth}{0.8pt}
+
+\noindent\footnotesize
+\textbf{Provenance.} This page was written after an audit found the same curvature
+\emph{claim} consumed in three places under three different pairings of measure and
+operator, and after a proposed repair --- citing the metric-measure result in place of
+the regular-stratum one --- was found to change the object rather than fix the proof.
+A later pass found that the regular-stratum claim is not established by its own
+printed proof either, so the defect is now twofold: an invalid derivation in one
+paper, and a correct theorem in another about a different object.
+A third pass found the drift \emph{on this page}: the row for \texttt{2602.0033} had
+recorded the printed measure against $\nu$ when the paper writes it against
+$\mathrm{Vol}_B$, which is precisely the substitution (I2b) now forbids. It was
+introduced by writing the row from the intended repair rather than from the printed
+text. Hence the rule below, and hence (I2b) as a numbered step rather than a remark.
+The same pass then caught the correction overshooting: (I2b) had asserted the two
+measures \emph{are} different, which needs $w$ non-constant and is not proved here.
+Both directions are now stated at the strength they have.
+A fourth pass found that (I3) wrote its Hamiltonian as $\frac{g^2}{2}K_\nu+V$ --- and
+$V$ is already bound, in \texttt{2602.0035}, to the gauge-fixed
+$S_{\rm YM}-\log\det M$. A page reproduced verbatim inside that paper cannot borrow a
+symbol the host has spent. The first repair reached for a bare $W$, which that same
+paper binds to the Weyl group $S_{N_c}$: \textbf{no bare letter is safe in a page
+meant to be embedded, only a subscripted name}. The same pass found the collision that
+matters most, because it is in the \emph{measure} column: both host papers write
+``the uniform measure $\nu$'' for the normalised $d\mathrm{Vol}_B$, which is what this
+page's own (I2b) forbids identifying with $\pi_\#\mathrm{Vol}_{\A}$. Hence the notation
+barrier above. A fifth pass found the row for
+\texttt{2602.0035} built from its intended repair rather than its printed text --- the
+identical error this page had already corrected once, for \texttt{2602.0033} --- and
+found the claim that that paper needs (I3) to be simply wrong: its v2 already uses a
+ground-state measure.
+It records a failure mode that is not covered by the usual distinction between a false
+statement and an invalid proof: \textbf{a correct theorem about the wrong object for
+the consuming dependency}. Reproduce it verbatim; do not paraphrase it, because
+paraphrase is how the columns drift.
+
+\end{document}

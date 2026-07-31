@@ -1,0 +1,9 @@
+VERIFY PASS
+mode=O1
+id=2602.0035v2
+pdf=2602.0035v2.pdf
+sha256=053107800c2b81f2f6649016f095f748146acf5af073eea0a7776ab7da575db8
+pages=21
+checks=38
+pixel_pages=21
+status=SELF-VERIFIED; REVIEW-PENDING

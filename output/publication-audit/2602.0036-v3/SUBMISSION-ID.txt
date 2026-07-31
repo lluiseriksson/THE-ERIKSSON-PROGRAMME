@@ -1,0 +1,19 @@
+STATUS: REVIEW-PENDING - DO NOT UPLOAD
+ACTION: REPLACE-VERSION
+ORDER: 2 (after 2602.0052; before 2602.0033 R30 and 2602.0035)
+PUBLIC RECORD: https://ai.vixra.org/abs/2602.0036
+CATEGORY: Quantum Physics
+TITLE: Geodesic Convexity and Structural Limits of Curvature Methods for the Yang-Mills Mass Gap on the Lattice
+AUTHOR: Lluis Eriksson
+FILE: artifacts/2602.0036v3.pdf
+
+ABSTRACT:
+This replacement withdraws the global orbit-space Ricci lower bound and the spectral-gap corollaries derived from it. The printed proof of Theorem 3.1 traces O'Neill's horizontal sectional-curvature identity as though the total-space Ricci tensor contained only horizontal directions. The correct trace also subtracts the mixed horizontal-vertical sectional curvatures. For the bi-invariant product metric these terms are nonnegative before subtraction, so the omitted contribution has the unfavorable sign; the manuscript does not prove that the positive O'Neill term dominates it. Accordingly Theorem 3.1 is not established, rather than asserted false, and Corollaries 3.2-3.3 are withdrawn. The correction also separates a finite-dimensional orbit-space statement from later RCD results formulated for a different measure and operator, and records the broken dependency on a version of ai.viXra:2602.0035 that was not present in its public record. The local geodesic-convexity results and the independently stated structural obstruction are retained only within their stated scope.
+
+COMMENTS:
+19 pages. v3 adds a 4-page corrective note and provenance sheet, then preserves public v2. Withdraws the Ricci-based corollaries; no external verifier is claimed.
+
+CHANGE NOTE:
+Corrects the O'Neill trace by restoring the mixed-curvature term; withdraws Theorem 3.1 as established and its dependent global corollaries; clarifies operator and provenance boundaries.
+
+OWNER ACTION: HOLD pending independent mathematical audit and global supersession matrix. Do not upload.
