@@ -19,7 +19,7 @@ PASS: Table 1 label extractable
 PASS: Table 1 final row extractable
 PASS: pages 1-5 and 7-9 pixel-identical at 144 dpi - []
 PASS: page 6 rendering changed
-PASS: clean rebuild succeeds - C:\Users\lluis\AppData\Local\Temp\verify-2601-0115-2qa68ctb\2601.0115v3-P2-7e32a880d7fb.pdf
+PASS: clean rebuild succeeds - C:\Users\lluis\AppData\Local\Temp\verify-2601-0115-i07w_xxe\2601.0115v3-P2-7e32a880d7fb.pdf
 7e32a880d7fb3d91a64c9c3ede8ea605b480e003ea0693749675fc39ce037546
 PASS: clean rebuild is byte-identical - 7e32a880d7fb3d91a64c9c3ede8ea605b480e003ea0693749675fc39ce037546
 PASS: verifier contains no assertion nodes

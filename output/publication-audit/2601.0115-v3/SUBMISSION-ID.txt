@@ -1,5 +1,7 @@
 STATUS: LISTO-LOCAL
 OWNER_ACTION: DO NOT UPLOAD YET
+PUBLICATION ACTION: REPLACE VERSION
+PUBLICATION: ai.viXra.org:2601.0115
 SUBMISSION_MODE: Replace existing version of ai.viXra:2601.0115
 CATEGORY: Quantum Physics
 TITLE: Algebraic Entropy and Conditional Mutual Information in a Tiny Gauge-Invariant Truncated Hilbert Space: A Reproducible Toy-Model Study with Effective Mixing Hamiltonians
@@ -12,6 +14,6 @@ FILE_SHA256: 7e32a880d7fb3d91a64c9c3ede8ea605b480e003ea0693749675fc39ce037546
 FILE_PAGES: 9
 CURRENT_PUBLIC_VERSION: https://ai.vixra.org/pdf/2601.0115v2.pdf
 CURRENT_PUBLIC_SHA256: e845b2d9906714b04d525b82ed1c3c53d38238c3377ecb23417a69391a0e1382
-SUBMISSION_ORDER: After all P0 and P1 owner actions; submit this P2 replacement in the final layout-repair block.
-IMMUTABLE_GITHUB_LINK: TO BE FILLED AFTER THE AUDIT COMMIT; no SHA has been invented.
+SUBMISSION_ORDER: 9 of 9. Submit only after all eight P0/P1 replacements are public and verified.
+IMMUTABLE_GITHUB_LINK: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/2f57c7cb/output/publication-audit/2601.0115-v3
 FINAL_CLICK: OWNER ONLY
