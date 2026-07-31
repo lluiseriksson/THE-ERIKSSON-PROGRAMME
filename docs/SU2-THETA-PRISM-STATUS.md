@@ -50,6 +50,9 @@ so neither the beta-one nor uniform front door is a closed certificate.
   jobs on 2 host CPUs, 59 seconds, exit 0.
 - `YangMills.SU2ThetaPrism.Endpoint` at `242567fa...`: 8185 jobs, 2 requested
   jobs on 2 host CPUs, 60 seconds, exit 0.
+- Expanded `YangMills.SU2ThetaPrism.Oracle` at `156bea65...`: 8186 jobs,
+  2 requested jobs on 2 host CPUs, 65 seconds, exit 0; all 33 printed
+  declarations report exactly `[propext, Classical.choice, Quot.sound]`.
 - The rational certifier succeeds under normal Python and `python -O`.
 - Ten mutations are rejected under both modes, including `1/2 -> 1/3` and
   enlargement to all beta.  The syntactic headline guard passes and rejects
@@ -57,6 +60,9 @@ so neither the beta-one nor uniform front door is a closed certificate.
 
 These are intermediate manufacturer checks, not the terminal fresh-checkout,
 complete-oracle, `YangMillsCore`, CI, or blind-audit evidence.
+
+GitHub reports no required checks configured for the PR branch; this is not a
+remote-CI pass and remains open evidence debt.
 
 ## ABIERTO
 
