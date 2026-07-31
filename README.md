@@ -36,13 +36,11 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 proved / partial / open and linked to Lean sources, docs, or the verification
 ledger.
 
-**Documentation snapshot updated:** 2026-07-04.  **Latest public source
-checkpoint:** 2026-07-14, measured at `a17d7816` (on `main`).  The verification
-ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
-257 and the 2026-07-04 diamagnetic unitary bridge Addendum 466, after the
-earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
-core build remains
-`lake build YangMillsCore` green at **8463 jobs**.
+**Documentation snapshot updated:** 2026-07-31.  The latest recorded merged
+full-core checkpoint is `f0720ba7`: `lake build YangMillsCore` green at
+**8463 jobs**, followed by a complete `oracle_check.lean` run with only the
+three standard Lean axioms.  The separate CONTINUUM-C1 no-go artifact is frozen
+at `0a46e266` in draft PR #34 and is deliberately not part of `main`.
 The canonical machine-readable proof-state contract is
 [`project-state.json`](project-state.json); repository HEAD and paper commits
 may advance without changing that recorded Lean checkpoint.
@@ -65,6 +63,7 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | P4 physical-operator vertical slice | `PARTIAL` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian records, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
 | Concrete YM activity decay `hRpoly` | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Eq. (2.31) `gapCubes`, Appendix-F certified-tail, Catalan/Schur precision-budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, CMP116 Lemma 3 / Eq. (2.29) / Eq. (2.37) route is source-audited and source-locked in places; the real Balaban/Dimock estimates remain open |
 | Peter-Weyl / character infrastructure | `PARTIAL` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
+| Continuum C1 strong-coupling-window test | `PROVED NO-GO` | the current `t=epsilon=1` KP radius imposes a finite beta cap and is eventually incompatible with every `beta -> +infinity` trajectory; this closes one invalid route, not the continuum problem |
 | Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 
 ### Human estimates
@@ -93,6 +92,11 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 * `hRpoly` is still the live mathematical frontier: the concrete Yang-Mills
   cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
   operator.
+* CONTINUUM-C1 has closed negatively: the existing strong-coupling
+  two-plaquette KP window cannot be sampled along a continuum trajectory with
+  diverging bare inverse coupling.  See
+  [`docs/CONTINUUM-C1-CLOSURE.md`](docs/CONTINUUM-C1-CLOSURE.md).  This removes
+  a false route but supplies no positive tightness or continuum theorem.
 * The P4 material now includes deterministic gauge-fixed precision
   composition, exact covariance from strict coercivity, full-periodic physical
   cochains, a fixed-volume flat Hodge/block Poincare closure, flat physical

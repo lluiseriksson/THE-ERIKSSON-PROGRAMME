@@ -17,12 +17,23 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
-checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
-Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
-unitary bridge Addendum 466.  The latest measured source checkpoint is
-`a17d7816` (on `main`) with the latest recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 508; the STANDALONE PAPER v1.2 (Addendum 508) lives at `papers/poincare-wall/` — TeX+PDF same editorial commit `61d56ce6`, submission-ready, formal freeze = `a17d7816`/8412).
+**Live-state snapshot updated:** 2026-07-31.  The latest recorded merged
+full-core checkpoint is `f0720ba7`: `lake build YangMillsCore` completed at
+**8463 jobs**, and the subsequent complete `oracle_check.lean` run returned
+only `[propext, Classical.choice, Quot.sound]`.  Historical intermediate
+checkpoints and their exact scopes remain in
+[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
+
+**CONTINUUM-C1 CLOSED NEGATIVELY** (2026-07-31, frozen branch head
+`0a46e266`, draft PR #34, not merged).  The checked `t=epsilon=1`
+two-plaquette KP radius forces a finite, volume-independent upper bound on
+`beta`; therefore it is eventually false along every trajectory
+`beta -> +infinity`, including `beta(a)=1/(g^2 a^2)`.  The typed Lean
+producer/consumer bridge, non-vacuity witnesses, seven standard-axiom oracle
+queries, and the CI drift canary are recorded in
+[`docs/CONTINUUM-C1-CLOSURE.md`](docs/CONTINUUM-C1-CLOSURE.md).  This is a
+no-go for one strong-coupling route.  It proves no positive tightness estimate,
+continuum state, OS reconstruction, or continuum mass gap.
 
 **PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
 is paper commit `193bb675`: all 24 theorem-map names link to the immutable
@@ -451,6 +462,7 @@ the axiom oracle, and the verification ledger.
 | Appendix-F/H# bridge to UV consumer | `PARTIAL` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, newly oracle-covered Appendix-F hole target geometry/family targets, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
 | P4 physical-operator vertical slice | `PARTIAL` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
 | Concrete `hRpoly` discharge | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Catalan/Schur budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
+| Continuum C1 KP-window route | `CLOSED NEGATIVELY` | the present strong-coupling correlator window has a finite beta cap and cannot follow `beta -> +infinity`; a genuinely cutoff-uniform producer remains open |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
 The full human-readable progress board now lives directly in
@@ -459,8 +471,8 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8412 jobs** in the latest recorded
-  verification checkpoint.
+* `lake build YangMillsCore` is green at **8463 jobs** in the latest recorded
+  merged verification checkpoint `f0720ba7`.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -2902,5 +2914,9 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
    `cmp109.ref26.cammarota-infinite-range-cluster` and
    `cammarota.cmp85.polymer-mayer-source-target` as the source targets.
 5. Keep the RG operator/propagator work source-grounded and oracle-clean.
-6. Do not introduce axioms or placeholder interfaces for the missing analytic
+6. Develop a genuinely cutoff-uniform continuum producer; do not attempt to
+   reuse the strong-coupling KP window ruled out by CONTINUUM-C1.  The first
+   reusable analytic subproblem on the positive two-dimensional Wilson route is
+   `besselIReal_integral_repr_zero/one`.
+7. Do not introduce axioms or placeholder interfaces for the missing analytic
    theorem; carry gaps only as explicit theorem hypotheses.

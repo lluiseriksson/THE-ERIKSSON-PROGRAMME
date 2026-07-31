@@ -2,8 +2,8 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-07-28",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
+    "updated": "2026-07-31",
+    "checkpoint": "latest recorded merged lake build YangMillsCore - 8463 jobs green; full oracle checkpoint f0720ba7",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
@@ -15,10 +15,11 @@
     "horizon": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/HORIZON.md",
     "knowledge_tree": "https://lluiseriksson.github.io/physmath-knowledge-tree/",
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
+    "continuum_c1": "CLOSED NEGATIVELY at frozen branch head 0a46e266, outside main. The current t=epsilon=1 strong-coupling KP window has a finite beta cap and cannot follow beta -> +infinity. This rules out one route and proves no positive continuum theorem.",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem."
   },
   "status_legend": {
-    "proved": "Machine-checked theorem reachable from YangMillsCore; oracle-clean on Lean's three standard axioms.",
+    "proved": "Machine-checked theorem at the linked recorded checkpoint; core reachability or an external frozen evidence ref is stated explicitly in the node.",
     "partial": "Substantial verified infrastructure exists, but the headline statement is conditional or still awaits a named source theorem.",
     "open": "Open work: either known mathematics still missing from the formal library, or genuinely open continuum mathematics."
   },
@@ -62,7 +63,7 @@
       "label": "Continuum limit",
       "display": "OPEN",
       "status": "open",
-      "note": "Open mathematics for 4D non-abelian Yang-Mills."
+      "note": "Open mathematics for 4D non-abelian Yang-Mills. C1 rules out reusing the present strong-coupling KP window but supplies no positive continuum construction."
     },
     {
       "id": "M5",
@@ -757,6 +758,26 @@
       ]
     },
     {
+      "id": "C1N",
+      "label": "C1 - strong-coupling KP window no-go",
+      "status": "proved",
+      "cls": "A",
+      "group": "asm",
+      "col": 10,
+      "row": 1,
+      "note": "Frozen external Lean artifact 0a46e266, not merged into main: the current t=epsilon=1 KP radius imposes a finite beta cap and is eventually false for every beta -> +infinity trajectory. This closes one invalid route, not the continuum obligation.",
+      "links": [
+        {
+          "label": "CONTINUUM-C1-CLOSURE.md",
+          "path": "docs/CONTINUUM-C1-CLOSURE.md"
+        },
+        {
+          "label": "Verification ledger",
+          "ledger": true
+        }
+      ]
+    },
+    {
       "id": "F9",
       "label": "Leak B - honest continuum scaling",
       "status": "open",
@@ -764,11 +785,15 @@
       "group": "asm",
       "col": 11,
       "row": 1,
-      "note": "The lattice spacing must be tied to the RG trajectory; otherwise the mass scale is a coordinate artifact.",
+      "note": "The lattice spacing must be tied to the RG trajectory. C1 proves that the present strong-coupling KP window cannot follow beta -> +infinity, so a genuinely cutoff-uniform producer is still required.",
       "links": [
         {
           "label": "HORIZON.md",
           "path": "HORIZON.md"
+        },
+        {
+          "label": "CONTINUUM-C1-CLOSURE.md",
+          "path": "docs/CONTINUUM-C1-CLOSURE.md"
         }
       ]
     },
@@ -978,6 +1003,14 @@
     },
     {
       "from": "F8",
+      "to": "F9"
+    },
+    {
+      "from": "IR",
+      "to": "C1N"
+    },
+    {
+      "from": "C1N",
       "to": "F9"
     },
     {

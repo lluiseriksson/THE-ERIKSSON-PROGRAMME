@@ -29226,3 +29226,54 @@ page, and the difference only exists in the ledger.
 
 **No re-measurement.**  Nothing in the repository's Lean changed; the anchor and
 every printed counter stand.
+
+## Addendum 569 (2026-07-31, **CONTINUUM-C1 closed negatively: the current
+strong-coupling KP window cannot follow a continuum trajectory**)
+
+**Artifact and status.**  The lane is frozen at branch head
+`0a46e266fc4808332ed20d2ab4611bfc271b208b`, reviewed through draft PR #34,
+and deliberately not merged into `main`.  It produced a technical report and
+Lean no-go theorem, not a paper.
+
+**PROVED in the frozen Lean artifact.**  At `t=epsilon=1`, the actual checked
+two-plaquette correlator hypothesis
+
+```text
+(16 d + 1)^2 exp(3)
+  ((exp(|beta| N_c) - 1) + s + (exp(|beta| N_c) - 1) s) < 1
+```
+
+with `s>0`, `beta>=0`, and `N_c>0` implies
+
+```text
+beta < log(1 + exp(-3)/(16 d + 1)^2) / N_c.
+```
+
+The cap is finite and independent of volume and cutoff.  Hence that KP
+hypothesis is eventually false along every trajectory with
+`beta -> +infinity`, including `beta(a)=1/(g^2 a^2)`.  A typed adapter
+partially applies the real correlator theorem through its radius argument, and
+the non-vacuity route consumes the producer's checked positive-coupling
+window.
+
+**MEASURED/AUDITED.**  Direct Lean elaboration terminated `exit 0`; seven
+headline oracle queries returned exactly
+`[propext, Classical.choice, Quot.sound]`.  The lane-local producer/consumer
+canary is fail-closed, its `--self-test` mutates the extracted exponent from
+`1+1+1` to `1+1+2`, and both the local run and the GitHub `honesty` check on
+the exact head passed.  `check_consistency.py` and the module prose checker
+also passed.
+
+**HONEST BOUNDARY.**  This is a no-go for the current strong-coupling radius,
+not for every cluster expansion and not for continuum Yang--Mills.  No
+cutoff-uniform tightness estimate, continuum state, OS/Wightman
+reconstruction, or continuum mass gap is proved.  Clay distance remains
+`~0% (<0.1%)`.
+
+**HANDOFFS.**  The positive continuum programme needs a genuinely
+cutoff-uniform producer.  On the separate two-dimensional Wilson route, the
+first reusable analytic bridge is
+`besselIReal_integral_repr_zero/one`, identifying the repository's
+Gamma-series with the corresponding Fourier integrals.  These are successor
+contracts, not unfinished C1 work.  The stable documentation summary is
+[`docs/CONTINUUM-C1-CLOSURE.md`](CONTINUUM-C1-CLOSURE.md).

@@ -1,7 +1,8 @@
 # Hypothesis Frontier — THE ERIKSSON PROGRAMME
 
-**Control-plane review: 2026-07-11; theorem content through the recorded
-2026-07-04 Lean checkpoint.**  The canonical stable snapshot is
+**Control-plane review: 2026-07-31; verified-core content through the recorded
+merged checkpoint `f0720ba7`, with the separate CONTINUUM-C1 negative artifact
+frozen at `0a46e266` outside `main`.**  The canonical stable snapshot is
 [`project-state.json`](project-state.json).  This document states the honest assumption
 frontier of the **verified core** (`YangMillsCore`).  Read the current
 section first; the legacy section at the bottom is **archived, pre-cleanup
@@ -33,6 +34,24 @@ the import closure of `YangMillsCore`.  Gaps are carried as explicit
 | **Strong-coupling area law** (confinement, lattice) | **THEOREM, unconditional.** Finite-volume and volume-uniform, linearized and exact-activity (`finite_volume_area_law_exp`, `normalized_exp_wilson_loop_area_law`). Carries no hypothesis. |
 | **UV single-scale bound** (§6.3 Bałaban) | **CARRIED**, and now *decomposed*. The geometric-profile conditional `lattice_mass_gap_of_cluster_and_coupling` and the marginal-coupling conditional in `RG/MarginalUVMassGap.lean` are oracle-clean; coupling/summability/kernel/Gaussian scaffolding has been theorem-fed. The remaining carried input is `hRpoly`: the concrete Yang-Mills cluster-expansion-with-holes remainder activity bound for the actual gauge RG operator. It is a theorem hypothesis — never an axiom. |
 | **Continuum limit / OS–Wightman reconstruction / continuum mass gap** (M4–M5, the actual Clay problem) | **OPEN MATHEMATICS.** Not carried, not axiomatized, not claimed. **Distance to the Clay prize: ~0% (<0.1%).** |
+
+### CONTINUUM-C1 negative closure
+
+The current volume-uniform two-plaquette theorem is a strong-coupling result,
+not a cutoff-uniform continuum producer.  The frozen C1 artifact at
+`0a46e266` proves this separation rather than merely warning about it: at
+`t=epsilon=1`, its KP hypothesis forces
+
+```text
+beta < log(1 + exp(-3)/(16 d + 1)^2) / N_c,
+```
+
+so it is eventually incompatible with every trajectory
+`beta -> +infinity`, including `1/(g^2 a^2)`.  This closes the attempted reuse
+of that particular window.  It does not close the continuum/tightness
+obligation, which now explicitly requires a different cutoff-uniform producer.
+The evidence and non-claims are summarized in
+[`docs/CONTINUUM-C1-CLOSURE.md`](docs/CONTINUUM-C1-CLOSURE.md).
 
 The UV frontier now also has a theorem-fed error-budget landing pad:
 `YangMills.RG.YMActivityBudget.activity_decay_of_source_and_defects`.  It
