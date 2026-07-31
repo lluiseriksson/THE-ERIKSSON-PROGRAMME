@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{307cb49b4e0dc0ba7e8a00f27fb3df91bafc450f}
+\newcommand{\anchor}{dc1047c550396e5555b296581fb70a9c58514324}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -437,11 +437,10 @@ compilation, again inside the compiled PDF, and again live over HTTP.
 
 \paragraph{Where the counters were measured, and why not at this commit.}  They
 were measured on commit \texttt{e232819d}, in a window with no other elaborator
-running on the host.  Between that commit and this checkpoint \verb|git diff --name-only| returns exactly \texttt{DASHBOARD.md}, \texttt{docs/VERIFICATION-LEDGER.md}, \texttt{papers/spatial-os/spatial\_os.pdf}, \texttt{papers/spatial-os/spatial\_os.tex}, \texttt{scripts/check\_code\_identical.py} and \texttt{scripts/gen\_changed\_file\_list.py} together with \texttt{YangMills/OS/SpatialOS.lean}.  Only the last of those is elaborated, and it changed
-\emph{only in comments}; the others are this manuscript in its previous version,
-the ledger, the comparison script and a generated dashboard, none of which Lean
-ever sees.  This list is produced from the command's output rather than typed,
-because twice it was typed and twice it was wrong.
+running on the host.  Between that commit and this checkpoint \verb|git diff --name-only| returns exactly \texttt{DASHBOARD.md}, \texttt{docs/VERIFICATION-LEDGER.md}, \texttt{papers/spatial-os/spatial\_os.pdf}, \texttt{papers/spatial-os/spatial\_os.tex}, \texttt{scripts/check\_code\_identical.py} and \texttt{scripts/gen\_changed\_file\_list.py} together with \texttt{YangMills/OS/SpatialOS.lean}.  Of those, only \texttt{YangMills/OS/SpatialOS.lean} is elaborated, and it changed \emph{only in comments}; every
+other file listed is a non-Lean artefact that the elaborator never sees.  Both
+the list and this sentence are produced from the command's output rather than
+typed, because twice the list was typed and twice it was wrong.
 
 That is a checkable claim rather than a promise:
 \repofile{scripts/check\_code\_identical.py}{scripts/check\_code\_identical.py}
