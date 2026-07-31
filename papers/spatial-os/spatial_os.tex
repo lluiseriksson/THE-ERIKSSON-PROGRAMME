@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{e4f9cde596e8fb25f40ed5537208d05111edef28}
+\newcommand{\anchor}{821920975e4ab1e3124227c294217f38db2228d6}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -168,7 +168,10 @@ boundary slice --- the only combinatorial fact either factorisation needs --- is
 \section{Through a site: every $\beta$}\label{sec:site}
 
 With the plane through slice $m$ the two halves share that slice.  Its weight is
-carried by both, so it is counted once.
+carried by both halves, so the product of the two half weights counts it
+\emph{twice}, and it is divided out once so that the assembled path carries it
+exactly once.  That division is the $1/w(\sigma)$ in Theorem~\ref{thm:site}, and
+it is also why the site assembly is a fibred product rather than a product.
 
 \begin{theorem}[site factorisation]\label{thm:site}
 $\displaystyle \langle\Theta F,F\rangle_{\mathrm{site}}
@@ -428,14 +431,20 @@ again live over HTTP.
 
 \paragraph{Where the counters were measured, and why not at this commit.}  They
 were measured on commit \texttt{e232819d}, in a window with no other elaborator
-running on the host.  This checkpoint differs from that one \emph{only in
-comments}: the changes were prose corrections to the module header and three
-docstrings.  That is a checkable claim and not a promise ---
+running on the host.  Between that commit and this checkpoint the \emph{only}
+Lean file touched is \texttt{YangMills/OS/SpatialOS.lean}, and it changed only in
+comments --- prose corrections to its header and three docstrings.  The rest of
+the checkpoint's changes are this manuscript, the ledger and a script, none of
+which is elaborated.
+
+That is a checkable claim rather than a promise:
 \repofile{scripts/check\_code\_identical.py}{scripts/check\_code\_identical.py}
-strips every comment from both blobs and compares what remains, and reports them
-identical.  They were not re-measured because the host's Lean dependency tree was
-destroyed between the two versions (\S\ref{sec:host}), and re-running them
-requires a full restore.
+takes a repository and \emph{two revisions}, reads both from git, strips every
+comment from each and compares what remains.  On
+\texttt{e232819d} against this checkpoint it reports \textsc{identical}, $23178$
+code characters on both sides.  The counters were not re-measured because the
+host's Lean dependency tree was destroyed between the two versions
+(\S\ref{sec:host}), and re-running them requires a full restore.
 
 \begin{center}
 \begin{tabular}{ll}
