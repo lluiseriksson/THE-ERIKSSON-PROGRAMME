@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{c5ec43280d7dbb94d7a3cab54acb45bbbbc2c26b}
+\newcommand{\anchor}{fb304e62ad144ce807eaf531b868e995b3c1345b}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -449,17 +449,25 @@ takes a repository and \emph{two revisions}, reads both from git, strips every
 comment from each and compares what remains.  It keeps all other whitespace,
 because indentation is syntax in Lean and a comparator that collapsed it could
 call two files identical when they parse differently; it drops only lines left
-entirely blank, and trailing space, neither of which carries column
-information; it respects string literals, so a \verb|--| inside a string does
-not open a comment; and it replaces each comment by \emph{spaces of that
-comment's own width}, one per character.  Deleting a comment outright would map
-\verb|foo/- c -/bar| and \verb|foobar| to the same text although the first is two
-identifiers and the second one; collapsing it to a single space would move the
-column of any code following an inline comment, and in Lean a column decides
-whether a token belongs to a nested block.  Exact width means the check can
-report a false \emph{negative} and never a false positive, which is the
-direction a certificate must err in.  On \texttt{e232819d} against the code
-checkpoint it reports \textsc{identical}, $25600$ code characters on both
+blank lines and trailing space, on the lines where neither carries meaning; it
+replaces each comment by \emph{spaces of that comment's own width}, one per
+character; and it treats string literals as data.
+
+Each of those is there because its absence was a defect.  Deleting a comment
+outright maps \verb|foo/- c -/bar| and \verb|foobar| to the same text although
+the first is two identifiers and the second one.  Collapsing a comment to a
+single space moves the column of any code following an inline comment, and in
+Lean a column decides whether a token belongs to a nested block.  Trimming
+trailing space and blank lines \emph{inside} a string identifies \verb|"a  |
+$\ldots$ with \verb|"a| $\ldots$, and those characters are program data --- so
+that trimming is applied only to lines holding no string character.
+
+\textbf{Scope, stated because a certificate that overstates its reach is worse
+than none.}  The scanner models ordinary string literals with backslash escapes.
+It does not model raw strings or interpolation and it is not a Lean lexer.
+Within the lexical fragment \texttt{SpatialOS.lean} actually uses, it errs only
+towards reporting a difference that is not one.  On \texttt{e232819d} against the
+code checkpoint it reports \textsc{identical}, $25600$ code characters on both
 sides.  The counters were not re-measured because the
 host's Lean dependency tree was destroyed between the two versions
 (\S\ref{sec:host}), and re-running them requires a full restore.
