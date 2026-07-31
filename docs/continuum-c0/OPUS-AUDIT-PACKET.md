@@ -168,14 +168,46 @@ A fully discharged specialization uses `d=4`, `SU(2)`, normalized
 `Re tr U`, Haar probability, and the actual `β=10⁻⁶` constructed Gibbs state:
 `exampleD4_twoPoint_connected_tendsto_zero`. Its observable sequence varies
 with `k`; it is not the earlier translation-invariant one-point constant
-sequence. This proves factorization in the accessible canonical
-positive-coupling sector, not a continuum field law.
+sequence.
+
+The stronger uniform theorem makes the state scale-indexed as well:
+
+```lean
+theorem tendsto_d4ScaleIndexedTruncatedCorrelation_zero
+    (β : ℕ → ℝ)
+    (hβ : ∀ k, |β k| ≤ explicitStrongCouplingRadiusD4) :
+    Tendsto
+      (d4ScaleIndexedTruncatedCorrelation β hβ)
+      atTop (𝓝 0)
+```
+
+Here the expression at index `k` definitionally uses the repository's actual
+infinite-volume Gibbs constructor at coupling `β k`, together with the
+plaquettes at offsets `0` and `2k`.  The constants in the clustering estimate
+are proved uniform over the whole explicit KP window.  The paired endpoint
+`tendsto_d4ScaleIndexedTwoPointData` proves, in one `Tendsto`, that reciprocal
+physical separation and this actual scale-indexed correlation tend to
+`(2, 0)`.
+
+This proves uniform factorization in the accessible canonical
+strong-coupling sector, not a continuum field law.  In particular, C0 does
+not infer a physical relation between `β k` and the spacing `1/(k+1)`; the
+asymptotically-free condition `Tendsto β atTop atTop` is incompatible with
+the present KP witnesses by the compiled regime-obstruction theorem.
+Because the proved decay rate is fixed in lattice units, its physical
+correlation length shrinks to zero.  The paired `(2, 0)` endpoint is therefore
+an ultralocal/trivial two-point outcome for this lane, and its uniform limit
+does not distinguish the allowed schedules `β k`.
 
 ## Precise open obligations
 
 `CandidateLawRealization` requires laws on one fixed topological measurable
 space, probability, test functions, integrability, and equality with actual
-lattice expectations.
+lattice expectations.  Its type, and `UniformlyTight`, can be discharged by
+a one-point law for the constant-in-`n` mechanics witness; they become
+substantive only for a genuinely varying family.  Likewise,
+`isGenuineTest` is producer-supplied, so the strict variance inequality in
+`HasFluctuatingLimit` is the nontriviality gate.
 
 ```lean
 def UniformlyTight (L) : Prop :=
@@ -186,6 +218,22 @@ def HasFluctuatingLimit (T) (h) (isGenuineTest) : Prop :=
   ∃ F, isGenuineTest F ∧
     0 < weakLimitValue h (T.mul F F) - (weakLimitValue h F)^2
 ```
+
+The first open obligation is now the physical scale--state coupling law:
+although the state really is constructed at `β k`, no physical rule tying
+that schedule to `scale.spacing k` is supplied.  The generic state and
+point-cylinder constructors also accept their scale arguments separately;
+using them together requires the exact coherence proposition
+`ScaleConventionCompatible S.scale embeddingScale.spacing`.
+
+`GeometricScalingCompatibility` itself only constrains a supplied numerical
+`latticeRadius`; it does not derive that radius from `E.atScale`.  A genuine
+producer must add a support theorem tying the radius to
+`(E.atScale n F).coord`.  Zero radii remain possible at the bare interface.
+
+No lower bound or finite-separation nonvanishing witness is proved; the
+precise missing proposition includes
+`∃ k, d4ScaleIndexedTruncatedCorrelation β hβ k ≠ 0`.
 
 For arbitrary floor-embedded multipoint tests, the nested separated-point
 obligation remains explicit. The canonical axis family discharges the
@@ -202,7 +250,7 @@ oracle command
 lake env lean YangMills/Continuum/Oracle.lean
 ```
 
-exited `0`. All 26 printed headlines depend only on
+exited `0`. All 28 printed headlines depend only on
 `[propext, Classical.choice, Quot.sound]`; no project axiom occurs. Static
 search found no code `sorry`, declaration `axiom`, `ContinuumState`, or
 `ContinuumExists`.

@@ -6,8 +6,8 @@ Branch base (the fetched `origin/main` tip at branch creation):
 `81721890ad3e111d73cbe45074d42ec698ce07b2`.
 
 Later fetched `origin/main`:
-`1e6113a10c407ba2964af2713aef26c62bbd1157`.
-The five-commit delta touches only `YangMills/OS/SpatialOS.lean`, the Paper
+`1f81ec43404ae2a8c72a8c934807d4b03b8680c9`.
+The seven-commit delta touches only `YangMills/OS/SpatialOS.lean`, the Paper
 13 TeX/PDF, `DASHBOARD.md`, and the global `oracle_check.lean`.  This branch
 does not rebase across or edit those excluded active lanes.
 
@@ -86,8 +86,22 @@ change its job graph in this branch.
   to infinity at fixed scale, then lattice spacing tends to zero.
   `TwoPointFactorization.lean` closes this lane for the canonical axis pair
   using exact semitorus distance, including a fully discharged SU(2),
-  β=10⁻⁶ example.  Constructing the corresponding certificates uniformly for
-  arbitrary floor-embedded multipoint tests remains an open producer.
+  β=10⁻⁶ example.  Its uniform endpoint additionally constructs the state at
+  `β k` for every schedule inside the KP window and pairs the resulting
+  correlation limit with physical separation tending to `2`.  No physical
+  law relating `β k` to the spacing is inferred, and the uniform limit does
+  not distinguish schedules inside the window.  Its fixed lattice decay
+  rate makes the paired endpoint ultralocal in physical units.  Constructing the
+  corresponding certificates uniformly for arbitrary floor-embedded
+  multipoint tests remains an open producer.
+- `CorrelationGeometry.lean` is a measured alternative adapter for arbitrary
+  embedded plaquettes.  The canonical endpoint does not use its conditional
+  reachability/margin lemmas; it uses the exact RG distance theorem directly.
 - The measure-level law/tightness and positive-variance obligations remain
-  open by construction.
+  open by construction.  Their bare types can be trivial for the
+  constant-in-scale mechanics witness; they are intended for a genuinely
+  varying producer.  `GeometricScalingCompatibility` also needs an external
+  support theorem linking its supplied radius to the embedded observable.
+- No finite-separation lower bound or nonvanishing correlation witness is
+  proved; only the uniform upper bound and its zero limit are closed.
 - Clay distance remains ~0% (<0.1%).

@@ -4,7 +4,7 @@ Branch base: `81721890ad3e111d73cbe45074d42ec698ce07b2`
 (the fetched `origin/main` tip when the isolated branch was created).
 
 Current `origin/main` after the later audit fetch:
-`1e6113a10c407ba2964af2713aef26c62bbd1157`.  The branch base is five
+`1f81ec43404ae2a8c72a8c934807d4b03b8680c9`.  The branch base is seven
 commits behind.  The complete delta is confined to the explicitly excluded
 Paper 13 lane (`YangMills/OS/SpatialOS.lean` and its paper), `DASHBOARD.md`,
 and the global `oracle_check.lean`.  No C0-owned file overlaps it.  This
@@ -59,10 +59,12 @@ compatibility record explicitly.
 
 `AlgebraCompatibility`, `OrderCompatibility`,
 `GeometricScalingCompatibility`, and `ReflectionCompatibility` make the
-observable-map obligations explicit.  In particular, merely attaching the
-number `aₙ` to a fixed observable is not geometric scaling:
-`GeometricScalingCompatibility` separately requires the scaled discrete
-support radius to converge to its declared physical radius.
+observable-map obligations explicit.  `GeometricScalingCompatibility` is
+only a numerical witness that a supplied `latticeRadius` has the declared
+scaling.  Its current type does not derive that radius from
+`E.atScale n F`; a genuine producer must additionally prove that linkage.
+Thus merely attaching `aₙ` to a fixed observable, or supplying zero radii,
+is not certified here as geometric scaling.
 
 `ScaleConventionCompatible` separately names the obligation that this
 spacing agree with a spacing convention used by an existing repository
@@ -98,6 +100,19 @@ sequence with the RG lane's `scaleSpacing`/`towerSize` convention.
   thermodynamic-volume limit is taken first; the canonical plaquettes then
   have exact touch distance `2k`, and the connected two-point function tends
   to zero as `k → ∞`.
+- Uniformly over every coupling schedule `β : ℕ → ℝ` inside the proved
+  `d=4` KP window, the actual state at index `k` is constructed at coupling
+  `β k`, the second plaquette is at offset `2k`, and the connected
+  correlation tends to zero
+  (`tendsto_d4ScaleIndexedTruncatedCorrelation_zero`).  Pairing this with
+  `aₖ = 1/(k+1)` gives the paired bookkeeping endpoint
+  `(physical separation, connected correlation) → (2, 0)`
+  (`tendsto_d4ScaleIndexedTwoPointData`).
+  The decay rate is fixed in lattice units, so its physical correlation
+  length shrinks to zero.  Thus `(2, 0)` is an ultralocal/trivial two-point
+  outcome in this strong-coupling lane, not construction of a continuum
+  field law.  The uniform limit also carries no information that
+  distinguishes one allowed schedule `β k` from another.
 - A fully discharged `d=4`, `SU(2)`, `β=10⁻⁶` example uses normalized
   `Re tr U`, an origin plaquette, and a second plaquette at the genuinely
   varying offset `2k`.  Its actual constructed infinite-volume Gibbs
@@ -112,36 +127,56 @@ sequence with the RG lane's `scaleSpacing`/`towerSize` convention.
 
 The positive-coupling example uses identity and point-cylinder observable
 embeddings.  It verifies the transport mechanics on a nonempty, non-free
-discrete model.  The separate two-point example is genuinely
-separation-varying at the same positive coupling.  Neither is claimed to
-satisfy `GeometricScalingCompatibility`, and it is not a physical continuum
-limit.
+discrete model.  The fixed-coupling two-point specialization varies the
+separation only; the new uniform theorem also permits the constructed Gibbs
+state to vary with `β k`.  Neither result supplies a physical law relating
+`β k` to `aₖ`, and neither is claimed to satisfy
+`GeometricScalingCompatibility` or to be a physical continuum limit.
 
 ## Open obligations, with exact types
 
-1. **Geometric observable compatibility**
-   (`GeometricScalingCompatibility`): the number of lattice sites read by a
-   fixed physical test must grow at the correct rate as `aₙ → 0`.
-2. **Eventual anchor separation** (`EventuallySeparatesAnchors`): distinct
+1. **Physical scale--state coupling law**: the scale-indexed theorem accepts
+   the concrete schedule `GibbsStateSequence.coupling : ℕ → ℝ` and constructs
+   the state at its value `β k`, but C0 does not derive a physical relation
+   between `β k` and `scale.spacing k`.  In the asymptotically-free
+   convention the precise requested condition is
+   `Tendsto β atTop atTop`; together with the existing KP witnesses it is
+   ruled out by
+   `no_asymptotically_free_scaling_in_KP_regime`.  A producer outside this
+   window, with an explicit spacing convention, remains open.
+   Moreover, the generic state sequence and point-cylinder constructor each
+   accept a scale separately; their use together must explicitly supply
+   `ScaleConventionCompatible S.scale embeddingScale.spacing` to exclude a
+   silent mismatch.
+2. **Geometric observable compatibility**
+   (`GeometricScalingCompatibility` plus a producer-specific support
+   theorem): the supplied `latticeRadius` must be derived from
+   `(E.atScale n F).coord`, not chosen independently, and must grow at the
+   correct rate as `aₙ → 0`.  The current compatibility record alone permits
+   zero radii and is not an anti-vacuity certificate.
+3. **Eventual anchor separation** (`EventuallySeparatesAnchors`): distinct
    physical points must have distinct floor anchors at all sufficiently fine
    scales.  The canonical point-cylinder map is constructed here, but this
    multi-point floor estimate remains a named obligation.
-3. **Scale-convention compatibility** (`ScaleConventionCompatible`): a
+4. **Scale-convention compatibility** (`ScaleConventionCompatible`): a
    producer must relate the continuum-facing spacings to the repository's RG
    or another explicit discrete-spacing convention.
-4. **Full-sequence convergence** (`HasWeakLimit`): beyond the mechanics
+5. **Full-sequence convergence** (`HasWeakLimit`): beyond the mechanics
    example, convergence of every actual embedded expectation is an open
    obligation; no arbitrary comparison functional can discharge it.
-5. **Candidate laws** (`CandidateLawRealization`): one fixed topological
+6. **Candidate laws** (`CandidateLawRealization`): one fixed topological
    measurable configuration/distribution space, probability laws on it, test
    functions, integrability, and equality with the lattice expectations.
-6. **Tightness** (`UniformlyTight`): for every nonzero
+   For the constant-in-`n` mechanics witness, a one-point law can discharge
+   this type; it becomes substantive only for a genuinely varying family.
+7. **Tightness** (`UniformlyTight`): for every nonzero
    `ε : ℝ≥0∞`, one compact set captures all the candidate laws up to `ε`.
    Convergence of first expectations is not called tightness.
-7. **Nontriviality** (`HasFluctuatingLimit`): some declared genuine test has
+8. **Nontriviality** (`HasFluctuatingLimit`): some declared genuine test has
    strictly positive limiting variance.  Constants cannot discharge this
-   proposition.
-8. **Reflection adapter** (`DiscreteReflectionPositive` plus
+   proposition.  The predicate `isGenuineTest` is producer-supplied; the
+   strict variance inequality is the actual formal gate.
+9. **Reflection adapter** (`DiscreteReflectionPositive` plus
    `ReflectionCompatibility`): the current complex finite `Z₂` half-chain RP
    theorems and the real infinite-volume `SU(2)` state do not share an
    observable/state interface.  The C0 adapter explicitly requires an
@@ -151,15 +186,20 @@ limit.
    with all tests in the positive half; therefore they are not advertised as
    a physical-reflection certificate.  A future producer must additionally
    prove coordinate reversal and half-space support.
-9. **Regime extension**: the proved `1/8450` wall shows that the current KP
+10. **Regime extension**: the proved `1/8450` wall shows that the current KP
    constructor cannot supply a schedule with `βₙ → +∞`; a different
    thermodynamic state producer is required for that lane.
-10. **General separated-point correlation geometry**: C0 fully discharges
+11. **General separated-point correlation geometry**: C0 fully discharges
     the canonical axis-pair family using the repository's exact semitorus
     distance theorem.  Arbitrary floor-embedded multipoint tests still need
     concrete realization and no-wrap certificates at each fixed scale.
     The completed canonical theorem does not supply that general producer.
-11. **Reconstruction**: no measure-limit uniqueness theorem,
+12. **Finite-separation nonvanishing**: no theorem proves a lower bound or
+    even
+    `∃ k, d4ScaleIndexedTruncatedCorrelation β hβ k ≠ 0`.
+    This is distinct from the upper-bound endpoint and complements
+    `HasFluctuatingLimit`.
+13. **Reconstruction**: no measure-limit uniqueness theorem,
    OS reconstruction, Wightman theory, or continuum mass gap is supplied.
 
 ## Anti-claims
@@ -169,6 +209,8 @@ limit.
 - No continuum mass gap and no Clay progress.
 - No inference that a constant-coupling identity-embedding example has the
   correct physical scaling.
+- No inference that the uniform `(2, 0)` endpoint identifies a nontrivial
+  continuum two-point function or determines the running-coupling schedule.
 - No use of an assumption equivalent to the existence of the desired
   continuum theory.
 

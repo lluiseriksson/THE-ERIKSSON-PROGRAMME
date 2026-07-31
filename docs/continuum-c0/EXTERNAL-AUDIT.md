@@ -106,6 +106,79 @@ oracle includes these headlines.
 ## Fable attempt
 
 The required `masterythief` profile check passed, including
-`loggedIn=true` and `email=masterythief@gmail.com`. The single permitted
-Fable 5 High request returned HTTP 429 with `is_error=true` and no verified
-Fable-5 response. It contributed no claim or proof and was not retried.
+`loggedIn=true` and `email=masterythief@gmail.com`. The initial Fable 5 High
+request returned HTTP 429 with `is_error=true` and no verified Fable-5
+response.  After the independent audit exposed the precise uniform-in-`β k`
+proof bottleneck, the one permitted retry was made against that bounded
+source region.  It also returned HTTP 429, with empty `modelUsage` and
+`verified_fable_5=false`.  Neither attempt contributed a claim or proof, and
+there will be no further retry.
+
+## Independent post-delivery audit and repair target
+
+An independent audit of published commit
+`72cae3d25b3ec7e00dfdc4836c4f026c5a215981` rechecked the exact RG distance
+theorem, the closed positive-coupling example, the KP obstruction, and the
+absence of project axioms.  It confirmed those claims, but identified a real
+semantic defect in the endpoint: the observable separation varied with `k`
+while the Gibbs state remained fixed at `β=10⁻⁶`; the reciprocal-spacing
+limit was only a separate arithmetic theorem.
+
+The repair is source-level rather than rhetorical:
+`tendsto_d4ScaleIndexedTruncatedCorrelation_zero` now constructs the actual
+state at `β k` for an arbitrary schedule uniformly confined to the explicit
+KP window, and `tendsto_d4ScaleIndexedTwoPointData` pairs that correlation
+with the physical-separation limit in one endpoint.  The charter now puts the
+still-missing physical law relating `β k` to `scale.spacing k` first among
+the open obligations.  `CorrelationGeometry.lean` is explicitly labelled as
+an alternative conditional adapter, not part of the canonical endpoint.
+
+## Exact Opus audit after the scale-indexed repair
+
+A preliminary source audit correctly detected that the packet had been
+updated to claim 28 oracle headlines while the recorded transcript still
+contained 26.  That run was not accepted as contractual evidence because its
+`modelUsage` included an auxiliary model in addition to `claude-opus-5`.
+The oracle was rerun locally, the two new headlines were recorded, and the
+packet was corrected before the accepted audit.
+
+The final audit used
+`CLAUDE_CONFIG_DIR=$HOME\.claude-profiles\masterythief`,
+`ANTHROPIC_SMALL_FAST_MODEL=claude-opus-5`, removed API/auth environment
+variables, and invoked the exact requested model and maximum effort without
+session persistence.  Accepted telemetry:
+
+```json
+{
+  "is_error": false,
+  "num_turns": 58,
+  "modelUsage": {
+    "claude-opus-5": {
+      "inputTokens": 13123,
+      "outputTokens": 45402,
+      "cacheReadInputTokens": 4085486,
+      "cacheCreationInputTokens": 159034
+    }
+  }
+}
+```
+
+`modelUsage` contains exactly one key, `claude-opus-5`.  Verdict:
+**PASS**, with no blocking finding.
+
+The auditor independently recomputed the uniform axis constants, verified
+that `β k` reaches the actual Gibbs measure, checked the nested
+volume-before-scale geometry and the `1/8450` wall, and compared the complete
+28-headline oracle output with the checked-in transcript.  Its nonblocking
+findings are now explicit frontiers:
+
+- the canonical two-point theorem is not an instance of the generic weak
+  limit factorization lane;
+- `GeometricScalingCompatibility` does not derive its numerical radius from
+  the embedded support;
+- the RP transport still admits identity reflection;
+- candidate laws and tightness are trivial for the constant mechanics
+  witness;
+- the paired endpoint instantiates no physical scale convention and carries
+  no schedule-specific information; and
+- no finite-separation nonvanishing or lower bound is proved.
