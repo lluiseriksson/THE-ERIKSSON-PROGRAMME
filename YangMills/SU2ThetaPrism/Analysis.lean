@@ -450,6 +450,30 @@ private def productCharacter (p : SU2 × SU2) : ℂ :=
 private def relativeCharacter (p : SU2 × SU2) : ℂ :=
   chi (p.1 * p.2⁻¹)
 
+private def chiNormSq (W : SU2) : ℂ := chi W * star (chi W)
+
+private theorem chiNormSq_continuous : Continuous chiNormSq :=
+  chi_continuous.mul chi_continuous.star
+
+private theorem chiNormSq_integrable : Integrable chiNormSq haarSU2 :=
+  chiNormSq_continuous.integrable_of_hasCompactSupport
+    (HasCompactSupport.of_compactSpace _)
+
+private theorem chiNormSq_integral_one :
+    (∫ W, chiNormSq W ∂haarSU2) = 1 := by
+  calc
+    (∫ W, chiNormSq W ∂haarSU2) = ∫ W, chi (W * 1) * chi W ∂haarSU2 := by
+      apply integral_congr_ae
+      exact ae_of_all _ fun W => by simp [chiNormSq, chi_star_eq]
+    _ = (1 / 2 : ℂ) * chi 1 := trace_convolution 1
+    _ = 1 := by norm_num [chi_one]
+
+private theorem productCharacter_continuous : Continuous productCharacter :=
+  (chi_continuous.comp continuous_fst).mul (chi_continuous.comp continuous_snd)
+
+private theorem relativeCharacter_continuous : Continuous relativeCharacter :=
+  chi_continuous.comp (continuous_fst.mul continuous_snd.inv)
+
 /-- Concrete product-Haar squared norm of the witness. -/
 def witnessNormSq : ℂ :=
   ∫ p : SU2 × SU2, witness p.1 p.2 * star (witness p.1 p.2)
@@ -474,6 +498,92 @@ structure NormMomentSteps : Prop where
     relativeCharacter p * star (productCharacter p) ∂(haarSU2.prod haarSU2)) = 1 / 2
   relative_moment : (∫ p : SU2 × SU2,
     relativeCharacter p * star (relativeCharacter p) ∂(haarSU2.prod haarSU2)) = 1
+
+private theorem product_moment_concrete : (∫ p : SU2 × SU2,
+    productCharacter p * star (productCharacter p) ∂(haarSU2.prod haarSU2)) = 1 := by
+  have hpoint : (fun p : SU2 × SU2 =>
+      productCharacter p * star (productCharacter p)) =
+      fun p => chiNormSq p.1 * chiNormSq p.2 := by
+    funext p
+    simp only [productCharacter, chiNormSq, map_mul]
+    ring
+  rw [hpoint, integral_prod_mul, chiNormSq_integral_one]
+  norm_num
+
+private theorem relative_moment_concrete : (∫ p : SU2 × SU2,
+    relativeCharacter p * star (relativeCharacter p) ∂(haarSU2.prod haarSU2)) = 1 := by
+  let q : SU2 × SU2 → ℂ := fun p =>
+    relativeCharacter p * star (relativeCharacter p)
+  let e := relativeCoordinateEquiv
+  have hmp : MeasurePreserving e (haarSU2.prod haarSU2)
+      (haarSU2.prod haarSU2) := relativeCoordinateEquiv_measurePreserving
+  calc
+    (∫ p, relativeCharacter p * star (relativeCharacter p)
+        ∂(haarSU2.prod haarSU2)) = ∫ p, q (e p) ∂(haarSU2.prod haarSU2) :=
+      (hmp.integral_comp' q).symm
+    _ = ∫ p : SU2 × SU2, chiNormSq p.1 ∂(haarSU2.prod haarSU2) := by
+      apply integral_congr_ae
+      exact ae_of_all _ fun p => by
+        simp [q, e, relativeCoordinateEquiv, relativeCharacter, chiNormSq]
+    _ = 1 := by
+      rw [integral_fun_fst, chiNormSq_integral_one]
+      simp
+
+private theorem cross_forward_moment_concrete : (∫ p : SU2 × SU2,
+    productCharacter p * star (relativeCharacter p) ∂(haarSU2.prod haarSU2)) =
+    1 / 2 := by
+  have hint : Integrable (fun p : SU2 × SU2 =>
+      productCharacter p * star (relativeCharacter p))
+      (haarSU2.prod haarSU2) :=
+    (productCharacter_continuous.mul relativeCharacter_continuous.star).
+      integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
+  rw [integral_prod_symm _ hint]
+  have hfiber (V : SU2) :
+      (∫ U, productCharacter (U, V) * star (relativeCharacter (U, V)) ∂haarSU2) =
+        chi V * ((1 / 2 : ℂ) * chi V) := by
+    rw [show (fun U : SU2 =>
+        productCharacter (U, V) * star (relativeCharacter (U, V))) =
+        fun U => chi V * (chi U * chi (U * V⁻¹)) by
+      funext U
+      simp [productCharacter, relativeCharacter, chi_star_eq]
+      ring]
+    rw [integral_const_mul, haarSchurConcrete.two_character 1 V⁻¹]
+    simp
+  apply Eq.trans (integral_congr_ae (ae_of_all _ hfiber))
+  rw [show (fun V : SU2 => chi V * ((1 / 2 : ℂ) * chi V)) =
+      fun V => (1 / 2 : ℂ) * chiNormSq V by
+    funext V
+    simp [chiNormSq, chi_star_eq]
+    ring]
+  rw [integral_const_mul, chiNormSq_integral_one]
+  norm_num
+
+/-- Concrete four-moment package, derived from the fundamental Schur
+convolution and the explicit relative-coordinate invariance. -/
+def normMomentsConcrete : NormMomentSteps where
+  product_integrable :=
+    (productCharacter_continuous.mul productCharacter_continuous.star).
+      integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
+  cross_forward_integrable :=
+    (productCharacter_continuous.mul relativeCharacter_continuous.star).
+      integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
+  cross_reverse_integrable :=
+    (relativeCharacter_continuous.mul productCharacter_continuous.star).
+      integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
+  relative_integrable :=
+    (relativeCharacter_continuous.mul relativeCharacter_continuous.star).
+      integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
+  product_moment := product_moment_concrete
+  cross_forward_moment := cross_forward_moment_concrete
+  cross_reverse_moment := by
+    rw [show (fun p : SU2 × SU2 =>
+        relativeCharacter p * star (productCharacter p)) =
+        fun p => productCharacter p * star (relativeCharacter p) by
+      funext p
+      simp [chi_star_eq]
+      ring]
+    exact cross_forward_moment_concrete
+  relative_moment := relative_moment_concrete
 
 private theorem witness_norm_integrand_expand (p : SU2 × SU2) :
     witness p.1 p.2 * star (witness p.1 p.2) =
