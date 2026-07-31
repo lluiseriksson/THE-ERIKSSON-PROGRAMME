@@ -8,6 +8,10 @@ any work under YangMills/**, and it is precisely the “claimed bridge”
 that Part I’s Yang–Mills instruction says must be audited link-by-link
 (after the paper ships) before any importance transfers.
 
+Repository-wide audit, integration, guard, worktree, and evidence rules live
+in `docs/OPERATIONAL-GOVERNANCE-CHARTER.md`.  They bind both programmes and
+make no mathematical claims.
+
 ---
 
 # PART I — SURFACE THEOREM CLOSURE (paper track — ACTIVE, owner priority 2026-07-10)
