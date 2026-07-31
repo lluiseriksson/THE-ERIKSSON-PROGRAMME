@@ -1,5 +1,6 @@
 import YangMills.SU2ThetaPrism.Witness
-import YangMills.P8_PhysicalGap.SUN_Compact
+import YangMills.ClayCore.SchurFundamentalOrthogonality
+import Mathlib.MeasureTheory.Group.Prod
 
 /-!
 # Haar conditional identities, norm moments, and explicit Fubini frontier
@@ -15,49 +16,84 @@ open Complex MeasureTheory TopologicalSpace
 
 namespace YangMills.SU2ThetaPrism
 
-instance thetaMeasurableSpaceMatrix :
-    MeasurableSpace (Matrix (Fin 2) (Fin 2) ℂ) := by
-  change MeasurableSpace (Fin 2 → Fin 2 → ℂ)
-  infer_instance
-
-instance thetaBorelSpaceMatrix :
-    BorelSpace (Matrix (Fin 2) (Fin 2) ℂ) := by
-  change BorelSpace (Fin 2 → Fin 2 → ℂ)
-  infer_instance
-
-instance thetaMeasurableSpaceSU2 : MeasurableSpace SU2 := inferInstance
-instance thetaBorelSpaceSU2 : BorelSpace SU2 := inferInstance
-instance thetaCompactSpaceSU2 : CompactSpace SU2 :=
-  YangMills.instCompactSpaceSUN_concrete 2
-
-noncomputable instance thetaIsTopologicalGroupSU2 : IsTopologicalGroup SU2 where
-  continuous_mul :=
-    Continuous.subtype_mk
-      ((continuous_subtype_val.comp continuous_fst).mul
-        (continuous_subtype_val.comp continuous_snd))
-      (fun p => mul_mem p.1.2 p.2.2)
-  continuous_inv :=
-    Continuous.subtype_mk (continuous_star.comp continuous_subtype_val)
-      (fun M => (M⁻¹).2)
-
-/-- The whole compact group as a positive compact set. -/
-def su2PositiveCompacts : PositiveCompacts SU2 where
-  carrier := Set.univ
-  isCompact' := isCompact_univ
-  interior_nonempty' := by simp [interior_univ]
-
-/-- Concrete normalized Haar measure on SU(2), defined without a lattice
-state-space import. -/
-def haarSU2 : Measure SU2 :=
-  Measure.haarMeasure su2PositiveCompacts
-
-instance haarSU2_isProbability : IsProbabilityMeasure haarSU2 := by
-  constructor
-  have h := @Measure.haarMeasure_self SU2 _ _ _ _ _ su2PositiveCompacts
-  simpa [haarSU2, su2PositiveCompacts] using h
+/-- Concrete normalized Haar measure on SU(2).  This is definitionally the
+repository's normalized `sunHaarProb 2`, so the existing Schur theorems apply
+without a uniqueness-of-Haar gap. -/
+abbrev haarSU2 : Measure SU2 := YangMills.sunHaarProb 2
 
 theorem haar_measure_nonzero : haarSU2 (Set.univ : Set SU2) ≠ 0 := by
   simp
+
+/-! ## The concrete eight-coordinate product measure -/
+
+/-- Coordinate labels for the six branch variables and two transversals. -/
+inductive CellSlot where
+  | upper : Branch → CellSlot
+  | lower : Branch → CellSlot
+  | transversalS : CellSlot
+  | transversalT : CellSlot
+  deriving DecidableEq, Fintype
+
+/-- Assemble a named cell configuration from its eight SU(2) coordinates. -/
+def cellConfigurationEquiv : (CellSlot → SU2) ≃ CellConfiguration where
+  toFun x :=
+    { A := fun i => x (.upper i)
+      B := fun i => x (.lower i)
+      s := x .transversalS
+      t := x .transversalT }
+  invFun c
+    | .upper i => c.A i
+    | .lower i => c.B i
+    | .transversalS => c.s
+    | .transversalT => c.t
+  left_inv x := by
+    funext slot
+    cases slot <;> rfl
+  right_inv c := by
+    cases c
+    rfl
+
+/-- The Borel product measurable space transported to the named structure. -/
+noncomputable instance cellConfigurationMeasurableSpace :
+    MeasurableSpace CellConfiguration :=
+  MeasurableSpace.comap cellConfigurationEquiv.symm inferInstance
+
+theorem measurable_cellConfigurationEquiv :
+    Measurable cellConfigurationEquiv := by
+  rw [measurable_iff_comap_le]
+  simp only [cellConfigurationMeasurableSpace]
+  rw [MeasurableSpace.comap_comp]
+  simp [MeasurableSpace.comap_id]
+
+theorem measurable_cellConfigurationEquiv_symm :
+    Measurable cellConfigurationEquiv.symm := by
+  rw [measurable_iff_comap_le]
+  rfl
+
+/-- Normalized product Haar on all eight registered cell coordinates. -/
+def cellHaar : Measure CellConfiguration :=
+  Measure.map cellConfigurationEquiv
+    (Measure.pi fun _ : CellSlot => haarSU2)
+
+instance cellHaar_isProbability : IsProbabilityMeasure cellHaar := by
+  unfold cellHaar
+  exact Measure.isProbabilityMeasure_map
+    measurable_cellConfigurationEquiv.aemeasurable
+
+theorem cellHaar_mass_one : cellHaar (Set.univ : Set CellConfiguration) = 1 := by
+  simp
+
+theorem cellHaar_finite : IsFiniteMeasure cellHaar := inferInstance
+
+/-- Every named coordinate has the original normalized Haar marginal. -/
+theorem cellHaar_coordinate_marginal (slot : CellSlot) :
+    Measure.map (fun c => cellConfigurationEquiv.symm c slot) cellHaar = haarSU2 := by
+  rw [cellHaar, Measure.map_map]
+  · simpa [Function.comp_def] using
+      (Measure.pi_map_eval (μ := fun _ : CellSlot => haarSU2) slot)
+  · exact (measurable_pi_apply slot).comp
+      measurable_cellConfigurationEquiv_symm
+  · exact measurable_cellConfigurationEquiv
 
 /-- The exact missing Schur and translated-coordinate integration steps. -/
 structure HaarSchurSteps : Prop where

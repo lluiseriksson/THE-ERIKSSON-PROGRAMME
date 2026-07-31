@@ -1,5 +1,7 @@
 import YangMills.L0_Lattice.SU2Basic
 import YangMills.ClayCore.ContinuousUnitaryRep
+import YangMills.ClayCore.SchurNormSquared
+import YangMills.ClayCore.SchurPhysicalBridge
 import YangMills.SU2ThetaPrism.Combinatorics
 
 /-!
@@ -97,6 +99,35 @@ brick.  It is not definitionally built into `chi`. -/
 structure TraceRealityCertificate : Prop where
   star_chi : ∀ g : SU2, star (chi g) = chi g
 
+/-- The inverse of a determinant-one two-by-two matrix has the same trace.
+This proof is kept local instead of importing the draft PR #39 lemma. -/
+theorem chi_inv_concrete (g : SU2) : chi g⁻¹ = chi g := by
+  have hg_right := congrArg Subtype.val (mul_inv_cancel g)
+  change g.val * (g⁻¹).val = (1 : Matrix (Fin 2) (Fin 2) ℂ) at hg_right
+  have hg_det : Matrix.det g.val = 1 := g.property.2
+  have hadj_left : Matrix.adjugate g.val * g.val = 1 := by
+    rw [Matrix.adjugate_mul, hg_det, one_smul]
+  have hinv : (g⁻¹).val = Matrix.adjugate g.val := by
+    calc
+      (g⁻¹).val = 1 * (g⁻¹).val := by simp
+      _ = (Matrix.adjugate g.val * g.val) * (g⁻¹).val := by rw [hadj_left]
+      _ = Matrix.adjugate g.val * (g.val * (g⁻¹).val) :=
+        Matrix.mul_assoc _ _ _
+      _ = Matrix.adjugate g.val := by rw [hg_right, Matrix.mul_one]
+  change Matrix.trace (g⁻¹).val = Matrix.trace g.val
+  rw [hinv, Matrix.adjugate_fin_two]
+  simp [Matrix.trace_fin_two, add_comm]
+
+/-- Concrete SU(2) trace reality, derived from determinant one and unitarity. -/
+theorem chi_star_eq (g : SU2) : star (chi g) = chi g := by
+  change star g.val.trace = g.val.trace
+  rw [← YangMills.trace_inv_eq_star_trace_SU g]
+  exact chi_inv_concrete g
+
+/-- A concrete inhabitant of the former trace-reality input. -/
+def traceRealityConcrete : TraceRealityCertificate :=
+  ⟨chi_star_eq⟩
+
 theorem chi_inv (reality : TraceRealityCertificate) (g : SU2) :
     chi g⁻¹ = chi g := by
   have hinv : (g⁻¹ : SU2).val = star g.val := rfl
@@ -137,6 +168,13 @@ theorem cellWeight_reflection_invariant (reality : TraceRealityCertificate)
 inside the definition of the weight. -/
 structure CharacterBoundCertificate : Prop where
   abs_re_chi_le_two : ∀ g : SU2, |(chi g).re| ≤ 2
+
+/-- A concrete inhabitant of the sharp fundamental-character bound. -/
+def characterBoundConcrete : CharacterBoundCertificate := by
+  constructor
+  intro g
+  simpa [chi, YangMills.fundamentalObservable] using
+    (YangMills.fundamentalObservable_bounded 2 g)
 
 theorem branchWeight_le_exp_abs (bound : CharacterBoundCertificate)
     (beta : ℝ) (g : SU2) :
