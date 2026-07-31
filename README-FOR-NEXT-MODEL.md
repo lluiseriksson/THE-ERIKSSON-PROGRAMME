@@ -462,13 +462,15 @@ and derives the complete centered rooted-residual sum with explicit
 `64 * exp(-rate/24) < 1` windows.  Do not quotient coincident coarse supports:
 that would reintroduce a fibre-multiplicity obligation.  The combined
 `domain_nonempty`, `domain_subset`, `domainMetric_nonneg`, `rooted_residual`,
-and `volume_budget` fields are now derived, as are the combined physical
-equation-(1.43) field and the cutoff-supported terminal form of equation
-(1.36).  The latter consumes exactly the still-open analytic field `bound` of
-`CMP109Lemma1Eq136SourceCertificate`; it does not prove Lemma 1.  The next
-milestone is the first complete partial centered-conditioned term-source
-instance, with that certificate as its sole named Lemma-1 analytic input.
-Start from
+and `volume_budget` fields are now derived, as is the combined physical
+equation-(1.43) field.  Do not reuse the retracted all-interior equation-(1.36)
+route: because `cmp116LocalizationCore` makes every bond in `P` interior, its
+small-field cutoff and the complementary large-field cutoff are incompatible
+for nonempty `P`.  The formal no-go theorem is
+`cmp116Eq80Lemma1CombinedInteriorSignedCutoff_eq_zero`.  The next analytic
+milestone is a mixed-sector equation-(1.36) producer that keeps the
+small-field carrier disjoint from `P` without assuming false locality of the
+global correction `D(B)`.  Start from
 `docs/source-db/reports/CMP109-LEMMA1-NATIVE-RESIDUAL-AUDIT.md` and
 `docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md`; do not count the certificate as
 a proof of Lemma 1.

@@ -26200,3 +26200,36 @@ interactions in unbounded spin systems*, CMP 85 (1982).  Its usable theorem,
 thresholds, and dictionary remain `source_pending`, but this downstream
 Eq.-(2.29) obligation is not a field of the present term source and does not
 block the cutoff-supported Eq.-(1.36) producer.
+
+## Addendum 522 (2026-07-31, **retraction of Addendum 521; cutoff obstruction formalized**)
+
+Addendum 521 is retracted as a physical equation-(1.36) checkpoint.  Its Lean
+theorem was logically valid but had an uninhabited cutoff premise for every
+nonempty `P`.  The reason is definitional and source-relevant:
+`cmp116LocalizationCore D P` makes every selected large-field bond interior,
+whereas the attempted common carrier imposed the strict small-field indicator
+on **all** interior bonds and simultaneously imposed the complementary
+large-field indicator on `P`.
+
+The generic theorem
+`cmp116SignedCutoff_eq_zero_of_mem_small_and_large` now proves that any shared
+bond forces the signed cutoff to vanish.  The specialized theorem
+`cmp116Eq80Lemma1CombinedInteriorSignedCutoff_eq_zero` derives the overlap from
+`cmp116BondInterior_localizationCore` and proves that the exact attempted
+combined cutoff is zero whenever `P.Nonempty`.
+
+Accordingly the headline module
+`BalabanCMP102Eq80PhysicalCombinedEq136` and its audit are removed from the
+root.  The conditional projection and field-transport lemmas remain only as
+diagnostic facts and are explicitly documented as non-inhabitation results.
+The direct equation-(80) estimate, the native Lemma-1 certificate interface,
+the combined domain dictionary, equation-(1.43), rooted residual, and volume
+budget remain valid; they do not by themselves provide a mixed-sector
+equation-(1.36) field.
+
+The previous focal builds and the bundle at commit `e6f75579` are therefore
+evidence only that the vacuous implication typechecked, not evidence of the
+seventh substantive field.  A full clean-root replay of that commit was
+stopped once the obstruction was identified.  The seventh-field counter
+returns to open, and no `CMP116Eq226CenteredConditionedPhysicalTermSource`
+instance has been constructed.

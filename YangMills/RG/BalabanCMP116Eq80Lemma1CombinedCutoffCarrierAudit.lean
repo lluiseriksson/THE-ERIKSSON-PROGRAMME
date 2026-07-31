@@ -2,6 +2,8 @@ import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedCutoffCarrier
 
 #print axioms YangMills.RG.cmp116SmallFieldCutoff_ne_zero_of_subset
 #print axioms YangMills.RG.cmp116SignedCutoff_ne_zero_of_smallFieldCarrier_subset
+#print axioms YangMills.RG.cmp116SignedCutoff_eq_zero_of_mem_small_and_large
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedInteriorSignedCutoff_eq_zero
 #print axioms YangMills.RG.cmp102Eq80SourcePi4PhysicalY0_subset_combinedRegionInterior
 #print axioms YangMills.RG.physicalBondProjection_indexedSourceDomain_combinedCenteredRegion
 #print axioms YangMills.RG.cmp116DirectSignedCutoff_ne_zero_of_combinedInteriorCutoff
