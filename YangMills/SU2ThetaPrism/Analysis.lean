@@ -256,14 +256,20 @@ the separately proved Haar-invariant coordinate change above. -/
 def fubiniCoordinatesConcrete : FubiniCoordinateSteps where
   u_exchange phi hphi := by
     rw [pairingU, integral_prod _ hphi]
+    change (∫ U, ∫ V, witness U V * star (phi U) ∂haarSU2 ∂haarSU2) = _
     apply integral_congr_ae
     exact ae_of_all _ fun U => by
-      rw [conditionalU, ← integral_mul_const]
+      change (∫ V, witness U V * star (phi U) ∂haarSU2) =
+        (∫ V, witness U V ∂haarSU2) * star (phi U)
+      exact integral_mul_const _ _
   v_exchange phi hphi := by
     rw [pairingV, integral_prod_symm _ hphi]
+    change (∫ V, ∫ U, witness U V * star (phi V) ∂haarSU2 ∂haarSU2) = _
     apply integral_congr_ae
     exact ae_of_all _ fun V => by
-      rw [conditionalV, ← integral_mul_const]
+      change (∫ U, witness U V * star (phi V) ∂haarSU2) =
+        (∫ U, witness U V ∂haarSU2) * star (phi V)
+      exact integral_mul_const _ _
   relative_coordinate_exchange phi hphi := by
     let f : SU2 × SU2 → ℂ := fun p =>
       witness p.1 p.2 * star (phi (p.1 * p.2⁻¹))
@@ -286,7 +292,9 @@ def fubiniCoordinatesConcrete : FubiniCoordinateSteps where
         exact ae_of_all _ fun X => by
           simp only [e, relativeCoordinateEquiv_apply, f, Prod.fst, Prod.snd]
           simp only [mul_inv_cancel_right]
-          rw [conditionalRelative, ← integral_mul_const]
+          change (∫ W, witness (X * W) W * star (phi X) ∂haarSU2) =
+            (∫ W, witness (X * W) W ∂haarSU2) * star (phi X)
+          exact integral_mul_const _ _
 
 def CompleteUOrthogonality : Prop :=
   ∀ phi, UPairingIntegrable phi → pairingU phi = 0
