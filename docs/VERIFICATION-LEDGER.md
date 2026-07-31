@@ -29249,8 +29249,12 @@ CONSTRUCTION rather than a further inequality.  Paper 13 builds it.
   * `osPairingSite_eq` --- through a SITE the form is a sum of squared moduli
     over `w`; non-negative at EVERY beta, using no property of the kernel.
   * `osPairingBond_eq` --- through a BOND it is the quadratic form of the
-    decoupled kernel in the boundary vector; non-negative exactly where that
-    kernel is PSD, which paper 12 proved is beta >= 0 for L >= 1.
+    decoupled kernel in the COLLAPSED boundary vector, so positive
+    semidefiniteness of that kernel proves non-negativity for beta >= 0.
+    NECESSITY for the half-chain form is not proved in this module.  (The
+    "exactly beta >= 0" of paper 12 is a statement about the KERNEL at L >= 1,
+    not about this pairing, and writing it as though it transferred is the same
+    defect this addendum records elsewhere.)
   * `complexQuad_eq` --- real to complex once and generically: for a symmetric
     real kernel the cross terms cancel, so the complex form is the sum of the
     real forms on Re and Im.  Stated for an arbitrary finite index type.

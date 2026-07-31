@@ -1,68 +1,85 @@
-"""Generate the changed-file list in the paper FROM the diff, never by hand.
+"""Write a paper's changed-file list FROM `git diff --name-only`, never by hand.
 
-Twice now that sentence has been written from memory with the command's output
-on screen, and twice it has been wrong: once omitting a generated file, once
-naming a file that had never been touched.  A list a human types is a claim; a
-list a script derives from `git diff --name-only` is the command's output.
+Twice that sentence was written from memory with the command's output on screen,
+and twice it was wrong: once omitting a generated file, once naming a file that
+had never been touched.  A list a human types is a claim ABOUT the command; a
+list this script derives IS the command.
 
-    python p13_filelist.py <measured-rev> <anchor-rev>
+    python scripts/gen_changed_file_list.py <repo> <tex> <measured-rev> <anchor-rev> [lean-path]
+
+Default lean-path: YangMills/OS/SpatialOS.lean.  The script asserts the Lean
+file is present in the diff, since the whole paragraph exists to say which
+elaborated file changed.  Exit 0 on success, 2 if git fails or the paragraph
+markers are absent.
 """
 import io
-import re
 import subprocess
 import sys
 
-REPO = r"C:\Users\lluis\AppData\Local\Temp\eriksson-push2"
-TEX = REPO + r"\papers\spatial-os\spatial_os.tex"
+DEFAULT_LEAN = "YangMills/OS/SpatialOS.lean"
 
-MEASURED, ANCHOR = sys.argv[1], sys.argv[2]
-
-r = subprocess.run(["git", "diff", "--name-only", MEASURED, ANCHOR],
-                   cwd=REPO, capture_output=True)
-if r.returncode != 0:
-    sys.exit("git diff failed: " + r.stderr.decode(errors="replace"))
-files = [f for f in r.stdout.decode().split() if f]
-assert files, "empty diff"
-
-LEAN = "YangMills/OS/SpatialOS.lean"
-assert LEAN in files, "the module is not in the diff"
-others = [f for f in files if f != LEAN]
+# The paragraph this script owns: recognised by its opening words and ended by
+# the sentence that follows it.  Both markers live in the .tex.
+START = "Between that commit and this checkpoint"
+END = "That is a checkable claim"
 
 
-def tt(path):
+def tt(path: str) -> str:
     return r"\texttt{" + path.replace("_", r"\_") + "}"
 
 
-listing = ", ".join(tt(f) for f in others[:-1])
-listing += " and " + tt(others[-1]) if len(others) > 1 else tt(others[0])
+def main() -> int:
+    if len(sys.argv) < 5:
+        print(__doc__)
+        return 2
+    repo, tex, measured, anchor = sys.argv[1:5]
+    lean = sys.argv[5] if len(sys.argv) > 5 else DEFAULT_LEAN
 
-new = (r"""Between that commit and this checkpoint \verb|git diff --name-only| returns
-exactly """ + listing + r""" together with """ + tt(LEAN) + r""".  Only the last of
-those is elaborated, and it changed \emph{only in comments}; the others are this
-manuscript in its previous version, the ledger, the comparison script and a
-generated dashboard, none of which Lean ever sees.  This list is produced from
-the command's output rather than typed, because twice it was typed and twice it
-was wrong.""")
+    r = subprocess.run(["git", "diff", "--name-only", measured, anchor],
+                       cwd=repo, capture_output=True)
+    if r.returncode != 0:
+        print("git diff failed:", r.stderr.decode(errors="replace").strip())
+        return 2
+    files = [f for f in r.stdout.decode().split() if f]
+    if not files:
+        print("empty diff between", measured, "and", anchor)
+        return 2
+    if lean not in files:
+        print("the Lean file", lean, "is not in the diff")
+        return 2
 
-t = io.open(TEX, encoding="utf-8", newline="").read()
-nl = "\r\n" if "\r\n" in t else "\n"
+    others = [f for f in files if f != lean]
+    if len(others) > 1:
+        listing = ", ".join(tt(f) for f in others[:-1]) + " and " + tt(others[-1])
+    elif others:
+        listing = tt(others[0])
+    else:
+        listing = "nothing else"
 
-pat = re.compile(
-    r"Between that commit and this checkpoint the \\emph\{only\}.*?"
-    r"returns exactly those files and \\texttt\{SpatialOS\.lean\}\.",
-    re.S)
-if not pat.search(t.replace(nl, "\n")):
-    # first run: replace the hand-written paragraph
-    old_start = "Between that commit and this checkpoint the \\emph{only}"
-    i = t.find(old_start.replace("\n", nl))
-    assert i >= 0, "anchor paragraph not found"
-    j = t.find("That is a checkable claim".replace("\n", nl), i)
-    assert j > i, "end of paragraph not found"
-    t = t[:i] + new.replace("\n", nl) + nl + nl + t[j:]
-else:
-    t = pat.sub(lambda _: new, t.replace(nl, "\n")).replace("\n", nl)
+    para = (r"Between that commit and this checkpoint "
+            r"\verb|git diff --name-only| returns exactly " + listing +
+            r" together with " + tt(lean) +
+            r""".  Only the last of those is elaborated, and it changed
+\emph{only in comments}; the others are this manuscript in its previous version,
+the ledger, the comparison script and a generated dashboard, none of which Lean
+ever sees.  This list is produced from the command's output rather than typed,
+because twice it was typed and twice it was wrong.""")
 
-io.open(TEX, "w", encoding="utf-8", newline="").write(t)
-print("file list generated from the diff:")
-for f in files:
-    print("   ", f)
+    t = io.open(tex, encoding="utf-8", newline="").read()
+    nl = "\r\n" if "\r\n" in t else "\n"
+    i = t.find(START)
+    j = t.find(END, i + 1 if i >= 0 else 0)
+    if i < 0 or j <= i:
+        print("paragraph markers not found in", tex)
+        return 2
+    io.open(tex, "w", encoding="utf-8", newline="").write(
+        t[:i] + para.replace("\n", nl) + nl + nl + t[j:])
+
+    print("file list generated from the diff:")
+    for f in files:
+        print("   ", f)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
