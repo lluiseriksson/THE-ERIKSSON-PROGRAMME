@@ -25945,3 +25945,49 @@ Claude Fable 5 High, using profile `default` and the verified account
 `luis.ebikeride@gmail.com`, proposed the direct animal argument.  Its result
 was accepted only after independent inspection of the enumeration,
 connectivity, degree, metric, and smallness declarations in the Lean tree.
+
+## Addendum 515 (2026-07-31, **canonical combined `volume_budget` GREEN; downstream scalar window remains explicit**)
+
+The enlarged common carrier from Addendum 511 now has one literal volume
+numerator: the proved combined direct/native root bound plus the complete
+conditioned physical outer per-carrier cost.  The latter has a new
+nonnegativity theorem derived from the existing contour, geometric-series,
+and two Neumann windows; determinant, root, coupling, and source coefficients
+are not assigned artificial signs.
+
+For positive `alpha`,
+`cmp116Eq80Lemma1CombinedPhysicalVolumeRate` is defined canonically as this
+full numerator divided by `alpha`.  The equality
+`cmp116Eq80Lemma1CombinedPhysicalVolumeRate_mul_alpha` and the terminal-form
+theorem `cmp116Eq80Lemma1CombinedPhysical_volume_budget` therefore discharge
+the local ledger exactly.  No arbitrarily enlarged free rate is chosen.  The
+companion equivalence `cmp116Eq80Lemma1CombinedPhysical_volume_target_iff`
+shows that the downstream equation-(2.26) source comparison remains precisely
+the physical scalar window
+
+```text
+combinedVolumeCost ≤ C_alpha5 * alpha5.
+```
+
+Thus this checkpoint closes `volume_budget` as a record-field inequality but
+does not claim the source-scale comparison that must ultimately choose the
+constants.
+
+**Pinned Colab Pro+ high-RAM focal replay.**  The modified physical outer-cost
+module built with the exact terminal line
+`Build completed successfully (8529 jobs).`; the combined module then built
+with `Build completed successfully (8773 jobs).`  The focal wrapper recorded
+exit zero, and every declaration in the combined volume audit reports exactly
+`[propext, Classical.choice, Quot.sound]`.  The replay used the same base,
+Lean toolchain, Mathlib, and ProofWidgets pins recorded in Addendum 514.
+The complete root replay subsequently finished with the literal line
+`Build completed successfully (10319 jobs).`
+
+**Correction and scope boundary.**  In the selected centered-conditioned
+consumer, `outer_bound` is not an independently supplied record field: the
+source boundary constructor derives it internally.  The enlarged-`Z0` cost is
+carried explicitly by the physical outer per-carrier term above and by the
+remaining downstream scalar comparison.  No
+`CMP116Eq226CenteredConditionedPhysicalTermSource` instance is constructed
+here; the analytic Eq. (1.36) proof for the Lemma-1 source certificate and the
+full source-scale inequality remain open.

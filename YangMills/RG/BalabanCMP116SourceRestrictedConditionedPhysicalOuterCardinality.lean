@@ -55,6 +55,62 @@ noncomputable def
       2 * |beta| * (cmp116SourcePhysicalCoordinateRate M Nc : ℝ)) /
         (1 - qBound)) / 2
 
+/-- The complete conditioned outer cost is nonnegative under the same
+physical Neumann windows used to construct its trace term and the strict
+geometric-series window `qBound < 1`.  In particular, no sign assumption is
+required on the determinant, root, coupling, or source coefficients. -/
+theorem
+    cmp116SourceRestrictedConditionedPhysicalOuterPerCarrierCost_nonneg
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (K root : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (Delta : ℕ)
+    {radius rate Ahead rho alpha sourceRate qBound determinantCost : ℝ}
+    (hradius : 0 ≤ radius) (hAhead : 0 ≤ Ahead)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (hneumann :
+      ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
+        cmp116SourcePi4PhysicalComplexContourDefectBound
+          Nc Delta Ahead rho rate radius (1 + radius) < 1)
+    (hneumannTranspose :
+      cmp116SourcePi4PhysicalComplexTransposeRelativeDefectBound
+        K Delta Ahead rho rate radius (1 + radius) < 1)
+    (hqBound : qBound < 1) :
+    0 ≤ cmp116SourceRestrictedConditionedPhysicalOuterPerCarrierCost
+      K root hc hmass hK Z0 Delta radius rate Ahead rho alpha sourceRate
+        qBound determinantCost := by
+  let multiplier :=
+    cmp116SourcePi4PhysicalComplexR1TraceMultiplierBound
+      K root hc hmass hK Z0 Delta Ahead rho rate radius (1 + radius)
+  let tracePerCarrier :=
+    cmp116SourceRestrictedUniformR1TraceCost
+      1 M Nc Delta radius (1 + radius) rate Ahead rho multiplier
+  let beta :=
+    cmp116Eq225SourceCoefficient
+      (cmp116PhysicalEndomorphismRealMatrix root) alpha * sourceRate
+  have hmultiplier : 0 ≤ multiplier := by
+    dsimp [multiplier]
+    exact cmp116SourcePi4PhysicalComplexR1TraceMultiplierBound_nonneg
+      K root hc hmass hK Z0 Delta hAhead hradius hgeom
+        hneumann hneumannTranspose
+  have htrace : 0 ≤ tracePerCarrier := by
+    dsimp [tracePerCarrier]
+    exact cmp116SourceRestrictedUniformR1TraceCost_nonneg
+      1 M Nc Delta hradius hAhead hgeom hmultiplier
+  have hdenominator : 0 ≤ 1 - qBound := (sub_pos.mpr hqBound).le
+  unfold cmp116SourceRestrictedConditionedPhysicalOuterPerCarrierCost
+  dsimp only
+  exact add_nonneg
+    (add_nonneg (abs_nonneg determinantCost)
+      (abs_nonneg (cmp116SourcePhysicalRootCardinalityRate root alpha)))
+    (div_nonneg
+      (div_nonneg
+        (add_nonneg htrace (by positivity)) hdenominator)
+      (by norm_num))
+
 set_option maxHeartbeats 5000000 in
 /-- The mixed conditioned boundary is polymer-local on the literal outer
 carrier `Z`.  No ambient cardinality and no sign hypothesis for the
