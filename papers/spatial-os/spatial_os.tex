@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{cde3c7295abec49f1932ff1b4bacb218465aa577}
+\newcommand{\anchor}{c5ec43280d7dbb94d7a3cab54acb45bbbbc2c26b}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -450,11 +450,17 @@ comment from each and compares what remains.  It keeps all other whitespace,
 because indentation is syntax in Lean and a comparator that collapsed it could
 call two files identical when they parse differently; it drops only lines left
 entirely blank, and trailing space, neither of which carries column
-information; it replaces each comment by a \emph{space} rather than by nothing,
-since \verb|foo/- c -/bar| is two identifiers while \verb|foobar| is one; and it
-respects string literals, so a \verb|--| inside a string does not open a
-comment.  On \texttt{e232819d} against the code checkpoint it reports
-\textsc{identical}, $25600$ code characters on both sides.  The counters were not re-measured because the
+information; it respects string literals, so a \verb|--| inside a string does
+not open a comment; and it replaces each comment by \emph{spaces of that
+comment's own width}, one per character.  Deleting a comment outright would map
+\verb|foo/- c -/bar| and \verb|foobar| to the same text although the first is two
+identifiers and the second one; collapsing it to a single space would move the
+column of any code following an inline comment, and in Lean a column decides
+whether a token belongs to a nested block.  Exact width means the check can
+report a false \emph{negative} and never a false positive, which is the
+direction a certificate must err in.  On \texttt{e232819d} against the code
+checkpoint it reports \textsc{identical}, $25600$ code characters on both
+sides.  The counters were not re-measured because the
 host's Lean dependency tree was destroyed between the two versions
 (\S\ref{sec:host}), and re-running them requires a full restore.
 
