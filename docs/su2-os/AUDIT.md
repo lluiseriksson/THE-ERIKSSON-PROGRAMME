@@ -93,3 +93,19 @@ The Lean endpoint, local build, and axiom oracle are complete, but terminal
 gate 7 remains externally blocked.  No paper is created, and this draft PR
 must not be described as independently audited until a later compliant model
 call returns and its conclusions are checked against the source.
+
+## Parked-state policy
+
+Recorded on 2026-07-31 by the owner:
+
+- gate 7 is unchanged and still requires a certified Fable audit;
+- the owner chooses to wait rather than amend the gate;
+- there is no known quota-reset cadence, so none is inferred or scheduled;
+- exactly one retry is permitted, and only after independent evidence that
+  the Fable quota has renewed;
+- periodic retries, polling, and retry loops are prohibited.
+
+A possible independence-based amendment was discussed but **not adopted**.
+It is not part of the current contract and no amendment document is committed.
+Only the owner may decide to adopt such an amendment if the external service
+becomes indefinitely unavailable.
