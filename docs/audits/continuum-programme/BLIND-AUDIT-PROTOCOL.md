@@ -3,11 +3,18 @@
 Status: **REGISTERED**  
 Registration date: 2026-07-30 (Europe/Stockholm)  
 Repository: `https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME`  
-Public comparison base: `origin/main` at
+Historical registration base: `origin/main` at
 `7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`  
 Audit branch: `codex/continuum-source-audit`
 
-Baseline supersession: the initially registered base
+The registration base is provenance context, not the unit of a later audit.
+Every producer verdict is fixed instead by its own snapshot triple:
+
+```text
+(producer artefact SHA, observed public-main SHA, observation time UTC)
+```
+
+Baseline history: the initially registered base
 `81721890ad3e111d73cbe45074d42ec698ce07b2` was superseded on 2026-07-30
 after a fresh `git fetch origin main` showed that public `main` had advanced
 by one commit to `7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`.
@@ -157,7 +164,8 @@ Each credited external technical claim requires:
 
 Each credited repository claim additionally requires:
 
-1. immutable commit SHA and file path;
+1. the immutable producer SHA, the simultaneously observed public-main SHA,
+   UTC observation time, and file path;
 2. literal theorem/definition text or paper statement;
 3. dependency and hypothesis inventory;
 4. reproducible commands from a clean public checkout;
@@ -205,6 +213,15 @@ not the intended mathematics beyond the literal theorem statement.
 7. Producer, source-desk, and independent-model outputs remain separately
    attributed. External-model suggestions never count as evidence until this
    desk verifies them against primary sources or executable artefacts.
+8. Immediately before publication, the desk reruns `git ls-remote` for the
+   producer head and public `main`. If the producer head moved, the report is
+   either rerun at the new SHA or stamped `OBSOLETE AT PUBLICATION` with both
+   SHAs and the complete changed-file list. Silence about a known delta is not
+   permitted.
+9. A retyped producer hypothesis is not accepted as an anti-drift bridge by
+   textual equality or an `rfl` restatement alone. A compiled adapter must
+   consume the actual producer theorem or definition at the load-bearing
+   argument, so an incompatible producer change breaks elaboration.
 
 ## 6. Publication contract
 
@@ -212,6 +229,10 @@ Source packets, executable templates, run manifests, and verdicts live only
 under `docs/audits/continuum-programme/` or in clearly isolated audit scripts.
 This desk will not merge producer PRs or edit producer files, repository state,
 ledgers, dashboards, the oracle, or `YangMillsCore`.
+
+Each report and run manifest is independently snapshot-addressed. There is no
+floating global “current audit base”; the historical bases below are retained
+only to explain earlier evidence.
 
 ## 7. Baseline correction log
 

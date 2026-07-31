@@ -22,6 +22,9 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 SHA256 = re.compile(r"^[0-9a-fA-F]{64}$")
+UTC_TIMESTAMP = re.compile(
+    r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$"
+)
 VERDICTS = {"PASS", "FAIL", "BLOCKED"}
 CORE_BASELINE_SHA = "7460e035"
 CORE_BASELINE_JOBS = 8463
@@ -316,6 +319,49 @@ def validate_core_gate(data: dict[str, Any], errors: list[str]) -> None:
         require_text(errors, gate, "command_transcript", "core_integration")
 
 
+def validate_snapshot(data: dict[str, Any], errors: list[str]) -> None:
+    """Schema v2 makes the per-report snapshot and freshness seal executable."""
+    main_sha = data.get("observed_main_sha")
+    observed_at = data.get("observed_at_utc")
+    if not isinstance(main_sha, str) or not HEX40.fullmatch(main_sha):
+        errors.append("observed_main_sha: full 40-character lowercase SHA required")
+    if not isinstance(observed_at, str) or not UTC_TIMESTAMP.fullmatch(observed_at):
+        errors.append("observed_at_utc: ISO-8601 UTC timestamp ending in Z required")
+
+    seal = data.get("freshness_check")
+    if not isinstance(seal, dict):
+        errors.append("freshness_check: object required")
+        return
+    status = seal.get("status")
+    if status not in {"stable", "obsolete"}:
+        errors.append("freshness_check.status: stable or obsolete required")
+    checked_at = seal.get("checked_at_utc")
+    if not isinstance(checked_at, str) or not UTC_TIMESTAMP.fullmatch(checked_at):
+        errors.append(
+            "freshness_check.checked_at_utc: ISO-8601 UTC timestamp ending in Z required"
+        )
+    current_producer = seal.get("producer_sha")
+    current_main = seal.get("observed_main_sha")
+    if not isinstance(current_producer, str) or not HEX40.fullmatch(current_producer):
+        errors.append(
+            "freshness_check.producer_sha: full 40-character lowercase SHA required"
+        )
+    if not isinstance(current_main, str) or not HEX40.fullmatch(current_main):
+        errors.append(
+            "freshness_check.observed_main_sha: full 40-character lowercase SHA required"
+        )
+    if status == "stable" and current_producer != data.get("producer_sha"):
+        errors.append(
+            "freshness_check: stable seal producer SHA must equal producer_sha"
+        )
+    if status == "obsolete":
+        changed = seal.get("changed_files")
+        if not isinstance(changed, list) or not changed:
+            errors.append(
+                "freshness_check: obsolete seal requires non-empty changed_files"
+            )
+
+
 def validate_manifest(path: Path, verify_files: bool, verify_ref: bool) -> tuple[list[str], dict[str, int]]:
     errors: list[str] = []
     try:
@@ -325,8 +371,9 @@ def validate_manifest(path: Path, verify_files: bool, verify_ref: bool) -> tuple
     if not isinstance(data, dict):
         return ["manifest root must be an object"], {verdict: 0 for verdict in VERDICTS}
 
-    if data.get("schema_version") != 1:
-        errors.append("schema_version: expected 1")
+    schema_version = data.get("schema_version")
+    if schema_version not in {1, 2}:
+        errors.append("schema_version: expected 1 or 2")
     lane = data.get("lane")
     if lane not in REQUIRED_CHECKS:
         errors.append("lane: SU2, CONT-C0, or CONT-C1 required")
@@ -353,6 +400,8 @@ def validate_manifest(path: Path, verify_files: bool, verify_ref: bool) -> tuple
                 errors.append(
                     f"producer_ref: resolves to {resolved.stdout.strip()}, expected {producer_sha}"
                 )
+    if schema_version == 2:
+        validate_snapshot(data, errors)
 
     counts = validate_checks(data, lane, errors, verify_files)
     has_pass = counts["PASS"] > 0

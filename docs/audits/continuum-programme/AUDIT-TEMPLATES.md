@@ -1,8 +1,11 @@
 # Executable audit templates: SU2, CONT-C0, CONT-C1
 
-Base: `7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`  
+Historical registration base: `7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`
 Core integration baseline: **8463 jobs at `7460e035`**  
 Protocol: `BLIND-AUDIT-PROTOCOL.md`
+
+Every instantiated manifest records its own producer SHA, observed public-main
+SHA, and UTC observation time. The template base is historical context only.
 
 The lane names are `SU2`, `CONT-C0`, and `CONT-C1`. The `CONT-` prefix avoids
 collision with the repository's existing C1-C6 paper-lane charters.
@@ -28,6 +31,10 @@ the audit contract around the mathematical decision:
    operations, and the full gluing/product-measure identity;
 9. a module integrated into `YangMillsCore` fails the house gate unless its
    measured job count is strictly greater than **8463**.
+10. a producer hypothesis retyped by a lane must have a compiled adapter that
+    consumes the actual producer declaration at the load-bearing argument;
+    an `rfl` restatement or prose-only correspondence is not an anti-drift
+    certificate.
 
 Structural `PASS` of a manifest means the record is complete and internally
 eligible for its recorded verdicts. It does not turn its mathematical
@@ -75,6 +82,11 @@ The remaining checks force one convention table:
 - coefficient sign and convergence;
 - arbitrary complex Gram-form positivity, not a real or diagonal slice.
 
+If the SU2 lane introduces a local cut/action/kernel interface, its audit
+oracle must also apply a producer theorem through that exact local interface.
+Merely repeating the kernel's type does not show that the lattice Wilson
+action or `GaugeConfig` gluing consumes it.
+
 A result restricted to real observables on one slice is audited at that scope.
 It fails an advertised full OS-positivity or reconstruction headline even if
 the restricted theorem is true.
@@ -111,6 +123,11 @@ The following are registered `FAIL` witnesses when present:
 Compactness alone is not promoted to the Clay existence requirement; the
 official Clay description expressly excludes that move without properties of
 the limit.
+
+Any locally named convergence, tightness, or nontriviality premise needs a
+typed consumer of the actual regulated-state producer. A theorem that merely
+accepts `HasWeakLimit`, `UniformlyTight`, or the desired positive variance as
+an input is audited as transport/obligation, not as a construction of it.
 
 ## CONT-C1 lane
 
@@ -180,8 +197,8 @@ artefact.
 
 ## Clean-checkout procedure for a producer PR
 
-1. Record `git ls-remote` output, PR URL, head ref, full head SHA, base SHA, and
-   time.
+1. Record `git ls-remote` output, PR URL, head ref, full head SHA, base SHA,
+   UTC time, and the simultaneously observed public-main SHA.
 2. Clone the public repository into a new empty temporary directory; checkout
    the producer SHA detached.
 3. Hash every load-bearing input before executing it.
@@ -191,8 +208,10 @@ artefact.
 6. Record one verdict per check. `FAIL` needs the smallest reproducible witness;
    `BLOCKED` needs the exact absent datum.
 7. Validate the completed manifest with `--verify-ref`.
-8. Publish a separate report naming the producer SHA and manifest hash. Do not
-   merge the producer PR.
+8. Immediately rerun `git ls-remote` for producer and public `main`. If the
+   producer moved, rerun or stamp the report obsolete with the delta file list.
+9. Publish a separate report naming the snapshot triple, producer SHA, and
+   manifest hash. Do not merge the producer PR.
 
 ## Current public-ref witness
 

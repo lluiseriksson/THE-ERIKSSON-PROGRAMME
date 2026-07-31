@@ -93,8 +93,10 @@ expected; they are not evidence of a content mismatch.
 ### E1-A — identity with the checked KP radius: PASS
 
 `TightnessScaleNoGo.lean:6` imports the actual correlator module.
-`kpRadiusAtUnit_iff_checkedWindow` at lines 65-71 proves by `rfl` that the local
-predicate is the checked radius conjunct at `t=epsilon=1`.
+`kpRadiusAtUnit_iff_checkedWindow` at lines 65-71 proves by `rfl` only that the
+local predicate equals the displayed unit-slice formula. Its docstring
+over-attributes that restatement to the checked theorem. The real compile-time
+bridge is
 `kpRadiusAtUnit_nonempty_from_checkedWindow` at lines 76-85 consumes
 `sun_clustering_window_nonempty`, and
 `checkedCorrelatorAfterKPRadiusAtUnit` at lines 90-101 partially applies the
@@ -113,8 +115,8 @@ KPRadiusAtUnit d Nc beta s
 
 The proof drops a strictly positive `s` contribution, so the cap is necessary,
 not sufficient. It contains `d` and `Nc` only. Lines 76-85 provide a
-positive-beta witness from the checked producer; lines 104-124 independently
-prove a numerical radius witness.
+positive-beta witness from the checked producer. Lines 104-124 prove only a
+`beta=0` satisfiability witness and are not evidence of a nontrivial window.
 
 The deterministic script reproduced:
 

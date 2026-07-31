@@ -245,13 +245,18 @@
         {
           "kind": "theorem",
           "locator": "not_kpRadiusAtUnit_beta2D uses a declared two-dimensional coupling formula while quantifying over arbitrary d; its hsmall premise is exactly the cap-crossing threshold."
+        },
+        {
+          "kind": "theorem",
+          "locator": "The docstring of kpRadiusAtUnit_iff_checkedWindow attributes an rfl restatement to sun_clustering_window_nonempty; the real compile-time bridge is checkedCorrelatorAfterKPRadiusAtUnit."
         }
       ],
       "witness": [
         "OBLIGATION-MATRIX.md calls beta(a)=1/(g2*a^2) the continuum trajectory consumed by the existing theorem, but the checked consumer's positive beta multiplies ReTr with a minus sign.",
         "The Lean headline proves the atTop branch, not the physical atBot branch induced by the repository's hard-coded ReTr convention.",
         "No theorem at the audited head proves a cap uniform over all nonnegative t and epsilon.",
-        "The explicit beta2D theorem has arbitrary d in its type but no physical d-dimensional tuning law beyond the lane-local 2D formula."
+        "The explicit beta2D theorem has arbitrary d in its type but no physical d-dimensional tuning law beyond the lane-local 2D formula.",
+        "kpRadiusAtUnit_iff_checkedWindow mentions no producer declaration despite its docstring; the attribution points at the wrong declaration."
       ]
     },
     {
