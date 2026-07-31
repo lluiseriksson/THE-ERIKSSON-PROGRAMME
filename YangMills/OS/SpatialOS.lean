@@ -19,9 +19,9 @@ as a CONSTRUCTION rather than a further inequality.  This module builds it.
 **THE BOND BRIDGE IS CLOSED.**  `bondEquiv` says a whole path of `2m+2` slices
 IS a pair of halves, `gibbsWeight_joinBond` says the weights multiply with the
 one crossing factor, and `osPairingBond_eq_gibbsSum` composes them: the bond form
-is the reflected two-point sum of the Gibbs measure, with `Θ` the reversal
-`futRevOf`.  At odd separation the positivity theorems are therefore about the
-MEASURE, not about a form standing in for it.
+is the reflected two-point sum of the Gibbs measure, the reflection entering
+through the PAIR `(pastOf, futRevOf)`.  At odd separation the positivity
+theorems are therefore about the MEASURE, not about a form standing in for it.
 
 **THE SITE BRIDGE IS NOT.**  Through a site the halves SHARE the middle slice, so
 pairs of halves are not a product but a fibred product over that slice, and the
@@ -43,7 +43,8 @@ observable of the past half-chain is a function `F` of one, valued in `ℂ`.  It
 weight is the ordinary Gibbs weight of that half, `gibbsWeight w β a` --- no new
 notion of weight is introduced anywhere in this file.
 
-The reflection `Θ` is path reversal.  Reflecting through a BOND (`N = 2m+1`,
+Reflection means reading a half backwards from the far end.  Through a BOND
+(`N = 2m+1`,
 the plane between slices `m` and `m+1`) the two halves are disjoint; reflecting
 through a SITE (`N = 2m`) they SHARE the middle slice, and that shared slice is
 where the two cases genuinely differ.
@@ -141,8 +142,9 @@ noncomputable def osPairingBond {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : 
 
 /-- The CANDIDATE reflected form through a SITE (`N = 2m`).  Only pairs of
 halves agreeing on the shared slice come from a path, and that slice's weight is
-carried by both halves, so it is divided out once.  Candidate for the same
-reason as the bond form. -/
+carried by both halves, so it is divided out once.  Still a CANDIDATE, and now
+for a reason the bond form no longer shares: the site full-path bridge is open,
+the bond one is proved. -/
 noncomputable def osPairingSite {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
     (m : ℕ) (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) : ℂ :=
   ∑ σ : Fin L → Fin 2, ∑ a ∈ halvesAt L m σ, ∑ b ∈ halvesAt L m σ,
@@ -587,8 +589,9 @@ noncomputable def pastOf {L m : ℕ}
     (X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2)) :
     Fin (m + 1) → (Fin L → Fin 2) := fun i => X (Fin.castAdd (m + 1) i)
 
-/-- The future half of a whole path, read backwards from the far end.  This is
-the reflection `Θ` acting on the second half. -/
+/-- The future half of a whole path, read backwards from the far end: the
+reflected copy.  It sends a PATH to a HALF, so it is not an involution on paths
+and is not `Θ`; together with `pastOf` it defines the reflected pairing. -/
 noncomputable def futRevOf {L m : ℕ}
     (X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2)) :
     Fin (m + 1) → (Fin L → Fin 2) := fun i => X (Fin.natAdd (m + 1) (Fin.rev i))
@@ -733,7 +736,8 @@ theorem gibbsWeight_joinBond {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : �
 Assembly is a bijection and the weights multiply, so the sum over pairs of
 halves IS the sum over whole paths.  From here the bond form is no longer a
 candidate: it is the reflected two-point sum of the Gibbs measure, for a complex
-observable of the whole past half-chain, with `Θ` the reversal `futRevOf`. -/
+observable of the whole past half-chain, the reflection entering through the
+pair `(pastOf, futRevOf)`. -/
 
 /-- **THE BOND BRIDGE.**  The candidate form is the reflected Gibbs sum. -/
 theorem osPairingBond_eq_gibbsSum {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
