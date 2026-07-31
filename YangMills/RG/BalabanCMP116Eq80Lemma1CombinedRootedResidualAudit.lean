@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedRootedResidual
+
+#print axioms YangMills.RG.sum_filter_fin_append
+#print axioms YangMills.RG.sum_cmp116Eq80Lemma1Combined_rootedResidual_eq
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedRootBound
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedRootBound_nonneg
+#print axioms YangMills.RG.cmp116Eq80Lemma1Combined_rooted_residual_le

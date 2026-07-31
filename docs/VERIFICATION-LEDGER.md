@@ -25857,3 +25857,42 @@ combined index type: the native summand is discharged, while the direct
 rooted estimate and the exact finite-sum split remain open.  Consequently the
 joint root bound and `volume_budget` also remain open.  No terminal
 `CMP116Eq226CenteredConditionedPhysicalTermSource` is constructed here.
+
+## Addendum 513 (2026-07-31, **exact direct/native rooted split and literal joint root bound GREEN**)
+
+The combined terminal rooted sum now splits exactly along the canonical
+`Fin.append` dictionary of Addendum 512.  The theorem
+`sum_cmp116Eq80Lemma1Combined_rootedResidual_eq` identifies it with the direct
+Eq.-(80) rooted sum plus the native CMP109 Lemma-1 rooted sum; it is an equality
+of the actual filtered finite sums, not a domination by a newly introduced
+quantity.  The common bound
+`cmp116Eq80Lemma1CombinedRootBound` is definitionally
+`directRootBound + cmp109Lemma1NativeRootBound`.
+
+The terminal-form theorem
+`cmp116Eq80Lemma1Combined_rooted_residual_le` consumes the proved native animal
+estimate internally.  Its only remaining analytic sector input is the visible
+direct rooted estimate `hdirect`, required uniformly for every coarse root.
+Thus the native part of the joint ledger is discharged without collapsing
+indices or metrics; the combined terminal field is not yet claimed closed
+because `hdirect` remains open.
+
+**Pinned Colab Pro+ high-RAM replay.**  The correcting v2 overlay has SHA-256
+`3AB05993C7E032666D3470BE9F127FB43E74BB39965A5FFE018FF6A84CCD9904`
+and is archived at
+<https://drive.google.com/file/d/1E_r_C5SrTHqp5PEAiGbPkVtvrz3nfMVp/view>.
+It was replayed over base
+`ccfc85d4e42e94965677896af673110f4b0fdb9a`, with toolchain
+`leanprover/lean4:v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`.  The exact terminal line was
+`Build completed successfully (8769 jobs).` and the wrapper recorded
+`ROOTEDV2_STATUS=0`.  All five audited declarations report exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+**Scope boundary.**  This addendum does not prove the direct Eq.-(80) rooted
+estimate, the scalar `volume_budget` for the enlarged common region, or a
+terminal term-source constructor.  In particular, it does not count the
+combined `rooted_residual` field as closed: it reduces that field to one named
+direct analytic input and exposes the literal root bound that `volume_budget`
+must consume.
