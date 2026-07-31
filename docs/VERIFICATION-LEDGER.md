@@ -29277,3 +29277,47 @@ first reusable analytic bridge is
 Gamma-series with the corresponding Fourier integrals.  These are successor
 contracts, not unfinished C1 work.  The stable documentation summary is
 [`docs/CONTINUUM-C1-CLOSURE.md`](CONTINUUM-C1-CLOSURE.md).
+
+## Addendum 570 (2026-07-31, **CONTINUUM-C0 closed: honest scale-limit
+substrate, KP regime wall, and an explicitly ultralocal paired endpoint**)
+
+**Artifact and status.**  The lane is frozen at branch head
+`7fe64bbced729337f6a1060d731e661384863c42`, reviewed through draft PR #36,
+and deliberately not merged into `main`.  It produced a Lean substrate,
+charter, oracle transcript, and external audit, not a paper.
+
+**PROVED in the frozen Lean artifact.**  The package constructs a positive
+spacing sequence tending to zero, scale-indexed embeddings, and a sequence of
+actual discrete Gibbs states; pointwise weak convergence transports the named
+algebraic, order, translation, and conditional-reflection properties.  Every
+`UniformLocalKPRegime d B beta` with `B>0` forces
+
+```text
+|beta| < 1 / (((16 d + 1)^2) B),
+```
+
+so in `d=4`, `B=2`, the current state producer lies inside
+`|beta| < 1/8450` and cannot follow `beta_n -> +infinity`.
+
+The canonical axis-pair consumer proves that the connected correlation tends
+to zero while the associated physical separation tends to `2`, producing
+`(separation, correlation) -> (2,0)`.  The theorem and its final docstring state
+that this is the conjunction of two independent limits in a product topology,
+not a theorem that the second coordinate depends on the first.
+
+**QUANTITATIVE LABEL.**  The proof's coarse envelope
+`3.2 * 10^13 * exp(-k/100)` first falls below `1` at the integer `k=3110`
+(offset `6220`).  The charter labels this an asymptotic tail certificate, not
+a useful moderate-separation estimate.
+
+**MEASURED/AUDITED.**  `TwoPointFactorization.lean` elaborated with a regenerated
+`.olean`; 28 oracle queries returned exactly
+`[propext, Classical.choice, Quot.sound]`; stderr was empty; and the remote
+`honesty` check on the exact branch head passed.
+
+**HONEST BOUNDARY.**  C0 does not produce continuum laws, tightness, a physical
+scale--coupling relation, nonzero limiting variance, geometric reflection
+positivity, reconstruction, or a continuum mass gap.  The `(2,0)` endpoint is
+ultralocal/trivial in this strong-coupling lane.  Clay distance remains
+`~0% (<0.1%)`.  The stable documentation summary is
+[`docs/CONTINUUM-C0-CLOSURE.md`](CONTINUUM-C0-CLOSURE.md).

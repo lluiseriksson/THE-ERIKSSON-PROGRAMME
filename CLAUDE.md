@@ -6,8 +6,10 @@ ai.viXra:2607.0089**. Its old task queue below is retained as an audit
 record and MUST NOT be treated as live work. PART II is the Yang–Mills
 Lean formalization programme; its rules remain binding for work under
 `YangMills/**`. Read `CURRENT-STATE.md`, `project-state.json`, and
-`docs/PUBLICATIONS.md` before relying on any older checkpoint or
-submission note.
+`docs/PUBLICATIONS.md` before relying on any older checkpoint or submission
+note. The frozen external continuum audits are
+`docs/CONTINUUM-C0-CLOSURE.md` and `docs/CONTINUUM-C1-CLOSURE.md`; neither is
+part of `main`'s Lean core or a positive continuum theorem.
 
 ---
 

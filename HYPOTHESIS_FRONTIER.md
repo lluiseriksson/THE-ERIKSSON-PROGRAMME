@@ -1,8 +1,9 @@
 # Hypothesis Frontier — THE ERIKSSON PROGRAMME
 
 **Control-plane review: 2026-07-31; verified-core content through the recorded
-merged checkpoint `f0720ba7`, with the separate CONTINUUM-C1 negative artifact
-frozen at `0a46e266` outside `main`.**  The canonical stable snapshot is
+merged checkpoint `f0720ba7`, with the separate CONTINUUM-C0 substrate frozen
+at `7fe64bbc` and the CONTINUUM-C1 negative artifact frozen at `0a46e266`,
+both outside `main`.**  The canonical stable snapshot is
 [`project-state.json`](project-state.json).  This document states the honest assumption
 frontier of the **verified core** (`YangMillsCore`).  Read the current
 section first; the legacy section at the bottom is **archived, pre-cleanup
@@ -34,6 +35,24 @@ the import closure of `YangMillsCore`.  Gaps are carried as explicit
 | **Strong-coupling area law** (confinement, lattice) | **THEOREM, unconditional.** Finite-volume and volume-uniform, linearized and exact-activity (`finite_volume_area_law_exp`, `normalized_exp_wilson_loop_area_law`). Carries no hypothesis. |
 | **UV single-scale bound** (§6.3 Bałaban) | **CARRIED**, and now *decomposed*. The geometric-profile conditional `lattice_mass_gap_of_cluster_and_coupling` and the marginal-coupling conditional in `RG/MarginalUVMassGap.lean` are oracle-clean; coupling/summability/kernel/Gaussian scaffolding has been theorem-fed. The remaining carried input is `hRpoly`: the concrete Yang-Mills cluster-expansion-with-holes remainder activity bound for the actual gauge RG operator. It is a theorem hypothesis — never an axiom. |
 | **Continuum limit / OS–Wightman reconstruction / continuum mass gap** (M4–M5, the actual Clay problem) | **OPEN MATHEMATICS.** Not carried, not axiomatized, not claimed. **Distance to the Clay prize: ~0% (<0.1%).** |
+
+### CONTINUUM-C0 closed substrate
+
+The frozen C0 artifact at `7fe64bbc` makes the continuum-facing interface
+explicit without declaring a continuum state.  It constructs scale-indexed
+discrete Gibbs states, transports named properties through pointwise weak
+limits, and proves that the present `d=4`, `B=2` KP producer forces
+`|beta|<1/8450`.  Its canonical axis-pair endpoint
+`(physical separation, connected correlation) -> (2,0)` is the conjunction of
+two independent limits in a product topology; it does not prove dependence
+between coordinates or identify a continuum law.  The envelope crossing at
+`k=3110` (offset `6220`) is only an asymptotic certificate.
+
+C0 therefore closes a typed substrate and an anti-overclaim audit, while
+leaving candidate laws, tightness, a physical scale--coupling relation,
+nontrivial variance, geometric reflection positivity, reconstruction, and the
+continuum mass gap open.  The stable evidence record is
+[`docs/CONTINUUM-C0-CLOSURE.md`](docs/CONTINUUM-C0-CLOSURE.md).
 
 ### CONTINUUM-C1 negative closure
 

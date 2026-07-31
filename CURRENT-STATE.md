@@ -35,6 +35,21 @@ be mirrored into canonical paper directories, and two repository manuscripts
 have no public identifier on the live author index; neither condition is
 silently represented by a placeholder.
 
+**CONTINUUM-C0 CLOSED ON ITS REGISTERED SCOPE** (2026-07-31, frozen
+branch head `7fe64bbc`, draft PR #36, not merged).  The artifact supplies
+scale-indexed discrete Gibbs states and weak-limit transport, proves the
+four-dimensional `B=2` KP wall `|beta|<1/8450`, and obtains
+`(physical separation, connected correlation) -> (2,0)` for the canonical
+axis-pair family.  The last theorem is explicitly the conjunction of two
+independent limits; it proves no dependence between components and no
+continuum two-point law.  Its coarse envelope first falls below `1` at
+`k=3110` (offset `6220`) and is labelled only as an asymptotic certificate.
+The 28 standard-axiom oracle results, exact scope, and successor contracts are
+recorded in
+[`docs/CONTINUUM-C0-CLOSURE.md`](docs/CONTINUUM-C0-CLOSURE.md).  No
+tightness, physical scale--coupling law, reconstruction, or continuum mass gap
+is claimed.
+
 **CONTINUUM-C1 CLOSED NEGATIVELY** (2026-07-31, frozen branch head
 `0a46e266`, draft PR #34, not merged).  The checked `t=epsilon=1`
 two-plaquette KP radius forces a finite, volume-independent upper bound on
@@ -474,6 +489,7 @@ the axiom oracle, and the verification ledger.
 | Appendix-F/H# bridge to UV consumer | `PARTIAL` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, newly oracle-covered Appendix-F hole target geometry/family targets, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
 | P4 physical-operator vertical slice | `PARTIAL` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
 | Concrete `hRpoly` discharge | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Catalan/Schur budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
+| Continuum C0 scale-limit substrate | `CLOSED / ULTRALOCAL` | typed limit transport and the paired `(2,0)` endpoint are proved on the frozen branch; continuum laws, tightness, physical scale--coupling, and reconstruction remain open |
 | Continuum C1 KP-window route | `CLOSED NEGATIVELY` | the present strong-coupling correlator window has a finite beta cap and cannot follow `beta -> +infinity`; a genuinely cutoff-uniform producer remains open |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 

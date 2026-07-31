@@ -21,6 +21,8 @@
 > `README.md` progress dashboard (human progress board) →
 > `docs/dashboard/` (public DAG dashboard) →
 > `docs/PUBLICATIONS.md` (public IDs and repository PDFs) →
+> `docs/CONTINUUM-C0-CLOSURE.md` / `docs/CONTINUUM-C1-CLOSURE.md`
+> (frozen continuum-facing audits outside `main`) →
 > `docs/VERIFICATION-LEDGER.md` (the record). Everything below remains valid
 > as background.
 

@@ -17,6 +17,7 @@
     "horizon": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/HORIZON.md",
     "knowledge_tree": "https://lluiseriksson.github.io/physmath-knowledge-tree/",
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
+    "continuum_c0": "CLOSED on its registered frozen-branch scope at 7fe64bbc, outside main. It provides scale-indexed discrete states, a KP regime wall, and the paired endpoint (2,0) as two independent limits. It proves no continuum law, component dependence, tightness, reconstruction, or continuum mass gap.",
     "continuum_c1": "CLOSED NEGATIVELY at frozen branch head 0a46e266, outside main. The current t=epsilon=1 strong-coupling KP window has a finite beta cap and cannot follow beta -> +infinity. This rules out one route and proves no positive continuum theorem.",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28), public as ai.viXra:2607.0089. The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem."
   },
@@ -784,6 +785,26 @@
       ]
     },
     {
+      "id": "C0S",
+      "label": "C0 - scale-limit substrate",
+      "status": "proved",
+      "cls": "C",
+      "group": "asm",
+      "col": 10,
+      "row": 2,
+      "note": "Frozen external Lean artifact 7fe64bbc, not merged into main: scale-indexed discrete states, a d=4 KP wall, and (separation, correlation) -> (2,0) as two independent limits. No continuum law or physical dependence is proved.",
+      "links": [
+        {
+          "label": "CONTINUUM-C0-CLOSURE.md",
+          "path": "docs/CONTINUUM-C0-CLOSURE.md"
+        },
+        {
+          "label": "Verification ledger",
+          "ledger": true
+        }
+      ]
+    },
+    {
       "id": "F9",
       "label": "Leak B - honest continuum scaling",
       "status": "open",
@@ -1016,7 +1037,15 @@
       "to": "C1N"
     },
     {
+      "from": "IR",
+      "to": "C0S"
+    },
+    {
       "from": "C1N",
+      "to": "F9"
+    },
+    {
+      "from": "C0S",
       "to": "F9"
     },
     {

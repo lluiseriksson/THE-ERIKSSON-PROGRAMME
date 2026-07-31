@@ -47,7 +47,8 @@ Its machine-readable source is
 full-core checkpoint is `f0720ba7`: `lake build YangMillsCore` green at
 **8463 jobs**, followed by a complete `oracle_check.lean` run with only the
 three standard Lean axioms.  The separate CONTINUUM-C1 no-go artifact is frozen
-at `0a46e266` in draft PR #34 and is deliberately not part of `main`.
+at `0a46e266` in draft PR #34, while the CONTINUUM-C0 scale-limit substrate is
+frozen at `7fe64bbc` in draft PR #36.  Both are deliberately outside `main`.
 The canonical machine-readable proof-state contract is
 [`project-state.json`](project-state.json); repository HEAD and paper commits
 may advance without changing that recorded Lean checkpoint.
@@ -70,6 +71,7 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | P4 physical-operator vertical slice | `PARTIAL` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian records, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
 | Concrete YM activity decay `hRpoly` | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Eq. (2.31) `gapCubes`, Appendix-F certified-tail, Catalan/Schur precision-budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, CMP116 Lemma 3 / Eq. (2.29) / Eq. (2.37) route is source-audited and source-locked in places; the real Balaban/Dimock estimates remain open |
 | Peter-Weyl / character infrastructure | `PARTIAL` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
+| Continuum C0 scale-limit substrate | `CLOSED / ULTRALOCAL` | scale-indexed discrete states, a proved KP regime wall, and `(separation, correlation) → (2,0)` as two independent limits; no continuum law or physical scale-coupling relation |
 | Continuum C1 strong-coupling-window test | `PROVED NO-GO` | the current `t=epsilon=1` KP radius imposes a finite beta cap and is eventually incompatible with every `beta -> +infinity` trajectory; this closes one invalid route, not the continuum problem |
 | Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 
@@ -104,6 +106,13 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
   diverging bare inverse coupling.  See
   [`docs/CONTINUUM-C1-CLOSURE.md`](docs/CONTINUUM-C1-CLOSURE.md).  This removes
   a false route but supplies no positive tightness or continuum theorem.
+* CONTINUUM-C0 has closed on its registered substrate: it formalizes
+  scale-indexed discrete states and limit transport, proves the `1/8450`
+  four-dimensional KP wall, and pairs two independent limits into
+  `(separation, correlation) -> (2,0)`.  The endpoint is explicitly
+  ultralocal/trivial and supplies no continuum probability law, tightness, or
+  physical dependence between the two coordinates.  See
+  [`docs/CONTINUUM-C0-CLOSURE.md`](docs/CONTINUUM-C0-CLOSURE.md).
 * The P4 material now includes deterministic gauge-fixed precision
   composition, exact covariance from strict coercivity, full-periodic physical
   cochains, a fixed-volume flat Hodge/block Poincare closure, flat physical
@@ -426,6 +435,7 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 |---|---|
 | [`docs/dashboard/`](docs/dashboard/) | The static public "Distance to the Mass Gap" dashboard: curated DAG data, linked evidence, and a no-dependency GitHub Pages front end. |
 | [`docs/PUBLICATIONS.md`](docs/PUBLICATIONS.md) · [`docs/publications.json`](docs/publications.json) | Canonical human- and machine-readable crosswalk between public ai.viXra identifiers and repository paper artifacts. |
+| [`docs/CONTINUUM-C0-CLOSURE.md`](docs/CONTINUUM-C0-CLOSURE.md) · [`docs/CONTINUUM-C1-CLOSURE.md`](docs/CONTINUUM-C1-CLOSURE.md) | Frozen external continuum-facing closure records: C0's typed but ultralocal scale-limit substrate and C1's no-go for reusing the present strong-coupling KP radius. Neither is a positive continuum theorem. |
 | [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, earlier Addenda 1-444, date-stamped checkpoints, the 2026-07-03 Catalan/Schur series through Addendum 465, and the 2026-07-04 diamagnetic bridge Addendum 466. Start here to check any claim. |
 | [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md) | The executable M3 frontier dependency graph, mirrored for humans. |
 | [`docs/SOURCE-CITATIONS.md`](docs/SOURCE-CITATIONS.md) | The compact primary-source lookup for CMP116 Lemma 3: visual anchors, blockers, and source targets without repeated OCR hunting. |

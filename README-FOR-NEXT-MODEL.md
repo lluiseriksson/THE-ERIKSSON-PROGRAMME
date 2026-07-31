@@ -24,6 +24,13 @@ unitary bridge Addendum 466.  The canonical repository-wide checkpoint and
 job count are in [`project-state.json`](project-state.json); do not substitute
 an older paper anchor for that full-core checkpoint.
 
+Two continuum-facing audit lanes are frozen outside `main`.
+[`CONTINUUM-C0`](docs/CONTINUUM-C0-CLOSURE.md) closes a typed scale-limit
+substrate with an explicitly ultralocal `(2,0)` endpoint and no continuum law;
+[`CONTINUUM-C1`](docs/CONTINUUM-C1-CLOSURE.md) proves that the present
+strong-coupling KP window cannot follow `beta -> +infinity`.  These are
+closure records and successor contracts, not positive Clay results.
+
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
 operator.  The surrounding scaffolding is largely theorem-fed: strong-coupling
