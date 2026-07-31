@@ -1,0 +1,193 @@
+=== PDFLATEX PASS 1 ===
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(erratum_2602_0033.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/cmap\cmap.sty
+
+Package cmap Warning: fontenc already loaded - some fonts may be unprocessed.
+
+) (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)<<t1.cmap>>
+
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def)
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0033-r30\artifacts\erratum_2602_0033_r30.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)<<ot1.cmap
+>> (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)<<oml.c
+map>> (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)<<o
+ms.cmap>> (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+)<<omx.cmap>>
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+[1{C:/Users/lluis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ll
+uis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/lluis/
+AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/lluis/App
+Data/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/lluis/App
+Data/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/lluis/AppData
+/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [2{C:/Users/lluis/App
+Data/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd) [3]
+[4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0033-r30\artifacts\erratum_2602_0033_r30.aux) )<C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/U
+sers/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/U
+sers/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Us
+ers/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Use
+rs/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/User
+s/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users
+/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/l
+luis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/llu
+is/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/lluis
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/lluis
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Users/lluis/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/lluis/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/lluis/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/lluis/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/lluis/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/lluis/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:
+/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb>
+Output written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-C
+ODEX-AUTOPILOT\output\publication-audit\2602.0033-r30\artifacts\erratum_2602_00
+33_r30.pdf (13 pages, 477412 bytes).
+Transcript written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAM
+ME-CODEX-AUTOPILOT\output\publication-audit\2602.0033-r30\artifacts\erratum_260
+2_0033_r30.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.
+
+
+=== PDFLATEX PASS 2 ===
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(erratum_2602_0033.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/cmap\cmap.sty
+
+Package cmap Warning: fontenc already loaded - some fonts may be unprocessed.
+
+) (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)<<t1.cmap>>
+
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def)
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0033-r30\artifacts\erratum_2602_0033_r30.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)<<ot1.cmap
+>> (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)<<oml.c
+map>> (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)<<o
+ms.cmap>> (C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+)<<omx.cmap>>
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+[1{C:/Users/lluis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ll
+uis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/lluis/
+AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/lluis/App
+Data/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/lluis/App
+Data/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/lluis/AppData
+/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [2{C:/Users/lluis/App
+Data/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd) [3]
+[4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0033-r30\artifacts\erratum_2602_0033_r30.aux) )<C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/U
+sers/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/U
+sers/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Us
+ers/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Use
+rs/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/User
+s/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users
+/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/l
+luis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/llu
+is/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/lluis
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/lluis
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Users/lluis/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/lluis/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/lluis/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/lluis/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/lluis/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/lluis/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:
+/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb>
+Output written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-C
+ODEX-AUTOPILOT\output\publication-audit\2602.0033-r30\artifacts\erratum_2602_00
+33_r30.pdf (13 pages, 477412 bytes).
+Transcript written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAM
+ME-CODEX-AUTOPILOT\output\publication-audit\2602.0033-r30\artifacts\erratum_260
+2_0033_r30.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.
+
+
+=== BUILD RESULT ===
+{
+  "status": "BUILT-NOT-AUDITED",
+  "final_pdf": "2602.0033v3-R30-878dba7c-25pp.pdf",
+  "final_pdf_sha256": "878dba7cc659477ea9172a24f9dba88498d41ba49af44cfdcb1a73baa13f6285",
+  "final_pdf_pages": 25,
+  "erratum_pdf": "erratum_2602_0033_r30.pdf",
+  "erratum_pdf_sha256": "6f800d1847b840d99714f41833261e87e715e3c48807ebfc5587345ba8b5f4eb",
+  "erratum_pdf_pages": 13,
+  "provenance_pdf_sha256": "f3c2e1cb9ffcc1a1c0f66f5da96fa415248480eebd03f7abd2d93458a5b5cd01",
+  "public_v2_pdf_sha256": "91a7d95e1decc1771c548533748916d9941a77f02937fddf90fb13e348730bfe",
+  "source_tex_sha256": "6362b13aa7679e50432cdcf25bde10a0152dd96dfad8d3398586bff5eba4e530"
+}

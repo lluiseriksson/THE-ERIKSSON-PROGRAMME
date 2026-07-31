@@ -1,0 +1,921 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{cmap}
+\usepackage[a4paper,margin=2.15cm]{geometry}
+\usepackage{amsmath,amssymb}
+\pagestyle{plain}
+\setlength{\parskip}{2.5pt}
+\newcommand{\A}{\mathcal A}
+\newcommand{\G}{\mathcal G}
+\newcommand{\Hil}{\mathcal H}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Erratum (v3): Theorems 1.1, 3.1 and 4.1\\
+are not established}\\[5pt]
+{\large The Yang--Mills Mass Gap on the Lattice:\\
+A Conditional Synthesis}\\[6pt]
+Lluis Eriksson \quad\textbullet\quad ai.viXra:2602.0033 \quad\textbullet\quad July 2026
+\end{center}
+
+\noindent\rule{\textwidth}{0.8pt}
+
+\vspace{2pt}
+\noindent
+\textbf{Neither of the two pillars of this paper is established: the terminal gap
+(Theorem 3.1) nor the doubling cascade that transports it (Theorem 4.1).} Theorem 1.1
+is therefore \textbf{not established at several distinct points audited below}.
+\textbf{What the counterexamples of this note refute are general implications used
+by the proofs, one level below the numbered results.} There are \emph{two} such
+implications, with different premises and different conclusions, and
+\textbf{each family satisfies the abstract hypotheses relevant to the implication it
+targets} --- not the union of both hypothesis sets.
+
+\textbf{The exact-trace family targets the exact/additive extraction} (\S2):
+positivity, self-adjointness, trace class, and the trace identity holding
+\emph{exactly} for infinitely many $M$, hence $\bar\delta=0$ and the printed window
+$M_0\le M$, $e^{-m_nM}\gg\bar\delta$ of the displayed estimate --- the manuscript
+prints $\gg$ there, and with $\bar\delta=0$ it holds however it is read. It does \textbf{not}
+satisfy the cap $m_nM\le\kappa'/2$ of part (i) --- its gap is a fixed $a>0$, so
+$m_nM\to\infty$ --- and it does not need to: what it answers is the uncapped
+exact/additive step.
+\textbf{The finite-error family targets the \mbox{finite-window} relative extraction} (\S3):
+the approximate identity within the admitted error floor, the printed lower bound on
+the window, and the printed one-sided cap, for every $\kappa'\ge1$. Each contradicts
+the conclusion of the implication it is aimed at, so \textbf{both abstract extraction
+implications are false}. \emph{Singular --- ``the abstract extraction implication'' ---
+survived into the round that separated the two, because it had been made a required
+phrase the round before; a guard can preserve an error as faithfully as it preserves a
+correction.} \emph{An earlier draft of this note said both
+families met every printed hypothesis. They do not, and they need not: a
+counterexample answers the implication it is aimed at, and stating more than that
+overstates it in the direction this whole correction campaign exists to avoid.}
+
+It does not follow that a numbered result is false: Theorem 4.1 and Proposition 4.4
+are stated about the operators $T_n$ built in Step 1 from Balaban's effective actions,
+neither is stated for an arbitrary positive trace-class family, and \textbf{none is
+shown to arise from the Balaban effective actions} or to coincide with the intended
+operators. \emph{Nor is the converse claimed: that no such family can so arise is not
+established here either.} Accordingly, \textbf{the conclusion for the intended
+Yang\nobreakdash-Mills transfer operators is not established, not refuted here.} \emph{A previous round of this note
+declared the conclusion of Proposition 4.4(i) refuted outright, on this page and in
+the submission metadata. That went one level too far and is withdrawn; what changed is
+the classification, not the mathematics, and the families themselves stand.} The exact
+status, piece by piece:
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item \textbf{the exact/additive extraction implication} used in Steps 3--4 of
+Theorem 4.1 and again in the display of Proposition 4.4 --- \textbf{false}, by the
+exact-trace family;
+\item \textbf{the \mbox{finite-window} relative extraction implication} used in Proposition
+4.4(i) --- \textbf{false} under the standard uniform reading, by the finite-error
+family. \emph{These two are defects of one architecture, but they are not one
+implication: their premises differ and so do their conclusions};
+\item the additive estimate displayed in Proposition 4.4 --- not established by the
+printed proof, and no survivor either: \textbf{the exact-trace family also contradicts
+the displayed additive estimate} read as a general implication;
+\item Proposition 4.4(i), the relative cascade --- not established; as a general
+implication it fails quantitatively and not merely as an exact equality, the second
+family keeping $\dfrac{m_{n+1}}{2m_n}-1=1$ rather than $O(e^{-\kappa'/2})$;
+\item Proposition 4.4(ii), the extensive regime --- the two families do not reach its
+volume regime; it is \emph{likewise not established by the printed proof}, since it
+rests on the same additive extraction whose derivation is invalid through the
+volume-dependent operator. Its separate volume-cap algebra is not audited here;
+\item \textbf{(H-FACT) as consumed by Proposition 4.4} --- the printed prefactor
+$C_{\rm fact}$ is normalised to one; for $C_{\rm fact}>1$ that needs
+$\kappa'>\log C_{\rm fact}$ and $\kappa'-\log C_{\rm fact}$ everywhere downstream, and
+no such renormalisation is stated. \textbf{Nor does the printed hypothesis specify
+coupling uniformity} (\S3);
+\item Lemma 4.3(a) --- a conditional algebraic identity;
+\item Lemma 4.3(b) --- an invalid inference, using a lower bound as an upper bound.
+\end{itemize}
+\emph{Nothing here claims the physical gap differs from what the paper expected.}
+\textbf{For Theorems 1.1, 3.1, 4.1 and Proposition 4.4, what is withdrawn here is the
+printed derivation; no conclusion of theirs about the intended operators is refuted.}
+\emph{What is false here, classified rather than counted: the exact/additive
+extraction implication; the \mbox{finite-window} relative extraction implication; and the
+printed orbit-space dimension corrected in \S1.3. None of the three is a conclusion of
+a numbered result about the intended operators, and this note does not claim the list
+is closed --- a closing count is the failure this chain has now recorded twice.}
+\emph{This audit does not
+refute} (H-BAL) \emph{or} (H-FACT), but those hypotheses do not suffice for the
+printed conclusions without the additional operator and identification inputs stated
+below.
+
+\emph{An earlier draft of this note stated that ``the doubling cascade of \S4 is
+unaffected and is the part of the paper that survives intact''. That is withdrawn:
+\S2 below shows it is not.} The provenance page appended here fixes the dictionary
+that \S1.1 and \S4.1 turn on.
+
+\noindent\textbf{Notation, before anything else.} \textbf{In this erratum $\nu_{\rm push}:=\pi_\#\mathrm{Vol}_{\A}$, and every $\nu$ below means $\nu_{\rm push}$.} The restored manuscript uses the same letter for a different object: Step 3 of Theorem 3.1 calls $\nu_{\rm Vol}:=d\mathrm{Vol}_B/\mathrm{Vol}_B(B)$ ``the uniform measure $\nu$''. \textbf{The two are not identified}, and identifying them is what (I2b) of the appended page forbids. \emph{Read one for the other and a printed derivation looks as though it already used the corrected measure.}
+
+\noindent\textbf{And four different constants are called $C$ in this chain.} The
+manuscript writes $C(N_c)=24\pi^2/(11N_c)$ for the exponent of Theorem 1.1, $C$ for the
+prefactor of (H-FACT), $C$ again for the lower end of the window in Proposition 4.4
+(``$C\le M$''), and $C_0$ for the volume constant of Remark 2.2. \textbf{This erratum
+writes $C_{\rm fact}$ for the (H-FACT) prefactor, $M_0$ for the window's lower end, and
+$C_\beta$ for the terminal-coupling constant it introduces in \S4.2}, keeps $C(N_c)$ and
+$C_0$ as printed, and writes a bare $C$ only here and when quoting the manuscript's own
+``$C\le M$''. \emph{An earlier draft of this note promised never to write a bare $C$ and
+then wrote one, in \S4.2, in the very round that put up the barrier.}
+
+\section{Theorem 3.1: the terminal gap}
+
+\subsection{The printed Euclidean measure is not identified with the ground-state
+measure}
+
+Step 2 introduces $d\mu_{\rm print}=e^{-f}d\mathrm{Vol}_B/Z$ with
+$f=\beta_{n_{\max}}V_W+\sum_X\epsilon_{n_{\max}}(X)$ --- the \emph{effective action} ---
+applies Holley--Stroock in Step 3, and writes
+$m_{n_{\max}}=\frac{g_{n_{\max}}^2}{2}\lambda_1$. That relation belongs to the
+Hamiltonian framework, where the ground-state transformation requires the measure to
+carry $f_0=-\log\psi_0^2$, i.e.\ $\mu_0=\psi_0^2\nu_{\rm push}$.
+
+The Gibbs measure of a Euclidean effective action is \emph{a priori} a distinct
+object, and its weighted Dirichlet-form gap \emph{a priori} a distinct spectral
+quantity. \textbf{The printed derivation applies the Hamiltonian gap identity to an
+effective-action Gibbs measure without identifying that measure with the ground-state
+measure}: no identification of $\mu_{\rm print}$ with $\mu_0=\psi_0^2\nu_{\rm push}$ has been
+proved. In special models they may coincide, but in general the passage requires a
+transfer-operator or Osterwalder--Seiler identification theorem, not a change of
+notation. This is (I3) of the appended page.
+
+\emph{Note the reference measure.} What Step 2 prints is against
+$\mathrm{Vol}_B$, not against $\nu_{\rm push}$, and it is a \emph{regular-stratum}
+formula: no
+global extension, and no closed Dirichlet form for it, is specified. On $B_{\rm reg}$,
+$d\nu_{\rm push}=w\,d\mathrm{Vol}_B$ with $w$ the orbit-volume density, so
+\[
+d\mu_{\rm print}=Z_{\rm print}^{-1}e^{-S_{\rm eff}}d\mathrm{Vol}_B
+=Z_{\rm print}^{-1}e^{-(S_{\rm eff}+\log w)}d\nu_{\rm push}
+\qquad\text{on }B_{\rm reg},
+\]
+which is an exact rewriting of one measure, with the same normaliser. Relative to
+$\nu_{\rm push}$ the printed measure therefore carries the exponent
+$S_{\rm eff}+\log w$, while the candidate $\nu_{\rm push}$-based measure
+$d\widetilde\mu=\widetilde Z^{-1}e^{-S_{\rm eff}}d\nu_{\rm push}$ carries
+$S_{\rm eff}$; they
+coincide only under an additional constancy or identification statement for $w$, none
+of which is established here. This matters for the repair, and is (I2b) of the
+appended page.
+
+\emph{The programme already knew.} The v2 of \texttt{ai.viXra:2602.0035} corrected
+exactly this substitution in its own v1 --- the action-based measure being
+``\emph{dimensionally inconsistent}'' and, per its suite, failing to reproduce the gap
+at ``\emph{$>50\%$, growing}''. That correction did not reach this paper, though both
+are July 2026 documents of the same series. \emph{What that measurement is, and is
+not:} it concerns the literal potential-based measure of that paper's v1, not the
+$\epsilon$-corrected effective-action measure printed here. \textbf{It supplies strong numerical counterevidence to a
+universal action-measure substitution, and reinforces that no identification
+may be made by notation; it is neither a proof that no general identification
+exists nor an analytic counterexample to Theorem 3.1 of the present paper.}
+\emph{An earlier draft said it ``confirms'' the unavailability of a general
+identification --- a non-rigorous one-plaquette computation cannot confirm a
+mathematical non-existence. The reason to withdraw the printed derivation is
+that no identification theorem has been proved, not that a number came out
+wrong.}
+
+\subsection{The geometric input is no longer available}
+
+Steps 1 and 3 use $\operatorname{Ric}_B\ge N_c/4$ from
+\texttt{ai.viXra:2602.0036}, Theorem 3.1. That theorem is stated \emph{at regular
+points} while Bakry--\'Emery is applied here globally, and the corollary that
+globalised it has been withdrawn. Decisively, \textbf{that theorem is itself not
+established by its printed proof}: its O'Neill trace omits the mixed
+horizontal--vertical sectional terms, which for a bi-invariant metric on a compact
+group are non-negative and subtract. \textbf{No pointwise Ricci bound on the orbit
+space may presently be cited.}
+
+What is available is \texttt{ai.viXra:2602.0046} v3: a global curvature-dimension
+bound, hence a Poincar\'e/log-Sobolev inequality, for $(B,d_B,\nu)$ with
+$\nu=\pi_\#\mathrm{Vol}_{\A}$ --- a bound for $K_\nu$, not for a realisation of the
+unweighted $\mathcal K_B^{\rm reg}$. It cannot serve as the pointwise input used here.
+
+\emph{A warning about the symbol $\nu$, and it is load-bearing.} \textbf{The $\nu$ of
+the appended page is not the $\nu$ of the restored pages.} That page writes
+$\nu_{\rm push}=\pi_\#\mathrm{Vol}_{\A}$; Step 3 of Theorem 3.1 calls
+$\nu_{\rm Vol}=d\mathrm{Vol}_B/\mathrm{Vol}_B(B)$ ``the uniform measure $\nu$''.
+Reading one for the other makes the printed derivation look as though it already used
+the corrected measure --- which is exactly the identification (I2b) forbids.
+\emph{Nor does it repair Step 3 by a change of reference measure}: by (I2b),
+\textbf{replacing $d\mathrm{Vol}_B$ by $d\nu_{\rm push}$ under a fixed exponent is
+not a free
+rewriting}. Two routes are open and they are different theorems.
+\textbf{(A)} Keep $\mu_{\rm print}$, whose exponent relative to $\nu_{\rm push}$ is
+$S_{\rm eff}+\log w$: one must then extend the regular-stratum formula globally and
+bound $\operatorname{osc}(S_{\rm eff}+\log w)$, for which the bound on
+$\operatorname{osc}(S_{\rm eff})$ does not suffice --- if $w$ degenerates at strata of
+enlarged stabiliser, $\log w$ is exactly the term that destroys a bounded-perturbation
+argument, and \textbf{no control of $\log w$ is supplied} in this chain.
+\textbf{(B)} Reformulate over $(B,\nu_{\rm push})$ with
+$d\widetilde\mu=\widetilde Z^{-1}e^{-S_{\rm eff}}d\nu_{\rm push}$, where \texttt{2602.0046} does
+supply the base inequality --- but that is not the measure the paper printed, and a
+theorem is then owed showing it is the correct Euclidean object.
+
+\subsection{A four-dimensional action on a three-dimensional orbit space}
+
+Step 1 fixes the space as $B_{n_{\max}}$ and prints its dimension as
+$3L_{n_{\max}}^3(N_c^2-1)$. \textbf{That is the dimension of the spatial
+configuration manifold} $\A_{\rm spat}=SU(N_c)^{3L^3}$, \textbf{not of the orbit
+space}: the site gauge group $SU(N_c)^{L^3}$ has dimension $L^3(N_c^2-1)$ and acts
+with discrete generic stabiliser, so the \textbf{principal-stratum dimension is
+$2L_{n_{\max}}^3(N_c^2-1)$}, and at reducible configurations the quotient is
+stratified with no single manifold dimension. \emph{An earlier draft of this note
+repeated the printed figure as though it were correct.} The $O(L^3)$ versus
+$O(L^4)$ mismatch below is unchanged by the correction. Step 1 also says
+``\emph{the spatial slice is three-dimensional}''; Step 2 bounds the oscillation with
+$O(L_{n_{\max}}^4)$ plaquettes. Both are $O(1)$ terminally, so no numerical bound
+breaks --- but the mismatch shows $f$ is the four-dimensional Euclidean effective
+action while $\mu$ is treated as living on the three-dimensional spatial orbit space.
+(H-FACT) approximately controls the factorisation of the \emph{partition function}; it
+does not build a Hamiltonian on $B^{\rm spat}$ nor identify its ground state.
+
+\section{Theorem 4.1: the limit is taken over operators that change with the volume}
+
+This is the defect that removes the last standing pillar, and it is independent of
+everything in \S1.
+
+Step 1 defines $T_n$ on $\Hil_n=L^2(B_n^{\rm spat})$ for
+$\Lambda_n=(\mathbb Z/L_n\mathbb Z)^4$ with $L_n=L/2^n$, using --- in the paper's own
+words --- ``\emph{the convention of equal spatial and temporal extent}''. \textbf{Both
+the Hilbert space and the operator therefore depend on $L_n$.}
+
+Step 2 sets $M:=L_n$ and obtains
+$\operatorname{Tr}(T_{n+1}^{M/2})=\operatorname{Tr}(T_n^{M})$, then justifies
+$M\to\infty$ by \emph{varying the original isotropic size $L$}. But varying $L$ varies
+$L_n=M$, hence varies the spatial slice, hence varies $\Hil_{n}$, $T_{n}$, the
+eigenvalues $\lambda_j^{(n)}$ and the gap $m_n$ --- all of which Step 3 then treats as
+constants in $M$ when it writes
+\[
+\operatorname{Tr}(T_n^M)=(\lambda_0^{(n)})^M\bigl(1+e^{-m_nM}+O(e^{-m_n'M})\bigr).
+\]
+That expansion extracts the spectrum only when a \emph{fixed} operator is raised to a
+growing power. Here the power and the operator grow together.
+
+\paragraph{The trace identities do not imply the conclusion.} An abstract example
+suffices to show that \textbf{the doubling and the displayed additive estimate do not
+follow from the family of identities alone} --- not that the identities carry no
+spectral information at all, which would be a stronger claim and is not made here. For \emph{fixed} $a,b>0$ with $b\neq 2a$, and for each even $M$, put
+\[
+T_{n,M}=\begin{pmatrix}1&0\\0&e^{-a}\end{pmatrix},\qquad
+T_{n+1,M/2}=c_M\begin{pmatrix}1&0\\0&e^{-b}\end{pmatrix},\qquad
+c_M=\Bigl(\frac{1+e^{-aM}}{1+e^{-bM/2}}\Bigr)^{2/M}.
+\]
+Both matrices are positive, self-adjoint and trace class; \emph{positivity of $a$ and
+$b$ is what makes the top eigenvalue the first entry}, so the gaps are exactly $a$ and
+$b$. Then $\operatorname{Tr}(T_{n+1,M/2}^{M/2})=\operatorname{Tr}(T_{n,M}^{M})$ for
+\emph{every} even $M$, while $b$ ranges over all positive values other than $2a$. This
+is not offered as a model of anything physical, and \textbf{it is not shown to arise
+from any lattice gauge theory} --- nor is the converse shown; what it does show is that
+the inference used in Steps 3--4 is not valid for an $M$-dependent family.
+
+\paragraph{With a third eigenvalue, and against the additive estimate as well.} The
+two-by-two family leaves the printed remainder $O(M^{-1}e^{-(m_n'-m_n)M})$ with no
+third eigenvalue to refer to, which invites the objection that it is testing a
+degenerate case. It is not needed. Fix $a,b,r,s>0$ with $b\neq2a$, $r>a$ and $s>b$,
+and for each even $M$ put
+\[
+T_{n,M}=\mathrm{diag}(1,e^{-a},e^{-r}),\qquad
+T_{n+1,M/2}=c_M\,\mathrm{diag}(1,e^{-b},e^{-s}),
+\]
+\[
+c_M=\Bigl(\frac{1+e^{-aM}+e^{-rM}}{1+e^{-bM/2}+e^{-sM/2}}\Bigr)^{2/M}.
+\]
+Then $\operatorname{Tr}(T_{n+1,M/2}^{M/2})=\operatorname{Tr}(T_{n,M}^{M})$
+\emph{exactly}, for every even $M$, so one may take $\delta_n=\delta_{n+1}=0$; the
+orderings $1>e^{-a}>e^{-r}$ and $1>e^{-b}>e^{-s}$ hold, and the gaps and next distinct
+gaps are $m_n=a$, $m_{n+1}=b$, $m_n'=r$, $m_{n+1}'=s$. The displayed additive estimate
+of Proposition 4.4 would give
+\[
+b=2a+O\bigl(M^{-1}e^{-(r-a)M}\bigr),
+\]
+whose right-hand side tends to $2a$ along the infinitely many admissible $M$,
+contradicting $b\neq2a$. \textbf{So the exact-trace family also contradicts the
+displayed additive estimate}, and not only the relative cascade built on it.
+\emph{Verified at $a=1/3$, $b=1$, $r=2$, $s=5$ for $M=4,8,20,60,200,1000$: the two
+traces agree to sixty digits while $|b-2a|=1/3$ stays fixed and the printed remainder
+falls below $10^{-700}$.} \emph{An earlier draft of this note recorded the additive
+estimate as untouched by these families; \S3 said so too.}
+
+\paragraph{What these families do and do not refute.} They are matrices, not the
+transfer operators of Step 1: \textbf{none is shown to arise from the Balaban effective
+actions}, and this note does not claim they arise from any lattice gauge theory --- nor
+does it claim they cannot. \textbf{Each family satisfies the abstract hypotheses
+relevant to the implication it targets}, and only those: the exact-trace family has a
+fixed gap $a>0$, so $m_nM\to\infty$ and the one-sided cap of part (i) is not among its
+hypotheses, while the finite-error family of \S3 does satisfy that cap. What they refute are two \emph{general} implications.
+\textbf{The exact-trace family targets the exact/additive extraction}: positivity,
+self-adjointness, trace class and the exact trace identity for infinitely many $M$,
+therefore the doubling and the displayed additive estimate --- which is what Steps
+3--4 use. \textbf{The finite-error family targets the
+\mbox{finite-window} relative extraction}: the approximate identity, the error floor and the one-sided window,
+therefore a relative cascade with error $O(e^{-\kappa'/2})$ --- which is what
+Proposition 4.4(i) uses. Theorem 4.1 and Proposition 4.4 are stated about the
+operators built in Step 1, not about that abstract class, so their conclusions are
+\emph{not established} for the intended operators rather than refuted. \emph{This
+distinction is the one the note previously collapsed, calling the conclusion of
+Proposition 4.4(i) false outright.}
+
+\paragraph{A second, local defect of Step 3: multiplicities.} Even for a fixed
+operator the printed expansion is not correct as written. It sets the coefficient of
+$e^{-m_nM}$ to $1$ and takes $m_n'=-\log(\lambda_2/\lambda_0)>m_n$, then adds that if
+$\lambda_1$ is degenerate the coefficient should be its multiplicity. But with the
+printed enumeration a degenerate $\lambda_1$ gives $\lambda_2=\lambda_1$ and hence
+$m_n'=m_n$, not $m_n'>m_n$: the remainder is then of the same order as the term it is
+supposed to be smaller than. Nor does ``positive, self-adjoint and trace class'' make
+$\lambda_0$ simple --- that needs a positivity-improving or Perron--Frobenius input.
+The correct form groups \emph{distinct} eigenvalues $\lambda_0>\lambda_1>\lambda_2$
+with multiplicities $d_j$:
+\[
+\operatorname{Tr}(T^M)=d_0\lambda_0^M\Bigl[1+\tfrac{d_1}{d_0}e^{-mM}
++O(e^{-m'M})\Bigr],\qquad m'>m .
+\]
+This does not change the verdict --- Theorem 4.1 is already not established by the
+$M$-dependence above --- but it is recorded because this note claims to have audited
+the cascade, and because the corrected form is what any repair must use.
+
+\paragraph{Why the suite does not see it.} The verification miniature is a
+one-dimensional $\mathbb Z_N$ clock chain under decimation. In one dimension, varying
+the length varies only the temporal direction: there is no growing spatial slice, so
+the operator stays fixed and the extraction is legitimate. The miniature therefore
+tests a situation from which the defect is absent by construction.
+
+\paragraph{What would repair it.} \textbf{A fixed spatial slice by itself is not
+sufficient.} A family of \emph{rectangular} lattices with the spatial slice held fixed
+and only the temporal extent varied removes the $M$-dependence of $\Hil_n$ and $T_n$,
+which is the defect above; but the extraction still needs an identity to feed it, and
+the printed one is $\operatorname{Tr}(T_{n+1}^{M/2})=\operatorname{Tr}(T_n^{M})$
+obtained by varying the \emph{isotropic} size. \emph{Nor is a fixed slice
+necessary: the last two routes below do not presuppose one, and an earlier draft of this
+note asserted a necessity it had not shown.} Three routes, then:
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item \textbf{a fixed-spatial-slice family \emph{together with} an RG/transfer-matrix
+identity valid for all temporal extents over that fixed space} --- both, not either;
+\item or an operator relation such as $T_{n+1}$ conjugate to $T_n^2$, which gives the
+doubling directly and needs no limit;
+\item or \textbf{a quantitative, normalised spectral-convergence theorem} for the
+volume-dependent family. \textbf{Ordinary spectral convergence is insufficient}, and
+the exact-trace family above already refutes it: there $\log c_M\to0$, so
+$T_{n+1,M/2}\to\mathrm{diag}(1,e^{-b},e^{-s})$ in operator norm while $T_{n,M}$ does not
+move at all; every eigenvalue converges, the limiting gaps are $a$ and $b$, and still
+$b\neq2a$. The reason is that $c_M-1\sim(2/M)\bigl(e^{-aM}-e^{-bM/2}\bigr)$ is of the
+\emph{same} exponential order as the first excited contribution, and absorbs it exactly.
+What a repair needs is
+\textbf{leading-eigenvalue normalisation relative to the actual finite-$M$
+first-excited contributions}, \emph{and it must carry the multiplicities this
+note has just insisted on}. Write $d_{0,n}(M)$ for the multiplicity of the top
+eigenvalue, so that the leading trace term is $d_{0,n}(M)\lambda_{0,n}(M)^M$, and set
+\[
+ \begin{aligned}
+ Q_M&:=\frac{d_{0,n+1}(M/2)\,\lambda_{0,n+1}(M/2)^{M/2}}
+ {d_{0,n}(M)\,\lambda_{0,n}(M)^{M}},\\
+ A_n(M)&:=\frac{d_{1,n}(M)}{d_{0,n}(M)},\qquad
+ A_{n+1}(M/2):=\frac{d_{1,n+1}(M/2)}{d_{0,n+1}(M/2)} .
+ \end{aligned}
+\]
+Suppose $m_n(M)\to m_n^\infty>0$ and
+$m_{n+1}(M/2)\to m_{n+1}^\infty>0$.  The normalisation condition required by the
+trace comparison is
+\[
+ \boxed{\ |Q_M-1|=o\!\left(
+ A_n(M)e^{-m_n(M)M}
+ +A_{n+1}(M/2)e^{-m_{n+1}(M/2)M/2}\right).\ }
+\]
+The earlier condition $Q_M=1+o(e^{-\mu_\infty M})$, with
+$\mu_\infty=\min\{m_n^\infty,m_{n+1}^\infty/2\}$, is \textbf{necessary-looking but
+not sufficient}: it compares with a limiting exponential scale rather than the
+finite-$M$ corrections the trace must resolve.  The boxed condition is required
+together with convergence of the ratios of \emph{distinct} eigenvalues,
+\textbf{subexponential control of the excited multiplicities}
+\[
+\tfrac1M\bigl|\log\bigl(d_{1,n}(M)/d_{0,n}(M)\bigr)\bigr|\to0,
+\qquad
+\tfrac1M\bigl|\log\bigl(d_{1,n+1}(M/2)/d_{0,n+1}(M/2)\bigr)\bigr|\to0,
+\]
+and \textbf{uniform control of the total excited trace tail}
+\[
+\sum_{j\ge2}\frac{d_{j,n}(M)}{d_{1,n}(M)}
+\,e^{-[m_{j,n}(M)-m_{1,n}(M)]M}\longrightarrow0 ,
+\]
+and the same at the next scale with $M/2$ in place of $M$ throughout.
+For an exact trace identity these conditions do force the limiting doubling.  Indeed,
+put
+\[
+ X_M=A_n(M)e^{-m_n(M)M},\qquad
+ Y_M=A_{n+1}(M/2)e^{-m_{n+1}(M/2)M/2}.
+\]
+The two tail conditions reduce the normalised trace identity to
+$1+X_M(1+o(1))=Q_M[1+Y_M(1+o(1))]$.  Here both $o(1)$ terms are
+\textbf{multiplicative relative-tail errors}; an additive absolute $o(1)$ would be
+too weak because it could absorb either exponentially small first-excited term.  The
+boxed condition then gives
+$X_M-Y_M=o(X_M+Y_M)$, hence $X_M/Y_M\to1$.  Taking logarithms, dividing by $M$,
+and using the two subexponential multiplicity conditions yields
+$m_n^\infty=m_{n+1}^\infty/2$.  Before passing to the limit the same argument gives
+the stronger exponent matching
+\[
+ m_n(M)M-\tfrac12m_{n+1}(M/2)M-\log\!\frac{A_n(M)}{A_{n+1}(M/2)}\longrightarrow0.
+\]
+This is the missing sufficiency argument; without the boxed finite-$M$ comparison,
+the conclusion does not follow.
+{\sloppy \textbf{\mbox{Level-by-level multiplicity} \mbox{control is not sufficient}}: it bounds each row of an enumeration, not how
+many rows there are.\par}
+\textbf{Positivity improving removes only the \mbox{top-eigenvalue}
+multiplicity}; it says nothing about $d_1,d_2,\dots$, nor about the spectral counting
+function.
+
+\emph{The multiplicity and tail conditions are both necessary, and each is forced by
+its own counterexample; they are not sufficient without the boxed normalisation.} The
+first family below has one excited level of exponentially large multiplicity; the second
+has exponentially many simple excited levels. \textbf{Neither the multiplicity condition
+nor the tail condition excludes both.}
+
+\emph{First: multiplicity.} For even $M$ put $D_M=\lfloor e^{M}\rfloor$, $q=e^{-2}$, and
+let $P_N=\tfrac1N\mathbf1\mathbf1^{*}$. Take
+\[
+T_{n,M}=q\,I_{D_M+1}+(1-q)P_{D_M+1},\qquad
+T_{n+1,M/2}=c_M\bigl(q\,I_2+(1-q)P_2\bigr),
+\]
+with $c_M=\bigl[(1+D_Me^{-2M})/(1+e^{-M})\bigr]^{2/M}$. Every entry is strictly
+positive, so both are \emph{positivity improving}; the spectra are $1$ simple and
+$e^{-2}$ with multiplicity $D_M$, respectively $1$ and $e^{-2}$ simple. The traces agree
+exactly, both equal to $1+D_Me^{-2M}$, so $\delta_n=\delta_{n+1}=0$; both gaps are $2$,
+so $m_{n+1}^\infty\neq2m_n^\infty$; $d_{0,n}=d_{0,n+1}=1$; the distinct-eigenvalue ratios
+are constant; and $\mu_\infty=\min\{2,1\}=1$ while the normalisation quotient is
+$c_M^{M/2}=(1+D_Me^{-2M})/(1+e^{-M})=1+O(e^{-2M})=1+o(e^{-\mu_\infty M})$.
+\textbf{The normalisation condition and the positivity-improving alternative are both
+satisfied, and the doubling still fails.} The mechanism is the excited multiplicity:
+$D_Me^{-2M}\sim e^{-M}$, so the trace sees the effective exponent
+$2-\tfrac1M\log D_M\to1$, not the spectral gap $2$. \emph{Here
+$\tfrac1M\log(d_1/d_0)\to1$; there is no level $j\ge2$, so the tail sum is empty and
+does not see it.}
+
+\emph{Second: counting.} Keep $D_M=\lfloor e^{M}\rfloor$ and choose distinct
+$\varepsilon_{j,M}\in[-\tfrac14,\tfrac14]$ with $\sum_{j\le D_M}\varepsilon_{j,M}=0$ ---
+equispaced and symmetric will do --- and order them so that
+$\varepsilon_{1,M}=\max_j\varepsilon_{j,M}$. Put
+$\lambda_{j,M}=e^{-2}(1+\varepsilon_{j,M})^{1/M}$
+and
+\[
+T_{n,M}=\mathrm{diag}\bigl(1,\lambda_{1,M},\dots,\lambda_{D_M,M}\bigr),\qquad
+T_{n+1,M/2}=c_M\,\mathrm{diag}(1,e^{-2}),
+\]
+with the same $c_M$. Then $\operatorname{Tr}(T_{n,M}^M)=1+e^{-2M}\sum_j(1+\varepsilon_j)
+=1+D_Me^{-2M}$, the traces agree exactly again, \textbf{every multiplicity is one},
+the excited ratios converge to $e^{-2}$ uniformly, both limiting gaps are $2$, and the
+normalisation quotient is the same $1+o(e^{-\mu_\infty M})$. \textbf{So the whole
+multiplicity condition is satisfied trivially --- and the doubling still fails.} What
+fails now is the tail: each term of $\sum_{j\ge2}$ lies in $[\tfrac35,1]$ and
+there are $D_M-1$ of them, so the sum grows like $e^{M}$. \emph{Checked at
+$M=4,8,16,24$: the traces agree, the normalisation error
+$|Q_M-1|/e^{-\mu_\infty M}$ falls to $3.2\times10^{-11}$, and the tail sum exceeds
+$1.6\times10^{10}$.} \emph{An earlier draft of this note wrote ``and likewise for the
+levels making up the remainder'', which is not a verifiable hypothesis; the defect it
+was gesturing at is the counting function, and this family is what makes that
+concrete.} \textbf{Note the
+arguments: the operator compared at the next scale is $T_{n+1,M/2}$, so its leading
+eigenvalue is evaluated at $M/2$, and the gaps are the limits, not constants in $M$.} Or else an
+identity already normalised so that the leading eigenvalue cannot absorb the excited
+term.
+
+\emph{Third: the limiting scale is not the finite-$M$ correction.}  Let
+$P_2=\tfrac12\mathbf1\mathbf1^*$ and
+$A(t)=e^{-t}I_2+(1-e^{-t})P_2$, whose entries are strictly positive and whose
+eigenvalues are $1,e^{-t}$.  Fix $a=1/3$, $b=1$, and for even $M$ put
+\[
+ a_M=a+M^{-1/2},\qquad b_{M/2}=b+(M/2)^{-1/2},
+\]
+\[
+ T_{n,M}=A(a_M),\qquad T_{n+1,M/2}=c_M A(b_{M/2}),\qquad
+ c_M=\left(\frac{1+e^{-a_MM}}{1+e^{-b_{M/2}M/2}}\right)^{2/M}.
+\]
+The traces agree exactly; both operators are positivity improving; all top and first
+excited multiplicities are one; the tail is empty; and the gaps converge to $a$ and
+$b$.  With $\mu_\infty=1/3$, the old condition still holds:
+$Q_M-1=O(e^{-M/3-\sqrt M})=o(e^{-\mu_\infty M})$.  Nevertheless
+$b\ne2a$.  Here $Q_M-1$ is of the same order as the actual dominant finite-$M$
+excited correction, so the boxed condition fails exactly where it should.  Thus
+positivity improving does not rescue the R29 condition.
+
+\emph{The original fixed-gap exact-trace family of Section 2 has $d_0=1$ at both scales and gives
+$1+\Theta(e^{-\mu_\infty M})$ in that quotient, so the condition is not vacuous: it
+excludes it.} \emph{An earlier draft of this note wrote the numerator at $M$ rather than
+$M/2$, and the gaps as constants --- in a note whose central defect is confusing what
+moves with $M$ --- and normalised only the leading eigenvalues, ignoring the very
+multiplicity correction it had just declared indispensable.} \emph{An earlier draft of this note offered plain uniform
+spectral convergence as a repair, which its own counterexample refutes.}
+\end{itemize}
+None appears. \emph{An earlier draft of this note listed the first item as one
+alternative among four, which understates what it owes.}
+
+\textbf{Theorem 4.1 is not established by its printed proof.}
+
+\section{What this costs}
+
+\paragraph{Proposition 4.4 silently normalises the prefactor of (H-FACT) to one.}
+(H-FACT) is printed as
+\[
+|\delta_n|\le C_{\rm fact}\,e^{-\kappa'},\qquad
+\kappa'>0\ \text{independent of }L_n .
+\]
+Proposition 4.4(i) invokes ``\emph{if $\bar\delta\le e^{-\kappa'}$ uniformly in $L_n$
+(Hypothesis (H-FACT))}''. \textbf{The prefactor has been set to one.} The implication
+from $C_{\rm fact}e^{-\kappa'}$ to $e^{-\kappa'}$ is \emph{automatic when
+$C_{\rm fact}\le1$}; for $C_{\rm fact}>1$ it needs the renormalised exponent
+\[
+\widetilde\kappa=\kappa'-\log C_{\rm fact} ,
+\]
+hence \textbf{$\kappa'>\log C_{\rm fact}$} to leave a positive exponent at all, and then
+$\widetilde\kappa$ in place of $\kappa'$ \emph{everywhere downstream}: the cap of
+Lemma 4.3 becomes $m_nM\le\widetilde\kappa/2$ and the cascade factor becomes
+$1+O(n_{\max}e^{-\widetilde\kappa/2})
+=1+O(n_{\max}\sqrt{C_{\rm fact}}\,e^{-\kappa'/2})$, so $C_{\rm fact}$ enters the
+accumulation as $\sqrt{C_{\rm fact}}$. \textbf{No such renormalisation is stated
+anywhere}, and the manuscript nowhere bounds $C_{\rm fact}$. \emph{An earlier draft of
+this note called the substitution ``a strictly stronger bound''; that is not universal
+--- it is an equality of content when $C_{\rm fact}=1$ and a weakening when
+$C_{\rm fact}<1$.}
+\emph{This is independent of the accumulation and of the resolution defects below:
+before any iteration, the proof does not literally consume the hypothesis its own
+theorem declares.} The counterexample below is stated against the proposition's own,
+stronger, printed bound $\bar\delta\le e^{-\kappa'}$, so it is untouched by this.
+
+\paragraph{Proposition 4.4 --- the window controls the wrong side.} Its additive
+estimate has the shape
+$m_{n+1}=2m_n+O(\bar\delta e^{m_nM}/M)+O(e^{-(m_n'-m_n)M}/M)$. Writing $x=m_nM$ and
+dividing by $m_n=x/M$ to get the \emph{relative} estimate the cascade then uses,
+what is needed is
+\[
+\bar\delta\,e^{m_nM}\ll m_nM
+\qquad\text{and}\qquad
+e^{-(m_n'-m_n)M}\ll m_nM .
+\]
+The paper instead requires only
+$e^{-x}\gg\bar\delta$ and then caps $x\le\kappa'/2$. \textbf{Neither of the two
+conditions follows}: as $x\to0$ the printed condition becomes automatically easy,
+since $e^{-x}\to1$, while $\bar\delta e^x/x$ grows without bound. \textbf{A fixed
+error floor can hide a positive gap}, and a very small gap is not an advantage
+against a fixed error --- it falls below the resolution.
+
+\emph{A finite positive counterexample, as a family parametrised by $\kappa'$.}
+\textbf{Put $\bar\delta=e^{-\kappa'}$ and $x=\bar\delta/2$}, and choose any
+\textbf{even $M\ge M_0$}, the printed lower bound on the window (the manuscript's
+$C$ in ``$C\le M$''). Take
+$T_n=\mathrm{diag}(1,e^{-x/M})$ and $T_{n+1}=\mathrm{diag}(1,e^{-4x/M})$, with gaps
+$m_n=x/M$ and $m_{n+1}=4x/M$, so $m_{n+1}\neq2m_n$. Put $\delta_n=0$ and
+$\delta_{n+1}=(1+e^{-x})/(1+e^{-2x})-1$, which satisfies
+$0<\delta_{n+1}<x<\bar\delta$. Then
+$\operatorname{Tr}(T_{n+1}^{M/2})(1+\delta_{n+1})
+=\operatorname{Tr}(T_{n}^{M})(1+\delta_n)$ exactly: the approximate partition
+identity holds within the admitted errors, both gaps are positive, $e^{-x}\gg
+\bar\delta$ holds with margin $e^{\kappa'}$ up to a factor tending to $1$, the window
+$x\le\kappa'/2$ holds \textbf{for every $\kappa'\ge1$}, \emph{and the doubling
+fails}.
+\emph{Not for every positive value of the parameter: that window is
+$e^{-\kappa'}\le\kappa'$, first true at $\kappa'=W(1)=0.5671\ldots$, and the same
+condition one scale up, $2x\le\kappa'/2$, is $2e^{-\kappa'}\le\kappa'$, first true at
+$W(2)=0.8526\ldots$; an earlier draft asserted it for all positive values, which is
+false below those two thresholds. Taking $\kappa'\ge1$ clears both, and clears
+$e^{-2x}\ge\bar\delta$ at the next scale as well.}
+
+\emph{And it fails relatively, not merely exactly.} Proposition 4.4(i) does not
+promise exact doubling: it promises $1+O(e^{-\kappa'/2})$ per step. Here
+$m_n=x/M$ and $m_{n+1}=4x/M$, so
+\[
+\frac{m_{n+1}}{2m_n}-1=1
+\qquad\text{for every }\kappa' ,
+\]
+which is not $O(e^{-\kappa'/2})$ as $\kappa'\to\infty$. \emph{The flat-ASCII
+transcriptions that earlier drafts carried in this prose have been removed; they belong
+in the all-ASCII submission sheet, where they are, and not in the typeset page.} Equivalently, at $n_{\max}=1$ the
+downward form gives $m_n/(m_{n+1}/2)-1=-\tfrac12$, again a fixed nonzero constant.
+\emph{Checked numerically for $\kappa'=10,20,40,80$: the relative error stays at
+$1$ while $e^{-\kappa'/2}$ falls to $4\times10^{-18}$.} \textbf{The separation
+condition and the one-sided cap are met with growing margin} --- $e^{-x}/\bar\delta\sim
+e^{\kappa'}$ and $\kappa'/2-x\to\infty$ --- \textbf{while the admitted-error bound is met
+uniformly and not with growing margin}, since $\delta_{n+1}/\bar\delta\to\tfrac14$
+as $\kappa'\to\infty$; and $M\ge M_0$ is met by a fixed $M$. \emph{An earlier draft of
+this note wrote that every hypothesis was met with growing margin, which is false for
+those last two.} \textbf{If the implicit $O$-constant is allowed to depend
+arbitrarily on $\kappa'$, the printed estimate is not quantitative enough to support
+its subsequent ``harmless error'' use; under the standard uniform reading, the
+family above refutes it \emph{as a general implication}, which is not the same as
+refuting the conclusion for the intended operators.} What this family reaches is the
+step that turns the additive estimate into a relative cascade and a uniform positive
+lower bound; \textbf{the additive estimate itself is reached by the exact-trace family
+of \S2}, where $\bar\delta=0$ and the remainder is genuinely present.
+\emph{An earlier draft of this note said the additive estimate survived both.} \emph{An earlier draft stopped at ``the doubling
+fails'', which by itself only denies exact equality --- not what the proposition
+claims.}
+
+\textbf{The finite-error spectral window is two-sided}, roughly
+$\bar\delta e^{m_nM}\ll m_nM\lesssim\log(1/\bar\delta)$, together with quantitative
+isolation from the next \emph{distinct} spectral value --- the third-eigenvalue term
+$O(e^{-(m_n'-m_n)M}/M)$ is dropped with no hypothesis at all. For
+$\bar\delta\le e^{-\kappa'}$ and $m_nM\le\kappa'/2$ the lower end requires
+$m_nM\gg e^{-\kappa'/2}$, and \textbf{nothing in (H-FACT), Theorem 3.1 or Lemma 4.3
+supplies that resolution floor}. \textbf{Theorem 3.1 supplies the lower bound
+$m_{n_{\max}}\ge c_0$, and no hypothesis compares $c_0L_{n_{\max}}$ with that floor.}
+If the certified lower bound lies below the floor, the available information does
+not guarantee that the actual gap can be resolved --- \emph{the actual gap may still
+be larger}. \emph{An earlier draft wrote that the smallness of $c_0$ ``can put the
+gap below'' the floor, which repeats, three lines after denouncing it, the very
+lower-bound-as-value slip attributed to Lemma 4.3.} \emph{This defect precedes the
+$n_{\max}e^{-\kappa'/2}$ accumulation: it bites at a single step.} And the proof
+inserts the error factors
+``\emph{and repeats Step 4}'', so it inherits the $M$-dependence of \S2 before the
+error floor $\bar\delta$ is even reached.
+
+\paragraph{Lemma 4.3 --- a conditional identity, and an inequality used backwards.}
+That $m_{n+1}=2m_n$ and $L_{n+1}=L_n/2$ imply $m_{n+1}L_{n+1}=m_nL_n$ is valid
+algebra, but its premise is exactly the unestablished conclusion of Theorem 4.1.
+\textbf{Lemma 4.3(a) stands only as a conditional algebraic implication}, not as an
+effective invariance of the cascade.
+
+\emph{Part (b) is worse, and it is an independent failure.} Theorem 3.1 supplies only
+$m_{n_{\max}}\ge c_0$. Lemma 4.3 writes
+\emph{``$m_{n_{\max}}=c_0=(\gamma N_c/8)e^{-K/\gamma}$ is exponentially small in
+$1/\gamma$''} --- \textbf{it replaces a lower bound by an equality and then
+uses the smallness of $c_0$ as an upper bound on the gap.} A small lower bound says
+nothing about how large the gap is: $m_{n_{\max}}=1$ with $c_0=10^{-19}$ satisfies
+$m_{n_{\max}}\ge c_0$ and violates the window. \textbf{The claim that the window is
+automatic is not established}, and it would not be established even if Theorem 3.1's
+own proof were repaired: what the window needs is an \emph{upper} bound on
+$m_{n_{\max}}$, or the terminal-window condition assumed outright. The suite does not
+catch this either --- checking that $c_0C_0$ is tiny checks the size of the lower
+bound, not the size of the gap. \emph{An earlier draft of this note misquoted that
+constant: it dropped the $\gamma$ prefactor and wrote $\kappa$ for $\gamma$ in the
+exponent. Those are two different parameters --- the terminal coupling and the polymer
+decay constant of Theorem 2.1(b) --- and a note whose object is the direction of an
+inequality cannot make its case with a formula the paper never wrote.} \emph{An earlier draft of this note called part (b)
+merely a second consumption of Theorem 3.1's numerical value. It is not: Theorem 3.1
+never supplied that value, and this is a direction error of its own. It is the third
+inequality-direction slip recorded in this chain.}
+
+\paragraph{The printed control on the accumulated factorisation error ceases to be
+small as $g^2\to0$.} Proposition 4.4
+and the main proof produce
+$m_0=(m_{n_{\max}}/2^{n_{\max}})\bigl(1+O(n_{\max}e^{-\kappa'/2})\bigr)$, and the
+proof then replaces that factor by $1+o(1)$, noting that it is harmless for
+$g^2\ge1/(b_0e^{\kappa'/2})$ and that ``\emph{for smaller $g^2$ the constant degrades
+explicitly but remains positive}'' for $n_{\max}e^{-\kappa'/2}\le\frac12$,
+``\emph{which we fold into $g_0^2$}''. \textbf{That folding runs the wrong way.}
+Since $n_{\max}=\frac{1}{2b_0\log2}(1/g^2-1/\gamma)+O(1)$, at fixed $\kappa'$ one has
+$n_{\max}e^{-\kappa'/2}\to\infty$ as $g^2\to0$, and the smallness condition is a
+\emph{lower} bound $g^2\gtrsim c\,e^{-\kappa'/2}$, which cannot be absorbed into a
+hypothesis of the form $0<g^2\le g_0^2$ --- shrinking $g_0$ makes it worse.
+
+\textbf{What that shows, exactly.} Write the relative remainder as $R(g)$, so that the
+printed estimate is an upper bound
+\[
+|R(g)|\ \le\ A_{\rm rel}(g)\,n_{\max}(g)\,e^{-\widetilde\kappa(g)/2}
+\]
+for some explicit $A_{\rm rel}$. \textbf{The printed upper bound ceases to be small} and
+becomes unbounded as $g\to0$. \textbf{This does not prove that the actual error grows}:
+$R\equiv0$ satisfies any such bound. What follows is only that \emph{the printed
+estimate can no longer justify the replacement by $1+o(1)$} --- information insufficient,
+not conclusion false. \emph{Earlier drafts of this note, and its submission sheet, said
+that the accumulated error itself grows and diverges. That reads an upper bound as a
+value, which is the same slip this note attributes to Lemma 4.3(b), with the inequality
+turned round.}
+
+\textbf{And the printed hypothesis does not specify coupling uniformity.} (H-FACT)
+says only that $\kappa'>0$ is independent of $L_n$. It does not say that $\kappa'$ or
+$C_{\rm fact}$ is independent of $g$, nor that either is uniform on $0<g^2\le g_0^2$.
+\textbf{The printed (H-FACT) does not suffice under either reading}: under the
+first \textbf{the printed upper bound becomes unbounded} and therefore ceases to justify
+$R(g)=o(1)$ --- \textbf{this does not prove that the actual accumulated error diverges};
+under the second the hypothesis is under-specified and must be supplemented.
+\emph{An earlier draft of this note wrote that the accumulated error diverges here, four
+lines after distinguishing a bound from a value.} Two readings, and the paper fixes neither:
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item \textbf{if $C_{\rm fact}$, $\kappa'$ and $A_{\rm rel}$ are uniform in $g$},
+the printed control parameter becomes unbounded and cannot be folded into a hypothesis
+$0<g^2\le g_0^2$;
+\item if they may depend on $g$, write
+$\widetilde\kappa(g)=\kappa'(g)-\log C_{\rm fact}(g)$, and \textbf{choose an explicit
+$A_{\rm rel}(g)\ge1$} with
+$|R(g)|\le A_{\rm rel}(g)\,n_{\max}(g)\,e^{-\widetilde\kappa(g)/2}$ --- a specified
+function, not ``the'' implicit constant of an $O(\cdot)$, which is not unique and can be
+scaled up at will; $A_{\rm rel}\ge1$ costs nothing, since one may replace any bound by
+its maximum with $1$, and it keeps $\log A_{\rm rel}$ non-negative. The growth condition
+is then imposed on that specified bound:
+\[
+\widetilde\kappa(g)-2\log n_{\max}(g)-2\log A_{\rm rel}(g)\longrightarrow+\infty ,
+\]
+If $A_{\rm rel}$ is only known to be bounded above, \textbf{a sufficient
+condition} --- not an equivalent one --- is $\widetilde\kappa(g)=2\log
+n_{\max}(g)+\omega(1)$, which since $n_{\max}\asymp g^{-2}$ reads
+$\widetilde\kappa(g)\ge4\log(1/g)+\omega(1)$; \textbf{the chosen explicit bound
+$A_{\rm rel}$ must be uniformly bounded in $g$} for that reduction to be available at
+all. For a
+factor merely bounded by some $\eta<1$ rather than $o(1)$, the requirement relaxes to
+$\widetilde\kappa\ge2\log n_{\max}+2\log(A_{\rm rel}/\eta)$. \textbf{None of this is an
+$O(1)$ statement}: a bounded difference keeps the factor below a constant, it does not
+send it to zero. \textbf{That growth condition is an additional missing hypothesis.}
+\emph{An earlier draft of this note wrote $+O(1)$ where $\omega(1)$ is needed, and left
+$A_{\rm rel}$ out of the condition while admitting three lines later that it too needs
+uniform control.}
+\end{itemize}
+\emph{An earlier draft of this note said the flat verdict was ``the first reading
+only''. That was itself wrong: the printed hypothesis fails under \emph{both}. The fault
+of the flat verdict was that it did not say which reading it was arguing from, not that
+its verdict was too strong.} \textbf{This propagates to Theorem 1.1's own constant.} The paper declares
+$c(N_c)>0$ to depend only on $N_c$ and the universal constants of Balaban's
+construction; that cannot be maintained unless $C_{\rm fact}$, $\kappa'$ and the
+implicit $O$-constants are themselves controlled uniformly over the admitted data.
+What would suffice: a two-sided coupling window rather than the half-line;
+per-scale errors summable uniformly in $n_{\max}$; a bound improving with $g$ or with
+the scale; or a proof that the accumulation renormalises without the $n_{\max}$ factor.
+
+\paragraph{Remark 4.5 --- half stands.} That the temporal nonlocality of Balaban's
+effective actions ``\emph{is not an artifact}'' stands. That (H-FACT) is
+``\emph{the sharply isolated open point of this paper}'' does \textbf{not}: there are
+now at least three separate unbuilt bridges --- the Euclidean-action/ground-state
+measure identification (\S1.1), the four-dimensional-action/three-dimensional-operator
+construction (\S1.3), and the fixed-operator gap extraction (\S2).
+
+\paragraph{Theorem 1.1 --- not established at several distinct points audited
+below, and its printed quantifier is not justified either.} \textbf{The terminal-gap
+derivation and the automatic-window claim are separate failures}, not one input
+consumed twice; it now also loses the transport of the gap from the terminal scale
+back to the original one. \textbf{The automatic-window failure is independent of the
+terminal-gap proof}: it
+reverses the role of a lower bound and would survive any repair of Theorem 3.1
+(\S3). The failure of the transport step is a third, independent defect.
+\emph{An earlier draft of this note called the first two ``two consumptions of the
+same broken input''. That was still true of the terminal gap and false of the
+window, and it survived into the same round that proved it false.}
+
+\emph{And a fourth debt, of domain rather than of proof.} The blocking sequence
+$\Lambda_k=(\mathbb Z/(L/2^k)\mathbb Z)^4$ requires \textbf{admissible volumes}:
+Remark 2.2 and Step 2 restrict to \textbf{$2^{n_{\max}+1}\le L\le C_0\,2^{n_{\max}}$},
+equivalently $L=2^{n_{\max}}q$ with $2\le q\le C_0$ --- so $L\in2^{n_{\max}}\mathbb N$
+alone is not enough: it admits $L=2^{n_{\max}}$, a terminal slice of extent one, which
+Remark 2.2 itself excludes. \textbf{And the lower endpoint depends on $g$} through
+$n_{\max}$, so it cannot be replaced by a fixed $L_0$ as $g^2\to0$. Theorem 1.1 nevertheless quantifies
+over every $L$ in an interval, and no rounding, interpolation or irregular-blocking
+argument is given for the rest. \textbf{The statement is not literally established
+with its printed quantifier over all $L$.} \emph{This is the same correction the
+companion erratum applies to Theorem 6.3 of \texttt{ai.viXra:2602.0035}; it had not
+been propagated back to the paper the cascade comes from.}
+
+\section{Two residual pieces of structure, with their exact limitations}
+
+Neither is a printed statement that survives as printed. Both are pieces of structure
+that a reformulated route could reuse, and each is stated here with what it still owes.
+
+\subsection{The transfer operator is on the intended sector, but the measure is unstated}
+
+Theorem 4.1 writes $\Hil_n=L^2(B^{\rm spat}_n)$ without saying whether the measure is
+$\nu_{\rm spat}=\pi_\#\mathrm{Haar}$, the Riemannian volume of the regular stratum, or
+another. \emph{An earlier draft of this note called this ``the right object, by
+(I1)''; that was premature and is withdrawn}, and it contradicted the appended page,
+which records that this paper's spatial domain is not yet fixed. The accurate
+statement is: \textbf{Theorem 4.1 intends a transfer operator on the gauge-invariant
+spatial sector, but the printed notation does not specify the measure; identification
+(I1) applies only after $\nu_{\rm spat}=\pi_\#\mathrm{Haar}$ is taken explicitly.}
+
+\subsection{The terminal oscillation bound needs a two-sided coupling hypothesis}
+
+Step 2 bounds $\operatorname{osc}(V_W)=O(1)$ by the plaquette count and
+$\sum_X|\epsilon_{n_{\max}}(X)|\le C_\epsilon(\kappa,d)<\infty$, both correctly. It
+then substitutes $g^2_{n_{\max}}=\gamma$ --- equivalently
+$\beta_{n_{\max}}=2N_c/\gamma$ --- and concludes $\operatorname{osc}(f)\le K/\gamma$.
+
+But Theorem 2.1(c) supplies only $g^2_{n_{\max}}\le\gamma$, i.e.\
+$\beta_{n_{\max}}\ge 2N_c/\gamma$ --- a \emph{lower} bound on $\beta_{n_{\max}}$. An
+upper bound on $\beta_{n_{\max}}\operatorname{osc}(V_W)$ requires an \emph{upper} bound
+on $\beta_{n_{\max}}$, and the printed inequality runs the other way. \emph{An earlier
+draft of this note asserted that this bound ``does establish what it claims
+uniformly''; that is withdrawn.}
+
+\emph{And it is used twice, not once.} The last line of the same proof concludes
+\[
+m_{n_{\max}}=\tfrac{1}{2}g^2_{n_{\max}}\lambda_1
+\;\ge\;\tfrac{1}{8}\gamma N_c\,e^{-K/\gamma},
+\]
+replacing the prefactor $g^2_{n_{\max}}$ by $\gamma$ inside a \emph{lower} bound.
+The hypothesis $g^2_{n_{\max}}\le\gamma$ does not license that either: it makes the
+prefactor smaller, not larger. So the unsupported replacement
+$g^2_{n_{\max}}=\gamma$ occurs at both ends of the proof --- once to bound
+$\beta_{n_{\max}}$ from above in the oscillation estimate, once to bound the kinetic
+prefactor from below --- and the printed one-sided hypothesis supplies neither
+inference. \textbf{A two-sided terminal-coupling bound is required} ---
+$c\gamma\le g^2_{n_{\max}}\le\gamma$ for some $c>0$, or directly
+$\beta_{n_{\max}}\le C_\beta/\gamma$ --- and it repairs both places at once, with constants
+degraded by $c$. (The direction of this slip is the same as one corrected in
+\texttt{ai.viXra:2602.0052}: substituting an endpoint into a bound that moves the
+wrong way.)
+
+What survives is only the finite-dimensional oscillation estimate for the explicit
+Euclidean effective action, namely
+\[
+\operatorname{osc}(f)\;\le\;\beta_{n_{\max}}C_W+2C_\epsilon ,
+\qquad C_W:=\operatorname{osc}(V_W),\quad
+C_\epsilon:=C_\epsilon(\kappa,d).
+\]
+This is an explicit finite-dimensional inequality. It becomes uniform in the claimed
+parameters only after a two-sided terminal-coupling bound is supplied --- note that
+the right-hand side still contains $\beta_{n_{\max}}$, which is exactly the quantity
+not yet bounded above. And \textbf{it does not control the ground-state exponent}
+$f_0=-\log\psi_0^2$; it therefore neither supplies an $(\text{A-osc})$-type hypothesis
+about the ground state nor removes the separate identification required by (I3).
+
+\section{The citation loop, and what a clean repair would need}
+
+Theorem 3.1 proves the terminal gap by ``\emph{applying the argument of
+{\rm[3, Theorem 5.3]}}'', where [3] is \texttt{ai.viXra:2602.0035}; that paper cites
+this one as discharging its (H1). The loop is not logically vicious --- this paper
+re-runs the method with its own inputs --- but \textbf{this paper is not an independent
+confirmation of that one}, and neither discharges a hypothesis of the other.
+
+A standalone terminal lemma stated on $(B,\nu,K_\nu)$ would \emph{not} by itself
+suffice: for the Euclidean measure $e^{-S_{\rm eff}}\nu$ it would remain a statement
+about a Euclidean diffusion. To discharge a Hamiltonian gap the lemma must be stated
+either for $\mu_0=\psi_0^2\nu$, or together with an explicit transfer-operator
+construction identifying the two quantities.
+
+\section{Scope}
+
+Not examined here: Balaban's package, the numerical suite beyond the observation of
+\S2, Theorem 2.1 and the coupling-evolution erratum of Remark 2.3, and the existence
+of a positive self-adjoint trace-class transfer matrix at each scale, which Theorem
+4.1 assumes as part of its hypothesis. \emph{This audit does not refute} (H-BAL)
+\emph{or} (H-FACT) --- both are, as printed, unusually candid --- but those hypotheses
+do not suffice for the printed conclusions without further inputs, \textbf{including}
+all of the following:
+\begin{enumerate}\setlength{\itemsep}{0pt}
+\item a \emph{globally specified} Euclidean measure with a closed form, along one of
+the two branches of (I2b) --- and hence either control of $\operatorname{osc}(\log w)$
+on route (A), or a theorem identifying the $\nu$-based measure as the correct object
+on route (B) (\S1.1--1.2);
+\item a four-dimensional-action to three-dimensional-space transfer-operator or
+Hamiltonian construction (\S1.3);
+\item the ground-state-measure identification (I3);
+\item the renormalisation $\kappa'\mapsto\kappa'-\log C_{\rm fact}$ that
+Proposition 4.4 needs in order to consume (H-FACT) as printed when $C_{\rm fact}>1$,
+together with $\kappa'>\log C_{\rm fact}$ (\S3);
+\item \emph{either} a restriction of the theorem to a coupling window chosen so
+that $A_{\rm rel}\,n_{\max}(g)\,e^{-\widetilde\kappa/2}\le\eta<1$ on it, if
+$C_{\rm fact}$, $\kappa'$ and $A_{\rm rel}$ are uniform in $g$ --- a compact window
+alone only makes $n_{\max}$ finite, not small against the error floor, and in any case
+this changes the statement rather than repairing its printed quantifier over all
+sufficiently small couplings --- \emph{or}, if they may depend on $g$, the growth
+condition
+$\widetilde\kappa(g)-2\log n_{\max}(g)-2\log A_{\rm rel}(g)\to+\infty$ (\S3);
+\item a two-sided terminal-coupling bound (\S4.2);
+\item the admissible-volume condition $2^{n_{\max}+1}\le L\le C_0\,2^{n_{\max}}$ for
+the blocking sequence, whose lower endpoint moves with $g$ (\S3);
+\item an \emph{upper} bound on $m_{n_{\max}}$, or the terminal-window condition as a
+hypothesis, for Lemma 4.3(b) (\S3);
+\item per-scale factorisation errors that stay summable as $g^2\to0$, which the
+printed (H-FACT) does not guarantee under either reading of its
+coupling-uniformity (\S3);
+\item {\sloppy a two-sided spectral-resolution window for the approximate
+trace extraction, including $\bar\delta e^{m_nL_n}\ll m_nL_n$ and
+quantitative isolation from the next distinct spectral value (\S3);\par}
+\item for the cascade (\S2), \emph{either} a fixed-spatial-slice family
+\emph{together with} an identity valid for all temporal extents over that fixed space,
+\emph{or} an operator relation, \emph{or} a \emph{normalised} spectral-convergence
+ theorem in the sense of \S2, with normalisation relative to the actual finite-$M$
+ first-excited contributions, \emph{subexponential control of the excited
+ multiplicities, and uniform control of the total excited trace tail}.  The displayed
+ multiplicity and tail conditions are necessary but not sufficient without that
+ finite-$M$ normalisation; ordinary spectral convergence and the old limiting-scale
+ normalisation are insufficient, positivity improving removes only the
+ top-eigenvalue multiplicity, and the fixed slice alone does not suffice.
+\end{enumerate}
+\emph{An earlier draft of this section listed only items 3--5. Items 1 and 2 are
+defects this same note had already separated, and the closing list dropped them; it is
+written with ``including'' now because a closing list of obligations that reads as
+exhaustive is the same failure as a survivors list closed too early.}
+
+\vspace{4pt}
+\noindent\rule{\textwidth}{0.8pt}
+
+\noindent\footnotesize
+\textbf{Provenance.} \S1 was found by asking which measure each paper of this chain
+uses, and by auditing the cited Ricci theorem rather than the citing sentence.
+\textbf{\S2, \S4.1 and \S4.2 came from external audits of the earlier drafts of this
+very note}, which had certified the doubling cascade as surviving intact, the spatial
+sector as the right object, and the oscillation bound as uniform. All three were
+premature. A second audit round supplied the rest: the \emph{second} inverted use of
+the coupling hypothesis in the last line of the same proof, the positivity condition
+$a,b>0$ without which the abstract example has the wrong top eigenvalue, the
+multiplicity defect of Step 3, and the distinction between three proof failures and
+three independent routes. A third round found the drift \emph{on the appended page
+itself}, which had recorded this paper's printed measure against $\nu$ instead of
+$\mathrm{Vol}_B$ --- the very substitution its new (I2b) forbids --- and then found
+that first correction overshooting, asserting the two measures \emph{are} different
+when that needs $w$ non-constant and is not proved here. A fourth round supplied the
+three-eigenvalue family, the thresholds $W(1)$ and $W(2)$ for the window, and the
+separation between a false general implication and a refuted printed conclusion ---
+the note had crossed it in the direction that overstates. The pattern --- a survivors list closed by checking what a
+statement depends on rather than by reading its proof --- is the same one this
+correction campaign has now recorded five times, and is the reason the appended page
+exists. That page is reproduced verbatim: paraphrase is how the columns drift.
+
+\end{document}

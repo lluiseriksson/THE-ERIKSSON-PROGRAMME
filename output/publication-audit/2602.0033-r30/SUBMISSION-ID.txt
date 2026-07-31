@@ -1,0 +1,62 @@
+STATUS: HOLD - BUILT, NOT YET INDEPENDENTLY AUDITED
+PUBLICATION ACTION: REPLACE VERSION
+PUBLICATION: ai.viXra.org:2602.0033
+CATEGORY: Mathematical Physics
+
+TITLE:
+The Yang-Mills Mass Gap on the Lattice: A Conditional Synthesis
+
+AUTHOR:
+Lluis Eriksson
+
+ABSTRACT:
+This replacement preserves the published version 2 and appends a page-fixed erratum
+and an object-provenance sheet. The erratum withdraws the printed derivations of
+Theorems 1.1, 3.1, and 4.1 without claiming that their conclusions for the intended
+Yang-Mills operators are false. It separates defects in the Euclidean-measure to
+ground-state-measure identification, the use of a four-dimensional effective action
+on a three-dimensional spatial orbit space, the volume-dependent transfer-operator
+trace extraction, the finite-error resolution window, the factorisation-error
+accumulation, and the admissible-volume quantifiers. Three explicit positive
+trace-class counterexamples show why ordinary spectral convergence, positivity
+improving, first-excited multiplicity control, and total-tail control do not by
+themselves imply gap doubling. A sufficient exact-trace repair is stated at the
+finite-volume scale: the leading-eigenvalue normalisation error must be little-o of
+the sum of the two actual first-excited contributions, together with subexponential
+first-excited multiplicities and vanishing relative excited tails. The previous v2
+text remains included solely for provenance; no unconditional four-dimensional or
+continuum mass-gap result is claimed.
+
+COMMENTS:
+25 pages. v3: 13-page erratum + 4-page provenance + preserved 8-page v2. The printed
+proofs of Theorems 1.1, 3.1 and 4.1 are withdrawn; conclusions are not asserted false.
+
+CHANGE NOTE:
+R30 replaces the rejected R29 draft. It (1) compares Q_M-1 with the actual finite-M
+first-excited contributions; (2) proves the resulting exact-trace doubling lemma;
+(3) adds a positivity-improving counterexample to the weaker R29 condition; (4)
+corrects Q_M to |Q_M-1| in the numerical check; (5) identifies the fixed-gap family
+unambiguously; (6) orders epsilon_(1,M) as the first excited level; and (7) keeps
+A_rel as a chosen explicit bound throughout. R29 was never submitted.
+
+FILE:
+artifacts/2602.0033v3-R30-878dba7c-25pp.pdf
+
+PUBLIC ABSTRACT URL:
+https://ai.vixra.org/abs/2602.0033
+
+CURRENT PUBLIC PDF URL:
+https://ai.vixra.org/pdf/2602.0033v2.pdf
+
+CURRENT PUBLIC PDF SHA-256:
+91a7d95e1decc1771c548533748916d9941a77f02937fddf90fb13e348730bfe
+
+IMMUTABLE GITHUB SOURCE LINK:
+PENDING UNTIL THE R30 COMMIT IS CREATED AND PUSHED
+
+OWNER ORDER:
+HOLD. The global submission order will be assigned only after the 103-paper ledger
+and supersession matrix are closed.
+
+OWNER ACTION:
+DO NOT UPLOAD OR CLICK SUBMIT.

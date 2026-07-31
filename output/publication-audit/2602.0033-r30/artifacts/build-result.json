@@ -1,0 +1,12 @@
+{
+  "status": "BUILT-NOT-AUDITED",
+  "final_pdf": "2602.0033v3-R30-878dba7c-25pp.pdf",
+  "final_pdf_sha256": "878dba7cc659477ea9172a24f9dba88498d41ba49af44cfdcb1a73baa13f6285",
+  "final_pdf_pages": 25,
+  "erratum_pdf": "erratum_2602_0033_r30.pdf",
+  "erratum_pdf_sha256": "6f800d1847b840d99714f41833261e87e715e3c48807ebfc5587345ba8b5f4eb",
+  "erratum_pdf_pages": 13,
+  "provenance_pdf_sha256": "f3c2e1cb9ffcc1a1c0f66f5da96fa415248480eebd03f7abd2d93458a5b5cd01",
+  "public_v2_pdf_sha256": "91a7d95e1decc1771c548533748916d9941a77f02937fddf90fb13e348730bfe",
+  "source_tex_sha256": "6362b13aa7679e50432cdcf25bde10a0152dd96dfad8d3398586bff5eba4e530"
+}

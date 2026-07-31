@@ -1,0 +1,48 @@
+PYTHON_OPTIMIZE_LEVEL 1
+PASS final PDF exists
+PASS final PDF SHA matches build result
+PASS final PDF is not encrypted
+PASS final PDF has 25 pages
+PASS erratum has 13 pages
+PASS provenance has 4 pages
+PASS preserved public v2 has 8 pages
+PASS provenance input SHA is frozen
+PASS public v2 input SHA is frozen
+PASS forbidden phrase absent: the normalisation quotient divided by
+PASS forbidden phrase absent: The family above has $d_0=1$
+PASS forbidden phrase absent: the implicit relative-error constant must be uniform in g
+PASS required phrase present: actual finite-$M$ first-excited contributions
+PASS required phrase present: A_n(M)e^{-m_n(M)M}
+PASS required phrase present: A_{n+1}(M/2)e^{-m_{n+1}(M/2)M/2}
+PASS required phrase present: necessary but not sufficient
+PASS required phrase present: normalisation error
+PASS required phrase present: original fixed-gap exact-trace family of Section 2
+PASS required phrase present: chosen explicit bound
+PASS verifier has no assertion statements
+PASS positivity example exact trace identity M=4
+PASS positivity example exact trace identity M=8
+PASS positivity example exact trace identity M=16
+PASS positivity example exact trace identity M=24
+PASS positivity example exact trace identity M=64
+PASS old limiting-scale ratio tends to zero M=64
+PASS new finite-M condition rejects example M=64
+PASS positivity example exact trace identity M=256
+PASS old limiting-scale ratio tends to zero M=256
+PASS new finite-M condition rejects example M=256
+PASS positivity example violates limiting doubling
+PASS render produced all 25 final pages
+PASS page 14 pixel-equals provenance page 1
+PASS page 15 pixel-equals provenance page 2
+PASS page 16 pixel-equals provenance page 3
+PASS page 17 pixel-equals provenance page 4
+PASS page 18 pixel-equals public v2 page 1
+PASS page 19 pixel-equals public v2 page 2
+PASS page 20 pixel-equals public v2 page 3
+PASS page 21 pixel-equals public v2 page 4
+PASS page 22 pixel-equals public v2 page 5
+PASS page 23 pixel-equals public v2 page 6
+PASS page 24 pixel-equals public v2 page 7
+PASS page 25 pixel-equals public v2 page 8
+STATUS SELF-VERIFIED-NOT-INDEPENDENT
+FINAL 2602.0033v3-R30-878dba7c-25pp.pdf
+SHA256 878dba7cc659477ea9172a24f9dba88498d41ba49af44cfdcb1a73baa13f6285
