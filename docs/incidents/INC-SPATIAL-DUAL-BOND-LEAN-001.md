@@ -1,8 +1,11 @@
 # INC-SPATIAL-DUAL-BOND-LEAN-001 — runtime correction and corrupted Lean archive
 
-Date: 2026-08-01  
-Campaign: task 14, exact local dual-bond identity  
-Lean source SHA under test: `85847dd19623c692b8345cee864be7837f5c7656`  
+Date: 2026-08-01
+
+Campaign: task 14, exact local dual-bond identity
+
+Lean source SHA under test: `85847dd19623c692b8345cee864be7837f5c7656`
+
 Preregistered runner SHA: `d41fa43a78370bf93cdc181a9f8d9d0d89ba080b`
 
 ## VERIFIED FAILURE
