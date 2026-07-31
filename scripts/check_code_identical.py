@@ -40,47 +40,82 @@ def strip_comments(src: str) -> str:
     column decides whether a token belongs to a nested block.  Newlines inside a
     comment are kept, so line structure is never joined.
 
-    The cost of exact width is that the check can only ever report a false
-    NEGATIVE --- two files it calls different might still parse alike --- and
-    never a false positive, which is the direction a certificate must err in.
+    The line clean-up below --- dropping trailing space and blank lines --- is
+    applied ONLY to lines that contain no string-literal character.  A Lean
+    string may hold literal newlines and trailing spaces, and those are program
+    DATA; an earlier version rstripped them and so identified
+    `"a  \\n b"` with `"a\\n b"`, which is a false positive.
+
+    SCOPE, stated because a certificate that overstates its reach is worse than
+    none: this scanner models ORDINARY string literals with backslash escapes.
+    It does not model raw strings or interpolation, and it is not a Lean lexer.
+    Within that fragment --- which is the fragment `SpatialOS.lean` uses --- it
+    errs only towards reporting a difference that is not one.
     """
-    out, i, depth = [], 0, 0
-    n = len(src)
+    chars, prot = [], []          # parallel: prot[k] iff chars[k] is string data
+
+    def put(ch, inside=False):
+        chars.append(ch)
+        prot.append(inside)
+
+    i, depth, n = 0, 0, len(src)
     while i < n:
         if depth == 0 and src[i] == '"':
-            out.append(src[i])
+            put(src[i], True)
             i += 1
             while i < n:
                 if src[i] == "\\" and i + 1 < n:
-                    out.append(src[i:i + 2])
+                    put(src[i], True)
+                    put(src[i + 1], True)
                     i += 2
                     continue
-                out.append(src[i])
+                c = src[i]
+                put(c, True)
                 i += 1
-                if src[i - 1] == '"':
+                if c == '"':
                     break
         elif src.startswith("/-", i):
             depth += 1
-            out.append("  ")
+            put(" ")
+            put(" ")
             i += 2
         elif depth > 0 and src.startswith("-/", i):
             depth -= 1
-            out.append("  ")
+            put(" ")
+            put(" ")
             i += 2
         elif depth == 0 and src.startswith("--", i):
             while i < n and src[i] != "\n":
-                out.append(" ")
+                put(" ")
                 i += 1
         else:
             if depth == 0:
-                out.append(src[i])
+                put(src[i])
             else:
-                out.append("\n" if src[i] == "\n" else " ")
+                put("\n" if src[i] == "\n" else " ")
             i += 1
-    # Trailing whitespace is never syntax in Lean, and removing a comment at end
-    # of line leaves some; LEADING whitespace is syntax and is untouched.
-    lines = (ln.rstrip() for ln in "".join(out).splitlines())
-    return "\n".join(ln for ln in lines if ln)
+
+    # Split into lines, remembering whether any character of the line -- or the
+    # newline that ended it -- was string data.
+    lines, cur, guarded = [], [], False
+    for ch, p in zip(chars, prot):
+        if ch == "\n":
+            lines.append(("".join(cur), guarded or p))
+            cur, guarded = [], False
+        else:
+            cur.append(ch)
+            guarded = guarded or p
+    lines.append(("".join(cur), guarded))
+
+    kept = []
+    for text, guarded in lines:
+        if guarded:
+            kept.append(text)          # verbatim: this is program data
+        else:
+            trimmed = text.rstrip()
+            if trimmed:
+                kept.append(trimmed)
+    return "\n".join(kept)
 
 
 def blob(repo: str, rev: str, path: str) -> str:
