@@ -1,4 +1,4 @@
-STATUS: HOLD - BUILT, NOT YET INDEPENDENTLY AUDITED
+STATUS: LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED
 PUBLICATION ACTION: REPLACE VERSION
 PUBLICATION: ai.viXra.org:2602.0033
 CATEGORY: Mathematical Physics
@@ -52,11 +52,11 @@ CURRENT PUBLIC PDF SHA-256:
 91a7d95e1decc1771c548533748916d9941a77f02937fddf90fb13e348730bfe
 
 IMMUTABLE GITHUB SOURCE LINK:
-PENDING UNTIL THE R30 COMMIT IS CREATED AND PUSHED
+https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/cae239d1/output/publication-audit/2602.0033-r30
 
 OWNER ORDER:
-HOLD. The global submission order will be assigned only after the 103-paper ledger
-and supersession matrix are closed.
+3 of 9. Submit only after the new public versions of 2602.0052 and 2602.0036 have
+been downloaded and verified against their package manifests.
 
 OWNER ACTION:
 DO NOT UPLOAD OR CLICK SUBMIT.

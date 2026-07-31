@@ -6,7 +6,16 @@ Objeto: reemplazo local de `ai.viXra:2602.0033` en
 Alcance: solo lectura sobre el paquete fuente; las ejecuciones se hicieron sobre
 copias byte-identicas bajo `tmp/publication-audit/r30-independent`.
 
-## Veredicto
+## Cierre posterior de paquete
+
+Los cuatro bloqueos de empaquetado detectados abajo se cerraron sin cambiar el PDF
+auditado: se genero `MANIFEST-R30.txt` y un ZIP determinista con manifiesto interno
+y externo byte-identicos; la ficha apunta al commit inmutable `cae239d1`; el orden
+global es 3 de 9; y el PDF intermedio no forma parte del ZIP distribuible.  El
+estado final del paquete es **LISTO-LOCAL**.  La seccion siguiente conserva el
+veredicto adversarial emitido antes de esos cierres para no reescribir la historia.
+
+## Veredicto previo al cierre de paquete
 
 **REVIEW-PENDING.** El nucleo matematico corregido, el PDF final y la ficha activa
 superan esta auditoria. No queda una deuda matematica R29->R30 detectada. El paquete
