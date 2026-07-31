@@ -100,8 +100,8 @@ deducción no aplica; aquí no se afirma positividad.
 
 ## CERTIFICADO
 
-`YangMills/Derived/SU2CommutatorEscape.lean` certifica sin huecos ni axiomas
-de proyecto:
+`YangMills/Derived/SU2CommutatorEscape.lean` certifica sin marcadores ni
+axiomas de proyecto; la obligación abierta viaja como hipótesis explícita:
 
 - la convención, `[c,c]=1` y `k⁻¹(c₁,c₂)=k(c₂,c₁)`;
 - los dos momentos matriciales entrada por entrada;
@@ -109,16 +109,20 @@ de proyecto:
 - el momento conjugado entrada por entrada;
 - la traslación derecha condicionada exacta en `x`, que elimina `k` del peso;
 - un gate genérico de Fubini con integrabilidad explícita;
-- `β/16` y positividad estricta para el lado congelado escalado por `1/4`;
+- los titulares condicionales
+  `su2CommutatorQuadraticForm_lower`, `_strict` y `_one_strict` sobre la
+  integral concreta del conmutador; cada uno exige en su tipo la hipótesis
+  nombrada `hFubiniBridge : Qβ^C(χ) = (1/4) Qβ(χ)`;
 - no vacuidad mediante `χ(1)≠0`, Haar no nula y el acoplamiento concreto
   `β=1`; el certificado exacto añade una matriz SU(2) distinta de la identidad.
 
-Obligación formal restante, declarada y no ocultada: ensamblar en Lean los
+Obligación formal restante: descargar `hFubiniBridge` ensamblando en Lean los
 intercambios de Fubini de la integral cuádruple con la contracción finita de
-la traza. Por ello, la identidad integral completa es **EXACTA en la
-derivación anterior, pero todavía no es un titular Lean CERTIFICADO**. No se
-introduce un axioma ni una definición que codifique `1/4` para aparentar ese
-cierre; `su2CommutatorQuadraticForm` es la integral cuádruple concreta.
+la traza. La identidad integral completa es **EXACTA en la derivación
+anterior, pero todavía no es un titular Lean CERTIFICADO**. El hueco ya no es
+una ausencia: aparece literalmente en el tipo de todos los resultados
+terminales sobre el conmutador. No se introduce un axioma ni se altera la
+definición concreta de `su2CommutatorQuadraticForm` para codificar `1/4`.
 
 El oracle separado imprime los axiomas de cada titular realmente certificado.
 El certificado Python comprueba dos veces, con racionales exactos, las

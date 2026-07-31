@@ -301,10 +301,10 @@ theorem su2_conditioned_right_translation
   filter_upwards [] with u
   simp [f, k, mul_assoc]
 
-/-- The certified lower bound for the quarter-scaled frozen quadratic form.
-It is the downstream inequality used once the remaining Fubini assembly has
-identified the concrete commutator form with this expression. -/
-theorem quarter_su2BaseQuadraticForm_lower
+/-- Internal arithmetic consequence of the frozen lower bound.  This is not
+a commutator result by itself; the public theorem below requires the missing
+Fubini bridge as an explicit hypothesis. -/
+private theorem frozen_quarterScaledBase_lower
     (β : ℝ) (hβ : 0 ≤ β) :
     β / 16 ≤ (((1 : ℂ) / 4) * su2BaseQuadraticForm β).re := by
   have h := YangMills.OS.su2Trace_crossing_lower β hβ
@@ -318,11 +318,28 @@ theorem quarter_su2BaseQuadraticForm_lower
   simp
   linarith
 
-theorem quarter_su2BaseQuadraticForm_strict
-    (β : ℝ) (hβ : 0 < β) :
-    0 < (((1 : ℂ) / 4) * su2BaseQuadraticForm β).re := by
+/-- Conditional commutator lower bound.  `hFubiniBridge` is exactly the
+unclosed four-Haar/Fubini assembly; carrying it in the theorem type makes the
+gap visible to declaration inspection and downstream callers. -/
+theorem su2CommutatorQuadraticForm_lower
+    (β : ℝ) (hβ : 0 ≤ β)
+    (hFubiniBridge :
+      su2CommutatorQuadraticForm β =
+        ((1 : ℂ) / 4) * su2BaseQuadraticForm β) :
+    β / 16 ≤ (su2CommutatorQuadraticForm β).re := by
+  rw [hFubiniBridge]
+  exact frozen_quarterScaledBase_lower β hβ
+
+/-- Conditional strict positivity for the concrete commutator form.  No
+claim is made for `β < 0`. -/
+theorem su2CommutatorQuadraticForm_strict
+    (β : ℝ) (hβ : 0 < β)
+    (hFubiniBridge :
+      su2CommutatorQuadraticForm β =
+        ((1 : ℂ) / 4) * su2BaseQuadraticForm β) :
+    0 < (su2CommutatorQuadraticForm β).re := by
   exact (div_pos hβ (by norm_num : (0 : ℝ) < 16)).trans_le
-    (quarter_su2BaseQuadraticForm_lower β hβ.le)
+    (su2CommutatorQuadraticForm_lower β hβ.le hFubiniBridge)
 
 /-- Non-vacuity witness: the observable is nonzero at the identity. -/
 theorem su2TraceObservable_one_nonzero :
@@ -337,10 +354,14 @@ theorem sunHaarProb_two_ne_zero : (sunHaarProb 2) ≠ 0 := by
   rw [hzero] at hmass
   simp at hmass
 
-/-- Non-vacuity witness at the concrete positive coupling `β=1`. -/
-theorem quarter_su2BaseQuadraticForm_one_strict :
-    0 < (((1 : ℂ) / 4) * su2BaseQuadraticForm 1).re := by
-  exact quarter_su2BaseQuadraticForm_strict 1 (by norm_num)
+/-- Non-vacuity at the concrete positive coupling `β=1`, still carrying the
+same visible Fubini bridge hypothesis. -/
+theorem su2CommutatorQuadraticForm_one_strict
+    (hFubiniBridge :
+      su2CommutatorQuadraticForm 1 =
+        ((1 : ℂ) / 4) * su2BaseQuadraticForm 1) :
+    0 < (su2CommutatorQuadraticForm 1).re := by
+  exact su2CommutatorQuadraticForm_strict 1 (by norm_num) hFubiniBridge
 
 end YangMills.Derived
 
