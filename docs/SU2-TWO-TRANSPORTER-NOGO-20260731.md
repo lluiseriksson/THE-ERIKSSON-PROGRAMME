@@ -375,7 +375,10 @@ concreta `Q_A(F)=Zβ conjugate(∫F)(∫F)` para `A∈{D,E}`.
 El oráculo independiente es
 `docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean`. La formalización no usa `sorry`,
 `admit`, axiomas de proyecto ni definiciones vacías. `#print axioms` reporta
-solo `[propext, Classical.choice, Quot.sound]` para cada headline.
+solo `[propext, Classical.choice, Quot.sound]` para cada uno de los 16
+headlines declarados arriba. Esto incluye explícitamente
+`su2_trace_conjugate_inverse`, `su2Wilson_orientationD_inner_projection` y
+`su2Wilson_orientationE_uv_projection`.
 
 Comandos de comprobación:
 
@@ -390,12 +393,20 @@ Desde la raíz del repositorio:
 
 ```text
 python scripts/certify_su2_two_transporter_nogo.py
+python -O scripts/certify_su2_two_transporter_nogo.py
+python scripts/certify_su2_two_transporter_nogo.py --self-test
+python -O scripts/certify_su2_two_transporter_nogo.py --self-test
 ```
 
 El certificado usa solo la biblioteca estándar de Python. Su dominio exacto
 es `Q(sqrt(2))` para los cuaterniones y un reductor de palabras de grupo libre
 para las identidades finitas. No muestrea SU(2), no usa punto flotante y no se
-presenta como prueba de la identidad integral general.
+presenta como prueba de la identidad integral general. La aceptación requiere
+exactamente 14 comprobaciones explícitas, también bajo `python -O`. El modo
+`--self-test` exige el rechazo de tres mutaciones: traza decisiva, condición de
+unidad del testigo y omisión de una comprobación. El transcript reproducible
+de la reparación instrumental está en
+`docs/oracle-transcripts/PR39-INSTRUMENTAL-REPAIR-20260731.txt`.
 
 ## No-claims
 

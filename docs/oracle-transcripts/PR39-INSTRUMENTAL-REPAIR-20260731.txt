@@ -1,0 +1,154 @@
+PR #39 INSTRUMENTAL REPAIR TRANSCRIPT
+Date: 2026-07-31
+Repository: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+PR: #39 (draft)
+Remote branch: codex/su2-two-transporter-nogo-20260731
+Published base: e211ac96af8862c05b961ee16037ba34dcc7bccf
+Audited incoming HEAD: 1fa29e657c43ed71a249808611bf3aea64f2b115
+Public source commit under test: 7b709c4200ba4b2eb1acc9838ee66cd2eebba6ae
+
+SCOPE
+This is an instrumental repair.  The prior mathematical audit is not repeated
+or superseded.  The Python program certifies only finite free-word arithmetic
+and one exact Q(sqrt(2)) unit-quaternion witness.  It does not certify Haar
+integration or a general integral identity.
+
+HOST AND TOOLCHAIN
+Execution surface: Google Colab Pro+; public clone; no credentials; no push
+UTC start: 2026-07-31T21:41:19Z
+Host: Linux 98c482c00161 6.6.122+ #1 SMP Thu Apr 30 18:17:14 UTC 2026 x86_64 GNU/Linux
+Measured processors: 2
+elan: 4.2.3 (b6cec7e10 2026-06-08)
+Lake: 5.0.0-src+00659f8
+Lean: 4.29.0-rc6, commit 00659f8e6071d7e46131ed643bf8003b99b044e9
+Toolchain file: leanprover/lean4:v4.29.0-rc6
+
+SETUP COMMANDS AND EXIT CODES
+git clone --filter=blob:none --no-checkout https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git /content/pr39-source
+EXIT_CODE: 0
+git -C /content/pr39-source checkout --detach 7b709c4200ba4b2eb1acc9838ee66cd2eebba6ae
+EXIT_CODE: 0
+curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
+EXIT_CODE: 0
+sh /tmp/elan-init.sh -y --default-toolchain none
+EXIT_CODE: 0
+lake update
+EXIT_CODE: 0
+lake exe cache get
+EXIT_CODE: 0
+Cache result: 8142/8142 files decompressed.
+
+DISCARDED PREFLIGHT (NOT AN ACCEPTANCE RUN)
+Command: lake build -j 2 YangMills.OS.TwoTransporterHaarProjection
+EXIT_CODE: 1
+STDOUT: empty
+STDERR: error: unknown short option '-j'
+Reason: Lake 5 removed that short option.  The corrected exact build command
+below uses Lake's default scheduler; nproc measured 2 available processors.
+
+EXACT LEAN BUILD
+Command: lake build YangMills.OS.TwoTransporterHaarProjection
+EXIT_CODE: 0
+STDOUT_SHA256: a01cd7b7577a0da3fb2ce1d7ce28508ff5df49eff37985f6aa534a1910ac4f1d
+STDERR_SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+STDOUT_LINES: 3
+STDERR_LINES: 0
+STDOUT:
+  ✔ [8158/8159] Built YangMills.L0_Lattice.SU2Basic (105s)
+  ✔ [8159/8159] Built YangMills.OS.TwoTransporterHaarProjection (12s)
+  Build completed successfully (8159 jobs).
+STDERR: empty
+
+FULL VERSIONED AXIOMS ORACLE
+Command: lake env lean docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean
+EXIT_CODE: 0
+STDOUT_SHA256: 3ca4fb93c0c212a98dc6b0845d32245406f1ac041e97d5444482e010b8eaaa2f
+STDERR_SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+STDERR: empty
+STDOUT (each entry depends on [propext, Classical.choice, Quot.sound]):
+  integral_weight_mul_inv_eq
+  orientationD_inner_projection
+  orientationD_twoTransporter_projection
+  orientationE_uv_projection
+  orientationE_twoTransporter_projection
+  quadraticD_eq_partition_mul_mean_sq
+  quadraticE_eq_partition_mul_mean_sq
+  su2_trace_conjugate_inverse
+  su2_trace_inv_eq
+  su2WilsonWeight_conjugationInverseInvariant
+  su2Wilson_orientationD_inner_projection
+  su2Wilson_orientationD_twoTransporter_projection
+  su2Wilson_orientationE_uv_projection
+  su2Wilson_orientationE_twoTransporter_projection
+  su2Wilson_quadraticD_eq_partition_mul_mean_sq
+  su2Wilson_quadraticE_eq_partition_mul_mean_sq
+Headline count: 16/16.
+
+FORBIDDEN-TOKEN SCAN
+Files:
+  YangMills/OS/TwoTransporterHaarProjection.lean
+  docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean
+Tokens: sorry, admit, sorryAx, axiom, unsafe (identifier boundaries)
+EXIT_CODE: 0
+Matches: 0
+
+FINITE ARITHMETIC/WITNESS CERTIFICATE
+Commands, each executed from the public source commit:
+  python scripts/certify_su2_two_transporter_nogo.py
+  python scripts/certify_su2_two_transporter_nogo.py
+  python -O scripts/certify_su2_two_transporter_nogo.py
+  python -O scripts/certify_su2_two_transporter_nogo.py
+EXIT_CODES: 0, 0, 0, 0
+Exact acceptance counter: CHECKS: 14/14
+Raw SHA256 for all four stdout files:
+  a241ef37805085b51860490ae53f0c97674f3d79f3466c980cb18d55f5ea67db
+LF-normalized SHA256 for all four stdout files:
+  a241ef37805085b51860490ae53f0c97674f3d79f3466c980cb18d55f5ea67db
+EOL policy: raw output was LF on Linux; LF normalization removes CR bytes only.
+All four stderr files were empty, SHA256:
+  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+cmp(normal-1, normal-2) EXIT_CODE: 0
+cmp(normal-1, optimized-1) EXIT_CODE: 0
+STDOUT:
+  SU2 TWO-TRANSPORTER FINITE ARITHMETIC/WITNESS CERTIFICATE
+  scope: exact words + Q(sqrt(2)) unit quaternions; NOT Haar integration
+  WORD H_D diagonal = x c y^-1 c^-1 != x y^-1
+  WORD H_E diagonal = x y^-1 = reduced
+  WORD H_E = (x c1)(y c2)^-1 = x c1 c2^-1 y^-1
+  WORD H_D = (x c1)(c2 y)^-1 = x c1 y^-1 c2^-1
+  WORD D substitution c2=A z gives A z^-1 A^-1 = x c1 y^-1 z^-1 y c1^-1 x^-1
+  WORD E substitution v=u z gives u z^-1 u^-1 = x c1 z^-1 c1^-1 x^-1
+  QUAT c norm^2 = 1
+  QUAT reduced x y^-1 = (0; 0i; 0j; -1k); trace = 0
+  QUAT H_D(x,c,y,c) = (-1; 0i; 0j; 0k); trace = -2
+  QUAT H_E(x,c,y,c) = (0; 0i; 0j; -1k); trace = 0
+  WEIGHT reduced = exp((beta/2)*0) = 1
+  WEIGHT H_D diagonal = exp((beta/2)*(-2)) = exp(-beta)
+  CHECKS: 14/14
+  RESULT: PASS
+STDERR: empty
+
+SELF-TESTS
+Command: python scripts/certify_su2_two_transporter_nogo.py --self-test
+EXIT_CODE: 0
+Command: python -O scripts/certify_su2_two_transporter_nogo.py --self-test
+EXIT_CODE: 0
+STDOUT for each command:
+  SELF-TEST mutation decisive-trace: REJECTED (exit 1)
+  SELF-TEST mutation witness-condition: REJECTED (exit 1)
+  SELF-TEST mutation omit-check: REJECTED (exit 1)
+  SELF-TEST: PASS (3/3 mutations rejected)
+STDERR for each command: empty
+
+DIRECT MUTATION OBSERVATIONS
+decisive-trace: EXIT_CODE=1; RESULT: PASS hits=0
+  STDERR: CERTIFICATE ERROR: check 14 failed: H_D diagonal trace must be exactly -2
+witness-condition: EXIT_CODE=1; RESULT: PASS hits=0
+  STDERR: CERTIFICATE ERROR: check 9 failed: c witness must satisfy the exact unit-norm condition
+omit-check: EXIT_CODE=1; RESULT: PASS hits=0
+  STDERR: CERTIFICATE ERROR: check-count mismatch: observed 13, expected 14
+
+CONCLUSION
+Instrumental reproduction: PASS.
+This transcript is not a fresh audit and does not self-certify the modified
+certificate.  The modified certificate requires a fresh independent audit.
