@@ -33,6 +33,34 @@ theorem su2OnePlaquette_reflection_positive
   rw [su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm]
   exact su2WilsonCrossing_isHaarPSDKernel β hβ.le F hF
 
+set_option maxHeartbeats 400000 in
+/-- Sharp, nonempty reflected inequality for the fundamental character. -/
+theorem su2OnePlaquette_trace_pairing_lower
+    (β : ℝ) (hβ : 0 < β) :
+    β / 4 ≤
+      (su2OnePlaquetteReflectedPairing β su2TraceObservable).re := by
+  rw [su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm]
+  exact su2Trace_crossing_lower β hβ.le
+
+set_option maxHeartbeats 400000 in
+/-- Final SU(2)/Wilson endpoint: the reflected pairing is a real number at
+least `β/4`, hence strictly positive for every physical coupling. -/
+theorem su2OnePlaquette_trace_reflection_positive_sharp
+    (β : ℝ) (hβ : 0 < β) :
+    ∃ r : ℝ, β / 4 ≤ r ∧ 0 < r ∧
+      su2OnePlaquetteReflectedPairing β su2TraceObservable = (r : ℂ) := by
+  rcases su2OnePlaquette_reflection_positive β hβ
+      su2TraceObservable su2TraceObservable_continuous with
+    ⟨r, hr, hr_eq⟩
+  have hlower := su2OnePlaquette_trace_pairing_lower β hβ
+  have hβfour : 0 < β / 4 := div_pos hβ (by norm_num)
+  refine ⟨r, ?_, ?_, hr_eq⟩
+  · rw [hr_eq] at hlower
+    simpa using hlower
+  · exact lt_of_lt_of_le hβfour (by
+      rw [hr_eq] at hlower
+      simpa using hlower)
+
 /-- At the identity boundary configuration the physical crossing factor is
 `e^β`, so the endpoint genuinely depends on the coupling. -/
 theorem su2WilsonCrossingKernel_one_one (β : ℝ) :

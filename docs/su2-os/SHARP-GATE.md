@@ -46,9 +46,14 @@ as proved by numerical evidence.
   `su2Trace_degreeOne_eq`.
 - **CLOSED:** the finite two-term Taylor head, including the vanishing
   constant mode, is exactly `β / 4`: `su2Trace_taylorTwo_eq`.
-- **OPEN:** prove that every Taylor tail beginning at degree two has a
-  non-negative quadratic form and pass the lower bound to the exact limit.
-- **NOT CLAIMED:** `Qβ(trace) ≥ β / 4`.
+- **CLOSED:** every finite Taylor tail beginning at degree two has a
+  non-negative quadratic form:
+  `su2WilsonTaylorTail_isHaarPSDKernel`.
+- **CLOSED:** dominated convergence transports the lower bound to the exact
+  crossing kernel: `su2Trace_crossing_lower`.
+- **CLOSED:** the declared reflected one-plaquette pairing is a real number
+  `r ≥ β / 4 > 0` for `β > 0`:
+  `su2OnePlaquette_trace_reflection_positive_sharp`.
 
 The finite head is proved by bare integral linearity and the repository's
 fundamental Schur theorem, not by unfolding the eight-real-feature positive

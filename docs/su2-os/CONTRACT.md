@@ -47,15 +47,16 @@ opposite convention and is not imported as the definition of this kernel.
    unit internal-half weights, integrates all three Haar variables, and is
    bridged exactly to the kernel form by
    `su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm`.
-5. **CLOSED.** Prove a non-empty SU(2) endpoint at `β > 0`.  The pre-registered strict
-   gate is: the kernel is non-constant, its value changes with `β` at an
-   explicit pair, and the pairing is strictly positive for an explicit
-   continuous observable.  Closed by
+5. **CLOSED.** Prove a non-empty SU(2) endpoint at `β > 0`.  The kernel is
+   non-constant, its value changes with `β` at an explicit pair, and the
+   pairing is strictly positive for an explicit continuous observable.
+   Closed by
    `su2OnePlaquette_reflection_positive`,
    `su2WilsonCrossingKernel_nonconstant`, and
    `su2OnePlaquette_constant_pairing_strict`.
-   This is a non-nullity gate.  The stronger character gate
-   `Qβ(trace) ≥ β / 4` is preregistered but still open; see `SHARP-GATE.md`.
+   The stronger preregistered zero-mean character gate
+   `Qβ(trace) ≥ β / 4` is also closed by
+   `su2OnePlaquette_trace_reflection_positive_sharp`; see `SHARP-GATE.md`.
 6. **CLOSED.** Build all owned Lean modules with no `sorry` or project axiom
    and record `#print axioms` output for every headline.  See
    `CERTIFICATION.md`, `SU2OSOracle.lean`, and `ORACLE-TRANSCRIPT.txt`.

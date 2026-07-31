@@ -19,6 +19,7 @@ noncomputable section
 
 open Matrix Complex MeasureTheory
 open scoped BigOperators
+open scoped Topology
 
 namespace YangMills.OS
 
@@ -477,5 +478,122 @@ theorem su2Trace_taylorTwo_eq (β : ℝ) :
   · fun_prop
   · exact su2WilsonExponentKernel_continuous β
   · exact su2TraceObservable_continuous
+
+/-- The Taylor tail beginning at degree two. -/
+def su2WilsonTaylorTailKernel (β : ℝ) (N : ℕ) (x y : SU2) : ℂ :=
+  ∑ n ∈ Finset.range N,
+    (su2WilsonTaylorCoeff (n + 2) : ℂ) *
+      su2WilsonExponentKernel β x y ^ (n + 2)
+
+set_option maxHeartbeats 400000 in
+/-- Every finite tail beginning at degree two retains an explicit positive
+presentation. -/
+theorem su2WilsonTaylorTail_hasContinuousPositivePresentation
+    (β : ℝ) (hβ : 0 ≤ β) (N : ℕ) :
+    HasContinuousPositivePresentation (su2WilsonTaylorTailKernel β N) := by
+  have hbase :
+      HasContinuousPositivePresentation (su2WilsonExponentKernel β) :=
+    ⟨SU2WilsonFeatureIndex, inferInstance, su2WilsonLinearCoeff β,
+      su2WilsonFeature, su2WilsonExponent_finiteRank β hβ⟩
+  unfold su2WilsonTaylorTailKernel
+  apply HasContinuousPositivePresentation.finset_sum
+  intro n hn
+  exact (hbase.pow (n + 2)).scale (su2WilsonTaylorCoeff (n + 2))
+    (su2WilsonTaylorCoeff_nonneg (n + 2))
+
+set_option maxHeartbeats 400000 in
+/-- Hence the finite degree-at-least-two tail has non-negative Haar
+quadratic form. -/
+theorem su2WilsonTaylorTail_isHaarPSDKernel
+    (β : ℝ) (hβ : 0 ≤ β) (N : ℕ) :
+    IsHaarPSDKernel (sunHaarProb 2)
+      (su2WilsonTaylorTailKernel β N) := by
+  rcases
+      su2WilsonTaylorTail_hasContinuousPositivePresentation β hβ N with
+    ⟨ι, hι, c, φ, h⟩
+  letI : Fintype ι := hι
+  exact isHaarPSDKernel_of_continuousFiniteRank (sunHaarProb 2) h
+
+set_option maxHeartbeats 400000 in
+/-- Exact decomposition of a shifted truncation into its two-term head and
+the positive tail. -/
+theorem su2WilsonTaylorKernel_add_two (β : ℝ) (N : ℕ) (x y : SU2) :
+    su2WilsonTaylorKernel β (N + 2) x y =
+      su2WilsonTaylorKernel β 2 x y +
+        su2WilsonTaylorTailKernel β N x y := by
+  unfold su2WilsonTaylorKernel su2WilsonTaylorTailKernel
+  rw [Nat.add_comm N 2, Finset.sum_range_add]
+  congr 1
+  apply Finset.sum_congr rfl
+  intro n hn
+  simp only [Nat.add_comm 2 n]
+
+set_option maxHeartbeats 400000 in
+/-- Every shifted truncation is bounded below by its exact `β/4` head when
+tested on the fundamental character. -/
+theorem su2Trace_taylor_lower
+    (β : ℝ) (hβ : 0 ≤ β) (N : ℕ) :
+    β / 4 ≤
+      (kernelIntegralForm (sunHaarProb 2)
+        (su2WilsonTaylorKernel β (N + 2)) su2TraceObservable).re := by
+  rcases su2WilsonTaylorTail_isHaarPSDKernel β hβ N
+      su2TraceObservable su2TraceObservable_continuous with
+    ⟨r, hr, hr_eq⟩
+  have htail_cont :
+      Continuous (Function.uncurry (su2WilsonTaylorTailKernel β N)) :=
+    (su2WilsonTaylorTail_hasContinuousPositivePresentation β hβ N).continuous_uncurry
+  have hkernel :
+      su2WilsonTaylorKernel β (N + 2) =
+        fun x y => su2WilsonTaylorKernel β 2 x y +
+          su2WilsonTaylorTailKernel β N x y := by
+    funext x y
+    exact su2WilsonTaylorKernel_add_two β N x y
+  have hform :
+      kernelIntegralForm (sunHaarProb 2)
+          (su2WilsonTaylorKernel β (N + 2)) su2TraceObservable =
+        kernelIntegralForm (sunHaarProb 2)
+            (su2WilsonTaylorKernel β 2) su2TraceObservable +
+          kernelIntegralForm (sunHaarProb 2)
+            (su2WilsonTaylorTailKernel β N) su2TraceObservable := by
+    rw [hkernel]
+    exact kernelIntegralForm_add
+      (su2WilsonTaylorKernel β 2)
+      (su2WilsonTaylorTailKernel β N) su2TraceObservable
+      (su2WilsonTaylorKernel_continuous β 2) htail_cont
+      su2TraceObservable_continuous
+  rw [hform, su2Trace_taylorTwo_eq, hr_eq]
+  simp only [add_re, ofReal_re]
+  linarith
+
+set_option maxHeartbeats 400000 in
+/-- Sharp non-vacuity gate for the exact Wilson crossing kernel. The lower
+bound is transported from the exact degree-one head through the non-negative
+Taylor tail and the already certified dominated-convergence limit. -/
+theorem su2Trace_crossing_lower
+    (β : ℝ) (hβ : 0 ≤ β) :
+    β / 4 ≤
+      (kernelIntegralForm (sunHaarProb 2)
+        (su2WilsonCrossingKernel β) su2TraceObservable).re := by
+  let q : ℕ → ℂ := fun N =>
+    kernelIntegralForm (sunHaarProb 2)
+      (su2WilsonTaylorKernel β N) su2TraceObservable
+  let qLimit : ℂ :=
+    kernelIntegralForm (sunHaarProb 2)
+      (su2WilsonCrossingKernel β) su2TraceObservable
+  have hq : Filter.Tendsto q Filter.atTop (𝓝 qLimit) := by
+    simpa [q, qLimit] using
+      su2WilsonKernelIntegralForm_tendsto β hβ
+        su2TraceObservable su2TraceObservable_continuous
+  have hq_shift :
+      Filter.Tendsto (fun N => q (N + 2)) Filter.atTop (𝓝 qLimit) :=
+    (Filter.tendsto_add_atTop_iff_nat 2).2 hq
+  have hq_re :
+      Filter.Tendsto (fun N => (q (N + 2)).re)
+        Filter.atTop (𝓝 qLimit.re) :=
+    (Complex.continuous_re.tendsto qLimit).comp hq_shift
+  have hlower (N : ℕ) : β / 4 ≤ (q (N + 2)).re := by
+    exact su2Trace_taylor_lower β hβ N
+  exact le_of_tendsto_of_tendsto tendsto_const_nhds hq_re
+    (Filter.Eventually.of_forall hlower)
 
 end YangMills.OS

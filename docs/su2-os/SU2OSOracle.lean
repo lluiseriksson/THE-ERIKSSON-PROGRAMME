@@ -17,6 +17,9 @@ does not own `YangMillsCore.lean` or `oracle_check.lean`.
 #print axioms YangMills.OS.su2TraceEntryMoment_eq
 #print axioms YangMills.OS.su2Trace_degreeOne_eq
 #print axioms YangMills.OS.su2Trace_taylorTwo_eq
+#print axioms YangMills.OS.su2WilsonTaylorTail_isHaarPSDKernel
+#print axioms YangMills.OS.su2Trace_crossing_lower
 #print axioms YangMills.OS.su2OnePlaquette_reflection_positive
+#print axioms YangMills.OS.su2OnePlaquette_trace_reflection_positive_sharp
 #print axioms YangMills.OS.su2WilsonCrossingKernel_nonconstant
 #print axioms YangMills.OS.su2OnePlaquette_constant_pairing_strict

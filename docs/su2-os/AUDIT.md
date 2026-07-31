@@ -1,6 +1,6 @@
 # External audit record
 
-Date: 2026-07-30
+Date: 2026-07-31
 
 Status: **NOT PASSED — external service failure**
 
@@ -44,10 +44,16 @@ A later manufacturer-side audit of public PR #35 added three limitations:
 3. the `8179` job count belongs to the endpoint target, not global core.
 
 The first and third are now explicit in `CERTIFICATION.md` and
-`INTEGRATION-NOTE.md`.  For the second, `SHARP-GATE.md` preregisters
-`Qβ(trace) ≥ β / 4`; Lean now certifies the exact zero Haar mean of `trace`,
-but not yet the lower bound.  This manufacturer-side review is not counted as
-terminal external audit.
+`INTEGRATION-NOTE.md`.  The second is now closed by the preregistered
+`Qβ(trace) ≥ β / 4` theorem chain recorded in `SHARP-GATE.md`.  This
+manufacturer-side review and route design are not counted as terminal
+external audit.
+
+A fresh read-only Codex pass, performed after the sharp chain was complete,
+found no blocking error in conjugation orientation, the `β / 2` coefficient,
+the Schur moments, the degree-`n + 2` tail, tail PSD, the shifted limit, or the
+reflected-pairing bridge.  It independently rebuilt the endpoint and oracle.
+This is an internal adversarial check, not the terminal external audit.
 
 ## Fable High
 
@@ -59,12 +65,14 @@ loggedIn = true
 email = masterythief@gmail.com
 ```
 
-Three bounded calls were attempted: the initial audit/design call, one retry
-at the original proof bottleneck, and one retry at the new preregistered
-`β / 4` character bottleneck.  All returned HTTP 429 with `is_error = true`,
-no usable response, no verified `claude-fable-5` result, and empty
-`modelUsage`.  In accordance with the task contract, there was no retry loop
-and no simulated audit.
+Four bounded calls were attempted: the initial audit/design call, one retry
+at the original proof bottleneck, one retry at the preregistered `β / 4`
+character bottleneck, and one final audit attempt after the sharp theorem
+closed.  Before the final attempt, the account again reported
+`loggedIn = true` and `email = masterythief@gmail.com`.  All calls returned
+HTTP 429 with `is_error = true`, no usable response, no verified
+`claude-fable-5` result, and empty `modelUsage`.  In accordance with the task
+contract, there was no retry loop and no simulated audit.
 
 ## Opus 5 Max
 

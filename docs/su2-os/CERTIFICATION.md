@@ -13,6 +13,12 @@
 - The Taylor series converges uniformly on `SU(2) × SU(2)`.
 - The iterated Haar quadratic form is the limit of non-negative-real
   finite-rank forms.
+- Fundamental Schur orthogonality on `sunHaarProb 2` gives
+  `∫ conj(tr U) Uᵢⱼ dU = δᵢⱼ / 2`.
+- The degree-one contribution and the complete two-term Taylor head both
+  pair with `tr` to exactly `β / 4`.
+- Every degree-at-least-two Taylor tail is PSD, so dominated convergence
+  yields `Qβ(tr) ≥ β / 4` for the exact crossing kernel.
 - The declared cut has shape `Half × Cross × Half`; reflection swaps the
   halves and inverts each crossing variable.  The crossing link transports
   both boundary holonomies to a common frame and cancels exactly from their
@@ -26,6 +32,8 @@
   analytic kernel quadratic form.
 - At `β > 0`, the kernel is non-constant and the constant observable has
   strictly positive pairing.
+- At `β > 0`, the zero-mean fundamental character gives a reflected pairing
+  equal to a real `r ≥ β / 4 > 0`.
 
 ## Certified by Lean
 
@@ -39,8 +47,8 @@ Executed on 2026-07-31:
 
 ```text
 lake build YangMills.OS.SU2WilsonReflectionEndpoint
-✔ [8179/8179] Built YangMills.OS.SU2WilsonReflectionEndpoint
-Build completed successfully (8179 jobs).
+✔ [8182/8182] Built YangMills.OS.SU2WilsonReflectionEndpoint
+Build completed successfully (8182 jobs).
 ```
 
 The owned-source scan contains no `sorry` declaration and no `axiom`
@@ -52,13 +60,12 @@ Lean/Mathlib axioms:
 ```
 
 The complete oracle command and output are in `ORACLE-TRANSCRIPT.txt`.
-The count `8179` belongs only to the target
+The count `8182` belongs only to the target
 `YangMills.OS.SU2WilsonReflectionEndpoint`; it is not a claim that the global
 `YangMillsCore` target was rebuilt or that the global oracle imports this lane.
 
-The sharp mean-zero character follow-up is tracked separately in
-`SHARP-GATE.md`.  Its zero-mean subgate is certified, but the lower bound
-`Qβ(trace) ≥ β / 4` remains open and is not part of this certification.
+The preregistered sharp character gate is fully certified in
+`SHARP-GATE.md`; its fixed bound was not weakened.
 
 ## Verified
 

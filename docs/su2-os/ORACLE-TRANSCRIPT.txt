@@ -15,6 +15,11 @@ Exit code: 0
 'YangMills.OS.su2TraceEntryMoment_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YangMills.OS.su2Trace_degreeOne_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YangMills.OS.su2Trace_taylorTwo_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2WilsonTaylorTail_isHaarPSDKernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2Trace_crossing_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YangMills.OS.su2OnePlaquette_reflection_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2OnePlaquette_trace_reflection_positive_sharp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'YangMills.OS.su2WilsonCrossingKernel_nonconstant' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YangMills.OS.su2OnePlaquette_constant_pairing_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
