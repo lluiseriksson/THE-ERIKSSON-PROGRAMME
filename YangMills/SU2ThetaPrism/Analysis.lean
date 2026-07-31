@@ -507,7 +507,8 @@ private theorem character_pair_integrable
     (f g : SU2 × SU2 → ℂ) (hf : Measurable f) (hg : Measurable g)
     (hfb : ∀ p, ‖f p‖ ≤ 4) (hgb : ∀ p, ‖g p‖ ≤ 4) :
     Integrable (fun p => f p * star (g p)) (haarSU2.prod haarSU2) := by
-  refine Integrable.of_bound (hf.mul hg.star).aestronglyMeasurable 16 ?_
+  refine Integrable.of_bound
+    (hf.mul (continuous_star.measurable.comp hg)).aestronglyMeasurable 16 ?_
   exact ae_of_all _ fun p => by
     rw [norm_mul, norm_star]
     nlinarith [hfb p, hgb p, norm_nonneg (f p), norm_nonneg (g p)]
