@@ -748,11 +748,15 @@
       "group": "os",
       "col": 8,
       "row": 5,
-      "note": "Blind geometric pre-audit only: theta-half b1=2, residual quotient G^2/Ad G, and pointwise reflection compatibility pass. Sector algebra, physical GaugeConfig realization, OS positivity, Lean and Gate 7 remain open.",
+      "note": "Separate read-only pre-audits pass the abstract geometry and representation calculation: theta-half b1=2, residual quotient G^2/Ad G, pointwise reflection compatibility, pure (1,1/2,1/2) witness, factor 1/16, and the registered beta^4/512 bound. Physical GaugeConfig realization, OS positivity, Lean and Gate 7 remain open; the representation audit disclosed annotated-tag contamination.",
       "links": [
         {
           "label": "Geometry pre-audit",
           "path": "docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md"
+        },
+        {
+          "label": "Representation pre-audit",
+          "path": "docs/THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md"
         }
       ]
     },

@@ -65,7 +65,7 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | P4 physical-operator vertical slice | `PARTIAL` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian records, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
 | Concrete YM activity decay `hRpoly` | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Eq. (2.31) `gapCubes`, Appendix-F certified-tail, Catalan/Schur precision-budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, CMP116 Lemma 3 / Eq. (2.29) / Eq. (2.37) route is source-audited and source-locked in places; the real Balaban/Dimock estimates remain open |
 | Peter-Weyl / character infrastructure | `PARTIAL` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
-| Two-transporter SU(2) theta-prism pilot | `PRE-AUDIT PARTIAL` | blind geometry audit passes `b1=2`, the two-loop gauge quotient, and pointwise reflection compatibility; sector algebra, physical `GaugeConfig` realization, OS positivity, Lean and Gate 7 remain open |
+| Two-transporter SU(2) theta-prism pilot | `PRE-AUDIT PARTIAL` | separate read-only audits pass the geometry and the abstract representation calculation (`||F||^2=3/4`, pure `(1,1/2,1/2)` sector, factor `1/16`, and the registered `beta^4/512` bound); physical `GaugeConfig` realization, OS positivity, Lean and Gate 7 remain open |
 | Two-free-transporter SU(2) no-go | `DRAFT / AUDIT PROVENANCE OPEN` | PR #39 formalizes trivial-sector projection for the reduced Wilson weight at `1fa29e65`; the reported PASS is non-terminal until fresh/blind provenance is recorded, and no physical gauge fixing follows |
 | Run-manifest control plane | `OPEN DEBT` | the PR validator reports 4,134 errors across 623 unchanged manifests; this is repository-wide signal debt, not a failure introduced by PR #39 |
 | Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
@@ -159,6 +159,15 @@ explicit:
   physical cell, `GaugeConfig` bridge, reflection positivity, Lean proof and
   terminal audit remain open.  See
   [`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md);
+* a separate read-only SU(2) representation audit passed the exact
+  two-character coefficient `1/2`, orthogonality to all three one-cycle
+  subspaces, `||F||^2=3/4`, the pure `(1,1/2,1/2)` sector, the central factor
+  `1/16`, and the pre-registered `beta^4/512` bound on `0<beta<=1`.  The
+  extension beyond that interval is explicitly post-hoc, and a positive value
+  for this witness at `beta<0` is explicitly not reflection positivity.  The
+  audit also exposed that annotated tags can leak prior verdicts; future blind
+  audits use raw SHAs only.  See
+  [`docs/THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md`](docs/THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md);
 * draft PR #39 now carries a separate formal no-go for two independently
   Haar-integrated transporters absent from the observable.  The public object
   is frozen at `1fa29e65`, but its reported `PASS WITH NOTES` lacks durable

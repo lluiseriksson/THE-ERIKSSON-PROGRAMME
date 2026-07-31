@@ -90,9 +90,11 @@ does not follow from them.
 
 ## Remaining gates
 
-- The representation-theoretic assertion that the witness is purely in the
-  `(1,1/2,1/2)` sector remains for the independent algebra audit.
-- The coefficient and lower-bound calculation remains for that audit as well.
+- A separate read-only representation audit has now passed the pure
+  `(1,1/2,1/2)` sector, the factor `1/16`, and the pre-registered
+  `beta^4/512` lower bound on `0<beta<=1`.  Its scope and a disclosed
+  annotated-tag contamination are recorded in
+  [`THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md`](THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md).
 - No physical lattice embedding, `GaugeConfig` bridge, `ReflectionSplitting`
   theorem, Lean module, terminal Fable audit, paper, or submission is licensed
-  by this PASS.
+  by either pre-audit PASS.

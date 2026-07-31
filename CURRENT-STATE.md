@@ -60,7 +60,7 @@ The public static dashboard now lives at
 the HORIZON/M3 dependency DAG as curated green/amber/open nodes and is guarded
 by `scripts/validate_dashboard.py`.
 
-**Two-transporter SU(2) theta-prism pilot: geometric pre-audit only
+**Two-transporter SU(2) theta-prism pilot: geometry and algebra pre-audited
 (2026-07-31).**  A fresh read-only adversarial auditor independently confirmed
 that each three-parallel-edge half is a theta multigraph with `b1=2`, that its
 incidence subdivision (not the physical graph) is `K(2,3)`, and that gauge
@@ -69,10 +69,16 @@ confirmed the pointwise identity `theta(H_i)=s^-1 H_i^-1 s`.  Removing the
 third branch gives `b1=1`, but disappearance of the proposed representation
 sector was outside the geometric remit.  The audit found that one-incidence
 Haar elimination is valid only when the observable does not depend on the
-edge.  This result is not in Lean, is not a physical `GaugeConfig` cell, proves
-no OS positivity and does not count as SU(2) Gate 7.  The exact record and open
-gates are in
-[`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md).
+edge.  A separate read-only representation audit independently rederived the
+`1/2` projection coefficient, complete one-cycle orthogonality,
+`||F||^2=3/4`, the pure `(1,1/2,1/2)` sector, the factor `1/16`, and the
+pre-registered `beta^4/512` bound for `0<beta<=1`.  That audit disclosed that
+an annotated tag leaked a previous verdict, so future blind contracts must use
+raw SHAs only.  Neither result is in Lean or realizes a physical `GaugeConfig`
+cell; neither proves OS positivity or counts as SU(2) Gate 7.  See
+[`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md)
+and
+[`docs/THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md`](docs/THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md).
 
 **Two-free-transporter SU(2) no-go: formal draft, terminal audit still open
 (2026-07-31).**  Draft PR #39 at `1fa29e65` separately formalizes that two
