@@ -3102,3 +3102,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.osPairingBondCross_eq
 #print axioms YangMills.OS.osPairingBond_gram
 #print axioms YangMills.OS.osPairingBond_gram_nonneg
+#print axioms YangMills.OS.sum_comm3
+#print axioms YangMills.OS.osPairingSiteCross
+#print axioms YangMills.OS.osPairingSiteCross_self
+#print axioms YangMills.OS.osPairingSiteCross_eq
+#print axioms YangMills.OS.osPairingSite_gram
+#print axioms YangMills.OS.osPairingSite_gram_nonneg

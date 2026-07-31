@@ -290,10 +290,13 @@ theorem osPairingBond_eq {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (m
   unfold collapse
   ring
 
-/-- **THROUGH A BOND, EXACTLY FOR `β ≥ 0`.**  The pairing of a COMPLEX
-observable of the WHOLE past half-chain against its reflection is a non-negative
-real.  `β ≥ 0` is proved SUFFICIENT here; that it is also necessary is the
-separate witness below, and it is exhibited only from one site upwards. -/
+/-- **THROUGH A BOND, FOR `β ≥ 0`.**  The pairing of a COMPLEX observable of the
+WHOLE past half-chain against its reflection is a non-negative real.
+
+SUFFICIENCY ONLY.  Necessity is NOT proved anywhere in this module, and there is
+no witness for it here.  It could not hold at `L = 0` in any case: the bare
+kernel is the scalar `1` there.  From one site upwards it is expected and
+authorised by a pre-registered gate, and writing it is open work. -/
 theorem osPairingBond_nonneg {L : ℕ} (w : (Fin L → Fin 2) → ℝ) {β : ℝ}
     (hβ : 0 ≤ β) (m : ℕ) (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
     ∃ r : ℝ, 0 ≤ r ∧ osPairingBond w β m F = (r : ℂ) := by
@@ -343,6 +346,14 @@ theorem sum_comm4 {A B C D : Type*} [Fintype A] [Fintype B] [Fintype C]
       = ∑ s, ∑ u, ∑ i, ∑ j, f i j s u :=
     Finset.sum_congr rfl fun _ _ => Finset.sum_comm
   rw [h1, h2, h3, h4]
+
+/-- The three-fold sibling of `sum_comm4`, needed by the site assembly. -/
+theorem sum_comm3 {A B C : Type*} [Fintype A] [Fintype B] [Fintype C]
+    (f : A → B → C → ℂ) :
+    (∑ i, ∑ j, ∑ s, f i j s) = ∑ s, ∑ i, ∑ j, f i j s := by
+  have h1 : (∑ i, ∑ j, ∑ s, f i j s) = ∑ i, ∑ s, ∑ j, f i j s :=
+    Finset.sum_congr rfl fun _ _ => Finset.sum_comm
+  rw [h1, Finset.sum_comm]
 
 /-- The CROSS form through a bond: one observable against the reflection of
 another.  Its diagonal is the form of §2. -/
@@ -461,5 +472,83 @@ theorem osPairingBond_gram_nonneg {L : ℕ} (w : (Fin L → Fin 2) → ℝ) {β 
         * osPairingBondCross w β m (F i) (F j)) = (r : ℂ) := by
   rw [osPairingBond_gram]
   exact osPairingBond_nonneg w hβ m _
+
+/-! ## §7  The Gram statement for the site reflection
+
+The subtitle of this work says TWO reflections; a Gram matrix for one of them
+only would not honour that.  The site case is cheaper than the bond case --- no
+kernel enters --- and it holds at every `β`. -/
+
+/-- The CROSS form through a site: one observable against the reflection of
+another.  Its diagonal is the form of §2. -/
+noncomputable def osPairingSiteCross {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
+    (m : ℕ) (F G : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) : ℂ :=
+  ∑ σ : Fin L → Fin 2, ∑ a ∈ halvesAt L m σ, ∑ b ∈ halvesAt L m σ,
+    (starRingEnd ℂ) (F a) * G b *
+      ((gibbsWeight w β a * gibbsWeight w β b / w σ : ℝ) : ℂ)
+
+/-- The diagonal of the site cross form is the site form. -/
+theorem osPairingSiteCross_self {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (m : ℕ)
+    (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    osPairingSiteCross w β m F F = osPairingSite w β m F := rfl
+
+/-- The site cross form factors through the collapse: it is the `1/w`-weighted
+Hermitian product of the two boundary vectors. -/
+theorem osPairingSiteCross_eq {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (m : ℕ)
+    (F G : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    osPairingSiteCross w β m F G
+      = ∑ σ : Fin L → Fin 2,
+          (starRingEnd ℂ) (collapse w β m F σ) * collapse w β m G σ
+            * ((1 / w σ : ℝ) : ℂ) := by
+  unfold osPairingSiteCross collapse
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  have hsplit : ∀ a ∈ halvesAt L m σ, ∀ b ∈ halvesAt L m σ,
+      (starRingEnd ℂ) (F a) * G b
+          * ((gibbsWeight w β a * gibbsWeight w β b / w σ : ℝ) : ℂ)
+        = ((starRingEnd ℂ) ((gibbsWeight w β a : ℂ) * F a)
+            * ((gibbsWeight w β b : ℂ) * G b)) * ((1 / w σ : ℝ) : ℂ) := by
+    intro a _ b _
+    simp only [map_mul, Complex.conj_ofReal]
+    push_cast
+    ring
+  rw [Finset.sum_congr rfl fun a ha =>
+        Finset.sum_congr rfl fun b hb => hsplit a ha b hb]
+  simp only [← Finset.sum_mul]
+  rw [← Finset.sum_mul_sum, ← map_sum]
+
+/-- **THE SITE GRAM MATRIX.**  Same architecture as the bond one: the Gram sum
+IS the form of the combined observable, so positivity transports. -/
+theorem osPairingSite_gram {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (m : ℕ)
+    {ι : Type*} [Fintype ι] (c : ι → ℂ)
+    (F : ι → (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    (∑ i, ∑ j, (starRingEnd ℂ) (c i) * c j * osPairingSiteCross w β m (F i) (F j))
+      = osPairingSite w β m (fun a => ∑ i, c i * F i a) := by
+  have hL : ∀ i j, (starRingEnd ℂ) (c i) * c j * osPairingSiteCross w β m (F i) (F j)
+      = ∑ σ : Fin L → Fin 2,
+          ((starRingEnd ℂ) (c i) * (starRingEnd ℂ) (collapse w β m (F i) σ))
+            * (c j * collapse w β m (F j) σ) * ((1 / w σ : ℝ) : ℂ) := by
+    intro i j
+    rw [osPairingSiteCross_eq, Finset.mul_sum]
+    exact Finset.sum_congr rfl fun σ _ => by ring
+  rw [Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => hL i j]
+  rw [sum_comm3]
+  rw [← osPairingSiteCross_self, osPairingSiteCross_eq]
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  rw [collapse_sum, map_sum, Finset.sum_mul, Finset.sum_mul]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  rw [Finset.mul_sum, Finset.sum_mul]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  simp only [map_mul]
+  try ring
+
+/-- **THE SITE GRAM MATRIX IS PSD, AT EVERY `β`.**  Only `w > 0` is used. -/
+theorem osPairingSite_gram_nonneg {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (m : ℕ) {ι : Type*} [Fintype ι] (c : ι → ℂ)
+    (F : ι → (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    ∃ r : ℝ, 0 ≤ r ∧
+      (∑ i, ∑ j, (starRingEnd ℂ) (c i) * c j
+        * osPairingSiteCross w β m (F i) (F j)) = (r : ℂ) := by
+  rw [osPairingSite_gram]
+  exact osPairingSite_nonneg hw β m _
 
 end YangMills.OS
