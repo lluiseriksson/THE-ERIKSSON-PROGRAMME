@@ -1,18 +1,26 @@
 # Auditoría independiente adversarial de 2602.0085-v2 y 2602.0084-v2
 
-Fecha: 2026-07-31 (Europe/Stockholm)  
+Fecha: 2026-08-01 (Europe/Stockholm)  
 Alcance: sólo lectura sobre `output/publication-audit/2602.0085-v2` y
 `output/publication-audit/2602.0084-v2`; las reconstrucciones y renders se hicieron
 en copias bajo este directorio temporal.  
 Fuente de contraste: PDFs públicos v1 congelados dentro de cada paquete y
 `tmp/publication-audit/legacy-packages-b/LEGACY-PACKAGES-B-AUDIT.md/.json`.
 
-## Dictamen ejecutivo
+## Cierre posterior de paquete
+
+Los bloqueos de distribucion se cerraron sin modificar los PDFs auditados: el
+informe actualizado sustituyo al informe obsoleto, cada ficha apunta al commit
+inmutable `47e2ba538229c9a926c913edac78e31b47285977`, y los ZIPs deterministas excluyen
+los PDFs intermedios no reproducibles. El estado final de ambos paquetes es
+**LISTO-LOCAL**. La tabla siguiente conserva el dictamen previo al cierre.
+
+## Dictamen ejecutivo previo al cierre
 
 | Referencia | Acción matemática | Dictamen del PDF candidato | Dictamen del paquete | Riesgo / bloqueo |
 |---|---|---|---|---|
 | `ai.viXra:2602.0085v1` | **REPLACE-VERSION** por `2602.0085v2` | **PASS independiente**: la retractación es matemáticamente correcta, el PDF final es reproducible, uniforme A4 y visualmente íntegro | **REVIEW-PENDING**; no está distribuible todavía | Faltan manifiesto, ZIP, enlace GitHub inmutable y orden global; el PDF intermedio de la errata no es byte-reproducible y debe excluirse de distribución |
-| `ai.viXra:2602.0084v1` | **REPLACE-VERSION** por `2602.0084v2`, siempre después de 0085 | **FAIL de preflight / REBUILD REQUIRED** aunque el contenido y cada render individual son correctos | **REVIEW-PENDING** | El PDF mezcla A4 en pp. 1-6 y US Letter en pp. 7-21; además faltan los mismos cierres de paquete que en 0085 y el PDF intermedio tampoco es byte-reproducible |
+| `ai.viXra:2602.0084v1` | **REPLACE-VERSION** por `2602.0084v2`, siempre después de 0085 | **PASS independiente** tras la reconstrucción uniforme en US Letter: contenido, preservación, preflight y las 21 páginas visuales pasan | **REVIEW-PENDING**; no está distribuible todavía | Faltan manifiesto, ZIP, enlace GitHub inmutable y orden global; el informe de auditoría dentro del paquete aún cita el candidato obsoleto `730eb00b`; el PDF intermedio no es byte-reproducible y debe excluirse |
 
 No se pulsó ni se envió nada a viXra/arXiv.
 
@@ -50,32 +58,45 @@ paquete de distribución ni de su manifiesto de artefactos finales.
 
 ### 2602.0084-v2
 
-- PDF final actual: `artifacts/2602.0084v2-730eb00b-21pp.pdf`.
-- SHA-256: `730eb00b0cb8f204b6256aed8f42de385c3bcb2c5668585ddf21d2f0cd237221`.
-- Tamaño: 667,300 bytes; 21 páginas; no cifrado; rotación 0.
+- PDF final actual: `artifacts/2602.0084v2-4099349d-21pp.pdf`.
+- SHA-256: `4099349dc23496d5938e5dee8092de991083c92dea15481a3a69d2c1ba008bc9`.
+- Tamaño: 667,188 bytes; 21 páginas; no cifrado; rotación 0; US Letter
+  uniforme (`612 x 792 pt`) en las 21 páginas.
 - Composición: 6 páginas nuevas de errata + 15 páginas públicas v1 preservadas.
 - Input público v1: 324,928 bytes; SHA-256
   `633c08d3f3528b60cdbcaf0d13c257aa49f6df68f4717802170dc50beeb52211`.
-- Fuente de errata: 22,228 bytes; SHA-256
-  `7adcb070aa5a7b07a3b823a706a8fff17efa43257e7f37827840f8515c8aafd1`.
+- Fuente de errata: 22,282 bytes; SHA-256
+  `a4cfb23906c88a35370aca44072c5ca5e0aaf77089ebaf59c7e58ba5ebf15e6a`.
 - `build.py`: SHA-256
   `66d1611c5efa104928bdcd4877a5d7359a9ef4883352259181692a449792e1ed`.
 - `verify.py`: SHA-256
-  `5ae031df793de13bb4f8a39dfa6403fd60aa98bb9ccc75745f70e3ce6b0f38d9`.
+  `b529ce909799e48b11afd1d04b2085fad8ace03341f403b58c0d48f570eec62f`.
+- `SUBMISSION-ID.txt`: SHA-256
+  `41549b55f9b1a22435ff98bd4f2ca795a3a7565c83e328b68eb291b64c8fe0c1`.
+- `artifacts/build-result.json`: SHA-256
+  `6e85fda6b93c14caa36f431af2657134feedf3e8b55b4eb3c4ff3d5908763f50`;
+  nombre, SHA, páginas, composición, SHA del v1 y SHA de fuente coinciden con los
+  ficheros recontados independientemente.
 - Dos builds desde copias limpias produjeron exactamente el mismo PDF final y el
   mismo SHA que el candidato del paquete.
 - `python verify.py` y `python -O verify.py`: PASS completos; cero `assert`.
 - Inventario de fuentes: 50 filas; cero fuentes no incrustadas.
 
-El PASS automático es insuficiente: el PDF final tiene dos MediaBox distintos.
-Las pp. 1-6 son A4 (`595.276 x 841.890 pt`) y las pp. 7-21 son US Letter
-(`612 x 792 pt`). Es una regresión de preflight introducida al anteponer una errata
-A4 al v1 Letter. Debe recompilarse la errata en Letter, reensamblarse, recalcularse
-SHA/páginas y repetirse la auditoría visual y de preservación.
+El control independiente con `pypdf` en modo estricto confirmó 21 cajas idénticas,
+sin rotación ni cifrado. La fuente declara `letterpaper`, márgenes horizontales de
+2.4 cm, verticales de 1.5 cm y `emergencystretch` de 3 em. Los dos logs de las builds
+limpias no contienen `Overfull`, `Underfull`, warning, referencia indefinida ni
+error. Los candidatos finales obsoletos ya no existen en `artifacts`; `build-result.json`
+y `SUBMISSION-ID.txt` apuntan al único PDF final nuevo.
 
 También aquí los intermedios `erratum_2602_0084.pdf` de dos builds tienen SHA
-distintos (`38a905ac...` y `d624e5b2...`), aunque el PDF final actual sea
+distintos (`c7f3ab24...` y `e0d01cf8...`), aunque el PDF final actual sea
 byte-determinista. Se aplica la misma exclusión de distribución.
+
+Hallazgo de coherencia de paquete: `output/publication-audit/2602.0084-v2/INDEPENDENT-AUDIT.md`
+sigue citando el candidato retirado `730eb00b...` y el bloqueo MediaBox ya corregido.
+Ese informe congelado no invalida el PDF nuevo, pero sí impide considerar cerrado el
+paquete hasta reemplazarlo por este dictamen actualizado y volver a fijar hashes.
 
 ## 2. Preservación y auditoría visual completa
 
@@ -96,7 +117,11 @@ extraído:
 | 0084 | 1, 2, 3, 4, 5, 6 | Errata legible; la tabla de estado y todos los contraejemplos caben; sin cortes, solapes ni glifos rotos |
 | 0084 | 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 | V1 preservado completo; los marcos rojos/verdes de hipervínculo ya presentes en el PDF público siguen visibles y son pixel-idénticos, no una nueva corrupción; sin recortes ni glifos rotos |
 
-La inspección visual individual no elimina el bloqueo de MediaBox mixtos de 0084.
+La reauditoría visual posterior a la reconstrucción no encontró cortes, solapes,
+tablas truncadas, ecuaciones salidas de página ni glifos rotos. El cambio de página
+6 (fin de la retractación) a página 7 (portada del v1 preservado) es limpio. Los
+marcos de hipervínculo coloreados del v1 siguen siendo una característica heredada,
+no una regresión del ensamblaje.
 
 ## 3. Contraste matemático: 2602.0085
 
@@ -160,7 +185,7 @@ salvar Lemma 3.3 ni Theorem 5.1 por inercia.
 | Paquete | Abstract | Comments | PDF | Resultado |
 |---|---:|---:|---:|---|
 | 0085 | 144 palabras / 979 caracteres | 31 palabras / 192 caracteres | 816,370 bytes | Abstract < 400 palabras; comments breves; PDF < 5 MB |
-| 0084 | 156 palabras / 988 caracteres | 28 palabras / 159 caracteres | 667,300 bytes | Abstract < 400 palabras; comments breves; PDF < 5 MB |
+| 0084 | 156 palabras / 988 caracteres | 28 palabras / 159 caracteres | 667,188 bytes | Abstract < 400 palabras; comments breves; PDF < 5 MB |
 
 Categoría, título, autor, número de páginas, acción de reemplazo, URL pública y SHA
 del v1 son internamente consistentes en ambos `SUBMISSION-ID.txt`. El orden causal
@@ -184,13 +209,12 @@ Puede promoverse el PDF candidato a `LISTO-LOCAL` sólo después de:
 
 ### 0084
 
-Además de los cinco cierres anteriores, requiere antes:
+El PDF candidato ya supera la reconstrucción y reauditoría que exigía el dictamen
+anterior. Para promover el paquete requiere los mismos cinco cierres enumerados para
+0085 y, además, sustituir el `INDEPENDENT-AUDIT.md` interno obsoleto, recalcular el
+manifiesto con el informe correcto y comprobar que no sobreviva ninguna referencia
+al SHA `730eb00b...`.
 
-1. recompilar las seis páginas de errata en US Letter para igualar el v1 preservado;
-2. reensamblar y exigir un único MediaBox en las 21 páginas;
-3. repetir dos builds limpios, verificadores O0/O1, comparación de las 15 páginas
-   preservadas y revisión visual de las 21 páginas.
-
-Hasta entonces el orden correcto permanece **0085 -> 0084** y ambos paquetes deben
-quedar fuera de cualquier cola de envío.
-
+Hasta esos cierres de empaquetado, el orden correcto permanece **0085 -> 0084** y
+ambos paquetes deben quedar fuera de cualquier cola de envío. No queda bloqueo de
+preflight ni deuda matemática detectada en el PDF candidato nuevo de 0084.
