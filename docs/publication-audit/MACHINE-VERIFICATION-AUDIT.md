@@ -26,6 +26,14 @@ timed out and is monitored separately. Until the process terminates with exit co
 PASS**. No manuscript's printed job count or PASS banner is substituted for that
 terminal result.
 
+Final audit checkpoint `2026-07-31T22:48:17Z`: the orphaned build remained active
+with 16 `lean.exe` children and increasing CPU time.  The cache contained 5,064
+compiled Mathlib `.olean` files against 7,781 Mathlib source modules.  There was
+still no process exit code or terminal transcript.  This quantitative progress
+does not change the verdict: the repository-wide target is not reported as PASS,
+and papers whose machine-certified claims require that replay remain
+`REVIEW-PENDING` where the ledger says so.
+
 ## Sorry and project-axiom scan
 
 A source scan of tracked project `.lean` files, excluding `.lake`, temporary and
@@ -61,3 +69,9 @@ Python replacement-package verifiers are run both normally and with `python -O`.
 They contain no `assert` statements; their O0/O1 transcripts are separate. A
 passing package verifier establishes only its explicit integrity, rendering and
 finite counterexample checks, not an unstated mathematical theorem.
+
+All nine replacement releases pass both optimizer modes and the independent
+package audits recorded beside them. `FINAL-PACKAGE-PREFLIGHT.md/.json` additionally
+verify that owner order is exactly 1--9, each final PDF is unencrypted and under
+5 MB, forbidden intermediate/QA objects are absent from the ZIPs, and the package,
+external and internal manifests are byte-identical.
