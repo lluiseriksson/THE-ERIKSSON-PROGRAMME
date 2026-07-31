@@ -1,0 +1,102 @@
+SU(2) COMMUTATOR ESCAPE — REPRODUCIBILITY TRANSCRIPT
+Generated: 2026-07-31 (Europe/Stockholm)
+
+SOURCE AND BRANCH
+Repository: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+Frozen source SHA: a66b1c7da3c7441e06864e327b5c4efa43e9c79d
+Frozen tag: su2-os-preaudit-pass-a66b1c7d
+Derived branch: codex/su2-commutator-escape-audit
+Base decision: the required theorem su2Trace_crossing_lower is absent from
+main at 12bf6e241694aa5cfb5c7a6e08a96c8fa47ff9b1, so the derived branch was
+created exactly at the frozen SHA. Only new global/derived files are added.
+The derived SHA requires its own adversarial audit and inherits no pre-audit.
+
+TOOLCHAIN
+Lean (version 4.29.0-rc6, x86_64-windows-gnu,
+  commit 00659f8e6071d7e46131ed643bf8003b99b044e9, Release)
+Lake version 5.0.0-src+00659f8 (Lean version 4.29.0-rc6)
+Python 3.12.6
+lean-toolchain: leanprover/lean4:v4.29.0-rc6
+mathlib: 07642720480157414db592fa85b626dafb71355b
+
+CACHE PROTOCOL
+Verified source:
+C:\Users\lluis\.codex\worktrees\38c6\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\.lake
+Verified destination:
+C:\Users\lluis\.codex\worktrees\bb87\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\.lake
+Both `.lake` and `.lake/packages` were ordinary directories (no LinkType,
+no Target). The destination did not exist before copying. Command:
+  robocopy <verified-source> <verified-destination> /E /COPY:DAT
+    /DCOPY:DAT /R:2 /W:1 /NFL /NDL /NJH /NJS /NP
+No junction was created; no shared cache was deleted or cleaned.
+
+EXACT TARGET BUILD
+Command:
+  lake build YangMills.Derived.SU2CommutatorEscape
+Result:
+  Built YangMills.Derived.SU2CommutatorEscape
+  Build completed successfully (8181 jobs).
+
+ORACLE
+Command:
+  lake env lean YangMills/Derived/SU2CommutatorEscapeOracle.lean
+Result for every printed title:
+  [propext, Classical.choice, Quot.sound]
+Titles checked:
+  su2Commutator_self
+  su2Commutator_inv
+  su2_conjugation_entry_moment
+  su2_trace_inv_entry_moment
+  su2_commutator_entry_moment
+  su2_commutator_inv_entry_moment
+  su2_commutator_inv_star_entry_moment
+  integral_integral_swap_of_integrable
+  su2_conditioned_right_translation
+  quarter_su2BaseQuadraticForm_lower
+  quarter_su2BaseQuadraticForm_strict
+  su2TraceObservable_one_nonzero
+  sunHaarProb_two_ne_zero
+  quarter_su2BaseQuadraticForm_one_strict
+
+EXACT FINITE CERTIFICATE (TWO RUNS)
+Command, run twice:
+  python scripts/verify_su2_commutator_moments.py
+Both outputs: PASS
+Both output SHA-256:
+  22388962be8d01ffb7cabf0d6a286c16db87eb9016f0c5fbffb0c9995a0962ce
+Byte-for-byte comparison: True
+Scope emitted by the certificate:
+  finite exact contraction; not a substitute for Haar/Fubini
+
+ARTIFACT SHA-256 (BINARY = LF FOR NEW TEXT FILES AT THIS CHECKPOINT)
+YangMills/Derived/SU2CommutatorEscape.lean
+  5283ded74dc808a033feca0643c7e4a776b63e0a5a07d83a4df2776a9d96e25d
+YangMills/Derived/SU2CommutatorEscapeOracle.lean
+  cb145f10cffab356e2542cf380a13534ae4d209106994de4a27e75aef10627b5
+scripts/verify_su2_commutator_moments.py
+  c5d18025cf0f5267fc9b33bb951c8825fa8f990e87077a2358c2d64bf559fbe1
+docs/SU2-COMMUTATOR-ESCAPE.md
+  f444df1cd35d772f9eea37493ce52d18ab15d0a877220a59bc605257b4c0d5d5
+Pinned inputs (binary / LF):
+lean-toolchain
+  8c46c0308e92095e478bcfae7c357327e88c5a624b54abf5ad1660ee0e51df5a
+  dc6d65016fad3123d44bf17b5bf0598286284ab16ba75d5c17eb22ed11f47361
+lake-manifest.json
+  e2f2d45a5fef5ae352e6f8be858726d603d83fde30d740a14a8a2a588579381d
+  1c72b465ab37a0418de6f82573c18bb0e79f9e0165e901fd9da0ddabecdb2611
+
+VALIDATORS
+  forbidden-token sweep: no code occurrence
+  required document headings/limitations: pass
+  git diff --check: pass
+  negative diff against frozen source: pass
+  zero changes in YangMills/OS/SU2WilsonReflection*, docs/su2-os/**,
+  and every pre-existing Lean file
+
+FORMAL LIMITATION
+The complete four-Haar Fubini assembly proving
+  su2CommutatorQuadraticForm beta = (1/4) * su2BaseQuadraticForm beta
+is not yet a Lean theorem. The concrete unscaled four-Haar definition, both
+entrywise moments, inverse-law transport, generic Fubini gate, conditioned
+right translation, and the downstream quarter-scaled inequalities are Lean
+certified. The mathematical derivation is exact in the companion document.
