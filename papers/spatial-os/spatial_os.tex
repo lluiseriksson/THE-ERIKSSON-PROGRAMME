@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{56b3d5ef315f13670494fb9e13669ae2d1975554}
+\newcommand{\anchor}{d95d14af3433335c841056b5cd3c8ce3c21eeda9}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -65,8 +65,8 @@ reason this sentence is in the abstract and not in a footnote.
 
 \textbf{Where the two reflections differ, and it is not cosmetic.}  Through a
 bond the two halves are disjoint and meet through one kernel factor, so
-positivity needs the kernel itself positive semidefinite --- which holds exactly
-for $\beta\ge0$.  Through a site the halves \emph{share} the middle slice; the
+positivity needs the kernel itself positive semidefinite --- which, for
+$L\ge1$, holds exactly when $\beta\ge0$ \cite{ErikssonRefl}.  Through a site the halves \emph{share} the middle slice; the
 form is then a sum of squared moduli divided by the weight of that slice, so it
 is non-negative for \emph{every} $\beta$, negative coupling included, and no
 property of the kernel is used at all.
@@ -194,7 +194,7 @@ F,F\rangle_{\mathrm{bond}}$ is a non-negative real, for every complex observable
 $F$ of the whole past half-chain.
 \end{theorem}
 
-\osline{SpatialOS}{297}{osPairingBond\_nonneg}, which is
+\osline{SpatialOS}{300}{osPairingBond\_nonneg}, which is
 Theorem~\ref{thm:bond} composed with Lemma~\ref{lem:complex} and the companion
 paper's positive semidefiniteness of $K$ at $\beta\ge0$ \cite{ErikssonRefl}.
 
@@ -214,14 +214,25 @@ every complex $c_1,\dots,c_k$,
 and for $\beta\ge0$ both sides are the same non-negative real.
 \end{theorem}
 
-\osline{SpatialOS}{427}{osPairingBond\_gram} and
-\osline{SpatialOS}{456}{osPairingBond\_gram\_nonneg}, with the cross form at
-\osline{SpatialOS}{349}{osPairingBondCross}, its factorisation at
-\osline{SpatialOS}{375}{osPairingBondCross\_eq}, the linearity of the collapse at
-\osline{SpatialOS}{362}{collapse\_sum}, and the four-fold reindexing the assembly
-needs stated on its own at \osline{SpatialOS}{330}{sum\_comm4}.  Positivity is
+\osline{SpatialOS}{438}{osPairingBond\_gram} and
+\osline{SpatialOS}{467}{osPairingBond\_gram\_nonneg}, with the cross form at
+\osline{SpatialOS}{360}{osPairingBondCross}, its factorisation at
+\osline{SpatialOS}{386}{osPairingBondCross\_eq}, the linearity of the collapse at
+\osline{SpatialOS}{373}{collapse\_sum}, and the four-fold reindexing the assembly
+needs stated on its own at \osline{SpatialOS}{333}{sum\_comm4}.  Positivity is
 \emph{transported} to the matrix rather than re-proved: the identity says the
 Gram sum \emph{is} the form of the combined observable.
+
+\paragraph{And the same for the other reflection.}  A subtitle that says
+\emph{two} reflections should not carry a Gram matrix for one of them.  The site
+cross form is
+$\langle\Theta F,G\rangle_{\mathrm{site}}
+   =\sum_\sigma \overline{(\Phi F)(\sigma)}\,(\Phi G)(\sigma)/w(\sigma)$
+(\osline{SpatialOS}{497}{osPairingSiteCross\_eq}), and its Gram matrix is positive
+semidefinite at \emph{every} $\beta$, since only $w>0$ enters:
+\osline{SpatialOS}{521}{osPairingSite\_gram} and
+\osline{SpatialOS}{545}{osPairingSite\_gram\_nonneg}, using the three-fold
+reindexing at \osline{SpatialOS}{351}{sum\_comm3}.
 
 \section{The four gates}\label{sec:gates}
 
@@ -266,11 +277,17 @@ identify with the Osterwalder--Schrader pairing, and not about that pairing.}
 This is the first thing a reader should check when the next version appears.
 
 \paragraph{The sharpness witness.}  Gate C authorises it and it is not written.
-Consequently $\beta\ge0$ appears above as a sufficient hypothesis only.  The
-route is identified: at $m=0$ the collapse is multiplication by $w$, hence
-surjective when $w>0$, so an observable can be chosen whose boundary vector is
-the sign observable that the companion paper already drives negative below zero
-\cite{ErikssonRefl}.
+Consequently $\beta\ge0$ appears above as a sufficient hypothesis only, and the
+module's own docstring now says exactly that --- the previous version's docstring
+still opened with \textsc{exactly}, and the sentence added to correct it pointed
+at ``the separate witness below'', which does not exist.  Retiring an overclaim
+by installing a dangling reference is worse than the overclaim: a reader can
+check a claim and cannot check a pointer to nothing.
+
+The route to the witness is identified: at $m=0$ the collapse is multiplication
+by $w$, hence surjective when $w>0$, so an observable can be chosen whose
+boundary vector is the sign observable that the companion paper already drives
+negative below zero \cite{ErikssonRefl}.
 
 \paragraph{No reconstruction.}  The quotient by the null space of this form,
 with the transfer operator descending to a self-adjoint contraction, is not
@@ -290,13 +307,13 @@ Quantity & Value \\
 \midrule
 Full core build & 8464 jobs, success \\
 \quad checkpoint before this module & 8463 jobs \\
-Oracle commands, and answers & 2773 \\
-\quad distinct declarations & 2770 \\
+Oracle commands, and answers & 2779 \\
+\quad distinct declarations & 2776 \\
 \quad commands listed twice & 3 \\
-\quad distinct, with axiom dependencies & 2746 \\
+\quad distinct, with axiom dependencies & 2752 \\
 \quad distinct, axiom-free & 24 \\
-Declarations in this module & 21 \\
-\quad of them in the oracle & 21 \\
+Declarations in this module & 27 \\
+\quad of them in the oracle & 27 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound},
   \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
@@ -310,7 +327,7 @@ The job count incremented from 8463 to 8464 when the module joined the core,
 which is this repository's standing check that a new module is really being
 elaborated.  It did not move again when declarations were added to an existing
 module, which is the correct reading of that check rather than a failure of it.
-The oracle counters close: $2746+24=2770$ and $2770+3=2773$, the three repeats
+The oracle counters close: $2752+24=2776$ and $2776+3=2779$, the three repeats
 being long-standing duplicate lines elsewhere in the file.  Every declaration of
 this module appears in the oracle, reconciled by name.
 
@@ -318,7 +335,9 @@ The module is \repofile{YangMills/OS/SpatialOS.lean}{YangMills/OS/SpatialOS.lean
 and the companion is
 \repofile{YangMills/OS/SpatialReflection.lean}{YangMills/OS/SpatialReflection.lean}.
 
+\small
 \begin{thebibliography}{9}
+\setlength{\itemsep}{0pt}
 \bibitem{OS73} K. Osterwalder and R. Schrader,
   \emph{Axioms for Euclidean Green's functions},
   Comm. Math. Phys. \textbf{31} (1973), 83--112.
