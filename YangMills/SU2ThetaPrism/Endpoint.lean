@@ -40,29 +40,20 @@ theorem certifiedThetaPairing_gate (moments : NormMomentSteps)
   rw [certifiedThetaPairing, hnormReal]
   exact thetaPairing_gate hbeta series
 
-/-- All loaded fields are missing technical steps.  None is a restatement of a
-headline in `manufactured_six_point_theta_gate`. -/
-structure ManufacturingTechnicalInputs
-    [MeasurableSpace CellConfiguration]
-    (mu : Measure CellConfiguration) (characters : RealCharacterFamily)
-    (beta : ℝ) : Prop where
-  traceReality : TraceRealityCertificate
-  characterBound : CharacterBoundCertificate
-  haarSchur : HaarSchurSteps
-  fubiniCoordinates : FubiniCoordinateSteps
-  normMoments : NormMomentSteps
+/-- The sole remaining manufacturing obligation.  Six former fields are now
+discharged by concrete theorems: trace reality, the character bound,
+fundamental Schur, ordinary Fubini plus the separately named Haar coordinate
+change, witness norm moments, and weight measurability. -/
+structure ManufacturingTechnicalInputs (beta : ℝ) : Prop where
   coefficientSeries :
-    CoefficientRemainderSteps (fun j => alpha characters beta j) beta
-  weightMeasurability : WeightMeasurabilityStep mu beta
+    CoefficientRemainderSteps (fun j => alpha su2WeylPolynomial beta j) beta
 
-/-- Honest endpoint: every absent analytic step is visible in
-`ManufacturingTechnicalInputs`, and every headline is derived through local
-artefact lemmas. -/
+/-- Concrete-Haar, concrete-probe conditional front door.  It deliberately
+retains the genuinely open coefficient-series obligation and therefore is not
+a closed manufacturing certificate. -/
 theorem manufactured_six_point_theta_gate
-    [MeasurableSpace CellConfiguration]
-    {mu : Measure CellConfiguration} [IsFiniteMeasure mu]
-    (characters : RealCharacterFamily) (beta : ℝ) (hbeta : BetaDomain beta)
-    (input : ManufacturingTechnicalInputs mu characters beta) :
+    (beta : ℝ) (hbeta : BetaDomain beta)
+    (input : ManufacturingTechnicalInputs beta) :
     connectedCycleRank (Fintype.card HalfVertex) (Fintype.card Branch) = 2 ∧
     connectedCycleRank (Fintype.card HalfVertex) (Fintype.card ReducedBranch) = 1 ∧
     HasThreeDistinctBranches Branch ∧
@@ -76,22 +67,25 @@ theorem manufactured_six_point_theta_gate
     CompleteRelativeOrthogonality ∧
     witnessNormSq = 3 / 4 ∧
     couplingMultiplicity 2 1 1 = 1 ∧
-    certifiedThetaPairing (fun j => alpha characters beta j) =
-      alpha characters beta 2 * (alpha characters beta 1) ^ 2 / 16 ∧
-    beta ^ 4 / 512 ≤ certifiedThetaPairing (fun j => alpha characters beta j) ∧
-    Integrable (cellWeight beta) mu := by
+    certifiedThetaPairing (fun j => alpha su2WeylPolynomial beta j) =
+      alpha su2WeylPolynomial beta 2 *
+        (alpha su2WeylPolynomial beta 1) ^ 2 / 16 ∧
+    beta ^ 4 / 512 ≤
+      certifiedThetaPairing (fun j => alpha su2WeylPolynomial beta j) ∧
+    Integrable (cellWeight beta) cellHaar := by
   refine ⟨threeBranch_cycleRank, reduced_cycleRank, branch_hasThreeDistinct,
     reducedBranch_not_hasThreeDistinct, holonomy_reflect,
-    cellWeight_reflection_invariant input.traceReality beta,
+    cellWeight_reflection_invariant traceRealityConcrete beta,
     witness_simultaneous_conj, witness_ne_zero,
-    complete_U_orthogonality input.haarSchur input.fubiniCoordinates,
-    complete_V_orthogonality input.haarSchur input.fubiniCoordinates,
-    complete_relative_orthogonality input.haarSchur input.fubiniCoordinates,
-    witnessNormSq_eq_three_quarters input.normMoments,
+    complete_U_orthogonality haarSchurConcrete fubiniCoordinatesConcrete,
+    complete_V_orthogonality haarSchurConcrete fubiniCoordinatesConcrete,
+    complete_relative_orthogonality haarSchurConcrete fubiniCoordinatesConcrete,
+    witnessNormSq_eq_three_quarters normMomentsConcrete,
     theta_coupling_multiplicity_one,
-    certifiedThetaPairing_exact input.normMoments _,
-    certifiedThetaPairing_gate input.normMoments hbeta input.coefficientSeries,
-    cellWeight_integrable input.characterBound beta input.weightMeasurability⟩
+    certifiedThetaPairing_exact normMomentsConcrete _,
+    certifiedThetaPairing_gate normMomentsConcrete hbeta input.coefficientSeries,
+    cellWeight_integrable characterBoundConcrete beta
+      (weightMeasurabilityConcrete beta)⟩
 
 /-- Anti-vacuity bundle proved without using the endpoint inputs. -/
 theorem endpoint_anti_vacuity :

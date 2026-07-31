@@ -18,12 +18,52 @@ def BetaDomain (beta : ℝ) : Prop :=
 theorem one_mem_betaDomain : BetaDomain 1 := by
   constructor <;> norm_num
 
-/-- A real character family indexed by twice-spin.  This is data, not a claim
-that every supplied function is already a constructed irreducible character. -/
-abbrev RealCharacterFamily := TwiceSpin → SU2 → ℝ
+/-- Real-valued probes indexed by twice-spin.  The abstract coefficient lemma
+uses this neutral function-space name; the front door below instantiates it
+with `su2WeylPolynomial`, whose low-spin entries have explicit
+representation-ring bridges. -/
+abbrev RealProbeFamily := TwiceSpin → SU2 → ℝ
+
+/-- The concrete low-spin SU(2) Weyl polynomials consumed by this gate.
+Only labels `1` (spin one-half) and `2` (spin one) occur in the endpoint. -/
+def su2WeylPolynomial : RealProbeFamily
+  | 1, g => (chi g).re
+  | 2, g => (chi g).re ^ 2 - 1
+  | _, _ => 0
+
+@[simp] theorem su2WeylPolynomial_spinHalf (g : SU2) :
+    su2WeylPolynomial 1 g = (chi g).re := rfl
+
+@[simp] theorem su2WeylPolynomial_spinOne (g : SU2) :
+    su2WeylPolynomial 2 g = (chi g).re ^ 2 - 1 := rfl
+
+/-- The label-one probe is literally the character of the constructed
+fundamental continuous unitary representation. -/
+theorem su2WeylPolynomial_spinHalf_representation_bridge (g : SU2) :
+    (su2WeylPolynomial 1 g : ℂ) =
+      YangMills.ClayCore.ContinuousUnitaryMatrixRep.character fundamentalRep g := by
+  rw [YangMills.ClayCore.ContinuousUnitaryMatrixRep.character_apply]
+  change ((chi g).re : ℂ) = chi g
+  have him : (chi g).im = 0 := by
+    have h := congrArg Complex.im (chi_star_eq g)
+    simp only [Complex.star_def, Complex.conj_im] at h
+    linarith
+  apply Complex.ext <;> simp [him]
+
+/-- Clebsch--Gordan character-ring bridge at the only higher label consumed:
+the spin-one Weyl polynomial plus the trivial character is the character of
+the tensor square of the constructed fundamental representation.  This avoids
+presenting an arbitrary family of functions as representation data. -/
+theorem su2WeylPolynomial_spinOne_tensor_square_bridge (g : SU2) :
+    (su2WeylPolynomial 2 g : ℂ) + 1 =
+      (YangMills.ClayCore.ContinuousUnitaryMatrixRep.character fundamentalRep g) ^ 2 := by
+  rw [← su2WeylPolynomial_spinHalf_representation_bridge]
+  simp only [su2WeylPolynomial_spinOne]
+  push_cast
+  ring
 
 /-- Registered coefficient integral. -/
-def alpha (characters : RealCharacterFamily) (beta : ℝ) (j : TwiceSpin) : ℝ :=
+def alpha (characters : RealProbeFamily) (beta : ℝ) (j : TwiceSpin) : ℝ :=
   ∫ g : SU2,
     Real.exp ((beta / 2) * (chi g).re) * characters j g
       ∂haarSU2
