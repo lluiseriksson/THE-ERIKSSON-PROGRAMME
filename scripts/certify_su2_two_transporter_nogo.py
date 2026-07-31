@@ -8,8 +8,44 @@ integral identity.
 
 from __future__ import annotations
 
+import argparse
+import subprocess
+import sys
 from dataclasses import dataclass
 from fractions import Fraction
+from pathlib import Path
+from typing import NoReturn
+
+
+EXPECTED_CHECKS = 14
+MUTATIONS = ("decisive-trace", "witness-condition", "omit-check")
+
+
+class CertificateFailure(Exception):
+    """A failed or structurally incomplete finite certificate."""
+
+
+@dataclass
+class CheckLedger:
+    count: int = 0
+
+    def require(self, condition: bool, label: str) -> None:
+        """Record one acceptance check and fail explicitly if it is false."""
+        self.count += 1
+        if not condition:
+            raise CertificateFailure(f"check {self.count} failed: {label}")
+
+    def close(self) -> None:
+        """Reject additions or removals that do not update the fixed contract."""
+        if self.count != EXPECTED_CHECKS:
+            raise CertificateFailure(
+                f"check-count mismatch: observed {self.count}, expected {EXPECTED_CHECKS}"
+            )
+
+
+def fail(message: str) -> NoReturn:
+    print(f"CERTIFICATE ERROR: {message}", file=sys.stderr)
+    raise SystemExit(1)
 
 
 @dataclass(frozen=True)
@@ -91,10 +127,6 @@ class Quaternion:
     def norm_sq(self) -> Qsqrt2:
         return self.r * self.r + self.i * self.i + self.j * self.j + self.k * self.k
 
-    def inv_unit(self) -> "Quaternion":
-        assert self.norm_sq() == ONE
-        return self.conj()
-
     def trace(self) -> Qsqrt2:
         # Under the standard unit-quaternion isomorphism with SU(2), tr(q)=2 Re(q).
         return 2 * self.r
@@ -145,7 +177,7 @@ class Word:
         return "1" if not self.letters else " ".join(map(str, self.letters))
 
 
-def finite_word_checks() -> list[str]:
+def finite_word_checks(checks: CheckLedger, mutation: str | None) -> list[str]:
     x, y = Word.generator("x"), Word.generator("y")
     c, c1, c2 = Word.generator("c"), Word.generator("c1"), Word.generator("c2")
     z = Word.generator("z")
@@ -159,12 +191,19 @@ def finite_word_checks() -> list[str]:
     v_right = c2 * y
     a = x * c1 * y.inv()
 
-    assert hd_diagonal != reduced
-    assert he_diagonal == reduced
-    assert he == u * v_left.inv()
-    assert hd == u * v_right.inv()
-    assert a * (a * z).inv() == a * z.inv() * a.inv()
-    assert u * (u * z).inv() == u * z.inv() * u.inv()
+    checks.require(hd_diagonal != reduced, "H_D diagonal must differ from reduced")
+    checks.require(he_diagonal == reduced, "H_E diagonal must equal reduced")
+    checks.require(he == u * v_left.inv(), "H_E must factor as u v_left^-1")
+    checks.require(hd == u * v_right.inv(), "H_D must factor as u v_right^-1")
+    checks.require(
+        a * (a * z).inv() == a * z.inv() * a.inv(),
+        "D substitution must give A z^-1 A^-1",
+    )
+    if mutation != "omit-check":
+        checks.require(
+            u * (u * z).inv() == u * z.inv() * u.inv(),
+            "E substitution must give u z^-1 u^-1",
+        )
 
     return [
         f"WORD H_D diagonal = {hd_diagonal} != {reduced}",
@@ -176,20 +215,36 @@ def finite_word_checks() -> list[str]:
     ]
 
 
-def quaternion_checks() -> list[str]:
+def quaternion_checks(checks: CheckLedger, mutation: str | None) -> list[str]:
     x, y = Q_I, Q_J
     c = Quaternion(r=SQRT2_OVER_2, k=SQRT2_OVER_2)
-    assert all(q.norm_sq() == ONE for q in (x, y, c))
+    checks.require(x.norm_sq() == ONE, "x witness must be a unit quaternion")
+    checks.require(y.norm_sq() == ONE, "y witness must be a unit quaternion")
+    expected_c_norm = Qsqrt2(Fraction(2)) if mutation == "witness-condition" else ONE
+    checks.require(
+        c.norm_sq() == expected_c_norm,
+        "c witness must satisfy the exact unit-norm condition",
+    )
 
-    reduced = x * y.inv_unit()
-    hd_diagonal = x * c * y.inv_unit() * c.inv_unit()
-    he_diagonal = x * c * c.inv_unit() * y.inv_unit()
+    # The three factors used through conjugation have just been checked unit,
+    # so quaternion conjugation is their inverse.
+    reduced = x * y.conj()
+    hd_diagonal = x * c * y.conj() * c.conj()
+    he_diagonal = x * c * c.conj() * y.conj()
 
-    assert reduced == -Q_K
-    assert hd_diagonal == -Q_ONE
-    assert he_diagonal == reduced
-    assert reduced.trace() == ZERO
-    assert hd_diagonal.trace() == Qsqrt2(Fraction(-2))
+    checks.require(reduced == -Q_K, "reduced witness must equal -k")
+    checks.require(hd_diagonal == -Q_ONE, "H_D witness must equal -1")
+    checks.require(he_diagonal == reduced, "H_E witness must equal reduced")
+    checks.require(reduced.trace() == ZERO, "reduced trace must be zero")
+    expected_hd_trace = (
+        Qsqrt2(Fraction(-1))
+        if mutation == "decisive-trace"
+        else Qsqrt2(Fraction(-2))
+    )
+    checks.require(
+        hd_diagonal.trace() == expected_hd_trace,
+        "H_D diagonal trace must be exactly -2",
+    )
 
     return [
         f"QUAT c norm^2 = {c.norm_sq()}",
@@ -201,16 +256,69 @@ def quaternion_checks() -> list[str]:
     ]
 
 
-def main() -> int:
+def optimization_flags() -> list[str]:
+    if sys.flags.optimize <= 0:
+        return []
+    return ["-" + "O" * sys.flags.optimize]
+
+
+def self_test() -> int:
+    script = str(Path(__file__).resolve())
+    for mutation in MUTATIONS:
+        command = [sys.executable, *optimization_flags(), script, "--_mutation", mutation]
+        completed = subprocess.run(command, text=True, capture_output=True, check=False)
+        combined = completed.stdout + completed.stderr
+        if completed.returncode == 0:
+            fail(f"self-test mutation {mutation!r} was accepted")
+        if "RESULT: PASS" in combined:
+            fail(f"self-test mutation {mutation!r} emitted RESULT: PASS")
+        print(f"SELF-TEST mutation {mutation}: REJECTED (exit {completed.returncode})")
+    print(f"SELF-TEST: PASS ({len(MUTATIONS)}/{len(MUTATIONS)} mutations rejected)")
+    return 0
+
+
+def certify(mutation: str | None = None) -> int:
+    checks = CheckLedger()
+    try:
+        word_lines = finite_word_checks(checks, mutation)
+        quaternion_lines = quaternion_checks(checks, mutation)
+        checks.close()
+    except (CertificateFailure, ArithmeticError, TypeError, ValueError) as exc:
+        fail(str(exc))
+
     lines = [
-        "SU2 TWO-TRANSPORTER FINITE CERTIFICATE",
+        "SU2 TWO-TRANSPORTER FINITE ARITHMETIC/WITNESS CERTIFICATE",
         "scope: exact words + Q(sqrt(2)) unit quaternions; NOT Haar integration",
-        *finite_word_checks(),
-        *quaternion_checks(),
+        *word_lines,
+        *quaternion_lines,
+        f"CHECKS: {checks.count}/{EXPECTED_CHECKS}",
         "RESULT: PASS",
     ]
     print("\n".join(lines))
     return 0
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Certify the finite arithmetic/witness portion of the SU(2) no-go note."
+    )
+    parser.add_argument(
+        "--self-test",
+        action="store_true",
+        help="verify that the built-in known mutations are all rejected",
+    )
+    parser.add_argument("--_mutation", choices=MUTATIONS, help=argparse.SUPPRESS)
+    args = parser.parse_args()
+    if args.self_test and args._mutation is not None:
+        parser.error("--self-test and --_mutation are mutually exclusive")
+    return args
+
+
+def main() -> int:
+    args = parse_args()
+    if args.self_test:
+        return self_test()
+    return certify(args._mutation)
 
 
 if __name__ == "__main__":
