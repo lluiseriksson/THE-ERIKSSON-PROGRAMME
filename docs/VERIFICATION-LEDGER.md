@@ -26052,3 +26052,42 @@ does not yet close the terminal `eq143` field: its sole remaining input is
 the physical direct-sector Hessian estimate specialized to the combined
 metric and cardinality.  The compositor removes the Lemma-1 branch as an
 analytic obligation but does not assume or replace that direct producer.
+
+## Addendum 518 (2026-07-31, **coupling-scaled direct equation-(1.43) producer GREEN**)
+
+The literal CMP102 source-metric Hessian estimate is now transported through
+the physical CMP109 substitution `B ↦ g_k C B` at order two.  The exact chain
+rule is proved both as an iterated derivative and in the nested-CLM Hessian
+form consumed by the reconstructed domain coefficient.  Its complete
+volume-uniform cost is printed as
+
+```text
+(|g_k| * (1 + M^3))^2.
+```
+
+This factor is installed in
+`CMP102Eq80CouplingScaledEq143ProducerBudget`, not absorbed into an unnamed
+constant.  The scalar comparison theorem proves that the literal CMP102
+source-metric majorant times this cost lies below
+`cmp116Eq143QMajorant`.  The terminal physical theorem
+`abs_cmp116FDerivHessian_cmp102Eq80CouplingScaledPhysicalDomainFTC_le_eq143`
+then constructs the complete pointwise equation-(1.43) Hessian estimate from
+the CMP102 component jets, patch-walk ratios, source-metric decays, contour
+regularity, and the single coupled producer budget.  It accepts neither a
+free Hessian majorant nor equation (1.43) itself.
+
+**Pinned Colab Pro+ high-RAM focal.**  The second-jet module finished with
+`Build completed successfully (8651 jobs).`; the coupled source-metric
+producer finished with `Build completed successfully (8784 jobs).`
+All twelve audited declarations report exactly
+`[propext, Classical.choice, Quot.sound]`.  After integration into
+`YangMillsCore`, the complete root replay finished with the literal line
+`Build completed successfully (10325 jobs).`  The recursive import guard
+confirmed that all 2,167 local sources in the core closure are tracked.
+
+**Remaining exact bridge.**  This addendum closes the physical direct
+Hessian producer for one localization domain.  The terminal combined
+`eq143` field still requires the definitional identification of each indexed
+direct quadratic core with its projected fixed-Hessian term, followed by the
+already-green combined direct/native compositor from Addendum 517.  No
+terminal `TermSource` instance is claimed here.
