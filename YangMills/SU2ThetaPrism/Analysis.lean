@@ -210,6 +210,59 @@ structure FubiniCoordinateSteps : Prop where
   relative_coordinate_exchange : ∀ (phi : SU2 → ℂ), RelativePairingIntegrable phi →
     pairingRelative phi = ∫ X, conditionalRelative X * star (phi X) ∂haarSU2
 
+/-- The Haar coordinate change `(X,W) ↦ (XW,W)`.  Its inverse is
+`(U,V) ↦ (UV⁻¹,V)`.  This is deliberately separate from ordinary Fubini. -/
+def relativeCoordinateEquiv : (SU2 × SU2) ≃ᵐ (SU2 × SU2) where
+  toFun p := (p.1 * p.2, p.2)
+  invFun p := (p.1 / p.2, p.2)
+  left_inv p := by simp [div_eq_mul_inv]
+  right_inv p := by simp [div_eq_mul_inv]
+  measurable_toFun := by fun_prop
+  measurable_invFun := by fun_prop
+
+/-- Product Haar is invariant under the explicit relative-coordinate change. -/
+theorem relativeCoordinateEquiv_measurePreserving :
+    MeasurePreserving relativeCoordinateEquiv
+      (haarSU2.prod haarSU2) (haarSU2.prod haarSU2) := by
+  simpa [relativeCoordinateEquiv] using
+    (measurePreserving_mul_prod (μ := haarSU2) (ν := haarSU2))
+
+/-- Concrete Fubini exchanges.  The first two fields are ordinary Fubini
+consequences of the supplied integrability.  The third additionally invokes
+the separately proved Haar-invariant coordinate change above. -/
+def fubiniCoordinatesConcrete : FubiniCoordinateSteps where
+  u_exchange phi hphi := by
+    rw [pairingU, integral_prod _ hphi]
+    rfl
+  v_exchange phi hphi := by
+    rw [pairingV, integral_prod_symm _ hphi]
+    rfl
+  relative_coordinate_exchange phi hphi := by
+    let f : SU2 × SU2 → ℂ := fun p =>
+      witness p.1 p.2 * star (phi (p.1 * p.2⁻¹))
+    let e := relativeCoordinateEquiv
+    have hmp : MeasurePreserving e (haarSU2.prod haarSU2)
+        (haarSU2.prod haarSU2) := relativeCoordinateEquiv_measurePreserving
+    have hf : Integrable f (haarSU2.prod haarSU2) := hphi
+    have hfMap : Integrable f (Measure.map e (haarSU2.prod haarSU2)) := by
+      rwa [hmp.map_eq]
+    have hcomp : Integrable (f ∘ e) (haarSU2.prod haarSU2) :=
+      hfMap.comp_measurable e.measurable
+    calc
+      pairingRelative phi = ∫ p, f p ∂(haarSU2.prod haarSU2) := rfl
+      _ = ∫ p, f (e p) ∂(haarSU2.prod haarSU2) :=
+        (hmp.integral_comp' f).symm
+      _ = ∫ X, ∫ W, f (e (X, W)) ∂haarSU2 ∂haarSU2 :=
+        integral_prod _ hcomp
+      _ = ∫ X, conditionalRelative X * star (phi X) ∂haarSU2 := by
+        simp only [f, e, relativeCoordinateEquiv, Function.comp_apply,
+          mul_inv_cancel_right]
+        rw [show (fun X : SU2 =>
+            ∫ W, witness (X * W) W * star (phi X) ∂haarSU2) =
+            fun X => conditionalRelative X * star (phi X) by
+          funext X
+          exact integral_mul_const _ _]
+
 def CompleteUOrthogonality : Prop :=
   ∀ phi, UPairingIntegrable phi → pairingU phi = 0
 
