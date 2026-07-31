@@ -26023,3 +26023,32 @@ coarsened `FinBox 4 (2*Q)` support.  The repository source database continues
 to mark the Eq.-(2.29) Cammarota `DIndex/DParts` dictionary as
 `source_pending`.  No injectivity is inferred from coarsened supports and no
 fictitious cube labels are introduced here.
+
+## Addendum 517 (2026-07-31, **combined equation-(1.43) ledger GREEN; native Hessian premise eliminated**)
+
+The direct equation-(80) and native CMP109 Lemma-1 domain families now share
+one exact quadratic-core ledger.  Its `total` family is the disjoint append
+of the literal direct total activities and every native Lemma-1 residual; its
+`residual` family appends the literal direct residuals and those same native
+activities.  Finite-sum identities verify that no native activity is erased
+or replaced by zero.
+
+On a direct index, the combined core `total - residual` reduces exactly to
+the direct equation-(80) core.  On a native index it is definitionally zero
+because that sector belongs entirely to the printed residual `V''_k` and is
+present identically in both ledgers.  Consequently,
+`abs_cmp116FDerivHessian_combined_le_eq143` derives equation (1.43) for every
+combined index from the direct physical estimate alone.  The native branch
+is discharged internally from exact cancellation and positivity of the
+printed majorant; no native Hessian bound, quotient of indices, or synthetic
+native potential is supplied.
+
+**Pinned Colab Pro+ high-RAM focal.**  The new compositor built with the
+literal line `Build completed successfully (8363 jobs).`  All eight audited
+declarations report exactly `[propext, Classical.choice, Quot.sound]`, and
+the complete root replay finished with
+`Build completed successfully (10321 jobs).`  This checkpoint
+does not yet close the terminal `eq143` field: its sole remaining input is
+the physical direct-sector Hessian estimate specialized to the combined
+metric and cardinality.  The compositor removes the Lemma-1 branch as an
+analytic obligation but does not assume or replace that direct producer.
