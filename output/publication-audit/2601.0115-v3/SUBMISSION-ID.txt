@@ -1,0 +1,17 @@
+STATUS: LISTO-LOCAL
+OWNER_ACTION: DO NOT UPLOAD YET
+SUBMISSION_MODE: Replace existing version of ai.viXra:2601.0115
+CATEGORY: Quantum Physics
+TITLE: Algebraic Entropy and Conditional Mutual Information in a Tiny Gauge-Invariant Truncated Hilbert Space: A Reproducible Toy-Model Study with Effective Mixing Hamiltonians
+AUTHOR: Lluis Eriksson
+ABSTRACT: We present a reproducible pipeline to compute region algebraic entropies and conditional mutual informations (CMI) in a tiny truncated Hilbert space (here dim = 8) indexed by discrete fusion-like descriptors desc = (x, mu) on L = 4 cells. To generate nontrivial ground states within the descriptor-labeled subspace, we introduce an effective Hermitian mixing Hamiltonian based on a weighted k-nearest-neighbor (kNN) graph Laplacian over configuration labels. Across a parameter sweep, we identify a strong-mixing regime where the participation ratio approaches dim (consistent with Laplacian-dominated ground states on connected graphs) and algebraic CMI diagnostics become extremely small (down to 10^{-6} and below) for the chosen algebraic factorization, while region algebraic entropies remain O(1) and exhibit near-quantized values ~ n log 2. We stress that the mixing term is an ansatz used to probe information-theoretic diagnostics and is not claimed to coincide with a Kogut-Susskind plaquette operator. v2 (no v1 number is changed): the reproducibility gap of v1 is repaired -- v1's pipeline loaded an unshipped basis file (descs.pkl) that was never specified, so the v1 dataset was not regenerable from the paper; v2 prints a canonical self-contained basis whose pipeline reproduces every structural finding, keeping v1's Table 1 as an archival dataset; two empirical observations are upgraded to proved statements -- the descriptor-to-key map is injective, making S_alg a genuine von Neumann entropy of a sector (center-type) decomposition, and in the strong-mixing limit the ground state converges to the uniform superposition where the quantization S_alg = n log 2 and the vanishing of both CMIs are exact; the additional experiments recommended in v1 (Haar baseline, kNN ablations, finer t_mix grid) are executed -- the Haar median of I_sum is 0.39, five to six orders of magnitude above the strong-mixing point, so the small-CMI regime is nontrivial; and the verification suite is fully self-contained (no Drive dependencies).
+COMMENTS: 9 pages. v3: layout-only replacement. Table 1 on p.6 was clipped in v2; page 6 was uniformly scaled/repositioned. No text, data, figures, claims, or references changed.
+CHANGE_NOTE: Layout-only correction to page 6. The complete archival Table 1 is now inside the page MediaBox; all eight other pages are pixel-identical to v2. Scientific content is unchanged.
+FILE: artifacts/2601.0115v3-P2-7e32a880d7fb.pdf
+FILE_SHA256: 7e32a880d7fb3d91a64c9c3ede8ea605b480e003ea0693749675fc39ce037546
+FILE_PAGES: 9
+CURRENT_PUBLIC_VERSION: https://ai.vixra.org/pdf/2601.0115v2.pdf
+CURRENT_PUBLIC_SHA256: e845b2d9906714b04d525b82ed1c3c53d38238c3377ecb23417a69391a0e1382
+SUBMISSION_ORDER: After all P0 and P1 owner actions; submit this P2 replacement in the final layout-repair block.
+IMMUTABLE_GITHUB_LINK: TO BE FILLED AFTER THE AUDIT COMMIT; no SHA has been invented.
+FINAL_CLICK: OWNER ONLY

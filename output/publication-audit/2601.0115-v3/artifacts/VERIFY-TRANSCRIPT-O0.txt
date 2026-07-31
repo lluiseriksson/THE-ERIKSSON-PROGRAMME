@@ -1,0 +1,28 @@
+2601.0115v3 P2 VECTOR-REPAIR VERIFICATION
+PYTHON_OPTIMIZE: 0
+PYTHON: 3.12.6
+PASS: exactly one final artifact - ['2601.0115v3-P2-7e32a880d7fb.pdf']
+PASS: frozen source SHA256 - e845b2d9906714b04d525b82ed1c3c53d38238c3377ecb23417a69391a0e1382
+PASS: packaged input is byte-identical to frozen public PDF
+PASS: hash-named output format - 2601.0115v3-P2-7e32a880d7fb.pdf
+PASS: filename hash prefix - 7e32a880d7fb3d91a64c9c3ede8ea605b480e003ea0693749675fc39ce037546
+PASS: source and output unencrypted
+PASS: source page count - 9
+PASS: output page count - 9
+PASS: all Letter MediaBoxes preserved
+PASS: page 6 remains annotation-free
+PASS: source page 6 has diagnosed out-of-MediaBox characters - 152
+PASS: output page 6 has no out-of-MediaBox characters - 0
+PASS: page 6 character sequence preserved - 633 traced characters
+PASS: page 6 full paint bounds have >=30 pt safety margin - x=[95.016,517.293], y=[37.900,755.960]
+PASS: Table 1 label extractable
+PASS: Table 1 final row extractable
+PASS: pages 1-5 and 7-9 pixel-identical at 144 dpi - []
+PASS: page 6 rendering changed
+PASS: clean rebuild succeeds - C:\Users\lluis\AppData\Local\Temp\verify-2601-0115-2qa68ctb\2601.0115v3-P2-7e32a880d7fb.pdf
+7e32a880d7fb3d91a64c9c3ede8ea605b480e003ea0693749675fc39ce037546
+PASS: clean rebuild is byte-identical - 7e32a880d7fb3d91a64c9c3ede8ea605b480e003ea0693749675fc39ce037546
+PASS: verifier contains no assertion nodes
+OUTPUT: 2601.0115v3-P2-7e32a880d7fb.pdf
+OUTPUT_SHA256: 7e32a880d7fb3d91a64c9c3ede8ea605b480e003ea0693749675fc39ce037546
+STATUS: PASS
