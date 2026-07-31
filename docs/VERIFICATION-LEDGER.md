@@ -29376,3 +29376,58 @@ testimony.  Therefore this milestone is CERTIFIED by Colab plus desktop hash
 verification, not yet independently reproduced on Windows.  The mathematical
 debt is unchanged and exact: prove the odd block at rate
 `tanh(beta) * exp(2*gamma)`, then prove the even block off Perron at that rate.
+
+## Addendum 571 (2026-08-01, **TASK 14: permanent oracle and separate block probe**)
+
+**EXACT STATUS CORRECTION.**  The sector interface remains only a typed debt;
+it is not progress on either analytic inequality.  The exact target and both
+active sign hypotheses are unchanged.  No odd- or even-block theorem is proved
+by this addendum.
+
+**PERMANENT ORACLE, CERTIFIED.**  A later fail-closed Colab run checked out the
+raw repository SHA `d2966688d52bb0217f2165f544d0b95e5749a4d9`, which includes
+the 24 new `#print axioms` entries in `oracle_check.lean`.  It ran sequentially:
+`lake build YangMills.OS.SpatialRing`, `lake build YangMillsCore`, the permanent
+`oracle_check.lean`, `scripts/check_consistency.py`, and the preregistered
+sector-block judge.  Every command returned exit 0.  Core was again MEASURED at
+8465 jobs.  Every new declaration appeared in the permanent oracle output with
+exactly the allowed set `{propext, Classical.choice, Quot.sound}`; the global
+parser found no `sorryAx` and no nonstandard axiom.  The ordering failure that
+preceded this run is retained as
+`INC-SPATIAL-RING-PERMANENT-ORACLE-001.md`: the first notebook tried the root
+oracle before constructing its imported `YangMillsCore` module.
+
+**SEPARATE BLOCK MEASUREMENT, VERIFIED ONLY.**  The owner supplied
+`scripts/probe_sector_blocks.py` at raw SHA `3421aa1f`.  Its source SHA-256 is
+`fb7b86e91d6899b73d3c6d704c0bee76ac8754fc568e59115447489f87e2ec36`.
+Because the upstream exit code certified only absence of violations, this
+campaign preregistered `scripts/judge_spatial_sector_probe.py` at `e8e07252`
+before execution.  The wrapper uses no decisory `assert`; it fixes both hashes,
+requires exactly 21 rows, requires both block statuses to pass, requires an
+observed odd slack at most `1e-8`, and bounds printed even-minus-`q^2` by the
+six-decimal rounding budget.
+
+The judge returned exit 0.  Across beta/gamma cells at extents 6, 8, and 10:
+zero odd violations and zero even violations were observed; the smallest
+`q - odd/lambda` was `4.989e-11`; the maximum of the SIX-DECIMAL PRINTED values
+`even_nonperron/lambda - q^2` was `-3.52e-4`.  This is evidence that the odd
+obligation is the sharp one in the measured grid, while the even block has at
+least the observed `q^2` room.  It is not a proof of either inequality, not a
+uniform-in-L statement, and not permission to spend any constant in the odd
+proof.  The strategic order is therefore odd sharp analysis first; a lossy
+even argument is admissible only if its losses stay within a separately proved
+margin.
+
+**ARTIFACT INTEGRITY, VERIFIED ON WINDOWS.**  The second downloaded ZIP hashes
+to `4ca16fddb68e0a83a15d619315cd2c9990e5343bfdca4224490530a1b9c21642`.
+After extraction, `metadata.json` hashes to
+`47067e94b44ef0a06388ef47a9b120af4a51e63a69e31355731b3dae0950ba84`
+and the complete `transcript.txt` to
+`4306374dd4d82562c5c82315634d72ebd8f7cc0c5d83bcac0c108e57b8dc7584`;
+both match the archive's internal `SHA256SUMS`.  The focused permanent-oracle
+extract is committed as `ORACLE-20260801-SPATIAL-RING-SECTORS.txt`.
+
+**REMAINING TESTIMONY.**  The Windows host was still non-exclusive, so no local
+Lean elaborator was launched.  CI remains the third test.  The next mathematical
+task is not another interface: it is a lossless proof of the odd block at
+`q = tanh(beta) * exp(2*gamma)` under `beta >= 0` and `gamma >= 0`.
