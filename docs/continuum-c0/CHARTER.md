@@ -4,10 +4,11 @@ Branch base: `81721890ad3e111d73cbe45074d42ec698ce07b2`
 (the fetched `origin/main` tip when the isolated branch was created).
 
 Current `origin/main` after the later audit fetch:
-`7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`.  The branch base is one commit
-behind; the complete delta is confined to
-`papers/spatial-os/spatial_os.{tex,pdf}`, the explicitly excluded Paper 13
-lane.  This branch is intentionally not rebased across that active lane.
+`1e6113a10c407ba2964af2713aef26c62bbd1157`.  The branch base is five
+commits behind.  The complete delta is confined to the explicitly excluded
+Paper 13 lane (`YangMills/OS/SpatialOS.lean` and its paper), `DASHBOARD.md`,
+and the global `oracle_check.lean`.  No C0-owned file overlaps it.  This
+branch is intentionally not rebased across those active lanes.
 
 ## Scope
 
@@ -92,6 +93,16 @@ sequence with the RG lane's `scaleSpacing`/`towerSize` convention.
   separation gives a lower bound on `touchGraph.dist`; this reuses the
   repository's proved walk-coordinate estimate rather than postulating a
   continuum metric.
+- The canonical axis-pair family fully consumes the repository's
+  infinite-volume correlation theorem.  At fixed scale `k`, the
+  thermodynamic-volume limit is taken first; the canonical plaquettes then
+  have exact touch distance `2k`, and the connected two-point function tends
+  to zero as `k → ∞`.
+- A fully discharged `d=4`, `SU(2)`, `β=10⁻⁶` example uses normalized
+  `Re tr U`, an origin plaquette, and a second plaquette at the genuinely
+  varying offset `2k`.  Its actual constructed infinite-volume Gibbs
+  connected correlation tends to zero
+  (`exampleD4_twoPoint_connected_tendsto_zero`).
 - A compiled example uses the real `d=4`, `SU(2)` thermodynamic Gibbs
   constructor at positive coupling `10⁻⁶`, normalized Haar measure,
   nonconstant energy `Re tr U`, and a four-edge plaquette test.  A second
@@ -99,8 +110,10 @@ sequence with the RG lane's `scaleSpacing`/`towerSize` convention.
   `⌊x/aₙ⌋` for a nonzero physical point, and proves convergence directly
   from integer-translation invariance.
 
-The example uses identity observable embeddings.  It verifies the transport
-mechanics on a nonempty, non-free discrete model.  It is not claimed to
+The positive-coupling example uses identity and point-cylinder observable
+embeddings.  It verifies the transport mechanics on a nonempty, non-free
+discrete model.  The separate two-point example is genuinely
+separation-varying at the same positive coupling.  Neither is claimed to
 satisfy `GeometricScalingCompatibility`, and it is not a physical continuum
 limit.
 
@@ -141,16 +154,11 @@ limit.
 9. **Regime extension**: the proved `1/8450` wall shows that the current KP
    constructor cannot supply a schedule with `βₙ → +∞`; a different
    thermodynamic state producer is required for that lane.
-10. **Separated-point correlation geometry**: the repository has an
-    infinite-volume exponential truncated-correlation bound.  C0 proves that
-    a seam-avoiding shortest touching walk converts coordinate separation to
-    a `touchGraph.dist` lower bound.  Fully consuming the correlation theorem
-    still requires, at each fixed scale and eventually in the independent
-    thermodynamic-volume index, concrete plaquettes realizing the two
-    embedded tests together with reachability and shortest-walk margin.
-    Only after that inner limit may the scale index tend to infinity.  C0
-    does not silently assume those missing certificates or mislabel
-    one-point variance as separated-point correlation.
+10. **General separated-point correlation geometry**: C0 fully discharges
+    the canonical axis-pair family using the repository's exact semitorus
+    distance theorem.  Arbitrary floor-embedded multipoint tests still need
+    concrete realization and no-wrap certificates at each fixed scale.
+    The completed canonical theorem does not supply that general producer.
 11. **Reconstruction**: no measure-limit uniqueness theorem,
    OS reconstruction, Wightman theory, or continuum mass gap is supplied.
 

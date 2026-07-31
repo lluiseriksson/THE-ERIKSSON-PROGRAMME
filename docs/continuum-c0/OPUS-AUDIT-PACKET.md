@@ -9,8 +9,8 @@ bounded endpoint false. Do not request tools or additional files.
 
 There is no continuum Yang--Mills existence claim, continuum measure, OS
 reconstruction, continuum mass gap, Clay claim, `ContinuumState`, or
-`ContinuumExists`. The separated two-point theorem is not claimed complete.
-No paper is produced.
+`ContinuumExists`. The canonical separated two-point family is complete;
+the arbitrary floor-embedded multipoint family is not. No paper is produced.
 
 ## Scale and maps
 
@@ -146,6 +146,31 @@ constructed state is fully integer-translation invariant. The coupling is
 constant, so this is explicitly called a transport-mechanics witness, not a
 physical scaling limit.
 
+## Compiled scale-varying two-point theorem
+
+`axisPlaquetteObservable τ` is a compatible local observable reading the
+canonical plaquette at lattice site `τe₀`. Lean proves its finite-volume
+realization literally equals the corresponding canonical plaquette
+holonomy. For each fixed scale index `k`, the thermodynamic volume is then
+sent to infinity. Eventually the torus is large enough that the pair at
+offsets `0` and `2k` is distinct and has exact touch-graph distance `2k`.
+The repository's infinite-volume exponential two-plaquette theorem therefore
+gives a bound proportional to `exp(-εk)`, and Lean proves:
+
+```lean
+theorem tendsto_infiniteTruncatedCorrelation_axisPair_zero :
+  Tendsto (fun k => infiniteLocalGibbsTruncatedCorrelation
+    μ ... (axisPlaquetteObservable 0) (axisPlaquetteObservable (2*k)))
+    atTop (𝓝 0)
+```
+
+A fully discharged specialization uses `d=4`, `SU(2)`, normalized
+`Re tr U`, Haar probability, and the actual `β=10⁻⁶` constructed Gibbs state:
+`exampleD4_twoPoint_connected_tendsto_zero`. Its observable sequence varies
+with `k`; it is not the earlier translation-invariant one-point constant
+sequence. This proves factorization in the accessible canonical
+positive-coupling sector, not a continuum field law.
+
 ## Precise open obligations
 
 `CandidateLawRealization` requires laws on one fixed topological measurable
@@ -162,12 +187,11 @@ def HasFluctuatingLimit (T) (h) (isGenuineTest) : Prop :=
     0 < weakLimitValue h (T.mul F F) - (weakLimitValue h F)^2
 ```
 
-The nested separated-point obligation is also explicit: at each fixed scale,
-thermodynamic volume must first tend to infinity with concrete realizing
-plaquettes, reachability, and no-wrap margin; only then may scale tend to
-infinity. Lean proves coordinate separation gives a lower bound on
-`touchGraph.dist` under those certificates. The certificates themselves are
-not claimed.
+For arbitrary floor-embedded multipoint tests, the nested separated-point
+obligation remains explicit. The canonical axis family discharges the
+repository correlation theorem's inner volume geometry using exact semitorus
+distance; it is not an instance of the generic `WeakLimit` embedding theorem
+and does not silently generalize to arbitrary floor embeddings.
 
 ## Build/oracle evidence
 
@@ -178,7 +202,7 @@ oracle command
 lake env lean YangMills/Continuum/Oracle.lean
 ```
 
-exited `0`. All 21 printed headlines depend only on
+exited `0`. All 26 printed headlines depend only on
 `[propext, Classical.choice, Quot.sound]`; no project axiom occurs. Static
 search found no code `sorry`, declaration `axiom`, `ContinuumState`, or
 `ContinuumExists`.

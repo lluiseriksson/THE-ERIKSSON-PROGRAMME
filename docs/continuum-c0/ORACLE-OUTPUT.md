@@ -38,6 +38,19 @@ Literal output:
 'YangMills.Continuum.tendsto_exampleD4PlaquetteTest' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YangMills.Continuum.exampleD4_weakLimit_one' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YangMills.Continuum.exampleD4_weakLimit_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.Continuum.axisPlaquetteObservable_realize' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.Continuum.tendsto_axisPairPhysicalSeparation_reciprocal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.Continuum.abs_infiniteTruncatedCorrelation_axisPair_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.Continuum.tendsto_infiniteTruncatedCorrelation_axisPair_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.Continuum.exampleD4_twoPoint_connected_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 ```
 
 No project axiom occurs.

@@ -12,7 +12,7 @@ Audit these hard gates:
 3. explicit `aₙ → 0` and observable maps;
 4. non-circular pointwise weak convergence plus uniqueness;
 5. proved limit stability;
-6. a compiled nonempty `d=4`, `SU(2)` discrete-to-test example;
+6. a compiled, genuinely scale-varying `d=4`, `SU(2)` two-point example;
 7. precisely typed tightness, compatibility, nontriviality, regime, and
    separated-correlation obligations;
 8. no `sorry` or project axioms; and
@@ -24,6 +24,8 @@ Adversarially test:
 - an empty positive-half family;
 - identity reflection;
 - confusion between thermodynamic-volume and scale indices; and
+- whether the canonical-axis correlation theorem really discharges its
+  inner volume geometry before taking the scale limit;
 - the proof and arithmetic of the `1/8450` KP wall.
 
 Distinguish blocking defects from honestly exposed frontiers. Return a concise

@@ -6,9 +6,10 @@ Branch base (the fetched `origin/main` tip at branch creation):
 `81721890ad3e111d73cbe45074d42ec698ce07b2`.
 
 Later fetched `origin/main`:
-`7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`.
-The sole intervening commit adds `papers/spatial-os/spatial_os.{tex,pdf}`;
-this branch does not rebase across or edit that excluded Paper 13 lane.
+`1e6113a10c407ba2964af2713aef26c62bbd1157`.
+The five-commit delta touches only `YangMills/OS/SpatialOS.lean`, the Paper
+13 TeX/PDF, `DASHBOARD.md`, and the global `oracle_check.lean`.  This branch
+does not rebase across or edit those excluded active lanes.
 
 ## Files owned by this branch
 
@@ -17,6 +18,7 @@ this branch does not rebase across or edit that excluded Paper 13 lane.
 - `YangMills/Continuum/GibbsSequence.lean`
 - `YangMills/Continuum/RegimeObstruction.lean`
 - `YangMills/Continuum/CorrelationGeometry.lean`
+- `YangMills/Continuum/TwoPointFactorization.lean`
 - `YangMills/Continuum/WeakLimit.lean`
 - `YangMills/Continuum/Example.lean`
 - `YangMills/Continuum/Oracle.lean`
@@ -82,10 +84,10 @@ change its job graph in this branch.
   `B=2` KP state producer; it is not a no-go theorem for other constructions.
 - The separated two-point lane is nested: first thermodynamic volume tends
   to infinity at fixed scale, then lattice spacing tends to zero.
-  `CorrelationGeometry.lean` proves the graph-distance lower bound once
-  reachability and shortest-walk margin are supplied.  Constructing those
-  certificates uniformly for the floor-embedded plaquettes is the precise
-  missing producer; it is not assumed.
+  `TwoPointFactorization.lean` closes this lane for the canonical axis pair
+  using exact semitorus distance, including a fully discharged SU(2),
+  β=10⁻⁶ example.  Constructing the corresponding certificates uniformly for
+  arbitrary floor-embedded multipoint tests remains an open producer.
 - The measure-level law/tightness and positive-variance obligations remain
   open by construction.
 - Clay distance remains ~0% (<0.1%).
