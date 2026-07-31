@@ -98,7 +98,6 @@ theorem alpha_spinHalf_eq_integral_mul_sinh (beta : ℝ) :
         apply integral_congr_ae
         exact ae_of_all _ fun g => by
           simp [f, fneg]
-          ring
       _ = -(∫ g, fneg g ∂haarSU2) := integral_neg _
   change (∫ g, f g ∂haarSU2) = _
   calc
@@ -107,14 +106,19 @@ theorem alpha_spinHalf_eq_integral_mul_sinh (beta : ℝ) :
       rw [hsym]
       ring
     _ = (1 / 2 : ℝ) * ∫ g, (f - fneg) g ∂haarSU2 := by
-      rw [integral_sub hf hfneg]
+      have hsub : (∫ g, (f - fneg) g ∂haarSU2) =
+          (∫ g, f g ∂haarSU2) - ∫ g, fneg g ∂haarSU2 := by
+        simpa only [Pi.sub_apply] using integral_sub hf hfneg
+      rw [hsub]
     _ = ∫ g, (1 / 2 : ℝ) * (f - fneg) g ∂haarSU2 := by
       rw [integral_const_mul]
     _ = ∫ g : SU2, (chi g).re * Real.sinh (a * (chi g).re) ∂haarSU2 := by
       apply integral_congr_ae
       exact ae_of_all _ fun g => by
+        change (1 / 2 : ℝ) * (f g - fneg g) =
+          (chi g).re * Real.sinh (a * (chi g).re)
+        simp only [f, fneg]
         rw [Real.sinh_eq]
-        simp only [f, fneg, Pi.sub_apply]
         ring
     _ = ∫ g : SU2, (chi g).re *
         Real.sinh ((beta / 2) * (chi g).re) ∂haarSU2 := by rfl
@@ -144,8 +148,9 @@ theorem alpha_spinHalf_lower {beta : ℝ} (hbeta : 0 ≤ beta) :
   have hright : Integrable (fun g : SU2 =>
       (chi g).re * Real.sinh ((beta / 2) * (chi g).re)) haarSU2 := by
     exact (chi_re_continuous.mul
-      (Real.continuous_sinh.comp (continuous_const.mul chi_re_continuous)))
-        .integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
+      (Real.continuous_sinh.comp
+        (continuous_const.mul chi_re_continuous))).integrable_of_hasCompactSupport
+          (HasCompactSupport.of_compactSpace _)
   calc
     beta / 2 = (beta / 2) * ∫ g : SU2, (chi g).re ^ 2 ∂haarSU2 := by
       rw [chi_re_sq_integral_one, mul_one]
