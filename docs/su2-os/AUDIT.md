@@ -36,6 +36,19 @@ scope boundary remains explicit: this weight is not derived from the
 repository's `GaugeConfig.plaquetteHolonomy`/`wilsonAction` API, and it does
 not instantiate the finite `ReflectionSplitting` consumer.
 
+A later manufacturer-side audit of public PR #35 added three limitations:
+
+1. the single crossing transporter is gauge-pure and does not exercise the
+   general two-transporter plaquette;
+2. `F = 1` proves non-nullity but does not isolate a nontrivial PSD mode; and
+3. the `8179` job count belongs to the endpoint target, not global core.
+
+The first and third are now explicit in `CERTIFICATION.md` and
+`INTEGRATION-NOTE.md`.  For the second, `SHARP-GATE.md` preregisters
+`Qβ(trace) ≥ β / 4`; Lean now certifies the exact zero Haar mean of `trace`,
+but not yet the lower bound.  This manufacturer-side review is not counted as
+terminal external audit.
+
 ## Fable High
 
 The required account preflight was performed with profile `masterythief`.
@@ -46,8 +59,9 @@ loggedIn = true
 email = masterythief@gmail.com
 ```
 
-Two bounded calls were attempted: the initial audit/design call and one retry
-at a genuine proof bottleneck.  Both returned HTTP 429 with `is_error = true`,
+Three bounded calls were attempted: the initial audit/design call, one retry
+at the original proof bottleneck, and one retry at the new preregistered
+`β / 4` character bottleneck.  All returned HTTP 429 with `is_error = true`,
 no usable response, no verified `claude-fable-5` result, and empty
 `modelUsage`.  In accordance with the task contract, there was no retry loop
 and no simulated audit.

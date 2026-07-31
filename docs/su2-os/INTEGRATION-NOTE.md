@@ -53,6 +53,8 @@ The global build/oracle does not currently see these modules.  In particular,
 `YangMills/L0_Lattice/SU2Basic.lean`, a legitimate dependency of this lane, is
 not imported by `YangMillsCore.lean`.  This task therefore carries its own
 executable oracle at `docs/su2-os/SU2OSOracle.lean` and its exact transcript.
+Consequently, a green lane target must never be reported as a green global
+core build.
 
 After integration review, the owner of the global files must:
 

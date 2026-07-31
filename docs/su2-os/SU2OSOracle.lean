@@ -13,6 +13,7 @@ does not own `YangMillsCore.lean` or `oracle_check.lean`.
 #print axioms YangMills.OS.su2WilsonCrossingKernel_dressed
 #print axioms YangMills.OS.su2OnePlaquetteCutWeight_splitting
 #print axioms YangMills.OS.su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm
+#print axioms YangMills.OS.su2TraceObservable_haar_mean_zero
 #print axioms YangMills.OS.su2OnePlaquette_reflection_positive
 #print axioms YangMills.OS.su2WilsonCrossingKernel_nonconstant
 #print axioms YangMills.OS.su2OnePlaquette_constant_pairing_strict

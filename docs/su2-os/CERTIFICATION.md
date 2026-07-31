@@ -17,6 +17,10 @@
   halves and inverts each crossing variable.  The crossing link transports
   both boundary holonomies to a common frame and cancels exactly from their
   relative Wilson holonomy.
+- This is specifically the one-transporter temporal-gauge cut.  Its crossing
+  variable is gauge-pure and cancels identically.  A plaquette with two
+  independent transporters `c₁` and `c₂`, with holonomy
+  `x c₁ y⁻¹ c₂⁻¹`, is not covered.
 - The full reflected pairing integrates left, crossing, and right variables
   against normalized Haar measure and is bridged by a proved identity to the
   analytic kernel quadratic form.
@@ -31,7 +35,7 @@ Pinned base:
 7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a
 ```
 
-Executed on 2026-07-30:
+Executed on 2026-07-31:
 
 ```text
 lake build YangMills.OS.SU2WilsonReflectionEndpoint
@@ -48,6 +52,13 @@ Lean/Mathlib axioms:
 ```
 
 The complete oracle command and output are in `ORACLE-TRANSCRIPT.txt`.
+The count `8179` belongs only to the target
+`YangMills.OS.SU2WilsonReflectionEndpoint`; it is not a claim that the global
+`YangMillsCore` target was rebuilt or that the global oracle imports this lane.
+
+The sharp mean-zero character follow-up is tracked separately in
+`SHARP-GATE.md`.  Its zero-mean subgate is certified, but the lower bound
+`Qβ(trace) ≥ β / 4` remains open and is not part of this certification.
 
 ## Verified
 

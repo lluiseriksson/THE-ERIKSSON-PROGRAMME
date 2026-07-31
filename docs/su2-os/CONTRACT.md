@@ -54,6 +54,8 @@ opposite convention and is not imported as the definition of this kernel.
    `su2OnePlaquette_reflection_positive`,
    `su2WilsonCrossingKernel_nonconstant`, and
    `su2OnePlaquette_constant_pairing_strict`.
+   This is a non-nullity gate.  The stronger character gate
+   `Qβ(trace) ≥ β / 4` is preregistered but still open; see `SHARP-GATE.md`.
 6. **CLOSED.** Build all owned Lean modules with no `sorry` or project axiom
    and record `#print axioms` output for every headline.  See
    `CERTIFICATION.md`, `SU2OSOracle.lean`, and `ORACLE-TRANSCRIPT.txt`.
