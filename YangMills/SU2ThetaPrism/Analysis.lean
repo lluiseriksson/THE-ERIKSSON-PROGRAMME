@@ -210,6 +210,7 @@ theorem trace_convolution (B : SU2) :
             integral_const_mul _ _
           _ = B.val j i * (if i = k ∧ j = k then (1 : ℂ) / 2 else 0) := by
             rw [YangMills.ClayCore.sunHaarProb_fundamental_entry_orthogonality]
+            norm_num
       simp_rw [hterm]
       simp [chi, Matrix.trace]
       ring
