@@ -53,3 +53,9 @@ fundamental trace, and `Real.self_le_sinh_iff`.  The general tensor-power
 multiplicity formula formerly present in the artefact was unused and has been
 removed.  No Peter--Weyl completeness was introduced, and `coefficientSeries`
 remains open exactly at `SpinOneCoefficientRemainderStep`.
+
+Colab verification at source `fcbe7194fc9eadaa0e6a35e61c7a59fe4ecade58`
+and the pin above built the expanded oracle with 8186 jobs, two requested jobs
+on two host CPUs, in 96 seconds.  All 38 printed declarations used only
+`propext`, `Classical.choice`, and `Quot.sound`.  This is manufacturer
+verification, not the required fresh blind external audit.

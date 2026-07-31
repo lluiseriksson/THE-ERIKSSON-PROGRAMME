@@ -54,6 +54,14 @@ so neither the beta-one nor uniform front door is a closed certificate.
 - Expanded `YangMills.SU2ThetaPrism.Oracle` at `156bea65...`: 8186 jobs,
   2 requested jobs on 2 host CPUs, 65 seconds, exit 0; all 33 printed
   declarations report exactly `[propext, Classical.choice, Quot.sound]`.
+- Direct spin-half coefficient target at `a6bf8170...`:
+  `YangMills.SU2ThetaPrism.Coefficients`, 8184 jobs, 2 requested jobs on
+  2 host CPUs, 52 seconds, exit 0.
+- Minimized-input endpoint and expanded oracle at `fcbe7194...`: 8186 jobs,
+  2 requested jobs on 2 host CPUs, 96 seconds, exit 0; all 38 printed
+  declarations, including the five new coefficient-route declarations and
+  `manufactured_six_point_theta_gate`, report exactly
+  `[propext, Classical.choice, Quot.sound]`.
 - The rational certifier succeeds under normal Python and `python -O`.
 - Ten mutations are rejected under both modes, including `1/2 -> 1/3` and
   enlargement to all beta.  The syntactic headline guard passes and rejects
