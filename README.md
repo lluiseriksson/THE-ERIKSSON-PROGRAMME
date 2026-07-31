@@ -66,6 +66,8 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | Concrete YM activity decay `hRpoly` | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Eq. (2.31) `gapCubes`, Appendix-F certified-tail, Catalan/Schur precision-budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, CMP116 Lemma 3 / Eq. (2.29) / Eq. (2.37) route is source-audited and source-locked in places; the real Balaban/Dimock estimates remain open |
 | Peter-Weyl / character infrastructure | `PARTIAL` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
 | Two-transporter SU(2) theta-prism pilot | `PRE-AUDIT PARTIAL` | blind geometry audit passes `b1=2`, the two-loop gauge quotient, and pointwise reflection compatibility; sector algebra, physical `GaugeConfig` realization, OS positivity, Lean and Gate 7 remain open |
+| Two-free-transporter SU(2) no-go | `DRAFT / AUDIT PROVENANCE OPEN` | PR #39 formalizes trivial-sector projection for the reduced Wilson weight at `1fa29e65`; the reported PASS is non-terminal until fresh/blind provenance is recorded, and no physical gauge fixing follows |
+| Run-manifest control plane | `OPEN DEBT` | the PR validator reports 4,134 errors across 623 unchanged manifests; this is repository-wide signal debt, not a failure introduced by PR #39 |
 | Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 
 ### Human estimates
@@ -157,6 +159,15 @@ explicit:
   physical cell, `GaugeConfig` bridge, reflection positivity, Lean proof and
   terminal audit remain open.  See
   [`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md);
+* draft PR #39 now carries a separate formal no-go for two independently
+  Haar-integrated transporters absent from the observable.  The public object
+  is frozen at `1fa29e65`, but its reported `PASS WITH NOTES` lacks durable
+  fresh/blind auditor provenance and is therefore recorded as internal,
+  non-terminal review.  Its red manifest check is not attributable to its
+  six-file diff, which touches no manifest or validator.  See
+  [`docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md`](docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md)
+  and the separate
+  [`docs/CONTROL-PLANE-MANIFEST-BACKLOG-20260731.md`](docs/CONTROL-PLANE-MANIFEST-BACKLOG-20260731.md);
 
 * PR #4's rooted Catalan closure is integrated into `YangMillsCore`: exact
   child-factorial Catalan identities, plane/labeled tree infrastructure, and

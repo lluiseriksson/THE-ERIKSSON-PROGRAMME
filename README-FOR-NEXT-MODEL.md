@@ -107,6 +107,18 @@ this to a theorem: the representation-sector calculation, physical
 before designing that lane; in particular, a one-incidence edge cannot be
 Haar-eliminated when the observable itself depends on it.
 
+A distinct draft, PR #39 at `1fa29e65`, formalizes a no-go for two *freely and
+independently* Haar-integrated transporters that are absent from the observable.
+Keep its scope separate from the theta-prism pilot: it proves a projection
+mechanism for the concrete reduced SU(2) Wilson weight but derives no physical
+gauge fixing and says nothing against correlated/restricted transporters or
+transporter-dependent observables.  The reported audit PASS is non-terminal
+until its fresh/blind provenance is recorded.  Its red manifest check is a
+separate inherited control-plane backlog because the PR changes neither a
+manifest nor the validator.  Read
+[`docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md`](docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md)
+before consuming the result.
+
 Clay distance remains **~0% (<0.1%)**: no continuum limit, no OS/Wightman
 reconstruction, no continuum mass gap.
 

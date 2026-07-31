@@ -74,6 +74,22 @@ no OS positivity and does not count as SU(2) Gate 7.  The exact record and open
 gates are in
 [`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md).
 
+**Two-free-transporter SU(2) no-go: formal draft, terminal audit still open
+(2026-07-31).**  Draft PR #39 at `1fa29e65` separately formalizes that two
+freely and independently Haar-integrated transporters, when absent from the
+observable, project the two stated orientations to the trivial sector for the
+concrete reduced SU(2) Wilson weight.  It does not derive a physical gauge
+fixing, rule out correlated transporters, or prove OS positivity.  A producing
+task reported `PASS WITH NOTES`, but the public diff contains no durable record
+establishing that the auditor was a fresh blind session; the PASS is therefore
+non-terminal pending provenance or a new independent audit.  The PR's red
+control-plane check reports 4,134 errors across 623 run manifests, while the PR
+changes no manifest or validator, so that failure is tracked separately as
+repository-level signal debt.  See
+[`docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md`](docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md)
+and
+[`docs/CONTROL-PLANE-MANIFEST-BACKLOG-20260731.md`](docs/CONTROL-PLANE-MANIFEST-BACKLOG-20260731.md).
+
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
 before deciding what is actually proved and what remains open.

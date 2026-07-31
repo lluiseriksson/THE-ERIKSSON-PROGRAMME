@@ -757,6 +757,38 @@
       ]
     },
     {
+      "id": "OS2N",
+      "label": "Two-free-transporter SU(2) no-go",
+      "status": "partial",
+      "cls": "A",
+      "group": "os",
+      "col": 9,
+      "row": 5,
+      "note": "Formal draft PR #39 at 1fa29e65: free independent transporters absent from the observable project to the trivial sector. Audit provenance, integration, and any physical gauge-fixing interpretation remain open.",
+      "links": [
+        {
+          "label": "Intake status",
+          "path": "docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md"
+        }
+      ]
+    },
+    {
+      "id": "MAN623",
+      "label": "Run-manifest validator backlog",
+      "status": "open",
+      "cls": "D",
+      "group": "asm",
+      "col": 7,
+      "row": 5,
+      "note": "The path-filtered PR check reports 4,134 errors across 623 unchanged manifests. This is repository-level control-plane signal debt; it is not attributable to PR #39's manifest-free diff.",
+      "links": [
+        {
+          "label": "Backlog record",
+          "path": "docs/CONTROL-PLANE-MANIFEST-BACKLOG-20260731.md"
+        }
+      ]
+    },
+    {
       "id": "F8",
       "label": "Leak A - non-degenerate observable",
       "status": "open",
