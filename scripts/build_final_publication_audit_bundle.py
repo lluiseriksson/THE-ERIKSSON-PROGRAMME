@@ -48,6 +48,8 @@ def selected_files() -> list[tuple[Path, str]]:
         "SUPERSESSION-MATRIX.md",
         "OWNER-SUBMISSION-CHECKLIST.md",
         "REVIEW-PENDING.md",
+        "FINAL-PACKAGE-PREFLIGHT.md",
+        "FINAL-PACKAGE-PREFLIGHT.json",
     )
     files: list[tuple[Path, str]] = []
     for name in required_docs:
@@ -70,6 +72,7 @@ def selected_files() -> list[tuple[Path, str]]:
         "compile_publication_audit.py",
         "render_publication_audit.py",
         "build_publication_audit_release.py",
+        "audit_publication_audit_releases.py",
         "build_final_publication_audit_bundle.py",
     ):
         path = ROOT / "scripts" / name

@@ -69,11 +69,11 @@ that path.
 | 1 | 2602.0052v2 | v3 | `output/publication-audit/2602.0052-v3/SUBMISSION-ID.txt` | public identity/title/PDF not restored exactly |
 | 2 | 2602.0036v2 | v3 | `output/publication-audit/2602.0036-v3/SUBMISSION-ID.txt` | Ricci/O'Neill withdrawal not public |
 | 3 | 2602.0033v2 | v3 | `output/publication-audit/2602.0033-r30/SUBMISSION-ID.txt` | R30 manifest/audit/public SHA mismatch |
-| 4 | 2602.0085v1 | v2 | `output/publication-audit/2602.0085-v2/SUBMISSION-ID.txt` | independent audit not passed |
-| 5 | 2602.0084v1 | v2 | `output/publication-audit/2602.0084-v2/SUBMISSION-ID.txt` | 0085 not public first or audit not passed |
+| 4 | 2602.0085v1 | v2 | `output/publication-audit/2602.0085-v2/SUBMISSION-ID.txt` | local PDF/package hash differs from its audited manifest |
+| 5 | 2602.0084v1 | v2 | `output/publication-audit/2602.0084-v2/SUBMISSION-ID.txt` | 0085 not public first or local manifest mismatch |
 | 6 | 2602.0035v1 | v2 | `output/publication-audit/2602.0035-v2/SUBMISSION-ID.txt` | any upstream item 1--5 unresolved |
-| 7 | 2602.0038v2 | v3 | `output/publication-audit/2602.0038-v3/SUBMISSION-ID.txt` | provenance re-audit/manifest/link absent |
-| 8 | 2602.0041v3 | v4 | `output/publication-audit/2602.0041-v4/SUBMISSION-ID.txt` | provenance re-audit/manifest/link absent |
+| 7 | 2602.0038v2 | v3 | `output/publication-audit/2602.0038-v3/SUBMISSION-ID.txt` | provenance phrase or package hash differs from its audit/manifest |
+| 8 | 2602.0041v3 | v4 | `output/publication-audit/2602.0041-v4/SUBMISSION-ID.txt` | conditional-scope phrase or package hash differs from its audit/manifest |
 | 9 | 2601.0115v2 | v3 | `output/publication-audit/2601.0115-v3/SUBMISSION-ID.txt` | table/preflight/public comparison mismatch |
 
 At hand-off, the correct terminal instruction remains: **NO ENVIAR TODAVÍA**.

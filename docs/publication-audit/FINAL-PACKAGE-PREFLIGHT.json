@@ -1,0 +1,215 @@
+{
+  "status": "PASS",
+  "packages": [
+    {
+      "order": 1,
+      "package": "2602.0052-v3",
+      "status": "LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED",
+      "final_pdf": "artifacts/2602.0052v3.pdf",
+      "final_sha256": "4ce8cb39d5e47b59c27c88a3398660ca61985dff1f7589cf04c8ea472e09733b",
+      "pages": 16,
+      "bytes": 815103,
+      "encrypted": false,
+      "abstract_words": 180,
+      "comments_words": 24,
+      "immutable_source": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/816ebb9c7a46312b72b61b3c0136dbae338278f6/output/publication-audit/2602.0052-v3",
+      "input_pdfs": [
+        {
+          "path": "inputs/2602.0052v1-public.pdf",
+          "sha256": "2ef7856e1ea7e5b2b6c65d373940b0d470d706a13f563294168c4eecbdb2da90"
+        }
+      ],
+      "zip": "2602.0052-v3.zip",
+      "zip_sha256": "87920534fdc22f96d2436863e70d276de4027f23dc725eb4e343780c1d049bd0",
+      "manifest_sha256": "e38acdc46aa87e614bdc39c1c24fa52df81a48b6299684b8c8a689924ec2bd2e"
+    },
+    {
+      "order": 2,
+      "package": "2602.0036-v3",
+      "status": "LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED",
+      "final_pdf": "artifacts/2602.0036v3.pdf",
+      "final_sha256": "7e86eb7ba4e3ac1d79345632d20140b4b5fc8407fb9f55a171ec2bf79dd0b12f",
+      "pages": 19,
+      "bytes": 941611,
+      "encrypted": false,
+      "abstract_words": 154,
+      "comments_words": 24,
+      "immutable_source": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/816ebb9c7a46312b72b61b3c0136dbae338278f6/output/publication-audit/2602.0036-v3",
+      "input_pdfs": [
+        {
+          "path": "inputs/2602.0036v2-public.pdf",
+          "sha256": "4f7aa102a0fd383731051eb1d29599e85fe6a2a766c5e39a3845cc730c745363"
+        },
+        {
+          "path": "inputs/OBJECT-PROVENANCE-f3c2e1cb-4pp.pdf",
+          "sha256": "f3c2e1cb9ffcc1a1c0f66f5da96fa415248480eebd03f7abd2d93458a5b5cd01"
+        }
+      ],
+      "zip": "2602.0036-v3.zip",
+      "zip_sha256": "83f1dfdebda2addb23086d8a56337aada79b0523267291a1ab20acab1a5158e7",
+      "manifest_sha256": "666f378aa28ebd80d23f30e3fd43e5431ecd22d24da9711fef4640d8f0c07a91"
+    },
+    {
+      "order": 3,
+      "package": "2602.0033-r30",
+      "status": "LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED",
+      "final_pdf": "artifacts/2602.0033v3-R30-878dba7c-25pp.pdf",
+      "final_sha256": "878dba7cc659477ea9172a24f9dba88498d41ba49af44cfdcb1a73baa13f6285",
+      "pages": 25,
+      "bytes": 1187585,
+      "encrypted": false,
+      "abstract_words": 160,
+      "comments_words": 29,
+      "immutable_source": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/cae239d1452310fcaae3464ffa2d77599f97b800/output/publication-audit/2602.0033-r30",
+      "input_pdfs": [
+        {
+          "path": "inputs/2602.0033v2-public.pdf",
+          "sha256": "91a7d95e1decc1771c548533748916d9941a77f02937fddf90fb13e348730bfe"
+        },
+        {
+          "path": "inputs/OBJECT-PROVENANCE-f3c2e1cb-4pp.pdf",
+          "sha256": "f3c2e1cb9ffcc1a1c0f66f5da96fa415248480eebd03f7abd2d93458a5b5cd01"
+        }
+      ],
+      "zip": "2602.0033-r30.zip",
+      "zip_sha256": "7bb4440eca0d993ea2312c7f3cd97272bf1a354bda8d324978362bed04245d7b",
+      "manifest_sha256": "e92cb24aaec9ea1c21f64e7cca06f863e22986d4755529549db20111040f435e"
+    },
+    {
+      "order": 4,
+      "package": "2602.0085-v2",
+      "status": "LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED",
+      "final_pdf": "artifacts/2602.0085v2-deff7be4-26pp.pdf",
+      "final_sha256": "deff7be46aa56ddfbcac63addce730a4bc4449768e5920951d1a304912525518",
+      "pages": 26,
+      "bytes": 816370,
+      "encrypted": false,
+      "abstract_words": 144,
+      "comments_words": 31,
+      "immutable_source": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/47e2ba538229c9a926c913edac78e31b47285977/output/publication-audit/2602.0085-v2",
+      "input_pdfs": [
+        {
+          "path": "inputs/2602.0085v1-public.pdf",
+          "sha256": "930e7ea90a21b78a71fe73bfcc48519b0ee17c66f9fe23bdf7fead21829dfd8d"
+        }
+      ],
+      "zip": "2602.0085-v2.zip",
+      "zip_sha256": "e9a5bf6d855a9b68ec0273758867974fe13acb3a87fba8615fae8a0c4d983a68",
+      "manifest_sha256": "e71ca8f49e29f449a821e8bd5f7a271aa14b900524e317c5dc469db48d96daa5"
+    },
+    {
+      "order": 5,
+      "package": "2602.0084-v2",
+      "status": "LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED",
+      "final_pdf": "artifacts/2602.0084v2-4099349d-21pp.pdf",
+      "final_sha256": "4099349dc23496d5938e5dee8092de991083c92dea15481a3a69d2c1ba008bc9",
+      "pages": 21,
+      "bytes": 667188,
+      "encrypted": false,
+      "abstract_words": 156,
+      "comments_words": 28,
+      "immutable_source": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/47e2ba538229c9a926c913edac78e31b47285977/output/publication-audit/2602.0084-v2",
+      "input_pdfs": [
+        {
+          "path": "inputs/2602.0084v1-public.pdf",
+          "sha256": "633c08d3f3528b60cdbcaf0d13c257aa49f6df68f4717802170dc50beeb52211"
+        }
+      ],
+      "zip": "2602.0084-v2.zip",
+      "zip_sha256": "3bf16be5000fc0aa6ab5db504cf5757165c88427a2788d9c94b6e0de7e77697f",
+      "manifest_sha256": "f1e2847cc0cec9edcfdff906bbc36721ca0c501179a302d1b1c7443e0055c730"
+    },
+    {
+      "order": 6,
+      "package": "2602.0035-v2",
+      "status": "LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED",
+      "final_pdf": "artifacts/2602.0035v2.pdf",
+      "final_sha256": "053107800c2b81f2f6649016f095f748146acf5af073eea0a7776ab7da575db8",
+      "pages": 21,
+      "bytes": 1046815,
+      "encrypted": false,
+      "abstract_words": 156,
+      "comments_words": 26,
+      "immutable_source": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/816ebb9c7a46312b72b61b3c0136dbae338278f6/output/publication-audit/2602.0035-v2",
+      "input_pdfs": [
+        {
+          "path": "inputs/2602.0052v2-misfiled-public.pdf",
+          "sha256": "1975125d5ebd61c1faf52d31262ebc3c8abea5bf17b48929991c7993ccc51108"
+        },
+        {
+          "path": "inputs/OBJECT-PROVENANCE-f3c2e1cb-4pp.pdf",
+          "sha256": "f3c2e1cb9ffcc1a1c0f66f5da96fa415248480eebd03f7abd2d93458a5b5cd01"
+        }
+      ],
+      "zip": "2602.0035-v2.zip",
+      "zip_sha256": "db5f71bc176bd0001ee1a1fdbb0c557f0d7dbbac8688a64e3cff05f81d132627",
+      "manifest_sha256": "edff2264e6c44b5185a22b4ba67f08a87199340b9942a85cf883341a7bb082e6"
+    },
+    {
+      "order": 7,
+      "package": "2602.0038-v3",
+      "status": "LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED",
+      "final_pdf": "artifacts/2602.0038v3-4bcadc2d-11pp.pdf",
+      "final_sha256": "4bcadc2d4a5ea32c5a56c12d9ca6952fbb24e8c8fcceea868b1a40b0ad70260e",
+      "pages": 11,
+      "bytes": 487089,
+      "encrypted": false,
+      "abstract_words": 99,
+      "comments_words": 13,
+      "immutable_source": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/8c836f0dae03bcc39148b4ff57a7d893a329c9bb/output/publication-audit/2602.0038-v3",
+      "input_pdfs": [
+        {
+          "path": "inputs/2602.0038v2-public.pdf",
+          "sha256": "306d2336ad3c415fce994ba20ee0488ba20739ed5002877fc7a79745c530da16"
+        }
+      ],
+      "zip": "2602.0038-v3.zip",
+      "zip_sha256": "950bb353ee9b79d87149ec2ed6b194bd7192128f8df48cfb27075d32b38ef7aa",
+      "manifest_sha256": "997a243cc88d7a34ba44f895e7ec70537d5c082f28a5e7192d631ff666d5f6ab"
+    },
+    {
+      "order": 8,
+      "package": "2602.0041-v4",
+      "status": "LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED",
+      "final_pdf": "artifacts/2602.0041v4-d268921d-12pp.pdf",
+      "final_sha256": "d268921dd8fd3a1ee4b1440118692ffc53472e1c3ef84f84736b95016b1ba93d",
+      "pages": 12,
+      "bytes": 547537,
+      "encrypted": false,
+      "abstract_words": 85,
+      "comments_words": 13,
+      "immutable_source": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/8c836f0dae03bcc39148b4ff57a7d893a329c9bb/output/publication-audit/2602.0041-v4",
+      "input_pdfs": [
+        {
+          "path": "inputs/2602.0041v3-public.pdf",
+          "sha256": "f67dea05d521ce5ea59caf79edca8038f0eb850b5c2256282394ca665c01afbb"
+        }
+      ],
+      "zip": "2602.0041-v4.zip",
+      "zip_sha256": "1662a8e9f626684e17f80019a5750fe9725d2583c70c695301b27aa8f4846143",
+      "manifest_sha256": "e4f3cb5f360f12e98c84a9f2fea4396aada2808eda3b7b9ad06a510b3da6d6c8"
+    },
+    {
+      "order": 9,
+      "package": "2601.0115-v3",
+      "status": "LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED",
+      "final_pdf": "artifacts/2601.0115v3-P2-7e32a880d7fb.pdf",
+      "final_sha256": "7e32a880d7fb3d91a64c9c3ede8ea605b480e003ea0693749675fc39ce037546",
+      "pages": 9,
+      "bytes": 489546,
+      "encrypted": false,
+      "abstract_words": 301,
+      "comments_words": 28,
+      "immutable_source": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/2f57c7cb03f3e90ee9a45578515ae23c566a2396/output/publication-audit/2601.0115-v3",
+      "input_pdfs": [
+        {
+          "path": "inputs/2601.0115v2-public-e845b2d99067.pdf",
+          "sha256": "e845b2d9906714b04d525b82ed1c3c53d38238c3377ecb23417a69391a0e1382"
+        }
+      ],
+      "zip": "2601.0115-v3.zip",
+      "zip_sha256": "7a34a22e7c2540ef8402e9fa00fa0fb561b32cad3b2ad6557788588a24517f8d",
+      "manifest_sha256": "fd1981e60f4e533d57ca1b54dd624769b4bb722ae1051657e28063f2b82e0575"
+    }
+  ]
+}
