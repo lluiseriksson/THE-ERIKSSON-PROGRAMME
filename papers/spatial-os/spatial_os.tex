@@ -19,7 +19,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{e232819d13f4ff84314bd571ffa38abde5d8fed6}
+\newcommand{\anchor}{e4f9cde596e8fb25f40ed5537208d05111edef28}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -75,9 +75,10 @@ then the scalar $1$.  The witness that would make the boundary exact from one
 site upwards is authorised by a gate and is not written.
 
 \textbf{The mechanism, in one sentence.}  Summing out the interior of a half
-sends $F$ to a vector indexed by its boundary slice alone, after which both
-geometries reduce to kernel facts already machine-checked in the companion paper
-\cite{ErikssonRefl}.
+sends $F$ to a vector indexed by its boundary slice alone, after which the bond
+case reduces to positive semidefiniteness of the kernel --- machine-checked in
+the companion paper \cite{ErikssonRefl} --- and the site case to a weighted
+squared norm, which uses no property of the kernel at all.
 
 \textbf{Where the two reflections differ, and it is not cosmetic.}  Through a
 bond the two halves are disjoint and meet through one kernel factor, so
@@ -147,17 +148,22 @@ weight is the ordinary Gibbs weight of that half,
 \]
 which is the same function the bridge module already uses for whole paths
 \cite{ErikssonGibbs}; \textbf{no new notion of weight is introduced anywhere in
-this work}.  The reflection $\Theta$ is path reversal.
+this work}.  Reflection means reading a half backwards from the far end.
+
+\paragraph{A convention, stated where the notation appears.}  We write
+$\langle\Theta F,G\rangle$ for the reflected pairing built from the pair
+$(\mathrm{past},\mathrm{rev})$ of \S\ref{sec:bridge}.  It is notation: no global
+involution of paths is constructed anywhere in this work, and none is used.
 
 \begin{definition}[the collapse]\label{def:collapse}
 $\displaystyle (\Phi F)(\sigma)\;=\;\sum_{a\,:\,a_m=\sigma} W(a)\,F(a).$
 \end{definition}
 
-\osline{SpatialOS}{96}{collapse}, with its linearity at
-\osline{SpatialOS}{101}{collapse\_add} and
-\osline{SpatialOS}{110}{collapse\_smul}.  The regrouping of a sum over halves by
+\osline{SpatialOS}{97}{collapse}, with its linearity at
+\osline{SpatialOS}{102}{collapse\_add} and
+\osline{SpatialOS}{111}{collapse\_smul}.  The regrouping of a sum over halves by
 boundary slice --- the only combinatorial fact either factorisation needs --- is
-\osline{SpatialOS}{119}{sum\_halves\_by\_edge}.
+\osline{SpatialOS}{120}{sum\_halves\_by\_edge}.
 
 \section{Through a site: every $\beta$}\label{sec:site}
 
@@ -169,7 +175,7 @@ $\displaystyle \langle\Theta F,F\rangle_{\mathrm{site}}
    \;=\;\sum_\sigma \frac{|(\Phi F)(\sigma)|^{2}}{w(\sigma)}.$
 \end{theorem}
 
-\osline{SpatialOS}{157}{osPairingSite\_eq}.  Nothing about $K$ enters: the
+\osline{SpatialOS}{159}{osPairingSite\_eq}.  Nothing about $K$ enters: the
 halves communicate only through the shared slice.
 
 \begin{corollary}\label{cor:site}
@@ -177,7 +183,7 @@ For every strictly positive $w$ and \emph{every} $\beta$ --- negative coupling
 included --- the form is a non-negative real.
 \end{corollary}
 
-\osline{SpatialOS}{185}{osPairingSite\_nonneg}.
+\osline{SpatialOS}{187}{osPairingSite\_nonneg}.
 
 \section{Real to complex, once and generically}\label{sec:complex}
 
@@ -188,9 +194,9 @@ $\sum_{i,j}\overline{z_i}K_{ij}z_j
 with $z=x+iy$.
 \end{lemma}
 
-\osline{SpatialOS}{215}{complexQuad\_eq}, resting on the cancellation of the
+\osline{SpatialOS}{217}{complexQuad\_eq}, resting on the cancellation of the
 cross terms at
-\osline{SpatialOS}{204}{sum\_cross\_antisymm}.  This is the entire content of
+\osline{SpatialOS}{206}{sum\_cross\_antisymm}.  This is the entire content of
 ``real observables to complex ones'', and it costs exactly symmetry.  It is
 stated for an arbitrary finite index type, so it is reusable outside this lane.
 
@@ -202,7 +208,7 @@ $\displaystyle \langle\Theta F,F\rangle_{\mathrm{bond}}
        (\Phi F)(\tau).$
 \end{theorem}
 
-\osline{SpatialOS}{259}{osPairingBond\_eq}.  The source weight is not conjugated
+\osline{SpatialOS}{261}{osPairingBond\_eq}.  The source weight is not conjugated
 away; it is summed away, into $\Phi$.  What is left at the boundary is the bare
 kernel.
 
@@ -212,7 +218,7 @@ F,F\rangle_{\mathrm{bond}}$ is a non-negative real, for every complex observable
 $F$ of the whole past half-chain.
 \end{theorem}
 
-\osline{SpatialOS}{315}{osPairingBond\_nonneg}, which is
+\osline{SpatialOS}{317}{osPairingBond\_nonneg}, which is
 Theorem~\ref{thm:bond} composed with Lemma~\ref{lem:complex} and the companion
 paper's positive semidefiniteness of $K$ at $\beta\ge0$ \cite{ErikssonRefl}.
 
@@ -232,12 +238,12 @@ every complex $c_1,\dots,c_k$,
 and for $\beta\ge0$ both sides are the same non-negative real.
 \end{theorem}
 
-\osline{SpatialOS}{453}{osPairingBond\_gram} and
-\osline{SpatialOS}{482}{osPairingBond\_gram\_nonneg}, with the cross form at
-\osline{SpatialOS}{375}{osPairingBondCross}, its factorisation at
-\osline{SpatialOS}{401}{osPairingBondCross\_eq}, the linearity of the collapse at
-\osline{SpatialOS}{388}{collapse\_sum}, and the four-fold reindexing the assembly
-needs stated on its own at \osline{SpatialOS}{348}{sum\_comm4}.  Positivity is
+\osline{SpatialOS}{455}{osPairingBond\_gram} and
+\osline{SpatialOS}{484}{osPairingBond\_gram\_nonneg}, with the cross form at
+\osline{SpatialOS}{377}{osPairingBondCross}, its factorisation at
+\osline{SpatialOS}{403}{osPairingBondCross\_eq}, the linearity of the collapse at
+\osline{SpatialOS}{390}{collapse\_sum}, and the four-fold reindexing the assembly
+needs stated on its own at \osline{SpatialOS}{350}{sum\_comm4}.  Positivity is
 \emph{transported} to the matrix rather than re-proved: the identity says the
 Gram sum \emph{is} the form of the combined observable.
 
@@ -246,11 +252,11 @@ Gram sum \emph{is} the form of the combined observable.
 cross form is
 $\langle\Theta F,G\rangle_{\mathrm{site}}
    =\sum_\sigma \overline{(\Phi F)(\sigma)}\,(\Phi G)(\sigma)/w(\sigma)$
-(\osline{SpatialOS}{512}{osPairingSiteCross\_eq}), and its Gram matrix is positive
+(\osline{SpatialOS}{514}{osPairingSiteCross\_eq}), and its Gram matrix is positive
 semidefinite at \emph{every} $\beta$, since only $w>0$ enters:
-\osline{SpatialOS}{536}{osPairingSite\_gram} and
-\osline{SpatialOS}{560}{osPairingSite\_gram\_nonneg}, using the three-fold
-reindexing at \osline{SpatialOS}{366}{sum\_comm3}.
+\osline{SpatialOS}{538}{osPairingSite\_gram} and
+\osline{SpatialOS}{562}{osPairingSite\_gram\_nonneg}, using the three-fold
+reindexing at \osline{SpatialOS}{368}{sum\_comm3}.
 
 \section{The bond bridge}\label{sec:bridge}
 
@@ -264,11 +270,11 @@ $a_0,\dots,a_m,b_m,\dots,b_0$ is a bijection onto paths of $2m+2$ slices, with
 inverse $X\mapsto(\mathrm{past}\,X,\ \mathrm{rev}\,X)$.
 \end{lemma}
 
-\osline{SpatialOS}{622}{bondEquiv}, built from
-\osline{SpatialOS}{581}{joinBond},
-\osline{SpatialOS}{586}{pastOf} and
-\osline{SpatialOS}{592}{futRevOf}, together with
-\osline{SpatialOS}{607}{joinBond\_pastOf\_futRevOf}.  A word on what
+\osline{SpatialOS}{625}{bondEquiv}, built from
+\osline{SpatialOS}{583}{joinBond},
+\osline{SpatialOS}{588}{pastOf} and
+\osline{SpatialOS}{595}{futRevOf}, together with
+\osline{SpatialOS}{610}{joinBond\_pastOf\_futRevOf}.  A word on what
 \texttt{futRevOf} is and is not: it sends a \emph{path} to a \emph{half}, namely
 the reflected future half, so it is not an involution on paths and this paper
 does not call it $\Theta$.  The reflection enters through the pair
@@ -280,11 +286,11 @@ needed for any statement here.
 $W(\mathrm{assemble}(a,b)) = W(a)\,K(a_m,b_m)\,W(b)$.
 \end{lemma}
 
-\osline{SpatialOS}{720}{gibbsWeight\_joinBond}.  The kernel factors split into the
+\osline{SpatialOS}{723}{gibbsWeight\_joinBond}.  The kernel factors split into the
 bonds inside the past half, \emph{one} bond crossing the plane, and the bonds
 inside the future half read backwards --- which the symmetry of the kernel
-restores (\osline{SpatialOS}{678}{prod\_K\_joinBond}); the source weights split with
-no remainder (\osline{SpatialOS}{662}{prod\_w\_joinBond}).  That exactly one factor
+restores (\osline{SpatialOS}{681}{prod\_K\_joinBond}); the source weights split with
+no remainder (\osline{SpatialOS}{665}{prod\_w\_joinBond}).  That exactly one factor
 crosses is the reason the collapse works at all.
 
 \begin{theorem}[the bond bridge]\label{thm:bridge}
@@ -294,7 +300,7 @@ $\displaystyle
 the sum over whole paths of $2m+2$ slices.
 \end{theorem}
 
-\osline{SpatialOS}{739}{osPairingBond\_eq\_gibbsSum}.  Composing it with
+\osline{SpatialOS}{743}{osPairingBond\_eq\_gibbsSum}.  Composing it with
 Theorem~\ref{thm:bondpos} gives the inequality this paper is named for:
 
 \begin{theorem}[Osterwalder--Schrader positivity at odd separation]\label{thm:os}
@@ -314,8 +320,8 @@ $c_1,\dots,c_k\in\C$,
 Both sums are unnormalised.
 \end{theorem}
 
-\osline{SpatialOS}{757}{gibbsSum\_reflected\_nonneg} and
-\osline{SpatialOS}{771}{gibbsSum\_reflected\_gram\_nonneg}.  The matrix form is a
+\osline{SpatialOS}{761}{gibbsSum\_reflected\_nonneg} and
+\osline{SpatialOS}{775}{gibbsSum\_reflected\_gram\_nonneg}.  The matrix form is a
 cheap consequence of the diagonal one applied to $\sum_i c_iF_i$, and is written
 down for exactly that reason: otherwise the prose would claim a matrix statement
 about the measure while the module exhibited a matrix for the intermediate form
@@ -417,7 +423,19 @@ limit, or the Clay problem \cite{Clay}.
 
 All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}.
 Every hyperlink was resolved against that commit, and checked to point at an
-actual declaration line, before compilation.
+actual declaration line, before compilation, again inside the compiled PDF, and
+again live over HTTP.
+
+\paragraph{Where the counters were measured, and why not at this commit.}  They
+were measured on commit \texttt{e232819d}, in a window with no other elaborator
+running on the host.  This checkpoint differs from that one \emph{only in
+comments}: the changes were prose corrections to the module header and three
+docstrings.  That is a checkable claim and not a promise ---
+\repofile{scripts/check\_code\_identical.py}{scripts/check\_code\_identical.py}
+strips every comment from both blobs and compares what remains, and reports them
+identical.  They were not re-measured because the host's Lean dependency tree was
+destroyed between the two versions (\S\ref{sec:host}), and re-running them
+requires a full restore.
 
 \begin{center}
 \begin{tabular}{ll}
@@ -455,6 +473,21 @@ and the companion is
 \repofile{YangMills/OS/SpatialReflection.lean}{YangMills/OS/SpatialReflection.lean}.
 
 \small
+\section{A note on the host}\label{sec:host}
+
+While this version was being prepared, the machine's Lean dependency tree was
+destroyed: the \texttt{mathlib} working copy lost all $8429$ of its files, and
+every other package directory disappeared, leaving only the git metadata.  The
+pinned commit object survived, so the sources were restored by resetting to the
+revision the manifest names; the compiled artifacts did not survive, and the
+remaining dependencies must be re-fetched before anything can be elaborated
+again.
+
+This is recorded rather than hidden, because it is the reason the counters in
+\S\ref{sec:repro} carry a commit that is not this one.  Nothing about the
+mathematics changed, and the check named there is what makes that statement
+verifiable instead of merely asserted.
+
 \begin{thebibliography}{9}
 \setlength{\itemsep}{0pt}
 \bibitem{OS73} K. Osterwalder and R. Schrader,
