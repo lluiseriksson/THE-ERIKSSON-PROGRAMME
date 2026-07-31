@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalContourEq136Residual
+
+#print axioms YangMills.RG.abs_cmp102Eq80PhysicalIndexedContourResidual_le_eq136
+#print axioms YangMills.RG.abs_cmp102Eq80PhysicalIndexedContourResidual_centeredRegion_le_eq136
