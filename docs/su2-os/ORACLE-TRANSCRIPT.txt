@@ -12,6 +12,9 @@ Exit code: 0
  Classical.choice,
  Quot.sound]
 'YangMills.OS.su2TraceObservable_haar_mean_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2TraceEntryMoment_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2Trace_degreeOne_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2Trace_taylorTwo_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YangMills.OS.su2OnePlaquette_reflection_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YangMills.OS.su2WilsonCrossingKernel_nonconstant' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YangMills.OS.su2OnePlaquette_constant_pairing_strict' depends on axioms: [propext, Classical.choice, Quot.sound]

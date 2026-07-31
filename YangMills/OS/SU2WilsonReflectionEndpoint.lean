@@ -6,6 +6,7 @@ Authors: Lluis Eriksson
 -/
 
 import YangMills.OS.SU2WilsonReflectionGeometry
+import YangMills.OS.SU2WilsonReflectionSharp
 import YangMills.ClayCore.SchurNormOne
 
 /-!
@@ -22,22 +23,6 @@ noncomputable section
 open Matrix Complex MeasureTheory
 
 namespace YangMills.OS
-
-/-- The fundamental SU(2) character used by the preregistered sharp
-non-vacuity gate. -/
-def su2TraceObservable (U : SU2) : ℂ :=
-  Matrix.trace (U : Matrix (Fin 2) (Fin 2) ℂ)
-
-theorem su2TraceObservable_continuous :
-    Continuous su2TraceObservable :=
-  continuous_trace_sub 2
-
-/-- The constant Taylor mode vanishes exactly for the sharp character
-observable. -/
-theorem su2TraceObservable_haar_mean_zero :
-    ∫ U : SU2, su2TraceObservable U ∂(sunHaarProb 2) = 0 := by
-  simpa [su2TraceObservable] using
-    (sunHaarProb_trace_complex_integral_zero 2 (by norm_num))
 
 /-- The one-crossing-plaquette OS inequality for a continuous complex
 half-observable. -/
