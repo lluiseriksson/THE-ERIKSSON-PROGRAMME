@@ -21,6 +21,24 @@ repository's normalized `sunHaarProb 2`, so the existing Schur theorems apply
 without a uniqueness-of-Haar gap. -/
 abbrev haarSU2 : Measure SU2 := YangMills.sunHaarProb 2
 
+/-- Multiplication is measurable in the concrete Borel structure on SU(2). -/
+instance thetaMeasurableMulSU2 : MeasurableMul₂ SU2 := by
+  refine ⟨Measurable.subtype_mk ?_⟩
+  refine measurable_pi_iff.mpr fun i => measurable_pi_iff.mpr fun j => ?_
+  simp only [Matrix.mul_apply]
+  refine Finset.measurable_sum _ fun k _ => ?_
+  exact ((YangMills.ClayCore.continuous_val_entry i k).measurable.comp
+    measurable_fst).mul
+    ((YangMills.ClayCore.continuous_val_entry k j).measurable.comp measurable_snd)
+
+/-- Inversion is measurable because inverse in SU(2) is conjugate transpose. -/
+instance thetaMeasurableInvSU2 : MeasurableInv SU2 := by
+  refine ⟨Measurable.subtype_mk ?_⟩
+  refine measurable_pi_iff.mpr fun i => measurable_pi_iff.mpr fun j => ?_
+  simp only [Matrix.star_apply]
+  exact continuous_star.measurable.comp
+    (YangMills.ClayCore.continuous_val_entry j i).measurable
+
 theorem haar_measure_nonzero : haarSU2 (Set.univ : Set SU2) ≠ 0 := by
   simp
 
@@ -217,8 +235,13 @@ def relativeCoordinateEquiv : (SU2 × SU2) ≃ᵐ (SU2 × SU2) where
   invFun p := (p.1 / p.2, p.2)
   left_inv p := by simp [div_eq_mul_inv]
   right_inv p := by simp [div_eq_mul_inv]
-  measurable_toFun := by fun_prop
-  measurable_invFun := by fun_prop
+  measurable_toFun :=
+    (measurable_fst.mul measurable_snd).prod_mk measurable_snd
+  measurable_invFun :=
+    (measurable_fst.div measurable_snd).prod_mk measurable_snd
+
+@[simp] theorem relativeCoordinateEquiv_apply (p : SU2 × SU2) :
+    relativeCoordinateEquiv p = (p.1 * p.2, p.2) := rfl
 
 /-- Product Haar is invariant under the explicit relative-coordinate change. -/
 theorem relativeCoordinateEquiv_measurePreserving :
@@ -233,10 +256,14 @@ the separately proved Haar-invariant coordinate change above. -/
 def fubiniCoordinatesConcrete : FubiniCoordinateSteps where
   u_exchange phi hphi := by
     rw [pairingU, integral_prod _ hphi]
-    rfl
+    apply integral_congr
+    intro U
+    rw [conditionalU, ← integral_mul_const]
   v_exchange phi hphi := by
     rw [pairingV, integral_prod_symm _ hphi]
-    rfl
+    apply integral_congr
+    intro V
+    rw [conditionalV, ← integral_mul_const]
   relative_coordinate_exchange phi hphi := by
     let f : SU2 × SU2 → ℂ := fun p =>
       witness p.1 p.2 * star (phi (p.1 * p.2⁻¹))
@@ -255,13 +282,11 @@ def fubiniCoordinatesConcrete : FubiniCoordinateSteps where
       _ = ∫ X, ∫ W, f (e (X, W)) ∂haarSU2 ∂haarSU2 :=
         integral_prod _ hcomp
       _ = ∫ X, conditionalRelative X * star (phi X) ∂haarSU2 := by
-        simp only [f, e, relativeCoordinateEquiv, Function.comp_apply,
-          mul_inv_cancel_right]
-        rw [show (fun X : SU2 =>
-            ∫ W, witness (X * W) W * star (phi X) ∂haarSU2) =
-            fun X => conditionalRelative X * star (phi X) by
-          funext X
-          exact integral_mul_const _ _]
+        apply integral_congr
+        intro X
+        simp only [e, relativeCoordinateEquiv_apply, f, Prod.fst, Prod.snd]
+        simp only [mul_inv_cancel_right]
+        rw [conditionalRelative, ← integral_mul_const]
 
 def CompleteUOrthogonality : Prop :=
   ∀ phi, UPairingIntegrable phi → pairingU phi = 0
