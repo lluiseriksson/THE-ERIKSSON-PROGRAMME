@@ -6,6 +6,12 @@ Estado: resultado derivado nuevo, basado exactamente en
 heredan la pre-auditoría del SHA fuente y requieren auditoría adversarial
 propia. No modifican PR #35, no cuentan como Gate 7 y no autorizan un paper.
 
+El dictamen matemático de la tarea (10) conserva su valor probatorio sobre los
+ficheros Lean, que no cambiaron desde el SHA examinado
+`998eb7736bb24d6eabd0fbe3c7ed9692c8f6b8f0`. La reparación posterior del
+certificador Python cambia el SHA de la rama y requiere una auditoría nueva,
+limitada al certificado y a su procedencia. (10) no certifica el script nuevo.
+
 ## EXACTO
 
 Sea `G=SU(2)`, con Haar de probabilidad `μ`, carácter fundamental
@@ -132,8 +138,19 @@ el tipo de los resultados terminales. No se introduce un axioma ni se altera
 la definición concreta de `su2CommutatorQuadraticForm` para codificar `1/4`.
 
 El oracle separado imprime los axiomas de cada titular realmente certificado.
-El certificado Python comprueba dos veces, con racionales exactos, las
-contracciones finitas `1/2`, `1/2` y `1/4`; no sustituye Haar ni Fubini.
+El certificado Python comprueba con racionales exactos las contracciones
+finitas `1/2`, `1/2` y `1/4`; no sustituye Haar ni Fubini. Su esquema
+`su2-commutator-moments-certificate/v2` ejecuta exactamente 14 comprobaciones
+explícitas antes de construir y emitir `status: PASS`; ningún check depende de
+la semántica de optimización de Python. Verifica determinante uno y unitariedad
+exacta de toda matriz que presenta como SU(2).
+
+`--self-test` lanza procesos separados normales y `-O` para mutaciones de
+determinante (`det=2`), unitariedad, traza esperada e identidad de conmutador.
+También mutila copias temporales del propio certificador para borrar una
+comprobación o adelantar la publicación respecto del cierre del contador. Los
+12 procesos mutados deben terminar con código no cero y sin JSON
+`status: PASS`.
 
 ## INTERPRETACIÓN
 
