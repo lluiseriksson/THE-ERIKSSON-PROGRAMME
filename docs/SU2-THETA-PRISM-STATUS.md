@@ -34,9 +34,10 @@ repair is a **PARTIAL MILESTONE** and the gate is not closed.
 `manufactured_six_point_theta_gate beta` is conditional on exactly one named
 technical record:
 
-- `ManufacturingTechnicalInputs beta.coefficientSeries`, the two nonnegative
-  coefficient remainders for the concrete Haar integrals and concrete Weyl
-  probes.
+- `ManufacturingTechnicalInputs beta.coefficientSeries`, now only the
+  spin-one nonnegative coefficient remainder for the concrete Haar integral
+  and concrete Weyl probe.  The spin-half remainder is reconstructed from
+  `alpha_spinHalf_lower` inside the endpoint derivation.
 
 The field is not a headline restatement.  It remains a mathematical input,
 so neither the beta-one nor uniform front door is a closed certificate.
@@ -67,7 +68,8 @@ remote-CI pass and remains open evidence debt.
 ## ABIERTO
 
 - Prove `CoefficientRemainderSteps` for `su2WeylPolynomial`, at minimum for
-  `beta = 1`; no inhabitant of `ManufacturingTechnicalInputs 1` exists yet.
+  `beta = 1`; concretely, only `SpinOneCoefficientRemainderStep 1` remains,
+  and no inhabitant of `ManufacturingTechnicalInputs 1` exists yet.
 - A pin-exact search found no SU(2) Weyl integration formula.  The available
   `HaarToSphere` construction is not an SU(2)-Haar identification.  The
   repository has the trace second moment but not `integral (chi ^ 4) = 2`;

@@ -160,6 +160,12 @@ theorem alpha_spinHalf_lower {beta : ℝ} (hbeta : 0 ≤ beta) :
       exact integral_mono_ae hleft hright
         (ae_of_all _ fun g => scaled_sq_le_mul_sinh ha)
 
+/-- The genuinely open part of the concrete coefficient package after the
+spin-half remainder has been discharged directly. -/
+structure SpinOneCoefficientRemainderStep (beta : ℝ) : Prop where
+  one_remainder_nonnegative :
+    0 ≤ alpha su2WeylPolynomial beta 2 - beta ^ 2 / 8
+
 /-- Central convolution multiplier `alpha_j/(2j+1)`, with the denominator
 derived from the general representation dimension. -/
 def centralMultiplier (a : TwiceSpin → ℝ) (j : TwiceSpin) : ℝ :=
@@ -191,6 +197,16 @@ are coefficient lower steps, not the pairing or gate conclusion. -/
 structure CoefficientRemainderSteps (a : TwiceSpin → ℝ) (beta : ℝ) : Prop where
   half_remainder_nonnegative : 0 ≤ a 1 - beta / 2
   one_remainder_nonnegative : 0 ≤ a 2 - beta ^ 2 / 8
+
+/-- Reconstruct the internal two-coefficient record from the proved
+spin-half bound and the sole remaining spin-one obligation. -/
+def coefficientRemainderSteps_of_spinOne {beta : ℝ} (hbeta : 0 ≤ beta)
+    (step : SpinOneCoefficientRemainderStep beta) :
+    CoefficientRemainderSteps (fun j => alpha su2WeylPolynomial beta j) beta where
+  half_remainder_nonnegative := by
+    have hhalf := alpha_spinHalf_lower hbeta
+    linarith
+  one_remainder_nonnegative := step.one_remainder_nonnegative
 
 theorem coefficient_half_lower {a : TwiceSpin → ℝ} {beta : ℝ}
     (steps : CoefficientRemainderSteps a beta) : beta / 2 ≤ a 1 := by

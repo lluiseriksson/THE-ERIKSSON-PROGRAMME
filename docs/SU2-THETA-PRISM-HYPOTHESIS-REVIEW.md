@@ -14,11 +14,12 @@ series obligation.
 | `haarSchur` | PROVED | `haarSchurConcrete`, `sunHaarProb_fundamental_entry_orthogonality` | three conditional-zero identities |
 | `fubiniCoordinates` | PROVED | `fubiniCoordinatesConcrete`, `relativeCoordinateEquiv_measurePreserving` | three complete orthogonalities |
 | `normMoments` | PROVED | `normMomentsConcrete`, `witnessNormSq_eq_three_quarters` | `witnessNormSq = 3/4` |
-| `coefficientSeries` | OPEN / GENUINELY LOADED | planned direct spin-half Haar-symmetry bound; spin-one fourth-moment/remainder brick absent | concrete-probe local gate inequality |
+| `coefficientSeries` | OPEN / MINIMIZED TO SPIN ONE | `alpha_spinHalf_lower` proves the spin-half remainder; only `SpinOneCoefficientRemainderStep` is loaded | concrete-probe local gate inequality |
 | `weightMeasurability` | PROVED | `weightMeasurabilityConcrete`, `cellWeight_integrable` | concrete `cellHaar` weight integrability |
 
 The remaining field does not contain the pairing equality, the witness norm,
-an orthogonality headline, or the final gate inequality.  Nevertheless no
+an orthogonality headline, the proved spin-half remainder, or the final gate
+inequality.  Nevertheless no
 closed inhabitant of `ManufacturingTechnicalInputs 1` has yet been built, so
 the beta-one anti-vacuity criterion and the uniform gate remain **OPEN**.
 
@@ -45,9 +46,10 @@ missing brick for the proposed spin-one estimate is one of:
   decomposition of the fundamental tensor square and the resulting fourth
   moment.
 
-The next bounded campaign will prove only the independent spin-half estimate
-`beta / 2 <= alpha su2WeylPolynomial beta 1`, using left-Haar invariance under
-the explicit central element `-I`, the oddness of the fundamental trace, and
-`Real.self_le_sinh_iff`.  It will not introduce Peter--Weyl completeness or a
-general tensor-power multiplicity formula, and it will not present
-`coefficientSeries` as closed.
+The independent spin-half estimate
+`beta / 2 <= alpha su2WeylPolynomial beta 1` is now proved using left-Haar
+invariance under the explicit central element `-I`, the oddness of the
+fundamental trace, and `Real.self_le_sinh_iff`.  The general tensor-power
+multiplicity formula formerly present in the artefact was unused and has been
+removed.  No Peter--Weyl completeness was introduced, and `coefficientSeries`
+remains open exactly at `SpinOneCoefficientRemainderStep`.

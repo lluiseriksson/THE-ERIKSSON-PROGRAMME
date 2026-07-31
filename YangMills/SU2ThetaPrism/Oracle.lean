@@ -30,6 +30,11 @@ import YangMills.SU2ThetaPrism.Endpoint
 #print axioms YangMills.SU2ThetaPrism.thetaPairing_gate
 #print axioms YangMills.SU2ThetaPrism.su2WeylPolynomial_spinHalf_representation_bridge
 #print axioms YangMills.SU2ThetaPrism.su2WeylPolynomial_spinOne_tensor_square_bridge
+#print axioms YangMills.SU2ThetaPrism.chi_negIdentity_mul
+#print axioms YangMills.SU2ThetaPrism.chi_re_sq_integral_one
+#print axioms YangMills.SU2ThetaPrism.alpha_spinHalf_eq_integral_mul_sinh
+#print axioms YangMills.SU2ThetaPrism.alpha_spinHalf_lower
+#print axioms YangMills.SU2ThetaPrism.coefficientRemainderSteps_of_spinOne
 #print axioms YangMills.SU2ThetaPrism.cellWeight_measurable
 #print axioms YangMills.SU2ThetaPrism.weightMeasurabilityConcrete
 #print axioms YangMills.SU2ThetaPrism.cellWeight_integrable

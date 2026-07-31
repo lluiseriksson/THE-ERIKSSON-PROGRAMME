@@ -46,7 +46,7 @@ fundamental Schur, ordinary Fubini plus the separately named Haar coordinate
 change, witness norm moments, and weight measurability. -/
 structure ManufacturingTechnicalInputs (beta : ℝ) : Prop where
   coefficientSeries :
-    CoefficientRemainderSteps (fun j => alpha su2WeylPolynomial beta j) beta
+    SpinOneCoefficientRemainderStep beta
 
 /-- Concrete-Haar, concrete-probe conditional front door.  It deliberately
 retains the genuinely open coefficient-series obligation and therefore is not
@@ -83,7 +83,8 @@ theorem manufactured_six_point_theta_gate
     witnessNormSq_eq_three_quarters normMomentsConcrete,
     theta_coupling_multiplicity_one,
     certifiedThetaPairing_exact normMomentsConcrete _,
-    certifiedThetaPairing_gate normMomentsConcrete hbeta input.coefficientSeries,
+    certifiedThetaPairing_gate normMomentsConcrete hbeta
+      (coefficientRemainderSteps_of_spinOne hbeta.1.le input.coefficientSeries),
     cellWeight_integrable characterBoundConcrete beta
       (weightMeasurabilityConcrete beta)⟩
 
