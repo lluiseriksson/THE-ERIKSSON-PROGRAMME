@@ -96,6 +96,17 @@ For a fast human-readable progress scan, read the progress dashboard near the
 top of [`README.md`](README.md#progress-dashboard) and the static dashboard in
 [`docs/dashboard/`](docs/dashboard/).
 
+The abstract two-transporter SU(2) theta-prism proposal has passed a blind
+**geometric pre-audit only**.  The physical half is a theta multigraph with
+`b1=2`; `K(2,3)` names its incidence subdivision; residual gauge leaves
+`G^2 / Ad G`; and `theta(H_i)=s^-1 H_i^-1 s` holds pointwise.  Do not promote
+this to a theorem: the representation-sector calculation, physical
+`GaugeConfig` realization, reflection positivity, Lean formalization and Gate
+7 remain open.  Read
+[`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md)
+before designing that lane; in particular, a one-incidence edge cannot be
+Haar-eliminated when the observable itself depends on it.
+
 Clay distance remains **~0% (<0.1%)**: no continuum limit, no OS/Wightman
 reconstruction, no continuum mass gap.
 

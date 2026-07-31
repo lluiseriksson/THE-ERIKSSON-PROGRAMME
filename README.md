@@ -65,6 +65,7 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | P4 physical-operator vertical slice | `PARTIAL` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian records, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
 | Concrete YM activity decay `hRpoly` | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Eq. (2.31) `gapCubes`, Appendix-F certified-tail, Catalan/Schur precision-budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, CMP116 Lemma 3 / Eq. (2.29) / Eq. (2.37) route is source-audited and source-locked in places; the real Balaban/Dimock estimates remain open |
 | Peter-Weyl / character infrastructure | `PARTIAL` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
+| Two-transporter SU(2) theta-prism pilot | `PRE-AUDIT PARTIAL` | blind geometry audit passes `b1=2`, the two-loop gauge quotient, and pointwise reflection compatibility; sector algebra, physical `GaugeConfig` realization, OS positivity, Lean and Gate 7 remain open |
 | Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 
 ### Human estimates
@@ -147,6 +148,15 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 The latest 2026-07-04 source checkpoint did not change the Clay boundary.  It
 closed several useful finite interfaces while keeping the analytic frontier
 explicit:
+
+* a 2026-07-31 blind, read-only geometry audit of an abstract two-transporter
+  SU(2) theta-prism cell passed the topological `b1=2` calculation, the
+  `G^2 / Ad G` residual gauge quotient, and the pointwise identity
+  `theta(H_i)=s^-1 H_i^-1 s`; it also corrected an overbroad one-incidence
+  elimination rule.  This is pre-audit evidence only: the sector calculation,
+  physical cell, `GaugeConfig` bridge, reflection positivity, Lean proof and
+  terminal audit remain open.  See
+  [`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md);
 
 * PR #4's rooted Catalan closure is integrated into `YangMillsCore`: exact
   child-factorial Catalan identities, plane/labeled tree infrastructure, and

@@ -2,7 +2,7 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-07-28",
+    "updated": "2026-07-31",
     "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
@@ -92,6 +92,10 @@
     {
       "id": "asm",
       "label": "Mass-gap assembly and honesty leaks"
+    },
+    {
+      "id": "os",
+      "label": "Finite-lattice reflection / OS pilots"
     },
     {
       "id": "cont",
@@ -733,6 +737,22 @@
         {
           "label": "Verification ledger",
           "ledger": true
+        }
+      ]
+    },
+    {
+      "id": "OS2T",
+      "label": "SU(2) two-transporter theta prism",
+      "status": "partial",
+      "cls": "A",
+      "group": "os",
+      "col": 8,
+      "row": 5,
+      "note": "Blind geometric pre-audit only: theta-half b1=2, residual quotient G^2/Ad G, and pointwise reflection compatibility pass. Sector algebra, physical GaugeConfig realization, OS positivity, Lean and Gate 7 remain open.",
+      "links": [
+        {
+          "label": "Geometry pre-audit",
+          "path": "docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md"
         }
       ]
     },

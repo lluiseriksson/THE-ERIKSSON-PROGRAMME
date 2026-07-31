@@ -60,6 +60,20 @@ The public static dashboard now lives at
 the HORIZON/M3 dependency DAG as curated green/amber/open nodes and is guarded
 by `scripts/validate_dashboard.py`.
 
+**Two-transporter SU(2) theta-prism pilot: geometric pre-audit only
+(2026-07-31).**  A fresh read-only adversarial auditor independently confirmed
+that each three-parallel-edge half is a theta multigraph with `b1=2`, that its
+incidence subdivision (not the physical graph) is `K(2,3)`, and that gauge
+reduction leaves two loop variables modulo simultaneous conjugation.  It also
+confirmed the pointwise identity `theta(H_i)=s^-1 H_i^-1 s`.  Removing the
+third branch gives `b1=1`, but disappearance of the proposed representation
+sector was outside the geometric remit.  The audit found that one-incidence
+Haar elimination is valid only when the observable does not depend on the
+edge.  This result is not in Lean, is not a physical `GaugeConfig` cell, proves
+no OS positivity and does not count as SU(2) Gate 7.  The exact record and open
+gates are in
+[`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md).
+
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
 before deciding what is actually proved and what remains open.
