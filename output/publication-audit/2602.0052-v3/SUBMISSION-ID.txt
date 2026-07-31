@@ -1,7 +1,8 @@
-STATUS: REVIEW-PENDING - DO NOT UPLOAD
-ACTION: REPLACE-VERSION
+STATUS: LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED
+PUBLICATION ACTION: REPLACE VERSION
 ORDER: 1 (before 2602.0036, 2602.0033 R30, and 2602.0035)
 PUBLIC RECORD: https://ai.vixra.org/abs/2602.0052
+PUBLICATION: ai.viXra.org:2602.0052
 CATEGORY: Quantum Physics
 TITLE: Interface Lemmas for the Multiscale Proof of the Lattice Yang-Mills Mass Gap
 AUTHOR: Lluis Eriksson
@@ -16,4 +17,6 @@ COMMENTS:
 CHANGE NOTE:
 Restores the authentic Interface Lemmas paper; retracts unconditional closure; separates Lemma 6.2 (per-block bound, window-limited) from Lemma 6.3 (additional unproved inter-block input); labels numerical samples as evidence only.
 
-OWNER ACTION: HOLD pending independent mathematical audit and global supersession matrix. Do not upload.
+IMMUTABLE GITHUB SOURCE LINK: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/816ebb9c7a46312b72b61b3c0136dbae338278f6/output/publication-audit/2602.0052-v3
+OWNER ORDER: 1 of 9.
+OWNER ACTION: DO NOT UPLOAD OR CLICK SUBMIT.

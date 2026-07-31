@@ -1,7 +1,8 @@
-STATUS: REVIEW-PENDING - DO NOT UPLOAD
-ACTION: REPLACE-VERSION
+STATUS: LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED
+PUBLICATION ACTION: REPLACE VERSION
 ORDER: 4 (after 2602.0052, 2602.0036, and 2602.0033 R30)
 PUBLIC RECORD: https://ai.vixra.org/abs/2602.0035
+PUBLICATION: ai.viXra.org:2602.0035
 CATEGORY: Quantum Physics
 TITLE: Morse-Bott Spectral Reduction and the Yang-Mills Mass Gap on the Lattice
 AUTHOR: Lluis Eriksson
@@ -16,4 +17,6 @@ COMMENTS:
 CHANGE NOTE:
 Corrects angle/metric/Fourier statements and measure bookkeeping; withdraws discharge of H1 and replacement of H2; narrows surviving results to fixed-volume, conditional, or numerical status.
 
-OWNER ACTION: HOLD pending independent mathematical audit and global supersession matrix. Do not upload.
+IMMUTABLE GITHUB SOURCE LINK: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/816ebb9c7a46312b72b61b3c0136dbae338278f6/output/publication-audit/2602.0035-v2
+OWNER ORDER: 6 of 9. Submit only after 2602.0084v2 is public and verified.
+OWNER ACTION: DO NOT UPLOAD OR CLICK SUBMIT.

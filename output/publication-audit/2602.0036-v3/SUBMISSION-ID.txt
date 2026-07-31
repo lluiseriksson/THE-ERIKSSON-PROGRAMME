@@ -1,7 +1,8 @@
-STATUS: REVIEW-PENDING - DO NOT UPLOAD
-ACTION: REPLACE-VERSION
+STATUS: LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED
+PUBLICATION ACTION: REPLACE VERSION
 ORDER: 2 (after 2602.0052; before 2602.0033 R30 and 2602.0035)
 PUBLIC RECORD: https://ai.vixra.org/abs/2602.0036
+PUBLICATION: ai.viXra.org:2602.0036
 CATEGORY: Quantum Physics
 TITLE: Geodesic Convexity and Structural Limits of Curvature Methods for the Yang-Mills Mass Gap on the Lattice
 AUTHOR: Lluis Eriksson
@@ -16,4 +17,6 @@ COMMENTS:
 CHANGE NOTE:
 Corrects the O'Neill trace by restoring the mixed-curvature term; withdraws Theorem 3.1 as established and its dependent global corollaries; clarifies operator and provenance boundaries.
 
-OWNER ACTION: HOLD pending independent mathematical audit and global supersession matrix. Do not upload.
+IMMUTABLE GITHUB SOURCE LINK: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/816ebb9c7a46312b72b61b3c0136dbae338278f6/output/publication-audit/2602.0036-v3
+OWNER ORDER: 2 of 9. Submit only after 2602.0052v3 is public and verified.
+OWNER ACTION: DO NOT UPLOAD OR CLICK SUBMIT.

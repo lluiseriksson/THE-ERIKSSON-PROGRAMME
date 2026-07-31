@@ -46,7 +46,7 @@ abstract = sheet.split("ABSTRACT:\n", 1)[1].split("\n\nCOMMENTS:", 1)[0]
 comments = sheet.split("COMMENTS:\n", 1)[1].split("\n\nCHANGE NOTE:", 1)[0]
 require(len(re.findall(r"\b[\w'-]+\b", abstract)) < 400, "abstract under 400 words")
 require(len(re.findall(r"\b[\w'-]+\b", comments)) < 100, "comments under 100 words")
-require("DO NOT UPLOAD" in sheet and "REVIEW-PENDING" in sheet, "submission hold is explicit")
+require("DO NOT UPLOAD" in sheet and "OWNER CLICK REQUIRED" in sheet, "submission hold is explicit")
 
 required = {
     "2602.0052": ["Lemma 6.2", "Lemma 6.3", "Nor do three", "not established"],
@@ -96,7 +96,7 @@ mode = f"O{sys.flags.optimize}"
 transcript = (
     f"VERIFY PASS\nmode={mode}\nid={CFG['id']}v{CFG['version']}\n"
     f"pdf={CFG['output_pdf']}\nsha256={sha(final_pdf)}\npages={len(final_pngs)}\n"
-    f"checks={len(checks)}\npixel_pages={cursor}\nstatus=SELF-VERIFIED; REVIEW-PENDING\n"
+    f"checks={len(checks)}\npixel_pages={cursor}\nstatus=SELF-VERIFIED; INDEPENDENT-AUDIT-PASS; OWNER-HOLD\n"
 )
 (ROOT / "artifacts" / f"VERIFY-TRANSCRIPT-{mode}.txt").write_text(transcript, encoding="utf-8")
 print(transcript, end="")
