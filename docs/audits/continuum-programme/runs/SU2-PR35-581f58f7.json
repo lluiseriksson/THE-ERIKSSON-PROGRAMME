@@ -8,10 +8,20 @@
   "producer_sha": "581f58f71610c3c73243f66d97116022ead1aa9a",
   "pr_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/35",
   "freshness_check": {
-    "status": "stable",
-    "checked_at_utc": "2026-07-31T07:31:42.2840133Z",
-    "producer_sha": "581f58f71610c3c73243f66d97116022ead1aa9a",
-    "observed_main_sha": "f8592f626a98c061474ed4eca9b75cdb505bccc6"
+    "status": "obsolete",
+    "checked_at_utc": "2026-07-31T08:51:10Z",
+    "producer_sha": "ecbd5c6831f982526602433e3fface0ab964d501",
+    "observed_main_sha": "5683f5929b0d4e2f0114bb8bac73ad39131ad4b7",
+    "changed_files": [
+      "YangMills/OS/SU2WilsonReflectionEndpoint.lean",
+      "YangMills/OS/SU2WilsonReflectionSharp.lean",
+      "docs/su2-os/AUDIT.md",
+      "docs/su2-os/CERTIFICATION.md",
+      "docs/su2-os/CONTRACT.md",
+      "docs/su2-os/ORACLE-TRANSCRIPT.txt",
+      "docs/su2-os/SHARP-GATE.md",
+      "docs/su2-os/SU2OSOracle.lean"
+    ]
   },
   "artifact_paths": [
     "YangMills/OS/SU2WilsonReflectionKernel.lean",

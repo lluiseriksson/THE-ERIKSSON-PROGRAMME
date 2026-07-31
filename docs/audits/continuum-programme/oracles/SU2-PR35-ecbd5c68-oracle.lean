@@ -1,0 +1,11 @@
+import YangMills.OS.SU2WilsonReflectionEndpoint
+
+#print axioms YangMills.OS.su2TraceObservable_haar_mean_zero
+#print axioms YangMills.OS.su2TraceEntryMoment_eq
+#print axioms YangMills.OS.kernelIntegralForm_exponentKernel_eq
+#print axioms YangMills.OS.su2Trace_degreeOne_eq
+#print axioms YangMills.OS.su2Trace_taylorTwo_eq
+#print axioms YangMills.OS.su2WilsonTaylorTail_isHaarPSDKernel
+#print axioms YangMills.OS.su2Trace_crossing_lower
+#print axioms YangMills.OS.su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm
+#print axioms YangMills.OS.su2OnePlaquette_trace_reflection_positive_sharp

@@ -1,0 +1,190 @@
+{
+  "schema_version": 2,
+  "lane": "SU2",
+  "audit_base_sha": "7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a",
+  "observed_main_sha": "5683f5929b0d4e2f0114bb8bac73ad39131ad4b7",
+  "observed_at_utc": "2026-07-31T08:51:10Z",
+  "producer_ref": "origin/codex/su2-wilson-reflection-positivity",
+  "producer_sha": "ecbd5c6831f982526602433e3fface0ab964d501",
+  "pr_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/35",
+  "freshness_check": {
+    "status": "stable",
+    "checked_at_utc": "2026-07-31T08:51:10Z",
+    "producer_sha": "ecbd5c6831f982526602433e3fface0ab964d501",
+    "observed_main_sha": "5683f5929b0d4e2f0114bb8bac73ad39131ad4b7"
+  },
+  "artifact_paths": [
+    "YangMills/OS/SU2WilsonReflectionKernel.lean",
+    "YangMills/OS/SU2WilsonReflectionGeometry.lean",
+    "YangMills/OS/SU2WilsonReflectionSharp.lean",
+    "YangMills/OS/SU2WilsonReflectionEndpoint.lean"
+  ],
+  "normalisations": {
+    "haar_total_mass": "sunHaarProb 2 is the probability Haar measure.",
+    "matrix_coefficient_orthogonality": "Fundamental Schur orthogonality is delta_(i,k) delta_(j,l) / 2.",
+    "character_orthogonality": "The unnormalised fundamental trace has zero Haar mean and entry moments delta_ij / 2.",
+    "trace_convention": "Unnormalised fundamental 2-by-2 complex matrix trace.",
+    "wilson_action_convention": "Only exp((beta/2) Re tr(x*y^-1)) is proved; no derivation from GaugeConfig.wilsonAction.",
+    "coupling_convention": "beta nonnegative for the kernel and strictly positive for the endpoint; degree-one coefficient beta/2 and trace pairing beta/4."
+  },
+  "reflection": {
+    "link_map": "Inside the declared product type, reflectSU2Cut swaps Half functions and inverts Cross values.",
+    "orientation_reversal": "The kernel uses x*y^-1 and entry features x_ij*conj(y_ij).",
+    "path_order_reversal": "No physical GaugeConfig path or plaquette reflection is declared.",
+    "group_inverse_or_adjoint": "SU2 inverse is converted to conjugate entry coordinates.",
+    "antilinear_extension": "kernelIntegralForm uses star(F x); each entry term is M*star(M).",
+    "boundary_convention": "One abstract Unit crossing transporter; no physical boundary convention."
+  },
+  "gluing": {
+    "full_configuration_map": "Absent from repository GaugeConfig.",
+    "inverse_map": "Absent.",
+    "boundary_identification": "Only the declared Unit crossing coordinate.",
+    "product_haar_identity": "Exact only after defining the source as a product model.",
+    "weight_factorisation": "Exact for the local one-plaquette weight, not derived from the repository Wilson action."
+  },
+  "core_integration": {
+    "status": "not_applicable",
+    "baseline_sha": "7460e035",
+    "baseline_jobs": 8463,
+    "observed_jobs": 8182,
+    "command_transcript": "Clean detached exact-head target build exited 0 with 8182 jobs in 119829 ms; producer oracle exited 0; the independent oracle completed all nine queries with standard axioms and empty stderr. The module remains outside YangMillsCore."
+  },
+  "checks": [
+    {
+      "id": "SU2-1-GEOMETRY",
+      "criterion": "The reflection plane, positive half, crossing links/plaquettes, boundary variables, and zero-fixed-edge count are explicit and internally consistent.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "SU2WilsonReflectionGeometry declares a product cut and involution but no physical lattice plane or GaugeConfig correspondence."
+        }
+      ],
+      "missing_data": [
+        "Physical link/plaquette sets, reflection plane, positive-half algebra, boundary convention, and fixed-edge count."
+      ]
+    },
+    {
+      "id": "SU2-2-SPLITTING",
+      "criterion": "The Wilson action/weight splits into the two half contributions and every crossing term with exact signs and multiplicities.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "The splitting is exact for a locally defined one-plaquette weight with one gauge-pure transporter."
+        }
+      ],
+      "missing_data": [
+        "Derivation from GaugeConfig.plaquetteHolonomy/wilsonAction and the two-transporter crossing plaquette."
+      ]
+    },
+    {
+      "id": "SU2-2G-GLUING",
+      "criterion": "The reflected half form equals the full-configuration product-Haar Wilson integral, including assembly inverse and boundary multiplicities.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm starts from SU2CutConfig, already defined as a product."
+        }
+      ],
+      "missing_data": [
+        "GaugeConfig assembly and inverse, Haar pushforward, full Wilson-weight equality, and boundary multiplicities."
+      ]
+    },
+    {
+      "id": "SU2-3-HAAR",
+      "criterion": "Haar total mass and every invariance used by the proof are matched to the actual measure.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "All sharp moments and kernel forms use sunHaarProb 2; the middle product-model integral uses probability mass one."
+        }
+      ]
+    },
+    {
+      "id": "SU2-3-CHARACTERS",
+      "criterion": "Matrix-coefficient/character orthogonality conventions and all dimension factors are explicit.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "su2TraceEntryMoment_eq gives delta_ij/2; two diagonal moments with coefficient beta/2 give beta/4."
+        }
+      ]
+    },
+    {
+      "id": "SU2-4-CONJUGATION",
+      "criterion": "Link orientation, path-order reversal, inverse/adjoint, complex conjugation, and antilinearity agree through reflection and the integral form.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "The declared model verifies x*y^-1, star(F x), entry conjugation, and cross inversion."
+        }
+      ],
+      "missing_data": [
+        "Physical GaugeConfig link/path reflection and ordered plaquette-holonomy reversal."
+      ]
+    },
+    {
+      "id": "SU2-4-COMPLEX-PSD",
+      "criterion": "The quadratic form is nonnegative for arbitrary complex observables in the stated scope.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "su2WilsonCrossing_isHaarPSDKernel covers continuous F:SU2->C; entry forms factor as M*star(M)."
+        }
+      ]
+    },
+    {
+      "id": "SU2-5-COEFFICIENTS",
+      "criterion": "Every crossing-kernel coefficient has the claimed sign, normalization, and convergence.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "The exponent coefficient is beta/2, the trace degree-one form beta/4, the degree>=2 tail PSD, and dominated convergence passes to the exact kernel."
+        }
+      ]
+    },
+    {
+      "id": "SU2-5-BOUNDARY-COUNT",
+      "criterion": "Every crossing plaquette and boundary variable is counted exactly once.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "file",
+          "locator": "Half=Cross=Unit is selected by definition; no physical crossing set is counted."
+        }
+      ],
+      "missing_data": [
+        "Physical crossing-plaquette set and boundary multiplicity theorem."
+      ]
+    },
+    {
+      "id": "SU2-HOUSE-PROSE",
+      "criterion": "Prose and headlines match literal declarations and scope.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "file",
+          "locator": "CERTIFICATION and AUDIT expressly exclude the two-transporter plaquette and GaugeConfig derivation."
+        }
+      ]
+    },
+    {
+      "id": "SU2-HOUSE-CORE",
+      "criterion": "The producer builds cleanly, oracle is clean, and any global integration threshold is applied only if integrated.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "command",
+          "locator": "Clean target build exited 0 at 8182 jobs; producer oracle reported only propext, Classical.choice, Quot.sound; lane is outside YangMillsCore."
+        }
+      ]
+    }
+  ]
+}

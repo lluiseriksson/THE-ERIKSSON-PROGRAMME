@@ -396,9 +396,22 @@ def validate_manifest(path: Path, verify_files: bool, verify_ref: bool) -> tuple
             resolved = run_git("rev-parse", producer_ref)
             if resolved.returncode != 0:
                 errors.append(f"producer_ref: cannot resolve {producer_ref}")
-            elif resolved.stdout.strip() != producer_sha:
+            else:
+                expected_ref_sha = producer_sha
+                seal = data.get("freshness_check")
+                if (
+                    schema_version == 2
+                    and isinstance(seal, dict)
+                    and seal.get("status") == "obsolete"
+                    and isinstance(seal.get("producer_sha"), str)
+                ):
+                    expected_ref_sha = seal["producer_sha"]
+                if resolved.stdout.strip() == expected_ref_sha:
+                    expected_ref_sha = ""
+            if resolved.returncode == 0 and expected_ref_sha:
                 errors.append(
-                    f"producer_ref: resolves to {resolved.stdout.strip()}, expected {producer_sha}"
+                    "producer_ref: resolves to "
+                    f"{resolved.stdout.strip()}, expected {expected_ref_sha}"
                 )
     if schema_version == 2:
         validate_snapshot(data, errors)

@@ -1,10 +1,18 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "lane": "CONT-C1",
   "audit_base_sha": "7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a",
+  "observed_main_sha": "5683f5929b0d4e2f0114bb8bac73ad39131ad4b7",
+  "observed_at_utc": "2026-07-31T08:51:10Z",
   "producer_ref": "origin/codex/continuum-c1",
   "producer_sha": "0a46e266fc4808332ed20d2ab4611bfc271b208b",
   "pr_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/34",
+  "freshness_check": {
+    "status": "stable",
+    "checked_at_utc": "2026-07-31T08:51:10Z",
+    "producer_sha": "0a46e266fc4808332ed20d2ab4611bfc271b208b",
+    "observed_main_sha": "5683f5929b0d4e2f0114bb8bac73ad39131ad4b7"
+  },
   "artifact_paths": [
     ".github/workflows/ci.yml",
     "YangMills/Continuum/TightnessScaleNoGo.lean",

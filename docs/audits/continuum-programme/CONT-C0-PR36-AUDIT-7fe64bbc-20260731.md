@@ -14,6 +14,20 @@ PR:       https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/36
 Final freshness seal at `2026-07-31T07:32:50.7440095Z`: the producer head
 remained `7fe64bbc`; public `main` had independently advanced to `f8592f62`.
 
+## Mandatory raw freshness seal
+
+```text
+UTC=2026-07-31T08:51:10Z
+COMMAND=git ls-remote origin refs/heads/main refs/pull/34/head refs/pull/35/head refs/pull/36/head refs/pull/37/head
+5683f5929b0d4e2f0114bb8bac73ad39131ad4b7	refs/heads/main
+0a46e266fc4808332ed20d2ab4611bfc271b208b	refs/pull/34/head
+ecbd5c6831f982526602433e3fface0ab964d501	refs/pull/35/head
+7fe64bbced729337f6a1060d731e661384863c42	refs/pull/36/head
+e63f1847b2e8a91631ec7f8ff7318a338534e2b0	refs/pull/37/head
+COMMAND=git rev-list --left-right --count 7fe64bbced729337f6a1060d731e661384863c42...refs/remotes/audit/pr36
+0	0
+```
+
 An initial clean checkout at `72cae3d2` was discarded when the mandatory
 freshness check found that the public producer had advanced. A second check
 found the documentation-only move `cb8fec00 -> 7fe64bbc`; that complete delta

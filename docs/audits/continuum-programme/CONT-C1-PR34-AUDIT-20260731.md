@@ -6,6 +6,20 @@ Base: `7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a`
 Audited head: `0a46e266fc4808332ed20d2ab4611bfc271b208b`  
 Audited tree: `53c767ee27cd524f3316b9cab9dd1efa18e75427`
 
+## Mandatory raw freshness seal
+
+```text
+UTC=2026-07-31T08:51:10Z
+COMMAND=git ls-remote origin refs/heads/main refs/pull/34/head refs/pull/35/head refs/pull/36/head refs/pull/37/head
+5683f5929b0d4e2f0114bb8bac73ad39131ad4b7	refs/heads/main
+0a46e266fc4808332ed20d2ab4611bfc271b208b	refs/pull/34/head
+ecbd5c6831f982526602433e3fface0ab964d501	refs/pull/35/head
+7fe64bbced729337f6a1060d731e661384863c42	refs/pull/36/head
+e63f1847b2e8a91631ec7f8ff7318a338534e2b0	refs/pull/37/head
+COMMAND=git rev-list --left-right --count 0a46e266fc4808332ed20d2ab4611bfc271b208b...refs/remotes/audit/pr34
+0	0
+```
+
 ## Executive verdict
 
 - **PASS**: the finite-cap theorem is correct for the locally defined KP
