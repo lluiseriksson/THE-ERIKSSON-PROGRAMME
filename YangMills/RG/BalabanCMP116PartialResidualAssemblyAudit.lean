@@ -7,3 +7,4 @@ import YangMills.RG.BalabanCMP116PartialResidualAssembly
 #print axioms YangMills.RG.cmp116Eq136ResidualMajorant_add_E0
 #print axioms YangMills.RG.cmp116Eq136ResidualMajorant_mono_E0
 #print axioms YangMills.RG.abs_cmp116PartialResidual_le_eq136
+#print axioms YangMills.RG.abs_cmp116PartialResidual_le_eq136_of_lemma1Certificate

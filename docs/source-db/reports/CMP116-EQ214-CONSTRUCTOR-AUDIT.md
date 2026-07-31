@@ -221,9 +221,13 @@ constructor.
   elaborated, pending tree audit and commit**.
 - Complex Gaussian fields requiring new analytic definitions: **0/4**.
 - Canonical source-domain enumeration and projection dictionary: **compiled**.
-- Remaining work: install the specialized density into a first partial
-  terminal source, expose the Lemma-1 contribution as one named source
-  hypothesis, and discharge the remaining terminal bounds.
+- The Lemma-1 contribution is now exposed as the single named
+  `CMP116Lemma1Eq136ResidualCertificate`.  Its type deliberately starts after
+  transport to the consumer's domain index and metric, so it does not conceal
+  the still-open scale/domain reindexing dictionary.
+- Remaining work: install the specialized density and that certificate into a
+  first partial terminal source, then discharge the remaining terminal
+  bounds.
 
 This audit measures producer existence, not completion of `hRpoly`.
 It does not close the Lemma-1 sector, the terminal scalar windows, or the

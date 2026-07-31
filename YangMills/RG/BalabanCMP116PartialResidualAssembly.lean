@@ -27,6 +27,25 @@ namespace YangMills.RG
 
 noncomputable section
 
+/-- The one named source input left by the partial equation-(1.36)
+assembly: a Lemma-1 residual already transported to the consumer's domain
+index and metric.
+
+This certificate deliberately does not construct the scale dictionary from
+the native Lemma-1 domains to `Y`.  Supplying such a dictionary and proving
+this bound after reindexing remain the source-facing Lemma-1 obligation. -/
+structure CMP116Lemma1Eq136ResidualCertificate
+    {Y E : Type*}
+    (domainDist : Y → ℝ)
+    (epsilon1 C1 : ℝ) (M q : ℕ)
+    (C2 kappa1 delta kappa : ℝ) where
+  E0 : ℝ
+  residual : Y → E → ℝ
+  bound : ∀ y B,
+    |residual y B| ≤
+      cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+        C2 kappa1 delta kappa (domainDist y)
+
 /-- Add a separately indexed residual sector to the total localized
 activity. -/
 noncomputable def cmp116PartialResidualTotal
@@ -165,6 +184,31 @@ theorem abs_cmp116PartialResidual_le_eq136
           C2 kappa1 delta kappa (domainDist y) :=
       cmp116Eq136ResidualMajorant_mono_E0
         hE0 hepsilon1 hC1
+
+/-- The direct equation-(80) estimate and the single named, reindexed
+Lemma-1 certificate produce the full partial equation-(1.36) bound. -/
+theorem abs_cmp116PartialResidual_le_eq136_of_lemma1Certificate
+    {Y E : Type*}
+    (directResidual : Y → E → ℝ)
+    {E0Direct E0 epsilon1 C1 : ℝ} {M q : ℕ}
+    {C2 kappa1 delta kappa : ℝ}
+    (domainDist : Y → ℝ)
+    (lemma1 :
+      CMP116Lemma1Eq136ResidualCertificate
+        domainDist epsilon1 C1 M q C2 kappa1 delta kappa)
+    (hepsilon1 : 0 ≤ epsilon1) (hC1 : 0 ≤ C1)
+    (hE0 : E0Direct + lemma1.E0 ≤ E0)
+    (hdirect : ∀ y B,
+      |directResidual y B| ≤
+        cmp116Eq136ResidualMajorant E0Direct epsilon1 C1 M q
+          C2 kappa1 delta kappa (domainDist y))
+    (y : Y) (B : E) :
+    |cmp116PartialResidual directResidual lemma1.residual y B| ≤
+      cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+        C2 kappa1 delta kappa (domainDist y) :=
+  abs_cmp116PartialResidual_le_eq136
+    directResidual lemma1.residual domainDist
+    hepsilon1 hC1 hE0 hdirect lemma1.bound y B
 
 end
 
