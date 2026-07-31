@@ -25819,3 +25819,41 @@ High independently audited this separation through profile `default` and the
 verified account `luis.ebikeride@gmail.com`; its claim that the native rooted
 estimate was still open was rejected after direct inspection of the theorem
 above.
+
+## Addendum 512 (2026-07-31, **canonical direct/native `Fin` dictionary: terminal `domain_nonempty` and `domain_subset` GREEN**)
+
+The two residual sectors are now appended into the literal terminal index
+type
+`Fin (CMP102Eq80SourcePi4DomainCount + CMP109Lemma1NativeDomainCount)`.
+The support and metric dictionaries are defined with `Fin.append`; their four
+branch-reduction theorems identify the direct support and natural tree metric,
+and the native coarsened support and native tree metric, definitionally on the
+two canonical injections.  In particular, coincident native supports remain
+different terminal indices and no metric is recomputed from a coarsened
+carrier.
+
+The direct indexed block carrier is proved to be a generator of the common
+localization core.  Together with Addendum 511's native inclusion, this yields
+the single theorem
+`cmp116Eq80Lemma1CombinedDomainSupport_subset_combinedCenteredRegion` for
+every combined index.  The companion theorem
+`cmp116Eq80Lemma1CombinedDomainSupport_nonempty` proves the other geometric
+terminal field.  Thus the concrete combined dictionary now discharges the
+exact propositions named `domain_nonempty` and `domain_subset`; no free map
+or containment hypothesis is accepted.
+
+**Remote focal verification.**  The exact overlay has SHA-256
+`B490D5FCEE0DC4F97DCBE0AB039CC2648F61051267A8C729D40D2EE03FCFD689`
+and is archived at
+<https://drive.google.com/file/d/17fA2rRKFhng9aXVZ15rsvlh9j-AAVJVa/view>.
+It was replayed in the same pinned Colab Pro+ high-RAM checkout recorded in
+Addendum 511.  The exact cached terminal line was
+`Build completed successfully (8750 jobs).` with `CACHED_EXIT_0`; the first
+focal plus all ten `#print axioms` checks returned exit zero.  Every audited
+declaration reports exactly `[propext, Classical.choice, Quot.sound]`.
+
+**Scope boundary.**  This checkpoint does not close `rooted_residual` for the
+combined index type: the native summand is discharged, while the direct
+rooted estimate and the exact finite-sum split remain open.  Consequently the
+joint root bound and `volume_budget` also remain open.  No terminal
+`CMP116Eq226CenteredConditionedPhysicalTermSource` is constructed here.
