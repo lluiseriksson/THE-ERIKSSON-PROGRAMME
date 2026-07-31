@@ -17,7 +17,7 @@ degeneracy.
 | `branchWeight`, `cellWeight` | Registered three-factor weight.  They contain no target rational constant. |
 | `witness` | Contains the pre-registered coefficient `1/2` because that coefficient is part of the supplied witness formula.  Nonzero, norm `3/4`, projection, pairing, and gate do not follow definitionally; `witness_one_one` evaluates it to `3`. |
 | `negIdentitySU2` | Concrete `-I_2`; proves the group is not a singleton independently of Haar or endpoint inputs. |
-| `su2PositiveCompacts`, `haarSU2` | Standard normalized Haar construction.  `haar_measure_nonzero` proves total mass is nonzero. |
+| `haarSU2`, `cellConfigurationEquiv`, `cellHaar` | The repository's normalized SU(2) Haar measure and its eight-coordinate `Measure.pi` product transported to the named cell.  Probability, mass one, finiteness, and all coordinate marginals are theorems. |
 | `HaarSchurSteps` | Stores first/two-character and translated-coordinate integration steps, never a conditional-zero or orthogonality headline. |
 | `conditionalU`, `conditionalV`, `conditionalRelative` | Actual Haar integrals of the concrete witness.  Zero is proved later. |
 | `pairingU`, `pairingV`, `pairingRelative` | Actual product-Haar pairings with arbitrary test functions. |
@@ -31,12 +31,12 @@ degeneracy.
 | `singletProjectionCoefficient` | Defined as inverse `representationDimension 1`, not as `1/2`; the exact half is a theorem. |
 | `halfTensorMultiplicity` | General adjacent-binomial tensor rule, checked at three low-order cases. |
 | `BetaDomain` | Exactly `0 < beta` and `beta <= 1`; `beta=0` is excluded and `beta=1` is proved to belong. |
-| `RealCharacterFamily`, `alpha` | General family and the registered Haar integral.  No coefficient value is stored. |
+| `RealProbeFamily`, `su2WeylPolynomial`, `alpha` | The neutral abstract function space, concrete low-spin Weyl polynomials, and registered Haar integral.  The label-one representation bridge and label-two tensor-square character-ring bridge are proved separately; no coefficient lower bound is stored. |
 | `centralMultiplier` | Divides by the general representation dimension, not by a target-specific numeral. |
 | `thetaPairingFromMultipliers` | Product of the norm and three general central multipliers; contains no `1/16`. |
 | `CoefficientRemainderSteps` | The two pre-registered technical series lower steps.  It contains no pairing or `beta^4/512` conclusion. |
 | `certifiedThetaPairing` | Uses the real part of the actual `witnessNormSq`; it contains neither `3/4` nor `1/16`. |
-| `ManufacturingTechnicalInputs` | Aggregates only the technical records above.  Static validation and the participation review confirm that it contains no endpoint headline. |
+| `ManufacturingTechnicalInputs` | Contains only the still-open concrete coefficient-series remainder record.  Static validation and the participation review confirm that it contains no endpoint headline. |
 
 Literal inspection confirms that no public `def` stores `3/4`, `1/16`, or
 `beta^4/512`.  The unavoidable `1/2` in `witness` is the registered observable
@@ -44,6 +44,7 @@ itself; the distinct singlet coefficient is derived from dimension.  The
 endpoint also uses the independent witnesses `F(1,1)=3`, Haar mass one,
 `beta=1`, three branch cardinality, and `I_2 != -I_2`.
 
-Conclusion: no delivered headline is obtained from `F=0`, `beta=0`, an empty
+Conclusion: no proved headline is obtained from `F=0`, `beta=0`, an empty
 or singleton group, a zero measure, a missing third branch, or a public
-definition that already stores the headline constant.
+definition that already stores the headline constant.  This review does not
+remedy the still-open absence of a concrete `ManufacturingTechnicalInputs 1`.
