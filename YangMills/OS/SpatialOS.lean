@@ -14,13 +14,27 @@ Paper 12 proved the reflected two-point form non-negative for **real** observabl
 of a **single** slice, at the two **ends** of a path.  The Osterwalder--Schrader
 axiom asks for more: a **complex** observable of the whole **past half-chain**,
 and the matrix `⟨Θ Fᵢ, Fⱼ⟩` positive semidefinite.  The gap was identified there
-as a CONSTRUCTION rather than a further inequality.  This module builds the
-CANDIDATE half-chain forms and proves their positivity.  **Their identification
-with the reflected Gibbs sum over whole paths is NOT proved here** --- it is
-verified to `1e-12` by the pre-registered gates against brute-force enumeration,
-and until it is a theorem the forms below are candidates for the
-Osterwalder--Schrader pairing and not that pairing.  The finite-family Gram
-statement is proved; the assembly bijection is not.
+as a CONSTRUCTION rather than a further inequality.  This module builds it.
+
+**THE BOND BRIDGE IS CLOSED.**  `bondEquiv` says a whole path of `2m+2` slices
+IS a pair of halves, `gibbsWeight_joinBond` says the weights multiply with the
+one crossing factor, and `osPairingBond_eq_gibbsSum` composes them: the bond form
+is the reflected two-point sum of the Gibbs measure, with `Θ` the reversal
+`futRevOf`.  At odd separation the positivity theorems are therefore about the
+MEASURE, not about a form standing in for it.
+
+**THE SITE BRIDGE IS NOT.**  Through a site the halves SHARE the middle slice, so
+pairs of halves are not a product but a fibred product over that slice, and the
+weight of the shared slice is counted twice and must be divided out.  That is a
+different statement, not a variation on the bond one.  Until it is proved,
+`osPairingSite` remains a CANDIDATE: it is positive and has a PSD Gram matrix,
+but its full-path identification is open, and the only evidence for it is a
+pre-registered gate verifying it to `1e-12` against brute-force enumeration.
+
+`futRevOf` sends a PATH to a HALF --- the reflected future half.  It is not an
+involution on paths and is deliberately not called `Θ` anywhere; the reflection
+enters through the PAIR `(pastOf, futRevOf)`, which is what the pairing is built
+from.
 
 ## The objects
 
@@ -114,9 +128,10 @@ each half and by whatever the reflection plane contributes.  Through a bond that
 is one kernel factor; through a site it is the shared slice, whose weight must
 not be counted twice --- hence the division. -/
 
-/-- The CANDIDATE reflected form of a half-chain observable, through a BOND
-(`N = 2m+1`).  Called a candidate deliberately: that it equals the reflected
-Gibbs sum over whole paths is verified numerically and not proved. -/
+/-- The reflected form of a half-chain observable, through a BOND (`N = 2m+1`).
+That this IS the reflected Gibbs sum over whole paths is proved below, at
+`osPairingBond_eq_gibbsSum`; it is stated first in this convenient form because
+every factorisation argument runs on it. -/
 noncomputable def osPairingBond {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
     (m : ℕ) (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) : ℂ :=
   ∑ a : Fin (m + 1) → (Fin L → Fin 2), ∑ b : Fin (m + 1) → (Fin L → Fin 2),
@@ -550,5 +565,234 @@ theorem osPairingSite_gram_nonneg {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
         * osPairingSiteCross w β m (F i) (F j)) = (r : ℂ) := by
   rw [osPairingSite_gram]
   exact osPairingSite_nonneg hw β m _
+
+/-! ## §8  The assembly, and the bijection onto whole paths
+
+This is the link the abstract says decides what this paper is.  A full path of
+`2m+2` slices is exactly a pair of halves: the past half read forwards, and the
+future half read backwards from the far end.  `joinBond` performs the assembly,
+`pastOf` and `futRevOf` undo it, and the three lemmas below say they are mutually
+inverse — so summing over pairs of halves IS summing over paths.
+
+Nothing here is about weights yet; that is the next step.  Splitting the two
+makes the bijection checkable on its own. -/
+
+/-- The assembly: past half forwards, then future half backwards. -/
+noncomputable def joinBond {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2)) :
+    Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2) :=
+  Fin.append a (fun i => b (Fin.rev i))
+
+/-- The past half of a whole path. -/
+noncomputable def pastOf {L m : ℕ}
+    (X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2)) :
+    Fin (m + 1) → (Fin L → Fin 2) := fun i => X (Fin.castAdd (m + 1) i)
+
+/-- The future half of a whole path, read backwards from the far end.  This is
+the reflection `Θ` acting on the second half. -/
+noncomputable def futRevOf {L m : ℕ}
+    (X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2)) :
+    Fin (m + 1) → (Fin L → Fin 2) := fun i => X (Fin.natAdd (m + 1) (Fin.rev i))
+
+@[simp] theorem pastOf_joinBond {L m : ℕ}
+    (a b : Fin (m + 1) → (Fin L → Fin 2)) : pastOf (joinBond a b) = a := by
+  funext i
+  simp [pastOf, joinBond, Fin.append_left]
+
+@[simp] theorem futRevOf_joinBond {L m : ℕ}
+    (a b : Fin (m + 1) → (Fin L → Fin 2)) : futRevOf (joinBond a b) = b := by
+  funext i
+  show Fin.append a (fun j => b (Fin.rev j)) (Fin.natAdd (m + 1) (Fin.rev i)) = b i
+  rw [Fin.append_right, Fin.rev_rev]
+
+theorem joinBond_pastOf_futRevOf {L m : ℕ}
+    (X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2)) :
+    joinBond (pastOf X) (futRevOf X) = X := by
+  funext t
+  induction t using Fin.addCases with
+  | left i => simp [joinBond, pastOf, Fin.append_left]
+  | right i =>
+      show Fin.append (pastOf X) (fun j => futRevOf X (Fin.rev j))
+          (Fin.natAdd (m + 1) i) = X (Fin.natAdd (m + 1) i)
+      rw [Fin.append_right]
+      show X (Fin.natAdd (m + 1) (Fin.rev (Fin.rev i))) = X (Fin.natAdd (m + 1) i)
+      rw [Fin.rev_rev]
+
+/-- **THE ASSEMBLY IS A BIJECTION.**  Pairs of halves and whole paths are the
+same finite set, so a sum over one is a sum over the other. -/
+noncomputable def bondEquiv (L m : ℕ) :
+    ((Fin (m + 1) → (Fin L → Fin 2)) × (Fin (m + 1) → (Fin L → Fin 2)))
+      ≃ (Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2)) where
+  toFun p := joinBond p.1 p.2
+  invFun X := (pastOf X, futRevOf X)
+  left_inv p := by
+    ext1 <;> simp
+  right_inv X := joinBond_pastOf_futRevOf X
+
+/-! ### The weight identity for the assembly
+
+The other half of the bond bridge.  The Gibbs weight of an assembled path is the
+weight of each half times the ONE kernel factor that crosses the plane, and
+nothing else --- which is exactly why the collapse works.
+
+The bookkeeping is index arithmetic.  Every position is converted to a `castAdd`
+or a `natAdd` by an explicit lemma rather than by `simp`, because `simp`
+normalises `natAdd` into `addNat` and then `Fin.append_right` stops matching. -/
+
+theorem joinBond_left {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2))
+    (i : Fin (m + 1)) : joinBond a b (Fin.castAdd (m + 1) i) = a i :=
+  Fin.append_left _ _ _
+
+theorem joinBond_right {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2))
+    (i : Fin (m + 1)) : joinBond a b (Fin.natAdd (m + 1) i) = b (Fin.rev i) :=
+  Fin.append_right _ _ _
+
+theorem rev_castSucc_eq {m : ℕ} (i : Fin m) :
+    Fin.rev (Fin.castSucc i) = Fin.succ (Fin.rev i) := by
+  ext
+  simp [Fin.val_rev]
+  try omega
+
+theorem rev_succ_eq {m : ℕ} (i : Fin m) :
+    Fin.rev (Fin.succ i) = Fin.castSucc (Fin.rev i) := by
+  ext
+  simp [Fin.val_rev]
+  try omega
+
+/-- The `w` factors of an assembled path are exactly those of the two halves. -/
+theorem prod_w_joinBond {L m : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (a b : Fin (m + 1) → (Fin L → Fin 2)) :
+    (∏ t : Fin ((m + 1) + (m + 1)), w (joinBond a b t))
+      = (∏ t : Fin (m + 1), w (a t)) * ∏ t : Fin (m + 1), w (b t) := by
+  rw [Fin.prod_univ_add]
+  congr 1
+  · exact Finset.prod_congr rfl fun i _ => by rw [joinBond_left]
+  · have h1 : (∏ i : Fin (m + 1), w (joinBond a b (Fin.natAdd (m + 1) i)))
+        = ∏ i : Fin (m + 1), w (b (Fin.rev i)) :=
+      Finset.prod_congr rfl fun i _ => by rw [joinBond_right]
+    rw [h1]
+    simpa using Equiv.prod_comp (Fin.revPerm (n := m + 1)) (fun i => w (b i))
+
+/-- The kernel factors split into: the bonds inside the past half, the ONE bond
+that crosses the reflection plane, and the bonds inside the future half --- the
+last of these read backwards, which the symmetry of the kernel undoes. -/
+theorem prod_K_joinBond {L m : ℕ} (β : ℝ)
+    (a b : Fin (m + 1) → (Fin L → Fin 2)) :
+    (∏ t : Fin ((m + 1) + m),
+        spatialKernel β (joinBond a b t.castSucc) (joinBond a b t.succ))
+      = ((∏ t : Fin m, spatialKernel β (a t.castSucc) (a t.succ))
+          * spatialKernel β (edgeOf a) (edgeOf b))
+        * ∏ t : Fin m, spatialKernel β (b t.castSucc) (b t.succ) := by
+  rw [Fin.prod_univ_add]
+  congr 1
+  · -- the past half, and then the crossing bond
+    rw [Fin.prod_univ_castSucc]
+    congr 1
+    · refine Finset.prod_congr rfl fun i _ => ?_
+      have e1 : (Fin.castAdd m (Fin.castSucc i)).castSucc
+          = Fin.castAdd (m + 1) (Fin.castSucc i) := by ext; simp
+      have e2 : (Fin.castAdd m (Fin.castSucc i)).succ
+          = Fin.castAdd (m + 1) (Fin.succ i) := by ext; simp
+      rw [e1, e2, joinBond_left, joinBond_left]
+    · have e1 : (Fin.castAdd m (Fin.last m)).castSucc
+          = Fin.castAdd (m + 1) (Fin.last m) := by ext; simp
+      have e2 : (Fin.castAdd m (Fin.last m)).succ
+          = Fin.natAdd (m + 1) (0 : Fin (m + 1)) := by ext; simp
+      rw [e1, e2, joinBond_left, joinBond_right]
+      simp [edgeOf, Fin.rev_zero]
+  · -- the future half, read backwards
+    have hstep : ∀ i : Fin m,
+        spatialKernel β (joinBond a b (Fin.natAdd (m + 1) i).castSucc)
+            (joinBond a b (Fin.natAdd (m + 1) i).succ)
+          = spatialKernel β (b (Fin.rev i).castSucc) (b (Fin.rev i).succ) := by
+      intro i
+      have e1 : (Fin.natAdd (m + 1) i).castSucc
+          = Fin.natAdd (m + 1) (Fin.castSucc i) := by ext; simp; try omega
+      have e2 : (Fin.natAdd (m + 1) i).succ
+          = Fin.natAdd (m + 1) (Fin.succ i) := by ext; simp; try omega
+      rw [e1, e2, joinBond_right, joinBond_right, rev_castSucc_eq, rev_succ_eq,
+        spatialKernel_symm]
+    rw [Finset.prod_congr rfl fun i (_ : i ∈ Finset.univ) => hstep i]
+    simpa using Equiv.prod_comp (Fin.revPerm (n := m))
+      (fun i => spatialKernel β (b i.castSucc) (b i.succ))
+
+/-- **THE WEIGHT IDENTITY.**  With the bijection, this is the whole bond
+bridge. -/
+theorem gibbsWeight_joinBond {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
+    (a b : Fin (m + 1) → (Fin L → Fin 2)) :
+    gibbsWeight w β (N := m + 1 + m) (joinBond a b)
+      = gibbsWeight w β a * spatialKernel β (edgeOf a) (edgeOf b)
+          * gibbsWeight w β b := by
+  unfold gibbsWeight
+  rw [show (∏ t : Fin (m + 1 + m + 1), w (joinBond a b t))
+        = (∏ t : Fin (m + 1), w (a t)) * ∏ t : Fin (m + 1), w (b t)
+      from prod_w_joinBond w a b, prod_K_joinBond]
+  ring
+
+/-! ### The bond bridge, closed
+
+Assembly is a bijection and the weights multiply, so the sum over pairs of
+halves IS the sum over whole paths.  From here the bond form is no longer a
+candidate: it is the reflected two-point sum of the Gibbs measure, for a complex
+observable of the whole past half-chain, with `Θ` the reversal `futRevOf`. -/
+
+/-- **THE BOND BRIDGE.**  The candidate form is the reflected Gibbs sum. -/
+theorem osPairingBond_eq_gibbsSum {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
+    (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    (∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
+        (starRingEnd ℂ) (F (pastOf X)) * F (futRevOf X)
+          * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))
+      = osPairingBond w β m F := by
+  rw [← Equiv.sum_comp (bondEquiv L m)
+        (fun X => (starRingEnd ℂ) (F (pastOf X)) * F (futRevOf X)
+          * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))]
+  rw [Fintype.sum_prod_type]
+  unfold osPairingBond
+  refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
+  show (starRingEnd ℂ) (F (pastOf (joinBond a b))) * F (futRevOf (joinBond a b))
+      * ((gibbsWeight w β (N := m + 1 + m) (joinBond a b) : ℝ) : ℂ) = _
+  rw [pastOf_joinBond, futRevOf_joinBond, gibbsWeight_joinBond]
+
+/-- **AND THEREFORE IT IS NON-NEGATIVE, for `β ≥ 0`.**  The reflected two-point
+sum of the Gibbs measure itself, not of a form standing in for it. -/
+theorem gibbsSum_reflected_nonneg {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) {β : ℝ}
+    (hβ : 0 ≤ β) (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    ∃ r : ℝ, 0 ≤ r ∧
+      (∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
+        (starRingEnd ℂ) (F (pastOf X)) * F (futRevOf X)
+          * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ)) = (r : ℂ) := by
+  rw [osPairingBond_eq_gibbsSum]
+  exact osPairingBond_nonneg w hβ m F
+
+/-- **THE MATRIX FORM, ON THE MEASURE ITSELF.**  The diagonal theorem above
+already implies this by applying it to `∑ᵢ cᵢ Fᵢ`, but leaving it implicit would
+let the prose say "matrix statement about the measure" while Lean exhibited only
+a matrix for the intermediate form and a diagonal identity for the path sum.
+The consequence is cheap, which is exactly why it is written down. -/
+theorem gibbsSum_reflected_gram_nonneg {L m : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    {β : ℝ} (hβ : 0 ≤ β) {ι : Type*} [Fintype ι] (c : ι → ℂ)
+    (F : ι → (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    ∃ r : ℝ, 0 ≤ r ∧
+      (∑ i, ∑ j, (starRingEnd ℂ) (c i) * c j *
+        ∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
+          (starRingEnd ℂ) (F i (pastOf X)) * F j (futRevOf X)
+            * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ)) = (r : ℂ) := by
+  have hcross : ∀ i j : ι,
+      (∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
+        (starRingEnd ℂ) (F i (pastOf X)) * F j (futRevOf X)
+          * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))
+        = osPairingBondCross w β m (F i) (F j) := by
+    intro i j
+    rw [← Equiv.sum_comp (bondEquiv L m)
+          (fun X => (starRingEnd ℂ) (F i (pastOf X)) * F j (futRevOf X)
+            * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))]
+    rw [Fintype.sum_prod_type]
+    unfold osPairingBondCross
+    refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
+    show (starRingEnd ℂ) (F i (pastOf (joinBond a b))) * F j (futRevOf (joinBond a b))
+        * ((gibbsWeight w β (N := m + 1 + m) (joinBond a b) : ℝ) : ℂ) = _
+    rw [pastOf_joinBond, futRevOf_joinBond, gibbsWeight_joinBond]
+  rw [Finset.sum_congr rfl fun i _ =>
+        Finset.sum_congr rfl fun j _ => by rw [hcross i j]]
+  exact osPairingBond_gram_nonneg w hβ m c F
 
 end YangMills.OS
