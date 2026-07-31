@@ -6,6 +6,7 @@ Authors: Lluis Eriksson
 -/
 import Mathlib
 import YangMills.OS.SpatialGibbs
+import YangMills.OS.PerronKernel
 
 /-!
 # The ring weight, and the symmetry that splits its spectrum
@@ -16,24 +17,31 @@ measurements behind it:
 
     for `β ≥ 0`, `γ ≥ 0` and EVERY `L`:   specRatio(L) ≤ tanh β · e^{2γ}
 
-with the ring weight `ringWeight γ`, under which the weighted kernel is the
-symmetrised transfer matrix of the anisotropic square-lattice Ising model.  Both
-hypotheses are exhibited as active there, and the bound is measured tight on the
-whole face `γ = 0`, where it is paper 11's theorem.
+with the ring weight `spatialWeightRing γ`, under which the weighted kernel is
+the symmetrised transfer matrix of the anisotropic square-lattice Ising model.
+Both hypotheses are exhibited as active there, and the bound is measured tight on
+the whole face `γ = 0`, where it is paper 11's theorem.
 
-**Nothing in this file proves that bound.**  This file builds the first piece of
-its skeleton: the global spin flip commutes with the weighted kernel, so the
-space splits into an even and an odd sector.  Measurement says the Perron vector
-is even and the subdominant odd; a proof of the bound must control BOTH blocks,
-and the even one is the debt that no argument yet covers.
+**Nothing in this file proves that bound.**  A skeleton for it has four pieces:
+
+  1. `J K = K J`, so the space splits into even and odd sectors   -- HERE
+  2. the Perron vector lies in the even sector                    -- HERE
+  3. the ODD block is bounded by `q` times the Perron eigenvalue  -- NOT HERE
+  4. the EVEN block off the Perron line is bounded too            -- NOT HERE
+
+with `q = tanh β · e^{2γ}`.  The third identifies the rate; the fourth decides
+whether there is a theorem, and measurement says only that it is smaller, which
+is not an argument.
 
 ## What is here
 
 * `flipCfg` --- the global spin flip on a configuration, an involution;
-* `ringWeight` --- the weight whose bonds run around a ring, so that it has no
-  first site: this is exactly why paper 11's induction does not transfer;
-* the flip-invariance of the kernel and of the ring weight;
-* `act_flip_comm` --- the operator commutes with the flip.
+* the flip-invariance of the kernel and of `spatialWeightRing`, the ring weight
+  that has been in `PerronKernel` all along --- its bonds run around a ring, so
+  it has NO FIRST SITE, which is exactly why paper 11's induction does not
+  transfer;
+* `act_flip_comm` --- the operator commutes with the flip;
+* `perron_even` --- and therefore the Perron vector lies in the even sector.
 -/
 
 namespace YangMills.OS
@@ -86,22 +94,16 @@ unchanged when both spins turn over. -/
     show z2Bond β (z2Flip (σ j)) (z2Flip (τ j)) = z2Bond β (σ j) (τ j)
     rw [z2Bond_flip]
 
-/-- **THE RING WEIGHT.**  Its bonds run around a ring, so it has NO FIRST SITE.
-That is not a detail: paper 11's uniform rate is proved by induction on the
-extent, adding one site at a time, and a ring cannot be built that way.  The
-weight is written here so the obstruction is an object rather than a remark. -/
-noncomputable def ringWeight (γ : ℝ) {L : ℕ} [NeZero L] (σ : Fin L → Fin 2) : ℝ :=
-  ∏ j : Fin L, z2Bond γ (σ j) (σ (j + 1))
-
-theorem ringWeight_pos (γ : ℝ) {L : ℕ} [NeZero L] (σ : Fin L → Fin 2) :
-    0 < ringWeight γ σ := by
-  unfold ringWeight
-  exact Finset.prod_pos fun j _ => z2Bond_pos γ _ _
-
-/-- The ring weight does not see a global flip either. -/
-@[simp] theorem ringWeight_flip (γ : ℝ) {L : ℕ} [NeZero L] (σ : Fin L → Fin 2) :
-    ringWeight γ (flipCfg σ) = ringWeight γ σ := by
-  unfold ringWeight
+/-- **THE RING WEIGHT DOES NOT SEE A GLOBAL FLIP EITHER.**  `spatialWeightRing`
+is the weight whose bonds run around a ring, so it has NO FIRST SITE --- and that
+is not a detail: paper 11's uniform rate is proved by induction on the extent,
+adding one site at a time, and a ring cannot be built that way.  It lives in
+`PerronKernel`; an earlier draft of this file defined a synonym for it, which is
+how two names for one object start to diverge. -/
+@[simp] theorem spatialWeightRing_flip (γ : ℝ) {L : ℕ}
+    (σ : Fin (L + 1) → Fin 2) :
+    spatialWeightRing γ (flipCfg σ) = spatialWeightRing γ σ := by
+  unfold spatialWeightRing
   exact Finset.prod_congr rfl fun j _ => by
     show z2Bond γ (z2Flip (σ j)) (z2Flip (σ (j + 1))) = z2Bond γ (σ j) (σ (j + 1))
     rw [z2Bond_flip]
@@ -135,12 +137,69 @@ theorem act_flip_comm {L : ℕ} {K : (Fin L → Fin 2) → (Fin L → Fin 2) →
   simp only [flipEquiv_apply]
   rw [hK]
 
-/-- The same for the ring-weighted kernel, which is the case the target is
-about. -/
-theorem act_flip_comm_ring {L : ℕ} [NeZero L] (γ β : ℝ)
-    (u : (Fin L → Fin 2) → ℝ) :
-    act (symWeighted (ringWeight γ) β) (flipObs u)
-      = flipObs (act (symWeighted (ringWeight γ) β) u) :=
-  act_flip_comm (fun σ τ => symWeighted_flip (ringWeight_flip γ) β σ τ) u
+/-- The same for the symmetrised ring-weighted kernel, which is the object the
+uniformity target is about. -/
+theorem act_flip_comm_ring {L : ℕ} (γ β : ℝ)
+    (u : (Fin (L + 1) → Fin 2) → ℝ) :
+    act (symWeighted (spatialWeightRing γ) β) (flipObs u)
+      = flipObs (act (symWeighted (spatialWeightRing γ) β) u) :=
+  act_flip_comm (fun σ τ => symWeighted_flip (spatialWeightRing_flip γ) β σ τ) u
+
+/-! ## §4  The Perron vector is even
+
+Second of the four the uniformity target needs.  It costs nothing beyond the
+commutation and the uniqueness of a positive eigenvector, both already in the
+tree: if `Ω` is the strictly positive eigenvector then so is `J Ω`, uniqueness
+makes them proportional, and the normalisation forces the constant to be one. -/
+
+/-- The source-weighted kernel inherits flip invariance from its weight. -/
+theorem sourceWeightedKernelL_flip {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, w (flipCfg σ) = w σ) (β : ℝ) (σ τ : Fin L → Fin 2) :
+    sourceWeightedKernelL w β (flipCfg σ) (flipCfg τ)
+      = sourceWeightedKernelL w β σ τ := by
+  unfold sourceWeightedKernelL
+  rw [hw, spatialKernel_flip]
+
+/-- **THE PERRON VECTOR IS EVEN.**  For the ring-coupled slice at every extent,
+the strictly positive normalised eigenvector satisfies `Ω ∘ flip = Ω`.
+
+This is the second item of the uniformity skeleton.  It does NOT bound anything:
+it says only that the Perron direction lies in the even sector, so that the
+subdominant question splits into the odd block and the even block off the Perron
+line.  Those two bounds are the ones that decide whether there is a theorem, and
+neither is here. -/
+theorem perron_even (β γ : ℝ) (L : ℕ) :
+    ∃ (Ω : (Fin (L + 1) → Fin 2) → ℝ) (lam : ℝ), (∀ σ, 0 < Ω σ) ∧
+      (∑ σ, Ω σ = 1) ∧ 0 < lam ∧
+      (∀ σ, ∑ τ : Fin (L + 1) → Fin 2,
+        sourceWeightedKernelL (spatialWeightRing γ) β σ τ * Ω τ = lam * Ω σ) ∧
+      ∀ σ, Ω (flipCfg σ) = Ω σ := by
+  obtain ⟨Ω, lam, hpos, hsum, hlam, heig⟩ := coupled_ring_vacuum_exists β γ L
+  set A := sourceWeightedKernelL (spatialWeightRing γ) β with hA
+  have hApos : ∀ σ τ, 0 < A σ τ := fun σ τ =>
+    sourceWeightedKernelL_pos (spatialWeightRing_pos γ) β σ τ
+  have hAflip : ∀ σ τ, A (flipCfg σ) (flipCfg τ) = A σ τ := fun σ τ =>
+    sourceWeightedKernelL_flip (spatialWeightRing_flip γ) β σ τ
+  -- `J Ω` is a strictly positive eigenvector for the SAME eigenvalue
+  have hflipPos : ∀ σ, 0 < flipObs Ω σ := fun σ => hpos _
+  have hflipEig : ∀ σ, ∑ τ, A σ τ * flipObs Ω τ = lam * flipObs Ω σ := by
+    intro σ
+    have h := congrFun (act_flip_comm (K := A) hAflip Ω) σ
+    unfold act flipObs at h
+    show ∑ τ, A σ τ * Ω (flipCfg τ) = lam * Ω (flipCfg σ)
+    rw [h]
+    exact heig (flipCfg σ)
+  -- uniqueness makes them proportional, and the normalisation fixes the constant
+  obtain ⟨-, c, hc, hprop⟩ := pos_eigenvector_unique hApos hpos hflipPos heig hflipEig
+  have hone : c = 1 := by
+    have hs : ∑ σ, flipObs Ω σ = ∑ σ, Ω σ := by
+      unfold flipObs
+      exact Equiv.sum_comp (flipEquiv (L + 1)) Ω
+    rw [Finset.sum_congr rfl fun σ _ => hprop σ, ← Finset.mul_sum, hsum] at hs
+    linarith
+  exact ⟨Ω, lam, hpos, hsum, hlam, heig, fun σ => by
+    have := hprop σ
+    unfold flipObs at this
+    rw [this, hone, one_mul]⟩
 
 end YangMills.OS
