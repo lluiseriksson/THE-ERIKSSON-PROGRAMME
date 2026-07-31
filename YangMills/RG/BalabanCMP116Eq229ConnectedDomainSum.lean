@@ -130,6 +130,72 @@ theorem connectedDomainFamily_sum_pow_card_le
     _ = (Y0.card : ℝ) * (1 - (Δ : ℝ) ^ 2 * q)⁻¹ := by
       simp [nsmul_eq_mul]
 
+/-- A finite family of connected domains containing one fixed root is
+controlled by the rooted lattice-animal sum.
+
+Unlike `connectedDomainFamily_sum_pow_card_le`, this form does not require the
+domains to be contained in a common carrier.  It is the source-faithful
+estimate needed when a terminal ledger retains every native localization
+domain as a distinct index and only coarsens its physical support. -/
+theorem connectedDomainFamily_rooted_sum_pow_card_le
+    {V : Type*} [Fintype V] [DecidableEq V]
+    {G : SimpleGraph V} [DecidableRel G.Adj]
+    (domainFamily : Finset (Finset V))
+    (r : V)
+    (hdomains :
+      ∀ Y ∈ domainFamily,
+        walkConnected G Y)
+    {Δ : ℕ} {q : ℝ}
+    (hΔ : ∀ x, G.degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (hq0 : 0 ≤ q)
+    (hCq : (Δ : ℝ) ^ 2 * q < 1) :
+    (∑ Y ∈ domainFamily.filter (fun Y => r ∈ Y),
+        q ^ Y.card) ≤
+      (1 - (Δ : ℝ) ^ 2 * q)⁻¹ := by
+  classical
+  let rootedAt : Finset (Finset V) :=
+    domainFamily.filter fun Y => r ∈ Y
+  let full : Finset (Finset V) :=
+    Finset.univ.filter fun Y =>
+      r ∈ Y ∧
+        ∀ x ∈ Y, ∃ w : G.Walk r x, IsSWalk Y w
+  have hpow_nonneg : ∀ Y : Finset V, 0 ≤ q ^ Y.card :=
+    fun Y => pow_nonneg hq0 _
+  have hrooted_sub : rootedAt ⊆ full := by
+    intro Y hY
+    have hYmem := Finset.mem_filter.mp hY
+    have hconn := hdomains Y hYmem.1
+    rw [Finset.mem_filter]
+    refine ⟨Finset.mem_univ Y, hYmem.2, ?_⟩
+    intro x hx
+    obtain ⟨w, hw⟩ := hconn r hYmem.2 x hx
+    exact ⟨w, hw⟩
+  have hfinite :
+      (∑ Y ∈ rootedAt, q ^ Y.card) ≤
+        ∑ Y ∈ full, q ^ Y.card := by
+    exact Finset.sum_le_sum_of_subset_of_nonneg hrooted_sub
+      (fun Y _ _ => hpow_nonneg Y)
+  have hfull_eq :
+      (∑ Y ∈ full, q ^ Y.card) =
+        ∑ A : {Y : Finset V //
+            r ∈ Y ∧
+              ∀ x ∈ Y, ∃ w : G.Walk r x, IsSWalk Y w},
+          q ^ (A : Finset V).card := by
+    exact Finset.sum_subtype full (fun Y => by simp [full])
+      (fun Y => q ^ Y.card)
+  have hanimal :=
+    rooted_connected_weight_summable
+      (G := G) (r := r) hΔ hΔ1 hq0 hCq
+  calc
+    (∑ Y ∈ domainFamily.filter (fun Y => r ∈ Y),
+        q ^ Y.card) =
+        ∑ Y ∈ rootedAt, q ^ Y.card := by rfl
+    _ ≤ ∑ Y ∈ full, q ^ Y.card := hfinite
+    _ ≤ (1 - (Δ : ℝ) ^ 2 * q)⁻¹ := by
+      exact hfull_eq.trans_le (by
+        simpa [tsum_fintype] using hanimal)
+
 /-- Equation (2.30), in the form `|Y| / 24 ≤ d_k(Y)`, turns the half-fugacity
 weight into a pure block-cardinality weight.
 

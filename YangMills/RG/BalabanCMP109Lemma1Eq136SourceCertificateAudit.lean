@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP109Lemma1Eq136SourceCertificate
+
+#print axioms YangMills.RG.cmp109Lemma1SourceSmallField
+#print axioms YangMills.RG.cmp109Lemma1SourceResidual
+#print axioms YangMills.RG.CMP109Lemma1Eq136SourceCertificate
+#print axioms YangMills.RG.CMP109Lemma1Eq136SourceCertificate.toNativeCertificate

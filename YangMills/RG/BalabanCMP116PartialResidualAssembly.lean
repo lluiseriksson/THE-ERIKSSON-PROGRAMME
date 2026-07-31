@@ -28,20 +28,30 @@ namespace YangMills.RG
 noncomputable section
 
 /-- The one named source input left by the partial equation-(1.36)
-assembly: a Lemma-1 residual already transported to the consumer's domain
-index and metric.
+assembly: the literal Lemma-1 residual, already transported to the consumer's
+domain index and metric, together with its small-field estimate.
 
 This certificate deliberately does not construct the scale dictionary from
 the native Lemma-1 domains to `Y`.  Supplying such a dictionary and proving
-this bound after reindexing remain the source-facing Lemma-1 obligation. -/
+this bound after reindexing remain the source-facing Lemma-1 obligation.
+
+The residual and small-field predicate are parameters, not freely chosen
+fields. A terminal producer must instantiate them with the reindexed CMP109
+Lemma-1 activity and the literal cutoff-supported region.
+`smallField_zero` rules out an empty support predicate, while `E0_pos`
+rules out choosing zero for the named Lemma-1 amplitude.  Positivity of the
+remaining outer source constants is retained by their physical producer. -/
 structure CMP116Lemma1Eq136ResidualCertificate
-    {Y E : Type*}
+    {Y E : Type*} [Zero E]
     (domainDist : Y → ℝ)
+    (smallField : Y → E → Prop)
+    (residual : Y → E → ℝ)
     (epsilon1 C1 : ℝ) (M q : ℕ)
     (C2 kappa1 delta kappa : ℝ) where
   E0 : ℝ
-  residual : Y → E → ℝ
-  bound : ∀ y B,
+  E0_pos : 0 < E0
+  smallField_zero : ∀ y, smallField y 0
+  bound : ∀ y B, smallField y B →
     |residual y B| ≤
       cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
         C2 kappa1 delta kappa (domainDist y)
@@ -61,7 +71,12 @@ noncomputable def cmp116PartialResidual
     Y → E → ℝ :=
   fun y B => directResidual y B + lemma1Residual y B
 
-/-- The named Lemma-1 input cancels exactly from the quadratic core. -/
+/-- Algebraic cancellation built into the partial assembly:
+the same named summand is added to `total` and `residual`.
+
+This identity is only `(a + c) - (b + c) = a - b`; it does not by itself
+identify `c` with the physical CMP109 Lemma-1 activity.  That identification
+belongs to the source-scale reindexing certificate. -/
 theorem cmp116Eq142PhysicalQuadraticCore_partialResidual
     {Y : Type*} {d N Nc : ℕ} [NeZero N]
     (directTotal directResidual lemma1Residual :
@@ -188,27 +203,46 @@ theorem abs_cmp116PartialResidual_le_eq136
 /-- The direct equation-(80) estimate and the single named, reindexed
 Lemma-1 certificate produce the full partial equation-(1.36) bound. -/
 theorem abs_cmp116PartialResidual_le_eq136_of_lemma1Certificate
-    {Y E : Type*}
-    (directResidual : Y → E → ℝ)
+    {Y E : Type*} [Zero E]
+    (directResidual lemma1Residual : Y → E → ℝ)
+    (smallField : Y → E → Prop)
     {E0Direct E0 epsilon1 C1 : ℝ} {M q : ℕ}
     {C2 kappa1 delta kappa : ℝ}
     (domainDist : Y → ℝ)
     (lemma1 :
       CMP116Lemma1Eq136ResidualCertificate
-        domainDist epsilon1 C1 M q C2 kappa1 delta kappa)
+        domainDist smallField lemma1Residual
+        epsilon1 C1 M q C2 kappa1 delta kappa)
     (hepsilon1 : 0 ≤ epsilon1) (hC1 : 0 ≤ C1)
     (hE0 : E0Direct + lemma1.E0 ≤ E0)
-    (hdirect : ∀ y B,
+    (hdirect : ∀ y B, smallField y B →
       |directResidual y B| ≤
         cmp116Eq136ResidualMajorant E0Direct epsilon1 C1 M q
           C2 kappa1 delta kappa (domainDist y))
-    (y : Y) (B : E) :
-    |cmp116PartialResidual directResidual lemma1.residual y B| ≤
+    (y : Y) (B : E) (hsmall : smallField y B) :
+    |cmp116PartialResidual directResidual lemma1Residual y B| ≤
       cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
-        C2 kappa1 delta kappa (domainDist y) :=
-  abs_cmp116PartialResidual_le_eq136
-    directResidual lemma1.residual domainDist
-    hepsilon1 hC1 hE0 hdirect lemma1.bound y B
+        C2 kappa1 delta kappa (domainDist y) := by
+  calc
+    |cmp116PartialResidual directResidual lemma1Residual y B| =
+        |directResidual y B + lemma1Residual y B| := rfl
+    _ ≤ |directResidual y B| + |lemma1Residual y B| := abs_add_le _ _
+    _ ≤
+        cmp116Eq136ResidualMajorant E0Direct epsilon1 C1 M q
+            C2 kappa1 delta kappa (domainDist y) +
+          cmp116Eq136ResidualMajorant lemma1.E0 epsilon1 C1 M q
+            C2 kappa1 delta kappa (domainDist y) :=
+      add_le_add (hdirect y B hsmall) (lemma1.bound y B hsmall)
+    _ =
+        cmp116Eq136ResidualMajorant (E0Direct + lemma1.E0)
+          epsilon1 C1 M q C2 kappa1 delta kappa (domainDist y) :=
+      cmp116Eq136ResidualMajorant_add_E0
+        E0Direct lemma1.E0 epsilon1 C1 M q
+        C2 kappa1 delta kappa (domainDist y)
+    _ ≤
+        cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+          C2 kappa1 delta kappa (domainDist y) :=
+      cmp116Eq136ResidualMajorant_mono_E0 hE0 hepsilon1 hC1
 
 end
 

@@ -2887,3 +2887,14 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 5. Keep the RG operator/propagator work source-grounded and oracle-clean.
 6. Do not introduce axioms or placeholder interfaces for the missing analytic
    theorem; carry gaps only as explicit theorem hypotheses.
+
+### Live hRpoly checkpoint — 2026-07-31
+
+The literal CMP109 Lemma-1 residual is now packaged by a nonvacuous restricted
+equation-(1.36) certificate, enumerated without collapsing native domains, and
+fed to an explicit volume-uniform rooted animal sum.  The rooted
+equation-(2.20) ledger is derived for every coarse root.  The analytic
+Lemma-1 estimate itself remains a named hypothesis; `domain_subset`,
+`volume_budget`, and the complete terminal term-source constructor remain
+open.  See
+`docs/source-db/reports/CMP109-LEMMA1-NATIVE-RESIDUAL-AUDIT.md`.

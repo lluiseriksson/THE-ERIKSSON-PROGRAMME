@@ -25724,3 +25724,55 @@ Because there was no race and no formal source or oracle change, no new
 editorial addendum.  The mathematical status is unchanged: both current
 unscaled flat and quotient gates are refuted; rescaled/weighted variants
 and interacting-Hessian coercivity remain open.
+
+## Addendum 510 (2026-07-31, **CMP109 Lemma-1 native rooted residual: exact native indexing and Eq. (2.30) transport GREEN**)
+
+This checkpoint keeps every literal CMP109 Lemma-1 localization domain as
+its own terminal index.  Only its support is coarsened to the CMP116 block
+geometry.  No quotient by coincident coarse supports and no injectivity of
+that support map are assumed.  The source certificate fixes the residual
+definitionally to the CMP109 Eq. (2.12) Lemma-1 residual activity and makes
+the non-vacuity boundary explicit: `E0_pos`, a nonempty small-field region
+through `smallField_zero`, and the Eq. (1.36) bound restricted to that
+region.
+
+The native rooted estimate uses the exact `M^4` coarse-root preimage bound,
+the degree-eight face graph (animal base `8^2 = 64`), and the printed
+Eq. (2.30) metric comparison.  The terminal theorem
+`cmp109Lemma1NativeIndexed_rooted_residual_le` proves the centered Eq. (2.20)
+rooted residual bound for all native Lemma-1 indices under the two visible
+animal-series windows
+`64 * exp (-(((1 - 2 * delta) * kappa) / 24)) < 1` and
+`64 * exp (-((delta * kappa) / 24)) < 1`.  These fugacities are not
+identified with the patched-parametrix `rate` or with the natural exponent
+`q` in `M^q`.  In particular, this checkpoint does not invalidate the
+separate `rate = log 32` scalar witness.
+
+**Focal verification.**  Forty-seven declarations in the new native
+residual chain were audited.  Forty-six report exactly
+`[propext, Classical.choice, Quot.sound]`; the remaining declaration,
+`cmp109Lemma1NativeDomain_blocks_injective`, reports the smaller set
+`[propext, Quot.sound]`.  The recursive core-import tracking guard checked
+2,151 local Lean sources and found all of them tracked.  The staged Lean
+delta contains no `sorry`, `admit`, `axiom`, or `sorryAx` occurrence.
+
+**Clean remote replay.**  The exact v18 overlay has SHA-256
+`79C702C6DF9CFC54C50284EAB772B12512CFA05C8A4CB4BB973258E708B16E8D`
+and is archived at
+<https://drive.google.com/file/d/1WN2UBdiKIkX3T8g4SE87VxZ26-a5_uo-/view>.
+It was replayed over base
+`ccfc85d4e42e94965677896af673110f4b0fdb9a`, with toolchain
+`leanprover/lean4:v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`.  The exact terminal line was
+`Build completed successfully (10309 jobs).` (`V18ROOT_EXIT_0`).
+
+**Scope boundary.**  This addendum does not claim a constructed
+`CMP116Eq226PhysicalContourTermSource`.  The analytic Eq. (1.36) proof for
+the CMP109 Lemma-1 source certificate, containment of every coarsened
+support in the terminal `Z0` (`domain_subset`), the joint direct/native
+choice of `rootBound`, and its compatibility with `volume_budget` remain
+open.  Claude Fable 5 High independently audited the native rooted-residual
+design through the Fable Bridge using profile `default` and the explicitly
+selected account `luis.ebikeride@gmail.com`; only conclusions independently
+checked against the Lean tree are recorded here.

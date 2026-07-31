@@ -1301,3 +1301,30 @@ literal localized activity V_k(Y,B) of (1.41)
 No theorem should call a weakening leaf, an arbitrary radial Taylor residual,
 or the residual of the currently installed bare summand `V''_k` without this
 identity.
+
+## Native Lemma-1 residual ledger (2026-07-31)
+
+The Lemma-1 domain mismatch is now handled without an artificial bijection or
+a quotient by coincident coarse supports.  Every literal connected native
+`2`-block domain remains a distinct finite index; its support alone is mapped
+to the CMP116 `M`-block lattice.  This avoids summing coarsification fibres in
+the residual activity and preserves the native tree metric from equation
+(2.30).
+
+`BalabanCMP109Lemma1Eq136SourceCertificate` pins the restricted residual to
+the literal equation-(2.12) energy difference, with positive `E0` and a
+small-field predicate containing zero.  The analytic (1.36) estimate remains
+an explicit source hypothesis.  `BalabanCMP109Lemma1CoarsenedResidualFamily`
+then constructs the finite native enumeration and exact energy-difference
+sum.  Finally `BalabanCMP109Lemma1NativeRootedResidual` derives the centered
+equation-(2.20) rooted residual bound from:
+
+```text
+native connectivity + degree 8 + exact M^4 root preimage
++ equation (2.30) + two explicit 64q < 1 animal windows.
+```
+
+Thus the combinatorial `rooted_residual` field is discharged for this sector;
+the analytic Lemma-1 bound, final `domain_subset`, `volume_budget`, and the
+complete terminal constructor remain open.  The detailed field-by-field audit
+is `docs/source-db/reports/CMP109-LEMMA1-NATIVE-RESIDUAL-AUDIT.md`.

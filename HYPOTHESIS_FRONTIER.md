@@ -306,3 +306,19 @@ Both are outside `YangMillsCore` and are scheduled for staged removal
 the verified-core frontier above.*
 
 </details>
+
+## 2026-07-31 — CMP109 Lemma-1 native residual frontier
+
+`CMP109Lemma1Eq136SourceCertificate` now fixes the Lemma-1 residual to the
+literal CMP109 equation-(2.12) energy difference and restricts its bound to a
+nonempty small-field region, with strictly positive `E0`.  The remaining
+analytic hypothesis is exactly its field `bound`, i.e. equation (1.36) for
+that source object.  It is not an arbitrary residual function hidden inside
+the certificate.
+
+Conditional on that named source bound, the finite native-domain enumeration,
+exact energy-difference sum, and centered equation-(2.20) rooted residual sum
+are derived.  The terminal frontier still contains `domain_subset`,
+`volume_budget`, the joint scalar regime, and construction of the complete
+centered conditioned term source.  No `hRpoly`, continuum, OS, or Clay claim
+follows; distance to Clay remains approximately zero (below 0.1%).

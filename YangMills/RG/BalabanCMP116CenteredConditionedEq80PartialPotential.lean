@@ -111,12 +111,19 @@ noncomputable def cmp116CenteredConditionedEq80PartialTotal
     (gk : ℝ)
     (epsilon1 C1 : ℝ) (q : ℕ)
     (C2 kappa1 delta kappa : ℝ)
+    (lemma1SmallField :
+      Fin (CMP102Eq80SourcePi4DomainCount anchor domains) →
+        Eq80PartialField M Q Nc → Prop)
+    (lemma1Residual :
+      Fin (CMP102Eq80SourcePi4DomainCount anchor domains) →
+        Eq80PartialField M Q Nc → ℝ)
     (lemma1 : CMP116Lemma1Eq136ResidualCertificate
       (E := Eq80PartialField M Q Nc)
       (fun i =>
         (cmp116CubeEdgeTreeMetric
           (cmp102Eq80SourcePi4IndexedLocalizationDomain
             (M := M) anchor domains i) : ℝ))
+      lemma1SmallField lemma1Residual
       epsilon1 C1 M q C2 kappa1 delta kappa) :
     (Fin nDelta → ℂ) →
       RestrictedField spectatorSupport (fun _ => SUNLieCoord Nc) →
@@ -129,7 +136,7 @@ noncomputable def cmp116CenteredConditionedEq80PartialTotal
         anchor domains contourCarrier e K hc hmass hK
         baseCoarseCovariance sigma layerWord choice
         D D₃ V₀ Pprop T Δπ J gk)
-      lemma1.residual
+      lemma1Residual
 
 /-- The terminal residual for the partial source assembly. -/
 noncomputable def cmp116CenteredConditionedEq80PartialResidual
@@ -157,12 +164,19 @@ noncomputable def cmp116CenteredConditionedEq80PartialResidual
     (gk : ℝ)
     (epsilon1 C1 : ℝ) (q : ℕ)
     (C2 kappa1 delta kappa : ℝ)
+    (lemma1SmallField :
+      Fin (CMP102Eq80SourcePi4DomainCount anchor domains) →
+        Eq80PartialField M Q Nc → Prop)
+    (lemma1Residual :
+      Fin (CMP102Eq80SourcePi4DomainCount anchor domains) →
+        Eq80PartialField M Q Nc → ℝ)
     (lemma1 : CMP116Lemma1Eq136ResidualCertificate
       (E := Eq80PartialField M Q Nc)
       (fun i =>
         (cmp116CubeEdgeTreeMetric
           (cmp102Eq80SourcePi4IndexedLocalizationDomain
             (M := M) anchor domains i) : ℝ))
+      lemma1SmallField lemma1Residual
       epsilon1 C1 M q C2 kappa1 delta kappa) :
     (Fin nDelta → ℂ) →
       RestrictedField spectatorSupport (fun _ => SUNLieCoord Nc) →
@@ -176,10 +190,13 @@ noncomputable def cmp116CenteredConditionedEq80PartialResidual
           anchor domains contourCarrier e i K hc hmass hK
           baseCoarseCovariance sigma layerWord choice
           D D₃ V₀ Pprop T Δπ J gk)
-      lemma1.residual
+      lemma1Residual
 
-/-- The Lemma-1 contribution cancels exactly from the terminal quadratic
-core.  This theorem is independent of every Lemma-1 analytic estimate. -/
+/-- Algebraic cancellation of the named Lemma-1 summand from the terminal
+quadratic core.  This theorem is independent of every Lemma-1 analytic
+estimate, but it does not identify `lemma1Residual` with the physical CMP109
+activity.  That source identification belongs to the scale-reindexing
+producer. -/
 theorem cmp116Eq142PhysicalQuadraticCore_centeredConditionedEq80Partial
     {nDelta M Q Nc R n : ℕ}
     [NeZero M] [NeZero Q] [NeZero (M * (2 * Q))]
@@ -205,12 +222,19 @@ theorem cmp116Eq142PhysicalQuadraticCore_centeredConditionedEq80Partial
     (gk : ℝ)
     (epsilon1 C1 : ℝ) (q : ℕ)
     (C2 kappa1 delta kappa : ℝ)
+    (lemma1SmallField :
+      Fin (CMP102Eq80SourcePi4DomainCount anchor domains) →
+        Eq80PartialField M Q Nc → Prop)
+    (lemma1Residual :
+      Fin (CMP102Eq80SourcePi4DomainCount anchor domains) →
+        Eq80PartialField M Q Nc → ℝ)
     (lemma1 : CMP116Lemma1Eq136ResidualCertificate
       (E := Eq80PartialField M Q Nc)
       (fun i =>
         (cmp116CubeEdgeTreeMetric
           (cmp102Eq80SourcePi4IndexedLocalizationDomain
             (M := M) anchor domains i) : ℝ))
+      lemma1SmallField lemma1Residual
       epsilon1 C1 M q C2 kappa1 delta kappa)
     (sigma : Fin nDelta → ℂ)
     (psi : RestrictedField spectatorSupport (fun _ => SUNLieCoord Nc))
@@ -222,12 +246,14 @@ theorem cmp116Eq142PhysicalQuadraticCore_centeredConditionedEq80Partial
           spectatorSupport fluctuationSupport anchor domains
           contourCarrier e K hc hmass hK baseCoarseCovariance
           layerWord choice D D₃ V₀ Pprop T Δπ J gk
-          epsilon1 C1 q C2 kappa1 delta kappa lemma1 sigma psi phi)
+          epsilon1 C1 q C2 kappa1 delta kappa
+          lemma1SmallField lemma1Residual lemma1 sigma psi phi)
         (cmp116CenteredConditionedEq80PartialResidual
           spectatorSupport fluctuationSupport anchor domains
           contourCarrier e K hc hmass hK baseCoarseCovariance
           layerWord choice D D₃ V₀ Pprop T Δπ J gk
-          epsilon1 C1 q C2 kappa1 delta kappa lemma1 sigma psi phi)
+          epsilon1 C1 q C2 kappa1 delta kappa
+          lemma1SmallField lemma1Residual lemma1 sigma psi phi)
         i B =
       cmp116Eq142PhysicalQuadraticCore
         (cmp102Eq80PhysicalIndexedContourTotal
@@ -250,7 +276,7 @@ theorem cmp116Eq142PhysicalQuadraticCore_centeredConditionedEq80Partial
         anchor domains contourCarrier e j K hc hmass hK
         baseCoarseCovariance sigma layerWord choice
         D D₃ V₀ Pprop T Δπ J gk)
-    lemma1.residual i B
+    lemma1Residual i B
 
 end
 

@@ -453,3 +453,16 @@ lemmas without breaking §3. And keep `~0% to Clay` honest — a model that clai
 prize by adding an axiom or a vacuous target has failed the actual test, which is integrity.
 
 — The Eriksson Programme. Build truthfully.
+
+## Live handoff — 2026-07-31
+
+The current hRpoly branch retains each literal CMP109 Lemma-1 native domain as
+a distinct finite index, maps only its support to the terminal coarse lattice,
+and derives the complete centered rooted-residual sum with explicit
+`64 * exp(-rate/24) < 1` windows.  Do not quotient coincident coarse supports:
+that would reintroduce a fibre-multiplicity obligation.  The analytic (1.36)
+field of `CMP109Lemma1Eq136SourceCertificate`, final `domain_subset`, and
+`volume_budget` remain open.  Start from
+`docs/source-db/reports/CMP109-LEMMA1-NATIVE-RESIDUAL-AUDIT.md` and
+`docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md`; do not count the certificate as
+a proof of Lemma 1.
