@@ -34,7 +34,7 @@
 
 \title{The Row Sums Were the Method, Not the Theorem:\\
 a Machine-Checked Volume-Free Resolvent Bound,\\
-and the Relocation of a Uniformity Wall}
+and a Misattributed Uniformity Wall}
 \author{Lluis Eriksson}
 \date{}
 
@@ -60,18 +60,22 @@ type, supported on pairs at distance at most one,
 with no reference of any kind to the cardinality of the index type.  We exhibit
 a non-vacuity witness and record the oracle.
 
-Separately, and by measurement rather than proof, we locate the wall.  For the
-coupled kernel the second-eigenvalue ratio $\specRatio(L)$ saturates strictly
-below one throughout the tested disordered region and reaches one to six decimal
-places in the ordered region; the transition sits on Onsager's line.  The
-degeneracy is therefore a property of the ordered phase and not of the spatial
-weight.  The control at zero spatial coupling reproduces the \emph{proved}
-identity $\specRatio=\tanh\beta$ to six decimals, so the harness is calibrated
-against a theorem rather than against itself.
+Separately, and by measurement rather than proof, we remove the wall from where
+it was being placed.  For the coupled kernel the second-eigenvalue ratio
+$\specRatio(L)$ saturates strictly below one in each of six cells tested inside
+Onsager's disordered region --- with the spatial weight switched on --- and
+reaches one to six decimal places in the two ordered cells tested.  The
+control at zero spatial coupling reproduces the \emph{proved} identity
+$\specRatio=\tanh\beta$ to six decimals, so the harness is calibrated against a
+theorem rather than against itself.  These data are eight cells at $L\le12$ with
+an extrapolation: they refute the attribution of the degeneracy to the spatial
+weight, and they do \emph{not} locate the transition, which would need a dense
+sweep and finite-size scaling that we do not attempt.
 
 \textbf{What is not proved.}  The volume-uniform bound on $\specRatio$ for the
 coupled kernel is \emph{not} established here.  Dobrushin's uniqueness theorem is
-classical; nothing in this paper is new mathematics.  What is offered is a
+classical \cite{Dobrushin1968,Simon1993}; nothing in this paper is new
+mathematics.  What is offered is a
 mechanised, non-vacuous ingredient, a measured relocation of a wall, and an
 exactly named remaining obligation.  No consequence for Yang--Mills theory is
 stated, suggested, or implied.
@@ -121,7 +125,7 @@ Two facts from that development matter here.
 At $\gamma=0$ and for every $L\ge1$, $\specRatio=\tanh\beta$ exactly.
 \end{proposition}
 
-The proof is Schur's test: the decoupled kernel has \emph{constant} row sums, and
+The proof is Schur's test \cite{Schur1911}: the decoupled kernel has \emph{constant} row sums, and
 the loss on the odd part of an observable is exactly compensated by the odd bond
 eigenvalue at every step.
 
@@ -136,13 +140,27 @@ source.  \emph{It obstructs Schur's test.}  It says nothing whatever about
 $\specRatio$, it is proved on a two-site witness, and no statement quantified
 over $L$ appears in it.
 
-The stronger reading --- that the spatial weight destroys uniformity --- was
-entered into the development, then \emph{retracted of record} as unproved, leaving
-behind only a measurement of degeneracy.  The retraction removed the sentence
-from the manuscript, from the module docstring, and from a submission form.  It
-did not remove the belief, because the belief had migrated into the choice of
-which theorems to attempt next.  Guards in this development compare
-identifiers and substrings in files; a work queue is neither.
+A stronger reading --- that the spatial weight destroys uniformity --- was
+entered into the development and then \emph{retracted of record} as unproved,
+leaving behind only a measurement of degeneracy.
+
+\textbf{What is documented, and can be checked.}  The retraction of the sentence
+from the manuscript is recorded at Addendum~561 of the development's
+verification ledger; its removal from the module docstring, which the first
+retraction had missed, at Addendum~563; and its survival in a hand-typed
+submission form, caught only because the form was read in full before delivery,
+at Addendum~568.  Three removals were required for one sentence, and the third
+was the one that would have been published.
+
+\textbf{What is inference, and is labelled as such.}  We observe that no
+statement quantified over $L$ for the coupled kernel was attempted in the
+interval, and we attribute this to the retracted reading continuing to govern
+target selection.  That attribution is ours; it is not established by a
+diff, and no artefact in the development records a decision not to attempt
+something.  The verifiable half of the observation is the narrower one, and it
+is enough for this paper: the guards that caught the sentence three times
+compare identifiers and substrings inside files, so whatever else was carrying
+the reading was not a file.
 
 \section{The volume-free resolvent bound}
 
@@ -247,17 +265,27 @@ $r(\infty)$ is an Aitken extrapolation of the last three extents.  Values above
 one in the ordered rows are extrapolation overshoot at the sixth decimal and are
 reported as measured.
 
-Every cell inside Onsager's disordered region, $\sinh 2\beta\,\sinh 2\gamma<1$,
-saturates strictly below one, with increment ratios near $0.6$; both ordered
-cells reach one to six decimal places.  The control at $\gamma=0$ reproduces
-$\tanh\beta$ to six decimals, which is Proposition~\ref{prop:decoupled} --- the
-harness is calibrated against a theorem of the development rather than against
-itself.
+Each of the six cells tested inside Onsager's disordered region,
+$\sinh 2\beta\,\sinh 2\gamma<1$, saturates strictly below one, with increment
+ratios near $0.6$; both ordered cells tested reach one to six decimal places.
+The control at $\gamma=0$ reproduces $\tanh\beta$ to six decimals, which is
+Proposition~\ref{prop:decoupled} --- the harness is calibrated against a theorem
+of the development rather than against itself.
 
-\textbf{The reading.}  The degeneracy that the development measured is a
-property of the \emph{ordered phase}.  The wall exists and it sits at the phase
-boundary, which is where a physical wall belongs.  Switching on the spatial
-weight does not, by itself, destroy anything.
+\textbf{What these data support, stated at their strength and no further.}
+They are consistent with the degeneracy being a property of the \emph{ordered}
+phase, and they are \emph{not} consistent with the degeneracy being caused by
+switching on the spatial weight: six disordered cells with the weight switched
+on fail to degenerate.  That second, negative reading is the one this section is
+for, and it is the one that reopened the question.
+
+\textbf{What they do not support.}  They do not locate the transition.  Eight
+cells at $L\le12$, with a three-term Aitken extrapolation whose overshoot is
+visible in the ordered rows above, cannot place a phase boundary; doing so would
+require a dense sweep near $\sinh2\beta\,\sinh2\gamma=1$, finite-size scaling,
+and control of the extrapolator, none of which is attempted here.  A reader
+should take from this section that the wall is \emph{not} where the development
+had been treating it as being, and nothing about where it is.
 
 \textbf{Gates.}  Three gates were registered in
 \repofile{scripts/judge\_dobrushin.py}{scripts/judge\_dobrushin.py} together with
@@ -281,7 +309,7 @@ volume-uniform statement about $\specRatio$ requires, in order:
 \begin{enumerate}
 \item the single-site Dobrushin coefficient of the model, giving the explicit
       window $2\tanh\beta+2\tanh\gamma<1$;
-\item Dobrushin's comparison estimate --- exponential decay of connected
+\item Dobrushin's comparison estimate \cite{Dobrushin1970,Simon1993} --- exponential decay of connected
       correlations at a rate free of the extent.  \textbf{This is the
       bottleneck}; everything else is assembly;
 \item transport of that decay into the operator formulation.
@@ -349,12 +377,13 @@ word \emph{clustering} is accordingly not used for one.
 \section{Prior art, and the exact delta}
 \label{sec:prior}
 
-\textbf{Dobrushin's uniqueness theorem is classical} and nothing in this paper
+\textbf{Dobrushin's uniqueness theorem is classical}
+\cite{Dobrushin1968,Dobrushin1970,Simon1993} and nothing in this paper
 is new mathematics.  We locate the contribution precisely.
 
 \emph{Not explicit constants.}  The cell here is the anisotropic
 two-dimensional Ising model, whose transfer spectrum has been available in
-closed form since Onsager and Kaufman.  A constant obtained from Dobrushin's
+closed form since Onsager \cite{Onsager1944} and Kaufman \cite{Kaufman1949}.  A constant obtained from Dobrushin's
 condition is \emph{worse} than the exact answer --- on the cells we measured, by
 a factor between roughly two and thirty-six.  Any claim to have improved a
 constant for this model would be false, and we make none.
@@ -367,13 +396,15 @@ solution is silent.
 \emph{Mechanisation.}  A search conducted on 1 August 2026 returned no
 formalisation of Dobrushin's uniqueness condition in any proof assistant.  The
 same search does return a Lean~4 formalisation of the transverse-field Ising
-chain, with momentum-mode decomposition and a Jordan--Wigner transformation; it
+chain \cite{LeanIsing2026}, with momentum-mode decomposition and a
+Jordan--Wigner transformation; it
 concerns the quantum chain rather than the classical two-dimensional transfer
 matrix, and displaces nothing here, but it means a blanket claim that the Ising
 model has not been formalised would not survive review, and we make none.  A
 formalisation of the Perron--Frobenius theorem for irreducible nonnegative
-matrices also exists.  Reflection positivity and finite-lattice spectra for
-related models have been treated without mechanisation.
+matrices also exists \cite{Mathlib2020}, as does a mechanisation of the
+Osterwalder--Schrader axioms for the Gaussian free field \cite{OSforGFF2026}.  Reflection positivity and finite-lattice spectra for
+related models have been treated without mechanisation \cite{WashburnSimons2026}.
 
 \section{Limitations}
 
@@ -442,5 +473,95 @@ imported neither by the core nor by the oracle, so the measurements above are
 unaffected --- and it is retained with its diagnosis rather than deleted, this
 development's standing rule being that a measured failure is committed and not
 removed.  No claim of this paper rests on it.
+
+\begin{thebibliography}{99}
+
+\bibitem{Dobrushin1968}
+R.~L. Dobrushin,
+\emph{The description of a random field by means of conditional probabilities
+and conditions of its regularity},
+Theory of Probability and its Applications \textbf{13} (1968), 197--224.
+The uniqueness condition and the comparison estimate whose mechanised form is
+step~2 of Section~\ref{sec:frontier}.  The theorem of this paper is classical
+and due here.
+
+\bibitem{Dobrushin1970}
+R.~L. Dobrushin,
+\emph{Prescribing a system of random variables by conditional distributions},
+Theory of Probability and its Applications \textbf{15} (1970), 458--486.
+
+\bibitem{Simon1993}
+B.~Simon,
+\emph{The Statistical Mechanics of Lattice Gases, Volume I},
+Princeton University Press, 1993.
+Chapter~V gives the Dobrushin uniqueness condition, the interdependence matrix,
+and the exponential decay of correlations it yields; the single-bond coefficient
+$\tanh|J|$ for the Ising cell and the resulting window
+$2\tanh\beta+2\tanh\gamma<1$ are the standard specialisation.
+
+\bibitem{Onsager1944}
+L.~Onsager,
+\emph{Crystal statistics I: a two-dimensional model with an order-disorder
+transition},
+Physical Review \textbf{65} (1944), 117--149.
+The exact solution, and the source of the line
+$\sinh 2\beta\,\sinh 2\gamma=1$ used as the reference boundary in
+Section~\ref{sec:measurement}.
+
+\bibitem{Kaufman1949}
+B.~Kaufman,
+\emph{Crystal statistics II: partition function evaluated by spinor analysis},
+Physical Review \textbf{76} (1949), 1232--1243.
+The transfer-matrix spectrum in closed form.  This is the reason
+Section~\ref{sec:prior} claims generality rather than constants: for this cell
+the exact second eigenvalue is available and the Dobrushin constant is worse
+than it.
+
+\bibitem{Schur1911}
+I.~Schur,
+\emph{Bemerkungen zur Theorie der beschr\"ankten Bilinearformen mit unendlich
+vielen Ver\"anderlichen},
+Journal f\"ur die reine und angewandte Mathematik \textbf{140} (1911), 1--28.
+The test whose constant-row-sum form is the method discussed in
+Section~\ref{sec:reading}.
+
+\bibitem{Seneta2006}
+E.~Seneta,
+\emph{Non-negative Matrices and Markov Chains}, revised printing,
+Springer, 2006.
+Standard reference for nonnegative matrices, ergodicity coefficients and the
+resolvent series $\sum_n C^{n}=(I-C)^{-1}$ of which
+Theorem~\ref{thm:d1} is a locally-supported, entrywise refinement.
+
+\bibitem{Mathlib2020}
+The mathlib Community,
+\emph{The Lean mathematical library},
+Proceedings of CPP 2020, 367--381.
+The library against which the development is pinned; it carries a formalisation
+of the Perron--Frobenius theorem for irreducible nonnegative matrices.
+
+\bibitem{LeanIsing2026}
+\emph{A Machine-Verified Proof of a Quantum-Optimization Conjecture},
+arXiv:2606.29687 (2026).
+A Lean~4 formalisation of the Ising chain with momentum-mode decomposition and
+the Jordan--Wigner transformation.  It concerns the transverse-field quantum
+chain rather than the classical two-dimensional transfer matrix, and displaces
+nothing here; it is cited because a blanket claim that the Ising model has not
+been formalised would be false.
+
+\bibitem{OSforGFF2026}
+\emph{Formalization of Quantum Field Theory},
+arXiv:2603.15770 (2026).
+Osterwalder--Schrader axioms for the Gaussian free field in Lean~4; the nearest
+mechanised neighbour on the constructive side, and free rather than
+interacting.
+
+\bibitem{WashburnSimons2026}
+\emph{Spectrum and reflection positivity on a finite lattice},
+arXiv:2606.07922 (2026).
+Finite-lattice spectral and reflection-positivity results for a related model,
+not mechanised.
+
+\end{thebibliography}
 
 \end{document}
