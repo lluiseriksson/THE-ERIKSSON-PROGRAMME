@@ -599,9 +599,13 @@ private theorem coordinate_zero_fourth_eq_three_mixed :
             (quaternionCoordinate 0 g - quaternionCoordinate 1 g) ^ 4 := by ring
       _ = _ := by rw [hsqrtFourth]; ring
   have hA := quaternionCoordinate_pow_integrable 0 4
-  have hC := quaternionCoordinate_pow_mul_pow_integrable 0 1 3 1
+  have hC : Integrable (fun g : SU2 =>
+      quaternionCoordinate 0 g ^ 3 * quaternionCoordinate 1 g) haarSU2 := by
+    simpa using quaternionCoordinate_pow_mul_pow_integrable 0 1 3 1
   have hB := quaternionCoordinate_pow_mul_pow_integrable 0 1 2 2
-  have hD := quaternionCoordinate_pow_mul_pow_integrable 0 1 1 3
+  have hD : Integrable (fun g : SU2 =>
+      quaternionCoordinate 0 g * quaternionCoordinate 1 g ^ 3) haarSU2 := by
+    simpa using quaternionCoordinate_pow_mul_pow_integrable 0 1 1 3
   have hA1 := quaternionCoordinate_pow_integrable 1 4
   have hCscaled := hC.const_mul (-4 : ℝ)
   have hBscaled := hB.const_mul (6 : ℝ)
