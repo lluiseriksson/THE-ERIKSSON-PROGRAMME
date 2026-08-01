@@ -75,9 +75,9 @@ theorem quad_diagonal_congr (M : Matrix n n ℝ) (d x : n → ℝ) :
   rw [Matrix.mul_diagonal, Matrix.diagonal_mul]
   ring
 
+omit [Fintype n] [DecidableEq n] in
 /-- If every `d i` is nonzero, scaling by `d` sends nonzero vectors to nonzero
 vectors — the only place invertibility is used, and it is used essentially. -/
-omit [Fintype n] [DecidableEq n] in
 theorem scale_ne_zero {d x : n → ℝ} (hd : ∀ i, d i ≠ 0) (hx : x ≠ 0) :
     (fun i => d i * x i) ≠ 0 := by
   intro h
@@ -260,7 +260,6 @@ theorem tanh_lt_tanh_of_lt {a b : ℝ} (h : a < b) : Real.tanh a < Real.tanh b :
         / (Real.cosh a * Real.cosh b) := by
     rw [Real.tanh_eq_sinh_div_cosh, Real.tanh_eq_sinh_div_cosh]
     field_simp
-    ring
   have : 0 < Real.tanh b - Real.tanh a := by
     rw [key]; exact div_pos hs (mul_pos ha hb)
   linarith
@@ -284,8 +283,9 @@ theorem exists_extension_exceeding {β : ℝ} (hβ : 0 < β) {ρ : ℝ} (hρ : �
     lt_of_lt_of_le hbL (by linarith [Real.add_one_le_exp (β * L)])
   have hneg : Real.exp (-(β * L)) < 1 - ρ := by
     rw [Real.exp_neg, inv_lt_iff_one_lt_mul₀ hEpos]
-    rw [div_lt_iff₀ hEpos] at hE
-    nlinarith [hE, hEpos, hr]
+    -- clear the division in `hE` by `1 - ρ`, not by the exponential
+    rw [div_lt_iff₀ hr] at hE
+    linarith [hE, mul_comm (Real.exp (β * L)) (1 - ρ)]
   have hkey := one_sub_tanh_le (β * L)
   linarith
 
