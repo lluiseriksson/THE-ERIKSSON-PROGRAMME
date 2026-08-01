@@ -26407,3 +26407,39 @@ new declarations report exactly `[propext, Classical.choice, Quot.sound]`.
 The tracked-import guard covered 2,185 local sources, the consistency scan
 reported zero `sorry` and zero project axioms, and the root build ended with
 `Build completed successfully (10343 jobs).`.
+
+## Addendum 528 (2026-08-01, **partial constructor clean-clone evidence SEALED**)
+
+The complete focal chain behind Addendum 527 was replayed from source
+checkpoint `134a21f0dd9f82defb4de6334853031674dd285f` in one fresh Colab
+Pro+ CPU/high-RAM clone, with driver
+`166fd62e8b826edbae78c3756da40f51bfbfd2c3`.  The official
+`leanprover/lean4:v4.29.0-rc6` Linux asset was verified before extraction and
+Mathlib was pinned to `07642720480157414db592fa85b626dafb71355b`.
+
+All fourteen queue entries exited zero: dependency and pin gates;
+`RestrictedVisitedTransferPowers`; `OptimalInteractionAlpha` and audit;
+combined kernel support and audit; combined Hessian support and audit;
+terminal equation-(1.43) and audit; the partial term-source constructor and
+audit; `YangMillsCore`; and the full oracle.  The root terminal line was
+`Build completed successfully (10345 jobs).`  The headline audits use exactly
+`[propext, Classical.choice, Quot.sound]` (or a subset).
+
+This run is classified as an intermediate brick, for which the reproducibility
+policy requires one fresh clone.  A second checkout was intentionally stopped
+before mathematical execution rather than misreported as a failed replica.
+The runtime was disconnected and deleted after the evidence archive was
+downloaded and independently hashed on Windows:
+
+```text
+archive: hrpoly-v7-intermediate-1fe3b3ff9b5e4bc4a1d1e23396692ee4.tar.gz
+bytes:   229500
+sha256:  589769BC64D24493B0F68F5B0458DB017258919B32C265D8C83FA327487233EC
+```
+
+This strengthens the evidence for the partial constructor; it does not turn
+that constructor into an inhabitant of its `PreEq136` input.  The live
+consumer-facing numerator is 17 independently produced obligations out of 41,
+as itemized in `docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md`.  A complete
+centered-conditioned `TermSource`, `hRpoly`, and the paper endpoint remain
+open, and the distance to Clay remains approximately zero (below 0.1%).

@@ -10,9 +10,10 @@ import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedKernelSupport
 /-!
 # Hessian support on the direct/native CMP116 ledger
 
-**PRE-VALIDATION.** The source is present in this Git checkpoint, but its
-`.olean` has not yet been materialized from this checkpoint and the result is
-not yet verified by the Lean compiler.
+**VALIDATED INTERMEDIATE BRICK.** This source and its public audit were
+materialized from source checkpoint `134a21f0` in one fresh Colab Pro+ clone;
+the focal queue, `YangMillsCore`, and the full oracle all exited zero.  The
+evidence archive has SHA-256 `589769BC64D24493B0F68F5B0458DB017258919B32C265D8C83FA327487233EC`.
 
 The direct equation-(80) quadratic core is the diagonal of a bilinear form
 precomposed in both slots with the bilateral physical-bond projection of its

@@ -100,7 +100,11 @@ The following table is the live source-facing map.  A theorem marked
 "producer" has the correct conclusion independently of an inhabited
 `PreEq136`; "installer pending" means that the theorem has not yet been used
 to construct the corresponding field of a source-specific pre-record.
-Unvalidated files do not enter the numerical progress numerator.
+Unvalidated files do not enter the numerical progress numerator.  The focal
+queue through the combined constructor was materialized at source checkpoint
+`134a21f0` in one fresh Colab Pro+ clone; all focal targets, `YangMillsCore`,
+and the full oracle exited zero.  The downloaded evidence archive has SHA-256
+`589769BC64D24493B0F68F5B0458DB017258919B32C265D8C83FA327487233EC`.
 
 | Obligation group | Source status |
 |---|---|
@@ -110,13 +114,29 @@ Unvalidated files do not enter the numerical progress numerator.
 | `domain_nonempty`, `domain_subset`, `domainMetric_nonneg` | producers compiled for the enlarged centered region |
 | `rooted_residual`, `rootBound_nonneg` | direct/native combined producers compiled; terminal installer pending |
 | `volume_budget` | exact combined physical volume-rate producer compiled; scalar target remains visible |
-| equation (1.43) | combined physical producer compiled; a source-specific terminal-field adapter is written without a free Hessian estimate and awaits Colab validation |
+| equation (1.43) | combined physical producer and source-specific terminal-field adapter compiled; neither accepts a free Hessian estimate |
 | equation (1.36) | direct sector derived from CMP102 jets and walks; native sector is the named positive, nonempty-small-field CMP109 certificate; the combined finalizer is compiled but still requires a `PreEq136` inhabitant |
-| literal `kernelSupport`, `metric_budget` | source definitions and proofs written; clean focal validation pending after dependency materialization |
-| `smooth`, `hessian_zero_off_support` | source proofs written from the projected direct core and zero native core; focal validation pending |
+| literal `kernelSupport`, `metric_budget` | source definitions and proofs compiled in the clean focal queue |
+| `smooth`, `hessian_zero_off_support` | source proofs compiled from the projected direct core and zero native core |
 | covariance/parametrix contractions and contour bounds | remain explicit physical producer inputs; no source-specific pre-record yet assembles all of them |
 | conditioned covariance lower certificate | mandatory nondegeneracy input; it must not be synthesized by choosing a degenerate Gaussian root |
-| scalar windows (`shell`, contour/Neumann, root, outer, interaction, volume) | individually named; the combined ledger now pins `alpha` to the canonical sum of the literal potential rate, literal bilateral R2 rate, and `gamma`, but this normalization and its sign lemma await Colab validation and do not discharge `root_small` or `outer_small`; a single source-specific compatibility witness covering the live set remains open |
+| scalar windows (`shell`, contour/Neumann, root, outer, interaction, volume) | individually named; the compiled combined ledger pins `alpha` to the canonical sum of the literal potential rate, literal bilateral R2 rate, and `gamma`, but this normalization does not discharge `root_small` or `outer_small`; a single source-specific compatibility witness covering the live set remains open |
+
+Under the 41-obligation grouping above, the current auditable numerator is
+
+```text
+17 / 41
+```
+
+The seventeen independently produced entries are: the non-circular contour
+density; literal `total` and `residual`; literal `domainMetric`, `domainCard`,
+and `domainSupport`; `domain_nonempty`, `domain_subset`, and
+`domainMetric_nonneg`; `rooted_residual` and `rootBound_nonneg`;
+`volume_budget`; equation `(1.43)`; literal `kernelSupport`; `metric_budget`;
+`smooth`; and `hessian_zero_off_support`.  Equation `(1.36)` is deliberately
+outside this denominator.  The canonical `E0`, `threshold`, and `alpha`
+equalities are not added to the numerator while their only terminal use still
+passes through an already inhabited `PreEq136` record.
 
 The two pending Hessian fields are deliberately not read back from the input
 record.  Their ledger theorems rewrite only `total`, `residual`, and

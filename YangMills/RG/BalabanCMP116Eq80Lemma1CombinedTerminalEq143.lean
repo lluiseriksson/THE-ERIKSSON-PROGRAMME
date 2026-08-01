@@ -9,9 +9,10 @@ import YangMills.RG.BalabanCMP116CenteredConditionedCombinedEq80PartialPotential
 /-!
 # Terminal equation (1.43) on the direct/native CMP116 ledger
 
-**PRE-VALIDATION.** The source is present in this Git checkpoint, but its
-`.olean` has not yet been materialized from this checkpoint and the result is
-not yet verified by the Lean compiler.
+**VALIDATED INTERMEDIATE BRICK.** This source and its public audit were
+materialized from source checkpoint `134a21f0` in one fresh Colab Pro+ clone;
+the focal queue, `YangMillsCore`, and the full oracle all exited zero.  The
+evidence archive has SHA-256 `589769BC64D24493B0F68F5B0458DB017258919B32C265D8C83FA327487233EC`.
 
 The physical combined equation-(1.43) theorem already derives the direct
 Hessian estimate from the literal CMP102 jets and walks and discharges the

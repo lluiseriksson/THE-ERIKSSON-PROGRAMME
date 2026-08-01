@@ -8,9 +8,11 @@ run only in a new Colab Pro+ CPU/high-RAM runtime with no GPU.
 
 - `SOURCE_CHECKPOINT_A` contains exactly the 27 source paths derived from
   overlay v4, plus the compiler-discovered import-order repair within four of
-  those paths.  Eight module headers retain the mandatory `PRE-VALIDATION`
-  warning; theorem statements, constants and hypotheses are unchanged.  A is
-  the only source object compiled.
+  those paths.  At A, eight module headers retained the mandatory
+  `PRE-VALIDATION` warning; theorem statements, constants and hypotheses were
+  unchanged.  A is the only source object compiled by the recorded run.  A
+  later documentation-only checkpoint replaces those warnings with the
+  immutable validation anchor below.
 - The driver checkpoint is a descendant of A.  Its A-to-driver source-neutral
   diff contains exactly this document and `scripts/colab_hrpoly_validation_v6.py`.
 - Base before A: `072b0955a1ee524fefa0826da4d34a432e69e6df`.
@@ -40,6 +42,32 @@ evidence archive SHA-256:
 `1DBCE83034CC10E1F24B8D2308F0B9743EADF2D5B65C86BB9F03F486954D9376`
 (36,239 bytes).  Source `134a21f0...` changes only the import order in the
 four pending audit files; no theorem, constant or hypothesis changed.
+
+## Closed intermediate-brick run
+
+The v7 run from driver `166fd62e8b826edbae78c3756da40f51bfbfd2c3`
+materialized source A in one fresh Colab Pro+ CPU/high-RAM clone.  All fourteen
+queue entries exited zero: the dependency gate, Mathlib pin, focal source and
+audit targets through the partial constructor, `YangMillsCore`, and the full
+oracle.  Under the refined reproducibility policy this is an intermediate
+brick, so one fresh clone is sufficient; the second checkout was intentionally
+stopped before mathematical execution.
+
+Downloaded evidence:
+
+```text
+archive: hrpoly-v7-intermediate-1fe3b3ff9b5e4bc4a1d1e23396692ee4.tar.gz
+bytes:   229500
+sha256:  589769BC64D24493B0F68F5B0458DB017258919B32C265D8C83FA327487233EC
+runtime: Colab Pro+ CPU/high RAM, 50.99 GiB, no GPU
+open:    2026-08-01T16:04:44.076269+00:00
+closed:  2026-08-01T20:08:19.1082864+00:00
+```
+
+The runtime was disconnected and deleted after the archive was downloaded and
+its Windows SHA-256 was checked.  This closes the validation request; the
+instructions below are retained as the reproducible procedure, not as a live
+queue.
 
 ## Open and bootstrap exactly once
 

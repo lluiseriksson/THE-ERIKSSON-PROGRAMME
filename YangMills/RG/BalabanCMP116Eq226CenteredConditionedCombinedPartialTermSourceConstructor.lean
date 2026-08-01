@@ -11,9 +11,10 @@ import YangMills.RG.BalabanCMP116Eq226OptimalInteractionAlpha
 /-!
 # Combined partial centered-conditioned term-source constructor
 
-**PRE-VALIDATION.** The source is present in this Git checkpoint, but its
-`.olean` has not yet been materialized from this checkpoint and the result is
-not yet verified by the Lean compiler.
+**VALIDATED INTERMEDIATE BRICK.** This source and its public audit were
+materialized from source checkpoint `134a21f0` in one fresh Colab Pro+ clone;
+the focal queue, `YangMillsCore`, and the full oracle all exited zero.  The
+evidence archive has SHA-256 `589769BC64D24493B0F68F5B0458DB017258919B32C265D8C83FA327487233EC`.
 
 This module assembles the canonical direct/native equation-(80)/Lemma-1
 potential into the centered-conditioned equation-(2.26) source record.  The

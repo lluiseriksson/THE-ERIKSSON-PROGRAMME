@@ -480,8 +480,19 @@ cutoff and the complementary large-field cutoff are incompatible for nonempty
 `P`. The formal no-go theorem remains
 `cmp116Eq80Lemma1CombinedInteriorSignedCutoff_eq_zero`.
 
-The next milestone is the first public partial constructor for
-`CMP116Eq226CenteredConditionedPhysicalTermSource`, feeding the seven derived
-substantive fields and retaining the strictly positive, source-pinned
-`CMP109Lemma1Eq136SourceCertificate.bound` as the sole Lemma-1 analytic
-input. Do not count that certificate as a proof of Lemma 1.
+The public partial constructor
+`cmp116Eq226CenteredConditionedCombinedPartialTermSourceOfPreEq136` is now
+compiler- and oracle-verified in a fresh Colab clone.  It generates the final
+equation-(1.36) field from the direct producer and the strictly positive,
+source-pinned `CMP109Lemma1Eq136SourceCertificate.bound`; do not count that
+certificate as a proof of Lemma 1.  The constructor still receives an already
+inhabited `PreEq136`, so it is not a terminal inhabitant and does not reduce
+the remaining input telescope by itself.
+
+The live denominator is now explicit: 17 of the 41 pre-(1.36) obligations
+have independent source-specific producers.  The next milestone is a genuine
+source-specific `PreEq136` assembler that omits those seventeen conclusions
+from its inputs, rather than accepting a completed pre-record plus ledger
+equalities.  The physical covariance/parametrix data, conditioned covariance
+lower certificate, contour contractions, Cauchy normalizations, and joint
+scalar windows must remain visible until they are separately discharged.
