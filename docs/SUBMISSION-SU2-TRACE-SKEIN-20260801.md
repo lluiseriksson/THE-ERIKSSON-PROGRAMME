@@ -1,8 +1,11 @@
 # Submission record — finite-SU(2) trace-skein closure
 
-**Submission state:** `SUBMITTED / PUBLIC IDENTIFIER PENDING`  
-**Submission date:** 2026-08-01  
-**Venue:** ai.viXra, Physics — Mathematical Physics  
+**Submission state:** `SUBMITTED / PUBLIC IDENTIFIER PENDING`
+
+**Submission date:** 2026-08-01
+
+**Venue:** ai.viXra, Physics — Mathematical Physics
+
 **Author:** Lluis Eriksson
 
 ## Submitted manuscript
@@ -47,4 +50,3 @@ closure from Pauli contraction to single-trace crossing terms.  It does **not**
 formalize the Yang-Mills area derivative, the heat-kernel integration-by-parts
 producer, planar loop geometry, or the full Makeenko-Migdal equation.  It makes
 no claim about the continuum limit or the Clay Yang-Mills mass-gap problem.
-
