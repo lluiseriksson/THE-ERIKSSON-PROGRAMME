@@ -29645,3 +29645,27 @@ in Addendum 573.
 only.  It neither proves nor begins the sharp odd-sector estimate, does not
 prove the even non-Perron estimate, and does not establish the uniform
 `specRatio` bound for `0 <= beta`, `0 <= gamma`, and arbitrary extent.
+
+## Addendum 576 (2026-08-01, **TASK 14: symWeighted factorisation gate blocked**)
+
+**PREREGISTERED, NOT EXECUTED.**  The exact symbolic judge
+`scripts/judge_spatial_symweighted_factorization.py` was committed and pushed
+at raw SHA `06226edc9221fa60a6ed39e30ae84c848bd66041` before execution.  Its
+SHA-256 is
+`a95e66da0ee527b1776ceb3d13d83760d1fd88cc9227ebea668a2b98ca1946cf`.
+It is designed to license exactly one entrywise `symWeighted` factorisation,
+checking ring sizes 1 through 6 and rejecting an extra scale factor plus source
+and target closing-bond omissions.  The fail-closed Colab runner was committed
+at `cb3c1db1` and fixes both the raw SHA and the judge hash.
+
+**MEASURED FAILURE, RETAINED.**  The authenticated Colab Pro+ UI loaded the
+runner and its expected immutable inputs.  After the reviewed-notebook warning,
+runtime allocation stopped at `För många sessioner` (too many active sessions).
+No concurrent session was terminated.  No judge command ran, no artifact was
+created, and no PASS exists.  The complete diagnosis is retained as
+`INC-SPATIAL-SYMWEIGHTED-GATE-001.md`.
+
+Accordingly no Lean theorem licensed by this gate has been fabricated.  The
+existing exact algebra remains unchanged, while the sharp odd-sector bound,
+the even non-Perron bound, and the uniform `specRatio` inequality under the two
+active sign hypotheses all remain unproved.
