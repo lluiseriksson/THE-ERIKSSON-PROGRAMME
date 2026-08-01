@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "audit_date": "2026-08-01",
+  "packages": [
+    {
+      "order": 10,
+      "package": "2512.0073-v2",
+      "publication": "ai.viXra.org:2512.0073",
+      "successor": "2601.0023",
+      "headline": "SUPERSEDED BY AI.VIXRA:2601.0023V2",
+      "final_pdf": "artifacts/2512.0073v2-supersession.pdf",
+      "final_sha256": "11cc85a3fe09efaac11fe7721c338eb2ad5998c9c31aa9972a074f8b4851708c",
+      "pages": 24,
+      "bytes": 947931,
+      "abstract_words": 116,
+      "comments_words": 23,
+      "zip": "2512.0073-v2.zip",
+      "zip_sha256": "57c4a96670c1f6fc97a51f8aaa19dc900a46b3219ff22182a39d04c1e2fb2362",
+      "manifest_sha256": "9adaaf62b078da88875abd7a33727e7641f30ae0697dd8ed368d7d23f5ec339d"
+    },
+    {
+      "order": 11,
+      "package": "2601.0047-v3",
+      "publication": "ai.viXra.org:2601.0047",
+      "successor": "2601.0051",
+      "headline": "SUPERSEDED BY AI.VIXRA:2601.0051V2 FOR THE CONSOLIDATED BENCHMARK",
+      "final_pdf": "artifacts/2601.0047v3-supersession.pdf",
+      "final_sha256": "a4779474c2ff4b967f463ee93dd0f1e829eaa193e0f6cb3e2d7cd961d888e43c",
+      "pages": 7,
+      "bytes": 563912,
+      "abstract_words": 94,
+      "comments_words": 22,
+      "zip": "2601.0047-v3.zip",
+      "zip_sha256": "a1c3c6327095efce1497afbdad25ebb31c875e48285a090f42f86e178f39418a",
+      "manifest_sha256": "be648fda72f2328c50078fcd54d96072b05ba7669c987de2695ac7719db2afe7"
+    },
+    {
+      "order": 12,
+      "package": "2607.0035-v2",
+      "publication": "ai.viXra.org:2607.0035",
+      "successor": "2607.0039",
+      "headline": "SUPERSEDED BY AI.VIXRA:2607.0039V1 FOR THE ORIGINAL-EDGE AND TREE-COTREE CLOSURE",
+      "final_pdf": "artifacts/2607.0035v2-supersession.pdf",
+      "final_sha256": "86a3891fcc5b0dae0e000501909e5926ab225bb60b2881809432eb701a9f0727",
+      "pages": 11,
+      "bytes": 207545,
+      "abstract_words": 119,
+      "comments_words": 27,
+      "zip": "2607.0035-v2.zip",
+      "zip_sha256": "54db1a154994f03068fb9fc860fab9a5001f7c5851d1fd0365d7795d85bae5d5",
+      "manifest_sha256": "8b317c5f6c868b06ff3519280d71d39343dcd4554f8955263fbaa19c581fa61c"
+    },
+    {
+      "order": 13,
+      "package": "2607.0023-v2",
+      "publication": "ai.viXra.org:2607.0023",
+      "successor": "2607.0089",
+      "headline": "SUPERSEDED BY AI.VIXRA:2607.0089V1 FOR THE TERMINAL GLOBAL-SIGN CLAIM; INDEPENDENT REPLAY PENDING",
+      "final_pdf": "artifacts/2607.0023v2-supersession.pdf",
+      "final_sha256": "7aa4ba1e0304105992b1e3cc4b5dd778ed946dba5e4809bcb9a69725951923c5",
+      "pages": 15,
+      "bytes": 534914,
+      "abstract_words": 128,
+      "comments_words": 22,
+      "zip": "2607.0023-v2.zip",
+      "zip_sha256": "b1ba48c3d96b47e3e15ec9ccd51cad329e07a25b5454f443bb2fd4e0d8abd864",
+      "manifest_sha256": "e00f3a61859c42f399b50d91ce576fa8cbbdd0423d795626d026ccdca1519415"
+    }
+  ]
+}

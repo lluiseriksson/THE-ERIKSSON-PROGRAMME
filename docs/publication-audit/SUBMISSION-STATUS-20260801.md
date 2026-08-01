@@ -38,7 +38,9 @@ in a different order.
 
 The owner further directed that every `SUPERSEDE-BY-NEW-PAPER` relationship be
 made visible in the old record's replacement PDF and abstract, in uppercase.
-Four new local replacement candidates are therefore being audited separately:
+Four new local replacement packages were therefore audited separately:
 `2512.0073v2`, `2601.0047v3`, `2607.0035v2` and `2607.0023v2`.  They are not part
-of the nine already reported as sent and must not be submitted until their
-independent audit and release preflight pass.
+of the nine already reported as sent. Their independent audit and release
+preflight now pass; they remain `LISTO-LOCAL` and unsubmitted, in owner order
+10--13. `2607.0089v1` remains claim-level `REVIEW-PENDING` despite being the
+named successor in the final package.

@@ -14,6 +14,9 @@ filename for each replacement live in that package's `SUBMISSION-ID.txt`.
 - Recompute SHA-256 and compare it with the manifest and submission sheet.
 - Run `pdfinfo` and check pages, `<5 MB`, `Encrypted: no`, and embedded fonts.
 - Confirm abstract `<400` words and comments are brief technical metadata.
+- For a supersession replacement, confirm the abstract begins with the exact
+  uppercase headline printed on PDF page 1 and that page 2 separates retained,
+  superseded and successor claims.
 - Confirm the current public version and its SHA have not changed since the
   2026-07-31 census.  If they changed, stop and recensus that record.
 - Use the same email address as the original submission.  Account rotation for
@@ -49,13 +52,19 @@ email must match the original submission, earlier versions normally remain
 online, abstracts must be under 400 words, comments brief, PDFs under 5 MB, and
 rapid/frequent replacements may be rejected.  See `https://ai.vixra.org/submit`.
 
-## New paper / supersession path
+## Supersession replacement path
 
-The four supersession decisions in the matrix already point to public successor
-papers.  They do **not** authorize duplicate uploads.  Preserve the old record as
-provenance and use the successor as the authoritative citation.  If ai.viXra
-offers no non-upload metadata note, record the relation in repository/public
-documentation; do not fabricate a replacement version merely to add a notice.
+The four supersession decisions in the matrix already point to distinct public
+successor papers. Under the owner's 2026-08-01 policy, make that claim relation
+visible by replacing the **old** record with its audited notice version. Use the
+replacement form; do not upload the successor again and do not create a new
+record. The old manuscript remains after the two-page notice as provenance.
+
+Paste the literal uppercase `SUPERSEDED BY ...` headline at the start of the
+abstract. A supersession notice is not a blanket retraction: retain every exact
+old claim that survives, identify only the affected claim class, and name the
+successor that supplies the corrected or extended result. `2607.0089v1` remains
+`REVIEW-PENDING` even though it is the named successor of `2607.0023v1`.
 
 For a genuinely new paper in the future, use **submission form**, not
 **replacement form**, and only after a distinct terminal claim and full audit
@@ -75,5 +84,13 @@ that path.
 | 7 | 2602.0038v2 | v3 | `output/publication-audit/2602.0038-v3/SUBMISSION-ID.txt` | provenance phrase or package hash differs from its audit/manifest |
 | 8 | 2602.0041v3 | v4 | `output/publication-audit/2602.0041-v4/SUBMISSION-ID.txt` | conditional-scope phrase or package hash differs from its audit/manifest |
 | 9 | 2601.0115v2 | v3 | `output/publication-audit/2601.0115-v3/SUBMISSION-ID.txt` | table/preflight/public comparison mismatch |
+| 10 | 2512.0073v1 | v2 | `output/publication-audit/2512.0073-v2/SUBMISSION-ID.txt` | exact omega=0 retention or final release hash differs |
+| 11 | 2601.0047v2 | v3 | `output/publication-audit/2601.0047-v3/SUBMISSION-ID.txt` | consolidation is described as refutation or final hash differs |
+| 12 | 2607.0035v1 | v2 | `output/publication-audit/2607.0035-v2/SUBMISSION-ID.txt` | reduced/original-edge boundary or final hash differs |
+| 13 | 2607.0023v1 | v2 | `output/publication-audit/2607.0023-v2/SUBMISSION-ID.txt` | independent-replay-pending status or final hash differs |
+
+Items 1--9 were reported by the owner as sent on 2026-08-01 and remain
+`ENVIADO/PENDIENTE` until their public pages and PDFs are independently checked.
+Do not resend them. Items 10--13 are a separate owner sequence.
 
 At hand-off, the correct terminal instruction remains: **NO ENVIAR TODAVÍA**.
