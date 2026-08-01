@@ -53,6 +53,22 @@ is fixed as follows.
    and finite polynomial identities.  A full SU(2)-to-sphere measure
    equivalence, a Weyl integration formula, Peter--Weyl completeness, and the
    general tensor-power multiplicity formula are not inputs to this route.
+   Concretely, write the four trace coordinates associated with
+   `1, i, j, k` as `x_1, ..., x_4`.  The checked matrix identities must give
+   `sum x_i ^ 2 = 1`, equality of the four pure moments, and equality of the
+   six mixed moments under explicit left/right quaternion-basis
+   permutations.  Hence normalization gives `4 * A + 12 * B = 1`, where
+   `A = integral (x_1 ^ 4)` and `B = integral (x_1 ^ 2 * x_2 ^ 2)`.
+   Conjugation by the concrete `j` matrix must fix `x_1` and negate `x_2`,
+   so the two odd mixed moments vanish by bi-invariance.  Left multiplication
+   by
+   `q = (1 + i) / sqrt 2 = exp (i * pi / 4)` must send `x_1` to
+   `(x_1 - x_2) / sqrt 2` up to the fixed sign convention.  Expanding the
+   fourth power then gives `A = 3 * B`, hence `A = 1 / 8` and the required
+   trace moment.  The half-angle element `exp (i * pi / 8)` is not used: it
+   rotates the `(x_1, x_2)` plane by only `pi / 8` under left multiplication;
+   half angles belong instead to quaternion conjugation on the imaginary
+   three-space.
 2. First recover the second moment `1` from the same four-coordinate
    construction and compare it with `chi_re_sq_integral_one`.  A mismatch is
    a failed coordinate normalization and blocks use of the fourth moment.
