@@ -174,7 +174,7 @@ def coshRemainder (t : ℝ) : ℝ :=
 private theorem coshRemainder_hasDerivAt (t : ℝ) :
     HasDerivAt coshRemainder (Real.sinh t - t) t := by
   have hsq : HasDerivAt (fun x : ℝ => x ^ 2 / 2) t t := by
-    convert ((hasDerivAt_id t).pow 2).div_const 2 using 1 <;> ring
+    convert ((hasDerivAt_id t).pow 2).div_const 2 using 1 <;> simp [id] <;> ring
   have hraw := ((Real.hasDerivAt_cosh t).sub (hasDerivAt_const t 1)).sub hsq
   convert hraw using 1 <;> simp [coshRemainder, id]
 
@@ -182,7 +182,8 @@ private theorem coshRemainder_hasDerivAt (t : ℝ) :
 This is a one-variable calculus fact: its derivative is `sinh t - t`. -/
 theorem coshRemainder_monotoneOn_nonnegative :
     MonotoneOn coshRemainder (Set.Ici 0) := by
-  apply monotoneOn_of_deriv_nonneg (convex_Ici 0 : Convex ℝ (Set.Ici 0))
+  apply monotoneOn_of_deriv_nonneg
+    (convex_Ici (𝕜 := ℝ) (0 : ℝ))
   · change ContinuousOn (fun t : ℝ => Real.cosh t - 1 - t ^ 2 / 2) (Set.Ici 0)
     fun_prop
   · change DifferentiableOn ℝ (fun t : ℝ => Real.cosh t - 1 - t ^ 2 / 2)
@@ -209,10 +210,16 @@ theorem signed_coshRemainder_nonnegative {a u : ℝ} (ha : 0 ≤ a) :
   · have hau : a ≤ |a * u| := by
       rw [abs_mul, abs_of_nonneg ha]
       exact le_mul_of_one_le_right ha hu
+    have ha_mem : a ∈ Set.Ici 0 := by
+      change 0 ≤ a
+      exact ha
+    have hau_mem : |a * u| ∈ Set.Ici 0 := by
+      change 0 ≤ |a * u|
+      exact abs_nonneg (a * u)
     have hr : coshRemainder a ≤ coshRemainder |a * u| :=
       coshRemainder_monotoneOn_nonnegative
-        (show a ∈ Set.Ici 0 from ha)
-        (show |a * u| ∈ Set.Ici 0 from abs_nonneg _)
+        ha_mem
+        hau_mem
         hau
     rw [coshRemainder_abs] at hr
     have hfactor : 0 ≤ u ^ 2 - 1 := by
@@ -222,10 +229,16 @@ theorem signed_coshRemainder_nonnegative {a u : ℝ} (ha : 0 ≤ a) :
     have hau : |a * u| ≤ a := by
       rw [abs_mul, abs_of_nonneg ha]
       exact mul_le_of_le_one_right ha hu'
+    have ha_mem : a ∈ Set.Ici 0 := by
+      change 0 ≤ a
+      exact ha
+    have hau_mem : |a * u| ∈ Set.Ici 0 := by
+      change 0 ≤ |a * u|
+      exact abs_nonneg (a * u)
     have hr : coshRemainder |a * u| ≤ coshRemainder a :=
       coshRemainder_monotoneOn_nonnegative
-        (show |a * u| ∈ Set.Ici 0 from abs_nonneg _)
-        (show a ∈ Set.Ici 0 from ha)
+        hau_mem
+        ha_mem
         hau
     rw [coshRemainder_abs] at hr
     have hfactor : u ^ 2 - 1 ≤ 0 := by
@@ -367,13 +380,16 @@ theorem alpha_spinOne_eq_quadratic_add_remainder (beta : ℝ) :
   have hsum : (∫ g : SU2, M g + Z g + R g ∂haarSU2) =
       ((∫ g : SU2, M g ∂haarSU2) + ∫ g : SU2, Z g ∂haarSU2) +
         ∫ g : SU2, R g ∂haarSU2 := by
+    have hMZ : (∫ g : SU2, (M + Z) g ∂haarSU2) =
+        (∫ g : SU2, M g ∂haarSU2) + ∫ g : SU2, Z g ∂haarSU2 := by
+      simpa only [Pi.add_apply] using integral_add hM hZ
     calc
       (∫ g : SU2, M g + Z g + R g ∂haarSU2) =
           (∫ g : SU2, (M + Z) g ∂haarSU2) + ∫ g : SU2, R g ∂haarSU2 := by
         simpa only [Pi.add_apply] using integral_add (hM.add hZ) hR
       _ = ((∫ g : SU2, M g ∂haarSU2) + ∫ g : SU2, Z g ∂haarSU2) +
           ∫ g : SU2, R g ∂haarSU2 := by
-        rw [integral_add hM hZ]
+        rw [hMZ]
   rw [hsum]
   have hMint : (∫ g : SU2, M g ∂haarSU2) = beta ^ 2 / 8 := by
     rw [show M = fun g : SU2 => a ^ 2 / 2 *
@@ -384,7 +400,6 @@ theorem alpha_spinOne_eq_quadratic_add_remainder (beta : ℝ) :
   have hZint : (∫ g : SU2, Z g ∂haarSU2) = 0 := by
     simpa [Z] using chi_re_sq_sub_one_integral_zero
   rw [hMint, hZint, add_zero]
-  rfl
 
 /-- Concrete discharge of the last coefficient obligation for every
 nonnegative beta. -/
