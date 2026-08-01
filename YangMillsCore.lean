@@ -942,3 +942,12 @@ import YangMills.OS.SpatialRing
 -- coupled spatial kernel are provably NOT constant, which is what closed the
 -- Schur route.  No probability, no Gibbs measure and no physics claim here.
 import YangMills.OS.DobrushinMatrix
+
+-- D-2a of the Dobrushin lane (docs/DOBRUSHIN-CHARTER.md).  The single-site
+-- coefficient of ONE bond: flipping a neighbour across a bond of strength
+-- J >= 0 moves a two-state site's conditional by at most tanh J, and by exactly
+-- tanh J at h = J, so tanh J is the LEAST upper bound.  That is the number which,
+-- summed over the neighbours of a site, is the Dobrushin coefficient.  Still no
+-- measure theory, no Gibbs measure and no decay statement: composing it over a
+-- site and feeding D-1 is D-2b and D-3, neither of which exists.
+import YangMills.OS.DobrushinCoefficient

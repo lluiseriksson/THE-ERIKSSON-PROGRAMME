@@ -3151,3 +3151,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Matrix.witnessD_endpoints
 #print axioms YangMills.OS.Matrix.witnessC_ne_zero
 #print axioms YangMills.OS.Matrix.witness_bound
+
+-- D-2a, the single-bond Dobrushin coefficient (docs/DOBRUSHIN-CHARTER.md).
+#print axioms YangMills.OS.Dobrushin.tvField_eq
+#print axioms YangMills.OS.Dobrushin.tanh_sub_eq
+#print axioms YangMills.OS.Dobrushin.cosh_mul_cosh
+#print axioms YangMills.OS.Dobrushin.cosh_mul_cosh_ge
+#print axioms YangMills.OS.Dobrushin.sinh_nonneg_of_nonneg
+#print axioms YangMills.OS.Dobrushin.tanh_nonneg_of_nonneg
+#print axioms YangMills.OS.Dobrushin.tvField_le
+#print axioms YangMills.OS.Dobrushin.tvField_attained
+#print axioms YangMills.OS.Dobrushin.tvField_isLUB
+#print axioms YangMills.OS.Dobrushin.tanh_nonneg
+#print axioms YangMills.OS.Dobrushin.tanh_lt_one
