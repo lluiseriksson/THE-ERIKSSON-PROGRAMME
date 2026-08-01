@@ -480,6 +480,15 @@ minimum cross-ratio with no transcendental function anywhere. It is a second
 derivation of the Birkhoff \emph{coefficient}, not a second proof of the
 theorem --- the equality of the supremum still needs the lower bound, hence the
 concentration and the fluctuation witness.
+
+That the two closed forms really are the same number is not left to this
+paragraph. It is the Lean theorem \verb|phi_form_eq_tanh|:
+$\tanh\big(\tfrac14\log(1/\varphi)\big)=(1-\sqrt\varphi)/(1+\sqrt\varphi)$ for
+every $\varphi>0$. The point is not the difficulty --- there is none --- but the
+placement: the hypothesis assumed in the machine-checked theorem of \S9 is
+written in the $\sqrt{\ }$ form, while the fact cited from the literature is
+written with $\tanh$, and an unchecked sentence between the two is exactly the
+gap this paper has already published once (Remark~\ref{rem:sign}).
 \end{remark}
 
 \begin{lemma}[$\Delta$ is a congruence invariant]\label{lem:deltainv}
@@ -617,7 +626,9 @@ $1\pm\mu$; so
 \emph{with equality}. Hence at every admissible value of the diameter
 Fact~\ref{fact:birkhoff} is met exactly, and \textbf{no bound on $r$ that depends
 on $\Delta$ alone can be smaller}. By Lemma~\ref{lem:deltainv} the same is true
-along the whole congruence orbit of that matrix. The argument is immediate and
+along the whole congruence orbit of that matrix. The equality of the two numbers
+is the Lean theorem \verb|birkhoff_attained_two|, and the eigenvalues $1\pm\mu$
+are \verb|exch_two_eigen|. The argument is immediate and
 we claim nothing for it beyond having looked; we state it because it explains
 the shape of the classical literature. Bauer, Deutsch and Stoer
 \cite{bauerdeutschstoer1969} bound exactly this $r$ --- their
@@ -899,7 +910,10 @@ The hypothesis \verb|hBirkhoff| is stated in the logarithm-free form of
 Remark~\ref{rem:phiform} --- no \texttt{log} and no \texttt{tanh} occur in it,
 only \texttt{Real.sqrt} --- and with $\varphi$ merely \emph{a} lower bound for
 the cross-ratios rather than their minimum. Both choices assume strictly less
-than the sharp statement, because $x\mapsto(1-x)/(1+x)$ decreases.
+than the sharp statement, because $x\mapsto(1-x)/(1+x)$ decreases. That the form
+assumed is the form cited is itself checked, by \verb|phi_form_eq_tanh|; a
+reader should not have to take a change of closed form on the author's word,
+least of all in this paper.
 
 \textbf{Spectral continuity is no longer imported anywhere.} It was the second
 classical input of the previous version, and it has been \emph{eliminated}
@@ -935,16 +949,16 @@ No statement in this paper is conjectural.
 \begin{center}
 \begin{tabular}{ll}
 \toprule
-commit (module, this version) & \texttt{017d6411} \\
+commit (module, this version) & \texttt{f6b6f81c} \\
 commit (aggregate import) & \texttt{fdb0317b} \\
-module \texttt{sha256} & \texttt{7d1db1bc4da966c95bb2c4a5} \\
-                       & \texttt{b83c935acea34428a4ffac826de3d4fda7c70f5d} \\
+module \texttt{sha256} & \texttt{58e050379d694580627bffe5} \\
+                       & \texttt{6f630f1a384223af1a9538c941b62c348367a63f} \\
 toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
 Mathlib pin & \texttt{07642720480157414db592fa85b626dafb71355b} \\
 elaboration & exit \texttt{0}; log \textbf{0 bytes} --- zero errors, zero warnings, zero \texttt{sorry} \\
 compilation & \texttt{lake build YangMills.OS.CongruenceSpectrum}, exit \texttt{0} \\
-axiom oracle & exit \texttt{0}; 68/68 declarations resolved \\
-             & 66 on \texttt{[propext, Classical.choice, Quot.sound]} \\
+axiom oracle & exit \texttt{0}; 70/70 declarations resolved \\
+             & 68 on \texttt{[propext, Classical.choice, Quot.sound]} \\
              & 2 (\texttt{cfgPlus}, \texttt{cfgMinus}) on \texttt{[propext]} alone \\
 \texttt{sorryAx} & none \\
 \bottomrule
@@ -953,7 +967,7 @@ axiom oracle & exit \texttt{0}; 68/68 declarations resolved \\
 
 The oracle was generated from the source, not hand-written: the declaration list
 is extracted by pattern and every extracted name is queried, so a declaration
-cannot be omitted by being forgotten. One of the $68$ names carries a prime
+cannot be omitted by being forgotten. One of the $70$ names carries a prime
 (\verb|concentrate_block'|); the extractor was checked to capture it, because a
 name-blind parser has already cost this project a false all-clear elsewhere. The
 two declarations resting on \texttt{[propext]} alone are configuration
@@ -993,12 +1007,12 @@ aggregate root and is not merely present on disk.
 \textbf{What those two counts are anchored to.} They were measured at
 \texttt{fdb0317b}, when the module stood at \texttt{56a66ee1}. The module has
 since grown by the two sections described above, and the job-count gate was
-\emph{not} re-run at \texttt{017d6411}. We say so rather than reprinting the
+\emph{not} re-run at \texttt{f6b6f81c}. We say so rather than reprinting the
 numbers beside the new hash. The gate's claim concerns the import wiring --- that
 the module is reachable from the aggregate root and adds exactly one build job
 --- and adding declarations inside an existing module changes neither. What
 could change is whether the module still compiles as a dependency of the
-aggregate, and that \emph{was} re-measured at \texttt{017d6411}:
+aggregate, and that \emph{was} re-measured at \texttt{f6b6f81c}:
 \texttt{lake build YangMills.OS.CongruenceSpectrum} --- the exact target the
 aggregate depends on --- exits \texttt{0}.
 
