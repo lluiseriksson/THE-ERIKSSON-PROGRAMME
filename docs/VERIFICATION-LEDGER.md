@@ -29699,3 +29699,38 @@ obligation remaining.  The consumer is also named at last ---
 hypothesis printed from the elaborated signature rather than from memory, since
 a paper that says "the consumer exists" without naming it is asking to be taken
 on trust.
+
+## Addendum 576 (2026-08-01, **fifth instance, and the guard generalisation of
+Addendum 575 was still one class too narrow**)
+
+**NO LEAN CHANGED, NO NUMBER MOVED.**  Anchor still `c3d8e32d`, core 8468,
+oracle 2817, zero `sorryAx`; `git status` clean on `YangMills/`,
+`oracle_check.lean`, `YangMillsCore.lean`.  Manuscript only.
+
+**A LOGICAL DEFECT, not a stylistic one.**  The abstract described
+Theorem~3.3's hypothesis as row sums "bounded by `alpha < 1` **and never
+constant**".  The theorem asks no such thing: it holds whether or not the row
+sums are constant, and what matters is that constancy is *not required*.
+**"I do not need P" is not "I prove not-P".**  The body had it right --- "It
+never asks for them to be constant" --- and the abstract had turned the absence
+of a hypothesis into the assertion of its negation.  Now: "without any
+constancy assumption".
+
+**AND THE GUARD, one class too narrow AGAIN.**  Addendum 575 generalised from
+"check the abstract" to "when a TERM is redefined, grep the term across the whole
+artefact".  That was applied to *coefficient* and worked.  It could not catch
+this round, because what survived was not a term but a **claim**: the abstract
+kept "a single remaining obligation" while Section 5 had already been corrected
+to "It is not the only remaining work ... too tidy a sentence for the actual
+state", and Limitations kept "one thing is missing".  Fifth instance of the
+class in this lane, and the second time in two rounds that a guard calibrated to
+the previous failure missed the next one by exactly one level of abstraction:
+locations -> terms -> claims.
+
+**The generalisation that does not obviously fail next, recorded as such and
+not as a solved problem:** a correction is not applied until every
+*summary-shaped* location has been re-derived from the corrected statement ---
+abstract, limitations, roadmap, section titles, conclusions.  Summaries are
+where claims get compressed, and compression is exactly where a hedge dies.
+This lane has now paid for that sentence five times, and the guards it owns read
+identifiers, never assertions, so no script will catch the sixth.
