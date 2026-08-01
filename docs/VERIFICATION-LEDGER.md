@@ -29975,3 +29975,24 @@ root or outputs with Recovery-B.  Regardless of its outcome, two complete
 fresh witnesses are still required before terminal certification.  Both
 analytic sector obligations and the uniform spatial-ring bound remain wholly
 open.
+
+## Addendum 585 (2026-08-01, **TASK 14: Recovery-A interrupted in module build**)
+
+Recovery-A used the immutable notebook
+`5bf542ba39c6b2bac981f375c3c4aaf07f164120` in a fresh Colab high-RAM CPU
+runtime reporting 50.99 GB RAM and no GPU.  It was independent of Recovery-B.
+It passed far enough to begin `lake build YangMills.OS.SpatialRing`: clone and
+pin checks, both exact rational-gate modes, toolchain installation, and its
+isolated official-cache stage had completed without a recorded failure.
+
+The cell then ceased during the module build without printing an exit code or
+job count.  The UI showed only the literal `Återanslut Mycket RAM-minne`.
+There was no platform rejection, traceback, Lean error, core build, oracle,
+consistency result, PASS marker, or artifact ZIP.  The root and exact UTC stop
+time were not durably captured, so no cause is inferred.  The disconnected
+tab was closed.  Full scope and the single-session recovery contract are in
+`INC-SPATIAL-ODD-ORBIT-FOLD-LEAN-003.md`.
+
+Recovery-A supplies no witness.  Two complete fresh witnesses remain required
+before terminal certification, and neither analytic sector obligation nor the
+uniform spatial-ring bound has advanced.
