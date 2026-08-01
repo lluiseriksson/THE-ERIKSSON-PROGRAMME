@@ -415,6 +415,7 @@ variable {n : Type*} [Fintype n] [DecidableEq n]
 def concentrate (p q : n) (ε : ℝ) : n → ℝ :=
   fun i => if i = p then 1 else if i = q then 1 else ε
 
+omit [Fintype n] in
 /-- It really is a strictly positive weight, so the congruence never leaves the
 orbit of invertible positive diagonals. -/
 theorem concentrate_pos {ε : ℝ} (hε : 0 < ε) (p q i : n) :
@@ -426,6 +427,7 @@ theorem concentrate_pos {ε : ℝ} (hε : 0 < ε) (p q i : n) :
     · norm_num
     · exact hε
 
+omit [Fintype n] in
 /-- `ε ≤ 1` makes every weight at most one — the only bound §7.3 needs. -/
 theorem concentrate_le_one {ε : ℝ} (hε : ε ≤ 1) (p q i : n) :
     concentrate p q ε i ≤ 1 := by
@@ -479,7 +481,7 @@ bond of coupling `β · L` — for every strictly positive `ε`, not only in a l
 This is §3's fusion identity relocated inside the orbit. -/
 theorem concentrate_antipodal_block (L : ℕ) (β ε : ℝ) :
     (Matrix.diagonal (concentrate (cfgPlus L) (cfgMinus L) ε) *
-       (fun σ τ => tensorKernel L β σ τ) *
+       Matrix.of (fun σ τ => tensorKernel L β σ τ) *
        Matrix.diagonal (concentrate (cfgPlus L) (cfgMinus L) ε))
         (cfgPlus L) (cfgMinus L)
       = Real.exp (-(β * L)) := by
