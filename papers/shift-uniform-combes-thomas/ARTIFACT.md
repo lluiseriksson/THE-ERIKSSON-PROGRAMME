@@ -14,6 +14,10 @@ The formal artifact commit contains exactly the two edited theorem modules,
 their oracle registrations, and verification-ledger Addendum 570. The paper
 source and rendered PDF are kept in the subsequent manuscript commit so that
 the paper can cite the already-fixed formal object without a circular hash.
+The version-0.2 manuscript commit is
+`25f532eaeecbfb66ee146e264953cde0e2e0ea29`. Version 0.3 is identified by the
+annotated release tag `shift-uniform-ct-v0.3` and is distributed as a complete
+Git source archive in addition to the PDF.
 
 ## Reproduction commands
 
@@ -24,18 +28,25 @@ lake env lean YangMills/RG/PhysicalCoerciveCombesThomas.lean
 lake env lean YangMills/RG/PhysicalCoerciveCombesThomasInverse.lean
 lake build +YangMills.RG.PhysicalCoerciveCombesThomas:olean
 lake build +YangMills.RG.PhysicalCoerciveCombesThomasInverse:olean
+lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
 ```
 
 All four commands completed successfully on 2026-08-01 after the formal
 artifact commit was created. The targeted axiom oracle for the seven core
 declarations reports only `propext`, `Classical.choice`, and `Quot.sound`.
+The exact focused output, including one wrapper timeout followed by a clean
+successful repetition, is recorded in `VERIFICATION-TRANSCRIPT.txt`.
 
 ## Manuscript artifact
 
-- Manuscript version: 0.2
-- Pages: 11
+- Manuscript version: 0.3
+- Pages: 10
 - Output: `output/pdf/shift_uniform_combes_thomas.pdf`
-- SHA-256: `BCC7705FE4A8F5A934591E07DD2AD9D703A08118B57FB3C06EA871C49F845F0E`
+- SHA-256: `115FEFE0179DDC9B37E8D832FA9572B11D08AF3C26A89E8F70AE9A36A0021096`
+
+The detailed administrative status of thirteen other author-corpus records is
+kept in `PUBLICATION-PROVENANCE.md`, outside the mathematical manuscript. It is
+not a premise of the theorem.
 
 The Stieltjes formula and localized inverse-square-root corollary are proved at
 paper level. They are not declarations in the formal artifact commit. The
@@ -43,5 +54,5 @@ positive real continuous-linear-map root, its integral identification, its
 single-bond kernel bound, and the final
 `PhysicalLocalizedCovarianceRootCertificate` remain open.
 
-Remote publication and hosted CI for the two commits are release actions and
+Remote publication and hosted CI for the release tag are release actions and
 are not claimed by this local manifest.

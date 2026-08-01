@@ -44,7 +44,7 @@ development were produced with AI assistance under the repository's audit
 protocol.  Claims labelled \formalized{} were checked by Lean~4 against a
 pinned Mathlib and a targeted axiom oracle.  Paper-level functional-calculus
 arguments are labelled \proved{} and are not represented as Lean theorems.}}
-\date{August 1, 2026 -- research preprint, version 0.2}
+\date{August 1, 2026 -- research preprint, version 0.3}
 
 \begin{document}
 \maketitle
@@ -572,6 +572,15 @@ the two theorem modules, the oracle registrations, and the verification-ledger
 entry.  Thus the formal source cited here is an immutable Git object rather
 than an uncommitted working-tree patch.  Remote publication and a hosted CI run
 of that commit remain release actions and are not claimed by this manuscript.
+The version-0.2 manuscript artifact is commit
+\lean{25f532eaeecbfb66ee146e264953cde0e2e0ea29}.  Version 0.3 is distributed
+under the annotated local release tag \lean{shift-uniform-ct-v0.3} together
+with a complete Git source archive, rather than as a PDF alone.  The archive
+contains this manuscript, the pinned \path{lake-manifest.json}, both Lean
+modules, \path{oracle_check.lean}, the focused
+\path{ShiftUniformOracle.lean}, and a verification transcript.  A reader can
+therefore materialize and check the cited source without relying on an
+uncommitted worktree.
 
 Toolchain: Lean \path{leanprover/lean4:v4.29.0-rc6}; Mathlib revision
 \texttt{0764272048}\ldots{} (the full revision is recorded in
@@ -588,72 +597,22 @@ the seven declarations in the table; each printed exactly
  [\lean{propext},\ \lean{Classical.choice},\ \lean{Quot.sound}].
 \]
 The declarations are also registered in \path{oracle_check.lean}.  The
-development contains no \lean{sorry} in the two modified modules.
+focused audit is independently runnable as
+\begin{verbatim}
+lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
+\end{verbatim}
+The development contains no \lean{sorry} in the two modified modules.
 
-\section{Author-corpus publication provenance}\label{sec:provenance}
-
-The internal antecedent corpus contains public records whose corrective
-replacement PDFs had been submitted but not yet processed by the ai.viXra
-administrator as of August 1, 2026.  They must not be cited as though the
-replacement versions were already public, and the superseded claims in the
-currently visible PDFs must not be used as support.  All thirteen forms were
-reported sent; all thirteen remain \textbf{ENVIADO/PENDIENTE}; none should be
-resent merely because the public pages lag.
-
-\small
-\begin{center}
-\begin{tabular}{p{0.13\textwidth}p{0.14\textwidth}p{0.59\textwidth}}
-\toprule
-Record & Submitted target & Claim-level instruction while pending \\
-\midrule
-2602.0052 & v3 & Restores the \emph{Interface Lemmas} manuscript; visible v2
-contains misfiled Morse--Bott material. \\
-2602.0036 & v3 & Retracts the unproved Ricci/O'Neill chain and dependent
-corollaries. \\
-2602.0033 & v3/R30 & Replaces false exact gap doubling by a correct sufficient
-condition; R29 was never submitted. \\
-2602.0085 & v2 & Corrects the linearized kernel and restores the omitted
-pure-gauge null space. \\
-2602.0084 & v2 & Corrects imported 0085 claims and independent invalid steps. \\
-2602.0035 & v2 & Installs the corrected Morse--Bott spectral reduction with
-the required reservations. \\
-2602.0038 & v3 & Narrows the claim to a zero-momentum propagator bound in a
-simplified Gribov--Zwanziger lattice measure. \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\begin{center}
-\begin{tabular}{p{0.13\textwidth}p{0.14\textwidth}p{0.59\textwidth}}
-\toprule
-Record & Submitted target & Claim-level instruction while pending \\
-\midrule
-2602.0041 & v4 & Makes the H-XSD/H-DOB conditionality explicit in title and
-abstract. \\
-2601.0115 & v3 & Preserves the science and repairs the clipped Table 1. \\
-2512.0073 & v2 notice & Marked superseded by 2601.0023v2, which corrects the
-Davies/Bohr decomposition and TFIM implementation. \\
-2601.0047 & v3 notice & Marked superseded by 2601.0051v2, which retains the ED
-benchmark and adds tensor-network results. \\
-2607.0035 & v2 notice & Retains the reduced-model analytic chain but points to
-2607.0039v1 for the complete theorem on original edges and tree--cotree
-closure.  It is not withdrawn, but it is not an autonomous proof of the full
-theorem. \\
-2607.0023 & v2 notice & Points the terminal-sign claim to 2607.0089v1;
-2607.0089v1 remains \textbf{REVIEW-PENDING} until the exact-to-Arb/interval
-certification is repeated. \\
-\bottomrule
-\end{tabular}
-\end{center}
-\normalsize
-
-The controlling audit records are
-\path{docs/publication-audit/SUPERSESSION-MATRIX.md} and
-\path{docs/publication-audit/SUBMISSION-STATUS-20260801.md} in the publication
-audit worktree.  Public promotion requires a fresh download and comparison of
-version, page count, SHA-256, title, abstract, comments, and rendered pages.
-This manuscript uses none of the corrected-but-not-yet-public claims as a
-premise.
+\paragraph{External author-corpus provenance note.}
+As of August 1, 2026, thirteen corrective or supersession forms concerning
+other manuscripts had been sent and remained \textbf{ENVIADO/PENDIENTE}; none
+should be resent or described as published while the public records lag.
+The scope split between 2607.0035 and 2607.0039 remains controlling, and
+2607.0089 remains \textbf{REVIEW-PENDING}.  The complete record-level matrix,
+promotion rule, and checks are moved to
+\path{papers/shift-uniform-combes-thomas/PUBLICATION-PROVENANCE.md}.  They are
+administrative provenance, not hypotheses, evidence, or citations for any
+mathematical claim in this paper.
 
 \section{Conclusion}\label{sec:conclusion}
 
