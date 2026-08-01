@@ -190,6 +190,27 @@ private theorem quaternionCoordinate_zero_quarterTurn (g : SU2) :
   simp [Complex.mul_re]
   ring
 
+private theorem quaternionJ_conj_entry_zero_zero (g : SU2) :
+    ((quaternionJ * g * quaternionJ⁻¹).val) finTwoZero finTwoZero =
+      star (g.val finTwoZero finTwoZero) := by
+  change
+    ((YangMills.ClayCore.signedSwapMat finTwoZero finTwoOne * g.val *
+        star (YangMills.ClayCore.signedSwapMat finTwoZero finTwoOne))
+      finTwoZero finTwoZero) = _
+  apply Complex.ext <;>
+    simp [YangMills.ClayCore.signedSwapMat, Matrix.mul_apply,
+      Fin.sum_univ_two, Matrix.star_apply, su2_entry_one_one,
+      Complex.star_def]
+
+private theorem quaternionJ_conj_coordinates_zero_one (g : SU2) :
+    quaternionCoordinate 0 (quaternionJ * g * quaternionJ⁻¹) =
+        quaternionCoordinate 0 g ∧
+      quaternionCoordinate 1 (quaternionJ * g * quaternionJ⁻¹) =
+        -quaternionCoordinate 1 g := by
+  simp only [quaternionCoordinate_zero, quaternionCoordinate_one,
+    quaternionJ_conj_entry_zero_zero]
+  simp [Complex.star_def]
+
 private theorem quaternionCycle_conj_entry_zero_zero (g : SU2) :
     ((quaternionCycle * g * quaternionCycle⁻¹).val) finTwoZero finTwoZero =
       ((g.val finTwoZero finTwoZero).re : ℂ) +
@@ -254,6 +275,19 @@ private theorem quaternionCoordinate_continuous (k : Fin 4) :
 private theorem quaternionCoordinate_sq_integrable (k : Fin 4) :
     Integrable (fun g : SU2 => quaternionCoordinate k g ^ 2) haarSU2 :=
   ((quaternionCoordinate_continuous k).pow 2).integrable_of_hasCompactSupport
+    (HasCompactSupport.of_compactSpace _)
+
+private theorem quaternionCoordinate_pow_integrable (k : Fin 4) (n : ℕ) :
+    Integrable (fun g : SU2 => quaternionCoordinate k g ^ n) haarSU2 :=
+  ((quaternionCoordinate_continuous k).pow n).integrable_of_hasCompactSupport
+    (HasCompactSupport.of_compactSpace _)
+
+private theorem quaternionCoordinate_pow_mul_pow_integrable
+    (i j : Fin 4) (m n : ℕ) :
+    Integrable (fun g : SU2 =>
+      quaternionCoordinate i g ^ m * quaternionCoordinate j g ^ n) haarSU2 :=
+  (((quaternionCoordinate_continuous i).pow m).mul
+      ((quaternionCoordinate_continuous j).pow n)).integrable_of_hasCompactSupport
     (HasCompactSupport.of_compactSpace _)
 
 /-- The four quaternion coordinates lie pointwise on the unit sphere. -/
@@ -364,6 +398,105 @@ theorem chi_re_sq_quaternion_schur_consistency :
     ((∫ g : SU2, (chi g).re ^ 2 ∂haarSU2) = 1) ∧
       ((∫ g : SU2, (chi g).re ^ 2 ∂haarSU2) = 1) :=
   ⟨chi_re_sq_integral_one_quaternion, chi_re_sq_integral_one⟩
+
+private theorem coordinate_zero_fourth_integral_eq_one :
+    (∫ g : SU2, quaternionCoordinate 0 g ^ 4 ∂haarSU2) =
+      ∫ g : SU2, quaternionCoordinate 1 g ^ 4 ∂haarSU2 := by
+  let f : SU2 → ℝ := fun g => quaternionCoordinate 0 g ^ 4
+  calc
+    (∫ g : SU2, quaternionCoordinate 0 g ^ 4 ∂haarSU2) =
+        ∫ g : SU2, f (quaternionI * g) ∂haarSU2 :=
+      (integral_mul_left_eq_self (μ := haarSU2) f quaternionI).symm
+    _ = ∫ g : SU2, quaternionCoordinate 1 g ^ 4 ∂haarSU2 := by
+      apply integral_congr_ae
+      exact ae_of_all _ fun g => by
+        simp only [f]
+        rw [show quaternionCoordinate 0 (quaternionI * g) =
+            -quaternionCoordinate 1 g by
+          simp only [quaternionCoordinate_zero, quaternionCoordinate_one]
+          rw [quaternionI_first_row]
+          simp]
+        ring
+
+private theorem coordinate_zero_cube_mul_one_integral_zero :
+    (∫ g : SU2,
+      quaternionCoordinate 0 g ^ 3 * quaternionCoordinate 1 g ∂haarSU2) = 0 := by
+  let f : SU2 → ℝ := fun g =>
+    quaternionCoordinate 0 g ^ 3 * quaternionCoordinate 1 g
+  have hinv := integral_conjugate_eq_self f quaternionJ
+  have hneg :
+      (∫ g : SU2, f (quaternionJ * g * quaternionJ⁻¹) ∂haarSU2) =
+        -(∫ g : SU2, f g ∂haarSU2) := by
+    calc
+      (∫ g : SU2, f (quaternionJ * g * quaternionJ⁻¹) ∂haarSU2) =
+          ∫ g : SU2, -f g ∂haarSU2 := by
+        apply integral_congr_ae
+        exact ae_of_all _ fun g => by
+          rcases quaternionJ_conj_coordinates_zero_one g with ⟨h0, h1⟩
+          simp only [f, h0, h1]
+          ring
+      _ = -(∫ g : SU2, f g ∂haarSU2) := by rw [integral_neg]
+  change (∫ g : SU2, f g ∂haarSU2) = 0
+  linarith
+
+private theorem coordinate_zero_mul_one_cube_integral_zero :
+    (∫ g : SU2,
+      quaternionCoordinate 0 g * quaternionCoordinate 1 g ^ 3 ∂haarSU2) = 0 := by
+  let f : SU2 → ℝ := fun g =>
+    quaternionCoordinate 0 g * quaternionCoordinate 1 g ^ 3
+  have hinv := integral_conjugate_eq_self f quaternionJ
+  have hneg :
+      (∫ g : SU2, f (quaternionJ * g * quaternionJ⁻¹) ∂haarSU2) =
+        -(∫ g : SU2, f g ∂haarSU2) := by
+    calc
+      (∫ g : SU2, f (quaternionJ * g * quaternionJ⁻¹) ∂haarSU2) =
+          ∫ g : SU2, -f g ∂haarSU2 := by
+        apply integral_congr_ae
+        exact ae_of_all _ fun g => by
+          rcases quaternionJ_conj_coordinates_zero_one g with ⟨h0, h1⟩
+          simp only [f, h0, h1]
+          ring
+      _ = -(∫ g : SU2, f g ∂haarSU2) := by rw [integral_neg]
+  change (∫ g : SU2, f g ∂haarSU2) = 0
+  linarith
+
+private theorem coordinate_zero_one_mixed_integral_eq_three :
+    (∫ g : SU2,
+      quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 1 g ^ 2 ∂haarSU2) =
+        ∫ g : SU2,
+          quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 3 g ^ 2 ∂haarSU2 := by
+  let f : SU2 → ℝ := fun g =>
+    quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 1 g ^ 2
+  calc
+    (∫ g : SU2,
+        quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 1 g ^ 2 ∂haarSU2) =
+        ∫ g : SU2, f (quaternionCycle * g * quaternionCycle⁻¹) ∂haarSU2 :=
+      (integral_conjugate_eq_self f quaternionCycle).symm
+    _ = ∫ g : SU2,
+        quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 3 g ^ 2 ∂haarSU2 := by
+      apply integral_congr_ae
+      exact ae_of_all _ fun g => by
+        rcases quaternionCycle_coordinates g with ⟨h0, h1, _h2, _h3⟩
+        simp only [f, h0, h1]
+
+private theorem coordinate_zero_three_mixed_integral_eq_two :
+    (∫ g : SU2,
+      quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 3 g ^ 2 ∂haarSU2) =
+        ∫ g : SU2,
+          quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 2 g ^ 2 ∂haarSU2 := by
+  let f : SU2 → ℝ := fun g =>
+    quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 3 g ^ 2
+  calc
+    (∫ g : SU2,
+        quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 3 g ^ 2 ∂haarSU2) =
+        ∫ g : SU2, f (quaternionCycle * g * quaternionCycle⁻¹) ∂haarSU2 :=
+      (integral_conjugate_eq_self f quaternionCycle).symm
+    _ = ∫ g : SU2,
+        quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 2 g ^ 2 ∂haarSU2 := by
+      apply integral_congr_ae
+      exact ae_of_all _ fun g => by
+        rcases quaternionCycle_coordinates g with ⟨h0, _h1, _h2, h3⟩
+        simp only [f, h0, h3]
 
 end YangMills.SU2ThetaPrism
 
