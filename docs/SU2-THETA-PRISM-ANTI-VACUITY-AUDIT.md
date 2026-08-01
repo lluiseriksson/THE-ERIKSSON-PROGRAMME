@@ -36,7 +36,7 @@ degeneracy.
 | `thetaPairingFromMultipliers` | Product of the norm and three general central multipliers; contains no `1/16`. |
 | `CoefficientRemainderSteps` | The two pre-registered technical series lower steps.  It contains no pairing or `beta^4/512` conclusion. |
 | `certifiedThetaPairing` | Uses the real part of the actual `witnessNormSq`; it contains neither `3/4` nor `1/16`. |
-| `ManufacturingTechnicalInputs` | Contains only the still-open concrete coefficient-series remainder record.  Static validation and the participation review confirm that it contains no endpoint headline. |
+| `ManufacturingTechnicalInputs` | Contains only the concrete coefficient-series remainder record.  It contains no endpoint headline and is inhabited uniformly by `manufacturingTechnicalInputsConcrete`; the beta-one term is merely its specialization. |
 
 Literal inspection confirms that no public `def` stores `3/4`, `1/16`, or
 `beta^4/512`.  The unavoidable `1/2` in `witness` is the registered observable
@@ -46,5 +46,6 @@ endpoint also uses the independent witnesses `F(1,1)=3`, Haar mass one,
 
 Conclusion: no proved headline is obtained from `F=0`, `beta=0`, an empty
 or singleton group, a zero measure, a missing third branch, or a public
-definition that already stores the headline constant.  This review does not
-remedy the still-open absence of a concrete `ManufacturingTechnicalInputs 1`.
+definition that already stores the headline constant.  A concrete
+`ManufacturingTechnicalInputs beta` now exists for every `BetaDomain beta`;
+this manufacturer review is not an external audit verdict.

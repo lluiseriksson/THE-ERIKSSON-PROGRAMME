@@ -1,7 +1,8 @@
 # (16) PR #43 repair: current status
 
-This is a manufacturer status record, not an external audit verdict.  The
-repair is a **PARTIAL MILESTONE** and the gate is not closed.
+This is a manufacturer status record, not an external audit verdict.  A
+concrete inhabitant now exists for every `BetaDomain`; terminal reproduction
+and a fresh blind external audit are still required before closure.
 
 ## EXACTO
 
@@ -26,21 +27,26 @@ repair is a **PARTIAL MILESTONE** and the gate is not closed.
   Label one is literally the character of `fundamentalRep`; label two obeys
   the proved tensor-square character-ring identity
   `chi_1 + 1 = chi_fund^2`.
-- The conditional front door has no arbitrary measure or function-family
-  argument: it fixes `cellHaar` and `su2WeylPolynomial`.
+- The concrete front door has no arbitrary measure, function-family, or
+  technical-input argument: it fixes `cellHaar`, `su2WeylPolynomial`, and the
+  uniform technical-input constructor.
 
 ## CERTIFICADO
 
-`manufactured_six_point_theta_gate beta` is conditional on exactly one named
-technical record:
+The internal lemma `manufactured_six_point_theta_gate` remains factored
+through one technical record whose only field is the spin-one remainder.  The
+public `manufactured_six_point_theta_gate_concrete` supplies the record using:
 
-- `ManufacturingTechnicalInputs beta.coefficientSeries`, now only the
-  spin-one nonnegative coefficient remainder for the concrete Haar integral
-  and concrete Weyl probe.  The spin-half remainder is reconstructed from
-  `alpha_spinHalf_lower` inside the endpoint derivation.
+- the quaternion-coordinate second- and fourth-moment theorems;
+- the central-Haar `cosh` symmetrization;
+- the signed remainder estimate across both regions `|chi| < 1` and
+  `1 <= |chi|`; and
+- `spinOneCoefficientRemainderStepConcrete` for every nonnegative beta.
 
-The field is not a headline restatement.  It remains a mathematical input,
-so neither the beta-one nor uniform front door is a closed certificate.
+Thus `manufacturingTechnicalInputsConcrete beta hbeta` inhabits
+`ManufacturingTechnicalInputs beta` for every `hbeta : BetaDomain beta`.
+`manufacturingTechnicalInputsConcrete_betaOne_specialization` is only the
+named beta-one specialization of that uniform constructor.
 
 ## VERIFICADO
 
@@ -62,12 +68,21 @@ so neither the beta-one nor uniform front door is a closed certificate.
   declarations, including the five new coefficient-route declarations and
   `manufactured_six_point_theta_gate`, report exactly
   `[propext, Classical.choice, Quot.sound]`.
+- Uniform inhabitant source at
+  `3c198717e1b53b016803e3db76fda88f99314f89`: fresh public Colab clone,
+  Lean `v4.29.0-rc6`, Mathlib `07642720...`, 8 host CPUs with Lake-default
+  parallelism.  `Coefficients`, `Endpoint`, and the independent `#check`
+  file passed; the checked type is
+  `manufacturingTechnicalInputsConcrete (beta) (hbeta : BetaDomain beta) :
+  ManufacturingTechnicalInputs beta`.  The resulting `.olean` hashes were
+  `3bb7d37a...e9385c` for `Coefficients` and
+  `235ff3fd...1de157` for `Endpoint`.
 - The rational certifier succeeds under normal Python and `python -O`.
 - Ten mutations are rejected under both modes, including `1/2 -> 1/3` and
   enlargement to all beta.  The syntactic headline guard passes and rejects
   its registered cheat fixtures.
 
-These are intermediate manufacturer checks, not the terminal fresh-checkout,
+These are intermediate manufacturer checks, not the terminal two-clone,
 complete-oracle, `YangMillsCore`, CI, or blind-audit evidence.
 
 GitHub reports no required checks configured for the PR branch; this is not a
@@ -75,23 +90,14 @@ remote-CI pass and remains open evidence debt.
 
 ## ABIERTO
 
-- Prove `CoefficientRemainderSteps` for `su2WeylPolynomial`, at minimum for
-  `beta = 1`; concretely, only `SpinOneCoefficientRemainderStep 1` remains,
-  and no inhabitant of `ManufacturingTechnicalInputs 1` exists yet.
-- A pin-exact search found no SU(2) Weyl integration formula.  The available
-  `HaarToSphere` construction is not an SU(2)-Haar identification.  The
-  repository has the trace second moment but not `integral (chi ^ 4) = 2`;
-  closing the proposed spin-one bound therefore requires that normalized
-  one-variable integration brick or a concrete irreducible spin-one
-  decomposition.  The direct spin-half Haar-symmetry bound is preregistered
-  separately and does not close this field by itself.
 - Strengthen the label-two character-ring bridge to a constructed spin-one
   representation if the independent audit requires an actual complement
   rather than the explicit tensor-square identity.
-- Only after the coefficient obligation closes: run every target and
-  `YangMillsCore`, the complete axiom oracle, CI, binary/LF hashing, and a
-  fresh checkout of the published refs; regenerate the non-recursive final
-  transcript and request a new blind external audit.
+- Seal the documentation-aligned source SHA; run every target and
+  `YangMillsCore`, the complete axiom oracle, mutation instruments, CI, and
+  binary/LF hashing in two independent fresh Colab clones of that same SHA.
+  Require matching hashes, regenerate the non-recursive final transcript,
+  and request a new blind external audit.
 - Physical-cell identification, reflection/OS positivity, programme Gate 7,
   a paper claim, merge, and manufacturer self-certification remain out of
   scope.

@@ -1,11 +1,10 @@
 # (16) PR #43 repair: loaded-hypothesis participation review
 
-Status: **MANUFACTURER PARTIAL REVIEW; NOT AN EXTERNAL AUDIT**
+Status: **MANUFACTURER PARTICIPATION REVIEW UPDATED; NOT AN EXTERNAL AUDIT**
 
-Six of the seven original fields of `ManufacturingTechnicalInputs` are no
-longer loaded.  The public front door fixes both `cellHaar` and
-`su2WeylPolynomial`; its only remaining input is the genuine coefficient
-series obligation.
+All seven original technical obligations now have concrete discharges.  The
+public front door fixes `cellHaar` and `su2WeylPolynomial` and constructs its
+technical record internally.
 
 | Technical input | Current state | Artefact lemmas used | Headline derived |
 |---|---|---|---|
@@ -14,18 +13,19 @@ series obligation.
 | `haarSchur` | PROVED | `haarSchurConcrete`, `sunHaarProb_fundamental_entry_orthogonality` | three conditional-zero identities |
 | `fubiniCoordinates` | PROVED | `fubiniCoordinatesConcrete`, `relativeCoordinateEquiv_measurePreserving` | three complete orthogonalities |
 | `normMoments` | PROVED | `normMomentsConcrete`, `witnessNormSq_eq_three_quarters` | `witnessNormSq = 3/4` |
-| `coefficientSeries` | OPEN / MINIMIZED TO SPIN ONE | `alpha_spinHalf_lower` proves the spin-half remainder; only `SpinOneCoefficientRemainderStep` is loaded | concrete-probe local gate inequality |
+| `coefficientSeries` | PROVED | `alpha_spinHalf_lower`, `chi_re_fourth_integral_two_quaternion`, `signed_coshRemainder_nonnegative`, `spinOneCoefficientRemainderStepConcrete` | concrete-probe local gate inequality |
 | `weightMeasurability` | PROVED | `weightMeasurabilityConcrete`, `cellWeight_integrable` | concrete `cellHaar` weight integrability |
 
-The remaining field does not contain the pairing equality, the witness norm,
-an orthogonality headline, the proved spin-half remainder, or the final gate
-inequality.  Nevertheless no
-closed inhabitant of `ManufacturingTechnicalInputs 1` has yet been built, so
-the beta-one anti-vacuity criterion and the uniform gate remain **OPEN**.
+The retained internal field type does not contain the pairing equality, the
+witness norm, an orthogonality headline, the proved spin-half remainder, or
+the final gate inequality.  It is inhabited by
+`manufacturingTechnicalInputsConcrete beta hbeta` for every
+`hbeta : BetaDomain beta`; the separately named beta-one term is only a
+specialization of this uniform constructor.
 
 This document cannot assign an external audit verdict.
 
-## Preregistered direct-coefficient repair route
+## Completed direct-coefficient repair route
 
 The exact dependency pin is Mathlib
 `07642720480157414db592fa85b626dafb71355b`.  A source search at that pin
@@ -34,28 +34,23 @@ found no SU(2) Weyl integration formula.  In particular,
 from additive Haar measure on a real normed space; it does not identify SU(2),
 its normalized Haar measure, or the trace pushforward.
 
-The repository proves the second moment
-`sunHaarProb_trace_normSq_integral_eq_one`.  It does not prove the fourth
-moment `integral (chi ^ 4) = 2`.  The generic Schur API applies to constructed
-irreducible representations, while the current label-two bridge is only the
-pointwise character-ring identity `chi_1 + 1 = chi_fund ^ 2`.  Therefore the
-missing brick for the proposed spin-one estimate is one of:
-
-- an SU(2) Haar/Weyl trace-pushforward formula with its normalization; or
-- a concrete irreducible spin-one representation together with a proved
-  decomposition of the fundamental tensor square and the resulting fourth
-  moment.
+`QuaternionMoments.lean` obtains the fourth moment directly from explicit
+quaternion-basis SU(2) matrices and left/right Haar invariance.  It first
+reproduces `integral chi^2 = 1` as the required normalization gate, then proves
+`integral chi^4 = 2`; it uses neither a Weyl formula nor Peter--Weyl.
 
 The independent spin-half estimate
 `beta / 2 <= alpha su2WeylPolynomial beta 1` is now proved using left-Haar
 invariance under the explicit central element `-I`, the oddness of the
 fundamental trace, and `Real.self_le_sinh_iff`.  The general tensor-power
 multiplicity formula formerly present in the artefact was unused and has been
-removed.  No Peter--Weyl completeness was introduced, and `coefficientSeries`
-remains open exactly at `SpinOneCoefficientRemainderStep`.
+removed.  No Peter--Weyl completeness was introduced.  The signed remainder
+is controlled by monotonicity of
+`cosh t - 1 - t^2/2` separately on the sign-changing regions, and
+`spinOneCoefficientRemainderStepConcrete` discharges `coefficientSeries`.
 
-Colab verification at source `fcbe7194fc9eadaa0e6a35e61c7a59fe4ecade58`
-and the pin above built the expanded oracle with 8186 jobs, two requested jobs
-on two host CPUs, in 96 seconds.  All 38 printed declarations used only
-`propext`, `Classical.choice`, and `Quot.sound`.  This is manufacturer
-verification, not the required fresh blind external audit.
+Colab verification at source
+`3c198717e1b53b016803e3db76fda88f99314f89` and the pin above built
+`Coefficients` and `Endpoint` and elaborated the uniform inhabitant type.  A
+terminal complete oracle, two-clone reproduction, and fresh blind external
+audit remain required.
