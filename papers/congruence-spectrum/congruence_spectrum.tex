@@ -1,0 +1,353 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\tr}{\operatorname{tr}}
+
+\title{Congruence Rigidity and the Fusion Bound:\\
+what a positive weight can and cannot do\\
+to the spectrum of a transfer kernel}
+\author{Lluis Eriksson}
+\date{Draft --- 1 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A positive site weight acts on a transfer kernel by \emph{congruence},
+$K \mapsto DKD$ with $D$ positive diagonal, not by similarity. Similarity
+preserves the entire spectrum; congruence preserves strictly less, and strictly
+more than nothing. We determine both halves for the kernel of $L$ decoupled
+Ising bonds. \emph{Rigid half:} the sign of every quadratic form value survives,
+so definiteness in either sign is a congruence invariant --- the definite case
+of Sylvester's law of inertia, recorded here in the elementary form that a
+machine can check without an eigenvalue count. \emph{Fragile half:} the value of
+the spectral ratio $r = |\lambda_1|/|\lambda_0|$ does not survive at all, and we
+locate exactly how far it moves. Restricting the $L$-site kernel to the two
+antipodal configurations leaves \emph{one} Ising bond of coupling $\beta L$; its
+ratio is $\tanh(\beta L)$. A weight concentrating on the ferromagnetic
+configurations therefore \emph{fuses} the $L$ sites into a single effective site
+carrying $L$ times the coupling. Since $\tanh(\beta L)\to 1$, no bound on $r$ can
+be uniform in $L$: the obstruction to volume-uniformity is named, exactly, and
+it is a property of the congruence and not of any spectral estimate. We further
+record, with certified numerics and \emph{without proof}, a conjectural
+extremality: for symmetric $M$ with unit diagonal and off-diagonal entries in
+$(0,1)$, $\sup_{D>0}r(DMD)=(1-\mu)/(1+\mu)$ with $\mu=\min_{i\neq j}M_{ij}$ ---
+the extremal congruence concentrates on the \emph{least correlated pair}. The
+hypercube instance of that conjecture is the fusion bound.
+\end{abstract}
+
+\section{The question}
+
+Let $M$ be a real symmetric matrix and $D$ an invertible diagonal matrix with
+positive entries. The map
+\[
+  M \;\longmapsto\; DMD
+\]
+is a \emph{congruence}. It arises whenever a statistical-mechanical transfer
+kernel is symmetrised against a site weight: if the unnormalised kernel is
+$w(\sigma)K(\sigma,\tau)$, the symmetric form with the same spectrum is
+$\sqrt{w(\sigma)}\,K(\sigma,\tau)\sqrt{w(\tau)}$, that is $DKD$ with
+$D=\diag(\sqrt{w})$.
+
+Congruence is not similarity. Similarity $M \mapsto S M S^{-1}$ preserves the
+characteristic polynomial and therefore everything spectral. Congruence
+preserves the quadratic form only up to a change of variable, and the change of
+variable is not an isometry. The natural question --- and, we will argue, the
+one that governs whether a spectral estimate can be uniform in the system size
+--- is:
+
+\begin{center}
+\emph{Which spectral data survive a positive-diagonal congruence, and how far
+can the rest move?}
+\end{center}
+
+We answer both parts for the kernel of $L$ decoupled Ising bonds. Section~2
+gives the rigid half, Section~3 the fragile half, Section~4 the consequence,
+and Section~5 states a conjectural general form with its numerical certificate.
+
+\paragraph{What this paper does not do.} It does not decide whether any
+particular coupled transfer operator has a spectral gap uniform in its
+extension. It \emph{explains} why such a question is hard by exhibiting the
+exact mechanism that destroys uniformity, and explaining is not resolving. No
+statement here has a consequence for gauge theory in any dimension, and none is
+claimed.
+
+\section{The rigid half: congruence cannot move a sign}
+
+Write $q_M(x)=\sum_{i,j} x_i M_{ij} x_j$ for the quadratic form of $M$.
+
+\begin{lemma}[Change of variable]\label{lem:change}
+For every $M$, every $d$, and every $x$,
+\[
+  q_{\,\diag(d)\,M\,\diag(d)}(x) \;=\; q_M(dx),
+  \qquad (dx)_i := d_i x_i .
+\]
+\end{lemma}
+
+\begin{proof}
+$(\diag(d)M\diag(d))_{ij} = d_i M_{ij} d_j$; substitute and reassociate.
+\end{proof}
+
+\begin{theorem}[Definiteness is a congruence invariant]\label{thm:rigid}
+Let $d_i \neq 0$ for every $i$. Then $\diag(d)M\diag(d)$ is positive definite
+if and only if $M$ is, and negative definite if and only if $M$ is.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:change} the two forms have the same value set, because
+$x \mapsto dx$ is a bijection of $\R^n$ (its inverse is $x \mapsto d^{-1}x$) and
+carries nonzero vectors to nonzero vectors: if $d_ix_i=0$ with $d_i\neq0$ then
+$x_i=0$. Apply this in both directions.
+\end{proof}
+
+Theorem~\ref{thm:rigid} is the definite case of Sylvester's law of inertia
+\cite{sylvester1852}, which says more: the full signature $(n_+,n_0,n_-)$ is a
+congruence invariant. We do not reprove the general law. We isolate the definite
+case because it admits a proof through the form alone --- no diagonalisation, no
+eigenvalue count --- and that is what makes it cheap to certify mechanically.
+
+\begin{remark}
+Invertibility of $D$ is not decorative. A diagonal with $k$ zero entries drops
+the rank by $k$ and can turn a definite form into a degenerate one. Every claim
+below assumes $D$ strictly positive.
+\end{remark}
+
+\section{The fragile half: the fusion identity}
+
+Let $s(\sigma_j,\tau_j)=+1$ if $\sigma_j=\tau_j$ and $-1$ otherwise, and let
+\[
+  K_\beta^{(L)}(\sigma,\tau)
+    \;=\; \exp\Big(\beta \sum_{j=1}^{L} s(\sigma_j,\tau_j)\Big),
+  \qquad \sigma,\tau \in \{0,1\}^L ,
+\]
+the kernel of $L$ decoupled Ising bonds at coupling $\beta$. Write
+$\sigma^+ = (0,\dots,0)$ and $\sigma^-=(1,\dots,1)$ for the two antipodal
+(ferromagnetic) configurations, and let
+\[
+  B(a) \;=\; \begin{pmatrix} e^{a} & e^{-a} \\ e^{-a} & e^{a}\end{pmatrix}
+\]
+be the transfer matrix of a \emph{single} Ising bond of coupling $a$.
+
+\begin{lemma}[One bond]\label{lem:bond}
+$B(a)$ has eigenvectors $(1,1)$ and $(1,-1)$ with eigenvalues $2\cosh a$ and
+$2\sinh a$. Its spectral ratio is
+\[
+  \frac{2\sinh a}{2\cosh a} \;=\; \tanh a .
+\]
+\end{lemma}
+
+\begin{proof}
+Direct: $B(a)(1,1)^{\!\top} = (e^a+e^{-a})(1,1)^{\!\top}$ and
+$B(a)(1,-1)^{\!\top} = (e^a-e^{-a})(1,-1)^{\!\top}$. Both eigenvalues are real
+and $2\cosh a>0$, so the ratio is well defined.
+\end{proof}
+
+\begin{theorem}[Fusion identity]\label{thm:fusion}
+The $2\times 2$ principal submatrix of $K_\beta^{(L)}$ on the antipodal pair
+$\{\sigma^+,\sigma^-\}$ is exactly one Ising bond of coupling $\beta L$:
+\[
+  \begin{pmatrix}
+    K_\beta^{(L)}(\sigma^+,\sigma^+) & K_\beta^{(L)}(\sigma^+,\sigma^-)\\[2pt]
+    K_\beta^{(L)}(\sigma^-,\sigma^+) & K_\beta^{(L)}(\sigma^-,\sigma^-)
+  \end{pmatrix}
+  \;=\; B(\beta L),
+\]
+and its spectral ratio is $\tanh(\beta L)$.
+\end{theorem}
+
+\begin{proof}
+$\sigma^+$ agrees with itself at all $L$ sites, so the sum of signs is $+L$ and
+the entry is $e^{\beta L}$; likewise for $\sigma^-$. The two antipodal
+configurations disagree at all $L$ sites, so the sum is $-L$ and the entry is
+$e^{-\beta L}$. Compare with $B(\beta L)$ and apply Lemma~\ref{lem:bond}.
+\end{proof}
+
+Theorem~\ref{thm:fusion} is the mechanism this paper is about, and it is worth
+stating in words. A weight that concentrates on a set $S$ of configurations does
+not \emph{perturb} the kernel --- it \emph{restricts} it to $S$. When $S$ is the
+antipodal pair, the restriction is a single bond whose coupling is $L$ times the
+original. \textbf{The weight fuses the $L$ sites into one effective site.}
+
+\section{Why that is a wall}
+
+\begin{theorem}[No uniform ratio bound]\label{thm:wall}
+For every $\beta>0$ and every $\rho<1$ there is an $L$ with
+$\tanh(\beta L)>\rho$. Consequently the fused ratio is not bounded away from
+$1$, and no estimate of the form $r \le \rho <1$ can hold uniformly in the
+number of sites.
+\end{theorem}
+
+\begin{proof}
+$\tanh a = 1 - 2/(e^{2a}+1)$ is strictly increasing with limit $1$; choose $L$
+with $e^{2\beta L}+1 > 2/(1-\rho)$, which exists because $\beta>0$ and
+$e^{x}>x$.
+\end{proof}
+
+This is the honest content of the paper's title. It is \emph{not} a proof that
+any given coupled transfer operator fails to have a uniform gap; the
+concentration that realises the fusion is a limit, and the weight of a physical
+model may or may not approach it. What Theorem~\ref{thm:wall} establishes is
+that \emph{the obstruction lives in the congruence}, not in whatever spectral
+estimate one happens to be attempting. An argument that bounds $r$ using only
+data preserved by congruence --- rank, inertia, definiteness --- cannot
+possibly produce an $L$-uniform bound, because those data are identical for the
+unfused kernel (ratio $\tanh\beta$) and for every fused one (ratio up to
+$\tanh(\beta L)$).
+
+\begin{corollary}
+Any $L$-uniform ratio bound must use a quantity that a positive-diagonal
+congruence can change.
+\end{corollary}
+
+\section{A conjectural extremality, and its certificate}
+
+Theorem~\ref{thm:fusion} exhibits one congruence reaching $\tanh(\beta L)$.
+Numerically, nothing reaches further --- and the phenomenon appears not to be
+about the hypercube at all.
+
+\begin{conjecture}[Least-correlated pair]\label{conj:lcp}
+Let $M$ be symmetric with $M_{ii}=1$ and $0<M_{ij}<1$ for $i\neq j$, and let
+$\mu = \min_{i\neq j}M_{ij}$. Then
+\[
+  \sup_{D>0 \text{ diagonal}} r(DMD) \;=\; \frac{1-\mu}{1+\mu},
+\]
+approached by concentrating $D$ on an argmin pair, and not attained.
+\end{conjecture}
+
+The lower bound is elementary: concentrating on a pair $\{i,j\}$ leaves
+$\begin{psmallmatrix}1 & M_{ij}\\ M_{ij} & 1\end{psmallmatrix}$ up to scale,
+of ratio $(1-M_{ij})/(1+M_{ij})$, which is largest at the least correlated
+pair. \textbf{The upper bound is open.} We have no proof, and we say so wherever
+the statement appears.
+
+On the hypercube, $K_\beta^{(L)}$ normalised to unit diagonal has
+$M_{\sigma\tau}=e^{-2\beta h(\sigma,\tau)}$ with $h$ the Hamming distance; the
+least correlated pair is the antipodal one, $\mu=e^{-2\beta L}$, and
+$(1-\mu)/(1+\mu)=\tanh(\beta L)$. Conjecture~\ref{conj:lcp} therefore contains
+Theorem~\ref{thm:fusion} as its hypercube instance.
+
+\paragraph{Numerical certificate.} Random search plus Nelder--Mead ascent over
+positive diagonals, on families chosen to break the conjecture, never exceeded
+$(1-\mu)/(1+\mu)$ and in almost every case attained it to machine precision.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+family & worst excess over target & cases \\
+\midrule
+hypercube, $L\in\{2,3,4\}$, $\beta\in\{0.15,0.4,0.8\}$ & $1.0\times10^{-15}$ & 9\\
+random positive Gram, $n\in\{4,5,6\}$                  & $5.0\times10^{-16}$ & 12\\
+full rank / near singular ($\kappa\sim6\times10^{6}$)  & $3.3\times10^{-16}$ & 4\\
+near-exchangeable, isolated argmin, entries near $1$   & $4.4\times10^{-16}$ & 3\\
+exactly exchangeable $\mu J+(1-\mu)I$                  & $1.0\times10^{-15}$ & 2\\
+\emph{indefinite}, $\lambda_{\min}\in[-0.42,-0.06]$    & $1.6\times10^{-15}$ & 12\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The last row deserves comment, because it corrected us. A pre-registered gate
+predicted that positive definiteness would be load-bearing --- that at least one
+of twelve indefinite witnesses would break the bound. None did; all twelve
+landed \emph{on} it. The hypothesis was therefore dropped, and
+Conjecture~\ref{conj:lcp} as stated above assumes no definiteness. The gate, its
+prediction, and its failure are recorded in the repository rather than repaired
+in place.
+
+\paragraph{Scope of the certificate.} These are numerics, not proof. They cover
+$n\le 6$, $\mu>0$, and $\lambda_{\min}\ge -0.43$. Nothing here tests $\mu\le 0$
+(where the target exceeds $1$ and the question changes character), nor a
+negative eigenvalue large enough to make $|\lambda_0|$ the negative extreme, at
+which point $r$ measures something else.
+
+\section{Relation to prior work}
+
+\paragraph{Sylvester (1852).} The law of inertia is classical and
+Theorem~\ref{thm:rigid} is its definite case. We claim no novelty on the rigid
+half; the contribution is that this form of it is checkable without
+diagonalisation.
+
+\paragraph{Ostrowski.} Ostrowski's quantitative form of the inertia law gives,
+for Hermitian $A$ and invertible $S$, $\lambda_k(SAS^{*})=\theta_k\lambda_k(A)$
+with $\theta_k\in[\lambda_{\min}(SS^{*}),\lambda_{\max}(SS^{*})]$. For $S=D$
+diagonal this yields
+\[
+  r(DAD) \;\le\; \kappa(D^2)\, r(A),
+  \qquad \kappa(D^2)=\frac{\max_i d_i^2}{\min_i d_i^2},
+\]
+which \textbf{diverges} exactly in the regime of interest, namely when $D$
+degenerates. Theorem~\ref{thm:fusion} and Conjecture~\ref{conj:lcp} supply a
+\emph{finite} substitute in that regime: the supremum is $\tanh(\beta L)$,
+respectively $(1-\mu)/(1+\mu)$, however badly conditioned $D$ becomes. That
+contrast --- divergent classical bound, finite exact value --- is the delta of
+Section~5, and it is stated here side by side so that it can be checked.
+
+\paragraph{Onsager and Kaufman.} The kernel $DK_\beta D$ with a ferromagnetic
+nearest-neighbour weight is the transfer matrix of the two-dimensional
+anisotropic Ising model on a strip, whose spectrum is known in closed form.
+Nothing in Sections~3--4 is new mathematics about that model, and the reader who
+knows the exact solution will find $\tanh(\beta L)$ unsurprising: it is the
+zero-temperature limit in the transverse direction, where the strip collapses to
+a single spin. The contribution is not the value. It is that the value is
+\emph{exactly} the supremum of a congruence orbit, that the orbit's rigid
+invariants are simultaneously pinned, and that the pair of facts identifies
+which quantities an argument may and may not use.
+
+\paragraph{Formalisation.} We are not aware of a mechanised treatment of
+congruence orbits of transfer kernels. This is an absence of found prior art in
+the searches we ran, not a claim of priority.
+
+\section{What is open}
+
+\begin{enumerate}
+\item The upper bound in Conjecture~\ref{conj:lcp}. A proof would make the
+      fusion bound an exact classification rather than an attained lower bound
+      with a certificate.
+\item Whether the physical weight $w_\gamma$ attains the antipodal restriction
+      in the limit $\gamma\to\infty$ with the rate we measure. The deficit
+      $\tanh(\beta L)-r(\gamma)$ was found to decay like $e^{-2\gamma}$ (fitted
+      exponents $-1.96$ to $-2.08$ against a pre-registered prediction of $-2$),
+      consistent with one-domain-wall configurations dominating the correction.
+      The limit itself is not proved here.
+\item The general signature-counting law as a mechanised statement.
+\end{enumerate}
+
+\section*{Machine verification --- status}
+
+The rigid half (Theorem~\ref{thm:rigid} and Lemma~\ref{lem:change}), the fusion
+identity (Theorem~\ref{thm:fusion}), the one-bond spectrum
+(Lemma~\ref{lem:bond}) and the wall (Theorem~\ref{thm:wall}) are written in
+Lean~4 against a pinned Mathlib in
+\texttt{YangMills/OS/CongruenceSpectrum.lean}.
+
+\textbf{At the time of this draft that module has not been compiled.} The
+project's environment rule of 1~August~2026 routes all compilation off the
+author's desktop, and the sanctioned compute plane was unreachable when this
+draft was written. Nothing in this section may be cited as verified until the
+module elaborates with zero errors and zero \texttt{sorry} and every declaration
+prints only the standard axioms \texttt{[propext, Classical.choice,
+Quot.sound]}. This paper is not submittable before that.
+
+\begin{thebibliography}{9}
+\bibitem{sylvester1852} J.~J.~Sylvester,
+  \emph{A demonstration of the theorem that every homogeneous quadratic
+  polynomial is reducible by real orthogonal substitutions to the form of a sum
+  of positive and negative squares}, Philosophical Magazine \textbf{4} (1852).
+\end{thebibliography}
+
+\end{document}
