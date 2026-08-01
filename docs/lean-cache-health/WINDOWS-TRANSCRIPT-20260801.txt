@@ -194,3 +194,20 @@ git_peel_unquoted_effect=parent revision plus -encodedCommand printed; fatal amb
 git_peel_single_quoted_command=git rev-parse 'HEAD^{}'; correct HEAD; exit 0
 git_peel_double_quoted_command=git rev-parse "HEAD^{}"; correct HEAD; exit 0
 operator_trap_interpretation=harness defects only; no repository, cache, or mathematical claim
+
+OWNER_CLOSURE_POLICY_DECISION
+status=DECIDED 2026-08-01; owner selected option 2
+meaning_of_windows_open=SUPERSEDED; Windows compiler reproduction is out of scope by owner decision
+option_1_name=strict cross-environment closure
+option_1_rule=require a second independent runtime or machine; classify Windows if Windows is intended to compile Lean
+option_1_current_result=OPEN
+option_2_name=sanctioned reference-environment closure
+option_2_scope=Colab/Linux is compiler reference plane; Windows is editing/orchestration plane
+option_2_rule=two independent fresh clone trees in reference environment; exact public SHA/toolchain/manifest; import Mathlib twice; PR39 oracle twice; matching hashes
+option_2_measured_result=SATISFIED by the two fresh Colab clone trees and oracle SHA256 3ca4fb93c0c212a98dc6b0845d32245406f1ac041e97d5444482e010b8eaaa2f
+selected_option=2 sanctioned reference-environment closure
+compiler_reference_plane=Colab/Linux
+windows_plane=editing and orchestration only
+pr39_reproducibility_criterion=CLOSED
+windows_compiler_debt=NONE; deliberately not closed because owner decided it is not required
+future_windows_run=not implied; requires a new policy decision and explicit assignment
