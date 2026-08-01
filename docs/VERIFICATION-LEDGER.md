@@ -26323,3 +26323,33 @@ Lemma-1 source certificate. It does not construct a complete
 `CMP116Eq226CenteredConditionedPhysicalTermSource`, prove that certificate,
 discharge the remaining scalar/analytic fields, prove `hRpoly`, or change
 the distance to Clay, which remains approximately zero (below 0.1%).
+
+## Addendum 525 (2026-08-01, **terminal direct/native partial potential GREEN**)
+
+The terminal `total` and `residual` functions now use the same canonical
+disjoint ledger as equations (1.43) and (1.36).  The definitions
+`cmp116CenteredConditionedCombinedEq80PartialTotal` and
+`cmp116CenteredConditionedCombinedEq80PartialResidual` install the literal
+equation-(80) families on the direct branch and
+`cmp109Lemma1IndexedSourceResidual` on the native branch.  Spectator and
+fluctuation arguments have their exact terminal types.  There is no map from
+native domains back into the direct index, no zero native extension, and no
+additional analytic premise.
+
+This supersedes the older partial adapter only at the level of the domain
+ledger; the older module remains available for historical consumers.  The
+new focal audit finished with the literal line
+`Build completed successfully (8906 jobs).`  All four new declarations report
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+The preceding source-cutoff checkpoint was also replayed from bundle
+`cmp116-source-cutoff-eq136-abfe7264.bundle` in a separate Colab Pro+ high-RAM
+checkout at commit `abfe7264563fd406f1a1e07d452c4652b7bc0bee`.  The replay
+verified SHA-256
+`8A179C9340079DAD3166400809E43AA12EB8C7D4CADCBE9B6D7295DEECEA8C9B`,
+toolchain `leanprover/lean4:v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`; the source tree was clean, all
+2,179 core-import sources were tracked, consistency scans were green, the
+root ended with `Build completed successfully (10337 jobs).`, and the four
+checkpoint audits ended at `CLEAN_EQ136_CHECKPOINT_DONE`.

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116CenteredConditionedCombinedEq80PartialPotential
+
+#print axioms YangMills.RG.cmp116CenteredConditionedCombinedEq80PartialTotal
+#print axioms YangMills.RG.cmp116CenteredConditionedCombinedEq80PartialResidual
+#print axioms YangMills.RG.cmp116CenteredConditionedCombinedEq80PartialTotal_apply
+#print axioms YangMills.RG.cmp116CenteredConditionedCombinedEq80PartialResidual_apply
