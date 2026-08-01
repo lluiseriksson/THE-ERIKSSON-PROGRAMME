@@ -96,4 +96,22 @@ theorem spatialKernel_dual_factorization
   simp_rw [z2Bond_dual_factorization β a hβ hdual]
   rw [Finset.prod_mul_distrib, Finset.prod_const, Finset.card_univ, Fintype.card_fin]
 
+/-! ## The periodic ring weight as one exponential -/
+
+/-- The signed nearest-neighbour energy of a periodic two-state ring. -/
+noncomputable def ringBondSum {L : ℕ} (σ : Fin (L + 1) → Fin 2) : ℝ :=
+  ∑ j, z2Sign (σ j) (σ (j + 1))
+
+/-- **Exact exponential form of the full periodic ring weight.**
+
+The product includes the closing bond through arithmetic on `Fin (L + 1)`.
+This identity is algebraic and therefore holds for every real `γ`; it does not
+weaken the active hypothesis `0 ≤ γ` in the spatial spectral target.  It does
+not rewrite the square roots in `symWeighted` or prove a sector bound. -/
+theorem spatialWeightRing_eq_exp_ringBondSum
+    (γ : ℝ) {L : ℕ} (σ : Fin (L + 1) → Fin 2) :
+    spatialWeightRing γ σ = Real.exp (γ * ringBondSum σ) := by
+  unfold spatialWeightRing ringBondSum z2Bond
+  rw [← Real.exp_sum, Finset.mul_sum]
+
 end YangMills.OS

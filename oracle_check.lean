@@ -3167,3 +3167,5 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.dualFieldScale
 #print axioms YangMills.OS.z2Bond_dual_factorization
 #print axioms YangMills.OS.spatialKernel_dual_factorization
+#print axioms YangMills.OS.ringBondSum
+#print axioms YangMills.OS.spatialWeightRing_eq_exp_ringBondSum
