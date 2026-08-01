@@ -50,9 +50,9 @@ private def quaternionCycle : SU2 := by
     ext i j
     fin_cases i <;> fin_cases j <;>
       simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
-        Matrix.star_apply] <;> ring
+        Matrix.star_apply, Complex.star_def, Complex.I_sq] <;> ring
   · rw [Matrix.det_fin_two]
-    simp [quaternionCycleMat]
+    simp [quaternionCycleMat, Complex.I_sq]
     ring
 
 private def quarterTurnAngles : Fin 2 → ℝ :=
@@ -126,7 +126,8 @@ private theorem integral_conjugate_eq_self (f : SU2 → ℝ) (q : SU2) :
   calc
     (∫ g : SU2, f (q * g * q⁻¹) ∂haarSU2) =
         ∫ g : SU2, f (q * g) ∂haarSU2 :=
-      integral_mul_right_eq_self (μ := haarSU2) (fun g => f (q * g)) q⁻¹
+      by simpa only [mul_assoc] using
+        integral_mul_right_eq_self (μ := haarSU2) (fun g => f (q * g)) q⁻¹
     _ = ∫ g : SU2, f g ∂haarSU2 :=
       integral_mul_left_eq_self (μ := haarSU2) f q
 
@@ -150,6 +151,9 @@ private theorem quaternionQuarterTurn_first_row (g : SU2) (c : Fin 2) :
       ((((Real.sqrt 2 / 2 : ℝ) : ℂ) +
           ((Real.sqrt 2 / 2 : ℝ) : ℂ) * Complex.I) *
         g.val finTwoZero c) := by
+  change
+    ((YangMills.ClayCore.diagPhaseSU quarterTurnAngles quarterTurnAngles_sum * g).val)
+      finTwoZero c = _
   rw [YangMills.ClayCore.diagPhaseSU_apply_entry]
   simp only [YangMills.ClayCore.diagPhaseVec_apply, quarterTurnAngles,
     Matrix.cons_val_zero]
@@ -173,8 +177,11 @@ private theorem quaternionCycle_conj_entry_zero_zero (g : SU2) :
         ((g.val finTwoZero finTwoOne).im : ℂ) * Complex.I := by
   change ((quaternionCycleMat * g.val * star quaternionCycleMat)
       finTwoZero finTwoZero) = _
+  rw [← Complex.re_add_im (g.val finTwoZero finTwoZero),
+    ← Complex.re_add_im (g.val finTwoZero finTwoOne)]
   simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
-    Matrix.star_apply, su2_entry_one_one, su2_entry_one_zero]
+    Matrix.star_apply, su2_entry_one_one, su2_entry_one_zero,
+    Complex.star_def, Complex.I_sq]
   ring
 
 private theorem quaternionCycle_conj_entry_zero_one (g : SU2) :
@@ -183,8 +190,11 @@ private theorem quaternionCycle_conj_entry_zero_one (g : SU2) :
         ((g.val finTwoZero finTwoOne).re : ℂ) * Complex.I := by
   change ((quaternionCycleMat * g.val * star quaternionCycleMat)
       finTwoZero finTwoOne) = _
+  rw [← Complex.re_add_im (g.val finTwoZero finTwoZero),
+    ← Complex.re_add_im (g.val finTwoZero finTwoOne)]
   simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
-    Matrix.star_apply, su2_entry_one_one, su2_entry_one_zero]
+    Matrix.star_apply, su2_entry_one_one, su2_entry_one_zero,
+    Complex.star_def, Complex.I_sq]
   ring
 
 private theorem quaternionCycle_coordinates (g : SU2) :
