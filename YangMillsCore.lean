@@ -900,3 +900,10 @@ import YangMills.OS.SpatialGibbs
 -- EXTENT; nothing here is uniform in it, and the endpoint bounds the
 -- UNNORMALISED two-point sum, not the normalised expectation.
 import YangMills.OS.SpatialSpectral
+
+-- Congruence lane (docs/CONGRUENCE-CHARTER.md, judges at 49311bad).
+-- What a positive-diagonal congruence K |-> D K D can and cannot change:
+-- definiteness is rigid, the subdominant ratio is not, and Hilbert's
+-- projective diameter is itself a congruence invariant.  Pure linear algebra
+-- and elementary real analysis; no Gibbs measure and no physics claim.
+import YangMills.OS.CongruenceSpectrum
