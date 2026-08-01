@@ -40,17 +40,26 @@ theorem certifiedThetaPairing_gate (moments : NormMomentSteps)
   rw [certifiedThetaPairing, hnormReal]
   exact thetaPairing_gate hbeta series
 
-/-- The sole remaining manufacturing obligation.  Six former fields are now
-discharged by concrete theorems: trace reality, the character bound,
-fundamental Schur, ordinary Fubini plus the separately named Haar coordinate
-change, witness norm moments, and weight measurability. -/
+/-- The compact manufacturing input record.  Its sole stored field is proved
+concretely below; the other six former fields are already discharged by
+named theorems at their points of use. -/
 structure ManufacturingTechnicalInputs (beta : ℝ) : Prop where
   coefficientSeries :
     SpinOneCoefficientRemainderStep beta
 
-/-- Concrete-Haar, concrete-probe conditional front door.  It deliberately
-retains the genuinely open coefficient-series obligation and therefore is not
-a closed manufacturing certificate. -/
+/-- Concrete inhabitant of all seven technical inputs on the fabrication
+domain.  The stored coefficient field is supplied by the signed hyperbolic
+remainder estimate; the other six are concrete theorems used by the endpoint. -/
+def manufacturingTechnicalInputsConcrete (beta : ℝ) (hbeta : BetaDomain beta) :
+    ManufacturingTechnicalInputs beta where
+  coefficientSeries := spinOneCoefficientRemainderStepConcrete hbeta.1.le
+
+/-- Explicit anti-vacuity witness at the required milestone `beta = 1`. -/
+def manufacturingTechnicalInputsOne : ManufacturingTechnicalInputs 1 :=
+  manufacturingTechnicalInputsConcrete 1 one_mem_betaDomain
+
+/-- Internal composition lemma.  The public front door below supplies its
+concrete input rather than accepting a caller-provided hypothesis. -/
 theorem manufactured_six_point_theta_gate
     (beta : ℝ) (hbeta : BetaDomain beta)
     (input : ManufacturingTechnicalInputs beta) :
@@ -87,6 +96,32 @@ theorem manufactured_six_point_theta_gate
       (coefficientRemainderSteps_of_spinOne hbeta.1.le input.coefficientSeries),
     cellWeight_integrable characterBoundConcrete beta
       (weightMeasurabilityConcrete beta)⟩
+
+/-- Concrete-Haar, concrete-character front door with no abstract measure,
+character family, or technical input. -/
+theorem manufactured_six_point_theta_gate_concrete
+    (beta : ℝ) (hbeta : BetaDomain beta) :
+    connectedCycleRank (Fintype.card HalfVertex) (Fintype.card Branch) = 2 ∧
+    connectedCycleRank (Fintype.card HalfVertex) (Fintype.card ReducedBranch) = 1 ∧
+    HasThreeDistinctBranches Branch ∧
+    (¬ HasThreeDistinctBranches ReducedBranch) ∧
+    (∀ c i, holonomy (reflect c) i = c.s⁻¹ * (holonomy c i)⁻¹ * c.s) ∧
+    (∀ c, cellWeight beta (reflect c) = cellWeight beta c) ∧
+    (∀ h U V, witness (h * U * h⁻¹) (h * V * h⁻¹) = witness U V) ∧
+    witness ≠ (0 : SU2 → SU2 → ℂ) ∧
+    CompleteUOrthogonality ∧
+    CompleteVOrthogonality ∧
+    CompleteRelativeOrthogonality ∧
+    witnessNormSq = 3 / 4 ∧
+    couplingMultiplicity 2 1 1 = 1 ∧
+    certifiedThetaPairing (fun j => alpha su2WeylPolynomial beta j) =
+      alpha su2WeylPolynomial beta 2 *
+        (alpha su2WeylPolynomial beta 1) ^ 2 / 16 ∧
+    beta ^ 4 / 512 ≤
+      certifiedThetaPairing (fun j => alpha su2WeylPolynomial beta j) ∧
+    Integrable (cellWeight beta) cellHaar := by
+  exact manufactured_six_point_theta_gate beta hbeta
+    (manufacturingTechnicalInputsConcrete beta hbeta)
 
 /-- Anti-vacuity bundle proved without using the endpoint inputs. -/
 theorem endpoint_anti_vacuity :
