@@ -42,6 +42,45 @@ repair.  The source branch was verified at
    and stop for a new blind external audit.  No merge, paper claim, programme
    Gate 7 claim, or manufacturer self-certification is permitted.
 
+## Pre-registered direct spin-one route
+
+Before any build of the remaining coefficient obligation, the candidate route
+is fixed as follows.
+
+1. Prove the normalized Haar fourth moment
+   `integral (fun g => (chi g).re ^ 4) haarSU2 = 2` using only explicit
+   quaternion-basis matrices in `SU2`, ordinary left/right Haar invariance,
+   and finite polynomial identities.  A full SU(2)-to-sphere measure
+   equivalence, a Weyl integration formula, Peter--Weyl completeness, and the
+   general tensor-power multiplicity formula are not inputs to this route.
+2. First recover the second moment `1` from the same four-coordinate
+   construction and compare it with `chi_re_sq_integral_one`.  A mismatch is
+   a failed coordinate normalization and blocks use of the fourth moment.
+3. Symmetrize the spin-one coefficient under the concrete central element
+   `negIdentitySU2`, obtaining the integral of
+   `(u ^ 2 - 1) * Real.cosh ((beta / 2) * u)` with
+   `u = (chi g).re`.
+4. Treat the signed Taylor remainder separately.  For
+   `r t = Real.cosh t - 1 - t ^ 2 / 2`, prove that `r` is even and monotone on
+   the nonnegative axis.  Compare `r ((beta / 2) * u)` with
+   `r (beta / 2)` on the two regions `u ^ 2 <= 1` and `1 <= u ^ 2`.  After
+   multiplication by `u ^ 2 - 1`, both regions give the same lower bound;
+   its integral is zero by the normalized second moment.  The sign-changing
+   region may not be discarded or justified by a bare pointwise
+   `cosh t - 1 >= t ^ 2 / 2` bound.
+5. Combine the constant, quadratic, and remainder terms only after steps
+   1--4 check.  The intended conclusion is
+   `beta ^ 2 / 8 <= alpha su2WeylPolynomial beta 2` for `0 <= beta`.  Only
+   then may `SpinOneCoefficientRemainderStep beta` and the concrete
+   `ManufacturingTechnicalInputs beta` inhabitant be constructed.
+
+The pin-exact static inventory found
+`Mathlib.MeasureTheory.Constructions.HaarToSphere`, but no ready theorem for
+the radial/angular independence of a normalized Gaussian and no existing
+SU(2)-Haar-to-sphere identification.  These APIs are therefore not silently
+counted as discharged inputs.  Any failed attempt or change of route must be
+recorded before a replacement campaign is run.
+
 ## Evidence labels
 
 - **EXACTO**: proved directly by checked Lean terms over concrete definitions.
