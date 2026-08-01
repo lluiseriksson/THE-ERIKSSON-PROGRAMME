@@ -333,15 +333,35 @@ The rigid half (Theorem~\ref{thm:rigid} and Lemma~\ref{lem:change}), the fusion
 identity (Theorem~\ref{thm:fusion}), the one-bond spectrum
 (Lemma~\ref{lem:bond}) and the wall (Theorem~\ref{thm:wall}) are written in
 Lean~4 against a pinned Mathlib in
-\texttt{YangMills/OS/CongruenceSpectrum.lean}.
+\texttt{YangMills/OS/CongruenceSpectrum.lean}, and \textbf{have been verified}.
 
-\textbf{At the time of this draft that module has not been compiled.} The
-project's environment rule of 1~August~2026 routes all compilation off the
-author's desktop, and the sanctioned compute plane was unreachable when this
-draft was written. Nothing in this section may be cited as verified until the
-module elaborates with zero errors and zero \texttt{sorry} and every declaration
-prints only the standard axioms \texttt{[propext, Classical.choice,
-Quot.sound]}. This paper is not submittable before that.
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+commit & \texttt{17d6ed29} \\
+module \texttt{sha256} & \texttt{d663b3fe251d9f0a96f50e1a65057291955afd221b3adedd69e34c73d52b8417} \\
+toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
+Mathlib pin & \texttt{07642720480157414db592fa85b626dafb71355b} \\
+elaboration & exit \texttt{0}; empty log --- zero errors, zero warnings, zero \texttt{sorry} \\
+axiom oracle & 19/19 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
+\texttt{sorryAx} & none \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The module hash was computed independently on the author's machine and on the
+verification host and agrees, so the checked object is the source printed here.
+Compilation ran on a CPU (never GPU) high-memory cloud runtime, per the
+project's environment rule of 1~August~2026; the desktop compiles nothing.
+
+\textbf{One registered check remains undone.} The pre-registration also asked
+that the module be imported into the project's aggregate library and that the
+build job count increment by exactly one. It has not been imported, so there is
+no increment to measure; measuring it honestly requires two full builds of the
+aggregate in the same tree, which the shared Mathlib cache does not cover. That
+check is therefore reported as \emph{not run} rather than dropped, and it is not
+replaced by a comparison against a count measured elsewhere. Nothing in the
+theorems above depends on it.
 
 \begin{thebibliography}{9}
 \bibitem{sylvester1852} J.~J.~Sylvester,
