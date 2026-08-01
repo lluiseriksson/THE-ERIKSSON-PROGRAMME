@@ -29226,3 +29226,92 @@ page, and the difference only exists in the ledger.
 
 **No re-measurement.**  Nothing in the repository's Lean changed; the anchor and
 every printed counter stand.
+
+## Addendum 569 (2026-07-31, **PAPER 13: the half-chain collapse, the bond
+bridge, and a campaign that ran to v1.10 without a ledger entry**)
+
+**The finding that produced this addendum is the absence of this addendum.**
+Paper 13 was designed, pre-registered, built, measured, published and revised
+ten times, and the ledger contained ZERO mentions of `SpatialOS`.  It surfaced
+because a printed sentence enumerated the non-Lean files changed since the
+measured commit and named "the ledger" among them --- a file that had never been
+touched, in a list written from memory with `git diff --name-only` output on
+screen.  The wrong list was a typo; what it exposed was a campaign outside the
+record.
+
+**THE CAMPAIGN.**  Paper 12 proved the reflected two-point form non-negative for
+REAL observables of a SINGLE slice at the ENDS of a path, and named the gap as a
+CONSTRUCTION rather than a further inequality.  Paper 13 builds it.
+
+  * `collapse` --- summing out the interior of a half sends a complex observable
+    of a WHOLE half-path to a vector on its boundary slice.  Everything else is
+    a corollary of two factorisations through it.
+  * `osPairingSite_eq` --- through a SITE the form is a sum of squared moduli
+    over `w`; non-negative at EVERY beta, using no property of the kernel.
+  * `osPairingBond_eq` --- through a BOND it is the quadratic form of the
+    decoupled kernel in the COLLAPSED boundary vector, so positive
+    semidefiniteness of that kernel proves non-negativity for beta >= 0.
+    NECESSITY for the half-chain form is not proved in this module.  (The
+    "exactly beta >= 0" of paper 12 is a statement about the KERNEL at L >= 1,
+    not about this pairing, and writing it as though it transferred is the same
+    defect this addendum records elsewhere.)
+  * `complexQuad_eq` --- real to complex once and generically: for a symmetric
+    real kernel the cross terms cancel, so the complex form is the sum of the
+    real forms on Re and Im.  Stated for an arbitrary finite index type.
+  * `osPairingBond_gram` / `osPairingSite_gram` --- the Gram matrices, which is
+    the shape the axiom actually has.  Positivity is TRANSPORTED to the matrix
+    rather than re-proved: the Gram sum IS the form of the combined observable.
+
+**THE BOND BRIDGE, which is what the paper is for.**  `bondEquiv` says a whole
+path of `2m+2` slices IS a pair of halves; `gibbsWeight_joinBond` says the
+weights multiply with exactly ONE crossing factor; `osPairingBond_eq_gibbsSum`
+composes them.  Consequence: `gibbsSum_reflected_nonneg` and
+`gibbsSum_reflected_gram_nonneg` are about the MEASURE, not about a form
+standing in for it.  That is the finite-volume Osterwalder--Schrader inequality
+for this model at odd separation.
+
+**THE SITE BRIDGE IS OPEN, and it is not a variation.**  The halves share the
+middle slice, so pairs are a FIBRED PRODUCT over that slice and the shared
+weight is counted twice by the product of the two half weights.  Different
+statement, different proof.  Until it exists `osPairingSite` is a CANDIDATE, and
+the paper says so row by row rather than in a caveat.
+
+**FOUR GATES, PRE-REGISTERED at `08a548cf` before a line of the module existed.**
+The plan announced three; writing them down showed the site and bond collapses
+license different theorems, so the count moved to four IN PUBLIC BEFORE RUNNING.
+A1/A2 are matrix identities to 1e-12 against a pairing matrix built by brute
+force over every path, so they do not presuppose the factorisation they test;
+B and C read a MINIMUM EIGENVALUE instead of sampling observables, which is the
+instrument the paper-12 autopsy said was needed.  All four passed.  A2 has since
+been SUPERSEDED BY PROOF; A1 remains the only evidence for the site assembly.
+
+**THE HOST WAS DESTROYED MID-CAMPAIGN.**  `mathlib` lost all 8429 working files
+and every other package directory vanished, leaving only git metadata --- the
+`%TEMP%` cleanup ghost this ledger already records.  Sources were restored by
+resetting to the pinned revision; the compiled artifacts were not.  Since then
+the counters are an INHERITED measurement from `e232819d`, declared as such,
+with `scripts/check_code_identical.py` as the checkable justification.
+
+**THE CERTIFICATE TOOK FOUR ROUNDS TO BECOME HONEST, and each round is a
+lesson.**  It began comparing a blob against the WORKING TREE with an absolute
+path baked in --- unrunnable by a reader.  Then it collapsed all whitespace,
+though INDENTATION IS SYNTAX in Lean.  Then it deleted comments instead of
+replacing them, mapping `foo/- c -/bar` to `foobar`.  Then it replaced them with
+ONE space, moving the column of code after an inline comment.  Then it trimmed
+trailing space and blank lines INSIDE string literals, where they are data.
+Only now does it state its SCOPE: ordinary string literals with backslash
+escapes, no raw strings, no interpolation, not a Lean lexer, erring only towards
+false negatives within the fragment the module uses.
+**A certificate that overstates its reach is worse than none**, and the way this
+one got honest was nine adversarial cases, each added after the defect it names.
+
+**MEASURED at `e232819d`, in an exclusive window.**  Core 8464 jobs; oracle
+2794/2794, 2791 distinct + 3 duplicates, 26 axiom-free + 2765 with axioms; zero `sorryAx`, zero non-standard axioms, zero
+errors; 42 declarations, 42 oracled.  Re-measurement on the published checkpoint
+waits for an exclusive machine window, by the owner's operating decision.
+
+**THE RULE THIS BUYS.**  A campaign is not recorded because it went well; it is
+recorded because the record is what the next campaign reads.  Ten versions of a
+paper is exactly when the ledger entry stops feeling urgent and starts being
+necessary.  Written now, after the fact, and dated as such rather than
+back-dated.

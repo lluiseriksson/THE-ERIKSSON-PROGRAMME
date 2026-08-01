@@ -305,8 +305,9 @@ Lean; they save hours.
 
 ## Current state (updated 2026-07-04; source checkpoint 2026-07-04)
 
-* Historical snapshot measured 2026-07-04, not a live baseline: **8463 jobs**
-  at `7460e035`, zero sorry, zero nonstandard axioms.  The
+* Historical merged-core snapshot measured 2026-08-01, not a live baseline:
+  **8465 jobs** at `3421aa1f`.  The earlier 2026-07-04 snapshot was **8463
+  jobs** at `7460e035`, zero sorry, zero nonstandard axioms.  The
   thermodynamic-limit branch itself was measured at 8460 jobs at `0be45284`.
   Current job-count comparisons must use the latest applicable measured
   baseline in `docs/VERIFICATION-LEDGER.md` for the exact SHA/base audited.
