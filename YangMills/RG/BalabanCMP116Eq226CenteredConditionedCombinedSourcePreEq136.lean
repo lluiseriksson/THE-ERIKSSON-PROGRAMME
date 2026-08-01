@@ -175,7 +175,8 @@ variable
 
 /-- Literal direct/native total installed by the source assembler. -/
 noncomputable def total
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :=
   cmp116CenteredConditionedCombinedEq80PartialTotal
     (nDelta := nDelta)
@@ -186,7 +187,8 @@ noncomputable def total
 
 /-- Literal direct/native residual installed by the source assembler. -/
 noncomputable def residual
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :=
   cmp116CenteredConditionedCombinedEq80PartialResidual
     (nDelta := nDelta)
@@ -198,26 +200,30 @@ noncomputable def residual
 /-- Canonical combined amplitude; positivity comes from the positive native
 certificate and the nonnegative direct amplitude. -/
 def E0
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
   X.E0Direct + X.lemma1.E0
 
 /-- Literal source cutoff threshold. -/
 def threshold
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
   X.epsilon1 / X.gk
 
 /-- Canonical common rooted bound on the appended direct/native ledger. -/
 noncomputable def rootBound
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
   cmp116Eq80Lemma1CombinedPhysicalRootBound
     X.E0 X.epsilon1 X.C1 M X.q X.C2 X.kappa1 X.delta X.kappa X.alpha4
 
 /-- The literal potential rate entering the optimal interaction coefficient. -/
 noncomputable def potentialRate
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
   cmp116Eq220CenteredSourcePotentialRate Finset.univ
     (fun y => (cmp116Eq80Lemma1CombinedDomainMetric anchor domains E y : ℝ))
@@ -226,20 +232,23 @@ noncomputable def potentialRate
 
 /-- The literal bilateral complex-quadratic rate. -/
 noncomputable def r2Rate
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
   cmp116SourcePi4PhysicalComplexR2BilateralBound
     X.K X.Delta X.Ahead X.rho X.rate X.radius (1 + X.radius)
 
 /-- Minimal interaction coefficient permitted by the three quadratic rates. -/
 noncomputable def alpha
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
   cmp116Eq226OptimalInteractionAlpha X.potentialRate X.r2Rate X.gamma
 
 /-- Literal source-energy rate entering the outer Gaussian cost. -/
 noncomputable def sourceRate
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
   cmp116SourcePi4PhysicalComplexR3SourceRate X.K X.root
     (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P)
@@ -247,7 +256,8 @@ noncomputable def sourceRate
 
 /-- Literal determinant cost of the restricted contour. -/
 noncomputable def determinantCost
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
   cmp116SourceRestrictedUniformContourDeterminantCost
     M Nc X.Delta X.radius (1 + X.radius) X.rate X.Ahead X.rho
@@ -256,7 +266,8 @@ noncomputable def determinantCost
 /-- Canonical least volume coefficient.  Its positivity denominator remains
 an explicit scalar input to the proof record. -/
 noncomputable def volumeRate
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
   cmp116Eq80Lemma1CombinedPhysicalVolumeRate
     X.K X.root X.coercivity_pos X.mass_pos X.K_coercive
@@ -299,7 +310,8 @@ structure CMP116CenteredConditionedCombinedSourceProofs
     (DeltaPi : CombinedSourceFineField M Q Nc →L[ℝ]
       CombinedSourceFineField M Q Nc)
     (J : CombinedSourceFineField M Q Nc)
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) where
   carrier_subset_sigmaZero :
     X.contourCarrier ⊆ cmp116SourceSigmaZero anchor
@@ -478,7 +490,8 @@ noncomputable def
     (DeltaPi : CombinedSourceFineField M Q Nc →L[ℝ]
       CombinedSourceFineField M Q Nc)
     (J : CombinedSourceFineField M Q Nc)
-    (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J)
     (H : CMP116CenteredConditionedCombinedSourceProofs Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J X) :
