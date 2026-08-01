@@ -383,6 +383,109 @@ theorem exch_ratio_pair (μ : ℝ) :
     (1 - μ) / (1 + ((2 : ℝ) - 1) * μ) = (1 - μ) / (1 + μ) := by
   norm_num
 
+/-! ## §7  Strictly positive weights only: the orbit, not its closure
+
+The fusion of §3 is realised by a weight that *concentrates*, and a reader is
+entitled to ask whether that concentration leaves the object under study.  The
+congruences here are by **strictly positive invertible** diagonals, whereas
+"restricting to two configurations" sounds like setting the other diagonal
+entries to zero — which lies in the *closure* of the orbit and not in the orbit.
+
+It does not leave the orbit, and the reason is sharper than a limit argument.
+Let `Dε` be `1` on two chosen configurations and `ε > 0` elsewhere.  Then for
+**every** `ε > 0`, however small:
+
+* `Dε` is strictly positive, so the congruence stays inside the orbit
+  (`concentrate_pos`);
+* the `2 × 2` block on the two chosen configurations is **exactly** the
+  corresponding block of the original kernel, with no `ε` in it at all
+  (`concentrate_block`);
+* every entry touching any other configuration is at most `ε` times the
+  corresponding entry of the kernel (`concentrate_off_block`).
+
+So **the fused bond is already present at every strictly positive `ε`**; what
+the limit does is delete the rest of the matrix, not create the block.  Turning
+that deletion into a statement about eigenvalues is the classical continuity of
+the spectrum in finite dimensions, which is cited in the paper and not reproved
+here — the interface is this section, and it is stated rather than assumed. -/
+
+variable {n : Type*} [Fintype n] [DecidableEq n]
+
+/-- The concentrating weight: `1` at `p` and `q`, `ε` everywhere else. -/
+def concentrate (p q : n) (ε : ℝ) : n → ℝ :=
+  fun i => if i = p then 1 else if i = q then 1 else ε
+
+/-- It really is a strictly positive weight, so the congruence never leaves the
+orbit of invertible positive diagonals. -/
+theorem concentrate_pos {ε : ℝ} (hε : 0 < ε) (p q i : n) :
+    0 < concentrate p q ε i := by
+  unfold concentrate
+  split
+  · norm_num
+  · split
+    · norm_num
+    · exact hε
+
+/-- `ε ≤ 1` makes every weight at most one — the only bound §7.3 needs. -/
+theorem concentrate_le_one {ε : ℝ} (hε : ε ≤ 1) (p q i : n) :
+    concentrate p q ε i ≤ 1 := by
+  unfold concentrate
+  split
+  · exact le_refl 1
+  · split
+    · exact le_refl 1
+    · exact hε
+
+/-- **The block is exact.**  On the two chosen configurations the congruence
+leaves the kernel completely alone, for every `ε` — including the diagonal
+entries, since `p ≠ q` is not even needed. -/
+theorem concentrate_block (M : Matrix n n ℝ) (p q : n) (ε : ℝ) :
+    (Matrix.diagonal (concentrate p q ε) * M * Matrix.diagonal (concentrate p q ε)) p q
+      = M p q := by
+  rw [Matrix.mul_diagonal, Matrix.diagonal_mul]
+  unfold concentrate
+  simp
+
+/-- The mirrored entry, likewise untouched. -/
+theorem concentrate_block' (M : Matrix n n ℝ) (p q : n) (ε : ℝ) :
+    (Matrix.diagonal (concentrate p q ε) * M * Matrix.diagonal (concentrate p q ε)) q p
+      = M q p := by
+  rw [Matrix.mul_diagonal, Matrix.diagonal_mul]
+  unfold concentrate
+  by_cases h : q = p
+  · simp [h]
+  · simp [h]
+
+/-- **Everything else is `O(ε)`.**  Any entry whose row leaves the pair is
+damped by at least a factor `ε`. -/
+theorem concentrate_off_block {ε : ℝ} (hε0 : 0 < ε) (hε1 : ε ≤ 1)
+    (M : Matrix n n ℝ) (p q i j : n) (hip : i ≠ p) (hiq : i ≠ q) :
+    |(Matrix.diagonal (concentrate p q ε) * M *
+        Matrix.diagonal (concentrate p q ε)) i j| ≤ ε * |M i j| := by
+  rw [Matrix.mul_diagonal, Matrix.diagonal_mul]
+  have hi : concentrate p q ε i = ε := by
+    unfold concentrate; rw [if_neg hip, if_neg hiq]
+  rw [hi, abs_mul, abs_mul, abs_of_pos hε0]
+  have hj0 : 0 < concentrate p q ε j := concentrate_pos hε0 p q j
+  have hj1 : |concentrate p q ε j| ≤ 1 := by
+    rw [abs_of_pos hj0]; exact concentrate_le_one hε1 p q j
+  calc ε * |M i j| * |concentrate p q ε j| ≤ ε * |M i j| * 1 :=
+        mul_le_mul_of_nonneg_left hj1 (by positivity)
+    _ = ε * |M i j| := by ring
+
+/-- **The fused bond, at every `ε`.**  Specialised to the antipodal pair of the
+hypercube kernel, the block the concentration preserves is exactly the Ising
+bond of coupling `β · L` — for every strictly positive `ε`, not only in a limit.
+This is §3's fusion identity relocated inside the orbit. -/
+theorem concentrate_antipodal_block (L : ℕ) (β ε : ℝ) :
+    (Matrix.diagonal (concentrate (cfgPlus L) (cfgMinus L) ε) *
+       (fun σ τ => tensorKernel L β σ τ) *
+       Matrix.diagonal (concentrate (cfgPlus L) (cfgMinus L) ε))
+        (cfgPlus L) (cfgMinus L)
+      = Real.exp (-(β * L)) := by
+  rw [concentrate_block]
+  exact tensorKernel_plus_minus L β
+
 end Congruence
 
 end YangMills.OS
