@@ -638,7 +638,7 @@ private theorem coordinate_zero_fourth_eq_three_mixed :
               6 * (quaternionCoordinate 0 x ^ 2 * quaternionCoordinate 1 x ^ 2))) +
           (fun x : SU2 =>
             (-4) * (quaternionCoordinate 0 x * quaternionCoordinate 1 x ^ 3))) +
-        (fun x : SU2 => quaternionCoordinate 1 x ^ 4)) g ∂haarSU2) = _
+        (fun x : SU2 => quaternionCoordinate 1 x ^ 4) : SU2 → ℝ) g ∂haarSU2) = _
     rw [integral_add hACBD hA1, integral_add hACB hDscaled,
       integral_add hAC hBscaled, integral_add hA hCscaled]
     rw [integral_const_mul, integral_const_mul, integral_const_mul]
