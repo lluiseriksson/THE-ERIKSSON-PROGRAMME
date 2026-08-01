@@ -778,7 +778,7 @@ theorem lower_bound_approaches {μ c : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1) (hc 
     obtain ⟨E, hEdef⟩ : ∃ E : ℝ, E = (1 - μ - t * (1 + μ)) / (2 * t * c) := ⟨_, rfl⟩
     have hE : 0 < E := by rw [hEdef]; exact div_pos (by linarith) h2tc
     have hexp : t * (c * E) = (1 - μ - t * (1 + μ)) / 2 := by
-      rw [hEdef]; field_simp; all_goals ring
+      rw [hEdef]; field_simp
     have hminpos : 0 < min E 1 := lt_min hE one_pos
     refine ⟨min E 1, hminpos, min_le_right _ _, ?_⟩
     have hd2 : (0 : ℝ) < 1 + μ + c * min E 1 := by
@@ -882,21 +882,29 @@ large, contributes nothing to the witness. -/
 theorem quad_pairVec (M : Matrix n n ℝ) {p q : n} (hpq : p ≠ q) (a b : ℝ) :
     quad M (pairVec p q a b)
       = a * M p p * a + a * M p q * (-b) + ((-b) * M q p * a + (-b) * M q q * (-b)) := by
-  have hinner : ∀ i : n, ∑ j, pairVec p q a b i * M i j * pairVec p q a b j
+  have hrow : ∀ i : n, ∑ j, pairVec p q a b i * M i j * pairVec p q a b j
       = pairVec p q a b i * M i p * a + pairVec p q a b i * M i q * (-b) := by
     intro i
-    have h := sum_eq_pair_of_vanishing hpq
+    rw [sum_eq_pair_of_vanishing hpq
       (fun j => pairVec p q a b i * M i j * pairVec p q a b j)
-      (fun j hjp hjq => by rw [pairVec_off hjp hjq]; ring)
-    rw [h]
-    simp only [pairVec_at_p, pairVec_at_q hpq]
+      (fun j hjp hjq => by
+        show pairVec p q a b i * M i j * pairVec p q a b j = 0
+        rw [pairVec_off hjp hjq, mul_zero])]
+    show pairVec p q a b i * M i p * pairVec p q a b p
+        + pairVec p q a b i * M i q * pairVec p q a b q
+        = pairVec p q a b i * M i p * a + pairVec p q a b i * M i q * (-b)
+    rw [pairVec_at_p, pairVec_at_q hpq]
   unfold quad
   rw [sum_eq_pair_of_vanishing hpq
     (fun i => ∑ j, pairVec p q a b i * M i j * pairVec p q a b j)
     (fun i hip hiq => by
-      simp only [pairVec_off hip hiq, zero_mul, Finset.sum_const_zero])]
-  simp only [hinner, pairVec_at_p, pairVec_at_q hpq]
-  all_goals ring
+      show ∑ j, pairVec p q a b i * M i j * pairVec p q a b j = 0
+      rw [pairVec_off hip hiq]
+      simp)]
+  show (∑ j, pairVec p q a b p * M p j * pairVec p q a b j)
+      + (∑ j, pairVec p q a b q * M q j * pairVec p q a b j)
+      = a * M p p * a + a * M p q * (-b) + ((-b) * M q p * a + (-b) * M q q * (-b))
+  rw [hrow p, hrow q, pairVec_at_p, pairVec_at_q hpq]
 
 /-- **The fluctuation witness at the least-correlated pair.**  Both halves of
 what the lower bound needs, with no eigenvalue and no limit: the witness is
@@ -915,8 +923,13 @@ theorem leastPair_fluctuation_witness
       = Ω q * Ω q + Ω p * Ω p := by
     rw [sum_eq_pair_of_vanishing hpq
       (fun i => pairVec p q (Ω q) (Ω p) i * pairVec p q (Ω q) (Ω p) i)
-      (fun i hip hiq => by rw [pairVec_off hip hiq]; ring)]
-    simp only [pairVec_at_p, pairVec_at_q hpq]
+      (fun i hip hiq => by
+        show pairVec p q (Ω q) (Ω p) i * pairVec p q (Ω q) (Ω p) i = 0
+        rw [pairVec_off hip hiq, mul_zero])]
+    show pairVec p q (Ω q) (Ω p) p * pairVec p q (Ω q) (Ω p) p
+        + pairVec p q (Ω q) (Ω p) q * pairVec p q (Ω q) (Ω p) q
+        = Ω q * Ω q + Ω p * Ω p
+    rw [pairVec_at_p, pairVec_at_q hpq]
     ring
   rw [hnorm, quad_pairVec M hpq, hpp, hqq, hpqv, hqpv]
   nlinarith [witness_quad_lower (a := Ω q) (b := Ω p) hμ]
@@ -932,7 +945,6 @@ theorem leastPair_specGap_lower {μ ε c ρ s : ℝ} (hμ1 : μ < 1)
   have hexp : s / ρ - (1 - μ) / (1 + μ + c * ε)
       = (s * (1 + μ + c * ε) - (1 - μ) * ρ) / (ρ * (1 + μ + c * ε)) := by
     field_simp
-    all_goals ring
   have hnn : 0 ≤ (s * (1 + μ + c * ε) - (1 - μ) * ρ) / (ρ * (1 + μ + c * ε)) :=
     div_nonneg (by nlinarith) (le_of_lt (mul_pos hρ0 ha))
   have : 0 ≤ s / ρ - (1 - μ) / (1 + μ + c * ε) := by rw [hexp]; exact hnn
