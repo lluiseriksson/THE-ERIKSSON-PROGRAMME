@@ -410,12 +410,25 @@ Birkhoff's theorem \cite{birkhoff1957} says the map induced by $T$ contracts
 Hilbert's projective metric with coefficient $\tanh(\Delta(T)/4)$, and the
 spectral consequence is classical.
 
-\begin{fact}[Birkhoff bound; \cite{birkhoff1957,evesonnussbaum1995}]\label{fact:birkhoff}
+\begin{fact}[\cite{evesonnussbaum1995}, Theorem~1.1 with Theorem~2.3,
+eq.~(6)]\label{fact:birkhoff}
 For an entrywise positive matrix $T$ with Perron root $\rho(T)$,
 \[
   r(T)\;\le\;\tanh\!\big(\Delta(T)/4\big).
 \]
 \end{fact}
+
+The attribution is exact and worth unpacking, since this is the one
+non-elementary import. Eveson and Nussbaum call
+$q(L)=\sup\{|z|/r(L): z\in\sigma(L),\,z\neq r(L)\}$ the \emph{spectral
+clearance} (their eq.~(5)); it is verbatim the $r(T)$ of \S1. Their
+Theorem~2.3, eq.~(6), gives $q(L)\le\inf_{j\ge1}N(L^j)^{1/j}$, and their
+Theorem~1.1 --- the Birkhoff--Hopf theorem --- gives
+$N(L)=k(L)=\tanh\tfrac14\Delta(L)$. Taking $j=1$ yields Fact~\ref{fact:birkhoff}.
+Their hypotheses hold here with $m=1$: the standard cone in $\R^n$ is closed,
+normal and reproducing, $T$ is bounded with $T(C)\subseteq C$, and $T$ entrywise
+positive gives $\Delta(T;C,C)<\infty$ and $T^2\neq0$. Their introduction lists
+matrices with strictly positive entries as the motivating class.
 
 \emph{This is the only non-elementary input imported by the upper bound}, and it
 is imported as a statement, not reproved. It is one of \emph{two} classical
@@ -662,8 +675,7 @@ pinned, and that the pair of facts identifies which quantities an argument may
 and may not use. An earlier version of this paper could only conjecture the
 first of those; the phrasing here is now licensed by \S6.
 
-\paragraph{Two branches we have not yet audited, named as obligations.}
-\emph{(i) Diagonal scaling.} Eveson and Nussbaum \cite{evesonnussbaum1995}
+\paragraph{One branch we have not yet audited, named as an obligation.} Eveson and Nussbaum \cite{evesonnussbaum1995}
 explicitly connect the Birkhoff--Hopf circle to \emph{DAD theorems}, and there is
 a literature on $A\mapsto D_1AD_2$ --- matrix balancing, Sinkhorn normal form,
 van der Sluis's optimal scaling \cite{vandersluis1969}, surveyed in
@@ -674,13 +686,12 @@ optimisation over a congruence orbit in the parts we were able to read.
 \textbf{That is a partial reading, not a completed audit}, and we record it at
 that strength: it is evidence that the branch is aimed elsewhere, not evidence
 that it lacks the present statement.
-\emph{(ii) The exact source of Fact~\ref{fact:birkhoff}.} Besides
-\cite{birkhoff1957,evesonnussbaum1995}, the priority list for that hunt is
-Bushell's projective contraction ratio \cite{bushell1973} and the
-Bauer--Deutsch--Stoer line on bounds for non-dominant eigenvalues of positive
-operators.
-Any strengthening of the novelty claim below must go through both branches
-first.
+Eveson and Nussbaum name Borwein, Lewis and Nussbaum as the DAD reference; that
+is the entry point. Related lines we have likewise not read are Bushell's
+projective contraction ratio \cite{bushell1973} and the Bauer--Deutsch--Stoer
+work on bounds for non-dominant eigenvalues of positive operators, both cited in
+\cite{evesonnussbaum1995}. Any strengthening of the novelty claim below must go
+through this branch first.
 
 \paragraph{Formalisation.} We are not aware of a mechanised treatment of
 congruence orbits of transfer kernels. This is an absence of found prior art in
@@ -750,21 +761,21 @@ the imported spectral inequality. Formalising Fact~\ref{fact:birkhoff}, or
 importing it through a clean Lean interface, is the obvious next step and is
 listed in \S8.
 
-One further caveat of provenance. The bibliographic data for
-\cite{birkhoff1957,evesonnussbaum1995,seneta2006} were checked against the
-publishers' records, but the internal numbering of the results inside those
-sources was not, and \emph{two further attempts to pin it failed}: neither the
-publicly accessible material for \cite{evesonnussbaum1995} nor the secondary
-literature we could reach states the spectral corollary with a locatable number. Fact~\ref{fact:birkhoff} is therefore attributed to the works
-rather than to a numbered statement in them.
-\textbf{Pinning that numbered statement is a prerequisite for journal
-submission}, not an optional polish: Fact~\ref{fact:birkhoff} is the single
-\emph{non-elementary} load-bearing import in the \emph{upper bound} of
-Theorem~\ref{thm:lcp} --- the lower bound imports finite-dimensional spectral
-continuity as well --- and a reader must be able to go to one line of one source
-and check it. Remark~\ref{rem:phiform} reduces the
-exposure somewhat by giving a second closed form that reproduces the same value,
-but it does not remove it.
+On provenance. Fact~\ref{fact:birkhoff} is the single \emph{non-elementary}
+load-bearing import in the \emph{upper bound} of Theorem~\ref{thm:lcp} --- the
+lower bound imports finite-dimensional spectral continuity as well --- so a
+reader must be able to check it at named statements rather than at a paper. It
+now is: Theorem~1.1 and Theorem~2.3, eq.~(6) of \cite{evesonnussbaum1995}, both
+read in the source rather than inferred from secondary literature. Three earlier
+attempts to locate it failed; the record is kept because a citation that took
+four tries is one a referee should re-check.
+
+We cite only statements we have read. In particular we do \emph{not} attribute
+Fact~\ref{fact:birkhoff} to a corollary in \S2 of \cite{evesonnussbaum1995}: the
+numbered results we located there are Propositions~2.1--2.2, Lemmas~2.1--2.3,
+Theorems~2.2--2.3 and Remarks~2.1--2.3. Bibliographic data for
+\cite{birkhoff1957,seneta2006} were checked against the publishers' records; the
+internal numbering of those two was not, and neither is load-bearing.
 
 No statement in this paper is conjectural.
 
