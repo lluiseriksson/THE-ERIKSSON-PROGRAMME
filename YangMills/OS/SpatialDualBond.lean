@@ -9,29 +9,32 @@ import YangMills.OS.SpatialRing
 import YangMills.OS.Z2Quotient
 
 /-!
-# The exact local dual-bond identity
+# Exact dual-bond identities for the periodic spatial ring
 
 This file opens the algebraic infrastructure that may eventually support a
-fermionic or domain-wall analysis of the spatial-ring transfer matrix.  It does
-one thing only: it rewrites one `Z₂` bond as a positive scalar times the
-hyperbolic `2 × 2` field bond.
+fermionic or domain-wall analysis of the spatial-ring transfer matrix.  It
+rewrites one `Z₂` bond as a positive scalar times the hyperbolic `2 × 2` field
+bond, lifts that identity over all sites, and combines it with the exact
+periodic ring weight on both sides of `symWeighted`.
 
 ## Status
 
-**EXACT.**  `z2Bond_dual_factorization` is an entrywise identity.  It assumes
-`0 < β` and the exact duality relation `tanh a = exp (-2 * β)`.  The endpoint
-`β = 0` has no finite real dual coupling and is deliberately not hidden in this
-parametrisation.
+**EXACT.**  The factorisations are entrywise identities.  They assume `0 < β`,
+preserve the active spatial-target hypothesis `0 ≤ γ` at the `symWeighted`
+front door, and use the exact duality relation
+`tanh a = exp (-2 * β)`.  The endpoint `β = 0` has no finite real dual coupling
+and is deliberately not hidden in this parametrisation.
 
-**CERTIFIED / VERIFIED.**  The symbolic gate
-`scripts/judge_spatial_dual_bond.py` was preregistered before this theorem.  It
-checks the same identity in normal and optimised Python execution.  Lean and
-oracle certification are separate obligations recorded in the verification
-ledger.
+**CERTIFIED / VERIFIED.**  The local and finite-product identities have their
+recorded symbolic and Lean witnesses.  The separate
+`scripts/judge_spatial_symweighted_factorization.py` gate was preregistered and
+passed in normal and optimized Python in two fresh independent Colab clones
+before the final `symWeighted` theorem below was added.  Lean and oracle
+certification remain separate obligations recorded in the verification ledger.
 
-**NOT CLAIMED.**  This local identity is not a many-site factorisation, a
-Jordan--Wigner transform, either flip-sector estimate, or progress on the
-uniform spatial-ring bound itself.
+**NOT CLAIMED.**  These exact identities are not a Jordan--Wigner transform,
+either flip-sector estimate, or progress on the uniform spatial-ring bound
+itself.
 -/
 
 namespace YangMills.OS
@@ -113,5 +116,33 @@ theorem spatialWeightRing_eq_exp_ringBondSum
     spatialWeightRing γ σ = Real.exp (γ * ringBondSum σ) := by
   unfold spatialWeightRing ringBondSum z2Bond
   rw [← Real.exp_sum, Finset.mul_sum]
+
+/-! ## The exact periodic `symWeighted` factorisation -/
+
+/-- **Exact ring/dual factorisation of the symmetrised transfer kernel.**
+
+For `0 < β`, `0 ≤ γ`, and the finite dual coupling
+`tanh a = exp (-2 * β)`, both square-root ring weights and every temporal bond
+are exposed entrywise.  The closing spatial bond is retained inside each
+`ringBondSum`, and the local dual scale occurs exactly `L + 1` times.
+
+This is the one theorem licensed by the separately preregistered exhaustive
+`symWeighted` gate.  It is exact algebraic infrastructure only: it proves no
+operator-norm estimate and neither the odd nor the even spectral obligation. -/
+theorem symWeighted_ring_dual_factorization
+    (β γ a : ℝ) (hβ : 0 < β) (_hγ : 0 ≤ γ)
+    (hdual : Real.tanh a = Real.exp (-2 * β))
+    {L : ℕ} (σ τ : Fin (L + 1) → Fin 2) :
+    symWeighted (spatialWeightRing γ) β σ τ =
+      Real.exp (γ * ringBondSum σ / 2) *
+        dualFieldScale β a ^ (L + 1) *
+        (∏ j, dualFieldBond a (σ j) (τ j)) *
+        Real.exp (γ * ringBondSum τ / 2) := by
+  unfold symWeighted
+  rw [spatialWeightRing_eq_exp_ringBondSum,
+    spatialWeightRing_eq_exp_ringBondSum,
+    ← Real.exp_half, ← Real.exp_half,
+    spatialKernel_dual_factorization β a hβ hdual]
+  ring
 
 end YangMills.OS
