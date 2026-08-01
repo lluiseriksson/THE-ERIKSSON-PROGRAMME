@@ -29669,3 +29669,30 @@ Accordingly no Lean theorem licensed by this gate has been fabricated.  The
 existing exact algebra remains unchanged, while the sharp odd-sector bound,
 the even non-Perron bound, and the uniform `specRatio` inequality under the two
 active sign hypotheses all remain unproved.
+
+## Addendum 577 (2026-08-01, **TASK 14: local symWeighted gate inconclusive**)
+
+**LOCAL COST MEASURED BEFORE ASSUMING COLAB DEPENDENCE.**  A first Windows
+preflight found a foreign
+`lake build YangMills.RG.BalabanCMP98Eq123QuadraticFrontier` and launched
+nothing.  After a bounded 36.3-second monitor found an exclusive window, the
+unchanged preregistered normal-mode judge from raw SHA
+`06226edc9221fa60a6ed39e30ae84c848bd66041` was started as PID 19520.  No Lean,
+Lake, oracle, or Colab process was started by this campaign.
+
+**INCONCLUSIVE FAILURE, RETAINED.**  The external wall/RSS measurement harness
+reached its 124-second limit before the judge returned.  It did not terminate
+the atomic child.  PID 19520, created at `10:34:49+02:00`, was allowed to exit
+by itself at `10:37:40+02:00`, about 171 seconds later.  Its parent output pipe
+had already ended, so no verdict JSON, exit code, PASS, or reliable peak RSS
+was recovered.  `python -O` was not started after the global single-build-token
+instruction arrived.  The full diagnosis is
+`INC-SPATIAL-SYMWEIGHTED-GATE-002.md`.
+
+This is evidence about runtime cost only, not mathematical certification.  It
+shows that the present exact SymPy gate is not a negligible desktop check, but
+does not establish that Colab is logically required.  The proposed Lean
+factorisation remains unadded; both analytic sector obligations and the
+uniform signed-front-door target remain wholly open.  At the safe checkpoint
+no matching process owned by this campaign remained, and the build token was
+reported free for Task 22.
