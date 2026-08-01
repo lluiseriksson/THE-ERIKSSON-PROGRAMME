@@ -832,6 +832,39 @@ theorem congrOrbit_nonempty (r : Matrix n n ℝ → ℝ) (M : Matrix n n ℝ) :
     (congrOrbit r M).Nonempty :=
   ⟨_, mem_congrOrbit r M (d := fun _ => (1 : ℝ)) (fun _ => one_pos)⟩
 
+/-! ### §10.0  The hypothesis really is the cited fact
+
+`hBirkhoff` below is stated with `Real.sqrt` and no transcendental function at
+all.  That is only legitimate if the two closed forms are the same number, so we
+prove they are rather than assert it in prose: Seneta's `(1-√φ)/(1+√φ)` and
+Birkhoff's `tanh (Δ/4)` agree at `Δ = log (1/φ)`.  Without this the reader would
+have to take on trust that the hypothesis being assumed is the fact being cited,
+which is exactly the kind of unchecked step this development has already
+published once. -/
+
+theorem phi_form_eq_tanh {φ : ℝ} (hφ : 0 < φ) :
+    Real.tanh (Real.log (1 / φ) / 4) = (1 - Real.sqrt φ) / (1 + Real.sqrt φ) := by
+  have hs : 0 < Real.sqrt φ := Real.sqrt_pos.mpr hφ
+  have hsq : Real.sqrt φ * Real.sqrt φ = φ := Real.mul_self_sqrt hφ.le
+  have hmul := Real.log_mul (ne_of_gt hs) (ne_of_gt hs)
+  rw [hsq] at hmul
+  have hlog : Real.log (1 / φ) / 4 = Real.log (1 / Real.sqrt φ) / 2 := by
+    rw [one_div, one_div, Real.log_inv, Real.log_inv]
+    linarith [hmul]
+  rw [hlog]
+  exact tanh_half_log_inv hs
+
+/-- **The imported bound is attained, at every diameter.**  For the `2×2` kernel
+of `exch_two_eigen` the minimum cross-ratio is `μ²`, so the Birkhoff coefficient
+is this number --- and `exch_two_eigen` gives eigenvalues `1 ± μ`, whose ratio is
+exactly it.  So no bound on the ratio that depends on the diameter alone can be
+smaller than `tanh (Δ/4)`: any sharpening must use data a congruence can move,
+which by `crossRatio_congr_invariant` the diameter is not. -/
+theorem birkhoff_attained_two {μ : ℝ} (hμ0 : 0 < μ) :
+    Real.tanh (Real.log (1 / (μ * μ)) / 4) = (1 - μ) / (1 + μ) := by
+  have h := phi_form_eq_tanh (φ := μ * μ) (mul_pos hμ0 hμ0)
+  rwa [Real.sqrt_mul_self hμ0.le] at h
+
 /-! ### §10.1  The upper half, from Birkhoff -/
 
 /-- **The upper bound.**  Granted Birkhoff's bound as a hypothesis, the whole
