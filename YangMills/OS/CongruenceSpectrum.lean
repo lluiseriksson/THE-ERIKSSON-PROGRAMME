@@ -371,17 +371,10 @@ theorem exch_ratio_strict_anti {μ : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1)
     {k k' : ℝ} (hk : 0 ≤ k) (hlt : k < k') :
     (1 - μ) / (1 + k' * μ) < (1 - μ) / (1 + k * μ) := by
   have h1 : 0 < 1 + k * μ := by nlinarith
-  have h2 : 0 < 1 + k' * μ := by nlinarith
   have hnum : 0 < 1 - μ := by linarith
-  have key : (1 - μ) / (1 + k * μ) - (1 - μ) / (1 + k' * μ)
-      = (1 - μ) * ((k' - k) * μ) / ((1 + k * μ) * (1 + k' * μ)) := by
-    field_simp
-    ring
-  have hpos : 0 < (1 - μ) * ((k' - k) * μ) / ((1 + k * μ) * (1 + k' * μ)) :=
-    div_pos (by nlinarith) (mul_pos h1 h2)
-  have hdiff : 0 < (1 - μ) / (1 + k * μ) - (1 - μ) / (1 + k' * μ) := by
-    rw [key]; exact hpos
-  linarith
+  have hden : 1 + k * μ < 1 + k' * μ := by nlinarith
+  -- `a / b < a / c` for `0 < a` and `0 < c < b`; no identity to normalise
+  exact div_lt_div_of_pos_left hnum h1 hden
 
 /-- The pair value is the one §3 already computed: at `m = 2` the exchangeable
 ratio is `(1-μ)/(1+μ)`, and on the hypercube kernel `μ = e^{-2βL}` at the
