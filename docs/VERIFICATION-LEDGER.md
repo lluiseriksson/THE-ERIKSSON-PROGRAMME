@@ -29996,3 +29996,73 @@ tab was closed.  Full scope and the single-session recovery contract are in
 Recovery-A supplies no witness.  Two complete fresh witnesses remain required
 before terminal certification, and neither analytic sector obligation nor the
 uniform spatial-ring bound has advanced.
+
+## Addendum 586 (2026-08-01, **TASK 14: exact odd orbit fold certified**)
+
+**ONE LOSSLESS STRUCTURAL IDENTITY.**  At source SHA
+`fca2f37705bc06cf659829bde64ea0fd5c810638`, the new theorem
+`YangMills.OS.act_flipOdd_eq_sum_zero_head` pairs every global-flip orbit by
+its representative with zero first spin and rewrites an arbitrary kernel
+action on a flip-odd observable using the exact kernel difference against the
+full global flip.  It covers every positive length `L + 1`, including one,
+and assumes neither kernel positivity nor flip invariance.  It concludes no
+norm or spectral inequality.
+
+**TWO FRESH INDEPENDENT HIGH-RAM CPU WITNESSES.**  Recovery-C used root
+`/tmp/spatial-odd-orbit-fold-l7vrhyvz` from
+`2026-08-01T15:03:04.730558Z` through `15:56:09.487249Z`
+(3184.756691 s).  Recovery-D used root
+`/tmp/spatial-odd-orbit-fold-e8nmu2x0` from
+`2026-08-01T15:58:45.970257Z` through `16:52:19.335992Z`
+(3213.365735 s).  Each reported Linux `6.6.122+`, Python `3.12.13`, eight
+logical Intel Xeon CPUs at 2.20 GHz, 53467192 kB RAM, and no GPU.  Both
+checked out the same source SHA from the immutable notebook object
+`5bf542ba39c6b2bac981f375c3c4aaf07f164120` and shared neither roots nor
+outputs.
+
+In both runs the preregistered judge SHA-256
+`43d218195d497f65d8e6012081a36215a363574fbf3046dccc3eec01eb18ab89`
+passed in normal Python and `python -O` with identical exact JSON: ring sizes
+1 through 7, 254 action rows, 10922 paired summands, 10922 rejected sign
+mutations, 10922 rejected omission mutations, and 10920 rejected head-only
+flip mutations.  `lake build YangMills.OS.SpatialRing` passed with 8171 jobs,
+and `lake build YangMillsCore` passed with 8466 jobs in each fresh clone.
+
+**ORACLE CONCORDANCE.**  Each permanent oracle and consistency command
+returned exit 0.  Extracted from the two independent archived transcripts,
+the deterministic oracle-output blocks each contain 344012 characters and
+have identical SHA-256
+`4b4accc1136ef49d5a286b5d3e3814cb187629bb9f7998a81412a815ab7878d7`.
+The new theorem appears exactly once in each block with only
+`{propext, Classical.choice, Quot.sound}`; `sorryAx` is absent, and each
+consistency run reports zero source `sorry` and zero project axioms.
+
+Recovery-C's downloaded ZIP independently hashes to
+`e1881844342ec9c50eaab8b6663cd10b6a568740fe25de3805d894f8bd06198b`;
+its internal manifest revalidates `metadata.json` as
+`69e96c131e7a618010278755ea3a35516bd39a52d7073903d6416197dafcc9f2`
+and `transcript.txt` as
+`8b736038c4e2020e3cad4efb1ef2d1c2ae67510287fb81cf563f4f588794b882`.
+Recovery-D's ZIP hashes to
+`19453573d2d9237e4057d3457fde5563c934c9378dd6f6899d009efeb7897dab`;
+its corresponding internal hashes are
+`bb51d1fc8cb88756d7f13edbb700e0b72747f23da66f0023c0a239bce38e26c6`
+and `089b5c6a978bc73aef52d5015d2828cda97a01f777300c994012811c5cc2a406`.
+
+**EVIDENCE LIMITATION RECORDED, NOT HIDDEN.**  The notebook ZIP contains
+`metadata.json` and `transcript.txt`, not a separately named
+`oracle_output.txt`.  It creates the archive immediately before logging its
+four final job-summary/archive/PASS lines, so those live-cell lines are not in
+the ZIP.  The archived transcript does contain both build completions and job
+counts, the full oracle with exit 0, and consistency with exit 0; metadata
+independently records 8171 and 8466.  The full focused record is
+`ORACLE-20260801-SPATIAL-ODD-ORBIT-FOLD.txt`.
+
+Both Task 14 runtimes were terminated.  The Colab active-session manager
+confirmed that this notebook was absent; unrelated owner sessions were left
+untouched.
+
+This is CERTIFIED structural infrastructure, not analytic progress.  The
+sharp odd-sector bound, the even non-Perron bound, and the uniform
+signed-front-door `specRatio <= tanh(beta) * exp(2 * gamma)` theorem remain
+wholly open.
