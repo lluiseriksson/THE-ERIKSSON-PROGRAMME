@@ -4,12 +4,99 @@
 worktree.  These rules govern evidence, audits, integration, guards, and local
 infrastructure.  They do not assert or amend mathematics.
 
-**Amendment date:** 2026-07-31.
+**Amendment date:** 2026-08-01.
 
 Only rules paid for by observed repository incidents belong here.  A rule's
 evidence label is part of the rule: `versioned` means that the repository holds
 the cited record; `incident report` means that the owner reported the event but
 no exact transcript is versioned here.
+
+## Active owner rules adopted 2026-08-01
+
+The following rules are operative instructions.  They supersede inconsistent
+older execution defaults, including the local build token and the detached
+Windows build recommendation formerly recorded in `CLAUDE.md`.
+
+### Sanctioned execution and terminal reproduction
+
+**Rule.**  Colab Pro+ on Linux is the sanctioned compilation and reproduction
+plane.  Lean and Lake builds, oracles, `YangMillsCore`, numerical ovens,
+campaigns, and all other sustained computation run there, regardless of
+implementation language or programme.  PART I/Surface being active and
+prioritized affects the Colab queue; it creates no environment exception.
+
+Windows is the owner's desktop and is limited to editing, git, hashes,
+commits/push/PR, and scripts proved by reliable prior measurement to satisfy
+all three local-light limits:
+
+1. at most 30 seconds wall time;
+2. exactly one process with no worker pool; and
+3. at most 512 MiB peak RSS.
+
+Without reliable prior measurements establishing all three limits, a script
+is presumed heavy and runs in Colab.  Rational certifiers are local only when
+they meet this contract.  Running Lean, Lake, an oracle, a numerical oven, or
+any computation outside the local-light contract on Windows is prohibited.
+The only exception is explicit owner authorization in the same assignment
+that names the command or campaign.  An idle or apparently available Windows
+machine does not grant permission.
+
+The `symWeighted` judge from assignment (14), measured at 171 seconds, is not
+light.  Its former Windows authorization is superseded and it runs in Colab.
+The former local build token is likewise superseded.  The coordinated resource
+is a **COLAB SESSION**: one thread per session, with explicit acquisition
+before use and explicit release afterward.
+
+Terminal reproducibility requires two fresh, independent clones in Colab,
+checked out at the same SHA, with matching output hashes.  It does not require
+two operating systems.  Windows execution is not closure debt.
+
+### Acceptance-safe Python certificates
+
+**Rule.**  No decision to accept input, accept a mutation, increment an
+acceptance counter, or emit `PASS` may depend on a Python `assert`.  Acceptance
+checks must be explicit and must raise an error or return a non-zero exit code
+in both normal execution and `python -O`.  A certifier may emit `PASS` only
+after all checks have completed and an explicit acceptance counter has been
+checked.
+
+Certificate self-tests must run in normal and `-O` modes and must include real
+field mutations, not only author-invented placeholders.  An internal `assert`
+is permitted only when it does not participate in deciding certificate
+acceptance; no certificate may depend on it for its verdict.
+
+### Sentinels transport exit status; they do not certify success
+
+**Rule.**  The mere existence of a sentinel never means success.  A sentinel
+contains exactly one line: the real decimal exit code of the child process,
+captured after that process terminates.  Sentinel publication is atomic:
+
+1. write the exit code to a temporary file;
+2. close the temporary file;
+3. validate that it is non-empty and parses as an integer; and
+4. rename it to the final sentinel path.
+
+Every reader must distinguish four states: sentinel absent; sentinel empty or
+non-integer; sentinel containing a non-zero integer; and sentinel containing
+zero.  Only the last state, together with separate validation of the log,
+permits a candidate `PASS`.  Logs and sentinels must use semantic mode names,
+such as `normal` and `optimized`, rather than indistinguishable numeric
+suffixes.
+
+## Historical provenance for the 2026-08-01 rules
+
+This subsection records why the active rules above exist; it is incident
+history, not an alternate execution procedure.  The rule adopted on
+2026-08-01 was purchased by three measured incident classes:
+
+- a Windows cache was destroyed through a junction;
+- two certificates emitted false `PASS` under `python -O`, which removes
+  `assert` statements; and
+- a sentinel was empty and did not transport the child process's exit code.
+
+No new cost, duration, or success metric is inferred here.  The detailed cache
+incident record, including its separately labelled measurements and causal
+reconstruction, remains the evidence cited in section 1 below.
 
 ## 1. Worktree cache isolation
 
