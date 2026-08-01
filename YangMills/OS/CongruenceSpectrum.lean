@@ -399,7 +399,7 @@ says the projective diameter is *constant* on the orbit, so nothing about it is
 theorem exch_two_apply (μ : ℝ) :
     exch 2 μ = !![1, μ; μ, 1] := by
   funext i j
-  fin_cases i <;> fin_cases j <;> simp [exch] <;> decide
+  fin_cases i <;> fin_cases j <;> simp [exch]
 
 /-- **Attainment at `n = 2`.**  The symmetric vector is an eigenvector with
 eigenvalue `1 + μ`, the antisymmetric one with eigenvalue `1 - μ`; the ratio
