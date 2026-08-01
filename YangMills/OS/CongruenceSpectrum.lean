@@ -578,12 +578,10 @@ theorem ratio_of_sq {t μ : ℝ} (ht : 0 < t) (hμ : 0 < μ) (hsq : t * t = 1 / 
   have key : (t - t⁻¹) / (t + t⁻¹) = (t * t - 1) / (t * t + 1) := by
     rw [div_eq_div_iff (ne_of_gt hden) (by positivity)]
     field_simp
-    ring
   rw [key, hsq]
   -- and `t² = 1/μ` makes it `(1/μ - 1)/(1/μ + 1) = (1-μ)/(1+μ)`, a field identity
   rw [div_eq_div_iff (by positivity) (by linarith)]
   field_simp
-  ring
 
 /-- `tanh` at a quarter-diameter, in the exponential form `ratio_of_sq` needs. -/
 theorem tanh_eq_exp_ratio (x : ℝ) :
