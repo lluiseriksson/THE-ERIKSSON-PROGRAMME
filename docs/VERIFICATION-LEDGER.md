@@ -29606,3 +29606,56 @@ high-RAM, never GPU, disconnected at the end of each.  The first unit's runtime
 was deleted on disconnect per the environment rule, so the second paid the full
 elan-plus-cache setup again; once cached, a single-module iteration is ~7 s,
 which is what made five passes affordable.
+
+## Addendum 574 (2026-08-01, **five findings of an external reading, four of
+them defects, and the one that needed Lean**)
+
+**MEASURED at `c3d8e32d`.**  Core **8468 jobs** --- unchanged, because the new
+theorems went into an EXISTING module and a declaration does not create a build
+job, only a module does.  Oracle exit **zero**, **2817** reports (2813 + 4),
+**zero** `sorryAx`.  All eight children zero; `RUN VERDICT: every child exited
+zero`, reported as a PASS CANDIDATE.
+
+**THE SUBSTANTIVE FINDING, and it was a real over-claim.**  D-2a proves
+`sup` over **all** `h ∈ ℝ`.  In a concrete finite system the reachable effective
+fields form a DISCRETE subset, and the maximiser `h = J` need not correspond to
+any admissible boundary condition; so the true Dobrushin coefficient of a
+particular model can satisfy `c_ij < tanh|J_ij|` strictly.  What is proved is a
+**sharp field-uniform one-bond influence envelope** --- a valid interdependence
+majorant, which is all Dobrushin's condition needs and which invalidates nothing
+downstream --- **not** the minimal interdependence matrix of any system.  The
+paper now states this with the formula for `c_ij` and drops "tanh J is the
+coefficient".
+
+**THE FINDING THAT NEEDED LEAN, not prose (D-2c).**  `starDist_rowSum` computes
+ONE site of ONE five-point graph, while `dobrushin_resolvent_bound` consumes a
+bound at EVERY site: "the window is done" was local arithmetic standing in for a
+claim about the family.  `rowSum_bound_of_local_cover` closes it --- if at every
+site the influence support is contained in a finite set whose coefficients sum
+below `alpha`, the row-sum hypothesis holds at every site, with the cardinality
+of the index type nowhere in the statement --- and
+`dobrushin_bound_of_local_cover` composes the chain from local data alone.
+
+**THREE SCOPE DEFECTS.**  (i) "every structural hypothesis" was wrong: the
+construction discharges the MATRIX-SIDE hypotheses; `d i i = 0` and the triangle
+inequality remain hypotheses of the endpoint.  (ii) "refute" was too strong for
+eight cells at `L ≤ 12` with a three-term Aitken: the data CONTRADICT the blanket
+attribution on the tested grid and are not offered as refuting an asymptotic
+claim, since a sequence can appear to saturate and turn afterwards.  (iii) the
+19-versus-14 accounting did not close semantically; it now distinguishes newly
+added reports from pre-existing ones and totals 37.
+
+**THE ABSTRACT OVERSTATED THE BODY FOR THE THIRD TIME.**  Both (i) and (ii) had
+already been written correctly in the body while the abstract kept the strong
+form; the v1.1 round had the identical defect one level up.  This is now a
+standing check for this lane: **after any scope correction, re-read the abstract
+against the body sentence by sentence, because the abstract is where the
+correction is least likely to have been applied and most likely to be read.**
+
+**PRIOR ART narrowed.**  The mechanisation claim now names its search strategy
+and restricts to the finite-lattice interdependence matrix and comparison
+estimate, because "Dobrushin" names several distinct results and mechanised work
+using others of them exists.
+
+**PAPER v3** (10 pp): unchanged in mathematics, corrected in scope everywhere the
+reading found it, plus the new bridge.

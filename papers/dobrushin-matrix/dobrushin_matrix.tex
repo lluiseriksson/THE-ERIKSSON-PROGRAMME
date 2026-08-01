@@ -22,7 +22,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{56c8987d667197ac038c92c87fe9e90f2b4252d0}
+\newcommand{\anchor}{c3d8e32d2eecf85cf2dba26ce9b0a8bb42005c9c}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -50,15 +50,20 @@ switched on.  That theorem obstructs the \emph{method}.  It was read as
 obstructing the \emph{conclusion}, and the reading outlived its own retraction.
 
 We prove, in Lean~4 with no \texttt{sorry} and no project axiom, a chain of
-three theorems.  \textbf{First}, the single-bond coefficient: flipping one
+three theorems.  \textbf{First}, the one-bond influence envelope: flipping one
 neighbour across a bond of strength $J\ge0$ moves a two-state site's conditional
 by at most $\tanh J$, and by exactly $\tanh J$ at one field, so $\tanh J$ is the
-\emph{least} upper bound rather than merely an upper bound.  \textbf{Second},
-those coefficients assembled into a matrix discharge every structural hypothesis
-of the third, leaving only a row-sum bound --- which is the coupling window, and
-which we compute: at a site carrying two bonds of strength $\beta$ and two of
-strength $\gamma$ it is exactly $2\tanh|\beta|+2\tanh|\gamma|$, so the window is
-the hypothesis of a theorem rather than a sentence.  \textbf{Third}, the
+\emph{least field-uniform} bound.  It is an interdependence majorant, not the
+minimal coefficient of any particular finite model, whose reachable fields form
+a discrete set --- a distinction Section~2 makes precisely.  \textbf{Second},
+those envelopes assembled into a matrix discharge every \emph{matrix-side}
+hypothesis of the third (the two conditions on the ambient distance remain
+hypotheses), and turn a purely \emph{local} covering condition into the
+remaining row-sum bound holding at every site of every volume --- which is the
+coupling window, and which we compute: at a site carrying two bonds of strength
+$\beta$ and two of strength $\gamma$ it is exactly
+$2\tanh|\beta|+2\tanh|\gamma|$, so the window is the hypothesis of a theorem
+rather than a sentence.  \textbf{Third}, the
 resolvent bound: for a nonnegative matrix $C$ over a finite index type, supported
 on pairs at distance at most one and with row sums \emph{bounded} by $\alpha<1$
 and never constant,
@@ -77,16 +82,20 @@ reaches one to six decimal places in the two ordered cells tested.  The
 control at zero spatial coupling reproduces the \emph{proved} identity
 $\specRatio=\tanh\beta$ to six decimals, so the harness is calibrated against a
 theorem rather than against itself.  These data are eight cells at $L\le12$ with
-an extrapolation: they refute the attribution of the degeneracy to the spatial
-weight, and they do \emph{not} locate the transition, which would need a dense
-sweep and finite-size scaling that we do not attempt.
+an extrapolation.  On the tested grid they \emph{contradict} the blanket
+attribution of the degeneracy to the mere presence of the spatial weight; they
+are not, and are not offered as, a refutation of an asymptotic claim, since a
+sequence can appear to saturate at $L\le12$ and turn afterwards.  They do
+\emph{not} locate the transition, which would need a dense sweep and
+finite-size scaling that we do not attempt.
 
 \textbf{What is not proved.}  The volume-uniform bound on $\specRatio$ for the
 coupled kernel is \emph{not} established here.  Dobrushin's uniqueness theorem is
 classical \cite{Dobrushin1968,Simon1993}; nothing in this paper is new
 mathematics.  What is offered is a
-mechanised, non-vacuous chain, a measured refutation of an attribution, and a
-single remaining obligation named exactly: Dobrushin's comparison estimate.  No
+mechanised, non-vacuous chain, measured counterevidence against an attribution,
+and a single remaining obligation named exactly: Dobrushin's comparison
+estimate.  No
 consequence for Yang--Mills theory is stated, suggested, or implied.
 \end{abstract}
 
@@ -209,10 +218,30 @@ $+J$ and $-J$, their sum is zero, $\cosh 0=1$, and every inequality above is an
 equality.
 \end{proof}
 
-The attainment is not decoration.  A coefficient that were merely an upper bound
-would leave the window of Theorem~\ref{thm:matrix} undetermined at its own
-boundary; least-upper-boundedness is what makes $\tanh J$ the coefficient rather
-than a number above it.  In Lean the three statements are \texttt{tvField\_le},
+\textbf{What this is, stated carefully, because the obvious reading of it is
+wrong.}  The supremum is taken over \emph{all} $h\in\R$.  In a concrete finite
+system with the remaining couplings and any external field fixed, the effective
+fields actually reachable at a site form a discrete subset of $\R$, and the value
+$h=J$ at which equality holds need not correspond to any admissible boundary
+condition of that system.  So the true Dobrushin coefficient
+\[
+  c_{ij}\;=\;\sup\bigl\{\|\mu_i(\cdot\mid\eta)-\mu_i(\cdot\mid\eta')\|_{\mathrm{TV}}
+  \;:\;\eta,\eta'\text{ differ only at }j\bigr\}
+\]
+of a particular model may satisfy $c_{ij}<\tanh|J_{ij}|$ strictly.
+
+Theorem~\ref{thm:coeff} is therefore a \textbf{sharp field-uniform one-bond
+influence envelope}: sharp as a bound over arbitrary real fields, and a valid
+interdependence majorant, $c_{ij}\le\tanh|J_{ij}|$, for every model with that
+bond.  That is all Dobrushin's condition needs and it invalidates nothing
+downstream --- but it is not the claim that $\tanh|J|$ is the minimal
+interdependence matrix of any particular system, and this paper does not make
+that claim.  The window below is a sufficient condition, explicit and not
+optimal.
+
+The attainment still earns its place: without it the envelope would be some
+number above the influence, and one could not say the envelope is the best
+field-uniform one.  In Lean the three statements are \texttt{tvField\_le},
 \texttt{tvField\_attained} and \texttt{tvField\_isLUB}.
 
 \subsection{The matrix, and the window as a hypothesis}
@@ -226,19 +255,40 @@ Given sites $\iota$, bond strengths $J$ and a distance $d$, put
 \begin{theorem}[machine-checked]
 \label{thm:matrix}
 $C$ is entrywise nonnegative, vanishes on the diagonal, and vanishes whenever
-$d(i,j)>1$.  Consequently the hypotheses (i) and (ii) of Theorem~\ref{thm:d1}
-hold by construction, and the only remaining hypothesis is the row-sum bound.
-Moreover, at a site carrying two bonds of strength $\beta$ and two of strength
-$\gamma$,
+$d(i,j)>1$.  Consequently \emph{every matrix-side hypothesis} of
+Theorem~\ref{thm:d1} --- (i) and (ii) --- holds by construction.  Furthermore, if
+at every site the influence support is contained in a finite set whose bond
+coefficients sum to at most $\alpha$, then the row-sum hypothesis holds at every
+site, with neither the statement nor $\alpha$ mentioning the cardinality of the
+index type.  Finally, at a site carrying two bonds of strength $\beta$ and two of
+strength $\gamma$,
 \[
   \sum_j C_{ij}\;=\;2\tanh|\beta|+2\tanh|\gamma| .
 \]
 \end{theorem}
 
-The second display is the point of this subsection.  The coupling window of this
-lane has been carried in prose as $2\tanh\beta+2\tanh\gamma<1$; it is now the
-hypothesis of a theorem, computed rather than asserted, and
-Corollary~\ref{cor:chain} is what consumes it.  The distance used in the
+Three remarks, in decreasing order of how easily the statement is over-read.
+
+\emph{What is not discharged.}  The construction settles the matrix-side
+hypotheses.  It does \emph{not} discharge the two conditions on the ambient
+distance --- $d(i,i)=0$ and the triangle inequality --- which
+Corollary~\ref{cor:chain} still takes as hypotheses, as does the Lean endpoint.
+For a graph distance they are immediate; for an arbitrary $d$ they are
+assumptions, and the paper does not pretend otherwise.
+
+\emph{One site versus a family.}  The last display is arithmetic at one site of
+one five-point graph, and by itself it would say nothing about a family of
+volumes.  The middle clause is what makes it say something: it converts a
+\emph{local} geometric fact --- each site's influence support is covered by a set
+whose coefficients sum below one --- into the row-sum hypothesis holding
+simultaneously at every site of every volume with that local geometry.  In Lean
+these are \texttt{rowSum\_bound\_of\_local\_cover} and
+\texttt{dobrushin\_bound\_of\_local\_cover}.
+
+\emph{The window.}  It has been carried in this lane's prose as
+$2\tanh\beta+2\tanh\gamma<1$; it is now computed rather than asserted and is
+consumed by Corollary~\ref{cor:chain}.  It remains a sufficient condition and,
+by Section~\ref{sec:prior}, a conservative one.  The distance used in the
 computation is the graph distance on a star, proved reflexive at zero and
 triangular by exhaustive checking over the $125$ triples.
 
@@ -460,8 +510,14 @@ conditionals of an \emph{arbitrary} positive finite-range slice weight, which is
 what the development's Gibbs weight quantifies over, and where the exact
 solution is silent.
 
-\emph{Mechanisation.}  A search conducted on 1 August 2026 returned no
-formalisation of Dobrushin's uniqueness condition in any proof assistant.  The
+\emph{Mechanisation.}  A search conducted on 1 August 2026 over the public
+proof-assistant repositories and the arXiv listings for Lean, Coq and
+Isabelle returned no mechanisation of the finite-lattice Dobrushin
+interdependence matrix or of the comparison estimate.  We state it that
+narrowly on purpose: the name \emph{Dobrushin} attaches to several distinct
+results, and mechanised work exists that uses others of them, so a blanket
+claim of first formalisation would be both unsupported by the search we ran and
+ambiguous about which theorem it referred to.  The
 same search does return a Lean~4 formalisation of the transverse-field Ising
 chain \cite{LeanIsing2026}, with momentum-mode decomposition and a
 Jordan--Wigner transformation; it
@@ -496,7 +552,7 @@ one thing is missing and what it is.
 \section{Reproducibility}
 
 \textbf{Anchor.}  All sources cited above are read at commit
-\nolinkurl{56c8987d667197ac038c92c87fe9e90f2b4252d0} of
+\nolinkurl{c3d8e32d2eecf85cf2dba26ce9b0a8bb42005c9c} of
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Toolchain
 \nolinkurl{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned at
 \nolinkurl{07642720480157414db592fa85b626dafb71355b}.  A runner verifies all
@@ -507,21 +563,27 @@ stale cache cannot masquerade as a reproduction.
 measured the core at $8465$ jobs with Theorem~\ref{thm:d1}'s module removed from
 the root and $8466$ with it restored --- that delta by rebuilding the same tree
 twice, not by subtracting against a baseline someone else measured.  A fresh
-Linux clone reproduced $8466$ at that commit.  At the anchor, which adds the
-modules of Theorems~\ref{thm:coeff} and~\ref{thm:matrix}, the Linux plane
-measures $8468$ with zero errors.  The $+2$ is the difference between two
-measurements taken on the same plane, one per module, and is not an
-extrapolation.
+Linux clone reproduced $8466$ at that commit.  With the modules of
+Theorems~\ref{thm:coeff} and~\ref{thm:matrix} added, the Linux plane measures
+$8468$ with zero errors: the $+2$ is the difference between two measurements on
+the same plane, one job per new module, and is not an extrapolation.  At the
+anchor the count is still $8468$, because the last four theorems were added to an
+\emph{existing} module and a declaration does not create a build job --- only a
+module does.
 
 \textbf{Oracle.}  At the anchor the repository-wide oracle ran to completion
-with exit code zero over $2813$ axiom reports and \textbf{zero} occurrences of
-\texttt{sorryAx}.  Nineteen of those reports are the declarations of this
-paper's three modules --- eleven for Theorem~\ref{thm:coeff}, eight for
-Theorem~\ref{thm:matrix} --- and each depends on exactly
+with exit code zero over $2817$ axiom reports and \textbf{zero} occurrences of
+\texttt{sorryAx}.  The accounting, spelled out because a count of \emph{newly
+added} declarations is not a count of the paper's modules: twenty-three new
+oracle reports come from the two modules added over the last two anchors ---
+eleven for Theorem~\ref{thm:coeff}, twelve for Theorem~\ref{thm:matrix},
+of which four were added after an external reading identified the gap between a
+single site and a family of volumes --- while the fourteen declarations of
+Theorem~\ref{thm:d1}'s module, present since the first anchor, are also in the
+oracle and were separately checked one by one on the development machine.  Every
+one of the thirty-seven depends on exactly
 \texttt{[propext, Classical.choice, Quot.sound]}: Lean's three standard axioms,
-no project axiom, and no \texttt{sorry} anywhere.  The fourteen declarations of
-Theorem~\ref{thm:d1}'s module were additionally checked one by one on the
-development machine with the same result.
+no project axiom, and no \texttt{sorry} anywhere.
 
 \textbf{One gap in the runner's own coverage, stated because a reader counting
 modules would otherwise not find it.}  The runner builds two lane modules by
