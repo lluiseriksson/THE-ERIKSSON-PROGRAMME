@@ -47,6 +47,6 @@ import YangMills.SU2ThetaPrism.Endpoint
 #print axioms YangMills.SU2ThetaPrism.cellWeight_integrable
 #print axioms YangMills.SU2ThetaPrism.manufactured_six_point_theta_gate
 #print axioms YangMills.SU2ThetaPrism.manufacturingTechnicalInputsConcrete
-#print axioms YangMills.SU2ThetaPrism.manufacturingTechnicalInputsOne
+#print axioms YangMills.SU2ThetaPrism.manufacturingTechnicalInputsConcrete_betaOne_specialization
 #print axioms YangMills.SU2ThetaPrism.manufactured_six_point_theta_gate_concrete
 #print axioms YangMills.SU2ThetaPrism.endpoint_anti_vacuity

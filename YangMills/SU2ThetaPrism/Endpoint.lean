@@ -54,8 +54,10 @@ def manufacturingTechnicalInputsConcrete (beta : ℝ) (hbeta : BetaDomain beta) 
     ManufacturingTechnicalInputs beta where
   coefficientSeries := spinOneCoefficientRemainderStepConcrete hbeta.1.le
 
-/-- Explicit anti-vacuity witness at the required milestone `beta = 1`. -/
-def manufacturingTechnicalInputsOne : ManufacturingTechnicalInputs 1 :=
+/-- The `beta = 1` anti-vacuity specialization of the uniform constructor
+`manufacturingTechnicalInputsConcrete`; it is not the terminal constructor. -/
+def manufacturingTechnicalInputsConcrete_betaOne_specialization :
+    ManufacturingTechnicalInputs 1 :=
   manufacturingTechnicalInputsConcrete 1 one_mem_betaDomain
 
 /-- Internal composition lemma.  The public front door below supplies its
