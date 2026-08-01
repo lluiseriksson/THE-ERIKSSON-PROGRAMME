@@ -155,6 +155,35 @@ the ratio is not `0/0`. -/
 theorem bond_top_pos (a : ℝ) : 0 < 2 * Real.cosh a := by
   have := Real.cosh_pos a; linarith
 
+/-! ### The sign hypothesis `bond_ratio` needs, and why
+
+`bond_ratio` is an ALGEBRAIC identity: `2 sinh a / 2 cosh a = tanh a` for every
+real `a`.  The companion paper reads it as the *subdominant modulus* ratio
+`max{|λ| : λ ≠ ρ}/ρ`, and those two agree only when `2 sinh a ≥ 0`, i.e. when
+`a ≥ 0`.  For `a < 0` the antisymmetric eigenvalue is negative and the modulus
+ratio is `|tanh a|`, not `tanh a`.
+
+Recorded because an earlier draft of the paper stated the lemma without the sign
+hypothesis, and the Lean identity did not catch it: the identity was true, the
+sentence built on it was not.  The consumer uses `a = β·L` with `β > 0`, so the
+hypothesis costs nothing. -/
+
+/-- For `a ≥ 0` the antisymmetric eigenvalue is nonnegative, so the algebraic
+identity of `bond_ratio` really is the modulus ratio. -/
+theorem bond_sinh_nonneg {a : ℝ} (ha : 0 ≤ a) : 0 ≤ 2 * Real.sinh a := by
+  rcases lt_or_eq_of_le ha with h | h
+  · have := Real.sinh_pos_iff.mpr h; linarith
+  · rw [← h, Real.sinh_zero]; norm_num
+
+/-- And the hypothesis is not vacuous: for `a < 0` the quantity `bond_ratio`
+computes is strictly negative, hence cannot be a ratio of moduli. -/
+theorem bond_ratio_neg_of_neg {a : ℝ} (ha : a < 0) :
+    (2 * Real.sinh a) / (2 * Real.cosh a) < 0 := by
+  have hpos : 0 < Real.sinh (-a) := Real.sinh_pos_iff.mpr (by linarith)
+  rw [Real.sinh_neg] at hpos
+  have hc : 0 < Real.cosh a := Real.cosh_pos a
+  apply div_neg_of_neg_of_pos <;> linarith
+
 /-! ## §3  The fragile half, part two: the antipodal block
 
 The kernel of `L` decoupled bonds, restricted to the two antipodal
