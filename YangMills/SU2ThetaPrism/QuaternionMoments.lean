@@ -55,11 +55,13 @@ private def quaternionCycle : SU2 := by
   rw [Matrix.mem_specialUnitaryGroup_iff]
   constructor
   · rw [Matrix.mem_unitaryGroup_iff]
+    have hstarTwo : (starRingEnd ℂ) (2 : ℂ) = 2 := by norm_num
     ext i j
     fin_cases i <;> fin_cases j <;>
       simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
         Matrix.star_apply] <;>
       unfold quaternionHalf <;>
+      rw [hstarTwo] <;>
       ring_nf <;>
       norm_num [Complex.I_sq]
   · rw [Matrix.det_fin_two]
@@ -197,6 +199,7 @@ private theorem quaternionCycle_conj_entry_zero_zero (g : SU2) :
       Matrix.star_apply, su2_entry_one_one, su2_entry_one_zero,
       Complex.I_sq] <;>
     unfold quaternionHalf <;>
+    norm_num <;>
     ring
 
 private theorem quaternionCycle_conj_entry_zero_one (g : SU2) :
@@ -210,6 +213,7 @@ private theorem quaternionCycle_conj_entry_zero_one (g : SU2) :
       Matrix.star_apply, su2_entry_one_one, su2_entry_one_zero,
       Complex.I_sq] <;>
     unfold quaternionHalf <;>
+    norm_num <;>
     ring
 
 private theorem quaternionCycle_coordinates (g : SU2) :
