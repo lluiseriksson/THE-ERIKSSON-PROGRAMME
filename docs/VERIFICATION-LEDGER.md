@@ -29601,3 +29601,47 @@ the sharp unproved obligation, the even non-Perron block remains unproved, and
 the uniform `specRatio` target under `0 <= beta, 0 <= gamma` remains wholly
 open.  The Windows host is still non-exclusive, and the PR control-plane test
 remains red for the inherited 623-manifest baseline described in Addendum 573.
+
+## Addendum 575 (2026-08-01, **TASK 14: local second testimony for exact algebra**)
+
+**LOCALLY REPRODUCED, WITHOUT EXPANDING THE CLAIM.**  An exclusive Windows
+window opened after Addendum 574.  At repository HEAD
+`a55c8208ac3d25e50aea8c622ce030b7af2f9570`, on branch
+`codex/spatial-ring-uniformity`, the configured toolchain was
+`leanprover/lean4:v4.29.0-rc6` and Mathlib was pinned to
+`07642720480157414db592fa85b626dafb71355b`.  The host was Windows 11
+10.0.26200 on an AMD Ryzen 7 5800X (8 physical / 16 logical cores) with
+16690300 kB visible RAM at metadata capture.  `.lake/packages` was verified to
+be an ordinary directory, not a junction, and no local `lake exe cache get`
+was run.
+
+The local commands were run sequentially.  `lake build
+YangMills.OS.SpatialDualBond` returned exit 0 with 8172 measured jobs in 725 s;
+`lake build YangMillsCore` returned exit 0 with 8466 measured jobs in 1546.6 s;
+and `lake env lean oracle_check.lean` returned exit 0 in 1383 s.  The permanent
+oracle printed all six declarations -- `dualFieldBond`, `dualFieldScale`,
+`z2Bond_dual_factorization`, `spatialKernel_dual_factorization`, `ringBondSum`,
+and `spatialWeightRing_eq_exp_ringBondSum` -- with exactly
+`{propext, Classical.choice, Quot.sound}` and no additional axiom.
+
+**CONCURRENCY ABORT RETAINED.**  Before the final consistency scan, the guard
+found a foreign `lake.exe env lean` plus its `lean.exe` child elaborating
+`YangMills/RG/BalabanCMP116Eq80Lemma1SourceSmallFieldCarrier.lean` and aborted
+with exit 3 before starting the requested command.  Inspection of
+`scripts/check_consistency.py` then established that it is a static file
+scanner and invokes neither Lean nor Lake.  Running that scanner alone was
+therefore non-competing: it returned exit 0 in 4.3 s and reported zero source
+`sorry` and zero axioms in the verified-core tree.
+
+The focused local measured summary is
+`ORACLE-20260801-SPATIAL-RING-WEIGHT-LOCAL.txt`, SHA-256
+`3a776d5d7a44269a828e7e36201b127655e6b9f2bea8205fe9df083cfc15fe8a`.
+It is explicitly labelled as a summary of command results, not a raw terminal
+transcript.  Colab remains the independent certificate and CI the third
+witness; PR #44's inherited control-plane failure remains exactly as recorded
+in Addendum 573.
+
+**MATHEMATICAL DEBT IS UNCHANGED.**  This reproduces exact algebraic identities
+only.  It neither proves nor begins the sharp odd-sector estimate, does not
+prove the even non-Perron estimate, and does not establish the uniform
+`specRatio` bound for `0 <= beta`, `0 <= gamma`, and arbitrary extent.

@@ -1,0 +1,64 @@
+TASK 14 — LOCAL REPRODUCTION OF EXACT SPATIAL DUAL/RING IDENTITIES
+==================================================================
+
+Classification: LOCAL SECOND TESTIMONY; exact algebraic infrastructure only
+Repository HEAD: a55c8208ac3d25e50aea8c622ce030b7af2f9570
+Branch: codex/spatial-ring-uniformity
+Configured toolchain: leanprover/lean4:v4.29.0-rc6
+Mathlib pin: 07642720480157414db592fa85b626dafb71355b
+Runtime: Microsoft Windows 11 Home 10.0.26200, 64 bit
+CPU: AMD Ryzen 7 5800X, 8 physical / 16 logical cores
+Visible RAM at metadata capture: 16690300 kB
+
+This file is a focused measured summary assembled from the local command
+results.  It is not presented as a byte-for-byte raw terminal transcript.
+The commands below ran sequentially during an exclusive window in which the
+preflight process check found no foreign Lake or Lean process.  `.lake/packages`
+was an ordinary directory (no LinkType and no junction); no local
+`lake exe cache get` was run.
+
+Decisive local commands
+-----------------------
+
+  lake build YangMills.OS.SpatialDualBond
+    exit 0; 8172 jobs; wall time 725 s
+
+  lake build YangMillsCore
+    exit 0; 8466 jobs; wall time 1546.6 s
+
+  lake env lean oracle_check.lean
+    exit 0; wall time 1383 s
+
+The complete six-declaration oracle output was:
+
+  'YangMills.OS.dualFieldBond' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'YangMills.OS.dualFieldScale' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'YangMills.OS.z2Bond_dual_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'YangMills.OS.spatialKernel_dual_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'YangMills.OS.ringBondSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'YangMills.OS.spatialWeightRing_eq_exp_ringBondSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+The first attempt to start the final consistency command was deliberately
+aborted with exit 3 by the concurrency guard after two foreign processes
+appeared:
+
+  lake.exe env lean YangMills/RG/BalabanCMP116Eq80Lemma1SourceSmallFieldCarrier.lean
+  lean.exe YangMills/RG/BalabanCMP116Eq80Lemma1SourceSmallFieldCarrier.lean
+
+Inspection established that `scripts/check_consistency.py` is a static source
+scanner and starts neither Lean nor Lake.  It was therefore run without an
+elaborator while the foreign job remained present:
+
+  python scripts/check_consistency.py
+    exit 0; wall time 4.3 s
+    Zero sorry in Lean source; zero axioms in the verified-core tree.
+
+Scope boundary
+--------------
+
+This local reproduction is a second testimony for the exact local bond,
+finite-product, and periodic ring-weight identities already certified in
+Colab.  It is not a certificate for either analytic sector obligation.  The
+odd bound remains sharp and unproved; the even non-Perron bound remains
+unproved; consequently the uniform spatial-ring `specRatio` inequality under
+`0 <= beta` and `0 <= gamma` remains wholly open.
