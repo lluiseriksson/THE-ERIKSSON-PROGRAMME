@@ -29898,3 +29898,54 @@ The focused permanent-oracle record is
 This is CERTIFIED algebraic infrastructure, not analytic progress.  The sharp
 odd-sector bound, the even non-Perron bound, and the uniform signed-front-door
 `specRatio <= tanh(beta) * exp(2 * gamma)` inequality all remain wholly open.
+
+## Addendum 583 (2026-08-01, **TASK 14: odd orbit-fold Lean witness interrupted**)
+
+**EXACT STRUCTURAL THEOREM, NOT A SECTOR ESTIMATE.**  At source commit
+`fca2f37705bc06cf659829bde64ea0fd5c810638`,
+`YangMills.OS.act_flipOdd_eq_sum_zero_head` rewrites the action of an arbitrary
+kernel on a flip-odd observable as a sum over the unique representatives with
+zero first spin, using the exact kernel difference against the full global
+flip.  It assumes positive configuration length through `L + 1` and includes
+length one.  It assumes neither positivity nor kernel invariance and concludes
+no norm or spectral inequality.
+
+The licensing judge was committed before execution.  Its SHA-256 is
+`43d218195d497f65d8e6012081a36215a363574fbf3046dccc3eec01eb18ab89`.
+The permitted light Windows check passed in normal Python in 0.593407 s and
+under `python -O` in 0.670346 s with identical one-line JSON: ring sizes 1
+through 7, 254 action rows, 10922 paired summands, 10922 rejected sign
+mutations, 10922 rejected omission mutations, and 10920 rejected head-only
+flip mutations.
+
+**COLAB WITNESS STOPPED WITHOUT ORACLE EXIT.**  The preregistered notebook at
+commit `5bf542ba39c6b2bac981f375c3c4aaf07f164120` created the fresh CPU-only root
+`/tmp/spatial-odd-orbit-fold-dnsearsx`, verified the exact source SHA, judge
+hash, Lean commit, and Mathlib pin, and reran both gate modes with exit 0 and
+the exact expected payload.  `lake build YangMills.OS.SpatialRing` passed on
+the theorem's first Lean attempt with 8171 jobs.  `lake build YangMillsCore`
+passed with 8466 jobs.  Job interpretation uses the live ledger baseline, not
+the aging snapshot in `CLAUDE.md`.
+
+During the permanent-oracle command the cell ceased running without an exit
+code.  After about 37 minutes in that command and 1 h 53 min visible cell time,
+the UI showed only the literal `Ansluter`; the same state remained after one
+more 40-second polling slice.  There was no rejection message, traceback,
+Lean error, consistency result, PASS marker, or ZIP artifact, and no platform
+cause is inferred.  The runtime was explicitly disconnected and deleted, the
+UI confirmed `Återanslut`, and the tab was closed.  Full details and the
+two-fresh-runtime recovery contract are retained in
+`INC-SPATIAL-ODD-ORBIT-FOLD-LEAN-001.md`.
+
+**FRONTIER CONSULTATIONS CONTRIBUTED ZERO.**  The Fable account check accepted
+only the required `masterythief@gmail.com` profile, but the query returned the
+literal quota error `You've reached your Fable 5 limit...`; it was rejected.
+The separate Opus query returned `is_error=false`, but its `modelUsage`
+contained both `claude-opus-5` and `claude-haiku-4-5-20251001`, violating the
+required exact-single-model condition; the entire response was rejected.
+Neither response informed the theorem, proof, or recovery design.
+
+This campaign is **not** a Lean certificate and does not advance either
+analytic obligation.  The odd-sector bound, the even non-Perron bound, and the
+uniform signed-front-door `specRatio <= tanh(beta) * exp(2 * gamma)` theorem
+remain wholly open.
