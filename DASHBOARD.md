@@ -1,15 +1,18 @@
 # DASHBOARD (generado por bot cada hora — no editar a mano)
-_Última pasada: 2026-07-31T20:02:37Z_
+_Última pasada manual de auditoría: 2026-08-01_
 
 ## Auditoría pública (checkpoint manual 2026-07-31T22:48:17Z)
 
 | censo | PDFs/páginas inspeccionadas | KEEP | REPLACE | SUPERSEDE | REVIEW-PENDING | envíos |
 |---:|---:|---:|---:|---:|---:|---:|
-| 103 | 102 / 922 | 64 | 9 | 4 | 26 | 0 |
+| 103 | 102 / 922 | 64 | 9 | 4 | 26 | 9 pendientes |
 
-Los nueve reemplazos están `LISTO-LOCAL` y sellados bajo
-`output/publication-audit/`; el click final es del owner.  El replay global de Lean
-sigue `INCONCLUSIVE / NOT A PASS`, por lo que no eleva ninguna fila pendiente.
+El owner reportó enviados los nueve reemplazos originales; siguen
+`ENVIADO/PENDIENTE` hasta que la página y el PDF públicos sean verificados. Los
+cuatro avisos de supersesión adicionales están `LISTO-LOCAL` en órdenes 10--13 y
+sellados en `SUPERSESSION-REPLACEMENTS-20260801.zip`; el click final es del owner.
+El replay global de Lean sigue `INCONCLUSIVE / NOT A PASS`, por lo que no eleva
+ninguna fila pendiente.
 
 ## Satélites con STATUS.json
 

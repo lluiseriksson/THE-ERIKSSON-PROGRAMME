@@ -4,12 +4,16 @@
 102 current PDFs / 922 pages were downloaded, hashed and visually inspected, while
 `2512.0081v2` is a documented 404.  Verdicts are 64 `KEEP`, 9
 `REPLACE-VERSION`, 4 `SUPERSEDE-BY-NEW-PAPER` and 26 `REVIEW-PENDING`.  The nine
-replacement packages pass independent audits and final release preflight in owner
-order 1--9.  They are `LISTO-LOCAL`, not `ENVIADO/PENDIENTE` or `PUBLICADO`; no
-submission click occurred.  Canonical audit state is under
+replacement packages passed independent audits and final release preflight in
+owner order 1--9. The owner reported those nine forms sent on 2026-08-01; the
+public pages still showed the old versions, so they are `ENVIADO/PENDIENTE`, not
+`PUBLICADO`. Four further supersession-notice replacements are independently
+audited `LISTO-LOCAL` in owner order 10--13. Canonical audit state is under
 [`docs/publication-audit/`](docs/publication-audit/) and the sealed hand-off is
-`output/publication-audit/final/PUBLICATION-AUDIT-20260731.zip` (SHA recorded beside
-it).  The repository-wide `lake build YangMillsCore` replay was still compiling
+`output/publication-audit/final/PUBLICATION-AUDIT-20260731.zip`; the supplementary
+supersession hand-off is
+`output/publication-audit/final/SUPERSESSION-REPLACEMENTS-20260801.zip` (SHA files
+recorded beside both). The repository-wide `lake build YangMillsCore` replay was still compiling
 pinned Mathlib at the final audit checkpoint and is explicitly `INCONCLUSIVE / NOT
 A PASS`; affected machine-claim rows remain `REVIEW-PENDING`.
 
