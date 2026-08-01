@@ -303,7 +303,7 @@ are recorded **in the campaign plans** — primarily
 `README-FOR-NEXT-MODEL.md`. Read them before writing analysis-flavoured
 Lean; they save hours.
 
-## Current state (updated 2026-07-04; source checkpoint 2026-07-04)
+## Current state (programme snapshot 2026-07-04; job-count snapshot updated 2026-08-01)
 
 * Historical merged-core snapshot measured 2026-08-01, not a live baseline:
   **8465 jobs** at `3421aa1f`.  The earlier 2026-07-04 snapshot was **8463
