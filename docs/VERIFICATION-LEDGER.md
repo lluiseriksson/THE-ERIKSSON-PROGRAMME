@@ -29492,3 +29492,57 @@ testimony.  Mathematically this is only the first exact algebraic brick after
 the sector interface.  The next honest task is a many-site Clifford/Majorana
 representation that preserves the sharp odd constant; both sector bounds and
 the uniform `specRatio` inequality remain unproved.
+
+## Addendum 573 (2026-08-01, **TASK 14: exact finite-product dual-bond lift**)
+
+**EXACT, AND STILL ONLY ALGEBRAIC INFRASTRUCTURE.**  The theorem
+`spatialKernel_dual_factorization` lifts the already certified local bond
+identity entrywise through the finite product defining `spatialKernel`:
+for `0 < beta` and `tanh(a) = exp(-2*beta)`, it extracts exactly
+`dualFieldScale beta a ^ L`.  The theorem has no `gamma` because it still does
+not include `spatialWeightRing`.  It does not identify a tensor-product
+exponential, construct fermions, prove a norm estimate, or begin either sector
+inequality.  The endpoint `beta = 0`, both sector bounds under
+`0 <= beta, 0 <= gamma`, and the uniform `specRatio` target all remain open.
+
+**VERIFIED GATE.**  `scripts/judge_spatial_dual_product.py` was committed before
+the theorem.  Its SHA-256 is
+`f975d229d0b4adc79844dfbc32afa440177f48cdc529fa8a1a8a418f2b5ed772`.
+In both normal Python and `python -O`, it checked the exact product identity for
+all 5461 configuration pairs at `L = 0,...,6` and rejected all 5460 registered
+`L -> L+1` exponent mutations.  This gate licenses exactly one theorem, the
+finite-product lift, and no spectral statement.
+
+**CERTIFIED IN COLAB.**  The fail-closed high-RAM runner checked out exactly
+`29f47b83bdd41209b5aa66057e5f9777cb83920a`, verified Lean
+`v4.29.0-rc6` commit `00659f8e6071d7e46131ed643bf8003b99b044e9`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, Linux `6.6.122+`, 8 Intel Xeon
+logical CPUs, `53467192 kB` RAM, Python `3.12.13`, and no GPU.  The official
+Mathlib cache was used only in the isolated ephemeral runtime.
+
+`lake build YangMills.OS.SpatialDualBond`, `lake build YangMillsCore`, the root
+`oracle_check.lean`, and `scripts/check_consistency.py` all returned exit 0.
+Core remained MEASURED at 8466 jobs: the theorem was added inside the module
+already counted in Addendum 572, so there is no new dependency edge to count.
+All four module declarations, including `spatialKernel_dual_factorization`,
+report exactly `{propext, Classical.choice, Quot.sound}`.  There is no
+`sorryAx`; the consistency judge reports zero source `sorry` and zero project
+axioms.
+
+**ARTIFACT INTEGRITY, VERIFIED ON WINDOWS.**  The downloaded ZIP SHA-256 is
+`984cb0ff23158062c33ba7d990bf53f79969e9a6c2fe5d97370bdb03c3bcefb3`.
+Its internal hashes agree with `SHA256SUMS`: metadata
+`a1cf6c77a3f7b19f969bcf400bdac7ad4c5809142b78c88c10ec5d25d0172e3b`, oracle
+`526895c2120dc245980729f0618c27863b5b854861f6dfb509561c1bc6fc3469`, and
+transcript `748c1fa089bf1c40d1091fff955704e05ea6eb0115af29c3f5404c1c0e7c036a`.
+The archived transcript contains `jobs_measured=8466` and the final PASS.
+
+**CI AND REMAINING TESTIMONY.**  PR #44's `honesty` check passes.  Its `test`
+check fails before project-specific compilation while validating 623 inherited
+`run-manifests`, with 4134 schema errors.  This branch changes no file under
+`run-manifests/`, and the two latest `main` runs of the same control-plane
+workflow also fail.  The failure is therefore recorded as an unresolved
+baseline/control-plane witness, not repaired by touching concurrent manifests
+and not relabelled as a PASS.  Foreign Windows Lean processes remain active,
+so the critical target has not been reproduced locally.  Both analytic sector
+bounds and the uniform spatial-ring inequality remain wholly unproved.
