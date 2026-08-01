@@ -29727,3 +29727,44 @@ Both PIDs ended naturally.  At the checkpoint no process owned by this
 campaign remained and `TOKEN LIBRE` was reported for Task 22.  The sharp odd
 bound, the even non-Perron bound, and the uniform signed-front-door target all
 remain wholly open.
+
+## Addendum 579 (2026-08-01, **TASK 14: exact exit-sentinel campaign failed instrumentally**)
+
+**FRESH NORMAL RUN, VALID PASS OUTPUT.**  With an exclusive token, a new
+detached directory launched wrapper PID 30840 and normal Python judge PID
+16532 at `11:06:26+02:00`.  Polling used windows of at most 40 seconds.  The
+294-byte stdout log contains valid PASS JSON and exactly 5460 checks/rejections
+for each of the configuration-pair, scale-mutation, source-closing-bond, and
+target-closing-bond counters.  Its SHA-256 is
+`08e597a81abee7535a0124589a506a239e6317e4b2f0c6729cf51342c1d5d4af`.
+Stderr is empty with the standard empty-file SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
+
+**NO EXIT SENTINEL, THEREFORE NO CERTIFICATE.**  After `WaitForExit`, the
+wrapper failed while constructing metadata because `Get-FileHash` was not
+available in the detached PowerShell environment.  Although the exit code had
+been read into memory, it was never persisted.  No final sentinel exists.
+Under the mandatory four-state reader semantics this is an instrumental FAIL,
+not completion.  Optimised mode was not launched, and the full two-mode gate
+is not certified.  The failure log SHA-256 is
+`22c1d49bdb31b093feffab05931f8b6d1e1acfdd479d0cad2a42bbdb522a0b29`;
+the detailed diagnosis is `INC-SPATIAL-SYMWEIGHTED-GATE-004.md`.
+
+**REPAIR PREPARED, NOT RUN.**
+`scripts/run_spatial_symweighted_gate_detached.ps1` now codifies the exact
+protocol for a later token: distinct `normal`/`optimized` logs, real child
+`ExitCode` after `WaitForExit`, .NET-only hashing, metadata outside the
+sentinel, and a final `<mode>.exitcode` containing exactly one decimal line
+after nonempty/integer validation and atomic rename.  It refuses all per-mode
+output reuse.  No Lean theorem was added.
+
+The first non-executing static-validation command itself had a supervisor typo
+(`in$required`) and failed before reading the wrapper.  The corrected static
+parser returned zero syntax errors and confirmed the required protocol tokens;
+neither command launched a judge.
+
+Both PIDs ended naturally and `TOKEN LIBRE` was reported.  Job comparisons in
+this campaign continue to use the latest measured baseline in the live ledger:
+8465 is today's observed baseline, not a permanent constant and not a value to
+copy forward from `CLAUDE.md`.  Both analytic sector bounds and the uniform
+signed-front-door target remain wholly open.
