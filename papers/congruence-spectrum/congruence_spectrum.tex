@@ -10,10 +10,11 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{fact}[theorem]{Fact}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{remark}[theorem]{Remark}
+\hypersetup{hidelinks}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\diag}{\operatorname{diag}}
@@ -37,8 +38,8 @@ Ising bonds. \emph{Rigid half:} the sign of every quadratic form value survives,
 so definiteness in either sign is a congruence invariant --- the definite case
 of Sylvester's law of inertia, recorded here in the elementary form that a
 machine can check without an eigenvalue count. \emph{Fragile half:} the value of
-the spectral ratio $r = |\lambda_1|/|\lambda_0|$ does not survive at all, and we
-locate exactly how far it moves. Restricting the $L$-site kernel to the two
+the subdominant ratio $r$ --- second largest eigenvalue modulus over the Perron
+root --- does not survive at all, and we locate exactly how far it moves. Restricting the $L$-site kernel to the two
 antipodal configurations leaves \emph{one} Ising bond of coupling $\beta L$; its
 ratio is $\tanh(\beta L)$. A weight concentrating on the ferromagnetic
 configurations therefore \emph{fuses} the $L$ sites into a single effective site
@@ -58,8 +59,11 @@ congruence concentrates on the \emph{least correlated pair}. The proof is
 geometric rather than spectral --- Hilbert's projective diameter is itself a
 congruence invariant, and Birkhoff's contraction theorem converts it into the
 bound --- and it uses no definiteness at all, only positivity of the entries.
-The hypercube instance is the fusion bound. Every theorem is machine-checked in
-Lean~4.
+The hypercube instance is the fusion bound. Every new algebraic lemma is
+machine-checked in Lean~4; the supremum theorem combines those verified lemmas
+with two cited classical inputs (the Birkhoff spectral bound and
+finite-dimensional eigenvalue continuity) and is therefore proved at paper
+level, not end-to-end in the kernel.
 \end{abstract}
 
 \section{The question}
@@ -86,6 +90,19 @@ one that governs whether a spectral estimate can be uniform in the system size
 \emph{Which spectral data survive a positive-diagonal congruence, and how far
 can the rest move?}
 \end{center}
+
+\paragraph{The quantity we track.} Throughout, the kernels are entrywise
+positive, so by Perron--Frobenius the spectral radius $\rho(T)$ is itself a
+simple eigenvalue. We write
+\[
+  r(T)\;:=\;\frac{\max\{\,|\lambda| \;:\; \lambda\in\sigma(T),\ \lambda\neq\rho(T)\,\}}
+                 {\rho(T)} ,
+\]
+the \emph{subdominant ratio}. Since we allow indefinite $M$, this must be said
+explicitly: ordering eigenvalues algebraically, or by modulus, or by index gives
+different conventions once negative eigenvalues are present, and it is the
+quantity above --- second largest \emph{modulus} over the Perron root --- that
+Fact~\ref{fact:birkhoff} controls.
 
 We answer both parts for the kernel of $L$ decoupled Ising bonds. Section~2
 gives the rigid half, Section~3 the fragile half, Section~4 the consequence,
@@ -321,13 +338,18 @@ For an entrywise positive matrix $T$, Hilbert's projective diameter is
 \]
 Birkhoff's theorem \cite{birkhoff1957} says the map induced by $T$ contracts
 Hilbert's projective metric with coefficient $\tanh(\Delta(T)/4)$, and the
-spectral consequence
+spectral consequence is classical.
+
+\begin{fact}[Birkhoff bound; \cite{birkhoff1957,evesonnussbaum1995}]\label{fact:birkhoff}
+For an entrywise positive matrix $T$ with Perron root $\rho(T)$,
 \[
-  \frac{|\lambda_1(T)|}{\lambda_0(T)}\;\le\;\tanh\!\big(\Delta(T)/4\big)
+  r(T)\;\le\;\tanh\!\big(\Delta(T)/4\big).
 \]
-is classical \cite{birkhoff1957,evesonnussbaum1995}. \emph{That is the only
-input we import.} The two facts that make it bite are elementary, and both are
-proved here.
+\end{fact}
+
+\emph{This is the only mathematical input we import}, and it is imported as a
+statement, not reproved. The two facts that make it bite are elementary, and
+both are proved here.
 
 \begin{lemma}[$\Delta$ is a congruence invariant]\label{lem:deltainv}
 For every positive diagonal $D$ and all indices,
@@ -358,14 +380,13 @@ $M_{ii}M_{jj}/(M_{ji}M_{ij})=1/\mu^2$, so the maximum is attained.
 Let $M$ be symmetric with $M_{ii}=1$ and $0<\mu\le M_{ij}\le 1$ for $i\neq j$,
 where $\mu=\min_{i\neq j}M_{ij}$. Then
 \[
-  \sup_{D>0 \textup{ diagonal}} r(DMD) \;=\; \frac{1-\mu}{1+\mu},
+  \sup_{D>0 \textup{ diagonal}} r(DMD) \;=\; \frac{1-\mu}{1+\mu}.
 \]
-approached by concentrating $D$ on an argmin pair and not attained.
 \end{theorem}
 
 \begin{proof}
 \emph{Upper bound.} $DMD$ is entrywise positive, so by
-Lemmas~\ref{lem:deltainv} and~\ref{lem:deltaval} and the Birkhoff bound,
+Lemmas~\ref{lem:deltainv} and~\ref{lem:deltaval} and Fact~\ref{fact:birkhoff},
 \[
   r(DMD)\;\le\;\tanh\!\big(\Delta(DMD)/4\big)
         \;=\;\tanh\!\big(\tfrac12\log(1/\mu)\big)
@@ -374,12 +395,33 @@ Lemmas~\ref{lem:deltainv} and~\ref{lem:deltaval} and the Birkhoff bound,
 the middle identity because $t=e^{\frac12\log(1/\mu)}$ satisfies $t^2=1/\mu$ and
 $\tanh\log t=(t^2-1)/(t^2+1)$.
 
-\emph{Lower bound.} Concentrating on an argmin pair $\{p,q\}$ leaves the block
-$\begin{psmallmatrix}1&\mu\\ \mu&1\end{psmallmatrix}$ exactly, for every
-$\varepsilon>0$ (Proposition~\ref{prop:orbit}), of ratio $(1-\mu)/(1+\mu)$; and
-the value is not attained because $\Delta$ is a strict maximum only in the
-limit.
+\emph{Lower bound.} Fix an argmin pair $\{p,q\}$ and let $D_\varepsilon$ be as in
+Proposition~\ref{prop:orbit}. Entrywise,
+\[
+  T_\varepsilon := D_\varepsilon M D_\varepsilon
+  \;\xrightarrow[\varepsilon\to0]{}\;
+  T_0=\begin{pmatrix}1&\mu\\ \mu&1\end{pmatrix}\oplus 0_{n-2},
+\]
+since the block is exactly preserved and every other entry is $O(\varepsilon)$.
+The spectrum of $T_0$ is $\{1+\mu,\;1-\mu,\;0,\dots,0\}$, whose Perron root is
+$1+\mu$ and whose next largest modulus is $1-\mu$. Eigenvalues of a symmetric
+matrix depend continuously on its entries, so $r(T_\varepsilon)\to
+(1-\mu)/(1+\mu)$, and the supremum is at least that.
 \end{proof}
+
+\begin{remark}[Attainment, and a retracted claim]\label{rem:attained}
+An earlier version of this paper asserted that the supremum is \emph{not}
+attained. That is false. For $n=2$ the matrix
+$\begin{psmallmatrix}1&\mu\\ \mu&1\end{psmallmatrix}$ is its own least
+correlated pair and already has eigenvalues $1\pm\mu$ at $D=I$, so the value is
+reached with no concentration and no limit; for $\mu=1$ the matrix is $J$, the
+ratio is $0$, and the value is reached for every $D$. The stated reason was
+worse than unsupported: it claimed $\Delta$ is ``a strict maximum only in the
+limit'', which Lemma~\ref{lem:deltainv} directly contradicts --- that lemma
+proves $\Delta$ is \emph{constant} on the orbit. \textbf{We do not classify
+attainment here.} Doing so for $n>2$ would need the equality cases of the
+Birkhoff bound, which the invariance of $\Delta$ alone cannot supply.
+\end{remark}
 
 Three things about this proof are worth saying plainly.
 
@@ -424,7 +466,7 @@ $(1-\mu)/(1+\mu)=\tanh(\beta L)$. Theorem~\ref{thm:lcp} therefore contains
 Theorem~\ref{thm:fusion} as its hypercube instance.
 
 \paragraph{Numerical certificate.} Random search plus Nelder--Mead ascent over
-positive diagonals, on families chosen to break it, before the proof was found,, never exceeded
+positive diagonals, on families chosen to break it, and run before the proof was found, never exceeded
 $(1-\mu)/(1+\mu)$ and in almost every case attained it to machine precision.
 
 \begin{center}
@@ -529,22 +571,39 @@ Every theorem, lemma and proposition stated above --- the rigid half
 the exchangeable computation (Theorem~\ref{thm:exch}) --- is written in Lean~4
 against a pinned Mathlib in \texttt{YangMills/OS/CongruenceSpectrum.lean}, and
 \textbf{has been verified}, including the two lemmas that carry
-Theorem~\ref{thm:lcp}. Two imported classical inputs are cited rather than
-reproved, and both are labelled where they are used: the continuity of
-eigenvalues invoked after Proposition~\ref{prop:orbit}, and the Birkhoff bound
-$|\lambda_1|/\lambda_0\le\tanh(\Delta/4)$ used in Theorem~\ref{thm:lcp}. No
-statement in this paper is conjectural.
+Theorem~\ref{thm:lcp} and the $n=2$ attainment witness of
+Remark~\ref{rem:attained}.
+
+\textbf{Theorem~\ref{thm:lcp} is \emph{not} an end-to-end Lean theorem, and we
+do not claim it is.} It is proved at paper level from two machine-checked new
+lemmas (Lemmas~\ref{lem:deltainv} and~\ref{lem:deltaval}, plus the hyperbolic
+identity) together with two cited classical inputs that are \emph{not}
+formalised: Fact~\ref{fact:birkhoff}, and the finite-dimensional continuity of
+eigenvalues used in its lower bound. Neither is a Lean theorem in the dependency
+cone of the 38 endpoints, so those endpoints certify the algebra, the congruence
+invariance, the exact value of the diameter and the hyperbolic identity --- not
+the imported spectral inequality. Formalising Fact~\ref{fact:birkhoff}, or
+importing it through a clean Lean interface, is the obvious next step and is
+listed in \S8.
+
+One further caveat of provenance: the bibliographic data for
+\cite{birkhoff1957,evesonnussbaum1995} were checked against the publishers'
+records, but the internal numbering of the results inside those papers was not,
+so Fact~\ref{fact:birkhoff} is attributed to the papers rather than to a
+numbered statement in them.
+
+No statement in this paper is conjectural.
 
 \begin{center}
 \begin{tabular}{ll}
 \toprule
-commit & \texttt{954f3b2d} \\
-module \texttt{sha256} & \texttt{b479f550b5ac7a261e8dd0ed} \\
-                       & \texttt{7735416eec09cfb239759e4b973130b848e2296c} \\
+commit & \texttt{c01a451e} \\
+module \texttt{sha256} & \texttt{d6e120d62e7b033dfd7936de} \\
+                       & \texttt{892c5772a470975c0a2a89e08a3c61d0f13e4313} \\
 toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
 Mathlib pin & \texttt{07642720480157414db592fa85b626dafb71355b} \\
 elaboration & exit \texttt{0}; empty log --- zero errors, zero warnings, zero \texttt{sorry} \\
-axiom oracle & 36/36 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
+axiom oracle & 38/38 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
 \texttt{sorryAx} & none \\
 \bottomrule
 \end{tabular}
