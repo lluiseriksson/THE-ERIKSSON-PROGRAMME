@@ -19,7 +19,7 @@ starting Python.  A bounded monitor observed the foreign process disappear
 after 36.3 seconds.  Only then was the normal-mode judge started.  No Lean,
 Lake, oracle, or Colab process was launched by this campaign.
 
-## Observed failure
+## Observed infrastructure failure
 
 The normal-mode judge ran as PID 19520, command
 
@@ -34,16 +34,21 @@ interference until it exited by itself at `2026-08-01T10:37:40+02:00`, about
 
 Because the parent stdout pipe had already disappeared, no judge JSON, exit
 code, PASS, or reliable peak-RSS measurement was recovered.  Optimised mode was
-not started after the global single-build-token instruction arrived.
+not started after the global single-build-token instruction arrived.  The
+cause of the inconclusive record was the 124-second harness limit, which was
+shorter than the judge's approximately 171-second runtime.  This incident is
+not evidence of a defect, timeout, or failed assertion inside the judge: its
+verdict was never captured.
 
 ## Consequence
 
-This run is inconclusive, not a gate PASS.  It demonstrates that the current
-exact SymPy formulation is not a negligible desktop check: normal mode alone
-survived beyond two minutes.  The one proposed Lean theorem remains
-unfabricated.  A later campaign must either run the unchanged judge with a
-longer fail-closed capture or preregister a separately justified, cheaper exact
-gate before execution.
+This run is inconclusive solely as a measurement record, not a gate PASS.  It
+demonstrates that the current exact SymPy formulation is not a negligible
+desktop check: normal mode alone survived beyond two minutes.  It says nothing
+negative about the factorisation or the judge.  The one proposed Lean theorem
+remains unfabricated.  A later campaign must run the unchanged judge with a
+detached log and durable exit-code sentinel, or preregister a separately
+justified, cheaper exact gate before execution.
 
 At the safe checkpoint no matching project Lean/Lake process and no
 `judge_spatial_symweighted_factorization.py` process owned by this campaign

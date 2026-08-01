@@ -29696,3 +29696,34 @@ factorisation remains unadded; both analytic sector obligations and the
 uniform signed-front-door target remain wholly open.  At the safe checkpoint
 no matching process owned by this campaign remained, and the build token was
 reported free for Task 22.
+
+## Addendum 578 (2026-08-01, **TASK 14: normal symWeighted gate output preserved**)
+
+**THE PRIOR INCONCLUSION WAS THE HARNESS, NOT THE JUDGE.**  Incident 002 is
+amended explicitly: its 124-second observation limit was shorter than the
+approximately 171-second judge runtime.  It never captured a verdict and is no
+evidence of a mathematical or implementation defect in the factorisation
+check.
+
+With the build token granted, the unchanged normal-mode judge was relaunched
+through a hidden detached PowerShell wrapper.  The wrapper was PID 16776 and
+the Python judge PID 21364, started at `10:48:06+02:00`.  Four polling windows
+of at most 40 seconds left the atomic process undisturbed.  Its 297-byte log
+contains valid PASS JSON: 5460 configuration pairs checked, 5460 scale
+mutations rejected, 5460 source closing-bond omissions rejected, and 5460
+target closing-bond omissions rejected.  Independent PowerShell parsing
+verified every counter.  The log SHA-256 is
+`3e0285540203254ae82c312cf9ef037e134747f76a2dadeb9fcd02dab546b293`.
+
+**CERTIFICATION STILL INCOMPLETE.**  The completion sentinel file was created
+but remained zero bytes, so the native Python exit code was not durably
+recovered.  `python -O` was not started because the global token instruction
+forbade chaining another calculation.  Thus the normal output is VERIFIED,
+but the two-mode gate is not CERTIFIED and no Lean theorem has been added.  The
+sentinel defect and its atomic-write repair are recorded in
+`INC-SPATIAL-SYMWEIGHTED-GATE-003.md`.
+
+Both PIDs ended naturally.  At the checkpoint no process owned by this
+campaign remained and `TOKEN LIBRE` was reported for Task 22.  The sharp odd
+bound, the even non-Perron bound, and the uniform signed-front-door target all
+remain wholly open.
