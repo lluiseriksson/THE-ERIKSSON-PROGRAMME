@@ -89,8 +89,9 @@ that path.
 | 12 | 2607.0035v1 | v2 | `output/publication-audit/2607.0035-v2/SUBMISSION-ID.txt` | reduced/original-edge boundary or final hash differs |
 | 13 | 2607.0023v1 | v2 | `output/publication-audit/2607.0023-v2/SUBMISSION-ID.txt` | independent-replay-pending status or final hash differs |
 
-Items 1--9 were reported by the owner as sent on 2026-08-01 and remain
+Items 1--13 were reported by the owner as sent on 2026-08-01 and remain
 `ENVIADO/PENDIENTE` until their public pages and PDFs are independently checked.
-Do not resend them. Items 10--13 are a separate owner sequence.
+Do not resend any of them. The literal sheets now serve only as frozen records
+of the submitted fields and files.
 
 At hand-off, the correct terminal instruction remains: **NO ENVIAR TODAVÍA**.
