@@ -114,10 +114,13 @@ carries as its window. -/
 def starDist (i j : Fin 5) : ℕ :=
   if i = j then 0 else if i = 0 ∨ j = 0 then 1 else 2
 
-theorem starDist_self (i : Fin 5) : starDist i i = 0 := by decide +kernel
+-- `decide` needs a closed proposition, so the variables are reverted first.
+theorem starDist_self (i : Fin 5) : starDist i i = 0 := by
+  revert i; decide
 
 theorem starDist_triangle (i j k : Fin 5) :
-    starDist i k ≤ starDist i j + starDist j k := by decide +kernel
+    starDist i k ≤ starDist i j + starDist j k := by
+  revert i j k; decide
 
 /-- Two bonds of strength `β`, two of strength `γ`, from the centre. -/
 noncomputable def starBond (β γ : ℝ) : Fin 5 → Fin 5 → ℝ :=
@@ -129,9 +132,21 @@ row sum is exactly `2 tanh|β| + 2 tanh|γ|`. -/
 theorem starDist_rowSum (β γ : ℝ) :
     ∑ j : Fin 5, dobMatrix (starBond β γ) starDist 0 j
       = 2 * Real.tanh |β| + 2 * Real.tanh |γ| := by
-  rw [Fin.sum_univ_five]
-  simp only [dobMatrix, starBond, starDist]
-  norm_num
+  -- the five entries, each with a CLOSED decidable side condition
+  have b1 : starBond β γ 0 1 = β := by unfold starBond; rw [if_pos (by decide)]
+  have b2 : starBond β γ 0 2 = β := by unfold starBond; rw [if_pos (by decide)]
+  have b3 : starBond β γ 0 3 = γ := by unfold starBond; rw [if_neg (by decide)]
+  have b4 : starBond β γ 0 4 = γ := by unfold starBond; rw [if_neg (by decide)]
+  have e0 : dobMatrix (starBond β γ) starDist 0 0 = 0 := dobMatrix_diag _ _ 0
+  have e1 : dobMatrix (starBond β γ) starDist 0 1 = Real.tanh |β| := by
+    unfold dobMatrix; rw [if_pos (by decide), b1]
+  have e2 : dobMatrix (starBond β γ) starDist 0 2 = Real.tanh |β| := by
+    unfold dobMatrix; rw [if_pos (by decide), b2]
+  have e3 : dobMatrix (starBond β γ) starDist 0 3 = Real.tanh |γ| := by
+    unfold dobMatrix; rw [if_pos (by decide), b3]
+  have e4 : dobMatrix (starBond β γ) starDist 0 4 = Real.tanh |γ| := by
+    unfold dobMatrix; rw [if_pos (by decide), b4]
+  rw [Fin.sum_univ_five, e0, e1, e2, e3, e4]
   ring
 
 end Dobrushin
