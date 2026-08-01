@@ -383,6 +383,33 @@ theorem exch_ratio_pair (μ : ℝ) :
     (1 - μ) / (1 + ((2 : ℝ) - 1) * μ) = (1 - μ) / (1 + μ) := by
   norm_num
 
+/-! ### §6.1  The supremum IS attained at `n = 2`
+
+Recorded because an earlier draft of the companion paper asserted the opposite.
+The two-point kernel `!![1, μ; μ, 1]` is its own least-correlated pair, and at
+`D = I` — no concentration, no limit — its eigenvalues are already `1 + μ` and
+`1 - μ`.  So the value `(1-μ)/(1+μ)` is reached, not merely approached, and any
+claim of non-attainment is false as stated.
+
+The claim was also incompatible with `crossRatio_congr_invariant`: that lemma
+says the projective diameter is *constant* on the orbit, so nothing about it is
+"attained only in the limit". -/
+
+/-- The two-point unit-diagonal kernel, `exch 2 μ` written out. -/
+theorem exch_two_apply (μ : ℝ) :
+    exch 2 μ = !![1, μ; μ, 1] := by
+  funext i j
+  fin_cases i <;> fin_cases j <;> simp [exch] <;> decide
+
+/-- **Attainment at `n = 2`.**  The symmetric vector is an eigenvector with
+eigenvalue `1 + μ`, the antisymmetric one with eigenvalue `1 - μ`; the ratio
+`(1-μ)/(1+μ)` is therefore realised at `D = I`, with no limit taken. -/
+theorem exch_two_eigen (μ : ℝ) :
+    (exch 2 μ).mulVec ![1, 1] = (1 + μ) • ![1, 1] ∧
+    (exch 2 μ).mulVec ![1, -1] = (1 - μ) • ![1, -1] := by
+  constructor <;> funext i <;> fin_cases i <;>
+    simp [exch_two_apply, Matrix.mulVec, dotProduct, Fin.sum_univ_two] <;> ring
+
 /-! ## §7  Strictly positive weights only: the orbit, not its closure
 
 The fusion of §3 is realised by a weight that *concentrates*, and a reader is
