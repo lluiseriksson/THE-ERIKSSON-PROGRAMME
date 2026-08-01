@@ -254,9 +254,15 @@ unfused kernel (ratio $\tanh\beta$) and for every fused one (ratio up to
 $\tanh(\beta L)$).
 
 \begin{corollary}
-Any $L$-uniform ratio bound must use a quantity that a positive-diagonal
+Any bound on $r$ that is uniform over both the full positive-diagonal congruence
+orbit and the number of sites must use a quantity that a positive-diagonal
 congruence can change.
 \end{corollary}
+
+The qualification matters. Nothing here forbids a uniform bound for a
+\emph{particular} physical family of weights; what is forbidden is a uniform
+bound derived from congruence invariants alone, since those are blind to the
+difference between the unfused kernel and every fused one.
 
 \subsection*{The orbit, not its closure}
 
@@ -296,10 +302,13 @@ citation attaches.
 
 \section{Which congruence is extremal: pairs beat exchangeable clusters}
 
-Theorem~\ref{thm:fusion} exhibits \emph{one} congruence reaching
-$\tanh(\beta L)$. Is it the best one? For the family of \emph{uniform}
-concentrations the question has a complete and elementary answer, and the answer
-explains the mechanism.
+Theorem~\ref{thm:fusion} identifies the pair value $\tanh(\beta L)$, approached
+by concentrating on the antipodal pair --- for $L>1$ it is a statement about a
+principal \emph{block}, and the orbit of strictly positive congruences reaches
+$B(\beta L)\oplus 0$ only as $\varepsilon\to0$
+(Proposition~\ref{prop:orbit}). Is that value the best available? For the family
+of \emph{uniform} concentrations the question has a complete and elementary
+answer, and the answer explains the mechanism.
 
 \begin{theorem}[Exchangeable concentration]\label{thm:exch}
 Fix $0<\mu<1$ and $m\ge2$, and let $E_m=\mu J_m+(1-\mu)I_m$ be the exchangeable
@@ -361,9 +370,11 @@ For an entrywise positive matrix $T$ with Perron root $\rho(T)$,
 \]
 \end{fact}
 
-\emph{This is the only mathematical input we import}, and it is imported as a
-statement, not reproved. The two facts that make it bite are elementary, and
-both are proved here.
+\emph{This is the only non-elementary input imported by the upper bound}, and it
+is imported as a statement, not reproved. It is one of \emph{two} classical
+inputs in this section: the lower bound additionally uses the
+finite-dimensional continuity of eigenvalues. The two facts that make
+Fact~\ref{fact:birkhoff} bite are elementary, and both are proved here.
 
 \begin{lemma}[$\Delta$ is a congruence invariant]\label{lem:deltainv}
 For every positive diagonal $D$ and all indices,
@@ -480,8 +491,11 @@ $(1-\mu)/(1+\mu)=\tanh(\beta L)$. Theorem~\ref{thm:lcp} therefore contains
 Theorem~\ref{thm:fusion} as its hypercube instance.
 
 \paragraph{Numerical certificate.} Random search plus Nelder--Mead ascent over
-positive diagonals, on families chosen to break it, and run before the proof was found, never exceeded
-$(1-\mu)/(1+\mu)$ and in almost every case attained it to machine precision.
+positive diagonals, on families chosen to break it and run before the proof was
+found, never exceeded $(1-\mu)/(1+\mu)$ and in almost every case \emph{matched}
+it to machine precision. We say ``matched'' rather than ``attained'': a
+floating-point equality at the end of an ascent is not evidence that a maximiser
+exists, and this paper does not classify maximisers.
 
 \begin{center}
 \begin{tabular}{lrr}
@@ -588,17 +602,28 @@ the searches we ran, not a claim of priority.
 
 \section*{Machine verification --- status}
 
-The results named in the next sentence, together with the algebraic lemmas
-supporting Theorem~\ref{thm:lcp}, are written in Lean~4 --- the rigid half
-(Theorem~\ref{thm:rigid}, Lemma~\ref{lem:change}), the one-bond spectrum with
-its sign hypothesis (Lemma~\ref{lem:bond}, Remark~\ref{rem:sign}), the fusion
-identity (Theorem~\ref{thm:fusion}), the wall
-(Theorem~\ref{thm:wall}), the orbit statement (Proposition~\ref{prop:orbit}) and
-the exchangeable computation (Theorem~\ref{thm:exch})
+The following are written in Lean~4 --- the rigid half
+(Theorem~\ref{thm:rigid}, Lemma~\ref{lem:change}), the fusion identity
+(Theorem~\ref{thm:fusion}), the wall (Theorem~\ref{thm:wall}), the orbit
+statement (Proposition~\ref{prop:orbit}), and the algebraic and eigenvector
+ingredients of Lemma~\ref{lem:bond}, Theorem~\ref{thm:exch} and
+Theorem~\ref{thm:lcp}
 against a pinned Mathlib in \texttt{YangMills/OS/CongruenceSpectrum.lean}, and
 \textbf{has been verified}, including the two lemmas that carry
 Theorem~\ref{thm:lcp} and the $n=2$ attainment witness of
 Remark~\ref{rem:attained}.
+
+\textbf{What ``ingredients'' means, precisely.} The module contains no Lean
+definition of $r$, no enumeration of a spectrum, and no theorem asserting that a
+second largest \emph{modulus} equals any stated quantity. What it contains for
+Lemma~\ref{lem:bond} and Theorem~\ref{thm:exch} is the eigenvector equations,
+the algebraic ratio identity, the positivity and sign lemmas, and the scalar
+monotonicity. \emph{Their interpretation in terms of the spectrally defined $r$
+of \S1 is completed at paper level}, by elementary finite-dimensional linear
+algebra. We are explicit about this because it is exactly the gap
+Remark~\ref{rem:sign} is about: a true Lean lemma can sit underneath a sentence
+that says more than it does, and this paper has already published one such
+sentence.
 
 \textbf{Theorem~\ref{thm:lcp} is \emph{not} an end-to-end Lean theorem, and we
 do not claim it is.} It is proved at paper level from two machine-checked new
