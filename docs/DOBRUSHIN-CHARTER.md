@@ -9,7 +9,7 @@
 The S block proved its uniform statements with **Schur's test on constant row
 sums** (`YangMills/OS/SpatialUniform.lean`).  At nonzero spatial coupling the
 row sums stop being constant — that is `coupled_rowSums_not_constant`
-(`YangMills/OS/SpatialExtent.lean:205`), proved on a two-site witness, and it is
+(`YangMills/OS/SpatialExtent.lean:208`), proved on a two-site witness, and it is
 labelled THE OBSTRUCTION in that module.
 
 **It is an obstruction to the METHOD, not to the theorem.**  The claim "the
@@ -100,9 +100,31 @@ theorem with its witness (Addendum 548 / paper-12 gate B lesson).
    and the Dobrushin window is strictly inside it.
 3. No consequence for Yang–Mills is stated, suggested, or implied.
 4. Dobrushin's theorem is **classical**.  Nothing in this lane may be presented
-   as new mathematics; what is new is the mechanisation, the explicit constant,
-   and the fact that it closes a registered open wall of this corpus.
+   as new mathematics.  **AMENDED 2026-08-01 — the claim was too wide.**  The
+   surviving novelty is TWO items, not three: the mechanisation, and closing a
+   registered open wall of this corpus.  **"Explicit constants" is struck.**
+   The cell here is the anisotropic two-dimensional Ising model, whose transfer
+   spectrum has been in closed form since Onsager (1944) and Kaufman (1949);
+   the Dobrushin constant is strictly WORSE than the exact answer, by a factor
+   measured between 2 and 36 on the tested cells.  What replaces it is
+   **generality**: Dobrushin's coefficient is computed from the single-site
+   conditionals of an ARBITRARY positive finite-range slice weight `w`, which
+   is what `gibbsWeight` actually quantifies over, and where the exact solution
+   says nothing at all.  The axis is generality, not constants.
 5. No claim of "delivered" without an external verdict (C6 Amendment-2 lesson).
+6. **J1's table may never be printed as evidence FOR the theorem.**  Of its
+   eight cells only two — `(0.1,0.1)` at `α = 0.399` and `(0.2,0.2)` at
+   `α = 0.790` — lie inside the Dobrushin window; the other four disordered
+   cells sit at `α` between `1.165` and `1.527`.  J1 measures the whole
+   disordered phase and licenses ONE claim: where the degeneracy lives.  The
+   theorem will cover a strict subset of what J1 displays.
+7. **Registered before D-4, not to be discovered inside it.**  `⟪Ω, · Ω⟫` is an
+   infinite-time state.  Writing `connCorr` as a two-point function of the
+   Gibbs measure therefore either constructs an infinite-time state — which
+   prohibition 1 forbids — or must run through finite `M` with explicit
+   boundary control, taking `M → ∞` only at the level of the BOUND.  The second
+   route is the one this lane takes; it is a design decision made here, not a
+   finding of D-4.
 
 ## ROLES
 

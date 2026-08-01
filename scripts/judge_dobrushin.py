@@ -132,7 +132,20 @@ def grid_graph(a, b):
 
 def gate_J2(tol=1e-12):
     """D-1:  C >= 0, C_ij = 0 for dist > 1, row sums <= alpha < 1
-             ==>  sum_n (C^n)_ij <= alpha^dist(i,j) / (1 - alpha)."""
+             ==>  sum_n (C^n)_ij <= alpha^dist(i,j) / (1 - alpha).
+
+    REDESIGNED 2026-08-01, DECLARED AND COMMITTED BEFORE BEING RUN.  The first
+    version normalised every row to EXACTLY alpha, so it never exercised the one
+    hypothesis the module's own docstring calls the point --- row sums BOUNDED by
+    alpha, never constant --- which is precisely the crack the coupled kernel
+    falls through after `coupled_rowSums_not_constant` kills Schur's test.  A
+    gate that does not test the distinctive hypothesis of its theorem is not
+    testing that theorem.  The redesign makes the gate STRICTLY HARDER: rows now
+    carry deterministically UNEQUAL sums, at most alpha, with at least one row
+    strictly below and at least one attaining it.  Nothing was loosened; an
+    instrument was repaired.  The original was not superseded quietly --- this
+    paragraph is the record.
+    """
     print("J2  the D-1 lemma as a number")
     cases = []
     for (name, D) in [("path-8", path_graph(8)), ("grid-4x4", grid_graph(4, 4))]:
@@ -142,9 +155,16 @@ def gate_J2(tol=1e-12):
     for (name, D, alpha) in cases:
         m = D.shape[0]
         adj = (D <= 1).astype(np.float64)
-        # a deterministic non-symmetric C, row sums normalised to exactly alpha
+        # a deterministic non-symmetric C with UNEQUAL row sums, all <= alpha:
+        # row i is scaled by 1, 0.85, 0.7, 0.55 cycling, so row 0 attains alpha
+        # and the others sit strictly below it.
         base = adj * (1.0 + ((np.arange(m)[:, None] * 7 + np.arange(m)[None, :] * 3) % 5))
-        C = base * (alpha / base.sum(axis=1, keepdims=True))
+        slack = 1.0 - 0.15 * (np.arange(m) % 4)
+        C = base * (alpha * slack[:, None] / base.sum(axis=1, keepdims=True))
+        sums = C.sum(axis=1)
+        if not (sums.max() <= alpha + 1e-12 and sums.min() < alpha - 1e-9):
+            fail("J2", f"{name} alpha={alpha}: the redesign failed to produce "
+                       f"unequal row sums (min {sums.min()}, max {sums.max()})")
         # sum_n C^n to convergence
         Ssum = np.eye(m)
         P = np.eye(m)
