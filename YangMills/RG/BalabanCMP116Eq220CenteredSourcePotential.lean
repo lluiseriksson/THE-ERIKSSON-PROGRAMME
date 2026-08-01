@@ -75,8 +75,7 @@ theorem cmp116Eq220_re_physicalComplexTauPotential_le_centeredSource
       kernelSupport y source target →
         cmp116Eq219InternalRate M kappa1 *
             (physicalBondDist target source : ℝ) ≤
-          (1 / 4 : ℝ) * (kappa1 - 1) *
-            ((M : ℝ) ^ 4)⁻¹ * domainCard y)
+          (1 / 4 : ℝ) * (kappa1 - 1) * domainCard y)
     (hzero : ∀ y ∈ D, ∀ source target,
       ¬ kernelSupport y source target →
         ∀ (v w : SUNLieCoord Nc), ∀ t ∈ Set.Icc (0 : ℝ) 1,

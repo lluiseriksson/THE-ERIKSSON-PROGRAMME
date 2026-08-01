@@ -20,7 +20,7 @@ and in `|Y|`; equation (2.18) fixes the contour radius.  Their product cancels
 leave the coefficient `alpha4 * M⁻⁴` printed in (2.19).
 
 The final conversion also exposes the independent geometric input that turns
-one quarter of the `|Y|` decay into the internal bond-distance decay.  This is
+one quarter of the normalized `M⁻⁴ |Y|` decay into the internal bond-distance decay.  This is
 deliberate: that geometric statement must be proved from the concrete CMP116
 localization domains and is not hidden inside a renamed kernel hypothesis.
 -/
@@ -51,7 +51,7 @@ noncomputable def cmp116Eq143QMajorant
     (domainDist : ℝ) (domainCard : ℕ) : ℝ :=
   C3 * epsilon1 * (M : ℝ) ^ 4 * Real.exp (C2 * kappa1) *
     Real.exp (-(1 / 8 : ℝ) * (kappa1 - 1) * domainDist -
-      (1 / 2 : ℝ) * (kappa1 - 1) * ((M : ℝ) ^ 4)⁻¹ * domainCard)
+      (1 / 2 : ℝ) * (kappa1 - 1) * domainCard)
 
 /-- Domain amplitude for the interpolation-center part of the contour.
 
@@ -64,7 +64,7 @@ noncomputable def cmp116Eq143CenterDomainAmplitude
     (domainDist : ℝ) (domainCard : ℕ) : ℝ :=
   C3 * epsilon1 * (M : ℝ) ^ 4 * Real.exp (C2 * kappa1) *
     Real.exp (-(1 / 8 : ℝ) * (kappa1 - 1) * domainDist -
-      (1 / 4 : ℝ) * (kappa1 - 1) * ((M : ℝ) ^ 4)⁻¹ * domainCard)
+      (1 / 4 : ℝ) * (kappa1 - 1) * domainCard)
 
 /-- The explicit geometric budget needed to extract the internal-distance
 factor of (2.19) while retaining one quarter of the `|Y|` decay. -/
@@ -73,7 +73,7 @@ def CMP116Eq219MetricBudget
     (domainCard : ℕ) (bondDist : ℝ) : Prop :=
   (1 / 16 : ℝ) * (kappa1 - 1) * (M : ℝ)⁻¹ * bondDist ≤
     ((1 / 8 : ℝ) * (kappa1 - 1) - (1 - 3 * delta) * kappa) * domainDist +
-      (1 / 4 : ℝ) * (kappa1 - 1) * ((M : ℝ) ^ 4)⁻¹ * domainCard
+      (1 / 4 : ℝ) * (kappa1 - 1) * domainCard
 
 /-- The solved contour radius really has the inverse printed in (2.18). -/
 theorem cmp116Eq218_tauAbsSolved_inv_eq_tauInverse
@@ -118,8 +118,7 @@ theorem cmp116Eq219_metricBudget_of_sourceConditions
       (1 / 8 : ℝ) * (kappa1 - 1))
     (hgeometry :
       (1 / 16 : ℝ) * (kappa1 - 1) * (M : ℝ)⁻¹ * bondDist ≤
-        (1 / 4 : ℝ) * (kappa1 - 1) *
-          ((M : ℝ) ^ 4)⁻¹ * domainCard) :
+        (1 / 4 : ℝ) * (kappa1 - 1) * domainCard) :
     CMP116Eq219MetricBudget M kappa1 delta kappa
       domainDist domainCard bondDist := by
   unfold CMP116Eq219MetricBudget
@@ -138,10 +137,8 @@ theorem cmp116Eq143Eq218_exponential_le_eq219
       domainDist domainCard bondDist) :
     Real.exp ((1 - 3 * delta) * kappa * domainDist) *
         Real.exp (-(1 / 8 : ℝ) * (kappa1 - 1) * domainDist -
-          (1 / 2 : ℝ) * (kappa1 - 1) *
-            ((M : ℝ) ^ 4)⁻¹ * domainCard) ≤
-      Real.exp (-(1 / 4 : ℝ) * (kappa1 - 1) *
-          ((M : ℝ) ^ 4)⁻¹ * domainCard) *
+          (1 / 2 : ℝ) * (kappa1 - 1) * domainCard) ≤
+      Real.exp (-(1 / 4 : ℝ) * (kappa1 - 1) * domainCard) *
         Real.exp (-(1 / 16 : ℝ) * (kappa1 - 1) *
           (M : ℝ)⁻¹ * bondDist) := by
   unfold CMP116Eq219MetricBudget at hbudget
@@ -159,8 +156,7 @@ theorem cmp116Eq143QMajorant_le_centerKernel
     (hC3 : 0 ≤ C3) (hepsilon1 : 0 ≤ epsilon1)
     (hgeometry :
       cmp116Eq219InternalRate M kappa1 * bondDist ≤
-        (1 / 4 : ℝ) * (kappa1 - 1) *
-          ((M : ℝ) ^ 4)⁻¹ * domainCard) :
+        (1 / 4 : ℝ) * (kappa1 - 1) * domainCard) :
     cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
         domainDist domainCard ≤
       cmp116Eq143CenterDomainAmplitude C3 epsilon1 M C2 kappa1
@@ -169,7 +165,7 @@ theorem cmp116Eq143QMajorant_le_centerKernel
   let coeff :=
     C3 * epsilon1 * (M : ℝ) ^ 4 * Real.exp (C2 * kappa1)
   let sizeQuarter :=
-    (1 / 4 : ℝ) * (kappa1 - 1) * ((M : ℝ) ^ 4)⁻¹ * domainCard
+    (1 / 4 : ℝ) * (kappa1 - 1) * domainCard
   let domainExponent :=
     -(1 / 8 : ℝ) * (kappa1 - 1) * domainDist
   have hcoeff : 0 ≤ coeff := by
@@ -264,7 +260,7 @@ theorem cmp116Eq143QMajorant_mul_tauAbsSolved_le_eq219
         (Real.exp ((1 - 3 * delta) * kappa * domainDist) *
           Real.exp (-(1 / 8 : ℝ) * (kappa1 - 1) * domainDist -
             (1 / 2 : ℝ) * (kappa1 - 1) *
-              ((M : ℝ) ^ 4)⁻¹ * domainCard)) := by
+              domainCard)) := by
     unfold cmp116Eq218TauAbsSolved cmp116Eq143QMajorant
     rw [Real.exp_neg]
     field_simp [Real.exp_ne_zero]
@@ -275,17 +271,16 @@ theorem cmp116Eq143QMajorant_mul_tauAbsSolved_le_eq219
         (Real.exp ((1 - 3 * delta) * kappa * domainDist) *
           Real.exp (-(1 / 8 : ℝ) * (kappa1 - 1) * domainDist -
             (1 / 2 : ℝ) * (kappa1 - 1) *
-              ((M : ℝ) ^ 4)⁻¹ * domainCard)) ≤
+              domainCard)) ≤
       (alpha4 * ((M : ℝ) ^ 4)⁻¹) *
         (Real.exp ((1 - 3 * delta) * kappa * domainDist) *
           Real.exp (-(1 / 8 : ℝ) * (kappa1 - 1) * domainDist -
             (1 / 2 : ℝ) * (kappa1 - 1) *
-              ((M : ℝ) ^ 4)⁻¹ * domainCard)) := by
+              domainCard)) := by
       exact mul_le_mul_of_nonneg_right hcoeff
         (mul_nonneg (Real.exp_pos _).le (Real.exp_pos _).le)
     _ ≤ (alpha4 * ((M : ℝ) ^ 4)⁻¹) *
-        (Real.exp (-(1 / 4 : ℝ) * (kappa1 - 1) *
-            ((M : ℝ) ^ 4)⁻¹ * domainCard) *
+        (Real.exp (-(1 / 4 : ℝ) * (kappa1 - 1) * domainCard) *
           Real.exp (-(1 / 16 : ℝ) * (kappa1 - 1) *
             (M : ℝ)⁻¹ * bondDist)) := by
       exact mul_le_mul_of_nonneg_left hexp

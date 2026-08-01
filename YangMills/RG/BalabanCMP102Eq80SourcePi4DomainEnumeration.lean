@@ -124,7 +124,8 @@ theorem cmp102Eq80SourcePi4IndexedDomainMetric_eq_natCast
         (M := M) anchor D i : ℝ) := by
   rfl
 
-/-- Source block cardinality used by the equation-(1.43) rate. -/
+/-- Source normalized cardinality `M⁻⁴ |Y|`, namely the number of coarse
+blocks, used by the equation-(1.43) rate. -/
 noncomputable def cmp102Eq80SourcePi4IndexedDomainCard
     {M Q : ℕ} [NeZero Q] (anchor : FinBox 4 Q)
     (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))

@@ -51,6 +51,20 @@ theorem cmp116Eq226_optimalInteractionAlpha_nonneg_iff
       0 ≤ potentialRate + r2Rate + gamma := by
   rfl
 
+/-- Componentwise nonnegativity is a sufficient source-facing certificate
+for nonnegativity of the canonical interaction coefficient.  This closes
+only the sign bookkeeping; it does not prove either strict Gaussian
+smallness condition. -/
+theorem cmp116Eq226_optimalInteractionAlpha_nonneg
+    {potentialRate r2Rate gamma : ℝ}
+    (hpotential : 0 ≤ potentialRate)
+    (hr2 : 0 ≤ r2Rate)
+    (hgamma : 0 ≤ gamma) :
+    0 ≤ cmp116Eq226OptimalInteractionAlpha
+      potentialRate r2Rate gamma := by
+  unfold cmp116Eq226OptimalInteractionAlpha
+  positivity
+
 /-- The first genuine scalar obligation after the optimal normalization:
 the total interaction rate must lie below the inverse covariance scale. -/
 def CMP116Eq226OptimalCovarianceSmall

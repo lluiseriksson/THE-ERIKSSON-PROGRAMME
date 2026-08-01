@@ -399,6 +399,38 @@ theorem cmp116Eq219_sourceGeometry
       field_simp
       ring
 
+/-- The same physical geometry expressed in the normalized cardinality used by
+the equation-(1.43)/(2.19) interfaces.  Since `Y.blocks.card = M⁻⁴ |Y|`, no
+additional factor `M⁻⁴` may multiply this block count. -/
+theorem cmp116Eq219_sourceGeometry_normalizedCard
+    {M N' : ℕ} [NeZero M] [NeZero N']
+    (Y : CMP116LocalizationDomain M N')
+    {b b' : PhysicalBond 4 (M * N')}
+    (hb : b ∈ Y.bondSupport) (hb' : b' ∈ Y.bondSupport)
+    {kappa1 : ℝ} (hkappa1 : 1 ≤ kappa1) :
+    cmp116Eq219InternalRate M kappa1 *
+        (physicalBondDist b b' : ℝ) ≤
+      (1 / 4 : ℝ) * (kappa1 - 1) * Y.blocks.card := by
+  have hdistNat := physicalBondDist_le_four_mul_cmp116DomainBlockCard Y hb hb'
+  have hdist : (physicalBondDist b b' : ℝ) ≤
+      4 * (M : ℝ) * Y.blocks.card := by
+    exact_mod_cast hdistNat
+  have hcoef : 0 ≤ cmp116Eq219InternalRate M kappa1 := by
+    unfold cmp116Eq219InternalRate
+    have hkdiff : 0 ≤ kappa1 - 1 := sub_nonneg.mpr hkappa1
+    positivity
+  calc
+    cmp116Eq219InternalRate M kappa1 *
+          (physicalBondDist b b' : ℝ) ≤
+        cmp116Eq219InternalRate M kappa1 *
+          (4 * (M : ℝ) * Y.blocks.card) :=
+      mul_le_mul_of_nonneg_left hdist hcoef
+    _ = (1 / 4 : ℝ) * (kappa1 - 1) * Y.blocks.card := by
+      unfold cmp116Eq219InternalRate
+      have hM : (M : ℝ) ≠ 0 := by exact_mod_cast (NeZero.ne M)
+      field_simp
+      ring
+
 /-- The printed scale condition and source domain geometry produce the full
 metric budget required for equation (2.19). -/
 theorem cmp116Eq219_metricBudget_physical
@@ -411,8 +443,8 @@ theorem cmp116Eq219_metricBudget_physical
     (hkappa : (1 - 3 * delta) * kappa ≤
       (1 / 8 : ℝ) * (kappa1 - 1)) :
     CMP116Eq219MetricBudget M kappa1 delta kappa domainDist
-      Y.sourceCard (physicalBondDist b b') := by
+      Y.blocks.card (physicalBondDist b b') := by
   exact cmp116Eq219_metricBudget_of_sourceConditions hdomainDist hkappa
-    (cmp116Eq219_sourceGeometry Y hb hb' hkappa1)
+    (cmp116Eq219_sourceGeometry_normalizedCard Y hb hb' hkappa1)
 
 end YangMills.RG

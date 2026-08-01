@@ -12,7 +12,8 @@ Equation (1.43) decays first in the localization domain `Y`.  After the
 contour-radius choice (2.18), equation (2.19) retains two distinct weights:
 
 * a domain weight proportional to
-  `alpha4 * M⁻⁴ * exp (-(kappa1 - 1) * M⁻⁴ * |Y| / 4)`;
+  `alpha4 * M⁻⁴ * exp (-(kappa1 - 1) * normalizedCard(Y) / 4)`,
+  where `normalizedCard(Y) = M⁻⁴ * |Y|`;
 * an internal bond kernel
   `exp (-(kappa1 - 1) * M⁻¹ * |b₋ - b'₋| / 16)`.
 
@@ -36,8 +37,7 @@ noncomputable section
 noncomputable def cmp116Eq219DomainAmplitude
     (alpha4 : ℝ) (M : ℕ) (kappa1 : ℝ) (domainCard : ℕ) : ℝ :=
   alpha4 * (((M : ℝ) ^ 4)⁻¹) *
-    Real.exp (-(1 / 4 : ℝ) * (kappa1 - 1) *
-      (((M : ℝ) ^ 4)⁻¹) * domainCard)
+    Real.exp (-(1 / 4 : ℝ) * (kappa1 - 1) * domainCard)
 
 /-- The internal bond-decay rate left in equation (2.19). -/
 noncomputable def cmp116Eq219InternalRate

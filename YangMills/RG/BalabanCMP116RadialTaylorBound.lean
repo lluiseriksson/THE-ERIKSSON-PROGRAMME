@@ -244,8 +244,7 @@ theorem
     (hM : 1 ≤ M) (hkappa1 : 1 < kappa1)
     (hgeometry : ∀ source target, kernelSupport source target →
       cmp116Eq219InternalRate M kappa1 * (dist target source : ℝ) ≤
-        (1 / 4 : ℝ) * (kappa1 - 1) *
-          ((M : ℝ) ^ 4)⁻¹ * domainCard)
+        (1 / 4 : ℝ) * (kappa1 - 1) * domainCard)
     (hzero : ∀ source target, ¬ kernelSupport source target →
       ∀ (v w : SUNLieCoord Nc), ∀ t ∈ Set.Icc (0 : ℝ) 1,
         cmp116FDerivHessian

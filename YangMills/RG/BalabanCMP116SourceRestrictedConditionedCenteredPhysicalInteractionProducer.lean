@@ -137,8 +137,7 @@ theorem
       kernelSupport y source target →
         cmp116Eq219InternalRate M kappa1 *
             (physicalBondDist target source : ℝ) ≤
-          (1 / 4 : ℝ) * (kappa1 - 1) *
-            ((M : ℝ) ^ 4)⁻¹ * domainCard y)
+          (1 / 4 : ℝ) * (kappa1 - 1) * domainCard y)
     (hzeroB : ∀ sigma,
       CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
       ∀ b y source target,

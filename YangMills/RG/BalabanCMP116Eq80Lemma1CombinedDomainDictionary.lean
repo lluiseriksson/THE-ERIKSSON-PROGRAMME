@@ -67,8 +67,9 @@ noncomputable def cmp116Eq80Lemma1CombinedDomainMetric
     (cmp102Eq80SourcePi4IndexedDomainMetricNat (M := M) anchor D)
     (cmp109Lemma1NativeIndexedDomainMetric E)
 
-/-- Literal block cardinalities on the same disjoint direct/native ledger.
-The native branch is measured before support coarsification. -/
+/-- Literal normalized block cardinalities `M⁻⁴ |Y|` on the same disjoint
+direct/native ledger.  The native branch is measured before support
+coarsification. -/
 noncomputable def cmp116Eq80Lemma1CombinedDomainCard
     {Index : Type*} {M Q Nc : ℕ}
     [NeZero M] [NeZero Q] [NeZero (2 * Q)]

@@ -60,8 +60,7 @@ theorem cmp116Eq220_centeredPhysicalQuadratic_le_rate
       kernelSupport y source target →
         cmp116Eq219InternalRate M kappa1 *
             (physicalBondDist target source : ℝ) ≤
-          (1 / 4 : ℝ) * (kappa1 - 1) *
-            ((M : ℝ) ^ 4)⁻¹ * domainCard y)
+          (1 / 4 : ℝ) * (kappa1 - 1) * domainCard y)
     (hzero : ∀ source target,
       ¬ kernelSupport y source target →
         ∀ (v w : SUNLieCoord Nc), ∀ t ∈ Set.Icc (0 : ℝ) 1,

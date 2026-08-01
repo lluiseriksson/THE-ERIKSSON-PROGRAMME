@@ -225,7 +225,7 @@ theorem abs_cmp116FDerivHessian_combined_le_eq143
         0 ≤ C3 * epsilon1 * (M : ℝ) ^ 4 * Real.exp (C2 * kappa1) *
           Real.exp (-(1 / 8 : ℝ) * (kappa1 - 1) *
               (domainMetric (Fin.natAdd m i) : ℝ) -
-            (1 / 2 : ℝ) * (kappa1 - 1) * ((M : ℝ) ^ 4)⁻¹ *
+            (1 / 2 : ℝ) * (kappa1 - 1) *
               domainCard (Fin.natAdd m i)) := by
       positivity
     exact mul_nonneg (mul_nonneg hmajorant (norm_nonneg A)) (norm_nonneg A')

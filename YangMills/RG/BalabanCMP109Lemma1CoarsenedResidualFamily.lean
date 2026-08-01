@@ -481,7 +481,8 @@ noncomputable def cmp109Lemma1NativeIndexedDomainMetric
     (i : Fin (CMP109Lemma1NativeDomainCount E)) : ℕ :=
   cmp116CubeEdgeTreeMetric (cmp109Lemma1NativeDomainAt E i)
 
-/-- Literal native block cardinality retained by the terminal dictionary. -/
+/-- Literal normalized native block cardinality retained by the terminal
+dictionary. -/
 noncomputable def cmp109Lemma1NativeIndexedDomainCard
     {Index : Type*} {M Q Nc : ℕ}
     [NeZero M] [NeZero Q] [NeZero (2 * Q)]

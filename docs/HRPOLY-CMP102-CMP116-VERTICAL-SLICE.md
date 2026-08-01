@@ -52,19 +52,17 @@ Its current status against the CMP102 lane is:
 
 | Record component | CMP102 producer status |
 |---|---|
-| `contour` | **missing seed globally**: every current constructor transforms an existing density; no lane constructs a closed initial `CMP116Eq214PhysicalContourDensity` |
-| `source` | physical Gamma/operator ingredients exist, but no equality installs them in the contour density |
-| `domainMetric`, `domainSupport` | domain geometry exists on the CMP102 side; no typed equality to the contour index family |
-| Cauchy-radius identities | generic CMP116 formulas exist; not instantiated by a CMP102 contour producer |
+| `contour` | **non-circular constructor exists**: `CMP116Eq214PhysicalContourDensity.ofSourcePi4RestrictedPhysicalContour` starts from a private neutral dependent shell and overwrites the potential, bond field, and full restricted complex Gaussian from physical producers; no inhabited contour density is an input |
+| `source` | physical Gamma/operator ingredients and their complex-contour installation exist; source faithfulness still depends on the literal indexed potential/remainder ledger supplied to the constructor |
+| `domainMetric`, `domainCard`, `domainSupport` | the combined direct/native dictionary is explicit and its nonemptiness/subset laws are proved; installation in a source-specific `PreEq136` inhabitant remains pending |
+| Cauchy-radius identities | generic CMP116 formulas exist and the target identities are explicit fields of `PreEq136`; their source-specific installation is still pending |
 | positivity/smallness scalars | many scalar lemmas exist; no complete source record |
-| `outer_bound` | no CMP102-to-contour theorem |
-| `inner_bound` | no CMP102-to-contour theorem |
-| contour `potential` summand | **partially constructed**: the complete CMP102 equation-(80) radial operator is installed, and its fixed quadratic part `Q₈₀(0)` is now separated exactly from the genuine field-dependent residual `Q₈₀(B) - Q₈₀(0)`; the Lemma-1 residual family is separately domain-indexed; the literal cutoff now keeps every radial point of each selected domain projection inside the source small-field ball; the physical third-jet decay, remaining source summands, and (1.36) are open |
-| `interaction_bound` | **open**: its terminal residual is `cmp116Eq220ResidualDomainWeight`, so it requires a concrete `V''_k` satisfying (1.36); closing the `Q_Y` branch through (1.43)/(2.19) does not discharge this field |
-| `source_bound` | operator/source bounds exist parametrically; no installed contour source |
-| `domain_nonempty`, `domain_subset` | geometric ingredients exist; no source-record construction |
-| `rooted_residual` | **missing source instance** |
-| `volume_budget` | **missing source instance** |
+| `outer_bound`, `inner_bound`, `source_bound` | generated in the centered-conditioned physical contour lane from the covariance/contour producers, subject to the named contraction and scalar windows; they are not consequences of equation (80) alone |
+| contour `potential` summand | **combined partial ledger constructed**: the direct Eq-80 fixed quadratic core and cubic Taylor residual are literal, and direct (1.36) is derived from the physical third-jet/walk producers; the native Lemma-1 residual is separately indexed and carries its named restricted source certificate; installation in a complete pre-source and the remaining printed species are open |
+| `interaction_bound` | **open at installation level**: the direct (1.36) and combined Eq-219/rooted ledgers now have producers, while the native analytic (1.36) remains the explicit CMP109 certificate; the final centered AE potential bound and scalar interaction budget have not yet been assembled into `PreEq136` |
+| `domain_nonempty`, `domain_subset` | discharged for the combined direct/native dictionary, with the centered region enlarged rather than silently dropping boundary domains |
+| `rooted_residual` | direct and native producers are combined under one explicit root bound; installation remains pending |
+| `volume_budget` | an exact combined physical volume rate/cost producer exists; the remaining scalar target and installation stay visible |
 
 Therefore:
 
@@ -73,6 +71,108 @@ physical CMP116Eq226PhysicalContourTermSource constructed: 0
 terminal boundary objects discharged from CMP102:          0 / 5
 terminal theorem instantiated nontrivially:                 0
 ```
+
+### Progress denominator for the centered-conditioned constructor
+
+The raw `PreEq136` structure contains data, choices, definitional
+normalizations, and proof fields, so neither its raw field count nor the
+existence of a constructor measures whether the record is inhabited.  The
+consumer-facing audit groups the proof debt into the **41 obligations before
+equation (1.36)** and treats equation (1.36) separately.  The live metric is
+therefore
+
+```text
+PreEq136 obligations with a source-specific producer / 41.
+```
+
+A field counts only when its producer is independent of an already inhabited
+`PreEq136` record and does not receive the same conclusion under another
+name.  In particular,
+`cmp116Eq226CenteredConditionedCombinedPartialTermSourceOfPreEq136` is a real
+constructor from `PreEq136`, but not an inhabitant of `PreEq136`; it does not
+by itself change this numerator.  The numerator must be recomputed from the
+field-by-field producer map after every interface change, rather than inferred
+from the number of modules or successful builds.
+
+### Current producer map for `PreEq136`
+
+The following table is the live source-facing map.  A theorem marked
+"producer" has the correct conclusion independently of an inhabited
+`PreEq136`; "installer pending" means that the theorem has not yet been used
+to construct the corresponding field of a source-specific pre-record.
+Unvalidated files do not enter the numerical progress numerator.
+
+| Obligation group | Source status |
+|---|---|
+| non-circular contour density | producer compiled: `ofSourcePi4RestrictedPhysicalContour`; the literal direct/native potential adapter still supplies its inputs |
+| combined `total` / `residual` ledger | exact direct/native definitions and sum identities compiled |
+| `domainMetric`, `domainCard`, `domainSupport` | canonical appended dictionary compiled |
+| `domain_nonempty`, `domain_subset`, `domainMetric_nonneg` | producers compiled for the enlarged centered region |
+| `rooted_residual`, `rootBound_nonneg` | direct/native combined producers compiled; terminal installer pending |
+| `volume_budget` | exact combined physical volume-rate producer compiled; scalar target remains visible |
+| equation (1.43) | combined physical producer compiled; a source-specific terminal-field adapter is written without a free Hessian estimate and awaits Colab validation |
+| equation (1.36) | direct sector derived from CMP102 jets and walks; native sector is the named positive, nonempty-small-field CMP109 certificate; the combined finalizer is compiled but still requires a `PreEq136` inhabitant |
+| literal `kernelSupport`, `metric_budget` | source definitions and proofs written; clean focal validation pending after dependency materialization |
+| `smooth`, `hessian_zero_off_support` | source proofs written from the projected direct core and zero native core; focal validation pending |
+| covariance/parametrix contractions and contour bounds | remain explicit physical producer inputs; no source-specific pre-record yet assembles all of them |
+| conditioned covariance lower certificate | mandatory nondegeneracy input; it must not be synthesized by choosing a degenerate Gaussian root |
+| scalar windows (`shell`, contour/Neumann, root, outer, interaction, volume) | individually named; the combined ledger now pins `alpha` to the canonical sum of the literal potential rate, literal bilateral R2 rate, and `gamma`, but this normalization and its sign lemma await Colab validation and do not discharge `root_small` or `outer_small`; a single source-specific compatibility witness covering the live set remains open |
+
+The two pending Hessian fields are deliberately not read back from the input
+record.  Their ledger theorems rewrite only `total`, `residual`, and
+`kernelSupport` to literal source objects.  In the native branch the zero
+Hessian is an arithmetic consequence of installing the same literal native
+residual in `total` and `residual`; this checks the assembled ledger, not an
+independent CMP109 claim that the native activity has no quadratic part.
+
+### Contract of the next source-specific pre-record assembler
+
+The next constructor must stop accepting the following fields from an
+already inhabited `PreEq136` record.  They are fixed by the literal combined
+ledger or have source-facing producers:
+
+```text
+literal data fixed by the ledger:
+  total, residual
+  domainMetric, domainCard, domainSupport, kernelSupport
+  E0 = E0Direct + lemma1.E0
+  threshold = epsilon1 / gk
+  alpha = potentialRate + r2Rate + gamma
+
+proof fields generated from those data:
+  smooth
+  domainMetric_nonneg
+  metric_budget
+  hessian_zero_off_support
+  eq143
+  interaction_budget                  -- normalization only
+  domain_nonempty, domain_subset
+  rootBound_nonneg, rooted_residual
+  volume_budget                       -- under its explicit scalar target
+```
+
+Until that assembler exists, adding equalities to
+`CMP116CenteredConditionedCombinedEq80LedgerIdentification` strengthens the
+identified branch but does not reduce the input telescope: the caller still
+supplies an inhabited `PreEq136`, including the stored copies of the proof
+fields.  In particular the new canonical `alpha` equality is not counted as
+progress in the live numerator.  Its purpose is to prevent a later assembler
+from choosing post-hoc slack while leaving the two genuine scalar walls
+
+```text
+(potentialRate + r2Rate + gamma) * ||conditionedRoot||^2 < 1,
+outer_small at the same canonical alpha
+```
+
+visible and jointly testable.
+
+The fields that remain inputs to that future assembler are the physical
+contour density and geometry, covariance/coercivity/finite-range data,
+patched-parametrix and contour certificates, conditioned covariance and its
+strict lower certificate, component jets and random-walk budgets for the
+direct equation-(80) sector, the named Lemma-1 certificate, and the live
+scalar compatibility inequalities.  Repackaging those inputs is not itself
+a physical discharge.
 
 ## Closed CMP102 result retained
 
@@ -92,6 +192,25 @@ This is a valid producer-side theorem.  It is not yet the CMP116 residual
 bound and must not be counted as a discharged terminal hypothesis.
 
 ## Estimate discipline: equations (1.36) and (1.43)
+
+### Cardinality and metric conventions
+
+Every cardinality or distance in this slice carries its lattice unit.  The
+following table is normative for new interfaces and proofs:
+
+| Lean symbol | Unit / convention | Exact relation or warning |
+|---|---|---|
+| `CMP116LocalizationDomain.sourceCard` | fine-lattice sites in the physical carrier | `sourceCard = M^4 * blocks.card` |
+| `CMP116LocalizationDomain.blocks.card` | number of coarse `M`-blocks | this already represents the printed normalized quantity `M^-4 * |Y|` |
+| `cmp116Eq80Lemma1CombinedDomainCard` | branch-local normalized block count | direct branch is the `M`-block count; native branch is the literal `2`-block count before coarsifying its support |
+| `cmp116CubeEdgeTreeMetric Y` | number of coarse cube edges in a shortest carrier, on the lattice native to `Y` | it is already a normalized combinatorial length; it is not a fine-site distance |
+| `cmp116Eq80Lemma1CombinedDomainMetric` | branch-local native tree metric | direct and native metrics retain their own block lattices; the native metric is not recomputed after support coarsification |
+| `physicalBondDist b b'` | fine-lattice Chebyshev bond distance, including the direction coordinate | comparison with block counts costs an explicit factor of `M`, e.g. `physicalBondDist <= 4*M*blocks.card` |
+
+Consequently, an interface whose `domainCard` is `blocks.card` must never
+multiply that value by another `M^-4`.  The printed prefactor `alpha4*M^-4`
+is a different amplitude normalization and remains present.  The two
+conventions are kept distinct in every equation-(1.43)/(2.19) budget.
 
 The two source estimates must not be identified:
 
@@ -143,11 +262,14 @@ That scalar comparison is now isolated in
 `BalabanCMP102Eq80PhysicalDomainFTCEq143SourceMetric.lean`.  It selects
 
 ```text
-kappaCard   = (kappa1 - 1) * Msource^(-4) / 2
+kappaCard   = (kappa1 - 1) / 2
 kappaMetric = (kappa1 - 1) / 8
 ```
 
-and removes every dependence on `Y` from the remaining producer budget.
+Here `Y.blocks.card` is already the normalized source cardinality
+`Msource^(-4) * |Y|`; multiplying it by another `Msource^(-4)` would count
+the source normalization twice.  The two choices remove every dependence on
+`Y` from the remaining producer budget.
 The reconstruction offsets `exp(kappaCard * 10000)` and
 `exp(kappaMetric * 10000)` remain visible in that budget.  They are fixed
 smallness thresholds on the walk ratios, not additional decay in the domain
@@ -933,7 +1055,14 @@ cutoff_energy_bound installed in the centered terminal record : open
 
 `interaction_budget` is only the optimal normalization
 `alpha = potentialRate + r2Rate + gamma`; it is not counted as an analytic
-discharge.  No complete centered conditioned `TermSource` has yet been
+discharge.  The combined ledger now records that equality using the literal
+terminal potential and bilateral R2 rates.  This currently strengthens the
+ledger presented to the already inhabited `PreEq136` record; it removes no
+constructor input until a later source-specific assembler omits the stored
+budget and rebuilds it from the equality.  At that point `alpha_nonneg` must
+be regenerated from componentwise rate signs, while the strict
+`root_small` and physical `outer_small` inequalities remain genuine source
+obligations.  No complete centered conditioned `TermSource` has yet been
 constructed, and neither `hraw` nor `hRpoly` is proved.
 
 ## Equation-(80), the indexed cutoff estimate, and the missing residual

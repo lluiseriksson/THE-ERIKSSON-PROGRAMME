@@ -2,5 +2,6 @@ import YangMills.RG.BalabanCMP116Eq226OptimalInteractionAlpha
 
 #print axioms YangMills.RG.cmp116Eq226_optimalInteractionAlpha_budget
 #print axioms YangMills.RG.cmp116Eq226_optimalInteractionAlpha_nonneg_iff
+#print axioms YangMills.RG.cmp116Eq226_optimalInteractionAlpha_nonneg
 #print axioms YangMills.RG.cmp116Eq226_optimalCovarianceSmall_iff
 #print axioms YangMills.RG.cmp116Eq226_optimalGaussianSmall_iff

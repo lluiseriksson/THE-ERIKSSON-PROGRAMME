@@ -27,10 +27,15 @@ open scoped Matrix.Norms.Operator
 private abbrev Eq143CoarseField (Q Nc : ℕ) [NeZero (2 * Q)] :=
   CoarsePhysicalOneCochain 4 (2 * Q) Nc
 
-/-- Cardinality-decay rate which matches the `|Y|` exponent in (1.43). -/
+/-- Cardinality-decay rate which matches the `M⁻⁴ |Y|` exponent in (1.43).
+
+`CMP116LocalizationDomain.blocks.card` already is `M⁻⁴ |Y|`, by
+`cmp116LocalizationDomain_sourceCard_eq`.  Hence the rate multiplying the
+block count has no second factor `M⁻⁴`.  The unused scale argument is retained
+to keep the source-facing API stable. -/
 noncomputable def cmp102Eq80Eq143CardRate
-    (Msource : ℕ) (kappa1 : ℝ) : ℝ :=
-  (1 / 2 : ℝ) * (kappa1 - 1) * ((Msource : ℝ) ^ 4)⁻¹
+    (_Msource : ℕ) (kappa1 : ℝ) : ℝ :=
+  (1 / 2 : ℝ) * (kappa1 - 1)
 
 /-- Tree-metric decay rate which matches the `d_k(Y)` exponent in (1.43). -/
 def cmp102Eq80Eq143MetricRate (kappa1 : ℝ) : ℝ :=
@@ -124,8 +129,7 @@ theorem
         Real.exp (
           -(1 / 8 : ℝ) * (kappa1 - 1) *
               (cmp116CubeEdgeTreeMetric Y : ℝ) -
-            (1 / 2 : ℝ) * (kappa1 - 1) *
-              ((Msource : ℝ) ^ 4)⁻¹ * Y.blocks.card) := by
+            (1 / 2 : ℝ) * (kappa1 - 1) * Y.blocks.card) := by
     dsimp [decay]
     rw [← Real.exp_add]
     congr 1
