@@ -242,7 +242,7 @@ theorem signed_coshRemainder_nonnegative {a u : ℝ} (ha : 0 ≤ a) :
         hau
     rw [coshRemainder_abs] at hr
     have hfactor : u ^ 2 - 1 ≤ 0 := by
-      nlinarith [sq_abs u]
+      nlinarith [sq_abs u, abs_nonneg u]
     exact mul_nonneg_of_nonpos_of_nonpos (sub_nonpos.mpr hr) hfactor
 
 private theorem exp_mul_spinOne_integrable (a : ℝ) :
