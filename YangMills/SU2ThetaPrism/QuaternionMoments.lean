@@ -39,8 +39,10 @@ private def quaternionJ : SU2 :=
 /-- The unit quaternion `(1+i+j+k)/2`.  Its adjoint action cyclically
 permutes the three imaginary quaternion coordinates. -/
 private def quaternionCycleMat : Matrix (Fin 2) (Fin 2) ℂ :=
-  ![![((1 : ℂ) + Complex.I) / 2, ((1 : ℂ) + Complex.I) / 2],
-    ![((-1 : ℂ) + Complex.I) / 2, ((1 : ℂ) - Complex.I) / 2]]
+  ![![(((1 / 2 : ℝ) : ℂ) * ((1 : ℂ) + Complex.I)),
+      (((1 / 2 : ℝ) : ℂ) * ((1 : ℂ) + Complex.I))],
+    ![(((1 / 2 : ℝ) : ℂ) * ((-1 : ℂ) + Complex.I)),
+      (((1 / 2 : ℝ) : ℂ) * ((1 : ℂ) - Complex.I))]]
 
 private def quaternionCycle : SU2 := by
   refine ⟨quaternionCycleMat, ?_⟩
