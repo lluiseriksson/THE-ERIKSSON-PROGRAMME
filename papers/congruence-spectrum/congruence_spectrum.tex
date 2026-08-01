@@ -54,8 +54,10 @@ $\mu J+(1-\mu)I$, of ratio $(1-\mu)/(1+(m-1)\mu)$, which is strictly decreasing
 in $m$ --- the more sites the weight keeps, the smaller the ratio it can reach,
 so the best uniform concentration is a \emph{pair}. For \emph{arbitrary} weights
 we then prove
-$\sup_{D>0}r(DMD)=(1-\mu)/(1+\mu)$ with $\mu=\min_{i\neq j}M_{ij}$: the extremal
-congruence concentrates on the \emph{least correlated pair}. The proof is
+$\sup_{D>0}r(DMD)=(1-\mu)/(1+\mu)$ with $\mu=\min_{i\neq j}M_{ij}$: the
+\emph{least correlated pair} determines the supremum, which is approached by
+concentrating on such a pair. (We evaluate the supremum; we do not classify its
+maximisers.) The proof is
 geometric rather than spectral --- Hilbert's projective diameter is itself a
 congruence invariant, and Birkhoff's contraction theorem converts it into the
 bound --- and it uses no definiteness at all, only positivity of the entries.
@@ -174,18 +176,30 @@ $\sigma^+ = (0,\dots,0)$ and $\sigma^-=(1,\dots,1)$ for the two antipodal
 be the transfer matrix of a \emph{single} Ising bond of coupling $a$.
 
 \begin{lemma}[One bond]\label{lem:bond}
-$B(a)$ has eigenvectors $(1,1)$ and $(1,-1)$ with eigenvalues $2\cosh a$ and
-$2\sinh a$. Its spectral ratio is
+Let $a\ge 0$. Then $B(a)$ has eigenvectors $(1,1)$ and $(1,-1)$ with eigenvalues
+$2\cosh a$ and $2\sinh a$, and its subdominant ratio is
 \[
-  \frac{2\sinh a}{2\cosh a} \;=\; \tanh a .
+  r\big(B(a)\big)\;=\;\frac{2\sinh a}{2\cosh a} \;=\; \tanh a .
 \]
 \end{lemma}
 
 \begin{proof}
 Direct: $B(a)(1,1)^{\!\top} = (e^a+e^{-a})(1,1)^{\!\top}$ and
-$B(a)(1,-1)^{\!\top} = (e^a-e^{-a})(1,-1)^{\!\top}$. Both eigenvalues are real
-and $2\cosh a>0$, so the ratio is well defined.
+$B(a)(1,-1)^{\!\top} = (e^a-e^{-a})(1,-1)^{\!\top}$. Here $2\cosh a>0$ is the
+Perron root, and $a\ge 0$ makes $2\sinh a\ge 0$, so the other eigenvalue is
+already its own modulus.
 \end{proof}
+
+\begin{remark}[The sign hypothesis is the content]\label{rem:sign}
+For $a<0$ the statement is \emph{false}: $2\sinh a<0$, so the subdominant
+modulus is $|2\sinh a|$ and $r(B(a))=|\tanh a|$. An earlier version of this
+paper omitted the hypothesis, and the formalisation did not catch it --- the
+Lean lemma proves the \emph{algebraic identity} $2\sinh a/2\cosh a=\tanh a$,
+which holds for every real $a$, while the English sentence read that identity as
+a statement about moduli, which it is not unless $a\ge0$. A true machine-checked
+lemma can sit underneath a false sentence. Everything below uses $a=\beta L$
+with $\beta>0$, so the hypothesis costs nothing here.
+\end{remark}
 
 \begin{theorem}[Fusion identity]\label{thm:fusion}
 The $2\times 2$ principal submatrix of $K_\beta^{(L)}$ on the antipodal pair
@@ -288,8 +302,8 @@ concentrations the question has a complete and elementary answer, and the answer
 explains the mechanism.
 
 \begin{theorem}[Exchangeable concentration]\label{thm:exch}
-Fix $0<\mu<1$ and let $E_m=\mu J_m+(1-\mu)I_m$ be the exchangeable correlation
-matrix on $m$ sites. Its spectrum consists of exactly two points: $1+(m-1)\mu$ on
+Fix $0<\mu<1$ and $m\ge2$, and let $E_m=\mu J_m+(1-\mu)I_m$ be the exchangeable
+correlation matrix on $m$ sites. Its spectrum consists of exactly two points: $1+(m-1)\mu$ on
 the constant vector, and $1-\mu$ on every vector summing to zero. Hence the ratio
 it reaches is
 \[
@@ -377,8 +391,8 @@ $M_{ii}M_{jj}/(M_{ji}M_{ij})=1/\mu^2$, so the maximum is attained.
 \end{proof}
 
 \begin{theorem}[Least-correlated pair]\label{thm:lcp}
-Let $M$ be symmetric with $M_{ii}=1$ and $0<\mu\le M_{ij}\le 1$ for $i\neq j$,
-where $\mu=\min_{i\neq j}M_{ij}$. Then
+Let $M$ be a symmetric $n\times n$ matrix with $n\ge2$, $M_{ii}=1$ and
+$0<\mu\le M_{ij}\le 1$ for $i\neq j$, where $\mu=\min_{i\neq j}M_{ij}$. Then
 \[
   \sup_{D>0 \textup{ diagonal}} r(DMD) \;=\; \frac{1-\mu}{1+\mu}.
 \]
@@ -503,10 +517,15 @@ prediction, and its failure are recorded in the repository rather than repaired
 in place.
 
 \paragraph{Scope of the certificate.} These are numerics, not proof. They cover
-$n\le 12$, $\mu>0$, and $\lambda_{\min}\ge -0.43$. Nothing here tests $\mu\le 0$
-(where the target exceeds $1$ and the question changes character), nor a
-negative eigenvalue large enough to make $|\lambda_0|$ the negative extreme, at
-which point $r$ measures something else.
+$n\le 12$ and $\mu>0$, and they include indefinite symmetric matrices --- but
+entrywise positivity still guarantees Perron dominance, so the Perron root is
+the spectral radius in every case and $r$ always means what \S1 says it means.
+What is \emph{not} tested is $\mu\le0$, or matrices with nonpositive entries,
+where both the Birkhoff argument and the definition of the class break down.
+(An earlier version claimed the sweep did not reach ``a negative eigenvalue
+large enough to make $|\lambda_0|$ the negative extreme''. That situation cannot
+arise here at all: entrywise positivity forbids it. The sentence was a leftover
+from before $r$ was defined through the Perron root.)
 
 \section{Relation to prior work}
 
@@ -550,6 +569,11 @@ the searches we ran, not a claim of priority.
 \section{What is open}
 
 \begin{enumerate}
+\item Formalising Fact~\ref{fact:birkhoff} and a finite-dimensional
+      eigenvalue-continuity consumer, which would promote
+      Theorem~\ref{thm:lcp} from a paper-level proof to an end-to-end Lean
+      theorem. This is the single largest gap between what is written and what
+      is machine-checked.
 \item Whether the congruence-invariance of $\Delta$ extends usefully beyond
       diagonal congruences --- for instance to congruences by positive matrices
       that are not diagonal, where the cross-ratio no longer cancels.
@@ -564,11 +588,13 @@ the searches we ran, not a claim of priority.
 
 \section*{Machine verification --- status}
 
-Every theorem, lemma and proposition stated above --- the rigid half
-(Theorem~\ref{thm:rigid}, Lemma~\ref{lem:change}), the one-bond spectrum
-(Lemma~\ref{lem:bond}), the fusion identity (Theorem~\ref{thm:fusion}), the wall
+The results named in the next sentence, together with the algebraic lemmas
+supporting Theorem~\ref{thm:lcp}, are written in Lean~4 --- the rigid half
+(Theorem~\ref{thm:rigid}, Lemma~\ref{lem:change}), the one-bond spectrum with
+its sign hypothesis (Lemma~\ref{lem:bond}, Remark~\ref{rem:sign}), the fusion
+identity (Theorem~\ref{thm:fusion}), the wall
 (Theorem~\ref{thm:wall}), the orbit statement (Proposition~\ref{prop:orbit}) and
-the exchangeable computation (Theorem~\ref{thm:exch}) --- is written in Lean~4
+the exchangeable computation (Theorem~\ref{thm:exch})
 against a pinned Mathlib in \texttt{YangMills/OS/CongruenceSpectrum.lean}, and
 \textbf{has been verified}, including the two lemmas that carry
 Theorem~\ref{thm:lcp} and the $n=2$ attainment witness of
@@ -580,7 +606,7 @@ lemmas (Lemmas~\ref{lem:deltainv} and~\ref{lem:deltaval}, plus the hyperbolic
 identity) together with two cited classical inputs that are \emph{not}
 formalised: Fact~\ref{fact:birkhoff}, and the finite-dimensional continuity of
 eigenvalues used in its lower bound. Neither is a Lean theorem in the dependency
-cone of the 38 endpoints, so those endpoints certify the algebra, the congruence
+cone of the 40 endpoints, so those endpoints certify the algebra, the congruence
 invariance, the exact value of the diameter and the hyperbolic identity --- not
 the imported spectral inequality. Formalising Fact~\ref{fact:birkhoff}, or
 importing it through a clean Lean interface, is the obvious next step and is
@@ -597,13 +623,13 @@ No statement in this paper is conjectural.
 \begin{center}
 \begin{tabular}{ll}
 \toprule
-commit & \texttt{c01a451e} \\
-module \texttt{sha256} & \texttt{d6e120d62e7b033dfd7936de} \\
-                       & \texttt{892c5772a470975c0a2a89e08a3c61d0f13e4313} \\
+commit & \texttt{b36f50d1} \\
+module \texttt{sha256} & \texttt{56a66ee1062108fc7419da3c} \\
+                       & \texttt{f7cfcb315a2f5809f20d31d1a3806fcc68334a5e} \\
 toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
 Mathlib pin & \texttt{07642720480157414db592fa85b626dafb71355b} \\
 elaboration & exit \texttt{0}; empty log --- zero errors, zero warnings, zero \texttt{sorry} \\
-axiom oracle & 38/38 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
+axiom oracle & 40/40 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
 \texttt{sorryAx} & none \\
 \bottomrule
 \end{tabular}
