@@ -18,10 +18,10 @@ The ai.viXra author record has been frozen and audited as 103 publications.  The
 ledger classifies 64 records `KEEP`, 9 `REPLACE-VERSION`, 4
 `SUPERSEDE-BY-NEW-PAPER` and 26 `REVIEW-PENDING`. The owner reported all nine
 original replacement forms sent on 2026-08-01; their public pages still showed
-the prior versions, so they are `ENVIADO/PENDIENTE`, not `PUBLICADO`. Four
-additional old-record supersession replacements are independently audited and
-`LISTO-LOCAL` in owner order 10--13, with an uppercase notice in both PDF and
-abstract. Start with
+the prior versions. The owner subsequently reported the four additional
+old-record supersession replacements sent as well. All thirteen are therefore
+`ENVIADO/PENDIENTE`, not `PUBLICADO`; their frozen local packages remain the
+submitted-byte reference. Start with
 [`docs/publication-audit/PUBLICATION-CENSUS-20260731.md`](docs/publication-audit/PUBLICATION-CENSUS-20260731.md),
 [`docs/publication-audit/PAPER-AUDIT-LEDGER.md`](docs/publication-audit/PAPER-AUDIT-LEDGER.md),
 [`docs/publication-audit/SUPERSESSION-MATRIX.md`](docs/publication-audit/SUPERSESSION-MATRIX.md)

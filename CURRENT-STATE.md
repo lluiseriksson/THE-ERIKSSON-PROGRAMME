@@ -7,8 +7,9 @@
 replacement packages passed independent audits and final release preflight in
 owner order 1--9. The owner reported those nine forms sent on 2026-08-01; the
 public pages still showed the old versions, so they are `ENVIADO/PENDIENTE`, not
-`PUBLICADO`. Four further supersession-notice replacements are independently
-audited `LISTO-LOCAL` in owner order 10--13. Canonical audit state is under
+`PUBLICADO`. The owner subsequently reported the four independently audited
+supersession-notice replacements sent in owner order 10--13 as well. Thus all
+thirteen are `ENVIADO/PENDIENTE`. Canonical audit state is under
 [`docs/publication-audit/`](docs/publication-audit/) and the sealed hand-off is
 `output/publication-audit/final/PUBLICATION-AUDIT-20260731.zip`; the supplementary
 supersession hand-off is

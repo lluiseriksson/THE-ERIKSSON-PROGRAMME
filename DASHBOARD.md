@@ -5,12 +5,12 @@ _Última pasada manual de auditoría: 2026-08-01_
 
 | censo | PDFs/páginas inspeccionadas | KEEP | REPLACE | SUPERSEDE | REVIEW-PENDING | envíos |
 |---:|---:|---:|---:|---:|---:|---:|
-| 103 | 102 / 922 | 64 | 9 | 4 | 26 | 9 pendientes |
+| 103 | 102 / 922 | 64 | 9 | 4 | 26 | 13 pendientes |
 
-El owner reportó enviados los nueve reemplazos originales; siguen
-`ENVIADO/PENDIENTE` hasta que la página y el PDF públicos sean verificados. Los
-cuatro avisos de supersesión adicionales están `LISTO-LOCAL` en órdenes 10--13 y
-sellados en `SUPERSESSION-REPLACEMENTS-20260801.zip`; el click final es del owner.
+El owner reportó enviados los trece reemplazos; siguen `ENVIADO/PENDIENTE`
+hasta que la página y el PDF públicos sean verificados. Los cuatro avisos de
+supersesión de las órdenes 10--13 permanecen sellados en
+`SUPERSESSION-REPLACEMENTS-20260801.zip` como referencia exacta de los bytes.
 El replay global de Lean sigue `INCONCLUSIVE / NOT A PASS`, por lo que no eleva
 ninguna fila pendiente.
 
