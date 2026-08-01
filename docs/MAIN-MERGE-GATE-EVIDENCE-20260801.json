@@ -1,0 +1,195 @@
+{
+  "task": 23,
+  "result": "APPLIED-AND-VERIFIED",
+  "audit_utc": {
+    "preflight_started": "2026-08-01T08:58:04.4346416Z",
+    "ruleset_created": "2026-08-01T09:00:28.008Z",
+    "final_pr_inventory": "2026-08-01T09:03:47.8741356Z"
+  },
+  "repository": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+  "repository_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME",
+  "actor": "lluiseriksson",
+  "viewer_permission": "ADMIN",
+  "target_branch": "main",
+  "public_ref": {
+    "commit_sha": "81e9cf064d6771f986978ccffb96018c78b5e459",
+    "committed_at": "2026-08-01T08:55:17Z"
+  },
+  "workflows": {
+    "honesty": {
+      "path": ".github/workflows/ci.yml",
+      "blob_sha": "ff4e0c2c77bf6f6698a1db08dcffc75badd6a59d",
+      "workflow_name": "CI – Epistemic Honesty Enforcement",
+      "job_id": "honesty",
+      "effective_check_name": "honesty",
+      "observed_provider": {
+        "name": "GitHub Actions",
+        "slug": "github-actions",
+        "integration_id": 15368
+      },
+      "triggers": {
+        "push_branches": ["main"],
+        "pull_request_branches": ["main"],
+        "pull_request_explicit_types": null,
+        "pull_request_default_types": ["opened", "synchronize", "reopened"],
+        "paths_filter": null,
+        "draft_excluded": false,
+        "note": "Draft PRs are not excluded. A draft opened against main or later synchronized/reopened is eligible; ready_for_review alone is not explicitly subscribed."
+      }
+    },
+    "control_plane": {
+      "path": ".github/workflows/control-plane.yml",
+      "blob_sha": "67187e36130a6d4733697002cf535f838261029b",
+      "workflow_name": "Validate repository control plane",
+      "job_id": "test",
+      "observed_failure": {
+        "run_id": 30692643636,
+        "step": "Validate committed run manifests",
+        "summary": "run manifest validation failed: 623 file(s), 4134 error(s)",
+        "required_by_merge_gate": false
+      }
+    }
+  },
+  "before": {
+    "classic_branch_protection": {
+      "http_status": 404,
+      "message": "Branch not protected"
+    },
+    "rulesets_including_parents": [],
+    "effective_rules_on_main": {
+      "http_status": 404,
+      "message": "Branch not protected"
+    }
+  },
+  "after": {
+    "classic_branch_protection": {
+      "http_status": 404,
+      "message": "Branch not protected"
+    },
+    "ruleset": {
+      "id": 20176974,
+      "name": "Require honesty on main",
+      "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/rules/20176974",
+      "target": "branch",
+      "enforcement": "active",
+      "conditions": {
+        "ref_name": {
+          "include": ["refs/heads/main"],
+          "exclude": []
+        }
+      },
+      "bypass_actors": [],
+      "current_user_can_bypass": "never",
+      "rules": [
+        {
+          "type": "required_status_checks",
+          "parameters": {
+            "strict_required_status_checks_policy": false,
+            "do_not_enforce_on_create": false,
+            "required_status_checks": [
+              {
+                "context": "honesty",
+                "integration_id": 15368
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "effective_rules_on_main": [
+      {
+        "type": "required_status_checks",
+        "ruleset_id": 20176974,
+        "ruleset_source_type": "Repository",
+        "ruleset_source": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+        "parameters": {
+          "strict_required_status_checks_policy": false,
+          "do_not_enforce_on_create": false,
+          "required_status_checks": [
+            {
+              "context": "honesty",
+              "integration_id": 15368
+            }
+          ]
+        }
+      }
+    ],
+    "all_required_contexts_in_all_effective_repository_rulesets": ["honesty"],
+    "contains_test": false,
+    "contains_workflow_name_instead_of_job": false
+  },
+  "adversarial_verification": {
+    "positive_existing_pr": {
+      "pr": 46,
+      "head_sha": "8583b585738d1699558fd30d57a7f1054ba27c2b",
+      "command": "gh pr checks 46 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --required",
+      "exit_code": 0,
+      "result": "honesty pass"
+    },
+    "missing_check_existing_pr": {
+      "pr": 45,
+      "head_sha": "e3095d349a2e95d6d553ad4818a2a9d9e75fed34",
+      "check_runs_on_current_head": 0,
+      "command": "gh pr checks 45 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --required",
+      "exit_code": 1,
+      "result": "no checks reported on the branch",
+      "interpretation": "The required gate is unsatisfied; it does not pass silently. The PR is also independently dirty/conflicted."
+    },
+    "safe_rerun_attempt": {
+      "run_id": 30671375271,
+      "attempt": 2,
+      "result": "success",
+      "rerun_head_sha": "20f9a74059bd04adfad5e7cc004c33f91a54d51e",
+      "current_pr_head_sha": "e3095d349a2e95d6d553ad4818a2a9d9e75fed34",
+      "attached_to_current_head": false,
+      "note": "GitHub reruns preserve the original run SHA, so this cannot satisfy the current PR head."
+    }
+  },
+  "open_pr_matrix": [
+    {"pr": 46, "draft": true, "base": "main", "sha": "8583b585738d1699558fd30d57a7f1054ba27c2b", "honesty": "PASS"},
+    {"pr": 45, "draft": true, "base": "main", "sha": "e3095d349a2e95d6d553ad4818a2a9d9e75fed34", "honesty": "AUSENTE"},
+    {"pr": 44, "draft": true, "base": "main", "sha": "b5b01ac0e9f3d5d36ed7b626f7801b08b7840592", "honesty": "PASS"},
+    {"pr": 43, "draft": true, "base": "main", "sha": "a37d1b058e0fd596fc7fc6854c360dfae537fe1a", "honesty": "PASS"},
+    {"pr": 42, "draft": true, "base": "main", "sha": "e9fbad879ac6542fa9d706b2d0f461c7ea389639", "honesty": "PASS"},
+    {"pr": 41, "draft": true, "base": "main", "sha": "bc39b9cd4d9c9a167e3d98efc7a746841c744a73", "honesty": "PASS"},
+    {"pr": 40, "draft": true, "base": "codex/su2-wilson-reflection-positivity", "sha": "0766de86e696bd398abbfb39bc6f728191f3aded", "honesty": "AUSENTE", "reason": "base is not main"},
+    {"pr": 39, "draft": true, "base": "main", "sha": "5172a51b0fad455d9009b1805a48b8be54acbbcc", "honesty": "PASS"},
+    {"pr": 38, "draft": true, "base": "main", "sha": "c5759dfca27a5b4ba6de382f05e8910547a94ddf", "honesty": "PASS"},
+    {"pr": 37, "draft": true, "base": "main", "sha": "d8e0a1aa45538ea558fb70007f1a1cc5e469dad4", "honesty": "PASS"},
+    {"pr": 36, "draft": true, "base": "main", "sha": "7fe64bbced729337f6a1060d731e661384863c42", "honesty": "PASS"},
+    {"pr": 35, "draft": true, "base": "main", "sha": "a66b1c7da3c7441e06864e327b5c4efa43e9c79d", "honesty": "PASS"},
+    {"pr": 34, "draft": true, "base": "main", "sha": "0a46e266fc4808332ed20d2ab4611bfc271b208b", "honesty": "PASS"},
+    {"pr": 33, "draft": true, "base": "main", "sha": "f9f6424c3d6cd14be43b8de70d1ae0715020587a", "honesty": "PASS"},
+    {"pr": 32, "draft": true, "base": "main", "sha": "7e98c47288fea73866b65fc10d97465a67c01a4a", "honesty": "PASS"},
+    {"pr": 30, "draft": true, "base": "main", "sha": "8f31cef9233a1af7a9dcc128d422cd82f6619642", "honesty": "PASS"},
+    {"pr": 29, "draft": true, "base": "codex/hrpoly-b3-card-tilt", "sha": "96c4cef175bd90f262e9719eb5a9041ef8149f7a", "honesty": "AUSENTE", "reason": "base is not main"},
+    {"pr": 28, "draft": true, "base": "main", "sha": "79256598f2fcaf0220461a5c1b305036d56d238b", "honesty": "PASS"},
+    {"pr": 14, "draft": false, "base": "main", "sha": "83ad6c8306f7b94604516be23c4eb3e856f195f4", "honesty": "PASS"}
+  ],
+  "pr_requiring_owner_trigger": {
+    "pr": 45,
+    "branch": "codex/publication-audit-20260731-origin",
+    "current_sha": "e3095d349a2e95d6d553ad4818a2a9d9e75fed34",
+    "reason": "A prior run existed only for an older SHA; rerun attempt 2 succeeded on that old SHA and cannot satisfy the current head.",
+    "empty_commit_commands_for_branch_owner": [
+      "git fetch origin codex/publication-audit-20260731-origin",
+      "git switch --detach e3095d349a2e95d6d553ad4818a2a9d9e75fed34",
+      "git commit --allow-empty -m \"ci: retrigger honesty for merge gate\"",
+      "git push origin HEAD:codex/publication-audit-20260731-origin"
+    ],
+    "warning": "This changes the PR head SHA. Do not run it if that SHA is itself audit-certified; use an owner-approved SHA-preserving PR-event trigger instead."
+  },
+  "reproducible_read_commands": [
+    "gh api repos/lluiseriksson/THE-ERIKSSON-PROGRAMME/rulesets/20176974",
+    "gh api repos/lluiseriksson/THE-ERIKSSON-PROGRAMME/rules/branches/main",
+    "gh api repos/lluiseriksson/THE-ERIKSSON-PROGRAMME/branches/main/protection",
+    "gh pr checks 46 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --required",
+    "gh pr checks 45 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --required"
+  ],
+  "secrets_included": false,
+  "remote_code_commits": 0,
+  "remote_pull_requests_created": 0,
+  "branches_rebased": 0,
+  "branches_pushed": 0,
+  "merges_performed": 0
+}
