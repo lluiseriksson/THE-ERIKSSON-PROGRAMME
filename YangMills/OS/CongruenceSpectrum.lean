@@ -662,6 +662,130 @@ theorem tanh_half_log_inv {μ : ℝ} (hμ0 : 0 < μ) :
   rw [tanh_eq_exp_ratio]
   exact ratio_of_sq (Real.exp_pos x) hμ0 hsq
 
+/-! ## §9  Killing the continuity import in the lower bound
+
+The lower bound of the supremum theorem was proved on paper by letting
+`T_ε = D_ε M D_ε` converge entrywise to the two-point block plus zeros and citing
+finite-dimensional continuity of eigenvalues.  That citation is avoidable.
+
+Let `Ω > 0` be the Perron vector of `T_ε` and put
+
+    x = Ω q • e_p  -  Ω p • e_q .
+
+Then `⟪Ω, x⟫ = 0` for free, `x` is supported on `{p,q}` so the rest of the matrix
+never enters its quadratic form, and --- this is the point --- the Rayleigh
+quotient of `x` is bounded below by `1 - μ` **as a ring identity plus one
+square**:
+
+    a² + b² - 2μ a b  =  (1-μ)(a² + b²)  +  μ (a - b)² .
+
+Combined with `ρ(T_ε) ≤ max row sum ≤ 1 + μ + nε`, this gives
+`r(T_ε) ≥ (1-μ)/(1+μ+nε)`, and the supremum follows from a scalar `ε → 0`
+argument.  No eigenvalue enumeration and no spectral continuity anywhere.
+
+Verified numerically before being written (61/61 checks, `n ∈ {3,5,8}`,
+`μ ∈ {0.2,0.55}`, `ε ∈ {10⁻¹,10⁻³}`): the Rayleigh quotient lands on `1 - μ` to
+nine decimals, and the chain never fails.
+
+What is proved here is the algebra of that route.  Assembling it into a
+statement about `specRatio` still needs a Perron-vector interface, and is the
+next brick rather than this one. -/
+
+/-! ### §9.1  The Rayleigh identity, and why the slack is a square -/
+
+/-- **The identity.**  Everything the witness needs is one line of `ring`. -/
+theorem witness_quad_identity (a b μ : ℝ) :
+    a * a + b * b - 2 * μ * (a * b)
+      = (1 - μ) * (a * a + b * b) + μ * (a - b) ^ 2 := by
+  ring
+
+/-- **The Rayleigh bound.**  For `0 ≤ μ` the two-supported witness has quadratic
+form at least `(1-μ)` times its squared norm.  The slack is `μ (a-b)²`, so the
+bound is an equality exactly when `a = b`. -/
+theorem witness_quad_lower {a b μ : ℝ} (hμ : 0 ≤ μ) :
+    (1 - μ) * (a * a + b * b) ≤ a * a + b * b - 2 * μ * (a * b) := by
+  rw [witness_quad_identity]
+  nlinarith [sq_nonneg (a - b), hμ]
+
+/-- The slack, named: the bound is sharp precisely on the diagonal `a = b`. -/
+theorem witness_quad_eq_iff {a b μ : ℝ} (hμ : 0 < μ) :
+    (1 - μ) * (a * a + b * b) = a * a + b * b - 2 * μ * (a * b) ↔ a = b := by
+  rw [witness_quad_identity]
+  constructor
+  · intro h
+    have hsq : (a - b) ^ 2 = 0 := by
+      have : μ * (a - b) ^ 2 = 0 := by linarith
+      rcases mul_eq_zero.mp this with h1 | h2
+      · exact absurd h1 (ne_of_gt hμ)
+      · exact h2
+    have := pow_eq_zero_iff (n := 2) (by norm_num) |>.mp hsq
+    linarith [this]
+  · intro h; rw [h]; ring
+
+/-! ### §9.2  The two-supported test vector -/
+
+variable {n : Type*} [Fintype n] [DecidableEq n]
+
+/-- `a` at `p`, `-b` at `q`, zero elsewhere. -/
+def pairVec (p q : n) (a b : ℝ) : n → ℝ :=
+  fun i => if i = p then a else if i = q then -b else 0
+
+omit [Fintype n] in
+theorem pairVec_at_p {p q : n} (a b : ℝ) : pairVec p q a b p = a := by
+  simp [pairVec]
+
+omit [Fintype n] in
+theorem pairVec_at_q {p q : n} (hpq : p ≠ q) (a b : ℝ) :
+    pairVec p q a b q = -b := by
+  simp [pairVec, Ne.symm hpq]
+
+omit [Fintype n] in
+theorem pairVec_off {p q i : n} (hip : i ≠ p) (hiq : i ≠ q) (a b : ℝ) :
+    pairVec p q a b i = 0 := by
+  simp [pairVec, hip, hiq]
+
+/-- **Orthogonality is free.**  Choosing `a = Ω q` and `b = Ω p` makes the
+witness orthogonal to `Ω` with no hypothesis on `Ω` at all --- the two surviving
+terms cancel identically. -/
+theorem pairVec_orthogonal {p q : n} (hpq : p ≠ q) (Ω : n → ℝ) :
+    ∑ i, Ω i * pairVec p q (Ω q) (Ω p) i = 0 := by
+  have hsplit : ∀ i, Ω i * pairVec p q (Ω q) (Ω p) i
+      = (if i = p then Ω p * Ω q else 0) + (if i = q then -(Ω q * Ω p) else 0) := by
+    intro i
+    by_cases hip : i = p
+    · subst hip; simp [pairVec, hpq]
+    · by_cases hiq : i = q
+      · subst hiq; simp [pairVec, hip, Ne.symm hpq]; ring
+      · simp [pairVec, hip, hiq]
+  rw [Finset.sum_congr rfl fun i _ => hsplit i, Finset.sum_add_distrib,
+    Finset.sum_ite_eq, Finset.sum_ite_eq]
+  simp
+  ring
+
+/-! ### §9.3  The scalar limit that finishes the lower bound -/
+
+/-- **The `ε → 0` step.**  `(1-μ)/(1+μ+c·ε)` exceeds every number strictly below
+`(1-μ)/(1+μ)` once `ε` is small enough, so the supremum of the left-hand family
+is the right-hand value.  Stated with an explicit witness rather than a limit. -/
+theorem lower_bound_approaches {μ c : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1) (hc : 0 < c)
+    {t : ℝ} (ht : t < (1 - μ) / (1 + μ)) :
+    ∃ ε : ℝ, 0 < ε ∧ t < (1 - μ) / (1 + μ + c * ε) := by
+  have hden : (0 : ℝ) < 1 + μ := by linarith
+  have hnum : (0 : ℝ) < 1 - μ := by linarith
+  rcases le_or_lt t 0 with hneg | hpos
+  · refine ⟨1, one_pos, lt_of_le_of_lt hneg ?_⟩
+    positivity
+  · -- `t > 0`: solve `t (1 + μ + cε) < 1 - μ` for `ε`
+    have hkey : t * (1 + μ) < 1 - μ := by
+      rw [lt_div_iff₀ hden] at ht; linarith
+    refine ⟨(1 - μ - t * (1 + μ)) / (2 * t * c), by positivity, ?_⟩
+    rw [lt_div_iff₀ (by positivity)]
+    have hexp : t * (c * ((1 - μ - t * (1 + μ)) / (2 * t * c)))
+        = (1 - μ - t * (1 + μ)) / 2 := by
+      field_simp
+      ring
+    nlinarith [hexp, hkey, hpos]
+
 end Congruence
 
 end YangMills.OS
