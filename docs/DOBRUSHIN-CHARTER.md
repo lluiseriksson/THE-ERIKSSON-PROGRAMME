@@ -126,6 +126,42 @@ theorem with its witness (Addendum 548 / paper-12 gate B lesson).
    route is the one this lane takes; it is a design decision made here, not a
    finding of D-4.
 
+## ENVIRONMENT (owner's rule of 2026-08-01; supersedes CLAUDE.md's build section)
+
+The Windows box is the owner's **desktop**, not build infrastructure.  Nothing in
+this lane may compile, elaborate, oracle or sweep on it without an explicit,
+per-errand authorisation naming the command.
+
+**What this lane already spent on that machine, before the rule existed, stated
+plainly rather than left to be discovered:** five `lake` invocations
+(`lake env lean` on `DobrushinMatrix.lean` three times at roughly 300–600 s each;
+`lake build YangMills.OS.DobrushinMatrix` at 358 s; `lake build YangMillsCore`
+twice at 822 s, the second one purely to measure the pre-change baseline), plus
+three numerical sweeps whose inner loop is a dense `eigvalsh` on 4096×4096
+float64.  The job counts 8465 → 8466 and the 14/14 oracle in Addendum 570 are
+products of those runs.  **They are not repeatable here.**
+
+**Classification under the ≤30 s / single process / ≤512 MiB contract:**
+
+| Artefact | Class | Basis |
+|---|---|---|
+| `scripts/judge_dobrushin.py` J1 | **MEASURED heavy** | dense `eigvalsh` on 4096×4096 float64, eight cells; past both limits |
+| `judge_dobrushin.py` J2, J3 | **PRESUMED heavy** | no reliable measurement exists, and the rule's default is presumption, not estimation |
+| D-2 … D-5 (all Lean) | **heavy** | elaboration and oracle |
+| charter/ledger edits, `git`, hashes | light | file operations only |
+
+So the whole judge script and every future rung go to **Colab (Linux, CPU /
+high-RAM, never GPU)**.  No GitHub token there and no push from there: artefacts
+return to the desktop, are verified by hash, and only then are committed.
+
+**Certificates.**  No acceptance decision in this lane may rest on a Python
+`assert` — `python -O` deletes them, and this repository has already had two
+certifiers emit a false PASS that way.  `judge_dobrushin.py` contains no
+`assert`; as of Amendment 2 it also counts the checks it actually performed and
+**refuses to print PASS when fewer ran than expected**, because an empty failure
+list is also what zero checks produce.  Self-tests run in both `normal` and
+`optimized` modes, with semantically named logs and sentinels.
+
 ## ROLES
 
 This session FABRICATES.  It does not audit itself.  The five-role audit and

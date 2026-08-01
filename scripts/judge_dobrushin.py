@@ -29,11 +29,25 @@ except Exception:                                    # pragma: no cover
     HAVE_SCIPY = False
 
 FAILURES = []
+CHECKS = 0                       # every individual comparison actually performed
+EXPECTED_CHECKS = 29             # J2: 6 cases x 3 checks (bound, unequal rows,
+                                 # row-sum hypothesis) = 18;  J3: 3;  J1: 8 cells
+
+
+def check(ok, gate, msg):
+    """Register ONE performed check.  PASS is emitted only after the counter
+    confirms the expected number of checks actually ran --- an empty failure list
+    is not evidence, because zero checks also produce one."""
+    global CHECKS
+    CHECKS += 1
+    if not ok:
+        FAILURES.append(f"{gate}: {msg}")
+        print(f"    FAIL  {msg}")
+    return ok
 
 
 def fail(gate, msg):
-    FAILURES.append(f"{gate}: {msg}")
-    print(f"    FAIL  {msg}")
+    check(False, gate, msg)
 
 
 # --------------------------------------------------------------------------
@@ -94,20 +108,14 @@ def gate_J1():
         q = d[-1] / d[-2] if abs(d[-2]) > 1e-15 else float("nan")
         rinf = aitken(rs[-3], rs[-2], rs[-1])
         ons = onsager(b, g)
-        ok = True
         if ons < 1.0:
-            if not (rinf <= J1_DISORDERED_MAX):
-                ok = False
-            if not (q < 1.0):
-                ok = False
+            ok = rinf <= J1_DISORDERED_MAX and q < 1.0
         else:
-            if not (rs[-1] >= J1_ORDERED_MIN):
-                ok = False
+            ok = rs[-1] >= J1_ORDERED_MIN
+        check(ok, "J1", f"cell (beta={b}, gamma={g}) onsager={ons:.4f} "
+                        f"r(12)={rs[-1]:.6f} q={q:.4f} r_inf={rinf:.6f}")
         print(f"    {b:5.2f} {g:6.2f} {ons:8.4f} {rs[-1]:9.6f} {q:7.4f} {rinf:9.6f}  "
               f"{'ok' if ok else 'FAIL'}")
-        if not ok:
-            fail("J1", f"cell (beta={b}, gamma={g}) onsager={ons:.4f} "
-                       f"r(12)={rs[-1]:.6f} q={q:.4f} r_inf={rinf:.6f}")
     print(f"    -> {'PASS' if not any(f.startswith('J1') for f in FAILURES) else 'FAIL'}")
 
 
@@ -162,9 +170,9 @@ def gate_J2(tol=1e-12):
         slack = 1.0 - 0.15 * (np.arange(m) % 4)
         C = base * (alpha * slack[:, None] / base.sum(axis=1, keepdims=True))
         sums = C.sum(axis=1)
-        if not (sums.max() <= alpha + 1e-12 and sums.min() < alpha - 1e-9):
-            fail("J2", f"{name} alpha={alpha}: the redesign failed to produce "
-                       f"unequal row sums (min {sums.min()}, max {sums.max()})")
+        check(sums.max() <= alpha + 1e-12 and sums.min() < alpha - 1e-9, "J2",
+              f"{name} alpha={alpha}: the redesign failed to produce unequal "
+              f"row sums (min {sums.min()}, max {sums.max()})")
         # sum_n C^n to convergence
         Ssum = np.eye(m)
         P = np.eye(m)
@@ -176,14 +184,13 @@ def gate_J2(tol=1e-12):
         bound = alpha ** D / (1.0 - alpha)
         slack = (Ssum - bound).max()
         worst = max(worst, slack)
-        ok = slack <= tol
+        ok = check(slack <= tol, "J2",
+                   f"{name} alpha={alpha}: bound violated by {slack:.3e}")
         print(f"    {name:<9} alpha={alpha:<4} max(sum - bound) = {slack: .3e}  "
               f"{'ok' if ok else 'FAIL'}")
-        if not ok:
-            fail("J2", f"{name} alpha={alpha}: bound violated by {slack:.3e}")
         rowsum = C.sum(axis=1).max()
-        if rowsum > alpha + 1e-12:
-            fail("J2", f"{name} alpha={alpha}: row-sum hypothesis broken ({rowsum})")
+        check(rowsum <= alpha + 1e-12, "J2",
+              f"{name} alpha={alpha}: row-sum hypothesis broken ({rowsum})")
     print(f"    -> {'PASS' if not any(f.startswith('J2') for f in FAILURES) else 'FAIL'}"
           f"   (worst slack {worst:.3e}; a POSITIVE slack would refute D-1)")
 
@@ -201,22 +208,26 @@ def gate_J3(steps=400, hi=1.5):
     n_dob, n_ons = int(dob.sum()), int(ons.sum())
     leak = int((dob & ~ons).sum())
     strict = int((ons & ~dob).sum())
+    _ = n_ons
     print(f"    grid {steps}x{steps} on (0,{hi}]^2 : |Dobrushin| = {n_dob}, "
           f"|Onsager| = {n_ons}")
     print(f"    Dobrushin \\ Onsager = {leak}   (must be 0)")
     print(f"    Onsager \\ Dobrushin = {strict}   (must be > 0: window not sharp)")
-    if n_dob == 0:
-        fail("J3", "the Dobrushin window is EMPTY on the tested grid")
-    if leak != 0:
-        fail("J3", f"{leak} Dobrushin points lie OUTSIDE the disordered region")
-    if strict == 0:
-        fail("J3", "the Dobrushin window is not strictly smaller than Onsager's")
+    check(n_dob != 0, "J3", "the Dobrushin window is EMPTY on the tested grid")
+    check(leak == 0, "J3",
+          f"{leak} Dobrushin points lie OUTSIDE the disordered region")
+    check(strict != 0, "J3",
+          "the Dobrushin window is not strictly smaller than Onsager's")
     print(f"    -> {'PASS' if not any(f.startswith('J3') for f in FAILURES) else 'FAIL'}")
 
 
 def main():
     print("=" * 74)
     print("JUDGES — DOBRUSHIN LANE   (docs/DOBRUSHIN-CHARTER.md)")
+    print("ENVIRONMENT: Colab (Linux, CPU/high-RAM) only, per the owner's rule")
+    print("of 2026-08-01.  J1 is MEASURED heavy: dense `eigvalsh` on 4096x4096")
+    print("float64 for eight cells, far past 30 s and past 512 MiB.  J2 and J3")
+    print("carry NO reliable measurement, so the rule PRESUMES them heavy too.")
     print("=" * 74)
     gate_J2()
     print()
@@ -225,12 +236,17 @@ def main():
     gate_J1()
     print()
     print("=" * 74)
+    print(f"checks performed: {CHECKS} (expected {EXPECTED_CHECKS})")
+    if CHECKS < EXPECTED_CHECKS:
+        print(f"VERDICT: FAIL — only {CHECKS} checks ran; a clean failure list "
+              f"is not a verdict when the gates did not execute")
+        return 1
     if FAILURES:
         print(f"VERDICT: FAIL ({len(FAILURES)})")
         for f in FAILURES:
             print("  -", f)
         return 1
-    print("VERDICT: PASS — all three gates")
+    print("VERDICT: PASS — all three gates, all checks accounted for")
     return 0
 
 
