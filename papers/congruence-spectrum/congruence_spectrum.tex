@@ -44,12 +44,18 @@ ratio is $\tanh(\beta L)$. A weight concentrating on the ferromagnetic
 configurations therefore \emph{fuses} the $L$ sites into a single effective site
 carrying $L$ times the coupling. Since $\tanh(\beta L)\to 1$, no bound on $r$ can
 be uniform in $L$: the obstruction to volume-uniformity is named, exactly, and
-it is a property of the congruence and not of any spectral estimate. We further
-record, with certified numerics and \emph{without proof}, a conjectural
-extremality: for symmetric $M$ with unit diagonal and off-diagonal entries in
-$(0,1)$, $\sup_{D>0}r(DMD)=(1-\mu)/(1+\mu)$ with $\mu=\min_{i\neq j}M_{ij}$ ---
-the extremal congruence concentrates on the \emph{least correlated pair}. The
-hypercube instance of that conjecture is the fusion bound.
+it is a property of the congruence and not of any spectral estimate.
+Consequently an argument that bounds $r$ using only congruence invariants ---
+rank, inertia, definiteness --- cannot produce an $L$-uniform bound at all.
+We then ask which congruence is extremal. For \emph{uniform} concentrations the
+answer is proved: keeping $m$ sites of mutual correlation $\mu$ leaves
+$\mu J+(1-\mu)I$, of ratio $(1-\mu)/(1+(m-1)\mu)$, which is strictly decreasing
+in $m$ --- the more sites the weight keeps, the smaller the ratio it can reach,
+so the best uniform concentration is a \emph{pair}. For arbitrary weights we
+record, with certified numerics and \emph{without proof}, the conjecture that
+$\sup_{D>0}r(DMD)=(1-\mu)/(1+\mu)$ with $\mu=\min_{i\neq j}M_{ij}$: the extremal
+congruence concentrates on the \emph{least correlated pair}. The hypercube
+instance is the fusion bound. All theorems are machine-checked in Lean~4.
 \end{abstract}
 
 \section{The question}
@@ -215,11 +221,41 @@ Any $L$-uniform ratio bound must use a quantity that a positive-diagonal
 congruence can change.
 \end{corollary}
 
-\section{A conjectural extremality, and its certificate}
+\section{Which congruence is extremal: pairs beat clusters}
 
-Theorem~\ref{thm:fusion} exhibits one congruence reaching $\tanh(\beta L)$.
-Numerically, nothing reaches further --- and the phenomenon appears not to be
-about the hypercube at all.
+Theorem~\ref{thm:fusion} exhibits \emph{one} congruence reaching
+$\tanh(\beta L)$. Is it the best one? For the family of \emph{uniform}
+concentrations the question has a complete and elementary answer, and the answer
+explains the mechanism.
+
+\begin{theorem}[Exchangeable concentration]\label{thm:exch}
+Fix $0<\mu<1$ and let $E_m=\mu J_m+(1-\mu)I_m$ be the exchangeable correlation
+matrix on $m$ sites. Its spectrum consists of exactly two points: $1+(m-1)\mu$ on
+the constant vector, and $1-\mu$ on every vector summing to zero. Hence the ratio
+it reaches is
+\[
+  \frac{1-\mu}{1+(m-1)\mu},
+\]
+which is \emph{strictly decreasing} in $m$.
+\end{theorem}
+
+\begin{proof}
+$E_m\mathbf 1 = (1+(m-1)\mu)\mathbf 1$ by summing a row. If $\sum_i x_i=0$ then
+$(E_mx)_i=\mu\sum_j x_j+(1-\mu)x_i=(1-\mu)x_i$. These two eigenspaces have
+dimensions $1$ and $m-1$, so they exhaust the spectrum. For monotonicity,
+$k\mapsto (1-\mu)/(1+k\mu)$ is strictly decreasing on $k\ge 0$ because the
+numerator is positive and the denominator strictly increasing.
+\end{proof}
+
+The reading is the point. \textbf{The more sites a uniform concentration keeps,
+the smaller the ratio it can reach.} So among uniform concentrations the best is
+the smallest nondegenerate one --- a \emph{pair} --- and at $m=2$ the value is
+$(1-\mu)/(1+\mu)$. On the hypercube kernel, $\mu=e^{-2\beta L}$ at the antipodal
+pair, and $(1-\mu)/(1+\mu)=\tanh(\beta L)$: Theorem~\ref{thm:fusion} is the
+$m=2$ case of Theorem~\ref{thm:exch}.
+
+That settles the uniform family. For arbitrary weights we have only a
+conjecture, and we say so wherever it appears.
 
 \begin{conjecture}[Least-correlated pair]\label{conj:lcp}
 Let $M$ be symmetric with $M_{ii}=1$ and $0<M_{ij}<1$ for $i\neq j$, and let
@@ -233,8 +269,25 @@ approached by concentrating $D$ on an argmin pair, and not attained.
 The lower bound is elementary: concentrating on a pair $\{i,j\}$ leaves
 $\begin{psmallmatrix}1 & M_{ij}\\ M_{ij} & 1\end{psmallmatrix}$ up to scale,
 of ratio $(1-M_{ij})/(1+M_{ij})$, which is largest at the least correlated
-pair. \textbf{The upper bound is open.} We have no proof, and we say so wherever
-the statement appears.
+pair. Theorem~\ref{thm:exch} adds that no \emph{uniform} concentration on more
+sites can beat it. \textbf{The upper bound over arbitrary weights is open.} We
+have no proof, and we say so wherever the statement appears.
+
+For the record, the reduction we did obtain and could not close: since
+$T$ is positive definite exactly when $M$ is (Theorem~\ref{thm:rigid}),
+\[
+  r(T)\le\frac{1-\mu}{1+\mu}
+  \iff
+  \lambda_0-\lambda_1\;\ge\;\mu\,(\lambda_0+\lambda_1),
+\]
+and writing $M=\mu J+(1-\mu)N$ --- where $N$ again has unit diagonal and
+entries in $[0,1)$ --- gives $T=\mu\,dd^{\!\top}+(1-\mu)\,DND$, a rank-one
+positive semidefinite piece plus an entrywise nonnegative one. Weyl's inequality
+and the Perron root of the second piece bound $|\lambda_1|$ correctly but lose
+too much on $\lambda_0$: testing against the Perron vector of $DND$ reduces the
+claim to $\sum_{i\neq j}(1+\mu-2M_{ij})u_iu_j\ge(1-\mu)\sum_i u_i^2$, whose
+left-hand side is negative once some $M_{ij}>(1+\mu)/2$. The top eigenvector of
+$T$ is not the Perron vector of $DND$, and the slack is exactly that gap.
 
 On the hypercube, $K_\beta^{(L)}$ normalised to unit diagonal has
 $M_{\sigma\tau}=e^{-2\beta h(\sigma,\tau)}$ with $h$ the Hamming distance; the
@@ -257,9 +310,19 @@ full rank / near singular ($\kappa\sim6\times10^{6}$)  & $3.3\times10^{-16}$ & 4
 near-exchangeable, isolated argmin, entries near $1$   & $4.4\times10^{-16}$ & 3\\
 exactly exchangeable $\mu J+(1-\mu)I$                  & $1.0\times10^{-15}$ & 2\\
 \emph{indefinite}, $\lambda_{\min}\in[-0.42,-0.06]$    & $1.6\times10^{-15}$ & 12\\
+larger sizes, $n\in\{8,10,12\}$, $\kappa$ up to $5\times10^{4}$
+                                                       & $4.2\times10^{-16}$ & 6\\
 \bottomrule
 \end{tabular}
 \end{center}
+
+The last row was added after an audit of our own procedure: the adversarial
+sweep as first written never actually reached $n=8$. Its positive-definiteness
+\emph{precondition} fired on that family, the generator was repaired, and the
+family was not re-run --- so the largest size with evidence had been $n=6$, not
+$n=12$ as the sweep's summary implied. A precondition that is never met carries
+no evidence either way, and the script now returns a distinct
+\textsc{inconclusive} code rather than reporting such a case as a result.
 
 The last row deserves comment, because it corrected us. A pre-registered gate
 predicted that positive definiteness would be load-bearing --- that at least one
@@ -315,9 +378,11 @@ the searches we ran, not a claim of priority.
 \section{What is open}
 
 \begin{enumerate}
-\item The upper bound in Conjecture~\ref{conj:lcp}. A proof would make the
-      fusion bound an exact classification rather than an attained lower bound
-      with a certificate.
+\item The upper bound in Conjecture~\ref{conj:lcp} \emph{over arbitrary
+      weights}. Theorem~\ref{thm:exch} settles it for uniform concentrations;
+      the gap is everything else. A proof would make the fusion bound an exact
+      classification rather than an attained lower bound with a certificate,
+      and \S5 records where our attempt loses.
 \item Whether the physical weight $w_\gamma$ attains the antipodal restriction
       in the limit $\gamma\to\infty$ with the rate we measure. The deficit
       $\tanh(\beta L)-r(\gamma)$ was found to decay like $e^{-2\gamma}$ (fitted
@@ -329,21 +394,25 @@ the searches we ran, not a claim of priority.
 
 \section*{Machine verification --- status}
 
-The rigid half (Theorem~\ref{thm:rigid} and Lemma~\ref{lem:change}), the fusion
-identity (Theorem~\ref{thm:fusion}), the one-bond spectrum
-(Lemma~\ref{lem:bond}) and the wall (Theorem~\ref{thm:wall}) are written in
-Lean~4 against a pinned Mathlib in
-\texttt{YangMills/OS/CongruenceSpectrum.lean}, and \textbf{have been verified}.
+Every theorem and lemma stated above --- the rigid half
+(Theorem~\ref{thm:rigid}, Lemma~\ref{lem:change}), the one-bond spectrum
+(Lemma~\ref{lem:bond}), the fusion identity (Theorem~\ref{thm:fusion}), the wall
+(Theorem~\ref{thm:wall}) and the exchangeable computation
+(Theorem~\ref{thm:exch}) --- is written in Lean~4 against a pinned Mathlib in
+\texttt{YangMills/OS/CongruenceSpectrum.lean}, and \textbf{has been verified}.
+Only Conjecture~\ref{conj:lcp} is not, and it carries the word
+\emph{conjecture} in every sentence that states it.
 
 \begin{center}
 \begin{tabular}{ll}
 \toprule
-commit & \texttt{17d6ed29} \\
-module \texttt{sha256} & \texttt{d663b3fe251d9f0a96f50e1a65057291955afd221b3adedd69e34c73d52b8417} \\
+commit & \texttt{6c41bf1d} \\
+module \texttt{sha256} & \texttt{4939fc4dc0e3f8190b0684ba} \\
+                       & \texttt{3a76296ef8e9dcf9077818909ebe2369ef1b8f82} \\
 toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
 Mathlib pin & \texttt{07642720480157414db592fa85b626dafb71355b} \\
 elaboration & exit \texttt{0}; empty log --- zero errors, zero warnings, zero \texttt{sorry} \\
-axiom oracle & 19/19 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
+axiom oracle & 23/23 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
 \texttt{sorryAx} & none \\
 \bottomrule
 \end{tabular}
