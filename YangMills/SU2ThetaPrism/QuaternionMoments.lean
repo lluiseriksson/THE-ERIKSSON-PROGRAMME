@@ -498,6 +498,156 @@ private theorem coordinate_zero_three_mixed_integral_eq_two :
         rcases quaternionCycle_coordinates g with ⟨h0, _h1, _h2, h3⟩
         simp only [f, h0, h3]
 
+private theorem coordinate_zero_sq_integral_eq_quarter :
+    (∫ g : SU2, quaternionCoordinate 0 g ^ 2 ∂haarSU2) = 1 / 4 := by
+  have hchi := chi_re_sq_integral_one_quaternion
+  have hfun : (fun g : SU2 => (chi g).re ^ 2) =
+      fun g : SU2 => 4 * quaternionCoordinate 0 g ^ 2 := by
+    funext g
+    rw [chi_re_eq_two_mul_coordinate_zero]
+    ring
+  rw [hfun, integral_const_mul] at hchi
+  linarith
+
+private theorem coordinate_zero_fourth_add_three_mixed_eq_quarter :
+    (∫ g : SU2, quaternionCoordinate 0 g ^ 4 ∂haarSU2) +
+        3 * (∫ g : SU2,
+          quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 1 g ^ 2 ∂haarSU2) =
+      1 / 4 := by
+  have hIntegralSum :
+      (∫ g : SU2,
+          ∑ k : Fin 4,
+            quaternionCoordinate 0 g ^ 2 * quaternionCoordinate k g ^ 2
+          ∂haarSU2) =
+        ∑ k : Fin 4, ∫ g : SU2,
+          quaternionCoordinate 0 g ^ 2 * quaternionCoordinate k g ^ 2 ∂haarSU2 := by
+    exact integral_finset_sum Finset.univ fun k _ =>
+      quaternionCoordinate_pow_mul_pow_integrable 0 k 2 2
+  have hPoint (g : SU2) :
+      (∑ k : Fin 4,
+        quaternionCoordinate 0 g ^ 2 * quaternionCoordinate k g ^ 2) =
+        quaternionCoordinate 0 g ^ 2 := by
+    rw [← Finset.mul_sum, quaternionCoordinate_sq_sum]
+    ring
+  have hSum :
+      (∑ k : Fin 4, ∫ g : SU2,
+        quaternionCoordinate 0 g ^ 2 * quaternionCoordinate k g ^ 2 ∂haarSU2) =
+        1 / 4 := by
+    calc
+      (∑ k : Fin 4, ∫ g : SU2,
+          quaternionCoordinate 0 g ^ 2 * quaternionCoordinate k g ^ 2 ∂haarSU2) =
+          ∫ g : SU2,
+            ∑ k : Fin 4,
+              quaternionCoordinate 0 g ^ 2 * quaternionCoordinate k g ^ 2
+            ∂haarSU2 := hIntegralSum.symm
+      _ = ∫ g : SU2, quaternionCoordinate 0 g ^ 2 ∂haarSU2 := by
+        apply integral_congr_ae
+        exact ae_of_all _ hPoint
+      _ = 1 / 4 := coordinate_zero_sq_integral_eq_quarter
+  rw [Fin.sum_univ_four] at hSum
+  have h00 :
+      (∫ g : SU2,
+        quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 0 g ^ 2 ∂haarSU2) =
+        ∫ g : SU2, quaternionCoordinate 0 g ^ 4 ∂haarSU2 := by
+    apply integral_congr_ae
+    exact ae_of_all _ fun g => by ring
+  rw [h00, ← coordinate_zero_three_mixed_integral_eq_two,
+    ← coordinate_zero_one_mixed_integral_eq_three] at hSum
+  linarith
+
+private theorem coordinate_zero_fourth_eq_three_mixed :
+    (∫ g : SU2, quaternionCoordinate 0 g ^ 4 ∂haarSU2) =
+      3 * (∫ g : SU2,
+        quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 1 g ^ 2 ∂haarSU2) := by
+  let f : SU2 → ℝ := fun g => quaternionCoordinate 0 g ^ 4
+  have hQuarter :
+      (∫ g : SU2, quaternionCoordinate 0 g ^ 4 ∂haarSU2) =
+        ∫ g : SU2,
+          ((Real.sqrt 2 / 2) *
+            (quaternionCoordinate 0 g - quaternionCoordinate 1 g)) ^ 4
+          ∂haarSU2 := by
+    calc
+      (∫ g : SU2, quaternionCoordinate 0 g ^ 4 ∂haarSU2) =
+          ∫ g : SU2, f (quaternionQuarterTurn * g) ∂haarSU2 :=
+        (integral_mul_left_eq_self (μ := haarSU2) f quaternionQuarterTurn).symm
+      _ = ∫ g : SU2,
+          ((Real.sqrt 2 / 2) *
+            (quaternionCoordinate 0 g - quaternionCoordinate 1 g)) ^ 4
+          ∂haarSU2 := by
+        apply integral_congr_ae
+        exact ae_of_all _ fun g => by
+          simp only [f, quaternionCoordinate_zero_quarterTurn]
+  have hsqrt : (Real.sqrt 2) ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+  have hsqrtFourth : (Real.sqrt 2 / 2) ^ 4 = (1 / 4 : ℝ) := by
+    calc
+      (Real.sqrt 2 / 2) ^ 4 = (Real.sqrt 2) ^ 4 / 2 ^ 4 := div_pow _ _ _
+      _ = ((Real.sqrt 2) ^ 2) ^ 2 / 2 ^ 4 := by ring
+      _ = 1 / 4 := by rw [hsqrt]; norm_num
+  have hPointExpand (g : SU2) :
+      ((Real.sqrt 2 / 2) *
+          (quaternionCoordinate 0 g - quaternionCoordinate 1 g)) ^ 4 =
+        (1 / 4 : ℝ) *
+          (quaternionCoordinate 0 g ^ 4 +
+            (-4) * (quaternionCoordinate 0 g ^ 3 * quaternionCoordinate 1 g) +
+            6 * (quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 1 g ^ 2) +
+            (-4) * (quaternionCoordinate 0 g * quaternionCoordinate 1 g ^ 3) +
+            quaternionCoordinate 1 g ^ 4) := by
+    calc
+      ((Real.sqrt 2 / 2) *
+          (quaternionCoordinate 0 g - quaternionCoordinate 1 g)) ^ 4 =
+          (Real.sqrt 2 / 2) ^ 4 *
+            (quaternionCoordinate 0 g - quaternionCoordinate 1 g) ^ 4 := by ring
+      _ = _ := by rw [hsqrtFourth]; ring
+  have hA := quaternionCoordinate_pow_integrable 0 4
+  have hC := quaternionCoordinate_pow_mul_pow_integrable 0 1 3 1
+  have hB := quaternionCoordinate_pow_mul_pow_integrable 0 1 2 2
+  have hD := quaternionCoordinate_pow_mul_pow_integrable 0 1 1 3
+  have hA1 := quaternionCoordinate_pow_integrable 1 4
+  have hCscaled := hC.const_mul (-4 : ℝ)
+  have hBscaled := hB.const_mul (6 : ℝ)
+  have hDscaled := hD.const_mul (-4 : ℝ)
+  have hAC := hA.add hCscaled
+  have hACB := hAC.add hBscaled
+  have hACBD := hACB.add hDscaled
+  have hExpanded :
+      (∫ g : SU2,
+          ((Real.sqrt 2 / 2) *
+            (quaternionCoordinate 0 g - quaternionCoordinate 1 g)) ^ 4
+          ∂haarSU2) =
+        (1 / 4 : ℝ) *
+          ((∫ g : SU2, quaternionCoordinate 0 g ^ 4 ∂haarSU2) +
+            (-4) * (∫ g : SU2,
+              quaternionCoordinate 0 g ^ 3 * quaternionCoordinate 1 g ∂haarSU2) +
+            6 * (∫ g : SU2,
+              quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 1 g ^ 2 ∂haarSU2) +
+            (-4) * (∫ g : SU2,
+              quaternionCoordinate 0 g * quaternionCoordinate 1 g ^ 3 ∂haarSU2) +
+            (∫ g : SU2, quaternionCoordinate 1 g ^ 4 ∂haarSU2)) := by
+    rw [integral_congr_ae (ae_of_all _ hPointExpand), integral_const_mul]
+    rw [integral_add hACBD hA1, integral_add hACB hDscaled,
+      integral_add hAC hBscaled, integral_add hA hCscaled]
+    rw [integral_const_mul, integral_const_mul, integral_const_mul]
+  rw [hExpanded, coordinate_zero_cube_mul_one_integral_zero,
+    coordinate_zero_mul_one_cube_integral_zero,
+    ← coordinate_zero_fourth_integral_eq_one] at hQuarter
+  linarith
+
+/-- Fourth fundamental-character moment from explicit quaternion-coordinate
+Haar symmetries.  This proof uses neither Weyl integration nor Peter--Weyl. -/
+theorem chi_re_fourth_integral_two_quaternion :
+    (∫ g : SU2, (chi g).re ^ 4 ∂haarSU2) = 2 := by
+  have hA :
+      (∫ g : SU2, quaternionCoordinate 0 g ^ 4 ∂haarSU2) = 1 / 8 := by
+    linarith [coordinate_zero_fourth_add_three_mixed_eq_quarter,
+      coordinate_zero_fourth_eq_three_mixed]
+  have hfun : (fun g : SU2 => (chi g).re ^ 4) =
+      fun g : SU2 => 16 * quaternionCoordinate 0 g ^ 4 := by
+    funext g
+    rw [chi_re_eq_two_mul_coordinate_zero]
+    ring
+  rw [hfun, integral_const_mul, hA]
+  norm_num
+
 end YangMills.SU2ThetaPrism
 
 end
