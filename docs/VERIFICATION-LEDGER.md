@@ -26273,3 +26273,53 @@ The clean Colab Pro+ high-RAM focal was pinned to
 `2e58165a9dcdca9837b666528f974299ee1a51cc`.  Its terminal line was
 `Build completed successfully (8773 jobs).`  Direct audit execution reports
 exactly `[propext, Classical.choice, Quot.sound]` for every new endpoint.
+
+## Addendum 524 (2026-08-01, **combined source-cutoff equation-(1.36) field GREEN**)
+
+The mixed direct/native equation-(1.36) producer is restored on the
+source-faithful carrier of Addendum 523. Its cutoff is the literal
+equation-(2.14) carrier, while the residual is still evaluated on the
+terminally projected field `P_Z0 B`. These are deliberately different
+objects.
+
+The first attempted proof of the native projection step exposed another
+overstatement: endpoint containment in a native domain does not imply that
+the complete interior stencil of each source bond lies in `Z0`. No such
+claim is needed. The generic theorem
+`cmp98SourceFieldSupNorm_nestedPhysicalBondProjection_le_threshold_of_cutoffFactor_ne_zero`
+proves instead that a second coordinate projection can only zero entries and
+therefore cannot increase the source sup norm. Consequently
+`cmp109Lemma1SourceSmallField_projectedCombinedRegion_of_sourceCutoff`
+derives the exact small-field premise for `P_Z0 B` without any containment
+between the extra projection carrier and the native source carrier, and
+without asserting locality of the nonlinear correction `D`.
+
+The valid generic cutoff-restriction lemmas were moved from the diagnostic
+all-interior module to `BalabanCMP116Eq222CutoffSupNormTransport`; the valid
+direct projection identity was likewise moved to the neutral combined-region
+module. The retracted all-interior carrier remains only as a no-go diagnostic
+and is not imported as the source of the restored producer.
+
+The headline
+`abs_cmp116Eq80Lemma1CombinedPhysicalResidual_le_eq136` now performs the
+canonical `Fin.addCases` split. The direct branch derives equation (1.36)
+from the literal equation-(80) third-jet chain. The native branch consumes
+only the named, nonvacuous
+`CMP109Lemma1Eq136SourceCertificate.bound`. The common amplitude is exactly
+`E0Direct + lemma1.E0`; there is no free pointwise equation-(1.36) premise,
+arbitrary reindexing map, zero native residual, or all-interior cutoff.
+
+**Local focal validation.** The corrected carrier target finished with
+`Build completed successfully (8769 jobs).`; the combined producer target
+finished with `Build completed successfully (8903 jobs).`. The carrier,
+nested-projection, direct-projection, and combined-producer audits all report
+exactly `[propext, Classical.choice, Quot.sound]`. The direct pinned-toolchain
+root replay then finished with the literal line
+`Build completed successfully (10337 jobs).`
+
+This restores the seventh substantive field intended for the first partial
+centered-conditioned term-source assembly, conditional on the single named
+Lemma-1 source certificate. It does not construct a complete
+`CMP116Eq226CenteredConditionedPhysicalTermSource`, prove that certificate,
+discharge the remaining scalar/analytic fields, prove `hRpoly`, or change
+the distance to Clay, which remains approximately zero (below 0.1%).

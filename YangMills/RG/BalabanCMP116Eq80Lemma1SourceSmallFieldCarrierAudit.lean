@@ -8,3 +8,4 @@ import YangMills.RG.BalabanCMP116Eq80Lemma1SourceSmallFieldCarrier
 #print axioms YangMills.RG.cmp116SignedCutoff_piecewiseRealWitness_ne_zero
 #print axioms YangMills.RG.cmp116Eq80Lemma1CombinedSourceSignedCutoff_piecewiseWitness_ne_zero
 #print axioms YangMills.RG.cmp109Lemma1SourceSmallField_of_combinedSourceCutoff
+#print axioms YangMills.RG.cmp109Lemma1SourceSmallField_projectedCombinedRegion_of_sourceCutoff

@@ -164,6 +164,45 @@ theorem cmp102Eq80SourcePi4IndexedLocalizationDomain_bondSupport_subset_combined
   exact cmp102Eq80SourcePi4CenteredRegion_subset_combinedCenteredRegion
     anchor D E P (hold hc)
 
+/-- Projecting first to the combined centered region and then to a direct
+source domain is exactly the direct source-domain projection.  This is a
+geometric identity; it does not depend on any proposed cutoff carrier. -/
+theorem physicalBondProjection_indexedSourceDomain_combinedCenteredRegion
+    {Index : Type*} {M Q Nc L lieDim : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)]
+    [NeZero (M * (2 * Q))]
+    [NeZero Nc] [NeZero (Nc ^ 2 - 1)] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary
+      4 (M * (2 * Q)) Nc 4 L lieDim)
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (E : CMP109LocalizedActionExpansion Index 2 (M * (2 * Q)) Nc)
+    (P : Finset (PhysicalBond 4 (M * (2 * Q))))
+    (i : Fin (CMP102Eq80SourcePi4DomainCount anchor D))
+    (A : PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc) :
+    let Y := cmp102Eq80SourcePi4IndexedLocalizationDomain
+      (M := M) anchor D i
+    let Z0 := cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P
+    physicalBondProjection Y.bondSupport
+        (physicalBondProjection
+          (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
+          A) =
+      physicalBondProjection Y.bondSupport A := by
+  dsimp only
+  apply PiLp.ext
+  intro bond
+  by_cases hbond : bond ∈
+      (cmp102Eq80SourcePi4IndexedLocalizationDomain
+        (M := M) anchor D i).bondSupport
+  · have hinterior :
+        bond ∈
+          PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds
+            (cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P) :=
+      cmp102Eq80SourcePi4IndexedLocalizationDomain_bondSupport_subset_combinedRegionInterior
+        anchor D E P i hbond
+    simp [physicalBondProjection_apply_mem, hbond, hinterior]
+  · simp [physicalBondProjection_apply_not_mem, hbond]
+
 end
 
 end YangMills.RG

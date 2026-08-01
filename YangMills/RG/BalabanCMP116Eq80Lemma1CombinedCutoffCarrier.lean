@@ -37,43 +37,6 @@ namespace YangMills.RG
 
 noncomputable section
 
-/-- Nonvanishing of the small-field product descends to a subcarrier. -/
-theorem cmp116SmallFieldCutoff_ne_zero_of_subset
-    {Bond E : Type*} [DecidableEq Bond] [Norm E]
-    {small large : Finset Bond} {threshold : ℝ} {B : Bond → E}
-    (hsub : small ⊆ large)
-    (hlarge : cmp116SmallFieldCutoff large threshold B ≠ 0) :
-    cmp116SmallFieldCutoff small threshold B ≠ 0 := by
-  unfold cmp116SmallFieldCutoff
-  refine Finset.prod_ne_zero_iff.mpr fun bond hbond => ?_
-  have hlt : ‖B bond‖ < threshold :=
-    norm_lt_of_cmp116SmallFieldCutoff_ne_zero
-      large threshold B hlarge (hsub hbond)
-  simp [cmp116SmallFieldIndicator, hlt]
-
-/-- The complete signed cutoff remains nonzero after restricting only its
-small-field carrier.  The large-field set and its sign are unchanged. -/
-theorem cmp116SignedCutoff_ne_zero_of_smallFieldCarrier_subset
-    {Bond E : Type*} [DecidableEq Bond] [Norm E]
-    {small large P : Finset Bond} {threshold : ℝ} {B : Bond → E}
-    (hsub : small ⊆ large)
-    (hcutoff :
-      (-1 : ℂ) ^ P.card * cmp116SmallFieldCutoff large threshold B *
-          cmp116LargeFieldCutoff P threshold B ≠ 0) :
-    (-1 : ℂ) ^ P.card * cmp116SmallFieldCutoff small threshold B *
-        cmp116LargeFieldCutoff P threshold B ≠ 0 := by
-  have hsmallLarge : cmp116SmallFieldCutoff large threshold B ≠ 0 := by
-    intro hzero
-    apply hcutoff
-    simp [hzero]
-  have hP : cmp116LargeFieldCutoff P threshold B ≠ 0 := by
-    intro hzero
-    apply hcutoff
-    simp [hzero]
-  exact mul_ne_zero
-    (mul_ne_zero (pow_ne_zero _ (by norm_num : (-1 : ℂ) ≠ 0))
-      (cmp116SmallFieldCutoff_ne_zero_of_subset hsub hsmallLarge)) hP
-
 /-- A bond cannot simultaneously belong to the strict small-field carrier and
 the complementary large-field carrier.  This is the generic non-vacuity guard
 that a proposed equation-(2.14) cutoff must pass. -/
@@ -152,44 +115,6 @@ theorem cmp102Eq80SourcePi4PhysicalY0_subset_combinedRegionInterior
   intro c hc
   exact cmp102Eq80SourcePi4CenteredRegion_subset_combinedCenteredRegion
     anchor D E P (hold hc)
-
-/-- Projecting first to the combined centered region and then to a direct
-source domain is exactly the direct source-domain projection. -/
-theorem physicalBondProjection_indexedSourceDomain_combinedCenteredRegion
-    {Index : Type*} {M Q Nc L lieDim : ℕ}
-    [NeZero M] [NeZero Q] [NeZero (2 * Q)]
-    [NeZero (M * (2 * Q))]
-    [NeZero Nc] [NeZero (Nc ^ 2 - 1)] [NeZero L] [NeZero lieDim]
-    (Dict : PhysicalGaugeCMP116Dictionary
-      4 (M * (2 * Q)) Nc 4 L lieDim)
-    (anchor : FinBox 4 Q)
-    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
-    (E : CMP109LocalizedActionExpansion Index 2 (M * (2 * Q)) Nc)
-    (P : Finset (PhysicalBond 4 (M * (2 * Q))))
-    (i : Fin (CMP102Eq80SourcePi4DomainCount anchor D))
-    (A : PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc) :
-    let Y := cmp102Eq80SourcePi4IndexedLocalizationDomain
-      (M := M) anchor D i
-    let Z0 := cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P
-    physicalBondProjection Y.bondSupport
-        (physicalBondProjection
-          (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
-          A) =
-      physicalBondProjection Y.bondSupport A := by
-  dsimp only
-  apply PiLp.ext
-  intro bond
-  by_cases hbond : bond ∈
-      (cmp102Eq80SourcePi4IndexedLocalizationDomain
-        (M := M) anchor D i).bondSupport
-  · have hinterior :
-        bond ∈
-          PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds
-            (cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P) :=
-      cmp102Eq80SourcePi4IndexedLocalizationDomain_bondSupport_subset_combinedRegionInterior
-        anchor D E P i hbond
-    simp [physicalBondProjection_apply_mem, hbond, hinterior]
-  · simp [physicalBondProjection_apply_not_mem, hbond]
 
 /-- A nonzero cutoff on the common interior carrier supplies the literal
 direct equation-(80) cutoff without changing the large-field factor. -/

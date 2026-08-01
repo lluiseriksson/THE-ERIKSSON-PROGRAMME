@@ -331,3 +331,25 @@ must separate the small carrier from `P` while still controlling the global
 correction `D(B)`, or obtain a source estimate adapted to the mixed
 small/large-field sector.  No `hRpoly`, continuum, OS, or Clay claim follows;
 distance to Clay remains approximately zero (below 0.1%).
+
+## 2026-08-01 — combined equation-(1.36) composition frontier
+
+The corrected source-local cutoff carrier now feeds the complete combined
+direct/native equation-(1.36) field. The direct sector is theorem-fed by the
+physical equation-(80) third-jet producer. The native sector is theorem-fed
+conditionally by the single source-facing field
+`CMP109Lemma1Eq136SourceCertificate.bound`, whose residual, small-field
+predicate, positive amplitude, and nonempty small-field region are fixed in
+its type.
+
+The terminal projection `P_Z0` does not require every native source bond to
+be interior with its full stencil. A generic nested-projection theorem shows
+that the extra projection only zeroes coordinates and preserves the cutoff
+sup-norm bound. This avoids both the vacuous all-interior cutoff and a false
+locality statement for `D(B)`.
+
+The analytic frontier is therefore unchanged but narrower: proving the
+printed Lemma-1 estimate (1.36) for the literal CMP109 residual remains a
+named external/source-facing obligation. The composition of that obligation
+with the direct sector is no longer open. No complete term-source instance,
+`hRpoly`, continuum limit, OS reconstruction, or Clay conclusion follows.

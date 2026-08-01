@@ -29,6 +29,43 @@ namespace YangMills.RG
 
 noncomputable section
 
+/-- Nonvanishing of the small-field product descends to a subcarrier. -/
+theorem cmp116SmallFieldCutoff_ne_zero_of_subset
+    {Bond E : Type*} [DecidableEq Bond] [Norm E]
+    {small large : Finset Bond} {threshold : ℝ} {B : Bond → E}
+    (hsub : small ⊆ large)
+    (hlarge : cmp116SmallFieldCutoff large threshold B ≠ 0) :
+    cmp116SmallFieldCutoff small threshold B ≠ 0 := by
+  unfold cmp116SmallFieldCutoff
+  refine Finset.prod_ne_zero_iff.mpr fun bond hbond => ?_
+  have hlt : ‖B bond‖ < threshold :=
+    norm_lt_of_cmp116SmallFieldCutoff_ne_zero
+      large threshold B hlarge (hsub hbond)
+  simp [cmp116SmallFieldIndicator, hlt]
+
+/-- The complete signed cutoff remains nonzero after restricting only its
+small-field carrier.  The large-field set and its sign are unchanged. -/
+theorem cmp116SignedCutoff_ne_zero_of_smallFieldCarrier_subset
+    {Bond E : Type*} [DecidableEq Bond] [Norm E]
+    {small large P : Finset Bond} {threshold : ℝ} {B : Bond → E}
+    (hsub : small ⊆ large)
+    (hcutoff :
+      (-1 : ℂ) ^ P.card * cmp116SmallFieldCutoff large threshold B *
+          cmp116LargeFieldCutoff P threshold B ≠ 0) :
+    (-1 : ℂ) ^ P.card * cmp116SmallFieldCutoff small threshold B *
+        cmp116LargeFieldCutoff P threshold B ≠ 0 := by
+  have hsmallLarge : cmp116SmallFieldCutoff large threshold B ≠ 0 := by
+    intro hzero
+    apply hcutoff
+    simp [hzero]
+  have hP : cmp116LargeFieldCutoff P threshold B ≠ 0 := by
+    intro hzero
+    apply hcutoff
+    simp [hzero]
+  exact mul_ne_zero
+    (mul_ne_zero (pow_ne_zero _ (by norm_num : (-1 : ℂ) ≠ 0))
+      (cmp116SmallFieldCutoff_ne_zero_of_subset hsub hsmallLarge)) hP
+
 /-- Pointwise cutoff control survives projection to any physical bond
 subcarrier of `Y0`. -/
 theorem norm_physicalBondProjection_cmp116SourcePhysicalCoordinateCochain_le_threshold
@@ -110,6 +147,51 @@ theorem cmp98SourceFieldSupNorm_physicalBondProjection_le_threshold_of_cutoffFac
   exact
     cmp98SourceFieldSupNorm_physicalBondProjection_le_threshold
       Y0 S threshold b hthreshold hS hsmall
+
+/-- An additional coordinate projection cannot destroy cutoff control.  No
+containment relation between the extra carrier `R` and the localized source
+carrier `S` is required: coordinates outside `R` are simply zero. -/
+theorem cmp98SourceFieldSupNorm_nestedPhysicalBondProjection_le_threshold_of_cutoffFactor_ne_zero
+    {d M N' Nc : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    (Y0 P S R : Finset (PhysicalBond d (M * N')))
+    (threshold : ℝ)
+    (b : CMP116Eq214GaussianCoordinate
+      (PhysicalBond d (M * N')) (Nc ^ 2 - 1))
+    (hthreshold : 0 ≤ threshold)
+    (hS : S ⊆ Y0)
+    (hcutoff :
+      (-1 : ℂ) ^ P.card *
+          cmp116SmallFieldCutoff Y0 threshold
+            (cmp116SourcePhysicalCoordinateCochain b) *
+          cmp116LargeFieldCutoff P threshold
+            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0) :
+    cmp98SourceFieldSupNorm
+        (physicalBondProjection S
+          (physicalBondProjection R
+            (cmp116SourcePhysicalCoordinateCochain b))) ≤ threshold := by
+  have hsmall :
+      cmp116SmallFieldCutoff Y0 threshold
+        (cmp116SourcePhysicalCoordinateCochain b) ≠ 0 := by
+    intro hzero
+    apply hcutoff
+    simp [hzero]
+  unfold cmp98SourceFieldSupNorm
+  apply Finset.max'_le
+  intro value hvalue
+  rcases Finset.mem_image.mp hvalue with ⟨bond, _, rfl⟩
+  by_cases hbondS : bond ∈ S
+  · rw [physicalBondProjection_apply_mem S hbondS]
+    by_cases hbondR : bond ∈ R
+    · rw [physicalBondProjection_apply_mem R hbondR]
+      exact le_of_lt
+        (norm_lt_of_cmp116SmallFieldCutoff_ne_zero
+          Y0 threshold (cmp116SourcePhysicalCoordinateCochain b)
+          hsmall (hS hbondS))
+    · rw [physicalBondProjection_apply_not_mem R hbondR, norm_zero]
+      exact hthreshold
+  · rw [physicalBondProjection_apply_not_mem S hbondS, norm_zero]
+    exact hthreshold
 
 end
 

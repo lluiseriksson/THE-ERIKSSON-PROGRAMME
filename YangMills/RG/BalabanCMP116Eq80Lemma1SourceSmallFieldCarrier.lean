@@ -230,6 +230,48 @@ theorem cmp109Lemma1SourceSmallField_of_combinedSourceCutoff
         anchor D E i)
       hcutoff
 
+/-- The source-faithful common cutoff supplies the exact native small-field
+premise after the terminal projection to `Z0`.  Only nested coordinate
+projections are simplified; the residual still evaluates the literal global
+correction on the projected field. -/
+theorem cmp109Lemma1SourceSmallField_projectedCombinedRegion_of_sourceCutoff
+    {Index : Type*} {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)]
+    [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (E : CMP109LocalizedActionExpansion Index 2 (M * (2 * Q)) Nc)
+    (P : Finset (PhysicalBond 4 (M * (2 * Q))))
+    (epsilon1 gk : ℝ) (hepsilon1 : 0 ≤ epsilon1) (hgk : 0 < gk)
+    (b : CMP116Eq214GaussianCoordinate
+      (PhysicalBond 4 (M * (2 * Q))) (Nc ^ 2 - 1))
+    (hcutoff :
+      (-1 : ℂ) ^ P.card *
+          cmp116SmallFieldCutoff
+            (cmp116Eq80Lemma1CombinedSourceSmallFieldCarrier anchor D E)
+            (epsilon1 / gk) (cmp116SourcePhysicalCoordinateCochain b) *
+          cmp116LargeFieldCutoff P (epsilon1 / gk)
+            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0)
+    (i : Fin (CMP109Lemma1NativeDomainCount E)) :
+    cmp109Lemma1SourceSmallField epsilon1 gk
+      (cmp109Lemma1NativeDomainAt E i)
+      (physicalBondProjection
+        (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds
+          (cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P))
+        (cmp116SourcePhysicalCoordinateCochain b)) := by
+  unfold cmp109Lemma1SourceSmallField
+  exact
+    cmp98SourceFieldSupNorm_nestedPhysicalBondProjection_le_threshold_of_cutoffFactor_ne_zero
+      (cmp116Eq80Lemma1CombinedSourceSmallFieldCarrier anchor D E) P
+      (cmp109Lemma1SourceBondSupport (cmp109Lemma1NativeDomainAt E i))
+      (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds
+        (cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P))
+      (epsilon1 / gk) b
+      (div_nonneg hepsilon1 (le_of_lt hgk))
+      (cmp109Lemma1SourceBondSupport_subset_combinedSourceSmallFieldCarrier
+        anchor D E i)
+      hcutoff
+
 end
 
 end YangMills.RG
