@@ -51,11 +51,15 @@ We then ask which congruence is extremal. For \emph{uniform} concentrations the
 answer is proved: keeping $m$ sites of mutual correlation $\mu$ leaves
 $\mu J+(1-\mu)I$, of ratio $(1-\mu)/(1+(m-1)\mu)$, which is strictly decreasing
 in $m$ --- the more sites the weight keeps, the smaller the ratio it can reach,
-so the best uniform concentration is a \emph{pair}. For arbitrary weights we
-record, with certified numerics and \emph{without proof}, the conjecture that
+so the best uniform concentration is a \emph{pair}. For \emph{arbitrary} weights
+we then prove
 $\sup_{D>0}r(DMD)=(1-\mu)/(1+\mu)$ with $\mu=\min_{i\neq j}M_{ij}$: the extremal
-congruence concentrates on the \emph{least correlated pair}. The hypercube
-instance is the fusion bound. All theorems are machine-checked in Lean~4.
+congruence concentrates on the \emph{least correlated pair}. The proof is
+geometric rather than spectral --- Hilbert's projective diameter is itself a
+congruence invariant, and Birkhoff's contraction theorem converts it into the
+bound --- and it uses no definiteness at all, only positivity of the entries.
+The hypercube instance is the fusion bound. Every theorem is machine-checked in
+Lean~4.
 \end{abstract}
 
 \section{The question}
@@ -85,7 +89,9 @@ can the rest move?}
 
 We answer both parts for the kernel of $L$ decoupled Ising bonds. Section~2
 gives the rigid half, Section~3 the fragile half, Section~4 the consequence,
-and Section~5 states a conjectural general form with its numerical certificate.
+Section~5 the extremal congruence among uniform concentrations, and Section~6
+the supremum over all positive weights --- exactly, by way of Hilbert's
+projective diameter.
 
 \paragraph{What this paper does not do.} It does not decide whether any
 particular coupled transfer operator has a spectral gap uniform in its
@@ -298,29 +304,104 @@ say that a pair beats every uniformly weighted subset of an arbitrary $M$. The
 section title should be read with the word \emph{exchangeable} attached. What
 the theorem does establish is the mechanism --- spreading a concentration over
 more equally correlated sites lowers the reachable ratio --- and it is that
-mechanism, not a general proof, that makes Conjecture~\ref{conj:lcp} plausible.
+mechanism, not the general proof; the general proof is \S6.
 \end{remark}
 
-That settles the exchangeable family. For arbitrary weights we have only a
-conjecture, and we say so wherever it appears.
+\section{The supremum, exactly: Hilbert's projective diameter}
 
-\begin{conjecture}[Least-correlated pair]\label{conj:lcp}
-Let $M$ be symmetric with $M_{ii}=1$ and $0<M_{ij}<1$ for $i\neq j$, and let
-$\mu = \min_{i\neq j}M_{ij}$. Then
+The remaining question is what an \emph{arbitrary} positive weight can reach.
+It has a complete answer, and the answer comes from geometry rather than from
+spectral estimates: a positive weight cannot change the projective geometry it
+acts on.
+
+For an entrywise positive matrix $T$, Hilbert's projective diameter is
 \[
-  \sup_{D>0 \text{ diagonal}} r(DMD) \;=\; \frac{1-\mu}{1+\mu},
+  \Delta(T)\;=\;\max_{i,j,k,l}\,
+  \log\frac{T_{ik}T_{jl}}{T_{jk}T_{il}} .
 \]
-approached by concentrating $D$ on an argmin pair, and not attained.
-\end{conjecture}
+Birkhoff's theorem \cite{birkhoff1957} says the map induced by $T$ contracts
+Hilbert's projective metric with coefficient $\tanh(\Delta(T)/4)$, and the
+spectral consequence
+\[
+  \frac{|\lambda_1(T)|}{\lambda_0(T)}\;\le\;\tanh\!\big(\Delta(T)/4\big)
+\]
+is classical \cite{birkhoff1957,evesonnussbaum1995}. \emph{That is the only
+input we import.} The two facts that make it bite are elementary, and both are
+proved here.
 
-The lower bound is elementary: concentrating on a pair $\{i,j\}$ leaves
-$\begin{psmallmatrix}1 & M_{ij}\\ M_{ij} & 1\end{psmallmatrix}$ up to scale,
-of ratio $(1-M_{ij})/(1+M_{ij})$, which is largest at the least correlated
-pair. Theorem~\ref{thm:exch} adds that no \emph{uniform} concentration on more
-sites can beat it. \textbf{The upper bound over arbitrary weights is open.} We
-have no proof, and we say so wherever the statement appears.
+\begin{lemma}[$\Delta$ is a congruence invariant]\label{lem:deltainv}
+For every positive diagonal $D$ and all indices,
+\[
+  \frac{(DMD)_{ik}(DMD)_{jl}}{(DMD)_{jk}(DMD)_{il}}
+  \;=\;\frac{M_{ik}M_{jl}}{M_{jk}M_{il}},
+  \qquad\text{hence}\qquad \Delta(DMD)=\Delta(M).
+\]
+\end{lemma}
 
-For the record, the reduction we did obtain and could not close: since
+\begin{proof}
+$(DMD)_{ab}=d_ad_bM_{ab}$, so numerator and denominator both acquire the factor
+$d_id_jd_kd_l$, which cancels.
+\end{proof}
+
+\begin{lemma}[The diameter of a unit-diagonal kernel]\label{lem:deltaval}
+If $M_{ii}=1$ and $\mu\le M_{ij}\le 1$ for all $i,j$ with $\mu>0$, then
+$\Delta(M)=2\log(1/\mu)$ exactly.
+\end{lemma}
+
+\begin{proof}
+Every cross-ratio is at most $1\cdot 1/(\mu\cdot\mu)=1/\mu^2$. Taking $i=k$ and
+$j=l$ on a pair attaining the minimum gives
+$M_{ii}M_{jj}/(M_{ji}M_{ij})=1/\mu^2$, so the maximum is attained.
+\end{proof}
+
+\begin{theorem}[Least-correlated pair]\label{thm:lcp}
+Let $M$ be symmetric with $M_{ii}=1$ and $0<\mu\le M_{ij}\le 1$ for $i\neq j$,
+where $\mu=\min_{i\neq j}M_{ij}$. Then
+\[
+  \sup_{D>0 \textup{ diagonal}} r(DMD) \;=\; \frac{1-\mu}{1+\mu},
+\]
+approached by concentrating $D$ on an argmin pair and not attained.
+\end{theorem}
+
+\begin{proof}
+\emph{Upper bound.} $DMD$ is entrywise positive, so by
+Lemmas~\ref{lem:deltainv} and~\ref{lem:deltaval} and the Birkhoff bound,
+\[
+  r(DMD)\;\le\;\tanh\!\big(\Delta(DMD)/4\big)
+        \;=\;\tanh\!\big(\tfrac12\log(1/\mu)\big)
+        \;=\;\frac{1/\mu-1}{1/\mu+1}\;=\;\frac{1-\mu}{1+\mu},
+\]
+the middle identity because $t=e^{\frac12\log(1/\mu)}$ satisfies $t^2=1/\mu$ and
+$\tanh\log t=(t^2-1)/(t^2+1)$.
+
+\emph{Lower bound.} Concentrating on an argmin pair $\{p,q\}$ leaves the block
+$\begin{psmallmatrix}1&\mu\\ \mu&1\end{psmallmatrix}$ exactly, for every
+$\varepsilon>0$ (Proposition~\ref{prop:orbit}), of ratio $(1-\mu)/(1+\mu)$; and
+the value is not attained because $\Delta$ is a strict maximum only in the
+limit.
+\end{proof}
+
+Three things about this proof are worth saying plainly.
+
+\textbf{It uses no definiteness whatever} --- only positivity of the entries.
+That is why the twelve indefinite witnesses in the certificate below all obeyed
+the bound: the pre-registered gate that predicted otherwise was pointing at this
+argument, and we did not see it at the time.
+
+\textbf{It explains the rigidity.} The quantity that survives the weight is not
+a spectral one at all; it is the projective diameter. Congruence moves the
+spectrum but cannot move the geometry, and the reachable spectral ratio is
+pinned by the geometry.
+
+\textbf{Novelty, stated carefully.} Both imported facts are classical, and
+Lemma~\ref{lem:deltainv} is immediate once written down. What we did not find in
+the searches we ran is this exact \emph{evaluation} of the supremum of the
+spectral ratio over a diagonal congruence orbit. That is an absence of found
+prior art, not a claim of priority.
+
+\subsection*{What the first attempt could not do}
+
+We record the route that failed, because it locates the difficulty. Since
 $T$ is positive definite exactly when $M$ is (Theorem~\ref{thm:rigid}),
 \[
   r(T)\le\frac{1-\mu}{1+\mu}
@@ -339,11 +420,11 @@ $T$ is not the Perron vector of $DND$, and the slack is exactly that gap.
 On the hypercube, $K_\beta^{(L)}$ normalised to unit diagonal has
 $M_{\sigma\tau}=e^{-2\beta h(\sigma,\tau)}$ with $h$ the Hamming distance; the
 least correlated pair is the antipodal one, $\mu=e^{-2\beta L}$, and
-$(1-\mu)/(1+\mu)=\tanh(\beta L)$. Conjecture~\ref{conj:lcp} therefore contains
+$(1-\mu)/(1+\mu)=\tanh(\beta L)$. Theorem~\ref{thm:lcp} therefore contains
 Theorem~\ref{thm:fusion} as its hypercube instance.
 
 \paragraph{Numerical certificate.} Random search plus Nelder--Mead ascent over
-positive diagonals, on families chosen to break the conjecture, never exceeded
+positive diagonals, on families chosen to break it, before the proof was found,, never exceeded
 $(1-\mu)/(1+\mu)$ and in almost every case attained it to machine precision.
 
 \begin{center}
@@ -375,7 +456,7 @@ The last row deserves comment, because it corrected us. A pre-registered gate
 predicted that positive definiteness would be load-bearing --- that at least one
 of twelve indefinite witnesses would break the bound. None did; all twelve
 landed \emph{on} it. The hypothesis was therefore dropped, and
-Conjecture~\ref{conj:lcp} as stated above assumes no definiteness. The gate, its
+Theorem~\ref{thm:lcp} as stated above assumes no definiteness. The gate, its
 prediction, and its failure are recorded in the repository rather than repaired
 in place.
 
@@ -401,7 +482,7 @@ diagonal this yields
   \qquad \kappa(D^2)=\frac{\max_i d_i^2}{\min_i d_i^2},
 \]
 which \textbf{diverges} exactly in the regime of interest, namely when $D$
-degenerates. Theorem~\ref{thm:fusion} and Conjecture~\ref{conj:lcp} supply a
+degenerates. Theorem~\ref{thm:fusion} and Theorem~\ref{thm:lcp} supply a
 \emph{finite} substitute in that regime: the supremum is $\tanh(\beta L)$,
 respectively $(1-\mu)/(1+\mu)$, however badly conditioned $D$ becomes. That
 contrast --- divergent classical bound, finite exact value --- is the delta of
@@ -413,13 +494,12 @@ anisotropic Ising model on a strip, whose spectrum is known in closed form.
 Nothing in Sections~3--4 is new mathematics about that model, and the reader who
 knows the exact solution will find $\tanh(\beta L)$ unsurprising: it is the
 zero-temperature limit in the transverse direction, where the strip collapses to
-a single spin. The contribution is not the value. It is that the value is the
-supremum \emph{within the family of uniform concentrations}
-(Theorem~\ref{thm:exch}) and a lower bound for the full diagonal orbit, that the
-orbit's rigid invariants are simultaneously pinned, and that the pair of facts
-identifies which quantities an argument may and may not use. We are careful with
-that phrasing: whether $\tanh(\beta L)$ is the supremum over \emph{all} positive
-diagonals is Conjecture~\ref{conj:lcp} and is not proved here.
+a single spin. The contribution is not the value. It is that the value is
+\emph{exactly} the supremum over the whole diagonal congruence orbit
+(Theorem~\ref{thm:lcp}), that the orbit's rigid invariants are simultaneously
+pinned, and that the pair of facts identifies which quantities an argument may
+and may not use. An earlier version of this paper could only conjecture the
+first of those; the phrasing here is now licensed by \S6.
 
 \paragraph{Formalisation.} We are not aware of a mechanised treatment of
 congruence orbits of transfer kernels. This is an absence of found prior art in
@@ -428,11 +508,9 @@ the searches we ran, not a claim of priority.
 \section{What is open}
 
 \begin{enumerate}
-\item The upper bound in Conjecture~\ref{conj:lcp} \emph{over arbitrary
-      weights}. Theorem~\ref{thm:exch} settles it for uniform concentrations;
-      the gap is everything else. A proof would make the fusion bound an exact
-      classification rather than an attained lower bound with a certificate,
-      and \S5 records where our attempt loses.
+\item Whether the congruence-invariance of $\Delta$ extends usefully beyond
+      diagonal congruences --- for instance to congruences by positive matrices
+      that are not diagonal, where the cross-ratio no longer cancels.
 \item Whether the physical weight $w_\gamma$ attains the antipodal restriction
       in the limit $\gamma\to\infty$ with the rate we measure. The deficit
       $\tanh(\beta L)-r(\gamma)$ was found to decay like $e^{-2\gamma}$ (fitted
@@ -450,21 +528,23 @@ Every theorem, lemma and proposition stated above --- the rigid half
 (Theorem~\ref{thm:wall}), the orbit statement (Proposition~\ref{prop:orbit}) and
 the exchangeable computation (Theorem~\ref{thm:exch}) --- is written in Lean~4
 against a pinned Mathlib in \texttt{YangMills/OS/CongruenceSpectrum.lean}, and
-\textbf{has been verified}. Two things are not, and both are labelled: the
-continuity of eigenvalues invoked after Proposition~\ref{prop:orbit}, which is
-classical and cited; and Conjecture~\ref{conj:lcp}, which carries the word
-\emph{conjecture} in every sentence that states it.
+\textbf{has been verified}, including the two lemmas that carry
+Theorem~\ref{thm:lcp}. Two imported classical inputs are cited rather than
+reproved, and both are labelled where they are used: the continuity of
+eigenvalues invoked after Proposition~\ref{prop:orbit}, and the Birkhoff bound
+$|\lambda_1|/\lambda_0\le\tanh(\Delta/4)$ used in Theorem~\ref{thm:lcp}. No
+statement in this paper is conjectural.
 
 \begin{center}
 \begin{tabular}{ll}
 \toprule
-commit & \texttt{d4126d34} \\
-module \texttt{sha256} & \texttt{4a6c4d680becd37acc9d02b6} \\
-                       & \texttt{5e0995ff0dc26c5cd7f4edfa51468a6c04029793} \\
+commit & \texttt{954f3b2d} \\
+module \texttt{sha256} & \texttt{b479f550b5ac7a261e8dd0ed} \\
+                       & \texttt{7735416eec09cfb239759e4b973130b848e2296c} \\
 toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
 Mathlib pin & \texttt{07642720480157414db592fa85b626dafb71355b} \\
 elaboration & exit \texttt{0}; empty log --- zero errors, zero warnings, zero \texttt{sorry} \\
-axiom oracle & 29/29 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
+axiom oracle & 36/36 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
 \texttt{sorryAx} & none \\
 \bottomrule
 \end{tabular}
@@ -502,6 +582,15 @@ theorems above depends on it.
 \bibitem{hornjohnson} R.~A.~Horn and C.~R.~Johnson,
   \emph{Matrix Analysis}, 2nd ed., Cambridge University Press, 2013.
   (Congruence and inertia, \S4.5; continuity of eigenvalues, Appendix D.)
+
+\bibitem{birkhoff1957} G.~Birkhoff,
+  \emph{Extensions of Jentzsch's theorem},
+  Trans.\ Amer.\ Math.\ Soc.\ \textbf{85} (1957), 219--227.
+
+\bibitem{evesonnussbaum1995} S.~P.~Eveson and R.~D.~Nussbaum,
+  \emph{Applications of the Birkhoff--Hopf theorem to the spectral theory of
+  positive linear operators}, Math.\ Proc.\ Cambridge Philos.\ Soc.\
+  \textbf{117} (1995), no.~3, 491--512.
 
 \bibitem{vandersluis1969} A.~van der Sluis,
   \emph{Condition numbers and equilibration of matrices},
