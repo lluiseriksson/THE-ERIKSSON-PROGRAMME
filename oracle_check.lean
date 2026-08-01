@@ -3164,3 +3164,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.tvField_isLUB
 #print axioms YangMills.OS.Dobrushin.tanh_nonneg
 #print axioms YangMills.OS.Dobrushin.tanh_lt_one
+
+-- D-2b, the Dobrushin matrix of a bonded system and the computed window.
+#print axioms YangMills.OS.Dobrushin.dobMatrix_nonneg
+#print axioms YangMills.OS.Dobrushin.dobMatrix_supp
+#print axioms YangMills.OS.Dobrushin.dobMatrix_diag
+#print axioms YangMills.OS.Dobrushin.dobrushin_resolvent_bound
+#print axioms YangMills.OS.Dobrushin.dobrushin_resolvent_tsum
+#print axioms YangMills.OS.Dobrushin.starDist_self
+#print axioms YangMills.OS.Dobrushin.starDist_triangle
+#print axioms YangMills.OS.Dobrushin.starDist_rowSum

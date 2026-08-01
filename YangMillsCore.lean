@@ -951,3 +951,11 @@ import YangMills.OS.DobrushinMatrix
 -- measure theory, no Gibbs measure and no decay statement: composing it over a
 -- site and feeding D-1 is D-2b and D-3, neither of which exists.
 import YangMills.OS.DobrushinCoefficient
+
+-- D-2b of the Dobrushin lane: the bond coefficients of D-2a assembled into a
+-- matrix, discharging all three structural hypotheses of D-1, leaving only the
+-- row-sum bound -- which IS the coupling window.  starDist_rowSum computes that
+-- window for a site with two bonds of strength beta and two of strength gamma
+-- and gets 2 tanh|beta| + 2 tanh|gamma|, so the window is a hypothesis of a
+-- theorem rather than a sentence.  The comparison estimate is NOT here.
+import YangMills.OS.DobrushinRowSum
