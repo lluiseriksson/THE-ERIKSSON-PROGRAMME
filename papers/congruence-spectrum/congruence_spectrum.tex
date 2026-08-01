@@ -39,13 +39,15 @@ so definiteness in either sign is a congruence invariant --- the definite case
 of Sylvester's law of inertia, recorded here in the elementary form that a
 machine can check without an eigenvalue count. \emph{Fragile half:} the value of
 the subdominant ratio $r$ --- second largest eigenvalue modulus over the Perron
-root --- does not survive at all, and we locate exactly how far it moves. Restricting the $L$-site kernel to the two
-antipodal configurations leaves \emph{one} Ising bond of coupling $\beta L$; its
-ratio is $\tanh(\beta L)$. A weight concentrating on the ferromagnetic
+root --- does not survive at all, and we locate exactly how far it moves.
+Restricting the $L$-site kernel ($L\ge1$) to the two antipodal configurations
+leaves \emph{one} Ising bond of coupling $\beta L$; for $\beta>0$ its ratio is
+$\tanh(\beta L)$. A weight concentrating on the ferromagnetic
 configurations therefore \emph{fuses} the $L$ sites into a single effective site
-carrying $L$ times the coupling. Since $\tanh(\beta L)\to 1$, no bound on $r$ can
-be uniform in $L$: the obstruction to volume-uniformity is named, exactly, and
-it is a property of the congruence and not of any spectral estimate.
+carrying $L$ times the coupling. Since $\tanh(\beta L)\to 1$ for every fixed
+$\beta>0$, no bound on $r$ can be uniform in $L$: the obstruction to
+volume-uniformity is named, exactly, and it is a property of the congruence and
+not of any spectral estimate.
 Consequently an argument that bounds $r$ using only congruence invariants ---
 rank, inertia, definiteness --- cannot produce an $L$-uniform bound at all.
 We then ask which congruence is extremal. For \emph{uniform} concentrations the
@@ -202,17 +204,36 @@ with $\beta>0$, so the hypothesis costs nothing here.
 \end{remark}
 
 \begin{theorem}[Fusion identity]\label{thm:fusion}
-The $2\times 2$ principal submatrix of $K_\beta^{(L)}$ on the antipodal pair
-$\{\sigma^+,\sigma^-\}$ is exactly one Ising bond of coupling $\beta L$:
+For \emph{every} $\beta\in\R$ and every $L\ge1$, the $2\times 2$ principal
+submatrix of $K_\beta^{(L)}$ on the antipodal pair $\{\sigma^+,\sigma^-\}$ is
+exactly one Ising bond of coupling $\beta L$:
 \[
   \begin{pmatrix}
     K_\beta^{(L)}(\sigma^+,\sigma^+) & K_\beta^{(L)}(\sigma^+,\sigma^-)\\[2pt]
     K_\beta^{(L)}(\sigma^-,\sigma^+) & K_\beta^{(L)}(\sigma^-,\sigma^-)
   \end{pmatrix}
-  \;=\; B(\beta L),
+  \;=\; B(\beta L).
 \]
-and its spectral ratio is $\tanh(\beta L)$.
 \end{theorem}
+
+\begin{corollary}[Fusion ratio]\label{cor:fusionratio}
+If moreover $\beta\ge0$, that block has subdominant ratio $\tanh(\beta L)$. For
+$\beta<0$ its ratio is $|\tanh(\beta L)|$.
+\end{corollary}
+
+\begin{proof}
+Lemma~\ref{lem:bond} with $a=\beta L\ge0$; Remark~\ref{rem:sign} for the other
+sign.
+\end{proof}
+
+The split is deliberate, and it mirrors what is and is not machine-checked. The
+\emph{matrix identity} of Theorem~\ref{thm:fusion} is unconditional and is the
+Lean theorem \verb|antipodal_block_eq_bond|; the \emph{spectral reading} needs
+the sign hypothesis and is a paper-level consumer. An earlier version merged
+them and asserted the ratio for all $\beta$ --- false for $\beta<0$, where
+$r(B(\beta L))=|\tanh(\beta L)|>0$ while $\tanh(\beta L)<0$. The hypothesis had
+been added to Lemma~\ref{lem:bond} one paragraph earlier and simply not carried
+to its consumer.
 
 \begin{proof}
 $\sigma^+$ agrees with itself at all $L$ sites, so the sum of signs is $+L$ and
@@ -533,8 +554,11 @@ $T$ is not the Perron vector of $DND$, and the slack is exactly that gap.
 On the hypercube, $K_\beta^{(L)}$ normalised to unit diagonal has
 $M_{\sigma\tau}=e^{-2\beta h(\sigma,\tau)}$ with $h$ the Hamming distance; the
 least correlated pair is the antipodal one, $\mu=e^{-2\beta L}$, and
-$(1-\mu)/(1+\mu)=\tanh(\beta L)$. Theorem~\ref{thm:lcp} therefore contains
-Theorem~\ref{thm:fusion} as its hypercube instance.
+$(1-\mu)/(1+\mu)=\tanh(\beta L)$. Theorem~\ref{thm:lcp} therefore contains the
+\emph{spectral-ratio consequence} of Theorem~\ref{thm:fusion}
+(Corollary~\ref{cor:fusionratio}) as its hypercube instance; the identity of
+Theorem~\ref{thm:fusion} itself supplies the explicit antipodal block that the
+lower bound concentrates on.
 
 \paragraph{Numerical certificate.} Random search plus Nelder--Mead ascent over
 positive diagonals, on families chosen to break it and run before the proof was
@@ -603,11 +627,12 @@ diagonal this yields
   \qquad \kappa(D^2)=\frac{\max_i d_i^2}{\min_i d_i^2},
 \]
 which \textbf{diverges} exactly in the regime of interest, namely when $D$
-degenerates. Theorem~\ref{thm:fusion} and Theorem~\ref{thm:lcp} supply a
-\emph{finite} substitute in that regime: the supremum is $\tanh(\beta L)$,
-respectively $(1-\mu)/(1+\mu)$, however badly conditioned $D$ becomes. That
-contrast --- divergent classical bound, finite exact value --- is the delta of
-Section~5, and it is stated here side by side so that it can be checked.
+degenerates. Theorem~\ref{thm:lcp} supplies a \emph{finite} substitute in that
+regime --- the exact supremum $(1-\mu)/(1+\mu)$, and $\tanh(\beta L)$ in the
+hypercube case, however badly conditioned $D$ becomes --- while
+Theorem~\ref{thm:fusion} identifies the extremal antipodal block that realises
+it there. That contrast, divergent classical bound against finite exact value,
+is stated side by side so that it can be checked.
 
 \paragraph{Onsager and Kaufman.} The kernel $DK_\beta D$ with a ferromagnetic
 nearest-neighbour weight is the transfer matrix of the two-dimensional
@@ -622,15 +647,22 @@ pinned, and that the pair of facts identifies which quantities an argument may
 and may not use. An earlier version of this paper could only conjecture the
 first of those; the phrasing here is now licensed by \S6.
 
-\paragraph{A branch we have not yet audited.} Eveson and Nussbaum
-\cite{evesonnussbaum1995} explicitly connect the Birkhoff--Hopf circle of ideas
-to \emph{DAD theorems}, and there is a literature on diagonal scaling
-$A\mapsto D_1AD_2$ --- matrix balancing, Sinkhorn normal form, van der Sluis's
-optimal-scaling results \cite{vandersluis1969}. We have not read that branch
-carefully enough to say what it does or does not contain about the present
-question. It is close enough to a $DMD$ orbit that we name it as an outstanding
-prior-art obligation rather than leave it unmentioned; any strengthening of the
-novelty claim below must go through it first.
+\paragraph{Two branches we have not yet audited, named as obligations.}
+\emph{(i) Diagonal scaling.} Eveson and Nussbaum \cite{evesonnussbaum1995}
+explicitly connect the Birkhoff--Hopf circle to \emph{DAD theorems}, and there is
+a literature on $A\mapsto D_1AD_2$ --- matrix balancing, Sinkhorn normal form,
+van der Sluis's optimal scaling \cite{vandersluis1969}, surveyed in
+\cite{idel2016}. What we could see of it concerns existence, uniqueness and
+regularity of scalings that normalise row and column sums, not maximising a
+spectral ratio over the orbit; but we have not read it carefully enough to say
+so as a finding.
+\emph{(ii) The exact source of Fact~\ref{fact:birkhoff}.} Besides
+\cite{birkhoff1957,evesonnussbaum1995}, the priority list for that hunt is
+Bushell's projective contraction ratio \cite{bushell1973} and the
+Bauer--Deutsch--Stoer line on bounds for non-dominant eigenvalues of positive
+operators.
+Any strengthening of the novelty claim below must go through both branches
+first.
 
 \paragraph{Formalisation.} We are not aware of a mechanised treatment of
 congruence orbits of transfer kernels. This is an absence of found prior art in
@@ -759,6 +791,14 @@ theorems above depends on it.
 \bibitem{ostrowski1960} A.~M.~Ostrowski,
   \emph{A quantitative formulation of Sylvester's law of inertia, II},
   Proc.\ Nat.\ Acad.\ Sci.\ U.S.A.\ \textbf{46} (1960), no.~6, 859--862.
+
+\bibitem{bushell1973} P.~J.~Bushell,
+  \emph{On the projective contraction ratio for positive linear mappings},
+  J.\ London Math.\ Soc.\ (2) \textbf{6} (1973), 256--258.
+
+\bibitem{idel2016} M.~Idel,
+  \emph{A review of matrix scaling and Sinkhorn's normal form for matrices and
+  positive maps}, arXiv:1609.06349 (2016).
 
 \bibitem{seneta2006} E.~Seneta,
   \emph{Non-negative Matrices and Markov Chains}, 2nd ed., 1981;
