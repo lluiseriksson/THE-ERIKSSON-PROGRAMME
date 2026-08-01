@@ -1,0 +1,731 @@
+% Shift-uniform Combes--Thomas resolvents and covariance roots.
+% Formal artifact commit: b542b3f2 (full hash recorded in the manuscript).
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,
+  urlcolor=blue!55!black,citecolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+\setlength{\parskip}{0.15em}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\inn}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\formalized}{\textsc{Formalized}}
+\newcommand{\proved}{\textsc{Proved}}
+\newcommand{\openstatus}{\textsc{Open}}
+\newcommand{\conditional}{\textsc{Conditional}}
+
+\title{Shift-Uniform Combes--Thomas Resolvents\
+on Physical Gauge Cochains:\
+A Lean-Verified Route to Exponentially Localized Covariance Roots}
+
+\author{Lluis Eriksson\thanks{This manuscript and part of the formal
+development were produced with AI assistance under the repository's audit
+protocol.  Claims labelled \formalized{} were checked by Lean~4 against a
+pinned Mathlib and a targeted axiom oracle.  Paper-level functional-calculus
+arguments are labelled \proved{} and are not represented as Lean theorems.}}
+\date{August 1, 2026 -- research preprint, version 0.2}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $K$ be a coercive finite-range operator on the finite-dimensional real
+Hilbert space of physical lattice gauge one-cochains.  A standard
+Combes--Thomas argument controls the inverse kernel by conjugating $K$ with an
+exponential weight.  Applying that argument naively to the shifted family
+$K+s\Id$ appears to enlarge the entrywise bound by $s$, destroying the
+uniformity needed to integrate resolvents.  We isolate and machine-check the
+missing algebraic fact: scalar identity shifts cancel exactly from the tilt
+defect,
+\[
+  (K+s\Id)_\theta-(K+s\Id)=K_\theta-K.
+\]
+Consequently, one fixed Combes--Thomas budget for $K$ controls every
+$K+s\Id$, $s\ge0$.  If $K$ is coercive with constant $c>0$, has range $R$,
+single-bond kernel bound $M$, and ball-cardinality bound $N_R$, then under
+$M(e^{\theta R}-1)N_R\le c/2$, every right inverse $C_s$ of $K+s\Id$
+satisfies
+\[
+  \norm{(C_s)_{q,p}}_{\op}
+  \le \frac{2}{c+s}e^{-\theta\dist(q,p)}.
+\]
+The cancellation identity, shifted coercivity, uniform defect estimate, and
+resolvent kernel theorem are formalized in Lean~4 on the repository's actual
+physical gauge-cochain types.  At paper level, self-adjoint positivity and the
+Stieltjes formula then give
+\[
+  \norm{(K^{-1/2})_{q,p}}_{\op}
+  \le \frac{2}{\sqrt c}e^{-\theta\dist(q,p)}.
+\]
+The fractional-power decay itself is classical in matrix analysis; the
+contribution claimed here is the shift-uniform, source-facing, machine-checked
+route with explicit constants and its precise connection to an open
+covariance-root interface in a formalized lattice Yang--Mills programme.  We
+state the remaining gap without compression: the Stieltjes functional
+calculus, the positive root, and the final root certificate have not yet been
+formalized, and the fixed-volume coercivity used here is not volume-uniform.
+\end{abstract}
+
+\section{Claims and status discipline}\label{sec:claims}
+
+This paper separates three levels that are easy to conflate.
+
+\begin{center}
+\begin{tabular}{p{0.18\textwidth}p{0.70\textwidth}}
+\toprule
+Status & Meaning in this manuscript \\
+\midrule
+\formalized & A named Lean theorem compiles on the pinned tree and the targeted
+axiom oracle reports only \lean{propext}, \lean{Classical.choice}, and
+\lean{Quot.sound}. \\
+\proved & A complete finite-dimensional mathematical proof is given here, but
+the proof is not yet a Lean declaration. \\
+\openstatus & The statement is neither assumed silently nor claimed.  It is a
+named frontier for subsequent formalization or analysis. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The central resolvent result, Theorem~\ref{thm:shiftedCT}, is
+\formalized.  The Stieltjes passage to $K^{-1/2}$,
+Theorem~\ref{thm:root}, is \proved{} at paper level.  Construction of the
+positive root as a continuous linear map in the repository and discharge of
+the existing \path{PhysicalLocalizedCovarianceRootCertificate} are
+\openstatus.  No continuum limit, mass gap, or volume-uniform positive
+coercivity constant is claimed.
+
+The mathematical phenomenon is not presented as new.  Exponential decay of
+inverses of banded matrices goes back at least to Demko--Moss--Smith
+\cite{DemkoMossSmith}; decay bounds for completely monotone functions,
+including negative fractional powers, were developed directly by
+Benzi--Simoncini \cite{BenziSimoncini}.  Our novelty claim is deliberately
+narrower: a machine-checked shift-cancellation mechanism and a reusable
+constant-explicit resolvent theorem on the physical gauge-cochain interface
+used by the surrounding formal development.
+
+\section{Physical cochains and localization predicates}\label{sec:setting}
+
+Fix $d,N,N_c\in\N$ with $N>0$.  Let $\Lambda_N=(\mathbb Z/N\mathbb Z)^d$ and
+let $\mathcal B_{d,N}$ be the finite set of positively oriented lattice bonds.
+The internal coordinate space is the real coordinate model of
+$\mathfrak{su}(N_c)$,
+\[
+  V_{N_c}\cong\R^{N_c^2-1}.
+\]
+The finite-dimensional real Hilbert space of physical one-cochains is
+\[
+  \mathcal H_{d,N,N_c}
+  :=\ell^2(\mathcal B_{d,N};V_{N_c}).
+\]
+In Lean these are, respectively,
+\lean{PhysicalBond d N}, \lean{SUNLieCoord Nc}, and
+\lean{PhysicalGaugeOneCochain d N Nc}.
+
+For $p\in\mathcal B_{d,N}$ and $v\in V_{N_c}$, write $\delta_pv$ for the
+cochain supported at $p$ with value $v$.  This is
+\lean{singlePhysicalBondCochain}.  Let
+\[
+  \dist:\mathcal B_{d,N}\times\mathcal B_{d,N}\longrightarrow\N
+\]
+be symmetric, satisfy the triangle inequality, and obey
+$\dist(p,p)=0$.
+
+Let $K:\mathcal H\to\mathcal H$ be a continuous linear map.  The formal
+finite-range and kernel hypotheses have the following mathematical content:
+\begin{align}
+  \dist(q,p)>R &\Longrightarrow (K\delta_pv)(q)=0,
+     \label{eq:range}\\
+  \norm{(K\delta_pv)(q)}&\le M\norm v.
+     \label{eq:kernel}
+\end{align}
+The cardinality parameter $N_R$ controls every metric ball,
+\begin{equation}\label{eq:ball}
+  \#\{y:\dist(x,y)\le R\}\le N_R.
+\end{equation}
+Finally, $K$ is coercive with constant $c$ if
+\begin{equation}\label{eq:coercive}
+  c\norm f^2\le\inn f{Kf}\qquad(f\in\mathcal H).
+\end{equation}
+The corresponding Lean predicate is \lean{IsCoerciveCLM K c}.
+
+\section{Exponential conjugation}\label{sec:tilt}
+
+Fix a root bond $r$ and $\theta\in\R$.  Define the diagonal tilt
+\begin{equation}\label{eq:tilt}
+  (T_{\theta,r}f)(q)=e^{\theta\dist(r,q)}f(q)
+\end{equation}
+and the conjugated operator
+\begin{equation}\label{eq:conj}
+  K_{\theta,r}=T_{\theta,r}KT_{-\theta,r}.
+\end{equation}
+Because the bond set is finite, these are bounded maps without a domain issue.
+The formal development proves $T_{\theta,r}T_{-\theta,r}=\Id$ and, on a
+single-bond probe,
+\begin{equation}\label{eq:entry}
+ (K_{\theta,r}\delta_pv)(q)
+ =e^{\theta(\dist(r,q)-\dist(r,p))}(K\delta_pv)(q).
+\end{equation}
+On the range of $K$, the triangle inequality gives
+$|\dist(r,q)-\dist(r,p)|\le R$.  The block Schur estimate in the formal
+library then yields
+\begin{equation}\label{eq:defect}
+ \norm{K_{\theta,r}-K}
+ \le \Delta_\theta,
+ \qquad
+ \Delta_\theta:=M(e^{\theta R}-1)N_R,
+ \quad \theta\ge0.
+\end{equation}
+This is the existing Combes--Thomas engine.  The issue for a Stieltjes
+construction is whether the same $\Delta_\theta$ controls all positive scalar
+shifts.
+
+\section{The scalar-shift cancellation}\label{sec:cancellation}
+
+\begin{lemma}[identity is fixed; \formalized]\label{lem:id}
+For every $r$, $\theta$, and physical gauge-cochain space,
+\[
+  T_{\theta,r}\Id T_{-\theta,r}=\Id.
+\]
+In Lean this is \lean{physicalTiltConjCLM\_id}.
+\end{lemma}
+
+\begin{proof}
+It is the inverse relation $T_{\theta,r}T_{-\theta,r}=\Id$.  The Lean proof
+unfolds the conjugation and rewrites with the already formalized composition
+identity.
+\end{proof}
+
+\begin{lemma}[shift cancellation; \formalized]\label{lem:cancel}
+For $s\in\R$,
+\begin{equation}\label{eq:cancel}
+  (K+s\Id)_{\theta,r}-(K+s\Id)=K_{\theta,r}-K.
+\end{equation}
+In Lean this is
+\lean{physicalTiltConjCLM\_add\_smul\_id\_sub}.
+\end{lemma}
+
+\begin{proof}
+Conjugation is linear in the operator.  Lemma~\ref{lem:id} gives
+$(K+s\Id)_{\theta,r}=K_{\theta,r}+s\Id$; subtracting $K+s\Id$ proves
+\eqref{eq:cancel}.  The Lean proof separately establishes additivity and
+scalar compatibility of conjugation and closes the operator identity by
+abelian-group normalization.
+\end{proof}
+
+The importance of \eqref{eq:cancel} is not its algebraic difficulty but its
+location in the estimate.  A naive application of the unshifted theorem to
+$K+s\Id$ asks for a kernel bound on the whole shifted operator and therefore
+introduces a spurious term proportional to $s$.  Equation~\eqref{eq:cancel}
+shows that the tilt only sees the off-diagonal commutator; the scalar diagonal
+shift is invisible.
+
+\begin{corollary}[uniform defect; \formalized]\label{cor:defect}
+Under \eqref{eq:range}--\eqref{eq:ball}, for every $s\in\R$,
+\[
+ \norm{(K+s\Id)_{\theta,r}-(K+s\Id)}\le\Delta_\theta.
+\]
+This is \lean{norm\_physicalTiltConj\_add\_smul\_id\_sub\_le}.
+\end{corollary}
+
+\section{Shift-uniform coercivity and resolvents}\label{sec:resolvent}
+
+The scalar shift also improves coercivity exactly.
+
+\begin{lemma}[shifted coercivity; \formalized]\label{lem:coershift}
+If \eqref{eq:coercive} holds, then
+\[
+  (c+s)\norm f^2\le\inn f{(K+s\Id)f}
+\]
+for every real $s$.  In Lean this is
+\lean{isCoerciveCLM\_add\_smul\_id}.
+\end{lemma}
+
+Combining Lemma~\ref{lem:coershift} with
+Corollary~\ref{cor:defect} gives the shift-uniform CT2 endpoint
+\begin{equation}\label{eq:tiltcoer}
+ \inn f{(K+s\Id)_{\theta,r}f}
+ \ge(c+s-\Delta_\theta)\norm f^2.
+\end{equation}
+This is
+\lean{isCoerciveCLM\_physicalTiltConj\_add\_smul\_id}.
+If $s\ge0$ and $\Delta_\theta\le c/2$, then
+\begin{equation}\label{eq:half}
+  c+s-\Delta_\theta\ge\frac{c+s}{2}.
+\end{equation}
+The corresponding formal theorem is
+\lean{isCoerciveCLM\_physicalTiltConj\_add\_smul\_id\_half}.
+
+\begin{theorem}[shift-uniform Combes--Thomas resolvent; \formalized]
+\label{thm:shiftedCT}
+Assume $c>0$, $M\ge0$, $\theta>0$, equations
+\eqref{eq:range}--\eqref{eq:coercive}, and
+\begin{equation}\label{eq:budget}
+  M(e^{\theta R}-1)N_R\le\frac c2.
+\end{equation}
+For $s\ge0$, let $C_s$ be any right inverse of $K+s\Id$:
+\[
+  (K+s\Id)C_s=\Id.
+\]
+Then, for all bonds $p,q$ and $v\in V_{N_c}$,
+\begin{equation}\label{eq:CTs}
+  \norm{(C_s\delta_pv)(q)}
+  \le \frac{2}{c+s}
+       e^{-\theta\dist(q,p)}\norm v.
+\end{equation}
+This is
+\lean{physicalCovariance\_exponentialKernelBound\_of\_coercive\_add\_smul\_id}.
+\end{theorem}
+
+\begin{proof}[Proof architecture]
+Root the tilt at the source bond $p$ and set
+$y=T_{\theta,p}C_s\delta_pv$.  Since $\dist(p,p)=0$, the source probe is fixed
+by its own tilt.  The right-inverse relation and exact untilting give
+\[
+  (K+s\Id)_{\theta,p}y=\delta_pv.
+\]
+Coercivity at $(c+s)/2$ and Cauchy--Schwarz imply
+\[
+  \norm y\le\frac{2}{c+s}\norm v.
+\]
+At the target bond,
+\[
+  (C_s\delta_pv)(q)=e^{-\theta\dist(p,q)}y(q).
+\]
+The coordinate projection has norm at most one, and symmetry of the distance
+gives \eqref{eq:CTs}.  Every equality and inequality in this proof architecture
+is represented in the cited Lean theorem.
+\end{proof}
+
+\begin{remark}[why the denominator is integrable]
+The key improvement over a shift-blind estimate is not merely that the decay
+rate remains positive.  The amplitude retains the spectral shift as
+$(c+s)^{-1}$.  Substituting $s=t^2$ produces an integrable majorant on
+$[0,\infty)$, which is exactly what the inverse-square-root Stieltjes formula
+requires.
+\end{remark}
+
+\section{The covariance-root corollary}\label{sec:root}
+
+The next theorem is ordinary finite-dimensional spectral calculus.  It is
+included with a complete proof to identify the exact remaining Lean task.
+
+\begin{theorem}[localized inverse square root; \proved]\label{thm:root}
+In addition to the hypotheses of Theorem~\ref{thm:shiftedCT}, assume that $K$
+is self-adjoint and positive with
+$\sigma(K)\subset[c,\infty)$, $c>0$.  Then the unique positive inverse square
+root $K^{-1/2}$ satisfies
+\begin{equation}\label{eq:rootbound}
+  \norm{(K^{-1/2}\delta_pv)(q)}
+  \le\frac{2}{\sqrt c}
+      e^{-\theta\dist(q,p)}\norm v.
+\end{equation}
+Moreover,
+\[
+  \norm{K^{-1/2}}\le c^{-1/2},\qquad
+  K^{-1/2}K^{-1/2}=K^{-1}.
+\]
+\end{theorem}
+
+\begin{proof}
+The spectral theorem gives the norm-convergent Stieltjes identity
+\begin{equation}\label{eq:stieltjes}
+  K^{-1/2}=\frac{2}{\pi}\int_0^\infty(K+t^2\Id)^{-1}\,dt.
+\end{equation}
+Indeed, after diagonalizing $K$, the operator identity reduces to the scalar
+identity, valid for $\lambda>0$,
+\begin{equation}\label{eq:scalar}
+ \frac{2}{\pi}\int_0^\infty\frac{dt}{\lambda+t^2}
+ =\frac{2}{\pi}\frac{\pi}{2\sqrt\lambda}
+ =\lambda^{-1/2}.
+\end{equation}
+There is no interchange difficulty in finite dimension.  Apply
+Theorem~\ref{thm:shiftedCT} with $s=t^2$ and integrate the pointwise norm
+majorant:
+\begin{align*}
+ \norm{(K^{-1/2}\delta_pv)(q)}
+ &\le \frac{2}{\pi}\int_0^\infty
+       \frac{2}{c+t^2}e^{-\theta\dist(q,p)}\norm v\,dt\\
+ &=\frac{2}{\sqrt c}e^{-\theta\dist(q,p)}\norm v.
+\end{align*}
+The spectral bounds and the square identity follow by applying
+$\lambda\mapsto\lambda^{-1/2}$ on $\sigma(K)$.
+\end{proof}
+
+\begin{remark}[constant accounting]
+The spectral norm of $K^{-1/2}$ is at most $c^{-1/2}$, whereas the kernel
+amplitude obtained from the half-budget CT argument is $2c^{-1/2}$.  The
+factor two is the price of reserving half the coercivity uniformly for every
+tilt.  We make no optimality claim for this constant or for the admissible
+rate $\theta$.
+\end{remark}
+
+\section{Connection to the formal covariance-root frontier}\label{sec:frontier}
+
+The repository already contains the proposition-valued structure
+\texttt{PhysicalLocalizedCovariance}\allowbreak\texttt{RootCertificate}.
+Given a precision $K$, a
+covariance $C$, and a proposed root $B$, it requires:
+\begin{enumerate}
+\item a localized covariance certificate for $(K,C)$;
+\item $B\circ B=C$;
+\item a norm bound on $B$;
+\item self-adjointness of $B$ in inner-product form;
+\item positivity of $B$;
+\item a single-bond kernel bound on $B$.
+\end{enumerate}
+Theorem~\ref{thm:root} supplies the mathematical content of items 2--6 when
+$C=K^{-1}$ and $B=K^{-1/2}$, while Theorem~\ref{thm:shiftedCT} supplies the
+uniform resolvent estimate needed for item 6.  It does not yet supply a Lean
+term $B$.
+
+The local-SPD route in
+\lean{PhysicalGaugeLocalSPDPrecisionRoot.lean} is complementary.  It develops
+Neumann and inverse-square-root coefficient majorants under a normalized
+small-perturbation hypothesis
+$K=a(\Id-L)$ with $\norm L<1$, but deliberately leaves the continuous-linear
+root and its kernel bound as source fields.  The present route replaces that
+smallness hypothesis by coercivity plus finite range.  Neither route currently
+closes the positive-root object in Lean.
+
+The exact next formal chain is therefore
+\begin{equation}\label{eq:nextchain}
+\boxed{
+\begin{gathered}
+\text{self-adjoint coercive }K
+\longrightarrow \text{positive functional-calculus root }B=K^{-1/2}
+\\
+\longrightarrow \text{Stieltjes identity for }B
+\longrightarrow \text{integrated single-bond kernel bound}
+\\
+\longrightarrow
+\lean{PhysicalLocalizedCovarianceRootCertificate}.
+\end{gathered}}
+\end{equation}
+Mathlib already provides a continuous functional calculus and positive square
+roots in suitable star-algebra settings.  The nontrivial engineering question
+is to bridge the repository's real continuous-linear-map representation to a
+functional-calculus carrier while preserving the single-bond kernel API.
+
+\paragraph{Post-review implementation audit.}
+The available library route is not a one-line application of an existing
+operator square-root theorem.  Mathlib exposes positive square roots for
+positive semidefinite real matrices through continuous functional calculus,
+whereas the direct continuous-functional-calculus infrastructure for
+continuous linear endomorphisms is presently available in the complex Hilbert
+case, not as the required real-operator instance.  A non-circular Lean closure
+therefore has four explicit obligations: choose an orthonormal coordinate
+model for the physical cochain space; transport the positive matrix root back
+to a real continuous linear map; identify that root with the norm-convergent
+Stieltjes integral; and pass the integrated coefficient estimate through the
+single-bond kernel predicate.  Supplying the last predicate as an assumption
+would merely restate the open certificate and is deliberately rejected here.
+
+\section{Prior art and exact delta}\label{sec:prior}
+
+Combes and Thomas introduced exponential conjugation in spectral analysis
+\cite{CombesThomas}.  Demko, Moss, and Smith proved exponential decay of
+inverse band matrices with spectral-rate information
+\cite{DemkoMossSmith}.  Benzi and Simoncini treated completely monotone
+functions of Hermitian banded and sparse matrices, explicitly including
+negative fractional powers \cite{BenziSimoncini}.  Thus neither
+Theorem~\ref{thm:root} nor the use of a resolvent integral is claimed as a new
+analytic phenomenon.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.19\textwidth}p{0.23\textwidth}p{0.46\textwidth}}
+\toprule
+Antecedent & Overlap & Exact difference claimed here \\
+\midrule
+Combes--Thomas \cite{CombesThomas} & Exponential weighting and resolvent
+localization & Finite physical gauge-cochain API, explicit Schur budget, exact
+scalar-shift cancellation, and machine-checked source-rooted extraction. \\
+Demko--Moss--Smith \cite{DemkoMossSmith} & Off-diagonal decay of inverses &
+Metric finite-range block operators rather than scalar band matrices; the
+main delta is formal verification, not a sharper rate. \\
+Benzi--Simoncini \cite{BenziSimoncini} & Decay of negative fractional powers
+via matrix-function representations & No claim of analytic priority.  We
+provide a Lean-verified resolvent family with the precise $(c+s)^{-1}$
+amplitude consumed by the physical covariance-root interface. \\
+Repository fixed-volume CT chain \cite{ErikssonPoincare} & Formal inverse
+decay with amplitude $2/c$ & The old theorem did not preserve a scalar shift;
+the new theorem is uniform for all $s\ge0$ and enables the Stieltjes integral. \\
+Repository local-SPD root frontier & Inverse-square-root coefficient and kernel
+majorants & Present hypotheses are coercivity plus finite range, not
+$\norm L<1$; the root object remains open in both lanes. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The literature search for this manuscript was performed on August 1, 2026,
+using combinations of ``Combes--Thomas'', ``inverse square root'',
+``fractional powers'', ``sparse matrix functions'', ``Stieltjes'', and
+``Lean''.  We found no machine-checked Combes--Thomas inverse-square-root
+theorem, but this negative search result is not an exhaustiveness claim.  The
+paper's defensible dominance axis is reproducibility and integration into a
+concrete formal physics interface, not classical analytic novelty.
+
+\section{Adversarial audit and limitations}\label{sec:audit}
+
+\paragraph{Attack 1: the theorem is already known under matrix-function
+language.}  Correct at the analytic level.  This is why the title says
+``Lean-verified route'' and not ``new localization theorem'', and why
+Section~\ref{sec:prior} treats negative fractional powers as direct prior art.
+
+\paragraph{Attack 2: the result is only finite volume.}  Correct.  The formal
+physical cochain space is finite-dimensional.  A separate machine-checked
+Poincar\'e-wall result shows that the current unscaled block-Poincar\'e route
+does not provide a positive coercivity constant uniform in volume for the
+relevant dimensions \cite{ErikssonPoincare}.  The present theorem preserves
+whatever $c$ is supplied; it does not manufacture a uniform $c$.
+
+\paragraph{Attack 3: coercivity does not imply a positive square root for a
+non-self-adjoint operator.}  Correct.  The formal resolvent theorem does not
+need self-adjointness, but Theorem~\ref{thm:root} adds self-adjoint positivity
+explicitly.  Omitting it would be a false bridge.
+
+\paragraph{Attack 4: a right inverse family is not a measurable or continuous
+resolvent map.}  In finite dimension the canonical inverse
+$(K+t^2\Id)^{-1}$ is continuous in $t$ for a positive self-adjoint $K$.  The
+Lean theorem is intentionally pointwise in an arbitrary right inverse; the
+continuity and canonical identification belong to the open functional-calculus
+layer.
+
+\paragraph{Attack 5: the diagonal is not genuinely off-diagonal data.}  The
+formal global kernel bound on the base operator still includes diagonal
+entries.  The improvement is that the \emph{shift} is eliminated exactly from
+the tilt defect.  We do not claim a new off-diagonal norm predicate in this
+version.
+
+\paragraph{Attack 6: the constants may be poor.}  Correct.  The factor two and
+the Schur cardinality $N_R$ are explicit but not optimized.  Polynomial or
+best-approximation methods may give sharper rates for banded Hermitian
+matrices.  The purpose here is a robust formal interface.
+
+\paragraph{Kill criteria.}  The programme should be reformulated if any of the
+following occurs: (i) the exact shift identity fails under the actual root
+representation; (ii) the functional-calculus bridge cannot preserve the
+single-bond kernel API without assuming the desired kernel bound; (iii) the
+root certificate requires a volume-uniform $c$ from the already refuted block
+normalization; or (iv) a prior formalization is found with the same physical
+types, hypotheses, constants, and endpoint.  None is currently observed, but
+(ii) is the real technical bottleneck.
+
+\section{Lean theorem map and reproducibility}\label{sec:repro}
+
+\subsection{Theorem-to-artifact map}
+
+The two source modules are
+\path{YangMills/RG/PhysicalCoerciveCombesThomas.lean} (CT1/CT2) and
+\path{YangMills/RG/PhysicalCoerciveCombesThomasInverse.lean} (CT3/CT4).
+
+\begin{longtable}{p{0.43\textwidth}p{0.37\textwidth}p{0.09\textwidth}}
+\toprule
+Lean declaration & File & Status \\
+\midrule
+\endhead
+\path{physicalTiltConjCLM_id} &
+CT1/CT2 module & \textsc{exact} \\
+\path{physicalTiltConjCLM_add_smul_id_sub} & CT1/CT2 module & \textsc{exact} \\
+\path{isCoerciveCLM_add_smul_id} & CT1/CT2 module & \textsc{exact} \\
+\path{norm_physicalTiltConj_add_smul_id_sub_le} & CT1/CT2 module & \textsc{exact} \\
+\path{isCoerciveCLM_physicalTiltConj_add_smul_id} & CT1/CT2 module & \textsc{exact} \\
+\path{isCoerciveCLM_physicalTiltConj_add_smul_id_half} &
+CT3/CT4 module & \textsc{exact} \\
+\path{physicalCovariance_exponentialKernelBound_of_coercive_add_smul_id}
+& same & \textsc{exact} \\
+Stieltjes identity and Theorem~\ref{thm:root} & this manuscript & paper \\
+Positive CLM root and root certificate & not yet implemented & open \\
+\bottomrule
+\end{longtable}
+
+\subsection{Snapshot and commands}
+
+Repository:
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.
+The formal artifact is the dedicated Git commit
+\lean{b542b3f2f066b60a914977f2a50160e403a53367} on branch
+\lean{codex/stieltjes-root}; its parent is
+\lean{81e9cf064d6771f986978ccffb96018c78b5e459}.  The commit contains exactly
+the two theorem modules, the oracle registrations, and the verification-ledger
+entry.  Thus the formal source cited here is an immutable Git object rather
+than an uncommitted working-tree patch.  Remote publication and a hosted CI run
+of that commit remain release actions and are not claimed by this manuscript.
+
+Toolchain: Lean \path{leanprover/lean4:v4.29.0-rc6}; Mathlib revision
+\texttt{0764272048}\ldots{} (the full revision is recorded in
+\path{lake-manifest.json}).  The focused checks are:
+\begin{verbatim}
+lake env lean YangMills/RG/PhysicalCoerciveCombesThomas.lean
+lake env lean YangMills/RG/PhysicalCoerciveCombesThomasInverse.lean
+lake build +YangMills.RG.PhysicalCoerciveCombesThomas:olean
+lake build +YangMills.RG.PhysicalCoerciveCombesThomasInverse:olean
+\end{verbatim}
+All four completed successfully on August 1, 2026.  A targeted oracle checked
+the seven declarations in the table; each printed exactly
+\[
+ [\lean{propext},\ \lean{Classical.choice},\ \lean{Quot.sound}].
+\]
+The declarations are also registered in \path{oracle_check.lean}.  The
+development contains no \lean{sorry} in the two modified modules.
+
+\section{Author-corpus publication provenance}\label{sec:provenance}
+
+The internal antecedent corpus contains public records whose corrective
+replacement PDFs had been submitted but not yet processed by the ai.viXra
+administrator as of August 1, 2026.  They must not be cited as though the
+replacement versions were already public, and the superseded claims in the
+currently visible PDFs must not be used as support.  All thirteen forms were
+reported sent; all thirteen remain \textbf{ENVIADO/PENDIENTE}; none should be
+resent merely because the public pages lag.
+
+\small
+\begin{center}
+\begin{tabular}{p{0.13\textwidth}p{0.14\textwidth}p{0.59\textwidth}}
+\toprule
+Record & Submitted target & Claim-level instruction while pending \\
+\midrule
+2602.0052 & v3 & Restores the \emph{Interface Lemmas} manuscript; visible v2
+contains misfiled Morse--Bott material. \\
+2602.0036 & v3 & Retracts the unproved Ricci/O'Neill chain and dependent
+corollaries. \\
+2602.0033 & v3/R30 & Replaces false exact gap doubling by a correct sufficient
+condition; R29 was never submitted. \\
+2602.0085 & v2 & Corrects the linearized kernel and restores the omitted
+pure-gauge null space. \\
+2602.0084 & v2 & Corrects imported 0085 claims and independent invalid steps. \\
+2602.0035 & v2 & Installs the corrected Morse--Bott spectral reduction with
+the required reservations. \\
+2602.0038 & v3 & Narrows the claim to a zero-momentum propagator bound in a
+simplified Gribov--Zwanziger lattice measure. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{p{0.13\textwidth}p{0.14\textwidth}p{0.59\textwidth}}
+\toprule
+Record & Submitted target & Claim-level instruction while pending \\
+\midrule
+2602.0041 & v4 & Makes the H-XSD/H-DOB conditionality explicit in title and
+abstract. \\
+2601.0115 & v3 & Preserves the science and repairs the clipped Table 1. \\
+2512.0073 & v2 notice & Marked superseded by 2601.0023v2, which corrects the
+Davies/Bohr decomposition and TFIM implementation. \\
+2601.0047 & v3 notice & Marked superseded by 2601.0051v2, which retains the ED
+benchmark and adds tensor-network results. \\
+2607.0035 & v2 notice & Retains the reduced-model analytic chain but points to
+2607.0039v1 for the complete theorem on original edges and tree--cotree
+closure.  It is not withdrawn, but it is not an autonomous proof of the full
+theorem. \\
+2607.0023 & v2 notice & Points the terminal-sign claim to 2607.0089v1;
+2607.0089v1 remains \textbf{REVIEW-PENDING} until the exact-to-Arb/interval
+certification is repeated. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\normalsize
+
+The controlling audit records are
+\path{docs/publication-audit/SUPERSESSION-MATRIX.md} and
+\path{docs/publication-audit/SUBMISSION-STATUS-20260801.md} in the publication
+audit worktree.  Public promotion requires a fresh download and comparison of
+version, page count, SHA-256, title, abstract, comments, and rendered pages.
+This manuscript uses none of the corrected-but-not-yet-public claims as a
+premise.
+
+\section{Conclusion}\label{sec:conclusion}
+
+The useful observation is exact and small:
+scalar identity shifts disappear from exponential-conjugation defects.  Its
+consequence is structurally larger: a single fixed Combes--Thomas budget
+controls an entire positive resolvent family with the integrable amplitude
+$(c+s)^{-1}$.  That family is now a machine-checked theorem on the physical
+gauge-cochain types that the covariance-root interface actually consumes.
+
+The paper-level Stieltjes integral then produces exponential localization of
+$K^{-1/2}$ with amplitude $2/\sqrt c$.  This is not advertised as a new result
+in matrix analysis.  What remains potentially valuable is the formal bridge:
+turning classical functional calculus into an auditable producer of a
+localized Gaussian covariance-root certificate for lattice gauge
+renormalization.  Closing that bridge, while respecting the fixed-volume
+Poincar\'e wall, is the next theorem rather than a conclusion of this paper.
+
+\begin{thebibliography}{99}
+
+\bibitem{CombesThomas}
+J.-M.~Combes and L.~Thomas,
+\emph{Asymptotic behaviour of eigenfunctions for multiparticle
+Schr\"odinger operators},
+Communications in Mathematical Physics \textbf{34} (1973), 251--270.
+\href{https://doi.org/10.1007/BF01646473}{doi:10.1007/BF01646473}.
+
+\bibitem{DemkoMossSmith}
+S.~Demko, W.~F.~Moss, and P.~W.~Smith,
+\emph{Decay rates for inverses of band matrices},
+Mathematics of Computation \textbf{43} (1984), 491--499.
+\href{https://doi.org/10.1090/S0025-5718-1984-0758197-9}
+{doi:10.1090/S0025-5718-1984-0758197-9}.
+
+\bibitem{BenziSimoncini}
+M.~Benzi and V.~Simoncini,
+\emph{Decay bounds for functions of Hermitian matrices with banded or
+Kronecker structure},
+SIAM Journal on Matrix Analysis and Applications \textbf{36} (2015),
+1263--1282.
+\href{https://doi.org/10.1137/151006159}{doi:10.1137/151006159}.
+
+\bibitem{BalabanI}
+T.~Ba{\l}aban,
+\emph{Propagators and renormalization transformations for lattice gauge
+theories. I},
+Communications in Mathematical Physics \textbf{95} (1984), 17--40.
+
+\bibitem{BalabanII}
+T.~Ba{\l}aban,
+\emph{Propagators and renormalization transformations for lattice gauge
+theories. II},
+Communications in Mathematical Physics \textbf{96} (1984), 223--250.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+CADE-28, Lecture Notes in Computer Science 12699 (2021), 625--635.
+
+\bibitem{mathlib}
+The mathlib community,
+\emph{The Lean mathematical library},
+CPP 2020, 367--381.
+
+\bibitem{ErikssonPoincare}
+L.~Eriksson,
+\emph{The volume-uniform Poincar\'e walls: machine-checked obstructions for
+flat and fluctuation-sector block-Poincar\'e routes to Combes--Thomas
+coercivity in lattice Yang--Mills},
+repository preprint (2026),
+\path{papers/poincare-wall/poincare_wall.tex}.
+
+\end{thebibliography}
+
+\end{document}
