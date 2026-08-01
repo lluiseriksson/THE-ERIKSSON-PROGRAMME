@@ -542,6 +542,7 @@ theorem crossRatio_congr_invariant (M : Matrix n n ℝ) (d : n → ℝ) (i j k l
 
 /-! ### §8.2  The diameter of a unit-diagonal kernel -/
 
+omit [Fintype n] [DecidableEq n] in
 /-- **Every cross-ratio is at most `1/μ²`.**  Stated multiplicatively, so no
 division and no logarithm appear: `μ² · (numerator) ≤ (denominator)`. -/
 theorem crossRatio_le_of_bounds {M : Matrix n n ℝ} {μ : ℝ} (hμ : 0 < μ)
@@ -553,6 +554,7 @@ theorem crossRatio_le_of_bounds {M : Matrix n n ℝ} {μ : ℝ} (hμ : 0 < μ)
     mul_le_mul (hlo j k) (hlo i l) hμ.le (le_trans hμ.le (hlo j k))
   nlinarith [hμ, h1, h2, hlo j k, hlo i l]
 
+omit [Fintype n] [DecidableEq n] in
 /-- **And `1/μ²` is attained.**  Taking `i = k` and `j = l` on a pair realising
 the minimum turns the cross-ratio into `1 / (M i j)² = 1/μ²`, so the bound of
 `crossRatio_le_of_bounds` is exactly the diameter and not merely an estimate. -/
@@ -571,10 +573,17 @@ theorem ratio_of_sq {t μ : ℝ} (ht : 0 < t) (hμ : 0 < μ) (hsq : t * t = 1 / 
   have ht0 : t ≠ 0 := ne_of_gt ht
   have hμ0 : μ ≠ 0 := ne_of_gt hμ
   have hden : 0 < t + t⁻¹ := by positivity
-  have hden' : (0 : ℝ) < 1 + μ := by linarith
-  rw [div_eq_div_iff (ne_of_gt hden) (ne_of_gt hden')]
+  -- clear the inverses first: multiplying numerator and denominator by `t`
+  -- turns the quotient into `(t² - 1)/(t² + 1)`
+  have key : (t - t⁻¹) / (t + t⁻¹) = (t * t - 1) / (t * t + 1) := by
+    rw [div_eq_div_iff (ne_of_gt hden) (by positivity)]
+    field_simp
+    ring
+  rw [key, hsq]
+  -- and `t² = 1/μ` makes it `(1/μ - 1)/(1/μ + 1) = (1-μ)/(1+μ)`, a field identity
+  rw [div_eq_div_iff (by positivity) (by linarith)]
   field_simp
-  nlinarith [hsq, ht, hμ]
+  ring
 
 /-- `tanh` at a quarter-diameter, in the exponential form `ratio_of_sq` needs. -/
 theorem tanh_eq_exp_ratio (x : ℝ) :
