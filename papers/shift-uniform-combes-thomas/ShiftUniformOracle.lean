@@ -1,7 +1,9 @@
 import YangMills.RG.PhysicalCoerciveCombesThomasInverse
+import YangMills.RG.CoerciveCovariancePositiveSqrt
+import YangMills.RG.PhysicalGaugeCovariancePositiveRoot
 
 /-!
-Focused axiom audit for the seven declarations claimed as formalized in
+Focused axiom audit for the twelve declarations claimed as formalized in
 `shift_uniform_combes_thomas.tex`.
 -/
 
@@ -12,3 +14,8 @@ Focused axiom audit for the seven declarations claimed as formalized in
 #print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj_add_smul_id
 #print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj_add_smul_id_half
 #print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_of_coercive_add_smul_id
+#print axioms YangMills.RG.finiteDimensionalRealPositiveSqrt_comp_self
+#print axioms YangMills.RG.finiteDimensionalRealPositiveSqrt_isPositive
+#print axioms YangMills.RG.covarianceSqrtOfIsCoerciveCLM_comp_self
+#print axioms YangMills.RG.covarianceSqrtOfIsCoerciveCLM_isPositive
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_positive_covariance

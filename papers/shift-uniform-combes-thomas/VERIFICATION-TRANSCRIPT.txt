@@ -69,3 +69,33 @@ These checks cover the seven formalized declarations and their two source
 modules. They do not formalize the Stieltjes identity, construct the positive
 real continuous-linear-map inverse square root, prove its single-bond kernel
 bound, or discharge PhysicalLocalizedCovarianceRootCertificate.
+=== Version 0.4 positive-root extension (2026-08-01) ===
+
+Formal root commit:
+  bd11e55f9cfe572d5ec4200f49c45339df4e3c03
+
+Successful target builds:
+  lake build YangMills.RG.FiniteDimensionalRealPositiveSqrt
+  lake build YangMills.RG.CoerciveCovariancePositiveSqrt
+  lake build YangMills.RG.PhysicalGaugeCovariancePositiveRoot
+
+Representative terminal results:
+  Built YangMills.RG.FiniteDimensionalRealPositiveSqrt
+  Built YangMills.RG.CoerciveCovariancePositiveSqrt
+  Built YangMills.RG.PhysicalGaugeCovariancePositiveRoot
+
+Focused axiom audit:
+  finiteDimensionalRealPositiveSqrt_comp_self
+  finiteDimensionalRealPositiveSqrt_isPositive
+  covarianceSqrtOfIsCoerciveCLM_comp_self
+  covarianceSqrtOfIsCoerciveCLM_isPositive
+  physicalLocalizedCovarianceRootCertificate_of_positive_covariance
+
+Each declaration printed exactly:
+  [propext, Classical.choice, Quot.sound]
+
+Full-aggregator attempts:
+  lake build YangMillsCore  -- wrapper timeout after 10 minutes, no Lean error
+  lake build YangMillsCore  -- wrapper timeout after 20 minutes, no Lean error
+
+No successful fresh full-core rebuild is claimed for version 0.4.

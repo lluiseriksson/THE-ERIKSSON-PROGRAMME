@@ -47,22 +47,41 @@ declarations reports only `propext`, `Classical.choice`, and `Quot.sound`.
 The exact focused output, including one wrapper timeout followed by a clean
 successful repetition, is recorded in `VERIFICATION-TRANSCRIPT.txt`.
 
+## Positive-root extension
+
+- Formal root commit:
+  `bd11e55f9cfe572d5ec4200f49c45339df4e3c03`
+- New checked modules:
+  `FiniteDimensionalRealPositiveSqrt.lean`,
+  `CoerciveCovariancePositiveSqrt.lean`, and
+  `PhysicalGaugeCovariancePositiveRoot.lean`
+- Root target builds: successful on 2026-08-01
+- Focused root oracle: only `propext`, `Classical.choice`, and `Quot.sound`
+
+The extension constructs the positive real continuous-linear-map root and
+derives its exact square, positivity, symmetry, and the algebraic fields of the
+physical root certificate. The Stieltjes identification and localized root
+kernel bound remain open. Two full `YangMillsCore` rebuild attempts timed out
+after 10 and 20 minutes without a Lean diagnostic; this manifest claims the
+successful module targets, not a fresh successful full-core rebuild.
+
 ## Manuscript artifact
 
-- Manuscript version: 0.3.1 (documentation-only)
-- Pages: 10
+- Manuscript version: 0.4
+- Pages: 11
 - Output: `output/pdf/shift_uniform_combes_thomas.pdf`
-- SHA-256: `FC89026475CC959B2C2F4637F020DACB3BD183CF7DE1E7E8D7F7D9C68CFB2C86`
+- SHA-256: `5718C59A60638CCEB775A0F34CA87B2626222C911650FFEDBFF7892024A99235`
 
 The detailed administrative status of thirteen other author-corpus records is
 kept in `PUBLICATION-PROVENANCE.md`, outside the mathematical manuscript. It is
 not a premise of the theorem.
 
 The Stieltjes formula and localized inverse-square-root corollary are proved at
-paper level. They are not declarations in the formal artifact commit. The
-positive real continuous-linear-map root, its integral identification, its
-single-bond kernel bound, and the final
-`PhysicalLocalizedCovarianceRootCertificate` remain open.
+paper level. They are not Lean declarations. The positive real
+continuous-linear-map root is now formalized. Its Stieltjes identification and
+single-bond kernel bound remain open, so the final
+`PhysicalLocalizedCovarianceRootCertificate` is reduced to but still
+conditional on the root-kernel estimate.
 
 Remote publication and hosted CI for the release tag are release actions and
 are not claimed by this local manifest.

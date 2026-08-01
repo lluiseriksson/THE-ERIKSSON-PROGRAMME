@@ -1,5 +1,5 @@
 % Shift-uniform Combes--Thomas resolvents and covariance roots.
-% Formal artifact commit: b542b3f2 (full hash recorded in the manuscript).
+% Resolvent artifact: b542b3f2; positive-root artifact: bd11e55f.
 \documentclass[11pt]{article}
 
 \usepackage[margin=1.05in]{geometry}
@@ -20,6 +20,7 @@
 \emergencystretch=3em
 \tolerance=2000
 \setlength{\parskip}{0.15em}
+\raggedbottom
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
@@ -44,8 +45,7 @@ development were produced with AI assistance under the repository's audit
 protocol.  Claims labelled \formalized{} were checked by Lean~4 against a
 pinned Mathlib and a targeted axiom oracle.  Paper-level functional-calculus
 arguments are labelled \proved{} and are not represented as Lean theorems.}}
-\date{August 1, 2026 -- research preprint, version 0.3.1
-(documentation-only revision)}
+\date{August 1, 2026 -- research preprint, version 0.4}
 
 \begin{document}
 \maketitle
@@ -81,11 +81,13 @@ Stieltjes formula then give
 \]
 The fractional-power decay itself is classical in matrix analysis; the
 contribution claimed here is the shift-uniform, source-facing, machine-checked
-route with explicit constants and its precise connection to an open
-covariance-root interface in a formalized lattice Yang--Mills programme.  We
-state the remaining gap without compression: the Stieltjes functional
-calculus, the positive root, and the final root certificate have not yet been
-formalized, and the fixed-volume coercivity used here is not volume-uniform.
+route with explicit constants.  In version 0.4 the positive real continuous-
+linear-map root is also constructed and verified spectrally in Lean, and a
+new adapter derives every algebraic root-certificate field from covariance
+positivity.  The remaining gap is stated without compression: the Stieltjes
+identity and integrated single-bond root-kernel bound are not yet formalized,
+so the localized physical root certificate remains conditional on that kernel
+estimate; fixed-volume coercivity is still not volume-uniform.
 \end{abstract}
 
 \section{Claims and status discipline}\label{sec:claims}
@@ -93,7 +95,7 @@ formalized, and the fixed-volume coercivity used here is not volume-uniform.
 This paper separates three levels that are easy to conflate.
 
 \begin{center}
-\begin{tabular}{p{0.18\textwidth}p{0.70\textwidth}}
+\begin{tabular}{p{0.20\textwidth}p{0.68\textwidth}}
 \toprule
 Status & Meaning in this manuscript \\
 \midrule
@@ -109,12 +111,14 @@ named frontier for subsequent formalization or analysis. \\
 \end{center}
 
 The central resolvent result, Theorem~\ref{thm:shiftedCT}, is
-\formalized.  The Stieltjes passage to $K^{-1/2}$,
-Theorem~\ref{thm:root}, is \proved{} at paper level.  Construction of the
-positive root as a continuous linear map in the repository and discharge of
-the existing \path{PhysicalLocalizedCovarianceRootCertificate} are
-\openstatus.  No continuum limit, mass gap, or volume-uniform positive
-coercivity constant is claimed.
+\formalized.  The positive continuous-linear-map square root and its exact
+square, positivity, and symmetry properties are now also \formalized.  The
+Stieltjes passage to $K^{-1/2}$, Theorem~\ref{thm:root}, is \proved{} at paper
+level.  Its identification with the formal spectral root, the integrated
+single-bond kernel estimate, and unconditional discharge of the existing
+\path{PhysicalLocalizedCovarianceRootCertificate} remain \openstatus.  No
+continuum limit, mass gap, or volume-uniform positive coercivity constant is
+claimed.
 
 The mathematical phenomenon is not presented as new.  Exponential decay of
 inverses of banded matrices goes back at least to Demko--Moss--Smith
@@ -397,8 +401,12 @@ covariance $C$, and a proposed root $B$, it requires:
 \end{enumerate}
 Theorem~\ref{thm:root} supplies the mathematical content of items 2--6 when
 $C=K^{-1}$ and $B=K^{-1/2}$, while Theorem~\ref{thm:shiftedCT} supplies the
-uniform resolvent estimate needed for item 6.  It does not yet supply a Lean
-term $B$.
+uniform resolvent estimate needed for item 6.  The new module
+\path{FiniteDimensionalRealPositiveSqrt.lean} now supplies a Lean term $B$ for
+every positive finite-dimensional real continuous endomorphism and proves
+$B\circ B=C$, positivity, and symmetry.  The physical adapter derives items
+2--5 (using $\norm B$ itself for the non-quantitative norm bound); item 6 is
+still an explicit analytic input.
 
 The local-SPD route in
 \lean{PhysicalGaugeLocalSPDPrecisionRoot.lean} is complementary.  It develops
@@ -406,41 +414,41 @@ Neumann and inverse-square-root coefficient majorants under a normalized
 small-perturbation hypothesis
 $K=a(\Id-L)$ with $\norm L<1$, but deliberately leaves the continuous-linear
 root and its kernel bound as source fields.  The present route replaces that
-smallness hypothesis by coercivity plus finite range.  Neither route currently
-closes the positive-root object in Lean.
+smallness hypothesis by coercivity plus finite range.  Version 0.4 closes the
+positive-root object for every symmetric coercive precision; neither route yet
+proves the physical single-bond kernel bound for that canonical root.
 
 The exact next formal chain is therefore
 \begin{equation}\label{eq:nextchain}
 \boxed{
 \begin{gathered}
 \text{self-adjoint coercive }K
-\longrightarrow \text{positive functional-calculus root }B=K^{-1/2}
+\longrightarrow \text{formal positive spectral root }B,\quad B^2=K^{-1}
 \\
-\longrightarrow \text{Stieltjes identity for }B
+\longrightarrow \text{formal identification with the Stieltjes integral}
 \longrightarrow \text{integrated single-bond kernel bound}
 \\
 \longrightarrow
 \lean{PhysicalLocalizedCovarianceRootCertificate}.
 \end{gathered}}
 \end{equation}
-Mathlib already provides a continuous functional calculus and positive square
-roots in suitable star-algebra settings.  The nontrivial engineering question
-is to bridge the repository's real continuous-linear-map representation to a
-functional-calculus carrier while preserving the single-bond kernel API.
+The first arrow is now machine-checked by transporting a real positive-
+semidefinite matrix root through an orthonormal basis.  The remaining
+engineering question is to identify this spectral root with the
+norm-convergent Stieltjes integral while preserving the single-bond kernel API.
 
 \paragraph{Post-review implementation audit.}
-The available library route is not a one-line application of an existing
-operator square-root theorem.  Mathlib exposes positive square roots for
-positive semidefinite real matrices through continuous functional calculus,
-whereas the direct continuous-functional-calculus infrastructure for
-continuous linear endomorphisms is presently available in the complex Hilbert
-case, not as the required real-operator instance.  A non-circular Lean closure
-therefore has four explicit obligations: choose an orthonormal coordinate
-model for the physical cochain space; transport the positive matrix root back
-to a real continuous linear map; identify that root with the norm-convergent
-Stieltjes integral; and pass the integrated coefficient estimate through the
-single-bond kernel predicate.  Supplying the last predicate as an assumption
-would merely restate the open certificate and is deliberately rejected here.
+The available library route was not a one-line application of an existing
+operator square-root theorem.  The implementation chooses an orthonormal
+coordinate model, applies the real matrix spectral theorem, takes the
+nonnegative square root of every eigenvalue, and transports the result back to
+a continuous linear map.  Lean verifies positive semidefiniteness and the
+exact square before transport, then verifies the continuous-linear-map
+properties after transport.  This closes the first two obligations identified
+in version 0.3.1.  The two remaining obligations are the norm-convergent
+Stieltjes identification and the integrated single-bond kernel estimate.
+Supplying the last predicate as an assumption still does not prove decay; the
+new certificate adapter uses it only to isolate the exact remaining frontier.
 
 \section{Prior art and exact delta}\label{sec:prior}
 
@@ -474,7 +482,8 @@ decay with amplitude $2/c$ & The old theorem did not preserve a scalar shift;
 the new theorem is uniform for all $s\ge0$ and enables the Stieltjes integral. \\
 Repository local-SPD root frontier & Inverse-square-root coefficient and kernel
 majorants & Present hypotheses are coercivity plus finite range, not
-$\norm L<1$; the root object remains open in both lanes. \\
+$\norm L<1$; the canonical real root is now formal, while its localized kernel
+bound remains open. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -510,8 +519,8 @@ explicitly.  Omitting it would be a false bridge.
 resolvent map.}  In finite dimension the canonical inverse
 $(K+t^2\Id)^{-1}$ is continuous in $t$ for a positive self-adjoint $K$.  The
 Lean theorem is intentionally pointwise in an arbitrary right inverse; the
-continuity and canonical identification belong to the open functional-calculus
-layer.
+continuity and its integral identification with the now-formal spectral root
+belong to the open Stieltjes layer.
 
 \paragraph{Attack 5: the diagonal is not genuinely off-diagonal data.}  The
 formal global kernel bound on the base operator still includes diagonal
@@ -537,11 +546,16 @@ types, hypotheses, constants, and endpoint.  None is currently observed, but
 
 \subsection{Theorem-to-artifact map}
 
-The two source modules are
+The resolvent source modules are
 \path{YangMills/RG/PhysicalCoerciveCombesThomas.lean} (CT1/CT2) and
 \path{YangMills/RG/PhysicalCoerciveCombesThomasInverse.lean} (CT3/CT4).
+The root layer is implemented in
+\path{FiniteDimensionalRealPositiveSqrt.lean},
+\path{CoerciveCovariancePositiveSqrt.lean}, and
+\path{PhysicalGaugeCovariancePositiveRoot.lean}.
 
-\begin{longtable}{p{0.43\textwidth}p{0.37\textwidth}p{0.09\textwidth}}
+\footnotesize
+\begin{longtable}{@{}p{0.41\textwidth}p{0.32\textwidth}p{0.13\textwidth}@{}}
 \toprule
 Lean declaration & File & Status \\
 \midrule
@@ -556,23 +570,44 @@ CT1/CT2 module & \textsc{exact} \\
 CT3/CT4 module & \textsc{exact} \\
 \path{physicalCovariance_exponentialKernelBound_of_coercive_add_smul_id}
 & same & \textsc{exact} \\
+\path{finiteDimensionalRealPositiveSqrt_}\newline
+\path{comp_self} &
+\path{FiniteDimensionalRealPositive}\newline\path{Sqrt.lean} & \textsc{exact} \\
+\path{finiteDimensionalRealPositiveSqrt_}\newline
+\path{isPositive} & same & \textsc{exact} \\
+\path{covarianceSqrtOfIsCoerciveCLM_comp_self} &
+\path{CoerciveCovariancePositive}\newline\path{Sqrt.lean} & \textsc{exact} \\
+\path{physicalLocalizedCovariance}\newline
+\path{RootCertificate_of_positive_covariance} &
+\path{PhysicalGaugeCovariance}\newline\path{PositiveRoot.lean} & \textsc{conditional} \\
 Stieltjes identity and Theorem~\ref{thm:root} & this manuscript & paper \\
-Positive CLM root and root certificate & not yet implemented & open \\
+Integrated root-kernel bound & not yet implemented & open \\
 \bottomrule
 \end{longtable}
+\normalsize
 
 \subsection{Snapshot and commands}
 
 Repository:
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.
-The formal artifact is the dedicated Git commit
-\lean{b542b3f2f066b60a914977f2a50160e403a53367} on branch
-\lean{codex/stieltjes-root}; its parent is
-\lean{81e9cf064d6771f986978ccffb96018c78b5e459}.  The commit contains exactly
+The shift-uniform resolvent artifact is the dedicated Git commit on branch
+\lean{codex/stieltjes-root}
+\begin{center}
+\small\lean{b542b3f2f066b60a914977f2a50160e403a53367}.
+\end{center}
+Its parent is \lean{81e9cf064d6771f986978ccffb96018c78b5e459}.  The commit contains exactly
 the two theorem modules, the oracle registrations, and the verification-ledger
 entry.  Thus the formal source cited here is an immutable Git object rather
 than an uncommitted working-tree patch.  Remote publication and a hosted CI run
 of that commit remain release actions and are not claimed by this manuscript.
+The positive-root extension is the later immutable commit
+\begin{center}
+\small\lean{bd11e55f9cfe572d5ec4200f49c45339df4e3c03}.
+\end{center}
+It adds the three root
+modules, their aggregate imports, oracle registrations, and verification-ledger
+Addendum 571.  The manuscript edits follow that commit, so the root source hash
+is not circular.
 The version-0.2 manuscript artifact is commit
 \lean{25f532eaeecbfb66ee146e264953cde0e2e0ea29}.  Version 0.3 is distributed
 under the annotated local release tag \lean{shift-uniform-ct-v0.3} together
@@ -591,9 +626,10 @@ entries and has SHA-256
 \begin{center}
 \small\lean{1B5EAB37038E071F1E3A1A1BA263D93048828EA079950273BF915B4605897823}.
 \end{center}
-This version 0.3.1 is a documentation-only revision that prints those package
-identifiers in the PDF.  It changes no Lean theorem module and claims no new
-mathematical result.
+Version 0.3.1 was the documentation-only revision that printed those package
+identifiers in the PDF.  Version 0.4 is a scientific revision: it cites the
+separate positive-root commit above and updates the formal/open boundary.  It
+does not alter the immutable version-0.3 source archive or its hash.
 
 Toolchain: Lean \path{leanprover/lean4:v4.29.0-rc6}; Mathlib revision
 \texttt{0764272048}\ldots{} (the full revision is recorded in
@@ -603,9 +639,16 @@ lake env lean YangMills/RG/PhysicalCoerciveCombesThomas.lean
 lake env lean YangMills/RG/PhysicalCoerciveCombesThomasInverse.lean
 lake build +YangMills.RG.PhysicalCoerciveCombesThomas:olean
 lake build +YangMills.RG.PhysicalCoerciveCombesThomasInverse:olean
+lake build YangMills.RG.FiniteDimensionalRealPositiveSqrt
+lake build YangMills.RG.CoerciveCovariancePositiveSqrt
+lake build YangMills.RG.PhysicalGaugeCovariancePositiveRoot
 \end{verbatim}
-All four completed successfully on August 1, 2026.  A targeted oracle checked
-the seven declarations in the table; each printed exactly
+The four resolvent checks and all three root-module builds completed
+successfully on August 1, 2026.  Two additional attempts to rebuild the full
+\path{YangMillsCore} aggregator were terminated by the command wrapper after
+10 and 20 minutes, respectively, without a Lean error; no successful fresh
+full-core rebuild is claimed.  A targeted oracle checked the seven resolvent
+declarations plus five root declarations; each printed exactly
 \[
  [\lean{propext},\ \lean{Classical.choice},\ \lean{Quot.sound}].
 \]
@@ -614,7 +657,8 @@ focused audit is independently runnable as
 \begin{verbatim}
 lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
 \end{verbatim}
-The development contains no \lean{sorry} in the two modified modules.
+The development contains no \lean{sorry} in the two resolvent modules or the
+three new root modules.
 
 \paragraph{External author-corpus provenance note.}
 As of August 1, 2026, thirteen corrective or supersession forms concerning
@@ -638,11 +682,14 @@ gauge-cochain types that the covariance-root interface actually consumes.
 
 The paper-level Stieltjes integral then produces exponential localization of
 $K^{-1/2}$ with amplitude $2/\sqrt c$.  This is not advertised as a new result
-in matrix analysis.  What remains potentially valuable is the formal bridge:
-turning classical functional calculus into an auditable producer of a
-localized Gaussian covariance-root certificate for lattice gauge
-renormalization.  Closing that bridge, while respecting the fixed-volume
-Poincar\'e wall, is the next theorem rather than a conclusion of this paper.
+in matrix analysis.  Version 0.4 does close one previously open bridge: Lean
+now constructs the positive real continuous-linear root and derives its exact
+square, positivity, symmetry, and the corresponding algebraic certificate
+fields.  What remains is narrower and genuinely analytic: identify that root
+with the Stieltjes integral and transfer the integrated resolvent estimate to
+the single-bond root-kernel predicate.  Until that theorem is formalized, the
+localized physical certificate remains conditional; the fixed-volume
+Poincar\'e wall is unchanged.
 
 \begin{thebibliography}{99}
 
