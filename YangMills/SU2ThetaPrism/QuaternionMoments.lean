@@ -1,4 +1,5 @@
 import YangMills.SU2ThetaPrism.Analysis
+import YangMills.ClayCore.SchurDiagPhase
 import YangMills.ClayCore.SchurNormOne
 import YangMills.ClayCore.SchurTwoSitePhase
 
@@ -34,6 +35,37 @@ private def quaternionI : SU2 :=
 sign convention needed to keep determinant one. -/
 private def quaternionJ : SU2 :=
   YangMills.ClayCore.signedSwapSU finTwoZero finTwoOne (by decide)
+
+/-- The unit quaternion `(1+i+j+k)/2`.  Its adjoint action cyclically
+permutes the three imaginary quaternion coordinates. -/
+private def quaternionCycleMat : Matrix (Fin 2) (Fin 2) ℂ :=
+  ![![((1 : ℂ) + Complex.I) / 2, ((1 : ℂ) + Complex.I) / 2],
+    ![((-1 : ℂ) + Complex.I) / 2, ((1 : ℂ) - Complex.I) / 2]]
+
+private def quaternionCycle : SU2 := by
+  refine ⟨quaternionCycleMat, ?_⟩
+  rw [Matrix.mem_specialUnitaryGroup_iff]
+  constructor
+  · rw [Matrix.mem_unitaryGroup_iff]
+    ext i j
+    fin_cases i <;> fin_cases j <;>
+      simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
+        Matrix.star_apply] <;> ring
+  · rw [Matrix.det_fin_two]
+    simp [quaternionCycleMat]
+    ring
+
+private def quarterTurnAngles : Fin 2 → ℝ :=
+  ![Real.pi / 4, -(Real.pi / 4)]
+
+private theorem quarterTurnAngles_sum : ∑ k, quarterTurnAngles k = 0 := by
+  rw [Fin.sum_univ_two]
+  simp [quarterTurnAngles]
+
+/-- The unit quaternion `(1+i)/sqrt(2)`.  Left multiplication rotates the
+`(x0,x1)` plane by a full angle `pi/4`. -/
+private def quaternionQuarterTurn : SU2 :=
+  YangMills.ClayCore.diagPhaseSU quarterTurnAngles quarterTurnAngles_sum
 
 /-- The four real coordinates of the first SU(2) row.  For the standard
 quaternion matrix `[[a+bi, c+di],[-c+di,a-bi]]`, these are `a,b,c,d`. -/
@@ -80,6 +112,24 @@ private theorem su2_entry_one_one (g : SU2) :
   rw [Matrix.adjugate_fin_two] at h
   simpa [Matrix.star_apply] using h.symm
 
+private theorem su2_entry_one_zero (g : SU2) :
+    g.val finTwoOne finTwoZero = -star (g.val finTwoZero finTwoOne) := by
+  have h := congrArg
+    (fun M : Matrix (Fin 2) (Fin 2) ℂ => M finTwoOne finTwoZero)
+    (su2_star_val_eq_adjugate g)
+  rw [Matrix.adjugate_fin_two] at h
+  have hneg := congrArg Neg.neg h
+  simpa [Matrix.star_apply] using hneg.symm
+
+private theorem integral_conjugate_eq_self (f : SU2 → ℝ) (q : SU2) :
+    (∫ g : SU2, f (q * g * q⁻¹) ∂haarSU2) = ∫ g : SU2, f g ∂haarSU2 := by
+  calc
+    (∫ g : SU2, f (q * g * q⁻¹) ∂haarSU2) =
+        ∫ g : SU2, f (q * g) ∂haarSU2 :=
+      integral_mul_right_eq_self (μ := haarSU2) (fun g => f (q * g)) q⁻¹
+    _ = ∫ g : SU2, f g ∂haarSU2 :=
+      integral_mul_left_eq_self (μ := haarSU2) f q
+
 private theorem quaternionI_first_row (g : SU2) (c : Fin 2) :
     ((quaternionI * g).val) finTwoZero c =
       Complex.I * g.val finTwoZero c := by
@@ -94,6 +144,63 @@ private theorem quaternionJ_column_zero (g : SU2) (r : Fin 2) :
     ((g * quaternionJ).val) r finTwoZero = g.val r finTwoOne := by
   exact YangMills.ClayCore.signedSwapSU_apply_right
     finTwoZero finTwoOne (by decide) g r
+
+private theorem quaternionQuarterTurn_first_row (g : SU2) (c : Fin 2) :
+    ((quaternionQuarterTurn * g).val) finTwoZero c =
+      ((((Real.sqrt 2 / 2 : ℝ) : ℂ) +
+          ((Real.sqrt 2 / 2 : ℝ) : ℂ) * Complex.I) *
+        g.val finTwoZero c) := by
+  rw [YangMills.ClayCore.diagPhaseSU_apply_entry]
+  simp only [YangMills.ClayCore.diagPhaseVec_apply, quarterTurnAngles,
+    Matrix.cons_val_zero]
+  rw [show Complex.I * ((Real.pi / 4 : ℝ) : ℂ) =
+      ((Real.pi / 4 : ℝ) : ℂ) * Complex.I by ring]
+  rw [Complex.exp_mul_I]
+  simp [Real.cos_pi_div_four, Real.sin_pi_div_four]
+
+private theorem quaternionCoordinate_zero_quarterTurn (g : SU2) :
+    quaternionCoordinate 0 (quaternionQuarterTurn * g) =
+      (Real.sqrt 2 / 2) *
+        (quaternionCoordinate 0 g - quaternionCoordinate 1 g) := by
+  simp only [quaternionCoordinate_zero, quaternionCoordinate_one,
+    quaternionQuarterTurn_first_row]
+  simp [Complex.mul_re]
+  ring
+
+private theorem quaternionCycle_conj_entry_zero_zero (g : SU2) :
+    ((quaternionCycle * g * quaternionCycle⁻¹).val) finTwoZero finTwoZero =
+      ((g.val finTwoZero finTwoZero).re : ℂ) +
+        ((g.val finTwoZero finTwoOne).im : ℂ) * Complex.I := by
+  change ((quaternionCycleMat * g.val * star quaternionCycleMat)
+      finTwoZero finTwoZero) = _
+  simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
+    Matrix.star_apply, su2_entry_one_one, su2_entry_one_zero]
+  ring
+
+private theorem quaternionCycle_conj_entry_zero_one (g : SU2) :
+    ((quaternionCycle * g * quaternionCycle⁻¹).val) finTwoZero finTwoOne =
+      ((g.val finTwoZero finTwoZero).im : ℂ) +
+        ((g.val finTwoZero finTwoOne).re : ℂ) * Complex.I := by
+  change ((quaternionCycleMat * g.val * star quaternionCycleMat)
+      finTwoZero finTwoOne) = _
+  simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
+    Matrix.star_apply, su2_entry_one_one, su2_entry_one_zero]
+  ring
+
+private theorem quaternionCycle_coordinates (g : SU2) :
+    quaternionCoordinate 0 (quaternionCycle * g * quaternionCycle⁻¹) =
+        quaternionCoordinate 0 g ∧
+      quaternionCoordinate 1 (quaternionCycle * g * quaternionCycle⁻¹) =
+        quaternionCoordinate 3 g ∧
+      quaternionCoordinate 2 (quaternionCycle * g * quaternionCycle⁻¹) =
+        quaternionCoordinate 1 g ∧
+      quaternionCoordinate 3 (quaternionCycle * g * quaternionCycle⁻¹) =
+        quaternionCoordinate 2 g := by
+  simp only [quaternionCoordinate_zero, quaternionCoordinate_one,
+    quaternionCoordinate_two, quaternionCoordinate_three,
+    quaternionCycle_conj_entry_zero_zero,
+    quaternionCycle_conj_entry_zero_one]
+  simp
 
 private theorem chi_re_eq_two_mul_coordinate_zero (g : SU2) :
     (chi g).re = 2 * quaternionCoordinate 0 g := by
