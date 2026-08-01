@@ -253,6 +253,17 @@ possibly produce an $L$-uniform bound, because those data are identical for the
 unfused kernel (ratio $\tanh\beta$) and for every fused one (ratio up to
 $\tanh(\beta L)$).
 
+Theorem~\ref{thm:wall} is a statement about the scalar $\tanh(\beta L)$; the
+consequence for the congruence orbit needs one more step, which we make explicit
+rather than leave to the reader to assemble. Combining
+Proposition~\ref{prop:orbit} with finite-dimensional spectral continuity: for
+that $L$ and all sufficiently small $\varepsilon>0$,
+\[
+  r\big(D_\varepsilon K^{(L)}_\beta D_\varepsilon\big)\;>\;\rho ,
+\]
+with $D_\varepsilon$ strictly positive throughout. So the failure of uniformity
+is realised inside the orbit, not only in its closure.
+
 \begin{corollary}
 Any bound on $r$ that is uniform over both the full positive-diagonal congruence
 orbit and the number of sites must use a quantity that a positive-diagonal
@@ -376,6 +387,20 @@ inputs in this section: the lower bound additionally uses the
 finite-dimensional continuity of eigenvalues. The two facts that make
 Fact~\ref{fact:birkhoff} bite are elementary, and both are proved here.
 
+\begin{remark}[An independent check on the value]\label{rem:phiform}
+The contraction coefficient is also written without logarithms or hyperbolic
+functions \cite{seneta2006}: with
+$\varphi(A)=\min_{i,j,k,l} A_{ik}A_{jl}/(A_{jk}A_{il})$,
+\[
+  \tanh\!\big(\Delta(A)/4\big)\;=\;\frac{1-\sqrt{\varphi(A)}}{1+\sqrt{\varphi(A)}} .
+\]
+For our $M$ the cross-ratios come in reciprocal pairs, so
+$\varphi(M)=1/e^{\Delta(M)}=\mu^{2}$ and the right-hand side is
+$(1-\mu)/(1+\mu)$ directly. The two closed forms agree, which is a useful check:
+the value of Theorem~\ref{thm:lcp} can be read off the minimum cross-ratio with
+no transcendental function anywhere.
+\end{remark}
+
 \begin{lemma}[$\Delta$ is a congruence invariant]\label{lem:deltainv}
 For every positive diagonal $D$ and all indices,
 \[
@@ -391,8 +416,8 @@ $d_id_jd_kd_l$, which cancels.
 \end{proof}
 
 \begin{lemma}[The diameter of a unit-diagonal kernel]\label{lem:deltaval}
-If $M_{ii}=1$ and $\mu\le M_{ij}\le 1$ for all $i,j$ with $\mu>0$, then
-$\Delta(M)=2\log(1/\mu)$ exactly.
+Let $M$ be symmetric with $M_{ii}=1$ and $\mu\le M_{ij}\le 1$ for all $i,j$,
+where $\mu>0$. Then $\Delta(M)=2\log(1/\mu)$ exactly.
 \end{lemma}
 
 \begin{proof}
@@ -587,7 +612,9 @@ the searches we ran, not a claim of priority.
       eigenvalue-continuity consumer, which would promote
       Theorem~\ref{thm:lcp} from a paper-level proof to an end-to-end Lean
       theorem. This is the single largest gap between what is written and what
-      is machine-checked.
+      is machine-checked. Remark~\ref{rem:phiform} suggests the practical route:
+      the $\varphi$-form is purely algebraic, so a formalisation need not carry
+      $\log$ or $\tanh$ at all.
 \item Whether the congruence-invariance of $\Delta$ extends usefully beyond
       diagonal congruences --- for instance to congruences by positive matrices
       that are not diagonal, where the cross-ratio no longer cancels.
@@ -602,14 +629,14 @@ the searches we ran, not a claim of priority.
 
 \section*{Machine verification --- status}
 
-The following are written in Lean~4 --- the rigid half
-(Theorem~\ref{thm:rigid}, Lemma~\ref{lem:change}), the fusion identity
-(Theorem~\ref{thm:fusion}), the wall (Theorem~\ref{thm:wall}), the orbit
-statement (Proposition~\ref{prop:orbit}), and the algebraic and eigenvector
-ingredients of Lemma~\ref{lem:bond}, Theorem~\ref{thm:exch} and
-Theorem~\ref{thm:lcp}
+The following are written in Lean~4: the rigid half
+(Theorem~\ref{thm:rigid}, Lemma~\ref{lem:change}); the \emph{matrix identity}
+underlying Theorem~\ref{thm:fusion}; the \emph{scalar $\tanh$-approach lemma}
+underlying Theorem~\ref{thm:wall}; Proposition~\ref{prop:orbit}; and the
+algebraic and eigenvector ingredients of Lemma~\ref{lem:bond},
+Theorem~\ref{thm:exch} and Theorem~\ref{thm:lcp}
 against a pinned Mathlib in \texttt{YangMills/OS/CongruenceSpectrum.lean}, and
-\textbf{has been verified}, including the two lemmas that carry
+\textbf{have been verified}, including the two lemmas that carry
 Theorem~\ref{thm:lcp} and the $n=2$ attainment witness of
 Remark~\ref{rem:attained}.
 
@@ -618,7 +645,12 @@ definition of $r$, no enumeration of a spectrum, and no theorem asserting that a
 second largest \emph{modulus} equals any stated quantity. What it contains for
 Lemma~\ref{lem:bond} and Theorem~\ref{thm:exch} is the eigenvector equations,
 the algebraic ratio identity, the positivity and sign lemmas, and the scalar
-monotonicity. \emph{Their interpretation in terms of the spectrally defined $r$
+monotonicity. The same caution applies to Theorems~\ref{thm:fusion}
+and~\ref{thm:wall}: Lean proves the antipodal block equals $B(\beta L)$ as
+matrices, and proves $\forall\rho<1\ \exists L,\ \rho<\tanh(\beta L)$ as a
+scalar statement, but the reading of either as a claim about the spectrally
+defined $r$ --- and the passage from the block to a strictly positive member of
+the orbit --- is completed at paper level. \emph{Their interpretation in terms of the spectrally defined $r$
 of \S1 is completed at paper level}, by elementary finite-dimensional linear
 algebra. We are explicit about this because it is exactly the gap
 Remark~\ref{rem:sign} is about: a true Lean lemma can sit underneath a sentence
@@ -637,11 +669,17 @@ the imported spectral inequality. Formalising Fact~\ref{fact:birkhoff}, or
 importing it through a clean Lean interface, is the obvious next step and is
 listed in \S8.
 
-One further caveat of provenance: the bibliographic data for
-\cite{birkhoff1957,evesonnussbaum1995} were checked against the publishers'
-records, but the internal numbering of the results inside those papers was not,
-so Fact~\ref{fact:birkhoff} is attributed to the papers rather than to a
-numbered statement in them.
+One further caveat of provenance. The bibliographic data for
+\cite{birkhoff1957,evesonnussbaum1995,seneta2006} were checked against the
+publishers' records, but the internal numbering of the results inside those
+sources was not. Fact~\ref{fact:birkhoff} is therefore attributed to the works
+rather than to a numbered statement in them.
+\textbf{Pinning that numbered statement is a prerequisite for journal
+submission}, not an optional polish: Fact~\ref{fact:birkhoff} is the single
+load-bearing import of Theorem~\ref{thm:lcp}, and a reader must be able to go to
+one line of one source and check it. Remark~\ref{rem:phiform} reduces the
+exposure somewhat by giving a second closed form that reproduces the same value,
+but it does not remove it.
 
 No statement in this paper is conjectural.
 
@@ -688,6 +726,11 @@ theorems above depends on it.
 \bibitem{ostrowski1960} A.~M.~Ostrowski,
   \emph{A quantitative formulation of Sylvester's law of inertia, II},
   Proc.\ Nat.\ Acad.\ Sci.\ U.S.A.\ \textbf{46} (1960), no.~6, 859--862.
+
+\bibitem{seneta2006} E.~Seneta,
+  \emph{Non-negative Matrices and Markov Chains}, rev.\ ed.,
+  Springer Series in Statistics, Springer, 2006.
+  (Birkhoff's contraction coefficient, \S3.1--3.2.)
 
 \bibitem{hornjohnson} R.~A.~Horn and C.~R.~Johnson,
   \emph{Matrix Analysis}, 2nd ed., Cambridge University Press, 2013.
