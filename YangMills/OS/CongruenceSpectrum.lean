@@ -70,13 +70,14 @@ theorem quad_diagonal_congr (M : Matrix n n ℝ) (d x : n → ℝ) :
       = quad M (fun i => d i * x i) := by
   unfold quad
   refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
-  rw [Matrix.mul_apply, Matrix.mul_apply]
-  simp only [Matrix.diagonal_apply, Finset.sum_ite_eq, Finset.sum_ite_eq',
-    Finset.mem_univ, if_true]
+  -- the product associates as `(diagonal d * M) * diagonal d`, so peel the
+  -- right factor first and the left one second
+  rw [Matrix.mul_diagonal, Matrix.diagonal_mul]
   ring
 
 /-- If every `d i` is nonzero, scaling by `d` sends nonzero vectors to nonzero
 vectors — the only place invertibility is used, and it is used essentially. -/
+omit [Fintype n] [DecidableEq n] in
 theorem scale_ne_zero {d x : n → ℝ} (hd : ∀ i, d i ≠ 0) (hx : x ≠ 0) :
     (fun i => d i * x i) ≠ 0 := by
   intro h
@@ -97,7 +98,7 @@ theorem quad_pos_congr_iff {M : Matrix n n ℝ} {d : n → ℝ} (hd : ∀ i, d i
     have hinv : ∀ i, (d i)⁻¹ ≠ 0 := fun i => inv_ne_zero (hd i)
     have := h (fun i => (d i)⁻¹ * x i) (scale_ne_zero hinv hx)
     rwa [quad_diagonal_congr, show (fun i => d i * ((d i)⁻¹ * x i)) = x from by
-      funext i; field_simp] at this
+      funext i; rw [← mul_assoc, mul_inv_cancel₀ (hd i), one_mul]] at this
   · intro h x hx
     rw [quad_diagonal_congr]
     exact h _ (scale_ne_zero hd hx)
@@ -112,7 +113,7 @@ theorem quad_neg_congr_iff {M : Matrix n n ℝ} {d : n → ℝ} (hd : ∀ i, d i
     have hinv : ∀ i, (d i)⁻¹ ≠ 0 := fun i => inv_ne_zero (hd i)
     have := h (fun i => (d i)⁻¹ * x i) (scale_ne_zero hinv hx)
     rwa [quad_diagonal_congr, show (fun i => d i * ((d i)⁻¹ * x i)) = x from by
-      funext i; field_simp] at this
+      funext i; rw [← mul_assoc, mul_inv_cancel₀ (hd i), one_mul]] at this
   · intro h x hx
     rw [quad_diagonal_congr]
     exact h _ (scale_ne_zero hd hx)
@@ -176,7 +177,17 @@ def cfgMinus (L : ℕ) : Fin L → Fin 2 := fun _ => 1
 
 theorem sgn_self (i : Fin 2) : sgn i i = 1 := by simp [sgn]
 
-theorem sgn_zero_one : sgn 0 1 = -1 := by decide +kernel
+/-- `decide` cannot do this: `sgn` lands in `ℝ`, whose equality is not
+constructively decidable, so the decision procedure gets stuck on
+`Classical.choice`.  The index comparison IS decidable, so discharge that and
+let `if_neg` do the rest. -/
+theorem sgn_zero_one : sgn 0 1 = -1 := by
+  unfold sgn
+  rw [if_neg (by decide : ¬((0 : Fin 2) = 1))]
+
+theorem sgn_one_zero : sgn 1 0 = -1 := by
+  unfold sgn
+  rw [if_neg (by decide : ¬((1 : Fin 2) = 0))]
 
 /-- On the diagonal of the antipodal pair the kernel is `exp (β L)`. -/
 theorem tensorKernel_plus_plus (L : ℕ) (β : ℝ) :
@@ -188,9 +199,10 @@ theorem tensorKernel_plus_plus (L : ℕ) (β : ℝ) :
 every one of the `L` sites. -/
 theorem tensorKernel_plus_minus (L : ℕ) (β : ℝ) :
     tensorKernel L β (cfgPlus L) (cfgMinus L) = Real.exp (-(β * L)) := by
-  unfold tensorKernel cfgPlus cfgMinus
-  simp [sgn_zero_one]
-  ring_nf
+  have hs : ∑ _j : Fin L, sgn (cfgPlus L _j) (cfgMinus L _j) = -(L : ℝ) := by
+    simp [cfgPlus, cfgMinus, sgn_zero_one]
+  unfold tensorKernel
+  rw [hs, show β * (-(L : ℝ)) = -(β * L) from by ring]
 
 /-- **THE FUSION IDENTITY.**  The antipodal `2 × 2` block of the `L`-site kernel
 is exactly one Ising bond of coupling `β · L`.  The weight does not perturb the
@@ -203,9 +215,10 @@ theorem antipodal_block_eq_bond (L : ℕ) (β : ℝ) :
   have hmm : tensorKernel L β (cfgMinus L) (cfgMinus L) = Real.exp (β * L) := by
     unfold tensorKernel cfgMinus; simp [sgn_self]
   have hmp : tensorKernel L β (cfgMinus L) (cfgPlus L) = Real.exp (-(β * L)) := by
-    unfold tensorKernel cfgMinus cfgPlus
-    simp [show sgn 1 0 = -1 from by decide +kernel]
-    ring_nf
+    have hs : ∑ _j : Fin L, sgn (cfgMinus L _j) (cfgPlus L _j) = -(L : ℝ) := by
+      simp [cfgPlus, cfgMinus, sgn_one_zero]
+    unfold tensorKernel
+    rw [hs, show β * (-(L : ℝ)) = -(β * L) from by ring]
   rw [tensorKernel_plus_plus, tensorKernel_plus_minus, hmm, hmp]
   rfl
 
@@ -216,48 +229,65 @@ theorem antipodal_block_eq_bond (L : ℕ) (β : ℝ) :
 extension.  Proved by hand rather than by a limit lemma, to keep the constant
 visible. -/
 
-/-- `tanh` in the exponential form used below. -/
-theorem tanh_eq_exp (a : ℝ) :
-    Real.tanh a = (Real.exp a - Real.exp (-a)) / (Real.exp a + Real.exp (-a)) := by
-  rw [Real.tanh_eq_sinh_div_cosh, Real.sinh_eq, Real.cosh_eq]
-  have h : Real.exp a + Real.exp (-a) ≠ 0 := by positivity
-  field_simp
+/-- **The explicit approach rate.**  `1 - tanh x ≤ e^{-x}`, because
+`1 - tanh x = e^{-x} / cosh x` and `cosh ≥ 1`.  Stated as a bound rather than as
+a limit so the constant stays visible, and because the pinned Mathlib has no
+monotonicity lemma for `tanh` to lean on. -/
+theorem one_sub_tanh_le (x : ℝ) : 1 - Real.tanh x ≤ Real.exp (-x) := by
+  have hc : 0 < Real.cosh x := Real.cosh_pos x
+  have hc' : Real.cosh x ≠ 0 := ne_of_gt hc
+  have h1 : (1 : ℝ) ≤ Real.cosh x := Real.one_le_cosh x
+  have key : 1 - Real.tanh x = Real.exp (-x) / Real.cosh x := by
+    rw [Real.tanh_eq_sinh_div_cosh, Real.cosh_eq, Real.sinh_eq]
+    have hne : Real.exp x + Real.exp (-x) ≠ 0 := by positivity
+    field_simp
+    ring
+  rw [key]
+  exact div_le_self (Real.exp_pos _).le h1
+
+/-- Strict monotonicity of `tanh`, proved here because the pin does not carry
+it: `tanh b - tanh a = sinh (b - a) / (cosh a cosh b)`. -/
+theorem tanh_lt_tanh_of_lt {a b : ℝ} (h : a < b) : Real.tanh a < Real.tanh b := by
+  have ha : 0 < Real.cosh a := Real.cosh_pos a
+  have hb : 0 < Real.cosh b := Real.cosh_pos b
+  have ha' : Real.cosh a ≠ 0 := ne_of_gt ha
+  have hb' : Real.cosh b ≠ 0 := ne_of_gt hb
+  have hs : 0 < Real.sinh b * Real.cosh a - Real.cosh b * Real.sinh a := by
+    have hpos := Real.sinh_pos_iff.mpr (show (0 : ℝ) < b - a by linarith)
+    rwa [Real.sinh_sub] at hpos
+  have key : Real.tanh b - Real.tanh a
+      = (Real.sinh b * Real.cosh a - Real.cosh b * Real.sinh a)
+        / (Real.cosh a * Real.cosh b) := by
+    rw [Real.tanh_eq_sinh_div_cosh, Real.tanh_eq_sinh_div_cosh]
+    field_simp
+    ring
+  have : 0 < Real.tanh b - Real.tanh a := by
+    rw [key]; exact div_pos hs (mul_pos ha hb)
+  linarith
 
 /-- **The wall.**  For every coupling `β > 0` and every target `ρ < 1` there is
 an extension `L` whose fused bond already beats `ρ`.  Hence `tanh (β · L)` is not
 bounded away from `1`, and no `L`-uniform ratio bound survives the weight. -/
 theorem exists_extension_exceeding {β : ℝ} (hβ : 0 < β) {ρ : ℝ} (hρ : ρ < 1) :
     ∃ L : ℕ, ρ < Real.tanh (β * L) := by
-  rcases le_or_lt ρ 0 with hneg | hpos
-  · refine ⟨1, ?_⟩
-    have : 0 < Real.tanh (β * 1) := by
-      rw [Real.tanh_eq_sinh_div_cosh]
-      have hs : 0 < Real.sinh (β * 1) := Real.sinh_pos_iff.mpr (by linarith)
-      exact div_pos hs (Real.cosh_pos _)
-    linarith
-  · -- `tanh a = 1 - 2 / (exp (2a) + 1)`, so it suffices that `exp (2 β L) + 1`
-    -- exceed `2 / (1 - ρ)`; the archimedean property supplies such an `L`.
-    obtain ⟨L, hL⟩ := exists_nat_gt (2 / ((1 - ρ) * β))
-    refine ⟨L, ?_⟩
-    have hL0 : 0 < (L : ℝ) := lt_of_le_of_lt (by positivity) hL
-    have hbL : 0 < β * L := by positivity
-    have hlin : 2 / (1 - ρ) < β * L := by
-      rw [div_lt_iff₀ (by linarith)] at hL
-      rw [div_lt_iff₀ (by linarith : (0:ℝ) < 1 - ρ)]
-      nlinarith [hL, hβ.le, hL0.le]
-    -- `exp x > x` gives the exponential the room the linear bound needs
-    have hexp : 2 / (1 - ρ) < Real.exp (β * L) := lt_of_lt_of_le hlin
-      (Real.add_one_le_exp (β * L) |>.trans' (by linarith)).le
-    have hcosh : 0 < Real.exp (β * L) + Real.exp (-(β * L)) := by positivity
-    rw [tanh_eq_exp, lt_div_iff₀ hcosh]
-    have hpos' : 0 < Real.exp (-(β * L)) := Real.exp_pos _
-    have h1 : Real.exp (-(β * L)) = (Real.exp (β * L))⁻¹ := by
-      rw [Real.exp_neg]
-    have hE : 0 < Real.exp (β * L) := Real.exp_pos _
-    rw [h1]
-    rw [div_lt_iff₀ (by linarith : (0:ℝ) < 1 - ρ)] at hexp
-    have := mul_pos hE hE
-    nlinarith [hexp, hE, mul_pos hE hE, inv_pos.mpr hE]
+  -- Pick `L` with `β L` past `1 / (1 - ρ)`.  Then `e^{βL} ≥ βL + 1` already
+  -- forces `e^{-βL} < 1 - ρ`, and `one_sub_tanh_le` turns that into the claim.
+  -- No case split on the sign of `ρ` is needed: the bound is uniform.
+  obtain ⟨L, hL⟩ := exists_nat_gt (1 / (1 - ρ) / β)
+  refine ⟨L, ?_⟩
+  have hr : (0 : ℝ) < 1 - ρ := by linarith
+  have hbL : 1 / (1 - ρ) < β * L := by
+    rw [div_lt_iff₀ hβ] at hL
+    linarith [hL]
+  have hEpos : 0 < Real.exp (β * L) := Real.exp_pos _
+  have hE : 1 / (1 - ρ) < Real.exp (β * L) :=
+    lt_of_lt_of_le hbL (by linarith [Real.add_one_le_exp (β * L)])
+  have hneg : Real.exp (-(β * L)) < 1 - ρ := by
+    rw [Real.exp_neg, inv_lt_iff_one_lt_mul₀ hEpos]
+    rw [div_lt_iff₀ hEpos] at hE
+    nlinarith [hE, hEpos, hr]
+  have hkey := one_sub_tanh_le (β * L)
+  linarith
 
 /-! ## §5  Non-vacuity
 
@@ -271,9 +301,9 @@ move the quantity §1 says it could not move the sign of. -/
 theorem fused_gt_unfused {β : ℝ} (hβ : 0 < β) {L : ℕ} (hL : 1 < L) :
     Real.tanh β < Real.tanh (β * L) := by
   have h : β < β * L := by
-    have : (1 : ℝ) < L := by exact_mod_cast hL
+    have hcast : (1 : ℝ) < L := by exact_mod_cast hL
     nlinarith
-  exact Real.tanh_lt_tanh.mpr h
+  exact tanh_lt_tanh_of_lt h
 
 /-- Both eigenvalues of a fused bond are nonzero, so its ratio is a genuine
 ratio and the fragile half is not about a degenerate object. -/
