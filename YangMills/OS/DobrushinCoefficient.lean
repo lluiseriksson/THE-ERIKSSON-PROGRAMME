@@ -151,9 +151,8 @@ theorem tvField_le {J : ℝ} (hJ : 0 ≤ J) (h : ℝ) :
     field_simp
     ring
   rw [expand]
-  apply div_nonneg
-  · exact mul_nonneg hsJ (by linarith)
-  · positivity
+  refine div_nonneg (mul_nonneg hsJ ?_) (by positivity)
+  linarith
 
 /-- **D-2a, attainment.**  At `h = J` the two fields are `+J` and `-J`, and the
 bound is an equality: the supremum is REACHED, so `tanh J` is the coefficient
@@ -162,9 +161,14 @@ theorem tvField_attained {J : ℝ} (hJ : 0 ≤ J) :
     tvField J (J - 2 * J) = Real.tanh J := by
   have hneg : J - 2 * J = -J := by ring
   have htnn : 0 ≤ Real.tanh J := tanh_nonneg_of_nonneg hJ
-  rw [hneg, tvField_eq, Real.tanh_neg, sub_neg_eq_add,
-    show Real.tanh J + Real.tanh J = 2 * Real.tanh J from by ring,
-    abs_of_nonneg (by linarith : (0:ℝ) ≤ 2 * Real.tanh J)]
+  -- the modulus is computed on its own, so that only an arithmetic identity
+  -- is left for the closing tactic and no step can succeed by accident
+  have habs : |Real.tanh J - Real.tanh (-J)| = 2 * Real.tanh J := by
+    rw [Real.tanh_neg, sub_neg_eq_add,
+      show Real.tanh J + Real.tanh J = 2 * Real.tanh J from by ring]
+    exact abs_of_nonneg (by linarith)
+  rw [hneg, tvField_eq, habs]
+  ring
 
 /-- **The coefficient, as a supremum statement.**  `tanh J` is an upper bound for
 the total-variation move over all fields, and it is one of the values, so it is
