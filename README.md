@@ -4,7 +4,7 @@
 
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)
 ![Mathlib](https://img.shields.io/badge/Mathlib-pinned_commit-blue)
-![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8463_jobs)-success)
+![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8465_jobs)-success)
 ![sorry](https://img.shields.io/badge/sorry-0-success)
 ![project axioms](https://img.shields.io/badge/project_axioms-0-success)
 ![Clay distance](https://img.shields.io/badge/distance_to_Clay-~0%25_(%3C0.1%25)-lightgrey)
@@ -19,7 +19,7 @@ proved. The defining principle is **honesty over progress**: a smaller true
 claim always beats a larger hollow one.
 
 ```bash
-lake build YangMillsCore          # the verified core — green, 8463 jobs
+lake build YangMillsCore          # latest dated snapshot: 8465 jobs
 lake env lean oracle_check.lean   # prints the axiom oracle for every headline
 ```
 
@@ -36,13 +36,10 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 proved / partial / open and linked to Lean sources, docs, or the verification
 ledger.
 
-**Documentation snapshot updated:** 2026-07-04.  **Latest public source
-checkpoint:** 2026-07-14, measured at `a17d7816` (on `main`).  The verification
-ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
-257 and the 2026-07-04 diamagnetic unitary bridge Addendum 466, after the
-earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
-core build remains
-`lake build YangMillsCore` green at **8463 jobs**.
+**Documentation snapshot updated:** 2026-08-01.  The live build measurement is
+maintained in [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), not
+as a permanent constant in this README.  Its latest dated governance snapshot
+is `lake build YangMillsCore` green at **8465 jobs** on `3421aa1f`.
 The canonical machine-readable proof-state contract is
 [`project-state.json`](project-state.json); repository HEAD and paper commits
 may advance without changing that recorded Lean checkpoint.
@@ -50,6 +47,19 @@ may advance without changing that recorded Lean checkpoint.
 The bars below are communication estimates for humans, not theorem
 probabilities.  The formal record remains the compiler, `oracle_check.lean`,
 and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
+
+### Latest paper submission
+
+**Submitted to ai.viXra on 2026-08-01; public identifier pending:**
+*Machine-Checked Finite-SU(2) Trace-Skein Closure for Makeenko-Migdal Crossing
+Terms* (9 pages).  The paper machine-checks the finite-SU(2) Pauli/Casimir,
+Fierz, trace-skein, oriented four-branch reconnection, and all-order
+multitrace-to-single-trace algebra.  It is a companion to
+[ai.viXra:2607.0039](https://ai.vixra.org/abs/2607.0039), not a replacement.
+It does not claim the analytic area-derivative or heat-kernel
+integration-by-parts part of the Makeenko-Migdal equation.  Frozen hashes,
+availability limits, and the post-publication verification checklist are in
+[`docs/SUBMISSION-SU2-TRACE-SKEIN-20260801.md`](docs/SUBMISSION-SU2-TRACE-SKEIN-20260801.md).
 
 ### At a glance
 
@@ -225,7 +235,7 @@ volume-uniform, each linearized and exact).
 > *A Machine-Checked Volume-Uniform Wilson-Loop Area Law via a Formalized
 > Cluster Expansion*, L. Eriksson, 2026 —
 > [`paper/area-law/paper.pdf`](paper/area-law/paper.pdf).
-> Preprint: ai.viXra:XXXX.XXXX (add the ID when published).
+> Preprint: [ai.viXra:2607.0005](https://ai.vixra.org/abs/2607.0005).
 
 A reusable repackaging `area_law_to_exp_area_decay` turns either headline into
 **manifest exponential area decay** N<sub>c</sub>·e<sup>−τ·Area(C)</sup> with a
@@ -366,7 +376,7 @@ part of any claim this README makes.
 
 ```mermaid
 graph TD
-    subgraph core["YangMillsCore  (8463 jobs, oracle-clean)"]
+    subgraph core["YangMillsCore  (8465-job dated snapshot, oracle-clean)"]
         L0["L0_Lattice<br/>geometry, gauge fields, Wilson action,<br/>chain complex + N-ality area"]
         L1["L1_GibbsMeasure<br/>Gibbs measure, polymer representation,<br/>weighted gas, exp-activity expansion"]
         KP["KP layer<br/>Ursell, Penrose-BFS, sharp KP bound,<br/>Mayer inversion Ξ = exp(clusterSum),<br/>pinned clusters"]
@@ -395,7 +405,7 @@ Green: unconditional flagship. Amber: conditional on the named UV hypothesis.
 |---|---|---|
 | Toolchain | `elan` picks up [`lean-toolchain`](lean-toolchain) | `leanprover/lean4:v4.29.0-rc6` |
 | Mathlib cache | `lake exe cache get` | downloads the pinned-commit `.olean` cache |
-| Build the core | `lake build YangMillsCore` | `Build completed successfully (8463 jobs)` |
+| Build the core | `lake build YangMillsCore` | Compare the measured count with the live verification ledger (dated snapshot: 8465 jobs at `3421aa1f`) |
 | Axiom oracle | `lake env lean oracle_check.lean` | every line ends `[propext, Classical.choice, Quot.sound]` |
 | Sorry scan | `python scripts/check_consistency.py` | `0` forbidden tokens |
 | Source citation lookup | `python scripts/source_citations.py show cmp116.eq231.p-bond-sum` | compact primary-source locator |

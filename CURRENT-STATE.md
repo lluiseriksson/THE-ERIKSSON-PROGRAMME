@@ -17,7 +17,24 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
+**Latest paper submission (2026-08-01).**  The owner submitted
+*Machine-Checked Finite-SU(2) Trace-Skein Closure for Makeenko-Migdal Crossing
+Terms* to ai.viXra as a new nine-page companion to
+[ai.viXra:2607.0039](https://ai.vixra.org/abs/2607.0039).  Its public identifier
+is still pending, so the correct state is `SUBMITTED`, not `PUBLISHED`.
+The exact finite-SU(2) Pauli/Fierz/trace-skein and oriented crossing-closure
+claims are machine-checked; the analytic area derivative, heat-kernel
+integration by parts, planar loop geometry, and the full Makeenko-Migdal
+equation remain outside its scope.  The frozen PDF/source/review hashes and the
+availability caveat for the non-public supplementary ZIP are recorded in
+[`docs/SUBMISSION-SU2-TRACE-SKEIN-20260801.md`](docs/SUBMISSION-SU2-TRACE-SKEIN-20260801.md).
+
+**Build-measurement note (2026-08-01).**  The verification ledger is the sole
+live source for job counts; the latest dated governance snapshot is **8465
+jobs at `3421aa1f`**.  The long 2026-07-14 block below is retained as a
+historical theorem-content snapshot, not as the current build counter.
+
+**Historical live-state snapshot:** 2026-07-14.  **Recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
@@ -459,8 +476,9 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8412 jobs** in the latest recorded
-  verification checkpoint.
+* `lake build YangMillsCore` is green; compare each new measurement with the
+  live verification ledger (latest dated governance snapshot: **8465 jobs at
+  `3421aa1f`**), not with an undated README constant.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
