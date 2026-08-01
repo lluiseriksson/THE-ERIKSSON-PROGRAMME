@@ -3142,6 +3142,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.IsFlipOdd
 #print axioms YangMills.OS.isFlipEven_iff
 #print axioms YangMills.OS.isFlipOdd_iff
+#print axioms YangMills.OS.act_flipOdd_eq_sum_zero_head
 #print axioms YangMills.OS.evenPart
 #print axioms YangMills.OS.oddPart
 #print axioms YangMills.OS.evenPart_add_oddPart

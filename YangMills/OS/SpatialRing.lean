@@ -187,6 +187,55 @@ theorem isFlipOdd_iff {L : ℕ} {u : (Fin L → Fin 2) → ℝ} :
     funext σ
     simpa using h σ
 
+/-- **Exact orbit fold for a flip-odd observable.**  Every global-flip orbit
+of a positive-length configuration space has exactly one representative whose
+first spin is zero.  Pairing that representative with its full global flip
+rewrites an arbitrary kernel action with the exact difference
+`K σ ρ - K σ (flipCfg ρ)`.
+
+This is the one theorem licensed by `judge_spatial_odd_orbit_fold.py`.  It is a
+lossless finite-sum identity, including length one.  It assumes no positivity
+or kernel invariance and proves no norm estimate, spectral classification, or
+part of either spatial-ring sector bound. -/
+theorem act_flipOdd_eq_sum_zero_head {L : ℕ}
+    {K : (Fin (L + 1) → Fin 2) → (Fin (L + 1) → Fin 2) → ℝ}
+    {u : (Fin (L + 1) → Fin 2) → ℝ} (hu : IsFlipOdd u)
+    (σ : Fin (L + 1) → Fin 2) :
+    act K u σ =
+      ∑ τ : Fin L → Fin 2,
+        (K σ (Fin.cons 0 τ) - K σ (flipCfg (Fin.cons 0 τ))) * u (Fin.cons 0 τ) := by
+  have hodd : ∀ ρ, u (flipCfg ρ) = -u ρ := isFlipOdd_iff.mp hu
+  unfold act
+  rw [← (Fin.consEquiv fun _ : Fin (L + 1) => Fin 2).sum_comp
+    (fun ρ => K σ ρ * u ρ), Fintype.sum_prod_type]
+  change (∑ s : Fin 2, ∑ τ : Fin L → Fin 2,
+      K σ (Fin.cons s τ) * u (Fin.cons s τ)) = _
+  rw [Fin.sum_univ_two]
+  have htail :
+      (∑ τ : Fin L → Fin 2, K σ (Fin.cons 1 τ) * u (Fin.cons 1 τ)) =
+        ∑ τ : Fin L → Fin 2,
+          K σ (flipCfg (Fin.cons 0 τ)) * u (flipCfg (Fin.cons 0 τ)) := by
+    calc
+      (∑ τ : Fin L → Fin 2, K σ (Fin.cons 1 τ) * u (Fin.cons 1 τ)) =
+          ∑ τ : Fin L → Fin 2,
+            K σ (Fin.cons 1 (flipCfg τ)) * u (Fin.cons 1 (flipCfg τ)) := by
+              simpa only [flipEquiv_apply] using
+                (Equiv.sum_comp (flipEquiv L)
+                  (fun τ : Fin L → Fin 2 =>
+                    K σ (Fin.cons 1 τ) * u (Fin.cons 1 τ))).symm
+      _ = ∑ τ : Fin L → Fin 2,
+          K σ (flipCfg (Fin.cons 0 τ)) * u (flipCfg (Fin.cons 0 τ)) := by
+            exact Finset.sum_congr rfl fun τ _ => by
+              have hflip :
+                  Fin.cons (1 : Fin 2) (flipCfg τ) = flipCfg (Fin.cons 0 τ) := by
+                funext j
+                refine Fin.cases ?_ (fun i => ?_) j <;> rfl
+              rw [hflip]
+  rw [htail, ← Finset.sum_add_distrib]
+  exact Finset.sum_congr rfl fun τ _ => by
+    rw [hodd (Fin.cons 0 τ)]
+    ring
+
 /-- The projector `u₊ = (u + Ju) / 2` onto the even flip sector. -/
 noncomputable def evenPart {L : ℕ} (u : (Fin L → Fin 2) → ℝ) :
     (Fin L → Fin 2) → ℝ :=
