@@ -29394,3 +29394,82 @@ registered as D-0 and NOT claimed as free.
 
 **ROLES.**  This session FABRICATED and does not audit itself.  No external
 verdict exists, and no claim of "delivered" is made.
+
+## Addendum 571 (2026-08-01, **the audit round of the Dobrushin lane: what an
+outside desk found, what survived my own re-verification, and one gate I did
+NOT take**)
+
+**PROVENANCE AND TIMING, recorded first because they are the point.**  A second
+desk audited D-1 and returned findings through a cross-session channel.  Nothing
+in that message was adopted on trust: every claim below was re-checked against
+this tree or against sources, by this desk, before anything moved.  Charter
+Amendment 1 is `9a79eac3`.
+
+**WHAT SURVIVED (three corrections, all mine to make).**
+
+  * `coupled_rowSums_not_constant` is at `SpatialExtent.lean:208`.  The charter
+    cited `:205`, where its docstring begins.  A reference that names the right
+    object and points one paragraph early --- the deictic class already on the
+    record.
+  * **Prohibition 4 claimed more than it can, and is CUT.**  It listed "explicit
+    constants" among the surviving novelties of the lane.  The cell here is the
+    anisotropic two-dimensional Ising model, whose transfer spectrum has been in
+    closed form since Onsager (1944) and Kaufman (1949); the Dobrushin constant
+    is WORSE than the exact answer by a factor measured between 2 and 36.  What
+    replaces it is **generality** --- the coefficient is read off the single-site
+    conditionals of an ARBITRARY positive finite-range slice weight, which is
+    what `gibbsWeight` quantifies over and where the exact solution is silent.
+    **Two surviving axes, not three.**  The correction moves the merit, it does
+    not remove it.
+  * **J2 did not exercise its own theorem's distinctive hypothesis.**  The module
+    docstring says the point is row sums BOUNDED by `alpha` and never constant
+    --- the crack the coupled kernel falls through --- and J2 normalised every
+    row to EXACTLY `alpha`.  Redesigned with deterministically UNEQUAL row sums,
+    one attaining `alpha` and the rest strictly below, plus an assertion that the
+    construction really is unequal.  STRICTLY HARDER, declared in the gate's own
+    docstring, committed BEFORE being run.  Re-run at this commit: **PASS**,
+    worst slack `-3.117e-04` (was `-3.078e-04` under the weaker construction).
+    All three gates PASS.
+
+**TWO TRAPS, registered as prohibitions 6 and 7.**  Of J1's eight cells only two
+lie inside the Dobrushin window --- `(0.1,0.1)` at `alpha = 0.399` and
+`(0.2,0.2)` at `alpha = 0.790` --- while the other four disordered cells sit at
+`alpha` between `1.165` and `1.527`.  J1 measures the whole disordered phase and
+licenses exactly one claim: where the degeneracy lives.  **Its table may never be
+printed as evidence FOR the theorem.**  And `⟪Ω, · Ω⟫` is an infinite-time state,
+so writing `connCorr` as a two-point function of the Gibbs measure must run
+through finite `M` with explicit boundary control, taking `M -> ∞` only at the
+level of the BOUND --- a design decision taken HERE, not a discovery to be made
+inside D-4.
+
+**THE GATE I DID NOT TAKE.**  That desk also proposed a necessary-condition gate:
+`r_inf <= alpha` on every in-window cell, since a bound cannot decay faster than
+what it bounds; one violation refutes D-3 and no Lean repairs it.  The reasoning
+is correct and I verified the claim INDEPENDENTLY, writing the check from the
+statement of the obligation rather than from their script: **PASS on 12 in-window
+cells, minimum margin 2.003x**, and as `gamma -> 0` the ratio tends to `2.0007`
+while `r_inf -> tanh(beta)`, which is the PROVED `spatialKernel_specGap_eq` of
+paper 11 --- so the constant is calibrated against a theorem this repository owns,
+the same discipline already applied to the harness.  **It is NOT adopted.**
+Taking a gate authored by the desk next door is the owner's call, and if it is
+ever taken this entry is the record that it came from outside and that it passed
+BEFORE it was taken.  A gate the fabricator chose is not a judge, and this
+programme has that failure mode registered twice.
+
+**PRIOR-ART CORRECTION.**  Addendum 570's lane notes leaned on a search result
+reporting no formalisation of the Ising model.  Too strong: `arXiv:2606.29687`
+formalises the transverse-field Ising chain in Lean 4 with momentum-mode
+decomposition, Jordan-Wigner and Anderson pseudospin.  It is the quantum chain,
+not the classical two-dimensional transfer matrix, so it displaces nothing in
+this lane --- but the blanket sentence does not survive review and is withdrawn.
+
+**NOT THIS DESK'S TO ACT ON, and passed to the owner unexecuted:** a claimed
+priority note against `2607.0085` of the S block (Perron-Frobenius for
+irreducible nonnegative matrices already in mathlib), `arXiv:2606.07922`
+(Washburn & Simons) as the nearest non-mechanised neighbour --- neither verified
+here --- and a proposal to synthesise the fifteen S-block papers into one
+monograph.
+
+**D-1 ITSELF IS UNTOUCHED.**  Still green, core 8466, oracle 14/14, zero
+`sorryAx`.  What changed in this round was a charter and an instrument, never a
+theorem.
