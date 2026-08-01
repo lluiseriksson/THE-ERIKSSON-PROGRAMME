@@ -749,17 +749,13 @@ witness orthogonal to `Ω` with no hypothesis on `Ω` at all --- the two survivi
 terms cancel identically. -/
 theorem pairVec_orthogonal {p q : n} (hpq : p ≠ q) (Ω : n → ℝ) :
     ∑ i, Ω i * pairVec p q (Ω q) (Ω p) i = 0 := by
-  have hsplit : ∀ i, Ω i * pairVec p q (Ω q) (Ω p) i
-      = (if i = p then Ω p * Ω q else 0) + (if i = q then -(Ω q * Ω p) else 0) := by
-    intro i
-    by_cases hip : i = p
-    · subst hip; simp [pairVec, hpq]
-    · by_cases hiq : i = q
-      · subst hiq; simp [pairVec, hip, Ne.symm hpq]; ring
-      · simp [pairVec, hip, hiq]
-  rw [Finset.sum_congr rfl fun i _ => hsplit i, Finset.sum_add_distrib,
-    Finset.sum_ite_eq, Finset.sum_ite_eq]
-  simp
+  have hsub : ∀ i ∈ (Finset.univ : Finset n), i ∉ ({p, q} : Finset n) →
+      Ω i * pairVec p q (Ω q) (Ω p) i = 0 := by
+    intro i _ hi
+    simp only [Finset.mem_insert, Finset.mem_singleton, not_or] at hi
+    rw [pairVec_off hi.1 hi.2, mul_zero]
+  rw [← Finset.sum_subset (Finset.subset_univ ({p, q} : Finset n)) hsub,
+    Finset.sum_pair hpq, pairVec_at_p, pairVec_at_q hpq]
   ring
 
 /-! ### §9.3  The scalar limit that finishes the lower bound -/
@@ -769,22 +765,234 @@ theorem pairVec_orthogonal {p q : n} (hpq : p ≠ q) (Ω : n → ℝ) :
 is the right-hand value.  Stated with an explicit witness rather than a limit. -/
 theorem lower_bound_approaches {μ c : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1) (hc : 0 < c)
     {t : ℝ} (ht : t < (1 - μ) / (1 + μ)) :
-    ∃ ε : ℝ, 0 < ε ∧ t < (1 - μ) / (1 + μ + c * ε) := by
+    ∃ ε : ℝ, 0 < ε ∧ ε ≤ 1 ∧ t < (1 - μ) / (1 + μ + c * ε) := by
   have hden : (0 : ℝ) < 1 + μ := by linarith
   have hnum : (0 : ℝ) < 1 - μ := by linarith
-  rcases le_or_lt t 0 with hneg | hpos
-  · refine ⟨1, one_pos, lt_of_le_of_lt hneg ?_⟩
-    positivity
-  · -- `t > 0`: solve `t (1 + μ + cε) < 1 - μ` for `ε`
+  by_cases hpos : 0 < t
+  · -- `t > 0`: solve `t (1 + μ + cε) < 1 - μ` for `ε`, explicitly
+    have ht0 : t ≠ 0 := ne_of_gt hpos
+    have hc0 : c ≠ 0 := ne_of_gt hc
     have hkey : t * (1 + μ) < 1 - μ := by
       rw [lt_div_iff₀ hden] at ht; linarith
-    refine ⟨(1 - μ - t * (1 + μ)) / (2 * t * c), by positivity, ?_⟩
-    rw [lt_div_iff₀ (by positivity)]
-    have hexp : t * (c * ((1 - μ - t * (1 + μ)) / (2 * t * c)))
-        = (1 - μ - t * (1 + μ)) / 2 := by
-      field_simp
-      ring
-    nlinarith [hexp, hkey, hpos]
+    have h2tc : (0 : ℝ) < 2 * t * c := mul_pos (mul_pos (by norm_num) hpos) hc
+    obtain ⟨E, hEdef⟩ : ∃ E : ℝ, E = (1 - μ - t * (1 + μ)) / (2 * t * c) := ⟨_, rfl⟩
+    have hE : 0 < E := by rw [hEdef]; exact div_pos (by linarith) h2tc
+    have hexp : t * (c * E) = (1 - μ - t * (1 + μ)) / 2 := by
+      rw [hEdef]; field_simp; all_goals ring
+    have hminpos : 0 < min E 1 := lt_min hE one_pos
+    refine ⟨min E 1, hminpos, min_le_right _ _, ?_⟩
+    have hd2 : (0 : ℝ) < 1 + μ + c * min E 1 := by
+      have := mul_pos hc hminpos; linarith
+    rw [lt_div_iff₀ hd2]
+    have hstep : t * (c * min E 1) ≤ t * (c * E) := by
+      have htc : (0 : ℝ) ≤ t * c := le_of_lt (mul_pos hpos hc)
+      nlinarith [min_le_left E 1, htc]
+    have hmul : t * (1 + μ + c * min E 1) = t * (1 + μ) + t * (c * min E 1) := by ring
+    rw [hmul]
+    linarith
+  · exact ⟨1, one_pos, le_refl 1,
+      lt_of_le_of_lt (not_lt.mp hpos) (div_pos hnum (by linarith))⟩
+
+/-! ## §10  The conditional theorem: an exact least upper bound
+
+The main theorem of the paper has two imported inputs — Birkhoff's contraction
+bound for the upper half, and a Perron vector for the lower half — and a body of
+glue that is entirely elementary.  §10 separates them.
+
+Both imports enter as **explicit hypotheses of the theorem**, never as `axiom`
+declarations: a reader who does not grant them gets a true implication and no
+claim.  Everything between them is proved here: that the cross-ratio is a
+congruence invariant (§8), that the fluctuation witness is orthogonal and has
+the right Rayleigh quotient (§9), and that the resulting family of lower bounds
+has the stated supremum (§9.3).
+
+Two deliberate weakenings, both in the direction of assuming *less*:
+
+* `hBirkhoff` is stated in Seneta's logarithm-free form — no `log`, no `tanh`,
+  only `Real.sqrt` — and with `φ` merely *a* lower bound for the cross-ratios
+  rather than their minimum.  Since `x ↦ (1-x)/(1+x)` is decreasing, this
+  version is *implied* by the sharp one.
+* `hConc` asks only for the lower bound at each positive `ε ≤ 1`, not for a
+  limit.  No spectral continuity appears anywhere in §10; the `ε → 0` step is
+  the scalar `lower_bound_approaches`, which produces an explicit witness. -/
+
+/-- Everything a strictly positive diagonal congruence can reach. -/
+def congrOrbit (r : Matrix n n ℝ → ℝ) (M : Matrix n n ℝ) : Set ℝ :=
+  {x | ∃ d : n → ℝ, (∀ i, 0 < d i) ∧
+        x = r (Matrix.diagonal d * M * Matrix.diagonal d)}
+
+theorem mem_congrOrbit (r : Matrix n n ℝ → ℝ) (M : Matrix n n ℝ) {d : n → ℝ}
+    (hd : ∀ i, 0 < d i) :
+    r (Matrix.diagonal d * M * Matrix.diagonal d) ∈ congrOrbit r M :=
+  ⟨d, hd, rfl⟩
+
+/-- Non-vacuity, first half: the set the supremum is taken over is never empty,
+so `IsLUB` below is not a statement about `∅`. -/
+theorem congrOrbit_nonempty (r : Matrix n n ℝ → ℝ) (M : Matrix n n ℝ) :
+    (congrOrbit r M).Nonempty :=
+  ⟨_, mem_congrOrbit r M (d := fun _ => (1 : ℝ)) (fun _ => one_pos)⟩
+
+/-! ### §10.1  The upper half, from Birkhoff -/
+
+/-- **The upper bound.**  Granted Birkhoff's bound as a hypothesis, the whole
+congruence orbit lies below `(1-μ)/(1+μ)`.  The proof is §8 and nothing else:
+the congruence multiplies numerator and denominator of every cross-ratio by the
+same factor, so the bound available at `M` is available at every `DMD`. -/
+theorem congrOrbit_upper_of_birkhoff
+    {r : Matrix n n ℝ → ℝ} {M : Matrix n n ℝ} {μ : ℝ}
+    (hμ0 : 0 < μ) (hμ1 : μ ≤ 1)
+    (hlo : ∀ a b, μ ≤ M a b) (hhi : ∀ a b, M a b ≤ 1)
+    (hBirkhoff : ∀ (T : Matrix n n ℝ) (φ : ℝ), 0 < φ → φ ≤ 1 →
+        (∀ i j k l, φ * (T j k * T i l) ≤ T i k * T j l) →
+        r T ≤ (1 - Real.sqrt φ) / (1 + Real.sqrt φ)) :
+    ∀ x ∈ congrOrbit r M, x ≤ (1 - μ) / (1 + μ) := by
+  rintro x ⟨d, hd, rfl⟩
+  have hcross : ∀ i j k l,
+      (μ * μ) * ((Matrix.diagonal d * M * Matrix.diagonal d) j k *
+          (Matrix.diagonal d * M * Matrix.diagonal d) i l)
+        ≤ (Matrix.diagonal d * M * Matrix.diagonal d) i k *
+          (Matrix.diagonal d * M * Matrix.diagonal d) j l := by
+    intro i j k l
+    have hw : (0 : ℝ) ≤ d i * d j * d k * d l :=
+      le_of_lt (mul_pos (mul_pos (mul_pos (hd i) (hd j)) (hd k)) (hd l))
+    have hM := crossRatio_le_of_bounds hμ0 hlo hhi j i k l
+    have key := mul_le_mul_of_nonneg_left hM hw
+    rw [crossProd_congr M d i j k l, crossProd_congr M d j i k l]
+    nlinarith [key]
+  have hφ0 : (0 : ℝ) < μ * μ := mul_pos hμ0 hμ0
+  have hφ1 : μ * μ ≤ 1 := by nlinarith
+  have hres := hBirkhoff _ (μ * μ) hφ0 hφ1 hcross
+  rwa [Real.sqrt_mul_self hμ0.le] at hres
+
+/-! ### §10.2  The lower half, without spectral continuity -/
+
+/-- A sum whose summand vanishes off a pair collapses to two terms. -/
+theorem sum_eq_pair_of_vanishing {p q : n} (hpq : p ≠ q) (g : n → ℝ)
+    (hg : ∀ i, i ≠ p → i ≠ q → g i = 0) : ∑ i, g i = g p + g q := by
+  have hsub : ∀ i ∈ (Finset.univ : Finset n), i ∉ ({p, q} : Finset n) → g i = 0 := by
+    intro i _ hi
+    simp only [Finset.mem_insert, Finset.mem_singleton, not_or] at hi
+    exact hg i hi.1 hi.2
+  rw [← Finset.sum_subset (Finset.subset_univ ({p, q} : Finset n)) hsub,
+    Finset.sum_pair hpq]
+
+/-- The quadratic form of a two-supported vector sees only the `2×2` block.
+This is what makes the lower bound elementary: the rest of the matrix, however
+large, contributes nothing to the witness. -/
+theorem quad_pairVec (M : Matrix n n ℝ) {p q : n} (hpq : p ≠ q) (a b : ℝ) :
+    quad M (pairVec p q a b)
+      = a * M p p * a + a * M p q * (-b) + ((-b) * M q p * a + (-b) * M q q * (-b)) := by
+  have hinner : ∀ i : n, ∑ j, pairVec p q a b i * M i j * pairVec p q a b j
+      = pairVec p q a b i * M i p * a + pairVec p q a b i * M i q * (-b) := by
+    intro i
+    have h := sum_eq_pair_of_vanishing hpq
+      (fun j => pairVec p q a b i * M i j * pairVec p q a b j)
+      (fun j hjp hjq => by rw [pairVec_off hjp hjq]; ring)
+    rw [h]
+    simp only [pairVec_at_p, pairVec_at_q hpq]
+  unfold quad
+  rw [sum_eq_pair_of_vanishing hpq
+    (fun i => ∑ j, pairVec p q a b i * M i j * pairVec p q a b j)
+    (fun i hip hiq => by
+      simp only [pairVec_off hip hiq, zero_mul, Finset.sum_const_zero])]
+  simp only [hinner, pairVec_at_p, pairVec_at_q hpq]
+  all_goals ring
+
+/-- **The fluctuation witness at the least-correlated pair.**  Both halves of
+what the lower bound needs, with no eigenvalue and no limit: the witness is
+orthogonal to *any* candidate Perron vector `Ω`, and its Rayleigh quotient is at
+least `1 - μ`.  The slack is `μ (Ω p - Ω q)²`, which is why the bound is exactly
+`1 - μ` and not less. -/
+theorem leastPair_fluctuation_witness
+    {M : Matrix n n ℝ} {μ : ℝ} {p q : n} (hpq : p ≠ q) (hμ : 0 ≤ μ)
+    (hpp : M p p = 1) (hqq : M q q = 1) (hpqv : M p q = μ) (hqpv : M q p = μ)
+    (Ω : n → ℝ) :
+    (∑ i, Ω i * pairVec p q (Ω q) (Ω p) i = 0) ∧
+      (1 - μ) * (∑ i, pairVec p q (Ω q) (Ω p) i * pairVec p q (Ω q) (Ω p) i)
+        ≤ quad M (pairVec p q (Ω q) (Ω p)) := by
+  refine ⟨pairVec_orthogonal hpq Ω, ?_⟩
+  have hnorm : ∑ i, pairVec p q (Ω q) (Ω p) i * pairVec p q (Ω q) (Ω p) i
+      = Ω q * Ω q + Ω p * Ω p := by
+    rw [sum_eq_pair_of_vanishing hpq
+      (fun i => pairVec p q (Ω q) (Ω p) i * pairVec p q (Ω q) (Ω p) i)
+      (fun i hip hiq => by rw [pairVec_off hip hiq]; ring)]
+    simp only [pairVec_at_p, pairVec_at_q hpq]
+    ring
+  rw [hnorm, quad_pairVec M hpq, hpp, hqq, hpqv, hqpv]
+  nlinarith [witness_quad_lower (a := Ω q) (b := Ω p) hμ]
+
+/-- The division step, isolated.  A Perron root no larger than a row-sum bound
+and a fluctuation no smaller than `1 - μ` give a ratio bound — and this is the
+*only* place the Perron root is used at all. -/
+theorem leastPair_specGap_lower {μ ε c ρ s : ℝ} (hμ1 : μ < 1)
+    (hρ0 : 0 < ρ) (hρa : ρ ≤ 1 + μ + c * ε) (hs : 1 - μ ≤ s) :
+    (1 - μ) / (1 + μ + c * ε) ≤ s / ρ := by
+  have ha : (0 : ℝ) < 1 + μ + c * ε := lt_of_lt_of_le hρ0 hρa
+  have hb : (0 : ℝ) ≤ 1 - μ := by linarith
+  have hexp : s / ρ - (1 - μ) / (1 + μ + c * ε)
+      = (s * (1 + μ + c * ε) - (1 - μ) * ρ) / (ρ * (1 + μ + c * ε)) := by
+    field_simp
+    all_goals ring
+  have hnn : 0 ≤ (s * (1 + μ + c * ε) - (1 - μ) * ρ) / (ρ * (1 + μ + c * ε)) :=
+    div_nonneg (by nlinarith) (le_of_lt (mul_pos hρ0 ha))
+  have : 0 ≤ s / ρ - (1 - μ) / (1 + μ + c * ε) := by rw [hexp]; exact hnn
+  linarith
+
+/-- **Every value below `(1-μ)/(1+μ)` is beaten inside the orbit.**  Not in its
+closure, and not in a limit: for each such `t` an explicit `ε` is produced, and
+the concentrating weight at that `ε` is strictly positive. -/
+theorem concentrated_specRatio_approaches
+    {r : Matrix n n ℝ → ℝ} {M : Matrix n n ℝ} {μ c : ℝ} {p q : n}
+    (hμ0 : 0 < μ) (hμ1 : μ < 1) (hc : 0 < c)
+    (hConc : ∀ ε : ℝ, 0 < ε → ε ≤ 1 →
+        (1 - μ) / (1 + μ + c * ε) ≤
+          r (Matrix.diagonal (concentrate p q ε) * M *
+            Matrix.diagonal (concentrate p q ε)))
+    {t : ℝ} (ht : t < (1 - μ) / (1 + μ)) :
+    ∃ x ∈ congrOrbit r M, t < x := by
+  obtain ⟨ε, hε0, hε1, hlt⟩ := lower_bound_approaches hμ0 hμ1 hc ht
+  exact ⟨_, mem_congrOrbit r M (fun i => concentrate_pos hε0 p q i),
+    lt_of_lt_of_le hlt (hConc ε hε0 hε1)⟩
+
+/-! ### §10.3  The two halves compose -/
+
+/-- **The conditional main theorem.**  Granted Birkhoff's bound (`hBirkhoff`) and
+the concentrated lower bound (`hConc`), `(1-μ)/(1+μ)` is the *least* upper bound
+of the congruence orbit — an equality, not an estimate.
+
+Neither hypothesis is an axiom of this development, and neither is proved here.
+What is proved is that nothing else is needed: the reduction of Birkhoff's bound
+at `DMD` to its value at `M`, the elimination of the limit, and the composition
+into `IsLUB` are all mechanical. -/
+theorem congruenceRatio_isLUB_of_birkhoff
+    {r : Matrix n n ℝ → ℝ} {M : Matrix n n ℝ} {μ c : ℝ} {p q : n}
+    (hμ0 : 0 < μ) (hμ1 : μ < 1) (hc : 0 < c)
+    (hlo : ∀ a b, μ ≤ M a b) (hhi : ∀ a b, M a b ≤ 1)
+    (hBirkhoff : ∀ (T : Matrix n n ℝ) (φ : ℝ), 0 < φ → φ ≤ 1 →
+        (∀ i j k l, φ * (T j k * T i l) ≤ T i k * T j l) →
+        r T ≤ (1 - Real.sqrt φ) / (1 + Real.sqrt φ))
+    (hConc : ∀ ε : ℝ, 0 < ε → ε ≤ 1 →
+        (1 - μ) / (1 + μ + c * ε) ≤
+          r (Matrix.diagonal (concentrate p q ε) * M *
+            Matrix.diagonal (concentrate p q ε))) :
+    IsLUB (congrOrbit r M) ((1 - μ) / (1 + μ)) := by
+  constructor
+  · intro x hx
+    exact congrOrbit_upper_of_birkhoff hμ0 hμ1.le hlo hhi hBirkhoff x hx
+  · intro y hy
+    by_contra hcon
+    push_neg at hcon
+    obtain ⟨x, hxmem, hxgt⟩ :=
+      concentrated_specRatio_approaches (p := p) (q := q) hμ0 hμ1 hc hConc hcon
+    exact absurd (hy hxmem) (not_le.mpr hxgt)
+
+/-- Non-vacuity, second half: the value the theorem pins is strictly positive
+whenever `μ < 1`, so the conclusion is not the trivial `IsLUB … 0`.  Together
+with `congrOrbit_nonempty` and the `n = 2` attainment of `exch_two_eigen`, the
+statement has content at every admissible `μ`. -/
+theorem isLUB_value_pos {μ : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1) :
+    0 < (1 - μ) / (1 + μ) :=
+  div_pos (by linarith) (by linarith)
 
 end Congruence
 
