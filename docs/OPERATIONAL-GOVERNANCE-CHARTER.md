@@ -42,8 +42,8 @@ The only exception is explicit owner authorization in the same assignment
 that names the command or campaign.  An idle or apparently available Windows
 machine does not grant permission.
 
-The `symWeighted` judge from assignment (14), measured at 171 seconds, is not
-light.  Its former Windows authorization is superseded and it runs in Colab.
+The spatial `symWeighted` judge, measured at 171 seconds, is not light.  Its
+former Windows authorization is superseded and it runs in Colab.
 The former local build token and any one-session-total rule are superseded.
 
 Colab Pro+ permits multiple concurrent runtimes.  The operating limit is

@@ -34,8 +34,8 @@ file.
   that local-light contract on Windows is prohibited.  The only exception is
   explicit owner authorization in the same assignment naming the command or
   campaign.  An apparently idle Windows machine grants no permission.  The
-  `symWeighted` judge from assignment (14), measured at 171 seconds, is not
-  light; its former Windows authorization is superseded and it goes to Colab.
+  spatial `symWeighted` judge, measured at 171 seconds, is not light; its
+  former Windows authorization is superseded and it goes to Colab.
 * The former local build token and any one-session-total rule are superseded.
   Colab Pro+ permits multiple concurrent runtimes.  The operating limit is
   compute units consumed per hour of connected runtime, not a presumed
@@ -257,8 +257,11 @@ never repeat that.
    ~0% (<0.1%) distance to the Clay problem until the continuum
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
-7. **After adding a module to the core, confirm the build job count
-   incremented** (latest merged-core checkpoint: 8463 jobs at `7460e035`).
+7. **After adding a module to the core, confirm the expected build-job-count
+   change against the latest measured baseline in
+   `docs/VERIFICATION-LEDGER.md` that applies to the exact SHA/base being
+   audited.**  Never use a job count copied into `CLAUDE.md` as the current
+   baseline.
 
 ## The autonomous loop
 
@@ -302,9 +305,11 @@ Lean; they save hours.
 
 ## Current state (updated 2026-07-04; source checkpoint 2026-07-04)
 
-* Latest recorded merged-core checkpoint: **8463 jobs** at `7460e035`, zero sorry,
-  zero nonstandard axioms.  The thermodynamic-limit branch itself was
-  measured at 8460 jobs at `0be45284`.
+* Historical snapshot measured 2026-07-04, not a live baseline: **8463 jobs**
+  at `7460e035`, zero sorry, zero nonstandard axioms.  The
+  thermodynamic-limit branch itself was measured at 8460 jobs at `0be45284`.
+  Current job-count comparisons must use the latest applicable measured
+  baseline in `docs/VERIFICATION-LEDGER.md` for the exact SHA/base audited.
   Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
   ledger includes the earlier Addendum 444/date-stamped checkpoint material
   plus the 2026-07-03 Catalan/Schur series through Addendum 465 and the
