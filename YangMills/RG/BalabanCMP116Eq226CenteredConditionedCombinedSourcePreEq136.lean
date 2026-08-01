@@ -31,6 +31,8 @@ namespace YangMills.RG
 
 noncomputable section
 
+open scoped Matrix.Norms.Operator
+
 private abbrev CombinedSourceBond (M Q : ℕ)
     [NeZero M] [NeZero Q] [NeZero (2 * Q)]
     [NeZero (M * (2 * Q))] :=
@@ -269,7 +271,7 @@ noncomputable def volumeRate
     (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
       Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
-  cmp116Eq80Lemma1CombinedPhysicalVolumeRate
+  cmp116Eq80Lemma1CombinedPhysicalVolumeRate (q := X.q)
     X.K X.root X.coercivity_pos X.mass_pos X.K_coercive
     (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P)
     X.Delta X.radius X.rate X.Ahead X.rho X.alpha X.sourceRate X.qBound
@@ -673,7 +675,7 @@ noncomputable def
         H.E0Direct_nonneg X.lemma1.E0_pos)
       simpa [rootBound, CMP116CenteredConditionedCombinedSourceData.rootBound,
         E0] using
-        cmp116Eq80Lemma1CombinedPhysicalRootBound_nonneg
+        cmp116Eq80Lemma1CombinedPhysicalRootBound_nonneg (q := X.q)
           hE0 (le_of_lt H.epsilon1_pos) (le_of_lt H.C1_pos)
           (le_of_lt H.alpha4_pos) H.animal_small H.rooted_animal_small
     rooted_residual := by
@@ -682,7 +684,7 @@ noncomputable def
         H.E0Direct_nonneg X.lemma1.E0_pos)
       simpa [domainSupport, domainMetric, rootBound,
         CMP116CenteredConditionedCombinedSourceData.rootBound, E0] using
-        cmp116Eq80Lemma1Combined_rooted_residual_le_physical
+        cmp116Eq80Lemma1Combined_rooted_residual_le_physical (q := X.q)
           anchor domains E E0 X.epsilon1 X.C1 X.C2 X.kappa1 X.delta
           X.kappa X.alpha4 hE0 (le_of_lt H.epsilon1_pos)
           (le_of_lt H.C1_pos) (le_of_lt H.alpha4_pos)
@@ -695,17 +697,13 @@ noncomputable def
         CMP116CenteredConditionedCombinedSourceData.sourceRate,
         CMP116CenteredConditionedCombinedSourceData.determinantCost,
         alpha, E0] using
-        cmp116Eq80Lemma1CombinedPhysical_volume_budget
+        cmp116Eq80Lemma1CombinedPhysical_volume_budget (q := X.q)
           X.K X.root X.coercivity_pos X.mass_pos X.K_coercive
           (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P)
           X.Delta X.radius X.rate X.Ahead X.rho alpha X.sourceRate X.qBound
           X.determinantCost E0 X.epsilon1 X.C1 X.C2 X.kappa1 X.delta
           X.kappa X.alpha4 H.alpha_pos
   }
-
-end
-
-end YangMills.RG
 
 end
 
