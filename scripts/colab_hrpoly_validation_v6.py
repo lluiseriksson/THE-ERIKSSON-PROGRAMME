@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Drive-free Colab validator for the hRpoly combined Eq. (1.43) checkpoint.
+"""Drive-free Colab validator v7 for the hRpoly combined Eq. (1.43) checkpoint.
 
 This is transport and evidence infrastructure only.  It compiles SOURCE_A in
 two independent fresh clones.  The commit containing this runner is DRIVER_B
@@ -22,6 +22,8 @@ import sys
 import tarfile
 import time
 import traceback
+import urllib.error
+import urllib.request
 import uuid
 
 
@@ -30,6 +32,11 @@ BASE_HEAD = "072b0955a1ee524fefa0826da4d34a432e69e6df"
 SOURCE_A = "1f86b3c4ff9ebf52ac8b6f4ca7f22aa3b5cc92ad"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
+TOOLCHAIN_ASSET_URL = (
+    "https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/"
+    "lean-4.29.0-rc6-linux.tar.zst"
+)
+TOOLCHAIN_ASSET_SHA256 = "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
 
 DRIVER_ONLY_PATHS = {
     "docs/COLAB-HRPOLY-VALIDATION-RUNBOOK-v6.md",
@@ -79,6 +86,8 @@ QUEUE = [
     ("combined_terminal_eq143_audit", "lake env lean YangMills/RG/BalabanCMP116Eq80Lemma1CombinedTerminalEq143Audit.lean", True),
     ("partial_termsource_constructor", "lake build YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedPartialTermSourceConstructor", False),
     ("partial_termsource_constructor_audit", "lake env lean YangMills/RG/BalabanCMP116Eq226CenteredConditionedCombinedPartialTermSourceConstructorAudit.lean", True),
+    ("yangmills_core", "lake build YangMillsCore", False),
+    ("full_oracle", "lake env lean oracle_check.lean", True),
 ]
 
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
@@ -142,8 +151,95 @@ def portable_run(command: str, *, cwd: Path, log: Path, metadata: Path) -> tuple
     return child.returncode, elapsed
 
 
+def log_tail(path: Path, lines: int = 80) -> str:
+    text = path.read_text(encoding="utf-8", errors="replace")
+    return "\n".join(text.splitlines()[-lines:])
+
+
+def bootstrap_toolchain(evidence: Path) -> dict[str, object]:
+    """Install the official pinned Lean release into ephemeral Colab storage."""
+    root = Path("/content/hrpoly-toolchain-v4.29.0-rc6")
+    archive = Path("/content/lean-4.29.0-rc6-linux.tar.zst")
+    if root.exists() or archive.exists():
+        raise RuntimeError("toolchain bootstrap paths already exist; refusing a reused runtime")
+
+    bootstrap = evidence / "toolchain"
+    bootstrap.mkdir(parents=True, exist_ok=False)
+    if shutil.which("curl") is None:
+        raise RuntimeError("curl is absent from the Colab image")
+    rc, _ = portable_run(
+        "curl --fail --location --retry 5 --retry-all-errors --retry-delay 2 "
+        "--connect-timeout 30 --output /content/lean-4.29.0-rc6-linux.tar.zst "
+        + TOOLCHAIN_ASSET_URL,
+        cwd=Path("/content"),
+        log=bootstrap / "download.log",
+        metadata=bootstrap / "download.json",
+    )
+    if rc != 0:
+        raise RuntimeError(
+            f"official toolchain download failed rc={rc}\n{log_tail(bootstrap / 'download.log')}"
+        )
+    asset_bytes = archive.stat().st_size
+    asset_hash = sha256(archive)
+    if asset_hash != TOOLCHAIN_ASSET_SHA256:
+        raise RuntimeError(
+            f"toolchain asset hash mismatch: {asset_hash} != {TOOLCHAIN_ASSET_SHA256}; "
+            f"bytes={asset_bytes}"
+        )
+
+    if shutil.which("unzstd") is None:
+        rc, _ = portable_run(
+            "apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq zstd",
+            cwd=Path("/content"),
+            log=bootstrap / "install-zstd.log",
+            metadata=bootstrap / "install-zstd.json",
+        )
+        if rc != 0 or shutil.which("unzstd") is None:
+            raise RuntimeError(
+                f"zstd installation failed rc={rc}\n{log_tail(bootstrap / 'install-zstd.log')}"
+            )
+
+    root.mkdir(parents=True, exist_ok=False)
+    rc, _ = portable_run(
+        "tar --use-compress-program=unzstd -xf /content/lean-4.29.0-rc6-linux.tar.zst "
+        "-C /content/hrpoly-toolchain-v4.29.0-rc6",
+        cwd=Path("/content"),
+        log=bootstrap / "extract.log",
+        metadata=bootstrap / "extract.json",
+    )
+    if rc != 0:
+        raise RuntimeError(f"toolchain extraction failed rc={rc}\n{log_tail(bootstrap / 'extract.log')}")
+
+    lake_candidates = sorted(root.glob("*/bin/lake"))
+    if len(lake_candidates) != 1:
+        raise RuntimeError(f"expected one extracted bin/lake, found {lake_candidates}")
+    bin_dir = lake_candidates[0].parent
+    lean = bin_dir / "lean"
+    lake = bin_dir / "lake"
+    if not lean.is_file() or not lake.is_file():
+        raise RuntimeError(f"incomplete toolchain bin directory: {bin_dir}")
+    os.environ["PATH"] = f"{bin_dir}{os.pathsep}{os.environ.get('PATH', '')}"
+
+    lean_version = command_output([str(lean), "--version"], Path("/content"))
+    lake_version = command_output([str(lake), "--version"], Path("/content"))
+    result = {
+        "asset_url": TOOLCHAIN_ASSET_URL,
+        "asset_bytes": asset_bytes,
+        "asset_sha256": asset_hash,
+        "expected_asset_sha256": TOOLCHAIN_ASSET_SHA256,
+        "bin_dir": str(bin_dir),
+        "lean_version": lean_version,
+        "lake_version": lake_version,
+        "lean_sha256": sha256(lean),
+        "lake_sha256": sha256(lake),
+    }
+    write_json(bootstrap / "toolchain-gate.json", result)
+    print("TOOLCHAIN_GATE_OK", json.dumps(result, sort_keys=True), flush=True)
+    return result
+
+
 def preflight(evidence: Path, run_id: str) -> dict[str, object]:
-    sentinel = Path("/content/HRPOLY_V6_QUEUE_STARTED")
+    sentinel = Path("/content/HRPOLY_V7_QUEUE_STARTED")
     states: dict[str, object] = {"absent_before": not sentinel.exists()}
     if not states["absent_before"]:
         raise RuntimeError(f"sentinel already exists: {sentinel}")
@@ -187,11 +283,13 @@ def preflight(evidence: Path, run_id: str) -> dict[str, object]:
 
 def verify_driver(driver: Path, driver_b: str, evidence: Path) -> None:
     head = command_output(["git", "rev-parse", "HEAD"], driver)
-    parent = command_output(["git", "rev-parse", f"{driver_b}^"], driver)
     if head != driver_b:
         raise RuntimeError(f"driver HEAD mismatch: {head} != {driver_b}")
-    if parent != SOURCE_A:
-        raise RuntimeError(f"B parent mismatch: {parent} != {SOURCE_A}")
+    ancestor = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", SOURCE_A, driver_b], cwd=driver
+    ).returncode
+    if ancestor != 0:
+        raise RuntimeError(f"SOURCE_A is not an ancestor of driver checkpoint {driver_b}")
     changed = set(
         filter(
             None,
@@ -204,11 +302,11 @@ def verify_driver(driver: Path, driver_b: str, evidence: Path) -> None:
         evidence / "driver_gate.json",
         {
             "driver_head": head,
-            "source_parent": parent,
+            "source_ancestor": SOURCE_A,
             "driver_only_paths": sorted(changed),
         },
     )
-    print("DRIVER_GATE_OK", head, parent, flush=True)
+    print("DRIVER_GATE_OK", head, SOURCE_A, flush=True)
 
 
 def clone_source(label: str, repo_url: str, root: Path, evidence: Path) -> None:
@@ -276,6 +374,91 @@ def verify_source(label: str, root: Path, evidence: Path) -> dict[str, object]:
     return result
 
 
+def materialize_dependencies(label: str, root: Path, evidence: Path) -> dict[str, object]:
+    """Resolve the pinned manifest and fetch caches without permitting pin drift."""
+    log_dir = evidence / label / "dependencies"
+    log_dir.mkdir(parents=True, exist_ok=False)
+    toolchain_file = root / "lean-toolchain"
+    manifest_file = root / "lake-manifest.json"
+    before = {
+        "lean_toolchain_sha256": sha256(toolchain_file),
+        "lake_manifest_sha256": sha256(manifest_file),
+    }
+    rc, elapsed = portable_run(
+        "lake exe cache get",
+        cwd=root,
+        log=log_dir / "cache-get.log",
+        metadata=log_dir / "cache-get.json",
+    )
+    mathlib = root / ".lake" / "packages" / "mathlib"
+    update_used = False
+    if not mathlib.exists():
+        update_used = True
+        update_rc, _ = portable_run(
+            "lake update",
+            cwd=root,
+            log=log_dir / "lake-update.log",
+            metadata=log_dir / "lake-update.json",
+        )
+        after_update = {
+            "lean_toolchain_sha256": sha256(toolchain_file),
+            "lake_manifest_sha256": sha256(manifest_file),
+        }
+        if update_rc != 0:
+            raise RuntimeError(
+                f"{label}: lake update failed rc={update_rc}\n{log_tail(log_dir / 'lake-update.log')}"
+            )
+        if after_update != before:
+            subprocess.run(
+                ["git", "restore", "--source=HEAD", "--", "lean-toolchain", "lake-manifest.json"],
+                cwd=root,
+                check=True,
+            )
+            raise RuntimeError(
+                f"{label}: lake update changed pinned inputs; restored and rejected: "
+                f"before={before} after={after_update}"
+            )
+        rc, elapsed = portable_run(
+            "lake exe cache get",
+            cwd=root,
+            log=log_dir / "cache-get-after-update.log",
+            metadata=log_dir / "cache-get-after-update.json",
+        )
+    after = {
+        "lean_toolchain_sha256": sha256(toolchain_file),
+        "lake_manifest_sha256": sha256(manifest_file),
+    }
+    if after != before:
+        raise RuntimeError(f"{label}: dependency bootstrap changed pinned inputs: {before} -> {after}")
+    if not mathlib.exists():
+        raise RuntimeError(f"{label}: Mathlib checkout missing after dependency bootstrap")
+    mathlib_pin = command_output(["git", "rev-parse", "HEAD"], mathlib)
+    if mathlib_pin != EXPECTED_MATHLIB:
+        raise RuntimeError(f"{label}: Mathlib pin mismatch after bootstrap: {mathlib_pin}")
+    status = command_output(["git", "status", "--short"], root)
+    if status:
+        raise RuntimeError(f"{label}: dependency bootstrap dirtied source checkout: {status}")
+    result = {
+        "cache_get_returncode": rc,
+        "cache_get_seconds": elapsed,
+        "cache_available": rc == 0,
+        "compiled_from_source_if_needed": rc != 0,
+        "lake_update_used": update_used,
+        "mathlib_pin": mathlib_pin,
+        "pinned_file_hashes": after,
+    }
+    write_json(log_dir / "dependency-gate.json", result)
+    print("DEPENDENCY_GATE_OK", label, json.dumps(result, sort_keys=True), flush=True)
+    if rc != 0:
+        print(
+            "CACHE_GET_UNAVAILABLE_CONTINUING_WITH_SOURCE_BUILD",
+            label,
+            log_tail(log_dir / ("cache-get-after-update.log" if update_used else "cache-get.log"), 20),
+            flush=True,
+        )
+    return result
+
+
 def parse_axioms(log_text: str) -> list[list[str]]:
     results: list[list[str]] = []
     for match in AXIOM_RE.finditer(log_text):
@@ -288,7 +471,7 @@ def parse_axioms(log_text: str) -> list[list[str]]:
 
 def run_queue(label: str, root: Path, evidence: Path) -> dict[str, object]:
     if shutil.which("lake") is None:
-        raise RuntimeError("lake is not present in PATH; installations are forbidden by this run")
+        raise RuntimeError("lake is absent after verified official toolchain bootstrap")
     entries: list[dict[str, object]] = []
     log_dir = evidence / label / "queue"
     log_dir.mkdir(parents=True, exist_ok=False)
@@ -312,7 +495,9 @@ def run_queue(label: str, root: Path, evidence: Path) -> dict[str, object]:
         entries.append(entry)
         print("TARGET_END", label, index, name, "rc", rc, "seconds", elapsed, flush=True)
         if rc != 0:
-            raise RuntimeError(f"{label}:{name}: first command failure rc={rc}; see {log}")
+            raise RuntimeError(
+                f"{label}:{name}: first command failure rc={rc}; log tail:\n{log_tail(log)}"
+            )
         if name == "mathlib_pin":
             pin = text.strip().splitlines()[-1] if text.strip() else ""
             if pin != EXPECTED_MATHLIB:
@@ -355,7 +540,7 @@ def main() -> int:
     args = parser.parse_args()
 
     run_id = uuid.uuid4().hex
-    evidence = Path("/content") / f"hrpoly-v6-evidence-{run_id}"
+    evidence = Path("/content") / f"hrpoly-v7-evidence-{run_id}"
     evidence.mkdir(parents=True, exist_ok=False)
     session_started = time.perf_counter()
     summary: dict[str, object] = {
@@ -378,6 +563,8 @@ def main() -> int:
             raise RuntimeError("GPU device detected; this run is authorized for CPU only")
         verify_driver(args.driver_root.resolve(), args.driver_checkpoint, evidence)
         preflight(evidence, run_id)
+        toolchain = bootstrap_toolchain(evidence)
+        summary["toolchain"] = toolchain
 
         roots = {
             "clone-a": Path("/content/hrpoly-source-a"),
@@ -387,6 +574,7 @@ def main() -> int:
         for label, root in roots.items():
             clone_source(label, args.repo_url, root, evidence)
             verify_source(label, root, evidence)
+            materialize_dependencies(label, root, evidence)
             semantics[label] = run_queue(label, root, evidence)
 
         semantic_a = evidence / "clone-a" / "semantic-result.json"
