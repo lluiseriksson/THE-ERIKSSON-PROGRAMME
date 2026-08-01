@@ -29949,3 +29949,29 @@ This campaign is **not** a Lean certificate and does not advance either
 analytic obligation.  The odd-sector bound, the even non-Perron bound, and the
 uniform signed-front-door `specRatio <= tanh(beta) * exp(2 * gamma)` theorem
 remain wholly open.
+
+## Addendum 584 (2026-08-01, **TASK 14: Recovery-B cache failure**)
+
+Recovery-B opened the immutable preregistered notebook
+`5bf542ba39c6b2bac981f375c3c4aaf07f164120` in a fresh independent Colab
+high-RAM CPU runtime: Linux `6.6.122+`, Python `3.12.13`, eight Intel Xeon
+logical CPUs, 53467192 kB RAM, no GPU, root
+`/tmp/spatial-odd-orbit-fold-6yqq9g0n`.  It checked out
+`fca2f37705bc06cf659829bde64ea0fd5c810638`, passed all immutable prechecks,
+and passed the exact rational gate in normal and optimized Python.
+
+The first infrastructure command after toolchain installation,
+`lake exe cache get`, returned exit 1 with the literal missing-file error for
+`/root/.cache/mathlib/9b7efb42d099baec.ltar.part` and the corresponding
+`.ltar` file.  The notebook stopped before any Lean build.  No cause is
+inferred, no theorem failure is claimed, and this runtime supplies no terminal
+witness.  It was immediately disconnected and deleted; the UI confirmed
+`Återanslut Mycket RAM-minne` and the tab was closed.  The complete diagnostic
+and fresh-runtime replacement contract are retained in
+`INC-SPATIAL-ODD-ORBIT-FOLD-LEAN-002.md`.
+
+Recovery-A remained active in a disjoint high-RAM CPU runtime and shared no
+root or outputs with Recovery-B.  Regardless of its outcome, two complete
+fresh witnesses are still required before terminal certification.  Both
+analytic sector obligations and the uniform spatial-ring bound remain wholly
+open.
