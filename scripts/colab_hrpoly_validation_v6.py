@@ -2,8 +2,8 @@
 """Drive-free Colab validator v7 for the hRpoly combined Eq. (1.43) checkpoint.
 
 This is transport and evidence infrastructure only.  It compiles SOURCE_A in
-two independent fresh clones.  The commit containing this runner is DRIVER_B
-and is never used as the mathematical source checkout.
+two independent fresh clones.  The commit containing this runner is the driver
+checkpoint and is never used as the mathematical source checkout.
 """
 
 from __future__ import annotations
@@ -29,7 +29,7 @@ import uuid
 
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 BASE_HEAD = "072b0955a1ee524fefa0826da4d34a432e69e6df"
-SOURCE_A = "1f86b3c4ff9ebf52ac8b6f4ca7f22aa3b5cc92ad"
+SOURCE_A = "134a21f0dd9f82defb4de6334853031674dd285f"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
 TOOLCHAIN_ASSET_URL = (
@@ -53,18 +53,18 @@ SOURCE_HASHES = {
     "YangMills/RG/BalabanCMP116Eq220CenteredPhysicalQuadraticRate.lean": "b906cb3ac036ed9daa7d5b2a02c8712bf497b33d84a19a3dec76b20c1f2cdfce",
     "YangMills/RG/BalabanCMP116Eq220CenteredSourcePotential.lean": "94c4d0122472431b8b0d0facedcf8e7b1cfdd019e6f775ef9c4b3c0780486f88",
     "YangMills/RG/BalabanCMP116Eq226CenteredConditionedCombinedPartialTermSourceConstructor.lean": "8c2c933057ab94153181be96a196eb68fbbd74fbc63961aeba29a372344391e8",
-    "YangMills/RG/BalabanCMP116Eq226CenteredConditionedCombinedPartialTermSourceConstructorAudit.lean": "b78c4b36c4f2befd8ecebe59248230abebcb6bfb503371a857218f21833417e7",
+    "YangMills/RG/BalabanCMP116Eq226CenteredConditionedCombinedPartialTermSourceConstructorAudit.lean": "427817724af5287c867becc03571859aaf81711e7f9496d3b9dfea49efcf4148",
     "YangMills/RG/BalabanCMP116Eq226CenteredConditionedPhysicalTermSource.lean": "ef4f25752063d70f1d567402e01862b2ce9700d1a696d301b719d7b604385b4e",
     "YangMills/RG/BalabanCMP116Eq226OptimalInteractionAlpha.lean": "b53375f51ca6bed51ebc9447dc8c3c80dd075736f7de64a2a4c13671db9070f6",
     "YangMills/RG/BalabanCMP116Eq226OptimalInteractionAlphaAudit.lean": "cf61a70ceaca561a9aefa4ac6f3a661797a5c596508eb6d812be8b0488c6caf1",
     "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedDomainDictionary.lean": "882b863769c024b154cb2e8afaa9b75268717c6506016779cc022d662304aaa2",
     "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedQuadraticCore.lean": "187d4b5404045c91de2eb9204bde2b5edc4980b40c2880bcd1117d43c3a7bf90",
     "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedKernelSupport.lean": "2f89a9bf85c3357eadf23c6cf60af2651c2e6b26ab78f652b91b1aa1a631f1c4",
-    "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedKernelSupportAudit.lean": "99818abaa2e80394c079704fbe63e4163bc68962b5d667709db521509d1538ec",
+    "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedKernelSupportAudit.lean": "220ca35dadabdb4831750af80bd2fe0173c1571b08b3d44cfc5438eef57a4657",
     "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedHessianSupport.lean": "ec7a418608fbdafe5e80c0d66f9778921b3d6ff84795e048d0440d6196e3651d",
-    "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedHessianSupportAudit.lean": "da815b4d8a69941eedcec8a06cc569c0e011be3e496ec9f00bb120163dbf9eea",
+    "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedHessianSupportAudit.lean": "b5e6445e32b97c27a47283c758aa0dfb81eb50ec61c04ca341cf1c47421ea509",
     "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedTerminalEq143.lean": "41b62ed3ba3fd1f29ce4f1c583ca702f9eebedfa73c0ebab264d0f0977013e7c",
-    "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedTerminalEq143Audit.lean": "61faefdfc7180aa06a47e6718cf8709c0f0501e7b21d47197d5a9ebb63deb8d1",
+    "YangMills/RG/BalabanCMP116Eq80Lemma1CombinedTerminalEq143Audit.lean": "1766761933651f377eadbc921ac4c9de9975a9e54a8c90471b3db4c55c1272fe",
     "YangMills/RG/BalabanCMP116RadialTaylorBound.lean": "9f881eb9a260061e4f3b03aa9cc20eb94aaa072532f010e7f6b9f038767503fb",
     "YangMills/RG/BalabanCMP116SourceCenteredPhysicalAEInteraction.lean": "76af7e4a78f1f72e5810dacf925ca81a8bc64bbe1206dca9f0eb2534a70c9d53",
     "YangMills/RG/BalabanCMP116SourceCenteredPhysicalQuadraticResidualAEInteraction.lean": "00d7116bc43c2cdd9ae0cef1372663f05b116137a854965520d788b4744143cb",

@@ -6,14 +6,15 @@ run only in a new Colab Pro+ CPU/high-RAM runtime with no GPU.
 
 ## Immutable roles
 
-- `SOURCE_CHECKPOINT_A` contains
-  exactly the 27 source paths derived from overlay v4.  Eight module headers
-  add the mandatory `PRE-VALIDATION` warning; theorem statements, constants
-  and hypotheses are unchanged.  A is the only source object compiled.
+- `SOURCE_CHECKPOINT_A` contains exactly the 27 source paths derived from
+  overlay v4, plus the compiler-discovered import-order repair within four of
+  those paths.  Eight module headers retain the mandatory `PRE-VALIDATION`
+  warning; theorem statements, constants and hypotheses are unchanged.  A is
+  the only source object compiled.
 - The driver checkpoint is a descendant of A.  Its A-to-driver source-neutral
   diff contains exactly this document and `scripts/colab_hrpoly_validation_v6.py`.
 - Base before A: `072b0955a1ee524fefa0826da4d34a432e69e6df`.
-- Source A: `1f86b3c4ff9ebf52ac8b6f4ca7f22aa3b5cc92ad`.
+- Source A: `134a21f0dd9f82defb4de6334853031674dd285f`.
 - Repository: `https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git`.
 - Toolchain: `leanprover/lean4:v4.29.0-rc6`, official Linux x86_64 asset
   `lean-4.29.0-rc6-linux.tar.zst`, SHA-256
@@ -31,6 +32,14 @@ campaign.  It does not supersede their retained failure evidence.  It uses no
 tags, Drive, interactive upload or credentials.  It downloads the official
 Lean release by fixed URL and digest, may install the ephemeral `zstd` utility,
 and never changes the mathematical source checkpoint.
+
+The first v7 execution against source `1f86b3c4...` stopped after
+`CombinedKernelSupport` at the audit parser boundary: Lean rejected an
+`import` placed after the mandatory PRE-VALIDATION module docstring.  Retained
+evidence archive SHA-256:
+`1DBCE83034CC10E1F24B8D2308F0B9743EADF2D5B65C86BB9F03F486954D9376`
+(36,239 bytes).  Source `134a21f0...` changes only the import order in the
+four pending audit files; no theorem, constant or hypothesis changed.
 
 ## Open and bootstrap exactly once
 
