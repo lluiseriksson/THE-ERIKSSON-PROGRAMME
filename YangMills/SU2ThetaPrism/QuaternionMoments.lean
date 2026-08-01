@@ -38,11 +38,17 @@ private def quaternionJ : SU2 :=
 
 /-- The unit quaternion `(1+i+j+k)/2`.  Its adjoint action cyclically
 permutes the three imaginary quaternion coordinates. -/
+private def quaternionHalf : ℂ := ((1 / 2 : ℝ) : ℂ)
+
+@[simp]
+private theorem star_quaternionHalf : star quaternionHalf = quaternionHalf := by
+  simp [quaternionHalf]
+
 private def quaternionCycleMat : Matrix (Fin 2) (Fin 2) ℂ :=
-  ![![(((1 / 2 : ℝ) : ℂ) * ((1 : ℂ) + Complex.I)),
-      (((1 / 2 : ℝ) : ℂ) * ((1 : ℂ) + Complex.I))],
-    ![(((1 / 2 : ℝ) : ℂ) * ((-1 : ℂ) + Complex.I)),
-      (((1 / 2 : ℝ) : ℂ) * ((1 : ℂ) - Complex.I))]]
+  ![![(quaternionHalf * ((1 : ℂ) + Complex.I)),
+      (quaternionHalf * ((1 : ℂ) + Complex.I))],
+    ![(quaternionHalf * ((-1 : ℂ) + Complex.I)),
+      (quaternionHalf * ((1 : ℂ) - Complex.I))]]
 
 private def quaternionCycle : SU2 := by
   refine ⟨quaternionCycleMat, ?_⟩
@@ -53,9 +59,13 @@ private def quaternionCycle : SU2 := by
     fin_cases i <;> fin_cases j <;>
       simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
         Matrix.star_apply] <;>
-      norm_num [star_ofNat, Complex.I_sq]
+      unfold quaternionHalf <;>
+      ring_nf <;>
+      norm_num [Complex.I_sq]
   · rw [Matrix.det_fin_two]
     simp [quaternionCycleMat]
+    unfold quaternionHalf
+    ring_nf
     norm_num [Complex.I_sq]
 
 private def quarterTurnAngles : Fin 2 → ℝ :=
@@ -185,7 +195,8 @@ private theorem quaternionCycle_conj_entry_zero_zero (g : SU2) :
   apply Complex.ext <;>
     simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
       Matrix.star_apply, su2_entry_one_one, su2_entry_one_zero,
-      star_ofNat, Complex.I_sq] <;>
+      Complex.I_sq] <;>
+    unfold quaternionHalf <;>
     ring
 
 private theorem quaternionCycle_conj_entry_zero_one (g : SU2) :
@@ -197,7 +208,8 @@ private theorem quaternionCycle_conj_entry_zero_one (g : SU2) :
   apply Complex.ext <;>
     simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
       Matrix.star_apply, su2_entry_one_one, su2_entry_one_zero,
-      star_ofNat, Complex.I_sq] <;>
+      Complex.I_sq] <;>
+    unfold quaternionHalf <;>
     ring
 
 private theorem quaternionCycle_coordinates (g : SU2) :
