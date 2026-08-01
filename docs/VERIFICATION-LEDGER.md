@@ -26373,3 +26373,37 @@ reindexing map, zero native residual, or extension outside cutoff support.
 The focal target finished with `Build completed successfully (8906 jobs).`;
 its audit finished with `Build completed successfully (8907 jobs).` and
 reports exactly `[propext, Classical.choice, Quot.sound]`.
+
+## Addendum 527 (2026-08-01, **partial terminal source constructor GREEN**)
+
+`CMP116Eq226CenteredConditionedPhysicalTermSource` is factored into the
+pre-`(1.36)` record
+`CMP116Eq226CenteredConditionedPhysicalTermSourcePreEq136` and one final
+literal equation-`(1.36)` field.  The inherited public field names and record
+syntax are unchanged.  This removes the elaboration cycle without accepting
+a prebuilt term source or moving `(1.36)` into a public premise.
+
+The constructor
+`cmp116Eq226CenteredConditionedCombinedPartialTermSourceOfPreEq136` returns
+the actual centered-conditioned equation-`(2.26)` `TermSource`.  Its input
+pre-record contains the remaining terminal obligations; a separate ledger
+identification pins its total, residual, combined direct/native domain
+dictionary, amplitude `E0Direct + lemma1.E0`, and threshold `epsilon1 / gk`.
+The final field is generated internally by
+`cmp116CenteredConditionedCombinedPartialPreEq136_eq136`, whose direct branch
+is the equation-(80) third-jet producer and whose only native analytic input
+is `CMP109Lemma1Eq136SourceCertificate`.
+
+The combined cutoff is not assumed inhabited.  The already audited theorem
+`cmp116Eq80Lemma1CombinedSourceSignedCutoff_piecewiseWitness_ne_zero` supplies
+an explicit nonzero witness for this exact enlarged source carrier, and
+`cmp109Lemma1SourceSmallField_projectedCombinedRegion_of_sourceCutoff`
+transports the same cutoff to the native small-field premise after the
+terminal projection.  Thus enlarging `Y0` does not detach the bond field used
+by the cutoff from the field controlled by the cubic route.
+
+The focal audit ended with `Build completed successfully (8956 jobs).`; both
+new declarations report exactly `[propext, Classical.choice, Quot.sound]`.
+The tracked-import guard covered 2,185 local sources, the consistency scan
+reported zero `sorry` and zero project axioms, and the root build ended with
+`Build completed successfully (10343 jobs).`.

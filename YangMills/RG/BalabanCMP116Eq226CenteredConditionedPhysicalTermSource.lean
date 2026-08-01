@@ -30,12 +30,11 @@ private abbrev CenteredSourceEndomorphism (M Q Nc : ℕ)
   PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc →L[ℝ]
     PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc
 
-/-- Physical source data for one centered conditioned equation-(2.14)
-summand.  The only analytic proof fields are literal source estimates,
-geometric support facts, and explicit scalar/rooted ledgers.  Equation (1.36)
-is required on the literal cutoff support, which is the exact support of the
-integrand; covariance nondegeneracy remains a mandatory independent field. -/
-structure CMP116Eq226CenteredConditionedPhysicalTermSource
+/-- Every field of a centered conditioned equation-(2.14) source except the
+literal equation-(1.36) estimate.  Keeping this telescope independent makes
+the source-specific constructor elaborate the remaining obligations before
+it generates `(1.36)` from the direct/native physical ledger. -/
+structure CMP116Eq226CenteredConditionedPhysicalTermSourcePreEq136
     {nDelta nY M Q Nc L lieDim : ℕ}
     [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
     [NeZero (2 * Q)] [NeZero (M * (2 * Q))] [NeZero L] [NeZero lieDim]
@@ -222,22 +221,6 @@ structure CMP116Eq226CenteredConditionedPhysicalTermSource
           (d := 4) (N := M * (2 * Q)) (Nc := Nc) target w)| ≤
         cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
           (domainMetric y : ℝ) (domainCard y) * ‖v‖ * ‖w‖
-  eq136 : ∀ psi phi sigma,
-    CMP116Eq214ShiftedPolydisc nDelta base.deltaRadius sigma →
-    ∀ b y,
-      (-1 : ℂ) ^ P.card *
-          cmp116SmallFieldCutoff Y0 threshold
-            (cmp116SourcePhysicalCoordinateCochain b) *
-          cmp116LargeFieldCutoff P threshold
-            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0 →
-      |residual sigma
-        (restrictGlobal base.spectatorSupport psi)
-        (restrictGlobal base.fluctuationSupport phi) y
-        (physicalBondProjection
-          (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
-          (cmp116SourcePhysicalCoordinateCochain b))| ≤
-        cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
-          C2 kappa1 delta kappa (domainMetric y : ℝ)
   interaction_budget :
     cmp116Eq220CenteredSourcePotentialRate Finset.univ
         (fun y => (domainMetric y : ℝ)) domainCard
@@ -343,6 +326,77 @@ structure CMP116Eq226CenteredConditionedPhysicalTermSource
               M Nc Delta radius (1 + radius) rate Ahead rho
                 ‖cmp116PhysicalEndomorphismComplexMatrix K‖) ≤
       volumeRate * alpha
+
+/-- Physical source data for one centered conditioned equation-(2.14)
+summand.  Equation `(1.36)` is the final field: every independent geometric,
+operatorial, analytic, and scalar obligation is fixed before it is generated
+on the literal cutoff support.  Covariance nondegeneracy remains a mandatory
+independent field. -/
+structure CMP116Eq226CenteredConditionedPhysicalTermSource
+    {nDelta nY M Q Nc L lieDim : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary
+      4 (M * (2 * Q)) Nc 4 L lieDim)
+    (Y0 P : Finset (CenteredSourceBond M Q))
+    (Z0 Z : Finset (FinBox 4 (2 * Q)))
+    extends CMP116Eq226CenteredConditionedPhysicalTermSourcePreEq136
+      (nDelta := nDelta) (nY := nY) Dict Y0 P Z0 Z where
+  eq136 : ∀ psi phi sigma,
+    CMP116Eq214ShiftedPolydisc nDelta base.deltaRadius sigma →
+    ∀ b y,
+      (-1 : ℂ) ^ P.card *
+          cmp116SmallFieldCutoff Y0 threshold
+            (cmp116SourcePhysicalCoordinateCochain b) *
+          cmp116LargeFieldCutoff P threshold
+            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0 →
+      |residual sigma
+        (restrictGlobal base.spectatorSupport psi)
+        (restrictGlobal base.fluctuationSupport phi) y
+        (physicalBondProjection
+          (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
+          (cmp116SourcePhysicalCoordinateCochain b))| ≤
+        cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+          C2 kappa1 delta kappa (domainMetric y : ℝ)
+
+namespace CMP116Eq226CenteredConditionedPhysicalTermSourcePreEq136
+
+variable
+    {nDelta nY M Q Nc L lieDim : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))] [NeZero L] [NeZero lieDim]
+    {Dict : PhysicalGaugeCMP116Dictionary
+      4 (M * (2 * Q)) Nc 4 L lieDim}
+    {Y0 P : Finset (CenteredSourceBond M Q)}
+    {Z0 Z : Finset (FinBox 4 (2 * Q))}
+
+/-- Generic finalizer for the factored record.  Source-facing constructors do
+not export its last argument: they generate it from their physical residual
+theorem after constructing `S`. -/
+noncomputable def complete
+    (S : CMP116Eq226CenteredConditionedPhysicalTermSourcePreEq136
+      (nDelta := nDelta) (nY := nY) Dict Y0 P Z0 Z)
+    (hEq136 : ∀ psi phi sigma,
+      CMP116Eq214ShiftedPolydisc nDelta S.base.deltaRadius sigma →
+      ∀ b y,
+        (-1 : ℂ) ^ P.card *
+            cmp116SmallFieldCutoff Y0 S.threshold
+              (cmp116SourcePhysicalCoordinateCochain b) *
+            cmp116LargeFieldCutoff P S.threshold
+              (cmp116SourcePhysicalCoordinateCochain b) ≠ 0 →
+        |S.residual sigma
+          (restrictGlobal S.base.spectatorSupport psi)
+          (restrictGlobal S.base.fluctuationSupport phi) y
+          (physicalBondProjection
+            (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
+            (cmp116SourcePhysicalCoordinateCochain b))| ≤
+          cmp116Eq136ResidualMajorant S.E0 S.epsilon1 S.C1 M S.q
+            S.C2 S.kappa1 S.delta S.kappa (S.domainMetric y : ℝ)) :
+    CMP116Eq226CenteredConditionedPhysicalTermSource
+      (nDelta := nDelta) (nY := nY) Dict Y0 P Z0 Z :=
+  ⟨S, hEq136⟩
+
+end CMP116Eq226CenteredConditionedPhysicalTermSourcePreEq136
 
 namespace CMP116Eq226CenteredConditionedPhysicalTermSource
 
