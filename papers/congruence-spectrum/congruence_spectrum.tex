@@ -110,6 +110,15 @@ different conventions once negative eigenvalues are present, and it is the
 quantity above --- second largest \emph{modulus} over the Perron root --- that
 Fact~\ref{fact:birkhoff} controls.
 
+\begin{remark}[A collision of notation with the source]\label{rem:notation}
+Our $r(T)$ is the quantity Eveson and Nussbaum call the \emph{spectral
+clearance} $q(L)$. Their $r(L)$ denotes the \emph{spectral radius}, i.e.\ our
+$\rho(T)$ --- so the letter $r$ names different objects in the two papers. We
+keep $r$ for the ratio because that is what this paper is about, and flag the
+collision here so that Fact~\ref{fact:birkhoff} can be checked against the
+source without a false start.
+\end{remark}
+
 We answer both parts for the kernel of $L$ decoupled Ising bonds. Section~2
 gives the rigid half, Section~3 the fragile half, Section~4 the consequence,
 Section~5 the extremal congruence among uniform concentrations, and Section~6
@@ -782,7 +791,8 @@ No statement in this paper is conjectural.
 \begin{center}
 \begin{tabular}{ll}
 \toprule
-commit & \texttt{b36f50d1} \\
+commit (module) & \texttt{b36f50d1} \\
+commit (aggregate import) & \texttt{fdb0317b} \\
 module \texttt{sha256} & \texttt{56a66ee1062108fc7419da3c} \\
                        & \texttt{f7cfcb315a2f5809f20d31d1a3806fcc68334a5e} \\
 toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
@@ -799,14 +809,30 @@ verification host and agrees, so the checked object is the source printed here.
 Compilation ran on a CPU (never GPU) high-memory cloud runtime, per the
 project's environment rule of 1~August~2026; the desktop compiles nothing.
 
-\textbf{One registered check remains undone.} The pre-registration also asked
-that the module be imported into the project's aggregate library and that the
-build job count increment by exactly one. It has not been imported, so there is
-no increment to measure; measuring it honestly requires two full builds of the
-aggregate in the same tree, which the shared Mathlib cache does not cover. That
-check is therefore reported as \emph{not run} rather than dropped, and it is not
-replaced by a comparison against a count measured elsewhere. Nothing in the
-theorems above depends on it.
+\textbf{The registered aggregate check has now run, and passed.} The
+pre-registration also asked that the module be imported into the project's
+aggregate library and that the build job count increment by exactly one. Both
+builds were run in the \emph{same} tree, on the same host, toolchain and Mathlib
+pin, differing only in whether the import line is present:
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+build & exit & jobs \\
+\midrule
+aggregate \emph{without} the import (baseline) & \texttt{0} & \textbf{8430} \\
+aggregate \emph{with} the import (treatment)   & \texttt{0} & \textbf{8431} \\
+\midrule
+increment & & \textbf{$+1$}, as predicted \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both counters are printed rather than only the difference, and neither is a
+subtraction against a figure measured in some other tree. The treatment log
+shows \texttt{Built YangMills.OS.CongruenceSpectrum} immediately before
+\texttt{Built YangMillsCore}, so the module is genuinely reachable from the
+aggregate root and is not merely present on disk.
 
 \begin{thebibliography}{9}
 \bibitem{sylvester1852} J.~J.~Sylvester,
