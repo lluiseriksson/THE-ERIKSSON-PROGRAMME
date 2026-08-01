@@ -14,6 +14,7 @@ import hashlib
 import re
 import sys
 import zipfile
+from datetime import date
 from pathlib import Path
 
 from pypdf import PdfReader
@@ -22,7 +23,7 @@ from pypdf import PdfReader
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGES = ROOT / "output" / "publication-audit"
 RELEASES = PACKAGES / "releases"
-FIXED_ZIP_TIME = (2026, 7, 31, 0, 0, 0)
+DEFAULT_AUDIT_DATE = "2026-07-31"
 
 
 def sha256(path: Path) -> str:
@@ -36,7 +37,7 @@ def sha256(path: Path) -> str:
 def parse_submission(path: Path) -> dict[str, str]:
     text = path.read_text(encoding="utf-8")
     fields: dict[str, str] = {}
-    for key in ("STATUS", "PUBLICATION ACTION", "PUBLICATION", "CATEGORY", "FILE"):
+    for key in ("STATUS", "AUDIT DATE", "PUBLICATION ACTION", "PUBLICATION", "CATEGORY", "FILE"):
         match = re.search(rf"(?m)^{re.escape(key)}:\s*(.+)$", text)
         if match:
             fields[key] = match.group(1).strip()
@@ -98,7 +99,7 @@ def manifest_bytes(package: Path, fields: dict[str, str], files: list[Path]) -> 
     encrypted = bool(reader.is_encrypted)
     lines = [
         "ERIKSSON PUBLICATION-AUDIT REPLACEMENT PACKAGE",
-        "AUDIT_DATE: 2026-07-31",
+        f"AUDIT_DATE: {fields.get('AUDIT DATE', DEFAULT_AUDIT_DATE)}",
         f"PACKAGE: {package.name}",
         f"STATUS: {fields.get('STATUS', 'NOT RECORDED')}",
         f"ACTION: {fields.get('PUBLICATION ACTION', 'NOT RECORDED')}",
@@ -129,10 +130,15 @@ def manifest_name(package: Path) -> str:
 
 
 def write_zip(
-    package: Path, files: list[Path], manifest: bytes, manifest_basename: str, zip_path: Path
+    package: Path,
+    files: list[Path],
+    manifest: bytes,
+    manifest_basename: str,
+    zip_path: Path,
+    zip_time: tuple[int, int, int, int, int, int],
 ) -> None:
     def info(name: str) -> zipfile.ZipInfo:
-        item = zipfile.ZipInfo(name, FIXED_ZIP_TIME)
+        item = zipfile.ZipInfo(name, zip_time)
         item.compress_type = zipfile.ZIP_DEFLATED
         item.create_system = 3
         item.external_attr = 0o100644 << 16
@@ -180,7 +186,9 @@ def build(name: str) -> None:
     sha_path = RELEASES / f"{name}-ZIP-SHA256.txt"
     package_manifest.write_bytes(manifest)
     external_manifest.write_bytes(manifest)
-    write_zip(package, files, manifest, manifest_basename, zip_path)
+    audit_date = date.fromisoformat(fields.get("AUDIT DATE", DEFAULT_AUDIT_DATE))
+    zip_time = (audit_date.year, audit_date.month, audit_date.day, 0, 0, 0)
+    write_zip(package, files, manifest, manifest_basename, zip_path, zip_time)
     verify_release(package, files, manifest, manifest_basename, zip_path)
     digest = sha256(zip_path)
     sha_path.write_text(f"{digest}  {zip_path.name}\n", encoding="ascii", newline="\n")

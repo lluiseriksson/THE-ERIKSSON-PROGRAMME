@@ -6,6 +6,12 @@ history; `SUPERSEDE-BY-NEW-PAPER` names a distinct, already-public record whose
 claim actually repairs or extends the old one.  No upload or submission was
 performed by this audit.
 
+**Owner policy added 2026-08-01.**  Every `SUPERSEDE-BY-NEW-PAPER` relation is
+also to be made visible in a replacement of the old record: the first PDF page
+and the first abstract words must carry an uppercase `SUPERSEDED BY` notice,
+followed by an exact retained/superseded claim map.  This does not change the
+claim-level verdict or merge the two records; it makes the relation public.
+
 ## Replacement sequence
 
 The owner order is causal rather than chronological:
@@ -20,9 +26,21 @@ The owner order is causal rather than chronological:
 7. `2602.0038v2 -> v3` — retitle the simplified-measure propagator result.
 8. `2602.0041v3 -> v4` — make the H-XSD/H-DOB conditionality public-facing.
 9. `2601.0115v2 -> v3` — repair the clipped table after all P0/P1 actions.
+10. `2512.0073v1 -> v2` — publish the Davies/TFIM correction and supersession
+    map pointing to `2601.0023v2`.
+11. `2601.0047v2 -> v3` — mark the ED benchmark as consolidated by
+    `2601.0051v2`, without calling the retained finite data false.
+12. `2607.0035v1 -> v2` — narrow the old 2D SU(2) record and point to the
+    original-edge/tree--cotree closure in `2607.0039v1`.
+13. `2607.0023v1 -> v2` — point the terminal sign claim to `2607.0089v1` while
+    keeping its independent exact-to-Arb replay explicitly pending.
 
 Do not start item *n+1* until the public page for item *n* shows the intended
 new version, title/abstract/comments, direct PDF URL, page count and PDF SHA.
+The owner reported items 1--9 sent on 2026-08-01 before the public pages
+updated; those nine are now `ENVIADO/PENDIENTE`.  Do not resend them merely to
+restore ordering.  Items 10--13 remain local until their independent audit and
+release preflight pass.
 
 ## Action matrix
 
@@ -37,10 +55,10 @@ new version, title/abstract/comments, direct PDF URL, page count and PDF SHA.
 | `2602.0038v2`, SHA `306d2336…`, 10 pp | REPLACE-VERSION | local `2602.0038v3`, 11 pp, SHA `4bcadc2d…` | Title/abstract advertise a non-perturbative mass-gap proof; Definition 4 and the body establish only a zero-momentum propagator bound for a simplified quadratic Gribov--Zwanziger measure. | 2602.0036 entropic-mass import; programme summaries | P1 | **LISTO-LOCAL**, independent audit PASS; owner order 7 |
 | `2602.0041v3`, SHA `f67dea05…`, 11 pp | REPLACE-VERSION | local `2602.0041v4`, 12 pp, SHA `d268921d…` | Theorem 1.1 is conditional on H-XSD, and its mass-gap part additionally on H-DOB; p. 9 retains continuum/OS work as open, while the public title is unconditional. | 2602.0051--0057; 2602.0089 | P1 | **LISTO-LOCAL**, independent audit PASS; owner order 8 |
 | `2601.0115v2`, SHA `e845b2d9…`, 9 pp | REPLACE-VERSION | local `2601.0115v3`, 9 pp, SHA `7e32a880…` | Table 1 on public p. 6 is clipped: 152 text characters lie outside MediaBox.  The replacement preserves every character and brings the full table inside the page; the other eight pages are pixel-identical. | none identified beyond citations to this toy-model record | P2 | **LISTO-LOCAL**, independent audit PASS; owner order 9 |
-| `2512.0073v1`, SHA `6fcfe527…`, 22 pp | SUPERSEDE-BY-NEW-PAPER | public `2601.0023v2`, SHA `871fcced…`, 6 pp | The successor explicitly corrects the same Davies Bohr decomposition, constants and finite TFIM witness interface whose errors occur throughout old pp. 1--22. | rate-envelope/maintenance interfaces | P0 | successor public; preserve old provenance |
-| `2601.0047v2`, SHA `b2682f96…`, 5 pp | SUPERSEDE-BY-NEW-PAPER | public `2601.0051v2`, SHA `f10520e4…`, 4 pp | The successor retains the same exact-diagonalisation Petz-versus-Wilson benchmark and adds tensor-network ladders; it does not merely share a topic. | later Petz/Wilson benchmark summaries | P1 | successor public; preserve old provenance |
-| `2607.0035v1`, SHA `99413dfa…`, 9 pp | SUPERSEDE-BY-NEW-PAPER | public `2607.0039v1`, SHA `acb7b9b4…`, 10 pp | Old pp. 7 and 9 stop at a post-gauge-fixed evaluator and disclaim the original-edge/face-holonomy bridge advertised by the title.  Successor pp. 5--8 supplies that bridge and tree--cotree closure. | exact 2D SU(2) area-law chain | P0 | successor public; use 0039 as authority |
-| `2607.0023v1`, SHA `88d4cbd1…`, 13 pp | SUPERSEDE-BY-NEW-PAPER | public `2607.0089v1` | Old pp. 11--13 leave global ratio monotonicity conjectural; the successor claims the same terminal sign theorem and retains the bridge/certificate provenance. | surface-expansion/area-law chain | P1 | successor remains REVIEW-PENDING until Arb/Lean replay |
+| `2512.0073v1`, SHA `6fcfe527…`, 22 pp | SUPERSEDE-BY-NEW-PAPER + REPLACE-VERSION NOTICE | public successor `2601.0023v2`, SHA `871fcced…`, 6 pp; local notice `2512.0073v2`, 24 pp, SHA `11cc85a3…` | The successor corrects the general Davies Bohr decomposition, proof route, suppression constants and finite TFIM implementation while explicitly retaining every old `omega=0` statement and the witness conclusion with a repaired proof. | rate-envelope/maintenance interfaces | P0 | replacement candidate rebuilt after independent scope finding; reaudit pending |
+| `2601.0047v2`, SHA `b2682f96…`, 5 pp | SUPERSEDE-BY-NEW-PAPER + REPLACE-VERSION NOTICE | public successor `2601.0051v2`, SHA `f10520e4…`, 4 pp; local notice `2601.0047v3`, 7 pp, SHA `a4779474…` | The successor retains the same exact-diagonalisation Petz-versus-Wilson benchmark and adds tensor-network ladders; it does not merely share a topic. | later Petz/Wilson benchmark summaries | P1 | replacement candidate built; independent audit pending |
+| `2607.0035v1`, SHA `99413dfa…`, 9 pp | SUPERSEDE-BY-NEW-PAPER + REPLACE-VERSION NOTICE | public successor `2607.0039v1`, SHA `acb7b9b4…`, 10 pp; local notice `2607.0035v2`, 11 pp, SHA `86a3891f…` | Old pp. 7 and 9 stop at a post-gauge-fixed evaluator and disclaim the original-edge/face-holonomy bridge advertised by the title.  Successor pp. 5--8 supplies that bridge and tree--cotree closure. | exact 2D SU(2) area-law chain | P0 | replacement candidate built; independent audit pending |
+| `2607.0023v1`, SHA `88d4cbd1…`, 13 pp | SUPERSEDE-BY-NEW-PAPER + REPLACE-VERSION NOTICE | public successor `2607.0089v1`, SHA `e8cc61a1…`, 33 pp; local notice `2607.0023v2`, 15 pp, SHA `7aa4ba1e…` | Old pp. 11--13 leave global ratio monotonicity conjectural; the successor claims the same terminal sign theorem and retains the bridge/certificate provenance. | surface-expansion/area-law chain | P1 | replacement candidate built; successor remains REVIEW-PENDING until exact-to-Arb replay |
 
 ## Actions deliberately not promoted
 

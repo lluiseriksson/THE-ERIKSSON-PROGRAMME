@@ -170,6 +170,7 @@ def build_notice(cfg: dict[str, object], page_size: tuple[float, float], out: Pa
 
 
 def main() -> int:
+    os.environ.setdefault("SOURCE_DATE_EPOCH", "1785614400")
     cfg = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
     ART.mkdir(parents=True, exist_ok=True)
     historical = ROOT / "inputs" / cfg["historical_pdf"]
@@ -220,7 +221,7 @@ def main() -> int:
     }
     (ART / "build-result.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8", newline="\n")
     (ART / "BUILD-TRANSCRIPT.txt").write_text(
-        "SOURCE_DATE_EPOCH=1785614400\n" + json.dumps(result, indent=2) + "\n",
+        f"SOURCE_DATE_EPOCH={os.environ['SOURCE_DATE_EPOCH']}\n" + json.dumps(result, indent=2) + "\n",
         encoding="utf-8",
         newline="\n",
     )

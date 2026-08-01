@@ -2,8 +2,8 @@ SOURCE_DATE_EPOCH=1785614400
 {
   "status": "BUILT-NOT-INDEPENDENTLY-AUDITED",
   "final_pdf": "2512.0073v2-supersession.pdf",
-  "final_sha256": "b2d00306919d567d99978bd586d52b49c182d476a626093c13ed36f406b0a1e7",
-  "final_bytes": 947905,
+  "final_sha256": "11cc85a3fe09efaac11fe7721c338eb2ad5998c9c31aa9972a074f8b4851708c",
+  "final_bytes": 947931,
   "final_pages": 24,
   "notice_pages": 2,
   "historical_pdf": "2512.0073v1-public.pdf",
