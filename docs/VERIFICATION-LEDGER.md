@@ -29847,3 +29847,54 @@ ring/dual factorisation theorem.  It is not a Lean certificate and does not
 prove either analytic sector inequality or the signed-front-door uniform
 `specRatio` bound.  Those two blocks and the final bound remain wholly open;
 no claim of analytic progress is made here.
+
+## Addendum 582 (2026-08-01, **TASK 14: exact symWeighted ring/dual theorem certified**)
+
+**THE LICENSED THEOREM WAS ADDED WITHOUT WIDENING SCOPE.**  At repository SHA
+`89c19ab2b328061b74d194dc75ebfdbba04610c6`,
+`YangMills.OS.symWeighted_ring_dual_factorization` gives the exact entrywise
+factorisation of `symWeighted (spatialWeightRing gamma) beta` into periodic
+source weight, the dual-field scale, local dual bonds, and periodic target
+weight.  Its front door retains `0 < beta`, `0 <= gamma`, and
+`tanh a = exp (-2 * beta)`.  The theorem is exact finite algebra, with no
+sector estimate hidden in its statement or proof.
+
+**PREREGISTERED COLAB RUN, ALL EXITS ZERO.**  A fresh CPU-only Colab clone
+checked out that exact SHA and first reran the already CERTIFIED numerical
+gate.  Normal Python passed in 260.054952 s and `python -O` passed in
+262.794974 s; each checked 5460 configuration pairs and rejected 5460 members
+of all three mutation families.  `lake build YangMills.OS.SpatialDualBond`
+then passed in 330.521398 s with 8172 jobs.  `lake build YangMillsCore` passed
+in 3970.335847 s with 8466 jobs.  Relative to the campaign's live ledger
+baseline of 8465 observed on 2026-08-01, this remains exactly one core module;
+8465 is an observation, not a permanent constant.  The permanent oracle
+passed in 2321.996904 s, and `scripts/check_consistency.py` passed in
+4.906435 s with zero source `sorry` and zero project axioms.
+
+The runtime was Linux `6.6.122+` with Python 3.12.13, two Intel Xeon logical
+CPUs at 2.20 GHz, 13286944 kB RAM, no requested or allocated GPU, Lean
+`v4.29.0-rc6` at commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib
+`07642720480157414db592fa85b626dafb71355b`.  It was connected from
+`2026-08-01T10:09:22.727407Z` through `2026-08-01T12:13:29.835538Z`
+(7447.108131 s), then explicitly disconnected and deleted; the UI showed
+`Återanslut` and the tab was closed.
+
+**PERMANENT ORACLE AND INDEPENDENT ARTIFACT CHECK.**  All seven declarations
+from `SpatialDualBond`, including the new theorem, appear in
+`oracle_check.lean`; each reports only the permitted set
+`{propext, Classical.choice, Quot.sound}`, and `sorryAx` is absent.  The
+downloaded artifact ZIP independently hashed on Windows to
+`b97166639d9344f7e5e3c8e026407246151ad25104c6ae6b6e794083a869e8e1`.
+Its internal manifest was revalidated: `metadata.json`
+`b49baa786a89c599162c4004f3f21ab3b95a9638d11790c35d9d3cd3f8cdd013`,
+`oracle_output.txt`
+`1474a2f59b73492336cd68f0e8edd90022dbfe176d78c457f3899b9fbea2ffc5`,
+and `transcript.txt`
+`f8038d938329c4af5bfd904088b676774334465a62bdb993dca69dc7b5e4cb82`.
+The focused permanent-oracle record is
+`ORACLE-20260801-SPATIAL-SYMWEIGHTED-RING-DUAL.txt`.
+
+This is CERTIFIED algebraic infrastructure, not analytic progress.  The sharp
+odd-sector bound, the even non-Perron bound, and the uniform signed-front-door
+`specRatio <= tanh(beta) * exp(2 * gamma)` inequality all remain wholly open.

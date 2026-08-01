@@ -1,0 +1,70 @@
+TASK 14 — EXACT symWeighted RING/DUAL FACTORISATION
+===================================================
+
+Classification: CERTIFIED algebraic infrastructure only
+Repository SHA: 89c19ab2b328061b74d194dc75ebfdbba04610c6
+Lean toolchain: leanprover/lean4:v4.29.0-rc6
+Lean commit: 00659f8e6071d7e46131ed643bf8003b99b044e9
+Mathlib pin: 07642720480157414db592fa85b626dafb71355b
+Runtime: Linux-6.6.122+-x86_64-with-glibc2.35
+CPU: 2 logical Intel Xeon CPUs at 2.20 GHz
+RAM: 13286944 kB
+GPU: none requested or allocated
+
+The preregistered exact finite factorisation judge ran before Lean in normal
+and optimised Python.  Both modes returned exit 0 and PASS after checking 5460
+configuration pairs and rejecting 5460 mutations in each of the scale,
+source-closing-bond, and target-closing-bond families:
+
+  normal:    260.054952 s
+  optimized: 262.794974 s
+
+The following decisive commands returned exit 0:
+
+  lake build YangMills.OS.SpatialDualBond
+    8172 jobs; 330.521398 s
+  lake build YangMillsCore
+    8466 jobs; 3970.335847 s
+  lake env lean oracle_check.lean
+    2321.996904 s
+  python3 scripts/check_consistency.py
+    4.906435 s
+
+Permanent-oracle output for every declaration in SpatialDualBond:
+
+'YangMills.OS.dualFieldBond' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.dualFieldScale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.z2Bond_dual_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.spatialKernel_dual_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.ringBondSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.spatialWeightRing_eq_exp_ringBondSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.symWeighted_ring_dual_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+The consistency judge reported zero source `sorry` and zero project axioms.
+
+Windows desktop artifact verification
+-------------------------------------
+
+Downloaded ZIP SHA-256:
+  b97166639d9344f7e5e3c8e026407246151ad25104c6ae6b6e794083a869e8e1
+
+Files independently hashed and checked against the archive's SHA256SUMS:
+  metadata.json      b49baa786a89c599162c4004f3f21ab3b95a9638d11790c35d9d3cd3f8cdd013
+  oracle_output.txt  1474a2f59b73492336cd68f0e8edd90022dbfe176d78c457f3899b9fbea2ffc5
+  transcript.txt     f8038d938329c4af5bfd904088b676774334465a62bdb993dca69dc7b5e4cb82
+
+The archived transcript contains the two measured job counters, every exit
+code above, and `SPATIAL SYMWEIGHTED LEAN PASS`.  The runtime ran from
+2026-08-01T10:09:22.727407Z to 2026-08-01T12:13:29.835538Z, a connected
+duration of 7447.108131 seconds.  It was then disconnected and deleted; the UI
+changed to `Återanslut`, and the tab was closed.
+
+Scope boundary
+--------------
+
+This certifies the exact entrywise factorisation of `symWeighted` through the
+periodic ring weight and local dual bonds under the active hypotheses
+`0 < beta`, `0 <= gamma`, and `tanh a = exp (-2 * beta)`.  It is algebraic
+infrastructure.  It proves neither the sharp odd-sector norm bound nor the
+even non-Perron norm bound, and it is not progress on the uniform
+`specRatio <= tanh(beta) * exp(2 * gamma)` inequality.
