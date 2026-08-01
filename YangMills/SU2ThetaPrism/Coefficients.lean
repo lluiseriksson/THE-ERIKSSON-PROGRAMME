@@ -1,5 +1,6 @@
 import YangMills.SU2ThetaPrism.Representation
 import YangMills.SU2ThetaPrism.Analysis
+import YangMills.SU2ThetaPrism.QuaternionMoments
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
 
 /-!
@@ -160,11 +161,218 @@ theorem alpha_spinHalf_lower {beta : ℝ} (hbeta : 0 ≤ beta) :
       exact integral_mono_ae hleft hright
         (ae_of_all _ fun g => scaled_sq_le_mul_sinh ha)
 
-/-- The genuinely open part of the concrete coefficient package after the
-spin-half remainder has been discharged directly. -/
+/-- The spin-one coefficient obligation, discharged below by the signed
+hyperbolic remainder estimate and the concrete second and fourth moments. -/
 structure SpinOneCoefficientRemainderStep (beta : ℝ) : Prop where
   one_remainder_nonnegative :
     0 ≤ alpha su2WeylPolynomial beta 2 - beta ^ 2 / 8
+
+/-- The even Taylor remainder used in the spin-one coefficient estimate. -/
+def coshRemainder (t : ℝ) : ℝ :=
+  Real.cosh t - 1 - t ^ 2 / 2
+
+private theorem coshRemainder_hasDerivAt (t : ℝ) :
+    HasDerivAt coshRemainder (Real.sinh t - t) t := by
+  have hsq : HasDerivAt (fun x : ℝ => x ^ 2 / 2) t t := by
+    convert ((hasDerivAt_id t).pow 2).div_const 2 using 1 <;> ring
+  have hraw := ((Real.hasDerivAt_cosh t).sub (hasDerivAt_const t 1)).sub hsq
+  convert hraw using 1 <;> simp [coshRemainder]
+
+/-- The hyperbolic Taylor remainder is increasing on the nonnegative axis.
+This is a one-variable calculus fact: its derivative is `sinh t - t`. -/
+theorem coshRemainder_monotoneOn_nonnegative :
+    MonotoneOn coshRemainder (Set.Ici 0) := by
+  apply monotoneOn_of_deriv_nonneg convex_Ici
+  · fun_prop
+  · fun_prop
+  · intro t ht
+    rw [(coshRemainder_hasDerivAt t).deriv]
+    exact sub_nonneg.mpr (Real.self_le_sinh_iff.mpr (by simpa using ht))
+
+private theorem coshRemainder_abs (t : ℝ) :
+    coshRemainder |t| = coshRemainder t := by
+  simp only [coshRemainder, Real.cosh_abs]
+  rw [sq_abs]
+
+/-- Signed remainder estimate.  When `u^2 - 1` is negative, monotonicity of
+the even remainder reverses exactly the comparison needed after
+multiplication; when it is positive, it gives the direct comparison. -/
+theorem signed_coshRemainder_nonnegative {a u : ℝ} (ha : 0 ≤ a) :
+    0 ≤ (coshRemainder (a * u) - coshRemainder a) * (u ^ 2 - 1) := by
+  by_cases hu : 1 ≤ |u|
+  · have hau : a ≤ |a * u| := by
+      rw [abs_mul, abs_of_nonneg ha]
+      exact le_mul_of_one_le_right ha hu
+    have hr : coshRemainder a ≤ coshRemainder |a * u| :=
+      coshRemainder_monotoneOn_nonnegative ha (abs_nonneg _) hau
+    rw [coshRemainder_abs] at hr
+    have hfactor : 0 ≤ u ^ 2 - 1 := by
+      nlinarith [sq_abs u]
+    exact mul_nonneg (sub_nonneg.mpr hr) hfactor
+  · have hu' : |u| ≤ 1 := le_of_lt (lt_of_not_ge hu)
+    have hau : |a * u| ≤ a := by
+      rw [abs_mul, abs_of_nonneg ha]
+      exact mul_le_of_le_one_right ha hu'
+    have hr : coshRemainder |a * u| ≤ coshRemainder a :=
+      coshRemainder_monotoneOn_nonnegative (abs_nonneg _) ha hau
+    rw [coshRemainder_abs] at hr
+    have hfactor : u ^ 2 - 1 ≤ 0 := by
+      nlinarith [sq_abs u]
+    exact mul_nonneg_of_nonpos_of_nonpos (sub_nonpos.mpr hr) hfactor
+
+private theorem exp_mul_spinOne_integrable (a : ℝ) :
+    Integrable (fun g : SU2 =>
+      Real.exp (a * (chi g).re) * ((chi g).re ^ 2 - 1)) haarSU2 := by
+  exact ((Real.continuous_exp.comp (continuous_const.mul chi_re_continuous)).mul
+    ((chi_re_continuous.pow 2).sub continuous_const)).integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)
+
+/-- Central Haar symmetry replaces the spin-one exponential by `cosh`.
+The probe `chi^2 - 1` is even under multiplication by the central `-I`. -/
+theorem alpha_spinOne_eq_integral_mul_cosh (beta : ℝ) :
+    alpha su2WeylPolynomial beta 2 =
+      ∫ g : SU2, Real.cosh ((beta / 2) * (chi g).re) *
+        ((chi g).re ^ 2 - 1) ∂haarSU2 := by
+  let a : ℝ := beta / 2
+  let f : SU2 → ℝ := fun g =>
+    Real.exp (a * (chi g).re) * ((chi g).re ^ 2 - 1)
+  let fneg : SU2 → ℝ := fun g =>
+    Real.exp (-a * (chi g).re) * ((chi g).re ^ 2 - 1)
+  have hf : Integrable f haarSU2 := by
+    simpa [f] using exp_mul_spinOne_integrable a
+  have hfneg : Integrable fneg haarSU2 := by
+    simpa [fneg] using exp_mul_spinOne_integrable (-a)
+  have hsym : (∫ g, f g ∂haarSU2) = ∫ g, fneg g ∂haarSU2 := by
+    calc
+      (∫ g, f g ∂haarSU2) = ∫ g, f (negIdentitySU2 * g) ∂haarSU2 :=
+        (integral_mul_left_eq_self (μ := haarSU2) f negIdentitySU2).symm
+      _ = ∫ g, fneg g ∂haarSU2 := by
+        apply integral_congr_ae
+        exact ae_of_all _ fun g => by simp [f, fneg]
+  change (∫ g, f g ∂haarSU2) = _
+  calc
+    (∫ g, f g ∂haarSU2) =
+        (1 / 2 : ℝ) * ((∫ g, f g ∂haarSU2) + ∫ g, fneg g ∂haarSU2) := by
+      rw [hsym]
+      ring
+    _ = (1 / 2 : ℝ) * ∫ g, (f + fneg) g ∂haarSU2 := by
+      rw [integral_add hf hfneg]
+    _ = ∫ g, (1 / 2 : ℝ) * (f + fneg) g ∂haarSU2 := by
+      rw [integral_const_mul]
+    _ = ∫ g : SU2, Real.cosh (a * (chi g).re) *
+        ((chi g).re ^ 2 - 1) ∂haarSU2 := by
+      apply integral_congr_ae
+      exact ae_of_all _ fun g => by
+        change (1 / 2 : ℝ) * (f g + fneg g) = _
+        simp only [f, fneg]
+        rw [Real.cosh_eq]
+        ring
+    _ = ∫ g : SU2, Real.cosh ((beta / 2) * (chi g).re) *
+        ((chi g).re ^ 2 - 1) ∂haarSU2 := by rfl
+
+private theorem chi_re_sq_sub_one_integral_zero :
+    (∫ g : SU2, ((chi g).re ^ 2 - 1) ∂haarSU2) = 0 := by
+  have hsq : Integrable (fun g : SU2 => (chi g).re ^ 2) haarSU2 :=
+    (chi_re_continuous.pow 2).integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)
+  have hone : Integrable (fun _ : SU2 => (1 : ℝ)) haarSU2 := integrable_const 1
+  rw [integral_sub hsq hone, chi_re_sq_integral_one]
+  simp
+
+private theorem chi_re_fourth_sub_sq_integral_one :
+    (∫ g : SU2, ((chi g).re ^ 4 - (chi g).re ^ 2) ∂haarSU2) = 1 := by
+  have hfour : Integrable (fun g : SU2 => (chi g).re ^ 4) haarSU2 :=
+    (chi_re_continuous.pow 4).integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)
+  have hsq : Integrable (fun g : SU2 => (chi g).re ^ 2) haarSU2 :=
+    (chi_re_continuous.pow 2).integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)
+  rw [integral_sub hfour hsq, chi_re_fourth_integral_two_quaternion,
+    chi_re_sq_integral_one]
+  norm_num
+
+private theorem coshRemainder_mul_spinOne_integrable (a : ℝ) :
+    Integrable (fun g : SU2 => coshRemainder (a * (chi g).re) *
+      ((chi g).re ^ 2 - 1)) haarSU2 := by
+  exact (((Real.continuous_cosh.comp (continuous_const.mul chi_re_continuous)).sub
+      continuous_const |>.sub ((continuous_const.mul chi_re_continuous).pow 2 |>.div_const 2)).mul
+    ((chi_re_continuous.pow 2).sub continuous_const)).integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)
+
+private theorem spinOne_signed_remainder_integral_nonnegative {a : ℝ} (ha : 0 ≤ a) :
+    0 ≤ ∫ g : SU2, coshRemainder (a * (chi g).re) *
+      ((chi g).re ^ 2 - 1) ∂haarSU2 := by
+  let R : SU2 → ℝ := fun g => coshRemainder (a * (chi g).re) *
+    ((chi g).re ^ 2 - 1)
+  let C : SU2 → ℝ := fun g => coshRemainder a * ((chi g).re ^ 2 - 1)
+  have hR : Integrable R haarSU2 := by
+    simpa [R] using coshRemainder_mul_spinOne_integrable a
+  have hC : Integrable C haarSU2 := by
+    exact (integrable_const (coshRemainder a)).mul
+      (((chi_re_continuous.pow 2).sub continuous_const).integrable_of_hasCompactSupport
+        (HasCompactSupport.of_compactSpace _))
+  have hnonneg : 0 ≤ ∫ g : SU2, (R - C) g ∂haarSU2 := by
+    apply integral_nonneg
+    intro g
+    change 0 ≤ (coshRemainder (a * (chi g).re) - coshRemainder a) *
+      ((chi g).re ^ 2 - 1)
+    exact signed_coshRemainder_nonnegative ha
+  have hzero : (∫ g : SU2, C g ∂haarSU2) = 0 := by
+    rw [show C = fun g : SU2 => coshRemainder a * ((chi g).re ^ 2 - 1) by rfl,
+      integral_const_mul, chi_re_sq_sub_one_integral_zero, mul_zero]
+  rw [integral_sub hR hC, hzero, sub_zero] at hnonneg
+  exact hnonneg
+
+/-- The spin-one coefficient splits into its quadratic moment contribution
+`beta^2/8` and the signed hyperbolic remainder. -/
+theorem alpha_spinOne_eq_quadratic_add_remainder (beta : ℝ) :
+    alpha su2WeylPolynomial beta 2 = beta ^ 2 / 8 +
+      ∫ g : SU2, coshRemainder ((beta / 2) * (chi g).re) *
+        ((chi g).re ^ 2 - 1) ∂haarSU2 := by
+  rw [alpha_spinOne_eq_integral_mul_cosh]
+  let a : ℝ := beta / 2
+  let M : SU2 → ℝ := fun g => a ^ 2 / 2 *
+    ((chi g).re ^ 4 - (chi g).re ^ 2)
+  let Z : SU2 → ℝ := fun g => (chi g).re ^ 2 - 1
+  let R : SU2 → ℝ := fun g => coshRemainder (a * (chi g).re) *
+    ((chi g).re ^ 2 - 1)
+  have hM : Integrable M haarSU2 := by
+    exact (integrable_const (a ^ 2 / 2)).mul
+      (((chi_re_continuous.pow 4).sub (chi_re_continuous.pow 2)).integrable_of_hasCompactSupport
+        (HasCompactSupport.of_compactSpace _))
+  have hZ : Integrable Z haarSU2 := by
+    exact ((chi_re_continuous.pow 2).sub continuous_const).integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)
+  have hR : Integrable R haarSU2 := by
+    simpa [R] using coshRemainder_mul_spinOne_integrable a
+  have hpoint : ∀ g : SU2,
+      Real.cosh (a * (chi g).re) * ((chi g).re ^ 2 - 1) =
+        M g + Z g + R g := by
+    intro g
+    simp only [M, Z, R, coshRemainder]
+    ring
+  rw [integral_congr_ae (ae_of_all _ hpoint), integral_add (hM.add hZ) hR,
+    integral_add hM hZ]
+  have hMint : (∫ g : SU2, M g ∂haarSU2) = beta ^ 2 / 8 := by
+    rw [show M = fun g : SU2 => a ^ 2 / 2 *
+      ((chi g).re ^ 4 - (chi g).re ^ 2) by rfl,
+      integral_const_mul, chi_re_fourth_sub_sq_integral_one]
+    simp only [mul_one, a]
+    ring
+  have hZint : (∫ g : SU2, Z g ∂haarSU2) = 0 := by
+    simpa [Z] using chi_re_sq_sub_one_integral_zero
+  rw [hMint, hZint, add_zero]
+  rfl
+
+/-- Concrete discharge of the last coefficient obligation for every
+nonnegative beta. -/
+def spinOneCoefficientRemainderStepConcrete {beta : ℝ} (hbeta : 0 ≤ beta) :
+    SpinOneCoefficientRemainderStep beta where
+  one_remainder_nonnegative := by
+    rw [alpha_spinOne_eq_quadratic_add_remainder]
+    have ha : 0 ≤ beta / 2 := div_nonneg hbeta (by norm_num)
+    have hrem := spinOne_signed_remainder_integral_nonnegative ha
+    linarith
 
 /-- Central convolution multiplier `alpha_j/(2j+1)`, with the denominator
 derived from the general representation dimension. -/
