@@ -149,7 +149,6 @@ theorem tvField_le {J : ℝ} (hJ : 0 ≤ J) (h : ℝ) :
         / (Real.cosh J * (Real.cosh h * Real.cosh (h - 2 * J))) := by
     rw [Real.tanh_eq_sinh_div_cosh]
     field_simp
-    ring
   rw [expand]
   refine div_nonneg (mul_nonneg hsJ ?_) (by positivity)
   linarith
