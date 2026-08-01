@@ -29431,3 +29431,64 @@ extract is committed as `ORACLE-20260801-SPATIAL-RING-SECTORS.txt`.
 Lean elaborator was launched.  CI remains the third test.  The next mathematical
 task is not another interface: it is a lossless proof of the odd block at
 `q = tanh(beta) * exp(2*gamma)` under `beta >= 0` and `gamma >= 0`.
+
+## Addendum 572 (2026-08-01, **TASK 14: exact local dual-bond identity**)
+
+**EXACT, WITH A STRICT LOCAL SIGN FRONT DOOR.**  The new module
+`YangMills/OS/SpatialDualBond.lean` proves one entrywise identity:
+`z2Bond beta i j = dualFieldScale beta a * dualFieldBond a i j`, assuming
+`0 < beta` and `tanh(a) = exp(-2*beta)`.  The strict hypothesis is deliberate:
+at `beta = 0` the corresponding dual coupling is not a finite real number.
+There is no `gamma` in this local vertical-bond statement.  The theorem does
+not claim a many-site factorisation and does not prove or begin either sector
+inequality.  In particular, the exact uniform target for `beta >= 0`,
+`gamma >= 0`, and every extent remains wholly open.
+
+**VERIFIED GATE.**  `scripts/judge_spatial_dual_bond.py` was committed before
+the Lean theorem and licenses only this local `2 x 2` identity.  At source SHA
+`85847dd19623c692b8345cee864be7837f5c7656`, its SHA-256 was
+`bd0fda3a06b4d52bb4dd5d2230d4520d0d5ef2978ca293cbf82e963fbf61199d`.
+It returned PASS in both normal Python and `python -O`, with zero symbolic
+residual in the matrix exponential and the scaled bond factorisation.
+
+**VERIFIED FAILURES, RETAINED.**  The first standard-memory Colab allocation
+was interrupted before build because it was not the requested high-memory
+plane.  The first high-memory attempt then failed before elaboration while
+`elan` extracted the Lean archive (`Unknown frame descriptor`); this is
+`INC-SPATIAL-DUAL-BOND-LEAN-001.md`.  A fresh high-memory rerun passed every
+Lean check, but desktop inspection found that its ZIP had been created before
+the runner appended the measured jobs and final PASS to `transcript.txt`.
+That artifact-ordering failure is `INC-SPATIAL-DUAL-BOND-LEAN-002.md`.  The
+runner was repaired and committed before being executed again.
+
+**CERTIFIED IN COLAB, WITH A SELF-CONTAINED DESKTOP-VERIFIED ARTIFACT.**  The
+repaired run checked out exactly
+`85847dd19623c692b8345cee864be7837f5c7656`, verified Lean
+`v4.29.0-rc6` commit `00659f8e6071d7e46131ed643bf8003b99b044e9`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, Linux `6.6.122+`, 8 Intel Xeon
+logical CPUs, `53467192 kB` RAM, Python `3.12.13`, and no GPU.  The official
+Mathlib cache was obtained only inside the isolated Linux runtime.
+
+`lake build YangMills.OS.SpatialDualBond`, `lake build YangMillsCore`, the root
+`oracle_check.lean`, and `scripts/check_consistency.py` all returned exit 0.
+Core was MEASURED at 8466 jobs, exactly one above Addendum 571 because the new
+module entered `YangMillsCore`.  Each of `dualFieldBond`, `dualFieldScale`, and
+`z2Bond_dual_factorization` reports exactly the permitted axiom set
+`{propext, Classical.choice, Quot.sound}`.  There is no `sorryAx` and the
+consistency judge reports zero source `sorry` and zero project axioms.
+
+The repaired ZIP SHA-256, independently recomputed on Windows, is
+`4cddb8772ec53d4ee63cd51d1443d1816187f0374699a3d5921d9896f27fd5f1`.
+Its internal hashes match `SHA256SUMS`: metadata
+`95d3e805a0be4173e6774dcfd351adefe43e5882cf900ffa4005e74c4d2ee988`, oracle
+`4b82dbdb700fd42242fa7e7905759843913be1a2afd4642d2032da6dbb7898ef`, and
+transcript `2ead58bd43573a6470a7e1cb4d8743c4042207aa05847be599805381a948ef81`.
+The archived transcript itself contains `jobs_measured=8466` and
+`SPATIAL DUAL-BOND LEAN PASS`.
+
+**REMAINING TESTIMONY AND MATHEMATICS.**  Foreign Lean processes still occupy
+Windows, so no competing local elaborator was launched.  CI remains the third
+testimony.  Mathematically this is only the first exact algebraic brick after
+the sector interface.  The next honest task is a many-site Clifford/Majorana
+representation that preserves the sharp odd constant; both sector bounds and
+the uniform `specRatio` inequality remain unproved.

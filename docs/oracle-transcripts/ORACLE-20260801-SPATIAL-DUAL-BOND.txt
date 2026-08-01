@@ -1,0 +1,54 @@
+TASK 14 — EXACT LOCAL DUAL-BOND IDENTITY
+========================================
+
+Classification: CERTIFIED local algebraic infrastructure only
+Lean source SHA: 85847dd19623c692b8345cee864be7837f5c7656
+Toolchain: leanprover/lean4:v4.29.0-rc6
+Lean commit: 00659f8e6071d7e46131ed643bf8003b99b044e9
+Mathlib pin: 07642720480157414db592fa85b626dafb71355b
+Runtime: Linux-6.6.122+-x86_64-with-glibc2.35
+CPU: 8 logical Intel Xeon CPUs
+RAM: 53467192 kB
+GPU: none
+Measured YangMillsCore jobs: 8466
+
+The preregistered symbolic gate ran in normal and optimised Python and returned
+PASS in both modes.  The following decisive commands returned exit 0:
+
+  lake build YangMills.OS.SpatialDualBond
+  lake build YangMillsCore
+  lake env lean oracle_check.lean
+  python3 scripts/check_consistency.py
+
+Permanent-oracle output for every declaration introduced by the module:
+
+'YangMills.OS.dualFieldBond' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.dualFieldScale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.z2Bond_dual_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+The consistency judge reported zero source `sorry` and zero project axioms.
+
+Windows desktop artifact verification
+-------------------------------------
+
+Downloaded ZIP:
+  4cddb8772ec53d4ee63cd51d1443d1816187f0374699a3d5921d9896f27fd5f1
+
+Files verified against the archive's SHA256SUMS:
+  metadata.json      95d3e805a0be4173e6774dcfd351adefe43e5882cf900ffa4005e74c4d2ee988
+  oracle_output.txt  4b82dbdb700fd42242fa7e7905759843913be1a2afd4642d2032da6dbb7898ef
+  transcript.txt     2ead58bd43573a6470a7e1cb4d8743c4042207aa05847be599805381a948ef81
+
+The archived transcript itself contains both:
+
+  jobs_measured=8466
+  SPATIAL DUAL-BOND LEAN PASS
+
+Scope boundary
+--------------
+
+This certifies one entrywise 2 x 2 identity under `0 < beta` and the exact
+duality relation `tanh a = exp (-2 * beta)`.  It is not a many-site
+factorisation, a Jordan--Wigner transform, an odd-sector estimate, an
+even-sector estimate, or progress on the uniform spatial-ring inequality.
+
