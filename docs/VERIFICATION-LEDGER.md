@@ -29473,3 +29473,70 @@ monograph.
 **D-1 ITSELF IS UNTOUCHED.**  Still green, core 8466, oracle 14/14, zero
 `sorryAx`.  What changed in this round was a charter and an instrument, never a
 theorem.
+
+## Addendum 572 (2026-08-01, **the Dobrushin lane reproduced on the sanctioned
+plane, and the paper it actually supports**)
+
+**COLAB RUNTIME.**  Opened 14:10, closed 15:06, CPU / high-RAM (Python 3), never
+GPU, one runtime owned by one thread, disconnected the moment the work unit
+finished.  Notebook `Untitled83.ipynb`; clone at `1e4f9c0f`.  Stage 0 verified
+repo SHA, toolchain `leanprover/lean4:v4.29.0-rc6` and the Mathlib pin
+`0764272048...` **before compiling anything**, and would have aborted on any
+mismatch.
+
+**WHAT THE PLANE ADDED, and it is why the trip was worth taking.**
+
+  * `lake build YangMillsCore` → **8466 jobs, zero errors**, in a fresh Linux
+    clone.  The desktop had measured 8465 → 8466 by rebuilding the same tree
+    twice; the number is no longer a Windows-only artefact.
+  * Repository-wide oracle → exit **zero**, **2794** axiom reports, **zero**
+    `sorryAx`.
+  * Both certifiers in **`normal` AND `optimized`** (`python -O`): four runs,
+    four zero sentinels, 29/29 and 18/18 checks accounted for.  This is the
+    first time the `-O` discipline of the environment rule was exercised on real
+    gates rather than asserted.
+  * **Independent hash agreement.**  A second desk, on another operating system
+    and without coordinating on the value, reported
+    `12c1fcdb12e39e46381fa372a102503f5d63522ecbae27c0b3911671a7c04eb7` at 11467
+    bytes for `DobrushinMatrix.lean`.  The Linux run computed the same digest and
+    size.  Oleans, axiom reports and elaboration refer to the same bytes.
+
+**D-2a FAILED, and the failure is the useful part.**  `DobrushinCoefficient.lean`
+exits non-zero: unknown constants `Real.tanh_nonneg_iff`, `Real.tanh_nonpos_iff`,
+unknown identifier `div_le_div_iff`, plus several `No goals to be solved` and one
+`rewrite` miss — all library naming and tactic-level, none structural.  It was
+written on the desktop with no compiler and pushed saying so IN ADVANCE, not in a
+later correction.  **It contaminated nothing**: it is imported by neither the core
+nor the oracle, so the checkpoint above and its errors came back in the SAME run.
+The runner reported `RUN VERDICT: FAIL — 1 child not zero`, which is what a
+runner is for.  Per the standing rule the module is kept with its diagnosis and
+not deleted; the anchor tree is left exactly as measured.
+
+**THE IDENTITY IS TRUE; ITS PROOF IS NOT WRITTEN.**  The pre-registered D-2 gate
+predicted `sup_h |P_h(+1) − P_{h−2J}(+1)| = tanh|J|`, attained at `h = J`, as an
+IDENTITY and before the quantity was computed once.  It passes: maximum violation
+over a 200001-point field sweep is `5.551e-17` on the worst of six pre-registered
+`J` and exactly `0` on the other five.  **This is labelled measured, not proved,
+and no theorem of the paper depends on it.**  Promoting it because a gate passed
+would be confusing a judge with a compiler.
+
+**THE PAPER** (`papers/dobrushin-matrix/`, 7 pp, TeX+PDF same commit): *The Row
+Sums Were the Method, Not the Theorem*.  It claims exactly three things, each
+labelled: the machine-checked resolvent bound with its non-vacuity witness; the
+measured relocation of the uniformity wall to Onsager's line, with the `γ = 0`
+control reproducing the PROVED `tanh β` to six decimals so the harness is
+calibrated against a theorem rather than against itself; and a statement about
+the record — that `coupled_rowSums_not_constant` obstructs the METHOD, was read
+as obstructing the CONCLUSION, and that the reading outlived its own retraction
+because it had migrated into the work queue, where the guards do not look.
+
+**WHAT THE PAPER REFUSES TO SAY.**  That `specRatio` of the coupled kernel is
+uniformly bounded away from one — D-3 is open and named as the bottleneck.  That
+the window is sharp — it is not, and the paper states the Dobrushin constant is
+WORSE than Onsager/Kaufman by a measured factor of 2 to 36, so the axis claimed
+is generality, not constants.  That any of this bears on Yang–Mills.  Dobrushin's
+theorem is classical and the paper says so in its abstract.
+
+**INSTRUMENT MEASUREMENT.**  The PDF build was timed: 3 s wall, one process, two
+`pdflatex` passes, zero LaTeX errors — inside the local light contract by
+measurement rather than by presumption.

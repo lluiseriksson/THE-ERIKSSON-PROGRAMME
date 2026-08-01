@@ -1,0 +1,446 @@
+% The row sums were the method, not the theorem.
+% Lane: Dobrushin (docs/DOBRUSHIN-CHARTER.md), module
+% YangMills/OS/DobrushinMatrix.lean.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.  Prohibitions of the charter apply: the word
+% "clustering" is not used for an infinite-volume statement, the window is never
+% called sharp, and no Yang-Mills consequence is stated or implied.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\anchor}{1e4f9c0f3e60d42c1929482ca98b00c140d2b038}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\specRatio}{\mathrm{specRatio}}
+
+\title{The Row Sums Were the Method, Not the Theorem:\\
+a Machine-Checked Volume-Free Resolvent Bound,\\
+and the Relocation of a Uniformity Wall}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A formal development of a two-dimensional spatial transfer kernel proves its
+uniform spectral statements by Schur's test on \emph{constant} row sums, and
+carries a theorem, labelled \textsc{the obstruction} in its own source, stating
+that those row sums stop being constant the moment the spatial coupling is
+switched on.  That theorem obstructs the \emph{method}.  It was read as
+obstructing the \emph{conclusion}, and the reading outlived its own retraction.
+
+We prove, in Lean~4 with no \texttt{sorry} and no project axiom, an elementary
+resolvent bound whose hypothesis asks for row sums \emph{bounded} by
+$\alpha<1$ and never constant: for a nonnegative matrix $C$ over a finite index
+type, supported on pairs at distance at most one,
+\[
+  \sum_{n<N}(C^{\,n})_{ij}\;\le\;\frac{\alpha^{\dist(i,j)}}{1-\alpha}
+  \qquad\text{for every }N,
+\]
+with no reference of any kind to the cardinality of the index type.  We exhibit
+a non-vacuity witness and record the oracle.
+
+Separately, and by measurement rather than proof, we locate the wall.  For the
+coupled kernel the second-eigenvalue ratio $\specRatio(L)$ saturates strictly
+below one throughout the tested disordered region and reaches one to six decimal
+places in the ordered region; the transition sits on Onsager's line.  The
+degeneracy is therefore a property of the ordered phase and not of the spatial
+weight.  The control at zero spatial coupling reproduces the \emph{proved}
+identity $\specRatio=\tanh\beta$ to six decimals, so the harness is calibrated
+against a theorem rather than against itself.
+
+\textbf{What is not proved.}  The volume-uniform bound on $\specRatio$ for the
+coupled kernel is \emph{not} established here.  Dobrushin's uniqueness theorem is
+classical; nothing in this paper is new mathematics.  What is offered is a
+mechanised, non-vacuous ingredient, a measured relocation of a wall, and an
+exactly named remaining obligation.  No consequence for Yang--Mills theory is
+stated, suggested, or implied.
+\end{abstract}
+
+\section{What this paper claims, and what it does not}
+
+\textbf{Claimed, machine-checked.}  Theorem~\ref{thm:d1} and its witness, in
+\repofile{YangMills/OS/DobrushinMatrix.lean}{YangMills/OS/DobrushinMatrix.lean}.
+Every declaration is oracled and depends on exactly Lean's three standard
+axioms.
+
+\textbf{Claimed, measured.}  The saturation table of
+Section~\ref{sec:measurement}.  These are floating-point computations at finite
+extent with a documented extrapolation; they are evidence, not proof, and they
+are labelled as such wherever they appear.
+
+\textbf{Claimed, about the record.}  Section~\ref{sec:reading} states precisely
+what the source theorem \texttt{coupled\_rowSums\_not\_constant} does and does
+not license.  This is a statement about a formal development, and it is
+verifiable by reading that development.
+
+\textbf{Not claimed.}  That $\specRatio$ of the coupled kernel is bounded away
+from one uniformly in the extent.  That the window derived from Dobrushin's
+condition is optimal --- it is not, and Section~\ref{sec:prior} says by how much.
+That any of this bears on the Yang--Mills mass gap.
+
+\section{The setting, and the theorem that was read too widely}
+\label{sec:reading}
+
+Fix an extent $L$ and consider configurations $\sigma\in\{0,1\}^{L}$ of one
+slice.  The development under discussion carries a time-bond kernel that
+factorises over sites,
+\[
+  K_\beta(\sigma,\tau)\;=\;\prod_{j<L} b_\beta(\sigma_j,\tau_j),
+  \qquad b_\beta(s,s')=e^{\pm\beta},
+\]
+and an arbitrary strictly positive slice weight $w$, the Gibbs weight of a
+space-time configuration being the product of the slice weights and the time
+bonds.  When $w$ is itself a product over spatial bonds with coupling $\gamma$,
+the system is the anisotropic two-dimensional Ising model.
+
+Two facts from that development matter here.
+
+\begin{proposition}[proved elsewhere in the development]
+\label{prop:decoupled}
+At $\gamma=0$ and for every $L\ge1$, $\specRatio=\tanh\beta$ exactly.
+\end{proposition}
+
+The proof is Schur's test: the decoupled kernel has \emph{constant} row sums, and
+the loss on the odd part of an observable is exactly compensated by the odd bond
+eigenvalue at every step.
+
+\begin{proposition}[\texttt{coupled\_rowSums\_not\_constant}]
+\label{prop:obstruction}
+At $\gamma>0$ the row sums of the coupled kernel are not constant: two explicit
+configurations of a two-site slice have different row sums.
+\end{proposition}
+
+Proposition~\ref{prop:obstruction} is labelled \textsc{the obstruction} in the
+source.  \emph{It obstructs Schur's test.}  It says nothing whatever about
+$\specRatio$, it is proved on a two-site witness, and no statement quantified
+over $L$ appears in it.
+
+The stronger reading --- that the spatial weight destroys uniformity --- was
+entered into the development, then \emph{retracted of record} as unproved, leaving
+behind only a measurement of degeneracy.  The retraction removed the sentence
+from the manuscript, from the module docstring, and from a submission form.  It
+did not remove the belief, because the belief had migrated into the choice of
+which theorems to attempt next.  Guards in this development compare
+identifiers and substrings in files; a work queue is neither.
+
+\section{The volume-free resolvent bound}
+
+\begin{theorem}[machine-checked]
+\label{thm:d1}
+Let $\iota$ be a finite type, $d:\iota\times\iota\to\N$ satisfy $d(i,i)=0$ and
+the triangle inequality, and let $C:\iota\times\iota\to\R$ satisfy
+\begin{enumerate}
+\item[(i)] $C_{ij}\ge0$ for all $i,j$;
+\item[(ii)] $C_{ij}=0$ whenever $d(i,j)>1$;
+\item[(iii)] $\sum_j C_{ij}\le\alpha$ for all $i$, with $0\le\alpha<1$.
+\end{enumerate}
+Then for all $i,j$ and every $N\in\N$,
+\[
+  \sum_{n\in[0,N)}(C^{\,n})_{ij}\;\le\;\frac{\alpha^{\,d(i,j)}}{1-\alpha},
+\]
+and consequently $\sum_{n}(C^{\,n})_{ij}\le\alpha^{\,d(i,j)}/(1-\alpha)$.
+\end{theorem}
+
+\begin{proof}
+Three steps, each an induction on $n$.  Nonnegativity is preserved by powers.
+Row sums multiply: expanding $(C^{n+1})$ and exchanging the two finite sums,
+$\sum_j(C^{n+1})_{ij}=\sum_k(C^{n})_{ik}\sum_jC_{kj}\le\alpha\sum_k(C^{n})_{ik}
+\le\alpha^{n+1}$, so each entry, being at most its row sum, is at most
+$\alpha^{n}$.  Support: if $n<d(i,j)$ then $(C^{n})_{ij}=0$, since in
+$(C^{n+1})_{ij}=\sum_k(C^{n})_{ik}C_{kj}$ each $k$ has either $d(i,k)>n$, killing
+the first factor by induction, or $d(i,k)\le n$, whence
+$d(i,j)\le d(i,k)+d(k,j)\le n+d(k,j)$ forces $d(k,j)>1$ and kills the second.
+Combining, $(C^{n})_{ij}\le\alpha^{n}$ when $n\ge d(i,j)$ and vanishes otherwise;
+splitting $[0,N)$ at $d(i,j)$ and reindexing the surviving block by
+$n=d(i,j)+m$ gives $\alpha^{d(i,j)}\sum_{m<N-d(i,j)}\alpha^{m}$, and the
+geometric sum is at most $(1-\alpha)^{-1}$.
+\end{proof}
+
+\begin{remark}[where the volume-freeness is]
+The cardinality of $\iota$ appears nowhere in the hypotheses or the conclusion.
+That is the entire content of the theorem: the index type may be as large as one
+likes and neither $\alpha$ nor the exponent notices.  Every constant is read off
+single-site data.
+\end{remark}
+
+\begin{remark}[the hypothesis that matters here]
+\label{rem:crack}
+Hypothesis (iii) asks for row sums \emph{bounded} by $\alpha$.  It never asks for
+them to be constant.  Proposition~\ref{prop:obstruction} refutes constancy and
+leaves (iii) untouched: it is precisely the crack through which the coupled
+kernel passes after Schur's test has died.
+\end{remark}
+
+\begin{proposition}[non-vacuity, machine-checked]
+\label{prop:nonvacuity}
+On the three-point chain with $d$ the graph distance and $C_{ij}=1/4$ for
+$d(i,j)\le1$ and $0$ otherwise, hypotheses (i)--(iii) hold with $\alpha=3/4<1$,
+the matrix is not the zero matrix, the two endpoints are at distance exactly
+two, and the conclusion reads: the whole resolvent series between the endpoints
+is at most $9/4$.
+\end{proposition}
+
+The witness is not decoration.  Hypotheses (ii) and (iii) are jointly
+satisfiable by the zero matrix, for which the conclusion is trivial, and by data
+with $d\equiv0$, for which the exponent is trivial.  Proposition
+\ref{prop:nonvacuity} excludes both.
+
+\section{The measurement, and where the wall is}
+\label{sec:measurement}
+
+\textbf{This section is numerical.}  Nothing in it is proved, and nothing in it
+is used by Section~3.
+
+Let $T_L=W_\gamma^{1/2}K_\beta W_\gamma^{1/2}$ be the symmetrised coupled kernel
+on $\{\pm1\}^{L}$ with free spatial boundary, and $r(L)=|\lambda_1|/|\lambda_0|$
+its second-eigenvalue ratio, which is $\specRatio$ of the development.  We
+compute $r(L)$ for $L=2,\dots,12$ by dense symmetric eigendecomposition and
+extrapolate by Aitken.
+
+\begin{center}
+\begin{tabular}{rrrrrr}
+\toprule
+$\beta$ & $\gamma$ & $\sinh2\beta\sinh2\gamma$ & $r(2)$ & $r(12)$ & $r(\infty)$ \\
+\midrule
+\multicolumn{6}{l}{\emph{controls at zero spatial coupling}}\\
+$0.20$ & $0.00$ & $0.0000$ & $0.197375$ & $0.197375$ & $\tanh\beta=0.197375$\\
+$0.40$ & $0.00$ & $0.0000$ & $0.379949$ & $0.379949$ & $\tanh\beta=0.379949$\\
+\midrule
+\multicolumn{6}{l}{\emph{disordered}}\\
+$0.10$ & $0.10$ & $0.0405$ & $0.1096$ & $0.1209$ & $0.1214$\\
+$0.20$ & $0.20$ & $0.1687$ & $0.2360$ & $0.2895$ & $0.2922$\\
+$0.30$ & $0.30$ & $0.4053$ & $0.3733$ & $0.5127$ & $0.5230$\\
+$0.40$ & $0.40$ & $0.7887$ & $0.5122$ & $0.7813$ & $0.8162$\\
+$0.10$ & $0.80$ & $0.4783$ & $0.1651$ & $0.4013$ & $0.4570$\\
+$0.80$ & $0.10$ & $0.4783$ & $0.7246$ & $0.8031$ & $0.8075$\\
+\midrule
+\multicolumn{6}{l}{\emph{ordered}}\\
+$0.60$ & $0.60$ & $2.2785$ & $0.7489$ & $0.9992$ & $1.000003$\\
+$0.80$ & $0.80$ & $5.6433$ & $0.8893$ & $0.999999$ & $1.000000$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+$r(\infty)$ is an Aitken extrapolation of the last three extents.  Values above
+one in the ordered rows are extrapolation overshoot at the sixth decimal and are
+reported as measured.
+
+Every cell inside Onsager's disordered region, $\sinh 2\beta\,\sinh 2\gamma<1$,
+saturates strictly below one, with increment ratios near $0.6$; both ordered
+cells reach one to six decimal places.  The control at $\gamma=0$ reproduces
+$\tanh\beta$ to six decimals, which is Proposition~\ref{prop:decoupled} --- the
+harness is calibrated against a theorem of the development rather than against
+itself.
+
+\textbf{The reading.}  The degeneracy that the development measured is a
+property of the \emph{ordered phase}.  The wall exists and it sits at the phase
+boundary, which is where a physical wall belongs.  Switching on the spatial
+weight does not, by itself, destroy anything.
+
+\textbf{Gates.}  Three gates were registered in
+\repofile{scripts/judge\_dobrushin.py}{scripts/judge\_dobrushin.py} together with
+the lane charter, before a line of the Lean of Section~3 was written.  Each exits
+non-zero on failure; none bundles a theorem with its witness; the bound gate
+predicts a number rather than sampling.  One of them was later found not to
+exercise the hypothesis of Remark~\ref{rem:crack} --- it normalised every row to
+\emph{exactly} $\alpha$ --- and was redesigned to carry unequal row sums,
+strictly harder, declared in its own docstring and committed before being run.
+The gates emit a verdict only after an explicit counter confirms that the
+expected number of checks actually executed, because an empty failure list is
+also what zero checks produce.  No acceptance decision anywhere in this lane
+depends on a Python \texttt{assert}.
+
+\section{What remains, named exactly}
+\label{sec:frontier}
+
+Theorem~\ref{thm:d1} is an engine, not a conclusion.  Turning it into a
+volume-uniform statement about $\specRatio$ requires, in order:
+
+\begin{enumerate}
+\item the single-site Dobrushin coefficient of the model, giving the explicit
+      window $2\tanh\beta+2\tanh\gamma<1$;
+\item Dobrushin's comparison estimate --- exponential decay of connected
+      correlations at a rate free of the extent.  \textbf{This is the
+      bottleneck}; everything else is assembly;
+\item transport of that decay into the operator formulation.
+\end{enumerate}
+
+\subsection*{Step 1, measured but not proved}
+
+A two-state site in field $h$ has conditional $P(+1)=(1+\tanh h)/2$, and flipping
+one neighbour across a bond of strength $J$ moves that field to $h-2J$.  The
+claim of step~1 is the identity
+\[
+  \sup_{h\in\R}\bigl|P_h(+1)-P_{h-2J}(+1)\bigr| \;=\; \tanh|J|,
+  \qquad\text{attained at } h=J .
+\]
+A gate predicting this \emph{identity} --- not a range, and not a threshold
+chosen afterwards --- was committed before the quantity was computed even once.
+It checks the attained value against $\tanh|J|$, checks that a sweep of
+$2\cdot10^{5}+1$ fields never beats the attained value, and fails on any
+violation.
+
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+$J$ & predicted $\tanh|J|$ & attained at $h=J$ & max violation over sweep\\
+\midrule
+$0.05$ & $0.049958374958$ & $0.049958374958$ & $0.000\mathrm{e}{+}00$\\
+$0.20$ & $0.197375320225$ & $0.197375320225$ & $0.000\mathrm{e}{+}00$\\
+$0.50$ & $0.462117157260$ & $0.462117157260$ & $5.551\mathrm{e}{-}17$\\
+$1.00$ & $0.761594155956$ & $0.761594155956$ & $0.000\mathrm{e}{+}00$\\
+$2.00$ & $0.964027580076$ & $0.964027580076$ & $0.000\mathrm{e}{+}00$\\
+$-0.70$ & $0.604367777117$ & $0.604367777117$ & $0.000\mathrm{e}{+}00$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{The Lean proof of this identity was attempted and does not compile.}
+The intended mechanism is
+$\tanh a-\tanh b=\sinh(a-b)/(\cosh a\cosh b)$ together with
+$\cosh a\cosh b\ge\cosh^{2}\!\bigl((a-b)/2\bigr)$, which minimises the
+denominator exactly at fields symmetric about zero; the attempt fails on library
+naming and on several tactic steps, and is recorded with its diagnosis rather
+than removed.  Consequently step~1 carries the label \emph{measured}, not
+\emph{proved}, and no theorem of this paper depends on it.
+
+Sharpness is the reason the gate checks attainment separately.  A coefficient
+that were merely an upper bound would leave the window undetermined at its own
+boundary; the supremum being reached is what would make $\tanh|J|$ the constant
+rather than a number above it.
+
+The consumer already exists in the development.  It takes, over a family of
+finite volumes, decay at a \emph{common} rate $r<1$ and returns a \emph{common}
+mass $m>0$ with $\|\text{projected transfer}\|\le e^{-m}$ for every member of the
+family.  Its quantifier order is worth stating because it is load-bearing: the
+prefactor $C$ may depend on the volume and on the observable, and only $r$ is
+shared.  The development's own standing objection --- that a bound
+$C(L)\rho^{N}$ with $C(L)\to\infty$ says nothing --- therefore does not apply to
+it, the conclusion being an operator-norm bound.
+
+A design decision is recorded here rather than discovered later: the vacuum
+pairing is an infinite-time object, so step~3 must proceed through finite time
+extent with explicit boundary control, taking the limit only at the level of the
+bound.  No infinite-volume state is constructed anywhere in this paper, and the
+word \emph{clustering} is accordingly not used for one.
+
+\section{Prior art, and the exact delta}
+\label{sec:prior}
+
+\textbf{Dobrushin's uniqueness theorem is classical} and nothing in this paper
+is new mathematics.  We locate the contribution precisely.
+
+\emph{Not explicit constants.}  The cell here is the anisotropic
+two-dimensional Ising model, whose transfer spectrum has been available in
+closed form since Onsager and Kaufman.  A constant obtained from Dobrushin's
+condition is \emph{worse} than the exact answer --- on the cells we measured, by
+a factor between roughly two and thirty-six.  Any claim to have improved a
+constant for this model would be false, and we make none.
+
+\emph{Generality, instead.}  Dobrushin's coefficient is read off the single-site
+conditionals of an \emph{arbitrary} positive finite-range slice weight, which is
+what the development's Gibbs weight quantifies over, and where the exact
+solution is silent.
+
+\emph{Mechanisation.}  A search conducted on 1 August 2026 returned no
+formalisation of Dobrushin's uniqueness condition in any proof assistant.  The
+same search does return a Lean~4 formalisation of the transverse-field Ising
+chain, with momentum-mode decomposition and a Jordan--Wigner transformation; it
+concerns the quantum chain rather than the classical two-dimensional transfer
+matrix, and displaces nothing here, but it means a blanket claim that the Ising
+model has not been formalised would not survive review, and we make none.  A
+formalisation of the Perron--Frobenius theorem for irreducible nonnegative
+matrices also exists.  Reflection positivity and finite-lattice spectra for
+related models have been treated without mechanisation.
+
+\section{Limitations}
+
+Theorem~\ref{thm:d1} is elementary and its proof is three inductions; its value
+is that it is machine-checked, non-vacuous, and has the hypothesis the dead
+method violated.  Section~\ref{sec:measurement} is numerics at $L\le12$ with an
+Aitken extrapolation: it locates a wall, it does not prove where the wall is,
+and an extrapolation can mislead near a transition.  The window of
+Section~\ref{sec:frontier} is not optimal and is never called sharp.  Step~2 of
+Section~\ref{sec:frontier} is open, and until it closes, the volume-uniform
+statement about $\specRatio$ for the coupled kernel remains unproved.
+
+\section{Reproducibility}
+
+\textbf{Anchor.}  All sources cited above are read at commit
+\nolinkurl{1e4f9c0f3e60d42c1929482ca98b00c140d2b038} of
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Toolchain
+\nolinkurl{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned at
+\nolinkurl{07642720480157414db592fa85b626dafb71355b}.  A runner verifies all
+three of these before compiling anything and aborts on any mismatch, so that a
+stale cache cannot masquerade as a reproduction.
+
+\textbf{Two planes, and what each measured.}  The development machine measured
+the core at $8465$ jobs with the module's import removed and $8466$ with it
+restored --- the delta obtained by rebuilding the same tree twice, not by
+subtracting against a baseline measured elsewhere.  A fresh Linux clone at the
+anchor then reproduced $8466$ jobs independently, with zero errors.
+
+\textbf{Oracle.}  On the development machine, the fourteen declarations of the
+module were checked individually and each depends on exactly
+\texttt{[propext, Classical.choice, Quot.sound]}, with no \texttt{sorryAx} and no
+project axiom.  On the Linux plane the repository-wide oracle ran to completion
+with exit code zero over $2794$ axiom reports and zero occurrences of
+\texttt{sorryAx}.
+
+\textbf{Independent hash agreement.}  A second desk, working from its own
+checkout on a different operating system and without coordination on the value,
+reported
+\nolinkurl{12c1fcdb12e39e46381fa372a102503f5d63522ecbae27c0b3911671a7c04eb7} at
+$11467$ bytes for the module.  The Linux run at the anchor computed the same
+digest and the same size.  The oleans, the axiom reports and the elaboration
+therefore refer to the same bytes, which is the only reason any of the numbers
+above can be compared at all.
+
+\textbf{Certifiers.}  Both gate scripts were run in \texttt{normal} and in
+\texttt{optimized} (\texttt{python -O}) mode on the Linux plane.  All four runs
+exited zero: \repofile{scripts/judge\_dobrushin.py}{judge\_dobrushin.py}
+reported $29$ of $29$ checks in each mode, and
+\repofile{scripts/judge\_dobrushin\_d2.py}{judge\_dobrushin\_d2.py} reported $18$
+of $18$.  No acceptance decision in either script depends on a Python
+\texttt{assert}; each counts the checks it performed and refuses to print a
+verdict when fewer ran than expected, because an empty failure list is also what
+zero checks produce.
+
+\textbf{Child processes.}  Every child of the runner writes a sentinel holding
+exactly one line, its real decimal exit code, captured after termination and
+written atomically with validation.  Four states are distinguished on read:
+absent, malformed, non-zero, zero.  A run in which every sentinel reads zero is
+reported as a \emph{pass candidate}, never as a pass, because the logs still
+have to be read.
+
+\textbf{One module in the anchor does not compile.}
+\repofile{YangMills/OS/DobrushinCoefficient.lean}{DobrushinCoefficient.lean},
+the attempt at step~1 of Section~\ref{sec:frontier}, exits non-zero.  It is
+imported neither by the core nor by the oracle, so the measurements above are
+unaffected --- and it is retained with its diagnosis rather than deleted, this
+development's standing rule being that a measured failure is committed and not
+removed.  No claim of this paper rests on it.
+
+\end{document}
