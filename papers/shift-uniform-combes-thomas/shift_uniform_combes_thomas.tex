@@ -44,7 +44,8 @@ development were produced with AI assistance under the repository's audit
 protocol.  Claims labelled \formalized{} were checked by Lean~4 against a
 pinned Mathlib and a targeted axiom oracle.  Paper-level functional-calculus
 arguments are labelled \proved{} and are not represented as Lean theorems.}}
-\date{August 1, 2026 -- research preprint, version 0.3}
+\date{August 1, 2026 -- research preprint, version 0.3.1
+(documentation-only revision)}
 
 \begin{document}
 \maketitle
@@ -581,6 +582,18 @@ modules, \path{oracle_check.lean}, the focused
 \path{ShiftUniformOracle.lean}, and a verification transcript.  A reader can
 therefore materialize and check the cited source without relying on an
 uncommitted worktree.
+
+For cryptographic continuity, the materialized version-0.3 source package is
+the tree at commit
+\lean{cba2b5d705bfadc377a9c04293a57a6bfcb82c19}.  Its exact file name is
+\path{shift-uniform-combes-thomas-v0.3-source.zip}; it contains 7,350 archive
+entries and has SHA-256
+\begin{center}
+\small\lean{1B5EAB37038E071F1E3A1A1BA263D93048828EA079950273BF915B4605897823}.
+\end{center}
+This version 0.3.1 is a documentation-only revision that prints those package
+identifiers in the PDF.  It changes no Lean theorem module and claims no new
+mathematical result.
 
 Toolchain: Lean \path{leanprover/lean4:v4.29.0-rc6}; Mathlib revision
 \texttt{0764272048}\ldots{} (the full revision is recorded in

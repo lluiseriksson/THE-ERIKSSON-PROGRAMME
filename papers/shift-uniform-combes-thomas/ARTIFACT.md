@@ -19,6 +19,16 @@ The version-0.2 manuscript commit is
 annotated release tag `shift-uniform-ct-v0.3` and is distributed as a complete
 Git source archive in addition to the PDF.
 
+- Version-0.3 source-package commit:
+  `cba2b5d705bfadc377a9c04293a57a6bfcb82c19`
+- Exact archive: `shift-uniform-combes-thomas-v0.3-source.zip`
+- Archive entries: 7,350
+- Archive SHA-256:
+  `1B5EAB37038E071F1E3A1A1BA263D93048828EA079950273BF915B4605897823`
+
+Version 0.3.1 is a documentation-only manuscript revision that adds these
+identifiers to the PDF. It does not modify either Lean theorem module.
+
 ## Reproduction commands
 
 Run from the repository root:
@@ -39,10 +49,10 @@ successful repetition, is recorded in `VERIFICATION-TRANSCRIPT.txt`.
 
 ## Manuscript artifact
 
-- Manuscript version: 0.3
+- Manuscript version: 0.3.1 (documentation-only)
 - Pages: 10
 - Output: `output/pdf/shift_uniform_combes_thomas.pdf`
-- SHA-256: `115FEFE0179DDC9B37E8D832FA9572B11D08AF3C26A89E8F70AE9A36A0021096`
+- SHA-256: `FC89026475CC959B2C2F4637F020DACB3BD183CF7DE1E7E8D7F7D9C68CFB2C86`
 
 The detailed administrative status of thirteen other author-corpus records is
 kept in `PUBLICATION-PROVENANCE.md`, outside the mathematical manuscript. It is
