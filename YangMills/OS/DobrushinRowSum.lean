@@ -103,6 +103,62 @@ theorem dobrushin_resolvent_tsum
   Matrix.tsum_pow_apply_le (dobMatrix_nonneg J d) hα0 hα1 hrow hself htri
     (dobMatrix_supp J d) i j
 
+/-! ## §2b  From local geometry to the row-sum hypothesis, at every site of
+every volume
+
+The computation of §3 is about ONE site of ONE small graph.  What
+`dobrushin_resolvent_bound` consumes is a bound at EVERY site, and a reader is
+entitled to ask how one becomes the other without the size of the system
+entering.  This is the bridge, and it is the statement that makes the window a
+property of local geometry rather than of a particular volume. -/
+
+/-- Every entry is at most the bond coefficient it is built from; off the
+influence support it is zero, which is smaller still. -/
+theorem dobMatrix_le_tanh (J : ι → ι → ℝ) (d : ι → ι → ℕ) (i j : ι) :
+    dobMatrix J d i j ≤ Real.tanh |J i j| := by
+  unfold dobMatrix
+  split
+  · exact le_refl _
+  · exact tanh_nonneg_of_nonneg (abs_nonneg _)
+
+/-- **The row sum is carried by any cover of the influence support.** -/
+theorem rowSum_le_sum_cover (J : ι → ι → ℝ) (d : ι → ι → ℕ) (i : ι)
+    (S : Finset ι) (hS : ∀ j, dobMatrix J d i j ≠ 0 → j ∈ S) :
+    ∑ j, dobMatrix J d i j ≤ ∑ j ∈ S, Real.tanh |J i j| := by
+  have hrestrict : ∑ j, dobMatrix J d i j = ∑ j ∈ S, dobMatrix J d i j := by
+    refine (Finset.sum_subset (Finset.subset_univ S) ?_).symm
+    intro x _ hx
+    by_contra hne
+    exact hx (hS x hne)
+  rw [hrestrict]
+  exact Finset.sum_le_sum fun j _ => dobMatrix_le_tanh J d i j
+
+/-- **The window, uniformly over sites and therefore over volumes.**  If at every
+site the influence support is contained in a finite set whose bond coefficients
+sum to at most `α`, then the row-sum hypothesis of `dobrushin_resolvent_bound`
+holds at every site.  Neither the statement nor `α` mentions the cardinality of
+`ι`: this is what turns a computation at one site into a hypothesis that a whole
+family of finite volumes satisfies simultaneously. -/
+theorem rowSum_bound_of_local_cover (J : ι → ι → ℝ) (d : ι → ι → ℕ) {α : ℝ}
+    (S : ι → Finset ι)
+    (hS : ∀ i j, dobMatrix J d i j ≠ 0 → j ∈ S i)
+    (hα : ∀ i, ∑ j ∈ S i, Real.tanh |J i j| ≤ α) :
+    ∀ i, ∑ j, dobMatrix J d i j ≤ α :=
+  fun i => le_trans (rowSum_le_sum_cover J d i (S i) (hS i)) (hα i)
+
+/-- The chain, assembled from local data alone: local covers whose coefficients
+sum below one give the volume-free resolvent bound at every pair of sites. -/
+theorem dobrushin_bound_of_local_cover (J : ι → ι → ℝ) (d : ι → ι → ℕ)
+    (hself : ∀ i, d i i = 0) (htri : ∀ i j k, d i k ≤ d i j + d j k)
+    {α : ℝ} (hα0 : 0 ≤ α) (hα1 : α < 1)
+    (S : ι → Finset ι)
+    (hS : ∀ i j, dobMatrix J d i j ≠ 0 → j ∈ S i)
+    (hα : ∀ i, ∑ j ∈ S i, Real.tanh |J i j| ≤ α)
+    (i j : ι) (N : ℕ) :
+    ∑ n ∈ Finset.range N, ((dobMatrix J d) ^ n) i j ≤ α ^ (d i j) / (1 - α) :=
+  dobrushin_resolvent_bound J d hself htri hα0 hα1
+    (rowSum_bound_of_local_cover J d S hS hα) i j N
+
 /-! ## §3  The window, computed
 
 A site with four neighbours, two carrying `β` and two carrying `γ`.  The graph is

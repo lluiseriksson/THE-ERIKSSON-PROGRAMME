@@ -3174,3 +3174,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.starDist_self
 #print axioms YangMills.OS.Dobrushin.starDist_triangle
 #print axioms YangMills.OS.Dobrushin.starDist_rowSum
+
+-- D-2c: local geometry to the row-sum hypothesis, uniformly over volumes.
+#print axioms YangMills.OS.Dobrushin.dobMatrix_le_tanh
+#print axioms YangMills.OS.Dobrushin.rowSum_le_sum_cover
+#print axioms YangMills.OS.Dobrushin.rowSum_bound_of_local_cover
+#print axioms YangMills.OS.Dobrushin.dobrushin_bound_of_local_cover
