@@ -82,22 +82,27 @@ named beta-one specialization of that uniform constructor.
   enlargement to all beta.  The syntactic headline guard passes and rejects
   its registered cheat fixtures.
 
-These are intermediate manufacturer checks, not the terminal two-clone,
-complete-oracle, `YangMillsCore`, CI, or blind-audit evidence.
+- Terminal source SHA `08155607cacca04f3f7a507a78762f88fffd395d`
+  was reproduced in two independent fresh Colab CPU/high-RAM clones.  All nine
+  exact targets and `YangMillsCore` built; 48 oracle headlines reported only
+  `propext`, `Classical.choice`, and `Quot.sound`; instruments passed under
+  normal Python and `-O`.
+- The two deterministic manifests are byte-identical with SHA-256
+  `8fab9c9cff877133ff26dc50316f65f0e8d7a96aeee5cd8f10c2e186fa27ad52`.
+  Source RAW/LF hashes, ten `.olean` hashes, and the measured failures are in
+  `SU2-THETA-PRISM-TRANSCRIPT-20260801.txt` and the checked-in manifest.
+- GitHub honesty run `30704212187`, job `91380399007`, passed on the compiled
+  SHA.  It remains a syntactic check rather than mathematical certification.
 
-GitHub reports no required checks configured for the PR branch; this is not a
-remote-CI pass and remains open evidence debt.
+These are manufacturer reproduction results, not a blind-audit verdict.
 
 ## ABIERTO
 
 - Strengthen the label-two character-ring bridge to a constructed spin-one
   representation if the independent audit requires an actual complement
   rather than the explicit tensor-square identity.
-- Seal the documentation-aligned source SHA; run every target and
-  `YangMillsCore`, the complete axiom oracle, mutation instruments, CI, and
-  binary/LF hashing in two independent fresh Colab clones of that same SHA.
-  Require matching hashes, regenerate the non-recursive final transcript,
-  and request a new blind external audit.
+- Request a new blind external audit of the published refs.  Do not treat the
+  manufacturer's matching two-clone manifests as that audit.
 - Physical-cell identification, reflection/OS positivity, programme Gate 7,
   a paper claim, merge, and manufacturer self-certification remain out of
   scope.
