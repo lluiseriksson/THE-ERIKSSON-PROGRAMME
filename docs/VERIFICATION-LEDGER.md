@@ -30098,3 +30098,47 @@ A PASS licenses only an attempt to formalize the scalar vacuum-product
 comparison needed by a future finite fermionic classification.  It proves no
 classification, no sector estimate, and no part of the uniform bound.  The
 judge has not run at the time of this addendum; no result or margin is claimed.
+
+## Addendum 588 (2026-08-01, **TASK 14: sector-vacuum quotient gate PASS**)
+
+**VERIFIED NUMERICALLY, NOT PROVED.**  After the preregistration in Addendum
+587 was committed and pushed at raw SHA
+`22cf59e2631c11dcac34cd271186da8e903d9544`, the immutable judge
+`scripts/judge_spatial_vacuum_ratio.py`, SHA-256
+`304cdf682b12e9f3fce2028315504a42ff1df40bdce00377edbb97903568b786`,
+was run once in normal Python and once with `python -O`.  The lightweight
+Windows run used Python 3.12.6, mpmath 1.3.0, Windows 11 build 26200, and an
+AMD64 Family 25 Model 33 CPU.  No Lean, Lake, oracle, Colab runtime, or
+sustained computation was started.
+
+Normal mode returned exit 0 in approximately 1.98 s; optimized mode returned
+exit 0 in approximately 2.04 s.  Their one-line JSON outputs were byte-for-byte
+identical after LF termination, with SHA-256
+`965e4f8160ffa18abd4e1e262cc7a7353d078455516779f0607677ab8f3742c8`.
+
+All 225 preregistered inside-window cells passed: 120 even-length and 105
+odd-length cells over `L = 2,...,16`.  The minimum measured margin was
+
+`1 - R_L = 0.000037028772521857527449289927549530268702878582100482`,
+
+which is more than 3702 times the preregistered `1e-8` floor.  It occurred at
+`beta = 2`, `gamma/a = 0.75`, even `L = 16`, where
+`q = 0.99088297076818458346595664668662965340462063619704` and
+`R_L = 0.99996297122747814247255071007245046973129712141790`.
+All 225 reversed-quotient mutations and all 225 periodic-for-antiperiodic-grid
+mutations were rejected.  All 75 `gamma = 0` controls returned the exact
+quotient one at the declared precision.
+
+The 225 outside-window controls had zero quotients above one; their measured
+range was
+`[0.24154792482351894849660065236793482450662207569592,
+0.99987982669769807032529203361833983116983616254652]`.  This observation was
+not part of the PASS condition and licenses no claim outside the nontrivial
+window.
+
+The decision is positive but narrow in scope: it licenses an attempt at the
+scalar periodic/antiperiodic vacuum-product comparison.  It does not certify
+the finite fermionic spectrum, a vacuum-ratio theorem, Jordan--Wigner, either
+sector bound, or the uniform spatial-ring inequality.  The sharp odd block,
+the even non-Perron block, the `beta = 0` endpoint, and the final target remain
+open.
