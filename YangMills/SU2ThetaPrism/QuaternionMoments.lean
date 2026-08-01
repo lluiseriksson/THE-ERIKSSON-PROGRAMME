@@ -610,9 +610,21 @@ private theorem coordinate_zero_fourth_eq_three_mixed :
   have hCscaled := hC.const_mul (-4 : ℝ)
   have hBscaled := hB.const_mul (6 : ℝ)
   have hDscaled := hD.const_mul (-4 : ℝ)
-  have hAC := hA.add hCscaled
-  have hACB := hAC.add hBscaled
-  have hACBD := hACB.add hDscaled
+  have hAC : Integrable (fun g : SU2 =>
+      quaternionCoordinate 0 g ^ 4 +
+        (-4) * (quaternionCoordinate 0 g ^ 3 * quaternionCoordinate 1 g))
+      haarSU2 := hA.add hCscaled
+  have hACB : Integrable (fun g : SU2 =>
+      quaternionCoordinate 0 g ^ 4 +
+          (-4) * (quaternionCoordinate 0 g ^ 3 * quaternionCoordinate 1 g) +
+        6 * (quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 1 g ^ 2))
+      haarSU2 := hAC.add hBscaled
+  have hACBD : Integrable (fun g : SU2 =>
+      quaternionCoordinate 0 g ^ 4 +
+            (-4) * (quaternionCoordinate 0 g ^ 3 * quaternionCoordinate 1 g) +
+          6 * (quaternionCoordinate 0 g ^ 2 * quaternionCoordinate 1 g ^ 2) +
+        (-4) * (quaternionCoordinate 0 g * quaternionCoordinate 1 g ^ 3))
+      haarSU2 := hACB.add hDscaled
   have hExpanded :
       (∫ g : SU2,
           ((Real.sqrt 2 / 2) *
@@ -628,17 +640,6 @@ private theorem coordinate_zero_fourth_eq_three_mixed :
               quaternionCoordinate 0 g * quaternionCoordinate 1 g ^ 3 ∂haarSU2) +
             (∫ g : SU2, quaternionCoordinate 1 g ^ 4 ∂haarSU2)) := by
     rw [integral_congr_ae (ae_of_all _ hPointExpand), integral_const_mul]
-    congr 1
-    change
-      (∫ g : SU2,
-        (((((fun x : SU2 => quaternionCoordinate 0 x ^ 4) +
-              (fun x : SU2 =>
-                (-4) * (quaternionCoordinate 0 x ^ 3 * quaternionCoordinate 1 x))) +
-            (fun x : SU2 =>
-              6 * (quaternionCoordinate 0 x ^ 2 * quaternionCoordinate 1 x ^ 2))) +
-          (fun x : SU2 =>
-            (-4) * (quaternionCoordinate 0 x * quaternionCoordinate 1 x ^ 3))) +
-        (fun x : SU2 => quaternionCoordinate 1 x ^ 4) : SU2 → ℝ) g ∂haarSU2) = _
     rw [integral_add hACBD hA1, integral_add hACB hDscaled,
       integral_add hAC hBscaled, integral_add hA hCscaled]
     rw [integral_const_mul, integral_const_mul, integral_const_mul]
