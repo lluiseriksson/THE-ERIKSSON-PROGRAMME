@@ -2199,6 +2199,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.physicalTiltCLM_single_root
 #print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_of_coercive
 #print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_of_coercive_add_smul_id
+#print axioms YangMills.RG.finiteDimensionalRealPositiveSqrt_comp_self
+#print axioms YangMills.RG.finiteDimensionalRealPositiveSqrt_isPositive
+#print axioms YangMills.RG.covarianceSqrtOfIsCoerciveCLM_comp_self
+#print axioms YangMills.RG.covarianceSqrtOfIsCoerciveCLM_isPositive
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_positive_covariance
 #print axioms YangMills.RG.exists_pos_tiltBudget
 #print axioms YangMills.RG.zeroSigma_budget
 #print axioms YangMills.RG.flatGaugeFixedCovariance_CT_fixedVolume

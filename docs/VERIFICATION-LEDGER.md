@@ -29360,3 +29360,49 @@ all thirteen corrective/supersession forms were sent and remain
 The 2607.0035/2607.0039 scope split is preserved, and 2607.0089 remains
 `REVIEW-PENDING` even if its public record is visible.  These antecedents are
 provenance only and are not used as premises of the new theorem.
+
+## Addendum 571 (2026-08-01, **finite-dimensional real positive covariance root**)
+
+**FORMALIZED DELTA.**  `FiniteDimensionalRealPositiveSqrt.lean` constructs a
+positive square root of every positive continuous linear endomorphism on a
+finite-dimensional real inner-product space.  It chooses an orthonormal basis,
+uses the real spectral decomposition of the associated positive-semidefinite
+matrix, replaces each eigenvalue by its nonnegative real square root, and
+transports the result back to a continuous linear map.  Lean proves both
+
+    root.comp root = T
+
+and positivity, hence the required symmetric bilinear form and nonnegative
+quadratic form.  No direct real continuous-functional-calculus instance is
+assumed and no source-level root object is postulated.
+
+`CoerciveCovariancePositiveSqrt.lean` specializes this construction.  For a
+strictly coercive precision `A`, the exact inverse already existed.  Under the
+additional and necessary hypothesis `A.IsSymmetric`, the inverse is now proved
+symmetric and positive, and `covarianceSqrtOfIsCoerciveCLM` is constructed with
+an exact square identity.
+
+`PhysicalGaugeCovariancePositiveRoot.lean` reduces
+`PhysicalLocalizedCovarianceRootCertificate` to the honest analytic residue.
+Given a localized covariance certificate, covariance positivity, and a kernel
+bound for the canonical root, it derives `root_square`, `root_norm_bound`,
+`root_selfAdjoint_form`, and `root_psd`.  Only the root-kernel bound remains a
+source input; the norm field uses the exact operator norm and is deliberately
+non-quantitative.
+
+**CHECKED.**  The three new module targets pass `lake build`.  Focused
+`#print axioms` queries for the generic square/positivity theorems, their
+coercive-covariance specializations, and the physical certificate adapter each
+print exactly `[propext, Classical.choice, Quot.sound]`.  The declarations are
+registered in `oracle_check.lean`; the new modules contain no `sorry`.
+
+Two attempts to rebuild the full `YangMillsCore` aggregator were terminated by
+the command wrapper after 10 and 20 minutes respectively, with no Lean error
+emitted.  Therefore this addendum claims successful target builds, not a fresh
+successful full-core rebuild.
+
+**STILL OPEN.**  The operator-valued Stieltjes identity has not been formalized,
+and no integrated single-bond kernel estimate for the canonical root has been
+proved.  Consequently the physical root certificate is reduced but not
+unconditionally discharged.  The fixed-volume coercivity limitation is
+unchanged.

@@ -241,6 +241,10 @@ import YangMills.RG.GaugeFixedPrecision
 -- inverse precision operator, prove both inverse identities, PSD, and the
 -- operator bound `‖C‖ ≤ c⁻¹`.
 import YangMills.RG.CoerciveCovariance
+-- Canonical positive square roots in finite-dimensional real Hilbert spaces,
+-- plus the specialization to symmetric coercive precision covariances.
+import YangMills.RG.FiniteDimensionalRealPositiveSqrt
+import YangMills.RG.CoerciveCovariancePositiveSqrt
 -- Abstract gauge-fixed covariance assembly: block-Poincare plus perturbation
 -- budgets produce an exact inverse covariance for `K0 + a Q†Q - Σ`.
 import YangMills.RG.GaugeFixedCovariance
@@ -252,6 +256,9 @@ import YangMills.RG.FiniteTorusCurlDiv
 import YangMills.RG.PhysicalGaugeFlatPoincare
 import YangMills.RG.PhysicalGaugeFixedPrecision
 import YangMills.RG.PhysicalGaugeCovarianceLocalization
+-- Canonical positive-root adapter: once covariance positivity is known, all
+-- root-certificate fields except the spatial root-kernel bound are derived.
+import YangMills.RG.PhysicalGaugeCovariancePositiveRoot
 import YangMills.RG.PhysicalGaugeCMP116OperatorTransport
 import YangMills.RG.PhysicalGaugeFluctuationActivity
 import YangMills.RG.PhysicalGaugeCMP116ActivityAdapter
