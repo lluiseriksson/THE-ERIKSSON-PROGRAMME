@@ -140,6 +140,7 @@ private theorem coordinate_zero_integral_eq_one :
     _ = ∫ g : SU2, quaternionCoordinate 1 g ^ 2 ∂haarSU2 := by
       apply integral_congr_ae
       exact ae_of_all _ fun g => by
+        simp only [f]
         rw [show quaternionCoordinate 0 (quaternionI * g) =
             -quaternionCoordinate 1 g by
           simp only [quaternionCoordinate_zero, quaternionCoordinate_one]
