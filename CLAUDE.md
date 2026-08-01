@@ -21,7 +21,8 @@ file.
   plane.**  Lean and Lake builds, oracles, `YangMillsCore`, numerical ovens,
   campaigns, and all other sustained computation run there, regardless of
   language or programme.  PART I/Surface being active and prioritized affects
-  the Colab queue; it creates no environment exception.
+  scheduling priority within Colab capacity; it creates no environment
+  exception.
 * **Windows is the owner's desktop.**  It is limited to editing, git, hashes,
   commits/push/PR, and scripts proved by reliable prior measurement to satisfy
   all three local-light limits: at most 30 seconds wall time, exactly one
@@ -35,11 +36,25 @@ file.
   campaign.  An apparently idle Windows machine grants no permission.  The
   `symWeighted` judge from assignment (14), measured at 171 seconds, is not
   light; its former Windows authorization is superseded and it goes to Colab.
-* The former local build token is superseded.  The coordinated resource is a
-  **COLAB SESSION**: one thread per session, with explicit acquisition and
-  release.  Terminal reproducibility means two fresh, independent Colab
-  clones at the same SHA with matching output hashes.  It does not require two
-  operating systems, and Windows is not closure debt.
+* The former local build token and any one-session-total rule are superseded.
+  Colab Pro+ permits multiple concurrent runtimes.  The operating limit is
+  compute units consumed per hour of connected runtime, not a presumed
+  one-session maximum.  Multiple threads may execute in parallel when the
+  budget permits, but each concrete runtime/session belongs to exactly one
+  thread and must never be shared between threads.
+* Prepare notebooks and commands while disconnected.  Opening a runtime merely
+  to prepare work, or leaving one connected without executing, is prohibited;
+  disconnect it when its execution unit finishes.  CPU/high-RAM is the default
+  runtime.  GPU requires an explicitly justified numerical campaign.  Each
+  thread records runtime opening and closing, runtime type, and connected
+  time.
+* If Colab rejects a runtime, record the literal message and distinguish a
+  concurrent-session limit from exhausted compute units before serializing.
+  Before authorizing more than two simultaneous sessions, inspect the visible
+  compute-unit consumption.  Serialize for budget, never for a fictitious
+  technical one-session restriction.  Terminal reproducibility means two
+  fresh, independent Colab clones at the same SHA with matching output hashes.
+  It does not require two operating systems, and Windows is not closure debt.
 * No decision to accept input, accept a mutation, increment an acceptance
   counter, or emit `PASS` may depend on a Python `assert`.  `python -O`
   removes assertions; two repository certifiers consequently emitted false
@@ -98,7 +113,9 @@ same commit). DO NOT SUBMIT while any [SLOT] lives.
      failure (v43).
 4. SPLIT ROLES, mandatory: one session FABRICATES, a DIFFERENT
    session AUDITS against the judges before merging. Never both in
-   one session.
+   one session.  This role separation is not a one-session-total cap and does
+   not prohibit other thread-owned runtimes from executing concurrently when
+   the compute-unit budget permits.
 5. Measured failure = commit with diagnosis. Never delete. (See
    derive_page_attempt1.py and notes v45–v46.)
 6. Constants: only DERIVED constants go to ink; benches calibrate
@@ -133,9 +150,10 @@ same commit). DO NOT SUBMIT while any [SLOT] lives.
   test_safe_sqrt.py (7 cases, arb-ball containment); margin_map_*
   (design-only, labeled); derive_page_attempt1.py (failed pass 1,
   archived); ERRATUM-display-supersets.md.
-- Execution plane: sustained numerical ovens and campaigns run in an acquired
-  Colab Pro+ Linux session.  Lluis's Windows box is the owner desktop under
-  the rule at the top of this file.  The former run clone
+- Execution plane: sustained numerical ovens and campaigns run in thread-owned
+  Colab Pro+ Linux runtimes under the concurrency and budget rule above.
+  Lluis's Windows box is the owner desktop under the rule at the top of this
+  file.  The former run clone
   C:\Users\lluis\AppData\Local\Temp\eriksson-push, push clone
   ...\eriksson-push2, C:\Python312\python.exe, and oven-output paths under
   C:\Users\lluis\AppData\Local\Temp\ identify legacy local artifacts only;
@@ -163,9 +181,9 @@ same commit). DO NOT SUBMIT while any [SLOT] lives.
    margin >= 2x consumed, machine absorbs [15, beta_0]).
 3. OVEN: L matching (+-25% vs v44 table) -> pilot at dz ~ 0.25 with
    dz(beta) scaling -> full [3,15] campaign under frozen governance,
-   executed in an acquired Colab Pro+ Linux session.  Parallelize by beta
-   ranges only within the authorized session; concatenate transcripts with
-   hashes.
+   executed in thread-owned Colab Pro+ Linux runtimes.  Parallelize beta ranges
+   across separate runtimes when the compute-unit budget permits; never share
+   one runtime between threads.  Concatenate transcripts with hashes.
 4. EDGES: sinc-cert on (0, t*(beta)] x [3, beta_0] (exact sinc
    lemma is in the paper; minor criterion + tail m+n > pi/t +
    uniform overlap pending); pi-window 4 constants (c_3 as a cheap

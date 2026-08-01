@@ -23,7 +23,8 @@ Windows build recommendation formerly recorded in `CLAUDE.md`.
 plane.  Lean and Lake builds, oracles, `YangMillsCore`, numerical ovens,
 campaigns, and all other sustained computation run there, regardless of
 implementation language or programme.  PART I/Surface being active and
-prioritized affects the Colab queue; it creates no environment exception.
+prioritized affects scheduling priority within Colab capacity; it creates no
+environment exception.
 
 Windows is the owner's desktop and is limited to editing, git, hashes,
 commits/push/PR, and scripts proved by reliable prior measurement to satisfy
@@ -43,9 +44,26 @@ machine does not grant permission.
 
 The `symWeighted` judge from assignment (14), measured at 171 seconds, is not
 light.  Its former Windows authorization is superseded and it runs in Colab.
-The former local build token is likewise superseded.  The coordinated resource
-is a **COLAB SESSION**: one thread per session, with explicit acquisition
-before use and explicit release afterward.
+The former local build token and any one-session-total rule are superseded.
+
+Colab Pro+ permits multiple concurrent runtimes.  The operating limit is
+compute units consumed per hour of connected runtime, not a presumed maximum
+of one session.  Multiple threads may execute concurrently when the budget
+permits.  Each concrete runtime/session belongs to exactly one thread; sharing
+one runtime between threads is prohibited.
+
+Notebooks and commands must be prepared while disconnected.  Opening a runtime
+to prepare work, or keeping a runtime connected without executing, is
+prohibited.  Disconnect the runtime when each execution unit finishes.  The
+default runtime is CPU/high-RAM.  GPU use requires an explicitly justified
+numerical campaign.  Each thread records runtime opening and closing, runtime
+type, and total connected time.
+
+If Colab rejects a runtime, record the literal rejection message.  Distinguish
+a concurrent-session limit from exhaustion of compute units before deciding
+to serialize.  Before authorizing more than two simultaneous sessions, inspect
+the visible compute-unit consumption.  Serialize because of budget, never
+because of a fictitious technical one-session restriction.
 
 Terminal reproducibility requires two fresh, independent clones in Colab,
 checked out at the same SHA, with matching output hashes.  It does not require
