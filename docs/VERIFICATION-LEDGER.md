@@ -29659,3 +29659,43 @@ using others of them exists.
 
 **PAPER v3** (10 pp): unchanged in mathematics, corrected in scope everywhere the
 reading found it, plus the new bridge.
+
+## Addendum 575 (2026-08-01, **fourth instance of "corrected in one place, alive
+in another" — and the guard I adopted yesterday could not have caught it**)
+
+**NO LEAN CHANGED, NO NUMBER MOVED.**  Anchor still `c3d8e32d`, core 8468,
+oracle 2817 with zero `sorryAx`.  `git status` on `YangMills/`,
+`oracle_check.lean` and `YangMillsCore.lean` is clean; only the manuscript
+moved.  Stated because a version bump is not a licence to reprint counters.
+
+**THE FINDING.**  Addendum 574 corrected `tanh|J|` from "the coefficient" to a
+sharp field-uniform envelope --- in the abstract, in the theorem discussion, and
+in the limitations.  An external reading then found the strong phrasing still
+alive in three places the correction never visited: the title of subsection 3.1
+(*"and that it is least"*), the roadmap item in section 5 (*"the single-site
+coefficient of the model ... Done"*), and a bibliography annotation.  All three
+now say envelope or majorant, and a sweep of every remaining occurrence of the
+word was run rather than trusting the three sites named.
+
+**WHY IT MATTERS MORE THAN THE FIX.**  Addendum 574 adopted a standing check:
+*after any scope correction, re-read the abstract against the body.*  That check
+**could not have caught this**, because none of the three survivors is in the
+abstract or the body prose --- they are a section title, a roadmap bullet, and a
+citation annotation.  **I calibrated the guard to the shape of the previous
+failure and the next instance appeared immediately outside it.**  This is the
+guard-blindness pattern already on the record, now with a fourth data point, and
+the honest generalisation is not another location-specific rule but:
+**when a term is redefined, grep the term across the whole artefact and read
+every hit, including titles, list items and bibliography.**  A location-based
+check will always be one instance behind.
+
+**SECOND FINDING, and it was over-tidiness.**  "Step 2 is the only mathematical
+obligation left" was too clean: the downstream consumer exists but its
+instantiation still needs the finite-time boundary interface the same section
+describes.  Now: step 2 is the only *new analytic estimate* currently
+identified, and the sentence says explicitly that this is not the same as one
+obligation remaining.  The consumer is also named at last ---
+`volumeUniform_gap` in `YangMills/OS/TransferGap.lean` --- with its full
+hypothesis printed from the elaborated signature rather than from memory, since
+a paper that says "the consumer exists" without naming it is asking to be taken
+on trust.

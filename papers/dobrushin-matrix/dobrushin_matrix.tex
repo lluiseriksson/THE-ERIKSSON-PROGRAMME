@@ -188,7 +188,8 @@ Three theorems, each machine-checked, composing into one statement.  The first
 is about a single bond, the second assembles bonds into a matrix, the third is
 about that matrix and never sees the model.
 
-\subsection{The single-bond coefficient, and that it is least}
+\subsection{The one-bond influence envelope, and that it is least among
+field-uniform bounds}
 
 A two-state site in a real field $h$ has conditional $P(+1)=(1+\tanh h)/2$,
 written from the Boltzmann weights and nothing else.  Flipping one neighbour
@@ -368,7 +369,7 @@ for all $i,j$ and every $N$,
 and the same holds for the full series.
 \end{corollary}
 
-This is the whole chain in one line: the coefficient of
+This is the whole chain in one line: the envelope of
 Theorem~\ref{thm:coeff} enters the matrix of Theorem~\ref{thm:matrix}, which
 satisfies the hypotheses of Theorem~\ref{thm:d1}, whose conclusion mentions no
 cardinality.  In Lean it is \texttt{dobrushin\_resolvent\_bound}, and its proof
@@ -457,10 +458,12 @@ Theorems~\ref{thm:coeff}--\ref{thm:d1} are an engine, not a conclusion.  Turning
 them into a volume-uniform statement about $\specRatio$ requires, in order:
 
 \begin{enumerate}
-\item[\textbf{1.}] the single-site coefficient of the model and the explicit
-      window it produces.  \textbf{Done}: Theorems~\ref{thm:coeff}
+\item[\textbf{1.}] a valid single-site interdependence majorant, and the
+      sufficient window it produces.  \textbf{Done}: Theorems~\ref{thm:coeff}
       and~\ref{thm:matrix}, machine-checked, with the window computed rather
-      than asserted;
+      than asserted, and holding at every site of every volume with the given
+      local geometry.  Not done, and not needed: the \emph{minimal}
+      interdependence matrix of any particular system;
 \item[\textbf{2.}] Dobrushin's comparison estimate \cite{Dobrushin1970,Simon1993}
       --- that the connected correlations of the Gibbs measure are controlled by
       the resolvent of $C$, hence decay exponentially at a rate free of the
@@ -468,18 +471,32 @@ them into a volume-uniform statement about $\specRatio$ requires, in order:
 \item[\textbf{3.}] transport of that decay into the operator formulation.
 \end{enumerate}
 
-Step~2 is the only mathematical obligation left in the chain, and nothing in
-this paper reduces its difficulty.  One structural remark, offered as
+Step~2 is the only \emph{new analytic estimate} currently identified, and nothing
+in this paper reduces its difficulty.  It is not the only remaining work: the
+downstream consumer exists but its instantiation still needs the finite-time
+interface described below, so ``one obligation left'' would be too tidy a
+sentence for the actual state.  One structural remark, offered as
 orientation and not as progress: in this model the configuration space of a
 finite system is finite, so the conditionals are ratios of finite sums and the
 comparison estimate does not require the measure-theoretic apparatus in which
 it is usually stated.  Whether that makes it tractable is not established here.
 
 
-The consumer already exists in the development.  It takes, over a family of
-finite volumes, decay at a \emph{common} rate $r<1$ and returns a \emph{common}
-mass $m>0$ with $\|\text{projected transfer}\|\le e^{-m}$ for every member of the
-family.  Its quantifier order is worth stating because it is load-bearing: the
+\textbf{The consumer, named.}  It is \texttt{volumeUniform\_gap} in
+\repofile{YangMills/OS/TransferGap.lean}{YangMills/OS/TransferGap.lean}, and its
+signature, read off the elaborated declaration rather than from memory, is: for a
+family of real inner-product spaces $H_i$ indexed by $\iota$, transfer operators
+$T_i$ and vectors $\Omega_i$ with \texttt{VacuumTransfer}~$T_i~\Omega_i$ for every
+$i$, and a rate $0<r<1$, the hypothesis
+\[
+  \forall i,\;\forall v\in H_i,\;\exists C,\;\forall n,\quad
+  \bigl|\texttt{connCorr}\,T_i\,\Omega_i\,v\,n\bigr|\;\le\;C\,r^{\,n}
+\]
+yields $\exists m>0$ with
+$\|\texttt{projectedTransfer}\,T_i\,\Omega_i\|\le e^{-m}$ for every $i$.  It
+takes, over a family of finite volumes, decay at a \emph{common} rate and returns
+a \emph{common} mass.  Its quantifier order is worth stating because it is
+load-bearing: the
 prefactor $C$ may depend on the volume and on the observable, and only $r$ is
 shared.  The development's own standing objection --- that a bound
 $C(L)\rho^{N}$ with $C(L)\to\infty$ says nothing --- therefore does not apply to
@@ -546,7 +563,7 @@ and is never called sharp.
 volume-uniform statement about $\specRatio$ for the coupled kernel remains
 unproved.  This is the substantive limitation and the chain above does not
 shorten it: what the chain does is remove every \emph{other} obligation from
-between the coefficient and the resolvent bound, so that a reader can see that
+between the envelope and the resolvent bound, so that a reader can see that
 one thing is missing and what it is.
 
 \section{Reproducibility}
@@ -653,7 +670,7 @@ B.~Simon,
 \emph{The Statistical Mechanics of Lattice Gases, Volume I},
 Princeton University Press, 1993.
 Chapter~V gives the Dobrushin uniqueness condition, the interdependence matrix,
-and the exponential decay of correlations it yields; the single-bond coefficient
+and the exponential decay of correlations it yields; the one-bond envelope
 $\tanh|J|$ for the Ising cell and the resulting window
 $2\tanh\beta+2\tanh\gamma<1$ are the standard specialisation.
 
