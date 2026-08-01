@@ -22,7 +22,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{1e4f9c0f3e60d42c1929482ca98b00c140d2b038}
+\newcommand{\anchor}{56c8987d667197ac038c92c87fe9e90f2b4252d0}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -33,7 +33,7 @@
 \newcommand{\specRatio}{\mathrm{specRatio}}
 
 \title{The Row Sums Were the Method, Not the Theorem:\\
-a Machine-Checked Volume-Free Resolvent Bound,\\
+a Machine-Checked Dobrushin Resolvent Chain,\\
 and a Misattributed Uniformity Wall}
 \author{Lluis Eriksson}
 \date{}
@@ -49,16 +49,25 @@ that those row sums stop being constant the moment the spatial coupling is
 switched on.  That theorem obstructs the \emph{method}.  It was read as
 obstructing the \emph{conclusion}, and the reading outlived its own retraction.
 
-We prove, in Lean~4 with no \texttt{sorry} and no project axiom, an elementary
-resolvent bound whose hypothesis asks for row sums \emph{bounded} by
-$\alpha<1$ and never constant: for a nonnegative matrix $C$ over a finite index
-type, supported on pairs at distance at most one,
+We prove, in Lean~4 with no \texttt{sorry} and no project axiom, a chain of
+three theorems.  \textbf{First}, the single-bond coefficient: flipping one
+neighbour across a bond of strength $J\ge0$ moves a two-state site's conditional
+by at most $\tanh J$, and by exactly $\tanh J$ at one field, so $\tanh J$ is the
+\emph{least} upper bound rather than merely an upper bound.  \textbf{Second},
+those coefficients assembled into a matrix discharge every structural hypothesis
+of the third, leaving only a row-sum bound --- which is the coupling window, and
+which we compute: at a site carrying two bonds of strength $\beta$ and two of
+strength $\gamma$ it is exactly $2\tanh|\beta|+2\tanh|\gamma|$, so the window is
+the hypothesis of a theorem rather than a sentence.  \textbf{Third}, the
+resolvent bound: for a nonnegative matrix $C$ over a finite index type, supported
+on pairs at distance at most one and with row sums \emph{bounded} by $\alpha<1$
+and never constant,
 \[
   \sum_{n<N}(C^{\,n})_{ij}\;\le\;\frac{\alpha^{\dist(i,j)}}{1-\alpha}
   \qquad\text{for every }N,
 \]
-with no reference of any kind to the cardinality of the index type.  We exhibit
-a non-vacuity witness and record the oracle.
+with no reference of any kind to the cardinality of the index type.  Each rung
+carries a non-vacuity witness and every declaration is oracled.
 
 Separately, and by measurement rather than proof, we remove the wall from where
 it was being placed.  For the coupled kernel the second-eigenvalue ratio
@@ -76,17 +85,19 @@ sweep and finite-size scaling that we do not attempt.
 coupled kernel is \emph{not} established here.  Dobrushin's uniqueness theorem is
 classical \cite{Dobrushin1968,Simon1993}; nothing in this paper is new
 mathematics.  What is offered is a
-mechanised, non-vacuous ingredient, a measured relocation of a wall, and an
-exactly named remaining obligation.  No consequence for Yang--Mills theory is
-stated, suggested, or implied.
+mechanised, non-vacuous chain, a measured refutation of an attribution, and a
+single remaining obligation named exactly: Dobrushin's comparison estimate.  No
+consequence for Yang--Mills theory is stated, suggested, or implied.
 \end{abstract}
 
 \section{What this paper claims, and what it does not}
 
-\textbf{Claimed, machine-checked.}  Theorem~\ref{thm:d1} and its witness, in
-\repofile{YangMills/OS/DobrushinMatrix.lean}{YangMills/OS/DobrushinMatrix.lean}.
-Every declaration is oracled and depends on exactly Lean's three standard
-axioms.
+\textbf{Claimed, machine-checked.}  Theorems~\ref{thm:coeff}, \ref{thm:matrix}
+and~\ref{thm:d1}, their witnesses and the corollary that composes them, in
+\repofile{YangMills/OS/DobrushinCoefficient.lean}{DobrushinCoefficient.lean},
+\repofile{YangMills/OS/DobrushinRowSum.lean}{DobrushinRowSum.lean} and
+\repofile{YangMills/OS/DobrushinMatrix.lean}{DobrushinMatrix.lean}.  Every
+declaration is oracled and depends on exactly Lean's three standard axioms.
 
 \textbf{Claimed, measured.}  The saturation table of
 Section~\ref{sec:measurement}.  These are floating-point computations at finite
@@ -162,7 +173,76 @@ is enough for this paper: the guards that caught the sentence three times
 compare identifiers and substrings inside files, so whatever else was carrying
 the reading was not a file.
 
-\section{The volume-free resolvent bound}
+\section{The chain}
+
+Three theorems, each machine-checked, composing into one statement.  The first
+is about a single bond, the second assembles bonds into a matrix, the third is
+about that matrix and never sees the model.
+
+\subsection{The single-bond coefficient, and that it is least}
+
+A two-state site in a real field $h$ has conditional $P(+1)=(1+\tanh h)/2$,
+written from the Boltzmann weights and nothing else.  Flipping one neighbour
+across a bond of strength $J$ moves that field to $h-2J$.  Write
+$\mathrm{tv}(h,h')=|P_h(+1)-P_{h'}(+1)|$.
+
+\begin{theorem}[machine-checked]
+\label{thm:coeff}
+For every $J\ge0$,
+\[
+  \mathrm{tv}\bigl(h,\,h-2J\bigr)\;\le\;\tanh J \quad\text{for all }h,
+  \qquad\text{and}\qquad
+  \mathrm{tv}\bigl(J,\,-J\bigr)\;=\;\tanh J .
+\]
+Hence $\tanh J$ is the \emph{least} upper bound of
+$\{\mathrm{tv}(h,h-2J):h\in\R\}$.
+\end{theorem}
+
+\begin{proof}
+$\tanh a-\tanh b=\sinh(a-b)/(\cosh a\cosh b)$, and
+$\cosh a\cosh b=\bigl(\cosh(a+b)+\cosh(a-b)\bigr)/2\ge\bigl(1+\cosh(a-b)\bigr)/2$
+since $\cosh\ge1$.  With $a=h$ and $b=h-2J$ the difference of the fields is
+$2J$, so the denominator is at least $(1+\cosh 2J)/2=\cosh^2 J$ while the
+numerator is $\sinh 2J=2\sinh J\cosh J$.  Dividing by two,
+$\mathrm{tv}\le\sinh J\cosh J/\cosh^2 J=\tanh J$.  At $h=J$ the two fields are
+$+J$ and $-J$, their sum is zero, $\cosh 0=1$, and every inequality above is an
+equality.
+\end{proof}
+
+The attainment is not decoration.  A coefficient that were merely an upper bound
+would leave the window of Theorem~\ref{thm:matrix} undetermined at its own
+boundary; least-upper-boundedness is what makes $\tanh J$ the coefficient rather
+than a number above it.  In Lean the three statements are \texttt{tvField\_le},
+\texttt{tvField\_attained} and \texttt{tvField\_isLUB}.
+
+\subsection{The matrix, and the window as a hypothesis}
+
+Given sites $\iota$, bond strengths $J$ and a distance $d$, put
+\[
+  C_{ij}\;=\;\begin{cases}\tanh|J_{ij}| & i\ne j \text{ and } d(i,j)\le1,\\
+  0 & \text{otherwise.}\end{cases}
+\]
+
+\begin{theorem}[machine-checked]
+\label{thm:matrix}
+$C$ is entrywise nonnegative, vanishes on the diagonal, and vanishes whenever
+$d(i,j)>1$.  Consequently the hypotheses (i) and (ii) of Theorem~\ref{thm:d1}
+hold by construction, and the only remaining hypothesis is the row-sum bound.
+Moreover, at a site carrying two bonds of strength $\beta$ and two of strength
+$\gamma$,
+\[
+  \sum_j C_{ij}\;=\;2\tanh|\beta|+2\tanh|\gamma| .
+\]
+\end{theorem}
+
+The second display is the point of this subsection.  The coupling window of this
+lane has been carried in prose as $2\tanh\beta+2\tanh\gamma<1$; it is now the
+hypothesis of a theorem, computed rather than asserted, and
+Corollary~\ref{cor:chain} is what consumes it.  The distance used in the
+computation is the graph distance on a star, proved reflexive at zero and
+triangular by exhaustive checking over the $125$ triples.
+
+\subsection{The resolvent bound}
 
 \begin{theorem}[machine-checked]
 \label{thm:d1}
@@ -223,6 +303,26 @@ The witness is not decoration.  Hypotheses (ii) and (iii) are jointly
 satisfiable by the zero matrix, for which the conclusion is trivial, and by data
 with $d\equiv0$, for which the exponent is trivial.  Proposition
 \ref{prop:nonvacuity} excludes both.
+
+\subsection{The composition}
+
+\begin{corollary}[machine-checked]
+\label{cor:chain}
+Let $J$ be bond strengths on a finite set of sites with a distance $d$ satisfying
+$d(i,i)=0$ and the triangle inequality, and let $C$ be the matrix of
+Theorem~\ref{thm:matrix}.  If every row sum of $C$ is at most $\alpha<1$, then
+for all $i,j$ and every $N$,
+\[
+  \sum_{n<N}(C^{\,n})_{ij}\;\le\;\frac{\alpha^{\,d(i,j)}}{1-\alpha},
+\]
+and the same holds for the full series.
+\end{corollary}
+
+This is the whole chain in one line: the coefficient of
+Theorem~\ref{thm:coeff} enters the matrix of Theorem~\ref{thm:matrix}, which
+satisfies the hypotheses of Theorem~\ref{thm:d1}, whose conclusion mentions no
+cardinality.  In Lean it is \texttt{dobrushin\_resolvent\_bound}, and its proof
+is the application of one theorem to three others.
 
 \section{The measurement, and where the wall is}
 \label{sec:measurement}
@@ -303,61 +403,28 @@ depends on a Python \texttt{assert}.
 \section{What remains, named exactly}
 \label{sec:frontier}
 
-Theorem~\ref{thm:d1} is an engine, not a conclusion.  Turning it into a
-volume-uniform statement about $\specRatio$ requires, in order:
+Theorems~\ref{thm:coeff}--\ref{thm:d1} are an engine, not a conclusion.  Turning
+them into a volume-uniform statement about $\specRatio$ requires, in order:
 
 \begin{enumerate}
-\item the single-site Dobrushin coefficient of the model, giving the explicit
-      window $2\tanh\beta+2\tanh\gamma<1$;
-\item Dobrushin's comparison estimate \cite{Dobrushin1970,Simon1993} --- exponential decay of connected
-      correlations at a rate free of the extent.  \textbf{This is the
-      bottleneck}; everything else is assembly;
-\item transport of that decay into the operator formulation.
+\item[\textbf{1.}] the single-site coefficient of the model and the explicit
+      window it produces.  \textbf{Done}: Theorems~\ref{thm:coeff}
+      and~\ref{thm:matrix}, machine-checked, with the window computed rather
+      than asserted;
+\item[\textbf{2.}] Dobrushin's comparison estimate \cite{Dobrushin1970,Simon1993}
+      --- that the connected correlations of the Gibbs measure are controlled by
+      the resolvent of $C$, hence decay exponentially at a rate free of the
+      extent.  \textbf{Open, and this is the bottleneck};
+\item[\textbf{3.}] transport of that decay into the operator formulation.
 \end{enumerate}
 
-\subsection*{Step 1, measured but not proved}
+Step~2 is the only mathematical obligation left in the chain, and nothing in
+this paper reduces its difficulty.  One structural remark, offered as
+orientation and not as progress: in this model the configuration space of a
+finite system is finite, so the conditionals are ratios of finite sums and the
+comparison estimate does not require the measure-theoretic apparatus in which
+it is usually stated.  Whether that makes it tractable is not established here.
 
-A two-state site in field $h$ has conditional $P(+1)=(1+\tanh h)/2$, and flipping
-one neighbour across a bond of strength $J$ moves that field to $h-2J$.  The
-claim of step~1 is the identity
-\[
-  \sup_{h\in\R}\bigl|P_h(+1)-P_{h-2J}(+1)\bigr| \;=\; \tanh|J|,
-  \qquad\text{attained at } h=J .
-\]
-A gate predicting this \emph{identity} --- not a range, and not a threshold
-chosen afterwards --- was committed before the quantity was computed even once.
-It checks the attained value against $\tanh|J|$, checks that a sweep of
-$2\cdot10^{5}+1$ fields never beats the attained value, and fails on any
-violation.
-
-\begin{center}
-\begin{tabular}{rrrr}
-\toprule
-$J$ & predicted $\tanh|J|$ & attained at $h=J$ & max violation over sweep\\
-\midrule
-$0.05$ & $0.049958374958$ & $0.049958374958$ & $0.000\mathrm{e}{+}00$\\
-$0.20$ & $0.197375320225$ & $0.197375320225$ & $0.000\mathrm{e}{+}00$\\
-$0.50$ & $0.462117157260$ & $0.462117157260$ & $5.551\mathrm{e}{-}17$\\
-$1.00$ & $0.761594155956$ & $0.761594155956$ & $0.000\mathrm{e}{+}00$\\
-$2.00$ & $0.964027580076$ & $0.964027580076$ & $0.000\mathrm{e}{+}00$\\
-$-0.70$ & $0.604367777117$ & $0.604367777117$ & $0.000\mathrm{e}{+}00$\\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\textbf{The Lean proof of this identity was attempted and does not compile.}
-The intended mechanism is
-$\tanh a-\tanh b=\sinh(a-b)/(\cosh a\cosh b)$ together with
-$\cosh a\cosh b\ge\cosh^{2}\!\bigl((a-b)/2\bigr)$, which minimises the
-denominator exactly at fields symmetric about zero; the attempt fails on library
-naming and on several tactic steps, and is recorded with its diagnosis rather
-than removed.  Consequently step~1 carries the label \emph{measured}, not
-\emph{proved}, and no theorem of this paper depends on it.
-
-Sharpness is the reason the gate checks attainment separately.  A coefficient
-that were merely an upper bound would leave the window undetermined at its own
-boundary; the supremum being reached is what would make $\tanh|J|$ the constant
-rather than a number above it.
 
 The consumer already exists in the development.  It takes, over a family of
 finite volumes, decay at a \emph{common} rate $r<1$ and returns a \emph{common}
@@ -408,46 +475,71 @@ related models have been treated without mechanisation \cite{WashburnSimons2026}
 
 \section{Limitations}
 
-Theorem~\ref{thm:d1} is elementary and its proof is three inductions; its value
-is that it is machine-checked, non-vacuous, and has the hypothesis the dead
-method violated.  Section~\ref{sec:measurement} is numerics at $L\le12$ with an
-Aitken extrapolation: it locates a wall, it does not prove where the wall is,
-and an extrapolation can mislead near a transition.  The window of
-Section~\ref{sec:frontier} is not optimal and is never called sharp.  Step~2 of
-Section~\ref{sec:frontier} is open, and until it closes, the volume-uniform
-statement about $\specRatio$ for the coupled kernel remains unproved.
+All three theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
+Theorem~\ref{thm:coeff} is a hyperbolic identity and a bound on a denominator;
+Theorem~\ref{thm:matrix} is a construction and a finite computation.  Their value
+is that they are machine-checked, non-vacuous, composed, and carry the hypothesis
+the dead method violated --- not that any of them is deep.
+
+Section~\ref{sec:measurement} is numerics at $L\le12$ with an Aitken
+extrapolation.  It refutes an attribution; it does not prove where the wall is,
+and an extrapolation can mislead near a transition.  The window is not optimal
+and is never called sharp.
+
+\textbf{Step~2 of Section~\ref{sec:frontier} is open}, and until it closes the
+volume-uniform statement about $\specRatio$ for the coupled kernel remains
+unproved.  This is the substantive limitation and the chain above does not
+shorten it: what the chain does is remove every \emph{other} obligation from
+between the coefficient and the resolvent bound, so that a reader can see that
+one thing is missing and what it is.
 
 \section{Reproducibility}
 
 \textbf{Anchor.}  All sources cited above are read at commit
-\nolinkurl{1e4f9c0f3e60d42c1929482ca98b00c140d2b038} of
+\nolinkurl{56c8987d667197ac038c92c87fe9e90f2b4252d0} of
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Toolchain
 \nolinkurl{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned at
 \nolinkurl{07642720480157414db592fa85b626dafb71355b}.  A runner verifies all
 three of these before compiling anything and aborts on any mismatch, so that a
 stale cache cannot masquerade as a reproduction.
 
-\textbf{Two planes, and what each measured.}  The development machine measured
-the core at $8465$ jobs with the module's import removed and $8466$ with it
-restored --- the delta obtained by rebuilding the same tree twice, not by
-subtracting against a baseline measured elsewhere.  A fresh Linux clone at the
-anchor then reproduced $8466$ jobs independently, with zero errors.
+\textbf{Job counts, and how each delta was obtained.}  The development machine
+measured the core at $8465$ jobs with Theorem~\ref{thm:d1}'s module removed from
+the root and $8466$ with it restored --- that delta by rebuilding the same tree
+twice, not by subtracting against a baseline someone else measured.  A fresh
+Linux clone reproduced $8466$ at that commit.  At the anchor, which adds the
+modules of Theorems~\ref{thm:coeff} and~\ref{thm:matrix}, the Linux plane
+measures $8468$ with zero errors.  The $+2$ is the difference between two
+measurements taken on the same plane, one per module, and is not an
+extrapolation.
 
-\textbf{Oracle.}  On the development machine, the fourteen declarations of the
-module were checked individually and each depends on exactly
-\texttt{[propext, Classical.choice, Quot.sound]}, with no \texttt{sorryAx} and no
-project axiom.  On the Linux plane the repository-wide oracle ran to completion
-with exit code zero over $2794$ axiom reports and zero occurrences of
-\texttt{sorryAx}.
+\textbf{Oracle.}  At the anchor the repository-wide oracle ran to completion
+with exit code zero over $2813$ axiom reports and \textbf{zero} occurrences of
+\texttt{sorryAx}.  Nineteen of those reports are the declarations of this
+paper's three modules --- eleven for Theorem~\ref{thm:coeff}, eight for
+Theorem~\ref{thm:matrix} --- and each depends on exactly
+\texttt{[propext, Classical.choice, Quot.sound]}: Lean's three standard axioms,
+no project axiom, and no \texttt{sorry} anywhere.  The fourteen declarations of
+Theorem~\ref{thm:d1}'s module were additionally checked one by one on the
+development machine with the same result.
+
+\textbf{One gap in the runner's own coverage, stated because a reader counting
+modules would otherwise not find it.}  The runner builds two lane modules by
+name; \repofile{YangMills/OS/DobrushinRowSum.lean}{DobrushinRowSum.lean} is not
+one of them.  It is nevertheless imported by the core, so the zero exit of the
+core build covers it, and its declarations appear in the oracle.
 
 \textbf{Independent hash agreement.}  A second desk, working from its own
 checkout on a different operating system and without coordination on the value,
 reported
 \nolinkurl{12c1fcdb12e39e46381fa372a102503f5d63522ecbae27c0b3911671a7c04eb7} at
-$11467$ bytes for the module.  The Linux run at the anchor computed the same
-digest and the same size.  The oleans, the axiom reports and the elaboration
-therefore refer to the same bytes, which is the only reason any of the numbers
-above can be compared at all.
+$11467$ bytes for Theorem~\ref{thm:d1}'s module.  The Linux run computed the
+same digest and the same size.  The oleans, the axiom reports and the
+elaboration therefore refer to the same bytes, which is the only reason any of
+the numbers above can be compared at all.  At the anchor the two further modules
+hash to
+\nolinkurl{fe16a382e297c6f1e668677d54117eb7873e03ab981818cbea123bfa50af47c9} and
+\nolinkurl{68bb7408ebe7af782804238a4780fcebee499bdb512b3435703ea8f7c1a69cf2}.
 
 \textbf{Certifiers.}  Both gate scripts were run in \texttt{normal} and in
 \texttt{optimized} (\texttt{python -O}) mode on the Linux plane.  All four runs
@@ -466,13 +558,17 @@ absent, malformed, non-zero, zero.  A run in which every sentinel reads zero is
 reported as a \emph{pass candidate}, never as a pass, because the logs still
 have to be read.
 
-\textbf{One module in the anchor does not compile.}
-\repofile{YangMills/OS/DobrushinCoefficient.lean}{DobrushinCoefficient.lean},
-the attempt at step~1 of Section~\ref{sec:frontier}, exits non-zero.  It is
-imported neither by the core nor by the oracle, so the measurements above are
-unaffected --- and it is retained with its diagnosis rather than deleted, this
-development's standing rule being that a measured failure is committed and not
-removed.  No claim of this paper rests on it.
+\textbf{Every module in the anchor compiles.}  An earlier version of this paper
+was anchored to a tree in which
+\repofile{YangMills/OS/DobrushinCoefficient.lean}{DobrushinCoefficient.lean} did
+not, and said so in this section rather than leaving it to be discovered.  It
+took five passes to close, and the record of those passes is worth one sentence
+because it is the honest description of what mechanising a classical argument
+costs: none of the fifteen errors across them was mathematical.  The mechanism
+--- the identity of Theorem~\ref{thm:coeff} and the denominator bound under it
+--- is the one written in the first draft and was never altered.  Every failure
+was a library lemma whose name or form had been recalled wrongly, or a tactic
+emitting a different number of goals than the script assumed.
 
 \begin{thebibliography}{99}
 

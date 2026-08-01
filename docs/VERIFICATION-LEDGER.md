@@ -29540,3 +29540,69 @@ theorem is classical and the paper says so in its abstract.
 **INSTRUMENT MEASUREMENT.**  The PDF build was timed: 3 s wall, one process, two
 `pdflatex` passes, zero LaTeX errors — inside the local light contract by
 measurement rather than by presumption.
+
+## Addendum 573 (2026-08-01, **the chain closes: D-2a and D-2b green, and the
+paper stops being two bricks**)
+
+**MEASURED at `56c8987d` on the sanctioned Linux plane.**  Core **8468 jobs**,
+zero errors (8466 at the previous anchor; the `+2` is one job per new module, a
+difference between two measurements on the same plane).  Repository oracle exit
+**zero**, **2813** axiom reports, **zero** `sorryAx`.  Nineteen of those reports
+are this lane's new declarations --- eleven for D-2a, eight for D-2b --- each on
+exactly `[propext, Classical.choice, Quot.sound]`.  Both certifiers zero in
+`normal` and `optimized`.  `RUN VERDICT: every child exited zero`, reported by
+the runner as a PASS CANDIDATE and not a PASS.
+
+**D-2a GREEN after five passes: 12 → 3 → 2 → 1 → 0 errors.**  `tvField_le`,
+`tvField_attained`, `tvField_isLUB`: flipping one neighbour across a bond of
+strength `J ≥ 0` moves a two-state site's conditional by at most `tanh J` and by
+exactly `tanh J` at `h = J`, so `tanh J` is the LEAST upper bound.  **Not one of
+the fifteen errors across those passes was mathematical.**  The mechanism ---
+`tanh a − tanh b = sinh(a−b)/(cosh a cosh b)` with the denominator minimal at
+fields symmetric about zero --- is the one in the first draft and was never
+altered.  Every failure was a library name or form recalled wrongly
+(`Real.tanh_nonneg_iff` and `Real.tanh_nonpos_iff` do not exist;
+`div_le_div_iff` is renamed; `Real.cosh_two_mul` is the `cosh²+sinh²` form, not
+`2cosh²−1`) or a tactic emitting a different number of goals than the script
+assumed.
+
+**ONE OF THOSE WAS MINE FOR OVER-CORRECTING, and it is the transferable
+lesson.**  Pass 2 reported a closing `ring` as `No goals to be solved`, so pass 3
+removed it --- but that report was DOWNSTREAM NOISE from a failure earlier in the
+same file.  With the chain repaired the goal was really there.  The repair was
+not to put the tactic back and hope: the modulus is now computed in its own
+`have` so the closing step faces an arithmetic identity and nothing else.
+**A tactic that can succeed by accident is a tactic whose failure tells you
+nothing**, and the same principle produced `refine` with explicit arguments in
+place of bullets, and an entry-by-entry row-sum computation with closed
+decidable side conditions in place of a global `norm_num`.
+
+**D-2b GREEN on pass 2, and it is the brick that makes the paper a paper.**
+Before it, the manuscript had a matrix lemma and a hyperbolic identity with
+nothing joining them.  `dobMatrix` assembles the bond coefficients, discharges
+all three structural hypotheses of D-1 by construction, and leaves exactly one
+input: the row-sum bound, which IS the coupling window.  `starDist_rowSum`
+computes that window at a site with two bonds of strength `β` and two of `γ` and
+gets exactly `2 tanh|β| + 2 tanh|γ|`.  **The window stops being prose and becomes
+the hypothesis of `dobrushin_resolvent_bound`.**  Star distance proved reflexive
+and triangular by `decide` over the 125 triples.
+
+**THE PAPER, v2** (`papers/dobrushin-matrix/`, 10 pp): three theorems and the
+corollary composing them, replacing v1.1's two disconnected results.  The
+frontier section drops from three open steps to ONE --- Dobrushin's comparison
+estimate --- and the paper says plainly that the chain does not shorten that
+difficulty: what it does is remove every OTHER obligation from between the
+coefficient and the resolvent bound, so a reader can see that one thing is
+missing and what it is.  The reproducibility section no longer has to disclose a
+non-compiling module, and instead records what the five passes cost.
+
+**REGISTERED, because a reader counting modules would not otherwise find it:**
+the runner builds two lane modules by name and `DobrushinRowSum` is not one of
+them; it is covered by the core build and appears in the oracle, and the paper
+says so.
+
+**COLAB.**  Second and third work units of the lane, same notebook, CPU /
+high-RAM, never GPU, disconnected at the end of each.  The first unit's runtime
+was deleted on disconnect per the environment rule, so the second paid the full
+elan-plus-cache setup again; once cached, a single-module iteration is ~7 s,
+which is what made five passes affordable.
