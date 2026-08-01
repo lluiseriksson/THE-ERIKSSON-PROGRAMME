@@ -55,13 +55,15 @@ private def quaternionCycle : SU2 := by
   rw [Matrix.mem_specialUnitaryGroup_iff]
   constructor
   · rw [Matrix.mem_unitaryGroup_iff]
-    have hstarTwo : (starRingEnd ℂ) (2 : ℂ) = 2 := by norm_num
+    have hstarHalf :
+        (starRingEnd ℂ) (((1 / 2 : ℝ) : ℂ)) = (((1 / 2 : ℝ) : ℂ)) := by
+      simpa only [quaternionHalf] using star_quaternionHalf
     ext i j
     fin_cases i <;> fin_cases j <;>
       simp [quaternionCycleMat, Matrix.mul_apply, Fin.sum_univ_two,
         Matrix.star_apply] <;>
       unfold quaternionHalf <;>
-      rw [hstarTwo] <;>
+      rw [hstarHalf] <;>
       ring_nf <;>
       norm_num [Complex.I_sq]
   · rw [Matrix.det_fin_two]
