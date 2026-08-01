@@ -221,7 +221,43 @@ Any $L$-uniform ratio bound must use a quantity that a positive-diagonal
 congruence can change.
 \end{corollary}
 
-\section{Which congruence is extremal: pairs beat clusters}
+\subsection*{The orbit, not its closure}
+
+The fusion of Theorem~\ref{thm:fusion} is realised by a weight that
+\emph{concentrates}, and the congruences considered here are by \emph{strictly
+positive invertible} diagonals. Setting the remaining diagonal entries to zero
+would leave the orbit and land in its closure, so the interface deserves to be
+stated rather than assumed. It is stated, and the statement is stronger than a
+limiting argument.
+
+\begin{proposition}[Concentration stays inside the orbit]\label{prop:orbit}
+Fix two configurations $p\neq q$ and $0<\varepsilon\le 1$, and let
+$D_\varepsilon$ be the diagonal that is $1$ at $p$ and $q$ and $\varepsilon$
+elsewhere. Then $D_\varepsilon$ is strictly positive, and for \emph{every} such
+$\varepsilon$,
+\[
+  (D_\varepsilon M D_\varepsilon)_{pq}=M_{pq},
+  \qquad
+  (D_\varepsilon M D_\varepsilon)_{qp}=M_{qp},
+\]
+while $|(D_\varepsilon M D_\varepsilon)_{ij}|\le\varepsilon\,|M_{ij}|$ whenever
+$i\notin\{p,q\}$.
+\end{proposition}
+
+\begin{proof}
+$(D_\varepsilon M D_\varepsilon)_{ij}=d_id_jM_{ij}$ with $d_p=d_q=1$, giving the
+two equalities; and $d_i=\varepsilon$, $d_j\le1$ off the pair.
+\end{proof}
+
+So the fused bond is \emph{already present at every strictly positive
+$\varepsilon$}: the limit does not create the block, it deletes the rest of the
+matrix. Converting that deletion into a statement about eigenvalues is the
+classical continuity of the spectrum in finite dimensions (eigenvalues depend
+continuously on the entries, e.g.\ \cite[Appendix D]{hornjohnson}); we cite that
+step rather than reprove it, and Proposition~\ref{prop:orbit} is where the
+citation attaches.
+
+\section{Which congruence is extremal: pairs beat exchangeable clusters}
 
 Theorem~\ref{thm:fusion} exhibits \emph{one} congruence reaching
 $\tanh(\beta L)$. Is it the best one? For the family of \emph{uniform}
@@ -247,14 +283,25 @@ $k\mapsto (1-\mu)/(1+k\mu)$ is strictly decreasing on $k\ge 0$ because the
 numerator is positive and the denominator strictly increasing.
 \end{proof}
 
-The reading is the point. \textbf{The more sites a uniform concentration keeps,
-the smaller the ratio it can reach.} So among uniform concentrations the best is
-the smallest nondegenerate one --- a \emph{pair} --- and at $m=2$ the value is
+The reading is the point. \textbf{The more sites an exchangeable concentration
+keeps, the smaller the ratio it can reach.} So among these the best is the
+smallest nondegenerate one --- a \emph{pair} --- and at $m=2$ the value is
 $(1-\mu)/(1+\mu)$. On the hypercube kernel, $\mu=e^{-2\beta L}$ at the antipodal
 pair, and $(1-\mu)/(1+\mu)=\tanh(\beta L)$: Theorem~\ref{thm:fusion} is the
 $m=2$ case of Theorem~\ref{thm:exch}.
 
-That settles the uniform family. For arbitrary weights we have only a
+\begin{remark}[Exactly how far this goes]\label{rem:exchscope}
+Theorem~\ref{thm:exch} concerns subsets on which \emph{all} pairwise
+correlations equal a common $\mu$. On a general subset the entries $M_{ij}$
+differ and the spectrum has no such closed form, so the theorem does \emph{not}
+say that a pair beats every uniformly weighted subset of an arbitrary $M$. The
+section title should be read with the word \emph{exchangeable} attached. What
+the theorem does establish is the mechanism --- spreading a concentration over
+more equally correlated sites lowers the reachable ratio --- and it is that
+mechanism, not a general proof, that makes Conjecture~\ref{conj:lcp} plausible.
+\end{remark}
+
+That settles the exchangeable family. For arbitrary weights we have only a
 conjecture, and we say so wherever it appears.
 
 \begin{conjecture}[Least-correlated pair]\label{conj:lcp}
@@ -333,7 +380,7 @@ prediction, and its failure are recorded in the repository rather than repaired
 in place.
 
 \paragraph{Scope of the certificate.} These are numerics, not proof. They cover
-$n\le 6$, $\mu>0$, and $\lambda_{\min}\ge -0.43$. Nothing here tests $\mu\le 0$
+$n\le 12$, $\mu>0$, and $\lambda_{\min}\ge -0.43$. Nothing here tests $\mu\le 0$
 (where the target exceeds $1$ and the question changes character), nor a
 negative eigenvalue large enough to make $|\lambda_0|$ the negative extreme, at
 which point $r$ measures something else.
@@ -366,10 +413,13 @@ anisotropic Ising model on a strip, whose spectrum is known in closed form.
 Nothing in Sections~3--4 is new mathematics about that model, and the reader who
 knows the exact solution will find $\tanh(\beta L)$ unsurprising: it is the
 zero-temperature limit in the transverse direction, where the strip collapses to
-a single spin. The contribution is not the value. It is that the value is
-\emph{exactly} the supremum of a congruence orbit, that the orbit's rigid
-invariants are simultaneously pinned, and that the pair of facts identifies
-which quantities an argument may and may not use.
+a single spin. The contribution is not the value. It is that the value is the
+supremum \emph{within the family of uniform concentrations}
+(Theorem~\ref{thm:exch}) and a lower bound for the full diagonal orbit, that the
+orbit's rigid invariants are simultaneously pinned, and that the pair of facts
+identifies which quantities an argument may and may not use. We are careful with
+that phrasing: whether $\tanh(\beta L)$ is the supremum over \emph{all} positive
+diagonals is Conjecture~\ref{conj:lcp} and is not proved here.
 
 \paragraph{Formalisation.} We are not aware of a mechanised treatment of
 congruence orbits of transfer kernels. This is an absence of found prior art in
@@ -394,25 +444,27 @@ the searches we ran, not a claim of priority.
 
 \section*{Machine verification --- status}
 
-Every theorem and lemma stated above --- the rigid half
+Every theorem, lemma and proposition stated above --- the rigid half
 (Theorem~\ref{thm:rigid}, Lemma~\ref{lem:change}), the one-bond spectrum
 (Lemma~\ref{lem:bond}), the fusion identity (Theorem~\ref{thm:fusion}), the wall
-(Theorem~\ref{thm:wall}) and the exchangeable computation
-(Theorem~\ref{thm:exch}) --- is written in Lean~4 against a pinned Mathlib in
-\texttt{YangMills/OS/CongruenceSpectrum.lean}, and \textbf{has been verified}.
-Only Conjecture~\ref{conj:lcp} is not, and it carries the word
+(Theorem~\ref{thm:wall}), the orbit statement (Proposition~\ref{prop:orbit}) and
+the exchangeable computation (Theorem~\ref{thm:exch}) --- is written in Lean~4
+against a pinned Mathlib in \texttt{YangMills/OS/CongruenceSpectrum.lean}, and
+\textbf{has been verified}. Two things are not, and both are labelled: the
+continuity of eigenvalues invoked after Proposition~\ref{prop:orbit}, which is
+classical and cited; and Conjecture~\ref{conj:lcp}, which carries the word
 \emph{conjecture} in every sentence that states it.
 
 \begin{center}
 \begin{tabular}{ll}
 \toprule
-commit & \texttt{6c41bf1d} \\
-module \texttt{sha256} & \texttt{4939fc4dc0e3f8190b0684ba} \\
-                       & \texttt{3a76296ef8e9dcf9077818909ebe2369ef1b8f82} \\
+commit & \texttt{d4126d34} \\
+module \texttt{sha256} & \texttt{4a6c4d680becd37acc9d02b6} \\
+                       & \texttt{5e0995ff0dc26c5cd7f4edfa51468a6c04029793} \\
 toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
 Mathlib pin & \texttt{07642720480157414db592fa85b626dafb71355b} \\
 elaboration & exit \texttt{0}; empty log --- zero errors, zero warnings, zero \texttt{sorry} \\
-axiom oracle & 23/23 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
+axiom oracle & 29/29 declarations on \texttt{[propext, Classical.choice, Quot.sound]} \\
 \texttt{sorryAx} & none \\
 \bottomrule
 \end{tabular}
@@ -436,7 +488,35 @@ theorems above depends on it.
 \bibitem{sylvester1852} J.~J.~Sylvester,
   \emph{A demonstration of the theorem that every homogeneous quadratic
   polynomial is reducible by real orthogonal substitutions to the form of a sum
-  of positive and negative squares}, Philosophical Magazine \textbf{4} (1852).
+  of positive and negative squares}, Philosophical Magazine \textbf{4} (1852),
+  138--142.
+
+\bibitem{ostrowski1959} A.~M.~Ostrowski,
+  \emph{A quantitative formulation of Sylvester's law of inertia},
+  Proc.\ Nat.\ Acad.\ Sci.\ U.S.A.\ \textbf{45} (1959), no.~5, 740--744.
+
+\bibitem{ostrowski1960} A.~M.~Ostrowski,
+  \emph{A quantitative formulation of Sylvester's law of inertia, II},
+  Proc.\ Nat.\ Acad.\ Sci.\ U.S.A.\ \textbf{46} (1960), no.~6, 859--862.
+
+\bibitem{hornjohnson} R.~A.~Horn and C.~R.~Johnson,
+  \emph{Matrix Analysis}, 2nd ed., Cambridge University Press, 2013.
+  (Congruence and inertia, \S4.5; continuity of eigenvalues, Appendix D.)
+
+\bibitem{vandersluis1969} A.~van der Sluis,
+  \emph{Condition numbers and equilibration of matrices},
+  Numer.\ Math.\ \textbf{14} (1969), 14--23.
+
+\bibitem{onsager1944} L.~Onsager,
+  \emph{Crystal statistics.\ I.\ A two-dimensional model with an
+  order-disorder transition}, Phys.\ Rev.\ \textbf{65} (1944), 117--149.
+
+\bibitem{kaufman1949} B.~Kaufman,
+  \emph{Crystal statistics.\ II.\ Partition function evaluated by spinor
+  analysis}, Phys.\ Rev.\ \textbf{76} (1949), 1232--1243.
+
+\bibitem{mathlib} The mathlib Community,
+  \emph{The Lean mathematical library}, Proc.\ CPP 2020, ACM, 367--381.
 \end{thebibliography}
 
 \end{document}
