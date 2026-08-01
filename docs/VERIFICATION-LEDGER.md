@@ -29315,3 +29315,48 @@ recorded because the record is what the next campaign reads.  Ten versions of a
 paper is exactly when the ledger entry stops feeling urgent and starts being
 necessary.  Written now, after the fact, and dated as such rather than
 back-dated.
+
+## Addendum 570 (2026-08-01, **shift-uniform physical Combes--Thomas resolvents
+and the paper-level Stieltjes root corollary**)
+
+**FORMALIZED DELTA.**  The physical-cochain tilt now proves that scalar identity
+shifts cancel exactly:
+
+    (K + s I)_theta - (K + s I) = K_theta - K.
+
+`PhysicalCoerciveCombesThomas.lean` supplies the tilt identity, additivity and
+scalar rules, the cancellation theorem, shifted coercivity for `s >= 0`, and the
+unchanged defect estimate.  `PhysicalCoerciveCombesThomasInverse.lean` combines
+these facts with the existing inverse theorem.  If `K + s I` has the stated
+right inverse and `K` is coercive with constant `c`, the resulting kernel bound
+is
+
+    ||(C_s (delta_p v))(q)|| <= 2 / (c + s) * exp (-theta * dist q p) * ||v||.
+
+The theorem is uniform in the admissible tilt angle because the perturbation
+budget is inherited from `K`, not recomputed for every shift.
+
+**CHECKED.**  Both edited modules pass direct `lake env lean`; both target
+`.olean` builds pass.  A focused oracle query for the seven core declarations
+prints exactly `[propext, Classical.choice, Quot.sound]` for each.  The
+declarations are registered in `oracle_check.lean`; neither edited module
+contains `sorry`.
+
+**NOT YET FORMALIZED.**  The manuscript derives, on paper, the classical
+Stieltjes consequence
+
+    K^(-1/2) = (2/pi) integral_0^infinity (K + t^2 I)^(-1) dt,
+
+and hence the coefficient bound `2 / sqrt(c) * exp (-theta * dist q p)`.  The
+continuous-functional-calculus construction of the positive CLM square root,
+the operator-valued improper integral, and the fields of
+`PhysicalLocalizedCovarianceRootCertificate` remain open Lean work.  The paper
+labels this boundary explicitly; it does not report the corollary as a checked
+Lean theorem or as an analytic-priority claim.
+
+**PUBLICATION PROVENANCE.**  The paper records the separate August 1 audit state:
+all thirteen corrective/supersession forms were sent and remain
+`ENVIADO/PENDIENTE`; none is described as published or eligible for resubmission.
+The 2607.0035/2607.0039 scope split is preserved, and 2607.0089 remains
+`REVIEW-PENDING` even if its public record is visible.  These antecedents are
+provenance only and are not used as premises of the new theorem.

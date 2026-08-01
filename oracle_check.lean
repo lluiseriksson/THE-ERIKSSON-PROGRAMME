@@ -2188,10 +2188,17 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatBasePrecision_kernelBound
 #print axioms YangMills.RG.flatGaugeFixedPrecisionCLM_zeroSigma_eq_base
 #print axioms YangMills.RG.IsCoerciveCLM.mono_const
+#print axioms YangMills.RG.physicalTiltConjCLM_id
+#print axioms YangMills.RG.physicalTiltConjCLM_add_smul_id_sub
+#print axioms YangMills.RG.isCoerciveCLM_add_smul_id
+#print axioms YangMills.RG.norm_physicalTiltConj_add_smul_id_sub_le
+#print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj_add_smul_id
 #print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj_half
+#print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj_add_smul_id_half
 #print axioms YangMills.RG.exists_physicalTiltConj_inverse_of_budget
 #print axioms YangMills.RG.physicalTiltCLM_single_root
 #print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_of_coercive
+#print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_of_coercive_add_smul_id
 #print axioms YangMills.RG.exists_pos_tiltBudget
 #print axioms YangMills.RG.zeroSigma_budget
 #print axioms YangMills.RG.flatGaugeFixedCovariance_CT_fixedVolume

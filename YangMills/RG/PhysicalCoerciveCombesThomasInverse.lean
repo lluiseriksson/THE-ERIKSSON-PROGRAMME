@@ -82,6 +82,29 @@ theorem isCoerciveCLM_physicalTiltConj_half
   (isCoerciveCLM_physicalTiltConj dist hsymm htri hθ r hM hNR hrange
     hbound hcoer).mono_const (by linarith)
 
+/-- **Shift-uniform CT3 coercivity.**  Under the budget for the unshifted
+operator, every nonnegative scalar shift `K + sI` keeps half of its improved
+coercivity constant `c + s`. -/
+theorem isCoerciveCLM_physicalTiltConj_add_smul_id_half
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    (htri : ∀ p q s, dist p s ≤ dist p q + dist q s)
+    {θ : ℝ} (hθ : 0 ≤ θ) (r : PhysicalBond d N) {R NR : ℕ} {M c s : ℝ}
+    (hM : 0 ≤ M) (hs : 0 ≤ s)
+    (hNR : ∀ x : PhysicalBond d N,
+      (Finset.univ.filter (fun y => dist x y ≤ R)).card ≤ NR)
+    {K : PhysicalGaugeOneCochain d N Nc →L[ℝ] PhysicalGaugeOneCochain d N Nc}
+    (hrange : PhysicalCovarianceFiniteRange K dist R)
+    (hbound : PhysicalCovarianceKernelBound K (fun _ _ => M))
+    (hcoer : IsCoerciveCLM K c)
+    (hbudget : M * (Real.exp (θ * (R : ℝ)) - 1) * (NR : ℝ) ≤ c / 2) :
+    IsCoerciveCLM
+      (physicalTiltConjCLM (Nc := Nc) dist θ r
+        (K + s • ContinuousLinearMap.id ℝ
+          (PhysicalGaugeOneCochain d N Nc))) ((c + s) / 2) :=
+  (isCoerciveCLM_physicalTiltConj_add_smul_id dist hsymm htri hθ r hM hNR
+    hrange hbound hcoer s).mono_const (by linarith)
+
 /-- **CT3 — the tilted inverse at the θ-budget**: `K_θ` has a two-sided
 continuous linear inverse of norm at most `2/c`, produced by
 `covarianceOfIsCoerciveCLM` from the surviving coercivity constant `c/2`. -/
@@ -255,6 +278,84 @@ theorem physicalCovariance_exponentialKernelBound_of_coercive
     _ ≤ Real.exp (-θ * (dist p q : ℝ)) * (2 / c * ‖v‖) := by
         apply mul_le_mul_of_nonneg_left hynorm (Real.exp_pos _).le
     _ = 2 / c * Real.exp (-(θ * (dist q p : ℝ))) * ‖v‖ := by
+        rw [hsymm p q, neg_mul]
+        ring
+
+/-- **Shift-uniform CT4 resolvent bound.**  Every right inverse of `K + sI`,
+for `s ≥ 0`, has exponential kernel decay with amplitude `2 / (c + s)` and
+the SAME tilt rate and budget as the unshifted operator.  This is the
+resolvent family required by the Stieltjes formula for `K⁻¹ᐟ²`; in the
+application one sets `s = t²`. -/
+theorem physicalCovariance_exponentialKernelBound_of_coercive_add_smul_id
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    (htri : ∀ p q s, dist p s ≤ dist p q + dist q s)
+    (hself : ∀ p, dist p p = 0)
+    {θ : ℝ} (hθ : 0 < θ) {R NR : ℕ} {M c s : ℝ}
+    (hM : 0 ≤ M) (hcpos : 0 < c) (hs : 0 ≤ s)
+    (hNR : ∀ x : PhysicalBond d N,
+      (Finset.univ.filter (fun y => dist x y ≤ R)).card ≤ NR)
+    {K C : PhysicalGaugeOneCochain d N Nc →L[ℝ] PhysicalGaugeOneCochain d N Nc}
+    (hrange : PhysicalCovarianceFiniteRange K dist R)
+    (hbound : PhysicalCovarianceKernelBound K (fun _ _ => M))
+    (hcoer : IsCoerciveCLM K c)
+    (hKC : (K + s • ContinuousLinearMap.id ℝ
+        (PhysicalGaugeOneCochain d N Nc)).comp C =
+      ContinuousLinearMap.id ℝ (PhysicalGaugeOneCochain d N Nc))
+    (hbudget : M * (Real.exp (θ * (R : ℝ)) - 1) * (NR : ℝ) ≤ c / 2) :
+    PhysicalCovarianceExponentialKernelBound C dist (2 / (c + s)) θ := by
+  have hcspos : 0 < c + s := by linarith
+  refine ⟨by positivity, hθ, ?_⟩
+  intro p q v
+  let Ks := K + s • ContinuousLinearMap.id ℝ
+    (PhysicalGaugeOneCochain d N Nc)
+  have hcoerθ : IsCoerciveCLM (physicalTiltConjCLM (Nc := Nc) dist θ p Ks)
+      ((c + s) / 2) :=
+    isCoerciveCLM_physicalTiltConj_add_smul_id_half dist hsymm htri hθ.le p hM
+      hs hNR hrange hbound hcoer hbudget
+  set δp : PhysicalGaugeOneCochain d N Nc :=
+    singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) p v with hδp
+  set y : PhysicalGaugeOneCochain d N Nc :=
+    physicalTiltCLM (Nc := Nc) dist θ p (C δp) with hy
+  have huntilt : physicalTiltCLM (Nc := Nc) dist (-θ) p y = C δp := by
+    rw [hy]
+    exact ContinuousLinearMap.ext_iff.mp
+      (physicalTiltCLM_neg_comp (Nc := Nc) dist θ p) (C δp)
+  have hKCy : Ks (C δp) = δp := ContinuousLinearMap.ext_iff.mp hKC δp
+  have hKθy : physicalTiltConjCLM (Nc := Nc) dist θ p Ks y = δp := by
+    unfold physicalTiltConjCLM
+    rw [ContinuousLinearMap.comp_apply, ContinuousLinearMap.comp_apply,
+      huntilt, hKCy]
+    exact physicalTiltCLM_single_root dist θ p v (hself p)
+  have hynorm : ‖y‖ ≤ 2 / (c + s) * ‖v‖ := by
+    have hcoer_y := hcoerθ y
+    rw [hKθy] at hcoer_y
+    have hinner : inner ℝ y δp ≤ ‖y‖ * ‖δp‖ := real_inner_le_norm y δp
+    have hδpnorm : ‖δp‖ = ‖v‖ := norm_singlePhysicalBondCochain p v
+    by_cases hy0 : ‖y‖ = 0
+    · rw [hy0]
+      positivity
+    · have hypos : 0 < ‖y‖ := lt_of_le_of_ne (norm_nonneg y) (Ne.symm hy0)
+      have hchain : (c + s) / 2 * ‖y‖ ^ 2 ≤ ‖y‖ * ‖v‖ := by
+        calc (c + s) / 2 * ‖y‖ ^ 2 ≤ inner ℝ y δp := hcoer_y
+          _ ≤ ‖y‖ * ‖δp‖ := hinner
+          _ = ‖y‖ * ‖v‖ := by rw [hδpnorm]
+      have h2 : (c + s) * ‖y‖ ≤ 2 * ‖v‖ := by
+        nlinarith [hchain, hypos]
+      rw [div_mul_eq_mul_div, le_div_iff₀ hcspos]
+      linarith
+  have hentry : C δp q = Real.exp (-θ * (dist p q : ℝ)) • y q := by
+    rw [← huntilt]
+    exact physicalTiltCLM_apply dist (-θ) p q y
+  calc ‖C δp q‖
+      = Real.exp (-θ * (dist p q : ℝ)) * ‖y q‖ := by
+        rw [hentry, norm_smul, Real.norm_eq_abs, Real.abs_exp]
+    _ ≤ Real.exp (-θ * (dist p q : ℝ)) * ‖y‖ := by
+        apply mul_le_mul_of_nonneg_left (PiLp.norm_apply_le _ q)
+          (Real.exp_pos _).le
+    _ ≤ Real.exp (-θ * (dist p q : ℝ)) * (2 / (c + s) * ‖v‖) := by
+        apply mul_le_mul_of_nonneg_left hynorm (Real.exp_pos _).le
+    _ = 2 / (c + s) * Real.exp (-(θ * (dist q p : ℝ))) * ‖v‖ := by
         rw [hsymm p q, neg_mul]
         ring
 

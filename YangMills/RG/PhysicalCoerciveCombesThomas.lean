@@ -139,6 +139,61 @@ noncomputable def physicalTiltConjCLM
   (physicalTiltCLM (Nc := Nc) dist θ r).comp
     (K.comp (physicalTiltCLM (Nc := Nc) dist (-θ) r))
 
+/-- Exponential conjugation fixes the identity operator exactly.  This is
+the algebraic reason that a nonnegative diagonal spectral shift does not
+consume any Combes--Thomas tilt budget. -/
+@[simp]
+theorem physicalTiltConjCLM_id
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ) (θ : ℝ)
+    (r : PhysicalBond d N) :
+    physicalTiltConjCLM (Nc := Nc) dist θ r
+        (ContinuousLinearMap.id ℝ (PhysicalGaugeOneCochain d N Nc)) =
+      ContinuousLinearMap.id ℝ (PhysicalGaugeOneCochain d N Nc) := by
+  unfold physicalTiltConjCLM
+  rw [ContinuousLinearMap.id_comp, physicalTiltCLM_comp_neg]
+
+/-- Conjugation is linear in the conjugated operator. -/
+theorem physicalTiltConjCLM_add
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ) (θ : ℝ)
+    (r : PhysicalBond d N)
+    (K L : PhysicalGaugeOneCochain d N Nc →L[ℝ]
+      PhysicalGaugeOneCochain d N Nc) :
+    physicalTiltConjCLM (Nc := Nc) dist θ r (K + L) =
+      physicalTiltConjCLM (Nc := Nc) dist θ r K +
+        physicalTiltConjCLM (Nc := Nc) dist θ r L := by
+  ext f
+  simp [physicalTiltConjCLM]
+
+/-- Conjugation commutes with real scalar multiplication. -/
+theorem physicalTiltConjCLM_smul
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ) (θ s : ℝ)
+    (r : PhysicalBond d N)
+    (K : PhysicalGaugeOneCochain d N Nc →L[ℝ]
+      PhysicalGaugeOneCochain d N Nc) :
+    physicalTiltConjCLM (Nc := Nc) dist θ r (s • K) =
+      s • physicalTiltConjCLM (Nc := Nc) dist θ r K := by
+  ext f
+  simp [physicalTiltConjCLM]
+
+/-- **Shift cancellation identity.**  The perturbation created by exponential
+conjugation is unchanged after adding a scalar multiple of the identity:
+`(K + sI)_θ - (K + sI) = K_θ - K`.  In particular the estimate is uniform
+in the resolvent shift `s`; no diagonal `s` enters the CT budget. -/
+theorem physicalTiltConjCLM_add_smul_id_sub
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ) (θ s : ℝ)
+    (r : PhysicalBond d N)
+    (K : PhysicalGaugeOneCochain d N Nc →L[ℝ]
+      PhysicalGaugeOneCochain d N Nc) :
+    physicalTiltConjCLM (Nc := Nc) dist θ r
+          (K + s • ContinuousLinearMap.id ℝ
+            (PhysicalGaugeOneCochain d N Nc)) -
+        (K + s • ContinuousLinearMap.id ℝ
+          (PhysicalGaugeOneCochain d N Nc)) =
+      physicalTiltConjCLM (Nc := Nc) dist θ r K - K := by
+  rw [physicalTiltConjCLM_add, physicalTiltConjCLM_smul,
+    physicalTiltConjCLM_id]
+  abel
+
 /-- The conjugation identity in the direction consumed by kernel extraction:
 `K = T_{−θ} ∘ K_θ ∘ T_θ`. -/
 theorem physicalTiltConjCLM_conj_identity
@@ -545,6 +600,74 @@ theorem norm_physicalTiltConj_sub_le
   exact physicalOpNorm_le_of_kernelBound_finiteRange dist hsymm hβ hNR
     (physicalTiltConj_sub_finiteRange dist θ r hrange)
     (physicalTiltConj_sub_kernelBound dist hsymm htri hθ r hM hrange hbound)
+
+/-- Adding `sI` raises the coercivity constant by exactly `s`.  The statement
+is algebraic and therefore does not require a sign assumption on `s`; later
+resolvent applications use `0 ≤ s`. -/
+theorem isCoerciveCLM_add_smul_id
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    (K : E →L[ℝ] E) {c : ℝ} (hc : IsCoerciveCLM K c) (s : ℝ) :
+    IsCoerciveCLM (K + s • ContinuousLinearMap.id ℝ E) (c + s) := by
+  intro f
+  have hf := hc f
+  simpa [ContinuousLinearMap.add_apply, inner_add_right,
+    real_inner_smul_right, real_inner_self_eq_norm_sq, add_mul] using
+    add_le_add_right hf (s * ‖f‖ ^ 2)
+
+/-- The CT perturbation norm bound is uniform in a scalar identity shift.
+Only the off-diagonal part of the operator is seen by the exponential
+commutator. -/
+theorem norm_physicalTiltConj_add_smul_id_sub_le
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    (htri : ∀ p q s, dist p s ≤ dist p q + dist q s)
+    {θ : ℝ} (hθ : 0 ≤ θ) (r : PhysicalBond d N) {R NR : ℕ} {M : ℝ}
+    (hM : 0 ≤ M)
+    (hNR : ∀ x : PhysicalBond d N,
+      (Finset.univ.filter (fun y => dist x y ≤ R)).card ≤ NR)
+    {K : PhysicalGaugeOneCochain d N Nc →L[ℝ] PhysicalGaugeOneCochain d N Nc}
+    (hrange : PhysicalCovarianceFiniteRange K dist R)
+    (hbound : PhysicalCovarianceKernelBound K (fun _ _ => M)) (s : ℝ) :
+    ‖physicalTiltConjCLM (Nc := Nc) dist θ r
+          (K + s • ContinuousLinearMap.id ℝ
+            (PhysicalGaugeOneCochain d N Nc)) -
+        (K + s • ContinuousLinearMap.id ℝ
+          (PhysicalGaugeOneCochain d N Nc))‖
+      ≤ M * (Real.exp (θ * (R : ℝ)) - 1) * (NR : ℝ) := by
+  rw [physicalTiltConjCLM_add_smul_id_sub]
+  exact norm_physicalTiltConj_sub_le dist hsymm htri hθ r hM hNR hrange hbound
+
+/-- **Shift-uniform CT2 capstone.**  Exponential conjugation of `K + sI`
+keeps coercivity `c + s` minus the same defect used for `K`; crucially the
+defect contains no `s`.  This is the uniform resolvent estimate needed by a
+Stieltjes construction of `K⁻¹ᐟ²`. -/
+theorem isCoerciveCLM_physicalTiltConj_add_smul_id
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    (htri : ∀ p q s, dist p s ≤ dist p q + dist q s)
+    {θ : ℝ} (hθ : 0 ≤ θ) (r : PhysicalBond d N) {R NR : ℕ} {M c : ℝ}
+    (hM : 0 ≤ M)
+    (hNR : ∀ x : PhysicalBond d N,
+      (Finset.univ.filter (fun y => dist x y ≤ R)).card ≤ NR)
+    {K : PhysicalGaugeOneCochain d N Nc →L[ℝ] PhysicalGaugeOneCochain d N Nc}
+    (hrange : PhysicalCovarianceFiniteRange K dist R)
+    (hbound : PhysicalCovarianceKernelBound K (fun _ _ => M))
+    (hc : IsCoerciveCLM K c) (s : ℝ) :
+    IsCoerciveCLM
+      (physicalTiltConjCLM (Nc := Nc) dist θ r
+        (K + s • ContinuousLinearMap.id ℝ
+          (PhysicalGaugeOneCochain d N Nc)))
+      (c + s - M * (Real.exp (θ * (R : ℝ)) - 1) * (NR : ℝ)) := by
+  let Ks := K + s • ContinuousLinearMap.id ℝ
+    (PhysicalGaugeOneCochain d N Nc)
+  have hsplit : physicalTiltConjCLM (Nc := Nc) dist θ r Ks =
+      Ks + (physicalTiltConjCLM (Nc := Nc) dist θ r Ks - Ks) := by
+    abel
+  rw [hsplit]
+  exact isCoercive_add_of_opNorm_le Ks _
+    (isCoerciveCLM_add_smul_id K hc s)
+    (norm_physicalTiltConj_add_smul_id_sub_le dist hsymm htri hθ r hM hNR
+      hrange hbound s)
 
 /-- **CT2 capstone — coercivity survives the tilt**: if `K` is coercive with
 constant `c`, then the conjugated operator `K_θ` is coercive with constant
