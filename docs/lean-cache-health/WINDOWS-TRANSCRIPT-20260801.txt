@@ -165,3 +165,32 @@ REMOTE_REFS_RECHECK_20260801_1039
 main=f0558a5b60458f92b35463b09bbb5bb8458d8538
 pr39=5172a51b0fad455d9009b1805a48b8be54acbbcc
 live_pr43=95d8a881c545b081913dce003cd1385e857473b4
+main_compare_base=d6ea8d8d962bc6bd52d637799f9d28bdbd6aaba8
+main_compare_ahead_by=3
+main_compare_changed_files=DASHBOARD.md only
+main_compare_contract_effect=none observed
+
+EVIDENCE_BOUNDARIES
+pr39_prior_audit=NOT CHECKED because it could not compile
+pr39_task22_clones=2 fresh clone trees in one Colab runtime
+pr39_task22_oracle_runs=2 per clone; all exit 0
+pr39_task22_headlines=16 per run
+pr39_task22_axioms=propext,Classical.choice,Quot.sound
+pr39_task22_oracle_log_sha256=3ca4fb93c0c212a98dc6b0845d32245406f1ac041e97d5444482e010b8eaaa2f
+pr39_interpretation=independent reproduction relative to prior NOT CHECKED audit
+closure_interpretation=two clones are not two independent environments; Linux reproduced; Windows open
+control_plane_ubuntu_baseline=623 manifests; 4134 errors; no PR diff needed
+control_plane_windows_baseline=623 manifests; 3950 errors; no PR diff
+batteries_historical_error=reproduction failed; destroyed historical state unavailable
+batteries_pin_interpretation=exact pin resolves in tested Linux and surviving caches; historical Windows mechanism open
+hRpoly_boundary=source present is not olean materialized, and neither alone is compiler verification
+
+POWERSHELL_OPERATOR_TRAPS
+args_trap=$Args is automatic and case-insensitive; function parameter Args erased child argument vectors
+args_measured_effect=Lake help or interactive pwsh prompt; misleading exit 0; one cycle invalidated
+git_peel_trap=Git revision suffix ^{} must be quoted in PowerShell
+git_peel_unquoted_command=git rev-parse HEAD^{}
+git_peel_unquoted_effect=parent revision plus -encodedCommand printed; fatal ambiguous empty argument; exit 128
+git_peel_single_quoted_command=git rev-parse 'HEAD^{}'; correct HEAD; exit 0
+git_peel_double_quoted_command=git rev-parse "HEAD^{}"; correct HEAD; exit 0
+operator_trap_interpretation=harness defects only; no repository, cache, or mathematical claim
