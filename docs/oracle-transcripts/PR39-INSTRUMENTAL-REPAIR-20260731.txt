@@ -1,154 +1,124 @@
-PR #39 INSTRUMENTAL REPAIR TRANSCRIPT
-Date: 2026-07-31
-Repository: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+PR #39 EXTERNAL INSTRUMENTAL BUNDLE VERIFICATION TRANSCRIPT
+Date: 2026-08-01
+Repository: lluiseriksson/THE-ERIKSSON-PROGRAMME
 PR: #39 (draft)
 Remote branch: codex/su2-two-transporter-nogo-20260731
-Published base: e211ac96af8862c05b961ee16037ba34dcc7bccf
-Audited incoming HEAD: 1fa29e657c43ed71a249808611bf3aea64f2b115
-Public source commit under test: 7b709c4200ba4b2eb1acc9838ee66cd2eebba6ae
+Required starting HEAD: 5172a51b0fad455d9009b1805a48b8be54acbbcc
+Checkpoint A: f32638ac98d62f05321d8c586326457deabf0d77
+Evidence commit B: intentionally not recorded or required (no self-reference)
 
 SCOPE
-This is an instrumental repair.  The prior mathematical audit is not repeated
-or superseded.  The Python program certifies only finite free-word arithmetic
-and one exact Q(sqrt(2)) unit-quaternion witness.  It does not certify Haar
-integration or a general integral identity.
+This replacement repairs only the instrumental boundary.  It does not edit or
+re-audit the mathematics, YangMills/OS/TwoTransporterHaarProjection.lean, the
+finite certificate, its self-test logic, or the Lean oracle.  No Colab, Lean,
+Lake, or mathematical oracle was used.  A fresh independent audit is required.
 
-HOST AND TOOLCHAIN
-Execution surface: Google Colab Pro+; public clone; no credentials; no push
-UTC start: 2026-07-31T21:41:19Z
-Host: Linux 98c482c00161 6.6.122+ #1 SMP Thu Apr 30 18:17:14 UTC 2026 x86_64 GNU/Linux
-Measured processors: 2
-elan: 4.2.3 (b6cec7e10 2026-06-08)
-Lake: 5.0.0-src+00659f8
-Lean: 4.29.0-rc6, commit 00659f8e6071d7e46131ed643bf8003b99b044e9
-Toolchain file: leanprover/lean4:v4.29.0-rc6
+A/B PROTOCOL
+Checkpoint A adds only scripts/verify_pr39_instrumental_bundle.py.  Evidence
+commit B changes exactly this transcript and the adjacent JSON manifest.  The
+verifier resolves A and HEAD as commits, requires A to be the direct parent of
+HEAD, and rejects every A..HEAD path outside that exact two-path evidence set.
+All protected inputs are read with git show SHA:path.
 
-SETUP COMMANDS AND EXIT CODES
-git clone --filter=blob:none --no-checkout https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git /content/pr39-source
-EXIT_CODE: 0
-git -C /content/pr39-source checkout --detach 7b709c4200ba4b2eb1acc9838ee66cd2eebba6ae
-EXIT_CODE: 0
-curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
-EXIT_CODE: 0
-sh /tmp/elan-init.sh -y --default-toolchain none
-EXIT_CODE: 0
-lake update
-EXIT_CODE: 0
-lake exe cache get
-EXIT_CODE: 0
-Cache result: 8142/8142 files decompressed.
+EOL POLICY
+Raw hashes cover exact Git-blob or process bytes.  LF hashes remove every CR
+byte before SHA-256.  Git-blob raw bytes are canonical.  On this Windows host,
+captured Python stdout/stderr uses CRLF; the LF hashes remain platform-neutral.
 
-DISCARDED PREFLIGHT (NOT AN ACCEPTANCE RUN)
-Command: lake build -j 2 YangMills.OS.TwoTransporterHaarProjection
-EXIT_CODE: 1
-STDOUT: empty
-STDERR: error: unknown short option '-j'
-Reason: Lake 5 removed that short option.  The corrected exact build command
-below uses Lake's default scheduler; nproc measured 2 available processors.
+PROTECTED CHECKPOINT-A BLOBS
+certificate:
+  raw_sha256 = lf_sha256 = de851de7b4ca9d244d2745f1fb610bb6e677779c73049cc7c0785a2c1125ab05
+  git_blob_oid = 9fac6370bb016d674465da6110c701e24f5f9de8
+oracle:
+  raw_sha256 = lf_sha256 = 9f33ca176557cff433740e547bbf37549507ea139ab4a8f13ee8779aea675cb2
+  git_blob_oid = 0b10c1ecebe1791cbdf6d3e02dbb5c7e2ecd6606
+mathematics:
+  raw_sha256 = lf_sha256 = 3fcd675b9958c920db7074b579fb22633ddcb10c29b2c017c6c3f68df2506dee
+  git_blob_oid = e785ce28d92cb7a8d77a5ef901e8fd860f5b0c36
+verifier:
+  raw_sha256 = lf_sha256 = 8f721967ec590f261bf6c4137de03fac9ae562a67480054e50f55cfb372bd1b4
+  git_blob_oid = 53a7afdc694fcb9c653150b906cef44b5e0771e8
+verifier contract sha256:
+  4c70a7b33cd2ac60cfe6dc75b5b375d4643b8d30231fcc6b314547164d57426f
 
-EXACT LEAN BUILD
-Command: lake build YangMills.OS.TwoTransporterHaarProjection
-EXIT_CODE: 0
-STDOUT_SHA256: a01cd7b7577a0da3fb2ce1d7ce28508ff5df49eff37985f6aa534a1910ac4f1d
-STDERR_SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-STDOUT_LINES: 3
-STDERR_LINES: 0
-STDOUT:
-  ✔ [8158/8159] Built YangMills.L0_Lattice.SU2Basic (105s)
-  ✔ [8159/8159] Built YangMills.OS.TwoTransporterHaarProjection (12s)
-  Build completed successfully (8159 jobs).
-STDERR: empty
+STATIC CONTRACT
+The certificate AST has no assert node, EXPECTED_CHECKS is the integer 14,
+MUTATIONS is the exact three-name tuple, and the two check functions contain
+exactly 14 checks.require calls.  CheckLedger.require increments explicitly and
+raises on failure; CheckLedger.close compares the count and raises.  certify
+calls the word checks, quaternion checks, close, and print in that order.  Its
+single emitted RESULT: PASS follows close and CHECKS.
 
-FULL VERSIONED AXIOMS ORACLE
-Command: lake env lean docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean
-EXIT_CODE: 0
-STDOUT_SHA256: 3ca4fb93c0c212a98dc6b0845d32245406f1ac041e97d5444482e010b8eaaa2f
-STDERR_SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-STDERR: empty
-STDOUT (each entry depends on [propext, Classical.choice, Quot.sound]):
-  integral_weight_mul_inv_eq
-  orientationD_inner_projection
-  orientationD_twoTransporter_projection
-  orientationE_uv_projection
-  orientationE_twoTransporter_projection
-  quadraticD_eq_partition_mul_mean_sq
-  quadraticE_eq_partition_mul_mean_sq
-  su2_trace_conjugate_inverse
-  su2_trace_inv_eq
-  su2WilsonWeight_conjugationInverseInvariant
-  su2Wilson_orientationD_inner_projection
-  su2Wilson_orientationD_twoTransporter_projection
-  su2Wilson_orientationE_uv_projection
-  su2Wilson_orientationE_twoTransporter_projection
-  su2Wilson_quadraticD_eq_partition_mul_mean_sq
-  su2Wilson_quadraticE_eq_partition_mul_mean_sq
-Headline count: 16/16.
+The oracle parser accepts only the import plus the exact ordered sequence of 16
+#print axioms headlines.  Omission, rename, duplicate, addition, or reordering
+is rejected.  The verifier itself contains no assert node, uses a fixed 308
+check ledger, and writes its PASS token only after ledger.close succeeds.
 
-FORBIDDEN-TOKEN SCAN
-Files:
-  YangMills/OS/TwoTransporterHaarProjection.lean
-  docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean
-Tokens: sorry, admit, sorryAx, axiom, unsafe (identifier boundaries)
-EXIT_CODE: 0
-Matches: 0
+CERTIFICATE ACCEPTANCE EXECUTIONS
+Commands were executed from the checkpoint-A certificate blob materialized in
+a new temporary directory:
+  python certificate.py                         exit 0 (twice)
+  python -O certificate.py                      exit 0 (twice)
+All four stdout streams are byte-identical:
+  raw_sha256 = 3ecd84ec2a1276d95ba62b647c7c3a540ae6c44910f78fcce89e931a04e43ad9
+  lf_sha256  = a241ef37805085b51860490ae53f0c97674f3d79f3466c980cb18d55f5ea67db
+All four stderr streams are empty:
+  raw_sha256 = lf_sha256 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+Each stdout has exactly one RESULT: PASS occurrence.
 
-FINITE ARITHMETIC/WITNESS CERTIFICATE
-Commands, each executed from the public source commit:
-  python scripts/certify_su2_two_transporter_nogo.py
-  python scripts/certify_su2_two_transporter_nogo.py
-  python -O scripts/certify_su2_two_transporter_nogo.py
-  python -O scripts/certify_su2_two_transporter_nogo.py
-EXIT_CODES: 0, 0, 0, 0
-Exact acceptance counter: CHECKS: 14/14
-Raw SHA256 for all four stdout files:
-  a241ef37805085b51860490ae53f0c97674f3d79f3466c980cb18d55f5ea67db
-LF-normalized SHA256 for all four stdout files:
-  a241ef37805085b51860490ae53f0c97674f3d79f3466c980cb18d55f5ea67db
-EOL policy: raw output was LF on Linux; LF normalization removes CR bytes only.
-All four stderr files were empty, SHA256:
-  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-cmp(normal-1, normal-2) EXIT_CODE: 0
-cmp(normal-1, optimized-1) EXIT_CODE: 0
-STDOUT:
-  SU2 TWO-TRANSPORTER FINITE ARITHMETIC/WITNESS CERTIFICATE
-  scope: exact words + Q(sqrt(2)) unit quaternions; NOT Haar integration
-  WORD H_D diagonal = x c y^-1 c^-1 != x y^-1
-  WORD H_E diagonal = x y^-1 = reduced
-  WORD H_E = (x c1)(y c2)^-1 = x c1 c2^-1 y^-1
-  WORD H_D = (x c1)(c2 y)^-1 = x c1 y^-1 c2^-1
-  WORD D substitution c2=A z gives A z^-1 A^-1 = x c1 y^-1 z^-1 y c1^-1 x^-1
-  WORD E substitution v=u z gives u z^-1 u^-1 = x c1 z^-1 c1^-1 x^-1
-  QUAT c norm^2 = 1
-  QUAT reduced x y^-1 = (0; 0i; 0j; -1k); trace = 0
-  QUAT H_D(x,c,y,c) = (-1; 0i; 0j; 0k); trace = -2
-  QUAT H_E(x,c,y,c) = (0; 0i; 0j; -1k); trace = 0
-  WEIGHT reduced = exp((beta/2)*0) = 1
-  WEIGHT H_D diagonal = exp((beta/2)*(-2)) = exp(-beta)
-  CHECKS: 14/14
-  RESULT: PASS
-STDERR: empty
+CERTIFICATE SELF-TEST EXECUTIONS
+  python certificate.py --self-test             exit 0
+  python -O certificate.py --self-test          exit 0
+The two stdout streams are byte-identical:
+  raw_sha256 = 964b33b023e9987d76509b313a9fd56a4672b81341ed14e72cf0d5d91335d9b9
+  lf_sha256  = ffe62f6a04a46a3ee72af34040ef444c01fedd80723801c9cd5fe091021a774c
+Both stderr streams are empty with SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.
 
-SELF-TESTS
-Command: python scripts/certify_su2_two_transporter_nogo.py --self-test
-EXIT_CODE: 0
-Command: python -O scripts/certify_su2_two_transporter_nogo.py --self-test
-EXIT_CODE: 0
-STDOUT for each command:
-  SELF-TEST mutation decisive-trace: REJECTED (exit 1)
-  SELF-TEST mutation witness-condition: REJECTED (exit 1)
-  SELF-TEST mutation omit-check: REJECTED (exit 1)
-  SELF-TEST: PASS (3/3 mutations rejected)
-STDERR for each command: empty
+DIRECT CERTIFICATE MUTATIONS (NORMAL AND -O)
+Each mode rejected each mutation with exit 1, empty stdout, and zero RESULT:
+PASS hits.  Raw/LF stderr SHA-256 pairs were:
+  decisive-trace:
+    beab7805dd2b1e66ee88bda84701a74587b17ddae12584ed46d54aea4eb72de0
+    e301d2824ae24370fd098d88ae1b5d51a04d04161350ff755b4d6b5567a672e6
+  witness-condition:
+    c1a564ddf63006f0e15cce73cfa172be61aba1280e673900d99c1d7af8679ce5
+    96584263b6c16bed06b74d2b2674c864259950c5da2672c853b98a924d7f4aea
+  omit-check:
+    22a5365a77508f832b132c7b029f0c9bcf112c872bd932dade07aaefe771b656
+    4091cce15864596eac01e5676690ad63251e7fc372937fd9279d769c90a4447e
 
-DIRECT MUTATION OBSERVATIONS
-decisive-trace: EXIT_CODE=1; RESULT: PASS hits=0
-  STDERR: CERTIFICATE ERROR: check 14 failed: H_D diagonal trace must be exactly -2
-witness-condition: EXIT_CODE=1; RESULT: PASS hits=0
-  STDERR: CERTIFICATE ERROR: check 9 failed: c witness must satisfy the exact unit-norm condition
-omit-check: EXIT_CODE=1; RESULT: PASS hits=0
-  STDERR: CERTIFICATE ERROR: check-count mismatch: observed 13, expected 14
+STALE-PASS TRUNCATION
+For all six direct mutation/mode pairs, stdout was pre-seeded with
+"RESULT: PASS\n" (SHA-256 5817bdd02cdb5414d701685058e562c27ccb64be651cdc48c0d184fab266ffc2),
+then opened with wb before execution.  Each replay exited nonzero, reproduced
+the recorded empty stdout and stderr bytes, and left zero stale PASS hits.
+
+EXTERNAL VERIFIER EXECUTIONS
+  python scripts/verify_pr39_instrumental_bundle.py      exit 0 (twice)
+  python -O scripts/verify_pr39_instrumental_bundle.py   exit 0 (twice)
+All four stdout streams are the same two LF-terminated lines:
+  PR39 VERIFIER CHECKS: 308/308
+  PR39 EXTERNAL INSTRUMENTAL VERIFIER: PASS
+  raw_sha256 = lf_sha256 = 510181cdf267cc4bf1c354f54e4fc3f699e23dc2a86e3f0d57839c4a53d026cd
+All four stderr streams are empty with SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.
+
+ADVERSARIAL VERIFIER MUTATIONS
+Temporary synthetic Git objects exercised 32 cases.  All 32 exited nonzero and
+emitted zero external-verifier PASS hits.  The cases covered:
+  - altered certificate, oracle, mathematics, and verifier hashes;
+  - altered verifier contract;
+  - expected_checks 14 -> 13 and oracle_headlines 16 -> 15;
+  - omitted, renamed, duplicated, and added oracle headlines, both in manifest
+    metadata and in checkpoint-A oracle blobs;
+  - nonexistent and non-ancestor checkpoints;
+  - changed allowed-path metadata and an actual forbidden A..HEAD path;
+  - altered certificate stdout hash, stderr hash, exit code, and verifier stdout
+    hash;
+  - post-A edits of every protected blob;
+  - post-A and checkpoint-A certificate variants with a neutralized condition or
+    PASS moved before close.
 
 CONCLUSION
-Instrumental reproduction: PASS.
-This transcript is not a fresh audit and does not self-certify the modified
-certificate.  The modified certificate requires a fresh independent audit.
+External instrumental bundle verification: PASS.  This result repairs only the
+evidence boundary and is not an audit of the protected sources.  The new
+verifier requires a fresh independent audit.
