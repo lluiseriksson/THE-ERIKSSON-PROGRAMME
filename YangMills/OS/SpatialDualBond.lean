@@ -79,4 +79,21 @@ theorem z2Bond_dual_factorization
         rw [Real.tanh_eq_sinh_div_cosh]
       _ = Real.exp β / Real.cosh a * Real.sinh a := by ring
 
+/-- **Exact finite-product lift to the decoupled spatial kernel.**
+
+Under the same strict positive-`β` duality relation as the local identity, the
+product defining `spatialKernel` is a scalar `dualFieldScale β a ^ L` times the
+product of the dual-field entries.  This is still only an entrywise identity:
+it does not include the ring weight, identify a tensor-product exponential, or
+prove a sector bound. -/
+theorem spatialKernel_dual_factorization
+    (β a : ℝ) (hβ : 0 < β)
+    (hdual : Real.tanh a = Real.exp (-2 * β))
+    {L : ℕ} (σ τ : Fin L → Fin 2) :
+    spatialKernel β σ τ =
+      dualFieldScale β a ^ L * ∏ j, dualFieldBond a (σ j) (τ j) := by
+  unfold spatialKernel
+  simp_rw [z2Bond_dual_factorization β a hβ hdual]
+  rw [Finset.prod_mul_distrib, Finset.prod_const, Finset.card_univ, Fintype.card_fin]
+
 end YangMills.OS
