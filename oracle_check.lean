@@ -3135,3 +3135,19 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.perron_even
 #print axioms YangMills.OS.symWeighted_eigen_of_sourceWeighted
 #print axioms YangMills.OS.symWeighted_perron_even
+
+-- D-1, the Dobrushin matrix lemma (docs/DOBRUSHIN-CHARTER.md; judges 118e32e9).
+#print axioms YangMills.OS.Matrix.pow_apply_nonneg
+#print axioms YangMills.OS.Matrix.pow_rowSum_le
+#print axioms YangMills.OS.Matrix.pow_apply_le
+#print axioms YangMills.OS.Matrix.pow_apply_eq_zero_of_lt_dist
+#print axioms YangMills.OS.Matrix.sum_range_pow_apply_le
+#print axioms YangMills.OS.Matrix.tsum_pow_apply_le
+#print axioms YangMills.OS.Matrix.witnessD_self
+#print axioms YangMills.OS.Matrix.witnessD_triangle
+#print axioms YangMills.OS.Matrix.witnessC_nonneg
+#print axioms YangMills.OS.Matrix.witnessC_supp
+#print axioms YangMills.OS.Matrix.witnessC_rowSum
+#print axioms YangMills.OS.Matrix.witnessD_endpoints
+#print axioms YangMills.OS.Matrix.witnessC_ne_zero
+#print axioms YangMills.OS.Matrix.witness_bound

@@ -29315,3 +29315,82 @@ recorded because the record is what the next campaign reads.  Ten versions of a
 paper is exactly when the ledger entry stops feeling urgent and starts being
 necessary.  Written now, after the fact, and dated as such rather than
 back-dated.
+
+## Addendum 570 (2026-08-01, **D-1: the Dobrushin matrix, and a wall that was
+in the wrong place**)
+
+**WHY THIS LANE EXISTS, and it is a finding about the record rather than about
+mathematics.**  Every uniform statement of the S block is proved by Schur's test
+on CONSTANT row sums (`SpatialUniform.lean`).  `coupled_rowSums_not_constant`
+(`SpatialExtent.lean`) proves those row sums stop being constant the moment the
+spatial weight is switched on, and the module labels it THE OBSTRUCTION.  It
+obstructs the METHOD.  The stronger reading --- that the weight destroys
+uniformity --- was already RETRACTED of record in Addendum 561 as unproved, and
+what survived was a measurement of degeneracy.  The retracted claim nevertheless
+kept selecting targets.  **A retracted sentence was purged from the paper, from
+the module and from the submission form, and went on living in the work queue,
+where no guard looks.**
+
+**MEASURED, BEFORE ANY LEAN.**  `r(L) = |lambda_1|/|lambda_0|` of the coupled
+symmetrised transfer matrix, `L = 2..12`, free spatial boundary.  In every tested
+cell of the disordered region (`sinh 2b · sinh 2g < 1`) the ratio SATURATES
+strictly below one --- Aitken limits 0.121, 0.292, 0.523, 0.816, 0.457, 0.808,
+with geometric increment ratios near 0.6.  In both ordered cells it reaches one
+to six decimals (1.000003, 1.000000).  **The degeneracy is a property of the
+ORDERED phase, and the boundary is Onsager's line, not the switching-on of the
+weight.**  The `g = 0` control reproduces `tanh b` to six decimals, which is the
+PROVED `spatialKernel_specGap_eq`: the harness is validated against a theorem of
+this repository, not against itself.
+
+**CHARTER AND JUDGES FIRST.**  `docs/DOBRUSHIN-CHARTER.md` and
+`scripts/judge_dobrushin.py` were committed together at `118e32e9`, before a line
+of Lean.  Three SEPARATE gates, none bundling a theorem with its witness (the
+Addendum-548 / paper-12 gate-B lesson), each exiting NON-ZERO on failure (the
+paper-12 artefact defect).  J2 predicts D-1 as a NUMBER rather than sampling it:
+worst slack `-3.078e-04`, where a POSITIVE slack would refute the lemma.  J3
+checks the window is non-empty AND conservative: 9818 Dobrushin points, none
+outside the disordered region, and 30718 Onsager points outside Dobrushin ---
+so the window is explicit and provably NOT sharp.
+
+**D-1 (`YangMills/OS/DobrushinMatrix.lean`).**  Pure linear algebra over a finite
+index type.  For `C >= 0` supported on pairs at distance at most one, with row
+sums BOUNDED (never constant) by `alpha < 1`:
+
+    sum_{n < N} (C^n) i j  <=  alpha ^ dist(i,j) / (1 - alpha)   for every N,
+
+and the same for the series.  **No cardinality of the index type appears
+anywhere**, and that is the entire point: it is where volume-freeness comes from,
+and it is exactly the hypothesis the coupled kernel still satisfies after Schur's
+test has died.  Route: entries are dominated by row sums, row sums multiply, and
+a walk of `n` steps of range one cannot cross a larger distance (the only use of
+the triangle inequality).
+
+**NON-VACUITY.**  A three-point chain carrying `1/4` on every admissible pair:
+`alpha = 3/4 < 1`, endpoints genuinely at distance `2`, `C` not the zero matrix,
+and the conclusion says something --- the whole resolvent series between the ends
+is at most `9/4`.
+
+**MEASUREMENT (exclusive window, this tree).**  Core **8465 -> 8466 jobs**, the
+delta MEASURED by rebuilding the same tree with the import removed and restored,
+not inferred from the registered baseline.  Oracle: 14 declarations, all
+`[propext, Classical.choice, Quot.sound]`, zero `sorryAx`, zero nonstandard.
+
+**WHAT THIS IS NOT.**  Dobrushin's theorem is CLASSICAL; nothing here is new
+mathematics.  D-1 carries no probability, no Gibbs measure and no physics claim,
+and none may be attached to it.  The bottleneck of the lane is D-3 (comparison
+=> exponential decay of connected correlations), untouched.  The consumer
+`volumeUniform_gap` (`TransferGap.lean:546`) exists and was verified by
+elaboration; its quantifier order is load-bearing --- `C` may depend on the
+volume, only `r` is common --- so this lane's own standing objection about
+`C(L)` diverging does not apply to it.  No consequence for Yang-Mills is stated
+or implied.
+
+**CORRECTION OF RECORD.**  An earlier reading of this desk asserted that
+`ReflectionSplitting` could be instantiated directly by the paper-13 producer
+(`bondEquiv`, `gibbsWeight_joinBond`).  WITHDRAWN.  `GaugeData` carries ONE
+shared `weight : ZMod N -> R` for all plaquettes and cannot express an
+anisotropic cell; the connection needs `weight : Plaq -> ZMod N -> R` first,
+registered as D-0 and NOT claimed as free.
+
+**ROLES.**  This session FABRICATED and does not audit itself.  No external
+verdict exists, and no claim of "delivered" is made.

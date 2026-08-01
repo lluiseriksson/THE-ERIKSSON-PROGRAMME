@@ -933,3 +933,12 @@ import YangMills.OS.SpatialUniform
 import YangMills.OS.SpatialReflection
 import YangMills.OS.SpatialOS
 import YangMills.OS.SpatialRing
+
+-- D-1 of the Dobrushin lane (docs/DOBRUSHIN-CHARTER.md, judges at 118e32e9).
+-- PURE LINEAR ALGEBRA: a nonnegative matrix supported at distance <= 1 with row
+-- sums BOUNDED (never constant) by alpha < 1 has its resolvent series bounded
+-- entrywise by alpha^dist/(1-alpha) -- with no reference to the size of the
+-- index type.  That volume-freeness is the whole point; the row sums of the
+-- coupled spatial kernel are provably NOT constant, which is what closed the
+-- Schur route.  No probability, no Gibbs measure and no physics claim here.
+import YangMills.OS.DobrushinMatrix
