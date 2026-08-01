@@ -30066,3 +30066,35 @@ This is CERTIFIED structural infrastructure, not analytic progress.  The
 sharp odd-sector bound, the even non-Perron bound, and the uniform
 signed-front-door `specRatio <= tanh(beta) * exp(2 * gamma)` theorem remain
 wholly open.
+
+## Addendum 587 (2026-08-01, **TASK 14: sector-vacuum quotient gate preregistered**)
+
+**PRE-REGISTERED; NOT YET EXECUTED.**  Before opening any half-cube isometry,
+Clifford algebra, Jordan--Wigner transform, or finite fermionic classification,
+`scripts/judge_spatial_vacuum_ratio.py` fixes a numerical decision about the
+separate periodic/antiperiodic vacuum factor that a one-particle energy estimate
+does not control.
+
+For `a = -log(tanh(beta))/2`, the script evaluates at 100 decimal digits
+
+`R_L = exp((sum_{k in P_L} epsilon(k) - sum_{k in A_L} epsilon(k))/2)`,
+
+where `P_L` and `A_L` are respectively the periodic and antiperiodic momentum
+grids and
+
+`cosh(epsilon(k)) = cosh(2a) cosh(2gamma) - sinh(2a) sinh(2gamma) cos(k)`.
+
+The prediction committed before first execution is: for every `L = 2,...,16`,
+both parities, `beta` in `{0.125, 0.25, 0.5, 1, 2}`, and
+`gamma/a` in `{0.75, 0.90, 0.99}` (all with
+`q = tanh(beta) exp(2gamma) < 1`), `R_L <= 1` and the minimum margin
+`1 - R_L` is at least `1e-8`.  The judge also measures three ratios outside
+the nontrivial window and checks the exact `gamma = 0` control, but neither can
+rescue a failed inside-window verdict.  Reversed-quotient and same-grid
+mutations must be rejected in every verdict cell.  Normal and optimized Python
+must agree before PASS.
+
+A PASS licenses only an attempt to formalize the scalar vacuum-product
+comparison needed by a future finite fermionic classification.  It proves no
+classification, no sector estimate, and no part of the uniform bound.  The
+judge has not run at the time of this addendum; no result or margin is claimed.
