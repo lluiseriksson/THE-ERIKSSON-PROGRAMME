@@ -81,17 +81,28 @@ theorem tanh_sub_eq (a b : ℝ) :
   rw [Real.tanh_eq_sinh_div_cosh, Real.tanh_eq_sinh_div_cosh,
     div_sub_div _ _ ha hb, ← Real.sinh_sub]
 
+/-- Product to sum.  Stated with FRESH variables: `Real.cosh_sub` matches any
+subtraction, so rewriting it against a goal that already contains `cosh (h - 2J)`
+tears apart the wrong term.  A first version did exactly that and did not
+compile. -/
+theorem cosh_mul_cosh (a b : ℝ) :
+    Real.cosh a * Real.cosh b = (Real.cosh (a + b) + Real.cosh (a - b)) / 2 := by
+  rw [Real.cosh_add, Real.cosh_sub]; ring
+
 /-- **The denominator is minimised at symmetric fields.**  Its minimum over `h`
 is `cosh J ^ 2`, reached when the two fields are `+J` and `-J`. -/
 theorem cosh_mul_cosh_ge (h J : ℝ) :
     Real.cosh J ^ 2 ≤ Real.cosh h * Real.cosh (h - 2 * J) := by
-  have hprod : Real.cosh h * Real.cosh (h - 2 * J)
-      = (Real.cosh (h + (h - 2 * J)) + Real.cosh (h - (h - 2 * J))) / 2 := by
-    rw [Real.cosh_add, Real.cosh_sub]; ring
+  have hprod := cosh_mul_cosh h (h - 2 * J)
   have h1 : (1 : ℝ) ≤ Real.cosh (h + (h - 2 * J)) := Real.one_le_cosh _
   have h2 : Real.cosh (h - (h - 2 * J)) = Real.cosh (2 * J) := by
     congr 1; ring
-  have h3 : Real.cosh (2 * J) = 2 * Real.cosh J ^ 2 - 1 := Real.cosh_two_mul J
+  -- mathlib's `cosh_two_mul` is the `cosh² + sinh²` form; the Pythagorean
+  -- identity turns it into the one needed here
+  have h3 : Real.cosh (2 * J) = 2 * Real.cosh J ^ 2 - 1 := by
+    rw [Real.cosh_two_mul]
+    have hp : Real.cosh J ^ 2 - Real.sinh J ^ 2 = 1 := Real.cosh_sq_sub_sinh_sq J
+    linarith
   rw [hprod, h2, h3]
   linarith
 
@@ -154,7 +165,6 @@ theorem tvField_attained {J : ℝ} (hJ : 0 ≤ J) :
   rw [hneg, tvField_eq, Real.tanh_neg, sub_neg_eq_add,
     show Real.tanh J + Real.tanh J = 2 * Real.tanh J from by ring,
     abs_of_nonneg (by linarith : (0:ℝ) ≤ 2 * Real.tanh J)]
-  ring
 
 /-- **The coefficient, as a supremum statement.**  `tanh J` is an upper bound for
 the total-variation move over all fields, and it is one of the values, so it is
