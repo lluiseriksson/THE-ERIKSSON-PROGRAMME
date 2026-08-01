@@ -186,6 +186,15 @@ outer_small at the same canonical alpha
 
 visible and jointly testable.
 
+An implementation of this contract is now present, but remains explicitly
+**PRE-VALIDATION**, in
+`BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136.lean`.  It splits
+raw source data from the surviving physical proof inputs and constructs the
+literal combined `PreEq136` without accepting an inhabited pre-record or any
+of the seventeen generated conclusions.  It does not enter the 17/41
+numerator, and the root import does not count as evidence, until its source
+and audit have passed the fresh-Colab focal/root/oracle gate.
+
 The fields that remain inputs to that future assembler are the physical
 contour density and geometry, covariance/coercivity/finite-range data,
 patched-parametrix and contour certificates, conditioned covariance and its
