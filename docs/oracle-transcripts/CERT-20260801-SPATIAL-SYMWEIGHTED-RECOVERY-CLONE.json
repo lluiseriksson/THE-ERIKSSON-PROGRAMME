@@ -1,0 +1,88 @@
+{
+  "classification": "exact symWeighted recovery clone",
+  "cpu_count": 2,
+  "expected_independent_clone_hashes": {
+    "exitcode": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "log": "a5bc995539a70b8e071cf71bd568d956248e978a1647621c96e4d415f2e322ba",
+    "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "head": "2c009f607a6e0747f69effc0378b577b0f853ffb",
+  "modes": [
+    {
+      "child_pid": 1360,
+      "completed": "2026-08-01T09:52:01.116962+00:00",
+      "fresh_outputs_verified": true,
+      "hashes": {
+        "exitcode": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "log": "a5bc995539a70b8e071cf71bd568d956248e978a1647621c96e4d415f2e322ba",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "mode": "normal",
+      "payload": {
+        "classification": "exact symWeighted ring/dual factorisation gate only",
+        "configuration_pairs_checked": 5460,
+        "ring_sizes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "scale_mutations_rejected": 5460,
+        "source_closing_bond_mutations_rejected": 5460,
+        "status": "PASS",
+        "target_closing_bond_mutations_rejected": 5460
+      },
+      "persisted_exit": 0,
+      "shell_exit": 0,
+      "started": "2026-08-01T09:47:22.037813+00:00",
+      "wall_seconds": 279.079100657,
+      "wrapper_pid": 1359
+    },
+    {
+      "child_pid": 2474,
+      "completed": "2026-08-01T09:56:40.249788+00:00",
+      "fresh_outputs_verified": true,
+      "hashes": {
+        "exitcode": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "log": "a5bc995539a70b8e071cf71bd568d956248e978a1647621c96e4d415f2e322ba",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "mode": "optimized",
+      "payload": {
+        "classification": "exact symWeighted ring/dual factorisation gate only",
+        "configuration_pairs_checked": 5460,
+        "ring_sizes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "scale_mutations_rejected": 5460,
+        "source_closing_bond_mutations_rejected": 5460,
+        "status": "PASS",
+        "target_closing_bond_mutations_rejected": 5460
+      },
+      "persisted_exit": 0,
+      "shell_exit": 0,
+      "started": "2026-08-01T09:52:01.118022+00:00",
+      "wall_seconds": 279.131740046,
+      "wrapper_pid": 2473
+    }
+  ],
+  "python": "3.12.13",
+  "remote_hashes": {
+    "scripts/judge_spatial_symweighted_factorization.py": "a95e66da0ee527b1776ceb3d13d83760d1fd88cc9227ebea668a2b98ca1946cf",
+    "scripts/run_spatial_symweighted_gate_detached.ps1": "668681a7f29e2a228b8036be31472a0203d56edfd7f9de9a8753dc0449bc5a65"
+  },
+  "repo": "/tmp/spatial-symweighted-recovery-clone-fk0ep0b_/repo",
+  "root": "/tmp/spatial-symweighted-recovery-clone-fk0ep0b_",
+  "runtime": "Linux-6.6.122+-x86_64-with-glibc2.35",
+  "status": "PASS",
+  "target_sha": "2c009f607a6e0747f69effc0378b577b0f853ffb",
+  "utc_completed": "2026-08-01T09:56:40.250643+00:00",
+  "utc_started": "2026-08-01T09:47:22.036308+00:00"
+}

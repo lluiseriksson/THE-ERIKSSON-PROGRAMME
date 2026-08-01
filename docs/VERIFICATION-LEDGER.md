@@ -29804,3 +29804,46 @@ output hash against the complete `clone-a` witness.  It shares neither roots
 nor outputs with the interrupted session.  No Lean theorem is licensed until
 that second witness completes.  Both analytic sector bounds and the uniform
 target remain wholly open.
+
+## Addendum 581 (2026-08-01, **TASK 14: symWeighted factorisation gate certified**)
+
+**TWO FRESH INDEPENDENT COLAB WITNESSES.**  The complete `clone-a` witness from
+Addendum 580 and a new recovery clone used disjoint fresh roots and checked out
+the same immutable repository SHA
+`2c009f607a6e0747f69effc0378b577b0f853ffb`.  Before cloning, both campaigns
+verified judge SHA-256
+`a95e66da0ee527b1776ceb3d13d83760d1fd88cc9227ebea668a2b98ca1946cf`
+and harness SHA-256
+`668681a7f29e2a228b8036be31472a0203d56edfd7f9de9a8753dc0449bc5a65`
+from the remote raw objects.  Both used Colab CPU runtimes without GPU; the
+recovery certificate records Linux `6.6.122+`, Python `3.12.13`, two CPUs, and
+root `/tmp/spatial-symweighted-recovery-clone-fk0ep0b_`.
+
+The recovery clone normal mode ran as wrapper/child PIDs 1359/1360 from
+`09:47:22.037813Z` to `09:52:01.116962Z` (279.079100657 s).  Optimized mode ran
+as 2473/2474 from `09:52:01.118022Z` to `09:56:40.249788Z`
+(279.131740046 s).  All four recovery shell/persisted exit codes were zero.
+Each fresh log contained exactly one PASS JSON line, checked ring sizes 1
+through 6, counted 5460 configuration pairs, and rejected 5460 mutations in
+each of the scale, source-closing-bond, and target-closing-bond families.
+
+**HASH CONCORDANCE.**  Recovery normal and optimized agree with one another
+and with both complete `clone-a` modes: log SHA-256
+`a5bc995539a70b8e071cf71bd568d956248e978a1647621c96e4d415f2e322ba`,
+empty-stderr SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`,
+and exact one-line exitcode SHA-256
+`9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa`.
+The downloaded recovery certificate was independently parsed and hashed on
+Windows; its SHA-256 is
+`5264d05951c7dec8f2b43daa59fb1aa5b5b344a5efb0d17e38565e3d561df622`
+and it is retained as
+`CERT-20260801-SPATIAL-SYMWEIGHTED-RECOVERY-CLONE.json`.  The runtime was then
+explicitly disconnected and deleted; the UI changed to `Återanslut`, and the
+browser tab was closed.
+
+This CERTIFIED gate licenses exactly one exact entrywise `symWeighted`
+ring/dual factorisation theorem.  It is not a Lean certificate and does not
+prove either analytic sector inequality or the signed-front-door uniform
+`specRatio` bound.  Those two blocks and the final bound remain wholly open;
+no claim of analytic progress is made here.
