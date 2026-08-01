@@ -29734,3 +29734,39 @@ abstract, limitations, roadmap, section titles, conclusions.  Summaries are
 where claims get compressed, and compression is exactly where a hedge dies.
 This lane has now paid for that sentence five times, and the guards it owns read
 identifiers, never assertions, so no script will catch the sixth.
+
+## Addendum 577 (2026-08-01, **the sixth instance, predicted in Addendum 576 —
+and the sweep that was built to catch it was blinded by its own `cut`**)
+
+**NO LEAN CHANGED, NO NUMBER MOVED.**  Anchor `c3d8e32d`, core 8468, oracle 2817,
+zero `sorryAx`.  Manuscript only.
+
+**THE DEFECT.**  Limitations still read "It refutes an attribution", while the
+abstract and Section 4 had both been corrected in v3 to *contradicts on the
+tested grid* / *counterevidence*.  Eight cells at `L ≤ 12` with a three-term
+Aitken cannot refute an asymptotic claim.  Fixed; the two surviving uses of the
+word in the shipped PDF were audited and are correct --- the abstract's explicit
+disclaimer, and `coupled_rowSums_not_constant` genuinely refuting constancy.
+
+**TWO FAILURES OF PROCESS, and the second is the one worth keeping.**
+
+*First:* when *refute* was corrected in v3, no sweep was run --- the sweep rule
+did not exist yet.  When it was adopted in Addendum 575 it was applied only to
+the term being corrected at that moment.  **A sweep rule adopted after earlier
+corrections must be run RETROACTIVELY over every term and claim already
+corrected in the lane, not merely over the next one.**
+
+*Second, and it is the sharper lesson:* the retroactive sweep WAS run this
+round, it DID find the line, and the finding was destroyed by the command's own
+`... | tr '\n' ' ' | cut -c1-150`, which truncated grep's output mid-list.  The
+instrument built to catch the class was blinded in the same command that
+invoked it, and the defect was then found by extracting text from the shipped
+PDF instead.  **An audit whose output is truncated is not an audit; it is a
+sample.**  This is the same family as the paper-12 gate that could not fail a
+CI and the certifier that printed PASS after zero checks, and it belongs beside
+them: the failure was not in knowing what to check but in silently discarding
+the answer.
+
+**Practice added:** audit commands print in full, or write to a file that is
+then read in full; no `head`, no `cut`, no truncation on any command whose
+purpose is to establish that something is absent.
