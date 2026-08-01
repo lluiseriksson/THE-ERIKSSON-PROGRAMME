@@ -45,9 +45,11 @@ leaves \emph{one} Ising bond of coupling $\beta L$; for $\beta>0$ its ratio is
 $\tanh(\beta L)$. A weight concentrating on the ferromagnetic
 configurations therefore \emph{fuses} the $L$ sites into a single effective site
 carrying $L$ times the coupling. Since $\tanh(\beta L)\to 1$ for every fixed
-$\beta>0$, no bound on $r$ can be uniform in $L$: the obstruction to
-volume-uniformity is named, exactly, and it is a property of the congruence and
-not of any spectral estimate.
+$\beta>0$, there is no bound $r\le\rho<1$ holding \emph{simultaneously} in $L$
+and over the whole positive-diagonal congruence orbit --- which is not the same
+as ruling one out for a particular physical family of weights. The obstruction
+to volume-uniformity is named, exactly, and it is a property of the congruence
+and not of any spectral estimate.
 Consequently an argument that bounds $r$ using only congruence invariants ---
 rank, inertia, definiteness --- cannot produce an $L$-uniform bound at all.
 We then ask which congruence is extremal. For \emph{uniform} concentrations the
@@ -199,8 +201,17 @@ paper omitted the hypothesis, and the formalisation did not catch it --- the
 Lean lemma proves the \emph{algebraic identity} $2\sinh a/2\cosh a=\tanh a$,
 which holds for every real $a$, while the English sentence read that identity as
 a statement about moduli, which it is not unless $a\ge0$. A true machine-checked
-lemma can sit underneath a false sentence. Everything below uses $a=\beta L$
-with $\beta>0$, so the hypothesis costs nothing here.
+lemma can sit underneath a false sentence. Every subsequent
+\emph{spectral-ratio} consequence uses $a=\beta L$ with $\beta\ge0$; the block
+\emph{identity} immediately below is unconditional in $\beta$.
+
+That sentence is worth reading twice. In an earlier version it said ``everything
+below uses $\beta>0$, so the hypothesis costs nothing here'' --- and the theorem
+on the next line was then stated for all $\beta\in\R$. The remark documenting a
+failure to propagate a hypothesis had itself failed to propagate it. The fix is
+not to phrase the promise better but to make the two statements structurally
+different, which is what Theorem~\ref{thm:fusion} and
+Corollary~\ref{cor:fusionratio} now are.
 \end{remark}
 
 \begin{theorem}[Fusion identity]\label{thm:fusion}
@@ -243,10 +254,14 @@ $e^{-\beta L}$. Compare with $B(\beta L)$ and apply Lemma~\ref{lem:bond}.
 \end{proof}
 
 Theorem~\ref{thm:fusion} is the mechanism this paper is about, and it is worth
-stating in words. A weight that concentrates on a set $S$ of configurations does
-not \emph{perturb} the kernel --- it \emph{restricts} it to $S$. When $S$ is the
-antipodal pair, the restriction is a single bond whose coupling is $L$ times the
-original. \textbf{The weight fuses the $L$ sites into one effective site.}
+stating in words --- carefully, because the natural phrasing overstates. In the
+singular concentration limit a weight supported on a set $S$ \emph{restricts} the
+kernel to $S$; at every strictly positive $\varepsilon$ the principal block on
+$S$ is already preserved \emph{exactly}, and it is the rest of the matrix that
+shrinks (Proposition~\ref{prop:orbit}). So the weight does not perturb the block
+and then correct it; the block is there from the start. When $S$ is the antipodal
+pair that block is a single bond whose coupling is $L$ times the original.
+\textbf{The weight fuses the $L$ sites into one effective site.}
 
 \section{Why that is a wall}
 
@@ -652,10 +667,13 @@ first of those; the phrasing here is now licensed by \S6.
 explicitly connect the Birkhoff--Hopf circle to \emph{DAD theorems}, and there is
 a literature on $A\mapsto D_1AD_2$ --- matrix balancing, Sinkhorn normal form,
 van der Sluis's optimal scaling \cite{vandersluis1969}, surveyed in
-\cite{idel2016}. What we could see of it concerns existence, uniqueness and
-regularity of scalings that normalise row and column sums, not maximising a
-spectral ratio over the orbit; but we have not read it carefully enough to say
-so as a finding.
+\cite{idel2016}. The survey's stated scope is the \emph{normalisation} problem:
+existence and uniqueness of scalings making $D_1AD_2$ doubly stochastic, and the
+generalisation to positive maps. We found no treatment of spectral-ratio
+optimisation over a congruence orbit in the parts we were able to read.
+\textbf{That is a partial reading, not a completed audit}, and we record it at
+that strength: it is evidence that the branch is aimed elsewhere, not evidence
+that it lacks the present statement.
 \emph{(ii) The exact source of Fact~\ref{fact:birkhoff}.} Besides
 \cite{birkhoff1957,evesonnussbaum1995}, the priority list for that hunt is
 Bushell's projective contraction ratio \cite{bushell1973} and the
@@ -735,7 +753,9 @@ listed in \S8.
 One further caveat of provenance. The bibliographic data for
 \cite{birkhoff1957,evesonnussbaum1995,seneta2006} were checked against the
 publishers' records, but the internal numbering of the results inside those
-sources was not. Fact~\ref{fact:birkhoff} is therefore attributed to the works
+sources was not, and \emph{two further attempts to pin it failed}: neither the
+publicly accessible material for \cite{evesonnussbaum1995} nor the secondary
+literature we could reach states the spectral corollary with a locatable number. Fact~\ref{fact:birkhoff} is therefore attributed to the works
 rather than to a numbered statement in them.
 \textbf{Pinning that numbered statement is a prerequisite for journal
 submission}, not an optional polish: Fact~\ref{fact:birkhoff} is the single
