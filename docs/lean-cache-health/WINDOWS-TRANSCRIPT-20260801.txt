@@ -104,3 +104,64 @@ FINAL_REMOTE_RECHECK
 main=d6ea8d8d962bc6bd52d637799f9d28bdbd6aaba8
 pr39=5172a51b0fad455d9009b1805a48b8be54acbbcc
 live_pr43=95d8a881c545b081913dce003cd1385e857473b4
+
+TOKEN_HEAVY_LOCAL_20260801_1039
+acquired_local=2026-08-01T10:39:45.0167462+02:00
+released_local=2026-08-01T10:44:16.3721981+02:00
+host=LLUISPC
+controller_precheck_pid=16048
+controller_campaign_pid=4448
+target=win-fresh-pr39 isolated bootstrap
+start_free_ram_gib=3.50
+start_c_free_gib=91.03
+end_free_ram_gib=3.85
+end_c_free_gib=91.05
+colab_session=none active; notebook 1CQhdGcCSLMgF4Sou98kOcNjRtvYYUw3I retained for handoff only
+result=INVALID LAUNCHER; no reproducibility claim
+launcher_defect=PowerShell parameter Args collided with automatic variable; child commands received no arguments
+observed_effect=lake and pwsh printed help or an interactive prompt with exit 0
+fresh_clone_lake_present_after=false
+fresh_clone_manifest_sha_before=e2f2d45a5fef5ae352e6f8be858726d603d83fde30d740a14a8a2a588579381d
+fresh_clone_manifest_sha_after=e2f2d45a5fef5ae352e6f8be858726d603d83fde30d740a14a8a2a588579381d
+fresh_clone_git_status_count=0
+invalid_log_root=C:\Users\lluis\AppData\Local\Temp\eriksson-lean-health-logs-20260801-104213
+token_state_after=FREE; no corrected campaign started without reassignment
+
+HRPOLY_MISSING_PROJECT_OLEAN_20260801_1039
+reported_command=lake env lean YangMills/RG/BalabanCMP116Eq80Lemma1CombinedKernelSupport.lean with explicit outputs
+reported_elapsed_seconds=158.8
+reported_exit=1
+reported_error=missing .lake/build/lib/lean/YangMills/RG/BalabanCMP116RestrictedVisitedTransferPowers.olean
+dependency_source_present=true
+dependency_olean_present=false
+dependency_ilean_present=false
+dependency_olean_hash_present=true
+dependency_ilean_hash_present=true
+dependency_trace_present=true
+dependency_source_last_write=2026-07-24T09:14:00+02:00
+dependency_trace_last_write=2026-07-30T21:14:20+02:00
+dependency_audit_olean_present=true
+dependency_audit_olean_last_write=2026-08-01T05:59:21+02:00
+manifest_package_count=9
+manifest_mathlib_pin=07642720480157414db592fa85b626dafb71355b
+manifest_batteries_pin=87f6314ff2cc922489cd73cd0fbc2252f39aa153
+batteries_head=87f6314ff2cc922489cd73cd0fbc2252f39aa153
+batteries_git_dir=ordinary
+batteries_reparse=false
+batteries_shallow=false
+batteries_alternates=false
+batteries_locks=0
+batteries_origin=https://github.com/leanprover-community/batteries
+batteries_tracked_status_count=0
+trace_absolute_path_provenance=mixed: THE-ERIKSSON-PROGRAMME-hrpoly package roots plus lean-2d-yang-mills mathlib, while output root is THE-ERIKSSON-PROGRAMME-wilson-hessian
+immediate_classification=project dependency not materialized in the current build tree
+underlying_classification=incomplete or relocated .lake/build provenance; exact deletion/copy mechanism open
+excluded_by_evidence=bad manifest pin; missing package; unresolved Batteries HEAD
+not_established=causal link to the historical junction/cache incident
+required_order=build BalabanCMP116RestrictedVisitedTransferPowers; retry CombinedKernelSupport; only then build CombinedHessianSupport and its Audit
+source_vs_verified=CombinedHessianSupport sources are present and scan-clean but are not compiler-verified
+
+REMOTE_REFS_RECHECK_20260801_1039
+main=f0558a5b60458f92b35463b09bbb5bb8458d8538
+pr39=5172a51b0fad455d9009b1805a48b8be54acbbcc
+live_pr43=95d8a881c545b081913dce003cd1385e857473b4
