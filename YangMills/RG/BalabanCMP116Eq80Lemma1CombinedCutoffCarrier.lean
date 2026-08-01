@@ -8,26 +8,29 @@ import YangMills.RG.BalabanCMP109Lemma1Eq136SourceCertificate
 import YangMills.RG.BalabanCMP116Eq222CutoffSupNormTransport
 
 /-!
-# The attempted common cutoff carrier and its obstruction
+# The retracted all-interior cutoff carrier and its obstruction
 
-The direct equation-(80) residual is localized to its source domains, while
-the native CMP109 Lemma-1 residual contains the global correction `D(B)`.
-Consequently the terminal cutoff carrier cannot be reduced to a native
-domain bond support.  The honest common choice is the complete bilateral
-interior-bond carrier of the combined centered region.
+An earlier attempted producer used the complete bilateral interior-bond
+carrier of the combined centered region as one common small-field carrier.
+That inference was too strong.  The primary statement (1.34) supplies a
+per-domain analytic/locality obligation even though the reconstructed literal
+residual contains the global correction `D(B)`; it does not identify the
+small-field carrier with every bond of the later centered region `Z0`.
 
-This file proves two facts needed by the combined equation-(1.36) producer:
+This file retains the exact diagnostics for that retracted construction:
 
 * a nonzero small-field cutoff remains nonzero on every subcarrier;
-* the direct equation-(80) source carrier is contained in the common
-  interior-bond carrier.
+* the direct equation-(80) source carrier is contained in the attempted
+  all-interior carrier.
 
 The formal transport lemmas below explain what a nonzero common cutoff would
 control.  They do **not** prove that this support is inhabited.  In fact the
 terminal no-go theorem records the decisive obstruction: the localization
 core makes every selected large-field bond in `P` interior, so using all
 interior bonds as the small-field carrier makes the signed cutoff identically
-zero whenever `P` is nonempty.
+zero whenever `P` is nonempty.  The replacement source carrier is constructed
+separately from the equation-(2.14) exterior carrier; this file must not be
+used to inhabit a combined equation-(1.36) endpoint.
 -/
 
 namespace YangMills.RG
@@ -257,9 +260,10 @@ theorem norm_cmp116SourcePhysicalCoordinateCochain_lt_of_combinedInteriorCutoff
   exact norm_lt_of_cmp116SmallFieldCutoff_ne_zero
     _ threshold (cmp116SourcePhysicalCoordinateCochain b) hsmall hbond
 
-/-- Conditional transport to the native CMP109 small-field predicate.  It is
-formally useful for diagnosing the attempted construction, but its cutoff
-premise is uninhabited for nonempty `P`. -/
+/-- Conditional transport to the native CMP109 small-field predicate.  The
+extra inclusion states explicitly that the individual native carrier lies in
+the attempted all-interior carrier.  This implication remains diagnostic:
+its cutoff premise is uninhabited for nonempty `P`. -/
 theorem cmp109Lemma1SourceSmallField_combinedInteriorProjection_of_cutoff
     {Index : Type*} {M Q Nc : ℕ}
     [NeZero M] [NeZero Q] [NeZero (2 * Q)]
@@ -279,22 +283,37 @@ theorem cmp109Lemma1SourceSmallField_combinedInteriorProjection_of_cutoff
             (epsilon1 / gk) (cmp116SourcePhysicalCoordinateCochain b) *
           cmp116LargeFieldCutoff P (epsilon1 / gk)
             (cmp116SourcePhysicalCoordinateCochain b) ≠ 0)
-    (Y : CMP116LocalizationDomain 2 (M * (2 * Q))) :
+    (Y : CMP116LocalizationDomain 2 (M * (2 * Q)))
+    (hY : cmp109Lemma1SourceBondSupport Y ⊆
+      PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds
+        (cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P)) :
     cmp109Lemma1SourceSmallField epsilon1 gk Y
       (physicalBondProjection
         (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds
           (cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P))
         (cmp116SourcePhysicalCoordinateCochain b)) := by
   unfold cmp109Lemma1SourceSmallField
+  have hprojection :
+      physicalBondProjection (cmp109Lemma1SourceBondSupport Y)
+          (physicalBondProjection
+            (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds
+              (cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P))
+            (cmp116SourcePhysicalCoordinateCochain b)) =
+        physicalBondProjection (cmp109Lemma1SourceBondSupport Y)
+          (cmp116SourcePhysicalCoordinateCochain b) := by
+    have hcomp := congrArg
+      (fun T => T (cmp116SourcePhysicalCoordinateCochain b))
+      (physicalBondProjection_comp_of_subset_right (Nc := Nc) hY)
+    simpa using hcomp
+  rw [hprojection]
   exact
     cmp98SourceFieldSupNorm_physicalBondProjection_le_threshold_of_cutoffFactor_ne_zero
       (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds
         (cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P))
       P
-      (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds
-        (cmp116Eq80Lemma1CombinedCenteredRegion anchor D E P))
+      (cmp109Lemma1SourceBondSupport Y)
       (epsilon1 / gk) b
-      (div_nonneg hepsilon1 (le_of_lt hgk)) (fun _ h => h) hcutoff
+      (div_nonneg hepsilon1 (le_of_lt hgk)) hY hcutoff
 
 end
 

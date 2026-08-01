@@ -26233,3 +26233,43 @@ seventh substantive field.  A full clean-root replay of that commit was
 stopped once the obstruction was identified.  The seventh-field counter
 returns to open, and no `CMP116Eq226CenteredConditionedPhysicalTermSource`
 instance has been constructed.
+
+## Addendum 523 (2026-08-01, **source-local Lemma-1 small-field carrier and nonvacuous combined cutoff GREEN**)
+
+Visual reinspection of the primary CMP116 PDF, page 9, corrects the domain of
+equations (1.34)--(1.36).  The printed condition is local, `|B| < epsilon1 *
+gk^{-1} on Y`, and the accompanying text says that the localized function
+depends on `B` restricted to the interior of the individual domain `Y`.  The
+previous ambient-sup-norm predicate was therefore stronger than the printed
+source condition.
+
+`cmp109Lemma1SourceBondSupport Y` now selects exactly the physical fluctuation
+bonds whose two endpoint sites lie in `Y.blocks`, on the same lattice as the
+Lemma-1 fluctuation field.  The certificate predicate
+`cmp109Lemma1SourceSmallField` is the source sup norm after projection to this
+bilateral per-domain carrier.  The audit also records its exact membership
+theorem and the unchanged strictly-positive, nonempty certificate contract.
+
+The new module `BalabanCMP116Eq80Lemma1SourceSmallFieldCarrier` keeps the later
+centered region `Z0` separate from the small-field carrier.  It constructs the
+common direct/native small-field carrier from the exact equation-(2.14)
+exterior carrier, proves containment of every direct and native per-domain
+support, and proves disjointness from every source-admissible large-field set
+`P`.  An explicit piecewise real field is zero on the small carrier and equal
+to the positive threshold on `P`; its signed cutoff is proved nonzero.  Thus
+the overlap vacuity formalized in Addendum 522 is removed without reusing the
+all-interior carrier.
+
+Finally, `cmp109Lemma1SourceSmallField_of_combinedSourceCutoff` transports
+nonvanishing of this corrected combined cutoff to the exact per-domain
+small-field premise consumed by the named Lemma-1 certificate.  This is a
+nonvacuity and carrier checkpoint only: it does not prove the analytic
+equation-(1.36) field, construct the nonlinear correction `D(B)`, or inhabit a
+complete centered-conditioned `TermSource`.
+
+The clean Colab Pro+ high-RAM focal was pinned to
+`leanprover/lean4:v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`.  Its terminal line was
+`Build completed successfully (8773 jobs).`  Direct audit execution reports
+exactly `[propext, Classical.choice, Quot.sound]` for every new endpoint.

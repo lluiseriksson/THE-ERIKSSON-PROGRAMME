@@ -17,6 +17,17 @@ strictly positive `E0`, contains the zero field, and assumes equation (1.36)
 only on the printed small-field region.  Thus neither the zero-amplitude nor
 the empty-domain witness can inhabit the certificate.
 
+The printed region has been checked visually against page 9 of the primary
+CMP116 PDF, equations (1.34)--(1.36).  It says
+`|B| < epsilon1 * gk^{-1} on Y` and immediately states that the localized
+function depends on `B` restricted to the interior of `Y`.  The earlier Lean
+predicate using the ambient sup norm was therefore too strong.  The corrected
+predicate takes the source sup norm only after projecting to the bilateral
+fluctuation bonds whose two endpoint sites lie in the native carrier
+`Y.blocks`.  Using `Y.bondSupport` would be type-incorrect: that support lies
+on the additional order-two refined lattice, whereas the fluctuation field
+is indexed on the same site lattice as `Y.blocks`.
+
 ## Machine-checked endpoints
 
 - `cmp109Lemma1NativeDomainFamily` and
@@ -53,15 +64,18 @@ Lemma-1 indices.  It does **not** prove:
 
 - the analytic equation-(1.36) bound stored in
   `CMP109Lemma1Eq136SourceCertificate.bound`;
+- the source theorem that the reconstructed residual containing the global
+  nonlinear correction `D(B)` satisfies that per-domain analytic contract;
 - `domain_subset` for the final contour carrier;
 - `volume_budget` or the joint scalar smallness regime;
 - construction of a complete `CMP116Eq226...TermSource`.
 
-The next vertical step is to append these native indices to the direct
-equation-(80) indices in the terminal domain ledger, prove the corresponding
-support containment, and consume the explicit root bound in the volume
-budget.  The sector Lemma-1 analytic estimate remains the principal source
-obligation.
+The native and direct indices have since been appended in the terminal domain
+ledger.  The next cutoff step must keep the source small-field carrier
+separate from the centered region `Z0`: it is derived from the combined
+domain family exactly as in equations (2.3)/(2.14), while the admissible
+large-field set `P` lies in the disjoint exterior carrier.  The sector
+Lemma-1 analytic estimate remains the principal source obligation.
 
 ## Verification
 

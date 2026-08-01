@@ -1340,6 +1340,16 @@ native connectivity + degree 8 + exact M^4 root preimage
 + equation (2.30) + two explicit 64q < 1 animal windows.
 ```
 
+Visual reinspection of the primary CMP116 page 9 corrects the small-field
+dictionary: (1.34) says `|B| < epsilon1 * gk^{-1} on Y` and states that the
+localized function depends on `B` restricted to the interior of `Y`.  The
+certificate therefore projects the fluctuation field to the bilateral bonds
+whose two endpoint sites lie in `Y.blocks`; it no longer imposes the ambient
+sup norm.  The later centered region `Z0` is a separate object and may contain
+the selected large-field bonds `P`.  It must not be reused as the small-field
+cutoff carrier: doing so makes the signed cutoff identically zero for
+nonempty `P`, as recorded by the formal no-go theorem.
+
 Thus the combinatorial `rooted_residual` field is discharged for this sector;
 the analytic Lemma-1 bound, final `domain_subset`, `volume_budget`, and the
 complete terminal constructor remain open.  The detailed field-by-field audit
