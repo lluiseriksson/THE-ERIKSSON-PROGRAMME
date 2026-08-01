@@ -178,6 +178,7 @@ noncomputable def total
     (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :=
   cmp116CenteredConditionedCombinedEq80PartialTotal
+    (nDelta := nDelta)
     X.base.spectatorSupport X.base.fluctuationSupport anchor domains E V
     X.contourCarrier X.contourEquiv X.K (by exact X.coercivity_pos)
     (by exact X.mass_pos) (by exact X.K_coercive) baseCoarseCovariance
@@ -188,6 +189,7 @@ noncomputable def residual
     (X : CMP116CenteredConditionedCombinedSourceData Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :=
   cmp116CenteredConditionedCombinedEq80PartialResidual
+    (nDelta := nDelta)
     X.base.spectatorSupport X.base.fluctuationSupport anchor domains E V
     X.contourCarrier X.contourEquiv X.K (by exact X.coercivity_pos)
     (by exact X.mass_pos) (by exact X.K_coercive) baseCoarseCovariance
