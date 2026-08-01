@@ -397,8 +397,11 @@ $\varphi(A)=\min_{i,j,k,l} A_{ik}A_{jl}/(A_{jk}A_{il})$,
 For our $M$ the cross-ratios come in reciprocal pairs, so
 $\varphi(M)=1/e^{\Delta(M)}=\mu^{2}$ and the right-hand side is
 $(1-\mu)/(1+\mu)$ directly. The two closed forms agree, which is a useful check:
-the value of Theorem~\ref{thm:lcp} can be read off the minimum cross-ratio with
-no transcendental function anywhere.
+the \emph{upper-bound constant} of Theorem~\ref{thm:lcp} can be read off the
+minimum cross-ratio with no transcendental function anywhere. It is a second
+derivation of the Birkhoff \emph{coefficient}, not a second proof of the
+theorem --- the equality of the supremum still needs the lower bound, hence the
+concentration and the spectral continuity.
 \end{remark}
 
 \begin{lemma}[$\Delta$ is a congruence invariant]\label{lem:deltainv}
@@ -416,8 +419,12 @@ $d_id_jd_kd_l$, which cancels.
 \end{proof}
 
 \begin{lemma}[The diameter of a unit-diagonal kernel]\label{lem:deltaval}
-Let $M$ be symmetric with $M_{ii}=1$ and $\mu\le M_{ij}\le 1$ for all $i,j$,
-where $\mu>0$. Then $\Delta(M)=2\log(1/\mu)$ exactly.
+Let $M$ be a symmetric $n\times n$ matrix with $n\ge2$, $M_{ii}=1$,
+$M_{ij}\le 1$, and
+\[
+  \mu \;:=\; \min_{i\neq j} M_{ij} \;>\;0 .
+\]
+Then $\Delta(M)=2\log(1/\mu)$ exactly.
 \end{lemma}
 
 \begin{proof}
@@ -425,6 +432,20 @@ Every cross-ratio is at most $1\cdot 1/(\mu\cdot\mu)=1/\mu^2$. Taking $i=k$ and
 $j=l$ on a pair attaining the minimum gives
 $M_{ii}M_{jj}/(M_{ji}M_{ij})=1/\mu^2$, so the maximum is attained.
 \end{proof}
+
+\begin{remark}[$\mu$ must be the attained minimum]\label{rem:attmin}
+An earlier version stated this lemma with $\mu$ merely a \emph{lower bound},
+$\mu\le M_{ij}\le1$. That is false: $M=J_n$ with $\mu=\tfrac12$ satisfies every
+such hypothesis, yet all cross-ratios equal $1$, so $\Delta(J_n)=0$ while
+$2\log(1/\mu)=2\log 2>0$. The proof always used attainment; only the statement
+did not.
+
+The Lean module had it right and the prose did not, which is worth recording
+rather than quietly repairing. There, \verb|crossRatio_le_of_bounds| assumes only
+$\mu\le M_{ab}$ and concludes an \emph{inequality}, while
+\verb|crossRatio_attained| takes $M_{ij}=\mu$ as an explicit hypothesis. The two
+halves were kept apart in the kernel and merged in the English.
+\end{remark}
 
 \begin{theorem}[Least-correlated pair]\label{thm:lcp}
 Let $M$ be a symmetric $n\times n$ matrix with $n\ge2$, $M_{ii}=1$ and
@@ -601,6 +622,16 @@ pinned, and that the pair of facts identifies which quantities an argument may
 and may not use. An earlier version of this paper could only conjecture the
 first of those; the phrasing here is now licensed by \S6.
 
+\paragraph{A branch we have not yet audited.} Eveson and Nussbaum
+\cite{evesonnussbaum1995} explicitly connect the Birkhoff--Hopf circle of ideas
+to \emph{DAD theorems}, and there is a literature on diagonal scaling
+$A\mapsto D_1AD_2$ --- matrix balancing, Sinkhorn normal form, van der Sluis's
+optimal-scaling results \cite{vandersluis1969}. We have not read that branch
+carefully enough to say what it does or does not contain about the present
+question. It is close enough to a $DMD$ orbit that we name it as an outstanding
+prior-art obligation rather than leave it unmentioned; any strengthening of the
+novelty claim below must go through it first.
+
 \paragraph{Formalisation.} We are not aware of a mechanised treatment of
 congruence orbits of transfer kernels. This is an absence of found prior art in
 the searches we ran, not a claim of priority.
@@ -676,8 +707,10 @@ sources was not. Fact~\ref{fact:birkhoff} is therefore attributed to the works
 rather than to a numbered statement in them.
 \textbf{Pinning that numbered statement is a prerequisite for journal
 submission}, not an optional polish: Fact~\ref{fact:birkhoff} is the single
-load-bearing import of Theorem~\ref{thm:lcp}, and a reader must be able to go to
-one line of one source and check it. Remark~\ref{rem:phiform} reduces the
+\emph{non-elementary} load-bearing import in the \emph{upper bound} of
+Theorem~\ref{thm:lcp} --- the lower bound imports finite-dimensional spectral
+continuity as well --- and a reader must be able to go to one line of one source
+and check it. Remark~\ref{rem:phiform} reduces the
 exposure somewhat by giving a second closed form that reproduces the same value,
 but it does not remove it.
 
@@ -728,8 +761,8 @@ theorems above depends on it.
   Proc.\ Nat.\ Acad.\ Sci.\ U.S.A.\ \textbf{46} (1960), no.~6, 859--862.
 
 \bibitem{seneta2006} E.~Seneta,
-  \emph{Non-negative Matrices and Markov Chains}, rev.\ ed.,
-  Springer Series in Statistics, Springer, 2006.
+  \emph{Non-negative Matrices and Markov Chains}, 2nd ed., 1981;
+  revised paperback printing, Springer Series in Statistics, Springer, 2006.
   (Birkhoff's contraction coefficient, \S3.1--3.2.)
 
 \bibitem{hornjohnson} R.~A.~Horn and C.~R.~Johnson,
