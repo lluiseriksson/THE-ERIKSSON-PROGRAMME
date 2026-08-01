@@ -29768,3 +29768,39 @@ this campaign continue to use the latest measured baseline in the live ledger:
 8465 is today's observed baseline, not a permanent constant and not a value to
 copy forward from `CLAUDE.md`.  Both analytic sector bounds and the uniform
 signed-front-door target remain wholly open.
+
+## Addendum 580 (2026-08-01, **TASK 14: first two-clone Colab run interrupted**)
+
+**REMOTE OBJECT FIXED BEFORE CLONING.**  Colab verified repository SHA
+`2c009f607a6e0747f69effc0378b577b0f853ffb`, judge SHA-256
+`a95e66da0ee527b1776ceb3d13d83760d1fd88cc9227ebea668a2b98ca1946cf`,
+and harness SHA-256
+`668681a7f29e2a228b8036be31472a0203d56edfd7f9de9a8753dc0449bc5a65`
+before creating either clone.  No GPU, Lean, or second campaign was requested.
+
+**ONE COMPLETE INDEPENDENT WITNESS.**  `clone-a` normal ran as wrapper/child
+PIDs 2166/2167 for 275.045140011 s; optimized used 3264/3265 for
+269.472493344 s.  All four shell/persisted exit codes were zero.  Both fresh
+one-line JSON logs report PASS and all four counters at 5460.  Normal and
+optimized hashes agree: log
+`a5bc995539a70b8e071cf71bd568d956248e978a1647621c96e4d415f2e322ba`,
+empty stderr
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`,
+and exitcode
+`9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa`.
+
+`clone-b` was fresh, independent, and checked out the same SHA.  Its normal
+mode passed with PIDs 4400/4401 in 268.112386983 s, exits zero, counters 5460,
+and the same hashes.  Immediately afterwards the cell ceased running and the
+UI no longer displayed a connected runtime.  No rejection message, traceback,
+or FAIL line was shown; no cause is inferred.  `clone-b` optimized and the
+final certificate were never produced.  The tab was closed during local
+preparation.  This campaign is therefore incomplete, not a gate PASS; details
+are retained in `INC-SPATIAL-SYMWEIGHTED-GATE-005.md`.
+
+**RECOVERY PREREGISTERED.**  A separate recovery notebook will create another
+fresh Colab clone at the same SHA, run both modes, and compare every semantic
+output hash against the complete `clone-a` witness.  It shares neither roots
+nor outputs with the interrupted session.  No Lean theorem is licensed until
+that second witness completes.  Both analytic sector bounds and the uniform
+target remain wholly open.
