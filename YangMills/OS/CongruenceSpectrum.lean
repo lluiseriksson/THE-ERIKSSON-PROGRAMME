@@ -313,6 +313,83 @@ theorem fused_nondegenerate {a : ℝ} (ha : 0 < a) :
   have := Real.sinh_pos_iff.mpr ha
   linarith
 
+/-! ## §6  Why the extremal congruence is a PAIR
+
+Concentrating the weight uniformly on `m` sites of mutual correlation `μ` leaves
+the exchangeable matrix `μ J + (1 - μ) I`.  Its spectrum is exactly two points —
+`1 + (m-1)μ` on the constant vector, `1 - μ` on everything summing to zero — so
+the ratio it reaches is `(1-μ) / (1 + (m-1)μ)`.
+
+That ratio is **strictly decreasing in `m`**: the more sites the weight keeps,
+the *smaller* the ratio it can reach.  Among uniform concentrations the best is
+therefore the smallest nondegenerate one, a **pair** — which is exactly the
+antipodal pair of §3 when the kernel is the hypercube one.
+
+This is the provable core of an extremality that is otherwise only conjectural:
+it settles the uniform-concentration family, and it says why the answer is a
+pair rather than a larger cluster. It does **not** settle arbitrary weights. -/
+
+/-- The exchangeable correlation matrix on `m` sites: `1` on the diagonal, `μ`
+off it. -/
+noncomputable def exch (m : ℕ) (μ : ℝ) : Matrix (Fin m) (Fin m) ℝ :=
+  fun i j => if i = j then 1 else μ
+
+/-- **Top eigenvector.**  The constant vector, with eigenvalue `1 + (m-1)μ`. -/
+theorem exch_mulVec_const (m : ℕ) (μ : ℝ) :
+    (exch m μ).mulVec (fun _ => (1 : ℝ)) = fun _ => 1 + ((m : ℝ) - 1) * μ := by
+  funext i
+  simp only [exch, Matrix.mulVec, dotProduct, mul_one]
+  have hsplit : ∀ j : Fin m,
+      (if i = j then (1 : ℝ) else μ) = μ + (if i = j then 1 - μ else 0) := by
+    intro j; by_cases h : i = j <;> simp [h]
+  rw [Finset.sum_congr rfl fun j _ => hsplit j, Finset.sum_add_distrib,
+    Finset.sum_const, Finset.sum_ite_eq]
+  simp
+  ring
+
+/-- **The rest of the spectrum.**  Everything summing to zero is an eigenvector
+with eigenvalue `1 - μ`, so the spectrum really is only two points. -/
+theorem exch_mulVec_of_sum_zero {m : ℕ} (μ : ℝ) {x : Fin m → ℝ}
+    (hx : ∑ i, x i = 0) :
+    (exch m μ).mulVec x = fun i => (1 - μ) * x i := by
+  funext i
+  simp only [exch, Matrix.mulVec, dotProduct]
+  have hsplit : ∀ j : Fin m, (if i = j then (1 : ℝ) else μ) * x j
+      = μ * x j + (if i = j then (1 - μ) * x i else 0) := by
+    intro j
+    by_cases h : i = j
+    · subst h; simp; ring
+    · simp [h]
+  rw [Finset.sum_congr rfl fun j _ => hsplit j, Finset.sum_add_distrib,
+    ← Finset.mul_sum, hx, Finset.sum_ite_eq]
+  simp
+
+/-- **Pairs beat clusters.**  `(1-μ)/(1 + kμ)` is strictly decreasing in `k`, so
+the exchangeable ratio falls as the concentration keeps more sites.  With
+`k = m - 1` this says the best uniform concentration is the smallest one. -/
+theorem exch_ratio_strict_anti {μ : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1)
+    {k k' : ℝ} (hk : 0 ≤ k) (hlt : k < k') :
+    (1 - μ) / (1 + k' * μ) < (1 - μ) / (1 + k * μ) := by
+  have h1 : 0 < 1 + k * μ := by nlinarith
+  have h2 : 0 < 1 + k' * μ := by nlinarith
+  have hnum : 0 < 1 - μ := by linarith
+  have key : (1 - μ) / (1 + k * μ) - (1 - μ) / (1 + k' * μ)
+      = (1 - μ) * ((k' - k) * μ) / ((1 + k * μ) * (1 + k' * μ)) := by
+    field_simp
+    ring
+  have hpos : 0 < (1 - μ) * ((k' - k) * μ) / ((1 + k * μ) * (1 + k' * μ)) :=
+    div_pos (by nlinarith) (mul_pos h1 h2)
+  have hdiff : 0 < (1 - μ) / (1 + k * μ) - (1 - μ) / (1 + k' * μ) := by
+    rw [key]; exact hpos
+  linarith
+
+/-- The pair value is the one §3 already computed: at `m = 2` the exchangeable
+ratio is `(1-μ)/(1+μ)`, and on the hypercube kernel `μ = e^{-2βL}` at the
+antipodal pair turns that into `tanh (βL)`. -/
+theorem exch_ratio_pair (μ : ℝ) :
+    (1 - μ) / (1 + ((2 : ℝ) - 1) * μ) = (1 - μ) / (1 + μ) := by
+  norm_num
+
 end Congruence
 
 end YangMills.OS
