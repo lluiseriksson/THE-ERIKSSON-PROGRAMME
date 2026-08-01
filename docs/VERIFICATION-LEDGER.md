@@ -29546,3 +29546,58 @@ baseline/control-plane witness, not repaired by touching concurrent manifests
 and not relabelled as a PASS.  Foreign Windows Lean processes remain active,
 so the critical target has not been reproduced locally.  Both analytic sector
 bounds and the uniform spatial-ring inequality remain wholly unproved.
+
+## Addendum 574 (2026-08-01, **TASK 14: exact periodic ring-weight exponential**)
+
+**EXACT, INCLUDING THE CLOSING BOND.**  The new definition `ringBondSum` is the
+signed nearest-neighbour energy on `Fin (L + 1)`, so its final summand wraps to
+the first site.  The theorem `spatialWeightRing_eq_exp_ringBondSum` proves
+exactly
+`spatialWeightRing gamma sigma = exp(gamma * ringBondSum sigma)`.
+This algebraic equality holds for every real `gamma`; that generality does not
+relax the active hypothesis `0 <= gamma` in the spatial spectral target.  The
+theorem does not rewrite the square root of the weight, identify a Clifford
+operator, or prove a norm or spectral estimate.
+
+**VERIFIED GATE, WITH THE RING TRAP ACTIVE.**
+`scripts/judge_spatial_ring_exponential.py` was committed before the theorem.
+Its SHA-256 is
+`16cc35d05e39ca334212da25fac8100d5914adade7a05d735659048366ecace6`.
+Both normal Python and `python -O` returned PASS after exhaustively checking all
+510 configurations of ring sizes 1 through 8.  The gate also rejected 510
+registered mutations that omit the closing bond.  The downloaded gate-only
+artifact independently hashes on Windows to
+`7a6da11c70a2ffa55308c1d864351b672dff22e7344acc17397148d01519d318`.
+This licenses one exponential identity only, not a comparison that spends the
+closing-bond factor.
+
+**CERTIFIED IN COLAB.**  The fail-closed high-RAM runner checked out exactly
+`566e65f5f99bc1d35984322d7e9e4f565e769060`, verified Lean
+`v4.29.0-rc6` commit `00659f8e6071d7e46131ed643bf8003b99b044e9`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, Linux `6.6.122+`, 8 Intel Xeon
+logical CPUs, `53467192 kB` RAM, Python `3.12.13`, and no GPU.  The official
+Mathlib cache was used only in that isolated ephemeral runtime.
+
+`lake build YangMills.OS.SpatialDualBond`, `lake build YangMillsCore`, the root
+`oracle_check.lean`, and `scripts/check_consistency.py` all returned exit 0.
+The module build measured 8172 jobs and core remained MEASURED at 8466 jobs,
+as expected for two declarations added inside an already counted module.  All
+six module declarations report exactly
+`{propext, Classical.choice, Quot.sound}`.  There is no `sorryAx`; consistency
+reports zero source `sorry` and zero project axioms.
+
+**ARTIFACT INTEGRITY, VERIFIED ON WINDOWS.**  The ZIP SHA-256 is
+`dfcb2f1263d8bb1de8ff153177888e109d0005442d0d56df6defc9f669488814`.
+Its internal hashes match `SHA256SUMS`: metadata
+`2c16b7154cc3ad95fe5808bdbc2df767f2eec9dc55e6afc31818559d9bb268af`, oracle
+`5afc1267252bfcfe0cb249a4a9164243912384a6fae30428770a8c9734f7955d`, and
+transcript `d996f02ebe1debf7b2372b06c65c379388242c631e9c457d8f9fff7e4696c958`.
+The archived transcript contains the measured jobs and final PASS.
+
+**REMAINING MATHEMATICS AND TESTIMONY.**  The next exact algebraic step would be
+a square-root/weighted-kernel identity, still not a bound.  No Jordan--Wigner
+or domain-wall classification has been constructed.  The odd block remains
+the sharp unproved obligation, the even non-Perron block remains unproved, and
+the uniform `specRatio` target under `0 <= beta, 0 <= gamma` remains wholly
+open.  The Windows host is still non-exclusive, and the PR control-plane test
+remains red for the inherited 623-manifest baseline described in Addendum 573.
