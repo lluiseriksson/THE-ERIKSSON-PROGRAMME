@@ -12,6 +12,52 @@ Repository-wide audit, integration, guard, worktree, and evidence rules live
 in `docs/OPERATIONAL-GOVERNANCE-CHARTER.md`.  They bind both programmes and
 make no mathematical claims.
 
+## Owner rule: environments and operational instruments (2026-08-01)
+
+This active rule supersedes every older local-build token or default in this
+file.
+
+* **Colab Pro+ on Linux is the sanctioned compilation and reproduction
+  plane.**  Lean and Lake builds, oracles, `YangMillsCore`, numerical ovens,
+  campaigns, and all other sustained computation run there, regardless of
+  language or programme.  PART I/Surface being active and prioritized affects
+  the Colab queue; it creates no environment exception.
+* **Windows is the owner's desktop.**  It is limited to editing, git, hashes,
+  commits/push/PR, and scripts proved by reliable prior measurement to satisfy
+  all three local-light limits: at most 30 seconds wall time, exactly one
+  process with no worker pool, and at most 512 MiB peak RSS.  Without reliable
+  prior measurements for all three limits, a script is presumed heavy and
+  goes to Colab.  Rational certifiers are local only when they satisfy this
+  contract.
+* Running Lean, Lake, an oracle, a numerical oven, or any computation outside
+  that local-light contract on Windows is prohibited.  The only exception is
+  explicit owner authorization in the same assignment naming the command or
+  campaign.  An apparently idle Windows machine grants no permission.  The
+  `symWeighted` judge from assignment (14), measured at 171 seconds, is not
+  light; its former Windows authorization is superseded and it goes to Colab.
+* The former local build token is superseded.  The coordinated resource is a
+  **COLAB SESSION**: one thread per session, with explicit acquisition and
+  release.  Terminal reproducibility means two fresh, independent Colab
+  clones at the same SHA with matching output hashes.  It does not require two
+  operating systems, and Windows is not closure debt.
+* No decision to accept input, accept a mutation, increment an acceptance
+  counter, or emit `PASS` may depend on a Python `assert`.  `python -O`
+  removes assertions; two repository certifiers consequently emitted false
+  `PASS`.
+  Use explicit checks that raise an error or return non-zero in both normal
+  and `-O` modes.  Emit `PASS` only after every check and an explicit counter.
+  Run self-tests in normal and `-O` modes with real field mutations.  Internal
+  assertions are allowed only when certificate acceptance does not depend on
+  them.
+* A sentinel's existence never means success.  It must contain exactly one
+  line: the child's real decimal exit code, captured after termination.  Write
+  it atomically via a temporary file, close it, validate that it is non-empty
+  and parses as an integer, then rename it.  Its four states are absent,
+  empty/non-integer, non-zero integer, and zero integer.  Only a zero integer
+  plus separate log validation permits a candidate `PASS`.  Logs and
+  sentinels use semantic mode names such as `normal` and `optimized`, never
+  indistinguishable numeric suffixes.
+
 ---
 
 # PART I — SURFACE THEOREM CLOSURE (paper track — ACTIVE, owner priority 2026-07-10)
@@ -57,8 +103,9 @@ same commit). DO NOT SUBMIT while any [SLOT] lives.
    derive_page_attempt1.py and notes v45–v46.)
 6. Constants: only DERIVED constants go to ink; benches calibrate
    (ghost #23 rule).
-7. Long runs: absolute script paths (ghosts #20/#21), frozen run
-   clone, transcripts do not exist until committed, iteration caps
+7. Long runs on the sanctioned Colab plane: absolute script paths (ghosts
+   #20/#21), frozen run clone, transcripts do not exist until committed,
+   iteration caps
    (ghost #22), ball+boolean in every printed enclosure, provenance
    header (script sha256, library versions, stage parameters).
 8. Symbolic tooling (class rule, protocol desk 2026-07-10): NO
@@ -86,12 +133,13 @@ same commit). DO NOT SUBMIT while any [SLOT] lives.
   test_safe_sqrt.py (7 cases, arb-ball containment); margin_map_*
   (design-only, labeled); derive_page_attempt1.py (failed pass 1,
   archived); ERRATUM-display-supersets.md.
-- Local machine (Lluis's Windows box): run clone
-  C:\Users\lluis\AppData\Local\Temp\eriksson-push (FROZEN for git
-  ops while runs live), push clone ...\eriksson-push2, python
-  C:\Python312\python.exe (mpmath, sympy, python-flint 0.9.0).
-  Oven outputs in C:\Users\lluis\AppData\Local\Temp\
-  (margin_map_fine_out.txt, margin_map_probes_out.txt).
+- Execution plane: sustained numerical ovens and campaigns run in an acquired
+  Colab Pro+ Linux session.  Lluis's Windows box is the owner desktop under
+  the rule at the top of this file.  The former run clone
+  C:\Users\lluis\AppData\Local\Temp\eriksson-push, push clone
+  ...\eriksson-push2, C:\Python312\python.exe, and oven-output paths under
+  C:\Users\lluis\AppData\Local\Temp\ identify legacy local artifacts only;
+  they grant no permission to resume sustained local computation.
 - Governance frozen at commit f2ea0d0: coverage witness = exhaustive
   Arb + independent sampled implementation audit (2%, seed =
   SHA256(f2ea0d0-ASCII | box-id), box-id = exact rational coords;
@@ -114,9 +162,10 @@ same commit). DO NOT SUBMIT while any [SLOT] lives.
    splices; explicit beta_0 with the negotiation rule (analytic
    margin >= 2x consumed, machine absorbs [15, beta_0]).
 3. OVEN: L matching (+-25% vs v44 table) -> pilot at dz ~ 0.25 with
-   dz(beta) scaling -> full [3,15] campaign under frozen governance.
-   If Lluis authorizes cloud: parallelize by beta ranges,
-   concatenated transcripts with hashes.
+   dz(beta) scaling -> full [3,15] campaign under frozen governance,
+   executed in an acquired Colab Pro+ Linux session.  Parallelize by beta
+   ranges only within the authorized session; concatenate transcripts with
+   hashes.
 4. EDGES: sinc-cert on (0, t*(beta)] x [3, beta_0] (exact sinc
    lemma is in the paper; minor criterion + tail m+n > pi/t +
    uniform overlap pending); pi-window 4 constants (c_3 as a cheap
@@ -157,12 +206,13 @@ delegable. Bring him the complete manuscript when it exists.
 
 ---
 
-# PART II — YANG–MILLS LEAN PROGRAMME (standing rules, preserved verbatim)
+# PART II — YANG–MILLS LEAN PROGRAMME (standing rules; owner rule above governs execution)
 
 This file is read automatically by Claude-family agents. It replaces the
-old `.claude/agents/` directory (deleted 2026-06-12: it described an
-OpenRouter/Colab workflow and a vacuous-target strategy that no longer
-exist). The complete operational brief is `README-FOR-NEXT-MODEL.md`;
+old `.claude/agents/` directory (deleted 2026-06-12: it described an obsolete
+OpenRouter-mediated Colab workflow and a vacuous-target strategy that no
+longer exist).  The owner rule above defines the current Colab plane.  The
+complete operational brief is `README-FOR-NEXT-MODEL.md`;
 read it before editing anything. This file is the non-negotiable core.
 
 ## The defining principle
@@ -180,8 +230,9 @@ never repeat that.
 3. **No vacuous weakening.** Never restate a target so that it becomes
    trivially true. Adversarially audit your own statements for
    vacuity (non-emptiness witnesses, non-trivial instantiations).
-4. **Oracle every headline.** `lake build YangMillsCore` must be green
-   and `#print axioms` on every headline result must print exactly
+4. **Oracle every headline on the sanctioned Colab Linux plane.**
+   `lake build YangMillsCore` must be green and `#print axioms` on every
+   headline result must print exactly
    `[propext, Classical.choice, Quot.sound]`.
 5. **Never push broken code.** Commit only from a green checkpoint.
 6. **Keep the Clay distance honest.** Every status document states
@@ -199,20 +250,24 @@ oracle checks). After each green checkpoint: update
 `HYPOTHESIS_FRONTIER.md` if touched), commit, push, pick the next
 highest-leverage target, continue. Do not wait for confirmation.
 
-## Build & verification mechanics (Windows host)
+## Build & verification mechanics (sanctioned Colab Linux plane)
 
 * Toolchain: `leanprover/lean4:v4.29.0-rc6`, Mathlib pinned to
   `07642720480157414db592fa85b626dafb71355b` (`lakefile.lean` +
   `lake-manifest.json`). Build: `lake build YangMillsCore` (~minutes
-  when cached). Oracle: `lake env lean oracle_check.lean`.
-* Long builds: detached
-  `Start-Process powershell … | Out-File log + sentinel-file` pattern,
-  poll in ≤45 s slices. `$` gets stripped by some shells — put
-  PowerShell in `.ps1` files and run with `-File`.
-* **Never edit repo files through the Linux mount for large
-  rewrites** — the mount desyncs and truncates files. Do file surgery
-  Windows-side (python script files, `git checkout --` to recover).
-  Never run git from the mount.
+  when cached). Oracle: `lake env lean oracle_check.lean`.  These commands run
+  in a fresh Colab clone, never on Windows absent the owner's explicit local
+  authorization in the same assignment naming the command or campaign.
+* The former detached Windows `Start-Process powershell … | Out-File log +
+  sentinel-file` recommendation is superseded and grants no permission to run
+  locally.  If the owner expressly authorizes a named command or campaign for
+  local execution in the same assignment, a detached wrapper is only an
+  instrument and must obey the sentinel protocol above; it is never the
+  default route.
+* On Windows, **never edit repo files through a Linux mount for large
+  rewrites** — the mount desyncs and truncates files.  Do file surgery
+  Windows-side (python script files, `git checkout --` to recover), and never
+  run git from the mount.  This editing rule does not authorize builds there.
 * Scratch debugging files (`_*.lean`, `_*.ps1`, `_*.py`) are
   fine *uncommitted*; delete before committing. `sorry` is allowed in
   scratch files only.
