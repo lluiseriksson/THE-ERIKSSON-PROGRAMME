@@ -22,8 +22,10 @@ additional, and the earlier gates stand as run.
         D = D^T: a transposed index in the key lemma or in the covariance bound
         would pass every gate of the first round and surface only during general
         composition, possibly months later.  This gate builds a three-site cell
-        from eight DISTINCT positive weights, computes the MINIMAL coefficients
-        c_ij exactly by enumeration, verifies C != C^T, and then runs the key
+        from eight DISTINCT positive weights, computes the minimal
+        coefficients c_ij by EXHAUSTIVE ENUMERATION, EVALUATED NUMERICALLY --
+        the minimisation is combinatorially exhaustive, the arithmetic is
+        float64 and is not exact, verifies C != C^T, and then runs the key
         lemma and the covariance bound in BOTH orientations.  It discriminates
         only if the declared orientation passes and the transposed one fails;
         if both pass, the gate reports that it cannot discriminate rather than
@@ -91,7 +93,8 @@ class System:
         return {s: self.mu[upd(eta, i, s)] / tot for s in (0, 1)}
 
     def C(self):
-        """MINIMAL coefficients, by exact enumeration -- not a majorant."""
+        """Minimal coefficients, by exhaustive enumeration, evaluated in float64.
+        The minimisation is exhaustive; the arithmetic is not exact."""
         n = self.n
         M = [[0.0] * n for _ in range(n)]
         for i in range(n):
@@ -225,12 +228,13 @@ def gate_J10q():
 # --------------------------------------------------------------------------
 
 def gate_J11():
-    print("J11   orientation, on a NON-symmetric cell with exact minimal c_ij")
+    print("J11   orientation, on a NON-symmetric cell; minimal c_ij by exhaustive")
+    print("      enumeration, evaluated numerically (float64, not exact arithmetic)")
     s = asym_system()
     C = s.C()
     Ct = transpose(C)
     asym = max(abs(C[i][j] - C[j][i]) for i in range(3) for j in range(3))
-    print("    C (minimal coefficients, exact):")
+    print("    C (minimal coefficients, exhaustive enumeration, float64):")
     for row in C:
         print("      " + "  ".join(f"{x:.9f}" for x in row))
     print(f"    max |C - C^T| = {asym:.9f}   (must be > 0, else the gate is blind)")
