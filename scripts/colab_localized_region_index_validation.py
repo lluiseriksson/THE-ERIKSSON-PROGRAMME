@@ -272,17 +272,17 @@ def main() -> None:
         "audit", [str(bindir / "lake"), "env", "lean", audit.name], cwd=ROOT, env=env
     )
     RESULT["audit_exit"] = audit_exit
-    axiom_lines = [line for line in audit_output.splitlines() if "depends on axioms:" in line]
-    RESULT["axiom_lines_seen"] = len(axiom_lines)
+    ansi_escape = re.compile(r"\x1b(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
+    clean_audit = ansi_escape.sub("", audit_output).replace("\r", "")
+    axiom_headers_seen = clean_audit.count("depends on axioms:")
+    axiom_blocks = list(
+        re.finditer(r"depends on axioms:\s*(\[[^\]]*\])", clean_audit, flags=re.MULTILINE)
+    )
+    RESULT["axiom_lines_seen"] = len(axiom_blocks)
     allowed = {"propext", "Classical.choice", "Quot.sound"}
-    content_ok = True
-    for line in axiom_lines:
-        emit(line)
-        clean = re.sub(r"\x1b\[[0-9;]*m", "", line).replace("\r", "")
-        match = re.search(r"depends on axioms:\s*(\[[^\]]*\])", clean)
-        if match is None:
-            content_ok = False
-            continue
+    content_ok = axiom_headers_seen == len(axiom_blocks)
+    for match in axiom_blocks:
+        emit(re.sub(r"\s+", " ", match.group(0)))
         axioms = {
             name.strip()
             for name in match.group(1).removeprefix("[").removesuffix("]").split(",")
@@ -295,7 +295,7 @@ def main() -> None:
         archive("audit", audit_exit)
     if not content_ok:
         archive("audit_axioms", 91)
-    if len(axiom_lines) != EXPECTED_AXIOM_LINES:
+    if len(axiom_blocks) != EXPECTED_AXIOM_LINES:
         archive("audit_evidence_incomplete", 90)
 
     status_output = require_zero("git_status", ["git", "status", "--porcelain"], cwd=ROOT, env=env)
