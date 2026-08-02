@@ -102,3 +102,36 @@ on the sanctioned Colab Linux plane; the desktop edits, commits and hashes only.
 * **J10 fails** -> the comparison estimate as formulated here is wrong; stop.
 * D-3c not closed in Lean after a declared budget -> report the state, keep the
   module with its diagnosis, and do not let the paper claim the rung.
+
+## AMENDMENT 1 (2026-08-02) — where the zero diagonal enters, decided before D-3c
+
+External reading, and correct: the agreed assembly
+`B_i = I - e_i e_i^T + C^T e_i e_i^T` gives, coordinatewise,
+`(B_i v)_k = v_k - [k=i] v_i + C_ik v_i`, hence `(B_i v)_i = C_ii v_i`.
+Concluding `(B_i v)_i = 0` therefore requires a decision, and it must be a
+DECLARED one rather than an accident of the physical instance, whose diagonal
+happens to vanish.
+
+**Decided: `C_ii = 0` is an explicit hypothesis of the matrix assembly, and of
+nothing else.**  The split is:
+
+* `deltaAt i (E i f) = 0` — a SEMANTIC result, independent of `C`, resting on
+  the locality hypothesis that the conditional at `i` does not see the old value
+  at `i`;
+* `deltaAt k (E i f) ≤ deltaAt k f + C i k * deltaAt i f` for `k ≠ i` — consuming
+  only that `C` is a MAJORANT off the diagonal, never that it is minimal;
+* `delta (E i f) ≤ B_i * delta f` — the matrix form, and the ONLY statement that
+  assumes `C_ii = 0`.
+
+This keeps D-3c usable with any dominating interdependence matrix, which is the
+same distinction that cost two paper versions for `tanh|J|`, and it stops the
+zero from arriving by simplification.
+
+**Also registered, as a reserve route for Popoviciu** if the algebraic
+development is obstructed: with `c = (M+m)/2`, `abs_sub_mid_le` of D-3a already
+gives `|f x - c| ≤ osc f / 2`, hence `E[(f-c)^2] ≤ osc(f)^2/4`, and the variance
+translation identity `E[(f-c)^2] = Var f + (E f - c)^2` finishes.  Its formal
+advantage is that the factor `1/2` is again born in exactly one lemma and the
+`1/4` appears by squaring it, rather than through a second independent
+normalisation.  Three endpoints stay separate either way:
+`popoviciu_variance_le`, `gruss_covariance_le`, `gruss_attained`.
