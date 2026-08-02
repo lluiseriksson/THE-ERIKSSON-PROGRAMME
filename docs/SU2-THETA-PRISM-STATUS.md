@@ -1,8 +1,24 @@
 # (16) PR #43 repair: current status
 
 This is a manufacturer status record, not an external audit verdict.  A
-concrete inhabitant now exists for every `BetaDomain`; terminal reproduction
-and a fresh blind external audit are still required before closure.
+concrete inhabitant now exists for every `BetaDomain`.  Terminal reproduction
+in two independent fresh Colab clones is DONE and recorded below; the only
+remaining requirement before closure is a fresh blind external audit.
+
+**Build provenance.**  The compiled source `08155607cacca04f3f7a507a78762f88fffd395d`
+descends from `43c003b2c0c98aceeabbf10ba28a4783de5859f1`, which is its real
+build base.  It does NOT descend from the PR's declared base
+`26306b8f30e826b0bcb7c4caf6a5a42473ab5fd8`: that commit is not an ancestor,
+the two histories diverge at `43c003b2`, and the source is 55 commits ahead
+and 4 behind it.  Any comparison against `26306b8f` compares against a tree
+that was never the starting point.
+
+**Core integration: none, and the job count says so.**  `YangMillsCore.lean`
+at `08155607` contains zero imports and zero mentions of any `SU2ThetaPrism`
+module.  The measured 8464 jobs is therefore the inherited baseline with no
+increment; it is not evidence of core integration and must not be read as
+such.  This lane sits outside the verified core, exactly like PR #39 and
+PR #40.
 
 ## EXACTO
 
