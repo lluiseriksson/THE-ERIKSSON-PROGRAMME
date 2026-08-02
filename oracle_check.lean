@@ -3163,6 +3163,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.SpatialRingEvenFluctuationBound
 #print axioms YangMills.OS.spatialRing_specRatio_le_of_sector_bounds
 #print axioms YangMills.OS.periodic_antiperiodic_root_products
+#print axioms YangMills.OS.periodic_antiperiodic_log_difference_eq_neg_two_artanh
 #print axioms YangMills.OS.periodic_antiperiodic_log_norm_sums_lt
 #print axioms YangMills.OS.arcosh_circle_log_mixture
 #print axioms YangMills.OS.physical_arcosh_circle_log_mixture
