@@ -23,8 +23,16 @@ import Mathlib.Algebra.Order.BigOperators.Ring.Finset
 `crossRatio_le_of_bounds`): `φ` is a lower bound for every cross-ratio of `T`,
 written multiplicatively so that no division occurs.
 
-The theorem is one index swap.  Expanding `(A M B)_{ik} (A M B)_{jl}` and
-`(A M B)_{jk} (A M B)_{il}` produces the **same** nonnegative weights
+**The mixed matrix is described by its entries, not by the `*` notation.**  A
+first attempt wrote `A * M * B`; with three independent index types that failed
+to elaborate at every occurrence, and the failure was not incidental — the
+theorem is genuinely a statement about the entrywise formula, so
+`IsMixOf T A M B` says exactly that and the product notation never appears.  It
+also lets the same theorem serve `A * M * B`, `S * M * Sᵀ` and any other object
+whose entries have that shape, without a coercion step.
+
+The theorem itself is one index swap.  Expanding `T_{ik} T_{jl}` and
+`T_{jk} T_{il}` produces the **same** nonnegative weights
 `A_{ia} A_{jc} B_{bk} B_{dl}`, against `M_{ab} M_{cd}` in the first case and
 `M_{cb} M_{ad}` in the second: renaming the summation indices `a ↔ c` in the
 second expansion returns its coefficient to the first one's and moves the swap
@@ -38,33 +46,29 @@ namespace Congruence
 
 open Finset
 
-variable {m n p : Type*} [Fintype m] [Fintype n] [Fintype p]
+variable {m n p : Type*} [Fintype n]
 
 /-- **`φ` bounds every cross-ratio of `T` from below**, multiplicatively.  Same
 orientation as `BirkhoffInterface` in `CongruenceSpectrum`, so the two compose
-without a translation step. -/
+without a translation step.  Its equality cases are therefore a *tight set* —
+the quadruples attaining the **minimum** of the cross-ratio — and not the
+`ArgMax` of that ratio. -/
 def CrossRatioLB {r c : Type*} (φ : ℝ) (T : Matrix r c ℝ) : Prop :=
   ∀ (i j : r) (k l : c), φ * (T j k * T i l) ≤ T i k * T j l
 
-/-- The triple product, expanded to a double sum. -/
-theorem triple_apply (A : Matrix m n ℝ) (M : Matrix n n ℝ) (B : Matrix n p ℝ)
-    (i : m) (k : p) :
-    (A * M * B) i k = ∑ a : n, ∑ b : n, A i a * M a b * B b k := by
-  rw [Matrix.mul_apply]
-  have hb : ∀ b : n, (A * M) i b * B b k = ∑ a : n, A i a * M a b * B b k := by
-    intro b
-    rw [Matrix.mul_apply, Finset.sum_mul]
-  rw [Finset.sum_congr rfl fun b _ => hb b, Finset.sum_comm]
+/-- `T` is the two-sided mix of `M` by `A` and `B`, stated on entries. -/
+def IsMixOf (T : Matrix m p ℝ) (A : Matrix m n ℝ) (M : Matrix n n ℝ)
+    (B : Matrix n p ℝ) : Prop :=
+  ∀ i k, T i k = ∑ a : n, ∑ b : n, A i a * M a b * B b k
 
-/-- The product of two entries, as a single sum over quadruples, with the weight
+/-- The product of two entries of a mix, as a quadruple sum with the weight
 factored out.  This is the identity the whole proof rests on. -/
-theorem triple_mul_expand (A : Matrix m n ℝ) (M : Matrix n n ℝ) (B : Matrix n p ℝ)
-    (i j : m) (k l : p) :
-    (A * M * B) i k * (A * M * B) j l
+theorem mix_mul_expand {T : Matrix m p ℝ} {A : Matrix m n ℝ} {M : Matrix n n ℝ}
+    {B : Matrix n p ℝ} (hT : IsMixOf T A M B) (i j : m) (k l : p) :
+    T i k * T j l
       = ∑ a : n, ∑ b : n, ∑ c : n, ∑ d : n,
           (A i a * A j c * B b k * B d l) * (M a b * M c d) := by
-  rw [triple_apply, triple_apply]
-  rw [Finset.sum_mul]
+  rw [hT i k, hT j l, Finset.sum_mul]
   refine Finset.sum_congr rfl fun a _ => ?_
   rw [Finset.sum_mul]
   refine Finset.sum_congr rfl fun b _ => ?_
@@ -75,15 +79,13 @@ theorem triple_mul_expand (A : Matrix m n ℝ) (M : Matrix n n ℝ) (B : Matrix 
   ring
 
 /-- The *same* weights, against the swapped `M`-factors.  Obtained from
-`triple_mul_expand` by renaming `a ↔ c` and `b ↔ d`, which is a relabelling of
-the summation and therefore free. -/
-theorem triple_mul_expand_swap (A : Matrix m n ℝ) (M : Matrix n n ℝ)
-    (B : Matrix n p ℝ) (i j : m) (k l : p) :
-    (A * M * B) j k * (A * M * B) i l
+`mix_mul_expand` by relabelling the summation indices, which is free. -/
+theorem mix_mul_expand_swap {T : Matrix m p ℝ} {A : Matrix m n ℝ} {M : Matrix n n ℝ}
+    {B : Matrix n p ℝ} (hT : IsMixOf T A M B) (i j : m) (k l : p) :
+    T j k * T i l
       = ∑ a : n, ∑ b : n, ∑ c : n, ∑ d : n,
           (A i a * A j c * B b k * B d l) * (M c b * M a d) := by
-  rw [triple_mul_expand]
-  rw [Finset.sum_comm]
+  rw [mix_mul_expand hT j i k l, Finset.sum_comm]
   refine Finset.sum_congr rfl fun c _ => ?_
   refine Finset.sum_congr rfl fun d _ => ?_
   rw [Finset.sum_comm]
@@ -93,12 +95,17 @@ theorem triple_mul_expand_swap (A : Matrix m n ℝ) (M : Matrix n n ℝ)
 
 /-- **S-2a.  The cross-ratio bound transports under two-sided nonnegative
 mixing.**  No symmetry of `M`, no relation between `A` and `B`, no positivity of
-`A` or `B` beyond nonnegativity, and no division anywhere. -/
-theorem crossRatioLB_mul {φ : ℝ} {A : Matrix m n ℝ} {M : Matrix n n ℝ}
-    {B : Matrix n p ℝ} (hA : ∀ i a, 0 ≤ A i a) (hB : ∀ b k, 0 ≤ B b k)
-    (hM : CrossRatioLB φ M) : CrossRatioLB φ (A * M * B) := by
+`A` or `B` beyond nonnegativity, no positivity of `M`, and no division anywhere.
+
+Note what this does *not* say.  It transports **one fixed** `φ`.  The statement
+about diameters is `φ(A M B) ≥ φ(M)` for the *optimal* bounds, which needs the
+construction of that optimum and is a separate step. -/
+theorem crossRatioLB_mix {φ : ℝ} {T : Matrix m p ℝ} {A : Matrix m n ℝ}
+    {M : Matrix n n ℝ} {B : Matrix n p ℝ} (hT : IsMixOf T A M B)
+    (hA : ∀ i a, 0 ≤ A i a) (hB : ∀ b k, 0 ≤ B b k) (hM : CrossRatioLB φ M) :
+    CrossRatioLB φ T := by
   intro i j k l
-  rw [triple_mul_expand_swap, triple_mul_expand, Finset.mul_sum]
+  rw [mix_mul_expand_swap hT i j k l, mix_mul_expand hT i j k l, Finset.mul_sum]
   refine Finset.sum_le_sum fun a _ => ?_
   rw [Finset.mul_sum]
   refine Finset.sum_le_sum fun b _ => ?_
@@ -114,12 +121,12 @@ theorem crossRatioLB_mul {φ : ℝ} {A : Matrix m n ℝ} {M : Matrix n n ℝ}
     _ ≤ (A i a * A j c * B b k * B d l) * (M a b * M c d) :=
         mul_le_mul_of_nonneg_left hterm hw
 
-/-- **Corollary: congruence.**  `B = Aᵀ` is the case the previous paper asked
-about, and it is a special case rather than the theorem. -/
-theorem crossRatioLB_congr {φ : ℝ} {S : Matrix m n ℝ} {M : Matrix n n ℝ}
-    (hS : ∀ i a, 0 ≤ S i a) (hM : CrossRatioLB φ M) :
-    CrossRatioLB φ (S * M * S.transpose) :=
-  crossRatioLB_mul hS (fun b k => hS k b) hM
+/-- **Corollary: congruence.**  The case `B = Aᵀ`, which is what the previous
+paper asked about — a special case rather than the theorem. -/
+theorem crossRatioLB_congr {φ : ℝ} {T : Matrix m m ℝ} {S : Matrix m n ℝ}
+    {M : Matrix n n ℝ} (hT : IsMixOf T S M S.transpose)
+    (hS : ∀ i a, 0 ≤ S i a) (hM : CrossRatioLB φ M) : CrossRatioLB φ T :=
+  crossRatioLB_mix hT hS (fun b k => hS k b) hM
 
 end Congruence
 
