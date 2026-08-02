@@ -13,4 +13,5 @@ materialized, and its declarations are not yet compiler-verified.
 -/
 
 #print axioms YangMills.RG.cmp116Lemma1PhysicalCovarianceWalkTerm_eq
+#print axioms YangMills.RG.cmp116Lemma1PhysicalCovariancePropagator
 #print axioms YangMills.RG.cmp116Lemma1PhysicalCovariancePropagator_eq

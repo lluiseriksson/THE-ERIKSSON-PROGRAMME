@@ -13,16 +13,21 @@ PRE-VALIDATION: this source is present, its `.olean` has not yet been
 materialized, and its declarations are not yet compiler-verified.
 
 The generic L1 certificate constructs a weakened series over one walk type.
-The literal source-Pi4 covariance is stored instead as a length `tsum` whose
-fibres are finite dependent types of physical walks.  This module supplies
-the exact dependent reindexing
+The literal source-Pi4 covariance is stored entrywise as a length `tsum`
+whose fibres are finite dependent types of physical walks.  This module
+supplies the exact dependent reindexing
 
 `Sigma length, CMP99SourcePi4FineWalkIndex M Q R length`
 
-and proves that the internally constructed L1 propagator is the literal
-complex covariance `cmp116SourcePi4FullComplexWeakenedCovarianceMatrix`.
-The exchange of the sigma sum with the length/fibre sums uses the radial
-summability already carried by the L1 certificate; no conditionally
+and proves that the entrywise internally constructed L1 propagator is the
+literal complex covariance
+`cmp116SourcePi4FullComplexWeakenedCovarianceMatrix`.  One common
+`treeLength`, `baseWeight`, and scalar budget is required for every matrix
+entry.  This matches the entrywise construction and estimates of the
+physical walk matrix without imposing an artificial complex normed-space
+structure on the repository's operator-norm matrix representation.  The
+exchange of the sigma sum with the length/fibre sums uses the radial
+summability already carried by each scalar L1 certificate; no conditionally
 convergent rearrangement is made.
 
 Honest scope: this is the physical `G(s)` bridge only.  The current literal
@@ -34,8 +39,6 @@ additional multiplicity-aware expansion.  No `H0(s)` producer is supplied.
 namespace YangMills.RG
 
 noncomputable section
-
-open scoped Matrix.Norms.Operator
 
 private abbrev FineField (M Q Nc : ℕ)
     [NeZero M] [NeZero Q] [NeZero (2 * Q)]
@@ -74,6 +77,20 @@ noncomputable def cmp116Lemma1PhysicalCovarianceWalkTerm
   cmp116PhysicalEndomorphismComplexMatrix
     (cmp99SourcePi4FineWalkIndex.operator K hc hmass hK walk.2)
 
+/-- One scalar entry of the sigma-independent physical walk operator.  The
+physical covariance is constructed entrywise, and `ℂ` carries the canonical
+complex normed-space structure required by generic L1. -/
+noncomputable def cmp116Lemma1PhysicalCovarianceWalkEntryTerm
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (row col : FineCoord M Q Nc)
+    (walk : CMP116Lemma1PhysicalCovarianceWalk M Q R) : ℂ :=
+  cmp116Lemma1PhysicalCovarianceWalkTerm K hc hmass hK walk row col
+
 /-- One term of the generic weakened series is definitionally the literal
 physical fine-walk term. -/
 theorem cmp116Lemma1PhysicalCovarianceWalkTerm_eq
@@ -93,57 +110,65 @@ theorem cmp116Lemma1PhysicalCovarianceWalkTerm_eq
       anchor K hc hmass hK sigma walk.2 := by
   rfl
 
-/-- The generic L1 propagator specialized to the dependent physical walk
-index is exactly the literal source-Pi4 complex covariance `G(s)`.
-
-Besides the L1 source certificate, the hypotheses are precisely those used
-by the existing physical theorem which promotes the pointwise length series
-to a matrix `tsum`. -/
-theorem cmp116Lemma1PhysicalCovariancePropagator_eq
-    {M Q Nc R Δ : ℕ}
+/-- Matrix assembled from the scalar L1 propagators with a uniform source
+budget over all row/column pairs. -/
+noncomputable def cmp116Lemma1PhysicalCovariancePropagator
+    {M Q Nc R : ℕ}
     [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
     [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
     (anchor : FinBox 4 Q)
     (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
-    (hsourceRange : R + 1 ≤ 4 * M)
     {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
     (hK : IsCoerciveCLM K c)
-    {Ahead rho rate radius Rweak : ℝ}
-    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
-    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
-    (Cert : CMP99PhysicalPatchWeightedCertificate
-      (cmp99SourcePi4Charts :
-        Finset (CMP99SourcePi4Chart Unit Q))
-      K cmp99SourcePi4ChartEnlarged
-      (cmp99SourcePi4ChartCore (M := M))
-      hc hmass hK physicalBondDist Ahead rho rate)
-    (htri : ∀ target source middle :
-      PhysicalBond 4 (M * (2 * Q)),
-      physicalBondDist target source ≤
-        physicalBondDist target middle + physicalBondDist middle source)
-    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
-    (hΔ1 : 1 ≤ Δ)
-    (sigma : FinBox 4 (2 * Q) → ℂ)
-    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
-    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
-    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
-    (hsmall :
-      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
     {treeLength : CMP116Lemma1PhysicalCovarianceWalk M Q R → ℕ}
     {baseWeight : CMP116Lemma1PhysicalCovarianceWalk M Q R → ℝ}
     {B0 delta0 delta1 kappa1 : ℝ}
-    (C : CMP116Lemma1WeakenedPropagatorCertificate
-      (cmp116Lemma1PhysicalCovarianceWalkActive anchor)
-      (cmp116Lemma1PhysicalCovarianceWalkTerm K hc hmass hK)
-      treeLength baseWeight B0 delta0 delta1 (M : ℝ) kappa1)
+    (C : ∀ row col,
+      CMP116Lemma1WeakenedPropagatorCertificate
+        (cmp116Lemma1PhysicalCovarianceWalkActive anchor)
+        (cmp116Lemma1PhysicalCovarianceWalkEntryTerm
+          K hc hmass hK row col)
+        treeLength baseWeight B0 delta0 delta1 (M : ℝ) kappa1)
+    (sigma : FinBox 4 (2 * Q) → ℂ) :
+    Matrix (FineCoord M Q Nc) (FineCoord M Q Nc) ℂ :=
+  fun row col => (C row col).propagator sigma
+
+/-- The generic L1 propagator specialized to the dependent physical walk
+index is exactly the literal source-Pi4 complex covariance `G(s)`.
+
+The certificate family shares one source budget across all entries.  No
+separate covariance convergence hypothesis is needed: the physical matrix is
+definitionally the entrywise length `tsum`, and the L1 radial majorant is what
+justifies the sole dependent reindexing. -/
+theorem cmp116Lemma1PhysicalCovariancePropagator_eq
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    {treeLength : CMP116Lemma1PhysicalCovarianceWalk M Q R → ℕ}
+    {baseWeight : CMP116Lemma1PhysicalCovarianceWalk M Q R → ℝ}
+    {B0 delta0 delta1 kappa1 : ℝ}
+    (C : ∀ row col,
+      CMP116Lemma1WeakenedPropagatorCertificate
+        (cmp116Lemma1PhysicalCovarianceWalkActive anchor)
+        (cmp116Lemma1PhysicalCovarianceWalkEntryTerm
+          K hc hmass hK row col)
+        treeLength baseWeight B0 delta0 delta1 (M : ℝ) kappa1)
     (hsigma : sigma ∈ cmp116Lemma1WeakeningPolydisc kappa1) :
-    C.propagator sigma =
+    cmp116Lemma1PhysicalCovariancePropagator
+        anchor K hc hmass hK C sigma =
       cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
         (R := R) anchor K hc hmass hK sigma := by
+  classical
+  ext row col
   let shiftedRadius : FinBox 4 (2 * Q) → ℝ :=
     fun _ => Real.exp kappa1 - 1
   have hR : 1 ≤ Real.exp kappa1 :=
-    Real.one_le_exp C.kappa1_nonneg
+    Real.one_le_exp (C row col).kappa1_nonneg
   have hsigmaShifted :
       sigma ∈ cmp116ComplexShiftedWeakeningPolydisc shiftedRadius := by
     intro d
@@ -157,22 +182,22 @@ theorem cmp116Lemma1PhysicalCovariancePropagator_eq
       CMP116Lemma1PhysicalCovarianceWalk M Q R =>
         cmp116ComplexWeakeningMonomial
             (cmp116Lemma1PhysicalCovarianceWalkActive anchor walk) sigma •
-          cmp116Lemma1PhysicalCovarianceWalkTerm K hc hmass hK walk :=
+          cmp116Lemma1PhysicalCovarianceWalkEntryTerm
+            K hc hmass hK row col walk :=
     summable_cmp116ComplexWeakenedRandomWalkSeries
       (cmp116Lemma1PhysicalCovarianceWalkActive anchor)
-      (cmp116Lemma1PhysicalCovarianceWalkTerm K hc hmass hK)
+      (cmp116Lemma1PhysicalCovarianceWalkEntryTerm
+        K hc hmass hK row col)
       sigma shiftedRadius (Real.exp kappa1) (Real.exp_nonneg _)
-      hsigmaShifted hwalkCap C.summable_radialMajorant
-  have hmatrix :=
-    cmp116SourcePi4FullComplexWeakenedCovarianceMatrix_eq_tsum_layers_of_source
-      anchor K hc hmass hK hAhead hrho hrate hgeom Cert htri
-      hsourceRange hΔ hΔ1 sigma hradius hRweak hdiff hcap hsmall
+      hsigmaShifted hwalkCap (C row col).summable_radialMajorant
   calc
-    C.propagator sigma =
+    cmp116Lemma1PhysicalCovariancePropagator
+          anchor K hc hmass hK C sigma row col =
         ∑' walk : CMP116Lemma1PhysicalCovarianceWalk M Q R,
           cmp116ComplexWeakeningMonomial
               (cmp116Lemma1PhysicalCovarianceWalkActive anchor walk) sigma •
-            cmp116Lemma1PhysicalCovarianceWalkTerm K hc hmass hK walk := by
+            cmp116Lemma1PhysicalCovarianceWalkEntryTerm
+              K hc hmass hK row col walk := by
       rfl
     _ = ∑' length : ℕ,
         ∑' index : CMP99SourcePi4FineWalkIndex M Q R length,
@@ -180,11 +205,11 @@ theorem cmp116Lemma1PhysicalCovariancePropagator_eq
               (cmp99SourcePi4FineWalkIndex.active anchor index) sigma •
             cmp116PhysicalEndomorphismComplexMatrix
               (cmp99SourcePi4FineWalkIndex.operator
-                K hc hmass hK index) := hflat.tsum_sigma
+                K hc hmass hK index) row col := hflat.tsum_sigma
     _ = ∑' length : ℕ,
         ∑ index : CMP99SourcePi4FineWalkIndex M Q R length,
           cmp99SourcePi4ComplexFineWalkTerm
-            anchor K hc hmass hK sigma index := by
+            anchor K hc hmass hK sigma index row col := by
       apply tsum_congr
       intro length
       rw [tsum_fintype]
@@ -193,14 +218,15 @@ theorem cmp116Lemma1PhysicalCovariancePropagator_eq
       rfl
     _ = ∑' length : ℕ,
         cmp116SourcePi4FullComplexWeakenedCovarianceLayer
-          (R := R) anchor K hc hmass hK sigma length := by
+          (R := R) anchor K hc hmass hK sigma length row col := by
       apply tsum_congr
       intro length
-      exact
+      exact congrArg (fun A => A row col)
         (cmp116SourcePi4FullComplexWeakenedCovarianceLayer_eq_sum_fineWalkTerms
           anchor K hc hmass hK sigma length).symm
     _ = cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
-          (R := R) anchor K hc hmass hK sigma := hmatrix.symm
+          (R := R) anchor K hc hmass hK sigma row col := by
+      rfl
 
 end
 
