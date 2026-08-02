@@ -531,6 +531,93 @@ theorem concentrate_off_block {ε : ℝ} (hε0 : 0 < ε) (hε1 : ε ≤ 1)
         mul_le_mul_of_nonneg_left hj1 (by positivity)
     _ = ε * |M i j| := by ring
 
+/-- Every entry of the congruence, in closed form. -/
+theorem concentrate_apply (M : Matrix n n ℝ) (p q : n) (ε : ℝ) (i j : n) :
+    (Matrix.diagonal (concentrate p q ε) * M *
+        Matrix.diagonal (concentrate p q ε)) i j
+      = concentrate p q ε i * M i j * concentrate p q ε j := by
+  rw [Matrix.mul_diagonal, Matrix.diagonal_mul]
+
+omit [Fintype n] in
+theorem concentrate_at_p (p q : n) (ε : ℝ) : concentrate p q ε p = 1 := by
+  simp [concentrate]
+
+omit [Fintype n] in
+theorem concentrate_at_q (p q : n) (ε : ℝ) : concentrate p q ε q = 1 := by
+  unfold concentrate
+  split
+  · rfl
+  · simp
+
+omit [Fintype n] in
+theorem concentrate_off {p q i : n} (hip : i ≠ p) (hiq : i ≠ q) (ε : ℝ) :
+    concentrate p q ε i = ε := by
+  unfold concentrate; rw [if_neg hip, if_neg hiq]
+
+/-- **The row sums of the concentrated congruence.**  The two entries on the pair
+survive untouched and contribute exactly `1 + μ`; everything else carries a
+factor `ε`.  This is the denominator of the lower bound, and the reason the
+limit of `(1-μ)/(1+μ+cε)` is `(1-μ)/(1+μ)` and not something else. -/
+theorem concentrate_rowSum_le {M : Matrix n n ℝ} {μ ε : ℝ} {p q : n} (hpq : p ≠ q)
+    (hε0 : 0 < ε) (hε1 : ε ≤ 1 / 2) (hμ0 : 0 < μ)
+    (hnn : ∀ a b, 0 ≤ M a b) (hhi : ∀ a b, M a b ≤ 1)
+    (hpp : M p p = 1) (hqq : M q q = 1) (hpqv : M p q = μ) (hqpv : M q p = μ)
+    (i : n) :
+    ∑ j, (Matrix.diagonal (concentrate p q ε) * M *
+        Matrix.diagonal (concentrate p q ε)) i j
+      ≤ 1 + μ + (Fintype.card n) * ε := by
+  have hdle : ∀ a, concentrate p q ε a ≤ 1 := fun a =>
+    concentrate_le_one (by linarith) p q a
+  have hd0 : ∀ a, 0 < concentrate p q ε a := fun a => concentrate_pos hε0 p q a
+  -- split off the pair
+  have hsplit := (Finset.sum_sdiff (f := fun j =>
+    (Matrix.diagonal (concentrate p q ε) * M *
+      Matrix.diagonal (concentrate p q ε)) i j)
+    (Finset.subset_univ ({p, q} : Finset n))).symm
+  rw [hsplit, Finset.sum_pair hpq]
+  -- everything outside the pair is at most `ε`
+  have hrest : ∑ j ∈ (Finset.univ \ ({p, q} : Finset n)),
+      (Matrix.diagonal (concentrate p q ε) * M *
+        Matrix.diagonal (concentrate p q ε)) i j
+      ≤ (Fintype.card n) * ε := by
+    have hb : ∀ j ∈ (Finset.univ \ ({p, q} : Finset n)),
+        (Matrix.diagonal (concentrate p q ε) * M *
+          Matrix.diagonal (concentrate p q ε)) i j ≤ ε := by
+      intro j hj
+      simp only [Finset.mem_sdiff, Finset.mem_insert, Finset.mem_singleton,
+        not_or] at hj
+      rw [concentrate_apply, concentrate_off hj.2.1 hj.2.2]
+      calc concentrate p q ε i * M i j * ε ≤ 1 * 1 * ε := by
+            apply mul_le_mul_of_nonneg_right _ hε0.le
+            exact mul_le_mul (hdle i) (hhi i j) (hnn i j) zero_le_one
+        _ = ε := by ring
+    calc ∑ j ∈ (Finset.univ \ ({p, q} : Finset n)),
+            (Matrix.diagonal (concentrate p q ε) * M *
+              Matrix.diagonal (concentrate p q ε)) i j
+          ≤ ∑ _j ∈ (Finset.univ \ ({p, q} : Finset n)), ε := Finset.sum_le_sum hb
+      _ = (Finset.univ \ ({p, q} : Finset n)).card * ε := by
+            rw [Finset.sum_const, nsmul_eq_mul]
+      _ ≤ (Fintype.card n) * ε := by
+            apply mul_le_mul_of_nonneg_right _ hε0.le
+            exact_mod_cast Finset.card_le_univ _
+  -- the pair contributes at most `1 + μ`, with equality on the pair's own rows
+  have hpair : (Matrix.diagonal (concentrate p q ε) * M *
+      Matrix.diagonal (concentrate p q ε)) i p
+      + (Matrix.diagonal (concentrate p q ε) * M *
+        Matrix.diagonal (concentrate p q ε)) i q ≤ 1 + μ := by
+    rw [concentrate_apply, concentrate_apply, concentrate_at_p, concentrate_at_q]
+    by_cases hip : i = p
+    · subst hip
+      rw [concentrate_at_p, hpp, hpqv]; ring_nf; linarith
+    · by_cases hiq : i = q
+      · subst hiq
+        rw [concentrate_at_q, hqpv, hqq]; ring_nf; linarith
+      · rw [concentrate_off hip hiq]
+        have h1 : ε * M i p * 1 ≤ ε := by nlinarith [hhi i p, hnn i p, hε0]
+        have h2 : ε * M i q * 1 ≤ ε := by nlinarith [hhi i q, hnn i q, hε0]
+        linarith
+  linarith
+
 /-- **The fused bond, at every `ε`.**  Specialised to the antipodal pair of the
 hypercube kernel, the block the concentration preserves is exactly the Ising
 bond of coupling `β · L` — for every strictly positive `ε`, not only in a limit.
@@ -765,9 +852,10 @@ theorem pairVec_orthogonal {p q : n} (hpq : p ≠ q) (Ω : n → ℝ) :
 is the right-hand value.  Stated with an explicit witness rather than a limit. -/
 theorem lower_bound_approaches {μ c : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1) (hc : 0 < c)
     {t : ℝ} (ht : t < (1 - μ) / (1 + μ)) :
-    ∃ ε : ℝ, 0 < ε ∧ ε ≤ 1 ∧ t < (1 - μ) / (1 + μ + c * ε) := by
+    ∃ ε : ℝ, 0 < ε ∧ ε ≤ 1 / 2 ∧ t < (1 - μ) / (1 + μ + c * ε) := by
   have hden : (0 : ℝ) < 1 + μ := by linarith
   have hnum : (0 : ℝ) < 1 - μ := by linarith
+  have hhalf : (0 : ℝ) < 1 / 2 := by norm_num
   by_cases hpos : 0 < t
   · -- `t > 0`: solve `t (1 + μ + cε) < 1 - μ` for `ε`, explicitly
     have ht0 : t ≠ 0 := ne_of_gt hpos
@@ -779,18 +867,19 @@ theorem lower_bound_approaches {μ c : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1) (hc 
     have hE : 0 < E := by rw [hEdef]; exact div_pos (by linarith) h2tc
     have hexp : t * (c * E) = (1 - μ - t * (1 + μ)) / 2 := by
       rw [hEdef]; field_simp
-    have hminpos : 0 < min E 1 := lt_min hE one_pos
-    refine ⟨min E 1, hminpos, min_le_right _ _, ?_⟩
-    have hd2 : (0 : ℝ) < 1 + μ + c * min E 1 := by
+    have hminpos : 0 < min E (1 / 2) := lt_min hE hhalf
+    refine ⟨min E (1 / 2), hminpos, min_le_right _ _, ?_⟩
+    have hd2 : (0 : ℝ) < 1 + μ + c * min E (1 / 2) := by
       have := mul_pos hc hminpos; linarith
     rw [lt_div_iff₀ hd2]
-    have hstep : t * (c * min E 1) ≤ t * (c * E) := by
+    have hstep : t * (c * min E (1 / 2)) ≤ t * (c * E) := by
       have htc : (0 : ℝ) ≤ t * c := le_of_lt (mul_pos hpos hc)
-      nlinarith [min_le_left E 1, htc]
-    have hmul : t * (1 + μ + c * min E 1) = t * (1 + μ) + t * (c * min E 1) := by ring
+      nlinarith [min_le_left E (1 / 2), htc]
+    have hmul : t * (1 + μ + c * min E (1 / 2))
+        = t * (1 + μ) + t * (c * min E (1 / 2)) := by ring
     rw [hmul]
     linarith
-  · exact ⟨1, one_pos, le_refl 1,
+  · exact ⟨1 / 2, hhalf, le_refl _,
       lt_of_le_of_lt (not_lt.mp hpos) (div_pos hnum (by linarith))⟩
 
 /-! ## §10  The conditional theorem: an exact least upper bound
@@ -983,13 +1072,78 @@ theorem leastPair_specGap_lower {μ ε c ρ s : ℝ} (hμ1 : μ < 1)
   have : 0 ≤ s / ρ - (1 - μ) / (1 + μ + c * ε) := by rw [hexp]; exact hnn
   linarith
 
+/-- **The spectral interface.**  This is the only thing the lower half assumes,
+and it is deliberately written so that nothing from this development appears in
+it: no `μ`, no pair, no concentration, no congruence.  It says that if some
+vector orthogonal to every strictly positive `Ω` has quadratic form at least
+`b‖x‖²`, and all row sums are at most `a`, then the ratio is at least `b/a`.
+
+That is Perron--Frobenius (the root is simple, with a positive eigenvector, and
+is at most the largest row sum) together with the variational characterisation
+of the second eigenvalue of a symmetric matrix, packaged as one statement.  It
+is an *interface* obligation, not a mathematical one: both facts are standard and
+elementary, and neither is currently available in the pinned Mathlib in a form
+that applies to a `Matrix`-level definition of the ratio.  We therefore carry it
+rather than pretend it is discharged. -/
+abbrev SpectralInterface (r : Matrix n n ℝ → ℝ) : Prop :=
+  ∀ (T : Matrix n n ℝ) (b a : ℝ), 0 < a → (∀ i j, 0 < T i j) →
+    (∀ Ω : n → ℝ, (∀ i, 0 < Ω i) → ∃ x : n → ℝ, x ≠ 0 ∧
+      (∑ i, Ω i * x i = 0) ∧ b * (∑ i, x i * x i) ≤ quad T x) →
+    (∀ i, ∑ j, T i j ≤ a) → b / a ≤ r T
+
+/-- **The lower bound at a pair, from the interface and nothing else.**  Given a
+matrix whose block on `{p,q}` is the least-correlated block and whose row sums
+are at most `a`, the ratio is at least `(1-μ)/a`.  Every step between the
+interface and this conclusion is proved: the witness, its non-vanishing, its
+orthogonality and its Rayleigh quotient. -/
+theorem lower_bound_at_pair_of_spec
+    {r : Matrix n n ℝ → ℝ} {T : Matrix n n ℝ} {μ a : ℝ} {p q : n} (hpq : p ≠ q)
+    (hμ0 : 0 < μ) (ha : 0 < a) (hTpos : ∀ i j, 0 < T i j)
+    (hTpp : T p p = 1) (hTqq : T q q = 1) (hTpq : T p q = μ) (hTqp : T q p = μ)
+    (hrow : ∀ i, ∑ j, T i j ≤ a) (hSpec : SpectralInterface r) :
+    (1 - μ) / a ≤ r T := by
+  refine hSpec T (1 - μ) a ha hTpos ?_ hrow
+  intro Ω hΩ
+  refine ⟨pairVec p q (Ω q) (Ω p), ?_, ?_, ?_⟩
+  · intro hzero
+    have h := congrFun hzero p
+    rw [pairVec_at_p] at h
+    simp only [Pi.zero_apply] at h
+    exact absurd h (hΩ q).ne'
+  · exact (leastPair_fluctuation_witness hpq hμ0.le hTpp hTqq hTpq hTqp Ω).1
+  · exact (leastPair_fluctuation_witness hpq hμ0.le hTpp hTqq hTpq hTqp Ω).2
+
+/-- **The concentrated lower bound, now a theorem.**  In the previous version
+this statement was a hypothesis of the main theorem.  It is now derived from the
+spectral interface, the block-preservation of §7, and the row-sum bound. -/
+theorem concentrated_lower_of_spec
+    {r : Matrix n n ℝ → ℝ} {M : Matrix n n ℝ} {μ : ℝ} {p q : n} (hpq : p ≠ q)
+    (hμ0 : 0 < μ) (hpos : ∀ a b, 0 < M a b) (hhi : ∀ a b, M a b ≤ 1)
+    (hpp : M p p = 1) (hqq : M q q = 1) (hpqv : M p q = μ) (hqpv : M q p = μ)
+    (hSpec : SpectralInterface r) {ε : ℝ} (hε0 : 0 < ε) (hε1 : ε ≤ 1 / 2) :
+    (1 - μ) / (1 + μ + (Fintype.card n) * ε) ≤
+      r (Matrix.diagonal (concentrate p q ε) * M *
+        Matrix.diagonal (concentrate p q ε)) := by
+  have hd0 : ∀ i, 0 < concentrate p q ε i := fun i => concentrate_pos hε0 p q i
+  have hcard : (0 : ℝ) ≤ (Fintype.card n) * ε := by positivity
+  refine lower_bound_at_pair_of_spec hpq hμ0 (by linarith) ?_ ?_ ?_ ?_ ?_ ?_ hSpec
+  · intro i j
+    rw [concentrate_apply]
+    exact mul_pos (mul_pos (hd0 i) (hpos i j)) (hd0 j)
+  · rw [concentrate_apply, concentrate_at_p, hpp]; ring
+  · rw [concentrate_apply, concentrate_at_q, hqq]; ring
+  · rw [concentrate_apply, concentrate_at_p, concentrate_at_q, hpqv]; ring
+  · rw [concentrate_apply, concentrate_at_q, concentrate_at_p, hqpv]; ring
+  · exact fun i => concentrate_rowSum_le hpq hε0 hε1 hμ0
+      (fun a b => (hpos a b).le) hhi hpp hqq hpqv hqpv i
+
 /-- **Every value below `(1-μ)/(1+μ)` is beaten inside the orbit.**  Not in its
 closure, and not in a limit: for each such `t` an explicit `ε` is produced, and
 the concentrating weight at that `ε` is strictly positive. -/
 theorem concentrated_specRatio_approaches
     {r : Matrix n n ℝ → ℝ} {M : Matrix n n ℝ} {μ c : ℝ} {p q : n}
     (hμ0 : 0 < μ) (hμ1 : μ < 1) (hc : 0 < c)
-    (hConc : ∀ ε : ℝ, 0 < ε → ε ≤ 1 →
+    (hConc : ∀ ε : ℝ, 0 < ε → ε ≤ 1 / 2 →
         (1 - μ) / (1 + μ + c * ε) ≤
           r (Matrix.diagonal (concentrate p q ε) * M *
             Matrix.diagonal (concentrate p q ε)))
@@ -1001,26 +1155,44 @@ theorem concentrated_specRatio_approaches
 
 /-! ### §10.3  The two halves compose -/
 
-/-- **The conditional main theorem.**  Granted Birkhoff's bound (`hBirkhoff`) and
-the concentrated lower bound (`hConc`), `(1-μ)/(1+μ)` is the *least* upper bound
-of the congruence orbit — an equality, not an estimate.
+/-- **The conditional main theorem.**  `(1-μ)/(1+μ)` is the *least* upper bound of
+the congruence orbit — an equality, not an estimate — granted two hypotheses,
+both visible in the type and neither an axiom of this development.
 
-Neither hypothesis is an axiom of this development, and neither is proved here.
-What is proved is that nothing else is needed: the reduction of Birkhoff's bound
-at `DMD` to its value at `M`, the elimination of the limit, and the composition
-into `IsLUB` are all mechanical. -/
-theorem congruenceRatio_isLUB_of_birkhoff
-    {r : Matrix n n ℝ → ℝ} {M : Matrix n n ℝ} {μ c : ℝ} {p q : n}
-    (hμ0 : 0 < μ) (hμ1 : μ < 1) (hc : 0 < c)
-    (hlo : ∀ a b, μ ≤ M a b) (hhi : ∀ a b, M a b ≤ 1)
+**The name states both, deliberately.**  The previous version was called
+`congruenceRatio_isLUB_of_birkhoff` while its type carried a second hypothesis.
+A name that advertises one import while the statement takes two is the same
+defect this module documents elsewhere, one level up: not a false theorem, but a
+label that says less than the type.
+
+The two imports are not of the same kind, and the difference decides what work
+remains:
+
+* `hBirkhoff` is a **mathematical** import — the Birkhoff–Hopf contraction
+  bound, a real theorem that nobody here has proved.
+* `hSpec` is an **interface** import.  Its content (Perron–Frobenius, and the
+  variational characterisation of the second eigenvalue of a symmetric matrix)
+  is standard and elementary; what is missing is a bridge from those facts to a
+  `Matrix`-level definition of the ratio, which the pinned Mathlib does not
+  supply.  The debt is on the bridge, not on the mathematics.
+
+Everything between them is proved: the transport of Birkhoff's bound from `M` to
+every `DMD`, the fluctuation witness with its non-vanishing, its orthogonality
+and its Rayleigh quotient, the row-sum bound, the explicit `ε`, and the assembly
+into `IsLUB`.  In particular the concentrated lower bound, which the previous
+version assumed outright, is now `concentrated_lower_of_spec`. -/
+theorem congruenceRatio_isLUB_of_birkhoff_of_spectralInterface
+    {r : Matrix n n ℝ → ℝ} {M : Matrix n n ℝ} {μ : ℝ} {p q : n} (hpq : p ≠ q)
+    (hμ0 : 0 < μ) (hμ1 : μ < 1)
+    (hpos : ∀ a b, 0 < M a b) (hlo : ∀ a b, μ ≤ M a b) (hhi : ∀ a b, M a b ≤ 1)
+    (hpp : M p p = 1) (hqq : M q q = 1) (hpqv : M p q = μ) (hqpv : M q p = μ)
     (hBirkhoff : ∀ (T : Matrix n n ℝ) (φ : ℝ), 0 < φ → φ ≤ 1 →
         (∀ i j k l, φ * (T j k * T i l) ≤ T i k * T j l) →
         r T ≤ (1 - Real.sqrt φ) / (1 + Real.sqrt φ))
-    (hConc : ∀ ε : ℝ, 0 < ε → ε ≤ 1 →
-        (1 - μ) / (1 + μ + c * ε) ≤
-          r (Matrix.diagonal (concentrate p q ε) * M *
-            Matrix.diagonal (concentrate p q ε))) :
+    (hSpec : SpectralInterface r) :
     IsLUB (congrOrbit r M) ((1 - μ) / (1 + μ)) := by
+  have hcard : (0 : ℝ) < (Fintype.card n) := by
+    exact_mod_cast Fintype.card_pos_iff.mpr ⟨p⟩
   constructor
   · intro x hx
     exact congrOrbit_upper_of_birkhoff hμ0 hμ1.le hlo hhi hBirkhoff x hx
@@ -1028,7 +1200,9 @@ theorem congruenceRatio_isLUB_of_birkhoff
     by_contra hcon
     push_neg at hcon
     obtain ⟨x, hxmem, hxgt⟩ :=
-      concentrated_specRatio_approaches (p := p) (q := q) hμ0 hμ1 hc hConc hcon
+      concentrated_specRatio_approaches (p := p) (q := q) hμ0 hμ1 hcard
+        (fun ε hε0 hε1 => concentrated_lower_of_spec hpq hμ0 hpos hhi hpp hqq
+          hpqv hqpv hSpec hε0 hε1) hcon
     exact absurd (hy hxmem) (not_le.mpr hxgt)
 
 /-- Non-vacuity, second half: the value the theorem pins is strictly positive
