@@ -83,8 +83,8 @@ theorem perronValue_unique {T : Matrix n n ℝ} (hpos : ∀ i j, 0 < T i j)
     {w : n → ℝ} (hw : ∀ i, 0 < w i) {mu : ℝ}
     (hwE : ∀ i, ∑ j, T i j * w j = mu * w i) :
     mu = perronValue T :=
-  ((pos_eigenvector_unique hpos hw (perronVec_pos hpos) hwE
-    (perronVec_eigen hpos)).1).symm
+  (pos_eigenvector_unique hpos hw (perronVec_pos hpos) hwE
+    (perronVec_eigen hpos)).1
 
 /-! ## §2  The two estimates the bridge needs -/
 
@@ -202,8 +202,20 @@ theorem matrixSpecRatio_spectralInterface :
   have hlam : 0 < perronValue T := perronValue_pos hTpos
   have hla : perronValue T ≤ a := perronValue_le_of_rowSum_le hTpos hrow
   have hgap : 0 ≤ specGap hsymm (perronValue T) := specGap_nonneg hsymm _
-  rw [matrixSpecRatio_eq hsymm hTpos, specRatio, div_le_div_iff ha hlam]
-  nlinarith [hb, hla, hlam, ha, hgap]
+  rw [matrixSpecRatio_eq hsymm hTpos, specRatio]
+  have hla0 : perronValue T ≠ 0 := ne_of_gt hlam
+  have ha0 : a ≠ 0 := ne_of_gt ha
+  have hexp : specGap hsymm (perronValue T) / perronValue T - b / a
+      = (specGap hsymm (perronValue T) * a - b * perronValue T)
+        / (perronValue T * a) := by
+    field_simp
+    ring
+  have hnum : 0 ≤ specGap hsymm (perronValue T) * a - b * perronValue T := by
+    nlinarith [hb, hla, hlam, ha, hgap]
+  have hdiff : 0 ≤ specGap hsymm (perronValue T) / perronValue T - b / a := by
+    rw [hexp]
+    exact div_nonneg hnum (le_of_lt (mul_pos hlam ha))
+  linarith
 
 /-! ## §4  The main theorem, with one external hypothesis -/
 
