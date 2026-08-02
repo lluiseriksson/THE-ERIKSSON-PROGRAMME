@@ -20,7 +20,9 @@
     "manifest_count": 623,
     "error_count": 4134,
     "exit_code": 1,
-    "failed_log_sha256": "99218ca81d34d30061406bf2240c72fd1406e04a80a8b6a0ea7b9ba1397c15e4"
+    "failed_log_sha256": "99218ca81d34d30061406bf2240c72fd1406e04a80a8b6a0ea7b9ba1397c15e4",
+    "failed_log_byte_representation": "raw downloaded GitHub Actions log bytes",
+    "failed_log_normalization": "none"
   },
   "local_reproduction": {
     "recorded_utc": "2026-08-02T13:53:59.9753091Z",
@@ -36,7 +38,9 @@
     "manifest_count": 623,
     "error_count": 3950,
     "exit_code": 1,
-    "output_sha256": "3faf8ddb68e67a4d34c39e6b107b4674c4316f2ee8e1066aad6a4353201e1e15"
+    "output_sha256": "3faf8ddb68e67a4d34c39e6b107b4674c4316f2ee8e1066aad6a4353201e1e15",
+    "output_byte_representation": "raw captured Windows transcript bytes",
+    "output_normalization": "none"
   },
   "stabilized_local_reproduction": {
     "recorded_utc": "2026-08-02T14:07:29.8152079Z",
@@ -49,7 +53,9 @@
     "invalid_manifest_count": 584,
     "error_count": 3814,
     "exit_code": 1,
-    "output_sha256": "646d03015bd4adad0222809bc71bfa160d74dcc94fb29209f4fce20bd343c7a0"
+    "output_sha256": "646d03015bd4adad0222809bc71bfa160d74dcc94fb29209f4fce20bd343c7a0",
+    "output_byte_representation": "raw captured Windows transcript bytes",
+    "output_normalization": "none"
   },
   "sanctioned_linux_recomputation": {
     "workflow_run_id": 30751762660,
@@ -61,7 +67,9 @@
     "guard_status": "PASS",
     "exit_code": 0,
     "first_cause": null,
-    "decision_record_sha256": "d27ff57051321d0ff03c00c4fe321e6b3766087abba3203ed97aa4ebcced478b"
+    "decision_record_sha256": "d27ff57051321d0ff03c00c4fe321e6b3766087abba3203ed97aa4ebcced478b",
+    "decision_record_byte_representation": "raw downloaded JSON artifact bytes",
+    "decision_record_normalization": "none"
   },
   "case_normalized_linux_recomputation": {
     "workflow_run_id": 30751963063,
@@ -72,7 +80,9 @@
     "guard_status": "PASS",
     "exit_code": 0,
     "first_cause": null,
-    "decision_record_sha256": "6ff9bfad13ea428447b1f8b394a9fe9d41435f5d95cd9f7692f008a2c8a06ca0"
+    "decision_record_sha256": "6ff9bfad13ea428447b1f8b394a9fe9d41435f5d95cd9f7692f008a2c8a06ca0",
+    "decision_record_byte_representation": "raw downloaded JSON artifact bytes",
+    "decision_record_normalization": "none"
   },
   "downstream_test_debt": {
     "workflow_run_id": 30751963063,
@@ -83,9 +93,66 @@
   },
   "baseline": {
     "path": ".github/run-manifest-debt-baseline.json",
-    "sha256": "b846059fb0c6525999582132c3a945ad3b1dfbaa28faeec41a4f0ea3769a3d22",
+    "encoding": "UTF-8 without BOM",
+    "sha256_by_byte_representation": {
+      "git_blob_lf": "09ca858cd7bef66b4b78e6ca2199a17add3a6064b5483e54a7cf0d6c25dfce0e",
+      "windows_checkout_crlf": "b846059fb0c6525999582132c3a945ad3b1dfbaa28faeec41a4f0ea3769a3d22"
+    },
+    "normalization": {
+      "git_blob_lf": "Replace every CRLF byte pair (0d0a) with LF (0a); leave every other byte unchanged.",
+      "windows_checkout_crlf": "Starting from Git blob/LF bytes, replace every LF byte (0a) with CRLF (0d0a); leave every other byte unchanged."
+    },
     "manifest_count": 623,
     "error_count": 3814
+  },
+  "audit_reopen_c1_c2": {
+    "pre_fix_sha": "1a3cb1cd6a78043256854f310fc078171703dd02",
+    "c1_missing_comparison": {
+      "normal": {
+        "elapsed_seconds": 5.122,
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      "optimized": {
+        "elapsed_seconds": 5.177,
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      "manifest_count": 623,
+      "comparison_manifest_count": 0,
+      "current_error_count": 3760,
+      "frozen_ceiling": 3814
+    },
+    "c2_stale_decision": {
+      "preseeded_status": "PASS",
+      "pre_validator_command_exit_code": 128,
+      "record_survived_pre_fix": true,
+      "record_state_after_fix": "absent",
+      "publishable_as_current_decision_after_fix": false
+    },
+    "post_fix_comparison_attacks": {
+      "normal": {
+        "missing_root_exit_code": 2,
+        "empty_root_exit_code": 2
+      },
+      "optimized": {
+        "missing_root_exit_code": 2,
+        "empty_root_exit_code": 2
+      },
+      "first_cause_prefix": "comparison guard:"
+    }
+  },
+  "frozen_pr_body": {
+    "path": ".github/PULL_REQUEST_BODY_RUN_MANIFEST_GUARD_20260802.md",
+    "encoding": "UTF-8 without BOM",
+    "sha256_by_byte_representation": {
+      "git_blob_lf": "7eecefbe492a80317e85f4b4cc360109e334bb3905cd6b9d5e2808387a64198c",
+      "windows_checkout_crlf": "5fc5e087456b3fcef6235257ce1fd813aff2910b2b65c337585b59df911e8143"
+    },
+    "normalization": {
+      "git_blob_lf": "Replace every CRLF byte pair (0d0a) with LF (0a); leave every other byte unchanged.",
+      "windows_checkout_crlf": "Starting from Git blob/LF bytes, replace every LF byte (0a) with CRLF (0d0a); leave every other byte unchanged."
+    }
   },
   "local_light_limits": {
     "max_seconds": 30,

@@ -23,12 +23,14 @@ python scripts/validate_run_manifests.py --require-nonempty
 The published main run
 [30748288338](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/30748288338)
 failed in that step at 623 files and 4,134 errors, before every later control
-step. Its failed log has SHA-256
+step. Its failed log has SHA-256 over the raw downloaded GitHub Actions log
+bytes, with no normalization,
 `99218ca81d34d30061406bf2240c72fd1406e04a80a8b6a0ea7b9ba1397c15e4`.
 
 An independent Windows run of the exact command at the same SHA returned exit
 1, 623 files and 3,950 errors in 8.866 seconds, using one Python process, no
-pool, and 27.535 MiB peak RSS. The output had SHA-256
+pool, and 27.535 MiB peak RSS. The raw captured Windows transcript bytes,
+with no normalization, had SHA-256
 `3faf8ddb68e67a4d34c39e6b107b4674c4316f2ee8e1066aad6a4353201e1e15`.
 The 184-error difference was itself a validator defect: Windows path separators
 were treated as filename characters on POSIX, and raw text hashes depended on
@@ -40,7 +42,8 @@ path case explicitly. The initial platform-stable baseline froze 3,814 errors;
 the final validator removes another 54 uppercase-digest false positives and
 observes 3,760 active errors without raising that baseline.
 The instrumented Windows run took 5.486 seconds, one process, no pool, and
-29.113 MiB peak RSS; its output SHA-256 is
+29.113 MiB peak RSS; the SHA-256 of its raw captured transcript bytes, with no
+normalization, is
 `646d03015bd4adad0222809bc71bfa160d74dcc94fb29209f4fce20bd343c7a0`.
 A WSL run over mounted NTFS was stopped after it exceeded 30 seconds; no later
 global scan was run locally. Linux recomputation is delegated to the PR's
@@ -50,15 +53,17 @@ The sanctioned Ubuntu recomputation in PR run
 [30751762660](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/30751762660)
 matched the frozen aggregate exactly: 623 manifests, 584 with inherited debt,
 and 3,814 strict errors. Its uploaded decision record reports `PASS`, exit code
-0, no first cause, and every class count; the JSON artifact content has
-SHA-256 `d27ff57051321d0ff03c00c4fe321e6b3766087abba3203ed97aa4ebcced478b`.
+0, no first cause, and every class count; the raw downloaded JSON artifact
+bytes, with no normalization, have SHA-256
+`d27ff57051321d0ff03c00c4fe321e6b3766087abba3203ed97aa4ebcced478b`.
 This agreement checks recomputability of the delta decision; it is not evidence
 that any scientific aggregate is correct.
 
 A second sanctioned run,
 [30751963063](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/30751963063),
 confirmed the case-normalized reduction to 3,760 errors with 584 invalid
-manifests. Its decision JSON has SHA-256
+manifests. Its raw downloaded decision-JSON bytes, with no normalization, have
+SHA-256
 `6ff9bfad13ea428447b1f8b394a9fe9d41435f5d95cd9f7692f008a2c8a06ca0`.
 
 Root cause has two layers:
@@ -183,8 +188,11 @@ workflow guard:
   publications become protected automatically;
 - rejects deletion of any baseline publication;
 - rejects a change to its run identifier or official `claim_scope`/`scope`;
-- writes `RUNNING` before evaluation, then a JSON `PASS` or `FAIL` with exit
-  code and first cause, so an old PASS cannot survive a failed run;
+- invalidates any decision record before checkout or comparison-base
+  materialization, and the guard runner repeats that invalidation as its first
+  effective action;
+- writes `RUNNING` on entry to the Python validator, then a JSON `PASS` or
+  `FAIL` with exit code and first cause;
 - uses explicit return codes and exceptions; no decision depends on `assert`.
 
 The job name is deliberately structural. It does not claim semantic honesty,
@@ -192,10 +200,57 @@ and it remains separately observable when the broader `test` job is red for a
 different reason.
 
 The executable adversarial harness produces the same decisions under normal
-Python and `python -O`: exact base PASS; new malformed REJECTED; inherited debt
-increase REJECTED; debt reduction PASS; deletion REJECTED; official-title
-replacement REJECTED; reintroduction of repaired debt REJECTED; stale PASS
-INVALIDATED.
+Python and `python -O`: exact base PASS; missing and empty comparison roots
+REJECTED_BY_GUARD_CLAUSE with exit 2 and an explicit first cause; new malformed
+REJECTED; inherited debt increase REJECTED; cross-manifest debt transfer
+REJECTED; debt reduction PASS; deletion REJECTED; official-title replacement
+REJECTED; reintroduction of repaired debt REJECTED; stale PASS INVALIDATED.
+The separate workflow harness pre-seeds `PASS`, forces `git worktree add` to
+exit 128 before the validator, and observes the decision-record state as
+`ABSENT`; `if-no-files-found: error` prevents that absence from becoming a
+published decision. No sentinel is inferred from existence: absent,
+empty/non-integer, non-zero integer, and zero integer remain distinct states.
+
+### Fresh-audit C1/C2 reproduction and repair
+
+The audit-reopen defects were reproduced before repair at
+`1a3cb1cd6a78043256854f310fc078171703dd02` on the recorded Windows host with
+CPython 3.12.6 and Git 2.43.0.windows.1, one process and no pool. With an
+unresolvable comparison path, the real 623-manifest tree returned `PASS`/0 in
+5.122 seconds under normal Python and 5.177 seconds under `python -O`; the
+comparison measured zero manifests and the decision fell back from 3,760
+active errors to the frozen 3,814-error ceiling. Separately, a pre-seeded
+decision JSON containing `PASS` survived a deliberately invalid comparison ref
+after `git worktree add` returned 128, so `always()` would still find it.
+
+After repair, nonexistent and empty comparison roots both abort at their
+explicit `comparison guard` clause with exit 2, `FAIL`, and that clause as the
+first cause in normal and optimized modes. The valid two-tree branch remains
+the per-key intersection
+`min(frozen_allowed[key], comparison_allowed[key])`. The pre-validator exit-128
+attack now leaves the record absent and therefore not publishable as a current
+decision.
+
+### Text baseline hash regimes
+
+The baseline is UTF-8 without BOM. SHA-256
+`09ca858cd7bef66b4b78e6ca2199a17add3a6064b5483e54a7cf0d6c25dfce0e`
+identifies the Git blob/LF bytes. SHA-256
+`b846059fb0c6525999582132c3a945ad3b1dfbaa28faeec41a4f0ea3769a3d22`
+identifies the Windows checkout/CRLF bytes. The exact LF normalization replaces
+every CRLF byte pair (`0d0a`) with LF (`0a`) and leaves all other bytes
+unchanged; the declared CRLF representation starts from those LF bytes and
+replaces every LF byte with CRLF. These are two representation-specific
+hashes, not one unqualified “baseline hash”; the machine-readable convention
+is frozen in `.github/run-manifest-debt-baseline.hashes.json`.
+
+The frozen PR body uses the same declared transformations. Its Git blob/LF
+SHA-256 is
+`7eecefbe492a80317e85f4b4cc360109e334bb3905cd6b9d5e2808387a64198c`;
+its Windows checkout/CRLF SHA-256 is
+`5fc5e087456b3fcef6235257ce1fd813aff2910b2b65c337585b59df911e8143`.
+The authoritative labels and exact normalization are stored beside it in
+`.github/PULL_REQUEST_BODY_RUN_MANIFEST_GUARD_20260802.sha256`.
 
 ## Guarantee boundary
 
