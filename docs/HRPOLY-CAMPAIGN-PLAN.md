@@ -338,6 +338,23 @@ The next positive route must expose a restricted/quotient physical sector or
 add a further positive term (most significantly an interacting Wilson
 Hessian).  Extension of the no-go witness to arbitrary `N'` remains open.
 
+**W-4e — block-periodic no-go for every `N' > 0`: CLOSED NEGATIVELY
+(2026-08-02, ledger Addendum 579,
+`PhysicalCriticalRescalingNoGoAllCoarse.lean`).**  Repeating the transverse
+square profile independently in every `L = 2M` block gives an exact family
+in `ker Q` and in the flat-divergence kernel for every positive coarse side.
+Its curvature energy is
+`8 N' ((L N')^(d-1)) ‖w‖²`, while its norm is
+`(L N')^d ‖w‖²`; hence the Rayleigh quotient is still exactly `8/L`.
+Lean therefore proves
+`¬ VolumeUniformCriticalRescaledFlatPoincareGate N' Nc rho` for all
+`N' > 0` and `Nc >= 2`.  The full-domain flat route is now formally closed,
+not merely at one coarse site.  The live positive alternatives are a
+physically justified restricted/quotient sector or an additional positive
+interacting-Hessian term controlling this transverse family.
+The associated paper is a standalone no-go manuscript under
+`papers/critical-rescaling-no-go-all-coarse/`, not a v0.8 of the CT paper.
+
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
 coercivity are all three proved for the physical shell".  FALSE as stated:

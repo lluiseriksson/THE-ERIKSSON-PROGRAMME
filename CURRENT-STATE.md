@@ -83,17 +83,22 @@ single-probe estimate is `‖Q delta_p v‖ <= L^-d L ‖v‖`; hence in `d=4` t
 critical map obeys `‖(LQ) delta_p v‖ <= L^-2 ‖v‖`, and its Gram operator has
 entrywise amplitude `L^-4` with fine range `3L`.  The kernel/ball/range/tilt
 side is now closed.  Only the volume-uniform all-mode coercivity gate remains
-load-bearing for the flat route.
+load-bearing at this checkpoint; W-4d/W-4e below audit and close that proposal.
 
-**W-4d DONE — critical full-space gate fails at one coarse site**
-(2026-08-02, `PhysicalCriticalRescalingNoGo.lean`, ledger Addendum 578).
-For `N' = 1`, every even scale `L = 2M`, and `Nc >= 2`, an explicit
-transverse square mode obeys `(LQ)A = 0` exactly while its flat-Hodge
-Rayleigh quotient is `8/L`.  Hence the current
-`VolumeUniformCriticalRescaledFlatPoincareGate 1 Nc rho` is false.  The next
-positive theorem cannot be the present full-space gate unchanged: it must
-restrict/quotient the domain or add a further positive operator such as an
-interacting Hessian.  No corresponding no-go for every `N'` is claimed yet.
+**W-4e DONE — critical full-space gate fails at every positive coarse side**
+(2026-08-02, `PhysicalCriticalRescalingNoGoAllCoarse.lean`, ledger Addendum
+579).  For every `N' > 0`, every even scale `L = 2M`, and `Nc >= 2`, an
+explicit block-periodic transverse square mode obeys both `(LQ)A = 0` and
+zero flat divergence exactly.  Its flat-Hodge Rayleigh quotient remains
+`8/L`: the factor `N'` in the interface count cancels against the total fine
+side.  Hence
+`VolumeUniformCriticalRescaledFlatPoincareGate N' Nc rho` is false for every
+positive coarse side.  The next positive theorem cannot be the present
+full-space gate unchanged: it must restrict/quotient the domain or add a
+further positive operator such as an interacting Hessian.
+The result is written as the separate manuscript
+`papers/critical-rescaling-no-go-all-coarse/critical_rescaling_no_go_all_coarse.tex`;
+it is not a v0.8 revision of the Combes--Thomas paper.
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at

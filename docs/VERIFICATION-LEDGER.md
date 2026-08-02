@@ -29645,3 +29645,48 @@ completed successfully (8177 jobs), and the separately rebuilt
 two focused oracles report exactly `[propext, Classical.choice, Quot.sound]`
 for all seven audited declarations.  `lake build YangMillsCore` completed
 successfully (8474 jobs).
+
+## Addendum 579 (2026-08-02, **critical full-space no-go at every coarse side**)
+
+**FORMALIZED DELTA.**  `PhysicalCriticalRescalingNoGoAllCoarse.lean`
+removes the remaining `N' = 1` boundary from Addendum 578.  On every positive
+coarse torus, repeat the transverse square profile in each fine `L = 2M`
+block.  The resulting explicit cochain satisfies
+
+    Q_L A = 0,             (L Q_L) A = 0,
+    div A = 0,
+    ‖dA‖² = 8 N' (L N')^(d-1) ‖w‖²,
+    ‖A‖²  =       (L N')^d     ‖w‖².
+
+Thus its flat-Hodge Rayleigh quotient is exactly `8/L`, independently of
+`N'`.  For `Nc >= 2`, inserting a nonzero Lie-coordinate vector proves
+
+    ¬ VolumeUniformCriticalRescaledFlatPoincareGate N' Nc rho
+
+for every `N' > 0`.
+
+**INTERPRETATION.**  The obstruction is a whole block-periodic transverse
+sector, not an exceptional one-site mode.  The present full-domain flat
+coercivity proposal is therefore formally closed at all finite coarse
+volumes.  The critical-scale kernel/ball/range/tilt results remain valid.
+A positive continuation must use a physically justified restriction or
+quotient, or add a positive operator—most naturally an interacting Wilson
+Hessian—that gives uniform energy to this sector.
+
+**BOUNDARY.**  This is a no-go for the current flat combined form and proves
+no positive coercivity, root localization, infinite-volume limit, continuum
+limit, or mass gap.  It does not establish optimality of the `L^-4` kernel
+amplitude; “critical-scale” remains the correct terminology.
+
+**PAPER ARTIFACT.**  The separate eight-page manuscript
+`papers/critical-rescaling-no-go-all-coarse/critical_rescaling_no_go_all_coarse.pdf`
+presents this result as an autonomous no-go contribution, not as a v0.8 of
+the Combes--Thomas paper.  The byte-identical delivery copy under
+`output/pdf/` has SHA-256
+`B94A123D04126F94FB05A0D622092B849B7C237DC7090BC848704F2FEB66AC33`.
+
+**CHECKED.**  `lake build
+YangMills.RG.PhysicalCriticalRescalingNoGoAllCoarse` completed successfully
+(8178 jobs); the focused six-declaration oracle reports exactly `[propext,
+Classical.choice, Quot.sound]` for every headline; and `lake build
+YangMillsCore` completed successfully (8475 jobs).
