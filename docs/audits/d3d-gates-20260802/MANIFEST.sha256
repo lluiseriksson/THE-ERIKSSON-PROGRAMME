@@ -1,0 +1,10 @@
+# Columns: sha256  bytes  name
+5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9        1  j12-normal.exit.txt
+9cf2d47aa4503a9932ede44dac8ab94cf7768bf98d0309a95b6a04bc7ec73265      923  j12-normal.log
+1544fb8f90b09fa37d42edae0815870b355414a8e103ca01da07fc27ca2754bc      130  j12-normal.resources.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855        0  j12-normal.stderr.log
+5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9        1  j12-optimized.exit.txt
+9cf2d47aa4503a9932ede44dac8ab94cf7768bf98d0309a95b6a04bc7ec73265      923  j12-optimized.log
+be0484b08b46096aa8976d36e2cbe59cda203035d1630316975ab0995342083e      128  j12-optimized.resources.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855        0  j12-optimized.stderr.log
+692edf65142e411b8a819384c2af064a893b853354fd02ad507b991956b234d3      602  provenance.txt

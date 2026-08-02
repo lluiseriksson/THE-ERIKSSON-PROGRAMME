@@ -1,0 +1,14 @@
+==========================================================================
+GATE J12 --- COMPOSITION ORDER  (docs/DOBRUSHIN-D3-CHARTER.md, D-3d)
+==========================================================================
+J12  delta(E_{i2} E_{i1} f) <= B_{i2} B_{i1} delta f,  B_{i1} FIRST.
+     Exhaustive over all Boolean observables and all ordered pairs.
+     observables tested: 16, ordered pairs: 4
+     CORRECT order  worst (lhs - rhs) = +0.000000e+00
+     CORRECT order  attained (== 0)   = True
+     REVERSED order violations        = 10
+     REVERSED order worst margin      = +5.000000e-01
+     worst reversed witness: i1=1 i2=0 coord=1  lhs=0.500000 rhs=0.000000
+==========================================================================
+checks performed: 4 (expected 4)
+VERDICT: PASS -- the composition order is B_{i_m} ... B_{i_1}, the bound is attained, and the reversed product is refuted by 0.5

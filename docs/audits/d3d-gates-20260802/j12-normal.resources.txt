@@ -1,0 +1,7 @@
+wall_seconds=0.11
+peak_rss_mib=8.2
+rss_samples=1
+sampling_interval_ms=50
+processes=1
+worker_pool=none
+interpreter=CPython 3.12.6

@@ -1,0 +1,11 @@
+script      scripts/judge_dobrushin_d3d.py
+blob        04e1db8cce454b223fd9a94e99065c3ff7c8ad3b
+sha256      f735a3acdbc06616e69d31da72daeac31a931d66037b51cb34c1bb5128462790
+interpreter CPython 3.12.6
+host        Windows 11, owner desktop
+command     python scripts/judge_dobrushin_d3d.py       (normal)
+            python -O scripts/judge_dobrushin_d3d.py    (optimized)
+
+PRE-REGISTERED in 698838cf BEFORE this run.  The bytes that produced these
+transcripts are the bytes that were pre-registered: the blob above is the one
+committed in 698838cf, unchanged.  No prediction was adjusted after the run.
