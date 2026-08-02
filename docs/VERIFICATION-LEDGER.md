@@ -30259,3 +30259,13 @@ repair is the exact interval identity `tanh(x) = sinh(x) / cosh(x)`, in a later
 commit.  Full details are preserved in
 `INC-SPATIAL-VACUUM-PAIRING-IV-001.md`.  No Lean, Lake, oracle, Colab, or
 sustained computation ran.
+
+## Addendum 593 (2026-08-02, **TASK 14: interval API repair fixed**)
+
+**REPAIR COMMITTED BEFORE RE-EXECUTION.**  The unavailable interval call in
+Addendum 592 is replaced only by the exact identity
+`tanh(beta) = sinh(beta) / cosh(beta)`, using primitives exposed by mpmath
+1.3.0's interval context.  The point formula, precision levels, cells,
+pairings, product checks, interval positivity boolean, and `OBSERVED`
+classification are unchanged.  At the time of this addendum the repaired
+script has not run and no recovery result is claimed.

@@ -98,7 +98,10 @@ def interval_extreme() -> dict[str, str]:
     iv.dps = 100
     beta = iv.mpf(EXTREME_BETA)
     fraction = iv.mpf(EXTREME_FRACTION)
-    a = -iv.log(iv.tanh(beta)) / 2
+    # mpmath 1.3.0's interval context has no `tanh` method.  Keep the exact
+    # same formula through interval-supported primitives.
+    tanh_beta = iv.sinh(beta) / iv.cosh(beta)
+    a = -iv.log(tanh_beta) / 2
     gamma = fraction * a
     periodic = []
     antiperiodic = []
