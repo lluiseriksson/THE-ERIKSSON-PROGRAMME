@@ -99,9 +99,12 @@ recorded before a replacement campaign is run.
 
 ## Evidence labels
 
-- **EXACTO**: proved directly by checked Lean terms over concrete definitions.
-- **CERTIFICADO**: conditional on an explicitly named genuine analytic input.
-- **VERIFICADO**: reproduced command/output evidence only.
+- **EXACTO**: a statement proved directly by checked proof terms over concrete
+  definitions.
+- **CERTIFICADO**: a committed, reproducible artefact or transcript that
+  transports the evidence for a claim.
+- **VERIFICADO**: numerical or instrumental evidence reproduced and checked.
+- **CONDICIONAL**: dependent on an explicitly named genuine analytic input.
 - **ABIERTO**: not discharged by the published artefact.
 
 Campaign results may not alter the constants `1/2`, `3/4`, `1/16`, or
