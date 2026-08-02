@@ -31454,3 +31454,57 @@ The runtime was disconnected and deleted.  High RAM was then selected
 explicitly before opening the successful independent runtime recorded in the
 next addendum.  This allocation incident says nothing about either scalar
 identity or any spectral obligation; **SESIÓN COLAB LIBRE**.
+
+## Addendum 624 (2026-08-02, **TASK 14: angular log-kernel identities full PASS**)
+
+**CERTIFIED INTERMEDIATE BRICK; ONE FRESH COLAB CLONE, NOT A TERMINAL
+DELIVERY AND NOT A SPECTRAL BOUND.**  Versioned runner SHA
+`551ee104760aae18f41efa27e2034905b86620b1` cloned the public repository
+afresh and checked out exact declaration/oracle SHA
+`3d7ea4c9d22504f09afa36c95706faea16451071`.  The accepted CPU/high-RAM
+runtime was Linux 6.6.122 x86_64 with glibc 2.35, Python 3.12.13, 8 Intel
+Xeon 2.20 GHz CPUs, `53467192 kB` RAM, and no GPU.  It verified Lean
+`v4.29.0-rc6` at commit `00659f8e6071d7e46131ed643bf8003b99b044e9`,
+mathlib `07642720480157414db592fa85b626dafb71355b`, and elan-installer
+SHA-256 `a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+
+All commands exited zero.  Isolated official cache acquisition took
+`110.289816 s`; `lake build YangMills.OS.SpatialVacuum` took `158.766380 s`
+and measured `8172` jobs; `lake build YangMillsCore` took `1027.396707 s`
+and measured `8467` jobs.  The live ledger baseline read by the versioned
+verifier was `8465`, so the measured delta was exactly two branch modules.
+The permanent `lake env lean oracle_check.lean` took `2173.747889 s`, and
+`python3 scripts/check_consistency.py` took `4.194156 s`, reporting zero
+Lean `sorry` and zero project axioms.  The complete accepted cell ran from
+UTC `2026-08-02T12:27:22.453641+00:00` to
+`2026-08-02T13:25:42.837296+00:00` (`3500.601 s` reported by Colab).
+
+The full oracle printed exactly the allowed axiom set
+`{propext, Classical.choice, Quot.sound}` for each of:
+`periodic_antiperiodic_log_norm_sums_lt`, `arcosh_circle_log_mixture`,
+`physical_arcosh_circle_log_mixture`, `circle_log_kernel_factorization`, and
+`circle_log_kernel_eq_log_norm`.  It printed no `sorryAx`, and the verifier
+rejected any nonstandard axiom anywhere in the permanent oracle output.
+
+The downloaded archive
+`C:\Users\lluis\Downloads\spatial_vacuum_full_artifacts (2).zip` is
+71565 bytes.  Its locally recomputed SHA-256
+`4f669811e66a5eb13796d0dec1e2cf7b7bdb390b8eca258b40278ce1293c8f72`
+matches the digest printed by Colab.  Streamwise local hashes matched every
+line of the included manifest:
+
+- `metadata.json` (1415 bytes):
+  `1c672c226f68e10a911b46edc84f1682f870fffe5dea26bfb527b00472964296`;
+- `transcript.txt` (468031 bytes):
+  `c91f66f55525b1fd8ea343d594a2254da20310205b0fc587bd0368a337f82f3c`;
+- `oracle_output.txt` (345210 bytes):
+  `a0e35364ad51b9eed17681dcb1bc67a0e0370d31b33f1629ecbd9f3d8a86dd39`;
+- `consistency_output.txt` (154 bytes):
+  `95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`.
+
+This certifies only the two exact pointwise scalar identities and the earlier
+finite log-grid/Stieltjes bricks.  It does not identify the physical vacuum
+products, prove their ordering, establish either the sharp odd-sector bound
+or the even non-Perron bound, handle the beta-zero endpoint, or prove the
+uniform `specRatio` theorem.  Clifford/Jordan--Wigner remains unopened.  The
+runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
