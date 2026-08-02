@@ -31437,3 +31437,20 @@ do not identify either physical vacuum, bound either spectral sector, handle
 the beta-zero endpoint, or prove the uniform `specRatio` target.  A complete
 oracle/core witness remains required after the declarations enter the oracle.
 The runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 623 (2026-08-02, **TASK 14: full-verifier standard-RAM allocation rejected**)
+
+**REJECTED ENVIRONMENT; NOT A LEAN FAILURE AND NOT A VERIFICATION WITNESS.**
+The first fresh Colab allocation for full-verifier runner SHA
+`551ee104760aae18f41efa27e2034905b86620b1` correctly checked out source SHA
+`3d7ea4c9d22504f09afa36c95706faea16451071`, but Colab assigned a standard
+2-CPU, `13286944 kB` runtime rather than the required CPU/high-RAM runtime.
+The run began at `2026-08-02T12:25:21.516891+00:00`; exact Lean installation
+completed, then the cell was interrupted during isolated
+`lake exe cache get` after `60.669 s`.  No Lean build, core, oracle, or
+consistency judge started, and no PASS or artifact hash is claimed.
+
+The runtime was disconnected and deleted.  High RAM was then selected
+explicitly before opening the successful independent runtime recorded in the
+next addendum.  This allocation incident says nothing about either scalar
+identity or any spectral obligation; **SESIÓN COLAB LIBRE**.
