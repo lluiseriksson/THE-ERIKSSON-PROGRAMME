@@ -349,6 +349,18 @@ def main():
     results[("prereg_blobs", "optimized")] = run(
         [sys.executable, "-O", "scripts/verify_prereg_blobs.py", "HEAD"],
         "prereg_blobs", "optimized")
+    results[("control_bytes", "normal")] = run(
+        [sys.executable, "scripts/check_no_control_bytes.py",
+         "--self-test"], "control_bytes", "normal")
+    results[("control_bytes", "optimized")] = run(
+        [sys.executable, "-O", "scripts/check_no_control_bytes.py",
+         "--self-test"], "control_bytes", "optimized")
+    results[("control_bytes_files", "normal")] = run(
+        [sys.executable, "scripts/check_no_control_bytes.py",
+         "papers/spatial-reconstruction/spatial_reconstruction.tex",
+         "YangMills/OS/SpatialOS.lean",
+         "YangMills/OS/SpatialReconstruction.lean",
+         "oracle_check.lean"], "control_bytes_files", "normal")
     results[("lean_decls", "normal")] = run(
         [sys.executable, "scripts/lean_decls.py"],
         "lean_decls", "normal")

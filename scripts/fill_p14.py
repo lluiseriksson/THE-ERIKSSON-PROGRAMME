@@ -65,6 +65,33 @@ def git_head():
     return r.stdout.strip() if r.returncode == 0 else None
 
 
+def git_blob(rev, path):
+    """The bytes of a path AS THE ANCHOR HOLDS THEM.
+
+    Comparing a measurement against the working tree is not enough: `HEAD` being
+    the anchor does not make the checkout equal to the anchor.  An uncommitted
+    edit would let the filler compute declarations and permalink lines from text
+    that the cited blob does not contain, and every check would pass while the
+    published links pointed at something else.  It also removes a platform
+    dependency: a Linux measurement hashes LF bytes while a Windows checkout may
+    present CRLF for a file git considers clean.  The blob is the object the
+    links cite, so the blob is what must match.
+    """
+    r = subprocess.run(["git", "show", "%s:%s" % (rev, path)], cwd=REPO,
+                       capture_output=True)
+    return r.stdout if r.returncode == 0 else None
+
+
+def sha256_bytes(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def tree_matches_anchor(anchor, paths):
+    r = subprocess.run(["git", "diff", "--quiet", anchor, "--"] + list(paths),
+                       cwd=REPO, capture_output=True)
+    return r.returncode == 0
+
+
 MODULES = {
     "SpatialOS": os.path.join(REPO, "YangMills", "OS", "SpatialOS.lean"),
     "SpatialReconstruction": os.path.join(REPO, "YangMills", "OS",
@@ -100,6 +127,18 @@ HEX40 = re.compile(r"[0-9a-fA-F]{40}")
 REGISTERED_JOBS_ABSOLUTE = 8469
 REGISTERED_JOBS_DELTA = 0
 
+# The baseline the v2 prediction was registered AGAINST.  Checking only that the
+# field is non-empty let `"baseline_anchor": "wrong"` through, so the number
+# 8469 was still floating free of any tree.
+REGISTERED_BASELINE_ANCHOR = "c90dc745ab8cd1ba7ddc02aa16fed3de339bf958"
+REGISTERED_BASELINE_JOBS = 8469
+
+TRACKED = ["YangMills/OS/SpatialOS.lean",
+           "YangMills/OS/SpatialReconstruction.lean",
+           "oracle_check.lean"]
+
+HEX64 = re.compile(r"[0-9a-fA-F]{64}")
+
 # The two blob digests the manuscript cites to certify the pre-registration.
 # They are NOT the anchor and must survive the anchor rewrite untouched; the
 # check that they do is what stops a shape-keyed rewriter from eating them.
@@ -134,6 +173,30 @@ def main():
     if missing:
         print("measurements file is missing required keys: %s"
               % ", ".join(missing))
+        print("manuscript NOT written")
+        return 2
+
+    # AND THEIR TYPES.  A complete file with `"jobs_before": "8469"` would still
+    # have died inside the arithmetic -- a crash, not a certified refusal, which
+    # is the boundary this script has already been caught on twice.
+    schema = []
+    for k in ("jobs_before", "jobs_after", "jobs_campaign_base", "core_errors",
+              "oracle_reports", "oracle_nonstandard", "sorry_count"):
+        schema.append((k, isinstance(meas[k], int) and not isinstance(
+            meas[k], bool) and meas[k] >= 0, "non-negative integer"))
+    for k in ("anchor", "baseline_anchor"):
+        schema.append((k, isinstance(meas[k], str)
+                       and HEX40.fullmatch(meas[k].strip()) is not None,
+                       "40-hex git sha"))
+    for k in ("sha256_SpatialOS", "sha256_SpatialReconstruction",
+              "sha256_oracle_check"):
+        schema.append((k, isinstance(meas[k], str)
+                       and HEX64.fullmatch(meas[k].strip()) is not None,
+                       "64-hex sha256"))
+    illtyped = [(k, want) for k, ok, want in schema if not ok]
+    if illtyped:
+        for k, want in illtyped:
+            print("measurements key %r is not a %s: %r" % (k, want, meas[k]))
         print("manuscript NOT written")
         return 2
 
@@ -262,14 +325,23 @@ def main():
                    head is not None and head.lower() == anchor))
     checks.append(("measurement declares the requested anchor",
                    str(meas.get("anchor", "")).lower() == anchor))
-    for key, path in (("sha256_SpatialOS", MODULES["SpatialOS"]),
-                      ("sha256_SpatialReconstruction",
-                       MODULES["SpatialReconstruction"]),
-                      ("sha256_oracle_check", ORACLE)):
-        checks.append(("measurement hash matches the file: %s" % key,
-                       sha256_file(path) == meas.get(key)))
-    checks.append(("baseline carries its own identity",
-                   str(meas.get("baseline_anchor", "")).strip() != ""))
+    # against the ANCHOR'S BLOBS, not against the checkout
+    for key, rel in (("sha256_SpatialOS", "YangMills/OS/SpatialOS.lean"),
+                     ("sha256_SpatialReconstruction",
+                      "YangMills/OS/SpatialReconstruction.lean"),
+                     ("sha256_oracle_check", "oracle_check.lean")):
+        blob = git_blob(anchor, rel)
+        checks.append(("anchor blob readable: %s" % rel, blob is not None))
+        checks.append(("measurement hash matches the ANCHOR BLOB: %s" % key,
+                       blob is not None and sha256_bytes(blob) == meas.get(key)))
+    checks.append(("the elaborated files are unmodified against the anchor",
+                   tree_matches_anchor(anchor, TRACKED)))
+    # and the baseline is THE registered one, not merely some string
+    checks.append(("baseline is the published v1.0 anchor",
+                   str(meas.get("baseline_anchor", "")).lower()
+                   == REGISTERED_BASELINE_ANCHOR))
+    checks.append(("baseline count is the registered v1.0 absolute",
+                   meas.get("jobs_before") == REGISTERED_BASELINE_JOBS))
 
     ran = 0
     failed = []

@@ -79,9 +79,48 @@ def offenders(path):
     return offenders_bytes(io.open(path, "rb").read())
 
 
+# Fixtures committed with the guard, so its behaviour is reproducible from the
+# anchor instead of resting on a run someone did by hand once.
+FIXTURES = [
+    ("LF only", b"a\nb\n", []),
+    ("CRLF only", b"a\r\nb\r\n", []),
+    ("tab", b"a\tb\n", []),
+    ("lone CR", b"a\rb", [0x0D]),
+    ("CR at end of file", b"a\r", [0x0D]),
+    ("BACKSPACE", b"a\x08b", [0x08]),
+    ("NUL", b"a\x00b", [0x00]),
+    ("DEL", b"a\x7fb", [0x7F]),
+    ("ESC", b"a\x1bb", [0x1B]),
+    ("mixed CRLF and lone CR", b"a\r\nb\rc\r\n", [0x0D]),
+]
+
+
+def selftest():
+    ran = 0
+    bad = []
+    for name, raw, expected in FIXTURES:
+        ran += 1
+        got = [b for b, _l, _c in offenders_bytes(raw)]
+        if got != expected:
+            bad.append("%s -> %r, expected %r" % (name, got, expected))
+    if ran != len(FIXTURES):
+        print("fixture counter disagrees: %d of %d" % (ran, len(FIXTURES)))
+        return 2
+    print("fixtures run: %d" % ran)
+    if bad:
+        for b in bad:
+            print("FAILED:", b)
+        return 1
+    print("all fixtures pass: CRLF is a line ending, a LONE CR is not")
+    return 0
+
+
 def main():
+    if len(sys.argv) == 2 and sys.argv[1] == "--self-test":
+        return selftest()
     if len(sys.argv) < 2:
         print("usage: check_no_control_bytes.py <file> [<file> ...]")
+        print("       check_no_control_bytes.py --self-test")
         return 2
     ran = 0
     bad = []
