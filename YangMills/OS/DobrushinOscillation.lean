@@ -7,6 +7,13 @@ Authors: Lluis Eriksson
 import Mathlib
 
 /-!
+
+> **STATUS AT THIS COMMIT: SOURCE, NOT RESULT.**  Nothing in this file has been
+> elaborated.  No declaration below is `Formalized` in the sense this repository
+> uses that word --- there is no compiled Lean declaration and no oracle entry
+> for any of them.  A pushed source is an object available to be checked; it is
+> not yet a result.  Do not cite, import, or count anything here until a focused
+> elaboration, a clean oracle and a reproduced hash exist for it.
 # D-3a — oscillation, and what a zero-sum signed mass can do against it
 
 Charter: `docs/DOBRUSHIN-D3-CHARTER.md`.  Gates

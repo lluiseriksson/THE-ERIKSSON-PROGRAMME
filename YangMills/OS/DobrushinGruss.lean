@@ -8,6 +8,13 @@ import Mathlib
 import YangMills.OS.DobrushinOscillation
 
 /-!
+
+> **STATUS AT THIS COMMIT: SOURCE, NOT RESULT.**  Nothing in this file has been
+> elaborated.  No declaration below is `Formalized` in the sense this repository
+> uses that word --- there is no compiled Lean declaration and no oracle entry
+> for any of them.  A pushed source is an object available to be checked; it is
+> not yet a result.  Do not cite, import, or count anything here until a focused
+> elaboration, a clean oracle and a reproduced hash exist for it.
 # The quarter constant: Popoviciu's variance bound, and where it is attained
 
 Charter: `docs/DOBRUSHIN-D3-CHARTER.md`.  Gate `judge_dobrushin_d3b.py` (J10q),
