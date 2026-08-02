@@ -77,6 +77,7 @@ theorem perronVec_eigen {T : Matrix n n ℝ} (hpos : ∀ i j, 0 < T i j) :
   rw [perronVec, perronValue, dif_pos hpos, dif_pos hpos]
   exact (exists_pos_eigenvector T hpos).choose_spec.choose_spec.2.2.2
 
+omit [DecidableEq n] in
 /-- **The choice is immaterial.**  Every strictly positive eigenvector of an
 entrywise positive matrix carries the same eigenvalue, so `perronValue` is a
 property of `T` and not an artefact of the choice made to define it.  This is
@@ -91,6 +92,7 @@ theorem perronValue_unique {T : Matrix n n ℝ} (hpos : ∀ i j, 0 < T i j)
 
 /-! ## §2  The two estimates the bridge needs -/
 
+omit [DecidableEq n] in
 /-- **The Perron value is at most any row-sum bound.**  Evaluate the eigenvalue
 equation at a coordinate where the Perron vector is largest. -/
 theorem perronValue_le_of_rowSum_le {T : Matrix n n ℝ} (hpos : ∀ i j, 0 < T i j)
@@ -117,9 +119,9 @@ theorem sum_mul_le_eucNorm_mul (x y : n → ℝ) :
   rw [PiLp.inner_apply]
   exact Finset.sum_congr rfl fun i _ => mul_comm _ _
 
+omit [DecidableEq n] [Nonempty n] in
 /-- The quadratic form, written as a pairing with one application of the
 kernel — the shape `norm_act_le_specGap` is stated in. -/
-omit [DecidableEq n] [Nonempty n] in
 theorem quad_eq_sum_act (T : Matrix n n ℝ) (x : n → ℝ) :
     quad T x = ∑ i, x i * act T x i := by
   unfold quad act
