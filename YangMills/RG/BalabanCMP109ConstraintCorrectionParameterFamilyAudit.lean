@@ -8,8 +8,6 @@ import YangMills.RG.BalabanCMP109ConstraintCorrectionParameterFamily
 /-!
 # Oracle audit for the parameter-uniform CMP109 correction
 
-PRE-VALIDATION: the source is present, its `.olean` has not yet been
-materialized, and the audit is not yet compiler-verified.
 -/
 
 #print axioms YangMills.RG.CMP109ConstraintCorrectionParameterFamilyData.contractionRate_lt_one

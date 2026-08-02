@@ -26610,3 +26610,67 @@ covariance certificate contains a nonempty-carrier witness.  The faithful
 repair is a proof-carrying localized-region subtype, not removal of that
 witness and not an off-index `if`.  This diagnosis does not increase the live
 18/41 producer numerator and does not construct a `TermSource`.
+
+## Addendum 534 (2026-08-02, **localized-region terminal repair GREEN**)
+
+The proof-carrying localized-region repair was replayed through the centered
+conditioned terminal UV endpoint in one fresh Colab Pro+ CPU/high-RAM clone
+from source checkpoint `a0bb88dd48c80b72d8e0b60a5715eed9221fef75`.
+The runtime opened at 2026-08-02 19:55:42 UTC with 50.99 GiB RAM and was
+disconnected and deleted after the evidence archive was downloaded.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The complete tracked
+core-import closure contained 2,200 sources.  The focal build exited zero
+with `Build completed successfully (8647 jobs).` after 2211.950 seconds;
+the audit exited zero after 26.170 seconds and printed four terminal
+declarations, each with exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The wrapper then emitted a false `FINAL_STATUS=FAIL STAGE=audit_axioms`:
+Lean had wrapped each axiom list over three physical lines, while the runner
+looked for the closing bracket only on the header line.  Both primary child
+exit codes were zero and all four complete lists are preserved in the
+archive.  The evidence archive was downloaded and independently rehashed on
+Windows with SHA-256
+`029cc428c8434849b018832bb0e43be17c6830c00cc1e7d5005c7464f56ffb3b`.
+The runner was subsequently repaired to normalize the complete audit block,
+reject unknown or forbidden axioms, and derive status only from recorded
+primary fields.
+
+The verified repair indexes the terminal family by
+`CMP116SourcePhysicalLocalizedRegion`, whose membership proof supplies the
+nonempty localized carrier required by the lower covariance certificate.
+All four centered-conditioned consumers still reach the same dimension-four
+`SingleScaleUVDecay` conclusion.  This removes the empty-carrier
+contradiction but does not discharge a new `PreEq136` field: the live
+numerator remains exactly 18/41 and no `TermSource` inhabitant is produced.
+
+## Addendum 535 (2026-08-02, **CMP109 parameter-uniform correction L2 GREEN**)
+
+`BalabanCMP109ConstraintCorrectionParameterFamily.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `de7c13a59083c2b2000bb722203f9afd22aaae5d`.  The runtime opened at
+2026-08-02 20:42:37 UTC with 50.99 GiB RAM and was disconnected and deleted
+immediately after the evidence archive was downloaded.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The focal build exited
+zero with `Build completed successfully (8511 jobs).` after 1794.795 seconds.
+The audit exited zero after 24.550 seconds; all four declarations depend
+exactly on `[propext, Classical.choice, Quot.sound]`.  The corrected sentinel
+recorded `focal_exit=0`, `audit_exit=0`, `axiom_lines_seen=4`,
+`axiom_lines_expected=4`, `axiom_content_ok=True`, and
+`FINAL_STATUS=PASS STAGE=complete`.  Total connected execution time was
+1972.426 seconds.  The evidence archive was downloaded and independently
+rehashed on Windows with SHA-256
+`28aed2d67b8147cd34454ec2bc36d608f2ad814ac063b22a144a9af802891c40`.
+
+The verified structure quantifies the literal CMP109 Banach data over an
+admissible parameter family with common radii and one common contraction
+budget.  It constructs every fixed point internally from the existing map,
+and its nonempty-admissible-set field prevents a vacuous empty-polydisc
+witness.  This is the generic L2 brick for CMP116 (1.13)--(1.14); it does not
+yet instantiate the printed `s`-polydisc, discharge a `PreEq136` obligation,
+or construct a `TermSource`.  The live numerator therefore remains exactly
+18/41.

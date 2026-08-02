@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP109ConstraintCorrectionFixedPoint
 /-!
 # Parameter-uniform CMP109 constraint correction
 
-PRE-VALIDATION: the source is present, its `.olean` has not yet been
-materialized, and the result is not yet compiler-verified.
-
 CMP116 equations (1.13)--(1.14) apply the CMP109 fixed-point construction to
 the weakened background `H(s)` uniformly on an admissible polydisc in `s`.
 The pointwise Banach theorem already exists in

@@ -1,10 +1,5 @@
 import YangMills.RG.BalabanCMP116SourcePhysicalCoordinateDictionary
 
-/-!
-PRE-VALIDATION: the localized-region index oracle below has not yet been
-verified by the Lean compiler.
--/
-
 #print axioms YangMills.RG.cmp116SourcePhysicalLocalizedCoordinates
 #print axioms YangMills.RG.mem_cmp116SourcePhysicalLocalizedCoordinates_iff
 #print axioms YangMills.RG.card_cmp116SourcePhysicalLocalizedCoordinates

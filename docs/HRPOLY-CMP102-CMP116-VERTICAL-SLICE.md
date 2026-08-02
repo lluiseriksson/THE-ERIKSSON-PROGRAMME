@@ -1784,7 +1784,7 @@ no `TermSource` inhabitant is created.
 | brick | printed content | repository status |
 |---|---|---|
 | L1 | `s`-dependent propagators `H(s)`, `G(s)`, `H0(s)` and the walk estimate entering (1.11) | new source interface; the cited CMP99 walk estimate remains an explicit input |
-| L2 | uniform fixed point `D(H(s),A')`, (1.13)--(1.14) | parameter-family generalization of `BalabanCMP109ConstraintCorrectionFixedPoint` |
+| L2 | uniform fixed point `D(H(s),A')`, (1.13)--(1.14) | **compiler-verified parameter-family generalization** of `BalabanCMP109ConstraintCorrectionFixedPoint`; the physical `s`-polydisc specialization remains downstream of L1 |
 | L3 | fixed point `A0`, (1.15)--(1.16) | new; consumes the printed CMP102 Proposition-4 type estimate |
 | L4 | assembly and norm of `H_k(s,B')`, (1.17)--(1.18) | composition of L1--L3 |
 | L5 | `B' = g_k C B - h D(g_k C B)` and its small-field bound, (1.19)--(1.20) | literal field already present |
@@ -1802,13 +1802,19 @@ reading has an internal numerical check: in the complementary case
 `m <= 2^4 = 16`, positivity of `kappa1` gives
 `exp(m*kappa1) <= exp(16*kappa1)`, exactly the factor printed in (1.18),
 (1.21), and (1.39).  This check does not identify the unrelated `/24`.
-The same
-visual pass fixes the constants in (1.13)--(1.16), the Cauchy radius (1.22),
+The same visual pass fixes the constants in (1.13)--(1.16), the Cauchy radius (1.22),
 the structure of (1.24), and the final `exp(-kappa1 d_k(Y)/16)` rate in
 (1.29).
 
-The next implementation brick is L2.  It must quantify the Banach data over
-the admissible `s`-polydisc with common radii and a common contraction bound,
-then specialize pointwise to the existing literal map.  Merely wrapping an
-arbitrary family of already chosen fixed points would not establish the
-uniform statement printed in (1.13)--(1.14).
+L2 is now implemented by
+`CMP109ConstraintCorrectionParameterFamilyData`.  Its `ballData` varies with
+the admissible parameter `s`, while `rho`, both radii, and
+`contraction_lt_one` are single common scalars outside that quantifier.  The
+fixed point is selected internally from the existing literal CMP109 map; no
+family of solutions is accepted as input, and `admissible_nonempty` excludes
+the empty-polydisc witness.  One fresh Colab CPU/high-RAM clone at source
+checkpoint `de7c13a59083c2b2000bb722203f9afd22aaae5d` completed the focal
+build with 8,511 jobs and its four-declaration audit with the exact standard
+axiom trio.  This closes the generic uniform Banach brick, not its physical
+specialization and not any `PreEq136` field; the live numerator remains
+`18/41` and no `TermSource` inhabitant is produced.

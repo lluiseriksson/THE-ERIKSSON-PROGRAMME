@@ -8,10 +8,6 @@ import YangMills.RG.BalabanCMP116Eq226CenteredConditionedPhysicalContourToKP
 /-!
 # Centered conditioned contour terms produce single-scale UV decay
 
-PRE-VALIDATION: the proof-carrying localized-region index in this module is
-present as source, its `.olean` has not yet been materialized, and the result
-has not yet been compiler-verified.
-
 The centered source contour is the source-faithful route used to separate the
 interpolation center from its Cauchy displacement.  This module closes the
 previously missing terminal bridge from that route to `SingleScaleUVDecay`.
