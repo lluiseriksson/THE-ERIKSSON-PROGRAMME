@@ -31534,3 +31534,24 @@ failure and not evidence against the scalar existence/uniqueness statement.
 The heartbeat limit was not raised, no PASS was claimed, and neither Core nor
 the oracle was launched.  The runtime was disconnected and deleted before
 repair work; **SESIÓN COLAB LIBRE**.
+
+## Addendum 626 (2026-08-02, **TASK 14: focused harness toolchain failure**)
+
+**INSTRUMENTAL FAILURE; NO LEAN BUILD AND NO VERIFICATION WITNESS.**  A fresh
+CPU/high-RAM Colab runtime (Linux 6.6.122 x86_64, glibc 2.35, Python 3.12.13,
+8 CPUs, `53467192 kB` RAM, no GPU) cloned and checked out exact repair SHA
+`b1d7d7a81b97306676c82be6c0ace142642df922`.  The run began at UTC
+`2026-08-02T16:25:31.232767+00:00`; clone and checkout exited zero in
+`9.962303 s` and `1.831833 s`, respectively.  The elan installer SHA-256 was
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`, and
+installation of exact Lean `v4.29.0-rc6` commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9` exited zero in `14.758172 s`.
+
+The harness then called `lean --version` after deliberately installing with
+`--default-toolchain none`, but failed to set `ELAN_TOOLCHAIN` or use
+`elan run`.  The command therefore exited 1 with the literal diagnostic
+`error: no default toolchain configured. run 'elan default stable' to install
+& configure the latest Lean 4 stable release.`  This is solely a harness
+configuration error.  Cache acquisition, module compilation, Core, and the
+oracle never started; no PASS was claimed.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
