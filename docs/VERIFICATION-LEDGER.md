@@ -29572,13 +29572,13 @@ new source contains no `sorry` or project axiom.
 
 **BOUNDARY.**  The theorem shows that growing range need not destroy
 localization when decay is measured in block units.  It is conditional on
-the still-unproved sharp operator kernel amplitude `M_L <= L^-4` for the
+the still-unproved critical-scale operator kernel amplitude `M_L <= L^-4` for the
 critically rescaled Gram term, and it does not prove the all-mode coercivity
 gate.  The current fine-metric rate is `theta_L = tau/L`, not a positive
 fine-bond rate uniform in `L`; `tau` is the uniform block-scale rate.  No
 volume-uniform certificate or continuum/mass-gap implication is claimed.
 
-## Addendum 577 (2026-08-02, **sharp critical Gram kernel closed**)
+## Addendum 577 (2026-08-02, **critical-scale Gram kernel closed**)
 
 **FORMALIZED DELTA.**  `PhysicalCriticalRescalingKernel.lean` revisits the
 existing single-bond sampling proof without discarding its `L^-d`
@@ -29605,3 +29605,43 @@ completed successfully (8205 jobs); the focused
 `CriticalRescalingKernelOracle.lean` reports exactly `[propext,
 Classical.choice, Quot.sound]` for all four new declarations; and
 `lake build YangMillsCore` completed successfully (8473 jobs).
+
+## Addendum 578 (2026-08-02, **critical full-space coercivity no-go at one coarse site**)
+
+**FORMALIZED DELTA.**  `PhysicalCriticalRescalingNoGo.lean` audits the exact
+domain of the remaining coercivity proposal.  For `N' = 1`, every even scale
+`L = M + M`, and two distinct directions, the already certified transverse
+square mode satisfies
+
+    Q_L A = 0,             (L Q_L) A = 0,
+    <A, K0 A> / ‖A‖² = 8/L.
+
+The cancellation of `Q_L A` is exact: transverse line shifts preserve the
+square profile and its finite `+1/-1` sum vanishes on the one coarse block.
+For `Nc >= 2` the mode is nonzero.  Any constant-before-volume instance of
+the current critical gate would force `L <= 8 CP` at every even scale, which
+is impossible.  Thus Lean proves
+
+    ¬ VolumeUniformCriticalRescaledFlatPoincareGate 1 Nc rho.
+
+**INTERPRETATION.**  The gate being refuted is the combined full-space form
+`K0 + (LQ)^*(LQ)`, not coercivity of the Gram in isolation.  The result leaves
+the critical-scale kernel bound, ball count, range, and block-scale CT budget
+from Addenda 576-577 intact.  It shows that the next positive input cannot be
+the present full-space gate unchanged: the domain must be restricted or
+quotiented, or another positive operator (for example an interacting Wilson
+Hessian) must control these modes.
+
+**BOUNDARY.**  This theorem is exact for `N' = 1`; it does not yet prove the
+analogous no-go for every coarse side `N'`.  It proves no positive uniform
+coercivity, root localization, infinite-volume limit, continuum limit, or
+mass gap.  The term “critical-scale” replaces an unsupported claim of global
+optimality: no saturating lower-bound witness for the `L^-4` kernel constant
+is asserted.
+
+**CHECKED.**  `lake build YangMills.RG.PhysicalCriticalRescalingNoGo`
+completed successfully (8177 jobs), and the separately rebuilt
+`PhysicalCriticalRescalingKernel` completed successfully (8205 jobs).  The
+two focused oracles report exactly `[propext, Classical.choice, Quot.sound]`
+for all seven audited declarations.  `lake build YangMillsCore` completed
+successfully (8474 jobs).

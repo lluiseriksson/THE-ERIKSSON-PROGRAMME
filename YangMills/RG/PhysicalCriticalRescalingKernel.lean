@@ -7,7 +7,7 @@ import YangMills.RG.PhysicalShellLocalityQ
 import YangMills.RG.PhysicalCriticalRescalingCTAudit
 
 /-!
-# Sharp kernel bound for the critically rescaled block Gram operator
+# Critical-scale kernel bound for the rescaled block Gram operator
 
 The earlier shell-locality proof counted the probe samples exactly but dropped
 the factor `L^{-d}` before its final estimate, retaining only the crude bound
@@ -30,8 +30,9 @@ open scoped RealInnerProductSpace
 
 variable {d L N' Nc : ℕ} [NeZero L] [NeZero N'] [NeZero d] [NeZero Nc]
 
-/-- Sharp single-probe bound retaining the exact `L^{-d}` normalization. -/
-theorem flatBlockConstraint_single_norm_le_sharp
+/-- Critical-scale single-probe bound retaining the exact `L^{-d}`
+normalization. -/
+theorem flatBlockConstraint_single_norm_le_criticalScale
     (p : PhysicalBond d (L * N')) (v : SUNLieCoord Nc) :
     ‖flatBlockConstraintQCLM (d := d) (Nc := Nc) L N'
         (singlePhysicalBondCochain (d := d) (N := L * N') (Nc := Nc) p v)‖ ≤
@@ -188,12 +189,12 @@ theorem criticalScaledBlockConstraint_single_norm_le
           (singlePhysicalBondCochain (d := 4) (N := L * N') (Nc := Nc) p v)‖
         ≤ (L : ℝ) * (((L : ℝ) ^ 4)⁻¹ * (L : ℝ) * ‖v‖) :=
           mul_le_mul_of_nonneg_left
-            (flatBlockConstraint_single_norm_le_sharp p v) hL.le
+            (flatBlockConstraint_single_norm_le_criticalScale p v) hL.le
     _ = ((L : ℝ) ^ 2)⁻¹ * ‖v‖ := by
           field_simp
 
-/-- **Sharp operator input.**  The critically rescaled four-dimensional Gram
-term has entrywise kernel amplitude `L^{-4}`. -/
+/-- **Critical-scale operator input.**  The critically rescaled
+four-dimensional Gram term has entrywise kernel amplitude `L^{-4}`. -/
 theorem criticalScaledBlockGram_kernelBound :
     PhysicalCovarianceKernelBound
       ((scaledFlatBlockConstraintQCLM (d := 4) (L := L) (N' := N')

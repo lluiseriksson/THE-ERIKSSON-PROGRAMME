@@ -2576,7 +2576,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.criticalRescaledFlatBlockConstraint_constant_isometry
 #print axioms YangMills.RG.criticalRescaledFlatGaugeHodgePoincare_constantSector_lower_bound
 #print axioms YangMills.RG.VolumeUniformCriticalRescaledFlatPoincareGate
--- W-4b: the scale-adapted CT parameter balance.  Conditional on the sharp
+-- W-4b: the scale-adapted CT parameter balance.  Conditional on the critical-scale
 -- L^-4 kernel amplitude, the L^4 ball growth cancels and theta_L = tau/L
 -- preserves a positive block-scale rate.
 #print axioms YangMills.RG.criticalKernel_mul_ball_le
@@ -2585,11 +2585,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.criticalFineTiltRate_pos
 #print axioms YangMills.RG.criticalFineTiltRate_mul_range
 #print axioms YangMills.RG.criticalScale_tiltBudget
--- W-4c: actual sharp operator input for the critical Gram term.
-#print axioms YangMills.RG.flatBlockConstraint_single_norm_le_sharp
+-- W-4c: actual critical-scale operator input for the critical Gram term.
+#print axioms YangMills.RG.flatBlockConstraint_single_norm_le_criticalScale
 #print axioms YangMills.RG.criticalScaledBlockConstraint_single_norm_le
 #print axioms YangMills.RG.criticalScaledBlockGram_kernelBound
 #print axioms YangMills.RG.criticalScaledBlockGram_finiteRange
+-- W-4d: the present full-space critical Poincare gate already fails at N'=1.
+#print axioms YangMills.RG.flatBlockConstraintQCLM_squareMode_one_eq_zero
+#print axioms YangMills.RG.criticalScaledBlockConstraintQCLM_squareMode_one_eq_zero
+#print axioms YangMills.RG.volumeUniformCriticalRescaledFlatPoincareGate_one_false
 -- O-1: the operator bridge (charter docs/O-BRIDGE-CHARTER.md).  Headlines,
 -- non-vacuity witnesses, and load-bearing substrate.
 #print axioms YangMills.OS.clustering_iff_gap

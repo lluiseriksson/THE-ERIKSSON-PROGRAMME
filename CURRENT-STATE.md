@@ -70,19 +70,30 @@ uniform estimate (or interacting-Wilson-Hessian coercivity).  Target build:
 **W-4b DONE — joint CT parameter audit, operator inputs still open**
 (2026-08-02, `PhysicalCriticalRescalingCTAudit.lean`, ledger Addendum 576).
 The fine-metric range certificate grows as `3L`, so the natural rate is not a
-fixed fine-bond `theta` but `theta_L = tau/L`.  Assuming the sharp critical
+fixed fine-bond `theta` but `theta_L = tau/L`.  Assuming the critical-scale
 Gram amplitude `M_L <= L^-4`, the proved ball majorant satisfies
 `M_L N_{R,L} <= 16384`; an explicit positive `tau` then satisfies the CT
 budget uniformly in block units.  Remaining load-bearing inputs are exactly
-the sharp `L^-4` operator kernel theorem and the all-mode coercivity gate.
+the critical-scale `L^-4` operator kernel theorem and the all-mode coercivity
+gate.
 
-**W-4c DONE — sharp critical Gram kernel** (2026-08-02,
+**W-4c DONE — critical-scale Gram kernel** (2026-08-02,
 `PhysicalCriticalRescalingKernel.lean`, ledger Addendum 577).  The actual
 single-probe estimate is `‖Q delta_p v‖ <= L^-d L ‖v‖`; hence in `d=4` the
 critical map obeys `‖(LQ) delta_p v‖ <= L^-2 ‖v‖`, and its Gram operator has
 entrywise amplitude `L^-4` with fine range `3L`.  The kernel/ball/range/tilt
 side is now closed.  Only the volume-uniform all-mode coercivity gate remains
 load-bearing for the flat route.
+
+**W-4d DONE — critical full-space gate fails at one coarse site**
+(2026-08-02, `PhysicalCriticalRescalingNoGo.lean`, ledger Addendum 578).
+For `N' = 1`, every even scale `L = 2M`, and `Nc >= 2`, an explicit
+transverse square mode obeys `(LQ)A = 0` exactly while its flat-Hodge
+Rayleigh quotient is `8/L`.  Hence the current
+`VolumeUniformCriticalRescaledFlatPoincareGate 1 Nc rho` is false.  The next
+positive theorem cannot be the present full-space gate unchanged: it must
+restrict/quotient the domain or add a further positive operator such as an
+interacting Hessian.  No corresponding no-go for every `N'` is claimed yet.
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at

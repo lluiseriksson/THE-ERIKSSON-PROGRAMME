@@ -304,26 +304,39 @@ This is not the missing all-mode theorem: the new
 Next positive obligation: control every fluctuation mode for `L Q`, or prove
 coercivity directly for the interacting Wilson Hessian.
 
-**W-4b — scale-adapted CT audit: DONE, sharp operator input OPEN
+**W-4b — scale-adapted CT audit: DONE, critical-scale operator input OPEN
 (2026-08-02, ledger Addendum 576,
 `PhysicalCriticalRescalingCTAudit.lean`).**  The existing locality certificate
-has fine range `R_L = 3L`.  With the candidate sharp critical Gram amplitude
+has fine range `R_L = 3L`.  With the candidate critical-scale Gram amplitude
 `M_L = L^-4`, the four-dimensional ball growth cancels uniformly:
 `M_L N_{R,L} <= 16384`.  The explicit choice
 `tau = log(1 + c/(2*16384))/3`, `theta_L = tau/L` satisfies the CT budget with
 `theta_L R_L = 3 tau`.  Thus the scientifically appropriate endpoint is
 uniform exponential decay in block distance, not a fixed fine-bond rate.
-Still open: prove the sharp `L^-4` kernel bound for the actual critical Gram
-operator and inhabit the all-mode coercivity gate.
+Still open at this checkpoint: prove the critical-scale `L^-4` kernel bound
+for the actual critical Gram operator and inhabit the all-mode coercivity
+gate.
 
-**W-4c — sharp critical Gram kernel: DONE (2026-08-02, ledger Addendum 577,
+**W-4c — critical-scale Gram kernel: DONE (2026-08-02, ledger Addendum 577,
 `PhysicalCriticalRescalingKernel.lean`).**  The retained block normalization
 gives `‖Q delta_p v‖ <= L^-d L ‖v‖`; in four dimensions the critical map
 therefore obeys `‖(LQ) delta_p v‖ <= L^-2 ‖v‖`.  The actual Gram operator
 `(LQ)^*(LQ)` now has the proved entrywise majorant `L^-4` and fine-metric
 range `3L`.  Combined with W-4b, the kernel/ball/range/tilt side is closed.
-The sole remaining positive input on this route is the volume-uniform
-all-mode coercivity gate.
+At this checkpoint the remaining candidate input was the volume-uniform
+all-mode coercivity gate; W-4d below audits whether its present domain permits
+such a theorem.
+
+**W-4d — critical full-space gate at `N' = 1`: CLOSED NEGATIVELY
+(2026-08-02, ledger Addendum 578,
+`PhysicalCriticalRescalingNoGo.lean`).**  For every even scale `L = 2M` and
+`Nc >= 2`, an explicit transverse square mode lies exactly in `ker(LQ)` and
+has flat-Hodge Rayleigh quotient `8/L`.  Therefore
+`VolumeUniformCriticalRescaledFlatPoincareGate 1 Nc rho` is false.  This is a
+no-go for the combined form `K0 + (LQ)^*(LQ)`, not merely for the Gram term.
+The next positive route must expose a restricted/quotient physical sector or
+add a further positive term (most significantly an interacting Wilson
+Hessian).  Extension of the no-go witness to arbitrary `N'` remains open.
 
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
