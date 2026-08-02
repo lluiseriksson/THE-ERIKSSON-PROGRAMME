@@ -231,6 +231,13 @@ the per-key intersection
 attack now leaves the record absent and therefore not publishable as a current
 decision.
 
+An attempted combined normal/optimized worktree reconstruction to add peak-RSS
+measurements was terminated by the local supervisor after 34.024 seconds,
+before it emitted a record. It is not used as evidence. No further global scan
+was run locally; subsequent whole-tree validation belongs to the sanctioned
+GitHub Actions runner. The subsecond fixture mutations remained within the
+local-light contract.
+
 ### Text baseline hash regimes
 
 The baseline is UTF-8 without BOM. SHA-256

@@ -140,6 +140,13 @@
         "empty_root_exit_code": 2
       },
       "first_cause_prefix": "comparison guard:"
+    },
+    "rejected_local_measurement_attempt": {
+      "purpose": "combined normal/optimized reconstruction to add peak RSS",
+      "terminated_after_seconds": 34.024,
+      "emitted_record": false,
+      "used_as_evidence": false,
+      "action": "no further global local scan; delegate whole-tree validation to GitHub Actions"
     }
   },
   "frozen_pr_body": {
