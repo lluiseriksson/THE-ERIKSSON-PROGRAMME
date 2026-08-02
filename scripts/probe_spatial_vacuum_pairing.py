@@ -96,11 +96,21 @@ def point_ratio(length: int, beta: mp.mpf, fraction: mp.mpf) -> tuple[mp.mpf, mp
 def interval_extreme() -> dict[str, str]:
     iv = mp.iv
     iv.dps = 100
+
+    def iv_cosh(x):
+        return (iv.exp(x) + iv.exp(-x)) / 2
+
+    def iv_sinh(x):
+        return (iv.exp(x) - iv.exp(-x)) / 2
+
+    def iv_acosh(x):
+        return iv.log(x + iv.sqrt(x * x - 1))
+
     beta = iv.mpf(EXTREME_BETA)
     fraction = iv.mpf(EXTREME_FRACTION)
-    # mpmath 1.3.0's interval context has no `tanh` method.  Keep the exact
-    # same formula through interval-supported primitives.
-    tanh_beta = iv.sinh(beta) / iv.cosh(beta)
+    # mpmath 1.3.0's interval context exposes no hyperbolic methods.  Keep the
+    # exact same formulas through interval-supported exp/log/sqrt primitives.
+    tanh_beta = iv_sinh(beta) / iv_cosh(beta)
     a = -iv.log(tanh_beta) / 2
     gamma = fraction * a
     periodic = []
@@ -108,10 +118,10 @@ def interval_extreme() -> dict[str, str]:
     for j in range(EXTREME_LENGTH):
         p = 2 * iv.pi * j / EXTREME_LENGTH
         ap = 2 * iv.pi * (iv.mpf(j) + iv.mpf("0.5")) / EXTREME_LENGTH
-        common = iv.cosh(2 * a) * iv.cosh(2 * gamma)
-        scale = iv.sinh(2 * a) * iv.sinh(2 * gamma)
-        periodic.append(iv.acosh(common - scale * iv.cos(p)))
-        antiperiodic.append(iv.acosh(common - scale * iv.cos(ap)))
+        common = iv_cosh(2 * a) * iv_cosh(2 * gamma)
+        scale = iv_sinh(2 * a) * iv_sinh(2 * gamma)
+        periodic.append(iv_acosh(common - scale * iv.cos(p)))
+        antiperiodic.append(iv_acosh(common - scale * iv.cos(ap)))
     log_ratio = (sum(periodic, iv.mpf(0)) - sum(antiperiodic, iv.mpf(0))) / 2
     ratio = iv.exp(log_ratio)
     margin = 1 - ratio

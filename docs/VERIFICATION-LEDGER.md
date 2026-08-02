@@ -30286,3 +30286,15 @@ no mathematical evidence.  The next repair must expand `sinh`, `cosh`, and
 `acosh` through interval `exp`, `log`, and `sqrt`; it is not part of this
 incident commit.  Full details are in
 `INC-SPATIAL-VACUUM-PAIRING-IV-002.md`.
+
+## Addendum 595 (2026-08-02, **TASK 14: elementary interval repair fixed**)
+
+**SECOND REPAIR COMMITTED BEFORE RE-EXECUTION.**  Every interval hyperbolic
+call is now expanded through the exact identities
+`cosh(x) = (exp(x)+exp(-x))/2`,
+`sinh(x) = (exp(x)-exp(-x))/2`, and
+`acosh(x) = log(x+sqrt(x*x-1))`, using only mpmath interval primitives.
+Nothing in the point formula, cells, precision levels, pairing definitions,
+product reconstruction checks, positivity boolean, or `OBSERVED`
+classification changes.  At the time of this addendum this second repair has
+not run and no recovery result is claimed.
