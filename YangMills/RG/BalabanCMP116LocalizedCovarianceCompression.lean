@@ -25,7 +25,8 @@ certificate:
 
 * compression preserves positive semidefiniteness;
 * compression has range in `S` and cannot increase the `L²` operator norm;
-* `CFC.sqrt` supplies a symmetric square root of the compressed covariance.
+* the finite-dimensional spectral square root supplies a symmetric root of
+  the compressed covariance.
 
 Honest scope: `C` remains an arbitrary positive-semidefinite finite matrix.
 This file does not identify it with the coordinate matrix of the interacting
@@ -114,30 +115,47 @@ theorem cmp116LocalizedCovarianceCompression_posSemidef
   rw [hP] at h
   exact h
 
-private noncomputable def cmp116RCLikeMatrixSqrt
-    {𝕜 ι : Type*} [RCLike 𝕜] [Fintype ι] [DecidableEq ι]
-    (A : Matrix ι ι 𝕜) : Matrix ι ι 𝕜 :=
-  CFC.sqrt A
-
-private theorem cmp116RCLikeMatrixSqrt_isHermitian
+private theorem cmp116MatrixPosSemidefSqrt_posSemidef
     {𝕜 ι : Type*} [RCLike 𝕜] [Fintype ι] [DecidableEq ι]
     {A : Matrix ι ι 𝕜} (hA : A.PosSemidef) :
-    (cmp116RCLikeMatrixSqrt A).IsHermitian := by
-  unfold cmp116RCLikeMatrixSqrt
-  exact (CFC.sqrt_nonneg A).posSemidef.1
+    (Matrix.PosSemidef.sqrt hA).PosSemidef := by
+  apply PosSemidef.mul_mul_conjTranspose_same
+  refine posSemidef_diagonal_iff.mpr fun i ↦ ?_
+  rw [Function.comp_apply, RCLike.nonneg_iff]
+  constructor
+  · simp only [RCLike.ofReal_re]
+    exact Real.sqrt_nonneg _
+  · simp only [RCLike.ofReal_im]
 
-private theorem cmp116RCLikeMatrixSqrt_mul_self
+private theorem cmp116MatrixPosSemidefSqrt_sq
     {𝕜 ι : Type*} [RCLike 𝕜] [Fintype ι] [DecidableEq ι]
     {A : Matrix ι ι 𝕜} (hA : A.PosSemidef) :
-    cmp116RCLikeMatrixSqrt A * cmp116RCLikeMatrixSqrt A = A := by
-  unfold cmp116RCLikeMatrixSqrt
-  exact hA.sqrt_mul_self
+    Matrix.PosSemidef.sqrt hA ^ 2 = A := by
+  let C : Matrix ι ι 𝕜 := hA.1.eigenvectorUnitary
+  let E := diagonal ((↑) ∘ (√·) ∘ hA.1.eigenvalues : ι → 𝕜)
+  suffices C * (E * (star C * C) * E) * star C = A by
+    rw [Matrix.PosSemidef.sqrt, pow_two]
+    simpa only [← mul_assoc] using this
+  have hEE : E * E = diagonal ((↑) ∘ hA.1.eigenvalues) := by
+    rw [diagonal_mul_diagonal]
+    congr! with v
+    simp [← pow_two, ← RCLike.ofReal_pow,
+      Real.sq_sqrt (hA.eigenvalues_nonneg v)]
+  simpa [C, hEE] using hA.1.spectral_theorem.symm
+
+private theorem cmp116MatrixPosSemidefSqrt_mul_self
+    {𝕜 ι : Type*} [RCLike 𝕜] [Fintype ι] [DecidableEq ι]
+    {A : Matrix ι ι 𝕜} (hA : A.PosSemidef) :
+    Matrix.PosSemidef.sqrt hA * Matrix.PosSemidef.sqrt hA = A := by
+  rw [← pow_two, cmp116MatrixPosSemidefSqrt_sq hA]
 
 /-- Canonical positive square root of the localized covariance. -/
 def cmp116LocalizedCovarianceRoot
     {ι : Type*} [Fintype ι] [DecidableEq ι]
-    (S : Finset ι) (C : Matrix ι ι ℝ) : Matrix ι ι ℝ :=
-  cmp116RCLikeMatrixSqrt (cmp116LocalizedCovarianceCompression S C)
+    (S : Finset ι) (C : Matrix ι ι ℝ) (hC : C.PosSemidef) :
+    Matrix ι ι ℝ :=
+  Matrix.PosSemidef.sqrt
+    (cmp116LocalizedCovarianceCompression_posSemidef S hC)
 
 /-- The canonical positive square root and compressed covariance satisfy the
 exact terminal conditioned-root certificate. -/
@@ -147,15 +165,16 @@ theorem cmp116LocalizedCovarianceRoot_certificate
     (hC : C.PosSemidef) :
     MatrixConditionedGaussianRootCertificate
       (cmp116LocalizedCovarianceCompression S C)
-      (cmp116LocalizedCovarianceRoot S C) S := by
+      (cmp116LocalizedCovarianceRoot S C hC) S := by
   let A := cmp116LocalizedCovarianceCompression S C
-  have hA : A.PosSemidef :=
+  let hA : A.PosSemidef :=
     cmp116LocalizedCovarianceCompression_posSemidef S hC
-  have hroot :
-      (cmp116RCLikeMatrixSqrt A).transpose =
-        cmp116RCLikeMatrixSqrt A := by
-    have hrootHermitian : (cmp116RCLikeMatrixSqrt A).IsHermitian :=
-      cmp116RCLikeMatrixSqrt_isHermitian hA
+  change MatrixConditionedGaussianRootCertificate A
+    (Matrix.PosSemidef.sqrt hA) S
+  have hroot : (Matrix.PosSemidef.sqrt hA).transpose =
+      Matrix.PosSemidef.sqrt hA := by
+    have hrootHermitian : (Matrix.PosSemidef.sqrt hA).IsHermitian :=
+      (cmp116MatrixPosSemidefSqrt_posSemidef hA).1
     rw [Matrix.IsHermitian,
       Matrix.conjTranspose_eq_transpose_of_trivial] at hrootHermitian
     exact hrootHermitian
@@ -164,8 +183,7 @@ theorem cmp116LocalizedCovarianceRoot_certificate
     root_square := ?_
     covariance_supported :=
       cmp116LocalizedCovarianceCompression_supported S C }
-  · change cmp116RCLikeMatrixSqrt A * cmp116RCLikeMatrixSqrt A = A
-    exact cmp116RCLikeMatrixSqrt_mul_self hA
+  · exact cmp116MatrixPosSemidefSqrt_mul_self hA
 
 end
 
