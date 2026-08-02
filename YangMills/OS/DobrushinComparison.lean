@@ -54,39 +54,65 @@ separates those two rungs and so does this module.
   `abs_sum_sub_le_tv_mul_osc`.  `DobrushinGruss` (Popoviciu) is NOT imported and
   is not a dependency.
 
-## Inventory — 38 named declarations, COUNTED and classified before any audit
+## MANIFEST — every named declaration, listed literally
 
-29 theorems and 9 definitions.  Fixed here so that no later report can quote a
-number without a referent, which is the defect D-3a paid for twice and which an
-earlier version of THIS section repeated by claiming 19.
+The authority is this list of NAMES, not a total and not a `grep`.  The audit
+driver must be exactly this manifest.  Three earlier versions of this section
+quoted totals — 9, then 19, then 38 with classes summing to 28 — and every one
+was wrong, because a total is remembered while a list is checked.
 
-**Load-bearing (10 theorems)**
+**Load-bearing and interface — 11**
 
-* **4 endpoints of D-3c** — `deltaAt_siteExp_self`, `deltaAt_siteExp_le`,
-  `Bupd_mulVec`, `deltaVec_siteExp_le`.
-* **1 convention equivalence** — `deltaAt_eq_deltaAtOff`.
-* **3 oscillation auxiliaries** — `abs_sub_update_le`, `abs_sub_le_deltaAt`,
-  `deltaAt_nonneg`.
-* **2 interface lemmas for D-3d** — `C_nonneg_of_majorant`, `Bupd_mulVec_mono`.
+```
+ 1  deltaAt_siteExp_self            endpoint
+ 2  deltaAt_siteExp_le              endpoint  (THE key lemma)
+ 3  Bupd_mulVec                     endpoint  (coordinate formula, orientation)
+ 4  deltaVec_siteExp_le             endpoint  (matrix form, uses C i i = 0)
+ 5  deltaAt_eq_deltaAtOff           convention equivalence
+ 6  abs_sub_update_le               oscillation auxiliary
+ 7  abs_sub_le_deltaAt              oscillation auxiliary
+ 8  deltaAt_nonneg                  oscillation auxiliary
+ 9  C_nonneg_of_majorant            D-3d interface, OFF-DIAGONAL only
+10  Bupd_mulVec_mono                D-3d interface, needs global nonnegativity
+11  Bupd_mulVec_mono_of_majorant    D-3d interface, assembles both sources
+```
 
-**Witnesses (2 headline theorems + 16 supporting)**
+**Headline witnesses — 4**
 
-* `deltaVec_hypotheses_satisfiable` — satisfiability, DEGENERATE (`C = 0`),
-  supported by `uniformKernel_local`, `uniformKernel_nonneg`, `uniformKernel_sum`,
-  `uniformKernel_tv`.
-* `Witness.deltaAt_siteExp_attained` — sharpness, NON-degenerate: `C 0 1 = 1/2`
-  is nonzero and ATTAINED, so the key lemma holds with equality.  Bundled with
-  `Witness.hypotheses_hold`, and supported by `fw_update_zero`, `fw_update_one`,
-  `pw_local`, `two_cases`, `pw_nonneg`, `pw_sum`, `Cw_diag`, `pw_tv`,
-  `siteExp_pw`, `deltaAt_zero_fw`, `deltaAt_one_fw`, `deltaAt_one_siteExp`.
+```
+12  deltaVec_hypotheses_satisfiable   satisfiability, DEGENERATE (C = 0)
+13  Witness.hypotheses_hold           satisfiability, NON-degenerate (C 0 1 ≠ 0)
+14  Witness.pw_tv_attained            the MAJORANT is attained
+15  Witness.deltaAt_siteExp_attained  the TRANSPORT bound is attained
+```
 
-**9 definitions** — `deltaAt`, `deltaAtOff`, `siteExp`, `LocalKernel`, `Bupd`,
-`uniformKernel`, `Witness.pw`, `Witness.Cw`, `Witness.fw`.
+**Supporting witness lemmas — 16**
 
-A count taken by grepping for lines beginning with `theorem` reports 30, because
-one line of PROSE inside a docstring began with that word.  It has been reflowed;
-recording the miscount because a guard that cannot tell code from documentation
-has now produced a wrong inventory twice in this repository.
+```
+16  uniformKernel_local        24  two_cases
+17  uniformKernel_nonneg       25  pw_nonneg
+18  uniformKernel_sum          26  pw_sum
+19  uniformKernel_tv           27  Cw_diag
+20  fw_update_zero             28  pw_tv
+21  fw_update_one              29  siteExp_pw
+22  pw_local                   30  deltaAt_zero_fw
+23  deltaAt_one_fw             31  deltaAt_one_siteExp
+```
+
+**Definitions — 9**
+
+```
+deltaAt   deltaAtOff   siteExp   LocalKernel   Bupd
+uniformKernel   Witness.pw   Witness.Cw   Witness.fw
+```
+
+`11 + 4 + 16 = 31` theorems, plus `9` definitions: **40 named declarations**.
+
+Note on measurement: a count taken by grepping for lines beginning with
+`theorem` once reported one theorem too many, because a line of PROSE inside a
+docstring began with that word.  A guard that cannot tell code from
+documentation has produced a wrong inventory twice in this repository, and that
+is why the manifest above is a list of names.
 
 ## Status
 
@@ -358,14 +384,17 @@ Hard rule 3 of the repository: never state a conditional theorem without a
 witness that its premises can all hold at once.  A conditional whose hypotheses
 are contradictory is vacuously true and says nothing.
 
-**This witness is DEGENERATE and is labelled as such.**  It takes `C = 0`, so it
-establishes joint satisfiability of every hypothesis — including `C i i = 0` and
-the majorant condition — but it does NOT exercise the influence term: with
-`C = 0` the conclusion of the key lemma reads `deltaAt k (E i f) ≤ deltaAt k f`,
-which is the contraction statement alone.  A non-degenerate witness, with some
-`C i k > 0` actually attained, is owed and is not supplied here.  Saying so is
-the point; a witness that quietly covers less than the theorem needs would be
-worse than none. -/
+**This section supplies only the DEGENERATE satisfiability witness.**  It takes
+`C = 0`, so it establishes joint satisfiability of every hypothesis — including
+`C i i = 0` and the majorant condition — but it does NOT exercise the influence
+term: with `C = 0` the conclusion of the key lemma reads
+`deltaAt k (E i f) ≤ deltaAt k f`, the contraction statement alone.
+
+**A non-degenerate sharpness witness is supplied separately in §8**, with
+`C 0 1 = 1/2` nonzero, attained as a total variation and attained again as
+equality in the key lemma.  An earlier version of this paragraph said such a
+witness was owed and not supplied, and stayed in the file after §8 paid the
+debt. -/
 
 /-- The uniform single-site kernel: it ignores the configuration entirely. -/
 noncomputable def uniformKernel : ι → (ι → S) → S → ℝ :=
@@ -417,9 +446,19 @@ theorem deltaVec_hypotheses_satisfiable :
 
 Iterating the one-site bound requires that `B i` preserve the order on
 oscillation vectors.  That does not follow from the coordinate formula alone; it
-needs `C` entrywise nonnegative.  Nonnegativity is not an extra assumption — it
-is forced by `hC`, because `TV` is nonnegative — so it is derived here rather
-than added. -/
+needs `C` entrywise nonnegative, and entrywise nonnegativity has TWO sources
+which must not be run together:
+
+* **`hC` supplies the OFF-DIAGONAL part only.**  It is quantified under `k ≠ i`,
+  so `TV ≥ 0` yields `0 ≤ C i k` exactly for `k ≠ i` and says nothing whatever
+  about `C i i`.
+* **`hdiag` supplies the diagonal**, which is zero and hence nonnegative.
+
+An earlier version of this paragraph said nonnegativity is forced by `hC`, with
+no such split.  That is false on the diagonal.
+`Bupd_mulVec_mono_of_majorant` below assembles the two sources, so that D-3d
+never has to reconstruct a global hypothesis this module wrongly attributed to
+one of them. -/
 
 omit [Fintype ι] in
 /-- `hC` already forces `C` nonnegative off the diagonal: `TV ≥ 0`. -/
@@ -443,6 +482,24 @@ theorem Bupd_mulVec_mono (C : Matrix ι ι ℝ) (i : ι)
     nlinarith [hCnn k k, hvw k]
   · rw [if_neg hki, if_neg hki]
     nlinarith [hCnn i k, hvw k, hvw i]
+
+/-- **The consumer D-3d should call.**  It takes the two hypotheses that already
+exist — the majorant condition and the zero diagonal — and produces order
+preservation, assembling entrywise nonnegativity from its two distinct sources
+rather than demanding it as a fresh global assumption. -/
+theorem Bupd_mulVec_mono_of_majorant (p : ι → (ι → S) → S → ℝ) (C : Matrix ι ι ℝ)
+    (hC : ∀ (i k : ι), k ≠ i → ∀ (η : ι → S) (s t : S),
+      TV (p i (Function.update η k s)) (p i (Function.update η k t)) ≤ C i k)
+    (hdiag : ∀ i, C i i = 0)
+    {v w : ι → ℝ} (hvw : ∀ j, v j ≤ w j) (i k : ι) :
+    (Bupd C i).mulVec v k ≤ (Bupd C i).mulVec w k := by
+  have hCnn : ∀ j l, 0 ≤ C j l := by
+    intro j l
+    by_cases hjl : l = j
+    · rw [hjl]
+      exact le_of_eq (hdiag j).symm
+    · exact C_nonneg_of_majorant p C hC hjl
+  exact Bupd_mulVec_mono C i hCnn hvw k
 
 /-! ## §8  A NON-DEGENERATE witness: the key lemma is ATTAINED
 
@@ -576,6 +633,19 @@ theorem deltaAt_siteExp_attained :
     deltaAt 1 (siteExp pw 0 fw) = deltaAt 1 fw + Cw 0 1 * deltaAt 0 fw := by
   rw [deltaAt_one_siteExp, deltaAt_one_fw, deltaAt_zero_fw]
   unfold Cw
+  norm_num
+
+/-- **The influence majorant is ATTAINED.**  `C 0 1` is not a bound above the
+truth: the total variation actually produced by flipping site `1` equals it
+exactly.  This is a DIFFERENT sharpness from `deltaAt_siteExp_attained` — that
+one says the transport inequality is attained, this one says the majorant is —
+and until now only the first was a theorem while the second lived in prose. -/
+theorem pw_tv_attained :
+    TV (pw 0 (Function.update (fun _ => (0 : Fin 2)) 1 0))
+       (pw 0 (Function.update (fun _ => (0 : Fin 2)) 1 1)) = Cw 0 1 := by
+  unfold TV pw Cw
+  rw [Fin.sum_univ_two]
+  simp only [Function.update_self, and_self]
   norm_num
 
 /-- The witness satisfies every hypothesis of `deltaVec_siteExp_le`, with a
