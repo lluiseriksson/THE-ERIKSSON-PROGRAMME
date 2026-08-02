@@ -7,7 +7,17 @@ Authors: Lluis Eriksson
 import YangMills.OS.DobrushinOscillation
 
 /-!
-# D-3c — SOURCE, NOT RESULT
+# D-3c — one-site transport for the Dobrushin comparison
+
+**STATUS IS DETERMINED BY THE EXTERNAL AUDIT RECORD FOR THIS EXACT COMMIT AND
+SOURCE BLOB.**
+
+This commit is an immutable audit target.  A declaration in this module is
+`Formalized` only when a committed evidence record names this exact commit and
+blob, records a successful focused build, and reports the permitted axiom set.
+In the absence of such a record, treat this module as SOURCE, NOT RESULT.
+
+The source text itself does not certify its status.
 
 Charter: `docs/DOBRUSHIN-D3-CHARTER.md`, rung D-3c, with Amendment 1 fixing
 where the zero diagonal is allowed to enter.  Gate `J9`
@@ -46,8 +56,9 @@ separates those two rungs and so does this module.
 * **Semantic locality is a declared hypothesis:** configurations agreeing off `i`
   give the same conditional at `i`.  `deltaAt i (E i f) = 0` is a theorem of its
   own resting on that and on nothing else — not a by-product of `simp`.
-* **`C i i = 0` enters ONLY the matrix assembly** (Amendment 1).  The local
-  transport lemma never sees it.
+* **`C i i = 0` enters only MATRIX-LEVEL consumers** (Amendment 1).  The local
+  transport lemmas never see it.  There are two such consumers:
+  `deltaVec_siteExp_le` and `Bupd_mulVec_mono_of_majorant`.
 * **The `A + B` split stays visible.**  `A` is controlled by `deltaAt k f`
   through normalisation; `B` is a difference of two conditionals and consumes
   exactly one already-formalised endpoint of D-3a,
@@ -60,6 +71,12 @@ The authority is this list of NAMES, not a total and not a `grep`.  The audit
 driver must be exactly this manifest.  Three earlier versions of this section
 quoted totals — 9, then 19, then 38 with classes summing to 28 — and every one
 was wrong, because a total is remembered while a list is checked.
+
+**Naming policy, so the driver never depends on an implicit `open`:** every name
+below is relative to `YangMills.OS.Dobrushin`, and nested declarations keep their
+`Witness.` prefix.  An earlier version listed the twelve supporting witness
+lemmas without it while listing their headlines with it, so the manifest was not
+yet a list of literal names.
 
 **Load-bearing and interface — 11**
 
@@ -89,15 +106,18 @@ was wrong, because a total is remembered while a list is checked.
 **Supporting witness lemmas — 16**
 
 ```
-16  uniformKernel_local        24  two_cases
-17  uniformKernel_nonneg       25  pw_nonneg
-18  uniformKernel_sum          26  pw_sum
-19  uniformKernel_tv           27  Cw_diag
-20  fw_update_zero             28  pw_tv
-21  fw_update_one              29  siteExp_pw
-22  pw_local                   30  deltaAt_zero_fw
-23  deltaAt_one_fw             31  deltaAt_one_siteExp
+16  uniformKernel_local          24  Witness.two_cases
+17  uniformKernel_nonneg         25  Witness.pw_nonneg
+18  uniformKernel_sum            26  Witness.pw_sum
+19  uniformKernel_tv             27  Witness.Cw_diag
+20  Witness.fw_update_zero       28  Witness.pw_tv
+21  Witness.fw_update_one        29  Witness.siteExp_pw
+22  Witness.pw_local             30  Witness.deltaAt_zero_fw
+23  Witness.deltaAt_one_fw       31  Witness.deltaAt_one_siteExp
 ```
+
+The four `uniformKernel_*` lemmas carry NO prefix: they sit at the
+`YangMills.OS.Dobrushin` level, outside `namespace Witness`.
 
 **Definitions — 9**
 
@@ -116,10 +136,12 @@ is why the manifest above is a list of names.
 
 ## Status
 
-`SOURCE, NOT RESULT`.  Elaboration under the owner's named authorisation for
-`lake env lean YangMills/OS/DobrushinComparison.lean`.  A green run means source
-that elaborated on recorded bytes; it does not confer `Formalized`, which is
-conferred only by the external A/B audit protocol that closed D-3a.
+Governed by the banner at the head of this docstring.  A green run of
+`lake env lean YangMills/OS/DobrushinComparison.lean` means source that
+elaborated on recorded bytes; it confers nothing.  Status is conferred by the
+external evidence record, and the earlier absolute wording here would have gone
+false the moment that record landed without touching a byte of this file — the
+circularity D-3a already paid to remove.
 -/
 
 namespace YangMills.OS
@@ -326,7 +348,7 @@ theorem deltaAt_siteExp_le (p : ι → (ι → S) → S → ℝ) (C : ι → ι 
     exact hsum2
   exact hgoal
 
-/-! ## §5  Step 7: the matrix form, and the ONLY place `C i i = 0` is used -/
+/-! ## §5  Step 7: the matrix form — the FIRST matrix-level use of `C i i = 0` -/
 
 /-- The single-update matrix `B i = I - eᵢeᵢᵀ + Cᵀ eᵢeᵢᵀ`.  The transpose is
 what makes the influence `k → i` land in the `k`-th coordinate. -/
@@ -357,9 +379,14 @@ theorem Bupd_mulVec (C : Matrix ι ι ℝ) (i : ι) (v : ι → ℝ) (k : ι) :
   · subst hki; simp
   · rw [Function.update_of_ne hki, Pi.zero_apply, if_neg hki]
 
-/-- **The matrix form of the key lemma.**  `C i i = 0` is a hypothesis HERE and
-nowhere else: `deltaAt_siteExp_le` and `deltaAt_siteExp_self` are stated without
-it, so any dominating interdependence matrix drives them. -/
+/-- **The matrix form of the key lemma.**  The LOCAL transport lemmas do not
+assume `C i i = 0`: `deltaAt_siteExp_le` and `deltaAt_siteExp_self` are stated
+without it, so any dominating interdependence matrix drives them.  This
+matrix theorem does assume it, and so does the monotonicity adapter
+`Bupd_mulVec_mono_of_majorant` in §7 — an earlier docstring said "HERE and
+nowhere else", which stopped being true in the commit that added that adapter.
+The real boundary is: `C i i = 0` appears only in MATRIX-LEVEL consumers, never
+in the local transport lemmas. -/
 theorem deltaVec_siteExp_le (p : ι → (ι → S) → S → ℝ) (C : Matrix ι ι ℝ)
     (hnn : ∀ i η s, 0 ≤ p i η s)
     (hsum : ∀ i η, ∑ s, p i η s = 1)
@@ -458,7 +485,8 @@ An earlier version of this paragraph said nonnegativity is forced by `hC`, with
 no such split.  That is false on the diagonal.
 `Bupd_mulVec_mono_of_majorant` below assembles the two sources, so that D-3d
 never has to reconstruct a global hypothesis this module wrongly attributed to
-one of them. -/
+one of them.  It is therefore the SECOND matrix-level consumer of `hdiag`, after
+`deltaVec_siteExp_le`. -/
 
 omit [Fintype ι] in
 /-- `hC` already forces `C` nonnegative off the diagonal: `TV ≥ 0`. -/
