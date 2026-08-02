@@ -42,6 +42,8 @@ lake build YangMills.RG.FiniteDimensionalRealPositiveSqrt
 lake build YangMills.RG.CoerciveCovariancePositiveSqrt
 lake build YangMills.RG.PhysicalGaugeCovariancePositiveRoot
 lake build YangMills.RG.StieltjesKernelIntegration
+lake build YangMills.RG.CoerciveCovarianceStieltjes
+lake build YangMillsCore
 lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
 ```
 
@@ -71,12 +73,12 @@ successful module targets, not a fresh successful full-core rebuild.
 
 ## Manuscript artifact
 
-- Manuscript version: 0.5
-- Annotated local release tag: `shift-uniform-ct-v0.5`
-- Manuscript commit: `76f858a24418daff2d4f11d6f6cbb7e6806d3c2b`
-- Pages: 12
+- Manuscript version: 0.6
+- Annotated local release tag: `shift-uniform-ct-v0.6`
+- Manuscript commit: `f4dd1ddc668025dd3c187dd02e84834315c32857`
+- Pages: 13
 - Output: `output/pdf/shift_uniform_combes_thomas.pdf`
-- SHA-256: `C261C9C5B046737548672E5259800227A6D84BBE1FDD0C722B3346E686411689`
+- SHA-256: `75614BB276D528ACB3F6F9628B94C81C22D745990B789D632A5BF6732299800F`
 
 The detailed administrative status of thirteen other author-corpus records is
 kept in `PUBLICATION-PROVENANCE.md`, outside the mathematical manuscript. It is
@@ -100,6 +102,30 @@ operator-level gap is to prove integrability of the canonical shifted inverse
 and identify its normalized integral with the formal spectral root.  Therefore
 the final `PhysicalLocalizedCovarianceRootCertificate` is reduced further but
 still conditional on that identification/root-kernel bridge.
+
+## Version 0.6 canonical shifted-inverse extension
+
+- Formal canonical-family commit:
+  `9f19b2d7c3dbcee1cc95683c9bc1ea29629c6b91`
+- New checked module: `CoerciveCovarianceStieltjes.lean`
+- Strengthened module: `FiniteDimensionalRealPositiveSqrt.lean`
+- Canonical-family target: successful, 8203 jobs, on 2026-08-02
+- Fresh `YangMillsCore` build: successful, 8470 jobs, on 2026-08-02
+- Focused twenty-six-declaration oracle: only `propext`,
+  `Classical.choice`, and `Quot.sound`
+
+Lean now defines the actual family `(K + t^2 I)⁻¹`, proves both inverse
+identities, its resolvent identity, the sharp coercivity majorant,
+operator-norm continuity, and Bochner integrability.  The physical capstone
+proves the `2 / sqrt(c)` exponential kernel bound for the normalized integral
+of this canonical family, without an abstract-family or integrability premise.
+Positive square roots are also proved unique in finite real dimension.
+
+The one remaining operator-level gap is the exact equality between this
+already-localized integral and the separately constructed spectral positive
+root.  The physical root certificate therefore remains conditional on that
+single identification.  No volume-uniform coercivity, continuum limit, or
+Clay implication is claimed.
 
 Remote publication and hosted CI for the release tag are release actions and
 are not claimed by this local manifest.
