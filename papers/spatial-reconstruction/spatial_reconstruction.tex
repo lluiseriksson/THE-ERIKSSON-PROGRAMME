@@ -304,6 +304,73 @@ physical inner product itself is positive at every $\beta$:
 Theorem~\ref{thm:pos} and is not proved necessary, here or anywhere in this
 lane.  At $L=0$ it could not be necessary: the kernel is the scalar $1$.
 
+\section{Definiteness, and why the operator is unique}\label{sec:unique}
+
+Section~\ref{sec:forced} said the defining equation has \emph{at most} one
+solution.  That step needs the site form to separate points, and
+non-negativity does not separate anything: version 1.0 of this paper asserted
+the conclusion while carrying only
+\osline{SpatialReconstruction}{SITENNVEC}{siteForm\_self\_nonneg}.  The
+missing chain is supplied here.
+
+\begin{theorem}[definiteness]\label{thm:def}
+For strictly positive $w$, $\langle u,u\rangle_{\mathrm{site}}=0$ if and only if
+$u=0$.
+\end{theorem}
+
+\osline{SpatialReconstruction}{DEFLINE}{siteForm\_self\_eq\_zero\_iff}, whence
+separation --- two vectors pairing identically against everything are equal ---
+at \osline{SpatialReconstruction}{SEPLINE}{siteForm\_right\_ext}.
+
+\begin{theorem}[uniqueness]\label{thm:uniq}
+If $S$ is any map with $\langle u,Sv\rangle_{\mathrm{site}}
+=\langle u,v\rangle_{\mathrm{bond}}$ for all $u,v$, then $S=T$.
+\end{theorem}
+
+\osline{SpatialReconstruction}{UNIQLINE}{transferOp\_unique}.  The statement
+quantifies over an arbitrary map, linearity not assumed; linearity of $T$
+itself is a separate object,
+\osline{SpatialReconstruction}{OPLLINE}{transferOpL}, so that the word
+\emph{operator} names a type.
+
+\section{The similarity, and what it does not give}\label{sec:spec}
+
+Let $Q$ be multiplication by $\sqrt{w}$.  For strictly positive $w$ this is a
+linear \emph{isomorphism} --- \osline{SpatialReconstruction}{QEQUIVLINE}{sqrtWeightEquiv}
+--- and
+
+\begin{theorem}[similarity]\label{thm:sim}
+$T\circ Q=Q\circ S$ as an equality of linear maps, where $S$ is the symmetrised
+kernel $\sqrt{w}K_\beta\sqrt{w}$ studied earlier in this lane.
+\end{theorem}
+
+\osline{SpatialReconstruction}{SIMILARLINE}{transferOpL\_comp\_sqrtWeightEquiv}.
+
+\begin{corollary}\label{cor:eig}
+$\lambda$ is an eigenvalue of $S$ if and only if it is an eigenvalue of $T$, the
+non-vanishing eigenvector being carried across by $Q$ in both directions.
+\end{corollary}
+
+\osline{SpatialReconstruction}{EIGIFFLINE}{transferOp\_eigenvalue\_iff}.
+
+\paragraph{What this is not, stated because the first version of it overstated
+itself.}  Gate R4 of \S\ref{sec:gates} asserted four things: equality of
+eigenvalue lists entry by entry, reality of all of them, agreement of
+multiplicities, and the ratio of the largest modulus to the Perron eigenvalue.
+Theorem~\ref{thm:sim} and Corollary~\ref{cor:eig} give the similarity and the
+equality of eigenvalue \emph{sets}.  Multiplicities, characteristic
+polynomials, ordered lists, reality and the Perron ratio are \textbf{not}
+formalised here.  They follow from a similarity with a real symmetric matrix by
+standard linear algebra; standard is not the same as present, and an
+intermediate version of this paper wrote ``the spectrum transports'' when it had
+proved less.
+
+The weaker forward implication is kept and labelled as such at
+\osline{SpatialReconstruction}{FWDEIGLINE}{transferOp\_eigen\_of\_symWeighted};
+note that it does not require the eigenvector to be non-zero, so at $u=0$ its
+hypothesis holds for every $\lambda$ and it says nothing.  That is exactly why
+it is not, by itself, a statement about spectra.
+
 \section{The physical space is everything}\label{sec:phys}
 
 An operator statement is only as strong as the space it is about.  If $\Phi$
@@ -321,10 +388,14 @@ denominator is positive because the constant half ending at a slice is a half
 ending at it --- \osline{SpatialReconstruction}{222}{const\_mem\_halvesAt}
 --- and Gibbs weights are positive.
 
-Consequently the null space of the site form on observables is exactly
-$\ker\Phi$, and the quotient by it is the \emph{whole} space of boundary
-vectors, of dimension $2^L$.  Gate R1 of Section~\ref{sec:gates} predicted that
-dimension as an integer before this was written.
+The null space of the site form on observables is exactly $\ker\Phi$ ---
+\osline{SpatialReconstruction}{KERLINE}{mem\_ker\_collapseL\_iff}, so the
+quotient is by something identified rather than by an abstract null space --- and
+the quotient by it \emph{is} the space of boundary vectors, as a bundled linear
+equivalence at \osline{SpatialReconstruction}{PHYSLINE}{physicalEquiv}.  Gate R1
+of Section~\ref{sec:gates} predicted its dimension as an integer before any of
+this was written.  In v1.0 the last two sentences were prose; they are objects
+now.
 
 \section{On the measure}\label{sec:measure}
 
@@ -480,19 +551,21 @@ below is the text that was elaborated.
 \toprule
 Quantity & Value \\
 \midrule
-Full core build & 8469 jobs, success \\
-\quad same tree without this paper's modules & 8468 jobs \\
-\quad predicted delta, registered before measuring & $+1$ \\
-Oracle commands, and answers & 2883 \\
-\quad with a non-standard axiom & 0 \\
-Declarations in \texttt{SpatialOS.lean} & 65 \\
-Declarations in \texttt{SpatialReconstruction.lean} & 15 \\
-\quad of them in the oracle & 15 \\
+Full core build, this version & JOBSAFTER jobs, success \\ % @@JOBSAFTER@@
+\quad same tree at the v1.0 anchor & JOBSBEFORE jobs \\ % @@JOBSBEFORE@@
+\quad delta, registered before measuring & JOBSDELTA \\ % @@JOBSDELTA@@
+\quad at this campaign's parent commit & JOBSCAMPAIGNBASE jobs \\ % @@JOBSCAMPAIGNBASE@@
+Oracle commands, and answers & ORACLETOTAL \\ % @@ORACLETOTAL@@
+\quad with a non-standard axiom & ORACLENONSTD \\ % @@ORACLENONSTD@@
+Declarations in \texttt{SpatialOS.lean} & DECLSOS \\ % @@DECLSOS@@
+\quad of them in the oracle & DECLSOSORACLE \\ % @@DECLSOSORACLE@@
+Declarations in \texttt{SpatialReconstruction.lean} & DECLSREC \\ % @@DECLSREC@@
+\quad of them in the oracle & DECLSRECORACLE \\ % @@DECLSRECORACLE@@
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound},
   \texttt{Classical.choice} \\
-Occurrences of \texttt{sorryAx} & 0 \\
+Occurrences of \texttt{sorryAx} & SORRYCOUNT \\ % @@SORRYCOUNT@@
 Project axioms & 0 \\
-Errors & 0 \\
+Errors & COREERRORS \\ % @@COREERRORS@@
 \bottomrule
 \end{tabular}
 \end{center}

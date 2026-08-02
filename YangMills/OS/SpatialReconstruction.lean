@@ -64,11 +64,21 @@ form to be DEFINITE while only NON-NEGATIVITY was available; and the quotient by
 the null space was described rather than constructed.  It also observed that
 gate R4 --- the spectrum of `T` --- is one line of algebra.
 
-All five are now theorems, in §6, §7 and §8: `siteForm_self_eq_zero_iff`,
-`siteForm_right_ext`, `transferOp_unique`, `transferOpL`, `transferOp_sqrtw`
-with `transferOp_eigen_of_symWeighted`, and `physicalEquiv`.  R4 has been
-replaced by the theorem it was a numerical stand-in for, which is what should
-happen to a gate whose statement turns out to be provable.
+The first four are now theorems, in §6, §7 and §8: `siteForm_self_eq_zero_iff`,
+`siteForm_right_ext`, `transferOp_unique`, `transferOpL`, and `physicalEquiv`
+with `mem_ker_collapseL_iff`.
+
+**R4 IS PARTLY, NOT WHOLLY, REPLACED, and the difference is stated because a
+second reading found this very sentence overstating it.**  R4 asserted four
+things: equality of eigenvalue LISTS entry by entry, reality of all of them,
+agreement of MULTIPLICITIES, and the ratio of the largest modulus to the Perron
+eigenvalue.  What §7b proves is that `Q` is a linear ISOMORPHISM, that
+`T ∘ Q = Q ∘ S` as an equality of linear maps, and that the eigenvalue SETS
+coincide in both directions with the non-vanishing carried across
+(`transferOp_eigenvalue_iff`).  Multiplicities, characteristic polynomials,
+ordered lists, reality, and the Perron ratio are NOT formalised here.  They
+follow from a similarity with a real symmetric matrix by standard linear
+algebra, and standard is not the same as present.
 
 ## What is NOT here
 
