@@ -1,10 +1,11 @@
 PR #39 EXTERNAL INSTRUMENTAL BUNDLE VERIFICATION TRANSCRIPT
-Date: 2026-08-01
+Date: 2026-08-02
 Repository: lluiseriksson/THE-ERIKSSON-PROGRAMME
 PR: #39 (draft)
 Remote branch: codex/su2-two-transporter-nogo-20260731
-Required starting HEAD: 5172a51b0fad455d9009b1805a48b8be54acbbcc
-Checkpoint A: f32638ac98d62f05321d8c586326457deabf0d77
+Observed remote HEAD before editing: e1c5eeece32ca46a45c0aaa1f91bec913df5cfe7
+Literal source-base anchor: 5172a51b0fad455d9009b1805a48b8be54acbbcc
+Checkpoint A: 29a3f203f2a4323af18ef43a4eddb83c3b500c16
 Evidence commit B: intentionally not recorded or required (no self-reference)
 
 SCOPE
@@ -14,11 +15,26 @@ finite certificate, its self-test logic, or the Lean oracle.  No Colab, Lean,
 Lake, or mathematical oracle was used.  A fresh independent audit is required.
 
 A/B PROTOCOL
-Checkpoint A adds only scripts/verify_pr39_instrumental_bundle.py.  Evidence
-commit B changes exactly this transcript and the adjacent JSON manifest.  The
+Relative to the observed remote head, checkpoint A changes only
+scripts/verify_pr39_instrumental_bundle.py.  Evidence commit B changes exactly
+this transcript and the adjacent JSON manifest.  The
 verifier resolves A and HEAD as commits, requires A to be the direct parent of
 HEAD, and rejects every A..HEAD path outside that exact two-path evidence set.
 All protected inputs are read with git show SHA:path.
+
+LITERAL TRUST ANCHORS AND HUMAN BOUNDARY
+Acceptance resolves the certificate, oracle, and mathematics blob OIDs directly
+with Git at checkpoint A and compares them to constants compiled literally into
+the verifier.  The manifest repeats those OIDs only as evidence and never defines
+them.  The literal source base must be an ancestor of A.  A self-consistent
+replacement of the base/checkpoint/manifest/protected package is therefore
+rejected with nonzero exit.
+
+The preceding verifier at checkpoint f32638ac98d62f05321d8c586326457deabf0d77
+had blob OID 53a7afdc694fcb9c653150b906cef44b5e0771e8.  The modified verifier at checkpoint
+A has blob OID 5645fa99017e775a5168e0139ae1697270499410.  This new OID is an out-of-band
+human-review anchor, not a value the verifier tries to authenticate.  Replacing
+the verifier itself requires a new human review and is outside automatic scope.
 
 EOL POLICY
 Raw hashes cover exact Git-blob or process bytes.  LF hashes remove every CR
@@ -36,10 +52,10 @@ mathematics:
   raw_sha256 = lf_sha256 = 3fcd675b9958c920db7074b579fb22633ddcb10c29b2c017c6c3f68df2506dee
   git_blob_oid = e785ce28d92cb7a8d77a5ef901e8fd860f5b0c36
 verifier:
-  raw_sha256 = lf_sha256 = 8f721967ec590f261bf6c4137de03fac9ae562a67480054e50f55cfb372bd1b4
-  git_blob_oid = 53a7afdc694fcb9c653150b906cef44b5e0771e8
+  raw_sha256 = lf_sha256 = 0867ac581a66e73f8b3d10a749f09800d2d60c8368f25034192b1353dfcc497f
+  git_blob_oid = 5645fa99017e775a5168e0139ae1697270499410
 verifier contract sha256:
-  4c70a7b33cd2ac60cfe6dc75b5b375d4643b8d30231fcc6b314547164d57426f
+  e4c72c52c806b3cb2cdb8b33fe65a5c4d82a1fc4e3e992d1fff3c569f8f7e47c
 
 STATIC CONTRACT
 The certificate AST has no assert node, EXPECTED_CHECKS is the integer 14,
@@ -51,7 +67,7 @@ single emitted RESULT: PASS follows close and CHECKS.
 
 The oracle parser accepts only the import plus the exact ordered sequence of 16
 #print axioms headlines.  Omission, rename, duplicate, addition, or reordering
-is rejected.  The verifier itself contains no assert node, uses a fixed 308
+is rejected.  The verifier itself contains no assert node, uses a fixed 313
 check ledger, and writes its PASS token only after ledger.close succeeds.
 
 CERTIFICATE ACCEPTANCE EXECUTIONS
@@ -97,9 +113,9 @@ EXTERNAL VERIFIER EXECUTIONS
   python scripts/verify_pr39_instrumental_bundle.py      exit 0 (twice)
   python -O scripts/verify_pr39_instrumental_bundle.py   exit 0 (twice)
 All four stdout streams are the same two LF-terminated lines:
-  PR39 VERIFIER CHECKS: 308/308
+  PR39 VERIFIER CHECKS: 313/313
   PR39 EXTERNAL INSTRUMENTAL VERIFIER: PASS
-  raw_sha256 = lf_sha256 = 510181cdf267cc4bf1c354f54e4fc3f699e23dc2a86e3f0d57839c4a53d026cd
+  raw_sha256 = lf_sha256 = 48ae3ef824506511a84a4c2aacd7d7244a1e67e63b01b45b7012dcd95319d64b
 All four stderr streams are empty with SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.
 
 ADVERSARIAL VERIFIER MUTATIONS
@@ -117,6 +133,21 @@ emitted zero external-verifier PASS hits.  The cases covered:
   - post-A edits of every protected blob;
   - post-A and checkpoint-A certificate variants with a neutralized condition or
     PASS moved before close.
+
+The literal-anchor repair additionally rejected a self-consistent replacement
+of base/checkpoint/manifest/protected package in both normal and optimized modes;
+both commands exited 1 and emitted zero external-verifier PASS hits.
+
+PROVENANCE
+  Python: 3.12.6 (CPython, MSC v.1940 64 bit AMD64)
+  Git: 2.43.0.windows.1
+  OS/architecture: Windows 11 10.0.26200 SP0 / AMD64
+  host: local Codex Windows workstation (non-secret label; hostname omitted)
+  python scripts/verify_pr39_instrumental_bundle.py: exits 0, 0
+  python -O scripts/verify_pr39_instrumental_bundle.py: exits 0, 0
+  synthetic prior-attack suite: 32/32 exits nonzero
+  self-consistent literal-anchor attack, normal: exit 1
+  self-consistent literal-anchor attack, optimized: exit 1
 
 CONCLUSION
 External instrumental bundle verification: PASS.  This result repairs only the

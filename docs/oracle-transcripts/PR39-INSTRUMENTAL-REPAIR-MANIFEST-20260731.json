@@ -4,8 +4,8 @@
   "pull_request": 39,
   "pull_request_state": "draft",
   "remote_branch": "codex/su2-two-transporter-nogo-20260731",
-  "checkpoint_a": "f32638ac98d62f05321d8c586326457deabf0d77",
-  "contract_sha256": "4c70a7b33cd2ac60cfe6dc75b5b375d4643b8d30231fcc6b314547164d57426f",
+  "checkpoint_a": "29a3f203f2a4323af18ef43a4eddb83c3b500c16",
+  "contract_sha256": "e4c72c52c806b3cb2cdb8b33fe65a5c4d82a1fc4e3e992d1fff3c569f8f7e47c",
   "eol_policy": "raw hashes cover exact Git-blob or process bytes; LF hashes remove every CR byte before SHA-256; Git-blob raw bytes are canonical",
   "evidence_policy": {
     "allowed_paths": [
@@ -15,9 +15,9 @@
     "commits_after_checkpoint_a": 1,
     "transcript": {
       "path": "docs/oracle-transcripts/PR39-INSTRUMENTAL-REPAIR-20260731.txt",
-      "raw_sha256": "41211c8aae9207df54c85d5d35b9acadfb0ed0792d537746c2a56a9ba6ec103e",
-      "lf_sha256": "41211c8aae9207df54c85d5d35b9acadfb0ed0792d537746c2a56a9ba6ec103e",
-      "git_blob_oid": "21ae9380c6e2beefdf7e0b5688e99c38bd4a19fd"
+      "raw_sha256": "4718d02b00133496020e08e5cf8aafa97c8f5a877ffc2e364ea75ce974ebbf8f",
+      "lf_sha256": "4718d02b00133496020e08e5cf8aafa97c8f5a877ffc2e364ea75ce974ebbf8f",
+      "git_blob_oid": "ff15eb64194ce482c03281aa564ec14336f41491"
     }
   },
   "protected_blobs": {
@@ -41,9 +41,9 @@
     },
     "verifier": {
       "path": "scripts/verify_pr39_instrumental_bundle.py",
-      "raw_sha256": "8f721967ec590f261bf6c4137de03fac9ae562a67480054e50f55cfb372bd1b4",
-      "lf_sha256": "8f721967ec590f261bf6c4137de03fac9ae562a67480054e50f55cfb372bd1b4",
-      "git_blob_oid": "53a7afdc694fcb9c653150b906cef44b5e0771e8"
+      "raw_sha256": "0867ac581a66e73f8b3d10a749f09800d2d60c8368f25034192b1353dfcc497f",
+      "lf_sha256": "0867ac581a66e73f8b3d10a749f09800d2d60c8368f25034192b1353dfcc497f",
+      "git_blob_oid": "5645fa99017e775a5168e0139ae1697270499410"
     }
   },
   "certificate_contract": {
@@ -217,11 +217,11 @@
     }
   },
   "verifier_execution": {
-    "check_count": 308,
-    "stdout_raw_sha256": "510181cdf267cc4bf1c354f54e4fc3f699e23dc2a86e3f0d57839c4a53d026cd",
-    "stdout_lf_sha256": "510181cdf267cc4bf1c354f54e4fc3f699e23dc2a86e3f0d57839c4a53d026cd",
+    "check_count": 313,
+    "stdout_raw_sha256": "48ae3ef824506511a84a4c2aacd7d7244a1e67e63b01b45b7012dcd95319d64b",
+    "stdout_lf_sha256": "48ae3ef824506511a84a4c2aacd7d7244a1e67e63b01b45b7012dcd95319d64b",
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "audit_status": "fresh independent audit required",
-  "payload_sha256": "b2789a2b6e1b7f06492307252caea6418c4b01e981e2f63dbb02ee90d0a95e4d"
+  "payload_sha256": "59bdc53741cf0dcf16f9ad48bca16b2b2398cf4cad91be0fbc60307aa61c517d"
 }
