@@ -169,12 +169,10 @@ theorem cmp116PhysicalEndomorphismRealMatrix_quadratic_lower
     lower * dotProduct v v = lower * ‖y‖ ^ 2 := by
       congr 1
       calc
-        dotProduct v v = inner ℝ x x := by
-          simp [x, EuclideanSpace.inner_eq_star_dotProduct]
-        _ = inner ℝ y y := by
-          symm
-          exact E.inner_map_map x x
-        _ = ‖y‖ ^ 2 := real_inner_self_eq_norm_sq
+        dotProduct v v = ‖x‖ ^ 2 := by
+          rw [EuclideanSpace.real_norm_sq_eq]
+          simp [x, dotProduct, pow_two]
+        _ = ‖y‖ ^ 2 := by simp [y]
     _ ≤ inner ℝ y (T y) := hT y
     _ = inner ℝ x
           ((Matrix.toEuclideanCLM
@@ -212,7 +210,7 @@ theorem dotProduct_cmp116LocalizedCovarianceCompression_mulVec_eq_of_vectorSuppo
   rw [cmp116LocalizedCovarianceCompression, ← Matrix.mulVec_mulVec,
     ← Matrix.mulVec_mulVec, Matrix.dotProduct_mulVec,
     ← Matrix.mulVec_transpose, cmp116Eq223CoordinateProjection_transpose,
-    hPv, hPv]
+    hPv]
 
 namespace CMP116InteractingPhysicalPrecisionSource
 
