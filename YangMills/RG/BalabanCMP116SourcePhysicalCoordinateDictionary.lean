@@ -9,6 +9,10 @@ import YangMills.RG.BalabanCMP116Eq223PhysicalLocalizationProjector
 /-!
 # Source coordinates transported to the physical bond basis
 
+PRE-VALIDATION: the empty-carrier declaration below is present in source,
+its updated `.olean` has not yet been materialized, and that declaration has
+not yet been verified by the Lean compiler.
+
 The equation-(2.26) geometry is indexed by CMP116 cubes, whereas the literal
 source Gaussian is indexed by physical bonds and Lie coordinates.  This file
 performs that transport through the certified dictionary equivalence.  It
@@ -83,6 +87,27 @@ theorem card_cmp116SourcePhysicalLocalizedCoordinates_le
       ((Z0.card * M ^ d) * d) * (Nc ^ 2 - 1) := by
   rw [card_cmp116SourcePhysicalLocalizedCoordinates]
   exact Dict.card_cmp116Eq223PhysicalLocalizedCoordinates_le Z0
+
+/-- The empty block region has no localized physical coordinate.  This is a
+structural fact about the literal two-endpoint interior, not a cardinality
+estimate. -/
+@[simp]
+theorem cmp116SourcePhysicalLocalizedCoordinates_empty
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim) :
+    cmp116SourcePhysicalLocalizedCoordinates Dict
+        (∅ : Finset (FinBox d N')) = ∅ := by
+  classical
+  ext ba
+  simp only [Finset.not_mem_empty, iff_false]
+  intro hba
+  have hinterior : cmp116BondInterior (∅ : Finset (FinBox d N')) ba.1 :=
+    (mem_cmp116SourcePhysicalLocalizedCoordinates_iff Dict ∅ ba).mp hba
+  have hsource := hinterior.1.1
+  rw [mem_cmp116RegionSites_iff] at hsource
+  simpa using hsource
 
 /-- A cube carrier is converted to its literal physical bond carrier by the
 site map; no cube is treated definitionally as a bond. -/

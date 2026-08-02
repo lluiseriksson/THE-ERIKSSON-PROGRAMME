@@ -226,6 +226,17 @@ the source-coordinate dictionary transports that witness to
 small but genuine geometric obligation, not a consequence of the two domain
 fields already counted.
 
+There is a terminal interface obstruction one level above that local
+producer.  `CMP116Eq226CenteredConditionedPhysicalTermSourceFamily` currently
+quantifies over every raw `Z0`, not merely over members of `Z0Index`; hence it
+asks for a term source at `Z0 = ∅`.  The literal localized coordinate carrier
+is empty there, while the mandatory covariance-lower certificate contains a
+`carrier_nonempty` witness.  The source-level no-go theorem is present under
+PRE-VALIDATION.  The faithful repair is to index the family only over actual
+summation members and prove their localization regions nonempty from the
+physical geometry, not to fabricate a covariance certificate or an
+off-index physical term.
+
 Elaboration failures are triaged separately from project mathematics.  If the
 first error occurs in a proof step whose statement and diagnostic mention no
 project declaration, variants are tested first in a minimal file importing
