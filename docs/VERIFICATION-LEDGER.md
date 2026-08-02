@@ -30810,3 +30810,63 @@ At the time of this addendum the gate has not run and no PASS is claimed.  It
 does not license the finite vacuum-product order, either spectral block, the
 endpoint, or the uniform `specRatio` theorem.  Clifford/Jordan--Wigner remains
 unopened.
+
+## Addendum 607 (2026-08-02, **TASK 14: Stieltjes/log-mixture gate passed**)
+
+**OBSERVED NUMERICAL GATE; NOT A LEAN THEOREM.**  The protocol fixed in
+Addendum 606 at preregistration commit
+`3fbb42e2ee73ddd37d15c45eba31e1ce7462d5ab` was run in one fresh Colab clone
+from notebook commit `020a2a746555d2a819b853d30b430e370393d347`.
+This is an intermediate brick, so one fresh clone is the required witness
+under the current reproducibility policy.
+
+The script SHA-256 was
+`4375cc616e6e2dee7844be31900c8558542c0891dcf976b3c3fb0d41eae56c8e`.
+Normal and `python -O` both exited zero in `16.136374 s` and `15.950535 s`
+respectively and emitted byte-identical JSON with SHA-256
+`657283699b963f69a491fbb29b28622eac3fac9f8e9a6724043dde74ffe8a642`.
+
+All 45 cells passed the preregistered `1e-70` residual ceiling.  The measured
+maximum absolute residual was
+`2.4279336028645139952628668618846073106836725793899645855890076253350735307409320e-120`.
+All nine `s=0` controls were exactly zero.  The half-average, missing-base,
+and missing-`B` mutation families were each rejected in all `45/45` cells;
+the minimum measured mutation gap was
+`0.00036635374743696300883904662028923513289513632177068588243327909258694233347197491`,
+well above the preregistered `1e-30` floor.
+
+The JSON prints the generic hypotheses `1 < c`, `0 < B`, `0 <= s` and the
+physical hypotheses `0 < beta`, `0 < gamma`, `gamma < a`.  This is active
+evidence that the normalisation and signs of the proposed angular form are
+correct; it is not a proof for arbitrary real parameters.
+
+The CPU/high-RAM runtime used no GPU and recorded Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T08:25:16.044189+00:00` through
+`2026-08-02T08:25:56.799524+00:00` (`40.755335 s`).
+
+The downloaded `spatial_stieltjes_gate_artifacts.zip` was independently
+hashed on Windows as
+`8ec7eef683c83c7bfbeb239b9f5371e43e943c9a85c9cbe537c35e996d149b1f`.
+Its manifest was rechecked locally:
+
+- `metadata.json`, 569 bytes,
+  `d01344be6a51f6e34da6eafad7b63cacfc799e61521794ce91e1e74fda2eb8ac`;
+- `normal.json`, 754 bytes,
+  `657283699b963f69a491fbb29b28622eac3fac9f8e9a6724043dde74ffe8a642`;
+- `optimized.json`, 754 bytes, the same SHA-256;
+- `transcript.txt`, 6144 bytes,
+  `85d9554cd41854e6abbbcf4da243c32a89664407481a3761e6cd28e61d57b9cb`.
+
+Unlike the preceding Lean archive, this transcript contains the gate's final
+`SPATIAL STIELTJES LOG-MIXTURE GATE PASS` line.  The ZIP hash is necessarily
+printed after archive construction and was checked separately against the
+download.  The runtime was disconnected and deleted immediately after
+validation; **SESIÓN COLAB LIBRE**.
+
+This PASS licenses only an attempt to prove the one generic angular
+Stieltjes/log-mixture identity in Lean.  It does not certify that identity,
+the physical dispersion corollary, the finite vacuum-product order, either
+spectral block, the endpoint, or the uniform `specRatio` theorem.
+Clifford/Jordan--Wigner remains unopened.
