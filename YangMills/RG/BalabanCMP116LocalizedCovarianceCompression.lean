@@ -37,7 +37,7 @@ the localized-compression bridge.
 namespace YangMills.RG
 
 open Matrix
-open scoped ComplexOrder Matrix.Norms.L2Operator MatrixOrder
+open scoped ComplexOrder MatrixOrder
 
 noncomputable section
 
@@ -55,6 +55,10 @@ theorem cmp116Eq223CoordinateProjection_transpose
     (cmp116Eq223CoordinateProjection S)ᵀ =
       cmp116Eq223CoordinateProjection S := by
   simp [cmp116Eq223CoordinateProjection, Matrix.diagonal_transpose]
+
+section L2OperatorNorm
+
+open scoped Matrix.Norms.L2Operator
 
 /-- The `L²` operator norm of the localized projector is at most one. -/
 theorem norm_cmp116Eq223CoordinateProjection_le_one
@@ -82,6 +86,8 @@ theorem norm_cmp116LocalizedCovarianceCompression_le
       mul_le_mul_of_nonneg_right (norm_mul_le _ _) (norm_nonneg _)
     _ ≤ (1 * ‖C‖) * 1 := by gcongr
     _ = ‖C‖ := by ring
+
+end L2OperatorNorm
 
 /-- The compressed covariance has no rows outside its localized carrier. -/
 theorem cmp116LocalizedCovarianceCompression_supported
