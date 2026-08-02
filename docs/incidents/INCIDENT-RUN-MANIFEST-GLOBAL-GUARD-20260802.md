@@ -238,6 +238,36 @@ was run locally; subsequent whole-tree validation belongs to the sanctioned
 GitHub Actions runner. The subsecond fixture mutations remained within the
 local-light contract.
 
+### Fresh-audit C3 cleanup-order reproduction and repair
+
+The next audit defect was reproduced before repair at
+`8eb733ddd54eeb28849cdfa8d9d8e7c09c6d0363`. With `$1` naming a pre-seeded
+decision record containing `PASS`, omitting `$2` or `$3` returned exit 1 before
+the wrapper reached `rm`; the record remained `PRESENT/PASS` and retained its
+stale marker. The wrapper now validates only `$1` before removing and checking
+that exact path, then validates `$2` and `$3`.
+
+The replacement harness executes six real routes from a minimal Git repository
+with the real validator, under normal Python and `PYTHONOPTIMIZE=1`. Every route
+begins with a stale `PASS`: missing `$1`, `$2`, or `$3` ends `ABSENT/1`;
+worktree materialization failure ends `ABSENT/128`; Python failure ends with a
+new `FAIL/no-PASS` record carrying exit 2 and a first cause; success ends with a
+new `PASS/new-valid` record carrying exit 0. No stale marker survives. Because
+the wrapper cannot know a missing `$1`, that fixture executes the caller's
+precleanup against the exact canonical
+`$GITHUB_WORKSPACE/run-manifest-guard-result.json` before invoking the wrapper
+without arguments.
+
+### Known-open provenance boundary E
+
+The separate diagnosis reports that 31 referenced artifacts do not exist in
+Git or in the available legacy clone. A date cannot repair a
+`path: file does not exist` violation or restore reproducibility. The owner
+must choose between explicit quarantine/reclassification using the schema's
+vocabulary and withdrawal of the affected reproducibility claim. This incident
+does not choose for the owner, and this PR does not modify the 679 affected
+manifests.
+
 ### Text baseline hash regimes
 
 The baseline is UTF-8 without BOM. SHA-256
@@ -253,9 +283,9 @@ is frozen in `.github/run-manifest-debt-baseline.hashes.json`.
 
 The frozen PR body uses the same declared transformations. Its Git blob/LF
 SHA-256 is
-`7eecefbe492a80317e85f4b4cc360109e334bb3905cd6b9d5e2808387a64198c`;
+`0e4ea45b32db2dbc325e536dbd2b8c5d50259cb22faddbebe179b2551aafa13c`;
 its Windows checkout/CRLF SHA-256 is
-`5fc5e087456b3fcef6235257ce1fd813aff2910b2b65c337585b59df911e8143`.
+`b63b117e6934d4dbd2a954c8c12b528af48511d4899d30cafeca32f74a1813d2`.
 The authoritative labels and exact normalization are stored beside it in
 `.github/PULL_REQUEST_BODY_RUN_MANIFEST_GUARD_20260802.sha256`.
 

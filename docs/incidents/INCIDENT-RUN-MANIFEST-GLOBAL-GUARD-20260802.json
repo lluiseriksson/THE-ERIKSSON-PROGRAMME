@@ -149,12 +149,74 @@
       "action": "no further global local scan; delegate whole-tree validation to GitHub Actions"
     }
   },
+  "audit_reopen_c3_cleanup_order": {
+    "pre_fix_sha": "8eb733ddd54eeb28849cdfa8d9d8e7c09c6d0363",
+    "pre_fix_reproduction": {
+      "missing_argument_2": {
+        "exit_code": 1,
+        "decision_state": "PRESENT/PASS",
+        "stale_marker_survived": true
+      },
+      "missing_argument_3": {
+        "exit_code": 1,
+        "decision_state": "PRESENT/PASS",
+        "stale_marker_survived": true
+      }
+    },
+    "post_fix_executed_fixtures": {
+      "modes": [
+        "normal",
+        "optimized via PYTHONOPTIMIZE=1"
+      ],
+      "a_missing_result_file": {
+        "exit_code": 1,
+        "decision_state": "ABSENT",
+        "boundary": "caller precleans exact canonical GITHUB_WORKSPACE result path before invoking wrapper without arguments"
+      },
+      "b_missing_comparison_root": {
+        "exit_code": 1,
+        "decision_state": "ABSENT"
+      },
+      "c_missing_change_base": {
+        "exit_code": 1,
+        "decision_state": "ABSENT"
+      },
+      "d_materialization_failure": {
+        "exit_code": 128,
+        "decision_state": "ABSENT"
+      },
+      "e_python_failure": {
+        "exit_code": 2,
+        "decision_state": "FAIL/no-PASS",
+        "recorded_exit_code": 2,
+        "first_cause_required": true
+      },
+      "f_success": {
+        "exit_code": 0,
+        "decision_state": "PASS/new-valid",
+        "recorded_exit_code": 0
+      },
+      "stale_marker_survived_any_route": false
+    }
+  },
+  "known_open_provenance_boundary_e": {
+    "affected_manifest_count": 679,
+    "missing_referenced_artifact_count": 31,
+    "artifact_search_result": "absent from Git and the available legacy clone",
+    "date_is_not_a_repair": true,
+    "owner_decision_required": [
+      "explicit quarantine/reclassification using schema vocabulary",
+      "withdraw the affected reproducibility claim"
+    ],
+    "decision_taken_by_this_pr": false,
+    "manifests_modified_by_this_pr": false
+  },
   "frozen_pr_body": {
     "path": ".github/PULL_REQUEST_BODY_RUN_MANIFEST_GUARD_20260802.md",
     "encoding": "UTF-8 without BOM",
     "sha256_by_byte_representation": {
-      "git_blob_lf": "7eecefbe492a80317e85f4b4cc360109e334bb3905cd6b9d5e2808387a64198c",
-      "windows_checkout_crlf": "5fc5e087456b3fcef6235257ce1fd813aff2910b2b65c337585b59df911e8143"
+      "git_blob_lf": "0e4ea45b32db2dbc325e536dbd2b8c5d50259cb22faddbebe179b2551aafa13c",
+      "windows_checkout_crlf": "b63b117e6934d4dbd2a954c8c12b528af48511d4899d30cafeca32f74a1813d2"
     },
     "normalization": {
       "git_blob_lf": "Replace every CRLF byte pair (0d0a) with LF (0a); leave every other byte unchanged.",

@@ -55,6 +55,32 @@ invalidates the decision record as its first step, repeats that invalidation as
 the guard runner's first effective action, and treats an absent artifact as an
 upload error rather than a decision.
 
+## Fresh-audit C3 cleanup-order repair
+
+At `8eb733ddd54eeb28849cdfa8d9d8e7c09c6d0363`, omitting wrapper argument `$2`
+or `$3` returned exit 1 before invalidation and left a pre-seeded
+`PRESENT/PASS` record intact. The wrapper now validates `$1`, immediately
+removes and verifies that exact result path, and only then validates `$2` and
+`$3`.
+
+The positional source-order test was replaced by six executed fixtures, each
+starting with a decision record containing `PASS`. In normal and optimized
+modes: missing `$1`, missing `$2`, and missing `$3` produce `ABSENT/1`;
+worktree failure produces `ABSENT/128`; Python failure produces a fresh
+`FAIL/no-PASS` record with exit 2 and a first cause; success produces a fresh
+`PASS/new-valid` record with exit 0. The missing-`$1` case is closed at the
+caller boundary: the workflow's canonical result path is precleaned before the
+wrapper is invoked without a path.
+
+## Known-open provenance boundary E
+
+The separate diagnosis reports that 31 referenced artifacts are absent both
+from Git and from the available legacy clone. Adding a future repair date would
+not make `path: file does not exist` reproducible. Owner action is therefore a
+choice between explicit quarantine/reclassification using the schema's
+vocabulary and withdrawal of the affected reproducibility claim. This PR does
+not choose between those routes and does not edit the 679 affected manifests.
+
 ## Evidence and validation
 
 The full diagnosis, environment, timings, hashes, age distribution, and all
@@ -72,8 +98,9 @@ Local targeted results:
   retitle REJECTED, repaired-debt reintroduction REJECTED, stale PASS
   INVALIDATED;
 - `python -O`: identical decisions;
-- pre-validator worktree failure: exit 128, decision record `ABSENT`, stale
-  PASS not publishable;
+- semantic workflow A--F harness, normal and optimized: `ABSENT/1` for missing
+  arguments, `ABSENT/128` for worktree failure, `FAIL/no-PASS/2` for Python
+  failure, and `PASS/new-valid/0` for success;
 - the broader `test` job now reaches its separate pre-existing result (695
   passed, 9 scientific/hash tests failed); those failures are not suppressed
   or modified by this PR;
