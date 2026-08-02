@@ -31018,3 +31018,42 @@ browser, and the runtime was disconnected and deleted immediately;
 
 Core and oracle were not run.  No physical vacuum-product comparison, either
 sector bound, endpoint theorem, or uniform `specRatio` theorem is claimed.
+
+## Addendum 612 (2026-08-02, **TASK 14: physical log-mixture front door focused build passed**)
+
+**FOCUSED LEAN BUILD ONLY; FULL ORACLE AND CORE VERIFICATION REMAIN
+PENDING.**  After preserving Addendum 611, commit
+`e033599b96ebb1b139e23b516069798f2e8dc8af` repaired the sole endpoint goal
+by using `circleAverage_const`.  Runner commit
+`b45c3de7b29bbad4a7295c763aa95e205fdcff09` checked out that raw source SHA
+in one fresh Colab clone.
+
+The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T09:12:06.209103+00:00` through
+`2026-08-02T09:16:26.462340+00:00` (`260.253237 s`).  Lean was exactly
+`leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib was checked out at
+`07642720480157414db592fa85b626dafb71355b`.  Official isolated cache
+acquisition exited zero after `95.049870 s`.
+
+`lake build YangMills.OS.SpatialVacuum` exited zero after `141.298748 s` and
+reported `8172 jobs`.  It emitted no local `SpatialVacuum` warnings.  The
+downloaded transcript was independently hashed on Windows as
+`3e6417fa947b3bd3b9f31f5118fe67c7809cce7622b600965029461c893acb10`,
+matching the hash printed inside Colab.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
+
+This focused witness includes both the generic theorem and the physical
+front door `physical_arcosh_circle_log_mixture`.  The latter prints
+`0 < beta`, `0 <= gamma`, `gamma < a`, and
+`tanh a = exp (-2 * beta)` in its Lean statement and handles `gamma = 0`
+without passing a false strict-positivity premise for `B`.
+
+This is still scalar analytic infrastructure.  Core, the complete oracle,
+the consistency judge, and the live core job count have not yet run at this
+SHA.  Neither finite vacuum product has been identified or compared, and
+neither spectral block, the endpoint of the original transfer problem, nor
+the uniform `specRatio` theorem is proved.  Clifford/Jordan--Wigner remains
+unopened.
