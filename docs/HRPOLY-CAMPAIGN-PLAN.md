@@ -293,6 +293,17 @@ gives a Rayleigh numerator at most `9/L` times the norm and forces
 map and unweighted coarse norm; rescaled/weighted variants are different
 gates and remain outside this theorem.
 
+**W-4 — critical rescaling audit: DONE, gate remains OPEN (2026-08-02,
+ledger Addendum 575, `PhysicalPoincareCriticalRescaling.lean`).**  With an
+explicit scalar normalization `s`, the constant sector forces
+`L^d ≤ CP ‖s‖² L²`; in `d = 4`, `L² ≤ CP ‖s‖²`.  The critical choice `s = L`
+is exactly isometric on constants and reduces their necessary condition to
+`1 ≤ CP`, so the W-1 constant witness no longer refutes the rescaled gate.
+This is not the missing all-mode theorem: the new
+`VolumeUniformCriticalRescaledFlatPoincareGate` is defined but uninhabited.
+Next positive obligation: control every fluctuation mode for `L Q`, or prove
+coercivity directly for the interacting Wilson Hessian.
+
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
 coercivity are all three proved for the physical shell".  FALSE as stated:

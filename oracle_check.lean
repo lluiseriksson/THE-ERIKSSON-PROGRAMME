@@ -2566,6 +2566,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.blockScaleSquareMode_rayleigh_numerator_le
 #print axioms YangMills.RG.quotientPoincare_squareMode_linear_lower_bound
 #print axioms YangMills.RG.volumeUniformQuotientPoincareGate_false
+-- W-4: exact normalization audit for the surviving rescaled route in d = 4.
+-- The critical choice s = L removes the constant-sector divergence but the
+-- volume-uniform all-mode gate remains deliberately uninhabited.
+#print axioms YangMills.RG.scaledFlatBlockConstraintQCLM_constant
+#print axioms YangMills.RG.scaledFlatBlockConstraintQCLM_constant_norm_sq
+#print axioms YangMills.RG.scaledFlatGaugeHodgePoincare_constantSector_lower_bound
+#print axioms YangMills.RG.scaledFlatGaugeHodgePoincare_four_necessary
+#print axioms YangMills.RG.criticalRescaledFlatBlockConstraint_constant_isometry
+#print axioms YangMills.RG.criticalRescaledFlatGaugeHodgePoincare_constantSector_lower_bound
+#print axioms YangMills.RG.VolumeUniformCriticalRescaledFlatPoincareGate
 -- O-1: the operator bridge (charter docs/O-BRIDGE-CHARTER.md).  Headlines,
 -- non-vacuity witnesses, and load-bearing substrate.
 #print axioms YangMills.OS.clustering_iff_gap

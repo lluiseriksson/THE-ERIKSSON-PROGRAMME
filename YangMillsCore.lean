@@ -697,6 +697,7 @@ import YangMills.RG.PhysicalPoincareLowModeFalsifier
 -- Rayleigh lower-bound divergence, and the resulting second wall.
 import YangMills.RG.PhysicalPoincareLowModeHodge
 import YangMills.RG.PhysicalPoincareLowModeBlock
+import YangMills.RG.PhysicalPoincareCriticalRescaling
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

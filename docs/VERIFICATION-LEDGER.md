@@ -29513,3 +29513,35 @@ shift-uniform Combes--Thomas hypotheses, and a base localized covariance
 certificate.  It does not prove that the coercivity constant is uniform in
 volume, an infinite-volume limit, a continuum limit, or the Clay mass-gap
 claim.
+
+## Addendum 575 (2026-08-02, **critical four-dimensional block normalization**)
+
+**FORMALIZED DELTA.**  `PhysicalPoincareCriticalRescaling.lean` keeps an
+explicit scalar `s` in the physical line-integral block constraint and proves
+the exact constant-sector law forced by any scaled flat Hodge/block-Poincare
+estimate:
+
+    L^d <= CP * ‖s‖^2 * L^2.
+
+In physical dimension four this becomes `L^2 <= CP * ‖s‖^2`.  Thus the old
+choice `s = 1` necessarily has `CP >= L^2`, while the critical RG
+normalization `s = L` is proved exactly isometric on direction-wise constant
+cochains.  Under that normalization the constant sector forces only the
+scale-independent condition `1 <= CP`.  The module defines the correctly
+quantified `VolumeUniformCriticalRescaledFlatPoincareGate`, with the constant
+before the volume quantifier.
+
+**CHECKED.**  `lake build YangMills.RG.PhysicalPoincareCriticalRescaling`
+completed successfully with 8170 jobs.  The focused seven-declaration oracle
+prints exactly `[propext, Classical.choice, Quot.sound]` for every entry; the
+same declarations are registered in the global oracle.  A fresh
+`lake build YangMillsCore` completed successfully with 8471 jobs.  The source
+contains no `sorry` or project axiom.
+
+**BOUNDARY.**  This is a necessary-normalization theorem and a genuine removal
+of the old constant-sector obstruction; it is not an all-mode Poincare
+estimate and does not inhabit the new volume-uniform gate.  The remaining
+positive problem is a uniform estimate on all fluctuation modes (or direct
+coercivity of the interacting Wilson Hessian).  No volume-uniform covariance,
+root bound, infinite-volume limit, continuum limit, mass gap, or Clay progress
+is claimed.

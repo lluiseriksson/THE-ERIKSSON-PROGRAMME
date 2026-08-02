@@ -54,6 +54,19 @@ FALSE for every positive `N'`, `d ≥ 3`, `Nc ≥ 2`, and every adjoint model.
 This refutes the registered gate under its current unscaled `Q` and
 unweighted coarse norm; it does not address a rescaled or weighted gate.
 
+**W-4 DONE — critical-normalization audit, positive but not gate-closing**
+(2026-08-02, `PhysicalPoincareCriticalRescaling.lean`, ledger Addendum 575).
+For an explicitly scaled block constraint `s Q`, every four-dimensional flat
+Hodge/block-Poincaré estimate must satisfy `L^2 <= CP * ‖s‖^2`.  Hence the
+critical choice `s = L` is necessary in order and is proved exactly isometric
+on the direction-wise constant sector; that sector now forces only `1 <= CP`
+instead of `L^2 <= CP`.  The correctly quantified
+`VolumeUniformCriticalRescaledFlatPoincareGate` is defined but deliberately
+not inhabited.  The remaining positive problem is an all-fluctuation-mode
+uniform estimate (or interacting-Wilson-Hessian coercivity).  Target build:
+8170 jobs; full core: 8471 jobs; focused seven-declaration oracle: only
+`[propext, Classical.choice, Quot.sound]`.
+
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
 `https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/`.  It mirrors

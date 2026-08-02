@@ -1,0 +1,11 @@
+import YangMills.RG.PhysicalPoincareCriticalRescaling
+
+/-! Focused axiom audit for the four-dimensional critical-rescaling extension. -/
+
+#print axioms YangMills.RG.scaledFlatBlockConstraintQCLM_constant
+#print axioms YangMills.RG.scaledFlatBlockConstraintQCLM_constant_norm_sq
+#print axioms YangMills.RG.scaledFlatGaugeHodgePoincare_constantSector_lower_bound
+#print axioms YangMills.RG.scaledFlatGaugeHodgePoincare_four_necessary
+#print axioms YangMills.RG.criticalRescaledFlatBlockConstraint_constant_isometry
+#print axioms YangMills.RG.criticalRescaledFlatGaugeHodgePoincare_constantSector_lower_bound
+#print axioms YangMills.RG.VolumeUniformCriticalRescaledFlatPoincareGate
