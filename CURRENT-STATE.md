@@ -100,6 +100,18 @@ The result is written as the separate manuscript
 `papers/critical-rescaling-no-go-all-coarse/critical_rescaling_no_go_all_coarse.tex`;
 it is not a v0.8 revision of the Combes--Thomas paper.
 
+**W-4f DONE — all-scales Fourier strengthening** (2026-08-02,
+`PhysicalCriticalRescalingFourierNoGoAllScales.lean`, ledger Addendum 580).
+For every block side `L >= 2`, every fixed positive coarse side `N'`, and
+`Nc >= 2`, the first within-block Fourier mode lies exactly in `ker Q_L` and
+the flat-divergence kernel.  Its norm and flat-Hodge energy are
+`(L N')^d` and `(L N')^d lambda_L`, respectively, where
+`lambda_L = ‖exp(2 pi i/L)-1‖^2 <= 4 pi^2/L^2`.  Thus the earlier square-mode
+no-go is strengthened from the even-scale rate `8/L` to an all-scale
+`O(L^-2)` obstruction.  Here the uniformity question varies the block/fine
+side `L` while `N' > 0` is arbitrary but fixed; it is not an `N' -> infinity`
+claim.
+
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
 `https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/`.  It mirrors

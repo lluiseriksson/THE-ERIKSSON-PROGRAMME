@@ -702,6 +702,7 @@ import YangMills.RG.PhysicalCriticalRescalingCTAudit
 import YangMills.RG.PhysicalCriticalRescalingKernel
 import YangMills.RG.PhysicalCriticalRescalingNoGo
 import YangMills.RG.PhysicalCriticalRescalingNoGoAllCoarse
+import YangMills.RG.PhysicalCriticalRescalingFourierNoGoAllScales
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

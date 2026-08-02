@@ -355,6 +355,19 @@ interacting-Hessian term controlling this transverse family.
 The associated paper is a standalone no-go manuscript under
 `papers/critical-rescaling-no-go-all-coarse/`, not a v0.8 of the CT paper.
 
+**W-4f — Fourier strengthening at every `L >= 2`: CLOSED NEGATIVELY
+(2026-08-02, ledger Addendum 580,
+`PhysicalCriticalRescalingFourierNoGoAllScales.lean`).**  Embedding the first
+complex Fourier phase into a real two-plane of `SUNLieCoord Nc` yields an
+exact block-periodic transverse cochain at every block side, without the
+evenness restriction.  It obeys `Q_L A = 0`, `div A = 0`, and has exact
+Rayleigh quotient
+`lambda_L = ‖exp(2 pi i/L)-1‖^2 <= 4 pi^2/L^2`.  Therefore every putative
+constant for the current full-space gate must satisfy
+`1 <= CP lambda_L`, and the gate is impossible as `L -> infinity` for each
+fixed positive `N'`.  This strengthens the witness and the decay rate; it
+does not change the negative scope or create a continuum/mass-gap result.
+
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
 coercivity are all three proved for the physical shell".  FALSE as stated:

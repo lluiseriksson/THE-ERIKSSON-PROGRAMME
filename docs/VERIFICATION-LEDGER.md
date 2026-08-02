@@ -29690,3 +29690,41 @@ YangMills.RG.PhysicalCriticalRescalingNoGoAllCoarse` completed successfully
 (8178 jobs); the focused six-declaration oracle reports exactly `[propext,
 Classical.choice, Quot.sound]` for every headline; and `lake build
 YangMillsCore` completed successfully (8475 jobs).
+
+## Addendum 580 (2026-08-02, **all-scales Fourier no-go with quadratic decay**)
+
+**FORMALIZED DELTA.**  The six-module chain headed by
+`PhysicalCriticalRescalingFourierNoGoAllScales.lean` replaces the repeated
+square profile by the primitive phase `zeta_L = exp(2 pi i/L)`, embedded
+real-linearly and isometrically in two Lie coordinates.  For every `L >= 2`,
+every fixed `N' > 0`, and `Nc >= 2`, the explicit transverse cochain satisfies
+
+    Q_L A_L = 0,          (L Q_L) A_L = 0,
+    div A_L = 0,
+    ‖A_L‖^2 = (L N')^d,
+    <A_L, K0 A_L> = (L N')^d lambda_L,
+
+where
+
+    lambda_L = ‖zeta_L - 1‖^2 <= (2 pi/L)^2 = 4 pi^2/L^2.
+
+Lean consequently proves the exact Rayleigh identity, the necessary bound
+`1 <= CP lambda_L` for every candidate Poincare constant, and
+
+    ¬ VolumeUniformCriticalRescaledFlatPoincareGate N' Nc rho.
+
+**INTERPRETATION.**  This strictly strengthens Addendum 579: it removes the
+even-side restriction and improves the explicit obstruction from `8/L` to
+`O(L^-2)`.  In this gate, “volume-uniform” quantifies the varying block/fine
+side `L` at an arbitrary but fixed positive coarse side `N'`; it does not mean
+an `N' -> infinity` limit at fixed `L`.
+
+**BOUNDARY.**  The theorem remains a no-go for the current flat full-domain
+combined form.  It proves no positive coercivity, no interacting-Hessian
+estimate, no infinite-volume or continuum limit, and no mass gap.  The
+critical-scale kernel/ball/range/tilt results remain valid.
+
+**CHECKED.**  `lake build
+YangMills.RG.PhysicalCriticalRescalingFourierNoGoAllScales` completed
+successfully (8184 jobs).  The focused oracle and aggregate core checks are
+recorded with the source commit below once those immutable artifacts exist.
