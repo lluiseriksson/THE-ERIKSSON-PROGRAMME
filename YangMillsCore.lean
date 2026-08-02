@@ -698,6 +698,7 @@ import YangMills.RG.PhysicalPoincareLowModeFalsifier
 import YangMills.RG.PhysicalPoincareLowModeHodge
 import YangMills.RG.PhysicalPoincareLowModeBlock
 import YangMills.RG.PhysicalPoincareCriticalRescaling
+import YangMills.RG.PhysicalCriticalRescalingCTAudit
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

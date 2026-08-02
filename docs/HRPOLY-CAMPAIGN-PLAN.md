@@ -304,6 +304,18 @@ This is not the missing all-mode theorem: the new
 Next positive obligation: control every fluctuation mode for `L Q`, or prove
 coercivity directly for the interacting Wilson Hessian.
 
+**W-4b — scale-adapted CT audit: DONE, sharp operator input OPEN
+(2026-08-02, ledger Addendum 576,
+`PhysicalCriticalRescalingCTAudit.lean`).**  The existing locality certificate
+has fine range `R_L = 3L`.  With the candidate sharp critical Gram amplitude
+`M_L = L^-4`, the four-dimensional ball growth cancels uniformly:
+`M_L N_{R,L} <= 16384`.  The explicit choice
+`tau = log(1 + c/(2*16384))/3`, `theta_L = tau/L` satisfies the CT budget with
+`theta_L R_L = 3 tau`.  Thus the scientifically appropriate endpoint is
+uniform exponential decay in block distance, not a fixed fine-bond rate.
+Still open: prove the sharp `L^-4` kernel bound for the actual critical Gram
+operator and inhabit the all-mode coercivity gate.
+
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
 coercivity are all three proved for the physical shell".  FALSE as stated:

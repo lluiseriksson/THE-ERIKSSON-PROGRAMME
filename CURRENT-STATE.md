@@ -67,6 +67,15 @@ uniform estimate (or interacting-Wilson-Hessian coercivity).  Target build:
 8170 jobs; full core: 8471 jobs; focused seven-declaration oracle: only
 `[propext, Classical.choice, Quot.sound]`.
 
+**W-4b DONE — joint CT parameter audit, operator inputs still open**
+(2026-08-02, `PhysicalCriticalRescalingCTAudit.lean`, ledger Addendum 576).
+The fine-metric range certificate grows as `3L`, so the natural rate is not a
+fixed fine-bond `theta` but `theta_L = tau/L`.  Assuming the sharp critical
+Gram amplitude `M_L <= L^-4`, the proved ball majorant satisfies
+`M_L N_{R,L} <= 16384`; an explicit positive `tau` then satisfies the CT
+budget uniformly in block units.  Remaining load-bearing inputs are exactly
+the sharp `L^-4` operator kernel theorem and the all-mode coercivity gate.
+
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
 `https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/`.  It mirrors

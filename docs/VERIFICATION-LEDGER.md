@@ -29545,3 +29545,35 @@ positive problem is a uniform estimate on all fluctuation modes (or direct
 coercivity of the interacting Wilson Hessian).  No volume-uniform covariance,
 root bound, infinite-volume limit, continuum limit, mass gap, or Clay progress
 is claimed.
+
+## Addendum 576 (2026-08-02, **scale-adapted CT parameter balance**)
+
+**FORMALIZED DELTA.**  `PhysicalCriticalRescalingCTAudit.lean` audits the
+other parameters that a future volume-family Combes--Thomas theorem must
+control.  At the proved fine-metric range certificate `R_L = 3L`, the standard
+four-dimensional physical-bond ball majorant is `O(L^4)`.  The module proves
+the exact uniform scalar compensation
+
+    L^-4 * (2 * (3L + 1))^4 * 4 <= 16384.
+
+For every `c > 0` it defines an explicit positive block-scale rate
+
+    tau = log(1 + c / (2 * 16384)) / 3
+
+and the fine-lattice rate `theta_L = tau / L`.  Lean proves
+`theta_L * (3L) = 3 tau` exactly and proves the CT budget for every
+nonnegative kernel-times-ball product bounded by `16384`.
+
+**CHECKED.**  `lake build YangMills.RG.PhysicalCriticalRescalingCTAudit`
+completed successfully with 8171 jobs.  Its focused six-declaration oracle
+prints exactly `[propext, Classical.choice, Quot.sound]` for every entry.  A
+fresh `lake build YangMillsCore` completed successfully with 8472 jobs.  The
+new source contains no `sorry` or project axiom.
+
+**BOUNDARY.**  The theorem shows that growing range need not destroy
+localization when decay is measured in block units.  It is conditional on
+the still-unproved sharp operator kernel amplitude `M_L <= L^-4` for the
+critically rescaled Gram term, and it does not prove the all-mode coercivity
+gate.  The current fine-metric rate is `theta_L = tau/L`, not a positive
+fine-bond rate uniform in `L`; `tau` is the uniform block-scale rate.  No
+volume-uniform certificate or continuum/mass-gap implication is claimed.

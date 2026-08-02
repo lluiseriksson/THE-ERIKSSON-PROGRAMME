@@ -2576,6 +2576,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.criticalRescaledFlatBlockConstraint_constant_isometry
 #print axioms YangMills.RG.criticalRescaledFlatGaugeHodgePoincare_constantSector_lower_bound
 #print axioms YangMills.RG.VolumeUniformCriticalRescaledFlatPoincareGate
+-- W-4b: the scale-adapted CT parameter balance.  Conditional on the sharp
+-- L^-4 kernel amplitude, the L^4 ball growth cancels and theta_L = tau/L
+-- preserves a positive block-scale rate.
+#print axioms YangMills.RG.criticalKernel_mul_ball_le
+#print axioms YangMills.RG.criticalBlockTiltRate_pos
+#print axioms YangMills.RG.criticalBlockTiltRate_budget_eq
+#print axioms YangMills.RG.criticalFineTiltRate_pos
+#print axioms YangMills.RG.criticalFineTiltRate_mul_range
+#print axioms YangMills.RG.criticalScale_tiltBudget
 -- O-1: the operator bridge (charter docs/O-BRIDGE-CHARTER.md).  Headlines,
 -- non-vacuity witnesses, and load-bearing substrate.
 #print axioms YangMills.OS.clustering_iff_gap
