@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "cmp116-lemma3",
-  "updated": "2026-07-30",
+  "updated": "2026-08-02",
   "sources": {
     "cmp116": {
       "short": "Balaban CMP116",
@@ -14,6 +14,10 @@
         "text_full": "text/balaban-rg-II-cmp116-1104161193.txt",
         "text_pages_15_20": "text/cmp116-pages-15-20.txt",
         "text_page_21": "text/cmp116-page-21-post-lemma3.txt",
+        "render_source_05": "renders/cmp116-source-05.png",
+        "render_source_06": "renders/cmp116-source-06.png",
+        "render_source_07": "renders/cmp116-source-07.png",
+        "render_source_08": "renders/cmp116-source-08.png",
         "render_source_12": "renders/cmp116-source-12-eq25-28.png",
         "render_source_13": "renders/cmp116-source-13-eq25-28.png",
         "render_source_14": "renders/cmp116-source-14-eq25-28.png",
@@ -79,6 +83,47 @@
     }
   },
   "citations": [
+    {
+      "key": "cmp116.lemma1.window.1.11-1.29",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "5-8",
+        "pdf_pages": "5-8",
+        "equations": ["1.11", "1.13", "1.14", "1.15", "1.16", "1.17", "1.18", "1.19", "1.20", "1.21", "1.22", "1.23", "1.24", "1.25", "1.26", "1.27", "1.28", "1.29"],
+        "local_text": "balaban-rg-II-cmp116-1104161193.txt, visually corrected against rendered pages 5-8",
+        "renders": ["render_source_05", "render_source_06", "render_source_07", "render_source_08"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Lemma 1 fixed-point, small-field, Cauchy and localization window. The rendered primary PDF fixes OCR damage in Eqs. (1.13), (1.24), (1.29), and confirms that the small-domain split is m > 2^4, not m > 24.",
+      "extracted_claims": [
+        "For m > 2^4, Eq. (1.11) carries the factor B0 |X| sup_omega M1^(-|omega|/2) exp(-delta0 d(omega)) exp(m kappa1); for m <= 2^4 the bound used immediately afterward is exp(16 kappa1).",
+        "Eq. (1.13) bounds |C(A' - H(s(Y0))X)| by 2 C2 epsilon2^2 + 2 C2 B0^2 exp(32 kappa1) |X|^2, under the displayed sufficient conditions |X| < 4 C2 epsilon2^2 <= (4 C2 B0^2 exp(32 kappa1))^-1 and 4 C2 B0 exp(16 kappa1) epsilon2 <= 1.",
+        "Eq. (1.14) gives |D(H(s(Y0)),A')| <= 4 C2 |A'|^2.",
+        "Eqs. (1.15)-(1.16) give the contraction estimate and |A0(s(Y0),H0(s(Y0))B')| <= 4 C4 (B0 exp(16 kappa1))^3 |B'|^2, with the displayed smallness chain ending at epsilon2/2.",
+        "Eqs. (1.17)-(1.21) assemble H_k, set B' = g_k C B - h-tilde D(g_k C B), derive |B'| <= C1 g_k |B| < C1 epsilon1, and obtain |H_k(s(Y0),B')| <= 4 B0 C1 exp(16 kappa1) g_k |B|.",
+        "Eq. (1.22) chooses the Cauchy radius with reciprocal 8 B0 C1 exp(16 kappa1) alpha2^-1 g_k |B|, and Eq. (1.24) bounds the Cauchy contribution by that factor times E0 (alpha1/alpha3)^5 (L^j eta)^5 and the two displayed localization exponentials.",
+        "Eqs. (1.26)-(1.28) supply the X-summation, exponential combinatorial factor and M^-4 |Y| versus d_k(Y) comparison; Eq. (1.29) concludes |sum (1.23)| <= E0 epsilon1 O(M^q) exp(O(1) kappa1) exp(-kappa1 d_k(Y)/16), for absolute O(1) and a small nonnegative integer q."
+      ],
+      "lean_targets": [
+        "YangMills.RG.BalabanCMP109ConstraintCorrectionFixedPoint",
+        "YangMills.RG.CMP116Lemma1Eq136ResidualCertificate",
+        "YangMills.RG.cmp109Eq212Lemma1ResidualActivity"
+      ],
+      "use_for": [
+        "Primary visual source for the parameter-family fixed-point generalization and the Lemma-1 Eq. (1.36) route.",
+        "Exact correction of the OCR-confused power 2^4 and the constants in Eqs. (1.13), (1.14), (1.24), and (1.29)."
+      ],
+      "do_not_use_for": [
+        "Do not replace 2^4 by the decimal 24.",
+        "Do not treat the OCR text as exact formula data where it disagrees with these rendered pages.",
+        "Do not count this source extraction as a compiled Lean discharge of Lemma 1."
+      ],
+      "open_questions": [
+        "Exact source-to-Lean dictionary for H(s(Y0)), H0(s(Y0)), the omega supremum and the localized set-difference factor in Eq. (1.24).",
+        "Formal parameter-family fixed-point theorem for |s(Delta)| <= exp(kappa1), followed by the physical specialization.",
+        "Formal derivation of the summed Eq. (1.29) estimate and its conversion to cmp116Eq136ResidualMajorant."
+      ]
+    },
     {
       "key": "cmp116.gaussian-pushforward.2.5-2.6",
       "source_id": "cmp116",

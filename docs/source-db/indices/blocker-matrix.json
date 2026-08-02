@@ -3,6 +3,20 @@
   "generated": "2026-06-26",
   "blockers": [
     {
+      "citation_key": "cmp116.lemma1.window.1.11-1.29",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "summary": "Rendered primary PDF pages 5-8 recover Eqs. (1.11)-(1.29), including the exact fixed-point constants, the coupled-field and Cauchy estimates, and the final exp(-kappa1 d_k(Y)/16) decay. The split is m > 2^4, not m > 24. The OCR ambiguity is removed; the parameter-family fixed point and the summed Eq. (1.29) to Eq. (1.36) Lean route remain open.",
+      "printed_pages": "5-8",
+      "pdf_pages": "5-8",
+      "questions": [
+        "Formal parameter-family fixed-point theorem and its physical specialization.",
+        "Exact source-to-Lean dictionary for the localized Cauchy and set-difference factors.",
+        "Formal summation and conversion of Eq. (1.29) to cmp116Eq136ResidualMajorant."
+      ]
+    },
+    {
       "citation_key": "cmp116.lemma3.window.2.14-2.38",
       "source_id": "cmp116",
       "short": "Balaban CMP116",

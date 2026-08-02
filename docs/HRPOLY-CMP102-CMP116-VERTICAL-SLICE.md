@@ -1773,3 +1773,37 @@ Thus the combinatorial `rooted_residual` field is discharged for this sector;
 the analytic Lemma-1 bound, final `domain_subset`, `volume_budget`, and the
 complete terminal constructor remain open.  The detailed field-by-field audit
 is `docs/source-db/reports/CMP109-LEMMA1-NATIVE-RESIDUAL-AUDIT.md`.
+
+## Lemma-1 printed-proof route (2026-08-02)
+
+Visual inspection of CMP116 pages 5--8 turns the analytic Lemma-1 certificate
+from an opaque source hypothesis into a nine-brick route.  This is a source
+map, not a Lean discharge: the live producer numerator remains `18/41`, and
+no `TermSource` inhabitant is created.
+
+| brick | printed content | repository status |
+|---|---|---|
+| L1 | `s`-dependent propagators `H(s)`, `G(s)`, `H0(s)` and the walk estimate entering (1.11) | new source interface; the cited CMP99 walk estimate remains an explicit input |
+| L2 | uniform fixed point `D(H(s),A')`, (1.13)--(1.14) | parameter-family generalization of `BalabanCMP109ConstraintCorrectionFixedPoint` |
+| L3 | fixed point `A0`, (1.15)--(1.16) | new; consumes the printed CMP102 Proposition-4 type estimate |
+| L4 | assembly and norm of `H_k(s,B')`, (1.17)--(1.18) | composition of L1--L3 |
+| L5 | `B' = g_k C B - h D(g_k C B)` and its small-field bound, (1.19)--(1.20) | literal field already present |
+| L6 | FTC in `s` and connected-component regrouping, (1.9)--(1.10) | Eq.-(80) weakening/FTC substrate exists; physical re-instantiation remains |
+| L7 | Cauchy extraction (1.23) and termwise estimate (1.24) | new but source-local; the cited CMP109 input is in the corpus |
+| L8 | summation (1.26)--(1.28) to (1.29) | animal/cardinality and normalized-metric substrate exists |
+| L9 | scale comparison and final delta allocation to (1.36) | new scale-geometry lemma plus the three printed scalar windows |
+
+The exact visual source record is
+`cmp116.lemma1.window.1.11-1.29`.  It corrects an important OCR error: the
+case split before (1.13) is `m > 2^4`, not `m > 24`.  Consequently the
+repository factor `exp(-decay/24)` must not be cited as a literal recovery of
+that split; it belongs to a different animal-count normalization.  The same
+visual pass fixes the constants in (1.13)--(1.16), the Cauchy radius (1.22),
+the structure of (1.24), and the final `exp(-kappa1 d_k(Y)/16)` rate in
+(1.29).
+
+The next implementation brick is L2.  It must quantify the Banach data over
+the admissible `s`-polydisc with common radii and a common contraction bound,
+then specialize pointwise to the existing literal map.  Merely wrapping an
+arbitrary family of already chosen fixed points would not establish the
+uniform statement printed in (1.13)--(1.14).
