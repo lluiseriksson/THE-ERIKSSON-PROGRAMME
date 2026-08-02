@@ -3166,6 +3166,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.periodic_antiperiodic_log_norm_sums_lt
 #print axioms YangMills.OS.arcosh_circle_log_mixture
 #print axioms YangMills.OS.physical_arcosh_circle_log_mixture
+#print axioms YangMills.OS.circle_log_kernel_factorization
+#print axioms YangMills.OS.circle_log_kernel_eq_log_norm
 
 -- Spatial-ring uniformity campaign: exact local dual-bond identity only
 #print axioms YangMills.OS.dualFieldBond
