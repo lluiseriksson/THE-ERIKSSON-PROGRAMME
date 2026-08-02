@@ -1364,11 +1364,14 @@ theorem bondQ_ge_siteQ {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0
   rw [hdist]
   exact add_le_add hAre hAim
 
-/-- **THE NORMALISED OPERATOR IS BOUNDED BELOW**, and therefore injective, for
-`β > 0`.  This is the ingredient a Hamiltonian needs and the previous version
-did not have: `T/lam` is not merely a contraction but a contraction bounded away
-from zero, so its logarithm is a meaningful object to seek.  The logarithm
-itself is NOT constructed here. -/
+/-- **THE TRANSFER OPERATOR IS BOUNDED BELOW AND ABOVE**, for `β > 0`.
+
+Deliberately NOT titled "the normalised operator is bounded below", which is
+what an earlier version said: this theorem does not divide by `lam` and does not
+carry `0 < lam` in its conclusion.  The normalised statement
+`(a/lam)·I ≤ T/lam ≤ I` is `normalised_two_sided` below, which gets `0 < lam`
+from the Perron data.  Naming a theorem after a consequence of itself plus
+something else is the defect this module keeps meeting. -/
 theorem transferOp_coercive {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ)
     {β : ℝ} (hβ : 0 < β) {Ω : (Fin L → Fin 2) → ℝ} (hΩ : ∀ σ, 0 < Ω σ)
     {lam : ℝ}
@@ -1387,11 +1390,21 @@ That is false at `L = 0`, where `D ^ 0 = 1` for every `β`, the configuration
 space is a single point, the kernel is the scalar `1`, and there are no null
 modes: the constant is `min w > 0` even at `β = 0`.  The theorem below was
 always safe --- it only ever claimed the `β > 0` direction --- but the sentence
-around it claimed a biconditional the proof does not have.  The correct
-trichotomy is: positive for every `L` when `β > 0`; zero when `L > 0` and
-`β = 0`; and `min w > 0` when `L = 0`, at every `β`.  `coercivity_constant_zero`
-below records the middle case, so the boundary is a theorem rather than a
-remark. -/
+around it claimed a biconditional the proof does not have.
+
+The DISJOINT partition, and it is a partition only once the universe is
+delimited --- an earlier draft called the enumeration a "trichotomy" while its
+cases overlapped at `L = 0, β > 0` and said nothing about `L > 0, β < 0`.
+Within `β ≥ 0`:
+
+    L = 0,  any β ≥ 0        constant = min w  > 0
+    L > 0,  β = 0            constant = 0
+    L > 0,  β > 0            constant > 0
+
+Outside that range, at `L = 0` the constant is `min w > 0` for every real `β`,
+negative ones included, because `D ^ 0 = 1`.  `coercivity_constant_zero` and
+`coercivity_constant_zero_extent` below record the two boundary cases, so they
+are theorems rather than remarks. -/
 theorem coercivity_constant_pos {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) :
     0 < (Real.exp β - Real.exp (-β)) ^ L * minWeight w := by
@@ -1463,6 +1476,81 @@ theorem exists_two_sided_bound {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     coercivity_constant_pos hw hβ, hlam,
     fun u => ⟨bondQ_ge_siteQ hw hβ.le u, transferOp_le_perron hw β hΩ heig u⟩,
     fun u hu => transferOp_injective hw hβ hu⟩
+
+/-! ### §7e  From estimates to OBJECTS
+
+The estimates above are what a functional calculus consumes, but a calculus
+consumes objects, not inequalities about a bare function.  This section turns
+the trivial kernel into `Function.Injective`, then into bijectivity by finite
+dimension, then into a bundled `LinearEquiv`; and it writes the normalised
+operator down.  None of it is new mathematics --- that is exactly why it is
+worth doing rather than asserting. -/
+
+/-- The transfer operator is injective as a FUNCTION.  `transferOp_injective`
+gives trivial kernel; linearity turns it into injectivity, and only then can a
+consumer use it. -/
+theorem transferOp_injective' {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) :
+    Function.Injective (transferOp w β) := by
+  intro u v huv
+  have h := transferOp_add w β (u - v) v
+  rw [sub_add_cancel] at h
+  rw [huv] at h
+  exact sub_eq_zero.mp (transferOp_injective hw hβ (self_eq_add_left.mp h))
+
+theorem transferOpL_injective {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) :
+    Function.Injective (transferOpL w β) := transferOp_injective' hw hβ
+
+theorem transferOpL_ker_eq_bot {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) :
+    LinearMap.ker (transferOpL w β) = ⊥ :=
+  LinearMap.ker_eq_bot.mpr (transferOpL_injective hw hβ)
+
+/-- **AND THEREFORE BIJECTIVE**, by finite dimension.  The physical space is
+`(Fin L → Fin 2) → ℂ`, a finite product of copies of `ℂ`. -/
+theorem transferOpL_bijective {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) :
+    Function.Bijective (transferOpL w β) := by
+  have hinj := transferOpL_injective hw hβ
+  exact ⟨hinj, LinearMap.injective_iff_surjective.mp hinj⟩
+
+/-- **THE TRANSFER OPERATOR AS AN ISOMORPHISM**, for `β > 0`.  Invertibility is
+what a logarithm needs, and it is an object here rather than a remark about
+finite dimension. -/
+noncomputable def transferEquiv {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) :
+    ((Fin L → Fin 2) → ℂ) ≃ₗ[ℂ] ((Fin L → Fin 2) → ℂ) :=
+  LinearEquiv.ofBijective (transferOpL w β) (transferOpL_bijective hw hβ)
+
+/-- The normalised operator `T/lam`, as a linear map. -/
+noncomputable def normalisedTransferOpL {L : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (β : ℝ) (lam : ℝ) :
+    ((Fin L → Fin 2) → ℂ) →ₗ[ℂ] ((Fin L → Fin 2) → ℂ) :=
+  ((lam : ℂ))⁻¹ • transferOpL w β
+
+@[simp] theorem normalisedTransferOpL_apply {L : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (β lam : ℝ) (u : (Fin L → Fin 2) → ℂ) :
+    normalisedTransferOpL w β lam u = ((lam : ℂ))⁻¹ • transferOp w β u := rfl
+
+/-- **`(a/lam)·I ≤ T/lam ≤ I`**, literally: the normalised two-sided bound the
+previous section's title claimed before the division existed. -/
+theorem normalised_two_sided {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) {Ω : (Fin L → Fin 2) → ℝ}
+    (hΩ : ∀ σ, 0 < Ω σ) {lam : ℝ} (hlam : 0 < lam)
+    (heig : ∀ σ, (∑ τ : Fin L → Fin 2, symWeighted w β σ τ * Ω τ) = lam * Ω σ)
+    (u : (Fin L → Fin 2) → ℂ) :
+    ((Real.exp β - Real.exp (-β)) ^ L * minWeight w / lam) * siteQ w u
+        ≤ bondQ β u / lam
+      ∧ bondQ β u / lam ≤ siteQ w u := by
+  have hlo := bondQ_ge_siteQ hw hβ.le u
+  have hhi := transferOp_le_perron hw β hΩ heig u
+  constructor
+  · rw [div_mul_eq_mul_div, div_le_div_iff_of_pos_right hlam]
+    exact hlo
+  · rw [div_le_iff₀ hlam]
+    calc bondQ β u ≤ lam * siteQ w u := hhi
+      _ = siteQ w u * lam := by ring
 
 /-! ## §8  The physical space as a quotient, packaged
 
