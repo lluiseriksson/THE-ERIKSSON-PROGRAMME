@@ -3,9 +3,9 @@
 Status: **PRE-REGISTERED BEFORE REPAIR BUILDS, ORACLES, AND MUTATION RUNS**
 
 This is a manufacturer repair record for the adversarial failure of the
-SU(2) theta-prism artefact.  It is not an audit verdict and cannot certify the
-repair.  The source branch was verified at
-`0ac9b18c98cf12b305611fd74087816a3b5f1e32`; the audited base is
+SU(2) theta-prism artefact.  It is not an audit verdict and cannot assign one.
+The source branch was observed at
+`0ac9b18c98cf12b305611fd74087816a3b5f1e32`; the configured GitHub base is
 `26306b8f30e826b0bcb7c4caf6a5a42473ab5fd8`.
 
 ## Fixed acceptance criteria
@@ -39,8 +39,10 @@ repair.  The source branch was verified at
    source hashes, binary hashes, and all measured failures.
 7. Re-run validation from a fresh checkout of the published refs.  Keep PR #43
    draft, update only its existing remote branch by explicit fast-forward,
-   and stop for a new blind external audit.  No merge, paper claim, programme
-   Gate 7 claim, or manufacturer self-certification is permitted.
+   and stop for the designated external review.  After task (31)'s first
+   documentary FAIL, return the repaired five-front-door unit to that same
+   reviewer rather than opening a new auditor.  No merge, paper claim,
+   programme Gate 7 claim, or manufacturer self-certification is permitted.
 
 ## Pre-registered direct spin-one route
 
@@ -99,19 +101,20 @@ recorded before a replacement campaign is run.
 
 ## Evidence labels
 
-The following three labels are inherited from the global vocabulary in
-`CLAUDE.md`, Part I, `REGIME` item 1.  This lane consumes them and does not
-redefine them:
+The following three labels are inherited verbatim in authority and scope from
+the global vocabulary in `CLAUDE.md`, Part I, `REGIME` item 1.  This lane does
+not redefine or broaden them:
 
-- **EXACTO**: a statement proved directly by checked proof terms over concrete
-  definitions.
-- **CERTIFICADO**: a committed, reproducible artefact or transcript that
-  transports the evidence for a claim.
-- **VERIFICADO**: numerical or instrumental evidence reproduced and checked.
+- **EXACTO**: only with proof.
+- **CERTIFICADO**: only with a committed interval-arithmetic transcript.
+- **VERIFICADO**: numerical evidence only.
 
-The following two labels are local extensions for this repair lane, not peers
-that alter the authority or meaning of the inherited global vocabulary:
+The following four names are local extensions for this repair lane.  They do
+not alter the authority or meaning of the inherited global vocabulary:
 
+- **REPRODUCIDO**: builds, hashes, and transcripts reproduced at a named SHA.
+- **COMPROBADO-INSTRUMENTALMENTE**: syntactic guards, mutation rejection, and
+  other non-numerical instrument checks.
 - **CONDICIONAL**: dependent on an explicitly named genuine analytic input.
 - **ABIERTO**: not discharged by the published artefact.
 
@@ -119,9 +122,10 @@ that alter the authority or meaning of the inherited global vocabulary:
 
 `docs/SU2-THETA-PRISM-TERMINAL-REPRO-MANIFEST.txt` and
 `docs/SU2-THETA-PRISM-TRANSCRIPT-20260801.txt` are later documentary objects.
-No external verdict issued so far covers their content.  They must be read by
-the next single documentary review, task (31), and must not be called audited
-by inheritance from the mathematical verdict of task (17).
+Task (17) covered mathematics and code, not their content.  Task (31) was the
+first external content reading and returned a documentary FAIL.  A complete
+rereading of the repaired five-front-door unit by the same task (31) is
+pending.  Neither file is audited by inheritance from task (17).
 
 Audit (30) correctly marked the closed-list material it could not inspect as
 `NOT CHECKED`.  The earlier assignment wording that implied comparison against

@@ -2,8 +2,9 @@
 
 This is a manufacturer status record, not an external audit verdict.  A
 concrete inhabitant now exists for every `BetaDomain`.  Terminal reproduction
-in two independent fresh Colab clones is DONE and recorded below; the only
-remaining requirement before closure is a fresh blind external audit.
+in two independent fresh Colab clones is DONE and recorded below.  Task (31)
+has completed the first external reading of all five documentary front doors
+and returned FAIL; its complete rereading of this repaired unit is pending.
 
 **Build provenance.**  The compiled source `08155607cacca04f3f7a507a78762f88fffd395d`
 descends from `43c003b2c0c98aceeabbf10ba28a4783de5859f1`, which is its real
@@ -19,7 +20,14 @@ module.  The measured 8464 jobs is therefore the inherited baseline with no
 increment; it is not evidence of core integration and must not be read as
 such.  The live count 8465 belongs to later, different `main` history and
 neither validates nor refutes this frozen lane.  This lane sits outside the
-verified core, exactly like PR #39 and PR #40.
+repository core, exactly like PR #39 and PR #40.
+
+The global labels `EXACTO`, `CERTIFICADO`, and `VERIFICADO` are inherited from
+`CLAUDE.md`, Part I, without redefinition: proof only, committed
+interval-arithmetic transcript only, and numerics only, respectively.  This
+lane additionally uses the local labels `REPRODUCIDO`,
+`COMPROBADO-INSTRUMENTALMENTE`, `CONDICIONAL`, and `ABIERTO`.  The local labels
+do not broaden the global vocabulary.
 
 ## EXACTO
 
@@ -63,13 +71,14 @@ Thus `manufacturingTechnicalInputsConcrete beta hbeta` inhabits
 `manufacturingTechnicalInputsConcrete_betaOne_specialization` is only the
 named beta-one specialization of that uniform constructor.
 
-## CERTIFICADO
+## REPRODUCIDO
 
-The terminal transcript and manifest certify only the transport of the
-reproduction evidence: frozen source SHA, toolchain and Mathlib pin, exact
+The terminal transcript and manifest record the reproduction evidence: frozen
+source SHA, toolchain and Mathlib pin, exact
 commands, measured jobs, stdout/stderr hashes, RAW/LF source hashes, binary
 hashes, and equality of deterministic outputs between the two fresh clones.
-They do not replace or condition the exact Lean terms listed above.
+This local label is not the global `CERTIFICADO`; these records do not replace
+or condition the exact Lean terms listed above.
 
 - Colab isolated cache provenance: Mathlib
   `07642720480157414db592fa85b626dafb71355b`; public clone, no token and no
@@ -109,37 +118,46 @@ They do not replace or condition the exact Lean terms listed above.
   normal Python and `-O`.  The separate `YangMillsCore` run is retained only as
   the inherited 8464-job baseline described above, never as an integration
   PASS.
-- The two deterministic manifests are byte-identical with SHA-256
+- The two original Colab V1 manifests are byte-identical with SHA-256
   `8fab9c9cff877133ff26dc50316f65f0e8d7a96aeee5cd8f10c2e186fa27ad52`.
   Source RAW/LF hashes, ten `.olean` hashes, and the measured failures are in
   `SU2-THETA-PRISM-TRANSCRIPT-20260801.txt` and the checked-in manifest.
-- GitHub honesty run `30704212187`, job `91380399007`, passed on the compiled
-  SHA.  It remains a syntactic check rather than mathematical certification.
 
-These records certify evidence transport, not the mathematics and not a
-blind-audit verdict.
+These records reproduce evidence transport, not the mathematics and not an
+external-audit verdict.
 
 ## VERIFICADO
 
 - The rational certifier succeeds under normal Python and `python -O` with
   byte-identical output.
+
+This global label is used only for that numerical/rational verification.  It
+does not cover the non-numerical instruments below.
+
+## COMPROBADO-INSTRUMENTALMENTE
+
 - Ten mutations are rejected under both modes, including `1/2 -> 1/3` and
   enlargement to all beta.  The syntactic headline guard passes and rejects
   its registered cheat fixtures.
-- These rational and mutation results are verification evidence, not a
-  substitute for the exact Lean terms or an external audit.
+- GitHub honesty run `30704212187`, job `91380399007`, passed on the compiled
+  SHA.  It remains a syntactic guard, not mathematical certification.
+- These instrument results are not a substitute for the exact Lean terms or
+  an external audit.
 
 ## ABIERTO
 
 - `SU2-THETA-PRISM-TERMINAL-REPRO-MANIFEST.txt` and
-  `SU2-THETA-PRISM-TRANSCRIPT-20260801.txt` are not covered by any external
-  verdict already issued.  Task (31) must inspect both by content; neither is
-  audited by inheritance from task (17)'s mathematical verdict.
+  `SU2-THETA-PRISM-TRANSCRIPT-20260801.txt` were not covered by task (17),
+  whose verdict addressed mathematics and code.  Task (31) performed their
+  first external content reading and returned a documentary FAIL.  Its full
+  rereading after this repair is pending; neither file is audited by
+  inheritance from task (17).
 - Strengthen the label-two character-ring bridge to a constructed spin-one
   representation if the independent audit requires an actual complement
   rather than the explicit tensor-square identity.
-- Request a new blind external audit of the published refs.  Do not treat the
-  manufacturer's matching two-clone manifests as that audit.
+- Return the repaired five-front-door unit to task (31) for one complete
+  rereading.  Do not open a new auditor or treat the manufacturer's matching
+  two-clone manifests as an audit.
 - Physical-cell identification, reflection/OS positivity, programme Gate 7,
   a paper claim, merge, and manufacturer self-certification remain out of
   scope.

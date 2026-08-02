@@ -1,23 +1,37 @@
 (16) PR #43 repair -- terminal reproducibility transcript
 Date: 2026-08-01
 Timezone: Europe/Stockholm
-Status: manufacturer evidence; blind external audit pending
+Status: manufacturer reproduction record; complete task (31) reread pending
+
+JOINT DOCUMENTARY UNIT
+companion_manifest_path=docs/SU2-THETA-PRISM-TERMINAL-REPRO-MANIFEST.txt
+unit_policy=read this transcript and the companion manifest together
+standalone_completeness_claim=false
+transcript_role=provenance, environment, sessions, commands, jobs, exits,
+  oracle and instrument summaries, archive hashes, and measured differences
+manifest_role=source RAW/LF hash table, binary payload hash table, and routing
+  map back to the operational fields in this transcript
+cross_hash_policy=no current cross-hashes or self-hashes are embedded because
+  both documentary companions change in the same commit
 
 PROVENANCE
 failed_head_sha=0ac9b18c98cf12b305611fd74087816a3b5f1e32
-audited_base_sha=26306b8f30e826b0bcb7c4caf6a5a42473ab5fd8
+configured_base_sha=26306b8f30e826b0bcb7c4caf6a5a42473ab5fd8
+historical_merge_base_sha=43c003b2c0c98aceeabbf10ba28a4783de5859f1
 branch=codex/su2-theta-prism-artifact
 uniform_inhabitant_first_compiled_sha=3c198717e1b53b016803e3db76fda88f99314f89
 terminal_compiled_sha=08155607cacca04f3f7a507a78762f88fffd395d
-transcript_commit=the later documentary commit introducing this file; it was
-  not the source compiled in either terminal clone and is identified in the
-  PR body and delivery record.
+transcript_commit=f47e3dd66d764212b04d3d8cd44353f7591b54e4
+transcript_commit_role=historical commit introducing this transcript and its
+  companion manifest; distinct from the current documentary HEAD
+document_head_resolution=run `git rev-parse HEAD` in the checkout containing
+  this file; the exact frozen value is recorded in the PR #43 body after push
 pr=43 (draft throughout)
 push_policy=explicit fast-forward only; no force, rebase, or squash
 
 The distinction above is essential: both terminal clones compiled exactly
-08155607cacca04f3f7a507a78762f88fffd395d.  This transcript and the checked-in
-copy of the resulting manifest are later documentary material.
+08155607cacca04f3f7a507a78762f88fffd395d.  This transcript and its checked-in
+companion manifest are later documentary material.
 
 ENVIRONMENT AND CACHE
 provider=Google Colab Pro+
@@ -93,6 +107,15 @@ The scanner lexed all 9 `YangMills/SU2ThetaPrism/*.lean` files plus
 `YangMillsCore.lean`, removing nested comments and strings before searching
 for `sorry`, `admit`, `sorryAx`, or a project `axiom` declaration.
 result=NO_PROJECT_AXIOMS_OR_SORRY=PASS files=10
+scanner_exact_command=NOT_CHECKED; not preserved in committed evidence
+scanner_artifact_path_sha256=NOT_CHECKED; no committed lexical-scanner file
+  and hash were found
+scanner_stdout_path_sha256=NOT_CHECKED; raw scanner stdout bytes were not
+  committed
+
+The PASS line above is the retained manufacturer summary.  Without the three
+missing committed fields it is not a documentarily self-sufficient scanner
+record, and this repair does not rerun or reconstruct the scanner.
 
 A deliberately broader first scan found seven pre-existing declarations under
 `YangMills/Experimental/**`.  That measured failure is retained; those files
@@ -127,11 +150,13 @@ certificate_normal_sha256_A_B=ad027cbe00176826c0a5657f2a1d674cb0711e548a57befcfc
 certificate_optimized_sha256_A_B=ad027cbe00176826c0a5657f2a1d674cb0711e548a57befcfc30d447ac65a723
 all_deterministic_outputs_match=true
 
-The complete RAW/LF and binary tables are checked in as
-`docs/SU2-THETA-PRISM-TERMINAL-REPRO-MANIFEST.txt`; its checked-in bytes have
-the same SHA-256 `8fab9c9c...ad52` as both Colab copies.
+The SHA-256 value `8fab9c9c...ad52` identifies the original V1 payload emitted
+by each Colab clone.  The checked-in companion manifest now adds documentary
+routing and verdict-boundary text, so its current bytes are intentionally not
+claimed to equal that historical payload hash.  No recursive cross-hash is
+invented; read it together with this transcript.
 
-EVIDENCE ARCHIVES VERIFIED ON WINDOWS (no Lean/Lake run on Windows)
+EVIDENCE ARCHIVES CHECKED INSTRUMENTALLY ON WINDOWS (no Lean/Lake run on Windows)
 cloneA_complete_zip_sha256=9f00a8251b9eb81171639a1f18a2de1dbe7d56a03e9d70c7831413d803cb2630
 cloneB_complete_zip_sha256=a91efe850d5bba3c2af4fc7ee652cd08db86f4c7cea0b675559c8767069efb8d
 cloneA_main_log_sha256=d465acca2230fbfa2cb0c6138522d3e9d08bf60d1d0f54c205271c407a90301f
@@ -146,9 +171,12 @@ MEASURED FAILURES RETAINED
    because Lean wrapped long output lines at terminal width.
 4. The corrected checker passed 48/48; an over-broad global source scan then
    found seven pre-existing Experimental axioms outside this lane.
-5. The lane-exact scan and instruments passed; the first manifest writer then
-   tried to read the deliberately deleted `YangMills/OS/SpatialRing.lean`.
-   The final format records that path as `DELETED`.
+5. The lane-exact scan and instruments reported PASS; the first manifest
+   writer then tried to read `YangMills/OS/SpatialRing.lean`.  Git shows that
+   path is present only on the configured-base side and absent at both the
+   historical merge-base and SOURCE, with no deletion in merge-base-to-SOURCE
+   history.  The companion table records `CONFIGURED_BASE_ONLY`, not
+   `DELETED`.
 6. Clone A then produced the final manifest; clone B ran the corrected runbook
    from start to finish with `CELL_EXIT_STATUS=0`.
 
@@ -179,9 +207,19 @@ This is uniform for every `0 < beta <= 1`.  The name
 `manufacturingTechnicalInputsConcrete_betaOne_specialization` denotes only an
 anti-vacuity specialization and does not limit the constructor.
 
+EXTERNAL-VERDICT BOUNDARY
+task_17_scope=mathematics and code; not the later transcript/manifest content
+task_31_first_content_read=FAIL_DOCUMENTARY
+task_31_complete_reread_after_this_commit=PENDING
+
+Task (31), not task (17), was the first external reader of these two later
+documents.  Its first content reading returned FAIL.  After this repair the
+same task (31) must reread the complete five-front-door unit; no new auditor is
+opened and no inherited mathematical verdict covers these documentary bytes.
+
 REMAINING DEBT
 The manufacturer has completed the concrete inhabitant and terminal
-reproduction package.  A new blind external audit of the published refs is
-still mandatory.  This transcript does not self-certify the repair, merge the
-PR, open task (17), claim a physical cell or OS positivity, invoke programme
+reproduction package.  A complete documentary reread by task (31) is still
+mandatory.  This transcript does not self-certify the repair, merge the PR,
+open a new auditor, claim a physical cell or OS positivity, invoke programme
 Gate 7, or make a paper claim.
