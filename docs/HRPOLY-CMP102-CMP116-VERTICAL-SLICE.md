@@ -180,7 +180,8 @@ applicable label.
 | 9 | contour adjacency budget (`degree_bound`, `one_le_Delta`) | partial combinatorial producer | tree |
 | 10 | contour radius envelope (`radius_nonneg`, `radius_cap`) | open scalar/geometric envelope | tree |
 | 11 | contour contraction package (`Ahead_nonneg`, `rho_nonneg`, `rate_pos`, `shell_small`, `contour_series_small`, `neumann_small`, `neumann_transpose_small`) | partial physical producer; joint contraction is open | tree + corpus: CMP116 |
-| 12 | conditioned Gaussian root (`conditionedRoot`) | partial covariance producer; the matrix square-root certificate is present, but `conditionedCovariance` is not yet identified with the localized compression of the interacting covariance and the terminal `root` with its positive square root | tree |
+| 12a | conditioned Gaussian root (`conditionedRoot`) | partial covariance producer; the abstract matrix square-root certificate is present | tree |
+| 12b | **localized covariance compression bridge** | **open source-facing prerequisite**: construct `conditionedCovariance` as the localized coordinate compression of the literal interacting inverse, prove its norm is bounded by the inverse coercivity constant, and identify the terminal `root` with its positive square root | tree + absent: CMP99 [14] for the physical inverse/coercivity discharge |
 | 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | open and mandatory; a degenerate root is not admissible | tree, downstream of group 2 |
 | 14 | sigma Cauchy-radius normalization (`deltaRadius_eq`) | open equality against the installed base contour | tree |
 | 15 | cardinality normalization (`normalizedGap`) | open equality in the source convention | tree |
@@ -191,14 +192,16 @@ applicable label.
 | 20 | direct third-jet envelope (`hD`, `hD₃`, `hV₀`, `hC`, `hRjet`, `hsourceJet`, `sourceJetBound_nonneg`) | partial CMP102 producer; the printed component estimates remain hypotheses | tree + absent: CMP102/[15] source text |
 | 21 | walk factorization and Eq.-(1.43) budget (`cardRatio_nonneg`, `metricRatio_nonneg`, `summationRatio_nonneg`, `walk_split`, both decay rates, `cardDecay`, `metricDecay`, `walk_small`, `eq143_budget`) | partial producer; these inputs already feed the verified Eq.-(1.43) conclusion | tree + corpus: CMP116; source provenance still audited field by field |
 | 22 | residual/rooted animal windows (`residual_rate_nonneg`, `rooted_rate_nonneg`, `animal_small`, `rooted_animal_small`) | partial combinatorial producer; the joint scalar witness is open | tree + corpus: CMP116 + absent: Cammarota [26] for the deferred Mayer input |
-| 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | open scalar wall at the least admissible `alpha`; coercivity cannot yet discharge it because the terminal root/covariance identification is missing | tree, downstream of groups 2 and 12--13 |
-| 24 | outer Gaussian stability (`outer_small`) | open scalar wall, coupled to the same `alpha` and terminal root; the same root/covariance identification is required before the coercivity denominator may be used | tree, downstream of groups 2 and 12--13 |
+| 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | open scalar wall at the least admissible `alpha`; its one-variable reduction is proved, but it is not physically instantiable before bridge 12b | tree, downstream of groups 2, 12b, and 13 |
+| 24 | outer Gaussian stability (`outer_small`) | open scalar wall coupled to the same `alpha`; its one-variable reduction is proved, but it is not physically instantiable before bridge 12b | tree, downstream of groups 2, 12b, and 13 |
 
 Thus `18/41 -> 41/41` is the route to the first source-specific
 `TermSource` **conditional on the named Lemma-1 certificate**.  Proving the
 analytic Lemma-1 instance of equation (1.36) is a separate step which removes
 that condition; it is not one of these twenty-three remaining pre-(1.36)
-groups.
+groups.  Row 12b is shown separately because it is a genuine source-facing
+construction gate before groups 23--24, even though it is not an additional
+raw `PreEq136` field and therefore does not change the formal denominator 41.
 
 The two pending Hessian fields are deliberately not read back from the input
 record.  Their ledger theorems rewrite only `total`, `residual`, and
@@ -1117,10 +1120,16 @@ root data, followed by the compression theorem.  The required norm chain is
 ```
 
 The first equality and the scalar consequences of the last inequality are
-now isolated in
-`BalabanCMP116ConditionedRootScalarWall.lean` (PRE-VALIDATION).  In
-particular, the module derives both normalized terminal smallness conditions
-from the single visible input
+now isolated in `BalabanCMP116ConditionedRootScalarWall.lean`.  It was
+validated in one fresh Colab CPU/high-RAM clone at source checkpoint
+`4cf34623cf6096f89653cd9fb1c3dc848a7e9294`: the focal build completed with
+8202 jobs, the audit declarations used exactly
+`[propext, Classical.choice, Quot.sound]`, and `YangMillsCore` completed with
+10352 jobs.  The complete pipeline exited zero after 7531 seconds; its log
+has SHA-256
+`8c7703a5823ff269b28813761a924311129721225c6d108be303da9b8fab55d8`.
+In particular, the module derives both normalized terminal smallness
+conditions from the single visible input
 
 ```text
 ||conditionedCovariance|| <= c^-1.

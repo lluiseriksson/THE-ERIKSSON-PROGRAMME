@@ -9,8 +9,9 @@ import YangMills.RG.BalabanCMP116MatrixGaussianCarrier
 /-!
 # The conditioned-root scalar wall in CMP116
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its results have not yet been verified by the Lean compiler.
+Validated in a fresh Colab CPU/high-RAM clone at source checkpoint
+`4cf34623cf6096f89653cd9fb1c3dc848a7e9294`; the focal audit and root build
+both exited zero.
 
 The terminal conditioned Gaussian supplies a symmetric finite matrix `R`
 whose square is the conditioned covariance `C`.  The matrix C-star identity

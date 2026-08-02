@@ -8,8 +8,9 @@ import YangMills.RG.BalabanCMP116ConditionedRootScalarWall
 /-!
 # Audit: conditioned-root scalar wall
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its results have not yet been verified by the Lean compiler.
+Validated in a fresh Colab CPU/high-RAM clone at source checkpoint
+`4cf34623cf6096f89653cd9fb1c3dc848a7e9294`; all declarations below used
+exactly `[propext, Classical.choice, Quot.sound]`.
 
 The oracle gate below is intentionally colocated with the universal scalar
 reduction.  It does not audit the still-missing physical compression theorem.
