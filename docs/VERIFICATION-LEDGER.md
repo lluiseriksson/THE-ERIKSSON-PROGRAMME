@@ -29900,3 +29900,106 @@ thermodynamic limit — every constant may depend on `L` and `m`.  Necessity of
 `β ≥ 0` for positivity is not proved and could not hold at `L = 0`.  Nothing
 here is a gauge theory.
 
+
+## Addendum 581 (2026-08-02, **D-3 CLOSED: the comparison estimate is a theorem,
+and the bottleneck moved rather than vanished**)
+
+**MEASURED at `85f6e86b`** on the sanctioned Colab Linux plane (CPU, one runtime,
+opened for this work unit and deleted on disconnect, never GPU).  Stage 0
+re-verified repo SHA, toolchain `leanprover/lean4:v4.29.0-rc6` and the Mathlib
+pin before compiling anything.  `RUN VERDICT: every child exited zero`, reported
+by the runner as a PASS CANDIDATE and not a PASS.
+
+  * Four certifier runs zero: `judge_dobrushin_d3.py` 11/11 and
+    `judge_dobrushin_d3b.py` 6/6, each in `normal` AND `optimized`.  They ran
+    BEFORE the build in the same invocation, so the record shows the gates
+    passing before the theorems they license compiled.
+  * Four lane modules zero: `DobrushinOscillation`, `DobrushinGruss`,
+    `DobrushinConditional`, `DobrushinComparison`.
+  * Targeted oracle zero over **17** endpoints.  The axiom UNION over every
+    printed list is exactly `{propext, Classical.choice, Quot.sound}` — computed
+    as a union, per the Addendum-580 correction, not by matching each line
+    against the standard triple.  Zero `sorry` in all four build logs.
+
+**WHAT CLOSED.**  D-3, which the paper of Addendum 574 named as the only
+currently identified new analytic estimate and the bottleneck of the lane:
+
+    |Cov_mu(f,g)|  <=  (1/4) * sum_{i,j} delta_i(f) * (sum_n C^n)_{ij} * delta_j(g)
+
+for any probability weight on a finite product space invariant under a local
+single-site kernel whose influence is dominated by `C` with zero diagonal and
+row sums below `alpha < 1`; composing with D-1 gives
+`alpha^dist/(4(1-alpha))` and, for single-site observables, exponential decay in
+the distance at a rate free of the volume.  The ladder is the charter's:
+D-3a (signed mass vs oscillation), D-3b (the conditional operator), **D-3c the
+key lemma** in its three declared pieces, D-3d (random-scan iteration, finite
+vector induction, no limits), D-3e (the estimate).
+
+**THE THREE-WAY SPLIT OF AMENDMENT 1 HELD.**  `deltaAt_condExp_self` is semantic
+and mentions no matrix; `deltaAt_condExp_le` consumes `C` only as a MAJORANT;
+`deltaAt_condExp_le_matrix` is the ONLY statement assuming `C i i = 0`.  Deciding
+that before writing the module is why the zero did not arrive by simplification.
+
+**THE CONSTANT IS THE CONSTANT, INSIDE THE KERNEL.**  `Witness.witness_attained`:
+one site, two states, fair kernel, uniform weight, `C = 0` — every hypothesis
+discharged by computation, and the two-point conclusion an EQUALITY at `1/4`.
+So `1/4` cannot be lowered by any proof of this inequality, and the
+non-vacuity question (is invariance under all `E_i` even satisfiable?) is
+answered by exhibiting a case, not by asserting it.
+
+**J11 DISCRIMINATED, WHICH IS RARE.**  On an Ising cell the minimal coefficients
+are symmetric, so a transposed index would survive every other gate.  On a
+three-site cell from eight distinct weights the declared orientation passes with
+0 violations and the transposed one FAILS with **24**.  The convention is
+established by measurement.  J9's worst `lhs - rhs` over all 256 Boolean
+observables at three sites is `+1.11e-16`, one ulp.
+
+**THE SPLIT DEBT WAS REAL, AND THE RUNNER WAS BUILT TO FIND IT.**
+`DobrushinOscillation.lean` was committed at `cb8f57f8` after being verified in
+its PRE-SPLIT working form; the committed bytes had never been elaborated
+(`e75f64e8...` was the working copy, `e66f1477...` what was committed).  The
+runner re-verified them by design and the first Colab round failed there.  **A
+module green before an edit is not green after it, and the hash says which one
+was compiled.**
+
+**SEVEN ROUNDS, NONE MATHEMATICAL.**  `le_or_lt` absent under that name in this
+pin (`le_or_gt`); `abs_add`/`abs_sub_le` likewise, both derived once from
+`le_abs_self`/`abs_neg`/`abs_le`; `Finset.not_mem_empty` is `notMem_empty`;
+`deltaAt_const`'s STATEMENT contains no occurrence of `S`, so the section
+variable was never bound and `Nonempty ?S` stuck — fixed by a named implicit;
+`rw [← hp1]` rewrote the literal `1` INSIDE an indicator `ite`; two goals equal
+only after beta closed by `rfl`.  **And one parser ghost of the class of #27: an
+identifier `hΣv` whose `Σ` the parser reads as a token, not a letter.  It was an
+unused `have`, so the file was rejected by a name that carried nothing.**
+
+**WHAT DID NOT CLOSE, and the sentence is the point.**  The estimate is proved
+for an ARBITRARY invariant weight with dominated influence.  It is NOT
+instantiated at the S block's `gibbsWeight`: constructing its single-site
+conditionals and discharging invariance and domination is a separate rung
+(paper's step 3), and operator transport a further one (step 4).  **The
+bottleneck MOVED from an estimate to an assembly; assembly can still fail, and
+invariance is a real constraint on the pair (weight, kernel), not a formality.**
+No claim about `specRatio` of the coupled kernel.  No infinite-volume state:
+every statement up to the final series form is a finite inequality, and the one
+limit is taken at the level of the BOUND, as prohibition 2 requires.  Nothing
+here bears on Yang–Mills.
+
+**NOT IN THE CORE, stated rather than left to be found.**  None of the four
+modules is imported by `YangMillsCore` or by `oracle_check.lean`, so the core
+count at this anchor is still **8468** and no repository-wide number covers
+them.  Wiring them in — with the delta measured against this campaign's own
+parent commit, never a merge-base (Addendum 580) — is separate work not done.
+
+**THE PAPER, v4** (`papers/dobrushin-matrix/`, 15 pp, TeX+PDF same commit),
+retitled from *a Machine-Checked Dobrushin Resolvent Chain* to *a Machine-Checked
+Dobrushin Comparison Estimate*.  Section 4 is new and carries the theorem, both
+lemmas, the witness and the gates.  Every summary-shaped location was re-derived
+from the corrected statement rather than edited in place — abstract, claims
+section, frontier, limitations, reproducibility, title, bibliography annotations
+— which is the Addendum-576 rule applied prospectively for the first time in
+this lane, and a retroactive sweep over *refute*, *coefficient* and *only
+remaining obligation* found no survivor.  PDF build measured at 2.5 s, one
+process: inside the local light contract by measurement.
+
+**ROLES.**  This session FABRICATED and does not audit itself.  No external
+verdict exists and no claim of "delivered" is made.

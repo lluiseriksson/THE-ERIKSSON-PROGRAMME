@@ -22,7 +22,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{c3d8e32d2eecf85cf2dba26ce9b0a8bb42005c9c}
+\newcommand{\anchor}{85f6e86b004d8b00a65681d23ea7c5d1b46116aa}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -33,7 +33,7 @@
 \newcommand{\specRatio}{\mathrm{specRatio}}
 
 \title{The Row Sums Were the Method, Not the Theorem:\\
-a Machine-Checked Dobrushin Resolvent Chain,\\
+a Machine-Checked Dobrushin Comparison Estimate,\\
 and a Misattributed Uniformity Wall}
 \author{Lluis Eriksson}
 \date{}
@@ -50,7 +50,7 @@ switched on.  That theorem obstructs the \emph{method}.  It was read as
 obstructing the \emph{conclusion}, and the reading outlived its own retraction.
 
 We prove, in Lean~4 with no \texttt{sorry} and no project axiom, a chain of
-three theorems.  \textbf{First}, the one-bond influence envelope: flipping one
+four theorems.  \textbf{First}, the one-bond influence envelope: flipping one
 neighbour across a bond of strength $J\ge0$ moves a two-state site's conditional
 by at most $\tanh J$, and by exactly $\tanh J$ at one field, so $\tanh J$ is the
 \emph{least field-uniform} bound.  It is an interdependence majorant, not the
@@ -71,8 +71,22 @@ without any constancy assumption,
   \sum_{n<N}(C^{\,n})_{ij}\;\le\;\frac{\alpha^{\dist(i,j)}}{1-\alpha}
   \qquad\text{for every }N,
 \]
-with no reference of any kind to the cardinality of the index type.  Each rung
-carries a non-vacuity witness and every declaration is oracled.
+with no reference of any kind to the cardinality of the index type.
+\textbf{Fourth}, and new in this version, \emph{Dobrushin's comparison
+estimate itself}, which the previous version named as the one open analytic
+step: for a probability weight $\mu$ on a finite product space
+$S^{\iota}$, invariant under a family of single-site conditionals whose
+influence is dominated by $C$,
+\[
+  \bigl|\mathrm{Cov}_\mu(f,g)\bigr|\;\le\;
+  \tfrac14\sum_{i,j}\delta_i(f)\Bigl(\sum_{n}(C^{\,n})_{ij}\Bigr)\delta_j(g),
+\]
+where $\delta_i$ is oscillation in the single coordinate $i$; composing with
+the third theorem replaces the inner series by $\alpha^{\dist(i,j)}/(1-\alpha)$
+and yields exponential decay of connected correlations at a rate read off
+single-site data.  The constant $\tfrac14$ is \emph{attained}, on a witness
+inside the kernel.  Each rung carries a non-vacuity witness and every
+declaration is oracled.
 
 Separately, and by measurement rather than proof, we remove the wall from where
 it was being placed.  For the coupled kernel the second-eigenvalue ratio
@@ -90,25 +104,32 @@ sequence can appear to saturate at $L\le12$ and turn afterwards.  They do
 finite-size scaling that we do not attempt.
 
 \textbf{What is not proved.}  The volume-uniform bound on $\specRatio$ for the
-coupled kernel is \emph{not} established here.  Dobrushin's uniqueness theorem is
-classical \cite{Dobrushin1968,Simon1993}; nothing in this paper is new
-mathematics.  What is offered is a
-mechanised, non-vacuous chain, measured counterevidence against an attribution,
-and the naming of the only currently identified new analytic estimate:
-Dobrushin's comparison estimate.  That is not the only remaining work ---
-downstream instantiation still requires the finite-time operator interface of
-Section~\ref{sec:frontier}.  No consequence for Yang--Mills theory is stated,
-suggested, or implied.
+coupled kernel is \emph{not} established here.  The comparison estimate is
+proved for an \emph{arbitrary} invariant weight with dominated influence; it is
+\emph{not} instantiated at the Gibbs weight of the development, which needs its
+single-site conditionals constructed and their invariance and domination
+discharged, and that work is not done here.  Dobrushin's uniqueness theorem and
+his comparison estimate are classical \cite{Dobrushin1968,Dobrushin1970,%
+Simon1993}; nothing in this paper is new mathematics.  What is offered is a
+mechanised, non-vacuous chain from a single bond to exponential decay of
+correlations, and measured counterevidence against an attribution.  No
+consequence for Yang--Mills theory is stated, suggested, or implied.
 \end{abstract}
 
 \section{What this paper claims, and what it does not}
 
-\textbf{Claimed, machine-checked.}  Theorems~\ref{thm:coeff}, \ref{thm:matrix}
-and~\ref{thm:d1}, their witnesses and the corollary that composes them, in
+\textbf{Claimed, machine-checked.}  Theorems~\ref{thm:coeff}, \ref{thm:matrix},
+\ref{thm:d1} and~\ref{thm:comparison}, their witnesses and the corollaries that
+compose them, in
 \repofile{YangMills/OS/DobrushinCoefficient.lean}{DobrushinCoefficient.lean},
-\repofile{YangMills/OS/DobrushinRowSum.lean}{DobrushinRowSum.lean} and
-\repofile{YangMills/OS/DobrushinMatrix.lean}{DobrushinMatrix.lean}.  Every
-declaration is oracled and depends on exactly Lean's three standard axioms.
+\repofile{YangMills/OS/DobrushinRowSum.lean}{DobrushinRowSum.lean},
+\repofile{YangMills/OS/DobrushinMatrix.lean}{DobrushinMatrix.lean},
+\repofile{YangMills/OS/DobrushinOscillation.lean}{DobrushinOscillation.lean},
+\repofile{YangMills/OS/DobrushinGruss.lean}{DobrushinGruss.lean},
+\repofile{YangMills/OS/DobrushinConditional.lean}{DobrushinConditional.lean} and
+\repofile{YangMills/OS/DobrushinComparison.lean}{DobrushinComparison.lean}.
+Every declaration is oracled and depends on exactly Lean's three standard
+axioms.
 
 \textbf{Claimed, measured.}  The saturation table of
 Section~\ref{sec:measurement}.  These are floating-point computations at finite
@@ -121,9 +142,12 @@ not license.  This is a statement about a formal development, and it is
 verifiable by reading that development.
 
 \textbf{Not claimed.}  That $\specRatio$ of the coupled kernel is bounded away
-from one uniformly in the extent.  That the window derived from Dobrushin's
-condition is optimal --- it is not, and Section~\ref{sec:prior} says by how much.
-That any of this bears on the Yang--Mills mass gap.
+from one uniformly in the extent.  That the comparison estimate has been
+instantiated at the Gibbs weight of the development --- its hypotheses are
+discharged here only by the witness of
+Proposition~\ref{prop:comparison-witness}.  That the window derived from
+Dobrushin's condition is optimal --- it is not, and Section~\ref{sec:prior} says
+by how much.  That any of this bears on the Yang--Mills mass gap.
 
 \section{The setting, and the theorem that was read too widely}
 \label{sec:reading}
@@ -377,6 +401,214 @@ satisfies the hypotheses of Theorem~\ref{thm:d1}, whose conclusion mentions no
 cardinality.  In Lean it is \texttt{dobrushin\_resolvent\_bound}, and its proof
 is the application of one theorem to three others.
 
+\section{The comparison estimate}
+\label{sec:comparison}
+
+Theorems~\ref{thm:coeff}--\ref{thm:d1} bound a resolvent.  Nothing in them
+mentions a measure, and so nothing in them says that correlations are
+controlled by that resolvent.  That implication is Dobrushin's comparison
+estimate, and the previous version of this paper named it as the single open
+analytic step.  This section proves it.
+
+\subsection{The objects}
+
+Let $\iota$ be a finite index type and $S$ a finite nonempty state space, so
+that the configuration space $S^{\iota}$ is finite.  For $f:S^{\iota}\to\R$ put
+\[
+  \delta_i(f)\;=\;\max\bigl\{|f(\eta)-f(\eta')| \;:\;
+    \eta,\eta'\text{ agree off }i\bigr\},
+\]
+the oscillation of $f$ in the single coordinate $i$.  A \emph{single-site
+kernel} is a family $p_i(\eta,\cdot)$ of probability weights on $S$ that is
+\emph{local}: $p_i(\eta,\cdot)$ does not depend on $\eta_i$.  It acts on
+observables by
+\[
+  (E_i f)(\eta)\;=\;\sum_{s\in S}p_i(\eta,s)\,f(\eta^{i\to s}),
+\]
+where $\eta^{i\to s}$ is $\eta$ with the value at $i$ replaced by $s$.  We say a
+matrix $C$ \emph{dominates the influence} of the kernel if, for $k\ne i$,
+\[
+  \bigl\|p_i(\eta,\cdot)-p_i(\eta',\cdot)\bigr\|_{\mathrm{TV}}\;\le\;C_{ik}
+  \qquad\text{whenever }\eta,\eta'\text{ agree off }k .
+\]
+The orientation is the one fixed before any of this Lean was written: the
+\emph{first} index of $C$ is the site being conditioned, the \emph{second} is
+the site whose value moved.  On a symmetric cell the two conventions are
+indistinguishable, which is why fixing it in advance mattered; the gate that
+discriminates is described at the end of this section.
+
+\subsection{The key lemma}
+
+\begin{lemma}[machine-checked]
+\label{lem:key}
+Let $p$ be a local single-site kernel and $C$ dominate its influence.  Then for
+every observable $f$:
+\[
+  \delta_i(E_i f)\;=\;0,
+  \qquad
+  \delta_k(E_i f)\;\le\;\delta_k(f)+C_{ik}\,\delta_i(f)\quad(k\ne i).
+\]
+\end{lemma}
+
+\begin{proof}
+The first clause is semantics, not estimation: by locality $E_if$ does not
+depend on the coordinate $i$ at all.  For the second, split the difference of
+$E_if$ at two configurations agreeing off $k$ into a \emph{transport} term,
+where the kernel is held fixed and $f$ is evaluated at two configurations that
+still agree off $k$ --- here $k\ne i$ is load-bearing --- and a \emph{kernel
+variation} term $\sum_s\bigl(p_i(\eta,s)-p_i(\eta',s)\bigr)f(\eta'^{\,i\to s})$.
+The first is at most $\delta_k(f)$ because $p_i(\eta,\cdot)$ is a probability
+weight.  The second is a signed mass of total zero tested against a section of
+$f$ along coordinate $i$; a zero-sum mass cannot see a constant, so subtracting
+the midpoint of the range gives
+$\bigl|\sum_s a_s g_s\bigr|\le\tfrac12\bigl(\sum_s|a_s|\bigr)\operatorname{osc}(g)$,
+which is total variation times oscillation, at most
+$C_{ik}\,\delta_i(f)$.
+\end{proof}
+
+The three statements are kept apart in the source on purpose.  The vanishing
+clause is \texttt{deltaAt\_condExp\_self} and mentions no matrix; the transport
+clause is \texttt{deltaAt\_condExp\_le} and asks only that $C$ \emph{dominate},
+never that it be minimal --- the same distinction that cost this lane two
+versions over $\tanh|J|$; and their assembly into a single vector inequality,
+\texttt{deltaAt\_condExp\_le\_matrix}, is the \emph{only} statement that assumes
+$C_{ii}=0$.  That the zero diagonal is a declared hypothesis of the matrix form
+and not an accident of the physical cell was decided, and written into the lane
+charter, before this module existed.
+
+\subsection{The one-step quarter}
+
+\begin{lemma}[machine-checked]
+\label{lem:gruss}
+For a probability weight $p$ on a finite set and any $f,g$ with ranges in
+$[m_1,M_1]$ and $[m_2,M_2]$,
+\[
+  \bigl|\mathbb{E}_p[fg]-\mathbb{E}_p[f]\,\mathbb{E}_p[g]\bigr|
+  \;\le\;\tfrac14(M_1-m_1)(M_2-m_2),
+\]
+and the constant $\tfrac14$ is attained.
+\end{lemma}
+
+\begin{proof}
+Not Cauchy--Schwarz.  The centred mass $a_x=p_x(f_x-\mathbb{E}_p f)$ has total
+zero, so the signed-mass inequality above gives
+$|\mathrm{Cov}|\le\tfrac12\bigl(\sum_x|a_x|\bigr)\operatorname{osc}(g)$, and
+$\sum_x|a_x|$ is the mean absolute deviation of $f$ about its mean, which is at
+most $(M_1-m_1)/2$: split it into its positive and negative parts, observe they
+are \emph{equal} because the mass is centred, bound one by $(M_1-\mathbb{E}f)T$
+and the other by $(\mathbb{E}f-m_1)(1-T)$ with $T$ the mass above the mean, and
+multiply.  The fair two-point weight with $f=g$ an indicator attains it.
+\end{proof}
+
+Each factor $\tfrac12$ is born in exactly one lemma and the quarter is their
+product.  Popoviciu's variance bound, also machine-checked in the same module,
+is \emph{not} used: it is the $L^2$ companion, kept separate so that a
+difficulty in either could not block the other.
+
+\subsection{The estimate}
+
+\begin{theorem}[machine-checked]
+\label{thm:comparison}
+Let $\mu$ be a probability weight on $S^{\iota}$, invariant under every $E_i$
+(that is, $\mathbb{E}_\mu[E_i F]=\mathbb{E}_\mu[F]$ for all $F$ and $i$), let $C$
+dominate the influence of the kernel with $C_{ii}=0$ and row sums at most
+$\alpha<1$.  Then for all observables $f,g$,
+\[
+  \bigl|\mathrm{Cov}_\mu(f,g)\bigr|\;\le\;
+  \tfrac14\sum_{i,j}\delta_i(f)\Bigl(\sum_{n}(C^{\,n})_{ij}\Bigr)\delta_j(g),
+\]
+and, composing with Theorem~\ref{thm:d1} when $C$ is supported at distance at
+most one,
+\[
+  \bigl|\mathrm{Cov}_\mu(f,g)\bigr|\;\le\;
+  \frac{1}{4(1-\alpha)}\sum_{i,j}\delta_i(f)\,\alpha^{\dist(i,j)}\,\delta_j(g).
+\]
+For observables depending on single sites $i_0$ and $j_0$ this reads
+\[
+  \bigl|\mathrm{Cov}_\mu(f,g)\bigr|\;\le\;
+  \frac{\delta_{i_0}(f)\,\delta_{j_0}(g)}{4(1-\alpha)}\;
+  \alpha^{\dist(i_0,j_0)} :
+\]
+exponential decay in the distance, at a rate free of the volume.
+\end{theorem}
+
+\begin{proof}
+Let $P=\frac1m\sum_iE_i$ be the random-scan average, $m=\#\iota$.  It preserves
+$\mu$-expectations, so telescoping over $N$ steps,
+\[
+  \mathrm{Cov}_\mu(f,g)=\sum_{n<N}\Bigl(\mathrm{Cov}_\mu(P^nf,g)
+  -\mathrm{Cov}_\mu(P^{n+1}f,g)\Bigr)+\mathrm{Cov}_\mu(P^Nf,g).
+\]
+Each increment is $\mathbb{E}_\mu\bigl[g\cdot(h-Ph)\bigr]$ with $h=P^nf$;
+averaging over the site chosen and using invariance once more, the
+$i$\nobreakdash-th contribution equals $\mathbb{E}_\mu\bigl[E_i\bigl(g\,(h-E_i
+h)\bigr)\bigr]$, whose integrand is \emph{pointwise} the covariance of the two
+sections of $g$ and $h$ along coordinate $i$ under $p_i(\eta,\cdot)$.  By
+Lemma~\ref{lem:gruss} and the fact that a section oscillates at most
+$\delta_i$, each increment is at most
+$\frac{1}{4m}\sum_i\delta_i(g)\,\delta_i(P^nf)$.
+
+By Lemma~\ref{lem:key} the oscillation vector of the iterates is transported by
+$v\mapsto(1-\frac1m)v+\frac1m C^{\!\top}v$, so $\delta(P^nf)$ is dominated
+coordinatewise by the $n$-th iterate of that map applied to $\delta(f)$.  Two
+things follow, both by finite induction and neither taking a limit.  Its
+$\ell^1$ norm contracts by $1-\frac{1-\alpha}{m}$ per step, so the telescoping
+remainder $|\mathrm{Cov}_\mu(P^Nf,g)|$, bounded crudely by
+$\frac14\operatorname{osc}(g)\sum_i\delta_i(P^Nf)$, dies geometrically.  And the
+\emph{accumulated} transport $\sum_{n<N}$ of those iterates is dominated
+entrywise by $m$ times the $N$-th partial sum of $\sum_n(C^{\!\top})^n$ ---
+which is the step where the factor $m$ introduced by the averaging is exactly
+cancelled, leaving a bound with no $m$ in it.  Assembling gives the finite-$N$
+statement; letting $N\to\infty$ in the \emph{bound} gives the series form.
+\end{proof}
+
+Every statement up to the last sentence of that proof is a finite inequality
+over a finite configuration space.  The single limit is taken at the level of
+the bound, which is a design decision this lane recorded before the module
+existed, so that no infinite-volume object is constructed anywhere.
+
+\begin{proposition}[non-vacuity and attainment, machine-checked]
+\label{prop:comparison-witness}
+One site, two states, the fair kernel, the uniform weight, $C=0$, $\alpha=0$,
+$d\equiv0$.  Every hypothesis of Theorem~\ref{thm:comparison} holds by
+computation, and on the indicator observable the two-point conclusion is an
+\emph{equality}: $|\mathrm{Cov}|=\tfrac14$ against a bound whose value is
+$\tfrac14$.
+\end{proposition}
+
+The witness does two jobs.  It shows the hypotheses are jointly satisfiable ---
+invariance of $\mu$ under all $E_i$ is a real constraint, not a formality.  And
+because the bound is \emph{attained} there, the constant $\tfrac14$ cannot be
+lowered by any argument, in this or any other proof of the same inequality.
+
+\subsection{The gates, and the one that discriminated}
+
+Five gates were registered before the corresponding Lean and are in
+\repofile{scripts/judge\_dobrushin\_d3.py}{judge\_dobrushin\_d3.py} and
+\repofile{scripts/judge\_dobrushin\_d3b.py}{judge\_dobrushin\_d3b.py}.  Two are
+worth naming.
+
+\textbf{The gate that could have killed the rung.}  Lemma~\ref{lem:key} was
+checked by brute force on small Ising cells over \emph{all} $2^{|S^{\iota}|}$
+Boolean observables --- $256$ of them at three sites --- computing both sides
+exactly for every site pair.  The gate reports the worst value of
+$\mathrm{lhs}-\mathrm{rhs}$, and a positive value would have refuted the lemma
+before a line of it was written.  Measured: $+1.11\times10^{-16}$, one unit in
+the last place of a float64 comparison at scale one.
+
+\textbf{The gate that discriminated the orientation.}  On an Ising cell the
+minimal influence coefficients are symmetric, so $C=C^{\!\top}$ and a
+transposed index would pass every other gate and surface much later.  A
+three-site cell built from eight distinct positive weights has
+$\max_{ij}|C_{ij}-C_{ji}|>0$, and there the declared orientation passes with
+zero violations while the transposed one \textbf{fails with $24$}.  The
+convention in Lemma~\ref{lem:key} is therefore the one the lemma needs, and
+that is established by measurement rather than by assertion.
+
+Both certifiers were run in \texttt{normal} and in \texttt{optimized}
+(\texttt{python -O}) mode on the Linux plane, all four runs exiting zero with
+their check counters matching.
+
 \section{The measurement, and where the wall is}
 \label{sec:measurement}
 
@@ -456,8 +688,9 @@ depends on a Python \texttt{assert}.
 \section{What remains, named exactly}
 \label{sec:frontier}
 
-Theorems~\ref{thm:coeff}--\ref{thm:d1} are an engine, not a conclusion.  Turning
-them into a volume-uniform statement about $\specRatio$ requires, in order:
+Theorems~\ref{thm:coeff}--\ref{thm:comparison} are an engine, not a conclusion.
+Turning them into a volume-uniform statement about $\specRatio$ requires, in
+order:
 
 \begin{enumerate}
 \item[\textbf{1.}] a valid single-site interdependence majorant, and the
@@ -467,21 +700,32 @@ them into a volume-uniform statement about $\specRatio$ requires, in order:
       local geometry.  Not done, and not needed: the \emph{minimal}
       interdependence matrix of any particular system;
 \item[\textbf{2.}] Dobrushin's comparison estimate \cite{Dobrushin1970,Simon1993}
-      --- that the connected correlations of the Gibbs measure are controlled by
-      the resolvent of $C$, hence decay exponentially at a rate free of the
-      extent.  \textbf{Open, and this is the bottleneck};
-\item[\textbf{3.}] transport of that decay into the operator formulation.
+      --- that connected correlations are controlled by the resolvent of $C$,
+      hence decay exponentially at a rate free of the extent.  \textbf{Done as
+      a theorem about an arbitrary invariant weight}:
+      Theorem~\ref{thm:comparison}.  \emph{Not} done: its instantiation at the
+      Gibbs weight of the development, which is step~3;
+\item[\textbf{3.}] construction of the single-site conditionals of that Gibbs
+      weight, and discharge of the two hypotheses Theorem~\ref{thm:comparison}
+      consumes --- invariance of the weight under each conditional, and
+      domination of their influence by the matrix of
+      Theorem~\ref{thm:matrix}.  \textbf{Open.}  Both are expected to be
+      routine for a positive finite-range weight, since the conditionals are
+      ratios of finite sums and their total variation is the quantity
+      Theorem~\ref{thm:coeff} already bounds; ``expected'' is doing real work
+      in that sentence and nothing below relies on it;
+\item[\textbf{4.}] transport of that decay into the operator formulation.
 \end{enumerate}
 
-Step~2 is the only \emph{new analytic estimate} currently identified, and nothing
-in this paper reduces its difficulty.  It is not the only remaining work: the
-downstream consumer exists but its instantiation still needs the finite-time
-interface described below, so ``one obligation left'' would be too tidy a
-sentence for the actual state.  One structural remark, offered as
-orientation and not as progress: in this model the configuration space of a
-finite system is finite, so the conditionals are ratios of finite sums and the
-comparison estimate does not require the measure-theoretic apparatus in which
-it is usually stated.  Whether that makes it tractable is not established here.
+\textbf{What changed since the previous version, stated at its exact size.}
+That version named step~2 as the only currently identified new analytic
+estimate and the bottleneck of the chain.  It is now proved --- for any weight
+satisfying the two hypotheses of step~3.  The bottleneck therefore \emph{moves}
+rather than disappearing: what stands between this paper and a statement about
+the coupled kernel is now assembly (steps~3 and~4) rather than an estimate, and
+assembly can still fail.  In particular, verifying invariance is not a
+formality: it is a real constraint on the pair (weight, conditionals), and
+Proposition~\ref{prop:comparison-witness} exists partly to show it can be met.
 
 
 \textbf{The consumer, named.}  It is \texttt{volumeUniform\_gap} in
@@ -550,9 +794,11 @@ related models have been treated without mechanisation \cite{WashburnSimons2026}
 
 \section{Limitations}
 
-All three theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
+All four theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
 Theorem~\ref{thm:coeff} is a hyperbolic identity and a bound on a denominator;
-Theorem~\ref{thm:matrix} is a construction and a finite computation.  Their value
+Theorem~\ref{thm:matrix} is a construction and a finite computation;
+Theorem~\ref{thm:comparison} is a telescoping sum, one pointwise application of
+a two-hundred-year-old covariance bound, and two finite inductions.  Their value
 is that they are machine-checked, non-vacuous, composed, and carry the hypothesis
 the dead method violated --- not that any of them is deep.
 
@@ -562,18 +808,20 @@ contradicts it on the tested grid; it does not prove where the wall is,
 and an extrapolation can mislead near a transition.  The window is not optimal
 and is never called sharp.
 
-\textbf{Step~2 of Section~\ref{sec:frontier} is open}, and until it closes the
-volume-uniform statement about $\specRatio$ for the coupled kernel remains
-unproved.  This is the substantive limitation and the chain above does not
-shorten it.  What the chain does is close the envelope-to-resolvent segment and
-isolate the comparison estimate as the only currently identified new analytic
-estimate, while leaving the finite-time instantiation work explicit --- not
-reduce the remaining programme to a single item.
+\textbf{Steps~3 and~4 of Section~\ref{sec:frontier} are open}, and until they
+close the volume-uniform statement about $\specRatio$ for the coupled kernel
+remains unproved.  This is the substantive limitation.  In particular,
+Theorem~\ref{thm:comparison} is a theorem about \emph{a} weight invariant under
+\emph{a} local kernel with dominated influence; the paper does not exhibit
+those objects for the development's Gibbs weight, and a reader who took the
+theorem as a statement about that weight would be reading more than is
+written.  The chain now runs from one bond to exponential decay of connected
+correlations; what it does not do is reach the coupled kernel.
 
 \section{Reproducibility}
 
 \textbf{Anchor.}  All sources cited above are read at commit
-\nolinkurl{c3d8e32d2eecf85cf2dba26ce9b0a8bb42005c9c} of
+\nolinkurl{85f6e86b004d8b00a65681d23ea7c5d1b46116aa} of
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Toolchain
 \nolinkurl{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned at
 \nolinkurl{07642720480157414db592fa85b626dafb71355b}.  A runner verifies all
@@ -587,24 +835,35 @@ twice, not by subtracting against a baseline someone else measured.  A fresh
 Linux clone reproduced $8466$ at that commit.  With the modules of
 Theorems~\ref{thm:coeff} and~\ref{thm:matrix} added, the Linux plane measures
 $8468$ with zero errors: the $+2$ is the difference between two measurements on
-the same plane, one job per new module, and is not an extrapolation.  At the
-anchor the count is still $8468$, because the last four theorems were added to an
-\emph{existing} module and a declaration does not create a build job --- only a
-module does.
+the same plane, one job per new module, and is not an extrapolation.
 
-\textbf{Oracle.}  At the anchor the repository-wide oracle ran to completion
-with exit code zero over $2817$ axiom reports and \textbf{zero} occurrences of
-\texttt{sorryAx}.  The accounting, spelled out because a count of \emph{newly
-added} declarations is not a count of the paper's modules: twenty-three new
-oracle reports come from the two modules added over the last two anchors ---
-eleven for Theorem~\ref{thm:coeff}, twelve for Theorem~\ref{thm:matrix},
-of which four were added after an external reading identified the gap between a
-single site and a family of volumes --- while the fourteen declarations of
-Theorem~\ref{thm:d1}'s module, present since the first anchor, are also in the
-oracle and were separately checked one by one on the development machine.  Every
-one of the thirty-seven depends on exactly
-\texttt{[propext, Classical.choice, Quot.sound]}: Lean's three standard axioms,
-no project axiom, and no \texttt{sorry} anywhere.
+\textbf{The four modules of Section~\ref{sec:comparison} are \emph{not} in the
+core}, and the core count at the anchor is therefore still $8468$.  This is
+stated rather than left to be discovered: they are imported by neither
+\texttt{YangMillsCore} nor the repository oracle, so no repository-wide number
+in this paper covers them, and wiring them in --- with the job-count delta
+measured against this campaign's own parent commit, never against a
+merge-base --- is separate work not done here.
+
+\textbf{Oracle.}  Two disjoint bodies of evidence, kept apart because they were
+produced by different runs.  For Theorems~\ref{thm:coeff}--\ref{thm:d1}: at the
+previous anchor the repository-wide oracle ran to completion with exit code
+zero over $2817$ axiom reports and \textbf{zero} occurrences of
+\texttt{sorryAx}; thirty-seven of those reports are this chain's, and every one
+depends on exactly \texttt{[propext, Classical.choice, Quot.sound]}.  For
+Theorem~\ref{thm:comparison} and its lemmas: a \emph{targeted} oracle at this
+anchor prints the axioms of the seventeen endpoints of
+Section~\ref{sec:comparison} --- the signed-mass inequality, the total-variation
+corollary, Popoviciu, the mean-absolute-deviation bound, both Grüss forms and
+the Grüss attainment, the three clauses of Lemma~\ref{lem:key}, the transport
+domination, the finite-$N$ estimate, the series estimate, the exponential-decay
+composition, the two-point corollary, and both halves of
+Proposition~\ref{prop:comparison-witness}.  The union of every axiom list
+printed is exactly $\{\texttt{propext},\allowbreak\
+\texttt{Classical.choice},\allowbreak\ \texttt{Quot.sound}\}$ --- computed as a
+union rather than by matching each line against the standard triple, because a
+declaration depending on \emph{fewer} axioms is clean and would fail the naive
+test.  No \texttt{sorry} appears in any of the four build logs.
 
 \textbf{One gap in the runner's own coverage, stated because a reader counting
 modules would otherwise not find it.}  The runner builds two lane modules by
@@ -619,20 +878,54 @@ reported
 $11467$ bytes for Theorem~\ref{thm:d1}'s module.  The Linux run computed the
 same digest and the same size.  The oleans, the axiom reports and the
 elaboration therefore refer to the same bytes, which is the only reason any of
-the numbers above can be compared at all.  At the anchor the two further modules
-hash to
-\nolinkurl{fe16a382e297c6f1e668677d54117eb7873e03ab981818cbea123bfa50af47c9} and
-\nolinkurl{68bb7408ebe7af782804238a4780fcebee499bdb512b3435703ea8f7c1a69cf2}.
+the numbers above can be compared at all.
 
-\textbf{Certifiers.}  Both gate scripts were run in \texttt{normal} and in
-\texttt{optimized} (\texttt{python -O}) mode on the Linux plane.  All four runs
-exited zero: \repofile{scripts/judge\_dobrushin.py}{judge\_dobrushin.py}
-reported $29$ of $29$ checks in each mode, and
-\repofile{scripts/judge\_dobrushin\_d2.py}{judge\_dobrushin\_d2.py} reported $18$
-of $18$.  No acceptance decision in either script depends on a Python
-\texttt{assert}; each counts the checks it performed and refuses to print a
-verdict when fewer ran than expected, because an empty failure list is also what
-zero checks produce.
+\textbf{The bytes of Section~\ref{sec:comparison}.}  Printed by the runner in
+the same execution that built and oracled them:
+\begin{center}\small
+\begin{tabular}{llr}
+\toprule
+module & \texttt{sha256} & bytes\\
+\midrule
+\texttt{DobrushinOscillation.lean} & \nolinkurl{ca7c6842b8e08d13c405517994df86f868047b48c53fb9ab2e24fcea10777d89} & $7777$\\
+\texttt{DobrushinGruss.lean} & \nolinkurl{8e00f418a42fb30d6f6b367d5e353b4f34149c2e70d3625ae3307ce8bceb9ace} & $16462$\\
+\texttt{DobrushinConditional.lean} & \nolinkurl{eb52b816f2c401d17edb72c5a7d0f8d413c33bbf9292f770e92a787fc8f5833a} & $18270$\\
+\texttt{DobrushinComparison.lean} & \nolinkurl{a489fc2823e564685f3ffbf586f1a1f63ce4b78a955a9ec88edbcd70afae4133} & $54738$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Certifiers.}  Four gate scripts, each run in \texttt{normal} and in
+\texttt{optimized} (\texttt{python -O}) mode on the Linux plane; all eight runs
+exited zero.  \repofile{scripts/judge\_dobrushin.py}{judge\_dobrushin.py}
+reported $29$ of $29$ checks in each mode and
+\repofile{scripts/judge\_dobrushin\_d2.py}{judge\_dobrushin\_d2.py} $18$ of
+$18$, at the previous anchor.  At this anchor
+\repofile{scripts/judge\_dobrushin\_d3.py}{judge\_dobrushin\_d3.py} reported
+$11$ of $11$ and
+\repofile{scripts/judge\_dobrushin\_d3b.py}{judge\_dobrushin\_d3b.py} $6$ of
+$6$, in both modes, and both ran \emph{before} the build in the same runner
+invocation --- the record shows the gates passing before the theorems they
+license were compiled.  No acceptance decision in any of the four depends on a
+Python \texttt{assert}; each counts the checks it performed and refuses to
+print a verdict when fewer ran than expected, because an empty failure list is
+also what zero checks produce.
+
+\textbf{What the passes cost, and the one that was not a repair.}  Seven
+elaboration rounds on the Linux plane closed Section~\ref{sec:comparison}'s
+four modules.  Not one of the failures was mathematical: they were library
+names absent under their classical spelling in the pinned Mathlib, section
+variables that a statement never mentioned and so never bound, a global
+rewrite that consumed the literal $1$ inside an indicator, and goals equal only
+after $\beta$-reduction.  The exception is worth its sentence.  The first
+round failed in
+\repofile{YangMills/OS/DobrushinOscillation.lean}{DobrushinOscillation.lean},
+a module committed at an \emph{earlier} anchor: the file had been verified in
+its pre-split working form and split afterwards, and the committed bytes had
+never been elaborated.  The lane had declared that debt in advance and the
+runner was built to re-verify those bytes; it found the defect on its first
+run.  \emph{A module that was green before an edit is not green after it, and
+the hash is what says which one was compiled.}
 
 \textbf{Child processes.}  Every child of the runner writes a sentinel holding
 exactly one line, its real decimal exit code, captured after termination and
@@ -661,13 +954,35 @@ R.~L. Dobrushin,
 and conditions of its regularity},
 Theory of Probability and its Applications \textbf{13} (1968), 197--224.
 The uniqueness condition and the comparison estimate whose mechanised form is
-step~2 of Section~\ref{sec:frontier}.  The theorem of this paper is classical
-and due here.
+Theorem~\ref{thm:comparison}.  The theorems of this paper are classical and due
+here.
 
 \bibitem{Dobrushin1970}
 R.~L. Dobrushin,
 \emph{Prescribing a system of random variables by conditional distributions},
 Theory of Probability and its Applications \textbf{15} (1970), 458--486.
+Together with \cite{Simon1993}, the source of the argument mechanised in
+Section~\ref{sec:comparison}: the single-site update acting on oscillation
+vectors, and the resolvent of the interdependence matrix as the resulting
+comparison.
+
+\bibitem{Gruss1935}
+G.~Gr\"uss,
+\emph{\"Uber das Maximum des absoluten Betrages von
+$\frac{1}{b-a}\int_a^b f(x)g(x)\,dx-\frac{1}{(b-a)^2}\int_a^b f(x)\,dx\int_a^b
+g(x)\,dx$},
+Mathematische Zeitschrift \textbf{39} (1935), 215--226.
+The covariance bound with the quarter constant, applied pointwise to the
+conditional in Lemma~\ref{lem:gruss}.  Our proof is the discrete signed-mass
+one rather than Gr\"uss's, so that each factor $\tfrac12$ is created in exactly
+one lemma.
+
+\bibitem{Popoviciu1935}
+T.~Popoviciu,
+\emph{Sur les \'equations alg\'ebriques ayant toutes leurs racines r\'eelles},
+Mathematica (Cluj) \textbf{9} (1935), 129--145.
+The variance bound $(M-m)^2/4$, machine-checked in the same module as
+Lemma~\ref{lem:gruss} and deliberately \emph{not} used by it.
 
 \bibitem{Simon1993}
 B.~Simon,
