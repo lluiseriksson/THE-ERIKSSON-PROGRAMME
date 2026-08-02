@@ -8,17 +8,14 @@ import Mathlib
 
 /-!
 
-> **STATUS AT THIS COMMIT: SOURCE, NOT RESULT.**
+> **STATUS IS DETERMINED BY THE EXTERNAL AUDIT RECORD FOR THIS EXACT COMMIT
+> AND SOURCE BLOB.**
 >
-> No successful elaboration, clean oracle result, or independently reproduced
-> source hash is recorded for this file at this commit.  No declaration below is
-> `Formalized` in the repository's defined sense.
->
-> A pushed source is an object available to be checked; it is not yet a result.
-> Do not cite or count any declaration here as a result, and do not use this
-> module as a dependency of any compiled, audited, or published result, until
-> focused elaboration, a clean oracle, and an independently reproduced source
-> hash have been recorded.
+> This commit is an immutable audit target.  A declaration in this module is
+> `Formalized` only when a committed evidence record names this exact commit and
+> blob, records a successful focused build, and reports the permitted axiom set.
+> In the absence of such a record, treat this module as SOURCE, NOT RESULT.
+> **The source text itself does not certify its status.**
 # D-3a — oscillation, and what a zero-sum signed mass can do against it
 
 Charter: `docs/DOBRUSHIN-D3-CHARTER.md`.  Gates
@@ -63,6 +60,25 @@ The specialisation `a = p - q` is the total-variation form used by D-3c.
 
 They are separate so that the normalisation of `TV` and the factor `1/2` cannot
 end up hidden inside the proof of D-3c.
+
+## On `DecidableEq`
+
+`[DecidableEq S]` is NOT assumed.  Nothing in this module consumes it --- sums
+over `Finset.univ` of a `Fintype` do not need it --- and carrying an instance no
+proof uses would be a hypothesis a reader is entitled to ask about.  It was
+present in a first version and produced one linter warning per theorem, each
+`omit` shifting the complaint to the next; the cascade was the symptom and the
+unused hypothesis was the cause.
+
+## Accepted linter output
+
+The `simpa`-versus-`simp` suggestions inside `signed_bound_attained` are
+ACCEPTED, not silenced.  `simpa using h` there beta-reduces an application of an
+explicit lambda before matching; replacing it with `norm_num at h; exact h` was
+tried and is WRONG, because `norm_num` closes the hypothesis to `True` rather
+than reducing it.  Chasing that suggestion turned a green file red once, which is
+recorded here so the next reader does not repeat it.  No other linter output is
+accepted: the unused-section-variable warnings are all discharged by `omit`.
 -/
 
 namespace YangMills.OS
@@ -71,7 +87,7 @@ namespace Dobrushin
 
 open Finset
 
-variable {S : Type*} [Fintype S] [DecidableEq S] [Nonempty S]
+variable {S : Type*} [Fintype S] [Nonempty S]
 
 /-! ## §1  Oscillation and midpoint -/
 
@@ -111,6 +127,7 @@ theorem abs_sub_mid_le (g : S → ℝ) (x : S) : |g x - mid g| ≤ osc g / 2 := 
 
 /-! ## §2  A zero-sum signed mass -/
 
+omit [Nonempty S] in
 /-- **Endpoint 1.**  A signed mass of total zero cannot see a constant. -/
 theorem sum_zero_sub_const {a : S → ℝ} (ha : ∑ x, a x = 0) (g : S → ℝ) (c : ℝ) :
     ∑ x, a x * (g x - c) = ∑ x, a x * g x := by
@@ -140,6 +157,7 @@ theorem abs_sum_signed_le {a : S → ℝ} (ha : ∑ x, a x = 0) (g : S → ℝ) 
 /-- Total variation distance, with the `1/2` in the definition. -/
 noncomputable def TV (p q : S → ℝ) : ℝ := (∑ x, |p x - q x|) / 2
 
+omit [Nonempty S] in
 theorem TV_nonneg (p q : S → ℝ) : 0 ≤ TV p q := by
   unfold TV
   have : 0 ≤ ∑ x, |p x - q x| :=
@@ -186,11 +204,22 @@ theorem signed_bound_attained :
         (fun x : Fin 2 => if x = 0 then (1:ℝ) else 0) = 1 := by
       refine le_antisymm (Finset.sup'_le _ _ fun x _ => ?_) ?_
       · by_cases h : x = 0 <;> simp [h]
-      · exact Finset.le_sup' _ (Finset.mem_univ (0 : Fin 2)) |>.trans_eq (by norm_num)
+      · -- the function is given explicitly: a `_` here leaves a metavariable
+        have h0 : (fun x : Fin 2 => if x = 0 then (1:ℝ) else 0) 0
+            ≤ Finset.univ.sup' Finset.univ_nonempty
+                (fun x : Fin 2 => if x = 0 then (1:ℝ) else 0) :=
+          Finset.le_sup' (fun x : Fin 2 => if x = 0 then (1:ℝ) else 0)
+            (Finset.mem_univ (0 : Fin 2))
+        simpa using h0
     have hi : Finset.univ.inf' Finset.univ_nonempty
         (fun x : Fin 2 => if x = 0 then (1:ℝ) else 0) = 0 := by
       refine le_antisymm ?_ (Finset.le_inf' _ _ fun x _ => ?_)
-      · exact (Finset.inf'_le _ (Finset.mem_univ (1 : Fin 2))).trans_eq (by norm_num)
+      · have h1 : Finset.univ.inf' Finset.univ_nonempty
+              (fun x : Fin 2 => if x = 0 then (1:ℝ) else 0)
+            ≤ (fun x : Fin 2 => if x = 0 then (1:ℝ) else 0) 1 :=
+          Finset.inf'_le (fun x : Fin 2 => if x = 0 then (1:ℝ) else 0)
+            (Finset.mem_univ (1 : Fin 2))
+        simpa using h1
       · by_cases h : x = 0 <;> simp [h]
     rw [hs, hi]; norm_num
   rw [hL, hT, hO]; norm_num
