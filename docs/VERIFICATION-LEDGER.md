@@ -31268,3 +31268,85 @@ identify either logarithmic sum with a finite transfer vacuum, does not prove
 the physical vacuum quotient order, and does not touch either spectral-sector
 obligation, the original `beta = 0` endpoint, or the uniform `specRatio`
 theorem.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 619 (2026-08-02, **TASK 14: finite log-grid comparison full verifier passed**)
+
+**CERTIFIED INTERMEDIATE FINITE-ALGEBRA BRICK; NOT A VACUUM OR SPECTRAL
+BOUND.**  The fail-fast full verifier was versioned and pushed before
+execution at runner commit `a8456eb7f6aa860b20a2f9ee5ffb5e4447278ae5`.
+In one fresh Colab clone it checked out raw source/oracle SHA
+`30a64e5a8cfb7ef05cecb45dc9d033603d0eccbe`, verified the exact toolchain
+and mathlib pins, built the focused module and core, read the live baseline
+from this ledger, ran the permanent oracle and consistency judge, and
+stopped on every nonzero command or invariant mismatch.  One clone is the
+current requirement for this intermediate brick; this is not a terminal
+release witness.
+
+The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 AMD EPYC 7B12 CPUs, and
+`MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T11:01:11.937616+00:00` through
+`2026-08-02T11:54:54.129651+00:00` (`3222.192035 s`; the Colab cell reported
+`3222.568 s`).  Lean was exactly `leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib was exactly
+`07642720480157414db592fa85b626dafb71355b`.  The downloaded elan installer
+had SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`;
+isolated official cache acquisition exited zero after `101.351308 s`.
+
+All verification commands exited zero.  The measured results were:
+
+- `lake build YangMills.OS.SpatialVacuum`: `8172 jobs`, `165.011129 s`;
+- `lake build YangMillsCore`: `8467 jobs`, `888.659090 s`;
+- latest live-ledger baseline parsed by the verifier: `8465 jobs`;
+- measured branch delta: `+2`, exactly the two branch modules
+  `SpatialDualBond` and `SpatialVacuum`;
+- `lake env lean oracle_check.lean`: `2038.200953 s`;
+- `python3 scripts/check_consistency.py`: `4.303269 s`, reporting zero
+  `sorry` and zero project axioms.
+
+The permanent oracle printed each required declaration exactly once.  Each
+depends on exactly the permitted set
+`{propext, Classical.choice, Quot.sound}`:
+
+```text
+'YangMills.OS.periodic_antiperiodic_log_norm_sums_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.arcosh_circle_log_mixture' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.physical_arcosh_circle_log_mixture' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+The verifier also checked every permanent-oracle declaration for absence of
+nonstandard axioms and rejected any occurrence of `sorryAx`.
+
+The downloaded `spatial_vacuum_full_artifacts (1).zip` was independently
+hashed on Windows as
+`52c5fef5b8e988096b59f8b7ac6daba1b1af00470afab3335d7afde8f6b6e384`,
+matching the hash printed by Colab.  Its internal manifest was revalidated
+streamwise without extracting the archive; all four manifest comparisons
+were true:
+
+- `metadata.json`, 1187 bytes,
+  `a1be5263c43048d7ad8920b3747094a9159c5b053cf278675ab2ce2750ea91df`;
+- `transcript.txt`, 468699 bytes,
+  `89bd510c341d2521545dc5f1d5ee787b5f736c203d09708de611620eb023cb99`;
+- `oracle_output.txt`, 345000 bytes,
+  `d5bb60d1bcf4d26ad779559c6d886f0630856e5b4dc00b64d78bcb3a4807af14`;
+- `consistency_output.txt`, 154 bytes,
+  `95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`;
+- `SHA256SUMS`, 334 bytes,
+  `53f4b75d1c7c173e0a33f2f23717d002b43c10abc69576b4d6269e8da78d3b31`.
+
+The ZIP contains separate metadata, full oracle output, consistency output,
+and transcript through `SPATIAL VACUUM FULL VERIFICATION STEPS PASS`; its
+outer hash and final `SPATIAL VACUUM FULL PASS` were checked after archive
+construction.  The runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
+
+The newly certified theorem is only the strict comparison between two finite
+sums of logarithmic complex norms, under the printed hypotheses `0 < L` and
+`0 < x < 1`, obtained from the exact periodic/antiperiodic root products.  It
+does not identify either sum with a transfer-matrix vacuum, transfer the
+comparison through the scalar log mixture, or prove the physical vacuum
+quotient order.  Neither sharp odd-sector bound nor even non-Perron bound is
+proved; the original `beta = 0` endpoint and uniform `specRatio` theorem also
+remain open.  Clifford/Jordan--Wigner remains unopened.
