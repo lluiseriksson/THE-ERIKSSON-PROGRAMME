@@ -9,11 +9,14 @@ and D-3 runners.
   stage 1  certifiers, BEFORE any build: judge_dobrushin_d4.py (G12–G14, the
            gates of this rung) plus re-runs of d3/d3b, each in `normal` and
            `optimized`.
-  stage 2  Lean: the new lane module `DobrushinGibbs` by name.
-  stage 3  THE CORE, with the five D-3/D-4 modules newly wired into
-           `YangMillsCore.lean`.  Prediction, registered in the wiring commit
-           BEFORE this measurement: five new modules over the campaign parent's
-           8468 → **8473 jobs**.  The tail of the build log is printed so the
+  stage 2  Lean: the lane modules `DobrushinGibbs` and `DobrushinIsing` by name.
+  stage 3  THE CORE, with the six D-3/D-4 modules wired into
+           `YangMillsCore.lean`.  Prediction, CORRECTED before this
+           measurement: the original 8468 -> 8473 used the lane's own earlier
+           count as base, but the branch base (paper 14's anchor) already
+           carries `SpatialReconstruction`, measured at **8469**.  The
+           corrected expectation with six new modules is therefore
+           **8475 jobs**.  The tail of the build log is printed so the
            count is read from the artefact, not remembered.
   stage 4  the FULL repository oracle (`oracle_check.lean`), now carrying the
            D-3/D-4 declarations.
@@ -32,7 +35,7 @@ import sys
 REPO = "/content/eriksson"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB_PIN = "07642720480157414db592fa85b626dafb71355b"
-LANE_MODULES = ["YangMills.OS.DobrushinGibbs"]
+LANE_MODULES = ["YangMills.OS.DobrushinGibbs", "YangMills.OS.DobrushinIsing"]
 CERTIFIERS = ["scripts/judge_dobrushin_d4.py",
               "scripts/judge_dobrushin_d3.py",
               "scripts/judge_dobrushin_d3b.py"]
@@ -159,6 +162,7 @@ def stage5(sha):
     print("stage 5 — hashes")
     rows = []
     for f in ["YangMills/OS/DobrushinGibbs.lean",
+              "YangMills/OS/DobrushinIsing.lean",
               "YangMillsCore.lean",
               "oracle_check.lean",
               "scripts/judge_dobrushin_d4.py",

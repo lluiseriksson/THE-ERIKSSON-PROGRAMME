@@ -3343,3 +3343,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.gibbs_covar_two_point
 #print axioms YangMills.OS.Dobrushin.GibbsWitness.witness_attained
 #print axioms YangMills.OS.Dobrushin.GibbsWitness.witness_bound_holds
+#print axioms YangMills.OS.Dobrushin.energy_update
+#print axioms YangMills.OS.Dobrushin.heatBath_ising
+#print axioms YangMills.OS.Dobrushin.heatBath_ising_pPlus
+#print axioms YangMills.OS.Dobrushin.TV_heatBath_ising
+#print axioms YangMills.OS.Dobrushin.dobCoeff_ising_le
+#print axioms YangMills.OS.Dobrushin.dobCoeff_ising_zero
+#print axioms YangMills.OS.Dobrushin.ising_covar_le_resolvent
+#print axioms YangMills.OS.Dobrushin.ising_covar_exp_decay
+#print axioms YangMills.OS.Dobrushin.ising_covar_two_point
+#print axioms YangMills.OS.Dobrushin.IsingBondWitness.dobCoeff_bond_attained
+#print axioms YangMills.OS.Dobrushin.IsingBondWitness.bond_covar_two_point
+#print axioms YangMills.OS.Dobrushin.StarWitness.star_covar_two_point

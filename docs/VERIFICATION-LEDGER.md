@@ -30156,3 +30156,59 @@ the artifact, not the source, whenever the two can differ.
 **ROLES.**  The defects were found by an external reading, not by this desk;
 this desk verified, fixed, and re-verified.  No score in the paper; the
 external numbers stay external.
+
+## Addendum 586 (2026-08-02, **D-4b written with no compiler: the interaction
+instantiated, and a job-count base error corrected BEFORE the measurement**)
+
+**THE RUNG.**  `YangMills/OS/DobrushinIsing.lean`, written blind on the owner
+desktop, licensed by gates G13/G14 of `judge_dobrushin_d4.py` (committed
+`2cda729f5`, passed in both modes BEFORE any Lean of this rung existed).
+Contents:
+
+* `energy_update` — the quadratic energy of an updated configuration splits
+  into an s-free block plus `spin s * localField`; the only structural
+  computation of the module.
+* `heatBath_ising` / `heatBath_ising_pPlus` — **G13 as a theorem**: the
+  heat-bath conditional of the Ising weight is the sigmoid `(1 + tanh h)/2`
+  at the local field.
+* `TV_heatBath_ising` — the total variation of two conditionals IS the
+  envelope's `tvField` at the two fields; `localField_update` — updating a
+  site moves the field by the bond times the spin move (`0` or `±2`).
+* `dobCoeff_ising_le` — **G14 as a theorem**: the INTRINSIC Dobrushin
+  coefficient of the Ising weight is dominated by `tanh |J i k|`.  With
+  `dobCoeff_ising_zero` (range) and `dobCoeff_ising_row_le` (row sums),
+  every kernel-side hypothesis of the D-4a endpoints becomes a computation
+  on `J`.
+* `ising_covar_le_resolvent` / `ising_covar_exp_decay` /
+  `ising_covar_two_point` — the instantiated endpoints.
+* `IsingBondWitness` — **attainment**: on the one-bond system the intrinsic
+  coefficient EQUALS `tanh β` (`dobCoeff_bond_attained`) because the optimal
+  field is reachable there; and that system satisfies Dobrushin's condition
+  at EVERY coupling (`bond_covar_two_point`, no smallness hypothesis).
+* `StarWitness` — **the lane's window instantiated at a weight**:
+  `star_covar_two_point` takes `2 tanh|β| + 2 tanh|γ| < 1` — the row-sum
+  computation of D-2b's star cell — and returns exponential decay of the
+  anisotropic star Ising weight's correlations.  This is the composition
+  the external evaluation of v5 named as the step that would connect the
+  paper's two halves.
+
+Wired into `YangMillsCore.lean` and `oracle_check.lean` (twelve new
+endpoints).  NOT yet verified: this addendum records the fabrication; the
+Colab run follows in this same unit and its results will be recorded
+separately.  No PASS is claimed here.
+
+**THE BASE CORRECTION, made before the number is taken.**  Addendum 584 and
+the wiring commit `80b0160d7` registered the core prediction `8468 → 8473`.
+That base is WRONG: `8468` was the lane's own D-2 measurement, but this
+branch is cut from `paper14-clean`, whose `SpatialReconstruction` module was
+measured at `8468 → 8469` (paper 14's ledger entry).  `git show
+4f3b8640:YangMillsCore.lean` confirms the module is imported at this lane's
+anchor.  The latest applicable measured baseline is therefore **8469**, and
+the corrected expectation with six new modules is **8475**.  This is the
+exact defect the Part II house rule names — "never use a job count copied
+into CLAUDE.md as the current baseline" — committed by this desk against a
+sibling branch's measurement instead.  The correction is registered BEFORE
+the fresh-clone measurement, which will test 8475, not 8473, and the
+original mis-based prediction stays in the record.
+
+**ROLES.**  This session FABRICATED and does not audit itself.

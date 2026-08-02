@@ -997,3 +997,11 @@ import YangMills.OS.DobrushinComparison
 -- the INTRINSIC Dobrushin matrix with zero diagonal proved and domination by
 -- construction.  The one surviving hypothesis is Dobrushin's condition.
 import YangMills.OS.DobrushinGibbs
+
+-- D-4b: the interaction, instantiated.  For the Ising weight of a symmetric
+-- zero-diagonal coupling: the heat-bath conditional is the sigmoid of the
+-- local field (G13 as a theorem), the intrinsic matrix is dominated by the
+-- tanh|J| envelope (G14 as a theorem, an EQUALITY on the one-bond witness),
+-- and the lane's window 2tanh|b|+2tanh|g| < 1 becomes the hypothesis of a
+-- decay theorem about the star-cell weight.
+import YangMills.OS.DobrushinIsing
