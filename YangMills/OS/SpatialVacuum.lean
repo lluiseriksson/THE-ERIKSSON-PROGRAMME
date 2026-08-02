@@ -286,11 +286,10 @@ theorem circle_log_kernel_factorization {t x : ℝ} (ht : 0 < t)
       ‖1 - (x : ℂ) * z‖ ^ 2 =
         (1 - x) ^ 2 + 2 * x * (1 - z.re) := by
     rw [← Complex.normSq_eq_norm_sq, Complex.normSq_sub]
-    simp [Complex.normSq_mul, Complex.normSq_eq_norm_sq, hnorm, abs_of_pos hx0]
+    simp [Complex.normSq_eq_norm_sq, hnorm, abs_of_pos hx0]
     ring
   rw [hnormSq, ← htx]
   field_simp [ht.ne', hx0.ne', hx1.ne']
-  ring
 
 /--
 Taking logarithms of `circle_log_kernel_factorization` gives the local bridge
@@ -315,12 +314,14 @@ theorem circle_log_kernel_eq_log_norm {t x : ℝ} (ht : 0 < t)
       div_nonneg (sub_nonneg.mpr hre) ht.le
     linarith
   have hfac := circle_log_kernel_factorization ht hx0 hx1 htx hz
-  have hnormSq : 0 < ‖1 - (x : ℂ) * z‖ ^ 2 := by
+  have hden : 0 < 1 - x := sub_pos.mpr hx1
+  have hquotPos : 0 < ‖1 - (x : ℂ) * z‖ ^ 2 / (1 - x) ^ 2 := by
     rw [← hfac]
     exact hkernel
+  have hnormSq : 0 < ‖1 - (x : ℂ) * z‖ ^ 2 := by
+    exact (div_pos_iff_of_pos_right (sq_pos_of_pos hden)).mp hquotPos
   have hnormPos : 0 < ‖1 - (x : ℂ) * z‖ := by
     nlinarith [norm_nonneg (1 - (x : ℂ) * z)]
-  have hden : 0 < 1 - x := sub_pos.mpr hx1
   rw [hfac, Real.log_div (pow_ne_zero 2 hnormPos.ne')
     (pow_ne_zero 2 hden.ne'), Real.log_pow, Real.log_pow]
   norm_num
