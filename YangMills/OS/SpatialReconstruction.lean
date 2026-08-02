@@ -1504,9 +1504,8 @@ theorem transferOp_injective_zero_extent {w : (Fin 0 → Fin 2) → ℝ}
     push_cast
     ring
   have hz : ((w σ : ℝ) : ℂ)
-      * (∑ τ : Fin 0 → Fin 2, ((spatialKernel β σ τ : ℝ) : ℂ) * u τ) = 0 := by
-    have h := congrFun hu σ
-    simpa using h
+      * (∑ τ : Fin 0 → Fin 2, ((spatialKernel β σ τ : ℝ) : ℂ) * u τ) = 0 :=
+    congrFun hu σ
   rw [hone] at hz
   have hwne : ((w σ : ℝ) : ℂ) ≠ 0 := Complex.ofReal_ne_zero.mpr (hw σ).ne'
   exact (mul_eq_zero.mp hz).resolve_left hwne
