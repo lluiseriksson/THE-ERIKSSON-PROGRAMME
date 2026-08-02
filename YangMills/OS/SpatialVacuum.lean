@@ -294,65 +294,81 @@ theorem existsUnique_circleLogKernelParameter {t : ℝ} (ht : 0 < t) :
       one_ne_zero ⟨√D, hsqrt⟩
   let y : ℝ := 2 * (1 + t) - x
   have hxpoly : x ^ 2 - 2 * (1 + t) * x + 1 = 0 := by
-    nlinarith [hx]
+    simpa [sub_eq_add_neg] using hx
   have hsum : x + y = 2 * (1 + t) := by
     simp [y]
   have hprod : x * y = 1 := by
+    have hxrearr : 2 * (1 + t) * x - x ^ 2 = 1 := by
+      linarith [hxpoly]
     dsimp [y]
-    nlinarith [hxpoly]
-  have hxyne : x ≠ y := by
-    intro hxy
-    nlinarith [hsum, hprod, sq_nonneg t]
+    calc
+      x * (2 * (1 + t) - x) = 2 * (1 + t) * x - x ^ 2 := by ring
+      _ = 1 := hxrearr
   have hpos : 0 < x ∧ 0 < y := by
-    rcases (mul_pos_iff.mp (show 0 < x * y by nlinarith [hprod])) with h | h
+    have hxypos : 0 < x * y := by rw [hprod]; norm_num
+    rcases mul_pos_iff.mp hxypos with h | h
     · exact h
-    · nlinarith [hsum]
-  have hsum_mul_y : (x + y) * y = 2 * (1 + t) * y :=
-    congrArg (fun u : ℝ ↦ u * y) hsum
+    · have hsumneg : x + y < 0 := add_neg h.1 h.2
+      have hsumpos : 0 < 2 * (1 + t) := by positivity
+      exfalso
+      linarith [hsum]
   have hypoly : y ^ 2 - 2 * (1 + t) * y + 1 = 0 := by
-    nlinarith [hsum_mul_y, hprod]
+    calc
+      y ^ 2 - 2 * (1 + t) * y + 1 = y ^ 2 - (x + y) * y + x * y := by
+        rw [hsum, hprod]
+      _ = 0 := by ring
   have hxrel : 2 * x * t = (1 - x) ^ 2 := by
-    nlinarith [hxpoly]
+    linear_combination -hxpoly
   have hyrel : 2 * y * t = (1 - y) ^ 2 := by
-    nlinarith [hypoly]
+    linear_combination -hypoly
   by_cases hx1 : x < 1
   · have hy1 : 1 < y := by
-      have hgap : 0 < (1 - x) * y := mul_pos (sub_pos.mpr hx1) hpos.2
-      nlinarith [hprod]
+      calc
+        1 = x * y := hprod.symm
+        _ < 1 * y := mul_lt_mul_of_pos_right hx1 hpos.2
+        _ = y := one_mul y
     refine ⟨x, ⟨hpos.1, hx1, hxrel⟩, ?_⟩
     intro z hz
     have hzpoly : z ^ 2 - 2 * (1 + t) * z + 1 = 0 := by
-      nlinarith [hz.2.2]
+      linear_combination -hz.2.2
     have hfactor : (z - x) * (z + x - 2 * (1 + t)) = 0 := by
-      nlinarith [hzpoly, hxpoly]
+      calc
+        (z - x) * (z + x - 2 * (1 + t)) =
+            (z ^ 2 - 2 * (1 + t) * z + 1) -
+              (x ^ 2 - 2 * (1 + t) * x + 1) := by ring
+        _ = 0 := by rw [hzpoly, hxpoly]; norm_num
     rcases mul_eq_zero.mp hfactor with hzx | hzy
-    · nlinarith
+    · linarith
     · have : z = y := by
         dsimp [y]
-        nlinarith
-      nlinarith [hz.2.1]
+        linarith
+      linarith [hz.2.1]
   · have hxge : 1 ≤ x := le_of_not_gt hx1
     have hxneone : x ≠ 1 := by
       intro hxone
-      have hyone : y = 1 := by nlinarith [hprod]
-      exact hxyne (hxone.trans hyone.symm)
+      subst x
+      norm_num at hxrel
+      linarith
     have hxgt : 1 < x := lt_of_le_of_ne hxge (Ne.symm hxneone)
     have hy1 : y < 1 := by
-      by_contra hy1
-      have hyge : 1 ≤ y := le_of_not_gt hy1
-      have hnonneg : 0 ≤ (x - 1) * (y - 1) :=
-        mul_nonneg (sub_nonneg.mpr hxge) (sub_nonneg.mpr hyge)
-      nlinarith [hsum, hprod]
+      calc
+        y = 1 * y := (one_mul y).symm
+        _ < x * y := mul_lt_mul_of_pos_right hxgt hpos.2
+        _ = 1 := hprod
     refine ⟨y, ⟨hpos.2, hy1, hyrel⟩, ?_⟩
     intro z hz
     have hzpoly : z ^ 2 - 2 * (1 + t) * z + 1 = 0 := by
-      nlinarith [hz.2.2]
+      linear_combination -hz.2.2
     have hfactor : (z - y) * (z + y - 2 * (1 + t)) = 0 := by
-      nlinarith [hzpoly, hypoly]
+      calc
+        (z - y) * (z + y - 2 * (1 + t)) =
+            (z ^ 2 - 2 * (1 + t) * z + 1) -
+              (y ^ 2 - 2 * (1 + t) * y + 1) := by ring
+        _ = 0 := by rw [hzpoly, hypoly]; norm_num
     rcases mul_eq_zero.mp hfactor with hzy | hzx
-    · nlinarith
-    · have : z = x := by nlinarith [hsum]
-      nlinarith [hz.2.1, hxgt]
+    · linarith
+    · have : z = x := by linarith [hsum]
+      linarith [hz.2.1, hxgt]
 
 /--
 The angular kernel factors through a point `x` of the open unit interval when
@@ -431,6 +447,6 @@ theorem circleAverage_log_kernel_eq_log_norm {t x : ℝ} (ht : 0 < t)
         2 * Real.log ‖1 - (x : ℂ) * z‖ - 2 * Real.log (1 - x)) 0 1 := by
   apply circleAverage_congr_sphere
   intro z hz
-  exact circle_log_kernel_eq_log_norm ht hx0 hx1 htx hz
+  exact circle_log_kernel_eq_log_norm ht hx0 hx1 htx (by simpa using hz)
 
 end YangMills.OS
