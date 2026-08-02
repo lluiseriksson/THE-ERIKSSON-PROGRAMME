@@ -1,0 +1,23 @@
+==========================================================================
+GATES — D-3, THE COMPARISON ESTIMATE  (docs/DOBRUSHIN-D3-CHARTER.md)
+==========================================================================
+J8  |sum_s (p_s - q_s) g_s| <= TV(p,q) * osc(g), and attained
+    TV=0.300000 osc=1.000000 lhs=0.300000 rhs=0.300000 ratio=1.000000000000
+    TV=0.800000 osc=4.000000 lhs=3.200000 rhs=3.200000 ratio=1.000000000000
+    TV=1.000000 osc=1.000000 lhs=1.000000 rhs=1.000000 ratio=1.000000000000
+    -> worst ratio 1.000000000000 (must be <= 1, and = 1 somewhere)
+
+J9  delta_k(E_i f) <= delta_k(f) + C[i][k] * delta_i(f),  and
+    delta_i(E_i f) = 0.  Exhaustive over ALL Boolean observables.
+    n=2 beta=0.4: 16 observables, violations=0, worst(lhs-rhs)=+0.000e+00
+    n=3 beta=0.3: 256 observables, violations=0, worst(lhs-rhs)=+0.000e+00
+    n=3 beta=0.9: 256 observables, violations=0, worst(lhs-rhs)=+1.110e-16
+    -> worst (lhs - rhs) over everything: +1.110223e-16 (a POSITIVE value refutes D-3c)
+
+J10 |Cov_mu(f,g)| <= sum_ij delta_i(f) D_ij delta_j(g),  D = sum_n C^n
+    n=3 beta=0.2: alpha=0.379949, worst |Cov|/bound = 0.240260746
+    n=3 beta=0.35: alpha=0.604368, worst |Cov|/bound = 0.221712873
+
+==========================================================================
+checks performed: 11 (expected 11)
+VERDICT: PASS — the key lemma survives exhaustive Boolean testing and the covariance bound holds on the registered cells

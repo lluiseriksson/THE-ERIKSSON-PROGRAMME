@@ -1,0 +1,12 @@
+script      scripts/judge_dobrushin_d3.py
+blob        45109cf69dcc3f69c7891b41f8fd1ee76fac9b7f
+sha256      fe867232d82198d4ca44f68833d8d85b2fb235f8fc6b480d75cb8959c6d618f8
+interpreter CPython 3.12.6 (C:\Python312\python.exe)
+host        Windows 11, owner desktop
+command     python scripts/judge_dobrushin_d3.py         (mode: normal)
+            python -O scripts/judge_dobrushin_d3.py      (mode: optimized)
+
+NOTE  These bytes carry the DEFECTIVE J9 legend.  The transcripts in this
+      directory were produced by exactly this blob and are preserved as run.
+      The legend is corrected in the same commit that adds this directory;
+      the acceptance rule (lhs > rhs + 1e-12) is NOT touched.

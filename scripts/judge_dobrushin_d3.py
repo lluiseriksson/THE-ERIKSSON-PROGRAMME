@@ -153,8 +153,14 @@ def gate_J9():
               f"violations={nviol}, worst(lhs-rhs)={worst_here:+.3e}")
         check(nviol == 0, "J9",
               f"n={n} beta={beta}: {nviol} violation(s) of the key lemma")
+    # NARRATION ONLY.  The decision rule above -- `lhs > rhs + 1e-12` -- is the
+    # pre-registered one and is NOT touched here.  The earlier legend read
+    # "a POSITIVE value refutes D-3c", which is false as written: the gate
+    # accepts positives up to the tolerance, and a run reporting +1.11e-16
+    # would have looked like a refutation the gate had waved through.
     print(f"    -> worst (lhs - rhs) over everything: {worst_slack:+.6e} "
-          f"(a POSITIVE value refutes D-3c)")
+          f"(refutes D-3c only ABOVE the 1e-12 tolerance; anything at 1e-16 "
+          f"is machine epsilon in the tanh/sum arithmetic)")
 
 
 # --------------------------------------------------------------------------

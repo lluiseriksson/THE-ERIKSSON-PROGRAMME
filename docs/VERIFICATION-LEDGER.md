@@ -30201,3 +30201,85 @@ count, and `D` mislabelled a list of identifiers.  Each artifact in this chain
 was correct; each description of it needed external correction.  Recorded here
 rather than smoothed over, because a lane that only notices this class when
 someone else reads it should say so in the register that survives.
+
+## Addendum 582 (2026-08-02, **the gate that licenses D-3c had no committed
+result, and its own legend contradicted its decision rule**)
+
+**NO LEAN CHANGED.**  `YangMills/OS/DobrushinOscillation.lean` still carries blob
+`0a14617b87360d29d7cd20bda4308a8ee0857236`; nothing under `YangMills/` is
+touched by this entry.  Record:
+`docs/audits/DOBRUSHIN-D3-GATES-20260802.md`, artifacts in
+`docs/audits/d3-gates-20260802/`.
+
+### The gap this closes
+
+The D-3 charter registers J8/J9/J10 before any Lean of the rung and names **J9
+as the gate that can kill D-3c before a line is written**.  The script was
+committed on time.  **Its outcome never was.**  Under the standing rule that a
+transcript does not exist until it is committed, the gate licensing the next
+rung had no result in the repository — the lane was carrying, in conversation
+only, the memory that it had passed.
+
+Run now, both modes, evidence committed:
+
+```
+exit code, normal                      0
+exit code, optimized (python -O)       0
+stdout, normal vs optimized            BYTE-IDENTICAL, sha256 731c4ef7…
+stderr, both                           empty (attested by size + hash)
+checks performed                       11 of 11 expected
+VERDICT                                PASS
+```
+
+* **J8** attained at ratio exactly `1.000000000000` on three cells — the
+  numerical counterpart of `signed_bound_attained`, already formalised in D-3a.
+  The Lean theorem is the authority; the gate is the pre-registration that
+  predicted it.
+* **J9** zero violations across 16 + 256 + 256 Boolean observables at three
+  cells including `beta = 0.9`, outside the window where the chain closes.
+* **J10** worst covariance ratio `0.240` and `0.222` against a bound of 1.
+
+### LOCAL-LIGHT CONTRACT, MEASURED
+
+The standing rule presumes a script heavy absent reliable measurement of all
+three limits.  Measured by sampling the process every 100 ms while it ran:
+**16.29 s / 15.87 s wall, 12.1 / 12.6 MiB peak RSS, one process, no pool**,
+stdlib imports only.  A first attempt read `PeakWorkingSet64` *after* exit and
+returned 0 MiB; **that figure was discarded rather than reported**, and the
+measurement redone.  A zero that comes from asking at the wrong moment is not a
+measurement, and reporting it would have been the sentinel defect with a
+different mask.
+
+### THE DEFECT: a judge whose legend contradicted its own rule
+
+J9 printed `worst (lhs - rhs) … +1.110223e-16 (a POSITIVE value refutes D-3c)`
+— **and passed**.  The pre-registered rule is `lhs > rhs + 1e-12`, so the gate
+accepts positive slack up to the tolerance and `+1.11e-16` is machine epsilon in
+the `tanh`/sum arithmetic.  A reader of the committed transcript sees a positive
+number under a legend calling positives refutations, and concludes either that
+the gate is broken or that its narration can be ignored.  The second reading is
+the dangerous one.
+
+**Only the printed sentence was changed.  The tolerance was NOT.**  It was
+pre-registered before any run, and weakening or tightening a decision rule after
+seeing its result is the move this lane forbids itself — having read the result
+first does not create an exception for a repair that looks harmless.  The
+transcripts were produced by the pre-fix bytes and are committed **as run**, so
+the defect stays visible in the evidence instead of being erased by a tidier
+re-run.  Both script SHA-256 values are recorded: the one that produced the
+transcripts and the corrected one.
+
+**Same class as the three defects of Addendum 581, now in a judge rather than a
+record**: the artifact decided correctly and the sentence describing what it had
+decided was wrong.  Fourth appearance in this round, and the first inside a
+pre-registered gate — which matters, because a gate is read by people who were
+not there when it ran.
+
+### What J9 passing does and does NOT license
+
+It licenses **attempting** D-3c.  It tests `|S| = 2`, `|iota| <= 3` and one
+explicit kernel; the key lemma is quantified over all finite systems and all
+real observables.  **D-3c is unproved and unwritten**; Popoviciu stays
+`SOURCE, NOT RESULT`; the global comparison estimate and the finite-time
+operator interface remain open; charter prohibition 4 stands — a complete D-3
+would give decay of correlations, not `sup_L specRatio(L) < 1`.
