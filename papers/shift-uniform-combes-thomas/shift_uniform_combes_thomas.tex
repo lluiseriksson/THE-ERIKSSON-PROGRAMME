@@ -1,5 +1,6 @@
 % Shift-uniform Combes--Thomas resolvents and covariance roots.
-% Resolvent artifact: b542b3f2; positive-root artifact: bd11e55f.
+% Resolvent artifact: b542b3f2; positive-root artifact: bd11e55f;
+% Stieltjes-integration artifact: 73179102.
 \documentclass[11pt]{article}
 
 \usepackage[margin=1.05in]{geometry}
@@ -45,7 +46,7 @@ development were produced with AI assistance under the repository's audit
 protocol.  Claims labelled \formalized{} were checked by Lean~4 against a
 pinned Mathlib and a targeted axiom oracle.  Paper-level functional-calculus
 arguments are labelled \proved{} and are not represented as Lean theorems.}}
-\date{August 1, 2026 -- research preprint, version 0.4}
+\date{August 2, 2026 -- research preprint, version 0.5}
 
 \begin{document}
 \maketitle
@@ -82,12 +83,16 @@ Stieltjes formula then give
 The fractional-power decay itself is classical in matrix analysis; the
 contribution claimed here is the shift-uniform, source-facing, machine-checked
 route with explicit constants.  In version 0.4 the positive real continuous-
-linear-map root is also constructed and verified spectrally in Lean, and a
-new adapter derives every algebraic root-certificate field from covariance
-positivity.  The remaining gap is stated without compression: the Stieltjes
-identity and integrated single-bond root-kernel bound are not yet formalized,
-so the localized physical root certificate remains conditional on that kernel
-estimate; fixed-volume coercivity is still not volume-uniform.
+linear-map root is also constructed and verified spectrally in Lean.  Version
+0.5 additionally formalizes the scalar improper integral, the Bochner
+transport from a resolvent-family kernel estimate to the exact coefficient
+$2/\sqrt c$, and the quantitative operator bound
+$\norm{K^{-1/2}}\le c^{-1/2}$.  The remaining gap is stated without
+compression: Lean does not yet identify the canonical spectral root with the
+operator-valued resolvent integral (nor prove integrability of that canonical
+inverse family).  Thus the localized physical root certificate remains
+conditional on this identification; fixed-volume coercivity is still not
+volume-uniform.
 \end{abstract}
 
 \section{Claims and status discipline}\label{sec:claims}
@@ -111,14 +116,16 @@ named frontier for subsequent formalization or analysis. \\
 \end{center}
 
 The central resolvent result, Theorem~\ref{thm:shiftedCT}, is
-\formalized.  The positive continuous-linear-map square root and its exact
-square, positivity, and symmetry properties are now also \formalized.  The
-Stieltjes passage to $K^{-1/2}$, Theorem~\ref{thm:root}, is \proved{} at paper
-level.  Its identification with the formal spectral root, the integrated
-single-bond kernel estimate, and unconditional discharge of the existing
-\path{PhysicalLocalizedCovarianceRootCertificate} remain \openstatus.  No
-continuum limit, mass gap, or volume-uniform positive coercivity constant is
-claimed.
+\formalized.  The positive continuous-linear-map square root, its exact
+square, positivity, symmetry, and the bound $\norm{K^{-1/2}}\le c^{-1/2}$ are
+also \formalized.  Lean now checks the scalar Stieltjes integral and a generic
+Bochner theorem that transports an integrable resolvent-family kernel bound
+to the exact $2/\sqrt c$ coefficient.  The complete Stieltjes passage in
+Theorem~\ref{thm:root} remains \proved{} at paper level because identification
+of the formal spectral root with the canonical shifted-inverse integral is
+still \openstatus.  Consequently unconditional discharge of the existing
+\path{PhysicalLocalizedCovarianceRootCertificate} is also open.  No continuum
+limit, mass gap, or volume-uniform positive coercivity constant is claimed.
 
 The mathematical phenomenon is not presented as new.  Exponential decay of
 inverses of banded matrices goes back at least to Demko--Moss--Smith
@@ -377,6 +384,26 @@ The spectral bounds and the square identity follow by applying
 $\lambda\mapsto\lambda^{-1/2}$ on $\sigma(K)$.
 \end{proof}
 
+The scalar identity in \eqref{eq:scalar} is now independently
+\formalized{} as \path{integral_Ioi_inv_add_sq}, together with its
+integrability theorem.  More importantly, the step from the pointwise
+resolvent estimate to the integrated single-bond bound is no longer merely a
+paper calculation.  For any Bochner-integrable operator family $F(t)$, Lean
+proves
+\[
+  \norm{(F(t)\delta_pv)(q)}
+  \le \frac{A}{c+t^2}w(q,p)\norm v
+  \quad\Longrightarrow\quad
+  \norm{\left(\frac{2}{\pi}\int_0^\infty F(t)\,dt\right)
+    \delta_pv(q)}
+  \le \frac{A}{\sqrt c}w(q,p)\norm v.
+\]
+The exponential specialization takes $A=2$ and
+$w(q,p)=e^{-\theta\dist(q,p)}$.  This theorem closes the integration and
+single-bond evaluation step itself; it deliberately does not assert that the
+abstract family $F$ is the canonical shifted inverse or that its integral is
+the spectral root.
+
 \begin{remark}[constant accounting]
 The spectral norm of $K^{-1/2}$ is at most $c^{-1/2}$, whereas the kernel
 amplitude obtained from the half-budget CT argument is $2c^{-1/2}$.  The
@@ -404,9 +431,13 @@ $C=K^{-1}$ and $B=K^{-1/2}$, while Theorem~\ref{thm:shiftedCT} supplies the
 uniform resolvent estimate needed for item 6.  The new module
 \path{FiniteDimensionalRealPositiveSqrt.lean} now supplies a Lean term $B$ for
 every positive finite-dimensional real continuous endomorphism and proves
-$B\circ B=C$, positivity, and symmetry.  The physical adapter derives items
-2--5 (using $\norm B$ itself for the non-quantitative norm bound); item 6 is
-still an explicit analytic input.
+$B\circ B=C$, positivity, and symmetry.  The generic physical adapter derives
+items 2--5.  A new coercive specialization now fills item 3 with the
+quantitative constant $\sqrt{c^{-1}}$, rather than using $\norm B$ as its own
+bound.  The integrated-kernel theorem derives the correct item-6 bound for the
+Stieltjes integral of any integrable family satisfying the shift-uniform
+estimate.  Item 6 for the \emph{canonical spectral root} still awaits
+identification of that root with this integral.
 
 The local-SPD route in
 \lean{PhysicalGaugeLocalSPDPrecisionRoot.lean} is complementary.  It develops
@@ -414,9 +445,11 @@ Neumann and inverse-square-root coefficient majorants under a normalized
 small-perturbation hypothesis
 $K=a(\Id-L)$ with $\norm L<1$, but deliberately leaves the continuous-linear
 root and its kernel bound as source fields.  The present route replaces that
-smallness hypothesis by coercivity plus finite range.  Version 0.4 closes the
-positive-root object for every symmetric coercive precision; neither route yet
-proves the physical single-bond kernel bound for that canonical root.
+smallness hypothesis by coercivity plus finite range.  Version 0.5 closes the
+scalar integral, its exact constant, the abstract Bochner kernel transport,
+and the quantitative root norm; neither route yet proves the physical
+single-bond kernel bound for the canonical root without the remaining
+Stieltjes identification.
 
 The exact next formal chain is therefore
 \begin{equation}\label{eq:nextchain}
@@ -425,17 +458,20 @@ The exact next formal chain is therefore
 \text{self-adjoint coercive }K
 \longrightarrow \text{formal positive spectral root }B,\quad B^2=K^{-1}
 \\
-\longrightarrow \text{formal identification with the Stieltjes integral}
-\longrightarrow \text{integrated single-bond kernel bound}
+\longrightarrow \boxed{B=\text{canonical shifted-inverse Stieltjes integral}}
+\\
+\longrightarrow \text{formal integrated single-bond kernel bound}
 \\
 \longrightarrow
 \lean{PhysicalLocalizedCovarianceRootCertificate}.
 \end{gathered}}
 \end{equation}
-The first arrow is now machine-checked by transporting a real positive-
-semidefinite matrix root through an orthonormal basis.  The remaining
-engineering question is to identify this spectral root with the
-norm-convergent Stieltjes integral while preserving the single-bond kernel API.
+The first arrow is machine-checked by transporting a real positive-semidefinite
+matrix root through an orthonormal basis, and the post-identification kernel
+transport is now machine-checked by Bochner integration and continuous
+coordinate evaluation.  The boxed equality is the remaining engineering
+question: construct the canonical shifted-inverse family as an integrable Lean
+term and identify its integral with the spectral root.
 
 \paragraph{Post-review implementation audit.}
 The available library route was not a one-line application of an existing
@@ -445,10 +481,13 @@ nonnegative square root of every eigenvalue, and transports the result back to
 a continuous linear map.  Lean verifies positive semidefiniteness and the
 exact square before transport, then verifies the continuous-linear-map
 properties after transport.  This closes the first two obligations identified
-in version 0.3.1.  The two remaining obligations are the norm-convergent
-Stieltjes identification and the integrated single-bond kernel estimate.
-Supplying the last predicate as an assumption still does not prove decay; the
-new certificate adapter uses it only to isolate the exact remaining frontier.
+in version 0.3.1.  Version 0.5 also closes the scalar improper integral,
+quantitative norm estimate, and generic integrated single-bond kernel
+estimate.  The remaining obligation is now sharply localized at the
+operator-valued Stieltjes identification, including integrability of the
+canonical inverse family.  Supplying the root kernel predicate as an
+assumption still does not prove decay; the certificate adapter uses it only to
+isolate this exact frontier.
 
 \section{Prior art and exact delta}\label{sec:prior}
 
@@ -535,12 +574,13 @@ matrices.  The purpose here is a robust formal interface.
 
 \paragraph{Kill criteria.}  The programme should be reformulated if any of the
 following occurs: (i) the exact shift identity fails under the actual root
-representation; (ii) the functional-calculus bridge cannot preserve the
-single-bond kernel API without assuming the desired kernel bound; (iii) the
-root certificate requires a volume-uniform $c$ from the already refuted block
-normalization; or (iv) a prior formalization is found with the same physical
-types, hypotheses, constants, and endpoint.  None is currently observed, but
-(ii) is the real technical bottleneck.
+representation; (ii) the canonical shifted-inverse family cannot be made
+Bochner integrable and identified with the spectral root without assuming the
+desired root-kernel conclusion; (iii) the root certificate requires a
+volume-uniform $c$ from the already refuted block normalization; or (iv) a
+prior formalization is found with the same physical types, hypotheses,
+constants, and endpoint.  None is currently observed, but (ii) is the real
+technical bottleneck.
 
 \section{Lean theorem map and reproducibility}\label{sec:repro}
 
@@ -552,7 +592,8 @@ The resolvent source modules are
 The root layer is implemented in
 \path{FiniteDimensionalRealPositiveSqrt.lean},
 \path{CoerciveCovariancePositiveSqrt.lean}, and
-\path{PhysicalGaugeCovariancePositiveRoot.lean}.
+\path{PhysicalGaugeCovariancePositiveRoot.lean}.  Scalar integration and
+Bochner kernel transport are in \path{StieltjesKernelIntegration.lean}.
 
 \footnotesize
 \begin{longtable}{@{}p{0.41\textwidth}p{0.32\textwidth}p{0.13\textwidth}@{}}
@@ -577,11 +618,23 @@ CT3/CT4 module & \textsc{exact} \\
 \path{isPositive} & same & \textsc{exact} \\
 \path{covarianceSqrtOfIsCoerciveCLM_comp_self} &
 \path{CoerciveCovariancePositive}\newline\path{Sqrt.lean} & \textsc{exact} \\
+\path{covarianceSqrtOfIsCoerciveCLM_isPositive} & same & \textsc{exact} \\
+\path{norm_covarianceSqrtOfIsCoerciveCLM_le} & same & \textsc{exact} \\
 \path{physicalLocalizedCovariance}\newline
 \path{RootCertificate_of_positive_covariance} &
 \path{PhysicalGaugeCovariance}\newline\path{PositiveRoot.lean} & \textsc{conditional} \\
-Stieltjes identity and Theorem~\ref{thm:root} & this manuscript & paper \\
-Integrated root-kernel bound & not yet implemented & open \\
+\path{physicalLocalizedCovariance}\newline
+\path{RootCertificate_of_}\newline
+\path{coercive_precision} & same & \textsc{conditional} \\
+\path{integrableOn_Ioi_inv_add_sq} &
+\path{StieltjesKernelIntegration.lean} & \textsc{exact} \\
+\path{integral_Ioi_inv_add_sq} & same & \textsc{exact} \\
+\path{physicalCovarianceKernelBound_}\newline
+\path{stieltjesIntegralOperator} & same & \textsc{exact} \\
+\path{physicalCovariance_exponentialKernelBound_}\newline
+\path{stieltjesIntegralOperator} & same & \textsc{exact} \\
+Canonical shifted-inverse integral equals spectral root & not yet implemented & open \\
+Theorem~\ref{thm:root} as one end-to-end Lean declaration & this manuscript & paper \\
 \bottomrule
 \end{longtable}
 \normalsize
@@ -608,6 +661,14 @@ It adds the three root
 modules, their aggregate imports, oracle registrations, and verification-ledger
 Addendum 571.  The manuscript edits follow that commit, so the root source hash
 is not circular.
+The scalar-integration and quantitative-norm extension is the immutable commit
+\begin{center}
+\small\lean{73179102f2bc2cdec77b4b448cf116b5128fdd4f}.
+\end{center}
+It adds \path{StieltjesKernelIntegration.lean}, strengthens the coercive root
+and physical adapter, registers all new declarations in both oracles, and adds
+verification-ledger Addendum 572.  This version-0.5 manuscript cites that
+already-fixed formal source.
 The version-0.2 manuscript artifact is commit
 \lean{25f532eaeecbfb66ee146e264953cde0e2e0ea29}.  Version 0.3 is distributed
 under the annotated local release tag \lean{shift-uniform-ct-v0.3} together
@@ -627,9 +688,14 @@ entries and has SHA-256
 \small\lean{1B5EAB37038E071F1E3A1A1BA263D93048828EA079950273BF915B4605897823}.
 \end{center}
 Version 0.3.1 was the documentation-only revision that printed those package
-identifiers in the PDF.  Version 0.4 is a scientific revision: it cites the
-separate positive-root commit above and updates the formal/open boundary.  It
-does not alter the immutable version-0.3 source archive or its hash.
+identifiers in the PDF.  Version 0.4 cites the separate positive-root commit;
+version 0.5 cites the integration commit and updates the formal/open boundary.
+Neither alters the immutable version-0.3 source archive or its hash.  The
+annotated local release tag for the present editorial tree is
+\lean{shift-uniform-ct-v0.5}.  The detached \path{ARTIFACT.md} manifest records
+the manuscript commit and final PDF SHA-256 after rendering.  Those two values
+cannot be printed inside the hashed PDF without circularly changing the PDF;
+the release tag and manifest are the non-circular cryptographic index.
 
 Toolchain: Lean \path{leanprover/lean4:v4.29.0-rc6}; Mathlib revision
 \texttt{0764272048}\ldots{} (the full revision is recorded in
@@ -642,13 +708,18 @@ lake build +YangMills.RG.PhysicalCoerciveCombesThomasInverse:olean
 lake build YangMills.RG.FiniteDimensionalRealPositiveSqrt
 lake build YangMills.RG.CoerciveCovariancePositiveSqrt
 lake build YangMills.RG.PhysicalGaugeCovariancePositiveRoot
+lake build YangMills.RG.StieltjesKernelIntegration
 \end{verbatim}
-The four resolvent checks and all three root-module builds completed
-successfully on August 1, 2026.  Two additional attempts to rebuild the full
+The four resolvent checks and all three version-0.4 root-module builds completed
+successfully on August 1, 2026.  The strengthened coercive-root target, the
+physical adapter, and the Stieltjes-integration target completed successfully
+on August 2, 2026.  Two earlier attempts to rebuild the full
 \path{YangMillsCore} aggregator were terminated by the command wrapper after
 10 and 20 minutes, respectively, without a Lean error; no successful fresh
-full-core rebuild is claimed.  A targeted oracle checked the seven resolvent
-declarations plus five root declarations; each printed exactly
+full-core rebuild is claimed.  A targeted oracle checked eighteen declarations:
+seven resolvent declarations, five root-layer declarations, two quantitative
+adapter declarations, and four scalar/Bochner integration declarations.  Each
+printed exactly
 \[
  [\lean{propext},\ \lean{Classical.choice},\ \lean{Quot.sound}].
 \]
@@ -657,8 +728,8 @@ focused audit is independently runnable as
 \begin{verbatim}
 lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
 \end{verbatim}
-The development contains no \lean{sorry} in the two resolvent modules or the
-three new root modules.
+The development contains no \lean{sorry} in the two resolvent modules, the
+three root modules, or the Stieltjes-integration module.
 
 \paragraph{External author-corpus provenance note.}
 As of August 1, 2026, thirteen corrective or supersession forms concerning
@@ -680,16 +751,16 @@ controls an entire positive resolvent family with the integrable amplitude
 $(c+s)^{-1}$.  That family is now a machine-checked theorem on the physical
 gauge-cochain types that the covariance-root interface actually consumes.
 
-The paper-level Stieltjes integral then produces exponential localization of
-$K^{-1/2}$ with amplitude $2/\sqrt c$.  This is not advertised as a new result
-in matrix analysis.  Version 0.4 does close one previously open bridge: Lean
-now constructs the positive real continuous-linear root and derives its exact
-square, positivity, symmetry, and the corresponding algebraic certificate
-fields.  What remains is narrower and genuinely analytic: identify that root
-with the Stieltjes integral and transfer the integrated resolvent estimate to
-the single-bond root-kernel predicate.  Until that theorem is formalized, the
-localized physical certificate remains conditional; the fixed-volume
-Poincar\'e wall is unchanged.
+The Stieltjes integral then produces exponential localization of $K^{-1/2}$
+with amplitude $2/\sqrt c$.  This is not advertised as a new result in matrix
+analysis.  Version 0.4 constructed the positive real continuous-linear root;
+version 0.5 now formalizes its sharp coercivity norm bound, the scalar improper
+integral, and the Bochner transfer of the integrated resolvent estimate to the
+single-bond kernel predicate.  What remains is narrower and genuinely
+operator-theoretic: prove integrability of the canonical shifted-inverse
+family and identify its normalized integral with that spectral root.  Until
+this equality is formalized, the localized physical certificate remains
+conditional; the fixed-volume Poincar\'e wall is unchanged.
 
 \begin{thebibliography}{99}
 

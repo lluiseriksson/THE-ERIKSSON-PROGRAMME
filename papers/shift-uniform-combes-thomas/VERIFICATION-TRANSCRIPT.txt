@@ -99,3 +99,49 @@ Full-aggregator attempts:
   lake build YangMillsCore  -- wrapper timeout after 20 minutes, no Lean error
 
 No successful fresh full-core rebuild is claimed for version 0.4.
+
+=== Version 0.5 Stieltjes-integration extension (2026-08-02) ===
+
+Formal integration commit:
+  73179102f2bc2cdec77b4b448cf116b5128fdd4f
+
+Successful target checks:
+  lake env lean YangMills/RG/StieltjesKernelIntegration.lean
+    exit code 0; wall time 32.9 seconds; no diagnostic output
+
+  lake build YangMills.RG.CoerciveCovariancePositiveSqrt
+    exit code 0; target built successfully
+
+  lake build YangMills.RG.StieltjesKernelIntegration
+    exit code 0; target built successfully in 41 seconds
+
+  lake build YangMills.RG.PhysicalGaugeCovariancePositiveRoot
+    exit code 0; target built successfully in 44 seconds
+
+Focused axiom audit:
+  lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
+    exit code 0; wall time 62.5 seconds
+
+The audit covered all eighteen declarations listed in the manuscript.  Every
+declaration printed exactly:
+  [propext, Classical.choice, Quot.sound]
+
+The six new or strengthened declarations were:
+  norm_covarianceSqrtOfIsCoerciveCLM_le
+  physicalLocalizedCovarianceRootCertificate_of_coercive_precision
+  integrableOn_Ioi_inv_add_sq
+  integral_Ioi_inv_add_sq
+  physicalCovarianceKernelBound_stieltjesIntegralOperator
+  physicalCovariance_exponentialKernelBound_stieltjesIntegralOperator
+
+Source hygiene:
+  git diff --check: exit code 0
+  no Lean `sorry` occurs in the Stieltjes-integration module or the three root
+  modules (the word occurs only in existing audit prose where present).
+
+Claim boundary:
+  Version 0.5 formalizes the scalar improper integral, the abstract Bochner
+  transport of the kernel bound, and the quantitative root norm.  It does not
+  yet prove integrability of the canonical shifted-inverse family or identify
+  its normalized integral with the canonical spectral root.  No fresh
+  successful full YangMillsCore rebuild is claimed.
