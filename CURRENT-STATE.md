@@ -18,14 +18,13 @@ The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
 **Latest viXra submission (2026-08-02; identifier pending moderation).**
-*Machine-Checked Extended Gauge Invariance at an SU(2) Crossing: Four-Edge
-Wilson Holonomy, Haar-Preserving Quotient Coordinates, and Reduction to the
-Ward Chart* was submitted as a new paper in **Physics — Mathematical
-Physics**.  Its authorized PDF has SHA-256
-`8A9B9356F1CFA3C2D69A9371BB62F01D243E7725D203F2726F31772A8B821D9E`.
-The exact submission metadata, retained audit-ZIP identity, and scope boundary
-are recorded in
-[`docs/SU2-CROSSING-EXTENDED-GAUGE-SUBMISSION-20260802.md`](docs/SU2-CROSSING-EXTENDED-GAUGE-SUBMISSION-20260802.md).
+*Machine-Checked Haar and Differential Descent at an SU(2) Crossing: A
+Four-Edge Compensated-Flow Ward Identity* was submitted as a new paper in
+**Physics — Mathematical Physics**.  Its authorized PDF has SHA-256
+`2BB66657A544E9AF4A30D682DC69F92E18A5D3B1AB8F53C105D0DFDE767CC7C1`.
+The exact submission metadata, unchanged Lean source-ZIP identity, and scope
+boundary are recorded in
+[`docs/SU2-CROSSING-COMPENSATED-FLOW-SUBMISSION-20260802.md`](docs/SU2-CROSSING-COMPENSATED-FLOW-SUBMISSION-20260802.md).
 This publication notice is result-neutral: it does not change the canonical
 proof state, the dashboard DAG, or the recorded distance to Clay.
 

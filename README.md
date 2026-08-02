@@ -441,14 +441,15 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 ## Latest viXra submission
 
 **Submitted 2026-08-02; identifier pending moderation.**  The new paper
-*Machine-Checked Extended Gauge Invariance at an SU(2) Crossing: Four-Edge
-Wilson Holonomy, Haar-Preserving Quotient Coordinates, and Reduction to the
-Ward Chart* was submitted as a **new paper** in **Physics — Mathematical
-Physics**.  The authorized PDF has SHA-256
-`8A9B9356F1CFA3C2D69A9371BB62F01D243E7725D203F2726F31772A8B821D9E`;
-the Lean audit ZIP is retained separately.  See the
-[`submission record`](docs/SU2-CROSSING-EXTENDED-GAUGE-SUBMISSION-20260802.md)
-for the exact artifact identities, abstract, comments, and scope limits.
+*Machine-Checked Haar and Differential Descent at an SU(2) Crossing: A
+Four-Edge Compensated-Flow Ward Identity* was submitted as a **new paper** in
+**Physics — Mathematical Physics**.  The authorized PDF has SHA-256
+`2BB66657A544E9AF4A30D682DC69F92E18A5D3B1AB8F53C105D0DFDE767CC7C1`;
+the byte-identical Lean source ZIP is retained separately.  See the
+[`submission record`](docs/SU2-CROSSING-COMPENSATED-FLOW-SUBMISSION-20260802.md)
+for the exact artifact identities, abstract, comments, and scope limits.  The
+preceding extended-gauge submission remains recorded
+[`here`](docs/SU2-CROSSING-EXTENDED-GAUGE-SUBMISSION-20260802.md).
 
 This is an editorial/publication record, not a new proof-state node.  It does
 not change the dependency DAG, milestone states, or the recorded distance to
