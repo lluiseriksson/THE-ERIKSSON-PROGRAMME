@@ -1,0 +1,14 @@
+PR: 49
+Freeze date: 2026-08-02
+Canonical body file: docs/audit-artifacts/pr49-body/PR49-BODY-FREEZE-20260802.md
+GitHub write method: gh pr edit 49 --body-file docs/audit-artifacts/pr49-body/PR49-BODY-FREEZE-20260802.md
+Post-write capture method: gh pr view 49 --json body; parse the JSON body field and compare it exactly with the canonical body file
+Character encoding: UTF-8 without BOM
+Canonical normalization: convert CRLF and lone CR to LF
+Terminal newline: included
+LF line-ending count: 31
+LF byte length: 2318
+LF SHA-256: d6084690aa8e65fdc8924afab426ad88693c325733a58eb44dcc798ae8a1cd14
+CRLF derivation: replace every canonical LF byte with CRLF; change no other byte
+CRLF byte length: 2349
+CRLF SHA-256: 0f90688f99685fce64802b1ae7c6eed7ccb336aab0f5e2e0cd4bbf7757722ea6
