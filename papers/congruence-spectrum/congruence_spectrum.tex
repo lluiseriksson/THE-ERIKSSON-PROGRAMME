@@ -840,9 +840,12 @@ the searches we ran, not a claim of priority.
       bound in Lean, which is a genuine project and not an afternoon.
 \item \textbf{Bridging \texttt{SpectralInterface} to Mathlib} --- the one
       \emph{interface} import that remains, and a different kind of debt. Its
-      content is Perron--Frobenius together with the variational characterisation
-      of the second eigenvalue of a symmetric matrix: standard, elementary, and
-      not in question. What is missing is that the pinned Mathlib has neither in
+      content, \emph{on symmetric entrywise positive matrices}, is
+      Perron--Frobenius together with the variational characterisation of the
+      second eigenvalue: standard, elementary, and not in question. Both
+      qualifiers are load-bearing --- dropping symmetry made an earlier version
+      of this hypothesis false, and hence the theorem depending on it vacuous.
+      What is missing is that the pinned Mathlib has neither fact in
       a form that applies to a \texttt{Matrix}-level definition of $r$, which
       this module deliberately does not introduce. The lower bound that used to
       be assumed wholesale is now \emph{derived} from this interface
@@ -925,15 +928,55 @@ remaining agenda:
 \begin{itemize}
 \item \verb|hBirkhoff| is a \textbf{mathematical} import: Fact~\ref{fact:birkhoff},
   a real theorem nobody here has proved.
-\item \verb|hSpec| is an \textbf{interface} import. It says: if some vector
-  orthogonal to every strictly positive $\Omega$ has quadratic form at least
-  $b\|x\|^2$, and every row sum is at most $a$, then $r\ge b/a$. That is
-  Perron--Frobenius plus the variational characterisation of the second
-  eigenvalue, packaged once, and stated so that \emph{nothing from this paper
-  appears in it} --- no $\mu$, no pair, no concentration, no congruence. It is
-  carried because the pinned Mathlib supplies neither fact against a
-  \texttt{Matrix}-level definition of $r$, not because either is in doubt.
+\item \verb|hSpec| is an \textbf{interface} import. It says: for a symmetric,
+  entrywise positive $T$, if \emph{for every} strictly positive candidate Perron
+  vector $\Omega$ \emph{there exists} a nonzero $x\perp\Omega$ with
+  $\langle x,Tx\rangle\ge b\|x\|^2$, and every row sum is at most $a$, then
+  $r(T)\ge b/a$. That is Perron--Frobenius plus the variational characterisation
+  of the second eigenvalue, packaged once, and stated so that \emph{nothing from
+  this paper appears in it} --- no $\mu$, no pair, no concentration, no
+  congruence. It is carried because the pinned Mathlib supplies neither fact
+  against a \texttt{Matrix}-level definition of $r$, not because either is in
+  doubt.
 \end{itemize}
+
+\textbf{Both hypotheses had the wrong domain, and one of them was false.} This
+is the correction that cost a version, and it was found by reading the Lean
+types rather than the paragraph above them.
+
+\emph{Symmetry.} \verb|hSpec| did not require $T^{\!\top}=T$. Without it the
+statement is not a packaging of textbook facts --- it is \emph{false}. Take
+\[
+  T=\begin{pmatrix}3&5&2\\ 5&4&1\\ 2&5&3\end{pmatrix},
+\]
+entrywise positive, every row summing to $10$, spectrum $\{10,1,-1\}$, so
+$r(T)=1/10$. But $\langle x,Tx\rangle$ sees only the symmetric part
+$(T+T^{\!\top})/2$, whose second eigenvalue is $1.330519$; by Courant--Fischer
+every positive $\Omega$ admits an $x\perp\Omega$ with
+$\langle x,Tx\rangle\ge 1.3\|x\|^2$ --- measured over $4000$ random positive
+$\Omega$, worst attainable value $1.330518744$. The premises hold with $b=1.3$,
+$a=10$; the conclusion demands $0.13\le 0.1$. \textbf{A conditional theorem whose
+hypothesis no ratio function can satisfy is vacuous}, which is a worse failure
+than one that merely assumes too much --- and our own non-vacuity checks had
+audited the \emph{conclusion} rather than the satisfiability of the premises,
+one level too low.
+
+\emph{Positivity.} \verb|hBirkhoff| did not require entrywise positivity, so it
+quantified over every matrix obeying the cross-ratio inequality.
+Fact~\ref{fact:birkhoff} is a theorem about \emph{positive} operators, and \S6
+spends a paragraph checking exactly those hypotheses; so the Lean statement asked
+for strictly more than the source supplies and could not have been built from
+\cite{evesonnussbaum1995} at all. Assuming more than the source provides is the
+mirror image of claiming more than the lemma proves, and
+\verb|phi_form_eq_tanh| does not help: it identifies the two \emph{constants},
+not the two \emph{domains}.
+
+Both are repaired by copying into the types the hypotheses the paper proof was
+already using: \verb|BirkhoffInterface| and \verb|SpectralInterface| now carry
+$T^{\!\top}=T$ and $0<T_{ij}$, $M^{\!\top}=M$ is a hypothesis of the endpoint,
+and \verb|congr_transpose| carries symmetry to every point of the orbit --- which
+is the only reason either import applies at $DMD$ rather than only at $M$.
+Positivity of $DMD$ needs no new hypothesis: it follows from $0<\mu\le M_{ab}$.
 
 \textbf{What changed in this version is which of the two the lower bound is.} It
 used to be its own hypothesis --- the main theorem assumed the conclusion of \S6's
@@ -962,6 +1005,9 @@ Five endpoints carry it:
   something else.
 \item \verb|concentrated_specRatio_approaches| --- every $t<(1-\mu)/(1+\mu)$ is
   exceeded \emph{inside} the orbit, at an $\varepsilon$ the proof produces.
+\item \verb|congr_transpose| --- a positive diagonal congruence preserves
+  symmetry, so the orbit stays inside the class both imports are about. Without
+  it neither hypothesis is applicable at $DMD$, only at $M$.
 \end{itemize}
 
 The hypothesis \verb|hBirkhoff| is stated in the logarithm-free form of
@@ -1008,16 +1054,16 @@ No statement in this paper is conjectural.
 \begin{center}
 \begin{tabular}{ll}
 \toprule
-commit (module, this version) & \texttt{93359636} \\
+commit (module, this version) & \texttt{7d0be024} \\
 commit (aggregate import) & \texttt{fdb0317b} \\
-module \texttt{sha256} & \texttt{031f8b14083921030cb8823e} \\
-                       & \texttt{e289cfeec8b04130383fd0a307ed69bb7eaea155} \\
+module \texttt{sha256} & \texttt{dd915eddd5ac2d81f91c1156} \\
+                       & \texttt{c88bb83fdaa02cdca4aefa0804dde18f4cb519fc} \\
 toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
 Mathlib pin & \texttt{07642720480157414db592fa85b626dafb71355b} \\
 elaboration & exit \texttt{0}; log \textbf{0 bytes} --- zero errors, zero warnings, zero \texttt{sorry} \\
 compilation & \texttt{lake build YangMills.OS.CongruenceSpectrum}, exit \texttt{0} \\
-axiom oracle & exit \texttt{0}; 78/78 declarations resolved \\
-             & 76 on \texttt{[propext, Classical.choice, Quot.sound]} \\
+axiom oracle & exit \texttt{0}; 82/82 declarations resolved \\
+             & 80 on \texttt{[propext, Classical.choice, Quot.sound]} \\
              & 2 (\texttt{cfgPlus}, \texttt{cfgMinus}) on \texttt{[propext]} alone \\
 \texttt{sorryAx} & none \\
 \bottomrule
@@ -1026,7 +1072,7 @@ axiom oracle & exit \texttt{0}; 78/78 declarations resolved \\
 
 The oracle was generated from the source, not hand-written: the declaration list
 is extracted by pattern and every extracted name is queried, so a declaration
-cannot be omitted by being forgotten. One of the $78$ names carries a prime
+cannot be omitted by being forgotten. One of the $82$ names carries a prime
 (\verb|concentrate_block'|); the extractor was checked to capture it, because a
 name-blind parser has already cost this project a false all-clear elsewhere. The
 two declarations resting on \texttt{[propext]} alone are configuration
@@ -1085,7 +1131,7 @@ subtraction against a figure measured in some other tree.
 \textbf{These are the counts at the final commit, not inherited ones.} An earlier
 version of this section carried figures measured at \texttt{fdb0317b}, when the
 module was smaller, and said so rather than reprinting them beside a newer hash.
-They have now been re-measured at \texttt{93359636}, on the fresh runtime
+They have now been re-measured at \texttt{7d0be024}, on the fresh runtime
 described above: baseline \textbf{8430}, treatment \textbf{8431}, both exiting
 \texttt{0}, in the same tree, the baseline produced by checking the parent's
 \texttt{YangMillsCore.lean} into the treated tree --- verified to contain zero
