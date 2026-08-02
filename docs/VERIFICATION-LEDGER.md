@@ -30972,3 +30972,49 @@ load-bearing physical hypotheses `0 < beta`, `0 <= gamma`, and `gamma < a`
 must occur in that later Lean statement.  This brick proves neither the
 finite vacuum-product order nor either spectral block, the endpoint, or the
 uniform `specRatio` theorem.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 611 (2026-08-02, **TASK 14: first physical log-mixture front door failed**)
+
+**LEAN FAIL PRESERVED; THE GENERIC IDENTITY REMAINS GREEN.**  Source commit
+`971d845d17b3bc3bc102806dd534baf5dcbba43d` added the physical
+specialisation with the hypotheses `0 < beta`, `0 <= gamma`, `gamma < a`,
+and `tanh a = exp (-2 * beta)` printed in its Lean statement.  Runner commit
+`bda52c13c34f1fbde16e9428edc188bf49c320f0` checked out that raw source SHA
+in one fresh Colab clone and stopped at the first focused-build error.
+
+Colab assigned a standard CPU runtime rather than the preceding high-RAM
+runtime.  It used no GPU and reported Linux `6.6.122+`, x86-64, glibc `2.35`,
+Python `3.12.13`, 2 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 13286944 kB`.  Its UTC interval was
+`2026-08-02T08:58:12.252596+00:00` through
+`2026-08-02T09:08:16.595792+00:00` (`604.343196 s`).  The exact pinned Lean
+commit and mathlib revision were verified; isolated cache acquisition exited
+zero after `247.824630 s`.
+
+`lake build YangMills.OS.SpatialVacuum` exited `1` after `311.324501 s`.
+All inherited dependencies and `SpatialRing` built; `SpatialVacuum` reported
+one unsolved goal at line 205 in the `gamma = 0` branch:
+
+```text
+case inl
+beta a s : Real
+_hbeta : 0 < beta
+_hdual : tanh a = rexp (-2 * beta)
+hs : 0 <= s
+hgamma : 0 <= 0
+hgammaa : 0 < a
+|- 0 = circleAverage (fun z => 0) 0 1
+```
+
+Thus the endpoint simplification reduced the integrand to zero but did not
+rewrite the circular average of the zero function.  The generic theorem
+itself produced no error, and there is no counterexample to either scalar
+identity.  The live transcript SHA-256 was
+`afb20e88a91a5dcbccec714397cf7ffcc6f4f61380bed6802693a7ec09354597`;
+because the fail-fast notebook raises before its download step, no local
+transcript file is claimed.  The complete output was captured through the
+browser, and the runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
+
+Core and oracle were not run.  No physical vacuum-product comparison, either
+sector bound, endpoint theorem, or uniform `specRatio` theorem is claimed.
