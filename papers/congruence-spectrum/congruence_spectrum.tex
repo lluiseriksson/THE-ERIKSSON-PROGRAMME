@@ -847,7 +847,23 @@ the searches we ran, not a claim of priority.
       of this hypothesis false, and hence the theorem depending on it vacuous.
       What is missing is that the pinned Mathlib has neither fact in
       a form that applies to a \texttt{Matrix}-level definition of $r$, which
-      this module deliberately does not introduce. The lower bound that used to
+      this module deliberately does not introduce.
+
+      \emph{This one now looks reachable, and we say so with the reasons.} The
+      repository already contains, for entrywise positive kernels, the existence
+      of a strictly positive eigenvector (\verb|exists_pos_eigenvector|), a
+      spectral orthonormal basis for real symmetric kernels, the subdominant
+      modulus \verb|specGap| with \verb|specGap < lam|, the operator bound
+      \verb|norm_act_le_specGap| on the Perron complement, and
+      \verb|specRatio = specGap / lam| --- which is $r$ verbatim. The route is
+      then short: apply the interface premise at the Perron vector, turn the
+      Rayleigh bound into $b\le\texttt{specGap}$ by Cauchy--Schwarz against the
+      operator bound, get $\lambda\le a$ from the row sums at a maximal
+      coordinate of $\Omega$, and divide. \textbf{The obstacle is not the
+      analysis but the packaging}: $r$ must be a \emph{total} function
+      \texttt{Matrix}$\to\mathbb R$, so the Perron data has to be chosen
+      canonically and the definition split by cases on the symmetric-positive
+      domain. We flag it as the next piece of work and do not claim it done. The lower bound that used to
       be assumed wholesale is now \emph{derived} from this interface
       (\verb|concentrated_lower_of_spec|), so the debt has moved from ``assume my
       own conclusion'' to ``assume two textbook facts'' --- but it has not
@@ -1095,6 +1111,17 @@ this because the failure mode is the interesting one --- a verification script
 that becomes blind to a purely typographic change, in this case one caused by
 fixing a name --- and because a tally that does not add up is a measurement not
 yet understood, not a rounding error.
+
+\textbf{Anchor versus branch head.} Every figure in this section is measured at
+\texttt{7d0be024}. The branch head when this version was written is
+\texttt{97c870cc}, and the difference between them is confined to the module's
+\verb|/-! ... -/| section header: two paraphrases that had gone on describing the
+previous version's interfaces --- ``a Perron vector for the lower half'', which
+understates \verb|SpectralInterface|, and $\varepsilon\le1$ where the hypothesis
+is $\varepsilon\le\tfrac12$. The whole diff is comment text and is exhibited in
+that commit. We anchor at \texttt{7d0be024} rather than reprint measured numbers
+beside a hash they were not measured at, and we name the head rather than let a
+reader discover a hash mismatch on checkout.
 
 The module hash was computed independently on the author's machine and on the
 verification host and agrees, so the checked object is the source printed here.
