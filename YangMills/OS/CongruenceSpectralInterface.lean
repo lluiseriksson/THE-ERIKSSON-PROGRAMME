@@ -209,7 +209,6 @@ theorem matrixSpecRatio_spectralInterface :
       = (specGap hsymm (perronValue T) * a - b * perronValue T)
         / (perronValue T * a) := by
     field_simp
-    ring
   have hnum : 0 ≤ specGap hsymm (perronValue T) * a - b * perronValue T := by
     nlinarith [hb, hla, hlam, ha, hgap]
   have hdiff : 0 ≤ specGap hsymm (perronValue T) / perronValue T - b / a := by
