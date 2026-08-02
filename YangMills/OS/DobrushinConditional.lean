@@ -188,7 +188,8 @@ theorem osc_section_le_deltaAt (i : ι) (f : (ι → S) → ℝ) (η : ι → S)
 
 /-! ## §3  Algebra of `deltaAt`, for the assembly downstream -/
 
-theorem deltaAt_const (i : ι) (c : ℝ) : deltaAt i (fun _ => c) = 0 := by
+theorem deltaAt_const (i : ι) (c : ℝ) :
+    deltaAt (S := S) i (fun _ => c) = 0 := by
   have hB : ∀ (η : ι → S) (s : S),
       |(fun _ : ι → S => c) η - (fun _ : ι → S => c) (Function.update η i s)| ≤ 0 := by
     intro η s
