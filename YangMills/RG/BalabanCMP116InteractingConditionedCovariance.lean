@@ -7,6 +7,7 @@ import YangMills.RG.BalabanCMP116ConditionedRootScalarWall
 import YangMills.RG.BalabanCMP116InteractingPhysicalPrecisionSource
 import YangMills.RG.BalabanCMP116LocalizedCovarianceCompression
 import YangMills.RG.BalabanCMP116PhysicalEndomorphismSchurNorm
+import YangMills.RG.BalabanCMP99SourceEq3126PhysicalH
 
 /-!
 # The physical interacting conditioned covariance
@@ -52,35 +53,6 @@ private abbrev PhysicalEndomorphism (d N Nc : ℕ) [NeZero N] :=
 
 private abbrev PhysicalCoordinate (d N Nc : ℕ) [NeZero N] :=
   CMP116PhysicalWalkCoordinate d N Nc
-
-/-- Local copy of the already proved symmetry calculation for the complete
-Wilson plus gauge Hodge operator.  Keeping it here avoids importing the much
-later CMP99 equation-(3.126) consumer merely to reuse these four lines. -/
-private theorem cmp116InteractingWilsonGaugeHodgeCLM_isSymmetric
-    {d L N' Nc : ℕ} [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
-    [NeZero (L * N')]
-    (U : PhysicalGaugeBackground d (L * N') Nc) :
-    (interactingWilsonGaugeHodgeCLM U).IsSymmetric := by
-  let K := interactingWilsonGaugeHodgeCLM U
-  have hAdj : K.adjoint = K := by
-    simp [K, interactingWilsonGaugeHodgeCLM,
-      physicalWilsonHessianCLM_adjoint_eq, gaugeFixingMassCLM,
-      ContinuousLinearMap.adjoint_comp]
-  exact (ContinuousLinearMap.eq_adjoint_iff K K).mp hAdj.symm
-
-/-- Symmetry of the literal interacting precision, before taking its
-coercive inverse. -/
-private theorem cmp116InteractingPhysicalBasePrecisionCLM_isSymmetric
-    {d L N' Nc : ℕ} [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
-    [NeZero (L * N')]
-    (U : PhysicalGaugeBackground d (L * N') Nc) (a : ℝ) :
-    (interactingPhysicalBasePrecisionCLM U a).IsSymmetric := by
-  change
-    (cmp99SourceGaugePrecision
-      (interactingWilsonGaugeHodgeCLM U)
-      (flatBlockConstraintQCLM (d := d) (Nc := Nc) L N') a).IsSymmetric
-  exact cmp99SourceGaugePrecision_isSymmetric _ _ _
-    (cmp116InteractingWilsonGaugeHodgeCLM_isSymmetric U)
 
 /-- Applying the canonical real coordinate matrix is exactly conjugation of
 the physical endomorphism by the canonical physical `L²` isometry. -/
@@ -162,8 +134,7 @@ theorem cmp116PhysicalEndomorphismRealMatrix_reconstruction
   ext i j
   rw [cmp116PhysicalEndomorphismRealMatrix,
     LinearMap.toMatrix'_apply]
-  simp [cmp116PhysicalEndomorphismRealMatrix,
-    cmp116PhysicalEndomorphismFlatLinearMap,
+  simp [cmp116PhysicalEndomorphismFlatLinearMap,
     cmp116PhysicalEndomorphismOfRealMatrix, LinearMap.comp_apply]
 
 namespace CMP116InteractingPhysicalPrecisionSource
@@ -183,7 +154,7 @@ theorem covariance_isSymmetric
     (sub_pos.mpr X.defectBudget)
     (isCoerciveCLM_interactingPhysicalBasePrecision
       U X.a_pos X.poincare X.backgroundEpsilon_nonneg X.smallBackground)
-    (cmp116InteractingPhysicalBasePrecisionCLM_isSymmetric U X.a)
+    (interactingPhysicalBasePrecisionCLM_isSymmetric U X.a)
 
 /-- The literal interacting covariance has nonnegative quadratic form. -/
 theorem covariance_psd
