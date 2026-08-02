@@ -232,10 +232,13 @@ quantifies over every raw `Z0`, not merely over members of `Z0Index`; hence it
 asks for a term source at `Z0 = ∅`.  The literal localized coordinate carrier
 is empty there, while the mandatory covariance-lower certificate contains a
 `carrier_nonempty` witness.  The source-level no-go theorem is present under
-PRE-VALIDATION.  The faithful repair is to index the family only over actual
-summation members and prove their localization regions nonempty from the
-physical geometry, not to fabricate a covariance certificate or an
-off-index physical term.
+compiler-verified audit: no centered-conditioned physical term source exists
+at the empty raw region.  The faithful repair is therefore to replace the raw
+region index by the subtype of regions whose literal localized-coordinate
+carrier is nonempty.  The existing generic resummation already accepts an
+arbitrary index type, so this repair changes only the centered physical
+boundary and its `ToRaw`/`ToKP`/`ToUV` consumers; it does not fabricate a
+covariance certificate or an off-index physical term.
 
 Elaboration failures are triaged separately from project mathematics.  If the
 first error occurs in a proof step whose statement and diagnostic mention no

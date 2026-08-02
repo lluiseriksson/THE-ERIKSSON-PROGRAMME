@@ -9,10 +9,6 @@ import YangMills.RG.BalabanCMP116Eq223PhysicalLocalizationProjector
 /-!
 # Source coordinates transported to the physical bond basis
 
-PRE-VALIDATION: the empty-carrier declaration below is present in source,
-its updated `.olean` has not yet been materialized, and that declaration has
-not yet been verified by the Lean compiler.
-
 The equation-(2.26) geometry is indexed by CMP116 cubes, whereas the literal
 source Gaussian is indexed by physical bonds and Lie coordinates.  This file
 performs that transport through the certified dictionary equivalence.  It

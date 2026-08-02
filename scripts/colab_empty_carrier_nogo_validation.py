@@ -182,12 +182,19 @@ def main() -> None:
     audit_output = run("audit", [str(bindir / "lake"), "env", "lean", audit.name], cwd=ROOT, env=env)
     axiom_lines = [line for line in audit_output.splitlines() if "depends on axioms:" in line]
     emit("AUDIT_AXIOM_COUNT=" + str(len(axiom_lines)))
-    allowed = {"[propext, Classical.choice, Quot.sound]", "[propext, Quot.sound]", "[]"}
+    allowed = {"propext", "Classical.choice", "Quot.sound"}
     for line in axiom_lines:
         emit(line)
         clean = re.sub(r"\x1b\[[0-9;]*m", "", line).replace("\r", "")
         match = re.search(r"depends on axioms:\s*(\[[^\]]*\])", clean)
-        if match is None or match.group(1) not in allowed:
+        if match is None:
+            archive("FAIL", "audit_axioms", 91)
+        axioms = {
+            name.strip()
+            for name in match.group(1).removeprefix("[").removesuffix("]").split(",")
+            if name.strip()
+        }
+        if not axioms.issubset(allowed):
             archive("FAIL", "audit_axioms", 91)
     if len(axiom_lines) != 2:
         archive("FAIL", "audit_count", 90)

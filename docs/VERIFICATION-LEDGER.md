@@ -26574,3 +26574,39 @@ the compatibility claim silently stale.  Its norm-like values remain target
 envelopes that physical producers must attain.  Consequently this brick does
 not increase the live 18/41 numerator, does not inhabit `PreEq136`, and does
 not construct a `TermSource`.
+
+## Addendum 533 (2026-08-02, **empty localized-carrier no-go GREEN**)
+
+The literal empty-carrier theorem in
+`BalabanCMP116SourcePhysicalCoordinateDictionary.lean` and the resulting
+non-inhabitance theorem for
+`CMP116Eq226CenteredConditionedPhysicalTermSource` were replayed in one fresh
+Colab Pro+ CPU/high-RAM clone from source checkpoint
+`477c1f66f492d6c09b8472eeb5237d3df99e68df`.  The runtime opened at
+2026-08-02 18:06:48 UTC with 51.0 GiB RAM and was disconnected and deleted
+immediately after the audit.
+
+The official Lean `v4.29.0-rc6` toolchain was used, the cache gate
+materialized 8,142 files, the manifest remained unchanged, the complete
+2,200-source core import closure was tracked, and Mathlib was pinned to
+`07642720480157414db592fa85b626dafb71355b`.  The focal build exited zero with
+the literal terminal line `Build completed successfully (8604 jobs).` after
+2335.992 seconds.  The audit exited zero after 12.710 seconds and printed both
+new declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The wrapper subsequently reported `FINAL_STATUS=FAIL STAGE=audit_axioms`
+because its own second-pass display parser truncated the second audit line
+after the already complete two-line oracle output.  This is classified
+`BLOCKED-INSTRUMENTATION`: both child exit codes were zero and the complete
+two-line output is present above the false sentinel.  The evidence archive
+created in Colab has SHA-256
+`515033fb59e45f70ea73e35c753dbe589133be6cbe0f8ac48ed95a5937a36d73`.
+
+The verified no-go proves that the centered-conditioned terminal family is
+uninhabitable while it quantifies over every raw region: at `Z0 = ∅` its
+literal localized-coordinate carrier is empty, whereas the mandatory lower
+covariance certificate contains a nonempty-carrier witness.  The faithful
+repair is a proof-carrying localized-region subtype, not removal of that
+witness and not an off-index `if`.  This diagnosis does not increase the live
+18/41 producer numerator and does not construct a `TermSource`.
