@@ -149,3 +149,50 @@ advantage is that the factor `1/2` is again born in exactly one lemma and the
 `1/4` appears by squaring it, rather than through a second independent
 normalisation.  Three endpoints stay separate either way:
 `popoviciu_variance_le`, `gruss_covariance_le`, `gruss_attained`.
+
+## AMENDMENT 2 (2026-08-02) — the banner is part of the audited bytes
+
+Registered before any elaboration of D-3a, because it changes the shape of the
+closure and not merely its paperwork.
+
+`SOURCE, NOT RESULT` lives in a docstring and is inert to the compiler.  It is
+NOT inert to the closure criterion, which is about BYTES: removing it changes the
+file's SHA-256, so
+
+```
+    build of the file WITH the banner   does NOT certify
+    the file WITHOUT it,
+```
+
+even though the only difference is a comment.  A green run on one set of bytes
+says nothing about another set, and this lane does not get to make an exception
+for differences it judges harmless — that judgement is exactly what an audit is
+for.
+
+**Sequence, fixed now:**
+
+1. repair and elaborate D-3a **keeping** the banner, until the mathematics is
+   green;
+2. one FINAL SOURCE COMMIT `A` replacing the banner with a stable statement of
+   formalised status;
+3. from a CLEAN CHECKOUT OF `A`: focused build, five endpoints and the witness
+   checked, focused oracle, SHA-256 computed;
+4. hash — and preferably the build — repeated from a SECOND INDEPENDENT
+   checkout;
+5. a later DOCUMENTARY COMMIT `B` recording logs, hashes and oracle output,
+   **without touching the Lean module again**.
+
+`B` cites `A` without self-reference, and every reported result refers to exactly
+the bytes of `A`.
+
+**Until all of that holds, an intermediate green run means:** source that has
+passed a local test.  Not a formalised result of this repository.
+
+**Closure criteria for D-3a, complete list, conjunctive:** focused elaboration
+succeeds; five endpoints compiled; the exact equality witness compiled;
+non-emptiness explicit in the signature; a single convention for `TV` and for
+`osc`; the factor `1/2` traceable to one lemma; the TV/oscillation corollary
+obtained by REWRITING and not by a second proof under another convention;
+stdout, stderr and exit code preserved OUTSIDE the VM; focused oracle clean;
+SHA-256 reproduced from another checkout; and no subsequent modification of the
+module.
