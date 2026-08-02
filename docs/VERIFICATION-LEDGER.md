@@ -31186,3 +31186,32 @@ and the runtime was disconnected and deleted immediately; **SESIÓN COLAB
 LIBRE**.  The next attempt must use a newly inserted empty code cell or a new
 notebook tab and must accept output only after the transcript prints the
 repaired raw SHA.
+
+## Addendum 616 (2026-08-02, **TASK 14: second finite log-grid elaboration failed**)
+
+**MEASURED FAILURE; NO THEOREM CERTIFIED.**  A newly inserted empty code cell
+in a new Colab notebook tab checked out and printed raw SHA
+`21baac913ae9f0cf506da9dd42062805a29436d8`, which contains the first cast
+repair.  The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`,
+x86-64, glibc `2.35`, Python `3.12.13`, 8 AMD EPYC 7B12 CPUs, and
+`MemTotal: 53467192 kB`.  It started at
+`2026-08-02T10:39:42.425098+00:00`; the cell duration was `189.636 s`.
+
+Lean and mathlib matched the contractual pins.  Isolated official cache
+acquisition exited zero after `70.393059 s`.  The sole build command,
+`lake build YangMills.OS.SpatialVacuum`, exited `1` after `101.553620 s`.
+The two previous complex-power rewrite failures were gone.  Lean instead
+reported exactly two symmetric failures at lines 64 and 71: `change` could
+not treat
+
+```text
+Real.log ‖1 - ((x ^ L : ℝ) : ℂ)‖
+Real.log ‖1 + ((x ^ L : ℝ) : ℂ)‖
+```
+
+as definitionally equal to the corresponding norms of the casts of
+`1 - x ^ L` and `1 + x ^ L`.  The remaining repair is therefore to rewrite
+the complex `1` and subtraction/addition through `Complex.ofReal`, rather
+than ask `change` for a definitional equality.  No PASS, oracle, core build,
+or theorem certification is claimed.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
