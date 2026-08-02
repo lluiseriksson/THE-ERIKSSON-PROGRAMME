@@ -33,8 +33,12 @@ ORACLE_PATH = "docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean"
 MATHEMATICS_PATH = "YangMills/OS/TwoTransporterHaarProjection.lean"
 VERIFIER_PATH = "scripts/verify_pr39_instrumental_bundle.py"
 ALLOWED_EVIDENCE_PATHS = (MANIFEST_PATH, TRANSCRIPT_PATH)
+EXPECTED_BASE_SHA = "5172a51b0fad455d9009b1805a48b8be54acbbcc"
+EXPECTED_CERTIFICATE_OID = "9fac6370bb016d674465da6110c701e24f5f9de8"
+EXPECTED_ORACLE_OID = "0b10c1ecebe1791cbdf6d3e02dbb5c7e2ecd6606"
+EXPECTED_MATHEMATICS_OID = "e785ce28d92cb7a8d77a5ef901e8fd860f5b0c36"
 EXPECTED_CERTIFICATE_CHECKS = 14
-EXPECTED_VERIFIER_CHECKS = 308
+EXPECTED_VERIFIER_CHECKS = 313
 CERTIFICATE_MUTATIONS = ("decisive-trace", "witness-condition", "omit-check")
 ORACLE_HEADLINES = (
     "integral_weight_mul_inv_eq",
@@ -73,6 +77,12 @@ CONTRACT: dict[str, Any] = {
         "verifier": VERIFIER_PATH,
     },
     "allowed_evidence_paths": list(ALLOWED_EVIDENCE_PATHS),
+    "expected_base_sha": EXPECTED_BASE_SHA,
+    "literal_source_oids": {
+        "certificate": EXPECTED_CERTIFICATE_OID,
+        "oracle": EXPECTED_ORACLE_OID,
+        "mathematics": EXPECTED_MATHEMATICS_OID,
+    },
     "expected_certificate_checks": EXPECTED_CERTIFICATE_CHECKS,
     "certificate_mutations": list(CERTIFICATE_MUTATIONS),
     "oracle_headlines": list(ORACLE_HEADLINES),
@@ -198,6 +208,12 @@ def git_blob(root: Path, revision: str, path: str) -> bytes:
 def git_blob_oid(root: Path, data: bytes) -> str:
     return decode_utf8(
         git_ok(root, "hash-object", "--stdin", input_bytes=data), "blob OID"
+    ).strip()
+
+
+def git_path_oid(root: Path, revision: str, path: str) -> str:
+    return decode_utf8(
+        git_ok(root, "rev-parse", f"{revision}:{path}"), f"{path} blob OID"
     ).strip()
 
 
@@ -721,6 +737,23 @@ def verify_bundle(root: Path, head_argument: str) -> bytes:
         reject("checkpoint A is not a string")
     exists = git(root, "cat-file", "-e", f"{checkpoint}^{{commit}}")
     ledger.require(exists.returncode == 0, "checkpoint A does not exist")
+    resolved_base = decode_utf8(
+        git_ok(root, "rev-parse", f"{EXPECTED_BASE_SHA}^{{commit}}"),
+        "literal base commit",
+    ).strip()
+    ledger.require(resolved_base == EXPECTED_BASE_SHA, "literal base commit changed")
+    base_ancestor = git(root, "merge-base", "--is-ancestor", EXPECTED_BASE_SHA, checkpoint)
+    ledger.require(base_ancestor.returncode == 0, "literal base is not an ancestor of checkpoint A")
+    for label, path, expected_oid in (
+        ("certificate", CERTIFICATE_PATH, EXPECTED_CERTIFICATE_OID),
+        ("oracle", ORACLE_PATH, EXPECTED_ORACLE_OID),
+        ("mathematics", MATHEMATICS_PATH, EXPECTED_MATHEMATICS_OID),
+    ):
+        resolved_oid = git_path_oid(root, checkpoint, path)
+        ledger.require(
+            resolved_oid == expected_oid,
+            f"{label} Git blob OID differs from literal trust anchor",
+        )
     ancestor = git(root, "merge-base", "--is-ancestor", checkpoint, head)
     ledger.require(ancestor.returncode == 0, "checkpoint A is not an ancestor of HEAD")
     count_text = decode_utf8(git_ok(root, "rev-list", "--count", f"{checkpoint}..{head}"), "commit count").strip()
