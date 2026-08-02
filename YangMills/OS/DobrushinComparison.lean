@@ -113,9 +113,9 @@ theorem abs_sub_le_sum_deltaAt (f : (ι → S) → ℝ) (η' : ι → S) (A : Fi
   induction A using Finset.cons_induction with
   | empty =>
       intro η h
-      have hEq : η = η' := funext fun j => h j (Finset.not_mem_empty j)
+      have hEq : η = η' := funext fun j => h j (Finset.notMem_empty j)
       rw [hEq, sub_self, abs_zero]
-      exact Finset.sum_nonneg fun i hi => absurd hi (Finset.not_mem_empty i)
+      exact Finset.sum_nonneg fun i hi => absurd hi (Finset.notMem_empty i)
   | cons a A' ha ih =>
       intro η h
       set η'' := Function.update η a (η' a) with hdef
@@ -388,7 +388,6 @@ theorem sum_scanStep_le {C : Matrix ι ι ℝ} (hC0 : ∀ i j, 0 ≤ C i j)
           exact div_le_div_of_nonneg_right' hfin hm
       _ = (α / (Fintype.card ι : ℝ)) * ∑ k, v k := by ring
   rw [h1]
-  have hΣv : (0 : ℝ) ≤ ∑ k, v k := Finset.sum_nonneg fun k _ => hv k
   calc (1 - 1 / (Fintype.card ι : ℝ)) * (∑ k, v k)
         + ∑ k, (∑ i, C i k * v i) / (Fintype.card ι : ℝ)
       ≤ (1 - 1 / (Fintype.card ι : ℝ)) * (∑ k, v k)
@@ -455,7 +454,8 @@ theorem seriesPartial_le_succ {C : Matrix ι ι ℝ} (hC0 : ∀ i j, 0 ≤ C i j
       exact seriesPartial_nonneg hC0 hv 1 k
   | succ N ih =>
       intro k
-      simp only [seriesPartial]
+      show v k + ∑ i, C i k * seriesPartial C v N i
+          ≤ v k + ∑ i, C i k * seriesPartial C v (N + 1) i
       have h1 : ∑ i, C i k * seriesPartial C v N i
           ≤ ∑ i, C i k * seriesPartial C v (N + 1) i :=
         Finset.sum_le_sum fun i _ =>
@@ -641,7 +641,7 @@ theorem abs_expect_mul_sub_condExp_le {μ : (ι → S) → ℝ}
       ring
     rw [Finset.sum_congr rfl fun s _ => hstep s]
     rw [Finset.sum_sub_distrib, ← Finset.sum_mul]
-    unfold expect
+    rfl
   rw [hid]
   have hgr := gruss_covariance_osc_le (p := p i η)
     (f := fun s => g (Function.update η i s))
@@ -691,8 +691,8 @@ theorem covar_scan_step {μ : (ι → S) → ℝ} {p : ι → (ι → S) → S �
     calc ∑ i, g η * (h η - condExp p i h η)
         = ∑ i, (g η * h η - g η * condExp p i h η) :=
           Finset.sum_congr rfl fun i _ => by ring
-      _ = (∑ _i : ι, g η * h η) - ∑ i, g η * condExp p i h η :=
-          Finset.sum_sub_distrib
+      _ = (∑ _i : ι, g η * h η) - ∑ i, g η * condExp p i h η := by
+          rw [Finset.sum_sub_distrib]
       _ = (Fintype.card ι : ℝ) * (g η * h η)
             - g η * ∑ i, condExp p i h η := by
           rw [Finset.sum_const, Finset.card_univ, nsmul_eq_mul,
@@ -707,7 +707,9 @@ theorem covar_scan_step {μ : (ι → S) → ℝ} {p : ι → (ι → S) → S �
       = expect μ (fun η =>
           (∑ i, g η * (h η - condExp p i h η)) / (Fintype.card ι : ℝ)) := by
     unfold expect
-    exact Finset.sum_congr rfl fun η _ => by rw [hdec η]
+    refine Finset.sum_congr rfl fun η _ => ?_
+    simp only []
+    rw [hdec η]
   rw [hpt, expect_div, expect_sum_comm]
   calc |(∑ i, expect μ (fun η => g η * (h η - condExp p i h η)))
         / (Fintype.card ι : ℝ)|
