@@ -1,0 +1,18 @@
+all four basis elements verified in SU(2): det 1, unitary
+combinations searched: 4096
+combinations where C_q != C_DHK: 384
+
+SIMPLEST WITNESS
+  a1,a2,a3,a4,alpha,beta = 1, 1, 1, iX, 1, iX
+  C_DHK = -2
+  C_q   = 6
+  |difference| = 8.0
+
+next four witnesses, for cross-checking:
+  1, 1, 1, iX, iX, 1           C_DHK=6            C_q=-2
+  1, 1, 1, iY, 1, iY           C_DHK=-2           C_q=6
+  1, 1, 1, iY, iY, 1           C_DHK=6            C_q=-2
+  1, 1, 1, iZ, 1, iZ           C_DHK=-2           C_q=6
+
+witnesses found: 384
+PASS
