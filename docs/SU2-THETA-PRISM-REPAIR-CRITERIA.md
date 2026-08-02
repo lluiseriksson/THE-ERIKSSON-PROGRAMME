@@ -99,13 +99,34 @@ recorded before a replacement campaign is run.
 
 ## Evidence labels
 
+The following three labels are inherited from the global vocabulary in
+`CLAUDE.md`, Part I, `REGIME` item 1.  This lane consumes them and does not
+redefine them:
+
 - **EXACTO**: a statement proved directly by checked proof terms over concrete
   definitions.
 - **CERTIFICADO**: a committed, reproducible artefact or transcript that
   transports the evidence for a claim.
 - **VERIFICADO**: numerical or instrumental evidence reproduced and checked.
+
+The following two labels are local extensions for this repair lane, not peers
+that alter the authority or meaning of the inherited global vocabulary:
+
 - **CONDICIONAL**: dependent on an explicitly named genuine analytic input.
 - **ABIERTO**: not discharged by the published artefact.
+
+## External-verdict boundary
+
+`docs/SU2-THETA-PRISM-TERMINAL-REPRO-MANIFEST.txt` and
+`docs/SU2-THETA-PRISM-TRANSCRIPT-20260801.txt` are later documentary objects.
+No external verdict issued so far covers their content.  They must be read by
+the next single documentary review, task (31), and must not be called audited
+by inheritance from the mathematical verdict of task (17).
+
+Audit (30) correctly marked the closed-list material it could not inspect as
+`NOT CHECKED`.  The earlier assignment wording that implied comparison against
+`08155607` left instruments and artefacts unchanged was an error by the review
+desk, not an error by that auditor.
 
 Campaign results may not alter the constants `1/2`, `3/4`, `1/16`, or
 `1/512`, weaken the three-branch witness, or enlarge the beta domain.  Every

@@ -89,15 +89,19 @@ They do not replace or condition the exact Lean terms listed above.
   declarations, including the five new coefficient-route declarations and
   `manufactured_six_point_theta_gate`, report exactly
   `[propext, Classical.choice, Quot.sound]`.
-- Uniform inhabitant source at
-  `3c198717e1b53b016803e3db76fda88f99314f89`: fresh public Colab clone,
+- Earlier first-compiled uniform-inhabitant checkpoint
+  `3c198717e1b53b016803e3db76fda88f99314f89` (`supply nonnegativity in signed
+  remainder`): fresh public Colab clone,
   Lean `v4.29.0-rc6`, Mathlib `07642720...`, 8 host CPUs with Lake-default
   parallelism.  `Coefficients`, `Endpoint`, and the independent `#check`
   file passed; the checked type is
   `manufacturingTechnicalInputsConcrete (beta) (hbeta : BetaDomain beta) :
   ManufacturingTechnicalInputs beta`.  The resulting `.olean` hashes were
   `3bb7d37a...e9385c` for `Coefficients` and
-  `235ff3fd...1de157` for `Endpoint`.
+  `235ff3fd...1de157` for `Endpoint`.  This checkpoint is the immediate parent
+  of `08155607cacca04f3f7a507a78762f88fffd395d`; their one-commit delta changes
+  only three documentation files and no Lean source.  It is historical
+  first-compilation evidence, not a competing terminal source.
 - Terminal source SHA `08155607cacca04f3f7a507a78762f88fffd395d`
   was reproduced in two independent fresh Colab CPU/high-RAM clones.  All nine
   exact `YangMills.SU2ThetaPrism` targets built; 48 oracle headlines reported
@@ -127,6 +131,10 @@ blind-audit verdict.
 
 ## ABIERTO
 
+- `SU2-THETA-PRISM-TERMINAL-REPRO-MANIFEST.txt` and
+  `SU2-THETA-PRISM-TRANSCRIPT-20260801.txt` are not covered by any external
+  verdict already issued.  Task (31) must inspect both by content; neither is
+  audited by inheritance from task (17)'s mathematical verdict.
 - Strengthen the label-two character-ring bridge to a constructed spin-one
   representation if the independent audit requires an actual complement
   rather than the explicit tensor-square identity.
