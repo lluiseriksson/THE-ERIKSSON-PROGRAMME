@@ -5,6 +5,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson
 -/
 import YangMills.OS.SpatialRing
+import Mathlib.Algebra.QuadraticDiscriminant
 import Mathlib.Analysis.SpecialFunctions.Integrals.PosLogEqCircleAverage
 
 /-!
@@ -266,6 +267,94 @@ theorem physical_arcosh_circle_log_mixture
 /-! ## The elementary logarithmic kernel factorisation -/
 
 /--
+For every `t > 0` there is a unique open-unit-interval parameter `x` with
+`2 * x * t = (1 - x)^2`.
+
+The proof uses the quadratic `x^2 - 2(1+t)x + 1`: its positive discriminant
+supplies two distinct real roots, while their sum `2(1+t)` and product `1`
+show that both are positive and exactly one lies below `1`.  No closed square-
+root formula carries the interval bounds.
+
+This is scalar algebra only.  In the later physical specialization
+`x = tanh γ / tanh a`, the active hypothesis `γ < a` must remain printed.
+-/
+theorem existsUnique_circleLogKernelParameter {t : ℝ} (ht : 0 < t) :
+    ∃! x : ℝ, 0 < x ∧ x < 1 ∧ 2 * x * t = (1 - x) ^ 2 := by
+  let D : ℝ := 4 * t * (t + 2)
+  have hD : 0 < D := by
+    dsimp [D]
+    positivity
+  have hdisc : discrim (1 : ℝ) (-2 * (1 + t)) 1 = D := by
+    simp [discrim, D]
+    ring
+  have hsqrt : discrim (1 : ℝ) (-2 * (1 + t)) 1 = √D * √D := by
+    rw [hdisc, ← pow_two, Real.sq_sqrt hD.le]
+  obtain ⟨x, hx⟩ :=
+    exists_quadratic_eq_zero (a := (1 : ℝ)) (b := -2 * (1 + t)) (c := 1)
+      one_ne_zero ⟨√D, hsqrt⟩
+  let y : ℝ := 2 * (1 + t) - x
+  have hxpoly : x ^ 2 - 2 * (1 + t) * x + 1 = 0 := by
+    nlinarith [hx]
+  have hsum : x + y = 2 * (1 + t) := by
+    simp [y]
+  have hprod : x * y = 1 := by
+    dsimp [y]
+    nlinarith [hxpoly]
+  have hxyne : x ≠ y := by
+    intro hxy
+    nlinarith [hsum, hprod, sq_nonneg t]
+  have hpos : 0 < x ∧ 0 < y := by
+    rcases (mul_pos_iff.mp (show 0 < x * y by nlinarith [hprod])) with h | h
+    · exact h
+    · nlinarith [hsum]
+  have hsum_mul_y : (x + y) * y = 2 * (1 + t) * y :=
+    congrArg (fun u : ℝ ↦ u * y) hsum
+  have hypoly : y ^ 2 - 2 * (1 + t) * y + 1 = 0 := by
+    nlinarith [hsum_mul_y, hprod]
+  have hxrel : 2 * x * t = (1 - x) ^ 2 := by
+    nlinarith [hxpoly]
+  have hyrel : 2 * y * t = (1 - y) ^ 2 := by
+    nlinarith [hypoly]
+  by_cases hx1 : x < 1
+  · have hy1 : 1 < y := by
+      have hgap : 0 < (1 - x) * y := mul_pos (sub_pos.mpr hx1) hpos.2
+      nlinarith [hprod]
+    refine ⟨x, ⟨hpos.1, hx1, hxrel⟩, ?_⟩
+    intro z hz
+    have hzpoly : z ^ 2 - 2 * (1 + t) * z + 1 = 0 := by
+      nlinarith [hz.2.2]
+    have hfactor : (z - x) * (z + x - 2 * (1 + t)) = 0 := by
+      nlinarith [hzpoly, hxpoly]
+    rcases mul_eq_zero.mp hfactor with hzx | hzy
+    · nlinarith
+    · have : z = y := by
+        dsimp [y]
+        nlinarith
+      nlinarith [hz.2.1]
+  · have hxge : 1 ≤ x := le_of_not_gt hx1
+    have hxneone : x ≠ 1 := by
+      intro hxone
+      have hyone : y = 1 := by nlinarith [hprod]
+      exact hxyne (hxone.trans hyone.symm)
+    have hxgt : 1 < x := lt_of_le_of_ne hxge (Ne.symm hxneone)
+    have hy1 : y < 1 := by
+      by_contra hy1
+      have hyge : 1 ≤ y := le_of_not_gt hy1
+      have hnonneg : 0 ≤ (x - 1) * (y - 1) :=
+        mul_nonneg (sub_nonneg.mpr hxge) (sub_nonneg.mpr hyge)
+      nlinarith [hsum, hprod]
+    refine ⟨y, ⟨hpos.2, hy1, hyrel⟩, ?_⟩
+    intro z hz
+    have hzpoly : z ^ 2 - 2 * (1 + t) * z + 1 = 0 := by
+      nlinarith [hz.2.2]
+    have hfactor : (z - y) * (z + y - 2 * (1 + t)) = 0 := by
+      nlinarith [hzpoly, hypoly]
+    rcases mul_eq_zero.mp hfactor with hzy | hzx
+    · nlinarith
+    · have : z = x := by nlinarith [hsum]
+      nlinarith [hz.2.1, hxgt]
+
+/--
 The angular kernel factors through a point `x` of the open unit interval when
 `t = (1 - x)^2 / (2x)`.  All three active scalar conditions are printed as
 `0 < t`, `0 < x < 1`, and the denominator-cleared relation
@@ -325,5 +414,23 @@ theorem circle_log_kernel_eq_log_norm {t x : ℝ} (ht : 0 < t)
   rw [hfac, Real.log_div (pow_ne_zero 2 hnormPos.ne')
     (pow_ne_zero 2 hden.ne'), Real.log_pow, Real.log_pow]
   norm_num
+
+/--
+The pointwise logarithmic kernel identity transports unchanged through the
+circle average.  The active hypotheses `0 < t`, `0 < x < 1`, and
+`2 * x * t = (1 - x)^2` remain explicit.
+
+This does not specialize `x` to physical couplings, identify vacuum products,
+or compare them; it is only the exact `circleAverage` transport of
+`circle_log_kernel_eq_log_norm`.
+-/
+theorem circleAverage_log_kernel_eq_log_norm {t x : ℝ} (ht : 0 < t)
+    (hx0 : 0 < x) (hx1 : x < 1) (htx : 2 * x * t = (1 - x) ^ 2) :
+    circleAverage (fun z : ℂ ↦ Real.log (1 + (1 - z.re) / t)) 0 1 =
+      circleAverage (fun z : ℂ ↦
+        2 * Real.log ‖1 - (x : ℂ) * z‖ - 2 * Real.log (1 - x)) 0 1 := by
+  apply circleAverage_congr_sphere
+  intro z hz
+  exact circle_log_kernel_eq_log_norm ht hx0 hx1 htx hz
 
 end YangMills.OS
