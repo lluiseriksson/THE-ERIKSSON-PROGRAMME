@@ -1,0 +1,159 @@
+SU(2) COMMUTATOR ESCAPE — REPRODUCIBILITY TRANSCRIPT
+Generated: 2026-07-31 (Europe/Stockholm)
+
+SOURCE AND BRANCH
+Repository: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+Frozen source SHA: a66b1c7da3c7441e06864e327b5c4efa43e9c79d
+Frozen tag: su2-os-preaudit-pass-a66b1c7d
+Derived branch: codex/su2-commutator-escape-audit
+Base decision: the required theorem su2Trace_crossing_lower is absent from
+main at 12bf6e241694aa5cfb5c7a6e08a96c8fa47ff9b1, so the derived branch was
+created exactly at the frozen SHA. Only new global/derived files are added.
+The derived SHA requires its own adversarial audit and inherits no pre-audit.
+Prior audited head: 998eb7736bb24d6eabd0fbe3c7ed9692c8f6b8f0
+Certificate repair commit:
+  7e3712a435b4713d94c08ecbac5f74c5dc0dd6a7
+The repair commit changes only scripts/verify_su2_commutator_moments.py.
+The two Lean files are byte-identical Git blobs to the prior audited head.
+
+TOOLCHAIN
+Lean (version 4.29.0-rc6, x86_64-windows-gnu,
+  commit 00659f8e6071d7e46131ed643bf8003b99b044e9, Release)
+Lake version 5.0.0-src+00659f8 (Lean version 4.29.0-rc6)
+Python 3.12.6
+lean-toolchain: leanprover/lean4:v4.29.0-rc6
+mathlib: 07642720480157414db592fa85b626dafb71355b
+
+CACHE PROTOCOL
+Verified source:
+C:\Users\lluis\.codex\worktrees\38c6\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\.lake
+Verified destination:
+C:\Users\lluis\.codex\worktrees\bb87\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\.lake
+Both `.lake` and `.lake/packages` were ordinary directories (no LinkType,
+no Target). The destination did not exist before copying. Command:
+  robocopy <verified-source> <verified-destination> /E /COPY:DAT
+    /DCOPY:DAT /R:2 /W:1 /NFL /NDL /NJH /NJS /NP
+No junction was created; no shared cache was deleted or cleaned.
+
+EXACT TARGET BUILD
+Command:
+  lake build YangMills.Derived.SU2CommutatorEscape
+Result:
+  Built YangMills.Derived.SU2CommutatorEscape
+  Build completed successfully (8181 jobs).
+
+ORACLE
+Command:
+  lake env lean YangMills/Derived/SU2CommutatorEscapeOracle.lean
+Result for every `#print axioms` title:
+  [propext, Classical.choice, Quot.sound]
+The separate `#print SU2CommutatorFubiniSwap` expands to exactly the equality
+between orders c1,c2,u,y and u,y,c1,c2 shown in the source; it contains no
+factor 1/4 and no quadratic-form target.
+Titles checked:
+  su2Commutator_self
+  su2Commutator_inv
+  su2_conjugation_entry_moment
+  su2_trace_inv_entry_moment
+  su2_commutator_entry_moment
+  su2_commutator_inv_entry_moment
+  su2_commutator_inv_star_entry_moment
+  su2_average_right_translated_trace
+  integral_integral_swap_of_integrable
+  su2_conditioned_right_translation
+  su2CommutatorQuadraticForm_eq_postTranslation
+  su2CommutatorQuadraticForm_eq_quarter
+  su2CommutatorQuadraticForm_lower
+  su2CommutatorQuadraticForm_strict
+  su2TraceObservable_one_nonzero
+  sunHaarProb_two_ne_zero
+  su2CommutatorQuadraticForm_one_strict
+
+FAIL-CLOSED EXACT FINITE CERTIFICATE
+Certifier version: 2.0.0
+Certificate schema: su2-commutator-moments-certificate/v2
+Checks executed before emission: 14 (exactly 14 expected)
+Commands:
+  python scripts/verify_su2_commutator_moments.py
+  python -O scripts/verify_su2_commutator_moments.py
+Both outputs: PASS with checks.executed=14 and checks.expected=14
+Each command was run twice. Results per mode:
+  normal: byte-for-byte equal, 636 bytes
+  optimized: byte-for-byte equal, 636 bytes
+Both mode output SHA-256:
+  cc3cea26a3331d5ba3aaf69e6a0162d9b8896272d35df7d5dfce26058803f39e
+Scope emitted by the certificate:
+  finite exact contraction; not a substitute for Haar/Fubini
+
+FAIL-CLOSED MUTATION SELF-TEST
+Commands:
+  python scripts/verify_su2_commutator_moments.py --self-test
+  python -O scripts/verify_su2_commutator_moments.py --self-test
+Both outputs: SELF_TEST_PASS with mutation_processes=12.
+Each command was run twice. Results per mode:
+  normal: byte-for-byte equal, 503 bytes
+  optimized: byte-for-byte equal, 503 bytes
+Both mode output SHA-256:
+  028d28320ba346a756a58068998d21b423a7ce6555b1ae49ecc0819a0e0cff95
+Mutations, each executed in a separate normal and optimized process:
+  determinant_2; non_unitary; trace_or_moment; commutator_identity;
+  deleted_check; pass_before_counter.
+All 12 mutated processes exit nonzero and emit no JSON status PASS.
+The determinant-2 witness is rejected by witness_determinant_is_one before
+the script reaches compute_moments or constructs a certificate.
+
+SEMANTIC SU(2) VALIDATION
+The non-identity witness and identity matrix are checked with exact integer
+arithmetic. Each determinant is exactly 1 and each transpose-times-matrix
+Gram matrix is exactly the 2x2 identity. The certificate never trusts an
+SU(2) label without these semantic checks.
+
+ARTIFACT SHA-256 (BINARY = LF FOR NEW TEXT FILES AT THIS CHECKPOINT)
+YangMills/Derived/SU2CommutatorEscape.lean
+  48499894d96778d005415a598310d7540f3ed9eba629d2019d66a8390d42cadd
+YangMills/Derived/SU2CommutatorEscapeOracle.lean
+  4b6f86e4758e52cdfeea4130ae542238a7a2ddf03897574851ed848271317c2f
+scripts/verify_su2_commutator_moments.py
+  36dbbc2423342b1d223fee16d5e2fff3380fd9a8d1deba768b3d41f2c45d16d4
+docs/SU2-COMMUTATOR-ESCAPE.md
+  399374fd3b018b8e932306f949da0ec23e93a3c2b2df0ded2cde77a29023bc0e
+docs/SU2-COMMUTATOR-ESCAPE-CERTIFICATE-MANIFEST.json
+  2e9a542b3d5b715fbbc62e7ea82731ae5a41db7d1b76bf3ad1381ad9f95f9436
+Pinned inputs (binary / LF):
+lean-toolchain
+  8c46c0308e92095e478bcfae7c357327e88c5a624b54abf5ad1660ee0e51df5a
+  dc6d65016fad3123d44bf17b5bf0598286284ab16ba75d5c17eb22ed11f47361
+lake-manifest.json
+  e2f2d45a5fef5ae352e6f8be858726d603d83fde30d740a14a8a2a588579381d
+  1c72b465ab37a0418de6f82573c18bb0e79f9e0165e901fd9da0ddabecdb2611
+
+VALIDATORS
+  direct and indirect Python optimization-dependent check sweep: no occurrence
+  mutation failures: diagnostic on stderr, nonzero exit, no status PASS
+  exact check-count finalization precedes certificate construction and emission
+  forbidden-token sweep: no code occurrence
+  required document headings/limitations: pass
+  git diff --check: pass
+  negative diff against frozen source: pass
+  zero changes in YangMills/OS/SU2WilsonReflection*, docs/su2-os/**,
+  and every pre-existing Lean file
+
+AUDIT PROVENANCE
+The mathematical verdict of task (10) remains evidence for the Lean at
+998eb7736bb24d6eabd0fbe3c7ed9692c8f6b8f0 because this repair leaves those
+Lean Git blobs unchanged. It is not evidence for the repaired Python script.
+The new branch head therefore requires a fresh adversarial audit limited to
+the certificate and provenance. No claim is made that (10) certifies the new
+script or the new head SHA.
+
+FORMAL LIMITATION
+The sole remaining obligation is `SU2CommutatorFubiniSwap beta`, which states
+only the change from integration order c1,c2,u,y to u,y,c1,c2 for the
+post-substitution integrand. It contains neither the factor 1/4 nor the target
+identity. Under the named hypothesis `hSwap`, Lean derives
+  su2CommutatorQuadraticForm beta = (1/4) * su2BaseQuadraticForm beta
+by the conditioned translation and the certified scalar contraction of the
+inverse-commutator moment. The conditional lower/strict commutator conclusions
+therefore carry a measure-theory step, not their destination. The swap still
+has to be discharged from the documented integrability bound. The mathematical
+derivation is exact in the companion document.
