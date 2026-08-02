@@ -1,0 +1,74 @@
+S-2a: isolated elaboration + targeted oracle
+Colab Pro+ Linux, CPU/high-RAM runtime, 2026-08-02
+commit 066b1be372c85a2c7be32c39bf812e72927a5097
+module sha256 62c0d58efcc131d83ced138480621101e26e2a2ff4b4fbc8bb6cb38cf178169f
+Lake 5.0.0-src+00659f8 (Lean 4.29.0-rc6), Mathlib pin 07642720480157414db592fa85b626dafb71355b
+
+Assembled verbatim from the cell output.
+
+--------------------------------------------------------------------------
+HEAD 066b1be372c85a2c7be32c39bf812e72927a5097
+S2A  62c0d58efcc131d83ced138480621101e26e2a2ff4b4fbc8bb6cb38cf178169f
+PREFLIGHT OK
+=== RE-ELABORATION (must stay clean) ===
+S2A EXIT 0
+--- BEGIN s2a.log ---
+--- END s2a.log ---
+=== BUILD THE MODULE'S OLEAN ===
+BUILD EXIT 0
+✔ [1164/1164] Built YangMills.OS.ProjectiveDiameterMonotone (3.5s)
+Build completed successfully (1164 jobs).
+=== ORACLE FILE, GENERATED FROM THE MODULE ===
+import YangMills.OS.ProjectiveDiameterMonotone
+#print axioms YangMills.OS.Congruence.CrossRatioLB
+#print axioms YangMills.OS.Congruence.IsMixOf
+#print axioms YangMills.OS.Congruence.mix_mul_expand
+#print axioms YangMills.OS.Congruence.mix_mul_expand_swap
+#print axioms YangMills.OS.Congruence.crossRatioLB_mix
+#print axioms YangMills.OS.Congruence.crossRatioLB_congr
+=== ORACLE ===
+ORACLE EXIT 0
+--- BEGIN oracle_s2a.log (full) ---
+'YangMills.OS.Congruence.CrossRatioLB' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Congruence.IsMixOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Congruence.mix_mul_expand' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Congruence.mix_mul_expand_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Congruence.crossRatioLB_mix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Congruence.crossRatioLB_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+--- END oracle_s2a.log ---
+=== RECONCILIATION, normal mode ===
+  ok  CrossRatioLB             [propext, Classical.choice, Quot.sound]
+  ok  IsMixOf                  [propext, Classical.choice, Quot.sound]
+  ok  mix_mul_expand           [propext, Classical.choice, Quot.sound]
+  ok  mix_mul_expand_swap      [propext, Classical.choice, Quot.sound]
+  ok  crossRatioLB_mix         [propext, Classical.choice, Quot.sound]
+  ok  crossRatioLB_congr       [propext, Classical.choice, Quot.sound]
+declarations expected: 6
+declarations accepted: 6
+PASS
+CHECK normal exit 0
+=== RECONCILIATION, optimized mode ===
+  ok  CrossRatioLB             [propext, Classical.choice, Quot.sound]
+  ok  IsMixOf                  [propext, Classical.choice, Quot.sound]
+  ok  mix_mul_expand           [propext, Classical.choice, Quot.sound]
+  ok  mix_mul_expand_swap      [propext, Classical.choice, Quot.sound]
+  ok  crossRatioLB_mix         [propext, Classical.choice, Quot.sound]
+  ok  crossRatioLB_congr       [propext, Classical.choice, Quot.sound]
+declarations expected: 6
+declarations accepted: 6
+PASS
+CHECK optimized exit 0
+--------------------------------------------------------------------------
+
+WHAT THIS DOES AND DOES NOT ESTABLISH
+
+Established: the cross-ratio lower bound transports through a two-sided
+nonnegative mix, mechanically, with no nonstandard axiom, and the congruence
+case B = Sᵀ falls out as a corollary.  No symmetry of M, no relation between the
+two sides, no positivity beyond nonnegativity, no division and no logarithm.
+
+NOT established, and the distinction is the whole of S-2b: this transports ONE
+FIXED φ.  It says nothing yet about diameters.  The monotonicity statement is
+φ(A M B) ≥ φ(M) for the GREATEST valid bounds, and no greatest bound has been
+constructed here.  Until `projectivePhi` exists with `IsGreatest`, any sentence
+of the form "the diameter does not increase" is ahead of its lemma.
