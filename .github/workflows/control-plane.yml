@@ -26,9 +26,10 @@ on:
       - "run-manifests/**"
       - ".github/run-manifest-debt-baseline.json"
       - ".github/run-manifest-debt-baseline.hashes.json"
-      - ".github/scientific-test-debt-baseline.json"
-      - "scripts/pytest_nominal_debt_guard.py"
-      - "tests/scientific_test_debt_guard_adversarial.py"
+      - ".github/scientific-test-triage.json"
+      - "scripts/pytest_scientific_triage_guard.py"
+      - "tests/scientific_test_triage_guard_adversarial.py"
+      - "audit/SCIENTIFIC-TEST-TRIAGE-20260802.md"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
       - "docs/SURFACE-REMAINDER-PREREG.md"
@@ -69,9 +70,10 @@ on:
       - "run-manifests/**"
       - ".github/run-manifest-debt-baseline.json"
       - ".github/run-manifest-debt-baseline.hashes.json"
-      - ".github/scientific-test-debt-baseline.json"
-      - "scripts/pytest_nominal_debt_guard.py"
-      - "tests/scientific_test_debt_guard_adversarial.py"
+      - ".github/scientific-test-triage.json"
+      - "scripts/pytest_scientific_triage_guard.py"
+      - "tests/scientific_test_triage_guard_adversarial.py"
+      - "audit/SCIENTIFIC-TEST-TRIAGE-20260802.md"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
       - "docs/SURFACE-REMAINDER-PREREG.md"
@@ -133,14 +135,14 @@ jobs:
           if-no-files-found: error
 
   test:
-    name: Nominal scientific-test debt quarantine (9-item historical ceiling)
+    name: "Scientific pytest triage: repairable-debt ratchet (5) + declared evidence-loss set (4)"
     runs-on: ubuntu-latest
     steps:
-      - name: Invalidate any pre-existing scientific-test debt decision
+      - name: Invalidate any pre-existing scientific-test triage decision
         shell: bash
         run: |
-          rm -f -- "$GITHUB_WORKSPACE/scientific-test-debt-decision.json"
-          test ! -e "$GITHUB_WORKSPACE/scientific-test-debt-decision.json"
+          rm -f -- "$GITHUB_WORKSPACE/scientific-test-triage-decision.json"
+          test ! -e "$GITHUB_WORKSPACE/scientific-test-triage-decision.json"
 
       - uses: actions/checkout@v4
         with:
@@ -180,27 +182,27 @@ jobs:
       - name: Audit committed v88 sanitation evidence
         run: python scripts/audit_v88_sanitation.py
 
-      - name: Exercise nominal debt quarantine attacks
+      - name: Exercise scientific-test triage attacks
         run: |
-          python tests/scientific_test_debt_guard_adversarial.py
-          python -O tests/scientific_test_debt_guard_adversarial.py
+          python tests/scientific_test_triage_guard_adversarial.py
+          python -O tests/scientific_test_triage_guard_adversarial.py
 
-      - name: Run pytest with nominal scientific-debt quarantine
+      - name: Run pytest with classified evidence-loss and repairable-debt guard
         env:
           # A synchronize event carries the prior PR head in `before`, which
           # makes a repair ratchet immediately.  Opened PRs fall back to the
           # exact base-branch SHA; pushes also carry their prior head.
           CHANGE_BASE: ${{ github.event.before || github.event.pull_request.base.sha }}
         run: >-
-          python scripts/pytest_nominal_debt_guard.py
-          --manifest .github/scientific-test-debt-baseline.json
-          --result scientific-test-debt-decision.json
+          python scripts/pytest_scientific_triage_guard.py
+          --manifest .github/scientific-test-triage.json
+          --result scientific-test-triage-decision.json
           --comparison-base "$CHANGE_BASE"
 
-      - name: Publish scientific-test debt decision
+      - name: Publish scientific-test triage decision
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: scientific-test-debt-decision
-          path: scientific-test-debt-decision.json
+          name: scientific-test-triage-decision
+          path: scientific-test-triage-decision.json
           if-no-files-found: error
