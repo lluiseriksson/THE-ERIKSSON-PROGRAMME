@@ -108,15 +108,21 @@ Note: This linter can be disabled with `set_option linter.unnecessarySimpa false
 Build completed successfully (8158 jobs).
 ```
 
-Both sit inside the proof of `signed_bound_attained`, at the two `by_cases h : x = 0 <;> simp [h]`
-closures of the `sup'`/`inf'` computation.  They are `linter.unnecessarySimpa`
-**suggestions**, not defects: following them was tried and reverted, because
-`norm_num at h0` closes the hypothesis to `True` and the suggested `simp`
-form then fails to discharge the goal.  The module declares them ACCEPTED
-in-module rather than silencing the linter, so that the warning count is a
-constant that an audit can check against, and a third warning would be a
-change.  **Warning policy: exactly these two, at these two lines, and no
-others.**
+Both warnings occur on the two `simpa using h0` / `simpa using h1` lines inside
+the `sup'`/`inf'` calculation of `signed_bound_attained` — line 236 is
+`simpa using h0`, line 245 is `simpa using h1`.  The two adjacent
+`by_cases h : x = 0 <;> simp [h]` closures, at lines 229 and 246, already use
+`simp` and are **not** the object of the suggestion.
+
+They are `linter.unnecessarySimpa` **suggestions**, not defects.  The linter's
+own proposal is `simp`.  A separate repair, `norm_num at h0`, was also tried and
+failed for a different reason — it closes the hypothesis to `True`, after which
+`exact h0` no longer discharges the goal — and the two must not be conflated:
+what the linter asked for and what was attempted are different edits.  The
+module declares both warnings ACCEPTED in-module rather than silencing the
+linter, so that the warning count is a constant an audit can check against and
+a third warning would be a change.  **Warning policy: exactly these two, at
+lines 236 and 245, and no others.**
 
 ### 2.3 Focused axiom audit
 
@@ -304,15 +310,31 @@ it was written.
 > was reproduced from a second independent checkout.  These nine declarations
 > therefore satisfy the repository's definition of `Formalized`.
 
-### Condition tally
+### Condition tally — the ELEVEN of Amendment 2, quoted, not paraphrased
 
-| # | condition | state |
+The charter's list is conjunctive and is reproduced here in its own words.  An
+earlier version of this table replaced conditions 1–9 with a summary of
+checkout-1 evidence, which is a different list; the substitution is corrected in
+§8.
+
+| # | condition, verbatim from Amendment 2 | where its evidence is |
 | --- | --- | --- |
-| 1–9 | identity, clean tree, build exit 0, zero errors, warning policy, 9/9 reports, zero `sorryAx`, three-axiom cone, audit exit 0 | closed, checkout 1 |
-| 10 | canonical SHA-256 reproduced from another checkout | closed, checkout 2 |
-| 11 | no modification of the module after the audit | closed by **this** commit |
+| 1 | focused elaboration succeeds | §2.2 — exit 0, 8158 jobs, zero errors |
+| 2 | five endpoints compiled | §3.1 — five `#check` signatures |
+| 3 | the exact equality witness compiled | §3.2 — `signed_bound_attained`, closed theorem |
+| 4 | non-emptiness explicit in the signature | §3.1 — `[Nonempty S]` printed where required, and ABSENT from the two that do not need it |
+| 5 | a single convention for `TV` and for `osc` | source lines 114 (`osc`), 119 (`mid`), 179 (`TV`) — one definition each, none repeated |
+| 6 | the factor `1/2` traceable to one lemma | §8.2 — the analytic `1/2` is created once, at line 142 |
+| 7 | the TV/oscillation corollary obtained by REWRITING, not by a second proof under another convention | §8.3 — the proof is `unfold TV; exact this` |
+| 8 | stdout, stderr and exit code preserved OUTSIDE the VM | `docs/audits/d3a-916de45a/`, attested in `MANIFEST.sha256` |
+| 9 | focused oracle clean | §2.3 — 9/9 reports, zero `sorryAx`, three-axiom cone, exit 0 |
+| 10 | SHA-256 reproduced from another checkout | §4 — checkout 2 |
+| 11 | no subsequent modification of the module | commit `75fb3734` and its erratum change no Lean |
 
-Gates added during the audit, and where each was exercised:
+Separately, and NOT part of the eleven: two gates were **added during** the
+audit, at the auditor's request, after the charter was written.  They are listed
+apart precisely so that a condition invented mid-audit is never counted as one
+that was pre-registered.
 
 | gate | checkout 1 | checkout 2 |
 | --- | --- | --- |
@@ -362,7 +384,103 @@ carries `!*.log`, so the next evidence record does not step on the same rule.
 That file is the one item in this commit not named in the audit specification,
 and it is here for this reason.
 
-**Gate added, and passed:** the set of files listed in `MANIFEST.sha256` must
-equal the set of files the commit actually contains, and every hash in it must
-verify. Both were checked before committing — 16 files, 16 `OK`.  A manifest
-that is not diffed against the commit is decoration.
+**Gate added, and passed**, stated with its universe named exactly:
+
+> the 16 entries of `MANIFEST.sha256` must equal the set of artifacts the commit
+> contains **in `docs/audits/d3a-916de45a/`, excluding the manifest itself**, and
+> all 16 hashes must verify.
+
+16 files, 16 `OK`.  The manifest does **not** cover the whole commit and never
+claimed to: the commit contains 19 paths — those 16 artifacts, plus
+`MANIFEST.sha256`, plus this record, plus `docs/audits/.gitignore`.  An earlier
+wording of this gate said "the set of files the commit actually contains", which
+is false as written; corrected in §8.  A manifest that is not diffed against the
+commit is decoration, but a gate whose universe is left vague is worse — it
+reads as covering more than it checks.
+
+---
+
+## 8. ERRATUM to this record (commit `75fb3734`)
+
+Three documentary defects found by external audit of `B` itself.  None touches
+the build, the axiom cones, the hashes or the `Formalized` status; all three are
+this record describing its own evidence inaccurately, which is the class of
+defect this lane has now paid for five times.  The module is not touched: the
+blob at HEAD is still `0a14617b87360d29d7cd20bda4308a8ee0857236`.
+
+### 8.1 The warnings were mislocated
+
+This record said the two warnings sit "at the two `by_cases h : x = 0 <;> simp [h]`
+closures".  **False.**  Read from the audited source:
+
+```
+229|       · by_cases h : x = 0 <;> simp [h]
+...
+236|         simpa using h0
+...
+245|         simpa using h1
+246|       · by_cases h : x = 0 <;> simp [h]
+```
+
+The warnings are at 236 and 245 — the `simpa using h0/h1` lines.  The `by_cases`
+lines are 229 and 246, they already use `simp`, and the linter says nothing
+about them.  The two were adjacent in the proof and got conflated in prose.
+
+Also corrected: the record implied `norm_num` was the linter's suggestion.  It
+was not — the linter proposes `simp`; `norm_num at h0` was a separate repair
+attempt that failed for a separate reason.
+
+### 8.2 The tally substituted a different list for conditions 1–9
+
+The charter's Amendment 2 fixes eleven conjunctive conditions.  This record's
+table replaced the first nine with a summary of checkout-1 evidence — identity,
+clean tree, exit code, warning policy, and so on.  Those are real and they are
+recorded, but **they are not conditions 1–9**, and two of them (raw equality,
+warning policy) are gates added *during* the audit, which the record itself
+separated one paragraph later and then re-mixed in the table above it.
+
+Corrected: §6 now quotes the eleven verbatim and points each at its evidence,
+and the added gates are listed apart under their own heading.
+
+Evidence for the two conditions that had no explicit anchor before:
+
+* **Condition 6, the `1/2` traceable to one lemma.**  Three occurrences of the
+  factor exist and they have distinct roles, so the honest statement names all
+  three rather than claiming there is one:
+  * line 121, inside `def mid` — the midpoint's own definition;
+  * line 142, `abs_sub_mid_le : |g x - mid g| ≤ osc g / 2` — **the analytic
+    factor, created here and nowhere else**; every later `/2` in
+    `abs_sum_signed_le` (lines 164, 170, 173) is this one propagated;
+  * line 179, inside `def TV` — the definitional normalisation.
+
+  The analytic and definitional halves are identified by rewriting, not added.
+  That is exactly what condition 7 checks.
+
+* **Condition 7, corollary by rewriting.**  The whole proof, from the audited
+  source:
+  ```lean
+  191| theorem abs_sum_sub_le_tv_mul_osc {p q : S → ℝ}
+  192|     (h : ∑ x, p x = ∑ x, q x) (g : S → ℝ) :
+  193|     |∑ x, (p x - q x) * g x| ≤ TV p q * osc g := by
+  194|   have hzero : ∑ x, (p x - q x) = 0 := by
+  195|     rw [Finset.sum_sub_distrib, h, sub_self]
+  196|   have := abs_sum_signed_le hzero g
+  197|   unfold TV
+  198|   exact this
+  ```
+  `unfold TV; exact this`.  No second proof, no second convention.
+
+### 8.3 The manifest gate was stated over too wide a universe
+
+"the set of files listed in `MANIFEST.sha256` must equal the set of files the
+commit actually contains" is false as written: the manifest lists 16 artifacts,
+the commit contains 19 paths.  The gate that was actually run — and the correct
+one — is scoped to `docs/audits/d3a-916de45a/` excluding the manifest itself.
+Corrected in §7.
+
+### What did NOT change
+
+`916de45a` remains the audited source; `0a14617b…` remains its blob;
+`87ac87f6…` remains the canonical SHA-256; the build, the nine signatures, the
+nine axiom cones and both checkouts are untouched.  Condition 11 stays closed:
+this erratum modifies no Lean.
