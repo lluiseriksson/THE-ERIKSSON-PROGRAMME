@@ -31591,3 +31591,31 @@ Python received the literal splice `run(['lefrom pathlib import Path` at line
 process, Core build, or oracle ran, and no PASS was claimed.  The runtime was
 disconnected and deleted.  The next attempt must use a wholly new empty cell
 rather than refill the virtualized failed editor; **SESIÓN COLAB LIBRE**.
+
+## Addendum 629 (2026-08-02, **TASK 14: kernel-parameter focused PASS**)
+
+**COMPILED AS A FOCUSED INTERMEDIATE BRICK; NOT YET ORACLE-VERIFIED.**  After
+the failures in Addenda 625--628, a wholly new Colab code cell checked out
+exact source SHA `4d676c23469ba311b8004504fe57b96241542d16` in a fresh clone.
+The CPU/high-RAM runtime was Linux 6.6.122 x86_64 with glibc 2.35, Python
+3.12.13, 8 AMD EPYC 7B12 CPUs, `53467192 kB` RAM, and no GPU.  It verified
+Lean `v4.29.0-rc6` at commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, mathlib
+`07642720480157414db592fa85b626dafb71355b`, and elan-installer SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+
+The isolated official cache returned exit 0 in `79.711612 s`.
+`lake build YangMills.OS.SpatialVacuum` returned exit 0 in `121.174027 s` and
+measured `8172` jobs.  The accepted run lasted from UTC
+`2026-08-02T16:39:05.020934+00:00` to
+`2026-08-02T16:42:49.888996+00:00`.  The downloaded 9807-byte transcript has
+desktop-recomputed SHA-256
+`88bf1a1acdbd7919ea98348d2b9cd0ef32978e3fd7741a73fc452a0037fd16c5`,
+identical to the digest printed by Colab.
+
+This witness compiles `existsUnique_circleLogKernelParameter` and
+`circleAverage_log_kernel_eq_log_norm` in their module.  It does not yet
+verify their axiom sets, build the post-merge Core, identify either physical
+vacuum, prove either spectral-sector inequality, handle the beta-zero
+endpoint, or prove the uniform `specRatio` target.  The runtime was
+disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
