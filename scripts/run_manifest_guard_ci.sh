@@ -2,13 +2,12 @@
 set -euo pipefail
 
 result_file=${1:?result-file argument is required}
-comparison_root=${2:?comparison-root argument is required}
-change_base=${3:?change-base argument is required}
-
-# This must remain the first effective guard action. A failure while resolving
-# or materializing the comparison must never leave a prior PASS publishable.
+# Once the result path is known, invalidating it is the first effective guard
+# action. Validating later arguments cannot leave a prior PASS publishable.
 rm -f -- "$result_file"
 test ! -e "$result_file"
+comparison_root=${2:?comparison-root argument is required}
+change_base=${3:?change-base argument is required}
 
 worktree_added=0
 cleanup() {
