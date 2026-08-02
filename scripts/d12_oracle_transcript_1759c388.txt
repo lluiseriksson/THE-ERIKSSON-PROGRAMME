@@ -1,0 +1,43 @@
+D-12 / the bridge module: isolated elaboration + targeted oracle
+Colab Pro+ Linux, CPU/high-RAM runtime, 2026-08-02
+commit 1759c388578c3ea64d54fe0f822dc2621c8aab60
+module YangMills/OS/CongruenceSpectralInterface.lean
+module sha256 1ecb4cb7a7a0a70136b23429102e449d5caa070d03ca5228f376cbaedb40ce10
+Lake 5.0.0-src+00659f8 (Lean 4.29.0-rc6), Mathlib pin 07642720480157414db592fa85b626dafb71355b
+
+  PREFLIGHT OK
+  RE-ELABORATION   EXIT 0, empty log: zero errors AND zero warnings
+  BUILD            EXIT 0
+  ORACLE           EXIT 0
+  RECONCILIATION   35 expected, 35 accepted, PASS
+                   normal exit 0, optimized exit 0
+
+Every one of the 35 carries exactly [propext, Classical.choice, Quot.sound].
+The declaration list was generated from the module by the same parser that
+checked it, so 35 is a count of what the module declares.
+
+THE 2x2 IDENTITY GATE, which was the point of the whole bridge:
+
+  ok  perronValue_exchangeTwo     [propext, Classical.choice, Quot.sound]
+  ok  specGap_exchangeTwo         [propext, Classical.choice, Quot.sound]
+  ok  matrixSpecRatio_exchangeTwo [propext, Classical.choice, Quot.sound]
+
+so, on the exchangeable 2x2 kernel E_μ, all three of
+
+  perronValue  (E_μ) = 1 + μ
+  specGap      (E_μ) = 1 - μ
+  matrixSpecRatio(E_μ) = (1 - μ) / (1 + μ)
+
+are proved rather than assumed, symbolically in μ, with the two intermediate
+values established separately rather than fitted to the answer.
+
+WHAT THE GATE TESTS, and it is not what a satisfiability check would test.
+`matrixSpecRatio` was built to satisfy `SpectralInterface`.  A function can
+satisfy an interface without being the object the interface was written about.
+This gate asks whether `matrixSpecRatio` IS the subdominant ratio on an object
+whose subdominant ratio is independently known -- an identity test, not an
+existence test.  It passes.
+
+WHAT REMAINS OUTSIDE THIS RUN.  These are two isolated modules; the aggregate
+build of the whole library at this commit has not been run, and no job-count
+delta has been measured.  Neither module has entered the paper.
