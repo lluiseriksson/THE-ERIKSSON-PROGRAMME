@@ -484,3 +484,51 @@ Corrected in §7.
 `87ac87f6…` remains the canonical SHA-256; the build, the nine signatures, the
 nine axiom cones and both checkouts are untouched.  Condition 11 stays closed:
 this erratum modifies no Lean.
+
+---
+
+## 9. The raw test, demonstrated against a hostile clone
+
+Every earlier statement about checkout filters was an argument that the raw test
+*would* catch a conversion.  This is the first run where it actually did.
+
+```bash
+git -c core.autocrlf=true clone --depth 1 --single-branch \
+    --branch davinci/dobrushin-uniform <repo> /tmp/hostile
+```
+
+`core.autocrlf=true` is the SYSTEM setting on the owner's desktop — the one that
+produced the CRLF materialization behind the erratum in §5.  In that clone:
+
+```
+Evidence, protected by docs/audits/.gitattributes (-text):
+  d3a-916de45a        MANIFEST.sha256  16/16  ALL VERIFY
+  d3-gates-20260802   MANIFEST.sha256   9/9   ALL VERIFY
+
+The audited module, NOT protected by any attribute:
+  blob          0a14617b87360d29d7cd20bda4308a8ee0857236
+  working_blob  426a8545f70d3d8f26a307d5ac2823f22f20729a     <- DIFFERS
+  materialized  36d6c2a2bcdd7b699f91339e2e75c64121019acfdb183eb7b7dcae2813664d29
+  canonical     87ac87f63f9fe442230d84a7208e1735bbb7180334af67572df29c36838019c3
+```
+
+Both halves matter.
+
+**The evidence is now portable.**  Hash-verified artifacts survive a
+configuration that would otherwise have made intact evidence report as corrupt.
+Before `docs/audits/.gitattributes` they were unprotected, and the manifests had
+only ever been verified in clones where `core.autocrlf` happens to be unset —
+the configuration that works had been tested, the one that breaks had not.
+
+**The module is not portable, and the gate caught it.**  A reader running the
+charter's test in that clone gets `blob ≠ working_blob` and a materialized digest
+that is not the canonical one, and correctly concludes the working tree is not
+the audited bytes.  That is the test doing its job on a real conversion rather
+than a hypothetical one, and it is why the check belongs in every checkout
+instead of being inferred once.
+
+**Not done here, and deliberately:** marking `*.lean -text` repository-wide
+would make Lean sources byte-stable in every clone and remove this failure mode
+at the source.  It touches every desk and every branch, so it is an owner
+decision, recorded as a recommendation rather than taken unilaterally by the
+lane that happens to have noticed.
