@@ -377,9 +377,7 @@ theorem exchangeTwo_eigen_const (μ : ℝ) :
     ∀ i, ∑ j, exchangeTwo μ i j * (fun _ : Fin 2 => (1 : ℝ)) j
       = (1 + μ) * (fun _ : Fin 2 => (1 : ℝ)) i := by
   intro i
-  fin_cases i <;>
-    simp only [Fin.sum_univ_two, exchangeTwo_00, exchangeTwo_01, exchangeTwo_10,
-      exchangeTwo_11] <;> ring
+  fin_cases i <;> simp [Fin.sum_univ_two, exchangeTwo_apply] <;> ring
 
 /-- **`perronValue (E_μ) = 1 + μ`**, computed — not assumed.  `perronValue_unique`
 does the work: the constant vector is a positive eigenvector, so its eigenvalue
