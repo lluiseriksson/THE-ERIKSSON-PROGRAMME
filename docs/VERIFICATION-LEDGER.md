@@ -30298,3 +30298,50 @@ Nothing in the point formula, cells, precision levels, pairing definitions,
 product reconstruction checks, positivity boolean, or `OBSERVED`
 classification changes.  At the time of this addendum this second repair has
 not run and no recovery result is claimed.
+
+## Addendum 596 (2026-08-02, **TASK 14: precision confirmed; termwise pairing rejected**)
+
+**OBSERVED RECONNAISSANCE, NOT A GATE OR PROOF.**  The second repaired audit
+at raw SHA `4f4c184ecc55c9296188b3c63a098c2f60fdb1d8`, script SHA-256
+`f7aa994998f63e64194450941962564560104dc1f89f66e127d5c3aa3e407180`,
+returned exit 0 in normal and optimized Python after 0.350329 s and 0.772123 s.
+The LF-terminated JSON outputs were byte-identical, SHA-256
+`5fe8adfbd7091d08c38565830e818382f2375cd1369843ef58aea0673fba6a1f`,
+and classified themselves `OBSERVED`.
+
+**PRECISION AUDIT.**  The margin at `beta = 2`, `gamma/a = 0.10`, `L = 48`
+was computed entirely with mpmath arbitrary-precision `mp.mpf`, never
+binary64.  Its leading digits agreed at 100, 160, and 220 decimal digits:
+
+`3.008429663935208755939331734930357929054707689979345141615016...e-51`.
+
+This agreement is a stability check, not a rigorous enclosure.  Separately,
+100-decimal mpmath interval arithmetic enclosed the margin in
+
+`[3.00842966393520875593933173493035792905470768989882043488087228643447328827568236208058459761021288722913e-51,`
+` 3.00842966393520875593933173493035792905470769006017453617395194283014768206051196365021141669185384573454e-51]`.
+
+The explicit interval boolean `margin > 0` returned true.  Thus the printed
+`3.01e-51` is not a float64 subtraction artefact.  This is an instrumental
+interval enclosure, not a Lean/formal certificate.
+
+**TERMWISE INTERLACING NO-GO.**  At `beta = 2`, `gamma/a = 0.75`, every one of
+the 19 sampled lengths `L = 2,...,16,20,24,32,48` had individual adjacent
+periodic/antiperiodic factor quotients above one.  More decisively, after
+sorting both multisets of one-mode energies, every sampled length still had a
+componentwise violation.  The counts were one violation at `L = 2`, eight at
+`L = 16`, and 24 at `L = 48`; the largest offending sorted ratios at those
+lengths were respectively
+`1.00919905372498530583530867178519476694392396553918017645870`,
+`1.00269475477127603578748588335626816242501191503764580562540`, and
+`1.00089914309739081262440419186566364323239999098099921357225`.
+Both the adjacent and sorted products independently reconstructed the global
+vacuum quotient at 160 digits.
+
+Sorting gives the strongest componentwise matching test: its failure rules
+out every bijection in which all individual periodic/antiperiodic factor
+quotients are at most one.  Therefore monotonicity plus termwise interlacing
+cannot prove `R_L <= 1`; the observed global inequality is maintained by
+compensation between factors.  A global product/Fourier-sign argument remains
+plausible, but no such argument is proved here.  Neither sector obligation nor
+the uniform spatial-ring target has advanced.
