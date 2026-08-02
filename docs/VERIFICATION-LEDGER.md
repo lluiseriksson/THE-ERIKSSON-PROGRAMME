@@ -29987,3 +29987,169 @@ thermodynamic limit — every constant may depend on `L` and `m`.  Necessity of
 `β ≥ 0` for positivity is not proved and could not hold at `L = 0`.  Nothing
 here is a gauge theory.
 
+
+## Addendum 581 (2026-08-02, **D-3a closes as `Formalized`: eleven conjunctive
+conditions, two checkouts, and a `.gitignore` that nearly ate the evidence**)
+
+**NO LEAN CHANGED BY THIS ADDENDUM, AND NONE BY THE TWO COMMITS IT RECORDS.**
+The audited module carries blob `0a14617b87360d29d7cd20bda4308a8ee0857236` at
+the audited source and still carries it at the head of the evidence branch.
+Numbering note for whoever merges: 578 and 579 are this lane's; 580 belongs to
+the paper-14 desk and exists on both branches; 581 is this one.
+
+### The object, and the four identifiers it needs
+
+```
+Source commit (A2)   916de45a6d09df417e2af4e10f080f0521498fb2
+Source blob          0a14617b87360d29d7cd20bda4308a8ee0857236
+Canonical SHA-256    87ac87f63f9fe442230d84a7208e1735bbb7180334af67572df29c36838019c3
+Evidence record (B)  75fb37346eefa6e0560fdc7a0057ae15233e0ee9
+Erratum (C)          3a9be96edfd0214138e2cc8aaaadaab7ad4f106d
+Record               docs/audits/DOBRUSHIN-D3A-AUDIT-916de45a.md
+Artifacts            docs/audits/d3a-916de45a/  (16 files, MANIFEST.sha256)
+```
+
+`ff840b4d` and `693e0287` are discarded candidates.  **No evidence is attributed
+to either**; both stand immutable in the history, per the never-delete rule.
+
+The fourth identifier is the one that matters and the one this lane did not have
+before: the *materialized* SHA-256, of the bytes actually on disk, which is the
+only one that can differ from the other three.  It differed.
+
+### Status conferred
+
+Nine declarations, in three classes that are deliberately not summed into one
+number:
+
+* **five analytic endpoints** — `sum_zero_sub_const`, `abs_sub_mid_le`,
+  `abs_sum_signed_le`, `TV_nonneg`, `abs_sum_sub_le_tv_mul_osc`;
+* **one sharpness witness, counted apart** — `signed_bound_attained`, a closed
+  theorem giving EQUALITY where the corollary gives an inequality, which is what
+  licenses calling `TV * osc` *the* constant instead of a number above it;
+* **three exported auxiliaries** — `inf_le_apply`, `apply_le_sup`, `osc_nonneg`.
+
+Hypothesis discrimination read off the printed signatures, not asserted:
+`sum_zero_sub_const` and `TV_nonneg` need only `Fintype`; the other three
+generic results also need `Nonempty`, because `osc` is built from `sup'`/`inf'`;
+`DecidableEq` was removed and appears in no signature.
+
+### The eleven conditions of Amendment 2, all closed
+
+Focused elaboration succeeds; five endpoints compiled; the equality witness
+compiled; non-emptiness explicit in the signature; one convention each for `TV`
+and `osc`; the analytic one-half traceable to a single lemma; the corollary
+obtained by REWRITING (`unfold TV; exact this`) and not by a second proof under
+a second convention; stdout, stderr and exit code preserved outside the VM;
+focused oracle clean; SHA-256 reproduced from another checkout; no subsequent
+modification of the module.
+
+Measured: `lake build` exit 0, **8158 jobs, 379 s**, zero errors, empty stderr,
+exactly two accepted `unnecessarySimpa` suggestions at lines 236 and 245 and no
+others; focused oracle exit 0, **9/9** reports, **zero `sorryAx`**, every cone
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+### What each checkout did, stated so neither can be inflated later
+
+* **Checkout 1** (Windows, `core.autocrlf=false` and `core.eol=lf` set *before*
+  materialising anything) is **the only Lean compilation and axiom audit of
+  `A2`**.
+* **Checkout 2** (WSL2 Ubuntu 24.04, git 2.43.0, `core.autocrlf` unset) is **an
+  independent computational reproduction of the raw blob identity and of the
+  canonical SHA-256 — it did not run Lean.**  `elan` is absent there; Amendment 2
+  makes the second build preferable, not obligatory, so this is not a failure,
+  and the negative is recorded so a missing toolchain can never later read as a
+  second compilation.
+
+Its environmental diversity — another kernel, another git, another filesystem —
+is **reinforced evidence filed apart from the charter's literal condition**.  A
+condition tightened after seeing its result is not a condition, exactly as a
+gate weakened after evaluating it is not a gate.  Both checkouts share one
+physical host, and that limit is written down rather than left to be found.
+
+**And the byte lesson, which is the transferable one:** the platform does not
+determine byte identity.  Checkout 1 is on the machine whose *system* gitconfig
+sets `core.autocrlf=true` and was unaffected, because the setting was made
+before materialisation; checkout 2 produced canonical bytes because no
+conversion was configured, not because it is Linux.  The authority is
+`git rev-parse HEAD:<path>` equal to `git hash-object --no-filters <path>`, run
+in **every** checkout.
+
+### THE NEAR-MISS: `/.gitignore:9` = `*.log`
+
+Printing the staging **in full** before committing — the Addendum 577 rule —
+showed thirteen files where the directory had sixteen.  The five missing were
+the two empty `stderr` captures and, worse, the three load-bearing ones: the
+build log carrying the warning policy, the signature and axiom-cone log, and the
+checkout-2 log.  `git add` skips ignored paths **silently**.
+
+Uncaught, `B` would have cited a manifest of sixteen artifacts against a
+repository containing eleven, and every log quoted in the record would have been
+unverifiable from the repository.  That is the PR #43 defect by the inverse and
+worse mechanism: there the bytes *could not* be committed and it was declared;
+here they *could*, were not, and nothing declared it.
+
+Fixed by class, not by instance: `docs/audits/.gitignore` carries a negation for
+`*.log`, so the next evidence record does not step on the same rule.  A
+`git add -f` would have left the trap armed.
+
+**Gate adopted:** the entries of a manifest must equal the artifacts the commit
+contains **in the manifest's own directory, excluding the manifest itself**, and
+every hash must verify.  16 files, 16 `OK`.  Stated with its universe named,
+because a gate whose universe is vague reads as covering more than it checks —
+which was itself one of the three defects below.
+
+**Zero-byte artifacts are attested, not inferred:** `MANIFEST.sha256` carries
+size and SHA-256 for each, so "stderr empty" is proved rather than confused with
+"never written".  Same discipline as the sentinel rule: existing never means
+success.
+
+### THREE DEFECTS IN `B` ITSELF, found by external audit, fixed in `C`
+
+None touched the build, the cones, the hashes or the status.  All three were the
+record describing its own evidence wrongly.
+
+1. **Warnings mislocated.**  `B` placed them at the two
+   `by_cases h : x = 0 <;> simp [h]` closures.  They are at `simpa using h0`
+   (236) and `simpa using h1` (245); the `by_cases` lines are 229 and 246,
+   already use `simp`, and the linter says nothing about them.  `B` also implied
+   `norm_num` was the linter's suggestion — it proposes `simp`; `norm_num at h0`
+   was a different repair that failed for a different reason.
+2. **The tally substituted a different list for conditions 1-9**, and folded in
+   two gates **added during** the audit as though pre-registered — one paragraph
+   above where `B` itself separated them.  Counting a mid-audit gate as
+   pre-registered is the same defect as amending a gate after seeing its result,
+   with the sign flipped.
+3. **The manifest gate was stated over too wide a universe** — "the files the
+   commit contains" (19) instead of the artifacts in the evidence directory
+   (16).
+
+### TWO COUNTERS, and they count different things
+
+Registered explicitly because a single figure was quoted for both and that is a
+number nobody can check:
+
+* **"corrected in one place, alive in another"** (guard blindness) — Addenda
+  575, 576 and 577 are its fourth, fifth and sixth instances.  This round adds
+  none.
+* **"the prose claims more than the object beneath it"** — a different register.
+  Six instances came from the congruence lane; the `B` defects above are its
+  next appearance, and its shape is **new**: the prose outran not a lemma but
+  **its own evidence**.  The object was correct and the artifacts were
+  committed; the sentence citing them was wrong.
+  `scripts/check_module_prose.py` cannot see this class — it compares prose to
+  code, and here both were fine while the description of the *measurement* was
+  not.
+
+The "fifth time in this lane" written into `C`'s commit message was anchored to
+neither register and is withdrawn as an unverified count.
+
+### What this does NOT establish
+
+`YangMills/OS/DobrushinGruss.lean` (Popoviciu) remains **SOURCE, NOT RESULT** —
+unelaborated, and deliberately not a dependency of D-3c.  **D-3c is unwritten**:
+`deltaAt k (E i f) <= deltaAt k f + C i k * deltaAt i f` is not proved, and it is
+the rung that decides the campaign.  The global comparison estimate is open.  The
+finite-time operator interface is open, and charter prohibition 4 stands — even
+a complete D-3 would give decay of correlations, **not**
+`sup_L specRatio(L) < 1`.  The manuscript is unchanged at anchor `c3d8e32d` and
+claims only the earlier chain.
