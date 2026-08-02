@@ -119,13 +119,13 @@ it will run for more than 300 seconds.  If the task may not fit, partition the
 execution before launching it and make every intermediate result durable so a
 transport death does not erase completed work.
 
-For a preregistered gate, partitioning never changes, removes, or weakens a
-criterion.  Every phase receives the original contract and criteria verbatim;
-only its execution responsibility is bounded.  Role separation is preserved
-by one continuing auditor or by explicit fresh re-blinding, and a separate
-synthesis consumes sealed phase reports.  No phase may reveal to a later blind
-phase the route it must independently discover.  A timeout is not a verdict
-and creates no authority to amend the gate.
+For a preregistered gate, every phase receives the original contract and
+criteria verbatim; only execution is partitioned, never the criteria.  Role
+separation and blindness between phases are preserved by one continuing
+auditor or by explicit fresh re-blinding.  No phase may reveal to a later blind
+phase the route it must independently discover.  A separate final synthesis
+may consume only sealed phase reports and sealed evidence.  A timeout is not
+a verdict and creates no authority to amend the gate.
 
 ### External readings freeze an exact review object
 
