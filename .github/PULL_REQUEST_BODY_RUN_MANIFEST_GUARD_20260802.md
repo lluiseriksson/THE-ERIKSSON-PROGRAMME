@@ -43,7 +43,7 @@ before/after rule counts are frozen in:
 
 Local targeted results:
 
-- `tests/test_run_manifests.py`: 16 passed;
+- `tests/test_run_manifests.py`: 17 passed;
 - normal adversarial harness: exact base PASS, malformed new REJECTED,
   inherited worsening REJECTED, repair PASS, deletion REJECTED, retitle
   REJECTED, stale PASS INVALIDATED;

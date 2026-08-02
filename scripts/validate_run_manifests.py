@@ -166,7 +166,7 @@ def _artifact(
         return
     if isinstance(portable_digest, str) and SHA256.fullmatch(portable_digest):
         actual_lf = file_sha256_lf(path)
-        if actual_lf != portable_digest:
+        if actual_lf != portable_digest.lower():
             errors.append(
                 f"{field}.sha256_lf: mismatch (recorded {portable_digest}, "
                 f"actual {actual_lf})"

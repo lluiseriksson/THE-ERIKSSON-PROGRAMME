@@ -215,3 +215,12 @@ def test_windows_repository_separators_are_portable(tmp_path: Path) -> None:
     write_manifest(tmp_path, data)
     _, errors = validator.load_and_validate(root=tmp_path)
     assert errors == []
+
+
+def test_uppercase_portable_digest_is_presentation_only(tmp_path: Path) -> None:
+    data = manifest(tmp_path, "run-uppercase-portable-digest")
+    script = tmp_path / data["script"]["path"]
+    data["script"]["sha256_lf"] = validator.file_sha256_lf(script).upper()
+    write_manifest(tmp_path, data)
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert errors == []
