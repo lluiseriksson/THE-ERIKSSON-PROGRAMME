@@ -1,14 +1,19 @@
 import YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136
+import YangMills.RG.BalabanCMP116InteractingPhysicalPrecisionSourceAudit
 
 /-!
-**VALIDATED.** This audit was compiler-verified at source checkpoint
-`7fb235a3c86d3077b3d978a24a5623cd562eef9c` in one fresh Colab clone.  The
-later validation-closure commit changes only this annotation, documentation,
-and lightweight textual guards.
+**PRE-VALIDATION UPDATE.** The preceding assembler audit was compiler-verified
+at source checkpoint `7fb235a3c86d3077b3d978a24a5623cd562eef9c`.  The new
+interacting-precision declarations below have not yet been compiler-verified.
 -/
 
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.total
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.residual
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.sourceRange_bound
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.finiteRange
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.coercivity_pos
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.K_coercive
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.K_comp_interactingCovariance
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.E0
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.threshold
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.alpha

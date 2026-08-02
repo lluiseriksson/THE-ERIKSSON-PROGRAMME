@@ -7,14 +7,15 @@ import YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedPartialTermSour
 import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedRootedResidual
 import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedVolumeBudget
 import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedTerminalEq143
+import YangMills.RG.BalabanCMP116InteractingPhysicalPrecisionSource
 
 /-!
 # Source-specific pre-(1.36) assembly on the combined ledger
 
-**VALIDATED.** This source was compiler-verified at source checkpoint
-`7fb235a3c86d3077b3d978a24a5623cd562eef9c` in one fresh Colab clone.  The
-later validation-closure commit changes only this annotation, documentation,
-and lightweight textual guards.
+**PRE-VALIDATION UPDATE.** The preceding 17/41 assembler was compiler-verified
+at source checkpoint `7fb235a3c86d3077b3d978a24a5623cd562eef9c`.  The new
+interacting-precision installation in this revision has not yet been
+compiler-verified.
 
 This module removes the circular `S : PreEq136` input from the combined
 constructor.  Raw physical data are separated from proof inputs, while the
@@ -96,15 +97,11 @@ structure CMP116CenteredConditionedCombinedSourceData
       (SUNLieCoord Nc) (Nc ^ 2 - 1)
   contourCarrier : Finset (FinBox 4 (2 * Q))
   contourEquiv : Fin nDelta ≃ ↑contourCarrier
-  K : CombinedSourceEndomorphism M Q Nc
+  precisionSource : CMP116InteractingPhysicalPrecisionSource V
   root : CombinedSourceEndomorphism M Q Nc
-  sourceRange : ℕ
-  choice : CMP99SourcePi4CoarseFineWalkChoice M Q sourceRange layerWord
-  coercivityConstant : ℝ
+  choice : CMP99SourcePi4CoarseFineWalkChoice M Q (3 * M) layerWord
   mass : ℝ
-  coercivity_pos : 0 < coercivityConstant
   mass_pos : 0 < mass
-  K_coercive : IsCoerciveCLM K coercivityConstant
   Ahead : ℝ
   rho : ℝ
   rate : ℝ
@@ -176,6 +173,74 @@ variable
     {DeltaPi : CombinedSourceFineField M Q Nc →L[ℝ]
       CombinedSourceFineField M Q Nc}
     {J : CombinedSourceFineField M Q Nc}
+
+/-- Literal interacting Wilson-plus-gauge precision installed in the source. -/
+noncomputable def K
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
+    CombinedSourceEndomorphism M Q Nc :=
+  X.precisionSource.precision
+
+/-- Exact finite range of the literal interacting precision. -/
+def sourceRange
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℕ :=
+  X.precisionSource.sourceRange
+
+/-- Surviving physical coercivity of the literal interacting precision. -/
+def coercivityConstant
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) : ℝ :=
+  X.precisionSource.coercivityConstant
+
+theorem sourceRange_bound
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J)
+    (hM : 1 ≤ M) :
+    X.sourceRange + 1 ≤ 4 * M :=
+  X.precisionSource.sourceRange_bound hM
+
+theorem finiteRange
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
+    PhysicalCovarianceFiniteRange X.K physicalBondDist X.sourceRange :=
+  X.precisionSource.finiteRange
+
+theorem coercivity_pos
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
+    0 < X.coercivityConstant :=
+  X.precisionSource.coercivity_pos
+
+theorem K_coercive
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
+    IsCoerciveCLM X.K X.coercivityConstant :=
+  X.precisionSource.coercive
+
+/-- Exact interacting covariance paired with `K`; it is kept distinct from
+the conditioned Gaussian root used by the terminal contour measure. -/
+noncomputable def interactingCovariance
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
+    CombinedSourceEndomorphism M Q Nc :=
+  X.precisionSource.covariance
+
+theorem K_comp_interactingCovariance
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
+    X.K.comp X.interactingCovariance =
+      ContinuousLinearMap.id ℝ (CombinedSourceFineField M Q Nc) :=
+  X.precisionSource.precision_comp_covariance
 
 /-- Literal direct/native total installed by the source assembler. -/
 noncomputable def total
@@ -324,9 +389,6 @@ structure CMP116CenteredConditionedCombinedSourceProofs
       cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P
   Z0_subset_Z :
     cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P ⊆ Z
-  sourceRange_bound : X.sourceRange + 1 ≤ 4 * M
-  finiteRange :
-    PhysicalCovarianceFiniteRange X.K physicalBondDist X.sourceRange
   patchedDefect_small :
     ‖cmp99PatchedPhysicalParametrixDefect
         (cmp99SourcePi4Charts : Finset (CMP99SourcePi4Chart Unit Q))
@@ -534,8 +596,8 @@ noncomputable def
     K := X.K
     root := X.root
     sourceRange := X.sourceRange
-    sourceRange_bound := H.sourceRange_bound
-    finiteRange := H.finiteRange
+    sourceRange_bound := X.sourceRange_bound H.one_le_M
+    finiteRange := X.finiteRange
     coercivityConstant := X.coercivityConstant
     mass := X.mass
     coercivity_pos := X.coercivity_pos
@@ -644,7 +706,8 @@ noncomputable def
             (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P))
           X.radius H.radius_nonneg H.radius_cap X.K X.coercivity_pos X.mass_pos
           X.K_coercive baseCoarseCovariance H.Ahead_nonneg H.rho_nonneg
-          H.rate_pos H.shell_small H.patchCertificate H.sourceRange_bound
+          H.rate_pos H.shell_small H.patchCertificate
+          (X.sourceRange_bound H.one_le_M)
           H.degree_bound H.one_le_Delta H.contour_series_small layerWord
           X.choice D D₃ V₀ Pprop T DeltaPi J X.gk H.hD H.hD₃ H.hV₀
           X.C X.Rjet X.sourceJetBound H.sourceJetBound_nonneg H.hC H.hRjet
