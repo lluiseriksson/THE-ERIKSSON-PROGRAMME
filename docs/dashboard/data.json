@@ -19,6 +19,17 @@
   },
   "submissions": [
     {
+      "id": "critical-rescaling-fourier-nogo-v1.1-20260802",
+      "date": "2026-08-02",
+      "status": "submitted to ai.viXra — operation, category, and public identifier not restated",
+      "title": "Fourier Transverse Modes Obstruct Volume-Uniform Critical Coercivity in a Flat Lattice Gauge Block Form (v1.1)",
+      "category": "Not restated in the owner closeout",
+      "record_path": "docs/CRITICAL-RESCALING-FOURIER-NOGO-V1.1-SUBMISSION-20260802.md",
+      "pdf_sha256": "B8E655D3F1253D0EA915BA54DF00A5C72F4CE5B5D229F74FE82EC152333EA726",
+      "zip_sha256": "AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132",
+      "scope": "Exact all-scale Fourier witness and quadratic no-go bound; the witness is not claimed to minimize the full ker Q_L ∩ ker delta sector, as shown by the L=N'=2 quotient-2 counterexample. No continuum limit or Yang–Mills mass gap."
+    },
+    {
       "id": "su2-crossing-compensated-flow-20260802",
       "date": "2026-08-02",
       "status": "submitted — identifier pending moderation",

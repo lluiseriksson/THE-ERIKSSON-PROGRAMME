@@ -18,13 +18,14 @@ The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
 **Latest viXra submission (2026-08-02; identifier pending moderation).**
-*Machine-Checked Haar and Differential Descent at an SU(2) Crossing: A
-Four-Edge Compensated-Flow Ward Identity* was submitted as a new paper in
-**Physics — Mathematical Physics**.  Its authorized PDF has SHA-256
-`2BB66657A544E9AF4A30D682DC69F92E18A5D3B1AB8F53C105D0DFDE767CC7C1`.
-The exact submission metadata, unchanged Lean source-ZIP identity, and scope
-boundary are recorded in
-[`docs/SU2-CROSSING-COMPENSATED-FLOW-SUBMISSION-20260802.md`](docs/SU2-CROSSING-COMPENSATED-FLOW-SUBMISSION-20260802.md).
+*Fourier Transverse Modes Obstruct Volume-Uniform Critical Coercivity in a
+Flat Lattice Gauge Block Form*, version 1.1, was submitted to ai.viXra.  Its
+authorized PDF and formal source ZIP have SHA-256
+`B8E655D3F1253D0EA915BA54DF00A5C72F4CE5B5D229F74FE82EC152333EA726` and
+`AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132`.
+The exact witness claim, artifact identities, spectral counterexample, and
+provenance boundary are recorded in
+[`docs/CRITICAL-RESCALING-FOURIER-NOGO-V1.1-SUBMISSION-20260802.md`](docs/CRITICAL-RESCALING-FOURIER-NOGO-V1.1-SUBMISSION-20260802.md).
 This publication notice is result-neutral: it does not change the canonical
 proof state, the dashboard DAG, or the recorded distance to Clay.
 
