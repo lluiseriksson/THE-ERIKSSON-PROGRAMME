@@ -93,6 +93,8 @@ variable
     (C : CMP116Lemma1WeakenedPropagatorCertificate
       active term treeLength baseWeight B0 delta0 delta1 M kappa1)
 
+include C
+
 /-- The source split at `m = 2^4` bounds the weakening exponent uniformly by
 `16 * kappa1`.  The number `16` and the tree-length absorption are kept
 separate; no repository `/24` animal normalization enters this lemma. -/
