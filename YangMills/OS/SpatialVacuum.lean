@@ -263,4 +263,66 @@ theorem physical_arcosh_circle_log_mixture
         nlinarith
     · exact hs
 
+/-! ## The elementary logarithmic kernel factorisation -/
+
+/--
+The angular kernel factors through a point `x` of the open unit interval when
+`t = (1 - x)^2 / (2x)`.  All three active scalar conditions are printed as
+`0 < t`, `0 < x < 1`, and the denominator-cleared relation
+`2 * x * t = (1 - x)^2`.
+
+This is a pointwise identity on the unit circle.  It does not identify a
+finite logarithmic sum with a transfer-matrix vacuum and proves neither
+spatial spectral-sector bound.
+-/
+theorem circle_log_kernel_factorization {t x : ℝ} (ht : 0 < t)
+    (hx0 : 0 < x) (hx1 : x < 1) (htx : 2 * x * t = (1 - x) ^ 2)
+    {z : ℂ} (hz : z ∈ sphere (0 : ℂ) 1) :
+    1 + (1 - z.re) / t =
+      ‖1 - (x : ℂ) * z‖ ^ 2 / (1 - x) ^ 2 := by
+  have hnorm : ‖z‖ = 1 := by
+    simpa [mem_sphere_iff_norm] using hz
+  have hnormSq :
+      ‖1 - (x : ℂ) * z‖ ^ 2 =
+        (1 - x) ^ 2 + 2 * x * (1 - z.re) := by
+    rw [← Complex.normSq_eq_norm_sq, Complex.normSq_sub]
+    simp [Complex.normSq_mul, Complex.normSq_eq_norm_sq, hnorm, abs_of_pos hx0]
+    ring
+  rw [hnormSq, ← htx]
+  field_simp [ht.ne', hx0.ne', hx1.ne']
+  ring
+
+/--
+Taking logarithms of `circle_log_kernel_factorization` gives the local bridge
+from the scalar log-mixture kernel to the finite root-product logarithms.  Its
+active hypotheses `0 < t`, `0 < x < 1`, and
+`2 * x * t = (1 - x)^2` remain explicit.
+
+This theorem is still pointwise scalar algebra.  No integration, finite
+vacuum comparison, spectral classification, or sector estimate is concluded.
+-/
+theorem circle_log_kernel_eq_log_norm {t x : ℝ} (ht : 0 < t)
+    (hx0 : 0 < x) (hx1 : x < 1) (htx : 2 * x * t = (1 - x) ^ 2)
+    {z : ℂ} (hz : z ∈ sphere (0 : ℂ) 1) :
+    Real.log (1 + (1 - z.re) / t) =
+      2 * Real.log ‖1 - (x : ℂ) * z‖ - 2 * Real.log (1 - x) := by
+  have hnorm : ‖z‖ = 1 := by
+    simpa [mem_sphere_iff_norm] using hz
+  have hre : z.re ≤ 1 := by
+    simpa [hnorm] using Complex.re_le_norm z
+  have hkernel : 0 < 1 + (1 - z.re) / t := by
+    have hquot : 0 ≤ (1 - z.re) / t :=
+      div_nonneg (sub_nonneg.mpr hre) ht.le
+    linarith
+  have hfac := circle_log_kernel_factorization ht hx0 hx1 htx hz
+  have hnormSq : 0 < ‖1 - (x : ℂ) * z‖ ^ 2 := by
+    rw [← hfac]
+    exact hkernel
+  have hnormPos : 0 < ‖1 - (x : ℂ) * z‖ := by
+    nlinarith [norm_nonneg (1 - (x : ℂ) * z)]
+  have hden : 0 < 1 - x := sub_pos.mpr hx1
+  rw [hfac, Real.log_div (pow_ne_zero 2 hnormPos.ne')
+    (pow_ne_zero 2 hden.ne'), Real.log_pow, Real.log_pow]
+  norm_num
+
 end YangMills.OS
