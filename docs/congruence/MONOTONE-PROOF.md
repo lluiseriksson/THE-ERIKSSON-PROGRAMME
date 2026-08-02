@@ -1,76 +1,112 @@
-# MONOTONE, proved — and the Hilbert metric turned out to be unnecessary
+# Positive mixing cannot increase the projective diameter
 
-Registered target (STABILISER-CHARTER.md):
-`Δ(S M Sᵀ) ≤ Δ(M)` for entrywise positive `S`.
+Architecture after external review.  What was first written as a statement about
+*congruence* of a *symmetric* matrix is neither: symmetry is never used, and the
+two sides need not be transposes of each other.
 
-**Status: proved, elementary, and for `S` merely NONNEGATIVE.**  The charter's
-intended route went through the Hilbert projective metric — `Δ` as the diameter
-of the columns, plus non-expansiveness of positive maps, plus a
-convex-combination lemma.  None of that is needed.  The charter also set a death
-criterion: *if the proof needs the Birkhoff contraction constant, stop*.  It
-needs neither the constant nor the theorem nor the metric.
+## Notation, logarithm-free
 
-## Statement
+For `M` entrywise positive,
 
-Let `M` be entrywise positive and `S` entrywise nonnegative with `T = S M Sᵀ`
-entrywise positive.  Then `Δ(T) ≤ Δ(M)`, where
+    Φ(M) := max_{a,b,c,d}  M_ab M_cd / (M_cb M_ad),      Δ(M) = log Φ(M).
 
-    Δ(M) = max_{i,j,k,l} log ( M_ik M_jl / (M_jk M_il) ).
+`ArgMax(M)` denotes the set of quadruples attaining `Φ(M)`.
 
-## Proof
+## Theorem A (two-sided).  `Δ(A M B) ≤ Δ(M)`
 
-Write `e = exp Δ(M)`.  By definition, for all indices
+`A, B` entrywise nonnegative, `M` entrywise positive, `T = A M B` entrywise
+positive.  Then `Φ(T) ≤ Φ(M)`.
 
-    (1)   M_ab M_cd  ≤  e · M_cb M_ad .
+*Proof.*  Fix `i,j,k,l` and put `w_abcd = A_ia A_jc B_bk B_dl ≥ 0`.  Expanding,
 
-Fix `i,j,k,l` and expand, with weights `w_abcd = S_ia S_kb S_jc S_ld ≥ 0`:
+    T_ik T_jl = Σ w_abcd · M_ab M_cd
+    T_jk T_il = Σ w_abcd · M_cb M_ad
 
-    T_ik T_jl = Σ_abcd w_abcd · M_ab M_cd
-    T_jk T_il = Σ_abcd w_abcd · M_cb M_ad
+— the same weights.  The second line is the whole argument: expanding
+`T_jk T_il` produces the coefficient `A_ja A_ic B_bk B_dl`, and renaming the
+summation indices `a ↔ c` returns it to `w_abcd` while moving the swap onto the
+`M`-factors.  By definition of `Φ(M)`, `M_ab M_cd ≤ Φ(M) · M_cb M_ad` for every
+quadruple; all weights are nonnegative, so the inequality survives summation. ∎
 
-The second line is the whole trick.  Expanding `T_jk T_il` gives the coefficient
-`S_ja S_kb S_ic S_ld`; swapping the summation names `a ↔ c` leaves that
-coefficient equal to `S_ia S_kb S_jc S_ld = w_abcd` and moves the swap onto the
-`M`-factors, turning `M_ab M_cd` into `M_cb M_ad`.  **Same weights, swapped
-matrix indices.**
+**Corollary A1 (congruence).**  `B = Aᵀ`: `Δ(S M Sᵀ) ≤ Δ(M)` for `S ≥ 0`.  This
+answers §8 of *Congruence Rigidity and the Fusion Bound*: beyond the diagonal
+case the diameter is not merely non-invariant, it is **monotone**.
 
-Now apply (1) termwise.  Every weight is nonnegative, so
+**Remark (the hypothesis is not opaque).**  With `M > 0` entrywise,
+`S M Sᵀ > 0` **iff no row of `S` is zero**.  Positivity of the image is a
+structural condition on `S`, not an extra assumption to be carried.
 
-    T_ik T_jl  ≤  e · T_jk T_il ,
+## Theorem B (equality, by supports)
 
-for all `i,j,k,l`, which is exactly `Δ(T) ≤ Δ(M)`.  ∎
+`Φ(T) = Φ(M)` iff there is a quadruple of rows `(i,j,k,l)` with
 
-## Why this is the right proof and not a shortcut
+    supp A_i × supp B_·k × supp A_j × supp B_·l  ⊆  ArgMax(M).
 
-The cross-ratio bound (1) is not an estimate about `M`; it *is* the definition of
-`Δ(M)`.  The proof therefore says something sharper than "mixing contracts":
-the quantity `Δ` is defined by a family of bilinear inequalities that is closed
-under congruence by any nonnegative matrix, because congruence acts on those
-inequalities by a nonnegative change of weights.  Positivity of `S` is not used;
-only nonnegativity, plus enough of it that `T` stays positive.
+*Reason.*  Equality forces the termwise inequality to be tight on **every**
+quadruple carrying positive weight; one non-maximising quadruple with positive
+weight makes the sum strict.
 
-## What is verified
+**Corollary B1 (strict contraction).**  If every entry of `S` is positive and
+`Δ(M) > 0`, then `Δ(S M Sᵀ) < Δ(M)`, strictly.  All weights are positive, and
+the quadruples with `a = c` give ratio exactly `1 < Φ(M)`, so positive weight
+sits on a non-maximising term.
 
-* `scripts/probe_stabilizer.py` — reconnaissance, sanity exact to 4.4e-16.
-* `scripts/gate_JA.py` — the pre-registered adversarial gate: 600 checks, five
-  families built to try to *increase* `Δ` (near-singular `S`, row scales
-  spanning 1e4, one dominant entry, near-monomial, near-proportional columns),
-  `n` up to 8, `μ` down to 1e-3.  Worst gap `-3.3e-08`; never positive.
-* `scripts/check_proof.py` — the weight-matching identity itself, the one step
-  derived by hand, checked on 1440 index quadruples: max deviation 9.2e-14.
-  Also confirms the consequence for `S` merely nonnegative.
+**Corollary B2 (the universal stabiliser is the monomial group).**  For `S`
+square, nonnegative, with no zero row:
 
-## What is NOT proved
+    [ ∀ M > 0 :  Δ(S M Sᵀ) = Δ(M) ]  ⟺  S = D P,  D positive diagonal, P a permutation.
 
-The converse half of the charter — **STABILISER**, that equality for all `M`
-holds exactly on the monomial group — is untouched.  The reconnaissance is
-suggestive (equality breaks at a perturbation of `1e-4`, and the near-monomial
-family in gate JA gives gaps of order `1e-8` that shrink continuously to zero),
-but suggestive is not proved.  Gate JB is registered and has not been run.
+*Route, via witnesses.*  For `p ≠ q` and `0 < μ < 1` let `M^{pq}` be all ones
+except `M_pq = M_qp = μ`.  Then `Φ(M^{pq}) = μ⁻²` and
+`ArgMax(M^{pq}) = {(q,q,p,p), (p,p,q,q)}` — **exactly two quadruples**, verified
+exhaustively.  By Theorem B, equality at `M^{pq}` forces four supports whose
+Cartesian product lands inside that two-element set, hence all four are
+singletons in `{p,q}`; so `S` has a row supported purely on column `p` and
+another purely on column `q`.  Ranging over all pairs, every column of `S` owns a
+pure row; `n` such rows exhaust the rows and match them to columns bijectively.
 
-From the proof, the shape of the converse is visible: equality forces (1) to be
-tight on every quadruple carrying positive weight.  A monomial `S` only ever
-gives weight to quadruples with `a = c`, where (1) is an identity; a mixing `S`
-gives weight to quadruples where it can be made strict.  Turning that into a
-theorem needs, for each non-monomial `S`, an explicit `M`.  That is the next
-piece of work, and it is where the paper can still die.
+## The quantifier is where this can go wrong
+
+**False as stated:** *`S` non-monomial ⟹ `Δ(S M Sᵀ) < Δ(M)` for every `M > 0`.*
+Take `M = 𝟙𝟙ᵀ`: `Δ = 0`, and every transformation preserves zero.  The correct
+object is the **universal** stabiliser — equality for *all* `M` — not equality at
+a fixed `M`.
+
+## Novelty, stated narrowly
+
+Positive operators are non-expansive, and under stronger hypotheses contractive,
+for Hilbert's projective metric; that is the classical Birkhoff–Hopf circle, and
+Eveson–Nussbaum present positive operators precisely as contractions of the
+projective geometry.  **Theorem A is very probably a finite-dimensional shadow of
+that principle, and we do not claim the monotonicity itself as new.**
+
+What a directed search did not find:
+
+* this finite *same-weights* identity as an elementary, mechanisable proof that
+  never mentions the metric, the cone, or the contraction constant;
+* the equality criterion by supports (Theorem B);
+* the classification of the universal stabiliser as the monomial group.
+
+That is the resistant claim, and it is deliberately smaller than "we prove that
+positive maps contract".
+
+## Verified
+
+* `scripts/probe_stabilizer.py` — reconnaissance; sanity exact to 4.4e-16.
+* `scripts/gate_JA.py` — pre-registered adversarial gate, 600 checks, five
+  families built to try to *increase* `Δ`, `n ≤ 8`, `μ ≥ 1e-3`; worst gap
+  `-3.3e-08`, never positive.
+* `scripts/check_proof.py` — the same-weights identity itself, 1440 quadruples,
+  max deviation 9.2e-14.
+* `scripts/check_restructure.py` — Theorem A two-sided with `M` **not**
+  symmetric (450 cells, worst `-0.30`); strict contraction for `S > 0` (300
+  cells, strict in every one); and `ArgMax(M^{pq})` computed **exhaustively**,
+  exactly the two predicted quadruples at every `n, p, q, μ` tested.
+
+## Not done
+
+Theorem B and Corollaries B1, B2 are proved on paper with their ingredients
+measured, but **nothing here is in Lean yet**, and gate JB as originally
+registered (a witness *search*) has been superseded by the witness
+*construction* above — better, but a change to a pre-registered gate, and
+recorded as such rather than allowed to pass quietly.
