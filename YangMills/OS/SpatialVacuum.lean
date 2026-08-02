@@ -13,16 +13,63 @@ import Mathlib.Analysis.SpecialFunctions.Integrals.PosLogEqCircleAverage
 This file isolates one scalar analytic brick.  It does **not** identify the
 finite transfer spectrum and proves neither spatial spectral-sector bound.
 
-The theorem `arcosh_circle_log_mixture` is generic in `c`, `B`, and `s`.  In
-the later physical application, `c = cosh (2 * (a - γ))`; consequently its
-hypothesis `1 < c` is supplied by the active disordered-region assumption
-`γ < a`.  That physical front door has not yet been constructed and must print
-`0 < β`, `0 ≤ γ`, and `γ < a` in its own statement.
+The theorem `arcosh_circle_log_mixture` is generic in `c`, `B`, and `s`.  Its
+physical front door `physical_arcosh_circle_log_mixture` prints the active
+hypotheses `0 < β`, `0 ≤ γ`, and `γ < a`; there
+`c = cosh (2 * (a - γ))`, so `γ < a` supplies `1 < c`.
 -/
 
 namespace YangMills.OS
 
 open Metric Real
+
+/-! ## The finite logarithmic consequence of the root products -/
+
+/--
+Taking norms and logarithms of `periodic_antiperiodic_root_products` gives the
+strict finite-grid comparison.  The hypotheses `0 < L` and `0 < x < 1` are
+active and printed: in the physical application the latter is supplied by the
+disordered-region hypothesis `γ < a`.
+
+This theorem is finite algebra.  It does not identify these sums with finite
+transfer-matrix vacua and proves neither spatial spectral-sector bound.
+-/
+theorem periodic_antiperiodic_log_norm_sums_lt {L : ℕ} (hL : 0 < L)
+    {ζ η : ℂ} (hζ : IsPrimitiveRoot ζ L) (hη : η ^ L = -1)
+    {x : ℝ} (hx0 : 0 < x) (hx1 : x < 1) :
+    (∑ j ∈ Finset.range L, Real.log ‖1 - (x : ℂ) * ζ ^ j‖) <
+      ∑ j ∈ Finset.range L, Real.log ‖1 - (x : ℂ) * (ζ ^ j * η)‖ := by
+  rcases periodic_antiperiodic_root_products hL hζ hη hx0 hx1 with
+    ⟨hperiodic, hantiperiodic, hperiodicPos, hproductsLt⟩
+  have hantiperiodicPos : 0 < 1 + x ^ L := lt_trans hperiodicPos hproductsLt
+  have hperiodicProdNe :
+      (∏ j ∈ Finset.range L, (1 - (x : ℂ) * ζ ^ j)) ≠ 0 := by
+    rw [hperiodic]
+    exact_mod_cast hperiodicPos.ne'
+  have hantiperiodicProdNe :
+      (∏ j ∈ Finset.range L, (1 - (x : ℂ) * (ζ ^ j * η))) ≠ 0 := by
+    rw [hantiperiodic]
+    exact_mod_cast hantiperiodicPos.ne'
+  have hperiodicFactorNe : ∀ j ∈ Finset.range L,
+      (1 - (x : ℂ) * ζ ^ j) ≠ 0 :=
+    Finset.prod_ne_zero_iff.mp hperiodicProdNe
+  have hantiperiodicFactorNe : ∀ j ∈ Finset.range L,
+      (1 - (x : ℂ) * (ζ ^ j * η)) ≠ 0 :=
+    Finset.prod_ne_zero_iff.mp hantiperiodicProdNe
+  have hperiodicLog :
+      (∑ j ∈ Finset.range L, Real.log ‖1 - (x : ℂ) * ζ ^ j‖) =
+        Real.log (1 - x ^ L) := by
+    rw [← Real.log_prod fun j hj ↦ norm_ne_zero_iff.mpr (hperiodicFactorNe j hj),
+      ← Complex.norm_prod, hperiodic, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_pos hperiodicPos]
+  have hantiperiodicLog :
+      (∑ j ∈ Finset.range L, Real.log ‖1 - (x : ℂ) * (ζ ^ j * η)‖) =
+        Real.log (1 + x ^ L) := by
+    rw [← Real.log_prod fun j hj ↦ norm_ne_zero_iff.mpr (hantiperiodicFactorNe j hj),
+      ← Complex.norm_prod, hantiperiodic, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_pos hantiperiodicPos]
+  rw [hperiodicLog, hantiperiodicLog]
+  exact Real.strictMonoOn_log hperiodicPos hantiperiodicPos hproductsLt
 
 private noncomputable def arcoshRadius (y : ℝ) : ℝ :=
   Real.exp (-Real.arcosh y)
