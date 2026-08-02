@@ -439,6 +439,13 @@ structure CMP116CenteredConditionedCombinedSourceProofs
   normalizedGap :
     ((((X.gapScale * M : ℕ) : ℝ) ^ 4)⁻¹ * (X.gapCard : ℝ)) =
       (nDelta : ℝ)
+  deltaRadius_eq :
+    X.base.deltaRadius = fun _ => cmp116Eq214SigmaCauchyRadius X.kappa1
+  yRadius_eq :
+    X.base.yRadius = fun Y =>
+      cmp116Eq218TauAbsSolved X.E0 X.epsilon1 X.C1 X.alpha4 M X.q
+        X.C2 X.kappa1 X.delta X.kappa
+          (cmp116Eq80Lemma1CombinedDomainMetric anchor domains E Y : ℝ)
   alpha_pos : 0 < X.alpha
   root_small :
     X.alpha *
@@ -649,9 +656,17 @@ noncomputable def
         CMP116CenteredConditionedCombinedSourceData.r2Rate] using
         cmp116Eq226_optimalInteractionAlpha_budget
           X.potentialRate X.r2Rate X.gamma
-    deltaRadius_eq := by rfl
+    deltaRadius_eq := by
+      change X.base.deltaRadius = fun _ =>
+        cmp116Eq214SigmaCauchyRadius X.kappa1
+      exact H.deltaRadius_eq
     normalizedGap := H.normalizedGap
-    yRadius_eq := by rfl
+    yRadius_eq := by
+      change X.base.yRadius = fun Y =>
+        cmp116Eq218TauAbsSolved X.E0 X.epsilon1 X.C1 X.alpha4 M X.q
+          X.C2 X.kappa1 X.delta X.kappa
+            (cmp116Eq80Lemma1CombinedDomainMetric anchor domains E Y : ℝ)
+      exact H.yRadius_eq
     gk_ne := X.lemma1.gk_pos.ne'
     threshold_eq := by rfl
     alpha_nonneg := le_of_lt H.alpha_pos
