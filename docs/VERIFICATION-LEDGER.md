@@ -30214,3 +30214,30 @@ the exact order `R_L <= 1`, plausibly through an exact interlacing, product, or
 Fourier-sign argument.  This observation still proves no vacuum comparison,
 fermionic classification, odd/even sector estimate, or uniform spatial-ring
 bound.
+
+## Addendum 591 (2026-08-02, **TASK 14: precision and pairing audit fixed**)
+
+**PROTOCOL COMMITTED BEFORE EXECUTION; NOT A GATE.**  Addendum 590 printed a
+margin near `3.01e-51`.  The underlying probe used mpmath `mp.mpf` at 100
+decimal digits throughout, not binary64, but that fact alone is not an interval
+certificate and was not explicit enough in the result record.
+
+Before accepting either the extreme parameter direction or a proposed
+term-by-term interlacing proof, `scripts/probe_spatial_vacuum_pairing.py` fixes
+two further reconnaissance checks.  First, it recomputes the cell `beta = 2`,
+`gamma/a = 0.10`, `L = 48` at 100, 160, and 220 decimal digits and then with
+100-decimal mpmath interval arithmetic, requiring the entire reported interval
+for `1 - R_L` to be strictly positive.  The interval remains instrumental
+evidence, not a Lean or formal certificate.
+
+Second, at `beta = 2`, `gamma/a = 0.75`, it checks each individual factor in
+the literal adjacent periodic/antiperiodic pairing for every `L = 2,...,16,
+20,24,32,48`.  It also sorts both multisets of one-mode energies and compares
+them componentwise.  A sorted violation rules out every bijection whose
+individual periodic/antiperiodic factor quotients are all at most one, rather
+than merely rejecting one unfortunate adjacent pairing.  Both products are
+required to reconstruct the global quotient at 160 digits.
+
+The output is classified `OBSERVED`, never PASS, and carries no threshold or
+licensed theorem.  At the time of this addendum the audit has not run; neither
+precision stability nor termwise pairing is claimed.
