@@ -1,0 +1,21 @@
+# Evidence manifest for docs/audits/DOBRUSHIN-D3A-AUDIT-916de45a.md
+# Written so that a zero-byte artifact is ATTESTED as empty rather than
+# merely absent-looking.  The sha256 of the empty string is
+# e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.
+# Columns: sha256  bytes  name
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855        0  checkout-1-attributes.txt
+fbecb8a8b11e417ef3f44f3c6a88d8f97947df64f0f9bb51e862028c46bf4362      231  checkout-1-audit-command.txt
+031d666f0e9e2a6787bea8001e7b9e7da97d79f2804f9b2b2ae0f43500d3e60b     1082  checkout-1-audit-driver.lean
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa        2  checkout-1-audit.exit.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855        0  checkout-1-audit.stderr.log
+c99d98c5a1bfbfcfc495a47abaf85f67ee9a32dcdcc658a854a99179723dd590       45  checkout-1-build-command.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa        2  checkout-1-build.exit.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855        0  checkout-1-build.stderr.log
+aa3c753bfda7926720b89b672155e8fda2188b5597e51a85cc023996b5c65c26      441  checkout-1-build.stdout.log
+725b27fab5a05a212d226daec4a5d843ab3503e375cd2ca924483d4fd529d729      149  checkout-1-git-config.txt
+c793986f4383f32ef4f36378ac117ec7980952edbb4eae58226ad2ca2b292b98      310  checkout-1-identities.txt
+7faff201477cea37b4ecb13d82c873b64fc08704a1f3b88d90e4030c3373bfb3     2279  checkout-1-signatures-and-axioms.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855        0  checkout-1-status.txt
+e2c158202b4b62717a741ed4aca42ab8c9bbf4264db2053edd818cb186759d8e       66  checkout-1-timing.txt
+b6c39ffe2681d21457d7ab8062a0a57c10792eabdd78c26d860e74ee35b74382      890  checkout-2-environment-and-identities.log
+972b46bfcb95439da7386a5e866a5bc1fdcbd2f302198157464ee75153b31da8     1659  checkout-2-script.sh

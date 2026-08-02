@@ -1,0 +1,5 @@
+lake env lean _audit.lean
+
+Driver source: checkout-1-audit-driver.lean (materialised at the repository
+root as the untracked scratch file _audit.lean, per CLAUDE.md, and deleted
+before this commit -- its bytes are preserved here).

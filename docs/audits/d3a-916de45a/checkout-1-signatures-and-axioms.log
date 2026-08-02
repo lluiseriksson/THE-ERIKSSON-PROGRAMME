@@ -1,0 +1,25 @@
+@sum_zero_sub_const : ∀ {S : Type u_1} [inst : Fintype S] {a : S → ℝ},
+  ∑ x, a x = 0 → ∀ (g : S → ℝ) (c : ℝ), ∑ x, a x * (g x - c) = ∑ x, a x * g x
+@abs_sub_mid_le : ∀ {S : Type u_1} [inst : Fintype S] [inst_1 : Nonempty S] (g : S → ℝ) (x : S),
+  |g x - mid g| ≤ osc g / 2
+@abs_sum_signed_le : ∀ {S : Type u_1} [inst : Fintype S] [inst_1 : Nonempty S] {a : S → ℝ},
+  ∑ x, a x = 0 → ∀ (g : S → ℝ), |∑ x, a x * g x| ≤ (∑ x, |a x|) / 2 * osc g
+@TV_nonneg : ∀ {S : Type u_1} [inst : Fintype S] (p q : S → ℝ), 0 ≤ TV p q
+@abs_sum_sub_le_tv_mul_osc : ∀ {S : Type u_1} [inst : Fintype S] [inst_1 : Nonempty S] {p q : S → ℝ},
+  ∑ x, p x = ∑ x, q x → ∀ (g : S → ℝ), |∑ x, (p x - q x) * g x| ≤ TV p q * osc g
+signed_bound_attained : |∑ x, ((if x = 0 then 1 else 0) - if x = 1 then 1 else 0) * if x = 0 then 1 else 0| =
+  (TV (fun x => if x = 0 then 1 else 0) fun x => if x = 1 then 1 else 0) * osc fun x => if x = 0 then 1 else 0
+@inf_le_apply : ∀ {S : Type u_1} [inst : Fintype S] [inst_1 : Nonempty S] (g : S → ℝ) (x : S),
+  Finset.univ.inf' ⋯ g ≤ g x
+@apply_le_sup : ∀ {S : Type u_1} [inst : Fintype S] [inst_1 : Nonempty S] (g : S → ℝ) (x : S),
+  g x ≤ Finset.univ.sup' ⋯ g
+@osc_nonneg : ∀ {S : Type u_1} [inst : Fintype S] [inst_1 : Nonempty S] (g : S → ℝ), 0 ≤ osc g
+'YangMills.OS.Dobrushin.sum_zero_sub_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.abs_sub_mid_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.abs_sum_signed_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.TV_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.abs_sum_sub_le_tv_mul_osc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.signed_bound_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.inf_le_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.apply_le_sup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.osc_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,10 @@
+# Audit evidence records live here, and for them the captured stdout/stderr IS
+# the evidence: the build log carrying the warning policy, the signature and
+# axiom-cone log, the per-checkout identity logs.
+#
+# The repository-wide `*.log` rule (/.gitignore line 9) is right for build
+# scratch and wrong here.  Without this exception `git add` silently skips
+# exactly the load-bearing artifacts and leaves a manifest that lists files the
+# commit does not contain -- an evidence record that cannot be verified from
+# the repository is not an evidence record.
+!*.log

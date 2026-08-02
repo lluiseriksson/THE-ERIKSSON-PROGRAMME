@@ -1,0 +1,23 @@
+=== environment identity ===
+Linux LluisPC 5.15.167.4-microsoft-standard-WSL2 #1 SMP Tue Nov 5 00:21:55 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+git version 2.43.0
+=== git config in this checkout ===
+core.autocrlf <unset>
+core.eol <unset>
+HEAD is now at 916de45a A-double-prime: supersedes 693e0287 -- the inventory fix reached the header and not the docstrings
+=== identities ===
+commit=916de45a6d09df417e2af4e10f080f0521498fb2
+blob=0a14617b87360d29d7cd20bda4308a8ee0857236
+working_blob=0a14617b87360d29d7cd20bda4308a8ee0857236
+canonical=87ac87f63f9fe442230d84a7208e1735bbb7180334af67572df29c36838019c3
+materialized=87ac87f63f9fe442230d84a7208e1735bbb7180334af67572df29c36838019c3
+=== status / diff / attrs ===
+(status end)
+diff: clean
+(attr end)
+=== gates ===
+OK commit
+OK raw blob equality
+OK canonical == materialized
+OK reproduces the declared canonical hash
+CHECKOUT 2 IDENTITY PASSED

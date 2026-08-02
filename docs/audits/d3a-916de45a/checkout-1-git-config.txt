@@ -1,0 +1,4 @@
+C:/Users/lluis/AppData/Local/Temp/d3a-audit-1
+https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
+file:.git/config	false
+file:.git/config	lf
