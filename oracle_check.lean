@@ -3164,6 +3164,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.spatialRing_specRatio_le_of_sector_bounds
 #print axioms YangMills.OS.periodic_antiperiodic_root_products
 #print axioms YangMills.OS.arcosh_circle_log_mixture
+#print axioms YangMills.OS.physical_arcosh_circle_log_mixture
 
 -- Spatial-ring uniformity campaign: exact local dual-bond identity only
 #print axioms YangMills.OS.dualFieldBond
