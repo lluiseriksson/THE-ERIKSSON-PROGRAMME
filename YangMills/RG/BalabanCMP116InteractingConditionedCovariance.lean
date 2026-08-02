@@ -120,7 +120,7 @@ theorem cmp116PhysicalEndomorphismRealMatrix_posSemidef
     exact
       cmp116PhysicalEndomorphismRealMatrix_toEuclideanCLM_apply T x
   rw [hconj]
-  exact (isPositive_linearIsometryEquiv_conj_iff E.symm).2 hT
+  exact (LinearMap.isPositive_linearIsometryEquiv_conj_iff E.symm).2 hT
 
 /-- Reconstruction of a real coordinate matrix is a right inverse to the
 canonical real coordinate matrix. -/
@@ -131,10 +131,9 @@ theorem cmp116PhysicalEndomorphismRealMatrix_reconstruction
       (PhysicalCoordinate d N Nc) ℝ) :
     cmp116PhysicalEndomorphismRealMatrix
         (cmp116PhysicalEndomorphismOfRealMatrix A) = A := by
-  apply LinearMap.toMatrix'.injective
-  rw [Matrix.toLin'_toMatrix']
-  apply LinearMap.ext
-  intro x
+  ext i j
+  rw [cmp116PhysicalEndomorphismRealMatrix,
+    LinearMap.toMatrix'_apply]
   simp [cmp116PhysicalEndomorphismRealMatrix,
     cmp116PhysicalEndomorphismFlatLinearMap,
     cmp116PhysicalEndomorphismOfRealMatrix, LinearMap.comp_apply]
@@ -151,7 +150,7 @@ inverse of the symmetric Wilson-plus-gauge precision. -/
 theorem covariance_isSymmetric
     (X : CMP116InteractingPhysicalPrecisionSource (M := M) (Q := Q) U) :
     X.covariance.IsSymmetric := by
-  unfold covariance precision
+  unfold covariance interactingPhysicalCovarianceCLM
   exact covarianceOfIsCoerciveCLM_isSymmetric _
     (sub_pos.mpr X.defectBudget)
     (isCoerciveCLM_interactingPhysicalBasePrecision
@@ -163,7 +162,7 @@ theorem covariance_psd
     (X : CMP116InteractingPhysicalPrecisionSource (M := M) (Q := Q) U)
     (y : PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc) :
     0 ≤ inner ℝ y (X.covariance y) := by
-  unfold covariance precision
+  unfold covariance interactingPhysicalCovarianceCLM
   exact covarianceOfIsCoerciveCLM_psd _
     (sub_pos.mpr X.defectBudget)
     (isCoerciveCLM_interactingPhysicalBasePrecision
@@ -174,7 +173,7 @@ bound, before any coordinate transport or localization. -/
 theorem norm_covariance_le
     (X : CMP116InteractingPhysicalPrecisionSource (M := M) (Q := Q) U) :
     ‖X.covariance‖ ≤ X.coercivityConstant⁻¹ := by
-  unfold covariance precision coercivityConstant
+  unfold covariance interactingPhysicalCovarianceCLM coercivityConstant
   exact norm_covarianceOfIsCoerciveCLM_le _
     (sub_pos.mpr X.defectBudget)
     (isCoerciveCLM_interactingPhysicalBasePrecision
