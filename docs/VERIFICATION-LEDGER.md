@@ -31743,3 +31743,35 @@ positivity/nonnegativity/nonzeroness`.  Line 46 asks `positivity` to prove
 strict sign.  The runner stopped at the module target, so Core, the permanent
 oracle, consistency, and artifact packaging did not run; no PASS is claimed.
 The runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 633 (2026-08-02, **TASK 14: exact axiom-set gate failure**)
+
+**MEASURED HARNESS-GATE FAILURE AFTER A GREEN ORACLE; NO FULL PASS.**  A
+second fresh CPU/high-RAM Colab runtime executed exact versioned runner SHA
+`96c3ce5c6336e77c2eb3690577108c388313e955` (notebook SHA-256
+`879ab3313f8c4b1d151071bb5cafdd4ed17b17202a0d4d8fe38375ed1b66fd50`).
+Its independent fresh public clone checked out exact source/oracle SHA
+`fe1439ab895e166eabc985c168a54020f2d842f4`.  The run began at UTC
+`2026-08-02T19:08:43.744399+00:00` on Linux 6.6.122 x86_64 with glibc 2.35,
+Python 3.12.13, 8 Intel Xeon CPUs, `53467192 kB` RAM, and no GPU.  Exact
+Lean/mathlib pins and elan-installer SHA-256 were verified.
+
+The official isolated cache exited zero in `103.254570 s`;
+`lake build YangMills.OS.SpatialVacuum` exited zero in `173.540636 s` at
+`8172 jobs`; `lake build YangMillsCore` exited zero in `919.356367 s` at
+`8468 jobs`; and `lake env lean oracle_check.lean` exited zero in
+`2062.936806 s`.  Thus the natural counter measurement again confirms
+`8465 + 1` effective merged-main job plus this lane's `+2` jobs, without
+rewriting the historical `8467 / +2` witness anchored at
+`3d7ea4c9d22504f09afa36c95706faea16451071`.
+
+The complete oracle printed no `sorryAx` and printed the exact line
+`'YangMills.OS.periodic_antiperiodic_log_difference_eq_neg_two_artanh'
+depends on axioms: [propext]`.  The runner then failed closed with literal
+diagnostic `periodic_antiperiodic_log_difference_eq_neg_two_artanh axioms
+{'propext'} != {'propext', 'Classical.choice', 'Quot.sound'}`.  This is a
+runner-contract defect: it required every named theorem to use all three
+allowed axioms, whereas this elementary scalar theorem genuinely uses the
+strict subset `{propext}`.  Consistency and artifact packaging did not run,
+so no full PASS is claimed.  The runtime was disconnected and deleted
+immediately; **SESIÓN COLAB LIBRE**.
