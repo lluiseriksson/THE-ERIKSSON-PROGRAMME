@@ -30499,3 +30499,71 @@ specific `-x^n/n` shortcut does not.  No global Fourier theorem, vacuum order,
 fermionic classification, odd-sector bound, even-sector bound, endpoint, or
 uniform `specRatio` theorem is proved here.  Clifford/Jordan--Wigner work
 remains unopened.
+
+## Addendum 601 (2026-08-02, **TASK 14: exact paper Fourier-sign mechanism**)
+
+**EXACT PAPER ALGEBRA; NOT LEAN-CERTIFIED.**  The sign observed in Addendum 600
+has a positive-mixture proof.  Write `c = A - B >= 1`, take `B > 0`, and set
+
+`h(s) = arcosh(c + B s)`, so `f(k) = h(1 - cos(k))/2`.
+
+For `s > 0` (and also at `s = 0` when `c > 1`),
+
+`h'(s) = B / sqrt((c + B s)^2 - 1)`.
+
+Using `integral_0^infinity exp(-z t) I_0(t) dt = 1/sqrt(z^2-1)` for `z > 1`
+and changing variables `r = B t` gives
+
+`h'(s) = integral_0^infinity exp(-s r) exp(-(c/B)r) I_0(r/B) dr`.
+
+Tonelli, applied to nonnegative integrands, then yields
+
+`h(S) - h(0) = integral_0^infinity (1-exp(-S r))
+                exp(-(c/B)r) I_0(r/B) dr/r`.
+
+The `n`th complex Fourier coefficient of `exp(r cos(k))` is `I_n(r)`.  Thus,
+for every integer `n >= 1`, the constant term drops out and
+
+`fhat(n) = -(1/2) integral_0^infinity
+  exp(-(1+c/B)r) I_0(r/B) I_n(r) dr/r < 0`.
+
+Every factor in the last integrand is strictly positive for `r > 0`.  Absolute
+integrability needed to exchange the `k` and `r` integrals follows by bounding
+with the original nonnegative Bernstein integral for `h(1-cos(k))-h(0)`.
+The case `c = 1` follows by monotone convergence from `c > 1`; the nonzero-mode
+integral remains finite.  The separate case `B = 0` makes `f` constant and all
+nonzero Fourier coefficients exactly zero.
+
+For the physical parameters,
+`c = A-B = cosh(2(a-gamma))`.  Hence `q < 1` is `gamma < a`, so `c > 1`;
+when `gamma > 0`, also `B > 0` and the coefficients are strictly negative.
+Combining this with the exact alias identity in Addendum 599 gives the scalar
+vacuum order `log R_L < 0` in this open regime and equality at `gamma = 0`,
+subject to the already stated identification of the vacuum products.  This
+does not identify the finite transfer spectrum or prove either sector bound.
+
+The same formula explains why the pure-log fit failed.  At the nearest complex
+point `k = +/- i d`, `A-B cos(k)=1` and `arcosh(1+z)` has a square-root, not a
+logarithmic, singularity.  Standard Darboux reasoning therefore gives an
+`x^n n^(-3/2)` scale with `x=exp(-d)`, matching the decreasing
+`fhat(n)/(-x^n/n)` seen in Addendum 600.  No asymptotic constant is claimed.
+
+Reference check: NIST DLMF 10.32.3 gives
+`I_n(z) = (1/pi) integral_0^pi exp(z cos(theta)) cos(n theta) d theta`;
+positivity for positive arguments is manifest from the standard positive
+power series.  The Laplace identity above follows from DLMF 10.32.1 followed
+by a positive Tonelli interchange and the elementary integral of
+`1/(z-cos(theta))`.  Mathlib at the pinned revision contains Fourier
+coefficients and `Real.arcosh`, but no Bessel or Bernstein-function library;
+those analytic ingredients would have to be developed if this lemma is
+formalised.
+
+An authorised Fable consultation used the required `masterythief` profile,
+whose authenticated email was `masterythief@gmail.com`.  It returned HTTP 429
+with literal message `You've reached your Fable 5 limit`, `is_error = true`,
+and empty `modelUsage`; it was rejected, no account was rotated, and no model
+content contributed to this derivation.
+
+Status remains: exact on paper, neither `CERTIFIED` nor `VERIFIED` in Lean.
+No odd block, even block, endpoint, or uniform `specRatio` theorem is closed,
+and Clifford/Jordan--Wigner remains unopened.
