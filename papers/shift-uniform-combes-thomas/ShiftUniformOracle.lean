@@ -2,9 +2,10 @@ import YangMills.RG.PhysicalCoerciveCombesThomasInverse
 import YangMills.RG.CoerciveCovariancePositiveSqrt
 import YangMills.RG.PhysicalGaugeCovariancePositiveRoot
 import YangMills.RG.StieltjesKernelIntegration
+import YangMills.RG.CoerciveCovarianceStieltjes
 
 /-!
-Focused axiom audit for the eighteen declarations claimed as formalized in
+Focused axiom audit for the twenty-six declarations claimed as formalized in
 `shift_uniform_combes_thomas.tex`.
 -/
 
@@ -26,3 +27,11 @@ Focused axiom audit for the eighteen declarations claimed as formalized in
 #print axioms YangMills.RG.integral_Ioi_inv_add_sq
 #print axioms YangMills.RG.physicalCovarianceKernelBound_stieltjesIntegralOperator
 #print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_stieltjesIntegralOperator
+#print axioms YangMills.RG.eq_of_isPositive_of_comp_self_eq
+#print axioms YangMills.RG.shiftedCovarianceFamily_comp_precision
+#print axioms YangMills.RG.precision_comp_shiftedCovarianceFamily
+#print axioms YangMills.RG.norm_shiftedCovarianceFamily_le
+#print axioms YangMills.RG.shiftedCovarianceFamily_sub
+#print axioms YangMills.RG.continuous_shiftedCovarianceFamily
+#print axioms YangMills.RG.integrableOn_shiftedCovarianceFamily
+#print axioms YangMills.RG.physicalShiftedCovarianceFamily_stieltjes_exponentialKernelBound

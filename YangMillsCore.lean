@@ -262,6 +262,9 @@ import YangMills.RG.PhysicalGaugeCovariancePositiveRoot
 -- Scalar Stieltjes integral and Bochner transport of resolvent kernel bounds
 -- to the exact inverse-square-root coefficient.
 import YangMills.RG.StieltjesKernelIntegration
+-- Canonical shifted covariance family: exact inverse identities, operator-norm
+-- continuity, Bochner integrability, and the directly integrated physical CT bound.
+import YangMills.RG.CoerciveCovarianceStieltjes
 import YangMills.RG.PhysicalGaugeCMP116OperatorTransport
 import YangMills.RG.PhysicalGaugeFluctuationActivity
 import YangMills.RG.PhysicalGaugeCMP116ActivityAdapter

@@ -20,10 +20,11 @@ The public API proves:
 * positivity of the constructed root;
 * the exact identity `root.comp root = T`;
 * symmetry of the root's bilinear form;
-* nonnegativity of its quadratic form.
+* nonnegativity of its quadratic form;
+* uniqueness among positive square roots.
 
-No uniqueness statement and no quantitative norm estimate are claimed here.
-The finite-dimensional hypothesis is essential to this implementation.
+No quantitative norm estimate is claimed here.  The finite-dimensional
+hypothesis is essential to this implementation.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/
@@ -158,6 +159,36 @@ theorem finiteDimensionalRealPositiveSqrt_inner_nonneg
     (T : E →L[ℝ] E) (hT : T.IsPositive) (x : E) :
     0 ≤ inner ℝ x (finiteDimensionalRealPositiveSqrt T hT x) :=
   (finiteDimensionalRealPositiveSqrt_isPositive T hT).inner_nonneg_right x
+
+/-- Positive square roots of a continuous endomorphism are unique in finite
+real dimension.  This formulation avoids exposing the coordinate-level
+spectral construction and is the bridge used by integral representations. -/
+theorem eq_of_isPositive_of_comp_self_eq
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [FiniteDimensional ℝ E]
+    {S R T : E →L[ℝ] E}
+    (hS : S.IsPositive) (hR : R.IsPositive)
+    (hST : S.comp S = T) (hRT : R.comp R = T) : S = R := by
+  classical
+  let b := stdOrthonormalBasis ℝ E
+  let MS := LinearMap.toMatrixAlgEquiv b.toBasis S.toLinearMap
+  let MR := LinearMap.toMatrixAlgEquiv b.toBasis R.toLinearMap
+  have hMS : MS.PosSemidef := by
+    apply (LinearMap.posSemidef_toMatrix_iff b).2
+    exact (ContinuousLinearMap.isPositive_toLinearMap_iff S).2 hS
+  have hMR : MR.PosSemidef := by
+    apply (LinearMap.posSemidef_toMatrix_iff b).2
+    exact (ContinuousLinearMap.isPositive_toLinearMap_iff R).2 hR
+  have hcomp : S.comp S = R.comp R := hST.trans hRT.symm
+  have hsq : MS * MS = MR * MR := by
+    rw [← map_mul, ← map_mul]
+    congr 1
+    exact congrArg (fun L : E →L[ℝ] E => L.toLinearMap) hcomp
+  have hmat : MS = MR := by
+    exact (hMS.sq_eq_sq_iff hMR).mp (by simpa [pow_two] using hsq)
+  have hlin : S.toLinearMap = R.toLinearMap :=
+    (LinearMap.toMatrixAlgEquiv b.toBasis).injective hmat
+  exact ContinuousLinearMap.ext fun x => LinearMap.congr_fun hlin x
 
 end
 

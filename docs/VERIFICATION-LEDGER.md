@@ -29439,3 +29439,41 @@ shifted inverse family is integrable and that its normalized integral equals
 the already-constructed spectral root.  Until that identification is checked,
 the physical root certificate still takes the canonical root-kernel bound as
 an explicit input.  No volume-uniform lower bound on `c` is claimed.
+
+## Addendum 573 (2026-08-02, **canonical shifted inverse and localized Stieltjes operator**)
+
+**FORMALIZED DELTA.**  `CoerciveCovarianceStieltjes.lean` defines the actual
+finite-dimensional resolvent family
+
+    shiftedCovarianceFamily A hc hA t = (A + t^2 I)⁻¹.
+
+It proves both exact inverse identities, the sharp coercivity majorant
+`‖F t‖ ≤ (c + t^2)⁻¹`, the resolvent identity, and the explicit continuity
+estimate
+
+    ‖F t - F u‖ ≤ |u^2 - t^2| * c⁻¹ * c⁻¹.
+
+Consequently the canonical family is continuous and Bochner integrable on
+`Set.Ioi 0`; the abstract family and integrability hypotheses from Addendum
+572 are discharged.  The physical capstone
+`physicalShiftedCovarianceFamily_stieltjes_exponentialKernelBound` applies the
+shift-uniform Combes--Thomas estimate directly to this canonical family and
+proves exponential localization of its normalized Stieltjes integral with
+amplitude `2 / Real.sqrt c`.  Separately,
+`eq_of_isPositive_of_comp_self_eq` proves uniqueness of positive square roots
+in finite real dimension, preparing the final identification step.
+
+**CHECKED.**  `lake build YangMills.RG.CoerciveCovarianceStieltjes` completed
+successfully with 8203 jobs.  The focused 26-declaration oracle prints exactly
+`[propext, Classical.choice, Quot.sound]` for every entry.  A fresh
+`lake build YangMillsCore` completed successfully with 8470 jobs after adding
+the module to the aggregator.  The new code contains no `sorry` or project
+axiom.
+
+**BOUNDARY.**  The only remaining operator-level Stieltjes bridge is the exact
+identity between the normalized integral of this canonical family and the
+already-constructed spectral positive root.  The present addendum proves
+localization of the canonical integral, not yet of that root.  The physical
+root certificate therefore remains conditional on this final identification;
+no volume-uniform lower bound on `c` and no continuum/Clay implication are
+claimed.
