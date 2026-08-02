@@ -123,7 +123,7 @@ theorem siteForm_transferOp {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
   refine Finset.sum_congr rfl fun τ _ => ?_
   push_cast
   field_simp
-  ring
+  try ring
 
 /-- The same equation with the operator on the LEFT.  It needs the symmetry of
 the kernel, which the right-hand version did not. -/
@@ -145,7 +145,7 @@ theorem siteForm_transferOp_left {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     rw [spatialKernel_symm β τ σ]
     push_cast
     field_simp
-    ring
+    try ring
   rw [Finset.sum_congr rfl fun σ _ => step σ]
   rw [Finset.sum_comm]
 
@@ -244,7 +244,6 @@ theorem collapse_surjective {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
       = ∑ b ∈ halvesAt L m σ, ((gibbsWeight w β b : ℝ) : ℂ) := by
     push_cast
     rfl
-  unfold collapse
   have hterm : ∀ a ∈ halvesAt L m σ,
       ((gibbsWeight w β a : ℝ) : ℂ) * (v (edgeOf a)
           / ((∑ b ∈ halvesAt L m (edgeOf a), gibbsWeight w β b : ℝ) : ℂ))
@@ -253,8 +252,17 @@ theorem collapse_surjective {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     intro a ha
     rw [mem_halvesAt.mp ha]
     ring
-  rw [Finset.sum_congr rfl hterm, ← Finset.sum_div, ← Finset.sum_mul, ← hcast]
-  field_simp
+  calc ∑ a ∈ halvesAt L m σ, ((gibbsWeight w β a : ℝ) : ℂ) * (v (edgeOf a)
+          / ((∑ b ∈ halvesAt L m (edgeOf a), gibbsWeight w β b : ℝ) : ℂ))
+      = ∑ a ∈ halvesAt L m σ, ((gibbsWeight w β a : ℝ) : ℂ) * v σ
+          / ((∑ b ∈ halvesAt L m σ, gibbsWeight w β b : ℝ) : ℂ) :=
+        Finset.sum_congr rfl hterm
+    _ = ((∑ a ∈ halvesAt L m σ, ((gibbsWeight w β a : ℝ) : ℂ)) * v σ)
+          / ((∑ b ∈ halvesAt L m σ, gibbsWeight w β b : ℝ) : ℂ) := by
+        rw [← Finset.sum_div, ← Finset.sum_mul]
+    _ = v σ := by
+        rw [← hcast]
+        field_simp
 
 /-! ## §5  The headline, read on the measure
 

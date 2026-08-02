@@ -885,16 +885,13 @@ theorem joinSite_right {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2))
 @[simp] theorem edgeOf_pastSiteOf {L m : ℕ}
     (X : Fin (m + (m + 1)) → (Fin L → Fin 2)) :
     edgeOf (pastSiteOf X) = midOf X := by
-  show Fin.snoc _ (X (Fin.natAdd m 0)) (Fin.last m) = _
-  rw [Fin.snoc_last]
-  rfl
+  simp [edgeOf, pastSiteOf, midOf]
 
 @[simp] theorem edgeOf_futSiteOf {L m : ℕ}
     (X : Fin (m + (m + 1)) → (Fin L → Fin 2)) :
     edgeOf (futSiteOf X) = midOf X := by
-  show X (Fin.natAdd m (Fin.rev (Fin.last m))) = _
+  show X (Fin.natAdd m (Fin.rev (Fin.last m))) = X (Fin.natAdd m 0)
   rw [Fin.rev_last]
-  rfl
 
 /-- **BOTH HALVES OF AN ASSEMBLED PATH ARE THE HALVES IT WAS BUILT FROM** ---
 the future one unconditionally. -/
@@ -928,9 +925,7 @@ theorem joinSite_pastSiteOf_futSiteOf {L m : ℕ}
   induction t using Fin.addCases with
   | left i =>
       rw [joinSite_left]
-      show Fin.snoc (fun i : Fin m => X (Fin.castAdd (m + 1) i))
-          (X (Fin.natAdd m 0)) i.castSucc = X (Fin.castAdd (m + 1) i)
-      rw [Fin.snoc_castSucc]
+      simp [pastSiteOf]
   | right j =>
       rw [joinSite_right]
       show X (Fin.natAdd m (Fin.rev (Fin.rev j))) = X (Fin.natAdd m j)
@@ -955,9 +950,12 @@ theorem joinSite_past {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2))
 
 /-- **THE `w` FACTORS, DIVISION-FREE.**  The shared slice is carried by both
 halves and appears once in the path, so multiplying by it on the left restores
-the balance exactly.  No hypothesis on `w` is used. -/
+the balance exactly.  No hypothesis on `w` is used --- and, as the build's own
+unused-variable warning pointed out, no hypothesis relating the two halves
+either: this identity holds for ANY pair, agreeing at the boundary or not.  Only
+the kernel product below needs them to agree. -/
 theorem prod_w_joinSite {L m : ℕ} (w : (Fin L → Fin 2) → ℝ)
-    (a b : Fin (m + 1) → (Fin L → Fin 2)) (h : edgeOf a = edgeOf b) :
+    (a b : Fin (m + 1) → (Fin L → Fin 2)) :
     w (edgeOf a) * (∏ t : Fin (m + m + 1), w (joinSite a b t))
       = (∏ t : Fin (m + 1), w (a t)) * ∏ t : Fin (m + 1), w (b t) := by
   show w (edgeOf a) * (∏ t : Fin (m + (m + 1)), w (joinSite a b t)) = _
@@ -1016,7 +1014,7 @@ theorem gibbsWeight_joinSite {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : �
     w (edgeOf a) * gibbsWeight w β (N := m + m) (joinSite a b)
       = gibbsWeight w β a * gibbsWeight w β b := by
   unfold gibbsWeight
-  rw [prod_K_joinSite β a b h, ← mul_assoc, prod_w_joinSite w a b h]
+  rw [prod_K_joinSite β a b h, ← mul_assoc, prod_w_joinSite w a b]
   ring
 
 /-- The paths whose middle slice is `σ`. -/
@@ -1049,7 +1047,11 @@ theorem sum_pathsAt_eq {L m : ℕ} (σ : Fin L → Fin 2)
     (g : (Fin (m + (m + 1)) → (Fin L → Fin 2)) → ℂ) :
     ∑ a ∈ halvesAt L m σ, ∑ b ∈ halvesAt L m σ, g (joinSite a b)
       = ∑ X ∈ pathsAt L m σ, g X := by
-  rw [← Finset.sum_product']
+  have hprod : ∑ a ∈ halvesAt L m σ, ∑ b ∈ halvesAt L m σ, g (joinSite a b)
+      = ∑ p ∈ halvesAt L m σ ×ˢ halvesAt L m σ, g (joinSite p.1 p.2) :=
+    (Finset.sum_product' (halvesAt L m σ) (halvesAt L m σ)
+      (fun a b => g (joinSite a b))).symm
+  rw [hprod]
   refine Finset.sum_nbij' (fun p => joinSite p.1 p.2)
     (fun X => (pastSiteOf X, futSiteOf X)) ?_ ?_ ?_ ?_ ?_
   · intro p hp
@@ -1067,6 +1069,7 @@ theorem sum_pathsAt_eq {L m : ℕ} (σ : Fin L → Fin 2)
     rw [Finset.mem_product] at hp
     have hab : edgeOf p.1 = edgeOf p.2 :=
       (mem_halvesAt.mp hp.1).trans (mem_halvesAt.mp hp.2).symm
+    show (pastSiteOf (joinSite p.1 p.2), futSiteOf (joinSite p.1 p.2)) = p
     rw [pastSiteOf_joinSite p.1 p.2 hab, futSiteOf_joinSite]
   · intro X _
     exact joinSite_pastSiteOf_futSiteOf X
@@ -1084,10 +1087,12 @@ theorem osPairingSiteCross_eq_gibbsSum {L m : ℕ} {w : (Fin L → Fin 2) → �
         (starRingEnd ℂ) (F (pastSiteOf X)) * G (futSiteOf X)
           * ((gibbsWeight w β (N := m + m) X : ℝ) : ℂ))
       = osPairingSiteCross w β m F G := by
-  rw [← sum_paths_by_mid]
+  rw [← sum_paths_by_mid (fun X => (starRingEnd ℂ) (F (pastSiteOf X))
+        * G (futSiteOf X) * ((gibbsWeight w β (N := m + m) X : ℝ) : ℂ))]
   unfold osPairingSiteCross
   refine Finset.sum_congr rfl fun σ _ => ?_
-  rw [← sum_pathsAt_eq]
+  rw [← sum_pathsAt_eq σ (fun X => (starRingEnd ℂ) (F (pastSiteOf X))
+        * G (futSiteOf X) * ((gibbsWeight w β (N := m + m) X : ℝ) : ℂ))]
   refine Finset.sum_congr rfl fun a ha => Finset.sum_congr rfl fun b hb => ?_
   have hea : edgeOf a = σ := mem_halvesAt.mp ha
   have heb : edgeOf b = σ := mem_halvesAt.mp hb

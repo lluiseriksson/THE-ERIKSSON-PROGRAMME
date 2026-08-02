@@ -67,9 +67,17 @@ echo
 echo "=============================================================="
 echo "stage D  the lane module"
 echo "=============================================================="
-lake build YangMills.OS.SpatialOS 2>&1 | tail -80
+# The exit code is read from the SAME command list as the pipeline.  The first
+# version of this file printed `${PIPESTATUS[0]}` after an intervening `echo`,
+# which resets it -- so it reported the echo's status and printed
+# "lane build exit: 0" under a build that had FAILED with three errors.  Exactly
+# the class of defect the sentinel protocol exists to prevent, in the one place
+# that had no sentinel.
+lake build YangMills.OS.SpatialOS > /tmp/lane.log 2>&1
+LANE=$?
+tail -80 /tmp/lane.log
 echo
-echo "lane build exit: ${PIPESTATUS[0]}"
+echo "lane build exit: $LANE   (captured from the build itself, not from an echo)"
 echo
 echo "Every later cell can now be one line, for example:"
 echo "  !cd /content/eriksson && git fetch -q origin <branch> && git reset -q --hard FETCH_HEAD && PATH=\$HOME/.elan/bin:\$PATH lake build YangMills.OS.SpatialOS 2>&1 | tail -60"
