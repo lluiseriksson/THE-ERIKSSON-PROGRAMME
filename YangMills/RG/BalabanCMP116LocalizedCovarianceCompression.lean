@@ -37,7 +37,7 @@ the localized-compression bridge.
 namespace YangMills.RG
 
 open Matrix
-open scoped Matrix.Norms.L2Operator
+open scoped Matrix.Norms.L2Operator MatrixOrder
 
 noncomputable section
 
@@ -135,7 +135,7 @@ theorem cmp116LocalizedCovarianceRoot_certificate
       (CFC.sqrt_nonneg A).posSemidef.1
     rw [Matrix.conjTranspose_eq_transpose_of_trivial] at hroot
     exact hroot
-  · exact CFC.sqrt_mul_sqrt_self A hA.nonneg
+  · exact CFC.sqrt_mul_sqrt_self A
 
 end
 
