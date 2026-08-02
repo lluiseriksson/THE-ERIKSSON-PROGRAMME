@@ -32,19 +32,38 @@ explicit, counted, and exits non-zero in both modes.
 Usage:
     python scripts/fill_p14.py <anchor-sha> <measurements.json>
 """
+import hashlib
 import io
 import json
 import os
 import re
+import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lean_decls import declaration_lines   # ONE traversal, self-tested
+from check_no_control_bytes import offenders_bytes   # ONE rule, self-tested
+
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEX = os.path.join(REPO, "papers", "spatial-reconstruction",
                    "spatial_reconstruction.tex")
 ORACLE = os.path.join(REPO, "oracle_check.lean")
+
+
+def sha256_file(path):
+    h = hashlib.sha256()
+    with io.open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def git_head():
+    r = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO,
+                       capture_output=True, text=True)
+    return r.stdout.strip() if r.returncode == 0 else None
+
 
 MODULES = {
     "SpatialOS": os.path.join(REPO, "YangMills", "OS", "SpatialOS.lean"),
@@ -101,6 +120,22 @@ def main():
         return 2
     with io.open(sys.argv[2], encoding="utf-8") as f:
         meas = json.load(f)
+
+    # EVERY KEY THE RUN NEEDS, VALIDATED BEFORE ANY OF THEM IS USED.  Feeding
+    # the previous version an out-of-date measurements file made it die with a
+    # KeyError deep inside the cell table --- a crash, not a checked refusal,
+    # and a crash prints no verdict and can be swallowed by a pipe.  A missing
+    # key is now a FAILED CHECK like any other.
+    required = ["anchor", "baseline_anchor", "jobs_before", "jobs_after",
+                "jobs_campaign_base", "core_errors", "oracle_reports",
+                "oracle_nonstandard", "sorry_count", "sha256_SpatialOS",
+                "sha256_SpatialReconstruction", "sha256_oracle_check"]
+    missing = [k for k in required if k not in meas]
+    if missing:
+        print("measurements file is missing required keys: %s"
+              % ", ".join(missing))
+        print("manuscript NOT written")
+        return 2
 
     lines = {name: declaration_lines(path) for name, path in MODULES.items()}
     tex = io.open(TEX, encoding="utf-8", newline="").read()
@@ -207,16 +242,34 @@ def main():
     checks.append(("no counter token survives in a cell",
                    not any(re.search(r"&\s*%s\s*\\\\" % t, tex) for t in cells)))
 
-    # ---- 6. no control bytes.  A section of this manuscript was once written
-    # through a shell-plus-Python command line and acquired thirteen BACKSPACE
-    # and four CARRIAGE RETURN bytes where `\b` and `\r` escapes had been eaten
-    # twice.  `\begin{theorem}` stopped being a command and nothing noticed,
-    # because every other guard reads the file as text and a control character
-    # IS text.  The filler refuses to write such a file.
-    ctrl = [(i, b) for i, b in enumerate(tex.encode("utf-8"))
-            if ((b < 0x20 and b not in (0x09, 0x0A)) or b == 0x7F)]
-    lone_cr = [p for p in ctrl if p[1] != 0x0D]
-    checks.append(("no control bytes in the manuscript", lone_cr == []))
+    # ---- 6. no control bytes, using THE guard's own traversal.  The first
+    # version of this block carried its own copy of the rule and dropped EVERY
+    # carriage return instead of only the ones followed by a newline, so the
+    # standalone guard refused a lone CR and the publisher accepted it --- the
+    # exact corruption that produced this guard could have gone straight back
+    # into the manuscript.  Two semantics for one rule, a third time.
+    checks.append(("no forbidden control bytes in the manuscript",
+                   offenders_bytes(tex.encode("utf-8")) == []))
+
+    # ---- 7. THE MEASUREMENT MUST BELONG TO THE ANCHOR.  Without this the
+    # filler will happily dress a new tree in an old tree's numbers whenever
+    # the numbers happen to agree --- and they agree by construction here,
+    # because adding theorems to existing modules leaves the job count alone.
+    # This is not hypothetical: the committed measurements file still pointed
+    # at the v1.0 anchor while the working tree had moved on twice.
+    head = git_head()
+    checks.append(("working-tree HEAD is the requested anchor",
+                   head is not None and head.lower() == anchor))
+    checks.append(("measurement declares the requested anchor",
+                   str(meas.get("anchor", "")).lower() == anchor))
+    for key, path in (("sha256_SpatialOS", MODULES["SpatialOS"]),
+                      ("sha256_SpatialReconstruction",
+                       MODULES["SpatialReconstruction"]),
+                      ("sha256_oracle_check", ORACLE)):
+        checks.append(("measurement hash matches the file: %s" % key,
+                       sha256_file(path) == meas.get(key)))
+    checks.append(("baseline carries its own identity",
+                   str(meas.get("baseline_anchor", "")).strip() != ""))
 
     ran = 0
     failed = []

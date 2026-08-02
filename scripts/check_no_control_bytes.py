@@ -1,4 +1,4 @@
-r"""Refuse any tracked text file that contains control bytes.
+r"""Refuse any text file GIVEN ON THE COMMAND LINE that carries a control byte.
 
 WHY THIS EXISTS, and the answer is embarrassing.  A manuscript section was
 inserted through a `python -c "..."` command line: the shell consumed one level
@@ -41,9 +41,17 @@ NAMES = {0x00: "NUL", 0x07: "BEL", 0x08: "BACKSPACE", 0x0B: "VT", 0x0C: "FF",
          0x0D: "CARRIAGE RETURN", 0x1B: "ESC", 0x7F: "DEL"}
 
 
-def offenders(path):
-    """(byte, line, column) for every control byte that is not a line ending."""
-    raw = io.open(path, "rb").read()
+def offenders_bytes(raw):
+    """THE single traversal.  `(byte, line, column)` for every control byte
+    that is not part of a line ending.
+
+    Everything else in this module and in `fill_p14.py` is a caller of this
+    function.  The first version had the filler carry its OWN copy of the rule,
+    which dropped every carriage return instead of only the ones followed by a
+    newline --- so the standalone guard rejected a lone CR and the publisher
+    accepted it.  Two semantics for one rule is the defect this repository has
+    now met at three different levels; one function is the fix.
+    """
     out = []
     line, col = 1, 1
     n = len(raw)
@@ -64,6 +72,11 @@ def offenders(path):
             out.append((b, line, col))
         col += 1
     return out
+
+
+def offenders(path):
+    """The same rule, applied to a file.  A projection, not a second grammar."""
+    return offenders_bytes(io.open(path, "rb").read())
 
 
 def main():
@@ -98,7 +111,7 @@ def main():
             print("FAILED:", b)
         print("a control byte in a source file is a mangled escape, not data")
         return 1
-    print("no control bytes: only tab and newline present")
+    print("no forbidden control bytes: tab, newline and CRLF only")
     return 0
 
 
