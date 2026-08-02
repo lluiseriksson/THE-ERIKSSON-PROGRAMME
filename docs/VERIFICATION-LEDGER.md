@@ -30640,3 +30640,28 @@ This removes the Bessel infrastructure concern in paper mathematics only.  It
 does not certify the logarithmic mixture in Lean, identify the transfer
 spectrum, or prove the odd block, even block, endpoint, or uniform
 `specRatio` theorem.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 603 (2026-08-02, **TASK 14: finite root-product gate fixed**)
+
+**PROTOCOL COMMITTED BEFORE EXECUTION.**  The exact rational gate
+`scripts/judge_spatial_vacuum_root_products.py` licenses one prospective Lean
+result only: the paired identities for the periodic and antiperiodic finite
+root products, together with their strict order under the printed hypotheses
+`1 <= L` and `0 < x < 1`.
+
+The gate evaluates `L = 1,...,64` over seven fixed positive rational values of
+`x < 1`.  It computes `x^L P(1/x)` directly from the coefficient lists of
+`P(z)=z^L-1` and `P(z)=z^L+1`, without floating point or division, and compares
+the results with `1-x^L` and `1+x^L`.  It then checks
+`0 < 1-x^L < 1+x^L`.
+
+Four mutation families are attempted in every cell: the wrong periodic sign,
+the wrong antiperiodic sign, a shifted periodic exponent, and the reversed
+strict order.  The script counts attempts and rejections itself.  Verdicts use
+explicit failure branches rather than `assert`; normal and `python -O` must
+exit zero with byte-identical JSON and every attempted mutation rejected.
+
+This gate does not license the arcsine Stieltjes/log-mixture identity, a vacuum
+product identification for the transfer matrix, either spectral-sector bound,
+the endpoint, or the uniform `specRatio` theorem.  At the time of this addendum
+the gate has not run and no PASS is claimed.
