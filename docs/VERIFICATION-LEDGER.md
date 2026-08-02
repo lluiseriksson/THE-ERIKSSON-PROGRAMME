@@ -30773,3 +30773,40 @@ finite root-product endpoint of the exact paper argument.  The arcsine
 Stieltjes/log-mixture identity remains unformalised, and no transfer-spectrum
 identification, odd-sector bound, even-sector bound, endpoint, or uniform
 `specRatio` theorem has been proved.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 606 (2026-08-02, **TASK 14: Stieltjes/log-mixture gate fixed**)
+
+**PROTOCOL COMMITTED BEFORE EXECUTION.**  The script
+`scripts/judge_spatial_stieltjes_log_mixture.py` licenses one prospective
+generic Lean theorem only.  Under the printed hypotheses `1 < c`, `0 < B`,
+and `0 <= s`, it predicts
+
+`arcosh(c+B*s)-arcosh(c)
+ = (1/(2*pi)) integral_0^(2*pi) log(1+B*s/(c-cos(theta))) dtheta`.
+
+This is exactly the arcsine Stieltjes/log mixture after parametrising the
+arcsine measure by uniform angular measure.  The intended Lean route uses the
+existing pinned-mathlib theorem `circleAverage_log_norm_sub_const₀`, plus
+the elementary factorisation of `z-cos(theta)` with
+`r=exp(-arcosh(z))`; it does not assume a generic Stieltjes representation
+theorem, introduce a singular density, or invoke Bessel functions.
+
+At 120 decimal digits the gate fixes, before inspection, a maximum absolute
+residual of `1e-70` over 45 positive-`s` cells: beta in
+`{0.125,0.5,2}`, `gamma/a` in `{0.25,0.75,0.99}`, and `s` in
+`{0.125,0.5,1,1.5,2}`.  Nine `s=0` cases must return exact zero.  In every
+positive-`s` cell it must reject three mutations by a gap greater than
+`1e-30`: halving the average, omitting the base subtraction `arcosh(c)`, and
+omitting the factor `B` in the logarithm.  Normal and `python -O` must exit
+zero with byte-identical JSON; all verdicts are explicit conditionals.
+
+The sampled physical parametrisation checks and prints `0 < beta`,
+`0 < gamma`, and the load-bearing disordered-region hypothesis `gamma < a`.
+The prospective theorem itself is the generic `c,B,s` identity.  Any later
+physical front door must carry those physical hypotheses in its Lean
+statement; this addendum does not license that corollary.
+
+At the time of this addendum the gate has not run and no PASS is claimed.  It
+does not license the finite vacuum-product order, either spectral block, the
+endpoint, or the uniform `specRatio` theorem.  Clifford/Jordan--Wigner remains
+unopened.
