@@ -101,13 +101,15 @@ theorem cmp116SourcePhysicalLocalizedCoordinates_empty
         (∅ : Finset (FinBox d N')) = ∅ := by
   classical
   ext ba
-  simp only [Finset.not_mem_empty, iff_false]
-  intro hba
-  have hinterior : cmp116BondInterior (∅ : Finset (FinBox d N')) ba.1 :=
-    (mem_cmp116SourcePhysicalLocalizedCoordinates_iff Dict ∅ ba).mp hba
-  have hsource := hinterior.1.1
-  rw [mem_cmp116RegionSites_iff] at hsource
-  simpa using hsource
+  constructor
+  · intro hba
+    have hinterior : cmp116BondInterior (∅ : Finset (FinBox d N')) ba.1 :=
+      (mem_cmp116SourcePhysicalLocalizedCoordinates_iff Dict ∅ ba).mp hba
+    have hsource := hinterior.1.1
+    rw [mem_cmp116RegionSites_iff] at hsource
+    simpa using hsource
+  · intro hba
+    simp at hba
 
 /-- A cube carrier is converted to its literal physical bond carrier by the
 site map; no cube is treated definitionally as a bond. -/
