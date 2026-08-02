@@ -4,16 +4,19 @@ Status date: 2026-08-02
 
 ## Immutable formal source
 
-- Formal artifact commit: `b542b3f2f066b60a914977f2a50160e403a53367`
-- Parent: `81e9cf064d6771f986978ccffb96018c78b5e459`
+- Formal artifact commit: `b44907f005515c7f841471a8da6e870402f0e5ec`
+- Parent: `0275434c5d08a2a6c457706b54b9a8ce81bdd3ee`
 - Branch at creation: `codex/stieltjes-root`
 - Lean: `4.29.0-rc6` (`00659f8e6071d7e46131ed643bf8003b99b044e9`)
 - Mathlib: `07642720480157414db592fa85b626dafb71355b`
 
-The formal artifact commit contains exactly the two edited theorem modules,
-their oracle registrations, and verification-ledger Addendum 570. The paper
-source and rendered PDF are kept in the subsequent manuscript commit so that
-the paper can cite the already-fixed formal object without a circular hash.
+The current formal artifact commit closes the canonical Stieltjes-root
+identification in `CoerciveCovarianceStieltjes.lean`, registers the ten new
+declarations in both oracles, and adds verification-ledger Addendum 574. The
+paper source and rendered PDF are kept in the subsequent manuscript commit so
+that the paper can cite the already-fixed formal object without a circular
+hash. The original resolvent artifact is
+`b542b3f2f066b60a914977f2a50160e403a53367`.
 The version-0.2 manuscript commit is
 `25f532eaeecbfb66ee146e264953cde0e2e0ea29`. Version 0.3 is identified by the
 annotated release tag `shift-uniform-ct-v0.3` and is distributed as a complete
@@ -73,12 +76,12 @@ successful module targets, not a fresh successful full-core rebuild.
 
 ## Manuscript artifact
 
-- Manuscript version: 0.6
-- Annotated local release tag: `shift-uniform-ct-v0.6`
-- Manuscript commit: `f4dd1ddc668025dd3c187dd02e84834315c32857`
+- Manuscript version: 0.7
+- Annotated local release tag: `shift-uniform-ct-v0.7`
+- Manuscript commit: `8e1ab603b7961c4312c21a9d8c1a564f2361980c`
 - Pages: 13
 - Output: `output/pdf/shift_uniform_combes_thomas.pdf`
-- SHA-256: `75614BB276D528ACB3F6F9628B94C81C22D745990B789D632A5BF6732299800F`
+- SHA-256: `A4F9937EF940B6D759A8A7F0D146CAA62D942108983B227A6D7743D099C440E5`
 
 The detailed administrative status of thirteen other author-corpus records is
 kept in `PUBLICATION-PROVENANCE.md`, outside the mathematical manuscript. It is
@@ -126,6 +129,30 @@ already-localized integral and the separately constructed spectral positive
 root.  The physical root certificate therefore remains conditional on that
 single identification.  No volume-uniform coercivity, continuum limit, or
 Clay implication is claimed.
+
+## Version 0.7 canonical Stieltjes-root identification
+
+- Formal identification commit:
+  `b44907f005515c7f841471a8da6e870402f0e5ec`
+- Strengthened module: `CoerciveCovarianceStieltjes.lean`
+- Canonical-family target: successful, 8204 jobs, on 2026-08-02
+- Fresh `YangMillsCore` build: successful, 8470 jobs, on 2026-08-02
+- Focused thirty-six-declaration oracle: only `propext`,
+  `Classical.choice`, and `Quot.sound`
+
+Lean evaluates the canonical shifted inverse and its normalized Stieltjes
+integral on an orthonormal eigenbasis, proves positivity of the integral and
+its exact square, and identifies it with the independently constructed
+spectral covariance root by uniqueness.  The physical exponential kernel
+bound therefore applies directly to that root with amplitude `2 / sqrt(c)`.
+The end-to-end theorem
+`physicalLocalizedCovarianceRootCertificate_of_shiftUniform` discharges the
+root-kernel field without receiving it as an assumption.
+
+The finite-dimensional operator bridge is closed.  The result still assumes
+the explicit coercivity, symmetry, shift-uniform Combes--Thomas, and base
+localized-covariance premises.  No volume-uniform coercivity, infinite-volume
+limit, continuum limit, or Clay implication is claimed.
 
 Remote publication and hosted CI for the release tag are release actions and
 are not claimed by this local manifest.
