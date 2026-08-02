@@ -111,6 +111,11 @@ no-go is strengthened from the even-scale rate `8/L` to an all-scale
 `O(L^-2)` obstruction.  Here the uniformity question varies the block/fine
 side `L` while `N' > 0` is arbitrary but fixed; it is not an `N' -> infinity`
 claim.
+The standalone manuscript is now version 1.1 and makes this Fourier theorem
+the headline result.  The verified delivery PDF has SHA-256
+`290F3460EC0355518D3CC6BDA3B3AE86870ADA206742C0B903484530EB335324`;
+the companion source packet has SHA-256
+`AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132`.
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at

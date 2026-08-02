@@ -29726,5 +29726,19 @@ critical-scale kernel/ball/range/tilt results remain valid.
 
 **CHECKED.**  `lake build
 YangMills.RG.PhysicalCriticalRescalingFourierNoGoAllScales` completed
-successfully (8184 jobs).  The focused oracle and aggregate core checks are
-recorded with the source commit below once those immutable artifacts exist.
+successfully (8184 jobs).  The focused nine-declaration oracle reports exactly
+`[propext, Classical.choice, Quot.sound]` for every headline; no `sorry`,
+`admit`, or project axiom occurs in the seven new source files.  `lake build
+YangMillsCore` completed successfully (8481 jobs).  The theorem source is
+fixed at commit `f21539ed0bb880a04078de369bf5cbf063f7b101`; the head theorem
+file has SHA-256
+`5F0890D14EA6981CBE6459605A634386ED2C844F6D03A6947E33B34250E2F5AE`.
+
+**PAPER ARTIFACT.**  Version 1.1 of the standalone eight-page manuscript
+promotes the Fourier witness to the main theorem, states the precise `L`
+versus `N'` quantifiers, adds a prior-art/domain-delta section, and records an
+immutable reproduction manifest.  The byte-identical paper and delivery PDFs
+have SHA-256
+`290F3460EC0355518D3CC6BDA3B3AE86870ADA206742C0B903484530EB335324`.
+The companion source packet under `output/pdf/` has SHA-256
+`AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132`.

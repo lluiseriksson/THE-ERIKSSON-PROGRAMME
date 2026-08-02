@@ -1,9 +1,14 @@
 % Standalone no-go paper. This is not a revision of poincare_wall.tex.
 \documentclass[11pt]{article}
-\usepackage[margin=1.05in]{geometry}
+\usepackage[margin=1.02in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs,array,enumitem,microtype}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\hypersetup{
+  pdftitle={Fourier Transverse Modes Obstruct Volume-Uniform Critical Coercivity},
+  pdfauthor={Lluis Eriksson},
+  pdfsubject={A machine-checked no-go theorem for a flat lattice gauge block form}
+}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -14,11 +19,9 @@
 \newtheorem{definition}[theorem]{Definition}
 
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\SU}{\mathrm{SU}}
-\newcommand{\su}{\mathfrak{su}}
 \newcommand{\CP}{C_{\mathrm P}}
-\newcommand{\cL}{c_L}
 \newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \newcommand{\lean}[1]{\texttt{#1}}
@@ -27,539 +30,493 @@
 \emergencystretch=3em
 \tolerance=1800
 
-\title{Block-Periodic Transverse Modes Obstruct\\
+\title{Fourier Transverse Modes Obstruct\\
 Volume-Uniform Critical Coercivity\\
 in a Flat Lattice Gauge Block Form}
 \author{Lluis Eriksson}
-\date{August 2, 2026 (version 1.0)}
+\date{August 2, 2026 (version 1.1)}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Let the fine periodic lattice have side $LN'$ and let $Q_L$ be the
+Let a fine periodic lattice have side $LN'$ and let $Q_L$ be the
 $L^{-d}$-normalized block average of length-$L$ line integrals.  In four
-dimensions, the rescaling $Q_L\mapsto LQ_L$ exactly removes the elementary
-constant-field scaling obstruction to a volume-uniform Poincar\'e estimate.
-We prove that it does not remove the full-space obstruction.  For every
-positive coarse side $N'$, every even block side $L=2M$, every pair of
-distinct directions $i\ne j$, and every internal vector $w$, we construct a
-block-periodic transverse one-cochain $A_{i,j,w}$.  It satisfies
+dimensions, the rescaling $Q_L\mapsto LQ_L$ repairs the elementary
+constant-field scaling obstruction to a Poincare estimate.  We prove that it
+cannot yield coercivity on the full one-cochain space with a constant uniform
+in the block side.  For every $L\ge2$, every fixed $N'\ge1$, and $N_c\ge2$,
+we embed the first within-block Fourier phase
+$\zeta_L=\exp(2\pi i/L)$ in a real two-plane of the internal coordinate space
+and construct a transverse one-cochain $A_L$.  It satisfies
 \[
- Q_LA_{i,j,w}=0,\qquad \operatorname{div}A_{i,j,w}=0,
+ Q_LA_L=0,\qquad \operatorname{div}A_L=0,
 \]
-and its flat Hodge energy and norm are exactly
+and, for every dimension $d\ge2$,
 \[
- \ip{A_{i,j,w}}{K_0A_{i,j,w}}
- =8N'(LN')^{d-1}\norm{w}^{2},\qquad
- \norm{A_{i,j,w}}^{2}=(LN')^d\norm{w}^{2}.
+ \norm{A_L}^2=(LN')^d,\qquad
+ \ip{A_L}{K_0A_L}=(LN')^d\lambda_L,
+ \qquad
+ \lambda_L=4\sin^2\!\left(\frac{\pi}{L}\right)
+ \le \frac{4\pi^2}{L^2}.
 \]
 Thus the Rayleigh quotient of
-$K_0+(LQ_L)^*(LQ_L)$ on this family is $8/L$, independently of $N'$.
-For $N_c\ge2$, the current constant-before-volume critical coercivity gate is
-therefore false on every positive coarse torus.  More generally, no scalar
-rescaling $s_LQ_L$ can control this family, because it lies in the exact
-kernel of $Q_L$.
+$K_0+(s_LQ_L)^*(s_LQ_L)$ is exactly $\lambda_L$ for every scalar rescaling
+$s_L$.  Every admissible full-space Poincare constant obeys
+$\CP(L)\ge1/\lambda_L\ge L^2/(4\pi^2)$, so no constant chosen before $L$
+can work.  Here ``volume-uniform'' means uniform while the block/fine side
+$L$ varies at an arbitrary fixed positive coarse side $N'$; it is not a claim
+about $N'\to\infty$ at fixed $L$.
 
-The construction, energy count, and quantified no-go theorem are formalized
-in Lean~4 against pinned Mathlib.  A focused six-declaration axiom audit
-reports only \lean{propext}, \lean{Classical.choice}, and
-\lean{Quot.sound}; there are no project axioms or \lean{sorry}.  The result
-does not disprove repaired sector or quotient estimates and does not address
-an interacting Hessian, an infinite-volume limit, a continuum limit, or a
-Yang--Mills mass gap.
+The construction, kernel identities, exact Hodge energy, Rayleigh identity,
+and quantified no-go theorem are formalized in Lean~4.  The focused axiom
+audit reports only \lean{propext}, \lean{Classical.choice}, and
+\lean{Quot.sound}.  The theorem concerns the stated flat full-domain form; it
+does not contradict gauge-restricted propagator constructions and makes no
+infinite-volume, continuum, or Yang--Mills mass-gap claim.
 \end{abstract}
 
 \section{Introduction}
 
-Finite-range coercive operators admit Combes--Thomas decay estimates whose
-rates are controlled by the lower spectral edge~\cite{CombesThomas}.  In a
-block-spin treatment of lattice gauge fields, a natural candidate precision
-is a flat Hodge operator plus a positive block penalty.  At a fixed volume
-this is a standard finite-dimensional mechanism.  The difficult question is
-whether its coercivity constant survives uniformly as the block side tends
-to infinity.
-
-The block map considered here is the linearized line-integral average used in
-lattice gauge renormalization~\cite{BalabanI,BalabanII}.  With its unscaled
-normalization, constant one-cochains force a growing Poincar\'e constant in
-dimension four.  Multiplying the map by the critical factor $L$ repairs that
-specific scaling: on direction-wise constant fields, $LQ_L$ is isometric at
-the level relevant to the four-dimensional norm count.  This makes the
-following proposal mathematically natural:
-\begin{equation}\label{eq:gate-intro}
- \norm{A}^{2}\le
- \CP\left(\ip{A}{K_0A}+\norm{LQ_LA}^{2}\right),
- \qquad \CP\text{ independent of }L.
+Finite-range positive operators admit Combes--Thomas localization estimates
+whose constants depend on the lower spectral edge~\cite{CombesThomas}.  In a
+block-spin treatment of lattice gauge fields, a natural finite-dimensional
+precision is a flat Hodge operator plus a positive block penalty.  The
+question addressed here is sharply limited: can the form
+\begin{equation}\label{eq:intro-form}
+ \ip{A}{K_0A}+\norm{LQ_LA}^2
 \end{equation}
+control the full fine one-cochain norm with a constant independent of the
+block side $L$?
 
-The purpose of this paper is to settle that proposal on its stated full
-domain.  The answer is negative for a structural reason.  The block map has
-transverse low-energy modes in its exact kernel.  Repeating a mean-zero
-square profile within every coarse block makes the cancellation local to
-each block, so the obstruction persists for every positive coarse side
-$N'$, rather than only for the one-site coarse torus.  Its energy is carried
-by two interfaces per block, while its norm is carried by the entire volume;
-the resulting quotient is exactly $8/L$.
+The factor $L$ is not arbitrary.  With the line-integral block map used below,
+it exactly balances direction-wise constant fields in dimension four.  That
+necessary scaling test passes, but it probes only the constant sector.  The
+block map also has mean-zero transverse modes in its exact kernel.  The first
+Fourier mode on the within-block cycle makes this obstruction both local to
+every block and spectrally sharp at low momentum.
 
-Three features distinguish the result from a heuristic low-momentum
-argument.
+The main result has four components.
 \begin{enumerate}[label=(\roman*)]
-\item The witness is an explicit periodic cochain on the exact finite lattice
-  consumed by the block map.
-\item Both kernel identities and the Hodge energy are exact, including all
-  finite-volume factors.
-\item The constant is quantified before the volume, and the contradiction is
-  formalized at that quantifier order.
+\item The witness is defined on the exact finite periodic lattice and works
+  for every $L\ge2$, with no parity restriction.
+\item Its cancellation under $Q_L$ and under the flat divergence is exact in
+  every block and at every positive coarse side $N'$.
+\item Its Hodge Rayleigh quotient is the first-cycle eigenvalue
+  $4\sin^2(\pi/L)$, hence is $O(L^{-2})$.
+\item The quantifier order is explicit and machine checked: one proposed
+  constant $\CP$ is chosen before all block sides $L$.
 \end{enumerate}
 
-The theorem closes the present full-space flat route.  It does not close the
-physically different alternatives of passing to a justified sector or
-quotient, or adding a positive interacting term that lifts the transverse
-family.  That distinction is essential: a no-go theorem is useful precisely
-when it identifies which input must change.
+An earlier square-wave witness gives the weaker even-scale quotient $8/L$.
+It already disproves the same gate, but the Fourier construction identifies
+the actual low-frequency mechanism and strengthens the quantitative lower
+bound on Poincare constants from linear to quadratic growth.
 
-\section{Finite periodic lattice and the critical block form}
+The conclusion is a domain diagnosis, not a general no-go for lattice gauge
+renormalization.  Classical constructions use gauge restrictions, quotient
+structures, or background-dependent operators.  The present theorem instead
+tests the unrestricted flat form in~\eqref{eq:intro-form}.  A repaired theorem
+may still hold on a physically justified sector or after adding a positive
+interacting Hessian that lifts the explicit transverse family.
 
-\subsection{One-cochains and the flat Hodge operator}
+\section{Finite lattice, block map, and quantifiers}
 
-Fix integers $d\ge2$, $L\ge1$, $N'\ge1$, and $N_c\ge1$.  The fine site set is
+Fix integers $d\ge2$, $L\ge1$, $N'\ge1$, and $N_c\ge2$.  The fine site set is
 \[
  \Lambda_{L,N'}=\left(\Z/(LN')\Z\right)^d,
 \]
-and a positive bond is a pair $(x,\mu)$ with $x\in\Lambda_{L,N'}$ and
-$\mu\in\{0,\ldots,d-1\}$.  The internal coordinate space is
-\[
- E_{N_c}=\R^{N_c^2-1},
-\]
-the coordinate model used by the formalization for $\su(N_c)$.  A physical
-one-cochain is a function $A(x,\mu)\in E_{N_c}$ with the finite $\ell^2$
-norm
+and a positive bond is $(x,\mu)$ with $x\in\Lambda_{L,N'}$ and
+$\mu\in\{0,\ldots,d-1\}$.  The real internal coordinate space is
+$E_{N_c}=\R^{N_c^2-1}$.  For a one-cochain $A(x,\mu)\in E_{N_c}$, set
 \[
  \norm{A}^2=\sum_{x\in\Lambda_{L,N'}}\sum_{\mu=0}^{d-1}
  \norm{A(x,\mu)}^2.
 \]
 
-At the trivial gauge background, let $D_1$ be the discrete covariant exterior
-derivative on ordered plaquettes and let $\delta$ be the gauge constraint
-(discrete divergence).  The flat Hodge operator $K_0$ is normalized so that
-\begin{equation}\label{eq:hodge-form}
+At the trivial background, let $D_1$ be the discrete exterior derivative and
+$\delta$ the discrete divergence.  The flat Hodge operator $K_0$ satisfies
+\begin{equation}\label{eq:hodge}
  \ip{A}{K_0A}=\norm{D_1A}^2+\norm{\delta A}^2.
 \end{equation}
-Only this quadratic-form identity is needed below.  The formal development
-constructs $D_1$, $\delta$, and $K_0$ as continuous linear maps on the finite
-Hilbert spaces, rather than postulating~\eqref{eq:hodge-form}.
+In the formal development this is derived from the adjoint-defined operator;
+it is not introduced as an axiom.
 
-\subsection{The line-integral block map}
-
-Write $B_y$ for the fine block associated with a coarse site
-$y\in(\Z/N'\Z)^d$.  It contains the sites
+For a coarse site $y\in(\Z/N'\Z)^d$, write
 \[
- x=Ly+r,\qquad r\in\{0,\ldots,L-1\}^d.
+ B_y=\{Ly+r:0\le r_\nu<L\text{ for every }\nu\}.
 \]
-For a coarse positive bond $(y,\mu)$, the linearized block map is
-\begin{equation}\label{eq:block-map}
+For a coarse positive bond $(y,\mu)$, define the linearized line-integral
+average
+\begin{equation}\label{eq:Q}
  (Q_LA)(y,\mu)=L^{-d}\sum_{x\in B_y}\sum_{k=0}^{L-1}
  A(x+ke_\mu,\mu).
 \end{equation}
-Thus $Q_L$ averages, over the source block, the length-$L$ straight line
-integral in the coarse bond direction.  The critical four-dimensional
-rescaling is
-\[
- \widetilde Q_L=LQ_L.
-\]
-For a scalar sequence $s_L$, set more generally
-\begin{equation}\label{eq:precision}
+For a scalar sequence $s_L$, the tested precision is
+\begin{equation}\label{eq:H}
  H_{L,s}=K_0+(s_LQ_L)^*(s_LQ_L).
 \end{equation}
 
 \begin{definition}[critical full-space gate]\label{def:gate}
-In $d=4$, for fixed $N'$ and $N_c$, the critical gate asserts that there is
-a number $\CP>0$, chosen independently of $L$, such that
+In $d=4$, fix $N'\ge1$, $N_c\ge2$, and the adjoint-model parameter defining
+the flat maps.  The gate asserts that there is a number $\CP>0$ such that, for
+every integer $L\ge1$ and every fine one-cochain $A$,
 \begin{equation}\label{eq:gate}
- \norm{A}^2\le \CP\left(
- \ip{A}{K_0A}+\norm{LQ_LA}^2\right)
+ \norm{A}^2\le\CP\left(\ip{A}{K_0A}+\norm{LQ_LA}^2\right).
 \end{equation}
-for every positive block side $L$ and every fine one-cochain $A$.
 \end{definition}
 
-The quantifier order is part of the claim.  At any fixed $L$ the problem is
-finite-dimensional, whereas Definition~\ref{def:gate} asks one constant to
-work before all volumes are chosen.
+\begin{remark}[meaning of volume-uniform]\label{rem:volume}
+The coarse side $N'$ is arbitrary but fixed inside one instance of the gate.
+The quantified side $L$ then varies, so the fine volume $(LN')^4$ varies and
+the same $\CP$ must work for all of it.  This paper does not call a bound
+``volume-uniform'' merely because it is uniform as $N'\to\infty$ at fixed
+$L$; that is a different quantifier statement.
+\end{remark}
 
-\section{A block-periodic transverse sector}
+\section{The block-periodic Fourier witness}
 
-Let $L=2M$ with $M\ge1$.  Define the square sign on the within-block cycle by
-\begin{equation}\label{eq:square-sign}
- \sigma_M(r)=
- \begin{cases}
- +1,&0\le r<M,\\
- -1,&M\le r<2M,
- \end{cases}
- \qquad r\in\Z/(2M)\Z,
-\end{equation}
-and extend it to the full fine cycle by block periodicity:
+Let
 \[
- \sigma_{M,N'}(m)=\sigma_M(m\bmod 2M),
- \qquad m\in\Z/(2MN')\Z.
+ \zeta_L=\exp(2\pi i/L),\qquad L\ge2.
 \]
-The two elementary identities are
-\begin{equation}\label{eq:square-identities}
- \sigma_{M,N'}(m)^2=1,
- \qquad
- \sum_{r=0}^{2M-1}\sigma_M(r)=0.
+Then $\zeta_L^L=1$, $\zeta_L\ne1$, and the finite geometric sum gives
+\begin{equation}\label{eq:rootsum}
+ \sum_{r=0}^{L-1}\zeta_L^r=0.
 \end{equation}
+Choose orthonormal vectors $u_0,u_1\in E_{N_c}$, possible because
+$N_c^2-1\ge3$, and define the real-linear isometry
+\[
+ \iota:\C\longrightarrow E_{N_c},\qquad
+ \iota(a+ib)=au_0+bu_1.
+\]
+For $m\in\Z/(LN')\Z$, define the block-periodic internal profile
+\begin{equation}\label{eq:profile}
+ \phi_L(m)=\iota\!\left(\zeta_L^{\,m\bmod L}\right).
+\end{equation}
+It has unit norm and exact zero mean in every length-$L$ block.
 
-Choose distinct directions $i\ne j$ and $w\in E_{N_c}$.  Define the
-one-cochain
+Choose distinct directions $i\ne j$ and set
 \begin{equation}\label{eq:witness}
- A_{i,j,w}(x,\mu)=
+ A_L(x,\mu)=
  \begin{cases}
- \sigma_{M,N'}(x_j)w,&\mu=i,\\
+ \phi_L(x_j),&\mu=i,\\
  0,&\mu\ne i.
  \end{cases}
 \end{equation}
 The field points in direction $i$ and varies only in the transverse direction
-$j$.  For a fixed phase of the square wave, the collection
+$j$.
+
+\begin{lemma}[norm and block kernel]\label{lem:norm-q}
+For every $L\ge2$ and $N'\ge1$,
+\begin{equation}\label{eq:norm-q}
+ \norm{A_L}^2=(LN')^d,
+ \qquad Q_LA_L=0.
+\end{equation}
+Consequently $(s_LQ_L)A_L=0$ for every real scalar $s_L$.
+\end{lemma}
+
+\begin{proof}
+Only direction-$i$ bonds contribute to the norm, one at each fine site, and
+$\norm{\phi_L(m)}=1$.  For the block map, a coarse bond outside direction $i$
+sees only zero components.  In direction $i$, line shifts preserve $x_j$.
+After the line sum is factored out, the sum over the within-block $j$-offset
+is~\eqref{eq:rootsum}.  This cancellation occurs separately in every source
+block, hence for every $N'$.
+\end{proof}
+
+\begin{lemma}[transverse divergence]\label{lem:div}
+At the trivial background,
 \[
- \mathcal T_{M,N'}=\operatorname{span}
- \{A_{i,j,w}:i\ne j,\ w\in E_{N_c}\}
+ \delta A_L=0.
 \]
-is the explicit obstructive family used in this paper.  We do not claim that
-$\mathcal T_{M,N'}$ is the entire kernel or the entire low-energy spectral
-subspace.
-
-\begin{lemma}[exact norm]\label{lem:norm}
-For every $i\ne j$ and $w\in E_{N_c}$,
-\begin{equation}\label{eq:norm}
- \norm{A_{i,j,w}}^2=(LN')^d\norm{w}^2.
-\end{equation}
 \end{lemma}
 
 \begin{proof}
-Only bonds in direction $i$ contribute.  There is one such bond at each of
-the $(LN')^d$ fine sites, and every coefficient has squared magnitude one by
-\eqref{eq:square-identities}.
+Only the direction-$i$ component enters.  That component depends only on
+$x_j$ and is invariant under forward and backward shifts in direction $i$.
 \end{proof}
 
-\begin{lemma}[blockwise kernel identity]\label{lem:block-kernel}
-For every positive coarse side $N'$,
-\begin{equation}\label{eq:qzero}
- Q_LA_{i,j,w}=0.
+The witness therefore lies simultaneously in the exact kernel of the block
+map and the flat gauge-constraint kernel.  Its remaining energy is purely
+curvature energy.
+
+\section{Exact first-mode energy}
+
+Define
+\begin{equation}\label{eq:lambda}
+ \lambda_L=\lvert\zeta_L-1\rvert^2.
 \end{equation}
-Consequently $(s_LQ_L)A_{i,j,w}=0$ for every scalar $s_L$.
-\end{lemma}
-
-\begin{proof}
-If the coarse bond direction is not $i$, every summand in
-\eqref{eq:block-map} vanishes.  In direction $i$, shifting along the line does
-not change the transverse coordinate $x_j$.  The line sum therefore
-contributes a factor $L$, but the sum over the $j$-offset inside the source
-block contains
-\[
- \sum_{r_j=0}^{L-1}\sigma_M(r_j)=0.
-\]
-This cancellation occurs separately in every source block.  It is therefore
-independent of the number $N'$ of blocks along each direction.
-\end{proof}
-
-\begin{lemma}[transverse divergence]\label{lem:divzero}
-The witness is divergence-free at the trivial background:
-\begin{equation}\label{eq:divzero}
- \delta A_{i,j,w}=0.
+For every $r$, multiplication by the unit complex number $\zeta_L^r$ gives
+\begin{equation}\label{eq:jump}
+ \norm{\iota(\zeta_L^r)-\iota(\zeta_L^{r+1})}^2
+ =\lvert1-\zeta_L\rvert^2=\lambda_L,
 \end{equation}
-\end{lemma}
-
-\begin{proof}
-Only the $i$ component can enter the divergence.  That component is unchanged
-by a forward or backward shift in direction $i$, because it depends only on
-$x_j$ and $i\ne j$.
-\end{proof}
-
-The preceding two lemmas locate the obstruction: it lies simultaneously in
-the block-map kernel and the flat gauge-constraint kernel.  Its remaining
-energy is purely curvature energy.
-
-\section{Exact interface count and Rayleigh quotient}
-
-Let $S$ be the successor map on the full fine cycle of length $LN'=2MN'$.
-There are two sign changes in each block, including the boundary between the
-end of one block and the start of the next.  At a sign change the difference
-has magnitude $2$ and squared magnitude $4$.  Hence
-\begin{equation}\label{eq:cycle-count}
- \sum_{m\in\Z/(LN')\Z}
- \left(\sigma_{M,N'}(m)-\sigma_{M,N'}(Sm)\right)^2=8N'.
+including the periodic jump $r=L-1$ because $\zeta_L^L=1$.  Elementary
+trigonometry yields
+\begin{equation}\label{eq:sin}
+ \lambda_L=2-2\cos(2\pi/L)
+ =4\sin^2(\pi/L)\le\frac{4\pi^2}{L^2}.
 \end{equation}
 
-\begin{lemma}[finite-volume interface count]\label{lem:box-count}
-For any direction $j$,
-\begin{align}
- &\sum_{x\in\Lambda_{L,N'}}
- \left(\sigma_{M,N'}(x_j)-
- \sigma_{M,N'}((x+e_j)_j)\right)^2\notag\\
- &\hspace{3.3cm}=8N'(LN')^{d-1}.
- \label{eq:box-count}
-\end{align}
-\end{lemma}
-
-\begin{proof}
-Split the finite box into its $j$ coordinate and the remaining $d-1$
-coordinates.  Equation~\eqref{eq:cycle-count} gives the first factor; the
-remaining coordinates give $(LN')^{d-1}$ identical copies.
-\end{proof}
-
-\begin{proposition}[exact flat Hodge energy]\label{prop:hodge-energy}
-For $i\ne j$,
-\begin{equation}\label{eq:hodge-energy}
- \ip{A_{i,j,w}}{K_0A_{i,j,w}}
- =8N'(LN')^{d-1}\norm{w}^2.
+\begin{proposition}[exact flat Hodge energy]\label{prop:energy}
+For the transverse witness~\eqref{eq:witness},
+\begin{equation}\label{eq:energy}
+ \ip{A_L}{K_0A_L}=(LN')^d\lambda_L.
 \end{equation}
 \end{proposition}
 
 \begin{proof}
-By Lemma~\ref{lem:divzero}, the divergence term in
-\eqref{eq:hodge-form} vanishes.  In the plaquette curl, every ordered
-direction pair except the pair containing $i$ and $j$ cancels: either the
-field component is zero, or the transverse profile is unchanged by the
-shift.  On the $(i,j)$ plaquettes, the squared norm is exactly the scalar
-square difference in Lemma~\ref{lem:box-count} times $\norm{w}^2$.  The two
-possible orderings of $i$ and $j$ give the same value under the convention
-that each geometric plaquette is counted once.  This proves
-\eqref{eq:hodge-energy}.
+Lemma~\ref{lem:div} removes the divergence term in~\eqref{eq:hodge}.  In the
+plaquette curl, every direction pair other than the pair containing $i$ and
+$j$ vanishes: either the field component is zero or its profile is unchanged
+by the shift.  Each $(i,j)$ plaquette contributes the common value
+$\lambda_L$ from~\eqref{eq:jump}.  There is one contributing geometric
+plaquette at each of the $(LN')^d$ fine sites under the convention used by
+$D_1$.  Summation gives~\eqref{eq:energy}.
 \end{proof}
 
 \begin{theorem}[exact Rayleigh quotient]\label{thm:rayleigh}
-If $w\ne0$, then for every scalar $s_L$,
+For every scalar rescaling $s_L$,
 \begin{equation}\label{eq:rayleigh}
- \frac{\ip{A_{i,j,w}}{H_{L,s}A_{i,j,w}}}
- {\norm{A_{i,j,w}}^2}=\frac{8}{L}.
+ \frac{\ip{A_L}{H_{L,s}A_L}}{\norm{A_L}^2}
+ =\lambda_L=4\sin^2(\pi/L).
 \end{equation}
-In particular, if $\cL$ denotes the best coercivity constant of
-$H_{L,s}$ on the full one-cochain space, then
-\begin{equation}\label{eq:cl-upper}
- \cL\le\frac{8}{L}.
+Thus the best full-space coercivity constant $c_L$ of $H_{L,s}$ obeys
+\begin{equation}\label{eq:coerc-upper}
+ c_L\le\lambda_L\le\frac{4\pi^2}{L^2}.
 \end{equation}
 \end{theorem}
 
 \begin{proof}
-Lemma~\ref{lem:block-kernel} removes the block term in
-\eqref{eq:precision}.  Divide Proposition~\ref{prop:hodge-energy} by
-Lemma~\ref{lem:norm} and cancel the positive factors $N'$,
-$(LN')^{d-1}$, and $\norm{w}^2$.
+Lemma~\ref{lem:norm-q} removes the block term from~\eqref{eq:H}.  Divide
+Proposition~\ref{prop:energy} by the positive norm in
+Lemma~\ref{lem:norm-q}; the entire volume factor cancels.
 \end{proof}
 
-The cancellation of $N'$ is the central finite-volume point.  The obstruction
-is neither diluted nor repaired by enlarging the coarse torus.  It is repeated
-block by block, and the interface and norm counts scale compatibly.
+\section{No uniform critical coercivity}
 
-\section{No volume-uniform critical coercivity}
-
-We now specialize to physical dimension $d=4$.  The internal space is
-nonzero when $N_c\ge2$, since $N_c^2-1>0$.
-
-\begin{theorem}[all-coarse-volume critical no-go]\label{thm:no-go}
-Fix $N'\ge1$, $N_c\ge2$, and any adjoint-model parameter used to define the
-flat operators.  There is no $\CP>0$ such that
-\begin{equation}\label{eq:uniform-poincare}
- \norm{A}^2\le \CP\left(
- \ip{A}{K_0A}+\norm{LQ_LA}^2\right)
+\begin{theorem}[all-scales, all-coarse-side no-go]\label{thm:nogo}
+Fix $N'\ge1$, $N_c\ge2$, and the adjoint-model parameter defining the flat
+operators.  The critical full-space gate in Definition~\ref{def:gate} is
+false.  More quantitatively, at every $L\ge2$ any constant valid at that
+scale must satisfy
+\begin{equation}\label{eq:CP-lower}
+ \CP(L)\ge\frac{1}{\lambda_L}
+ \ge\frac{L^2}{4\pi^2}.
 \end{equation}
-holds for every block side $L\ge1$ and every fine physical one-cochain $A$.
-Equivalently, the proposition
-\[
- \lean{VolumeUniformCriticalRescaledFlatPoincareGate}\ N'\ N_c\ \rho
-\]
-is false for every positive $N'$.
 \end{theorem}
 
 \begin{proof}
-Assume that such a $\CP$ exists.  Choose an even block side $L=2M$ and a
-nonzero internal vector $w$.  Substituting $A_{i,j,w}$ into
-\eqref{eq:uniform-poincare}, using Lemma~\ref{lem:block-kernel}, and applying
-\eqref{eq:norm} and \eqref{eq:hodge-energy} gives
+Insert $A_L$ into~\eqref{eq:gate}.  By Lemma~\ref{lem:norm-q} and
+Proposition~\ref{prop:energy},
 \[
- (LN')^4\norm{w}^2
- \le \CP\,8N'(LN')^3\norm{w}^2.
+ (LN')^4\le\CP(LN')^4\lambda_L.
 \]
-All cancelled quantities are positive, so
-\begin{equation}\label{eq:Lbound}
- L\le8\CP.
-\end{equation}
-The asserted gate supplies the same $\CP$ before all volumes are chosen.
-Choose $M$ so that $2M>8\CP$.  This contradicts~\eqref{eq:Lbound}.
+The volume factor is positive, so $1\le\CP\lambda_L$, proving the first
+inequality in~\eqref{eq:CP-lower}; the second follows from~\eqref{eq:sin}.
+If one $\CP$ worked for all $L$, it would force $L^2\le4\pi^2\CP$ for every
+$L$, a contradiction.
 \end{proof}
 
-\begin{corollary}[Poincar\'e constants diverge]\label{cor:cp-growth}
-At each even scale, every valid full-space constant satisfies
-\[
- \CP(L)\ge\frac{L}{8}.
-\]
-This lower bound is independent of $N'$.
-\end{corollary}
-
-\begin{corollary}[scalar rescaling cannot repair the gate]
-Replacing $LQ_L$ by $s_LQ_L$, for an arbitrary real scalar sequence $s_L$,
-does not produce full-space volume-uniform coercivity.
+\begin{corollary}[scalar normalization is irrelevant]\label{cor:scalar}
+No real scalar sequence $s_L$ can restore full-space uniform coercivity for
+$K_0+(s_LQ_L)^*(s_LQ_L)$.
 \end{corollary}
 
 \begin{proof}
-The same witness satisfies $(s_LQ_L)A_{i,j,w}=0$ exactly, so
-Theorem~\ref{thm:rayleigh} and the contradiction are unchanged.
+The same $A_L$ belongs to $\ker Q_L$, hence to $\ker(s_LQ_L)$, at every
+scale.
 \end{proof}
 
-\subsection{Consequence for localization estimates}
+The theorem isolates the lower spectral edge as the obstruction.  Separate
+finite-range, kernel-amplitude, ball-count, and block-metric localization
+estimates are not invalidated.  What fails is the positive scale-independent
+coercivity input required to turn those estimates into a uniform inverse or
+inverse-square-root bound on the full domain.
 
-Suppose a covariance-root estimate uses a coercivity input $\cL$ and has an
-amplitude bounded below by the usual spectral scale $2/\sqrt{\cL}$.  The
-witness forces
-\[
- \frac{2}{\sqrt{\cL}}\ge\sqrt{\frac{L}{2}}.
-\]
-Thus no bound built from this full-space coercivity input can have a
-volume-uniform root amplitude.  This statement identifies the failing
-parameter; it does not invalidate separate finite-range, kernel-amplitude,
-ball-count, or tilt-budget estimates.
+\section{Relation to prior gauge-RG constructions}
 
-\section{What the theorem closes, and what it leaves open}
+Ba\l aban's propagator papers study the Gaussian vector-field theory underlying
+lattice gauge renormalization and then extend the analysis to operators with
+restrictions at several scales and to iterated renormalization
+transformations~\cite{BalabanI,BalabanII}.  In that program, block averages
+are not used in isolation: gauge conditions, restricted domains, minimizers,
+and background-dependent propagators are part of the construction.  Modern
+expositions of covariant axial gauge likewise emphasize an axial restriction
+adapted to block averaging~\cite{DimockAxial}.
 
-Theorem~\ref{thm:no-go} is a domain diagnosis.  It rules out exactly the
-full one-cochain space equipped with the flat Hodge term and a scalar multiple
-of the present block map.  Several logically different continuations remain.
-
-\paragraph{Restricted or quotient sector.}
-One may remove or quotient the block-periodic transverse sector, provided the
-restriction is physically justified and stable under the operations required
-by the renormalization step.  Merely declaring the witness absent is not
-enough: the repaired domain must be defined, its invariance proved, and its
-coercivity established with a constant uniform in $L$.
-
-\paragraph{Additional positive Hessian.}
-An interacting Wilson Hessian, or another positive term $V_L$, could lift the
-family if it satisfies
-\[
- \ip{A_{i,j,w}}{V_LA_{i,j,w}}\ge c_*\norm{A_{i,j,w}}^2
-\]
-with $c_*>0$ independent of $L$ and $N'$.  Such a statement is outside the
-flat calculation and is not assumed here.
-
-\paragraph{Modified block operator.}
-A non-scalar modification could in principle see the transverse family.
-The corollary above shows why changing only the scalar normalization cannot:
-the problem is the exact kernel, not the size of a nonzero singular value.
-
-\paragraph{No continuum claim.}
-The argument is finite-dimensional and exact.  It proves neither existence
-of an infinite-volume measure nor a continuum limit, and it supplies no
-positive Yang--Mills mass gap.  Its role is to prevent a false uniform input
-from entering those later arguments.
+There is therefore no conflict between classical positivity statements on a
+gauge-fixed or otherwise restricted subspace and Theorem~\ref{thm:nogo}.  The
+claims have different domains.  The exact delta established here is:
+\begin{quote}
+For the explicit finite periodic line-integral map~\eqref{eq:Q}, the flat
+full-space form $K_0+(s_LQ_L)^*(s_LQ_L)$ has block-periodic transverse Fourier
+modes in the simultaneous kernels of $Q_L$ and the flat divergence, with
+Rayleigh quotient $4\sin^2(\pi/L)$ at every $L\ge2$ and every $N'\ge1$.
+\end{quote}
+This is a no-go for that unrestricted coercivity proposal, not a priority
+claim over the general observation that gauge fields require gauge fixing,
+and not a no-go for Ba\l aban's restricted propagators.  Indeed, the result
+explains why a domain restriction or quotient is mathematically load-bearing
+rather than cosmetic.
 
 \section{Machine-checked realization}
 
-The formalization, carried out in Lean~4 and Mathlib
-\cite{Lean4,mathlib}, is contained in
+The Lean~4 development is a seven-file chain headed by
 \begin{center}
-\codepath{YangMills/RG/PhysicalCriticalRescalingNoGoAllCoarse.lean}.
+\codepath{YangMills/RG/PhysicalCriticalRescalingFourierNoGoAllScales.lean}.
 \end{center}
-It imports the previously checked one-coarse-site audit and proves the
-all-coarse-volume result without adding axioms.  Table~\ref{tab:map} maps the
-mathematical chain to selected Lean declarations.
+Table~\ref{tab:map} maps the analytic statements to selected declarations.
 
 \begin{table}[ht]
 \centering
 \small
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth}
-                  >{\raggedright\arraybackslash}p{0.57\textwidth}@{}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.35\textwidth}
+                  >{\raggedright\arraybackslash}p{0.55\textwidth}@{}}
 \toprule
 Mathematical content & Lean declaration \\
 \midrule
-Block/offset decomposition &
-\lean{blockOf\_eq\_image\_blockOffsetSite} \\
-Mean-zero profile in every block &
-\codepath{sum_blockPeriodicSquareSign_block_eq_zero} \\
-Exact cochain norm &
-\codepath{norm_sq_blockPeriodicSquareModeCochain} \\
+Root-of-unity block cancellation &
+\codepath{sum_blockFourierRoot_pow_eq_zero} \\
+Lie-valued cancellation in every block &
+\codepath{sum_blockFourierProfile_block_eq_zero} \\
+Eigenvalue bound $\lambda_L\le(2\pi/L)^2$ &
+\codepath{blockFourierEigenvalue_le} \\
 Exact block-map kernel &
-\codepath{flatBlockConstraintQCLM_blockPeriodicSquareMode_eq_zero} \\
-Kernel after critical rescaling &
-\codepath{criticalScaledBlockConstraintQCLM_blockPeriodicSquareMode_eq_zero} \\
+\codepath{flatBlockConstraintQCLM_blockFourierMode_eq_zero} \\
 Zero transverse divergence &
-\codepath{gaugeConstraintQCLM_blockPeriodicSquareModeCochain_eq_zero_of_ne} \\
-Exact curvature norm &
-\codepath{norm_sq_covariantD1CLM_blockPeriodicSquareModeCochain_of_ne} \\
+\codepath{gaugeConstraintQCLM_blockFourierModeCochain_eq_zero_of_ne} \\
 Exact Hodge quadratic form &
-\codepath{flatGaugeHodgeK0_inner_blockPeriodicSquareModeCochain_of_ne} \\
-All-$N'$ no-go theorem &
-\codepath{volumeUniformCriticalRescaledFlatPoincareGate_false} \\
+\codepath{flatGaugeHodgeK0_inner_blockFourierModeCochain_of_ne} \\
+Exact Rayleigh quotient &
+\codepath{blockFourierMode_rayleigh_eq} \\
+Necessary bound $1\le\CP\lambda_L$ &
+\codepath{criticalRescaledFlatPoincare_fourier_lower_bound} \\
+All-scales no-go &
+\codepath{volumeUniformCriticalRescaledFlatPoincareGate_fourier_false} \\
 \bottomrule
 \end{tabular}
-\caption{Theorem--artifact map.}
+\caption{Theorem-to-artifact map.}
 \label{tab:map}
 \end{table}
 
-The formal proof mirrors the analytic proof but makes four finite-indexing
-steps explicit: the equivalence between block sites and within-block offsets;
-quotient/remainder coordinates on the full cycle; separation of one box
-coordinate from the remaining coordinates; and the two orderings of the
-plaquette direction pair.  These are the points at which an informal factor
-of $N'$, $L$, or two is easiest to lose.
-
-The focused oracle is
+The formal result uses the exact norm definition
+$\lambda_L=\norm{\zeta_L-1}^2$ and proves the bound
+$\lambda_L\le(2\pi/L)^2$.  Equation~\eqref{eq:sin} is the elementary
+closed-form identification of that norm.  The focused oracle
 \begin{center}
-\codepath{papers/poincare-wall/CriticalRescalingNoGoAllCoarseOracle.lean}.
+\codepath{YangMills/RG/PhysicalCriticalRescalingFourierNoGoOracle.lean}
 \end{center}
-For each of the six headline declarations it reports exactly
+reports exactly
 \[
- [\lean{propext},\ \lean{Classical.choice},\ \lean{Quot.sound}],
+ [\lean{propext},\ \lean{Classical.choice},\ \lean{Quot.sound}]
 \]
-the standard logical dependencies expected from the surrounding finite
-Hilbert-space development.  In particular, the audit contains no
-\lean{sorryAx} and no project-specific axiom.
+for all nine audited declarations, with no project axiom and no
+\lean{sorryAx}.
 
-\subsection*{Reproduction}
+\subsection*{Immutable source and reproduction}
 
-The checked workspace uses Lean \lean{v4.29.0-rc6} and Mathlib revision
-\lean{076427204801} (full hash pinned in \codepath{lake-manifest.json}).
+The theorem source is fixed at repository commit
+\begin{center}
+\lean{f21539ed0bb880a04078de369bf5cbf063f7b101}.
+\end{center}
+The SHA-256 of the head theorem file is
+\begin{center}
+\lean{5F0890D14EA6981CBE6459605A634386ED2C844F6D03A6947E33B34250E2F5AE}.
+\end{center}
+The companion source packet
+\codepath{critical_rescaling_fourier_no_go_sources_v1.1.zip} has SHA-256
+\begin{center}
+\lean{AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132}.
+\end{center}
+The packet contains the seven theorem/oracle files, the manifest, the Lean
+toolchain, and the pinned Lake manifest.  The toolchain is Lean
+\lean{v4.29.0-rc6}.  The pinned Mathlib revision is
+\begin{center}
+\lean{07642720480157414db592fa85b626dafb71355b}.
+\end{center}
 From the repository root:
 \begin{verbatim}
-lake build YangMills.RG.PhysicalCriticalRescalingNoGoAllCoarse
-lake env lean papers/poincare-wall/\
-  CriticalRescalingNoGoAllCoarseOracle.lean
+lake build YangMills.RG.PhysicalCriticalRescalingFourierNoGoAllScales
+lake env lean YangMills/RG/PhysicalCriticalRescalingFourierNoGoOracle.lean
 lake build YangMillsCore
 \end{verbatim}
-The verified runs completed with 8178 jobs for the focused module and 8475
-jobs for the full core.  The source file itself also passes direct Lean
-elaboration.  Warnings emitted by the full core are pre-existing linter
-warnings and do not affect theorem checking.
+The verified runs completed successfully with 8184 jobs for the focused
+theorem build and 8481 jobs for the aggregate core.  The oracle dependencies
+are exactly those displayed above.  A direct search found no \lean{sorry},
+\lean{admit}, or project \lean{axiom} in the seven source files.
+
+\section{What remains open}
+
+\paragraph{Restricted or quotient sector.}
+A repaired domain may remove or quotient the obstructive transverse family,
+but the restriction must be physically justified and stable under the
+renormalization operations.  Coercivity on that new domain remains to be
+proved.
+
+\paragraph{Additional positive Hessian.}
+An interacting Wilson Hessian or another positive term $V_L$ could lift the
+family if
+\[
+ \ip{A_L}{V_LA_L}\ge c_*\norm{A_L}^2
+\]
+with $c_*>0$ independent of $L$.  This is not a consequence of the flat
+calculation and is not assumed here.
+
+\paragraph{No continuum conclusion.}
+The theorem is finite-dimensional.  It proves no positive coercivity for an
+interacting theory, no infinite-volume measure, no continuum limit, no
+Osterwalder--Schrader reconstruction, and no Yang--Mills mass gap.
 
 \section{Conclusion}
 
-Critical rescaling repairs the constant-field normalization but cannot repair
-an exact kernel.  The block-periodic transverse family constructed here lies
-in that kernel on every positive coarse torus, is divergence-free, and has
-only $O(L^{-1})$ flat Hodge energy per unit norm.  Therefore the current
-full-space critical block/Hodge form has no volume-uniform positive lower
-bound, for any scalar normalization of the block map.
+Critical scalar rescaling can correct a normalization mismatch but cannot
+remove an exact kernel.  The first within-block Fourier phase produces, at
+every $L\ge2$ and every positive coarse side, a transverse divergence-free
+cochain annihilated by $Q_L$.  Its exact Rayleigh quotient is
+$4\sin^2(\pi/L)$, so the best full-space spectral lower bound is at most
+$4\pi^2/L^2$.  The current flat full-domain critical gate is therefore
+impossible for any scalar normalization of the block map.
 
-The conclusion is negative but operational: the localization machinery is
-not the failing component.  The lower spectral edge is.  Any successful
-continuation must alter the physical domain or add an operator that gives
-uniform energy to the explicitly identified transverse sector.
+The negative result is operational: it identifies the precise input that
+must change.  A successful continuation must justify a different domain or
+add an operator that supplies uniform energy to the explicitly exhibited
+Fourier sector.
+
+\appendix
+\section{The square-wave precursor}
+
+For even $L=2M$, the real profile that equals $+1$ on the first half of each
+block and $-1$ on the second half also has zero block mean.  Its two jumps per
+block have squared magnitude four, giving total one-dimensional energy
+$8N'$ and Rayleigh quotient $8/L$.  This witness is useful because it requires
+only a single internal vector and elementary interface counting.  The Fourier
+witness is stronger in three ways: it works for every $L\ge2$, it identifies
+the first periodic eigenmode, and it improves the quantitative obstruction
+from $8/L$ to $4\sin^2(\pi/L)=O(L^{-2})$.
 
 \begin{thebibliography}{9}
 
 \bibitem{BalabanI}
-T.~Ba{\l}aban,
+T.~Ba\l aban,
 \emph{Propagators and renormalization transformations for lattice gauge
 theories. I},
 Communications in Mathematical Physics \textbf{95} (1984), 17--40.
 \href{https://doi.org/10.1007/BF01215753}{doi:10.1007/BF01215753}.
 
 \bibitem{BalabanII}
-T.~Ba{\l}aban,
+T.~Ba\l aban,
 \emph{Propagators and renormalization transformations for lattice gauge
 theories. II},
 Communications in Mathematical Physics \textbf{96} (1984), 223--250.
 \href{https://doi.org/10.1007/BF01240221}{doi:10.1007/BF01240221}.
+
+\bibitem{DimockAxial}
+J.~Dimock,
+\emph{Covariant axial gauge},
+Journal of Mathematical Physics \textbf{56} (2015), 052302.
+\href{https://doi.org/10.1063/1.4921224}{doi:10.1063/1.4921224}.
 
 \bibitem{CombesThomas}
 J.~M.~Combes and L.~Thomas,
