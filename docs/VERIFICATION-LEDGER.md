@@ -30930,3 +30930,45 @@ There was also one unused-simp-argument warning for
 counterexample to the scalar identity was found.  Core and oracle were not
 run, no PASS is claimed, and the runtime was disconnected and deleted
 immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 610 (2026-08-02, **TASK 14: generic angular log-mixture focused build passed**)
+
+**FOCUSED LEAN BUILD ONLY; FULL ORACLE AND CORE VERIFICATION REMAIN
+PENDING.**  After preserving Addendum 609, the four local elaboration errors
+were repaired in source commit
+`1abb48947ab59e1744ff996a7c7dc7983b9e5f7a`.  The focused runner at commit
+`fc654263304d96a62651b9831313fdfa5e94e80f` then used one fresh Colab clone,
+as required for this intermediate brick, checked out that raw source SHA and
+verified the exact pinned toolchain and dependency revision.
+
+The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T08:47:13.321251+00:00` through
+`2026-08-02T08:51:52.839950+00:00` (`279.518699 s`); the Colab UI reported
+`279.581 s` for the cell.
+
+Lean was exactly `leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib was checked out at
+`07642720480157414db592fa85b626dafb71355b`.  Official isolated cache
+acquisition exited zero.  `lake build YangMills.OS.SpatialVacuum` exited zero
+after `156.147747 s` and reported `8172 jobs`.  The downloaded transcript was
+independently hashed on Windows as
+`7fb1cca6b42458e4b5bb08b253e4d6594caab67767ea482315c2d82e81cf7c5b`,
+matching the hash printed inside Colab.  The runtime was disconnected and
+deleted immediately after capture; **SESIÓN COLAB LIBRE**.
+
+This focused witness shows that the generic theorem
+`arcosh_circle_log_mixture`, under the printed hypotheses `1 < c`, `0 < B`,
+and `0 <= s`, elaborates without `sorry`.  It is not yet a complete
+certificate: `YangMillsCore`, the complete oracle, the consistency judge,
+and the live core job count have not been run at this source SHA.  The build
+reported two local linter warnings (an unreachable/no-op `ring` and an
+unnecessary sequence focus); they do not invalidate elaboration and should
+be cleaned before the full verifier.
+
+No physical front door has yet been proved.  In particular, the
+load-bearing physical hypotheses `0 < beta`, `0 <= gamma`, and `gamma < a`
+must occur in that later Lean statement.  This brick proves neither the
+finite vacuum-product order nor either spectral block, the endpoint, or the
+uniform `specRatio` theorem.  Clifford/Jordan--Wigner remains unopened.
