@@ -885,8 +885,11 @@ theorem lower_bound_approaches {μ c : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1) (hc 
 /-! ## §10  The conditional theorem: an exact least upper bound
 
 The main theorem of the paper has two imported inputs — Birkhoff's contraction
-bound for the upper half, and a Perron vector for the lower half — and a body of
-glue that is entirely elementary.  §10 separates them.
+bound for the upper half, and a spectral interface for symmetric entrywise
+positive matrices for the lower half (Perron--Frobenius *together with* the
+variational characterisation of the second eigenvalue, which is more than the
+existence of a Perron vector) — and a body of glue that is entirely elementary.
+§10 separates them.
 
 Both imports enter as **explicit hypotheses of the theorem**, never as `axiom`
 declarations: a reader who does not grant them gets a true implication and no
@@ -901,9 +904,11 @@ Two deliberate weakenings, both in the direction of assuming *less*:
   only `Real.sqrt` — and with `φ` merely *a* lower bound for the cross-ratios
   rather than their minimum.  Since `x ↦ (1-x)/(1+x)` is decreasing, this
   version is *implied* by the sharp one.
-* `hConc` asks only for the lower bound at each positive `ε ≤ 1`, not for a
-  limit.  No spectral continuity appears anywhere in §10; the `ε → 0` step is
-  the scalar `lower_bound_approaches`, which produces an explicit witness. -/
+* The concentration family is needed only for `0 < ε ≤ 1/2`, and only as a
+  bound at each such `ε`, never as a limit.  No spectral continuity appears
+  anywhere in §10; the `ε → 0` step is the scalar `lower_bound_approaches`,
+  which produces an explicit witness.  (`1/2` rather than `1` because
+  `concentrate_rowSum_le` uses `2ε ≤ 1` on the rows outside the pair.) -/
 
 /-- Every entry of a diagonal congruence, in closed form. -/
 theorem congr_apply (M : Matrix n n ℝ) (d : n → ℝ) (i j : n) :
