@@ -2,6 +2,10 @@ import YangMills.RG.BalabanCMP116InteractingConditionedCovariance
 
 /-!
 # Axiom audit for the interacting conditioned covariance
+
+PRE-VALIDATION: the strict lower-covariance declarations added to the source
+module and the corresponding oracle outputs below have not yet been verified
+by the Lean compiler.
 -/
 
 #print axioms YangMills.RG.cmp116PhysicalEndomorphismRealMatrix_toEuclideanCLM_apply
@@ -15,3 +19,11 @@ import YangMills.RG.BalabanCMP116InteractingConditionedCovariance
 #print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.conditionedRoot_realMatrix
 #print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.conditionedRoot_certificate
 #print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.norm_conditionedCovariance_le
+#print axioms YangMills.RG.cmp116PhysicalEndomorphismRealMatrix_quadratic_lower
+#print axioms YangMills.RG.cmp116Eq223CoordinateProjection_mulVec_eq_of_vectorSupportedOn
+#print axioms YangMills.RG.dotProduct_cmp116LocalizedCovarianceCompression_mulVec_eq_of_vectorSupportedOn
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.precisionUpperBound_pos
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.norm_precision_le
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.covariance_coercive
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.covarianceMatrix_quadratic_lower
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.conditionedCovariance_lowerCertificate

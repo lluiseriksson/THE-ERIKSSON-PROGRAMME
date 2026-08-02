@@ -12,6 +12,11 @@ import YangMills.RG.BalabanCMP99SourceEq3126PhysicalH
 /-!
 # The physical interacting conditioned covariance
 
+PRE-VALIDATION: the strict lower-covariance extension at the end of this
+module is present in source, its updated `.olean` has not yet been
+materialized, and those new declarations have not yet been verified by the
+Lean compiler.
+
 The conditioned covariance in the terminal CMP116 Gaussian is not an
 independent matrix.  Starting from the literal interacting precision `K`, this
 module takes its coercively generated inverse `C = K⁻¹`, transports `C` through
@@ -29,11 +34,15 @@ The upper wall is derived here rather than assumed:
 
 `‖C_S‖ ≤ ‖[C]‖ ≤ ‖C‖ ≤ coercivityConstant⁻¹`.
 
-Honest scope: this module does not construct the strict lower covariance
-certificate on the localized carrier.  That requires an upper bound on the
-precision restricted to the carrier (and carrier nonemptiness), not merely
-the lower/coercive estimate used here.  It therefore remains a separate
-source-facing obligation before the scalar walls can be installed.
+For the lower wall the module uses the literal source upper bound `Lambda` on
+the precision together with coercivity `c`.  The deliberately non-optimal but
+strict estimate
+
+`c / Lambda^2 * ‖v‖^2 ≤ ⟪v, C v⟫`
+
+survives compression for vectors supported on the localized carrier.  Thus
+the only remaining input to the covariance-lower certificate is the honest
+geometric statement that this carrier is nonempty.
 -/
 
 namespace YangMills.RG
@@ -133,6 +142,72 @@ theorem cmp116PhysicalEndomorphismRealMatrix_reconstruction
   simp [cmp116PhysicalEndomorphismFlatLinearMap,
     cmp116PhysicalEndomorphismOfRealMatrix, LinearMap.comp_apply]
 
+/-- A physical coercivity estimate transports exactly to the quadratic form
+of the canonical real coordinate matrix. -/
+theorem cmp116PhysicalEndomorphismRealMatrix_quadratic_lower
+    {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)]
+    (T : PhysicalEndomorphism d N Nc) {lower : ℝ}
+    (hT : IsCoerciveCLM T lower)
+    (v : PhysicalCoordinate d N Nc → ℝ) :
+    lower * dotProduct v v ≤
+      dotProduct v
+        ((cmp116PhysicalEndomorphismRealMatrix T).mulVec v) := by
+  let E := cmp116PhysicalCoordinateLinearIsometryEquiv
+    (d := d) (N := N) (Nc := Nc)
+  let x : EuclideanSpace ℝ (PhysicalCoordinate d N Nc) := WithLp.toLp 2 v
+  let y : PhysicalGaugeOneCochain d N Nc := E x
+  have htransport :
+      inner ℝ x
+          ((Matrix.toEuclideanCLM
+            (n := PhysicalCoordinate d N Nc) (𝕜 := ℝ)
+            (cmp116PhysicalEndomorphismRealMatrix T)) x) =
+        inner ℝ y (T y) := by
+    rw [cmp116PhysicalEndomorphismRealMatrix_toEuclideanCLM_apply]
+    rw [← E.inner_map_map]
+    simp [x, y, E]
+  calc
+    lower * dotProduct v v = lower * ‖y‖ ^ 2 := by
+      rw [← real_inner_self_eq_norm_sq]
+      rw [← E.inner_map_map]
+      simp [x, y, E, EuclideanSpace.inner_eq_star_dotProduct]
+    _ ≤ inner ℝ y (T y) := hT y
+    _ = inner ℝ x
+          ((Matrix.toEuclideanCLM
+            (n := PhysicalCoordinate d N Nc) (𝕜 := ℝ)
+            (cmp116PhysicalEndomorphismRealMatrix T)) x) := htransport.symm
+    _ = dotProduct v
+          ((cmp116PhysicalEndomorphismRealMatrix T).mulVec v) := by
+      simpa [x] using
+        Matrix.inner_toEuclideanCLM
+          (cmp116PhysicalEndomorphismRealMatrix T) x x
+
+/-- The diagonal localization projector fixes every vector already supported
+on its carrier. -/
+theorem cmp116Eq223CoordinateProjection_mulVec_eq_of_vectorSupportedOn
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (S : Finset ι) (v : ι → ℝ) (hv : VectorSupportedOn S v) :
+    (cmp116Eq223CoordinateProjection S).mulVec v = v := by
+  funext i
+  rw [cmp116Eq223CoordinateProjection, Matrix.mulVec_diagonal]
+  by_cases hi : i ∈ S
+  · simp [hi]
+  · simp [hi, hv i hi]
+
+/-- Bilateral compression does not change the covariance quadratic form on
+vectors already supported on the localized carrier. -/
+theorem dotProduct_cmp116LocalizedCovarianceCompression_mulVec_eq_of_vectorSupportedOn
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (S : Finset ι) (C : Matrix ι ι ℝ) (v : ι → ℝ)
+    (hv : VectorSupportedOn S v) :
+    dotProduct v ((cmp116LocalizedCovarianceCompression S C).mulVec v) =
+      dotProduct v (C.mulVec v) := by
+  let P := cmp116Eq223CoordinateProjection S
+  have hPv : P.mulVec v = v :=
+    cmp116Eq223CoordinateProjection_mulVec_eq_of_vectorSupportedOn S v hv
+  rw [cmp116LocalizedCovarianceCompression, Matrix.mulVec_mulVec,
+    Matrix.mulVec_mulVec, Matrix.dotProduct_mulVec]
+  rw [cmp116Eq223CoordinateProjection_transpose, hPv, hPv]
+
 namespace CMP116InteractingPhysicalPrecisionSource
 
 variable {M Q Nc : ℕ}
@@ -173,6 +248,65 @@ theorem norm_covariance_le
     (sub_pos.mpr X.defectBudget)
     (isCoerciveCLM_interactingPhysicalBasePrecision
       U X.a_pos X.poincare X.backgroundEpsilon_nonneg X.smallBackground)
+
+/-- Literal equation-(3.126) upper bound for the interacting precision. -/
+def precisionUpperBound
+    (X : CMP116InteractingPhysicalPrecisionSource (M := M) (Q := Q) U) : ℝ :=
+  cmp99SourceEq3126PhysicalPrecisionUpperBound
+    4 M Nc X.a X.backgroundEpsilon
+
+theorem precisionUpperBound_pos
+    (X : CMP116InteractingPhysicalPrecisionSource (M := M) (Q := Q) U) :
+    0 < X.precisionUpperBound := by
+  exact cmp99SourceEq3126PhysicalPrecisionUpperBound_pos
+    X.a X.backgroundEpsilon_nonneg
+
+theorem norm_precision_le
+    (X : CMP116InteractingPhysicalPrecisionSource (M := M) (Q := Q) U) :
+    ‖X.precision‖ ≤ X.precisionUpperBound := by
+  simpa [precision, precisionUpperBound] using
+    (norm_interactingPhysicalBasePrecisionCLM_le_sourceEq3126
+      U X.a X.backgroundEpsilon_nonneg X.smallBackground)
+
+/-- The exact inverse covariance is strictly coercive.  The source upper
+bound on the precision gives the explicit (non-optimal) constant
+`c / Lambda^2`, which is sufficient for nondegeneracy. -/
+theorem covariance_coercive
+    (X : CMP116InteractingPhysicalPrecisionSource (M := M) (Q := Q) U) :
+    IsCoerciveCLM X.covariance
+      (X.coercivityConstant / X.precisionUpperBound ^ 2) := by
+  intro y
+  let x := X.covariance y
+  have hKx : X.precision x = y := by
+    have h := congrArg
+      (fun T : PhysicalEndomorphism 4 (M * (2 * Q)) Nc => T y)
+      X.precision_comp_covariance
+    simpa [ContinuousLinearMap.comp_apply, x] using h
+  have hinverse : ‖y‖ ≤ X.precisionUpperBound * ‖x‖ := by
+    calc
+      ‖y‖ = ‖X.precision x‖ := by rw [hKx]
+      _ ≤ ‖X.precision‖ * ‖x‖ := X.precision.le_opNorm x
+      _ ≤ X.precisionUpperBound * ‖x‖ :=
+        mul_le_mul_of_nonneg_right X.norm_precision_le (norm_nonneg x)
+  have hsquare :
+      ‖y‖ ^ 2 ≤ X.precisionUpperBound ^ 2 * ‖x‖ ^ 2 := by
+    nlinarith [norm_nonneg y, norm_nonneg x,
+      X.precisionUpperBound_pos.le]
+  have hLambdaSq : 0 < X.precisionUpperBound ^ 2 :=
+    sq_pos_of_pos X.precisionUpperBound_pos
+  have hscaled :
+      ‖y‖ ^ 2 / X.precisionUpperBound ^ 2 ≤ ‖x‖ ^ 2 :=
+    (div_le_iff₀ hLambdaSq).2 hsquare
+  calc
+    (X.coercivityConstant / X.precisionUpperBound ^ 2) * ‖y‖ ^ 2 =
+        X.coercivityConstant *
+          (‖y‖ ^ 2 / X.precisionUpperBound ^ 2) := by ring
+    _ ≤ X.coercivityConstant * ‖x‖ ^ 2 :=
+      mul_le_mul_of_nonneg_left hscaled X.coercivity_pos.le
+    _ ≤ inner ℝ x (X.precision x) := X.coercive x
+    _ = inner ℝ y (X.covariance y) := by
+      rw [hKx]
+      exact real_inner_comm _ _
 
 /-- Canonical real matrix of the literal interacting inverse covariance. -/
 def covarianceMatrix
@@ -248,6 +382,35 @@ theorem norm_conditionedCovariance_le
     _ ≤ ‖X.covariance‖ :=
       norm_cmp116PhysicalEndomorphismRealMatrix_le X.covariance
     _ ≤ X.coercivityConstant⁻¹ := X.norm_covariance_le
+
+/-- Coordinate quadratic lower bound inherited from the literal interacting
+inverse covariance. -/
+theorem covarianceMatrix_quadratic_lower
+    (X : CMP116InteractingPhysicalPrecisionSource (M := M) (Q := Q) U)
+    (v : PhysicalGaugeCoordIndex 4 (M * (2 * Q)) Nc → ℝ) :
+    (X.coercivityConstant / X.precisionUpperBound ^ 2) * dotProduct v v ≤
+      dotProduct v (X.covarianceMatrix.mulVec v) := by
+  exact cmp116PhysicalEndomorphismRealMatrix_quadratic_lower
+    X.covariance X.covariance_coercive v
+
+/-- Strict nondegeneracy of the localized interacting covariance.  Carrier
+nonemptiness remains an explicit geometric input rather than being fabricated
+by the analytic covariance construction. -/
+def conditionedCovariance_lowerCertificate
+    (X : CMP116InteractingPhysicalPrecisionSource (M := M) (Q := Q) U)
+    (S : Finset (PhysicalGaugeCoordIndex 4 (M * (2 * Q)) Nc))
+    (hS : S.Nonempty) :
+    MatrixConditionedGaussianCovarianceLowerCertificate
+      (X.conditionedCovariance S) S where
+  lowerBound := X.coercivityConstant / X.precisionUpperBound ^ 2
+  lowerBound_pos := div_pos X.coercivity_pos
+    (sq_pos_of_pos X.precisionUpperBound_pos)
+  carrier_nonempty := hS
+  covariance_lower := by
+    intro v hv
+    rw [dotProduct_cmp116LocalizedCovarianceCompression_mulVec_eq_of_vectorSupportedOn
+      S X.covarianceMatrix v hv]
+    exact X.covarianceMatrix_quadratic_lower v
 
 end CMP116InteractingPhysicalPrecisionSource
 
