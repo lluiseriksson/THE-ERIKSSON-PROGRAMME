@@ -6,9 +6,9 @@ Post-write capture method: gh pr view 49 --json body; parse the JSON body field 
 Character encoding: UTF-8 without BOM
 Canonical normalization: convert CRLF and lone CR to LF
 Terminal newline: included
-LF line-ending count: 31
-LF byte length: 2318
-LF SHA-256: d6084690aa8e65fdc8924afab426ad88693c325733a58eb44dcc798ae8a1cd14
+LF line-ending count: 32
+LF byte length: 2958
+LF SHA-256: 177f9823cd54bdf0f077e57fafe288577905f95464351b1e6a3c49339b9fbbfa
 CRLF derivation: replace every canonical LF byte with CRLF; change no other byte
-CRLF byte length: 2349
-CRLF SHA-256: 0f90688f99685fce64802b1ae7c6eed7ccb336aab0f5e2e0cd4bbf7757722ea6
+CRLF byte length: 2990
+CRLF SHA-256: e9af190b796697d251134a4b8104f9761a7626e85769af8c7e1f03fa54ce1329
