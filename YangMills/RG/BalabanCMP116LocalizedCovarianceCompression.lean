@@ -37,7 +37,7 @@ the localized-compression bridge.
 namespace YangMills.RG
 
 open Matrix
-open scoped Matrix.Norms.L2Operator MatrixOrder
+open scoped ComplexOrder Matrix.Norms.L2Operator MatrixOrder
 
 noncomputable section
 
@@ -150,14 +150,15 @@ theorem cmp116LocalizedCovarianceRoot_certificate
         cmp116RCLikeMatrixSqrt A := by
     have hrootHermitian : (cmp116RCLikeMatrixSqrt A).IsHermitian :=
       cmp116RCLikeMatrixSqrt_isHermitian hA
-    rw [Matrix.conjTranspose_eq_transpose_of_trivial] at hrootHermitian
+    rw [Matrix.IsHermitian,
+      Matrix.conjTranspose_eq_transpose_of_trivial] at hrootHermitian
     exact hrootHermitian
   refine {
     root_symmetric := hroot
     root_square := ?_
     covariance_supported :=
       cmp116LocalizedCovarianceCompression_supported S C }
-  · rw [hroot]
+  · change cmp116RCLikeMatrixSqrt A * cmp116RCLikeMatrixSqrt A = A
     exact cmp116RCLikeMatrixSqrt_mul_self hA
 
 end
