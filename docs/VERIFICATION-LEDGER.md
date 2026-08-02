@@ -30692,3 +30692,84 @@ root-product identities with their strict order under the explicit hypotheses
 `1 <= L` and `0 < x < 1`.  It does not license the Stieltjes/log-mixture
 identity, a transfer-spectrum identification, either sector bound, the
 endpoint, or the uniform `specRatio` theorem.
+
+## Addendum 605 (2026-08-02, **TASK 14: finite root products verified in Lean**)
+
+**VERIFIED INTERMEDIATE BRICK; NOT THE VACUUM ORDER OR A SECTOR BOUND.**  The
+gate licensed in Addenda 603--604 has now been discharged by the theorem
+`YangMills.OS.periodic_antiperiodic_root_products` in
+`YangMills/OS/SpatialRing.lean`.  Its printed hypotheses are `0 < L`,
+`0 < x`, and `x < 1`; it proves both complex root-product identities and the
+strict real order
+
+`0 < 1 - x^L < 1 + x^L`.
+
+The generic finite-product lemma has no physical couplings.  In the later
+physical Stieltjes/log-mixture front door, the load-bearing disordered-region
+hypothesis must be printed as `gamma < a` (which supplies `x(t) < 1`); this
+addendum does not claim that front door exists.
+
+The Lean source was committed at
+`7e9d05aa895177076060b90799a852e767dca172`.  The reproducible notebook was
+then committed separately at
+`d28e085d4763034520c1a54a26dce1226ffb9b64` and cloned the raw source SHA in
+one fresh Colab checkout.  One fresh clone is the required witness for this
+intermediate brick under the current reproducibility policy; this is not a
+terminal delivery SHA.
+
+The Colab runtime was CPU/high-RAM with no GPU:
+
+- UTC interval: `2026-08-02T07:09:36.469479+00:00` through
+  `2026-08-02T08:05:24.631774+00:00` (`3348.162295 s` connected);
+- Linux `6.6.122+`, x86-64, glibc `2.35`, Python `3.12.13`;
+- 8 CPUs, Intel Xeon 2.20 GHz, `MemTotal: 53467192 kB`;
+- toolchain `leanprover/lean4:v4.29.0-rc6`, Lean commit
+  `00659f8e6071d7e46131ed643bf8003b99b044e9`;
+- mathlib pin `07642720480157414db592fa85b626dafb71355b`.
+
+The notebook ran, sequentially and with stop-on-first-error:
+
+- the preregistered gate in normal and `python -O` modes, both exit `0`, with
+  byte-identical output SHA-256
+  `1fa0c1f98608446606e44aad0d5a4e994272e7ef3d8ce89a5b4359d68d548de6`;
+- `lake build YangMills.OS.SpatialRing` -> **8171 jobs**, exit `0`;
+- `lake build YangMillsCore` -> **8466 jobs**, exit `0`;
+- `lake env lean oracle_check.lean` -> exit `0`;
+- `python3 scripts/check_consistency.py` -> exit `0`, zero `sorry` and zero
+  project axioms.
+
+The live core baseline is the latest measured ledger baseline, **8465**, not
+the stale contractual snapshot in `CLAUDE.md`; hence `8465 -> 8466` measures
+exactly one new core module.  The permanent oracle contains 2813 axiom rows
+and 26 axiom-free rows.  The new declaration appears as
+
+`[propext, Classical.choice, Quot.sound]`,
+
+with zero `sorryAx` rows and zero axioms outside that permitted set.
+
+Colab produced `spatial_root_products_lean_artifacts.zip`; its SHA-256 was
+printed in the live output and independently rechecked on Windows as
+`2b9a92fcd49849760f7b81f2d52916004f14338bbde3c8e5641e76984e6b39fa`.
+The archive's manifest was also rechecked locally:
+
+- `metadata.json`, 709 bytes,
+  `735ff2177b96b6b2501bd4faa8b9d1de367222cdc570cbbabe6971348493a0ce`;
+- `oracle_output.txt`, 344678 bytes,
+  `b86494d917b86b7af513b7ef87538e01bde02e185a94bbba2809601ed95b1e01`;
+- `transcript.txt`, 468113 bytes,
+  `4083aa16cbe420b32ff6211b744c898ec13221cf983bcd4e84586c4ff2eb0924`.
+
+The archived transcript contains every command through the consistency exit.
+Because the notebook constructs the archive immediately before logging its
+four terminal status lines, those lines are not inside the ZIP.  The live
+output was inspected separately and ended with
+`module_jobs_measured=8171`, `core_jobs_measured=8466`, the matching archive
+path/hash, and `SPATIAL ROOT-PRODUCT LEAN PASS`.  This ordering limitation is
+declared rather than treating the archived transcript as self-terminal.
+
+The runtime was disconnected and deleted immediately after validation;
+**SESIÓN COLAB LIBRE**.  This verified theorem supplies only the elementary
+finite root-product endpoint of the exact paper argument.  The arcsine
+Stieltjes/log-mixture identity remains unformalised, and no transfer-spectrum
+identification, odd-sector bound, even-sector bound, endpoint, or uniform
+`specRatio` theorem has been proved.  Clifford/Jordan--Wigner remains unopened.
