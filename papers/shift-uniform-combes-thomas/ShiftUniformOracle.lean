@@ -5,7 +5,7 @@ import YangMills.RG.StieltjesKernelIntegration
 import YangMills.RG.CoerciveCovarianceStieltjes
 
 /-!
-Focused axiom audit for the twenty-six declarations claimed as formalized in
+Focused axiom audit for the thirty-six declarations claimed as formalized in
 `shift_uniform_combes_thomas.tex`.
 -/
 
@@ -35,3 +35,13 @@ Focused axiom audit for the twenty-six declarations claimed as formalized in
 #print axioms YangMills.RG.continuous_shiftedCovarianceFamily
 #print axioms YangMills.RG.integrableOn_shiftedCovarianceFamily
 #print axioms YangMills.RG.physicalShiftedCovarianceFamily_stieltjes_exponentialKernelBound
+#print axioms YangMills.RG.eigenvalue_pos_of_isCoerciveCLM
+#print axioms YangMills.RG.shiftedCovarianceFamily_apply_of_eigenvector
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_apply_of_eigenvector
+#print axioms YangMills.RG.shiftedCovarianceFamily_isPositive
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_isPositive
+#print axioms YangMills.RG.covarianceOfIsCoerciveCLM_apply_of_eigenvector
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_comp_self
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_eq_covarianceSqrt
+#print axioms YangMills.RG.physicalCovarianceSqrt_exponentialKernelBound_of_shiftUniform
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_shiftUniform

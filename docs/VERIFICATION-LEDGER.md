@@ -29477,3 +29477,39 @@ localization of the canonical integral, not yet of that root.  The physical
 root certificate therefore remains conditional on this final identification;
 no volume-uniform lower bound on `c` and no continuum/Clay implication are
 claimed.
+
+## Addendum 574 (2026-08-02, **canonical Stieltjes root identification closed**)
+
+**FORMALIZED DELTA.**  `CoerciveCovarianceStieltjes.lean` now evaluates the
+canonical shifted inverse on an orthonormal eigenbasis, integrates the scalar
+eigenvalue formula, and proves positivity of both the shifted family and its
+normalized Stieltjes integral.  It then proves the exact operator identity
+
+    (stieltjesIntegralOperator (shiftedCovarianceFamily A hc hA))^2
+      = covarianceOfIsCoerciveCLM A hc hA
+
+and uses uniqueness of the positive square root to obtain
+
+    stieltjesIntegralOperator (shiftedCovarianceFamily A hc hA)
+      = covarianceSqrtOfIsCoerciveCLM A hc hA hSymm.
+
+The physical exponential kernel estimate therefore applies to the canonical
+spectral covariance root itself, with amplitude `2 / Real.sqrt c`.  The new
+end-to-end adapter `physicalLocalizedCovarianceRootCertificate_of_shiftUniform`
+constructs `PhysicalLocalizedCovarianceRootCertificate` from the explicit
+coercivity, symmetry, Combes--Thomas, and base localized-covariance premises;
+it no longer carries an additional root-kernel hypothesis.
+
+**CHECKED.**  `lake build YangMills.RG.CoerciveCovarianceStieltjes` completed
+successfully with 8204 jobs.  The focused thirty-six-declaration oracle prints
+exactly `[propext, Classical.choice, Quot.sound]` for every entry.  A fresh
+`lake build YangMillsCore` completed successfully with 8470 jobs.  The new
+source contains no `sorry` or project axiom.
+
+**BOUNDARY.**  The operator-level Stieltjes bridge and the associated
+root-certificate field are closed in the stated finite-dimensional physical
+model.  The result still assumes a supplied positive coercivity constant,
+shift-uniform Combes--Thomas hypotheses, and a base localized covariance
+certificate.  It does not prove that the coercivity constant is uniform in
+volume, an infinite-volume limit, a continuum limit, or the Clay mass-gap
+claim.

@@ -2210,6 +2210,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.integral_Ioi_inv_add_sq
 #print axioms YangMills.RG.physicalCovarianceKernelBound_stieltjesIntegralOperator
 #print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_stieltjesIntegralOperator
+#print axioms YangMills.RG.eigenvalue_pos_of_isCoerciveCLM
+#print axioms YangMills.RG.shiftedCovarianceFamily_apply_of_eigenvector
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_apply_of_eigenvector
+#print axioms YangMills.RG.shiftedCovarianceFamily_isPositive
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_isPositive
+#print axioms YangMills.RG.covarianceOfIsCoerciveCLM_apply_of_eigenvector
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_comp_self
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_eq_covarianceSqrt
+#print axioms YangMills.RG.physicalCovarianceSqrt_exponentialKernelBound_of_shiftUniform
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_shiftUniform
 #print axioms YangMills.RG.exists_pos_tiltBudget
 #print axioms YangMills.RG.zeroSigma_budget
 #print axioms YangMills.RG.flatGaugeFixedCovariance_CT_fixedVolume
