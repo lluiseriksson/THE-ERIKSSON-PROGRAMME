@@ -30142,3 +30142,24 @@ the finite fermionic spectrum, a vacuum-ratio theorem, Jordan--Wigner, either
 sector bound, or the uniform spatial-ring inequality.  The sharp odd block,
 the even non-Perron block, the `beta = 0` endpoint, and the final target remain
 open.
+
+## Addendum 589 (2026-08-02, **TASK 14: vacuum-ratio trend reconnaissance fixed**)
+
+**PROTOCOL COMMITTED BEFORE EXECUTION; THIS IS NOT A GATE.**  The PASS in
+Addendum 588 found its smallest margin at the largest tested length.  Before
+choosing a proof method for the scalar vacuum-product comparison,
+`scripts/probe_spatial_vacuum_ratio_trend.py` fixes a reconnaissance campaign
+with no threshold and no licensed theorem.
+
+The probe measures the previous worst cell `beta = 2`, `gamma/a = 0.75` at
+every `L = 2,...,16` and at `L = 20,24,32,48`; reports monotonicity overall and
+on the even/odd subsequences plus finite-difference log slopes; scans
+`beta` in `{0.125,0.25,0.5,1,2,4,8}` at `L = 16,32,48`; and scans
+`gamma/a` in `{0.10,0.25,0.50,0.75,0.90,0.99}` at the same lengths and
+`beta = 2`.  All cells remain inside `q < 1` by an explicit integrity check.
+
+Its output status is `OBSERVED`, never PASS.  The campaign is meant only to
+distinguish a uniformly separated vacuum quotient from one approaching one and
+to locate the painful parameter direction.  It licenses no inequality,
+fermionic infrastructure, sector bound, or uniform theorem.  At the time of
+this addendum the probe has not run and no trend is claimed.
