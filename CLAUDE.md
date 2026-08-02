@@ -72,6 +72,16 @@ file.
   plus separate log validation permits a candidate `PASS`.  Logs and
   sentinels use semantic mode names such as `normal` and `optimized`, never
   indistinguishable numeric suffixes.
+* **Design every single agent or MCP call to finish within 300 seconds.**  The
+  Codex MCP transport cut two unchanged Gate 7 calls at approximately 300
+  seconds even when the bridge requested 900 seconds.  A larger requested
+  timeout is not evidence that the outer transport will wait.  If work cannot
+  reliably fit, partition its execution before launch and persist each phase's
+  evidence.  For a preregistered gate, the contract and criteria remain
+  verbatim and are present in every phase; only execution is partitioned.
+  Preserve blindness either through one continuing auditor or explicit fresh
+  re-blinding, and finish with a separate synthesis over sealed phase reports.
+  A timeout is neither `PASS` nor `FAIL` and never licenses weakening the gate.
 
 ---
 
