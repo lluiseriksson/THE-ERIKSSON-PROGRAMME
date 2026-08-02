@@ -1,132 +1,188 @@
 """An explicit witness that C_q and C_DHK are not equal in general.
 
-The reviewer's objection is exactly right: two different trace expressions are
-not a proof of inequality, because SU(2) satisfies special identities that can
-collapse syntactically different formulas.  A witness is required.
+IN THE PAPER'S OWN CONVENTIONS, which the first version of this script did not
+use.  A referee caught it: the first version took the HERMITIAN Pauli matrices
+and the UNNORMALIZED trace, and printed -2 and +6.  Those are true statements
+about a real inequality, but they are not the values of the paper's equations
+(11)-(12), which use
 
-Searched over a1..a4, alpha, beta in {I, iX, iY, iZ} -- every one of which lies
-in SU(2) (det = 1, unitary) and has GAUSSIAN INTEGER entries.  That matters:
-a witness in this set is exactly representable, so the same numbers can be
-compiled in Lean and closed by `norm_num` with no floating point anywhere.
+    tr_2 = (1/2) Tr                the normalized fundamental trace
+    A_k  = c * i * sigma_k         ANTIHERMITIAN generator directions
 
-    C_DHK(a) = sum_A tr( a3^-1 beta a2 A a4^-1 alpha a1 A )
-    C_q  (a) = sum_A tr( beta a2 a4^-1 A alpha a1 a3^-1 A )
+The idea survived the correction; the numbers did not.  Recorded here rather
+than quietly swapping the constants.
 
-with A ranging over the three Pauli matrices.
+NOTATION.  `sigma_x, sigma_y, sigma_z` are the hermitian Pauli matrices; the
+paper's three directions are `A_k = c i sigma_k`.  The GROUP element in the
+witness is written `i sigma_x` and never "iX", because in the paper `X` already
+names an antihermitian direction -- reusing it is what made the first version
+confusing.
 
-No acceptance here depends on an `assert`: every check raises or returns
-non-zero explicitly, in normal and in `-O` mode alike.
+THE NORMALIZATION c IS NEVER NEEDED.  Both operators insert A exactly twice, so
+both are homogeneous of degree 2 in c; the witness therefore separates them for
+every c != 0, and c = 0 is excluded because it kills all three directions.  So
+this closes without reading c off the Lean producer, which is unavailable.
+
+Arithmetic is exact: entries are Gaussian rationals (pairs of Fractions), never
+floats.  No acceptance depends on an `assert`.
 """
 
-import itertools
 import sys
+from fractions import Fraction as F
 
-I2 = ((1, 0), (0, 1))
-X = ((0, 1), (1, 0))
-Y = ((0, complex(0, -1)), (complex(0, 1), 0))
-Z = ((1, 0), (0, -1))
-PAULI = (X, Y, Z)
+ZERO = (F(0), F(0))
+ONE = (F(1), F(0))
+IU = (F(0), F(1))
+
+
+def cadd(x, y):
+    return (x[0] + y[0], x[1] + y[1])
+
+
+def cmul(x, y):
+    return (x[0] * y[0] - x[1] * y[1], x[0] * y[1] + x[1] * y[0])
+
+
+def cscale(s, x):
+    return (s * x[0], s * x[1])
+
+
+def cneg(x):
+    return (-x[0], -x[1])
+
+
+def cconj(x):
+    return (x[0], -x[1])
+
+
+SX = ((ZERO, ONE), (ONE, ZERO))
+SY = ((ZERO, cneg(IU)), (IU, ZERO))
+SZ = ((ONE, ZERO), (ZERO, cneg(ONE)))
+ID = ((ONE, ZERO), (ZERO, ONE))
 
 
 def mul(a, b):
-    return tuple(tuple(sum(a[i][k] * b[k][j] for k in range(2)) for j in range(2))
-                 for i in range(2))
+    return tuple(tuple(cadd(cmul(a[i][0], b[0][j]), cmul(a[i][1], b[1][j]))
+                       for j in range(2)) for i in range(2))
+
+
+def scale(s, a):
+    return tuple(tuple(cscale(s, a[i][j]) for j in range(2)) for i in range(2))
+
+
+def imul(a):
+    return tuple(tuple(cmul(IU, a[i][j]) for j in range(2)) for i in range(2))
 
 
 def dagger(a):
-    return tuple(tuple(complex(a[j][i]).conjugate() for j in range(2)) for i in range(2))
+    return tuple(tuple(cconj(a[j][i]) for j in range(2)) for i in range(2))
 
 
-def tr(a):
-    return a[0][0] + a[1][1]
+def tr2(a):
+    """The NORMALIZED fundamental trace tr_2 = (1/2) Tr, as the paper uses."""
+    t = cadd(a[0][0], a[1][1])
+    return (t[0] / 2, t[1] / 2)
 
 
 def chain(*ms):
-    out = I2
+    out = ID
     for m in ms:
         out = mul(out, m)
     return out
 
 
-def c_dhk(a1, a2, a3, a4, al, be):
-    # a3^-1 beta a2 A a4^-1 alpha a1 A, summed over Pauli A
-    return sum(tr(chain(dagger(a3), be, a2, A, dagger(a4), al, a1, A)) for A in PAULI)
-
-
-def c_q(a1, a2, a3, a4, al, be):
-    # beta a2 a4^-1 A alpha a1 a3^-1 A, summed over Pauli A
-    return sum(tr(chain(be, a2, dagger(a4), A, al, a1, dagger(a3), A)) for A in PAULI)
-
-
-def main():
-    iX = tuple(tuple(complex(0, 1) * x for x in row) for row in X)
-    iY = tuple(tuple(complex(0, 1) * x for x in row) for row in Y)
-    iZ = tuple(tuple(complex(0, 1) * x for x in row) for row in Z)
-    basis = [("1", I2), ("iX", iX), ("iY", iY), ("iZ", iZ)]
-
-    # The elements really are in SU(2); check it rather than assume it.
-    bad = 0
-    for name, m in basis:
-        det = m[0][0] * m[1][1] - m[0][1] * m[1][0]
-        unit = mul(dagger(m), m)
-        if abs(det - 1) > 1e-12:
-            sys.stderr.write("FAIL: %s has det %s\n" % (name, det))
-            bad += 1
-        if abs(unit[0][0] - 1) + abs(unit[1][1] - 1) + abs(unit[0][1]) + abs(unit[1][0]) > 1e-12:
-            sys.stderr.write("FAIL: %s is not unitary\n" % name)
-            bad += 1
-    if bad:
-        return 1
-    print("all four basis elements verified in SU(2): det 1, unitary")
-
-    hits = []
-    for combo in itertools.product(basis, repeat=6):
-        names = [c[0] for c in combo]
-        ms = [c[1] for c in combo]
-        d = c_dhk(*ms)
-        q = c_q(*ms)
-        if abs(d - q) > 1e-9:
-            hits.append((names, d, q, abs(d - q)))
-
-    print("combinations searched: %d" % (len(basis) ** 6))
-    print("combinations where C_q != C_DHK: %d" % len(hits))
-
-    if not hits:
-        sys.stderr.write("FAIL: no witness found -- the operators may agree on "
-                         "this basis, which would NOT settle the general case\n")
-        return 1
-
-    # Prefer the witness with the most identity entries: the shortest to state,
-    # and the cheapest to recompute by hand or in Lean.
-    hits.sort(key=lambda h: (-h[0].count("1"), h[0]))
-    names, d, q, gap = hits[0]
-    print("")
-    print("SIMPLEST WITNESS")
-    print("  a1,a2,a3,a4,alpha,beta = %s" % ", ".join(names))
-    print("  C_DHK = %s" % fmt(d))
-    print("  C_q   = %s" % fmt(q))
-    print("  |difference| = %s" % gap)
-    print("")
-    print("next four witnesses, for cross-checking:")
-    for names2, d2, q2, _ in hits[1:5]:
-        print("  %-28s C_DHK=%-12s C_q=%s"
-              % (", ".join(names2), fmt(d2), fmt(q2)))
-
-    checked = len(hits)
-    print("")
-    print("witnesses found: %d" % checked)
-    if checked < 1:
-        return 1
-    print("PASS")
-    return 0
+def csum(vals):
+    out = ZERO
+    for v in vals:
+        out = cadd(out, v)
+    return out
 
 
 def fmt(z):
-    z = complex(z)
-    re, im = z.real, z.imag
-    if abs(im) < 1e-12:
-        return "%g" % re
-    return "%g%+gi" % (re, im)
+    if z[1] == 0:
+        return str(z[0])
+    return "%s%+si" % (z[0], z[1])
+
+
+def directions(c):
+    """The paper's three antihermitian directions A_k = c i sigma_k."""
+    return [scale(c, imul(s)) for s in (SX, SY, SZ)]
+
+
+def c_dhk(a1, a2, a3, a4, al, be, A):
+    return csum(tr2(chain(dagger(a3), be, a2, Ak, dagger(a4), al, a1, Ak))
+                for Ak in A)
+
+
+def c_q(a1, a2, a3, a4, al, be, A):
+    return csum(tr2(chain(be, a2, dagger(a4), Ak, al, a1, dagger(a3), Ak))
+                for Ak in A)
+
+
+def main():
+    failures = []
+    checks = 0
+
+    g = imul(SX)
+    det = cadd(cmul(g[0][0], g[1][1]), cneg(cmul(g[0][1], g[1][0])))
+    if det != ONE or mul(dagger(g), g) != ID:
+        failures.append("i*sigma_x is not in SU(2): det %s" % fmt(det))
+    else:
+        checks += 1
+    print("group element  i*sigma_x : det = %s, unitary = %s"
+          % (fmt(det), mul(dagger(g), g) == ID))
+
+    anti = True
+    for c in (F(1), F(1, 2)):
+        for k, Ak in enumerate(directions(c)):
+            if dagger(Ak) != scale(F(-1), Ak):
+                failures.append("A_%d not antihermitian at c=%s" % (k, c))
+                anti = False
+    if anti:
+        checks += 1
+    print("generators A_k = c i sigma_k : antihermitian, checked at c = 1 and 1/2")
+
+    args = (ID, ID, ID, g, ID, g)
+    base_d = c_dhk(*args, A=directions(F(1)))
+    base_q = c_q(*args, A=directions(F(1)))
+    half_d = c_dhk(*args, A=directions(F(1, 2)))
+    half_q = c_q(*args, A=directions(F(1, 2)))
+    if half_d == cscale(F(1, 4), base_d) and half_q == cscale(F(1, 4), base_q):
+        checks += 1
+    else:
+        failures.append("degree-2 homogeneity in c failed")
+    print("homogeneity in c : degree 2 in both operators, verified at c = 1/2")
+
+    diff = cadd(base_q, cneg(base_d))
+    print("")
+    print("WITNESS   a1 = a2 = a3 = alpha = 1,   a4 = beta = i*sigma_x")
+    print("  C_DHK        = (%s) c^2" % fmt(base_d))
+    print("  C_q          = (%s) c^2" % fmt(base_q))
+    print("  C_q - C_DHK  = (%s) c^2" % fmt(diff))
+    print("")
+    print("  nonzero for EVERY c != 0, and c = 0 is excluded because it makes")
+    print("  all three directions vanish.  The normalization is not needed.")
+    print("")
+    print("  at the standard normalization c = 1/2  (A_k = (i/2) sigma_k):")
+    print("    C_DHK = %s" % fmt(half_d))
+    print("    C_q   = %s" % fmt(half_q))
+
+    if diff != ZERO:
+        checks += 1
+    else:
+        failures.append("the two operators AGREE on this witness")
+
+    for line in failures:
+        sys.stderr.write("FAIL: %s\n" % line)
+    print("")
+    print("checks passed: %d of 4" % checks)
+    if failures:
+        return 1
+    if checks != 4:
+        sys.stderr.write("FAIL: counter %d does not match 4\n" % checks)
+        return 1
+    print("PASS")
+    return 0
 
 
 if __name__ == "__main__":
