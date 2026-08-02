@@ -41,12 +41,12 @@ theorem norm_conditionedRoot_sq_eq_covariance
     {C R : Matrix ι ι ℝ} {S : Finset ι}
     (hroot : MatrixConditionedGaussianRootCertificate C R S) :
     ‖R‖ ^ 2 = ‖C‖ := by
-  have hself : IsSelfAdjoint R := by
-    simpa only [Matrix.star_eq_conjTranspose,
-      Matrix.conjTranspose_eq_transpose_of_trivial] using
-      hroot.root_symmetric
   calc
-    ‖R‖ ^ 2 = ‖R * R‖ := hself.norm_mul_self.symm
+    ‖R‖ ^ 2 = ‖R‖ * ‖R‖ := by rw [pow_two]
+    _ = ‖Rᴴ * R‖ := (Matrix.l2_opNorm_conjTranspose_mul_self R).symm
+    _ = ‖R * R‖ := by
+      rw [Matrix.conjTranspose_eq_transpose_of_trivial,
+        hroot.root_symmetric]
     _ = ‖C‖ := by rw [hroot.root_square]
 
 /-- An inverse-coercivity upper bound on the covariance norm turns `A < c`
@@ -82,9 +82,9 @@ theorem cmp116Eq225SourceCoefficient_le_inv_two_mul_coercivity_sub
   have hsmall : A * ‖R‖ ^ 2 < 1 :=
     mul_conditionedRoot_norm_sq_lt_one_of_lt_coercivity hc hA hroot
   have hleft : 0 < 2 * (1 - A * ‖R‖ ^ 2) := by
-    positivity
+    exact mul_pos (by norm_num) (sub_pos.mpr hsmall)
   have hright : 0 < 2 * (c - A) := by
-    positivity
+    exact mul_pos (by norm_num) (sub_pos.mpr hA)
   have hcx : c * ‖R‖ ^ 2 ≤ 1 := by
     calc
       c * ‖R‖ ^ 2 ≤ c * c⁻¹ :=
@@ -136,8 +136,36 @@ theorem cmp116Eq226_optimalGaussianSmall_of_conditionedCovarianceNorm
     cmp116Eq225SourceCoefficient_le_inv_two_mul_coercivity_sub
       (R := R) (A := A) hc hA hroot
   have hcoeffSource := mul_le_mul_of_nonneg_right hcoeff hsource
+  have hcoeffSource' :
+      cmp116Eq225SourceCoefficient R
+          (cmp116Eq226OptimalInteractionAlpha
+            potentialRate r2Rate gamma) * sourceRate ≤
+        (1 / (2 * (c - cmp116Eq226OptimalInteractionAlpha
+          potentialRate r2Rate gamma))) * sourceRate := by
+    simpa [A] using hcoeffSource
+  have hgap : 0 < c - cmp116Eq226OptimalInteractionAlpha
+      potentialRate r2Rate gamma := sub_pos.mpr hA
+  have hscaled :
+      2 * (cmp116Eq225SourceCoefficient R
+          (cmp116Eq226OptimalInteractionAlpha
+            potentialRate r2Rate gamma) * sourceRate) ≤
+        sourceRate / (c - cmp116Eq226OptimalInteractionAlpha
+          potentialRate r2Rate gamma) := by
+    calc
+      2 * (cmp116Eq225SourceCoefficient R
+          (cmp116Eq226OptimalInteractionAlpha
+            potentialRate r2Rate gamma) * sourceRate) ≤
+        2 * ((1 / (2 * (c - cmp116Eq226OptimalInteractionAlpha
+          potentialRate r2Rate gamma))) * sourceRate) := by
+            exact mul_le_mul_of_nonneg_left hcoeffSource' (by norm_num)
+      _ = sourceRate / (c - cmp116Eq226OptimalInteractionAlpha
+          potentialRate r2Rate gamma) := by
+            field_simp [hgap.ne']
+  unfold CMP116Eq226OptimalGaussianSmall
   change 2 * (outerRate +
-    cmp116Eq225SourceCoefficient R A * sourceRate) < 1
+    cmp116Eq225SourceCoefficient R
+      (cmp116Eq226OptimalInteractionAlpha
+        potentialRate r2Rate gamma) * sourceRate) < 1
   nlinarith
 
 end
