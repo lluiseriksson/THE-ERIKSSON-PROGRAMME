@@ -31619,3 +31619,36 @@ verify their axiom sets, build the post-merge Core, identify either physical
 vacuum, prove either spectral-sector inequality, handle the beta-zero
 endpoint, or prove the uniform `specRatio` target.  The runtime was
 disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 630 (2026-08-02, **TASK 14: post-merge Core-count gate failure**)
+
+**MEASURED GATE FAILURE; CORE GREEN, ORACLE NOT RUN, NO FULL PASS.**  After
+merge commit `9a654a5585d6b94ea16094a5c4ac2b6fede2b896` incorporated exact
+`main` SHA `40d5f59af88629a9cbadd5e8742bb7d97b11fc7d`, the next natural full
+measurement used versioned runner SHA
+`7580d2427c6ba77b0fef5c0f89a1bd17ba2dd101` (notebook SHA-256
+`4eb96c3b5b98d390ed2e274e734ab08dcdd6d3db3865996f0f36741c3f3cc743`)
+and checked out exact source/oracle SHA
+`6ddaa3760cf32f51c1420dad2465d176d5528257` in a second fresh clone.
+
+The CPU/high-RAM run began at UTC `2026-08-02T16:48:34.706541+00:00` on
+Linux 6.6.122 x86_64 with glibc 2.35, Python 3.12.13, 8 AMD EPYC 7B12 CPUs,
+`53467192 kB` RAM, and no GPU.  Exact Lean/mathlib pins and the elan-installer
+hash were verified.  The isolated official cache exited zero in
+`77.740841 s`; `lake build YangMills.OS.SpatialVacuum` exited zero in
+`123.186515 s` at `8172 jobs`; and `lake build YangMillsCore` exited zero in
+`781.386012 s` at **8468 jobs**.
+
+The preregistered runner retained the live-ledger baseline `8465` and required
+exactly two branch jobs, hence expected 8467.  It failed closed with the
+literal diagnostic `core jobs 8468 != live ledger baseline 8465 + two branch
+modules`.  Thus the prediction that the merge would leave the Core counter
+unchanged is falsified: relative to the earlier 8467 witness anchored at
+source SHA `3d7ea4c9d22504f09afa36c95706faea16451071`, the merged Core has one
+additional effective job.  That earlier witness and its `+2` interpretation
+remain preserved as historical measurements; they are not rewritten.
+
+Because the runner stopped immediately after the counter check, the permanent
+oracle and consistency scanner did not run, no archive was produced, and no
+full PASS is claimed.  This failure says nothing against either new theorem.
+The runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
