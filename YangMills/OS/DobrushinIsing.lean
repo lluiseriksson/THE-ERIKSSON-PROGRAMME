@@ -7,6 +7,7 @@ Authors: Lluis Eriksson
 import Mathlib
 import YangMills.OS.DobrushinGibbs
 import YangMills.OS.DobrushinCoefficient
+import YangMills.OS.DobrushinRowSum
 
 /-!
 # D-4b — the interaction, instantiated: the intrinsic matrix of the Ising
@@ -146,7 +147,14 @@ theorem energy_update (J : ι → ι → ℝ) (hdiag : ∀ a, J a a = 0)
     · exact Finset.sum_congr rfl fun b hb => by
         rw [update_self' η i s, update_other η i s (Finset.ne_of_mem_erase hb)]
     · rw [update_self' η i s]
-  -- the outer sum, split at `a = i`
+  -- the outer sum, split at `a = i`; assembled by rewrites, not `congr`
+  have herase1 : ∑ a ∈ Finset.univ.erase i,
+        (∑ b, J a b * spin (Function.update η i s a)
+          * spin (Function.update η i s b))
+      = ∑ a ∈ Finset.univ.erase i,
+          ((∑ b ∈ Finset.univ.erase i, J a b * spin (η a) * spin (η b))
+            + J a i * spin (η a) * spin s) :=
+    Finset.sum_congr rfl fun a ha => hib a (Finset.ne_of_mem_erase ha)
   have houter : ∑ a, ∑ b, J a b * spin (Function.update η i s a)
         * spin (Function.update η i s b)
       = (∑ a ∈ Finset.univ.erase i,
@@ -154,10 +162,7 @@ theorem energy_update (J : ι → ι → ℝ) (hdiag : ∀ a, J a a = 0)
             + J a i * spin (η a) * spin s))
         + ((∑ b ∈ Finset.univ.erase i, J i b * spin s * spin (η b))
             + J i i * spin s * spin s) := by
-    rw [← Finset.sum_erase_add Finset.univ _ (Finset.mem_univ i)]
-    congr 1
-    · exact Finset.sum_congr rfl fun a ha => hib a (Finset.ne_of_mem_erase ha)
-    · exact hii
+    rw [← Finset.sum_erase_add Finset.univ _ (Finset.mem_univ i), herase1, hii]
   -- distribute, symmetrise, and read off the field
   have hsplit2 : ∑ a ∈ Finset.univ.erase i,
         ((∑ b ∈ Finset.univ.erase i, J a b * spin (η a) * spin (η b))
@@ -216,7 +221,6 @@ theorem heatBath_ising (J : ι → ι → ℝ) (hdiag : ∀ a, J a a = 0)
   have hD : Real.exp (localField J η i) + Real.exp (-localField J η i) ≠ 0 :=
     ne_of_gt (by positivity)
   field_simp
-  ring
 
 /-- The exponential ratio is the sigmoid. -/
 theorem exp_ratio_pPlus (h : ℝ) :
@@ -465,7 +469,6 @@ theorem dobCoeff_bond_attained (β : ℝ) (hβ : 0 ≤ β) :
       have hf2 : localField (bondJ β)
           (Function.update (fun _ : Fin 2 => (0 : Fin 2)) 1 1) 0 = -β := by
         rw [localField_update (bondJ β) (fun _ => 0) 0 1 1]
-        simp only []
         rw [hf1, bondJ_off β, spin_one, spin_zero]
         ring
       rw [hf1, hf2]
