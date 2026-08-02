@@ -8,8 +8,9 @@ import YangMills.RG.BalabanCMP116InteractingCombesThomas
 /-!
 # Source package for the interacting CMP116 precision
 
-**PRE-VALIDATION.** The source is present, but its `.olean` has not yet been
-materialized and no declaration in this module is compiler-verified yet.
+This source package was compiler-verified from one fresh Colab CPU/high-RAM
+clone at source checkpoint `5b061eb968885f5d724dc3b9226ee593ddc5d0db`.
+Its focal target, root build, and full axiom oracle all exited zero.
 
 This package fixes the precision used by the combined CMP102/CMP116 source to
 the literal Wilson-plus-gauge Hessian.  Its finite range, surviving coercivity,

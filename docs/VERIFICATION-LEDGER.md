@@ -26443,3 +26443,40 @@ consumer-facing numerator is 17 independently produced obligations out of 41,
 as itemized in `docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md`.  A complete
 centered-conditioned `TermSource`, `hRpoly`, and the paper endpoint remain
 open, and the distance to Clay remains approximately zero (below 0.1%).
+
+## Addendum 529 (2026-08-02, **interacting precision source GREEN; 18/41**)
+
+The literal interacting Wilson-plus-gauge precision source and its installation
+in the combined centered-conditioned source data were replayed from source
+checkpoint `5b061eb968885f5d724dc3b9226ee593ddc5d0db` in one fresh Colab
+Pro+ CPU/high-RAM clone.  This is an intermediate brick, so one fresh clone is
+the required reproducibility gate.  The runtime reported 50.99 GiB of RAM and
+was disconnected and deleted after the run.
+
+The official Lean `v4.29.0-rc6` toolchain and pins were exact: Mathlib
+`07642720480157414db592fa85b626dafb71355b` and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`.  The focal build ended with
+`Build completed successfully (8977 jobs).`; `YangMillsCore` ended with
+`Build completed successfully (10350 jobs).`; and the full oracle exited zero
+with exactly `[propext, Classical.choice, Quot.sound]` or a subset.
+
+The focal, root, and oracle logs have SHA-256 values
+`b54bc45b29b15b41c92f27dfc81ac7eec15c1754b93d3a29d46f7dc836c7a7a1`,
+`7afa58d2c5771c975e81e35e2b6d6969d6679b18eba717c3f0b432f6140d390f`,
+and `511a0a43775e8d75ab5f17cd8114e02a3eaa4cbb0f07433a4179d5069f9d7d34`.
+The evidence manifest hash is
+`04fff6f8fe3e4c5b0ef1fe798536c72ebdcc9868cb51cc4f53537e53ff69bcdd`;
+the archive created inside Colab has hash
+`15ec7c1faa457fe6de07e91d9d3e04b5910203ce762fc9ad40f3f2a5c223b37a`.
+The browser download selector failed before transfer, so the archive was not
+independently rehashed on Windows; the complete structured transcript and the
+individual hashes remained visible.  This transport defect does not change
+the recorded child exit codes.
+
+This brick closes only the covariance-range obligation group: the literal
+interacting precision supplies `sourceRange_bound` and `finiteRange`, while
+the surviving coercivity constant and `K_coercive` make the Poincare/Combes--
+Thomas wall visible without discharging the still-input `mass_pos`.  The live
+consumer-facing numerator is therefore exactly 18/41.  No `TermSource`
+inhabitant is produced, and analytic Lemma-1 equation (1.36) remains a separate
+named input.

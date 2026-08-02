@@ -1,9 +1,9 @@
 import YangMills.RG.BalabanCMP116InteractingPhysicalPrecisionSource
 
 /-!
-**PRE-VALIDATION.** This audit has not yet been compiler-verified.
-
 Axiom audit for the source package of the interacting CMP116 precision.
+This audit was compiler-verified from one fresh Colab CPU/high-RAM clone at
+source checkpoint `5b061eb968885f5d724dc3b9226ee593ddc5d0db`.
 -/
 
 #print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.sourceRange_bound

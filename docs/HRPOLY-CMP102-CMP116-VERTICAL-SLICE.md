@@ -110,6 +110,14 @@ source checkpoint `7fb235a3c86d3077b3d978a24a5623cd562eef9c`: the focal build
 completed successfully with 8975 jobs, `YangMillsCore` completed successfully
 with 10348 jobs, and the full oracle exited zero.  Its transcript has SHA-256
 `5c432c9a7cfa7c1bb81fa3cc8ec25d66e2e07d758b9089f887e0f6bd07670999`.
+The interacting-precision source was then validated from one fresh Colab
+CPU/high-RAM clone at source checkpoint
+`5b061eb968885f5d724dc3b9226ee593ddc5d0db`: the focal build completed with
+8977 jobs, `YangMillsCore` completed with 10350 jobs, and the full oracle
+exited zero.  The focal, root, and oracle log hashes are respectively
+`b54bc45b29b15b41c92f27dfc81ac7eec15c1754b93d3a29d46f7dc836c7a7a1`,
+`7afa58d2c5771c975e81e35e2b6d6969d6679b18eba717c3f0b432f6140d390f`,
+and `511a0a43775e8d75ab5f17cd8114e02a3eaa4cbb0f07433a4179d5069f9d7d34`.
 
 | Obligation group | Source status |
 |---|---|
@@ -123,6 +131,7 @@ with 10348 jobs, and the full oracle exited zero.  Its transcript has SHA-256
 | equation (1.36) | direct sector derived from CMP102 jets and walks; native sector is the named positive, nonempty-small-field CMP109 certificate; the combined finalizer is compiled but still requires a `PreEq136` inhabitant |
 | literal `kernelSupport`, `metric_budget` | source definitions and proofs compiled in the clean focal queue |
 | `smooth`, `hessian_zero_off_support` | source proofs compiled from the projected direct core and zero native core |
+| covariance range (`sourceRange_bound`, `finiteRange`) | literal interacting-precision producer compiled and installed |
 | covariance/parametrix contractions and contour bounds | remain explicit physical producer inputs; no source-specific pre-record yet assembles all of them |
 | conditioned covariance lower certificate | mandatory nondegeneracy input; it must not be synthesized by choosing a degenerate Gaussian root |
 | scalar windows (`shell`, contour/Neumann, root, outer, interaction, volume) | individually named; the compiled combined ledger pins `alpha` to the canonical sum of the literal potential rate, literal bilateral R2 rate, and `gamma`, but this normalization does not discharge `root_small` or `outer_small`; a single source-specific compatibility witness covering the live set remains open |
@@ -130,58 +139,66 @@ with 10348 jobs, and the full oracle exited zero.  Its transcript has SHA-256
 Under the 41-obligation grouping above, the current auditable numerator is
 
 ```text
-17 / 41
+18 / 41
 ```
 
-The seventeen independently produced entries are: the non-circular contour
+The eighteen independently produced entries are: the non-circular contour
 density; literal `total` and `residual`; literal `domainMetric`, `domainCard`,
 and `domainSupport`; `domain_nonempty`, `domain_subset`, and
 `domainMetric_nonneg`; `rooted_residual` and `rootBound_nonneg`;
 `volume_budget`; equation `(1.43)`; literal `kernelSupport`; `metric_budget`;
-`smooth`; and `hessian_zero_off_support`.  Equation `(1.36)` is deliberately
-outside this denominator.  The canonical `E0`, `threshold`, and `alpha`
-equalities are not added to the numerator while their only terminal use still
-passes through an already inhabited `PreEq136` record.
+`smooth`; `hessian_zero_off_support`; and the literal covariance-range
+package (`sourceRange_bound`, `finiteRange`).  Equation `(1.36)` is
+deliberately outside this denominator.  The canonical `E0`, `threshold`, and
+`alpha` equalities are not added to the numerator while their only terminal
+use still passes through an already inhabited `PreEq136` record.
 
-The complementary `24 / 41` is the following explicit audit list.  These are
+The complementary `23 / 41` is the following explicit audit list.  These are
 **obligation groups**, not raw Lean fields: a group may contain the sign
 conditions and structural certificates which have to be inhabited together.
 "Partial producer" means that the physical expression or a propagation
 theorem already exists, but at least one source-facing hypothesis or joint
-smallness inequality is still an input.  It does not increase the 17/41
+smallness inequality is still an input.  It does not increase the 18/41
 numerator.
 
-| # | Remaining obligation group | Current status |
-|---:|---|---|
-| 1 | covariance range (`sourceRange_bound`, `finiteRange`) | partial producer; the literal covariance is installed, while the source range certificate remains an input |
-| 2 | coercivity package (`coercivity_pos`, `mass_pos`, `K_coercive`) | open; this is the visible Poincare/Combes--Thomas wall |
-| 3 | patched inverse contraction (`patchedDefect_small`) | partial producer; the defect is literal, the strict inequality is open |
-| 4 | weighted patched-parametrix certificate (`patchCertificate`) | partial producer; certificate type and patch data exist, physical inhabitation is open |
-| 5 | propagation geometry (`distance_triangle`, `exponential_row_bound`) | partial producer; the metric is fixed, the uniform row budget is still supplied |
-| 6 | contour carrier inside `sigmaZero` (`carrier_subset_sigmaZero`) | open installation proof |
-| 7 | contour carrier inside the combined centered region (`carrier_subset_Z0`) | open installation proof |
-| 8 | combined centered region inside the chosen outer region (`Z0_subset_Z`) | open installation proof; enlargement cost stays visible |
-| 9 | contour adjacency budget (`degree_bound`, `one_le_Delta`) | partial combinatorial producer |
-| 10 | contour radius envelope (`radius_nonneg`, `radius_cap`) | open scalar/geometric envelope |
-| 11 | contour contraction package (`Ahead_nonneg`, `rho_nonneg`, `rate_pos`, `shell_small`, `contour_series_small`, `neumann_small`, `neumann_transpose_small`) | partial physical producer; joint contraction is open |
-| 12 | conditioned Gaussian root (`conditionedRoot`) | partial covariance producer |
-| 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | open and mandatory; a degenerate root is not admissible |
-| 14 | sigma Cauchy-radius normalization (`deltaRadius_eq`) | open equality against the installed base contour |
-| 15 | cardinality normalization (`normalizedGap`) | open equality in the source convention |
-| 16 | tau Cauchy-radius normalization (`yRadius_eq`) | open equality against the combined domain metric |
-| 17 | outer-series window (`qBound_nonneg`, `qBound_lt_one`) | open joint scalar window |
-| 18 | source-amplitude hierarchy (`E0Direct_nonneg`, `epsilon1_pos`, `epsilon1_le_one`, `C1_pos`, `alpha4_pos`, `C3_nonneg`, `C3_le`, `amplitude_nonneg`) | partial; formulas are fixed, joint source inequalities are open |
-| 19 | block/exponent hierarchy (`one_le_M`, `eight_le_q`, `one_lt_kappa1`, `source_budget`) | partial source-facing scalar regime |
-| 20 | direct third-jet envelope (`hD`, `hD₃`, `hV₀`, `hC`, `hRjet`, `hsourceJet`, `sourceJetBound_nonneg`) | partial CMP102 producer; the printed component estimates remain hypotheses |
-| 21 | walk factorization and Eq.-(1.43) budget (`cardRatio_nonneg`, `metricRatio_nonneg`, `summationRatio_nonneg`, `walk_split`, both decay rates, `cardDecay`, `metricDecay`, `walk_small`, `eq143_budget`) | partial producer; these inputs already feed the verified Eq.-(1.43) conclusion |
-| 22 | residual/rooted animal windows (`residual_rate_nonneg`, `rooted_rate_nonneg`, `animal_small`, `rooted_animal_small`) | partial combinatorial producer; the joint scalar witness is open |
-| 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | open scalar wall at the least admissible `alpha` |
-| 24 | outer Gaussian stability (`outer_small`) | open scalar wall, coupled to the same `alpha` and conditioned root |
+The final column is a routing classification, not a proof claim.  `tree`
+means that no missing primary source is currently known to be essential;
+`corpus` means that the needed source statement is present in the acquired
+primary corpus but still has to be formalized; and `absent` records a paper
+whose primary text is not currently available.  Mixed entries retain every
+applicable label.
 
-Thus `17/41 -> 41/41` is the route to the first source-specific
+| # | Remaining obligation group | Current status | Current route |
+|---:|---|---|---|
+| 2 | coercivity package (`coercivity_pos`, `mass_pos`, `K_coercive`) | partial: the surviving coercivity constant and `K_coercive` are produced and installed; `mass_pos` remains an input.  This is the visible Poincare/Combes--Thomas wall | tree + absent: CMP99 [14] for the physical source discharge |
+| 3 | patched inverse contraction (`patchedDefect_small`) | partial producer; the defect is literal, the strict inequality is open | tree |
+| 4 | weighted patched-parametrix certificate (`patchCertificate`) | partial producer; certificate type and patch data exist, physical inhabitation is open | tree + absent: CMP99 [14] |
+| 5 | propagation geometry (`distance_triangle`, `exponential_row_bound`) | partial producer; the metric is fixed, the uniform row budget is still supplied | tree + absent: CMP99/CMP102 source proof |
+| 6 | contour carrier inside `sigmaZero` (`carrier_subset_sigmaZero`) | open installation proof | tree |
+| 7 | contour carrier inside the combined centered region (`carrier_subset_Z0`) | open installation proof | tree |
+| 8 | combined centered region inside the chosen outer region (`Z0_subset_Z`) | open installation proof; enlargement cost stays visible | tree |
+| 9 | contour adjacency budget (`degree_bound`, `one_le_Delta`) | partial combinatorial producer | tree |
+| 10 | contour radius envelope (`radius_nonneg`, `radius_cap`) | open scalar/geometric envelope | tree |
+| 11 | contour contraction package (`Ahead_nonneg`, `rho_nonneg`, `rate_pos`, `shell_small`, `contour_series_small`, `neumann_small`, `neumann_transpose_small`) | partial physical producer; joint contraction is open | tree + corpus: CMP116 |
+| 12 | conditioned Gaussian root (`conditionedRoot`) | partial covariance producer | tree |
+| 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | open and mandatory; a degenerate root is not admissible | tree, downstream of group 2 |
+| 14 | sigma Cauchy-radius normalization (`deltaRadius_eq`) | open equality against the installed base contour | tree |
+| 15 | cardinality normalization (`normalizedGap`) | open equality in the source convention | tree |
+| 16 | tau Cauchy-radius normalization (`yRadius_eq`) | open equality against the combined domain metric | tree |
+| 17 | outer-series window (`qBound_nonneg`, `qBound_lt_one`) | open joint scalar window | tree + corpus: CMP116 |
+| 18 | source-amplitude hierarchy (`E0Direct_nonneg`, `epsilon1_pos`, `epsilon1_le_one`, `C1_pos`, `alpha4_pos`, `C3_nonneg`, `C3_le`, `amplitude_nonneg`) | partial; formulas are fixed, joint source inequalities are open | tree + corpus: CMP116 |
+| 19 | block/exponent hierarchy (`one_le_M`, `eight_le_q`, `one_lt_kappa1`, `source_budget`) | partial source-facing scalar regime | tree + corpus: CMP116 |
+| 20 | direct third-jet envelope (`hD`, `hD₃`, `hV₀`, `hC`, `hRjet`, `hsourceJet`, `sourceJetBound_nonneg`) | partial CMP102 producer; the printed component estimates remain hypotheses | tree + absent: CMP102/[15] source text |
+| 21 | walk factorization and Eq.-(1.43) budget (`cardRatio_nonneg`, `metricRatio_nonneg`, `summationRatio_nonneg`, `walk_split`, both decay rates, `cardDecay`, `metricDecay`, `walk_small`, `eq143_budget`) | partial producer; these inputs already feed the verified Eq.-(1.43) conclusion | tree + corpus: CMP116; source provenance still audited field by field |
+| 22 | residual/rooted animal windows (`residual_rate_nonneg`, `rooted_rate_nonneg`, `animal_small`, `rooted_animal_small`) | partial combinatorial producer; the joint scalar witness is open | tree + corpus: CMP116 + absent: Cammarota [26] for the deferred Mayer input |
+| 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | open scalar wall at the least admissible `alpha` | tree, downstream of groups 2 and 12--13 |
+| 24 | outer Gaussian stability (`outer_small`) | open scalar wall, coupled to the same `alpha` and conditioned root | tree, downstream of groups 2 and 12--13 |
+
+Thus `18/41 -> 41/41` is the route to the first source-specific
 `TermSource` **conditional on the named Lemma-1 certificate**.  Proving the
 analytic Lemma-1 instance of equation (1.36) is a separate step which removes
-that condition; it is not one of these twenty-four pre-(1.36) groups.
+that condition; it is not one of these twenty-three remaining pre-(1.36)
+groups.
 
 The two pending Hessian fields are deliberately not read back from the input
 record.  Their ledger theorems rewrite only `total`, `residual`, and
@@ -237,7 +254,7 @@ raw source data from the surviving physical proof inputs and constructs the
 literal combined `PreEq136` without accepting an inhabited pre-record or any
 of the seventeen generated conclusions.  Its source and audit passed the
 fresh-Colab focal/root/oracle gate at checkpoint `7fb235a3`; this validation
-does not increase the 17/41 numerator, because the assembler installs those
+does not increase the then-live 17/41 numerator, because the assembler installs those
 seventeen existing producers rather than creating new ones.
 
 The fields that remain inputs to that future assembler are the physical

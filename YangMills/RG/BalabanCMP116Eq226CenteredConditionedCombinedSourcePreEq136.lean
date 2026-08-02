@@ -12,10 +12,11 @@ import YangMills.RG.BalabanCMP116InteractingPhysicalPrecisionSource
 /-!
 # Source-specific pre-(1.36) assembly on the combined ledger
 
-**PRE-VALIDATION UPDATE.** The preceding 17/41 assembler was compiler-verified
-at source checkpoint `7fb235a3c86d3077b3d978a24a5623cd562eef9c`.  The new
-interacting-precision installation in this revision has not yet been
-compiler-verified.
+The preceding 17/41 assembler was compiler-verified at source checkpoint
+`7fb235a3c86d3077b3d978a24a5623cd562eef9c`.  The interacting-precision
+installation in this revision was compiler-verified from one fresh Colab
+CPU/high-RAM clone at source checkpoint
+`5b061eb968885f5d724dc3b9226ee593ddc5d0db`.
 
 This module removes the circular `S : PreEq136` input from the combined
 constructor.  Raw physical data are separated from proof inputs, while the
@@ -535,7 +536,7 @@ set_option synthInstance.maxHeartbeats 280000 in
 /-- Genuine source-specific assembler for the pre-(1.36) record.
 
 The caller supplies physical data and the still-open contour, parametrix,
-jet, and scalar windows.  Every field listed in the live 17/41 producer map
+jet, and scalar windows.  Every field listed in the live 18/41 producer map
 is installed from a literal definition or an independent theorem.  No
 inhabited `PreEq136`, ledger-identification record, free equation-(1.43)
 estimate, rooted sum, or volume budget is an input. -/
