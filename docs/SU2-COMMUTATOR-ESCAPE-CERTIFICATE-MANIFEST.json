@@ -1,0 +1,76 @@
+{
+  "schema": "su2-commutator-certificate-provenance/v1",
+  "generated_date": "2026-07-31",
+  "repository": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+  "pull_request": 40,
+  "base_sha": "a66b1c7da3c7441e06864e327b5c4efa43e9c79d",
+  "prior_audited_head_sha": "998eb7736bb24d6eabd0fbe3c7ed9692c8f6b8f0",
+  "certificate_repair_commit": "7e3712a435b4713d94c08ecbac5f74c5dc0dd6a7",
+  "audit_scope": {
+    "lean_changed_since_prior_audit": false,
+    "prior_mathematical_verdict_remains_evidence_for_unchanged_lean": true,
+    "prior_mathematical_verdict_covers_repaired_python_certificate": false,
+    "fresh_audit_required": "certificate and provenance only"
+  },
+  "certifier": {
+    "path": "scripts/verify_su2_commutator_moments.py",
+    "name": "verify_su2_commutator_moments",
+    "version": "2.0.0",
+    "certificate_schema": "su2-commutator-moments-certificate/v2",
+    "expected_checks": 14
+  },
+  "required_commands": [
+    "python scripts/verify_su2_commutator_moments.py",
+    "python -O scripts/verify_su2_commutator_moments.py",
+    "python scripts/verify_su2_commutator_moments.py --self-test",
+    "python -O scripts/verify_su2_commutator_moments.py --self-test"
+  ],
+  "deterministic_outputs": {
+    "certificate_normal": {
+      "runs": 2,
+      "byte_equal": true,
+      "bytes": 636,
+      "sha256": "cc3cea26a3331d5ba3aaf69e6a0162d9b8896272d35df7d5dfce26058803f39e"
+    },
+    "certificate_optimized": {
+      "runs": 2,
+      "byte_equal": true,
+      "bytes": 636,
+      "sha256": "cc3cea26a3331d5ba3aaf69e6a0162d9b8896272d35df7d5dfce26058803f39e"
+    },
+    "self_test_normal": {
+      "runs": 2,
+      "byte_equal": true,
+      "bytes": 503,
+      "sha256": "028d28320ba346a756a58068998d21b423a7ce6555b1ae49ecc0819a0e0cff95"
+    },
+    "self_test_optimized": {
+      "runs": 2,
+      "byte_equal": true,
+      "bytes": 503,
+      "sha256": "028d28320ba346a756a58068998d21b423a7ce6555b1ae49ecc0819a0e0cff95"
+    }
+  },
+  "mutation_matrix": {
+    "modes": ["normal", "optimized"],
+    "mutation_processes": 12,
+    "mutations": [
+      "determinant_2",
+      "non_unitary",
+      "trace_or_moment",
+      "commutator_identity",
+      "deleted_check",
+      "pass_before_counter"
+    ],
+    "required_result": "nonzero exit and no JSON status PASS"
+  },
+  "artifact_sha256": {
+    "hash_basis": "LF-normalized Git blob bytes",
+    "scripts/verify_su2_commutator_moments.py": "36dbbc2423342b1d223fee16d5e2fff3380fd9a8d1deba768b3d41f2c45d16d4",
+    "docs/SU2-COMMUTATOR-ESCAPE.md": "399374fd3b018b8e932306f949da0ec23e93a3c2b2df0ded2cde77a29023bc0e",
+    "YangMills/Derived/SU2CommutatorEscape.lean": "48499894d96778d005415a598310d7540f3ed9eba629d2019d66a8390d42cadd",
+    "YangMills/Derived/SU2CommutatorEscapeOracle.lean": "4b6f86e4758e52cdfeea4130ae542238a7a2ddf03897574851ed848271317c2f",
+    "lean-toolchain": "dc6d65016fad3123d44bf17b5bf0598286284ab16ba75d5c17eb22ed11f47361",
+    "lake-manifest.json": "1c72b465ab37a0418de6f82573c18bb0e79f9e0165e901fd9da0ddabecdb2611"
+  }
+}

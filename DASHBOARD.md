@@ -1,5 +1,5 @@
 # DASHBOARD (generado por bot cada hora — no editar a mano)
-_Última pasada: 2026-07-31T18:02:14Z_
+_Última pasada: 2026-08-01T07:41:07Z_
 
 ## Satélites con STATUS.json
 
@@ -12,7 +12,7 @@ _Última pasada: 2026-07-31T18:02:14Z_
 | lean-2d-yang-mills | green |  | 4 | 0 | true | 0h |
 | lean-zero-free-regions | green |  | 0 | 0 | true | 0h |
 | lean-ym-flow | green |  | 0 | 0 | true | 0h |
-| ym-lattice-numerics | red |  | 0 | 0 | true | 1h |
+| ym-lattice-numerics | red |  | 0 | 0 | true | 0h |
 
 ## Satélites expandidos sin STATUS.json obligatorio
 

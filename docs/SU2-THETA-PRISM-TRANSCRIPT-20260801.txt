@@ -1,0 +1,225 @@
+(16) PR #43 repair -- terminal reproducibility transcript
+Date: 2026-08-01
+Timezone: Europe/Stockholm
+Status: manufacturer reproduction record; complete task (31) reread pending
+
+JOINT DOCUMENTARY UNIT
+companion_manifest_path=docs/SU2-THETA-PRISM-TERMINAL-REPRO-MANIFEST.txt
+unit_policy=read this transcript and the companion manifest together
+standalone_completeness_claim=false
+transcript_role=provenance, environment, sessions, commands, jobs, exits,
+  oracle and instrument summaries, archive hashes, and measured differences
+manifest_role=source RAW/LF hash table, binary payload hash table, and routing
+  map back to the operational fields in this transcript
+cross_hash_policy=no current cross-hashes or self-hashes are embedded because
+  both documentary companions change in the same commit
+
+PROVENANCE
+failed_head_sha=0ac9b18c98cf12b305611fd74087816a3b5f1e32
+configured_base_sha=26306b8f30e826b0bcb7c4caf6a5a42473ab5fd8
+historical_merge_base_sha=43c003b2c0c98aceeabbf10ba28a4783de5859f1
+branch=codex/su2-theta-prism-artifact
+uniform_inhabitant_first_compiled_sha=3c198717e1b53b016803e3db76fda88f99314f89
+terminal_compiled_sha=08155607cacca04f3f7a507a78762f88fffd395d
+transcript_commit=f47e3dd66d764212b04d3d8cd44353f7591b54e4
+transcript_commit_role=historical commit introducing this transcript and its
+  companion manifest; distinct from the current documentary HEAD
+document_head_resolution=run `git rev-parse HEAD` in the checkout containing
+  this file; the exact frozen value is recorded in the PR #43 body after push
+pr=43 (draft throughout)
+push_policy=explicit fast-forward only; no force, rebase, or squash
+
+The distinction above is essential: both terminal clones compiled exactly
+08155607cacca04f3f7a507a78762f88fffd395d.  This transcript and its checked-in
+companion manifest are later documentary material.
+
+ENVIRONMENT AND CACHE
+provider=Google Colab Pro+
+runtime=CPU / high RAM; GPU not used
+host_cloneB=Linux 6.6.122+ x86_64, KVM, AMD EPYC 7B12
+host_cpus=8
+parallelism=Lake default (no fabricated -j value)
+toolchain=leanprover/lean4:v4.29.0-rc6
+mathlib_sha=07642720480157414db592fa85b626dafb71355b
+clone_policy=two independent public fresh clones; detached exact SHA
+credentials=no GitHub token in Colab; no push from Colab
+cache_provenance=each runtime independently ran `lake exe cache get` against
+  the Mathlib cache for the pinned manifest; no cache was shared between the
+  two deleted runtimes.
+
+SESSION ACCOUNTING
+cloneA_connected=2026-08-01T14:42:32.884Z--2026-08-01T15:08:41.001Z
+cloneA_connected_seconds=1568.117
+cloneA_result=all builds passed; verifier/instrument continuations passed
+  after three recorded runbook failures described below
+cloneB_connected=2026-08-01T15:09:48.604Z--2026-08-01T15:30:42.255Z
+cloneB_connected_seconds=1253.651
+cloneB_cell_start=2026-08-01T15:10:08Z
+cloneB_cell_end=2026-08-01T15:29:15Z
+cloneB_cell_elapsed_seconds=1147
+runtime_cleanup=both runtimes disconnected and deleted; SESSION COLAB FREE
+
+PIN GATE (B; A matched)
+EXPECTED_SHA=08155607cacca04f3f7a507a78762f88fffd395d
+ACTUAL_SHA=08155607cacca04f3f7a507a78762f88fffd395d
+EXPECTED_TOOLCHAIN=leanprover/lean4:v4.29.0-rc6
+ACTUAL_TOOLCHAIN_FILE=leanprover/lean4:v4.29.0-rc6
+EXPECTED_MATHLIB=07642720480157414db592fa85b626dafb71355b
+ACTUAL_MATHLIB=07642720480157414db592fa85b626dafb71355b
+PRECOMPILE_PIN_CHECK=PASS
+
+EXACT BUILD COMMANDS AND MEASUREMENTS (fresh clone B)
+Each command captured combined Lake stdout/stderr plus `/usr/bin/time -v`.
+
+command                                                       jobs  elapsed   max_rss_kB  exit
+lake build YangMills.SU2ThetaPrism.Combinatorics              8158  0:16.95      6429056     0
+lake build YangMills.SU2ThetaPrism.Cell                       8172  1:33.61      6412644     0
+lake build YangMills.SU2ThetaPrism.Witness                    8173  0:11.83      6398592     0
+lake build YangMills.SU2ThetaPrism.Analysis                   8182  0:51.67      6452284     0
+lake build YangMills.SU2ThetaPrism.QuaternionMoments          8183  0:18.71      6473220     0
+lake build YangMills.SU2ThetaPrism.Representation             8159  0:10.76      6376240     0
+lake build YangMills.SU2ThetaPrism.Coefficients               8185  0:14.52      6445156     0
+lake build YangMills.SU2ThetaPrism.Endpoint                   8186  0:11.27      6391780     0
+lake build YangMills.SU2ThetaPrism.Oracle                     8187  0:56.07      6359348     0
+lake build YangMillsCore                                      8464 11:30.51      6711116     0
+
+Clone A also completed all nine targets and YangMillsCore.  Its YangMillsCore
+measurement was 8464 jobs, 10:52.65, max RSS 6715996 kB, exit 0.
+
+ORACLE
+command=lake env lean YangMills/SU2ThetaPrism/Oracle.lean
+cloneB_elapsed=0:52.42
+cloneB_max_rss_kB=6342640
+exit=0
+headlines=48
+allowed_axioms_exactly=[propext, Classical.choice, Quot.sound]
+oracle_stdout_sha256=68645ca7bacec5c92e45b0b73ef6d5248b23f167f7430341967ec299d7129437
+oracle_stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+oracle_stderr_bytes=0
+
+The oracle includes `manufacturingTechnicalInputsConcrete`, its beta-one
+specialization, the concrete front door, both quaternion moments, the signed
+remainder, and the spin-one constructor.  Every printed title reported only
+the three allowed axioms.
+
+SOURCE-HOLE AND PROJECT-AXIOM CHECK
+The scanner lexed all 9 `YangMills/SU2ThetaPrism/*.lean` files plus
+`YangMillsCore.lean`, removing nested comments and strings before searching
+for `sorry`, `admit`, `sorryAx`, or a project `axiom` declaration.
+result=NO_PROJECT_AXIOMS_OR_SORRY=PASS files=10
+scanner_exact_command=NOT_CHECKED; not preserved in committed evidence
+scanner_artifact_path_sha256=NOT_CHECKED; no committed lexical-scanner file
+  and hash were found
+scanner_stdout_path_sha256=NOT_CHECKED; raw scanner stdout bytes were not
+  committed
+
+The PASS line above is the retained manufacturer summary.  Without the three
+missing committed fields it is not a documentarily self-sufficient scanner
+record, and this repair does not rerun or reconstruct the scanner.
+
+A deliberately broader first scan found seven pre-existing declarations under
+`YangMills/Experimental/**`.  That measured failure is retained; those files
+are outside this artefact and none of their declarations occurs in the 48
+oracle dependency sets.
+
+INSTRUMENTS
+python scripts/certify_su2_theta_prism_rationals.py=PASS
+python -O scripts/certify_su2_theta_prism_rationals.py=PASS
+normal_vs_optimized_certificate_bytes=identical
+certificate_sha256=ad027cbe00176826c0a5657f2a1d674cb0711e548a57befcfc30d447ac65a723
+python scripts/test_su2_theta_prism_mutations.py=PASS (10 rejected)
+python -O scripts/test_su2_theta_prism_mutations.py=PASS (10 rejected)
+python scripts/validate_su2_theta_prism_contract.py=PASS (9 Lean files)
+python -O scripts/validate_su2_theta_prism_contract.py=PASS (9 Lean files)
+
+The mutations include singlet 1/2 -> 1/3, domain -> all beta,
+`cheat : witnessNormSq = 3/4`, and complete-orthogonality fields.  The
+validator is explicitly a syntactic headline guard, not semantic honesty.
+
+TWO-CLONE REPRODUCIBILITY
+eol_policy=record RAW SHA-256 and LF-normalized SHA-256, where CRLF and lone
+  CR are normalized to LF.  The transcript/manifest is non-recursive: the
+  later transcript is not among the source files compiled at 08155607.
+manifest_sha256_cloneA=8fab9c9cff877133ff26dc50316f65f0e8d7a96aeee5cd8f10c2e186fa27ad52
+manifest_sha256_cloneB=8fab9c9cff877133ff26dc50316f65f0e8d7a96aeee5cd8f10c2e186fa27ad52
+source_hash_table_sha256_A_B=c3d4741436e274ca3dd77eb974f15aeaf3d19688beb0c8c6d48f86b1e679d2de
+binary_hash_table_sha256_A_B=a7e4ca36caa1e933f979eee4cd384a91e047f871ccceba3625a4d896af49984d
+oracle_stdout_sha256_A_B=68645ca7bacec5c92e45b0b73ef6d5248b23f167f7430341967ec299d7129437
+oracle_stderr_sha256_A_B=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+certificate_normal_sha256_A_B=ad027cbe00176826c0a5657f2a1d674cb0711e548a57befcfc30d447ac65a723
+certificate_optimized_sha256_A_B=ad027cbe00176826c0a5657f2a1d674cb0711e548a57befcfc30d447ac65a723
+all_deterministic_outputs_match=true
+
+The SHA-256 value `8fab9c9c...ad52` identifies the original V1 payload emitted
+by each Colab clone.  The checked-in companion manifest now adds documentary
+routing and verdict-boundary text, so its current bytes are intentionally not
+claimed to equal that historical payload hash.  No recursive cross-hash is
+invented; read it together with this transcript.
+
+EVIDENCE ARCHIVES CHECKED INSTRUMENTALLY ON WINDOWS (no Lean/Lake run on Windows)
+cloneA_complete_zip_sha256=9f00a8251b9eb81171639a1f18a2de1dbe7d56a03e9d70c7831413d803cb2630
+cloneB_complete_zip_sha256=a91efe850d5bba3c2af4fc7ee652cd08db86f4c7cea0b675559c8767069efb8d
+cloneA_main_log_sha256=d465acca2230fbfa2cb0c6138522d3e9d08bf60d1d0f54c205271c407a90301f
+cloneA_final_continuation_log_sha256=36b1a3f56ec0d3f12442a5e5e59135ee562fae0eed7d730e91a5bb6f25392525
+cloneB_log_sha256=6e7b6a56ff4554642cc7aaaeb1475b4d2f286f10ec6fb12cd5cd12fa22848598
+
+MEASURED FAILURES RETAINED
+1. Initial inhabitant attempt used a mistyped SHA and aborted before Lean.
+2. Subsequent inhabitant attempts recorded each Coefficients elaboration
+   failure before the clean source build at 3c198717.
+3. Terminal clone A completed all builds, then its first oracle checker failed
+   because Lean wrapped long output lines at terminal width.
+4. The corrected checker passed 48/48; an over-broad global source scan then
+   found seven pre-existing Experimental axioms outside this lane.
+5. The lane-exact scan and instruments reported PASS; the first manifest
+   writer then tried to read `YangMills/OS/SpatialRing.lean`.  Git shows that
+   path is present only on the configured-base side and absent at both the
+   historical merge-base and SOURCE, with no deletion in merge-base-to-SOURCE
+   history.  The companion table records `CONFIGURED_BASE_ONLY`, not
+   `DELETED`.
+6. Clone A then produced the final manifest; clone B ran the corrected runbook
+   from start to finish with `CELL_EXIT_STATUS=0`.
+
+CI
+workflow=CI -- Epistemic Honesty Enforcement
+compiled_head_sha=08155607cacca04f3f7a507a78762f88fffd395d
+run=30704212187
+job=91380399007
+conclusion=success
+note=syntactic CI is corroboration, not mathematical or external audit.
+
+SEVEN TECHNICAL INPUTS
+traceReality=PROVED traceRealityConcrete
+characterBound=PROVED characterBoundConcrete
+haarSchur=PROVED haarSchurConcrete
+fubiniCoordinates=PROVED fubiniCoordinatesConcrete; Haar coordinate change
+  is a separate measure-preserving theorem
+normMoments=PROVED normMomentsConcrete
+coefficientSeries=PROVED alpha_spinHalf_lower plus quaternion fourth moment,
+  signed remainder, and spinOneCoefficientRemainderStepConcrete
+weightMeasurability=PROVED weightMeasurabilityConcrete
+
+UNIFORM INHABITANT
+manufacturingTechnicalInputsConcrete (beta) (hbeta : BetaDomain beta)
+  : ManufacturingTechnicalInputs beta
+
+This is uniform for every `0 < beta <= 1`.  The name
+`manufacturingTechnicalInputsConcrete_betaOne_specialization` denotes only an
+anti-vacuity specialization and does not limit the constructor.
+
+EXTERNAL-VERDICT BOUNDARY
+task_17_scope=mathematics and code; not the later transcript/manifest content
+task_31_first_content_read=FAIL_DOCUMENTARY
+task_31_complete_reread_after_this_commit=PENDING
+
+Task (31), not task (17), was the first external reader of these two later
+documents.  Its first content reading returned FAIL.  After this repair the
+same task (31) must reread the complete five-front-door unit; no new auditor is
+opened and no inherited mathematical verdict covers these documentary bytes.
+
+REMAINING DEBT
+The manufacturer has completed the concrete inhabitant and terminal
+reproduction package.  A complete documentary reread by task (31) is still
+mandatory.  This transcript does not self-certify the repair, merge the PR,
+open a new auditor, claim a physical cell or OS positivity, invoke programme
+Gate 7, or make a paper claim.
