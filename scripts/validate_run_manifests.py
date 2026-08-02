@@ -538,6 +538,7 @@ def evaluate_debt_guard(
     manifest_dir: Path,
     baseline_path: Path,
     require_nonempty: bool,
+    comparison_root: Path | None = None,
 ) -> dict[str, Any]:
     """Accept only new valid manifests and non-increasing inherited debt."""
 
@@ -551,11 +552,26 @@ def evaluate_debt_guard(
     baseline_manifests = baseline["manifests"]
     guard_errors: list[str] = []
 
+    comparison: dict[str, Any] | None = None
+    if comparison_root is not None:
+        comparison_root = comparison_root.resolve()
+        comparison = build_debt_baseline(
+            root=comparison_root,
+            manifest_dir=comparison_root / "run-manifests",
+            base_sha=baseline["base_sha"],
+        )
+
+    comparison_manifests = comparison["manifests"] if comparison else {}
+    protected_labels = set(baseline_manifests) | set(comparison_manifests)
+
     current_paths = {
         path.relative_to(root).as_posix(): path
         for path in sorted(manifest_dir.glob("*.json"))
     }
-    for label, recorded in sorted(baseline_manifests.items()):
+    for label in sorted(protected_labels):
+        frozen_record = baseline_manifests.get(label)
+        comparison_record = comparison_manifests.get(label)
+        recorded = frozen_record or comparison_record
         if not isinstance(recorded, dict):
             raise ValueError(f"debt baseline: manifests.{label} must be an object")
         path = current_paths.get(label)
@@ -576,9 +592,39 @@ def evaluate_debt_guard(
                 f"{label}: protected run_id or official scope/title changed"
             )
 
-        allowed = _counter(
-            recorded.get("violations"), f"manifests.{label}.violations"
+        frozen_allowed = (
+            _counter(
+                frozen_record.get("violations"), f"manifests.{label}.violations"
+            )
+            if isinstance(frozen_record, dict)
+            else None
         )
+        comparison_allowed = (
+            _counter(
+                comparison_record.get("violations"),
+                f"comparison.manifests.{label}.violations",
+            )
+            if isinstance(comparison_record, dict)
+            else None
+        )
+        if frozen_allowed is not None and comparison_allowed is not None:
+            comparison_identity = {
+                "run_id": comparison_record.get("run_id"),
+                "official_scope_field": comparison_record.get("official_scope_field"),
+                "official_scope": comparison_record.get("official_scope"),
+            }
+            if comparison_identity != expected_identity:
+                raise ValueError(
+                    f"comparison tree: protected identity already changed for {label}"
+                )
+            allowed = Counter(
+                {
+                    key: min(frozen_allowed[key], comparison_allowed[key])
+                    for key in set(frozen_allowed) | set(comparison_allowed)
+                }
+            )
+        else:
+            allowed = frozen_allowed or comparison_allowed or Counter()
         observed = current.get(label, Counter())
         for violation, observed_count in sorted(observed.items()):
             allowed_count = allowed[violation]
@@ -588,7 +634,7 @@ def evaluate_debt_guard(
                     f"(baseline {allowed_count}, current {observed_count})"
                 )
 
-    for label in sorted(set(current_paths) - set(baseline_manifests)):
+    for label in sorted(set(current_paths) - protected_labels):
         for violation, observed_count in sorted(current.get(label, Counter()).items()):
             guard_errors.append(
                 f"{label}: new manifest is invalid: {violation} "
@@ -598,6 +644,16 @@ def evaluate_debt_guard(
     allowed_global = _counter(
         baseline.get("global_violations"), "global_violations"
     )
+    if comparison is not None:
+        comparison_global = _counter(
+            comparison["global_violations"], "comparison.global_violations"
+        )
+        allowed_global = Counter(
+            {
+                key: min(allowed_global[key], comparison_global[key])
+                for key in set(allowed_global) | set(comparison_global)
+            }
+        )
     for violation, observed_count in sorted(current_global.items()):
         if observed_count > allowed_global[violation]:
             guard_errors.append(
@@ -612,7 +668,7 @@ def evaluate_debt_guard(
     for detail, occurrence_count in current_global.items():
         debt_by_class[error_class(detail)] += occurrence_count
 
-    return {
+    report = {
         "guard": baseline["guard"],
         "baseline_sha": baseline["base_sha"],
         "manifest_count": count,
@@ -621,6 +677,10 @@ def evaluate_debt_guard(
         "debt_by_class": dict(sorted(debt_by_class.items())),
         "guard_errors": sorted(set(guard_errors)),
     }
+    if comparison is not None:
+        report["comparison_manifest_count"] = comparison["manifest_count"]
+        report["comparison_strict_error_count"] = comparison["strict_error_count"]
+    return report
 
 
 def _write_result(path: Path, payload: dict[str, Any]) -> None:
@@ -662,6 +722,11 @@ def main(argv: list[str] | None = None) -> int:
         help="write a machine-readable status, exit code, and first cause",
     )
     parser.add_argument(
+        "--comparison-root",
+        type=Path,
+        help="compare against the checked-out change-base tree to ratchet repairs",
+    )
+    parser.add_argument(
         "--root",
         type=Path,
         default=ROOT,
@@ -689,11 +754,15 @@ def main(argv: list[str] | None = None) -> int:
         if not baseline_path.is_absolute():
             baseline_path = root / baseline_path
         try:
+            comparison_root = args.comparison_root
+            if comparison_root is not None and not comparison_root.is_absolute():
+                comparison_root = root / comparison_root
             report = evaluate_debt_guard(
                 root=root,
                 manifest_dir=manifest_dir,
                 baseline_path=baseline_path,
                 require_nonempty=args.require_nonempty,
+                comparison_root=comparison_root,
             )
         except (OSError, ValueError) as exc:
             first_cause = str(exc)

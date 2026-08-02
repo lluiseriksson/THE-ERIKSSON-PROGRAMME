@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import shutil
 import sys
 import tempfile
 from pathlib import Path
@@ -71,12 +72,15 @@ def write_manifest(root: Path, data: dict) -> Path:
     return path
 
 
-def report(validator, root: Path, baseline: Path) -> dict:
+def report(
+    validator, root: Path, baseline: Path, comparison_root: Path | None = None
+) -> dict:
     return validator.evaluate_debt_guard(
         root=root,
         manifest_dir=root / "run-manifests",
         baseline_path=baseline,
         require_nonempty=True,
+        comparison_root=comparison_root,
     )
 
 
@@ -94,7 +98,8 @@ def main() -> int:
     validator = load_validator()
     outcomes: dict[str, str] = {}
     with tempfile.TemporaryDirectory(prefix="run-manifest-guard-") as temporary:
-        root = Path(temporary)
+        root = Path(temporary) / "current"
+        root.mkdir()
         legacy = valid_manifest(root, "legacy-run")
         legacy["environment"] = None
         legacy_path = write_manifest(root, legacy)
@@ -108,14 +113,18 @@ def main() -> int:
             json.dumps(baseline_data, indent=2, sort_keys=True) + "\n",
             encoding="utf-8",
         )
+        comparison_root = Path(temporary) / "comparison"
+        shutil.copytree(root, comparison_root)
 
-        require_pass(report(validator, root, baseline), "exact baseline")
+        require_pass(
+            report(validator, root, baseline, comparison_root), "exact baseline"
+        )
         outcomes["exact_baseline"] = "PASS"
 
         malformed = root / "run-manifests" / "new-malformed.json"
         malformed.write_text("{}\n", encoding="utf-8")
         require_fail(
-            report(validator, root, baseline),
+            report(validator, root, baseline, comparison_root),
             "new manifest is invalid",
             "new malformed manifest",
         )
@@ -126,7 +135,7 @@ def main() -> int:
         worsened["command"] = None
         legacy_path.write_text(json.dumps(worsened), encoding="utf-8")
         require_fail(
-            report(validator, root, baseline),
+            report(validator, root, baseline, comparison_root),
             "debt increased for command",
             "existing manifest worsened",
         )
@@ -136,14 +145,34 @@ def main() -> int:
         repaired = dict(legacy)
         repaired["environment"] = {"python": "3.12", "libraries": {}}
         legacy_path.write_text(json.dumps(repaired), encoding="utf-8")
-        require_pass(report(validator, root, baseline), "real debt reduction")
+        require_pass(
+            report(validator, root, baseline, comparison_root),
+            "real debt reduction",
+        )
         outcomes["debt_reduction"] = "PASS"
         legacy_path.write_text(json.dumps(legacy), encoding="utf-8")
+
+        comparison_legacy = comparison_root / "run-manifests" / legacy_path.name
+        comparison_repaired = dict(legacy)
+        comparison_repaired["environment"] = {
+            "python": "3.12",
+            "libraries": {},
+        }
+        comparison_legacy.write_text(
+            json.dumps(comparison_repaired), encoding="utf-8"
+        )
+        require_fail(
+            report(validator, root, baseline, comparison_root),
+            "debt increased for environment",
+            "reintroduced repaired debt",
+        )
+        outcomes["reintroduced_repaired_debt"] = "REJECTED"
+        comparison_legacy.write_text(json.dumps(legacy), encoding="utf-8")
 
         original = legacy_path.read_text(encoding="utf-8")
         legacy_path.unlink()
         require_fail(
-            report(validator, root, baseline),
+            report(validator, root, baseline, comparison_root),
             "protected publication was deleted",
             "publication deletion",
         )
@@ -154,7 +183,7 @@ def main() -> int:
         retitled["claim_scope"] = "incorrect replacement title"
         legacy_path.write_text(json.dumps(retitled), encoding="utf-8")
         require_fail(
-            report(validator, root, baseline),
+            report(validator, root, baseline, comparison_root),
             "official scope/title changed",
             "official title replacement",
         )
@@ -173,6 +202,8 @@ def main() -> int:
                 "--require-nonempty",
                 "--baseline",
                 str(baseline),
+                "--comparison-root",
+                str(comparison_root),
                 "--result-file",
                 str(result_file),
             ]

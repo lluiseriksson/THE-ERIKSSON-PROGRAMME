@@ -14,10 +14,10 @@ therefore returned exit 1 both before and after a new regression. Historical
 records span 63 layouts and 21 non-contract status values; filling missing
 execution facts or replacing old hashes would manufacture provenance.
 
-This PR chooses route B, differential quarantine. It also removes 320
-Ubuntu-only path-separator/EOL false positives before freezing the remaining
-3,814 strict violations: 39 manifests are strict-valid and 584 carry visible
-inherited debt.
+This PR chooses route B, differential quarantine. It removes 374 runner-format
+false positives, observes 3,760 active strict violations, and freezes an
+explicit 3,814-error ceiling: 39 manifests are strict-valid and 584 carry
+visible inherited debt.
 
 ## Changes
 
@@ -25,6 +25,8 @@ inherited debt.
   `claim_scope`/legacy `scope`, and exact violation multiset;
 - pass when debt is unchanged or reduced, and fail on any invalid new manifest
   or increased existing violation;
+- intersect the frozen ceiling with the exact PR/push base so repairs ratchet
+  automatically and cannot later reappear;
 - reject deletion or retitling of a protected publication;
 - make repository path and LF/CRLF validation runner-independent;
 - replace the misleading strict-red workflow step with
@@ -46,7 +48,7 @@ Local targeted results:
 - `tests/test_run_manifests.py`: 17 passed;
 - normal adversarial harness: exact base PASS, malformed new REJECTED,
   inherited worsening REJECTED, repair PASS, deletion REJECTED, retitle
-  REJECTED, stale PASS INVALIDATED;
+  REJECTED, repaired-debt reintroduction REJECTED, stale PASS INVALIDATED;
 - `python -O`: identical decisions;
 - no Lean/Lake command was run.
 

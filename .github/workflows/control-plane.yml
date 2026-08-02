@@ -103,11 +103,18 @@ jobs:
           python -O tests/run_manifest_guard_adversarial.py
 
       - name: Guard run-manifest structure and historical-debt delta
-        run: >-
-          python scripts/validate_run_manifests.py
-          --require-nonempty
-          --baseline .github/run-manifest-debt-baseline.json
-          --result-file run-manifest-guard-result.json
+        env:
+          CHANGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          comparison_root="$RUNNER_TEMP/run-manifest-comparison"
+          git worktree add --detach "$comparison_root" "$CHANGE_BASE"
+          cleanup() { git worktree remove --force "$comparison_root"; }
+          trap cleanup EXIT
+          python scripts/validate_run_manifests.py \
+            --require-nonempty \
+            --baseline .github/run-manifest-debt-baseline.json \
+            --comparison-root "$comparison_root" \
+            --result-file run-manifest-guard-result.json
 
       - name: Publish run-manifest guard decision record
         if: always()
