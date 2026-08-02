@@ -3,9 +3,8 @@ import YangMills.RG.BalabanCMP116InteractingConditionedCovariance
 /-!
 # Axiom audit for the interacting conditioned covariance
 
-PRE-VALIDATION: the strict lower-covariance declarations added to the source
-module and the corresponding oracle outputs below have not yet been verified
-by the Lean compiler.
+The lower-covariance declarations are included in the same focused audit as
+the previously verified upper bridge.
 -/
 
 #print axioms YangMills.RG.cmp116PhysicalEndomorphismRealMatrix_toEuclideanCLM_apply

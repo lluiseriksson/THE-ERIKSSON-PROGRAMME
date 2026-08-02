@@ -26506,3 +26506,37 @@ endomorphism, proves the exact conditioned-root certificate, and derives
 physical part of map item 12b.  The strict lower nondegeneracy certificate
 remains open, groups 23--24 remain open, the live numerator remains exactly
 18/41, and no `TermSource` inhabitant is produced.
+
+## Addendum 531 (2026-08-02, **physical localized covariance lower bridge GREEN**)
+
+The strict lower-covariance extension of
+`BalabanCMP116InteractingConditionedCovariance.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source checkpoint
+`460c05e5ac5e00536805c087526b15b9dc157dbb`.  The runtime opened at
+2026-08-02 15:52:17 UTC with 50.99 GiB RAM and was disconnected and deleted
+immediately after the audit.
+
+The official Lean `v4.29.0-rc6` toolchain was used, the cache gate materialized
+8,142 files, the manifest remained unchanged, and Mathlib was pinned to
+`07642720480157414db592fa85b626dafb71355b`.  The focal build exited zero with
+the literal terminal line `Build completed successfully (8474 jobs).` after
+1193.414 seconds.  The audit exited zero after 45.486 seconds and printed
+exactly nineteen declarations, each depending on
+`[propext, Classical.choice, Quot.sound]`.
+
+The wrapper subsequently reported `FINAL_STATUS=FAIL STAGE=audit_axioms`
+because its own text parser truncated the first matching audit line while
+constructing the count diagnostic.  This is classified
+`BLOCKED-INSTRUMENTATION`: both child exit codes were zero and the complete
+nineteen-line oracle output is present in the transcript.  No Lean result is
+inferred from the wrapper's false sentinel.  The evidence archive created in
+Colab has SHA-256
+`21987e98eacf8db41b57071565edb3ff1e0f1e2d00bd338508183032106bee6f`.
+
+The verified extension proves the localized covariance quadratic lower bound
+with the deliberately coarse positive constant
+`coercivityConstant / precisionUpperBound^2`, and constructs the terminal
+lower-covariance certificate once the localized carrier is known nonempty.
+That remaining geometric witness is not implied by `domain_nonempty` and
+`domain_subset`.  Therefore the live producer numerator remains exactly
+18/41, groups 23--24 remain open, and no `TermSource` inhabitant is produced.

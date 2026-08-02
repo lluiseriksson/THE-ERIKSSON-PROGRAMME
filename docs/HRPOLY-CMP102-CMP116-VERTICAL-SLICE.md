@@ -192,8 +192,8 @@ applicable label.
 | 10 | contour radius envelope (`radius_nonneg`, `radius_cap`) | any nonnegative envelope; larger radius worsens group 11 | open scalar/geometric envelope | tree |
 | 11 | contour contraction package (`Ahead_nonneg`, `rho_nonneg`, `rate_pos`, `shell_small`, `contour_series_small`, `neumann_small`, `neumann_transpose_small`) | **joint threshold** package | partial physical producer; joint contraction is open | tree + corpus: CMP116 |
 | 12a | conditioned Gaussian root (`conditionedRoot`) | **exact** square-root/support certificate | partial covariance producer; the abstract matrix square-root certificate is present | tree |
-| 12b | **localized covariance compression bridge** | **exact** compression/root identification plus quantitative upper/lower bounds | **upper bridge verified** in fresh Colab clones at `f04b5cb9` and `141cbfe1`.  A source-level lower construction using the deliberately coarse constant `coercivityConstant / precisionUpperBound^2` is present at PRE-VALIDATION checkpoint `f44c7e68`, but is not compiler-verified.  It still requires a geometric proof that the localized carrier is nonempty.  This does not change `18/41`. | tree; CMP99 [14] can sharpen the lower constant but is not required by the terminal type |
-| 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | **some positive** lower bound plus carrier nonemptiness; no optimal eigenvalue bound | analytic producer present at PRE-VALIDATION checkpoint `f44c7e68`; compiler validation and the geometric `S.Nonempty` producer remain open | tree, downstream of groups 2 and 12b |
+| 12b | **localized covariance compression bridge** | **exact** compression/root identification plus quantitative upper/lower bounds | **upper and lower analytic bridges verified** in a fresh Colab clone at `460c05e5`.  The lower construction uses the deliberately coarse constant `coercivityConstant / precisionUpperBound^2`.  A geometric proof that the localized carrier is nonempty is still required, so this does not change `18/41`. | tree; CMP99 [14] can sharpen the lower constant but is not required by the terminal type |
+| 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | **some positive** lower bound plus carrier nonemptiness; no optimal eigenvalue bound | analytic producer compiler-verified at `460c05e5`; only the geometric `S.Nonempty` producer remains open before installation | tree, downstream of groups 2 and 12b |
 | 14 | sigma Cauchy-radius normalization (`deltaRadius_eq`) | **exact** equality against the installed contour | open equality against the installed base contour | tree |
 | 15 | cardinality normalization (`normalizedGap`) | **exact** equality in the chosen convention | open equality in the source convention | tree |
 | 16 | tau Cauchy-radius normalization (`yRadius_eq`) | **exact** equality against the combined metric | open equality against the combined domain metric | tree |
@@ -226,13 +226,15 @@ the source-coordinate dictionary transports that witness to
 small but genuine geometric obligation, not a consequence of the two domain
 fields already counted.
 
-Elaboration failures are triaged separately from project mathematics.  If a
-first error is an instance-synthesis or Mathlib elaboration failure and its
-message mentions no project declaration, variants are tested first in a
-minimal file importing only the smallest relevant Mathlib module.  The full
-hRpoly target is retried only after that reproducer elaborates.  This keeps a
-finite-dimensional typeclass experiment from consuming a fresh full-project
-Colab bootstrap for every candidate representation.
+Elaboration failures are triaged separately from project mathematics.  If the
+first error occurs in a proof step whose statement and diagnostic mention no
+project declaration, variants are tested first in a minimal file importing
+only the smallest relevant Mathlib module.  This applies not only to instance
+synthesis, but also to generic algebraic rewrites, matrix identities,
+orientation of inequalities, and normalization of norms or inner products.
+The full hRpoly target is retried only after that reproducer elaborates.  This
+keeps a generic Mathlib experiment from consuming a fresh full-project Colab
+bootstrap for every candidate proof.
 
 Thus `18/41 -> 41/41` is the route to the first source-specific
 `TermSource` **conditional on the named Lemma-1 certificate**.  Proving the
@@ -1194,9 +1196,20 @@ produced evidence SHA-256
 `5011a4bb91b2e489ffb74686537794a3e43318994c449c8b3a8a805a71092be3`.
 
 This still does **not** increase the `18/41` producer count.  The strict lower
-nondegeneracy certificate is a separate obligation, and the verified generic
-and physical upper bridges do not manufacture it.  Keeping row 12b separate
-prevents groups 23--24 from being misread as scalar arithmetic that is already
+nondegeneracy certificate is a separate obligation.  At checkpoint
+`460c05e5ac5e00536805c087526b15b9dc157dbb`, the same physical module was
+extended and compiler-verified with the deliberately robust lower estimate
+
+```text
+(coercivityConstant / precisionUpperBound^2) * ||v||^2
+  <= <v, conditionedCovariance v>.
+```
+
+The associated terminal lower certificate is therefore analytic, not
+source-pending.  Its installation still requires an explicit proof that the
+localized coordinate carrier is nonempty; `domain_nonempty` and
+`domain_subset` do not imply that fact.  Keeping row 12b separate prevents
+groups 23--24 from being misread as scalar arithmetic that is already
 physically instantiable.
 
 After that bridge, and assuming the displayed rates are nonnegative, the
