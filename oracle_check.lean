@@ -3192,6 +3192,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.siteQ_transferOp_le
 #print axioms YangMills.OS.siteQ_perron_pos
 #print axioms YangMills.OS.perron_constant_minimal
+#print axioms YangMills.OS.transferOp_perron_eigen
+#print axioms YangMills.OS.siteQ_transferOp_perron
+#print axioms YangMills.OS.perron_norm_constant_minimal
 #print axioms YangMills.OS.collapseL
 #print axioms YangMills.OS.collapseL_apply
 #print axioms YangMills.OS.collapseL_surjective

@@ -859,7 +859,13 @@ directly, by one more weighted Cauchy--Schwarz with the same Perron weight:
 
 and summing over `i`, using symmetry once and the eigenvector equation a second
 time, gives `‖A x‖² ≤ lam² ‖x‖²` --- with equality at `x = Ω`.  No spectral
-theory, no positivity, and no restriction on the sign of `β`. -/
+theory and no restriction on the sign of `β`.
+
+"No positivity" here means no OPERATOR semidefiniteness hypothesis: nothing like
+`0 ≤ T` is assumed, which is why the bound survives at `β < 0` where
+`transferOp_nonneg` does not apply.  Entrywise non-negativity `0 ≤ A i j` IS
+essential and is carried as `hA`; an external reading was right that the
+unqualified phrase claimed more than the proof uses. -/
 
 theorem norm_sq_le_perron {ι : Type*} [Fintype ι] {A : ι → ι → ℝ}
     (hsym : ∀ i j, A i j = A j i) (hA : ∀ i j, 0 ≤ A i j)
@@ -1061,6 +1067,69 @@ theorem perron_constant_minimal {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
   rw [hEq] at hle
   exact le_of_mul_le_mul_right (by linarith) hpos
 
+/-- The Perron vector is an eigenvector of `T` itself, with the same eigenvalue:
+the intertwining carries `Ω` across.  A corollary of §7b, written down because
+the norm sharpness below needs it as a theorem and not as a remark. -/
+theorem transferOp_perron_eigen {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) {Ω : (Fin L → Fin 2) → ℝ} {lam : ℝ}
+    (heig : ∀ σ, (∑ τ : Fin L → Fin 2, symWeighted w β σ τ * Ω τ) = lam * Ω σ)
+    (σ : Fin L → Fin 2) :
+    transferOp w β (fun τ => ((Real.sqrt (w τ) * Ω τ : ℝ) : ℂ)) σ
+      = ((lam : ℝ) : ℂ) * ((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ) := by
+  have hcast : ∀ σ : Fin L → Fin 2,
+      (∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * ((Ω τ : ℝ) : ℂ))
+        = ((lam : ℝ) : ℂ) * ((Ω σ : ℝ) : ℂ) := by
+    intro σ
+    rw [← Complex.ofReal_mul, ← heig σ, Complex.ofReal_sum]
+    exact Finset.sum_congr rfl fun τ _ => by push_cast; ring
+  have h := transferOp_eigen_of_symWeighted (fun σ => (hw σ).le) β
+    (fun τ => ((Ω τ : ℝ) : ℂ)) ((lam : ℝ) : ℂ) hcast σ
+  have hfun : (fun τ => ((Real.sqrt (w τ) : ℝ) : ℂ) * ((Ω τ : ℝ) : ℂ))
+      = fun τ => ((Real.sqrt (w τ) * Ω τ : ℝ) : ℂ) := by
+    funext τ
+    push_cast
+    ring
+  rw [hfun] at h
+  rw [h]
+  push_cast
+  ring
+
+/-- **THE NORM CONSTANT IS ATTAINED**, and not only the quadratic one: at the
+Perron vector the norm inequality is an equality. -/
+theorem siteQ_transferOp_perron {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) {Ω : (Fin L → Fin 2) → ℝ} {lam : ℝ}
+    (heig : ∀ σ, (∑ τ : Fin L → Fin 2, symWeighted w β σ τ * Ω τ) = lam * Ω σ) :
+    siteQ w (transferOp w β (fun τ => ((Real.sqrt (w τ) * Ω τ : ℝ) : ℂ)))
+      = lam ^ 2 * siteQ w (fun τ => ((Real.sqrt (w τ) * Ω τ : ℝ) : ℂ)) := by
+  unfold siteQ
+  rw [Finset.mul_sum]
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  rw [transferOp_perron_eigen hw β heig σ]
+  have hns : Complex.normSq (((lam : ℝ) : ℂ)
+        * ((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ))
+      = lam ^ 2 * Complex.normSq (((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ)) := by
+    rw [Complex.normSq_mul, Complex.normSq_ofReal]
+    ring
+  rw [hns]
+  ring
+
+/-- **AND THE NORM CONSTANT IS MINIMAL.**  Any `c ≥ 0` bounding `‖T u‖` by
+`c‖u‖` everywhere satisfies `lam ≤ c`.  With the previous theorem this makes
+`lam` the operator norm of `T` in the physical metric, not merely an upper
+bound for it --- at every `β`. -/
+theorem perron_norm_constant_minimal {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) {Ω : (Fin L → Fin 2) → ℝ} (hΩ : ∀ σ, 0 < Ω σ)
+    {lam c : ℝ} (hlam : 0 ≤ lam) (hc0 : 0 ≤ c)
+    (heig : ∀ σ, (∑ τ : Fin L → Fin 2, symWeighted w β σ τ * Ω τ) = lam * Ω σ)
+    (hc : ∀ u : (Fin L → Fin 2) → ℂ,
+      siteQ w (transferOp w β u) ≤ c ^ 2 * siteQ w u) : lam ≤ c := by
+  have hpos := siteQ_perron_pos hw hΩ (w := w)
+  have hEq := siteQ_transferOp_perron hw β heig
+  have hle := hc (fun τ => ((Real.sqrt (w τ) * Ω τ : ℝ) : ℂ))
+  rw [hEq] at hle
+  have hsq : lam ^ 2 ≤ c ^ 2 := le_of_mul_le_mul_right (by linarith) hpos
+  nlinarith [hsq, hlam, hc0]
+
 /-- **THE PERRON DATA EXISTS**, so nothing above is conditional on a hypothesis
 nobody can discharge: the symmetrised kernel is strictly positive, and this lane
 already proves such a kernel has a strictly positive eigenvector with positive
@@ -1074,15 +1143,21 @@ theorem exists_contraction_constant {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
         siteQ w (transferOp w β u) ≤ lam ^ 2 * siteQ w u) ∧
       bondQ β (fun σ => ((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ))
         = lam * siteQ w (fun σ => ((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ)) ∧
+      siteQ w (transferOp w β (fun σ => ((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ)))
+        = lam ^ 2 * siteQ w (fun σ => ((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ)) ∧
       (∀ c : ℝ, (∀ u : (Fin L → Fin 2) → ℂ, bondQ β u ≤ c * siteQ w u)
-        → lam ≤ c) := by
+        → lam ≤ c) ∧
+      (∀ c : ℝ, 0 ≤ c → (∀ u : (Fin L → Fin 2) → ℂ,
+        siteQ w (transferOp w β u) ≤ c ^ 2 * siteQ w u) → lam ≤ c) := by
   obtain ⟨Ω, lam, hΩ, -, hlam, heig⟩ :=
     exists_pos_eigenvector (symWeighted w β) (symWeighted_pos hw β)
   exact ⟨Ω, lam, hΩ, hlam,
     fun u => transferOp_le_perron hw β hΩ heig u,
     fun u => siteQ_transferOp_le hw β hΩ heig u,
     transferOp_perron_attained hw β hΩ heig,
-    fun c hc => perron_constant_minimal hw β hΩ heig hc⟩
+    siteQ_transferOp_perron hw β heig,
+    fun c hc => perron_constant_minimal hw β hΩ heig hc,
+    fun c hc0 hc => perron_norm_constant_minimal hw β hΩ hlam.le hc0 heig hc⟩
 
 /-! ## §8  The physical space as a quotient, packaged
 
