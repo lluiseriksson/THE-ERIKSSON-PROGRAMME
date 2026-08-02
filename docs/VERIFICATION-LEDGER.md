@@ -31775,3 +31775,58 @@ allowed axioms, whereas this elementary scalar theorem genuinely uses the
 strict subset `{propext}`.  Consistency and artifact packaging did not run,
 so no full PASS is claimed.  The runtime was disconnected and deleted
 immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 634 (2026-08-02, **TASK 14: multiline oracle-parser false PASS**)
+
+**INSTRUMENTAL FALSE PASS; THE LEAN OUTPUT IS GREEN BUT THE RUNNER IS NOT A
+VALID CERTIFIER.**  A third fresh CPU/high-RAM Colab runtime executed exact
+versioned runner SHA `3a89d1753993e1545aa7f8257c6f5ad85f58d2ed`
+(notebook SHA-256
+`8e31e026fc10598689215aa15649deedc00e485cee49cf28d488653b9da9c840`).
+Its independent fresh public clone checked out exact source/oracle SHA
+`6b242c96c8c8416d2246d27560e6d603b2b76a38`.  The run lasted from UTC
+`2026-08-02T20:08:06.739308+00:00` to
+`2026-08-02T21:03:57.850592+00:00` on Linux 6.6.122 x86_64 with glibc 2.35,
+Python 3.12.13, 8 CPUs, `53467192 kB` RAM, and no GPU.  Exact Lean/mathlib
+pins and the elan-installer hash were verified.
+
+Every underlying command exited zero: isolated official cache in
+`100.496917 s`; `lake build YangMills.OS.SpatialVacuum` in `167.569388 s`
+at `8172 jobs`; `lake build YangMillsCore` in `858.989988 s` at `8468 jobs`;
+the complete permanent oracle in `2195.605340 s`; and consistency in
+`4.063914 s`.  The Core count again measures the attributed decomposition
+`8465 + 1` merged-main job plus this lane's `+2`, without altering the
+historical `8467 / +2` witness.
+
+The runner printed `SPATIAL VACUUM FULL PASS`, but desktop inspection of the
+downloaded oracle exposed a false parser premise.  Lean pretty-printed the
+new declaration across three lines:
+
+```text
+'YangMills.OS.periodic_antiperiodic_log_difference_eq_neg_two_artanh' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+```
+
+The line-oriented parser consumed only `[propext,` and therefore accepted
+the artificially weakened expected set `{propext}`.  The actual exact axiom
+set is the fully allowed `{propext, Classical.choice, Quot.sound}`.  Thus the
+Lean theorem and complete oracle are green, but this runner execution is not
+accepted as a verification witness; the parser must consume bracketed axiom
+blocks across line breaks and retain the full expected set.
+
+**ARTIFACT INTEGRITY, DIAGNOSTIC ONLY.**  The downloaded 71710-byte ZIP
+`C:\Users\lluis\Downloads\spatial_vacuum_full_artifacts (4).zip` has
+desktop-recomputed SHA-256
+`ff75b2c2281f86d444db8c98ba90b0118947e302034ec8207c230f254d3ddaef`,
+matching Colab.  Its internal payload hashes also match desktop recomputation:
+`consistency_output.txt`
+`95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`,
+`metadata.json`
+`766e360f04b951d83b3b9b0f18ce5bac426432763dddea120148da2ac01c6216`,
+`oracle_output.txt`
+`385f776fe23a719cdb148ffcce96e9862d0320076d299e2bcac3d199d86b80b5`,
+and `transcript.txt`
+`124c06afbcc8d9b978112f3dd8830627b34482b53595531264cb4ea142c53c6b`.
+The oracle contains zero `sorryAx`.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
