@@ -202,6 +202,13 @@ the report must emit a separate line
 `CLEANUP-PENDING: <exact absolute path>`; the condition must never be hidden in
 prose or confused with retained evidence.
 
+While an external reading of a pull request is in flight, its branch and body
+are frozen: no commit, including a documentation-only commit, may be published
+until the verdict is delivered.  A defect discovered during the reading is
+declared as a known-open carve-out in the audit assignment and repaired only
+afterward.  The assignment names the SHA, body-capture method, normalized body
+bytes, and their hash; the verdict repeats all four.
+
 ## 5. A guard's name must not claim more than its predicate
 
 **Incident that paid the rule (2026-07-31):** two independent auditors were
