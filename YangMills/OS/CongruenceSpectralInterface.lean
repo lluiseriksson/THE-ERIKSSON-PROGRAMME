@@ -56,18 +56,21 @@ open Classical in
 noncomputable def perronValue (T : Matrix n n ℝ) : ℝ :=
   if h : ∀ i j, 0 < T i j then (exists_pos_eigenvector T h).choose_spec.choose else 0
 
+omit [DecidableEq n] in
 theorem perronVec_pos {T : Matrix n n ℝ} (hpos : ∀ i j, 0 < T i j) :
     ∀ i, 0 < perronVec T i := by
   classical
   rw [perronVec, dif_pos hpos]
   exact (exists_pos_eigenvector T hpos).choose_spec.choose_spec.1
 
+omit [DecidableEq n] in
 theorem perronValue_pos {T : Matrix n n ℝ} (hpos : ∀ i j, 0 < T i j) :
     0 < perronValue T := by
   classical
   rw [perronValue, dif_pos hpos]
   exact (exists_pos_eigenvector T hpos).choose_spec.choose_spec.2.2.1
 
+omit [DecidableEq n] in
 theorem perronVec_eigen {T : Matrix n n ℝ} (hpos : ∀ i j, 0 < T i j) :
     ∀ i, ∑ j, T i j * perronVec T j = perronValue T * perronVec T i := by
   classical
@@ -116,6 +119,7 @@ theorem sum_mul_le_eucNorm_mul (x y : n → ℝ) :
 
 /-- The quadratic form, written as a pairing with one application of the
 kernel — the shape `norm_act_le_specGap` is stated in. -/
+omit [DecidableEq n] [Nonempty n] in
 theorem quad_eq_sum_act (T : Matrix n n ℝ) (x : n → ℝ) :
     quad T x = ∑ i, x i * act T x i := by
   unfold quad act
