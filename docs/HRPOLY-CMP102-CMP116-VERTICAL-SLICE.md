@@ -1798,6 +1798,11 @@ The exact visual source record is
 case split before (1.13) is `m > 2^4`, not `m > 24`.  Consequently the
 repository factor `exp(-decay/24)` must not be cited as a literal recovery of
 that split; it belongs to a different animal-count normalization.  The same
+reading has an internal numerical check: in the complementary case
+`m <= 2^4 = 16`, positivity of `kappa1` gives
+`exp(m*kappa1) <= exp(16*kappa1)`, exactly the factor printed in (1.18),
+(1.21), and (1.39).  This check does not identify the unrelated `/24`.
+The same
 visual pass fixes the constants in (1.13)--(1.16), the Cauchy radius (1.22),
 the structure of (1.24), and the final `exp(-kappa1 d_k(Y)/16)` rate in
 (1.29).

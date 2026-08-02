@@ -96,7 +96,7 @@
       "status": "visual_confirmed",
       "summary": "Lemma 1 fixed-point, small-field, Cauchy and localization window. The rendered primary PDF fixes OCR damage in Eqs. (1.13), (1.24), (1.29), and confirms that the small-domain split is m > 2^4, not m > 24.",
       "extracted_claims": [
-        "For m > 2^4, Eq. (1.11) carries the factor B0 |X| sup_omega M1^(-|omega|/2) exp(-delta0 d(omega)) exp(m kappa1); for m <= 2^4 the bound used immediately afterward is exp(16 kappa1).",
+        "For m > 2^4, Eq. (1.11) carries the factor B0 |X| sup_omega M1^(-|omega|/2) exp(-delta0 d(omega)) exp(m kappa1). For m <= 2^4 = 16, kappa1 > 0 gives exp(m kappa1) <= exp(16 kappa1), matching the factor printed later in Eqs. (1.18), (1.21), and (1.39). This internal consistency check is independent of the repository's distinct /24 animal-count normalization.",
         "Eq. (1.13) bounds |C(A' - H(s(Y0))X)| by 2 C2 epsilon2^2 + 2 C2 B0^2 exp(32 kappa1) |X|^2, under the displayed sufficient conditions |X| < 4 C2 epsilon2^2 <= (4 C2 B0^2 exp(32 kappa1))^-1 and 4 C2 B0 exp(16 kappa1) epsilon2 <= 1.",
         "Eq. (1.14) gives |D(H(s(Y0)),A')| <= 4 C2 |A'|^2.",
         "Eqs. (1.15)-(1.16) give the contraction estimate and |A0(s(Y0),H0(s(Y0))B')| <= 4 C4 (B0 exp(16 kappa1))^3 |B'|^2, with the displayed smallness chain ending at epsilon2/2.",
