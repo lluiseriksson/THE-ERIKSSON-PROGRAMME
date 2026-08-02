@@ -31388,3 +31388,23 @@ was captured through the browser.  No core build or oracle ran, no PASS is
 claimed, and neither vacuum comparison nor spectral-sector obligation is
 affected.  The runtime was disconnected and deleted immediately;
 **SESIÓN COLAB LIBRE**.
+
+## Addendum 621 (2026-08-02, **TASK 14: repaired angular-kernel rerun selected stale cell**)
+
+**FAIL INSTRUMENTAL; THE REPAIRED SHA WAS NOT ELABORATED.**  A fresh
+CPU/high-RAM Colab runtime was intended to check repaired raw SHA
+`1fa6c3b6f4d77e46fd797f587648ebe4898bfa2f`.  The live source and transcript
+instead showed that the notebook editor had retained the preceding literal:
+at `2026-08-02T12:11:18.165051+00:00` it checked out
+`d0b9e340df0cf2c5ec4a51a134385c2eddf795c7` again.  The raw-SHA mismatch
+was detected in output before any Lean build.
+
+The stale cell reported the same 8-CPU, `53467192 kB`, no-GPU environment,
+completed the exact Lean installation, and was interrupted during isolated
+`lake exe cache get`.  It ended with literal `KeyboardInterrupt` after the
+Colab cell had run `82.263 s`; `lake build YangMills.OS.SpatialVacuum` never
+started.  Hence this incident says nothing about the repair or either theorem.
+No PASS or transcript hash is claimed, and the runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.  The next attempt must use a new
+empty code cell and accept output only after that cell visibly prints the
+repaired raw SHA.
