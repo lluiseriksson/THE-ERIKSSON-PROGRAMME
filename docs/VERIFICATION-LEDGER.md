@@ -31716,3 +31716,30 @@ sector bound is proved, the beta-zero endpoint remains open, and the uniform
 `specRatio` theorem remains wholly open.  Clifford/Jordan--Wigner remains
 unopened.  The runtime was disconnected and deleted immediately;
 **SESIÓN COLAB LIBRE**.
+
+## Addendum 632 (2026-08-02, **TASK 14: exact finite log-sign Lean failure**)
+
+**MEASURED LEAN FAILURE; NO PASS AND NO VERIFICATION WITNESS.**  A fresh
+CPU/high-RAM Colab runtime executed exact versioned runner SHA
+`10250eece640ec05d715055133d80e7b78cfa95c` (notebook SHA-256
+`0e636edc4a1c213cede6b4ec4793a5c3e8bb5d6360fe011de5487bfc55a9eba5`).
+The runner made an independent fresh public clone and checked out exact
+source/oracle SHA `20d5e93f8dadac8ebfe5e7b6cb94e783d250d310`.  The run began at
+UTC `2026-08-02T18:59:43.110992+00:00` on Linux 6.6.122 x86_64 with glibc
+2.35, Python 3.12.13, 8 Intel Xeon CPUs, `53467192 kB` RAM, and no GPU.  It
+verified Lean `v4.29.0-rc6` commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, mathlib
+`07642720480157414db592fa85b626dafb71355b`, and elan-installer SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+
+The isolated official cache exited zero in `94.541007 s`.
+`lake build YangMills.OS.SpatialVacuum` then exited 1 after `146.291666 s`
+with the sole new source diagnostic
+`YangMills/OS/SpatialVacuum.lean:46:36: failed to prove
+positivity/nonnegativity/nonzeroness`.  Line 46 asks `positivity` to prove
+`1 - x ^ L != 0`; the immediately preceding hypothesis already supplies
+`x ^ L < 1`.  This is a local tactic failure in the proof of the exact
+`-2 * artanh (x ^ L)` identity, not evidence against the identity or its
+strict sign.  The runner stopped at the module target, so Core, the permanent
+oracle, consistency, and artifact packaging did not run; no PASS is claimed.
+The runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
