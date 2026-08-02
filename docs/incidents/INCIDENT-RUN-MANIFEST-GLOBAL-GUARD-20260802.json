@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "base": {
+    "sha": "55d2f5171b8570e8dc4c49f0cc55895d13536d2d",
+    "ref": "origin/main",
+    "fetched_on": "2026-08-02"
+  },
+  "workflow": {
+    "name": "Validate repository control plane",
+    "job": "test",
+    "step": "Validate committed run manifests",
+    "command": "python scripts/validate_run_manifests.py --require-nonempty"
+  },
+  "github_actions_reproduction": {
+    "run_id": 30748288338,
+    "job_id": 91497624170,
+    "runner_image": "ubuntu-24.04/20260720.247.2",
+    "runner_version": "2.336.0",
+    "python": "CPython 3.12.13 x64",
+    "manifest_count": 623,
+    "error_count": 4134,
+    "exit_code": 1,
+    "failed_log_sha256": "99218ca81d34d30061406bf2240c72fd1406e04a80a8b6a0ea7b9ba1397c15e4"
+  },
+  "local_reproduction": {
+    "recorded_utc": "2026-08-02T13:53:59.9753091Z",
+    "host": "LLUISPC",
+    "os": "Microsoft Windows 11 Home 10.0.26200 x64",
+    "architecture": "x64",
+    "python": "CPython 3.12.6",
+    "git": "2.43.0.windows.1",
+    "elapsed_seconds": 8.866,
+    "process_count": 1,
+    "process_pool": false,
+    "peak_rss_bytes": 28872704,
+    "manifest_count": 623,
+    "error_count": 3950,
+    "exit_code": 1,
+    "output_sha256": "3faf8ddb68e67a4d34c39e6b107b4674c4316f2ee8e1066aad6a4353201e1e15"
+  },
+  "stabilized_local_reproduction": {
+    "recorded_utc": "2026-08-02T14:07:29.8152079Z",
+    "elapsed_seconds": 5.486,
+    "process_count": 1,
+    "process_pool": false,
+    "peak_rss_bytes": 30527488,
+    "manifest_count": 623,
+    "valid_manifest_count": 39,
+    "invalid_manifest_count": 584,
+    "error_count": 3814,
+    "exit_code": 1,
+    "output_sha256": "646d03015bd4adad0222809bc71bfa160d74dcc94fb29209f4fce20bd343c7a0"
+  },
+  "baseline": {
+    "path": ".github/run-manifest-debt-baseline.json",
+    "sha256": "b846059fb0c6525999582132c3a945ad3b1dfbaa28faeec41a4f0ea3769a3d22",
+    "manifest_count": 623,
+    "error_count": 3814
+  },
+  "local_light_limits": {
+    "max_seconds": 30,
+    "max_rss_bytes": 536870912,
+    "pool_allowed": false
+  },
+  "wsl_attempt": {
+    "environment": "Ubuntu 24.04 over mounted NTFS",
+    "result": "terminated after exceeding 30 seconds",
+    "used_as_evidence": false
+  }
+}

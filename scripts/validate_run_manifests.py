@@ -482,6 +482,20 @@ def _load_baseline(path: Path) -> dict[str, Any]:
         raise ValueError("debt baseline: manifests must be an object")
     if not isinstance(baseline.get("global_violations"), dict):
         raise ValueError("debt baseline: global_violations must be an object")
+    if baseline.get("manifest_count") != len(baseline["manifests"]):
+        raise ValueError("debt baseline: manifest_count does not match manifests")
+    violation_total = sum(
+        _counter(record.get("violations"), f"manifests.{label}.violations").total()
+        for label, record in baseline["manifests"].items()
+        if isinstance(record, dict)
+    )
+    if any(not isinstance(record, dict) for record in baseline["manifests"].values()):
+        raise ValueError("debt baseline: every manifest record must be an object")
+    violation_total += _counter(
+        baseline["global_violations"], "global_violations"
+    ).total()
+    if baseline.get("strict_error_count") != violation_total:
+        raise ValueError("debt baseline: strict_error_count does not match violations")
     return baseline
 
 

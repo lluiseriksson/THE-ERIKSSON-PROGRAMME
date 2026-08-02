@@ -15,6 +15,7 @@ on:
       - "scripts/check_remainder_localization.py"
       - "scripts/surface_remainder*.py"
       - "scripts/validate_run_manifests.py"
+      - "scripts/freeze_run_manifest_debt_baseline.py"
       - "scripts/validate_changed_run_coverage.py"
       - "scripts/audit_v88_sanitation.py"
       - "scripts/**transcript*.txt"
@@ -22,6 +23,7 @@ on:
       - "scripts/test_monotone_nodes.py"
       - "scripts/cascade*.py"
       - "run-manifests/**"
+      - ".github/run-manifest-debt-baseline.json"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
       - "docs/SURFACE-REMAINDER-PREREG.md"
@@ -51,6 +53,7 @@ on:
       - "scripts/check_remainder_localization.py"
       - "scripts/surface_remainder*.py"
       - "scripts/validate_run_manifests.py"
+      - "scripts/freeze_run_manifest_debt_baseline.py"
       - "scripts/validate_changed_run_coverage.py"
       - "scripts/audit_v88_sanitation.py"
       - "scripts/**transcript*.txt"
@@ -58,6 +61,7 @@ on:
       - "scripts/test_monotone_nodes.py"
       - "scripts/cascade*.py"
       - "run-manifests/**"
+      - ".github/run-manifest-debt-baseline.json"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
       - "docs/SURFACE-REMAINDER-PREREG.md"
@@ -93,8 +97,25 @@ jobs:
           python -m pip install pytest sympy==1.14.0 mpmath==1.3.0
           python-flint==0.9.0
 
-      - name: Validate committed run manifests
-        run: python scripts/validate_run_manifests.py --require-nonempty
+      - name: Exercise run-manifest debt guard under normal and optimized Python
+        run: |
+          python tests/run_manifest_guard_adversarial.py
+          python -O tests/run_manifest_guard_adversarial.py
+
+      - name: Guard run-manifest structure and historical-debt delta
+        run: >-
+          python scripts/validate_run_manifests.py
+          --require-nonempty
+          --baseline .github/run-manifest-debt-baseline.json
+          --result-file run-manifest-guard-result.json
+
+      - name: Publish run-manifest guard decision record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: run-manifest-guard-result
+          path: run-manifest-guard-result.json
+          if-no-files-found: error
 
       - name: Require manifests for changed computational artifacts
         env:

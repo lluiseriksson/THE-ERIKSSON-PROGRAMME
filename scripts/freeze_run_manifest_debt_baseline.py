@@ -50,8 +50,15 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     head = _git("rev-parse", "HEAD")
-    if head != args.base_sha:
-        raise RuntimeError(f"HEAD {head} does not equal requested base {args.base_sha}")
+    ancestry = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", args.base_sha, head],
+        cwd=ROOT,
+        check=False,
+    )
+    if ancestry.returncode != 0:
+        raise RuntimeError(
+            f"requested base {args.base_sha} is not an ancestor of HEAD {head}"
+        )
     changed_manifests = _git("diff", "--name-only", args.base_sha, "--", "run-manifests")
     if changed_manifests:
         raise RuntimeError(
