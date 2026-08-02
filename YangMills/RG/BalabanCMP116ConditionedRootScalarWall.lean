@@ -161,11 +161,24 @@ theorem cmp116Eq226_optimalGaussianSmall_of_conditionedCovarianceNorm
       _ = sourceRate / (c - cmp116Eq226OptimalInteractionAlpha
           potentialRate r2Rate gamma) := by
             field_simp [hgap.ne']
+  have hscaledTerm :
+      2 * (‖R‖ ^ 2 * sourceRate /
+        (2 * (1 - cmp116Eq226OptimalInteractionAlpha
+          potentialRate r2Rate gamma * ‖R‖ ^ 2))) ≤
+        sourceRate / (c - cmp116Eq226OptimalInteractionAlpha
+          potentialRate r2Rate gamma) := by
+    calc
+      2 * (‖R‖ ^ 2 * sourceRate /
+        (2 * (1 - cmp116Eq226OptimalInteractionAlpha
+          potentialRate r2Rate gamma * ‖R‖ ^ 2))) =
+        2 * (cmp116Eq225SourceCoefficient R
+          (cmp116Eq226OptimalInteractionAlpha
+            potentialRate r2Rate gamma) * sourceRate) := by
+              unfold cmp116Eq225SourceCoefficient
+              ring
+      _ ≤ sourceRate / (c - cmp116Eq226OptimalInteractionAlpha
+          potentialRate r2Rate gamma) := hscaled
   unfold CMP116Eq226OptimalGaussianSmall
-  change 2 * (outerRate +
-    cmp116Eq225SourceCoefficient R
-      (cmp116Eq226OptimalInteractionAlpha
-        potentialRate r2Rate gamma) * sourceRate) < 1
   nlinarith
 
 end
