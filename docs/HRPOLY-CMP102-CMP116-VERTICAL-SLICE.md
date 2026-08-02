@@ -161,6 +161,17 @@ theorem already exists, but at least one source-facing hypothesis or joint
 smallness inequality is still an input.  It does not increase the 18/41
 numerator.
 
+The `terminal demand` column prevents two different questions from being
+confused.  `exact` means an identity, inclusion, or certificate for the
+literal object; `positive/finite` means that the terminal type does not ask
+for an optimal constant, although a poor witness can still fail a later
+smallness inequality; `threshold` means a genuine strict or joint numerical
+window; and `source bound` means an estimate on a literal physical map or
+walk, not merely the existence of some scalar.  In particular, no remaining
+field literally asks for the *fine* CMP99 constant.  Missing primary papers
+can still be needed to prove that the physical witnesses land inside the
+threshold windows.
+
 The final column is a routing classification, not a proof claim.  `tree`
 means that no missing primary source is currently known to be essential;
 `corpus` means that the needed source statement is present in the acquired
@@ -168,32 +179,60 @@ primary corpus but still has to be formalized; and `absent` records a paper
 whose primary text is not currently available.  Mixed entries retain every
 applicable label.
 
-| # | Remaining obligation group | Current status | Current route |
-|---:|---|---|---|
-| 2 | coercivity package (`coercivity_pos`, `mass_pos`, `K_coercive`) | partial: the surviving coercivity constant and `K_coercive` are produced and installed; `mass_pos` remains an input.  This is the visible Poincare/Combes--Thomas wall | tree + absent: CMP99 [14] for the physical source discharge |
-| 3 | patched inverse contraction (`patchedDefect_small`) | partial producer; the defect is literal, the strict inequality is open | tree |
-| 4 | weighted patched-parametrix certificate (`patchCertificate`) | partial producer; certificate type and patch data exist, physical inhabitation is open | tree + absent: CMP99 [14] |
-| 5 | propagation geometry (`distance_triangle`, `exponential_row_bound`) | partial producer; the metric is fixed, the uniform row budget is still supplied | tree + absent: CMP99/CMP102 source proof |
-| 6 | contour carrier inside `sigmaZero` (`carrier_subset_sigmaZero`) | open installation proof | tree |
-| 7 | contour carrier inside the combined centered region (`carrier_subset_Z0`) | open installation proof | tree |
-| 8 | combined centered region inside the chosen outer region (`Z0_subset_Z`) | open installation proof; enlargement cost stays visible | tree |
-| 9 | contour adjacency budget (`degree_bound`, `one_le_Delta`) | partial combinatorial producer | tree |
-| 10 | contour radius envelope (`radius_nonneg`, `radius_cap`) | open scalar/geometric envelope | tree |
-| 11 | contour contraction package (`Ahead_nonneg`, `rho_nonneg`, `rate_pos`, `shell_small`, `contour_series_small`, `neumann_small`, `neumann_transpose_small`) | partial physical producer; joint contraction is open | tree + corpus: CMP116 |
-| 12a | conditioned Gaussian root (`conditionedRoot`) | partial covariance producer; the abstract matrix square-root certificate is present | tree |
-| 12b | **localized covariance compression bridge** | **upper bridge verified** in fresh Colab clones: the generic finite-matrix construction `P_S C P_S` and positive spectral root were checked at `f04b5cb9`; the physical specialization was checked at `141cbfe1`.  The latter identifies `C` with the canonical coordinate matrix of the literal interacting inverse, reconstructs the localized root as a physical endomorphism, proves the exact root certificate, and derives `‖P_S C P_S‖ ≤ coercivityConstant⁻¹`.  This does not change `18/41`.  The strict lower nondegeneracy certificate remains a separate open subpiece and must not be folded into scalar groups 23--24. | tree + absent: CMP99 [14] only for the remaining lower/nondegeneracy discharge |
-| 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | open and mandatory; a degenerate root is not admissible | tree, downstream of group 2 |
-| 14 | sigma Cauchy-radius normalization (`deltaRadius_eq`) | open equality against the installed base contour | tree |
-| 15 | cardinality normalization (`normalizedGap`) | open equality in the source convention | tree |
-| 16 | tau Cauchy-radius normalization (`yRadius_eq`) | open equality against the combined domain metric | tree |
-| 17 | outer-series window (`qBound_nonneg`, `qBound_lt_one`) | open joint scalar window | tree + corpus: CMP116 |
-| 18 | source-amplitude hierarchy (`E0Direct_nonneg`, `epsilon1_pos`, `epsilon1_le_one`, `C1_pos`, `alpha4_pos`, `C3_nonneg`, `C3_le`, `amplitude_nonneg`) | partial; formulas are fixed, joint source inequalities are open | tree + corpus: CMP116 |
-| 19 | block/exponent hierarchy (`one_le_M`, `eight_le_q`, `one_lt_kappa1`, `source_budget`) | partial source-facing scalar regime | tree + corpus: CMP116 |
-| 20 | direct third-jet envelope (`hD`, `hD₃`, `hV₀`, `hC`, `hRjet`, `hsourceJet`, `sourceJetBound_nonneg`) | partial CMP102 producer; the printed component estimates remain hypotheses | tree + absent: CMP102/[15] source text |
-| 21 | walk factorization and Eq.-(1.43) budget (`cardRatio_nonneg`, `metricRatio_nonneg`, `summationRatio_nonneg`, `walk_split`, both decay rates, `cardDecay`, `metricDecay`, `walk_small`, `eq143_budget`) | partial producer; these inputs already feed the verified Eq.-(1.43) conclusion | tree + corpus: CMP116; source provenance still audited field by field |
-| 22 | residual/rooted animal windows (`residual_rate_nonneg`, `rooted_rate_nonneg`, `animal_small`, `rooted_animal_small`) | partial combinatorial producer; the joint scalar witness is open | tree + corpus: CMP116 + absent: Cammarota [26] for the deferred Mayer input |
-| 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | open scalar wall at the least admissible `alpha`; its one-variable reduction is proved, but it is not physically instantiable before bridge 12b | tree, downstream of groups 2, 12b, and 13 |
-| 24 | outer Gaussian stability (`outer_small`) | open scalar wall coupled to the same `alpha`; its one-variable reduction is proved, but it is not physically instantiable before bridge 12b | tree, downstream of groups 2, 12b, and 13 |
+| # | Remaining obligation group | Terminal demand | Current status | Current route |
+|---:|---|---|---|---|
+| 2 | coercivity package (`coercivity_pos`, `mass_pos`, `K_coercive`) | positive witness on the literal `K`; no optimal coercivity constant is requested | partial: the surviving coercivity constant and `K_coercive` are produced and installed; `mass_pos` remains an input.  This is the visible Poincare/Combes--Thomas wall | tree; CMP99 [14] may sharpen the physical constants but is not required by the terminal type |
+| 3 | patched inverse contraction (`patchedDefect_small`) | **threshold** on the literal patched defect | partial producer; the defect is literal, the strict inequality is open | tree; source estimates may be needed to cross the threshold |
+| 4 | weighted patched-parametrix certificate (`patchCertificate`) | **source bound**: two factorwise weighted-kernel estimates, not a mere sign | partial producer; the certificate and a constructor from physical patch data, range, row sums, and tilt budget exist; physical inputs remain open | tree + absent: CMP99 [14] for source-faithful physical inputs, not for a uniquely fine terminal constant |
+| 5 | propagation geometry (`distance_triangle`, `exponential_row_bound`) | exact triangle law plus any finite explicit row majorant; its size matters downstream | partial producer; the metric is fixed, the uniform row budget is still supplied | tree; CMP99/CMP102 can improve the useful physical majorant but the type does not demand an optimum |
+| 6 | contour carrier inside `sigmaZero` (`carrier_subset_sigmaZero`) | **exact** inclusion | open installation proof | tree |
+| 7 | contour carrier inside the combined centered region (`carrier_subset_Z0`) | **exact** inclusion | open installation proof | tree |
+| 8 | combined centered region inside the chosen outer region (`Z0_subset_Z`) | **exact** inclusion | open installation proof; enlargement cost stays visible | tree |
+| 9 | contour adjacency budget (`degree_bound`, `one_le_Delta`) | any finite degree majorant; larger `Delta` worsens group 11 | partial combinatorial producer | tree |
+| 10 | contour radius envelope (`radius_nonneg`, `radius_cap`) | any nonnegative envelope; larger radius worsens group 11 | open scalar/geometric envelope | tree |
+| 11 | contour contraction package (`Ahead_nonneg`, `rho_nonneg`, `rate_pos`, `shell_small`, `contour_series_small`, `neumann_small`, `neumann_transpose_small`) | **joint threshold** package | partial physical producer; joint contraction is open | tree + corpus: CMP116 |
+| 12a | conditioned Gaussian root (`conditionedRoot`) | **exact** square-root/support certificate | partial covariance producer; the abstract matrix square-root certificate is present | tree |
+| 12b | **localized covariance compression bridge** | **exact** compression/root identification plus quantitative upper/lower bounds | **upper bridge verified** in fresh Colab clones at `f04b5cb9` and `141cbfe1`.  A source-level lower construction using the deliberately coarse constant `coercivityConstant / precisionUpperBound^2` is present at PRE-VALIDATION checkpoint `f44c7e68`, but is not compiler-verified.  It still requires a geometric proof that the localized carrier is nonempty.  This does not change `18/41`. | tree; CMP99 [14] can sharpen the lower constant but is not required by the terminal type |
+| 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | **some positive** lower bound plus carrier nonemptiness; no optimal eigenvalue bound | analytic producer present at PRE-VALIDATION checkpoint `f44c7e68`; compiler validation and the geometric `S.Nonempty` producer remain open | tree, downstream of groups 2 and 12b |
+| 14 | sigma Cauchy-radius normalization (`deltaRadius_eq`) | **exact** equality against the installed contour | open equality against the installed base contour | tree |
+| 15 | cardinality normalization (`normalizedGap`) | **exact** equality in the chosen convention | open equality in the source convention | tree |
+| 16 | tau Cauchy-radius normalization (`yRadius_eq`) | **exact** equality against the combined metric | open equality against the combined domain metric | tree |
+| 17 | outer-series window (`qBound_nonneg`, `qBound_lt_one`) | **threshold** `0 <= qBound < 1` | open joint scalar window | tree + corpus: CMP116 |
+| 18 | source-amplitude hierarchy (`E0Direct_nonneg`, `epsilon1_pos`, `epsilon1_le_one`, `C1_pos`, `alpha4_pos`, `C3_nonneg`, `C3_le`, `amplitude_nonneg`) | signs and ordered **source bounds**; faithfulness fixes the printed `C3` formula | partial; formulas are fixed, joint source inequalities are open | tree + corpus: CMP116 |
+| 19 | block/exponent hierarchy (`one_le_M`, `eight_le_q`, `one_lt_kappa1`, `source_budget`) | **source threshold** hierarchy | partial source-facing scalar regime | tree + corpus: CMP116 |
+| 20 | direct third-jet envelope (`hD`, `hD₃`, `hV₀`, `hC`, `hRjet`, `hsourceJet`, `sourceJetBound_nonneg`) | **source bounds** on the literal physical maps | partial CMP102 producer; the printed component estimates remain hypotheses | tree + absent: CMP102/[15] source text genuinely bites here |
+| 21 | walk factorization and Eq.-(1.43) budget (`cardRatio_nonneg`, `metricRatio_nonneg`, `summationRatio_nonneg`, `walk_split`, both decay rates, `cardDecay`, `metricDecay`, `walk_small`, `eq143_budget`) | **source bounds plus thresholds** on the literal walk ratios | partial producer; these inputs already feed the verified Eq.-(1.43) conclusion | tree + corpus: CMP116; source provenance still audited field by field |
+| 22 | residual/rooted animal windows (`residual_rate_nonneg`, `rooted_rate_nonneg`, `animal_small`, `rooted_animal_small`) | **threshold** windows | partial combinatorial producer; the joint scalar witness is open | tree + corpus: CMP116 + absent: Cammarota [26] for the deferred Mayer input |
+| 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | **threshold** on the physically linked root | open scalar wall at the least admissible `alpha`; its one-variable reduction is proved, but it is not physically instantiable before bridge 12b and group 13 | tree, downstream of groups 2, 12b, and 13 |
+| 24 | outer Gaussian stability (`outer_small`) | **threshold** coupled to the same `alpha` and root | open scalar wall; its one-variable reduction is proved, but it is not physically instantiable before bridge 12b and group 13 | tree, downstream of groups 2, 12b, and 13 |
+
+This type-level audit falsifies the strong version of the predicted
+`30--34/41` plateau.  Groups 2, 5, 9, 10, and 13 do not require the fine
+constant from an absent paper; deliberately coarse positive or finite
+witnesses are admissible.  It does **not** prove that arbitrary coarse
+witnesses close the regime: their sizes feed the strict windows in groups 3,
+11, 17, 22, 23, and 24.  The papers can therefore remain quantitatively
+important without being logically required by the corresponding field type.
+
+For group 13, `domain_nonempty` and `domain_subset` do not by themselves
+produce the required localized-coordinate carrier witness.  The combined
+domain index may be empty, subset containment creates no interior bond, and
+the selected physical bond carrier `P` may itself be empty.  Conversely, an
+explicit `P.Nonempty` is sufficient: the existing
+`coordEquiv_symm_mem_physicalLocalizedCoordinates_localizationCore` theorem
+places every Lie coordinate of a selected bond in the localization core, and
+the source-coordinate dictionary transports that witness to
+`cmp116SourcePhysicalLocalizedCoordinates`.  Carrier nonemptiness is thus a
+small but genuine geometric obligation, not a consequence of the two domain
+fields already counted.
+
+Elaboration failures are triaged separately from project mathematics.  If a
+first error is an instance-synthesis or Mathlib elaboration failure and its
+message mentions no project declaration, variants are tested first in a
+minimal file importing only the smallest relevant Mathlib module.  The full
+hRpoly target is retried only after that reproducer elaborates.  This keeps a
+finite-dimensional typeclass experiment from consuming a fresh full-project
+Colab bootstrap for every candidate representation.
 
 Thus `18/41 -> 41/41` is the route to the first source-specific
 `TermSource` **conditional on the named Lemma-1 certificate**.  Proving the

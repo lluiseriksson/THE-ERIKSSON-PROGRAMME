@@ -167,9 +167,14 @@ theorem cmp116PhysicalEndomorphismRealMatrix_quadratic_lower
     simp [x, y, E]
   calc
     lower * dotProduct v v = lower * ‖y‖ ^ 2 := by
-      rw [← real_inner_self_eq_norm_sq]
-      rw [← E.inner_map_map]
-      simp [x, y, E, EuclideanSpace.inner_eq_star_dotProduct]
+      congr 1
+      calc
+        dotProduct v v = inner ℝ x x := by
+          simp [x, EuclideanSpace.inner_eq_star_dotProduct]
+        _ = inner ℝ y y := by
+          symm
+          exact E.inner_map_map x x
+        _ = ‖y‖ ^ 2 := real_inner_self_eq_norm_sq
     _ ≤ inner ℝ y (T y) := hT y
     _ = inner ℝ x
           ((Matrix.toEuclideanCLM
@@ -204,9 +209,10 @@ theorem dotProduct_cmp116LocalizedCovarianceCompression_mulVec_eq_of_vectorSuppo
   let P := cmp116Eq223CoordinateProjection S
   have hPv : P.mulVec v = v :=
     cmp116Eq223CoordinateProjection_mulVec_eq_of_vectorSupportedOn S v hv
-  rw [cmp116LocalizedCovarianceCompression, Matrix.mulVec_mulVec,
-    Matrix.mulVec_mulVec, Matrix.dotProduct_mulVec]
-  rw [cmp116Eq223CoordinateProjection_transpose, hPv, hPv]
+  rw [cmp116LocalizedCovarianceCompression, ← Matrix.mulVec_mulVec,
+    ← Matrix.mulVec_mulVec, Matrix.dotProduct_mulVec,
+    ← Matrix.mulVec_transpose, cmp116Eq223CoordinateProjection_transpose,
+    hPv, hPv]
 
 namespace CMP116InteractingPhysicalPrecisionSource
 
@@ -296,7 +302,7 @@ theorem covariance_coercive
     sq_pos_of_pos X.precisionUpperBound_pos
   have hscaled :
       ‖y‖ ^ 2 / X.precisionUpperBound ^ 2 ≤ ‖x‖ ^ 2 :=
-    (div_le_iff₀ hLambdaSq).2 hsquare
+    (div_le_iff₀ hLambdaSq).2 (by simpa [mul_comm] using hsquare)
   calc
     (X.coercivityConstant / X.precisionUpperBound ^ 2) * ‖y‖ ^ 2 =
         X.coercivityConstant *
@@ -408,6 +414,10 @@ def conditionedCovariance_lowerCertificate
   carrier_nonempty := hS
   covariance_lower := by
     intro v hv
+    change
+      (X.coercivityConstant / X.precisionUpperBound ^ 2) * dotProduct v v ≤
+        dotProduct v
+          ((cmp116LocalizedCovarianceCompression S X.covarianceMatrix).mulVec v)
     rw [dotProduct_cmp116LocalizedCovarianceCompression_mulVec_eq_of_vectorSupportedOn
       S X.covarianceMatrix v hv]
     exact X.covarianceMatrix_quadratic_lower v
