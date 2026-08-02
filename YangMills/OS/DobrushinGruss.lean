@@ -220,12 +220,16 @@ theorem mad_le_half_spread {p f : S → ℝ} {m M : ℝ}
   have hT0 : (0 : ℝ) ≤ ∑ x, p x * (if A ≤ f x then (1 : ℝ) else 0) :=
     Finset.sum_nonneg fun x _ => mul_nonneg (hp0 x) (by split <;> norm_num)
   have hT1 : (∑ x, p x * (if A ≤ f x then (1 : ℝ) else 0)) ≤ 1 := by
-    rw [← hp1]
-    refine Finset.sum_le_sum fun x _ => ?_
-    rcases le_or_gt A (f x) with h | h
-    · rw [if_pos h, mul_one]
-    · rw [if_neg (not_le.mpr h), mul_zero]
-      exact hp0 x
+    have hle : ∀ x ∈ (Finset.univ : Finset S),
+        p x * (if A ≤ f x then (1 : ℝ) else 0) ≤ p x := by
+      intro x _
+      rcases le_or_gt A (f x) with h | h
+      · exact le_of_eq (by rw [if_pos h, mul_one])
+      · rw [if_neg (not_le.mpr h), mul_zero]
+        exact hp0 x
+    calc (∑ x, p x * (if A ≤ f x then (1 : ℝ) else 0))
+        ≤ ∑ x, p x := Finset.sum_le_sum hle
+      _ = 1 := hp1
   set T := ∑ x, p x * (if A ≤ f x then (1 : ℝ) else 0) with hTdef
   have hposT : (∑ x, p x * max (f x - A) 0) ≤ (M - A) * T := by
     rw [hTdef, Finset.mul_sum]

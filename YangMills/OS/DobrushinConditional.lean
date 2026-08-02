@@ -189,9 +189,13 @@ theorem osc_section_le_deltaAt (i : ι) (f : (ι → S) → ℝ) (η : ι → S)
 /-! ## §3  Algebra of `deltaAt`, for the assembly downstream -/
 
 theorem deltaAt_const (i : ι) (c : ℝ) : deltaAt i (fun _ => c) = 0 := by
-  refine le_antisymm (deltaAt_le i _ fun η s => ?_) (deltaAt_nonneg i _)
-  simp only [sub_self, abs_zero]
-  exact le_refl 0
+  have hB : ∀ (η : ι → S) (s : S),
+      |(fun _ : ι → S => c) η - (fun _ : ι → S => c) (Function.update η i s)| ≤ 0 := by
+    intro η s
+    simp only [sub_self, abs_zero]
+    exact le_refl 0
+  exact le_antisymm (deltaAt_le i (fun _ => c) hB)
+    (deltaAt_nonneg i (fun _ => c))
 
 theorem deltaAt_add_le (i : ι) (f g : (ι → S) → ℝ) :
     deltaAt i (fun η => f η + g η) ≤ deltaAt i f + deltaAt i g := by
