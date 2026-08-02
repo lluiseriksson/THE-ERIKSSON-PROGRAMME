@@ -1,0 +1,61 @@
+TASK 14 — EXACT FINITE-PRODUCT DUAL-BOND LIFT
+================================================
+
+Classification: CERTIFIED finite-product algebraic infrastructure only
+Lean source SHA: 29f47b83bdd41209b5aa66057e5f9777cb83920a
+Toolchain: leanprover/lean4:v4.29.0-rc6
+Lean commit: 00659f8e6071d7e46131ed643bf8003b99b044e9
+Mathlib pin: 07642720480157414db592fa85b626dafb71355b
+Runtime: Linux-6.6.122+-x86_64-with-glibc2.35
+CPU: 8 logical Intel Xeon CPUs
+RAM: 53467192 kB
+GPU: none
+Measured YangMillsCore jobs: 8466
+
+The preregistered exact finite-product gate ran in normal and optimised Python.
+Both modes returned PASS after checking 5461 configuration pairs for L = 0,...,6
+and rejecting 5460 known L -> L+1 exponent mutations.  The gate SHA-256 was:
+
+  f975d229d0b4adc79844dfbc32afa440177f48cdc529fa8a1a8a418f2b5ed772
+
+The following decisive commands returned exit 0:
+
+  lake build YangMills.OS.SpatialDualBond
+  lake build YangMillsCore
+  lake env lean oracle_check.lean
+  python3 scripts/check_consistency.py
+
+Permanent-oracle output for every declaration in the module:
+
+'YangMills.OS.dualFieldBond' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.dualFieldScale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.z2Bond_dual_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.spatialKernel_dual_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+The consistency judge reported zero source `sorry` and zero project axioms.
+
+Windows desktop artifact verification
+-------------------------------------
+
+Downloaded ZIP:
+  984cb0ff23158062c33ba7d990bf53f79969e9a6c2fe5d97370bdb03c3bcefb3
+
+Files verified against the archive's SHA256SUMS:
+  metadata.json      a1cf6c77a3f7b19f969bcf400bdac7ad4c5809142b78c88c10ec5d25d0172e3b
+  oracle_output.txt  526895c2120dc245980729f0618c27863b5b854861f6dfb509561c1bc6fc3469
+  transcript.txt     748c1fa089bf1c40d1091fff955704e05ea6eb0115af29c3f5404c1c0e7c036a
+
+The archived transcript itself contains both:
+
+  jobs_measured=8466
+  SPATIAL DUAL-BOND LEAN PASS
+
+Scope boundary
+--------------
+
+This certifies only the exact entrywise lift of the local dual-bond identity to
+the finite product defining `spatialKernel`, under `0 < beta` and the exact
+duality relation `tanh a = exp (-2 * beta)`.  It does not include the ring
+weight, identify a tensor-product exponential, construct Jordan--Wigner or
+Majorana operators, prove either sector estimate, or advance the uniform
+spatial-ring inequality.

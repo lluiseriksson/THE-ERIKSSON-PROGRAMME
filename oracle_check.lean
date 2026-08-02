@@ -3135,3 +3135,48 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.perron_even
 #print axioms YangMills.OS.symWeighted_eigen_of_sourceWeighted
 #print axioms YangMills.OS.symWeighted_perron_even
+
+-- Spatial-ring uniformity campaign: abstract flip-sector interface and exact reduction
+#print axioms YangMills.OS.flipObs_flip
+#print axioms YangMills.OS.IsFlipEven
+#print axioms YangMills.OS.IsFlipOdd
+#print axioms YangMills.OS.isFlipEven_iff
+#print axioms YangMills.OS.isFlipOdd_iff
+#print axioms YangMills.OS.act_flipOdd_eq_sum_zero_head
+#print axioms YangMills.OS.evenPart
+#print axioms YangMills.OS.oddPart
+#print axioms YangMills.OS.evenPart_add_oddPart
+#print axioms YangMills.OS.isFlipEven_evenPart
+#print axioms YangMills.OS.isFlipOdd_oddPart
+#print axioms YangMills.OS.flipEven_flipOdd_orthogonal
+#print axioms YangMills.OS.evenPart_oddPart_orthogonal
+#print axioms YangMills.OS.eucNorm_add_sq_of_orthogonal
+#print axioms YangMills.OS.evenPart_oddPart_norm_sq
+#print axioms YangMills.OS.act_preserves_flipEven
+#print axioms YangMills.OS.act_preserves_flipOdd
+#print axioms YangMills.OS.flipOdd_perp_of_flipEven
+#print axioms YangMills.OS.evenPart_perp_of_perp
+#print axioms YangMills.OS.norm_act_le_of_flip_sector_bounds
+#print axioms YangMills.OS.act_ring_preserves_flipEven
+#print axioms YangMills.OS.act_ring_preserves_flipOdd
+#print axioms YangMills.OS.SpatialRingOddSectorBound
+#print axioms YangMills.OS.SpatialRingEvenFluctuationBound
+#print axioms YangMills.OS.spatialRing_specRatio_le_of_sector_bounds
+#print axioms YangMills.OS.periodic_antiperiodic_root_products
+#print axioms YangMills.OS.periodic_antiperiodic_log_difference_eq_neg_two_artanh
+#print axioms YangMills.OS.periodic_antiperiodic_log_norm_sums_lt
+#print axioms YangMills.OS.arcosh_circle_log_mixture
+#print axioms YangMills.OS.physical_arcosh_circle_log_mixture
+#print axioms YangMills.OS.circle_log_kernel_factorization
+#print axioms YangMills.OS.circle_log_kernel_eq_log_norm
+#print axioms YangMills.OS.existsUnique_circleLogKernelParameter
+#print axioms YangMills.OS.circleAverage_log_kernel_eq_log_norm
+
+-- Spatial-ring uniformity campaign: exact local dual-bond identity only
+#print axioms YangMills.OS.dualFieldBond
+#print axioms YangMills.OS.dualFieldScale
+#print axioms YangMills.OS.z2Bond_dual_factorization
+#print axioms YangMills.OS.spatialKernel_dual_factorization
+#print axioms YangMills.OS.ringBondSum
+#print axioms YangMills.OS.spatialWeightRing_eq_exp_ringBondSum
+#print axioms YangMills.OS.symWeighted_ring_dual_factorization

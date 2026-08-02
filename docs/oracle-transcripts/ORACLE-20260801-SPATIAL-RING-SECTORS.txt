@@ -1,0 +1,61 @@
+SPATIAL-RING SECTOR INTERFACE — PERMANENT ORACLE EXTRACT
+Classification: CERTIFIED in isolated Colab; desktop artifact hashes VERIFIED
+
+Repository SHA: d2966688d52bb0217f2165f544d0b95e5749a4d9
+Lean toolchain: leanprover/lean4:v4.29.0-rc6
+Lean commit: 00659f8e6071d7e46131ed643bf8003b99b044e9
+Mathlib pin: 07642720480157414db592fa85b626dafb71355b
+Command: lake env lean oracle_check.lean
+Command exit: 0
+
+The fail-closed notebook required every line below to occur in the output of
+the repository's permanent oracle, and rejected sorryAx or any axiom outside
+{propext, Classical.choice, Quot.sound}.  This file is a focused extract; the
+full transcript is identified by SHA-256 below.
+
+'YangMills.OS.flipObs_flip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.IsFlipEven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.IsFlipOdd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.isFlipEven_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.isFlipOdd_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.evenPart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.oddPart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.evenPart_add_oddPart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.isFlipEven_evenPart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.isFlipOdd_oddPart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.flipEven_flipOdd_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.evenPart_oddPart_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.eucNorm_add_sq_of_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.evenPart_oddPart_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.act_preserves_flipEven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.act_preserves_flipOdd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.flipOdd_perp_of_flipEven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.evenPart_perp_of_perp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.norm_act_le_of_flip_sector_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.act_ring_preserves_flipEven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.act_ring_preserves_flipOdd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.SpatialRingOddSectorBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.SpatialRingEvenFluctuationBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.spatialRing_specRatio_le_of_sector_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Other gates in the same sequential run:
+- lake build YangMills.OS.SpatialRing: exit 0
+- lake build YangMillsCore: exit 0; Build completed successfully (8465 jobs)
+- python3 scripts/check_consistency.py: exit 0
+- scripts/judge_spatial_sector_probe.py at e8e0725251b291a8a3e035ebd534e9003300896b: exit 0
+
+Numerical judge certificate:
+- upstream raw SHA: 3421aa1f
+- upstream source SHA-256: fb7b86e91d6899b73d3c6d704c0bee76ac8754fc568e59115447489f87e2ec36
+- rows: 21
+- block violations: 0
+- smallest odd slack q - odd/lambda: 4.989e-11
+- maximum printed (even non-Perron/lambda - q^2): -3.519999999999999e-4
+- classification: VERIFIED numerical evidence; not a Lean certificate
+
+Downloaded artifact:
+- ZIP SHA-256: 4ca16fddb68e0a83a15d619315cd2c9990e5343bfdca4224490530a1b9c21642
+- metadata.json SHA-256: 47067e94b44ef0a06388ef47a9b120af4a51e63a69e31355731b3dae0950ba84
+- transcript.txt SHA-256: 4306374dd4d82562c5c82315634d72ebd8f7cc0c5d83bcac0c108e57b8dc7584
+- internal SHA256SUMS: VERIFIED on the Windows desktop
+- UTC end: 2026-07-31T22:37:45.478064+00:00

@@ -1,0 +1,111 @@
+TASK 14 — EXACT FLIP-ODD ORBIT FOLD
+====================================
+
+Classification: CERTIFIED structural finite-sum identity only
+Source repository SHA: fca2f37705bc06cf659829bde64ea0fd5c810638
+Notebook object SHA: 5bf542ba39c6b2bac981f375c3c4aaf07f164120
+Lean toolchain: leanprover/lean4:v4.29.0-rc6
+Lean commit: 00659f8e6071d7e46131ed643bf8003b99b044e9
+Mathlib pin: 07642720480157414db592fa85b626dafb71355b
+Judge SHA-256: 43d218195d497f65d8e6012081a36215a363574fbf3046dccc3eec01eb18ab89
+
+The theorem
+-----------
+
+For arbitrary real kernel K, flip-odd u, positive configuration length L + 1,
+and configuration sigma:
+
+  act K u sigma =
+    sum tau,
+      (K sigma (Fin.cons 0 tau)
+        - K sigma (flipCfg (Fin.cons 0 tau)))
+      * u (Fin.cons 0 tau)
+
+The exact Lean declaration is
+`YangMills.OS.act_flipOdd_eq_sum_zero_head`.
+
+Two fresh independent Colab witnesses
+--------------------------------------
+
+Both witnesses used CPU-only high-RAM runtimes with Linux 6.6.122+, Python
+3.12.13, eight logical Intel Xeon CPUs at 2.20 GHz, 53467192 kB RAM, and no
+requested or allocated GPU.  They checked out the same source SHA into
+different roots and shared no outputs:
+
+  Recovery-C: /tmp/spatial-odd-orbit-fold-l7vrhyvz
+    UTC 2026-08-01T15:03:04.730558Z to 2026-08-01T15:56:09.487249Z
+    connected duration 3184.756691 s
+
+  Recovery-D: /tmp/spatial-odd-orbit-fold-e8nmu2x0
+    UTC 2026-08-01T15:58:45.970257Z to 2026-08-01T16:52:19.335992Z
+    connected duration 3213.365735 s
+
+In each witness, normal Python and `python -O` returned exit 0 with identical
+one-line gate JSON: ring sizes 1 through 7, 254 action rows, 10922 paired
+summands, 10922 rejected sign mutations, 10922 rejected omission mutations,
+and 10920 rejected head-only-flip mutations.
+
+The following decisive commands returned exit 0 in both witnesses:
+
+  lake build YangMills.OS.SpatialRing
+    8171 jobs
+  lake build YangMillsCore
+    8466 jobs
+  lake env lean oracle_check.lean
+  python3 scripts/check_consistency.py
+
+The deterministic oracle-output block has 344012 characters and identical
+SHA-256 in the two independent transcripts:
+
+  4b4accc1136ef49d5a286b5d3e3814cb187629bb9f7998a81412a815ab7878d7
+
+Permanent-oracle output for the new declaration:
+
+'YangMills.OS.act_flipOdd_eq_sum_zero_head' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+`sorryAx` is absent from each full oracle block.  Each consistency judge
+reported zero source `sorry` and zero project axioms.
+
+Windows desktop artifact verification
+-------------------------------------
+
+Recovery-C downloaded ZIP SHA-256:
+  e1881844342ec9c50eaab8b6663cd10b6a568740fe25de3805d894f8bd06198b
+Its internal SHA256SUMS was revalidated:
+  metadata.json  69e96c131e7a618010278755ea3a35516bd39a52d7073903d6416197dafcc9f2
+  transcript.txt 8b736038c4e2020e3cad4efb1ef2d1c2ae67510287fb81cf563f4f588794b882
+
+Recovery-D downloaded ZIP SHA-256:
+  19453573d2d9237e4057d3457fde5563c934c9378dd6f6899d009efeb7897dab
+Its internal SHA256SUMS was revalidated:
+  metadata.json  bb51d1fc8cb88756d7f13edbb700e0b72747f23da66f0023c0a239bce38e26c6
+  transcript.txt 089b5c6a978bc73aef52d5015d2828cda97a01f777300c994012811c5cc2a406
+
+The ZIP hashes and whole-transcript hashes are expected to differ because
+their metadata, roots, and UTC timestamps differ.  The deterministic oracle
+blocks agree exactly as recorded above.
+
+Notebook evidence boundary
+--------------------------
+
+The preregistered notebook archive contains only `metadata.json` and
+`transcript.txt`; it does not contain a separately named `oracle_output.txt`.
+Also, the notebook creates the ZIP immediately before logging its final
+`module_jobs_measured`, `core_jobs_measured`, archive hash, and PASS lines.
+Therefore those four final lines were observed in each live cell but are not
+inside the archived transcript.  The transcript itself does contain both
+build completions and measured job counts, oracle output plus exit 0, and the
+consistency command plus exit 0; metadata independently records 8171 and 8466.
+No nonexistent artifact or absent archived PASS line is claimed.
+
+Both Task 14 runtimes were explicitly terminated.  The active-session manager
+confirmed that the Task 14 notebook was absent.  Unrelated owner sessions were
+left untouched.
+
+Scope boundary
+--------------
+
+This certifies only a lossless orbit-pairing identity for an arbitrary kernel
+and flip-odd observable.  It proves no positivity, norm contraction, spectral
+classification, odd-sector bound, even non-Perron bound, or part of the
+uniform `specRatio <= tanh(beta) * exp(2 * gamma)` inequality.

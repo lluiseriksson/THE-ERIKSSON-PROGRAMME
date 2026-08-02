@@ -933,6 +933,8 @@ import YangMills.OS.SpatialUniform
 import YangMills.OS.SpatialReflection
 import YangMills.OS.SpatialOS
 import YangMills.OS.SpatialRing
+import YangMills.OS.SpatialDualBond
+import YangMills.OS.SpatialVacuum
 
 -- Congruence lane (docs/CONGRUENCE-CHARTER.md, judges at 49311bad).
 -- What a positive-diagonal congruence K |-> D K D can and cannot change:

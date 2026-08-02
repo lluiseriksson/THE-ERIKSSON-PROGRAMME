@@ -29315,3 +29315,2609 @@ recorded because the record is what the next campaign reads.  Ten versions of a
 paper is exactly when the ledger entry stops feeling urgent and starts being
 necessary.  Written now, after the fact, and dated as such rather than
 back-dated.
+
+## Addendum 570 (2026-07-31, **TASK 14: abstract spatial-ring sector interface**)
+
+**EXACT.**  The target remains, for every extent and with both active sign
+hypotheses `0 <= beta` and `0 <= gamma`,
+`specRatio <= tanh(beta) * exp(2*gamma)`.  This addendum does NOT claim that
+target.  `SpatialRingOddSectorBound` and
+`SpatialRingEvenFluctuationBound` are explicit propositions carrying both sign
+hypotheses; neither is proved.  The new conditional theorem
+`spatialRing_specRatio_le_of_sector_bounds` proves exactly the target from those
+two obligations and Perron data.  The abstract interface constructs the even
+and odd projectors, proves reconstruction and orthogonality, proves both sectors
+invariant under a flip-commuting kernel, transports perpendicularity to the even
+part, and recombines equal sector norm bounds by Pythagoras.  No Jordan--Wigner,
+domain-wall, or analytic block estimate has been opened yet.
+
+**VERIFIED FAILURES, retained.**  The first Colab metadata probe stopped before
+clone because an optional `nvidia-smi` executable was absent; the diagnosis is
+`INC-SPATIAL-RING-COLAB-METADATA-001.md`.  The first Lean elaboration of
+`5da2453f` reached job 8171/8171 and reported five source errors; the second,
+at `303fe056`, reduced them to the single nonexistent name `tanh_nonneg`.
+Both failed closed before oracle/core and are preserved in
+`INC-SPATIAL-RING-SECTOR-LEAN-001.md` and
+`INC-SPATIAL-RING-SECTOR-LEAN-002.md`.  No failed attempt was deleted or
+relabelled as evidence.
+
+**CERTIFIED IN THE ISOLATED COLAB PLANE at `4e061a23`.**  The notebook checked
+out exactly `4e061a23552b98edc1fee9ef4ddb9aa5bc42a0cc`, rejected pin drift, and
+recorded Lean `v4.29.0-rc6` (commit `00659f8e`), Mathlib
+`07642720480157414db592fa85b626dafb71355b`, Linux `6.6.122+`, 8 Intel Xeon
+logical CPUs, `53467192 kB` RAM, Python `3.12.13`, and no GPU.  The official
+Mathlib cache was obtained only inside that ephemeral Linux runtime.
+
+The following all returned exit 0: `lake build YangMills.OS.SpatialRing`, the
+24-declaration axiom oracle, `python3 scripts/check_consistency.py`, and
+`lake build YangMillsCore`.  The oracle reports only
+`{propext, Classical.choice, Quot.sound}` for every new declaration, with no
+`sorryAx`; the consistency judge reports zero source `sorry` and zero project
+axioms.  The core counter is MEASURED at 8465 jobs, one above the inherited
+8464-job measurement in Addendum 569 because the existing core path now also
+loads `SpatialSpectral` through `SpatialRing`.  This is a measured dependency
+edge, not a handwritten counter.
+
+**ARTIFACT INTEGRITY, VERIFIED ON THE WINDOWS DESKTOP WITHOUT RUNNING LEAN.**
+The downloaded ZIP SHA-256 is
+`29bfbb8ff3f1440b4977827d61d35d81a22e21c9abcb30e6871a62c0f713a046`.
+After extraction, `metadata.json` hashes to
+`79c55ed59f6ccb70018d9f387ff04b611760cc452e3126f57e41ae7dcd736389`
+and `transcript.txt` to
+`5ed8a53ee47453fcceda970d107b18dde4e7a64841277cda7257bb187738065e`;
+both equal the archive's `SHA256SUMS`.  The metadata records UTC end
+`2026-07-31T21:16:10.208708+00:00` and 8465 jobs.
+
+**NOT YET A SECOND LOCAL CERTIFICATE.**  Foreign Lean/Lake processes occupied
+the shared Windows host throughout the campaign, and the owner explicitly
+forbade launching a competing local elaborator.  The critical target must still
+be reproduced locally when the host is exclusive, and CI remains the third
+testimony.  Therefore this milestone is CERTIFIED by Colab plus desktop hash
+verification, not yet independently reproduced on Windows.  The mathematical
+debt is unchanged and exact: prove the odd block at rate
+`tanh(beta) * exp(2*gamma)`, then prove the even block off Perron at that rate.
+
+## Addendum 571 (2026-08-01, **TASK 14: permanent oracle and separate block probe**)
+
+**EXACT STATUS CORRECTION.**  The sector interface remains only a typed debt;
+it is not progress on either analytic inequality.  The exact target and both
+active sign hypotheses are unchanged.  No odd- or even-block theorem is proved
+by this addendum.
+
+**PERMANENT ORACLE, CERTIFIED.**  A later fail-closed Colab run checked out the
+raw repository SHA `d2966688d52bb0217f2165f544d0b95e5749a4d9`, which includes
+the 24 new `#print axioms` entries in `oracle_check.lean`.  It ran sequentially:
+`lake build YangMills.OS.SpatialRing`, `lake build YangMillsCore`, the permanent
+`oracle_check.lean`, `scripts/check_consistency.py`, and the preregistered
+sector-block judge.  Every command returned exit 0.  Core was again MEASURED at
+8465 jobs.  Every new declaration appeared in the permanent oracle output with
+exactly the allowed set `{propext, Classical.choice, Quot.sound}`; the global
+parser found no `sorryAx` and no nonstandard axiom.  The ordering failure that
+preceded this run is retained as
+`INC-SPATIAL-RING-PERMANENT-ORACLE-001.md`: the first notebook tried the root
+oracle before constructing its imported `YangMillsCore` module.
+
+**SEPARATE BLOCK MEASUREMENT, VERIFIED ONLY.**  The owner supplied
+`scripts/probe_sector_blocks.py` at raw SHA `3421aa1f`.  Its source SHA-256 is
+`fb7b86e91d6899b73d3c6d704c0bee76ac8754fc568e59115447489f87e2ec36`.
+Because the upstream exit code certified only absence of violations, this
+campaign preregistered `scripts/judge_spatial_sector_probe.py` at `e8e07252`
+before execution.  The wrapper uses no decisory `assert`; it fixes both hashes,
+requires exactly 21 rows, requires both block statuses to pass, requires an
+observed odd slack at most `1e-8`, and bounds printed even-minus-`q^2` by the
+six-decimal rounding budget.
+
+The judge returned exit 0.  Across beta/gamma cells at extents 6, 8, and 10:
+zero odd violations and zero even violations were observed; the smallest
+`q - odd/lambda` was `4.989e-11`; the maximum of the SIX-DECIMAL PRINTED values
+`even_nonperron/lambda - q^2` was `-3.52e-4`.  This is evidence that the odd
+obligation is the sharp one in the measured grid, while the even block has at
+least the observed `q^2` room.  It is not a proof of either inequality, not a
+uniform-in-L statement, and not permission to spend any constant in the odd
+proof.  The strategic order is therefore odd sharp analysis first; a lossy
+even argument is admissible only if its losses stay within a separately proved
+margin.
+
+**ARTIFACT INTEGRITY, VERIFIED ON WINDOWS.**  The second downloaded ZIP hashes
+to `4ca16fddb68e0a83a15d619315cd2c9990e5343bfdca4224490530a1b9c21642`.
+After extraction, `metadata.json` hashes to
+`47067e94b44ef0a06388ef47a9b120af4a51e63a69e31355731b3dae0950ba84`
+and the complete `transcript.txt` to
+`4306374dd4d82562c5c82315634d72ebd8f7cc0c5d83bcac0c108e57b8dc7584`;
+both match the archive's internal `SHA256SUMS`.  The focused permanent-oracle
+extract is committed as `ORACLE-20260801-SPATIAL-RING-SECTORS.txt`.
+
+**REMAINING TESTIMONY.**  The Windows host was still non-exclusive, so no local
+Lean elaborator was launched.  CI remains the third test.  The next mathematical
+task is not another interface: it is a lossless proof of the odd block at
+`q = tanh(beta) * exp(2*gamma)` under `beta >= 0` and `gamma >= 0`.
+
+## Addendum 572 (2026-08-01, **TASK 14: exact local dual-bond identity**)
+
+**EXACT, WITH A STRICT LOCAL SIGN FRONT DOOR.**  The new module
+`YangMills/OS/SpatialDualBond.lean` proves one entrywise identity:
+`z2Bond beta i j = dualFieldScale beta a * dualFieldBond a i j`, assuming
+`0 < beta` and `tanh(a) = exp(-2*beta)`.  The strict hypothesis is deliberate:
+at `beta = 0` the corresponding dual coupling is not a finite real number.
+There is no `gamma` in this local vertical-bond statement.  The theorem does
+not claim a many-site factorisation and does not prove or begin either sector
+inequality.  In particular, the exact uniform target for `beta >= 0`,
+`gamma >= 0`, and every extent remains wholly open.
+
+**VERIFIED GATE.**  `scripts/judge_spatial_dual_bond.py` was committed before
+the Lean theorem and licenses only this local `2 x 2` identity.  At source SHA
+`85847dd19623c692b8345cee864be7837f5c7656`, its SHA-256 was
+`bd0fda3a06b4d52bb4dd5d2230d4520d0d5ef2978ca293cbf82e963fbf61199d`.
+It returned PASS in both normal Python and `python -O`, with zero symbolic
+residual in the matrix exponential and the scaled bond factorisation.
+
+**VERIFIED FAILURES, RETAINED.**  The first standard-memory Colab allocation
+was interrupted before build because it was not the requested high-memory
+plane.  The first high-memory attempt then failed before elaboration while
+`elan` extracted the Lean archive (`Unknown frame descriptor`); this is
+`INC-SPATIAL-DUAL-BOND-LEAN-001.md`.  A fresh high-memory rerun passed every
+Lean check, but desktop inspection found that its ZIP had been created before
+the runner appended the measured jobs and final PASS to `transcript.txt`.
+That artifact-ordering failure is `INC-SPATIAL-DUAL-BOND-LEAN-002.md`.  The
+runner was repaired and committed before being executed again.
+
+**CERTIFIED IN COLAB, WITH A SELF-CONTAINED DESKTOP-VERIFIED ARTIFACT.**  The
+repaired run checked out exactly
+`85847dd19623c692b8345cee864be7837f5c7656`, verified Lean
+`v4.29.0-rc6` commit `00659f8e6071d7e46131ed643bf8003b99b044e9`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, Linux `6.6.122+`, 8 Intel Xeon
+logical CPUs, `53467192 kB` RAM, Python `3.12.13`, and no GPU.  The official
+Mathlib cache was obtained only inside the isolated Linux runtime.
+
+`lake build YangMills.OS.SpatialDualBond`, `lake build YangMillsCore`, the root
+`oracle_check.lean`, and `scripts/check_consistency.py` all returned exit 0.
+Core was MEASURED at 8466 jobs, exactly one above Addendum 571 because the new
+module entered `YangMillsCore`.  Each of `dualFieldBond`, `dualFieldScale`, and
+`z2Bond_dual_factorization` reports exactly the permitted axiom set
+`{propext, Classical.choice, Quot.sound}`.  There is no `sorryAx` and the
+consistency judge reports zero source `sorry` and zero project axioms.
+
+The repaired ZIP SHA-256, independently recomputed on Windows, is
+`4cddb8772ec53d4ee63cd51d1443d1816187f0374699a3d5921d9896f27fd5f1`.
+Its internal hashes match `SHA256SUMS`: metadata
+`95d3e805a0be4173e6774dcfd351adefe43e5882cf900ffa4005e74c4d2ee988`, oracle
+`4b82dbdb700fd42242fa7e7905759843913be1a2afd4642d2032da6dbb7898ef`, and
+transcript `2ead58bd43573a6470a7e1cb4d8743c4042207aa05847be599805381a948ef81`.
+The archived transcript itself contains `jobs_measured=8466` and
+`SPATIAL DUAL-BOND LEAN PASS`.
+
+**REMAINING TESTIMONY AND MATHEMATICS.**  Foreign Lean processes still occupy
+Windows, so no competing local elaborator was launched.  CI remains the third
+testimony.  Mathematically this is only the first exact algebraic brick after
+the sector interface.  The next honest task is a many-site Clifford/Majorana
+representation that preserves the sharp odd constant; both sector bounds and
+the uniform `specRatio` inequality remain unproved.
+
+## Addendum 573 (2026-08-01, **TASK 14: exact finite-product dual-bond lift**)
+
+**EXACT, AND STILL ONLY ALGEBRAIC INFRASTRUCTURE.**  The theorem
+`spatialKernel_dual_factorization` lifts the already certified local bond
+identity entrywise through the finite product defining `spatialKernel`:
+for `0 < beta` and `tanh(a) = exp(-2*beta)`, it extracts exactly
+`dualFieldScale beta a ^ L`.  The theorem has no `gamma` because it still does
+not include `spatialWeightRing`.  It does not identify a tensor-product
+exponential, construct fermions, prove a norm estimate, or begin either sector
+inequality.  The endpoint `beta = 0`, both sector bounds under
+`0 <= beta, 0 <= gamma`, and the uniform `specRatio` target all remain open.
+
+**VERIFIED GATE.**  `scripts/judge_spatial_dual_product.py` was committed before
+the theorem.  Its SHA-256 is
+`f975d229d0b4adc79844dfbc32afa440177f48cdc529fa8a1a8a418f2b5ed772`.
+In both normal Python and `python -O`, it checked the exact product identity for
+all 5461 configuration pairs at `L = 0,...,6` and rejected all 5460 registered
+`L -> L+1` exponent mutations.  This gate licenses exactly one theorem, the
+finite-product lift, and no spectral statement.
+
+**CERTIFIED IN COLAB.**  The fail-closed high-RAM runner checked out exactly
+`29f47b83bdd41209b5aa66057e5f9777cb83920a`, verified Lean
+`v4.29.0-rc6` commit `00659f8e6071d7e46131ed643bf8003b99b044e9`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, Linux `6.6.122+`, 8 Intel Xeon
+logical CPUs, `53467192 kB` RAM, Python `3.12.13`, and no GPU.  The official
+Mathlib cache was used only in the isolated ephemeral runtime.
+
+`lake build YangMills.OS.SpatialDualBond`, `lake build YangMillsCore`, the root
+`oracle_check.lean`, and `scripts/check_consistency.py` all returned exit 0.
+Core remained MEASURED at 8466 jobs: the theorem was added inside the module
+already counted in Addendum 572, so there is no new dependency edge to count.
+All four module declarations, including `spatialKernel_dual_factorization`,
+report exactly `{propext, Classical.choice, Quot.sound}`.  There is no
+`sorryAx`; the consistency judge reports zero source `sorry` and zero project
+axioms.
+
+**ARTIFACT INTEGRITY, VERIFIED ON WINDOWS.**  The downloaded ZIP SHA-256 is
+`984cb0ff23158062c33ba7d990bf53f79969e9a6c2fe5d97370bdb03c3bcefb3`.
+Its internal hashes agree with `SHA256SUMS`: metadata
+`a1cf6c77a3f7b19f969bcf400bdac7ad4c5809142b78c88c10ec5d25d0172e3b`, oracle
+`526895c2120dc245980729f0618c27863b5b854861f6dfb509561c1bc6fc3469`, and
+transcript `748c1fa089bf1c40d1091fff955704e05ea6eb0115af29c3f5404c1c0e7c036a`.
+The archived transcript contains `jobs_measured=8466` and the final PASS.
+
+**CI AND REMAINING TESTIMONY.**  PR #44's `honesty` check passes.  Its `test`
+check fails before project-specific compilation while validating 623 inherited
+`run-manifests`, with 4134 schema errors.  This branch changes no file under
+`run-manifests/`, and the two latest `main` runs of the same control-plane
+workflow also fail.  The failure is therefore recorded as an unresolved
+baseline/control-plane witness, not repaired by touching concurrent manifests
+and not relabelled as a PASS.  Foreign Windows Lean processes remain active,
+so the critical target has not been reproduced locally.  Both analytic sector
+bounds and the uniform spatial-ring inequality remain wholly unproved.
+
+## Addendum 574 (2026-08-01, **TASK 14: exact periodic ring-weight exponential**)
+
+**EXACT, INCLUDING THE CLOSING BOND.**  The new definition `ringBondSum` is the
+signed nearest-neighbour energy on `Fin (L + 1)`, so its final summand wraps to
+the first site.  The theorem `spatialWeightRing_eq_exp_ringBondSum` proves
+exactly
+`spatialWeightRing gamma sigma = exp(gamma * ringBondSum sigma)`.
+This algebraic equality holds for every real `gamma`; that generality does not
+relax the active hypothesis `0 <= gamma` in the spatial spectral target.  The
+theorem does not rewrite the square root of the weight, identify a Clifford
+operator, or prove a norm or spectral estimate.
+
+**VERIFIED GATE, WITH THE RING TRAP ACTIVE.**
+`scripts/judge_spatial_ring_exponential.py` was committed before the theorem.
+Its SHA-256 is
+`16cc35d05e39ca334212da25fac8100d5914adade7a05d735659048366ecace6`.
+Both normal Python and `python -O` returned PASS after exhaustively checking all
+510 configurations of ring sizes 1 through 8.  The gate also rejected 510
+registered mutations that omit the closing bond.  The downloaded gate-only
+artifact independently hashes on Windows to
+`7a6da11c70a2ffa55308c1d864351b672dff22e7344acc17397148d01519d318`.
+This licenses one exponential identity only, not a comparison that spends the
+closing-bond factor.
+
+**CERTIFIED IN COLAB.**  The fail-closed high-RAM runner checked out exactly
+`566e65f5f99bc1d35984322d7e9e4f565e769060`, verified Lean
+`v4.29.0-rc6` commit `00659f8e6071d7e46131ed643bf8003b99b044e9`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, Linux `6.6.122+`, 8 Intel Xeon
+logical CPUs, `53467192 kB` RAM, Python `3.12.13`, and no GPU.  The official
+Mathlib cache was used only in that isolated ephemeral runtime.
+
+`lake build YangMills.OS.SpatialDualBond`, `lake build YangMillsCore`, the root
+`oracle_check.lean`, and `scripts/check_consistency.py` all returned exit 0.
+The module build measured 8172 jobs and core remained MEASURED at 8466 jobs,
+as expected for two declarations added inside an already counted module.  All
+six module declarations report exactly
+`{propext, Classical.choice, Quot.sound}`.  There is no `sorryAx`; consistency
+reports zero source `sorry` and zero project axioms.
+
+**ARTIFACT INTEGRITY, VERIFIED ON WINDOWS.**  The ZIP SHA-256 is
+`dfcb2f1263d8bb1de8ff153177888e109d0005442d0d56df6defc9f669488814`.
+Its internal hashes match `SHA256SUMS`: metadata
+`2c16b7154cc3ad95fe5808bdbc2df767f2eec9dc55e6afc31818559d9bb268af`, oracle
+`5afc1267252bfcfe0cb249a4a9164243912384a6fae30428770a8c9734f7955d`, and
+transcript `d996f02ebe1debf7b2372b06c65c379388242c631e9c457d8f9fff7e4696c958`.
+The archived transcript contains the measured jobs and final PASS.
+
+**REMAINING MATHEMATICS AND TESTIMONY.**  The next exact algebraic step would be
+a square-root/weighted-kernel identity, still not a bound.  No Jordan--Wigner
+or domain-wall classification has been constructed.  The odd block remains
+the sharp unproved obligation, the even non-Perron block remains unproved, and
+the uniform `specRatio` target under `0 <= beta, 0 <= gamma` remains wholly
+open.  The Windows host is still non-exclusive, and the PR control-plane test
+remains red for the inherited 623-manifest baseline described in Addendum 573.
+
+## Addendum 575 (2026-08-01, **TASK 14: local second testimony for exact algebra**)
+
+**LOCALLY REPRODUCED, WITHOUT EXPANDING THE CLAIM.**  An exclusive Windows
+window opened after Addendum 574.  At repository HEAD
+`a55c8208ac3d25e50aea8c622ce030b7af2f9570`, on branch
+`codex/spatial-ring-uniformity`, the configured toolchain was
+`leanprover/lean4:v4.29.0-rc6` and Mathlib was pinned to
+`07642720480157414db592fa85b626dafb71355b`.  The host was Windows 11
+10.0.26200 on an AMD Ryzen 7 5800X (8 physical / 16 logical cores) with
+16690300 kB visible RAM at metadata capture.  `.lake/packages` was verified to
+be an ordinary directory, not a junction, and no local `lake exe cache get`
+was run.
+
+The local commands were run sequentially.  `lake build
+YangMills.OS.SpatialDualBond` returned exit 0 with 8172 measured jobs in 725 s;
+`lake build YangMillsCore` returned exit 0 with 8466 measured jobs in 1546.6 s;
+and `lake env lean oracle_check.lean` returned exit 0 in 1383 s.  The permanent
+oracle printed all six declarations -- `dualFieldBond`, `dualFieldScale`,
+`z2Bond_dual_factorization`, `spatialKernel_dual_factorization`, `ringBondSum`,
+and `spatialWeightRing_eq_exp_ringBondSum` -- with exactly
+`{propext, Classical.choice, Quot.sound}` and no additional axiom.
+
+**CONCURRENCY ABORT RETAINED.**  Before the final consistency scan, the guard
+found a foreign `lake.exe env lean` plus its `lean.exe` child elaborating
+`YangMills/RG/BalabanCMP116Eq80Lemma1SourceSmallFieldCarrier.lean` and aborted
+with exit 3 before starting the requested command.  Inspection of
+`scripts/check_consistency.py` then established that it is a static file
+scanner and invokes neither Lean nor Lake.  Running that scanner alone was
+therefore non-competing: it returned exit 0 in 4.3 s and reported zero source
+`sorry` and zero axioms in the verified-core tree.
+
+The focused local measured summary is
+`ORACLE-20260801-SPATIAL-RING-WEIGHT-LOCAL.txt`, SHA-256
+`3a776d5d7a44269a828e7e36201b127655e6b9f2bea8205fe9df083cfc15fe8a`.
+It is explicitly labelled as a summary of command results, not a raw terminal
+transcript.  Colab remains the independent certificate and CI the third
+witness; PR #44's inherited control-plane failure remains exactly as recorded
+in Addendum 573.
+
+**MATHEMATICAL DEBT IS UNCHANGED.**  This reproduces exact algebraic identities
+only.  It neither proves nor begins the sharp odd-sector estimate, does not
+prove the even non-Perron estimate, and does not establish the uniform
+`specRatio` bound for `0 <= beta`, `0 <= gamma`, and arbitrary extent.
+
+## Addendum 576 (2026-08-01, **TASK 14: symWeighted factorisation gate blocked**)
+
+**PREREGISTERED, NOT EXECUTED.**  The exact symbolic judge
+`scripts/judge_spatial_symweighted_factorization.py` was committed and pushed
+at raw SHA `06226edc9221fa60a6ed39e30ae84c848bd66041` before execution.  Its
+SHA-256 is
+`a95e66da0ee527b1776ceb3d13d83760d1fd88cc9227ebea668a2b98ca1946cf`.
+It is designed to license exactly one entrywise `symWeighted` factorisation,
+checking ring sizes 1 through 6 and rejecting an extra scale factor plus source
+and target closing-bond omissions.  The fail-closed Colab runner was committed
+at `cb3c1db1` and fixes both the raw SHA and the judge hash.
+
+**MEASURED FAILURE, RETAINED.**  The authenticated Colab Pro+ UI loaded the
+runner and its expected immutable inputs.  After the reviewed-notebook warning,
+runtime allocation stopped at `För många sessioner` (too many active sessions).
+No concurrent session was terminated.  No judge command ran, no artifact was
+created, and no PASS exists.  The complete diagnosis is retained as
+`INC-SPATIAL-SYMWEIGHTED-GATE-001.md`.
+
+Accordingly no Lean theorem licensed by this gate has been fabricated.  The
+existing exact algebra remains unchanged, while the sharp odd-sector bound,
+the even non-Perron bound, and the uniform `specRatio` inequality under the two
+active sign hypotheses all remain unproved.
+
+## Addendum 577 (2026-08-01, **TASK 14: local symWeighted gate inconclusive**)
+
+**LOCAL COST MEASURED BEFORE ASSUMING COLAB DEPENDENCE.**  A first Windows
+preflight found a foreign
+`lake build YangMills.RG.BalabanCMP98Eq123QuadraticFrontier` and launched
+nothing.  After a bounded 36.3-second monitor found an exclusive window, the
+unchanged preregistered normal-mode judge from raw SHA
+`06226edc9221fa60a6ed39e30ae84c848bd66041` was started as PID 19520.  No Lean,
+Lake, oracle, or Colab process was started by this campaign.
+
+**INCONCLUSIVE FAILURE, RETAINED.**  The external wall/RSS measurement harness
+reached its 124-second limit before the judge returned.  It did not terminate
+the atomic child.  PID 19520, created at `10:34:49+02:00`, was allowed to exit
+by itself at `10:37:40+02:00`, about 171 seconds later.  Its parent output pipe
+had already ended, so no verdict JSON, exit code, PASS, or reliable peak RSS
+was recovered.  `python -O` was not started after the global single-build-token
+instruction arrived.  The full diagnosis is
+`INC-SPATIAL-SYMWEIGHTED-GATE-002.md`.
+
+This is evidence about runtime cost only, not mathematical certification.  It
+shows that the present exact SymPy gate is not a negligible desktop check, but
+does not establish that Colab is logically required.  The proposed Lean
+factorisation remains unadded; both analytic sector obligations and the
+uniform signed-front-door target remain wholly open.  At the safe checkpoint
+no matching process owned by this campaign remained, and the build token was
+reported free for Task 22.
+
+## Addendum 578 (2026-08-01, **TASK 14: normal symWeighted gate output preserved**)
+
+**THE PRIOR INCONCLUSION WAS THE HARNESS, NOT THE JUDGE.**  Incident 002 is
+amended explicitly: its 124-second observation limit was shorter than the
+approximately 171-second judge runtime.  It never captured a verdict and is no
+evidence of a mathematical or implementation defect in the factorisation
+check.
+
+With the build token granted, the unchanged normal-mode judge was relaunched
+through a hidden detached PowerShell wrapper.  The wrapper was PID 16776 and
+the Python judge PID 21364, started at `10:48:06+02:00`.  Four polling windows
+of at most 40 seconds left the atomic process undisturbed.  Its 297-byte log
+contains valid PASS JSON: 5460 configuration pairs checked, 5460 scale
+mutations rejected, 5460 source closing-bond omissions rejected, and 5460
+target closing-bond omissions rejected.  Independent PowerShell parsing
+verified every counter.  The log SHA-256 is
+`3e0285540203254ae82c312cf9ef037e134747f76a2dadeb9fcd02dab546b293`.
+
+**CERTIFICATION STILL INCOMPLETE.**  The completion sentinel file was created
+but remained zero bytes, so the native Python exit code was not durably
+recovered.  `python -O` was not started because the global token instruction
+forbade chaining another calculation.  Thus the normal output is VERIFIED,
+but the two-mode gate is not CERTIFIED and no Lean theorem has been added.  The
+sentinel defect and its atomic-write repair are recorded in
+`INC-SPATIAL-SYMWEIGHTED-GATE-003.md`.
+
+Both PIDs ended naturally.  At the checkpoint no process owned by this
+campaign remained and `TOKEN LIBRE` was reported for Task 22.  The sharp odd
+bound, the even non-Perron bound, and the uniform signed-front-door target all
+remain wholly open.
+
+## Addendum 579 (2026-08-01, **TASK 14: exact exit-sentinel campaign failed instrumentally**)
+
+**FRESH NORMAL RUN, VALID PASS OUTPUT.**  With an exclusive token, a new
+detached directory launched wrapper PID 30840 and normal Python judge PID
+16532 at `11:06:26+02:00`.  Polling used windows of at most 40 seconds.  The
+294-byte stdout log contains valid PASS JSON and exactly 5460 checks/rejections
+for each of the configuration-pair, scale-mutation, source-closing-bond, and
+target-closing-bond counters.  Its SHA-256 is
+`08e597a81abee7535a0124589a506a239e6317e4b2f0c6729cf51342c1d5d4af`.
+Stderr is empty with the standard empty-file SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
+
+**NO EXIT SENTINEL, THEREFORE NO CERTIFICATE.**  After `WaitForExit`, the
+wrapper failed while constructing metadata because `Get-FileHash` was not
+available in the detached PowerShell environment.  Although the exit code had
+been read into memory, it was never persisted.  No final sentinel exists.
+Under the mandatory four-state reader semantics this is an instrumental FAIL,
+not completion.  Optimised mode was not launched, and the full two-mode gate
+is not certified.  The failure log SHA-256 is
+`22c1d49bdb31b093feffab05931f8b6d1e1acfdd479d0cad2a42bbdb522a0b29`;
+the detailed diagnosis is `INC-SPATIAL-SYMWEIGHTED-GATE-004.md`.
+
+**REPAIR PREPARED, NOT RUN.**
+`scripts/run_spatial_symweighted_gate_detached.ps1` now codifies the exact
+protocol for a later token: distinct `normal`/`optimized` logs, real child
+`ExitCode` after `WaitForExit`, .NET-only hashing, metadata outside the
+sentinel, and a final `<mode>.exitcode` containing exactly one decimal line
+after nonempty/integer validation and atomic rename.  It refuses all per-mode
+output reuse.  No Lean theorem was added.
+
+The first non-executing static-validation command itself had a supervisor typo
+(`in$required`) and failed before reading the wrapper.  The corrected static
+parser returned zero syntax errors and confirmed the required protocol tokens;
+neither command launched a judge.
+
+Both PIDs ended naturally and `TOKEN LIBRE` was reported.  Job comparisons in
+this campaign continue to use the latest measured baseline in the live ledger:
+8465 is today's observed baseline, not a permanent constant and not a value to
+copy forward from `CLAUDE.md`.  Both analytic sector bounds and the uniform
+signed-front-door target remain wholly open.
+
+## Addendum 580 (2026-08-01, **TASK 14: first two-clone Colab run interrupted**)
+
+**REMOTE OBJECT FIXED BEFORE CLONING.**  Colab verified repository SHA
+`2c009f607a6e0747f69effc0378b577b0f853ffb`, judge SHA-256
+`a95e66da0ee527b1776ceb3d13d83760d1fd88cc9227ebea668a2b98ca1946cf`,
+and harness SHA-256
+`668681a7f29e2a228b8036be31472a0203d56edfd7f9de9a8753dc0449bc5a65`
+before creating either clone.  No GPU, Lean, or second campaign was requested.
+
+**ONE COMPLETE INDEPENDENT WITNESS.**  `clone-a` normal ran as wrapper/child
+PIDs 2166/2167 for 275.045140011 s; optimized used 3264/3265 for
+269.472493344 s.  All four shell/persisted exit codes were zero.  Both fresh
+one-line JSON logs report PASS and all four counters at 5460.  Normal and
+optimized hashes agree: log
+`a5bc995539a70b8e071cf71bd568d956248e978a1647621c96e4d415f2e322ba`,
+empty stderr
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`,
+and exitcode
+`9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa`.
+
+`clone-b` was fresh, independent, and checked out the same SHA.  Its normal
+mode passed with PIDs 4400/4401 in 268.112386983 s, exits zero, counters 5460,
+and the same hashes.  Immediately afterwards the cell ceased running and the
+UI no longer displayed a connected runtime.  No rejection message, traceback,
+or FAIL line was shown; no cause is inferred.  `clone-b` optimized and the
+final certificate were never produced.  The tab was closed during local
+preparation.  This campaign is therefore incomplete, not a gate PASS; details
+are retained in `INC-SPATIAL-SYMWEIGHTED-GATE-005.md`.
+
+**RECOVERY PREREGISTERED.**  A separate recovery notebook will create another
+fresh Colab clone at the same SHA, run both modes, and compare every semantic
+output hash against the complete `clone-a` witness.  It shares neither roots
+nor outputs with the interrupted session.  No Lean theorem is licensed until
+that second witness completes.  Both analytic sector bounds and the uniform
+target remain wholly open.
+
+## Addendum 581 (2026-08-01, **TASK 14: symWeighted factorisation gate certified**)
+
+**TWO FRESH INDEPENDENT COLAB WITNESSES.**  The complete `clone-a` witness from
+Addendum 580 and a new recovery clone used disjoint fresh roots and checked out
+the same immutable repository SHA
+`2c009f607a6e0747f69effc0378b577b0f853ffb`.  Before cloning, both campaigns
+verified judge SHA-256
+`a95e66da0ee527b1776ceb3d13d83760d1fd88cc9227ebea668a2b98ca1946cf`
+and harness SHA-256
+`668681a7f29e2a228b8036be31472a0203d56edfd7f9de9a8753dc0449bc5a65`
+from the remote raw objects.  Both used Colab CPU runtimes without GPU; the
+recovery certificate records Linux `6.6.122+`, Python `3.12.13`, two CPUs, and
+root `/tmp/spatial-symweighted-recovery-clone-fk0ep0b_`.
+
+The recovery clone normal mode ran as wrapper/child PIDs 1359/1360 from
+`09:47:22.037813Z` to `09:52:01.116962Z` (279.079100657 s).  Optimized mode ran
+as 2473/2474 from `09:52:01.118022Z` to `09:56:40.249788Z`
+(279.131740046 s).  All four recovery shell/persisted exit codes were zero.
+Each fresh log contained exactly one PASS JSON line, checked ring sizes 1
+through 6, counted 5460 configuration pairs, and rejected 5460 mutations in
+each of the scale, source-closing-bond, and target-closing-bond families.
+
+**HASH CONCORDANCE.**  Recovery normal and optimized agree with one another
+and with both complete `clone-a` modes: log SHA-256
+`a5bc995539a70b8e071cf71bd568d956248e978a1647621c96e4d415f2e322ba`,
+empty-stderr SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`,
+and exact one-line exitcode SHA-256
+`9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa`.
+The downloaded recovery certificate was independently parsed and hashed on
+Windows; its SHA-256 is
+`5264d05951c7dec8f2b43daa59fb1aa5b5b344a5efb0d17e38565e3d561df622`
+and it is retained as
+`CERT-20260801-SPATIAL-SYMWEIGHTED-RECOVERY-CLONE.json`.  The runtime was then
+explicitly disconnected and deleted; the UI changed to `Återanslut`, and the
+browser tab was closed.
+
+This CERTIFIED gate licenses exactly one exact entrywise `symWeighted`
+ring/dual factorisation theorem.  It is not a Lean certificate and does not
+prove either analytic sector inequality or the signed-front-door uniform
+`specRatio` bound.  Those two blocks and the final bound remain wholly open;
+no claim of analytic progress is made here.
+
+## Addendum 582 (2026-08-01, **TASK 14: exact symWeighted ring/dual theorem certified**)
+
+**THE LICENSED THEOREM WAS ADDED WITHOUT WIDENING SCOPE.**  At repository SHA
+`89c19ab2b328061b74d194dc75ebfdbba04610c6`,
+`YangMills.OS.symWeighted_ring_dual_factorization` gives the exact entrywise
+factorisation of `symWeighted (spatialWeightRing gamma) beta` into periodic
+source weight, the dual-field scale, local dual bonds, and periodic target
+weight.  Its front door retains `0 < beta`, `0 <= gamma`, and
+`tanh a = exp (-2 * beta)`.  The theorem is exact finite algebra, with no
+sector estimate hidden in its statement or proof.
+
+**PREREGISTERED COLAB RUN, ALL EXITS ZERO.**  A fresh CPU-only Colab clone
+checked out that exact SHA and first reran the already CERTIFIED numerical
+gate.  Normal Python passed in 260.054952 s and `python -O` passed in
+262.794974 s; each checked 5460 configuration pairs and rejected 5460 members
+of all three mutation families.  `lake build YangMills.OS.SpatialDualBond`
+then passed in 330.521398 s with 8172 jobs.  `lake build YangMillsCore` passed
+in 3970.335847 s with 8466 jobs.  Relative to the campaign's live ledger
+baseline of 8465 observed on 2026-08-01, this remains exactly one core module;
+8465 is an observation, not a permanent constant.  The permanent oracle
+passed in 2321.996904 s, and `scripts/check_consistency.py` passed in
+4.906435 s with zero source `sorry` and zero project axioms.
+
+The runtime was Linux `6.6.122+` with Python 3.12.13, two Intel Xeon logical
+CPUs at 2.20 GHz, 13286944 kB RAM, no requested or allocated GPU, Lean
+`v4.29.0-rc6` at commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib
+`07642720480157414db592fa85b626dafb71355b`.  It was connected from
+`2026-08-01T10:09:22.727407Z` through `2026-08-01T12:13:29.835538Z`
+(7447.108131 s), then explicitly disconnected and deleted; the UI showed
+`Återanslut` and the tab was closed.
+
+**PERMANENT ORACLE AND INDEPENDENT ARTIFACT CHECK.**  All seven declarations
+from `SpatialDualBond`, including the new theorem, appear in
+`oracle_check.lean`; each reports only the permitted set
+`{propext, Classical.choice, Quot.sound}`, and `sorryAx` is absent.  The
+downloaded artifact ZIP independently hashed on Windows to
+`b97166639d9344f7e5e3c8e026407246151ad25104c6ae6b6e794083a869e8e1`.
+Its internal manifest was revalidated: `metadata.json`
+`b49baa786a89c599162c4004f3f21ab3b95a9638d11790c35d9d3cd3f8cdd013`,
+`oracle_output.txt`
+`1474a2f59b73492336cd68f0e8edd90022dbfe176d78c457f3899b9fbea2ffc5`,
+and `transcript.txt`
+`f8038d938329c4af5bfd904088b676774334465a62bdb993dca69dc7b5e4cb82`.
+The focused permanent-oracle record is
+`ORACLE-20260801-SPATIAL-SYMWEIGHTED-RING-DUAL.txt`.
+
+This is CERTIFIED algebraic infrastructure, not analytic progress.  The sharp
+odd-sector bound, the even non-Perron bound, and the uniform signed-front-door
+`specRatio <= tanh(beta) * exp(2 * gamma)` inequality all remain wholly open.
+
+## Addendum 583 (2026-08-01, **TASK 14: odd orbit-fold Lean witness interrupted**)
+
+**EXACT STRUCTURAL THEOREM, NOT A SECTOR ESTIMATE.**  At source commit
+`fca2f37705bc06cf659829bde64ea0fd5c810638`,
+`YangMills.OS.act_flipOdd_eq_sum_zero_head` rewrites the action of an arbitrary
+kernel on a flip-odd observable as a sum over the unique representatives with
+zero first spin, using the exact kernel difference against the full global
+flip.  It assumes positive configuration length through `L + 1` and includes
+length one.  It assumes neither positivity nor kernel invariance and concludes
+no norm or spectral inequality.
+
+The licensing judge was committed before execution.  Its SHA-256 is
+`43d218195d497f65d8e6012081a36215a363574fbf3046dccc3eec01eb18ab89`.
+The permitted light Windows check passed in normal Python in 0.593407 s and
+under `python -O` in 0.670346 s with identical one-line JSON: ring sizes 1
+through 7, 254 action rows, 10922 paired summands, 10922 rejected sign
+mutations, 10922 rejected omission mutations, and 10920 rejected head-only
+flip mutations.
+
+**COLAB WITNESS STOPPED WITHOUT ORACLE EXIT.**  The preregistered notebook at
+commit `5bf542ba39c6b2bac981f375c3c4aaf07f164120` created the fresh CPU-only root
+`/tmp/spatial-odd-orbit-fold-dnsearsx`, verified the exact source SHA, judge
+hash, Lean commit, and Mathlib pin, and reran both gate modes with exit 0 and
+the exact expected payload.  `lake build YangMills.OS.SpatialRing` passed on
+the theorem's first Lean attempt with 8171 jobs.  `lake build YangMillsCore`
+passed with 8466 jobs.  Job interpretation uses the live ledger baseline, not
+the aging snapshot in `CLAUDE.md`.
+
+During the permanent-oracle command the cell ceased running without an exit
+code.  After about 37 minutes in that command and 1 h 53 min visible cell time,
+the UI showed only the literal `Ansluter`; the same state remained after one
+more 40-second polling slice.  There was no rejection message, traceback,
+Lean error, consistency result, PASS marker, or ZIP artifact, and no platform
+cause is inferred.  The runtime was explicitly disconnected and deleted, the
+UI confirmed `Återanslut`, and the tab was closed.  Full details and the
+two-fresh-runtime recovery contract are retained in
+`INC-SPATIAL-ODD-ORBIT-FOLD-LEAN-001.md`.
+
+**FRONTIER CONSULTATIONS CONTRIBUTED ZERO.**  The Fable account check accepted
+only the required `masterythief@gmail.com` profile, but the query returned the
+literal quota error `You've reached your Fable 5 limit...`; it was rejected.
+The separate Opus query returned `is_error=false`, but its `modelUsage`
+contained both `claude-opus-5` and `claude-haiku-4-5-20251001`, violating the
+required exact-single-model condition; the entire response was rejected.
+Neither response informed the theorem, proof, or recovery design.
+
+This campaign is **not** a Lean certificate and does not advance either
+analytic obligation.  The odd-sector bound, the even non-Perron bound, and the
+uniform signed-front-door `specRatio <= tanh(beta) * exp(2 * gamma)` theorem
+remain wholly open.
+
+## Addendum 584 (2026-08-01, **TASK 14: Recovery-B cache failure**)
+
+Recovery-B opened the immutable preregistered notebook
+`5bf542ba39c6b2bac981f375c3c4aaf07f164120` in a fresh independent Colab
+high-RAM CPU runtime: Linux `6.6.122+`, Python `3.12.13`, eight Intel Xeon
+logical CPUs, 53467192 kB RAM, no GPU, root
+`/tmp/spatial-odd-orbit-fold-6yqq9g0n`.  It checked out
+`fca2f37705bc06cf659829bde64ea0fd5c810638`, passed all immutable prechecks,
+and passed the exact rational gate in normal and optimized Python.
+
+The first infrastructure command after toolchain installation,
+`lake exe cache get`, returned exit 1 with the literal missing-file error for
+`/root/.cache/mathlib/9b7efb42d099baec.ltar.part` and the corresponding
+`.ltar` file.  The notebook stopped before any Lean build.  No cause is
+inferred, no theorem failure is claimed, and this runtime supplies no terminal
+witness.  It was immediately disconnected and deleted; the UI confirmed
+`Återanslut Mycket RAM-minne` and the tab was closed.  The complete diagnostic
+and fresh-runtime replacement contract are retained in
+`INC-SPATIAL-ODD-ORBIT-FOLD-LEAN-002.md`.
+
+Recovery-A remained active in a disjoint high-RAM CPU runtime and shared no
+root or outputs with Recovery-B.  Regardless of its outcome, two complete
+fresh witnesses are still required before terminal certification.  Both
+analytic sector obligations and the uniform spatial-ring bound remain wholly
+open.
+
+## Addendum 585 (2026-08-01, **TASK 14: Recovery-A interrupted in module build**)
+
+Recovery-A used the immutable notebook
+`5bf542ba39c6b2bac981f375c3c4aaf07f164120` in a fresh Colab high-RAM CPU
+runtime reporting 50.99 GB RAM and no GPU.  It was independent of Recovery-B.
+It passed far enough to begin `lake build YangMills.OS.SpatialRing`: clone and
+pin checks, both exact rational-gate modes, toolchain installation, and its
+isolated official-cache stage had completed without a recorded failure.
+
+The cell then ceased during the module build without printing an exit code or
+job count.  The UI showed only the literal `Återanslut Mycket RAM-minne`.
+There was no platform rejection, traceback, Lean error, core build, oracle,
+consistency result, PASS marker, or artifact ZIP.  The root and exact UTC stop
+time were not durably captured, so no cause is inferred.  The disconnected
+tab was closed.  Full scope and the single-session recovery contract are in
+`INC-SPATIAL-ODD-ORBIT-FOLD-LEAN-003.md`.
+
+Recovery-A supplies no witness.  Two complete fresh witnesses remain required
+before terminal certification, and neither analytic sector obligation nor the
+uniform spatial-ring bound has advanced.
+
+## Addendum 586 (2026-08-01, **TASK 14: exact odd orbit fold certified**)
+
+**ONE LOSSLESS STRUCTURAL IDENTITY.**  At source SHA
+`fca2f37705bc06cf659829bde64ea0fd5c810638`, the new theorem
+`YangMills.OS.act_flipOdd_eq_sum_zero_head` pairs every global-flip orbit by
+its representative with zero first spin and rewrites an arbitrary kernel
+action on a flip-odd observable using the exact kernel difference against the
+full global flip.  It covers every positive length `L + 1`, including one,
+and assumes neither kernel positivity nor flip invariance.  It concludes no
+norm or spectral inequality.
+
+**TWO FRESH INDEPENDENT HIGH-RAM CPU WITNESSES.**  Recovery-C used root
+`/tmp/spatial-odd-orbit-fold-l7vrhyvz` from
+`2026-08-01T15:03:04.730558Z` through `15:56:09.487249Z`
+(3184.756691 s).  Recovery-D used root
+`/tmp/spatial-odd-orbit-fold-e8nmu2x0` from
+`2026-08-01T15:58:45.970257Z` through `16:52:19.335992Z`
+(3213.365735 s).  Each reported Linux `6.6.122+`, Python `3.12.13`, eight
+logical Intel Xeon CPUs at 2.20 GHz, 53467192 kB RAM, and no GPU.  Both
+checked out the same source SHA from the immutable notebook object
+`5bf542ba39c6b2bac981f375c3c4aaf07f164120` and shared neither roots nor
+outputs.
+
+In both runs the preregistered judge SHA-256
+`43d218195d497f65d8e6012081a36215a363574fbf3046dccc3eec01eb18ab89`
+passed in normal Python and `python -O` with identical exact JSON: ring sizes
+1 through 7, 254 action rows, 10922 paired summands, 10922 rejected sign
+mutations, 10922 rejected omission mutations, and 10920 rejected head-only
+flip mutations.  `lake build YangMills.OS.SpatialRing` passed with 8171 jobs,
+and `lake build YangMillsCore` passed with 8466 jobs in each fresh clone.
+
+**ORACLE CONCORDANCE.**  Each permanent oracle and consistency command
+returned exit 0.  Extracted from the two independent archived transcripts,
+the deterministic oracle-output blocks each contain 344012 characters and
+have identical SHA-256
+`4b4accc1136ef49d5a286b5d3e3814cb187629bb9f7998a81412a815ab7878d7`.
+The new theorem appears exactly once in each block with only
+`{propext, Classical.choice, Quot.sound}`; `sorryAx` is absent, and each
+consistency run reports zero source `sorry` and zero project axioms.
+
+Recovery-C's downloaded ZIP independently hashes to
+`e1881844342ec9c50eaab8b6663cd10b6a568740fe25de3805d894f8bd06198b`;
+its internal manifest revalidates `metadata.json` as
+`69e96c131e7a618010278755ea3a35516bd39a52d7073903d6416197dafcc9f2`
+and `transcript.txt` as
+`8b736038c4e2020e3cad4efb1ef2d1c2ae67510287fb81cf563f4f588794b882`.
+Recovery-D's ZIP hashes to
+`19453573d2d9237e4057d3457fde5563c934c9378dd6f6899d009efeb7897dab`;
+its corresponding internal hashes are
+`bb51d1fc8cb88756d7f13edbb700e0b72747f23da66f0023c0a239bce38e26c6`
+and `089b5c6a978bc73aef52d5015d2828cda97a01f777300c994012811c5cc2a406`.
+
+**EVIDENCE LIMITATION RECORDED, NOT HIDDEN.**  The notebook ZIP contains
+`metadata.json` and `transcript.txt`, not a separately named
+`oracle_output.txt`.  It creates the archive immediately before logging its
+four final job-summary/archive/PASS lines, so those live-cell lines are not in
+the ZIP.  The archived transcript does contain both build completions and job
+counts, the full oracle with exit 0, and consistency with exit 0; metadata
+independently records 8171 and 8466.  The full focused record is
+`ORACLE-20260801-SPATIAL-ODD-ORBIT-FOLD.txt`.
+
+Both Task 14 runtimes were terminated.  The Colab active-session manager
+confirmed that this notebook was absent; unrelated owner sessions were left
+untouched.
+
+This is CERTIFIED structural infrastructure, not analytic progress.  The
+sharp odd-sector bound, the even non-Perron bound, and the uniform
+signed-front-door `specRatio <= tanh(beta) * exp(2 * gamma)` theorem remain
+wholly open.
+
+## Addendum 587 (2026-08-01, **TASK 14: sector-vacuum quotient gate preregistered**)
+
+**PRE-REGISTERED; NOT YET EXECUTED.**  Before opening any half-cube isometry,
+Clifford algebra, Jordan--Wigner transform, or finite fermionic classification,
+`scripts/judge_spatial_vacuum_ratio.py` fixes a numerical decision about the
+separate periodic/antiperiodic vacuum factor that a one-particle energy estimate
+does not control.
+
+For `a = -log(tanh(beta))/2`, the script evaluates at 100 decimal digits
+
+`R_L = exp((sum_{k in P_L} epsilon(k) - sum_{k in A_L} epsilon(k))/2)`,
+
+where `P_L` and `A_L` are respectively the periodic and antiperiodic momentum
+grids and
+
+`cosh(epsilon(k)) = cosh(2a) cosh(2gamma) - sinh(2a) sinh(2gamma) cos(k)`.
+
+The prediction committed before first execution is: for every `L = 2,...,16`,
+both parities, `beta` in `{0.125, 0.25, 0.5, 1, 2}`, and
+`gamma/a` in `{0.75, 0.90, 0.99}` (all with
+`q = tanh(beta) exp(2gamma) < 1`), `R_L <= 1` and the minimum margin
+`1 - R_L` is at least `1e-8`.  The judge also measures three ratios outside
+the nontrivial window and checks the exact `gamma = 0` control, but neither can
+rescue a failed inside-window verdict.  Reversed-quotient and same-grid
+mutations must be rejected in every verdict cell.  Normal and optimized Python
+must agree before PASS.
+
+A PASS licenses only an attempt to formalize the scalar vacuum-product
+comparison needed by a future finite fermionic classification.  It proves no
+classification, no sector estimate, and no part of the uniform bound.  The
+judge has not run at the time of this addendum; no result or margin is claimed.
+
+## Addendum 588 (2026-08-01, **TASK 14: sector-vacuum quotient gate PASS**)
+
+**VERIFIED NUMERICALLY, NOT PROVED.**  After the preregistration in Addendum
+587 was committed and pushed at raw SHA
+`22cf59e2631c11dcac34cd271186da8e903d9544`, the immutable judge
+`scripts/judge_spatial_vacuum_ratio.py`, SHA-256
+`304cdf682b12e9f3fce2028315504a42ff1df40bdce00377edbb97903568b786`,
+was run once in normal Python and once with `python -O`.  The lightweight
+Windows run used Python 3.12.6, mpmath 1.3.0, Windows 11 build 26200, and an
+AMD64 Family 25 Model 33 CPU.  No Lean, Lake, oracle, Colab runtime, or
+sustained computation was started.
+
+Normal mode returned exit 0 in approximately 1.98 s; optimized mode returned
+exit 0 in approximately 2.04 s.  Their one-line JSON outputs were byte-for-byte
+identical after LF termination, with SHA-256
+`965e4f8160ffa18abd4e1e262cc7a7353d078455516779f0607677ab8f3742c8`.
+
+All 225 preregistered inside-window cells passed: 120 even-length and 105
+odd-length cells over `L = 2,...,16`.  The minimum measured margin was
+
+`1 - R_L = 0.000037028772521857527449289927549530268702878582100482`,
+
+which is more than 3702 times the preregistered `1e-8` floor.  It occurred at
+`beta = 2`, `gamma/a = 0.75`, even `L = 16`, where
+`q = 0.99088297076818458346595664668662965340462063619704` and
+`R_L = 0.99996297122747814247255071007245046973129712141790`.
+All 225 reversed-quotient mutations and all 225 periodic-for-antiperiodic-grid
+mutations were rejected.  All 75 `gamma = 0` controls returned the exact
+quotient one at the declared precision.
+
+The 225 outside-window controls had zero quotients above one; their measured
+range was
+`[0.24154792482351894849660065236793482450662207569592,
+0.99987982669769807032529203361833983116983616254652]`.  This observation was
+not part of the PASS condition and licenses no claim outside the nontrivial
+window.
+
+The decision is positive but narrow in scope: it licenses an attempt at the
+scalar periodic/antiperiodic vacuum-product comparison.  It does not certify
+the finite fermionic spectrum, a vacuum-ratio theorem, Jordan--Wigner, either
+sector bound, or the uniform spatial-ring inequality.  The sharp odd block,
+the even non-Perron block, the `beta = 0` endpoint, and the final target remain
+open.
+
+## Addendum 589 (2026-08-02, **TASK 14: vacuum-ratio trend reconnaissance fixed**)
+
+**PROTOCOL COMMITTED BEFORE EXECUTION; THIS IS NOT A GATE.**  The PASS in
+Addendum 588 found its smallest margin at the largest tested length.  Before
+choosing a proof method for the scalar vacuum-product comparison,
+`scripts/probe_spatial_vacuum_ratio_trend.py` fixes a reconnaissance campaign
+with no threshold and no licensed theorem.
+
+The probe measures the previous worst cell `beta = 2`, `gamma/a = 0.75` at
+every `L = 2,...,16` and at `L = 20,24,32,48`; reports monotonicity overall and
+on the even/odd subsequences plus finite-difference log slopes; scans
+`beta` in `{0.125,0.25,0.5,1,2,4,8}` at `L = 16,32,48`; and scans
+`gamma/a` in `{0.10,0.25,0.50,0.75,0.90,0.99}` at the same lengths and
+`beta = 2`.  All cells remain inside `q < 1` by an explicit integrity check.
+
+Its output status is `OBSERVED`, never PASS.  The campaign is meant only to
+distinguish a uniformly separated vacuum quotient from one approaching one and
+to locate the painful parameter direction.  It licenses no inequality,
+fermionic infrastructure, sector bound, or uniform theorem.  At the time of
+this addendum the probe has not run and no trend is claimed.
+
+## Addendum 590 (2026-08-02, **TASK 14: vacuum-ratio trend observed**)
+
+**OBSERVED RECONNAISSANCE, NOT A GATE OR PROOF.**  After the protocol in
+Addendum 589 was committed and pushed at raw SHA
+`4faee48887501629787943df0e3920534b586583`, the immutable probe SHA-256
+`db265e4d43ab7663bdbc261feb2737d2d1ca1c32ef61404f0b700e6b5c7933bd`
+was run in normal and optimized Python.  Both returned exit 0 in approximately
+0.63 s and 1.011755 s.  Their LF-terminated JSON outputs were byte-identical,
+SHA-256 `ff5f41ef489ccaa94a7a65ab73831d50de6be9dc23bed4954e5dd8eeabab4b20`,
+and explicitly classified themselves as `OBSERVED`, not PASS.  This was the
+same lightweight Python 3.12.6 / mpmath 1.3.0 Windows environment recorded in
+Addendum 588; no Lean, Lake, oracle, Colab, or sustained computation ran.
+
+At the fixed previous worst cell `beta = 2`, `gamma/a = 0.75`, the margin
+`1 - R_L` was monotonically decreasing over every sampled `L = 2,...,16,
+20,24,32,48`, and separately on the even and odd subsequences.  Its tail was:
+
+| `L` | `1 - R_L` |
+|---:|---:|
+| 16 | `3.7028772521857527449289927549530268702878582100482e-5` |
+| 20 | `1.0330783014165615525863302403679290968340782114393e-5` |
+| 24 | `2.9552020026750395286786056070512713367327247621144e-6` |
+| 32 | `2.5310363651576859960805871473241010871535383253346e-7` |
+| 48 | `2.0461899003602749476766513238280114673254730605707e-9` |
+
+The successive finite-difference slopes of `log(1-R_L)` per site were
+`-0.319141791473299360284720667593`,
+`-0.312890268033487917511991213416`,
+`-0.307190406471765896901378899623`, and
+`-0.301113722293828614833318350785`.  This is strong finite-size evidence for
+decay toward zero, not a uniform positive separation; it is not an asymptotic
+proof.
+
+The parameter scans locate both painful directions.  At `L = 48` and fixed
+`gamma/a = 0.75`, the margin decreased from
+`3.4089012690244581733046089552545781432026923832097e-5` at `beta = 0.125`
+to `1.2540172698663092948187890221895944049553465183567e-14` at `beta = 8`.
+At fixed `beta = 2`, it increased sharply with `gamma/a`: from
+`3.0084296639352087559393317349303579290547076899793e-51` at `gamma/a = 0.10`
+to `4.32701506311280137120657842086103227786846908030086e-4` at
+`gamma/a = 0.99`.  Thus large `L`, large `beta`, and approach to the decoupled
+`gamma/a = 0` edge make this vacuum quotient closest to one; the `q -> 1`
+boundary in the `gamma/a` direction does not.
+
+The methodological conclusion is limited but decisive: no proof may rely on a
+uniform positive lower bound for `1 - R_L`.  The scalar target must establish
+the exact order `R_L <= 1`, plausibly through an exact interlacing, product, or
+Fourier-sign argument.  This observation still proves no vacuum comparison,
+fermionic classification, odd/even sector estimate, or uniform spatial-ring
+bound.
+
+## Addendum 591 (2026-08-02, **TASK 14: precision and pairing audit fixed**)
+
+**PROTOCOL COMMITTED BEFORE EXECUTION; NOT A GATE.**  Addendum 590 printed a
+margin near `3.01e-51`.  The underlying probe used mpmath `mp.mpf` at 100
+decimal digits throughout, not binary64, but that fact alone is not an interval
+certificate and was not explicit enough in the result record.
+
+Before accepting either the extreme parameter direction or a proposed
+term-by-term interlacing proof, `scripts/probe_spatial_vacuum_pairing.py` fixes
+two further reconnaissance checks.  First, it recomputes the cell `beta = 2`,
+`gamma/a = 0.10`, `L = 48` at 100, 160, and 220 decimal digits and then with
+100-decimal mpmath interval arithmetic, requiring the entire reported interval
+for `1 - R_L` to be strictly positive.  The interval remains instrumental
+evidence, not a Lean or formal certificate.
+
+Second, at `beta = 2`, `gamma/a = 0.75`, it checks each individual factor in
+the literal adjacent periodic/antiperiodic pairing for every `L = 2,...,16,
+20,24,32,48`.  It also sorts both multisets of one-mode energies and compares
+them componentwise.  A sorted violation rules out every bijection whose
+individual periodic/antiperiodic factor quotients are all at most one, rather
+than merely rejecting one unfortunate adjacent pairing.  Both products are
+required to reconstruct the global quotient at 160 digits.
+
+The output is classified `OBSERVED`, never PASS, and carries no threshold or
+licensed theorem.  At the time of this addendum the audit has not run; neither
+precision stability nor termwise pairing is claimed.
+
+## Addendum 592 (2026-08-02, **TASK 14: interval API failure preserved**)
+
+The first execution of the precommitted precision/pairing audit at raw SHA
+`e3a95e0127fe7cef4b5a49c8a67c3f294d8c935a` returned exit 1 after 0.409930 s.
+Its LF-terminated combined output hashes to
+`98393dd895153d0626e97190b4de54d28ed360c9aea919daf546bda246d22940`.
+The literal cause was
+`AttributeError: 'MPIntervalContext' object has no attribute 'tanh'` in mpmath
+1.3.0 while constructing the interval dual coupling.
+
+This is an instrumental API failure, not a failed inequality.  It occurred
+before the interval enclosure, pairing records, JSON status, or optimized run;
+therefore it supplies no precision or termwise-pairing evidence.  The planned
+repair is the exact interval identity `tanh(x) = sinh(x) / cosh(x)`, in a later
+commit.  Full details are preserved in
+`INC-SPATIAL-VACUUM-PAIRING-IV-001.md`.  No Lean, Lake, oracle, Colab, or
+sustained computation ran.
+
+## Addendum 593 (2026-08-02, **TASK 14: interval API repair fixed**)
+
+**REPAIR COMMITTED BEFORE RE-EXECUTION.**  The unavailable interval call in
+Addendum 592 is replaced only by the exact identity
+`tanh(beta) = sinh(beta) / cosh(beta)`, using primitives exposed by mpmath
+1.3.0's interval context.  The point formula, precision levels, cells,
+pairings, product checks, interval positivity boolean, and `OBSERVED`
+classification are unchanged.  At the time of this addendum the repaired
+script has not run and no recovery result is claimed.
+
+## Addendum 594 (2026-08-02, **TASK 14: second interval API failure preserved**)
+
+The repaired audit at raw SHA
+`4890ffc203c3fcf48378e11fab248ca2d864b50d` returned exit 1 after 0.272819 s.
+Its LF-terminated combined output hashes to
+`d904c6e51c36675794de7049a11054858e5ce600bfff2d7f34d4c3bbc42f5d23`.
+The literal cause was
+`AttributeError: 'MPIntervalContext' object has no attribute 'sinh'`.
+
+Thus mpmath 1.3.0's interval context exposes neither `tanh` nor the attempted
+`sinh/cosh` replacement.  This is again an instrumental API failure before any
+interval enclosure, pairing record, JSON status, or optimized run, and carries
+no mathematical evidence.  The next repair must expand `sinh`, `cosh`, and
+`acosh` through interval `exp`, `log`, and `sqrt`; it is not part of this
+incident commit.  Full details are in
+`INC-SPATIAL-VACUUM-PAIRING-IV-002.md`.
+
+## Addendum 595 (2026-08-02, **TASK 14: elementary interval repair fixed**)
+
+**SECOND REPAIR COMMITTED BEFORE RE-EXECUTION.**  Every interval hyperbolic
+call is now expanded through the exact identities
+`cosh(x) = (exp(x)+exp(-x))/2`,
+`sinh(x) = (exp(x)-exp(-x))/2`, and
+`acosh(x) = log(x+sqrt(x*x-1))`, using only mpmath interval primitives.
+Nothing in the point formula, cells, precision levels, pairing definitions,
+product reconstruction checks, positivity boolean, or `OBSERVED`
+classification changes.  At the time of this addendum this second repair has
+not run and no recovery result is claimed.
+
+## Addendum 596 (2026-08-02, **TASK 14: precision confirmed; termwise pairing rejected**)
+
+**OBSERVED RECONNAISSANCE, NOT A GATE OR PROOF.**  The second repaired audit
+at raw SHA `4f4c184ecc55c9296188b3c63a098c2f60fdb1d8`, script SHA-256
+`f7aa994998f63e64194450941962564560104dc1f89f66e127d5c3aa3e407180`,
+returned exit 0 in normal and optimized Python after 0.350329 s and 0.772123 s.
+The LF-terminated JSON outputs were byte-identical, SHA-256
+`5fe8adfbd7091d08c38565830e818382f2375cd1369843ef58aea0673fba6a1f`,
+and classified themselves `OBSERVED`.
+
+**PRECISION AUDIT.**  The margin at `beta = 2`, `gamma/a = 0.10`, `L = 48`
+was computed entirely with mpmath arbitrary-precision `mp.mpf`, never
+binary64.  Its leading digits agreed at 100, 160, and 220 decimal digits:
+
+`3.008429663935208755939331734930357929054707689979345141615016...e-51`.
+
+This agreement is a stability check, not a rigorous enclosure.  Separately,
+100-decimal mpmath interval arithmetic enclosed the margin in
+
+`[3.00842966393520875593933173493035792905470768989882043488087228643447328827568236208058459761021288722913e-51,`
+` 3.00842966393520875593933173493035792905470769006017453617395194283014768206051196365021141669185384573454e-51]`.
+
+The explicit interval boolean `margin > 0` returned true.  Thus the printed
+`3.01e-51` is not a float64 subtraction artefact.  This is an instrumental
+interval enclosure, not a Lean/formal certificate.
+
+**TERMWISE INTERLACING NO-GO.**  At `beta = 2`, `gamma/a = 0.75`, every one of
+the 19 sampled lengths `L = 2,...,16,20,24,32,48` had individual adjacent
+periodic/antiperiodic factor quotients above one.  More decisively, after
+sorting both multisets of one-mode energies, every sampled length still had a
+componentwise violation.  The counts were one violation at `L = 2`, eight at
+`L = 16`, and 24 at `L = 48`; the largest offending sorted ratios at those
+lengths were respectively
+`1.00919905372498530583530867178519476694392396553918017645870`,
+`1.00269475477127603578748588335626816242501191503764580562540`, and
+`1.00089914309739081262440419186566364323239999098099921357225`.
+Both the adjacent and sorted products independently reconstructed the global
+vacuum quotient at 160 digits.
+
+Sorting gives the strongest componentwise matching test: its failure rules
+out every bijection in which all individual periodic/antiperiodic factor
+quotients are at most one.  Therefore monotonicity plus termwise interlacing
+cannot prove `R_L <= 1`; the observed global inequality is maintained by
+compensation between factors.  A global product/Fourier-sign argument remains
+plausible, but no such argument is proved here.  Neither sector obligation nor
+the uniform spatial-ring target has advanced.
+
+## Addendum 597 (2026-08-02, **TASK 14: curvature/singularity probe fixed**)
+
+**PRE-REGISTERED RECONNAISSANCE; NOT YET EXECUTED AND NOT A GATE.**  Direct
+differentiation of the measured log-factor `f(k) = epsilon(k)/2`, with
+`cosh(epsilon(k)) = A - B cos(k)` and `B > 0`, gives the curvature-sign
+numerator
+
+`cos(k) ((A-B cos(k))^2-1) - B (A-B cos(k)) sin(k)^2`.
+
+It is positive at `k = 0` and negative at `k = pi`, so the proposed global
+convexity/concavity proof is already analytically incompatible with the
+concrete factor whenever `beta > 0` and `gamma > 0`.  The precommitted script
+will corroborate those endpoint signs and scan the interior over four beta and
+four `gamma/a` values; it licenses no theorem.
+
+The same script fixes a separate falsifiable prediction about the exponential
+finite-size trend.  At `beta = 2`, `gamma/a = 0.75`, the nearest acosh branch
+point is predicted at imaginary distance
+`d = acosh((A-1)/B)` with `0.287 <= d <= 0.291` (central prediction about
+`0.2887`).  Vacuum margins at `L = 48,64,80,96,128` are computed at 160 digits
+as `-expm1(log R_L)`, and the effective exponent from `L = 96` to `128` must
+differ from `d` by at most `0.008`.  A 100-decimal interval for `d` must lie
+inside the same preregistered band.
+
+Even if these numerical predictions pass, output remains `OBSERVED`: the
+campaign can identify an analyticity/Fourier mechanism but cannot prove a
+vacuum inequality, Fourier-sign theorem, sector bound, or uniform target.  At
+the time of this addendum no curvature scan, distance, or late exponent has
+been measured.
+
+## Addendum 598 (2026-08-02, **TASK 14: curvature rejected; singularity prediction met**)
+
+**OBSERVED RECONNAISSANCE, NOT A GATE OR PROOF.**  After Addendum 597 was
+committed and pushed at raw SHA
+`9e9333bf293811dcc15a67abac96295c6e548aa5`, the immutable probe SHA-256
+`2cca5bab5ccdbb496c5ad36db1eab9e705fb1c337e722169973ea6fd50ba4d6d`
+returned exit 0 in normal and optimized Python after 1.038325 s and 1.149927 s.
+Their LF-terminated JSON outputs were byte-identical, SHA-256
+`d70f11f4bf603648e24e3998015f488fde7140b08e3df35ce971a3d216229d0a`,
+and classified themselves `OBSERVED`.
+
+**GLOBAL CURVATURE ROUTE REJECTED.**  In all 16 cells from
+`beta in {0.125,0.5,2,8}` and
+`gamma/a in {0.10,0.50,0.75,0.99}`, the curvature-sign numerator was positive
+at `k = 0`, negative at `k = pi`, and the 511-point interior scan contained
+both signs.  This matches the direct endpoint evaluation of the exact
+derivative formula.  Therefore the log-factor is neither globally convex nor
+globally concave, and a plain midpoint-versus-trapezoid inequality based on
+global curvature cannot establish the vacuum-product order.
+
+**SINGULARITY PREDICTION MET.**  At the preregistered cell `beta = 2`,
+`gamma/a = 0.75`, the nearest acosh branch-point distance was
+
+`d = 0.2876331458601244128729681988177612563897290931771047393650643217510283319263199797506454843579838598`.
+
+The 100-decimal interval enclosure
+
+`[0.287633145860124412872968198817761256389729093177104739365064321751028331926319979750645484357983622921138,`
+` 0.287633145860124412872968198817761256389729093177104739365064321751028331926319979750645484357984119902771]`
+
+lies wholly inside the preregistered `[0.287,0.291]` band.  Stable margins
+computed as `-expm1(log R_L)` at 160 digits gave effective decay distances
+`0.2970366613`, `0.2948573454`, `0.2934992482`, and `0.2922342418` over the
+successive ranges `48--64`, `64--80`, `80--96`, and `96--128`.  The final
+distance error was
+`0.00460109589077254880081960151532198658880775152293942264494972`,
+below the preregistered `0.008` tolerance.
+
+Thus the nearest complex singularity quantitatively explains the observed
+exponential rate, but it does not determine the sign of the
+periodic-minus-antiperiodic sum.  With both termwise matching and global
+curvature rejected, a global Fourier-coefficient sign or exact product
+identity is the remaining plausible scalar mechanism.  No such sign theorem,
+vacuum inequality, fermionic classification, sector bound, or uniform target
+is proved here.
+
+## Addendum 599 (2026-08-02, **TASK 14: Fourier-sign reconnaissance fixed**)
+
+**PROTOCOL COMMITTED BEFORE EXECUTION; NOT A GATE.**  Use the complex Fourier
+normalisation
+`fhat(n) = (1/(2*pi)) integral_0^(2*pi) f(k) exp(-i n k) dk` for the real even
+log-factor `f(k) = epsilon(k)/2`.  Then exact grid aliasing gives
+
+`sum_P f - sum_NS f = 2 L sum_(m odd in Z) fhat(mL)`
+
+and hence `4 L sum_(m odd >= 1) fhat(mL)`.  Therefore a theorem
+`fhat(n) <= 0` for every positive `n` would imply the desired vacuum-product
+order.  This identity and implication are exact paper algebra here, not Lean
+declarations or certified results.
+
+The complex singularity parameter also simplifies exactly.  With
+`u = tanh(a)` and `v = tanh(gamma)`, elementary hyperbolic algebra gives
+`(A-1)/B = (u^2+v^2)/(2uv) = cosh(log(u/v))`.  In `a > gamma > 0`,
+
+`d = log(u/v)` and `x = exp(-d) = v/u = tanh(gamma)/tanh(a)`.
+
+Thus the observed `exp(-d)` near `0.750036` at `gamma/a = 0.75` is not exactly
+`0.75`; the hyperbolic tangent ratio is the closed parameter.
+
+The precommitted `scripts/probe_spatial_vacuum_fourier.py` estimates modes
+`n = 1,...,40` at 120 decimal digits in eight cells inside `q < 1`, using
+separately evaluated periodic quadrature resolutions of 2048 and 4096 points.
+It reports all
+coefficient signs and cross-resolution discrepancies.  At `beta = 2`,
+`gamma/a = 0.75`, it also compares selected coefficients with the proposed
+exact ansatz `-x^n/n` and reports the fitted root parameter and amplitude.
+
+This is deliberately reconnaissance with no fit threshold.  If the finite
+signs survive, the measured discrepancy -- not an expected value -- must be
+used in any later preregistration.  At the time of this addendum the script has
+not run; no Fourier sign or fit is claimed, and no theorem or Clifford work is
+licensed.
+
+## Addendum 600 (2026-08-02, **TASK 14: Fourier signs survive; pure-log ansatz rejected**)
+
+**OBSERVED RECONNAISSANCE, NOT A GATE OR PROOF.**  The precommitted script from
+Addendum 599 was run locally as a light scalar calculation only, first in
+normal mode and then under `python -O`.  Both modes exited zero and emitted
+byte-identical JSON:
+
+- preregistration commit: `2959f397f8f6bae8360df3ffffe9eaa329c83cc2`;
+- script SHA-256:
+  `022c23242b7c4529231660b2a5bd95476490e99fb556be4ae5ea43692eddff05`;
+- normal: exit `0`, `20.076541 s`;
+- optimized: exit `0`, `23.034573 s`;
+- common output SHA-256:
+  `62bf58eecda063128817a83625273504b141d3425aeb08541846b83ad13eaab1`.
+
+All `8 * 40 = 320` sampled nonconstant Fourier coefficients were strictly
+negative; there were zero positive and zero exactly-zero coefficients.  The
+largest relative discrepancy between the 2048- and 4096-point resolutions was
+`6.496843953964027e-8` (at `beta = 0.125`, `gamma/a = 0.99`), so the sampled
+signs were stable across the two resolutions.  This is finite evidence only;
+it does not prove `fhat(n) <= 0` for arbitrary parameters or modes.
+
+At the target cell `beta = 2`, `gamma/a = 0.75`, the exact closed parameter
+evaluated to
+
+`x = tanh(gamma)/tanh(a) = 0.7500366958414362904039402571938954078...`.
+
+The proposed exact pure-log formula `fhat(n) = -x^n/n` was decisively rejected.
+The observed ratio `fhat(n)/(-x^n/n)` was `0.008458124...` at `n = 1`,
+`0.001216532...` at `n = 10`, `0.000813625...` at `n = 20`, and
+`0.000558194...` at `n = 40`, decreasing rather than approaching one.  The
+exponential scale `x` may still control the decay, but the amplitude has a
+non-logarithmic prefactor; the present run does not preregister or certify its
+form.
+
+The Fourier-sign mechanism therefore survives this finite attack while the
+specific `-x^n/n` shortcut does not.  No global Fourier theorem, vacuum order,
+fermionic classification, odd-sector bound, even-sector bound, endpoint, or
+uniform `specRatio` theorem is proved here.  Clifford/Jordan--Wigner work
+remains unopened.
+
+## Addendum 601 (2026-08-02, **TASK 14: exact paper Fourier-sign mechanism**)
+
+**EXACT PAPER ALGEBRA; NOT LEAN-CERTIFIED.**  The sign observed in Addendum 600
+has a positive-mixture proof.  Write `c = A - B >= 1`, take `B > 0`, and set
+
+`h(s) = arcosh(c + B s)`, so `f(k) = h(1 - cos(k))/2`.
+
+For `s > 0` (and also at `s = 0` when `c > 1`),
+
+`h'(s) = B / sqrt((c + B s)^2 - 1)`.
+
+Using `integral_0^infinity exp(-z t) I_0(t) dt = 1/sqrt(z^2-1)` for `z > 1`
+and changing variables `r = B t` gives
+
+`h'(s) = integral_0^infinity exp(-s r) exp(-(c/B)r) I_0(r/B) dr`.
+
+Tonelli, applied to nonnegative integrands, then yields
+
+`h(S) - h(0) = integral_0^infinity (1-exp(-S r))
+                exp(-(c/B)r) I_0(r/B) dr/r`.
+
+The `n`th complex Fourier coefficient of `exp(r cos(k))` is `I_n(r)`.  Thus,
+for every integer `n >= 1`, the constant term drops out and
+
+`fhat(n) = -(1/2) integral_0^infinity
+  exp(-(1+c/B)r) I_0(r/B) I_n(r) dr/r < 0`.
+
+Every factor in the last integrand is strictly positive for `r > 0`.  Absolute
+integrability needed to exchange the `k` and `r` integrals follows by bounding
+with the original nonnegative Bernstein integral for `h(1-cos(k))-h(0)`.
+The case `c = 1` follows by monotone convergence from `c > 1`; the nonzero-mode
+integral remains finite.  The separate case `B = 0` makes `f` constant and all
+nonzero Fourier coefficients exactly zero.
+
+For the physical parameters,
+`c = A-B = cosh(2(a-gamma))`.  Hence `q < 1` is `gamma < a`, so `c > 1`;
+when `gamma > 0`, also `B > 0` and the coefficients are strictly negative.
+Combining this with the exact alias identity in Addendum 599 gives the scalar
+vacuum order `log R_L < 0` in this open regime and equality at `gamma = 0`,
+subject to the already stated identification of the vacuum products.  This
+does not identify the finite transfer spectrum or prove either sector bound.
+
+The same formula explains why the pure-log fit failed.  At the nearest complex
+point `k = +/- i d`, `A-B cos(k)=1` and `arcosh(1+z)` has a square-root, not a
+logarithmic, singularity.  Standard Darboux reasoning therefore gives an
+`x^n n^(-3/2)` scale with `x=exp(-d)`, matching the decreasing
+`fhat(n)/(-x^n/n)` seen in Addendum 600.  No asymptotic constant is claimed.
+
+Reference check: NIST DLMF 10.32.3 gives
+`I_n(z) = (1/pi) integral_0^pi exp(z cos(theta)) cos(n theta) d theta`;
+positivity for positive arguments is manifest from the standard positive
+power series.  The Laplace identity above follows from DLMF 10.32.1 followed
+by a positive Tonelli interchange and the elementary integral of
+`1/(z-cos(theta))`.  Mathlib at the pinned revision contains Fourier
+coefficients and `Real.arcosh`, but no Bessel or Bernstein-function library;
+those analytic ingredients would have to be developed if this lemma is
+formalised.
+
+An authorised Fable consultation used the required `masterythief` profile,
+whose authenticated email was `masterythief@gmail.com`.  It returned HTTP 429
+with literal message `You've reached your Fable 5 limit`, `is_error = true`,
+and empty `modelUsage`; it was rejected, no account was rotated, and no model
+content contributed to this derivation.
+
+Status remains: exact on paper, neither `CERTIFIED` nor `VERIFIED` in Lean.
+No odd block, even block, endpoint, or uniform `specRatio` theorem is closed,
+and Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 602 (2026-08-02, **TASK 14: Bessel-free logarithmic mixture**)
+
+**EXACT PAPER ALGEBRA; NOT LEAN-CERTIFIED.**  The Bessel representation in
+Addendum 601 is avoidable.  Continue with `h(s) = arcosh(c+B s)`, `c >= 1`,
+`B > 0`, and in the open regime `c > 1` define
+
+`t_minus = (c-1)/B`, `t_plus = (c+1)/B`,
+
+and the probability measure
+
+`dmu(t) = dt / (pi sqrt((t-t_minus)(t_plus-t)))`
+
+on `(t_minus,t_plus)`.  The elementary arcsine Stieltjes identity is
+
+`integral dmu(t)/(s+t) = 1/sqrt((s+t_minus)(s+t_plus)) = h'(s)`.
+
+It follows by integrating in `s` (Tonelli applies to the nonnegative
+integrand) that
+
+`h(s)-h(0) = integral log(1+s/t) dmu(t)`.
+
+For each `t > 0`, put
+
+`x(t) = 1+t-sqrt(t(t+2)) = exp(-arcosh(1+t))`,
+
+so `0 < x(t) < 1` and `t = (1-x(t))^2/(2x(t))`.  At `s=1-cos(k)`,
+
+`log(1+s/t) = log(|1-x(t) exp(i k)|^2/(1-x(t))^2)`.
+
+Consequently, up to a `k`-independent constant,
+
+`f(k) = h(1-cos(k))/2 = integral log|1-x(t) exp(i k)| dmu(t)`.
+
+With the complex Fourier normalisation fixed in Addendum 599, this gives the
+factor-correct identity
+
+`fhat(n) = -(1/(2n)) integral x(t)^n dmu(t) < 0`, `n >= 1`.
+
+The factor `1/2` is essential: `log|1-x exp(i k)|` has cosine-series amplitude
+`-x^n/n`, hence complex Fourier coefficient `-x^n/(2n)`.
+
+The finite-grid comparison can avoid Fourier series altogether.  For the
+periodic roots and their half-shift,
+
+`product_(j=0)^(L-1) (1-x exp(2 pi i j/L)) = 1-x^L`,
+
+`product_(j=0)^(L-1) (1-x exp((2j+1) pi i/L)) = 1+x^L`.
+
+Taking logarithms of absolute values inside the positive mixture yields the
+exact scalar identity
+
+`log R_L = integral log((1-x(t)^L)/(1+x(t)^L)) dmu(t)
+         = -2 integral atanh(x(t)^L) dmu(t) < 0`.
+
+Thus neither modified Bessel functions, Poisson summation, nor an infinite
+Fourier-series interchange is needed for the vacuum-product order.  The
+nearest endpoint `t_minus` maps to
+`x(t_minus)=exp(-d)=tanh(gamma)/tanh(a)`; the arcsine density has an inverse
+square-root edge there, which directly supplies the extra `n^(-1/2)` on top
+of the logarithmic `x^n/n` and explains the observed `x^n n^(-3/2)` scale.
+
+The exact Lean infrastructure boundary is now narrow: prove the one-variable
+arcsine Stieltjes/log-mixture identity (including integrability), plus the two
+finite root-product identities.  Positivity of a newly defined Bessel series
+is not required.  At the pinned mathlib revision, no ready theorem for this
+specific arcsine Stieltjes identity was found; generic integration, square
+root, logarithm, and polynomial/root-of-unity infrastructure is present.
+
+This removes the Bessel infrastructure concern in paper mathematics only.  It
+does not certify the logarithmic mixture in Lean, identify the transfer
+spectrum, or prove the odd block, even block, endpoint, or uniform
+`specRatio` theorem.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 603 (2026-08-02, **TASK 14: finite root-product gate fixed**)
+
+**PROTOCOL COMMITTED BEFORE EXECUTION.**  The exact rational gate
+`scripts/judge_spatial_vacuum_root_products.py` licenses one prospective Lean
+result only: the paired identities for the periodic and antiperiodic finite
+root products, together with their strict order under the printed hypotheses
+`1 <= L` and `0 < x < 1`.
+
+The gate evaluates `L = 1,...,64` over seven fixed positive rational values of
+`x < 1`.  It computes `x^L P(1/x)` directly from the coefficient lists of
+`P(z)=z^L-1` and `P(z)=z^L+1`, without floating point or division, and compares
+the results with `1-x^L` and `1+x^L`.  It then checks
+`0 < 1-x^L < 1+x^L`.
+
+Four mutation families are attempted in every cell: the wrong periodic sign,
+the wrong antiperiodic sign, a shifted periodic exponent, and the reversed
+strict order.  The script counts attempts and rejections itself.  Verdicts use
+explicit failure branches rather than `assert`; normal and `python -O` must
+exit zero with byte-identical JSON and every attempted mutation rejected.
+
+This gate does not license the arcsine Stieltjes/log-mixture identity, a vacuum
+product identification for the transfer matrix, either spectral-sector bound,
+the endpoint, or the uniform `specRatio` theorem.  At the time of this addendum
+the gate has not run and no PASS is claimed.
+
+## Addendum 604 (2026-08-02, **TASK 14: finite root-product gate passed**)
+
+**CERTIFIED FINITE ALGEBRA; NOT THE VACUUM ORDER OR A SECTOR BOUND.**  The gate
+fixed in Addendum 603 at preregistration commit
+`3dd1a93416de9127cd8f782d727b8ed3ac9ed8ff` ran first normally and then under
+`python -O`:
+
+- script SHA-256:
+  `14edcce2d80ecf3c83052700f97e8d5cae1aa8a54a93f4559d3e8ec67aee4cb6`;
+- normal: exit `0`, `0.257942 s`;
+- optimized: exit `0`, `0.704164 s`;
+- byte-identical JSON SHA-256:
+  `1fa0c1f98608446606e44aad0d5a4e994272e7ef3d8ce89a5b4359d68d548de6`;
+- transcript SHA-256:
+  `c91066853767627f9384a55043a0c9eddc5d4741c494765263f23f94d4785ba7`.
+
+The script measured 896 exact reciprocal/product identity rows and 448 strict
+order rows.  Each of the four mutation families -- periodic sign,
+antiperiodic sign, periodic exponent, and reversed order -- was rejected in
+all `448/448` attempts.  Normal and optimized outputs agree exactly.
+
+This PASS licenses only the prospective Lean theorem pairing the two finite
+root-product identities with their strict order under the explicit hypotheses
+`1 <= L` and `0 < x < 1`.  It does not license the Stieltjes/log-mixture
+identity, a transfer-spectrum identification, either sector bound, the
+endpoint, or the uniform `specRatio` theorem.
+
+## Addendum 605 (2026-08-02, **TASK 14: finite root products verified in Lean**)
+
+**VERIFIED INTERMEDIATE BRICK; NOT THE VACUUM ORDER OR A SECTOR BOUND.**  The
+gate licensed in Addenda 603--604 has now been discharged by the theorem
+`YangMills.OS.periodic_antiperiodic_root_products` in
+`YangMills/OS/SpatialRing.lean`.  Its printed hypotheses are `0 < L`,
+`0 < x`, and `x < 1`; it proves both complex root-product identities and the
+strict real order
+
+`0 < 1 - x^L < 1 + x^L`.
+
+The generic finite-product lemma has no physical couplings.  In the later
+physical Stieltjes/log-mixture front door, the load-bearing disordered-region
+hypothesis must be printed as `gamma < a` (which supplies `x(t) < 1`); this
+addendum does not claim that front door exists.
+
+The Lean source was committed at
+`7e9d05aa895177076060b90799a852e767dca172`.  The reproducible notebook was
+then committed separately at
+`d28e085d4763034520c1a54a26dce1226ffb9b64` and cloned the raw source SHA in
+one fresh Colab checkout.  One fresh clone is the required witness for this
+intermediate brick under the current reproducibility policy; this is not a
+terminal delivery SHA.
+
+The Colab runtime was CPU/high-RAM with no GPU:
+
+- UTC interval: `2026-08-02T07:09:36.469479+00:00` through
+  `2026-08-02T08:05:24.631774+00:00` (`3348.162295 s` connected);
+- Linux `6.6.122+`, x86-64, glibc `2.35`, Python `3.12.13`;
+- 8 CPUs, Intel Xeon 2.20 GHz, `MemTotal: 53467192 kB`;
+- toolchain `leanprover/lean4:v4.29.0-rc6`, Lean commit
+  `00659f8e6071d7e46131ed643bf8003b99b044e9`;
+- mathlib pin `07642720480157414db592fa85b626dafb71355b`.
+
+The notebook ran, sequentially and with stop-on-first-error:
+
+- the preregistered gate in normal and `python -O` modes, both exit `0`, with
+  byte-identical output SHA-256
+  `1fa0c1f98608446606e44aad0d5a4e994272e7ef3d8ce89a5b4359d68d548de6`;
+- `lake build YangMills.OS.SpatialRing` -> **8171 jobs**, exit `0`;
+- `lake build YangMillsCore` -> **8466 jobs**, exit `0`;
+- `lake env lean oracle_check.lean` -> exit `0`;
+- `python3 scripts/check_consistency.py` -> exit `0`, zero `sorry` and zero
+  project axioms.
+
+The live core baseline is the latest measured ledger baseline, **8465**, not
+the stale contractual snapshot in `CLAUDE.md`; hence `8465 -> 8466` measures
+exactly one new core module.  The permanent oracle contains 2813 axiom rows
+and 26 axiom-free rows.  The new declaration appears as
+
+`[propext, Classical.choice, Quot.sound]`,
+
+with zero `sorryAx` rows and zero axioms outside that permitted set.
+
+Colab produced `spatial_root_products_lean_artifacts.zip`; its SHA-256 was
+printed in the live output and independently rechecked on Windows as
+`2b9a92fcd49849760f7b81f2d52916004f14338bbde3c8e5641e76984e6b39fa`.
+The archive's manifest was also rechecked locally:
+
+- `metadata.json`, 709 bytes,
+  `735ff2177b96b6b2501bd4faa8b9d1de367222cdc570cbbabe6971348493a0ce`;
+- `oracle_output.txt`, 344678 bytes,
+  `b86494d917b86b7af513b7ef87538e01bde02e185a94bbba2809601ed95b1e01`;
+- `transcript.txt`, 468113 bytes,
+  `4083aa16cbe420b32ff6211b744c898ec13221cf983bcd4e84586c4ff2eb0924`.
+
+The archived transcript contains every command through the consistency exit.
+Because the notebook constructs the archive immediately before logging its
+four terminal status lines, those lines are not inside the ZIP.  The live
+output was inspected separately and ended with
+`module_jobs_measured=8171`, `core_jobs_measured=8466`, the matching archive
+path/hash, and `SPATIAL ROOT-PRODUCT LEAN PASS`.  This ordering limitation is
+declared rather than treating the archived transcript as self-terminal.
+
+The runtime was disconnected and deleted immediately after validation;
+**SESIÓN COLAB LIBRE**.  This verified theorem supplies only the elementary
+finite root-product endpoint of the exact paper argument.  The arcsine
+Stieltjes/log-mixture identity remains unformalised, and no transfer-spectrum
+identification, odd-sector bound, even-sector bound, endpoint, or uniform
+`specRatio` theorem has been proved.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 606 (2026-08-02, **TASK 14: Stieltjes/log-mixture gate fixed**)
+
+**PROTOCOL COMMITTED BEFORE EXECUTION.**  The script
+`scripts/judge_spatial_stieltjes_log_mixture.py` licenses one prospective
+generic Lean theorem only.  Under the printed hypotheses `1 < c`, `0 < B`,
+and `0 <= s`, it predicts
+
+`arcosh(c+B*s)-arcosh(c)
+ = (1/(2*pi)) integral_0^(2*pi) log(1+B*s/(c-cos(theta))) dtheta`.
+
+This is exactly the arcsine Stieltjes/log mixture after parametrising the
+arcsine measure by uniform angular measure.  The intended Lean route uses the
+existing pinned-mathlib theorem `circleAverage_log_norm_sub_const₀`, plus
+the elementary factorisation of `z-cos(theta)` with
+`r=exp(-arcosh(z))`; it does not assume a generic Stieltjes representation
+theorem, introduce a singular density, or invoke Bessel functions.
+
+At 120 decimal digits the gate fixes, before inspection, a maximum absolute
+residual of `1e-70` over 45 positive-`s` cells: beta in
+`{0.125,0.5,2}`, `gamma/a` in `{0.25,0.75,0.99}`, and `s` in
+`{0.125,0.5,1,1.5,2}`.  Nine `s=0` cases must return exact zero.  In every
+positive-`s` cell it must reject three mutations by a gap greater than
+`1e-30`: halving the average, omitting the base subtraction `arcosh(c)`, and
+omitting the factor `B` in the logarithm.  Normal and `python -O` must exit
+zero with byte-identical JSON; all verdicts are explicit conditionals.
+
+The sampled physical parametrisation checks and prints `0 < beta`,
+`0 < gamma`, and the load-bearing disordered-region hypothesis `gamma < a`.
+The prospective theorem itself is the generic `c,B,s` identity.  Any later
+physical front door must carry those physical hypotheses in its Lean
+statement; this addendum does not license that corollary.
+
+At the time of this addendum the gate has not run and no PASS is claimed.  It
+does not license the finite vacuum-product order, either spectral block, the
+endpoint, or the uniform `specRatio` theorem.  Clifford/Jordan--Wigner remains
+unopened.
+
+## Addendum 607 (2026-08-02, **TASK 14: Stieltjes/log-mixture gate passed**)
+
+**OBSERVED NUMERICAL GATE; NOT A LEAN THEOREM.**  The protocol fixed in
+Addendum 606 at preregistration commit
+`3fbb42e2ee73ddd37d15c45eba31e1ce7462d5ab` was run in one fresh Colab clone
+from notebook commit `020a2a746555d2a819b853d30b430e370393d347`.
+This is an intermediate brick, so one fresh clone is the required witness
+under the current reproducibility policy.
+
+The script SHA-256 was
+`4375cc616e6e2dee7844be31900c8558542c0891dcf976b3c3fb0d41eae56c8e`.
+Normal and `python -O` both exited zero in `16.136374 s` and `15.950535 s`
+respectively and emitted byte-identical JSON with SHA-256
+`657283699b963f69a491fbb29b28622eac3fac9f8e9a6724043dde74ffe8a642`.
+
+All 45 cells passed the preregistered `1e-70` residual ceiling.  The measured
+maximum absolute residual was
+`2.4279336028645139952628668618846073106836725793899645855890076253350735307409320e-120`.
+All nine `s=0` controls were exactly zero.  The half-average, missing-base,
+and missing-`B` mutation families were each rejected in all `45/45` cells;
+the minimum measured mutation gap was
+`0.00036635374743696300883904662028923513289513632177068588243327909258694233347197491`,
+well above the preregistered `1e-30` floor.
+
+The JSON prints the generic hypotheses `1 < c`, `0 < B`, `0 <= s` and the
+physical hypotheses `0 < beta`, `0 < gamma`, `gamma < a`.  This is active
+evidence that the normalisation and signs of the proposed angular form are
+correct; it is not a proof for arbitrary real parameters.
+
+The CPU/high-RAM runtime used no GPU and recorded Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T08:25:16.044189+00:00` through
+`2026-08-02T08:25:56.799524+00:00` (`40.755335 s`).
+
+The downloaded `spatial_stieltjes_gate_artifacts.zip` was independently
+hashed on Windows as
+`8ec7eef683c83c7bfbeb239b9f5371e43e943c9a85c9cbe537c35e996d149b1f`.
+Its manifest was rechecked locally:
+
+- `metadata.json`, 569 bytes,
+  `d01344be6a51f6e34da6eafad7b63cacfc799e61521794ce91e1e74fda2eb8ac`;
+- `normal.json`, 754 bytes,
+  `657283699b963f69a491fbb29b28622eac3fac9f8e9a6724043dde74ffe8a642`;
+- `optimized.json`, 754 bytes, the same SHA-256;
+- `transcript.txt`, 6144 bytes,
+  `85d9554cd41854e6abbbcf4da243c32a89664407481a3761e6cd28e61d57b9cb`.
+
+Unlike the preceding Lean archive, this transcript contains the gate's final
+`SPATIAL STIELTJES LOG-MIXTURE GATE PASS` line.  The ZIP hash is necessarily
+printed after archive construction and was checked separately against the
+download.  The runtime was disconnected and deleted immediately after
+validation; **SESIÓN COLAB LIBRE**.
+
+This PASS licenses only an attempt to prove the one generic angular
+Stieltjes/log-mixture identity in Lean.  It does not certify that identity,
+the physical dispersion corollary, the finite vacuum-product order, either
+spectral block, the endpoint, or the uniform `specRatio` theorem.
+Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 608 (2026-08-02, **TASK 14: first SpatialVacuum runner failed before Lean**)
+
+**FAIL INSTRUMENTAL; THE MATHEMATICS WAS NOT ELABORATED.**  The first focused
+Colab runner, notebook commit
+`a562bb5ad6a68e1ca3565b8bd5f5ca0d551a0c51`, cloned the preserved first Lean
+attempt `d685e82e10c8cd64221444a03ff83f617cec96b4` and verified that raw HEAD.
+The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 53467192 kB`.  It started at
+`2026-08-02T08:35:27.658948+00:00`; the Colab UI reports a total cell duration
+of `25.597 s`.
+
+The exact toolchain installation succeeded in `13.926785 s` and printed Lean
+commit `00659f8e6071d7e46131ed643bf8003b99b044e9`.  The next command,
+`lean --version`, exited `1` in `1.342029 s` with the literal message:
+
+``error: no default toolchain configured. run `elan default stable` to install
+& configure the latest Lean 4 stable release.``
+
+The runner had installed `leanprover/lean4:v4.29.0-rc6` but neither selected
+it as the default nor set `ELAN_TOOLCHAIN`.  Thus cache acquisition and
+`lake build YangMills.OS.SpatialVacuum` were never started.  No theorem,
+module job count, oracle result, or mathematical failure is claimed.  No
+transcript was downloaded before the stop; the complete live-cell output was
+captured through the browser.  The runtime was immediately disconnected and
+deleted; **SESIÓN COLAB LIBRE**.
+
+## Addendum 609 (2026-08-02, **TASK 14: first SpatialVacuum elaboration failed**)
+
+**LEAN FAIL PRESERVED; NO THEOREM CLAIMED.**  After the runner repair at
+`e93d79131043f8d96106b63e2407e3a331aa77c2`, a fresh CPU/high-RAM Colab clone
+again checked out the unchanged first Lean attempt
+`d685e82e10c8cd64221444a03ff83f617cec96b4`.  The runtime used no GPU and
+reported Linux `6.6.122+`, x86-64, glibc `2.35`, Python `3.12.13`, 8 CPUs,
+Intel Xeon 2.20 GHz, and `MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T08:38:12.540449+00:00` through
+`2026-08-02T08:43:21.944474+00:00`; the UI reported `309.464 s` for the cell.
+
+The pinned Lean commit and mathlib pin were verified, cache acquisition
+completed, and `lake build YangMills.OS.SpatialVacuum` reached Lean.  It exited
+`1` after `174.208834 s`, with transcript SHA-256
+`7460818bca95692f9616faa9604082650012f07eadc337a104a52cd31729b39e`.
+The complete live output reports four elaboration failures:
+
+- line 49: the proof of the norm-square factorisation left a large unsolved
+  goal because `rw [hyrepr]` rewrote not only the standalone `y` but also the
+  occurrences of `y` inside `arcoshRadius y`, recursively changing the radius;
+- line 96: `.2` was projected from the function `crcleIntegrable_congr` before
+  supplying its pointwise-equality argument;
+- line 124: `circleAverage_congr_sphere` supplied membership in
+  `sphere 0 |1|`, while the helper expected `sphere 0 1`;
+- line 173: the pointwise goal still contained applied lambdas, so the
+  requested `Real.log_div` rewrite pattern was not syntactically present.
+
+There was also one unused-simp-argument warning for
+`Complex.normSq_ofReal`.  These are local proof-engineering errors; no
+counterexample to the scalar identity was found.  Core and oracle were not
+run, no PASS is claimed, and the runtime was disconnected and deleted
+immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 610 (2026-08-02, **TASK 14: generic angular log-mixture focused build passed**)
+
+**FOCUSED LEAN BUILD ONLY; FULL ORACLE AND CORE VERIFICATION REMAIN
+PENDING.**  After preserving Addendum 609, the four local elaboration errors
+were repaired in source commit
+`1abb48947ab59e1744ff996a7c7dc7983b9e5f7a`.  The focused runner at commit
+`fc654263304d96a62651b9831313fdfa5e94e80f` then used one fresh Colab clone,
+as required for this intermediate brick, checked out that raw source SHA and
+verified the exact pinned toolchain and dependency revision.
+
+The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T08:47:13.321251+00:00` through
+`2026-08-02T08:51:52.839950+00:00` (`279.518699 s`); the Colab UI reported
+`279.581 s` for the cell.
+
+Lean was exactly `leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib was checked out at
+`07642720480157414db592fa85b626dafb71355b`.  Official isolated cache
+acquisition exited zero.  `lake build YangMills.OS.SpatialVacuum` exited zero
+after `156.147747 s` and reported `8172 jobs`.  The downloaded transcript was
+independently hashed on Windows as
+`7fb1cca6b42458e4b5bb08b253e4d6594caab67767ea482315c2d82e81cf7c5b`,
+matching the hash printed inside Colab.  The runtime was disconnected and
+deleted immediately after capture; **SESIÓN COLAB LIBRE**.
+
+This focused witness shows that the generic theorem
+`arcosh_circle_log_mixture`, under the printed hypotheses `1 < c`, `0 < B`,
+and `0 <= s`, elaborates without `sorry`.  It is not yet a complete
+certificate: `YangMillsCore`, the complete oracle, the consistency judge,
+and the live core job count have not been run at this source SHA.  The build
+reported two local linter warnings (an unreachable/no-op `ring` and an
+unnecessary sequence focus); they do not invalidate elaboration and should
+be cleaned before the full verifier.
+
+No physical front door has yet been proved.  In particular, the
+load-bearing physical hypotheses `0 < beta`, `0 <= gamma`, and `gamma < a`
+must occur in that later Lean statement.  This brick proves neither the
+finite vacuum-product order nor either spectral block, the endpoint, or the
+uniform `specRatio` theorem.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 611 (2026-08-02, **TASK 14: first physical log-mixture front door failed**)
+
+**LEAN FAIL PRESERVED; THE GENERIC IDENTITY REMAINS GREEN.**  Source commit
+`971d845d17b3bc3bc102806dd534baf5dcbba43d` added the physical
+specialisation with the hypotheses `0 < beta`, `0 <= gamma`, `gamma < a`,
+and `tanh a = exp (-2 * beta)` printed in its Lean statement.  Runner commit
+`bda52c13c34f1fbde16e9428edc188bf49c320f0` checked out that raw source SHA
+in one fresh Colab clone and stopped at the first focused-build error.
+
+Colab assigned a standard CPU runtime rather than the preceding high-RAM
+runtime.  It used no GPU and reported Linux `6.6.122+`, x86-64, glibc `2.35`,
+Python `3.12.13`, 2 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 13286944 kB`.  Its UTC interval was
+`2026-08-02T08:58:12.252596+00:00` through
+`2026-08-02T09:08:16.595792+00:00` (`604.343196 s`).  The exact pinned Lean
+commit and mathlib revision were verified; isolated cache acquisition exited
+zero after `247.824630 s`.
+
+`lake build YangMills.OS.SpatialVacuum` exited `1` after `311.324501 s`.
+All inherited dependencies and `SpatialRing` built; `SpatialVacuum` reported
+one unsolved goal at line 205 in the `gamma = 0` branch:
+
+```text
+case inl
+beta a s : Real
+_hbeta : 0 < beta
+_hdual : tanh a = rexp (-2 * beta)
+hs : 0 <= s
+hgamma : 0 <= 0
+hgammaa : 0 < a
+|- 0 = circleAverage (fun z => 0) 0 1
+```
+
+Thus the endpoint simplification reduced the integrand to zero but did not
+rewrite the circular average of the zero function.  The generic theorem
+itself produced no error, and there is no counterexample to either scalar
+identity.  The live transcript SHA-256 was
+`afb20e88a91a5dcbccec714397cf7ffcc6f4f61380bed6802693a7ec09354597`;
+because the fail-fast notebook raises before its download step, no local
+transcript file is claimed.  The complete output was captured through the
+browser, and the runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
+
+Core and oracle were not run.  No physical vacuum-product comparison, either
+sector bound, endpoint theorem, or uniform `specRatio` theorem is claimed.
+
+## Addendum 612 (2026-08-02, **TASK 14: physical log-mixture front door focused build passed**)
+
+**FOCUSED LEAN BUILD ONLY; FULL ORACLE AND CORE VERIFICATION REMAIN
+PENDING.**  After preserving Addendum 611, commit
+`e033599b96ebb1b139e23b516069798f2e8dc8af` repaired the sole endpoint goal
+by using `circleAverage_const`.  Runner commit
+`b45c3de7b29bbad4a7295c763aa95e205fdcff09` checked out that raw source SHA
+in one fresh Colab clone.
+
+The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T09:12:06.209103+00:00` through
+`2026-08-02T09:16:26.462340+00:00` (`260.253237 s`).  Lean was exactly
+`leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib was checked out at
+`07642720480157414db592fa85b626dafb71355b`.  Official isolated cache
+acquisition exited zero after `95.049870 s`.
+
+`lake build YangMills.OS.SpatialVacuum` exited zero after `141.298748 s` and
+reported `8172 jobs`.  It emitted no local `SpatialVacuum` warnings.  The
+downloaded transcript was independently hashed on Windows as
+`3e6417fa947b3bd3b9f31f5118fe67c7809cce7622b600965029461c893acb10`,
+matching the hash printed inside Colab.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
+
+This focused witness includes both the generic theorem and the physical
+front door `physical_arcosh_circle_log_mixture`.  The latter prints
+`0 < beta`, `0 <= gamma`, `gamma < a`, and
+`tanh a = exp (-2 * beta)` in its Lean statement and handles `gamma = 0`
+without passing a false strict-positivity premise for `B`.
+
+This is still scalar analytic infrastructure.  Core, the complete oracle,
+the consistency judge, and the live core job count have not yet run at this
+SHA.  Neither finite vacuum product has been identified or compared, and
+neither spectral block, the endpoint of the original transfer problem, nor
+the uniform `specRatio` theorem is proved.  Clifford/Jordan--Wigner remains
+unopened.
+
+## Addendum 613 (2026-08-02, **TASK 14: SpatialVacuum full verifier passed**)
+
+**CERTIFIED INTERMEDIATE SCALAR BRICK; NOT THE SPATIAL SPECTRAL BOUND.**  The
+full verifier was committed before execution at
+`d91fac7a345bc66e68968328198c7b4098e2da10`.  In one fresh Colab clone it
+checked out raw source/oracle SHA
+`2aa267991a8f4daf072b138e009e2e4ecae1854a`, verified the exact Lean and
+mathlib pins, built the module and core, read the live core baseline from this
+ledger, ran the permanent oracle and consistency judge, and stopped on any
+nonzero command or mismatched invariant.  One clone is the current requirement
+for this intermediate brick; this is not a terminal release witness.
+
+The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T09:21:17.726459+00:00` through
+`2026-08-02T10:15:27.665948+00:00` (`3249.939489 s`).  Lean was exactly
+`leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib was exactly
+`07642720480157414db592fa85b626dafb71355b`.
+
+All commands exited zero.  The measured results were:
+
+- `lake build YangMills.OS.SpatialVacuum`: `8172 jobs`, `144.707367 s`;
+- `lake build YangMillsCore`: `8467 jobs`, `927.775369 s`;
+- latest live-ledger baseline parsed by the verifier: `8465 jobs`;
+- measured branch delta: `+2`, exactly the two branch modules
+  `SpatialDualBond` and `SpatialVacuum`;
+- `lake env lean oracle_check.lean`: `2041.336896 s`;
+- `python3 scripts/check_consistency.py`: `3.888055 s`, reporting zero
+  `sorry` and zero project axioms.
+
+The permanent oracle printed both new declarations exactly once.  Each depends
+on exactly the permitted set `{propext, Classical.choice, Quot.sound}`:
+
+```text
+'YangMills.OS.arcosh_circle_log_mixture' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.physical_arcosh_circle_log_mixture' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+The verifier also checked every oracle declaration for absence of nonstandard
+axioms and rejected any occurrence of `sorryAx`.
+
+The downloaded `spatial_vacuum_full_artifacts.zip` was independently hashed on
+Windows as
+`da9ceb7f6e3cc693a82d727a69bbb853dc1d211db000623f8bfdfb5a2a380c0e`,
+matching the hash printed by Colab.  Its internal manifest was revalidated
+streamwise without extracting the archive:
+
+- `metadata.json`, 1080 bytes,
+  `a802a300998157357a3cbf1764ae13c0de6b5f95fc087304fbbc7d7ac517f03e`;
+- `transcript.txt`, 466121 bytes,
+  `6017c2c14c0d6b9428d57a19ce19a2f449d2cb7d9a0797f4e29f157ccf6caead`;
+- `oracle_output.txt`, 344887 bytes,
+  `1f2d6dd9d06dda41712b418ed22d7bd9fa77bc6225feae05385a23b604dfd928`;
+- `consistency_output.txt`, 154 bytes,
+  `95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`;
+- `SHA256SUMS`, 334 bytes,
+  `3b0a464838e0059a943b88fef1b3fb7d1fb098a628b1c655751c4f8e44fe5626`.
+
+Unlike the earlier incomplete root-product archive, this ZIP contains the
+separate full oracle output, consistency output, metadata, and the transcript
+through `SPATIAL VACUUM FULL VERIFICATION STEPS PASS`.  The ZIP hash and final
+`SPATIAL VACUUM FULL PASS` necessarily follow archive construction and were
+checked against the downloaded file.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
+
+What is certified here is only the generic angular log-mixture identity and
+its physical scalar specialisation, including the printed hypotheses
+`0 < beta`, `0 <= gamma`, `gamma < a`, and the duality relation.  The finite
+periodic/antiperiodic vacuum products have not been connected to this scalar
+identity in Lean, neither transfer-sector obligation has been proved, and the
+original `beta = 0` transfer endpoint and uniform `specRatio` theorem remain
+open.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 614 (2026-08-02, **TASK 14: first finite log-grid elaboration failed**)
+
+**MEASURED FAILURE; NO THEOREM CERTIFIED.**  The first Lean attempt at
+`periodic_antiperiodic_log_norm_sums_lt` was committed and pushed before
+execution at raw SHA
+`28333576b6f1c54ff7737d5e0a3dce184bb46eed`.  A fresh public clone at that
+exact SHA ran in a Colab CPU/high-RAM runtime with no GPU: Linux `6.6.122+`,
+x86-64, glibc `2.35`, Python `3.12.13`, 8 Intel Xeon 2.20 GHz CPUs, and
+`MemTotal: 53467192 kB`.  The run started at
+`2026-08-02T10:26:13.937202+00:00`; the Colab cell reported a total duration
+of `297.596 s`.
+
+The harness verified Lean `leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib
+`07642720480157414db592fa85b626dafb71355b`.  Isolated official cache
+acquisition exited zero after `103.822932 s`.  The sole build command,
+`lake build YangMills.OS.SpatialVacuum`, exited `1` after `169.016175 s`.
+
+Lean reported exactly two symmetric local proof failures, at source lines 63
+and 69.  After applying the exact root-product identities, the goals were
+
+```text
+Real.log ‖1 - (x : ℂ) ^ L‖ = Real.log (1 - x ^ L)
+Real.log ‖1 + (x : ℂ) ^ L‖ = Real.log (1 + x ^ L)
+```
+
+and the attempted rewrite by `Complex.norm_real` did not match: the complex
+power had not first been normalized to the cast of the real power.  Thus this
+is a coercion-normalization failure in the proposed Lean proof, not a failed
+finite product or inequality.  No PASS was claimed, no oracle or core build
+was run, and no new declaration is certified by this addendum.  The runtime
+was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 615 (2026-08-02, **TASK 14: repaired log-grid rerun selected stale cell**)
+
+**FAIL INSTRUMENTAL; THE REPAIRED SHA WAS NOT ELABORATED.**  A second fresh
+CPU/high-RAM Colab runtime was intended to check repaired raw SHA
+`4196ad76e119595a8e3f24f46b4564c40699fb20`.  The live transcript instead
+proved that Colab had retained the preceding editor buffer: at
+`2026-08-02T10:35:43.312804+00:00` it checked out
+`28333576b6f1c54ff7737d5e0a3dce184bb46eed` again, using the old temporary
+directory prefix.  The mismatch was detected from output before any Lean
+build.
+
+The stale run reported the same 8-CPU, `53467192 kB`, no-GPU environment and
+completed exact Lean installation.  It was interrupted during isolated
+`lake exe cache get`; the cell ended with literal `KeyboardInterrupt` after
+`51.313 s`.  `lake build YangMills.OS.SpatialVacuum` never started.  Hence
+this incident says nothing about the repair or theorem.  No PASS was claimed,
+and the runtime was disconnected and deleted immediately; **SESIÓN COLAB
+LIBRE**.  The next attempt must use a newly inserted empty code cell or a new
+notebook tab and must accept output only after the transcript prints the
+repaired raw SHA.
+
+## Addendum 616 (2026-08-02, **TASK 14: second finite log-grid elaboration failed**)
+
+**MEASURED FAILURE; NO THEOREM CERTIFIED.**  A newly inserted empty code cell
+in a new Colab notebook tab checked out and printed raw SHA
+`21baac913ae9f0cf506da9dd42062805a29436d8`, which contains the first cast
+repair.  The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`,
+x86-64, glibc `2.35`, Python `3.12.13`, 8 AMD EPYC 7B12 CPUs, and
+`MemTotal: 53467192 kB`.  It started at
+`2026-08-02T10:39:42.425098+00:00`; the cell duration was `189.636 s`.
+
+Lean and mathlib matched the contractual pins.  Isolated official cache
+acquisition exited zero after `70.393059 s`.  The sole build command,
+`lake build YangMills.OS.SpatialVacuum`, exited `1` after `101.553620 s`.
+The two previous complex-power rewrite failures were gone.  Lean instead
+reported exactly two symmetric failures at lines 64 and 71: `change` could
+not treat
+
+```text
+Real.log ‖1 - ((x ^ L : ℝ) : ℂ)‖
+Real.log ‖1 + ((x ^ L : ℝ) : ℂ)‖
+```
+
+as definitionally equal to the corresponding norms of the casts of
+`1 - x ^ L` and `1 + x ^ L`.  The remaining repair is therefore to rewrite
+the complex `1` and subtraction/addition through `Complex.ofReal`, rather
+than ask `change` for a definitional equality.  No PASS, oracle, core build,
+or theorem certification is claimed.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 617 (2026-08-02, **TASK 14: third finite log-grid elaboration failed**)
+
+**MEASURED FAILURE; NO THEOREM CERTIFIED.**  A third fresh CPU/high-RAM Colab
+clone checked out and printed raw SHA
+`ef8fc6e9b37eeefec88147d88ad4f30b2f0f5dea`.  The runtime used no GPU and
+reported Linux `6.6.122+`, x86-64, glibc `2.35`, Python `3.12.13`, 8 Intel
+Xeon 2.20 GHz CPUs, and `MemTotal: 53467184 kB`.  It started at
+`2026-08-02T10:46:37.722278+00:00`; the cell duration was `267.283 s`.
+
+The exact Lean and mathlib pins were verified.  Isolated official cache
+acquisition exited zero after `99.512070 s`.  The sole build command,
+`lake build YangMills.OS.SpatialVacuum`, exited `1` after `143.176164 s`.
+The preceding `change` failures were gone.  Lean instead reported that
+`← Complex.ofReal_sub` and `← Complex.ofReal_add` could not match
+`1 - ((x ^ L : ℝ) : ℂ)` and `1 + ((x ^ L : ℝ) : ℂ)`: the complex literal
+`1` had not first been rewritten as the cast of the real literal `1`.
+
+Thus the exact next repair is to apply `← Complex.ofReal_one` before the
+subtraction/addition rewrites.  This remains a coercion-normalization failure,
+not a counterexample to the finite inequality.  No PASS, oracle, core build,
+or theorem certification is claimed.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 618 (2026-08-02, **TASK 14: finite log-grid comparison focused PASS**)
+
+**CERTIFIED FOCUSED LEAN BRICK; NOT A VACUUM OR SPECTRAL BOUND.**  The fourth
+fresh CPU/high-RAM Colab clone checked out and printed raw SHA
+`7162d272f6e1321a1a13b51cd59c2e53f68ccd41`.  It verified Lean
+`leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib
+`07642720480157414db592fa85b626dafb71355b`.
+
+The no-GPU runtime reported Linux `6.6.122+`, x86-64, glibc `2.35`, Python
+`3.12.13`, 8 AMD EPYC 7B12 CPUs, and `MemTotal: 53467192 kB`.  Its UTC
+interval was `2026-08-02T10:54:09.490461+00:00` through
+`2026-08-02T10:57:24.387543+00:00`.  Isolated official cache acquisition
+exited zero after `73.010834 s`.
+
+`lake build YangMills.OS.SpatialVacuum` exited zero after `101.474265 s` and
+reported `8172 jobs`.  The new theorem
+`YangMills.OS.periodic_antiperiodic_log_norm_sums_lt` therefore elaborates
+under the printed active hypotheses `0 < L` and `0 < x < 1`.  Its proof takes
+norms and logarithms of the already certified exact periodic/antiperiodic root
+products and uses their strict positive order.  The runtime was disconnected
+and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+This focused PASS does not yet include the permanent oracle, core build, or
+consistency judge for the new declaration.  More importantly, it does not
+identify either logarithmic sum with a finite transfer vacuum, does not prove
+the physical vacuum quotient order, and does not touch either spectral-sector
+obligation, the original `beta = 0` endpoint, or the uniform `specRatio`
+theorem.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 619 (2026-08-02, **TASK 14: finite log-grid comparison full verifier passed**)
+
+**CERTIFIED INTERMEDIATE FINITE-ALGEBRA BRICK; NOT A VACUUM OR SPECTRAL
+BOUND.**  The fail-fast full verifier was versioned and pushed before
+execution at runner commit `a8456eb7f6aa860b20a2f9ee5ffb5e4447278ae5`.
+In one fresh Colab clone it checked out raw source/oracle SHA
+`30a64e5a8cfb7ef05cecb45dc9d033603d0eccbe`, verified the exact toolchain
+and mathlib pins, built the focused module and core, read the live baseline
+from this ledger, ran the permanent oracle and consistency judge, and
+stopped on every nonzero command or invariant mismatch.  One clone is the
+current requirement for this intermediate brick; this is not a terminal
+release witness.
+
+The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 AMD EPYC 7B12 CPUs, and
+`MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T11:01:11.937616+00:00` through
+`2026-08-02T11:54:54.129651+00:00` (`3222.192035 s`; the Colab cell reported
+`3222.568 s`).  Lean was exactly `leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib was exactly
+`07642720480157414db592fa85b626dafb71355b`.  The downloaded elan installer
+had SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`;
+isolated official cache acquisition exited zero after `101.351308 s`.
+
+All verification commands exited zero.  The measured results were:
+
+- `lake build YangMills.OS.SpatialVacuum`: `8172 jobs`, `165.011129 s`;
+- `lake build YangMillsCore`: `8467 jobs`, `888.659090 s`;
+- latest live-ledger baseline parsed by the verifier: `8465 jobs`;
+- measured branch delta: `+2`, exactly the two branch modules
+  `SpatialDualBond` and `SpatialVacuum`;
+- `lake env lean oracle_check.lean`: `2038.200953 s`;
+- `python3 scripts/check_consistency.py`: `4.303269 s`, reporting zero
+  `sorry` and zero project axioms.
+
+The permanent oracle printed each required declaration exactly once.  Each
+depends on exactly the permitted set
+`{propext, Classical.choice, Quot.sound}`:
+
+```text
+'YangMills.OS.periodic_antiperiodic_log_norm_sums_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.arcosh_circle_log_mixture' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.physical_arcosh_circle_log_mixture' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+The verifier also checked every permanent-oracle declaration for absence of
+nonstandard axioms and rejected any occurrence of `sorryAx`.
+
+The downloaded `spatial_vacuum_full_artifacts (1).zip` was independently
+hashed on Windows as
+`52c5fef5b8e988096b59f8b7ac6daba1b1af00470afab3335d7afde8f6b6e384`,
+matching the hash printed by Colab.  Its internal manifest was revalidated
+streamwise without extracting the archive; all four manifest comparisons
+were true:
+
+- `metadata.json`, 1187 bytes,
+  `a1be5263c43048d7ad8920b3747094a9159c5b053cf278675ab2ce2750ea91df`;
+- `transcript.txt`, 468699 bytes,
+  `89bd510c341d2521545dc5f1d5ee787b5f736c203d09708de611620eb023cb99`;
+- `oracle_output.txt`, 345000 bytes,
+  `d5bb60d1bcf4d26ad779559c6d886f0630856e5b4dc00b64d78bcb3a4807af14`;
+- `consistency_output.txt`, 154 bytes,
+  `95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`;
+- `SHA256SUMS`, 334 bytes,
+  `53f4b75d1c7c173e0a33f2f23717d002b43c10abc69576b4d6269e8da78d3b31`.
+
+The ZIP contains separate metadata, full oracle output, consistency output,
+and transcript through `SPATIAL VACUUM FULL VERIFICATION STEPS PASS`; its
+outer hash and final `SPATIAL VACUUM FULL PASS` were checked after archive
+construction.  The runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
+
+The newly certified theorem is only the strict comparison between two finite
+sums of logarithmic complex norms, under the printed hypotheses `0 < L` and
+`0 < x < 1`, obtained from the exact periodic/antiperiodic root products.  It
+does not identify either sum with a transfer-matrix vacuum, transfer the
+comparison through the scalar log mixture, or prove the physical vacuum
+quotient order.  Neither sharp odd-sector bound nor even non-Perron bound is
+proved; the original `beta = 0` endpoint and uniform `specRatio` theorem also
+remain open.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 620 (2026-08-02, **TASK 14: first angular log-kernel elaboration failed**)
+
+**MEASURED FAILURE; NO NEW THEOREM CERTIFIED.**  The first Lean attempt at
+`circle_log_kernel_factorization` and `circle_log_kernel_eq_log_norm` was
+committed and pushed before execution at raw SHA
+`d0b9e340df0cf2c5ec4a51a134385c2eddf795c7`.  A fresh public clone at that
+exact SHA ran in a Colab CPU/high-RAM runtime with no GPU: Linux `6.6.122+`,
+x86-64, glibc `2.35`, Python `3.12.13`, 8 Intel Xeon 2.20 GHz CPUs, and
+`MemTotal: 53467192 kB`.  The run started at
+`2026-08-02T12:03:09.041743+00:00`; the Colab cell reported `322.033 s`.
+
+The harness verified Lean `leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib
+`07642720480157414db592fa85b626dafb71355b`.  The downloaded elan installer
+had SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+Isolated official cache acquisition exited zero after `110.780808 s`; the
+sole build command, `lake build YangMills.OS.SpatialVacuum`, exited `1` after
+`184.350308 s`.
+
+Lean reported two local proof-script failures:
+
+- line 293: `No goals to be solved`; `field_simp` had already closed the
+  rational factorisation, so the following standalone `ring` was redundant;
+- line 319: `rw [← hfac]` could not find the quotient
+  `‖1 - xz‖^2 / (1-x)^2` inside the target `0 < ‖1 - xz‖^2`.  Positivity must
+  first be established for the quotient using `hfac`, then transferred to
+  the numerator through the strictly positive denominator `(1-x)^2`.
+
+Thus the run found no false scalar identity and no failed sign condition; it
+only exposed one closed-goal script error and one incorrectly targeted
+rewrite.  The fail-fast cell raised before writing or downloading its
+transcript file, so no transcript hash is claimed; the complete diagnostic
+was captured through the browser.  No core build or oracle ran, no PASS is
+claimed, and neither vacuum comparison nor spectral-sector obligation is
+affected.  The runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
+
+## Addendum 621 (2026-08-02, **TASK 14: repaired angular-kernel rerun selected stale cell**)
+
+**FAIL INSTRUMENTAL; THE REPAIRED SHA WAS NOT ELABORATED.**  A fresh
+CPU/high-RAM Colab runtime was intended to check repaired raw SHA
+`1fa6c3b6f4d77e46fd797f587648ebe4898bfa2f`.  The live source and transcript
+instead showed that the notebook editor had retained the preceding literal:
+at `2026-08-02T12:11:18.165051+00:00` it checked out
+`d0b9e340df0cf2c5ec4a51a134385c2eddf795c7` again.  The raw-SHA mismatch
+was detected in output before any Lean build.
+
+The stale cell reported the same 8-CPU, `53467192 kB`, no-GPU environment,
+completed the exact Lean installation, and was interrupted during isolated
+`lake exe cache get`.  It ended with literal `KeyboardInterrupt` after the
+Colab cell had run `82.263 s`; `lake build YangMills.OS.SpatialVacuum` never
+started.  Hence this incident says nothing about the repair or either theorem.
+No PASS or transcript hash is claimed, and the runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.  The next attempt must use a new
+empty code cell and accept output only after that cell visibly prints the
+repaired raw SHA.
+
+## Addendum 622 (2026-08-02, **TASK 14: angular log-kernel factorization focused PASS**)
+
+**CERTIFIED AS A FOCUSED MODULE BUILD; NOT A SPECTRAL BOUND.**  A new empty
+Colab code cell (not the stale cell recorded in Addendum 621) visibly contained
+and checked out raw SHA `1fa6c3b6f4d77e46fd797f587648ebe4898bfa2f` before
+elaboration.  The fresh CPU/high-RAM runtime was Linux 6.6.122 x86_64 with
+glibc 2.35, Python 3.12.13, 8 Intel Xeon 2.20 GHz CPUs, `53467192 kB` RAM,
+and no GPU.  It verified Lean `v4.29.0-rc6` at commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9` and the pinned mathlib commit
+`07642720480157414db592fa85b626dafb71355b`.
+
+The isolated official cache completed with exit 0 in `98.790898 s`.
+`lake build YangMills.OS.SpatialVacuum` completed with exit 0 in
+`157.906778 s` and measured `8172` jobs; the complete cell took `281.006 s`
+from UTC `2026-08-02T12:15:51.471484+00:00` to
+`2026-08-02T12:20:32.406971+00:00`.  The downloaded transcript
+`spatial_kernel_factor_focused.txt` is 15673 bytes.  Its locally recomputed
+SHA-256, `1a0dfd172fc13b1afa2d975953dfdf227afa165dab35764be9e88408ac0d6e63`,
+matches the digest printed by Colab exactly.
+
+This focused witness certifies that `circle_log_kernel_factorization` and
+`circle_log_kernel_eq_log_norm` elaborate in their module with the active
+hypotheses `0 < t`, `0 < x`, `x < 1`, and
+`2 * x * t = (1 - x)^2`.  These are pointwise scalar identities only: they
+do not identify either physical vacuum, bound either spectral sector, handle
+the beta-zero endpoint, or prove the uniform `specRatio` target.  A complete
+oracle/core witness remains required after the declarations enter the oracle.
+The runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 623 (2026-08-02, **TASK 14: full-verifier standard-RAM allocation rejected**)
+
+**REJECTED ENVIRONMENT; NOT A LEAN FAILURE AND NOT A VERIFICATION WITNESS.**
+The first fresh Colab allocation for full-verifier runner SHA
+`551ee104760aae18f41efa27e2034905b86620b1` correctly checked out source SHA
+`3d7ea4c9d22504f09afa36c95706faea16451071`, but Colab assigned a standard
+2-CPU, `13286944 kB` runtime rather than the required CPU/high-RAM runtime.
+The run began at `2026-08-02T12:25:21.516891+00:00`; exact Lean installation
+completed, then the cell was interrupted during isolated
+`lake exe cache get` after `60.669 s`.  No Lean build, core, oracle, or
+consistency judge started, and no PASS or artifact hash is claimed.
+
+The runtime was disconnected and deleted.  High RAM was then selected
+explicitly before opening the successful independent runtime recorded in the
+next addendum.  This allocation incident says nothing about either scalar
+identity or any spectral obligation; **SESIÓN COLAB LIBRE**.
+
+## Addendum 624 (2026-08-02, **TASK 14: angular log-kernel identities full PASS**)
+
+**CERTIFIED INTERMEDIATE BRICK; ONE FRESH COLAB CLONE, NOT A TERMINAL
+DELIVERY AND NOT A SPECTRAL BOUND.**  Versioned runner SHA
+`551ee104760aae18f41efa27e2034905b86620b1` cloned the public repository
+afresh and checked out exact declaration/oracle SHA
+`3d7ea4c9d22504f09afa36c95706faea16451071`.  The accepted CPU/high-RAM
+runtime was Linux 6.6.122 x86_64 with glibc 2.35, Python 3.12.13, 8 Intel
+Xeon 2.20 GHz CPUs, `53467192 kB` RAM, and no GPU.  It verified Lean
+`v4.29.0-rc6` at commit `00659f8e6071d7e46131ed643bf8003b99b044e9`,
+mathlib `07642720480157414db592fa85b626dafb71355b`, and elan-installer
+SHA-256 `a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+
+All commands exited zero.  Isolated official cache acquisition took
+`110.289816 s`; `lake build YangMills.OS.SpatialVacuum` took `158.766380 s`
+and measured `8172` jobs; `lake build YangMillsCore` took `1027.396707 s`
+and measured `8467` jobs.  The live ledger baseline read by the versioned
+verifier was `8465`, so the measured delta was exactly two branch modules.
+The permanent `lake env lean oracle_check.lean` took `2173.747889 s`, and
+`python3 scripts/check_consistency.py` took `4.194156 s`, reporting zero
+Lean `sorry` and zero project axioms.  The complete accepted cell ran from
+UTC `2026-08-02T12:27:22.453641+00:00` to
+`2026-08-02T13:25:42.837296+00:00` (`3500.601 s` reported by Colab).
+
+The full oracle printed exactly the allowed axiom set
+`{propext, Classical.choice, Quot.sound}` for each of:
+`periodic_antiperiodic_log_norm_sums_lt`, `arcosh_circle_log_mixture`,
+`physical_arcosh_circle_log_mixture`, `circle_log_kernel_factorization`, and
+`circle_log_kernel_eq_log_norm`.  It printed no `sorryAx`, and the verifier
+rejected any nonstandard axiom anywhere in the permanent oracle output.
+
+The downloaded archive
+`C:\Users\lluis\Downloads\spatial_vacuum_full_artifacts (2).zip` is
+71565 bytes.  Its locally recomputed SHA-256
+`4f669811e66a5eb13796d0dec1e2cf7b7bdb390b8eca258b40278ce1293c8f72`
+matches the digest printed by Colab.  Streamwise local hashes matched every
+line of the included manifest:
+
+- `metadata.json` (1415 bytes):
+  `1c672c226f68e10a911b46edc84f1682f870fffe5dea26bfb527b00472964296`;
+- `transcript.txt` (468031 bytes):
+  `c91f66f55525b1fd8ea343d594a2254da20310205b0fc587bd0368a337f82f3c`;
+- `oracle_output.txt` (345210 bytes):
+  `a0e35364ad51b9eed17681dcb1bc67a0e0370d31b33f1629ecbd9f3d8a86dd39`;
+- `consistency_output.txt` (154 bytes):
+  `95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`.
+
+This certifies only the two exact pointwise scalar identities and the earlier
+finite log-grid/Stieltjes bricks.  It does not identify the physical vacuum
+products, prove their ordering, establish either the sharp odd-sector bound
+or the even non-Perron bound, handle the beta-zero endpoint, or prove the
+uniform `specRatio` theorem.  Clifford/Jordan--Wigner remains unopened.  The
+runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 625 (2026-08-02, **TASK 14: kernel-parameter focused Lean failure**)
+
+**MEASURED LEAN FAILURE; NO PASS AND NO VERIFICATION WITNESS.**  A fresh
+CPU/high-RAM Colab clone checked out exact source SHA
+`dd26cbbbb79fc5bde6f00ec7fb4a768c22eb0bf7`.  The runtime was Linux 6.6.122
+x86_64 with glibc 2.35, Python 3.12.13, 8 Intel Xeon 2.20 GHz CPUs,
+`53467192 kB` RAM, and no GPU.  It verified Lean `v4.29.0-rc6` at commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9` and mathlib
+`07642720480157414db592fa85b626dafb71355b`.
+
+The isolated official cache completed with exit 0 in `102.022555 s`.
+`lake build YangMills.OS.SpatialVacuum` then failed with exit 1 after
+`203.248005 s`.  Three algebraic steps in
+`existsUnique_circleLogKernelParameter` exhausted the deterministic default
+limit of 200000 heartbeats (lines 335, 337, and 340 of that SHA), and
+`circleAverage_log_kernel_eq_log_norm` exposed a genuine radius-normalization
+mismatch: its local hypothesis had type `z ∈ sphere 0 |1|`, whereas the
+pointwise lemma requires `z ∈ sphere 0 1`.  The latter needs the explicit
+`by simpa using hz` transport already used by earlier circle-average lemmas.
+
+This is a proof-engineering failure in the new source, not an infrastructure
+failure and not evidence against the scalar existence/uniqueness statement.
+The heartbeat limit was not raised, no PASS was claimed, and neither Core nor
+the oracle was launched.  The runtime was disconnected and deleted before
+repair work; **SESIÓN COLAB LIBRE**.
+
+## Addendum 626 (2026-08-02, **TASK 14: focused harness toolchain failure**)
+
+**INSTRUMENTAL FAILURE; NO LEAN BUILD AND NO VERIFICATION WITNESS.**  A fresh
+CPU/high-RAM Colab runtime (Linux 6.6.122 x86_64, glibc 2.35, Python 3.12.13,
+8 CPUs, `53467192 kB` RAM, no GPU) cloned and checked out exact repair SHA
+`b1d7d7a81b97306676c82be6c0ace142642df922`.  The run began at UTC
+`2026-08-02T16:25:31.232767+00:00`; clone and checkout exited zero in
+`9.962303 s` and `1.831833 s`, respectively.  The elan installer SHA-256 was
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`, and
+installation of exact Lean `v4.29.0-rc6` commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9` exited zero in `14.758172 s`.
+
+The harness then called `lean --version` after deliberately installing with
+`--default-toolchain none`, but failed to set `ELAN_TOOLCHAIN` or use
+`elan run`.  The command therefore exited 1 with the literal diagnostic
+`error: no default toolchain configured. run 'elan default stable' to install
+& configure the latest Lean 4 stable release.`  This is solely a harness
+configuration error.  Cache acquisition, module compilation, Core, and the
+oracle never started; no PASS was claimed.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 627 (2026-08-02, **TASK 14: linear repair focused Lean failure**)
+
+**MEASURED LEAN FAILURE; NO PASS AND NO VERIFICATION WITNESS.**  A fresh
+CPU/high-RAM Colab runtime checked out exact source SHA
+`b1d7d7a81b97306676c82be6c0ace142642df922`.  The run began at UTC
+`2026-08-02T16:29:40.655540+00:00` on Linux 6.6.122 x86_64 with glibc 2.35,
+Python 3.12.13, 8 AMD EPYC 7B12 CPUs, `53467192 kB` RAM, and no GPU.  The
+harness fixed the Addendum 626 defect by exporting exact
+`ELAN_TOOLCHAIN=leanprover/lean4:v4.29.0-rc6`; `lean --version` then verified
+commit `00659f8e6071d7e46131ed643bf8003b99b044e9`, and the manifest verified
+mathlib `07642720480157414db592fa85b626dafb71355b`.
+
+The isolated official cache completed with exit 0 in `82.402524 s`.
+`lake build YangMills.OS.SpatialVacuum` then failed with exit 1 after
+`119.071030 s`.  The sole new source diagnostic was
+`YangMills/OS/SpatialVacuum.lean:297:4`: after simplification, `hx` has
+polynomial term `x * x`, while `hxpoly` requested syntactic term `x ^ 2`.
+This is a local normalization mismatch in the repaired algebraic proof, not
+an infrastructure failure and not evidence against existence or uniqueness.
+No heartbeat was raised, no PASS was claimed, and neither Core nor the oracle
+was launched.  The runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
+
+## Addendum 628 (2026-08-02, **TASK 14: Colab editor corruption**)
+
+**INSTRUMENTAL FAILURE; NO CLONE, LEAN BUILD, OR VERIFICATION WITNESS.**  A
+new CPU/high-RAM Colab runtime was opened for the one-line normalization
+repair at source SHA `4d676c23469ba311b8004504fe57b96241542d16`.
+Reusing the prior virtualized code-cell editor corrupted the replacement:
+Python received the literal splice `run(['lefrom pathlib import Path` at line
+61 and stopped immediately with `SyntaxError: unterminated string literal
+(detected at line 61)`.  No repository command, cache acquisition, Lean
+process, Core build, or oracle ran, and no PASS was claimed.  The runtime was
+disconnected and deleted.  The next attempt must use a wholly new empty cell
+rather than refill the virtualized failed editor; **SESIÓN COLAB LIBRE**.
+
+## Addendum 629 (2026-08-02, **TASK 14: kernel-parameter focused PASS**)
+
+**COMPILED AS A FOCUSED INTERMEDIATE BRICK; NOT YET ORACLE-VERIFIED.**  After
+the failures in Addenda 625--628, a wholly new Colab code cell checked out
+exact source SHA `4d676c23469ba311b8004504fe57b96241542d16` in a fresh clone.
+The CPU/high-RAM runtime was Linux 6.6.122 x86_64 with glibc 2.35, Python
+3.12.13, 8 AMD EPYC 7B12 CPUs, `53467192 kB` RAM, and no GPU.  It verified
+Lean `v4.29.0-rc6` at commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, mathlib
+`07642720480157414db592fa85b626dafb71355b`, and elan-installer SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+
+The isolated official cache returned exit 0 in `79.711612 s`.
+`lake build YangMills.OS.SpatialVacuum` returned exit 0 in `121.174027 s` and
+measured `8172` jobs.  The accepted run lasted from UTC
+`2026-08-02T16:39:05.020934+00:00` to
+`2026-08-02T16:42:49.888996+00:00`.  The downloaded 9807-byte transcript has
+desktop-recomputed SHA-256
+`88bf1a1acdbd7919ea98348d2b9cd0ef32978e3fd7741a73fc452a0037fd16c5`,
+identical to the digest printed by Colab.
+
+This witness compiles `existsUnique_circleLogKernelParameter` and
+`circleAverage_log_kernel_eq_log_norm` in their module.  It does not yet
+verify their axiom sets, build the post-merge Core, identify either physical
+vacuum, prove either spectral-sector inequality, handle the beta-zero
+endpoint, or prove the uniform `specRatio` target.  The runtime was
+disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 630 (2026-08-02, **TASK 14: post-merge Core-count gate failure**)
+
+**MEASURED GATE FAILURE; CORE GREEN, ORACLE NOT RUN, NO FULL PASS.**  After
+merge commit `9a654a5585d6b94ea16094a5c4ac2b6fede2b896` incorporated exact
+`main` SHA `40d5f59af88629a9cbadd5e8742bb7d97b11fc7d`, the next natural full
+measurement used versioned runner SHA
+`7580d2427c6ba77b0fef5c0f89a1bd17ba2dd101` (notebook SHA-256
+`4eb96c3b5b98d390ed2e274e734ab08dcdd6d3db3865996f0f36741c3f3cc743`)
+and checked out exact source/oracle SHA
+`6ddaa3760cf32f51c1420dad2465d176d5528257` in a second fresh clone.
+
+The CPU/high-RAM run began at UTC `2026-08-02T16:48:34.706541+00:00` on
+Linux 6.6.122 x86_64 with glibc 2.35, Python 3.12.13, 8 AMD EPYC 7B12 CPUs,
+`53467192 kB` RAM, and no GPU.  Exact Lean/mathlib pins and the elan-installer
+hash were verified.  The isolated official cache exited zero in
+`77.740841 s`; `lake build YangMills.OS.SpatialVacuum` exited zero in
+`123.186515 s` at `8172 jobs`; and `lake build YangMillsCore` exited zero in
+`781.386012 s` at **8468 jobs**.
+
+The preregistered runner retained the live-ledger baseline `8465` and required
+exactly two branch jobs, hence expected 8467.  It failed closed with the
+literal diagnostic `core jobs 8468 != live ledger baseline 8465 + two branch
+modules`.  Thus the prediction that the merge would leave the Core counter
+unchanged is falsified: relative to the earlier 8467 witness anchored at
+source SHA `3d7ea4c9d22504f09afa36c95706faea16451071`, the merged Core has one
+additional effective job.  That earlier witness and its `+2` interpretation
+remain preserved as historical measurements; they are not rewritten.
+
+Because the runner stopped immediately after the counter check, the permanent
+oracle and consistency scanner did not run, no archive was produced, and no
+full PASS is claimed.  This failure says nothing against either new theorem.
+The runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 631 (2026-08-02, **TASK 14: kernel parameter and circle-average full PASS**)
+
+**VERIFIED INTERMEDIATE BRICK; NOT A VACUUM OR SPECTRAL COMPARISON.**  A fresh
+CPU/high-RAM Colab runtime executed exact versioned runner SHA
+`e603ba2649775323dbe012a78a50a37cb5e038a1` (notebook SHA-256
+`868f53840d7f37f21c42176676cd9b7d6ba57a746acb0215126742ac49b610e7`).
+The runner made its own independent fresh public clone and checked out exact
+source/oracle SHA `4164b31d4b0a27a4d240e9882003fc2b2b52517e`.  The run lasted
+from UTC `2026-08-02T17:09:47.341781+00:00` to
+`2026-08-02T17:53:30.026820+00:00` on Linux 6.6.122 x86_64 with glibc 2.35,
+Python 3.12.13, 8 CPUs, `53467192 kB` RAM, and no GPU.  It verified Lean
+`v4.29.0-rc6` commit `00659f8e6071d7e46131ed643bf8003b99b044e9`, mathlib
+`07642720480157414db592fa85b626dafb71355b`, and elan-installer SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+
+Every command exited zero.  The isolated cache completed before the measured
+targets; `lake build YangMills.OS.SpatialVacuum` took `132.038761 s` and
+measured `8172 jobs`; `lake build YangMillsCore` took `800.387869 s` and
+measured `8468 jobs`; the permanent oracle took `1582.267723 s`; and
+`scripts/check_consistency.py` took `2.718134 s`, reporting zero Lean `sorry`
+and zero project axioms.
+
+The Core count is now explained without rewriting the earlier witness.  The
+historical live-ledger baseline remains 8465.  Relative to exact merged base
+SHA `40d5f59af88629a9cbadd5e8742bb7d97b11fc7d`, the merge contributes the
+new `CongruenceSpectrum` Core import measured in Addendum 630 as one effective
+job, while this lane still contributes its two modules.  Thus the accepted
+count is exactly `8465 + 1 + 2 = 8468`.  The pre-merge `8467 / +2` measurement
+at source SHA `3d7ea4c9d22504f09afa36c95706faea16451071` remains intact.
+
+The complete oracle printed exactly `{propext, Classical.choice, Quot.sound}`
+for each required declaration, including
+`existsUnique_circleLogKernelParameter` and
+`circleAverage_log_kernel_eq_log_norm`; it printed no `sorryAx`, and the
+global parser rejected any nonstandard axiom elsewhere.  Desktop inspection
+of the downloaded oracle independently found each of the two new exact axiom
+lines once and found zero `sorryAx`.
+
+**ARTIFACT INTEGRITY, VERIFIED ON WINDOWS WITHOUT RUNNING LEAN.**  The
+downloaded 71013-byte ZIP
+`C:\Users\lluis\Downloads\spatial_vacuum_full_artifacts (3).zip` has
+SHA-256 `83a68468d4f038bde0da426ea73a0b98796f333f6d19f3324c782a3df6850655`,
+matching Colab.  Streamwise hashes agree with its internal `SHA256SUMS`:
+
+- `consistency_output.txt` (154 bytes):
+  `95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`;
+- `metadata.json` (1644 bytes):
+  `f41cc4f64d5e00e124eaf37e9796c8044bf5f07f9ee7be9c2b0d8f8cd9996a9c`;
+- `oracle_output.txt` (345433 bytes):
+  `56eb19b74053111ed6cc94e013361aed184e8f570a3067bff7c5280da257251f`;
+- `transcript.txt` (462378 bytes):
+  `cd51720be884aa716854465ac4dbce7b5e0eeb825daebbe59506fe9fe6595fd7`.
+
+This verifies only existence and uniqueness of the scalar parameter in
+`(0,1)` for `t > 0`, plus transport of the already proved pointwise logarithm
+identity through `circleAverage`.  No physical specialization has been
+introduced, so no theorem hides the future active hypothesis `gamma < a`;
+that hypothesis must be printed when `x = tanh gamma / tanh a` first appears.
+Neither physical vacuum has been identified or compared, neither spectral
+sector bound is proved, the beta-zero endpoint remains open, and the uniform
+`specRatio` theorem remains wholly open.  Clifford/Jordan--Wigner remains
+unopened.  The runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
+
+## Addendum 632 (2026-08-02, **TASK 14: exact finite log-sign Lean failure**)
+
+**MEASURED LEAN FAILURE; NO PASS AND NO VERIFICATION WITNESS.**  A fresh
+CPU/high-RAM Colab runtime executed exact versioned runner SHA
+`10250eece640ec05d715055133d80e7b78cfa95c` (notebook SHA-256
+`0e636edc4a1c213cede6b4ec4793a5c3e8bb5d6360fe011de5487bfc55a9eba5`).
+The runner made an independent fresh public clone and checked out exact
+source/oracle SHA `20d5e93f8dadac8ebfe5e7b6cb94e783d250d310`.  The run began at
+UTC `2026-08-02T18:59:43.110992+00:00` on Linux 6.6.122 x86_64 with glibc
+2.35, Python 3.12.13, 8 Intel Xeon CPUs, `53467192 kB` RAM, and no GPU.  It
+verified Lean `v4.29.0-rc6` commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, mathlib
+`07642720480157414db592fa85b626dafb71355b`, and elan-installer SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+
+The isolated official cache exited zero in `94.541007 s`.
+`lake build YangMills.OS.SpatialVacuum` then exited 1 after `146.291666 s`
+with the sole new source diagnostic
+`YangMills/OS/SpatialVacuum.lean:46:36: failed to prove
+positivity/nonnegativity/nonzeroness`.  Line 46 asks `positivity` to prove
+`1 - x ^ L != 0`; the immediately preceding hypothesis already supplies
+`x ^ L < 1`.  This is a local tactic failure in the proof of the exact
+`-2 * artanh (x ^ L)` identity, not evidence against the identity or its
+strict sign.  The runner stopped at the module target, so Core, the permanent
+oracle, consistency, and artifact packaging did not run; no PASS is claimed.
+The runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 633 (2026-08-02, **TASK 14: exact axiom-set gate failure**)
+
+**MEASURED HARNESS-GATE FAILURE AFTER A GREEN ORACLE; NO FULL PASS.**  A
+second fresh CPU/high-RAM Colab runtime executed exact versioned runner SHA
+`96c3ce5c6336e77c2eb3690577108c388313e955` (notebook SHA-256
+`879ab3313f8c4b1d151071bb5cafdd4ed17b17202a0d4d8fe38375ed1b66fd50`).
+Its independent fresh public clone checked out exact source/oracle SHA
+`fe1439ab895e166eabc985c168a54020f2d842f4`.  The run began at UTC
+`2026-08-02T19:08:43.744399+00:00` on Linux 6.6.122 x86_64 with glibc 2.35,
+Python 3.12.13, 8 Intel Xeon CPUs, `53467192 kB` RAM, and no GPU.  Exact
+Lean/mathlib pins and elan-installer SHA-256 were verified.
+
+The official isolated cache exited zero in `103.254570 s`;
+`lake build YangMills.OS.SpatialVacuum` exited zero in `173.540636 s` at
+`8172 jobs`; `lake build YangMillsCore` exited zero in `919.356367 s` at
+`8468 jobs`; and `lake env lean oracle_check.lean` exited zero in
+`2062.936806 s`.  Thus the natural counter measurement again confirms
+`8465 + 1` effective merged-main job plus this lane's `+2` jobs, without
+rewriting the historical `8467 / +2` witness anchored at
+`3d7ea4c9d22504f09afa36c95706faea16451071`.
+
+The complete oracle printed no `sorryAx` and printed the exact line
+`'YangMills.OS.periodic_antiperiodic_log_difference_eq_neg_two_artanh'
+depends on axioms: [propext]`.  The runner then failed closed with literal
+diagnostic `periodic_antiperiodic_log_difference_eq_neg_two_artanh axioms
+{'propext'} != {'propext', 'Classical.choice', 'Quot.sound'}`.  This is a
+runner-contract defect: it required every named theorem to use all three
+allowed axioms, whereas this elementary scalar theorem genuinely uses the
+strict subset `{propext}`.  Consistency and artifact packaging did not run,
+so no full PASS is claimed.  The runtime was disconnected and deleted
+immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 634 (2026-08-02, **TASK 14: multiline oracle-parser false PASS**)
+
+**INSTRUMENTAL FALSE PASS; THE LEAN OUTPUT IS GREEN BUT THE RUNNER IS NOT A
+VALID CERTIFIER.**  A third fresh CPU/high-RAM Colab runtime executed exact
+versioned runner SHA `3a89d1753993e1545aa7f8257c6f5ad85f58d2ed`
+(notebook SHA-256
+`8e31e026fc10598689215aa15649deedc00e485cee49cf28d488653b9da9c840`).
+Its independent fresh public clone checked out exact source/oracle SHA
+`6b242c96c8c8416d2246d27560e6d603b2b76a38`.  The run lasted from UTC
+`2026-08-02T20:08:06.739308+00:00` to
+`2026-08-02T21:03:57.850592+00:00` on Linux 6.6.122 x86_64 with glibc 2.35,
+Python 3.12.13, 8 CPUs, `53467192 kB` RAM, and no GPU.  Exact Lean/mathlib
+pins and the elan-installer hash were verified.
+
+Every underlying command exited zero: isolated official cache in
+`100.496917 s`; `lake build YangMills.OS.SpatialVacuum` in `167.569388 s`
+at `8172 jobs`; `lake build YangMillsCore` in `858.989988 s` at `8468 jobs`;
+the complete permanent oracle in `2195.605340 s`; and consistency in
+`4.063914 s`.  The Core count again measures the attributed decomposition
+`8465 + 1` merged-main job plus this lane's `+2`, without altering the
+historical `8467 / +2` witness.
+
+The runner printed `SPATIAL VACUUM FULL PASS`, but desktop inspection of the
+downloaded oracle exposed a false parser premise.  Lean pretty-printed the
+new declaration across three lines:
+
+```text
+'YangMills.OS.periodic_antiperiodic_log_difference_eq_neg_two_artanh' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+```
+
+The line-oriented parser consumed only `[propext,` and therefore accepted
+the artificially weakened expected set `{propext}`.  The actual exact axiom
+set is the fully allowed `{propext, Classical.choice, Quot.sound}`.  Thus the
+Lean theorem and complete oracle are green, but this runner execution is not
+accepted as a verification witness; the parser must consume bracketed axiom
+blocks across line breaks and retain the full expected set.
+
+**ARTIFACT INTEGRITY, DIAGNOSTIC ONLY.**  The downloaded 71710-byte ZIP
+`C:\Users\lluis\Downloads\spatial_vacuum_full_artifacts (4).zip` has
+desktop-recomputed SHA-256
+`ff75b2c2281f86d444db8c98ba90b0118947e302034ec8207c230f254d3ddaef`,
+matching Colab.  Its internal payload hashes also match desktop recomputation:
+`consistency_output.txt`
+`95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`,
+`metadata.json`
+`766e360f04b951d83b3b9b0f18ce5bac426432763dddea120148da2ac01c6216`,
+`oracle_output.txt`
+`385f776fe23a719cdb148ffcce96e9862d0320076d299e2bcac3d199d86b80b5`,
+and `transcript.txt`
+`124c06afbcc8d9b978112f3dd8830627b34482b53595531264cb4ea142c53c6b`.
+The oracle contains zero `sorryAx`.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 635 (2026-08-02, **TASK 14: quoted-name oracle-parser FAIL**)
+
+**PREREGISTERED LIGHT HARNESS TEST FAILED; NO COLAB SESSION OR LEAN PROCESS
+WAS STARTED.**  After committing and pushing multiline-parser runner SHA
+`10210754b16b4caa926b42b9f2f78f40ef12f25e`, a seconds-only Windows test
+ran that exact regular-expression contract against diagnostic oracle artifact
+`spatial_vacuum_full_artifacts (4).zip` from Addendum 634.  It exited 1 with
+literal assertion payload `(2817, 2821)`: the parser recovered 2817 bracketed
+axiom blocks while the oracle contained 2821 ` depends on axioms:` markers.
+
+Inspection localized all four misses to Lean declaration names ending in a
+prime, printed for example as
+`'YangMills.OS.pow_succ_apply'' depends on axioms:` and
+`'YangMills.OS.sinh_pos'' depends on axioms:`.  The pattern `[^']+` treated
+the prime as the closing quote and therefore could not consume these names.
+The required Task 14 declaration itself was parsed, but a complete-oracle
+certifier may not silently miss unrelated declarations.  The next parser must
+match every bracketed payload independently of theorem-name quoting, while
+using exact escaped markers only for the required named declarations.  No
+PASS is claimed; **SESIÓN COLAB LIBRE** remained true throughout.
+
+## Addendum 636 (2026-08-02, **TASK 14: exact finite log-sign full PASS**)
+
+**VERIFIED INTERMEDIATE BRICK; NOT A PHYSICAL VACUUM OR SPECTRAL
+COMPARISON.**  After the three preserved failures in Addenda 632--635, a
+fresh CPU/high-RAM Colab runtime executed exact versioned runner SHA
+`9ed110d942583a4fbe1c5c261e39856dba8813d8` (notebook SHA-256
+`23bdfe60cf5b24900fb943017460173afe631b5a314bdc5b762969c75574314e`).
+The runner made an independent fresh public clone and checked out exact
+source/oracle SHA `9dd2cdabda17c0af1baff530bb6d33c8d27f0ae5`.  The run lasted from UTC
+`2026-08-02T21:12:46.414455+00:00` to
+`2026-08-02T22:06:12.038410+00:00` on Linux 6.6.122 x86_64 with glibc 2.35,
+Python 3.12.13, 8 Intel Xeon CPUs, `53467192 kB` RAM, and no GPU.  It
+verified Lean `v4.29.0-rc6` commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, mathlib
+`07642720480157414db592fa85b626dafb71355b`, and elan-installer SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+
+Every command exited zero.  `lake exe cache get` in the isolated ephemeral
+clone took `96.991297 s`; `lake build YangMills.OS.SpatialVacuum` took
+`157.047027 s` and measured `8172 jobs`; `lake build YangMillsCore` took
+`888.022258 s` and measured **8468 jobs**; `lake env lean
+oracle_check.lean` took `2035.660235 s`; and
+`python3 scripts/check_consistency.py` took `3.906760 s`, reporting zero Lean
+`sorry` and zero project axioms.  The counter preserves both earlier facts:
+the historical `8467 / +2` witness remains anchored at source SHA
+`3d7ea4c9d22504f09afa36c95706faea16451071`, while the current count is
+`8465 + 1` effective merged-main `CongruenceSpectrum` job plus this lane's
+unchanged `+2` jobs, hence 8468.
+
+The new theorem
+`periodic_antiperiodic_log_difference_eq_neg_two_artanh` proves, for
+`0 < L`, `0 < x`, and `x < 1`, the exact identity and strict sign
+
+```text
+log (1 - x^L) - log (1 + x^L) = -2 * artanh (x^L) < 0.
+```
+
+This closes the finite root-product sign directly, independently of the
+Stieltjes representation.  The repaired oracle parser consumed all 2821
+bracketed axiom payloads across line breaks, exactly matching all 2821
+` depends on axioms:` markers, and rejected any payload outside
+`{propext, Classical.choice, Quot.sound}`.  It found the new theorem exactly
+once with exactly those three allowed axioms and found no `sorryAx`.
+
+**ARTIFACT INTEGRITY, VERIFIED ON WINDOWS WITHOUT RUNNING LEAN.**  The
+downloaded 71738-byte ZIP
+`C:\Users\lluis\Downloads\spatial_vacuum_full_artifacts (5).zip` has
+SHA-256 `2a210cec46a16218108bdb30e6fd07af44836b876f64e11078b346f3a51cefb8`,
+matching Colab.  Streamwise hashes agree with its internal `SHA256SUMS`:
+
+- `consistency_output.txt` (154 bytes):
+  `95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`;
+- `metadata.json` (1777 bytes):
+  `2b1c18d96ab7f5b984fe83aec4b1f99c1d8f12225ad31cde878b6a7ddbcbe8b1`;
+- `oracle_output.txt` (345564 bytes):
+  `385f776fe23a719cdb148ffcce96e9862d0320076d299e2bcac3d199d86b80b5`;
+- `transcript.txt` (468401 bytes):
+  `d736a7ed18a68d7f30cb7d535969e9ec043621dc8e0194ceebd264fd9c18032f`.
+
+This verifies only the exact finite scalar sign after the two root products.
+The previously verified Stieltjes/log-mixture and scalar-parameter transport
+were not reopened here.  No theorem in this brick specializes
+`x = tanh gamma / tanh a`; when that specialization is introduced, the
+active physical hypothesis `gamma < a` must appear in the printed theorem.
+Neither physical vacuum has been identified or compared, neither spectral
+sector bound is proved, the beta-zero endpoint remains open, and the uniform
+`specRatio` theorem remains wholly open.  Clifford/Jordan--Wigner remains
+unopened.  The runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
