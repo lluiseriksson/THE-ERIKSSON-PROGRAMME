@@ -24,6 +24,9 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lean_decls import declaration_lines   # ONE grammar, self-tested
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEX = os.path.join(REPO, "papers", "spatial-reconstruction",
                    "spatial_reconstruction.tex")
@@ -61,21 +64,7 @@ LINKS = {
     "MEASSUMLINE": ("SpatialReconstruction", "osPairing_transfer_gibbsSum"),
 }
 
-DECL = re.compile(r"^(?:@\[[^\]]*\]\s*)?(?:noncomputable\s+)?(?:private\s+)?"
-                  r"(?:protected\s+)?(?:theorem|def|lemma|abbrev|instance)\s+"
-                  r"([A-Za-z_][A-Za-z0-9_']*)")
 HEX40 = re.compile(r"[0-9a-fA-F]{40}")
-
-
-def decl_lines(path):
-    """name -> 1-based line, for every declaration in a module."""
-    out = {}
-    with io.open(path, encoding="utf-8", newline="") as f:
-        for n, line in enumerate(f, 1):
-            m = DECL.match(line)
-            if m and m.group(1) not in out:
-                out[m.group(1)] = n
-    return out
 
 
 def main():
@@ -89,7 +78,7 @@ def main():
     with io.open(sys.argv[2], encoding="utf-8") as f:
         meas = json.load(f)
 
-    lines = {name: decl_lines(path) for name, path in MODULES.items()}
+    lines = {name: declaration_lines(path) for name, path in MODULES.items()}
     tex = io.open(TEX, encoding="utf-8", newline="").read()
     old_anchor_hits = HEX40.findall(tex)
 
@@ -121,6 +110,7 @@ def main():
     oracle_text = io.open(ORACLE, encoding="utf-8", newline="").read()
     cited = set(re.findall(r"#print axioms YangMills\.OS\.([A-Za-z0-9_']+)",
                            oracle_text))
+    in_oracle_os = sum(1 for d in lines["SpatialOS"] if d in cited)
     in_oracle = sum(1 for d in lines["SpatialReconstruction"] if d in cited)
     counters = {
         "JOBSAFTER": meas["jobs_after"],
@@ -140,8 +130,13 @@ def main():
     # the delta the runner predicted BEFORE measuring
     checks.append(("job delta is exactly +1",
                    meas["jobs_after"] - meas["jobs_before"] == 1))
-    checks.append(("every declaration of the new module is in the oracle",
+    # BOTH modules, as two independent quantities.  v1.0's check covered only
+    # the new module, and the declarations that were actually missing were in
+    # the OTHER one.
+    checks.append(("every declaration of SpatialReconstruction is in the oracle",
                    in_oracle == decls_rec))
+    checks.append(("every declaration of SpatialOS is in the oracle",
+                   in_oracle_os == decls_os))
     checks.append(("no non-standard axiom", meas["oracle_nonstandard"] == 0))
     checks.append(("no sorryAx", meas["sorry_count"] == 0))
     checks.append(("no placeholder token survives",
@@ -166,8 +161,9 @@ def main():
     print("checks run: %d, all passed" % ran)
     print("anchor      : %s" % anchor)
     print("permalinks  : %d" % len(LINKS))
-    print("declarations: SpatialOS %d, SpatialReconstruction %d (%d in oracle)"
-          % (decls_os, decls_rec, in_oracle))
+    print("declarations: SpatialOS %d (%d in oracle), "
+          "SpatialReconstruction %d (%d in oracle)"
+          % (decls_os, in_oracle_os, decls_rec, in_oracle))
     print("jobs        : %d -> %d (delta %+d)"
           % (meas["jobs_before"], meas["jobs_after"],
              meas["jobs_after"] - meas["jobs_before"]))

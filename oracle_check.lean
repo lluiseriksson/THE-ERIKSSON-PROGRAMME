@@ -3182,6 +3182,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.collapseL_surjective
 #print axioms YangMills.OS.mem_ker_collapseL_iff
 #print axioms YangMills.OS.physicalEquiv
+#print axioms YangMills.OS.sqrtWeightEquiv
+#print axioms YangMills.OS.sqrtWeightEquiv_apply
+#print axioms YangMills.OS.symWeightedOp
+#print axioms YangMills.OS.symWeightedOp_add
+#print axioms YangMills.OS.symWeightedOp_smul
+#print axioms YangMills.OS.symWeightedOpL
+#print axioms YangMills.OS.transferOp_sqrtWeightEquiv
+#print axioms YangMills.OS.transferOpL_comp_sqrtWeightEquiv
+#print axioms YangMills.OS.transferOp_eigenvalue_iff
 #print axioms YangMills.OS.z2Flip
 #print axioms YangMills.OS.flipCfg
 #print axioms YangMills.OS.flipCfg_involutive

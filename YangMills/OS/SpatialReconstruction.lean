@@ -457,9 +457,11 @@ theorem transferOp_sqrtw {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ,
   push_cast at hc ⊢
   linear_combination u τ * hc
 
-/-- **THE SPECTRUM TRANSPORTS, WITH THE SAME EIGENVALUE.**  This is what gate R4
-predicted numerically; it is now proved, and the Perron vector and strict
-spectral gap of this lane's earlier work attach to `T` through it. -/
+/-- **ONE DIRECTION OF THE EIGEN-EQUATION.**  Note what this is NOT: it does not
+require `u ≠ 0`, so at `u = 0` its hypothesis holds for every `lam` and it says
+nothing; it assumes only `w ≥ 0`, so the map carrying `u` across need not be
+injective; and it has no converse.  It is a forward implication, and §7b is what
+turns it into a statement about spectra. -/
 theorem transferOp_eigen_of_symWeighted {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hw : ∀ σ, 0 ≤ w σ) (β : ℝ) (u : (Fin L → Fin 2) → ℂ) (lam : ℂ)
     (hu : ∀ σ, (∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * u τ)
@@ -468,6 +470,127 @@ theorem transferOp_eigen_of_symWeighted {L : ℕ} {w : (Fin L → Fin 2) → ℝ
       = lam * (((Real.sqrt (w σ) : ℝ) : ℂ) * u σ) := by
   rw [transferOp_sqrtw hw β u σ, hu σ]
   ring
+
+/-! ### §7b  The similarity, and what it does and does not give
+
+A second external reading pointed out that the intertwining above is still not
+what gate R4 claimed.  R4 asserted equality of eigenvalue LISTS, reality of all
+of them, ordering with multiplicity, and the ratio to the Perron eigenvalue.
+`transferOp_sqrtw` gives `T ∘ Q = Q ∘ S`; `transferOp_eigen_of_symWeighted`
+gives a forward implication that is vacuous at `u = 0`.  Between those and "the
+spectrum transports" there is a gap, and the honest response is to close it
+rather than to keep the sentence.
+
+What is proved here: `Q` is an ISOMORPHISM when `w > 0`, the intertwining is an
+equality of LINEAR MAPS, and consequently the sets of eigenvalues coincide in
+BOTH directions with the non-vanishing carried across.
+
+What is still NOT proved, and is stated rather than implied: equality of
+multiplicities, of characteristic polynomials, or of ordered eigenvalue lists.
+Those follow from a similarity by standard linear algebra; standard is not the
+same as present. -/
+
+/-- Multiplication by `√w`, as a linear ISOMORPHISM.  Strict positivity of `w`
+is exactly what makes it invertible, and invertibility is what the forward
+implication above lacked. -/
+noncomputable def sqrtWeightEquiv {L : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (hw : ∀ σ, 0 < w σ) :
+    ((Fin L → Fin 2) → ℂ) ≃ₗ[ℂ] ((Fin L → Fin 2) → ℂ) where
+  toFun u := fun σ => ((Real.sqrt (w σ) : ℝ) : ℂ) * u σ
+  map_add' u v := by
+    funext σ
+    simp only [Pi.add_apply]
+    ring
+  map_smul' c u := by
+    funext σ
+    simp only [Pi.smul_apply, smul_eq_mul, RingHom.id_apply]
+    ring
+  invFun v := fun σ => v σ / ((Real.sqrt (w σ) : ℝ) : ℂ)
+  left_inv u := by
+    funext σ
+    have h : ((Real.sqrt (w σ) : ℝ) : ℂ) ≠ 0 :=
+      Complex.ofReal_ne_zero.mpr (Real.sqrt_pos.mpr (hw σ)).ne'
+    field_simp
+  right_inv v := by
+    funext σ
+    have h : ((Real.sqrt (w σ) : ℝ) : ℂ) ≠ 0 :=
+      Complex.ofReal_ne_zero.mpr (Real.sqrt_pos.mpr (hw σ)).ne'
+    field_simp
+
+@[simp] theorem sqrtWeightEquiv_apply {L : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (hw : ∀ σ, 0 < w σ) (u : (Fin L → Fin 2) → ℂ) (σ : Fin L → Fin 2) :
+    sqrtWeightEquiv w hw u σ = ((Real.sqrt (w σ) : ℝ) : ℂ) * u σ := rfl
+
+/-- The symmetrised kernel, acting on complex boundary vectors. -/
+noncomputable def symWeightedOp {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
+    (u : (Fin L → Fin 2) → ℂ) : (Fin L → Fin 2) → ℂ :=
+  fun σ => ∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * u τ
+
+theorem symWeightedOp_add {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
+    (x y : (Fin L → Fin 2) → ℂ) :
+    symWeightedOp w β (x + y) = symWeightedOp w β x + symWeightedOp w β y := by
+  funext σ
+  show (∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * (x τ + y τ))
+      = (∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * x τ)
+        + ∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * y τ
+  rw [← Finset.sum_add_distrib]
+  exact Finset.sum_congr rfl fun τ _ => by ring
+
+theorem symWeightedOp_smul {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (c : ℂ)
+    (x : (Fin L → Fin 2) → ℂ) :
+    symWeightedOp w β (c • x) = c • symWeightedOp w β x := by
+  funext σ
+  show (∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * (c * x τ))
+      = c * ∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * x τ
+  rw [Finset.mul_sum]
+  exact Finset.sum_congr rfl fun τ _ => by ring
+
+/-- The symmetrised kernel as a linear map. -/
+noncomputable def symWeightedOpL {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) :
+    ((Fin L → Fin 2) → ℂ) →ₗ[ℂ] ((Fin L → Fin 2) → ℂ) where
+  toFun := symWeightedOp w β
+  map_add' := symWeightedOp_add w β
+  map_smul' c x := symWeightedOp_smul w β c x
+
+/-- **THE INTERTWINING, POINTWISE.**  `T (Q u) = Q (S u)`. -/
+theorem transferOp_sqrtWeightEquiv {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (u : (Fin L → Fin 2) → ℂ) :
+    transferOp w β (sqrtWeightEquiv w hw u)
+      = sqrtWeightEquiv w hw (symWeightedOp w β u) := by
+  funext σ
+  exact transferOp_sqrtw (fun σ => (hw σ).le) β u σ
+
+/-- **THE SIMILARITY, AS AN EQUALITY OF LINEAR MAPS**, with `Q` an isomorphism.
+This --- and not the forward implication of §7 --- is what determines the
+spectrum. -/
+theorem transferOpL_comp_sqrtWeightEquiv {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) :
+    (transferOpL w β).comp (sqrtWeightEquiv w hw).toLinearMap
+      = ((sqrtWeightEquiv w hw).toLinearMap).comp (symWeightedOpL w β) :=
+  LinearMap.ext fun u => transferOp_sqrtWeightEquiv hw β u
+
+/-- **THE EIGENVALUE SETS COINCIDE**, in both directions, with `u ≠ 0` carried
+across by the isomorphism.  This is the part of gate R4 that is now a theorem;
+multiplicities and characteristic polynomials are not. -/
+theorem transferOp_eigenvalue_iff {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (lam : ℂ) :
+    (∃ u ≠ 0, symWeightedOp w β u = lam • u)
+      ↔ ∃ v ≠ 0, transferOp w β v = lam • v := by
+  constructor
+  · rintro ⟨u, hu0, hu⟩
+    refine ⟨sqrtWeightEquiv w hw u, ?_, ?_⟩
+    · exact fun h => hu0 ((sqrtWeightEquiv w hw).map_eq_zero_iff.mp h)
+    · rw [transferOp_sqrtWeightEquiv hw β u, hu, map_smul]
+  · rintro ⟨v, hv0, hv⟩
+    refine ⟨(sqrtWeightEquiv w hw).symm v, ?_, ?_⟩
+    · exact fun h => hv0 ((sqrtWeightEquiv w hw).symm.map_eq_zero_iff.mp h)
+    · have hQ : sqrtWeightEquiv w hw ((sqrtWeightEquiv w hw).symm v) = v :=
+        (sqrtWeightEquiv w hw).apply_symm_apply v
+      have hstep := transferOp_sqrtWeightEquiv hw β ((sqrtWeightEquiv w hw).symm v)
+      rw [hQ, hv] at hstep
+      refine (sqrtWeightEquiv w hw).injective ?_
+      rw [map_smul, hQ]
+      exact hstep.symm
 
 /-! ## §8  The physical space as a quotient, packaged
 
