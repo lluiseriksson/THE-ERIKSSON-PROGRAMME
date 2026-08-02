@@ -29,9 +29,13 @@ both committed before this file.
     TV p q         =  (1/2) * sum_x |p x - q x|
     deltaAt i f    =  sup over eta, eta' agreeing OFF i, of |f eta - f eta'|
 ```
-The factor `1/2` in `TV` and the factor `1` in the conclusion of
-`abs_sum_signed_le` are tied to each other by exactly these definitions.  A
-later change to either without the other silently changes every downstream
+Two different `1/2`s meet here and must not be confused.  The ANALYTIC one is
+created in `abs_sub_mid_le` and appears in the conclusion of
+`abs_sum_signed_le`, whose visible constant is therefore `1/2` and not `1`.  The
+DEFINITIONAL one sits inside `TV`.  They are IDENTIFIED by rewriting, and that
+identification is what yields the factor `1` in the conclusion of
+`abs_sum_sub_le_tv_mul_osc` --- the corollary does not create a second factor.
+A later change to either without the other silently changes every downstream
 constant, so both are stated here and neither is defined anywhere else.
 
 ## What this module is for
@@ -48,18 +52,33 @@ because it keeps the `1/2` visible:
 
 The specialisation `a = p - q` is the total-variation form used by D-3c.
 
-## The five endpoints, kept separate on purpose
+## The inventory, in the three classes the audit distinguishes
 
-1. `sum_zero_sub_const`     — a zero-sum mass kills constants;
-2. `abs_sub_mid_le`         — every value is within half an oscillation of the
-                              midpoint of the range;
-3. `abs_sum_signed_le`      — the signed inequality;
-4. `abs_sum_sub_le_tv_mul_osc` — the TV/oscillation corollary;
-5. `signed_bound_attained`  — a witness that the bound is reached, so the
-                              constant is the constant and not a number above it.
+**Five analytic endpoints:**
 
-They are separate so that the normalisation of `TV` and the factor `1/2` cannot
-end up hidden inside the proof of D-3c.
+1. `sum_zero_sub_const`        — a zero-sum mass kills constants;
+2. `abs_sub_mid_le`            — every value is within half an oscillation of the
+                                 midpoint of the range;
+3. `abs_sum_signed_le`         — the signed inequality;
+4. `TV_nonneg`                 — the normalisation is nonnegative;
+5. `abs_sum_sub_le_tv_mul_osc` — the TV/oscillation corollary.
+
+**Sharpness witness, counted separately:**
+
+* `signed_bound_attained` — the bound is REACHED, so the constant is the
+  constant and not a number above it.
+
+**Exported auxiliaries, not endpoints:**
+
+* `inf_le_apply`, `apply_le_sup`, `osc_nonneg`.
+
+The three classes are named because the closure criterion says "five endpoints
+compiled; the exact equality witness compiled", and an earlier version of this
+header numbered the witness AS an endpoint while omitting `TV_nonneg` --- three
+incompatible inventories in the module, the charter and the desk's reports, so
+that "6/6" had no fixed meaning.  The endpoints are kept separate from one
+another so that the normalisation of `TV` and the factor `1/2` cannot end up
+hidden inside the proof of D-3c.
 
 ## On `DecidableEq`
 
