@@ -59,10 +59,16 @@ lake build "$MODNAME" > /content/build.log 2>&1
 echo "BUILD EXIT $?"
 tail -3 /content/build.log
 
+# The generator and the checker share ONE parser.  A grep here and a regex there
+# can disagree about what counts as a declaration, and the gap between them is
+# then invisible: the first run of this oracle proposed 37 names, two of which
+# were English sentences inside docstrings that happened to begin a line with
+# "lemma".  Asking the checker itself for the list removes the possibility.
 echo "=== ORACLE FILE, GENERATED FROM THE MODULE ==="
 echo "import $MODNAME" > _oracle_iso.lean
-grep -oE '^(theorem|lemma|def|abbrev) [A-Za-z_][A-Za-z0-9_]*' "$MODULE" \
-  | awk -v ns="$NAMESPACE" '{print "#print axioms " ns "." $2}' >> _oracle_iso.lean
+python3 scripts/check_s2a_oracle.py --list "$MODULE" \
+  | awk -v ns="$NAMESPACE" '{print "#print axioms " ns "." $1}' >> _oracle_iso.lean
+if [ ! -s _oracle_iso.lean ]; then echo "ABORT: empty oracle file"; exit 1; fi
 wc -l _oracle_iso.lean
 
 echo "=== ORACLE ==="

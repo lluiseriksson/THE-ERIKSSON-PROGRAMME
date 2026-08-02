@@ -13,7 +13,20 @@ Two house rules are built in rather than assumed:
     raises or returns non-zero in both normal and optimized mode, and PASS is
     printed only after an explicit counter matches the expected total.
 
+  * Comments and docstrings are STRIPPED before any declaration is extracted.
+    Prose wraps, and a wrapped sentence can begin a line with "lemma in the list
+    closes it" or "lemma applies."  A raw `^(theorem|lemma|def)` scan reads both
+    as declarations and then reports them missing from the oracle -- which is
+    ghost #26, an oracle list that could not tell code from prose.  Measured
+    again here on the bridge module: 37 "declarations" of which 2 were English.
+
+  * The GENERATOR and the CHECKER share this one parser (`--list`).  If the
+    script that decides what to interrogate and the script that decides what was
+    covered disagree about what a declaration is, the gap between them is
+    invisible by construction.
+
 Usage:  check_s2a_oracle.py <module.lean> <oracle-output.txt>
+        check_s2a_oracle.py --list <module.lean>
 """
 
 import re
@@ -28,9 +41,42 @@ DECL_RE = re.compile(r"^(?:theorem|lemma|def|abbrev)\s+([A-Za-z_][A-Za-z0-9_'!?.
                      re.MULTILINE)
 
 
+def strip_comments(text):
+    """Remove Lean block comments (nestable, docstrings included) and `--` lines.
+
+    Replaces removed characters with spaces rather than deleting them, so that
+    line structure -- and therefore the `^` anchor in DECL_RE -- is preserved.
+    """
+    out = list(text)
+    i, depth, n = 0, 0, len(text)
+    while i < n:
+        if text.startswith("/-", i):
+            depth += 1
+            out[i] = out[i + 1] = " "
+            i += 2
+            continue
+        if text.startswith("-/", i) and depth > 0:
+            depth -= 1
+            out[i] = out[i + 1] = " "
+            i += 2
+            continue
+        if depth > 0:
+            if text[i] != "\n":
+                out[i] = " "
+            i += 1
+            continue
+        if text.startswith("--", i):
+            while i < n and text[i] != "\n":
+                out[i] = " "
+                i += 1
+            continue
+        i += 1
+    return "".join(out)
+
+
 def declarations(source_path):
     with open(source_path, encoding="utf-8") as handle:
-        return DECL_RE.findall(handle.read())
+        return DECL_RE.findall(strip_comments(handle.read()))
 
 
 def verdicts(oracle_path):
@@ -46,8 +92,18 @@ def verdicts(oracle_path):
 
 
 def main():
+    if len(sys.argv) == 3 and sys.argv[1] == "--list":
+        names = declarations(sys.argv[2])
+        if not names:
+            sys.stderr.write("FAIL: no declarations found in the module\n")
+            return 1
+        for name in names:
+            print(name)
+        return 0
+
     if len(sys.argv) != 3:
-        sys.stderr.write("usage: check_s2a_oracle.py <module.lean> <oracle.txt>\n")
+        sys.stderr.write("usage: check_s2a_oracle.py <module.lean> <oracle.txt>\n"
+                         "       check_s2a_oracle.py --list <module.lean>\n")
         return 2
 
     expected = declarations(sys.argv[1])
