@@ -20,7 +20,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{ANCHORPLACEHOLDER0000000000000000000000}
+\newcommand{\anchor}{c90dc745ab8cd1ba7ddc02aa16fed3de339bf958}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -163,10 +163,10 @@ $\partial a=\partial b=\sigma$ onto the paths of $2m+1$ slices whose middle
 slice is $\sigma$.
 \end{lemma}
 
-Machine-checked as \osline{SpatialOS}{SITEBIJLINE}{sum\_pathsAt\_eq}, with the
+Machine-checked as \osline{SpatialOS}{1051}{sum\_pathsAt\_eq}, with the
 two directions
-\osline{SpatialOS}{PASTJOINLINE}{pastSiteOf\_joinSite} and
-\osline{SpatialOS}{FUTJOINLINE}{futSiteOf\_joinSite}.  The first needs the
+\osline{SpatialOS}{911}{pastSiteOf\_joinSite} and
+\osline{SpatialOS}{903}{futSiteOf\_joinSite}.  The first needs the
 halves to agree at the boundary and the second does not, which is the
 asymmetry the fibred product introduces.
 
@@ -178,12 +178,12 @@ If $\partial a=\partial b$ then
 No hypothesis on $w$ is used, in particular not positivity.
 \end{theorem}
 
-Machine-checked as \osline{SpatialOS}{GWJOINLINE}{gibbsWeight\_joinSite}.  It
+Machine-checked as \osline{SpatialOS}{1017}{gibbsWeight\_joinSite}.  It
 splits into a statement about the $w$ factors and one about the kernel factors,
 and the two are not equally strong: the $w$ identity
-\osline{SpatialOS}{PRODWLINE}{prod\_w\_joinSite} holds for \emph{any} pair of
+\osline{SpatialOS}{962}{prod\_w\_joinSite} holds for \emph{any} pair of
 halves, agreeing at the boundary or not, while the kernel identity
-\osline{SpatialOS}{PRODKLINE}{prod\_K\_joinSite} needs them to agree.  We state
+\osline{SpatialOS}{986}{prod\_K\_joinSite} needs them to agree.  We state
 this because the first version of the $w$ lemma carried the hypothesis, and the
 build's own unused-variable warning was what pointed out that it does not need
 it.
@@ -212,8 +212,8 @@ backwards from the far end.
 \end{theorem}
 
 Machine-checked as
-\osline{SpatialOS}{SITEBRIDGELINE}{osPairingSiteCross\_eq\_gibbsSum}; the
-diagonal case is \osline{SpatialOS}{SITEDIAGLINE}{osPairingSite\_eq\_gibbsSum}.
+\osline{SpatialOS}{1088}{osPairingSiteCross\_eq\_gibbsSum}; the
+diagonal case is \osline{SpatialOS}{1116}{osPairingSite\_eq\_gibbsSum}.
 Positivity of $w$ enters in exactly one place --- dividing by $w(\sigma)$ ---
 and Theorem~\ref{thm:siteweight} is stated without division so that this is
 visible rather than buried.
@@ -224,8 +224,8 @@ real, for every $\beta\in\R$, and the Gram matrix over a finite family of
 observables with complex coefficients is positive semidefinite.
 \end{corollary}
 
-\osline{SpatialOS}{SITENNLINE}{gibbsSumSite\_reflected\_nonneg} and
-\osline{SpatialOS}{SITEGRAMLINE}{gibbsSumSite\_reflected\_gram\_nonneg}.  The
+\osline{SpatialOS}{1128}{gibbsSumSite\_reflected\_nonneg} and
+\osline{SpatialOS}{1141}{gibbsSumSite\_reflected\_gram\_nonneg}.  The
 Gram statement is a consequence of the diagonal one applied to
 $\sum_i c_iF_i$, and it is written down anyway, because leaving it implicit
 would let the prose say ``matrix statement about the measure'' while the formal
@@ -243,8 +243,8 @@ Write, for boundary vectors $u,v:\{\text{slices}\}\to\C$,
 \]
 By Theorem~\ref{thm:sitebridge} and its bond companion, evaluated at
 $u=\Phi F$, $v=\Phi G$ these are the two reflected forms of the measure ---
-\osline{SpatialReconstruction}{SITECOLLLINE}{siteForm\_collapse} and
-\osline{SpatialReconstruction}{BONDCOLLLINE}{bondForm\_collapse}.
+\osline{SpatialReconstruction}{91}{siteForm\_collapse} and
+\osline{SpatialReconstruction}{98}{bondForm\_collapse}.
 
 The site form is definite as soon as $w>0$.  So the equation
 \begin{equation}\label{eq:star}
@@ -263,7 +263,7 @@ With $T$ as displayed, $\langle u,Tv\rangle_{\mathrm{site}}
 $\beta\in\R$ and every strictly positive $w$.
 \end{theorem}
 
-\osline{SpatialReconstruction}{STARLINE}{siteForm\_transferOp}.
+\osline{SpatialReconstruction}{116}{siteForm\_transferOp}.
 
 \paragraph{One geometry on each side.}  $T$ advances a half-chain across one
 more slice.  If the pairing on the left is taken at separation $2m$, the pairing
@@ -282,8 +282,8 @@ For every $\beta\in\R$, negative included, and every strictly positive $w$,
 \]
 \end{theorem}
 
-\osline{SpatialReconstruction}{SALINE}{transferOp\_selfAdjoint}, via
-\osline{SpatialReconstruction}{STARLEFTLINE}{siteForm\_transferOp\_left}.  The
+\osline{SpatialReconstruction}{155}{transferOp\_selfAdjoint}, via
+\osline{SpatialReconstruction}{130}{siteForm\_transferOp\_left}.  The
 left-hand version needs the symmetry of $K_\beta$, which the right-hand version
 of \eqref{eq:star} did not; the two are therefore proved separately rather than
 one being quoted for the other.
@@ -293,12 +293,12 @@ For $\beta\ge0$ and every strictly positive $w$, $\langle
 u,Tu\rangle_{\mathrm{site}}$ is a non-negative real.
 \end{theorem}
 
-\osline{SpatialReconstruction}{POSLINE}{transferOp\_nonneg}.  By
+\osline{SpatialReconstruction}{208}{transferOp\_nonneg}.  By
 Theorem~\ref{thm:star} this is the statement that the bond form is positive
 semidefinite on complex vectors, which reduces by a generic real-to-complex step
 to the positive semidefiniteness of $K_\beta$ proved earlier in this lane.  The
 physical inner product itself is positive at every $\beta$:
-\osline{SpatialReconstruction}{SITENNVEC}{siteForm\_self\_nonneg}.
+\osline{SpatialReconstruction}{164}{siteForm\_self\_nonneg}.
 
 \paragraph{Sufficiency only.}  $\beta\ge0$ is proved sufficient for
 Theorem~\ref{thm:pos} and is not proved necessary, here or anywhere in this
@@ -315,10 +315,10 @@ For every strictly positive $w$, every $\beta\in\R$ and every $m$, every
 boundary vector is $\Phi F$ for some observable $F$ of the half-chain.
 \end{theorem}
 
-\osline{SpatialReconstruction}{SURJLINE}{collapse\_surjective}.  The witness is
+\osline{SpatialReconstruction}{230}{collapse\_surjective}.  The witness is
 explicit: $F(a)=v(\partial a)\big/\sum_{\partial b=\partial a}W(b)$, whose
 denominator is positive because the constant half ending at a slice is a half
-ending at it --- \osline{SpatialReconstruction}{CONSTLINE}{const\_mem\_halvesAt}
+ending at it --- \osline{SpatialReconstruction}{222}{const\_mem\_halvesAt}
 --- and Gibbs weights are positive.
 
 Consequently the null space of the site form on observables is exactly
@@ -341,9 +341,9 @@ observables $F,G$ of a half-chain,
 the sum running over all paths of $2m+2$ slices.
 \end{theorem}
 
-\osline{SpatialReconstruction}{MEASLINE}{osPairing\_transfer} composed with the
+\osline{SpatialReconstruction}{279}{osPairing\_transfer} composed with the
 bond bridge, and stated on the path sum itself at
-\osline{SpatialReconstruction}{MEASSUMLINE}{osPairing\_transfer\_gibbsSum}.  In
+\osline{SpatialReconstruction}{294}{osPairing\_transfer\_gibbsSum}.  In
 words: the matrix element of the transfer operator between two half-chain
 observables \emph{is} the reflected two-point function of the Gibbs measure one
 slice further apart.
@@ -353,7 +353,7 @@ The displayed identity is stated for two observables, and the formal text states
 it for two.  It would have been cheaper to prove only the diagonal case $G=F$
 and let the display carry the general one; the bond bridge's cross form had in
 fact been proved inside another proof, where nothing could cite it, and was
-extracted --- \osline{SpatialOS}{BONDCROSSLINE}{osPairingBondCross\_eq\_gibbsSum}
+extracted --- \osline{SpatialOS}{785}{osPairingBondCross\_eq\_gibbsSum}
 --- precisely so that this section's prose and its formal text have the same
 scope.  A green build does not notice a theorem carrying less than its sentence.
 \end{remark}
@@ -403,8 +403,11 @@ positive and nothing is known about its norm.
 statement, and therefore no $H=-\log(T/\lambda)$ and no Hamiltonian.
 \item \textbf{No thermodynamic limit.}  Every constant here may depend on $L$
 and on $m$.  Uniformity in the extent is a separate and open question for the
-coupled kernel; the ring-weighted case is known to be exactly the anisotropic
-two-dimensional Ising transfer matrix, so it is not expected to be easy.
+coupled kernel.  We note only that with a ring source weight the symmetrised
+kernel \emph{is}, by comparing the two definitions, the transfer matrix of the
+anisotropic square-lattice Ising model --- an identification, not a cited
+theorem --- which is a reason to expect the question to be hard rather than a
+result about it.
 \item \textbf{Necessity of $\beta\ge0$} for Theorem~\ref{thm:pos} is not proved.
 \item \textbf{$\Z_2$ only.}  Nothing here is a gauge theory.
 \end{enumerate}
@@ -419,26 +422,30 @@ resolved against \texttt{\anchor} and checked to point at an actual declaration
 line, before compilation, again inside the compiled PDF, and again live over
 HTTP.
 
-Everything was elaborated on a fresh Linux clone at that checkpoint, on the
-sanctioned compilation plane, with the toolchain and the Mathlib revision pinned
-in the repository and re-checked by the runner before any compilation started.
+Everything was elaborated on \emph{one} fresh Linux clone at that checkpoint,
+with the toolchain and the Mathlib revision pinned in the repository and
+re-checked before any compilation started.  A second independent reproduction is
+\emph{not} claimed: one clone is one clone.  The two module files and the oracle
+file were carried back to the desktop and their SHA-256 digests compared against
+the ones computed in the build environment; all three match, so the text linked
+below is the text that was elaborated.
 
 \begin{center}
 \begin{tabular}{ll}
 \toprule
 Quantity & Value \\
 \midrule
-Full core build & JOBSAFTER jobs, success \\
-\quad same tree without this paper's modules & JOBSBEFORE jobs \\
+Full core build & 8469 jobs, success \\
+\quad same tree without this paper's modules & 8468 jobs \\
 \quad predicted delta, registered before measuring & $+1$ \\
-Oracle commands, and answers & ORACLETOTAL \\
-\quad with a non-standard axiom & ORACLENONSTD \\
-Declarations in \texttt{SpatialOS.lean} & DECLSOS \\
-Declarations in \texttt{SpatialReconstruction.lean} & DECLSREC \\
-\quad of them in the oracle & DECLSINORACLE \\
+Oracle commands, and answers & 2883 \\
+\quad with a non-standard axiom & 0 \\
+Declarations in \texttt{SpatialOS.lean} & 65 \\
+Declarations in \texttt{SpatialReconstruction.lean} & 15 \\
+\quad of them in the oracle & 15 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound},
   \texttt{Classical.choice} \\
-Occurrences of \texttt{sorryAx} & SORRYCOUNT \\
+Occurrences of \texttt{sorryAx} & 0 \\
 Project axioms & 0 \\
 Errors & 0 \\
 \bottomrule
@@ -447,11 +454,20 @@ Errors & 0 \\
 
 The delta of exactly $+1$ is this repository's standing check that a new module
 is really being elaborated: one module, one job.  The prediction was registered
-in the runner before any count was taken, and it was registered as a
-\emph{delta} rather than an absolute because no recorded baseline applies to
-this campaign's base commit --- the counts in the repository's own standing
-instructions and in its ledger are on branches that are not ancestors of it.
-Both counts in the table therefore come from builds in the same runtime.
+before any count was taken, and as a \emph{delta} rather than an absolute,
+because a count copied from a document is not a baseline.  Both counts in the
+table come from core builds in the \emph{same} build environment.
+
+\paragraph{Which base, and a number that first looked like a failure.}  The
+first comparison was run against the merge-base with the repository's main
+branch and returned $8465\to8469$, a delta of $+4$.  That is not this campaign:
+the branch it was measured from also carries an unrelated line of work that had
+already added three modules to the core.  Measured against the parent of this
+campaign's first commit --- which is what the prediction was about --- the core
+is $8468$ and the delta is $+1$.  Both numbers are true and they answer
+different questions.  We record the episode rather than only the number that
+agreed, because the correct first reaction to a disagreeing measurement is to
+suspect it of measuring the wrong thing, not to adjust the claim.
 
 The modules are
 \repofile{YangMills/OS/SpatialOS.lean}{YangMills/OS/SpatialOS.lean} and

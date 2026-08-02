@@ -39,12 +39,25 @@ second module without anyone writing it down; a `0` would mean the new module
 never reached the core and the whole build proved nothing about it.
 
 AND THE BASELINE IS MEASURED, NOT COPIED.  `CLAUDE.md` records 8465 at
-`3421aa1f` and the ledger's most recent measurements (8468 at `56c8987d` and at
-`c3d8e32d`) are on a branch that is NOT an ancestor of this campaign's base
-`6d71e51b`.  There is therefore NO applicable recorded baseline, and the rule
-that forbids using a copied count applies exactly here.  So `--before` must come
-from a build of the core at the base commit IN THE SAME RUNTIME as the `--after`
-build; the delta is then real rather than inherited.
+`3421aa1f`, and a copied count may not be used as a baseline.  So `--before`
+must come from a build of the core at the campaign's base commit IN THE SAME
+RUNTIME as the `--after` build; the delta is then real rather than inherited.
+
+WHICH BASE, AND THE MISTAKE THIS PARAGRAPH EXISTS TO PREVENT.  The first version
+of this header named `6d71e51b` --- the MERGE-BASE WITH `main` --- as "this
+campaign's base".  It is not.  This branch descends from the Dobrushin lane,
+which had already added modules to the core, so the measured
+`6d71e51b -> HEAD` delta came back `+4` (8465 -> 8469) and looked like a failed
+prediction.  It was not: it was the wrong `before`.  Measured at the campaign's
+real base `345479fa`, the parent of its first commit, the core is 8468 and the
+delta is exactly `+1`, as predicted.
+
+Both numbers are true and they answer different questions.  `+4` is
+branch-versus-`main` and includes `+3` inherited from another lane; `+1` is this
+campaign.  A prediction about a campaign must be tested against the campaign's
+own parent commit, never against a merge-base --- and a number that disagrees is
+first suspected of measuring the wrong thing, exactly as an inconclusive harness
+is not a failed judge.
 
 Usage, from a fresh Colab clone:
 
