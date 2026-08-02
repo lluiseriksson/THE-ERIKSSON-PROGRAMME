@@ -30458,3 +30458,44 @@ signs survive, the measured discrepancy -- not an expected value -- must be
 used in any later preregistration.  At the time of this addendum the script has
 not run; no Fourier sign or fit is claimed, and no theorem or Clifford work is
 licensed.
+
+## Addendum 600 (2026-08-02, **TASK 14: Fourier signs survive; pure-log ansatz rejected**)
+
+**OBSERVED RECONNAISSANCE, NOT A GATE OR PROOF.**  The precommitted script from
+Addendum 599 was run locally as a light scalar calculation only, first in
+normal mode and then under `python -O`.  Both modes exited zero and emitted
+byte-identical JSON:
+
+- preregistration commit: `2959f397f8f6bae8360df3ffffe9eaa329c83cc2`;
+- script SHA-256:
+  `022c23242b7c4529231660b2a5bd95476490e99fb556be4ae5ea43692eddff05`;
+- normal: exit `0`, `20.076541 s`;
+- optimized: exit `0`, `23.034573 s`;
+- common output SHA-256:
+  `62bf58eecda063128817a83625273504b141d3425aeb08541846b83ad13eaab1`.
+
+All `8 * 40 = 320` sampled nonconstant Fourier coefficients were strictly
+negative; there were zero positive and zero exactly-zero coefficients.  The
+largest relative discrepancy between the 2048- and 4096-point resolutions was
+`6.496843953964027e-8` (at `beta = 0.125`, `gamma/a = 0.99`), so the sampled
+signs were stable across the two resolutions.  This is finite evidence only;
+it does not prove `fhat(n) <= 0` for arbitrary parameters or modes.
+
+At the target cell `beta = 2`, `gamma/a = 0.75`, the exact closed parameter
+evaluated to
+
+`x = tanh(gamma)/tanh(a) = 0.7500366958414362904039402571938954078...`.
+
+The proposed exact pure-log formula `fhat(n) = -x^n/n` was decisively rejected.
+The observed ratio `fhat(n)/(-x^n/n)` was `0.008458124...` at `n = 1`,
+`0.001216532...` at `n = 10`, `0.000813625...` at `n = 20`, and
+`0.000558194...` at `n = 40`, decreasing rather than approaching one.  The
+exponential scale `x` may still control the decay, but the amplitude has a
+non-logarithmic prefactor; the present run does not preregister or certify its
+form.
+
+The Fourier-sign mechanism therefore survives this finite attack while the
+specific `-x^n/n` shortcut does not.  No global Fourier theorem, vacuum order,
+fermionic classification, odd-sector bound, even-sector bound, endpoint, or
+uniform `specRatio` theorem is proved here.  Clifford/Jordan--Wigner work
+remains unopened.
