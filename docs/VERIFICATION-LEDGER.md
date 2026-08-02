@@ -31578,3 +31578,16 @@ an infrastructure failure and not evidence against existence or uniqueness.
 No heartbeat was raised, no PASS was claimed, and neither Core nor the oracle
 was launched.  The runtime was disconnected and deleted immediately;
 **SESIÓN COLAB LIBRE**.
+
+## Addendum 628 (2026-08-02, **TASK 14: Colab editor corruption**)
+
+**INSTRUMENTAL FAILURE; NO CLONE, LEAN BUILD, OR VERIFICATION WITNESS.**  A
+new CPU/high-RAM Colab runtime was opened for the one-line normalization
+repair at source SHA `4d676c23469ba311b8004504fe57b96241542d16`.
+Reusing the prior virtualized code-cell editor corrupted the replacement:
+Python received the literal splice `run(['lefrom pathlib import Path` at line
+61 and stopped immediately with `SyntaxError: unterminated string literal
+(detected at line 61)`.  No repository command, cache acquisition, Lean
+process, Core build, or oracle ran, and no PASS was claimed.  The runtime was
+disconnected and deleted.  The next attempt must use a wholly new empty cell
+rather than refill the virtualized failed editor; **SESIÓN COLAB LIBRE**.
