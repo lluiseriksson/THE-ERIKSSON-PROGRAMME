@@ -1,8 +1,11 @@
 # Incident: global run-manifest guard had no regression signal
 
-**Date:** 2026-08-02  
-**Scope:** run-manifest validation infrastructure only  
-**Base:** `55d2f5171b8570e8dc4c49f0cc55895d13536d2d` (`origin/main` after `git fetch origin --prune`)  
+**Date:** 2026-08-02
+
+**Scope:** run-manifest validation infrastructure only
+
+**Base:** `55d2f5171b8570e8dc4c49f0cc55895d13536d2d` (`origin/main` after `git fetch origin --prune`)
+
 **Decision:** B, differential quarantine
 
 No manifest, mathematical source, paper, transcript, or scientific artifact was
@@ -169,4 +172,3 @@ does **not** certify mathematical truth, rerun computations, validate semantic
 claim scope, prove that recorded aggregates are correct, or repair historical
 provenance. A green job is only the delta decision; the baseline and emitted
 class counts are the recomputable evidence for that decision.
-
