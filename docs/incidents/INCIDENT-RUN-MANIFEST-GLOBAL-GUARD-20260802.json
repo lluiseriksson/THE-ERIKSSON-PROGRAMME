@@ -74,6 +74,13 @@
     "first_cause": null,
     "decision_record_sha256": "6ff9bfad13ea428447b1f8b394a9fe9d41435f5d95cd9f7692f008a2c8a06ca0"
   },
+  "downstream_test_debt": {
+    "workflow_run_id": 30751963063,
+    "passed": 695,
+    "failed": 9,
+    "elapsed_seconds": 377.68,
+    "action": "left unchanged and separated from the run-manifest guard"
+  },
   "baseline": {
     "path": ".github/run-manifest-debt-baseline.json",
     "sha256": "b846059fb0c6525999582132c3a945ad3b1dfbaa28faeec41a4f0ea3769a3d22",

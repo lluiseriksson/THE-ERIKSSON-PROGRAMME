@@ -29,8 +29,9 @@ visible inherited debt.
   automatically and cannot later reappear;
 - reject deletion or retitling of a protected publication;
 - make repository path and LF/CRLF validation runner-independent;
-- replace the misleading strict-red workflow step with
-  `Guard run-manifest structure and historical-debt delta`;
+- publish a dedicated check/job named
+  `Run-manifest structure and historical-debt delta`, independent of unrelated
+  downstream `pytest` debt;
 - emit and upload a JSON decision record containing status, exit code, first
   cause, and recomputable class counts;
 - run explicit adversarial scenarios under normal Python and `python -O`.
@@ -50,6 +51,9 @@ Local targeted results:
   inherited worsening REJECTED, repair PASS, deletion REJECTED, retitle
   REJECTED, repaired-debt reintroduction REJECTED, stale PASS INVALIDATED;
 - `python -O`: identical decisions;
+- the broader `test` job now reaches its separate pre-existing result (695
+  passed, 9 scientific/hash tests failed); those failures are not suppressed
+  or modified by this PR;
 - no Lean/Lake command was run.
 
 ## Guarantee boundary

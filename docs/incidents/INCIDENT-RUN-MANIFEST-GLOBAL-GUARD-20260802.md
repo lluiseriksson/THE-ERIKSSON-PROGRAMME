@@ -72,6 +72,14 @@ Root cause has two layers:
    an old one, but the job-level observation remains `1 -> 1`. The red check
    cannot distinguish either mutation from inherited debt.
 
+After unblocking that first step, the aggregate `test` job reaches `pytest` and
+exposes a separate pre-existing state: 695 tests pass and 9 scientific
+hash/promotion tests fail after about six minutes. Those failures are outside
+this incident's scope and were not edited or suppressed. The manifest control
+therefore runs as its own job/check, `Run-manifest structure and
+historical-debt delta`, rather than inheriting the unrelated final status of
+`test`.
+
 ## Population and age
 
 The active population is 39 strictly valid manifests and 584 manifests with
@@ -178,6 +186,10 @@ workflow guard:
 - writes `RUNNING` before evaluation, then a JSON `PASS` or `FAIL` with exit
   code and first cause, so an old PASS cannot survive a failed run;
 - uses explicit return codes and exceptions; no decision depends on `assert`.
+
+The job name is deliberately structural. It does not claim semantic honesty,
+and it remains separately observable when the broader `test` job is red for a
+different reason.
 
 The executable adversarial harness produces the same decisions under normal
 Python and `python -O`: exact base PASS; new malformed REJECTED; inherited debt
