@@ -1224,9 +1224,10 @@ theorem spatialKernel_coercive {β : ℝ} (hβ : 0 ≤ β) :
       rw [hsingle]
       show (∏ _j : Fin 0, _) * u σ = u σ
       simp
-    rw [Finset.sum_congr rfl fun σ _ => by rw [hone σ]]
-    rw [pow_zero, one_mul]
-    exact le_of_eq (Finset.sum_congr rfl fun σ _ => by ring)
+    have hsum : ∑ σ : Fin 0 → Fin 2, u σ * act (spatialKernel β) u σ
+        = ∑ σ : Fin 0 → Fin 2, u σ ^ 2 :=
+      Finset.sum_congr rfl fun σ _ => by rw [hone σ]; ring
+    rw [pow_zero, one_mul, hsum]
   | succ L ih =>
     intro u
     have hD : (0:ℝ) ≤ Real.exp β - Real.exp (-β) :=
@@ -1273,9 +1274,8 @@ theorem spatialKernel_coercive {β : ℝ} (hβ : 0 ≤ β) :
     have hpar : QP + QM
         = 2 * ((∑ τ : Fin L → Fin 2, u (Fin.cons 0 τ) ^ 2)
             + ∑ τ : Fin L → Fin 2, u (Fin.cons 1 τ) ^ 2) := by
-      rw [hQP, hQM, ← Finset.sum_add_distrib, Finset.mul_add,
-        ← Finset.sum_add_distrib, Finset.mul_sum, Finset.mul_sum,
-        ← Finset.sum_add_distrib]
+      rw [hQP, hQM, ← Finset.sum_add_distrib, ← Finset.sum_add_distrib,
+        Finset.mul_sum]
       exact Finset.sum_congr rfl fun τ _ => by ring
     -- the two halves, each bounded below by the induction hypothesis
     have hPlow : D ^ L * QP ≤ SP := hP
@@ -1289,9 +1289,9 @@ theorem spatialKernel_coercive {β : ℝ} (hβ : 0 ≤ β) :
     have hDZ : D * (D ^ L * QP) ≤ z2Norm β * (D ^ L * QP) :=
       mul_le_mul_of_nonneg_right hZD (mul_nonneg hDL hQPnn)
     have hfinal : D ^ (L + 1) * (∑ σ : Fin (L + 1) → Fin 2, u σ ^ 2)
-        ≤ (D * (D ^ L * QP) + D * (D ^ L * QM)) / 2 := by
+        = (D * (D ^ L * QP) + D * (D ^ L * QM)) / 2 := by
       rw [hsplit, pow_succ]
-      nlinarith [hpar, hDL, hD]
+      linear_combination (-(D ^ L * D) / 2) * hpar
     linarith [hfinal, hZP, hDM, hDZ]
 
 /-! The physical assembly: the Euclidean coercivity, the weight floor, and the
@@ -1359,7 +1359,6 @@ theorem bondQ_ge_siteQ {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0
     refine Finset.sum_congr rfl fun σ _ => ?_
     rw [Complex.normSq_apply]
     field_simp
-    ring
   -- the two chains, made explicit rather than left to `nlinarith` to discover:
   -- multiplying an inequality by `D^L ≥ 0` is a step, not a hint.
   have hAre : (Real.exp β - Real.exp (-β)) ^ L
@@ -1547,7 +1546,13 @@ theorem transferOp_injective' {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
   have h := transferOp_add w β (u - v) v
   rw [sub_add_cancel] at h
   rw [huv] at h
-  exact sub_eq_zero.mp (transferOp_injective hw hβ (self_eq_add_left.mp h))
+  have hker : transferOp w β (u - v) = 0 := by
+    have h' : transferOp w β (u - v) + transferOp w β v
+        = 0 + transferOp w β v := by
+      rw [zero_add]
+      exact h.symm
+    exact add_right_cancel h'
+  exact sub_eq_zero.mp (transferOp_injective hw hβ hker)
 
 theorem transferOpL_injective {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) :
