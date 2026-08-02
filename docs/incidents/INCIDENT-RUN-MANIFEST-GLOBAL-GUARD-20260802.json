@@ -51,6 +51,18 @@
     "exit_code": 1,
     "output_sha256": "646d03015bd4adad0222809bc71bfa160d74dcc94fb29209f4fce20bd343c7a0"
   },
+  "sanctioned_linux_recomputation": {
+    "workflow_run_id": 30751762660,
+    "runner": "ubuntu-latest",
+    "manifest_count": 623,
+    "valid_manifest_count": 39,
+    "invalid_manifest_count": 584,
+    "error_count": 3814,
+    "guard_status": "PASS",
+    "exit_code": 0,
+    "first_cause": null,
+    "decision_record_sha256": "d27ff57051321d0ff03c00c4fe321e6b3766087abba3203ed97aa4ebcced478b"
+  },
   "baseline": {
     "path": ".github/run-manifest-debt-baseline.json",
     "sha256": "b846059fb0c6525999582132c3a945ad3b1dfbaa28faeec41a4f0ea3769a3d22",

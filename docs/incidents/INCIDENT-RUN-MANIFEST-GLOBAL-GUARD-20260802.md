@@ -44,6 +44,15 @@ A WSL run over mounted NTFS was stopped after it exceeded 30 seconds; no later
 global scan was run locally. Linux recomputation is delegated to the PR's
 sanctioned GitHub Actions runner.
 
+The sanctioned Ubuntu recomputation in PR run
+[30751762660](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/30751762660)
+matched the frozen aggregate exactly: 623 manifests, 584 with inherited debt,
+and 3,814 strict errors. Its uploaded decision record reports `PASS`, exit code
+0, no first cause, and every class count; the JSON artifact content has
+SHA-256 `d27ff57051321d0ff03c00c4fe321e6b3766087abba3203ed97aa4ebcced478b`.
+This agreement checks recomputability of the delta decision; it is not evidence
+that any scientific aggregate is correct.
+
 Root cause has two layers:
 
 1. The schema-v1 validator and blocking step were introduced on 2026-07-11,
