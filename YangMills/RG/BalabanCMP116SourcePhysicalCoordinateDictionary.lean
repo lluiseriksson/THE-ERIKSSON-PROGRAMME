@@ -9,6 +9,10 @@ import YangMills.RG.BalabanCMP116Eq223PhysicalLocalizationProjector
 /-!
 # Source coordinates transported to the physical bond basis
 
+PRE-VALIDATION: the proof-carrying localized-region index below is present in
+source, its updated `.olean` has not yet been materialized, and the interface
+change has not yet been verified by the Lean compiler.
+
 The equation-(2.26) geometry is indexed by CMP116 cubes, whereas the literal
 source Gaussian is indexed by physical bonds and Lie coordinates.  This file
 performs that transport through the certified dictionary equivalence.  It
@@ -106,6 +110,18 @@ theorem cmp116SourcePhysicalLocalizedCoordinates_empty
     simpa using hsource
   · intro hba
     simp at hba
+
+/-- A physical localization region that carries at least one literal
+localized Lie coordinate.  This is the faithful index type for the
+centered-conditioned contour family: its covariance-lower certificate
+requires exactly the witness stored by this subtype. -/
+def CMP116SourcePhysicalLocalizedRegion
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim) :=
+  { Z0 : Finset (FinBox d N') //
+      (cmp116SourcePhysicalLocalizedCoordinates Dict Z0).Nonempty }
 
 /-- A cube carrier is converted to its literal physical bond carrier by the
 site map; no cube is treated definitionally as a bond. -/

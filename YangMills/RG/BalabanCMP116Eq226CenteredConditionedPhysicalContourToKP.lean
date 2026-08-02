@@ -9,6 +9,10 @@ import YangMills.RG.AppendixFHsharpRawToKP
 /-!
 # Conditioned physical CMP116 contour terms through `hraw` to KP
 
+PRE-VALIDATION: this endpoint now consumes the proof-carrying localized-region
+index; its updated `.olean` has not yet been materialized and the interface
+change has not yet been verified by the Lean compiler.
+
 This is the terminal composition of the corrected source route.  The
 equation-(2.26) estimate and raw metric decay are generated internally from
 the physical conditioned term records.  The remaining hypotheses are the
@@ -56,12 +60,13 @@ theorem cmp116Eq226CenteredConditionedPhysicalContour_KPCriterion_of_boundaries
       ∀ t k, OmegaPolymerType HF (z t k) →
         Finset (Finset (FinBox 4 (2 * Q))) →
           Finset (SourceBond M Q) →
-            Finset (Finset (FinBox 4 (2 * Q))))
+            Finset (CMP116SourcePhysicalLocalizedRegion (Dict t k)))
     (Z0PrimeIndex :
       ∀ t k, OmegaPolymerType HF (z t k) →
         Finset (Finset (FinBox 4 (2 * Q))) →
           Finset (SourceBond M Q) →
-            Finset (FinBox 4 (2 * Q)) → Finset (ιZ0' t k))
+            CMP116SourcePhysicalLocalizedRegion (Dict t k) →
+              Finset (ιZ0' t k))
     (S : ∀ t k,
       CMP116Eq226CenteredConditionedPhysicalTermSourceFamily
         (nDelta := nDelta) (nY := nY) (ιZ0' := ιZ0' t k)
@@ -247,5 +252,4 @@ theorem cmp116Eq226CenteredConditionedPhysicalContour_KPCriterion_of_boundaries
 end
 
 end YangMills.RG
-
 

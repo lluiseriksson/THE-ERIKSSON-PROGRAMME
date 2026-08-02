@@ -227,18 +227,24 @@ small but genuine geometric obligation, not a consequence of the two domain
 fields already counted.
 
 There is a terminal interface obstruction one level above that local
-producer.  `CMP116Eq226CenteredConditionedPhysicalTermSourceFamily` currently
-quantifies over every raw `Z0`, not merely over members of `Z0Index`; hence it
-asks for a term source at `Z0 = ∅`.  The literal localized coordinate carrier
-is empty there, while the mandatory covariance-lower certificate contains a
+producer.  The former
+`CMP116Eq226CenteredConditionedPhysicalTermSourceFamily` quantified over every
+raw `Z0`, not merely over members of `Z0Index`; hence it asked for a term
+source at `Z0 = ∅`.  The literal localized coordinate carrier is empty there,
+while the mandatory covariance-lower certificate contains a
 `carrier_nonempty` witness.  The source-level no-go theorem is present under
 compiler-verified audit: no centered-conditioned physical term source exists
-at the empty raw region.  The faithful repair is therefore to replace the raw
-region index by the subtype of regions whose literal localized-coordinate
-carrier is nonempty.  The existing generic resummation already accepts an
-arbitrary index type, so this repair changes only the centered physical
-boundary and its `ToRaw`/`ToKP`/`ToUV` consumers; it does not fabricate a
-covariance certificate or an off-index physical term.
+at the empty raw region.
+
+The faithful repair is now present in source under PRE-VALIDATION.  The new
+`CMP116SourcePhysicalLocalizedRegion Dict` is the subtype of regions whose
+literal localized-coordinate carrier is nonempty, and the centered physical
+family together with its `ToRaw`/`ToKP`/`ToUV` consumers quantifies over that
+proof-carrying index.  The existing generic resummation already accepts an
+arbitrary index type, so Appendix F remains unchanged.  This does not
+fabricate a covariance certificate or an off-index physical term, and it does
+not change the live `18/41` numerator.  Until the fresh-Colab focal and audits
+pass, the repaired interface is source only and is not counted as verified.
 
 Elaboration failures are triaged separately from project mathematics.  If the
 first error occurs in a proof step whose statement and diagnostic mention no

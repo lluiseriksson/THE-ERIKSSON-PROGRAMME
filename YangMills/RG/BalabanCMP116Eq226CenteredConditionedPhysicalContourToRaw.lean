@@ -9,6 +9,10 @@ import YangMills.RG.BalabanCMP116Lemma3CubeRawBridge
 /-!
 # Centered conditioned physical equation-(2.26) terms produce Appendix-F `hraw`
 
+PRE-VALIDATION: this endpoint now consumes the proof-carrying localized-region
+index; its updated `.olean` has not yet been materialized and the interface
+change has not yet been verified by the Lean compiler.
+
 This module consumes the corrected physical term source through the existing
 equation-(2.29), `P`, and post-`P` source stages.  The output is the literal
 raw metric decay required by Appendix F.  The caller supplies those genuine
@@ -56,12 +60,13 @@ theorem cmp116Eq226CenteredConditionedPhysicalContour_rawMetricDecay_of_boundari
       ∀ t k, OmegaPolymerType HF (z t k) →
         Finset (Finset (FinBox 4 (2 * Q))) →
           Finset (SourceBond M Q) →
-            Finset (Finset (FinBox 4 (2 * Q))))
+            Finset (CMP116SourcePhysicalLocalizedRegion (Dict t k)))
     (Z0PrimeIndex :
       ∀ t k, OmegaPolymerType HF (z t k) →
         Finset (Finset (FinBox 4 (2 * Q))) →
           Finset (SourceBond M Q) →
-            Finset (FinBox 4 (2 * Q)) → Finset (ιZ0' t k))
+            CMP116SourcePhysicalLocalizedRegion (Dict t k) →
+              Finset (ιZ0' t k))
     (S : ∀ t k,
       CMP116Eq226CenteredConditionedPhysicalTermSourceFamily
         (nDelta := nDelta) (nY := nY) (ιZ0' := ιZ0' t k)
@@ -197,5 +202,4 @@ theorem cmp116Eq226CenteredConditionedPhysicalContour_rawMetricDecay_of_boundari
 end
 
 end YangMills.RG
-
 
