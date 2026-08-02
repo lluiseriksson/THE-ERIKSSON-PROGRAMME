@@ -9,11 +9,13 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.pytest_nominal_debt_guard import (
+    _first_cause,
     evaluate,
     invalidate_result,
     load_manifest,
@@ -81,6 +83,19 @@ def main() -> int:
     known = manifest["known_failures"]
     nodeids = [item["nodeid"] for item in known]
     base = inventory(nodeids, known)
+
+    multiline = SimpleNamespace(
+        longrepr=SimpleNamespace(
+            reprcrash=SimpleNamespace(
+                message="AssertionError: stable first cause\n  pytest-rendered diff"
+            )
+        )
+    )
+    require(
+        _first_cause(multiline) == "AssertionError: stable first cause",
+        "FIRST_CAUSE_NORMALIZATION: multiline renderer detail changed the fingerprint",
+    )
+    print("FIRST_CAUSE_NORMALIZATION: PASS first_cause=stable-first-line exit=0")
 
     tenth = {
         "nodeid": "tests/test_new_regression.py::test_tenth",

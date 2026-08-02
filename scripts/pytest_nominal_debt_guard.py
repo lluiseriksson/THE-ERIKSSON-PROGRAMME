@@ -32,14 +32,20 @@ _inventory: dict[str, Any] = {
 
 
 def _first_cause(report: Any) -> str:
+    def first_nonempty_line(value: Any) -> str:
+        return next(
+            (line.strip() for line in str(value).splitlines() if line.strip()),
+            "",
+        )
+
     longrepr = report.longrepr
     reprcrash = getattr(longrepr, "reprcrash", None)
     if reprcrash is not None:
-        message = str(getattr(reprcrash, "message", "")).strip()
+        message = first_nonempty_line(getattr(reprcrash, "message", ""))
         if message:
             return message
     if isinstance(longrepr, tuple) and len(longrepr) >= 3:
-        message = str(longrepr[2]).strip()
+        message = first_nonempty_line(longrepr[2])
         if message:
             return message
     lines = [line.strip() for line in str(longrepr).splitlines() if line.strip()]
