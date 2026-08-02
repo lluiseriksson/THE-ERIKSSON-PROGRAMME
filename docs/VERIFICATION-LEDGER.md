@@ -31408,3 +31408,32 @@ No PASS or transcript hash is claimed, and the runtime was disconnected and
 deleted immediately; **SESIÓN COLAB LIBRE**.  The next attempt must use a new
 empty code cell and accept output only after that cell visibly prints the
 repaired raw SHA.
+
+## Addendum 622 (2026-08-02, **TASK 14: angular log-kernel factorization focused PASS**)
+
+**CERTIFIED AS A FOCUSED MODULE BUILD; NOT A SPECTRAL BOUND.**  A new empty
+Colab code cell (not the stale cell recorded in Addendum 621) visibly contained
+and checked out raw SHA `1fa6c3b6f4d77e46fd797f587648ebe4898bfa2f` before
+elaboration.  The fresh CPU/high-RAM runtime was Linux 6.6.122 x86_64 with
+glibc 2.35, Python 3.12.13, 8 Intel Xeon 2.20 GHz CPUs, `53467192 kB` RAM,
+and no GPU.  It verified Lean `v4.29.0-rc6` at commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9` and the pinned mathlib commit
+`07642720480157414db592fa85b626dafb71355b`.
+
+The isolated official cache completed with exit 0 in `98.790898 s`.
+`lake build YangMills.OS.SpatialVacuum` completed with exit 0 in
+`157.906778 s` and measured `8172` jobs; the complete cell took `281.006 s`
+from UTC `2026-08-02T12:15:51.471484+00:00` to
+`2026-08-02T12:20:32.406971+00:00`.  The downloaded transcript
+`spatial_kernel_factor_focused.txt` is 15673 bytes.  Its locally recomputed
+SHA-256, `1a0dfd172fc13b1afa2d975953dfdf227afa165dab35764be9e88408ac0d6e63`,
+matches the digest printed by Colab exactly.
+
+This focused witness certifies that `circle_log_kernel_factorization` and
+`circle_log_kernel_eq_log_norm` elaborate in their module with the active
+hypotheses `0 < t`, `0 < x`, `x < 1`, and
+`2 * x * t = (1 - x)^2`.  These are pointwise scalar identities only: they
+do not identify either physical vacuum, bound either spectral sector, handle
+the beta-zero endpoint, or prove the uniform `specRatio` target.  A complete
+oracle/core witness remains required after the declarations enter the oracle.
+The runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
