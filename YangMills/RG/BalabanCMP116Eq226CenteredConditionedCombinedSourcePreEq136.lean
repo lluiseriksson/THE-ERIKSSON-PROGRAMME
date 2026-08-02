@@ -11,8 +11,10 @@ import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedTerminalEq143
 /-!
 # Source-specific pre-(1.36) assembly on the combined ledger
 
-**PRE-VALIDATION.** The source is present, but its `.olean` has not yet been
-materialized and no declaration in this module has yet been compiler-verified.
+**VALIDATED.** This source was compiler-verified at source checkpoint
+`7fb235a3c86d3077b3d978a24a5623cd562eef9c` in one fresh Colab clone.  The
+later validation-closure commit changes only this annotation, documentation,
+and lightweight textual guards.
 
 This module removes the circular `S : PreEq136` input from the combined
 constructor.  Raw physical data are separated from proof inputs, while the

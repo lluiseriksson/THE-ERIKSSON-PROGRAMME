@@ -1,8 +1,10 @@
 import YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136
 
 /-!
-**PRE-VALIDATION.** The source is present, but its `.olean` has not yet been
-materialized and the declarations below have not yet been compiler-verified.
+**VALIDATED.** This audit was compiler-verified at source checkpoint
+`7fb235a3c86d3077b3d978a24a5623cd562eef9c` in one fresh Colab clone.  The
+later validation-closure commit changes only this annotation, documentation,
+and lightweight textual guards.
 -/
 
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.total
