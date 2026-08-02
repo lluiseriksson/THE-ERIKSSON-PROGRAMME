@@ -6,6 +6,7 @@ Authors: Lluis Eriksson
 -/
 import YangMills.OS.SpatialRing
 import Mathlib.Algebra.QuadraticDiscriminant
+import Mathlib.Analysis.SpecialFunctions.Artanh
 import Mathlib.Analysis.SpecialFunctions.Integrals.PosLogEqCircleAverage
 
 /-!
@@ -25,6 +26,37 @@ namespace YangMills.OS
 open Metric Real
 
 /-! ## The finite logarithmic consequence of the root products -/
+
+/--
+The exact scalar logarithmic difference supplied by the periodic and
+antiperiodic root products.  The hypotheses `0 < L` and `0 < x < 1` ensure
+that `x ^ L` lies in `(0, 1)`, so the difference is strictly negative.
+
+This is finite scalar algebra only.  It proves neither the Stieltjes/log-mixture
+identity nor a bound on either spectral sector.
+-/
+theorem periodic_antiperiodic_log_difference_eq_neg_two_artanh
+    {L : ℕ} (hL : 0 < L) {x : ℝ} (hx0 : 0 < x) (hx1 : x < 1) :
+    Real.log (1 - x ^ L) - Real.log (1 + x ^ L) =
+        -2 * Real.artanh (x ^ L) ∧
+      Real.log (1 - x ^ L) - Real.log (1 + x ^ L) < 0 := by
+  have hxpow_pos : 0 < x ^ L := pow_pos hx0 L
+  have hxpow_lt_one : x ^ L < 1 := pow_lt_one₀ hx0.le hx1 hL.ne'
+  have hplus : 1 + x ^ L ≠ 0 := by positivity
+  have hminus : 1 - x ^ L ≠ 0 := by positivity
+  have hartanh :
+      Real.artanh (x ^ L) =
+        1 / 2 * (Real.log (1 + x ^ L) - Real.log (1 - x ^ L)) := by
+    rw [Real.artanh_eq_half_log ⟨by linarith, hxpow_lt_one.le⟩,
+      Real.log_div hplus hminus]
+  have heq :
+      Real.log (1 - x ^ L) - Real.log (1 + x ^ L) =
+        -2 * Real.artanh (x ^ L) := by
+    rw [hartanh]
+    ring
+  refine ⟨heq, ?_⟩
+  rw [heq]
+  nlinarith [Real.artanh_pos ⟨hxpow_pos, hxpow_lt_one⟩]
 
 /--
 Taking norms and logarithms of `periodic_antiperiodic_root_products` gives the
