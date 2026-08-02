@@ -203,7 +203,7 @@ theorem physical_arcosh_circle_log_mixture
           (Real.cosh (2 * (a - γ)) - z.re))) 0 1 := by
   rcases hγ.eq_or_lt with hγzero | hγpos
   · subst γ
-    simp
+    simp [circleAverage_const]
   · apply arcosh_circle_log_mixture
     · rw [Real.one_lt_cosh]
       nlinarith
