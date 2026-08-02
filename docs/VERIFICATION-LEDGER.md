@@ -30241,3 +30241,21 @@ required to reconstruct the global quotient at 160 digits.
 The output is classified `OBSERVED`, never PASS, and carries no threshold or
 licensed theorem.  At the time of this addendum the audit has not run; neither
 precision stability nor termwise pairing is claimed.
+
+## Addendum 592 (2026-08-02, **TASK 14: interval API failure preserved**)
+
+The first execution of the precommitted precision/pairing audit at raw SHA
+`e3a95e0127fe7cef4b5a49c8a67c3f294d8c935a` returned exit 1 after 0.409930 s.
+Its LF-terminated combined output hashes to
+`98393dd895153d0626e97190b4de54d28ed360c9aea919daf546bda246d22940`.
+The literal cause was
+`AttributeError: 'MPIntervalContext' object has no attribute 'tanh'` in mpmath
+1.3.0 while constructing the interval dual coupling.
+
+This is an instrumental API failure, not a failed inequality.  It occurred
+before the interval enclosure, pairing records, JSON status, or optimized run;
+therefore it supplies no precision or termwise-pairing evidence.  The planned
+repair is the exact interval identity `tanh(x) = sinh(x) / cosh(x)`, in a later
+commit.  Full details are preserved in
+`INC-SPATIAL-VACUUM-PAIRING-IV-001.md`.  No Lean, Lake, oracle, Colab, or
+sustained computation ran.
