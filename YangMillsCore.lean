@@ -934,3 +934,4 @@ import YangMills.OS.SpatialReflection
 import YangMills.OS.SpatialOS
 import YangMills.OS.SpatialRing
 import YangMills.OS.SpatialDualBond
+import YangMills.OS.SpatialVacuum
