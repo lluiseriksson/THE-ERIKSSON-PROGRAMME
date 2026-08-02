@@ -135,7 +135,7 @@ theorem cmp116LocalizedCovarianceRoot_certificate
       (CFC.sqrt_nonneg A).posSemidef.1
     rw [Matrix.conjTranspose_eq_transpose_of_trivial] at hroot
     exact hroot
-  · exact CFC.sqrt_mul_sqrt_self A
+  · exact hA.sqrt_mul_self
 
 end
 
