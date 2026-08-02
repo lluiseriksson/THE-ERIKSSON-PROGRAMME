@@ -31165,3 +31165,24 @@ is a coercion-normalization failure in the proposed Lean proof, not a failed
 finite product or inequality.  No PASS was claimed, no oracle or core build
 was run, and no new declaration is certified by this addendum.  The runtime
 was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 615 (2026-08-02, **TASK 14: repaired log-grid rerun selected stale cell**)
+
+**FAIL INSTRUMENTAL; THE REPAIRED SHA WAS NOT ELABORATED.**  A second fresh
+CPU/high-RAM Colab runtime was intended to check repaired raw SHA
+`4196ad76e119595a8e3f24f46b4564c40699fb20`.  The live transcript instead
+proved that Colab had retained the preceding editor buffer: at
+`2026-08-02T10:35:43.312804+00:00` it checked out
+`28333576b6f1c54ff7737d5e0a3dce184bb46eed` again, using the old temporary
+directory prefix.  The mismatch was detected from output before any Lean
+build.
+
+The stale run reported the same 8-CPU, `53467192 kB`, no-GPU environment and
+completed exact Lean installation.  It was interrupted during isolated
+`lake exe cache get`; the cell ended with literal `KeyboardInterrupt` after
+`51.313 s`.  `lake build YangMills.OS.SpatialVacuum` never started.  Hence
+this incident says nothing about the repair or theorem.  No PASS was claimed,
+and the runtime was disconnected and deleted immediately; **SESIÓN COLAB
+LIBRE**.  The next attempt must use a newly inserted empty code cell or a new
+notebook tab and must accept output only after the transcript prints the
+repaired raw SHA.
