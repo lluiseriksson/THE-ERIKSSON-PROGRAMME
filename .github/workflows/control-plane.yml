@@ -26,6 +26,9 @@ on:
       - "run-manifests/**"
       - ".github/run-manifest-debt-baseline.json"
       - ".github/run-manifest-debt-baseline.hashes.json"
+      - ".github/scientific-test-debt-baseline.json"
+      - "scripts/pytest_nominal_debt_guard.py"
+      - "tests/scientific_test_debt_guard_adversarial.py"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
       - "docs/SURFACE-REMAINDER-PREREG.md"
@@ -66,6 +69,9 @@ on:
       - "run-manifests/**"
       - ".github/run-manifest-debt-baseline.json"
       - ".github/run-manifest-debt-baseline.hashes.json"
+      - ".github/scientific-test-debt-baseline.json"
+      - "scripts/pytest_nominal_debt_guard.py"
+      - "tests/scientific_test_debt_guard_adversarial.py"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
       - "docs/SURFACE-REMAINDER-PREREG.md"
@@ -127,8 +133,15 @@ jobs:
           if-no-files-found: error
 
   test:
+    name: Nominal scientific-test debt quarantine (9-item historical ceiling)
     runs-on: ubuntu-latest
     steps:
+      - name: Invalidate any pre-existing scientific-test debt decision
+        shell: bash
+        run: |
+          rm -f -- "$GITHUB_WORKSPACE/scientific-test-debt-decision.json"
+          test ! -e "$GITHUB_WORKSPACE/scientific-test-debt-decision.json"
+
       - uses: actions/checkout@v4
         with:
           # Source metadata records historical commit anchors.  A shallow
@@ -167,5 +180,24 @@ jobs:
       - name: Audit committed v88 sanitation evidence
         run: python scripts/audit_v88_sanitation.py
 
-      - name: Run control-plane tests
-        run: python -m pytest -q
+      - name: Exercise nominal debt quarantine attacks
+        run: |
+          python tests/scientific_test_debt_guard_adversarial.py
+          python -O tests/scientific_test_debt_guard_adversarial.py
+
+      - name: Run pytest with nominal scientific-debt quarantine
+        env:
+          CHANGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: >-
+          python scripts/pytest_nominal_debt_guard.py
+          --manifest .github/scientific-test-debt-baseline.json
+          --result scientific-test-debt-decision.json
+          --comparison-base "$CHANGE_BASE"
+
+      - name: Publish scientific-test debt decision
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scientific-test-debt-decision
+          path: scientific-test-debt-decision.json
+          if-no-files-found: error
