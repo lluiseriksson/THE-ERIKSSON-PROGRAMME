@@ -76,6 +76,14 @@ Gram amplitude `M_L <= L^-4`, the proved ball majorant satisfies
 budget uniformly in block units.  Remaining load-bearing inputs are exactly
 the sharp `L^-4` operator kernel theorem and the all-mode coercivity gate.
 
+**W-4c DONE — sharp critical Gram kernel** (2026-08-02,
+`PhysicalCriticalRescalingKernel.lean`, ledger Addendum 577).  The actual
+single-probe estimate is `‖Q delta_p v‖ <= L^-d L ‖v‖`; hence in `d=4` the
+critical map obeys `‖(LQ) delta_p v‖ <= L^-2 ‖v‖`, and its Gram operator has
+entrywise amplitude `L^-4` with fine range `3L`.  The kernel/ball/range/tilt
+side is now closed.  Only the volume-uniform all-mode coercivity gate remains
+load-bearing for the flat route.
+
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
 `https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/`.  It mirrors

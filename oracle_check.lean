@@ -2585,6 +2585,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.criticalFineTiltRate_pos
 #print axioms YangMills.RG.criticalFineTiltRate_mul_range
 #print axioms YangMills.RG.criticalScale_tiltBudget
+-- W-4c: actual sharp operator input for the critical Gram term.
+#print axioms YangMills.RG.flatBlockConstraint_single_norm_le_sharp
+#print axioms YangMills.RG.criticalScaledBlockConstraint_single_norm_le
+#print axioms YangMills.RG.criticalScaledBlockGram_kernelBound
+#print axioms YangMills.RG.criticalScaledBlockGram_finiteRange
 -- O-1: the operator bridge (charter docs/O-BRIDGE-CHARTER.md).  Headlines,
 -- non-vacuity witnesses, and load-bearing substrate.
 #print axioms YangMills.OS.clustering_iff_gap

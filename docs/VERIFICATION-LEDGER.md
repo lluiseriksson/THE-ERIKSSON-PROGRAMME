@@ -29577,3 +29577,31 @@ critically rescaled Gram term, and it does not prove the all-mode coercivity
 gate.  The current fine-metric rate is `theta_L = tau/L`, not a positive
 fine-bond rate uniform in `L`; `tau` is the uniform block-scale rate.  No
 volume-uniform certificate or continuum/mass-gap implication is claimed.
+
+## Addendum 577 (2026-08-02, **sharp critical Gram kernel closed**)
+
+**FORMALIZED DELTA.**  `PhysicalCriticalRescalingKernel.lean` revisits the
+existing single-bond sampling proof without discarding its `L^-d`
+normalization.  It proves
+
+    ‖Q delta_p v‖ <= L^-d * L * ‖v‖.
+
+In dimension four, the critical map `LQ` therefore satisfies
+`‖(LQ) delta_p v‖ <= L^-2 ‖v‖`.  The Gram package converts this probe estimate
+into the actual entrywise operator theorem
+
+    KernelBound ((LQ)^* (LQ)) (L^-4),
+
+and proves that the same operator has fine-metric range `3L`.  Thus the
+`L^-4` input used in Addendum 576 is no longer hypothetical.
+
+**BOUNDARY.**  The kernel/ball/range/tilt side of the critical CT budget is
+now closed.  The remaining decisive positive input is the all-mode coercivity
+gate with a constant independent of `L`.  No such coercivity, uniform root
+certificate, infinite-volume limit, continuum limit, or mass gap is claimed.
+
+**CHECKED.**  `lake build YangMills.RG.PhysicalCriticalRescalingKernel`
+completed successfully (8205 jobs); the focused
+`CriticalRescalingKernelOracle.lean` reports exactly `[propext,
+Classical.choice, Quot.sound]` for all four new declarations; and
+`lake build YangMillsCore` completed successfully (8473 jobs).

@@ -316,6 +316,15 @@ uniform exponential decay in block distance, not a fixed fine-bond rate.
 Still open: prove the sharp `L^-4` kernel bound for the actual critical Gram
 operator and inhabit the all-mode coercivity gate.
 
+**W-4c — sharp critical Gram kernel: DONE (2026-08-02, ledger Addendum 577,
+`PhysicalCriticalRescalingKernel.lean`).**  The retained block normalization
+gives `‖Q delta_p v‖ <= L^-d L ‖v‖`; in four dimensions the critical map
+therefore obeys `‖(LQ) delta_p v‖ <= L^-2 ‖v‖`.  The actual Gram operator
+`(LQ)^*(LQ)` now has the proved entrywise majorant `L^-4` and fine-metric
+range `3L`.  Combined with W-4b, the kernel/ball/range/tilt side is closed.
+The sole remaining positive input on this route is the volume-uniform
+all-mode coercivity gate.
+
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
 coercivity are all three proved for the physical shell".  FALSE as stated:
