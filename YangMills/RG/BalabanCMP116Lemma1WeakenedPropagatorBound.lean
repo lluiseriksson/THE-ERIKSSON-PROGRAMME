@@ -186,7 +186,10 @@ theorem summable_radialMajorant :
     (C.baseWeight_summable.mul_left (Real.exp (16 * kappa1)))
 
 /-- The weakened propagator is the literal complex random-walk `tsum`. -/
-noncomputable def propagator (sigma : Delta → ℂ) : E :=
+noncomputable def propagator
+    (_C : CMP116Lemma1WeakenedPropagatorCertificate
+      active term treeLength baseWeight B0 delta0 delta1 M kappa1)
+    (sigma : Delta → ℂ) : E :=
   cmp116ComplexWeakenedRandomWalkSeries active term sigma
 
 /-- At full coupling the weakened propagator is exactly the original walk
