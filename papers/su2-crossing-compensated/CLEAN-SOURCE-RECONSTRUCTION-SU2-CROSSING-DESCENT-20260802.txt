@@ -1,0 +1,331 @@
+Machine-checked SU(2) crossing differential descent verification
+UTC start: 2026-08-02T17:31:50Z
+Building the producer and dependency closure
+✔ [2893/2915] Built Lean2dYangMills.Interfaces (23s)
+✔ [2894/2915] Built Lean2dYangMills.ConvergenceEngine (36s)
+✔ [2895/2915] Built Lean2dYangMills.SU2Character (16s)
+✔ [2896/2915] Built Lean2dYangMills.SU2ClassOrthogonality (17s)
+✔ [2897/2915] Built Lean2dYangMills.SU2TraceSkein (18s)
+✔ [2898/2915] Built Lean2dYangMills.SU2Haar (19s)
+✔ [2899/2915] Built Lean2dYangMills.SU2Sphere (18s)
+✔ [2900/2915] Built Lean2dYangMills.SU2Weyl (18s)
+✔ [2901/2915] Built Lean2dYangMills.SU2ClassHeatKernel (16s)
+⚠ [2902/2915] Built Lean2dYangMills.SU2Conjugacy (16s)
+warning: Lean2dYangMills/SU2Conjugacy.lean:28:42: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  simp [su2HermitianPart, su2HalfTrace, M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.mul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Conjugacy.lean:48:26: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  simp [su2HermitianPart,̵ ̵M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Conjugacy.lean:124:6: This simp argument is unused:
+  Matrix.conjTranspose_apply
+
+Hint: Omit it from the simp argument list.
+  simp [D, Matrix.mul_apply, Matrix.star_eq_conjTranspose,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵j̵T̵r̵a̵n̵s̵p̵o̵s̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Conjugacy.lean:126:6: This simp argument is unused:
+  Matrix.conjTranspose_apply
+
+Hint: Omit it from the simp argument list.
+  simp [D, Matrix.mul_apply, Matrix.star_eq_conjTranspose,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵j̵T̵r̵a̵n̵s̵p̵o̵s̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Conjugacy.lean:128:6: This simp argument is unused:
+  Matrix.conjTranspose_apply
+
+Hint: Omit it from the simp argument list.
+  simp [D, Matrix.mul_apply, Matrix.star_eq_conjTranspose,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵j̵T̵r̵a̵n̵s̵p̵o̵s̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Conjugacy.lean:252:26: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  simp [su2HalfTrace, M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵Complex.mul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Conjugacy.lean:259:26: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  simp [su2HalfTrace, M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵Complex.mul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Conjugacy.lean:270:26: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  simp [su2HalfTrace, M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵Complex.mul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Conjugacy.lean:281:26: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  simp [su2HalfTrace, M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵Complex.mul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [2903/2915] Built Lean2dYangMills.SU2Convolution (23s)
+warning: Lean2dYangMills/SU2Convolution.lean:110:10: This simp argument is unused:
+  Matrix.star_eq_conjTranspose
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵M̵a̵t̵r̵i̵x̵.̵s̵t̵a̵r̵_̵e̵q̵_̵c̵o̵n̵j̵T̵r̵a̵n̵s̵p̵o̵s̵e̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Convolution.lean:112:12: This simp argument is unused:
+  Matrix.star_eq_conjTranspose
+
+Hint: Omit it from the simp argument list.
+  simp [̵M̵a̵t̵r̵i̵x̵.̵s̵t̵a̵r̵_̵e̵q̵_̵c̵o̵n̵j̵T̵r̵a̵n̵s̵p̵o̵s̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵s̵u̵2̵_̵a̵p̵p̵l̵y̵_̵o̵n̵e̵_̵z̵e̵r̵o̵_̵e̵q̵_̵n̵e̵g̵_̵c̵o̵n̵j̵_̵a̵p̵p̵l̵y̵_̵z̵e̵r̵o̵_̵o̵n̵e̵]̵[̲s̲u̲2̲_̲a̲p̲p̲l̲y̲_̲o̲n̲e̲_̲z̲e̲r̲o̲_̲e̲q̲_̲n̲e̲g̲_̲c̲o̲n̲j̲_̲a̲p̲p̲l̲y̲_̲z̲e̲r̲o̲_̲o̲n̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [2904/2915] Built Lean2dYangMills.SU2Orbit (24s)
+warning: Lean2dYangMills/SU2Orbit.lean:39:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: Lean2dYangMills/SU2Orbit.lean:71:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: Lean2dYangMills/SU2Orbit.lean:43:22: This simp argument is unused:
+  map_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [su2RailRotationFun, WithLp.ofLp_toLp, Real.cos_neg, R̵e̵a̵l̵.̵s̵i̵n̵_̵n̵e̵g̵,̵ ̵m̵a̵p̵_̵n̵e̵g̵]̵R̲e̲a̲l̲.̲s̲i̲n̲_̲n̲e̲g̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Orbit.lean:56:22: This simp argument is unused:
+  map_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [su2RailRotationFun, WithLp.ofLp_toLp, Real.cos_neg, R̵e̵a̵l̵.̵s̵i̵n̵_̵n̵e̵g̵,̵ ̵m̵a̵p̵_̵n̵e̵g̵]̵R̲e̲a̲l̲.̲s̲i̲n̲_̲n̲e̲g̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Orbit.lean:75:22: This simp argument is unused:
+  map_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [su2RailRotationFun, WithLp.ofLp_toLp, Real.cos_neg, R̵e̵a̵l̵.̵s̵i̵n̵_̵n̵e̵g̵,̵ ̵m̵a̵p̵_̵n̵e̵g̵]̵R̲e̲a̲l̲.̲s̲i̲n̲_̲n̲e̲g̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2Orbit.lean:88:22: This simp argument is unused:
+  map_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [su2RailRotationFun, WithLp.ofLp_toLp, Real.cos_neg, R̵e̵a̵l̵.̵s̵i̵n̵_̵n̵e̵g̵,̵ ̵m̵a̵p̵_̵n̵e̵g̵]̵R̲e̲a̲l̲.̲s̲i̲n̲_̲n̲e̲g̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [2905/2915] Built Lean2dYangMills.SU2ExactAreaLaw (15s)
+⚠ [2906/2915] Built Lean2dYangMills.SU2CharacterConvolution (19s)
+warning: Lean2dYangMills/SU2CharacterConvolution.lean:51:12: This simp argument is unused:
+  Measure.smul_apply
+
+Hint: Omit it from the simp argument list.
+  simp [M̵e̵a̵s̵u̵r̵e̵.̵s̵m̵u̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵ENNReal.smul_def, hs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2CharacterConvolution.lean:51:32: This simp argument is unused:
+  ENNReal.smul_def
+
+Hint: Omit it from the simp argument list.
+  simp [Measure.smul_apply, E̵N̵N̵R̵e̵a̵l̵.̵s̵m̵u̵l̵_̵d̵e̵f̵,̵ ̵hs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2CharacterConvolution.lean:51:50: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  simp [Measure.smul_apply, ENNReal.smul_def,̵ ̵h̵s̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2CharacterConvolution.lean:166:10: This simp argument is unused:
+  Polynomial.Chebyshev.U_eval_neg_one
+
+Hint: Omit it from the simp argument list.
+  simp [̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵C̵h̵e̵b̵y̵s̵h̵e̵v̵.̵U̵_̵e̵v̵a̵l̵_̵n̵e̵g̵_̵o̵n̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵C̵h̵e̵b̵y̵s̵h̵e̵v̵.̵U̵_̵e̵v̵a̵l̵_̵n̵e̵g̵,̵[̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲C̲h̲e̲b̲y̲s̲h̲e̲v̲.̲U̲_̲e̲v̲a̲l̲_̲n̲e̲g̲,̲ Ureal]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2CharacterConvolution.lean:178:10: This simp argument is unused:
+  Polynomial.Chebyshev.U_eval_neg_one
+
+Hint: Omit it from the simp argument list.
+  simp [̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵C̵h̵e̵b̵y̵s̵h̵e̵v̵.̵U̵_̵e̵v̵a̵l̵_̵n̵e̵g̵_̵o̵n̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵C̵h̵e̵b̵y̵s̵h̵e̵v̵.̵U̵_̵e̵v̵a̵l̵_̵n̵e̵g̵,̵[̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲C̲h̲e̲b̲y̲s̲h̲e̲v̲.̲U̲_̲e̲v̲a̲l̲_̲n̲e̲g̲,̲ Ureal]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Lean2dYangMills/SU2CharacterConvolution.lean:168:4: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Lean2dYangMills/SU2CharacterConvolution.lean:180:4: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Lean2dYangMills/SU2CharacterConvolution.lean:219:48: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Lean2dYangMills/SU2CharacterConvolution.lean:232:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Lean2dYangMills/SU2CharacterConvolution.lean:507:14: This simp argument is unused:
+  hnm
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵n̵m̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [2907/2915] Built Lean2dYangMills.SU2HeatSemigroup (25s)
+✔ [2908/2915] Built Lean2dYangMills.SU2PlanarReduction (14s)
+⚠ [2909/2915] Built Lean2dYangMills.SU2FiniteCellulation (17s)
+warning: Lean2dYangMills/SU2FiniteCellulation.lean:184:4: Try this: intro α inst hsub _ H _ hH
+warning: Lean2dYangMills/SU2FiniteCellulation.lean:194:4: Try this: intro α inst hnontrivial ih _ H _ hH
+✔ [2910/2915] Built Lean2dYangMills.SU2EdgeGaugeFixing (24s)
+✔ [2911/2915] Built Lean2dYangMills.SU2FiniteGaugeFixing (19s)
+⚠ [2912/2915] Built Lean2dYangMills.SU2HaarIntegrationByParts (24s)
+warning: Lean2dYangMills/SU2HaarIntegrationByParts.lean:378:62: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Lean2dYangMills/SU2HaarIntegrationByParts.lean:380:62: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Lean2dYangMills/SU2HaarIntegrationByParts.lean:392:57: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Lean2dYangMills/SU2HaarIntegrationByParts.lean:433:62: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Lean2dYangMills/SU2HaarIntegrationByParts.lean:435:62: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Lean2dYangMills/SU2HaarIntegrationByParts.lean:443:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Lean2dYangMills/SU2HaarIntegrationByParts.lean:488:62: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Lean2dYangMills/SU2HaarIntegrationByParts.lean:490:62: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Lean2dYangMills/SU2HaarIntegrationByParts.lean:501:80: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [2913/2915] Built Lean2dYangMills.SU2CrossingWard (16s)
+✔ [2914/2915] Built Lean2dYangMills.SU2CrossingExtendedGauge (14s)
+✔ [2915/2915] Built Lean2dYangMills.SU2CrossingDifferentialDescent (15s)
+Build completed successfully (2915 jobs).
+Compiling the kernel dependency audit
+Lean2dYangMills.su2CrossingPhysicalProjection (p : SU2CrossingPairedConfiguration) : Fin 2 → SU2
+Lean2dYangMills.su2CrossingReducedConfiguration_measurePreserving :
+  MeasureTheory.MeasurePreserving su2CrossingReducedConfiguration (su2FiniteProductHaar (Fin 4))
+    (su2FiniteProductHaar (Fin 2))
+Lean2dYangMills.integral_su2CrossingReducedConfiguration (F : (Fin 2 → SU2) → ℂ)
+  (hF : MeasureTheory.AEStronglyMeasurable F (su2FiniteProductHaar (Fin 2))) :
+  ∫ (U : Fin 4 → SU2), F (su2CrossingReducedConfiguration U) ∂su2FiniteProductHaar (Fin 4) =
+    ∫ (V : Fin 2 → SU2), F V ∂su2FiniteProductHaar (Fin 2)
+Lean2dYangMills.su2CrossingPhysicalFlow0 (gamma : ℝ → SU2) (t : ℝ) (U : SU2CrossingConfiguration) :
+  SU2CrossingConfiguration
+Lean2dYangMills.su2CrossingPhysicalFlow1 (gamma : ℝ → SU2) (t : ℝ) (U : SU2CrossingConfiguration) :
+  SU2CrossingConfiguration
+Lean2dYangMills.su2FourEdgeCrossingFirstGenerator (alpha beta : SU2) (X : SU2Matrix) (U : SU2CrossingConfiguration) : ℂ
+Lean2dYangMills.su2FourEdgeCrossingMixedGenerator (alpha beta : SU2) (X Y : SU2Matrix) (U : SU2CrossingConfiguration) :
+  ℂ
+Lean2dYangMills.SU2CrossingPauliWardData (alpha beta : SU2) : Type
+Lean2dYangMills.integral_su2FourEdgeCrossing_pauliWard_closed (alpha beta : SU2)
+  (D : SU2CrossingPauliWardData alpha beta) :
+  ∫ (U : Fin 4 → SU2),
+      (D.D1D2rhoX (su2CrossingReducedConfiguration U) + D.D1D2rhoY (su2CrossingReducedConfiguration U) +
+          D.D1D2rhoZ (su2CrossingReducedConfiguration U)) *
+        su2FourEdgeCrossingWilsonWord alpha beta U ∂su2FiniteProductHaar (Fin 4) =
+    ∫ (U : Fin 4 → SU2),
+      D.rho (su2CrossingReducedConfiguration U) *
+        (-(1 / 4) * su2FourEdgeCrossingDirectResolution alpha beta U -
+          1 / 2 * su2FourEdgeCrossingReverseResolution alpha beta U) ∂su2FiniteProductHaar (Fin 4)
+'Lean2dYangMills.su2CrossingPhysicalProjection_measurePreserving' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.su2CrossingPhysicalProjection_fullGaugeFix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Lean2dYangMills.su2CrossingReducedConfiguration_measurePreserving' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.integral_su2CrossingReducedConfiguration' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Lean2dYangMills.su2CrossingReducedConfiguration_physicalFlow0' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.su2CrossingReducedConfiguration_physicalFlow1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.hasDerivAt_su2FourEdgeCrossingWilsonWord_physical0_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.hasDerivAt_su2FourEdgeCrossingFirstGenerator_physical1_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.su2FourEdgeCrossingMixedGenerator_pauli_sum_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.hasDerivAt_su2FourEdgeCrossingWilsonWord_pauliX' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.hasDerivAt_su2FourEdgeCrossingWilsonWord_pauliY' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.hasDerivAt_su2FourEdgeCrossingWilsonWord_pauliZ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.hasDerivAt_su2FourEdgeCrossingFirstGenerator_pauliX' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.hasDerivAt_su2FourEdgeCrossingFirstGenerator_pauliY' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.hasDerivAt_su2FourEdgeCrossingFirstGenerator_pauliZ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lean2dYangMills.integral_su2FourEdgeCrossing_pauliWard_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Scanning new modules for local proof escapes
+Counting public declarations in the producer
+31:def su2CrossingPhysicalProjection (p : SU2CrossingPairedConfiguration) :
+37:theorem su2CrossingPhysicalProjection_measurePreserving :
+52:theorem su2CrossingPhysicalProjection_fullGaugeFix
+64:theorem su2CrossingReducedConfiguration_measurePreserving :
+73:theorem integral_su2CrossingReducedConfiguration
+93:def su2CrossingPhysicalCurve0 (gamma : Real -> SU2)
+98:def su2CrossingPhysicalFlow0 (gamma : Real -> SU2) (t : Real)
+104:def su2CrossingPhysicalCurve1 (gamma : Real -> SU2)
+109:def su2CrossingPhysicalFlow1 (gamma : Real -> SU2) (t : Real)
+115:theorem su2CrossingReducedConfiguration_physicalFlow0
+128:theorem su2CrossingReducedConfiguration_physicalFlow1
+142:def su2FourEdgeCrossingFirstGenerator (alpha beta : SU2) (X : SU2Matrix)
+148:def su2FourEdgeCrossingMixedGenerator (alpha beta : SU2) (X Y : SU2Matrix)
+155:theorem hasDerivAt_su2FourEdgeCrossingWilsonWord_physical0_zero
+175:theorem hasDerivAt_su2FourEdgeCrossingFirstGenerator_physical1_zero
+193:def su2FourEdgeCrossingDirectResolution (alpha beta : SU2)
+199:def su2FourEdgeCrossingReverseResolution (alpha beta : SU2)
+206:theorem su2FourEdgeCrossingMixedGenerator_pauli_sum_closed
+220:theorem hasDerivAt_su2FourEdgeCrossingWilsonWord_pauliX
+230:theorem hasDerivAt_su2FourEdgeCrossingWilsonWord_pauliY
+240:theorem hasDerivAt_su2FourEdgeCrossingWilsonWord_pauliZ
+250:theorem hasDerivAt_su2FourEdgeCrossingFirstGenerator_pauliX
+262:theorem hasDerivAt_su2FourEdgeCrossingFirstGenerator_pauliY
+274:theorem hasDerivAt_su2FourEdgeCrossingFirstGenerator_pauliZ
+289:structure SU2CrossingPauliWardData (alpha beta : SU2) where
+336:theorem integral_su2FourEdgeCrossing_pauliWard_closed
+Producer SHA-256: FA8FA86F6480123B8E63E0E285AD4B2C5CA6E0DEB85C85DB86261C66A24B5048
+Audit SHA-256: 0A2AAA9CABEC03B3DD5F902E3625C80AC37A2D37CBAA02F56EFADB855E6C3CFD
+UTC finish: 2026-08-02T17:38:55Z
+VERIFICATION RESULT: PASS
