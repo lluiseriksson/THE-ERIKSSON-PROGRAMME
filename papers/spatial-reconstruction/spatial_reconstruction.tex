@@ -1,0 +1,654 @@
+% Both reflections, and the operator they force (paper 14 of the O lane).
+% Lane: O (operator bridge), modules YangMills/OS/SpatialOS.lean (site bridge)
+% and YangMills/OS/SpatialReconstruction.lean (the operator).
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\anchor}{c90dc745ab8cd1ba7ddc02aa16fed3de339bf958}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\title{Both Reflections, and the Operator They Force\\
+\large a machine-checked site reflection bridge, and the self-adjoint positive
+transfer operator the two geometries determine, for the coupled $\Z_2$ slice}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{The site bridge, which was the open half.}  A whole path $X$ of $2m+1$
+slices through a site plane is exactly a pair of half-paths that \emph{share}
+the slice the plane passes through --- a fibred product, not a product --- and
+its Gibbs weight satisfies the division-free identity
+$w(\sigma)\,W(X)=W(a)\,W(b)$, where $\sigma$ is the shared slice.  That identity
+carries no hypothesis on $w$ whatsoever.  With it, the site reflected form of a
+complex observable of a whole half-chain is the reflected two-point sum of the
+\emph{measure}, at every $\beta$ including negative ones, and its Gram matrix
+over a finite family is positive semidefinite.  The companion bond statement was
+proved earlier; this closes the pair.
+
+\textbf{The operator the pair forces.}  Both forms factor through the same map
+$\Phi$, which sums out the interior of a half and keeps its boundary slice.
+$\Phi$ is surjective, so the physical space is the \emph{whole} space of
+boundary vectors and nothing smaller.  On it the site form is definite, so if
+there is to be an operator $T$ with
+$\langle u,Tv\rangle_{\mathrm{site}}=\langle u,v\rangle_{\mathrm{bond}}$ then
+$T$ is not chosen but determined: $(Tv)(\sigma)=w(\sigma)\sum_\tau
+K(\sigma,\tau)v(\tau)$.  We prove that this $T$ is \textbf{self-adjoint} for the
+physical inner product at every $\beta$, and \textbf{positive} for $\beta\ge0$.
+Self-adjoint and positive is what an Osterwalder--Schrader transfer operator is
+asked to be.
+
+\textbf{Why both geometries had to exist first, and it is not symmetry.}  $T$
+advances a half-chain by \emph{one} slice, which turns an even separation into
+an odd one.  So the defining equation has the site geometry on its left and the
+bond geometry on its right: a construction owning only one of the two has no
+equation to define $T$ by at all.
+
+Everything is machine-checked in Lean~4 against Mathlib, with no \texttt{sorry},
+no project axioms, and \texttt{propext}, \texttt{Classical.choice},
+\texttt{Quot.sound} the only axioms anywhere.  Two independent gate scripts were
+committed \emph{before} the corresponding Lean existed and \emph{before} they
+were run; each predicts a number rather than a range, and each file states what
+its own failure would have meant.
+
+\textbf{On the spectrum, precisely.}  The similarity $T\circ Q=Q\circ S$ with
+$Q$ an isomorphism, and the equality of eigenvalue \emph{sets} that follows from
+it, are machine-checked theorems.  The multiplicity, characteristic-polynomial,
+ordered-list, reality and Perron-ratio components of the corresponding
+pre-registered gate are \textbf{not} formalised here.
+
+\textbf{What is not here.}  No Hamiltonian, no spectral gap statement for $T$,
+no norm or contraction bound, no infinite volume, no continuum, no gauge theory.
+
+\textbf{The mathematics is not new.}  Reflection positivity for Ising-type
+measures, through sites and through bonds, and its transfer-matrix reading, are
+classical: Osterwalder and Schrader for the axioms, Osterwalder and Seiler for
+the lattice setting, and Fr\"ohlich, Israel, Lieb and Simon for reflection
+positivity of such measures; the transfer matrix of a finite spin chain is older
+still.  No mathematical novelty is claimed for these finite-dimensional facts.
+The contribution is their Lean formalisation --- the explicit site/bond
+indexing, the quotient identification, and the mechanically checked
+reconstruction identities.
+\end{abstract}
+
+\section{What is proved, and what is not}\label{sec:scope}
+
+Two things, in the order they were done.
+
+\paragraph{(i) The site bridge.}  The site reflected form of the previous paper
+in this lane was a \emph{candidate}: positive, with a positive semidefinite Gram
+matrix, but not yet identified with a sum over whole paths against the Gibbs
+weight.  Section~\ref{sec:sitebridge} closes it.  The bond case was closed
+earlier; the site case is a different statement, because the two halves share a
+slice rather than being disjoint.
+
+\paragraph{(ii) The operator.}  Section~\ref{sec:forced} shows the two closed
+bridges determine an operator, Section~\ref{sec:sa} proves it self-adjoint and
+positive, and Section~\ref{sec:phys} proves the space it acts on is the whole
+boundary space rather than a proper subspace of it.
+
+\paragraph{What is \emph{not} proved.}  There is no Hamiltonian here.  The
+similarity with the symmetrised kernel is proved (Section~\ref{sec:spec}), and
+with it the equality of eigenvalue \emph{sets}; but the Perron labelling, the
+ratio to the Perron eigenvalue, multiplicities, ordered spectral data and
+reality are \emph{not} formalised, and neither is a spectral gap statement for
+$T$.  There is no norm or contraction bound.  There is no thermodynamic limit
+and no continuum limit.  The system is a finite coupled $\Z_2$ slice, and every
+statement below is a statement about it.
+
+\paragraph{On novelty, stated at the front rather than at the back.}  The
+mathematics is classical.  Reflection positivity for Ising-type measures through
+sites and through bonds, and the reading of the resulting operator as a transfer
+matrix, go back to Osterwalder--Schrader and to
+Fr\"ohlich--Israel--Lieb--Simon, with the lattice formulation in
+Osterwalder--Seiler; the transfer matrix of a finite spin chain is older still.
+Nothing in this paper is offered as a new mathematical fact about such systems.
+What is offered is machine checking: the site/bond index bookkeeping done
+explicitly, the operator obtained as the unique solution of an equation rather
+than posited, the null space identified and the quotient constructed, and every
+statement carrying its own axiom report.
+
+\section{The objects}\label{sec:objects}
+
+Fix $L\ge0$ and write a \emph{slice} for a configuration
+$\sigma:\{0,\dots,L-1\}\to\{0,1\}$; there are $2^L$ of them.  For $\beta\in\R$
+the \emph{slice kernel} is
+\[
+  K_\beta(\sigma,\tau)\;=\;\prod_{j<L}e^{\beta\,s(\sigma_j,\tau_j)},
+  \qquad s(x,y)=+1 \text{ if } x=y,\ -1 \text{ otherwise},
+\]
+which is symmetric, strictly positive, and defined at every real $\beta$.  A
+\emph{source weight} is any $w$ with $w(\sigma)>0$ for all $\sigma$; no further
+property of $w$ is assumed anywhere in this paper.
+
+A \emph{path} of $N+1$ slices is $X:\{0,\dots,N\}\to\text{slices}$, and its
+Gibbs weight is
+\[
+  W(X)\;=\;\Big(\prod_{t\le N}w(X_t)\Big)\prod_{t<N}K_\beta(X_t,X_{t+1}),
+\]
+the unnormalised weight; every statement below is about unnormalised sums, which
+is the form the reflection-positivity axiom is about.  Dividing by the partition
+function is division by a positive number.
+
+A \emph{past half} is a path $a$ of $m+1$ slices, its \emph{boundary slice} is
+$\partial a=a_m$, and an \emph{observable of the half-chain} is any
+$F:\{\text{halves}\}\to\C$.  The \emph{collapse} is
+\[
+  (\Phi F)(\sigma)\;=\;\sum_{\partial a=\sigma}W(a)\,F(a),
+\]
+which sums out the interior of a half and keeps only the slice at its boundary.
+Both reflected forms factor through $\Phi$, and this is the only reason the
+operator of Section~\ref{sec:forced} can be written down at all.
+
+\section{The site bridge}\label{sec:sitebridge}
+
+Through a \emph{bond} the reflection plane falls between two slices and the two
+halves are disjoint, so pairs of halves are all paths.  Through a \emph{site}
+the plane falls on a slice, the two halves \emph{share} it, and the pairs that
+come from a path are those agreeing there: a fibred product over the shared
+slice.  The weight of that slice is then carried by both halves and appears once
+in the path.
+
+\begin{definition}[the assembly]
+For halves $a,b$ of $m+1$ slices put
+\[
+  J(a,b)\;=\;\big(a_0,\dots,a_{m-1},\;b_m,\;b_{m-1},\dots,b_0\big),
+\]
+a path of $2m+1$ slices.  The blocks have sizes $m$ and $m+1$; that choice, and
+not the mirror one, is what makes $2m+1$ a successor so that the weight
+functional accepts it.
+\end{definition}
+
+\begin{lemma}[the fibred bijection]\label{lem:sitebij}
+For each slice $\sigma$, $J$ is a bijection from the pairs of halves with
+$\partial a=\partial b=\sigma$ onto the paths of $2m+1$ slices whose middle
+slice is $\sigma$.
+\end{lemma}
+
+Machine-checked as \osline{SpatialOS}{1051}{sum\_pathsAt\_eq}, with the
+two directions
+\osline{SpatialOS}{911}{pastSiteOf\_joinSite} and
+\osline{SpatialOS}{903}{futSiteOf\_joinSite}.  The first needs the
+halves to agree at the boundary and the second does not, which is the
+asymmetry the fibred product introduces.
+
+\begin{theorem}[the site weight identity, division-free]\label{thm:siteweight}
+If $\partial a=\partial b$ then
+\[
+  w(\partial a)\;W\big(J(a,b)\big)\;=\;W(a)\,W(b).
+\]
+No hypothesis on $w$ is used, in particular not positivity.
+\end{theorem}
+
+Machine-checked as \osline{SpatialOS}{1017}{gibbsWeight\_joinSite}.  It
+splits into a statement about the $w$ factors and one about the kernel factors,
+and the two are not equally strong: the $w$ identity
+\osline{SpatialOS}{962}{prod\_w\_joinSite} holds for \emph{any} pair of
+halves, agreeing at the boundary or not, while the kernel identity
+\osline{SpatialOS}{986}{prod\_K\_joinSite} needs them to agree.  We state
+this because the first version of the $w$ lemma carried the hypothesis, and the
+build's own unused-variable warning was what pointed out that it does not need
+it.
+
+\begin{remark}
+The kernel identity is where the site case differs from the bond case in
+substance rather than in bookkeeping.  Through a bond, exactly one kernel factor
+crosses the plane and survives into the weight identity.  Through a site,
+\emph{no} kernel factor crosses: the $2m$ bonds of the assembled path are
+exactly the $m$ bonds of each half.  The missing crossing factor is the whole
+difference, and it is why the site statements hold at every $\beta$ while the
+bond ones need $\beta\ge0$.
+\end{remark}
+
+\begin{theorem}[the site bridge]\label{thm:sitebridge}
+For every $L$, every $m$, every strictly positive $w$ and every $\beta\in\R$,
+and for complex observables $F,G$ of a whole half-chain,
+\[
+  \sum_{X}\ \overline{F(\mathrm{past}\,X)}\ G(\mathrm{rev}\,X)\ W(X)
+  \;=\;\sum_\sigma\ \sum_{\partial a=\sigma}\ \sum_{\partial b=\sigma}
+    \overline{F(a)}\,G(b)\,\frac{W(a)W(b)}{w(\sigma)} ,
+\]
+the sum on the left running over all paths of $2m+1$ slices, with
+$\mathrm{past}\,X$ its past half and $\mathrm{rev}\,X$ its future half read
+backwards from the far end.
+\end{theorem}
+
+Machine-checked as
+\osline{SpatialOS}{1088}{osPairingSiteCross\_eq\_gibbsSum}; the
+diagonal case is \osline{SpatialOS}{1116}{osPairingSite\_eq\_gibbsSum}.
+Positivity of $w$ enters in exactly one place --- dividing by $w(\sigma)$ ---
+and Theorem~\ref{thm:siteweight} is stated without division so that this is
+visible rather than buried.
+
+\begin{corollary}\label{cor:sitepos}
+The left-hand side of Theorem~\ref{thm:sitebridge} with $G=F$ is a non-negative
+real, for every $\beta\in\R$, and the Gram matrix over a finite family of
+observables with complex coefficients is positive semidefinite.
+\end{corollary}
+
+\osline{SpatialOS}{1128}{gibbsSumSite\_reflected\_nonneg} and
+\osline{SpatialOS}{1141}{gibbsSumSite\_reflected\_gram\_nonneg}.  The
+Gram statement is a consequence of the diagonal one applied to
+$\sum_i c_iF_i$, and it is written down anyway, because leaving it implicit
+would let the prose say ``matrix statement about the measure'' while the formal
+text exhibited only a diagonal identity.
+
+\section{The operator is forced}\label{sec:forced}
+
+Write, for boundary vectors $u,v:\{\text{slices}\}\to\C$,
+\[
+  \langle u,v\rangle_{\mathrm{site}}=\sum_\sigma
+    \frac{\overline{u(\sigma)}\,v(\sigma)}{w(\sigma)},
+  \qquad
+  \langle u,v\rangle_{\mathrm{bond}}=\sum_{\sigma,\tau}
+    \overline{u(\sigma)}\,K_\beta(\sigma,\tau)\,v(\tau).
+\]
+By Theorem~\ref{thm:sitebridge} and its bond companion, evaluated at
+$u=\Phi F$, $v=\Phi G$ these are the two reflected forms of the measure ---
+\osline{SpatialReconstruction}{91}{siteForm\_collapse} and
+\osline{SpatialReconstruction}{98}{bondForm\_collapse}.
+
+The site form is definite as soon as $w>0$.  So the equation
+\begin{equation}\label{eq:star}
+  \langle u,Tv\rangle_{\mathrm{site}}\;=\;\langle u,v\rangle_{\mathrm{bond}}
+  \qquad\text{for all }u
+  \tag{$*$}
+\end{equation}
+has at most one solution $T$, and reading it off gives
+\[
+  (Tv)(\sigma)\;=\;w(\sigma)\sum_\tau K_\beta(\sigma,\tau)\,v(\tau).
+\]
+
+\begin{theorem}[\eqref{eq:star}]\label{thm:star}
+With $T$ as displayed, $\langle u,Tv\rangle_{\mathrm{site}}
+=\langle u,v\rangle_{\mathrm{bond}}$ for all boundary vectors $u,v$, every
+$\beta\in\R$ and every strictly positive $w$.
+\end{theorem}
+
+\osline{SpatialReconstruction}{116}{siteForm\_transferOp}.
+
+\paragraph{One geometry on each side.}  $T$ advances a half-chain across one
+more slice.  If the pairing on the left is taken at separation $2m$, the pairing
+on the right is at separation $2m+1$: the parity flips.  So \eqref{eq:star} is
+an equation between a \emph{site} quantity and a \emph{bond} quantity, and it
+could not have been written at all with only one of the two bridges in hand.
+This is the reason Section~\ref{sec:sitebridge} is in this paper rather than
+being a tidy-up of the previous one.
+
+\section{Self-adjointness and positivity}\label{sec:sa}
+
+\begin{theorem}[self-adjoint]\label{thm:sa}
+For every $\beta\in\R$, negative included, and every strictly positive $w$,
+\[
+  \langle u,Tv\rangle_{\mathrm{site}}\;=\;\langle Tu,v\rangle_{\mathrm{site}}.
+\]
+\end{theorem}
+
+\osline{SpatialReconstruction}{155}{transferOp\_selfAdjoint}, via
+\osline{SpatialReconstruction}{130}{siteForm\_transferOp\_left}.  The
+left-hand version needs the symmetry of $K_\beta$, which the right-hand version
+of \eqref{eq:star} did not; the two are therefore proved separately rather than
+one being quoted for the other.
+
+\begin{theorem}[positive]\label{thm:pos}
+For $\beta\ge0$ and every strictly positive $w$, $\langle
+u,Tu\rangle_{\mathrm{site}}$ is a non-negative real.
+\end{theorem}
+
+\osline{SpatialReconstruction}{208}{transferOp\_nonneg}.  By
+Theorem~\ref{thm:star} this is the statement that the bond form is positive
+semidefinite on complex vectors, which reduces by a generic real-to-complex step
+to the positive semidefiniteness of $K_\beta$ proved earlier in this lane.  The
+physical inner product itself is positive at every $\beta$:
+\osline{SpatialReconstruction}{164}{siteForm\_self\_nonneg}.
+
+\paragraph{Sufficiency only.}  $\beta\ge0$ is proved sufficient for
+Theorem~\ref{thm:pos} and is not proved necessary, here or anywhere in this
+lane.  At $L=0$ it could not be necessary: the kernel is the scalar $1$.
+
+\section{Definiteness, and why the operator is unique}\label{sec:unique}
+
+Section~\ref{sec:forced} said the defining equation has \emph{at most} one
+solution.  That step needs the site form to separate points, and
+non-negativity does not separate anything: version 1.0 of this paper asserted
+the conclusion while carrying only
+\osline{SpatialReconstruction}{SITENNVEC}{siteForm\_self\_nonneg}.  The
+missing chain is supplied here.
+
+\begin{theorem}[definiteness]\label{thm:def}
+For strictly positive $w$, $\langle u,u\rangle_{\mathrm{site}}=0$ if and only if
+$u=0$.
+\end{theorem}
+
+\osline{SpatialReconstruction}{DEFLINE}{siteForm\_self\_eq\_zero\_iff}, whence
+separation --- two vectors pairing identically against everything are equal ---
+at \osline{SpatialReconstruction}{SEPLINE}{siteForm\_right\_ext}.
+
+\begin{theorem}[uniqueness]\label{thm:uniq}
+If $S$ is any map with $\langle u,Sv\rangle_{\mathrm{site}}
+=\langle u,v\rangle_{\mathrm{bond}}$ for all $u,v$, then $S=T$.
+\end{theorem}
+
+\osline{SpatialReconstruction}{UNIQLINE}{transferOp\_unique}.  The statement
+quantifies over an arbitrary map, linearity not assumed; linearity of $T$
+itself is a separate object,
+\osline{SpatialReconstruction}{OPLLINE}{transferOpL}, so that the word
+\emph{operator} names a type.
+
+\section{The similarity, and what it does not give}\label{sec:spec}
+
+Let $Q$ be multiplication by $\sqrt{w}$.  For strictly positive $w$ this is a
+linear \emph{isomorphism} --- \osline{SpatialReconstruction}{QEQUIVLINE}{sqrtWeightEquiv}
+--- and
+
+\begin{theorem}[similarity]\label{thm:sim}
+$T\circ Q=Q\circ S$ as an equality of linear maps, where $S$ is the symmetrised
+kernel $\sqrt{w}K_\beta\sqrt{w}$ studied earlier in this lane.
+\end{theorem}
+
+\osline{SpatialReconstruction}{SIMILARLINE}{transferOpL\_comp\_sqrtWeightEquiv}.
+
+\begin{corollary}\label{cor:eig}
+$\lambda$ is an eigenvalue of $S$ if and only if it is an eigenvalue of $T$, the
+non-vanishing eigenvector being carried across by $Q$ in both directions.
+\end{corollary}
+
+\osline{SpatialReconstruction}{EIGIFFLINE}{transferOp\_eigenvalue\_iff}.
+
+\paragraph{What this is not, stated because the first version of it overstated
+itself.}  Gate R4 of \S\ref{sec:gates} asserted four things: equality of
+eigenvalue lists entry by entry, reality of all of them, agreement of
+multiplicities, and the ratio of the largest modulus to the Perron eigenvalue.
+Theorem~\ref{thm:sim} and Corollary~\ref{cor:eig} give the similarity and the
+equality of eigenvalue \emph{sets}.  Multiplicities, characteristic
+polynomials, ordered lists, reality and the Perron ratio are \textbf{not}
+formalised here.  They follow from a similarity with a real symmetric matrix by
+standard linear algebra; standard is not the same as present, and an
+intermediate version of this paper wrote ``the spectrum transports'' when it had
+proved less.
+
+The weaker forward implication is kept and labelled as such at
+\osline{SpatialReconstruction}{FWDEIGLINE}{transferOp\_eigen\_of\_symWeighted};
+note that it does not require the eigenvector to be non-zero, so at $u=0$ its
+hypothesis holds for every $\lambda$ and it says nothing.  That is exactly why
+it is not, by itself, a statement about spectra.
+
+\section{The physical space is everything}\label{sec:phys}
+
+An operator statement is only as strong as the space it is about.  If $\Phi$
+were not surjective, the physical space would be a proper subspace of the
+boundary vectors and every theorem above would be quietly weaker than it sounds.
+
+\begin{theorem}[surjectivity]\label{thm:surj}
+For every strictly positive $w$, every $\beta\in\R$ and every $m$, every
+boundary vector is $\Phi F$ for some observable $F$ of the half-chain.
+\end{theorem}
+
+\osline{SpatialReconstruction}{230}{collapse\_surjective}.  The witness is
+explicit: $F(a)=v(\partial a)\big/\sum_{\partial b=\partial a}W(b)$, whose
+denominator is positive because the constant half ending at a slice is a half
+ending at it --- \osline{SpatialReconstruction}{222}{const\_mem\_halvesAt}
+--- and Gibbs weights are positive.
+
+The null space of the site form on observables is exactly $\ker\Phi$ ---
+\osline{SpatialReconstruction}{KERLINE}{mem\_ker\_collapseL\_iff}, so the
+quotient is by something identified rather than by an abstract null space --- and
+the quotient by it \emph{is} the space of boundary vectors, as a bundled linear
+equivalence at \osline{SpatialReconstruction}{PHYSLINE}{physicalEquiv}.  Gate R1
+of Section~\ref{sec:gates} predicted its dimension as an integer before any of
+this was written.  In v1.0 the last two sentences were prose; they are objects
+now.
+
+\section{On the measure}\label{sec:measure}
+
+Everything above is about boundary vectors.  Composed with the two bridges it is
+about the measure, which is the only reason it is worth stating.
+
+\begin{theorem}\label{thm:onmeasure}
+For every strictly positive $w$, every $\beta\in\R$, every $m$ and all complex
+observables $F,G$ of a half-chain,
+\[
+  \big\langle \Phi F,\;T\,\Phi G\big\rangle_{\mathrm{site}}
+  \;=\;\sum_{X}\ \overline{F(\mathrm{past}\,X)}\ G(\mathrm{rev}\,X)\ W(X),
+\]
+the sum running over all paths of $2m+2$ slices.
+\end{theorem}
+
+\osline{SpatialReconstruction}{279}{osPairing\_transfer} composed with the
+bond bridge, and stated on the path sum itself at
+\osline{SpatialReconstruction}{294}{osPairing\_transfer\_gibbsSum}.  In
+words: the matrix element of the transfer operator between two half-chain
+observables \emph{is} the reflected two-point function of the Gibbs measure one
+slice further apart.
+
+\begin{remark}[why the cross form exists]
+The displayed identity is stated for two observables, and the formal text states
+it for two.  It would have been cheaper to prove only the diagonal case $G=F$
+and let the display carry the general one; the bond bridge's cross form had in
+fact been proved inside another proof, where nothing could cite it, and was
+extracted --- \osline{SpatialOS}{785}{osPairingBondCross\_eq\_gibbsSum}
+--- precisely so that this section's prose and its formal text have the same
+scope.  A green build does not notice a theorem carrying less than its sentence.
+\end{remark}
+
+\section{The gates}\label{sec:gates}
+
+Two scripts, each committed before the Lean it licenses existed and before it
+was run, each predicting a \emph{number} rather than a range, and each stating
+in its own text what its failure would have meant.
+
+\paragraph{Site bridge, \repofile{scripts/judge\_site\_bridge.py}{scripts/judge\_site\_bridge.py}.}
+\textbf{S1} predicted that the count of paths and the count of assembling pairs
+are the same integer, $2^{L(2m+1)}$, in every cell.  \textbf{S2} predicted the
+residual of Theorem~\ref{thm:siteweight} to be zero to $10^{-12}$ relative.  The
+file states that an S2 residual which was a fraction of the weight rather than
+roundoff would have meant the site form was the \emph{wrong} form, not merely an
+unidentified one.  Both passed.
+
+\paragraph{Reconstruction, \repofile{scripts/judge\_os\_reconstruction.py}{scripts/judge\_os\_reconstruction.py}.}
+\textbf{R1} predicted $\operatorname{rank}\Phi=2^L$ exactly, as an integer.
+\textbf{R2} predicted the self-adjointness residual to be zero to $10^{-12}$,
+negative $\beta$ included.  \textbf{R3} predicted the residual of \eqref{eq:star}
+itself to be zero.  \textbf{R4} predicted that the eigenvalues of $T$ agree
+entry by entry with those of the symmetrised kernel $\sqrt{w}K_\beta\sqrt{w}$,
+that all are real, and that the largest in modulus divided by the Perron
+eigenvalue is exactly $1$.  All four passed.
+
+\textbf{R4 is a gate and is used for nothing.}  It is recorded because it says
+where the next theorem would come from, and because registering it before the
+fact is the only way it can later count as evidence at all.  It is not cited in
+any proof and no statement in this paper depends on it.
+
+Neither script lets an acceptance decision depend on a Python \texttt{assert};
+both are run in the ordinary and the \texttt{-O} interpreter modes, because
+\texttt{-O} deletes assertions and this repository has twice emitted a false
+\textsc{pass} that way.
+
+\section{What is open}\label{sec:open}
+
+\begin{enumerate}
+\item \textbf{The spectral data beyond the sets.}  What remains open is not the
+similarity, which is proved (Theorem~\ref{thm:sim}), nor the equality of
+eigenvalue sets (Corollary~\ref{cor:eig}).  It is the formal transport of
+multiplicities, ordered spectral data, reality, and the Perron labelling and
+ratio --- and, resting on those, the spectral-gap statement that earlier work in
+this lane proves for the symmetrised kernel.  None of it is transported here.
+\item \textbf{No contraction bound.}  Consequently there is no $\|T\|\le\lambda$
+statement, and therefore no $H=-\log(T/\lambda)$ and no Hamiltonian.
+\item \textbf{No thermodynamic limit.}  Every constant here may depend on $L$
+and on $m$.  Uniformity in the extent is a separate and open question for the
+coupled kernel.  We note only that with a ring source weight the symmetrised
+kernel \emph{is}, by comparing the two definitions, the transfer matrix of the
+anisotropic square-lattice Ising model --- an identification, not a cited
+theorem --- which is a reason to expect the question to be hard rather than a
+result about it.
+\item \textbf{Necessity of $\beta\ge0$} for Theorem~\ref{thm:pos} is not proved.
+\item \textbf{$\Z_2$ only.}  Nothing here is a gauge theory.
+\end{enumerate}
+
+\section{Erratum to v1.0}\label{sec:erratum}
+
+Version 1.0 of this paper was published with a wrong number in it, and the
+instrument that produced the number is the reason nobody noticed.  Both are
+recorded here rather than silently corrected, because a counter that changes
+between versions without an explanation is exactly as untrustworthy as one that
+does not change when it should.
+
+\paragraph{What was wrong.}  The table in \S\ref{sec:repro} of v1.0 printed
+\emph{Declarations in} \texttt{SpatialOS.lean} $=65$.  The true number at that
+same source anchor is $69$.
+
+\paragraph{Why.}  The counter was a line-oriented recogniser that did not accept
+an attribute block before the declaration keyword, so every
+\verb|@[simp] theorem| was invisible to it.  Four declarations were of that
+form.  Recomputing the v1.0 blobs with a corrected recogniser gives $69$ and
+$15$, against the printed $65$ and $15$; the second module contained no
+attributed declaration, which is why only one of the two numbers moved and why
+the error was not self-evident.
+
+\paragraph{The consequence that was worse than the number.}  The same blindness
+was what checked that every declaration appears in the oracle.  Two of the four
+invisible declarations, \verb|pastOf_joinBond| and \verb|futRevOf_joinBond|,
+were \emph{genuinely absent} from the oracle --- inherited from the previous
+paper of this lane, and never noticed because the instrument that would have
+noticed could not see them.  They are present now, and the count of declarations
+carrying an axiom report is reconciled for \emph{both} modules independently
+rather than for the new one only.
+
+\paragraph{What was not wrong.}  The build was green and the axiom report was
+clean at v1.0; those rows of its table stand.  The defect was in a counter and
+in the reach of a check, not in an elaborated statement.
+
+\paragraph{What changed so that it cannot recur in this shape.}  The recogniser
+now lives in one file rather than in two that had already drifted apart, it
+carries a battery of syntactic cases that runs standalone and fails on
+regression, and the coverage check keeps the two modules as independent
+quantities.  The battery earned itself immediately: the first corrected
+recogniser read the sentence \emph{``The Osterwalder--Schrader axiom asks for
+more''} out of this paper's own module header and reported a declaration named
+\texttt{asks}.  A parser that has once certified a false coverage should not
+remain an unexamined root of trust, and the durable fix --- enumerating
+declarations from the elaborated Lean environment instead of from source text
+--- is \emph{not} done here.
+
+\section{Reproducibility}\label{sec:repro}
+
+All \emph{code and verification} artifacts --- the two modules, the oracle, the
+two gate scripts, the ledger --- are at source checkpoint \texttt{\anchor}.
+This manuscript and its PDF are committed on top of that checkpoint, since a
+document cannot cite the commit that introduces it.  Every hyperlink was
+resolved against \texttt{\anchor} and checked to point at an actual declaration
+line, before compilation, again inside the compiled PDF, and again live over
+HTTP.
+
+Everything was elaborated on \emph{one} fresh Linux clone at that checkpoint,
+with the toolchain and the Mathlib revision pinned in the repository and
+re-checked before any compilation started.  A second independent reproduction is
+\emph{not} claimed: one clone is one clone.  The two module files and the oracle
+file were carried back to the desktop and their SHA-256 digests compared against
+the ones computed in the build environment; all three match, so the text linked
+below is the text that was elaborated.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build, this version & JOBSAFTER jobs, success \\ % @@JOBSAFTER@@
+\quad same tree at the v1.0 anchor & JOBSBEFORE jobs \\ % @@JOBSBEFORE@@
+\quad delta, registered before measuring & JOBSDELTA \\ % @@JOBSDELTA@@
+\quad at the original v1.0 campaign parent & JOBSCAMPAIGNBASE jobs \\ % @@JOBSCAMPAIGNBASE@@
+Oracle commands, and answers & ORACLETOTAL \\ % @@ORACLETOTAL@@
+\quad with a non-standard axiom & ORACLENONSTD \\ % @@ORACLENONSTD@@
+Declarations in \texttt{SpatialOS.lean} & DECLSOS \\ % @@DECLSOS@@
+\quad of them in the oracle & DECLSOSORACLE \\ % @@DECLSOSORACLE@@
+Declarations in \texttt{SpatialReconstruction.lean} & DECLSREC \\ % @@DECLSREC@@
+\quad of them in the oracle & DECLSRECORACLE \\ % @@DECLSRECORACLE@@
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound},
+  \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & SORRYCOUNT \\ % @@SORRYCOUNT@@
+Project axioms & 0 \\
+Errors & COREERRORS \\ % @@COREERRORS@@
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Two campaigns, two predictions, and they are different numbers.}  For
+\textbf{this version} the prediction registered before any count was taken was
+$8469\to8469$, hence $\Delta=0$, because everything added since the v1.0 anchor
+went into \emph{existing} modules and added no module and no import.  The
+earlier $8468\to8469$, $\Delta=+1$, belongs to the \textbf{v1.0} campaign, where
+one module did join the core; it is kept in the table as historical provenance
+and is not a claim about this version.  Both predictions were hard-coded in the
+filling script before the corresponding measurement existed, and the script
+refuses to write the manuscript unless the measured absolute \emph{and} the
+measured delta match what was registered.  Every count in the table comes from a
+core build in the same build environment.
+
+\paragraph{Which base, and a number that first looked like a failure.}  The
+first comparison was run against the merge-base with the repository's main
+branch and returned $8465\to8469$, a delta of $+4$.  That is not this campaign:
+the branch it was measured from also carries an unrelated line of work that had
+already added three modules to the core.  Measured against the parent of this
+campaign's first commit --- which is what the prediction was about --- the core
+is $8468$ and the delta is $+1$.  Both numbers are true and they answer
+different questions.  We record the episode rather than only the number that
+agreed, because the correct first reaction to a disagreeing measurement is to
+suspect it of measuring the wrong thing, not to adjust the claim.
+
+The modules are
+\repofile{YangMills/OS/SpatialOS.lean}{YangMills/OS/SpatialOS.lean} and
+\repofile{YangMills/OS/SpatialReconstruction.lean}{YangMills/OS/SpatialReconstruction.lean}.
+
+\section*{References for the classical material}
+
+The facts this paper formalises are not new, and these are the sources for them.
+None of the results below is re-proved here; they are named so that the
+distinction between the mathematics and its mechanisation is on the page.
+
+\begin{enumerate}\itemsep2pt
+\item K.~Osterwalder and R.~Schrader, \emph{Axioms for Euclidean Green's
+functions}, Comm.\ Math.\ Phys.\ \textbf{31} (1973), 83--112; and
+\emph{II}, Comm.\ Math.\ Phys.\ \textbf{42} (1975), 281--305.
+\item K.~Osterwalder and E.~Seiler, \emph{Gauge field theories on a lattice},
+Ann.\ Physics \textbf{110} (1978), 440--471.
+\item J.~Fr\"ohlich, R.~Israel, E.~H.~Lieb and B.~Simon, \emph{Phase
+transitions and reflection positivity.~I. General theory and long range lattice
+models}, Comm.\ Math.\ Phys.\ \textbf{62} (1978), 1--34.
+\end{enumerate}
+
+\small
+\paragraph{Previous papers of this lane cited above.}  The bond bridge, the site
+reflected form as a candidate, and the collapse are from \emph{The Collapse}
+(paper 13 of this lane); the reflection-positivity of the endpoints and the
+positive semidefiniteness of $K_\beta$ are from the reflection paper (12); the
+Perron vector, the strict spectral gap and the exact ratio referred to in
+\S\ref{sec:open} are from papers 7, 8 and 11.  None of those results is
+re-proved here and none of them is assumed beyond what is cited by name in the
+formal text.
+
+\end{document}

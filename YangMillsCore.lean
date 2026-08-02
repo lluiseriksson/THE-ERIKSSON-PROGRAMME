@@ -932,6 +932,12 @@ import YangMills.OS.SpatialSpectral
 import YangMills.OS.SpatialUniform
 import YangMills.OS.SpatialReflection
 import YangMills.OS.SpatialOS
+-- The operator the two reflected geometries FORCE.  Site form on the left of
+-- <u, T v>_site = <u, v>_bond, bond form on the right, because T advances the
+-- half-chain by one slice and so changes the parity of the separation.  It is
+-- self-adjoint at every beta and positive for beta >= 0.  It is NOT proved here
+-- to inherit the Perron eigenvalue or the gap, and there is no Hamiltonian.
+import YangMills.OS.SpatialReconstruction
 import YangMills.OS.SpatialRing
 
 -- D-1 of the Dobrushin lane (docs/DOBRUSHIN-CHARTER.md, judges at 118e32e9).

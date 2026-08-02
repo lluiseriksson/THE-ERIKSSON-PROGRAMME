@@ -1,0 +1,18 @@
+{
+  "anchor": "c90dc745ab8cd1ba7ddc02aa16fed3de339bf958",
+  "campaign_base": "345479fa58c2d180c385a115fdd33c5e1e5502bc",
+  "main_merge_base": "6d71e51b7337c99103a3fb7b15b2595c52283a12",
+  "jobs_before": 8468,
+  "jobs_after": 8469,
+  "jobs_at_main_merge_base": 8465,
+  "core_errors": 0,
+  "oracle_reports": 2883,
+  "oracle_with_axioms": 2856,
+  "oracle_axiom_free": 27,
+  "oracle_nonstandard": 0,
+  "oracle_distinct_axioms": ["Classical.choice", "Quot.sound", "propext"],
+  "sorry_count": 0,
+  "sha256_SpatialOS": "08d0c58654a17f0482bb2ae4018f99534152ebf63163230e38d6102c419fc6fd",
+  "sha256_SpatialReconstruction": "46ff2fbb72eb44b63c59b209762eedca5f9e0623d0cb78f3fde199b245734ee0",
+  "sha256_oracle_check": "3dce1f00b7e11465583cc9e4ddc52b46db8965a9ceb3134e753dab14b810f704"
+}

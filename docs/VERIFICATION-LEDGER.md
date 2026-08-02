@@ -29770,3 +29770,133 @@ the answer.
 **Practice added:** audit commands print in full, or write to a file that is
 then read in full; no `head`, no `cut`, no truncation on any command whose
 purpose is to establish that something is absent.
+
+## Addendum 580 (2026-08-02, **both reflections, and the operator they force —
+the site bridge closed and an OS transfer operator that is not chosen**)
+
+**MEASURED at ``c90dc745``** on the sanctioned Colab Linux plane (CPU, 2 cores,
+12 GiB, no GPU), Mathlib from cache, toolchain and pin re-checked before any
+compilation.  Core **8468 → 8469 jobs**, delta **exactly +1**, which
+is what the runner predicted *before any count was taken*.  Oracle exit zero,
+**2883** reports, **0** with a non-standard axiom, **0**
+`sorryAx`.
+
+**THE BASELINE WAS MEASURED, NOT COPIED --- AND THE FIRST BASELINE WAS THE WRONG
+ONE.**  Rule 7 forbids using a job count copied into `CLAUDE.md`.  The runner
+therefore takes a `--before` from a core build in the SAME runtime.  Its header
+named `6d71e51b`, the MERGE-BASE WITH `main`, as "this campaign's base".  It is
+not: this branch descends from the Dobrushin lane, which had already added three
+modules to the core.  That comparison returned **8465 -> 8469 = +4** and looked
+like a failed prediction.  It was not a failed prediction; it was the wrong
+`before`.  Measured at the campaign's real base `345479fa`, the parent of its
+first commit, the core is **8468** and the delta is **exactly +1**.
+
+Both numbers are true and they answer different questions: `+4` is
+branch-versus-`main` and carries `+3` inherited from another lane, `+1` is this
+campaign.  **Practice added: a prediction about a campaign is tested against the
+campaign's own parent commit, never against a merge-base; and a measurement that
+disagrees with a registered prediction is first suspected of measuring the wrong
+thing.**  That is the same distinction Addendum 577 drew between an inconclusive
+harness and a failed judge, arriving from the other side.
+
+**AND THE ORACLE COUNTER I FIRST WROTE WAS THE WRONG TEST.**  It counted
+"non-standard axioms" as the report lines not containing the literal string
+`propext, Classical.choice, Quot.sound`, and returned 1232 of 2855 --- a
+meaningless number, because a declaration depending on FEWER axioms fails that
+test while being perfectly clean, and this core has 27 axiom-FREE declarations.
+The question is never whether a line reads like the standard triple; it is
+whether any axiom anywhere is OUTSIDE the standard set.
+`scripts/oracle_counters.py` now parses every list, takes the union, and fails
+on one name outside it.  The union here is exactly
+`{propext, Classical.choice, Quot.sound}`.
+
+### What closed
+
+**(1) The site bridge** — the half paper 13 shipped as OPEN.  A path of `2m+1`
+slices through a site plane is exactly a pair of halves that SHARE the slice the
+plane passes through: a fibred product, not a product.  Its weight identity is
+proved DIVISION-FREE,
+
+    w(σ) · W(joinSite a b) = W(a) · W(b),
+
+so it carries no hypothesis on `w` at all; positivity of `w` is then spent in
+exactly one place, dividing by `w(σ)` inside the bridge, and that is visible
+rather than buried.  Through a site NO kernel factor crosses the plane — the
+`2m` bonds are exactly the `m` bonds of each half — and that missing crossing
+factor is the entire difference from the bond case, and the reason the site
+statements hold at every `β` while the bond ones need `β ≥ 0`.
+
+**(2) The transfer operator, which is not chosen.**  The site form is definite
+as soon as `w > 0`, so the equation
+
+    ⟨u, T v⟩_site = ⟨u, v⟩_bond
+
+has at most one solution, and reading it off gives `T = D_w K`.  Proved:
+`siteForm_transferOp` (the equation), `transferOp_selfAdjoint` (self-adjoint at
+EVERY β, negative included), `transferOp_nonneg` (positive for β ≥ 0),
+`collapse_surjective` (the physical space is the WHOLE boundary space, so no
+statement here is secretly about a subspace), and `osPairing_transfer_gibbsSum`
+(the same identity read on the measure, for two observables).
+
+**WHY BOTH GEOMETRIES WERE A PRECONDITION AND NOT A SYMMETRY.**  `T` advances a
+half-chain by ONE slice, which flips the parity of the separation.  So the
+defining equation has the site geometry on its left and the bond geometry on its
+right.  A construction owning only the bond case has no equation to define `T`
+by at all.  This is recorded because the campaign's first plan treated the site
+case as tidying-up.
+
+### Three findings of the run itself
+
+**THE BUILD CORRECTED A THEOREM I HAD STATED TOO WEAKLY.**  Its unused-variable
+warning on `prod_w_joinSite` was right: the `w`-product identity never uses the
+two halves agreeing at the boundary; it holds for ANY pair.  Only the kernel
+product needs them to agree.  Hypothesis dropped.  A warning is a reading, and
+this one was better than mine.
+
+**AN INSTRUMENT LIED, IN THE ONE PLACE THAT HAD NO SENTINEL.**
+`colab_bootstrap.sh` printed `lane build exit: 0` under a build that had failed
+with three errors: it read `${PIPESTATUS[0]}` **after an intervening `echo`**,
+which resets it.  Fixed by capturing the code into a variable on the same
+command as the build.  This is exactly the class the sentinel protocol exists to
+prevent, and it happened where the protocol had not been applied.  **Practice
+added: any exit code that is reported must be captured on the same command list
+that produced it, or carried by a sentinel; never read after another command
+has run.**
+
+**MY OWN PROSE OUTRAN MY OWN LEMMA — in the same session that cites the rule.**
+The draft's §7 displayed the identity for two observables `F, G` while Lean had
+only the diagonal `G = F`.  Raised the lemma rather than lowering the sentence:
+the bond bridge's CROSS form existed only as a `have` inside the Gram proof,
+where nothing could cite it, and was extracted as
+`osPairingBondCross_eq_gibbsSum`.  **A statement that lives only inside a proof
+cannot be cited, and a green build does not notice a theorem carrying less than
+its sentence.**
+
+### The gates, both registered before the work they license
+
+`scripts/judge_site_bridge.py` (at `2392c080`, before it was run and before the
+section existed): S1 predicted the count of paths and of assembling pairs to be
+the same INTEGER `2^(L(2m+1))`; S2 predicted the weight residual to be ZERO to
+`1e-12`.  Both passed.  The file states the falsifier: an S2 residual that was a
+fraction of the weight rather than roundoff would have meant paper 13's site
+form was the WRONG form, not merely an unidentified one.
+
+`scripts/judge_os_reconstruction.py` (at `47d48fc2`, before a line of the
+module): R1 `rank(collapse) = 2^L` exactly; R2 self-adjointness residual zero;
+R3 the residual of the defining equation zero; R4 the spectrum of `T` equal
+entry by entry to that of `symWeighted`, all real, `max|eig|/λ = 1`.  All four
+passed.
+
+**R4 IS A GATE AND IS CITED IN NO PROOF.**  It says where the next theorem would
+come from — the Perron and gap results of papers 7, 8 and 11 — and registering
+it before the fact is the only way it can ever count as evidence.  Nothing in
+the module or the paper depends on it.
+
+### What is NOT closed
+
+No Hamiltonian.  No proof that `T` inherits the Perron eigenvalue or the
+spectral gap.  No contraction bound, and therefore no `H = -log(T/λ)`.  No
+thermodynamic limit — every constant may depend on `L` and `m`.  Necessity of
+`β ≥ 0` for positivity is not proved and could not hold at `L = 0`.  Nothing
+here is a gauge theory.
+
