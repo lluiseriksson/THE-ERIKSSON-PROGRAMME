@@ -30567,3 +30567,76 @@ content contributed to this derivation.
 Status remains: exact on paper, neither `CERTIFIED` nor `VERIFIED` in Lean.
 No odd block, even block, endpoint, or uniform `specRatio` theorem is closed,
 and Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 602 (2026-08-02, **TASK 14: Bessel-free logarithmic mixture**)
+
+**EXACT PAPER ALGEBRA; NOT LEAN-CERTIFIED.**  The Bessel representation in
+Addendum 601 is avoidable.  Continue with `h(s) = arcosh(c+B s)`, `c >= 1`,
+`B > 0`, and in the open regime `c > 1` define
+
+`t_minus = (c-1)/B`, `t_plus = (c+1)/B`,
+
+and the probability measure
+
+`dmu(t) = dt / (pi sqrt((t-t_minus)(t_plus-t)))`
+
+on `(t_minus,t_plus)`.  The elementary arcsine Stieltjes identity is
+
+`integral dmu(t)/(s+t) = 1/sqrt((s+t_minus)(s+t_plus)) = h'(s)`.
+
+It follows by integrating in `s` (Tonelli applies to the nonnegative
+integrand) that
+
+`h(s)-h(0) = integral log(1+s/t) dmu(t)`.
+
+For each `t > 0`, put
+
+`x(t) = 1+t-sqrt(t(t+2)) = exp(-arcosh(1+t))`,
+
+so `0 < x(t) < 1` and `t = (1-x(t))^2/(2x(t))`.  At `s=1-cos(k)`,
+
+`log(1+s/t) = log(|1-x(t) exp(i k)|^2/(1-x(t))^2)`.
+
+Consequently, up to a `k`-independent constant,
+
+`f(k) = h(1-cos(k))/2 = integral log|1-x(t) exp(i k)| dmu(t)`.
+
+With the complex Fourier normalisation fixed in Addendum 599, this gives the
+factor-correct identity
+
+`fhat(n) = -(1/(2n)) integral x(t)^n dmu(t) < 0`, `n >= 1`.
+
+The factor `1/2` is essential: `log|1-x exp(i k)|` has cosine-series amplitude
+`-x^n/n`, hence complex Fourier coefficient `-x^n/(2n)`.
+
+The finite-grid comparison can avoid Fourier series altogether.  For the
+periodic roots and their half-shift,
+
+`product_(j=0)^(L-1) (1-x exp(2 pi i j/L)) = 1-x^L`,
+
+`product_(j=0)^(L-1) (1-x exp((2j+1) pi i/L)) = 1+x^L`.
+
+Taking logarithms of absolute values inside the positive mixture yields the
+exact scalar identity
+
+`log R_L = integral log((1-x(t)^L)/(1+x(t)^L)) dmu(t)
+         = -2 integral atanh(x(t)^L) dmu(t) < 0`.
+
+Thus neither modified Bessel functions, Poisson summation, nor an infinite
+Fourier-series interchange is needed for the vacuum-product order.  The
+nearest endpoint `t_minus` maps to
+`x(t_minus)=exp(-d)=tanh(gamma)/tanh(a)`; the arcsine density has an inverse
+square-root edge there, which directly supplies the extra `n^(-1/2)` on top
+of the logarithmic `x^n/n` and explains the observed `x^n n^(-3/2)` scale.
+
+The exact Lean infrastructure boundary is now narrow: prove the one-variable
+arcsine Stieltjes/log-mixture identity (including integrability), plus the two
+finite root-product identities.  Positivity of a newly defined Bessel series
+is not required.  At the pinned mathlib revision, no ready theorem for this
+specific arcsine Stieltjes identity was found; generic integration, square
+root, logarithm, and polynomial/root-of-unity infrastructure is present.
+
+This removes the Bessel infrastructure concern in paper mathematics only.  It
+does not certify the logarithmic mixture in Lean, identify the transfer
+spectrum, or prove the odd block, even block, endpoint, or uniform
+`specRatio` theorem.  Clifford/Jordan--Wigner remains unopened.
