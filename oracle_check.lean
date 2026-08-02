@@ -3219,6 +3219,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.siteForm_normalisedTransferOpL_self
 #print axioms YangMills.OS.normalisedTransferOpL_bijective
 #print axioms YangMills.OS.normalisedTransferEquiv
+#print axioms YangMills.OS.transferOp_injective_zero_extent
 #print axioms YangMills.OS.collapseL
 #print axioms YangMills.OS.collapseL_apply
 #print axioms YangMills.OS.collapseL_surjective

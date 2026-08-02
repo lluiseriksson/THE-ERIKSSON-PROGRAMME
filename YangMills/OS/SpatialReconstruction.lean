@@ -96,8 +96,16 @@ module describing itself as weaker than it is.  What is actually here now:
 What is genuinely NOT here: no Hamiltonian and no functional calculus ---
 `H = -log(T/lam)` is now a meaningful object to SEEK, bounded, bounded away
 from zero and invertible, but it is not built.  No spectral gap statement for
-`T`.  No thermodynamic limit and no continuum.  Nothing at `β = 0`, where the
-coercivity constant vanishes for `L > 0` and the degeneracy is real.
+`T`.  No thermodynamic limit and no continuum.
+
+**AT `β = 0`, and this sentence used to say "nothing", which contradicted the
+sentence beside it claiming the exact norm at EVERY `β`.**  What is absent there,
+and only for `L > 0`, is a strictly positive coercive lower bound, and with it
+the invertible normalised operator and any route to a Hamiltonian.  What remains
+is self-adjointness, semidefinite positivity, and the exact Perron norm with its
+attainment and minimality.  At `L = 0` even injectivity remains, by a different
+and simpler argument --- `transferOp_injective_zero_extent`, written because the
+manuscript asserted it and the kernel did not.
 
 And the mathematics is not new.  Reflection positivity for Ising-type measures,
 through sites and through bonds, is classical --- Osterwalder--Schrader, and
@@ -1469,6 +1477,40 @@ theorem transferOp_injective {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     rw [siteForm_self_eq_siteQ, hzero]
     simp
   exact (siteForm_self_eq_zero_iff hw u).mp this
+
+/-- **INJECTIVE AT ZERO EXTENT, AT EVERY `β`** --- negative ones included.
+
+The manuscript says invertibility survives at `L = 0` even at `β = 0`.  That was
+a CONSEQUENCE and not a theorem: every injectivity statement above requires
+`0 < β`, because it goes through the coercivity constant.  At zero extent the
+argument is different and simpler --- the kernel is the empty product `1`, so
+`T` is multiplication by `w` --- and by this lane's own standard the sentence
+should be backed by a declaration rather than by a remark.  Here it is. -/
+theorem transferOp_injective_zero_extent {w : (Fin 0 → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) {u : (Fin 0 → Fin 2) → ℂ}
+    (hu : transferOp w β u = 0) : u = 0 := by
+  funext σ
+  show u σ = 0
+  have hone : (∑ τ : Fin 0 → Fin 2, ((spatialKernel β σ τ : ℝ) : ℂ) * u τ)
+      = u σ := by
+    have hsingle : (∑ τ : Fin 0 → Fin 2, ((spatialKernel β σ τ : ℝ) : ℂ) * u τ)
+        = ((spatialKernel β σ σ : ℝ) : ℂ) * u σ :=
+      Finset.sum_eq_single σ
+        (fun b _ hb => absurd (Subsingleton.elim b σ) hb)
+        (fun h => absurd (Finset.mem_univ σ) h)
+    have hk : spatialKernel β σ σ = 1 := by
+      unfold spatialKernel
+      simp
+    rw [hsingle, hk]
+    push_cast
+    ring
+  have hz : ((w σ : ℝ) : ℂ)
+      * (∑ τ : Fin 0 → Fin 2, ((spatialKernel β σ τ : ℝ) : ℂ) * u τ) = 0 := by
+    have h := congrFun hu σ
+    simpa using h
+  rw [hone] at hz
+  have hwne : ((w σ : ℝ) : ℂ) ≠ 0 := Complex.ofReal_ne_zero.mpr (hw σ).ne'
+  exact (mul_eq_zero.mp hz).resolve_left hwne
 
 /-- **THE TWO-SIDED BOUND, UNCONDITIONAL.**  Both constants exist, both are
 strictly positive, and the operator is injective.  This is the package a

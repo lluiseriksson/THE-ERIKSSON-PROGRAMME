@@ -11,6 +11,19 @@ its own final check passed vacuously.  So this one rewrites whatever 40-hex
 string is currently there, and then CHECKS the new one is present and the old
 one is gone.  A check that cannot fail is not a check.
 
+That description is now itself out of date and is corrected rather than
+left: the rewriter does NOT touch "whatever 40-hex string is currently
+there".  Once the manuscript began citing pre-registration BLOB digests,
+a shape-keyed rewriter would have eaten them, so the anchor is recognised
+by its syntactic function -- the anchor macro definition -- and the
+citations are checked to survive untouched.
+
+This very paragraph was written through a heredoc and arrived carrying a
+BEL byte and a stray newline, from the escapes in those macro names.  The
+guard committed alongside it caught that on its first real use, which is
+the only reason the file you are reading is clean.  Sixth recurrence in
+one session: the rule is executable now, which is the whole point.
+
 WHY THE COUNTERS ARE REWRITTEN BY STABLE MARKER --- the same lesson, learned a
 second time and one level down.  v1.0's counters were bare tokens like
 `JOBSAFTER`, which also stop existing the moment they are filled, so the filler
@@ -133,6 +146,14 @@ REGISTERED_JOBS_DELTA = 0
 REGISTERED_BASELINE_ANCHOR = "c90dc745ab8cd1ba7ddc02aa16fed3de339bf958"
 REGISTERED_BASELINE_JOBS = 8469
 
+# The HISTORICAL v1.0 campaign parent, printed in the table as provenance.  It
+# was left unanchored while its sibling was pinned: `jobs_campaign_base` could
+# be any non-negative integer and still pass, so the 8468 the paper prints was
+# floating exactly as 8469 had been.  Symmetry costs nothing and asymmetry is
+# how a certificate rots.
+REGISTERED_CAMPAIGN_BASE_ANCHOR = "345479fa58c2d180c385a115fdd33c5e1e5502bc"
+REGISTERED_CAMPAIGN_BASE_JOBS = 8468
+
 TRACKED = ["YangMills/OS/SpatialOS.lean",
            "YangMills/OS/SpatialReconstruction.lean",
            "oracle_check.lean"]
@@ -157,17 +178,27 @@ def main():
     if HEX40.fullmatch(anchor) is None:
         print("anchor is not a 40-hex sha: %r" % anchor)
         return 2
-    with io.open(sys.argv[2], encoding="utf-8") as f:
-        meas = json.load(f)
+    try:
+        with io.open(sys.argv[2], encoding="utf-8") as f:
+            meas = json.load(f)
+    except (OSError, UnicodeError, ValueError) as exc:
+        print("measurements file rejected: %s" % exc)
+        print("manuscript NOT written")
+        return 2
+    if not isinstance(meas, dict):
+        print("measurements file is not a JSON object")
+        print("manuscript NOT written")
+        return 2
 
     # EVERY KEY THE RUN NEEDS, VALIDATED BEFORE ANY OF THEM IS USED.  Feeding
     # the previous version an out-of-date measurements file made it die with a
     # KeyError deep inside the cell table --- a crash, not a checked refusal,
     # and a crash prints no verdict and can be swallowed by a pipe.  A missing
     # key is now a FAILED CHECK like any other.
-    required = ["anchor", "baseline_anchor", "jobs_before", "jobs_after",
-                "jobs_campaign_base", "core_errors", "oracle_reports",
-                "oracle_nonstandard", "sorry_count", "sha256_SpatialOS",
+    required = ["anchor", "baseline_anchor", "campaign_base_anchor",
+                "jobs_before", "jobs_after", "jobs_campaign_base",
+                "core_errors", "oracle_reports", "oracle_nonstandard",
+                "sorry_count", "sha256_SpatialOS",
                 "sha256_SpatialReconstruction", "sha256_oracle_check"]
     missing = [k for k in required if k not in meas]
     if missing:
@@ -184,7 +215,7 @@ def main():
               "oracle_reports", "oracle_nonstandard", "sorry_count"):
         schema.append((k, isinstance(meas[k], int) and not isinstance(
             meas[k], bool) and meas[k] >= 0, "non-negative integer"))
-    for k in ("anchor", "baseline_anchor"):
+    for k in ("anchor", "baseline_anchor", "campaign_base_anchor"):
         schema.append((k, isinstance(meas[k], str)
                        and HEX40.fullmatch(meas[k].strip()) is not None,
                        "40-hex git sha"))
@@ -197,6 +228,20 @@ def main():
     if illtyped:
         for k, want in illtyped:
             print("measurements key %r is not a %s: %r" % (k, want, meas[k]))
+        print("manuscript NOT written")
+        return 2
+
+    # THE WHOLE TRACKED TREE MUST BE CLEAN BEFORE ANYTHING IS READ.  Checking
+    # a hand-kept list of "important files" left the manuscript, this script,
+    # the recogniser and the guards outside: a modified fill_p14.py could run
+    # with a correct HEAD.  One command covers the class.
+    dirty = subprocess.run(
+        ["git", "status", "--porcelain", "--untracked-files=no"], cwd=REPO,
+        capture_output=True, text=True).stdout.strip()
+    if dirty:
+        for line in dirty.splitlines():
+            print("DIRTY: %s" % line)
+        print("refusing to publish from a modified tree")
         print("manuscript NOT written")
         return 2
 
@@ -342,6 +387,12 @@ def main():
                    == REGISTERED_BASELINE_ANCHOR))
     checks.append(("baseline count is the registered v1.0 absolute",
                    meas.get("jobs_before") == REGISTERED_BASELINE_JOBS))
+    checks.append(("campaign base is the registered v1.0 campaign parent",
+                   str(meas.get("campaign_base_anchor", "")).lower()
+                   == REGISTERED_CAMPAIGN_BASE_ANCHOR))
+    checks.append(("campaign base count is the registered 8468",
+                   meas.get("jobs_campaign_base")
+                   == REGISTERED_CAMPAIGN_BASE_JOBS))
 
     ran = 0
     failed = []
