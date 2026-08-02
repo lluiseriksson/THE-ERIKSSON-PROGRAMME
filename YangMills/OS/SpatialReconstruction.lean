@@ -1323,12 +1323,14 @@ theorem bondQ_ge_siteQ {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0
     intro y
     rw [Finset.mul_sum]
     refine Finset.sum_le_sum fun σ _ => ?_
-    rw [div_le_iff₀ (hw σ)] at *
     have hnn : (0:ℝ) ≤ y σ ^ 2 / w σ := div_nonneg (sq_nonneg _) (hw σ).le
-    have : minWeight w * (y σ ^ 2 / w σ) ≤ w σ * (y σ ^ 2 / w σ) :=
+    have hstep : minWeight w * (y σ ^ 2 / w σ) ≤ w σ * (y σ ^ 2 / w σ) :=
       mul_le_mul_of_nonneg_right (minWeight_le w σ) hnn
-    calc minWeight w * (y σ ^ 2 / w σ) ≤ w σ * (y σ ^ 2 / w σ) := this
-      _ = y σ ^ 2 := by field_simp
+    have hcancel : w σ * (y σ ^ 2 / w σ) = y σ ^ 2 := by
+      have : w σ ≠ 0 := (hw σ).ne'
+      field_simp
+    rw [hcancel] at hstep
+    exact hstep
   have hre := hquad (fun σ => (u σ).re)
   have him := hquad (fun σ => (u σ).im)
   have hfre := hfloor (fun σ => (u σ).re)
@@ -1341,9 +1343,26 @@ theorem bondQ_ge_siteQ {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0
     rw [Complex.normSq_apply]
     field_simp
     ring
+  -- the two chains, made explicit rather than left to `nlinarith` to discover:
+  -- multiplying an inequality by `D^L ≥ 0` is a step, not a hint.
+  have hAre : (Real.exp β - Real.exp (-β)) ^ L
+        * (minWeight w * ∑ σ, (u σ).re ^ 2 / w σ)
+      ≤ ∑ σ, ∑ τ, spatialKernel β σ τ * ((u σ).re * (u τ).re) :=
+    le_trans (mul_le_mul_of_nonneg_left hfre hDL) hre
+  have hAim : (Real.exp β - Real.exp (-β)) ^ L
+        * (minWeight w * ∑ σ, (u σ).im ^ 2 / w σ)
+      ≤ ∑ σ, ∑ τ, spatialKernel β σ τ * ((u σ).im * (u τ).im) :=
+    le_trans (mul_le_mul_of_nonneg_left hfim hDL) him
   unfold bondQ
   rw [hsq]
-  nlinarith [hre, him, hfre, hfim, hDL, minWeight_pos hw]
+  have hdist : (Real.exp β - Real.exp (-β)) ^ L * minWeight w
+        * ((∑ σ, (u σ).re ^ 2 / w σ) + ∑ σ, (u σ).im ^ 2 / w σ)
+      = (Real.exp β - Real.exp (-β)) ^ L
+          * (minWeight w * ∑ σ, (u σ).re ^ 2 / w σ)
+        + (Real.exp β - Real.exp (-β)) ^ L
+          * (minWeight w * ∑ σ, (u σ).im ^ 2 / w σ) := by ring
+  rw [hdist]
+  exact add_le_add hAre hAim
 
 /-- **THE NORMALISED OPERATOR IS BOUNDED BELOW**, and therefore injective, for
 `β > 0`.  This is the ingredient a Hamiltonian needs and the previous version
@@ -1359,9 +1378,20 @@ theorem transferOp_coercive {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ 
       ≤ bondQ β u ∧ bondQ β u ≤ lam * siteQ w u :=
   ⟨bondQ_ge_siteQ hw hβ.le u, transferOp_le_perron hw β hΩ heig u⟩
 
-/-- The coercivity constant is STRICTLY positive exactly when `β > 0`, which is
-what makes the two-sided bound useful.  At `β = 0` it is zero, and that is not
-a defect of the proof: the kernel really does have null modes there. -/
+/-- The coercivity constant is strictly positive whenever `β > 0`, which is what
+makes the two-sided bound useful.
+
+**THE `L = 0` EDGE, and an earlier version of this docstring got it wrong.**  It
+said the constant is positive "exactly when `β > 0`" and vanishes at `β = 0`.
+That is false at `L = 0`, where `D ^ 0 = 1` for every `β`, the configuration
+space is a single point, the kernel is the scalar `1`, and there are no null
+modes: the constant is `min w > 0` even at `β = 0`.  The theorem below was
+always safe --- it only ever claimed the `β > 0` direction --- but the sentence
+around it claimed a biconditional the proof does not have.  The correct
+trichotomy is: positive for every `L` when `β > 0`; zero when `L > 0` and
+`β = 0`; and `min w > 0` when `L = 0`, at every `β`.  `coercivity_constant_zero`
+below records the middle case, so the boundary is a theorem rather than a
+remark. -/
 theorem coercivity_constant_pos {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) :
     0 < (Real.exp β - Real.exp (-β)) ^ L * minWeight w := by
@@ -1369,6 +1399,70 @@ theorem coercivity_constant_pos {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     have : Real.exp (-β) < Real.exp β := Real.exp_lt_exp.mpr (by linarith)
     linarith
   exact mul_pos (pow_pos hD L) (minWeight_pos hw)
+
+/-- The middle case of the trichotomy, as a theorem: at `β = 0` and `L > 0` the
+coercivity constant really is zero.  The bound is then vacuous, which is the
+honest reading --- the kernel is degenerate there. -/
+theorem coercivity_constant_zero {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (hL : 0 < L) :
+    (Real.exp 0 - Real.exp (-0)) ^ L * minWeight w = 0 := by
+  have : Real.exp 0 - Real.exp (-0) = 0 := by
+    rw [neg_zero, Real.exp_zero]
+    ring
+  rw [this, zero_pow (Nat.pos_iff_ne_zero.mp hL), zero_mul]
+
+/-- The `L = 0` case of the trichotomy: the constant is `min w`, positive at
+EVERY `β`, negative couplings included. -/
+theorem coercivity_constant_zero_extent {w : (Fin 0 → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) :
+    0 < (Real.exp β - Real.exp (-β)) ^ 0 * minWeight w := by
+  rw [pow_zero, one_mul]
+  exact minWeight_pos hw
+
+/-- **THE TRANSFER OPERATOR IS INJECTIVE for `β > 0`.**  A direct consequence of
+coercivity and definiteness, and one the previous version left as an
+observation: if `T u = 0` then the form vanishes, so the physical norm does, so
+`u` does.  In finite dimension this is invertibility. -/
+theorem transferOp_injective {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β)
+    {u : (Fin L → Fin 2) → ℂ} (hu : transferOp w β u = 0) : u = 0 := by
+  have hform : bondForm β u u = 0 := by
+    rw [← siteForm_transferOp hw β u u, hu]
+    unfold siteForm
+    simp
+  have hQ : bondQ β u = 0 := by
+    have := bondForm_self_eq_bondQ β u
+    rw [hform] at this
+    exact_mod_cast this.symm
+  have hcoer := bondQ_ge_siteQ hw hβ.le u
+  rw [hQ] at hcoer
+  have hconst : 0 < (Real.exp β - Real.exp (-β)) ^ L * minWeight w :=
+    coercivity_constant_pos hw hβ
+  have hsiteQ_nonneg : 0 ≤ siteQ w u :=
+    Finset.sum_nonneg fun σ _ => div_nonneg (Complex.normSq_nonneg _) (hw σ).le
+  have hzero : siteQ w u = 0 := by
+    by_contra hne
+    have hpos : 0 < siteQ w u := lt_of_le_of_ne hsiteQ_nonneg (Ne.symm hne)
+    nlinarith [hcoer, hconst, hpos]
+  have : siteForm w u u = 0 := by
+    rw [siteForm_self_eq_siteQ, hzero]
+    simp
+  exact (siteForm_self_eq_zero_iff hw u).mp this
+
+/-- **THE TWO-SIDED BOUND, UNCONDITIONAL.**  Both constants exist, both are
+strictly positive, and the operator is injective.  This is the package a
+functional calculus would consume; the calculus itself is NOT here. -/
+theorem exists_two_sided_bound {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) :
+    ∃ (a lam : ℝ), 0 < a ∧ 0 < lam ∧
+      (∀ u : (Fin L → Fin 2) → ℂ,
+        a * siteQ w u ≤ bondQ β u ∧ bondQ β u ≤ lam * siteQ w u) ∧
+      (∀ u : (Fin L → Fin 2) → ℂ, transferOp w β u = 0 → u = 0) := by
+  obtain ⟨Ω, lam, hΩ, -, hlam, heig⟩ :=
+    exists_pos_eigenvector (symWeighted w β) (symWeighted_pos hw β)
+  exact ⟨(Real.exp β - Real.exp (-β)) ^ L * minWeight w, lam,
+    coercivity_constant_pos hw hβ, hlam,
+    fun u => ⟨bondQ_ge_siteQ hw hβ.le u, transferOp_le_perron hw β hΩ heig u⟩,
+    fun u hu => transferOp_injective hw hβ hu⟩
 
 /-! ## §8  The physical space as a quotient, packaged
 

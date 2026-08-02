@@ -3202,6 +3202,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.bondQ_ge_siteQ
 #print axioms YangMills.OS.transferOp_coercive
 #print axioms YangMills.OS.coercivity_constant_pos
+#print axioms YangMills.OS.coercivity_constant_zero
+#print axioms YangMills.OS.coercivity_constant_zero_extent
+#print axioms YangMills.OS.transferOp_injective
+#print axioms YangMills.OS.exists_two_sided_bound
 #print axioms YangMills.OS.collapseL
 #print axioms YangMills.OS.collapseL_apply
 #print axioms YangMills.OS.collapseL_surjective
