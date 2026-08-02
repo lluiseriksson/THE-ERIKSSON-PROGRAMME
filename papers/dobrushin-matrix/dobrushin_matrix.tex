@@ -51,12 +51,14 @@ switched on.  That theorem obstructs the \emph{method}.  It was read as
 obstructing the \emph{conclusion}, and the reading outlived its own retraction.
 
 We prove, in Lean~4 with no \texttt{sorry} and no project axiom, a chain of
-six theorems.  \textbf{First}, the one-bond influence envelope: flipping one
+six headline theorems, plus the star-cell specialisation they compose to.  \textbf{First}, the one-bond influence envelope: flipping one
 neighbour across a bond of strength $J\ge0$ moves a two-state site's conditional
 by at most $\tanh J$, and by exactly $\tanh J$ at one field, so $\tanh J$ is the
-\emph{least field-uniform} bound.  It is an interdependence majorant, not the
-minimal coefficient of any particular finite model, whose reachable fields form
-a discrete set --- a distinction Section~2 makes precisely.  \textbf{Second},
+\emph{least field-uniform} bound.  It is a field-uniform interdependence
+majorant and need not equal the intrinsic coefficient of a given finite
+model, whose reachable fields form
+a discrete set --- a distinction Section~2 makes precisely, and both of whose
+sides occur: equality is proved below for the one-bond cell.  \textbf{Second},
 those envelopes assembled into a matrix discharge every \emph{matrix-side}
 hypothesis of the third (the two conditions on the ambient distance remain
 hypotheses), and turn a purely \emph{local} covering condition into the
@@ -111,8 +113,8 @@ decay bound carries no smallness hypothesis at all.  And on the star cell the
 window $2\tanh|\beta|+2\tanh|\gamma|<1$ --- the second theorem's row-sum
 computation --- becomes the hypothesis of an exponential-decay theorem about
 the anisotropic Ising weight itself.
-Each rung carries a non-vacuity witness and every declaration is
-oracled.
+Each rung carries a non-vacuity witness, and every claimed endpoint is
+oracled with exactly Lean's three standard axioms.
 
 Separately, and by measurement rather than proof, we remove the wall from where
 it was being placed.  For the coupled kernel the second-eigenvalue ratio
@@ -159,7 +161,8 @@ corollaries that compose them, in
 \repofile{YangMills/OS/DobrushinComparison.lean}{DobrushinComparison.lean},
 \repofile{YangMills/OS/DobrushinGibbs.lean}{DobrushinGibbs.lean} and
 \repofile{YangMills/OS/DobrushinIsing.lean}{DobrushinIsing.lean}.  Every
-declaration is oracled and depends on exactly Lean's three standard axioms.
+claimed endpoint is oracled and depends on exactly Lean's three standard
+axioms; the counts and the runs are itemised in the Reproducibility section.
 
 \textbf{Claimed, measured.}  The saturation table of
 Section~\ref{sec:measurement}.  These are floating-point computations at finite

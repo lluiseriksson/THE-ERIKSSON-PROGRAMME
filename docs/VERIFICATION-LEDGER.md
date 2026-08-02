@@ -30321,3 +30321,27 @@ verified by PDF text extraction (old phrases count 0, new phrases count 1).
 **ROLES.**  Defects 1-4 found by the external reading; 5-6 by this desk's
 semantic sweep; no score in the paper; v5.3 has not been externally
 evaluated.
+
+## Addendum 589 (2026-08-03, **paper v5.4: the two micro-adjustments and the
+count, from the v5.3 evaluation**)
+
+The external evaluation of v5.3 (6.08 confirmed, third in portfolio, all six
+prior corrections verified in the artifact) left three micro-items; all
+applied and extraction-verified:
+
+1. "Every declaration is oracled" (abstract + Section 1) claimed more than
+   the three targeted runs cover.  Now "every claimed ENDPOINT is oracled",
+   with Section 1 pointing at the itemised counts in Reproducibility.
+2. The abstract's envelope sentence read as a universal negation while the
+   Sixth block proves equality on the one-bond cell.  Now: a field-uniform
+   majorant that NEED NOT equal the intrinsic coefficient, with both sides
+   occurring and the equality named.
+3. "Six theorems" vs a results list carrying the star theorem too.  Now
+   "six headline theorems, plus the star-cell specialisation they compose
+   to."
+
+No theorem changed; the anchor stays c8e9ae51b.  Extraction: old phrases 0,
+new phrases 1, 19 pp, zero LaTeX errors, zero undefined references.
+
+**ROLES.**  Items found by the external reading; this desk verified, fixed,
+re-verified; no score in the paper; v5.4 not externally evaluated.
