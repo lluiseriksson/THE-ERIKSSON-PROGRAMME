@@ -31652,3 +31652,67 @@ Because the runner stopped immediately after the counter check, the permanent
 oracle and consistency scanner did not run, no archive was produced, and no
 full PASS is claimed.  This failure says nothing against either new theorem.
 The runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 631 (2026-08-02, **TASK 14: kernel parameter and circle-average full PASS**)
+
+**VERIFIED INTERMEDIATE BRICK; NOT A VACUUM OR SPECTRAL COMPARISON.**  A fresh
+CPU/high-RAM Colab runtime executed exact versioned runner SHA
+`e603ba2649775323dbe012a78a50a37cb5e038a1` (notebook SHA-256
+`868f53840d7f37f21c42176676cd9b7d6ba57a746acb0215126742ac49b610e7`).
+The runner made its own independent fresh public clone and checked out exact
+source/oracle SHA `4164b31d4b0a27a4d240e9882003fc2b2b52517e`.  The run lasted
+from UTC `2026-08-02T17:09:47.341781+00:00` to
+`2026-08-02T17:53:30.026820+00:00` on Linux 6.6.122 x86_64 with glibc 2.35,
+Python 3.12.13, 8 CPUs, `53467192 kB` RAM, and no GPU.  It verified Lean
+`v4.29.0-rc6` commit `00659f8e6071d7e46131ed643bf8003b99b044e9`, mathlib
+`07642720480157414db592fa85b626dafb71355b`, and elan-installer SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+
+Every command exited zero.  The isolated cache completed before the measured
+targets; `lake build YangMills.OS.SpatialVacuum` took `132.038761 s` and
+measured `8172 jobs`; `lake build YangMillsCore` took `800.387869 s` and
+measured `8468 jobs`; the permanent oracle took `1582.267723 s`; and
+`scripts/check_consistency.py` took `2.718134 s`, reporting zero Lean `sorry`
+and zero project axioms.
+
+The Core count is now explained without rewriting the earlier witness.  The
+historical live-ledger baseline remains 8465.  Relative to exact merged base
+SHA `40d5f59af88629a9cbadd5e8742bb7d97b11fc7d`, the merge contributes the
+new `CongruenceSpectrum` Core import measured in Addendum 630 as one effective
+job, while this lane still contributes its two modules.  Thus the accepted
+count is exactly `8465 + 1 + 2 = 8468`.  The pre-merge `8467 / +2` measurement
+at source SHA `3d7ea4c9d22504f09afa36c95706faea16451071` remains intact.
+
+The complete oracle printed exactly `{propext, Classical.choice, Quot.sound}`
+for each required declaration, including
+`existsUnique_circleLogKernelParameter` and
+`circleAverage_log_kernel_eq_log_norm`; it printed no `sorryAx`, and the
+global parser rejected any nonstandard axiom elsewhere.  Desktop inspection
+of the downloaded oracle independently found each of the two new exact axiom
+lines once and found zero `sorryAx`.
+
+**ARTIFACT INTEGRITY, VERIFIED ON WINDOWS WITHOUT RUNNING LEAN.**  The
+downloaded 71013-byte ZIP
+`C:\Users\lluis\Downloads\spatial_vacuum_full_artifacts (3).zip` has
+SHA-256 `83a68468d4f038bde0da426ea73a0b98796f333f6d19f3324c782a3df6850655`,
+matching Colab.  Streamwise hashes agree with its internal `SHA256SUMS`:
+
+- `consistency_output.txt` (154 bytes):
+  `95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`;
+- `metadata.json` (1644 bytes):
+  `f41cc4f64d5e00e124eaf37e9796c8044bf5f07f9ee7be9c2b0d8f8cd9996a9c`;
+- `oracle_output.txt` (345433 bytes):
+  `56eb19b74053111ed6cc94e013361aed184e8f570a3067bff7c5280da257251f`;
+- `transcript.txt` (462378 bytes):
+  `cd51720be884aa716854465ac4dbce7b5e0eeb825daebbe59506fe9fe6595fd7`.
+
+This verifies only existence and uniqueness of the scalar parameter in
+`(0,1)` for `t > 0`, plus transport of the already proved pointwise logarithm
+identity through `circleAverage`.  No physical specialization has been
+introduced, so no theorem hides the future active hypothesis `gamma < a`;
+that hypothesis must be printed when `x = tanh gamma / tanh a` first appears.
+Neither physical vacuum has been identified or compared, neither spectral
+sector bound is proved, the beta-zero endpoint remains open, and the uniform
+`specRatio` theorem remains wholly open.  Clifford/Jordan--Wigner remains
+unopened.  The runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
