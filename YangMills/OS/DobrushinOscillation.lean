@@ -174,7 +174,11 @@ theorem signed_bound_attained :
         (fun x : Fin 2 => if x = 0 then (1:ℝ) else 0) = 1 := by
       refine le_antisymm (Finset.sup'_le _ _ fun x _ => ?_) ?_
       · by_cases h : x = 0 <;> simp [h]
-      · exact Finset.le_sup' _ (Finset.mem_univ (0 : Fin 2)) |>.trans_eq (by norm_num)
+      · calc (1 : ℝ)
+            = (fun x : Fin 2 => if x = 0 then (1 : ℝ) else 0) 0 := by norm_num
+          _ ≤ Finset.univ.sup' Finset.univ_nonempty
+                (fun x : Fin 2 => if x = 0 then (1 : ℝ) else 0) :=
+              Finset.le_sup' _ (Finset.mem_univ (0 : Fin 2))
     have hi : Finset.univ.inf' Finset.univ_nonempty
         (fun x : Fin 2 => if x = 0 then (1:ℝ) else 0) = 0 := by
       refine le_antisymm ?_ (Finset.le_inf' _ _ fun x _ => ?_)
