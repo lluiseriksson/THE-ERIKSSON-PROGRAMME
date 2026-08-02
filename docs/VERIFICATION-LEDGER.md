@@ -30421,3 +30421,40 @@ curvature rejected, a global Fourier-coefficient sign or exact product
 identity is the remaining plausible scalar mechanism.  No such sign theorem,
 vacuum inequality, fermionic classification, sector bound, or uniform target
 is proved here.
+
+## Addendum 599 (2026-08-02, **TASK 14: Fourier-sign reconnaissance fixed**)
+
+**PROTOCOL COMMITTED BEFORE EXECUTION; NOT A GATE.**  Use the complex Fourier
+normalisation
+`fhat(n) = (1/(2*pi)) integral_0^(2*pi) f(k) exp(-i n k) dk` for the real even
+log-factor `f(k) = epsilon(k)/2`.  Then exact grid aliasing gives
+
+`sum_P f - sum_NS f = 2 L sum_(m odd in Z) fhat(mL)`
+
+and hence `4 L sum_(m odd >= 1) fhat(mL)`.  Therefore a theorem
+`fhat(n) <= 0` for every positive `n` would imply the desired vacuum-product
+order.  This identity and implication are exact paper algebra here, not Lean
+declarations or certified results.
+
+The complex singularity parameter also simplifies exactly.  With
+`u = tanh(a)` and `v = tanh(gamma)`, elementary hyperbolic algebra gives
+`(A-1)/B = (u^2+v^2)/(2uv) = cosh(log(u/v))`.  In `a > gamma > 0`,
+
+`d = log(u/v)` and `x = exp(-d) = v/u = tanh(gamma)/tanh(a)`.
+
+Thus the observed `exp(-d)` near `0.750036` at `gamma/a = 0.75` is not exactly
+`0.75`; the hyperbolic tangent ratio is the closed parameter.
+
+The precommitted `scripts/probe_spatial_vacuum_fourier.py` estimates modes
+`n = 1,...,40` at 120 decimal digits in eight cells inside `q < 1`, using
+separately evaluated periodic quadrature resolutions of 2048 and 4096 points.
+It reports all
+coefficient signs and cross-resolution discrepancies.  At `beta = 2`,
+`gamma/a = 0.75`, it also compares selected coefficients with the proposed
+exact ansatz `-x^n/n` and reports the fitted root parameter and amplitude.
+
+This is deliberately reconnaissance with no fit threshold.  If the finite
+signs survive, the measured discrepancy -- not an expected value -- must be
+used in any later preregistration.  At the time of this addendum the script has
+not run; no Fourier sign or fit is claimed, and no theorem or Clifford work is
+licensed.
