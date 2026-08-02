@@ -30870,3 +30870,30 @@ Stieltjes/log-mixture identity in Lean.  It does not certify that identity,
 the physical dispersion corollary, the finite vacuum-product order, either
 spectral block, the endpoint, or the uniform `specRatio` theorem.
 Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 608 (2026-08-02, **TASK 14: first SpatialVacuum runner failed before Lean**)
+
+**FAIL INSTRUMENTAL; THE MATHEMATICS WAS NOT ELABORATED.**  The first focused
+Colab runner, notebook commit
+`a562bb5ad6a68e1ca3565b8bd5f5ca0d551a0c51`, cloned the preserved first Lean
+attempt `d685e82e10c8cd64221444a03ff83f617cec96b4` and verified that raw HEAD.
+The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 53467192 kB`.  It started at
+`2026-08-02T08:35:27.658948+00:00`; the Colab UI reports a total cell duration
+of `25.597 s`.
+
+The exact toolchain installation succeeded in `13.926785 s` and printed Lean
+commit `00659f8e6071d7e46131ed643bf8003b99b044e9`.  The next command,
+`lean --version`, exited `1` in `1.342029 s` with the literal message:
+
+``error: no default toolchain configured. run `elan default stable` to install
+& configure the latest Lean 4 stable release.``
+
+The runner had installed `leanprover/lean4:v4.29.0-rc6` but neither selected
+it as the default nor set `ELAN_TOOLCHAIN`.  Thus cache acquisition and
+`lake build YangMills.OS.SpatialVacuum` were never started.  No theorem,
+module job count, oracle result, or mathematical failure is claimed.  No
+transcript was downloaded before the stop; the complete live-cell output was
+captured through the browser.  The runtime was immediately disconnected and
+deleted; **SESIÓN COLAB LIBRE**.
