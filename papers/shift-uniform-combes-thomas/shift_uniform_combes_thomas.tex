@@ -1,7 +1,8 @@
 % Shift-uniform Combes--Thomas resolvents and covariance roots.
 % Resolvent artifact: b542b3f2; positive-root artifact: bd11e55f;
 % Stieltjes-integration artifact: 73179102;
-% canonical shifted-inverse artifact: 9f19b2d7.
+% canonical shifted-inverse artifact: 9f19b2d7;
+% canonical Stieltjes-root identification artifact: b44907f0.
 \documentclass[11pt]{article}
 
 \usepackage[margin=1.05in]{geometry}
@@ -47,7 +48,7 @@ development were produced with AI assistance under the repository's audit
 protocol.  Claims labelled \formalized{} were checked by Lean~4 against a
 pinned Mathlib and a targeted axiom oracle.  Paper-level functional-calculus
 arguments are labelled \proved{} and are not represented as Lean theorems.}}
-\date{August 2, 2026 -- research preprint, version 0.6}
+\date{August 2, 2026 -- research preprint, version 0.7}
 
 \begin{document}
 \maketitle
@@ -73,10 +74,10 @@ satisfies
   \norm{(C_s)_{q,p}}_{\op}
   \le \frac{2}{c+s}e^{-\theta\dist(q,p)}.
 \]
-The cancellation identity, shifted coercivity, uniform defect estimate, and
-resolvent kernel theorem are formalized in Lean~4 on the repository's actual
-physical gauge-cochain types.  At paper level, self-adjoint positivity and the
-Stieltjes formula then give
+The cancellation identity, shifted coercivity, uniform defect estimate,
+resolvent kernel theorem, and the self-adjoint Stieltjes-root passage are
+formalized in Lean~4 on the repository's actual physical gauge-cochain types.
+In particular,
 \[
   \norm{(K^{-1/2})_{q,p}}_{\op}
   \le \frac{2}{\sqrt c}e^{-\theta\dist(q,p)}.
@@ -90,11 +91,12 @@ kernel transport, and the quantitative operator bound
 $\norm{K^{-1/2}}\le c^{-1/2}$.  Version 0.6 constructs the canonical family
 $F(t)=(K+t^2\Id)^{-1}$, proves its exact inverse and resolvent identities,
 operator-norm continuity, Bochner integrability, and exponential localization
-of its normalized Stieltjes integral.  The remaining gap is now one equality:
-Lean does not yet identify that integral with the separately constructed
-spectral root.  Thus the localized physical root certificate remains
-conditional on this identification; fixed-volume coercivity is still not
-volume-uniform.
+of its normalized Stieltjes integral.  Version 0.7 evaluates this integral on
+an orthonormal eigenbasis, proves positivity and the exact square identity,
+identifies it with the separately constructed spectral root by uniqueness,
+and discharges the root-kernel field of the physical certificate.  The
+operator bridge is therefore closed in the stated finite-dimensional model.
+Fixed-volume coercivity is still not volume-uniform.
 \end{abstract}
 
 \section{Claims and status discipline}\label{sec:claims}
@@ -120,14 +122,14 @@ named frontier for subsequent formalization or analysis. \\
 The central resolvent result, Theorem~\ref{thm:shiftedCT}, is
 \formalized.  The positive continuous-linear-map square root, its exact
 square, positivity, symmetry, and the bound $\norm{K^{-1/2}}\le c^{-1/2}$ are
-also \formalized.  Lean now constructs the canonical shifted-inverse family,
-proves it continuous and Bochner integrable, and proves the exact
-$2/\sqrt c$ exponential kernel bound for its normalized Stieltjes integral.
-The complete passage in Theorem~\ref{thm:root} remains \proved{} at paper level
-because identification of the formal spectral root with that integral is
-still \openstatus.  Consequently unconditional discharge of the existing
-\path{PhysicalLocalizedCovarianceRootCertificate} is also open.  No continuum
-limit, mass gap, or volume-uniform positive coercivity constant is claimed.
+also \formalized.  Lean constructs the canonical shifted-inverse family,
+proves it continuous and Bochner integrable, identifies its normalized
+Stieltjes integral exactly with the spectral root, and proves the
+$2/\sqrt c$ exponential kernel bound for that root.  The complete passage in
+Theorem~\ref{thm:root} is now \formalized, including an end-to-end constructor
+for \path{PhysicalLocalizedCovarianceRootCertificate} under its explicit
+base-covariance and Combes--Thomas premises.  No continuum limit, mass gap, or
+volume-uniform positive coercivity constant is claimed.
 
 The mathematical phenomenon is not presented as new.  Exponential decay of
 inverses of banded matrices goes back at least to Demko--Moss--Smith
@@ -342,9 +344,10 @@ requires.
 \section{The covariance-root corollary}\label{sec:root}
 
 The next theorem is ordinary finite-dimensional spectral calculus.  It is
-included with a complete proof to identify the exact remaining Lean task.
+included with a complete proof and is also represented by named Lean
+declarations.
 
-\begin{theorem}[localized inverse square root; \proved]\label{thm:root}
+\begin{theorem}[localized inverse square root; \formalized]\label{thm:root}
 In addition to the hypotheses of Theorem~\ref{thm:shiftedCT}, assume that $K$
 is self-adjoint and positive with
 $\sigma(K)\subset[c,\infty)$, $c>0$.  Then the unique positive inverse square
@@ -420,9 +423,19 @@ a Lean theorem with no family or integrability hypothesis left to the caller:
  \norm{\left(\frac{2}{\pi}\int_0^\infty F_K(t)\,dt\right)_{q,p}}_{\op}
  \le \frac{2}{\sqrt c}e^{-\theta\dist(q,p)}.
 \end{equation}
-This formalizes localization of the canonical integral.  The remaining step
-is to prove in Lean that this operator equals the separately constructed
-spectral root $K^{-1/2}$.
+Version 0.7 closes the identification.  On an orthonormal eigenbasis Lean
+evaluates $F_K(t)$ and its normalized integral componentwise, proves that the
+integral is positive, and establishes
+\begin{equation}\label{eq:formal-square}
+ \left(\frac{2}{\pi}\int_0^\infty F_K(t)\,dt\right)^2=K^{-1}.
+\end{equation}
+Uniqueness of the positive square root then gives the exact operator identity
+\begin{equation}\label{eq:formal-identification}
+ \frac{2}{\pi}\int_0^\infty F_K(t)\,dt=K^{-1/2}.
+\end{equation}
+Rewriting \eqref{eq:formal-integral-bound} with
+\eqref{eq:formal-identification} proves the claimed kernel bound for the
+canonical spectral root itself.
 
 \begin{remark}[constant accounting]
 The spectral norm of $K^{-1/2}$ is at most $c^{-1/2}$, whereas the kernel
@@ -454,10 +467,11 @@ every positive finite-dimensional real continuous endomorphism and proves
 $B\circ B=C$, positivity, and symmetry.  The generic physical adapter derives
 items 2--5.  A new coercive specialization now fills item 3 with the
 quantitative constant $\sqrt{c^{-1}}$, rather than using $\norm B$ as its own
-bound.  The canonical-family theorem and \eqref{eq:formal-integral-bound}
-derive the correct item-6 bound for the actual shifted-inverse Stieltjes
-integral.  Item 6 for the \emph{canonical spectral root} still awaits the
-single identification of that root with this already-localized integral.
+bound.  The canonical-family theorem, \eqref{eq:formal-integral-bound}, and the
+exact identification \eqref{eq:formal-identification} now derive item 6 for
+the \emph{canonical spectral root}.  The end-to-end theorem
+\path{physicalLocalizedCovarianceRootCertificate_of_shiftUniform} therefore
+installs items 2--6 without taking a separate root-kernel assumption.
 
 The local-SPD route in
 \lean{PhysicalGaugeLocalSPDPrecisionRoot.lean} is complementary.  It develops
@@ -468,11 +482,11 @@ root and its kernel bound as source fields.  The present route replaces that
 smallness hypothesis by coercivity plus finite range.  Version 0.5 closed the
 scalar integral, its exact constant, generic Bochner kernel transport, and the
 quantitative root norm.  Version 0.6 closes construction, continuity,
-integrability, and localization of the canonical shifted-inverse integral;
-neither route yet transfers that bound to the spectral root without the
-remaining Stieltjes identification.
+integrability, and localization of the canonical shifted-inverse integral.
+Version 0.7 transfers that bound to the spectral root and closes the physical
+certificate adapter under the stated finite-volume hypotheses.
 
-The exact next formal chain is therefore
+The completed formal chain is
 \begin{equation}\label{eq:nextchain}
 \boxed{
 \begin{gathered}
@@ -488,10 +502,13 @@ The exact next formal chain is therefore
 \end{gathered}}
 \end{equation}
 The first arrow is machine-checked by transporting a real positive-semidefinite
-matrix root through an orthonormal basis.  The integral in the boxed equality
-is now a canonical, continuous, integrable Lean term, and the
-post-identification kernel transport is machine-checked by Bochner integration
-and continuous coordinate evaluation.  Only the boxed equality itself remains.
+matrix root through an orthonormal basis.  The boxed equality is checked by
+componentwise evaluation on the symmetric operator's orthonormal eigenbasis,
+positivity, the exact square identity, and uniqueness of positive roots.  The
+last two arrows are checked by Bochner integration, continuous coordinate
+evaluation, and the physical certificate constructor.  The next scientific
+frontier is not another operator identity: it is a lower bound on $c$ uniform
+in volume (or a different route that avoids needing one).
 
 \paragraph{Post-review implementation audit.}
 The available library route was not a one-line application of an existing
@@ -505,10 +522,11 @@ in version 0.3.1.  Version 0.5 also closes the scalar improper integral,
 quantitative norm estimate, and generic integrated single-bond kernel
 estimate.  Version 0.6 proves uniqueness of positive roots and closes
 construction, continuity, integrability, and localization of the canonical
-inverse family.  The remaining obligation is exactly its equality with the
-spectral root.  Supplying the root kernel predicate as an
-assumption still does not prove decay; the certificate adapter uses it only to
-isolate this exact frontier.
+inverse family.  Version 0.7 proves its equality with the spectral root,
+transports the localized bound, and supplies the end-to-end certificate
+constructor.  The generic older adapters remain conditional by design, but
+the new shift-uniform constructor does not assume its desired root-kernel
+conclusion.
 
 \section{Prior art and exact delta}\label{sec:prior}
 
@@ -542,8 +560,8 @@ decay with amplitude $2/c$ & The old theorem did not preserve a scalar shift;
 the new theorem is uniform for all $s\ge0$ and enables the Stieltjes integral. \\
 Repository local-SPD root frontier & Inverse-square-root coefficient and kernel
 majorants & Present hypotheses are coercivity plus finite range, not
-$\norm L<1$; the canonical real root is now formal, while its localized kernel
-bound remains open. \\
+$\norm L<1$; the canonical real root and its localized kernel bound are now
+formal under the explicit shift-uniform hypotheses. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -580,8 +598,9 @@ resolvent map.}  Correct for an arbitrary choice of right inverses.  Version
 0.6 instead defines the canonical inverse $(K+t^2\Id)^{-1}$ and proves its
 operator-norm continuity from the exact resolvent identity and coercivity
 bound.  Its measurability and Bochner integrability are therefore theorems,
-not assumptions.  Only identification of its integral with the formal
-spectral root remains open.
+not assumptions.  Version 0.7 evaluates its integral on an orthonormal
+eigenbasis and identifies it with the formal spectral root.  This attack is
+closed at finite volume.
 
 \paragraph{Attack 5: the diagonal is not genuinely off-diagonal data.}  The
 formal global kernel bound on the base operator still includes diagonal
@@ -596,13 +615,14 @@ matrices.  The purpose here is a robust formal interface.
 
 \paragraph{Kill criteria.}  The programme should be reformulated if any of the
 following occurs: (i) the exact shift identity fails under the actual root
-representation; (ii) the canonical shifted-inverse integral cannot be
-identified with the spectral root without assuming the desired root-kernel
-conclusion; (iii) the root certificate requires a
+representation; (ii) a volume-uniform coercivity estimate cannot be obtained
+in the intended gauge-fixed regime or replaced by a different viable route;
+(iii) the root certificate requires a
 volume-uniform $c$ from the already refuted block normalization; or (iv) a
 prior formalization is found with the same physical types, hypotheses,
-constants, and endpoint.  None is currently observed, but (ii) is the real
-technical bottleneck.
+constants, and endpoint.  The former operator-identification kill criterion
+has been discharged; volume-uniform analysis is now the real technical
+bottleneck.
 
 \section{Lean theorem map and reproducibility}\label{sec:repro}
 
@@ -668,8 +688,16 @@ CT3/CT4 module & \textsc{exact} \\
 \path{integrableOn_shiftedCovarianceFamily} & same & \textsc{exact} \\
 \path{physicalShiftedCovarianceFamily_}\newline
 \path{stieltjes_exponentialKernelBound} & same & \textsc{exact} \\
-Canonical shifted-inverse integral equals spectral root & not yet implemented & open \\
-Theorem~\ref{thm:root} as one end-to-end Lean declaration & this manuscript & paper \\
+Eigenvalue positivity and three eigenvector-action declarations & same &
+\textsc{exact} \\
+Positivity of the shifted family and its Stieltjes integral & same &
+\textsc{exact} \\
+\path{stieltjesIntegralOperator_shifted_}\newline
+\path{comp_self} and \path{eq_covarianceSqrt} & same & \textsc{exact} \\
+Physical root-kernel bound and
+\path{RootCertificate_of_shiftUniform} & same & \textsc{exact} \\
+Theorem~\ref{thm:root}, assembled from the named declarations above &
+formal source & \textsc{formalized} \\
 \bottomrule
 \end{longtable}
 \normalsize
@@ -711,6 +739,15 @@ The canonical-family extension is the immutable commit
 It adds \path{CoerciveCovarianceStieltjes.lean}, positive-root uniqueness,
 the aggregate import, the expanded focused oracle, and verification-ledger
 Addendum 573.  This version-0.6 manuscript cites that already-fixed source.
+The exact Stieltjes-root identification is the subsequent immutable commit
+\begin{center}
+\small\lean{b44907f005515c7f841471a8da6e870402f0e5ec}.
+\end{center}
+It adds eigenbasis evaluation, positivity and the exact square of the
+canonical integral, its equality with the spectral root, the transported
+physical root-kernel bound, the end-to-end certificate constructor, ten oracle
+registrations, and verification-ledger Addendum 574.  This version-0.7
+manuscript cites that already-fixed source.
 The version-0.2 manuscript artifact is commit
 \lean{25f532eaeecbfb66ee146e264953cde0e2e0ea29}.  Version 0.3 is distributed
 under the annotated local release tag \lean{shift-uniform-ct-v0.3} together
@@ -731,11 +768,12 @@ entries and has SHA-256
 \end{center}
 Version 0.3.1 was the documentation-only revision that printed those package
 identifiers in the PDF.  Version 0.4 cites the separate positive-root commit;
-version 0.5 cites the integration commit, and version 0.6 cites the canonical
-shifted-inverse commit and updates the formal/open boundary.
+version 0.5 cites the integration commit, version 0.6 cites the canonical
+shifted-inverse commit, and version 0.7 cites the exact root-identification
+commit and closes that formal boundary.
 Neither alters the immutable version-0.3 source archive or its hash.  The
 annotated local release tag for the present editorial tree is
-\lean{shift-uniform-ct-v0.6}.  The detached \path{ARTIFACT.md} manifest records
+\lean{shift-uniform-ct-v0.7}.  The detached \path{ARTIFACT.md} manifest records
 the manuscript commit and final PDF SHA-256 after rendering.  Those two values
 cannot be printed inside the hashed PDF without circularly changing the PDF;
 the release tag and manifest are the non-circular cryptographic index.
@@ -758,11 +796,11 @@ lake build YangMillsCore
 The four resolvent checks and all three version-0.4 root-module builds completed
 successfully on August 1, 2026.  The strengthened coercive-root target, the
 physical adapter, and the Stieltjes-integration target completed successfully
-on August 2, 2026.  On the same date the canonical-family target completed
-successfully with 8203 jobs, and a fresh \path{YangMillsCore} build completed
-successfully with 8470 jobs.  A targeted oracle checked twenty-six
-declarations: the prior eighteen plus positive-root uniqueness and seven
-canonical-family results.  Each printed exactly
+on August 2, 2026.  On the same date the root-identification target completed
+successfully with 8204 jobs, and a fresh \path{YangMillsCore} build completed
+successfully with 8470 jobs.  A targeted oracle checked thirty-six
+declarations: the prior twenty-six plus the ten root-identification and
+physical-certificate results.  Each printed exactly
 \[
  [\lean{propext},\ \lean{Classical.choice},\ \lean{Quot.sound}].
 \]
@@ -801,11 +839,13 @@ analysis.  Version 0.4 constructed the positive real continuous-linear root;
 version 0.5 formalized its sharp coercivity norm bound, the scalar improper
 integral, and generic Bochner kernel transport.  Version 0.6 constructs the
 canonical shifted-inverse family, proves it continuous and integrable, and
-proves the localized bound for its normalized integral.  What remains is one
-genuinely operator-theoretic equality: identify that integral with the
-spectral root.  Until this equality is formalized, the localized physical
-certificate remains conditional; the fixed-volume Poincar\'e wall is
-unchanged.
+proves the localized bound for its normalized integral.  Version 0.7 proves
+that this integral is positive, squares to $K^{-1}$, and therefore equals the
+canonical spectral root; it transports the localized bound and constructs the
+physical root certificate without a root-kernel premise.  The finite-volume
+operator chain is closed.  The fixed-volume Poincar\'e wall is unchanged:
+neither volume-uniform coercivity nor an infinite-volume or continuum limit is
+proved here.
 
 \begin{thebibliography}{99}
 

@@ -189,3 +189,55 @@ Claim boundary:
   does not yet identify this integral with the separately constructed spectral
   positive root.  The physical root certificate remains conditional on that
   single equality; no volume-uniform coercivity or continuum claim is made.
+
+=== Version 0.7 canonical Stieltjes-root identification (2026-08-02) ===
+
+Formal identification commit:
+  b44907f005515c7f841471a8da6e870402f0e5ec
+
+Successful target build:
+  lake build YangMills.RG.CoerciveCovarianceStieltjes
+    exit code 0; 8204 jobs; build completed successfully
+
+Successful full-core build:
+  lake build YangMillsCore
+    exit code 0; 8470 jobs; build completed successfully
+
+Focused axiom audit:
+  lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
+    exit code 0; wall time 66.5 seconds
+
+The audit covered all thirty-six declarations listed in the version-0.7
+manuscript.  Every declaration printed exactly:
+  [propext, Classical.choice, Quot.sound]
+
+The ten added declarations were:
+  eigenvalue_pos_of_isCoerciveCLM
+  shiftedCovarianceFamily_apply_of_eigenvector
+  stieltjesIntegralOperator_shifted_apply_of_eigenvector
+  shiftedCovarianceFamily_isPositive
+  stieltjesIntegralOperator_shifted_isPositive
+  covarianceOfIsCoerciveCLM_apply_of_eigenvector
+  stieltjesIntegralOperator_shifted_comp_self
+  stieltjesIntegralOperator_shifted_eq_covarianceSqrt
+  physicalCovarianceSqrt_exponentialKernelBound_of_shiftUniform
+  physicalLocalizedCovarianceRootCertificate_of_shiftUniform
+
+The declarations were also added to oracle_check.lean.  An additional global
+oracle execution remained silent but did not complete within an extended
+wrapper run, so no successful global-oracle execution is claimed here.
+
+Source hygiene:
+  git diff --check: exit code 0
+  no Lean `sorry` or project `axiom` occurs in the changed formal module
+
+Claim boundary:
+  Version 0.7 proves that the canonical normalized Stieltjes integral is
+  positive, squares exactly to the covariance, and equals the independently
+  constructed spectral positive root.  The exponential kernel bound is
+  transported to that root and the physical root-certificate kernel field is
+  discharged without assuming the desired bound.  The theorem remains
+  finite-dimensional and conditional on explicit coercivity, symmetry,
+  shift-uniform Combes--Thomas hypotheses, and the base localized covariance
+  certificate.  No volume-uniform coercivity, infinite-volume limit,
+  continuum limit, or Clay implication is claimed.
