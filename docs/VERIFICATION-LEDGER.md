@@ -30276,3 +30276,48 @@ references 0.
 
 **ROLES.**  This session FABRICATED and does not audit itself.  The external
 evaluation that scored v5 has not seen v5.2; no score appears in the paper.
+
+## Addendum 588 (2026-08-03, **paper v5.3: the four items of the v5.2
+evaluation, plus two more sentences of the same deictic family the sweep
+then caught**)
+
+An external evaluation of v5.2 (mathematics 6.08, the exact PDF 5.97, its
+numbers not this desk's) confirmed D-4b as the move that crossed its 6.00
+line and named four artifact defects.  All confirmed against the source, all
+fixed:
+
+1. **Limitations still said the paper answers the Dobrushin condition "for
+   no interaction"** — false since Theorem thm:ising's witnesses (one-bond:
+   every coupling; star: inside the window).  Replaced by the family-scoped
+   statement: beyond those two cells, uniformity for a lattice family
+   remains open.
+2. **"Every module in the anchor compiles"** — false at this anchor
+   (SpatialReconstruction fails there).  Now "Every module OF THIS PAPER in
+   the anchor compiles", with the sibling failure cross-referenced.
+3. **The certifier record omitted D-4**: now five scripts, ten runs, with
+   judge_dobrushin_d4.py reported at its true count 14 of 14 (expected =
+   2+3+9 read from the script, not remembered) in both modes at this
+   anchor, before every fabrication pass of the rung it licenses.
+4. **"the only open step in this list"** — now conditioned: a volume-uniform
+   Dobrushin window for the chosen lattice family is discharged here only
+   on cells, not a family of volumes; GIVEN such a window, the operator
+   transport is the only remaining structural step.
+
+The sweep this time was SEMANTIC (re-read every summary-shaped location),
+and it caught two more sentences of the same family the evaluation had not
+listed: Section 2's "this paper does not make that claim" (since D-4b the
+paper PROVES envelope = intrinsic coefficient on the one-bond system —
+rewritten to say exactly where the coincidence is a theorem and where the
+gap is measured), and frontier item 1's "Not done, and not needed: the
+minimal interdependence matrix of any particular system" (partially done
+since the witness — rescoped to "of a general system").  Running count of
+this deictic class across the lane: SIX sentences, every one an insertion
+making older prose false without touching it.  The phrase-list sweep catches
+none of them; only re-derivation from the current theorems does.
+
+Rebuilt, 19 pp, zero LaTeX errors, zero undefined references; all fixes
+verified by PDF text extraction (old phrases count 0, new phrases count 1).
+
+**ROLES.**  Defects 1-4 found by the external reading; 5-6 by this desk's
+semantic sweep; no score in the paper; v5.3 has not been externally
+evaluated.

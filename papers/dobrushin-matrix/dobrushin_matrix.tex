@@ -295,9 +295,13 @@ influence envelope}: sharp as a bound over arbitrary real fields, and a valid
 interdependence majorant, $c_{ij}\le\tanh|J_{ij}|$, for every model with that
 bond.  That is all Dobrushin's condition needs and it invalidates nothing
 downstream --- but it is not the claim that $\tanh|J|$ is the minimal
-interdependence matrix of any particular system, and this paper does not make
-that claim.  The window below is a sufficient condition, explicit and not
-optimal.
+interdependence matrix of \emph{every} system with that bond: on multi-bond
+cells the reachable fields form a discrete set and the intrinsic coefficient
+can sit strictly below the envelope.  Where the two coincide is itself
+settled below: on the one-bond cell of Section~\ref{sec:gibbs} the
+coincidence is exact, and it is a theorem
+(Proposition~\ref{prop:ising-witness}).  The window below is a sufficient
+condition, explicit and not optimal.
 
 The attainment still earns its place: without it the envelope would be some
 number above the influence, and one could not say the envelope is the best
@@ -944,8 +948,9 @@ order:
       sufficient window it produces.  \textbf{Done}: Theorems~\ref{thm:coeff}
       and~\ref{thm:matrix}, machine-checked, with the window computed rather
       than asserted, and holding at every site of every volume with the given
-      local geometry.  Not done, and not needed: the \emph{minimal}
-      interdependence matrix of any particular system;
+      local geometry.  Not needed, and done only where the one-bond witness
+      makes it coincide with the envelope: the \emph{minimal}
+      interdependence matrix of a general system;
 \item[\textbf{2.}] Dobrushin's comparison estimate \cite{Dobrushin1970,Simon1993}
       --- that connected correlations are controlled by the resolvent of $C$,
       hence decay exponentially at a rate free of the extent.  \textbf{Done}:
@@ -963,7 +968,11 @@ order:
 \item[\textbf{4.}] transport of that decay into the operator formulation: from
       correlations of the Gibbs weight to $\specRatio$ of the transfer kernel,
       through the finite-time interface described below.
-      \textbf{Open, and it is the only open step in this list.}
+      \textbf{Open.}  Conditional on a volume-uniform Dobrushin window for
+      the chosen lattice family --- discharged in this paper only on the
+      one-bond and star cells, which are cells and not yet a family of
+      volumes --- it is the only remaining \emph{structural} step in this
+      list.
 \end{enumerate}
 
 \textbf{What changed, stated at its exact size.}  An earlier version of this
@@ -1068,9 +1077,10 @@ volume-uniform statement about $\specRatio$ for the coupled kernel remains
 unproved.  This is the substantive limitation, and it is a translation between
 two languages rather than a missing estimate --- which does not make it small.
 Two further boundaries are worth naming.  Theorem~\ref{thm:gibbs} discharges
-every hypothesis \emph{except} Dobrushin's condition, and whether that
-condition holds is a question about a particular interaction that this paper
-does not answer for any; the envelope of Theorem~\ref{thm:coeff} is what a user
+every hypothesis \emph{except} Dobrushin's condition; beyond the one-bond and
+star-cell instances proved with Theorem~\ref{thm:ising}, whether that
+condition holds uniformly for a specified lattice \emph{family} remains open.
+The envelope of Theorem~\ref{thm:coeff} is what a user
 would apply, and it is a sufficient condition, not a characterisation.  And the
 decay proved is decay of correlations of a measure on a \emph{finite} product
 space: no infinite-volume state is constructed anywhere, and the word
@@ -1182,18 +1192,21 @@ module & \texttt{sha256} & bytes\\
 \end{tabular}
 \end{center}
 
-\textbf{Certifiers.}  Four gate scripts, each run in \texttt{normal} and in
-\texttt{optimized} (\texttt{python -O}) mode on the Linux plane; all eight runs
+\textbf{Certifiers.}  Five gate scripts, each run in \texttt{normal} and in
+\texttt{optimized} (\texttt{python -O}) mode on the Linux plane; all ten runs
 exited zero.  \repofile{scripts/judge\_dobrushin.py}{judge\_dobrushin.py}
 reported $29$ of $29$ checks in each mode and
 \repofile{scripts/judge\_dobrushin\_d2.py}{judge\_dobrushin\_d2.py} $18$ of
 $18$, at the previous anchor.  At this anchor
 \repofile{scripts/judge\_dobrushin\_d3.py}{judge\_dobrushin\_d3.py} reported
-$11$ of $11$ and
+$11$ of $11$,
 \repofile{scripts/judge\_dobrushin\_d3b.py}{judge\_dobrushin\_d3b.py} $6$ of
-$6$, in both modes, and both ran \emph{before} the build in the same runner
-invocation --- the record shows the gates passing before the theorems they
-license were compiled.  No acceptance decision in any of the four depends on a
+$6$, and \repofile{scripts/judge\_dobrushin\_d4.py}{judge\_dobrushin\_d4.py}
+--- the gates G12--G14 of Section~\ref{sec:gibbs} --- $14$ of $14$, in both
+modes, all running \emph{before} the build in the same runner
+invocation and, for D-4, before \emph{every} fabrication pass of the rung
+they license --- the record shows the gates passing before the theorems they
+license were compiled.  No acceptance decision in any of the five depends on a
 Python \texttt{assert}; each counts the checks it performed and refuses to
 print a verdict when fewer ran than expected, because an empty failure list is
 also what zero checks produce.
@@ -1227,7 +1240,9 @@ absent, malformed, non-zero, zero.  A run in which every sentinel reads zero is
 reported as a \emph{pass candidate}, never as a pass, because the logs still
 have to be read.
 
-\textbf{Every module in the anchor compiles.}  An earlier version of this paper
+\textbf{Every module of this paper in the anchor compiles} --- the sibling
+module that fails there belongs to a different paper's campaign, and the
+job-count paragraph above records it.  An earlier version of this paper
 was anchored to a tree in which
 \repofile{YangMills/OS/DobrushinCoefficient.lean}{DobrushinCoefficient.lean} did
 not, and said so in this section rather than leaving it to be discovered.  It
