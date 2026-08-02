@@ -43,7 +43,7 @@ theorem periodic_antiperiodic_log_difference_eq_neg_two_artanh
   have hxpow_pos : 0 < x ^ L := pow_pos hx0 L
   have hxpow_lt_one : x ^ L < 1 := pow_lt_one₀ hx0.le hx1 hL.ne'
   have hplus : 1 + x ^ L ≠ 0 := by positivity
-  have hminus : 1 - x ^ L ≠ 0 := by positivity
+  have hminus : 1 - x ^ L ≠ 0 := (sub_pos.mpr hxpow_lt_one).ne'
   have hartanh :
       Real.artanh (x ^ L) =
         1 / 2 * (Real.log (1 + x ^ L) - Real.log (1 - x ^ L)) := by
