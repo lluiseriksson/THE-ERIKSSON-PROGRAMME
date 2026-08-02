@@ -283,17 +283,21 @@ theorem osPairing_transfer {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
       = osPairingBondCross w β m F G := by
   rw [siteForm_transferOp hw, bondForm_collapse]
 
-/-- **AND THE SAME ON THE PATH SUM ITSELF.**  Substituting paper 13's bond
-bridge on the right: the transfer operator's matrix element between two
-half-chain observables is a sum over whole paths against the Gibbs weight. -/
+/-- **AND THE SAME ON THE PATH SUM ITSELF.**  Substituting the bond bridge on
+the right: the transfer operator's matrix element between two half-chain
+observables IS the reflected two-point sum of the Gibbs measure over whole
+paths, one slice further apart.
+
+Stated for two observables, not one.  The diagonal case would have been cheaper
+and would have left the paper's displayed identity saying more than the formal
+text did. -/
 theorem osPairing_transfer_gibbsSum {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hw : ∀ σ, 0 < w σ) (β : ℝ) (m : ℕ)
-    (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
-    siteForm w (collapse w β m F) (transferOp w β (collapse w β m F))
+    (F G : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    siteForm w (collapse w β m F) (transferOp w β (collapse w β m G))
       = ∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
-          (starRingEnd ℂ) (F (pastOf X)) * F (futRevOf X)
+          (starRingEnd ℂ) (F (pastOf X)) * G (futRevOf X)
             * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ) := by
-  rw [osPairing_transfer hw, osPairingBondCross_self,
-    ← osPairingBond_eq_gibbsSum]
+  rw [osPairing_transfer hw, ← osPairingBondCross_eq_gibbsSum]
 
 end YangMills.OS

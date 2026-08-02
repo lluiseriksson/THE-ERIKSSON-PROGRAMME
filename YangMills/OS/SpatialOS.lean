@@ -778,6 +778,26 @@ theorem osPairingBond_eq_gibbsSum {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) (�
       * ((gibbsWeight w β (N := m + 1 + m) (joinBond a b) : ℝ) : ℂ) = _
   rw [pastOf_joinBond, futRevOf_joinBond, gibbsWeight_joinBond]
 
+/-- **THE BOND BRIDGE, CROSS FORM.**  One observable against the reflection of
+another.  Extracted as a theorem rather than left inside the Gram proof, where
+it lived as a `have`: a statement that exists only inside a proof cannot be
+cited, and the reconstruction's headline needs exactly this one. -/
+theorem osPairingBondCross_eq_gibbsSum {L m : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (β : ℝ) (F G : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    (∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
+        (starRingEnd ℂ) (F (pastOf X)) * G (futRevOf X)
+          * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))
+      = osPairingBondCross w β m F G := by
+  rw [← Equiv.sum_comp (bondEquiv L m)
+        (fun X => (starRingEnd ℂ) (F (pastOf X)) * G (futRevOf X)
+          * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))]
+  rw [Fintype.sum_prod_type]
+  unfold osPairingBondCross
+  refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
+  show (starRingEnd ℂ) (F (pastOf (joinBond a b))) * G (futRevOf (joinBond a b))
+      * ((gibbsWeight w β (N := m + 1 + m) (joinBond a b) : ℝ) : ℂ) = _
+  rw [pastOf_joinBond, futRevOf_joinBond, gibbsWeight_joinBond]
+
 /-- **AND THEREFORE IT IS NON-NEGATIVE, for `β ≥ 0`.**  The reflected two-point
 sum of the Gibbs measure itself, not of a form standing in for it. -/
 theorem gibbsSum_reflected_nonneg {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) {β : ℝ}
@@ -802,23 +822,8 @@ theorem gibbsSum_reflected_gram_nonneg {L m : ℕ} (w : (Fin L → Fin 2) → �
         ∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
           (starRingEnd ℂ) (F i (pastOf X)) * F j (futRevOf X)
             * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ)) = (r : ℂ) := by
-  have hcross : ∀ i j : ι,
-      (∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
-        (starRingEnd ℂ) (F i (pastOf X)) * F j (futRevOf X)
-          * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))
-        = osPairingBondCross w β m (F i) (F j) := by
-    intro i j
-    rw [← Equiv.sum_comp (bondEquiv L m)
-          (fun X => (starRingEnd ℂ) (F i (pastOf X)) * F j (futRevOf X)
-            * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))]
-    rw [Fintype.sum_prod_type]
-    unfold osPairingBondCross
-    refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
-    show (starRingEnd ℂ) (F i (pastOf (joinBond a b))) * F j (futRevOf (joinBond a b))
-        * ((gibbsWeight w β (N := m + 1 + m) (joinBond a b) : ℝ) : ℂ) = _
-    rw [pastOf_joinBond, futRevOf_joinBond, gibbsWeight_joinBond]
-  rw [Finset.sum_congr rfl fun i _ =>
-        Finset.sum_congr rfl fun j _ => by rw [hcross i j]]
+  rw [Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by
+        rw [osPairingBondCross_eq_gibbsSum w β (F i) (F j)]]
   exact osPairingBond_gram_nonneg w hβ m c F
 
 /-! ## §9  The SITE bridge

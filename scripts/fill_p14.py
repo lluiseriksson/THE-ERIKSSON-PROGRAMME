@@ -47,6 +47,7 @@ LINKS = {
     "SITEDIAGLINE": ("SpatialOS", "osPairingSite_eq_gibbsSum"),
     "SITENNLINE": ("SpatialOS", "gibbsSumSite_reflected_nonneg"),
     "SITEGRAMLINE": ("SpatialOS", "gibbsSumSite_reflected_gram_nonneg"),
+    "BONDCROSSLINE": ("SpatialOS", "osPairingBondCross_eq_gibbsSum"),
     "SITECOLLLINE": ("SpatialReconstruction", "siteForm_collapse"),
     "BONDCOLLLINE": ("SpatialReconstruction", "bondForm_collapse"),
     "STARLINE": ("SpatialReconstruction", "siteForm_transferOp"),

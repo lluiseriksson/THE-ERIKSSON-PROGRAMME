@@ -348,6 +348,16 @@ words: the matrix element of the transfer operator between two half-chain
 observables \emph{is} the reflected two-point function of the Gibbs measure one
 slice further apart.
 
+\begin{remark}[why the cross form exists]
+The displayed identity is stated for two observables, and the formal text states
+it for two.  It would have been cheaper to prove only the diagonal case $G=F$
+and let the display carry the general one; the bond bridge's cross form had in
+fact been proved inside another proof, where nothing could cite it, and was
+extracted --- \osline{SpatialOS}{BONDCROSSLINE}{osPairingBondCross\_eq\_gibbsSum}
+--- precisely so that this section's prose and its formal text have the same
+scope.  A green build does not notice a theorem carrying less than its sentence.
+\end{remark}
+
 \section{The gates}\label{sec:gates}
 
 Two scripts, each committed before the Lean it licenses existed and before it

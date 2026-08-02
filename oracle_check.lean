@@ -3122,6 +3122,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.gibbsWeight_joinBond
 #print axioms YangMills.OS.osPairingBond_eq_gibbsSum
 #print axioms YangMills.OS.gibbsSum_reflected_nonneg
+#print axioms YangMills.OS.osPairingBondCross_eq_gibbsSum
 #print axioms YangMills.OS.gibbsSum_reflected_gram_nonneg
 #print axioms YangMills.OS.joinSite
 #print axioms YangMills.OS.midOf
