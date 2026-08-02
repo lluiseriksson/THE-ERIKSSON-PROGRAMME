@@ -31057,3 +31057,78 @@ SHA.  Neither finite vacuum product has been identified or compared, and
 neither spectral block, the endpoint of the original transfer problem, nor
 the uniform `specRatio` theorem is proved.  Clifford/Jordan--Wigner remains
 unopened.
+
+## Addendum 613 (2026-08-02, **TASK 14: SpatialVacuum full verifier passed**)
+
+**CERTIFIED INTERMEDIATE SCALAR BRICK; NOT THE SPATIAL SPECTRAL BOUND.**  The
+full verifier was committed before execution at
+`d91fac7a345bc66e68968328198c7b4098e2da10`.  In one fresh Colab clone it
+checked out raw source/oracle SHA
+`2aa267991a8f4daf072b138e009e2e4ecae1854a`, verified the exact Lean and
+mathlib pins, built the module and core, read the live core baseline from this
+ledger, ran the permanent oracle and consistency judge, and stopped on any
+nonzero command or mismatched invariant.  One clone is the current requirement
+for this intermediate brick; this is not a terminal release witness.
+
+The CPU/high-RAM runtime used no GPU and reported Linux `6.6.122+`, x86-64,
+glibc `2.35`, Python `3.12.13`, 8 CPUs, Intel Xeon 2.20 GHz, and
+`MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T09:21:17.726459+00:00` through
+`2026-08-02T10:15:27.665948+00:00` (`3249.939489 s`).  Lean was exactly
+`leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib was exactly
+`07642720480157414db592fa85b626dafb71355b`.
+
+All commands exited zero.  The measured results were:
+
+- `lake build YangMills.OS.SpatialVacuum`: `8172 jobs`, `144.707367 s`;
+- `lake build YangMillsCore`: `8467 jobs`, `927.775369 s`;
+- latest live-ledger baseline parsed by the verifier: `8465 jobs`;
+- measured branch delta: `+2`, exactly the two branch modules
+  `SpatialDualBond` and `SpatialVacuum`;
+- `lake env lean oracle_check.lean`: `2041.336896 s`;
+- `python3 scripts/check_consistency.py`: `3.888055 s`, reporting zero
+  `sorry` and zero project axioms.
+
+The permanent oracle printed both new declarations exactly once.  Each depends
+on exactly the permitted set `{propext, Classical.choice, Quot.sound}`:
+
+```text
+'YangMills.OS.arcosh_circle_log_mixture' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.physical_arcosh_circle_log_mixture' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+The verifier also checked every oracle declaration for absence of nonstandard
+axioms and rejected any occurrence of `sorryAx`.
+
+The downloaded `spatial_vacuum_full_artifacts.zip` was independently hashed on
+Windows as
+`da9ceb7f6e3cc693a82d727a69bbb853dc1d211db000623f8bfdfb5a2a380c0e`,
+matching the hash printed by Colab.  Its internal manifest was revalidated
+streamwise without extracting the archive:
+
+- `metadata.json`, 1080 bytes,
+  `a802a300998157357a3cbf1764ae13c0de6b5f95fc087304fbbc7d7ac517f03e`;
+- `transcript.txt`, 466121 bytes,
+  `6017c2c14c0d6b9428d57a19ce19a2f449d2cb7d9a0797f4e29f157ccf6caead`;
+- `oracle_output.txt`, 344887 bytes,
+  `1f2d6dd9d06dda41712b418ed22d7bd9fa77bc6225feae05385a23b604dfd928`;
+- `consistency_output.txt`, 154 bytes,
+  `95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`;
+- `SHA256SUMS`, 334 bytes,
+  `3b0a464838e0059a943b88fef1b3fb7d1fb098a628b1c655751c4f8e44fe5626`.
+
+Unlike the earlier incomplete root-product archive, this ZIP contains the
+separate full oracle output, consistency output, metadata, and the transcript
+through `SPATIAL VACUUM FULL VERIFICATION STEPS PASS`.  The ZIP hash and final
+`SPATIAL VACUUM FULL PASS` necessarily follow archive construction and were
+checked against the downloaded file.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
+
+What is certified here is only the generic angular log-mixture identity and
+its physical scalar specialisation, including the printed hypotheses
+`0 < beta`, `0 <= gamma`, `gamma < a`, and the duality relation.  The finite
+periodic/antiperiodic vacuum products have not been connected to this scalar
+identity in Lean, neither transfer-sector obligation has been proved, and the
+original `beta = 0` transfer endpoint and uniform `specRatio` theorem remain
+open.  Clifford/Jordan--Wigner remains unopened.
