@@ -57,7 +57,6 @@ private lemma norm_sub_arcoshRadius_sq {y : ℝ} (hy : 1 < y) {z : ℂ}
   have hyrel : 2 * r * y = 1 + r ^ 2 := by
     rw [hyrepr]
     field_simp [hrpos.ne']
-    <;> ring
   rw [← Complex.normSq_eq_norm_sq, Complex.normSq_sub]
   simp [Complex.normSq_eq_norm_sq, hnorm, abs_of_pos hrpos]
   nlinarith
@@ -177,6 +176,42 @@ theorem arcosh_circle_log_mixture {c B s : ℝ} (hc : 1 < c) (hB : 0 < B)
       rw [← Real.log_div hnum.ne' hden.ne']
       congr 1
       field_simp [hden.ne']
-      <;> ring
+      ring
+
+/--
+The physical specialisation of `arcosh_circle_log_mixture`.
+
+The active hypotheses `0 < β`, `0 ≤ γ`, and `γ < a` are printed in the
+statement, together with the finite-dual-coupling relation
+`tanh a = exp (-2β)`.  The scalar identity is stronger than the physical
+specialisation, so the `β` data records the physical regime rather than being
+needed by the final algebraic substitution.  The endpoint `γ = 0` is handled
+directly: there `B = sinh(2a) sinh(2γ)` vanishes, whereas the generic theorem
+deliberately assumes `0 < B`.
+
+This remains a scalar analytic identity.  It does not identify either finite
+vacuum, compare the two vacuum products, or prove a spectral-sector bound.
+-/
+theorem physical_arcosh_circle_log_mixture
+    {β γ a s : ℝ} (_hβ : 0 < β) (hγ : 0 ≤ γ) (hγa : γ < a)
+    (_hdual : Real.tanh a = Real.exp (-2 * β)) (hs : 0 ≤ s) :
+    Real.arcosh
+          (Real.cosh (2 * (a - γ)) + Real.sinh (2 * a) * Real.sinh (2 * γ) * s) -
+        Real.arcosh (Real.cosh (2 * (a - γ))) =
+      circleAverage (fun z : ℂ ↦ Real.log
+        (1 + Real.sinh (2 * a) * Real.sinh (2 * γ) * s /
+          (Real.cosh (2 * (a - γ)) - z.re))) 0 1 := by
+  rcases hγ.eq_or_lt with hγzero | hγpos
+  · subst γ
+    simp
+  · apply arcosh_circle_log_mixture
+    · rw [Real.one_lt_cosh]
+      nlinarith
+    · apply mul_pos
+      · rw [Real.sinh_pos_iff]
+        nlinarith
+      · rw [Real.sinh_pos_iff]
+        nlinarith
+    · exact hs
 
 end YangMills.OS
