@@ -136,7 +136,9 @@ theorem osc_nonneg (g : S → ℝ) : 0 ≤ osc g := by
   linarith
 
 /-- **Endpoint 2.**  Every value lies within half an oscillation of the midpoint
-of the range.  This is the only place the factor `1/2` is created. -/
+of the range.  This is the only place the ANALYTIC factor `1/2` is created;
+the definitional one lives inside `TV` and the two are identified by rewriting,
+not added. -/
 theorem abs_sub_mid_le (g : S → ℝ) (x : S) : |g x - mid g| ≤ osc g / 2 := by
   have h1 := inf_le_apply g x
   have h2 := apply_le_sup g x
@@ -177,13 +179,14 @@ theorem abs_sum_signed_le {a : S → ℝ} (ha : ∑ x, a x = 0) (g : S → ℝ) 
 noncomputable def TV (p q : S → ℝ) : ℝ := (∑ x, |p x - q x|) / 2
 
 omit [Nonempty S] in
+/-- **Endpoint 4.**  The total-variation normalisation is nonnegative. -/
 theorem TV_nonneg (p q : S → ℝ) : 0 ≤ TV p q := by
   unfold TV
   have : 0 ≤ ∑ x, |p x - q x| :=
     Finset.sum_nonneg fun x _ => abs_nonneg _
   linarith
 
-/-- **Endpoint 4.**  The corollary D-3c consumes: two distributions of equal
+/-- **Endpoint 5.**  The corollary D-3c consumes: two distributions of equal
 total mass differ, against any `g`, by at most `TV` times the oscillation. -/
 theorem abs_sum_sub_le_tv_mul_osc {p q : S → ℝ}
     (h : ∑ x, p x = ∑ x, q x) (g : S → ℝ) :
@@ -199,7 +202,8 @@ theorem abs_sum_sub_le_tv_mul_osc {p q : S → ℝ}
 Without this the constant would be a number above the truth rather than the
 truth.  Two point masses sitting on a maximum and a minimum of `g` reach it. -/
 
-/-- **Endpoint 5.**  On a two-point type, `p` concentrated at one point and `q`
+/-- **Sharpness witness, counted separately from the five endpoints.**  On a
+two-point type, `p` concentrated at one point and `q`
 at the other, tested against the indicator of the first, the inequality of
 `abs_sum_sub_le_tv_mul_osc` is an EQUALITY. -/
 theorem signed_bound_attained :
