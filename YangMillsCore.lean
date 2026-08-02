@@ -259,6 +259,9 @@ import YangMills.RG.PhysicalGaugeCovarianceLocalization
 -- Canonical positive-root adapter: once covariance positivity is known, all
 -- root-certificate fields except the spatial root-kernel bound are derived.
 import YangMills.RG.PhysicalGaugeCovariancePositiveRoot
+-- Scalar Stieltjes integral and Bochner transport of resolvent kernel bounds
+-- to the exact inverse-square-root coefficient.
+import YangMills.RG.StieltjesKernelIntegration
 import YangMills.RG.PhysicalGaugeCMP116OperatorTransport
 import YangMills.RG.PhysicalGaugeFluctuationActivity
 import YangMills.RG.PhysicalGaugeCMP116ActivityAdapter

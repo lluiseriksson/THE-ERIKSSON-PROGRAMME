@@ -15,8 +15,8 @@ operator and construct its positive square root, symmetry of the precision is
 also required.  This module makes that boundary explicit and proves the full
 operator-theoretic root package.
 
-This file does not prove spatial localization or a quantitative root norm
-bound.  Those are separate analytic obligations.
+This file does not prove spatial localization.  It does prove the sharp
+coercivity-driven root norm bound `‖C¹ᐟ²‖ ≤ √(c⁻¹)`.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/
@@ -108,6 +108,41 @@ theorem covarianceSqrtOfIsCoerciveCLM_inner_nonneg
     (hA : IsCoerciveCLM A c) (hSymm : A.IsSymmetric) (x : E) :
     0 ≤ inner ℝ x (covarianceSqrtOfIsCoerciveCLM A hc hA hSymm x) := by
   exact finiteDimensionalRealPositiveSqrt_inner_nonneg _ _ x
+
+/-- Quantitative covariance-root norm bound inherited from coercivity:
+`\|A⁻¹ᐟ²\| ≤ √(c⁻¹)`. -/
+theorem norm_covarianceSqrtOfIsCoerciveCLM_le
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [FiniteDimensional ℝ E]
+    (A : E →L[ℝ] E) {c : ℝ} (hc : 0 < c)
+    (hA : IsCoerciveCLM A c) (hSymm : A.IsSymmetric) :
+    ‖covarianceSqrtOfIsCoerciveCLM A hc hA hSymm‖ ≤ Real.sqrt c⁻¹ := by
+  let S := covarianceSqrtOfIsCoerciveCLM A hc hA hSymm
+  let C := covarianceOfIsCoerciveCLM A hc hA
+  apply ContinuousLinearMap.opNorm_le_bound S (Real.sqrt_nonneg _)
+  intro x
+  rw [← sq_le_sq₀ (norm_nonneg _) (by positivity)]
+  have hsq : S.comp S = C :=
+    covarianceSqrtOfIsCoerciveCLM_comp_self A hc hA hSymm
+  have hinner : ‖S x‖ ^ 2 ≤ c⁻¹ * ‖x‖ ^ 2 := by
+    calc
+      ‖S x‖ ^ 2 = inner ℝ (S x) (S x) :=
+        (real_inner_self_eq_norm_sq (S x)).symm
+      _ = inner ℝ x (S (S x)) := by
+        exact covarianceSqrtOfIsCoerciveCLM_inner_left_eq_inner_right
+          A hc hA hSymm x (S x)
+      _ = inner ℝ x (C x) := by
+        change inner ℝ x ((S.comp S) x) = inner ℝ x (C x)
+        rw [hsq]
+      _ ≤ ‖x‖ * ‖C x‖ := real_inner_le_norm x (C x)
+      _ ≤ ‖x‖ * (‖x‖ / c) := by
+        exact mul_le_mul_of_nonneg_left
+          (norm_covarianceOfIsCoerciveCLM_apply_le A hc hA x) (norm_nonneg x)
+      _ = c⁻¹ * ‖x‖ ^ 2 := by field_simp
+  calc
+    ‖S x‖ ^ 2 ≤ c⁻¹ * ‖x‖ ^ 2 := hinner
+    _ = (Real.sqrt c⁻¹ * ‖x‖) ^ 2 := by
+      rw [mul_pow, Real.sq_sqrt (inv_nonneg.mpr hc.le)]
 
 end
 

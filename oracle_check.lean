@@ -2204,6 +2204,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.covarianceSqrtOfIsCoerciveCLM_comp_self
 #print axioms YangMills.RG.covarianceSqrtOfIsCoerciveCLM_isPositive
 #print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_positive_covariance
+#print axioms YangMills.RG.norm_covarianceSqrtOfIsCoerciveCLM_le
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_coercive_precision
+#print axioms YangMills.RG.integrableOn_Ioi_inv_add_sq
+#print axioms YangMills.RG.integral_Ioi_inv_add_sq
+#print axioms YangMills.RG.physicalCovarianceKernelBound_stieltjesIntegralOperator
+#print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_stieltjesIntegralOperator
 #print axioms YangMills.RG.exists_pos_tiltBudget
 #print axioms YangMills.RG.zeroSigma_budget
 #print axioms YangMills.RG.flatGaugeFixedCovariance_CT_fixedVolume

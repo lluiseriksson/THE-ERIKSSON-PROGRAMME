@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.FiniteDimensionalRealPositiveSqrt
+import YangMills.RG.CoerciveCovariancePositiveSqrt
 import YangMills.RG.PhysicalGaugeCovarianceLocalization
 
 /-!
@@ -64,6 +64,45 @@ theorem physicalLocalizedCovarianceRootCertificate_of_positive_covariance
   · intro y
     exact finiteDimensionalRealPositiveSqrt_inner_nonneg
       covariance hcovPositive y
+  · exact hrootKernel
+
+/-- Assemble the physical certificate for the covariance of a symmetric
+coercive precision with the quantitative bound `√(c⁻¹)` on its canonical
+positive root. Spatial localization remains exactly the supplied
+`hrootKernel`. -/
+theorem physicalLocalizedCovarianceRootCertificate_of_coercive_precision
+    {d N Nc : ℕ} [NeZero N]
+    {precision :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc}
+    {c covNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d N → PhysicalBond d N → ℝ}
+    (hc : 0 < c)
+    (hcoer : IsCoerciveCLM precision c)
+    (hSymm : precision.IsSymmetric)
+    (hcov :
+      PhysicalLocalizedCovarianceCertificate
+        precision (covarianceOfIsCoerciveCLM precision hc hcoer)
+        covNormBound covWeight)
+    (hrootKernel :
+      PhysicalCovarianceKernelBound
+        (covarianceSqrtOfIsCoerciveCLM precision hc hcoer hSymm)
+        rootWeight) :
+    PhysicalLocalizedCovarianceRootCertificate
+      precision (covarianceOfIsCoerciveCLM precision hc hcoer)
+      (covarianceSqrtOfIsCoerciveCLM precision hc hcoer hSymm)
+      covNormBound (Real.sqrt c⁻¹) covWeight rootWeight := by
+  apply physicalLocalizedCovarianceRootCertificate_of_source hcov
+  · exact covarianceSqrtOfIsCoerciveCLM_comp_self precision hc hcoer hSymm
+  · exact norm_covarianceSqrtOfIsCoerciveCLM_le precision hc hcoer hSymm
+  · intro x y
+    exact
+      (covarianceSqrtOfIsCoerciveCLM_inner_left_eq_inner_right
+        precision hc hcoer hSymm x y).symm
+  · intro y
+    exact covarianceSqrtOfIsCoerciveCLM_inner_nonneg
+      precision hc hcoer hSymm y
   · exact hrootKernel
 
 end

@@ -29406,3 +29406,36 @@ and no integrated single-bond kernel estimate for the canonical root has been
 proved.  Consequently the physical root certificate is reduced but not
 unconditionally discharged.  The fixed-volume coercivity limitation is
 unchanged.
+
+## Addendum 572 (2026-08-02, **scalar Stieltjes integral and integrated physical kernel bound**)
+
+**FORMALIZED DELTA.**  `StieltjesKernelIntegration.lean` proves the exact
+scalar improper integral
+
+    ∫ t in Set.Ioi 0, (c + t^2)⁻¹ = Real.pi / (2 * Real.sqrt c)
+
+for `0 < c`, including Bochner integrability.  It defines the normalized
+operator-valued integral `stieltjesIntegralOperator F` and proves that any
+integrable physical operator family with single-bond kernel bound
+`A / (c + t^2) * weight` has integrated kernel bound
+`A / Real.sqrt c * weight`.  The exponential specialization turns the
+shift-uniform resolvent amplitude `2 / (c + t^2)` into exactly
+`2 / Real.sqrt c`, preserving the same decay rate and distance.
+
+`CoerciveCovariancePositiveSqrt.lean` now proves the quantitative estimate
+
+    ‖covarianceSqrtOfIsCoerciveCLM A hc hA hSymm‖ ≤ Real.sqrt c⁻¹.
+
+The proof uses the exact square identity, symmetry, the covariance bound from
+coercivity, and Cauchy--Schwarz.  The new coercive physical adapter installs
+this constant in `PhysicalLocalizedCovarianceRootCertificate`, replacing the
+previous tautological norm constant whenever the covariance is the canonical
+inverse of a symmetric coercive precision.
+
+**BOUNDARY.**  The integrated kernel theorem is no longer open as an abstract
+Bochner-transport statement.  Its hypotheses still require an integrable
+operator family.  The remaining central bridge is to prove that the canonical
+shifted inverse family is integrable and that its normalized integral equals
+the already-constructed spectral root.  Until that identification is checked,
+the physical root certificate still takes the canonical root-kernel bound as
+an explicit input.  No volume-uniform lower bound on `c` is claimed.
