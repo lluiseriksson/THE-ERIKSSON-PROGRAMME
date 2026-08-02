@@ -236,6 +236,224 @@ theorem congruenceRatio_isLUB_of_birkhoff
   congruenceRatio_isLUB_of_birkhoff_of_spectralInterface hpq hμ0 hμ1 hM hpos hlo
     hhi hpp hqq hpqv hqpv hBirkhoff matrixSpecRatio_spectralInterface
 
+/-! ## §5  Identity of the object: the `2×2` kernel, symbolically
+
+Discharging an interface is not the same as building the intended function.
+`matrixSpecRatio_spectralInterface` says the totalisation satisfies an abstract
+contract; it does not say the totalisation *is* the subdominant ratio the paper
+computes.  This section closes that gap on the exchangeable `2×2` kernel, and
+does so **symbolically in `μ`**, computing both intermediate values rather than
+assuming either:
+
+    perronValue (exchangeTwo μ) = 1 + μ
+    specGap    (exchangeTwo μ) = 1 - μ
+    matrixSpecRatio (exchangeTwo μ) = (1-μ)/(1+μ)
+
+The test has to pass through the totalisation, the Perron choice *and* the
+definition of `specGap`; a numerical check at one `μ`, an inequality, or a proof
+that assumed either intermediate would not audit what is at stake.
+
+Bounding `specGap` from *above* is what the tree lacked, so §5.1 supplies it in
+general: an eigenvector at an eigenvalue other than the Perron one is orthogonal
+to the Perron vector, so a Rayleigh bound on that complement bounds every
+non-Perron eigenvalue. -/
+
+/-! ### §5.1  An upper bound for `specGap`, in general -/
+
+/-- **Eigenvectors at different eigenvalues are orthogonal.**  Proved from the
+symmetry of the kernel by moving it across the pairing, with plain sums. -/
+theorem inner_eq_zero_of_eigen_ne {T : Matrix n n ℝ}
+    (hsymm : ∀ i j, T i j = T j i) {v w : n → ℝ} {lam e : ℝ}
+    (hvE : ∀ i, ∑ j, T i j * v j = lam * v i)
+    (hwE : ∀ i, ∑ j, T i j * w j = e * w i) (hne : lam ≠ e) :
+    ∑ i, v i * w i = 0 := by
+  have h1 : ∑ i, (∑ j, T i j * v j) * w i = lam * ∑ i, v i * w i := by
+    rw [Finset.mul_sum]
+    exact Finset.sum_congr rfl fun i _ => by rw [hvE i]; ring
+  have h2 : ∑ i, v i * (∑ j, T i j * w j) = e * ∑ i, v i * w i := by
+    rw [Finset.mul_sum]
+    exact Finset.sum_congr rfl fun i _ => by rw [hwE i]; ring
+  have hswap : ∑ i, (∑ j, T i j * v j) * w i = ∑ i, v i * (∑ j, T i j * w j) := by
+    simp only [Finset.sum_mul, Finset.mul_sum]
+    rw [Finset.sum_comm]
+    refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
+    rw [hsymm a b]; ring
+  have heq : lam * ∑ i, v i * w i = e * ∑ i, v i * w i := by
+    rw [← h1, hswap, h2]
+  have hz : (lam - e) * ∑ i, v i * w i = 0 := by linarith [heq]
+  rcases mul_eq_zero.mp hz with h | h
+  · exact absurd (sub_eq_zero.mp h) hne
+  · exact h
+
+/-- **A Rayleigh bound on the Perron complement bounds every other eigenvalue.**
+This is the direction the tree did not have: `norm_act_le_specGap` bounds the
+operator *by* `specGap`, and this bounds `specGap` itself. -/
+theorem abs_eigen_le_of_quad_bound {T : Matrix n n ℝ}
+    (hsymm : ∀ i j, T i j = T j i) {Ω w : n → ℝ} {lam e c : ℝ}
+    (hvE : ∀ i, ∑ j, T i j * Ω j = lam * Ω i)
+    (hwE : ∀ i, ∑ j, T i j * w j = e * w i)
+    (hne : lam ≠ e) (hw0 : ∃ i, w i ≠ 0)
+    (hq : ∀ x : n → ℝ, (∑ i, Ω i * x i = 0) →
+      |quad T x| ≤ c * (∑ i, x i * x i)) :
+    |e| ≤ c := by
+  have hperp : ∑ i, Ω i * w i = 0 := inner_eq_zero_of_eigen_ne hsymm hvE hwE hne
+  have hpos : 0 < ∑ i, w i * w i := by
+    obtain ⟨i, hi⟩ := hw0
+    exact Finset.sum_pos' (fun k _ => mul_self_nonneg (w k))
+      ⟨i, Finset.mem_univ i, mul_self_pos.mpr hi⟩
+  have hquad : quad T w = e * ∑ i, w i * w i := by
+    rw [quad_eq_sum_act, Finset.mul_sum]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    show w i * act T w i = e * (w i * w i)
+    unfold act
+    rw [hwE i]; ring
+  have h2 := hq w hperp
+  rw [hquad, abs_mul, abs_of_pos hpos] at h2
+  exact le_of_mul_le_mul_right h2 hpos
+
+/-- **`specGap ≤ c`.**  Every basis vector is either at the Perron eigenvalue,
+where the defining `if` contributes `0`, or at another one, where the previous
+lemma applies. -/
+theorem specGap_le_of_quad_bound {T : Matrix n n ℝ}
+    (hsymm : ∀ i j, T i j = T j i) {Ω : n → ℝ} {lam c : ℝ} (hc : 0 ≤ c)
+    (hvE : ∀ i, ∑ j, T i j * Ω j = lam * Ω i)
+    (hq : ∀ x : n → ℝ, (∑ i, Ω i * x i = 0) →
+      |quad T x| ≤ c * (∑ i, x i * x i)) :
+    specGap hsymm lam ≤ c := by
+  rw [specGap, Finset.sup'_le_iff]
+  intro j _
+  by_cases h : specEigen hsymm j = lam
+  · simpa [h] using hc
+  · have hbe := specBasis_eigen hsymm j
+    have := abs_eigen_le_of_quad_bound hsymm hvE hbe (Ne.symm h)
+      (specBasis_ne_zero hsymm j) hq
+    simpa [h] using this
+
+/-! ### §5.2  The exchangeable `2×2` kernel, computed -/
+
+/-- `E_μ`: unit diagonal, `μ` off it. -/
+def exchangeTwo (μ : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
+  Matrix.of fun i j => if i = j then 1 else μ
+
+theorem exchangeTwo_apply (μ : ℝ) (i j : Fin 2) :
+    exchangeTwo μ i j = if i = j then 1 else μ := rfl
+
+theorem exchangeTwo_00 (μ : ℝ) : exchangeTwo μ 0 0 = 1 := by
+  rw [exchangeTwo_apply, if_pos rfl]
+
+theorem exchangeTwo_11 (μ : ℝ) : exchangeTwo μ 1 1 = 1 := by
+  rw [exchangeTwo_apply, if_pos rfl]
+
+theorem exchangeTwo_01 (μ : ℝ) : exchangeTwo μ 0 1 = μ := by
+  rw [exchangeTwo_apply, if_neg (by decide : ¬((0 : Fin 2) = 1))]
+
+theorem exchangeTwo_10 (μ : ℝ) : exchangeTwo μ 1 0 = μ := by
+  rw [exchangeTwo_apply, if_neg (by decide : ¬((1 : Fin 2) = 0))]
+
+theorem exchangeTwo_symm (μ : ℝ) : ∀ i j, exchangeTwo μ i j = exchangeTwo μ j i := by
+  intro i j
+  simp only [exchangeTwo_apply]
+  by_cases h : i = j
+  · rw [h]
+  · rw [if_neg h, if_neg (Ne.symm h)]
+
+theorem exchangeTwo_pos {μ : ℝ} (hμ : 0 < μ) : ∀ i j, 0 < exchangeTwo μ i j := by
+  intro i j
+  rw [exchangeTwo_apply]
+  by_cases h : i = j
+  · rw [if_pos h]; norm_num
+  · rw [if_neg h]; exact hμ
+
+/-- The quadratic form, in closed form. -/
+theorem quad_exchangeTwo (μ : ℝ) (x : Fin 2 → ℝ) :
+    quad (exchangeTwo μ) x = x 0 * x 0 + x 1 * x 1 + 2 * μ * (x 0 * x 1) := by
+  unfold quad
+  rw [Fin.sum_univ_two, Fin.sum_univ_two, Fin.sum_univ_two,
+    exchangeTwo_00, exchangeTwo_01, exchangeTwo_10, exchangeTwo_11]
+  ring
+
+/-- The constant vector is a strictly positive eigenvector at `1 + μ`. -/
+theorem exchangeTwo_eigen_const (μ : ℝ) :
+    ∀ i, ∑ j, exchangeTwo μ i j * (fun _ : Fin 2 => (1 : ℝ)) j
+      = (1 + μ) * (fun _ : Fin 2 => (1 : ℝ)) i := by
+  intro i
+  fin_cases i <;>
+    simp only [Fin.sum_univ_two, exchangeTwo_00, exchangeTwo_01, exchangeTwo_10,
+      exchangeTwo_11] <;> ring
+
+/-- **`perronValue (E_μ) = 1 + μ`**, computed — not assumed.  `perronValue_unique`
+does the work: the constant vector is a positive eigenvector, so its eigenvalue
+*is* the chosen one. -/
+theorem perronValue_exchangeTwo {μ : ℝ} (hμ0 : 0 < μ) :
+    perronValue (exchangeTwo μ) = 1 + μ :=
+  (perronValue_unique (exchangeTwo_pos hμ0) (fun _ => one_pos)
+    (exchangeTwo_eigen_const μ)).symm
+
+/-- The chosen Perron vector is constant. -/
+theorem perronVec_exchangeTwo_const {μ : ℝ} (hμ0 : 0 < μ) :
+    ∃ c : ℝ, 0 < c ∧ ∀ i, perronVec (exchangeTwo μ) i = c := by
+  obtain ⟨-, c, hc, hcw⟩ := pos_eigenvector_unique (exchangeTwo_pos hμ0)
+    (fun _ => one_pos) (perronVec_pos (exchangeTwo_pos hμ0))
+    (exchangeTwo_eigen_const μ) (perronVec_eigen (exchangeTwo_pos hμ0))
+  exact ⟨c, hc, fun i => by simpa using hcw i⟩
+
+/-- On the Perron complement the form is exactly `(1-μ)‖x‖²`. -/
+theorem quad_bound_exchangeTwo {μ : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1)
+    (x : Fin 2 → ℝ) (hperp : ∑ i, perronVec (exchangeTwo μ) i * x i = 0) :
+    |quad (exchangeTwo μ) x| ≤ (1 - μ) * (∑ i, x i * x i) := by
+  obtain ⟨c, hc, hconst⟩ := perronVec_exchangeTwo_const hμ0
+  rw [Fin.sum_univ_two, hconst 0, hconst 1] at hperp
+  have hx1 : x 1 = - x 0 := by
+    have hz : c * (x 0 + x 1) = 0 := by linarith [hperp]
+    rcases mul_eq_zero.mp hz with h | h
+    · exact absurd h (ne_of_gt hc)
+    · linarith
+  rw [quad_exchangeTwo, Fin.sum_univ_two, hx1]
+  have habs : |x 0 * x 0 + -x 0 * -x 0 + 2 * μ * (x 0 * -x 0)|
+      = (1 - μ) * (x 0 * x 0 + -x 0 * -x 0) := by
+    rw [show x 0 * x 0 + -x 0 * -x 0 + 2 * μ * (x 0 * -x 0)
+        = (1 - μ) * (x 0 * x 0 + -x 0 * -x 0) from by ring]
+    exact abs_of_nonneg (by nlinarith [mul_self_nonneg (x 0)])
+  rw [habs]
+
+/-- The antipodal fluctuation on two sites. -/
+def altTwo : Fin 2 → ℝ := fun i => if i = 0 then 1 else -1
+
+theorem altTwo_ne_zero : altTwo ≠ 0 := by
+  intro h
+  have := congrFun h 0
+  simp only [altTwo, if_pos rfl, Pi.zero_apply] at this
+  exact one_ne_zero this
+
+/-- **`specGap (E_μ) = 1 - μ`**, computed from both sides: the new general upper
+bound, and the fluctuation witness of §2 from below. -/
+theorem specGap_exchangeTwo {μ : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1) :
+    specGap (exchangeTwo_symm μ) (perronValue (exchangeTwo μ)) = 1 - μ := by
+  refine le_antisymm ?_ ?_
+  · exact specGap_le_of_quad_bound (exchangeTwo_symm μ) (by linarith)
+      (perronVec_eigen (exchangeTwo_pos hμ0)) (quad_bound_exchangeTwo hμ0 hμ1)
+  · obtain ⟨c, hc, hconst⟩ := perronVec_exchangeTwo_const hμ0
+    have hperp : ∑ i, perronVec (exchangeTwo μ) i * altTwo i = 0 := by
+      rw [Fin.sum_univ_two, hconst 0, hconst 1]
+      simp only [altTwo, if_pos rfl, if_neg (by decide : ¬((1 : Fin 2) = 0))]
+      ring
+    have hray : (1 - μ) * (∑ i, altTwo i * altTwo i) ≤ quad (exchangeTwo μ) altTwo := by
+      rw [quad_exchangeTwo, Fin.sum_univ_two]
+      simp only [altTwo, if_pos rfl, if_neg (by decide : ¬((1 : Fin 2) = 0))]
+      ring_nf
+    exact le_specGap_of_witness (exchangeTwo_pos hμ0) (exchangeTwo_symm μ)
+      altTwo_ne_zero hperp hray
+
+/-- **THE IDENTITY TEST.**  The totalised ratio, on the exchangeable `2×2`
+kernel, is the number the paper computes — symbolically in `μ`, with both
+intermediate values proved rather than assumed.  This is what certifies that
+`matrixSpecRatio` *is* the subdominant ratio `r` and not merely some function
+that happens to satisfy the interface. -/
+theorem matrixSpecRatio_exchangeTwo {μ : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1) :
+    matrixSpecRatio (exchangeTwo μ) = (1 - μ) / (1 + μ) := by
+  rw [matrixSpecRatio_eq (exchangeTwo_symm μ) (exchangeTwo_pos hμ0), specRatio,
+    specGap_exchangeTwo hμ0 hμ1, perronValue_exchangeTwo hμ0]
+
 end Congruence
 
 end YangMills.OS
