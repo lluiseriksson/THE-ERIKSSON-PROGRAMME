@@ -222,7 +222,7 @@ theorem mad_le_half_spread {p f : S → ℝ} {m M : ℝ}
   have hT1 : (∑ x, p x * (if A ≤ f x then (1 : ℝ) else 0)) ≤ 1 := by
     rw [← hp1]
     refine Finset.sum_le_sum fun x _ => ?_
-    rcases le_or_lt A (f x) with h | h
+    rcases le_or_gt A (f x) with h | h
     · rw [if_pos h, mul_one]
     · rw [if_neg (not_le.mpr h), mul_zero]
       exact hp0 x
@@ -230,7 +230,7 @@ theorem mad_le_half_spread {p f : S → ℝ} {m M : ℝ}
   have hposT : (∑ x, p x * max (f x - A) 0) ≤ (M - A) * T := by
     rw [hTdef, Finset.mul_sum]
     refine Finset.sum_le_sum fun x _ => ?_
-    rcases le_or_lt A (f x) with h | h
+    rcases le_or_gt A (f x) with h | h
     · rw [if_pos h, mul_one, max_eq_left (by linarith)]
       calc p x * (f x - A) ≤ p x * (M - A) :=
             mul_le_mul_of_nonneg_left (by linarith [hM x]) (hp0 x)
@@ -250,7 +250,7 @@ theorem mad_le_half_spread {p f : S → ℝ} {m M : ℝ}
       rw [hexp, hp1]
     rw [h1T]
     refine Finset.sum_le_sum fun x _ => ?_
-    rcases le_or_lt A (f x) with h | h
+    rcases le_or_gt A (f x) with h | h
     · rw [if_pos h, max_eq_right (by linarith)]
       simp only [mul_zero, sub_self]
       exact le_refl 0
@@ -310,7 +310,7 @@ theorem gruss_covariance_le {p f g : S → ℝ} {m₁ M₁ m₂ M₂ : ℝ}
       rw [Finset.mul_sum, ← Finset.sum_sub_distrib]
       exact Finset.sum_congr rfl fun x _ => by ring
     rw [h]
-    unfold expect
+    rfl
   have hkey := abs_sum_signed_le hzero g
   have habs_a : ∑ x, |p x * (f x - expect p f)| = mad p f := by
     unfold mad
@@ -350,7 +350,7 @@ theorem gruss_covariance_osc_le {p f g : S → ℝ}
           - Finset.univ.inf' Finset.univ_nonempty f)
         * (Finset.univ.sup' Finset.univ_nonempty g
           - Finset.univ.inf' Finset.univ_nonempty g) / 4 := h
-    _ = osc f * osc g / 4 := by unfold osc
+    _ = osc f * osc g / 4 := rfl
 
 /-- **`gruss_attained`** — on the fair two-point weight with `f = g` the
 indicator of one point, the covariance is exactly `1/4`, which is the bound of

@@ -60,7 +60,7 @@ namespace Dobrushin
 open Finset
 
 variable {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι]
-variable {S : Type*} [Fintype S] [Nonempty S]
+variable {S : Type*} [Fintype S] [DecidableEq S] [Nonempty S]
 
 /-! ## §1  Expectation under a weight on the configuration space -/
 
@@ -136,7 +136,7 @@ theorem abs_sub_le_sum_deltaAt (f : (ι → S) → ℝ) (η' : ι → S) (A : Fi
           rw [hdef, update_other _ _ _ hja]
           exact h j hjc
       calc |f η - f η'|
-          ≤ |f η - f η''| + |f η'' - f η'| := abs_sub_le _ _ _
+          ≤ |f η - f η''| + |f η'' - f η'| := abs_sub_le' _ _ _
         _ ≤ deltaAt a f + ∑ i ∈ A', deltaAt i f := add_le_add h1 h2
         _ = ∑ i ∈ Finset.cons a A' ha, deltaAt i f := by
             rw [Finset.sum_cons]
@@ -875,7 +875,7 @@ theorem covar_le_resolvent_partial {μ : (ι → S) → ℝ}
           + covar μ (scanIter p f N) g| := by rw [← htel N]
     _ ≤ |∑ n ∈ Finset.range N,
             (covar μ (scanIter p f n) g - covar μ (scanIter p f (n + 1)) g)|
-          + |covar μ (scanIter p f N) g| := abs_add _ _
+          + |covar μ (scanIter p f N) g| := abs_add_le' _ _
     _ ≤ (∑ n ∈ Finset.range N,
             |covar μ (scanIter p f n) g - covar μ (scanIter p f (n + 1)) g|)
           + |covar μ (scanIter p f N) g| := by

@@ -54,7 +54,26 @@ namespace Dobrushin
 open Finset
 
 variable {ι : Type*} [Fintype ι] [DecidableEq ι]
-variable {S : Type*} [Fintype S] [Nonempty S]
+variable {S : Type*} [Fintype S] [DecidableEq S] [Nonempty S]
+
+/-! ## §-1  Two triangle inequalities, derived from stable primitives
+
+The pinned library does not expose them under the classical names, and deriving
+them once here from `le_abs_self`, `abs_neg` and `abs_le` costs five lines. -/
+
+theorem abs_add_le' (a b : ℝ) : |a + b| ≤ |a| + |b| := by
+  have h1 := le_abs_self a
+  have h2 := le_abs_self b
+  have h3 := le_abs_self (-a)
+  have h4 := le_abs_self (-b)
+  rw [abs_neg] at h3 h4
+  rw [abs_le]
+  constructor <;> linarith
+
+theorem abs_sub_le' (a b c : ℝ) : |a - c| ≤ |a - b| + |b - c| := by
+  have h : a - c = (a - b) + (b - c) := by ring
+  rw [h]
+  exact abs_add_le' _ _
 
 /-! ## §0  Update algebra, localised
 
@@ -169,9 +188,10 @@ theorem osc_section_le_deltaAt (i : ι) (f : (ι → S) → ℝ) (η : ι → S)
 
 /-! ## §3  Algebra of `deltaAt`, for the assembly downstream -/
 
-theorem deltaAt_const (i : ι) (c : ℝ) : deltaAt i (fun _ => c) = 0 :=
-  le_antisymm (deltaAt_le i _ fun _ _ => by rw [sub_self, abs_zero])
-    (deltaAt_nonneg i _)
+theorem deltaAt_const (i : ι) (c : ℝ) : deltaAt i (fun _ => c) = 0 := by
+  refine le_antisymm (deltaAt_le i _ fun η s => ?_) (deltaAt_nonneg i _)
+  simp only [sub_self, abs_zero]
+  exact le_refl 0
 
 theorem deltaAt_add_le (i : ι) (f g : (ι → S) → ℝ) :
     deltaAt i (fun η => f η + g η) ≤ deltaAt i f + deltaAt i g := by
@@ -182,7 +202,7 @@ theorem deltaAt_add_le (i : ι) (f g : (ι → S) → ℝ) :
   rw [hsplit]
   calc |(f η - f (Function.update η i s)) + (g η - g (Function.update η i s))|
       ≤ |f η - f (Function.update η i s)| + |g η - g (Function.update η i s)| :=
-        abs_add _ _
+        abs_add_le' _ _
     _ ≤ deltaAt i f + deltaAt i g :=
         add_le_add (abs_sub_update_le_deltaAt i f η s)
           (abs_sub_update_le_deltaAt i g η s)
@@ -340,7 +360,8 @@ theorem deltaAt_condExp_le {p : ι → (ι → S) → S → ℝ}
           + ∑ t, (p i η t - p i η' t) * f (Function.update η' i t)| := by
         rw [hdecomp]
     _ ≤ |∑ t, p i η t * (f (Function.update η i t) - f (Function.update η' i t))|
-          + |∑ t, (p i η t - p i η' t) * f (Function.update η' i t)| := abs_add _ _
+          + |∑ t, (p i η t - p i η' t) * f (Function.update η' i t)| :=
+        abs_add_le' _ _
     _ ≤ deltaAt k f + Cik * deltaAt i f := add_le_add h1 h2
 
 /-! ## §6  The matrix form — the ONLY statement that assumes `C i i = 0` -/
