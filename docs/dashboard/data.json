@@ -30,17 +30,6 @@
       "scope": "Exact all-scale Fourier witness and quadratic no-go bound; the witness is not claimed to minimize the full ker Q_L ∩ ker delta sector, as shown by the L=N'=2 quotient-2 counterexample. No continuum limit or Yang–Mills mass gap."
     },
     {
-      "id": "su2-crossing-compensated-flow-20260802",
-      "date": "2026-08-02",
-      "status": "submitted — identifier pending moderation",
-      "title": "Machine-Checked Haar and Differential Descent at an SU(2) Crossing: A Four-Edge Compensated-Flow Ward Identity",
-      "category": "Physics — Mathematical Physics",
-      "record_path": "docs/SU2-CROSSING-COMPENSATED-FLOW-SUBMISSION-20260802.md",
-      "pdf_sha256": "2BB66657A544E9AF4A30D682DC69F92E18A5D3B1AB8F53C105D0DFDE767CC7C1",
-      "zip_sha256": "B7E8DA37732A58C858144AAF983D587F9485066FEC5F6B4F716D751F978EBAE6",
-      "scope": "Finite-dimensional SU(2) Haar and differential descent for a compensated crossing flow; no identification with the ordinary-edge mixed operator, heat-kernel area derivative, full Makeenko–Migdal equation, continuum limit, or Yang–Mills mass gap."
-    },
-    {
       "id": "su2-crossing-extended-gauge-20260802",
       "date": "2026-08-02",
       "status": "submitted — identifier pending moderation",
