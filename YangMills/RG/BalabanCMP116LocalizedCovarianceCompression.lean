@@ -126,16 +126,18 @@ theorem cmp116LocalizedCovarianceRoot_certificate
   let A := cmp116LocalizedCovarianceCompression S C
   have hA : A.PosSemidef :=
     cmp116LocalizedCovarianceCompression_posSemidef S hC
+  have hroot : (CFC.sqrt A).transpose = CFC.sqrt A := by
+    have hrootHermitian : (CFC.sqrt A).IsHermitian :=
+      (CFC.sqrt_nonneg A).posSemidef.1
+    rw [Matrix.conjTranspose_eq_transpose_of_trivial] at hrootHermitian
+    exact hrootHermitian
   refine {
-    root_symmetric := ?_
+    root_symmetric := hroot
     root_square := ?_
     covariance_supported :=
       cmp116LocalizedCovarianceCompression_supported S C }
-  · have hroot : (CFC.sqrt A).IsHermitian :=
-      (CFC.sqrt_nonneg A).posSemidef.1
-    rw [Matrix.conjTranspose_eq_transpose_of_trivial] at hroot
-    exact hroot
-  · exact hA.sqrt_mul_self
+  · rw [hroot]
+    exact hA.sqrt_mul_self
 
 end
 
