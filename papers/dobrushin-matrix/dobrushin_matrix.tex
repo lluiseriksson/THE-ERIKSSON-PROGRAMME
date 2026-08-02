@@ -51,7 +51,7 @@ switched on.  That theorem obstructs the \emph{method}.  It was read as
 obstructing the \emph{conclusion}, and the reading outlived its own retraction.
 
 We prove, in Lean~4 with no \texttt{sorry} and no project axiom, a chain of
-four theorems.  \textbf{First}, the one-bond influence envelope: flipping one
+five theorems.  \textbf{First}, the one-bond influence envelope: flipping one
 neighbour across a bond of strength $J\ge0$ moves a two-state site's conditional
 by at most $\tanh J$, and by exactly $\tanh J$ at one field, so $\tanh J$ is the
 \emph{least field-uniform} bound.  It is an interdependence majorant, not the
@@ -95,7 +95,10 @@ and \emph{prove} that the intrinsic Dobrushin matrix $c^w$ has vanishing
 diagonal and dominates the influence.  Every hypothesis of the fourth theorem
 is thereby discharged except one: $\sum_k c^w_{ik}\le\alpha<1$, Dobrushin's
 condition itself, which is a condition on the interaction and not on the
-machinery.  Each rung carries a non-vacuity witness and every declaration is
+machinery.  (The \emph{geometric} form of the decay consumes one further
+hypothesis, stated where it is used: that $c^w$ has range one for a distance
+obeying the two metric conditions.  The resolvent form needs nothing else.)
+Each rung carries a non-vacuity witness and every declaration is
 oracled.
 
 Separately, and by measurement rather than proof, we remove the wall from where
@@ -114,11 +117,11 @@ sequence can appear to saturate at $L\le12$ and turn afterwards.  They do
 finite-size scaling that we do not attempt.
 
 \textbf{What is not proved.}  The volume-uniform bound on $\specRatio$ for the
-coupled kernel is \emph{not} established here.  The comparison estimate is
-proved for an \emph{arbitrary} invariant weight with dominated influence; it is
-\emph{not} instantiated at the Gibbs weight of the development, which needs its
-single-site conditionals constructed and their invariance and domination
-discharged, and that work is not done here.  Dobrushin's uniqueness theorem and
+coupled kernel is \emph{not} established here: what is proved is decay of
+correlations of the Gibbs weight, and the finite-time transport from that
+decay into the operator formulation is the one open step named in the frontier
+section.  The intrinsic Dobrushin condition is not verified for any particular
+interacting family.  Dobrushin's uniqueness theorem and
 his comparison estimate are classical \cite{Dobrushin1968,Dobrushin1970,%
 Simon1993}; nothing in this paper is new mathematics.  What is offered is a
 mechanised, non-vacuous chain from a single bond to exponential decay of
@@ -155,7 +158,8 @@ verifiable by reading that development.
 from one uniformly in the extent: what is proved is decay of correlations of
 the Gibbs weight, and the transport into the operator formulation is untouched.
 That Dobrushin's condition holds for any particular interaction --- it is the
-single hypothesis Theorem~\ref{thm:gibbs} leaves to its user.  That the window
+hypothesis Theorem~\ref{thm:gibbs} leaves to its user, together with, for the
+geometric form of the decay, the range-one support of the intrinsic matrix.  That the window
 derived from
 Dobrushin's condition is optimal --- it is not, and Section~\ref{sec:prior} says
 by how much.  That any of this bears on the Yang--Mills mass gap.
@@ -694,7 +698,7 @@ corollaries applied to this data.
 
 Three remarks, in the order in which the statement is most easily over-read.
 
-\emph{What is left as a hypothesis, and it is exactly one thing.}
+\emph{What is left as a hypothesis.}
 Dobrushin's condition $\sum_k c^w_{ik}\le\alpha<1$ --- plus, for the distance
 form, that $c^w$ has range one.  Both are conditions on the \emph{interaction},
 not on the machinery: nothing about kernels, invariance or majorants survives
@@ -839,7 +843,8 @@ order:
       invariance above all, which is a genuine constraint on the pair and not a
       formality.  \textbf{Done}: Theorem~\ref{thm:gibbs}, from a strictly
       positive weight alone, leaving Dobrushin's condition on the intrinsic
-      matrix as the single hypothesis a user supplies;
+      matrix as the hypothesis a user supplies --- plus, for the geometric
+      form of the decay, the range-one support of that matrix;
 \item[\textbf{4.}] transport of that decay into the operator formulation: from
       correlations of the Gibbs weight to $\specRatio$ of the transfer kernel,
       through the finite-time interface described below.
@@ -856,7 +861,8 @@ is an infinite-time object, so that translation must run through finite time
 extent with explicit boundary control, and nothing here shortens it.  What this
 paper does claim is that between a positive weight and exponential decay of its
 correlations there is no longer a gap: the chain is closed end to end, and the
-only input a user supplies is Dobrushin's condition.
+inputs a user supplies are Dobrushin's condition and, for the geometric form
+of the decay, the range-one support of the intrinsic matrix.
 
 
 \textbf{The consumer, named.}  It is \texttt{volumeUniform\_gap} in
@@ -972,13 +978,24 @@ Theorems~\ref{thm:coeff} and~\ref{thm:matrix} added, the Linux plane measures
 $8468$ with zero errors: the $+2$ is the difference between two measurements on
 the same plane, one job per new module, and is not an extrapolation.
 
-\textbf{The four modules of Section~\ref{sec:comparison} are \emph{not} in the
-core}, and the core count at the anchor is therefore still $8468$.  This is
-stated rather than left to be discovered: they are imported by neither
-\texttt{YangMillsCore} nor the repository oracle, so no repository-wide number
-in this paper covers them, and wiring them in --- with the job-count delta
-measured against this campaign's own parent commit, never against a
-merge-base --- is separate work not done here.
+\textbf{The modules of Sections~\ref{sec:comparison} and~\ref{sec:gibbs}, and
+what is measured about them.}  All five --- oscillation, Gr\"uss, conditional,
+comparison, Gibbs --- are imported by \texttt{YangMillsCore.lean} at this
+anchor, and their endpoints are listed by name in \texttt{oracle\_check.lean}.
+\emph{What has been measured is each module's own build and a targeted oracle
+over its endpoints, not a full core rebuild:} the wiring commit registered the
+prediction $8468\to8473$ jobs, one per module, against this campaign's own
+parent commit rather than a merge-base, and that prediction is \textbf{not yet
+tested} --- the sanctioned plane's budget for this unit was spent on the lane
+modules.  It is stated here as an open measurement rather than reported as a
+number, because a predicted count that has not been taken is not evidence.
+A previous version of this paper carried, at this spot, the opposite sentence
+--- that the modules were not yet imported --- left over from the draft that
+preceded the wiring; its correction had been appended past the end of the
+document environment and so existed in the source while never reaching the
+PDF.  The paragraph now standing is the one the anchor's bytes support, and
+the defect is recorded because a contradiction a reader finds is worth more
+than one an author hides.
 
 \textbf{Oracle.}  For Theorems~\ref{thm:coeff}--\ref{thm:d1}, at an earlier
 anchor of this lane: the repository-wide oracle ran to completion with exit
@@ -1193,14 +1210,4 @@ not mechanised.
 
 \end{thebibliography}
 
-\end{document}\textbf{The modules of Sections~\ref{sec:comparison} and~\ref{sec:gibbs}, and
-what is measured about them.}  All five --- oscillation, Gr\"uss, conditional,
-comparison, Gibbs --- are imported by \texttt{YangMillsCore.lean} at this
-anchor, and their endpoints are listed by name in \texttt{oracle\_check.lean}.
-\emph{What has been measured is each module's own build and a targeted oracle
-over its endpoints, not a full core rebuild:} the wiring commit registered the
-prediction $8468\to8473$ jobs, one per module, against this campaign's own
-parent commit rather than a merge-base, and that prediction is \textbf{not yet
-tested} --- the sanctioned plane's budget for this unit was spent on the lane
-modules.  It is stated here as an open measurement rather than reported as a
-number, because a predicted count that has not been taken is not evidence.
+\end{document}

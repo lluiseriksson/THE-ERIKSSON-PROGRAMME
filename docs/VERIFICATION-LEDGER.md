@@ -30107,3 +30107,52 @@ from the corrected statement, and the retroactive sweep over *refute*,
 
 **ROLES.**  This session FABRICATED and does not audit itself.  No external
 verdict exists.
+
+## Addendum 585 (2026-08-02, **paper v5.1: the four contradictions an external
+reading found, one of them a paragraph stranded past the end of the
+document**)
+
+An external evaluation of v5 (5.72 as-filed / 5.82 for the mathematics once
+corrected, its numbers not this desk's) named four defects.  All four were
+CONFIRMED against the source before any edit, and all four are the same
+family: prose written before an insertion, left standing after it — the
+deictic ghost of the house memory, again.
+
+1. **"a chain of four theorems"** while the same abstract enumerates First
+   through Fifth.  The count predates the Fifth block.  Fixed.
+2. **The abstract's "What is not proved" still said the Gibbs instantiation
+   "is not done here"**, contradicting the Fifth block forty lines above it
+   and Theorem 5.2 itself.  Replaced by what is actually not proved: the
+   operator transport, and Dobrushin's condition for any particular family.
+3. **"the single hypothesis" compressed two different endpoints into one.**
+   `gibbs_covar_le_resolvent` consumes Dobrushin's condition alone;
+   `gibbs_covar_exp_decay` and `gibbs_covar_two_point` consume in addition a
+   distance (with `d i i = 0` and the triangle inequality) and the range-one
+   support of the intrinsic matrix.  The three compressions (abstract,
+   Section 1, frontier item 3) now state both; Section 5's own remark already
+   did.
+4. **The reproducibility section contradicted itself, and the PDF only showed
+   the false half.**  The v5 edit that recorded the wiring appended its
+   paragraph AFTER `\end{document}`: it existed in the source and never
+   reached the PDF, while the pre-wiring paragraph — "the four modules are
+   not in the core" — kept rendering.  Verified against the anchor:
+   `git show 4f3b8640:YangMillsCore.lean` imports all five modules, so the
+   rendered sentence was FALSE at the anchor it cited.  The true paragraph
+   now stands in the body, the stranded copy is deleted, and the defect is
+   recorded in the paper itself.
+
+Rebuilt PDF verified by text extraction: "four theorems" 0, "not instantiated
+at the Gibbs weight" 0, "are not in the core" 0, "single hypothesis" 0,
+"not yet tested" 1 (the wiring paragraph finally renders).  17 pages, zero
+LaTeX errors.
+
+**MECHANISM, for the next desk.**  An Edit that anchors on a unique string can
+still land in dead source — after `\end{document}`, inside a comment, in a
+file the build does not read.  A guard that greps the SOURCE passes; only the
+ARTIFACT knows.  The verification that caught nothing in v5 grepped the tex;
+the one that caught everything in v5.1 extracted text from the PDF.  Verify
+the artifact, not the source, whenever the two can differ.
+
+**ROLES.**  The defects were found by an external reading, not by this desk;
+this desk verified, fixed, and re-verified.  No score in the paper; the
+external numbers stay external.
