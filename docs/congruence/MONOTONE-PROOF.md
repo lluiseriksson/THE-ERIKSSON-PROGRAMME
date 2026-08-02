@@ -56,6 +56,35 @@ case the diameter is not merely non-invariant, it is **monotone**.
 `S M Sᵀ > 0` **iff no row of `S` is zero**.  Positivity of the image is a
 structural condition on `S`, not an extra assumption to be carried.
 
+## A transported bound is not an optimal bound
+
+`CrossRatioLB φ M` says only that `φ` is *a* valid lower bound.  The transport
+theorem gives `CrossRatioLB φ (A M B)` for the same `φ`, which is
+**not yet** a statement about diameters: if `φ` sat strictly below the true
+minimum of `M`'s cross-ratios, nothing about `Δ` follows.
+
+The layer that is needed, and which must exist in Lean before any equality
+statement:
+
+    IsOptimalCrossRatioLB φ M  :=  CrossRatioLB φ M ∧ ∀ ψ, CrossRatioLB ψ M → ψ ≤ φ
+
+equivalently `IsGreatest {ψ | CrossRatioLB ψ M} φ`.  Writing `φ_M` for that
+greatest bound, the correct chain is
+
+    CrossRatioLB φ_M M          (definition)
+    CrossRatioLB φ_M (A M B)    (S-2a, transport)
+    φ_{AMB} ≥ φ_M               (because φ_M is *a* bound for A M B, and φ_{AMB} is the greatest)
+    Δ(A M B) ≤ Δ(M)             (since Δ = -log φ under the fixed convention)
+
+and only then:
+
+    Δ(A M B) = Δ(M)   ⟺   some output quadruple of A M B is tight at φ_M.
+
+**The monotonicity is `φ_{AMB} ≥ φ_M`, not the transport itself.**  Transport
+alone is an inequality about one fixed number; the diameter statement is about
+two optima.  Recording the difference here because the two are easy to conflate
+and the conflation would make Theorem B unsound.
+
 ## Theorem B (equality, by supports)
 
 `φ(T) = φ(M)` iff there is a quadruple of output indices `(i,j,k,l)` with
