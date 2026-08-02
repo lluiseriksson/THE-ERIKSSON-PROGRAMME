@@ -1,0 +1,21 @@
+import YangMills.RG.BalabanCMP116InteractingConditionedCovariance
+
+/-!
+# Axiom audit for the interacting conditioned covariance
+
+PRE-VALIDATION: this source is present, its `.olean` has not yet been
+materialized, and none of the oracle outputs below has yet been verified by
+the Lean compiler.
+-/
+
+#print axioms YangMills.RG.cmp116PhysicalEndomorphismRealMatrix_toEuclideanCLM_apply
+#print axioms YangMills.RG.norm_cmp116PhysicalEndomorphismRealMatrix_le
+#print axioms YangMills.RG.cmp116PhysicalEndomorphismRealMatrix_posSemidef
+#print axioms YangMills.RG.cmp116PhysicalEndomorphismRealMatrix_reconstruction
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.covariance_isSymmetric
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.covariance_psd
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.norm_covariance_le
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.covarianceMatrix_posSemidef
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.conditionedRoot_realMatrix
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.conditionedRoot_certificate
+#print axioms YangMills.RG.CMP116InteractingPhysicalPrecisionSource.norm_conditionedCovariance_le
