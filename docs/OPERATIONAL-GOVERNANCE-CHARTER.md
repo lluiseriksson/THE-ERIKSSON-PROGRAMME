@@ -197,6 +197,11 @@ disk.
 it no messages, operational notices, owner readings, summaries, or partial
 results.  Silence is part of the audit boundary, not a convenience.
 
+Every disposable clone must be removed when its task ends.  If cleanup fails,
+the report must emit a separate line
+`CLEANUP-PENDING: <exact absolute path>`; the condition must never be hidden in
+prose or confused with retained evidence.
+
 ## 5. A guard's name must not claim more than its predicate
 
 **Incident that paid the rule (2026-07-31):** two independent auditors were
