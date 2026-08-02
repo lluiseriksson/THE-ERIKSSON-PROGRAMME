@@ -17,8 +17,9 @@ that was never the starting point.
 at `08155607` contains zero imports and zero mentions of any `SU2ThetaPrism`
 module.  The measured 8464 jobs is therefore the inherited baseline with no
 increment; it is not evidence of core integration and must not be read as
-such.  This lane sits outside the verified core, exactly like PR #39 and
-PR #40.
+such.  The live count 8465 belongs to later, different `main` history and
+neither validates nor refutes this frozen lane.  This lane sits outside the
+verified core, exactly like PR #39 and PR #40.
 
 ## EXACTO
 
@@ -46,9 +47,6 @@ PR #40.
 - The concrete front door has no arbitrary measure, function-family, or
   technical-input argument: it fixes `cellHaar`, `su2WeylPolynomial`, and the
   uniform technical-input constructor.
-
-## CERTIFICADO
-
 The internal lemma `manufactured_six_point_theta_gate` remains factored
 through one technical record whose only field is the spin-one remainder.  The
 public `manufactured_six_point_theta_gate_concrete` supplies the record using:
@@ -64,7 +62,13 @@ Thus `manufacturingTechnicalInputsConcrete beta hbeta` inhabits
 `manufacturingTechnicalInputsConcrete_betaOne_specialization` is only the
 named beta-one specialization of that uniform constructor.
 
-## VERIFICADO
+## CERTIFICADO
+
+The terminal transcript and manifest certify only the transport of the
+reproduction evidence: frozen source SHA, toolchain and Mathlib pin, exact
+commands, measured jobs, stdout/stderr hashes, RAW/LF source hashes, binary
+hashes, and equality of deterministic outputs between the two fresh clones.
+They do not replace or condition the exact Lean terms listed above.
 
 - Colab isolated cache provenance: Mathlib
   `07642720480157414db592fa85b626dafb71355b`; public clone, no token and no
@@ -93,16 +97,13 @@ named beta-one specialization of that uniform constructor.
   ManufacturingTechnicalInputs beta`.  The resulting `.olean` hashes were
   `3bb7d37a...e9385c` for `Coefficients` and
   `235ff3fd...1de157` for `Endpoint`.
-- The rational certifier succeeds under normal Python and `python -O`.
-- Ten mutations are rejected under both modes, including `1/2 -> 1/3` and
-  enlargement to all beta.  The syntactic headline guard passes and rejects
-  its registered cheat fixtures.
-
 - Terminal source SHA `08155607cacca04f3f7a507a78762f88fffd395d`
   was reproduced in two independent fresh Colab CPU/high-RAM clones.  All nine
-  exact targets and `YangMillsCore` built; 48 oracle headlines reported only
-  `propext`, `Classical.choice`, and `Quot.sound`; instruments passed under
-  normal Python and `-O`.
+  exact `YangMills.SU2ThetaPrism` targets built; 48 oracle headlines reported
+  only `propext`, `Classical.choice`, and `Quot.sound`; instruments passed under
+  normal Python and `-O`.  The separate `YangMillsCore` run is retained only as
+  the inherited 8464-job baseline described above, never as an integration
+  PASS.
 - The two deterministic manifests are byte-identical with SHA-256
   `8fab9c9cff877133ff26dc50316f65f0e8d7a96aeee5cd8f10c2e186fa27ad52`.
   Source RAW/LF hashes, ten `.olean` hashes, and the measured failures are in
@@ -110,7 +111,18 @@ named beta-one specialization of that uniform constructor.
 - GitHub honesty run `30704212187`, job `91380399007`, passed on the compiled
   SHA.  It remains a syntactic check rather than mathematical certification.
 
-These are manufacturer reproduction results, not a blind-audit verdict.
+These records certify evidence transport, not the mathematics and not a
+blind-audit verdict.
+
+## VERIFICADO
+
+- The rational certifier succeeds under normal Python and `python -O` with
+  byte-identical output.
+- Ten mutations are rejected under both modes, including `1/2 -> 1/3` and
+  enlargement to all beta.  The syntactic headline guard passes and rejects
+  its registered cheat fixtures.
+- These rational and mutation results are verification evidence, not a
+  substitute for the exact Lean terms or an external audit.
 
 ## ABIERTO
 
