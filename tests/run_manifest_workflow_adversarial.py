@@ -37,6 +37,13 @@ def main() -> int:
     guard_job = workflow.split("  run-manifest-structure-debt-delta:", 1)[1].split(
         "\n  test:", 1
     )[0]
+    steps = guard_job.split("\n    steps:\n", 1)[1].lstrip()
+    require(
+        steps.startswith(
+            "- name: Invalidate any pre-existing run-manifest decision record"
+        ),
+        "decision invalidation is not the first workflow step",
+    )
     invalidation = guard_job.index(
         "- name: Invalidate any pre-existing run-manifest decision record"
     )
@@ -47,6 +54,13 @@ def main() -> int:
     require(
         "if-no-files-found: error" in guard_job,
         "an absent decision record would not fail publication",
+    )
+    guard_runner = CI_GUARD_PATH.read_text(encoding="utf-8")
+    require(
+        guard_runner.index('rm -f -- "$result_file"')
+        < guard_runner.index('git worktree add --detach "$comparison_root"')
+        < guard_runner.index("python scripts/validate_run_manifests.py"),
+        "guard runner does not invalidate before materialization and Python",
     )
 
     with tempfile.TemporaryDirectory(prefix="run-manifest-workflow-guard-") as raw:
