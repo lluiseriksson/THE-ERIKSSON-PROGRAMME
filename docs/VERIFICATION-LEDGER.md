@@ -30306,3 +30306,153 @@ written**, because it is the cheapest possible verification — one `grep` — a
 this lane has now skipped it at four different altitudes: paper prose over
 lemmas, an audit record over its artifacts, a ledger entry over its identifiers,
 and a commit message over the file it had just authored.
+
+## Addendum 636 (2026-08-02, **D-3c closes: the rung the charter said would decide
+the campaign, with 31 theorems Formalized and 9 definitions that are not**)
+
+**NO LEAN CHANGED BY THIS ADDENDUM.**  It edits `docs/VERIFICATION-LEDGER.md` and
+nothing else.  `YangMills/OS/DobrushinComparison.lean` carries blob
+`3fe356cc97e57f2d241158b692e6b8a3acece83a` at `A`, at `B`, and here.
+
+### NUMBERING — this entry is 636 and not 583, and that is deliberate
+
+The preflight found **583 already claimed on three concurrent branches**
+(`codex/spatial-ring-uniformity`, `d3-closure`, `paper14-clean`), so it was not
+taken.  The occupied maxima measured at this moment:
+
+```
+s-block-v13, wip/site-bridge                580
+davinci/dobrushin-* (this lane)             582
+paper14-clean                               586
+d3-closure                                  587
+codex/spatial-ring-uniformity               635
+```
+
+636 was confirmed free on **every** remote branch before writing.  The gap
+582→636 on this lane is not a loss: those numbers are live elsewhere.  A number
+disputed at the moment of writing is never forced.
+
+### The object
+
+```
+A      40ca85239cb14f18ebf16aa46769f3bc02bbaf6b
+blob   3fe356cc97e57f2d241158b692e6b8a3acece83a
+SHA    698080fa80ea44d2f1ae7b46cab333b5d0d6f4b97d205df2844db69d510017ea
+B      c9e1912d1138835045a26b78a0038f30cbb46066
+```
+
+Record `docs/audits/DOBRUSHIN-D3C-AUDIT-40ca8523.md`; artifacts
+`docs/audits/d3c-40ca8523/` (15 files plus `MANIFEST.sha256`, which does not
+list itself); driver `.d3c-audit/DobrushinComparisonAudit.lean`, preserved at
+the path it ran from.
+
+**Discarded candidates**, immutable, and **no evidence is attributed to any of
+them**: `72bb1c66`, `2ec1ce33`, `3d5752a2`.
+
+### THE TAXONOMY, and it must not be collapsed
+
+```
+31 theorems      #check AND #print axioms      →  Formalized
+ 9 definitions   #check only                   →  compiled and covered by the
+                                                  manifest, NOT Formalized,
+                                                  because their axiom cones were
+                                                  deliberately not reported
+```
+
+**`40/40` means COVERAGE OF THE MANIFEST.  It never means "40 theorems".**  The
+manifest is a list of forty fully-qualified names, and the audit driver is
+exactly that list, so nothing depends on an implicit `open`.
+
+Classes: 11 load-bearing/interface, 4 headline witnesses, 16 supporting witness
+lemmas, 9 definitions.
+
+### What was measured
+
+* **Checkout 1** (Windows, `core.autocrlf=false`, `core.eol=lf` set before
+  materialising anything) is **the only Lean compilation and axiom audit**.
+  Identity closed BEFORE Lean ran: raw equality `blob == working_blob`,
+  `canonical == materialized == 698080fa`, status empty, diff clean, no path
+  attribute.  Then `lake build` exit 0, **8159 jobs, 351 s** — a delta of **+1**
+  against D-3a's 8158, which is what one added module should cost — zero errors,
+  empty stderr.  Then the focused audit exit 0, transcript **176 lines and 14257
+  bytes, saved in full before any summary**, empty stderr.
+* **Checkout 2** (WSL2 Ubuntu 24.04, git 2.43.0, `core.autocrlf` unset) is **a
+  computational reproduction of the raw blob identity and the canonical SHA-256
+  that DID NOT RUN LEAN**: `elan` is absent there.  Recorded in the negative so
+  a missing toolchain can never later read as a second compilation.  Its
+  environmental diversity is reinforced evidence, filed apart from the charter's
+  literal "another checkout"; both share one host.
+
+```
+manifest coverage      40 asked, 40 reported, 0 missing, 0 extra, 0 duplicates
+sorryAx                0
+errors in transcript   0
+warnings in transcript 0
+axiom union (31 cones) propext, Classical.choice, Quot.sound
+axioms outside trio    0
+```
+
+### WARNINGS: the module's own count is ZERO
+
+Two warnings appear in the build log and **neither belongs to
+`DobrushinComparison`**.  Both are *replayed* from the already-built dependency
+`DobrushinOscillation`, and they are the two `linter.unnecessarySimpa`
+suggestions D-3a accepted in-module at lines 236 and 245.  Attributing a
+dependency's replayed warnings to the module under audit would have understated
+its cleanliness; the distinction is recorded because a future audit will see the
+same two lines.
+
+### THE AXIOM CRITERION IS CONTAINMENT, NOT EQUALITY
+
+30 of the 31 cones are exactly `[propext, Classical.choice, Quot.sound]`.  One
+is a **proper subset**: `Witness.two_cases`, proved by `decide`, has cone
+`[propext]`.  A smaller cone is strictly better.
+
+The first version of this gate tested for EQUALITY and flagged it as a
+violation.  **Addendum 581's record for D-3a said "every cone exactly
+`[propext, Classical.choice, Quot.sound]`"** — true of that module, and not the
+right general test.  The criterion is and always was containment in the
+permitted set.
+
+### Popoviciu is outside the cone, by construction and by measurement
+
+```
+DobrushinComparison  imports  YangMills.OS.DobrushinOscillation
+DobrushinOscillation imports  Mathlib
+Gruss in the transitive source cone         0
+Gruss oleans required by the focused build  0
+Gruss anywhere in the audit transcript      0
+```
+
+### What the rung actually delivers
+
+`deltaAt i (E i f) = 0` from exterior locality alone; the transport bound
+`deltaAt k (E i f) ≤ deltaAt k f + C i k * deltaAt i f` for `k ≠ i` from
+nonnegativity, normalisation and the MAJORANT only — **not** minimality; the
+matrix form with `C i i = 0` confined to matrix-level consumers; the equality of
+the two conventions for the seminorm; and the D-3d interface, including that
+`hC` supplies only OFF-DIAGONAL nonnegativity while `hdiag` supplies the
+diagonal.
+
+**Two distinct sharpnesses, both attained and both theorems:**
+`Witness.pw_tv_attained` (the influence majorant equals the total variation
+actually produced) and `Witness.deltaAt_siteExp_attained` (the transport
+inequality holds with equality, `1/2 = 0 + (1/2)·1`).
+
+### The frontier, unchanged
+
+```
+D-3a                          Formalized
+D-3c                          Formalized
+D-3d                          OPEN
+D-3e                          OPEN
+Popoviciu                     SOURCE, NOT RESULT
+finite-time operator interface OPEN
+sup_L specRatio(L) < 1        NOT PROVED
+current manuscript            UNMODIFIED
+```
+
+Charter prohibition 4 stands: even a complete D-3 yields decay of correlations,
+**not** `sup_L specRatio(L) < 1`.  The manuscript still claims only the earlier
+chain, and incorporating D-3a and D-3c into a future version must present D-3d
+and D-3e as open.
