@@ -9,10 +9,6 @@ import YangMills.RG.BalabanCMP109PhysicalPivotSmallnessCompatibility
 /-!
 # A non-vacuous scalar compatibility witness for the centered CMP116 regime
 
-PRE-VALIDATION: the joint scalar-window registry and its extended witness are
-present in source, their updated `.olean` has not yet been materialized, and
-the new declarations have not yet been verified by the Lean compiler.
-
 The centered conditioned physical term source asks several smallness
 conditions of the same parameters.  This file checks that their scalar target
 region is not internally contradictory.  It uses the literal source branching,

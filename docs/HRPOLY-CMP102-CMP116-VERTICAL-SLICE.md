@@ -202,7 +202,7 @@ applicable label.
 | 19 | block/exponent hierarchy (`one_le_M`, `eight_le_q`, `one_lt_kappa1`, `source_budget`) | **source threshold** hierarchy | partial source-facing scalar regime | tree + corpus: CMP116 |
 | 20 | direct third-jet envelope (`hD`, `hD₃`, `hV₀`, `hC`, `hRjet`, `hsourceJet`, `sourceJetBound_nonneg`) | **source bounds** on the literal physical maps | partial CMP102 producer; the printed component estimates remain hypotheses | tree + absent: CMP102/[15] source text genuinely bites here |
 | 21 | walk factorization and Eq.-(1.43) budget (`cardRatio_nonneg`, `metricRatio_nonneg`, `summationRatio_nonneg`, `walk_split`, both decay rates, `cardDecay`, `metricDecay`, `walk_small`, `eq143_budget`) | **source bounds plus thresholds** on the literal walk ratios | partial producer; these inputs already feed the verified Eq.-(1.43) conclusion | tree + corpus: CMP116; source provenance still audited field by field |
-| 22 | residual/rooted animal windows (`residual_rate_nonneg`, `rooted_rate_nonneg`, `animal_small`, `rooted_animal_small`) | **threshold** windows | partial combinatorial producer; the joint scalar witness is open | tree + corpus: CMP116 + absent: Cammarota [26] for the deferred Mayer input |
+| 22 | residual/rooted animal windows (`residual_rate_nonneg`, `rooted_rate_nonneg`, `animal_small`, `rooted_animal_small`) | **threshold** windows | the simultaneous target witness is compiler-verified at `9e4161dc`; physical residual-rate production and the deferred Mayer input remain open | tree + corpus: CMP116 + absent: Cammarota [26] for the deferred Mayer input |
 | 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | **threshold** on the physically linked root | open scalar wall at the least admissible `alpha`; its one-variable reduction is proved, but it is not physically instantiable before bridge 12b and group 13 | tree, downstream of groups 2, 12b, and 13 |
 | 24 | outer Gaussian stability (`outer_small`) | **threshold** coupled to the same `alpha` and root | open scalar wall; its one-variable reduction is proved, but it is not physically instantiable before bridge 12b and group 13 | tree, downstream of groups 2, 12b, and 13 |
 
@@ -1285,6 +1285,25 @@ eventual witness must consist of:
    operators;
 2. one simultaneous scalar specialization satisfying all resulting
    inequalities.
+
+The second layer is now represented by the type
+`CMP116CenteredConditionedJointSmallnessRegime`, whose fields contain all
+fourteen threshold conditions currently exposed by the centered CMP116
+consumer and the physical CMP109 pivot.  The parametric value
+`cmp116CenteredConditionedJointSmallnessRegimeWitness d L Nc` inhabits that
+registry for every `d`, `L`, and nonzero `Nc`; adding another window to the
+registry therefore makes the witness fail to elaborate until compatibility
+is re-established.  This witness was compiler-verified in one fresh Colab
+CPU/high-RAM clone at source checkpoint `9e4161dc4ea74e7846fc80bedc81f8bb5d2ae45a`.
+The focal target completed with 8,755 jobs in 1793.774 seconds, and the audit
+exited zero in 10.380 seconds with all eight declarations depending exactly
+on `[propext, Classical.choice, Quot.sound]`.  The evidence archive has
+SHA-256 `5b9c061c80bdcd1d8e098d554bdea17292f669cfad21c8743464c2c84acf96da`.
+
+This is a compatibility theorem for explicit target envelopes, not a proof
+that the literal physical operators attain them.  It closes the stale
+eight-window bookkeeping problem but does not increase the live `18/41`
+producer numerator or construct a `TermSource` inhabitant.
 
 At the level of the explicit final contour bound, increasing `rate` does not
 create the suspected direct conflict between `shell_small` and the Neumann

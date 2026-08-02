@@ -26540,3 +26540,37 @@ lower-covariance certificate once the localized carrier is known nonempty.
 That remaining geometric witness is not implied by `domain_nonempty` and
 `domain_subset`.  Therefore the live producer numerator remains exactly
 18/41, groups 23--24 remain open, and no `TermSource` inhabitant is produced.
+
+## Addendum 532 (2026-08-02, **joint fourteen-window target regime GREEN**)
+
+`BalabanCMP116CenteredConditionedSmallnessCompatibility.lean` was replayed
+with its focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `9e4161dc4ea74e7846fc80bedc81f8bb5d2ae45a`.  The runtime opened at
+2026-08-02 16:30:59 UTC with 51.0 GiB RAM and was disconnected and deleted
+immediately after the audit.
+
+The official Lean `v4.29.0-rc6` toolchain was used, the cache gate
+materialized 8,142 files, the manifest remained unchanged, the complete
+2,200-source core import closure was tracked, and Mathlib was pinned to
+`07642720480157414db592fa85b626dafb71355b`.  A Mathlib-only reproduction of
+the exponential arithmetic exited zero in 40.453 seconds.  The focal build
+then exited zero with the literal terminal line
+`Build completed successfully (8755 jobs).` after 1793.774 seconds.  The
+audit exited zero after 10.380 seconds and printed exactly eight declarations,
+each depending on `[propext, Classical.choice, Quot.sound]`.
+
+The wrapper subsequently reported `FINAL_STATUS=FAIL STAGE=audit_axioms`
+because its diagnostic parser truncated the last already-printed audit line
+while rechecking the captured output.  This is classified
+`BLOCKED-INSTRUMENTATION`: both child exit codes were zero and the complete
+eight-line oracle output is present immediately above the false sentinel.
+The evidence archive created in Colab has SHA-256
+`5b9c061c80bdcd1d8e098d554bdea17292f669cfad21c8743464c2c84acf96da`.
+
+The verified registry contains all fourteen threshold conditions currently
+exposed by the centered CMP116 consumer together with the physical CMP109
+pivot, and its parametric witness prevents a newly added window from leaving
+the compatibility claim silently stale.  Its norm-like values remain target
+envelopes that physical producers must attain.  Consequently this brick does
+not increase the live 18/41 numerator, does not inhabit `PreEq136`, and does
+not construct a `TermSource`.
