@@ -187,7 +187,10 @@ jobs:
 
       - name: Run pytest with nominal scientific-debt quarantine
         env:
-          CHANGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          # A synchronize event carries the prior PR head in `before`, which
+          # makes a repair ratchet immediately.  Opened PRs fall back to the
+          # exact base-branch SHA; pushes also carry their prior head.
+          CHANGE_BASE: ${{ github.event.before || github.event.pull_request.base.sha }}
         run: >-
           python scripts/pytest_nominal_debt_guard.py
           --manifest .github/scientific-test-debt-baseline.json

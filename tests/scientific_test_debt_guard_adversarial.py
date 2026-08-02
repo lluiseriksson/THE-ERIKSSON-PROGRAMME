@@ -24,6 +24,7 @@ from scripts.pytest_nominal_debt_guard import (
 
 MANIFEST_PATH = ROOT / ".github" / "scientific-test-debt-baseline.json"
 SCRIPT = ROOT / "scripts" / "pytest_nominal_debt_guard.py"
+WORKFLOW = ROOT / ".github" / "workflows" / "control-plane.yml"
 
 
 def require(condition: bool, message: str) -> None:
@@ -116,6 +117,12 @@ def main() -> int:
     repaired_ids = nodeids[:-1]
     check("ATTACK_4_ONE_REPAIRED", manifest, base, inventory(nodeids, repaired), "PASS", 0, "nominal debt only")
     check("ATTACK_5_REINTRODUCTION", manifest, inventory(nodeids, repaired), inventory(nodeids, known), "FAIL", 1, "ee5fb3")
+    selector = "CHANGE_BASE: ${{ github.event.before || github.event.pull_request.base.sha }}"
+    require(
+        selector in WORKFLOW.read_text(encoding="utf-8"),
+        "ATTACK_5_BASE_RATCHET: workflow does not select the prior exact PR head",
+    )
+    print("ATTACK_5_BASE_RATCHET: PASS first_cause=prior-exact-head exit=0")
 
     with tempfile.TemporaryDirectory(prefix="stale-result-") as directory:
         stale = Path(directory) / "decision.json"
