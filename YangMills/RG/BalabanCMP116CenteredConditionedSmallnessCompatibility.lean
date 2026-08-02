@@ -4,9 +4,14 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq226CenteredConditionedPhysicalTermSource
+import YangMills.RG.BalabanCMP109PhysicalPivotSmallnessCompatibility
 
 /-!
 # A non-vacuous scalar compatibility witness for the centered CMP116 regime
+
+PRE-VALIDATION: the joint scalar-window registry and its extended witness are
+present in source, their updated `.olean` has not yet been materialized, and
+the new declarations have not yet been verified by the Lean compiler.
 
 The centered conditioned physical term source asks several smallness
 conditions of the same parameters.  This file checks that their scalar target
@@ -37,6 +42,67 @@ def cmp116CenteredSmallnessWitnessAlpha : ℝ := (1 : ℝ) / 16
 def cmp116CenteredSmallnessWitnessPotentialRate : ℝ := (1 : ℝ) / 64
 def cmp116CenteredSmallnessWitnessR2Rate : ℝ := (1 : ℝ) / 64
 def cmp116CenteredSmallnessWitnessGamma : ℝ := (1 : ℝ) / 64
+def cmp116CenteredSmallnessWitnessDelta : ℝ := (1 : ℝ) / 20
+def cmp116CenteredSmallnessWitnessKappa : ℝ :=
+  480 * Real.log 128
+def cmp116CenteredSmallnessWitnessSummationRatio : ℝ :=
+  (((2 * cmp116SourcePi4TerminalBranching 1 : ℕ) : ℝ))⁻¹
+
+/-- Central registry of the scalar threshold conditions used by the present
+centered-conditioned CMP116 source together with the physical CMP109 pivot.
+
+The norm-like entries are explicit *targets* which the physical producers
+must attain.  The exponential shell, contour ratio, walk, animal, interaction,
+root, outer, and CMP109 pivot conditions retain their literal consumer forms.
+Adding another scalar window to this registry makes its witness below fail to
+elaborate until the joint regime is updated. -/
+structure CMP116CenteredConditionedJointSmallnessRegime
+    (d L Nc : ℕ) [NeZero Nc] where
+  patchedDefectNorm : ℝ
+  precisionNorm : ℝ
+  transposeDefectNorm : ℝ
+  rootNorm : ℝ
+  outerBudget : ℝ
+  qBound : ℝ
+  summationRatio : ℝ
+  delta : ℝ
+  kappa : ℝ
+  rho_pos : 0 < cmp116CenteredSmallnessWitnessRho
+  radius_pos : 0 < cmp116CenteredSmallnessWitnessRadius
+  Ahead_pos : 0 < cmp116CenteredSmallnessWitnessAhead
+  patchedDefect_small : patchedDefectNorm < 1
+  shell_small :
+    ((2 ^ 4 : ℕ) : ℝ) *
+      Real.exp (-cmp116CenteredSmallnessWitnessRate) < 1
+  contour_series_small :
+    ‖cmp116SourcePi4ComplexContourRatio 1
+      cmp116CenteredSmallnessWitnessRho 1‖ < 1
+  neumann_small :
+    precisionNorm *
+      cmp116SourcePi4PhysicalComplexContourDefectBound
+        2 1
+        cmp116CenteredSmallnessWitnessAhead
+        cmp116CenteredSmallnessWitnessRho
+        cmp116CenteredSmallnessWitnessRate
+        cmp116CenteredSmallnessWitnessRadius 1 < 1
+  neumann_transpose_small : transposeDefectNorm < 1
+  root_small :
+    cmp116CenteredSmallnessWitnessAlpha * rootNorm ^ 2 < 1
+  outer_small : 2 * outerBudget ≤ qBound
+  interaction_budget :
+    cmp116CenteredSmallnessWitnessPotentialRate +
+        cmp116CenteredSmallnessWitnessR2Rate +
+        cmp116CenteredSmallnessWitnessGamma ≤
+      cmp116CenteredSmallnessWitnessAlpha
+  qBound_lt_one : qBound < 1
+  walk_small :
+    ((cmp116SourcePi4TerminalBranching 1 : ℕ) : ℝ) *
+      summationRatio < 1
+  animal_small :
+    64 * Real.exp (-(((1 - 2 * delta) * kappa) / 24)) < 1
+  rooted_animal_small :
+    64 * Real.exp (-((delta * kappa) / 24)) < 1
+  pivot : CMP109PhysicalPivotSmallnessRegime d L Nc
 
 /-- At the explicit rate `log 32`, the four-dimensional shell factor is
 exactly one half. -/
@@ -79,6 +145,101 @@ theorem cmp116CenteredSmallnessWitness_contourDefect :
     Real.exp_neg,
     Real.exp_log (by norm_num : (0 : ℝ) < 32)]
   norm_num
+
+/-- The explicit summation-ratio witness leaves a factor-two margin in the
+literal grouped-walk contraction. -/
+theorem cmp116CenteredSmallnessWitness_walk :
+    ((cmp116SourcePi4TerminalBranching 1 : ℕ) : ℝ) *
+        cmp116CenteredSmallnessWitnessSummationRatio < 1 := by
+  norm_num [cmp116CenteredSmallnessWitnessSummationRatio,
+    cmp116SourcePi4TerminalBranching]
+
+/-- The source value `delta = (1/10)(1 - 2/4) = 1/20`, together with the
+explicit logarithmic rate, leaves a factor-two margin in the rooted animal
+window. -/
+theorem cmp116CenteredSmallnessWitness_rootedAnimal :
+    64 * Real.exp
+      (-((cmp116CenteredSmallnessWitnessDelta *
+        cmp116CenteredSmallnessWitnessKappa) / 24)) < 1 := by
+  have hcalc :
+      (cmp116CenteredSmallnessWitnessDelta *
+          cmp116CenteredSmallnessWitnessKappa) / 24 =
+        Real.log 128 := by
+    rw [cmp116CenteredSmallnessWitnessDelta,
+      cmp116CenteredSmallnessWitnessKappa]
+    ring
+  rw [hcalc, Real.exp_neg,
+    Real.exp_log (by norm_num : (0 : ℝ) < 128)]
+  norm_num
+
+/-- The unrooted residual animal window is stronger at the same source
+parameters, because `1 - 2 delta` is larger than `delta`. -/
+theorem cmp116CenteredSmallnessWitness_animal :
+    64 * Real.exp
+      (-(((1 - 2 * cmp116CenteredSmallnessWitnessDelta) *
+        cmp116CenteredSmallnessWitnessKappa) / 24)) < 1 := by
+  have hroot := cmp116CenteredSmallnessWitness_rootedAnimal
+  have hlog : 0 ≤ Real.log 128 := Real.log_nonneg (by norm_num)
+  have hresidual :
+      ((1 - 2 * cmp116CenteredSmallnessWitnessDelta) *
+          cmp116CenteredSmallnessWitnessKappa) / 24 =
+        18 * Real.log 128 := by
+    rw [cmp116CenteredSmallnessWitnessDelta,
+      cmp116CenteredSmallnessWitnessKappa]
+    ring
+  have hrooted :
+      (cmp116CenteredSmallnessWitnessDelta *
+          cmp116CenteredSmallnessWitnessKappa) / 24 =
+        Real.log 128 := by
+    rw [cmp116CenteredSmallnessWitnessDelta,
+      cmp116CenteredSmallnessWitnessKappa]
+    ring
+  have hexp :
+      Real.exp (-(18 * Real.log 128)) ≤
+        Real.exp (-(Real.log 128)) := by
+    exact Real.exp_le_exp.mpr (by nlinarith)
+  rw [hresidual]
+  rw [hrooted] at hroot
+  nlinarith [mul_le_mul_of_nonneg_left hexp (by norm_num : (0 : ℝ) ≤ 64)]
+
+/-- One simultaneous witness for all scalar windows currently registered.
+The CMP109 component is the parametric witness already proved for every fixed
+dimension, block scale, and nonzero colour count. -/
+noncomputable def cmp116CenteredConditionedJointSmallnessRegimeWitness
+    (d L Nc : ℕ) [NeZero Nc] :
+    CMP116CenteredConditionedJointSmallnessRegime d L Nc where
+  patchedDefectNorm := 1 / 4
+  precisionNorm := 1
+  transposeDefectNorm := 1 / 4
+  rootNorm := 1
+  outerBudget := 1 / 8
+  qBound := 1 / 2
+  summationRatio := cmp116CenteredSmallnessWitnessSummationRatio
+  delta := cmp116CenteredSmallnessWitnessDelta
+  kappa := cmp116CenteredSmallnessWitnessKappa
+  rho_pos := by
+    norm_num [cmp116CenteredSmallnessWitnessRho,
+      cmp116SourcePi4TerminalBranching]
+  radius_pos := by norm_num [cmp116CenteredSmallnessWitnessRadius]
+  Ahead_pos := by norm_num [cmp116CenteredSmallnessWitnessAhead]
+  patchedDefect_small := by norm_num
+  shell_small := cmp116CenteredSmallnessWitness_shell
+  contour_series_small := cmp116CenteredSmallnessWitness_contourRatio
+  neumann_small := by
+    simpa using cmp116CenteredSmallnessWitness_contourDefect
+  neumann_transpose_small := by norm_num
+  root_small := by norm_num [cmp116CenteredSmallnessWitnessAlpha]
+  outer_small := by norm_num
+  interaction_budget := by
+    norm_num [cmp116CenteredSmallnessWitnessPotentialRate,
+      cmp116CenteredSmallnessWitnessR2Rate,
+      cmp116CenteredSmallnessWitnessGamma,
+      cmp116CenteredSmallnessWitnessAlpha]
+  qBound_lt_one := by norm_num
+  walk_small := cmp116CenteredSmallnessWitness_walk
+  animal_small := cmp116CenteredSmallnessWitness_animal
+  rooted_animal_small := cmp116CenteredSmallnessWitness_rootedAnimal
+  pivot := cmp109PhysicalPivotSmallnessRegimeWitness d L Nc
 
 /-- All scalar inequalities requested by the present centered-conditioned
 consumer, together with the future CMP109 pivot defect, have a simultaneous

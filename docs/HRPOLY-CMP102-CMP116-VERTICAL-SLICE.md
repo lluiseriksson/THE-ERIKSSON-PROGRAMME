@@ -236,6 +236,21 @@ The full hRpoly target is retried only after that reproducer elaborates.  This
 keeps a generic Mathlib experiment from consuming a fresh full-project Colab
 bootstrap for every candidate proof.
 
+The accumulated scalar gates are now centralized in
+`CMP116CenteredConditionedJointSmallnessRegime`.  Its fourteen threshold
+fields are: patched defect, shell, contour series, the two Neumann bounds,
+root stability, outer stability, the interaction budget, `qBound < 1`, the
+grouped-walk contraction, the two animal contractions, and the two physical
+CMP109 pivot conditions.  The source value at `L = 4` is used literally,
+`delta = (1/10)(1 - 2/4) = 1/20`; the exact logarithmic rates give explicit
+factor-two margins.  A single witness inhabits the whole record.  Adding a
+new scalar gate to this registry therefore breaks that witness until the
+joint regime is updated, instead of silently leaving an older compatibility
+claim in the tree.  The lower covariance constant `c / Lambda^2` is not
+invented as a fifteenth threshold: its terminal field asks only for
+positivity, while its quantitative coupling enters the already listed
+`root_small` and `outer_small` walls.
+
 Thus `18/41 -> 41/41` is the route to the first source-specific
 `TermSource` **conditional on the named Lemma-1 certificate**.  Proving the
 analytic Lemma-1 instance of equation (1.36) is a separate step which removes
