@@ -4,7 +4,7 @@
 worktree.  These rules govern evidence, audits, integration, guards, and local
 infrastructure.  They do not assert or amend mathematics.
 
-**Amendment date:** 2026-08-01.
+**Amendment date:** 2026-08-02.
 
 Only rules paid for by observed repository incidents belong here.  A rule's
 evidence label is part of the rule: `versioned` means that the repository holds
@@ -101,6 +101,16 @@ permits a candidate `PASS`.  Logs and sentinels must use semantic mode names,
 such as `normal` and `optimized`, rather than indistinguishable numeric
 suffixes.
 
+### Text hashes identify a byte representation
+
+**Rule.**  Every hash of a textual artifact must name the byte representation
+hashed (for example, Git blob/LF, Windows checkout/CRLF, or another explicit
+regime) and the exact normalization, if any.  Distinct byte representations
+must not be reported simply as “the hash.”  This rule is paid for by the
+[global run-manifest guard incident](incidents/INCIDENT-RUN-MANIFEST-GLOBAL-GUARD-20260802.md),
+where LF and CRLF representations of one baseline produced different SHA-256
+digests.
+
 ## Historical provenance for the 2026-08-01 rules
 
 This subsection records why the active rules above exist; it is incident
@@ -186,6 +196,18 @@ disk.
 **Rule.**  Launch the auditor, wait, then read its report.  While it runs, send
 it no messages, operational notices, owner readings, summaries, or partial
 results.  Silence is part of the audit boundary, not a convenience.
+
+Every disposable clone must be removed when its task ends.  If cleanup fails,
+the report must emit a separate line
+`CLEANUP-PENDING: <exact absolute path>`; the condition must never be hidden in
+prose or confused with retained evidence.
+
+While an external reading of a pull request is in flight, its branch and body
+are frozen: no commit, including a documentation-only commit, may be published
+until the verdict is delivered.  A defect discovered during the reading is
+declared as a known-open carve-out in the audit assignment and repaired only
+afterward.  The assignment names the SHA, body-capture method, normalized body
+bytes, and their hash; the verdict repeats all four.
 
 ## 5. A guard's name must not claim more than its predicate
 

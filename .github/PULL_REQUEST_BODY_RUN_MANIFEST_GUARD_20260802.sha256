@@ -1,0 +1,6 @@
+artifact=PULL_REQUEST_BODY_RUN_MANIFEST_GUARD_20260802.md
+encoding=UTF-8 without BOM
+normalization_git_blob_lf=Replace every CRLF byte pair (0d0a) with LF (0a); leave every other byte unchanged.
+sha256_git_blob_lf=75b8c7a6460f9bcfb0bd5961cf24c99a3288c4341e251c7a580bc107a40e5dde
+normalization_windows_checkout_crlf=Starting from Git blob/LF bytes, replace every LF byte (0a) with CRLF (0d0a); leave every other byte unchanged.
+sha256_windows_checkout_crlf=36f7a0e97221f2b97b7e3f0fff93403d2ca809f4794ad0916e97b52a1659ae1a

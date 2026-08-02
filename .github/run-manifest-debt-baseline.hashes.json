@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "artifact": ".github/run-manifest-debt-baseline.json",
+  "encoding": "UTF-8 without BOM",
+  "normalization": {
+    "git_blob_lf": "Replace every CRLF byte pair (0d0a) in checkout bytes with LF (0a); leave every other byte unchanged.",
+    "windows_checkout_crlf": "Starting from the Git blob/LF bytes, replace every LF byte (0a) with CRLF (0d0a); leave every other byte unchanged."
+  },
+  "sha256": {
+    "git_blob_lf": "09ca858cd7bef66b4b78e6ca2199a17add3a6064b5483e54a7cf0d6c25dfce0e",
+    "windows_checkout_crlf": "b846059fb0c6525999582132c3a945ad3b1dfbaa28faeec41a4f0ea3769a3d22"
+  }
+}
