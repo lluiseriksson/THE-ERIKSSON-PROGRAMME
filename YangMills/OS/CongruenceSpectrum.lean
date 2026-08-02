@@ -905,6 +905,27 @@ Two deliberate weakenings, both in the direction of assuming *less*:
   limit.  No spectral continuity appears anywhere in §10; the `ε → 0` step is
   the scalar `lower_bound_approaches`, which produces an explicit witness. -/
 
+/-- Every entry of a diagonal congruence, in closed form. -/
+theorem congr_apply (M : Matrix n n ℝ) (d : n → ℝ) (i j : n) :
+    (Matrix.diagonal d * M * Matrix.diagonal d) i j = d i * M i j * d j := by
+  rw [Matrix.mul_diagonal, Matrix.diagonal_mul]
+
+/-- **A diagonal congruence preserves symmetry.**  Needed because both imported
+interfaces are statements about *symmetric* positive matrices, and the orbit must
+stay inside that class for them to apply at `DMD` and not only at `M`. -/
+theorem congr_transpose {M : Matrix n n ℝ} (hM : M.transpose = M) (d : n → ℝ) :
+    (Matrix.diagonal d * M * Matrix.diagonal d).transpose
+      = Matrix.diagonal d * M * Matrix.diagonal d := by
+  rw [Matrix.transpose_mul, Matrix.transpose_mul, Matrix.diagonal_transpose, hM,
+    ← Matrix.mul_assoc]
+
+/-- Positivity of the congruence, from positivity of `M`. -/
+theorem congr_pos {M : Matrix n n ℝ} {d : n → ℝ} (hM : ∀ a b, 0 < M a b)
+    (hd : ∀ i, 0 < d i) (i j : n) :
+    0 < (Matrix.diagonal d * M * Matrix.diagonal d) i j := by
+  rw [congr_apply]
+  exact mul_pos (mul_pos (hd i) (hM i j)) (hd j)
+
 /-- Everything a strictly positive diagonal congruence can reach. -/
 def congrOrbit (r : Matrix n n ℝ → ℝ) (M : Matrix n n ℝ) : Set ℝ :=
   {x | ∃ d : n → ℝ, (∀ i, 0 < d i) ∧
@@ -954,7 +975,24 @@ theorem birkhoff_attained_two {μ : ℝ} (hμ0 : 0 < μ) :
   have h := phi_form_eq_tanh (φ := μ * μ) (mul_pos hμ0 hμ0)
   rwa [Real.sqrt_mul_self hμ0.le] at h
 
-/-! ### §10.1  The upper half, from Birkhoff -/
+/-! ### §10.1  The upper half, from Birkhoff
+
+`BirkhoffInterface` carries the hypotheses of the cited fact, and in particular
+**entrywise positivity**.  An earlier version omitted it and quantified over
+every matrix satisfying the cross-ratio inequality.  That is *stronger* than
+Fact 6.1, which is a theorem about positive operators — so a reader holding
+Eveson–Nussbaum could not have built a term of that type, and the theorem
+depending on it was correspondingly harder to discharge than the paper claimed.
+Assuming more than the source provides is the mirror image of claiming more than
+the lemma proves, and it is the same error. -/
+
+/-- Fact 6.1, transported: Birkhoff's spectral bound in Seneta's
+logarithm-free form, on its own domain — symmetric and entrywise positive. -/
+abbrev BirkhoffInterface (r : Matrix n n ℝ → ℝ) : Prop :=
+  ∀ (T : Matrix n n ℝ) (φ : ℝ), T.transpose = T → (∀ i j, 0 < T i j) →
+    0 < φ → φ ≤ 1 →
+    (∀ i j k l, φ * (T j k * T i l) ≤ T i k * T j l) →
+    r T ≤ (1 - Real.sqrt φ) / (1 + Real.sqrt φ)
 
 /-- **The upper bound.**  Granted Birkhoff's bound as a hypothesis, the whole
 congruence orbit lies below `(1-μ)/(1+μ)`.  The proof is §8 and nothing else:
@@ -962,13 +1000,12 @@ the congruence multiplies numerator and denominator of every cross-ratio by the
 same factor, so the bound available at `M` is available at every `DMD`. -/
 theorem congrOrbit_upper_of_birkhoff
     {r : Matrix n n ℝ → ℝ} {M : Matrix n n ℝ} {μ : ℝ}
-    (hμ0 : 0 < μ) (hμ1 : μ ≤ 1)
+    (hμ0 : 0 < μ) (hμ1 : μ ≤ 1) (hM : M.transpose = M)
     (hlo : ∀ a b, μ ≤ M a b) (hhi : ∀ a b, M a b ≤ 1)
-    (hBirkhoff : ∀ (T : Matrix n n ℝ) (φ : ℝ), 0 < φ → φ ≤ 1 →
-        (∀ i j k l, φ * (T j k * T i l) ≤ T i k * T j l) →
-        r T ≤ (1 - Real.sqrt φ) / (1 + Real.sqrt φ)) :
+    (hBirkhoff : BirkhoffInterface r) :
     ∀ x ∈ congrOrbit r M, x ≤ (1 - μ) / (1 + μ) := by
   rintro x ⟨d, hd, rfl⟩
+  have hpos : ∀ a b, 0 < M a b := fun a b => lt_of_lt_of_le hμ0 (hlo a b)
   have hcross : ∀ i j k l,
       (μ * μ) * ((Matrix.diagonal d * M * Matrix.diagonal d) j k *
           (Matrix.diagonal d * M * Matrix.diagonal d) i l)
@@ -983,7 +1020,8 @@ theorem congrOrbit_upper_of_birkhoff
     nlinarith [key]
   have hφ0 : (0 : ℝ) < μ * μ := mul_pos hμ0 hμ0
   have hφ1 : μ * μ ≤ 1 := by nlinarith
-  have hres := hBirkhoff _ (μ * μ) hφ0 hφ1 hcross
+  have hres := hBirkhoff _ (μ * μ) (congr_transpose hM d)
+    (fun i j => congr_pos hpos hd i j) hφ0 hφ1 hcross
   rwa [Real.sqrt_mul_self hμ0.le] at hres
 
 /-! ### §10.2  The lower half, without spectral continuity -/
@@ -1072,21 +1110,33 @@ theorem leastPair_specGap_lower {μ ε c ρ s : ℝ} (hμ1 : μ < 1)
   have : 0 ≤ s / ρ - (1 - μ) / (1 + μ + c * ε) := by rw [hexp]; exact hnn
   linarith
 
-/-- **The spectral interface.**  This is the only thing the lower half assumes,
-and it is deliberately written so that nothing from this development appears in
-it: no `μ`, no pair, no concentration, no congruence.  It says that if some
-vector orthogonal to every strictly positive `Ω` has quadratic form at least
-`b‖x‖²`, and all row sums are at most `a`, then the ratio is at least `b/a`.
+/-- **The spectral interface.**  The only thing the lower half assumes, written
+so that nothing from this development appears in it: no `μ`, no pair, no
+concentration, no congruence.  Read the quantifiers in the order they are
+written: *for every strictly positive candidate Perron vector `Ω` there exists a
+nonzero `x ⟂ Ω`* with quadratic form at least `b‖x‖²`; together with row sums at
+most `a`, the ratio is at least `b/a`.  (The other order — one `x` orthogonal to
+*every* positive `Ω` — admits only `x = 0` in finite dimension, so it would make
+the hypothesis vacuous.)
 
-That is Perron--Frobenius (the root is simple, with a positive eigenvector, and
-is at most the largest row sum) together with the variational characterisation
-of the second eigenvalue of a symmetric matrix, packaged as one statement.  It
-is an *interface* obligation, not a mathematical one: both facts are standard and
-elementary, and neither is currently available in the pinned Mathlib in a form
-that applies to a `Matrix`-level definition of the ratio.  We therefore carry it
-rather than pretend it is discharged. -/
+`T.transpose = T` is **load-bearing and was missing in the previous version.**
+Without it the statement is not a packaging of textbook facts: it is false.
+`T = ![![3,5,2],![5,4,1],![2,5,3]]` is entrywise positive with every row summing
+to `10` and spectrum `{10, 1, -1}`, so its ratio is `1/10`; but `⟪x, Tx⟫` only
+sees the symmetric part, whose second eigenvalue is `≈1.3305`, so by
+Courant--Fischer every positive `Ω` admits an `x ⟂ Ω` with `⟪x,Tx⟫ ≥ 1.3‖x‖²`.
+The premises hold with `b = 1.3`, `a = 10`, and the conclusion `0.13 ≤ 0.1` is
+false.  A conditional theorem whose hypothesis no ratio function satisfies is
+vacuous, which is worse than one that assumes too much.
+
+With symmetry restored the statement is exactly Perron--Frobenius (the root is
+simple with a positive eigenvector, and is at most the largest row sum) together
+with the variational characterisation of the second eigenvalue.  It is an
+*interface* obligation, not a mathematical one: both facts are standard, and
+neither is available in the pinned Mathlib against a `Matrix`-level ratio.  We
+carry it rather than pretend it is discharged. -/
 abbrev SpectralInterface (r : Matrix n n ℝ → ℝ) : Prop :=
-  ∀ (T : Matrix n n ℝ) (b a : ℝ), 0 < a → (∀ i j, 0 < T i j) →
+  ∀ (T : Matrix n n ℝ) (b a : ℝ), T.transpose = T → 0 < a → (∀ i j, 0 < T i j) →
     (∀ Ω : n → ℝ, (∀ i, 0 < Ω i) → ∃ x : n → ℝ, x ≠ 0 ∧
       (∑ i, Ω i * x i = 0) ∧ b * (∑ i, x i * x i) ≤ quad T x) →
     (∀ i, ∑ j, T i j ≤ a) → b / a ≤ r T
@@ -1098,11 +1148,12 @@ interface and this conclusion is proved: the witness, its non-vanishing, its
 orthogonality and its Rayleigh quotient. -/
 theorem lower_bound_at_pair_of_spec
     {r : Matrix n n ℝ → ℝ} {T : Matrix n n ℝ} {μ a : ℝ} {p q : n} (hpq : p ≠ q)
-    (hμ0 : 0 < μ) (ha : 0 < a) (hTpos : ∀ i j, 0 < T i j)
+    (hμ0 : 0 < μ) (ha : 0 < a) (hTsymm : T.transpose = T)
+    (hTpos : ∀ i j, 0 < T i j)
     (hTpp : T p p = 1) (hTqq : T q q = 1) (hTpq : T p q = μ) (hTqp : T q p = μ)
     (hrow : ∀ i, ∑ j, T i j ≤ a) (hSpec : SpectralInterface r) :
     (1 - μ) / a ≤ r T := by
-  refine hSpec T (1 - μ) a ha hTpos ?_ hrow
+  refine hSpec T (1 - μ) a hTsymm ha hTpos ?_ hrow
   intro Ω hΩ
   refine ⟨pairVec p q (Ω q) (Ω p), ?_, ?_, ?_⟩
   · intro hzero
@@ -1118,7 +1169,8 @@ this statement was a hypothesis of the main theorem.  It is now derived from the
 spectral interface, the block-preservation of §7, and the row-sum bound. -/
 theorem concentrated_lower_of_spec
     {r : Matrix n n ℝ → ℝ} {M : Matrix n n ℝ} {μ : ℝ} {p q : n} (hpq : p ≠ q)
-    (hμ0 : 0 < μ) (hpos : ∀ a b, 0 < M a b) (hhi : ∀ a b, M a b ≤ 1)
+    (hμ0 : 0 < μ) (hM : M.transpose = M)
+    (hpos : ∀ a b, 0 < M a b) (hhi : ∀ a b, M a b ≤ 1)
     (hpp : M p p = 1) (hqq : M q q = 1) (hpqv : M p q = μ) (hqpv : M q p = μ)
     (hSpec : SpectralInterface r) {ε : ℝ} (hε0 : 0 < ε) (hε1 : ε ≤ 1 / 2) :
     (1 - μ) / (1 + μ + (Fintype.card n) * ε) ≤
@@ -1126,10 +1178,9 @@ theorem concentrated_lower_of_spec
         Matrix.diagonal (concentrate p q ε)) := by
   have hd0 : ∀ i, 0 < concentrate p q ε i := fun i => concentrate_pos hε0 p q i
   have hcard : (0 : ℝ) ≤ (Fintype.card n) * ε := by positivity
-  refine lower_bound_at_pair_of_spec hpq hμ0 (by linarith) ?_ ?_ ?_ ?_ ?_ ?_ hSpec
-  · intro i j
-    rw [concentrate_apply]
-    exact mul_pos (mul_pos (hd0 i) (hpos i j)) (hd0 j)
+  refine lower_bound_at_pair_of_spec hpq hμ0 (by linarith)
+    (congr_transpose hM _) ?_ ?_ ?_ ?_ ?_ ?_ hSpec
+  · exact fun i j => congr_pos hpos hd0 i j
   · rw [concentrate_apply, concentrate_at_p, hpp]; ring
   · rw [concentrate_apply, concentrate_at_q, hqq]; ring
   · rw [concentrate_apply, concentrate_at_p, concentrate_at_q, hpqv]; ring
@@ -1176,6 +1227,16 @@ remains:
   `Matrix`-level definition of the ratio, which the pinned Mathlib does not
   supply.  The debt is on the bridge, not on the mathematics.
 
+**Both interfaces carry their own domain, and this cost a version to learn.**
+Each is a statement about *symmetric, entrywise positive* matrices, and both
+said less than that once: `hBirkhoff` omitted positivity, making it stronger
+than the fact it transports and therefore unbuildable from the source;
+`hSpec` omitted symmetry, which made it outright **false** (see its docstring
+for the `3×3` refutation) and so made this theorem vacuous at the intended `r`.
+`M.transpose = M` is now a hypothesis here, and `congr_transpose` carries it to
+every point of the orbit — which is the only reason the imports apply at `DMD`
+and not merely at `M`.
+
 Everything between them is proved: the transport of Birkhoff's bound from `M` to
 every `DMD`, the fluctuation witness with its non-vanishing, its orthogonality
 and its Rayleigh quotient, the row-sum bound, the explicit `ε`, and the assembly
@@ -1183,25 +1244,22 @@ into `IsLUB`.  In particular the concentrated lower bound, which the previous
 version assumed outright, is now `concentrated_lower_of_spec`. -/
 theorem congruenceRatio_isLUB_of_birkhoff_of_spectralInterface
     {r : Matrix n n ℝ → ℝ} {M : Matrix n n ℝ} {μ : ℝ} {p q : n} (hpq : p ≠ q)
-    (hμ0 : 0 < μ) (hμ1 : μ < 1)
+    (hμ0 : 0 < μ) (hμ1 : μ < 1) (hM : M.transpose = M)
     (hpos : ∀ a b, 0 < M a b) (hlo : ∀ a b, μ ≤ M a b) (hhi : ∀ a b, M a b ≤ 1)
     (hpp : M p p = 1) (hqq : M q q = 1) (hpqv : M p q = μ) (hqpv : M q p = μ)
-    (hBirkhoff : ∀ (T : Matrix n n ℝ) (φ : ℝ), 0 < φ → φ ≤ 1 →
-        (∀ i j k l, φ * (T j k * T i l) ≤ T i k * T j l) →
-        r T ≤ (1 - Real.sqrt φ) / (1 + Real.sqrt φ))
-    (hSpec : SpectralInterface r) :
+    (hBirkhoff : BirkhoffInterface r) (hSpec : SpectralInterface r) :
     IsLUB (congrOrbit r M) ((1 - μ) / (1 + μ)) := by
   have hcard : (0 : ℝ) < (Fintype.card n) := by
     exact_mod_cast Fintype.card_pos_iff.mpr ⟨p⟩
   constructor
   · intro x hx
-    exact congrOrbit_upper_of_birkhoff hμ0 hμ1.le hlo hhi hBirkhoff x hx
+    exact congrOrbit_upper_of_birkhoff hμ0 hμ1.le hM hlo hhi hBirkhoff x hx
   · intro y hy
     by_contra hcon
     push_neg at hcon
     obtain ⟨x, hxmem, hxgt⟩ :=
       concentrated_specRatio_approaches (p := p) (q := q) hμ0 hμ1 hcard
-        (fun ε hε0 hε1 => concentrated_lower_of_spec hpq hμ0 hpos hhi hpp hqq
+        (fun ε hε0 hε1 => concentrated_lower_of_spec hpq hμ0 hM hpos hhi hpp hqq
           hpqv hqpv hSpec hε0 hε1) hcon
     exact absurd (hy hxmem) (not_le.mpr hxgt)
 
