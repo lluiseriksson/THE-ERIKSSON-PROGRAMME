@@ -52,6 +52,16 @@ fi
 lake --version || { echo "ABORT: no lake"; exit 1; }
 lake exe cache get > /content/cache.log 2>&1
 
+# `lake env lean` elaborates ONE file and refuses to build anything for it, so the
+# module's dependencies must already have oleans on disk.  Without this step the
+# run reports a missing .olean and never reaches the module's own diagnostics --
+# which is an ABSENT measurement dressed as a failed one.
+MODNAME=$(echo "${MODULE%.lean}" | tr '/' '.')
+echo "=== DEPENDENCIES: lake build $MODNAME ==="
+lake build "$MODNAME" > /content/deps.log 2>&1
+echo "BUILD EXIT $?"
+tail -3 /content/deps.log
+
 echo "=== ISOLATED ELABORATION ==="
 lake env lean "$MODULE" > /content/iso.log 2>&1
 echo "EXIT $?"
