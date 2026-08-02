@@ -62,6 +62,17 @@ MODULES = {
 OSLINE = re.compile(r"\\osline\{(?P<mod>[A-Za-z]+)\}"
                     r"\{(?P<line>[^{}]*)\}\{(?P<name>[^{}]*)\}")
 
+# THE ANCHOR IS RECOGNISED BY ITS SYNTACTIC FUNCTION, NOT BY ITS SHAPE.  The
+# first version matched any 40-hex string, which was fine until the manuscript
+# acquired a provenance paragraph quoting two BLOB hashes: it would have
+# overwritten the very digests that certify the pre-registration, and then its
+# own "exactly one anchor" check would have failed against three matches.  The
+# filler is fail-closed, so nothing would have been corrupted --- but nothing
+# would ever have been published either.  A rewriter keyed on a lexical form
+# cannot tell an anchor from a citation; one keyed on `\newcommand{\anchor}{}`
+# can.
+ANCHOR_DEF = re.compile(r"(\\newcommand\{\\anchor\}\{)"
+                        r"(?P<sha>[0-9a-fA-F]{40})(\})")
 HEX40 = re.compile(r"[0-9a-fA-F]{40}")
 
 # Registered in commit 6e67629a, BEFORE any v2 count existed: everything since
@@ -69,6 +80,12 @@ HEX40 = re.compile(r"[0-9a-fA-F]{40}")
 # no import, so the core must come back UNCHANGED at the v1.0 absolute.
 REGISTERED_JOBS_ABSOLUTE = 8469
 REGISTERED_JOBS_DELTA = 0
+
+# The two blob digests the manuscript cites to certify the pre-registration.
+# They are NOT the anchor and must survive the anchor rewrite untouched; the
+# check that they do is what stops a shape-keyed rewriter from eating them.
+PREREG_BLOBS = ["bcfb0363edef76aa6873e057ad2081f2e11bebeb",
+                "3e236e54d38dd263730bbedea368fbe232616428"]
 
 ROW = re.compile(r"^(?P<head>.*?&\s*)(?P<cell>.*?)"
                  r"(?P<tail>\s*\\\\\s*%\s*@@(?P<tok>\w+)@@\s*)$")
@@ -87,18 +104,27 @@ def main():
 
     lines = {name: declaration_lines(path) for name, path in MODULES.items()}
     tex = io.open(TEX, encoding="utf-8", newline="").read()
-    old_anchor_hits = HEX40.findall(tex)
 
     checks = []          # (name, ok)
 
-    # ---- 1. the anchor, by pattern
-    tex = HEX40.sub(anchor, tex)
-    checks.append(("anchor present after rewrite", anchor in tex))
-    stale = [h for h in set(x.lower() for x in old_anchor_hits) if h != anchor]
-    checks.append(("no stale anchor survives",
-                   all(h not in tex.lower() for h in stale)))
-    checks.append(("exactly one anchor definition",
-                   len(HEX40.findall(tex)) == 1))
+    # ---- 1. the anchor, by its DEFINITION and not by its shape
+    defs_before = ANCHOR_DEF.findall(tex)
+    checks.append(("exactly one anchor definition", len(defs_before) == 1))
+    old_anchor = defs_before[0][1].lower() if defs_before else None
+    tex, replaced = ANCHOR_DEF.subn(
+        lambda m: m.group(1) + anchor + m.group(3), tex, count=1)
+    checks.append(("anchor definition rewritten exactly once", replaced == 1))
+    checks.append(("anchor present after rewrite",
+                   ("\\newcommand{\\anchor}{%s}" % anchor) in tex))
+    checks.append(("no stale anchor survives in a definition",
+                   all(sha.lower() == anchor
+                       for _h, sha, _t in ANCHOR_DEF.findall(tex))))
+    # The citation hashes are LEFT ALONE on purpose, and that is checked: they
+    # are the pre-registration's certificate, not the anchor.
+    others = [h.lower() for h in HEX40.findall(tex)
+              if h.lower() not in (anchor, old_anchor)]
+    checks.append(("pre-registration blob citations survive untouched",
+                   sorted(set(others)) == sorted(set(PREREG_BLOBS))))
 
     # ---- 2. the permalink line numbers, keyed by the declaration name itself
     unresolved = []

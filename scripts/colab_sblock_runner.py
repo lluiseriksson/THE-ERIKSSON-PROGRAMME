@@ -44,10 +44,20 @@ which would have REJECTED the very measurement the manuscript's filler must
 accept.  A committed procedure that contradicts the committed prediction is
 worse than no procedure: it looks like evidence.
 
-AND THE BASELINE IS MEASURED, NOT COPIED.  `CLAUDE.md` records 8465 at
-`3421aa1f`, and a copied count may not be used as a baseline.  So `--before`
-must come from a build of the core at the campaign's base commit IN THE SAME
-RUNTIME as the `--after` build; the delta is then real rather than inherited.
+THREE BASELINES, AND THEY ARE DIFFERENT NUMBERS.  An earlier version of this
+paragraph named only the first and would have had `stage4` compare the v2
+prediction against the wrong one:
+
+    v1 original campaign parent 345479fa      -> 8468
+    v1 PUBLISHED anchor c90dc745, = v2 base   -> 8469
+    v2 candidate anchor                       -> expected 8469, delta 0
+
+So `--before` for a v2 run is the v1.0 PUBLISHED anchor's count, not the
+campaign parent's.  A copied count may not be used as a baseline, and this
+runner receives `--before` as a bare integer, which it CANNOT verify came
+from a build: the transcript must therefore carry the baseline build's
+command, SHA and log alongside it.  That limitation is stated rather than
+papered over.
 
 WHICH BASE, AND THE MISTAKE THIS PARAGRAPH EXISTS TO PREVENT.  The first version
 of this header named `6d71e51b` --- the MERGE-BASE WITH `main` --- as "this
@@ -178,6 +188,16 @@ def stage0(expected_sha):
             print("  MISMATCH: %s" % p)
         raise SystemExit("FATAL stage 0 - refusing to compile against an "
                          "environment that is not the one this lane pinned")
+    dirty = subprocess.run(["git", "status", "--porcelain"], cwd=REPO,
+                           capture_output=True, text=True).stdout.strip()
+    tracked = [l for l in dirty.splitlines() if not l.startswith("??")]
+    if tracked:
+        for l in tracked:
+            print("  DIRTY: %s" % l)
+        raise SystemExit("FATAL stage 0 - a correct HEAD does not imply a "
+                         "clean worktree, and this campaign has already been "
+                         "bitten by a shared clone")
+    print("  worktree clean (no modified tracked files)")
     print("  stage 0 OK")
     return sha
 
@@ -242,7 +262,8 @@ def stage4(baseline):
     `python -O` cannot delete the one line that would notice the campaign was
     not the shape it claims.
     """
-    print("stage 4 - job count against the pre-registered prediction (+1)")
+    print("stage 4 - v2 job count: registered absolute %d and delta %+d"
+          % (REGISTERED_JOBS_ABSOLUTE, REGISTERED_JOBS_DELTA))
     log = os.path.join(OUT, "YangMillsCore.normal.log")
     if not os.path.exists(log):
         print("  core build log absent - cannot read a job count")
@@ -269,11 +290,11 @@ def stage4(baseline):
               % (jobs, REGISTERED_JOBS_ABSOLUTE))
         return SENTINEL_NONZERO, jobs, log
     if delta != REGISTERED_JOBS_DELTA:
-        print("  PREDICTION FAILED.  +2 would mean a second module was pulled")
-        print("  in without anyone writing it down; 0 would mean the new module")
-        print("  never reached the core and this build proved nothing about it.")
+        print("  PREDICTION FAILED: measured delta %+d, registered delta %+d."
+              % (delta, REGISTERED_JOBS_DELTA))
         return SENTINEL_NONZERO, jobs, log
-    print("  prediction held: exactly one new module.")
+    print("  prediction held: the core stayed at %d and the delta is %+d."
+          % (jobs, delta))
     return SENTINEL_ZERO, jobs, log
 
 
@@ -320,8 +341,14 @@ def main():
     sha = stage0(expected_sha)
     print()
     print('PRE-BUILD HASHES (what is about to be elaborated)')
-    stage5(sha)
+    pre_hashes = dict((f, h) for f, h, _n in stage5(sha))
     results = {}
+    results[("prereg_blobs", "normal")] = run(
+        [sys.executable, "scripts/verify_prereg_blobs.py", "HEAD"],
+        "prereg_blobs", "normal")
+    results[("prereg_blobs", "optimized")] = run(
+        [sys.executable, "-O", "scripts/verify_prereg_blobs.py", "HEAD"],
+        "prereg_blobs", "optimized")
     results[("lean_decls", "normal")] = run(
         [sys.executable, "scripts/lean_decls.py"],
         "lean_decls", "normal")
@@ -333,7 +360,16 @@ def main():
     results.update(stage2())
     results["oracle"] = stage3()
     results["jobcount"] = stage4(baseline)
-    stage5(sha)
+    print()
+    print('POST-BUILD HASHES (what was actually elaborated)')
+    post_hashes = dict((f, h) for f, h, _n in stage5(sha))
+    same = pre_hashes == post_hashes
+    for f in sorted(set(pre_hashes) | set(post_hashes)):
+        if pre_hashes.get(f) != post_hashes.get(f):
+            print('  MUTATED DURING THE RUN: %s' % f)
+    results['pre/post hashes identical'] = (
+        SENTINEL_ZERO if same else SENTINEL_NONZERO,
+        0 if same else 1, 'in-memory comparison')
     return summarise(results)
 
 
