@@ -127,6 +127,45 @@ synthesis consumes sealed phase reports.  No phase may reveal to a later blind
 phase the route it must independently discover.  A timeout is not a verdict
 and creates no authority to amend the gate.
 
+### External readings freeze an exact review object
+
+**Incident that paid the rule (2026-08-02, incident report):** an external
+reader stopped without issuing a verdict after the PR #51 branch moved from
+the dispatched SHA while the reading was in flight.  The measured history and
+evidence boundary are recorded in the [2026-08-02 operational provenance
+record](INCIDENT-OPERATIONAL-PROVENANCE-20260802.md#1-external-reading-on-a-moving-branch).
+
+**Rule.**  While an external reading is in flight, both the branch and the PR
+body are frozen.  Known defects are declared as carve-outs and repaired only
+after the reading.  The commission and the verdict must each name the exact
+SHA, the method used to capture the PR body, the body's byte representation
+and normalization, and its hash.
+
+### Disposable audit clones are removed or reported explicitly
+
+**Incident that paid the rule (2026-08-02, incident report):** nine disposable
+audit clones had accumulated; eight were removed in a controlled cleanup and
+one remained blocked by policy.  The exact disposition is recorded in the
+[2026-08-02 operational provenance
+record](INCIDENT-OPERATIONAL-PROVENANCE-20260802.md#2-disposable-clone-accumulation).
+
+**Rule.**  Remove every disposable clone when its task ends.  If cleanup
+fails, emit a separate line `CLEANUP-PENDING: <exact absolute path>`.  Never
+hide the condition in prose or confuse disposable garbage with deliberately
+retained evidence.
+
+### Textual hashes identify a byte regime
+
+**Incident that paid the rule (2026-08-02, incident report):** the frozen PR
+#51 body differed under Git-blob/LF and Windows-checkout/CRLF representations
+and agreed after LF normalization.  The four measured hashes and the 68 line
+ending conversions are recorded in the [2026-08-02 operational provenance
+record](INCIDENT-OPERATIONAL-PROVENANCE-20260802.md#3-textual-hashes-across-line-ending-regimes).
+
+**Rule.**  Every textual hash must declare the byte representation and any
+normalization used.  There is no context-free “the hash” of text without a
+byte regime.
+
 ## Historical provenance for the 2026-08-01 rules
 
 This subsection records why the active rules above exist; it is incident
