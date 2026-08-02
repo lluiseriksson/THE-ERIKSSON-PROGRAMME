@@ -31215,3 +31215,26 @@ the complex `1` and subtraction/addition through `Complex.ofReal`, rather
 than ask `change` for a definitional equality.  No PASS, oracle, core build,
 or theorem certification is claimed.  The runtime was disconnected and
 deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 617 (2026-08-02, **TASK 14: third finite log-grid elaboration failed**)
+
+**MEASURED FAILURE; NO THEOREM CERTIFIED.**  A third fresh CPU/high-RAM Colab
+clone checked out and printed raw SHA
+`ef8fc6e9b37eeefec88147d88ad4f30b2f0f5dea`.  The runtime used no GPU and
+reported Linux `6.6.122+`, x86-64, glibc `2.35`, Python `3.12.13`, 8 Intel
+Xeon 2.20 GHz CPUs, and `MemTotal: 53467184 kB`.  It started at
+`2026-08-02T10:46:37.722278+00:00`; the cell duration was `267.283 s`.
+
+The exact Lean and mathlib pins were verified.  Isolated official cache
+acquisition exited zero after `99.512070 s`.  The sole build command,
+`lake build YangMills.OS.SpatialVacuum`, exited `1` after `143.176164 s`.
+The preceding `change` failures were gone.  Lean instead reported that
+`← Complex.ofReal_sub` and `← Complex.ofReal_add` could not match
+`1 - ((x ^ L : ℝ) : ℂ)` and `1 + ((x ^ L : ℝ) : ℂ)`: the complex literal
+`1` had not first been rewritten as the cast of the real literal `1`.
+
+Thus the exact next repair is to apply `← Complex.ofReal_one` before the
+subtraction/addition rewrites.  This remains a coercion-normalization failure,
+not a counterexample to the finite inequality.  No PASS, oracle, core build,
+or theorem certification is claimed.  The runtime was disconnected and
+deleted immediately; **SESIÓN COLAB LIBRE**.
