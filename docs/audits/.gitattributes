@@ -1,0 +1,22 @@
+# Audit evidence is committed BY ITS HASH.  Every artifact here is listed in a
+# MANIFEST.sha256 that a reader is expected to verify with `sha256sum -c`.
+#
+# The captures were taken on Windows and carry CRLF in the blob.  Without these
+# rules, a clone with `core.autocrlf=true` (which is the SYSTEM setting on the
+# owner's desktop) would convert them on checkout, the materialized bytes would
+# stop matching the manifest, and a perfectly honest clone would report the
+# evidence as corrupt.
+#
+# `-text` disables all end-of-line conversion: the bytes on disk are the bytes
+# in the blob, in every clone, under every configuration.  That is the only
+# thing that makes a hash-verified artifact portable, and this lane learned it
+# the expensive way -- see Addendum 581 on the materialization identity.
+#
+# Patterns without a slash match at any depth, so future evidence directories
+# are covered without editing this file.
+
+*.log            -text
+*.txt            -text
+*.lean           -text
+*.sh             -text
+MANIFEST.sha256  -text
