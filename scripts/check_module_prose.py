@@ -27,7 +27,7 @@ import re
 import sys
 import os
 
-DECL = re.compile(r"^(?:noncomputable\s+)?(?:private\s+)?"
+DECL = re.compile(r"^(?:@\[[^\]]*\]\s*)?(?:noncomputable\s+)?(?:private\s+)?"
                   r"(?:theorem|def|lemma|abbrev|instance|structure|inductive|class)\s+"
                   r"([A-Za-z_][A-Za-z0-9_']*)")
 IDENT = re.compile(r"^[A-Za-z_][A-Za-z0-9_']*$")

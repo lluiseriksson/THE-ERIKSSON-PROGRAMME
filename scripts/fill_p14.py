@@ -61,8 +61,8 @@ LINKS = {
     "MEASSUMLINE": ("SpatialReconstruction", "osPairing_transfer_gibbsSum"),
 }
 
-DECL = re.compile(r"^(?:noncomputable\s+)?(?:private\s+)?"
-                  r"(?:theorem|def|lemma|abbrev|instance)\s+"
+DECL = re.compile(r"^(?:@\[[^\]]*\]\s*)?(?:noncomputable\s+)?(?:private\s+)?"
+                  r"(?:protected\s+)?(?:theorem|def|lemma|abbrev|instance)\s+"
                   r"([A-Za-z_][A-Za-z0-9_']*)")
 HEX40 = re.compile(r"[0-9a-fA-F]{40}")
 

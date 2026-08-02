@@ -55,12 +55,33 @@ passed.  The file also states what each failure would have meant --- an R3
 failure would have meant the reconstruction was built on the wrong map and had
 to be redesigned rather than patched.
 
+## What an external reading found, and what it changed
+
+A reading of v1.0 pointed out, correctly, that four things the prose claimed
+were not in the formal text: `T` was a bare function and not a linear map; its
+uniqueness was asserted and not proved; the uniqueness argument needs the site
+form to be DEFINITE while only NON-NEGATIVITY was available; and the quotient by
+the null space was described rather than constructed.  It also observed that
+gate R4 --- the spectrum of `T` --- is one line of algebra.
+
+All five are now theorems, in §6, §7 and §8: `siteForm_self_eq_zero_iff`,
+`siteForm_right_ext`, `transferOp_unique`, `transferOpL`, `transferOp_sqrtw`
+with `transferOp_eigen_of_symWeighted`, and `physicalEquiv`.  R4 has been
+replaced by the theorem it was a numerical stand-in for, which is what should
+happen to a gate whose statement turns out to be provable.
+
 ## What is NOT here
 
-R4 is a gate, not a theorem: this file does NOT prove that `T` inherits the
-Perron eigenvalue or the spectral gap of `symWeighted`, and it does not build a
-Hamiltonian.  It also does not prove a contraction bound.  Those are the next
-step, and naming them here is not the same as having them.
+No Hamiltonian, and no contraction bound: `transferOp_eigen_of_symWeighted`
+transports eigenvectors, but `‖T‖ ≤ λ` is a statement about all vectors and is
+not proved.  No thermodynamic limit and no continuum.
+
+And the mathematics is not new.  Reflection positivity for Ising-type measures,
+through sites and through bonds, is classical --- Osterwalder--Schrader, and
+Frohlich--Israel--Lieb--Simon; the transfer matrix of a finite spin chain is
+older still.  What is new here is that these particular statements are
+machine-checked, with the index bookkeeping of the two geometries done
+explicitly rather than waved at.
 -/
 
 namespace YangMills.OS
@@ -282,6 +303,224 @@ theorem osPairing_transfer {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     siteForm w (collapse w β m F) (transferOp w β (collapse w β m G))
       = osPairingBondCross w β m F G := by
   rw [siteForm_transferOp hw, bondForm_collapse]
+
+/-! ## §6  Definiteness, and the uniqueness the headline needs
+
+v1.0 said in prose that `T` is "not chosen but determined", and the formal text
+did not contain it.  The only positivity statement was NON-NEGATIVITY, and a
+form that is merely non-negative determines nothing: `⟨u, Sv⟩ = ⟨u, Tv⟩` for all
+`u` gives `S = T` only if the form separates points.  An external reading was
+right to call this out.  It is the same defect this lane has a name for --- the
+prose outrunning the lemma --- one level below where it was last caught, and the
+fix is to supply the missing chain rather than to soften the sentence. -/
+
+/-- The physical inner product is additive in its second argument. -/
+theorem siteForm_sub_right {L : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (u x y : (Fin L → Fin 2) → ℂ) :
+    siteForm w u (x - y) = siteForm w u x - siteForm w u y := by
+  unfold siteForm
+  rw [← Finset.sum_sub_distrib]
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  show (starRingEnd ℂ) (u σ) * (x σ - y σ) * ((1 / w σ : ℝ) : ℂ) = _
+  ring
+
+/-- The diagonal of the site form, as a real sum.  Extracted from the
+non-negativity proof so that definiteness can use it too. -/
+theorem siteForm_self_eq {L : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (u : (Fin L → Fin 2) → ℂ) :
+    siteForm w u u = ((∑ σ : Fin L → Fin 2, Complex.normSq (u σ) / w σ : ℝ) : ℂ) := by
+  unfold siteForm
+  push_cast
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  rw [mul_comm ((starRingEnd ℂ) (u σ)) (u σ), Complex.mul_conj]
+  push_cast
+  ring
+
+/-- **THE PHYSICAL INNER PRODUCT IS DEFINITE**, not merely non-negative.  This
+is exactly what makes the defining equation an equation. -/
+theorem siteForm_self_eq_zero_iff {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (u : (Fin L → Fin 2) → ℂ) :
+    siteForm w u u = 0 ↔ u = 0 := by
+  constructor
+  · intro h
+    rw [siteForm_self_eq] at h
+    have hreal : (∑ σ : Fin L → Fin 2, Complex.normSq (u σ) / w σ) = 0 :=
+      Complex.ofReal_eq_zero.mp h
+    have hterm : ∀ σ : Fin L → Fin 2, Complex.normSq (u σ) / w σ = 0 := by
+      intro σ
+      have hnn : ∀ τ ∈ (Finset.univ : Finset (Fin L → Fin 2)),
+          0 ≤ Complex.normSq (u τ) / w τ := fun τ _ =>
+        div_nonneg (Complex.normSq_nonneg _) (hw τ).le
+      exact (Finset.sum_eq_zero_iff_of_nonneg hnn).mp hreal σ (Finset.mem_univ σ)
+    funext σ
+    have := hterm σ
+    rw [div_eq_zero_iff] at this
+    rcases this with h1 | h2
+    · exact Complex.normSq_eq_zero.mp h1
+    · exact absurd h2 (hw σ).ne'
+  · intro h
+    subst h
+    unfold siteForm
+    simp
+
+/-- **SEPARATION.**  Two vectors pairing identically against everything are
+equal.  Immediate from definiteness, and it is the step v1.0 skipped. -/
+theorem siteForm_right_ext {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ)
+    (x y : (Fin L → Fin 2) → ℂ)
+    (h : ∀ u, siteForm w u x = siteForm w u y) : x = y := by
+  have hz : siteForm w (x - y) (x - y) = 0 := by
+    rw [siteForm_sub_right, h (x - y), sub_self]
+  exact sub_eq_zero.mp ((siteForm_self_eq_zero_iff hw (x - y)).mp hz)
+
+/-- **THE OPERATOR IS UNIQUE.**  Any `S` satisfying the defining equation IS
+`transferOp`.  The claim that the operator is forced rather than chosen is this
+theorem; without it the claim was a sentence. -/
+theorem transferOp_unique {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ)
+    (β : ℝ) (S : ((Fin L → Fin 2) → ℂ) → ((Fin L → Fin 2) → ℂ))
+    (hS : ∀ u v, siteForm w u (S v) = bondForm β u v)
+    (v : (Fin L → Fin 2) → ℂ) : S v = transferOp w β v := by
+  refine siteForm_right_ext hw _ _ fun u => ?_
+  rw [hS u v, siteForm_transferOp hw]
+
+/-! ## §7  The operator as a linear map, and its spectrum
+
+Two more things v1.0 asserted without carrying: that `T` is an operator (it was
+a bare function), and that its spectrum is the one this lane already knows (that
+was gate R4, registered before the fact and cited in no proof).  An external
+reading observed that R4 is one line of algebra.  It is; so it is a theorem
+here, and a gate that a theorem replaces should be replaced. -/
+
+theorem transferOp_add {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
+    (x y : (Fin L → Fin 2) → ℂ) :
+    transferOp w β (x + y) = transferOp w β x + transferOp w β y := by
+  funext σ
+  show ((w σ : ℝ) : ℂ) * ∑ τ : Fin L → Fin 2,
+        ((spatialKernel β σ τ : ℝ) : ℂ) * (x τ + y τ)
+      = ((w σ : ℝ) : ℂ) * (∑ τ : Fin L → Fin 2,
+          ((spatialKernel β σ τ : ℝ) : ℂ) * x τ)
+        + ((w σ : ℝ) : ℂ) * ∑ τ : Fin L → Fin 2,
+          ((spatialKernel β σ τ : ℝ) : ℂ) * y τ
+  rw [← mul_add, ← Finset.sum_add_distrib]
+  exact congrArg _ (Finset.sum_congr rfl fun τ _ => by ring)
+
+theorem transferOp_smul {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (c : ℂ)
+    (x : (Fin L → Fin 2) → ℂ) :
+    transferOp w β (c • x) = c • transferOp w β x := by
+  funext σ
+  show ((w σ : ℝ) : ℂ) * ∑ τ : Fin L → Fin 2,
+        ((spatialKernel β σ τ : ℝ) : ℂ) * (c * x τ)
+      = c * (((w σ : ℝ) : ℂ) * ∑ τ : Fin L → Fin 2,
+          ((spatialKernel β σ τ : ℝ) : ℂ) * x τ)
+  have hstep : ∀ τ : Fin L → Fin 2,
+      ((spatialKernel β σ τ : ℝ) : ℂ) * (c * x τ)
+        = c * (((spatialKernel β σ τ : ℝ) : ℂ) * x τ) := fun τ => by ring
+  rw [Finset.sum_congr rfl fun τ (_ : τ ∈ Finset.univ) => hstep τ,
+    ← Finset.mul_sum]
+  ring
+
+/-- **THE TRANSFER OPERATOR, AS AN OPERATOR.**  `transferOp` packaged as a
+`ℂ`-linear map, so that the word is a type and not a manner of speaking. -/
+noncomputable def transferOpL {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) :
+    ((Fin L → Fin 2) → ℂ) →ₗ[ℂ] ((Fin L → Fin 2) → ℂ) where
+  toFun := transferOp w β
+  map_add' := transferOp_add w β
+  map_smul' c x := transferOp_smul w β c x
+
+@[simp] theorem transferOpL_apply {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
+    (v : (Fin L → Fin 2) → ℂ) : transferOpL w β v = transferOp w β v := rfl
+
+/-- The real identity behind the conjugation: one factor of `√w` moves from the
+weight onto the kernel. -/
+theorem sqrtw_kernel_mul {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 ≤ w σ)
+    (β : ℝ) (σ τ : Fin L → Fin 2) :
+    w σ * (spatialKernel β σ τ * Real.sqrt (w τ))
+      = Real.sqrt (w σ) * symWeighted w β σ τ := by
+  have h : Real.sqrt (w σ) * Real.sqrt (w σ) = w σ := Real.mul_self_sqrt (hw σ)
+  unfold symWeighted
+  linear_combination (-(spatialKernel β σ τ * Real.sqrt (w τ))) * h
+
+/-- **THE CONJUGATION.**  `T ∘ (√w ·) = (√w ·) ∘ S`, where `S` is the
+symmetrised kernel of this lane's Perron and gap results.  Division-free, so it
+needs only `w ≥ 0`.  Everything about the spectrum follows from it, and nothing
+about it is deep --- which is precisely why it should be a theorem and not a
+registered observation. -/
+theorem transferOp_sqrtw {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 ≤ w σ)
+    (β : ℝ) (u : (Fin L → Fin 2) → ℂ) (σ : Fin L → Fin 2) :
+    transferOp w β (fun τ => ((Real.sqrt (w τ) : ℝ) : ℂ) * u τ) σ
+      = ((Real.sqrt (w σ) : ℝ) : ℂ)
+          * ∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * u τ := by
+  show ((w σ : ℝ) : ℂ) * ∑ τ : Fin L → Fin 2, ((spatialKernel β σ τ : ℝ) : ℂ)
+      * (((Real.sqrt (w τ) : ℝ) : ℂ) * u τ) = _
+  rw [Finset.mul_sum, Finset.mul_sum]
+  refine Finset.sum_congr rfl fun τ _ => ?_
+  have hc := congrArg (fun r : ℝ => (r : ℂ)) (sqrtw_kernel_mul hw β σ τ)
+  push_cast at hc ⊢
+  linear_combination u τ * hc
+
+/-- **THE SPECTRUM TRANSPORTS, WITH THE SAME EIGENVALUE.**  This is what gate R4
+predicted numerically; it is now proved, and the Perron vector and strict
+spectral gap of this lane's earlier work attach to `T` through it. -/
+theorem transferOp_eigen_of_symWeighted {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 ≤ w σ) (β : ℝ) (u : (Fin L → Fin 2) → ℂ) (lam : ℂ)
+    (hu : ∀ σ, (∑ τ : Fin L → Fin 2, ((symWeighted w β σ τ : ℝ) : ℂ) * u τ)
+        = lam * u σ) (σ : Fin L → Fin 2) :
+    transferOp w β (fun τ => ((Real.sqrt (w τ) : ℝ) : ℂ) * u τ) σ
+      = lam * (((Real.sqrt (w σ) : ℝ) : ℂ) * u σ) := by
+  rw [transferOp_sqrtw hw β u σ, hu σ]
+  ring
+
+/-! ## §8  The physical space as a quotient, packaged
+
+v1.0 proved the collapse surjective and then said, in prose, that the null space
+is its kernel and the quotient is the boundary space.  Both consequences are
+elementary; neither was written down.  Here they are objects. -/
+
+/-- The collapse as a linear map. -/
+noncomputable def collapseL {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ) (m : ℕ) :
+    ((Fin (m + 1) → (Fin L → Fin 2)) → ℂ) →ₗ[ℂ] ((Fin L → Fin 2) → ℂ) where
+  toFun F := collapse w β m F
+  map_add' F G := by
+    funext σ
+    exact collapse_add w β m F G σ
+  map_smul' c F := by
+    funext σ
+    exact collapse_smul w β m c F σ
+
+@[simp] theorem collapseL_apply {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
+    (m : ℕ) (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    collapseL w β m F = collapse w β m F := rfl
+
+theorem collapseL_surjective {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (m : ℕ) :
+    Function.Surjective (collapseL w β m) := fun v => collapse_surjective hw β m v
+
+/-- **THE NULL SPACE OF THE REFLECTED FORM IS EXACTLY THE KERNEL OF THE
+COLLAPSE.**  So the quotient below is by something identified, not by an
+abstract null space that happens to be there. -/
+theorem mem_ker_collapseL_iff {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (m : ℕ)
+    (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    F ∈ LinearMap.ker (collapseL w β m) ↔ osPairingSite w β m F = 0 := by
+  rw [LinearMap.mem_ker]
+  constructor
+  · intro h
+    have hcol : collapse w β m F = 0 := h
+    rw [← osPairingSiteCross_self, ← siteForm_collapse, hcol]
+    unfold siteForm
+    simp
+  · intro h
+    have hz : siteForm w (collapse w β m F) (collapse w β m F) = 0 := by
+      rw [siteForm_collapse, osPairingSiteCross_self, h]
+    exact (siteForm_self_eq_zero_iff hw _).mp hz
+
+/-- **THE PHYSICAL SPACE.**  The quotient of half-chain observables by the null
+space of the reflected form IS the space of boundary vectors, linearly and in
+the sense of a bundled equivalence. -/
+noncomputable def physicalEquiv {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (m : ℕ) :
+    (((Fin (m + 1) → (Fin L → Fin 2)) → ℂ) ⧸ LinearMap.ker (collapseL w β m))
+      ≃ₗ[ℂ] ((Fin L → Fin 2) → ℂ) :=
+  LinearMap.quotKerEquivOfSurjective _ (collapseL_surjective hw β m)
 
 /-- **AND THE SAME ON THE PATH SUM ITSELF.**  Substituting the bond bridge on
 the right: the transfer operator's matrix element between two half-chain
