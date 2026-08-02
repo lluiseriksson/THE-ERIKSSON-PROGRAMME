@@ -180,7 +180,7 @@ applicable label.
 | 9 | contour adjacency budget (`degree_bound`, `one_le_Delta`) | partial combinatorial producer | tree |
 | 10 | contour radius envelope (`radius_nonneg`, `radius_cap`) | open scalar/geometric envelope | tree |
 | 11 | contour contraction package (`Ahead_nonneg`, `rho_nonneg`, `rate_pos`, `shell_small`, `contour_series_small`, `neumann_small`, `neumann_transpose_small`) | partial physical producer; joint contraction is open | tree + corpus: CMP116 |
-| 12 | conditioned Gaussian root (`conditionedRoot`) | partial covariance producer; the matrix square-root certificate is present, but the terminal `root` is not yet identified with the canonical inverse square root of the interacting precision | tree |
+| 12 | conditioned Gaussian root (`conditionedRoot`) | partial covariance producer; the matrix square-root certificate is present, but `conditionedCovariance` is not yet identified with the localized compression of the interacting covariance and the terminal `root` with its positive square root | tree |
 | 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | open and mandatory; a degenerate root is not admissible | tree, downstream of group 2 |
 | 14 | sigma Cauchy-radius normalization (`deltaRadius_eq`) | open equality against the installed base contour | tree |
 | 15 | cardinality normalization (`normalizedGap`) | open equality in the source convention | tree |
@@ -1097,19 +1097,23 @@ However, `CMP116CenteredConditionedCombinedSourceData.root` remains an
 independent endomorphism.  Its `conditionedRoot` field proves only that the
 finite matrix of this root is symmetric, carried by the localized
 coordinates, and squares to the separately supplied `conditionedCovariance`.
-No field identifies that covariance with `interactingCovariance` or the root
-with `physicalCanonicalInverseSqrt K`.  Therefore substituting
+No field identifies that covariance with a localized compression of
+`interactingCovariance`, or the root with the positive square root of that
+compression.  Therefore substituting
 `||R||^2 <= c^-1` at the present interface would be an unjustified
 identification.
 
-The missing source-facing bridge can be stated without ambiguity: install a
-`PhysicalLocalizedCovarianceRootCertificate` for the literal interacting
-precision/covariance/root, or definitionally choose the canonical positive
-inverse square root and transport it to the finite matrix.  The existing
-root-norm bridge then gives
+The missing source-facing bridge can be stated without ambiguity: construct
+the finite conditioned covariance as the localized coordinate compression of
+the literal interacting covariance, take its positive square root, and prove
+the existing conditioned-root and nondegeneracy certificates.  Equivalently,
+a physical localized covariance-root certificate may first supply the global
+root data, followed by the compression theorem.  The required norm chain is
 
 ```text
-||R||^2 = ||interactingCovariance|| <= c^-1.
+||R||^2 = ||conditionedCovariance||
+        <= ||interactingCovariance||
+        <= c^-1.
 ```
 
 After that bridge, and assuming the displayed rates are nonnegative, the
