@@ -173,8 +173,11 @@ theorem cmp116Lemma1PhysicalCovariancePropagator_eq
       sigma ∈ cmp116ComplexShiftedWeakeningPolydisc shiftedRadius := by
     intro d
     simpa [shiftedRadius] using hsigma d
-  have hwalkCap : ∀ walk d,
-      d ∈ cmp116Lemma1PhysicalCovarianceWalkActive anchor walk →
+  have hwalkCap :
+      ∀ (walk : CMP116Lemma1PhysicalCovarianceWalk M Q R)
+        (d : FinBox 4 (2 * Q)),
+      d ∈ cmp116Lemma1PhysicalCovarianceWalkActive
+          (M := M) (Q := Q) (R := R) anchor walk →
         1 + shiftedRadius d ≤ Real.exp kappa1 := by
     intro walk d _hd
     simp [shiftedRadius]
