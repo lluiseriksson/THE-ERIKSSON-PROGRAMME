@@ -51,7 +51,7 @@ switched on.  That theorem obstructs the \emph{method}.  It was read as
 obstructing the \emph{conclusion}, and the reading outlived its own retraction.
 
 We prove, in Lean~4 with no \texttt{sorry} and no project axiom, a chain of
-five theorems.  \textbf{First}, the one-bond influence envelope: flipping one
+six theorems.  \textbf{First}, the one-bond influence envelope: flipping one
 neighbour across a bond of strength $J\ge0$ moves a two-state site's conditional
 by at most $\tanh J$, and by exactly $\tanh J$ at one field, so $\tanh J$ is the
 \emph{least field-uniform} bound.  It is an interdependence majorant, not the
@@ -86,8 +86,8 @@ where $\delta_i$ is oscillation in the single coordinate $i$; composing with
 the third theorem replaces the inner series by $\alpha^{\dist(i,j)}/(1-\alpha)$
 and yields exponential decay of connected correlations at a rate read off
 single-site data.  The constant $\tfrac14$ is \emph{attained}, on a witness
-inside the kernel.  \textbf{Fifth}, and the reason the chain now begins where a
-reader's data begins: from a strictly positive weight $w$ on $S^{\iota}$
+inside the kernel.  \textbf{Fifth}, the instantiation at an arbitrary weight: from a strictly
+positive weight $w$ on $S^{\iota}$
 \emph{alone} we construct the measure $\mu_w=w/Z$ and its heat-bath kernel,
 \emph{prove} that $\mu_w$ is invariant --- by an involution on
 $S^{\iota}\times S$, so that step is an identity rather than an estimate ---
@@ -98,6 +98,19 @@ condition itself, which is a condition on the interaction and not on the
 machinery.  (The \emph{geometric} form of the decay consumes one further
 hypothesis, stated where it is used: that $c^w$ has range one for a distance
 obeying the two metric conditions.  The resolvent form needs nothing else.)
+\textbf{Sixth}, the interaction itself: for the \emph{Ising} weight of a
+symmetric zero-diagonal coupling $J$ we prove that the heat-bath conditional
+is the sigmoid $(1+\tanh h)/2$ at the local field
+$h_i=\sum_k J_{ik}\,\sigma_k$, and that the intrinsic matrix is dominated by
+the envelope of the first theorem, $c^{w}_{ik}\le\tanh|J_{ik}|$ --- so every
+hypothesis of the fifth theorem's endpoints becomes a computation on $J$.  On
+the one-bond system the domination is an \emph{equality}: the optimal field is
+reachable there, and the intrinsic coefficient \emph{is} $\tanh\beta$; that
+system moreover satisfies Dobrushin's condition at every coupling, so its
+decay bound carries no smallness hypothesis at all.  And on the star cell the
+window $2\tanh|\beta|+2\tanh|\gamma|<1$ --- the second theorem's row-sum
+computation --- becomes the hypothesis of an exponential-decay theorem about
+the anisotropic Ising weight itself.
 Each rung carries a non-vacuity witness and every declaration is
 oracled.
 
@@ -120,8 +133,10 @@ finite-size scaling that we do not attempt.
 coupled kernel is \emph{not} established here: what is proved is decay of
 correlations of the Gibbs weight, and the finite-time transport from that
 decay into the operator formulation is the one open step named in the frontier
-section.  The intrinsic Dobrushin condition is not verified for any particular
-interacting family.  Dobrushin's uniqueness theorem and
+section.  The intrinsic Dobrushin condition is now a computation on the
+coupling: it holds unconditionally for the one-bond system, reduces to the
+window for the star cell, and remains unverified for lattice families beyond
+those cells.  Dobrushin's uniqueness theorem and
 his comparison estimate are classical \cite{Dobrushin1968,Dobrushin1970,%
 Simon1993}; nothing in this paper is new mathematics.  What is offered is a
 mechanised, non-vacuous chain from a single bond to exponential decay of
@@ -132,7 +147,8 @@ consequence for Yang--Mills theory is stated, suggested, or implied.
 \section{What this paper claims, and what it does not}
 
 \textbf{Claimed, machine-checked.}  Theorems~\ref{thm:coeff}, \ref{thm:matrix},
-\ref{thm:d1}, \ref{thm:comparison} and~\ref{thm:gibbs}, their witnesses and the
+\ref{thm:d1}, \ref{thm:comparison}, \ref{thm:gibbs} and~\ref{thm:ising}, with
+Theorem~\ref{thm:star}, their witnesses and the
 corollaries that compose them, in
 \repofile{YangMills/OS/DobrushinCoefficient.lean}{DobrushinCoefficient.lean},
 \repofile{YangMills/OS/DobrushinRowSum.lean}{DobrushinRowSum.lean},
@@ -140,8 +156,9 @@ corollaries that compose them, in
 \repofile{YangMills/OS/DobrushinOscillation.lean}{DobrushinOscillation.lean},
 \repofile{YangMills/OS/DobrushinGruss.lean}{DobrushinGruss.lean},
 \repofile{YangMills/OS/DobrushinConditional.lean}{DobrushinConditional.lean} and
-\repofile{YangMills/OS/DobrushinComparison.lean}{DobrushinComparison.lean} and
-\repofile{YangMills/OS/DobrushinGibbs.lean}{DobrushinGibbs.lean}.  Every
+\repofile{YangMills/OS/DobrushinComparison.lean}{DobrushinComparison.lean},
+\repofile{YangMills/OS/DobrushinGibbs.lean}{DobrushinGibbs.lean} and
+\repofile{YangMills/OS/DobrushinIsing.lean}{DobrushinIsing.lean}.  Every
 declaration is oracled and depends on exactly Lean's three standard axioms.
 
 \textbf{Claimed, measured.}  The saturation table of
@@ -157,7 +174,8 @@ verifiable by reading that development.
 \textbf{Not claimed.}  That $\specRatio$ of the coupled kernel is bounded away
 from one uniformly in the extent: what is proved is decay of correlations of
 the Gibbs weight, and the transport into the operator formulation is untouched.
-That Dobrushin's condition holds for any particular interaction --- it is the
+That Dobrushin's condition holds for lattice families beyond the two cells of
+Theorem~\ref{thm:ising}'s witnesses --- for a general weight it is the
 hypothesis Theorem~\ref{thm:gibbs} leaves to its user, together with, for the
 geometric form of the decay, the range-one support of the intrinsic matrix.  That the window
 derived from
@@ -714,11 +732,11 @@ for.  Nothing downstream depends on the choice.
 
 \emph{The intrinsic matrix versus the envelope.}  $c^w$ is the coefficient, so
 for a bonded interaction it is bounded by the envelope $\tanh|J_{ij}|$ of
-Theorem~\ref{thm:coeff} and may be strictly smaller.  Gate G14 measures that
-gap on registered cells; the paper does not prove the comparison, because
-Theorem~\ref{thm:gibbs} does not need it --- a user with an interaction may
-apply the envelope to \emph{bound} $\sum_k c^w_{ik}$, and that is the only role
-Theorem~\ref{thm:coeff} plays here.
+Theorem~\ref{thm:coeff} and may be strictly smaller.  That domination is no
+longer only measured: for the Ising weight it is Theorem~\ref{thm:ising}
+below.  What stays measured-only is the \emph{strictness} of the gap on
+multi-bond cells (gate G14) --- and the one-bond witness shows the gap is not
+universal, because there the two coincide exactly.
 
 \begin{proposition}[non-vacuity of the instantiation, machine-checked]
 \label{prop:gibbs-witness}
@@ -743,6 +761,100 @@ conditional of an Ising weight is $(1+\tanh h)/2$ at the local field.  G14
 checks that the intrinsic coefficients are dominated by $\tanh|J|$ entrywise,
 which is the measured content of ``the envelope is a majorant, not the
 minimum'' at the level of the measure.
+
+\subsection*{The interaction, instantiated}
+
+Theorem~\ref{thm:gibbs} starts at an arbitrary positive weight.  A reader's
+weight is not arbitrary: it is built from a coupling.  The last rung
+instantiates that too.
+
+\begin{definition}
+\label{def:ising}
+Let $J:\iota\times\iota\to\R$ be symmetric with zero diagonal.  The
+\emph{Ising weight} of $J$ is
+$w_J(\eta)=\exp\bigl(\tfrac12\sum_{a,b}J_{ab}\,\sigma_a\sigma_b\bigr)$ with
+$\sigma_a=\pm1$ the spin of $\eta_a$, and the \emph{local field} at $i$ is
+$h_i(\eta)=\sum_k J_{ik}\,\sigma_k$.
+\end{definition}
+
+\begin{theorem}[machine-checked]
+\label{thm:ising}
+For every such $J$: the heat-bath conditional of $w_J$ at site $i$ is the
+sigmoid of the local field,
+$p^{w_J}_i(\eta,+1)=\tfrac{1+\tanh h_i(\eta)}{2}$; the intrinsic matrix is
+dominated by the envelope,
+\[
+  c^{w_J}_{ik}\;\le\;\tanh\lvert J_{ik}\rvert ,
+\]
+vanishing wherever the coupling does; and consequently, if the \emph{envelope}
+row sums obey $\sum_k\tanh|J_{ik}|\le\alpha<1$ at every site, every conclusion
+of Theorem~\ref{thm:gibbs} holds for $w_J$ with the same $\alpha$ --- the
+comparison estimate, and, when $J$ has range one for a distance, exponential
+decay in that distance.  In Lean the endpoints are
+\texttt{heatBath\_ising\_pPlus}, \texttt{dobCoeff\_ising\_le} and
+\texttt{ising\_covar\_\{le\_resolvent, exp\_decay, two\_point\}}.
+\end{theorem}
+
+\begin{proof}
+The quadratic energy of a configuration updated at $i$ splits as an $i$-free
+block plus $\sigma_i\,h_i(\eta)$ (\texttt{energy\_update}: split the double
+sum at $a=i$ and $b=i$, kill the diagonal with $J_{ii}=0$, merge the two
+cross blocks by symmetry).  The local partition sum is then
+$e^{h}+e^{-h}$ times an $i$-free factor, which cancels in the heat-bath
+quotient: the sigmoid identity.  Updating site $k$ moves the field by
+$J_{ik}(\sigma'_k-\sigma_k)$, and $\sigma'_k-\sigma_k\in\{0,\pm2\}$, so the
+total variation of the two conditionals is the envelope's
+$\mathrm{tv}(h,h-2J')$ at $|J'|=|J_{ik}|$ --- Theorem~\ref{thm:coeff}
+bounds it by $\tanh|J_{ik}|$.  Taking the supremum gives the entrywise
+domination; the endpoints compose with Theorem~\ref{thm:gibbs}.
+\end{proof}
+
+\begin{proposition}[the one-bond witness, and the domination is an equality
+there]
+\label{prop:ising-witness}
+For two sites joined by one bond $\beta\ge0$: the intrinsic coefficient
+\emph{equals} the envelope, $c^{w}_{01}=\tanh\beta$
+(\texttt{dobCoeff\_bond\_attained}), because the all-up configuration
+realises the optimal field $h=\beta$ and flipping the neighbour realises
+$-\beta$.  Moreover the envelope row sum is $\tanh|\beta|<1$ at \emph{every}
+coupling, so this system's two-point decay bound
+(\texttt{bond\_covar\_two\_point}) carries no smallness hypothesis at all.
+\end{proposition}
+
+The equality matters beyond non-vacuity: Section~2's distinction between the
+envelope and the minimal coefficient is a genuine gap on multi-bond cells
+(G14 measures it), and the one-bond system shows the gap can also close ---
+the reachable fields decide, exactly as Theorem~\ref{thm:coeff}'s attainment
+said they would.
+
+\begin{theorem}[the window, instantiated at a weight; machine-checked]
+\label{thm:star}
+On the star of Section~3 --- a centre carrying two bonds $\beta$ and two
+bonds $\gamma$ --- mask the bond function to the star's edges, so the
+coupling is symmetric, zero-diagonal and of range one for the star distance.
+If
+\[
+  2\tanh|\beta|+2\tanh|\gamma|\;<\;1,
+\]
+then for single-site observables $f$ at $i_0$ and $g$ at $j_0$,
+\[
+  \bigl|\mathrm{Cov}_{\mu}(f,g)\bigr|\;\le\;
+  \frac{\delta_{i_0}(f)\,\delta_{j_0}(g)}
+       {4\,\bigl(1-(2\tanh|\beta|+2\tanh|\gamma|)\bigr)}
+  \;\bigl(2\tanh|\beta|+2\tanh|\gamma|\bigr)^{\,d_\star(i_0,j_0)} ,
+\]
+where $\mu$ is the Gibbs weight of the star's Ising weight and $d_\star$ the
+star distance.  In Lean: \texttt{star\_covar\_two\_point}.  The row-sum
+hypothesis is discharged by computation: the centre's envelope row sum is
+exactly the window, each leaf's is $\tanh|\beta|$ or $\tanh|\gamma|$.
+\end{theorem}
+
+The window of Section~3 was ``the hypothesis of a theorem rather than a
+sentence''; it is now the hypothesis of a theorem \emph{about the anisotropic
+Ising weight itself}, which is the composition the abstract promises.  The
+star is a cell, not a lattice, and the theorem does not evaluate the window
+for any numerical $(\beta,\gamma)$; no interval arithmetic is used anywhere
+in this paper.
 
 \section{The measurement, and where the wall is}
 \label{sec:measurement}
@@ -844,7 +956,10 @@ order:
       formality.  \textbf{Done}: Theorem~\ref{thm:gibbs}, from a strictly
       positive weight alone, leaving Dobrushin's condition on the intrinsic
       matrix as the hypothesis a user supplies --- plus, for the geometric
-      form of the decay, the range-one support of that matrix;
+      form of the decay, the range-one support of that matrix; and
+      Theorem~\ref{thm:ising} instantiates the interaction itself, turning
+      that hypothesis into a computation on the coupling, discharged on the
+      one-bond and star cells;
 \item[\textbf{4.}] transport of that decay into the operator formulation: from
       correlations of the Gibbs weight to $\specRatio$ of the transfer kernel,
       through the finite-time interface described below.
@@ -931,12 +1046,14 @@ related models have been treated without mechanisation \cite{WashburnSimons2026}
 
 \section{Limitations}
 
-All five theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
+All six theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
 Theorem~\ref{thm:coeff} is a hyperbolic identity and a bound on a denominator;
 Theorem~\ref{thm:matrix} is a construction and a finite computation;
 Theorem~\ref{thm:comparison} is a telescoping sum, one pointwise application of
 a ninety-year-old covariance bound, and two finite inductions;
-Theorem~\ref{thm:gibbs} is a reindexing by an involution.  Their value
+Theorem~\ref{thm:gibbs} is a reindexing by an involution;
+Theorem~\ref{thm:ising} is a split of a quadratic sum at one index and the
+envelope applied to a field move of $0$ or $\pm2$.  Their value
 is that they are machine-checked, non-vacuous, composed, and carry the hypothesis
 the dead method violated --- not that any of them is deep.
 
@@ -962,7 +1079,7 @@ space: no infinite-volume state is constructed anywhere, and the word
 \section{Reproducibility}
 
 \textbf{Anchor.}  All sources cited above are read at commit
-\nolinkurl{4f3b864004c48edc87c09bd2537fe51340fb6411} of
+\nolinkurl{c8e9ae51b2aee8c86bb365b1ed68ae5be7ea30d2} of
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Toolchain
 \nolinkurl{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned at
 \nolinkurl{07642720480157414db592fa85b626dafb71355b}.  A runner verifies all
@@ -979,16 +1096,26 @@ $8468$ with zero errors: the $+2$ is the difference between two measurements on
 the same plane, one job per new module, and is not an extrapolation.
 
 \textbf{The modules of Sections~\ref{sec:comparison} and~\ref{sec:gibbs}, and
-what is measured about them.}  All five --- oscillation, Gr\"uss, conditional,
-comparison, Gibbs --- are imported by \texttt{YangMillsCore.lean} at this
-anchor, and their endpoints are listed by name in \texttt{oracle\_check.lean}.
-\emph{What has been measured is each module's own build and a targeted oracle
-over its endpoints, not a full core rebuild:} the wiring commit registered the
-prediction $8468\to8473$ jobs, one per module, against this campaign's own
-parent commit rather than a merge-base, and that prediction is \textbf{not yet
-tested} --- the sanctioned plane's budget for this unit was spent on the lane
-modules.  It is stated here as an open measurement rather than reported as a
-number, because a predicted count that has not been taken is not evidence.
+what is measured about them.}  All six --- oscillation, Gr\"uss, conditional,
+comparison, Gibbs, Ising --- are imported by \texttt{YangMillsCore.lean} at
+this anchor, and their endpoints are listed by name in
+\texttt{oracle\_check.lean}.  \emph{What has been measured is each module's
+own build, exit code zero, and a targeted oracle over its endpoints --- not a
+zero-error full core rebuild.}  The job accounting is stated in full because
+part of it was wrong and was corrected \emph{before} the number was taken:
+the wiring commit registered $8468\to8473$, using this lane's own D-2 count
+as the base, but the branch base already carries a sibling paper's module
+measured at $8469$, so the corrected expectation with six new modules ---
+registered in the D-4b commit, still before any measurement --- is
+$\mathbf{8475}$.  The fresh-clone core build at this anchor then showed
+exactly $8475$ jobs in its denominator, and completed $8473$ of them with the
+six modules of this paper all green; it did \emph{not} reach zero errors,
+because a module belonging to a \emph{different} paper's in-flight campaign
+(\texttt{SpatialReconstruction.lean}, six errors in material committed
+without compilation) fails at this anchor, and repairing proofs one did not
+write is not this paper's to do.  A full zero-error core count therefore
+remains \textbf{unmeasured}, blocked by that module, and is recorded as such:
+a denominator observed in a failing build is not a certified count.
 A previous version of this paper carried, at this spot, the opposite sentence
 --- that the modules were not yet imported --- left over from the draft that
 preceded the wiring; its correction had been appended past the end of the
@@ -1001,14 +1128,19 @@ than one an author hides.
 anchor of this lane: the repository-wide oracle ran to completion with exit
 code zero over $2817$ axiom reports and \textbf{zero} occurrences of
 \texttt{sorryAx}, thirty-seven of them this chain's.  For
-Theorems~\ref{thm:comparison} and~\ref{thm:gibbs}: two \emph{targeted} oracle
-runs at this anchor, exit code zero, printing the axioms of seventeen and
-eleven endpoints respectively --- among them the three clauses of
+Theorems~\ref{thm:comparison}, \ref{thm:gibbs} and~\ref{thm:ising}: three
+\emph{targeted} oracle
+runs at their lane anchors (the third at this anchor), exit code zero,
+printing the axioms of seventeen, eleven and twelve endpoints respectively
+--- among them the three clauses of
 Lemma~\ref{lem:key}, both Gr\"uss forms with the Gr\"uss attainment, the
 transport domination, the finite-$N$ and series estimates, the
-exponential-decay composition and the two-point corollary, and on the Gibbs
+exponential-decay composition and the two-point corollary; on the Gibbs
 side invariance, the zero diagonal, domination, the three instantiated
-endpoints and both witnesses.  The union of every axiom list printed, over both
+endpoints and both witnesses; and on the Ising side the energy split, the
+sigmoid identity, the envelope domination, the three instantiated endpoints,
+the one-bond attainment and unconditional decay, and the star window
+theorem.  The union of every axiom list printed, over the three
 runs, is exactly $\{\texttt{propext},\allowbreak\
 \texttt{Classical.choice},\allowbreak\ \texttt{Quot.sound}\}$: Lean's three
 standard axioms, no project axiom, no \texttt{sorry} in any build log.  The
@@ -1019,8 +1151,10 @@ axioms is perfectly clean and would fail that naive test.
 \textbf{One gap in the runner's own coverage, stated because a reader counting
 modules would otherwise not find it.}  The runner builds two lane modules by
 name; \repofile{YangMills/OS/DobrushinRowSum.lean}{DobrushinRowSum.lean} is not
-one of them.  It is nevertheless imported by the core, so the zero exit of the
-core build covers it, and its declarations appear in the oracle.
+one of them.  It is nevertheless imported by
+\texttt{DobrushinIsing.lean} at this anchor, so the zero exit of the
+\emph{lane} build covers it --- a statement deliberately not delegated to the
+core build, whose exit at this anchor is not zero.
 
 \textbf{Independent hash agreement.}  A second desk, working from its own
 checkout on a different operating system and without coordination on the value,
@@ -1043,6 +1177,7 @@ module & \texttt{sha256} & bytes\\
 \texttt{DobrushinConditional.lean} & \nolinkurl{eb52b816f2c401d17edb72c5a7d0f8d413c33bbf9292f770e92a787fc8f5833a} & $18270$\\
 \texttt{DobrushinComparison.lean} & \nolinkurl{a489fc2823e564685f3ffbf586f1a1f63ce4b78a955a9ec88edbcd70afae4133} & $54738$\\
 \texttt{DobrushinGibbs.lean} & \nolinkurl{b525731d274bf0ce7511e0e0f796d5892f22cee1601daa5a8fa7fea6bd507ba1} & $16787$\\
+\texttt{DobrushinIsing.lean} & \nolinkurl{4e880ff013508c55bbbe43db0a511bcecfb51f509a8ebc78f9d49201f577bf23} & $29158$\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -1065,7 +1200,13 @@ also what zero checks produce.
 
 \textbf{What the passes cost, and the one that was not a repair.}  Seven
 elaboration rounds on the Linux plane closed Section~\ref{sec:comparison}'s
-four modules.  Not one of the failures was mathematical: they were library
+four modules; two closed the Gibbs module; three closed the Ising module,
+whose first pass elaborated the entire mathematical chain --- energy split,
+sigmoid identity, envelope domination, endpoints, attainment witness ---
+at the first attempt, failing only on a missing import, two dead closing
+tactics, one no-progress \texttt{simp}, and four rewrites that could not see
+through \texttt{fin\_cases}' literal representation (an \texttt{exact}
+bridges it by definitional equality; a rewrite does not).  Not one of the failures was mathematical: they were library
 names absent under their classical spelling in the pinned Mathlib, section
 variables that a statement never mentioned and so never bound, a global
 rewrite that consumed the literal $1$ inside an indicator, and goals equal only

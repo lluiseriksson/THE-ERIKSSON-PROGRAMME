@@ -139,7 +139,7 @@ def stage2():
 
 
 def stage3():
-    print("stage 3 — the core, with the five modules newly wired in")
+    print("stage 3 — the core, with the six lane modules wired in")
     res = run(["lake", "build", "YangMillsCore"], "YangMillsCore", "normal")
     log = res[2]
     try:

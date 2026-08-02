@@ -30212,3 +30212,67 @@ the fresh-clone measurement, which will test 8475, not 8473, and the
 original mis-based prediction stays in the record.
 
 **ROLES.**  This session FABRICATED and does not audit itself.
+
+## Addendum 587 (2026-08-02, **D-4b GREEN: the interaction instantiated and
+certified — and the core count blocked by a sibling module, with this desk's
+own evidence-truncation recorded**)
+
+**THE RUNG IS GREEN.**  `YangMills/OS/DobrushinIsing.lean` at anchor
+`c8e9ae51b2aee8c86bb365b1ed68ae5be7ea30d2`, sha256
+`4e880ff013508c55bbbe43db0a511bcecfb51f509a8ebc78f9d49201f577bf23`, 29158
+bytes.  Lane build sentinel ZERO.  Targeted oracle at the anchor: exit 0,
+TWELVE endpoints — energy_update, heatBath_ising, heatBath_ising_pPlus,
+TV_heatBath_ising, dobCoeff_ising_le, dobCoeff_ising_zero, the three
+ising_covar endpoints, IsingBondWitness.dobCoeff_bond_attained,
+IsingBondWitness.bond_covar_two_point, StarWitness.star_covar_two_point —
+every axiom list exactly `[propext, Classical.choice, Quot.sound]`.
+
+**PASS ECONOMY.**  Three passes.  Pass 1 (029c595a7): the ENTIRE mathematical
+chain elaborated first try; failures were a missing import (RowSum, star
+section), one dead `ring`, one no-progress `simp only []`, and a `congr 1`
+whose goal count the bullets did not expect.  Pass 2 (0d6e2d7bd): four
+survivors, all one defect — `rw` cannot see through `fin_cases`' literal
+representation of `Fin` values, while `exact` bridges it by defeq (branch 0
+of the same dispatcher, written with `exact`, passed; branches 1-4, written
+with `rw`, failed).  Pass 3 (c8e9ae51b): zero errors.  Judges G12-G14 zero in
+both modes before every pass.
+
+**THE CORE COUNT: observed, not certified.**  The corrected prediction of
+Addendum 586 was **8475**; the fresh-clone build at the anchor showed exactly
+8475 jobs in its lake denominator and completed 8473 with all six Dobrushin
+modules green.  It did NOT reach zero errors: `SpatialReconstruction.lean`
+(paper 14's lane; material of the D-3e/f/g/h commits, written without a
+compiler by the parallel desk) fails.  This desk deleted four dead `ring`s
+after `field_simp` (mechanical, behaviour-preserving) — and then a fuller
+read showed SIX more errors (1219 rewrite-failed, 1221/1354 no-goals, 1268
+unknown `Finset.mul_add`, 1286 linarith-failed, 1508 unknown
+`self_eq_add_left.mp`), which need the author's understanding and are NOT
+mechanical.  The repair is handed to that desk (task chip spawned).  A
+denominator observed in a failing build is not a certified count; the paper
+says so in those words.
+
+**THIS DESK'S OWN DEFECT, recorded.**  The 'four dead tactics' diagnosis was
+made from `grep ... | head -8` — the six further errors were behind the
+truncation, and this desk declared a repair complete on truncated evidence.
+Same family as Addendum 585's lesson, one level up: verify the artifact, and
+read ALL of it — an error list cut at eight lines reads as 'four errors'
+exactly the way an unrendered paragraph reads as 'corrected'.
+
+**RUNTIME RECORD.**  This unit reused the runtime left connected by the
+previous unit (itself a rule deviation, noted), executed three runner passes
+and one targeted oracle, and DISCONNECTED it on completion (Koppla från och
+radera).
+
+**PAPER v5.2** (19 pp): sixth theorem block in the abstract; new Section 5
+subsection (Definition ising, Theorem thm:ising, Proposition
+prop:ising-witness with the EQUALITY on the one-bond system, Theorem
+thm:star = the window as the hypothesis of a decay theorem about the star
+weight); the envelope remark rewritten (domination now proved, strictness
+still measured); reproducibility re-anchored at c8e9ae51b with the full job
+accounting and the blocked-core statement; oracle paragraph now the union
+over THREE targeted runs.  Verified by text extraction: 'five theorems' 0,
+'six theorems' 2, '8475' 2, stale phrases 0, LaTeX errors 0, undefined
+references 0.
+
+**ROLES.**  This session FABRICATED and does not audit itself.  The external
+evaluation that scored v5 has not seen v5.2; no score appears in the paper.
