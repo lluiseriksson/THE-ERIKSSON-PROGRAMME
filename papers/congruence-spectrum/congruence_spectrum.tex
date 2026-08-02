@@ -1080,22 +1080,30 @@ increment & & \textbf{$+1$}, as predicted \\
 \end{center}
 
 Both counters are printed rather than only the difference, and neither is a
-subtraction against a figure measured in some other tree. The treatment log
-shows \texttt{Built YangMills.OS.CongruenceSpectrum} immediately before
-\texttt{Built YangMillsCore}, so the module is genuinely reachable from the
-aggregate root and is not merely present on disk.
+subtraction against a figure measured in some other tree.
 
-\textbf{What those two counts are anchored to.} They were measured at
-\texttt{fdb0317b}, when the module stood at \texttt{56a66ee1}. The module has
-since grown by the two sections described above, and the job-count gate was
-\emph{not} re-run at \texttt{93359636}. We say so rather than reprinting the
-numbers beside the new hash. The gate's claim concerns the import wiring --- that
-the module is reachable from the aggregate root and adds exactly one build job
---- and adding declarations inside an existing module changes neither. What
-could change is whether the module still compiles as a dependency of the
-aggregate, and that \emph{was} re-measured at \texttt{93359636}:
-\texttt{lake build YangMills.OS.CongruenceSpectrum} --- the exact target the
-aggregate depends on --- exits \texttt{0}.
+\textbf{These are the counts at the final commit, not inherited ones.} An earlier
+version of this section carried figures measured at \texttt{fdb0317b}, when the
+module was smaller, and said so rather than reprinting them beside a newer hash.
+They have now been re-measured at \texttt{93359636}, on the fresh runtime
+described above: baseline \textbf{8430}, treatment \textbf{8431}, both exiting
+\texttt{0}, in the same tree, the baseline produced by checking the parent's
+\texttt{YangMillsCore.lean} into the treated tree --- verified to contain zero
+occurrences of \texttt{CongruenceSpectrum} --- rather than by a separate clone.
+The exit codes were read from sentinel files written atomically after
+termination, per the project's sentinel rule; a sentinel's existence is not
+success, and only the integer inside it is.
+
+\textbf{One difference from the earlier run, stated because it removes an
+argument we previously used.} That run could point at
+\texttt{Built YangMills.OS.CongruenceSpectrum} appearing immediately before
+\texttt{Built YangMillsCore} in the treatment log. This run cannot: the module
+had already been compiled earlier in the same session by
+\texttt{lake build YangMills.OS.CongruenceSpectrum}, so Lake had nothing to
+rebuild and printed no such line. The reachability evidence here is the job count
+itself, which is better: the aggregate needs $8431$ jobs with the import and
+$8430$ without, and the one job of difference \emph{is} the module. A dependency
+that were merely present on disk and not reached would contribute zero.
 
 \begin{thebibliography}{9}
 \bibitem{sylvester1852} J.~J.~Sylvester,
