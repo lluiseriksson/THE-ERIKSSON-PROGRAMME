@@ -273,14 +273,20 @@ def main() -> None:
     )
     RESULT["audit_exit"] = audit_exit
     ansi_escape = re.compile(r"\x1b(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
-    clean_audit = ansi_escape.sub("", audit_output).replace("\r", "")
+    clean_audit = re.sub(
+        r"\s+", " ", ansi_escape.sub("", audit_output).replace("\r", "")
+    )
     axiom_headers_seen = clean_audit.count("depends on axioms:")
     axiom_blocks = list(
         re.finditer(r"depends on axioms:\s*(\[[^\]]*\])", clean_audit, flags=re.MULTILINE)
     )
     RESULT["axiom_lines_seen"] = len(axiom_blocks)
     allowed = {"propext", "Classical.choice", "Quot.sound"}
-    content_ok = axiom_headers_seen == len(axiom_blocks)
+    forbidden = {"sorryAx", "ofReduceBool"}
+    content_ok = (
+        axiom_headers_seen == len(axiom_blocks)
+        and not any(name in clean_audit for name in forbidden)
+    )
     for match in axiom_blocks:
         emit(re.sub(r"\s+", " ", match.group(0)))
         axioms = {
