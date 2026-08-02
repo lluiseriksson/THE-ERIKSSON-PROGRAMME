@@ -611,6 +611,252 @@ theorem transferOp_eigenvalue_iff {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
       rw [map_smul, hQ]
       exact hstep.symm
 
+/-! ### §7c  THE CONTRACTION, WITH THE SHARP CONSTANT
+
+Everything above says `T` is self-adjoint and positive and leaves its size
+unknown; three readings in a row listed "no contraction bound" as the first
+open item, and it is the one that stands between this operator and a
+Hamiltonian.  It is closed here, and with the SHARP constant rather than a
+lossy row-sum majorant.
+
+The argument uses no spectral theory.  For a symmetric matrix with non-negative
+entries possessing a strictly positive eigenvector `Ω` at eigenvalue `lam`,
+
+    2 x_i x_j  ≤  (Ω_j/Ω_i) x_i²  +  (Ω_i/Ω_j) x_j²,
+
+which is `(Ω_j x_i - Ω_i x_j)² ≥ 0` divided by `Ω_i Ω_j`.  Summing against `A`
+and folding the two halves together by symmetry gives
+
+    ∑ᵢⱼ Aᵢⱼ xᵢ xⱼ  ≤  ∑ᵢ (xᵢ²/Ωᵢ) ∑ⱼ Aᵢⱼ Ωⱼ  =  lam ∑ᵢ xᵢ² ,
+
+the eigenvector equation collapsing the inner sum exactly.  The Perron vector
+is not used as a bound; it is used as the WEIGHT that makes the elementary
+inequality tight, which is why the constant comes out sharp and is attained.
+-/
+
+/-- The elementary inequality the whole bound rests on: `(b s - a t)² ≥ 0`,
+divided by `a b`. -/
+theorem two_mul_le_weighted {a b s t : ℝ} (ha : 0 < a) (hb : 0 < b) :
+    2 * (s * t) ≤ (b / a) * s ^ 2 + (a / b) * t ^ 2 := by
+  have hab : 0 < a * b := mul_pos ha hb
+  have hid : (b / a) * s ^ 2 + (a / b) * t ^ 2 - 2 * (s * t)
+      = (b * s - a * t) ^ 2 / (a * b) := by
+    field_simp
+    ring
+  nlinarith [div_nonneg (sq_nonneg (b * s - a * t)) hab.le, hid]
+
+/-- **THE SHARP PERRON BOUND, GENERICALLY.**  A symmetric non-negative matrix
+with a strictly positive eigenvector has quadratic form bounded by its
+eigenvalue.  Nothing here is special to this model, and no spectral theory is
+used --- only the eigenvector equation and one square. -/
+theorem quad_le_perron {ι : Type*} [Fintype ι] {A : ι → ι → ℝ}
+    (hsym : ∀ i j, A i j = A j i) (hA : ∀ i j, 0 ≤ A i j)
+    {Ω : ι → ℝ} (hΩ : ∀ i, 0 < Ω i) {lam : ℝ}
+    (heig : ∀ i, (∑ j, A i j * Ω j) = lam * Ω i) (x : ι → ℝ) :
+    (∑ i, ∑ j, A i j * (x i * x j)) ≤ lam * ∑ i, x i ^ 2 := by
+  classical
+  set M : ι → ι → ℝ := fun i j => A i j * ((Ω j / Ω i) * x i ^ 2) with hM
+  have hterm : ∀ i j, A i j * (x i * x j) ≤ (M i j + M j i) / 2 := by
+    intro i j
+    have h := two_mul_le_weighted (a := Ω i) (b := Ω j) (s := x i) (t := x j)
+      (hΩ i) (hΩ j)
+    have hMij : M i j = A i j * ((Ω j / Ω i) * x i ^ 2) := rfl
+    have hMji : M j i = A j i * ((Ω i / Ω j) * x j ^ 2) := rfl
+    rw [hMij, hMji, hsym j i]
+    nlinarith [hA i j, h]
+  have hle : (∑ i, ∑ j, A i j * (x i * x j))
+      ≤ ∑ i, ∑ j, (M i j + M j i) / 2 :=
+    Finset.sum_le_sum fun i _ => Finset.sum_le_sum fun j _ => hterm i j
+  have hswap : (∑ i, ∑ j, M j i) = ∑ i, ∑ j, M i j := Finset.sum_comm
+  have hhalf : (∑ i, ∑ j, (M i j + M j i) / 2) = ∑ i, ∑ j, M i j := by
+    have hsplit : (∑ i, ∑ j, (M i j + M j i) / 2)
+        = ((∑ i, ∑ j, M i j) + ∑ i, ∑ j, M j i) / 2 := by
+      rw [← Finset.sum_add_distrib]
+      rw [Finset.sum_div]
+      refine Finset.sum_congr rfl fun i _ => ?_
+      rw [← Finset.sum_add_distrib, Finset.sum_div]
+      exact Finset.sum_congr rfl fun j _ => by ring
+    rw [hsplit, hswap]
+    ring
+  have hrow : ∀ i, (∑ j, M i j) = lam * x i ^ 2 := by
+    intro i
+    have hi : (Ω i) ≠ 0 := (hΩ i).ne'
+    have hpull : (∑ j, M i j) = (∑ j, A i j * Ω j) * (x i ^ 2 / Ω i) := by
+      rw [Finset.sum_mul]
+      refine Finset.sum_congr rfl fun j _ => ?_
+      show A i j * ((Ω j / Ω i) * x i ^ 2) = A i j * Ω j * (x i ^ 2 / Ω i)
+      field_simp
+      ring
+    rw [hpull, heig i]
+    field_simp
+  calc (∑ i, ∑ j, A i j * (x i * x j))
+      ≤ ∑ i, ∑ j, (M i j + M j i) / 2 := hle
+    _ = ∑ i, ∑ j, M i j := hhalf
+    _ = ∑ i, lam * x i ^ 2 := Finset.sum_congr rfl fun i _ => hrow i
+    _ = lam * ∑ i, x i ^ 2 := by rw [Finset.mul_sum]
+
+/-! The two real quadratic forms, so the bound can be stated as an inequality
+between real numbers rather than as an existential over `ℂ`. -/
+
+/-- The physical squared norm, as a real number. -/
+noncomputable def siteQ {L : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (u : (Fin L → Fin 2) → ℂ) : ℝ :=
+  ∑ σ : Fin L → Fin 2, Complex.normSq (u σ) / w σ
+
+/-- The bond quadratic form, as a real number: the two real forms the
+real-to-complex step produces. -/
+noncomputable def bondQ {L : ℕ} (β : ℝ) (u : (Fin L → Fin 2) → ℂ) : ℝ :=
+  (∑ σ : Fin L → Fin 2, ∑ τ : Fin L → Fin 2,
+      spatialKernel β σ τ * ((u σ).re * (u τ).re))
+    + ∑ σ : Fin L → Fin 2, ∑ τ : Fin L → Fin 2,
+      spatialKernel β σ τ * ((u σ).im * (u τ).im)
+
+theorem siteForm_self_eq_siteQ {L : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (u : (Fin L → Fin 2) → ℂ) : siteForm w u u = ((siteQ w u : ℝ) : ℂ) :=
+  siteForm_self_eq w u
+
+theorem bondForm_self_eq_bondQ {L : ℕ} (β : ℝ) (u : (Fin L → Fin 2) → ℂ) :
+    bondForm β u u = ((bondQ β u : ℝ) : ℂ) := by
+  unfold bondForm bondQ
+  rw [complexQuad_eq (spatialKernel_symm β) u]
+
+/-- One half of the transport: the symmetrised form at `u/√w` IS the bond form
+at `u`.  Stated for a real vector, which is all the bound needs. -/
+theorem symWeighted_quad_transport {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (y : (Fin L → Fin 2) → ℝ) :
+    (∑ σ : Fin L → Fin 2, ∑ τ : Fin L → Fin 2,
+        symWeighted w β σ τ * ((y σ / Real.sqrt (w σ)) * (y τ / Real.sqrt (w τ))))
+      = ∑ σ : Fin L → Fin 2, ∑ τ : Fin L → Fin 2,
+          spatialKernel β σ τ * (y σ * y τ) := by
+  refine Finset.sum_congr rfl fun σ _ => Finset.sum_congr rfl fun τ _ => ?_
+  have hs : (0:ℝ) < Real.sqrt (w σ) := Real.sqrt_pos.mpr (hw σ)
+  have ht : (0:ℝ) < Real.sqrt (w τ) := Real.sqrt_pos.mpr (hw τ)
+  unfold symWeighted
+  field_simp
+  ring
+
+theorem sq_div_sqrt {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ)
+    (y : (Fin L → Fin 2) → ℝ) (σ : Fin L → Fin 2) :
+    (y σ / Real.sqrt (w σ)) ^ 2 = y σ ^ 2 / w σ := by
+  have hs : (0:ℝ) < Real.sqrt (w σ) := Real.sqrt_pos.mpr (hw σ)
+  have hsq : Real.sqrt (w σ) * Real.sqrt (w σ) = w σ :=
+    Real.mul_self_sqrt (hw σ).le
+  field_simp
+  rw [← hsq]
+  ring
+
+/-- **THE TRANSFER OPERATOR IS A CONTRACTION, WITH THE SHARP CONSTANT.**  For
+any strictly positive eigenvector `Ω` of the symmetrised kernel at eigenvalue
+`lam` --- the Perron data this lane already constructs ---
+
+    ⟨u, T u⟩_site  ≤  lam · ⟨u, u⟩_site
+
+for every complex boundary vector.  So `T/lam` is a self-adjoint positive
+contraction, which is what an Osterwalder--Schrader transfer operator is asked
+to be before a Hamiltonian can be taken. -/
+theorem transferOp_le_perron {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) {Ω : (Fin L → Fin 2) → ℝ}
+    (hΩ : ∀ σ, 0 < Ω σ) {lam : ℝ}
+    (heig : ∀ σ, (∑ τ : Fin L → Fin 2, symWeighted w β σ τ * Ω τ) = lam * Ω σ)
+    (u : (Fin L → Fin 2) → ℂ) :
+    bondQ β u ≤ lam * siteQ w u := by
+  have hsym : ∀ σ τ : Fin L → Fin 2,
+      symWeighted w β σ τ = symWeighted w β τ σ := symWeighted_symm w β
+  have hpart : ∀ y : (Fin L → Fin 2) → ℝ,
+      (∑ σ : Fin L → Fin 2, ∑ τ : Fin L → Fin 2,
+          spatialKernel β σ τ * (y σ * y τ))
+        ≤ lam * ∑ σ : Fin L → Fin 2, y σ ^ 2 / w σ := by
+    intro y
+    have hgen := quad_le_perron hsym
+      (fun σ τ => (symWeighted_pos hw β σ τ).le) hΩ heig
+      (fun σ => y σ / Real.sqrt (w σ))
+    rw [symWeighted_quad_transport hw β y] at hgen
+    have hnorm : (∑ σ : Fin L → Fin 2, (y σ / Real.sqrt (w σ)) ^ 2)
+        = ∑ σ : Fin L → Fin 2, y σ ^ 2 / w σ :=
+      Finset.sum_congr rfl fun σ _ => sq_div_sqrt hw y σ
+    rw [hnorm] at hgen
+    exact hgen
+  have hre := hpart (fun σ => (u σ).re)
+  have him := hpart (fun σ => (u σ).im)
+  have hsplit : lam * siteQ w u
+      = lam * (∑ σ : Fin L → Fin 2, (u σ).re ^ 2 / w σ)
+        + lam * ∑ σ : Fin L → Fin 2, (u σ).im ^ 2 / w σ := by
+    unfold siteQ
+    rw [← mul_add, ← Finset.sum_add_distrib]
+    refine congrArg _ (Finset.sum_congr rfl fun σ _ => ?_)
+    rw [Complex.normSq_apply]
+    field_simp
+    ring
+  unfold bondQ
+  rw [hsplit]
+  exact add_le_add hre him
+
+/-- **AND THE CONSTANT IS ATTAINED**, so it is the sharp one and not merely an
+upper bound: at the vector `√w · Ω` the inequality is an equality. -/
+theorem transferOp_perron_attained {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) {Ω : (Fin L → Fin 2) → ℝ}
+    (hΩ : ∀ σ, 0 < Ω σ) {lam : ℝ}
+    (heig : ∀ σ, (∑ τ : Fin L → Fin 2, symWeighted w β σ τ * Ω τ) = lam * Ω σ) :
+    bondQ β (fun σ => ((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ))
+      = lam * siteQ w (fun σ => ((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ)) := by
+  set y : (Fin L → Fin 2) → ℝ := fun σ => Real.sqrt (w σ) * Ω σ with hy
+  have hre : ∀ σ, (((y σ : ℝ) : ℂ)).re = y σ := fun σ => Complex.ofReal_re _
+  have him : ∀ σ, (((y σ : ℝ) : ℂ)).im = 0 := fun σ => Complex.ofReal_im _
+  have hquad : (∑ σ : Fin L → Fin 2, ∑ τ : Fin L → Fin 2,
+      spatialKernel β σ τ * (y σ * y τ)) = lam * ∑ σ : Fin L → Fin 2, Ω σ ^ 2 := by
+    have hstep : ∀ σ : Fin L → Fin 2,
+        (∑ τ : Fin L → Fin 2, spatialKernel β σ τ * (y σ * y τ))
+          = Ω σ * (lam * Ω σ) := by
+      intro σ
+      rw [← heig σ, Finset.mul_sum]
+      refine Finset.sum_congr rfl fun τ _ => ?_
+      unfold symWeighted
+      rw [hy]
+      ring
+    rw [Finset.sum_congr rfl fun σ (_ : σ ∈ Finset.univ) => hstep σ,
+      Finset.mul_sum]
+    exact Finset.sum_congr rfl fun σ _ => by ring
+  have hnorm : (∑ σ : Fin L → Fin 2,
+      Complex.normSq (((y σ : ℝ) : ℂ)) / w σ) = ∑ σ : Fin L → Fin 2, Ω σ ^ 2 := by
+    refine Finset.sum_congr rfl fun σ _ => ?_
+    have hsq : Real.sqrt (w σ) * Real.sqrt (w σ) = w σ :=
+      Real.mul_self_sqrt (hw σ).le
+    have hwne : w σ ≠ 0 := (hw σ).ne'
+    rw [Complex.normSq_apply, hre σ, him σ]
+    rw [hy]
+    field_simp
+    nlinarith [hsq, sq_nonneg (Ω σ)]
+  unfold bondQ siteQ
+  rw [hnorm]
+  have hzero : (∑ σ : Fin L → Fin 2, ∑ τ : Fin L → Fin 2,
+      spatialKernel β σ τ * ((((y σ : ℝ) : ℂ)).im * (((y τ : ℝ) : ℂ)).im)) = 0 := by
+    refine Finset.sum_eq_zero fun σ _ => Finset.sum_eq_zero fun τ _ => ?_
+    rw [him σ, him τ]
+    ring
+  rw [hzero, add_zero]
+  rw [Finset.sum_congr rfl fun σ (_ : σ ∈ Finset.univ) =>
+    Finset.sum_congr rfl fun τ (_ : τ ∈ Finset.univ) =>
+      (by rw [hre σ, hre τ] :
+        spatialKernel β σ τ * ((((y σ : ℝ) : ℂ)).re * (((y τ : ℝ) : ℂ)).re)
+          = spatialKernel β σ τ * (y σ * y τ))]
+  exact hquad
+
+/-- **THE PERRON DATA EXISTS**, so the contraction bound is not conditional on
+a hypothesis nobody can discharge: the symmetrised kernel is strictly positive,
+and this lane already proves such a kernel has a strictly positive eigenvector
+with positive eigenvalue. -/
+theorem exists_contraction_constant {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) :
+    ∃ (Ω : (Fin L → Fin 2) → ℝ) (lam : ℝ), (∀ σ, 0 < Ω σ) ∧ 0 < lam ∧
+      (∀ u : (Fin L → Fin 2) → ℂ, bondQ β u ≤ lam * siteQ w u) ∧
+      bondQ β (fun σ => ((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ))
+        = lam * siteQ w (fun σ => ((Real.sqrt (w σ) * Ω σ : ℝ) : ℂ)) := by
+  obtain ⟨Ω, lam, hΩ, -, hlam, heig⟩ :=
+    exists_pos_eigenvector (symWeighted w β) (symWeighted_pos hw β)
+  exact ⟨Ω, lam, hΩ, hlam,
+    fun u => transferOp_le_perron hw β hΩ heig u,
+    transferOp_perron_attained hw β hΩ heig⟩
+
 /-! ## §8  The physical space as a quotient, packaged
 
 v1.0 proved the collapse surjective and then said, in prose, that the null space

@@ -3177,6 +3177,17 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.sqrtw_kernel_mul
 #print axioms YangMills.OS.transferOp_sqrtw
 #print axioms YangMills.OS.transferOp_eigen_of_symWeighted
+#print axioms YangMills.OS.two_mul_le_weighted
+#print axioms YangMills.OS.quad_le_perron
+#print axioms YangMills.OS.siteQ
+#print axioms YangMills.OS.bondQ
+#print axioms YangMills.OS.siteForm_self_eq_siteQ
+#print axioms YangMills.OS.bondForm_self_eq_bondQ
+#print axioms YangMills.OS.symWeighted_quad_transport
+#print axioms YangMills.OS.sq_div_sqrt
+#print axioms YangMills.OS.transferOp_le_perron
+#print axioms YangMills.OS.transferOp_perron_attained
+#print axioms YangMills.OS.exists_contraction_constant
 #print axioms YangMills.OS.collapseL
 #print axioms YangMills.OS.collapseL_apply
 #print axioms YangMills.OS.collapseL_surjective
