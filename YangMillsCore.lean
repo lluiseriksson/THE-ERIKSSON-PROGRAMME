@@ -957,7 +957,7 @@ import YangMills.OS.DobrushinMatrix
 -- tanh J at h = J, so tanh J is the LEAST upper bound.  That is the number which,
 -- summed over the neighbours of a site, is the Dobrushin coefficient.  Still no
 -- measure theory, no Gibbs measure and no decay statement: composing it over a
--- site and feeding D-1 is D-2b and D-3, neither of which exists.
+-- site and feeding D-1 is D-2b (below) and D-3 (the comparison chain, below).
 import YangMills.OS.DobrushinCoefficient
 
 -- D-2b of the Dobrushin lane: the bond coefficients of D-2a assembled into a
@@ -965,5 +965,35 @@ import YangMills.OS.DobrushinCoefficient
 -- row-sum bound -- which IS the coupling window.  starDist_rowSum computes that
 -- window for a site with two bonds of strength beta and two of strength gamma
 -- and gets 2 tanh|beta| + 2 tanh|gamma|, so the window is a hypothesis of a
--- theorem rather than a sentence.  The comparison estimate is NOT here.
+-- theorem rather than a sentence.
 import YangMills.OS.DobrushinRowSum
+
+-- D-3a of the Dobrushin lane (docs/DOBRUSHIN-D3-CHARTER.md): the analytic
+-- ingredient of the comparison chain.  A zero-sum signed mass tested against g
+-- is controlled by half its total variation times osc(g), with the attainment
+-- witness that makes the constant the constant.
+import YangMills.OS.DobrushinOscillation
+
+-- The quarter constant: Popoviciu's variance bound, the mean-absolute-deviation
+-- bound, and the Gruss covariance bound |Cov| <= (M1-m1)(M2-m2)/4 with its own
+-- attainment.  Deliberately NOT a dependency of the transport lemma.
+import YangMills.OS.DobrushinGruss
+
+-- D-3b/c: the single-site conditional operator and THE KEY LEMMA
+-- delta_k(E_i f) <= delta_k f + C i k * delta_i f, in the three declared
+-- pieces of charter Amendment 1 (semantic vanishing; transport with C a
+-- MAJORANT; the matrix form as the only consumer of C i i = 0).
+import YangMills.OS.DobrushinConditional
+
+-- D-3d/e: Dobrushin's comparison estimate.  Random-scan telescoping, one-step
+-- conditional Gruss, a finite vector induction against the partial resolvent,
+-- and the endpoints |Cov| <= (1/4) delta_f (sum C^n) delta_g, the
+-- alpha^dist/(1-alpha) composition with D-1, and the two-point corollary, with
+-- the Bernoulli witness where the bound is an EQUALITY.
+import YangMills.OS.DobrushinComparison
+
+-- D-4a: the Gibbs instantiation.  From a strictly positive weight alone:
+-- normalised measure, heat-bath kernel, invariance by the site involution, and
+-- the INTRINSIC Dobrushin matrix with zero diagonal proved and domination by
+-- construction.  The one surviving hypothesis is Dobrushin's condition.
+import YangMills.OS.DobrushinGibbs

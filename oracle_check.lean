@@ -3266,3 +3266,56 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.rowSum_le_sum_cover
 #print axioms YangMills.OS.Dobrushin.rowSum_bound_of_local_cover
 #print axioms YangMills.OS.Dobrushin.dobrushin_bound_of_local_cover
+
+-- D-3a, the analytic ingredient of the comparison chain
+-- (docs/DOBRUSHIN-D3-CHARTER.md; gates judge_dobrushin_d3.py).
+#print axioms YangMills.OS.Dobrushin.osc_nonneg
+#print axioms YangMills.OS.Dobrushin.abs_sub_mid_le
+#print axioms YangMills.OS.Dobrushin.sum_zero_sub_const
+#print axioms YangMills.OS.Dobrushin.abs_sum_signed_le
+#print axioms YangMills.OS.Dobrushin.TV_nonneg
+#print axioms YangMills.OS.Dobrushin.abs_sum_sub_le_tv_mul_osc
+#print axioms YangMills.OS.Dobrushin.signed_bound_attained
+
+-- The quarter constant: Popoviciu, the MAD bound, and the Gruss covariance
+-- bound with its attainment (gate J10q).
+#print axioms YangMills.OS.Dobrushin.popoviciu_variance_le
+#print axioms YangMills.OS.Dobrushin.popoviciu_attained
+#print axioms YangMills.OS.Dobrushin.mad_le_half_spread
+#print axioms YangMills.OS.Dobrushin.gruss_covariance_le
+#print axioms YangMills.OS.Dobrushin.gruss_covariance_osc_le
+#print axioms YangMills.OS.Dobrushin.gruss_attained
+
+-- D-3b/c, the key lemma in the three pieces of Amendment 1 (gates J9, J11).
+#print axioms YangMills.OS.Dobrushin.TV_self
+#print axioms YangMills.OS.Dobrushin.deltaAt_nonneg
+#print axioms YangMills.OS.Dobrushin.deltaAt_eq_zero_iff
+#print axioms YangMills.OS.Dobrushin.osc_section_le_deltaAt
+#print axioms YangMills.OS.Dobrushin.deltaAt_condExp_self
+#print axioms YangMills.OS.Dobrushin.deltaAt_condExp_le
+#print axioms YangMills.OS.Dobrushin.deltaAt_condExp_le_matrix
+
+-- D-3d/e, the comparison estimate (gates J10, J10q).
+#print axioms YangMills.OS.Dobrushin.osc_le_sum_deltaAt
+#print axioms YangMills.OS.Dobrushin.transportSum_le
+#print axioms YangMills.OS.Dobrushin.seriesPartial_eq_pow_sum
+#print axioms YangMills.OS.Dobrushin.abs_expect_mul_sub_condExp_le
+#print axioms YangMills.OS.Dobrushin.covar_le_resolvent_partial
+#print axioms YangMills.OS.Dobrushin.covar_le_resolvent_tsum
+#print axioms YangMills.OS.Dobrushin.covar_exp_decay
+#print axioms YangMills.OS.Dobrushin.covar_two_point
+#print axioms YangMills.OS.Dobrushin.Witness.witness_bound
+#print axioms YangMills.OS.Dobrushin.Witness.witness_attained
+
+-- D-4a, the Gibbs instantiation (gates G12/G14, judge_dobrushin_d4.py).
+#print axioms YangMills.OS.Dobrushin.gibbsMu_sum_one
+#print axioms YangMills.OS.Dobrushin.heatBath_sum_one
+#print axioms YangMills.OS.Dobrushin.heatBath_local
+#print axioms YangMills.OS.Dobrushin.expect_heatBath
+#print axioms YangMills.OS.Dobrushin.dobCoeff_diag
+#print axioms YangMills.OS.Dobrushin.dobCoeff_dominates
+#print axioms YangMills.OS.Dobrushin.gibbs_covar_le_resolvent
+#print axioms YangMills.OS.Dobrushin.gibbs_covar_exp_decay
+#print axioms YangMills.OS.Dobrushin.gibbs_covar_two_point
+#print axioms YangMills.OS.Dobrushin.GibbsWitness.witness_attained
+#print axioms YangMills.OS.Dobrushin.GibbsWitness.witness_bound_holds
