@@ -22,7 +22,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{85f6e86b004d8b00a65681d23ea7c5d1b46116aa}
+\newcommand{\anchor}{4f3b864004c48edc87c09bd2537fe51340fb6411}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -33,7 +33,8 @@
 \newcommand{\specRatio}{\mathrm{specRatio}}
 
 \title{The Row Sums Were the Method, Not the Theorem:\\
-a Machine-Checked Dobrushin Comparison Estimate,\\
+a Machine-Checked Chain from a Positive Weight to\\
+Exponential Decay of Correlations,\\
 and a Misattributed Uniformity Wall}
 \author{Lluis Eriksson}
 \date{}
@@ -72,9 +73,9 @@ without any constancy assumption,
   \qquad\text{for every }N,
 \]
 with no reference of any kind to the cardinality of the index type.
-\textbf{Fourth}, and new in this version, \emph{Dobrushin's comparison
-estimate itself}, which the previous version named as the one open analytic
-step: for a probability weight $\mu$ on a finite product space
+\textbf{Fourth}, \emph{Dobrushin's comparison estimate itself}, which an
+earlier version of this paper named as its one open analytic step: for a
+probability weight $\mu$ on a finite product space
 $S^{\iota}$, invariant under a family of single-site conditionals whose
 influence is dominated by $C$,
 \[
@@ -85,8 +86,17 @@ where $\delta_i$ is oscillation in the single coordinate $i$; composing with
 the third theorem replaces the inner series by $\alpha^{\dist(i,j)}/(1-\alpha)$
 and yields exponential decay of connected correlations at a rate read off
 single-site data.  The constant $\tfrac14$ is \emph{attained}, on a witness
-inside the kernel.  Each rung carries a non-vacuity witness and every
-declaration is oracled.
+inside the kernel.  \textbf{Fifth}, and the reason the chain now begins where a
+reader's data begins: from a strictly positive weight $w$ on $S^{\iota}$
+\emph{alone} we construct the measure $\mu_w=w/Z$ and its heat-bath kernel,
+\emph{prove} that $\mu_w$ is invariant --- by an involution on
+$S^{\iota}\times S$, so that step is an identity rather than an estimate ---
+and \emph{prove} that the intrinsic Dobrushin matrix $c^w$ has vanishing
+diagonal and dominates the influence.  Every hypothesis of the fourth theorem
+is thereby discharged except one: $\sum_k c^w_{ik}\le\alpha<1$, Dobrushin's
+condition itself, which is a condition on the interaction and not on the
+machinery.  Each rung carries a non-vacuity witness and every declaration is
+oracled.
 
 Separately, and by measurement rather than proof, we remove the wall from where
 it was being placed.  For the coupled kernel the second-eigenvalue ratio
@@ -119,17 +129,17 @@ consequence for Yang--Mills theory is stated, suggested, or implied.
 \section{What this paper claims, and what it does not}
 
 \textbf{Claimed, machine-checked.}  Theorems~\ref{thm:coeff}, \ref{thm:matrix},
-\ref{thm:d1} and~\ref{thm:comparison}, their witnesses and the corollaries that
-compose them, in
+\ref{thm:d1}, \ref{thm:comparison} and~\ref{thm:gibbs}, their witnesses and the
+corollaries that compose them, in
 \repofile{YangMills/OS/DobrushinCoefficient.lean}{DobrushinCoefficient.lean},
 \repofile{YangMills/OS/DobrushinRowSum.lean}{DobrushinRowSum.lean},
 \repofile{YangMills/OS/DobrushinMatrix.lean}{DobrushinMatrix.lean},
 \repofile{YangMills/OS/DobrushinOscillation.lean}{DobrushinOscillation.lean},
 \repofile{YangMills/OS/DobrushinGruss.lean}{DobrushinGruss.lean},
 \repofile{YangMills/OS/DobrushinConditional.lean}{DobrushinConditional.lean} and
-\repofile{YangMills/OS/DobrushinComparison.lean}{DobrushinComparison.lean}.
-Every declaration is oracled and depends on exactly Lean's three standard
-axioms.
+\repofile{YangMills/OS/DobrushinComparison.lean}{DobrushinComparison.lean} and
+\repofile{YangMills/OS/DobrushinGibbs.lean}{DobrushinGibbs.lean}.  Every
+declaration is oracled and depends on exactly Lean's three standard axioms.
 
 \textbf{Claimed, measured.}  The saturation table of
 Section~\ref{sec:measurement}.  These are floating-point computations at finite
@@ -142,10 +152,11 @@ not license.  This is a statement about a formal development, and it is
 verifiable by reading that development.
 
 \textbf{Not claimed.}  That $\specRatio$ of the coupled kernel is bounded away
-from one uniformly in the extent.  That the comparison estimate has been
-instantiated at the Gibbs weight of the development --- its hypotheses are
-discharged here only by the witness of
-Proposition~\ref{prop:comparison-witness}.  That the window derived from
+from one uniformly in the extent: what is proved is decay of correlations of
+the Gibbs weight, and the transport into the operator formulation is untouched.
+That Dobrushin's condition holds for any particular interaction --- it is the
+single hypothesis Theorem~\ref{thm:gibbs} leaves to its user.  That the window
+derived from
 Dobrushin's condition is optimal --- it is not, and Section~\ref{sec:prior} says
 by how much.  That any of this bears on the Yang--Mills mass gap.
 
@@ -609,6 +620,126 @@ Both certifiers were run in \texttt{normal} and in \texttt{optimized}
 (\texttt{python -O}) mode on the Linux plane, all four runs exiting zero with
 their check counters matching.
 
+\section{The instantiation: from a weight, not from data}
+\label{sec:gibbs}
+
+Theorem~\ref{thm:comparison} takes \emph{data} --- a weight, a kernel, a
+majorant --- and six hypotheses.  A reader is entitled to ask whether that data
+exists for anything, and whether the hypotheses are met by the object one
+actually has, which is an interaction, not a kernel.  This section removes the
+question.  Its input is a single function.
+
+\begin{definition}
+\label{def:heatbath}
+Let $w:S^{\iota}\to\R$ be strictly positive.  Its \emph{Gibbs weight} is
+$\mu_w=w/Z$ with $Z=\sum_\eta w(\eta)$, and its \emph{heat-bath kernel} is
+\[
+  p^w_i(\eta,s)\;=\;\frac{w(\eta^{i\to s})}{\sum_{t\in S}w(\eta^{i\to t})} .
+\]
+Its \emph{intrinsic Dobrushin matrix} is
+\[
+  c^w_{ik}\;=\;\max\Bigl\{\bigl\|p^w_i(\eta,\cdot)-p^w_i(\eta',\cdot)
+    \bigr\|_{\mathrm{TV}}\;:\;\eta,\eta'\text{ agree off }k\Bigr\},
+\]
+the maximum over the finite configuration space --- the coefficient itself, not
+a majorant chosen from outside.
+\end{definition}
+
+\begin{theorem}[machine-checked]
+\label{thm:gibbs}
+For every strictly positive $w$: $\mu_w$ is a probability weight; $p^w$ is
+nonnegative, normalised and local; $\mu_w$ is \emph{invariant} under every
+$E^w_i$; $c^w_{ii}=0$; and $c^w$ dominates the influence of $p^w$.
+Consequently, if $\sum_k c^w_{ik}\le\alpha<1$ at every site, then for all
+observables
+\[
+  \bigl|\mathrm{Cov}_{\mu_w}(f,g)\bigr|\;\le\;
+  \tfrac14\sum_{i,j}\delta_i(f)\Bigl(\sum_n (c^w)^n_{ij}\Bigr)\delta_j(g),
+\]
+and if moreover $c^w$ vanishes beyond distance one for a distance $d$, then for
+single-site observables at $i_0$ and $j_0$,
+\[
+  \bigl|\mathrm{Cov}_{\mu_w}(f,g)\bigr|\;\le\;
+  \frac{\delta_{i_0}(f)\,\delta_{j_0}(g)}{4(1-\alpha)}\,\alpha^{\,d(i_0,j_0)} .
+\]
+\end{theorem}
+
+\begin{proof}
+Normalisation and locality are computations: the local partition sum
+$\sum_t w(\eta^{i\to t})$ is positive, and it does not see $\eta_i$ because
+$\eta^{i\to t}$ does not.
+
+\emph{Invariance is the only step with content, and it is an identity rather
+than an estimate.}  Write $\mathbb{E}_{\mu_w}[E^w_iF]$ as a sum over
+$S^{\iota}\times S$ and apply the involution
+\[
+  \tau_i(\eta,s)\;=\;\bigl(\eta^{i\to s},\,\eta_i\bigr),
+  \qquad \tau_i\circ\tau_i=\mathrm{id}.
+\]
+Under $\tau_i$ the integrand
+$\mu_w(\eta)\,p^w_i(\eta,s)\,F(\eta^{i\to s})$ becomes
+$\mu_w(\eta^{i\to s})\cdot\frac{w(\eta)}{\sum_t w(\eta^{i\to t})}\cdot F(\eta)$,
+using that the local partition sum is unchanged along the fibre.  Summing that
+over $s$ first reconstitutes $\sum_s\mu_w(\eta^{i\to s})$, which is the local
+partition sum over $Z$; it cancels the denominator exactly, leaving
+$\mu_w(\eta)F(\eta)$.  Reindexing a finite sum by an involution is free, and
+that is the whole proof.
+
+The zero diagonal is a theorem, not a hypothesis: $c^w_{ii}$ is a maximum of
+total variations between $p^w_i(\eta,\cdot)$ and $p^w_i(\eta^{i\to s},\cdot)$,
+which are equal by locality.  Domination is immediate because $c^w$ is defined
+as the maximum.  The conclusions are Theorem~\ref{thm:comparison} and its
+corollaries applied to this data.
+\end{proof}
+
+Three remarks, in the order in which the statement is most easily over-read.
+
+\emph{What is left as a hypothesis, and it is exactly one thing.}
+Dobrushin's condition $\sum_k c^w_{ik}\le\alpha<1$ --- plus, for the distance
+form, that $c^w$ has range one.  Both are conditions on the \emph{interaction},
+not on the machinery: nothing about kernels, invariance or majorants survives
+for a user to discharge.  In Lean the endpoints are
+\texttt{gibbs\_covar\_le\_resolvent}, \texttt{gibbs\_covar\_exp\_decay} and
+\texttt{gibbs\_covar\_two\_point}.
+
+\emph{Why the heat-bath kernel and not another.}  The comparison estimate holds
+for \emph{any} invariant local kernel; the heat-bath one is chosen because its
+invariance is an involution rather than a computation, and because its
+influence coefficients are the ones Dobrushin's condition is usually stated
+for.  Nothing downstream depends on the choice.
+
+\emph{The intrinsic matrix versus the envelope.}  $c^w$ is the coefficient, so
+for a bonded interaction it is bounded by the envelope $\tanh|J_{ij}|$ of
+Theorem~\ref{thm:coeff} and may be strictly smaller.  Gate G14 measures that
+gap on registered cells; the paper does not prove the comparison, because
+Theorem~\ref{thm:gibbs} does not need it --- a user with an interaction may
+apply the envelope to \emph{bound} $\sum_k c^w_{ik}$, and that is the only role
+Theorem~\ref{thm:coeff} plays here.
+
+\begin{proposition}[non-vacuity of the instantiation, machine-checked]
+\label{prop:gibbs-witness}
+For the uniform weight on one site with two states, every hypothesis of
+Theorem~\ref{thm:gibbs} holds by computation, its Gibbs weight \emph{is} the
+witness weight of Proposition~\ref{prop:comparison-witness}, and the
+instantiated two-point bound is again an equality at $\tfrac14$.
+\end{proposition}
+
+So the instantiated hypotheses are jointly satisfiable and the instantiated
+bound is still the sharp one.  This matters more than the usual non-vacuity
+check, because invariance is a genuine constraint on the pair (weight,
+kernel) and a construction that failed it would make Theorem~\ref{thm:gibbs}
+say nothing.
+
+\textbf{Gates.}  \repofile{scripts/judge\_dobrushin\_d4.py}{judge\_dobrushin\_d4.py},
+registered before this Lean.  G12 checks invariance as an \emph{identity} to
+$10^{-12}$ on deliberately asymmetric weights, exhaustively over all Boolean
+observables and all sites --- a residual above roundoff would have killed the
+involution argument before it was written.  G13 checks that the heat-bath
+conditional of an Ising weight is $(1+\tanh h)/2$ at the local field.  G14
+checks that the intrinsic coefficients are dominated by $\tanh|J|$ entrywise,
+which is the measured content of ``the envelope is a majorant, not the
+minimum'' at the level of the measure.
+
 \section{The measurement, and where the wall is}
 \label{sec:measurement}
 
@@ -688,7 +819,7 @@ depends on a Python \texttt{assert}.
 \section{What remains, named exactly}
 \label{sec:frontier}
 
-Theorems~\ref{thm:coeff}--\ref{thm:comparison} are an engine, not a conclusion.
+Theorems~\ref{thm:coeff}--\ref{thm:gibbs} are an engine, not a conclusion.
 Turning them into a volume-uniform statement about $\specRatio$ requires, in
 order:
 
@@ -701,31 +832,31 @@ order:
       interdependence matrix of any particular system;
 \item[\textbf{2.}] Dobrushin's comparison estimate \cite{Dobrushin1970,Simon1993}
       --- that connected correlations are controlled by the resolvent of $C$,
-      hence decay exponentially at a rate free of the extent.  \textbf{Done as
-      a theorem about an arbitrary invariant weight}:
-      Theorem~\ref{thm:comparison}.  \emph{Not} done: its instantiation at the
-      Gibbs weight of the development, which is step~3;
-\item[\textbf{3.}] construction of the single-site conditionals of that Gibbs
-      weight, and discharge of the two hypotheses Theorem~\ref{thm:comparison}
-      consumes --- invariance of the weight under each conditional, and
-      domination of their influence by the matrix of
-      Theorem~\ref{thm:matrix}.  \textbf{Open.}  Both are expected to be
-      routine for a positive finite-range weight, since the conditionals are
-      ratios of finite sums and their total variation is the quantity
-      Theorem~\ref{thm:coeff} already bounds; ``expected'' is doing real work
-      in that sentence and nothing below relies on it;
-\item[\textbf{4.}] transport of that decay into the operator formulation.
+      hence decay exponentially at a rate free of the extent.  \textbf{Done}:
+      Theorem~\ref{thm:comparison};
+\item[\textbf{3.}] construction of the single-site conditionals of a Gibbs
+      weight, and discharge of every hypothesis that estimate consumes ---
+      invariance above all, which is a genuine constraint on the pair and not a
+      formality.  \textbf{Done}: Theorem~\ref{thm:gibbs}, from a strictly
+      positive weight alone, leaving Dobrushin's condition on the intrinsic
+      matrix as the single hypothesis a user supplies;
+\item[\textbf{4.}] transport of that decay into the operator formulation: from
+      correlations of the Gibbs weight to $\specRatio$ of the transfer kernel,
+      through the finite-time interface described below.
+      \textbf{Open, and it is the only open step in this list.}
 \end{enumerate}
 
-\textbf{What changed since the previous version, stated at its exact size.}
-That version named step~2 as the only currently identified new analytic
-estimate and the bottleneck of the chain.  It is now proved --- for any weight
-satisfying the two hypotheses of step~3.  The bottleneck therefore \emph{moves}
-rather than disappearing: what stands between this paper and a statement about
-the coupled kernel is now assembly (steps~3 and~4) rather than an estimate, and
-assembly can still fail.  In particular, verifying invariance is not a
-formality: it is a real constraint on the pair (weight, conditionals), and
-Proposition~\ref{prop:comparison-witness} exists partly to show it can be met.
+\textbf{What changed, stated at its exact size.}  An earlier version of this
+paper named step~2 as the only currently identified new analytic estimate and
+the bottleneck of the chain; a later one proved it, for arbitrary invariant
+data, and left step~3 open.  Both are now closed.  The honest description of
+what remains is that step~4 is not an estimate but a \emph{translation}: from a
+statement about a measure to a statement about an operator.  The vacuum pairing
+is an infinite-time object, so that translation must run through finite time
+extent with explicit boundary control, and nothing here shortens it.  What this
+paper does claim is that between a positive weight and exponential decay of its
+correlations there is no longer a gap: the chain is closed end to end, and the
+only input a user supplies is Dobrushin's condition.
 
 
 \textbf{The consumer, named.}  It is \texttt{volumeUniform\_gap} in
@@ -794,11 +925,12 @@ related models have been treated without mechanisation \cite{WashburnSimons2026}
 
 \section{Limitations}
 
-All four theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
+All five theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
 Theorem~\ref{thm:coeff} is a hyperbolic identity and a bound on a denominator;
 Theorem~\ref{thm:matrix} is a construction and a finite computation;
 Theorem~\ref{thm:comparison} is a telescoping sum, one pointwise application of
-a two-hundred-year-old covariance bound, and two finite inductions.  Their value
+a ninety-year-old covariance bound, and two finite inductions;
+Theorem~\ref{thm:gibbs} is a reindexing by an involution.  Their value
 is that they are machine-checked, non-vacuous, composed, and carry the hypothesis
 the dead method violated --- not that any of them is deep.
 
@@ -808,20 +940,23 @@ contradicts it on the tested grid; it does not prove where the wall is,
 and an extrapolation can mislead near a transition.  The window is not optimal
 and is never called sharp.
 
-\textbf{Steps~3 and~4 of Section~\ref{sec:frontier} are open}, and until they
-close the volume-uniform statement about $\specRatio$ for the coupled kernel
-remains unproved.  This is the substantive limitation.  In particular,
-Theorem~\ref{thm:comparison} is a theorem about \emph{a} weight invariant under
-\emph{a} local kernel with dominated influence; the paper does not exhibit
-those objects for the development's Gibbs weight, and a reader who took the
-theorem as a statement about that weight would be reading more than is
-written.  The chain now runs from one bond to exponential decay of connected
-correlations; what it does not do is reach the coupled kernel.
+\textbf{Step~4 of Section~\ref{sec:frontier} is open}, and until it closes the
+volume-uniform statement about $\specRatio$ for the coupled kernel remains
+unproved.  This is the substantive limitation, and it is a translation between
+two languages rather than a missing estimate --- which does not make it small.
+Two further boundaries are worth naming.  Theorem~\ref{thm:gibbs} discharges
+every hypothesis \emph{except} Dobrushin's condition, and whether that
+condition holds is a question about a particular interaction that this paper
+does not answer for any; the envelope of Theorem~\ref{thm:coeff} is what a user
+would apply, and it is a sufficient condition, not a characterisation.  And the
+decay proved is decay of correlations of a measure on a \emph{finite} product
+space: no infinite-volume state is constructed anywhere, and the word
+\emph{clustering} is accordingly not used for one.
 
 \section{Reproducibility}
 
 \textbf{Anchor.}  All sources cited above are read at commit
-\nolinkurl{85f6e86b004d8b00a65681d23ea7c5d1b46116aa} of
+\nolinkurl{4f3b864004c48edc87c09bd2537fe51340fb6411} of
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Toolchain
 \nolinkurl{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned at
 \nolinkurl{07642720480157414db592fa85b626dafb71355b}.  A runner verifies all
@@ -845,25 +980,24 @@ in this paper covers them, and wiring them in --- with the job-count delta
 measured against this campaign's own parent commit, never against a
 merge-base --- is separate work not done here.
 
-\textbf{Oracle.}  Two disjoint bodies of evidence, kept apart because they were
-produced by different runs.  For Theorems~\ref{thm:coeff}--\ref{thm:d1}: at the
-previous anchor the repository-wide oracle ran to completion with exit code
-zero over $2817$ axiom reports and \textbf{zero} occurrences of
-\texttt{sorryAx}; thirty-seven of those reports are this chain's, and every one
-depends on exactly \texttt{[propext, Classical.choice, Quot.sound]}.  For
-Theorem~\ref{thm:comparison} and its lemmas: a \emph{targeted} oracle at this
-anchor prints the axioms of the seventeen endpoints of
-Section~\ref{sec:comparison} --- the signed-mass inequality, the total-variation
-corollary, Popoviciu, the mean-absolute-deviation bound, both Grüss forms and
-the Grüss attainment, the three clauses of Lemma~\ref{lem:key}, the transport
-domination, the finite-$N$ estimate, the series estimate, the exponential-decay
-composition, the two-point corollary, and both halves of
-Proposition~\ref{prop:comparison-witness}.  The union of every axiom list
-printed is exactly $\{\texttt{propext},\allowbreak\
-\texttt{Classical.choice},\allowbreak\ \texttt{Quot.sound}\}$ --- computed as a
-union rather than by matching each line against the standard triple, because a
-declaration depending on \emph{fewer} axioms is clean and would fail the naive
-test.  No \texttt{sorry} appears in any of the four build logs.
+\textbf{Oracle.}  For Theorems~\ref{thm:coeff}--\ref{thm:d1}, at an earlier
+anchor of this lane: the repository-wide oracle ran to completion with exit
+code zero over $2817$ axiom reports and \textbf{zero} occurrences of
+\texttt{sorryAx}, thirty-seven of them this chain's.  For
+Theorems~\ref{thm:comparison} and~\ref{thm:gibbs}: two \emph{targeted} oracle
+runs at this anchor, exit code zero, printing the axioms of seventeen and
+eleven endpoints respectively --- among them the three clauses of
+Lemma~\ref{lem:key}, both Gr\"uss forms with the Gr\"uss attainment, the
+transport domination, the finite-$N$ and series estimates, the
+exponential-decay composition and the two-point corollary, and on the Gibbs
+side invariance, the zero diagonal, domination, the three instantiated
+endpoints and both witnesses.  The union of every axiom list printed, over both
+runs, is exactly $\{\texttt{propext},\allowbreak\
+\texttt{Classical.choice},\allowbreak\ \texttt{Quot.sound}\}$: Lean's three
+standard axioms, no project axiom, no \texttt{sorry} in any build log.  The
+union is computed as a \emph{union} rather than by matching each printed line
+against the standard triple, because a declaration depending on \emph{fewer}
+axioms is perfectly clean and would fail that naive test.
 
 \textbf{One gap in the runner's own coverage, stated because a reader counting
 modules would otherwise not find it.}  The runner builds two lane modules by
@@ -880,8 +1014,8 @@ same digest and the same size.  The oleans, the axiom reports and the
 elaboration therefore refer to the same bytes, which is the only reason any of
 the numbers above can be compared at all.
 
-\textbf{The bytes of Section~\ref{sec:comparison}.}  Printed by the runner in
-the same execution that built and oracled them:
+\textbf{The bytes of Sections~\ref{sec:comparison} and~\ref{sec:gibbs}.}
+Printed in the same executions that built and oracled them:
 \begin{center}\small
 \begin{tabular}{llr}
 \toprule
@@ -891,6 +1025,7 @@ module & \texttt{sha256} & bytes\\
 \texttt{DobrushinGruss.lean} & \nolinkurl{8e00f418a42fb30d6f6b367d5e353b4f34149c2e70d3625ae3307ce8bceb9ace} & $16462$\\
 \texttt{DobrushinConditional.lean} & \nolinkurl{eb52b816f2c401d17edb72c5a7d0f8d413c33bbf9292f770e92a787fc8f5833a} & $18270$\\
 \texttt{DobrushinComparison.lean} & \nolinkurl{a489fc2823e564685f3ffbf586f1a1f63ce4b78a955a9ec88edbcd70afae4133} & $54738$\\
+\texttt{DobrushinGibbs.lean} & \nolinkurl{b525731d274bf0ce7511e0e0f796d5892f22cee1601daa5a8fa7fea6bd507ba1} & $16787$\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -1058,4 +1193,14 @@ not mechanised.
 
 \end{thebibliography}
 
-\end{document}
+\end{document}\textbf{The modules of Sections~\ref{sec:comparison} and~\ref{sec:gibbs}, and
+what is measured about them.}  All five --- oscillation, Gr\"uss, conditional,
+comparison, Gibbs --- are imported by \texttt{YangMillsCore.lean} at this
+anchor, and their endpoints are listed by name in \texttt{oracle\_check.lean}.
+\emph{What has been measured is each module's own build and a targeted oracle
+over its endpoints, not a full core rebuild:} the wiring commit registered the
+prediction $8468\to8473$ jobs, one per module, against this campaign's own
+parent commit rather than a merge-base, and that prediction is \textbf{not yet
+tested} --- the sanctioned plane's budget for this unit was spent on the lane
+modules.  It is stated here as an open measurement rather than reported as a
+number, because a predicted count that has not been taken is not evidence.

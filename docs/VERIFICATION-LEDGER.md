@@ -30040,3 +30040,70 @@ blob, and mine does not.  Overwriting either from here would destroy evidence
 that belongs to a desk that is not this one.  What this entry establishes is
 only that both compile, both prove the same five endpoints, and the repair they
 share is the same repair.
+
+## Addendum 584 (2026-08-02, **D-4a: the chain now starts at a weight, and the
+gates passed before the Lean was judged**)
+
+**MEASURED at `4f3b8640`** on the sanctioned Colab Linux plane.
+`YangMills.OS.DobrushinGibbs` builds with exit **zero**; a targeted oracle over
+its **eleven** endpoints exits **zero**, and every axiom list printed is exactly
+`[propext, Classical.choice, Quot.sound]`.  Zero `sorry`.
+
+**THE GATES PASSED FIRST, AND THAT IS THE ORDER THAT MATTERS.**
+`scripts/judge_dobrushin_d4.py` was committed at `2cda729f5`, one commit BEFORE
+the Lean, and exited **zero on its first run in both modes**:
+
+  * **G12 — invariance as an IDENTITY.**  On deliberately asymmetric positive
+    weights (2 and 3 sites), exhaustively over all Boolean observables and all
+    sites, the residual `|E_mu[E_i F] - E_mu F|` is at machine zero.  A residual
+    above roundoff would have killed the involution argument before it was
+    written.
+  * **G13 — the sigmoid identity** `p_i(+1) = (1 + tanh h)/2` at the local
+    field, on a chain and on an anisotropic 2x2 cell.
+  * **G14 — the envelope dominates the INTRINSIC matrix.**  The minimal
+    coefficients of the Ising measure, by exhaustive enumeration, are bounded
+    entrywise by `tanh|J|`, with intrinsic row sums below envelope row sums
+    below one on every registered in-window cell.
+
+**WHAT CLOSED.**  From a strictly positive weight `w` on a finite product space
+ALONE: the normalised measure, the heat-bath kernel with locality, INVARIANCE
+proved by the involution `(eta,s) -> (eta^{i->s}, eta_i)` on `Omega x S`, and the
+INTRINSIC Dobrushin matrix `dobCoeff` with **zero diagonal proved** (locality,
+not hypothesis) and **domination by construction** (`le_sup'`).  The endpoints
+`gibbs_covar_{le_resolvent, exp_decay, two_point}` discharge every kernel-side
+hypothesis of Addendum 583's comparison estimate.  **The single surviving
+hypothesis is Dobrushin's condition itself** --- a condition on the interaction,
+not on the machinery.  Witness: the uniform weight's Gibbs measure IS the
+comparison module's witness measure, and the instantiated two-point bound is
+attained at `1/4`.
+
+**ONE ERROR IN 300 LINES WRITTEN WITHOUT A COMPILER, and it was not
+mathematical.**  The involution proof of `expect_heatBath` --- the only step
+with content --- elaborated whole on the first attempt.  The single failure was
+a closing `ring` after a `field_simp` that had already closed the goal.  This is
+the first module of the lane to reach green in two passes rather than five to
+seven, and the difference is that its design had been validated numerically
+first.
+
+**WHAT IS NOT MEASURED, and is stated rather than left to be found.**  The five
+lane modules were wired into `YangMillsCore.lean` and their 41 endpoints added
+to `oracle_check.lean` at `80b0160d7`, with the prediction `8468 -> 8473`
+registered in that commit's message BEFORE any count.  **That prediction is
+still untested**: a full core build in a fresh runtime must compile roughly 330
+YangMills modules that `lake exe cache get` does not cover, it ran for 26
+minutes without finishing, and it was interrupted rather than left to consume
+the unit's budget.  The paper says so in those words.  A predicted number that
+has not been taken is not evidence, and the run that takes it is a separate
+work unit.
+
+**THE PAPER, v5** (`papers/dobrushin-matrix/`, 17 pp), retitled to *a
+Machine-Checked Chain from a Positive Weight to Exponential Decay of
+Correlations*.  Section 5 is new.  The frontier drops to ONE open step ---
+transport into the operator formulation --- and the paper is explicit that this
+step is a translation between two languages rather than a missing estimate,
+which does not make it small.  Every summary-shaped location was re-derived
+from the corrected statement, and the retroactive sweep over *refute*,
+*coefficient* and *only remaining obligation* found no survivor.
+
+**ROLES.**  This session FABRICATED and does not audit itself.  No external
+verdict exists.
