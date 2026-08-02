@@ -2,7 +2,7 @@
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-high-historical-93p5_94-20260725",
   "claim_scope": "Historical paired production/replay candidate for beta [187/2,94], CWIN=3/2, beta-order 40, t-order 45, Arb precision 220. Current validator replayed the stored pair; no G2/G6 or H_tail promotion.",
-  "status": "current-candidate",
+  "status": "quarantined",
   "historical_git_head_at_run": "8b4a17c0681601d0d433ed769d23ce8daa8269a9",
   "command": [
     "python",
@@ -60,5 +60,6 @@
     "validator": "CWIN3P2 HIGH VALIDATION PASS"
   },
   "promotion": "NONE",
-  "supersedes": []
+  "supersedes": [],
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys."
 }

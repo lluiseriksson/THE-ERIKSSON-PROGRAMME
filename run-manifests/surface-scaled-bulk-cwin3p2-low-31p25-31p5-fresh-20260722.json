@@ -20,5 +20,5 @@
     {"path": "scripts/surface_scaled_bulk_low_31p25_31p5_rerun.txt", "sha256": "5ab225d2c03454efe1c55883ff4d4fe4dccca98cc4e90d9458d1dacdd5b151f4", "sha256_lf": "5ab225d2c03454efe1c55883ff4d4fe4dccca98cc4e90d9458d1dacdd5b151f4"}
   ],
   "supersedes": [],
-  "quarantine_reason": "Fresh candidate closes only beta [125/4,63/2]; the remainder of [31,74], the finite-beta relay, and the sign-to-H_tail lemma remain open."
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys. Prior quarantine reason retained verbatim: Fresh candidate closes only beta [125/4,63/2]; the remainder of [31,74], the finite-beta relay, and the sign-to-H_tail lemma remain open."
 }

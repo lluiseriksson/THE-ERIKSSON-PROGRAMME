@@ -2,7 +2,7 @@
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-gap31_74_601p16_301p8-20260722",
   "claim_scope": "Candidate-only paired production/replay for beta [601/16,301/8] with CWIN=3/2, order-30/t-order-37 rows. Sign rows do not imply H_tail; no G2/G6 promotion.",
-  "status": "current",
+  "status": "quarantined",
   "started_utc": "2026-07-22T14:02:02.901794Z",
   "finished_utc": "2026-07-22T14:02:02.901794Z",
   "command": [
@@ -68,5 +68,5 @@
   ],
   "supersedes": [],
   "superseded_by": null,
-  "quarantine_reason": null
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys."
 }

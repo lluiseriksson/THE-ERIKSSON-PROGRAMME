@@ -68,5 +68,5 @@
   ],
   "supersedes": [],
   "superseded_by": null,
-  "quarantine_reason": "Pilot diagnostic overlaps the registered quarter seam at beta=74; retained for endpoint conditioning evidence only."
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys. Prior quarantine reason retained verbatim: Pilot diagnostic overlaps the registered quarter seam at beta=74; retained for endpoint conditioning evidence only."
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-codex-31p0625-31p5-20260723",
-  "status": "current",
+  "status": "quarantined",
   "claim_scope": "Fresh seam-aligned production/replay CWIN=3/2 sign rows for beta [497/16,63/2]; candidate direct W-sign evidence only; no H_tail, K2, K4, G2, or G6 promotion.",
   "git_head": "05d1527af181132a68544ed9512d459bacac6af8",
   "configuration": {"cwin": "3/2", "beta_order": 30, "t_order": 37, "min_dt": "1/100000", "precision": 180, "beta_domain": ["497/16", "63/2"]},
@@ -20,5 +20,6 @@
   }],
   "validator": {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py", "verdict": "PASS", "t_rows": 122, "production_replay_byte_identical": true},
   "promotion": "NONE",
-  "nonpromotion_reasons": ["candidate direct W-sign evidence only", "global beta tiling remains incomplete", "sign rows do not prove H_tail or K2/K4"]
+  "nonpromotion_reasons": ["candidate direct W-sign evidence only", "global beta tiling remains incomplete", "sign rows do not prove H_tail or K2/K4"],
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys."
 }
