@@ -646,14 +646,10 @@ theorem starJ_row (β γ : ℝ) (i : Fin 5) :
   have hg := tanh_nonneg_of_nonneg (abs_nonneg γ)
   fin_cases i
   · exact le_of_eq (starJ_row0 β γ)
-  · rw [starJ_row1 β γ]
-    linarith
-  · rw [starJ_row2 β γ]
-    linarith
-  · rw [starJ_row3 β γ]
-    linarith
-  · rw [starJ_row4 β γ]
-    linarith
+  · exact le_trans (le_of_eq (starJ_row1 β γ)) (by linarith)
+  · exact le_trans (le_of_eq (starJ_row2 β γ)) (by linarith)
+  · exact le_trans (le_of_eq (starJ_row3 β γ)) (by linarith)
+  · exact le_trans (le_of_eq (starJ_row4 β γ)) (by linarith)
 
 /-- **The window of the lane, instantiated.**  The anisotropic star Ising
 weight with `2 tanh|β| + 2 tanh|γ| < 1` has exponentially decaying two-point

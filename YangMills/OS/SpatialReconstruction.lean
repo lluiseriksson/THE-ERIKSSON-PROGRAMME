@@ -896,7 +896,6 @@ theorem norm_sq_le_perron {ι : Type*} [Fintype ι] {A : ι → ι → ℝ}
       have hsq : A i j * Ω j * (A i j / Ω j) = A i j ^ 2 := by
         have : Ω j ≠ 0 := (hΩ j).ne'
         field_simp
-        ring
       have hprod : Real.sqrt (A i j * Ω j) * Real.sqrt (A i j / Ω j) = A i j := by
         rw [← Real.sqrt_mul hAΩ, hsq, Real.sqrt_sq (hA i j)]
       rw [← mul_assoc, hprod]
@@ -925,7 +924,6 @@ theorem norm_sq_le_perron {ι : Type*} [Fintype ι] {A : ι → ι → ℝ}
       rw [Finset.mul_sum]
       refine Finset.sum_congr rfl fun j _ => ?_
       field_simp
-      ring
     rw [hexp, Finset.sum_comm]
     have hinner : ∀ j, (∑ i, lam * (Ω i * A i j * (x j ^ 2 / Ω j)))
         = lam ^ 2 * x j ^ 2 := by
@@ -939,7 +937,6 @@ theorem norm_sq_le_perron {ι : Type*} [Fintype ι] {A : ι → ι → ℝ}
         ring
       rw [hcol, heig j]
       field_simp
-      ring
     rw [Finset.sum_congr rfl fun j (_ : j ∈ Finset.univ) => hinner j,
       ← Finset.mul_sum]
   calc (∑ i, (∑ j, A i j * x j) ^ 2)
@@ -1043,7 +1040,6 @@ theorem siteQ_transferOp_le {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     refine congrArg _ (Finset.sum_congr rfl fun σ _ => ?_)
     rw [Complex.normSq_apply]
     field_simp
-    ring
   rw [hLHS, hRHS]
   exact add_le_add hre him
 
