@@ -1791,7 +1791,7 @@ no `TermSource` inhabitant is created.
 | L6 | FTC in `s` and connected-component regrouping, (1.9)--(1.10) | Eq.-(80) weakening/FTC substrate exists; physical re-instantiation remains |
 | L7 | Cauchy extraction (1.23) and termwise estimate (1.24) | new but source-local; the cited CMP109 input is in the corpus |
 | L8 | summation (1.26)--(1.28) to (1.29) | animal/cardinality and normalized-metric substrate exists |
-| L9 | scale comparison and final delta allocation to (1.36) | new scale-geometry lemma plus the three printed scalar windows |
+| L9 | scale comparison and final delta allocation to (1.36) | new scale-geometry lemma plus the visually verified windows `delta1 * M >= kappa1`, `(kappa1 - 1) / 4 >= (1 - delta) * kappa`, and `kappa1 / 16 >= (1 - 2 * delta) * kappa` |
 
 The exact visual source record is
 `cmp116.lemma1.window.1.11-1.29`.  It corrects an important OCR error: the
@@ -1805,6 +1805,16 @@ reading has an internal numerical check: in the complementary case
 The same visual pass fixes the constants in (1.13)--(1.16), the Cauchy radius (1.22),
 the structure of (1.24), and the final `exp(-kappa1 d_k(Y)/16)` rate in
 (1.29).
+
+A subsequent visual inspection of printed page 9 records the exact L9
+allocation.  Equation (1.31) is
+`d_j(X) >= (L^j * eta)^(-1) * d_k(X0)`.  The passage from (1.30) to
+(1.32) assumes `(kappa1 - 1) / 4 >= (1 - delta) * kappa` with
+`0 < delta < 1`; the final common decay in (1.36) assumes
+`kappa1 / 16 >= (1 - 2 * delta) * kappa`.  Together with the earlier
+walk absorption `kappa1 <= delta1 * M`, these are the three printed scalar
+windows.  The former provisional readings with factors `1/2` and `7/8`
+are rejected.  This source recovery does not discharge L9 in Lean.
 
 L2 is now implemented by
 `CMP109ConstraintCorrectionParameterFamilyData`.  Its `ballData` varies with
@@ -1835,3 +1845,28 @@ trio.  This closes the generic L1 deduction only.  The three physical
 specializations remain separate, and the literal `H0(s)` producer is still
 absent.  The live numerator remains `18/41` and no `TermSource` inhabitant is
 produced.
+
+The subsequent physical-specialization audit separates two genuinely
+different tasks.  For the covariance propagator
+`cmp116SourcePi4FullComplexWeakenedCovarianceMatrix`, every finite-walk term
+is already definitionally
+`cmp116ComplexWeakeningMonomial active sigma` times an `s`-independent
+physical operator.  Its length layer is exactly the finite sum of those
+terms.  Specializing generic L1 to this `G(s)` therefore needs only the
+dependent reindexing
+`Sigma length, CMP99SourcePi4FineWalkIndex ... length` and a justified
+`tsum_sigma` exchange.
+
+The current literal minimizer `H(s)` has a stricter obstruction.  The theorem
+`cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_eq_literalFineWalkSeries_of_source`
+expands it into a head fine-walk term times an ordered word of coarse-defect
+fine-walk terms.  Every factor depends on `sigma`; overlapping active
+carriers can therefore contribute repeated powers of one coordinate.  The
+existing `cmp99SourcePi4FineHeadTailActive` records only the union needed for
+locality and does not prove a factorization through the square-free `Finset`
+monomial used by generic L1.  Consequently the physical `H(s)` bridge is not
+mere reindexing: it needs either a multiplicity-aware monomial index (for
+example a finitely supported natural multiplicity) plus the signed defect
+expansion, or a source theorem proving the relevant carriers disjoint.  No
+such disjointness theorem is present.  `H0(s)` still has no literal producer.
+This audit changes no counter.

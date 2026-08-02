@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "cmp116-lemma3",
-  "updated": "2026-08-02",
+  "updated": "2026-08-03",
   "sources": {
     "cmp116": {
       "short": "Balaban CMP116",
@@ -18,6 +18,7 @@
         "render_source_06": "renders/cmp116-source-06.png",
         "render_source_07": "renders/cmp116-source-07.png",
         "render_source_08": "renders/cmp116-source-08.png",
+        "render_source_09": "renders/cmp116-source-09.png",
         "render_source_12": "renders/cmp116-source-12-eq25-28.png",
         "render_source_13": "renders/cmp116-source-13-eq25-28.png",
         "render_source_14": "renders/cmp116-source-14-eq25-28.png",
@@ -119,9 +120,44 @@
         "Do not count this source extraction as a compiled Lean discharge of Lemma 1."
       ],
       "open_questions": [
-        "Exact source-to-Lean dictionary for H(s(Y0)), H0(s(Y0)), the omega supremum and the localized set-difference factor in Eq. (1.24).",
-        "Formal parameter-family fixed-point theorem for |s(Delta)| <= exp(kappa1), followed by the physical specialization.",
+        "Exact source-to-Lean dictionary for H(s(Y0)), H0(s(Y0)), the omega supremum and the localized set-difference factor in Eq. (1.24). The repository covariance G(s) needs a dependent tsum reindex; the current literal H(s) expansion additionally needs multiplicity-aware weakening or a source disjointness theorem because its active unions do not encode repeated sigma powers.",
+        "Physical specialization of the compiler-verified parameter-family fixed-point theorem to |s(Delta)| <= exp(kappa1).",
         "Formal derivation of the summed Eq. (1.29) estimate and its conversion to cmp116Eq136ResidualMajorant."
+      ]
+    },
+    {
+      "key": "cmp116.lemma1.window.1.30-1.36",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "9",
+        "pdf_pages": "9",
+        "equations": ["1.30", "1.31", "1.32", "1.33", "1.34", "1.35", "1.36"],
+        "local_text": "balaban-rg-II-cmp116-1104161193.txt, visually corrected against rendered page 9",
+        "renders": ["render_source_09"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Lemma 1 scale transport and final decay allocation. The rendered primary PDF fixes the exact scale inequality and the two scalar windows used to reach Eq. (1.36).",
+      "extracted_claims": [
+        "Eq. (1.31) states d_j(X) >= (L^j eta)^-1 d_k(X0).",
+        "The passage to Eq. (1.32) assumes (1/4)*(kappa1-1) >= (1-delta)*kappa with 0 < delta < 1.",
+        "After the remaining sums, the common Eq. (1.36) decay assumes (1/16)*kappa1 >= (1-2*delta)*kappa.",
+        "Eq. (1.36) is |V'_k(Y,U,J,B)| <= E0 epsilon1 C1 M^q exp(C2 kappa1) exp(-(1-2 delta) kappa d_k(Y))."
+      ],
+      "lean_targets": [
+        "YangMills.RG.CMP116Lemma1Eq136ResidualCertificate",
+        "YangMills.RG.cmp116Eq136ResidualMajorant"
+      ],
+      "use_for": [
+        "Exact source for the L9 scale comparison and scalar windows.",
+        "Rejecting the provisional 1/2 and 7/8 coefficients that are not printed here."
+      ],
+      "do_not_use_for": [
+        "Do not count visual recovery as a compiled Lean discharge of L9 or Lemma 1.",
+        "Do not conflate these inequalities with the separate Eq. (2.37) post-processing window."
+      ],
+      "open_questions": [
+        "Formal source-to-Lean dictionary for d_j, d_k, X0 and the localization domain Y.",
+        "Formal summation from Eq. (1.29) through the scale allocation to cmp116Eq136ResidualMajorant."
       ]
     },
     {

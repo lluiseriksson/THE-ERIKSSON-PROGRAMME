@@ -7,13 +7,26 @@
       "source_id": "cmp116",
       "short": "Balaban CMP116",
       "status": "visual_confirmed",
-      "summary": "Rendered primary PDF pages 5-8 recover Eqs. (1.11)-(1.29), including the exact fixed-point constants, the coupled-field and Cauchy estimates, and the final exp(-kappa1 d_k(Y)/16) decay. The split is m > 2^4, not m > 24. The OCR ambiguity is removed; the parameter-family fixed point and the summed Eq. (1.29) to Eq. (1.36) Lean route remain open.",
+      "summary": "Rendered primary PDF pages 5-8 recover Eqs. (1.11)-(1.29), including the exact fixed-point constants, the coupled-field and Cauchy estimates, and the final exp(-kappa1 d_k(Y)/16) decay. The split is m > 2^4, not m > 24. Generic L1 and L2 are compiler-verified; their physical specialization and the L7-L8 summation remain open.",
       "printed_pages": "5-8",
       "pdf_pages": "5-8",
       "questions": [
-        "Formal parameter-family fixed-point theorem and its physical specialization.",
+        "Physical specialization of the compiler-verified parameter-family fixed-point theorem.",
         "Exact source-to-Lean dictionary for the localized Cauchy and set-difference factors.",
         "Formal summation and conversion of Eq. (1.29) to cmp116Eq136ResidualMajorant."
+      ]
+    },
+    {
+      "citation_key": "cmp116.lemma1.window.1.30-1.36",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "summary": "Rendered primary PDF page 9 fixes Eq. (1.31), the window (1/4)*(kappa1-1) >= (1-delta)*kappa and the final window (1/16)*kappa1 >= (1-2*delta)*kappa. The earlier provisional 1/2 and 7/8 factors are rejected; the scale dictionary and formal Eq. (1.29)-to-(1.36) route remain open.",
+      "printed_pages": "9",
+      "pdf_pages": "9",
+      "questions": [
+        "Exact source-to-Lean dictionary for d_j, d_k, X0 and Y.",
+        "Formal scale transport and summation into cmp116Eq136ResidualMajorant."
       ]
     },
     {
