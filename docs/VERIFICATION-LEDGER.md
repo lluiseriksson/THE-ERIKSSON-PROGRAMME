@@ -31830,3 +31830,24 @@ and `transcript.txt`
 `124c06afbcc8d9b978112f3dd8830627b34482b53595531264cb4ea142c53c6b`.
 The oracle contains zero `sorryAx`.  The runtime was disconnected and
 deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 635 (2026-08-02, **TASK 14: quoted-name oracle-parser FAIL**)
+
+**PREREGISTERED LIGHT HARNESS TEST FAILED; NO COLAB SESSION OR LEAN PROCESS
+WAS STARTED.**  After committing and pushing multiline-parser runner SHA
+`10210754b16b4caa926b42b9f2f78f40ef12f25e`, a seconds-only Windows test
+ran that exact regular-expression contract against diagnostic oracle artifact
+`spatial_vacuum_full_artifacts (4).zip` from Addendum 634.  It exited 1 with
+literal assertion payload `(2817, 2821)`: the parser recovered 2817 bracketed
+axiom blocks while the oracle contained 2821 ` depends on axioms:` markers.
+
+Inspection localized all four misses to Lean declaration names ending in a
+prime, printed for example as
+`'YangMills.OS.pow_succ_apply'' depends on axioms:` and
+`'YangMills.OS.sinh_pos'' depends on axioms:`.  The pattern `[^']+` treated
+the prime as the closing quote and therefore could not consume these names.
+The required Task 14 declaration itself was parsed, but a complete-oracle
+certifier may not silently miss unrelated declarations.  The next parser must
+match every bracketed payload independently of theorem-name quoting, while
+using exact escaped markers only for the required named declarations.  No
+PASS is claimed; **SESIÓN COLAB LIBRE** remained true throughout.
