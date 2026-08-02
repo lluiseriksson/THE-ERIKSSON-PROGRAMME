@@ -106,3 +106,21 @@ It may pass only when:
 
 This predicate does not certify any scientific claim, restore lost evidence,
 or decide owner decision E.
+
+## Draft PR body freeze
+
+PR #56's body is descriptive but repeats the triage boundary, so it is frozen
+for external audit.  At `2026-08-02T19:35:19Z` it was captured with
+`GET /repos/lluiseriksson/THE-ERIKSSON-PROGRAMME/pulls/56`; the JSON `body`
+string was encoded directly as UTF-8, without a command-output newline.
+
+- title: `Triage scientific pytest failures and ratchet only repairable debt`;
+- draft: `true`;
+- body characters: 3,437;
+- stored LF representation: 3,443 bytes, 39 LF, zero CR, SHA-256
+  `6b0f392966794ba6b99551e6e5bf3025ad9b4ac0ad9238257cc054fa93bbc5e8`;
+- derived CRLF representation: 3,482 bytes, SHA-256
+  `6706a8c49be87ba201c7705c3d1a369df8675a82e07cc0fb5ac8e6e5179095f0`.
+
+The branch and this body are to remain unchanged while fresh external audit is
+in progress.
