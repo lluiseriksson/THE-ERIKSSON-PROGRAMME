@@ -29997,24 +29997,45 @@ the audited source and still carries it at the head of the evidence branch.
 Numbering note for whoever merges: 578 and 579 are this lane's; 580 belongs to
 the paper-14 desk and exists on both branches; 581 is this one.
 
-### The object, and the four identifiers it needs
+### The object, in three registers that are not the same kind of thing
+
+**Source identity** — the source commit, the source blob OID and the canonical
+SHA-256.  These are three identifiers *by construction*: a commit SHA names a
+revision, a blob OID names stored content, a canonical SHA-256 is the digest of
+exactly those stored bytes.  They do not "agree" or "differ"; they answer
+different questions.
 
 ```
 Source commit (A2)   916de45a6d09df417e2af4e10f080f0521498fb2
 Source blob          0a14617b87360d29d7cd20bda4308a8ee0857236
 Canonical SHA-256    87ac87f63f9fe442230d84a7208e1735bbb7180334af67572df29c36838019c3
+```
+
+**Materialization identity** — the per-checkout working-tree SHA-256.  This is
+the quantity that is *compared* with the canonical SHA-256, and the one that
+**may differ when checkout filters alter the bytes**.  It is not a fourth member
+of the list above; it is the only thing in this record that can be wrong while
+everything above looks right.  In this lane it did differ, in the fabrication
+clone, and that is why the comparison is now run in every checkout.
+
+```
+Checkout 1 (Windows, autocrlf=false, eol=lf)   87ac87f6…   == canonical
+Checkout 2 (WSL2, autocrlf unset)              87ac87f6…   == canonical
+Fabrication clone (autocrlf from system)       10746 bytes vs 10498 canonical — DIFFERED
+```
+
+**Evidence references** — not identifiers of the object at all, but pointers to
+the record about it.
+
+```
 Evidence record (B)  75fb37346eefa6e0560fdc7a0057ae15233e0ee9
 Erratum (C)          3a9be96edfd0214138e2cc8aaaadaab7ad4f106d
-Record               docs/audits/DOBRUSHIN-D3A-AUDIT-916de45a.md
+Record path          docs/audits/DOBRUSHIN-D3A-AUDIT-916de45a.md
 Artifacts            docs/audits/d3a-916de45a/  (16 files, MANIFEST.sha256)
 ```
 
 `ff840b4d` and `693e0287` are discarded candidates.  **No evidence is attributed
 to either**; both stand immutable in the history, per the never-delete rule.
-
-The fourth identifier is the one that matters and the one this lane did not have
-before: the *materialized* SHA-256, of the bytes actually on disk, which is the
-only one that can differ from the other three.  It differed.
 
 ### Status conferred
 
@@ -30153,3 +30174,30 @@ finite-time operator interface is open, and charter prohibition 4 stands — eve
 a complete D-3 would give decay of correlations, **not**
 `sup_L specRatio(L) < 1`.  The manuscript is unchanged at anchor `c3d8e32d` and
 claims only the earlier chain.
+
+### ERRATUM to this addendum, same day, external audit
+
+The first version of the section above was headed *"the four identifiers it
+needs"* and then listed **seven** entries — none of them the materialized
+SHA-256 — before calling that one "the fourth identifier" in the following
+paragraph.  It also said the materialized digest is "the only one that can
+differ from the other three", which compresses objects that are not directly
+comparable: a commit SHA, a blob OID and a canonical SHA-256 are different
+identifiers by construction, not three measurements of one thing.
+
+Corrected to three registers: **source identity** (commit, blob OID, canonical
+SHA-256), **materialization identity** (the per-checkout working-tree SHA-256,
+compared against the canonical one, which filters can change), and **evidence
+references** (the commits and paths of the record, which identify no object at
+all).
+
+Documentary only: no new source target, no build, no audit, no Lean.  The blob
+at the head of this branch is still
+`0a14617b87360d29d7cd20bda4308a8ee0857236`.
+
+**And it is the same class, a third time in three commits** — `B` described its
+own evidence wrongly, `C` fixed that and its own message carried an unanchored
+count, and `D` mislabelled a list of identifiers.  Each artifact in this chain
+was correct; each description of it needed external correction.  Recorded here
+rather than smoothed over, because a lane that only notices this class when
+someone else reads it should say so in the register that survives.
