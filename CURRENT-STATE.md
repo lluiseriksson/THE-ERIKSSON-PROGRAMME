@@ -1,5 +1,15 @@
 # Current State
 
+**Latest paper submission (2026-08-02).**  The owner reports that
+*Machine-Checked Finite-Edge SU(2) Crossing Ward Identity: Pauli Generator
+Transfer and Single-Trace Closure* was submitted to ai.viXra as a new paper in
+Physics -- Mathematical Physics.  The verified local PDF SHA-256 is
+`3A0AC2C21FE44AA524AD26BF29F15EC245D2C74F14108DC29D934D261D30D17D`;
+the public identifier is pending.  See
+[`docs/SUBMISSION-SU2-CROSSING-WARD-20260802.md`](docs/SUBMISSION-SU2-CROSSING-WARD-20260802.md).
+This publication record does not change the Clay boundary or assert a full
+Makeenko--Migdal area equation.
+
 **Surface Theorem closed and terminally sealed (2026-07-28).**  The paper
 *Global Ratio Monotonicity for a Killed von Mises Bridge* proves
 `F_B(t)>0` and `E'(t)<0` for every `beta>0` and `0<t<pi`.  The last

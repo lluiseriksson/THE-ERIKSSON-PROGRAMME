@@ -144,6 +144,16 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 
 ### Latest movement
 
+**Paper submission (2026-08-02).**  The owner reports the new ai.viXra
+submission *Machine-Checked Finite-Edge SU(2) Crossing Ward Identity: Pauli
+Generator Transfer and Single-Trace Closure* (6 pages).  The frozen PDF and
+Lean audit-package hashes, exact submission comments, and scope boundary are
+recorded in
+[`docs/SUBMISSION-SU2-CROSSING-WARD-20260802.md`](docs/SUBMISSION-SU2-CROSSING-WARD-20260802.md).
+The public ai.viXra identifier is pending.  This finite-edge Pauli/Fierz and
+Haar-integration-by-parts closure is not presented as a full
+Makeenko--Migdal area equation and does not move the Clay boundary.
+
 The latest 2026-07-04 source checkpoint did not change the Clay boundary.  It
 closed several useful finite interfaces while keeping the analytic frontier
 explicit:

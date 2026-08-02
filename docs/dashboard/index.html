@@ -108,7 +108,7 @@ h1 {
 .truthbox p { margin: 0; color: var(--muted); font-size: 13px; }
 .metrics {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin: 12px 0 18px;
 }
@@ -152,6 +152,8 @@ h1 {
 .clay .big { color: var(--red); }
 .clay .gauge i { background: var(--red); }
 .checkpoint .big { color: var(--accent-2); font-size: 20px; line-height: 1.25; }
+.submission .big { color: var(--accent); font-size: 20px; line-height: 1.25; }
+.submission a { color: inherit; }
 .counts {
   display: flex;
   flex-wrap: wrap;
@@ -386,6 +388,11 @@ footer {
       <div class="big" id="checkpoint">-</div>
       <small id="axioms">-</small>
     </article>
+    <article class="metric submission">
+      <div class="label">Latest paper submission</div>
+      <div class="big"><a id="latestSubmission" href="#">-</a></div>
+      <small id="latestSubmissionState">-</small>
+    </article>
   </section>
 
   <div class="counts" id="counts" aria-label="Node counts"></div>
@@ -496,6 +503,9 @@ footer {
   $("frontierName").textContent = frontier ? frontier.label : "the live frontier";
   $("checkpoint").textContent = meta.checkpoint;
   $("axioms").textContent = meta.axioms;
+  $("latestSubmission").textContent = meta.latest_submission;
+  $("latestSubmission").href = meta.blob + meta.latest_submission_record;
+  $("latestSubmissionState").textContent = meta.latest_submission_state;
 
   const statuses = ["proved", "partial", "open"];
   const counts = Object.fromEntries(statuses.map(status => [

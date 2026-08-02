@@ -12,6 +12,13 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 
 ## Live snapshot (updated 2026-07-04; source checkpoint 2026-07-04)
 
+**Publication update (2026-08-02).**  The SU(2) crossing-Ward manuscript was
+submitted to ai.viXra as a new paper.  Its immutable PDF/ZIP hashes, exact
+title, submission comments, and explicit non-claim of a full
+Makeenko--Migdal equation are recorded in
+[`docs/SUBMISSION-SU2-CROSSING-WARD-20260802.md`](docs/SUBMISSION-SU2-CROSSING-WARD-20260802.md).
+The public identifier is pending; do not invent one.
+
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
 handoff below.  The latest verification-ledger checkpoint records the verified
 merged core green at **8463 jobs**, with Mathlib pinned and every headline oracle-clean
