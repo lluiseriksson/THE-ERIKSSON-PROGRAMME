@@ -30897,3 +30897,36 @@ module job count, oracle result, or mathematical failure is claimed.  No
 transcript was downloaded before the stop; the complete live-cell output was
 captured through the browser.  The runtime was immediately disconnected and
 deleted; **SESIÓN COLAB LIBRE**.
+
+## Addendum 609 (2026-08-02, **TASK 14: first SpatialVacuum elaboration failed**)
+
+**LEAN FAIL PRESERVED; NO THEOREM CLAIMED.**  After the runner repair at
+`e93d79131043f8d96106b63e2407e3a331aa77c2`, a fresh CPU/high-RAM Colab clone
+again checked out the unchanged first Lean attempt
+`d685e82e10c8cd64221444a03ff83f617cec96b4`.  The runtime used no GPU and
+reported Linux `6.6.122+`, x86-64, glibc `2.35`, Python `3.12.13`, 8 CPUs,
+Intel Xeon 2.20 GHz, and `MemTotal: 53467192 kB`.  Its UTC interval was
+`2026-08-02T08:38:12.540449+00:00` through
+`2026-08-02T08:43:21.944474+00:00`; the UI reported `309.464 s` for the cell.
+
+The pinned Lean commit and mathlib pin were verified, cache acquisition
+completed, and `lake build YangMills.OS.SpatialVacuum` reached Lean.  It exited
+`1` after `174.208834 s`, with transcript SHA-256
+`7460818bca95692f9616faa9604082650012f07eadc337a104a52cd31729b39e`.
+The complete live output reports four elaboration failures:
+
+- line 49: the proof of the norm-square factorisation left a large unsolved
+  goal because `rw [hyrepr]` rewrote not only the standalone `y` but also the
+  occurrences of `y` inside `arcoshRadius y`, recursively changing the radius;
+- line 96: `.2` was projected from the function `crcleIntegrable_congr` before
+  supplying its pointwise-equality argument;
+- line 124: `circleAverage_congr_sphere` supplied membership in
+  `sphere 0 |1|`, while the helper expected `sphere 0 1`;
+- line 173: the pointwise goal still contained applied lambdas, so the
+  requested `Real.log_div` rewrite pattern was not syntactically present.
+
+There was also one unused-simp-argument warning for
+`Complex.normSq_ofReal`.  These are local proof-engineering errors; no
+counterexample to the scalar identity was found.  Core and oracle were not
+run, no PASS is claimed, and the runtime was disconnected and deleted
+immediately; **SESIÓN COLAB LIBRE**.
