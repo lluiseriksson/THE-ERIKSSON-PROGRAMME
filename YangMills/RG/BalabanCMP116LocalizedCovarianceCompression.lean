@@ -108,13 +108,30 @@ theorem cmp116LocalizedCovarianceCompression_posSemidef
   rw [hP] at h
   exact h
 
+private noncomputable def cmp116RCLikeMatrixSqrt
+    {𝕜 ι : Type*} [RCLike 𝕜] [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι 𝕜) : Matrix ι ι 𝕜 :=
+  CFC.sqrt A
+
+private theorem cmp116RCLikeMatrixSqrt_isHermitian
+    {𝕜 ι : Type*} [RCLike 𝕜] [Fintype ι] [DecidableEq ι]
+    {A : Matrix ι ι 𝕜} (hA : A.PosSemidef) :
+    (cmp116RCLikeMatrixSqrt A).IsHermitian := by
+  unfold cmp116RCLikeMatrixSqrt
+  exact (CFC.sqrt_nonneg A).posSemidef.1
+
+private theorem cmp116RCLikeMatrixSqrt_mul_self
+    {𝕜 ι : Type*} [RCLike 𝕜] [Fintype ι] [DecidableEq ι]
+    {A : Matrix ι ι 𝕜} (hA : A.PosSemidef) :
+    cmp116RCLikeMatrixSqrt A * cmp116RCLikeMatrixSqrt A = A := by
+  unfold cmp116RCLikeMatrixSqrt
+  exact hA.sqrt_mul_self
+
 /-- Canonical positive square root of the localized covariance. -/
 def cmp116LocalizedCovarianceRoot
     {ι : Type*} [Fintype ι] [DecidableEq ι]
     (S : Finset ι) (C : Matrix ι ι ℝ) : Matrix ι ι ℝ :=
-  by
-    letI : StarRing (Matrix ι ι ℝ) := Matrix.instStarRing
-    exact CFC.sqrt (cmp116LocalizedCovarianceCompression S C)
+  cmp116RCLikeMatrixSqrt (cmp116LocalizedCovarianceCompression S C)
 
 /-- The canonical positive square root and compressed covariance satisfy the
 exact terminal conditioned-root certificate. -/
@@ -125,13 +142,14 @@ theorem cmp116LocalizedCovarianceRoot_certificate
     MatrixConditionedGaussianRootCertificate
       (cmp116LocalizedCovarianceCompression S C)
       (cmp116LocalizedCovarianceRoot S C) S := by
-  letI : StarRing (Matrix ι ι ℝ) := Matrix.instStarRing
   let A := cmp116LocalizedCovarianceCompression S C
   have hA : A.PosSemidef :=
     cmp116LocalizedCovarianceCompression_posSemidef S hC
-  have hroot : (CFC.sqrt A).transpose = CFC.sqrt A := by
-    have hrootHermitian : (CFC.sqrt A).IsHermitian :=
-      (CFC.sqrt_nonneg A).posSemidef.1
+  have hroot :
+      (cmp116RCLikeMatrixSqrt A).transpose =
+        cmp116RCLikeMatrixSqrt A := by
+    have hrootHermitian : (cmp116RCLikeMatrixSqrt A).IsHermitian :=
+      cmp116RCLikeMatrixSqrt_isHermitian hA
     rw [Matrix.conjTranspose_eq_transpose_of_trivial] at hrootHermitian
     exact hrootHermitian
   refine {
@@ -140,7 +158,7 @@ theorem cmp116LocalizedCovarianceRoot_certificate
     covariance_supported :=
       cmp116LocalizedCovarianceCompression_supported S C }
   · rw [hroot]
-    exact hA.sqrt_mul_self
+    exact cmp116RCLikeMatrixSqrt_mul_self hA
 
 end
 
