@@ -552,16 +552,32 @@ def evaluate_debt_guard(
     baseline_manifests = baseline["manifests"]
     guard_errors: list[str] = []
 
-    comparison: dict[str, Any] | None = None
-    if comparison_root is not None:
-        comparison_root = comparison_root.resolve()
-        comparison = build_debt_baseline(
-            root=comparison_root,
-            manifest_dir=comparison_root / "run-manifests",
-            base_sha=baseline["base_sha"],
+    if comparison_root is None:
+        raise ValueError("comparison guard: comparison_root is required")
+    unresolved_comparison_root = comparison_root
+    try:
+        comparison_root = comparison_root.resolve(strict=True)
+    except OSError as exc:
+        raise ValueError(
+            "comparison guard: comparison_root cannot be resolved: "
+            f"{unresolved_comparison_root}"
+        ) from exc
+    if not comparison_root.is_dir():
+        raise ValueError(
+            f"comparison guard: comparison_root is not a directory: {comparison_root}"
+        )
+    comparison = build_debt_baseline(
+        root=comparison_root,
+        manifest_dir=comparison_root / "run-manifests",
+        base_sha=baseline["base_sha"],
+    )
+    if comparison["manifest_count"] == 0:
+        raise ValueError(
+            "comparison guard: comparison_root measured zero run manifests: "
+            f"{comparison_root}"
         )
 
-    comparison_manifests = comparison["manifests"] if comparison else {}
+    comparison_manifests = comparison["manifests"]
     protected_labels = set(baseline_manifests) | set(comparison_manifests)
 
     current_paths = {
@@ -571,6 +587,11 @@ def evaluate_debt_guard(
     for label in sorted(protected_labels):
         frozen_record = baseline_manifests.get(label)
         comparison_record = comparison_manifests.get(label)
+        if frozen_record is not None and comparison_record is None:
+            raise ValueError(
+                "comparison guard: comparison tree is missing protected manifest: "
+                f"{label}"
+            )
         recorded = frozen_record or comparison_record
         if not isinstance(recorded, dict):
             raise ValueError(f"debt baseline: manifests.{label} must be an object")
@@ -644,16 +665,15 @@ def evaluate_debt_guard(
     allowed_global = _counter(
         baseline.get("global_violations"), "global_violations"
     )
-    if comparison is not None:
-        comparison_global = _counter(
-            comparison["global_violations"], "comparison.global_violations"
-        )
-        allowed_global = Counter(
-            {
-                key: min(allowed_global[key], comparison_global[key])
-                for key in set(allowed_global) | set(comparison_global)
-            }
-        )
+    comparison_global = _counter(
+        comparison["global_violations"], "comparison.global_violations"
+    )
+    allowed_global = Counter(
+        {
+            key: min(allowed_global[key], comparison_global[key])
+            for key in set(allowed_global) | set(comparison_global)
+        }
+    )
     for violation, observed_count in sorted(current_global.items()):
         if observed_count > allowed_global[violation]:
             guard_errors.append(
@@ -677,9 +697,8 @@ def evaluate_debt_guard(
         "debt_by_class": dict(sorted(debt_by_class.items())),
         "guard_errors": sorted(set(guard_errors)),
     }
-    if comparison is not None:
-        report["comparison_manifest_count"] = comparison["manifest_count"]
-        report["comparison_strict_error_count"] = comparison["strict_error_count"]
+    report["comparison_manifest_count"] = comparison["manifest_count"]
+    report["comparison_strict_error_count"] = comparison["strict_error_count"]
     return report
 
 

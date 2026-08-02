@@ -94,6 +94,39 @@ def require_fail(result: dict, needle: str, scenario: str) -> None:
     require(needle in joined, f"{scenario}: missing cause {needle!r} in {joined!r}")
 
 
+def require_clause_failure(
+    validator,
+    *,
+    root: Path,
+    baseline: Path,
+    comparison_root: Path,
+    result_file: Path,
+    needle: str,
+    scenario: str,
+) -> None:
+    exit_code = validator.main(
+        [
+            "--root",
+            str(root),
+            "--require-nonempty",
+            "--baseline",
+            str(baseline),
+            "--comparison-root",
+            str(comparison_root),
+            "--result-file",
+            str(result_file),
+        ]
+    )
+    result = json.loads(result_file.read_text(encoding="utf-8"))
+    require(exit_code == 2, f"{scenario}: expected exit 2, got {exit_code}")
+    require(result.get("status") == "FAIL", f"{scenario}: expected FAIL record")
+    require(result.get("exit_code") == 2, f"{scenario}: record did not contain exit 2")
+    first_cause = result.get("first_cause")
+    require(isinstance(first_cause, str), f"{scenario}: first cause is not text")
+    require(needle in first_cause, f"{scenario}: wrong first cause {first_cause!r}")
+    require("report" not in result, f"{scenario}: guard-clause failure emitted a report")
+
+
 def main() -> int:
     validator = load_validator()
     outcomes: dict[str, str] = {}
@@ -103,6 +136,8 @@ def main() -> int:
         legacy = valid_manifest(root, "legacy-run")
         legacy["environment"] = None
         legacy_path = write_manifest(root, legacy)
+        transfer_target = valid_manifest(root, "transfer-target")
+        transfer_target_path = write_manifest(root, transfer_target)
         baseline_data = validator.build_debt_baseline(
             root=root,
             manifest_dir=root / "run-manifests",
@@ -120,6 +155,31 @@ def main() -> int:
             report(validator, root, baseline, comparison_root), "exact baseline"
         )
         outcomes["exact_baseline"] = "PASS"
+
+        missing_comparison = Path(temporary) / "missing-comparison"
+        require_clause_failure(
+            validator,
+            root=root,
+            baseline=baseline,
+            comparison_root=missing_comparison,
+            result_file=root / "missing-comparison-result.json",
+            needle="comparison guard: comparison_root cannot be resolved",
+            scenario="missing comparison root",
+        )
+        outcomes["missing_comparison_root"] = "REJECTED_BY_GUARD_CLAUSE"
+
+        empty_comparison = Path(temporary) / "empty-comparison"
+        (empty_comparison / "run-manifests").mkdir(parents=True)
+        require_clause_failure(
+            validator,
+            root=root,
+            baseline=baseline,
+            comparison_root=empty_comparison,
+            result_file=root / "empty-comparison-result.json",
+            needle="comparison guard: comparison_root measured zero run manifests",
+            scenario="empty comparison root",
+        )
+        outcomes["empty_comparison_root"] = "REJECTED_BY_GUARD_CLAUSE"
 
         malformed = root / "run-manifests" / "new-malformed.json"
         malformed.write_text("{}\n", encoding="utf-8")
@@ -151,6 +211,19 @@ def main() -> int:
         )
         outcomes["debt_reduction"] = "PASS"
         legacy_path.write_text(json.dumps(legacy), encoding="utf-8")
+
+        legacy_path.write_text(json.dumps(repaired), encoding="utf-8")
+        transferred = dict(transfer_target)
+        transferred["environment"] = None
+        transfer_target_path.write_text(json.dumps(transferred), encoding="utf-8")
+        require_fail(
+            report(validator, root, baseline, comparison_root),
+            "debt increased for environment",
+            "debt transferred between manifests",
+        )
+        outcomes["debt_transfer_between_manifests"] = "REJECTED"
+        legacy_path.write_text(json.dumps(legacy), encoding="utf-8")
+        transfer_target_path.write_text(json.dumps(transfer_target), encoding="utf-8")
 
         comparison_legacy = comparison_root / "run-manifests" / legacy_path.name
         comparison_repaired = dict(legacy)
