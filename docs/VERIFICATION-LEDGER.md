@@ -31508,3 +31508,29 @@ products, prove their ordering, establish either the sharp odd-sector bound
 or the even non-Perron bound, handle the beta-zero endpoint, or prove the
 uniform `specRatio` theorem.  Clifford/Jordan--Wigner remains unopened.  The
 runtime was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 625 (2026-08-02, **TASK 14: kernel-parameter focused Lean failure**)
+
+**MEASURED LEAN FAILURE; NO PASS AND NO VERIFICATION WITNESS.**  A fresh
+CPU/high-RAM Colab clone checked out exact source SHA
+`dd26cbbbb79fc5bde6f00ec7fb4a768c22eb0bf7`.  The runtime was Linux 6.6.122
+x86_64 with glibc 2.35, Python 3.12.13, 8 Intel Xeon 2.20 GHz CPUs,
+`53467192 kB` RAM, and no GPU.  It verified Lean `v4.29.0-rc6` at commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9` and mathlib
+`07642720480157414db592fa85b626dafb71355b`.
+
+The isolated official cache completed with exit 0 in `102.022555 s`.
+`lake build YangMills.OS.SpatialVacuum` then failed with exit 1 after
+`203.248005 s`.  Three algebraic steps in
+`existsUnique_circleLogKernelParameter` exhausted the deterministic default
+limit of 200000 heartbeats (lines 335, 337, and 340 of that SHA), and
+`circleAverage_log_kernel_eq_log_norm` exposed a genuine radius-normalization
+mismatch: its local hypothesis had type `z ∈ sphere 0 |1|`, whereas the
+pointwise lemma requires `z ∈ sphere 0 1`.  The latter needs the explicit
+`by simpa using hz` transport already used by earlier circle-average lemmas.
+
+This is a proof-engineering failure in the new source, not an infrastructure
+failure and not evidence against the scalar existence/uniqueness statement.
+The heartbeat limit was not raised, no PASS was claimed, and neither Core nor
+the oracle was launched.  The runtime was disconnected and deleted before
+repair work; **SESIÓN COLAB LIBRE**.
