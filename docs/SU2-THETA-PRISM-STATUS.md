@@ -47,6 +47,7 @@ verified core, exactly like PR #39 and PR #40.
 - The concrete front door has no arbitrary measure, function-family, or
   technical-input argument: it fixes `cellHaar`, `su2WeylPolynomial`, and the
   uniform technical-input constructor.
+
 The internal lemma `manufactured_six_point_theta_gate` remains factored
 through one technical record whose only field is the spin-one remainder.  The
 public `manufactured_six_point_theta_gate_concrete` supplies the record using:
