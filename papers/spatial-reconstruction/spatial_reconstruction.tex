@@ -412,6 +412,51 @@ result about it.
 \item \textbf{$\Z_2$ only.}  Nothing here is a gauge theory.
 \end{enumerate}
 
+\section{Erratum to v1.0}\label{sec:erratum}
+
+Version 1.0 of this paper was published with a wrong number in it, and the
+instrument that produced the number is the reason nobody noticed.  Both are
+recorded here rather than silently corrected, because a counter that changes
+between versions without an explanation is exactly as untrustworthy as one that
+does not change when it should.
+
+\paragraph{What was wrong.}  The table in \S\ref{sec:repro} of v1.0 printed
+\emph{Declarations in} \texttt{SpatialOS.lean} $=65$.  The true number at that
+same source anchor is $69$.
+
+\paragraph{Why.}  The counter was a line-oriented recogniser that did not accept
+an attribute block before the declaration keyword, so every
+\verb|@[simp] theorem| was invisible to it.  Four declarations were of that
+form.  Recomputing the v1.0 blobs with a corrected recogniser gives $69$ and
+$15$, against the printed $65$ and $15$; the second module contained no
+attributed declaration, which is why only one of the two numbers moved and why
+the error was not self-evident.
+
+\paragraph{The consequence that was worse than the number.}  The same blindness
+was what checked that every declaration appears in the oracle.  Two of the four
+invisible declarations, \verb|pastOf_joinBond| and \verb|futRevOf_joinBond|,
+were \emph{genuinely absent} from the oracle --- inherited from the previous
+paper of this lane, and never noticed because the instrument that would have
+noticed could not see them.  They are present now, and the count of declarations
+carrying an axiom report is reconciled for \emph{both} modules independently
+rather than for the new one only.
+
+\paragraph{What was not wrong.}  The build was green and the axiom report was
+clean at v1.0; those rows of its table stand.  The defect was in a counter and
+in the reach of a check, not in an elaborated statement.
+
+\paragraph{What changed so that it cannot recur in this shape.}  The recogniser
+now lives in one file rather than in two that had already drifted apart, it
+carries a battery of syntactic cases that runs standalone and fails on
+regression, and the coverage check keeps the two modules as independent
+quantities.  The battery earned itself immediately: the first corrected
+recogniser read the sentence \emph{``The Osterwalder--Schrader axiom asks for
+more''} out of this paper's own module header and reported a declaration named
+\texttt{asks}.  A parser that has once certified a false coverage should not
+remain an unexamined root of trust, and the durable fix --- enumerating
+declarations from the elaborated Lean environment instead of from source text
+--- is \emph{not} done here.
+
 \section{Reproducibility}\label{sec:repro}
 
 All \emph{code and verification} artifacts --- the two modules, the oracle, the
