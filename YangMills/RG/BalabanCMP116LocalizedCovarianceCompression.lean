@@ -112,7 +112,9 @@ theorem cmp116LocalizedCovarianceCompression_posSemidef
 def cmp116LocalizedCovarianceRoot
     {ι : Type*} [Fintype ι] [DecidableEq ι]
     (S : Finset ι) (C : Matrix ι ι ℝ) : Matrix ι ι ℝ :=
-  CFC.sqrt (cmp116LocalizedCovarianceCompression S C)
+  by
+    letI : StarRing (Matrix ι ι ℝ) := Matrix.instStarRing
+    exact CFC.sqrt (cmp116LocalizedCovarianceCompression S C)
 
 /-- The canonical positive square root and compressed covariance satisfy the
 exact terminal conditioned-root certificate. -/
@@ -123,6 +125,7 @@ theorem cmp116LocalizedCovarianceRoot_certificate
     MatrixConditionedGaussianRootCertificate
       (cmp116LocalizedCovarianceCompression S C)
       (cmp116LocalizedCovarianceRoot S C) S := by
+  letI : StarRing (Matrix ι ι ℝ) := Matrix.instStarRing
   let A := cmp116LocalizedCovarianceCompression S C
   have hA : A.PosSemidef :=
     cmp116LocalizedCovarianceCompression_posSemidef S hC
