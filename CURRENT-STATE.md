@@ -29,6 +29,17 @@ equation remain outside its scope.  The frozen PDF/source/review hashes and the
 availability caveat for the non-public supplementary ZIP are recorded in
 [`docs/SUBMISSION-SU2-TRACE-SKEIN-20260801.md`](docs/SUBMISSION-SU2-TRACE-SKEIN-20260801.md).
 
+The owner also submitted *Machine-Checked Positive-Area Evolution of the
+Infinite SU(2) Class Heat Kernel and Migdal Face Amplitudes* as a new
+eight-page ai.viXra paper.  Its public identifier is likewise pending.  The
+paper machine-checks the positive-time infinite spectral-jet calculus, smooth
+class heat-kernel evolution, differentiated normalized-Haar two-face Migdal
+integral, and exact Wilson-character Casimir area ODEs.  It does not claim the
+four-face Makeenko--Migdal crossing equation; local Lie-group integration by
+parts and certified crossing geometry remain outside its scope.  The frozen
+PDF hash and supplementary-file availability boundary are recorded in
+[`docs/SUBMISSION-SU2-CLASS-AREA-EVOLUTION-20260801.md`](docs/SUBMISSION-SU2-CLASS-AREA-EVOLUTION-20260801.md).
+
 **Build-measurement note (2026-08-01).**  The verification ledger is the sole
 live source for job counts; the latest dated governance snapshot is **8465
 jobs at `3421aa1f`**.  The long 2026-07-14 block below is retained as a

@@ -48,18 +48,24 @@ The bars below are communication estimates for humans, not theorem
 probabilities.  The formal record remains the compiler, `oracle_check.lean`,
 and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 
-### Latest paper submission
+### Latest paper submissions
 
-**Submitted to ai.viXra on 2026-08-01; public identifier pending:**
-*Machine-Checked Finite-SU(2) Trace-Skein Closure for Makeenko-Migdal Crossing
-Terms* (9 pages).  The paper machine-checks the finite-SU(2) Pauli/Casimir,
-Fierz, trace-skein, oriented four-branch reconnection, and all-order
-multitrace-to-single-trace algebra.  It is a companion to
-[ai.viXra:2607.0039](https://ai.vixra.org/abs/2607.0039), not a replacement.
-It does not claim the analytic area-derivative or heat-kernel
-integration-by-parts part of the Makeenko-Migdal equation.  Frozen hashes,
-availability limits, and the post-publication verification checklist are in
-[`docs/SUBMISSION-SU2-TRACE-SKEIN-20260801.md`](docs/SUBMISSION-SU2-TRACE-SKEIN-20260801.md).
+Both papers below were **submitted to ai.viXra on 2026-08-01**; their public
+identifiers remain pending.
+
+* *Machine-Checked Positive-Area Evolution of the Infinite SU(2) Class Heat
+  Kernel and Migdal Face Amplitudes* (8 pages) verifies positive-time spectral
+  jets, smooth SU(2) class heat-kernel evolution, the differentiated two-face
+  Migdal integral, and exact Wilson-character Casimir area ODEs.  It does not
+  claim the four-face Makeenko--Migdal crossing equation.  See the
+  [submission record](docs/SUBMISSION-SU2-CLASS-AREA-EVOLUTION-20260801.md).
+* *Machine-Checked Finite-SU(2) Trace-Skein Closure for Makeenko-Migdal
+  Crossing Terms* (9 pages) machine-checks the finite-SU(2) Pauli/Casimir,
+  Fierz, trace-skein, oriented four-branch reconnection, and all-order
+  multitrace-to-single-trace algebra.  It is a companion to
+  [ai.viXra:2607.0039](https://ai.vixra.org/abs/2607.0039), not a replacement,
+  and does not claim the analytic area-derivative producer.  See its
+  [submission record](docs/SUBMISSION-SU2-TRACE-SKEIN-20260801.md).
 
 ### At a glance
 

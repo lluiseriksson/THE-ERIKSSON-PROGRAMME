@@ -16,9 +16,9 @@
     "knowledge_tree": "https://lluiseriksson.github.io/physmath-knowledge-tree/",
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
-    "latest_submission": "SUBMITTED / PUBLIC ID PENDING — Machine-Checked Finite-SU(2) Trace-Skein Closure for Makeenko-Migdal Crossing Terms",
-    "latest_submission_doc": "docs/SUBMISSION-SU2-TRACE-SKEIN-20260801.md",
-    "latest_submission_sha256": "A6647D22BFC044ACB060D94030E794CF8C2952B2AE373D2063967282DA2C3BC8"
+    "latest_submission": "SUBMITTED / PUBLIC ID PENDING — Machine-Checked Positive-Area Evolution of the Infinite SU(2) Class Heat Kernel and Migdal Face Amplitudes",
+    "latest_submission_doc": "docs/SUBMISSION-SU2-CLASS-AREA-EVOLUTION-20260801.md",
+    "latest_submission_sha256": "F0ADD12E208879F02800B44EEAE1E50AACD41EC16133C3C8F1DAC77E2AB836D7"
   },
   "status_legend": {
     "proved": "Machine-checked theorem reachable from YangMillsCore; oracle-clean on Lean's three standard axioms.",
