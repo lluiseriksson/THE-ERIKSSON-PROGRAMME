@@ -368,6 +368,18 @@ constant for the current full-space gate must satisfy
 fixed positive `N'`.  This strengthens the witness and the decay rate; it
 does not change the negative scope or create a continuum/mass-gap result.
 
+**W-4g — characterize the constrained spectral bottom: OPEN, with a
+counterexample guardrail (2026-08-02).**  Do not conjecture that the v1.1
+Fourier quotient `4 sin^2(pi/L)` is automatically the infimum of `K0` on
+`ker Q_L ∩ ker delta`.  For `L = N' = 2`, the transverse blockwise profile
+`(1,-1|-1,1)` has exact quotient `2`, whereas the paper's within-block
+periodic Fourier value is `lambda_2 = 4`.  The correct project is a
+coarse-Bloch decomposition with exact block-sum constraints, followed by
+diagonalization of the constrained within-block matrix and minimization over
+coarse quasi-momentum.  The finite counterexample and the required route are
+recorded in `docs/FOURIER-NOGO-SPECTRAL-GUARDRAIL.md`.  This does not alter
+the v1.1 no-go.
+
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
 coercivity are all three proved for the physical shell".  FALSE as stated:

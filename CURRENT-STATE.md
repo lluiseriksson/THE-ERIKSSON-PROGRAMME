@@ -117,6 +117,13 @@ Dimock bibliographic record, has SHA-256
 `B8E655D3F1253D0EA915BA54DF00A5C72F4CE5B5D229F74FE82EC152333EA726`;
 the companion source packet has SHA-256
 `AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132`.
+The paper is closed at v1.1.  A proposed next strengthening that identifies
+its Fourier quotient with the full bottom of `K0` on
+`ker Q_L ∩ ker delta` is false as stated: at `L = N' = 2`, the blockwise
+profile `(1,-1|-1,1)` has quotient `2 < lambda_2 = 4`.  The next spectral
+project must diagonalize the constrained coarse-Bloch family rather than
+assume the displayed witness is a minimizer; see
+`docs/FOURIER-NOGO-SPECTRAL-GUARDRAIL.md`.
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
