@@ -30283,3 +30283,26 @@ real observables.  **D-3c is unproved and unwritten**; Popoviciu stays
 `SOURCE, NOT RESULT`; the global comparison estimate and the finite-time
 operator interface remain open; charter prohibition 4 stands — a complete D-3
 would give decay of correlations, not `sup_L specRatio(L) < 1`.
+
+### ERRATUM to this addendum, minutes after it was pushed
+
+The paragraph above said *"Both script SHA-256 values are recorded: the one that
+produced the transcripts and the corrected one."*  **They were not.**
+`provenance.txt` as shipped in `703933c3` named only the pre-fix blob and
+SHA-256; the corrected `0f179d84…` appeared nowhere in the commit.  Repaired in
+the next commit, which names both sets of bytes with their blob OIDs and both
+digests, and states that the transcripts were produced by the first set.
+
+**This is the class's FIFTH appearance this round, and it happened inside the
+commit written to document its fourth.**  Addendum 576 already recorded that
+documenting a failure mode does not immunise against it — the sentence that
+failed to propagate was inside the remark about failures to propagate.  Here the
+sentence claiming two hashes were recorded was inside the entry whose subject is
+a judge whose narration did not match what it had done.
+
+The honest generalisation is not another rule.  It is that **every claim of the
+form "X is recorded in Y" must be executed as a check against Y before it is
+written**, because it is the cheapest possible verification — one `grep` — and
+this lane has now skipped it at four different altitudes: paper prose over
+lemmas, an audit record over its artifacts, a ledger entry over its identifiers,
+and a commit message over the file it had just authored.
