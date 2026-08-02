@@ -123,6 +123,17 @@ def CMP116SourcePhysicalLocalizedRegion
   { Z0 : Finset (FinBox d N') //
       (cmp116SourcePhysicalLocalizedCoordinates Dict Z0).Nonempty }
 
+/-- Equality of proof-carrying localized regions is equality of their raw
+block carriers.  The witness is proposition-valued and therefore carries no
+additional equality data. -/
+noncomputable instance instDecidableEqCMP116SourcePhysicalLocalizedRegion
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim) :
+    DecidableEq (CMP116SourcePhysicalLocalizedRegion Dict) :=
+  Classical.decEq _
+
 /-- A cube carrier is converted to its literal physical bond carrier by the
 site map; no cube is treated definitionally as a bond. -/
 noncomputable def cmp116SourcePhysicalBondsOfCells
