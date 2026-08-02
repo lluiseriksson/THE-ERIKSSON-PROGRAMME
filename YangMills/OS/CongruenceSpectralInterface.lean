@@ -286,6 +286,7 @@ theorem inner_eq_zero_of_eigen_ne {T : Matrix n n ℝ}
   · exact absurd (sub_eq_zero.mp h) hne
   · exact h
 
+omit [DecidableEq n] [Nonempty n] in
 /-- **A Rayleigh bound on the Perron complement bounds every other eigenvalue.**
 This is the direction the tree did not have: `norm_act_le_specGap` bounds the
 operator *by* `specGap`, and this bounds `specGap` itself. -/
@@ -378,7 +379,11 @@ theorem exchangeTwo_eigen_const (μ : ℝ) :
     ∀ i, ∑ j, exchangeTwo μ i j * (fun _ : Fin 2 => (1 : ℝ)) j
       = (1 + μ) * (fun _ : Fin 2 => (1 : ℝ)) i := by
   intro i
-  fin_cases i <;> (simp [Fin.sum_univ_two, exchangeTwo_apply]; ring)
+  -- `simp` closes one of the two branches outright and leaves the other needing
+  -- commutativity, so neither `<;> ring` (which the style linter rejects) nor a
+  -- bare `; ring` (which meets a closed goal) is right.  `try` is honest about
+  -- the asymmetry instead of pretending the branches are alike.
+  fin_cases i <;> (simp [Fin.sum_univ_two, exchangeTwo_apply]; try ring)
 
 /-- **`perronValue (E_μ) = 1 + μ`**, computed — not assumed.  `perronValue_unique`
 does the work: the constant vector is a positive eigenvector, so its eigenvalue
