@@ -1,0 +1,41 @@
+JUDGES RUN 1 - charter 49311bad - normal mode
+====================================================================================
+JUDGES — CONGRUENCE LANE   (docs/CONGRUENCE-CHARTER.md)
+mode: normal
+====================================================================================
+JA  convergence exponent of  tanh(beta*L) - r(gamma)   [PREDICTED p = 2, slope in (-2.1, -1.9)]
+      L   beta   tanh(bL)  deficit@1.0  deficit@3.0     slope  verdict
+      3   0.20   0.537050    8.481e-02    1.702e-03   -1.9577  ok
+      4   0.20   0.664037    1.228e-01    2.366e-03   -1.9776  ok
+      5   0.15   0.635149    1.531e-01    3.090e-03   -1.9566  ok
+      4   0.35   0.885352    8.278e-02    1.277e-03   -2.0810  ok
+
+JB  is positive definiteness load-bearing?   [PREDICTED >= 1 of 12 exceed]
+      n     min eig        mu   (1-mu)/(1+mu)       best r       excess  exceeds?
+      5  -2.447e-01  0.124134     0.779147771  0.779147771     1.55e-15  no
+      6  -1.903e-01  0.084286     0.844532525  0.844532525     1.11e-15  no
+      6  -2.740e-01  0.127563     0.773736119  0.773736119     3.33e-16  no
+      6  -2.573e-01  0.064352     0.879078176  0.879078176     3.33e-16  no
+      6  -4.240e-01  0.095566     0.825540269  0.825540269     1.11e-15  no
+      6  -3.902e-01  0.082992     0.846735444  0.846735444     9.99e-16  no
+      6  -2.732e-01  0.058178     0.890041256  0.890041256     7.77e-16  no
+      6  -2.869e-01  0.068090     0.872501758  0.872501758     4.44e-16  no
+      5  -2.523e-01  0.123155     0.780698254  0.780698254     1.11e-16  no
+      4  -6.103e-02  0.097356     0.822562651  0.822562651     1.33e-15  no
+      6  -2.509e-01  0.070813     0.867740574  0.867740574     1.11e-15  no
+      5  -1.626e-01  0.089521     0.835668684  0.835668684     3.33e-16  no
+    -> 0 of 12 indefinite witnesses exceed the PD bound
+
+====================================================================================
+CONTRACT   wall = 3.04 s (limit 30)   peak RSS = 74 MiB (limit 512)   processes = 1
+           -> WITHIN the light-script contract (all three measured)
+VERDICT: FAIL (1)
+  - JB/exceed-count: 0 of 12 exceeded; predicted >= 1
+exit=1
+
+JUDGES RUN 1 - optimized (-O) mode
+CONTRACT   wall = 3.13 s (limit 30)   peak RSS = 76 MiB (limit 512)   processes = 1
+           -> WITHIN the light-script contract (all three measured)
+VERDICT: FAIL (1)
+  - JB/exceed-count: 0 of 12 exceeded; predicted >= 1
+exit_optimized=1

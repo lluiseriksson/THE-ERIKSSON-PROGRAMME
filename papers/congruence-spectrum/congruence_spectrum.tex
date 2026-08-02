@@ -1,0 +1,1243 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\hypersetup{hidelinks}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\tr}{\operatorname{tr}}
+
+\title{Congruence Rigidity and the Fusion Bound:\\
+what a positive weight can and cannot do\\
+to the spectrum of a transfer kernel}
+\author{Lluis Eriksson}
+\date{Draft --- 1 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A positive site weight acts on a transfer kernel by \emph{congruence},
+$K \mapsto DKD$ with $D$ positive diagonal, not by similarity. Similarity
+preserves the entire spectrum; congruence preserves strictly less, and strictly
+more than nothing. We determine both halves for the kernel of $L$ decoupled
+Ising bonds. \emph{Rigid half:} the sign of every quadratic form value survives,
+so definiteness in either sign is a congruence invariant --- the definite case
+of Sylvester's law of inertia, recorded here in the elementary form that a
+machine can check without an eigenvalue count. \emph{Fragile half:} the value of
+the subdominant ratio $r$ --- second largest eigenvalue modulus over the Perron
+root --- does not survive at all, and we locate exactly how far it moves.
+Restricting the $L$-site kernel ($L\ge1$) to the two antipodal configurations
+leaves \emph{one} Ising bond of coupling $\beta L$; for $\beta>0$ its ratio is
+$\tanh(\beta L)$. A weight concentrating on the ferromagnetic
+configurations therefore \emph{fuses} the $L$ sites into a single effective site
+carrying $L$ times the coupling. Since $\tanh(\beta L)\to 1$ for every fixed
+$\beta>0$, there is no bound $r\le\rho<1$ holding \emph{simultaneously} in $L$
+and over the whole positive-diagonal congruence orbit --- which is not the same
+as ruling one out for a particular physical family of weights. The obstruction
+to volume-uniformity is named, exactly, and it is a property of the congruence
+and not of any spectral estimate.
+Consequently an argument that bounds $r$ using only congruence invariants ---
+rank, inertia, definiteness --- cannot produce an $L$-uniform bound at all.
+We then ask which congruence is extremal. For \emph{uniform} concentrations the
+answer is proved: keeping $m$ sites of mutual correlation $\mu$ leaves
+$\mu J+(1-\mu)I$, of ratio $(1-\mu)/(1+(m-1)\mu)$, which is strictly decreasing
+in $m$ --- the more sites the weight keeps, the smaller the ratio it can reach,
+so the best uniform concentration is a \emph{pair}. For \emph{arbitrary} weights
+we then prove
+$\sup_{D>0}r(DMD)=(1-\mu)/(1+\mu)$ with $\mu=\min_{i\neq j}M_{ij}$: the
+\emph{least correlated pair} determines the supremum, which is approached by
+concentrating on such a pair. (We evaluate the supremum; we do not classify its
+maximisers.) The proof is
+geometric rather than spectral --- Hilbert's projective diameter is itself a
+congruence invariant, and Birkhoff's contraction theorem converts it into the
+bound --- and it uses no definiteness at all, only positivity of the entries.
+The hypercube instance is the fusion bound. Every new algebraic lemma is
+machine-checked in Lean~4, and the supremum theorem exists in the kernel in
+\emph{conditional} form, with its one remaining \emph{non-elementary} input ---
+the Birkhoff spectral bound --- carried as an explicit hypothesis rather than an
+axiom. The lower bound uses no limiting argument about spectra: a two-supported
+fluctuation vector gives the estimate at each strictly positive $\varepsilon$
+separately, after which only scalar arithmetic remains, so no continuity of
+eigenvalues is imported anywhere.
+\end{abstract}
+
+\section{The question}
+
+Let $M$ be a real symmetric matrix and $D$ an invertible diagonal matrix with
+positive entries. The map
+\[
+  M \;\longmapsto\; DMD
+\]
+is a \emph{congruence}. It arises whenever a statistical-mechanical transfer
+kernel is symmetrised against a site weight: if the unnormalised kernel is
+$w(\sigma)K(\sigma,\tau)$, the symmetric form with the same spectrum is
+$\sqrt{w(\sigma)}\,K(\sigma,\tau)\sqrt{w(\tau)}$, that is $DKD$ with
+$D=\diag(\sqrt{w})$.
+
+Congruence is not similarity. Similarity $M \mapsto S M S^{-1}$ preserves the
+characteristic polynomial and therefore everything spectral. Congruence
+preserves the quadratic form only up to a change of variable, and the change of
+variable is not an isometry. The natural question --- and, we will argue, the
+one that governs whether a spectral estimate can be uniform in the system size
+--- is:
+
+\begin{center}
+\emph{Which spectral data survive a positive-diagonal congruence, and how far
+can the rest move?}
+\end{center}
+
+\paragraph{The quantity we track.} Throughout, the kernels are entrywise
+positive, so by Perron--Frobenius the spectral radius $\rho(T)$ is itself a
+simple eigenvalue. We write
+\[
+  r(T)\;:=\;\frac{\max\{\,|\lambda| \;:\; \lambda\in\sigma(T),\ \lambda\neq\rho(T)\,\}}
+                 {\rho(T)} ,
+\]
+the \emph{subdominant ratio}. Since we allow indefinite $M$, this must be said
+explicitly: ordering eigenvalues algebraically, or by modulus, or by index gives
+different conventions once negative eigenvalues are present, and it is the
+quantity above --- second largest \emph{modulus} over the Perron root --- that
+Fact~\ref{fact:birkhoff} controls.
+
+\begin{remark}[A collision of notation with the source]\label{rem:notation}
+Our $r(T)$ is the quantity Eveson and Nussbaum call the \emph{spectral
+clearance} $q(L)$. Their $r(L)$ denotes the \emph{spectral radius}, i.e.\ our
+$\rho(T)$ --- so the letter $r$ names different objects in the two papers. We
+keep $r$ for the ratio because that is what this paper is about, and flag the
+collision here so that Fact~\ref{fact:birkhoff} can be checked against the
+source without a false start.
+\end{remark}
+
+We answer both parts for the kernel of $L$ decoupled Ising bonds. Section~2
+gives the rigid half, Section~3 the fragile half, Section~4 the consequence,
+Section~5 the extremal congruence among uniform concentrations, and Section~6
+the supremum over all positive weights --- exactly, by way of Hilbert's
+projective diameter.
+
+\paragraph{What this paper does not do.} It does not decide whether any
+particular coupled transfer operator has a spectral gap uniform in its
+extension. It \emph{explains} why such a question is hard by exhibiting the
+exact mechanism that destroys uniformity, and explaining is not resolving. No
+statement here has a consequence for gauge theory in any dimension, and none is
+claimed.
+
+\section{The rigid half: congruence cannot move a sign}
+
+Write $q_M(x)=\sum_{i,j} x_i M_{ij} x_j$ for the quadratic form of $M$.
+
+\begin{lemma}[Change of variable]\label{lem:change}
+For every $M$, every $d$, and every $x$,
+\[
+  q_{\,\diag(d)\,M\,\diag(d)}(x) \;=\; q_M(dx),
+  \qquad (dx)_i := d_i x_i .
+\]
+\end{lemma}
+
+\begin{proof}
+$(\diag(d)M\diag(d))_{ij} = d_i M_{ij} d_j$; substitute and reassociate.
+\end{proof}
+
+\begin{theorem}[Definiteness is a congruence invariant]\label{thm:rigid}
+Let $d_i \neq 0$ for every $i$. Then $\diag(d)M\diag(d)$ is positive definite
+if and only if $M$ is, and negative definite if and only if $M$ is.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:change} the two forms have the same value set, because
+$x \mapsto dx$ is a bijection of $\R^n$ (its inverse is $x \mapsto d^{-1}x$) and
+carries nonzero vectors to nonzero vectors: if $d_ix_i=0$ with $d_i\neq0$ then
+$x_i=0$. Apply this in both directions.
+\end{proof}
+
+Theorem~\ref{thm:rigid} is the definite case of Sylvester's law of inertia
+\cite{sylvester1852}, which says more: the full signature $(n_+,n_0,n_-)$ is a
+congruence invariant. We do not reprove the general law. We isolate the definite
+case because it admits a proof through the form alone --- no diagonalisation, no
+eigenvalue count --- and that is what makes it cheap to certify mechanically.
+
+\begin{remark}
+Invertibility of $D$ is not decorative. A diagonal with $k$ zero entries drops
+the rank by $k$ and can turn a definite form into a degenerate one. Every claim
+below assumes $D$ strictly positive.
+\end{remark}
+
+\section{The fragile half: the fusion identity}
+
+Let $s(\sigma_j,\tau_j)=+1$ if $\sigma_j=\tau_j$ and $-1$ otherwise, and let
+\[
+  K_\beta^{(L)}(\sigma,\tau)
+    \;=\; \exp\Big(\beta \sum_{j=1}^{L} s(\sigma_j,\tau_j)\Big),
+  \qquad \sigma,\tau \in \{0,1\}^L ,
+\]
+the kernel of $L$ decoupled Ising bonds at coupling $\beta$. Write
+$\sigma^+ = (0,\dots,0)$ and $\sigma^-=(1,\dots,1)$ for the two antipodal
+(ferromagnetic) configurations, and let
+\[
+  B(a) \;=\; \begin{pmatrix} e^{a} & e^{-a} \\ e^{-a} & e^{a}\end{pmatrix}
+\]
+be the transfer matrix of a \emph{single} Ising bond of coupling $a$.
+
+\begin{lemma}[One bond]\label{lem:bond}
+Let $a\ge 0$. Then $B(a)$ has eigenvectors $(1,1)$ and $(1,-1)$ with eigenvalues
+$2\cosh a$ and $2\sinh a$, and its subdominant ratio is
+\[
+  r\big(B(a)\big)\;=\;\frac{2\sinh a}{2\cosh a} \;=\; \tanh a .
+\]
+\end{lemma}
+
+\begin{proof}
+Direct: $B(a)(1,1)^{\!\top} = (e^a+e^{-a})(1,1)^{\!\top}$ and
+$B(a)(1,-1)^{\!\top} = (e^a-e^{-a})(1,-1)^{\!\top}$. Here $2\cosh a>0$ is the
+Perron root, and $a\ge 0$ makes $2\sinh a\ge 0$, so the other eigenvalue is
+already its own modulus.
+\end{proof}
+
+\begin{remark}[The sign hypothesis is the content]\label{rem:sign}
+For $a<0$ the statement is \emph{false}: $2\sinh a<0$, so the subdominant
+modulus is $|2\sinh a|$ and $r(B(a))=|\tanh a|$. An earlier version of this
+paper omitted the hypothesis, and the formalisation did not catch it --- the
+Lean lemma proves the \emph{algebraic identity} $2\sinh a/2\cosh a=\tanh a$,
+which holds for every real $a$, while the English sentence read that identity as
+a statement about moduli, which it is not unless $a\ge0$. A true machine-checked
+lemma can sit underneath a false sentence. Every subsequent
+\emph{spectral-ratio} consequence uses $a=\beta L$ with $\beta\ge0$; the block
+\emph{identity} immediately below is unconditional in $\beta$.
+
+That sentence is worth reading twice. In an earlier version it said ``everything
+below uses $\beta>0$, so the hypothesis costs nothing here'' --- and the theorem
+on the next line was then stated for all $\beta\in\R$. The remark documenting a
+failure to propagate a hypothesis had itself failed to propagate it. The fix is
+not to phrase the promise better but to make the two statements structurally
+different, which is what Theorem~\ref{thm:fusion} and
+Corollary~\ref{cor:fusionratio} now are.
+\end{remark}
+
+\begin{theorem}[Fusion identity]\label{thm:fusion}
+For \emph{every} $\beta\in\R$ and every $L\ge1$, the $2\times 2$ principal
+submatrix of $K_\beta^{(L)}$ on the antipodal pair $\{\sigma^+,\sigma^-\}$ is
+exactly one Ising bond of coupling $\beta L$:
+\[
+  \begin{pmatrix}
+    K_\beta^{(L)}(\sigma^+,\sigma^+) & K_\beta^{(L)}(\sigma^+,\sigma^-)\\[2pt]
+    K_\beta^{(L)}(\sigma^-,\sigma^+) & K_\beta^{(L)}(\sigma^-,\sigma^-)
+  \end{pmatrix}
+  \;=\; B(\beta L).
+\]
+\end{theorem}
+
+\begin{corollary}[Fusion ratio]\label{cor:fusionratio}
+If moreover $\beta\ge0$, that block has subdominant ratio $\tanh(\beta L)$. For
+$\beta<0$ its ratio is $|\tanh(\beta L)|$.
+\end{corollary}
+
+\begin{proof}
+Lemma~\ref{lem:bond} with $a=\beta L\ge0$; Remark~\ref{rem:sign} for the other
+sign.
+\end{proof}
+
+The split is deliberate, and it mirrors what is and is not machine-checked. The
+\emph{matrix identity} of Theorem~\ref{thm:fusion} is unconditional and is the
+Lean theorem \verb|antipodal_block_eq_bond|; the \emph{spectral reading} needs
+the sign hypothesis and is a paper-level consumer. An earlier version merged
+them and asserted the ratio for all $\beta$ --- false for $\beta<0$, where
+$r(B(\beta L))=|\tanh(\beta L)|>0$ while $\tanh(\beta L)<0$. The hypothesis had
+been added to Lemma~\ref{lem:bond} one paragraph earlier and simply not carried
+to its consumer.
+
+\begin{proof}
+$\sigma^+$ agrees with itself at all $L$ sites, so the sum of signs is $+L$ and
+the entry is $e^{\beta L}$; likewise for $\sigma^-$. The two antipodal
+configurations disagree at all $L$ sites, so the sum is $-L$ and the entry is
+$e^{-\beta L}$. Compare with $B(\beta L)$ and apply Lemma~\ref{lem:bond}.
+\end{proof}
+
+Theorem~\ref{thm:fusion} is the mechanism this paper is about, and it is worth
+stating in words --- carefully, because the natural phrasing overstates. In the
+singular concentration limit a weight supported on a set $S$ \emph{restricts} the
+kernel to $S$; at every strictly positive $\varepsilon$ the principal block on
+$S$ is already preserved \emph{exactly}, and it is the rest of the matrix that
+shrinks (Proposition~\ref{prop:orbit}). So the weight does not perturb the block
+and then correct it; the block is there from the start. When $S$ is the antipodal
+pair that block is a single bond whose coupling is $L$ times the original.
+\textbf{The weight fuses the $L$ sites into one effective site.}
+
+\section{Why that is a wall}
+
+\begin{theorem}[No uniform ratio bound]\label{thm:wall}
+For every $\beta>0$ and every $\rho<1$ there is an $L$ with
+$\tanh(\beta L)>\rho$. Consequently the fused ratio is not bounded away from
+$1$, and no estimate of the form $r \le \rho <1$ can hold uniformly in the
+number of sites.
+\end{theorem}
+
+\begin{proof}
+$\tanh a = 1 - 2/(e^{2a}+1)$ is strictly increasing with limit $1$; choose $L$
+with $e^{2\beta L}+1 > 2/(1-\rho)$, which exists because $\beta>0$ and
+$e^{x}>x$.
+\end{proof}
+
+This is the honest content of the paper's title. It is \emph{not} a proof that
+any given coupled transfer operator fails to have a uniform gap; the
+concentration that realises the fusion is a limit, and the weight of a physical
+model may or may not approach it. What Theorem~\ref{thm:wall} establishes is
+that \emph{the obstruction lives in the congruence}, not in whatever spectral
+estimate one happens to be attempting. An argument that bounds $r$ using only
+data preserved by congruence --- rank, inertia, definiteness --- cannot
+possibly produce an $L$-uniform bound, because those data are identical for the
+unfused kernel (ratio $\tanh\beta$) and for every fused one (ratio up to
+$\tanh(\beta L)$).
+
+Theorem~\ref{thm:wall} is a statement about the scalar $\tanh(\beta L)$; the
+consequence for the congruence orbit needs one more step, which we make explicit
+rather than leave to the reader to assemble --- and make without a limit.
+Normalise to unit diagonal, $M=e^{-\beta L}K^{(L)}_\beta$, which changes no
+ratio; then $M_{\sigma\tau}=e^{-2\beta h(\sigma,\tau)}$ with $h$ the Hamming
+distance, the least correlated pair is the antipodal one,
+$\mu=e^{-2\beta L}$, and $n=2^L$. The lower bound of \S6 applies verbatim:
+\[
+  r\big(D_\varepsilon K^{(L)}_\beta D_\varepsilon\big)
+   \;\ge\;\frac{1-\mu}{1+\mu+2^{L}\varepsilon}\;>\;\rho
+  \qquad\text{for every }\varepsilon\in(0,1]\text{ with }
+  \varepsilon\;<\;\frac{(1-\mu)-\rho(1+\mu)}{\rho\,2^{L}}
+\]
+(any such $\varepsilon$ if $\rho\le0$), the numerator on the right being
+positive exactly because $\tanh(\beta L)>\rho$. $D_\varepsilon$ is strictly
+positive throughout. So the failure of uniformity is realised inside the orbit,
+at an explicitly named weight, not only in its closure.
+
+\begin{corollary}
+Any bound on $r$ that is uniform over both the full positive-diagonal congruence
+orbit and the number of sites must use a quantity that a positive-diagonal
+congruence can change.
+\end{corollary}
+
+The qualification matters. Nothing here forbids a uniform bound for a
+\emph{particular} physical family of weights; what is forbidden is a uniform
+bound derived from congruence invariants alone, since those are blind to the
+difference between the unfused kernel and every fused one.
+
+\subsection*{The orbit, not its closure}
+
+The fusion of Theorem~\ref{thm:fusion} is realised by a weight that
+\emph{concentrates}, and the congruences considered here are by \emph{strictly
+positive invertible} diagonals. Setting the remaining diagonal entries to zero
+would leave the orbit and land in its closure, so the interface deserves to be
+stated rather than assumed. It is stated, and the statement is stronger than a
+limiting argument.
+
+\begin{proposition}[Concentration stays inside the orbit]\label{prop:orbit}
+Fix two configurations $p\neq q$ and $0<\varepsilon\le 1$, and let
+$D_\varepsilon$ be the diagonal that is $1$ at $p$ and $q$ and $\varepsilon$
+elsewhere. Then $D_\varepsilon$ is strictly positive, and for \emph{every} such
+$\varepsilon$,
+\[
+  (D_\varepsilon M D_\varepsilon)_{pq}=M_{pq},
+  \qquad
+  (D_\varepsilon M D_\varepsilon)_{qp}=M_{qp},
+\]
+while $|(D_\varepsilon M D_\varepsilon)_{ij}|\le\varepsilon\,|M_{ij}|$ whenever
+$i\notin\{p,q\}$.
+\end{proposition}
+
+\begin{proof}
+$(D_\varepsilon M D_\varepsilon)_{ij}=d_id_jM_{ij}$ with $d_p=d_q=1$, giving the
+two equalities; and $d_i=\varepsilon$, $d_j\le1$ off the pair.
+\end{proof}
+
+So the fused bond is \emph{already present at every strictly positive
+$\varepsilon$}: the limit does not create the block, it deletes the rest of the
+matrix. An earlier version converted that deletion into a statement about
+eigenvalues by citing the continuity of the spectrum in finite dimensions. It no
+longer does. Because the block is exact at every $\varepsilon$, a vector
+supported on the pair already sees it exactly, and \S6 turns that observation
+into a bound valid at each $\varepsilon$ separately --- which is the statement
+one actually wants here, since the whole point of
+Proposition~\ref{prop:orbit} is that we never leave the orbit.
+
+\section{Which congruence is extremal: pairs beat exchangeable clusters}
+
+Theorem~\ref{thm:fusion} identifies the pair value $\tanh(\beta L)$, approached
+by concentrating on the antipodal pair --- for $L>1$ it is a statement about a
+principal \emph{block}, and the orbit of strictly positive congruences reaches
+$B(\beta L)\oplus 0$ only as $\varepsilon\to0$
+(Proposition~\ref{prop:orbit}). Is that value the best available? For the family
+of \emph{uniform} concentrations the question has a complete and elementary
+answer, and the answer explains the mechanism.
+
+\begin{theorem}[Exchangeable concentration]\label{thm:exch}
+Fix $0<\mu<1$ and $m\ge2$, and let $E_m=\mu J_m+(1-\mu)I_m$ be the exchangeable
+correlation matrix on $m$ sites. Its spectrum consists of exactly two points: $1+(m-1)\mu$ on
+the constant vector, and $1-\mu$ on every vector summing to zero. Hence the ratio
+it reaches is
+\[
+  \frac{1-\mu}{1+(m-1)\mu},
+\]
+which is \emph{strictly decreasing} in $m$.
+\end{theorem}
+
+\begin{proof}
+$E_m\mathbf 1 = (1+(m-1)\mu)\mathbf 1$ by summing a row. If $\sum_i x_i=0$ then
+$(E_mx)_i=\mu\sum_j x_j+(1-\mu)x_i=(1-\mu)x_i$. These two eigenspaces have
+dimensions $1$ and $m-1$, so they exhaust the spectrum. For monotonicity,
+$k\mapsto (1-\mu)/(1+k\mu)$ is strictly decreasing on $k\ge 0$ because the
+numerator is positive and the denominator strictly increasing.
+\end{proof}
+
+The reading is the point. \textbf{The more sites an exchangeable concentration
+keeps, the smaller the ratio it can reach.} So among these the best is the
+smallest nondegenerate one --- a \emph{pair} --- and at $m=2$ the value is
+$(1-\mu)/(1+\mu)$. On the hypercube kernel, $\mu=e^{-2\beta L}$ at the antipodal
+pair, and $(1-\mu)/(1+\mu)=\tanh(\beta L)$: Theorem~\ref{thm:fusion} is the
+$m=2$ case of Theorem~\ref{thm:exch}.
+
+\begin{remark}[Exactly how far this goes]\label{rem:exchscope}
+Theorem~\ref{thm:exch} concerns subsets on which \emph{all} pairwise
+correlations equal a common $\mu$. On a general subset the entries $M_{ij}$
+differ and the spectrum has no such closed form, so the theorem does \emph{not}
+say that a pair beats every uniformly weighted subset of an arbitrary $M$. The
+section title should be read with the word \emph{exchangeable} attached. What
+the theorem does establish is the mechanism --- spreading a concentration over
+more equally correlated sites lowers the reachable ratio --- and it is that
+mechanism, not the general proof; the general proof is \S6.
+\end{remark}
+
+\section{The supremum, exactly: Hilbert's projective diameter}
+
+The remaining question is what an \emph{arbitrary} positive weight can reach.
+It has a complete answer, and the answer comes from geometry rather than from
+spectral estimates: a positive weight cannot change the projective geometry it
+acts on.
+
+For an entrywise positive matrix $T$, Hilbert's projective diameter is
+\[
+  \Delta(T)\;=\;\max_{i,j,k,l}\,
+  \log\frac{T_{ik}T_{jl}}{T_{jk}T_{il}} .
+\]
+Birkhoff's theorem \cite{birkhoff1957} says the map induced by $T$ contracts
+Hilbert's projective metric with coefficient $\tanh(\Delta(T)/4)$, and the
+spectral consequence is classical.
+
+\begin{fact}[\cite{evesonnussbaum1995}, Theorem~1.1 with Theorem~2.3,
+eq.~(6)]\label{fact:birkhoff}
+For an entrywise positive matrix $T$ with Perron root $\rho(T)$,
+\[
+  r(T)\;\le\;\tanh\!\big(\Delta(T)/4\big).
+\]
+\end{fact}
+
+The attribution is exact and worth unpacking, since this is the one
+non-elementary import. Eveson and Nussbaum call
+$q(L)=\sup\{|z|/r(L): z\in\sigma(L),\,z\neq r(L)\}$ the \emph{spectral
+clearance} (their eq.~(5)); it is verbatim the $r(T)$ of \S1. Their
+Theorem~2.3, eq.~(6), gives $q(L)\le\inf_{j\ge1}N(L^j)^{1/j}$, and their
+Theorem~1.1 --- the Birkhoff--Hopf theorem --- gives
+$N(L)=k(L)=\tanh\tfrac14\Delta(L)$. Taking $j=1$ yields Fact~\ref{fact:birkhoff}.
+Their hypotheses hold here with $m=1$: the standard cone in $\R^n$ is closed,
+normal and reproducing, $T$ is bounded with $T(C)\subseteq C$, and $T$ entrywise
+positive gives $\Delta(T;C,C)<\infty$ and $T^2\neq0$. Their introduction lists
+matrices with strictly positive entries as the motivating class.
+
+\emph{This is the only non-elementary input imported by this section}, and it is
+imported as a statement, not reproved. The two facts that make
+Fact~\ref{fact:birkhoff} bite are elementary, and both are proved here.
+
+An earlier version of this paper imported a \emph{second} classical fact, the
+finite-dimensional continuity of eigenvalues, to run the lower bound as a limit.
+It is gone. The lower bound below is proved instead by exhibiting a fluctuation
+vector, which yields the estimate at \emph{every} $\varepsilon>0$ rather than in
+a limit, and uses only Perron--Frobenius and the variational characterisation of
+the second eigenvalue of a symmetric matrix. That is not a stylistic
+preference: a bound available at each $\varepsilon$ is a bound about the orbit,
+whereas a limit is a statement about its closure, and \S4 has already had to
+insist on the difference.
+
+\begin{remark}[An independent check on the value]\label{rem:phiform}
+The contraction coefficient is also written without logarithms or hyperbolic
+functions \cite{seneta2006}: with
+$\varphi(A)=\min_{i,j,k,l} A_{ik}A_{jl}/(A_{jk}A_{il})$,
+\[
+  \tanh\!\big(\Delta(A)/4\big)\;=\;\frac{1-\sqrt{\varphi(A)}}{1+\sqrt{\varphi(A)}} .
+\]
+For our $M$ the cross-ratios come in reciprocal pairs, so
+$\varphi(M)=1/e^{\Delta(M)}=\mu^{2}$ and the right-hand side is
+$(1-\mu)/(1+\mu)$ directly. The two closed forms agree, which is a useful check:
+the \emph{upper-bound constant} of Theorem~\ref{thm:lcp} can be read off the
+minimum cross-ratio with no transcendental function anywhere. It is a second
+derivation of the Birkhoff \emph{coefficient}, not a second proof of the
+theorem --- the equality of the supremum still needs the lower bound, hence the
+concentration and the fluctuation witness.
+
+That the two closed forms really are the same number is not left to this
+paragraph. It is the Lean theorem \verb|phi_form_eq_tanh|:
+$\tanh\big(\tfrac14\log(1/\varphi)\big)=(1-\sqrt\varphi)/(1+\sqrt\varphi)$ for
+every $\varphi>0$. The point is not the difficulty --- there is none --- but the
+placement: the hypothesis assumed in the machine-checked theorem of \S9 is
+written in the $\sqrt{\ }$ form, while the fact cited from the literature is
+written with $\tanh$, and an unchecked sentence between the two is exactly the
+gap this paper has already published once (Remark~\ref{rem:sign}).
+\end{remark}
+
+\begin{lemma}[$\Delta$ is a congruence invariant]\label{lem:deltainv}
+For every positive diagonal $D$ and all indices,
+\[
+  \frac{(DMD)_{ik}(DMD)_{jl}}{(DMD)_{jk}(DMD)_{il}}
+  \;=\;\frac{M_{ik}M_{jl}}{M_{jk}M_{il}},
+  \qquad\text{hence}\qquad \Delta(DMD)=\Delta(M).
+\]
+\end{lemma}
+
+\begin{proof}
+$(DMD)_{ab}=d_ad_bM_{ab}$, so numerator and denominator both acquire the factor
+$d_id_jd_kd_l$, which cancels.
+\end{proof}
+
+\begin{lemma}[The diameter of a unit-diagonal kernel]\label{lem:deltaval}
+Let $M$ be a symmetric $n\times n$ matrix with $n\ge2$, $M_{ii}=1$,
+$M_{ij}\le 1$, and
+\[
+  \mu \;:=\; \min_{i\neq j} M_{ij} \;>\;0 .
+\]
+Then $\Delta(M)=2\log(1/\mu)$ exactly.
+\end{lemma}
+
+\begin{proof}
+Every cross-ratio is at most $1\cdot 1/(\mu\cdot\mu)=1/\mu^2$. Taking $i=k$ and
+$j=l$ on a pair attaining the minimum gives
+$M_{ii}M_{jj}/(M_{ji}M_{ij})=1/\mu^2$, so the maximum is attained.
+\end{proof}
+
+\begin{remark}[$\mu$ must be the attained minimum]\label{rem:attmin}
+An earlier version stated this lemma with $\mu$ merely a \emph{lower bound},
+$\mu\le M_{ij}\le1$. That is false: $M=J_n$ with $\mu=\tfrac12$ satisfies every
+such hypothesis, yet all cross-ratios equal $1$, so $\Delta(J_n)=0$ while
+$2\log(1/\mu)=2\log 2>0$. The proof always used attainment; only the statement
+did not.
+
+The Lean module had it right and the prose did not, which is worth recording
+rather than quietly repairing. There, \verb|crossRatio_le_of_bounds| assumes only
+$\mu\le M_{ab}$ and concludes an \emph{inequality}, while
+\verb|crossRatio_attained| takes $M_{ij}=\mu$ as an explicit hypothesis. The two
+halves were kept apart in the kernel and merged in the English.
+\end{remark}
+
+\begin{theorem}[Least-correlated pair]\label{thm:lcp}
+Let $M$ be a symmetric $n\times n$ matrix with $n\ge2$, $M_{ii}=1$ and
+$0<\mu\le M_{ij}\le 1$ for $i\neq j$, where $\mu=\min_{i\neq j}M_{ij}$. Then
+\[
+  \sup_{D>0 \textup{ diagonal}} r(DMD) \;=\; \frac{1-\mu}{1+\mu}.
+\]
+\end{theorem}
+
+\begin{proof}
+\emph{Upper bound.} $DMD$ is entrywise positive, so by
+Lemmas~\ref{lem:deltainv} and~\ref{lem:deltaval} and Fact~\ref{fact:birkhoff},
+\[
+  r(DMD)\;\le\;\tanh\!\big(\Delta(DMD)/4\big)
+        \;=\;\tanh\!\big(\tfrac12\log(1/\mu)\big)
+        \;=\;\frac{1/\mu-1}{1/\mu+1}\;=\;\frac{1-\mu}{1+\mu},
+\]
+the middle identity because $t=e^{\frac12\log(1/\mu)}$ satisfies $t^2=1/\mu$ and
+$\tanh\log t=(t^2-1)/(t^2+1)$.
+
+\emph{Lower bound, with no limit.} Fix a pair $\{p,q\}$ attaining the minimum,
+let $D_\varepsilon$ be as in Proposition~\ref{prop:orbit} with
+$0<\varepsilon\le1$, and put $T_\varepsilon := D_\varepsilon M D_\varepsilon$.
+It is symmetric and entrywise positive, and by Proposition~\ref{prop:orbit} its
+block on $\{p,q\}$ is exactly
+$\begin{psmallmatrix}1&\mu\\ \mu&1\end{psmallmatrix}$.
+
+By Perron--Frobenius the Perron root $\rho_\varepsilon$ is simple with a
+strictly positive eigenvector $\Omega$, so the second eigenvalue is
+\[
+  \lambda_1 \;=\; \max\Big\{\tfrac{\langle x,T_\varepsilon x\rangle}{\|x\|^2}
+    \;:\; x\perp\Omega,\ x\neq0 \Big\},
+  \qquad \lambda_1 < \rho_\varepsilon .
+\]
+Take the two-supported \emph{fluctuation witness}
+$x=\Omega_q e_p-\Omega_p e_q$, which is nonzero because $\Omega>0$. Two things
+happen at once. It is orthogonal to $\Omega$ identically ---
+$\langle\Omega,x\rangle=\Omega_p\Omega_q-\Omega_q\Omega_p=0$, with no
+hypothesis on $\Omega$ whatever --- and, being supported on $\{p,q\}$, it sees
+only the block the congruence preserves:
+\[
+  \langle x,T_\varepsilon x\rangle
+   \;=\; \Omega_q^2+\Omega_p^2-2\mu\,\Omega_p\Omega_q
+   \;=\; (1-\mu)\big(\Omega_q^2+\Omega_p^2\big)+\mu\,(\Omega_p-\Omega_q)^2
+   \;\ge\; (1-\mu)\,\|x\|^2 .
+\]
+The middle step is an identity, not an estimate, and the slack is a square; so
+$\lambda_1\ge 1-\mu>0$ and the subdominant \emph{modulus} is at least $1-\mu$.
+
+For the denominator, every row of $T_\varepsilon$ sums to at most
+$1+\mu+n\varepsilon$: row $p$ contributes $M_{pp}=1$ and $M_{pq}=\mu$ exactly and
+at most $\varepsilon$ from each remaining entry, row $q$ likewise, and a row
+outside the pair carries a factor $\varepsilon$ throughout. A nonnegative matrix
+has Perron root at most its largest row sum, so
+$\rho_\varepsilon\le 1+\mu+n\varepsilon$. Therefore
+\[
+  r(T_\varepsilon)\;\ge\;\frac{1-\mu}{1+\mu+n\varepsilon}
+  \qquad\text{for \emph{every} }\varepsilon\in(0,1],
+\]
+with $D_\varepsilon$ strictly positive throughout. Given $t<(1-\mu)/(1+\mu)$,
+the right-hand side exceeds $t$ for every $\varepsilon\in(0,1]$ when $t\le0$, and
+as soon as $\varepsilon<\big[(1-\mu)-t(1+\mu)\big]/(tn)$ when $t>0$ --- the
+numerator being positive precisely by the choice of $t$. That is an explicit
+witness rather than a limiting argument, and it never leaves the orbit. Hence
+the supremum is at least $(1-\mu)/(1+\mu)$.
+\end{proof}
+
+\begin{remark}[Attainment, and a retracted claim]\label{rem:attained}
+An earlier version of this paper asserted that the supremum is \emph{not}
+attained. That is false. For $n=2$ the matrix
+$\begin{psmallmatrix}1&\mu\\ \mu&1\end{psmallmatrix}$ is its own least
+correlated pair and already has eigenvalues $1\pm\mu$ at $D=I$, so the value is
+reached with no concentration and no limit; for $\mu=1$ the matrix is $J$, the
+ratio is $0$, and the value is reached for every $D$. The stated reason was
+worse than unsupported: it claimed $\Delta$ is ``a strict maximum only in the
+limit'', which Lemma~\ref{lem:deltainv} directly contradicts --- that lemma
+proves $\Delta$ is \emph{constant} on the orbit. \textbf{We do not classify
+attainment here.} Doing so for $n>2$ would need the equality cases of the
+Birkhoff bound, which the invariance of $\Delta$ alone cannot supply.
+\end{remark}
+
+\begin{remark}[Fact~\ref{fact:birkhoff} is attained, at every diameter]\label{rem:sharp}
+The same $2\times2$ computation says something about the imported bound, and it
+is worth extracting. Given $\delta>0$ put $\mu=e^{-\delta/2}\in(0,1)$ and
+$M=\begin{psmallmatrix}1&\mu\\ \mu&1\end{psmallmatrix}$. By
+Lemma~\ref{lem:deltaval}, $\Delta(M)=2\log(1/\mu)=\delta$; the eigenvalues are
+$1\pm\mu$; so
+\[
+  r(M)\;=\;\frac{1-\mu}{1+\mu}\;=\;\tanh(\delta/4)
+\]
+\emph{with equality}. Hence at every admissible value of the diameter
+Fact~\ref{fact:birkhoff} is met exactly, and \textbf{no bound on $r$ that depends
+on $\Delta$ alone can be smaller}. The equality of the two numbers is the Lean
+theorem \verb|birkhoff_attained_two|, and the eigenvalues $1\pm\mu$ are
+\verb|exch_two_eigen|. The argument is immediate and we claim nothing for it
+beyond having looked; we state it because it explains the shape of the classical
+literature.
+
+The quantifier here is the whole content, and an earlier version of this remark
+got it wrong. It said that ``the same is true along the whole congruence orbit''
+of that matrix, on the ground that $\Delta$ is invariant. That does \emph{not}
+follow, and it is false: Lemma~\ref{lem:deltainv} says $\Delta$ is constant on
+the orbit, not that $r$ is, and $r$ certainly is not. For
+$M=\begin{psmallmatrix}1&\mu\\ \mu&1\end{psmallmatrix}$ with $\mu=0.1$ and
+$D=\diag(1,d)$, the diameter agrees to $10^{-11}$ at every $d$ tested while $r$
+falls from $0.818$ at $d=1$ to $9.9\times10^{-5}$ at $d=0.01$; across three
+values of $\mu$, twelve of fifteen orbit points sit strictly \emph{below} the
+bound. The correct statement is the uniform one, and it is the one worth having:
+\begin{center}
+\emph{$\Delta$ is constant on the orbit and at least one point of the orbit
+attains $\tanh(\Delta/4)$; therefore no bound valid over that whole orbit and
+depending only on $\Delta$ can be smaller.}
+\end{center}
+The diameter pins the best \emph{universal} bound, not the ratio of each
+individual member --- which is, after all, exactly the paper's thesis: the
+congruence moves the spectrum and cannot move the geometry. Bauer, Deutsch and Stoer
+\cite{bauerdeutschstoer1969} bound exactly this $r$ --- their
+$|\lambda(A)|/\pi(A)$ --- and \emph{improve} Hopf's inequality by bringing in the
+eigenvector belonging to $\pi(A)$. They had to bring in something: a positive
+diagonal congruence moves the eigenvector and fixes the diameter, so any
+sharpening must be of that kind. Theorem~\ref{thm:lcp} is the statement that
+makes this a theorem rather than an observation about proofs.
+\end{remark}
+
+Three things about this proof are worth saying plainly.
+
+\textbf{It uses no definiteness whatever} --- only positivity of the entries.
+That is why the twelve indefinite witnesses in the certificate below all obeyed
+the bound: the pre-registered gate that predicted otherwise was pointing at this
+argument, and we did not see it at the time.
+
+\textbf{It explains the rigidity.} The quantity that survives the weight is not
+a spectral one at all; it is the projective diameter. Congruence moves the
+spectrum but cannot move the geometry, and the reachable spectral ratio is
+pinned by the geometry.
+
+\textbf{Novelty, stated carefully.} Both imported facts are classical, and
+Lemma~\ref{lem:deltainv} is immediate once written down. What we did not find in
+the searches we ran is this exact \emph{evaluation} of the supremum of the
+spectral ratio over a diagonal congruence orbit. That is an absence of found
+prior art, not a claim of priority.
+
+\subsection*{What the first attempt could not do}
+
+We record the route that failed, because it locates the difficulty. Since
+$T$ is positive definite exactly when $M$ is (Theorem~\ref{thm:rigid}),
+\[
+  r(T)\le\frac{1-\mu}{1+\mu}
+  \iff
+  \lambda_0-\lambda_1\;\ge\;\mu\,(\lambda_0+\lambda_1),
+\]
+and writing $M=\mu J+(1-\mu)N$ --- where $N$ again has unit diagonal and
+entries in $[0,1)$ --- gives $T=\mu\,dd^{\!\top}+(1-\mu)\,DND$, a rank-one
+positive semidefinite piece plus an entrywise nonnegative one. Weyl's inequality
+and the Perron root of the second piece bound $|\lambda_1|$ correctly but lose
+too much on $\lambda_0$: testing against the Perron vector of $DND$ reduces the
+claim to $\sum_{i\neq j}(1+\mu-2M_{ij})u_iu_j\ge(1-\mu)\sum_i u_i^2$, whose
+left-hand side is negative once some $M_{ij}>(1+\mu)/2$. The top eigenvector of
+$T$ is not the Perron vector of $DND$, and the slack is exactly that gap.
+
+On the hypercube, $K_\beta^{(L)}$ normalised to unit diagonal has
+$M_{\sigma\tau}=e^{-2\beta h(\sigma,\tau)}$ with $h$ the Hamming distance; the
+least correlated pair is the antipodal one, $\mu=e^{-2\beta L}$, and
+$(1-\mu)/(1+\mu)=\tanh(\beta L)$. Theorem~\ref{thm:lcp} therefore contains the
+\emph{spectral-ratio consequence} of Theorem~\ref{thm:fusion}
+(Corollary~\ref{cor:fusionratio}) as its hypercube instance; the identity of
+Theorem~\ref{thm:fusion} itself supplies the explicit antipodal block that the
+lower bound concentrates on.
+
+\paragraph{Numerical certificate.} Random search plus Nelder--Mead ascent over
+positive diagonals, on families chosen to break it and run before the proof was
+found, never exceeded $(1-\mu)/(1+\mu)$ and in almost every case \emph{matched}
+it to machine precision. We say ``matched'' rather than ``attained'': a
+floating-point equality at the end of an ascent is not evidence that a maximiser
+exists, and this paper does not classify maximisers.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+family & worst excess over target & cases \\
+\midrule
+hypercube, $L\in\{2,3,4\}$, $\beta\in\{0.15,0.4,0.8\}$ & $1.0\times10^{-15}$ & 9\\
+random positive Gram, $n\in\{4,5,6\}$                  & $5.0\times10^{-16}$ & 12\\
+full rank / near singular ($\kappa\sim6\times10^{6}$)  & $3.3\times10^{-16}$ & 4\\
+near-exchangeable, isolated argmin, entries near $1$   & $4.4\times10^{-16}$ & 3\\
+exactly exchangeable $\mu J+(1-\mu)I$                  & $1.0\times10^{-15}$ & 2\\
+\emph{indefinite}, $\lambda_{\min}\in[-0.42,-0.06]$    & $1.6\times10^{-15}$ & 12\\
+larger sizes, $n\in\{8,10,12\}$, $\kappa$ up to $5\times10^{4}$
+                                                       & $4.2\times10^{-16}$ & 6\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The last row was added after an audit of our own procedure: the adversarial
+sweep as first written never actually reached $n=8$. Its positive-definiteness
+\emph{precondition} fired on that family, the generator was repaired, and the
+family was not re-run --- so the largest size with evidence had been $n=6$, not
+$n=12$ as the sweep's summary implied. A precondition that is never met carries
+no evidence either way, and the script now returns a distinct
+\textsc{inconclusive} code rather than reporting such a case as a result.
+
+The last row deserves comment, because it corrected us. A pre-registered gate
+predicted that positive definiteness would be load-bearing --- that at least one
+of twelve indefinite witnesses would break the bound. None did; all twelve
+landed \emph{on} it. The hypothesis was therefore dropped, and
+Theorem~\ref{thm:lcp} as stated above assumes no definiteness. The gate, its
+prediction, and its failure are recorded in the repository rather than repaired
+in place.
+
+\paragraph{Scope of the certificate.} These are numerics, not proof. They cover
+$n\le 12$ and $\mu>0$, and they include indefinite symmetric matrices --- but
+entrywise positivity still guarantees Perron dominance, so the Perron root is
+the spectral radius in every case and $r$ always means what \S1 says it means.
+What is \emph{not} tested is $\mu\le0$, or matrices with nonpositive entries,
+where both the Birkhoff argument and the definition of the class break down.
+(An earlier version claimed the sweep did not reach ``a negative eigenvalue
+large enough to make $|\lambda_0|$ the negative extreme''. That situation cannot
+arise here at all: entrywise positivity forbids it. The sentence was a leftover
+from before $r$ was defined through the Perron root.)
+
+\section{Relation to prior work}
+
+\paragraph{Sylvester (1852).} The law of inertia is classical and
+Theorem~\ref{thm:rigid} is its definite case. We claim no novelty on the rigid
+half; the contribution is that this form of it is checkable without
+diagonalisation.
+
+\paragraph{Ostrowski.} Ostrowski's quantitative form of the inertia law gives,
+for Hermitian $A$ and invertible $S$, $\lambda_k(SAS^{*})=\theta_k\lambda_k(A)$
+with $\theta_k\in[\lambda_{\min}(SS^{*}),\lambda_{\max}(SS^{*})]$. For $S=D$
+diagonal this yields
+\[
+  r(DAD) \;\le\; \kappa(D^2)\, r(A),
+  \qquad \kappa(D^2)=\frac{\max_i d_i^2}{\min_i d_i^2},
+\]
+which \textbf{diverges} exactly in the regime of interest, namely when $D$
+degenerates. Theorem~\ref{thm:lcp} supplies a \emph{finite} substitute in that
+regime --- the exact supremum $(1-\mu)/(1+\mu)$, and $\tanh(\beta L)$ in the
+hypercube case, however badly conditioned $D$ becomes --- while
+Theorem~\ref{thm:fusion} identifies the extremal antipodal block that realises
+it there. That contrast, divergent classical bound against finite exact value,
+is stated side by side so that it can be checked.
+
+\paragraph{Onsager and Kaufman.} The kernel $DK_\beta D$ with a ferromagnetic
+nearest-neighbour weight is the transfer matrix of the two-dimensional
+anisotropic Ising model on a strip, whose spectrum is known in closed form.
+Nothing in Sections~3--4 is new mathematics about that model, and the reader who
+knows the exact solution will find $\tanh(\beta L)$ unsurprising: it is the
+zero-temperature limit in the transverse direction, where the strip collapses to
+a single spin. The contribution is not the value. It is that the value is
+\emph{exactly} the supremum over the whole diagonal congruence orbit
+(Theorem~\ref{thm:lcp}), that the orbit's rigid invariants are simultaneously
+pinned, and that the pair of facts identifies which quantities an argument may
+and may not use. An earlier version of this paper could only conjecture the
+first of those; the phrasing here is now licensed by \S6.
+
+\paragraph{The DAD branch, audited.} The previous version of this paper named
+this branch as an open obligation. It has now been read, and the outcome is more
+useful than a disclaimer: it \emph{shrinks} the novelty claim in one place and
+sharpens it in another.
+
+\emph{The scaling literature asks a different question.} Idel's survey
+\cite{idel2016} states its subject in its opening line --- given a nonnegative
+$A$, find diagonal $D_1,D_2$ making $D_1AD_2$ doubly stochastic --- and its
+seventy years of material is about the existence, uniqueness and convergence of
+such a \emph{normalisation}, together with the generalisation to positive maps
+between matrix algebras. Van der Sluis's optimal scaling \cite{vandersluis1969}
+is of the same type. Bushell \cite{bushell1973} sits in the same circle from the
+other side: he computes the projective contraction ratio itself, which is an
+\emph{ingredient} of Fact~\ref{fact:birkhoff} rather than a statement about an
+orbit. None of this asks what a spectral quantity can \emph{reach} as $D$ varies.
+
+\emph{The ratio itself is classical, and we say so plainly.} Bauer, Deutsch and
+Stoer \cite{bauerdeutschstoer1969} bound $|\lambda(A)|/\pi(A)$ for positive $A$
+--- our $r(A)$ verbatim --- by cone-contraction arguments, and show Hopf's
+inequality can be improved using the eigenvector of $\pi(A)$;
+Fact~\ref{fact:birkhoff} is the descendant we cite.
+\textbf{The upper half of Theorem~\ref{thm:lcp} is therefore not new in any
+part.} It is a classical bound applied to $DMD$, plus the observation --- immediate
+once written down --- that $\Delta$ does not move. Remark~\ref{rem:sharp} adds
+that the classical bound is exactly attained, so nothing was lost by importing
+the weakest form of it.
+
+\emph{What the search did not find} is the \emph{evaluation}: the supremum of $r$
+over a positive diagonal congruence orbit, together with a matching lower bound
+realised at strictly positive weights inside the orbit. Its two non-classical
+ingredients are Lemma~\ref{lem:deltainv} and the fluctuation witness of \S6. We
+record this as an absence of found prior art after a directed reading of the
+branch named above --- Eveson and Nussbaum point to Borwein, Lewis and Nussbaum
+as the DAD entry point --- and not as a claim of priority.
+
+\paragraph{Formalisation.} We are not aware of a mechanised treatment of
+congruence orbits of transfer kernels. This is an absence of found prior art in
+the searches we ran, not a claim of priority.
+
+\section{What is open}
+
+\begin{enumerate}
+\item \textbf{Formalising Fact~\ref{fact:birkhoff}} --- the one \emph{mathematical}
+      import that remains. The interface it must meet is already fixed and
+      checked: the hypothesis is stated in the logarithm-free form of
+      Remark~\ref{rem:phiform}, so a formalisation need carry neither $\log$ nor
+      $\tanh$, and \verb|phi_form_eq_tanh| certifies that the form assumed is the
+      form cited. Discharging it means proving the Birkhoff--Hopf contraction
+      bound in Lean, which is a genuine project and not an afternoon.
+\item \textbf{Bridging \texttt{SpectralInterface} to Mathlib} --- the one
+      \emph{interface} import that remains, and a different kind of debt. Its
+      content, \emph{on symmetric entrywise positive matrices}, is
+      Perron--Frobenius together with the variational characterisation of the
+      second eigenvalue: standard, elementary, and not in question. Both
+      qualifiers are load-bearing --- dropping symmetry made an earlier version
+      of this hypothesis false, and hence the theorem depending on it vacuous.
+      What is missing is that the pinned Mathlib has neither fact in
+      a form that applies to a \texttt{Matrix}-level definition of $r$, which
+      this module deliberately does not introduce.
+
+      \emph{This one now looks reachable, and we say so with the reasons.} The
+      repository already contains, for entrywise positive kernels, the existence
+      of a strictly positive eigenvector (\verb|exists_pos_eigenvector|), a
+      spectral orthonormal basis for real symmetric kernels, the subdominant
+      modulus \verb|specGap| with \verb|specGap < lam|, the operator bound
+      \verb|norm_act_le_specGap| on the Perron complement, and
+      \verb|specRatio = specGap / lam| --- which is $r$ verbatim. The route is
+      then short: apply the interface premise at the Perron vector, turn the
+      Rayleigh bound into $b\le\texttt{specGap}$ by Cauchy--Schwarz against the
+      operator bound, get $\lambda\le a$ from the row sums at a maximal
+      coordinate of $\Omega$, and divide. \textbf{The obstacle is not the
+      analysis but the packaging}: $r$ must be a \emph{total} function
+      \texttt{Matrix}$\to\mathbb R$, so the Perron data has to be chosen
+      canonically and the definition split by cases on the symmetric-positive
+      domain. We flag it as the next piece of work and do not claim it done. The lower bound that used to
+      be assumed wholesale is now \emph{derived} from this interface
+      (\verb|concentrated_lower_of_spec|), so the debt has moved from ``assume my
+      own conclusion'' to ``assume two textbook facts'' --- but it has not
+      vanished, and we do not say it has.
+
+      These two are the whole gap, and they are of different kinds: the first is
+      mathematics nobody here has done, the second is plumbing nobody here has
+      laid. Only the first would be a discovery.
+\item Whether the congruence-invariance of $\Delta$ extends usefully beyond
+      diagonal congruences --- for instance to congruences by positive matrices
+      that are not diagonal, where the cross-ratio no longer cancels.
+\item Whether the physical weight $w_\gamma$ attains the antipodal restriction
+      in the limit $\gamma\to\infty$ with the rate we measure. The deficit
+      $\tanh(\beta L)-r(\gamma)$ was found to decay like $e^{-2\gamma}$ (fitted
+      exponents $-1.96$ to $-2.08$ against a pre-registered prediction of $-2$),
+      consistent with one-domain-wall configurations dominating the correction.
+      The limit itself is not proved here.
+\item The general signature-counting law as a mechanised statement.
+\end{enumerate}
+
+\section*{Machine verification --- status}
+
+The following are written in Lean~4: the rigid half
+(Theorem~\ref{thm:rigid}, Lemma~\ref{lem:change}); the \emph{matrix identity}
+underlying Theorem~\ref{thm:fusion}; the \emph{scalar $\tanh$-approach lemma}
+underlying Theorem~\ref{thm:wall}; Proposition~\ref{prop:orbit}; and the
+algebraic and eigenvector ingredients of Lemma~\ref{lem:bond},
+Theorem~\ref{thm:exch} and Theorem~\ref{thm:lcp}; the fluctuation witness and
+the scalar $\varepsilon$-step that replaced the limit in the lower bound; and
+the \emph{conditional} form of Theorem~\ref{thm:lcp} itself ---
+against a pinned Mathlib in \texttt{YangMills/OS/CongruenceSpectrum.lean}, and
+\textbf{have been verified}, including the two lemmas that carry
+Theorem~\ref{thm:lcp} and the $n=2$ attainment witness of
+Remark~\ref{rem:attained}.
+
+\textbf{What ``ingredients'' means, precisely.} The module contains no Lean
+definition of $r$, no enumeration of a spectrum, and no theorem asserting that a
+second largest \emph{modulus} equals any stated quantity. What it contains for
+Lemma~\ref{lem:bond} and Theorem~\ref{thm:exch} is the eigenvector equations,
+the algebraic ratio identity, the positivity and sign lemmas, and the scalar
+monotonicity. The same caution applies to Theorems~\ref{thm:fusion}
+and~\ref{thm:wall}: Lean proves the antipodal block equals $B(\beta L)$ as
+matrices, and proves $\forall\rho<1\ \exists L,\ \rho<\tanh(\beta L)$ as a
+scalar statement, but the reading of either as a claim about the spectrally
+defined $r$ --- and the passage from the block to a strictly positive member of
+the orbit --- is completed at paper level. \emph{Their interpretation in terms of the spectrally defined $r$
+of \S1 is completed at paper level}, by elementary finite-dimensional linear
+algebra. We are explicit about this because it is exactly the gap
+Remark~\ref{rem:sign} is about: a true Lean lemma can sit underneath a sentence
+that says more than it does, and this paper has already published one such
+sentence.
+
+\textbf{Theorem~\ref{thm:lcp} is \emph{not} an unconditional Lean theorem, and we
+do not claim it is.} What exists in Lean is the \emph{conditional} theorem, which
+is a different and weaker object, stated exactly:
+\begin{center}
+\ttfamily\small
+congruenceRatio\_isLUB\_of\_birkhoff\_of\_spectralInterface\ :\\
+IsLUB (congrOrbit r M) ((1-$\mu$)/(1+$\mu$))
+\end{center}
+carrying \textbf{two} explicit hypotheses, and named for both. They are
+hypotheses, not \texttt{axiom} declarations: nothing is added to the ambient
+theory, the axiom oracle below is unaffected, and a reader who declines either
+one receives a true implication and no claim.
+
+\textbf{The name is part of the statement, and the previous version's was not.}
+It read \verb|..._of_birkhoff| while the type carried a second hypothesis, and
+the surrounding prose then said that formalising Fact~\ref{fact:birkhoff} was all
+that stood between this theorem and an unconditional one. That was true of the
+mathematics and false of the published type. It is the defect of
+Remark~\ref{rem:sign} in its mildest form --- a label that says less than what
+sits under it --- and the fix is not a better sentence but a name that cannot
+drift from the type.
+
+The two imports are not of the same kind, and the difference is the whole
+remaining agenda:
+
+\begin{itemize}
+\item \verb|hBirkhoff| is a \textbf{mathematical} import: Fact~\ref{fact:birkhoff},
+  a real theorem nobody here has proved.
+\item \verb|hSpec| is an \textbf{interface} import. It says: for a symmetric,
+  entrywise positive $T$, if \emph{for every} strictly positive candidate Perron
+  vector $\Omega$ \emph{there exists} a nonzero $x\perp\Omega$ with
+  $\langle x,Tx\rangle\ge b\|x\|^2$, and every row sum is at most $a$, then
+  $r(T)\ge b/a$. That is Perron--Frobenius plus the variational characterisation
+  of the second eigenvalue, packaged once, and stated so that \emph{nothing from
+  this paper appears in it} --- no $\mu$, no pair, no concentration, no
+  congruence. It is carried because the pinned Mathlib supplies neither fact
+  against a \texttt{Matrix}-level definition of $r$, not because either is in
+  doubt.
+\end{itemize}
+
+\textbf{Both hypotheses had the wrong domain, and one of them was false.} This
+is the correction that cost a version, and it was found by reading the Lean
+types rather than the paragraph above them.
+
+\emph{Symmetry.} \verb|hSpec| did not require $T^{\!\top}=T$. Without it the
+statement is not a packaging of textbook facts --- it is \emph{false}. Take
+\[
+  T=\begin{pmatrix}3&5&2\\ 5&4&1\\ 2&5&3\end{pmatrix},
+\]
+entrywise positive, every row summing to $10$, spectrum $\{10,1,-1\}$, so
+$r(T)=1/10$. But $\langle x,Tx\rangle$ sees only the symmetric part
+$(T+T^{\!\top})/2$, whose second eigenvalue is $1.330519$; by Courant--Fischer
+every positive $\Omega$ admits an $x\perp\Omega$ with
+$\langle x,Tx\rangle\ge 1.3\|x\|^2$ --- measured over $4000$ random positive
+$\Omega$, worst attainable value $1.330518744$. The premises hold with $b=1.3$,
+$a=10$; the conclusion demands $0.13\le 0.1$. \textbf{A conditional theorem whose
+hypothesis no ratio function can satisfy is vacuous}, which is a worse failure
+than one that merely assumes too much --- and our own non-vacuity checks had
+audited the \emph{conclusion} rather than the satisfiability of the premises,
+one level too low.
+
+\emph{Positivity.} \verb|hBirkhoff| did not require entrywise positivity, so it
+quantified over every matrix obeying the cross-ratio inequality.
+Fact~\ref{fact:birkhoff} is a theorem about \emph{positive} operators, and \S6
+spends a paragraph checking exactly those hypotheses; so the Lean statement asked
+for strictly more than the source supplies and could not have been built from
+\cite{evesonnussbaum1995} at all. Assuming more than the source provides is the
+mirror image of claiming more than the lemma proves, and
+\verb|phi_form_eq_tanh| does not help: it identifies the two \emph{constants},
+not the two \emph{domains}.
+
+Both are repaired by copying into the types the hypotheses the paper proof was
+already using: \verb|BirkhoffInterface| and \verb|SpectralInterface| now carry
+$T^{\!\top}=T$ and $0<T_{ij}$, $M^{\!\top}=M$ is a hypothesis of the endpoint,
+and \verb|congr_transpose| carries symmetry to every point of the orbit --- which
+is the only reason either import applies at $DMD$ rather than only at $M$.
+Positivity of $DMD$ needs no new hypothesis: it follows from $0<\mu\le M_{ab}$.
+
+\textbf{What changed in this version is which of the two the lower bound is.} It
+used to be its own hypothesis --- the main theorem assumed the conclusion of \S6's
+lower bound outright. It is now \emph{derived}
+(\verb|concentrated_lower_of_spec|) from \verb|hSpec| together with the
+block-preservation of Proposition~\ref{prop:orbit}, the fluctuation witness, and
+a new row-sum bound \verb|concentrate_rowSum_le| giving
+$\rho\le 1+\mu+n\varepsilon$. The debt moved from ``assume my own conclusion'' to
+``assume two textbook facts''. It did not disappear, and we do not say it did.
+
+Five endpoints carry it:
+\begin{itemize}
+\item \verb|congrOrbit_upper_of_birkhoff| --- Birkhoff at $DMD$ reduces to
+  Birkhoff at $M$. This is Lemma~\ref{lem:deltainv} doing its work: the
+  cross-ratio hypothesis available at $M$ transports to every point of the orbit.
+\item \verb|leastPair_fluctuation_witness| --- both halves of the lower bound's
+  input, with no eigenvalue and no limit in the statement: the witness is
+  orthogonal to \emph{any} $\Omega$, and its quadratic form is at least
+  $(1-\mu)\|x\|^2$.
+\item \verb|leastPair_specGap_lower| --- the division step, and the only place a
+  Perron root is mentioned at all.
+\item \verb|concentrate_rowSum_le| --- the denominator: every row of
+  $D_\varepsilon M D_\varepsilon$ sums to at most $1+\mu+n\varepsilon$, the two
+  pair entries surviving untouched and everything else carrying a factor
+  $\varepsilon$. This is what makes the limit $(1-\mu)/(1+\mu)$ and not
+  something else.
+\item \verb|concentrated_specRatio_approaches| --- every $t<(1-\mu)/(1+\mu)$ is
+  exceeded \emph{inside} the orbit, at an $\varepsilon$ the proof produces.
+\item \verb|congr_transpose| --- a positive diagonal congruence preserves
+  symmetry, so the orbit stays inside the class both imports are about. Without
+  it neither hypothesis is applicable at $DMD$, only at $M$.
+\end{itemize}
+
+The hypothesis \verb|hBirkhoff| is stated in the logarithm-free form of
+Remark~\ref{rem:phiform} --- no \texttt{log} and no \texttt{tanh} occur in it,
+only \texttt{Real.sqrt} --- and with $\varphi$ merely \emph{a} lower bound for
+the cross-ratios rather than their minimum. Both choices assume strictly less
+than the sharp statement, because $x\mapsto(1-x)/(1+x)$ decreases. That the form
+assumed is the form cited is itself checked, by \verb|phi_form_eq_tanh|; a
+reader should not have to take a change of closed form on the author's word,
+least of all in this paper.
+
+\textbf{Spectral continuity is no longer imported anywhere.} It was the second
+classical input of the previous version, and it has been \emph{eliminated}
+rather than formalised: \verb|lower_bound_approaches| returns an explicit
+$\varepsilon$, and the Rayleigh estimate is the ring identity
+$a^2+b^2-2\mu ab=(1-\mu)(a^2+b^2)+\mu(a-b)^2$, whose slack is a square. What
+remains unformalised is Fact~\ref{fact:birkhoff} and the two textbook facts
+packaged in \verb|hSpec| --- one deep, two shallow, and none of them hidden.
+
+Non-vacuity was audited rather than asserted: \verb|congrOrbit_nonempty| (the
+supremum is not taken over $\emptyset$) and \verb|isLUB_value_pos| (the pinned
+value is not the trivial $0$), together with the $n=2$ attainment of
+Remark~\ref{rem:attained}, which is \verb|exch_two_eigen|.
+
+On provenance. Fact~\ref{fact:birkhoff} is now the single \emph{non-elementary}
+load-bearing import of Theorem~\ref{thm:lcp} --- the lower bound imports nothing
+beyond Perron--Frobenius and the variational characterisation of the second
+eigenvalue --- so a
+reader must be able to check it at named statements rather than at a paper. It
+now is: Theorem~1.1 and Theorem~2.3, eq.~(6) of \cite{evesonnussbaum1995}, both
+read in the source rather than inferred from secondary literature. Three earlier
+attempts to locate it failed; the record is kept because a citation that took
+four tries is one a referee should re-check.
+
+We cite only statements we have read. In particular we do \emph{not} attribute
+Fact~\ref{fact:birkhoff} to a corollary in \S2 of \cite{evesonnussbaum1995}: the
+numbered results we located there are Propositions~2.1--2.2, Lemmas~2.1--2.3,
+Theorems~2.2--2.3 and Remarks~2.1--2.3. Bibliographic data for
+\cite{birkhoff1957,seneta2006} were checked against the publishers' records; the
+internal numbering of those two was not, and neither is load-bearing.
+
+No statement in this paper is conjectural.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+commit (module, this version) & \texttt{7d0be024} \\
+commit (aggregate import) & \texttt{fdb0317b} \\
+module \texttt{sha256} & \texttt{dd915eddd5ac2d81f91c1156} \\
+                       & \texttt{c88bb83fdaa02cdca4aefa0804dde18f4cb519fc} \\
+toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
+Mathlib pin & \texttt{07642720480157414db592fa85b626dafb71355b} \\
+elaboration & exit \texttt{0}; log \textbf{0 bytes} --- zero errors, zero warnings, zero \texttt{sorry} \\
+compilation & \texttt{lake build YangMills.OS.CongruenceSpectrum}, exit \texttt{0} \\
+axiom oracle & exit \texttt{0}; 82/82 declarations resolved \\
+             & 80 on \texttt{[propext, Classical.choice, Quot.sound]} \\
+             & 2 (\texttt{cfgPlus}, \texttt{cfgMinus}) on \texttt{[propext]} alone \\
+\texttt{sorryAx} & none \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The oracle was generated from the source, not hand-written: the declaration list
+is extracted by pattern and every extracted name is queried, so a declaration
+cannot be omitted by being forgotten. One of the $82$ names carries a prime
+(\verb|concentrate_block'|); the extractor was checked to capture it, because a
+name-blind parser has already cost this project a false all-clear elsewhere. The
+two declarations resting on \texttt{[propext]} alone are configuration
+constants, and \texttt{[propext]} is a subset of the standard triple, so the
+count of \emph{nonstandard} axioms is zero. Every extracted name was also checked
+to \emph{appear} in the oracle's output, so a silently mistyped query cannot pass
+as a silent success.
+
+\textbf{And the counter was wrong once, in a way worth recording.} On the run
+that produced these figures the first tally reported $78$ declarations against
+$80$ output lines, with $75+2$ accounted for: three lines unexplained. The cause
+was not a bad axiom. Renaming the main theorem to
+\verb|congruenceRatio_isLUB_of_birkhoff_of_spectralInterface| made the name long
+enough that Lean wrapped its axiom list across three lines, and a check that
+matched \texttt{[propext, Classical.choice, Quot.sound]} as a substring of a
+\emph{line} could no longer see it. The reconciliation is now done on
+whitespace-normalised text, per declaration rather than per line, and it balances
+exactly: $78$ entries for $78$ names, $76+2+0$, nothing unexplained. We report
+this because the failure mode is the interesting one --- a verification script
+that becomes blind to a purely typographic change, in this case one caused by
+fixing a name --- and because a tally that does not add up is a measurement not
+yet understood, not a rounding error.
+
+\textbf{Anchor versus branch head.} Every figure in this section is measured at
+\texttt{7d0be024}. The branch head when this version was written is
+\texttt{97c870cc}, and the difference between them is confined to the module's
+\verb|/-! ... -/| section header: two paraphrases that had gone on describing the
+previous version's interfaces --- ``a Perron vector for the lower half'', which
+understates \verb|SpectralInterface|, and $\varepsilon\le1$ where the hypothesis
+is $\varepsilon\le\tfrac12$. The whole diff is comment text and is exhibited in
+that commit. We anchor at \texttt{7d0be024} rather than reprint measured numbers
+beside a hash they were not measured at, and we name the head rather than let a
+reader discover a hash mismatch on checkout.
+
+The module hash was computed independently on the author's machine and on the
+verification host and agrees, so the checked object is the source printed here.
+The figures above come from a \emph{second} run, on a runtime created after the
+previous one was destroyed: a fresh clone at the same commit, a fresh toolchain
+install, and a fresh Mathlib cache, reproducing the same hash and the same
+verdicts. That is the independent-clone condition the project's governance asks
+for, and it is met here rather than asserted.
+Compilation ran on a CPU (never GPU) high-memory cloud runtime, per the
+project's environment rule of 1~August~2026; the desktop compiles nothing.
+
+\textbf{The registered aggregate check has now run, and passed.} The
+pre-registration also asked that the module be imported into the project's
+aggregate library and that the build job count increment by exactly one. Both
+builds were run in the \emph{same} tree, on the same host, toolchain and Mathlib
+pin, differing only in whether the import line is present:
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+build & exit & jobs \\
+\midrule
+aggregate \emph{without} the import (baseline) & \texttt{0} & \textbf{8430} \\
+aggregate \emph{with} the import (treatment)   & \texttt{0} & \textbf{8431} \\
+\midrule
+increment & & \textbf{$+1$}, as predicted \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both counters are printed rather than only the difference, and neither is a
+subtraction against a figure measured in some other tree.
+
+\textbf{These are the counts at the final commit, not inherited ones.} An earlier
+version of this section carried figures measured at \texttt{fdb0317b}, when the
+module was smaller, and said so rather than reprinting them beside a newer hash.
+They have now been re-measured at \texttt{7d0be024}, on the fresh runtime
+described above: baseline \textbf{8430}, treatment \textbf{8431}, both exiting
+\texttt{0}, in the same tree, the baseline produced by checking the parent's
+\texttt{YangMillsCore.lean} into the treated tree --- verified to contain zero
+occurrences of \texttt{CongruenceSpectrum} --- rather than by a separate clone.
+The exit codes were read from sentinel files written atomically after
+termination, per the project's sentinel rule; a sentinel's existence is not
+success, and only the integer inside it is.
+
+\textbf{One difference from the earlier run, stated because it removes an
+argument we previously used.} That run could point at
+\texttt{Built YangMills.OS.CongruenceSpectrum} appearing immediately before
+\texttt{Built YangMillsCore} in the treatment log. This run cannot: the module
+had already been compiled earlier in the same session by
+\texttt{lake build YangMills.OS.CongruenceSpectrum}, so Lake had nothing to
+rebuild and printed no such line. The reachability evidence here is the job count
+itself, which is better: the aggregate needs $8431$ jobs with the import and
+$8430$ without, and the one job of difference \emph{is} the module. A dependency
+that were merely present on disk and not reached would contribute zero.
+
+\begin{thebibliography}{9}
+\bibitem{sylvester1852} J.~J.~Sylvester,
+  \emph{A demonstration of the theorem that every homogeneous quadratic
+  polynomial is reducible by real orthogonal substitutions to the form of a sum
+  of positive and negative squares}, Philosophical Magazine \textbf{4} (1852),
+  138--142.
+
+\bibitem{ostrowski1959} A.~M.~Ostrowski,
+  \emph{A quantitative formulation of Sylvester's law of inertia},
+  Proc.\ Nat.\ Acad.\ Sci.\ U.S.A.\ \textbf{45} (1959), no.~5, 740--744.
+
+\bibitem{ostrowski1960} A.~M.~Ostrowski,
+  \emph{A quantitative formulation of Sylvester's law of inertia, II},
+  Proc.\ Nat.\ Acad.\ Sci.\ U.S.A.\ \textbf{46} (1960), no.~6, 859--862.
+
+\bibitem{bushell1973} P.~J.~Bushell,
+  \emph{On the projective contraction ratio for positive linear mappings},
+  J.\ London Math.\ Soc.\ (2) \textbf{6} (1973), 256--258.
+
+\bibitem{bauerdeutschstoer1969} F.~L.~Bauer, E.~Deutsch and J.~Stoer,
+  \emph{Absch\"atzungen f\"ur die Eigenwerte positiver linearer Operatoren},
+  Linear Algebra Appl.\ \textbf{2} (1969), 275--301.
+
+\bibitem{idel2016} M.~Idel,
+  \emph{A review of matrix scaling and Sinkhorn's normal form for matrices and
+  positive maps}, arXiv:1609.06349 (2016).
+
+\bibitem{seneta2006} E.~Seneta,
+  \emph{Non-negative Matrices and Markov Chains}, 2nd ed., 1981;
+  revised paperback printing, Springer Series in Statistics, Springer, 2006.
+  (Birkhoff's contraction coefficient, \S3.1--3.2.)
+
+\bibitem{hornjohnson} R.~A.~Horn and C.~R.~Johnson,
+  \emph{Matrix Analysis}, 2nd ed., Cambridge University Press, 2013.
+  (Congruence and inertia, \S4.5; Perron--Frobenius, \S8.2; the variational
+  characterisation of the eigenvalues of a Hermitian matrix, \S4.2.)
+
+\bibitem{birkhoff1957} G.~Birkhoff,
+  \emph{Extensions of Jentzsch's theorem},
+  Trans.\ Amer.\ Math.\ Soc.\ \textbf{85} (1957), 219--227.
+
+\bibitem{evesonnussbaum1995} S.~P.~Eveson and R.~D.~Nussbaum,
+  \emph{Applications of the Birkhoff--Hopf theorem to the spectral theory of
+  positive linear operators}, Math.\ Proc.\ Cambridge Philos.\ Soc.\
+  \textbf{117} (1995), no.~3, 491--512.
+
+\bibitem{vandersluis1969} A.~van der Sluis,
+  \emph{Condition numbers and equilibration of matrices},
+  Numer.\ Math.\ \textbf{14} (1969), 14--23.
+
+\bibitem{onsager1944} L.~Onsager,
+  \emph{Crystal statistics.\ I.\ A two-dimensional model with an
+  order-disorder transition}, Phys.\ Rev.\ \textbf{65} (1944), 117--149.
+
+\bibitem{kaufman1949} B.~Kaufman,
+  \emph{Crystal statistics.\ II.\ Partition function evaluated by spinor
+  analysis}, Phys.\ Rev.\ \textbf{76} (1949), 1232--1243.
+
+\bibitem{mathlib} The mathlib Community,
+  \emph{The Lean mathematical library}, Proc.\ CPP 2020, ACM, 367--381.
+\end{thebibliography}
+
+\end{document}
