@@ -294,7 +294,7 @@ theorem existsUnique_circleLogKernelParameter {t : ℝ} (ht : 0 < t) :
       one_ne_zero ⟨√D, hsqrt⟩
   let y : ℝ := 2 * (1 + t) - x
   have hxpoly : x ^ 2 - 2 * (1 + t) * x + 1 = 0 := by
-    simpa [sub_eq_add_neg] using hx
+    simpa [pow_two, sub_eq_add_neg] using hx
   have hsum : x + y = 2 * (1 + t) := by
     simp [y]
   have hprod : x * y = 1 := by
