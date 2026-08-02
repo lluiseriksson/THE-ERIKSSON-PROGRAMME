@@ -30345,3 +30345,33 @@ cannot prove `R_L <= 1`; the observed global inequality is maintained by
 compensation between factors.  A global product/Fourier-sign argument remains
 plausible, but no such argument is proved here.  Neither sector obligation nor
 the uniform spatial-ring target has advanced.
+
+## Addendum 597 (2026-08-02, **TASK 14: curvature/singularity probe fixed**)
+
+**PRE-REGISTERED RECONNAISSANCE; NOT YET EXECUTED AND NOT A GATE.**  Direct
+differentiation of the measured log-factor `f(k) = epsilon(k)/2`, with
+`cosh(epsilon(k)) = A - B cos(k)` and `B > 0`, gives the curvature-sign
+numerator
+
+`cos(k) ((A-B cos(k))^2-1) - B (A-B cos(k)) sin(k)^2`.
+
+It is positive at `k = 0` and negative at `k = pi`, so the proposed global
+convexity/concavity proof is already analytically incompatible with the
+concrete factor whenever `beta > 0` and `gamma > 0`.  The precommitted script
+will corroborate those endpoint signs and scan the interior over four beta and
+four `gamma/a` values; it licenses no theorem.
+
+The same script fixes a separate falsifiable prediction about the exponential
+finite-size trend.  At `beta = 2`, `gamma/a = 0.75`, the nearest acosh branch
+point is predicted at imaginary distance
+`d = acosh((A-1)/B)` with `0.287 <= d <= 0.291` (central prediction about
+`0.2887`).  Vacuum margins at `L = 48,64,80,96,128` are computed at 160 digits
+as `-expm1(log R_L)`, and the effective exponent from `L = 96` to `128` must
+differ from `d` by at most `0.008`.  A 100-decimal interval for `d` must lie
+inside the same preregistered band.
+
+Even if these numerical predictions pass, output remains `OBSERVED`: the
+campaign can identify an analyticity/Fourier mechanism but cannot prove a
+vacuum inequality, Fourier-sign theorem, sector bound, or uniform target.  At
+the time of this addendum no curvature scan, distance, or late exponent has
+been measured.
