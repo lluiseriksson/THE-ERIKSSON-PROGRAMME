@@ -11,7 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location(
     "validate_run_manifests", ROOT / "scripts" / "validate_run_manifests.py"
 )
-assert SPEC and SPEC.loader
+if SPEC is None or SPEC.loader is None:
+    raise RuntimeError("cannot load scripts/validate_run_manifests.py")
 validator = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = validator
 SPEC.loader.exec_module(validator)
@@ -174,5 +175,43 @@ def test_lf_hash_makes_recorded_crlf_run_portable(tmp_path: Path) -> None:
     write_manifest(tmp_path, data)
     script.write_bytes(script.read_bytes().replace(b"\r\n", b"\n"))
     output.write_bytes(output.read_bytes().replace(b"\r\n", b"\n"))
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert errors == []
+
+
+def test_raw_digest_accepts_only_lf_crlf_checkout_variants(tmp_path: Path) -> None:
+    data = manifest(tmp_path, "run-raw-eol-portable")
+    script = tmp_path / data["script"]["path"]
+    output = tmp_path / data["outputs"][0]["path"]
+    script.write_bytes(b"print('run')\r\n")
+    output.write_bytes(b"evidence\r\n")
+    data["script"]["sha256"] = digest(script)
+    data["outputs"][0]["sha256"] = digest(output)
+    write_manifest(tmp_path, data)
+    script.write_bytes(script.read_bytes().replace(b"\r\n", b"\n"))
+    output.write_bytes(output.read_bytes().replace(b"\r\n", b"\n"))
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert errors == []
+
+    output.write_text("different evidence\n", encoding="utf-8")
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert any("outputs[0].sha256: mismatch" in error for error in errors)
+
+
+def test_repository_paths_are_case_sensitive_on_every_runner(tmp_path: Path) -> None:
+    data = manifest(tmp_path, "run-path-case")
+    data["script"]["path"] = "Scripts/run.py"
+    data["command"] = ["python", "Scripts/run.py"]
+    write_manifest(tmp_path, data)
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert any("script.path: file does not exist" in error for error in errors)
+
+
+def test_windows_repository_separators_are_portable(tmp_path: Path) -> None:
+    data = manifest(tmp_path, "run-windows-separators")
+    data["script"]["path"] = "scripts\\run.py"
+    data["command"] = ["python", "scripts\\run.py"]
+    data["outputs"][0]["path"] = "outputs\\run-windows-separators.txt"
+    write_manifest(tmp_path, data)
     _, errors = validator.load_and_validate(root=tmp_path)
     assert errors == []

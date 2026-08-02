@@ -8,8 +8,11 @@ claim or rewrites an artifact.
 from __future__ import annotations
 
 import argparse
+from collections import Counter, defaultdict
+from functools import lru_cache
 import hashlib
 import json
+import os
 import re
 import sys
 from datetime import datetime
@@ -25,6 +28,9 @@ MANIFEST_DIR = ROOT / "run-manifests"
 SHA256 = re.compile(r"^[0-9a-f]{64}$", re.IGNORECASE)
 RUN_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
 STATUSES = {"current", "superseded", "quarantined"}
+BASELINE_SCHEMA_VERSION = 1
+RESULT_SCHEMA_VERSION = 1
+ACTUAL_DIGEST = re.compile(r"(, actual )[0-9a-fA-F]{64}(\))")
 
 
 def file_sha256(path: Path) -> str:
@@ -41,6 +47,48 @@ def file_sha256_lf(path: Path) -> str:
     return digest.hexdigest()
 
 
+def file_sha256_eol_variants(path: Path) -> set[str]:
+    """Return hashes for the checked-out bytes and both text EOL forms.
+
+    Git may materialize a tracked text artifact with LF or CRLF depending on
+    checkout policy.  The historical digest is preserved; accepting either
+    line-ending representation avoids making validation depend on the runner
+    OS.  No other byte transformation is accepted.
+    """
+
+    data = path.read_bytes()
+    lf = data.replace(b"\r\n", b"\n")
+    crlf = lf.replace(b"\n", b"\r\n")
+    return {
+        hashlib.sha256(candidate).hexdigest()
+        for candidate in (data, lf, crlf)
+    }
+
+
+def _exists_with_exact_case(root: Path, path: Path, *, directory: bool) -> bool:
+    """Apply Linux path-case semantics on every supported runner OS."""
+
+    try:
+        relative = path.relative_to(root.resolve())
+    except ValueError:
+        return False
+    cursor = root.resolve()
+    for part in relative.parts:
+        try:
+            names = _directory_entry_names(cursor)
+        except OSError:
+            return False
+        if part not in names:
+            return False
+        cursor = cursor / part
+    return cursor.is_dir() if directory else cursor.is_file()
+
+
+@lru_cache(maxsize=None)
+def _directory_entry_names(directory: Path) -> frozenset[str]:
+    return frozenset(entry.name for entry in directory.iterdir())
+
+
 def _string(value: Any, field: str, errors: list[str]) -> str | None:
     if not isinstance(value, str) or not value.strip():
         errors.append(f"{field}: expected a non-empty string")
@@ -54,17 +102,21 @@ def _repo_path(
     text = _string(value, field, errors)
     if text is None:
         return None
-    candidate = Path(text)
+    # Manifests captured on Windows legitimately contain backslashes.  Treat
+    # them as repository separators on every runner instead of as literal
+    # filename characters on POSIX.
+    candidate = Path(text.replace("\\", "/"))
     if candidate.is_absolute():
         errors.append(f"{field}: path must be repository-relative")
         return None
-    resolved = (root / candidate).resolve()
+    normalized = Path(os.path.normpath(root.resolve() / candidate))
+    resolved = normalized.resolve()
     try:
         resolved.relative_to(root.resolve())
     except ValueError:
         errors.append(f"{field}: path escapes the repository")
         return None
-    return resolved
+    return normalized
 
 
 def _timestamp(value: Any, field: str, errors: list[str]) -> datetime | None:
@@ -103,7 +155,7 @@ def _artifact(
         errors.append(f"{field}.sha256_lf: expected a 64-digit SHA-256 digest")
     if path is None:
         return
-    if not path.is_file():
+    if not _exists_with_exact_case(root, path, directory=False):
         errors.append(f"{field}.path: file does not exist")
         return
     # A superseded/quarantined run is retained as a historical record.  Its
@@ -121,7 +173,7 @@ def _artifact(
             )
     elif isinstance(digest, str) and SHA256.fullmatch(digest):
         actual = file_sha256(path)
-        if actual != digest:
+        if digest.lower() not in file_sha256_eol_variants(path):
             errors.append(
                 f"{field}.sha256: mismatch (recorded {digest}, actual {actual})"
             )
@@ -168,7 +220,9 @@ def validate_manifest(
     working_directory = _repo_path(
         root, data.get("working_directory"), "working_directory", errors
     )
-    if working_directory is not None and not working_directory.is_dir():
+    if working_directory is not None and not _exists_with_exact_case(
+        root, working_directory, directory=True
+    ):
         errors.append("working_directory: directory does not exist")
 
     script = data.get("script")
@@ -257,6 +311,7 @@ def load_and_validate(
     manifest_dir: Path | None = None,
     require_nonempty: bool = False,
 ) -> tuple[int, list[str]]:
+    _directory_entry_names.cache_clear()
     directory = manifest_dir or (root / "run-manifests")
     paths = sorted(directory.glob("*.json")) if directory.is_dir() else []
     errors: list[str] = []
@@ -333,6 +388,248 @@ def load_and_validate(
     return len(paths), sorted(set(errors))
 
 
+def violation_key(detail: str) -> str:
+    """Remove only runner-computed data from a validation error."""
+
+    return ACTUAL_DIGEST.sub(r"\1<computed>\2", detail)
+
+
+def group_violations(
+    errors: list[str],
+) -> tuple[dict[str, Counter[str]], Counter[str]]:
+    """Group strict-validator output without weakening any validation rule."""
+
+    manifests: dict[str, Counter[str]] = defaultdict(Counter)
+    global_errors: Counter[str] = Counter()
+    for error in errors:
+        match = re.match(r"^(run-manifests/[^:]+\.json): (.*)$", error)
+        if match is None:
+            global_errors[violation_key(error)] += 1
+            continue
+        label, detail = match.groups()
+        manifests[label][violation_key(detail)] += 1
+    return dict(manifests), global_errors
+
+
+def _published_identity(data: Any) -> dict[str, Any]:
+    if not isinstance(data, dict):
+        return {"run_id": None, "official_scope_field": None, "official_scope": None}
+    if "claim_scope" in data:
+        scope_field = "claim_scope"
+    elif "scope" in data:
+        scope_field = "scope"
+    else:
+        scope_field = None
+    return {
+        "run_id": data.get("run_id"),
+        "official_scope_field": scope_field,
+        "official_scope": data.get(scope_field) if scope_field is not None else None,
+    }
+
+
+def build_debt_baseline(
+    *,
+    root: Path,
+    manifest_dir: Path,
+    base_sha: str,
+) -> dict[str, Any]:
+    """Describe existing strict-validator debt and immutable publication identity."""
+
+    count, errors = load_and_validate(
+        root=root, manifest_dir=manifest_dir, require_nonempty=True
+    )
+    grouped, global_errors = group_violations(errors)
+    manifests: dict[str, Any] = {}
+    for path in sorted(manifest_dir.glob("*.json")):
+        label = path.relative_to(root).as_posix()
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            data = None
+        manifests[label] = {
+            **_published_identity(data),
+            "violations": dict(sorted(grouped.get(label, Counter()).items())),
+        }
+    return {
+        "schema_version": BASELINE_SCHEMA_VERSION,
+        "guard": "run-manifest-structure-and-historical-debt-delta",
+        "base_sha": base_sha,
+        "manifest_count": count,
+        "strict_error_count": len(errors),
+        "global_violations": dict(sorted(global_errors.items())),
+        "manifests": manifests,
+    }
+
+
+def _load_baseline(path: Path) -> dict[str, Any]:
+    try:
+        baseline = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot load debt baseline {path}: {exc}") from exc
+    if not isinstance(baseline, dict):
+        raise ValueError("debt baseline: expected a JSON object")
+    if baseline.get("schema_version") != BASELINE_SCHEMA_VERSION:
+        raise ValueError(
+            f"debt baseline: expected schema_version {BASELINE_SCHEMA_VERSION}"
+        )
+    if baseline.get("guard") != "run-manifest-structure-and-historical-debt-delta":
+        raise ValueError("debt baseline: guard identity does not match")
+    if not isinstance(baseline.get("base_sha"), str) or not re.fullmatch(
+        r"[0-9a-f]{40}", baseline["base_sha"]
+    ):
+        raise ValueError("debt baseline: base_sha must be a lowercase Git SHA")
+    if not isinstance(baseline.get("manifests"), dict):
+        raise ValueError("debt baseline: manifests must be an object")
+    if not isinstance(baseline.get("global_violations"), dict):
+        raise ValueError("debt baseline: global_violations must be an object")
+    return baseline
+
+
+def _counter(value: Any, field: str) -> Counter[str]:
+    if not isinstance(value, dict):
+        raise ValueError(f"debt baseline: {field} must be an object")
+    result: Counter[str] = Counter()
+    for key, count in value.items():
+        if not isinstance(key, str) or not isinstance(count, int) or count < 0:
+            raise ValueError(
+                f"debt baseline: {field} must map strings to non-negative integers"
+            )
+        result[key] = count
+    return result
+
+
+def error_class(detail: str) -> str:
+    """Return an aggregate class while retaining exact keys in the baseline."""
+
+    result = re.sub(r"\[\d+\]", "[*]", detail)
+    result = re.sub(r"\(recorded [0-9a-fA-F]{64}, actual <computed>\)", "(digest mismatch)", result)
+    result = re.sub(r"output .* is already owned by run .*", "output path is already owned", result)
+    result = re.sub(r"supersedes unknown run .*", "supersedes unknown run", result)
+    result = re.sub(
+        r"superseded run .* does not point back to .*",
+        "superseded run does not point back",
+        result,
+    )
+    result = re.sub(
+        r"superseded run .* is not marked superseded",
+        "superseded run is not marked superseded",
+        result,
+    )
+    return result
+
+
+def evaluate_debt_guard(
+    *,
+    root: Path,
+    manifest_dir: Path,
+    baseline_path: Path,
+    require_nonempty: bool,
+) -> dict[str, Any]:
+    """Accept only new valid manifests and non-increasing inherited debt."""
+
+    baseline = _load_baseline(baseline_path)
+    count, strict_errors = load_and_validate(
+        root=root,
+        manifest_dir=manifest_dir,
+        require_nonempty=require_nonempty,
+    )
+    current, current_global = group_violations(strict_errors)
+    baseline_manifests = baseline["manifests"]
+    guard_errors: list[str] = []
+
+    current_paths = {
+        path.relative_to(root).as_posix(): path
+        for path in sorted(manifest_dir.glob("*.json"))
+    }
+    for label, recorded in sorted(baseline_manifests.items()):
+        if not isinstance(recorded, dict):
+            raise ValueError(f"debt baseline: manifests.{label} must be an object")
+        path = current_paths.get(label)
+        if path is None:
+            guard_errors.append(f"{label}: protected publication was deleted")
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            data = None
+        expected_identity = {
+            "run_id": recorded.get("run_id"),
+            "official_scope_field": recorded.get("official_scope_field"),
+            "official_scope": recorded.get("official_scope"),
+        }
+        if _published_identity(data) != expected_identity:
+            guard_errors.append(
+                f"{label}: protected run_id or official scope/title changed"
+            )
+
+        allowed = _counter(
+            recorded.get("violations"), f"manifests.{label}.violations"
+        )
+        observed = current.get(label, Counter())
+        for violation, observed_count in sorted(observed.items()):
+            allowed_count = allowed[violation]
+            if observed_count > allowed_count:
+                guard_errors.append(
+                    f"{label}: debt increased for {violation} "
+                    f"(baseline {allowed_count}, current {observed_count})"
+                )
+
+    for label in sorted(set(current_paths) - set(baseline_manifests)):
+        for violation, observed_count in sorted(current.get(label, Counter()).items()):
+            guard_errors.append(
+                f"{label}: new manifest is invalid: {violation} "
+                f"(current {observed_count})"
+            )
+
+    allowed_global = _counter(
+        baseline.get("global_violations"), "global_violations"
+    )
+    for violation, observed_count in sorted(current_global.items()):
+        if observed_count > allowed_global[violation]:
+            guard_errors.append(
+                f"global debt increased for {violation} "
+                f"(baseline {allowed_global[violation]}, current {observed_count})"
+            )
+
+    debt_by_class: Counter[str] = Counter()
+    for violations in current.values():
+        for detail, occurrence_count in violations.items():
+            debt_by_class[error_class(detail)] += occurrence_count
+    for detail, occurrence_count in current_global.items():
+        debt_by_class[error_class(detail)] += occurrence_count
+
+    return {
+        "guard": baseline["guard"],
+        "baseline_sha": baseline["base_sha"],
+        "manifest_count": count,
+        "strict_error_count": len(strict_errors),
+        "invalid_manifest_count": sum(1 for value in current.values() if value),
+        "debt_by_class": dict(sorted(debt_by_class.items())),
+        "guard_errors": sorted(set(guard_errors)),
+    }
+
+
+def _write_result(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
+
+def _result_payload(
+    *, status: str, exit_code: int, first_cause: str | None, report: dict[str, Any] | None
+) -> dict[str, Any]:
+    payload: dict[str, Any] = {
+        "schema_version": RESULT_SCHEMA_VERSION,
+        "status": status,
+        "exit_code": exit_code,
+        "first_cause": first_cause,
+    }
+    if report is not None:
+        payload["report"] = {key: value for key, value in report.items() if key != "guard_errors"}
+    return payload
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -340,16 +637,139 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="fail if the repository has not committed any manifests yet",
     )
+    parser.add_argument(
+        "--baseline",
+        type=Path,
+        help="apply the versioned historical-debt delta guard",
+    )
+    parser.add_argument(
+        "--result-file",
+        type=Path,
+        help="write a machine-readable status, exit code, and first cause",
+    )
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=ROOT,
+        help=argparse.SUPPRESS,
+    )
     args = parser.parse_args(argv)
-    count, errors = load_and_validate(require_nonempty=args.require_nonempty)
+    root = args.root.resolve()
+    manifest_dir = root / "run-manifests"
+    result_file = args.result_file
+    if result_file is not None and not result_file.is_absolute():
+        result_file = root / result_file
+    if result_file is not None:
+        _write_result(
+            result_file,
+            _result_payload(
+                status="RUNNING",
+                exit_code=2,
+                first_cause="validation did not complete",
+                report=None,
+            ),
+        )
+
+    if args.baseline is not None:
+        baseline_path = args.baseline
+        if not baseline_path.is_absolute():
+            baseline_path = root / baseline_path
+        try:
+            report = evaluate_debt_guard(
+                root=root,
+                manifest_dir=manifest_dir,
+                baseline_path=baseline_path,
+                require_nonempty=args.require_nonempty,
+            )
+        except (OSError, ValueError) as exc:
+            first_cause = str(exc)
+            print(f"run-manifest structure/debt-delta guard ERROR: {first_cause}")
+            if result_file is not None:
+                _write_result(
+                    result_file,
+                    _result_payload(
+                        status="FAIL",
+                        exit_code=2,
+                        first_cause=first_cause,
+                        report=None,
+                    ),
+                )
+            return 2
+        guard_errors = report["guard_errors"]
+        for rule, rule_count in report["debt_by_class"].items():
+            print(f"DEBT: {rule_count:4d}  {rule}")
+        if guard_errors:
+            for error in guard_errors:
+                print(f"ERROR: {error}")
+            first_cause = guard_errors[0]
+            print(
+                "run-manifest structure/debt-delta guard failed: "
+                f"{report['manifest_count']} file(s), "
+                f"{report['strict_error_count']} inherited/current strict error(s), "
+                f"{len(guard_errors)} guard error(s)"
+            )
+            if result_file is not None:
+                _write_result(
+                    result_file,
+                    _result_payload(
+                        status="FAIL",
+                        exit_code=1,
+                        first_cause=first_cause,
+                        report=report,
+                    ),
+                )
+            return 1
+        print(
+            "run-manifest structure/debt-delta guard PASS: "
+            f"{report['manifest_count']} file(s), "
+            f"{report['strict_error_count']} visible inherited strict error(s), "
+            "no new debt"
+        )
+        if result_file is not None:
+            _write_result(
+                result_file,
+                _result_payload(
+                    status="PASS", exit_code=0, first_cause=None, report=report
+                ),
+            )
+        return 0
+
+    count, errors = load_and_validate(
+        root=root,
+        manifest_dir=manifest_dir,
+        require_nonempty=args.require_nonempty,
+    )
     if errors:
         for error in errors:
             print(f"ERROR: {error}")
         print(f"run manifest validation failed: {count} file(s), {len(errors)} error(s)")
+        if result_file is not None:
+            _write_result(
+                result_file,
+                _result_payload(
+                    status="FAIL",
+                    exit_code=1,
+                    first_cause=errors[0],
+                    report={
+                        "manifest_count": count,
+                        "strict_error_count": len(errors),
+                    },
+                ),
+            )
         return 1
     print(f"run manifest validation OK: {count} file(s)")
     if count == 0:
         print("bootstrap state: no manifests committed; use --require-nonempty to forbid")
+    if result_file is not None:
+        _write_result(
+            result_file,
+            _result_payload(
+                status="PASS",
+                exit_code=0,
+                first_cause=None,
+                report={"manifest_count": count, "strict_error_count": 0},
+            ),
+        )
     return 0
 
 
