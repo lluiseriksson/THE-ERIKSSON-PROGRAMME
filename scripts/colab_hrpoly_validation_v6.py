@@ -15,7 +15,6 @@ import json
 import math
 import os
 from pathlib import Path
-import re
 import shutil
 import subprocess
 import sys
@@ -91,7 +90,7 @@ QUEUE = [
 ]
 
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
-AXIOM_RE = re.compile(r"depends on axioms:\s*\[([^]]*)\]")
+FORBIDDEN_AXIOM_MARKERS = {"sorryAx", "ofReduceBool"}
 
 
 def utc_now() -> str:
@@ -459,12 +458,39 @@ def materialize_dependencies(label: str, root: Path, evidence: Path) -> dict[str
     return result
 
 
-def parse_axioms(log_text: str) -> list[list[str]]:
+def parse_axioms(log_text: str, expected_headers: int) -> list[list[str]]:
+    """Validate complete `#print axioms` blocks independently of line wraps.
+
+    Whitespace is discarded before inspecting the output.  The primary gate
+    is the expected header count plus an allow-list check on every complete
+    bracketed block; forbidden oracle markers are rejected explicitly.  This
+    avoids reconstructing physical output lines, whose wrapping is controlled
+    by Lean's pretty-printer width rather than by the declarations.
+    """
+    compact = "".join(log_text.split())
+    for marker in FORBIDDEN_AXIOM_MARKERS:
+        if marker in compact:
+            raise RuntimeError(f"forbidden axiom marker: {marker}")
+
+    header = "dependsonaxioms:["
+    parts = compact.split(header)
+    seen = len(parts) - 1
+    if seen != expected_headers:
+        raise RuntimeError(
+            f"axiom header count {seen} != expected {expected_headers}"
+        )
+
     results: list[list[str]] = []
-    for match in AXIOM_RE.finditer(log_text):
-        axioms = sorted(x.strip() for x in match.group(1).split(",") if x.strip())
-        if not set(axioms).issubset(ALLOWED_AXIOMS):
-            raise RuntimeError(f"disallowed axioms: {axioms}")
+    for index, tail in enumerate(parts[1:]):
+        if "]" not in tail:
+            raise RuntimeError(f"incomplete axiom block {index}")
+        body = tail.split("]", 1)[0]
+        axioms = sorted(x for x in body.split(",") if x)
+        unexpected = set(axioms) - ALLOWED_AXIOMS
+        if unexpected:
+            raise RuntimeError(
+                f"axiom block {index} has disallowed names: {sorted(unexpected)}"
+            )
         results.append(axioms)
     return results
 
@@ -483,9 +509,14 @@ def run_queue(label: str, root: Path, evidence: Path) -> dict[str, object]:
         text = log.read_text(encoding="utf-8", errors="replace")
         axioms: list[list[str]] = []
         if is_audit and rc == 0:
-            axioms = parse_axioms(text)
-            if not axioms:
-                raise RuntimeError(f"{label}:{name}: audit emitted no #print axioms result")
+            audit_path = root / command.split()[-1]
+            expected_headers = sum(
+                line.lstrip().startswith("#print axioms ")
+                for line in audit_path.read_text(encoding="utf-8").splitlines()
+            )
+            if expected_headers == 0:
+                raise RuntimeError(f"{label}:{name}: audit source has no #print axioms command")
+            axioms = parse_axioms(text, expected_headers)
         entry = {
             "name": name,
             "command": command,

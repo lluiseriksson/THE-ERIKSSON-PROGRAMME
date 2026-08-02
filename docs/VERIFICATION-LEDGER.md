@@ -26674,3 +26674,37 @@ witness.  This is the generic L2 brick for CMP116 (1.13)--(1.14); it does not
 yet instantiate the printed `s`-polydisc, discharge a `PreEq136` obligation,
 or construct a `TermSource`.  The live numerator therefore remains exactly
 18/41.
+
+## Addendum 536 (2026-08-03, **CMP116 Lemma-1 weakened-propagator L1 GREEN**)
+
+`BalabanCMP116Lemma1WeakenedPropagatorBound.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `6f5a3c9730ce49c77c028d618600c7dfa611a5ee`.  The runtime used the
+official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, and was disconnected and deleted
+immediately after the evidence archive was downloaded.
+
+The focal build exited zero with the literal terminal line
+`Build completed successfully (2756 jobs).` after 30.516 seconds.  The audit
+exited zero after 8.186 seconds and printed seven declarations, each depending
+exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` were absent.  The first runner verdict was a false
+instrumentation failure caused by an invalid regular expression after both
+child exit codes were already zero.  A same-clone post-validation preserved
+that original summary, normalized the complete audit output independently of
+line wrapping, verified all seven header/content blocks, and recorded
+`FINAL_STATUS=PASS`.  The downloaded archive was independently rehashed on
+Windows with SHA-256
+`d1419c7db2270fe940d797caf3df0ea07f6fe5b724671fcd8f35a8e8e3222166`.
+
+The verified certificate constructs the weakened propagator internally as
+the literal complex random-walk `tsum`.  From the source per-walk bound, the
+printed `m <= 2^4` / `m > 2^4` dichotomy, and one common scalar budget
+`kappa1 <= delta1 * M`, it derives the uniform equation-(1.11) bound
+`B0 * exp (16 * kappa1)` over the whole printed polydisc, together with the
+fully coupled identity and coordinatewise derivative.  It does not identify
+the generic series with the three physical propagators `H(s)`, `G(s)`, and
+`H0(s)`; those specializations remain downstream, with the literal `H0(s)`
+producer still absent.  This source brick does not discharge a `PreEq136`
+field, so the live numerator remains exactly 18/41 and no `TermSource`
+inhabitant is produced.

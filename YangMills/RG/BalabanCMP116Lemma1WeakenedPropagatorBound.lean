@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP116ComplexWeakenedRandomWalkSeries
 /-!
 # CMP116 Lemma 1 equation (1.11): weakened-propagator bound
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and the result has not yet been verified by the Lean compiler.
-
 CMP116 expands each of the propagators `H(s)`, `G(s)`, and `H₀(s)` as a
 generalized random-walk series.  A walk is weakened once for every parameter
 connected with the union of its localization domains.  Equation (1.11) then

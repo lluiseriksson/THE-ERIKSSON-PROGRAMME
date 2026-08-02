@@ -1783,7 +1783,7 @@ no `TermSource` inhabitant is created.
 
 | brick | printed content | repository status |
 |---|---|---|
-| L1 | `s`-dependent propagators `H(s)`, `G(s)`, `H0(s)` and the walk estimate entering (1.11) | new source interface; the cited CMP99 walk estimate remains an explicit input |
+| L1 | `s`-dependent propagators `H(s)`, `G(s)`, `H0(s)` and the walk estimate entering (1.11) | **generic printed deduction compiler-verified**: the propagator is constructed internally as the weakened walk `tsum`, the `m <= 16` / `m > 16` split gives `B0 * exp(16*kappa1)`, and the cited CMP99 per-walk estimate remains an explicit source input; physical `H/G/H0` identifications remain separate |
 | L2 | uniform fixed point `D(H(s),A')`, (1.13)--(1.14) | **compiler-verified parameter-family generalization** of `BalabanCMP109ConstraintCorrectionFixedPoint`; the physical `s`-polydisc specialization remains downstream of L1 |
 | L3 | fixed point `A0`, (1.15)--(1.16) | new; consumes the printed CMP102 Proposition-4 type estimate |
 | L4 | assembly and norm of `H_k(s,B')`, (1.17)--(1.18) | composition of L1--L3 |
@@ -1818,3 +1818,20 @@ build with 8,511 jobs and its four-declaration audit with the exact standard
 axiom trio.  This closes the generic uniform Banach brick, not its physical
 specialization and not any `PreEq136` field; the live numerator remains
 `18/41` and no `TermSource` inhabitant is produced.
+
+L1 is now implemented by
+`CMP116Lemma1WeakenedPropagatorCertificate`.  It accepts the source walk
+terms, active carriers, tree lengths, and the CMP99 `(3.108)`-shaped
+per-walk majorant, but it does not accept a preselected family of
+propagators.  Instead it constructs the literal complex weakened `tsum`,
+proves its fully coupled value, coordinatewise derivative, and the uniform
+equation-(1.11) bound on the whole `|s(Delta)| <= exp(kappa1)` polydisc.  The
+printed threshold is the visually verified `2^4 = 16`; the repository's
+unrelated `/24` animal normalization is not used.  One fresh Colab
+CPU/high-RAM clone at source checkpoint
+`6f5a3c9730ce49c77c028d618600c7dfa611a5ee` completed the focal build with
+2,756 jobs and the seven-declaration audit with exactly the standard axiom
+trio.  This closes the generic L1 deduction only.  The three physical
+specializations remain separate, and the literal `H0(s)` producer is still
+absent.  The live numerator remains `18/41` and no `TermSource` inhabitant is
+produced.
