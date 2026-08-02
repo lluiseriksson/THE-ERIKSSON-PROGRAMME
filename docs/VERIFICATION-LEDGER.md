@@ -30375,3 +30375,49 @@ campaign can identify an analyticity/Fourier mechanism but cannot prove a
 vacuum inequality, Fourier-sign theorem, sector bound, or uniform target.  At
 the time of this addendum no curvature scan, distance, or late exponent has
 been measured.
+
+## Addendum 598 (2026-08-02, **TASK 14: curvature rejected; singularity prediction met**)
+
+**OBSERVED RECONNAISSANCE, NOT A GATE OR PROOF.**  After Addendum 597 was
+committed and pushed at raw SHA
+`9e9333bf293811dcc15a67abac96295c6e548aa5`, the immutable probe SHA-256
+`2cca5bab5ccdbb496c5ad36db1eab9e705fb1c337e722169973ea6fd50ba4d6d`
+returned exit 0 in normal and optimized Python after 1.038325 s and 1.149927 s.
+Their LF-terminated JSON outputs were byte-identical, SHA-256
+`d70f11f4bf603648e24e3998015f488fde7140b08e3df35ce971a3d216229d0a`,
+and classified themselves `OBSERVED`.
+
+**GLOBAL CURVATURE ROUTE REJECTED.**  In all 16 cells from
+`beta in {0.125,0.5,2,8}` and
+`gamma/a in {0.10,0.50,0.75,0.99}`, the curvature-sign numerator was positive
+at `k = 0`, negative at `k = pi`, and the 511-point interior scan contained
+both signs.  This matches the direct endpoint evaluation of the exact
+derivative formula.  Therefore the log-factor is neither globally convex nor
+globally concave, and a plain midpoint-versus-trapezoid inequality based on
+global curvature cannot establish the vacuum-product order.
+
+**SINGULARITY PREDICTION MET.**  At the preregistered cell `beta = 2`,
+`gamma/a = 0.75`, the nearest acosh branch-point distance was
+
+`d = 0.2876331458601244128729681988177612563897290931771047393650643217510283319263199797506454843579838598`.
+
+The 100-decimal interval enclosure
+
+`[0.287633145860124412872968198817761256389729093177104739365064321751028331926319979750645484357983622921138,`
+` 0.287633145860124412872968198817761256389729093177104739365064321751028331926319979750645484357984119902771]`
+
+lies wholly inside the preregistered `[0.287,0.291]` band.  Stable margins
+computed as `-expm1(log R_L)` at 160 digits gave effective decay distances
+`0.2970366613`, `0.2948573454`, `0.2934992482`, and `0.2922342418` over the
+successive ranges `48--64`, `64--80`, `80--96`, and `96--128`.  The final
+distance error was
+`0.00460109589077254880081960151532198658880775152293942264494972`,
+below the preregistered `0.008` tolerance.
+
+Thus the nearest complex singularity quantitatively explains the observed
+exponential rate, but it does not determine the sign of the
+periodic-minus-antiperiodic sum.  With both termwise matching and global
+curvature rejected, a global Fourier-coefficient sign or exact product
+identity is the remaining plausible scalar mechanism.  No such sign theorem,
+vacuum inequality, fermionic classification, sector bound, or uniform target
+is proved here.
