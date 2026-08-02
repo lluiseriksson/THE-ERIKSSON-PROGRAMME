@@ -145,3 +145,47 @@ Claim boundary:
   yet prove integrability of the canonical shifted-inverse family or identify
   its normalized integral with the canonical spectral root.  No fresh
   successful full YangMillsCore rebuild is claimed.
+
+=== Version 0.6 canonical shifted-inverse extension (2026-08-02) ===
+
+Formal canonical-family commit:
+  9f19b2d7c3dbcee1cc95683c9bc1ea29629c6b91
+
+Successful target build:
+  lake build YangMills.RG.CoerciveCovarianceStieltjes
+    exit code 0; 8203 jobs; build completed successfully
+
+Successful full-core build:
+  lake build YangMillsCore
+    exit code 0; wall time 474 seconds; 8470 jobs;
+    build completed successfully
+
+Focused axiom audit:
+  lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
+    exit code 0; wall time 62.9 seconds
+
+The audit covered all twenty-six declarations listed in the version-0.6
+manuscript.  Every declaration printed exactly:
+  [propext, Classical.choice, Quot.sound]
+
+The eight added declarations were:
+  eq_of_isPositive_of_comp_self_eq
+  shiftedCovarianceFamily_comp_precision
+  precision_comp_shiftedCovarianceFamily
+  norm_shiftedCovarianceFamily_le
+  shiftedCovarianceFamily_sub
+  continuous_shiftedCovarianceFamily
+  integrableOn_shiftedCovarianceFamily
+  physicalShiftedCovarianceFamily_stieltjes_exponentialKernelBound
+
+Source hygiene:
+  git diff --check: exit code 0
+  no Lean `sorry` or project `axiom` occurs in either changed formal module
+
+Claim boundary:
+  Version 0.6 constructs the canonical family (K+t^2 I)^(-1), proves its exact
+  inverse identities, resolvent identity, continuity, Bochner integrability,
+  and the exponential kernel bound for its normalized Stieltjes integral.  It
+  does not yet identify this integral with the separately constructed spectral
+  positive root.  The physical root certificate remains conditional on that
+  single equality; no volume-uniform coercivity or continuum claim is made.
