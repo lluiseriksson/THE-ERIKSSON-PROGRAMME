@@ -633,4 +633,59 @@ theorem symWeighted_perron_even (β γ : ℝ) (L : ℕ) :
       = v σ / Real.sqrt (spatialWeightRing γ σ)
     rw [hflip σ, spatialWeightRing_flip γ σ]
 
+/-! ## §6  The finite periodic/antiperiodic root products
+
+This is only the finite algebraic endpoint of the paper-level logarithmic
+mixture recorded in `docs/VERIFICATION-LEDGER.md`.  In the physical
+specialisation, the printed hypothesis `x < 1` is supplied by the genuinely
+active disordered-region hypothesis `γ < a`, through
+`x = tanh γ / tanh a`.  No logarithmic mixture or spectral identification is
+proved here.
+-/
+
+/-- **The paired finite root products, with their active hypotheses printed.**
+If `ζ` is a primitive `L`-th root of unity and `η ^ L = -1`, then the periodic
+roots `ζ ^ j` and antiperiodic roots `ζ ^ j * η` give respectively
+`1 - x ^ L` and `1 + x ^ L`.  For `0 < x < 1` the first product is positive
+and strictly smaller than the second.
+
+This is finite algebra only.  It proves neither the Stieltjes/log-mixture
+identity nor a bound on either spectral sector. -/
+theorem periodic_antiperiodic_root_products {L : ℕ} (hL : 0 < L)
+    {ζ η : ℂ} (hζ : IsPrimitiveRoot ζ L) (hη : η ^ L = -1)
+    {x : ℝ} (hx0 : 0 < x) (hx1 : x < 1) :
+    (∏ j ∈ Finset.range L, (1 - (x : ℂ) * ζ ^ j)) = 1 - (x : ℂ) ^ L ∧
+    (∏ j ∈ Finset.range L, (1 - (x : ℂ) * (ζ ^ j * η))) = 1 + (x : ℂ) ^ L ∧
+    0 < 1 - x ^ L ∧ 1 - x ^ L < 1 + x ^ L := by
+  have hxc : (x : ℂ) ≠ 0 := by exact_mod_cast hx0.ne'
+  have hproduct (α a : ℂ) (hα : α ^ L = a) :
+      (∏ j ∈ Finset.range L, (1 - (x : ℂ) * (ζ ^ j * α)))
+        = 1 - a * (x : ℂ) ^ L := by
+    have hpoly := X_pow_sub_C_eq_prod hζ hL hα
+    have heval := congrArg (Polynomial.eval ((x : ℂ)⁻¹)) hpoly
+    simp only [Polynomial.eval_sub, Polynomial.eval_pow, Polynomial.eval_X,
+      Polynomial.eval_C, Polynomial.eval_prod] at heval
+    calc
+      (∏ j ∈ Finset.range L, (1 - (x : ℂ) * (ζ ^ j * α))) =
+          ∏ j ∈ Finset.range L, (x : ℂ) * ((x : ℂ)⁻¹ - ζ ^ j * α) := by
+            apply Finset.prod_congr rfl
+            intro j hj
+            field_simp [hxc]
+      _ = (x : ℂ) ^ L * ∏ j ∈ Finset.range L, ((x : ℂ)⁻¹ - ζ ^ j * α) := by
+            rw [Finset.prod_mul_distrib]
+            simp
+      _ = (x : ℂ) ^ L * (((x : ℂ)⁻¹) ^ L - a) := by rw [← heval]
+      _ = 1 - a * (x : ℂ) ^ L := by
+            rw [inv_pow]
+            field_simp [hxc]
+  have hperiodic :
+      (∏ j ∈ Finset.range L, (1 - (x : ℂ) * ζ ^ j)) = 1 - (x : ℂ) ^ L := by
+    simpa using hproduct 1 1 (one_pow L)
+  have hantiperiodic :
+      (∏ j ∈ Finset.range L, (1 - (x : ℂ) * (ζ ^ j * η))) = 1 + (x : ℂ) ^ L := by
+    simpa using hproduct η (-1) hη
+  have hxpow_pos : 0 < x ^ L := pow_pos hx0 L
+  have hxpow_lt_one : x ^ L < 1 := pow_lt_one₀ hx0.le hx1 hL.ne'
+  exact ⟨hperiodic, hantiperiodic, sub_pos.mpr hxpow_lt_one, by linarith⟩
+
 end YangMills.OS
