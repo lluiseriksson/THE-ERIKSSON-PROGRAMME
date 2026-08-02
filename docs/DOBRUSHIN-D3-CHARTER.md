@@ -34,8 +34,15 @@ correlations at a rate free of the volume.
       delta_i (E i f) = 0
       delta_k (E i f) <= delta_k f + C i k * delta_i f     for k /= i
   ```
-  i.e. the Dobrushin matrix is exactly what acts on oscillation vectors under a
-  single-site update.  Everything downstream is iteration.
+  i.e. the Dobrushin matrix is the coordinatewise MAJORANT governing one-site
+  oscillation transport.  Everything downstream is iteration.
+
+  **Corrected 2026-08-02.**  This line read "is exactly what acts on oscillation
+  vectors".  It is not: "exactly" would assert minimality, attainment or
+  optimality, none of which follows, and it is the same confusion between a
+  majorant and the minimal coefficient that cost two versions of the paper for
+  `tanh|J|`.  The phrase had already been corrected in the desk's prose and
+  survived here, in the charter that governs the rung.
 * **D-3d — iteration to the comparison estimate**, consuming D-1.
 * **D-3e — the covariance bound**, and only then the sentence D-3 exists for.
 
@@ -65,10 +72,17 @@ each predicts a NUMBER, not a range.  Audit output is printed IN FULL --- no
   constant is not the constant.
 * **J9 — D-3c as a NUMBER, by brute force.**  On small explicit systems
   (`|S| = 2`, `|iota| <= 3`) with an explicit kernel, `delta_k (E i f)` and
-  `delta_k f + C i k * delta_i f` are computed exactly over ALL configurations
-  and ALL observables in a spanning family; the gate fails on any violation and
-  reports the worst margin.  **This is the gate that can kill the rung before
+  `delta_k f + C i k * delta_i f` are computed over ALL configurations and
+  exhaustively over ALL **BOOLEAN** observables; the gate fails on any violation
+  and reports the worst margin.  **This is the gate that can kill the rung before
   Lean is written.**
+
+  **Corrected 2026-08-02.**  This line read "ALL observables in a spanning
+  family".  Boolean observables are an exhaustive subclass, not a spanning family
+  in any sense that would make the test conclusive for all real-valued
+  observables --- the inequality is not linear in `f`, since `delta` is a
+  supremum.  The gate is exhaustive within its class and the charter now says
+  which class.
 * **J10 — non-vacuity of the whole chain.**  An explicit system inside the
   window for which `D = sum_n C^n` is finite, the covariance of two explicit
   observables is computed by brute force, and the predicted bound is checked.

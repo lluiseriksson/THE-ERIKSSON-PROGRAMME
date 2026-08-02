@@ -29770,3 +29770,54 @@ the answer.
 **Practice added:** audit commands print in full, or write to a file that is
 then read in full; no `head`, no `cut`, no truncation on any command whose
 purpose is to establish that something is absent.
+
+## Addendum 578 (2026-08-02, **D-3 opened: five gates passed, two modules
+written and NOT elaborated, and the seventh instance of the same class — this
+time in the charter I wrote**)
+
+**WHAT IS VERIFIED.**  Five pre-registered gates, all PASS, all run on the
+sanctioned plane.  J8: the TV/oscillation bound holds and is ATTAINED with ratio
+exactly 1, so the sharp route exists and the window is not halved.  J9, the kill
+gate: exhaustive over ALL Boolean observables of three cells (16 + 256 + 256),
+zero violations, worst margin `1.11e-16`.  J10: 131072 pairs, no violation.
+**J10q**: the Bernoulli control gives ratio exactly `1.000000000000`, so `1/4` is
+FORCED and the constant-one version would have been four times weaker.  **J11**:
+on a non-symmetric cell the declared orientation gives 0 violations and the
+TRANSPOSED gives 24 at margin `1.8e-02` — the convention `C[i][k] = influence of
+k on the conditional at i` is fixed by evidence, not by taste.
+
+**WHAT IS NOT VERIFIED, and must not be read as if it were.**
+`YangMills/OS/DobrushinOscillation.lean` (`cb8f57f8`) and
+`YangMills/OS/DobrushinGruss.lean` (`f07a0800`) are **written and pushed and have
+never been seen by a compiler.**  None of the closure criteria is met: no
+endpoint elaborates, no witness elaborates, no oracle, no hash reproduced.  They
+are source, not results.
+
+**THREE OPERATIONAL FAILURES, none mathematical.**  (i) The commit message of
+`26de5b27` is corrupted: `-m` with double quotes let bash execute the backticks
+around `assert`.  History already pushed was not rewritten; the correction is of
+record.  (ii) A retroactive sweep found the surviving `refute` and its own
+`| cut -c1-150` destroyed the finding — an audit whose output is truncated is a
+sample.  (iii) **Three runtimes lost to inactivity**, each erasing the runtime
+and costing a full elan-plus-cache rebuild.  The pattern *launch, block, return*
+does not survive a resource with a timeout; focused single-module jobs with
+persisted logs do.
+
+**THE SEVENTH INSTANCE, and it is the one worth the addendum.**  The correction
+of `tanh|J|` from "the coefficient" to "a field-uniform envelope" was applied to
+the paper across three versions.  The identical error was then committed AGAIN,
+in this desk's prose about J9 — "the Dobrushin matrix is EXACTLY what acts on
+oscillation vectors" — corrected, and then found SURVIVING in
+`docs/DOBRUSHIN-D3-CHARTER.md` line 37, the document that governs the rung.  A
+second survivor sat at line 69: "ALL observables in a spanning family", when
+Boolean observables are an exhaustive subclass and nothing spans, the inequality
+not being linear in `f`.  Both corrected in place with the correction stated.
+
+The practice registered in Addendum 577 — *sweep the term across the whole
+artefact* — was applied to the paper and NOT to the charter.  **The artefact is
+not the manuscript; the artefact is everything the claim lives in**, charters and
+gate docstrings included.  That is the generalisation, and this lane has now paid
+for it seven times.
+
+**STATE.**  Paper v3.3 unchanged at anchor `c3d8e32d`; nothing from D-3 has
+entered the manuscript and nothing may until it is elaborated and audited.
