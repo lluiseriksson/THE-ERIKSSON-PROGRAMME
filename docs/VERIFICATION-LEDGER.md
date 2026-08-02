@@ -30665,3 +30665,30 @@ This gate does not license the arcsine Stieltjes/log-mixture identity, a vacuum
 product identification for the transfer matrix, either spectral-sector bound,
 the endpoint, or the uniform `specRatio` theorem.  At the time of this addendum
 the gate has not run and no PASS is claimed.
+
+## Addendum 604 (2026-08-02, **TASK 14: finite root-product gate passed**)
+
+**CERTIFIED FINITE ALGEBRA; NOT THE VACUUM ORDER OR A SECTOR BOUND.**  The gate
+fixed in Addendum 603 at preregistration commit
+`3dd1a93416de9127cd8f782d727b8ed3ac9ed8ff` ran first normally and then under
+`python -O`:
+
+- script SHA-256:
+  `14edcce2d80ecf3c83052700f97e8d5cae1aa8a54a93f4559d3e8ec67aee4cb6`;
+- normal: exit `0`, `0.257942 s`;
+- optimized: exit `0`, `0.704164 s`;
+- byte-identical JSON SHA-256:
+  `1fa0c1f98608446606e44aad0d5a4e994272e7ef3d8ce89a5b4359d68d548de6`;
+- transcript SHA-256:
+  `c91066853767627f9384a55043a0c9eddc5d4741c494765263f23f94d4785ba7`.
+
+The script measured 896 exact reciprocal/product identity rows and 448 strict
+order rows.  Each of the four mutation families -- periodic sign,
+antiperiodic sign, periodic exponent, and reversed order -- was rejected in
+all `448/448` attempts.  Normal and optimized outputs agree exactly.
+
+This PASS licenses only the prospective Lean theorem pairing the two finite
+root-product identities with their strict order under the explicit hypotheses
+`1 <= L` and `0 < x < 1`.  It does not license the Stieltjes/log-mixture
+identity, a transfer-spectrum identification, either sector bound, the
+endpoint, or the uniform `specRatio` theorem.
