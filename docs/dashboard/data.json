@@ -2,7 +2,7 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-07-28",
+    "updated": "2026-08-02",
     "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
@@ -17,6 +17,30 @@
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem."
   },
+  "submissions": [
+    {
+      "id": "critical-rescaling-fourier-nogo-v1.1-20260802",
+      "date": "2026-08-02",
+      "status": "submitted to ai.viXra — operation, category, and public identifier not restated",
+      "title": "Fourier Transverse Modes Obstruct Volume-Uniform Critical Coercivity in a Flat Lattice Gauge Block Form (v1.1)",
+      "category": "Not restated in the owner closeout",
+      "record_path": "docs/CRITICAL-RESCALING-FOURIER-NOGO-V1.1-SUBMISSION-20260802.md",
+      "pdf_sha256": "B8E655D3F1253D0EA915BA54DF00A5C72F4CE5B5D229F74FE82EC152333EA726",
+      "zip_sha256": "AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132",
+      "scope": "Exact all-scale Fourier witness and quadratic no-go bound; the witness is not claimed to minimize the full ker Q_L ∩ ker delta sector, as shown by the L=N'=2 quotient-2 counterexample. No continuum limit or Yang–Mills mass gap."
+    },
+    {
+      "id": "su2-crossing-extended-gauge-20260802",
+      "date": "2026-08-02",
+      "status": "submitted — identifier pending moderation",
+      "title": "Machine-Checked Extended Gauge Invariance at an SU(2) Crossing: Four-Edge Wilson Holonomy, Haar-Preserving Quotient Coordinates, and Reduction to the Ward Chart",
+      "category": "Physics — Mathematical Physics",
+      "record_path": "docs/SU2-CROSSING-EXTENDED-GAUGE-SUBMISSION-20260802.md",
+      "pdf_sha256": "8A9B9356F1CFA3C2D69A9371BB62F01D243E7725D203F2726F31772A8B821D9E",
+      "zip_sha256": "242790FA0687CE08C6BCC7A6AC120BE4CC4D24AD92CAF62A46A2794D6D39304E",
+      "scope": "Finite-dimensional SU(2) crossing and quotient-chart formalization; no heat-kernel area derivative, full Makeenko–Migdal equation, continuum limit, or Yang–Mills mass gap."
+    }
+  ],
   "status_legend": {
     "proved": "Machine-checked theorem reachable from YangMillsCore; oracle-clean on Lean's three standard axioms.",
     "partial": "Substantial verified infrastructure exists, but the headline statement is conditional or still awaits a named source theorem.",

@@ -17,6 +17,18 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
+**Latest viXra submission (2026-08-02; identifier pending moderation).**
+*Fourier Transverse Modes Obstruct Volume-Uniform Critical Coercivity in a
+Flat Lattice Gauge Block Form*, version 1.1, was submitted to ai.viXra.  Its
+authorized PDF and formal source ZIP have SHA-256
+`B8E655D3F1253D0EA915BA54DF00A5C72F4CE5B5D229F74FE82EC152333EA726` and
+`AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132`.
+The exact witness claim, artifact identities, spectral counterexample, and
+provenance boundary are recorded in
+[`docs/CRITICAL-RESCALING-FOURIER-NOGO-V1.1-SUBMISSION-20260802.md`](docs/CRITICAL-RESCALING-FOURIER-NOGO-V1.1-SUBMISSION-20260802.md).
+This publication notice is result-neutral: it does not change the canonical
+proof state, the dashboard DAG, or the recorded distance to Clay.
+
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03

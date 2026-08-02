@@ -276,6 +276,23 @@ svg { display: block; min-width: 100%; }
   border-radius: 8px;
 }
 .honesty strong { color: var(--red); }
+.submission {
+  margin-top: 20px;
+  padding: 14px 16px;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+}
+.submission h2 { margin: 0 0 7px; font-size: 17px; }
+.submission p { margin: 6px 0; color: var(--muted); font-size: 13.5px; }
+.submission .editorial-label {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
 footer {
   margin-top: 28px;
   padding-top: 16px;
@@ -390,6 +407,8 @@ footer {
 
   <div class="counts" id="counts" aria-label="Node counts"></div>
 
+  <section class="submission" id="recent-submission" aria-labelledby="recent-submission-title" hidden></section>
+
   <section aria-labelledby="milestones-title">
     <h2 id="milestones-title">Milestone Spine</h2>
     <div class="miles" id="miles"></div>
@@ -477,6 +496,7 @@ footer {
   const meta = data.meta;
   const nodes = data.nodes;
   const edges = data.edges;
+  const submissions = Array.isArray(data.submissions) ? data.submissions : [];
   const nodeById = Object.fromEntries(nodes.map(node => [node.id, node]));
   const frontier = nodes.find(node => node.frontier) || nodes.find(node => node.id === "HRP");
   const m3 = data.milestones.find(milestone => milestone.id === "M3");
@@ -505,6 +525,22 @@ footer {
   $("counts").innerHTML = statuses.map(status =>
     `<span><span class="dot ${status}"></span><b>${counts[status]}</b> ${status}</span>`
   ).join("") + `<span>${nodes.length} nodes, ${edges.length} edges</span>`;
+
+  if (submissions.length) {
+    const latest = submissions
+      .slice()
+      .sort((a, b) => String(b.date).localeCompare(String(a.date)))[0];
+    const submissionSection = $("recent-submission");
+    submissionSection.innerHTML = `
+      <div class="editorial-label">Editorial inventory — not a proof-state node</div>
+      <h2 id="recent-submission-title">Latest viXra submission</h2>
+      <p><strong>${escapeHtml(latest.title)}</strong></p>
+      <p>${escapeHtml(latest.date)} · ${escapeHtml(latest.category)} · ${escapeHtml(latest.status)}</p>
+      <p>${escapeHtml(latest.scope)}</p>
+      <p><a href="${escapeHtml(meta.blob + latest.record_path)}">Exact submission record and artifact hashes</a></p>
+    `;
+    submissionSection.hidden = false;
+  }
 
   $("miles").innerHTML = data.milestones.map(milestone => `
     <article class="mile">

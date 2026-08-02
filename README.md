@@ -438,6 +438,26 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ---
 
+## Latest viXra submission
+
+**Submitted 2026-08-02; identifier pending moderation.**  The new paper
+*Fourier Transverse Modes Obstruct Volume-Uniform Critical Coercivity in a
+Flat Lattice Gauge Block Form*, version 1.1, was submitted to ai.viXra.  Its
+authorized 8-page PDF has SHA-256
+`B8E655D3F1253D0EA915BA54DF00A5C72F4CE5B5D229F74FE82EC152333EA726`;
+the formal source ZIP has SHA-256
+`AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132`.
+See the [`submission record`](docs/CRITICAL-RESCALING-FOURIER-NOGO-V1.1-SUBMISSION-20260802.md)
+for the exact witness claim, the finite spectral counterexample, artifact
+identities, and provenance boundary.  The preceding SU(2) crossing submissions
+remain in the dashboard's editorial inventory.
+
+This is an editorial/publication record, not a new proof-state node.  It does
+not change the dependency DAG, milestone states, or the recorded distance to
+the Clay problem.
+
+---
+
 ## Method
 
 The project advances in **campaigns**: a design document with a brick ladder
