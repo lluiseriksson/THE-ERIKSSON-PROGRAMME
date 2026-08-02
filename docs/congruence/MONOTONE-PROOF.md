@@ -4,13 +4,33 @@ Architecture after external review.  What was first written as a statement about
 *congruence* of a *symmetric* matrix is neither: symmetry is never used, and the
 two sides need not be transposes of each other.
 
-## Notation, logarithm-free
+## Notation, logarithm-free — and the orientation is fixed here, once
 
 For `M` entrywise positive,
 
-    Φ(M) := max_{a,b,c,d}  M_ab M_cd / (M_cb M_ad),      Δ(M) = log Φ(M).
+    Φ(M) := max_{a,b,c,d}  M_ab M_cd / (M_cb M_ad),      Δ(M) = log Φ(M),
+    φ(M) := min_{a,b,c,d}  M_ab M_cd / (M_cb M_ad)  =  1 / Φ(M).
 
-`ArgMax(M)` denotes the set of quadruples attaining `Φ(M)`.
+The cross-ratios are closed under reciprocal — swapping `a ↔ c` inverts the
+ratio — so `min = 1/max` and the two descriptions carry the same information.
+
+**They do not carry the same indices, and that is a trap.**  The Lean interface
+`CrossRatioLB φ T` (and `BirkhoffInterface` in `CongruenceSpectrum`, whose
+orientation it copies) is the **lower** bound
+
+    φ · (M_cb M_ad)  ≤  M_ab M_cd ,
+
+so its equality cases form a **`TightSet`** — the quadruples attaining the
+*minimum* — and **not** the `ArgMax` of the ratio.  For the witness `M^{pq}`
+below the two sets are disjoint:
+
+    TightSet(M^{pq}) = { (p,q,q,p), (q,p,p,q) }      at  φ = μ²
+    ArgMax  (M^{pq}) = { (p,p,q,q), (q,q,p,p) }      at  Φ = μ⁻²
+
+verified exhaustively.  Everything from Theorem B onward is therefore stated in
+the **`TightSet` / lower-bound** convention, to match the formalisation.  Writing
+Theorem B against `ArgMax` while the Lean carries `CrossRatioLB` would give a
+correct proof about the wrong quadruples.
 
 ## Theorem A (two-sided).  `Δ(A M B) ≤ Δ(M)`
 
@@ -38,13 +58,14 @@ structural condition on `S`, not an extra assumption to be carried.
 
 ## Theorem B (equality, by supports)
 
-`Φ(T) = Φ(M)` iff there is a quadruple of rows `(i,j,k,l)` with
+`φ(T) = φ(M)` iff there is a quadruple of output indices `(i,j,k,l)` with
 
-    supp A_i × supp B_·k × supp A_j × supp B_·l  ⊆  ArgMax(M).
+    supp A_i × supp B_·k × supp A_j × supp B_·l  ⊆  TightSet(M),
 
-*Reason.*  Equality forces the termwise inequality to be tight on **every**
-quadruple carrying positive weight; one non-maximising quadruple with positive
-weight makes the sum strict.
+with the coordinate order matching the expansion.  *Reason.*  Equality forces
+the termwise inequality to be tight on **every** quadruple carrying positive
+weight: `φ · M_cb M_ad - M_ab M_cd ≤ 0` termwise, and a weighted sum of
+nonpositive terms vanishes exactly when every positively-weighted term does.
 
 **Corollary B1 (strict contraction).**  If every entry of `S` is positive and
 `Δ(M) > 0`, then `Δ(S M Sᵀ) < Δ(M)`, strictly.  All weights are positive, and
@@ -57,9 +78,11 @@ square, nonnegative, with no zero row:
     [ ∀ M > 0 :  Δ(S M Sᵀ) = Δ(M) ]  ⟺  S = D P,  D positive diagonal, P a permutation.
 
 *Route, via witnesses.*  For `p ≠ q` and `0 < μ < 1` let `M^{pq}` be all ones
-except `M_pq = M_qp = μ`.  Then `Φ(M^{pq}) = μ⁻²` and
-`ArgMax(M^{pq}) = {(q,q,p,p), (p,p,q,q)}` — **exactly two quadruples**, verified
-exhaustively.  By Theorem B, equality at `M^{pq}` forces four supports whose
+except `M_pq = M_qp = μ`.  In the fixed convention, `φ(M^{pq}) = μ²` and
+`TightSet(M^{pq}) = {(p,q,q,p), (q,p,p,q)}` — **exactly two quadruples**,
+verified exhaustively, and symbolically immediate: every factor is `1` or `μ`,
+so reaching `μ²` demands both numerator factors `μ` and both denominator factors
+`1`, which leaves only those two.  By Theorem B, equality at `M^{pq}` forces four supports whose
 Cartesian product lands inside that two-element set, hence all four are
 singletons in `{p,q}`; so `S` has a row supported purely on column `p` and
 another purely on column `q`.  Ranging over all pairs, every column of `S` owns a
