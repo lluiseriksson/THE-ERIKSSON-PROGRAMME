@@ -31238,3 +31238,33 @@ subtraction/addition rewrites.  This remains a coercion-normalization failure,
 not a counterexample to the finite inequality.  No PASS, oracle, core build,
 or theorem certification is claimed.  The runtime was disconnected and
 deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 618 (2026-08-02, **TASK 14: finite log-grid comparison focused PASS**)
+
+**CERTIFIED FOCUSED LEAN BRICK; NOT A VACUUM OR SPECTRAL BOUND.**  The fourth
+fresh CPU/high-RAM Colab clone checked out and printed raw SHA
+`7162d272f6e1321a1a13b51cd59c2e53f68ccd41`.  It verified Lean
+`leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib
+`07642720480157414db592fa85b626dafb71355b`.
+
+The no-GPU runtime reported Linux `6.6.122+`, x86-64, glibc `2.35`, Python
+`3.12.13`, 8 AMD EPYC 7B12 CPUs, and `MemTotal: 53467192 kB`.  Its UTC
+interval was `2026-08-02T10:54:09.490461+00:00` through
+`2026-08-02T10:57:24.387543+00:00`.  Isolated official cache acquisition
+exited zero after `73.010834 s`.
+
+`lake build YangMills.OS.SpatialVacuum` exited zero after `101.474265 s` and
+reported `8172 jobs`.  The new theorem
+`YangMills.OS.periodic_antiperiodic_log_norm_sums_lt` therefore elaborates
+under the printed active hypotheses `0 < L` and `0 < x < 1`.  Its proof takes
+norms and logarithms of the already certified exact periodic/antiperiodic root
+products and uses their strict positive order.  The runtime was disconnected
+and deleted immediately; **SESIÓN COLAB LIBRE**.
+
+This focused PASS does not yet include the permanent oracle, core build, or
+consistency judge for the new declaration.  More importantly, it does not
+identify either logarithmic sum with a finite transfer vacuum, does not prove
+the physical vacuum quotient order, and does not touch either spectral-sector
+obligation, the original `beta = 0` endpoint, or the uniform `specRatio`
+theorem.  Clifford/Jordan--Wigner remains unopened.
