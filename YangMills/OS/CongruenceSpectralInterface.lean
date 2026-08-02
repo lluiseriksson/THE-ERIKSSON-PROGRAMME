@@ -260,6 +260,7 @@ non-Perron eigenvalue. -/
 
 /-! ### §5.1  An upper bound for `specGap`, in general -/
 
+omit [DecidableEq n] [Nonempty n] in
 /-- **Eigenvectors at different eigenvalues are orthogonal.**  Proved from the
 symmetry of the kernel by moving it across the pairing, with plain sums. -/
 theorem inner_eq_zero_of_eigen_ne {T : Matrix n n ℝ}
@@ -377,7 +378,7 @@ theorem exchangeTwo_eigen_const (μ : ℝ) :
     ∀ i, ∑ j, exchangeTwo μ i j * (fun _ : Fin 2 => (1 : ℝ)) j
       = (1 + μ) * (fun _ : Fin 2 => (1 : ℝ)) i := by
   intro i
-  fin_cases i <;> simp [Fin.sum_univ_two, exchangeTwo_apply] <;> ring
+  fin_cases i <;> (simp [Fin.sum_univ_two, exchangeTwo_apply]; ring)
 
 /-- **`perronValue (E_μ) = 1 + μ`**, computed — not assumed.  `perronValue_unique`
 does the work: the constant vector is a positive eigenvector, so its eigenvalue
@@ -417,10 +418,25 @@ theorem quad_bound_exchangeTwo {μ : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1)
 /-- The antipodal fluctuation on two sites. -/
 def altTwo : Fin 2 → ℝ := fun i => if i = 0 then 1 else -1
 
+/-- Its two values, discharged once and named.
+
+Stated separately rather than left to `simp` inside each use.  A `simp only`
+list that unfolds `altTwo` and then tries to finish the `if` in the same breath
+leaves `if True then 1 else -1` standing when the condition normalises but no
+lemma in the list closes it — measured, twice.  `show` accepts the goal up to
+definitional unfolding, so the branch is taken by hand and cannot half-happen. -/
+theorem altTwo_zero : altTwo 0 = 1 := by
+  show (if (0 : Fin 2) = 0 then (1 : ℝ) else -1) = 1
+  rw [if_pos rfl]
+
+theorem altTwo_one : altTwo 1 = -1 := by
+  show (if (1 : Fin 2) = 0 then (1 : ℝ) else -1) = -1
+  rw [if_neg (by decide : ¬((1 : Fin 2) = 0))]
+
 theorem altTwo_ne_zero : altTwo ≠ 0 := by
   intro h
   have := congrFun h 0
-  simp only [altTwo, if_pos rfl, Pi.zero_apply] at this
+  simp only [altTwo, Pi.zero_apply] at this
   exact one_ne_zero this
 
 /-- **`specGap (E_μ) = 1 - μ`**, computed from both sides: the new general upper
@@ -432,13 +448,11 @@ theorem specGap_exchangeTwo {μ : ℝ} (hμ0 : 0 < μ) (hμ1 : μ < 1) :
       (perronVec_eigen (exchangeTwo_pos hμ0)) (quad_bound_exchangeTwo hμ0 hμ1)
   · obtain ⟨c, hc, hconst⟩ := perronVec_exchangeTwo_const hμ0
     have hperp : ∑ i, perronVec (exchangeTwo μ) i * altTwo i = 0 := by
-      rw [Fin.sum_univ_two, hconst 0, hconst 1]
-      simp only [altTwo, if_pos rfl, if_neg (by decide : ¬((1 : Fin 2) = 0))]
+      rw [Fin.sum_univ_two, hconst 0, hconst 1, altTwo_zero, altTwo_one]
       ring
     have hray : (1 - μ) * (∑ i, altTwo i * altTwo i) ≤ quad (exchangeTwo μ) altTwo := by
-      rw [quad_exchangeTwo, Fin.sum_univ_two]
-      simp only [altTwo, if_pos rfl, if_neg (by decide : ¬((1 : Fin 2) = 0))]
-      ring_nf
+      rw [quad_exchangeTwo, Fin.sum_univ_two, altTwo_zero, altTwo_one]
+      exact le_of_eq (by ring)
     exact le_specGap_of_witness (exchangeTwo_pos hμ0) (exchangeTwo_symm μ)
       altTwo_ne_zero hperp hray
 
