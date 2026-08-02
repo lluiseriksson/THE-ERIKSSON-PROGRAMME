@@ -180,7 +180,7 @@ applicable label.
 | 9 | contour adjacency budget (`degree_bound`, `one_le_Delta`) | partial combinatorial producer | tree |
 | 10 | contour radius envelope (`radius_nonneg`, `radius_cap`) | open scalar/geometric envelope | tree |
 | 11 | contour contraction package (`Ahead_nonneg`, `rho_nonneg`, `rate_pos`, `shell_small`, `contour_series_small`, `neumann_small`, `neumann_transpose_small`) | partial physical producer; joint contraction is open | tree + corpus: CMP116 |
-| 12 | conditioned Gaussian root (`conditionedRoot`) | partial covariance producer | tree |
+| 12 | conditioned Gaussian root (`conditionedRoot`) | partial covariance producer; the matrix square-root certificate is present, but the terminal `root` is not yet identified with the canonical inverse square root of the interacting precision | tree |
 | 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | open and mandatory; a degenerate root is not admissible | tree, downstream of group 2 |
 | 14 | sigma Cauchy-radius normalization (`deltaRadius_eq`) | open equality against the installed base contour | tree |
 | 15 | cardinality normalization (`normalizedGap`) | open equality in the source convention | tree |
@@ -191,8 +191,8 @@ applicable label.
 | 20 | direct third-jet envelope (`hD`, `hD₃`, `hV₀`, `hC`, `hRjet`, `hsourceJet`, `sourceJetBound_nonneg`) | partial CMP102 producer; the printed component estimates remain hypotheses | tree + absent: CMP102/[15] source text |
 | 21 | walk factorization and Eq.-(1.43) budget (`cardRatio_nonneg`, `metricRatio_nonneg`, `summationRatio_nonneg`, `walk_split`, both decay rates, `cardDecay`, `metricDecay`, `walk_small`, `eq143_budget`) | partial producer; these inputs already feed the verified Eq.-(1.43) conclusion | tree + corpus: CMP116; source provenance still audited field by field |
 | 22 | residual/rooted animal windows (`residual_rate_nonneg`, `rooted_rate_nonneg`, `animal_small`, `rooted_animal_small`) | partial combinatorial producer; the joint scalar witness is open | tree + corpus: CMP116 + absent: Cammarota [26] for the deferred Mayer input |
-| 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | open scalar wall at the least admissible `alpha` | tree, downstream of groups 2 and 12--13 |
-| 24 | outer Gaussian stability (`outer_small`) | open scalar wall, coupled to the same `alpha` and conditioned root | tree, downstream of groups 2 and 12--13 |
+| 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | open scalar wall at the least admissible `alpha`; coercivity cannot yet discharge it because the terminal root/covariance identification is missing | tree, downstream of groups 2 and 12--13 |
+| 24 | outer Gaussian stability (`outer_small`) | open scalar wall, coupled to the same `alpha` and terminal root; the same root/covariance identification is required before the coercivity denominator may be used | tree, downstream of groups 2 and 12--13 |
 
 Thus `18/41 -> 41/41` is the route to the first source-specific
 `TermSource` **conditional on the named Lemma-1 certificate**.  Proving the
@@ -1077,23 +1077,68 @@ interaction obligation vacuously.  The old pointwise theorem remains
 available; the new interface is accepted only together with this named
 nondegeneracy debt.
 
-The scalar wall is now visible in the terminal data:
+The scalar wall is now visible in the terminal data.  Write
+`A = potentialRate + r2Rate + gamma` and let `R` be the real matrix of the
+terminal root.  The first inequality is literally
 
 ```text
-(potentialRate + r2Rate + gamma) * ||conditionedRoot||^2 < 1.
+A * ||R||^2 < 1.
 ```
 
-For the physical coercive inverse this is controlled schematically by
+The currently installed interacting-precision package does **not** yet imply
+this inequality.  It constructs `K`, its exact inverse
+`interactingCovariance`, and the positive constant
 
 ```text
-potentialRate + r2Rate + gamma
-  <~ (min(1,a) - perturbation budget) / CP,
+c = min(1,a) / CP - interacting defect budget.
 ```
 
-and in four dimensions the Poincare constant scales like the square of the
-fixed block ratio, not the ambient volume.  This inequality, together with
-`contour_series_small`, `neumann_small`, `neumann_transpose_small`, and the
-patched-parametrix contraction, is a named open scalar frontier.
+However, `CMP116CenteredConditionedCombinedSourceData.root` remains an
+independent endomorphism.  Its `conditionedRoot` field proves only that the
+finite matrix of this root is symmetric, carried by the localized
+coordinates, and squares to the separately supplied `conditionedCovariance`.
+No field identifies that covariance with `interactingCovariance` or the root
+with `physicalCanonicalInverseSqrt K`.  Therefore substituting
+`||R||^2 <= c^-1` at the present interface would be an unjustified
+identification.
+
+The missing source-facing bridge can be stated without ambiguity: install a
+`PhysicalLocalizedCovarianceRootCertificate` for the literal interacting
+precision/covariance/root, or definitionally choose the canonical positive
+inverse square root and transport it to the finite matrix.  The existing
+root-norm bridge then gives
+
+```text
+||R||^2 = ||interactingCovariance|| <= c^-1.
+```
+
+After that bridge, and assuming the displayed rates are nonnegative, the
+first wall has the clean sufficient condition
+
+```text
+A < c.
+```
+
+The second wall is the literal terminal inequality
+
+```text
+2 * (outerRate + |sourceCoefficient(R,A) * sourceRate|) <= qBound,
+qBound < 1,
+sourceCoefficient(R,A) = ||R||^2 / (2 * (1 - A * ||R||^2)).
+```
+
+If `sourceRate >= 0`, the same root certificate and `0 <= A < c` reduce it to
+the sufficient scalar condition
+
+```text
+2 * outerRate + sourceRate / (c - A) <= qBound < 1.
+```
+
+Thus the wall is now a two-stage frontier rather than a completed numerical
+test: first identify the terminal Gaussian root with the coercive inverse
+square root; then test the two displayed inequalities jointly.  In four
+dimensions `CP` scales like the square of the fixed block ratio, not the
+ambient volume, so that dependence remains visible in `c`.
 
 These smallness conditions must eventually be witnessed **jointly**.  They
 must not be audited by assigning arbitrary numerical values to norms of
@@ -1108,7 +1153,7 @@ pure scalar once the displayed parameters are fixed:
 scalar inequalities with physical quantities still inside:
   neumann_small                 (contains ||K||)
   neumann_transpose_small       (contains ||K^T||)
-  root_small                    (contains ||conditionedRoot||)
+  root_small                    (contains the terminal root matrix norm)
   outer_small                   (contains the physical R1/R3 budgets)
 
 genuinely operator-valued obligations:
