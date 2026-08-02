@@ -14,7 +14,7 @@ export PATH="$HOME/.elan/bin:$PATH"
 REPO=/content/repo
 BRANCH=claude/congruence-spectrum
 MODULE=YangMills/OS/ProjectiveDiameterMonotone.lean
-EXPECT_S2A=21c43f6abf1644e5176361954f43fa3e14f7636c7cdbbf5d02a0a8b27800426b
+EXPECT_S2A=62c0d58efcc131d83ced138480621101e26e2a2ff4b4fbc8bb6cb38cf178169f
 EXPECT_HEAD="${EXPECT_HEAD:-}"
 
 if [ -z "$EXPECT_HEAD" ]; then echo "PREFLIGHT ABORT: EXPECT_HEAD not supplied"; exit 1; fi
