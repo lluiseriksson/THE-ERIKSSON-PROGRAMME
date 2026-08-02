@@ -30269,3 +30269,20 @@ Addendum 592 is replaced only by the exact identity
 pairings, product checks, interval positivity boolean, and `OBSERVED`
 classification are unchanged.  At the time of this addendum the repaired
 script has not run and no recovery result is claimed.
+
+## Addendum 594 (2026-08-02, **TASK 14: second interval API failure preserved**)
+
+The repaired audit at raw SHA
+`4890ffc203c3fcf48378e11fab248ca2d864b50d` returned exit 1 after 0.272819 s.
+Its LF-terminated combined output hashes to
+`d904c6e51c36675794de7049a11054858e5ce600bfff2d7f34d4c3bbc42f5d23`.
+The literal cause was
+`AttributeError: 'MPIntervalContext' object has no attribute 'sinh'`.
+
+Thus mpmath 1.3.0's interval context exposes neither `tanh` nor the attempted
+`sinh/cosh` replacement.  This is again an instrumental API failure before any
+interval enclosure, pairing record, JSON status, or optimized run, and carries
+no mathematical evidence.  The next repair must expand `sinh`, `cosh`, and
+`acosh` through interval `exp`, `log`, and `sqrt`; it is not part of this
+incident commit.  Full details are in
+`INC-SPATIAL-VACUUM-PAIRING-IV-002.md`.
