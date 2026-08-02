@@ -92,8 +92,9 @@ so $T/\lambda$ is squeezed between a strictly positive scalar and the identity.
 \textbf{What is not here.}  No Hamiltonian and no functional calculus:
 $H=-\log(T/\lambda)$ is now a meaningful object to seek, and it is not built.
 No spectral gap statement for $T$, no infinite volume, no continuum, no gauge
-theory, and nothing at $\beta=0$, where for $L>0$ the coercivity constant
-vanishes and the degeneracy is real.
+theory.  At $\beta=0$ with $L>0$ the coercive lower bound, the
+invertible normalised operator and any Hamiltonian route are absent; the
+exact norm, self-adjointness and semidefinite positivity survive there.
 
 \textbf{The mathematics is not new.}  Reflection positivity for Ising-type
 measures, through sites and through bonds, and its transfer-matrix reading, are
@@ -507,38 +508,62 @@ both are run in the ordinary and the \texttt{-O} interpreter modes, because
 \section{The size of the operator}\label{sec:contraction}
 
 The reconstruction so far leaves the size of $T$ unknown.  This section closes
-that, with the sharp constant and, for $eta>0$, on both sides.
+that, with the sharp constant and, for $\beta>0$, on both sides.
 
-egin{theorem}[sharp bound, attained, minimal]\label{thm:norm}
+\begin{theorem}[sharp bound, attained, minimal]\label{thm:norm}
 Let $\Omega>0$ and $\lambda$ be Perron data for the symmetrised kernel.  Then
-$\lVert TuVert_{\mathrm{site}}\le\lambda\lVert uVert_{\mathrm{site}}$ for
-every $u$ and every $eta$; equality holds at $u=\sqrt w\,\Omega$; and any
+$\lVert Tu\rVert_{\mathrm{site}}\le\lambda\lVert u\rVert_{\mathrm{site}}$ for
+every $u$ and every $\beta$; equality holds at $u=\sqrt{w}\,\Omega$; and any
 $c\ge0$ with the same property satisfies $\lambda\le c$.
 \end{theorem}
+
+The three parts are
+\osline{SpatialReconstruction}{NORMLELINE}{siteQ\_transferOp\_le},
+\osline{SpatialReconstruction}{NORMATTLINE}{siteQ\_transferOp\_perron} and
+\osline{SpatialReconstruction}{NORMMINLINE}{perron\_norm\_constant\_minimal},
+resting on the generic
+\osline{SpatialReconstruction}{NORMGENLINE}{norm\_sq\_le\_perron}.
 
 The proof is a weighted Cauchy--Schwarz in which the Perron vector is not a
 bound but the \emph{weight} that makes an elementary inequality tight.  No
 spectral theory is used, and no operator semidefiniteness is assumed --- only
-entrywise non-negativity --- which is why the statement survives at $eta<0$
+entrywise non-negativity --- which is why the statement survives at $\beta<0$
 where positivity of $T$ is unavailable.  The existence of the Perron data is
 discharged from this lane's own Perron--Frobenius, so the statement is
 unconditional.
 
-egin{theorem}[coercivity]\label{thm:coercive}
-For $eta>0$, $\langle u,Tuangle_{\mathrm{site}}\ge
-(e^eta-e^{-eta})^Ligl(\min_\sigma w(\sigma)igr)\lVert
-uVert_{\mathrm{site}}^2$.
+\begin{theorem}[coercivity]\label{thm:coercive}
+For $\beta>0$,
+$\langle u,Tu\rangle_{\mathrm{site}}\ge
+(e^{\beta}-e^{-\beta})^{L}\bigl(\min_\sigma w(\sigma)\bigr)
+\lVert u\rVert_{\mathrm{site}}^{2}$.
 \end{theorem}
 
+\osline{SpatialReconstruction}{COERCLINE}{bondQ\_ge\_siteQ}, from the generic
+induction \osline{SpatialReconstruction}{COERGENLINE}{spatialKernel\_coercive}.
 The factor $\min_\sigma w(\sigma)$ is not decoration: the physical norm is
 weighted, so passing from a Euclidean bound to this one costs exactly that
 factor, and omitting it would state something false for weights below one.  The
-constant vanishes at $eta=0$ when $L>0$, which is correct --- the kernel is
-degenerate there --- and equals $\min w>0$ when $L=0$ at every $eta$.
+constant vanishes at $\beta=0$ when $L>0$, which is correct --- the kernel is
+degenerate there --- and equals $\min w>0$ when $L=0$ at every $\beta$.
 
-Consequently $T$ is injective and invertible for $eta>0$, and
-$(a/\lambda)I\le T/\lambda\le I$ with $a>0$.  What this removes is the
-normalisation obstacle before a functional calculus; it does not build one.
+Consequently $T$ is injective
+(\osline{SpatialReconstruction}{INJLINE}{transferOp\_injective}) and invertible,
+and $(a/\lambda)I\le T/\lambda\le I$ with $a>0$ ---
+\osline{SpatialReconstruction}{NORMTWOLINE}{normalised\_two\_sided}, whose middle
+term is the quadratic form of the normalised operator itself by
+\osline{SpatialReconstruction}{NORMBRIDGELINE}{siteForm\_normalisedTransferOpL\_self}.
+What this removes is the normalisation obstacle before a functional calculus; it
+does not build one.
+
+\paragraph{Exactly what fails at $\beta=0$.}  Not everything, and an earlier
+version of this paper said ``nothing at $\beta=0$'', which contradicted the
+sentence beside it claiming the exact norm at \emph{every} $\beta$.  What
+survives at $\beta=0$ is self-adjointness, semidefinite positivity, the exact
+norm $\lVert T\rVert_{\mathrm{site}}=\lambda$, and the attainment and
+minimality of that constant; at $L=0$ even invertibility survives.  What fails,
+and only for $L>0$, is the coercive lower bound --- and with it the invertible
+normalised operator and any route to a Hamiltonian.
 
 \section{What is open}\label{sec:open}
 

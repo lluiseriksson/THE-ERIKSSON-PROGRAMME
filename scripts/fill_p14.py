@@ -207,6 +207,17 @@ def main():
     checks.append(("no counter token survives in a cell",
                    not any(re.search(r"&\s*%s\s*\\\\" % t, tex) for t in cells)))
 
+    # ---- 6. no control bytes.  A section of this manuscript was once written
+    # through a shell-plus-Python command line and acquired thirteen BACKSPACE
+    # and four CARRIAGE RETURN bytes where `\b` and `\r` escapes had been eaten
+    # twice.  `\begin{theorem}` stopped being a command and nothing noticed,
+    # because every other guard reads the file as text and a control character
+    # IS text.  The filler refuses to write such a file.
+    ctrl = [(i, b) for i, b in enumerate(tex.encode("utf-8"))
+            if ((b < 0x20 and b not in (0x09, 0x0A)) or b == 0x7F)]
+    lone_cr = [p for p in ctrl if p[1] != 0x0D]
+    checks.append(("no control bytes in the manuscript", lone_cr == []))
+
     ran = 0
     failed = []
     for name, ok in checks:
