@@ -29821,3 +29821,38 @@ for it seven times.
 
 **STATE.**  Paper v3.3 unchanged at anchor `c3d8e32d`; nothing from D-3 has
 entered the manuscript and nothing may until it is elaborated and audited.
+
+## Addendum 579 (2026-08-02, **the rule this lane registered was half a rule,
+and the weaker half**)
+
+Addendum 577 registered: *when a term is redefined, sweep it across the whole
+artefact*.  Addendum 578 widened "artefact" to include charters and gate
+docstrings.  Both are propagation rules, and both are insufficient in the same
+two ways, identified from outside and recorded here because the version in this
+ledger is currently weaker than what was actually learned.
+
+**Step 1, missing entirely — semantic validity of the label.**  Before using or
+moving a label, its definition must be read in the repository's SHARED
+vocabulary, not in the local document.  A lane cannot redefine `CERTIFICADO`,
+`VERIFICADO`, `CONDICIONAL`, `EXACTO` or any common term to whatever is locally
+convenient.  The concurrent theta-prism lane paid for this in the order
+detect -> relabel -> detect again -> only then consult the house definition; this
+lane paid for the same shape with majorant versus minimal coefficient.  Neither
+episode was a sweep failure: both were an authority failure, and a sweep cannot
+catch one.
+
+**Step 2, recorded too narrowly.**  A `grep` finds TERMS.  It does not establish
+that an equivalent CLAIM in different words has gone.  Propagation means
+re-deriving every summary-shaped surface from the corrected statement --
+abstract, status, limitations, titles, roadmap, PR body, manifest, submission
+forms -- and re-deriving is not searching.
+
+**The compact form, which supersedes the wording of 577 and 578 without
+retracting their findings:**
+
+> First validate the vocabulary against the repository's authority; then
+> validate the propagation against every surface that summarises the claim.
+
+They are two different operations and neither substitutes for the other.  This
+lane has now paid for step 2 seven times and for step 1 twice, and the reason it
+kept paying is that it recorded only the half it had just been burned by.
