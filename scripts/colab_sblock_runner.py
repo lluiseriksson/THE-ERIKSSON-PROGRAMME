@@ -32,11 +32,17 @@ module (ledger, e.g. the `RG/AnimalCount.lean` and Addendum 574 entries) that
 contributes ZERO.  The RECONSTRUCTION adds exactly ONE new module,
 `YangMills/OS/SpatialReconstruction.lean`, imported once by `YangMillsCore`.
 
-  PREDICTION:  jobs(after) - jobs(before)  =  +1,  exactly.
+  v1.0 CAMPAIGN PREDICTION:  jobs(after) - jobs(before)  =  +1, exactly.
+  v2   CAMPAIGN PREDICTION:  jobs(after) = 8469 and the delta = 0, exactly.
 
-Not "+1 or +2", and not "an increase".  A `+2` would mean something imported a
-second module without anyone writing it down; a `0` would mean the new module
-never reached the core and the whole build proved nothing about it.
+The v2 campaign adds declarations to EXISTING modules only: no module, no
+import, so the count must not move from the v1.0 anchor's absolute.  Both halves
+are checked, because the registration in commit `6e67629a` made both claims.
+
+THE FIRST VERSION OF THIS FILE SHIPPED IN THE CLEAN ANCHOR STILL DEMANDING `+1`,
+which would have REJECTED the very measurement the manuscript's filler must
+accept.  A committed procedure that contradicts the committed prediction is
+worse than no procedure: it looks like evidence.
 
 AND THE BASELINE IS MEASURED, NOT COPIED.  `CLAUDE.md` records 8465 at
 `3421aa1f`, and a copied count may not be used as a baseline.  So `--before`
@@ -70,7 +76,10 @@ import re
 import subprocess
 import sys
 
-REPO = "/content/eriksson"
+# Overridable, so the runner can be pointed at the fresh clone actually used
+# rather than at a path that happens to be the first one this lane ever wrote.
+REPO = os.environ.get("ERIKSSON_REPO", "/content/eriksson")
+OUT_DEFAULT = os.environ.get("ERIKSSON_OUT", "/content/artefacts")
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB_PIN = "07642720480157414db592fa85b626dafb71355b"
 LANE_MODULES = ["YangMills.OS.SpatialOS", "YangMills.OS.SpatialReconstruction"]
@@ -83,7 +92,7 @@ TRAVELLING = [
     "oracle_check.lean",
     "scripts/judge_site_bridge.py",
 ]
-OUT = "/content/artefacts"
+OUT = OUT_DEFAULT
 
 SENTINEL_ABSENT = "absent"
 SENTINEL_MALFORMED = "malformed"
@@ -204,9 +213,30 @@ def stage3():
 
 
 # ---------------------------------------------------------------- stage 4
+REGISTERED_JOBS_ABSOLUTE = 8469   # commit 6e67629a, before any v2 count
+REGISTERED_JOBS_DELTA = 0
+
+
+def stage2b():
+    """Elaborate the two paper sources DIRECTLY.
+
+    With warm `.lake` artefacts a green `lake build` cannot distinguish a
+    module that was re-elaborated from one whose olean already matched.
+    `lake env lean <file>` reads and elaborates the named file regardless.
+    """
+    print("stage 2b - direct source elaboration (warm artefacts cannot fake this)")
+    out = {}
+    for f in ("YangMills/OS/SpatialOS.lean",
+              "YangMills/OS/SpatialReconstruction.lean"):
+        out["elab:" + f] = run(["lake", "env", "lean", f],
+                               os.path.basename(f).replace(".lean", "") + "_elab",
+                               "normal")
+    return out
+
+
 def stage4(baseline):
-    """The job count, against the prediction registered in this file's header:
-    the delta is EXACTLY +1, one new module.
+    """The job count, against the prediction registered before any v2 count:
+    the absolute is 8469 AND the delta is 0.
 
     Not an `assert`: an explicit check with its own exit contribution, so that
     `python -O` cannot delete the one line that would notice the campaign was
@@ -232,8 +262,13 @@ def stage4(baseline):
         return SENTINEL_MALFORMED, jobs, log
     print("  measured before : %d jobs" % baseline)
     delta = jobs - baseline
-    print("  delta           : %+d   (predicted exactly +1)" % delta)
-    if delta != 1:
+    print("  delta           : %+d   (registered %+d at absolute %d)"
+          % (delta, REGISTERED_JOBS_DELTA, REGISTERED_JOBS_ABSOLUTE))
+    if jobs != REGISTERED_JOBS_ABSOLUTE:
+        print("  PREDICTION FAILED: absolute %d is not the registered %d."
+              % (jobs, REGISTERED_JOBS_ABSOLUTE))
+        return SENTINEL_NONZERO, jobs, log
+    if delta != REGISTERED_JOBS_DELTA:
         print("  PREDICTION FAILED.  +2 would mean a second module was pulled")
         print("  in without anyone writing it down; 0 would mean the new module")
         print("  never reached the core and this build proved nothing about it.")
@@ -283,8 +318,18 @@ def main():
     expected_sha = sys.argv[1] if len(sys.argv) > 1 else None
     baseline = int(sys.argv[2]) if len(sys.argv) > 2 else None
     sha = stage0(expected_sha)
+    print()
+    print('PRE-BUILD HASHES (what is about to be elaborated)')
+    stage5(sha)
     results = {}
+    results[("lean_decls", "normal")] = run(
+        [sys.executable, "scripts/lean_decls.py"],
+        "lean_decls", "normal")
+    results[("lean_decls", "optimized")] = run(
+        [sys.executable, "-O", "scripts/lean_decls.py"],
+        "lean_decls", "optimized")
     results.update(stage1())
+    results.update(stage2b())
     results.update(stage2())
     results["oracle"] = stage3()
     results["jobcount"] = stage4(baseline)

@@ -77,9 +77,10 @@ its own failure would have meant.
 
 \textbf{On the spectrum, precisely.}  The similarity $T\circ Q=Q\circ S$ with
 $Q$ an isomorphism, and the equality of eigenvalue \emph{sets} that follows from
-it, are machine-checked theorems.  The multiplicity, characteristic-polynomial,
-ordered-list, reality and Perron-ratio components of the corresponding
-pre-registered gate are \textbf{not} formalised here.
+it, are machine-checked theorems.  The multiplicity, ordered-list, reality and
+Perron-ratio components of the corresponding pre-registered gate, and the
+characteristic-polynomial \emph{consequence} of the similarity, are
+\textbf{not} formalised here.
 
 \textbf{What is not here.}  No Hamiltonian, no spectral gap statement for $T$,
 no norm or contraction bound, no infinite volume, no continuum, no gauge theory.
@@ -478,10 +479,13 @@ entry by entry with those of the symmetrised kernel $\sqrt{w}K_\beta\sqrt{w}$,
 that all are real, and that the largest in modulus divided by the Perron
 eigenvalue is exactly $1$.  All four passed.
 
-\textbf{R4 is a gate and is used for nothing.}  It is recorded because it says
-where the next theorem would come from, and because registering it before the
-fact is the only way it can later count as evidence at all.  It is not cited in
-any proof and no statement in this paper depends on it.
+\textbf{R4 remains in the historical record as a gate, and is now only partly
+superseded.}  Its similarity and eigenvalue-set components are superseded by
+Theorem~\ref{thm:sim} and Corollary~\ref{cor:eig}, which are proved and cited.
+Its multiplicity, ordered-list, reality and Perron-ratio observations remain
+numerical, are cited in no proof, and no statement in this paper depends on
+them.  The characteristic polynomial was never one of R4's components; it is a
+standard consequence of the similarity, and it is not formalised here either.
 
 Neither script lets an acceptance decision depend on a Python \texttt{assert};
 both are run in the ordinary and the \texttt{-O} interpreter modes, because
@@ -564,6 +568,38 @@ document cannot cite the commit that introduces it.  Every hyperlink was
 resolved against \texttt{\anchor} and checked to point at an actual declaration
 line, before compilation, again inside the compiled PDF, and again live over
 HTTP.
+
+\paragraph{The anchor is a curated replay, and the pre-registration is
+certified by blob identity rather than by ancestry.}  The source anchor was
+rebuilt from this campaign's base commit so that it would carry this paper's
+changes and nothing from a concurrent line of work sharing the same clone.  That
+purchase had a price, and it is disclosed rather than left to be discovered: the
+pre-registration commits --- \texttt{2392c080} for the site-bridge gate,
+\texttt{47d48fc2} for the reconstruction gate, \texttt{6e67629a} for this
+version's job-count prediction --- are \textbf{not ancestors} of the anchor.  A
+reader inspecting only the clean branch sees the judges and the Lean appear in
+one commit, which is not how it happened.
+
+The chronology is therefore certified by the original commits \emph{together
+with} the fact that the judge files in the anchor are byte-identical to the
+blobs that were pre-registered:
+\texttt{judge\_site\_bridge.py} at blob
+\texttt{bcfb0363edef76aa6873e057ad2081f2e11bebeb} and
+\texttt{judge\_os\_reconstruction.py} at blob
+\texttt{3e236e54d38dd263730bbedea368fbe232616428}, in the pre-registration
+commit and in the anchor alike.  That is checked, not asserted, by
+\repofile{scripts/verify\_prereg\_blobs.py}{scripts/verify\_prereg\_blobs.py},
+which also reports the absent ancestry rather than hiding it.
+
+\paragraph{What the build was, stated so that a green result cannot be read as
+more than it is.}  Everything was elaborated on \emph{one} fresh Git clone at
+the immutable anchor, using \emph{warm} pinned dependency and build artefacts:
+this is \textbf{not} a from-scratch build.  Because a warm \texttt{.lake} makes
+a green \texttt{lake build} unable to distinguish a re-elaborated module from
+one whose artefact already matched, the two modules of this paper are also
+elaborated \emph{directly}, by \texttt{lake env lean} on each source file,
+before the full-core integration build and the oracle run.  File digests are
+printed before those commands as well as after.
 
 Everything was elaborated on \emph{one} fresh Linux clone at that checkpoint,
 with the toolchain and the Mathlib revision pinned in the repository and

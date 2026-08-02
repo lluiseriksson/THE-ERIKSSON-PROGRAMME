@@ -935,8 +935,10 @@ import YangMills.OS.SpatialOS
 -- The operator the two reflected geometries FORCE.  Site form on the left of
 -- <u, T v>_site = <u, v>_bond, bond form on the right, because T advances the
 -- half-chain by one slice and so changes the parity of the separation.  It is
--- self-adjoint at every beta and positive for beta >= 0.  It is NOT proved here
--- to inherit the Perron eigenvalue or the gap, and there is no Hamiltonian.
+-- self-adjoint at every beta and positive for beta >= 0, and it is SIMILAR to
+-- the symmetrised kernel, so their eigenvalue SETS coincide.  It is NOT proved
+-- here to transport the Perron labelling, multiplicity or ratio, nor the
+-- spectral-gap statement, and there is no Hamiltonian.
 import YangMills.OS.SpatialReconstruction
 import YangMills.OS.SpatialRing
 
