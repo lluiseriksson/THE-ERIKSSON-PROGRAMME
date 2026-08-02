@@ -112,8 +112,9 @@ no-go is strengthened from the even-scale rate `8/L` to an all-scale
 side `L` while `N' > 0` is arbitrary but fixed; it is not an `N' -> infinity`
 claim.
 The standalone manuscript is now version 1.1 and makes this Fourier theorem
-the headline result.  The verified delivery PDF has SHA-256
-`290F3460EC0355518D3CC6BDA3B3AE86870ADA206742C0B903484530EB335324`;
+the headline result.  The verified delivery PDF, including the corrected
+Dimock bibliographic record, has SHA-256
+`B8E655D3F1253D0EA915BA54DF00A5C72F4CE5B5D229F74FE82EC152333EA726`;
 the companion source packet has SHA-256
 `AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132`.
 

@@ -29739,6 +29739,10 @@ promotes the Fourier witness to the main theorem, states the precise `L`
 versus `N'` quantifiers, adds a prior-art/domain-delta section, and records an
 immutable reproduction manifest.  The byte-identical paper and delivery PDFs
 have SHA-256
-`290F3460EC0355518D3CC6BDA3B3AE86870ADA206742C0B903484530EB335324`.
+`B8E655D3F1253D0EA915BA54DF00A5C72F4CE5B5D229F74FE82EC152333EA726`.
+The bibliography records J. Dimock, *Covariant axial gauge*, Letters in
+Mathematical Physics 105 (2015), 959--987,
+DOI `10.1007/s11005-015-0763-0`; the previously quoted AIP DOI was incorrect
+and is not present in the final PDF.
 The companion source packet under `output/pdf/` has SHA-256
 `AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132`.
