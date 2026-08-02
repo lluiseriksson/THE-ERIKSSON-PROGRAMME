@@ -30163,3 +30163,54 @@ distinguish a uniformly separated vacuum quotient from one approaching one and
 to locate the painful parameter direction.  It licenses no inequality,
 fermionic infrastructure, sector bound, or uniform theorem.  At the time of
 this addendum the probe has not run and no trend is claimed.
+
+## Addendum 590 (2026-08-02, **TASK 14: vacuum-ratio trend observed**)
+
+**OBSERVED RECONNAISSANCE, NOT A GATE OR PROOF.**  After the protocol in
+Addendum 589 was committed and pushed at raw SHA
+`4faee48887501629787943df0e3920534b586583`, the immutable probe SHA-256
+`db265e4d43ab7663bdbc261feb2737d2d1ca1c32ef61404f0b700e6b5c7933bd`
+was run in normal and optimized Python.  Both returned exit 0 in approximately
+0.63 s and 1.011755 s.  Their LF-terminated JSON outputs were byte-identical,
+SHA-256 `ff5f41ef489ccaa94a7a65ab73831d50de6be9dc23bed4954e5dd8eeabab4b20`,
+and explicitly classified themselves as `OBSERVED`, not PASS.  This was the
+same lightweight Python 3.12.6 / mpmath 1.3.0 Windows environment recorded in
+Addendum 588; no Lean, Lake, oracle, Colab, or sustained computation ran.
+
+At the fixed previous worst cell `beta = 2`, `gamma/a = 0.75`, the margin
+`1 - R_L` was monotonically decreasing over every sampled `L = 2,...,16,
+20,24,32,48`, and separately on the even and odd subsequences.  Its tail was:
+
+| `L` | `1 - R_L` |
+|---:|---:|
+| 16 | `3.7028772521857527449289927549530268702878582100482e-5` |
+| 20 | `1.0330783014165615525863302403679290968340782114393e-5` |
+| 24 | `2.9552020026750395286786056070512713367327247621144e-6` |
+| 32 | `2.5310363651576859960805871473241010871535383253346e-7` |
+| 48 | `2.0461899003602749476766513238280114673254730605707e-9` |
+
+The successive finite-difference slopes of `log(1-R_L)` per site were
+`-0.319141791473299360284720667593`,
+`-0.312890268033487917511991213416`,
+`-0.307190406471765896901378899623`, and
+`-0.301113722293828614833318350785`.  This is strong finite-size evidence for
+decay toward zero, not a uniform positive separation; it is not an asymptotic
+proof.
+
+The parameter scans locate both painful directions.  At `L = 48` and fixed
+`gamma/a = 0.75`, the margin decreased from
+`3.4089012690244581733046089552545781432026923832097e-5` at `beta = 0.125`
+to `1.2540172698663092948187890221895944049553465183567e-14` at `beta = 8`.
+At fixed `beta = 2`, it increased sharply with `gamma/a`: from
+`3.0084296639352087559393317349303579290547076899793e-51` at `gamma/a = 0.10`
+to `4.32701506311280137120657842086103227786846908030086e-4` at
+`gamma/a = 0.99`.  Thus large `L`, large `beta`, and approach to the decoupled
+`gamma/a = 0` edge make this vacuum quotient closest to one; the `q -> 1`
+boundary in the `gamma/a` direction does not.
+
+The methodological conclusion is limited but decisive: no proof may rely on a
+uniform positive lower bound for `1 - R_L`.  The scalar target must establish
+the exact order `R_L <= 1`, plausibly through an exact interlacing, product, or
+Fourier-sign argument.  This observation still proves no vacuum comparison,
+fermionic classification, odd/even sector estimate, or uniform spatial-ring
+bound.
