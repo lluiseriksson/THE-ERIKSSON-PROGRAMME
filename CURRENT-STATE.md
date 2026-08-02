@@ -17,6 +17,18 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
+**Latest viXra submission (2026-08-02; identifier pending moderation).**
+*Machine-Checked Extended Gauge Invariance at an SU(2) Crossing: Four-Edge
+Wilson Holonomy, Haar-Preserving Quotient Coordinates, and Reduction to the
+Ward Chart* was submitted as a new paper in **Physics — Mathematical
+Physics**.  Its authorized PDF has SHA-256
+`8A9B9356F1CFA3C2D69A9371BB62F01D243E7725D203F2726F31772A8B821D9E`.
+The exact submission metadata, retained audit-ZIP identity, and scope boundary
+are recorded in
+[`docs/SU2-CROSSING-EXTENDED-GAUGE-SUBMISSION-20260802.md`](docs/SU2-CROSSING-EXTENDED-GAUGE-SUBMISSION-20260802.md).
+This publication notice is result-neutral: it does not change the canonical
+proof state, the dashboard DAG, or the recorded distance to Clay.
+
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03

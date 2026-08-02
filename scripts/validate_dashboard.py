@@ -15,6 +15,7 @@ from __future__ import annotations
 import datetime as _dt
 import json
 import pathlib
+import re
 import sys
 from collections import Counter, deque
 from typing import Any
@@ -44,6 +45,17 @@ REQUIRED_META = {
 }
 REQUIRED_NODE = {"id", "label", "status", "cls", "group", "col", "row", "note"}
 REQUIRED_MILESTONES = {"M0", "M1", "M2", "M3", "M4", "M5"}
+REQUIRED_SUBMISSION = {
+    "id",
+    "date",
+    "status",
+    "title",
+    "category",
+    "record_path",
+    "pdf_sha256",
+    "zip_sha256",
+    "scope",
+}
 
 
 errors: list[str] = []
@@ -217,6 +229,42 @@ def validate_milestones(data: dict[str, Any], meta: dict[str, Any]) -> None:
         err("milestone M3 must remain explicitly CONDITIONAL while hRpoly is open")
 
 
+def validate_submissions(data: dict[str, Any]) -> list[dict[str, Any]]:
+    submissions_raw = require_list(data.get("submissions", []), "submissions")
+    submissions: list[dict[str, Any]] = []
+    ids: list[str] = []
+    for i, submission in enumerate(submissions_raw):
+        item = require_dict(submission, f"submissions[{i}]")
+        submissions.append(item)
+        missing = REQUIRED_SUBMISSION - item.keys()
+        for field in sorted(missing):
+            err(f"submissions[{i}]: missing field {field!r}")
+        sid = item.get("id")
+        if not isinstance(sid, str) or not sid:
+            err(f"submissions[{i}].id must be a nonempty string")
+        else:
+            ids.append(sid)
+        for field in ("status", "title", "category", "scope"):
+            if not isinstance(item.get(field), str) or not item.get(field):
+                err(f"submission {sid!r}: {field} must be a nonempty string")
+        try:
+            _dt.date.fromisoformat(str(item.get("date", "")))
+        except ValueError:
+            err(f"submission {sid!r}: date is not ISO: {item.get('date')!r}")
+        record_path = item.get("record_path")
+        if not isinstance(record_path, str) or not repo_path_exists(record_path):
+            err(f"submission {sid!r}: record_path does not exist: {record_path!r}")
+        for field in ("pdf_sha256", "zip_sha256"):
+            digest = item.get(field)
+            if not isinstance(digest, str) or re.fullmatch(r"[0-9A-Fa-f]{64}", digest) is None:
+                err(f"submission {sid!r}: {field} must be a 64-digit SHA-256")
+    counts = Counter(ids)
+    for sid, count in counts.items():
+        if count > 1:
+            err(f"duplicate submission id: {sid}")
+    return submissions
+
+
 def main() -> int:
     try:
         data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -230,6 +278,7 @@ def main() -> int:
     nodes = validate_nodes(data_obj, group_ids)
     validate_edges(data_obj, nodes)
     validate_milestones(data_obj, meta)
+    submissions = validate_submissions(data_obj)
 
     if errors:
         print(f"validate_dashboard: {len(errors)} problem(s)")
@@ -245,7 +294,8 @@ def main() -> int:
         f"({status_counts.get('proved', 0)} proved / "
         f"{status_counts.get('partial', 0)} partial / "
         f"{status_counts.get('open', 0)} open), "
-        f"{edge_count} edges, DAG acyclic, all linked paths exist."
+        f"{edge_count} edges, {len(submissions)} submission record(s), "
+        "DAG acyclic, all linked paths exist."
     )
     return 0
 

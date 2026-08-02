@@ -438,6 +438,24 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ---
 
+## Latest viXra submission
+
+**Submitted 2026-08-02; identifier pending moderation.**  The new paper
+*Machine-Checked Extended Gauge Invariance at an SU(2) Crossing: Four-Edge
+Wilson Holonomy, Haar-Preserving Quotient Coordinates, and Reduction to the
+Ward Chart* was submitted as a **new paper** in **Physics — Mathematical
+Physics**.  The authorized PDF has SHA-256
+`8A9B9356F1CFA3C2D69A9371BB62F01D243E7725D203F2726F31772A8B821D9E`;
+the Lean audit ZIP is retained separately.  See the
+[`submission record`](docs/SU2-CROSSING-EXTENDED-GAUGE-SUBMISSION-20260802.md)
+for the exact artifact identities, abstract, comments, and scope limits.
+
+This is an editorial/publication record, not a new proof-state node.  It does
+not change the dependency DAG, milestone states, or the recorded distance to
+the Clay problem.
+
+---
+
 ## Method
 
 The project advances in **campaigns**: a design document with a brick ladder
