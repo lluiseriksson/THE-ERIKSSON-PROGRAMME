@@ -1116,6 +1116,21 @@ root data, followed by the compression theorem.  The required norm chain is
         <= c^-1.
 ```
 
+The first equality and the scalar consequences of the last inequality are
+now isolated in
+`BalabanCMP116ConditionedRootScalarWall.lean` (PRE-VALIDATION).  In
+particular, the module derives both normalized terminal smallness conditions
+from the single visible input
+
+```text
+||conditionedCovariance|| <= c^-1.
+```
+
+This does **not** increase the `18/41` producer count: the physical middle
+comparison in the displayed chain is still absent.  The point of the module
+is to prevent that missing compression theorem from being confused with the
+subsequent one-variable arithmetic.
+
 After that bridge, and assuming the displayed rates are nonnegative, the
 first wall has the clean sufficient condition
 
