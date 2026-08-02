@@ -26480,3 +26480,29 @@ Thomas wall visible without discharging the still-input `mass_pos`.  The live
 consumer-facing numerator is therefore exactly 18/41.  No `TermSource`
 inhabitant is produced, and analytic Lemma-1 equation (1.36) remains a separate
 named input.
+
+## Addendum 530 (2026-08-02, **physical localized covariance upper bridge GREEN**)
+
+`BalabanCMP116InteractingConditionedCovariance.lean` was replayed together
+with its audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `141cbfe11c8566c4e917c460e86a34dfe47238dc`.  This is an
+intermediate leaf brick: no root build was required, and the runtime was
+disconnected and deleted immediately after the focal and audit completed.
+
+The cache gate materialized 8,142 files, the manifest remained unchanged,
+and Mathlib was pinned to
+`07642720480157414db592fa85b626dafb71355b`.  The focal build exited zero with
+`Build completed successfully (8474 jobs).` after 1231.383 seconds.  The
+audit exited zero after 34.388 seconds; all eleven declarations report
+exactly `[propext, Classical.choice, Quot.sound]`.  The complete runner exited
+zero after 1406.008 seconds with evidence SHA-256
+`5011a4bb91b2e489ffb74686537794a3e43318994c449c8b3a8a805a71092be3`.
+
+The verified module identifies the literal interacting inverse with its
+canonical physical coordinate matrix, compresses that covariance to the
+localized coordinates, reconstructs the positive spectral root as a physical
+endomorphism, proves the exact conditioned-root certificate, and derives
+`‖conditionedCovariance‖ ≤ coercivityConstant⁻¹`.  It closes only the upper
+physical part of map item 12b.  The strict lower nondegeneracy certificate
+remains open, groups 23--24 remain open, the live numerator remains exactly
+18/41, and no `TermSource` inhabitant is produced.

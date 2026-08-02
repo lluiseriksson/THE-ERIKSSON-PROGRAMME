@@ -2,10 +2,6 @@ import YangMills.RG.BalabanCMP116InteractingConditionedCovariance
 
 /-!
 # Axiom audit for the interacting conditioned covariance
-
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and none of the oracle outputs below has yet been verified by
-the Lean compiler.
 -/
 
 #print axioms YangMills.RG.cmp116PhysicalEndomorphismRealMatrix_toEuclideanCLM_apply

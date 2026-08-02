@@ -181,7 +181,7 @@ applicable label.
 | 10 | contour radius envelope (`radius_nonneg`, `radius_cap`) | open scalar/geometric envelope | tree |
 | 11 | contour contraction package (`Ahead_nonneg`, `rho_nonneg`, `rate_pos`, `shell_small`, `contour_series_small`, `neumann_small`, `neumann_transpose_small`) | partial physical producer; joint contraction is open | tree + corpus: CMP116 |
 | 12a | conditioned Gaussian root (`conditionedRoot`) | partial covariance producer; the abstract matrix square-root certificate is present | tree |
-| 12b | **localized covariance compression bridge** | **generic subpiece verified** in a fresh Colab clone at `f04b5cb9`: the finite-matrix construction `P_S C P_S` and its positive spectral root satisfy support, PSD, norm contraction, symmetry, and the exact root-square certificate.  The source for the upper physical subpiece is now present but **PRE-VALIDATION**: it identifies `C` with the canonical coordinate matrix of the literal interacting inverse, reconstructs the localized root as a physical endomorphism, and derives `‖P_S C P_S‖ ≤ coercivityConstant⁻¹`.  This does not change `18/41`.  The strict lower nondegeneracy certificate remains a separate open subpiece and must not be folded into scalar groups 23--24. | tree + absent: CMP99 [14] only for the remaining lower/nondegeneracy discharge |
+| 12b | **localized covariance compression bridge** | **upper bridge verified** in fresh Colab clones: the generic finite-matrix construction `P_S C P_S` and positive spectral root were checked at `f04b5cb9`; the physical specialization was checked at `141cbfe1`.  The latter identifies `C` with the canonical coordinate matrix of the literal interacting inverse, reconstructs the localized root as a physical endomorphism, proves the exact root certificate, and derives `‖P_S C P_S‖ ≤ coercivityConstant⁻¹`.  This does not change `18/41`.  The strict lower nondegeneracy certificate remains a separate open subpiece and must not be folded into scalar groups 23--24. | tree + absent: CMP99 [14] only for the remaining lower/nondegeneracy discharge |
 | 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | open and mandatory; a degenerate root is not admissible | tree, downstream of group 2 |
 | 14 | sigma Cauchy-radius normalization (`deltaRadius_eq`) | open equality against the installed base contour | tree |
 | 15 | cardinality normalization (`normalizedGap`) | open equality in the source convention | tree |
@@ -1135,10 +1135,30 @@ conditions from the single visible input
 ||conditionedCovariance|| <= c^-1.
 ```
 
-This does **not** increase the `18/41` producer count: the physical middle
-comparison in the displayed chain is still absent.  The point of the module
-is to prevent that missing compression theorem from being confused with the
-subsequent one-variable arithmetic.
+The physical upper bridge is now supplied by
+`BalabanCMP116InteractingConditionedCovariance.lean`.  Starting from the
+literal interacting precision, it constructs the canonical covariance
+matrix, compresses it to the localized coordinates, reconstructs its positive
+spectral root as a physical endomorphism, and proves both the exact root
+certificate and
+
+```text
+||conditionedCovariance|| <= c^-1.
+```
+
+This specialization was validated in one fresh Colab CPU/high-RAM clone at
+source checkpoint `141cbfe11c8566c4e917c460e86a34dfe47238dc`.
+The focal target completed with 8474 jobs in 1231.383 seconds; its eleven
+audit declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The complete stop-on-first-error run exited zero after 1406.008 seconds and
+produced evidence SHA-256
+`5011a4bb91b2e489ffb74686537794a3e43318994c449c8b3a8a805a71092be3`.
+
+This still does **not** increase the `18/41` producer count.  The strict lower
+nondegeneracy certificate is a separate obligation, and the verified generic
+and physical upper bridges do not manufacture it.  Keeping row 12b separate
+prevents groups 23--24 from being misread as scalar arithmetic that is already
+physically instantiable.
 
 After that bridge, and assuming the displayed rates are nonnegative, the
 first wall has the clean sufficient condition

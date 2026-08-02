@@ -12,10 +12,6 @@ import YangMills.RG.BalabanCMP99SourceEq3126PhysicalH
 /-!
 # The physical interacting conditioned covariance
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and none of the results in this module has yet been verified by
-the Lean compiler.
-
 The conditioned covariance in the terminal CMP116 Gaussian is not an
 independent matrix.  Starting from the literal interacting precision `K`, this
 module takes its coercively generated inverse `C = K⁻¹`, transports `C` through
