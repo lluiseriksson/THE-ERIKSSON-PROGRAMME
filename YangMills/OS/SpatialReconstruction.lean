@@ -1159,6 +1159,217 @@ theorem exists_contraction_constant {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     fun c hc => perron_constant_minimal hw β hΩ heig hc,
     fun c hc0 hc => perron_norm_constant_minimal hw β hΩ hlam.le hc0 heig hc⟩
 
+/-! ### §7d  COERCIVITY at `β > 0`, and the constant carries the weight
+
+The upper bound says `T` is not too big.  A Hamiltonian needs the other side:
+`T` bounded BELOW away from zero, so that `T/lam` is invertible and its
+logarithm can be discussed.  That is what this section proves, for `β > 0`.
+
+The mechanism is the one-site decomposition
+
+    M = 2·sinh(β)·I + e^{-β}·J ,      J the all-ones block,
+
+whose `I` part survives every tensor factor while the rest stays positive
+semidefinite.  Rather than expanding over subsets, the induction reuses the
+even/odd split this lane already uses for positive semidefiniteness: the two
+halves are recombined with `Z = e^β + e^{-β}` and `D = e^β − e^{-β}`, and
+`D ≤ Z` turns the recombination into a lower bound.
+
+AND THE PHYSICAL CONSTANT IS NOT `D^L`.  An external reading caught this: the
+physical norm is WEIGHTED, `siteQ w u = ∑ |u σ|²/w σ`, so passing from the
+Euclidean bound to a `siteQ` bound costs a factor `min w`, which is positive
+because the configuration space is finite.  The coercivity constant is
+
+    D^L · min_σ w(σ) ,
+
+not `D^L`.  Writing `D^L` would have claimed a bound that is false for weights
+smaller than one. -/
+
+/-- **THE DECOUPLED KERNEL IS COERCIVE**, with constant `(e^β − e^{-β})^L`.
+Strictly positive exactly when `β > 0`; at `β = 0` it degenerates to `0`, which
+is correct --- the kernel has null modes there. -/
+theorem spatialKernel_coercive {β : ℝ} (hβ : 0 ≤ β) :
+    ∀ (L : ℕ) (u : (Fin L → Fin 2) → ℝ),
+      (Real.exp β - Real.exp (-β)) ^ L * (∑ σ, u σ ^ 2)
+        ≤ ∑ σ, u σ * act (spatialKernel β) u σ := by
+  intro L
+  induction L with
+  | zero =>
+    intro u
+    have hone : ∀ σ : Fin 0 → Fin 2, act (spatialKernel β) u σ = u σ := by
+      intro σ
+      show (∑ τ, spatialKernel β σ τ * u τ) = u σ
+      have hsingle : ∑ τ : Fin 0 → Fin 2, spatialKernel β σ τ * u τ
+          = spatialKernel β σ σ * u σ :=
+        Finset.sum_eq_single σ
+          (fun b _ hb => absurd (Subsingleton.elim b σ) hb)
+          (fun h => absurd (Finset.mem_univ σ) h)
+      rw [hsingle]
+      show (∏ _j : Fin 0, _) * u σ = u σ
+      simp
+    rw [Finset.sum_congr rfl fun σ _ => by rw [hone σ]]
+    rw [pow_zero, one_mul]
+    exact le_of_eq (Finset.sum_congr rfl fun σ _ => by ring)
+  | succ L ih =>
+    intro u
+    have hD : (0:ℝ) ≤ Real.exp β - Real.exp (-β) :=
+      sub_nonneg.mpr (Real.exp_le_exp.mpr (by linarith))
+    have hZ : (0:ℝ) < z2Norm β := z2Norm_pos β
+    have hZD : Real.exp β - Real.exp (-β) ≤ z2Norm β := by
+      unfold z2Norm
+      nlinarith [Real.exp_pos (-β)]
+    have hP := ih (fun τ => u (Fin.cons 0 τ) + u (Fin.cons 1 τ))
+    have hM := ih (fun τ => u (Fin.cons 0 τ) - u (Fin.cons 1 τ))
+    rw [act_add (spatialKernel β)] at hP
+    rw [act_sub (spatialKernel β)] at hM
+    simp only [] at hP hM
+    rw [sum_cons_config (fun σ => u σ * act (spatialKernel β) u σ),
+      Fin.sum_univ_two]
+    simp only [act_spatialKernel_cons, z2Bond_same,
+      z2Bond_ne (by decide : (0:Fin 2) ≠ 1), z2Bond_ne (by decide : (1:Fin 2) ≠ 0)]
+    set A0 := act (spatialKernel β) (fun τ => u (Fin.cons 0 τ)) with hA0
+    set A1 := act (spatialKernel β) (fun τ => u (Fin.cons 1 τ)) with hA1
+    set SP := ∑ τ : Fin L → Fin 2,
+      (u (Fin.cons 0 τ) + u (Fin.cons 1 τ)) * (A0 τ + A1 τ) with hSP
+    set SM := ∑ τ : Fin L → Fin 2,
+      (u (Fin.cons 0 τ) - u (Fin.cons 1 τ)) * (A0 τ - A1 τ) with hSM
+    have hkey : (∑ τ : Fin L → Fin 2,
+          u (Fin.cons 0 τ) * (Real.exp β * A0 τ + Real.exp (-β) * A1 τ))
+        + (∑ τ : Fin L → Fin 2,
+          u (Fin.cons 1 τ) * (Real.exp (-β) * A0 τ + Real.exp β * A1 τ))
+        = (z2Norm β * SP + (Real.exp β - Real.exp (-β)) * SM) / 2 := by
+      rw [← Finset.sum_add_distrib, hSP, hSM, Finset.mul_sum, Finset.mul_sum,
+        ← Finset.sum_add_distrib, Finset.sum_div]
+      refine Finset.sum_congr rfl fun τ _ => ?_
+      unfold z2Norm
+      ring
+    rw [hkey]
+    set D : ℝ := Real.exp β - Real.exp (-β) with hDdef
+    set QP := ∑ τ : Fin L → Fin 2,
+      (u (Fin.cons 0 τ) + u (Fin.cons 1 τ)) ^ 2 with hQP
+    set QM := ∑ τ : Fin L → Fin 2,
+      (u (Fin.cons 0 τ) - u (Fin.cons 1 τ)) ^ 2 with hQM
+    have hsplit : (∑ σ : Fin (L + 1) → Fin 2, u σ ^ 2)
+        = (∑ τ : Fin L → Fin 2, u (Fin.cons 0 τ) ^ 2)
+          + ∑ τ : Fin L → Fin 2, u (Fin.cons 1 τ) ^ 2 := by
+      rw [sum_cons_config (fun σ => u σ ^ 2), Fin.sum_univ_two]
+    have hpar : QP + QM
+        = 2 * ((∑ τ : Fin L → Fin 2, u (Fin.cons 0 τ) ^ 2)
+            + ∑ τ : Fin L → Fin 2, u (Fin.cons 1 τ) ^ 2) := by
+      rw [hQP, hQM, ← Finset.sum_add_distrib, Finset.mul_add,
+        ← Finset.sum_add_distrib, Finset.mul_sum, Finset.mul_sum,
+        ← Finset.sum_add_distrib]
+      exact Finset.sum_congr rfl fun τ _ => by ring
+    -- the two halves, each bounded below by the induction hypothesis
+    have hPlow : D ^ L * QP ≤ SP := hP
+    have hMlow : D ^ L * QM ≤ SM := hM
+    have hDL : (0:ℝ) ≤ D ^ L := pow_nonneg hD L
+    have hZP : z2Norm β * (D ^ L * QP) ≤ z2Norm β * SP :=
+      mul_le_mul_of_nonneg_left hPlow hZ.le
+    have hDM : D * (D ^ L * QM) ≤ D * SM := mul_le_mul_of_nonneg_left hMlow hD
+    have hQPnn : (0:ℝ) ≤ QP :=
+      Finset.sum_nonneg fun τ _ => sq_nonneg _
+    have hDZ : D * (D ^ L * QP) ≤ z2Norm β * (D ^ L * QP) :=
+      mul_le_mul_of_nonneg_right hZD (mul_nonneg hDL hQPnn)
+    have hfinal : D ^ (L + 1) * (∑ σ : Fin (L + 1) → Fin 2, u σ ^ 2)
+        ≤ (D * (D ^ L * QP) + D * (D ^ L * QM)) / 2 := by
+      rw [hsplit, pow_succ]
+      nlinarith [hpar, hDL, hD]
+    linarith [hfinal, hZP, hDM, hDZ]
+
+/-! The physical assembly: the Euclidean coercivity, the weight floor, and the
+bound the Hamiltonian route needs. -/
+
+/-- The smallest weight, and it is positive because there are finitely many
+configurations.  This is the factor the physical constant carries and the
+Euclidean one does not. -/
+noncomputable def minWeight {L : ℕ} (w : (Fin L → Fin 2) → ℝ) : ℝ :=
+  Finset.univ.inf' ⟨Classical.arbitrary _, Finset.mem_univ _⟩ w
+
+theorem minWeight_pos {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ) :
+    0 < minWeight w := by
+  unfold minWeight
+  rw [Finset.lt_inf'_iff]
+  exact fun σ _ => hw σ
+
+theorem minWeight_le {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (σ : Fin L → Fin 2) :
+    minWeight w ≤ w σ :=
+  Finset.inf'_le _ (Finset.mem_univ σ)
+
+/-- **THE COERCIVITY, IN THE PHYSICAL NORM.**  For `β > 0` the reflected bond
+form is bounded below by a strictly positive multiple of the physical squared
+norm.  The constant carries `min w`: the physical norm is weighted, and passing
+from a Euclidean bound to a `siteQ` bound costs exactly that factor. -/
+theorem bondQ_ge_siteQ {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ)
+    {β : ℝ} (hβ : 0 ≤ β) (u : (Fin L → Fin 2) → ℂ) :
+    (Real.exp β - Real.exp (-β)) ^ L * minWeight w * siteQ w u ≤ bondQ β u := by
+  have hDL : (0:ℝ) ≤ (Real.exp β - Real.exp (-β)) ^ L :=
+    pow_nonneg (sub_nonneg.mpr (Real.exp_le_exp.mpr (by linarith))) L
+  have hquad : ∀ y : (Fin L → Fin 2) → ℝ,
+      (Real.exp β - Real.exp (-β)) ^ L * (∑ σ, y σ ^ 2)
+        ≤ ∑ σ, ∑ τ, spatialKernel β σ τ * (y σ * y τ) := by
+    intro y
+    have h := spatialKernel_coercive hβ L y
+    have hrw : (∑ σ, y σ * act (spatialKernel β) y σ)
+        = ∑ σ, ∑ τ, spatialKernel β σ τ * (y σ * y τ) := by
+      unfold act
+      refine Finset.sum_congr rfl fun σ _ => ?_
+      rw [Finset.mul_sum]
+      exact Finset.sum_congr rfl fun τ _ => by ring
+    rw [hrw] at h
+    exact h
+  have hfloor : ∀ y : (Fin L → Fin 2) → ℝ,
+      minWeight w * (∑ σ, y σ ^ 2 / w σ) ≤ ∑ σ, y σ ^ 2 := by
+    intro y
+    rw [Finset.mul_sum]
+    refine Finset.sum_le_sum fun σ _ => ?_
+    rw [div_le_iff₀ (hw σ)] at *
+    have hnn : (0:ℝ) ≤ y σ ^ 2 / w σ := div_nonneg (sq_nonneg _) (hw σ).le
+    have : minWeight w * (y σ ^ 2 / w σ) ≤ w σ * (y σ ^ 2 / w σ) :=
+      mul_le_mul_of_nonneg_right (minWeight_le w σ) hnn
+    calc minWeight w * (y σ ^ 2 / w σ) ≤ w σ * (y σ ^ 2 / w σ) := this
+      _ = y σ ^ 2 := by field_simp
+  have hre := hquad (fun σ => (u σ).re)
+  have him := hquad (fun σ => (u σ).im)
+  have hfre := hfloor (fun σ => (u σ).re)
+  have hfim := hfloor (fun σ => (u σ).im)
+  have hsq : siteQ w u = (∑ σ, (u σ).re ^ 2 / w σ)
+      + ∑ σ, (u σ).im ^ 2 / w σ := by
+    unfold siteQ
+    rw [← Finset.sum_add_distrib]
+    refine Finset.sum_congr rfl fun σ _ => ?_
+    rw [Complex.normSq_apply]
+    field_simp
+    ring
+  unfold bondQ
+  rw [hsq]
+  nlinarith [hre, him, hfre, hfim, hDL, minWeight_pos hw]
+
+/-- **THE NORMALISED OPERATOR IS BOUNDED BELOW**, and therefore injective, for
+`β > 0`.  This is the ingredient a Hamiltonian needs and the previous version
+did not have: `T/lam` is not merely a contraction but a contraction bounded away
+from zero, so its logarithm is a meaningful object to seek.  The logarithm
+itself is NOT constructed here. -/
+theorem transferOp_coercive {L : ℕ} {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ)
+    {β : ℝ} (hβ : 0 < β) {Ω : (Fin L → Fin 2) → ℝ} (hΩ : ∀ σ, 0 < Ω σ)
+    {lam : ℝ}
+    (heig : ∀ σ, (∑ τ : Fin L → Fin 2, symWeighted w β σ τ * Ω τ) = lam * Ω σ)
+    (u : (Fin L → Fin 2) → ℂ) :
+    (Real.exp β - Real.exp (-β)) ^ L * minWeight w * siteQ w u
+      ≤ bondQ β u ∧ bondQ β u ≤ lam * siteQ w u :=
+  ⟨bondQ_ge_siteQ hw hβ.le u, transferOp_le_perron hw β hΩ heig u⟩
+
+/-- The coercivity constant is STRICTLY positive exactly when `β > 0`, which is
+what makes the two-sided bound useful.  At `β = 0` it is zero, and that is not
+a defect of the proof: the kernel really does have null modes there. -/
+theorem coercivity_constant_pos {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) :
+    0 < (Real.exp β - Real.exp (-β)) ^ L * minWeight w := by
+  have hD : (0:ℝ) < Real.exp β - Real.exp (-β) := by
+    have : Real.exp (-β) < Real.exp β := Real.exp_lt_exp.mpr (by linarith)
+    linarith
+  exact mul_pos (pow_pos hD L) (minWeight_pos hw)
+
 /-! ## §8  The physical space as a quotient, packaged
 
 v1.0 proved the collapse surjective and then said, in prose, that the null space

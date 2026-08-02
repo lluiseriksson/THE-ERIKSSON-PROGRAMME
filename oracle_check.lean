@@ -3195,6 +3195,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.transferOp_perron_eigen
 #print axioms YangMills.OS.siteQ_transferOp_perron
 #print axioms YangMills.OS.perron_norm_constant_minimal
+#print axioms YangMills.OS.spatialKernel_coercive
+#print axioms YangMills.OS.minWeight
+#print axioms YangMills.OS.minWeight_pos
+#print axioms YangMills.OS.minWeight_le
+#print axioms YangMills.OS.bondQ_ge_siteQ
+#print axioms YangMills.OS.transferOp_coercive
+#print axioms YangMills.OS.coercivity_constant_pos
 #print axioms YangMills.OS.collapseL
 #print axioms YangMills.OS.collapseL_apply
 #print axioms YangMills.OS.collapseL_surjective
