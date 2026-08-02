@@ -82,9 +82,22 @@ algebra, and standard is not the same as present.
 
 ## What is NOT here
 
-No Hamiltonian, and no contraction bound: `transferOp_eigen_of_symWeighted`
-transports eigenvectors, but `‖T‖ ≤ λ` is a statement about all vectors and is
-not proved.  No thermodynamic limit and no continuum.
+This paragraph said "no contraction bound" for several versions after the bound
+was proved, which is the same defect as an overclaim with the sign reversed: a
+module describing itself as weaker than it is.  What is actually here now:
+
+* the EXACT physical operator norm is the Perron value, at every `β` ---
+  `siteQ_transferOp_le` bounds it, `siteQ_transferOp_perron` attains it, and
+  `perron_norm_constant_minimal` makes it minimal;
+* for `β > 0` the operator is COERCIVE (`bondQ_ge_siteQ`), hence injective and
+  invertible (`transferEquiv`), and the normalised operator is squeezed between
+  a strictly positive scalar and the identity (`normalised_two_sided`).
+
+What is genuinely NOT here: no Hamiltonian and no functional calculus ---
+`H = -log(T/lam)` is now a meaningful object to SEEK, bounded, bounded away
+from zero and invertible, but it is not built.  No spectral gap statement for
+`T`.  No thermodynamic limit and no continuum.  Nothing at `β = 0`, where the
+coercivity constant vanishes for `L > 0` and the degeneracy is real.
 
 And the mathematics is not new.  Reflection positivity for Ising-type measures,
 through sites and through bonds, is classical --- Osterwalder--Schrader, and
@@ -1533,8 +1546,69 @@ noncomputable def normalisedTransferOpL {L : ℕ} (w : (Fin L → Fin 2) → ℝ
     (β lam : ℝ) (u : (Fin L → Fin 2) → ℂ) :
     normalisedTransferOpL w β lam u = ((lam : ℂ))⁻¹ • transferOp w β u := rfl
 
+/-- The physical form is linear in its second argument. -/
+theorem siteForm_smul_right {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (c : ℂ)
+    (u x : (Fin L → Fin 2) → ℂ) :
+    siteForm w u (c • x) = c * siteForm w u x := by
+  unfold siteForm
+  rw [Finset.mul_sum]
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  show (starRingEnd ℂ) (u σ) * (c * x σ) * ((1 / w σ : ℝ) : ℂ) = _
+  ring
+
+/-- **THE BRIDGE FROM THE OBJECT TO ITS FORM.**  Without this, the module
+contains a definition of `T/lam` and, separately, an inequality about
+`bondQ / lam`, with nothing saying they are the same thing.  An external reading
+was right that "literally" was not yet earned. -/
+theorem siteForm_normalisedTransferOpL {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β lam : ℝ) (u v : (Fin L → Fin 2) → ℂ) :
+    siteForm w u (normalisedTransferOpL w β lam v)
+      = ((lam : ℂ))⁻¹ * bondForm β u v := by
+  show siteForm w u (((lam : ℂ))⁻¹ • transferOp w β v) = _
+  rw [siteForm_smul_right, siteForm_transferOp hw]
+
+/-- And on the diagonal: the quadratic form of the normalised operator IS the
+quotient the two-sided bound is about. -/
+theorem siteForm_normalisedTransferOpL_self {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) {lam : ℝ} (hlam : 0 < lam)
+    (u : (Fin L → Fin 2) → ℂ) :
+    siteForm w u (normalisedTransferOpL w β lam u)
+      = ((bondQ β u / lam : ℝ) : ℂ) := by
+  rw [siteForm_normalisedTransferOpL hw β lam u u, bondForm_self_eq_bondQ]
+  push_cast
+  rw [div_eq_inv_mul]
+
+/-- The normalised operator inherits bijectivity, provided `lam ≠ 0`.  Stated
+because the definition accepts any `lam` --- at `lam = 0` the field convention
+`0⁻¹ = 0` makes it the zero map, and an object that silently degenerates is not
+one a functional calculus should be handed. -/
+theorem normalisedTransferOpL_bijective {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) {lam : ℝ} (hlam : 0 < lam) :
+    Function.Bijective (normalisedTransferOpL w β lam) := by
+  have hne : ((lam : ℂ))⁻¹ ≠ 0 :=
+    inv_ne_zero (Complex.ofReal_ne_zero.mpr hlam.ne')
+  have hinj : Function.Injective (normalisedTransferOpL w β lam) := by
+    intro u v huv
+    refine transferOpL_injective hw hβ ?_
+    funext σ
+    have hσ := congrFun huv σ
+    show transferOp w β u σ = transferOp w β v σ
+    have h' : ((lam : ℂ))⁻¹ * transferOp w β u σ
+        = ((lam : ℂ))⁻¹ * transferOp w β v σ := hσ
+    exact mul_left_cancel₀ hne h'
+  exact ⟨hinj, LinearMap.injective_iff_surjective.mp hinj⟩
+
+/-- The normalised operator as an isomorphism. -/
+noncomputable def normalisedTransferEquiv {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) {lam : ℝ} (hlam : 0 < lam) :
+    ((Fin L → Fin 2) → ℂ) ≃ₗ[ℂ] ((Fin L → Fin 2) → ℂ) :=
+  LinearEquiv.ofBijective (normalisedTransferOpL w β lam)
+    (normalisedTransferOpL_bijective hw hβ hlam)
+
 /-- **`(a/lam)·I ≤ T/lam ≤ I`**, literally: the normalised two-sided bound the
-previous section's title claimed before the division existed. -/
+previous section's title claimed before the division existed.  With
+`siteForm_normalisedTransferOpL_self` the middle term is the quadratic form of
+the normalised OBJECT, not merely a quotient of numbers. -/
 theorem normalised_two_sided {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
     (hw : ∀ σ, 0 < w σ) {β : ℝ} (hβ : 0 < β) {Ω : (Fin L → Fin 2) → ℝ}
     (hΩ : ∀ σ, 0 < Ω σ) {lam : ℝ} (hlam : 0 < lam)

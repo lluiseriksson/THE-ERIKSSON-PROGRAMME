@@ -82,8 +82,18 @@ Perron-ratio components of the corresponding pre-registered gate, and the
 characteristic-polynomial \emph{consequence} of the similarity, are
 \textbf{not} formalised here.
 
-\textbf{What is not here.}  No Hamiltonian, no spectral gap statement for $T$,
-no norm or contraction bound, no infinite volume, no continuum, no gauge theory.
+\textbf{On the size of the operator.}  The physical operator norm of $T$ is
+\emph{exactly} the Perron eigenvalue $\lambda$, at every $\beta$: bounded,
+attained, and minimal, all three machine-checked.  For $\beta>0$ the operator is
+moreover coercive, with explicit constant
+$(e^\beta-e^{-\beta})^L\min_\sigma w(\sigma)$, hence injective and invertible,
+so $T/\lambda$ is squeezed between a strictly positive scalar and the identity.
+
+\textbf{What is not here.}  No Hamiltonian and no functional calculus:
+$H=-\log(T/\lambda)$ is now a meaningful object to seek, and it is not built.
+No spectral gap statement for $T$, no infinite volume, no continuum, no gauge
+theory, and nothing at $\beta=0$, where for $L>0$ the coercivity constant
+vanishes and the degeneracy is real.
 
 \textbf{The mathematics is not new.}  Reflection positivity for Ising-type
 measures, through sites and through bonds, and its transfer-matrix reading, are
@@ -117,9 +127,11 @@ similarity with the symmetrised kernel is proved (Section~\ref{sec:spec}), and
 with it the equality of eigenvalue \emph{sets}; but the Perron labelling, the
 ratio to the Perron eigenvalue, multiplicities, ordered spectral data and
 reality are \emph{not} formalised, and neither is a spectral gap statement for
-$T$.  There is no norm or contraction bound.  There is no thermodynamic limit
-and no continuum limit.  The system is a finite coupled $\Z_2$ slice, and every
-statement below is a statement about it.
+$T$.  The norm \emph{is} controlled --- exactly, see
+Section~\ref{sec:contraction} --- but no Hamiltonian and no functional calculus
+are built.  There is no thermodynamic limit and no continuum limit.  The system
+is a finite coupled $\Z_2$ slice, and every statement below is a statement about
+it.
 
 \paragraph{On novelty, stated at the front rather than at the back.}  The
 mathematics is classical.  Reflection positivity for Ising-type measures through
@@ -492,6 +504,42 @@ both are run in the ordinary and the \texttt{-O} interpreter modes, because
 \texttt{-O} deletes assertions and this repository has twice emitted a false
 \textsc{pass} that way.
 
+\section{The size of the operator}\label{sec:contraction}
+
+The reconstruction so far leaves the size of $T$ unknown.  This section closes
+that, with the sharp constant and, for $eta>0$, on both sides.
+
+egin{theorem}[sharp bound, attained, minimal]\label{thm:norm}
+Let $\Omega>0$ and $\lambda$ be Perron data for the symmetrised kernel.  Then
+$\lVert TuVert_{\mathrm{site}}\le\lambda\lVert uVert_{\mathrm{site}}$ for
+every $u$ and every $eta$; equality holds at $u=\sqrt w\,\Omega$; and any
+$c\ge0$ with the same property satisfies $\lambda\le c$.
+\end{theorem}
+
+The proof is a weighted Cauchy--Schwarz in which the Perron vector is not a
+bound but the \emph{weight} that makes an elementary inequality tight.  No
+spectral theory is used, and no operator semidefiniteness is assumed --- only
+entrywise non-negativity --- which is why the statement survives at $eta<0$
+where positivity of $T$ is unavailable.  The existence of the Perron data is
+discharged from this lane's own Perron--Frobenius, so the statement is
+unconditional.
+
+egin{theorem}[coercivity]\label{thm:coercive}
+For $eta>0$, $\langle u,Tuangle_{\mathrm{site}}\ge
+(e^eta-e^{-eta})^Ligl(\min_\sigma w(\sigma)igr)\lVert
+uVert_{\mathrm{site}}^2$.
+\end{theorem}
+
+The factor $\min_\sigma w(\sigma)$ is not decoration: the physical norm is
+weighted, so passing from a Euclidean bound to this one costs exactly that
+factor, and omitting it would state something false for weights below one.  The
+constant vanishes at $eta=0$ when $L>0$, which is correct --- the kernel is
+degenerate there --- and equals $\min w>0$ when $L=0$ at every $eta$.
+
+Consequently $T$ is injective and invertible for $eta>0$, and
+$(a/\lambda)I\le T/\lambda\le I$ with $a>0$.  What this removes is the
+normalisation obstacle before a functional calculus; it does not build one.
+
 \section{What is open}\label{sec:open}
 
 \begin{enumerate}
@@ -501,8 +549,13 @@ eigenvalue sets (Corollary~\ref{cor:eig}).  It is the formal transport of
 multiplicities, ordered spectral data, reality, and the Perron labelling and
 ratio --- and, resting on those, the spectral-gap statement that earlier work in
 this lane proves for the symmetrised kernel.  None of it is transported here.
-\item \textbf{No contraction bound.}  Consequently there is no $\|T\|\le\lambda$
-statement, and therefore no $H=-\log(T/\lambda)$ and no Hamiltonian.
+\item \textbf{No Hamiltonian, and no functional calculus.}  This item used to
+read ``no contraction bound''.  That is no longer true and the paper says so in
+Section~\ref{sec:contraction}: $\|T\|_{\mathrm{site}}=\lambda$ exactly, and for
+$\beta>0$ the operator is coercive and invertible.  What remains open is the
+next step, not this one: $H=-\log(T/\lambda)$ is a meaningful object to seek and
+is not constructed, and neither the spectral calculus nor a Hilbert-space
+packaging of the physical metric is present.
 \item \textbf{No thermodynamic limit.}  Every constant here may depend on $L$
 and on $m$.  Uniformity in the extent is a separate and open question for the
 coupled kernel.  We note only that with a ring source weight the symmetrised
