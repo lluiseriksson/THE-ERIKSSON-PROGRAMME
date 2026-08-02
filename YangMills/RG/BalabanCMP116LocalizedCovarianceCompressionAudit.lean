@@ -8,8 +8,11 @@ import YangMills.RG.BalabanCMP116LocalizedCovarianceCompression
 /-!
 # Axiom audit for localized covariance compression
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and none of the oracle outputs below is compiler-verified.
+Validated from a fresh Colab high-RAM CPU clone at source SHA
+`f04b5cb9937b12ca412ab21be5e1c35780c01836`: all six oracle outputs below
+were restricted to `{propext, Classical.choice, Quot.sound}`.  Evidence
+SHA-256:
+`eb474ba299c08ba24d105b66a612eb6b1b93a92236bac1a45ce682d8980d68c3`.
 -/
 
 #print axioms YangMills.RG.cmp116Eq223CoordinateProjection_transpose
