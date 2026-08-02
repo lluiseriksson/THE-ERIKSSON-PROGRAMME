@@ -31350,3 +31350,41 @@ comparison through the scalar log mixture, or prove the physical vacuum
 quotient order.  Neither sharp odd-sector bound nor even non-Perron bound is
 proved; the original `beta = 0` endpoint and uniform `specRatio` theorem also
 remain open.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 620 (2026-08-02, **TASK 14: first angular log-kernel elaboration failed**)
+
+**MEASURED FAILURE; NO NEW THEOREM CERTIFIED.**  The first Lean attempt at
+`circle_log_kernel_factorization` and `circle_log_kernel_eq_log_norm` was
+committed and pushed before execution at raw SHA
+`d0b9e340df0cf2c5ec4a51a134385c2eddf795c7`.  A fresh public clone at that
+exact SHA ran in a Colab CPU/high-RAM runtime with no GPU: Linux `6.6.122+`,
+x86-64, glibc `2.35`, Python `3.12.13`, 8 Intel Xeon 2.20 GHz CPUs, and
+`MemTotal: 53467192 kB`.  The run started at
+`2026-08-02T12:03:09.041743+00:00`; the Colab cell reported `322.033 s`.
+
+The harness verified Lean `leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib
+`07642720480157414db592fa85b626dafb71355b`.  The downloaded elan installer
+had SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+Isolated official cache acquisition exited zero after `110.780808 s`; the
+sole build command, `lake build YangMills.OS.SpatialVacuum`, exited `1` after
+`184.350308 s`.
+
+Lean reported two local proof-script failures:
+
+- line 293: `No goals to be solved`; `field_simp` had already closed the
+  rational factorisation, so the following standalone `ring` was redundant;
+- line 319: `rw [← hfac]` could not find the quotient
+  `‖1 - xz‖^2 / (1-x)^2` inside the target `0 < ‖1 - xz‖^2`.  Positivity must
+  first be established for the quotient using `hfac`, then transferred to
+  the numerator through the strictly positive denominator `(1-x)^2`.
+
+Thus the run found no false scalar identity and no failed sign condition; it
+only exposed one closed-goal script error and one incorrectly targeted
+rewrite.  The fail-fast cell raised before writing or downloading its
+transcript file, so no transcript hash is claimed; the complete diagnostic
+was captured through the browser.  No core build or oracle ran, no PASS is
+claimed, and neither vacuum comparison nor spectral-sector obligation is
+affected.  The runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
