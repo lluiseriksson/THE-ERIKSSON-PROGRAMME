@@ -1,0 +1,2 @@
+file:.git/config	false
+file:.git/config	lf

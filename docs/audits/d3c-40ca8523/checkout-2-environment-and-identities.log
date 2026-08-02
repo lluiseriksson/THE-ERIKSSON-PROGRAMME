@@ -1,0 +1,29 @@
+=== environment identity ===
+Linux LluisPC 5.15.167.4-microsoft-standard-WSL2 #1 SMP Tue Nov 5 00:21:55 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+git version 2.43.0
+elan present: no
+lake present: no
+=== git config in this checkout ===
+core.autocrlf <unset>
+core.eol <unset>
+=== identities ===
+commit=40ca85239cb14f18ebf16aa46769f3bc02bbaf6b
+blob=3fe356cc97e57f2d241158b692e6b8a3acece83a
+working_blob=3fe356cc97e57f2d241158b692e6b8a3acece83a
+canonical=698080fa80ea44d2f1ae7b46cab333b5d0d6f4b97d205df2844db69d510017ea
+materialized=698080fa80ea44d2f1ae7b46cab333b5d0d6f4b97d205df2844db69d510017ea
+=== status / diff / attrs ===
+(status end)
+diff: clean
+(attr end)
+=== gates ===
+OK commit == A
+OK blob == 3fe356cc
+OK RAW EQUALITY
+OK canonical == materialized
+OK SHA-256 REPRODUCED: 698080fa
+
+Lean build      NOT RUN
+Axiom audit     NOT RUN
+Warning policy  NOT EXERCISED
+CHECKOUT 2 IDENTITY PASSED

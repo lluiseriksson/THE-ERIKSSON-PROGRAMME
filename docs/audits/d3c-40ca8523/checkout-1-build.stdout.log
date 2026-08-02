@@ -1,0 +1,9 @@
+⚠ [8158/8159] Replayed YangMills.OS.DobrushinOscillation
+warning: YangMills/OS/DobrushinOscillation.lean:236:8: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/OS/DobrushinOscillation.lean:245:8: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8159/8159] Built YangMills.OS.DobrushinComparison (351s)
+Build completed successfully (8159 jobs).

@@ -1,0 +1,176 @@
+@YangMills.OS.Dobrushin.deltaAt_siteExp_self : ∀ {ι : Type u_1} [inst : Fintype ι] [inst_1 : DecidableEq ι]
+  {S : Type u_2} [inst_2 : Fintype S] [inst_3 : Nonempty S] (p : ι → (ι → S) → S → ℝ),
+  YangMills.OS.Dobrushin.LocalKernel p →
+    ∀ (i : ι) (f : (ι → S) → ℝ), YangMills.OS.Dobrushin.deltaAt i (YangMills.OS.Dobrushin.siteExp p i f) = 0
+@YangMills.OS.Dobrushin.deltaAt_siteExp_le : ∀ {ι : Type u_1} [inst : Fintype ι] [inst_1 : DecidableEq ι] {S : Type u_2}
+  [inst_2 : Fintype S] [inst_3 : Nonempty S] (p : ι → (ι → S) → S → ℝ) (C : ι → ι → ℝ),
+  (∀ (i : ι) (η : ι → S) (s : S), 0 ≤ p i η s) →
+    (∀ (i : ι) (η : ι → S), ∑ s, p i η s = 1) →
+      (∀ (i k : ι),
+          k ≠ i →
+            ∀ (η : ι → S) (s t : S),
+              YangMills.OS.Dobrushin.TV (p i (Function.update η k s)) (p i (Function.update η k t)) ≤ C i k) →
+        ∀ {i k : ι},
+          k ≠ i →
+            ∀ (f : (ι → S) → ℝ),
+              YangMills.OS.Dobrushin.deltaAt k (YangMills.OS.Dobrushin.siteExp p i f) ≤
+                YangMills.OS.Dobrushin.deltaAt k f + C i k * YangMills.OS.Dobrushin.deltaAt i f
+@YangMills.OS.Dobrushin.Bupd_mulVec : ∀ {ι : Type u_1} [inst : Fintype ι] [inst_1 : DecidableEq ι] (C : Matrix ι ι ℝ)
+  (i : ι) (v : ι → ℝ) (k : ι),
+  (YangMills.OS.Dobrushin.Bupd C i).mulVec v k = (v k - if k = i then v i else 0) + C i k * v i
+@YangMills.OS.Dobrushin.deltaVec_siteExp_le : ∀ {ι : Type u_1} [inst : Fintype ι] [inst_1 : DecidableEq ι]
+  {S : Type u_2} [inst_2 : Fintype S] [inst_3 : Nonempty S] (p : ι → (ι → S) → S → ℝ) (C : Matrix ι ι ℝ),
+  (∀ (i : ι) (η : ι → S) (s : S), 0 ≤ p i η s) →
+    (∀ (i : ι) (η : ι → S), ∑ s, p i η s = 1) →
+      YangMills.OS.Dobrushin.LocalKernel p →
+        (∀ (i k : ι),
+            k ≠ i →
+              ∀ (η : ι → S) (s t : S),
+                YangMills.OS.Dobrushin.TV (p i (Function.update η k s)) (p i (Function.update η k t)) ≤ C i k) →
+          (∀ (i : ι), C i i = 0) →
+            ∀ (i : ι) (f : (ι → S) → ℝ) (k : ι),
+              YangMills.OS.Dobrushin.deltaAt k (YangMills.OS.Dobrushin.siteExp p i f) ≤
+                (YangMills.OS.Dobrushin.Bupd C i).mulVec (fun j => YangMills.OS.Dobrushin.deltaAt j f) k
+@YangMills.OS.Dobrushin.deltaAt_eq_deltaAtOff : ∀ {ι : Type u_1} [inst : Fintype ι] [inst_1 : DecidableEq ι]
+  {S : Type u_2} [inst_2 : Fintype S] [inst_3 : Nonempty S] (i : ι) (f : (ι → S) → ℝ),
+  YangMills.OS.Dobrushin.deltaAt i f = YangMills.OS.Dobrushin.deltaAtOff i f
+@YangMills.OS.Dobrushin.abs_sub_update_le : ∀ {ι : Type u_1} [inst : Fintype ι] [inst_1 : DecidableEq ι] {S : Type u_2}
+  [inst_2 : Fintype S] [inst_3 : Nonempty S] (i : ι) (f : (ι → S) → ℝ) (η : ι → S) (s t : S),
+  |f (Function.update η i s) - f (Function.update η i t)| ≤ YangMills.OS.Dobrushin.deltaAt i f
+@YangMills.OS.Dobrushin.abs_sub_le_deltaAt : ∀ {ι : Type u_1} [inst : Fintype ι] [inst_1 : DecidableEq ι] {S : Type u_2}
+  [inst_2 : Fintype S] [inst_3 : Nonempty S] (i : ι) (f : (ι → S) → ℝ) {η η' : ι → S},
+  (∀ (j : ι), j ≠ i → η j = η' j) → |f η - f η'| ≤ YangMills.OS.Dobrushin.deltaAt i f
+@YangMills.OS.Dobrushin.deltaAt_nonneg : ∀ {ι : Type u_1} [inst : Fintype ι] [inst_1 : DecidableEq ι] {S : Type u_2}
+  [inst_2 : Fintype S] [inst_3 : Nonempty S] (i : ι) (f : (ι → S) → ℝ), 0 ≤ YangMills.OS.Dobrushin.deltaAt i f
+@YangMills.OS.Dobrushin.C_nonneg_of_majorant : ∀ {ι : Type u_1} [inst : DecidableEq ι] {S : Type u_2}
+  [inst_1 : Fintype S] [Nonempty S] (p : ι → (ι → S) → S → ℝ) (C : ι → ι → ℝ),
+  (∀ (i k : ι),
+      k ≠ i →
+        ∀ (η : ι → S) (s t : S),
+          YangMills.OS.Dobrushin.TV (p i (Function.update η k s)) (p i (Function.update η k t)) ≤ C i k) →
+    ∀ {i k : ι}, k ≠ i → 0 ≤ C i k
+@YangMills.OS.Dobrushin.Bupd_mulVec_mono : ∀ {ι : Type u_1} [inst : Fintype ι] [inst_1 : DecidableEq ι]
+  (C : Matrix ι ι ℝ) (i : ι),
+  (∀ (j k : ι), 0 ≤ C j k) →
+    ∀ {v w : ι → ℝ},
+      (∀ (j : ι), v j ≤ w j) →
+        ∀ (k : ι), (YangMills.OS.Dobrushin.Bupd C i).mulVec v k ≤ (YangMills.OS.Dobrushin.Bupd C i).mulVec w k
+@YangMills.OS.Dobrushin.Bupd_mulVec_mono_of_majorant : ∀ {ι : Type u_1} [inst : Fintype ι] [inst_1 : DecidableEq ι]
+  {S : Type u_2} [inst_2 : Fintype S] [Nonempty S] (p : ι → (ι → S) → S → ℝ) (C : Matrix ι ι ℝ),
+  (∀ (i k : ι),
+      k ≠ i →
+        ∀ (η : ι → S) (s t : S),
+          YangMills.OS.Dobrushin.TV (p i (Function.update η k s)) (p i (Function.update η k t)) ≤ C i k) →
+    (∀ (i : ι), C i i = 0) →
+      ∀ {v w : ι → ℝ},
+        (∀ (j : ι), v j ≤ w j) →
+          ∀ (i k : ι), (YangMills.OS.Dobrushin.Bupd C i).mulVec v k ≤ (YangMills.OS.Dobrushin.Bupd C i).mulVec w k
+@YangMills.OS.Dobrushin.deltaVec_hypotheses_satisfiable : ∀ {ι : Type u_1} [inst : DecidableEq ι] {S : Type u_2}
+  [inst_1 : Fintype S] [Nonempty S],
+  ∃ p C,
+    (∀ (i : ι) (η : ι → S) (s : S), 0 ≤ p i η s) ∧
+      (∀ (i : ι) (η : ι → S), ∑ s, p i η s = 1) ∧
+        YangMills.OS.Dobrushin.LocalKernel p ∧
+          (∀ (i k : ι),
+              k ≠ i →
+                ∀ (η : ι → S) (s t : S),
+                  YangMills.OS.Dobrushin.TV (p i (Function.update η k s)) (p i (Function.update η k t)) ≤ C i k) ∧
+            ∀ (i : ι), C i i = 0
+YangMills.OS.Dobrushin.Witness.hypotheses_hold : (∀ (i : Fin 2) (η : Fin 2 → Fin 2) (s : Fin 2),
+    0 ≤ YangMills.OS.Dobrushin.Witness.pw i η s) ∧
+  (∀ (i : Fin 2) (η : Fin 2 → Fin 2), ∑ s, YangMills.OS.Dobrushin.Witness.pw i η s = 1) ∧
+    YangMills.OS.Dobrushin.LocalKernel YangMills.OS.Dobrushin.Witness.pw ∧
+      (∀ (i k : Fin 2),
+          k ≠ i →
+            ∀ (η : Fin 2 → Fin 2) (s t : Fin 2),
+              YangMills.OS.Dobrushin.TV (YangMills.OS.Dobrushin.Witness.pw i (Function.update η k s))
+                  (YangMills.OS.Dobrushin.Witness.pw i (Function.update η k t)) ≤
+                YangMills.OS.Dobrushin.Witness.Cw i k) ∧
+        (∀ (i : Fin 2), YangMills.OS.Dobrushin.Witness.Cw i i = 0) ∧ YangMills.OS.Dobrushin.Witness.Cw 0 1 ≠ 0
+YangMills.OS.Dobrushin.Witness.pw_tv_attained : YangMills.OS.Dobrushin.TV
+    (YangMills.OS.Dobrushin.Witness.pw 0 (Function.update (fun x => 0) 1 0))
+    (YangMills.OS.Dobrushin.Witness.pw 0 (Function.update (fun x => 0) 1 1)) =
+  YangMills.OS.Dobrushin.Witness.Cw 0 1
+YangMills.OS.Dobrushin.Witness.deltaAt_siteExp_attained : YangMills.OS.Dobrushin.deltaAt 1
+    (YangMills.OS.Dobrushin.siteExp YangMills.OS.Dobrushin.Witness.pw 0 YangMills.OS.Dobrushin.Witness.fw) =
+  YangMills.OS.Dobrushin.deltaAt 1 YangMills.OS.Dobrushin.Witness.fw +
+    YangMills.OS.Dobrushin.Witness.Cw 0 1 * YangMills.OS.Dobrushin.deltaAt 0 YangMills.OS.Dobrushin.Witness.fw
+@YangMills.OS.Dobrushin.uniformKernel_local : ∀ {ι : Type u_1} {S : Type u_2} [inst : Fintype S],
+  YangMills.OS.Dobrushin.LocalKernel YangMills.OS.Dobrushin.uniformKernel
+@YangMills.OS.Dobrushin.uniformKernel_nonneg : ∀ {ι : Type u_1} {S : Type u_2} [inst : Fintype S] [Nonempty S] (i : ι)
+  (η : ι → S) (s : S), 0 ≤ YangMills.OS.Dobrushin.uniformKernel i η s
+@YangMills.OS.Dobrushin.uniformKernel_sum : ∀ {ι : Type u_1} {S : Type u_2} [inst : Fintype S] [Nonempty S] (i : ι)
+  (η : ι → S), ∑ s, YangMills.OS.Dobrushin.uniformKernel i η s = 1
+@YangMills.OS.Dobrushin.uniformKernel_tv : ∀ {ι : Type u_1} [inst : DecidableEq ι] {S : Type u_2} [inst_1 : Fintype S]
+  (i k : ι) (η : ι → S) (s t : S),
+  YangMills.OS.Dobrushin.TV (YangMills.OS.Dobrushin.uniformKernel i (Function.update η k s))
+      (YangMills.OS.Dobrushin.uniformKernel i (Function.update η k t)) =
+    0
+YangMills.OS.Dobrushin.Witness.fw_update_zero : ∀ (η : Fin 2 → Fin 2) (s : Fin 2),
+  YangMills.OS.Dobrushin.Witness.fw (Function.update η 0 s) = if s = 1 then 1 else 0
+YangMills.OS.Dobrushin.Witness.fw_update_one : ∀ (η : Fin 2 → Fin 2) (s : Fin 2),
+  YangMills.OS.Dobrushin.Witness.fw (Function.update η 1 s) = YangMills.OS.Dobrushin.Witness.fw η
+YangMills.OS.Dobrushin.Witness.pw_local : YangMills.OS.Dobrushin.LocalKernel YangMills.OS.Dobrushin.Witness.pw
+YangMills.OS.Dobrushin.Witness.two_cases : ∀ (x : Fin 2), x = 0 ∨ x = 1
+YangMills.OS.Dobrushin.Witness.pw_nonneg : ∀ (i : Fin 2) (η : Fin 2 → Fin 2) (s : Fin 2),
+  0 ≤ YangMills.OS.Dobrushin.Witness.pw i η s
+YangMills.OS.Dobrushin.Witness.pw_sum : ∀ (i : Fin 2) (η : Fin 2 → Fin 2),
+  ∑ s, YangMills.OS.Dobrushin.Witness.pw i η s = 1
+YangMills.OS.Dobrushin.Witness.Cw_diag : ∀ (i : Fin 2), YangMills.OS.Dobrushin.Witness.Cw i i = 0
+YangMills.OS.Dobrushin.Witness.pw_tv : ∀ (i k : Fin 2),
+  k ≠ i →
+    ∀ (η : Fin 2 → Fin 2) (s t : Fin 2),
+      YangMills.OS.Dobrushin.TV (YangMills.OS.Dobrushin.Witness.pw i (Function.update η k s))
+          (YangMills.OS.Dobrushin.Witness.pw i (Function.update η k t)) ≤
+        YangMills.OS.Dobrushin.Witness.Cw i k
+YangMills.OS.Dobrushin.Witness.siteExp_pw : ∀ (η : Fin 2 → Fin 2),
+  YangMills.OS.Dobrushin.siteExp YangMills.OS.Dobrushin.Witness.pw 0 YangMills.OS.Dobrushin.Witness.fw η =
+    if η 1 = 1 then 3 / 4 else 1 / 4
+YangMills.OS.Dobrushin.Witness.deltaAt_zero_fw : YangMills.OS.Dobrushin.deltaAt 0 YangMills.OS.Dobrushin.Witness.fw = 1
+YangMills.OS.Dobrushin.Witness.deltaAt_one_fw : YangMills.OS.Dobrushin.deltaAt 1 YangMills.OS.Dobrushin.Witness.fw = 0
+YangMills.OS.Dobrushin.Witness.deltaAt_one_siteExp : YangMills.OS.Dobrushin.deltaAt 1
+    (YangMills.OS.Dobrushin.siteExp YangMills.OS.Dobrushin.Witness.pw 0 YangMills.OS.Dobrushin.Witness.fw) =
+  1 / 2
+@YangMills.OS.Dobrushin.deltaAt : {ι : Type u_1} →
+  [Fintype ι] → [DecidableEq ι] → {S : Type u_2} → [Fintype S] → [Nonempty S] → ι → ((ι → S) → ℝ) → ℝ
+@YangMills.OS.Dobrushin.deltaAtOff : {ι : Type u_1} →
+  [Fintype ι] → [DecidableEq ι] → {S : Type u_2} → [Fintype S] → [Nonempty S] → ι → ((ι → S) → ℝ) → ℝ
+@YangMills.OS.Dobrushin.siteExp : {ι : Type u_1} →
+  [DecidableEq ι] → {S : Type u_2} → [Fintype S] → (ι → (ι → S) → S → ℝ) → ι → ((ι → S) → ℝ) → (ι → S) → ℝ
+@YangMills.OS.Dobrushin.LocalKernel : {ι : Type u_1} → {S : Type u_2} → (ι → (ι → S) → S → ℝ) → Prop
+@YangMills.OS.Dobrushin.Bupd : {ι : Type u_1} → [Fintype ι] → [DecidableEq ι] → Matrix ι ι ℝ → ι → Matrix ι ι ℝ
+@YangMills.OS.Dobrushin.uniformKernel : {ι : Type u_1} → {S : Type u_2} → [Fintype S] → ι → (ι → S) → S → ℝ
+YangMills.OS.Dobrushin.Witness.pw : Fin 2 → (Fin 2 → Fin 2) → Fin 2 → ℝ
+YangMills.OS.Dobrushin.Witness.Cw : Matrix (Fin 2) (Fin 2) ℝ
+YangMills.OS.Dobrushin.Witness.fw : (Fin 2 → Fin 2) → ℝ
+'YangMills.OS.Dobrushin.deltaAt_siteExp_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.deltaAt_siteExp_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Bupd_mulVec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.deltaVec_siteExp_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.deltaAt_eq_deltaAtOff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.abs_sub_update_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.abs_sub_le_deltaAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.deltaAt_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.C_nonneg_of_majorant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Bupd_mulVec_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Bupd_mulVec_mono_of_majorant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.deltaVec_hypotheses_satisfiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.hypotheses_hold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.pw_tv_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.deltaAt_siteExp_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.uniformKernel_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.uniformKernel_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.uniformKernel_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.uniformKernel_tv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.fw_update_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.fw_update_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.pw_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.two_cases' depends on axioms: [propext]
+'YangMills.OS.Dobrushin.Witness.pw_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.pw_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.Cw_diag' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.pw_tv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.siteExp_pw' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.deltaAt_zero_fw' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.deltaAt_one_fw' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.Dobrushin.Witness.deltaAt_one_siteExp' depends on axioms: [propext, Classical.choice, Quot.sound]
