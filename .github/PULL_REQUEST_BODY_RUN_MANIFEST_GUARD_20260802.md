@@ -74,12 +74,16 @@ wrapper is invoked without a path.
 
 ## Known-open provenance boundary E
 
-The separate diagnosis reports that 31 referenced artifacts are absent both
-from Git and from the available legacy clone. Adding a future repair date would
-not make `path: file does not exist` reproducible. Owner action is therefore a
+Three independent measurements agree that 319 manifests are affected and
+contain 688 references to nonexistent paths: 315 manifests in the
+`surface-scaled-bulk-cwin3p2` family contain 679 bulk references, while 4
+`surface-remainder` manifests contain 9 remainder references. The separate
+diagnosis reports that 31 distinct referenced artifacts are absent both from
+Git and from the available legacy clone. Adding a future repair date would not
+make `path: file does not exist` reproducible. Owner action is therefore a
 choice between explicit quarantine/reclassification using the schema's
 vocabulary and withdrawal of the affected reproducibility claim. This PR does
-not choose between those routes and does not edit the 679 affected manifests.
+not choose between those routes and does not edit the 319 affected manifests.
 
 ## Evidence and validation
 
@@ -117,12 +121,13 @@ scope, or prove recorded aggregates correct.
 
 The baseline's Git blob/LF and Windows checkout/CRLF SHA-256 values and exact
 byte transformations are recorded separately in
-`.github/run-manifest-debt-baseline.hashes.json`. The exact hashes of this
-frozen PR body are recorded by the same two byte regimes in
-`.github/PULL_REQUEST_BODY_RUN_MANIFEST_GUARD_20260802.sha256`: Git blob/LF is
-the UTF-8 body with every CRLF pair replaced by LF; Windows checkout/CRLF is
-derived by replacing every LF byte in that representation with CRLF. Neither
-digest is called simply “the hash.”
+`.github/run-manifest-debt-baseline.hashes.json`. The current PR body is
+captured with `gh pr view 51 --json body` and the returned `body` field is
+encoded as UTF-8. Git blob/LF replaces every CRLF pair with LF and leaves every
+other byte unchanged; Windows checkout/CRLF is derived by replacing every LF
+byte in that representation with CRLF. The current byte counts and hashes are
+declared in both run-manifest incident artifacts. Neither digest is called
+simply “the hash.”
 
 Draft only. Please perform a fresh audit of the baseline, adversarial harness,
 workflow result artifact, and guarantee boundary. Do not merge on this

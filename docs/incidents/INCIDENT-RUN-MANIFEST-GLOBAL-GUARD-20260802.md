@@ -260,12 +260,16 @@ without arguments.
 
 ### Known-open provenance boundary E
 
-The separate diagnosis reports that 31 referenced artifacts do not exist in
-Git or in the available legacy clone. A date cannot repair a
+Three independent measurements agree that 319 manifests are affected and
+contain 688 references to nonexistent paths. The population is 315 manifests
+in the `surface-scaled-bulk-cwin3p2` family containing 679 bulk references and
+4 `surface-remainder` manifests containing 9 remainder references. The
+separate diagnosis reports that 31 distinct referenced artifacts do not exist
+in Git or in the available legacy clone. A date cannot repair a
 `path: file does not exist` violation or restore reproducibility. The owner
 must choose between explicit quarantine/reclassification using the schema's
 vocabulary and withdrawal of the affected reproducibility claim. This incident
-does not choose for the owner, and this PR does not modify the 679 affected
+does not choose for the owner, and this PR does not modify the 319 affected
 manifests.
 
 ### Text baseline hash regimes
@@ -282,12 +286,14 @@ hashes, not one unqualified “baseline hash”; the machine-readable convention
 is frozen in `.github/run-manifest-debt-baseline.hashes.json`.
 
 The frozen PR body uses the same declared transformations. Its Git blob/LF
-SHA-256 is
-`0e4ea45b32db2dbc325e536dbd2b8c5d50259cb22faddbebe179b2551aafa13c`;
-its Windows checkout/CRLF SHA-256 is
-`b63b117e6934d4dbd2a954c8c12b528af48511d4899d30cafeca32f74a1813d2`.
-The authoritative labels and exact normalization are stored beside it in
-`.github/PULL_REQUEST_BODY_RUN_MANIFEST_GUARD_20260802.sha256`.
+representation contains 6,641 bytes and has SHA-256
+`75b8c7a6460f9bcfb0bd5961cf24c99a3288c4341e251c7a580bc107a40e5dde`;
+its Windows checkout/CRLF representation contains 6,775 bytes and has SHA-256
+`36f7a0e97221f2b97b7e3f0fff93403d2ca809f4794ad0916e97b52a1659ae1a`.
+The body is captured with `gh pr view 51 --json body`, and the returned `body`
+field is encoded as UTF-8 before the declared line-ending normalization. The
+authoritative current byte counts, hashes, and normalization are repeated in
+the incident JSON.
 
 ## Guarantee boundary
 

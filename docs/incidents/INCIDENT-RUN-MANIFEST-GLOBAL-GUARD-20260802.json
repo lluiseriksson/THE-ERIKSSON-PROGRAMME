@@ -200,8 +200,19 @@
     }
   },
   "known_open_provenance_boundary_e": {
-    "affected_manifest_count": 679,
-    "missing_referenced_artifact_count": 31,
+    "affected_manifest_count": 319,
+    "path_missing_reference_count": 688,
+    "family_breakdown": {
+      "surface_scaled_bulk_cwin3p2": {
+        "manifest_count": 315,
+        "path_missing_reference_count": 679
+      },
+      "surface_remainder": {
+        "manifest_count": 4,
+        "path_missing_reference_count": 9
+      }
+    },
+    "distinct_missing_referenced_artifact_count": 31,
     "artifact_search_result": "absent from Git and the available legacy clone",
     "date_is_not_a_repair": true,
     "owner_decision_required": [
@@ -213,10 +224,15 @@
   },
   "frozen_pr_body": {
     "path": ".github/PULL_REQUEST_BODY_RUN_MANIFEST_GUARD_20260802.md",
+    "capture_method": "gh pr view 51 --json body; encode the returned body field as UTF-8",
     "encoding": "UTF-8 without BOM",
+    "byte_count_by_representation": {
+      "git_blob_lf": 6641,
+      "windows_checkout_crlf": 6775
+    },
     "sha256_by_byte_representation": {
-      "git_blob_lf": "0e4ea45b32db2dbc325e536dbd2b8c5d50259cb22faddbebe179b2551aafa13c",
-      "windows_checkout_crlf": "b63b117e6934d4dbd2a954c8c12b528af48511d4899d30cafeca32f74a1813d2"
+      "git_blob_lf": "75b8c7a6460f9bcfb0bd5961cf24c99a3288c4341e251c7a580bc107a40e5dde",
+      "windows_checkout_crlf": "36f7a0e97221f2b97b7e3f0fff93403d2ca809f4794ad0916e97b52a1659ae1a"
     },
     "normalization": {
       "git_blob_lf": "Replace every CRLF byte pair (0d0a) with LF (0a); leave every other byte unchanged.",
