@@ -61,15 +61,15 @@ theorem periodic_antiperiodic_log_norm_sums_lt {L : ℕ} (hL : 0 < L)
         Real.log (1 - x ^ L) := by
     rw [← Real.log_prod fun j hj ↦ norm_ne_zero_iff.mpr (hperiodicFactorNe j hj),
       ← Complex.norm_prod, hperiodic, ← Complex.ofReal_pow]
-    change Real.log ‖((1 - x ^ L : ℝ) : ℂ)‖ = Real.log (1 - x ^ L)
-    rw [Complex.norm_real, Real.norm_eq_abs, abs_of_pos hperiodicPos]
+    rw [← Complex.ofReal_sub, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_pos hperiodicPos]
   have hantiperiodicLog :
       (∑ j ∈ Finset.range L, Real.log ‖1 - (x : ℂ) * (ζ ^ j * η)‖) =
         Real.log (1 + x ^ L) := by
     rw [← Real.log_prod fun j hj ↦ norm_ne_zero_iff.mpr (hantiperiodicFactorNe j hj),
       ← Complex.norm_prod, hantiperiodic, ← Complex.ofReal_pow]
-    change Real.log ‖((1 + x ^ L : ℝ) : ℂ)‖ = Real.log (1 + x ^ L)
-    rw [Complex.norm_real, Real.norm_eq_abs, abs_of_pos hantiperiodicPos]
+    rw [← Complex.ofReal_add, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_pos hantiperiodicPos]
   rw [hperiodicLog, hantiperiodicLog]
   exact Real.strictMonoOn_log hperiodicPos hantiperiodicPos hproductsLt
 
