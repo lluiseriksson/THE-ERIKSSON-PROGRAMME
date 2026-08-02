@@ -29901,8 +29901,17 @@ thermodynamic limit — every constant may depend on `L` and `m`.  Necessity of
 here is a gauge theory.
 
 
-## Addendum 581 (2026-08-02, **D-3 CLOSED: the comparison estimate is a theorem,
+## Addendum 583 (2026-08-02, **D-3 CLOSED: the comparison estimate is a theorem,
 and the bottleneck moved rather than vanished**)
+
+**NUMBERING, CORRECTED BEFORE THIS ENTRY WAS READ BY ANYONE ELSE.**  This entry
+was first appended as 581.  It is not: a SECOND Dobrushin desk, on
+`davinci/dobrushin-uniform`, had already taken **581** (D-3a certified as
+`Formalized`, eleven conjunctive conditions) and **582** (the J8/J9/J10 gate
+results, which that desk found had never been committed).  Its 581 says in its
+own header which numbers belong to which desk; I did not read it before
+appending, and the collision is mine.  Renumbered to **583**, and the two
+desks' relation is recorded below rather than left for a merge to discover.
 
 **MEASURED at `85f6e86b`** on the sanctioned Colab Linux plane (CPU, one runtime,
 opened for this work unit and deleted on disconnect, never GPU).  Stage 0
@@ -30003,3 +30012,31 @@ process: inside the local light contract by measurement.
 
 **ROLES.**  This session FABRICATED and does not audit itself.  No external
 verdict exists and no claim of "delivered" is made.
+
+### TWO DESKS, ONE MODULE — and they converged on the same repair
+
+`davinci/dobrushin-uniform` and this branch both carry
+`YangMills/OS/DobrushinOscillation.lean`, and they are **different files with
+the same theorem names**: `sum_zero_sub_const`, `abs_sub_mid_le`,
+`abs_sum_signed_le`, `abs_sum_sub_le_tv_mul_osc`, `signed_bound_attained`,
+identical inventories, 107 differing lines of prose and structure.  That desk's
+version carries an audit-status banner and a sharper account of the two
+distinct `1/2`s; mine carries the minimal repair.
+
+**The convergence is the finding.**  Their blob `0a14617b` closes
+`signed_bound_attained` by passing the witness function EXPLICITLY to
+`Finset.le_sup'` — which is exactly the repair this branch reached in its third
+pass, after the first two failed on precisely that line.  Two desks, no
+coordination, same fix.  What that says about the DEFECT is the useful part:
+the form committed at `cb8f57f8` on `paper14-clean` (`le_sup' _ ... |>.trans_eq
+(by norm_num)`) had **never been elaborated in its committed form** on either
+branch, and both desks had to discover it independently — one by building it,
+one by auditing it.
+
+**NOT THIS DESK'S TO RESOLVE, and passed to the owner unexecuted:** which of
+the two files survives a merge.  They are not interchangeable — the other
+desk's carries a committed external audit record naming its exact commit and
+blob, and mine does not.  Overwriting either from here would destroy evidence
+that belongs to a desk that is not this one.  What this entry establishes is
+only that both compile, both prove the same five endpoints, and the repair they
+share is the same repair.
