@@ -23,17 +23,32 @@ with a log that was actually produced, permits a PASS candidate.  Logs and
 sentinels are named by the semantic mode, never by an indistinguishable numeric
 suffix.
 
-THE JOB-COUNT PREDICTION, REGISTERED HERE BEFORE THE RUN.  This campaign adds
-declarations to `YangMills/OS/SpatialOS.lean`, an EXISTING member of the core.
-It adds NO module and touches no import.  The house convention (ledger, e.g.
-the `RG/AnimalCount.lean` entry) is that a build job is a module, so the
-prediction is EQUALITY: the count must come back UNCHANGED from the baseline
-this run is started against.  A count that moved would mean the change was not
-what it is described as, and stage 4 says so rather than accepting it.
+THE JOB-COUNT PREDICTION, REGISTERED BEFORE ANY COUNT IS MEASURED.
+
+The campaign has two parts and they predict different things.  The SITE BRIDGE
+adds declarations to `YangMills/OS/SpatialOS.lean`, an EXISTING member of the
+core: no module, no import, and by the house convention that a build job is a
+module (ledger, e.g. the `RG/AnimalCount.lean` and Addendum 574 entries) that
+contributes ZERO.  The RECONSTRUCTION adds exactly ONE new module,
+`YangMills/OS/SpatialReconstruction.lean`, imported once by `YangMillsCore`.
+
+  PREDICTION:  jobs(after) - jobs(before)  =  +1,  exactly.
+
+Not "+1 or +2", and not "an increase".  A `+2` would mean something imported a
+second module without anyone writing it down; a `0` would mean the new module
+never reached the core and the whole build proved nothing about it.
+
+AND THE BASELINE IS MEASURED, NOT COPIED.  `CLAUDE.md` records 8465 at
+`3421aa1f` and the ledger's most recent measurements (8468 at `56c8987d` and at
+`c3d8e32d`) are on a branch that is NOT an ancestor of this campaign's base
+`6d71e51b`.  There is therefore NO applicable recorded baseline, and the rule
+that forbids using a copied count applies exactly here.  So `--before` must come
+from a build of the core at the base commit IN THE SAME RUNTIME as the `--after`
+build; the delta is then real rather than inherited.
 
 Usage, from a fresh Colab clone:
 
-    !python scripts/colab_sblock_runner.py <expected-sha> <baseline-jobs>
+    !python scripts/colab_sblock_runner.py <expected-sha> <jobs-before-measured>
 """
 
 import hashlib
@@ -45,10 +60,13 @@ import sys
 REPO = "/content/eriksson"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB_PIN = "07642720480157414db592fa85b626dafb71355b"
-LANE_MODULES = ["YangMills.OS.SpatialOS"]
-CERTIFIERS = ["scripts/judge_site_bridge.py", "scripts/judge_spatial_os.py"]
+LANE_MODULES = ["YangMills.OS.SpatialOS", "YangMills.OS.SpatialReconstruction"]
+CERTIFIERS = ["scripts/judge_site_bridge.py",
+              "scripts/judge_os_reconstruction.py",
+              "scripts/judge_spatial_os.py"]
 TRAVELLING = [
     "YangMills/OS/SpatialOS.lean",
+    "YangMills/OS/SpatialReconstruction.lean",
     "oracle_check.lean",
     "scripts/judge_site_bridge.py",
 ]
@@ -174,13 +192,14 @@ def stage3():
 
 # ---------------------------------------------------------------- stage 4
 def stage4(baseline):
-    """The job count, against the prediction registered in this file's header.
+    """The job count, against the prediction registered in this file's header:
+    the delta is EXACTLY +1, one new module.
 
     Not an `assert`: an explicit check with its own exit contribution, so that
     `python -O` cannot delete the one line that would notice the campaign was
     not the shape it claims.
     """
-    print("stage 4 - job count against the pre-registered prediction")
+    print("stage 4 - job count against the pre-registered prediction (+1)")
     log = os.path.join(OUT, "YangMillsCore.normal.log")
     if not os.path.exists(log):
         print("  core build log absent - cannot read a job count")
@@ -193,18 +212,20 @@ def stage4(baseline):
         print("  is an INCONCLUSIVE HARNESS, not a satisfied prediction.")
         return SENTINEL_MALFORMED, None, log
     jobs = int(hits[-1])
-    print("  measured  : %d jobs" % jobs)
-    print("  predicted : %s (no module added, no import touched)"
-          % (baseline if baseline else "<no baseline given>"))
+    print("  measured after  : %d jobs" % jobs)
     if baseline is None:
-        print("  NO BASELINE GIVEN - reported, not judged.")
+        print("  NO MEASURED BASELINE GIVEN - reported, not judged.  A count")
+        print("  copied from a document is not a baseline; see the header.")
         return SENTINEL_MALFORMED, jobs, log
-    if jobs != baseline:
-        print("  PREDICTION FAILED: the count moved by %+d.  The change is not"
-              % (jobs - baseline))
-        print("  the shape it is described as; do not accept it.")
+    print("  measured before : %d jobs" % baseline)
+    delta = jobs - baseline
+    print("  delta           : %+d   (predicted exactly +1)" % delta)
+    if delta != 1:
+        print("  PREDICTION FAILED.  +2 would mean a second module was pulled")
+        print("  in without anyone writing it down; 0 would mean the new module")
+        print("  never reached the core and this build proved nothing about it.")
         return SENTINEL_NONZERO, jobs, log
-    print("  prediction held: unchanged.")
+    print("  prediction held: exactly one new module.")
     return SENTINEL_ZERO, jobs, log
 
 
