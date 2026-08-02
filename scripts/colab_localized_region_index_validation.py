@@ -30,7 +30,14 @@ ASSET_SHA = "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
 MATHLIB_SHA = "07642720480157414db592fa85b626dafb71355b"
 TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 TARGET = "YangMills.RG.BalabanCMP116Eq226CenteredConditionedPhysicalContourToUV"
-EXPECTED_AXIOM_LINES = 4
+AUDIT_FILE = "LocalizedRegionIndexAudit.lean"
+AXIOM_DECLARATIONS = [
+    "YangMills.RG.cmp116Eq226CenteredConditionedPhysicalContour_lemma3ActivityEstimate_of_boundaries",
+    "YangMills.RG.cmp116Eq226CenteredConditionedPhysicalContour_rawMetricDecay_of_boundaries",
+    "YangMills.RG.cmp116Eq226CenteredConditionedPhysicalContour_KPCriterion_of_boundaries",
+    "YangMills.RG.cmp116Eq226CenteredConditionedPhysicalContour_singleScaleUVDecay_boundedHoles_of_boundaries",
+]
+EXPECTED_AXIOM_LINES = len(AXIOM_DECLARATIONS)
 ROOT = Path("/content/hrpoly-localized-region-index")
 EVIDENCE = Path("/content/hrpoly-localized-region-index-evidence")
 TRANSCRIPT = EVIDENCE / "transcript.log"
@@ -255,13 +262,10 @@ def main() -> None:
     if focal_exit != 0:
         archive("focal", focal_exit)
 
-    audit = ROOT / "LocalizedRegionIndexAudit.lean"
+    audit = ROOT / AUDIT_FILE
     audit.write_text(
-        "import YangMills.RG.BalabanCMP116Eq226CenteredConditionedPhysicalContourToUV\n"
-        "#print axioms YangMills.RG.cmp116Eq226CenteredConditionedPhysicalContour_lemma3ActivityEstimate_of_boundaries\n"
-        "#print axioms YangMills.RG.cmp116Eq226CenteredConditionedPhysicalContour_rawMetricDecay_of_boundaries\n"
-        "#print axioms YangMills.RG.cmp116Eq226CenteredConditionedPhysicalContour_KPCriterion_of_boundaries\n"
-        "#print axioms YangMills.RG.cmp116Eq226CenteredConditionedPhysicalContour_singleScaleUVDecay_boundedHoles_of_boundaries\n",
+        f"import {TARGET}\n" +
+        "".join(f"#print axioms {declaration}\n" for declaration in AXIOM_DECLARATIONS),
         encoding="utf-8",
     )
     audit_exit, audit_output = run(
@@ -295,7 +299,7 @@ def main() -> None:
         archive("audit_evidence_incomplete", 90)
 
     status_output = require_zero("git_status", ["git", "status", "--porcelain"], cwd=ROOT, env=env)
-    if status_output.strip() != "?? LocalizedRegionIndexAudit.lean":
+    if status_output.strip() != f"?? {AUDIT_FILE}":
         archive("unexpected_checkout_state", 89)
     archive("complete", 0)
 
