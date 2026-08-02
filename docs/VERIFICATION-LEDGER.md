@@ -31555,3 +31555,26 @@ The harness then called `lean --version` after deliberately installing with
 configuration error.  Cache acquisition, module compilation, Core, and the
 oracle never started; no PASS was claimed.  The runtime was disconnected and
 deleted immediately; **SESIÓN COLAB LIBRE**.
+
+## Addendum 627 (2026-08-02, **TASK 14: linear repair focused Lean failure**)
+
+**MEASURED LEAN FAILURE; NO PASS AND NO VERIFICATION WITNESS.**  A fresh
+CPU/high-RAM Colab runtime checked out exact source SHA
+`b1d7d7a81b97306676c82be6c0ace142642df922`.  The run began at UTC
+`2026-08-02T16:29:40.655540+00:00` on Linux 6.6.122 x86_64 with glibc 2.35,
+Python 3.12.13, 8 AMD EPYC 7B12 CPUs, `53467192 kB` RAM, and no GPU.  The
+harness fixed the Addendum 626 defect by exporting exact
+`ELAN_TOOLCHAIN=leanprover/lean4:v4.29.0-rc6`; `lean --version` then verified
+commit `00659f8e6071d7e46131ed643bf8003b99b044e9`, and the manifest verified
+mathlib `07642720480157414db592fa85b626dafb71355b`.
+
+The isolated official cache completed with exit 0 in `82.402524 s`.
+`lake build YangMills.OS.SpatialVacuum` then failed with exit 1 after
+`119.071030 s`.  The sole new source diagnostic was
+`YangMills/OS/SpatialVacuum.lean:297:4`: after simplification, `hx` has
+polynomial term `x * x`, while `hxpoly` requested syntactic term `x ^ 2`.
+This is a local normalization mismatch in the repaired algebraic proof, not
+an infrastructure failure and not evidence against existence or uniqueness.
+No heartbeat was raised, no PASS was claimed, and neither Core nor the oracle
+was launched.  The runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
