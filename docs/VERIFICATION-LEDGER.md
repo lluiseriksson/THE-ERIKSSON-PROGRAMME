@@ -31851,3 +31851,73 @@ certifier may not silently miss unrelated declarations.  The next parser must
 match every bracketed payload independently of theorem-name quoting, while
 using exact escaped markers only for the required named declarations.  No
 PASS is claimed; **SESIÓN COLAB LIBRE** remained true throughout.
+
+## Addendum 636 (2026-08-02, **TASK 14: exact finite log-sign full PASS**)
+
+**VERIFIED INTERMEDIATE BRICK; NOT A PHYSICAL VACUUM OR SPECTRAL
+COMPARISON.**  After the three preserved failures in Addenda 632--635, a
+fresh CPU/high-RAM Colab runtime executed exact versioned runner SHA
+`9ed110d942583a4fbe1c5c261e39856dba8813d8` (notebook SHA-256
+`23bdfe60cf5b24900fb943017460173afe631b5a314bdc5b762969c75574314e`).
+The runner made an independent fresh public clone and checked out exact
+source/oracle SHA `9dd2cdabda17c0af1baff530bb6d33c8d27f0ae5`.  The run lasted from UTC
+`2026-08-02T21:12:46.414455+00:00` to
+`2026-08-02T22:06:12.038410+00:00` on Linux 6.6.122 x86_64 with glibc 2.35,
+Python 3.12.13, 8 Intel Xeon CPUs, `53467192 kB` RAM, and no GPU.  It
+verified Lean `v4.29.0-rc6` commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, mathlib
+`07642720480157414db592fa85b626dafb71355b`, and elan-installer SHA-256
+`a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53`.
+
+Every command exited zero.  `lake exe cache get` in the isolated ephemeral
+clone took `96.991297 s`; `lake build YangMills.OS.SpatialVacuum` took
+`157.047027 s` and measured `8172 jobs`; `lake build YangMillsCore` took
+`888.022258 s` and measured **8468 jobs**; `lake env lean
+oracle_check.lean` took `2035.660235 s`; and
+`python3 scripts/check_consistency.py` took `3.906760 s`, reporting zero Lean
+`sorry` and zero project axioms.  The counter preserves both earlier facts:
+the historical `8467 / +2` witness remains anchored at source SHA
+`3d7ea4c9d22504f09afa36c95706faea16451071`, while the current count is
+`8465 + 1` effective merged-main `CongruenceSpectrum` job plus this lane's
+unchanged `+2` jobs, hence 8468.
+
+The new theorem
+`periodic_antiperiodic_log_difference_eq_neg_two_artanh` proves, for
+`0 < L`, `0 < x`, and `x < 1`, the exact identity and strict sign
+
+```text
+log (1 - x^L) - log (1 + x^L) = -2 * artanh (x^L) < 0.
+```
+
+This closes the finite root-product sign directly, independently of the
+Stieltjes representation.  The repaired oracle parser consumed all 2821
+bracketed axiom payloads across line breaks, exactly matching all 2821
+` depends on axioms:` markers, and rejected any payload outside
+`{propext, Classical.choice, Quot.sound}`.  It found the new theorem exactly
+once with exactly those three allowed axioms and found no `sorryAx`.
+
+**ARTIFACT INTEGRITY, VERIFIED ON WINDOWS WITHOUT RUNNING LEAN.**  The
+downloaded 71738-byte ZIP
+`C:\Users\lluis\Downloads\spatial_vacuum_full_artifacts (5).zip` has
+SHA-256 `2a210cec46a16218108bdb30e6fd07af44836b876f64e11078b346f3a51cefb8`,
+matching Colab.  Streamwise hashes agree with its internal `SHA256SUMS`:
+
+- `consistency_output.txt` (154 bytes):
+  `95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff`;
+- `metadata.json` (1777 bytes):
+  `2b1c18d96ab7f5b984fe83aec4b1f99c1d8f12225ad31cde878b6a7ddbcbe8b1`;
+- `oracle_output.txt` (345564 bytes):
+  `385f776fe23a719cdb148ffcce96e9862d0320076d299e2bcac3d199d86b80b5`;
+- `transcript.txt` (468401 bytes):
+  `d736a7ed18a68d7f30cb7d535969e9ec043621dc8e0194ceebd264fd9c18032f`.
+
+This verifies only the exact finite scalar sign after the two root products.
+The previously verified Stieltjes/log-mixture and scalar-parameter transport
+were not reopened here.  No theorem in this brick specializes
+`x = tanh gamma / tanh a`; when that specialization is introduced, the
+active physical hypothesis `gamma < a` must appear in the printed theorem.
+Neither physical vacuum has been identified or compared, neither spectral
+sector bound is proved, the beta-zero endpoint remains open, and the uniform
+`specRatio` theorem remains wholly open.  Clifford/Jordan--Wigner remains
+unopened.  The runtime was disconnected and deleted immediately;
+**SESIÓN COLAB LIBRE**.
