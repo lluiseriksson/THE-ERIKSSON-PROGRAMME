@@ -31132,3 +31132,36 @@ periodic/antiperiodic vacuum products have not been connected to this scalar
 identity in Lean, neither transfer-sector obligation has been proved, and the
 original `beta = 0` transfer endpoint and uniform `specRatio` theorem remain
 open.  Clifford/Jordan--Wigner remains unopened.
+
+## Addendum 614 (2026-08-02, **TASK 14: first finite log-grid elaboration failed**)
+
+**MEASURED FAILURE; NO THEOREM CERTIFIED.**  The first Lean attempt at
+`periodic_antiperiodic_log_norm_sums_lt` was committed and pushed before
+execution at raw SHA
+`28333576b6f1c54ff7737d5e0a3dce184bb46eed`.  A fresh public clone at that
+exact SHA ran in a Colab CPU/high-RAM runtime with no GPU: Linux `6.6.122+`,
+x86-64, glibc `2.35`, Python `3.12.13`, 8 Intel Xeon 2.20 GHz CPUs, and
+`MemTotal: 53467192 kB`.  The run started at
+`2026-08-02T10:26:13.937202+00:00`; the Colab cell reported a total duration
+of `297.596 s`.
+
+The harness verified Lean `leanprover/lean4:v4.29.0-rc6`, commit
+`00659f8e6071d7e46131ed643bf8003b99b044e9`, and mathlib
+`07642720480157414db592fa85b626dafb71355b`.  Isolated official cache
+acquisition exited zero after `103.822932 s`.  The sole build command,
+`lake build YangMills.OS.SpatialVacuum`, exited `1` after `169.016175 s`.
+
+Lean reported exactly two symmetric local proof failures, at source lines 63
+and 69.  After applying the exact root-product identities, the goals were
+
+```text
+Real.log ‖1 - (x : ℂ) ^ L‖ = Real.log (1 - x ^ L)
+Real.log ‖1 + (x : ℂ) ^ L‖ = Real.log (1 + x ^ L)
+```
+
+and the attempted rewrite by `Complex.norm_real` did not match: the complex
+power had not first been normalized to the cast of the real power.  Thus this
+is a coercion-normalization failure in the proposed Lean proof, not a failed
+finite product or inequality.  No PASS was claimed, no oracle or core build
+was run, and no new declaration is certified by this addendum.  The runtime
+was disconnected and deleted immediately; **SESIÓN COLAB LIBRE**.
