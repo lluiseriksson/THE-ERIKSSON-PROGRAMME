@@ -19,8 +19,8 @@ import tarfile
 import time
 
 
-RUNNER_REV = "localized-region-index-v1"
-SOURCE_SHA = "59220d67a8ca706c6fa43e4cb771a204f89e8e10"
+RUNNER_REV = "localized-region-index-v2"
+SOURCE_SHA = "a0bb88dd48c80b72d8e0b60a5715eed9221fef75"
 REPO = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 ASSET_URL = (
     "https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/"
