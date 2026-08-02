@@ -47,17 +47,20 @@ private lemma norm_sub_arcoshRadius_sq {y : ℝ} (hy : 1 < y) {z : ℂ}
     (hz : z ∈ sphere (0 : ℂ) 1) :
     ‖z - (arcoshRadius y : ℂ)‖ ^ 2 =
       2 * arcoshRadius y * (y - z.re) := by
+  let r := arcoshRadius y
+  change ‖z - (r : ℂ)‖ ^ 2 = 2 * r * (y - z.re)
   have hnorm : ‖z‖ = 1 := by
     simpa [mem_sphere_iff_norm] using hz
-  have hrpos : 0 < arcoshRadius y := arcoshRadius_pos y
-  have hyrepr := arcosh_eq_inv_add_radius hy
+  have hrpos : 0 < r := by simpa [r] using arcoshRadius_pos y
+  have hyrepr : y = (r⁻¹ + r) / 2 := by
+    simpa [r] using arcosh_eq_inv_add_radius hy
+  have hyrel : 2 * r * y = 1 + r ^ 2 := by
+    rw [hyrepr]
+    field_simp [hrpos.ne']
+    <;> ring
   rw [← Complex.normSq_eq_norm_sq, Complex.normSq_sub]
-  simp only [Complex.normSq_eq_norm_sq, hnorm, one_pow, Complex.normSq_ofReal,
-    Complex.conj_ofReal, Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, mul_zero,
-    sub_zero]
-  rw [hyrepr]
-  field_simp [ne_of_gt hrpos]
-  <;> ring
+  simp [Complex.normSq_eq_norm_sq, hnorm, abs_of_pos hrpos]
+  nlinarith
 
 private lemma log_arcosh_kernel_eq {y : ℝ} (hy : 1 < y) {z : ℂ}
     (hz : z ∈ sphere (0 : ℂ) 1) :
@@ -93,12 +96,11 @@ private lemma circleIntegrable_log_arcosh_kernel {y : ℝ} (hy : 1 < y) :
     hlog.const_mul 2
   have hconst : CircleIntegrable (fun _ : ℂ ↦ Real.log (2 * r)) 0 1 :=
     circleIntegrable_const _ _ _
-  apply (crcleIntegrable_congr (c := (0 : ℂ)) (R := 1) (f₁ := fun z : ℂ ↦
-    Real.log (y - z.re)) (f₂ := fun z : ℂ ↦
-      2 * Real.log ‖z - (r : ℂ)‖ - Real.log (2 * r))).2
-  · exact hmul.sub hconst
-  · intro z hz
-    exact log_arcosh_kernel_eq hy hz
+  have heq : Set.EqOn (fun z : ℂ ↦ Real.log (y - z.re)) (fun z : ℂ ↦
+      2 * Real.log ‖z - (r : ℂ)‖ - Real.log (2 * r)) (sphere 0 |(1 : ℝ)|) := by
+    intro z hz
+    exact log_arcosh_kernel_eq hy (by simpa using hz)
+  exact (crcleIntegrable_congr heq).2 (hmul.sub hconst)
 
 private lemma circleAverage_log_arcosh_kernel {y : ℝ} (hy : 1 < y) :
     circleAverage (fun z : ℂ ↦ Real.log (y - z.re)) 0 1 =
@@ -121,7 +123,7 @@ private lemma circleAverage_log_arcosh_kernel {y : ℝ} (hy : 1 < y) :
           2 * Real.log ‖z - (r : ℂ)‖ - Real.log (2 * r)) 0 1 := by
       apply circleAverage_congr_sphere
       intro z hz
-      exact log_arcosh_kernel_eq hy hz
+      exact log_arcosh_kernel_eq hy (by simpa using hz)
     _ = circleAverage (fun z : ℂ ↦ 2 * Real.log ‖z - (r : ℂ)‖) 0 1 -
         circleAverage (fun _ : ℂ ↦ Real.log (2 * r)) 0 1 := by
       rw [circleAverage_fun_sub hmul hconst]
@@ -170,6 +172,8 @@ theorem arcosh_circle_log_mixture {c B s : ℝ} (hc : 1 < c) (hB : 0 < B)
         simpa [hnorm] using Complex.re_le_norm z
       have hden : 0 < c - z.re := by linarith
       have hnum : 0 < c + B * s - z.re := by linarith
+      change Real.log (c + B * s - z.re) - Real.log (c - z.re) =
+        Real.log (1 + B * s / (c - z.re))
       rw [← Real.log_div hnum.ne' hden.ne']
       congr 1
       field_simp [hden.ne']
