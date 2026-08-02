@@ -52,12 +52,28 @@ Hence
 ## The normalization `c` is never needed
 
 Both operators insert `A` exactly twice, so each is **homogeneous of degree 2
-in `c`** -- verified in the script by recomputing at `c = 1/2` and checking the
-ratio is exactly `1/4`, not argued from the shape of the formula.
-
-Therefore the witness separates the two operators for **every `c != 0`**, and
-`c = 0` is excluded because it makes all three directions vanish and the Ward
+in `c`**, and therefore the witness separates them for **every `c != 0`** --
+`c = 0` being excluded because it makes all three directions vanish and the Ward
 identity vacuous.
+
+**Which part of that is proved by which artifact, precisely.**  An earlier
+version of this document said the homogeneity was "verified in the script ...
+not argued from the shape of the formula".  That is backwards, and the referee
+was right to separate them:
+
+* the **universal statement over all `c != 0`** rests on the algebraic identity
+  -- each operator contains exactly two `A_k` insertions, so rescaling
+  `A -> cA` multiplies each by `c^2`.  That is a hand proof, and it is exact;
+* the **script** proves the exact values at the particular rational `c` it runs,
+  and corroborates the scaling law between `c = 1` and `c = 1/2`.  Sampling two
+  points is not a proof of a law that holds at all of them.
+
+So the honest description of the present state is:
+
+> exact symbolic hand proof for every `c != 0`, with audited exact-arithmetic
+> checks at selected rational values
+
+and **not** "the script verifies every `c`".
 
 This matters procedurally: closing this residue does **not** require reading `c`
 off the Lean producer, which is not available.  The result is stronger than a
@@ -83,12 +99,32 @@ Closed: **the two operators are not equal in general.**
 Open: their precise structural relation, and how that relation interacts with the
 concrete four-face heat density.
 
-The manuscript sentence should therefore be the stronger and more informative
-form, not "not identified":
+### The manuscript sentence, with the witness printed
 
-> An explicit SU(2) configuration shows that `C_q != C_DHK` in general.  What
-> remains open is not their equality, but a structural comparison between the two
-> operators and its interaction with the concrete four-face heat density.
+Printing the configuration costs one line and turns the non-equality from an
+assertion into something a reader can check:
+
+> The quotient-lifted compensated operator and the ordinary-edge
+> Driver--Hall--Kemp operator are not equal in general.  Indeed, for
+> `a1 = a2 = a3 = alpha = I`, `a4 = beta = i sigma_x`, and `A_k = c i sigma_k`
+> with `c != 0`, one has `C_DHK = c^2` and `C_q = -3 c^2`.  What remains open is
+> a structural comparison between the two operators and its interaction with the
+> concrete four-face heat density.
+
+### The claim ledger must split into two rows
+
+The current ledger files the whole "comparison with the ordinary-edge DHK mixed
+operator" as open, alongside the thermal identity and the Makeenko--Migdal
+equation.  After the witness that is no longer accurate: a decisive part of that
+comparison -- whether the two can be equal -- is closed.
+
+| Statement                                                                     | Status                                |
+| ----------------------------------------------------------------------------- | ------------------------------------- |
+| `C_q = C_DHK` in general                                                      | **Refuted by explicit SU(2) witness** |
+| Structural relation between `C_q` and `C_DHK`, incl. four-face heat density   | **Open**                              |
+
+Leaving one undivided "comparison open" row would understate what is now known,
+which is the same defect as overstating it, with the sign changed.
 
 ## Status of the artifact
 
@@ -98,9 +134,25 @@ antihermiticity of the directions, degree-2 homogeneity, nonzero difference),
 explicit counter, `PASS` only at 4 of 4.
 
 **It is not yet a Lean theorem** and must not be described as machine checked
-until it is one.  Compiling it is cheap: the entries are Gaussian rationals, so
-`norm_num` closes it, and the `c`-independence means the Lean statement can be
-universally quantified over `c != 0` rather than fixed to one normalization.
+until it is one.
+
+### The Lean step has a gate, and it is not `norm_num`
+
+The cheap move -- a fresh module that restates the two expressions and closes
+them with `norm_num` -- would **mechanize the exact defect this witness was
+written to repair.**  The first version of this script proved something correct
+about expressions that resembled the printed ones; a new module that retypes
+`C_q` and `C_DHK` from the PDF can do the same thing again, only now with a green
+build behind it, which makes it harder to notice rather than easier.
+
+The binding criterion is therefore:
+
+> import or version the original 26-declaration producer, instantiate **its**
+> definitions of `C_q` and `C_DHK`, and obtain the two values there.
+
+`c` is no longer a dependency.  The producer still is.  Until it is available,
+the correct status is that the mathematics is closed and the formal
+identification of the objects is not.
 
 Script: `scripts/witness_cq_vs_cdhk.py` -- local-light, measured: 415 ms wall,
 one process, no worker pool, negligible RSS; run in normal and `-O` mode, both
