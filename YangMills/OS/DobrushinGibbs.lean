@@ -217,7 +217,6 @@ theorem expect_heatBath {w : (ι → S) → ℝ} (hw : ∀ η, 0 < w η)
     have hZ : gibbsZ w ≠ 0 := ne_of_gt (gibbsZ_pos hw)
     unfold gibbsMu
     field_simp
-    ring
   rw [Finset.sum_congr rfl fun η _ => hη η]
 
 /-! ## §4  The intrinsic Dobrushin matrix
