@@ -90,9 +90,28 @@ theorem cmp116ComplexWeakeningMonomial_eq_multiplicityMonomial
       simp [cmp116ComplexWeakeningMonomial,
         cmp116WeakeningCarrierMultiplicity]
   | @insert d active hd ih =>
-      rw [cmp116WeakeningCarrierMultiplicity_insert d active hd,
-        cmp116ComplexWeakeningMultiplicityMonomial_add]
-      simp [cmp116ComplexWeakeningMonomial, Finset.prod_insert, hd, ih]
+      calc
+        cmp116ComplexWeakeningMonomial (insert d active) sigma =
+            sigma d * cmp116ComplexWeakeningMonomial active sigma := by
+          simp [cmp116ComplexWeakeningMonomial, Finset.prod_insert, hd]
+        _ = sigma d *
+            cmp116ComplexWeakeningMultiplicityMonomial
+              (cmp116WeakeningCarrierMultiplicity active) sigma :=
+          congrArg (fun z => sigma d * z) ih
+        _ = cmp116ComplexWeakeningMultiplicityMonomial
+              (Finsupp.single d 1) sigma *
+            cmp116ComplexWeakeningMultiplicityMonomial
+              (cmp116WeakeningCarrierMultiplicity active) sigma := by
+          simp
+        _ = cmp116ComplexWeakeningMultiplicityMonomial
+              (Finsupp.single d 1 +
+                cmp116WeakeningCarrierMultiplicity active) sigma :=
+          (cmp116ComplexWeakeningMultiplicityMonomial_add
+            (Finsupp.single d 1)
+            (cmp116WeakeningCarrierMultiplicity active) sigma).symm
+        _ = cmp116ComplexWeakeningMultiplicityMonomial
+              (cmp116WeakeningCarrierMultiplicity (insert d active)) sigma := by
+          rw [cmp116WeakeningCarrierMultiplicity_insert d active hd]
 
 /-- Total multiplicity contributed by a finite family of carriers. -/
 def cmp116WeakeningFamilyMultiplicity
@@ -172,4 +191,3 @@ theorem cmp116ComplexWeakeningMonomial_mul_prod_eq_multiplicityMonomial
 end
 
 end YangMills.RG
-
