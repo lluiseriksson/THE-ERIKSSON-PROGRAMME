@@ -43,12 +43,14 @@ theorem finBoxDist_cmp99RegionalFactoredToGeneratedFineSite
       (M := M) (Q := Q) (depth := depth) x = hsize ▸ x := by
     funext i
     apply Fin.ext
-    rfl
+    change (x i).val = ((hsize ▸ x) i).val
+    exact (finBox_cast_apply_val hsize x i).symm
   have hy : cmp99RegionalFactoredToGeneratedFineSite
       (M := M) (Q := Q) (depth := depth) y = hsize ▸ y := by
     funext i
     apply Fin.ext
-    rfl
+    change (y i).val = ((hsize ▸ y) i).val
+    exact (finBox_cast_apply_val hsize y i).symm
   rw [hx, hy]
   exact finBoxDist_cast_size hsize x y
 
