@@ -1012,3 +1012,11 @@ import YangMills.OS.DobrushinIsing
 -- D-4b endpoints hold with rate and prefactor fixed BEFORE the quantifier
 -- over volumes.  At zero coupling the bound forces exact independence.
 import YangMills.OS.DobrushinLattice
+
+-- D-6/B-1: the finite band identity, ABSTRACT (Amendment 2): for any
+-- symmetric kernel with a normalised eigenvector, the Perron-boundary band
+-- weight has n-independent mass and its covariance IS the matrix element of
+-- M^n at the centred dressed observables.  No spectral positivity, no
+-- Ising, no Dobrushin: the bridge's first plank, with the eigenvalue kept
+-- visible through normalise_eig.
+import YangMills.OS.DobrushinBridge

@@ -3361,3 +3361,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.rect_ising_uniform_two_point
 #print axioms YangMills.OS.Dobrushin.rect_ising_uniform_decay
 #print axioms YangMills.OS.Dobrushin.rect_zero_coupling_indep
+#print axioms YangMills.OS.Dobrushin.normalise_eig
+#print axioms YangMills.OS.Dobrushin.pow_fix
+#print axioms YangMills.OS.Dobrushin.pow_entry_symm
+#print axioms YangMills.OS.Dobrushin.pow_pairing
+#print axioms YangMills.OS.Dobrushin.band_pair
+#print axioms YangMills.OS.Dobrushin.bandZ
+#print axioms YangMills.OS.Dobrushin.centered_dressed_orth
+#print axioms YangMills.OS.Dobrushin.band_covariance_eq
