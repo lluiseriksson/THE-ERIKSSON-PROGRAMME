@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v4"
-SOURCE_SHA = "c549a48700e72d184bbedf891f2ca86e7155f9bb"
+RUNNER_REV = "regional-large-block-v5"
+SOURCE_SHA = "4f746fb756884f8751fe1b143eada12944ad7809"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -205,6 +205,38 @@ QUEUE = [
             "YangMills/RG/FinitePiLpSourceOverlapWeightedRowAudit.lean",
         ],
         1,
+    ),
+    (
+        "active_fine_block_equiv_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceActiveFineBlockEquiv",
+        ],
+        None,
+    ),
+    (
+        "active_fine_block_equiv_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceActiveFineBlockEquivAudit.lean",
+        ],
+        2,
+    ),
+    (
+        "transported_synthesis_row_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceTransportedBlockSynthesisRowSum",
+        ],
+        None,
+    ),
+    (
+        "transported_synthesis_row_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceTransportedBlockSynthesisRowSumAudit.lean",
+        ],
+        2,
     ),
 ]
 
