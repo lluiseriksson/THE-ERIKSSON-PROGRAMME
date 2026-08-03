@@ -59,10 +59,13 @@ V(A') = -<H D_3(A'),J> - <A',Delta_pi H D(A')>
 
 This agrees term for term with `cmp102Eq80GlobalPotential`: both negative
 signs, the coefficient `1/2`, the order of each pairing, and the shifted
-argument of `V₀` are identical.  The downstream
-`cmp102Eq80SourcePi4RealMixedPotential` does not alter this algebraic object;
-it specializes only `H` to the reconstructed real mixed covariance.  The
-render used for this check has SHA-256
+argument of `V₀` are identical.  CMP102's `H` is rectangular (coarse field to
+fine field), and the corresponding literal physical specialization is
+`cmp102Eq80SourcePi4RectangularWeakenedPotential`.  The square
+`cmp102Eq80SourcePi4RealMixedPotential` uses the same four-term algebra but
+specializes `H` to a fine-field covariance; it is not by itself the source
+dictionary for the rectangular minimizer.  The render used for this check has
+SHA-256
 `BA6FD739924166FE5A98DC3F931C9998EF596913922B33C6E216EF0446B62A7A` in the
 private source cache.
 
