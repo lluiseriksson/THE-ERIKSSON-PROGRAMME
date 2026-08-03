@@ -3180,3 +3180,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.ringBondSum
 #print axioms YangMills.OS.spatialWeightRing_eq_exp_ringBondSum
 #print axioms YangMills.OS.symWeighted_ring_dual_factorization
+
+-- Spatial-ring uniformity campaign: pre-registered sharp N = 2, gamma = 0 witness only
+#print axioms YangMills.OS.n2EvenBlock_closedForm
+#print axioms YangMills.OS.n2OddBlock_closedForm
+#print axioms YangMills.OS.n2EvenBlock_norm
+#print axioms YangMills.OS.n2OddBlock_norm
+#print axioms YangMills.OS.n2_scale_ratio_eq_tanh
+#print axioms YangMills.OS.n2_sharp_norm_ratio
+#print axioms YangMills.OS.n2_no_strictly_smaller_constant
+#print axioms YangMills.OS.n2_qEven_sub_odd_entry
+#print axioms YangMills.OS.n2_form_domination_fails
