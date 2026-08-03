@@ -39,7 +39,17 @@ theorem finBoxDist_cmp99RegionalFactoredToGeneratedFineSite
   let hsize : M ^ (depth + 1) * (2 * Q) =
       cmp99RegionalLatticeSize M (2 * Q) (depth + 1) :=
     (cmp99RegionalLatticeSize_eq_pow_mul M (2 * Q) (depth + 1)).symm
-  change finBoxDist (hsize ▸ x) (hsize ▸ y) = finBoxDist x y
+  have hx : cmp99RegionalFactoredToGeneratedFineSite
+      (M := M) (Q := Q) (depth := depth) x = hsize ▸ x := by
+    funext i
+    apply Fin.ext
+    rfl
+  have hy : cmp99RegionalFactoredToGeneratedFineSite
+      (M := M) (Q := Q) (depth := depth) y = hsize ▸ y := by
+    funext i
+    apply Fin.ext
+    rfl
+  rw [hx, hy]
   exact finBoxDist_cast_size hsize x y
 
 /-- Literal inverse-spacing slope of the auxiliary `value` field.  The
