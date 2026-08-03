@@ -2057,3 +2057,23 @@ family.  This gate leaves one genuinely source-cited input open: the concrete
 CMP99 rectangular generalized-walk reconstruction of the physical minimizer.
 It is narrower than accepting an arbitrary weakened `H(s)` family and makes
 the missing source content explicit.
+
+Two tempting shortcuts are excluded.  First, evaluating the current
+fine-head/tail word expansion at `s = 1` and weakening those terms again does
+not produce the missing source walk expansion.  Its tail factors are relative
+defects which vanish at full coupling, while the surviving term still carries
+the unexpanded full-coupling coarse covariance.  Second, retaining the
+omitted-subset inclusion--exclusion does reconstruct the minimizer at full
+coupling, but it is precisely the auxiliary algebraic family retracted above;
+replacing each multiplicity by its support does not identify it with the
+printed family.
+
+The physical walk index must therefore be fixed only after the CMP99
+rectangular random-walk reconstruction is made explicit.  The available CMP99
+text also describes the relevant `H1` expansion as tree-like (a main line with
+additional lines), so the current linear transfer-power state must not be
+silently declared to be that index.  The reusable exact core is the weaker
+statement: any ordered listing of the localization carriers has a visited
+product equal to the squarefree monomial on their union.  A future transfer
+implementation must additionally prove that its rectangular head/readout and
+its walk carrier encode the printed tree expansion.

@@ -123,7 +123,7 @@
         "Do not count this source extraction as a compiled Lean discharge of Lemma 1."
       ],
       "open_questions": [
-        "Exact source-to-Lean dictionary for the squarefree generalized-walk H(s(Y0)), H0(s(Y0)), the omega supremum and the localized set-difference factor in Eq. (1.24). The repository covariance G(s) already has the dependent tsum bridge. The algebraically weakened matrix C(s) Q* (Q C(s) Q*)^-1 is a different object away from s = 1 and must not be substituted for the printed H(s).",
+        "Exact source-to-Lean dictionary for the squarefree generalized-walk H(s(Y0)), H0(s(Y0)), the omega supremum and the localized set-difference factor in Eq. (1.24). The repository covariance G(s) already has the dependent tsum bridge. The algebraically weakened matrix C(s) Q* (Q C(s) Q*)^-1 is a different object away from s = 1 and must not be substituted for the printed H(s). The available CMP99 text describes the H1 walk expansion as tree-like; its exact primary render and its rectangular head/readout dictionary must be checked before identifying it with the repository's linear visited-transfer index.",
         "Physical specialization of the compiler-verified parameter-family fixed-point theorem to |s(Delta)| <= exp(kappa1).",
         "Formal derivation of the summed Eq. (1.29) estimate and its conversion to cmp116Eq136ResidualMajorant."
       ]
