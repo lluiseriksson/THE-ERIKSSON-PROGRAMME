@@ -197,10 +197,10 @@ theorem CMP99SourceActiveRegionChain.physicalQprime_eq_transported
         rfl rfl (hTailT.trans hTailCoord) tailT.Qprime Head
       simpa [transportedQprime, tailT, Head] using hcomp
 
-/-- A generated physical `Q'_depth` has literal source-row mass at most
+/-- A generated physical `Q'_depth` has literal source-row mass exactly
 `(M^{-d})^depth`.  The background transports are isometries and hence do not
 alter the coefficient. -/
-theorem CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single_le
+theorem CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single
     {depth : ℕ} {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth)
     (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc) :
@@ -212,7 +212,7 @@ theorem CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single_le
       (source : ActiveGaugeRegion.Site Omega) (v : SUNLieCoord Nc),
       (∑ target,
           ‖regions.physicalQprime hd hM rho spacing epsilon background
-              chain fineSmall (singleFinitePiLp source v) target‖) ≤
+              chain fineSmall (singleFinitePiLp source v) target‖) =
         (cmp99SourceBlockAverageWeight M d) ^ depth * ‖v‖ := by
   letI : NeZero N := regions.neZero
   induction regions with
@@ -257,11 +257,11 @@ theorem CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single_le
       change (∑ target,
           ‖tailQprime
             (cmp99SourceTransportedBlockAverageCLM Omega transport
-              (singleFinitePiLp source v)) target‖) ≤ _
+              (singleFinitePiLp source v)) target‖) = _
       rw [haverage]
       calc
         (∑ target, ‖tailQprime
-            (singleFinitePiLp sourceCoarse sourceValue) target‖) ≤
+            (singleFinitePiLp sourceCoarse sourceValue) target‖) =
             (cmp99SourceBlockAverageWeight M d) ^ depth * ‖sourceValue‖ :=
           htail
         _ = (cmp99SourceBlockAverageWeight M d) ^ (depth + 1) * ‖v‖ := by
@@ -269,6 +269,27 @@ theorem CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single_le
           rw [norm_smul, LinearIsometryEquiv.norm_map, Real.norm_eq_abs,
             abs_of_nonneg (cmp99SourceBlockAverageWeight_nonneg M d), pow_succ]
           ring
+
+/-- Inequality form of the exact generated source-row mass, for direct use by
+weighted-row adapters. -/
+theorem CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single_le
+    {depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc) :
+    letI : NeZero N := regions.neZero
+    ∀ (spacing epsilon : ℝ) (background : GaugeConfig d N (SUN Nc))
+      (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+      (fineSmall : ∀ e : ConcreteEdge d N,
+        ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+      (source : ActiveGaugeRegion.Site Omega) (v : SUNLieCoord Nc),
+      (∑ target,
+          ‖regions.physicalQprime hd hM rho spacing epsilon background
+              chain fineSmall (singleFinitePiLp source v) target‖) ≤
+        (cmp99SourceBlockAverageWeight M d) ^ depth * ‖v‖ := by
+  letI : NeZero N := regions.neZero
+  intro spacing epsilon background chain fineSmall source v
+  exact (regions.sum_norm_physicalQprime_single hd hM rho spacing epsilon
+    background chain fineSmall source v).le
 
 end
 
