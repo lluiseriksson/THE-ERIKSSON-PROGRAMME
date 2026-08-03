@@ -50,9 +50,11 @@ that those row sums stop being constant the moment the spatial coupling is
 switched on.  That theorem obstructs the \emph{method}.  It was read as
 obstructing the \emph{conclusion}, and the reading outlived its own retraction.
 
-We prove, in Lean~4 with no \texttt{sorry} and no project axiom, a chain of
-six headline theorems, plus the star-cell and rectangle-family
-specialisations they compose to.  \textbf{First}, the one-bond influence envelope: flipping one
+We prove, in Lean~4 with no \texttt{sorry} and no project axiom, eleven
+theorems: a chain of
+six headline theorems, the star-cell and rectangle-family
+specialisations they compose to, and the three transport theorems of the
+final contribution below.  \textbf{First}, the one-bond influence envelope: flipping one
 neighbour across a bond of strength $J\ge0$ moves a two-state site's conditional
 by at most $\tanh J$, and by exactly $\tanh J$ at one field, so $\tanh J$ is the
 \emph{least field-uniform} bound.  It is a field-uniform interdependence
@@ -1352,7 +1354,7 @@ related models have been treated without mechanisation \cite{WashburnSimons2026}
 
 \section{Limitations}
 
-All seven theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
+All eleven theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
 Theorem~\ref{thm:coeff} is a hyperbolic identity and a bound on a denominator;
 Theorem~\ref{thm:matrix} is a construction and a finite computation;
 Theorem~\ref{thm:comparison} is a telescoping sum, one pointwise application of
@@ -1360,9 +1362,17 @@ a ninety-year-old covariance bound, and two finite inductions;
 Theorem~\ref{thm:gibbs} is a reindexing by an involution;
 Theorem~\ref{thm:ising} is a split of a quadratic sum at one index and the
 envelope applied to a field move of $0$ or $\pm2$;
-Theorem~\ref{thm:family} is a neighbour count by injection.  The family is
-rectangles with free boundary, not tori, and nothing spectral is claimed
-for it --- the transport is D-6's, chartered and not begun.  Their value
+Theorem~\ref{thm:family} is a neighbour count by injection;
+Theorem~\ref{thm:band} is one path-splitting induction and the eigen-relation
+applied twice; Theorem~\ref{thm:transport} is an exact change of description
+fed to the development's operator interface, whose uniformisation is
+Banach--Steinhaus and was proved there, not here; and
+Theorem~\ref{thm:tilt} is division-free algebra under a pointwise floor and
+sup bounds.  The family is
+rectangles with free boundary, not tori.  The transport now consists of
+three machine-checked theorems and one open concrete discharge
+(Section~\ref{sec:transport-open}); \emph{no spectral statement is yet
+claimed for the rectangle family}.  Their value
 is that they are machine-checked, non-vacuous, composed, and carry the hypothesis
 the dead method violated --- not that any of them is deep.
 
@@ -1372,10 +1382,13 @@ contradicts it on the tested grid; it does not prove where the wall is,
 and an extrapolation can mislead near a transition.  The window is not optimal
 and is never called sharp.
 
-\textbf{Step~4 of Section~\ref{sec:frontier} is open}, and until it closes the
+\textbf{The discharge of Section~\ref{sec:transport-open} is open}, and until
+it closes the
 volume-uniform statement about $\specRatio$ for the coupled kernel remains
-unproved.  This is the substantive limitation, and it is a translation between
-two languages rather than a missing estimate --- which does not make it small.
+unproved.  This is the substantive limitation.  The translation between the
+two languages --- measure to operator --- is no longer the residue; what
+remains is one finite identification, measured by its gate and claimed by
+nobody until it compiles, which does not make it small.
 Two further boundaries are worth naming.  Theorem~\ref{thm:gibbs} discharges
 every hypothesis \emph{except} Dobrushin's condition;
 Theorem~\ref{thm:family} discharges it uniformly for the rectangle family

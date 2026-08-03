@@ -30758,3 +30758,27 @@ LaTeX errors, zero undefined references.
 
 **ROLES.**  The desk that wrote the paper did not audit it; external
 evaluation has its own scales and its own record.
+
+## Addendum 601 (2026-08-04, **paper v7.1: the two deictic corrections of
+the external reading, plus the sweep**)
+
+The second external reading scored v7 at 5.62/3rd on its scale (up from
+5.10/5th; its stated band on closing the one discharge: 5.90-6.05) and
+found two DEICTIC-CLASS defects — Section 6's insertion had made two old
+sentences false without touching them, the exact house class.  Fixed:
+the Limitations opener now counts ELEVEN elementary theorems and describes
+the three transport proofs honestly (the uniformisation inside the operator
+interface is Banach--Steinhaus, proved in the tree's O-1 module, not here);
+"the transport is D-6's, chartered and not begun" replaced by "three
+machine-checked theorems and one open concrete discharge; no spectral
+statement is yet claimed for the rectangle family"; the stale "translation
+between two languages" limitation updated to the true residue; and the
+abstract's headline count now says eleven.  The house sweep (grep for every
+summary-shaped count/openness phrase, then re-derivation) found NOTHING
+further stale.  Artifact verified: the corrected sentences present in the
+extracted PDF text, both old sentences absent, 24 pages, zero errors.
+Submission comments corrected to "Eleven machine-checked theorems" (194
+chars).
+
+**ROLES.**  Corrections found outside; adopted; the sweep is this desk's,
+the score is the evaluator's.
