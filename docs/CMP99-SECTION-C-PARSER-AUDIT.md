@@ -263,6 +263,21 @@ required producer: it is derived from an entry bound and a range-ball
 cardinality.  The missing physical input is a direct row estimate for the
 normalized Laplacian-plus-`Q'^*Q'` precision.
 
+The source tree already fixes the normalization needed for that direct mass
+row.  For one scale,
+`cmp99SourceTransportedBlockAverageCLM_single` contributes one literal
+`cmp99SourceBlockAverageWeight M d = M^-d` on the averaging side, while
+`cmp99SourceTransportedBlockWeightedAdjointCLM_eq_smul_adjoint` identifies the
+counting-space adjoint with the synthesis coefficient that contributes the
+second copy.  Summing the resulting `Q^* Q` row over the `M^d` sites in its
+owner block therefore leaves exactly one factor `M^-d`, rather than a block
+cardinality.  The source-faithful producer should iterate this identity along
+`generatedCountingMass`, yielding the explicit row amplitude
+`(cmp99SourceBlockAverageWeight M d)^depth` (and then use
+`generatedCountingMass_eq_QprimeMass`).  This recursive row theorem is still
+an open, compiler-unverified obligation; the operator-norm contraction of
+`Qprime` is not a substitute for it.
+
 The dependent-arrow alphabet and changing intermediate carriers recorded on
 printed page 413 belong to the later cross-scale Section-C expansion.  They
 must not be imported into (3.90), whose displayed walks are ordinary linear
