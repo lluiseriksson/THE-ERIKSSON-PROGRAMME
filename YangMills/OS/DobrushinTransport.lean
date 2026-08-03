@@ -360,8 +360,8 @@ theorem wKernel_bandCov (r : ℝ) (n : ℕ) (f : Fin 2 → ℝ) :
   have h01 : wKernel (r ^ n) 0 1 = (1 - r ^ n) / 2 := if_neg (by decide)
   have h10 : wKernel (r ^ n) 1 0 = (1 - r ^ n) / 2 := if_neg (by decide)
   unfold bandE
-  rw [Fin.sum_univ_two, Fin.sum_univ_two, Fin.sum_univ_two,
-    Fin.sum_univ_two, h00, h01, h10, h11]
+  simp only [Fin.sum_univ_two]
+  rw [h00, h01, h10, h11]
   ring
 
 /-- The witness discharges the decay hypothesis of §4, with equality. -/
@@ -419,14 +419,14 @@ theorem transport_witness {r : ℝ} (hr0 : 0 < r) (hr1 : r < 1) :
     ∧ projectedTransfer (opOf (wKernel r))
         (vacOf (fun _ : Fin 2 => (1 : ℝ))) ≠ 0 := by
   constructor
-  · obtain ⟨m, hm, hall⟩ := abstract_uniform_gap (ι := PUnit)
+  · obtain ⟨m, hm, hall⟩ := abstract_uniform_gap (ι := Unit)
       (Xs := fun _ => Fin 2)
       (fun _ => wKernel r) (fun _ => fun _ => (1 : ℝ))
       (fun _ => wKernel_symm r) (fun _ => fun _ => one_pos)
       (fun _ => wKernel_row r) hr0 hr1
       (fun _ => fun f => ⟨((f 0 - f 1) / 2) ^ 2,
         fun n => wKernel_bandDecay hr0.le n f⟩)
-    exact ⟨m, hm, hall PUnit.unit⟩
+    exact ⟨m, hm, hall ()⟩
   · exact wKernel_fluctuation_ne r hr0.ne'
 
 end Dobrushin
