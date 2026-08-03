@@ -3,7 +3,7 @@
 
 This validation runner compiles the immutable PRE-VALIDATION source checkpoint
 named by ``SOURCE_SHA``.  It is infrastructure only: the source object and its
-four Lean blobs are hash-gated before any Lean command is run.
+six Lean blobs are hash-gated before any Lean command is run.
 """
 
 from __future__ import annotations
@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "generated-qprime-row-v1"
-SOURCE_SHA = "871c4e48382ddc25d9f22830a318c520c716b297"
+RUNNER_REV = "generated-qprime-row-v2"
+SOURCE_SHA = "dfe90a0f98e78ccfd09c0c1b0205a57816c07e0d"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -47,6 +47,10 @@ SOURCE_BLOBS = {
         "30a37d888d441ccaccfb448188a8f9934be4163f0b9dcb0acf908869fdeb4a88",
     "YangMills/RG/BalabanCMP99SourceGeneratedQprimeWeightedRowAudit.lean":
         "6c0ca21c91306b7c64653a6a20c5945295b9af8bb8bf15ba1271934104a01258",
+    "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassRow.lean":
+        "ce7d949a8d5f6e7c78a1994d389823b2f481a2a02a8c9693b28565c1c06a6e47",
+    "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassRowAudit.lean":
+        "8b5f4320f92e0372b7bc551e7899ccf719a9858d85a891f65a14645dcfb250d0",
 }
 
 QUEUE = [
@@ -75,6 +79,22 @@ QUEUE = [
             "YangMills/RG/BalabanCMP99SourceGeneratedQprimeWeightedRowAudit.lean",
         ],
         3,
+    ),
+    (
+        "generated_counting_mass_row_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceGeneratedCountingMassRow",
+        ],
+        None,
+    ),
+    (
+        "generated_counting_mass_row_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassRowAudit.lean",
+        ],
+        4,
     ),
 ]
 
