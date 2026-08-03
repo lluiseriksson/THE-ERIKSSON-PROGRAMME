@@ -1,8 +1,9 @@
 import YangMills.RG.BalabanCMP116Lemma1DependentTargetWalk
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
+Validated together with the imported module in the fresh Colab clone at
+`fe5bfdd288eacee5239bc458abb225bf1ce55209`: all four declarations below
+reported exactly `[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.CMP116Lemma1DependentTargetWalk.active_mk

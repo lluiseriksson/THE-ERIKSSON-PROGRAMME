@@ -2212,6 +2212,14 @@ dictionary step.  This is an endpoint/type obligation inside the exact
 (3.126)/Theorem-3.12 reconstruction, not a second analytic hypothesis and not
 a terminal producer.
 
+That endpoint gate is now compiler-verified.  In a fresh Colab clone at
+`fe5bfdd288eacee5239bc458abb225bf1ce55209`, the target-total module completed
+`8458` jobs and all four oracle declarations reported exactly
+`[propext, Classical.choice, Quot.sound]`.  The theorem fixes the required
+sigma-indexed sum and its weakening/analytic consequences; it still receives
+the single total physical reconstruction as the named CMP99 source input and
+therefore does not discharge that input.
+
 The primary CMP99 paper itself is not an acquisition blocker here: equation
 (3.107) for `G` is visually confirmed on printed page 416 / PDF page 28,
 (3.126) for `H` is visible on printed page 420, and Theorem 3.12 is visible on

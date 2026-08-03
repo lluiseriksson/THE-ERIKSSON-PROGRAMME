@@ -8,8 +8,11 @@ import YangMills.RG.BalabanCMP116Lemma1DependentVisitedWalk
 /-!
 # Target-total dependent walks for the CMP116 Lemma-1 weakening
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
+VALIDATED: a fresh Colab Pro+ CPU/high-RAM clone at source SHA
+`fe5bfdd288eacee5239bc458abb225bf1ce55209` completed the focal build
+(`8458` jobs) and all four oracle declarations with exactly
+`[propext, Classical.choice, Quot.sound]` on 2026-08-03.  The evidence archive
+has SHA-256 `dd2037e8155eb64ea249d1e41d28646c1288b9b8da9be41ddca2fe4437939a24`.
 
 CMP99 equation (3.107) suppresses the intermediate carrier types in its
 displayed expansion of the square propagator `G`.  The rectangular minimizer
