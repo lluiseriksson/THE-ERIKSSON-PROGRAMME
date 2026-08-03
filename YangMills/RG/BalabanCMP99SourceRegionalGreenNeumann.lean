@@ -302,14 +302,33 @@ theorem comp_cmp99RegionalGreenParametrix_eq_id_sub_defect
     simpa [cmp99RegionalSquareMultiplier] using
       (sum_cmp99SourceSquarePartition_multiplier_sq_eq_id
         (g := g) P (blockSite M (2 * Q)))
-  rw [← DFunLike.congr_fun hpartition phi]
-  simp only [ContinuousLinearMap.sum_apply]
-  rw [← Finset.sum_sub_distrib]
-  apply Finset.sum_congr rfl
-  intro cell _hcell
-  exact DFunLike.congr_fun
-    (comp_cmp99RegionalGreenHead_eq_sq_sub_correction
-      P Omega hsupport K hc hK cell) phi
+  have hpartition_apply :
+      (∑ cell : FinBox 4 Q,
+        (cmp99RegionalSquareMultiplier (M := M) (g := g) P cell)
+          ((cmp99RegionalSquareMultiplier (M := M) (g := g) P cell) phi)) =
+        phi := by
+    have h := DFunLike.congr_fun hpartition phi
+    simpa only [ContinuousLinearMap.sum_apply,
+      ContinuousLinearMap.comp_apply, ContinuousLinearMap.id_apply] using h
+  calc
+    _ = ∑ cell : FinBox 4 Q,
+        (cmp99RegionalSquareMultiplier (M := M) (g := g) P cell)
+            ((cmp99RegionalSquareMultiplier (M := M) (g := g) P cell) phi) -
+          (cmp99RegionalGreenCorrection P Omega K hc hK cell) phi := by
+      apply Finset.sum_congr rfl
+      intro cell _hcell
+      exact DFunLike.congr_fun
+        (comp_cmp99RegionalGreenHead_eq_sq_sub_correction
+          P Omega hsupport K hc hK cell) phi
+    _ = (∑ cell : FinBox 4 Q,
+          (cmp99RegionalSquareMultiplier (M := M) (g := g) P cell)
+            ((cmp99RegionalSquareMultiplier (M := M) (g := g) P cell) phi)) -
+        ∑ cell : FinBox 4 Q,
+          (cmp99RegionalGreenCorrection P Omega K hc hK cell) phi := by
+      rw [Finset.sum_sub_distrib]
+    _ = phi - ∑ cell : FinBox 4 Q,
+          (cmp99RegionalGreenCorrection P Omega K hc hK cell) phi := by
+      rw [hpartition_apply]
 
 /-- The corrected regional parametrix, definitionally
 `G'_0 * sum_n (R')^n`. -/
@@ -353,7 +372,8 @@ theorem comp_cmp99RegionalGreenNeumann_eq_id
   · rw [comp_cmp99RegionalGreenParametrix_eq_id_sub_defect
       P Omega hsupport K hc hK]
     abel
-  · simpa using hdefect
+  · rw [norm_neg]
+    exact hdefect
 
 /-- CMP99 Theorem 3.7 on the common carrier: the internally patched local
 series is the canonical ambient Green.  No equality to a caller-supplied
