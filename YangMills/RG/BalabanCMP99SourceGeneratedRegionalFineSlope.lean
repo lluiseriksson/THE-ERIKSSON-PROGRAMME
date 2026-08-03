@@ -75,8 +75,9 @@ theorem
         (M := M) (Q := Q) (depth := depth) x)
       (cmp99RegionalFactoredToGeneratedFineSite
         (M := M) (Q := Q) (depth := depth) y)
-  simpa [cmp99SourceGeneratedRegionalFineSquarePartition,
-    finBoxDist_cmp99RegionalFactoredToGeneratedFineSite] using h
+  rw [finBoxDist_cmp99RegionalFactoredToGeneratedFineSite
+    (M := M) (Q := Q) (depth := depth) x y] at h
+  simpa [cmp99SourceGeneratedRegionalFineSquarePartition] using h
 
 end
 
