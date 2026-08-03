@@ -30430,3 +30430,23 @@ outcome.
 
 **ROLES.**  Gates written by the fabricating desk before fabrication;
 their verdict on the plane licenses or blocks the Lean.
+
+## Addendum 592 (2026-08-03, **D-6 CHARTERED: the spectral endpoint, with its
+gates registered and its possible corpse named in advance**)
+
+`docs/DOBRUSHIN-D6-CHARTER.md` + `scripts/judge_dobrushin_d6.py`, committed
+together BEFORE any Lean of the rung.  Target: specRatio of the normalised
+coupled kernel bounded away from 1 uniformly in the extent, inside the
+Dobrushin window — the open step the paper's frontier names.  The structural
+discovery that turns it from leap to assembly: `volumeUniform_gap` accepts
+(L, v)-dependent PREFACTORS; only the RATE must be uniform, and the uniform
+rate is what D-5 certifies at the measure level.  Sub-bridges: B-1 strip
+identity (finite sums), B-2 per-extent prefactor control (strict Perron gap
+of paper 8, per-L only — assuming a uniform Perron gap would be assuming the
+conclusion), B-3 rate transport.  Risk concentrated in B-3's free-boundary
+vs dressed-ends bookkeeping; failure is a recordable outcome.  Gates: G18
+strip identity exact; G19 the target measured (specRatio <= window, in-window
+cells, L=2..8; out-of-window control reported unjudged); G20 geometric
+prefactor convergence at fixed L.  60 checks, no assert, both modes.
+
+**ROLES.**  Chartered by the fabricating desk; the gates license or block.
