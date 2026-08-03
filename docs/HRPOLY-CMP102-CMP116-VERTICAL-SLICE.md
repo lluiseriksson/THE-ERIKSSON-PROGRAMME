@@ -2078,3 +2078,12 @@ another object mismatch.  The existing visited-state algebra therefore has
 the correct linear shape.  What remains is to extend its square transfer
 product by the source's rectangular head/readout and to identify the resulting
 unweakened series with the physical minimizer.
+
+`BalabanCMP116Lemma1RectangularVisitedWalk` now supplies the compiler-verified
+generic rectangular extension: one `R0(X0)` head, square continuation factors,
+the exact union carrier, the visited-product identity, an internally assembled
+squarefree propagator, and its entrywise Eq. (1.11) bound.  The source checkpoint
+`0ee9133a1b0c3d0eeaebcd3d9964e3ae06476ca9` passed a fresh Colab Pro+ focal and
+five-declaration audit on 2026-08-03.  This closes only the algebraic shape.  The
+certificate still requires the named CMP99 input
+`sum_walk walkTerm(R0,R_alpha) = physicalH`; no free weakened family is accepted.

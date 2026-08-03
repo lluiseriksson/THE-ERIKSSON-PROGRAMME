@@ -9,8 +9,10 @@ import YangMills.RG.BalabanCMP116VisitedWeakeningFactorization
 /-!
 # Rectangular visited walks for the printed CMP116 `H(s)`
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its results have not yet been verified by the Lean compiler.
+Compiler validation: source checkpoint `0ee9133a1b0c3d0eeaebcd3d9964e3ae06476ca9`
+was materialized in one fresh Colab Pro+ CPU/high-RAM clone on 2026-08-03;
+the focal build exited zero and the five-declaration audit used only
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP116 printed page 3 defines `H(s)` by weakening the linear generalized-walk
 expansion (1.6), cited there to CMP99 (3.107).  Every distinct cube meeting the

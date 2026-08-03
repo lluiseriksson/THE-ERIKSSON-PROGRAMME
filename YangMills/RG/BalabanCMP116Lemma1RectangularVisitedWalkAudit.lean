@@ -8,8 +8,10 @@ import YangMills.RG.BalabanCMP116Lemma1RectangularVisitedWalk
 /-!
 # Axiom audit for rectangular visited walks
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its results have not yet been verified by the Lean compiler.
+Compiler validation: source checkpoint `0ee9133a1b0c3d0eeaebcd3d9964e3ae06476ca9`
+was materialized in one fresh Colab Pro+ CPU/high-RAM clone on 2026-08-03;
+this audit exited zero and all five declarations used only
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.CMP99GeneralizedWalk.rectangularTerm
