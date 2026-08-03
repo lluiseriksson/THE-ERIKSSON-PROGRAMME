@@ -67,7 +67,7 @@ theorem cmp116WeakeningMultiplicityDegree_carrier
         cmp116WeakeningMultiplicityDegree_add,
         cmp116WeakeningMultiplicityDegree_single, ih,
         Finset.card_insert_of_notMem hd]
-      rfl
+      omega
 
 /-- The degree of a finite family multiplicity is the sum of the carrier
 cardinalities, even when the carriers overlap. -/
