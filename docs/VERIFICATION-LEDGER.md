@@ -30677,3 +30677,57 @@ bridge to D-5's rectangle, D-5 feed, assembly `C_{L,f}·α^n` — per
 
 **ROLES.**  This desk fabricates; the rung's audit belongs to another
 desk; no score.
+
+## Addendum 599 (2026-08-03/04, **corollary stage A GREEN AND ORACLED: the
+tilt layer, at exactly the predicted 8479 and 3004**)
+
+**The tilt layer is Lean.**  `YangMills/OS/DobrushinTilt.lean` (sha256
+`a14bb43e…`, 31280 bytes, anchor `082e89b1a`; design note §§4-6, gates
+G22-G23): `bandW_eq_tilt` — the band weight of the normalised coupled
+data `tiltKernel = symWeighted/lam` is EXACTLY the free strip Gibbs
+weight tilted at the two end slices by `ψ = Ω/√w`, over `lam^n`;
+`band_sum_mul_pow`/`mass_mul_pow`/`marginal_left_mul_pow`/
+`marginal_right_mul_pow` — band sums, mass, and marginals as
+`gibbsPathSum`s (multiplied through by `lam^n`: no division by the
+eigenvalue anywhere); `bandCov_mul_sq` — the DIVISION-FREE identity
+`bandCov·PS(ψ,ψ)² = PS(fψ,gψ)·PS(ψ,ψ) − PS(fψ,ψ)·PS(ψ,gψ)`;
+`floor_PS_tilt` — `c²·Z ≤ PS(ψ,ψ)` from pointwise positivity, no decay
+input; and the endpoint **`bandCov_decay_of_free_decay`**: free
+two-endpoint covariance decay at rate `α` (constants `K·K·D` per
+observable) forces band-covariance decay at the SAME rate, constant per
+`(L, f, g)` — B-2's boundary cost absorbed exactly where the consumer's
+quantifiers permit.  No geometry, no extent-uniformity, no spectral
+input; the stage is the corollary's LEMMA and manufactures no witness
+(the physical inhabitant is stage B).
+
+**Verification (fresh runtime, three passes, disconnected on
+completion).**  Pass 1 at `3ddff2528`: 12 errors in 6 machinery classes,
+ZERO mathematical defects — dead `ring` after `field_simp`
+(bandW_eq_tilt); a div-rewrite chain blocked by associativity
+(band_sum: fixed by `mul_assoc` + `div_mul_cancel₀` + a beta-reduced
+`show`); `field_simp;ring` choking on giant sum atoms (bandCov_mul_sq:
+replaced by a five-variable abstract `key` lemma); the product order of
+`gibbsPathSum` is `ψ₀·ψₙ·gW` not `ψ₀·gW·ψₙ` (PS_tilt_pos, floor);
+`le_sup'` needing its function explicit; and eight `positivity` calls
+against OPAQUE atoms (`K u`, `supObs`) replaced by explicit
+`mul_nonneg` chains.  Pass 2 at `5b9450d73`: ONE error — the `key`
+lemma's `ring` was dead too (its `field_simp` closes alone).  Pass 3 at
+`082e89b1a`, every child zero: ten certifier runs, six lane modules,
+**core «Build completed successfully (8479 jobs)» — the SIXTH
+consecutive exact core prediction** (8475…8479), and the FULL oracle:
+**3004 reports (the predicted +5), 0 sorryAx, union = exactly
+{propext, Classical.choice, Quot.sound}**.  Tilt build log: 0 errors.
+Local committed blob = the plane's stage-5 hash.
+
+**What remains of the corollary (stage B, licensed and inventoried)**:
+the geometry bridge `gibbsWeight (z2PathWeight γ) β = isingWeight (rectJ
+β γ) ∘ curry` (the `/2` in `isingWeight` compensates ordered double
+counting; single-counted products on both sides — checked in source),
+the D-5 feed `ising_covar_exp_decay` at end-slice observables with
+`rectDist ≥ n`, the Perron instantiation via `symVacuum_exists`, the
+discharge of `bandCov_decay_of_free_decay`'s hypothesis, and the public
+corollary: window ⟹ `sup_L ‖projectedTransfer‖ ≤ exp(−m)` through
+`abstract_uniform_gap`.  Then paper v7.
+
+**ROLES.**  This desk fabricates; the rung's audit belongs to another
+desk; no score.
