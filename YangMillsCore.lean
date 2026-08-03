@@ -1005,3 +1005,10 @@ import YangMills.OS.DobrushinGibbs
 -- and the lane's window 2tanh|b|+2tanh|g| < 1 becomes the hypothesis of a
 -- decay theorem about the star-cell weight.
 import YangMills.OS.DobrushinIsing
+
+-- D-5: the volume family.  The anisotropic Ising rectangle L x T: envelope
+-- row sums respect the window at every site of every rectangle (two
+-- horizontal and two vertical bonds at most, counted by injection), so the
+-- D-4b endpoints hold with rate and prefactor fixed BEFORE the quantifier
+-- over volumes.  At zero coupling the bound forces exact independence.
+import YangMills.OS.DobrushinLattice
