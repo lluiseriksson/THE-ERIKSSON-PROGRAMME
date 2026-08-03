@@ -7,22 +7,7 @@ on:
       - "pytest.ini"
       - "project-state.json"
       - "tests/**"
-      - "scripts/source_citations.py"
-      - "scripts/source_db.py"
-      - "scripts/validate_project_state.py"
-      - "scripts/validate_documentation_state.py"
-      - "scripts/validate_surface_closure.py"
-      - "scripts/check_remainder_localization.py"
-      - "scripts/surface_remainder*.py"
-      - "scripts/validate_run_manifests.py"
-      - "scripts/run_manifest_guard_ci.sh"
-      - "scripts/freeze_run_manifest_debt_baseline.py"
-      - "scripts/validate_changed_run_coverage.py"
-      - "scripts/audit_v88_sanitation.py"
-      - "scripts/**transcript*.txt"
-      - "scripts/**output*.txt"
-      - "scripts/test_monotone_nodes.py"
-      - "scripts/cascade*.py"
+      - "scripts/**"
       - "run-manifests/**"
       - ".github/run-manifest-debt-baseline.json"
       - ".github/run-manifest-debt-baseline.hashes.json"
@@ -51,22 +36,7 @@ on:
       - "pytest.ini"
       - "project-state.json"
       - "tests/**"
-      - "scripts/source_citations.py"
-      - "scripts/source_db.py"
-      - "scripts/validate_project_state.py"
-      - "scripts/validate_documentation_state.py"
-      - "scripts/validate_surface_closure.py"
-      - "scripts/check_remainder_localization.py"
-      - "scripts/surface_remainder*.py"
-      - "scripts/validate_run_manifests.py"
-      - "scripts/run_manifest_guard_ci.sh"
-      - "scripts/freeze_run_manifest_debt_baseline.py"
-      - "scripts/validate_changed_run_coverage.py"
-      - "scripts/audit_v88_sanitation.py"
-      - "scripts/**transcript*.txt"
-      - "scripts/**output*.txt"
-      - "scripts/test_monotone_nodes.py"
-      - "scripts/cascade*.py"
+      - "scripts/**"
       - "run-manifests/**"
       - ".github/run-manifest-debt-baseline.json"
       - ".github/run-manifest-debt-baseline.hashes.json"
@@ -135,7 +105,7 @@ jobs:
           if-no-files-found: error
 
   test:
-    name: "Scientific pytest triage: repairable-debt ratchet (5) + declared evidence-loss set (4)"
+    name: "Scientific pytest triage: repairable-debt ratchet (5) + quarantined evidence-loss set (4)"
     runs-on: ubuntu-latest
     steps:
       - name: Invalidate any pre-existing scientific-test triage decision
@@ -186,6 +156,12 @@ jobs:
         run: |
           python tests/scientific_test_triage_guard_adversarial.py
           python -O tests/scientific_test_triage_guard_adversarial.py
+
+      - name: Verify class-C workflow trigger coverage
+        run: >-
+          python scripts/validate_scientific_triage_trigger_coverage.py
+          --manifest .github/scientific-test-triage.json
+          --workflow .github/workflows/control-plane.yml
 
       - name: Run pytest with classified evidence-loss and repairable-debt guard
         env:
