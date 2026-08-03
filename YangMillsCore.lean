@@ -1020,3 +1020,11 @@ import YangMills.OS.DobrushinLattice
 -- Ising, no Dobrushin: the bridge's first plank, with the eigenvalue kept
 -- visible through normalise_eig.
 import YangMills.OS.DobrushinBridge
+
+-- D-6/B-2+B-3: the abstract transport theorem.  The exact identity
+-- connCorr = (sum Om^2) * bandCov(f_v) packages B-1's band weight into the
+-- consumer volumeUniform_gap: uniform MEASURE-level band decay (common rate,
+-- constants free per (i, v)) forces the uniform operator gap.  The
+-- anti-circularity clause is discharged by theorem, not assumption; the
+-- two-state witness has a nonzero fluctuation sector at every rate.
+import YangMills.OS.DobrushinTransport

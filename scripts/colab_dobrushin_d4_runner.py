@@ -36,8 +36,10 @@ REPO = "/content/eriksson"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB_PIN = "07642720480157414db592fa85b626dafb71355b"
 LANE_MODULES = ["YangMills.OS.DobrushinGibbs", "YangMills.OS.DobrushinIsing",
-                "YangMills.OS.DobrushinLattice", "YangMills.OS.DobrushinBridge"]
-CERTIFIERS = ["scripts/judge_dobrushin_d5.py",
+                "YangMills.OS.DobrushinLattice", "YangMills.OS.DobrushinBridge",
+                "YangMills.OS.DobrushinTransport"]
+CERTIFIERS = ["scripts/judge_dobrushin_d6b.py",
+              "scripts/judge_dobrushin_d5.py",
               "scripts/judge_dobrushin_d4.py",
               "scripts/judge_dobrushin_d3.py",
               "scripts/judge_dobrushin_d3b.py"]
@@ -167,6 +169,7 @@ def stage5(sha):
               "YangMills/OS/DobrushinIsing.lean",
               "YangMills/OS/DobrushinLattice.lean",
               "YangMills/OS/DobrushinBridge.lean",
+              "YangMills/OS/DobrushinTransport.lean",
               "YangMillsCore.lean",
               "oracle_check.lean",
               "scripts/judge_dobrushin_d4.py",

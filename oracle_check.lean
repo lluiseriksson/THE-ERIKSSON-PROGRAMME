@@ -3369,3 +3369,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.bandZ
 #print axioms YangMills.OS.Dobrushin.centered_dressed_orth
 #print axioms YangMills.OS.Dobrushin.band_covariance_eq
+#print axioms YangMills.OS.Dobrushin.vacuumTransfer_opOf
+#print axioms YangMills.OS.Dobrushin.connCorr_eq_bandCov
+#print axioms YangMills.OS.Dobrushin.abstract_uniform_gap
+#print axioms YangMills.OS.Dobrushin.wKernel_bandCov
+#print axioms YangMills.OS.Dobrushin.wKernel_fluctuation_ne
+#print axioms YangMills.OS.Dobrushin.transport_witness
