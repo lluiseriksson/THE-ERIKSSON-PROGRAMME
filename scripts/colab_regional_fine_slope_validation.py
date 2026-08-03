@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fresh-clone Colab gate for the CMP95/CMP99 regional cutoff slope brick.
+"""Fresh-clone Colab gate for the CMP99 source large-block scale brick.
 
 This file is validation infrastructure only.  It checks the immutable source
 checkpoint named by ``SOURCE_SHA`` and disconnects the Colab runtime at the
@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-fine-slope-v4-git-notebook"
-SOURCE_SHA = "b0bdd993a101576ff80ca1c5131c206155d2561a"
+RUNNER_REV = "regional-large-block-v1"
+SOURCE_SHA = "7031302213ca76efbaf8f526ff0b5e4dc4a588fb"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -31,46 +31,93 @@ TOOLCHAIN_URL = (
     "lean-4.29.0-rc6-linux.tar.zst"
 )
 TOOLCHAIN_SHA256 = "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
-ROOT = Path("/content/hrpoly-regional-fine-slope")
-EVIDENCE = Path("/content/hrpoly-regional-fine-slope-evidence")
-ARCHIVE = Path("/content/hrpoly-regional-fine-slope-evidence.tar.gz")
+ROOT = Path("/content/hrpoly-regional-large-block")
+EVIDENCE = Path("/content/hrpoly-regional-large-block-evidence")
+ARCHIVE = Path("/content/hrpoly-regional-large-block-evidence.tar.gz")
 ASSET = Path("/content/lean-4.29.0-rc6-linux.tar.zst")
 TOOLROOT = Path("/content/lean-4.29.0-rc6-linux")
 
 QUEUE = [
     (
-        "periodic_cutoff_slope_focal",
-        ["lake", "build", "YangMills.RG.BalabanCMP95PeriodicCutoffSlope"],
+        "periodic_active_overlap_focal",
+        ["lake", "build", "YangMills.RG.BalabanCMP95PeriodicActiveCellOverlap"],
         None,
     ),
     (
-        "periodic_cutoff_slope_audit",
+        "periodic_active_overlap_audit",
         [
             "lake",
             "env",
             "lean",
-            "YangMills/RG/BalabanCMP95PeriodicCutoffSlopeAudit.lean",
+            "YangMills/RG/BalabanCMP95PeriodicActiveCellOverlapAudit.lean",
         ],
-        5,
+        4,
     ),
     (
-        "regional_fine_slope_focal",
+        "regional_fine_scale_nogo_focal",
         [
             "lake",
-            "build",
-            "YangMills.RG.BalabanCMP99SourceGeneratedRegionalFineSlope",
+            "build", "YangMills.RG.BalabanCMP99SourceRegionalFineScaleNoGo",
         ],
         None,
     ),
     (
-        "regional_fine_slope_audit",
+        "regional_fine_scale_nogo_audit",
         [
             "lake",
             "env",
             "lean",
-            "YangMills/RG/BalabanCMP99SourceGeneratedRegionalFineSlopeAudit.lean",
+            "YangMills/RG/BalabanCMP99SourceRegionalFineScaleNoGoAudit.lean",
         ],
-        5,
+        3,
+    ),
+    (
+        "regional_large_block_partition_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceRegionalLargeBlockPartition",
+        ],
+        None,
+    ),
+    (
+        "regional_large_block_partition_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceRegionalLargeBlockPartitionAudit.lean",
+        ],
+        4,
+    ),
+    (
+        "regional_large_block_slope_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceRegionalLargeBlockSlope",
+        ],
+        None,
+    ),
+    (
+        "regional_large_block_slope_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceRegionalLargeBlockSlopeAudit.lean",
+        ],
+        4,
+    ),
+    (
+        "regional_large_block_overlap_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceRegionalLargeBlockOverlap",
+        ],
+        None,
+    ),
+    (
+        "regional_large_block_overlap_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceRegionalLargeBlockOverlapAudit.lean",
+        ],
+        2,
     ),
 ]
 
@@ -130,7 +177,7 @@ def parse_axioms(output: str, expected: int) -> None:
         raise RuntimeError(f"AXIOM_BLOCK_COUNT={len(blocks)} EXPECTED={expected}")
     for index, body in enumerate(blocks):
         names = {name for name in body.split(",") if name}
-        if names != ALLOWED_AXIOMS:
+        if not names.issubset(ALLOWED_AXIOMS):
             raise RuntimeError(f"AXIOM_SET_{index}={sorted(names)}")
 
 
