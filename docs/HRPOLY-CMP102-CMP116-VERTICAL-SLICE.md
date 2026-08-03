@@ -1959,3 +1959,26 @@ and independently rehashed on Windows as
 The runtime was disconnected and deleted immediately afterward.  This brick
 changes neither the live `18/41` producer count nor the number of
 `TermSource` inhabitants.
+
+The exact finite powerset cost is now compiler-verified as a second, separate
+brick.  For one omitted-subset term, the radial exponent is bounded by the
+head carrier cardinality plus the sum of all tail carrier cardinalities.  The
+sum of the norms of the complete finite expansion is therefore bounded by
+exactly `2 ^ indices.card` copies of that common radial majorant.  No sign
+cancellation is used and no infinite sum is rearranged.
+
+This theorem deliberately does **not** identify `indices.card` with the
+integer `m` in the printed CMP116 split `m > 2^4`.  It also does not absorb
+`2 ^ indices.card` into a contour ratio or a source walk weight.  Those are
+the remaining source-to-series dictionary and summability obligations.
+
+One fresh Colab Pro+ CPU/high-RAM clone at source checkpoint
+`1e7e3bb4` completed the focal target with
+`Build completed successfully (2758 jobs).` in 30.177 seconds.  The focused
+audit exited zero in 3.976 seconds and all four declarations depend exactly
+on `[propext, Classical.choice, Quot.sound]`.  The complete gate recorded
+`FINAL_STATUS=PASS` after 192.292 seconds; the visible transcript was saved
+and independently rehashed on Windows as
+`89e225ae8432711a2d503c8f401ff488645d178b69ceb8a24770fbf8a1f0e59b`.
+The runtime was disconnected and deleted immediately afterward.  The live
+producer count remains `18/41` and there is still no `TermSource` inhabitant.

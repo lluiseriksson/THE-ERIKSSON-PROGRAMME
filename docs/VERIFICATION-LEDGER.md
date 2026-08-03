@@ -26829,3 +26829,29 @@ the finite powerset cost, identify total degree with the printed CMP116
 integer `m`, or construct `H0(s)`.  Consequently no `PreEq136` field is
 discharged, the live numerator remains exactly 18/41, and no `TermSource`
 inhabitant is produced.
+
+## Addendum 541 (2026-08-03, **finite powerset multiplicity majorant GREEN**)
+
+`BalabanCMP116WeakeningMultiplicityPowersetMajorant.lean` was replayed with
+its focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `1e7e3bb4`.  The runtime was disconnected and deleted immediately
+after the terminal result.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The focal target exited
+zero with the literal terminal line `Build completed successfully (2758
+jobs).` after 30.177 seconds.  The audit exited zero after 3.976 seconds and
+its four declarations each depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS` after 192.292 seconds.  The
+visible Colab transcript was saved and independently rehashed on Windows as
+`89e225ae8432711a2d503c8f401ff488645d178b69ceb8a24770fbf8a1f0e59b`.
+
+The verified finite estimate bounds every omitted-subset term by the common
+total-degree radial majorant and bounds the sum of all term norms by exactly
+`2 ^ indices.card` copies of it.  It uses neither cancellation nor an
+infinite reordering.  It does not identify `indices.card` with the printed
+CMP116 integer `m`, absorb the finite factor into a physical ratio, prove the
+remaining nested-series summability, or construct `H0(s)`.  Consequently no
+`PreEq136` field is discharged, the live numerator remains exactly 18/41,
+and no `TermSource` inhabitant is produced.

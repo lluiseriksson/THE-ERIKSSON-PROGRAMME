@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP116WeakeningMultiplicityMajorant
 /-!
 # Powerset majorants for weakening multiplicities
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its results have not yet been verified by the Lean compiler.
-
 The exact expansion of a product of weakened differences has one finite term
 for every omitted subset.  This module records the honest finite cost of that
 expansion: the radial exponent is the total carrier multiplicity, while the
