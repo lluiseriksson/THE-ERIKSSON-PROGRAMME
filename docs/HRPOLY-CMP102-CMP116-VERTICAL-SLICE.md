@@ -2244,3 +2244,11 @@ through the rectangular readout above.  Thus the open boundary is not a mere
 role assignment on the existing raw word: it is the exact per-species internal
 factor expansion followed by the source grouping parser.  The examples hidden
 behind "etc." must be generated from that expansion, not guessed.
+
+There is an exact squarefree bridge for the already specialized Pi4
+covariance, `cmp116Lemma1PhysicalCovariancePropagator_eq`.  It identifies the
+entrywise L1 series with the literal physical `G(s)`, but it does not identify
+that Pi4 object with every regional `C_D` or `G'` occurrence inside the three
+(3.95) species.  It is therefore reusable substrate for the internal expansion,
+not yet a producer of it; a regional/source-carrier dictionary is still
+required before any of those factors can be replaced by that series.
