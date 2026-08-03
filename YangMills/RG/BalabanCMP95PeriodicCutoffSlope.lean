@@ -280,11 +280,25 @@ theorem norm_cmp99SourceGeneratedFineCellCutoff_finBox_sub_le
     exact finBox_cast_apply_val hsize y i
   have hdist : finBoxDist x' y' = finBoxDist x y := by
     exact finBoxDist_cast_size hsize x y
+  have hxcoord :
+      (fun i => ((x' i).val : ℝ) + offset i) =
+        cmp99SourceGeneratedFineCellCoordinate M depth
+          (fun i => (x i).val) := by
+    funext i
+    simp only [offset, cmp99SourceGeneratedFineCellCoordinate, hxval]
+    ring
+  have hycoord :
+      (fun i => ((y' i).val : ℝ) + offset i) =
+        cmp99SourceGeneratedFineCellCoordinate M depth
+          (fun i => (y i).val) := by
+    funext i
+    simp only [offset, cmp99SourceGeneratedFineCellCoordinate, hyval]
+    ring
   have h := norm_cmp95RescaledPeriodicTensorCutoff_finBox_sub_le
     P M0 Q cell offset x' y'
+  rw [hxcoord, hycoord] at h
   simpa [cmp99SourceGeneratedFineCellCutoff,
-    cmp99SourceGeneratedCellCutoffScale, cmp99SourceGeneratedFineCellCoordinate,
-    M0, offset, hxval, hyval, hdist] using h
+    cmp99SourceGeneratedCellCutoffScale, M0, hdist] using h
 
 end
 
