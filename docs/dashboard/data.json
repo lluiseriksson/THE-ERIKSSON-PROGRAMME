@@ -2,8 +2,8 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-07-28",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
+    "updated": "2026-07-31",
+    "checkpoint": "latest recorded merged-core checkpoint 7460e035 - lake build YangMillsCore green at 8463 jobs; earlier measured source freeze a17d7816 remains separately recorded",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
@@ -92,6 +92,10 @@
     {
       "id": "asm",
       "label": "Mass-gap assembly and honesty leaks"
+    },
+    {
+      "id": "os",
+      "label": "Finite-lattice reflection / OS pilots"
     },
     {
       "id": "cont",
@@ -733,6 +737,58 @@
         {
           "label": "Verification ledger",
           "ledger": true
+        }
+      ]
+    },
+    {
+      "id": "OS2T",
+      "label": "SU(2) two-transporter theta prism",
+      "status": "partial",
+      "cls": "A",
+      "group": "os",
+      "col": 8,
+      "row": 5,
+      "note": "Three independent read-only reports pass the registered abstract geometry/algebra claims: theta-half b1=2, quotient G^2/Ad G, pointwise reflection compatibility, pure (1,1/2,1/2) witness, factor 1/16, and beta^4/512. Tag and broad-tree-search contamination were self-declared, so future blind contracts require raw SHAs plus file whitelists. Physical GaugeConfig, OS positivity, Lean and Gate 7 remain open.",
+      "links": [
+        {
+          "label": "Geometry pre-audit",
+          "path": "docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md"
+        },
+        {
+          "label": "Representation pre-audit",
+          "path": "docs/THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md"
+        }
+      ]
+    },
+    {
+      "id": "OS2N",
+      "label": "Two-free-transporter SU(2) no-go",
+      "status": "partial",
+      "cls": "A",
+      "group": "os",
+      "col": 9,
+      "row": 5,
+      "note": "Formal draft PR #39 at 1fa29e65: free independent transporters absent from the observable project to the trivial sector. Audit provenance, integration, and any physical gauge-fixing interpretation remain open.",
+      "links": [
+        {
+          "label": "Intake status",
+          "path": "docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md"
+        }
+      ]
+    },
+    {
+      "id": "MAN623",
+      "label": "Run-manifest validator backlog",
+      "status": "open",
+      "cls": "D",
+      "group": "asm",
+      "col": 7,
+      "row": 5,
+      "note": "The path-filtered PR check reports 4,134 errors across 623 unchanged manifests. This is repository-level control-plane signal debt; it is not attributable to PR #39's manifest-free diff.",
+      "links": [
+        {
+          "label": "Backlog record",
+          "path": "docs/CONTROL-PLANE-MANIFEST-BACKLOG-20260731.md"
         }
       ]
     },

@@ -17,12 +17,12 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
-checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
-Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
-unitary bridge Addendum 466.  The latest measured source checkpoint is
-`a17d7816` (on `main`) with the latest recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 508; the STANDALONE PAPER v1.2 (Addendum 508) lives at `papers/poincare-wall/` — TeX+PDF same editorial commit `61d56ce6`, submission-ready, formal freeze = `a17d7816`/8412).
+**Live-state snapshot updated:** 2026-07-31.  **Latest recorded merged-core
+checkpoint:** `7460e035`, with `lake build YangMillsCore` green at **8463
+jobs**; see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
+The earlier measured source freeze `a17d7816` (on `main`) remains the anchor for
+the following campaign record and its measured **8412-job** full core build
+(hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 508; the STANDALONE PAPER v1.2 (Addendum 508) lives at `papers/poincare-wall/` — TeX+PDF same editorial commit `61d56ce6`, submission-ready, formal freeze = `a17d7816`/8412).
 
 **PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
 is paper commit `193bb675`: all 24 theorem-map names link to the immutable
@@ -59,6 +59,49 @@ The public static dashboard now lives at
 `https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/`.  It mirrors
 the HORIZON/M3 dependency DAG as curated green/amber/open nodes and is guarded
 by `scripts/validate_dashboard.py`.
+
+**Two-transporter SU(2) theta-prism pilot: geometry and algebra pre-audited
+(2026-07-31).**  Three independent read-only reports pass the registered
+abstract geometry/algebra claims.  A geometry auditor independently confirmed
+that each three-parallel-edge half is a theta multigraph with `b1=2`, that its
+incidence subdivision (not the physical graph) is `K(2,3)`, and that gauge
+reduction leaves two loop variables modulo simultaneous conjugation.  It also
+confirmed the pointwise identity `theta(H_i)=s^-1 H_i^-1 s`.  Removing the
+third branch gives `b1=1`, but disappearance of the proposed representation
+sector was outside the geometric remit.  The audit found that one-incidence
+Haar elimination is valid only when the observable does not depend on the
+edge.  A separate read-only representation audit independently rederived the
+`1/2` projection coefficient, complete one-cycle orthogonality,
+`||F||^2=3/4`, the pure `(1,1/2,1/2)` sector, the factor `1/16`, and the
+pre-registered `beta^4/512` bound for `0<beta<=1`.  That audit disclosed that
+an annotated tag leaked a previous verdict, so future blind contracts must use
+raw SHAs only.  A full-calculation auditor then passed all eight claims and
+obtained the coefficient `1/2` by the independent character-convolution route;
+it disclosed that a broad tree search printed unrelated reports.  Future blind
+contracts therefore whitelist readable files instead of authorizing an entire
+tree.  Removing the third branch kills the theta sector, not all one-cycle
+sectors; and the witness-specific `beta<0` bound does not extend general kernel
+positivity.  None of these results is in Lean or realizes a physical `GaugeConfig`
+cell; none proves OS positivity or counts as SU(2) Gate 7.  See
+[`docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md`](docs/THETA-PRISM-GEOMETRY-PREAUDIT-20260731.md)
+and
+[`docs/THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md`](docs/THETA-PRISM-REPRESENTATION-PREAUDIT-20260731.md).
+
+**Two-free-transporter SU(2) no-go: formal draft, terminal audit still open
+(2026-07-31).**  Draft PR #39 at `1fa29e65` separately formalizes that two
+freely and independently Haar-integrated transporters, when absent from the
+observable, project the two stated orientations to the trivial sector for the
+concrete reduced SU(2) Wilson weight.  It does not derive a physical gauge
+fixing, rule out correlated transporters, or prove OS positivity.  A producing
+task reported `PASS WITH NOTES`, but the public diff contains no durable record
+establishing that the auditor was a fresh blind session; the PASS is therefore
+non-terminal pending provenance or a new independent audit.  The PR's red
+control-plane check reports 4,134 errors across 623 run manifests, while the PR
+changes no manifest or validator, so that failure is tracked separately as
+repository-level signal debt.  See
+[`docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md`](docs/SU2-TWO-TRANSPORTER-NOGO-STATUS-20260731.md)
+and
+[`docs/CONTROL-PLANE-MANIFEST-BACKLOG-20260731.md`](docs/CONTROL-PLANE-MANIFEST-BACKLOG-20260731.md).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
