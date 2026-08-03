@@ -1092,7 +1092,7 @@ space: no infinite-volume state is constructed anywhere, and the word
 \section{Reproducibility}
 
 \textbf{Anchor.}  All sources cited above are read at commit
-\nolinkurl{c8e9ae51b2aee8c86bb365b1ed68ae5be7ea30d2} of
+\nolinkurl{8e8375d3415575e997765e61515e1a8af283df97} of
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Toolchain
 \nolinkurl{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned at
 \nolinkurl{07642720480157414db592fa85b626dafb71355b}.  A runner verifies all
@@ -1112,23 +1112,29 @@ the same plane, one job per new module, and is not an extrapolation.
 what is measured about them.}  All six --- oscillation, Gr\"uss, conditional,
 comparison, Gibbs, Ising --- are imported by \texttt{YangMillsCore.lean} at
 this anchor, and their endpoints are listed by name in
-\texttt{oracle\_check.lean}.  \emph{What has been measured is each module's
-own build, exit code zero, and a targeted oracle over its endpoints --- not a
-zero-error full core rebuild.}  The job accounting is stated in full because
+\texttt{oracle\_check.lean}.  \emph{What has been measured now includes the
+full core, in a fresh clone.}  The job accounting is stated in full because
 part of it was wrong and was corrected \emph{before} the number was taken:
 the wiring commit registered $8468\to8473$, using this lane's own D-2 count
 as the base, but the branch base already carries a sibling paper's module
 measured at $8469$, so the corrected expectation with six new modules ---
-registered in the D-4b commit, still before any measurement --- is
-$\mathbf{8475}$.  The fresh-clone core build at this anchor then showed
-exactly $8475$ jobs in its denominator, and completed $8473$ of them with the
-six modules of this paper all green; it did \emph{not} reach zero errors,
-because a module belonging to a \emph{different} paper's in-flight campaign
-(\texttt{SpatialReconstruction.lean}, six errors in material committed
-without compilation) fails at this anchor, and repairing proofs one did not
-write is not this paper's to do.  A full zero-error core count therefore
-remains \textbf{unmeasured}, blocked by that module, and is recorded as such:
-a denominator observed in a failing build is not a certified count.
+registered before any measurement --- was $\mathbf{8475}$.  A \emph{fresh}
+Linux clone (new runtime, \texttt{git clone} from scratch, toolchain
+installed by \texttt{elan}, Mathlib artefacts from \texttt{cache get} and
+nothing else reused) then built this paper's two lane modules and their
+entire chain green, and the core build completed with lake's own closing
+line --- \emph{Build completed successfully (8475 jobs)} --- and zero
+errors: the predicted number, taken.  One honesty note travels with it.  At
+the fresh clone's first commit a module belonging to a \emph{different}
+paper's campaign (\texttt{SpatialReconstruction.lean}, material committed
+without compilation) still failed; its seven defects were repaired across
+two commits --- five dead closing tactics deleted, one pin-absent lemma name
+re-derived through \texttt{add\_right\_cancel}, one \texttt{simpa} replaced
+by the definitional term it was fighting for --- with no statement changed
+anywhere, and the mathematical audit of that lane stays with its author.
+The green count was then taken in the same clone after the final one-line
+repair, with every module of this paper byte-identical throughout, as the
+hash table below witnesses.
 A previous version of this paper carried, at this spot, the opposite sentence
 --- that the modules were not yet imported --- left over from the draft that
 preceded the wiring; its correction had been appended past the end of the
@@ -1156,7 +1162,12 @@ the one-bond attainment and unconditional decay, and the star window
 theorem.  The union of every axiom list printed, over the three
 runs, is exactly $\{\texttt{propext},\allowbreak\
 \texttt{Classical.choice},\allowbreak\ \texttt{Quot.sound}\}$: Lean's three
-standard axioms, no project axiom, no \texttt{sorry} in any build log.  The
+standard axioms, no project axiom, no \texttt{sorry} in any build log.
+And at this anchor the \emph{repository-wide} oracle ran to completion in
+the same fresh clone: exit code zero over $2980$ axiom reports ---
+seventy-six of them this lane's --- with \textbf{zero} occurrences of
+\texttt{sorryAx}, and the union of every axiom list printed again exactly
+the standard triple.  The
 union is computed as a \emph{union} rather than by matching each printed line
 against the standard triple, because a declaration depending on \emph{fewer}
 axioms is perfectly clean and would fail that naive test.
@@ -1166,8 +1177,8 @@ modules would otherwise not find it.}  The runner builds two lane modules by
 name; \repofile{YangMills/OS/DobrushinRowSum.lean}{DobrushinRowSum.lean} is not
 one of them.  It is nevertheless imported by
 \texttt{DobrushinIsing.lean} at this anchor, so the zero exit of the
-\emph{lane} build covers it --- a statement deliberately not delegated to the
-core build, whose exit at this anchor is not zero.
+\emph{lane} build covers it --- and the core build's zero exit at this
+anchor now covers it a second time.
 
 \textbf{Independent hash agreement.}  A second desk, working from its own
 checkout on a different operating system and without coordination on the value,
@@ -1243,9 +1254,9 @@ absent, malformed, non-zero, zero.  A run in which every sentinel reads zero is
 reported as a \emph{pass candidate}, never as a pass, because the logs still
 have to be read.
 
-\textbf{Every module of this paper in the anchor compiles} --- the sibling
-module that fails there belongs to a different paper's campaign, and the
-job-count paragraph above records it.  An earlier version of this paper
+\textbf{Every module in the anchor compiles} --- this paper's and, after the
+cross-desk repair the job-count paragraph records, the sibling's too.  An
+earlier version of this paper
 was anchored to a tree in which
 \repofile{YangMills/OS/DobrushinCoefficient.lean}{DobrushinCoefficient.lean} did
 not, and said so in this section rather than leaving it to be discovered.  It

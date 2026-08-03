@@ -30345,3 +30345,56 @@ new phrases 1, 19 pp, zero LaTeX errors, zero undefined references.
 
 **ROLES.**  Items found by the external reading; this desk verified, fixed,
 re-verified; no score in the paper; v5.4 not externally evaluated.
+
+## Addendum 590 (2026-08-03, **THE COUNT, TAKEN: fresh clone, core green at
+exactly 8475, repository-wide oracle exit 0 — and the sibling module
+repaired along the way, seven defects in three commits**)
+
+Owner instruction: leave the v2 replacement without its declared reserves.
+Both are now closed by measurement.
+
+**THE FRESH-CLONE RUN** (new Colab runtime, rm -rf + git clone, elan from
+scratch, `lake exe cache get` for Mathlib only).  At `c88604c01`: judges
+10/10 zero in both modes; `DobrushinGibbs` and `DobrushinIsing` built green
+from nothing with their whole chain; the core build ran to its tail and
+failed in exactly ONE line of the sibling module.  After the one-line repair
+(`8e8375d34`), the same clone completed:
+
+* **`Build completed successfully (8475 jobs)`** — lake's own closing line,
+  zero errors, the corrected prediction of Addendum 586 EXACT;
+* **repository-wide oracle exit 0**: 2980 axiom reports, 76 of them this
+  lane's, ZERO `sorryAx`, union of every list = exactly
+  `{propext, Classical.choice, Quot.sound}`;
+* stage-5 hashes: every module of this paper byte-identical to the certified
+  bytes (DobrushinIsing still `4e880ff0…`/29158), `git diff c8e9ae51b..
+  8e8375d34 -- YangMills/OS/` touches ONLY SpatialReconstruction.
+
+**THE SIBLING REPAIR, complete record.**  Seven defects across three
+commits, none of them a statement change: four dead `ring`s after
+`field_simp` (c8e9ae51b), then — measured by the fresh clone — a metavariable
+sum_congr rewrite in the coercivity zero case replaced by an explicit
+equation, `Finset.mul_add` (absent from the pin) rewritten out of the hpar
+chain, an nlinarith that needed a product it could not form replaced by
+`linear_combination` with coefficient −(D^L·D)/2 computed by hand, a FIFTH
+dead ring, `self_eq_add_left` (absent) re-derived through
+`add_right_cancel` (c88604c01), and finally a `simpa` that unfolded the goal
+to a mul_eq_zero disjunction but could not unfold `transferOp` in the
+hypothesis — deleted in favour of `congrFun hu σ`, which was ALREADY the
+proof by defeq (8e8375d34).  The handoff's own warning held: everything
+after 27bda084 in that module had never met a compiler.  Its lane's
+mathematical audit stays with its author.
+
+**RUNTIME RECORD.**  One fresh runtime for the whole unit; three runner
+invocations (fresh full, incremental after repair) plus one validation cell;
+disconnected on completion.
+
+**PAPER v5.5** (20 pp): anchor `8e8375d34`; the job paragraph now states the
+taken number with the fresh-clone pedigree and the honesty note about the
+repair; the repo-wide oracle paragraph added; "Every module in the anchor
+compiles" restored to its strong form, true again; the RowSum coverage
+doubled by the green core.  Extraction-verified: 'Build completed
+successfully (8475 jobs)' 1, '2980 axiom reports' 1, 'remains unmeasured' 0,
+'not reach zero errors' 0.
+
+**ROLES.**  This desk fabricated the Dobrushin lane and repaired the sibling
+under owner instruction; it does not audit itself; no score in the paper.
