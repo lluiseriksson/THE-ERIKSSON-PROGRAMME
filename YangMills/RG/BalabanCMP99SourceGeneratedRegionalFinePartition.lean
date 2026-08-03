@@ -7,15 +7,17 @@ import YangMills.RG.BalabanCMP95RescaledPeriodicSquarePartition
 import YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
 
 /-!
-# The literal fine partition for the CMP99 regional Green construction
+# An auxiliary terminal-scale partition for the CMP99 regional Green algebra
 
 PRE-VALIDATION: this source is present, but its `.olean` has not yet been
 materialized and its result is not compiler-verified.
 
-The regional Neumann algebra must use the smooth cutoff on the actual fine
-lattice.  Pulling the coarse partition back through `blockSite` is
-piecewise constant and loses the `M₀⁻¹` slope in CMP99 (3.89).  This file
-installs the already generated fine CMP95 partition instead.
+The regional Neumann algebra must use a smooth cutoff on the actual fine
+lattice.  Pulling a coarse partition back through `blockSite` is piecewise
+constant.  This file installs an exact smooth CMP95 partition on the
+terminal-scale torus, but its translation spacing is only twice the certified
+precision range.  It is algebraic infrastructure, not the source large-block
+partition that supplies the `M⁻¹` factor in CMP99 (3.89).
 
 It also gives a canonical support thickening by the physical finite range.
 The resulting margin is proved from the definition; identifying this
@@ -39,8 +41,7 @@ def cmp99RegionalFactoredToGeneratedFineSite
   fun i => Fin.cast
     (cmp99RegionalLatticeSize_eq_pow_mul M (2 * Q) (depth + 1)).symm (x i)
 
-/-- Literal CMP95 fine partition, expressed on the factored carrier used by
-the regional Dirichlet algebra. -/
+/-- Auxiliary CMP95 fine partition on the factored terminal-scale carrier. -/
 noncomputable def cmp99SourceGeneratedRegionalFineSquarePartition
     (P : CMP95SourceSmoothPartitionProfile) :
     CMP99RegionalFineSquarePartition (M ^ (depth + 1)) Q where
@@ -50,7 +51,7 @@ noncomputable def cmp99SourceGeneratedRegionalFineSquarePartition
     sum_cmp99SourceGeneratedFineCellCutoff_sq P M Q depth
       (cmp99RegionalFactoredToGeneratedFineSite x)
 
-/-- Public normalization theorem for the physical fine partition. -/
+/-- Public normalization theorem for the auxiliary fine partition. -/
 theorem cmp99SourceGeneratedRegionalFineSquarePartition_square_sum
     (P : CMP95SourceSmoothPartitionProfile)
     (x : FinBox 4 (M ^ (depth + 1) * (2 * Q))) :

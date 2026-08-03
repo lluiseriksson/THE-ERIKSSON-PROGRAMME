@@ -250,9 +250,10 @@ theorem norm_cmp95RescaledPeriodicTensorCutoff_finBox_sub_le
       simp
       ring
 
-/-- Boundary-safe generated fine-lattice cutoff slope.  The scale and torus
-side are generated internally, so the physical `M0⁻¹` gain cannot be lost by
-passing through a blockwise-constant pullback. -/
+/-- Boundary-safe slope of the auxiliary generated fine-lattice cutoff.
+The inverse translation spacing is retained exactly, but this spacing is only
+twice the certified terminal precision range.  Therefore this theorem alone
+does not provide the source `M⁻¹` gain in CMP99 (3.89). -/
 theorem norm_cmp99SourceGeneratedFineCellCutoff_finBox_sub_le
     (P : CMP95SourceSmoothPartitionProfile)
     (M Q depth : ℕ) [NeZero M] [NeZero Q]

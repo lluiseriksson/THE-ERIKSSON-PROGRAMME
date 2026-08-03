@@ -126,9 +126,11 @@ theorem sum_cmp95RescaledPeriodicTensorCutoff_sq
   simp_rw [cmp95RescaledPeriodicTensorCutoff_sq]
   exact sum_cmp95RescaledPeriodicTensorSquareWeight P Q M0 x
 
-/-- Literal generated fine-lattice side of one two-large-block source cell.
-This is the only scale compatible simultaneously with `Q` translated source
-cells and the fine torus of side `M^(depth+1) * (2Q)`. -/
+/-- Generated fine-lattice side of one auxiliary two-terminal-range cell.
+This is the scale compatible simultaneously with `Q` translated cells and
+the terminal-scale torus of side `M^(depth+1) * (2Q)`.  CMP99 p. 408 uses a
+separate source large-block scale, one further factor `M` above the terminal
+operator range. -/
 def cmp99SourceGeneratedCellCutoffScale (M depth : ℕ) : ℝ :=
   (2 * M ^ (depth + 1) : ℕ)
 
@@ -146,10 +148,9 @@ theorem cmp99SourceGeneratedCellCutoffScale_mul_Q
   rw [cmp99RegionalLatticeSize_eq_pow_mul]
   ring
 
-/-- The previously used one-extra-`M` scale agrees with the literal
-two-large-block cell side only in the special case `M = 2`.  This arithmetic
-fact is why the two scales must not be interchanged in the general source
-dictionary. -/
+/-- The source one-extra-`M` scale agrees with this auxiliary two-terminal
+scale only in the special case `M = 2`.  This arithmetic fact is why the two
+scales must not be interchanged in the source dictionary. -/
 theorem generated_extraM_scale_eq_cell_scale_iff
     (M depth : ℕ) [NeZero M] :
     M ^ (depth + 2) = 2 * M ^ (depth + 1) ↔ M = 2 := by
@@ -163,7 +164,7 @@ theorem generated_extraM_scale_eq_cell_scale_iff
   · intro hM
     rw [hM]
 
-/-- Physical coordinate centered on a two-large-block source cell.  The
+/-- Coordinate centered on one auxiliary two-terminal-range cell.  The
 `1/2` treats lattice points as unit-cell centers; the final `M0/2` shift is
 the fine-lattice counterpart of the coarse convention
 `block.val / 2 - 1 / 4`. -/
@@ -172,8 +173,8 @@ def cmp99SourceGeneratedFineCellCoordinate
   fun i => (x i : ℝ) + 1 / 2 -
     cmp99SourceGeneratedCellCutoffScale M depth / 2
 
-/-- Squared fine cutoff attached to a source cell, evaluated at the actual
-fine site rather than at its terminal block owner. -/
+/-- Squared auxiliary cutoff evaluated at the actual fine site rather than
+at its terminal block owner. -/
 def cmp99SourceGeneratedFineCellSquareWeight
     (P : CMP95SourceSmoothPartitionProfile)
     (M Q depth : ℕ) [NeZero M] [NeZero Q]
@@ -183,7 +184,7 @@ def cmp99SourceGeneratedFineCellSquareWeight
     (cmp99SourceGeneratedCellCutoffScale M depth) cell
     (cmp99SourceGeneratedFineCellCoordinate M depth fun i => (x i).val)
 
-/-- Literal nonnegative fine cutoff at the corrected generated cell scale. -/
+/-- Literal nonnegative fine cutoff at the auxiliary terminal scale. -/
 def cmp99SourceGeneratedFineCellCutoff
     (P : CMP95SourceSmoothPartitionProfile)
     (M Q depth : ℕ) [NeZero M] [NeZero Q]
