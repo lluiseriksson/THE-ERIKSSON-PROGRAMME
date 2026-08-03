@@ -30398,3 +30398,35 @@ successfully (8475 jobs)' 1, '2980 axiom reports' 1, 'remains unmeasured' 0,
 
 **ROLES.**  This desk fabricated the Dobrushin lane and repaired the sibling
 under owner instruction; it does not audit itself; no score in the paper.
+
+## Addendum 591 (2026-08-03, **D-5 PRE-REGISTERED: the volume family — gates
+G15/G16/G17 committed before any Lean of the rung; and D-6 declared**)
+
+**THE RUNG.**  D-5 instantiates the Ising chain of Theorem thm:ising at a
+concrete FAMILY of volumes: the L x T rectangle with coupling beta on
+horizontal nearest neighbours, gamma on vertical, free boundary, Manhattan
+distance `Nat.dist + Nat.dist`.  The claim to be fabricated: envelope row
+sums are at most the window `2tanh|b|+2tanh|g|` at every site of every
+rectangle (interior sites attain it; boundary sites sit strictly below), so
+the D-4b endpoints apply with alpha and prefactor fixed BEFORE the volume —
+the statement quantifies over every (L,T) AFTER its constants.
+
+**GATES, registered before the Lean** (`scripts/judge_dobrushin_d5.py`, this
+commit): G15 row sums with interior attainment on four lattices and three
+cells; G16 the bound itself against EXHAUSTIVE Gibbs covariances (full
+enumeration, no sampling) over every ordered pair of distinct sites on three
+lattices per cell; G17 the uniformity probe — one bound computed once, four
+growing volumes measured under it.  37 checks expected; no assert; counter;
+both interpreter modes on the Colab plane.
+
+**D-6, DECLARED with its true price** (charter to follow in
+`docs/DOBRUSHIN-D6-CHARTER.md`): the spectral endpoint — transport of the
+family's measure-level decay into `volumeUniform_gap`, requiring the
+transfer-matrix identification (space-time Gibbs correlators as matrix
+elements of powers of the coupled kernel).  This is the open step the paper
+names; it is a translation with a consumer already elaborated, and it is
+declared BEFORE being attempted, with failure a possible and recordable
+outcome.
+
+**ROLES.**  Gates written by the fabricating desk before fabrication;
+their verdict on the plane licenses or blocks the Lean.
