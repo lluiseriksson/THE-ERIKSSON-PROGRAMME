@@ -614,7 +614,7 @@
       "extracted_claims": [
         "Equation (3.26) defines the background-field operator Delta_a(U), and Eq. (3.27) defines its Dirichlet inverse G(U) = (Delta_a restricted to Omega_0)^(-1).",
         "Equation (3.107), visually checked on printed page 416 / PDF page 28, expands G as the sum over linear generalized walks omega = ((0,X0),(alpha1,X1),...,(alphan,Xn)) with consecutive simple localization domains intersecting, and with ordered term R0(X0) R_alpha1(X1) ... R_alphan(Xn).",
-        "Equation (3.126), visually checked on printed page 420 / PDF page 32, represents the rectangular minimizer as H B = G Q* (Q G Q*)^(-1) B. Therefore (3.107) is an input to the H random-walk construction, not by itself an expansion of H; the physical H reconstruction also consumes the rectangular composition and Theorem 3.12.",
+        "Equation (3.126), visually checked on printed page 420 / PDF page 32, represents the rectangular auxiliary as H B = G Q* (Q G Q*)^(-1) B. The paragraph following (3.133) states that the operator solving the variational problems (3.109)-(3.110) additionally inserts the coordinate factor (U eta)^(-1) in this formula (or uses the equivalent transformed-data convention). Therefore (3.107) is an input to the H random-walk construction, not by itself an expansion of the physical H; that reconstruction also consumes the rectangular composition, the coordinate convention, and Theorem 3.12.",
         "Printed page 413 states that the generalized factors R'_alpha(X) usually act between different scales, that not every combination of alpha labels is admissible, and that this typing is omitted from the displayed expansion only because it does not affect the bounds. Printed page 415 says the G expansion has a few additional factor possibilities and leaves the alphabet non-exhaustive with 'etc.'. Thus a common-state square-tail model is auxiliary unless a carrier-preserving reduction is proved; the physical reconstruction requires a complete dependent-arrow alphabet.",
         "Equation (3.108), on the same rendered page, bounds the kernel of each ordered walk term by the printed walk-count factors and exponential tree-distance decay, and states the corresponding bounds for the operator norms in (3.42)-(3.47). CMP116 (1.11), visually checked separately on printed page 5, then uses d(omega) as the length of a shortest tree graph intersecting all localization domains of omega; this is a walk quantity, not an entrywise matrix coordinate.",
         "Theorem 3.3 says that, under the assumptions of Theorem 3.1, G(U) satisfies the inequalities (3.42)-(3.47) with the source term interpreted on lattice bonds.",
@@ -653,15 +653,15 @@
         },
         {
           "id": "cmp99.eq3.126.rectangular-minimizer-H",
-          "statement": "Rectangular minimizer represented through the square propagator.",
+          "statement": "Rectangular equation-(3.126) auxiliary represented through the square propagator.",
           "ascii": "H B = G Q* (Q G Q*)^(-1) B",
           "exactness": "exact_formula",
           "confidence": "visual",
           "assumptions": [
-            "H is the unique minimizer of (3.109)-(3.110).",
-            "The vanishing identities (3.124) have been proved."
+            "The vanishing identities (3.124) have been proved.",
+            "The displayed B uses the equation-(3.126) coordinates; the source separately inserts (U eta)^(-1), or transforms the data equivalently, for the literal variational-problem operator."
           ],
-          "conclusion": "A source-faithful H walk reconstruction must compose the G expansion and the inverse/readout factors in (3.126); citing (3.107) alone is insufficient.",
+          "conclusion": "A source-faithful physical H walk reconstruction must compose the G expansion, the inverse/readout factors in (3.126), the stated coordinate conversion, and Theorem 3.12; citing (3.107) alone is insufficient.",
           "source_verified": true
         },
         {
@@ -730,7 +730,7 @@
       "do_not_use_for": [
         "Do not treat this as a Lean proof of PhysicalLocalizedCovarianceRootCertificate without the repository covariance/root dictionary.",
         "Do not identify G(U) with the Wilson Hessian inverse or covariance root without the missing coordinate/sign/normalization theorem.",
-        "Do not cite equation (3.107) as an expansion of H: it expands G; H additionally uses equation (3.126) and Theorem 3.12."
+        "Do not cite equation (3.107) as an expansion of H: it expands G; H additionally uses equation (3.126), the source's (U eta)^(-1) coordinate convention, and Theorem 3.12."
       ],
       "open_questions": [
         "Exact source-to-Lean dictionary from Delta_a and G(U) to the repository physical gauge bonds, Hessian and covariance/root fields.",

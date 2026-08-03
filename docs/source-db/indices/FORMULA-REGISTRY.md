@@ -20,7 +20,7 @@ Total formulas: **66**. Source-verified records: **57**. Unverified/inferred rou
 | `cmp122ii.eq1.100.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))` |
 | `cmp99.eq3.27.background-field-propagator` | Balaban CMP99 | `visual_confirmed` | 3.26, 3.27 | yes | normalized_formula | `G(U) = G = (Delta_a \| Omega_0)^(-1)` |
 | `cmp99.eq3.107.generalized-walk-expansion-G` | Balaban CMP99 | `visual_confirmed` | 3.107 | yes | normalized_formula | `G = sum_omega R_0(X_0) R_alpha1(X_1) ... R_alphan(X_n)` |
-| `cmp99.eq3.126.rectangular-minimizer-H` | Balaban CMP99 | `visual_confirmed` | 3.126 | yes | exact_formula | `H B = G Q* (Q G Q*)^(-1) B` |
+| `cmp99.eq3.126.rectangular-minimizer-H` | Balaban CMP99 | `visual_confirmed` | 3.126 + coordinate convention after 3.133 | yes | exact_formula | `H B = G Q* (Q G Q*)^(-1) B` |
 | `cmp99.theorem3.3.background-field-green-bounds` | Balaban CMP99 | `visual_confirmed` | Theorem 3.1, Theorem 3.3, 3.42-3.47 | yes | normalized_formula | `Assumptions of Theorem 3.1 -> G(U) satisfies inequalities (3.42)-(3.47)` |
 | `cmp99.theorem3.11.positive-definite-family` | Balaban CMP99 | `visual_confirmed` | Theorem 3.11 | yes | normalized_formula | `Theorems 3.1-3.10 assumptions -> Delta'_a, G', (Q'G'^2Q'^*)^(-1), Delta_a, G are positive definite` |
 | `cmp99.theorem3.12.external-gauge-field-propagators` | Balaban CMP99 | `visual_confirmed` | 3.35, 3.36, Theorem 3.12 | yes | normalized_formula | `Regularity conditions (3.35),(3.36) with alpha_0 sufficiently small -> Theorems 3.3, 3.10, 3.11 hold for G,G1, and the stated H,H1 estimates hold, with the listed exception` |

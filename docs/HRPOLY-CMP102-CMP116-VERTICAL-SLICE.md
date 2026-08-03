@@ -2087,9 +2087,12 @@ CMP99 rectangular generalized-walk reconstruction of the physical minimizer.
 The citation is not equation (3.107) alone: (3.107) is the series for the
 square propagator `G`; the rectangular minimizer is represented by (3.126),
 and Theorem 3.12 transports the random-walk conclusions to `H`.  The named
-input must therefore encode that composition.  It is narrower than accepting
-an arbitrary weakened `H(s)` family and makes the missing source content
-explicit.
+input must therefore encode that composition.  Moreover the paragraph after
+(3.133) says that the literal variational-problem operator inserts the
+coordinate factor `(U eta)⁻¹` (or transforms the input data equivalently), so
+the equation-(3.126) auxiliary cannot silently be identified with the final
+physical minimizer.  It is narrower than accepting an arbitrary weakened
+`H(s)` family and makes the missing source content explicit.
 
 Two tempting shortcuts are excluded.  First, evaluating the current
 fine-head/tail word expansion at `s = 1` and weakening those terms again does
@@ -2154,6 +2157,6 @@ The primary CMP99 paper itself is not an acquisition blocker here: equation
 (3.126) for `H` is visible on printed page 420, and Theorem 3.12 is visible on
 printed page 423; the source-db records CMP99 as `visual_confirmed`.  The
 remaining debt is the source-to-Lean reconstruction just described--in
-particular the exhaustive typed atom/parser, the rectangular composition, and
-the endpoint readout hidden behind the printed "etc."--not the absence of the
-paper.
+particular the exhaustive typed atom/parser, the rectangular composition, its
+coordinate conversion, and the endpoint readout hidden behind the printed
+"etc."--not the absence of the paper.

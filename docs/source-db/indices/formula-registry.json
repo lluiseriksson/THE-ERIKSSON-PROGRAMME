@@ -1494,17 +1494,17 @@
       "claim_type": "formula",
       "exactness": "exact_formula",
       "confidence": "visual",
-      "statement": "Rectangular minimizer represented through the square propagator.",
+      "statement": "Rectangular equation-(3.126) auxiliary represented through the square propagator.",
       "formula_ascii": "H B = G Q* (Q G Q*)^(-1) B",
       "formula_latex": null,
-      "conclusion": "A source-faithful H walk reconstruction must compose the G expansion and the inverse/readout factors in (3.126); citing (3.107) alone is insufficient.",
+      "conclusion": "A source-faithful physical H walk reconstruction must compose the G expansion, the inverse/readout factors in (3.126), the stated coordinate conversion, and Theorem 3.12; citing (3.107) alone is insufficient.",
       "source_verified": true,
       "equations": [
         "3.126"
       ],
       "assumptions": [
-        "H is the unique minimizer of (3.109)-(3.110).",
-        "The vanishing identities (3.124) have been proved."
+        "The vanishing identities (3.124) have been proved.",
+        "The displayed B uses the equation-(3.126) coordinates; the source separately inserts (U eta)^(-1), or transforms the data equivalently, for the literal variational-problem operator."
       ]
     },
     {
