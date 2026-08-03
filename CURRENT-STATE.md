@@ -17,19 +17,18 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
-20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
-sent as the v2 replacement.  Its exact PDF is pinned at paper commit
-`e68b821f7`, has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`, and is
+**Latest viXra submission (2026-08-03; later replacement submitted).**  The
+24-page v7.1 edition of *The Row Sums Were the Method, Not the Theorem* was
+sent as a later replacement. Its exact PDF is pinned at paper commit
+`ffee6f36`, has SHA-256
+`1F2C967EAA147CFA8A00C12B57251FB01E2D192A5A5DF20A42C30E98007DE821`, and is
 described in
-[`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).
-The fresh-clone evidence on branch `d3-closure` records a green 8,475-job core
-and a 2,980-report repository oracle at verified source anchor `8e8375d34`.
-Those are branch measurements, not a replacement for the canonical `main`
-checkpoint: neither the paper commit nor its source anchor was in `main` when
-this notice was written.  The moderation/publication outcome is not yet
-recorded here.
+[`docs/DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md).
+The paper remains on branch `d3-closure`, outside `main`; this submission notice
+does not replace the canonical `main` checkpoint. The earlier v5.5 submission
+at `e68b821f7` remains recorded as superseded provenance. A further improved
+edition is being fabricated but is not yet submitted, compiled, or audited.
+The moderation/publication outcome is not yet recorded here.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),

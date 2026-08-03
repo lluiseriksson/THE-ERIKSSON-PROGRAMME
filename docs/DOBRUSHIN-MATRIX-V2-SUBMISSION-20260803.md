@@ -1,5 +1,10 @@
 # Dobrushin matrix paper — viXra v2 submission record
 
+> **Historical record.** A later 24-page v7.1 replacement was subsequently
+> submitted on 2026-08-03. Its immutable identities are recorded in
+> [`DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md`](DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md).
+> The v5.5 PDF below is no longer the latest submitted attachment.
+
 Date recorded: **2026-08-03**
 
 Operation: **v2 replacement submitted to viXra**
