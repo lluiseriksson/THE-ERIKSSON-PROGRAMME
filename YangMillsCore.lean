@@ -1028,3 +1028,12 @@ import YangMills.OS.DobrushinBridge
 -- anti-circularity clause is discharged by theorem, not assumption; the
 -- two-state witness has a nonzero fluctuation sector at every rate.
 import YangMills.OS.DobrushinTransport
+
+-- D-6 corollary, stage A: the tilt layer.  The band weight of the
+-- normalised coupled data is the free strip Gibbs weight tilted at the two
+-- ends by psi = Omega/sqrt(w) over lam^n; band covariances satisfy a
+-- division-free identity against free path sums; and free two-endpoint
+-- covariance decay transports to band-covariance decay at the same rate,
+-- the whole boundary cost absorbed per (L, f, g).  The geometry bridge to
+-- D-5's rectangle is stage B.
+import YangMills.OS.DobrushinTilt
