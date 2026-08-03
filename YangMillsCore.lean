@@ -1037,3 +1037,14 @@ import YangMills.OS.DobrushinTransport
 -- the whole boundary cost absorbed per (L, f, g).  The geometry bridge to
 -- D-5's rectangle is stage B.
 import YangMills.OS.DobrushinTilt
+
+-- D-6 corollary, stage B: the currying discharge.  The free strip Gibbs
+-- weight IS the rectangle Ising weight under currying (the Ising weight's
+-- half compensates ordered double counting exactly); the tilt layer's free
+-- covariance IS the rectangle covariance of end-slice observables; the
+-- family theorem feeds it at rate alpha^n (every site pair at rectangle
+-- distance >= n); and the public Dobrushin-Ising corollary lands: inside
+-- the window, one m > 0 bounds the projected transfer operator of the
+-- coupled kernel's Perron data at EVERY extent, through the abstract
+-- transport theorem.
+import YangMills.OS.DobrushinCorollary

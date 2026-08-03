@@ -3380,3 +3380,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.bandCov_mul_sq
 #print axioms YangMills.OS.Dobrushin.floor_PS_tilt
 #print axioms YangMills.OS.Dobrushin.bandCov_decay_of_free_decay
+#print axioms YangMills.OS.Dobrushin.rectJ_energy_split
+#print axioms YangMills.OS.Dobrushin.curry_weight
+#print axioms YangMills.OS.Dobrushin.freeCov_eq_rect_covar
+#print axioms YangMills.OS.Dobrushin.row_deltaAt_le
+#print axioms YangMills.OS.Dobrushin.rect_feed
+#print axioms YangMills.OS.Dobrushin.dobrushin_ising_uniform_gap
