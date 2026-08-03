@@ -64,7 +64,22 @@ theorem cmp99OrderedFinProduct_smul_matrix
         cmp99OrderedFinProduct_succ,
         ih]
       simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul]
-      rw [mul_assoc]
+      rw [mul_comm]
+
+/-- For scalar factors the ordered list product agrees with the canonical
+finite product.  This bridge is used only after all noncommutative matrix
+factors have been separated. -/
+theorem cmp99OrderedFinProduct_complex_eq_finset_prod :
+    ∀ {n : ℕ} (scalar : Fin n → ℂ),
+      cmp99OrderedFinProduct scalar = ∏ i, scalar i := by
+  intro n
+  induction n with
+  | zero =>
+      intro scalar
+      simp
+  | succ n ih =>
+      intro scalar
+      rw [cmp99OrderedFinProduct_succ, Fin.prod_univ_succ, ih]
 
 /-- Sigma-independent matrix carried by one literal physical fine walk. -/
 noncomputable def cmp99SourcePi4ComplexFineWalkBaseTerm
@@ -202,7 +217,7 @@ theorem cmp99SourcePi4ComplexCoarseFineWalkWordTerm_eq_smul_base
               K hc hmass hK baseCoarseCovariance (choice i))) := by
     funext i
     rw [cmp99SourcePi4ComplexCoarseFineWalkDefectTerm_eq_smul_base]
-    exact neg_smul _ _
+    simpa only [smul_neg]
   rw [hfactor, cmp99OrderedFinProduct_smul_matrix]
   rfl
 
@@ -262,7 +277,9 @@ theorem cmp99SourcePi4ComplexFineHeadTailWordTerm_eq_smul_base
   rw [cmp99SourcePi4ComplexFineWalkTerm_eq_smul_base,
     cmp99SourcePi4ComplexCoarseFineWalkWordTerm_eq_smul_base]
   simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul]
-  rfl
+  unfold cmp99SourcePi4ComplexFineHeadTailScalar
+  unfold cmp99SourcePi4ComplexFineHeadTailWordBase
+  rw [mul_comm]
 
 /-- Multiplicity retained by the head and the selected tail factors. -/
 def cmp99SourcePi4ComplexFineHeadTailMultiplicity
@@ -295,6 +312,7 @@ theorem cmp99SourcePi4ComplexFineHeadTailScalar_eq_sum_multiplicity
               anchor head choice (Finset.univ \ omitted)) sigma := by
   unfold cmp99SourcePi4ComplexFineHeadTailScalar
   unfold cmp99SourcePi4ComplexCoarseFineWalkTailScalar
+  rw [cmp99OrderedFinProduct_complex_eq_finset_prod]
   rw [prod_cmp116ComplexWeakeningMonomial_sub_one_eq]
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
