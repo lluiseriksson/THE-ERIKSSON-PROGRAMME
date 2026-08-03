@@ -235,6 +235,25 @@ overlap of a finite-range enlargement of the supports, is needed.  The
 finite-range collar remains a separate geometric input for the common
 ambient/Dirichlet locality dictionary; it is not an overlap surrogate.
 
+The analytic composition must also retain the source scale in the right
+order.  First bound `[h_Pi, Delta']` as a finite-range kernel: its amplitude
+contains `slope * finiteRange`, which is the certified `O(M^-1)` quantity.
+Then compose that finite-range kernel directly with the exponentially
+localized Dirichlet Green, paying only the finite ball cardinality and
+`exp(rate * finiteRange)`.  Converting the commutator separately to an
+exponential kernel and using the generic exponential--exponential
+composition would spend an avoidable factor `1 / rate`; when the
+Combes--Thomas rate scales with coercivity, that route can turn the expected
+`c^-1` dependence into a spurious worse power.  The source-facing defect
+budget must therefore keep the schematic form
+
+```text
+overlap * (slope * finiteRange) * kernelBound * ballCount
+        * exp(rate * finiteRange) * (2 / coercivity) * shellSum,
+```
+
+with `slope * finiteRange = O(M^-1)` established before the composition.
+
 The dependent-arrow alphabet and changing intermediate carriers recorded on
 printed page 413 belong to the later cross-scale Section-C expansion.  They
 must not be imported into (3.90), whose displayed walks are ordinary linear
