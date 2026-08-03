@@ -16,10 +16,11 @@ contour ratio, geometric row sum, and contour-defect budget.
 
 This is deliberately **not** an inhabitant of
 `CMP116Eq226CenteredConditionedPhysicalTermSource`.  In particular, the
-numbers called `patchedDefectNorm`, `precisionNorm`, `rootNorm`,
-`outerBudget`, and `pivotDefectNorm` below are target values which the
-physical producers must still attain.  No operator-norm estimate or CMP109
-diagonal inverse is manufactured from this arithmetic check.
+numbers called `patchedDefectNorm`, `regionalGreenDefectNorm`,
+`precisionNorm`, `rootNorm`, `outerBudget`, and `pivotDefectNorm` below are
+target values which the physical producers must still attain.  No
+operator-norm estimate or CMP109 diagonal inverse is manufactured from this
+arithmetic check.
 -/
 
 namespace YangMills.RG
@@ -55,6 +56,7 @@ elaborate until the joint regime is updated. -/
 structure CMP116CenteredConditionedJointSmallnessRegime
     (d L Nc : ℕ) [NeZero Nc] where
   patchedDefectNorm : ℝ
+  regionalGreenDefectNorm : ℝ
   precisionNorm : ℝ
   transposeDefectNorm : ℝ
   rootNorm : ℝ
@@ -67,6 +69,7 @@ structure CMP116CenteredConditionedJointSmallnessRegime
   radius_pos : 0 < cmp116CenteredSmallnessWitnessRadius
   Ahead_pos : 0 < cmp116CenteredSmallnessWitnessAhead
   patchedDefect_small : patchedDefectNorm < 1
+  regional_green_neumann_small : regionalGreenDefectNorm < 1
   shell_small :
     ((2 ^ 4 : ℕ) : ℝ) *
       Real.exp (-cmp116CenteredSmallnessWitnessRate) < 1
@@ -205,6 +208,7 @@ noncomputable def cmp116CenteredConditionedJointSmallnessRegimeWitness
     (d L Nc : ℕ) [NeZero Nc] :
     CMP116CenteredConditionedJointSmallnessRegime d L Nc where
   patchedDefectNorm := 1 / 4
+  regionalGreenDefectNorm := 1 / 4
   precisionNorm := 1
   transposeDefectNorm := 1 / 4
   rootNorm := 1
@@ -219,6 +223,7 @@ noncomputable def cmp116CenteredConditionedJointSmallnessRegimeWitness
   radius_pos := by norm_num [cmp116CenteredSmallnessWitnessRadius]
   Ahead_pos := by norm_num [cmp116CenteredSmallnessWitnessAhead]
   patchedDefect_small := by norm_num
+  regional_green_neumann_small := by norm_num
   shell_small := cmp116CenteredSmallnessWitness_shell
   contour_series_small := cmp116CenteredSmallnessWitness_contourRatio
   neumann_small := by
@@ -241,13 +246,15 @@ noncomputable def cmp116CenteredConditionedJointSmallnessRegimeWitness
 consumer, together with the future CMP109 pivot defect, have a simultaneous
 strictly positive target witness.
 
-The first conjunct records the target patched-parametrix norm `1/4`; the
-fourth and fifth use target precision row/column norm one; the sixth uses
-target root norm one; and the eighth is the future diagonal pivot defect.
-These are named targets, not proofs about the corresponding physical
+The first two strict norm targets record, separately, the patched one-cochain
+defect and the regional zero-cochain Green defect at `1/4`.  The later
+Neumann inequalities use target precision row/column norm one, the root
+window uses target root norm one, and the pivot entry is the future diagonal
+defect.  These are named targets, not proofs about the corresponding physical
 operators. -/
 theorem cmp116CenteredConditioned_scalarSmallness_nonempty :
     let patchedDefectNorm : ℝ := 1 / 4
+    let regionalGreenDefectNorm : ℝ := 1 / 4
     let precisionNorm : ℝ := 1
     let rootNorm : ℝ := 1
     let outerBudget : ℝ := 1 / 8
@@ -257,6 +264,7 @@ theorem cmp116CenteredConditioned_scalarSmallness_nonempty :
     0 < cmp116CenteredSmallnessWitnessRadius ∧
     0 < cmp116CenteredSmallnessWitnessAhead ∧
     patchedDefectNorm < 1 ∧
+    regionalGreenDefectNorm < 1 ∧
     ((2 ^ 4 : ℕ) : ℝ) *
         Real.exp (-cmp116CenteredSmallnessWitnessRate) < 1 ∧
     ‖cmp116SourcePi4ComplexContourRatio 1
@@ -291,6 +299,8 @@ theorem cmp116CenteredConditioned_scalarSmallness_nonempty :
   · norm_num [cmp116CenteredSmallnessWitnessRadius]
   constructor
   · norm_num [cmp116CenteredSmallnessWitnessAhead]
+  constructor
+  · norm_num
   constructor
   · norm_num
   constructor

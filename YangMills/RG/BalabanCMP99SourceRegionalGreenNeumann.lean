@@ -132,6 +132,36 @@ def CMP99RegionalSquarePartitionSupported
   ∀ cell x,
     P.value cell (blockSite M (2 * Q) x) ≠ 0 → x ∈ (Omega cell).sites
 
+/-- Quantified collar separating every nonzero square cutoff from the
+complement of its Dirichlet region.  The number `finiteRange` is the physical
+range of the ambient precision.  This condition is deliberately stronger
+than `CMP99RegionalSquarePartitionSupported`: it is the source-facing margin
+needed later to prove locality and smallness of the regional commutator
+defect.  The exact inverse-sandwich identities below use only support
+inclusion and therefore do not consume this premise. -/
+def CMP99RegionalSquarePartitionHasFiniteRangeMargin
+    (P : CMP99SourceSquarePartition Q)
+    (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
+    (finiteRange : ℕ) : Prop :=
+  ∀ cell x y,
+    P.value cell (blockSite M (2 * Q) x) ≠ 0 →
+      y ∉ (Omega cell).sites →
+        finiteRange < finBoxDist x y
+
+/-- A positive finite-range collar in particular implies ordinary support
+inside the corresponding Dirichlet region. -/
+theorem cmp99RegionalSquarePartitionSupported_of_finiteRangeMargin
+    (P : CMP99SourceSquarePartition Q)
+    (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
+    (finiteRange : ℕ)
+    (hmargin :
+      CMP99RegionalSquarePartitionHasFiniteRangeMargin P Omega finiteRange) :
+    CMP99RegionalSquarePartitionSupported P Omega := by
+  intro cell x hx
+  by_contra houtside
+  have himpossible := hmargin cell x x hx houtside
+  simpa using himpossible
+
 /-- The partition multiplier is unchanged by the characteristic projector of
 its supporting Dirichlet region. -/
 theorem cmp99RegionalSquareMultiplier_comp_regionProjector
@@ -311,10 +341,10 @@ theorem comp_cmp99RegionalGreenParametrix_eq_id_sub_defect
     simpa only [ContinuousLinearMap.sum_apply,
       ContinuousLinearMap.comp_apply, ContinuousLinearMap.id_apply] using h
   calc
-    _ = ∑ cell : FinBox 4 Q,
+    _ = ∑ cell : FinBox 4 Q, (
         (cmp99RegionalSquareMultiplier (M := M) (g := g) P cell)
             ((cmp99RegionalSquareMultiplier (M := M) (g := g) P cell) phi) -
-          (cmp99RegionalGreenCorrection P Omega K hc hK cell) phi := by
+          (cmp99RegionalGreenCorrection P Omega K hc hK cell) phi) := by
       apply Finset.sum_congr rfl
       intro cell _hcell
       exact DFunLike.congr_fun

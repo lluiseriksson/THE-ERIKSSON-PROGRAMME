@@ -2260,3 +2260,24 @@ that Pi4 object with every regional `C_D` or `G'` occurrence inside the three
 (3.95) species.  It is therefore reusable substrate for the internal expansion,
 not yet a producer of it; a regional/source-carrier dictionary is still
 required before any of those factors can be replaced by that series.
+
+### Regional-Green gates exposed before physical specialization
+
+The regional Theorem-3.7 compiler has two distinct acceptance conditions.
+They must not be merged.  Mere support inclusion
+`supp h_Pi ⊆ Omega_Pi` is sufficient for the exact compressed-inverse
+algebra.  The physical commutator estimate additionally needs the quantified
+collar
+
+`finiteRange < dist(supp h_Pi, complement Omega_Pi)`.
+
+The latter is a named geometric predicate, not an implicit property of the
+partition.  It is consumed only by the future producer that proves locality
+and smallness of the regional defect.
+
+Likewise, `norm R' < 1` is a new regional zero-cochain contraction target.
+It is not the existing one-cochain `patchedDefect_small` field.  The joint
+smallness registry therefore carries it as a separate fifteenth target; its
+rational witness proves simultaneous compatibility only, not physical
+attainment.  Neither addition changes the live `18/41` numerator or produces
+a `TermSource` inhabitant.

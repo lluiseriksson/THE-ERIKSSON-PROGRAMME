@@ -9,6 +9,8 @@ materialized, and the declarations below are not compiler-verified.
 
 #print axioms YangMills.RG.isCoerciveCLM_cmp99RegionalDirichletPrecision
 #print axioms YangMills.RG.cmp99RegionalDirichletPrecision_comp_green
+#print axioms YangMills.RG.CMP99RegionalSquarePartitionHasFiniteRangeMargin
+#print axioms YangMills.RG.cmp99RegionalSquarePartitionSupported_of_finiteRangeMargin
 #print axioms YangMills.RG.cmp99RegionalSquareMultiplier_comp_regionProjector
 #print axioms YangMills.RG.cmp99RegionalSquareMultiplier_precision_green_eq_sq
 #print axioms YangMills.RG.comp_cmp99RegionalGreenHead_eq_sq_sub_correction
