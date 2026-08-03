@@ -278,8 +278,21 @@ theorem cmp99SourcePi4ComplexFineHeadTailWordTerm_eq_smul_base
     cmp99SourcePi4ComplexCoarseFineWalkWordTerm_eq_smul_base]
   simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul]
   unfold cmp99SourcePi4ComplexFineHeadTailScalar
-  unfold cmp99SourcePi4ComplexFineHeadTailWordBase
-  rw [mul_comm]
+  change
+    (cmp99SourcePi4ComplexCoarseFineWalkTailScalar anchor sigma choice *
+        cmp116ComplexWeakeningMonomial
+          (cmp99SourcePi4FineWalkIndex.active anchor head) sigma) •
+        cmp99SourcePi4ComplexFineHeadTailWordBase
+          K hc hmass hK baseCoarseCovariance head choice =
+      (cmp116ComplexWeakeningMonomial
+          (cmp99SourcePi4FineWalkIndex.active anchor head) sigma *
+        cmp99SourcePi4ComplexCoarseFineWalkTailScalar anchor sigma choice) •
+        cmp99SourcePi4ComplexFineHeadTailWordBase
+          K hc hmass hK baseCoarseCovariance head choice
+  exact congrArg
+    (fun z : ℂ => z • cmp99SourcePi4ComplexFineHeadTailWordBase
+      K hc hmass hK baseCoarseCovariance head choice)
+    (mul_comm _ _)
 
 /-- Multiplicity retained by the head and the selected tail factors. -/
 def cmp99SourcePi4ComplexFineHeadTailMultiplicity
