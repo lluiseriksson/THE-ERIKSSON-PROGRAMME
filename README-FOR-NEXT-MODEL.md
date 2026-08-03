@@ -21,6 +21,14 @@ Catalan/Schur series through Addendum 465 and the 2026-07-04 diamagnetic
 unitary bridge Addendum 466, while the latest measured source checkpoint is
 `a17d7816` (on `main`).
 
+Publication-only update (2026-08-03): the 20-page Dobrushin matrix manuscript
+v5.5 was submitted to viXra as its v2 replacement.  The exact paper commit,
+PDF hash, fresh-clone 8,475-job/2,980-report evidence, and the fact that this
+lane remains outside `main` are recorded in
+[`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).
+Do not substitute the older 11-page `dobrushin_matrix3.pdf` at `c3d8e32d`.
+This publication notice does not change the live `hRpoly` frontier below.
+
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
 operator.  The surrounding scaffolding is largely theorem-fed: strong-coupling

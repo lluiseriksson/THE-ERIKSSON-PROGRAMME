@@ -417,6 +417,7 @@ footer {
     </div>
   </section>
 
+  <section class="honesty" id="submission"></section>
   <section class="honesty" id="honesty"></section>
   <footer id="footer"></footer>
 </main>
@@ -513,6 +514,21 @@ footer {
       <div class="text"><strong>${escapeHtml(milestone.label)}</strong><br>${escapeHtml(milestone.note)}</div>
     </article>
   `).join("");
+
+  if (meta.latest_submission) {
+    const submission = meta.latest_submission;
+    $("submission").innerHTML = `
+      <strong>Latest viXra submission.</strong>
+      ${escapeHtml(submission.status)} (${escapeHtml(submission.date)}):
+      <a href="${submission.pdf}" rel="noreferrer">${escapeHtml(submission.title)}</a>.
+      PDF SHA-256 <code>${escapeHtml(submission.pdf_sha256)}</code>.
+      <a href="${submission.record}" rel="noreferrer">Submission record and scope</a>.
+      This lane was on <code>d3-closure</code>, not integrated into <code>main</code>,
+      when the notice was recorded.
+    `;
+  } else {
+    $("submission").hidden = true;
+  }
 
   $("honesty").innerHTML = `
     <strong>Honesty invariant.</strong>
