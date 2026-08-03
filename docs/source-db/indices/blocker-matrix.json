@@ -140,10 +140,11 @@
       "source_id": "cmp102_variational",
       "short": "Balaban CMP102",
       "status": "visual_confirmed",
-      "summary": "Action expansion, rectangular H, literal Eq. (80), and positive second variation are visually confirmed; Eq. (80) matches the Lean four-term core exactly, while the Wilson-Hessian source-to-Lean dictionary remains open.",
+      "summary": "Action expansion, rectangular H, the Eq. (78) D/C^(2)/D_3 decomposition, literal Eq. (80), and positive second variation are visually confirmed; Eq. (80) matches the Lean four-term core exactly, while the Eq. (78) and Wilson-Hessian source-to-Lean dictionaries remain open.",
       "printed_pages": "281, 285, 290, 299",
       "pdf_pages": "5, 9, 14, 23",
       "questions": [
+        "Source-region and coordinate dictionary proving D = C^(2) + D_3 for the maps supplied to cmp102Eq80GlobalPotential.",
         "Dictionary from CMP102 A', Delta_1, H and U_k to repository PhysicalGaugeField/PhysicalBond/Hessian objects.",
         "Sign and normalization conventions for the source quadratic form.",
         "Bridge identifying the CMP102 Hessian/inverse-propagator with CMP99 G(U) and the repository covariance object."

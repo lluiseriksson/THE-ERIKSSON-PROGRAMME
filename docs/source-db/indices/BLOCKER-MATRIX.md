@@ -14,7 +14,7 @@ Non-theorem-feedable entries and first actions. Use before opening PDFs.
 | 8 | `cmp96.one-step-covariance-law-source-target` | `located` | Balaban CMP96 | Label/page map located; exact theorem/equation body, hypotheses, normalization and scale dictionary remain open. |
 | 9 | `cmp98.eq14-15-source-target` | `located` | Balaban CMP98 | Label/page map located; exact Q_k formula body, CMP116 alignment, determinant/Jacobian normalization and symbol dictionary remain open. |
 | 10 | `cmp99.background-field-propagator-source-target` | `visual_confirmed` | Balaban CMP99 | Background-field propagator and decay/positivity theorems are located; still need the source-to-Lean covariance/Hessian dictionary. |
-| 11 | `cmp102.variational-hessian-expansion-source-target` | `visual_confirmed` | Balaban CMP102 | Action expansion, rectangular H, literal Eq. (80), and positive second variation are located; Eq. (80) matches the Lean four-term core exactly, while the Wilson-Hessian coordinate/sign/normalization dictionary remains open. |
+| 11 | `cmp102.variational-hessian-expansion-source-target` | `visual_confirmed` | Balaban CMP102 | Action expansion, rectangular H, the Eq. (78) `D/C^(2)/D_3` decomposition, literal Eq. (80), and positive second variation are located; Eq. (80) matches the Lean four-term core exactly, while the Eq. (78) and Wilson-Hessian coordinate/sign/normalization dictionaries remain open. |
 | 12 | `cmp122i.large-field-c-bound.1.70` | `visual_confirmed` | Balaban CMP122-I | Exact quantifiers and hypotheses of representation (1.63), including the U-bar analyticity space. |
 | 13 | `cmp122ii.rprime-bound.1.98-1.100` | `visual_confirmed` | Balaban CMP122-II | Full Theorem 1 hypotheses and parameter restrictions for the exponentiated expansion. |
 

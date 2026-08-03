@@ -3,8 +3,8 @@
   "generated": "2026-06-26",
   "purpose": "Single flat registry of formulas and formula-shaped targets indexed for LLM agents. source_verified=false means this is a route target or paraphrase, not a theorem-feedable source formula.",
   "counts": {
-    "formulas": 66,
-    "source_verified": 57,
+    "formulas": 70,
+    "source_verified": 61,
     "inferred_or_unverified": 9
   },
   "formulas": [
@@ -1640,6 +1640,28 @@
       ],
       "assumptions": [
         "CMP102 Eqs. (44)-(46) and the cited CMP99 Theorem 3.12."
+      ]
+    },
+    {
+      "claim_id": "cmp102.eq78.D3-remainder-decomposition",
+      "citation_key": "cmp102.variational-hessian-expansion-source-target",
+      "source_id": "cmp102_variational",
+      "short": "Balaban CMP102",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "literal_paired_formula",
+      "confidence": "visual",
+      "statement": "Source decomposition separating the order-two correction from the order-at-least-three remainder used in equation (80).",
+      "formula_ascii": "<H D(A'),J> = <H C^(2)(A'),J> + <H D_3(A'),J>",
+      "formula_latex": null,
+      "conclusion": "Equation (78) visually anchors the missing D/D_3/C^(2) dictionary. The current Lean equation-(80) core accepts D and D_3 as independent parameters and does not prove this relation.",
+      "source_verified": true,
+      "equations": [
+        "78"
+      ],
+      "assumptions": [
+        "CMP102 Sect. C notation and source region/frame immediately above Eq. (80), printed page 290 / PDF page 14.",
+        "The accompanying source construction identifies the second-order contribution with C^(2) on the stated region; a global Lean equality D_3 = D - C^(2) requires that region and coordinate dictionary."
       ]
     },
     {

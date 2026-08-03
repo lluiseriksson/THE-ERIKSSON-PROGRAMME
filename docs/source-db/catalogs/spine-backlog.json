@@ -42,7 +42,7 @@
       "bibliography_evidence": "Dimock I reference [8], arXiv:1108.1335, printed page 50.",
       "doi": "10.1007/BF01205787",
       "license_note": "Keep primary PDF/renders in the private source archive; commit only metadata, locators and short paraphrases.",
-      "artifact_note": "External repo-ready packet reports local private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp98-averaging-1985-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp98-averaging-1985.md; private PDF SHA-256 03409ad81885593d65535550eafac08639e66123d4acf92462847ae2ee4dd7d6."
+      "artifact_note": "External repo-ready packet reports a private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp98-averaging-1985-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp98-averaging-1985.md; reported private PDF SHA-256 03409ad81885593d65535550eafac08639e66123d4acf92462847ae2ee4dd7d6. A 2026-08-03 workspace check found that runtime/sources/primary/cmp98-averaging.pdf is actually a 1157-byte Incapsula HTML response, SHA-256 A3F29C49F88B8B4797DF856D8E2B38DF4D2617BE3E15B3243C6948285A762558. A separate extracted text tmp/pdfs/cmp98/cmp98.txt, SHA-256 55276CD61FF200C113E9E85D1BA51EF0246C74C8FCABFC8FB6242FEE4ACC86D0, and two page renders are present, but Proposition 2 has not been visually certified from a registered clean primary PDF in this workspace."
     },
     "cmp122_i": {
       "short": "Balaban CMP122-I",
@@ -156,6 +156,18 @@
         "render_pdf_page_44_printed_432": "cmp99/render/cmp99-page-44.png"
       },
       "artifact_note": "Primary PDF SHA-256 39F8033B35838C7BDD14F97C7FB1EDB0B35D4190B8B88F31D19D12A72D542861 under YM_SOURCE_ROOT/runtime source cache."
+    },
+    "cmp102_uv3d": {
+      "short": "Balaban CMP102-UV3D",
+      "title": "Ultraviolet Stability of Three-Dimensional Lattice Pure Gauge Field Theories",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 102 (1985), 255-275",
+      "year": 1985,
+      "doi": "10.1007/BF01229380",
+      "status": "registered",
+      "bibliography_evidence": "Publisher metadata for Commun. Math. Phys. 102, 255-275 (1985), DOI 10.1007/BF01229380.",
+      "license_note": "Keep any future primary PDF/renders in the private source archive; commit only metadata, formulas, locators and short excerpts.",
+      "artifact_note": "No clean local primary artifact is registered. This distinct source key prevents citations to equations (1)-(71) in CMP volume 102 from being silently conflated with cmp102_variational, pp. 277-309, whose equation numbering also starts at (1)."
     },
     "cmp102_variational": {
       "short": "Balaban CMP102",
@@ -796,6 +808,19 @@
           "source_verified": true
         },
         {
+          "id": "cmp102.eq78.D3-remainder-decomposition",
+          "statement": "Source decomposition separating the order-two correction from the order-at-least-three remainder used in equation (80).",
+          "ascii": "<H D(A'),J> = <H C^(2)(A'),J> + <H D_3(A'),J>",
+          "exactness": "literal_paired_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "CMP102 Sect. C notation and source region/frame immediately above Eq. (80), printed page 290 / PDF page 14.",
+            "The accompanying source construction identifies the second-order contribution with C^(2) on the stated region; a global Lean equality D_3 = D - C^(2) requires that region and coordinate dictionary."
+          ],
+          "conclusion": "Equation (78) visually anchors the missing D/D_3/C^(2) dictionary. The current Lean equation-(80) core accepts D and D_3 as independent parameters and does not prove this relation.",
+          "source_verified": true
+        },
+        {
           "id": "cmp102.eq80.literal-higher-order-potential",
           "statement": "Literal four-term higher-order potential in the transformed field.",
           "ascii": "V(A') = -<H D_3(A'),J> - <A',Delta_pi H D(A')> + (1/2)<H D(A'),Delta_pi H D(A')> + V_0(A' - H D(A'))",
@@ -822,6 +847,15 @@
         }
       ],
       "dictionary_links": [
+        {
+          "id": "cmp102.eq78.D3-equals-D-minus-C2",
+          "source_symbol": "CMP102 Eq. (78) D/C^(2)/D_3 decomposition, printed 290 / PDF 14",
+          "lean_symbol": "YangMills.RG.cmp102Eq80GlobalPotential parameters D D₃",
+          "relation": "source_dictionary_required",
+          "status": "dictionary_open",
+          "statement": "Prove in the exact CMP102 source region and coordinate convention that the Lean maps supplied as D, C^(2), and D₃ realize D = C^(2) + D₃ (equivalently D₃ = D - C^(2)).",
+          "blocker": "Lean currently treats D and D₃ as independent maps linked only by zero-normalization hypotheses. Equation (78) displays the decomposition after H and pairing with J; the source region/frame and the C^(2) realization must be transported before promoting it to a global function equality."
+        },
         {
           "id": "cmp102.eq142.blocal-amplitude-positivity-anchor",
           "source_symbol": "CMP102 Eq. (142) positive-definite quadratic form, printed 299 / PDF 23",
@@ -850,9 +884,34 @@
         "Do not use Eq. (142) as a raw activity decay theorem or Appendix-F/H# theorem."
       ],
       "open_questions": [
+        "Exact source-region and coordinate dictionary proving D = C^(2) + D_3 (equivalently D_3 = D - C^(2)); Eq. (78) currently has no Lean producer.",
         "Exact dictionary from CMP102 A', Delta_1, H and U_k to repository PhysicalGaugeField/PhysicalBond/Hessian objects.",
         "Sign and normalization conventions relating the source quadratic form to the repository Wilson-Hessian interface.",
         "How the CMP102 H operator and CMP99 G(U) inverse-propagator should be unified as the repository covariance object."
+      ]
+    },
+    {
+      "key": "cmp102.uv3d-volume-disambiguation",
+      "source_id": "cmp102_uv3d",
+      "locator": {
+        "printed_pages": "255-275",
+        "pdf_pages": "not registered",
+        "equations": [
+          "1-71"
+        ]
+      },
+      "status": "located",
+      "summary": "Bibliographic disambiguation record for the first paper in CMP volume 102. Its equations (1)-(71) must not be confused with same-numbered equations in the immediately following variational paper, cmp102_variational, pp. 277-309.",
+      "use_for": [
+        "Disambiguating volume-only citations to CMP 102 equations (1)-(71)."
+      ],
+      "do_not_use_for": [
+        "Do not attribute any formula body or Lean theorem to this paper until a clean primary artifact is acquired and visually checked.",
+        "Do not use this source key for CMP102 Eq. (80), Eq. (142), or the variational/background-field construction on pp. 277-309."
+      ],
+      "open_questions": [
+        "Acquire and register a clean primary artifact before extracting any equation body.",
+        "Classify any future bare citation of CMP102 equations (1)-(71) by paper title or source key rather than volume number alone."
       ]
     },
     {

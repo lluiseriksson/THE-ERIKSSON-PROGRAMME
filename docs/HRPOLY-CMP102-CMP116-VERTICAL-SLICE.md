@@ -74,6 +74,66 @@ identify the source symbols `H`, `Delta_pi`, `J`, `D`, `D_3`, `V_0`, and `A'`
 with their physical Lean realizations; that source-to-Lean dictionary remains
 open and must not be absorbed into this formula check.
 
+### Equation (78): the missing `D`/`D₃` dictionary
+
+Immediately above (80), CMP102 prints
+
+```text
+<H D(A'),J> = <H C^(2)(A'),J> + <H D_3(A'),J>.                 (78)
+```
+
+The accompanying source construction separates the second-order term
+`C^(2)` from the order-at-least-three remainder `D_3`.  In the corresponding
+source region and coordinate convention this is the intended decomposition
+`D = C^(2) + D_3`, equivalently `D_3 = D - C^(2)`.  The current Lean
+equation-(80) core instead accepts `D` and `D₃` as independent maps and links
+them only through separate zero-normalization assumptions.  Therefore the
+named open obligation is
+
+```text
+cmp102.eq78.D3-equals-D-minus-C2:
+  transport the source-region C^(2)/D/D_3 decomposition to the literal
+  physical Lean maps used by cmp102Eq80GlobalPotential.
+```
+
+Equation (78) displays the identity after applying `H` and pairing with `J`.
+It must not be promoted to an unrestricted global function equality until
+the preceding source definition, region, and coordinate frame have also been
+transported.
+
+### CMP volume 102 disambiguation
+
+Communications in Mathematical Physics volume 102 contains two consecutive
+Balaban papers whose equation numbering starts again at `(1)`:
+
+- `cmp102_uv3d`: *Ultraviolet Stability of Three-Dimensional Lattice Pure
+  Gauge Field Theories*, pp. 255-275, equation range `(1)`-`(71)`;
+- `cmp102_variational`: *The Variational Problem and Background Fields in
+  Renormalization Group Method for Lattice Gauge Theories*, pp. 277-309,
+  including equations `(78)`, `(80)`, and `(142)` used here.
+
+A tracked-citation sweep found one bare multi-equation string containing
+numbers at most 71, `CMP102 (22), (44)-(46), (142)`, in the live
+Gaussian-root/Hessian catalog.  The same string includes `(142)` and its
+recorded page locators 281/285/299, so it is unambiguously the variational
+paper.  The other literal bare citation is `CMP102 (80)`, also outside the
+UV3D paper's equation range.  No tracked citation was found that presently
+attributes an equation `(1)`-`(71)` to the wrong paper.  Future citations in
+that range must name `cmp102_uv3d` or `cmp102_variational`, not merely the
+volume.
+
+### CMP98 acquisition status
+
+The CMP98 source is **not yet a clean registered primary-PDF acquisition in
+this workspace**.  The canonical-looking file
+`runtime/sources/primary/cmp98-averaging.pdf` is a 1157-byte Incapsula HTML
+response, not a PDF.  A separate extracted text and two page renders are
+present under `tmp/pdfs/cmp98`, so the paper has partial local source material,
+but Proposition 2 has not yet been visually certified from a registered clean
+primary artifact.  Its use as the source anchor for existence of `U_k` in the
+regularity class therefore remains `located`/dictionary-open rather than
+source-verified.
+
 ## `CMP116Eq226PhysicalContourTermSource` field audit
 
 The source record is the first object that must be constructed physically.

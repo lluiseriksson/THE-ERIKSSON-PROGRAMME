@@ -1078,7 +1078,7 @@
         "source_id": "cmp102_variational",
         "short": "Balaban CMP102",
         "status": "visual_confirmed",
-        "summary": "CMP102 Eq. (80), printed 290 / PDF 14, matches this literal four-term algebraic core exactly; the physical symbol dictionary remains open.",
+        "summary": "CMP102 Eq. (80), printed 290 / PDF 14, matches this literal four-term algebraic core exactly; Eq. (78) additionally requires the source-region D = C^(2) + D_3 dictionary because Lean accepts D and D₃ independently.",
         "printed_pages": "290",
         "pdf_pages": "14"
       }
@@ -1120,7 +1120,7 @@
         "source_id": "cmp102_variational",
         "short": "Balaban CMP102",
         "status": "visual_confirmed",
-        "summary": "CMP102 visually anchors the action expansion, rectangular linearizing operator H, literal Eq. (80), and positive second-variation quadratic form; Eq. (80) matches the Lean four-term core exactly.",
+        "summary": "CMP102 visually anchors the action expansion, rectangular linearizing operator H, Eq. (78) D/C^(2)/D_3 decomposition, literal Eq. (80), and positive second-variation quadratic form; Eq. (80) matches the Lean four-term core exactly while the Eq. (78) dictionary remains open.",
         "printed_pages": "281, 285, 290, 299",
         "pdf_pages": "5, 9, 14, 23"
       }
