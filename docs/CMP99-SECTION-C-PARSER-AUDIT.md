@@ -272,11 +272,13 @@ counting-space adjoint with the synthesis coefficient that contributes the
 second copy.  Summing the resulting `Q^* Q` row over the `M^d` sites in its
 owner block therefore leaves exactly one factor `M^-d`, rather than a block
 cardinality.  The source-faithful producer should iterate this identity along
-`generatedCountingMass`, yielding the explicit row amplitude
+`generatedCountingMass`, yielding the explicit *unweighted* row amplitude
 `(cmp99SourceBlockAverageWeight M d)^depth` (and then use
-`generatedCountingMass_eq_QprimeMass`).  This recursive row theorem is still
-an open, compiler-unverified obligation; the operator-norm contraction of
-`Qprime` is not a substitute for it.
+`generatedCountingMass_eq_QprimeMass`).  At positive row rate its certified
+finite range additionally costs `exp (rate * range)`, but still no block-ball
+cardinality.  This recursive row theorem is an open, compiler-unverified
+obligation; the operator-norm contraction of `Qprime` is not a substitute for
+it.
 
 The dependent-arrow alphabet and changing intermediate carriers recorded on
 printed page 413 belong to the later cross-scale Section-C expansion.  They
