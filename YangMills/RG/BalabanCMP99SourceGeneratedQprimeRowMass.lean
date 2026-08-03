@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceGeneratedMassRange
 import YangMills.RG.BalabanCMP99SourceGeneratedTerminalCoordinates
+import YangMills.RG.BalabanCMP99SourceGeneratedWeightedAdjointRange
 
 /-!
 # Exact source-row mass of the generated CMP99 average
@@ -33,7 +34,7 @@ variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 norm. -/
 theorem sum_norm_singleFinitePiLp
     {ι g : Type*} [Fintype ι] [DecidableEq ι]
-    [NormedAddCommGroup g]
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
     (source : ι) (v : g) :
     (∑ target : ι, ‖singleFinitePiLp source v target‖) = ‖v‖ := by
   classical
@@ -265,9 +266,12 @@ theorem CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single
             (cmp99SourceBlockAverageWeight M d) ^ depth * ‖sourceValue‖ :=
           htail
         _ = (cmp99SourceBlockAverageWeight M d) ^ (depth + 1) * ‖v‖ := by
-          dsimp [sourceValue]
-          rw [norm_smul, LinearIsometryEquiv.norm_map, Real.norm_eq_abs,
-            abs_of_nonneg (cmp99SourceBlockAverageWeight_nonneg M d), pow_succ]
+          have hsourceValueNorm : ‖sourceValue‖ =
+              cmp99SourceBlockAverageWeight M d * ‖v‖ := by
+            dsimp [sourceValue]
+            rw [norm_smul, LinearIsometryEquiv.norm_map, Real.norm_eq_abs,
+              abs_of_nonneg (cmp99SourceBlockAverageWeight_nonneg M d)]
+          rw [hsourceValueNorm, pow_succ]
           ring
 
 /-- Inequality form of the exact generated source-row mass, for direct use by
