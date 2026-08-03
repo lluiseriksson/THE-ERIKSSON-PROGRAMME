@@ -51,7 +51,8 @@ switched on.  That theorem obstructs the \emph{method}.  It was read as
 obstructing the \emph{conclusion}, and the reading outlived its own retraction.
 
 We prove, in Lean~4 with no \texttt{sorry} and no project axiom, a chain of
-six headline theorems, plus the star-cell specialisation they compose to.  \textbf{First}, the one-bond influence envelope: flipping one
+six headline theorems, plus the star-cell and rectangle-family
+specialisations they compose to.  \textbf{First}, the one-bond influence envelope: flipping one
 neighbour across a bond of strength $J\ge0$ moves a two-state site's conditional
 by at most $\tanh J$, and by exactly $\tanh J$ at one field, so $\tanh J$ is the
 \emph{least field-uniform} bound.  It is a field-uniform interdependence
@@ -113,6 +114,15 @@ decay bound carries no smallness hypothesis at all.  And on the star cell the
 window $2\tanh|\beta|+2\tanh|\gamma|<1$ --- the second theorem's row-sum
 computation --- becomes the hypothesis of an exponential-decay theorem about
 the anisotropic Ising weight itself.
+\textbf{And the family}: on the $L\times T$ rectangle with $\beta$ on
+horizontal bonds and $\gamma$ on vertical ones, the envelope row sums
+respect the window at every site of every rectangle, so the decay theorem
+holds with the couplings, the rate and the prefactor fixed \emph{before} the
+quantifier over volumes --- the volume-uniformity of the measure-level
+statement is the quantifier order of one machine-checked declaration.  At
+zero coupling its bound degenerates to $0^{d}$ and forces exact independence
+of distinct single-site observables at every volume, which is the family's
+witness.
 Each rung carries a non-vacuity witness, and every claimed endpoint is
 oracled with exactly Lean's three standard axioms.
 
@@ -137,8 +147,9 @@ correlations of the Gibbs weight, and the finite-time transport from that
 decay into the operator formulation is the one open step named in the frontier
 section.  The intrinsic Dobrushin condition is now a computation on the
 coupling: it holds unconditionally for the one-bond system, reduces to the
-window for the star cell, and remains unverified for lattice families beyond
-those cells.  Dobrushin's uniqueness theorem and
+window for the star cell and for the whole rectangle family, and for other
+lattice geometries is the same computation, not repeated here.  Dobrushin's
+uniqueness theorem and
 his comparison estimate are classical \cite{Dobrushin1968,Dobrushin1970,%
 Simon1993}; nothing in this paper is new mathematics.  What is offered is a
 mechanised, non-vacuous chain from a single bond to exponential decay of
@@ -150,7 +161,7 @@ consequence for Yang--Mills theory is stated, suggested, or implied.
 
 \textbf{Claimed, machine-checked.}  Theorems~\ref{thm:coeff}, \ref{thm:matrix},
 \ref{thm:d1}, \ref{thm:comparison}, \ref{thm:gibbs} and~\ref{thm:ising}, with
-Theorem~\ref{thm:star}, their witnesses and the
+Theorems~\ref{thm:star} and~\ref{thm:family}, their witnesses and the
 corollaries that compose them, in
 \repofile{YangMills/OS/DobrushinCoefficient.lean}{DobrushinCoefficient.lean},
 \repofile{YangMills/OS/DobrushinRowSum.lean}{DobrushinRowSum.lean},
@@ -159,8 +170,9 @@ corollaries that compose them, in
 \repofile{YangMills/OS/DobrushinGruss.lean}{DobrushinGruss.lean},
 \repofile{YangMills/OS/DobrushinConditional.lean}{DobrushinConditional.lean} and
 \repofile{YangMills/OS/DobrushinComparison.lean}{DobrushinComparison.lean},
-\repofile{YangMills/OS/DobrushinGibbs.lean}{DobrushinGibbs.lean} and
-\repofile{YangMills/OS/DobrushinIsing.lean}{DobrushinIsing.lean}.  Every
+\repofile{YangMills/OS/DobrushinGibbs.lean}{DobrushinGibbs.lean},
+\repofile{YangMills/OS/DobrushinIsing.lean}{DobrushinIsing.lean} and
+\repofile{YangMills/OS/DobrushinLattice.lean}{DobrushinLattice.lean}.  Every
 claimed endpoint is oracled and depends on exactly Lean's three standard
 axioms; the counts and the runs are itemised in the Reproducibility section.
 
@@ -177,8 +189,9 @@ verifiable by reading that development.
 \textbf{Not claimed.}  That $\specRatio$ of the coupled kernel is bounded away
 from one uniformly in the extent: what is proved is decay of correlations of
 the Gibbs weight, and the transport into the operator formulation is untouched.
-That Dobrushin's condition holds for lattice families beyond the two cells of
-Theorem~\ref{thm:ising}'s witnesses --- for a general weight it is the
+That Dobrushin's condition holds beyond the geometries treated --- the
+one-bond and star cells and the rectangle family of
+Theorem~\ref{thm:family}; for a general weight it is the
 hypothesis Theorem~\ref{thm:gibbs} leaves to its user, together with, for the
 geometric form of the decay, the range-one support of the intrinsic matrix.  That the window
 derived from
@@ -863,6 +876,60 @@ star is a cell, not a lattice, and the theorem does not evaluate the window
 for any numerical $(\beta,\gamma)$; no interval arithmetic is used anywhere
 in this paper.
 
+\subsection*{The family, and the quantifier order}
+
+A cell is not a family of volumes.  The last rung supplies the family: the
+$L\times T$ rectangle with coupling $\beta$ on horizontal nearest-neighbour
+bonds, $\gamma$ on vertical ones, free boundary, and the Manhattan distance
+$d_{\square}\bigl((a,b),(c,d)\bigr)=|a-c|+|b-d|$.
+
+\begin{theorem}[the volume family; machine-checked]
+\label{thm:family}
+Fix $\beta$, $\gamma$ and $\alpha$ with
+$2\tanh|\beta|+2\tanh|\gamma|\le\alpha<1$.  Then for \emph{every} $L\ge1$ and
+$T\ge1$, for single-site observables $f$ at $p_0$ and $g$ at $q_0$ on the
+$L\times T$ rectangle,
+\[
+  \bigl|\mathrm{Cov}_{\mu}(f,g)\bigr|\;\le\;
+  \frac{\delta_{p_0}(f)\,\delta_{q_0}(g)}{4\,(1-\alpha)}\,
+  \alpha^{\,d_{\square}(p_0,q_0)} ,
+\]
+where $\mu$ is the Gibbs weight of the rectangle's Ising coupling.  In Lean:
+\texttt{rect\_ising\_uniform\_two\_point}, with the general-observable form
+\texttt{rect\_ising\_uniform\_decay}.  The quantifier order is the theorem:
+$\beta$, $\gamma$, $\alpha$ and the prefactor are bound \emph{before}
+$(L,T)$, so a reader asking ``uniform in what?''\ is answered by the
+statement's own binder list.
+\end{theorem}
+
+\begin{proof}
+Each site of each rectangle carries at most two horizontal and two vertical
+bonds: the horizontal neighbour set injects, through the first coordinate's
+value, into the two-element set $\{a-1,a+1\}\subset\N$, and likewise
+vertically.  So the envelope row sum is at most $2\tanh|\beta|+2\tanh|\gamma|$
+at every site --- interior sites attain it, boundary sites sit strictly
+below --- and Theorem~\ref{thm:ising}'s endpoints apply with the given
+$\alpha$ and the range-one support of the coupling for $d_{\square}$.
+\end{proof}
+
+\begin{proposition}[non-vacuity across the family, machine-checked]
+\label{prop:family-witness}
+At $\beta=\gamma=0$ the window degenerates to $\alpha=0$ and
+Theorem~\ref{thm:family} forces, for distinct sites,
+$\mathrm{Cov}_{\mu}(f,g)=0$ exactly, at every volume --- true, since the
+zero-coupling weight is a product measure, and proof that the family
+statement carries content at every $(L,T)$ simultaneously.  In Lean:
+\texttt{rect\_zero\_coupling\_indep}.
+\end{proposition}
+
+\textbf{Gates.}
+\repofile{scripts/judge\_dobrushin\_d5.py}{judge\_dobrushin\_d5.py},
+registered before this rung's Lean.  G15 measures the row sums against the
+window on four lattices with interior attainment; G16 checks the bound
+itself against \emph{exhaustive} Gibbs covariances --- full enumeration, no
+sampling --- over every ordered pair of distinct sites; G17 computes the
+bound once and holds four growing volumes under it.
+
 \section{The measurement, and where the wall is}
 \label{sec:measurement}
 
@@ -964,18 +1031,22 @@ order:
       formality.  \textbf{Done}: Theorem~\ref{thm:gibbs}, from a strictly
       positive weight alone, leaving Dobrushin's condition on the intrinsic
       matrix as the hypothesis a user supplies --- plus, for the geometric
-      form of the decay, the range-one support of that matrix; and
+      form of the decay, the range-one support of that matrix;
       Theorem~\ref{thm:ising} instantiates the interaction itself, turning
       that hypothesis into a computation on the coupling, discharged on the
-      one-bond and star cells;
+      one-bond and star cells; and Theorem~\ref{thm:family} carries it
+      across the rectangle family, constants first, volumes after;
 \item[\textbf{4.}] transport of that decay into the operator formulation: from
       correlations of the Gibbs weight to $\specRatio$ of the transfer kernel,
       through the finite-time interface described below.
-      \textbf{Open.}  Conditional on a volume-uniform Dobrushin window for
-      the chosen lattice family --- discharged in this paper only on the
-      one-bond and star cells, which are cells and not yet a family of
-      volumes --- it is the only remaining \emph{structural} step in this
-      list.
+      \textbf{Open, and now chartered.}  The volume-uniform Dobrushin window
+      for a lattice family is discharged by Theorem~\ref{thm:family}; what
+      remains is the transport itself, whose charter and pre-registered
+      gates are committed
+      (\repofile{docs/DOBRUSHIN-D6-CHARTER.md}{DOBRUSHIN-D6-CHARTER.md},
+      gates G18--G20): the strip identity, per-extent prefactor control, and
+      the rate transport, with the risk located in the last and failure a
+      recordable outcome.
 \end{enumerate}
 
 \textbf{What changed, stated at its exact size.}  An earlier version of this
@@ -1058,14 +1129,17 @@ related models have been treated without mechanisation \cite{WashburnSimons2026}
 
 \section{Limitations}
 
-All six theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
+All seven theorems are elementary.  Theorem~\ref{thm:d1} is three inductions;
 Theorem~\ref{thm:coeff} is a hyperbolic identity and a bound on a denominator;
 Theorem~\ref{thm:matrix} is a construction and a finite computation;
 Theorem~\ref{thm:comparison} is a telescoping sum, one pointwise application of
 a ninety-year-old covariance bound, and two finite inductions;
 Theorem~\ref{thm:gibbs} is a reindexing by an involution;
 Theorem~\ref{thm:ising} is a split of a quadratic sum at one index and the
-envelope applied to a field move of $0$ or $\pm2$.  Their value
+envelope applied to a field move of $0$ or $\pm2$;
+Theorem~\ref{thm:family} is a neighbour count by injection.  The family is
+rectangles with free boundary, not tori, and nothing spectral is claimed
+for it --- the transport is D-6's, chartered and not begun.  Their value
 is that they are machine-checked, non-vacuous, composed, and carry the hypothesis
 the dead method violated --- not that any of them is deep.
 
@@ -1080,9 +1154,10 @@ volume-uniform statement about $\specRatio$ for the coupled kernel remains
 unproved.  This is the substantive limitation, and it is a translation between
 two languages rather than a missing estimate --- which does not make it small.
 Two further boundaries are worth naming.  Theorem~\ref{thm:gibbs} discharges
-every hypothesis \emph{except} Dobrushin's condition; beyond the one-bond and
-star-cell instances proved with Theorem~\ref{thm:ising}, whether that
-condition holds uniformly for a specified lattice \emph{family} remains open.
+every hypothesis \emph{except} Dobrushin's condition;
+Theorem~\ref{thm:family} discharges it uniformly for the rectangle family
+inside the window, and for other geometries --- tori, higher dimension ---
+it is the same neighbour count, to be repeated rather than presumed.
 The envelope of Theorem~\ref{thm:coeff} is what a user
 would apply, and it is a sufficient condition, not a characterisation.  And the
 decay proved is decay of correlations of a measure on a \emph{finite} product
@@ -1092,7 +1167,7 @@ space: no infinite-volume state is constructed anywhere, and the word
 \section{Reproducibility}
 
 \textbf{Anchor.}  All sources cited above are read at commit
-\nolinkurl{8e8375d3415575e997765e61515e1a8af283df97} of
+\nolinkurl{3bd8a463d647d2ef4ea8afd44c19855244729705} of
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Toolchain
 \nolinkurl{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned at
 \nolinkurl{07642720480157414db592fa85b626dafb71355b}.  A runner verifies all
@@ -1109,8 +1184,9 @@ $8468$ with zero errors: the $+2$ is the difference between two measurements on
 the same plane, one job per new module, and is not an extrapolation.
 
 \textbf{The modules of Sections~\ref{sec:comparison} and~\ref{sec:gibbs}, and
-what is measured about them.}  All six --- oscillation, Gr\"uss, conditional,
-comparison, Gibbs, Ising --- are imported by \texttt{YangMillsCore.lean} at
+what is measured about them.}  All seven --- oscillation, Gr\"uss,
+conditional, comparison, Gibbs, Ising, lattice --- are imported by
+\texttt{YangMillsCore.lean} at
 this anchor, and their endpoints are listed by name in
 \texttt{oracle\_check.lean}.  \emph{What has been measured now includes the
 full core, in a fresh clone.}  The job accounting is stated in full because
@@ -1134,7 +1210,12 @@ by the definitional term it was fighting for --- with no statement changed
 anywhere, and the mathematical audit of that lane stays with its author.
 The green count was then taken in the same clone after the final one-line
 repair, with every module of this paper byte-identical throughout, as the
-hash table below witnesses.
+hash table below witnesses.  The family rung then repeated the discipline
+in a \emph{second} fresh clone: the prediction $8475\to8476$ registered in
+its wiring commit, two elaboration passes --- the only defects two lambdas
+whose domain the elaborator could not yet see --- and lake's closing line at
+this anchor, \emph{Build completed successfully (8476 jobs)}: the number
+again exactly as registered before the run.
 A previous version of this paper carried, at this spot, the opposite sentence
 --- that the modules were not yet imported --- left over from the draft that
 preceded the wiring; its correction had been appended past the end of the
@@ -1164,10 +1245,11 @@ runs, is exactly $\{\texttt{propext},\allowbreak\
 \texttt{Classical.choice},\allowbreak\ \texttt{Quot.sound}\}$: Lean's three
 standard axioms, no project axiom, no \texttt{sorry} in any build log.
 And at this anchor the \emph{repository-wide} oracle ran to completion in
-the same fresh clone: exit code zero over $2980$ axiom reports ---
-seventy-six of them this lane's --- with \textbf{zero} occurrences of
+the fresh clone: exit code zero over $2985$ axiom reports ---
+eighty-one of them this lane's --- with \textbf{zero} occurrences of
 \texttt{sorryAx}, and the union of every axiom list printed again exactly
-the standard triple.  The
+the standard triple.  (The previous anchor's repository-wide run, $2980$
+reports with the same union, stands in the record.)  The
 union is computed as a \emph{union} rather than by matching each printed line
 against the standard triple, because a declaration depending on \emph{fewer}
 axioms is perfectly clean and would fail that naive test.
@@ -1202,13 +1284,14 @@ module & \texttt{sha256} & bytes\\
 \texttt{DobrushinComparison.lean} & \nolinkurl{a489fc2823e564685f3ffbf586f1a1f63ce4b78a955a9ec88edbcd70afae4133} & $54738$\\
 \texttt{DobrushinGibbs.lean} & \nolinkurl{b525731d274bf0ce7511e0e0f796d5892f22cee1601daa5a8fa7fea6bd507ba1} & $16787$\\
 \texttt{DobrushinIsing.lean} & \nolinkurl{4e880ff013508c55bbbe43db0a511bcecfb51f509a8ebc78f9d49201f577bf23} & $29158$\\
+\texttt{DobrushinLattice.lean} & \nolinkurl{78b57a5bed869378557c2a1a9c4442be1ad41207e08a6607999365926422d1e7} & $15135$\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\textbf{Certifiers.}  Five gate scripts, each run in \texttt{normal} and in
-\texttt{optimized} (\texttt{python -O}) mode on the Linux plane; all ten runs
-exited zero.  \repofile{scripts/judge\_dobrushin.py}{judge\_dobrushin.py}
+\textbf{Certifiers.}  Six gate scripts, each run in \texttt{normal} and in
+\texttt{optimized} (\texttt{python -O}) mode on the Linux plane; all twelve
+runs exited zero.  \repofile{scripts/judge\_dobrushin.py}{judge\_dobrushin.py}
 reported $29$ of $29$ checks in each mode and
 \repofile{scripts/judge\_dobrushin\_d2.py}{judge\_dobrushin\_d2.py} $18$ of
 $18$, at the previous anchor.  At this anchor
@@ -1216,7 +1299,9 @@ $18$, at the previous anchor.  At this anchor
 $11$ of $11$,
 \repofile{scripts/judge\_dobrushin\_d3b.py}{judge\_dobrushin\_d3b.py} $6$ of
 $6$, and \repofile{scripts/judge\_dobrushin\_d4.py}{judge\_dobrushin\_d4.py}
---- the gates G12--G14 of Section~\ref{sec:gibbs} --- $14$ of $14$, in both
+--- the gates G12--G14 of Section~\ref{sec:gibbs} --- $14$ of $14$, and
+\repofile{scripts/judge\_dobrushin\_d5.py}{judge\_dobrushin\_d5.py} --- G15--G17
+of the family rung --- $37$ of $37$, in both
 modes, all running \emph{before} the build in the same runner
 invocation and, for D-4, before \emph{every} fabrication pass of the rung
 they license --- the record shows the gates passing before the theorems they
@@ -1233,7 +1318,9 @@ sigmoid identity, envelope domination, endpoints, attainment witness ---
 at the first attempt, failing only on a missing import, two dead closing
 tactics, one no-progress \texttt{simp}, and four rewrites that could not see
 through \texttt{fin\_cases}' literal representation (an \texttt{exact}
-bridges it by definitional equality; a rewrite does not).  Not one of the failures was mathematical: they were library
+bridges it by definitional equality; a rewrite does not); and two closed the
+family module, whose only defects were two bare lambdas whose projections
+the elaborator met before their domain.  Not one of the failures was mathematical: they were library
 names absent under their classical spelling in the pinned Mathlib, section
 variables that a statement never mentioned and so never bound, a global
 rewrite that consumed the literal $1$ inside an indicator, and goals equal only

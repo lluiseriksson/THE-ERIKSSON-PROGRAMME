@@ -30450,3 +30450,40 @@ cells, L=2..8; out-of-window control reported unjudged); G20 geometric
 prefactor convergence at fixed L.  60 checks, no assert, both modes.
 
 **ROLES.**  Chartered by the fabricating desk; the gates license or block.
+
+## Addendum 593 (2026-08-03, **D-5 GREEN: the volume family — gates 37/37
+first run both modes, module green in two passes, core at exactly 8476,
+repository-wide oracle 2985 — and paper v6**)
+
+**THE RUNG.**  `YangMills/OS/DobrushinLattice.lean` at anchor
+`3bd8a463d647d2ef4ea8afd44c19855244729705`, sha256 `78b57a5b…`, 15135
+bytes.  The L x T rectangle: `rectJ_row` bounds every site's envelope row
+sum by the window (neighbour sets injected into two-element sets of
+naturals), and the endpoints `rect_ising_uniform_two_point` /
+`rect_ising_uniform_decay` bind beta, gamma, alpha and the prefactor BEFORE
+the quantifier over (L, T) — the volume-uniformity is the binder order of
+one declaration.  `rect_zero_coupling_indep` is the family-wide witness:
+at zero coupling the bound forces exact independence at every volume.
+
+**MEASUREMENTS, all in a fresh clone.**  Gates G15-G17: 37/37, both modes,
+FIRST run — the third rung in a row whose judges passed before its Lean and
+whose mathematics then elaborated essentially first-try (pass 1's only
+defects: two bare lambdas whose projections the elaborator met before their
+domains; pass 2 clean).  Core: `Build completed successfully (8476 jobs)` —
+the prediction 8475→8476, exact for the third consecutive registered count.
+Repository-wide oracle: exit 0, 2985 reports (2980 + the five new
+endpoints), zero sorryAx, union exactly the standard triple.  Runtime
+disconnected on completion.
+
+**PAPER v6** (21 pp): the family block in the abstract; Section 5 subsection
+with Theorem thm:family, its proof sketch, the zero-coupling witness and the
+G15-G17 record; frontier step 4 now cites the committed D-6 charter and its
+registered gates; reproducibility at the new anchor with the second
+fresh-clone story, 8476, 2985, 37/37 and the Lattice hash row.  The
+semantic sweep caught THREE more deictic-family sentences (abstract WNP,
+Section 1 not-claimed, Limitations) that thm:family's insertion had made
+false — the running count of this class is NINE, and the sweep that catches
+them is re-derivation, never grep.
+
+**ROLES.**  Fabricating desk; gates licensed; no self-audit; no score.
+v6 is the intended viXra v2 payload when the submitted v1 surfaces.
