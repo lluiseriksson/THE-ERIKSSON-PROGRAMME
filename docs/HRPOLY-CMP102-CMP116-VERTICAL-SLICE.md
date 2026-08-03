@@ -2069,11 +2069,12 @@ replacing each multiplicity by its support does not identify it with the
 printed family.
 
 The physical walk index must therefore be fixed only after the CMP99
-rectangular random-walk reconstruction is made explicit.  The available CMP99
-text also describes the relevant `H1` expansion as tree-like (a main line with
-additional lines), so the current linear transfer-power state must not be
-silently declared to be that index.  The reusable exact core is the weaker
-statement: any ordered listing of the localization carriers has a visited
-product equal to the squarefree monomial on their union.  A future transfer
-implementation must additionally prove that its rectangular head/readout and
-its walk carrier encode the printed tree expansion.
+rectangular random-walk reconstruction is made explicit.  CMP99 printed page
+427 does describe a later `H1` expansion as tree-like, but that is not the
+object used here: CMP116 printed page 3 explicitly defines the present
+`H(s)`, `G-tilde(s)`, and `H0(s)` from the linear generalized walks of
+(1.6)/(3.107).  Importing the `H1` tree geometry into this dictionary would be
+another object mismatch.  The existing visited-state algebra therefore has
+the correct linear shape.  What remains is to extend its square transfer
+product by the source's rectangular head/readout and to identify the resulting
+unweakened series with the physical minimizer.
