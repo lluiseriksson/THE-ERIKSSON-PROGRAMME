@@ -30571,3 +30571,60 @@ Amendments 1-2 reach their audited record at the next anchored PDF.
 
 **ROLES.**  Specification received from outside, adopted whole, registered
 before fabrication; the desk that will fabricate did not soften a word.
+
+## Addendum 597 (2026-08-03, **B-1 GREEN AND ORACLED: the finite band
+identity, at exactly the predicted 8477 — and gates G21-G23 registered and
+passed before any Lean of B-2**)
+
+**B-1 is a Lean theorem.**  `YangMills/OS/DobrushinBridge.lean`
+(sha256 `d2db5202…`, 16594 bytes, anchor `b4469a797`) holds, for finite
+`X`, symmetric `M`, strictly positive `Om` with the NORMALISED
+eigen-relation (`normalise_eig` keeps `lam` visible): `pow_fix` /
+`pow_fix_left` (powers fix the eigenvector on both sides),
+`pow_entry_symm`, `pow_pairing` (the path expansion of a matrix-power
+pairing, first-step `Fin.cons` induction inheriting the tree's
+`TracePathExpansion` pattern), `band_pair` (two-endpoint band sums are
+matrix elements at the dressed observables), `bandZ` (the band mass is
+`∑ Om²`, n-INDEPENDENT — the Perron-boundary normalisation is exact),
+`bandNorm_pos`, `centered_dressed_orth`, and the headline
+`band_covariance_eq`: band covariance = matrix element of `M^n` at the
+centred dressed observables over `∑ Om²`, exact, every `n`.  Per
+Amendment 2: no spectral positivity anywhere; the module never touches
+the physical kernel — it is the Omega-boundary form only.
+
+**Verification (fresh runtime, two passes, disconnected on completion).**
+Pass 1 at `85fc8158` died at its SINGLE error — `rw [band_pair]` against
+a beta-redex (`?f (v 0)` cannot match `(fun x => 1) (v 0)`); the fix is
+the explicit instantiation, commit `b4469a797`.  Pass 2, every child
+zero: 8 certifier runs (d5/d4/d3/d3b, both modes), the four lane modules,
+**core «Build completed successfully (8477 jobs)» — the FOURTH
+consecutive exact job-count prediction** (8475, 8476, 8477 after the
+corrected base), and the FULL repository oracle: **2993 reports (the
+predicted +8), 0 sorryAx, union of axioms = exactly
+{propext, Classical.choice, Quot.sound}** (wrapped log lines read to
+their continuations; unique sets are the triple and its subsets).
+Bridge build log: 0 errors.  Local bytes match the plane's stage-5
+hashes for both the module and the judge script.
+
+**B-2/B-3 design registered BEFORE fabrication**
+(`docs/DOBRUSHIN-D6-B2-DESIGN.md`, commit `68b9ba4c3`): two modules —
+`DobrushinTransport.lean` (abstract transport theorem: the exact identity
+`connCorr = (∑ Om²) · bandCov(f_v)` with `f_v = v/Om` feeds
+`volumeUniform_gap`; the decay hypothesis lives at the MEASURE level, so
+the anti-circularity clause is discharged by B-1's theorem, not assumed)
+and `DobrushinCorollary.lean` (band measure = free strip measure TILTED
+at the ends by `psi = Om/sqrt(w)` — the note records that the fabricating
+desk first wrote `Om·sqrt(w)` in scratch, i.e. Amendment 2's conflation
+failure mode fired live and the derivation caught it; five-term
+covariance formula; denominator floor `(min psi)²`; geometry bridge to
+D-5's rectangle; assembly `C_{L,f}·alpha^n`).
+
+**Gates G21-G23 (`scripts/judge_dobrushin_d6b.py`, sha256 `54c326f2…`)
+PASSED on the plane, 142/142 in BOTH modes**: G21 the B-2 identity exact
+on registered matrices INCLUDING one with negative subdominant eigenvalue;
+G22 the tilt algebra exact with `psi = Om/sqrt(w)`; G23 the D-5 feed at
+the tilt observables and the ASSEMBLED per-extent prefactor bounding the
+measured band covariance.  B-2 fabrication is licensed.
+
+**ROLES.**  This desk fabricates and registered its judges before the
+Lean; the audit of the rung belongs to another desk; no score.
