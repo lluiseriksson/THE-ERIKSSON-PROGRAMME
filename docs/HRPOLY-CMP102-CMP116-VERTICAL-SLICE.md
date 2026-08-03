@@ -2009,3 +2009,26 @@ and independently rehashed on Windows as
 The runtime was disconnected and deleted immediately afterward.  This is a
 new proof compiler for the physical L1 bridge, not a new terminal producer:
 the live count remains `18/41` and no `TermSource` inhabitant is produced.
+
+Primary-source correction after that brick: printed page 3 defines the
+weakening monomial of each propagator random walk using the set of all
+**distinct** `sigma_0` cubes intersecting its localization domain.  Hence the
+printed monomial is squarefree and the integer `m` counts distinct cubes.
+The repository object
+`C(s) Q* (Q C(s) Q*)^-1`, when expanded algebraically, has repeated powers
+from overlapping factors.  It agrees with the physical rectangular
+minimizer at `s = 1`, but no theorem identifies it with the printed
+squarefree `H(s)` for general `s`.
+
+Consequently the multiplicity modules above remain valid algebra and valid
+majorants for that auxiliary algebraically weakened object, but they do not
+constitute the physical specialization of CMP116 equation (1.11).  A
+squarefree series cannot be obtained by merely regrouping repeated powers:
+`s(Delta)^2` is not `s(Delta)`.  The source-faithful route must instead start
+from the union monomial on each generalized walk.  The existing chain
+`BalabanCMP116VisitedWeakeningFactorization` ->
+`BalabanCMP116RestrictedVisitedTransferPowers` already implements this exact
+visited-carrier algebra.  The next physical brick is therefore a direct
+identification of its head readout with the printed `H(s)`, followed by the
+tree-length estimate for the distinct visited carrier.  No live producer
+counter moves at this correction.

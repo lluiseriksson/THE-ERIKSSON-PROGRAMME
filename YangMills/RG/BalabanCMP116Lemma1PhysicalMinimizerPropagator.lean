@@ -7,12 +7,16 @@ import YangMills.RG.BalabanCMP116Lemma1MultiplicityPropagatorBound
 import YangMills.RG.BalabanCMP99ComplexFineHeadTailMultiplicitySeries
 
 /-!
-# Physical minimizer specialization of CMP116 Lemma 1 L1
+# Algebraically weakened minimizer series (not the printed CMP116 `H(s)`)
 
 PRE-VALIDATION: this source is present, its `.olean` has not yet been
 materialized, and its results have not yet been verified by the Lean compiler.
 
-The literal physical minimizer is stored as the nested series
+The repository's algebraically weakened rectangular minimizer
+
+`C(s) Q* (Q C(s) Q*)⁻¹`
+
+is stored as the nested series
 
 `Neumann length -> coarse word -> tail choice -> head length -> head walk
   -> omitted subset`.
@@ -26,11 +30,20 @@ summable reindexing is lifted back to the finite matrix.  Thus no artificial
 matrix norm is inserted.  Radial summability from the certificates justifies
 each dependent `tsum` reindexing.
 
-Honest scope: the source still has to construct the certificate uniformly in
-the matrix entries.  In particular it must pay the finite powerset cost in
-the post-expansion base weight and prove the total-degree/tree-length
-geometry.  This file neither identifies total degree with the printed CMP116
-integer `m`, nor proves coordinatewise holomorphy, nor constructs `H0(s)`.
+SOURCE-DICTIONARY RETRACTION: this is not the printed CMP116 `H(s)`.  The
+primary source defines `H(s)` by multiplying each generalized-random-walk
+term by one weakening coordinate for each *distinct* cube in the union of
+the walk's localization domains.  Those monomials are squarefree.  The
+algebraic inverse above instead produces repeated powers when weakened
+factors overlap, and the two objects are identified in the tree only at full
+coupling `s = 1`.  Therefore no theorem in this file may be used as the
+physical specialization of CMP116 equation (1.11).
+
+The source-faithful route is the existing visited-carrier construction
+`BalabanCMP116VisitedWeakeningFactorization` followed by the restricted
+visited transfer powers.  This file remains an auxiliary exact identity for
+the algebraically weakened object.  It neither supplies the printed integer
+`m`, nor proves coordinatewise holomorphy, nor constructs `H0(s)`.
 -/
 
 open scoped BigOperators

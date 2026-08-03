@@ -9,7 +9,9 @@ same files that the remote validation will compile.
 This is not a Lean parser.  It removes comments and string literals, then
 rejects ``sorry``/``admit`` tokens and checks the command-level balance of
 ``namespace``/``section`` (including ``noncomputable section``) against
-``end``.  The latter catches the duplicated or missing ``end`` mistakes that
+``end``.  It also checks properly nested ``()``, ``[]``, ``{}``, and ``⟨⟩``
+delimiters after comments, strings, and character literals have been removed.
+These gates catch the duplicated ``end`` and missing-parenthesis mistakes that
 otherwise cost a cold remote elaboration cycle.
 """
 
@@ -25,6 +27,9 @@ from pathlib import Path
 FORBIDDEN = re.compile(r"\b(?:sorry|admit)\b")
 OPEN = re.compile(r"^\s*(?:(?:noncomputable|private|protected)\s+)?(namespace|section)\b(?:\s+([^\s]+))?")
 CLOSE = re.compile(r"^\s*end(?:\s+([^\s]+))?\s*$")
+CHAR_LITERAL = re.compile(r"'(?:\\.|[^\\'\r\n])'")
+OPEN_BRACKETS = {"(": ")", "[": "]", "{": "}", "⟨": "⟩"}
+CLOSE_BRACKETS = {closing: opening for opening, closing in OPEN_BRACKETS.items()}
 
 
 def git_changed_paths(root: Path, base: str, head: str) -> list[Path]:
@@ -132,34 +137,59 @@ def check_file(root: Path, path: Path) -> list[str]:
     if not path.is_file():
         return [f"{label}: overlay path is missing"]
 
-    stack: list[tuple[str, str | None, int]] = []
+    command_stack: list[tuple[str, str | None, int]] = []
+    bracket_stack: list[tuple[str, int, int]] = []
     lines = visible_lines(path.read_text(encoding="utf-8-sig"))
     for line_number, line in enumerate(lines, start=1):
+        line = CHAR_LITERAL.sub("", line)
         forbidden = FORBIDDEN.search(line)
         if forbidden:
             failures.append(f"{label}:{line_number}: forbidden token: {forbidden.group(0)}")
 
+        for column, token in enumerate(line, start=1):
+            if token in OPEN_BRACKETS:
+                bracket_stack.append((token, line_number, column))
+            elif token in CLOSE_BRACKETS:
+                if not bracket_stack:
+                    failures.append(
+                        f"{label}:{line_number}:{column}: unmatched closing delimiter {token}"
+                    )
+                    continue
+                opening, opened_at, opened_column = bracket_stack.pop()
+                expected = OPEN_BRACKETS[opening]
+                if token != expected:
+                    failures.append(
+                        f"{label}:{line_number}:{column}: closing delimiter {token} "
+                        f"does not match {opening} opened at "
+                        f"{opened_at}:{opened_column}; expected {expected}"
+                    )
+
         opened = OPEN.match(line)
         if opened:
-            stack.append((opened.group(1), opened.group(2), line_number))
+            command_stack.append((opened.group(1), opened.group(2), line_number))
             continue
 
         closed = CLOSE.match(line)
         if not closed:
             continue
-        if not stack:
+        if not command_stack:
             failures.append(f"{label}:{line_number}: unmatched end")
             continue
-        kind, name, opened_at = stack.pop()
+        kind, name, opened_at = command_stack.pop()
         close_name = closed.group(1)
         if close_name and name and close_name != name:
             failures.append(
                 f"{label}:{line_number}: end {close_name} closes {kind} {name} opened at line {opened_at}"
             )
 
-    for kind, name, opened_at in reversed(stack):
+    for kind, name, opened_at in reversed(command_stack):
         suffix = f" {name}" if name else ""
         failures.append(f"{label}:{opened_at}: unclosed {kind}{suffix}")
+    for opening, opened_at, opened_column in reversed(bracket_stack):
+        failures.append(
+            f"{label}:{opened_at}:{opened_column}: unclosed delimiter {opening}; "
+            f"expected {OPEN_BRACKETS[opening]}"
+        )
     return failures
 
 

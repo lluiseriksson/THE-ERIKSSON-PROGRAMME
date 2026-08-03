@@ -6,10 +6,11 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP116Lemma1PhysicalMinimizerPropagator
 
 /-!
-# Axiom audit: physical minimizer specialization of CMP116 Lemma 1 L1
+# Axiom audit: auxiliary algebraically weakened minimizer series
 
 PRE-VALIDATION: this source is present, its `.olean` has not yet been
 materialized, and its results have not yet been verified by the Lean compiler.
+This module is not the printed squarefree CMP116 `H(s)` specialization.
 -/
 
 #print axioms YangMills.RG.cmp116Lemma1PhysicalMinimizerWalkTerm_eq
