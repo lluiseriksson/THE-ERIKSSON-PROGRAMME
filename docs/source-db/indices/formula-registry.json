@@ -1599,6 +1599,28 @@
       ]
     },
     {
+      "claim_id": "cmp102.eq80.literal-higher-order-potential",
+      "citation_key": "cmp102.variational-hessian-expansion-source-target",
+      "source_id": "cmp102_variational",
+      "short": "Balaban CMP102",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "literal_formula",
+      "confidence": "visual",
+      "statement": "Literal four-term higher-order potential in the transformed field.",
+      "formula_ascii": "V(A') = -<H D_3(A'),J> - <A',Delta_pi H D(A')> + (1/2)<H D(A'),Delta_pi H D(A')> + V_0(A' - H D(A'))",
+      "formula_latex": null,
+      "conclusion": "The four-term algebraic core of YangMills.RG.cmp102Eq80GlobalPotential is source-verified; YangMills.RG.cmp102Eq80SourcePi4RectangularWeakenedPotential is its rectangular physical H-specialization. YangMills.RG.cmp102Eq80SourcePi4RealMixedPotential preserves the formula but is a square fine-field auxiliary.",
+      "source_verified": true,
+      "equations": [
+        "80"
+      ],
+      "assumptions": [
+        "CMP102 Sect. C notation on printed page 290 / PDF page 14.",
+        "The source-to-Lean dictionary for H, Delta_pi, J, D, D_3, V_0 and A' remains a separate obligation."
+      ]
+    },
+    {
       "claim_id": "cmp102.eq142.hessian-quadratic-expansion",
       "citation_key": "cmp102.variational-hessian-expansion-source-target",
       "source_id": "cmp102_variational",

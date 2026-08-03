@@ -140,9 +140,9 @@
       "source_id": "cmp102_variational",
       "short": "Balaban CMP102",
       "status": "visual_confirmed",
-      "summary": "Action expansion, H-operator bridge, and positive second variation are visually confirmed; the Wilson-Hessian source-to-Lean dictionary remains open.",
-      "printed_pages": "281, 285, 299",
-      "pdf_pages": "5, 9, 23",
+      "summary": "Action expansion, rectangular H, literal Eq. (80), and positive second variation are visually confirmed; Eq. (80) matches the Lean four-term core exactly, while the Wilson-Hessian source-to-Lean dictionary remains open.",
+      "printed_pages": "281, 285, 290, 299",
+      "pdf_pages": "5, 9, 14, 23",
       "questions": [
         "Dictionary from CMP102 A', Delta_1, H and U_k to repository PhysicalGaugeField/PhysicalBond/Hessian objects.",
         "Sign and normalization conventions for the source quadratic form.",
