@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v2"
-SOURCE_SHA = "83c60bdd379f3cdbb1921c5b9652b71a465747fa"
+RUNNER_REV = "regional-large-block-v3"
+SOURCE_SHA = "c7ae45523d3df800033bfd81e17bb4d8fb33b94f"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -118,6 +118,67 @@ QUEUE = [
             "YangMills/RG/BalabanCMP99SourceRegionalLargeBlockOverlapAudit.lean",
         ],
         2,
+    ),
+    (
+        "regional_green_neumann_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann",
+        ],
+        None,
+    ),
+    (
+        "regional_green_neumann_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceRegionalGreenNeumannAudit.lean",
+        ],
+        11,
+    ),
+    (
+        "typed_scalar_commutator_row_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.FinitePiLpTypedScalarCommutatorWeightedRow",
+        ],
+        None,
+    ),
+    (
+        "typed_scalar_commutator_row_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/FinitePiLpTypedScalarCommutatorWeightedRowAudit.lean",
+        ],
+        2,
+    ),
+    (
+        "source_overlap_sum_focal",
+        ["lake", "build", "YangMills.RG.FinitePiLpSourceOverlapSum"],
+        None,
+    ),
+    (
+        "source_overlap_sum_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/FinitePiLpSourceOverlapSumAudit.lean",
+        ],
+        1,
+    ),
+    (
+        "regional_defect_overlap_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceRegionalDefectOverlap",
+        ],
+        None,
+    ),
+    (
+        "regional_defect_overlap_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceRegionalDefectOverlapAudit.lean",
+        ],
+        3,
     ),
 ]
 
