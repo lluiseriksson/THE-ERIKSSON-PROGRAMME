@@ -14,6 +14,7 @@
         "text_full": "text/balaban-rg-II-cmp116-1104161193.txt",
         "text_pages_15_20": "text/cmp116-pages-15-20.txt",
         "text_page_21": "text/cmp116-page-21-post-lemma3.txt",
+        "render_source_03": "renders/cmp116-source-03.png",
         "render_source_05": "renders/cmp116-source-05.png",
         "render_source_06": "renders/cmp116-source-06.png",
         "render_source_07": "renders/cmp116-source-07.png",
@@ -88,11 +89,11 @@
       "key": "cmp116.lemma1.window.1.11-1.29",
       "source_id": "cmp116",
       "locator": {
-        "printed_pages": "5-8",
-        "pdf_pages": "5-8",
+        "printed_pages": "3, 5-8",
+        "pdf_pages": "3, 5-8",
         "equations": ["1.11", "1.13", "1.14", "1.15", "1.16", "1.17", "1.18", "1.19", "1.20", "1.21", "1.22", "1.23", "1.24", "1.25", "1.26", "1.27", "1.28", "1.29"],
         "local_text": "balaban-rg-II-cmp116-1104161193.txt, visually corrected against rendered pages 5-8",
-        "renders": ["render_source_05", "render_source_06", "render_source_07", "render_source_08"]
+        "renders": ["render_source_03", "render_source_05", "render_source_06", "render_source_07", "render_source_08"]
       },
       "status": "visual_confirmed",
       "summary": "Lemma 1 fixed-point, small-field, Cauchy and localization window. The rendered primary PDF fixes OCR damage in Eqs. (1.13), (1.24), (1.29), and confirms that the small-domain split is m > 2^4, not m > 24.",

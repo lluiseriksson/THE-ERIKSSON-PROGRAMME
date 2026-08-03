@@ -7,13 +7,13 @@ import YangMills.RG.BalabanCMP116WeakeningMultiplicityPowersetMajorant
 import YangMills.RG.BalabanCMP116Lemma1WeakenedPropagatorBound
 
 /-!
-# CMP116 Lemma 1: multiplicity-aware propagator bound
+# Auxiliary multiplicity-aware weakened-series bound
 
-The literal physical minimizer contains products of independently weakened
-factors.  Overlapping carriers give repeated powers of one weakening
-coordinate, so the square-free L1 propagator certificate is not applicable.
-This module proves the corresponding norm-only L1 deduction for finitely
-supported natural multiplicities.
+The repository's algebraically weakened minimizer contains products of
+independently weakened factors.  Overlapping carriers give repeated powers
+of one weakening coordinate, so the square-free L1 propagator certificate is
+not applicable to that auxiliary object.  This module proves a corresponding
+norm-only deduction for finitely supported natural multiplicities.
 
 The propagator is constructed internally as the multiplicity-weighted `tsum`.
 The source input is one summable base-weight budget over the already expanded
@@ -21,6 +21,13 @@ walk index, together with a long-walk inequality for the **total multiplicity
 degree**.  Thus a physical instantiation must account for its finite powerset
 cost in `baseWeight` and must prove the source-to-series degree geometry.  No
 identification with the printed CMP116 integer `m` is made here.
+
+SOURCE-DICTIONARY WARNING: CMP116 defines the printed `H(s)` directly from
+generalized random walks, with one factor per distinct cube in the union of
+the walk's localization domains.  Its monomials are squarefree.  This module
+therefore proves an equation-(1.11)-shaped auxiliary estimate, not the
+physical specialization of printed equation (1.11).  It must not be used to
+replace the distinct-cube dictionary by total multiplicity degree.
 
 Unlike a square-free monomial, a multiplicity monomial is generally not
 affine in one coordinate.  This brick proves the uniform equation-(1.11) norm
@@ -259,7 +266,7 @@ theorem propagator_one :
   simpa [propagator] using
     (cmp116ComplexWeakeningMultiplicitySeries_one multiplicity term)
 
-/-- Multiplicity-aware equation (1.11), uniformly on the printed polydisc. -/
+/-- Multiplicity-aware equation-(1.11)-shaped bound on the same polydisc. -/
 theorem norm_propagator_le
     (sigma : Delta → ℂ)
     (hsigma : sigma ∈ cmp116Lemma1WeakeningPolydisc kappa1) :
