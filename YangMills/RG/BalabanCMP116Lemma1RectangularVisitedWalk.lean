@@ -7,7 +7,7 @@ import YangMills.RG.BalabanCMP116Lemma1WeakenedPropagatorBound
 import YangMills.RG.BalabanCMP116VisitedWeakeningFactorization
 
 /-!
-# Rectangular visited walks for the printed CMP116 `H(s)`
+# Fixed-carrier rectangular visited walks
 
 Compiler validation: source checkpoint `0ee9133a1b0c3d0eeaebcd3d9964e3ae06476ca9`
 was materialized in one fresh Colab Pro+ CPU/high-RAM clone on 2026-08-03;
@@ -16,20 +16,29 @@ the focal build exited zero and the five-declaration audit used only
 
 CMP116 printed page 3 defines `H(s)` by weakening the linear generalized-walk
 expansion (1.6), cited there to CMP99 (3.107).  Every distinct cube meeting the
-union of the localization domains is charged exactly once.  The distinguished
-head of an `H` walk is rectangular, while all continuation factors are square.
+union of the localization domains is charged exactly once.  Equation (3.107)
+prints one rectangular total product, but CMP99 printed page 413 explicitly
+warns that the intermediate factors generally act between different scales
+and suppresses those typing restrictions only because they do not affect the
+bounds.
 
-This module supplies that missing algebraic shape.  The weakened family is
-constructed internally from the rectangular walk terms and their squarefree
-active carriers.  A source certificate may provide the physical factors, the
-entrywise CMP99 walk estimates and the exact reconstruction at `s = 1`; it may
+This module supplies the corresponding fixed-carrier algebraic specialization:
+one rectangular head followed by square continuation factors on a common
+state space.  The weakened family is constructed internally from those terms
+and their squarefree active carriers.  A certificate may provide the factors,
+the entrywise walk estimates and the exact reconstruction at `s = 1`; it may
 not provide a preselected family `s |-> H(s)`.
 
-Honest scope: no physical CMP99 rectangular factors are installed here.  In
-particular this module does not identify the algebraic family
+Honest scope: this is not yet the physical CMP99 specialization.  No theorem
+embeds the heterogeneous Section-C carriers into the common `State` used here,
+and no theorem shows that such an embedding preserves the ordered products.
+The source-faithful route uses `DependentArrowWalk` over the generated
+coarse/fine carrier family.  In particular this module does not identify the
+algebraic family
 `C(s) Q* (Q C(s) Q*)^-1` with the printed `H(s)`.  A later physical module must
-fix `R0`, `R`, `successors`, and `domainActive` to the source objects and prove
-the full-coupling reconstruction.
+construct the complete dependent factor alphabet hidden by CMP99's printed
+"etc.", install its squarefree carrier, and prove the full-coupling
+reconstruction.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No placeholders or
 local axioms.
@@ -49,9 +58,10 @@ variable {Label : Type u} {Domain : Type v}
 variable {Output : Type w} {State : Type x}
 variable [Fintype State] [DecidableEq State]
 
-/-- The source product with one rectangular head and square continuation
-factors.  Its order is literally `R0(X0) R_alpha1(X1) ... R_alphan(Xn)` from
-CMP116 (1.6). -/
+/-- Fixed-carrier model of a product with one rectangular head and square
+continuation factors.  Its order matches the notation
+`R0(X0) R_alpha1(X1) ... R_alphan(Xn)`, but CMP99 suppresses the generally
+heterogeneous intermediate carriers in that notation. -/
 def rectangularTerm
     (R0 : Domain → Matrix Output State ℂ)
     (R : Label → Domain → Matrix State State ℂ)
@@ -153,9 +163,10 @@ theorem cmp116Lemma1RectangularGeneratedWalkMonomial_eq_visited
     walk.toGeneralizedWalk.complexWeakeningMonomial_active_eq_visitedProduct
       domainActive sigma
 
-/-- The one named source input for a rectangular physical specialization.
-All data before the proof fields are parameters of the type, so the
-certificate cannot hide a different weakened family. -/
+/-- The one named input for a fixed-carrier rectangular specialization.  All
+data before the proof fields are parameters of the type, so the certificate
+cannot hide a different weakened family.  A physical CMP99 use additionally
+needs a proved reduction from the dependent carrier walk to this model. -/
 structure CMP116Lemma1RectangularWalkSourceCertificate
     {Label : Type u} {Domain : Type v} {Delta : Type y}
     {Output : Type w} {State : Type x}

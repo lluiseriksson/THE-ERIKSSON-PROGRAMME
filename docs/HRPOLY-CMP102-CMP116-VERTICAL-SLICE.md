@@ -2079,11 +2079,24 @@ the correct linear shape.  What remains is to extend its square transfer
 product by the source's rectangular head/readout and to identify the resulting
 unweakened series with the physical minimizer.
 
-`BalabanCMP116Lemma1RectangularVisitedWalk` now supplies the compiler-verified
-generic rectangular extension: one `R0(X0)` head, square continuation factors,
-the exact union carrier, the visited-product identity, an internally assembled
-squarefree propagator, and its entrywise Eq. (1.11) bound.  The source checkpoint
+`BalabanCMP116Lemma1RectangularVisitedWalk` supplies a compiler-verified
+**fixed-carrier auxiliary specialization**: one `R0(X0)` head, square
+continuation factors on a common state space, the exact union carrier, the
+visited-product identity, an internally assembled squarefree propagator, and
+its entrywise Eq. (1.11)-shaped bound.  The source checkpoint
 `0ee9133a1b0c3d0eeaebcd3d9964e3ae06476ca9` passed a fresh Colab Pro+ focal and
-five-declaration audit on 2026-08-03.  This closes only the algebraic shape.  The
-certificate still requires the named CMP99 input
-`sum_walk walkTerm(R0,R_alpha) = physicalH`; no free weakened family is accepted.
+five-declaration audit on 2026-08-03.  That compiler result remains valid for
+the generic theorem, but it does **not** close the physical algebraic shape.
+
+CMP99 printed page 413 states that the intermediate `R'_alpha(X)` factors
+generally act between different scales, that not every label sequence is
+admissible, and that this typing is omitted from the displayed formula only
+because it does not affect the bounds.  The physical bridge must therefore use
+the existing `DependentArrowWalk`/heterogeneous Section-C carrier machinery,
+or prove an additional common-ambient reduction preserving every ordered
+product.  No such reduction exists today.  Moreover the reconstructed
+displayed alphabet is explicitly incomplete because CMP99 says "etc.".  The
+remaining named input is consequently the **dependent**, complete-alphabet
+identity `sum_walk walkTerm = physicalH`, not the fixed-carrier certificate's
+reconstruction field.  No free weakened family is accepted, and no live
+producer counter moves at this correction.
