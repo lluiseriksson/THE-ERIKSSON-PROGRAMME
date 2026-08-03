@@ -17,6 +17,20 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
+**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
+20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
+sent as the v2 replacement.  Its exact PDF is pinned at paper commit
+`e68b821f7`, has SHA-256
+`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`, and is
+described in
+[`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).
+The fresh-clone evidence on branch `d3-closure` records a green 8,475-job core
+and a 2,980-report repository oracle at verified source anchor `8e8375d34`.
+Those are branch measurements, not a replacement for the canonical `main`
+checkpoint: neither the paper commit nor its source anchor was in `main` when
+this notice was written.  The moderation/publication outcome is not yet
+recorded here.
+
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03

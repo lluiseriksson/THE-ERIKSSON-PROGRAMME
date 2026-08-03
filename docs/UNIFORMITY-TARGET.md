@@ -41,7 +41,10 @@ runs to 1, and the critical cell drifts slowly.  Ten cells, all as predicted.
 
 Measured over 210 cells --- `beta` in {0.05,0.1,0.2,0.3,0.4,0.5,0.7},
 `gamma` in {0,0.05,0.2,0.4,0.7,1.0}, `L` in {4,6,8,10,12} --- with **zero
-violations**, always approached FROM BELOW, and saturated as `L -> infinity`.
+violations**, approached FROM BELOW on every tested sequence, consistently with
+the predicted thermodynamic limit.  "Consistently with" is the honest verb: a
+finite grid does not establish a limit, and no exact-solution citation is carried
+here yet.
 
 Three properties make this the right target rather than one more inequality.
 
@@ -92,8 +95,9 @@ differently by parity --- momentum sets and boundary conditions change with it -
 so the quantifier was wider than the evidence.
 
 Re-run over `L` in {1,2,3,...,12}, odd extents and the tiny ones included:
-**576 cells, zero violations.**  There is no parity effect at all; the ratio
-increases monotonically in `L` with no odd/even splitting
+**576 cells, zero violations.**  No parity splitting was OBSERVED on the tested
+grid `1 <= L <= 12` --- a statement about the grid, not about every `L` --- and
+on it the ratio increases monotonically with no odd/even separation
 (`beta = gamma = 0.3`: 0.2913, 0.4364, 0.4922, 0.5140, 0.5231, 0.5272, ...).
 
 ### 2.  The bound is SATURATED at `gamma = 0`, and that is not a coincidence
@@ -124,7 +128,8 @@ ODD --- which is the same sector paper 11's induction runs in.
 
 That reduces the obligation but does not discharge it.  What a proof still owes:
 
-  * that the Perron vector is even (Perron--Frobenius plus flip invariance);
+  * ~~that the Perron vector is even~~ --- PROVED, `perron_even` in
+    `YangMills/OS/SpatialRing.lean`, together with `J K = K J`;
   * the bound on the ODD block, which is where the induction lives;
   * **and a bound on the EVEN block's non-Perron eigenvalues**, which the
     numerics say are smaller but which no argument here covers.  This is the
@@ -132,6 +137,15 @@ That reduces the obligation but does not discharge it.  What a proof still owes:
 
 Beyond that, the ring is still the obstruction named above: paper 11's induction
 adds a site and a ring has no first site.
+
+**And the open-chain escape is not free.**  Opening the ring and paying for the
+closing bond by a norm comparison `K_ring = D^{1/2} K_open D^{1/2}` with
+`e^{-gamma} <= c <= e^{gamma}` costs a factor `e^{2 gamma}` in the ratio --- which
+is the ENTIRE factor the target bound has to give.  That route can therefore only
+work if the open-chain estimate is strictly stronger than the final one and the
+closing consumes exactly the slack, or if the closing bond enters through an
+IDENTITY rather than a norm comparison.  The domain-wall basis and the fermionic
+diagonalisation are better aligned with a sharp constant.
 
 ## Two layers of evidence, kept apart
 
@@ -144,4 +158,14 @@ though they had been part of it.
 ## Status
 
 Gate PASS, stress sweeps clean, hypotheses exhibited as active, subdominant
-sector identified.  **No Lean written.  Nothing here is proved.**
+sector identified.
+
+**TWO OF THE FOUR SKELETON PIECES ARE MACHINE-CHECKED** in
+`YangMills/OS/SpatialRing.lean`: the kernel commutes with the global spin flip,
+so the space splits into even and odd sectors, and the Perron vector lies in the
+even one.  Both are reusable regardless of what happens to the bound.
+
+**THE BOUND ITSELF IS NOT PROVED, AND NOTHING NEAR IT IS.**  The odd-block and
+the non-Perron even-block estimates are both open, and they are the entire
+content.  Pieces 1 and 2 are symmetry bookkeeping: standard, cheap, and not a
+theorem anybody would publish on their own.

@@ -3123,3 +3123,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.osPairingBond_eq_gibbsSum
 #print axioms YangMills.OS.gibbsSum_reflected_nonneg
 #print axioms YangMills.OS.gibbsSum_reflected_gram_nonneg
+#print axioms YangMills.OS.z2Flip
+#print axioms YangMills.OS.flipCfg
+#print axioms YangMills.OS.flipCfg_involutive
+#print axioms YangMills.OS.flipEquiv
+#print axioms YangMills.OS.symWeighted_flip
+#print axioms YangMills.OS.flipObs
+#print axioms YangMills.OS.act_flip_comm
+#print axioms YangMills.OS.act_flip_comm_ring
+#print axioms YangMills.OS.sourceWeightedKernelL_flip
+#print axioms YangMills.OS.perron_even
+#print axioms YangMills.OS.symWeighted_eigen_of_sourceWeighted
+#print axioms YangMills.OS.symWeighted_perron_even

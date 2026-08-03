@@ -1,0 +1,163 @@
+# (16) PR #43 repair: current status
+
+This is a manufacturer status record, not an external audit verdict.  A
+concrete inhabitant now exists for every `BetaDomain`.  Terminal reproduction
+in two independent fresh Colab clones is DONE and recorded below.  Task (31)
+has completed the first external reading of all five documentary front doors
+and returned FAIL; its complete rereading of this repaired unit is pending.
+
+**Build provenance.**  The compiled source `08155607cacca04f3f7a507a78762f88fffd395d`
+descends from `43c003b2c0c98aceeabbf10ba28a4783de5859f1`, which is its real
+build base.  It does NOT descend from the PR's declared base
+`26306b8f30e826b0bcb7c4caf6a5a42473ab5fd8`: that commit is not an ancestor,
+the two histories diverge at `43c003b2`, and the source is 55 commits ahead
+and 4 behind it.  Any comparison against `26306b8f` compares against a tree
+that was never the starting point.
+
+**Core integration: none, and the job count says so.**  `YangMillsCore.lean`
+at `08155607` contains zero imports and zero mentions of any `SU2ThetaPrism`
+module.  The measured 8464 jobs is therefore the inherited baseline with no
+increment; it is not evidence of core integration and must not be read as
+such.  The live count 8465 belongs to later, different `main` history and
+neither validates nor refutes this frozen lane.  This lane sits outside the
+repository core, exactly like PR #39 and PR #40.
+
+The global labels `EXACTO`, `CERTIFICADO`, and `VERIFICADO` are inherited from
+`CLAUDE.md`, Part I, without redefinition: proof only, committed
+interval-arithmetic transcript only, and numerics only, respectively.  This
+lane additionally uses the local labels `REPRODUCIDO`,
+`COMPROBADO-INSTRUMENTALMENTE`, `CONDICIONAL`, and `ABIERTO`.  The local labels
+do not broaden the global vocabulary.
+
+## EXACTO
+
+- `haarSU2` is the repository's normalized `sunHaarProb 2` measure.
+- `CellConfiguration` carries the measurable space transported from its eight
+  named SU(2) coordinates; `cellHaar` is the mapped `Measure.pi` product,
+  with probability, mass-one, finiteness, and coordinate-marginal theorems.
+- `traceRealityConcrete` and `characterBoundConcrete` discharge the trace
+  inputs without importing draft PR #39.
+- `haarSchurConcrete` reduces the trace convolution entrywise to
+  `sunHaarProb_fundamental_entry_orthogonality` using the same concrete Haar
+  measure.
+- `fubiniCoordinatesConcrete` derives ordinary product Fubini from
+  integrability.  The relative coordinate map is a separate measurable Haar
+  equivalence with a separate measure-preserving proof.
+- `normMomentsConcrete` derives the four witness moments; consequently the
+  established witness norm `3/4`, all three orthogonalities, the singlet
+  `1/2`, and the factor `1/16` are preserved.
+- `weightMeasurabilityConcrete beta` is proved for every real `beta` from the
+  eight projections; weight integrability is concrete against `cellHaar`.
+- `su2WeylPolynomial` fixes the only low-spin probes consumed by the gate.
+  Label one is literally the character of `fundamentalRep`; label two obeys
+  the proved tensor-square character-ring identity
+  `chi_1 + 1 = chi_fund^2`.
+- The concrete front door has no arbitrary measure, function-family, or
+  technical-input argument: it fixes `cellHaar`, `su2WeylPolynomial`, and the
+  uniform technical-input constructor.
+
+The internal lemma `manufactured_six_point_theta_gate` remains factored
+through one technical record whose only field is the spin-one remainder.  The
+public `manufactured_six_point_theta_gate_concrete` supplies the record using:
+
+- the quaternion-coordinate second- and fourth-moment theorems;
+- the central-Haar `cosh` symmetrization;
+- the signed remainder estimate across both regions `|chi| < 1` and
+  `1 <= |chi|`; and
+- `spinOneCoefficientRemainderStepConcrete` for every nonnegative beta.
+
+Thus `manufacturingTechnicalInputsConcrete beta hbeta` inhabits
+`ManufacturingTechnicalInputs beta` for every `hbeta : BetaDomain beta`.
+`manufacturingTechnicalInputsConcrete_betaOne_specialization` is only the
+named beta-one specialization of that uniform constructor.
+
+## REPRODUCIDO
+
+The terminal transcript and manifest record the reproduction evidence: frozen
+source SHA, toolchain and Mathlib pin, exact
+commands, measured jobs, stdout/stderr hashes, RAW/LF source hashes, binary
+hashes, and equality of deterministic outputs between the two fresh clones.
+This local label is not the global `CERTIFICADO`; these records do not replace
+or condition the exact Lean terms listed above.
+
+- Colab isolated cache provenance: Mathlib
+  `07642720480157414db592fa85b626dafb71355b`; public clone, no token and no
+  push from Colab.
+- `YangMills.SU2ThetaPrism.Analysis` at `70bb53bc...`: 8182 jobs, 2 requested
+  jobs on 2 host CPUs, 59 seconds, exit 0.
+- `YangMills.SU2ThetaPrism.Endpoint` at `242567fa...`: 8185 jobs, 2 requested
+  jobs on 2 host CPUs, 60 seconds, exit 0.
+- Expanded `YangMills.SU2ThetaPrism.Oracle` at `156bea65...`: 8186 jobs,
+  2 requested jobs on 2 host CPUs, 65 seconds, exit 0; all 33 printed
+  declarations report exactly `[propext, Classical.choice, Quot.sound]`.
+- Direct spin-half coefficient target at `a6bf8170...`:
+  `YangMills.SU2ThetaPrism.Coefficients`, 8184 jobs, 2 requested jobs on
+  2 host CPUs, 52 seconds, exit 0.
+- Minimized-input endpoint and expanded oracle at `fcbe7194...`: 8186 jobs,
+  2 requested jobs on 2 host CPUs, 96 seconds, exit 0; all 38 printed
+  declarations, including the five new coefficient-route declarations and
+  `manufactured_six_point_theta_gate`, report exactly
+  `[propext, Classical.choice, Quot.sound]`.
+- Earlier first-compiled uniform-inhabitant checkpoint
+  `3c198717e1b53b016803e3db76fda88f99314f89` (`supply nonnegativity in signed
+  remainder`): fresh public Colab clone,
+  Lean `v4.29.0-rc6`, Mathlib `07642720...`, 8 host CPUs with Lake-default
+  parallelism.  `Coefficients`, `Endpoint`, and the independent `#check`
+  file passed; the checked type is
+  `manufacturingTechnicalInputsConcrete (beta) (hbeta : BetaDomain beta) :
+  ManufacturingTechnicalInputs beta`.  The resulting `.olean` hashes were
+  `3bb7d37a...e9385c` for `Coefficients` and
+  `235ff3fd...1de157` for `Endpoint`.  This checkpoint is the immediate parent
+  of `08155607cacca04f3f7a507a78762f88fffd395d`; their one-commit delta changes
+  only three documentation files and no Lean source.  It is historical
+  first-compilation evidence, not a competing terminal source.
+- Terminal source SHA `08155607cacca04f3f7a507a78762f88fffd395d`
+  was reproduced in two independent fresh Colab CPU/high-RAM clones.  All nine
+  exact `YangMills.SU2ThetaPrism` targets built; 48 oracle headlines reported
+  only `propext`, `Classical.choice`, and `Quot.sound`; instruments passed under
+  normal Python and `-O`.  The separate `YangMillsCore` run is retained only as
+  the inherited 8464-job baseline described above, never as an integration
+  PASS.
+- The two original Colab V1 manifests are byte-identical with SHA-256
+  `8fab9c9cff877133ff26dc50316f65f0e8d7a96aeee5cd8f10c2e186fa27ad52`.
+  Source RAW/LF hashes, ten `.olean` hashes, and the measured failures are in
+  `SU2-THETA-PRISM-TRANSCRIPT-20260801.txt` and the checked-in manifest.
+
+These records reproduce evidence transport, not the mathematics and not an
+external-audit verdict.
+
+## VERIFICADO
+
+- The rational certifier succeeds under normal Python and `python -O` with
+  byte-identical output.
+
+This global label is used only for that numerical/rational verification.  It
+does not cover the non-numerical instruments below.
+
+## COMPROBADO-INSTRUMENTALMENTE
+
+- Ten mutations are rejected under both modes, including `1/2 -> 1/3` and
+  enlargement to all beta.  The syntactic headline guard passes and rejects
+  its registered cheat fixtures.
+- GitHub honesty run `30704212187`, job `91380399007`, passed on the compiled
+  SHA.  It remains a syntactic guard, not mathematical certification.
+- These instrument results are not a substitute for the exact Lean terms or
+  an external audit.
+
+## ABIERTO
+
+- `SU2-THETA-PRISM-TERMINAL-REPRO-MANIFEST.txt` and
+  `SU2-THETA-PRISM-TRANSCRIPT-20260801.txt` were not covered by task (17),
+  whose verdict addressed mathematics and code.  Task (31) performed their
+  first external content reading and returned a documentary FAIL.  Its full
+  rereading after this repair is pending; neither file is audited by
+  inheritance from task (17).
+- Strengthen the label-two character-ring bridge to a constructed spin-one
+  representation if the independent audit requires an actual complement
+  rather than the explicit tensor-square identity.
+- Return the repaired five-front-door unit to task (31) for one complete
+  rereading.  Do not open a new auditor or treat the manufacturer's matching
+  two-clone manifests as an audit.
+- Physical-cell identification, reflection/OS positivity, programme Gate 7,
+  a paper claim, merge, and manufacturer self-certification remain out of
+  scope.
