@@ -1,0 +1,10 @@
+{
+  "status": "LISTO-LOCAL-INDEPENDENTLY-AUDITED",
+  "final_pdf": "2602.0085v2-deff7be4-26pp.pdf",
+  "final_sha256": "deff7be46aa56ddfbcac63addce730a4bc4449768e5920951d1a304912525518",
+  "pages": 26,
+  "erratum_pages": 5,
+  "public_v1_pages": 21,
+  "public_v1_sha256": "930e7ea90a21b78a71fe73bfcc48519b0ee17c66f9fe23bdf7fead21829dfd8d",
+  "source_sha256": "2b19be4b5a429dd1abd94927e41cc08fd1e82e80181c57b06f54cce18a0f3c86"
+}

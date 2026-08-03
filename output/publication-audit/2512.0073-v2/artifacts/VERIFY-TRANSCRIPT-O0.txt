@@ -1,0 +1,43 @@
+PYTHON_OPTIMIZE_LEVEL 0
+PASS final exists
+PASS final SHA
+PASS historical SHA
+PASS successor SHA
+PASS final unencrypted
+PASS final page count
+PASS final below 5 MB
+PASS uppercase supersession headline in PDF
+PASS submission abstract parsed
+PASS uppercase supersession headline starts abstract
+PASS successor ID in submission sheet
+PASS no optimizer-sensitive check statements
+PASS render 2512.0073v2-supersession.pdf
+PASS render 2512.0073v1-public.pdf
+PASS rendered page counts
+PASS historical page 1 pixel-preserved
+PASS historical page 2 pixel-preserved
+PASS historical page 3 pixel-preserved
+PASS historical page 4 pixel-preserved
+PASS historical page 5 pixel-preserved
+PASS historical page 6 pixel-preserved
+PASS historical page 7 pixel-preserved
+PASS historical page 8 pixel-preserved
+PASS historical page 9 pixel-preserved
+PASS historical page 10 pixel-preserved
+PASS historical page 11 pixel-preserved
+PASS historical page 12 pixel-preserved
+PASS historical page 13 pixel-preserved
+PASS historical page 14 pixel-preserved
+PASS historical page 15 pixel-preserved
+PASS historical page 16 pixel-preserved
+PASS historical page 17 pixel-preserved
+PASS historical page 18 pixel-preserved
+PASS historical page 19 pixel-preserved
+PASS historical page 20 pixel-preserved
+PASS historical page 21 pixel-preserved
+PASS historical page 22 pixel-preserved
+PASS font inventory readable
+PASS all fonts embedded
+STATUS SELF-VERIFIED-NOT-INDEPENDENT
+FINAL 2512.0073v2-supersession.pdf
+SHA256 11cc85a3fe09efaac11fe7721c338eb2ad5998c9c31aa9972a074f8b4851708c

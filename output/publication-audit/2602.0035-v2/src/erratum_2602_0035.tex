@@ -1,0 +1,487 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,margin=1.72cm]{geometry}
+\usepackage{amsmath,amssymb}
+\pagestyle{plain}
+\setlength{\parskip}{1.0pt}
+\newcommand{\A}{\mathcal A}
+\newcommand{\G}{\mathcal G}
+\newcommand{\Mf}{\mathcal M_{\rm flat}}
+\newcommand{\z}{\mathfrak z}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Erratum and restoration (v2): one symbol carries two\\
+angles, several printed statements are false, (H1) is not\\
+discharged, and (H-FACT) does not replace (H2)}\\[5pt]
+{\large Morse--Bott Spectral Reduction and the\\
+Yang--Mills Mass Gap on the Lattice}\\[6pt]
+Lluis Eriksson \quad\textbullet\quad ai.viXra:2602.0035 \quad\textbullet\quad July 2026
+\end{center}
+
+\noindent\rule{\textwidth}{0.8pt}
+
+\vspace{2pt}
+\noindent
+\textbf{This version does two things at once.} It \emph{restores} the revision prepared
+for this record in July 2026, which was mis-filed onto \texttt{ai.viXra:2602.0052} and
+so never appeared here; and it \emph{corrects} that revision. \textbf{It refutes several
+printed statements}, and they do not all fail for the same reason. \textbf{The angle
+ambiguity accounts for some, but not all, of the defects}: the symbol $\theta$ carries
+both the loop holonomy angle and the per-link background angle, which differ by a factor
+$L$ (\S2), and that invalidates equation (5), the shift used in equation (6), the Fourier
+labels of Proposition 3.3 and the frequencies (9). \textbf{Proposition 2.2(b), the
+additive split in equation (6), the centraliser count and the normal-bundle
+classification fail for independent reasons.} Two status claims --- that (H1) is
+discharged, and that (H2) is refined into (H-FACT) --- are withdrawn in \S4.
+
+\section{What happened to this record}
+
+The file prepared as v2 of this paper was uploaded, during the replacement campaign of
+2026-07-06, onto the record \texttt{ai.viXra:2602.0052}, whose own paper
+(\emph{Interface Lemmas}) it displaced. This record therefore still showed v1 while
+three companion papers cited ``\texttt{2602.0035} v2'' --- a version that existed only
+as the mis-filed file. The pages after this note are that revision, restored; the
+corrections below apply to it.
+
+\section{One symbol, two angles}
+
+\S2.1 defines the total holonomy $g_\mu=\prod_{t=0}^{L-1}U_\mu(t\hat\mu)=e^{i\Theta_\mu}$
+--- writing $\Theta$ for what the manuscript calls $\theta$. The flat,
+translation-invariant representative that the Fourier analysis then uses must have
+\[
+U_\mu(x)=e^{i\Theta_\mu/L},
+\]
+because there are $L$ links around the cycle. \textbf{Any corrected proof must
+distinguish the loop-holonomy angle from the per-link angle.} Two consequences follow
+immediately, and both are printed the other way.
+
+\emph{The covariant symbol.} For a fluctuation in root direction $\alpha$ the eigenvalue
+of the covariant difference is
+\[
+4\sin^2\!\Bigl(\frac{k_\mu+\alpha(\Theta_\mu)/L}{2}\Bigr)
+\qquad\text{--- in flat notation, } k + \text{alpha(Theta)/L} \text{ ---}
+\]
+and not $4\sin^2((k_\mu+\alpha(\Theta_\mu))/2)$.
+
+\emph{The metric.} In total-holonomy coordinates the per-link variation is
+$\delta\Theta_\mu/L$, so
+$\sum_x|\delta\Theta_\mu/L|^2=L^d\,L^{-2}|\delta\Theta_\mu|^2
+=L^{(d-2)}|\delta\Theta_\mu|^2$, whereas equation (5) prints
+$L^d|\delta\Theta_\mu|^2$.
+
+Only two readings are available, and each demands a correction. If $\theta$ is the
+total-holonomy angle, as Proposition 2.2 says, then the factors $1/L$ are missing from
+the metric and from the shifted momentum. If $\theta$ is the per-link angle, it is no
+longer the coordinate of Proposition 2.2 and its period is $2\pi/L$, with the
+corresponding gauge identifications. \textbf{The manuscript uses one symbol for both
+without declaring a change of variable}, so equation (5), the mass term
+$m_a^2(\theta)$, the proof of (6) and the frequencies (9) cannot all be correct as
+printed.
+
+\section{What is false as printed}
+
+\subsection{Proposition 2.2(b): the $SU(2)$ quotient is misidentified}
+
+The proposition states $\Mf\cong[0,\pi]^d/\mathbb Z_2$ with
+$\theta_\mu\mapsto\pi-\theta_\mu$. But the SU(2) Weyl action is simultaneous inversion:
+$(\theta_1,\dots,\theta_d)\mapsto(-\theta_1,\dots,-\theta_d)$ on $(S^1)^d$. The printed
+proof passes from $\theta\mapsto2\pi-\theta$ to $\theta\mapsto\pi-\theta$ with no change
+of coordinates; these are not the same map. The paper contradicts itself on it: under
+inversion the fixed points are the $2^d$ tuples with $\theta_\mu\in\{0,\pi\}$, while
+under the printed map the only interior fixed point is $(\pi/2,\dots,\pi/2)$ --- and
+Proposition 3.3 then places $\theta=0$ on the orbifold locus, which the printed map does
+not fix. \textbf{Proposition 2.2(b) is false as printed.} The correct statement is
+$\Mf^{SU(2)}=(S^1)^d/\{\theta\sim-\theta\}$; a cube presentation is possible but needs
+its boundary identifications fixed with care.
+
+\subsection{Equation (5): the metric factor}
+
+As computed in \S2, the induced metric in total-holonomy coordinates carries $L^{d-2}$,
+not $L^d$. \textbf{Equation (5) is false as printed} under the reading Proposition 2.2
+fixes.
+
+\subsection{Equation (6): two independent failures}
+
+The theorem asserts
+$\operatorname{Hess}(V_{\rm pot})^\perp=\frac{2}{g^2}\sum_{k\neq0,a}
+[\widehat k^2+m_a^2(\theta)]\,|\delta A^a_\perp(k)|^2$.
+
+\emph{First failure --- the split.} Its own proof gives the covariant-difference
+eigenvalue as $4\sum_\mu\sin^2((k_\mu+\phi_\mu)/2)$, and
+\[
+4\sin^2\!\Bigl(\frac{k+\phi}{2}\Bigr)\;\neq\;
+4\sin^2\!\Bigl(\frac{k}{2}\Bigr)+4\sin^2\!\Bigl(\frac{\phi}{2}\Bigr).
+\]
+\textbf{A test inside the smooth stratum}: $SU(2)$, $L=6$, $\Theta=\pi/2$, $\alpha=2$,
+$k=\pi/3$. Then $\phi=\alpha\Theta/L=\pi/6$, the left side is $4\sin^2(\pi/4)=2$ and
+the right side is $3-\sqrt3\approx1.268$. \emph{$\Theta=\pi/2$ is a regular holonomy},
+so the test lies where Theorem 3.1 is restricted. \emph{An earlier draft used
+$k=\phi=\pi/3$, which under the corrected convention forces $\Theta=\pi$ --- central
+holonomy, outside the smooth stratum, and so an avoidable objection about the domain.}
+\textbf{Equation (6) is not valid as a general equality away from trivial holonomy}
+--- stated that way because special pairs $(k,\phi)$ may agree by accident. The proof
+concedes it without saying so: it obtains (6) \emph{at trivial holonomy} and, elsewhere,
+replaces the equality by an inequality with a cross term. That inequality may serve an
+argument for positivity; it does not establish the displayed formula.
+
+\emph{Second failure, independent of the first --- the shift.} By \S2 the shift is
+$\phi_\mu=\alpha(\Theta_\mu)/L$, not $\alpha(\Theta_\mu)$. So even the inequality, and
+the mass term $m_a^2$, are written with the wrong argument.
+
+\emph{Why the suite does not catch it.} The Hessian is validated at trivial holonomy,
+where the shift vanishes and the defect is therefore absent. This is the same pattern as
+the one-dimensional miniature in \texttt{ai.viXra:2602.0033}: \textbf{the test does not
+examine the regime in which the defect lives.} Two papers of this chain now have a check
+with that property: a fact about how test cases are chosen, not a coincidence.
+
+\subsection{Proposition 3.3: the count, and the Fourier labels}
+
+The proposition counts $d(N_c^2-1-r)$ massless non-Cartan \emph{$k=0$ constant} modes at
+any point of enhanced stabiliser. Two things are wrong.
+
+\emph{The count.} Its own mass formula makes a root direction $\alpha$ massless exactly
+when its pairing with every holonomy angle is an integer multiple of $2\pi$ --- that is,
+exactly on the common centraliser. \textbf{The correct count is $d(\dim\z_\Theta-r)$},
+in flat notation $d$ times (dim z\_theta $-$ r), with $\z_\Theta$ the algebra of the
+common centraliser; the printed count holds only when that centraliser is the whole
+group. For $SU(3)$ at a point with centraliser $S(U(2)\times U(1))$, $\dim\z_\Theta=4$
+and $r=2$, giving $2d$, not $6d$.
+
+\emph{The labels.} \textbf{Covariantly constant modes need not have Fourier label k=0.}
+Take $SU(2)$ with the central holonomy $g_\mu=-I$, $\Theta_\mu=\pi$, and the adjoint root
+$\alpha=2$: the per-link shift is $2\pi/L$, so
+$\lambda_\alpha(k=0)=4d\sin^2(\pi/L)>0$, while the zero sits at the allowed momentum
+$k_\mu=-2\pi/L$. \textbf{The centraliser is everything here, so this is precisely a case
+the proposition claims}, and the modes it claims at $k=0$ are not at $k=0$. The accurate
+statement is: at an enhanced-stabiliser holonomy there are $d(\dim\z_\Theta-r)$
+additional covariantly constant centraliser directions, and their Fourier labels depend
+on the chosen flat representative.
+
+\emph{And ``normal to $\Mf$'' is not a valid classification at a singular point}, where
+there is no ordinary normal bundle. At the trivial point the quartic form is
+$\propto\sum_{\mu<\nu}|[X_\mu,X_\nu]|^2$, which \emph{vanishes on commuting tuples}:
+taking all $X_\mu$ proportional to one non-Cartan generator keeps the connection flat,
+with no quartic growth. The accurate classification is that all constant directions lie
+in the kernel of the Hessian at the trivial point, commuting tuples lie in the tangent
+cone to the flat connections, and non-commuting tuples exhibit the positive quartic term.
+
+What the numerics support is that for $SU(2)$ on a $2^3$ spatial lattice the Hessian
+kernel has dimension $30$ and a non-commuting direction has quartic ratio $15.99$.
+\textbf{Verified, not proved}, and for that instance.
+
+\subsection{Proposition 4.1: the cutoff does not do what it is asked to do}
+
+Correcting the Fourier labels refutes two further printed claims, and this propagates
+into the Born--Oppenheimer reduction rather than stopping at Proposition 3.3.
+
+\emph{The cutoff.} Proposition 4.1 says the sums (8) run over $k\neq0$ and thereby omit
+the toron modes. The mode of \S3.4 --- $g_\mu=-I$, $\alpha=2$, $k_\mu=-2\pi/L$ --- has
+$k\neq0$, lies \emph{inside} those sums, and has zero frequency. \textbf{The k != 0
+cutoff does not exclude all covariantly constant modes.}
+
+\emph{The uniform gap.} The printed normal-mode bound is
+$\omega_{\perp,\min}=2\sqrt2\sin(\pi/L)>0$, uniform over the smooth stratum. Put
+$\Theta_\mu=\pi-\epsilon$ with $\epsilon\neq0$, so the holonomy is regular, and keep
+$k_\mu=-2\pi/L$: then $k_\mu+\alpha\Theta_\mu/L=-2\epsilon/L$, the eigenvalue is
+$\lambda_\epsilon=4d\sin^2(\epsilon/L)$ and the corresponding frequency of (9) is
+$\omega_\epsilon=\sqrt{2\lambda_\epsilon}=\sqrt{8d}\,|\sin(\epsilon/L)|\to0$ as
+$\epsilon\to0$, at \emph{fixed} $L$ --- written as a frequency so that the comparison is
+with like for like --- while the printed bound does not move. \textbf{The normal-mode gap closes on approach to the
+enhanced-stabiliser locus.} So there is no such uniform bound over the smooth stratum.
+
+\textbf{Both claims of Proposition 4.1 are false as printed.} The printed harmonic
+Born--Oppenheimer reduction, \textbf{and any argument relying on a uniformly gapped
+normal sector, can at most hold on a region uniformly separated from the
+enhanced-stabiliser locus}, with a holonomy-dependent normal gap. \emph{A more general
+global theorem is not excluded}: it would additionally require the quartic-sector
+construction listed in \S7(C2). Equations (8)--(10), the bound on the remaining
+eigenvalues, and the proof's explanatory remark all inherit this.
+
+\subsection{What this leaves of Morse--Bott}
+
+\textbf{The smooth-stratum conclusion is not refuted but is not established} by the
+printed proof. Equation (6) is false as an equality, and the shift it uses is wrong by a
+factor $L$, so the printed non-degeneracy argument is gone. A corrected proof must
+distinguish the two angles and use the actual shifted spectrum; the conclusion is
+plausible and may well survive, but this manuscript does not establish it. The
+frequencies (9) inherit both defects, in a proposition the text already labels
+\emph{formal}.
+
+\section{(H1), (H2), and what Theorem 6.3 is}
+
+\subsection{(H1) is not discharged}
+
+The restored text asserts in four places --- Proposition 6.4, Remark 6.6, item (4) of
+the Note added, and \S7.3 --- that (H1) is discharged by \texttt{ai.viXra:2602.0033} v2,
+Theorem 3.1. \textbf{All four are withdrawn.} That companion's erratum records that its
+Theorem 3.1 is not established by its printed proof, and that its Theorem 4.1 --- the
+doubling cascade --- is independently not established, its transfer operator changing
+with the isotropic volume over which the limit is taken.
+
+\textbf{Only the negative status assessment of Proposition 6.4 remains accurate}: at the
+relevant coupling the terminal gap is open, Balaban's regime being intermediate rather
+than strong. Its \emph{positive} appeal to Corollary 5.5 is not available either, since
+that corollary rests on Theorem 5.3 against $\mathrm{Vol}_B$ and on the withdrawn Ricci
+bound; it would need the corrected physical-measure construction and
+$(\text{A-osc})_\nu$ of \S5.4.
+
+Moreover (H1) as printed --- ``\emph{the spectral gap of the transfer matrix associated
+with $S_{n_{\max}}$ on the orbit space}'' --- \textbf{does not by itself fix a space, a
+measure or an operator}, as the audit of \texttt{2602.0033} showed. A usable (H1) must
+name the physical transfer operator, its fixed spatial slice and its Hilbert space.
+
+\subsection{(H-FACT) does not replace (H2)}
+
+Proposition 6.5, Remark 6.6, \S7.3 and Note added (4) present (H2) --- \emph{the
+physical gap is RG-invariant} --- as \emph{refined} into (H-FACT), the non-extensive
+temporal factorisation hypothesis of the companion. \textbf{That is withdrawn too, and
+it is not a matter of wording.} Getting from (H-FACT) to (H2) was the work of Theorem
+4.1 and Proposition 4.4 of \texttt{2602.0033}, and that extraction is exactly what
+fails. \textbf{H-FACT does not by itself imply H2} with the printed proofs; it is at
+most one input to a future proof of (H2). \S7.3, which called (H-FACT) the remaining
+analytic content of the programme, is withdrawn with it.
+
+\subsection{Theorem 6.3}
+
+\textbf{The algebraic implication survives on admissible volumes}, under
+\emph{Balaban's Theorem 6.1} --- (H-BAL) in the coordinated vocabulary, and the
+theorem's own first line assumes it --- together with the original (H1) and (H2), once
+those hypotheses are attached to precisely specified operators. \emph{An earlier draft
+of this note omitted (H-BAL) from that list.}
+
+\emph{And not with the same prefactor.} \textbf{Equation (18), not the final proof
+line, retains the c\_0 of (H1)}: it states $m_{\rm gap}\ge c_0e^{-C/g^2}$ with the very
+$c_0$ of that hypothesis, whereas \textbf{the proof already introduces c'\_0}, writing
+$m_0\ge c_0e^{-C/g^2-O(1)}=c_0'e^{-C/g^2}$ after absorbing the bounded remainder.
+\textbf{The exponential constant C is unchanged} --- $C=1/(2b_0)=24\pi^2/(11N_c)$ ---
+but the displayed theorem should carry the \textbf{possibly reduced positive prefactor
+c'\_0}. This is not an obstruction to the $e^{-C/g^2}$ behaviour; it corrects the
+displayed statement, and the defect is in (18) alone. \emph{An earlier draft of this
+note said the proof absorbed the remainder into the same symbol. It does not: that
+reading came from a text extraction, in which the prime on $c_0'$ does not survive ---
+a failure mode this programme has recorded before, and one to check against the
+rendered page.}
+\textbf{Theorem 6.3 retains the original H2 as a hypothesis}; a hypothesis that is not
+discharged is still a hypothesis, and it may \emph{not} be presented as a theorem under
+(H1) plus (H-FACT). But the statement is not literally established with its printed
+quantifier over all $L$: the proof fixes $n_{\max}$ by the coupling and works on
+lattices of extent $L/2^{n_{\max}}$, which is a lattice only for $L\in2^{n_{\max}}
+\mathbb N$, or for other $L$ under an argument not given. \emph{An earlier draft of this
+note called the statement untouched while conceding the missing condition; those cannot
+both hold, and the second is the correct one.}
+
+\emph{A citation loop is declared.} This paper's (H1) was said to be discharged by
+\texttt{2602.0033}, whose Theorem 3.1 proves its terminal gap by ``applying the argument
+of'' this paper's Theorem 5.3. Neither discharges a hypothesis of the other.
+
+\section{Theorem 5.3: on a measure not identified with the physical one}
+
+\subsection{Part (i): recoverable, but not by the printed proof}
+
+Part (i) takes $H$ to be ``\emph{(the Friedrichs extension of) an elliptic operator with
+smooth potential on $L^2(B)$}''. $L^2(B)$ is written without a measure; and $B=\A/\G$ is
+a \emph{stratified space}, the reducible connections having stabilisers of positive
+dimension, so ``the Friedrichs extension'' presupposes a closed form the paper does not
+fix. This is the gap that forces the withdrawal of Corollaries 3.2--3.3 in
+\texttt{ai.viXra:2602.0036}. \textbf{The repair does not need the quotient at all}: by
+(I1) of the appended page, pullback is an isometry
+$L^2(B,\nu)\cong L^2(\A,\mathrm{Vol}_{\A})^{\G}$ with $\nu=\pi_\#\mathrm{Vol}_{\A}$, and
+$\A=SU(N_c)^E$ is a smooth compact connected manifold, where compact resolvent,
+positivity improvement and uniqueness of the ground state are standard. It gives
+$\Delta>0$ at fixed volume, qualitative only.
+
+\subsection{Part (ii): the reference measure}
+
+Step 1 puts $d\mu_0=\psi_0^2\,d\mathrm{Vol}_B$. The ground-state identity is correct and
+is the right correction of v1, whose measure $e^{-2V_{\rm pot}/g^2}$ was dimensionally
+inconsistent and failed numerically by more than fifty per cent. \textbf{But
+$L^2(B,d\mathrm{Vol}_B)$ is not identified with the physical measure}: the physical
+sector is $L^2(B,\nu)\cong L^2(\A)^{\G}$ by (I1). On the regular stratum
+$d\nu=w\,d\mathrm{Vol}_B$, so the two measures are related by that density, and
+\textbf{the associated generators differ by a drift}
+$\langle\nabla\log w,\nabla\,\cdot\,\rangle$. They coincide only under an additional
+constancy or identification statement for $w$, none of which is established here.
+\emph{No inequality between the two is asserted}; what is asserted is that no
+identification is available.
+
+\emph{Two warnings about symbols, both load-bearing.} First, \textbf{the appended page
+records this paper in two rows}: an \emph{as-printed} row carrying
+$\mu_{0,\rm print}=\psi_{0,\rm print}^2\,d\mathrm{Vol}_B$, and a \emph{candidate
+physical-restatement} row carrying $\mu_{0,\nu}=\psi_{0,\nu}^2\,d\nu$. An earlier
+single-row version exposed the intended physical object but failed to record the
+printed one, and is superseded. Second, \textbf{the $\nu$ of the appended page is not
+the $\nu$ of the restored pages}: the page writes
+$\nu_{\rm push}=\pi_\#\mathrm{Vol}_{\A}$, while Step 2 of Theorem 5.3 calls
+$\nu_{\rm Vol}=d\mathrm{Vol}_B/\mathrm{Vol}_B(B)$ ``the uniform measure $\nu$''.
+Identifying the two is precisely what (I2b) forbids.
+
+\subsection{Part (ii): the base inequality}
+
+Step 2 claims $\alpha(d\mathrm{Vol}_B)\ge N_c/2$ from $\operatorname{Ric}_B\ge N_c/4$ by
+Bakry--\'Emery, hence $\lambda_1(d\mathrm{Vol}_B)\ge\alpha/2\ge N_c/4$. That pointwise
+Ricci bound is Theorem 3.1 of \texttt{ai.viXra:2602.0036} and \textbf{is not
+established}: its O'Neill trace omits mixed horizontal--vertical sectional terms which
+for a bi-invariant metric are non-negative and subtract. \textbf{No pointwise Ricci
+bound on the orbit space may presently be cited.}
+
+\subsection{One repair for both --- and what it costs}
+
+Work on $\mathcal H_{\rm phys}=L^2(\A,\mathrm{Vol}_{\A})^{\G}\cong L^2(B,\nu)$; take
+$H_\nu=\frac{g^2}{2}K_\nu+V_{\rm pot}$ --- in flat notation, take H\_nu = (g\^2/2)
+K\_nu + V\_pot, and \textbf{not} the gauge-fixed $V=S_{\rm YM}-\log\det M$, whose symbol
+this manuscript has already fixed --- with $K_\nu$ the operator of the closed form on
+$L^2(B,\nu)$; put $d\mu_0=\psi_{0,\nu}^2\,d\nu$. For the base inequality use
+\texttt{ai.viXra:2602.0046} v3, which gives $\mathrm{RCD}^*(N_c/4,\dim\A)$ for
+$(B,d_B,\nu)$, is valid across the singular locus, and \emph{explicitly bypasses} the
+O'Neill computation. Holley--Stroock against $\nu$ then gives the rate.
+
+\textbf{This is not free.} $H_\nu$ is a separately defined operator that
+\textbf{has not been identified with the printed H}; correspondingly its ground state
+$\psi_{0,\nu}$ has not been identified with the printed one. So the printed oscillation
+hypothesis does not supply what the corrected route needs, and that route requires a
+\emph{new} hypothesis, in flat notation (A-osc)\_nu:
+\[
+(\text{A-osc})_\nu:\qquad \operatorname{osc}\bigl(-\log\psi_{0,\nu}^2\bigr)\le
+C\,L^d/g^2 .
+\]
+The route is worth recording --- it replaces two unavailable inputs with one available
+one, and takes the quotient singularities out of the base inequality --- but it also
+\emph{moves} the semiclassical hypothesis to a new object. It is not carried out here
+and gives no uniformity in $L$. \textbf{The present fixed-volume argument does not by
+itself establish (H1)}, and it has no bearing on (H2). \emph{An earlier draft of this
+note said it bore in no way on (H1) either, while \S7 called it a route towards (H1);
+\S7(B) now states what would have to be built for the two to meet.}
+
+\section{What this paper does establish, stated exactly}
+
+\begin{enumerate}\setlength{\itemsep}{0pt}
+\item \textbf{The Hamiltonian/path-integral distinction} of \S7.2, in its narrow form:
+the multiplication potential $V_{\rm pot}=S_{\rm YM}$ does not contain the gauge-fixed
+term $-\log\det M$, which establishes a distinction between the two formulations. Its
+third listed ingredient, $\operatorname{Ric}_B>0$, is not currently available, and this
+narrow statement does not depend on it. \textbf{It does not establish that all
+orbit-volume or Faddeev--Popov geometry is absent from the physical Hamiltonian}, whose
+kinetic operator is $K_\nu$. \textbf{Orbit-volume geometry is present in the physical
+measure and in the drift $\langle\nabla\log w,\nabla\,\cdot\,\rangle$ of $K_\nu$; the
+Faddeev--Popov term is present in the gauge-fixed formulation; and this note does not
+identify $w$ with $\det M$, so it does not claim that the same term has merely moved
+from one formulation to the other.} \emph{Two earlier drafts erred in opposite
+directions: the first certified the distinction unqualified, the second said the
+geometry ``has moved from'' the potential --- itself an identification, asserted in the
+sentence denying one.}
+\textbf{And the measure formula printed alongside it is itself false: Remark 1.1
+double-counts the Faddeev-Popov determinant.} It writes the gauge-fixed measure as
+$e^{-V}\det M\,dA$ while setting $V=S_{\rm YM}-\log\det M$, which gives
+$e^{-S_{\rm YM}}(\det M)^2dA$. The two correct forms, each with one determinant, are
+\[
+e^{-S_{\rm YM}}\det M\,dA
+\qquad\text{or}\qquad
+e^{-(S_{\rm YM}-\log\det M)}\,dA ,
+\]
+in flat notation exp(-S\_YM) det M dA and exp(-(S\_YM - log det M)) dA, and the printed
+combination is neither. The narrow distinction between $V_{\rm pot}$ and
+the gauge-fixed effective potential survives that correction.
+Relatedly, Lemma 5.1 should not be read as an ordinary Hessian on $B$ ``at every point
+of $\Mf$'': on the stratified quotient no such Hessian is fixed. What holds is that
+\textbf{the lifted second variation on A is non-negative} --- every flat connection is a
+global minimum of the Wilson action on the smooth $\A$ --- together with the
+corresponding statement on $B_{\rm reg}$.
+\item \textbf{Fixed-volume positivity}, once restated on $L^2(\A,\mathrm{Vol}_\A)^\G$.
+Qualitative only.
+\item \textbf{The exact ground-state-measure identity}, stated against the reference
+measure it should carry. It is what gave this revision its reason to exist, and it
+\textbf{invalidates the v1 derivation unless the required identification is proved};
+\textbf{the one-plaquette suite supplies strong numerical counterevidence, not an
+analytic refutation} --- the same rule this note applies to every other number the
+suite produces. \emph{An earlier draft called it a refutation.}
+\item \textbf{The constant} $C=24\pi^2/(11N_c)=1/(2b_0)$, resolving v1's internal
+inconsistency between its introduction and its Theorem 6.3.
+\item \textbf{Remark 5.4} as a description of the conditional bound: not uniform in $L$.
+\item \textbf{Remark 5.6} in part: the one-plaquette evidence and the conclusion of
+non-sharpness stand. Its inference that the gap on $B$ is $O(g)$ comes from Proposition
+4.1, whose frequencies inherit the defects of \S2--\S3, and is \emph{not} certified here.
+\item \textbf{The $SU(2)$, $2^3$, trivial-holonomy numerics} as evidence for that case.
+\end{enumerate}
+
+\section{Three lists, and they are not the same list}
+
+\textbf{(A) The conditional implication of Theorem 6.3} needs: (H-BAL), that is
+Balaban's Theorem 6.1, which its own statement assumes; a precise (H1), naming the
+physical transfer operator, its fixed spatial slice and its Hilbert space; the original
+(H2), or a valid derivation of it --- for which (H-FACT) is at most one input; and the
+admissible-volume condition. \textbf{Theorem 6.3, with (H-BAL), (H1) and (H2) assumed
+directly, uses nothing from list (C)}.
+
+\textbf{(B) A candidate route towards (H1)}, and only that, would have to
+\textbf{construct from S\_nmax a transfer operator on a fixed spatial slice}, specify
+its Hilbert space and measure, identify its generator or its gap with the corrected
+physical Hamiltonian $H_\nu$ of \S5.4, and control the effect of the $\epsilon_X$ terms
+and their temporal nonlocality --- and only then would $(\text{A-osc})_\nu$ and
+terminal-scale uniformity become relevant. \textbf{(A-osc)\_nu is specific to the
+candidate route to (H1)}; it is not a hypothesis of Theorem 6.3, which assumes (H1)
+outright. \textbf{The present fixed-volume route does not discharge (H1)}: it supplies
+none of those identifications, it yields a bound at fixed volume where (H1) is a
+statement at the terminal scale, and $H_\nu$ is a Wilson Hamiltonian on a spatial
+configuration space rather than the transfer operator of a four-dimensional effective
+action. \emph{An earlier draft listed $(\text{A-osc})_\nu$ among the requirements of
+(A), and described (B) as though the two objects were already the same one.}
+
+\textbf{(C1) The printed formulas that must be corrected}: Proposition 2.2(b),
+equations (5) and (6), Proposition 3.3 and its Fourier labels, and equations (8)--(10).
+This list is independent of (A). \emph{An earlier draft put (A) and (C) into one
+sentence, which overstated what the conditional chain depends on.}
+
+\textbf{(C2) What a Born--Oppenheimer theorem needs beyond those corrections}: a region
+uniformly separated from the singular strata; a uniform normal gap \emph{on that
+region}, which \S3.5 shows does not exist on the smooth stratum as a whole; control of
+the reduction errors; and a construction that splices in or absorbs the quartic sector
+on approach to the singular locus. \textbf{(C1) is necessary but not sufficient for a
+rigorous Born-Oppenheimer theorem}, and the restored text concedes as much in asking
+for a normal-gap condition it does not verify.
+
+\section{Two blocks of the restored text are superseded wholesale}
+
+Rather than chase each sentence: \textbf{Table 1 of Section 7.1 is superseded} by
+\S\S3--7 of this note, and \textbf{the Note added in v2 is superseded} likewise.
+Neither may be read as a current status summary. Table 1 still lists as ``gap proved''
+the Paper II row resting on $\operatorname{Ric}_B\ge N_c/4$ and the Paper III row
+resting on ground-state measure plus Holley--Stroock, both of which \S5 withdraws. The
+Note added still carries item (1) on Morse--Bott and Proposition 3.3, item (4) on (H1)
+discharged and (H2) refined, and \textbf{item (5), conclusion unaffected, is
+withdrawn} together with them.
+
+\emph{What survives from those two blocks}: the constant $C=24\pi^2/(11N_c)$ and the
+resolution of v1's internal inconsistency about it; the repairs of broken citations,
+of the non-existent ``Theorem 5.5'', and of the displaced headers; and \textbf{the
+record that the v1 derivation is invalid without the missing identification, and that
+the suite gives strong numerical counterevidence to its literal measure}
+$e^{-2V_{\rm pot}/g^2}$. Everything else in Table 1 and in the Note added is to be
+read through \S\S3--7 above.
+
+\section{Scope}
+
+Not audited here: the Balaban package (H-BAL); \textbf{the remainder of Proposition 4.1
+beyond the two claims refuted in \S3.5}; and the numerical suite beyond the points
+named. \emph{An earlier draft listed Proposition 4.1 as unaudited outright, which
+contradicted \S3.5 of the same note} --- a partial audit of a proposition is not a
+certification of the rest of it, and it is not a refusal to look either.
+
+\vspace{3pt}
+\noindent\rule{\textwidth}{0.8pt}
+
+\noindent\footnotesize
+\textbf{Provenance.} \S4 follows from the errata attached to \texttt{2602.0036} and
+\texttt{2602.0033}. \S5.2 was found by asking which reference measure each paper writes
+its ground-state measure against --- the question the appended page exists to force ---
+and that page's single row for this paper exposed the intended physical object while
+failing to record the printed one --- itself a provenance error, now split in two.
+\textbf{\S2 came from an external audit of the second draft of this note}, which had
+found three independent defects and still missed the angle ambiguity creating several
+more; the first draft had opened by claiming nothing was false at all. \emph{Each round
+has found the previous round's survivors list too short} --- the pattern this campaign
+keeps measuring.
+
+\end{document}

@@ -1,5 +1,23 @@
 # Current State
 
+**Public-paper audit frozen 2026-07-31.**  The public census contains 103 records;
+102 current PDFs / 922 pages were downloaded, hashed and visually inspected, while
+`2512.0081v2` is a documented 404.  Verdicts are 64 `KEEP`, 9
+`REPLACE-VERSION`, 4 `SUPERSEDE-BY-NEW-PAPER` and 26 `REVIEW-PENDING`.  The nine
+replacement packages passed independent audits and final release preflight in
+owner order 1--9. The owner reported those nine forms sent on 2026-08-01; the
+public pages still showed the old versions, so they are `ENVIADO/PENDIENTE`, not
+`PUBLICADO`. The owner subsequently reported the four independently audited
+supersession-notice replacements sent in owner order 10--13 as well. Thus all
+thirteen are `ENVIADO/PENDIENTE`. Canonical audit state is under
+[`docs/publication-audit/`](docs/publication-audit/) and the sealed hand-off is
+`output/publication-audit/final/PUBLICATION-AUDIT-20260731.zip`; the supplementary
+supersession hand-off is
+`output/publication-audit/final/SUPERSESSION-REPLACEMENTS-20260801.zip` (SHA files
+recorded beside both). The repository-wide `lake build YangMillsCore` replay was still compiling
+pinned Mathlib at the final audit checkpoint and is explicitly `INCONCLUSIVE / NOT
+A PASS`; affected machine-claim rows remain `REVIEW-PENDING`.
+
 **Surface Theorem closed and terminally sealed (2026-07-28).**  The paper
 *Global Ratio Monotonicity for a Killed von Mises Bridge* proves
 `F_B(t)>0` and `E'(t)<0` for every `beta>0` and `0<t<pi`.  The last

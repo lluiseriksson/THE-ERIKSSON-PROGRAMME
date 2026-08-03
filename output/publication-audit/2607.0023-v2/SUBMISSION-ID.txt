@@ -1,0 +1,25 @@
+STATUS: LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED
+AUDIT DATE: 2026-08-01
+PUBLICATION ACTION: REPLACE VERSION
+ORDER: 13 of 13
+PUBLICATION: ai.viXra.org:2607.0023
+CATEGORY: Mathematical Physics
+TITLE: Ratio Monotonicity for a Killed von Mises Bridge: Exact Bridge Structure, Certified Negative Results, a Single-Bessel Reduction, and a Two-Scale Closure Map for a Surface Expansion in Two-Dimensional Lattice Gauge Theory
+AUTHOR: Lluis Eriksson
+
+ABSTRACT:
+SUPERSEDED BY AI.VIXRA:2607.0089V1 FOR THE TERMINAL GLOBAL-SIGN CLAIM; INDEPENDENT REPLAY PENDING. This replacement preserves public version 1 and records the later terminal-claim paper without overstating its audit status. Version 1 proves positivity of F_B, the ratio sign for 0 < beta <= 3, exact bridge and single-Bessel reductions, certified negative results, asymptotic structure and a two-scale closure map; pages 11-13 leave the global sign as a quantified conjecture. ai.viXra:2607.0089v1 claims the global ratio-monotonicity theorem through exact identities and outward-rounded interval certificates. It supersedes this record for that terminal claim, but independent replay of every exact-to-Arb handoff and interval regime remains pending in this audit. No PASS is inferred from a printed or green transcript alone. The preserved version 1 follows the two-page notice unchanged.
+
+COMMENTS:
+15 pages. v2 adds a two-page supersession/status note and preserves the 13-page v1. The successor's terminal hybrid certificate remains independently REVIEW-PENDING.
+
+CHANGE NOTE:
+Preserves exact and certified v1 results; identifies 2607.0089v1 as the later terminal-claim source; states prominently that its exact-to-Arb replay remains pending.
+
+FILE: artifacts/2607.0023v2-supersession.pdf
+CURRENT PUBLIC PDF: https://ai.vixra.org/pdf/2607.0023v1.pdf
+CURRENT PUBLIC SHA256: 88d4cbd1bd2fce81370b79b56ec5b78c990513c7782263bbb06d3e05902bbf66
+SUCCESSOR: https://ai.vixra.org/abs/2607.0089
+SUCCESSOR PDF SHA256: e8cc61a1c370d941baff0ae9019dde4c0d528dbeb42f7c81b221667c1e67333e
+IMMUTABLE GITHUB SOURCE LINK: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/4865621d51469295057aa3b340b19b33ceae79fd/output/publication-audit/2607.0023-v2
+OWNER ACTION: OWNER-ONLY REPLACEMENT FORM; VERIFY HASH AND LITERAL FIELDS BEFORE THE FINAL CLICK.

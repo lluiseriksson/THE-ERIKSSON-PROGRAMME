@@ -1,0 +1,241 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb}
+\pagestyle{plain}
+\setlength{\parskip}{4pt}
+\newcommand{\A}{\mathcal A}
+\newcommand{\G}{\mathcal G}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Erratum (v3): Theorem 3.1 not established;\\
+withdrawal of Corollaries 3.2--3.3}\\[5pt]
+{\large Geodesic Convexity and Structural Limits of Curvature Methods\\
+for the Yang--Mills Mass Gap on the Lattice}\\[6pt]
+Lluis Eriksson \quad\textbullet\quad ai.viXra:2602.0036 \quad\textbullet\quad July 2026
+\end{center}
+
+\noindent\rule{\textwidth}{0.8pt}
+
+\vspace{2pt}
+\noindent
+\textbf{Corollaries 3.2 and 3.3 are withdrawn, and Theorem 3.1 is not established by
+its printed proof.} The corollaries pass from a Ricci bound at regular points to a
+spectral gap for a global operator, by a one-sentence appeal to codimension; that step
+is not established, and the reference given for it does not supply it (\S1). But the
+regular-point bound itself does not survive either: the O'Neill trace in equation (19)
+omits the mixed horizontal--vertical sectional terms, and the omitted terms have the
+unfavourable sign (\S2). A correct global statement exists --- but it concerns a
+measure and an operator that \emph{have not been identified with those of the
+withdrawn corollaries}, and is therefore added here as a separate result rather than
+presented as a repair (\S3).
+
+\emph{An earlier draft of this note stated that ``Theorem 3.1 stands exactly as
+printed''. That was wrong, and is withdrawn here. It is recorded rather than quietly
+amended: it is the fourth time in this correction campaign that a list of surviving
+statements was closed by checking dependencies instead of reading a proof.}
+
+\section{What is withdrawn}
+
+Corollary 3.2 concludes
+$\lambda_1\ge N_c/2$ for the Laplacian on the compact quotient $B$, arguing that
+``\emph{the singular set (reducible connections) has codimension $\ge2$ and does not
+affect the spectrum}'', with a single citation. Corollary 3.3 converts that into a
+kinetic gap $E_1^{\rm kin}-E_0^{\rm kin}\ge g^2N_c/4$ uniform in $L$.
+
+Three things are wrong with the step, and each alone suffices.
+
+\paragraph{(a) The cited reference is about a different situation.} The citation is to
+Bérard-Bergery--Bourguignon, \emph{Laplacians and Riemannian submersions with totally
+geodesic fibres}. That is a theorem about \emph{smooth} submersions whose fibres are
+totally geodesic. The gauge orbits are not totally geodesic in general, and the
+submersion structure degenerates exactly at the reducible connections --- which is
+precisely where the statement is needed. It is not a spectral-removability theorem for
+a singular stratum.
+
+\paragraph{(b) Codimension $\ge2$ is not by itself a removability criterion.} Two
+distinct levels are involved, and they must not be run together. To identify the
+Friedrichs/Dirichlet-form realisation across the singular set one would need an
+appropriate removability or capacity theorem for the relevant \emph{form} --- that the
+closure of the form on $C_c^\infty(B_{\rm reg})$ coincides with the intended global
+form. \emph{Essential self-adjointness} of the minimal differential operator, and hence
+uniqueness among \emph{all} self-adjoint extensions, is a separate and strictly stronger
+question, and is not established here either. Codimension alone gives neither. Moreover
+the stabilisers of the reducible configurations in the singular locus have positive
+dimension, so the quotient is a stratified space, not merely a manifold with finitely
+many quotient singularities.
+
+\paragraph{(c) The paper specifies and justifies no global self-adjoint realisation of
+$\mathcal K_B^{\rm reg}$.} $B_{\rm reg}$ is the regular stratum with the singular locus
+removed and is in general \emph{incomplete}. The unweighted Laplace--Beltrami
+expression on $C_c^\infty(B_{\rm reg})$ is symmetric and non-negative, but it has not
+been shown to be essentially self-adjoint; it may admit several self-adjoint
+extensions. Realisations \emph{can} be constructed --- the Friedrichs extension of a
+chosen form, for one --- so the objection is not that none exists; it is that the paper
+picks none and justifies none, while Corollary 3.2 quantifies the spectrum of one.
+
+\section{Theorem 3.1: the printed O'Neill trace is not the right one}
+
+The corollaries would fall on \S1 alone. But the regular-point bound they globalise
+does not survive its own proof either.
+
+Equation (19) reads
+\[
+\operatorname{Ric}_B(X,X)
+=\operatorname{Ric}_{\A}(X^h,X^h)
++\tfrac34\sum_i\bigl\|[X^h,E_i^h]^v\bigr\|^2
+\;\ge\;\operatorname{Ric}_{\A}(X^h,X^h).
+\]
+That is not the trace of O'Neill's horizontal equation. With $\{X,E_2,\dots,E_b\}$ an
+orthonormal basis of $T_{[U]}B$ and $\{V_1,\dots,V_r\}$ an orthonormal vertical basis,
+O'Neill gives $K_B(X,E_i)=K_{\A}(X^h,E_i^h)+\frac34\|[X^h,E_i^h]^v\|^2$, so tracing
+over \emph{horizontal} directions only,
+\[
+\operatorname{Ric}_B(X,X)=\sum_{i=2}^{b}K_{\A}(X^h,E_i^h)
++\tfrac34\sum_{i=2}^{b}\bigl\|[X^h,E_i^h]^v\bigr\|^2 .
+\]
+The total-space Ricci tensor, however, traces over horizontal \emph{and} vertical
+directions:
+\[
+\operatorname{Ric}_{\A}(X^h,X^h)
+=\sum_{i}K_{\A}(X^h,E_i^h)+\sum_{a}K_{\A}(X^h,V_a).
+\]
+Hence the correct identity is
+\[
+\boxed{\begin{aligned}
+\operatorname{Ric}_B(X,X)={}&\operatorname{Ric}_{\A}(X^h,X^h)
+-\sum_{a=1}^{r}K_{\A}(X^h,V_a)\\
+&+\tfrac34\sum_{i=2}^{b}\bigl\|[X^h,E_i^h]^v\bigr\|^2
+\end{aligned}}
+\]
+and (19) has dropped $-\sum_a K_{\A}(X^h,V_a)$.
+
+\textbf{The omitted term has the unfavourable sign.} For a bi-invariant metric on a
+compact group all sectional curvatures satisfy $K(X,Y)=\frac14\|[X,Y]\|^2\ge0$, so each
+$K_{\A}(X^h,V_a)\ge0$ and the omitted term \emph{subtracts}. Whether the O'Neill term
+still dominates it is exactly the computation the proof would have to do, and does not.
+It cannot be waved through on general grounds: Riemannian submersions do not in general
+preserve positive Ricci curvature.
+
+The omitted mixed sectional-curvature trace must be retained \emph{independently} of
+whether the fibres are totally geodesic: it arises simply because
+$\operatorname{Ric}_{\A}$ traces over vertical directions as well as horizontal ones,
+while $\operatorname{Ric}_B$ traces only over horizontal ones. Total geodesicity
+controls the O'Neill $T$-tensor, which enters the vertical and mixed equations, not
+this horizontal trace. The non-total-geodesicity of the gauge orbits is therefore a
+\emph{separate} mismatch --- with the theorem cited in \S1(a) --- and not the reason
+these mixed terms occur.
+
+\medskip
+\noindent
+\textbf{Status.} The statement
+$\operatorname{Ric}_B(X,X)\ge\frac{N_c}{2}|X|^2$ on $B_{\rm reg}$ \textbf{is not
+refuted}; what is refuted is the printed derivation. \textbf{Theorem 3.1 is not
+established by its proof}, and a new argument specific to the gauge quotient would be
+required. Until then, \textbf{no pointwise Ricci bound on $B_{\rm reg}$ may be cited
+from this paper as available} --- and it is so cited, in
+\texttt{ai.viXra:2602.0033} and \texttt{2602.0035}.
+
+\section{The one sound geometric input, on the correct object}
+
+A global result is available, and it does not go through removability at all. With
+$\A=SU(N_c)^E$ carrying the product Haar measure, and $\nu=\pi_\#\mathrm{Vol}_{\A}$
+the pushforward to $B$, the metric-measure space $(B,d_B,\nu)$ satisfies
+$\mathrm{RCD}^*(N_c/4,\dim\A)$, by stability of the curvature-dimension condition under
+quotients by compact groups of measure-preserving isometries. This is
+ai.viXra:2602.0046 v3, and it handles the singular stratum automatically --- its own
+text records that $B$ is generally not a manifold, and that the codimension analysis
+is \emph{not needed} for its argument.
+
+That paper also states that its route \emph{bypasses the O'Neill computation}. In the
+light of \S2 that remark is worth more than it looked: the synthetic route is now the
+\emph{only} sound geometric input in this chain, because the O'Neill route printed
+here does not establish its own conclusion.
+
+That result is \textbf{not} a proof of Corollary 3.2. It is a statement about
+$K_\nu$, the self-adjoint operator of the closed Dirichlet form on $L^2(B,\nu)$;
+Corollary 3.2 was about a realisation of $\mathcal K_B^{\rm reg}$ on
+$L^2(B,d\mathrm{Vol}_B)$. On the regular stratum, writing $d\nu=w\,d\mathrm{Vol}_B$
+with $w$ the orbit-volume density, the two differential expressions differ by
+$\langle\nabla\log w,\nabla\,\cdot\,\rangle$, and they agree only if $w$ is constant
+on each relevant component --- which constant stabiliser \emph{type} does not imply,
+since the induced metric on the orbits may vary even where all stabilisers are
+conjugate.
+
+What makes the $\nu$-side statement the physically natural one is that it is exactly
+the gauge-invariant sector: pullback along $\pi$ is an isometry
+\[
+L^2(B,\nu)\;\cong\;L^2(\A,\mathrm{Vol}_{\A})^{\G},
+\]
+because $\int_B|f|^2d\nu=\int_{\A}|f\circ\pi|^2 d\mathrm{Vol}_{\A}$ is the definition
+of the pushforward. So the replacement for Corollaries 3.2--3.3 should be read as a
+statement about gauge-invariant functions on the smooth compact $\A$, where no
+singular geometry is involved at all.
+
+\section{Metric normalisation}
+
+$\operatorname{Ric}\ge N_c/2$ for $\langle X,Y\rangle=-\operatorname{tr}(XY)$ and
+$\operatorname{Ric}\ge N_c/4$ for $-2\operatorname{tr}(XY)$ are \emph{the same bound in
+two normalisations}, not a sharpening of one by the other. This paper's Theorem 3.1
+uses the first; ai.viXra:2602.0046 states its condition in the second. Any downstream
+use must name its inner product.
+
+The conversion is correct as a formal statement; what is not correct is to read either
+side as available. \textbf{Since Theorem 3.1 is not established (\S2), neither the
+$N_c/2$ nor the $N_c/4$ pointwise bound may presently be cited from this paper}, and
+the v2 parenthetical ``\emph{v1 stated the bound with $N_c/4$; that is true but not
+sharp}'' is \textbf{withdrawn}: it belongs to the same defective derivation.
+
+\section{Three citations to a version that does not exist}
+
+This paper cites \texttt{ai.viXra:2602.0035 v2} in three places --- in Remark 3.4, in
+Proposition 4.6, and in the discussion of Theorem 5.2 --- for the corrected
+ground-state exponent $f=-\log\psi_0^2$ and related material. \textbf{No v2 of
+\texttt{2602.0035} exists in the archive.} The file prepared as that version was
+mis-filed onto a different record during the replacement campaign of 2026-07-06; the
+record \texttt{2602.0035} still shows only its v1. Readers following those citations
+will not find what is cited. The three references become live when that record is
+corrected; until then they should be read as pointing to material that is prepared but
+unpublished.
+
+\section{Scope of this note}
+
+This note audits Section 3 and the object-provenance failure it caused. It is not a
+re-audit of the whole paper, and says so rather than leaving the impression of one.
+
+Read for this note and unaffected by \S1--\S2: \textbf{Corollary 2.3} in its corrected
+v2 scope, together with the v2 refutation of the v1 claim it replaces; and
+\textbf{Theorem 2.5}, whose v1 convexity route is withdrawn in v2 and whose statement
+rests instead on the classical Osterwalder--Seiler strong-coupling cluster expansion
+--- an external result, correctly cited and not re-derived here. \textbf{Theorem 2.1}
+is not affected by the present findings and was not re-audited.
+
+\textbf{Not audited here, and flagged because the paper's headline rests on them:}
+Propositions 4.3--4.6 are labelled ``from v1'', were not revised in the v2 pass, and
+are stated in this version \emph{without proof}; Remark 4.7 makes the $O(g^2)$
+structural ceiling rest on them together with Theorem 4.2. Proposition 4.6 in
+particular invokes $\operatorname{Ric}_B$ on the full quotient and therefore inherits
+the object-provenance question of \S1--\S2, although it does so in the favourable
+direction, as an obstruction rather than a positive bound. Their status is left open
+by this note.
+
+\vspace{4pt}
+\noindent\rule{\textwidth}{0.8pt}
+
+\noindent\footnotesize
+\textbf{Provenance.} The defect of \S1 was found by tracing which paper supplies the
+geometric input consumed by the companions, and checking the cited reference rather
+than the citing sentence. The distinction that makes it a defect rather than a
+citation slip --- a correct theorem about the wrong object for the consuming
+dependency --- is not covered by the usual separation of false statement from invalid
+proof, and is recorded as its own category on the page that follows. \textbf{The
+defect of \S2 came from an external audit of the first draft of this very note}, which
+had certified Theorem 3.1 as standing; it was found by re-deriving the O'Neill trace
+rather than by reading the surrounding text, and it is the reason \S2 exists. The
+page that follows is reproduced verbatim, by instruction: paraphrase is how the
+columns drift.
+
+\end{document}

@@ -1,0 +1,25 @@
+STATUS: LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED
+AUDIT DATE: 2026-08-01
+PUBLICATION ACTION: REPLACE VERSION
+ORDER: 11 of 13
+PUBLICATION: ai.viXra.org:2601.0047
+CATEGORY: Quantum Physics
+TITLE: Petz Recoverability Versus Wilson-Loop Diagnostics in Z2 Lattice Gauge Theory (2+1D): Exact Diagonalization Benchmark on Small Open Lattices
+AUTHOR: Lluis Eriksson
+
+ABSTRACT:
+SUPERSEDED BY AI.VIXRA:2601.0051V2 FOR THE CONSOLIDATED BENCHMARK. This replacement preserves public version 2 and makes the series relation explicit. The exact-diagonalization benchmark remains a valid finite-size component, but the successor is the authoritative combined source because it retains that benchmark and adds tensor-network ladder calculations and further scope controls. The reported Petz/Wilson rank alignment is not a confinement-specific or thermodynamic theorem: absolute recovery errors remain prescription dependent, and an equally strong spectral-gap covariate leaves confinement specificity unresolved at the tested sizes. The preserved version 2 follows the two-page notice unchanged.
+
+COMMENTS:
+7 pages. v3 adds a two-page supersession and scope note, then preserves the five-page v2. Consolidated ED-plus-ladder source: ai.viXra:2601.0051v2.
+
+CHANGE NOTE:
+Makes the consolidation relation public; retains the finite ED benchmark; excludes universal or thermodynamic interpretations; identifies the successor as the combined ED-plus-ladder source.
+
+FILE: artifacts/2601.0047v3-supersession.pdf
+CURRENT PUBLIC PDF: https://ai.vixra.org/pdf/2601.0047v2.pdf
+CURRENT PUBLIC SHA256: b2682f9620ca25db3a6cc271a9e9fa52dda30419170fca0e9646d5771de76369
+SUCCESSOR: https://ai.vixra.org/abs/2601.0051
+SUCCESSOR PDF SHA256: f10520e4d78d1ea5c12e6b6893aa692981c1f05dd93911f18b64e01444d94186
+IMMUTABLE GITHUB SOURCE LINK: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/4865621d51469295057aa3b340b19b33ceae79fd/output/publication-audit/2601.0047-v3
+OWNER ACTION: OWNER-ONLY REPLACEMENT FORM; VERIFY HASH AND LITERAL FIELDS BEFORE THE FINAL CLICK.

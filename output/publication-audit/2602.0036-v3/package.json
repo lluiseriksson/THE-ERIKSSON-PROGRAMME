@@ -1,0 +1,14 @@
+{
+  "id": "2602.0036",
+  "version": 3,
+  "title": "Geodesic Convexity and Structural Limits of Curvature Methods for the Yang-Mills Mass Gap on the Lattice",
+  "note_source": "src/erratum_2602_0036.tex",
+  "note_pdf": "erratum_2602_0036.pdf",
+  "output_pdf": "2602.0036v3.pdf",
+  "expected_pages": 19,
+  "segments": [
+    {"path": "$NOTE", "pages": [1, 4], "role": "corrective note"},
+    {"path": "inputs/OBJECT-PROVENANCE-f3c2e1cb-4pp.pdf", "pages": [1, 4], "role": "object provenance"},
+    {"path": "inputs/2602.0036v2-public.pdf", "pages": [1, 11], "role": "frozen public v2"}
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "record": "2607.0035",
+  "new_version": "2",
+  "title": "Exact Two-Dimensional SU(2) Yang-Mills in Lean: Weyl Integration, Heat-Kernel Convolution, Migdal Invariance, and the Exact Simple-Loop Area Law",
+  "author": "Lluis Eriksson",
+  "headline": "SUPERSEDED BY AI.VIXRA:2607.0039V1 FOR THE ORIGINAL-EDGE AND TREE-COTREE CLOSURE",
+  "historical_pdf": "2607.0035v1-public.pdf",
+  "historical_sha256": "99413dfa1431d12b6f572fced7b1a9237498a011d73f0c2de6311f614aa4887b",
+  "historical_pages": 9,
+  "successor_record": "2607.0039",
+  "successor_pdf": "2607.0039v1-successor.pdf",
+  "successor_sha256": "acb7b9b41d3a23fea3bfcb0df59571742592c0925bdd2bbabcbc7a4d425528b1",
+  "final_filename": "2607.0035v2-supersession.pdf",
+  "summary": [
+    "This replacement preserves public version 1 and corrects its publication-level scope. Version 1 proves the compact-group analytic chain, exact heat-kernel reductions, schedule independence and finite reduced-model statements, but its own pages 7 and 9 leave open the bridge from the post-gauge-fixed evaluator to the original-edge physical integral for arbitrary cellulations.",
+    "The missing original-edge gauge-fixing, simultaneous face-holonomy transport and compatible primal-tree/dual-tree closure are supplied by ai.viXra:2607.0039v1. That successor is therefore the authoritative source for the full exact simple-loop area-law theorem at the stated finite two-dimensional SU(2) heat-kernel scope."
+  ],
+  "citation_rule": "For the full original-edge finite-cellulation theorem and exact simple-loop area law, cite ai.viXra:2607.0039v1. Version 1 of this record may be cited for its reduced schedule and analytic precursor results only, together with this notice.",
+  "status_boundary": "The correction narrows an overbroad title/abstract reading; it does not retract the compact-group identities or reduced schedule theorem. Neither record constructs four-dimensional continuum Yang-Mills theory or proves a four-dimensional mass gap.",
+  "retained": [
+    "Transported Haar/spherical probability, character convolution and heat-kernel semigroup identities at the stated finite SU(2) scope.",
+    "Certified dual-graph elimination schedules and schedule-independent reduced amplitudes.",
+    "The explicit three-face and arbitrary-valence local gauge-fixing constructions within their printed scope."
+  ],
+  "superseded": [
+    "The claim that version 1 alone closes the arbitrary-cellulation original-edge physical integral.",
+    "Use of the version 1 title/abstract as authority for the full simple-loop theorem despite the limitations stated on pages 7 and 9.",
+    "The stray public metadata suffix 'Author(s)', which is not part of the PDF title."
+  ],
+  "successor_adds": [
+    "A rooted spanning-tree gauge fixing on the original physical edge variables with product-Haar preservation.",
+    "Simultaneous transport of all facial holonomies and removal of tree/gauge coordinates from the heat-kernel density.",
+    "A compatible tree-cotree closure and equality of the original-edge amplitude with the total-area heat kernel."
+  ],
+  "evidence": "The retained and successor claims are machine-certified exact finite-cellulation statements as reported by their pinned Lean artifacts. This audit verified the public PDFs and claim boundary; it did not rerun the full Lean project.",
+  "provenance": "Notice pages 1-2 are new. The following nine pages reproduce public version 1 with identical rendered content. Frozen copies of version 1 and the ten-page public successor are included in the package."
+}

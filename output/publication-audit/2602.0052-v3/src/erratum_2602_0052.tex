@@ -1,0 +1,307 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb}
+\pagestyle{plain}
+\setlength{\parskip}{4pt}
+\newcommand{\su}{\mathfrak{su}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Archive Erratum and Full Retraction (v3)}\\[5pt]
+{\large Interface Lemmas for the Multiscale Proof of the\\
+Lattice Yang--Mills Mass Gap}\\[6pt]
+Lluis Eriksson \quad\textbullet\quad ai.viXra:2602.0052 \quad\textbullet\quad July 2026
+\end{center}
+
+\noindent\rule{\textwidth}{0.8pt}
+
+\vspace{2pt}
+\noindent
+This version does two things. \textbf{First it restores the identity of the record}
+(\S1), which since 2026-07-06 has displayed one paper's metadata while serving a
+second paper's PDF, leaving this paper's title absent from the public index.
+\textbf{Second, having restored it, it retracts the paper} (\S2--\S5). Not only its
+terminal claim: an audit of every numbered statement found that \emph{none of the
+three interface lemmas is established as printed}, that one auxiliary \emph{construction
+claim inside a proof} is outright false, and that a second auxiliary proof is invalid
+over its claimed parameter range. The manuscript follows unmodified so that the claims
+and their refutations can be read against one another.
+
+Throughout, a distinction is kept that this note's own earlier drafts twice failed to
+keep: \emph{refuting a printed proof is not refuting the statement it was meant to
+prove}. Where only the proof fails, that is what is said.
+
+\section{Archive erratum: what this record has been serving}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Field} & \textbf{Actual provenance}\\
+\hline
+Record identifier & \texttt{2602.0052}\\
+\hline
+Title, abstract, category shown & \texttt{2602.0036v2}, \emph{Geodesic Convexity\ldots}\\
+\hline
+PDF served as v2 & \texttt{2602.0035v2}, \emph{Morse--Bott Spectral Reduction\ldots}\\
+\hline
+Legitimate content of the record & \texttt{2602.0052v1}, \emph{Interface Lemmas\ldots}\\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+Filiation was established from content, not filenames: the file served as v2 carries
+the cover, subject, theorem numbering (3.1, 4.1) and explicit self-identification
+(``\emph{version 2 records that\ldots}'') of the Morse--Bott manuscript, and is not
+byte-identical to \texttt{2602.0036v2}, itself a genuine separate revision of its own
+record. Only the metadata came from \texttt{2602.0036}; the file came from
+\texttt{2602.0035}. A replacement creates a new version rather than overwriting the
+old, so \emph{Interface Lemmas}, dated February 2026 and submitted here on
+2026-02-12, is the authentic content of this record, not an orphan.
+
+Between 2026-07-06 and the present correction, therefore, the title of this paper did
+not resolve in the public index.
+
+\section{The paper is the last document of its lane still claiming an unconditional gap}
+
+The campaign that overwrote this record in July 2026 was, at that moment, retracting
+the ``unconditional'' thesis across this lane. Because the write landed on the wrong
+record, this paper never received its correction.
+
+\texttt{2602.0053} v2 is retitled from ``\ldots and \emph{Unconditional} Mass
+Gap\ldots'' to ``a \emph{Conditional and Windowed} Reduction''. \texttt{2602.0054} v2
+states that ``\emph{the inter-block assembly requires the block Dobrushin condition
+--- this is where {\rm(H-DOB-blk)} enters}'' and withdraws by name the claim that the
+route ``\emph{bypasses any explicit Dobrushin contraction estimate}''.
+\texttt{2602.0055} v2 lists (H-P0), (H-YGZ), (H-DOB-blk) and a volume window,
+records that ``\emph{None of these is proved in the series}'', and declares ``\emph{the
+retagging of the chain is complete}''. It was not: this record was outside it.
+
+Accordingly \textbf{Corollary 7.3} (``Unconditional mass gap'',
+$\Delta_{\rm phys}\ge m(\beta,N_c,d)>0$ uniformly in $L$), \textbf{Remark 6.4}
+(``Dobrushin not needed''), and the closing sentence of the abstract are
+\textbf{withdrawn}. The dating is independently checkable: the bibliography cites
+[13], [15] and [17] under their pre-July titles, all three since retitled.
+
+\section{Two invalid proofs, one of them resting on a false construction}
+
+\subsection{Lemma A.1: the printed logarithm leaves the Lie algebra}
+
+Lemma A.1 constructs $\log U:=V\operatorname{diag}(i\theta_1,\dots,i\theta_{N_c})V^{-1}$
+with $\theta_j\in(-\pi,\pi]$, and Remark A.2 emphasises that this ``defines $\log U$
+for every $U\in SU(N_c)$'' with ``no exceptional set discarded''. Take $U=-I\in SU(2)$,
+whose eigenvalue arguments are both $\pi$:
+\[
+\log(-I)=i\pi I,\qquad \operatorname{tr}\log(-I)=2\pi i\neq0,
+\qquad\text{so}\quad \log(-I)\notin\su(2).
+\]
+The output leaves the Lie algebra. This is not repaired by shifting one angle by
+$2\pi$. The block map $Q_k=\exp\circ\operatorname{avg}\circ\log\circ\operatorname{mult}$
+needs a logarithm equivariant under conjugation, because Lemma 2.2 asserts
+$Q_k(g\cdot U)=g_{k+1}\cdot Q_k(U)$. But $-I$ is central: $g(-I)g^{-1}=-I$ for all $g$,
+so equivariance would force $\log(-I)$ to commute with all of $SU(2)$, hence to be a
+traceless multiple of the identity, hence $0$ --- and $\exp 0=I\neq-I$.
+
+\textbf{No global, $\su(N)$-valued, conjugation-equivariant section of $\exp$ exists at
+non-trivial central elements.}
+
+\emph{What this does and does not refute.} It refutes the construction: the printed
+map does not take values in $\su(N)$, and no repair of it can be simultaneously
+$\su(N)$-valued, a section of $\exp$, and conjugation-equivariant. It therefore
+refutes the printed justification that $Q_k$ is a globally defined, $SU(N)$-valued,
+gauge-covariant map, and with it the printed proof of Lemma 2.2. It does \emph{not}
+refute the statement of Lemma A.1, which asserts only that
+$Q_k:\mathcal A_k\to\mathcal A_{k+1}$ is Borel measurable. A Borel $\su(N)$-valued
+logarithm can be selected after branch corrections --- dropping equivariance, which
+measurability does not require --- so the measurability claim is plausibly recoverable.
+\textbf{Lemma A.1 is therefore not established; its construction is false.}
+
+Upgrading this to a refutation of the statement would require exhibiting a fine
+configuration on which the printed formula leaves $SU(N)$. The shape is visible: if a
+block average runs over $M>1$ terms and one holonomy equals $-I$ while the others equal
+$I$, the principal selection averages to $(i\pi/M)I$, whose exponential has determinant
+$e^{2\pi i/M}\neq1$. Whether that holonomy pattern is realisable for the specific paths
+$\Gamma_{c,x}$ of the block map is a question about its geometry, and is \emph{not}
+settled here; the claim is not made.
+
+Since Lemma 3.4 conditions on iterates of $Q_k$, the failure of the global covariance
+justification reaches the Horizon Transfer chain as well.
+
+\subsection{Lemma 6.2: the Holley--Stroock bound is applied in the wrong direction}
+
+Lemma 6.2 asserts $\alpha_{\rm blk}\ge\frac{N_c}{4}e^{-C_{\rm fib}(\beta_0)}$ with
+$C_{\rm fib}(\beta_0)=2\beta_0 n_{\rm plaq}+C_{\rm poly}$, proved from
+$\operatorname{osc}(W_{k,B})\le2\beta\,n_{\rm plaq}+C_{\rm poly}$ by ``\emph{bounding
+the oscillation using $\beta=\beta_0$}''. Substituting the smallest $\beta$ into an
+upper bound that increases with $\beta$ does not preserve it. \textbf{The printed
+proof is therefore invalid over the stated range} $\beta\ge\beta_0$.
+
+\emph{This does not refute the statement.} Holley--Stroock supplies one sufficient
+lower bound on the log-Sobolev constant; that this particular bound degenerates as
+$\beta$ grows says nothing about the optimal constant, which some other argument might
+still bound uniformly. Nor do three sampled values --- $\operatorname{osc}
+(\beta=1,10,100)=3.0,\,30.3,\,303.1$, measured in \texttt{2602.0054} v2 --- prove that
+$\inf_{\beta\ge\beta_0}e^{-\operatorname{osc}(\beta)}=0$; and the paper supplies only
+an \emph{upper} bound on $\operatorname{osc}$, which cannot establish that
+$\operatorname{osc}$ grows at all. The correct status is \textbf{not established over
+the unbounded range; the same route does give a uniform bound on a bounded window}
+$\beta_0\le\beta\le\beta_1$, with the constant depending on $\beta_1$.
+
+\textbf{Windowing does not repair Lemma 6.3}, which additionally needs
+$\delta_k<\alpha_{\rm blk}/4$ uniformly before applying
+Yoshida--Gian\-nulis--Zegarlinski --- and that inter-block smallness is precisely the
+content of (H-DOB-blk)/(H-YGZ), unproved in the series. An earlier draft of this note
+said ``Lemma 6.3 stands only in the windowed form''; that was wrong, and is withdrawn.
+
+\section{The three interface lemmas are not established as printed}
+
+\subsection{Lemma C (fiber LSI with boundary)} Lemma 6.3 loses its per-block input
+(\S3.2) and carries the inter-block hypothesis. \textbf{Conditional}, not established.
+
+\subsection{Lemma A (Horizon Transfer, Lemma 3.11)} Two bridges are missing.
+
+\emph{(i) The RCP/RG identification is asserted, not derived.} Lemma 3.4 states that the
+regular conditional probability on a fibre of $Q^{(k)}$ has density proportional to
+$e^{-S_k^{\rm eff}}$ against an ``induced Haar measure on the fibre'', and invokes
+uniqueness of the RCP. A fibre of a nonlinear $Q^{(k)}$ is not a group and carries no
+canonical Haar measure; a disintegration over it may involve Jacobians, gauge-fixing
+coordinates and normalisations; and conditioning on $\pi\circ Q^{(k)}$ fixes a gauge
+\emph{orbit}, not a representative. Uniqueness identifies two kernels only after both
+are shown to disintegrate the same measure, which is what would have to be proved.
+
+\emph{(ii) The horizon component is random but used as if fixed.} $Y_B$ (Definition 3.2)
+is the connected large-field component containing $B$, and depends on the very fast
+variables being integrated; the paper does not establish its measurability. Yet
+Lemma 3.9 writes $\mu_k(L_k(B)\mid\mathcal G_{k+1})=T'_k(Y_B,(\bar U,0))F_B$, whose
+left-hand side is $\mathcal G_{k+1}$-measurable and whose right-hand side is not. The
+expected form is a sum over branches,
+$\mu_k(L_k(B)\mid\mathcal G_{k+1})=\sum_{Y\ni B}T'_k(Y,(\bar U,0))F_{B,Y}$, requiring
+measurability of each branch, disjointness, conditional normalisation, and
+summability over all $Y\ni B$. The same confusion appears in Proposition 3.10, whose
+case ``$Y_B=\emptyset$'' concludes that the conditional probability is $0$ --- but
+whether $Y_B$ is empty depends on the fast variables, so conditioning on the slow field
+cannot make it deterministically zero.
+
+Moreover the per-component bound $T_k(Y)\mathbf 1\le e^{-cp_0(g_k)}$ does not control a
+sum over all animals $Y\ni B$ without a size- or distance-dependent estimate and an
+animal-counting argument. Finally, the statement of Lemma 3.11 declares $c$ to depend
+only on $(d,N_c,L_{\rm RG},\gamma_0)$, while its proof takes $c=2/(1+\beta_0)$ from
+input (viii); $\beta_0$ is missing from the dependency list.
+
+\textbf{Not established.}
+
+\subsection{Lemma B (uniform analyticity, Lemma 4.1)} The printed proof argues that
+``$R^{(k)}$ and $B^{(k)}$ are summands of $S_k$ with disjoint supports; each inherits
+the analyticity domain''. Analyticity of a sum does not give analyticity of the
+summands; the sentence that follows, citing a direct construction of $B^{(k)}$, is the
+argument that would have to be made, and is not carried out here. \textbf{Pending
+literal verification against the cited source.}
+
+\begin{sloppypar}
+Its corollaries are worse. Input (v) reads
+$|B^{(k)}(X)|\le O(1)\sum_{j\le k}|\Gamma^0_j\cap X|$ --- with \emph{no} spatial decay
+factor, unlike input (iv) for $R^{(k)}$. Yet Corollary 4.2 concludes
+$|\nabla_vB^{(k)}(X)|\le(C_Bk|X|/\hat\alpha_1)\,e^{-\kappa d_k(X)}$. A Cauchy estimate
+converts a sup bound into a derivative bound; it cannot manufacture decay absent from
+the input. Corollary 4.3 then sums over polymers using exactly that decay.
+\textbf{Corollaries 4.2--4.3 are not established.}
+\end{sloppypar}
+
+\section{A further invalid inference: Lemma 5.6}
+
+The proof of Lemma 5.6 argues that since $p_0(g)\ge c_0|\log g|^{1+\epsilon_0}$ and
+$g_k\to0$, ``$p_0(g_k)\to\infty$ faster than any multiple of $k$'', hence
+$(1+k)^2e^{-cp_0(g_k)}$ ``decays faster than any geometric sequence''. \textbf{The
+displayed assumptions do not imply this.} The input on $p_0$ is a \emph{lower} bound,
+so nothing in it prevents $p_0$ from being much larger --- but nothing in it forces
+$p_0$ to be larger either, and the conclusion needs the latter.
+
+A model compatible with every printed inequality makes this concrete. Take
+\[
+\beta_k=\beta_0+Ck,\qquad g_k=(\beta_0+Ck)^{-1/2},\qquad
+p_0(g)=c_0|\log g|^{1+\epsilon_0} .
+\]
+This satisfies the running-coupling bound $\beta_k\le\beta_0+Ck$, satisfies
+$g_k\to0$, and satisfies $p_0(g)\ge c_0|\log g|^{1+\epsilon_0}$ with equality. In it
+\[
+p_0(g_k)=O\bigl((\log k)^{1+\epsilon_0}\bigr),
+\]
+so $e^{-cp_0(g_k)}$ is subexponential --- superpolynomially small, but not geometric
+in $k$ --- and the required bound $\le C_{\rm SF}^2L_{\rm RG}^{-(d-1)k}$ fails. The
+geometric estimate therefore does not follow from the printed inputs; an additional
+hypothesis, such as $p_0(g_k)\ge ck$ or the lane's explicit (H-P0), is required.
+Lemma 5.7 loses its geometric input accordingly.
+
+\section{Status}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Archive filiation erratum (\S1) & Stands\\
+\hline
+Corollary 7.3, Remark 6.4, closing sentence & \textbf{Withdrawn}\\
+\hline
+Principal-angle $\log:SU(N)\to\su(N)$
+ & \textbf{FALSE} as a construction (\S3.1)\\
+\hline
+Definition 2.1 / global block map $Q_k$
+ & \textbf{Not established} as an $SU(N)$-valued\\
+ & gauge-covariant map with the printed\\
+ & logarithm (\S3.1)\\
+\hline
+Lemma A.1 (Borel measurability of $Q_k$)
+ & Proof invalid, statement \textbf{not established};\\
+ & plausibly recoverable without equivariance\\
+\hline
+Lemma 2.2 (gauge covariance of $Q_k$) & Not established globally (\S3.1)\\
+\hline
+Lemma 6.2 (per-block LSI)
+ & Printed proof \textbf{invalid}; not established\\
+ & over $\beta\ge\beta_0$; this route does give a\\
+ & uniform bound on a bounded window (\S3.2)\\
+\hline
+Lemma 3.4, 3.9, Prop.\ 3.10, Lemma 3.11 & \textbf{Not established} (\S4.2)\\
+\hline
+Lemma 4.1 & Pending verification against the source\\
+\hline
+Corollaries 4.2--4.3 & \textbf{Not established} (\S4.3)\\
+\hline
+Lemma 5.6 & Invalid inference; needs (H-P0)\\
+\hline
+Lemma 5.7, Lemma 6.3, Theorem 7.1 & Conditional / not established\\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+\textbf{No numbered statement of this paper is claimed here to be false.} What is
+claimed false is one construction inside a proof: the principal-angle map is not an
+$\su(N)$-valued logarithm, and no equivariant repair of it exists. Everything else
+above is a failure of a printed argument. The three interface lemmas may yet hold; so
+may Lemma 6.2 over the unbounded range; and Borel measurability of a suitably
+reconstructed block map is not claimed to be false. What this note records is that the
+printed arguments do not establish them, and that the closure built on top of them does
+not stand.
+
+\vspace{4pt}
+\noindent\rule{\textwidth}{0.8pt}
+
+\noindent\footnotesize
+\textbf{Provenance.} The mis-filing (\S1) was measured on 2026-07-29 by comparing every
+record's archive metadata against the cover page of its served PDF, the filiation then
+being fixed by hashes and cover pages after an external reviewer correctly objected
+that the public evidence alone did not distinguish a mis-filed PDF from a duplicated
+one. \S2 was found by asking, before restoring the record, whether a February claim
+could re-enter an archive whose July corrections had retracted it. \textbf{Sections
+3--5 came from a second external audit}, which found that the survivors list of this
+note's own first draft --- Lemmas 3.11, 4.1 and A.1 --- did not survive; the same
+reviewer had already caught an identical over-generous survivors list in the companion
+retraction ai.viXra:2602.0084 v2. Every point was verified against the unchanged v1
+proofs before adoption. That two successive drafts of two different retractions closed
+their survivors lists too early is recorded here rather than quietly fixed: it is the
+same failure the retractions are about.
+
+\end{document}

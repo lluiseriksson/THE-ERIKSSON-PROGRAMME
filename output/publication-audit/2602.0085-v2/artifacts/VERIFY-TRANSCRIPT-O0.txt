@@ -1,0 +1,38 @@
+PYTHON_OPTIMIZE_LEVEL 0
+PASS final exists and SHA
+PASS public v1 SHA
+PASS final unencrypted 26 pages
+PASS scope phrase: principal results of version 1 are withdrawn
+PASS scope phrase: Lemma 3.2 is only recoverable
+PASS scope phrase: original instantiation is withdrawn
+PASS scope phrase: Reflection positivity, Osterwalder-Schrader reconstruction, thermodynamic limit and mass gap remain open
+PASS stale Lemma 3.2 claim absent
+PASS no assertion statements
+PASS render 2602.0085v2-deff7be4-26pp.pdf
+PASS render 2602.0085v1-public.pdf
+PASS rendered page counts
+PASS final page 6 pixel-equals public v1 page 1
+PASS final page 7 pixel-equals public v1 page 2
+PASS final page 8 pixel-equals public v1 page 3
+PASS final page 9 pixel-equals public v1 page 4
+PASS final page 10 pixel-equals public v1 page 5
+PASS final page 11 pixel-equals public v1 page 6
+PASS final page 12 pixel-equals public v1 page 7
+PASS final page 13 pixel-equals public v1 page 8
+PASS final page 14 pixel-equals public v1 page 9
+PASS final page 15 pixel-equals public v1 page 10
+PASS final page 16 pixel-equals public v1 page 11
+PASS final page 17 pixel-equals public v1 page 12
+PASS final page 18 pixel-equals public v1 page 13
+PASS final page 19 pixel-equals public v1 page 14
+PASS final page 20 pixel-equals public v1 page 15
+PASS final page 21 pixel-equals public v1 page 16
+PASS final page 22 pixel-equals public v1 page 17
+PASS final page 23 pixel-equals public v1 page 18
+PASS final page 24 pixel-equals public v1 page 19
+PASS final page 25 pixel-equals public v1 page 20
+PASS final page 26 pixel-equals public v1 page 21
+PASS font inventory readable and embedded
+STATUS SELF-VERIFIED-NOT-INDEPENDENT
+FINAL 2602.0085v2-deff7be4-26pp.pdf
+SHA256 deff7be46aa56ddfbcac63addce730a4bc4449768e5920951d1a304912525518

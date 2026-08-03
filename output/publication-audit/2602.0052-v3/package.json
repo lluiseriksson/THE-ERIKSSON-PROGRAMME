@@ -1,0 +1,13 @@
+{
+  "id": "2602.0052",
+  "version": 3,
+  "title": "Interface Lemmas for the Multiscale Proof of the Lattice Yang-Mills Mass Gap",
+  "note_source": "src/erratum_2602_0052.tex",
+  "note_pdf": "erratum_2602_0052.pdf",
+  "output_pdf": "2602.0052v3.pdf",
+  "expected_pages": 16,
+  "segments": [
+    {"path": "$NOTE", "pages": [1, 5], "role": "corrective note"},
+    {"path": "inputs/2602.0052v1-public.pdf", "pages": [1, 11], "role": "authentic public v1"}
+  ]
+}

@@ -1,0 +1,165 @@
+=== PDFLATEX PASS 1 ===
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(erratum_2602_0084.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def)
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0084-v2\artifacts\erratum_2602_0084.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+[1{C:/Users/lluis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd)
+[2] [3] [4] [5] [6]
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0084-v2\artifacts\erratum_2602_0084.aux) ) <C:\User
+s\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C
+:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.
+pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecb
+x0900.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi6
+00\ecbi1095.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/e
+c/dpi600\ecbx1200.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\ecti1095.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfou
+r/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk
+/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fo
+nts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\lluis\AppData\Local\MiK
+TeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\lluis\AppData\Loc
+al\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><C:/Users/lluis/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/llu
+is/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10
+.pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmmi6.pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmmi9.pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/lluis/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/lluis/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/lluis/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/lluis/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ll
+uis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/e
+uler/eufm10.pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/symbols/msbm10.pfb>
+Output written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-C
+ODEX-AUTOPILOT\output\publication-audit\2602.0084-v2\artifacts\erratum_2602_008
+4.pdf (6 pages, 310281 bytes).
+Transcript written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAM
+ME-CODEX-AUTOPILOT\output\publication-audit\2602.0084-v2\artifacts\erratum_2602
+_0084.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.
+
+
+=== PDFLATEX PASS 2 ===
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(erratum_2602_0084.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def)
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0084-v2\artifacts\erratum_2602_0084.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+[1{C:/Users/lluis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+(C:\Users\lluis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd)
+[2] [3] [4] [5] [6]
+(C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-CODEX-AUTOPILOT\ou
+tput\publication-audit\2602.0084-v2\artifacts\erratum_2602_0084.aux) ) <C:\User
+s\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C
+:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.
+pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecb
+x0900.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi6
+00\ecbi1095.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/e
+c/dpi600\ecbx1200.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\ecti1095.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk/ljfou
+r/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fonts/pk
+/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\lluis\AppData\Local\MiKTeX\fo
+nts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\lluis\AppData\Local\MiK
+TeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\lluis\AppData\Loc
+al\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><C:/Users/lluis/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/llu
+is/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10
+.pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmmi6.pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmmi9.pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/lluis/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/lluis/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/lluis/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/lluis/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ll
+uis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/
+Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/e
+uler/eufm10.pfb><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/symbols/msbm10.pfb>
+Output written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAMME-C
+ODEX-AUTOPILOT\output\publication-audit\2602.0084-v2\artifacts\erratum_2602_008
+4.pdf (6 pages, 310281 bytes).
+Transcript written on C:\Users\lluis\.codex\worktrees\3433\THE-ERIKSSON-PROGRAM
+ME-CODEX-AUTOPILOT\output\publication-audit\2602.0084-v2\artifacts\erratum_2602
+_0084.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.
+
+
+=== BUILD RESULT ===
+{
+  "status": "BUILT-NOT-INDEPENDENTLY-AUDITED",
+  "final_pdf": "2602.0084v2-4099349d-21pp.pdf",
+  "final_sha256": "4099349dc23496d5938e5dee8092de991083c92dea15481a3a69d2c1ba008bc9",
+  "pages": 21,
+  "erratum_pages": 6,
+  "public_v1_pages": 15,
+  "public_v1_sha256": "633c08d3f3528b60cdbcaf0d13c257aa49f6df68f4717802170dc50beeb52211",
+  "source_sha256": "a4cfb23906c88a35370aca44072c5ca5e0aaf77089ebaf59c7e58ba5ebf15e6a"
+}

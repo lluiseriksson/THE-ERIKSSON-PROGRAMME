@@ -1,0 +1,29 @@
+PYTHON_OPTIMIZE_LEVEL 0
+PASS final exists
+PASS final SHA
+PASS public v3 SHA
+PASS final unencrypted 12 pages
+PASS scope phrase: Conditional result only
+PASS scope phrase: requires the cross-scale
+PASS scope phrase: additionally requires the Dobrushin
+PASS scope phrase: No unconditional weak-coupling mass gap
+PASS scope phrase: preserved 11-page v3
+PASS no assertion statements
+PASS render 2602.0041v4-d268921d-12pp.pdf
+PASS render 2602.0041v3-public.pdf
+PASS rendered page counts
+PASS final page 2 pixel-equals public v3 page 1
+PASS final page 3 pixel-equals public v3 page 2
+PASS final page 4 pixel-equals public v3 page 3
+PASS final page 5 pixel-equals public v3 page 4
+PASS final page 6 pixel-equals public v3 page 5
+PASS final page 7 pixel-equals public v3 page 6
+PASS final page 8 pixel-equals public v3 page 7
+PASS final page 9 pixel-equals public v3 page 8
+PASS final page 10 pixel-equals public v3 page 9
+PASS final page 11 pixel-equals public v3 page 10
+PASS final page 12 pixel-equals public v3 page 11
+PASS font inventory readable and embedded
+STATUS SELF-VERIFIED-NOT-INDEPENDENT
+FINAL 2602.0041v4-d268921d-12pp.pdf
+SHA256 d268921dd8fd3a1ee4b1440118692ffc53472e1c3ef84f84736b95016b1ba93d

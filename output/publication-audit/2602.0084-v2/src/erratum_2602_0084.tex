@@ -1,0 +1,419 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper,hmargin=2.4cm,vmargin=1.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\pagestyle{plain}
+\setlength{\parskip}{4pt}
+\setlength{\emergencystretch}{3em}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Retraction of Theorem 4.4 and Proposition 3.8, and Status Note (v2)}\\[5pt]
+{\large Almost Reflection Positivity for Gradient-Flow Observables via\\
+Gaussian Localization in Lattice Yang--Mills Theory}\\[6pt]
+Lluis Eriksson \quad\textbullet\quad ai.viXra:2602.0084 \quad\textbullet\quad July 2026
+\end{center}
+
+\noindent\rule{\textwidth}{0.8pt}
+
+\vspace{2pt}
+\noindent
+\textbf{The principal results of this paper are withdrawn.} They rest on three
+independent defects (A--C in \S2--\S4), two of which are outright false lemmas rather
+than gaps. A subsequent audit of the statements this note had initially listed as
+\emph{surviving} produced four more (D--G in \S6), three of them further false
+statements, none of them arising from the Wilson-flow gauge-mode obstruction that
+causes A--C. One of the
+false lemmas had already been refuted, with an explicit counterexample, in a companion
+paper of this same programme --- in July 2026 --- and the correction was never
+propagated here.
+\textbf{Nothing below shows that the conclusion of Theorem 4.4 is false}; it shows
+that it is unproved. Section 7 records the programme's three existing repair routes,
+which address defects A--C; \S6 separately records the further reformulations that
+defects D--G would require, and those are not in hand. The v1 manuscript follows
+unmodified.
+
+\section{Status}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Statement} & \textbf{Status as of v2}\\
+\hline
+Definitions 2.2, 2.5, 2.6 & Stand, as definitions\\
+\hline
+Theorem 4.1 (lattice RP, Osterwalder--Seiler) & Stands (cited, not ours)\\
+\hline
+Lemma 3.1 (heat-kernel domination) & \textbf{FALSE}, twice over (\S3, \S6.4)\\
+\hline
+Lemma A.1 (variance--oscillation bound) & \textbf{FALSE} (\S4)\\
+\hline
+Theorem 5.1 (OS reconstruction, conditional) & \textbf{FALSE as stated} (\S6.1)\\
+\hline
+Lemma 3.3 (graph distance vs.\ time sep.)
+ & \textbf{FALSE} on the periodic torus;\\
+ & recoverable with a two-boundary\\
+ & buffer or a periodic distance (\S6.2)\\
+\hline
+Lemma 3.5 (chain rule for oscillation)
+ & \textbf{FALSE as printed}; recoverable\\
+ & by integrating the Jacobian along\\
+ & the single-link geodesic (\S6.3)\\
+\hline
+Lemma 3.6 (Gaussian tail on the link graph)
+ & Recoverable only after replacing its\\
+ & heat-kernel input and fixing the\\
+ & volume/time regime (\S6.4)\\
+\hline
+Lemma 3.4 (trans-plane influence decay) & \textbf{Withdrawn}\\
+\hline
+Proposition 3.8 (half-space approximation) & \textbf{Withdrawn}\\
+\hline
+Theorem 4.4 (quantitative RP for flowed obs.) & \textbf{Withdrawn}; and see \S6.2 on\\
+ & its \emph{statement}, not only its proof\\
+\hline
+Proposition 5.3 (OS axioms for $\omega^t_L$) & \textbf{Withdrawn} (\S2)\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Defect A: the object of the paper is not constructed}
+
+Section 2 states: ``\emph{The limit state $\omega^t_L$ on $\mathcal A$ exists by
+[1, Theorem 1.1]}'', and the paper's opening sentence describes $\omega^t_L$ as ``the
+continuum limit state constructed in [1]''. Reference [1] is
+\textbf{ai.viXra:2602.0085}, whose Theorem 1.1 has been \textbf{withdrawn} in its own
+v2: the linearization identity underlying its ultraviolet estimate is false, because
+the unfixed Wilson flow has undamped gauge directions.
+
+Consequently $\omega^t_L$ is not constructed by the cited result, and no alternative
+construction is provided in this paper. Every statement of this
+paper \emph{about} $\omega^t_L$ --- Theorem 4.4 and Proposition 5.3 in particular ---
+is a statement about an object whose construction has been retracted. Step 4 of the
+proof of Theorem 4.4 invokes [1, Theorem 1.1] directly, for the convergence
+$\omega^t_k((\Theta F)^*F)\to\omega^t_L((\Theta F)^*F)$.
+
+\section{Defect B: Lemma 3.1 is the withdrawn lemma, imported}
+
+Lemma 3.1 is stated here as ``\emph{Heat kernel domination --- Paper 83, Lemma 3.6}'',
+namely
+\[
+\|X_\tau(\ell,\ell_0)\|_{\mathrm{op}}\le p_\tau(\ell,\ell_0),
+\qquad X_\tau(\ell,\ell_0)=\partial_{U_{\ell_0}}W_\tau(U)_\ell ,
+\]
+a bound on the columns of the Jacobian of the Wilson flow map. This is exactly the
+statement refuted in the v2 of ai.viXra:2602.0085, and the refutation applies verbatim
+here. At $U\equiv\mathbf 1$ every plaquette is trivial, so the configuration is a
+global minimum of the Wilson action and a fixed point of the flow. For
+$\lambda:\Lambda^0_k\to\mathfrak{su}(N)$ supported at a single vertex, the gauge
+variation $X^\lambda(e)=\lambda(x)-\lambda(y)$, $e=(x,y)$, is supported on the $2d$
+incident links and is \emph{exactly stationary} under the flow, since the whole gauge
+orbit consists of minima. By linearity it is a signed sum of the $2d$ single-link
+variations $X_\tau(\cdot,e_i)$. Fix any one incident link $e_*$; the gauge mode has
+unit norm there for every $\tau$, so Lemma 3.1 would force
+\[
+1=\bigl\|X^\lambda_\tau(e_*)\bigr\|\;\le\;\sum_{i=1}^{2d}p_\tau(e_*,e_i)
+\;\xrightarrow[\ \tau\to\infty\ ]{}\;\frac{2d}{|\mathcal G_k|},
+\]
+the limit because the scalar heat kernel on a finite connected graph converges to its
+uniform stationary value. This is impossible as soon as $|\mathcal G_k|>2d$. (Both
+sides here are pointwise, as Lemma 3.1 is; the $\ell^2$ form of the same contradiction
+is the one used against Proposition 3.9 in the v2 of ai.viXra:2602.0085, whose bound
+is an $\ell^2$ column bound.) Lemma 3.4 is proved from Lemma 3.1 together with Lemma
+3.6, and is therefore withdrawn.
+
+\section{Defect C: Lemma A.1 is false, and this programme had already said so}
+
+Appendix A asserts, under the heading ``\emph{Variance--oscillation bound (no product
+assumption)}'', that for \emph{any} probability measure $\mu$ on $G^E$ and any
+$S\subset E$,
+\[
+\operatorname{Var}_\mu\!\bigl(\Phi\mid\mathcal G_S\bigr)\;\le\;
+\tfrac14\sum_{e\in E\setminus S}\operatorname{osc}_e(\Phi)^2 ,
+\]
+with the proof step ``\emph{each $\Delta_i$ is the conditional expectation (given
+$\mathcal F_{i-1}$) of the difference obtained by varying $U_{e_i}$ only, so
+$\|\Delta_i\|_{L^\infty}\le\frac12\operatorname{osc}_{e_i}(\Phi)$}'', and the closing
+remark ``\emph{no independence or product structure on $\mu$ is needed}''.
+
+\paragraph{The proof step is false.}
+The martingale increment
+$\Delta_i=\mathbb E[\Phi\mid\mathcal F_i]-\mathbb E[\Phi\mid\mathcal F_{i-1}]$ is
+\emph{not} obtained by varying $U_{e_i}$ alone: conditioning on $U_{e_i}$ also changes
+the conditional law of the remaining variables $U_{e_{i+1}},\dots,U_{e_n}$. Fix
+$g_0\neq g_1$ in $G$ and a continuous $f:G\to[-1,1]$ with $f(g_0)=1$,
+$f(g_1)=-1$ (the range restriction is what makes the oscillations below exactly $1$).
+On $E=\{e_1,e_2\}$ let
+$\mu=\frac12\delta_{(g_0,g_0)}+\frac12\delta_{(g_1,g_1)}$ and
+$\Phi(U_1,U_2)=f(U_2)$. Then $\operatorname{osc}_{e_1}(\Phi)=0$, while
+$\Delta_1=\mathbb E[\Phi\mid U_{e_1}]-\mathbb E[\Phi]=f(U_{e_1})$ has modulus $1$.
+
+\paragraph{And so is the inequality itself.}
+The example above refutes the proof step but not the conclusion: there
+$\operatorname{osc}_{e_2}(\Phi)=2$ pays the whole variance, and the asserted bound
+holds with equality. A direct counterexample to the \emph{inequality} is obtained from
+the same measure by spreading the observable over both coordinates. With $\mu$ as
+above and
+\[
+\Phi(U_1,U_2)=\tfrac12\bigl(f(U_1)+f(U_2)\bigr),
+\]
+$\Phi$ takes the values $\pm1$ with probability $\tfrac12$ each under $\mu$, so
+(taking $S=\emptyset$, for which $\mathcal G_S$ is trivial)
+$\operatorname{Var}_\mu(\Phi)=1$. But varying either coordinate alone moves $\Phi$ by
+exactly $1$, so $\operatorname{osc}_{e_1}(\Phi)=\operatorname{osc}_{e_2}(\Phi)=1$ and
+the asserted bound reads
+\[
+1=\operatorname{Var}_\mu(\Phi)\;\le\;\tfrac14\bigl(1^2+1^2\bigr)=\tfrac12 ,
+\]
+which is false. Lemma A.1 is therefore false as stated, not merely unproved.
+
+This is not a new observation. It is the two-spin counterexample recorded in the v2 of
+\textbf{ai.viXra:2602.0070}, and it is the reason the v2 of
+\textbf{ai.viXra:2602.0077} withdrew its own Lemma 1.5 --- which asserted the same
+oscillation control ``for any probability measure'' by the same martingale-increment
+argument. Those corrections were made in July 2026. \textbf{The present paper was
+submitted in February 2026 and never replaced, so the correction never reached it.}
+
+The measure to which Lemma A.1 is applied here is $\mu_k$, the Wilson measure at scale
+$k$ (Remark A.2). It is not a product measure --- that is the entire content of an
+interacting lattice gauge theory. Proposition 3.8 derives its $L^2$ error bound from
+Lemma A.1 and is therefore withdrawn on this ground alone, independently of \S3.
+
+\section{What falls, and what does not}
+
+Theorem 4.4 fails through three independent routes: its Step 1 rests on Proposition
+3.8, which rests on both defective lemmas; its Step 4 rests on the withdrawn Theorem
+1.1 of [1]; and its subject $\omega^t_L$ is not constructed. Proposition 5.3 is
+withdrawn for the same reason as its subject.
+
+Exactly two things are untouched:
+\begin{itemize}
+\item \textbf{Definitions 2.2, 2.5, 2.6}, as definitions.
+\item \textbf{Theorem 4.1}: exact reflection positivity of the Wilson measure at the
+lattice level, cited from Osterwalder--Seiler. Not a result of this paper, and not
+affected by anything here.
+\end{itemize}
+
+\noindent
+Everything else that a first reading of this note listed as surviving did not survive
+the audit of \S6.
+
+\noindent
+\textbf{The conclusion of Theorem 4.4 is not refuted.} Almost-reflection-positivity
+for flowed observables, with a defect exponentially small in the buffer distance, may
+well hold. Nothing above bears on its truth.
+
+\section{Defects D--G: the survivors, audited}
+
+An earlier draft of this note carried a list of results ``untouched'' by defects
+A--C. Each had been cleared by checking what it \emph{depends on}. None had had its
+proof read. Reading them produced four more defects, three of them false statements.
+None arises from the Wilson-flow gauge-mode obstruction of \S3: D is an error about
+semigroups, E about the periodic geometry of the torus, F about differentiating a
+nonlinear map, G about the long-time behaviour of a heat kernel on a finite graph.
+(F does concern the flow map, but its error is generic to nonlinear maps and owes
+nothing to the special structure of the Wilson flow.) They are recorded in full,
+because a retraction that quietly shortens its own survivors list between drafts is
+worth nothing.
+
+\subsection{D. Theorem 5.1 is false as stated}
+
+The theorem assumes reflection positivity on $\mathcal E_+$ and a strongly continuous
+semigroup $\{\alpha_\tau\}$ of $*$-endomorphisms with (i)
+$\alpha_\tau(\mathcal E_+)\subset\mathcal E_+$, (ii) $\omega\circ\alpha_\tau=\omega$,
+(iii) $\Theta\circ\alpha_\tau=\alpha_\tau\circ\Theta$; and concludes, in item 3, a
+\emph{self-adjoint} $H\ge 0$ with $T_\tau=e^{-\tau H}$. Step 5 of the proof deduces
+this from Hille--Yosida.
+
+Hille--Yosida gives no such thing. It produces a generator $-H$ with $H$ accretive; it
+does not make $H$ self-adjoint. Self-adjointness of the OS Hamiltonian comes from the
+\emph{reflection} relation between $\Theta$ and the evolution, typically
+$\Theta\alpha_\tau=\alpha_{-\tau}\Theta$ in a two-sided setting, which yields
+$\langle F,T_\tau G\rangle_{\mathrm{OS}}=\langle T_\tau F,G\rangle_{\mathrm{OS}}$.
+Hypothesis (iii) is \emph{commutation}, a different relation, and it does not give
+symmetry.
+
+What (i)--(iii) do give is stronger than a contraction and useless for the conclusion:
+since $\alpha_\tau$ is a $*$-endomorphism, (iii) and (ii) give
+\[
+\|T_\tau[F]\|^2_{\mathrm{OS}}
+=\omega\bigl((\Theta\alpha_\tau F)^*\alpha_\tau F\bigr)
+=\omega\bigl(\alpha_\tau((\Theta F)^*F)\bigr)
+=\omega\bigl((\Theta F)^*F\bigr)=\|[F]\|^2_{\mathrm{OS}},
+\]
+so $T_\tau$ is an \emph{isometry}. A semigroup of isometries fixing $\Omega_{\rm vac}$
+has no decay to extract.
+
+\paragraph{Counterexample.} Take $\mathcal A=\mathcal E_+=M_2(\mathbb C)$,
+$\Theta=\mathrm{id}$, $\omega=\frac12\operatorname{tr}$, and
+$\alpha_\tau(F)=U_\tau^*FU_\tau$ with $U_\tau=e^{i\tau K}$ for a self-adjoint
+non-scalar $K$. Reflection positivity holds ($\omega(F^*F)\ge0$), and (i)--(iii) hold.
+The OS space is $M_2(\mathbb C)$ with the Hilbert--Schmidt inner product, and
+$T_\tau=e^{-i\tau\,\mathrm{ad}_K}$ is a \emph{unitary group}. It equals $e^{-\tau H}$
+with $H\ge0$ self-adjoint only if $H=0$, i.e.\ only if $K$ is scalar. Conclusion 3 of
+Theorem 5.1 fails. Separability (conclusion 1) also does not follow for an arbitrary
+$*$-algebra.
+
+\paragraph{What survives of it.} The final sentence of the theorem --- that applying
+the construction to the lattice Wilson measure $\mu_k$ yields a lattice Hilbert space
+and $H_k\ge0$ unconditionally --- is true, but \emph{not by this theorem}. It is the
+Osterwalder--Seiler transfer-matrix result already quoted here as Theorem 4.1, where
+self-adjointness and positivity of the transfer operator are established by the
+reflection structure, not by Hille--Yosida. Theorem 5.1 is recoverable by assuming
+directly that the induced $T_\tau$ are self-adjoint contractions, or by replacing
+(iii) with the reflection relation above and proving symmetry from it. Either way a
+new proof is required, and the statement as printed must not be used.
+
+\subsection{E. Lemma 3.3 is false on the periodic torus}
+
+Remark 2.1 fixes time coordinates on $\mathbb T^4_L$ by the representative
+$x_0\in(-L/2,L/2]$, and $x_0(\ell)$ is the minimum of the representatives of the two
+endpoints of $\ell$. Lemma 3.3 asserts that adjacent links satisfy
+$|x_0(\ell)-x_0(\ell')|\le a_k$, its proof reasoning that ``the time coordinates of
+the endpoints differ by at most $a_k$''. Across the periodic cut they do not.
+
+Let $v$ be a lattice site whose time representative $x_*$ is \emph{maximal} in
+$(-L/2,L/2]$. (One should not assume $L/2$ is itself a site: if the number of temporal
+sites is odd, that representative does not occur. Maximality is all that is needed,
+and it holds for either parity.) The spatial link $\ell_s$ based at $v$ has both
+endpoints at time $x_*$, so $x_0(\ell_s)=x_*$. The temporal link $\ell_t$ leaving $v$
+in the positive time direction wraps across the cut, since $x_*+a_k>L/2$ by
+maximality, so its other endpoint has representative $x_*+a_k-L$ and
+$x_0(\ell_t)=x_*+a_k-L$. The two links share $v$, hence are adjacent, yet
+\[
+|x_0(\ell_s)-x_0(\ell_t)|=L-a_k .
+\]
+The consequence drawn from the lemma,
+$\operatorname{dist}_{\mathrm{gr}}(\ell,\ell_0)\ge|x_0(\ell)-x_0(\ell_0)|/a_k$, fails
+with it: these two links are at graph distance $1$.
+
+The underlying issue is not a slip in a two-line proof. \textbf{On a torus the
+positive-time region has two boundaries}, the plane $x_0=0$ and the cut
+$x_0=\pm L/2$; the support condition $x_0>\delta$ separates an observable from the
+first and not from the second. Recovery requires a two-sided buffer,
+$\delta<x_0(\ell)<L/2-\delta'$, or a formulation in terms of periodic distance and
+distance to the complement of the positive region. \textbf{This bears on the
+\emph{statement} of Theorem 4.4, not only on its proof}: its support hypothesis
+$\{x_0>\delta_0\}$ is, as written, insufficient on the torus.
+
+The manuscript is aware of this phenomenon elsewhere --- Remark 5.2 observes that on
+$\mathbb T^4_L$ ``literal time translation by large $\tau$ can wrap around and need
+not preserve the half-space algebra'' --- and does not apply the same care in
+Lemma 3.3.
+
+\subsection{F. Lemma 3.5 is false as printed}
+
+The proof of Lemma 3.5 bounds, for $U,U'$ differing only at $\ell_0$,
+\[
+d_k\bigl(W_{\tau_k}(U),W_{\tau_k}(U')\bigr)\le
+\frac{1}{|\Lambda^1_k|^{1/2}}
+\Bigl(\sum_{\ell}\|X_{\tau_k}(\ell,\ell_0)\|_{\mathrm{op}}^2\,
+d_G(U_{\ell_0},U'_{\ell_0})^2\Bigr)^{1/2},
+\]
+where $X_{\tau_k}(\ell,\ell_0)$ is, by Definition 2.3, the differential of the flow
+\emph{at a configuration}. This is the estimate valid for a linear map, applied to a
+nonlinear one. For a nonlinear map the mean-value inequality requires the derivative
+along the connecting path, not at one endpoint: writing $U^{(s)}$ for the geodesic in
+the $\ell_0$ variable from $U_{\ell_0}$ to $U'_{\ell_0}$, of length $\rho$, the
+correct bound carries
+$\int_0^{\rho}\|X_{\tau_k}(\ell,\ell_0)(U^{(s)})\|_{\mathrm{op}}\,ds$, or the cruder
+$\rho\,\sup_V\|X_{\tau_k}(\ell,\ell_0)(V)\|_{\mathrm{op}}$. Neither the integral nor
+the supremum appears; the supremum taken at the end of the proof is over the endpoint
+$U_{\ell_0}$ only.
+
+In fairness this defect alone is repairable, and would have been invisible in the
+original architecture: the (false) Lemma 3.1 asserted a bound on
+$\|X_\tau(\ell,\ell_0)\|_{\mathrm{op}}$ uniform in the configuration, so inserting the
+supremum would have cost nothing. It is recorded because the lemma as printed does not
+hold, and because the repair is no longer available once Lemma 3.1 is gone.
+
+\subsection{G. The scalar bound in Lemma 3.1 omits the stationary term}
+
+Independently of the gauge modes of \S3, the right-hand side of Lemma 3.1 is itself
+false for large $\tau$. It asserts, for the heat kernel of a finite graph and
+\emph{all} $\tau>0$,
+\[
+p_\tau(\ell,\ell_0)\le\frac{C}{(\tau+1)^{d/2}}
+\exp\Bigl(-\frac{c\,\operatorname{dist}_{\mathrm{gr}}(\ell,\ell_0)^2}{\tau+1}\Bigr).
+\]
+On a finite connected graph $p_\tau(\ell,\ell_0)\to1/|\mathcal G_k|>0$ as
+$\tau\to\infty$, while the right-hand side tends to $0$. The bound therefore fails at
+large times before any question about the Wilson flow arises.
+
+The companion paper ai.viXra:2602.0085 carries the corresponding bound \emph{with} the
+stationary term $1/|\mathcal G_k|$, and devotes its Remark 3.10 to the size of that
+term. The present paper dropped it. Consequently Lemma 3.6, whose proof consumes this
+bound shell by shell, cannot be recovered merely by renaming its kernel: recovery
+requires restoring the stationary term, or restricting to times before mixing, or
+using the correct periodic kernel with its images --- and, for localization against
+one half of the torus, handling the two boundaries of \S6.2.
+
+\section{Three repairs, all of which exist in this programme}
+
+\begin{enumerate}
+\item[(a)] \textbf{For Lemma A.1.} The programme's own repair is the Dobrushin-type
+decoupling hypothesis (H-DEC/AT) of ai.viXra:2602.0070 and 2602.0072 v2, under which
+the increment is controlled by the oscillations with an influence-leakage constant.
+ai.viXra:2602.0077 v2 already adopted it. Applying it here converts Proposition 3.8
+into a conditional statement with an explicit constant.
+\item[(b)] \textbf{For Lemma 3.1.} The routes recorded in ai.viXra:2602.0085 v2: prove
+the oscillation bound for the damped flow $\alpha_0>0$ (for gauge-invariant $F$ the
+composed observable is unchanged, so the bound transfers), or estimate transverse to
+the gauge orbit on the quotient.
+\item[(c)] \textbf{For the subject.} Repair of Theorem 1.1 of ai.viXra:2602.0085, on
+which the existence of $\omega^t_L$ depends.
+\end{enumerate}
+
+\noindent
+Each needs a new proof. Note that (a) and (b) are independent: fixing either one alone
+leaves Proposition 3.8 unproved.
+
+\section{On how this happened}
+
+The mathematical defects in \S3 and \S4 are ordinary errors. What is worth recording
+is \S4's history: the claim was refuted inside this programme, in a companion paper,
+and the refutation did not propagate to a paper that depended on it. The papers were
+corrected; the dependency graph between them was not maintained. That is the same
+failure that produced the archive's metadata errata --- no manifest, no propagation
+step --- and it is being addressed by a replacement ledger that records, for each
+record, what depends on it.
+
+A second lesson is recorded because it was learned the hard way in the drafting of
+this very note. Theorem 5.1 appeared in the first draft's table as a survivor. It had
+been cleared by checking what it \emph{depends on}, not by reading its proof; the
+defect in \S6 sits in that proof and has nothing to do with the gradient flow. In a
+retraction, the list of survivors deserves exactly the adversarial scrutiny given to
+the list of casualties --- a survivor is a positive claim being made under the
+author's name at the moment when the reader's trust is lowest, and it is the one place
+where the temptation to salvage is strongest.
+
+\vspace{4pt}
+\noindent\rule{\textwidth}{0.8pt}
+
+\noindent\footnotesize
+\textbf{Provenance.} Defect B follows from an external adversarial review of
+ai.viXra:2602.0085, verified independently against that manuscript. Defects A and C
+were found on 2026-07-29 by tracing the dependencies of that retraction through the
+companion papers, exactly the propagation step whose absence is described in \S8. A
+further round of the same external review supplied Defect D, corrected the norm
+mismatch in the displayed contradiction of \S3, and pointed out that the original
+counterexample in \S4 refuted the proof step of Lemma A.1 without refuting its
+conclusion; the direct counterexample to the inequality was added in response, and
+each point was verified against the manuscript before being adopted. A later
+survivor audit, in the same review, supplied defects E--G: the periodic-cut
+counterexample to Lemma 3.3, the missing path integration in Lemma 3.5, and the
+omitted stationary term in the finite-graph heat-kernel bound; a subsequent pass
+replaced the witness of \S6.2 by the maximal-representative site, so that it no longer
+presumes $L/2$ to be a lattice point. Each was checked directly against the unchanged
+v1 proof before inclusion. It is recorded that three of the four survivor-audit
+defects came from outside. No
+compiled theorem in the Lean core of \texttt{THE-ERIKSSON-PROGRAMME} discharges any
+hypothesis of this paper, and none is affected by this retraction. Remark 4.3 of the
+v1 manuscript records that the Hamiltonian used in the companion papers is
+reconstructed from exact lattice reflection positivity (Theorem 4.1), not from the
+almost-RP estimate withdrawn here; that statement is unaffected, and limits how far
+this retraction propagates.
+
+\end{document}

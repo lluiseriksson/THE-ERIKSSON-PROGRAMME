@@ -1,0 +1,27 @@
+PYTHON_OPTIMIZE_LEVEL 1
+PASS final exists
+PASS final SHA
+PASS public v2 SHA
+PASS final unencrypted 11 pages
+PASS scope phrase: necessary condition
+PASS scope phrase: does not by itself prove
+PASS scope phrase: No continuum-limit or Clay-problem conclusion
+PASS scope phrase: preserved 10-page v2
+PASS no assertion statements
+PASS render 2602.0038v3-4bcadc2d-11pp.pdf
+PASS render 2602.0038v2-public.pdf
+PASS rendered page counts
+PASS final page 2 pixel-equals public v2 page 1
+PASS final page 3 pixel-equals public v2 page 2
+PASS final page 4 pixel-equals public v2 page 3
+PASS final page 5 pixel-equals public v2 page 4
+PASS final page 6 pixel-equals public v2 page 5
+PASS final page 7 pixel-equals public v2 page 6
+PASS final page 8 pixel-equals public v2 page 7
+PASS final page 9 pixel-equals public v2 page 8
+PASS final page 10 pixel-equals public v2 page 9
+PASS final page 11 pixel-equals public v2 page 10
+PASS font inventory readable and embedded
+STATUS SELF-VERIFIED-NOT-INDEPENDENT
+FINAL 2602.0038v3-4bcadc2d-11pp.pdf
+SHA256 4bcadc2d4a5ea32c5a56c12d9ca6952fbb24e8c8fcceea868b1a40b0ad70260e

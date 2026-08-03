@@ -1,0 +1,22 @@
+STATUS: LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED
+PUBLICATION ACTION: REPLACE VERSION
+ORDER: 6 (after 2602.0052, 2602.0036, 2602.0033 R30, 2602.0085, and 2602.0084)
+PUBLIC RECORD: https://ai.vixra.org/abs/2602.0035
+PUBLICATION: ai.viXra.org:2602.0035
+CATEGORY: Quantum Physics
+TITLE: Morse-Bott Spectral Reduction and the Yang-Mills Mass Gap on the Lattice
+AUTHOR: Lluis Eriksson
+FILE: artifacts/2602.0035v2.pdf
+
+ABSTRACT:
+This replacement restores the corrected Morse-Bott revision that was previously placed on another public record and adds an erratum delimiting its valid scope. The original manuscript used one symbol for both total loop holonomy and per-link angle, losing factors of L in the covariant symbol and metric. It also contained an incorrect sine identity, Fourier labels and normal-bundle statements that fail independently, and a determinant convention that double-counted the Faddeev-Popov factor. The replacement withdraws the claims that hypothesis (H1) was discharged and that (H-FACT) by itself replaced (H2); it records the resulting dependency loop with ai.viXra:2602.0033. What remains is a qualitative fixed-volume positivity statement, conditional quantitative implications under explicitly named hypotheses, and numerical evidence in the tested finite-volume case. The numerical checks printed in the historical revision are treated as author-reported evidence because the cited companion verifier is not present in the audited package. No unconditional continuum or infinite-volume mass-gap theorem is claimed.
+
+COMMENTS:
+21 pages. v2 adds a 7-page erratum and provenance sheet, then restores the 10-page corrected revision formerly misfiled as 2602.0052v2. No external verifier is claimed.
+
+CHANGE NOTE:
+Corrects angle/metric/Fourier statements and measure bookkeeping; withdraws discharge of H1 and replacement of H2; narrows surviving results to fixed-volume, conditional, or numerical status.
+
+IMMUTABLE GITHUB SOURCE LINK: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/816ebb9c7a46312b72b61b3c0136dbae338278f6/output/publication-audit/2602.0035-v2
+OWNER ORDER: 6 of 9. Submit only after 2602.0084v2 is public and verified.
+OWNER ACTION: DO NOT UPLOAD OR CLICK SUBMIT.

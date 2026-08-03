@@ -1,0 +1,25 @@
+STATUS: LISTO-LOCAL - INDEPENDENTLY AUDITED; OWNER CLICK REQUIRED
+AUDIT DATE: 2026-08-01
+PUBLICATION ACTION: REPLACE VERSION
+ORDER: 10 of 13
+PUBLICATION: ai.viXra.org:2512.0073
+CATEGORY: Quantum Physics
+TITLE: Finite-Dimensional Davies Interface Lemmas and TFIM Witness Tests for the Heisenberg Cut as a Resource Boundary
+AUTHOR: Lluis Eriksson
+
+ABSTRACT:
+SUPERSEDED BY AI.VIXRA:2601.0023V2. This replacement preserves public version 1 and adds an explicit correction and supersession record. The exact omega=0 statements and witness mechanism of version 1 stand unchanged, and Proposition 4.4 survives with a repaired proof. What is superseded is the false general plain-commutator Bohr decomposition, the suppression proof route using a false KMS submultiplicativity bound, the associated constants and claim of avoiding an inverse-smallest-eigenvalue factor, and the inline listing. ai.viXra:2601.0023v2 supplies the exact general decomposition, corrected c_sigma-dependent bounds, pinning identity, explicit hypotheses and verification suite. No thermodynamic, continuum or universal resource-boundary theorem follows from the finite tests. The preserved version 1 follows the two-page notice unchanged.
+
+COMMENTS:
+24 pages. v2 adds a two-page correction/supersession and claim map, then preserves the 22-page v1. Corrected technical source: ai.viXra:2601.0023v2.
+
+CHANGE NOTE:
+Adds an uppercase supersession notice in the PDF and abstract; preserves all omega=0 statements and the witness conclusion; supersedes the false general Bohr decomposition, suppression proof route, constants and inline listing; points to the corrected successor.
+
+FILE: artifacts/2512.0073v2-supersession.pdf
+CURRENT PUBLIC PDF: https://ai.vixra.org/pdf/2512.0073v1.pdf
+CURRENT PUBLIC SHA256: 6fcfe5275362944c31c4587dde38ff1784386c5a9377a64b92f8ea2edd196ff6
+SUCCESSOR: https://ai.vixra.org/abs/2601.0023
+SUCCESSOR PDF SHA256: 871fcced1cf481047c650541f2d1285388f8708a67bb3c32c6d997fce932a819
+IMMUTABLE GITHUB SOURCE LINK: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/4865621d51469295057aa3b340b19b33ceae79fd/output/publication-audit/2512.0073-v2
+OWNER ACTION: OWNER-ONLY REPLACEMENT FORM; VERIFY HASH AND LITERAL FIELDS BEFORE THE FINAL CLICK.

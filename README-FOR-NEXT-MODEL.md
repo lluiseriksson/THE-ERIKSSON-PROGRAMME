@@ -8,6 +8,25 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 `docs/SOURCE-CLAIM-AUDIT.md`, and the canonical machine-readable
 [`project-state.json`](project-state.json).)
 
+## Publication-audit hand-off — read before changing public status
+
+The 2026-07-31 ai.viXra census and retrospective claim audit are frozen under
+[`docs/publication-audit/`](docs/publication-audit/).  They cover 103 records and
+every one of the 102 available current PDFs / 922 pages. The owner reported the
+nine original replacement packages sent on 2026-08-01; because their public
+pages still showed the prior versions, they are `ENVIADO/PENDIENTE`. The four
+independently audited old-record notice replacements in owner order 10--13 were
+subsequently reported sent too, so all thirteen are now `ENVIADO/PENDIENTE`.
+Their PDF and abstract headlines are uppercase and their claim maps
+separate retained from superseded material. Twenty-six records remain
+`REVIEW-PENDING`. Do not infer publication from a
+local PDF, ZIP, green verifier or manifest.  Only the owner may use the replacement
+form, and only a fresh public-page/PDF download may move a record from
+`ENVIADO/PENDIENTE` to `PUBLICADO`.  Do not upload R29: it was rejected and never
+submitted; R30 is the audited replacement sent for `2602.0033v2`. Do not mutate
+the thirteen frozen submitted packages while they are pending, and do not upgrade
+`2607.0089v1` from `REVIEW-PENDING` merely because it is a named successor.
+
 ---
 
 ## Live snapshot (updated 2026-07-04; source checkpoint 2026-07-04)
