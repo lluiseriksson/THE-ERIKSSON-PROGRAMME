@@ -30487,3 +30487,30 @@ them is re-derivation, never grep.
 
 **ROLES.**  Fabricating desk; gates licensed; no self-audit; no score.
 v6 is the intended viXra v2 payload when the submitted v1 surfaces.
+
+## Addendum 594 (2026-08-03, **D-6 GATES PASS: 60/60 both modes at a3278ee6d
+— the spectral rung's fabrication is licensed; and the pending viXra v1 was
+cancelled by the owner, so the record converges on one future submission**)
+
+The G18-G20 run (fresh shallow clone, python only, both interpreter modes):
+**60 of 60 checks, exit 0 twice.**  G18: the strip identity is EXACT to
+1e-10 — dense linear algebra equals full-enumeration half-dressed strip
+sums on every registered (L, n, cell, observable).  G19: **specRatio of the
+normalised coupled kernel sits UNDER the Dobrushin window on every
+in-window cell, L = 2..8** — the target theorem's numeric shadow, measured;
+the out-of-window control was reported unjudged as registered.  G20: the
+Z-ratio converges at the per-extent rate with the constant fitted at n=1
+only (worst deviation printed 4.4e-16).
+
+Consequence under the charter: B-1 (the strip identity in Lean) may now be
+fabricated.  B-2 and B-3 wait their turn; the risk stays where the charter
+put it.
+
+Separately, the owner CANCELLED the pending viXra v1 (v5.5) through the
+cancellation form: there is now no in-flight submission, and the single
+future submission is the finished paper — the spectral theorem if B-1..B-3
+close, or v6 plus the recorded corpse if B-3 dies.  Either endpoint is a
+finish; only an unmeasured claim is not.
+
+**ROLES.**  Gates run by the fabricating desk before fabrication, as
+registered; no self-audit; no score.
