@@ -13,6 +13,8 @@ name: CI – Epistemic Honesty Enforcement
 #   1. zero `sorry` in the proof tree (comment-aware Python scanner);
 #   2. zero `axiom` declarations inside the verified-core source tree
 #      (including the clean `YangMills/RG` layer).
+#   3. no textual drift between CONTINUUM-C1's KP radius and the checked
+#      two-plaquette correlator hypothesis.
 
 on:
   push:
@@ -29,3 +31,6 @@ jobs:
       - name: Zero sorry (proof tree) + zero axioms (verified-core tree)
         # Comment-aware scanner; the core dirs/files are listed in the script.
         run: python scripts/check_consistency.py
+
+      - name: CONTINUUM-C1 checked-window canary
+        run: python scripts/continuum_c1_window_canary.py --self-test
