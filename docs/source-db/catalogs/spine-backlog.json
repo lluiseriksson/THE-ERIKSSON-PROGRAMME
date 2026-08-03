@@ -171,9 +171,10 @@
         "render_pdf_page_03_printed_279": "cmp102_variational/render/cmp102-page-03.png",
         "render_pdf_page_05_printed_281": "cmp102_variational/render/cmp102-page-05.png",
         "render_pdf_page_09_printed_285": "cmp102_variational/render/cmp102-page-09.png",
+        "render_pdf_page_14_printed_290": "cmp102_variational/render/cmp102-page-14.png",
         "render_pdf_page_23_printed_299": "cmp102_variational/render/cmp102-page-23.png"
       },
-      "artifact_note": "Primary PDF SHA-256 838056B5C578F81D058DEB3D394C66D934690E3B94C6CF2956534EC6D211B541 under YM_SOURCE_ROOT/runtime source cache."
+      "artifact_note": "Primary PDF SHA-256 838056B5C578F81D058DEB3D394C66D934690E3B94C6CF2956534EC6D211B541 under YM_SOURCE_ROOT/runtime source cache. Equation (80) render SHA-256 BA6FD739924166FE5A98DC3F931C9998EF596913922B33C6E216EF0446B62A7."
     }
   },
   "citations": [
@@ -710,27 +711,30 @@
       "key": "cmp102.variational-hessian-expansion-source-target",
       "source_id": "cmp102_variational",
       "locator": {
-        "printed_pages": "281, 285, 299",
-        "pdf_pages": "5, 9, 23",
+        "printed_pages": "281, 285, 290, 299",
+        "pdf_pages": "5, 9, 14, 23",
         "equations": [
           "22",
           "44",
           "45",
           "46",
+          "80",
           "142",
           "Theorem 1"
         ],
         "renders": [
           "render_pdf_page_05_printed_281",
           "render_pdf_page_09_printed_285",
+          "render_pdf_page_14_printed_290",
           "render_pdf_page_23_printed_299"
         ]
       },
       "status": "visual_confirmed",
-      "summary": "CMP102 gives the variational/action expansion route: Eq. (22) expands the gauge configuration, Eqs. (44)-(46) define and bound the linearizing operator H using CMP99 Theorem 3.12, and Eq. (142) displays the second-variation quadratic form and states its positivity.",
+      "summary": "CMP102 gives the variational/action expansion route: Eq. (22) expands the gauge configuration, Eqs. (44)-(46) define and bound the linearizing operator H using CMP99 Theorem 3.12, Eq. (80) defines the literal four-term higher-order potential, and Eq. (142) displays the second-variation quadratic form and states its positivity.",
       "extracted_claims": [
         "Equation (22) expands U_1 = exp(i eta A) to fourth order in A with remainder bounds.",
         "Equations (44)-(46) define the source-side linearizing operator H through the Delta/Q/R minimization problem and record the CMP99 Theorem 3.12 bounds used for H.",
+        "Equation (80) is V(A') = -<H D_3(A'),J> - <A',Delta_pi H D(A')> + (1/2)<H D(A'),Delta_pi H D(A')> + V_0(A' - H D(A')). Visual comparison confirms exact term order, signs, coefficient, and arguments in cmp102Eq80GlobalPotential; cmp102Eq80SourcePi4RealMixedPotential specializes only H to the reconstructed real mixed covariance.",
         "Equation (142) writes the transformed functional as A(U_k) plus one half of the quadratic form in the Hessian-like operator plus a remainder V(A').",
         "Immediately after Eq. (142), the paper states that the second-order differential at A' = 0 is given by that quadratic form and is positive definite."
       ],
@@ -760,6 +764,19 @@
           "source_verified": true
         },
         {
+          "id": "cmp102.eq80.literal-higher-order-potential",
+          "statement": "Literal four-term higher-order potential in the transformed field.",
+          "ascii": "V(A') = -<H D_3(A'),J> - <A',Delta_pi H D(A')> + (1/2)<H D(A'),Delta_pi H D(A')> + V_0(A' - H D(A'))",
+          "exactness": "literal_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "CMP102 Sect. C notation on printed page 290 / PDF page 14.",
+            "The source-to-Lean dictionary for H, Delta_pi, J, D, D_3, V_0 and A' remains a separate obligation."
+          ],
+          "conclusion": "The four-term algebraic core of YangMills.RG.cmp102Eq80GlobalPotential is source-verified; YangMills.RG.cmp102Eq80SourcePi4RealMixedPotential is its physical H-specialization.",
+          "source_verified": true
+        },
+        {
           "id": "cmp102.eq142.hessian-quadratic-expansion",
           "statement": "Quadratic expansion at the transformed critical configuration.",
           "ascii": "F(A') = A(U_k) + (1/2)<A', Delta_1 A'> + V(A'); the second-order differential at A'=0 is this positive-definite quadratic form",
@@ -784,11 +801,14 @@
         }
       ],
       "lean_targets": [
+        "YangMills.RG.cmp102Eq80GlobalPotential",
+        "YangMills.RG.cmp102Eq80SourcePi4RealMixedPotential",
         "YangMills.RG.physicalGaugeWilsonHessianIdentification",
         "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification",
         "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.wilson_hessian_identification"
       ],
       "use_for": [
+        "Citing the exact four-term source formula behind the CMP102 equation-(80) direct-potential lane.",
         "Citing the located source formulas for the Wilson/action Hessian expansion and H-operator bridge.",
         "Designing the missing theorem that identifies the source Hessian/inverse-propagator with the repository physical gauge Hessian/covariance convention."
       ],

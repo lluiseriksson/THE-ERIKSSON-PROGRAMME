@@ -45,6 +45,32 @@ physical positive-bond field used by CMP116 with the `PiLp 2` realization
 used by CMP102, proves coordinate equality, and proves both round trips.
 This bridge discharges no analytic boundary by itself.
 
+## Primary-source check of CMP102 equation (80)
+
+The acquired CMP102 primary PDF (`1104114383.pdf`, SHA-256
+`838056B5C578F81D058DEB3D394C66D934690E3B94C6CF2956534EC6D211B541`)
+was rendered at printed page 290 / PDF page 14.  The source prints
+
+```text
+V(A') = -<H D_3(A'),J> - <A',Delta_pi H D(A')>
+        + (1/2)<H D(A'),Delta_pi H D(A')>
+        + V_0(A' - H D(A')).
+```
+
+This agrees term for term with `cmp102Eq80GlobalPotential`: both negative
+signs, the coefficient `1/2`, the order of each pairing, and the shifted
+argument of `V₀` are identical.  The downstream
+`cmp102Eq80SourcePi4RealMixedPotential` does not alter this algebraic object;
+it specializes only `H` to the reconstructed real mixed covariance.  The
+render used for this check has SHA-256
+`BA6FD739924166FE5A98DC3F931C9998EF596913922B33C6E216EF0446B62A7A` in the
+private source cache.
+
+This source check validates the literal equation-(80) formula.  It does **not**
+identify the source symbols `H`, `Delta_pi`, `J`, `D`, `D_3`, `V_0`, and `A'`
+with their physical Lean realizations; that source-to-Lean dictionary remains
+open and must not be absorbed into this formula check.
+
 ## `CMP116Eq226PhysicalContourTermSource` field audit
 
 The source record is the first object that must be constructed physically.

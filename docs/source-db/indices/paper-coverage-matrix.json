@@ -106,7 +106,7 @@
       "importance": "high",
       "catalog_status": "structured-partial",
       "artifact_status": "local-pdf-renders-present",
-      "formula_status": "Action expansion Eq. (22), H-operator Eqs. (44)-(46), and positive Hessian expansion Eq. (142) visually confirmed; dictionary still open",
+      "formula_status": "Action expansion Eq. (22), H-operator Eqs. (44)-(46), literal four-term potential Eq. (80), and positive Hessian expansion Eq. (142) visually confirmed; Eq. (80) matches cmp102Eq80GlobalPotential exactly, while the physical symbol dictionary remains open",
       "next_action": "Map CMP102 A', Delta_1, H and U_k to the repository Wilson-Hessian and covariance objects, including sign and normalization.",
       "priority": 8,
       "short": "Balaban CMP102",
