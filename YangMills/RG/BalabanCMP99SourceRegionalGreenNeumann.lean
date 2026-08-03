@@ -11,6 +11,9 @@ import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 /-!
 # CMP99 Theorem 3.7: regional Green Neumann reconstruction
 
+PRE-VALIDATION: the fine-carrier partition interface below has not yet been
+materialized to `.olean`; its revised result is not compiler-verified.
+
 CMP99 equations (3.87)--(3.90) start from one ambient precision `Delta'`,
 compress it to the square regions, construct the local Dirichlet inverses,
 and patch them with a square partition satisfying `sum_Pi h_Pi^2 = 1`.
@@ -43,6 +46,14 @@ variable {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
 
 private abbrev CMP99RegionalAmbientZeroField :=
   GaugeZeroCochain 4 (M * (2 * Q)) g
+
+/-- A square partition evaluated on the literal fine carrier.  Unlike the
+coarse `CMP99SourceSquarePartition`, this interface does not pass through
+`blockSite`: the physical CMP95 cutoff varies inside a large block and its
+`M₀⁻¹` slope is the small factor in CMP99 (3.89). -/
+structure CMP99RegionalFineSquarePartition (M Q : ℕ) where
+  value : FinBox 4 Q → FinBox 4 (M * (2 * Q)) → ℝ
+  square_sum : ∀ x, ∑ cell : FinBox 4 Q, value cell x ^ 2 = 1
 
 /-- Dirichlet compression of one ambient precision to an arbitrary active
 square region. -/
@@ -115,19 +126,18 @@ noncomputable def cmp99RegionalExtendedDirichletGreen
 /-- The smooth square multiplier `h_Pi`, pulled from the large-block lattice
 to the ambient fine zero-cochain carrier. -/
 noncomputable def cmp99RegionalSquareMultiplier
-    (P : CMP99SourceSquarePartition Q) (cell : FinBox 4 Q) :
+    (P : CMP99RegionalFineSquarePartition M Q) (cell : FinBox 4 Q) :
     CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
       CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) :=
-  finitePiLpScalarMultiplier (g := g) fun x =>
-    P.value cell (blockSite M (2 * Q) x)
+  finitePiLpScalarMultiplier (g := g) fun x => P.value cell x
 
 /-- Geometric support condition: the square cutoff for `cell` vanishes
 outside the local Dirichlet region assigned to that cell. -/
 def CMP99RegionalSquarePartitionSupported
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q))) : Prop :=
   ∀ cell x,
-    P.value cell (blockSite M (2 * Q) x) ≠ 0 → x ∈ (Omega cell).sites
+    P.value cell x ≠ 0 → x ∈ (Omega cell).sites
 
 /-- Quantified collar separating every nonzero square cutoff from the
 complement of its Dirichlet region.  The number `finiteRange` is the physical
@@ -137,18 +147,18 @@ needed later to prove locality and smallness of the regional commutator
 defect.  The exact inverse-sandwich identities below use only support
 inclusion and therefore do not consume this premise. -/
 def CMP99RegionalSquarePartitionHasFiniteRangeMargin
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (finiteRange : ℕ) : Prop :=
   ∀ cell x y,
-    P.value cell (blockSite M (2 * Q) x) ≠ 0 →
+    P.value cell x ≠ 0 →
       y ∉ (Omega cell).sites →
         finiteRange < finBoxDist x y
 
 /-- A positive finite-range collar in particular implies ordinary support
 inside the corresponding Dirichlet region. -/
 theorem cmp99RegionalSquarePartitionSupported_of_finiteRangeMargin
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (finiteRange : ℕ)
     (hmargin :
@@ -162,7 +172,7 @@ theorem cmp99RegionalSquarePartitionSupported_of_finiteRangeMargin
 /-- The partition multiplier is unchanged by the characteristic projector of
 its supporting Dirichlet region. -/
 theorem cmp99RegionalSquareMultiplier_comp_regionProjector
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (hsupport : CMP99RegionalSquarePartitionSupported P Omega)
     (cell : FinBox 4 Q) :
@@ -178,7 +188,7 @@ theorem cmp99RegionalSquareMultiplier_comp_regionProjector
   · simp [cmp99RegionalSquareMultiplier, ContinuousLinearMap.comp_apply,
       finitePiLpScalarMultiplier_apply, extendZeroZeroCLM, restrictZeroCLM,
       hx]
-  · have hzero : P.value cell (blockSite M (2 * Q) x) = 0 := by
+  · have hzero : P.value cell x = 0 := by
       by_contra hne
       exact hx (hsupport cell x hne)
     simp [cmp99RegionalSquareMultiplier, ContinuousLinearMap.comp_apply,
@@ -188,7 +198,7 @@ theorem cmp99RegionalSquareMultiplier_comp_regionProjector
 /-- Exact local inverse sandwich `h_Pi Delta' G'_Pi h_Pi = h_Pi^2`.
 The Green is the internally generated Dirichlet inverse above. -/
 theorem cmp99RegionalSquareMultiplier_precision_green_eq_sq
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (hsupport : CMP99RegionalSquarePartitionSupported P Omega)
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
@@ -232,7 +242,7 @@ theorem cmp99RegionalSquareMultiplier_precision_green_eq_sq
 
 /-- Literal commutator `K(h_Pi) = h_Pi Delta' - Delta' h_Pi`. -/
 noncomputable def cmp99RegionalSquarePrecisionCommutator
-    (P : CMP99SourceSquarePartition Q) (cell : FinBox 4 Q)
+    (P : CMP99RegionalFineSquarePartition M Q) (cell : FinBox 4 Q)
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
       CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g)) :=
   (cmp99RegionalSquareMultiplier (M := M) (g := g) P cell).comp K -
@@ -240,7 +250,7 @@ noncomputable def cmp99RegionalSquarePrecisionCommutator
 
 /-- One local head `h_Pi G'_Pi h_Pi` in (3.87). -/
 noncomputable def cmp99RegionalGreenHead
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
       CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g))
@@ -251,7 +261,7 @@ noncomputable def cmp99RegionalGreenHead
 
 /-- One literal correction factor `K(h_Pi) G'_Pi h_Pi` in (3.88). -/
 noncomputable def cmp99RegionalGreenCorrection
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
       CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g))
@@ -263,7 +273,7 @@ noncomputable def cmp99RegionalGreenCorrection
 
 /-- The exact single-square identity behind (3.88). -/
 theorem comp_cmp99RegionalGreenHead_eq_sq_sub_correction
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (hsupport : CMP99RegionalSquarePartitionSupported P Omega)
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
@@ -287,7 +297,7 @@ theorem comp_cmp99RegionalGreenHead_eq_sq_sub_correction
 
 /-- The finite parametrix `G'_0` in (3.87). -/
 noncomputable def cmp99RegionalGreenParametrix
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
       CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g))
@@ -296,7 +306,7 @@ noncomputable def cmp99RegionalGreenParametrix
 
 /-- The finite defect `R'` in (3.88). -/
 noncomputable def cmp99RegionalGreenDefect
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
       CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g))
@@ -305,7 +315,7 @@ noncomputable def cmp99RegionalGreenDefect
 
 /-- Exact global parametrix identity `Delta' G'_0 = 1 - R'`. -/
 theorem comp_cmp99RegionalGreenParametrix_eq_id_sub_defect
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (hsupport : CMP99RegionalSquarePartitionSupported P Omega)
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
@@ -326,9 +336,20 @@ theorem comp_cmp99RegionalGreenParametrix_eq_id_sub_defect
           (cmp99RegionalSquareMultiplier (M := M) (g := g) P cell)) =
         ContinuousLinearMap.id ℝ
           (CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g)) := by
-    simpa [cmp99RegionalSquareMultiplier] using
-      (sum_cmp99SourceSquarePartition_multiplier_sq_eq_id
-        (g := g) P (blockSite M (2 * Q)))
+    apply ContinuousLinearMap.ext
+    intro f
+    apply PiLp.ext
+    intro x
+    simp only [ContinuousLinearMap.sum_apply, ContinuousLinearMap.comp_apply,
+      ContinuousLinearMap.id_apply]
+    rw [WithLp.ofLp_sum, Finset.sum_apply]
+    simp_rw [cmp99RegionalSquareMultiplier,
+      finitePiLpScalarMultiplier_apply, smul_smul]
+    rw [← Finset.sum_smul]
+    have hsquare := P.square_sum x
+    simp only [pow_two] at hsquare
+    rw [hsquare]
+    exact one_smul ℝ (f x)
   have hpartition_apply :
       (∑ cell : FinBox 4 Q,
         (cmp99RegionalSquareMultiplier (M := M) (g := g) P cell)
@@ -360,7 +381,7 @@ theorem comp_cmp99RegionalGreenParametrix_eq_id_sub_defect
 /-- The corrected regional parametrix, definitionally
 `G'_0 * sum_n (R')^n`. -/
 noncomputable def cmp99RegionalGreenNeumann
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
       CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g))
@@ -371,7 +392,7 @@ noncomputable def cmp99RegionalGreenNeumann
 
 /-- The corrected object is exactly the printed geometric series. -/
 theorem cmp99RegionalGreenNeumann_eq_parametrix_comp_tsum_pow
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
       CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g))
@@ -385,7 +406,7 @@ theorem cmp99RegionalGreenNeumann_eq_parametrix_comp_tsum_pow
 /-- Under the one visible contraction, the regional Neumann construction is
 an exact right inverse of the ambient precision. -/
 theorem comp_cmp99RegionalGreenNeumann_eq_id
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (hsupport : CMP99RegionalSquarePartitionSupported P Omega)
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
@@ -406,7 +427,7 @@ theorem comp_cmp99RegionalGreenNeumann_eq_id
 series is the canonical ambient Green.  No equality to a caller-supplied
 Green appears among the hypotheses. -/
 theorem cmp99RegionalGreenNeumann_eq_ambientGreen
-    (P : CMP99SourceSquarePartition Q)
+    (P : CMP99RegionalFineSquarePartition M Q)
     (Omega : FinBox 4 Q → ActiveGaugeRegion 4 (M * (2 * Q)))
     (hsupport : CMP99RegionalSquarePartitionSupported P Omega)
     (K : CMP99RegionalAmbientZeroField (M := M) (Q := Q) (g := g) →L[ℝ]
