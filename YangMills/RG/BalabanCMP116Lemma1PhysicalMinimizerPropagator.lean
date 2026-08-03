@@ -20,8 +20,11 @@ The literal physical minimizer is stored as the nested series
 This module flattens exactly those six coordinates into one dependent walk
 type and specializes the multiplicity-aware L1 certificate entrywise.  The
 sign of an omitted subset stays in the sigma-independent term, while every
-retained weakening occurrence stays in the multiplicity.  Radial summability
-from the certificate justifies each dependent `tsum` reindexing.
+retained weakening occurrence stays in the multiplicity.  The certificates
+remain scalar and entrywise, matching the physical source estimates; only the
+summable reindexing is lifted back to the finite matrix.  Thus no artificial
+matrix norm is inserted.  Radial summability from the certificates justifies
+each dependent `tsum` reindexing.
 
 Honest scope: the source still has to construct the certificate uniformly in
 the matrix entries.  In particular it must pay the finite powerset cost in
@@ -71,8 +74,26 @@ noncomputable def cmp116Lemma1PhysicalMinimizerWalkMultiplicity
     anchor walk.2.2.2.2.1 walk.2.2.1
       (Finset.univ \ walk.2.2.2.2.2)
 
-/-- Sigma-independent scalar entry of one expanded physical term.  The
+/-- Sigma-independent matrix of one expanded physical term.  The
 omitted-subset sign is part of the term, not of the positive base weight. -/
+noncomputable def cmp116Lemma1PhysicalMinimizerWalkTerm
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarsePhysicalOneCochain 4 (2 * Q) Nc →L[ℝ]
+        CoarsePhysicalOneCochain 4 (2 * Q) Nc)
+    (walk : CMP116Lemma1PhysicalMinimizerWalk M Q R) :
+    Matrix (FineCoord M Q Nc) (CoarseCoord Q Nc) ℂ :=
+  (-1 : ℂ) ^ walk.2.2.2.2.2.card •
+    cmp99SourcePi4ComplexFineHeadTailWordBase
+      K hc hmass hK baseCoarseCovariance
+      walk.2.2.2.2.1 walk.2.2.1
+
+/-- Scalar entry used by the physical source estimates. -/
 noncomputable def cmp116Lemma1PhysicalMinimizerWalkEntryTerm
     {M Q Nc R : ℕ}
     [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
@@ -85,14 +106,12 @@ noncomputable def cmp116Lemma1PhysicalMinimizerWalkEntryTerm
         CoarsePhysicalOneCochain 4 (2 * Q) Nc)
     (row : FineCoord M Q Nc) (col : CoarseCoord Q Nc)
     (walk : CMP116Lemma1PhysicalMinimizerWalk M Q R) : ℂ :=
-  (-1 : ℂ) ^ walk.2.2.2.2.2.card *
-    cmp99SourcePi4ComplexFineHeadTailWordBase
-      K hc hmass hK baseCoarseCovariance
-      walk.2.2.2.2.1 walk.2.2.1 row col
+  cmp116Lemma1PhysicalMinimizerWalkTerm
+    K hc hmass hK baseCoarseCovariance walk row col
 
-/-- One flattened multiplicity term is exactly the corresponding scalar
-entry of the literal omitted-subset summand. -/
-theorem cmp116Lemma1PhysicalMinimizerWalkEntryTerm_eq
+/-- One flattened multiplicity term is exactly the corresponding literal
+omitted-subset matrix summand. -/
+theorem cmp116Lemma1PhysicalMinimizerWalkTerm_eq
     {M Q Nc R : ℕ}
     [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
     [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
@@ -104,36 +123,23 @@ theorem cmp116Lemma1PhysicalMinimizerWalkEntryTerm_eq
       CoarsePhysicalOneCochain 4 (2 * Q) Nc →L[ℝ]
         CoarsePhysicalOneCochain 4 (2 * Q) Nc)
     (sigma : FinBox 4 (2 * Q) → ℂ)
-    (row : FineCoord M Q Nc) (col : CoarseCoord Q Nc)
     (walk : CMP116Lemma1PhysicalMinimizerWalk M Q R) :
     cmp116ComplexWeakeningMultiplicityMonomial
         (cmp116Lemma1PhysicalMinimizerWalkMultiplicity anchor walk) sigma •
-      cmp116Lemma1PhysicalMinimizerWalkEntryTerm
-        K hc hmass hK baseCoarseCovariance row col walk =
-      (((-1 : ℂ) ^ walk.2.2.2.2.2.card *
+      cmp116Lemma1PhysicalMinimizerWalkTerm
+        K hc hmass hK baseCoarseCovariance walk =
+      ((-1 : ℂ) ^ walk.2.2.2.2.2.card *
           cmp116ComplexWeakeningMultiplicityMonomial
             (cmp99SourcePi4ComplexFineHeadTailMultiplicity
               anchor walk.2.2.2.2.1 walk.2.2.1
                 (Finset.univ \ walk.2.2.2.2.2)) sigma) •
         cmp99SourcePi4ComplexFineHeadTailWordBase
           K hc hmass hK baseCoarseCovariance
-          walk.2.2.2.2.1 walk.2.2.1) row col := by
-  change
-    cmp116ComplexWeakeningMultiplicityMonomial
-          (cmp116Lemma1PhysicalMinimizerWalkMultiplicity anchor walk) sigma *
-        (((-1 : ℂ) ^ walk.2.2.2.2.2.card *
-          cmp99SourcePi4ComplexFineHeadTailWordBase
-            K hc hmass hK baseCoarseCovariance
-            walk.2.2.2.2.1 walk.2.2.1 row col) =
-      (((-1 : ℂ) ^ walk.2.2.2.2.2.card *
-          cmp116ComplexWeakeningMultiplicityMonomial
-            (cmp99SourcePi4ComplexFineHeadTailMultiplicity
-              anchor walk.2.2.2.2.1 walk.2.2.1
-                (Finset.univ \ walk.2.2.2.2.2)) sigma) *
-        cmp99SourcePi4ComplexFineHeadTailWordBase
-          K hc hmass hK baseCoarseCovariance
-          walk.2.2.2.2.1 walk.2.2.1 row col)
-  rfl
+          walk.2.2.2.2.1 walk.2.2.1 := by
+  ext row col
+  simp [cmp116Lemma1PhysicalMinimizerWalkMultiplicity,
+    cmp116Lemma1PhysicalMinimizerWalkTerm,
+    mul_assoc, mul_left_comm, mul_comm]
 
 /-- Matrix assembled entrywise from the multiplicity-aware L1 certificates
 on the flattened physical walk type. -/
@@ -161,9 +167,39 @@ noncomputable def cmp116Lemma1PhysicalMinimizerPropagator
     Matrix (FineCoord M Q Nc) (CoarseCoord Q Nc) ℂ :=
   fun row col ↦ (C row col).propagator sigma
 
+/-- Literal six-level nesting of the complete multiplicity expansion. -/
+noncomputable def cmp116Lemma1PhysicalMinimizerNestedMultiplicitySeries
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarsePhysicalOneCochain 4 (2 * Q) Nc →L[ℝ]
+        CoarsePhysicalOneCochain 4 (2 * Q) Nc)
+    (sigma : FinBox 4 (2 * Q) → ℂ) :
+    Matrix (FineCoord M Q Nc) (CoarseCoord Q Nc) ℂ :=
+  ∑' neumannLength : ℕ,
+    ∑' layerWord : Fin neumannLength → ℕ,
+      ∑ choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord,
+        ∑' headLength : ℕ,
+          ∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
+            ∑ omitted ∈
+                (Finset.univ : Finset (Fin neumannLength)).powerset,
+              let walk : CMP116Lemma1PhysicalMinimizerWalk M Q R :=
+                ⟨neumannLength, layerWord, choice,
+                  headLength, head, omitted⟩
+              cmp116ComplexWeakeningMultiplicityMonomial
+                  (cmp116Lemma1PhysicalMinimizerWalkMultiplicity anchor walk)
+                  sigma •
+                cmp116Lemma1PhysicalMinimizerWalkTerm
+                  K hc hmass hK baseCoarseCovariance walk
+
 /-- The flattened physical L1 propagator is exactly the complete nested
-multiplicity series, entry by entry.  Every dependent reindexing is justified
-by the radial summability already carried by the certificate. -/
+multiplicity series.  Scalar source certificates are lifted to matrix
+summability only for this reindexing; their norm contract is unchanged. -/
 theorem cmp116Lemma1PhysicalMinimizerPropagator_eq_nestedMultiplicitySeries
     {M Q Nc R : ℕ}
     [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
@@ -188,134 +224,71 @@ theorem cmp116Lemma1PhysicalMinimizerPropagator_eq_nestedMultiplicitySeries
     (hsigma : sigma ∈ cmp116Lemma1WeakeningPolydisc kappa1) :
     cmp116Lemma1PhysicalMinimizerPropagator
         anchor K hc hmass hK baseCoarseCovariance C sigma =
-      ∑' neumannLength : ℕ,
-        ∑' layerWord : Fin neumannLength → ℕ,
-          ∑ choice : CMP99SourcePi4CoarseFineWalkChoice
-              M Q R layerWord,
-            ∑' headLength : ℕ,
-              ∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
-                ∑ omitted ∈
-                    (Finset.univ : Finset (Fin neumannLength)).powerset,
-                  (((-1 : ℂ) ^ omitted.card *
-                    cmp116ComplexWeakeningMultiplicityMonomial
-                      (cmp99SourcePi4ComplexFineHeadTailMultiplicity
-                        anchor head choice
-                          (Finset.univ \ omitted)) sigma) •
-                    cmp99SourcePi4ComplexFineHeadTailWordBase
-                      K hc hmass hK baseCoarseCovariance
-                      head choice := by
+      cmp116Lemma1PhysicalMinimizerNestedMultiplicitySeries
+        anchor K hc hmass hK baseCoarseCovariance sigma := by
   classical
-  ext row col
-  let f : CMP116Lemma1PhysicalMinimizerWalk M Q R → ℂ := fun walk ↦
+  let f : CMP116Lemma1PhysicalMinimizerWalk M Q R →
+      Matrix (FineCoord M Q Nc) (CoarseCoord Q Nc) ℂ := fun walk ↦
     cmp116ComplexWeakeningMultiplicityMonomial
         (cmp116Lemma1PhysicalMinimizerWalkMultiplicity anchor walk) sigma •
-      cmp116Lemma1PhysicalMinimizerWalkEntryTerm
-        K hc hmass hK baseCoarseCovariance row col walk
-  have hflat : Summable f := by
+      cmp116Lemma1PhysicalMinimizerWalkTerm
+        K hc hmass hK baseCoarseCovariance walk
+  have hflatEntry : ∀ row col, Summable fun walk ↦ f walk row col := by
+    intro row col
     exact summable_cmp116ComplexWeakeningMultiplicitySeries
       (cmp116Lemma1PhysicalMinimizerWalkMultiplicity anchor)
       (cmp116Lemma1PhysicalMinimizerWalkEntryTerm
         K hc hmass hK baseCoarseCovariance row col)
       sigma (Real.exp kappa1) (fun _walk d _hd ↦ hsigma d)
       (C row col).summable_radialMajorant
-  calc
-    cmp116Lemma1PhysicalMinimizerPropagator
-          anchor K hc hmass hK baseCoarseCovariance C sigma row col =
+  have hflat : Summable f :=
+    Pi.summable.mpr fun row ↦ Pi.summable.mpr fun col ↦ hflatEntry row col
+  have hpropagator :
+      cmp116Lemma1PhysicalMinimizerPropagator
+          anchor K hc hmass hK baseCoarseCovariance C sigma =
         ∑' walk : CMP116Lemma1PhysicalMinimizerWalk M Q R, f walk := by
-      rfl
-    _ = ∑' neumannLength : ℕ,
-        ∑' layerWord : Fin neumannLength → ℕ,
-          ∑' choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord,
-            ∑' headLength : ℕ,
-              ∑' head : CMP99SourcePi4FineWalkIndex M Q R headLength,
-                ∑' omitted : Finset (Fin neumannLength),
-                  f ⟨neumannLength, layerWord, choice,
-                    headLength, head, omitted⟩ := by
-      rw [hflat.tsum_sigma]
-      apply tsum_congr
-      intro neumannLength
-      have h1 := hflat.sigma neumannLength
-      rw [h1.tsum_sigma]
-      apply tsum_congr
-      intro layerWord
-      have h2 := h1.sigma layerWord
-      rw [h2.tsum_sigma]
-      apply tsum_congr
-      intro choice
-      have h3 := h2.sigma choice
-      rw [h3.tsum_sigma]
-      apply tsum_congr
-      intro headLength
-      have h4 := h3.sigma headLength
-      rw [h4.tsum_sigma]
-    _ = ∑' neumannLength : ℕ,
-        ∑' layerWord : Fin neumannLength → ℕ,
-          ∑ choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord,
-            ∑' headLength : ℕ,
-              ∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
-                ∑ omitted : Finset (Fin neumannLength),
-                  f ⟨neumannLength, layerWord, choice,
-                    headLength, head, omitted⟩ := by
-      apply tsum_congr
-      intro neumannLength
-      apply tsum_congr
-      intro layerWord
-      rw [tsum_fintype]
-      apply Finset.sum_congr rfl
-      intro choice _hchoice
-      apply tsum_congr
-      intro headLength
-      rw [tsum_fintype]
-      apply Finset.sum_congr rfl
-      intro head _hhead
-      rw [tsum_fintype]
-    _ = ∑' neumannLength : ℕ,
-        ∑' layerWord : Fin neumannLength → ℕ,
-          ∑ choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord,
-            ∑' headLength : ℕ,
-              ∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
-                ∑ omitted ∈
-                    (Finset.univ : Finset (Fin neumannLength)).powerset,
-                  (((-1 : ℂ) ^ omitted.card *
-                    cmp116ComplexWeakeningMultiplicityMonomial
-                      (cmp99SourcePi4ComplexFineHeadTailMultiplicity
-                        anchor head choice
-                          (Finset.univ \ omitted)) sigma) •
-                    cmp99SourcePi4ComplexFineHeadTailWordBase
-                      K hc hmass hK baseCoarseCovariance
-                      head choice row col := by
-      apply tsum_congr
-      intro neumannLength
-      apply tsum_congr
-      intro layerWord
-      apply Finset.sum_congr rfl
-      intro choice _hchoice
-      apply tsum_congr
-      intro headLength
-      apply Finset.sum_congr rfl
-      intro head _hhead
-      rw [Finset.powerset_univ]
-      apply Finset.sum_congr rfl
-      intro omitted _homitted
-      exact cmp116Lemma1PhysicalMinimizerWalkEntryTerm_eq
-        anchor K hc hmass hK baseCoarseCovariance sigma row col
-          ⟨neumannLength, layerWord, choice, headLength, head, omitted⟩
-    _ = (∑' neumannLength : ℕ,
-        ∑' layerWord : Fin neumannLength → ℕ,
-          ∑ choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord,
-            ∑' headLength : ℕ,
-              ∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
-                ∑ omitted ∈
-                    (Finset.univ : Finset (Fin neumannLength)).powerset,
-                  (((-1 : ℂ) ^ omitted.card *
-                    cmp116ComplexWeakeningMultiplicityMonomial
-                      (cmp99SourcePi4ComplexFineHeadTailMultiplicity
-                        anchor head choice
-                          (Finset.univ \ omitted)) sigma) •
-                    cmp99SourcePi4ComplexFineHeadTailWordBase
-                      K hc hmass hK baseCoarseCovariance
-                      head choice) row col := by
-      simp only [Matrix.tsum_apply, Matrix.sum_apply]
+    funext row col
+    calc
+      cmp116Lemma1PhysicalMinimizerPropagator
+            anchor K hc hmass hK baseCoarseCovariance C sigma row col =
+          ∑' walk : CMP116Lemma1PhysicalMinimizerWalk M Q R,
+            f walk row col := by
+        rfl
+      _ = (∑' walk : CMP116Lemma1PhysicalMinimizerWalk M Q R,
+          f walk) row col := by
+        symm
+        calc
+          (∑' walk : CMP116Lemma1PhysicalMinimizerWalk M Q R,
+              f walk) row col =
+              (∑' walk : CMP116Lemma1PhysicalMinimizerWalk M Q R,
+                f walk row) col := by
+            exact congrFun (tsum_apply (x := row) hflat) col
+          _ = ∑' walk : CMP116Lemma1PhysicalMinimizerWalk M Q R,
+                f walk row col :=
+            tsum_apply ((Pi.summable.mp hflat) row)
+  rw [hpropagator]
+  rw [hflat.tsum_sigma]
+  apply tsum_congr
+  intro neumannLength
+  have h1 := hflat.sigma neumannLength
+  rw [h1.tsum_sigma]
+  apply tsum_congr
+  intro layerWord
+  have h2 := h1.sigma layerWord
+  rw [h2.tsum_sigma]
+  apply tsum_congr
+  intro choice
+  have h3 := h2.sigma choice
+  rw [h3.tsum_sigma]
+  apply tsum_congr
+  intro headLength
+  have h4 := h3.sigma headLength
+  rw [h4.tsum_sigma]
+  apply tsum_congr
+  intro head
+  rw [tsum_fintype]
+  rw [Finset.powerset_univ]
+  rfl
 
 end
 

@@ -12,5 +12,5 @@ PRE-VALIDATION: this source is present, its `.olean` has not yet been
 materialized, and its results have not yet been verified by the Lean compiler.
 -/
 
-#print axioms YangMills.RG.cmp116Lemma1PhysicalMinimizerWalkEntryTerm_eq
+#print axioms YangMills.RG.cmp116Lemma1PhysicalMinimizerWalkTerm_eq
 #print axioms YangMills.RG.cmp116Lemma1PhysicalMinimizerPropagator_eq_nestedMultiplicitySeries
