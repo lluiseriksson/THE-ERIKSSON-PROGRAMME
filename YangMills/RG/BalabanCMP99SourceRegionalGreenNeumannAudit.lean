@@ -3,8 +3,8 @@ import YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
 /-!
 # Axiom audit for the CMP99 regional Green Neumann reconstruction
 
-PRE-VALIDATION: this audit source is present, its `.olean` has not yet been
-materialized, and the declarations below are not compiler-verified.
+This audit was materialized together with the source module in the pinned
+fresh-Colab gate recorded in the verification ledger.
 -/
 
 #print axioms YangMills.RG.isCoerciveCLM_cmp99RegionalDirichletPrecision

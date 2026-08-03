@@ -2281,3 +2281,15 @@ smallness registry therefore carries it as a separate fifteenth target; its
 rational witness proves simultaneous compatibility only, not physical
 attainment.  Neither addition changes the live `18/41` numerator or produces
 a `TermSource` inhabitant.
+
+Both gates are now compiler-verified at source checkpoint
+`efc23a559b71c29a87c50b562506d984d277de7f` in one fresh Colab Pro+
+CPU/high-RAM clone.  The regional module completed 8,507 jobs and its eleven
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The joint smallness module, including the independent regional-defect target,
+completed 8,755 jobs and all eight audited declarations use the same exact
+axiom set.  This verifies the regional inverse algebra, the explicit
+finite-range collar contract, and simultaneous scalar compatibility.  It does
+not prove the physical locality estimate or that the physical regional defect
+attains the fifteenth target; the live counters therefore remain `18/41` and
+`TermSource = 0`.

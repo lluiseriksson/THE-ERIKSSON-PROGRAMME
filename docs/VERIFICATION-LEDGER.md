@@ -26883,3 +26883,43 @@ the literal nested physical `H(s)` series, prove coordinatewise holomorphy,
 or construct `H0(s)`.  Consequently no `PreEq136` field is discharged, the
 live numerator remains exactly 18/41, and no `TermSource` inhabitant is
 produced.
+
+## Addendum 543 (2026-08-03, **regional Green reconstruction and fifteenth scalar gate GREEN**)
+
+`BalabanCMP99SourceRegionalGreenNeumann.lean` and the updated
+`BalabanCMP116CenteredConditionedSmallnessCompatibility.lean` were replayed
+with their focused audits in one fresh Colab Pro+ CPU/high-RAM clone from
+source checkpoint `efc23a559b71c29a87c50b562506d984d277de7f`.  The runtime
+opened at 2026-08-03 12:17:10 UTC and auto-disconnected immediately after the
+terminal result at 13:10:10 UTC.
+
+The official Lean `v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`, and the manifest was unchanged.
+The regional focal exited zero with `Build completed successfully (8507
+jobs).` after 1,660.652 seconds.  Its audit exited zero after 17.196 seconds;
+all eleven declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`.  The joint-smallness focal exited
+zero with `Build completed successfully (8755 jobs).` after 1,357.209
+seconds.  Its audit exited zero after 11.173 seconds; all eight declarations
+depend exactly on the same axiom set.  The gate recorded `FINAL_STATUS=PASS`.
+The evidence JSON has SHA-256
+`84ea33b94f5225fb1107234c55caf20ce60f6a365ae42789e6e3dbdf51d76252`,
+and the complete transcript has SHA-256
+`18663a48b7aa03f2996eaf341c786120189ba44810001bf64bda42bb4b30aec6`.
+
+The verified regional algebra constructs every compressed Dirichlet inverse,
+the square-partition parametrix, the regional defect and its Neumann inverse,
+and identifies the resulting operator with the ambient Green operator by
+inverse uniqueness.  The geometric interface now distinguishes ordinary
+support inclusion from the explicit finite-range collar required by the
+future locality estimate.  Separately, the joint regime carries
+`norm R' < 1` as its fifteenth scalar target rather than conflating it with
+the patched one-cochain defect.
+
+This brick proves simultaneous compatibility of that target with the previous
+fourteen windows, not physical attainment of the regional defect bound or the
+collar estimate.  It therefore discharges no additional `PreEq136` field: the
+live numerator remains exactly `18/41`, and no `TermSource` inhabitant is
+produced.

@@ -11,9 +11,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 /-!
 # CMP99 Theorem 3.7: regional Green Neumann reconstruction
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and none of the declarations below is compiler-verified.
-
 CMP99 equations (3.87)--(3.90) start from one ambient precision `Delta'`,
 compress it to the square regions, construct the local Dirichlet inverses,
 and patch them with a square partition satisfying `sum_Pi h_Pi^2 = 1`.
