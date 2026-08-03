@@ -27,10 +27,15 @@ exchange of the sigma sum with the length/fibre sums uses the radial
 summability already carried by each scalar L1 certificate; no conditionally
 convergent rearrangement is made.
 
-Honest scope: this is the physical `G(s)` bridge only.  The current literal
-`H(s)` expansion multiplies several sigma-dependent fine-walk factors, so it
-does not factor through the square-free active `Finset` used here without an
-additional multiplicity-aware expansion.  No `H0(s)` producer is supplied.
+Honest scope: this is the physical `G(s)` bridge only.  CMP116 defines the
+printed `H(s)` separately as a generalized-random-walk series, with one
+weakening coordinate for each *distinct* cube meeting the union of the
+walk's localization domains.  Thus its monomials are squarefree, exactly as
+in generic L1.  The repository's algebraic matrix
+`C(s) Q* (Q C(s) Q*)^-1` instead produces repeated powers when expanded and
+is identified with the physical minimizer only at `s = 1`; it is not the
+printed `H(s)` away from full coupling.  A direct physical walk producer for
+the printed rectangular `H(s)`, and any `H0(s)` producer, remain absent.
 -/
 
 namespace YangMills.RG

@@ -1857,19 +1857,18 @@ dependent reindexing
 `Sigma length, CMP99SourcePi4FineWalkIndex ... length` and a justified
 `tsum_sigma` exchange.
 
-The current literal minimizer `H(s)` has a stricter obstruction.  The theorem
+The repository's algebraic minimizer family has a stricter obstruction.  The theorem
 `cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_eq_literalFineWalkSeries_of_source`
 expands it into a head fine-walk term times an ordered word of coarse-defect
 fine-walk terms.  Every factor depends on `sigma`; overlapping active
 carriers can therefore contribute repeated powers of one coordinate.  The
 existing `cmp99SourcePi4FineHeadTailActive` records only the union needed for
-locality and does not prove a factorization through the square-free `Finset`
-monomial used by generic L1.  Consequently the physical `H(s)` bridge is not
-mere reindexing: it needs either a multiplicity-aware monomial index (for
-example a finitely supported natural multiplicity) plus the signed defect
-expansion, or a source theorem proving the relevant carriers disjoint.  No
-such disjointness theorem is present.  `H0(s)` still has no literal producer.
-This audit changes no counter.
+locality and does not turn those repeated powers into the squarefree `Finset`
+monomial used by generic L1.  This historical audit originally proposed a
+multiplicity index.  The primary-source correction recorded below supersedes
+that proposal: the printed `H(s)` is a different, directly weakened
+generalized-walk series and must be constructed from its union carrier.
+`H0(s)` still has no literal producer.  This audit changes no counter.
 
 The physical covariance specialization is now compiler-verified.  For every
 matrix entry it instantiates the generic L1 certificate with the dependent
@@ -1881,8 +1880,9 @@ physical `G(s)`.  A single `treeLength`, `baseWeight`, and scalar budget is
 shared by every row/column pair before `s` is quantified, so this does not
 hide an entry-dependent or post-selected polydisc budget.  The result is an
 exact entrywise `G(s)` bridge; scalarization alone does not provide a
-volume-uniform operator-norm estimate.  The multiplicity-aware `H(s)`
-expansion and a literal `H0(s)` producer remain separate open inputs.  One
+volume-uniform operator-norm estimate.  The direct squarefree generalized-walk
+producer for the printed `H(s)` and a literal `H0(s)` producer remain separate
+open inputs.  One
 fresh Colab Pro+ CPU/high-RAM clone at source checkpoint
 `d21ba0ecde1fcffaf4e1c2060eb35823d12384f6` completed the focal build with
 8,491 jobs and the three-declaration audit with exactly the standard axiom
@@ -1908,12 +1908,13 @@ and printed ten declarations, all with exactly
 `FINAL_STATUS=PASS`; its downloaded evidence archive has SHA-256
 `132e8766327fa5e1a05aa5d1b7e190e7e0ebedc91330901d75c2c88e3c9b4bdd`.
 
-This closes the exact finite-word algebra only.  The remaining physical
-`H(s)` bridge must reindex the whole nested literal series and must feed a
-multiplicity degree, rather than a square-free carrier cardinality, into the
-short/long-walk estimate of generic L1.  It supplies neither that analytic
-degree bound nor a literal `H0(s)` producer.  Therefore the live producer
-count remains `18/41` and no `TermSource` inhabitant is produced.
+This closes the exact finite-word algebra only.  This historical next-step
+description is superseded by the primary-source correction below: total
+multiplicity degree controls the auxiliary algebraic family, not the printed
+squarefree `H(s)`.  The latter must use the cardinality of the distinct
+visited carrier in generic L1.  The module supplies neither that direct
+physical walk producer nor a literal `H0(s)` producer.  Therefore the live
+producer count remains `18/41` and no `TermSource` inhabitant is produced.
 
 The finite identity is now lifted through the complete literal physical
 `H(s)` series.  The theorem
@@ -2032,3 +2033,27 @@ visited-carrier algebra.  The next physical brick is therefore a direct
 identification of its head readout with the printed `H(s)`, followed by the
 tree-length estimate for the distinct visited carrier.  No live producer
 counter moves at this correction.
+
+The acceptance gate for that next brick is now fixed before any further
+flattening.  It must construct, entrywise, a series of the form
+
+`sum_omega (prod_{Delta in active(omega)} s(Delta)) * term(omega)`,
+
+where `active(omega)` is literally the `Finset` union of the localization
+carriers of the CMP99 generalized walk.  The family `s |-> H(s)` may not be
+an input.  The admissible source inputs are instead the sigma-independent
+walk term, the per-walk CMP99 estimate, the long-walk geometry in
+`active(omega).card`, the summable base-weight budget, and the exact
+full-coupling reconstruction `sum_omega term(omega) = H`.  Generic L1 then
+constructs the weakened family internally.  If the visited-state transfer
+presentation is used computationally, its rectangular head/readout must be
+proved equal to this same squarefree `tsum`; it does not define a second
+notion of weakening.
+
+In particular, neither total letter degree nor the multiplicity expansion of
+`C(s) Q* (Q C(s) Q*)^-1` may enter the physical dictionary.  Repeated
+occurrences of one cube remain visible only in that auxiliary algebraic
+family.  This gate leaves one genuinely source-cited input open: the concrete
+CMP99 rectangular generalized-walk reconstruction of the physical minimizer.
+It is narrower than accepting an arbitrary weakened `H(s)` family and makes
+the missing source content explicit.
