@@ -59,7 +59,7 @@ def activeCarriers {Delta : Type w}
   | .cons head tail => factorActive head :: tail.activeCarriers factorActive
 
 /-- Squarefree active carrier of a typed walk. -/
-def active {Delta : Type w}
+def active {Delta : Type w} [DecidableEq Delta]
     (factorActive : ∀ {i j}, Hom i j → Finset Delta)
     {i j : ι} (walk : DependentArrowWalk Hom i j) : Finset Delta :=
   (walk.activeCarriers factorActive).foldr (· ∪ ·) ∅
@@ -76,12 +76,12 @@ def active {Delta : Type w}
       factorActive head :: tail.activeCarriers factorActive :=
   rfl
 
-@[simp] theorem active_nil {Delta : Type w}
+@[simp] theorem active_nil {Delta : Type w} [DecidableEq Delta]
     (factorActive : ∀ {i j}, Hom i j → Finset Delta) (i : ι) :
     (DependentArrowWalk.nil (Hom := Hom) i).active factorActive = ∅ :=
   rfl
 
-@[simp] theorem active_cons {Delta : Type w}
+@[simp] theorem active_cons {Delta : Type w} [DecidableEq Delta]
     (factorActive : ∀ {i j}, Hom i j → Finset Delta)
     {i j k : ι} (head : Hom i j) (tail : DependentArrowWalk Hom j k) :
     (DependentArrowWalk.cons head tail).active factorActive =

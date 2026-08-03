@@ -2100,3 +2100,23 @@ remaining named input is consequently the **dependent**, complete-alphabet
 identity `sum_walk walkTerm = physicalH`, not the fixed-carrier certificate's
 reconstruction field.  No free weakened family is accepted, and no live
 producer counter moves at this correction.
+
+There is one further endpoint gate that must remain visible.  The generic
+dependent certificate fixes both its source and target, whereas the current
+displayed Section-C generator returns
+`Sigma target, DependentArrowWalk ... source target`.  A physical
+specialization must therefore do one of two literal things: prove that the
+complete source alphabet forces the common terminal carrier required by the
+physical operator, or supply the printed rectangular endpoint readout and
+prove that summing its readouts over the sigma target gives the same
+`physicalH`.  Silently forgetting the sigma target is not an admissible
+dictionary step.  This is an endpoint/type obligation inside the exact
+(3.107) reconstruction, not a second analytic hypothesis and not a terminal
+producer.
+
+The primary CMP99 paper itself is not an acquisition blocker here: equation
+(3.107) is visually confirmed on printed page 416 / PDF page 28 and the
+source-db records CMP99 as `visual_confirmed`.  The remaining debt is the
+source-to-Lean reconstruction just described--in particular the exhaustive
+typed atom/parser and endpoint readout hidden behind the printed "etc."--not
+the absence of the paper.
