@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP95PeriodicSquareTorusSlope
+import YangMills.RG.BlockBasepointDistance
 
 /-!
 # The linear slope of the periodized CMP95 cutoff
@@ -120,10 +121,9 @@ theorem norm_cmp95PeriodicCutoff_sub_le
         have hk' : ‖(vy - vx) k‖ ≤ P.derivBound * ‖y - x‖ := by
           simpa only [vy, vx, Pi.sub_apply, PiLp.toLp_apply,
             sub_sub_sub_cancel_right] using hk
-        exact pow_le_pow_left₀ (norm_nonneg _) hk' 2
+        exact hk'
       _ = (W.card : ℝ) * (P.derivBound * ‖y - x‖) ^ 2 := by
-        rw [Fintype.card_coe]
-        simp
+        simp [Fintype.card_coe]
       _ ≤ 4 * (P.derivBound * ‖y - x‖) ^ 2 := by
         gcongr
         exact_mod_cast hcard
@@ -148,6 +148,143 @@ theorem norm_cmp95RescaledPeriodicCutoff_sub_le
       rw [norm_div, show ‖M0‖ = M0 by
         simpa [Real.norm_eq_abs] using abs_of_pos hM0]
       ring
+
+/-- The rescaled cutoff has the literal physical period `M0 * Q`. -/
+theorem cmp95RescaledPeriodicCutoff_add_period
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (M0 : ℝ) (hM0 : M0 ≠ 0) (cell : Fin Q) (t : ℝ) :
+    cmp95RescaledPeriodicCutoff P Q M0 cell (t + M0 * Q) =
+      cmp95RescaledPeriodicCutoff P Q M0 cell t := by
+  unfold cmp95RescaledPeriodicCutoff
+  rw [show (t + M0 * Q) / M0 = t / M0 + Q by field_simp]
+  unfold cmp95PeriodicCutoff
+  rw [cmp95PeriodicSquareWeight_add_period]
+
+/-- The tensor cutoff is the product of its nonnegative one-dimensional
+cutoffs.  This avoids differentiating a square root at zero. -/
+theorem cmp95RescaledPeriodicTensorCutoff_eq_prod
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (M0 : ℝ) (cell : FinBox 4 Q) (x : Fin 4 → ℝ) :
+    cmp95RescaledPeriodicTensorCutoff P Q M0 cell x =
+      ∏ i, cmp95RescaledPeriodicCutoff P Q M0 (cell i) (x i) := by
+  classical
+  unfold cmp95RescaledPeriodicTensorCutoff
+    cmp95RescaledPeriodicTensorSquareWeight
+  have hsqrt :
+      Real.sqrt
+          (∏ i : Fin 4,
+            cmp95RescaledPeriodicSquareWeight P Q M0 (cell i) (x i)) =
+        ∏ i : Fin 4,
+          Real.sqrt
+            (cmp95RescaledPeriodicSquareWeight P Q M0 (cell i) (x i)) := by
+    simpa using Real.sqrt_prod (Finset.univ : Finset (Fin 4))
+      (fun i _ => cmp95RescaledPeriodicSquareWeight_nonneg
+        P Q M0 (cell i) (x i))
+  rw [hsqrt]
+  apply Finset.prod_congr rfl
+  intro i _hi
+  rfl
+
+/-- Boundary-safe tensor cutoff slope on the physical four-torus.  The
+constant `8` is `4` coordinates times the one-dimensional constant `2`; no
+new overlap parameter is introduced. -/
+theorem norm_cmp95RescaledPeriodicTensorCutoff_finBox_sub_le
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M0 Q : ℕ) [NeZero M0] [NeZero Q]
+    (cell : FinBox 4 Q) (offset : Fin 4 → ℝ)
+    (x y : FinBox 4 (M0 * Q)) :
+    ‖cmp95RescaledPeriodicTensorCutoff P Q M0 cell
+          (fun i => (y i).val + offset i) -
+        cmp95RescaledPeriodicTensorCutoff P Q M0 cell
+          (fun i => (x i).val + offset i)‖ ≤
+      ((8 * P.derivBound) / M0) * (finBoxDist x y : ℝ) := by
+  classical
+  rw [cmp95RescaledPeriodicTensorCutoff_eq_prod,
+    cmp95RescaledPeriodicTensorCutoff_eq_prod]
+  calc
+    ‖∏ i, cmp95RescaledPeriodicCutoff P Q M0 (cell i)
+          ((y i).val + offset i) -
+        ∏ i, cmp95RescaledPeriodicCutoff P Q M0 (cell i)
+          ((x i).val + offset i)‖ ≤
+      ∑ i, ‖cmp95RescaledPeriodicCutoff P Q M0 (cell i)
+          ((y i).val + offset i) -
+        cmp95RescaledPeriodicCutoff P Q M0 (cell i)
+          ((x i).val + offset i)‖ := by
+      apply CMP95SourceSmoothPartitionProfile.norm_prod_sub_prod_le_sum_norm_sub
+        Finset.univ
+      · intro i _
+        exact norm_cmp95PeriodicCutoff_le_one P Q (cell i)
+          (((y i).val + offset i) / M0)
+      · intro i _
+        exact norm_cmp95PeriodicCutoff_le_one P Q (cell i)
+          (((x i).val + offset i) / M0)
+    _ ≤ ∑ _i : Fin 4,
+        ((2 * P.derivBound) / M0) * (finBoxDist x y : ℝ) := by
+      gcongr with i
+      let f : ℝ → ℝ := fun t =>
+        cmp95RescaledPeriodicCutoff P Q M0 (cell i) (t + offset i)
+      have hi : ‖f (y i).val - f (x i).val‖ ≤
+          ((2 * P.derivBound) / M0) *
+            (finTorusDist (x i) (y i) : ℝ) := by
+        apply norm_periodic_fin_value_sub_le_finTorusDist
+        · exact div_nonneg (mul_nonneg (by norm_num) P.derivBound_nonneg)
+            (Nat.cast_nonneg M0)
+        · intro t
+          dsimp [f]
+          rw [show t + (M0 * Q : ℕ) + offset i =
+              (t + offset i) + (M0 : ℝ) * Q by push_cast; ring]
+          exact cmp95RescaledPeriodicCutoff_add_period
+            P Q M0 (by exact_mod_cast NeZero.ne M0) (cell i) (t + offset i)
+        · intro u v
+          dsimp [f]
+          simpa only [add_sub_add_right_eq_sub] using
+            norm_cmp95RescaledPeriodicCutoff_sub_le P Q
+              (by exact_mod_cast NeZero.pos M0) (cell i)
+              (u + offset i) (v + offset i)
+      exact hi.trans
+        (mul_le_mul_of_nonneg_left
+          (Nat.cast_le.2 (finTorusDist_le_finBoxDist x y i))
+          (div_nonneg (mul_nonneg (by norm_num) P.derivBound_nonneg)
+            (Nat.cast_nonneg M0)))
+    _ = ((8 * P.derivBound) / M0) * (finBoxDist x y : ℝ) := by
+      simp
+      ring
+
+/-- Boundary-safe generated fine-lattice cutoff slope.  The scale and torus
+side are generated internally, so the physical `M0⁻¹` gain cannot be lost by
+passing through a blockwise-constant pullback. -/
+theorem norm_cmp99SourceGeneratedFineCellCutoff_finBox_sub_le
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M Q depth : ℕ) [NeZero M] [NeZero Q]
+    (cell : FinBox 4 Q)
+    (x y : FinBox 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1))) :
+    ‖cmp99SourceGeneratedFineCellCutoff P M Q depth cell y -
+        cmp99SourceGeneratedFineCellCutoff P M Q depth cell x‖ ≤
+      ((8 * P.derivBound) /
+        cmp99SourceGeneratedCellCutoffScale M depth) *
+        (finBoxDist x y : ℝ) := by
+  classical
+  let M0 := 2 * M ^ (depth + 1)
+  letI : NeZero M0 :=
+    ⟨Nat.mul_ne_zero (by omega) (pow_ne_zero _ (NeZero.ne M))⟩
+  let offset : Fin 4 → ℝ := fun _ =>
+    1 / 2 - cmp99SourceGeneratedCellCutoffScale M depth / 2
+  let hsize : cmp99RegionalLatticeSize M (2 * Q) (depth + 1) = M0 * Q :=
+    (cmp99SourceGeneratedCellCutoffScale_mul_Q M Q depth).symm
+  let x' : FinBox 4 (M0 * Q) := hsize ▸ x
+  let y' : FinBox 4 (M0 * Q) := hsize ▸ y
+  have hxval (i : Fin 4) : (x' i).val = (x i).val := by
+    exact finBox_cast_apply_val hsize x i
+  have hyval (i : Fin 4) : (y' i).val = (y i).val := by
+    exact finBox_cast_apply_val hsize y i
+  have hdist : finBoxDist x' y' = finBoxDist x y := by
+    exact finBoxDist_cast_size hsize x y
+  have h := norm_cmp95RescaledPeriodicTensorCutoff_finBox_sub_le
+    P M0 Q cell offset x' y'
+  simpa [cmp99SourceGeneratedFineCellCutoff,
+    cmp99SourceGeneratedCellCutoffScale, cmp99SourceGeneratedFineCellCoordinate,
+    M0, offset, hxval, hyval, hdist] using h
 
 end
 
