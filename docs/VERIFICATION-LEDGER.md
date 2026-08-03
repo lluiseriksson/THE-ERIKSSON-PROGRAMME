@@ -30782,3 +30782,25 @@ chars).
 
 **ROLES.**  Corrections found outside; adopted; the sweep is this desk's,
 the score is the evaluator's.
+
+## Addendum 602 (2026-08-04, **the external verdict on v7.1: editorially
+closed, ready for submission; the recorded path to the top slot**)
+
+The second external reading confirms v7.1: science 5.62, manuscript 5.66,
+3rd place in a technical tie with 2nd on its scale; "no editorial reason
+remains to delay submission"; the epistemic hierarchy called clean
+(mechanised theorems / measurements separated / explicit negative claims /
+one identified open discharge / a coherent count of eleven theorems / the
+reproducibility apparatus).  Its stated path: closing the currying
+discharge does not correct this paper but ADDS a corollary, with an
+estimated 5.92-6.05 and a real contest for 1st.  The owner holds the
+submission click; the manuscript of record is commit ffee6f36e.
+
+Stage B accordingly proceeds under the standing order: the geometry bridge
+(the 1D adjacency pairing, the exponent identity against isingWeight's
+half, the curry weight equality), the measure transport into freeCov, the
+deltaAt support transport, the D-5 feed with rectDist >= n, the Perron
+instantiation, and the public corollary through abstract_uniform_gap.
+
+**ROLES.**  Score and verdict are the evaluator's; the record is this
+desk's; the click is the owner's.
