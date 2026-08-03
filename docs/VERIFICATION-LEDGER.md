@@ -26733,3 +26733,39 @@ weakening coordinates and therefore still needs a multiplicity-aware
 monomial expansion; the literal `H0(s)` producer remains absent.  No
 `PreEq136` field is discharged: the live numerator remains 18/41 and no
 `TermSource` inhabitant is produced.
+
+## Addendum 538 (2026-08-03, **literal physical `H(s)` word multiplicity expansion GREEN**)
+
+`BalabanCMP116WeakeningMultiplicity.lean` and
+`BalabanCMP99ComplexFineHeadTailMultiplicityExpansion.lean` were replayed
+with both focused audits in one fresh Colab Pro+ CPU/high-RAM clone from
+source checkpoint `17f416433ca6ea95b7cf38d414d3bccf878cec13`.
+The runtime opened at 2026-08-03 01:45:06 UTC with 50.99 GiB RAM and was
+disconnected and deleted immediately after the evidence archive was
+downloaded.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed; the manifest was unchanged
+and the tracked core-import closure contained 2,206 sources.  The focal build
+exited zero with `Build completed successfully (8491 jobs).` after 1,466.565
+seconds.  The two audits exited zero after 5.864 and 12.723 seconds and
+printed ten declarations, each depending exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS STAGE=audit` after 1,628.246
+seconds.  The archive created in Colab and independently rehashed on Windows
+has SHA-256
+`132e8766327fa5e1a05aa5d1b7e190e7e0ebedc91330901d75c2c88e3c9b4bdd`.
+
+The verified algebra records repeated weakening coordinates as finitely
+supported natural multiplicities.  For one literal physical head/tail word,
+every coarse defect is exactly `(m_i(sigma)-1)` times a fixed matrix, all
+scalar factors are extracted without reordering the noncommutative matrix
+word, and the resulting scalar is expanded exactly over omitted factors.
+Thus each word is a finite signed sum of multiplicity monomials times one
+unchanged physical matrix word.
+
+This does not yet reindex the complete nested `H(s)` series and does not
+establish the source short/long-walk estimate for total multiplicity degree.
+It also supplies no literal `H0(s)`.  Consequently no `PreEq136` field is
+discharged, the live numerator remains exactly 18/41, and no `TermSource`
+inhabitant is produced.

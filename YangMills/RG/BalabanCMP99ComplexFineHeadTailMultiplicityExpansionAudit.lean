@@ -8,8 +8,6 @@ import YangMills.RG.BalabanCMP99ComplexFineHeadTailMultiplicityExpansion
 /-!
 # Oracle audit for the literal fine-head/tail multiplicity expansion
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations are not yet compiler-verified.
 -/
 
 #print axioms YangMills.RG.cmp99OrderedFinProduct_smul_matrix

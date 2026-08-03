@@ -8,8 +8,6 @@ import YangMills.RG.BalabanCMP116WeakeningMultiplicity
 /-!
 # Oracle audit for multiplicity-aware weakening monomials
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations are not yet compiler-verified.
 -/
 
 #print axioms YangMills.RG.cmp116ComplexWeakeningMultiplicityMonomial_add
@@ -17,4 +15,3 @@ materialized, and its declarations are not yet compiler-verified.
 #print axioms YangMills.RG.prod_cmp116ComplexWeakeningMonomial_eq_multiplicityMonomial
 #print axioms YangMills.RG.prod_cmp116ComplexWeakeningMonomial_sub_one_eq
 #print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_mul_prod_eq_multiplicityMonomial
-

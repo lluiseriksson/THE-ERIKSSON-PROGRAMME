@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP116WeakeningMultiplicity
 /-!
 # Multiplicity expansion of literal complex fine-head/tail words
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations are not yet compiler-verified.
-
 The literal CMP99 word is an ordered product of physical matrices.  Its
 weakening dependence is scalar, but overlapping walk carriers can occur more
 than once.  This module extracts those scalars without commuting any matrix

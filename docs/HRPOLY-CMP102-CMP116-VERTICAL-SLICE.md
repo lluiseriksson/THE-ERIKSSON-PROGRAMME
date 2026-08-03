@@ -1888,3 +1888,29 @@ fresh Colab Pro+ CPU/high-RAM clone at source checkpoint
 8,491 jobs and the three-declaration audit with exactly the standard axiom
 trio.  This physical bridge changes neither the live `18/41` producer count
 nor the number of `TermSource` inhabitants.
+
+The multiplicity obstruction in the literal minimizer `H(s)` is now resolved
+at the level of one complete physical word.  The module
+`BalabanCMP116WeakeningMultiplicity.lean` represents overlapping carriers by
+finitely supported natural exponents and proves the exact powerset expansion
+of `prod_i (m_i(s)-1)`.  The physical module
+`BalabanCMP99ComplexFineHeadTailMultiplicityExpansion.lean` then extracts
+these scalars from the literal ordered matrix word without commuting any
+matrix factors.  Each complete head/tail word is exactly a finite signed sum
+of multiplicity monomials multiplying one unchanged sigma-independent
+physical matrix word.  No disjointness of walk carriers is assumed.
+
+One fresh Colab Pro+ CPU/high-RAM clone at source checkpoint
+`17f416433ca6ea95b7cf38d414d3bccf878cec13` completed the focal build with
+8,491 jobs in 1,466.565 seconds.  The generic and physical audits exited zero
+and printed ten declarations, all with exactly
+`[propext, Classical.choice, Quot.sound]`.  The complete gate recorded
+`FINAL_STATUS=PASS`; its downloaded evidence archive has SHA-256
+`132e8766327fa5e1a05aa5d1b7e190e7e0ebedc91330901d75c2c88e3c9b4bdd`.
+
+This closes the exact finite-word algebra only.  The remaining physical
+`H(s)` bridge must reindex the whole nested literal series and must feed a
+multiplicity degree, rather than a square-free carrier cardinality, into the
+short/long-walk estimate of generic L1.  It supplies neither that analytic
+degree bound nor a literal `H0(s)` producer.  Therefore the live producer
+count remains `18/41` and no `TermSource` inhabitant is produced.

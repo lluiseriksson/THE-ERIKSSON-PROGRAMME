@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP116ComplexWeakenedRandomWalkSeries
 /-!
 # Multiplicity-aware complex weakening monomials
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations are not yet compiler-verified.
-
 The square-free monomial attached to one walk carrier is sufficient for one
 generalized random-walk propagator.  Products of independently weakened
 physical factors need more information: overlapping carriers contribute
