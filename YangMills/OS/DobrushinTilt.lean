@@ -269,7 +269,6 @@ theorem bandCov_mul_sq {w Om : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ
         = B * l * (S * l) - F * l * (G * l) := by
     intro S B F G l h
     field_simp
-    ring
   exact key _ _ _ _ _ hS'
 
 /-! ## §5  Sup bounds, the partition identity, positivity, and the floor -/
