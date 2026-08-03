@@ -159,6 +159,27 @@ grouping grammar.  The Pi4 `G(s)` bridge remains useful for the separate
 global one-cochain factor, but is not a replacement for this regional
 zero-cochain reconstruction.
 
+There are two distinct support requirements in this step.  For the exact
+operator identity it is enough that the multiplier `h_Pi` be supported in its
+Dirichlet region: the local Green is generated from the literal compression
+`R Delta' E`, and the outer multiplier permits insertion of `E R` after
+`Delta'`.  No finite-range premise is used in that algebra.  The later
+analytic estimate is stronger.  To prove sparsity of consecutive correction
+factors and make the regional defect contractive, the physical specialization
+must expose a collar condition of the form
+
+```text
+finiteRange < dist(supp h_Pi, complement Omega_Pi).
+```
+
+That collar is not implied by mere support inclusion and may not be hidden in
+the partition dictionary.  Likewise, the regional condition `norm R' < 1` is
+not the existing `patchedDefect_small` field: the latter controls
+`cmp99PatchedPhysicalParametrixDefect` on physical one-cochains, whereas `R'`
+acts on the regional zero-cochain carrier.  It is therefore a separate scalar
+target in the joint smallness registry, with its physical attainment left to
+the finite-range/commutator estimates.
+
 The dependent-arrow alphabet and changing intermediate carriers recorded on
 printed page 413 belong to the later cross-scale Section-C expansion.  They
 must not be imported into (3.90), whose displayed walks are ordinary linear
