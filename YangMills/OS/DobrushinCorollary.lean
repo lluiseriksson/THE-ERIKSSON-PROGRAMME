@@ -109,8 +109,8 @@ theorem adj_pairing (m : ℕ) (F : Fin (m + 1) → Fin (m + 1) → ℝ)
     have hlast : (if h : (Fin.last m).val < m
         then G (Fin.last m) ⟨(Fin.last m).val + 1, by omega⟩ else 0)
         = 0 := by
-      rw [dif_neg]
-      simp [Fin.last]
+      have hnl : ¬ (Fin.last m).val < m := by simp [Fin.last]
+      rw [dif_neg hnl]
     rw [hlast, add_zero]
     refine Finset.sum_congr rfl fun k _ => ?_
     have hk : (k.castSucc : Fin (m + 1)).val < m := by
@@ -118,8 +118,6 @@ theorem adj_pairing (m : ℕ) (F : Fin (m + 1) → Fin (m + 1) → ℝ)
       simpa [Fin.coe_castSucc] using h
     rw [dif_pos hk]
     congr 1
-    refine Fin.ext ?_
-    simp [Fin.coe_castSucc, Fin.val_succ]
   rw [Finset.sum_congr rfl fun a _ =>
     Finset.sum_congr rfl fun b _ => hsplit a b]
   rw [Finset.sum_congr rfl fun a _ => Finset.sum_add_distrib,
@@ -303,7 +301,7 @@ theorem sliceW_pos (γ : ℝ) (L : ℕ) (σ : Fin (L + 1) → Fin 2) :
   exact Finset.prod_pos fun t _ => z2Bond_pos γ _ _
 
 theorem z2Sign_eq_spin (i j : Fin 2) : z2Sign i j = spin i * spin j := by
-  fin_cases i <;> fin_cases j <;> simp [z2Sign, spin] <;> norm_num
+  fin_cases i <;> fin_cases j <;> simp [z2Sign, spin]
 
 /-- **The geometry bridge**: the free strip Gibbs weight of the spatial
 system IS the rectangle Ising weight, under currying.  Exact: the half in
@@ -361,16 +359,13 @@ theorem freeCov_eq_rect_covar (β γ : ℝ) {T L : ℕ}
       = covar (gibbsMu (isingWeight (rectJ β γ)))
           (fun η => A (fun j => η (0, j)))
           (fun η => B (fun j => η (Fin.last T, j))) := by
-  have e : (Fin (T + 1) → Fin (L + 1) → Fin 2)
-      ≃ (Fin (T + 1) × Fin (L + 1) → Fin 2) :=
-    (Equiv.curry _ _ _).symm
-  have he : ∀ X : Fin (T + 1) → Fin (L + 1) → Fin 2,
-      e X = fun P => X P.1 P.2 := fun X => rfl
   -- the partition functions agree
   have hZ : gibbsPartition (sliceW γ L) β T
       = gibbsZ (isingWeight (rectJ β γ)) := by
     unfold gibbsPartition gibbsZ
-    refine Fintype.sum_equiv e _ _ fun X => ?_
+    refine Fintype.sum_equiv
+      ((Equiv.curry (Fin (T + 1)) (Fin (L + 1)) (Fin 2)).symm) _ _
+      fun X => ?_
     show gibbsWeight (sliceW γ L) β X
       = isingWeight (rectJ β γ) (fun P => X P.1 P.2)
     exact curry_weight β γ X
@@ -382,7 +377,9 @@ theorem freeCov_eq_rect_covar (β γ : ℝ) {T L : ℕ}
             * (A' (fun j => η (0, j)) * B' (fun j => η (Fin.last T, j))) := by
     intro A' B'
     unfold gibbsPathSum
-    refine Fintype.sum_equiv e _ _ fun X => ?_
+    refine Fintype.sum_equiv
+      ((Equiv.curry (Fin (T + 1)) (Fin (L + 1)) (Fin 2)).symm) _ _
+      fun X => ?_
     show A' (X 0) * B' (X (Fin.last T)) * gibbsWeight (sliceW γ L) β X
       = isingWeight (rectJ β γ) (fun P => X P.1 P.2)
         * (A' (fun j => X 0 j) * B' (fun j => X (Fin.last T) j))
@@ -423,7 +420,7 @@ theorem row_deltaAt_zero {T L : ℕ} (A : (Fin (L + 1) → Fin 2) → ℝ)
       = fun j' => η (0, j') := by
     intro η s
     funext j'
-    refine Function.update_noteq ?_ _ _
+    refine Function.update_of_ne ?_ _ _
     intro h
     exact ht ((congrArg Prod.fst h).symm)
   refine le_antisymm ?_ ?_
@@ -448,7 +445,7 @@ theorem row_deltaAt_zero' {T L : ℕ} (B : (Fin (L + 1) → Fin 2) → ℝ)
       = fun j' => η (Fin.last T, j') := by
     intro η s
     funext j'
-    refine Function.update_noteq ?_ _ _
+    refine Function.update_of_ne ?_ _ _
     intro h
     exact ht ((congrArg Prod.fst h).symm)
   refine le_antisymm ?_ ?_
@@ -474,9 +471,9 @@ theorem row_deltaAt_le {T L : ℕ} (A : (Fin (L + 1) → Fin 2) → ℝ)
       = Function.update (fun j' => q.1 (0, j')) j q.2 := by
     funext j'
     by_cases hj : j' = j
-    · rw [hj, Function.update_same, Function.update_same]
-    · rw [Function.update_noteq (fun h => hj (congrArg Prod.snd h)),
-        Function.update_noteq hj]
+    · rw [hj, Function.update_self, Function.update_self]
+    · rw [Function.update_of_ne (fun h => hj (congrArg Prod.snd h)),
+        Function.update_of_ne hj]
   rw [hrow]
   exact abs_sub_update_le_deltaAt j A (fun j' => q.1 (0, j')) q.2
 
@@ -490,22 +487,11 @@ theorem row_deltaAt_le' {T L : ℕ} (B : (Fin (L + 1) → Fin 2) → ℝ)
       = Function.update (fun j' => q.1 (Fin.last T, j')) j q.2 := by
     funext j'
     by_cases hj : j' = j
-    · rw [hj, Function.update_same, Function.update_same]
-    · rw [Function.update_noteq (fun h => hj (congrArg Prod.snd h)),
-        Function.update_noteq hj]
+    · rw [hj, Function.update_self, Function.update_self]
+    · rw [Function.update_of_ne (fun h => hj (congrArg Prod.snd h)),
+        Function.update_of_ne hj]
   rw [hrow]
   exact abs_sub_update_le_deltaAt j B (fun j' => q.1 (Fin.last T, j')) q.2
-
-theorem deltaAt_nonneg {ι S : Type*} [Fintype ι] [DecidableEq ι] [Fintype S]
-    [Nonempty ι] [Nonempty S] (i : ι) (f : (ι → S) → ℝ) :
-    0 ≤ deltaAt i f := by
-  have h := abs_sub_update_le_deltaAt i f (fun _ => Classical.arbitrary S)
-    ((fun _ => Classical.arbitrary S : ι → S) i)
-  calc (0 : ℝ) = |f (fun _ => Classical.arbitrary S)
-      - f (Function.update (fun _ => Classical.arbitrary S) i
-          ((fun _ => Classical.arbitrary S : ι → S) i))| := by
-        rw [Function.update_eq_self, sub_self, abs_zero]
-    _ ≤ _ := h
 
 /-- **The family feed**: inside the window, the free covariance of
 end-slice observables at horizon `T` decays as `α^T`, with slice-level
@@ -526,7 +512,6 @@ theorem rect_feed (β γ : ℝ) {α : ℝ} (hα0 : 0 ≤ α) (hα1 : α < 1)
     (rectJ_symm β γ) hα0 hα1
     (fun p => le_trans (rectJ_row β γ p) hwin)
     rectDist rectDist_self rectDist_triangle (rectJ_supp β γ) f g
-  refine le_trans hbase ?_
   -- kill the off-row terms and bound the surviving block
   have hterm : ∀ (P Q : Fin (T + 1) × Fin (L + 1)),
       deltaAt P f * (α ^ rectDist P Q / (1 - α)) * deltaAt Q g
@@ -545,7 +530,7 @@ theorem rect_feed (β γ : ℝ) {α : ℝ} (hα0 : 0 ≤ α) (hα1 : α < 1)
             simp [Nat.dist, Fin.last]
           omega
         have hpow : α ^ rectDist P Q ≤ α ^ T :=
-          pow_le_pow_right_of_le_one hα0 hα1.le hdist
+          pow_le_pow_of_le_one hα0 hα1.le hdist
         have h1α : (0 : ℝ) < 1 - α := by linarith
         have hdf : deltaAt P f ≤ deltaAt P.2 A := by
           have hP' : P = (0, P.2) := by
