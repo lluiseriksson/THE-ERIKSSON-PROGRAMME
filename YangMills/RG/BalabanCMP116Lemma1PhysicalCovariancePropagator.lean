@@ -224,9 +224,10 @@ theorem cmp116Lemma1PhysicalCovariancePropagator_eq
           (R := R) anchor K hc hmass hK sigma length row col := by
       apply tsum_congr
       intro length
-      exact congrArg (fun A => A row col)
-        (cmp116SourcePi4FullComplexWeakenedCovarianceLayer_eq_sum_fineWalkTerms
-          anchor K hc hmass hK sigma length).symm
+      simpa only [Matrix.sum_apply] using
+        congrArg (fun A => A row col)
+          (cmp116SourcePi4FullComplexWeakenedCovarianceLayer_eq_sum_fineWalkTerms
+            anchor K hc hmass hK sigma length).symm
     _ = cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
           (R := R) anchor K hc hmass hK sigma row col := by
       rfl
