@@ -8,8 +8,6 @@ import YangMills.RG.BalabanCMP116WeakeningMultiplicityMajorant
 /-!
 # Axiom audit: weakening-multiplicity radial majorants
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its results have not yet been verified by the Lean compiler.
 -/
 
 #print axioms YangMills.RG.cmp116WeakeningMultiplicityDegree_add

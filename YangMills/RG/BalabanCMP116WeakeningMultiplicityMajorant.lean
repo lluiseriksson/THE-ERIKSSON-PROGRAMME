@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP116WeakeningMultiplicity
 /-!
 # Radial majorants for weakening multiplicities
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its results have not yet been verified by the Lean compiler.
-
 Products of independently weakened physical factors need the total number of
 coordinate occurrences, not merely the cardinality of their union.  This file
 defines that total degree for a finitely supported multiplicity and proves the

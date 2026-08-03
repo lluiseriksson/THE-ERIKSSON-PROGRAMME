@@ -1936,3 +1936,26 @@ summability of the expanded terms and controlling total multiplicity degree
 remain separate.  A literal `H0(s)` producer is still absent.  The live
 producer count therefore remains `18/41` and no `TermSource` inhabitant is
 produced.
+
+The total-degree radial majorant is now compiler-verified independently of
+that remaining source estimate.  The module
+`BalabanCMP116WeakeningMultiplicityMajorant.lean` defines the total degree of
+a finitely supported weakening multiplicity, proves that degrees add, and
+identifies the degree of a finite family with the sum of the individual
+carrier cardinalities even when carriers overlap.  A uniform coordinate cap
+then bounds each multiplicity monomial, and each multiplicity-weighted term,
+by the corresponding radial power.  This is finite algebra: it neither
+absorbs the powerset cardinality nor identifies its degree with the printed
+CMP116 integer `m`.
+
+One fresh Colab Pro+ CPU/high-RAM clone at source checkpoint
+`ca21ccc18e7918800e169dcd25a1db9235bfed58` completed the focal target with
+`Build completed successfully (2757 jobs).` in 33.063 seconds.  The focused
+audit exited zero in 3.612 seconds and all five declarations depend exactly
+on `[propext, Classical.choice, Quot.sound]`.  The complete gate recorded
+`FINAL_STATUS=PASS` after 134.710 seconds; the visible transcript was saved
+and independently rehashed on Windows as
+`e372fa7da5a08073965ec1a863fc42c54bda308ebf81df9dc7ab36b9669f044d`.
+The runtime was disconnected and deleted immediately afterward.  This brick
+changes neither the live `18/41` producer count nor the number of
+`TermSource` inhabitants.

@@ -26801,3 +26801,31 @@ the expanded series, establish the source short/long-walk bound for total
 multiplicity degree, or construct `H0(s)`.  It therefore discharges no
 `PreEq136` field: the live numerator remains exactly 18/41 and no `TermSource`
 inhabitant is produced.
+
+## Addendum 540 (2026-08-03, **weakening-multiplicity radial majorant GREEN**)
+
+`BalabanCMP116WeakeningMultiplicityMajorant.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `ca21ccc18e7918800e169dcd25a1db9235bfed58`.  The runtime opened at
+2026-08-03 03:57:42 UTC and was disconnected and deleted immediately after
+the terminal result.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The focal target exited
+zero with the literal terminal line `Build completed successfully (2757
+jobs).` after 33.063 seconds.  The audit exited zero after 3.612 seconds and
+its five declarations each depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS` after 134.710 seconds.  The
+visible Colab transcript was saved and independently rehashed on Windows as
+`e372fa7da5a08073965ec1a863fc42c54bda308ebf81df9dc7ab36b9669f044d`.
+
+The verified finite algebra replaces square-free carrier cardinality by the
+total degree of the finitely supported weakening multiplicity.  It proves
+additivity, the exact sum-of-carrier-cardinalities formula for a family with
+overlaps, and the radial norm bounds for one monomial and one weighted term.
+It does not prove absolute summability of the physical nested series, absorb
+the finite powerset cost, identify total degree with the printed CMP116
+integer `m`, or construct `H0(s)`.  Consequently no `PreEq136` field is
+discharged, the live numerator remains exactly 18/41, and no `TermSource`
+inhabitant is produced.
