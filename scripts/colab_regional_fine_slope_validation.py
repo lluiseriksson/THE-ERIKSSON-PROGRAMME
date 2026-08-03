@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v1"
-SOURCE_SHA = "7031302213ca76efbaf8f526ff0b5e4dc4a588fb"
+RUNNER_REV = "regional-large-block-v2"
+SOURCE_SHA = "83c60bdd379f3cdbb1921c5b9652b71a465747fa"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
