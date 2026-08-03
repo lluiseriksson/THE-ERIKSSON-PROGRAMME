@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceActiveFineBlockEquiv
+
+#print axioms YangMills.RG.cmp99ActiveFineBlockSigmaEquiv
+#print axioms YangMills.RG.sum_activeGaugeRegion_eq_sum_activeBlocks
