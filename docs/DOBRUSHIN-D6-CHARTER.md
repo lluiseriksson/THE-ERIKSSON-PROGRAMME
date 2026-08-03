@@ -74,3 +74,39 @@ No assert; explicit counters; both interpreter modes; Colab plane.
    recorded corpse.  Every step oracled before the next begins.
 
 ROLES: this desk fabricates; it does not audit itself; no score anywhere.
+
+## Amendment 1 (2026-08-03, registered AFTER the gates passed, BEFORE any
+Lean of B-1 — additive: it raises the deliverable, it does not touch a gate)
+
+An external reading fixed the status vocabulary and the category line, and
+both bind from here on.
+
+* STATUS.  What passed is "every pre-registered judge that AUTHORISES
+  BUILDING D-6" — not D-6.  The rung is empirically de-risked and
+  architecturally closed, and mathematically OPEN until B-1, B-2, B-3 are
+  Lean theorems.  No acta of this lane may shorten that sentence.
+* THE DELIVERABLE'S LEVEL (the category instruction).  B-1..B-3 are to be
+  STATED ABSTRACTLY: for an arbitrary strictly positive slice weight and
+  symmetric kernel data, uniform-rate Gibbs decay for a family of volumes
+  implies the uniform transfer-operator gap — the reusable interface
+
+      uniform Gibbs decay (common rate r < 1, prefactor free)
+        ==> sup over the family of ||projectedTransfer|| <= r,
+
+  with the Ising rectangle window as the instantiating COROLLARY, not as
+  the theorem.  The category lives in the bridge's reuse beyond the
+  exactly-solved model; an Ising-only formulation is a fallback to be
+  recorded as such if the abstract statement dies.
+* B-2 NON-GOAL, hardened.  No uniformity of the prefactor in L is to be
+  attempted, not even as a lemma: the consumer's C may depend on (L, v),
+  and a uniform-prefactor sub-goal would manufacture a bottleneck the
+  architecture does not contain.
+* D-7 SEED (recorded, strictly after D-6).  Within-volume covariance decay
+  does NOT build the infinite-volume state.  D-7's target has the shape
+
+      |mu_Lambda^xi(f) - mu_Lambda'^xi'(f)|
+        <= C_f * alpha^dist(supp f, modified boundary),
+
+  a boundary-perturbation comparison giving Cauchyness in the exhaustion,
+  independence of boundary condition, and uniqueness in the window.  Its
+  own charter and gates come later; nothing here licenses it.

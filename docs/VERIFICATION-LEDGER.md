@@ -30514,3 +30514,29 @@ finish; only an unmeasured claim is not.
 
 **ROLES.**  Gates run by the fabricating desk before fabrication, as
 registered; no self-audit; no score.
+
+## Addendum 595 (2026-08-03, **charter amendment: the gates authorise
+building, they are not the theorem — and the deliverable is the ABSTRACT
+bridge, with Ising as corollary**)
+
+The second external reading corrected one sentence of this lane's acta and
+it is adopted verbatim: not "the D-6 judges passed" but **"every
+pre-registered judge that AUTHORISES BUILDING D-6 passed"** — the rung is
+empirically de-risked, architecturally closed, mathematically open.
+
+Its category table is adopted as a DESIGN INSTRUCTION and registered as
+Amendment 1 of `docs/DOBRUSHIN-D6-CHARTER.md` (additive; raises the target,
+touches no gate): B-1..B-3 will be stated for arbitrary positive slice
+weights and symmetric kernel data — the reusable interface from
+uniform-rate Gibbs decay to the uniform operator gap — with the Ising
+rectangle window as the instantiating corollary.  The reading's B-2 warning
+is hardened into a non-goal (no prefactor uniformity, not even as a lemma),
+and its D-7 shape (boundary-perturbation comparison, Cauchy exhaustion,
+uniqueness in the window) is recorded as a seed that nothing yet licenses.
+
+Score bookkeeping: evaluator B holds v6 at 5.10/5th pending theorems, with
+the ladder 5.55-5.75 (Ising-only D-6), 5.85-6.10 (abstract bridge),
+6.10-6.35 (plus thermodynamic limit).  Evaluator A's scale remains
+separate; the two are never mixed.
+
+**ROLES.**  Correction found outside; adopted whole; no self-audit.
