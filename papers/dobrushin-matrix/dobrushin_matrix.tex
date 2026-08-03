@@ -22,7 +22,7 @@
 \emergencystretch=3em
 \tolerance=2000
 
-\newcommand{\anchor}{4f3b864004c48edc87c09bd2537fe51340fb6411}
+\newcommand{\anchor}{082e89b1a6bc37136b44037086d9620adee3abc2}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -123,6 +123,18 @@ statement is the quantifier order of one machine-checked declaration.  At
 zero coupling its bound degenerates to $0^{d}$ and forces exact independence
 of distinct single-site observables at every volume, which is the family's
 witness.
+\textbf{And the transport}: the pairing $\langle v,T^nv\rangle$ of a
+normalised kernel with Perron boundary is \emph{exactly} a finite band
+measure whose mass is independent of the horizon; uniform decay of those
+band covariances at a common rate --- a hypothesis on \emph{path sums},
+carrying no operator, no norm and no spectrum --- forces one strictly
+positive mass for the whole family of projected transfer operators, with
+the identification measure-to-operator a proved identity rather than an
+assumption; and for Perron data of a symmetrised kernel the band measure is
+the free strip measure tilted at its two end slices by exactly
+$\Omega/\sqrt{w}$, so free-covariance decay transports to band-covariance
+decay at the same rate with the whole boundary cost absorbed into a
+per-extent constant.
 Each rung carries a non-vacuity witness, and every claimed endpoint is
 oracled with exactly Lean's three standard axioms.
 
@@ -142,10 +154,14 @@ sequence can appear to saturate at $L\le12$ and turn afterwards.  They do
 finite-size scaling that we do not attempt.
 
 \textbf{What is not proved.}  The volume-uniform bound on $\specRatio$ for the
-coupled kernel is \emph{not} established here: what is proved is decay of
-correlations of the Gibbs weight, and the finite-time transport from that
-decay into the operator formulation is the one open step named in the frontier
-section.  The intrinsic Dobrushin condition is now a computation on the
+coupled kernel is \emph{not} established here.  What separates the proved
+transport theorems from it is one discharge, named exactly in
+Section~\ref{sec:transport-open}: identifying the free strip sums of the
+tilt layer with the rectangle covariances of the family theorem through the
+currying bijection, and feeding the result to the abstract transport
+theorem.  Both halves of that discharge were measured by pre-registered
+gates before any of the transport Lean existed; neither is a theorem at
+this anchor, and this paper does not claim them.  The intrinsic Dobrushin condition is now a computation on the
 coupling: it holds unconditionally for the one-bond system, reduces to the
 window for the star cell and for the whole rectangle family, and for other
 lattice geometries is the same computation, not repeated here.  Dobrushin's
@@ -172,7 +188,13 @@ corollaries that compose them, in
 \repofile{YangMills/OS/DobrushinComparison.lean}{DobrushinComparison.lean},
 \repofile{YangMills/OS/DobrushinGibbs.lean}{DobrushinGibbs.lean},
 \repofile{YangMills/OS/DobrushinIsing.lean}{DobrushinIsing.lean} and
-\repofile{YangMills/OS/DobrushinLattice.lean}{DobrushinLattice.lean}.  Every
+\repofile{YangMills/OS/DobrushinLattice.lean}{DobrushinLattice.lean};
+and the transport rungs of Section~\ref{sec:transport} ---
+Theorems~\ref{thm:band}, \ref{thm:transport} and~\ref{thm:tilt} with
+Proposition~\ref{prop:transport-witness} --- in
+\repofile{YangMills/OS/DobrushinBridge.lean}{DobrushinBridge.lean},
+\repofile{YangMills/OS/DobrushinTransport.lean}{DobrushinTransport.lean}
+and \repofile{YangMills/OS/DobrushinTilt.lean}{DobrushinTilt.lean}.  Every
 claimed endpoint is oracled and depends on exactly Lean's three standard
 axioms; the counts and the runs are itemised in the Reproducibility section.
 
@@ -188,7 +210,9 @@ verifiable by reading that development.
 
 \textbf{Not claimed.}  That $\specRatio$ of the coupled kernel is bounded away
 from one uniformly in the extent: what is proved is decay of correlations of
-the Gibbs weight, and the transport into the operator formulation is untouched.
+the Gibbs weight together with the transport theorems of
+Section~\ref{sec:transport}, and the one remaining discharge is named in
+Section~\ref{sec:transport-open} and not claimed.
 That Dobrushin's condition holds beyond the geometries treated --- the
 one-bond and star cells and the rectangle family of
 Theorem~\ref{thm:family}; for a general weight it is the
@@ -930,6 +954,193 @@ itself against \emph{exhaustive} Gibbs covariances --- full enumeration, no
 sampling --- over every ordered pair of distinct sites; G17 computes the
 bound once and holds four growing volumes under it.
 
+\section{The transport into the operator, and how much of it is now
+closed}
+\label{sec:transport}
+
+The frontier section of an earlier version of this paper named one open
+step: the transport of the measure-level decay into the operator
+formulation.  Three of its four planks are now machine-checked theorems, in
+\repofile{YangMills/OS/DobrushinBridge.lean}{DobrushinBridge.lean},
+\repofile{YangMills/OS/DobrushinTransport.lean}{DobrushinTransport.lean}
+and \repofile{YangMills/OS/DobrushinTilt.lean}{DobrushinTilt.lean}; this
+section states them at their exact size, and then states, at its exact
+size, the one plank that is not.
+
+\subsection{The band identity}
+
+\begin{theorem}[the finite band identity; machine-checked]
+\label{thm:band}
+Let $X$ be a finite nonempty type, $M$ a symmetric real $X\times X$ matrix,
+and $\Omega:X\to\R$ strictly positive with $M\Omega=\Omega$ (the normalised
+eigen-relation; \texttt{normalise\_eig} shows how a raw Perron pair
+$(T,\lambda,\Omega)$ produces it, so the eigenvalue is visible rather than
+hidden in a convention).  Define the band weight on paths
+$v:\{0,\dots,n\}\to X$ by
+\[
+  W_n(v)\;=\;\Omega(v_0)\,\Bigl(\prod_{k<n} M_{v_k v_{k+1}}\Bigr)\,
+  \Omega(v_n).
+\]
+Then, exactly and for every $n$: the total mass is
+$\sum_v W_n(v)=\sum_x\Omega(x)^2$, \emph{independent of $n$}
+(\texttt{bandZ}); two-endpoint sums against $f,g$ are the matrix elements
+$\sum_{ij}(f\Omega)_i\,(M^n)_{ij}\,(g\Omega)_j$ (\texttt{band\_pair}); and
+the band covariance of $f(v_0)$ and $g(v_n)$ equals
+\[
+  \frac{\bigl\langle (f-\mathbb{E} f)\Omega,\;M^{\,n}\,(g-\mathbb{E} g)\Omega
+  \bigr\rangle}{\sum_x\Omega(x)^2},
+  \qquad \mathbb{E} f=\frac{\sum_x f(x)\Omega(x)^2}{\sum_x\Omega(x)^2}
+\]
+(\texttt{band\_covariance\_eq}).  Nothing assumes $0\le M$ as a form:
+positive \emph{entries} do not give spectral positivity, subdominant
+eigenvalues may be negative, and the statement never notices --- writing it
+so that it would was a failure mode named in the rung's charter before any
+Lean existed.
+\end{theorem}
+
+\subsection{The abstract transport theorem}
+
+\begin{theorem}[uniform band decay transports to a uniform gap;
+machine-checked]
+\label{thm:transport}
+Let $\iota$ index a family of finite nonempty slice types $X_i$, symmetric
+kernels $M_i$ and strictly positive $\Omega_i$ with $M_i\Omega_i=\Omega_i$.
+Suppose there is one rate $0<r<1$ such that for every $i$ and every
+observable $f:X_i\to\R$ there is a constant $C$ with
+\[
+  \bigl|\mathrm{bandCov}_i(f,f,n)\bigr|\;\le\;C\,r^{\,n}
+  \qquad\text{for all } n,
+\]
+where $\mathrm{bandCov}$ is the \emph{measure-level} band covariance of
+Theorem~\ref{thm:band} --- a finite path sum; no operator, no norm and no
+spectrum occurs in the hypothesis.  Then there is one $m>0$ with
+\[
+  \bigl\|\texttt{projectedTransfer}\;T_i\;\hat\Omega_i\bigr\|\;\le\;e^{-m}
+  \qquad\text{for every } i
+\]
+for the packaged operators $T_i$ on $\ell^2(X_i)$ with unit vacua
+$\hat\Omega_i=\Omega_i/\|\Omega_i\|$.  In Lean:
+\texttt{abstract\_uniform\_gap}.
+\end{theorem}
+
+Two sentences of the design are load-bearing.  \emph{First}, the
+anti-circularity of the hypothesis: an ``abstract'' statement of the shape
+``positive weight $+$ symmetric matrix $\Rightarrow$ gap'' could come out
+true by assuming the spectral conclusion in other notation.  The hypothesis
+above quantifies over path sums of the band weight; its identification with
+operator matrix elements is the exact identity
+\[
+  \texttt{connCorr}\;T\;\hat\Omega\;v\;n
+  \;=\;\Bigl(\textstyle\sum_x\Omega(x)^2\Bigr)\cdot
+  \mathrm{bandCov}\bigl(v/\Omega,\;v/\Omega,\;n\bigr)
+\]
+(\texttt{connCorr\_eq\_bandCov}), proved for \emph{every} vector $v$ and
+every $n$ through Theorem~\ref{thm:band} --- a theorem, not an assumption,
+which is what makes the interface reusable rather than circular.
+\emph{Second}, the quantifier order: only $r$ is shared; the constant may
+depend on the family member and the observable, and the representation
+$f_v=v/\Omega$ through Perron positivity is precisely where that freedom is
+spent.  \textbf{No Ising, no Dobrushin and no rectangle occurs in the
+statement.}
+
+\begin{proposition}[non-vacuity of the transport; machine-checked]
+\label{prop:transport-witness}
+For every rate $0<r<1$ the two-state kernel with diagonal $(1+r)/2$ and
+off-diagonal $(1-r)/2$, with constant boundary vector, satisfies every
+hypothesis of Theorem~\ref{thm:transport} --- its band covariance is
+\emph{exactly} $((f_0-f_1)/2)^2\,r^{\,n}$ (\texttt{wKernel\_bandCov}) ---
+and its projected operator is \emph{not} the zero operator
+(\texttt{wKernel\_fluctuation\_ne}, \texttt{transport\_witness}).  The
+theorem is inhabited at every rate by an instance with a nonzero
+fluctuation sector; it is not satisfied only by degenerate data.
+\end{proposition}
+
+\subsection{The tilt layer: the boundary cost, absorbed}
+
+The physical kernel's band measure and the free strip measure of the
+rectangle family differ at exactly two slices.  The next theorem makes the
+difference an identity rather than an estimate.
+
+\begin{theorem}[the tilt layer; machine-checked]
+\label{thm:tilt}
+Let $w$ be a strictly positive slice weight, $\beta$ a coupling, and
+$(\lambda,\Omega)$ raw Perron data for the symmetrised kernel
+$T=\sqrt{w}\,K_\beta\sqrt{w}$, normalised as in Theorem~\ref{thm:band}.
+Put $\psi=\Omega/\sqrt{w}$.  Then, exactly:
+\[
+  W_n(v)\;=\;\frac{\psi(v_0)\;\mu^{\mathrm{free}}_\beta(v)\;\psi(v_n)}
+  {\lambda^{\,n}}
+\]
+where $\mu^{\mathrm{free}}_\beta$ is the free strip Gibbs weight of the
+development's spatial system (\texttt{bandW\_eq\_tilt}); the band mass and
+both band marginals are the corresponding tilted free path sums
+(\texttt{mass\_mul\_pow}, \texttt{marginal\_left\_mul\_pow},
+\texttt{marginal\_right\_mul\_pow}); the band covariance satisfies the
+division-free identity
+\[
+  \mathrm{bandCov}\cdot\mathrm{PS}(\psi,\psi)^2
+  \;=\;\mathrm{PS}(f\psi,g\psi)\,\mathrm{PS}(\psi,\psi)
+      -\mathrm{PS}(f\psi,\psi)\,\mathrm{PS}(\psi,g\psi)
+\]
+with $\mathrm{PS}$ the two-endpoint free path sum
+(\texttt{bandCov\_mul\_sq}); and a pointwise floor $c\le\psi$ gives
+$c^2 Z\le \mathrm{PS}(\psi,\psi)$ uniformly in the horizon, with no decay
+input (\texttt{floor\_PS\_tilt}).  Consequently
+(\texttt{bandCov\_decay\_of\_free\_decay}): if the \emph{free} two-endpoint
+covariances of the strip decay at rate $\alpha$ with per-observable
+constants of product form, then the band covariances decay at the
+\emph{same} rate, with a constant depending on the extent and the
+observables only --- never on $n$.
+\end{theorem}
+
+The factor is $\psi=\Omega/\sqrt{w}$ and not $\Omega\sqrt{w}$; the two
+dressings differ by exactly the square root the transfer kernel absorbs,
+conflating them silently was the second failure mode the charter named in
+advance, and the fabricating desk's own first scratch derivation committed
+it --- caught by the derivation itself and then measured by the gates,
+which is what pre-registered gates are for.
+
+\subsection{The one plank that is not closed, named exactly}
+\label{sec:transport-open}
+
+What separates Theorems~\ref{thm:transport} and~\ref{thm:tilt} from a
+volume-uniform operator statement for the coupled kernel is one discharge:
+the free-decay hypothesis of Theorem~\ref{thm:tilt} must be supplied, for
+the physical kernel's strip, by Theorem~\ref{thm:family}.  That is a
+\emph{finite reindexing}, in two steps.  The strip measure over paths of
+slices is the rectangle measure of Theorem~\ref{thm:family} under the
+currying bijection between $\{0,\dots,n\}\times\{\text{sites}\}$
+configurations and slice paths --- an exact weight identity whose only
+subtlety is bond counting (the development's Ising weight carries the
+half that compensates ordered double counting, and both sides are
+single-counted bond products; the couplings land as $\beta$ on the time
+axis and $\gamma$ on the space axis of the rectangle).  And the tilt
+observables live on the two end slices, so every site pair the covariance
+sees is at rectangle distance at least $n$, which is where
+Theorem~\ref{thm:family}'s $\alpha^{d_\square}$ becomes the needed
+$\alpha^{\,n}$, with the oscillation sums growing with the extent exactly
+as the consumer's quantifier order permits.  Both steps were measured
+before any Lean of the layer existed --- gate G23 assembles this exact
+bound and holds the measured band covariance under it on every in-window
+cell tested --- and neither is an estimate.  They are nevertheless
+\emph{not} theorems at this anchor, and this paper does not claim them;
+failure, were the bookkeeping to hide one, remains a recordable outcome.
+
+\textbf{Gates.}  Two scripts, both registered and passed \emph{before} the
+Lean they license.
+\repofile{scripts/judge\_dobrushin\_d6.py}{judge\_dobrushin\_d6.py}
+(G18--G20, $60$ of $60$ in both interpreter modes): the strip identity
+measured exactly at $10^{-10}$; the target's numeric shadow ---
+$\specRatio$ under the window on every in-window cell at $L=2..8$, the
+out-of-window control reported unjudged; per-extent prefactor convergence.
+\repofile{scripts/judge\_dobrushin\_d6b.py}{judge\_dobrushin\_d6b.py}
+(G21--G23, $142$ of $142$ in both modes): the identity of
+\texttt{connCorr\_eq\_bandCov} on registered matrices \emph{including one
+with a negative subdominant eigenvalue}, so spectral positivity cannot be
+smuggled and pass unnoticed; the tilt algebra exact with
+$\psi=\Omega/\sqrt{w}$; and the assembled per-extent bound of the previous
+paragraph dominating the measured band covariance.
+
 \section{The measurement, and where the wall is}
 \label{sec:measurement}
 
@@ -1039,28 +1250,40 @@ order:
 \item[\textbf{4.}] transport of that decay into the operator formulation: from
       correlations of the Gibbs weight to $\specRatio$ of the transfer kernel,
       through the finite-time interface described below.
-      \textbf{Open, and now chartered.}  The volume-uniform Dobrushin window
-      for a lattice family is discharged by Theorem~\ref{thm:family}; what
-      remains is the transport itself, whose charter and pre-registered
-      gates are committed
+      \textbf{Three of four planks done}: the finite band identity
+      (Theorem~\ref{thm:band}), the abstract transport theorem with its
+      inhabited witness (Theorem~\ref{thm:transport},
+      Proposition~\ref{prop:transport-witness}), and the tilt layer that
+      absorbs the whole boundary cost into a per-extent constant
+      (Theorem~\ref{thm:tilt}) --- fabricated under the committed charter
+      and its two amendments
       (\repofile{docs/DOBRUSHIN-D6-CHARTER.md}{DOBRUSHIN-D6-CHARTER.md},
-      gates G18--G20): the strip identity, per-extent prefactor control, and
-      the rate transport, with the risk located in the last and failure a
-      recordable outcome.
+      \repofile{docs/DOBRUSHIN-D6-B2-DESIGN.md}{DOBRUSHIN-D6-B2-DESIGN.md}),
+      with gates G18--G23 passed before each Lean layer existed.
+      \textbf{Open}: the single discharge of
+      Section~\ref{sec:transport-open} --- the currying identification of
+      the strip sums with Theorem~\ref{thm:family}'s rectangle covariances,
+      and the resulting instantiation of Theorem~\ref{thm:transport} for
+      the coupled family.  A finite reindexing, measured by gate G23,
+      claimed by nobody until it compiles.
 \end{enumerate}
 
 \textbf{What changed, stated at its exact size.}  An earlier version of this
 paper named step~2 as the only currently identified new analytic estimate and
 the bottleneck of the chain; a later one proved it, for arbitrary invariant
-data, and left step~3 open.  Both are now closed.  The honest description of
-what remains is that step~4 is not an estimate but a \emph{translation}: from a
-statement about a measure to a statement about an operator.  The vacuum pairing
-is an infinite-time object, so that translation must run through finite time
-extent with explicit boundary control, and nothing here shortens it.  What this
-paper does claim is that between a positive weight and exponential decay of its
-correlations there is no longer a gap: the chain is closed end to end, and the
-inputs a user supplies are Dobrushin's condition and, for the geometric form
-of the decay, the range-one support of the intrinsic matrix.
+data, and left step~3 open; the version before this one closed both and
+described step~4 as untouched.  Step~4's translation is now itself three
+theorems and one open discharge.  The translation \emph{did} run through
+finite time extent with explicit boundary control, exactly as the design
+decision below prescribed: the band identity is finite and exact at every
+horizon, the boundary control is the tilt layer's floor and sup bounds, and
+the limit is taken nowhere --- the conclusion is an operator-norm bound
+obtained from finite covariances.  What this paper claims is that between a
+positive weight and exponential decay of its correlations there is no gap,
+and that between \emph{uniform band decay} and a \emph{uniform operator
+gap} there is no gap either; what remains, and is not claimed, is the
+single identification of Section~\ref{sec:transport-open} connecting the
+two chains for the coupled family.
 
 
 \textbf{The consumer, named.}  It is \texttt{volumeUniform\_gap} in
@@ -1167,8 +1390,17 @@ space: no infinite-volume state is constructed anywhere, and the word
 \section{Reproducibility}
 
 \textbf{Anchor.}  All sources cited above are read at commit
-\nolinkurl{3bd8a463d647d2ef4ea8afd44c19855244729705} of
-\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Toolchain
+\nolinkurl{082e89b1a6bc37136b44037086d9620adee3abc2} of
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME} --- the
+anchor at which the transport rungs of Section~\ref{sec:transport} were
+verified; the family rung's record at
+\nolinkurl{3bd8a463d647d2ef4ea8afd44c19855244729705} and the transport
+rungs' own verification anchors
+(\nolinkurl{b4469a797a41ed3c053ca30f4e6a5ff7edddbb85} for the band
+identity, \nolinkurl{9088eea6cdbbbe67a37dc37496581801925154f5} for the
+abstract transport theorem) stand beneath it, every lane module
+byte-identical across them except where a rung's own passes are itemised
+below.  Toolchain
 \nolinkurl{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned at
 \nolinkurl{07642720480157414db592fa85b626dafb71355b}.  A runner verifies all
 three of these before compiling anything and aborts on any mismatch, so that a
@@ -1223,6 +1455,12 @@ document environment and so existed in the source while never reaching the
 PDF.  The paragraph now standing is the one the anchor's bytes support, and
 the defect is recorded because a contradiction a reader finds is worth more
 than one an author hides.
+The three transport rungs then extended the run of registered-then-taken
+counts to six: $8476\to8477$ for the band identity, $8477\to8478$ for the
+abstract transport theorem, $8478\to8479$ for the tilt layer --- each
+prediction in the rung's wiring commit, each fresh Linux clone printing
+lake's closing line with exactly the registered number
+(\emph{Build completed successfully (8477/8478/8479 jobs)}).
 
 \textbf{Oracle.}  For Theorems~\ref{thm:coeff}--\ref{thm:d1}, at an earlier
 anchor of this lane: the repository-wide oracle ran to completion with exit
@@ -1244,12 +1482,17 @@ theorem.  The union of every axiom list printed, over the three
 runs, is exactly $\{\texttt{propext},\allowbreak\
 \texttt{Classical.choice},\allowbreak\ \texttt{Quot.sound}\}$: Lean's three
 standard axioms, no project axiom, no \texttt{sorry} in any build log.
-And at this anchor the \emph{repository-wide} oracle ran to completion in
-the fresh clone: exit code zero over $2985$ axiom reports ---
-eighty-one of them this lane's --- with \textbf{zero} occurrences of
-\texttt{sorryAx}, and the union of every axiom list printed again exactly
-the standard triple.  (The previous anchor's repository-wide run, $2980$
-reports with the same union, stands in the record.)  The
+And the \emph{repository-wide} oracle then ran to completion in a fresh
+clone at each successive rung: $2985$ axiom reports at the family anchor,
+$2993$ at the band identity's ($+8$, its endpoints), $2999$ at the abstract
+transport theorem's ($+6$), and $\mathbf{3004}$ at this paper's anchor
+($+5$, the tilt layer's) --- each count the one registered in the rung's
+wiring commit before the run, each with exit code zero, \textbf{zero}
+occurrences of \texttt{sorryAx}, and the union of every axiom list printed
+exactly the standard triple, the wrapped log lines read to their
+continuation lines rather than truncated at the bracket.  (The earlier
+runs, $2980$ and $2985$ reports with the same union, stand in the
+record.)  The
 union is computed as a \emph{union} rather than by matching each printed line
 against the standard triple, because a declaration depending on \emph{fewer}
 axioms is perfectly clean and would fail that naive test.
@@ -1285,12 +1528,15 @@ module & \texttt{sha256} & bytes\\
 \texttt{DobrushinGibbs.lean} & \nolinkurl{b525731d274bf0ce7511e0e0f796d5892f22cee1601daa5a8fa7fea6bd507ba1} & $16787$\\
 \texttt{DobrushinIsing.lean} & \nolinkurl{4e880ff013508c55bbbe43db0a511bcecfb51f509a8ebc78f9d49201f577bf23} & $29158$\\
 \texttt{DobrushinLattice.lean} & \nolinkurl{78b57a5bed869378557c2a1a9c4442be1ad41207e08a6607999365926422d1e7} & $15135$\\
+\texttt{DobrushinBridge.lean} & \nolinkurl{d2db5202110baade1663edf5cc3baab5c748c68a3215cbbc9f057e6f092bec38} & $16594$\\
+\texttt{DobrushinTransport.lean} & \nolinkurl{82a783544cf60a7672c49bfeb32102eb85a3587a9d7fc2f60cb44b125505abb0} & $18467$\\
+\texttt{DobrushinTilt.lean} & \nolinkurl{a14bb43eee5503e93b2e55ae71321df13dcb863014b6db98d23341fd84aa4d05} & $31280$\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\textbf{Certifiers.}  Six gate scripts, each run in \texttt{normal} and in
-\texttt{optimized} (\texttt{python -O}) mode on the Linux plane; all twelve
+\textbf{Certifiers.}  Eight gate scripts, each run in \texttt{normal} and in
+\texttt{optimized} (\texttt{python -O}) mode on the Linux plane; all sixteen
 runs exited zero.  \repofile{scripts/judge\_dobrushin.py}{judge\_dobrushin.py}
 reported $29$ of $29$ checks in each mode and
 \repofile{scripts/judge\_dobrushin\_d2.py}{judge\_dobrushin\_d2.py} $18$ of
@@ -1301,11 +1547,16 @@ $11$ of $11$,
 $6$, and \repofile{scripts/judge\_dobrushin\_d4.py}{judge\_dobrushin\_d4.py}
 --- the gates G12--G14 of Section~\ref{sec:gibbs} --- $14$ of $14$, and
 \repofile{scripts/judge\_dobrushin\_d5.py}{judge\_dobrushin\_d5.py} --- G15--G17
-of the family rung --- $37$ of $37$, in both
+of the family rung --- $37$ of $37$,
+\repofile{scripts/judge\_dobrushin\_d6.py}{judge\_dobrushin\_d6.py} ---
+G18--G20 of the transport --- $60$ of $60$, and
+\repofile{scripts/judge\_dobrushin\_d6b.py}{judge\_dobrushin\_d6b.py} ---
+G21--G23 of the tilt layer --- $142$ of $142$, in both
 modes, all running \emph{before} the build in the same runner
-invocation and, for D-4, before \emph{every} fabrication pass of the rung
+invocation and, for every rung from D-4 onward, before \emph{every}
+fabrication pass of the rung
 they license --- the record shows the gates passing before the theorems they
-license were compiled.  No acceptance decision in any of the five depends on a
+license were compiled.  No acceptance decision in any of the eight depends on a
 Python \texttt{assert}; each counts the checks it performed and refuses to
 print a verdict when fewer ran than expected, because an empty failure list is
 also what zero checks produce.
@@ -1320,7 +1571,20 @@ tactics, one no-progress \texttt{simp}, and four rewrites that could not see
 through \texttt{fin\_cases}' literal representation (an \texttt{exact}
 bridges it by definitional equality; a rewrite does not); and two closed the
 family module, whose only defects were two bare lambdas whose projections
-the elaborator met before their domain.  Not one of the failures was mathematical: they were library
+the elaborator met before their domain.  The transport rungs kept the
+shape: two passes closed the band identity, whose single error was a
+higher-order rewrite unable to match a $\beta$-redex; two closed the
+abstract transport module, whose sections~1--4 --- the identity and the
+theorem --- elaborated clean on the first pass, the thirteen errors all in
+the two-state witness (one under-expanded \texttt{Fin}-sum script, ten
+universe-inference failures from a single unpinned \texttt{PUnit}); and
+three closed the tilt layer, whose thirteen errors across two passes were
+two closing tactics dead behind \texttt{field\_simp}, one associativity
+mismatch, one normaliser choking on sum-sized atoms (cured by proving the
+five-variable identity abstractly first), two product-order slips, one
+under-determined \texttt{le\_sup'}, and eight \texttt{positivity} calls
+against atoms the extension cannot see (cured by explicit
+\texttt{mul\_nonneg} chains).  Not one of the failures was mathematical: they were library
 names absent under their classical spelling in the pinned Mathlib, section
 variables that a statement never mentioned and so never bound, a global
 rewrite that consumed the literal $1$ inside an indicator, and goals equal only

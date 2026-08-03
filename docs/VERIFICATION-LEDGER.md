@@ -30731,3 +30731,30 @@ corollary: window ⟹ `sup_L ‖projectedTransfer‖ ≤ exp(−m)` through
 
 **ROLES.**  This desk fabricates; the rung's audit belongs to another
 desk; no score.
+
+## Addendum 600 (2026-08-04, **paper v7: the transport inked — 24 pages at
+anchor 082e89b1a, artifact-verified**)
+
+The manuscript `papers/dobrushin-matrix/dobrushin_matrix.tex` (+pdf, same
+commit) now carries the transport: a new section states
+Theorems~thm:band (the finite band identity), thm:transport (the abstract
+transport theorem, with its anti-circularity discussion and the two-state
+witness) and thm:tilt (the tilt layer), and a subsection names THE ONE
+PLANK NOT CLOSED — the currying discharge of the free-decay hypothesis by
+the family theorem — exactly, claiming nothing that has not compiled.
+Abstract, claims, frontier item 4, and the whole Reproducibility section
+updated: anchor moved to 082e89b1a (every permalink now resolves at an
+anchor containing every cited module), the six-count run of
+registered-then-taken job numbers (8475..8479), the oracle ladder
+2985/2993/2999/3004 with the union rule, the three new module hashes, the
+eight certifiers at sixteen zero exits, and the transport rungs' pass
+costs itemised (every error machinery, none mathematical).  One LaTeX
+defect caught at compile (an undefined \E macro in the new section) fixed
+before any artifact was produced.  ARTIFACT VERIFIED per the v5 lesson:
+the PDF's extracted text contains the new section head, the three theorem
+names, both gate tallies (60/60, 142/142), the negative-subdominant
+sentence, all three new hashes and all three new counts; 24 pages, zero
+LaTeX errors, zero undefined references.
+
+**ROLES.**  The desk that wrote the paper did not audit it; external
+evaluation has its own scales and its own record.
