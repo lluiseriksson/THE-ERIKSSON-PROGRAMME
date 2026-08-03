@@ -60,6 +60,33 @@ role/grouping theorem.  A list of guessed `alpha` labels, a free family of
 weakened operators, or one reconstruction hypothesis per independently chosen
 target is not an admissible substitute.
 
+### Literal alphabet constraints from (3.98) and (3.107)
+
+Printed page 413 / PDF page 25 and printed page 416 / PDF page 28 were checked
+visually against the primary PDF.  They impose more than an untyped list of
+localized factors:
+
+- `alpha` enumerates the finitely many factor shapes attached to one
+  localization domain `X`;
+- `0` is a distinguished label with
+  `R'_0(square) = h_square C_square h_square` and `R'_0(X) = 0` when `X` is
+  larger than one partition square;
+- every displayed walk starts with `(alpha_0, X_0) = (0, X_0)`;
+- consecutive localization domains satisfy `X_(i-1) intersect X_i != empty`;
+  and
+- the source warns that factors may act between different scales, so only
+  carrier-compatible label sequences are admissible even though this typing is
+  suppressed in the displayed sums.
+
+`DependentArrowWalk` records the last item, and `CMP99SectionCGroupedFactor`
+records the source grouping roles and the at-most-three attachment bound.  The
+current `CMP116Lemma1DependentWalkSourceCertificate`, however, accepts an
+arbitrary typed walk index and does not by itself force the distinguished
+initial label or the source normalization of `R'_0`.  Those are obligations of
+the missing physical parser.  They must be proved before its single
+`fullCoupling_reconstruction` field can be cited as the literal (3.107)
+reconstruction rather than as a generic walk sum.
+
 ## Reuse boundary
 
 `cmp116Lemma1PhysicalCovariancePropagator_eq` is an exact squarefree bridge for
