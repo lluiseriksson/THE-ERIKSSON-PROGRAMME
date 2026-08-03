@@ -5,11 +5,18 @@
   "owner_decision": {
     "id": "E",
     "scope": "B_IRREPARABLE_EVIDENCE_LOST",
-    "options": [
-      "quarantine_or_reclassify_the_affected_reproducibility_assertion",
-      "withdraw_the_affected_reproducibility_assertion"
-    ],
-    "status": "UNDECIDED"
+    "status": "DECIDED",
+    "resolution": "quarantine",
+    "record": {
+      "pull_request": 59,
+      "commit": "ef7aef7917c85420815d8b470cd4044f7c5194ad",
+      "path": "docs/decisions/DECISION-QUARANTINE-MISSING-RUN-MANIFEST-EVIDENCE-20260802.md",
+      "blob_sha1": "a94f6324d3cc520b96b4e88b98ad9dab1df3303a",
+      "sha256": "ff16fc4be04607a52d0fd36efa22e849348eab055b1e099f103d452f3180b29b",
+      "inventory_path": "docs/decisions/QUARANTINED-RUN-MANIFESTS-20260802.txt",
+      "inventory_blob_sha1": "0934d7aede891d10234aa49e92aa672baa1c0879",
+      "inventory_sha256": "badd6c85d367fd0b15fe92445559abf847661816636300771cc75ec91048912e"
+    }
   },
   "counts": {
     "A_VESTIGIAL": 0,
@@ -41,7 +48,7 @@
       "first_cause": "AssertionError: assert ['terminal pr...dit failed: '] == []",
       "cause_sha256": "85e4266779e5b391c40e60a8e1f56fc91c3d6973440cd67c2ce50dc017e6bc24",
       "document_or_input": "final seal transitively consumes G2 terminal cover and the evidence-lost finite archive",
-      "disposition": "declared evidence-loss exception pending owner decision E"
+      "disposition": "quarantined evidence-loss exception under E_DECIDED; remains red, visible, and outside repairable debt"
     },
     {
       "class": "B_IRREPARABLE_EVIDENCE_LOST",
@@ -50,7 +57,7 @@
       "first_cause": "AssertionError: assert 'NONE' == 'FINITE_ROLE_PROVED'",
       "cause_sha256": "f6f769374b27fcdcc499bca69846e0d5ab9b9925dd57c7be4029d8bc3698d8ec",
       "document_or_input": "direct finite Wronskian role calls the evidence-lost G2 archive",
-      "disposition": "declared evidence-loss exception pending owner decision E"
+      "disposition": "quarantined evidence-loss exception under E_DECIDED; remains red, visible, and outside repairable debt"
     },
     {
       "class": "B_IRREPARABLE_EVIDENCE_LOST",
@@ -59,7 +66,7 @@
       "first_cause": "AssertionError: assert 'NONE' == 'FINITE_BULK_SIGN_CERTIFIED'",
       "cause_sha256": "aa5a9d9e61c6f5745b1a79d6848a6a70263ed385ec62ea9528089bbce73eb15e",
       "document_or_input": "315 scaled-bulk manifests with 31 unavailable input identities",
-      "disposition": "root evidence-loss exception pending owner decision E"
+      "disposition": "root quarantined evidence-loss exception under E_DECIDED; preserve missing paths and digests as recovery keys"
     },
     {
       "class": "B_IRREPARABLE_EVIDENCE_LOST",
@@ -68,7 +75,7 @@
       "first_cause": "AssertionError",
       "cause_sha256": "0ba9ea8c3ec25f00720bebb80d01f9f920d1ba08331f83ce830c4376c61df5cd",
       "document_or_input": "G2 terminal composition requires finite-role promotion from the evidence-lost archive",
-      "disposition": "declared evidence-loss exception pending owner decision E"
+      "disposition": "quarantined evidence-loss exception under E_DECIDED; remains red, visible, and outside repairable debt"
     },
     {
       "class": "C_REPAIRABLE_DEBT",

@@ -5,7 +5,7 @@ Pytest still reports every scientific failure as FAILED.  This controller only
 decides the CI exit status after comparing the structured failure inventory
 with a versioned A/B/C classification and the exact comparison-base result.
 Only class C is repairable debt.  Class B remains a separately visible
-evidence-loss set pending owner decision E.
+evidence-loss quarantine under the exact owner decision-E record.
 """
 
 from __future__ import annotations
@@ -29,6 +29,8 @@ CLASS_A = "A_VESTIGIAL"
 CLASS_B = "B_IRREPARABLE_EVIDENCE_LOST"
 CLASS_C = "C_REPAIRABLE_DEBT"
 CLASSES = (CLASS_A, CLASS_B, CLASS_C)
+OWNER_DECISION_STATUS = "DECIDED"
+OWNER_DECISION_RESOLUTION = "quarantine"
 _inventory: dict[str, Any] = {
     "schema": REPORT_SCHEMA,
     "collected": [],
@@ -123,13 +125,42 @@ def load_manifest(path: Path) -> dict[str, Any]:
         raise RuntimeError("manifest must contain exactly six measured refs")
     if not isinstance(counts, dict) or set(counts) != set(CLASSES):
         raise RuntimeError("classification counts are absent or malformed")
+    if not isinstance(owner_decision, dict):
+        raise RuntimeError("evidence-loss owner decision E is absent or malformed")
+    record = owner_decision.get("record")
     if (
-        not isinstance(owner_decision, dict)
-        or owner_decision.get("id") != "E"
+        owner_decision.get("id") != "E"
         or owner_decision.get("scope") != CLASS_B
-        or owner_decision.get("status") != "UNDECIDED"
+        or owner_decision.get("status") != OWNER_DECISION_STATUS
+        or owner_decision.get("resolution") != OWNER_DECISION_RESOLUTION
+        or not isinstance(record, dict)
     ):
         raise RuntimeError("evidence-loss owner decision E is absent or malformed")
+    record_strings = (
+        "commit",
+        "path",
+        "blob_sha1",
+        "sha256",
+        "inventory_path",
+        "inventory_blob_sha1",
+        "inventory_sha256",
+    )
+    if (
+        record.get("pull_request") != 59
+        or any(not isinstance(record.get(key), str) or not record[key] for key in record_strings)
+        or any(
+            len(record[key]) != length
+            or any(char not in "0123456789abcdef" for char in record[key])
+            for key, length in (
+                ("commit", 40),
+                ("blob_sha1", 40),
+                ("sha256", 64),
+                ("inventory_blob_sha1", 40),
+                ("inventory_sha256", 64),
+            )
+        )
+    ):
+        raise RuntimeError("owner decision E record reference is absent or malformed")
     nodeids: set[str] = set()
     actual_counts = {name: 0 for name in CLASSES}
     for item in failures:
@@ -243,16 +274,25 @@ def evaluate(
                 break
 
     if regressions:
-        return _decision("FAIL", first_cause, base, current, [], [], [], [], regressions), 2
+        return _decision(
+            "FAIL", first_cause, base, current, [], [], [], [],
+            manifest["owner_decision"], regressions
+        ), 2
 
     base_failures = base.get("failures")
     current_failures = current.get("failures")
     if not isinstance(base_failures, list) or not isinstance(current_failures, list):
-        return _decision("FAIL", "failure inventory is missing", base, current, [], [], [], [], [{"kind": "invalid inventory"}]), 2
+        return _decision(
+            "FAIL", "failure inventory is missing", base, current, [], [], [], [],
+            manifest["owner_decision"], [{"kind": "invalid inventory"}]
+        ), 2
     base_keys = [_key(item) for item in base_failures]
     current_keys = [_key(item) for item in current_failures]
     if len(set(base_keys)) != len(base_keys) or len(set(current_keys)) != len(current_keys):
-        return _decision("FAIL", "duplicate failure report", base, current, [], [], [], [], [{"kind": "duplicate failure"}]), 2
+        return _decision(
+            "FAIL", "duplicate failure report", base, current, [], [], [], [],
+            manifest["owner_decision"], [{"kind": "duplicate failure"}]
+        ), 2
 
     for item in base_failures:
         if _key(item) not in repairable:
@@ -272,7 +312,10 @@ def evaluate(
         regressions.append({"kind": "new or changed failure", **item})
     if regressions:
         cause = regressions[0].get("first_cause") or regressions[0]["kind"]
-        return _decision("FAIL", str(cause), base, current, [], [], [], [], regressions), 1
+        return _decision(
+            "FAIL", str(cause), base, current, [], [], [], [],
+            manifest["owner_decision"], regressions
+        ), 1
 
     current_set = set(current_keys)
     debt = [repairable[key] for key in base_keys if key in current_set]
@@ -280,9 +323,9 @@ def evaluate(
     evidence_active = [item for key, item in evidence_lost.items() if key in current_set]
     evidence_inactive = [item for key, item in evidence_lost.items() if key not in current_set]
     if evidence_active and debt:
-        cause = "declared evidence loss plus repairable debt only"
+        cause = "quarantined evidence loss plus repairable debt only"
     elif evidence_active:
-        cause = "declared evidence loss only"
+        cause = "quarantined evidence loss only"
     elif debt:
         cause = "repairable debt only"
     else:
@@ -296,6 +339,7 @@ def evaluate(
         improvements,
         evidence_active,
         evidence_inactive,
+        manifest["owner_decision"],
         [],
     ), 0
 
@@ -309,6 +353,7 @@ def _decision(
     repairable_improvements: list[dict[str, Any]],
     evidence_loss_active: list[dict[str, Any]],
     evidence_loss_inactive: list[dict[str, Any]],
+    owner_decision: dict[str, Any],
     regressions: list[dict[str, Any]],
 ) -> dict[str, Any]:
     return {
@@ -321,7 +366,7 @@ def _decision(
         "repairable_improvements": repairable_improvements,
         "evidence_loss_active": evidence_loss_active,
         "evidence_loss_inactive": evidence_loss_inactive,
-        "owner_decision": "E_UNDECIDED",
+        "owner_decision": owner_decision,
         "regressions": regressions,
     }
 
@@ -332,8 +377,56 @@ def _git(repo: Path, *args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
+def _git_bytes(repo: Path, *args: str) -> subprocess.CompletedProcess[bytes]:
+    return subprocess.run(
+        ["git", "-C", str(repo), *args], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
+
+
+def validate_owner_decision_record(repo: Path, manifest: dict[str, Any]) -> None:
+    decision = manifest["owner_decision"]
+    record = decision["record"]
+    commit = record["commit"]
+    for path_key, blob_key, digest_key in (
+        ("path", "blob_sha1", "sha256"),
+        ("inventory_path", "inventory_blob_sha1", "inventory_sha256"),
+    ):
+        path = record[path_key]
+        blob = _git(repo, "rev-parse", "--verify", f"{commit}:{path}")
+        if blob.returncode != 0 or blob.stdout.strip() != record[blob_key]:
+            raise RuntimeError(f"owner decision E blob mismatch: {path}")
+        content = _git_bytes(repo, "cat-file", "blob", record[blob_key])
+        if content.returncode != 0:
+            raise RuntimeError(f"owner decision E record is unreadable: {path}")
+        actual = hashlib.sha256(content.stdout).hexdigest()
+        if actual != record[digest_key]:
+            raise RuntimeError(f"owner decision E SHA-256 mismatch: {path}")
+    decision_bytes = _git_bytes(repo, "cat-file", "blob", record["blob_sha1"]).stdout
+    try:
+        decision_text = decision_bytes.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise RuntimeError("owner decision E record is not UTF-8") from exc
+    if "**Decision:** `E_DECIDED: quarantine`" not in decision_text:
+        raise RuntimeError("owner decision E resolution is absent from its record")
+    for item in _class_items(manifest, CLASS_B):
+        if item["nodeid"] not in decision_text:
+            raise RuntimeError(
+                f"owner decision E record omits class-B nodeid: {item['nodeid']}"
+            )
+    inventory = _git_bytes(repo, "cat-file", "blob", record["inventory_blob_sha1"]).stdout
+    try:
+        inventory_lines = inventory.decode("utf-8").splitlines()
+    except UnicodeDecodeError as exc:
+        raise RuntimeError("owner decision E inventory is not UTF-8") from exc
+    if len(inventory_lines) != 319 or len(set(inventory_lines)) != 319:
+        raise RuntimeError("owner decision E inventory is not the exact 319-item set")
+
+
 def validate_refs(repo: Path, manifest: dict[str, Any], base_sha: str) -> None:
-    shas = [base_sha] + [item["sha"] for item in manifest["measured_refs"]]
+    shas = (
+        [base_sha, manifest["owner_decision"]["record"]["commit"]]
+        + [item["sha"] for item in manifest["measured_refs"]]
+    )
     for sha in shas:
         resolved = _git(repo, "rev-parse", "--verify", f"{sha}^{{commit}}")
         if resolved.returncode != 0:
@@ -345,6 +438,7 @@ def validate_refs(repo: Path, manifest: dict[str, Any], base_sha: str) -> None:
         ancestry = _git(repo, "merge-base", "--is-ancestor", item["sha"], head.stdout.strip())
         if ancestry.returncode != 0:
             raise RuntimeError(f"measured SHA is not an ancestor of HEAD: {item['sha']}")
+    validate_owner_decision_record(repo, manifest)
 
 
 def run_pytest(repo: Path, nodeids: list[str], timeout_seconds: int) -> dict[str, Any]:
@@ -448,6 +542,7 @@ def main(argv: list[str] | None = None) -> int:
             [],
             [],
             [],
+            {},
             [{"kind": "guard error", "detail": str(exc)}],
         )
         return write_decision(args.result, decision, 2)

@@ -26,10 +26,10 @@ uniform nine-item debt ceiling is invalid.
 | Nodeid | Frozen first cause | Document / input scope | Class | Evidence | Disposition |
 |---|---|---|---|---|---|
 | `tests/test_surface_bulk_3_6.py::test_canonical_surface_bulk_3_6_transcript` | `AssertionError: worktree script hash mismatch` | `scripts/validate_surface_bulk_3_6.py`; `certify_bulk_arb.py`; committed `[3,6]` transcript and source commit | **C** | Script, transcript, and recorded Git blob exist.  The validator applies a raw-byte check before its already present LF-normalized check.  `audit_surface_terminal_prerequisites` consumes this certificate and G6 names the prerequisite reconstruction as terminal evidence. | Keep the test.  Put only this repairable fingerprint under the C ratchet. |
-| `tests/test_surface_final_seal.py::test_surface_final_seal` | `AssertionError: assert ['terminal pr...dit failed: '] == []` | Closure board, `surface-complete` TeX/PDF/build manifest, terminal prerequisites, G2 weak terminal cover, and closed-form anchors | **B** | Its immediate failure is the repairable `[3,6]` prerequisite, but its complete PASS predicate later calls `audit_surface_g2_weak_terminal_cover`, which calls finite-role and the evidence-lost G2 archive.  A release seal cannot be classified C while one of its mandatory predicates is B. | Keep visible as an evidence-loss exception pending owner decision E.  Do not call it debt or claim the seal is scientifically green. |
-| `tests/test_surface_finite_role_relay.py::test_finite_role_relay_is_complete_and_logically_bound` | `AssertionError: assert 'NONE' == 'FINITE_ROLE_PROVED'` | `audit_surface_finite_role_relay.py`; finite G2 archive; direct Wronskian sign implication; `surface-complete` Theorem A | **B** | `audit_role()` directly calls `G2.audit_summary()`.  The promotion document says the historical **H_tail relay** is unused, but immediately replaces it with the direct Wronskian cover; the closure board still names that finite cover as terminal G2 evidence.  Therefore this nodeid is not A.  Its direct archive dependency is B. | Keep visible as B pending E; do not retire a currently load-bearing direct-cover predicate. |
-| `tests/test_surface_g2_relay_admissibility.py::test_terminal_promotion_is_bound_to_the_frozen_ownership_fingerprint` | `AssertionError: assert 'NONE' == 'FINITE_BULK_SIGN_CERTIFIED'` | `audit_surface_g2_relay_admissibility.py`; `surface-scaled-bulk-*.json`; production/replay ownership fingerprint | **B** | Root evidence-loss case.  Task (34) rederived 679 missing references in 315 `surface-scaled-bulk-cwin3p2*` manifests, collapsing to 31 missing identities.  Across 243 published refs/tags, 6,442 reachable commits and 24,431 blobs, it found zero path, basename, or declared-digest match.  The outputs exist, but the archive's input reproducibility cannot be reconstructed. | Declare the loss and link it to owner decision E: quarantine/reclassification or withdrawal of the reproducibility assertion. |
-| `tests/test_surface_g2_terminal_cover.py::test_surface_g2_terminal_domain_cover` | `AssertionError` | `audit_surface_g2_weak_terminal_cover.py`; finite-role audit plus high-beta weak-main lanes | **B** | `audit()` calls `finite_role.audit_role()` and requires `FINITE_ROLE_PROVED` before the high-beta lanes.  It is therefore transitively dependent on the B archive.  The closure board makes this composition live (`G2_WEAK_TERMINAL_COVER_PROVED`), so it is not A. | Keep visible as B pending E.  Do not count it in repairable debt. |
+| `tests/test_surface_final_seal.py::test_surface_final_seal` | `AssertionError: assert ['terminal pr...dit failed: '] == []` | Closure board, `surface-complete` TeX/PDF/build manifest, terminal prerequisites, G2 weak terminal cover, and closed-form anchors | **B** | Its immediate failure is the repairable `[3,6]` prerequisite, but its complete PASS predicate later calls `audit_surface_g2_weak_terminal_cover`, which calls finite-role and the evidence-lost G2 archive.  A release seal cannot be classified C while one of its mandatory predicates is B. | Quarantine under `E_DECIDED`; keep red and visible, outside repairable debt and outside any scientific PASS. |
+| `tests/test_surface_finite_role_relay.py::test_surface_finite_role_relay_is_complete_and_logically_bound` | `AssertionError: assert 'NONE' == 'FINITE_ROLE_PROVED'` | `audit_surface_finite_role_relay.py`; finite G2 archive; direct Wronskian sign implication; `surface-complete` Theorem A | **B** | `audit_role()` directly calls `G2.audit_summary()`.  The promotion document says the historical **H_tail relay** is unused, but immediately replaces it with the direct Wronskian cover; the closure board still names that finite cover as terminal G2 evidence.  Therefore this nodeid is not A.  Its direct archive dependency is B. | Quarantine under `E_DECIDED`; keep red and visible, outside repairable debt. |
+| `tests/test_surface_g2_relay_admissibility.py::test_terminal_promotion_is_bound_to_the_frozen_ownership_fingerprint` | `AssertionError: assert 'NONE' == 'FINITE_BULK_SIGN_CERTIFIED'` | `audit_surface_g2_relay_admissibility.py`; `surface-scaled-bulk-*.json`; production/replay ownership fingerprint | **B** | Root evidence-loss case.  Task (34) rederived 679 missing references in 315 `surface-scaled-bulk-cwin3p2*` manifests, collapsing to 31 missing identities.  Across 243 published refs/tags, 6,442 reachable commits and 24,431 blobs, it found zero path, basename, or declared-digest match.  The outputs exist, but the archive's input reproducibility cannot be reconstructed. | Quarantine under `E_DECIDED`; preserve every missing path and digest as a recovery key. |
+| `tests/test_surface_g2_terminal_cover.py::test_surface_g2_terminal_domain_cover` | `AssertionError` | `audit_surface_g2_weak_terminal_cover.py`; finite-role audit plus high-beta weak-main lanes | **B** | `audit()` calls `finite_role.audit_role()` and requires `FINITE_ROLE_PROVED` before the high-beta lanes.  It is therefore transitively dependent on the B archive.  The closure board makes this composition live (`G2_WEAK_TERMINAL_COVER_PROVED`), so it is not A. | Quarantine under `E_DECIDED`; keep red and visible, outside repairable debt. |
 | `tests/test_surface_high_beta_lambda3_joint_validator.py::test_committed_lambda3_joint_pair` | `AssertionError: unexpected transcript digest` | Lambda-three production/replay pair and the recorded certificate dependency ledger | **C** | Production, replay, validator, certificate and every recorded dependency path exist.  The validator reaches a stale expected transcript digest before checking the live rho/adverse/margin obligations.  G2's live high-beta composition consumes this certificate. | Keep and ratchet as repairable C. |
 | `tests/test_surface_high_beta_lambda3_weak_relay_inputs.py::test_lambda3_transcript_implies_tighter_weak_relay_bounds` | `AssertionError: unexpected lambda-three digest: 64cb5cb855fc3ddf90ea4efd06567c677cb4f880aaa5ca2d53eb70683387eb36` | Same lambda-three pair, dependency hashes, and the tighter `rho<7/200`, `adverse<43/50` weak-relay thresholds | **C** | All inputs exist and the first cause is a stale expected digest, not a missing artifact.  The weak G2 terminal composition consumes these bounds. | Keep and ratchet as repairable C. |
 | `tests/test_surface_terminal_prerequisites.py::test_terminal_prerequisites_are_rebuilt_from_evidence` | `AssertionError` | v88 sanitation, optional-Hcube removal, two Theorem-B witnesses, bulk `[3,6]`, `[6,15]`, `[15,20]`, left-edge and right-edge transcripts | **C** | Every direct module and transcript exists.  The current exception comes from the repairable `[3,6]` raw-hash check.  G6 explicitly names terminal-prerequisite reconstruction as live evidence. | Keep and ratchet as repairable C. |
@@ -90,7 +90,7 @@ that no file under `papers/**` mentions any auxiliary artifact.
 
 The replacement check is named:
 
-`Scientific pytest triage: repairable-debt ratchet (5) + declared evidence-loss set (4)`
+`Scientific pytest triage: repairable-debt ratchet (5) + quarantined evidence-loss set (4)`
 
 It may pass only when:
 
@@ -105,7 +105,58 @@ It may pass only when:
   fails closed.
 
 This predicate does not certify any scientific claim, restore lost evidence,
-or decide owner decision E.
+or turn a quarantined B test into a scientific PASS.
+
+## Owner decision E — canonical decided state
+
+Decision E is now `E_DECIDED: quarantine`.  The exact canonical record is PR
+#59, commit `ef7aef7917c85420815d8b470cd4044f7c5194ad`, path
+`docs/decisions/DECISION-QUARANTINE-MISSING-RUN-MANIFEST-EVIDENCE-20260802.md`.
+Its Git blob is `a94f6324d3cc520b96b4e88b98ad9dab1df3303a` and its raw Git-blob
+SHA-256 is
+`ff16fc4be04607a52d0fd36efa22e849348eab055b1e099f103d452f3180b29b`.
+The exact 319-item inventory is
+`docs/decisions/QUARANTINED-RUN-MANIFESTS-20260802.txt`, blob
+`0934d7aede891d10234aa49e92aa672baa1c0879`, SHA-256
+`badd6c85d367fd0b15fe92445559abf847661816636300771cc75ec91048912e`.
+
+The guard resolves those objects, verifies both blob identities and SHA-256
+values, requires the decided-quarantine sentence and all four B nodeids in the
+record, and requires the inventory to contain 319 unique lines.  The decision
+does not reduce the missing-reference count or authorize editing a recovery
+path or digest.
+
+## Trigger-coverage repair after audit (39)
+
+Audit (39) correctly found that the internal guard could be bypassed because
+the workflow's path filter omitted direct class-C modules.  A correct guard
+that does not run is not an effective control.  Both `push` and `pull_request`
+now use the broad `scripts/**` pattern; the pre-existing `tests/**` pattern
+covers the five C test sources.
+
+The executable coverage verifier derives this table from the manifest's five C
+nodeids and AST imports/loaders in those test files:
+
+| Class-C nodeid | Derived direct dependencies | Effective `push` patterns | Effective `pull_request` patterns |
+|---|---|---|---|
+| `test_canonical_surface_bulk_3_6_transcript` | `tests/test_surface_bulk_3_6.py`; `scripts/validate_surface_bulk_3_6.py` | `tests/**`; `scripts/**` | `tests/**`; `scripts/**` |
+| `test_committed_lambda3_joint_pair` | `tests/test_surface_high_beta_lambda3_joint_validator.py`; `scripts/validate_surface_high_beta_lambda3_joint_interior.py` | `tests/**`; `scripts/**` | `tests/**`; `scripts/**` |
+| `test_lambda3_transcript_implies_tighter_weak_relay_bounds` | `tests/test_surface_high_beta_lambda3_weak_relay_inputs.py`; `scripts/validate_surface_high_beta_lambda3_weak_relay_inputs.py` | `tests/**`; `scripts/**` | `tests/**`; `scripts/**` |
+| `test_terminal_prerequisites_are_rebuilt_from_evidence` | `tests/test_surface_terminal_prerequisites.py`; `scripts/audit_surface_terminal_prerequisites.py` | `tests/**`; `scripts/**` | `tests/**`; `scripts/**` |
+| `test_authoritative_sixth_head_transcript_validates` | `tests/test_validate_surface_remainder_delta0_sixth_coefficient_transcript.py`; `scripts/validate_surface_remainder_delta0_sixth_coefficient_transcript.py` | `tests/**`; `scripts/**` | `tests/**`; `scripts/**` |
+
+The verifier also checks each test source against `tests/**`, honors ordered
+negative patterns, fails if a C nodeid/test/import is missing or ambiguous, and
+has an executed attack that removes `scripts/**` and requires exit 2.
+
+Audit (39)'s infrastructure correction is also recorded: the classic branch
+protection endpoint's 404 does **not** mean that main has no protection.
+Repository ruleset `20176974`, `Require honesty on main`, is active for
+`refs/heads/main`; it requires check `honesty` with integration id `15368`, has
+no bypass actors, and reports `current_user_can_bypass=never`.  Its rule list
+does not contain `deletion` or `non_fast_forward`, and neither the run-manifest
+guard nor this triage check is required.  Thus the path-trigger FAIL remains
+valid even though the broader claim of zero protection was false.
 
 ## Draft PR body freeze
 
@@ -122,5 +173,7 @@ string was encoded directly as UTF-8, without a command-output newline.
 - derived CRLF representation: 3,482 bytes, SHA-256
   `6706a8c49be87ba201c7705c3d1a369df8675a82e07cc0fb5ac8e6e5179095f0`.
 
-The branch and this body are to remain unchanged while fresh external audit is
-in progress.
+That freeze applied to head
+`73389ccc733d72cdfe16d80041e04111164e45f4`.  Audit (39) completed with the
+path-trigger FAIL above, after which the owner lifted the freeze only for this
+bounded repair.  A new head/body freeze is recorded after the repair CI closes.

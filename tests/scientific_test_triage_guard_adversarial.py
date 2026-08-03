@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import ast
+from copy import deepcopy
 import json
 from pathlib import Path
 import subprocess
@@ -21,11 +22,21 @@ from scripts.pytest_scientific_triage_guard import (
     evaluate,
     invalidate_result,
     load_manifest,
+    validate_owner_decision_record,
+)
+from scripts.validate_scientific_triage_trigger_coverage import (
+    CoverageError,
+    derive_dependencies,
+    load_manifest as load_coverage_manifest,
+    trigger_match,
+    verify_coverage,
+    workflow_patterns,
 )
 
 
 MANIFEST_PATH = ROOT / ".github" / "scientific-test-triage.json"
 SCRIPT = ROOT / "scripts" / "pytest_scientific_triage_guard.py"
+TRIGGER_SCRIPT = ROOT / "scripts" / "validate_scientific_triage_trigger_coverage.py"
 WORKFLOW = ROOT / ".github" / "workflows" / "control-plane.yml"
 
 
@@ -99,6 +110,54 @@ def main() -> int:
     }, "TRIAGE_COUNTS: unexpected A/B/C partition")
     print("TRIAGE_COUNTS: PASS A=0 B=4 C=5 exit=0")
 
+    owner_decision = manifest["owner_decision"]
+    require(
+        owner_decision["status"] == "DECIDED"
+        and owner_decision["resolution"] == "quarantine"
+        and owner_decision["record"]["pull_request"] == 59,
+        "OWNER_DECISION: canonical E_DECIDED quarantine record is absent",
+    )
+    print(
+        "OWNER_DECISION: PASS E_DECIDED=quarantine pr=59 "
+        f"commit={owner_decision['record']['commit']} exit=0"
+    )
+    validate_owner_decision_record(ROOT, manifest)
+    print(
+        "OWNER_DECISION_RECORD: PASS blobs=2 inventory=319 "
+        "class_B_nodeids=4 exit=0"
+    )
+
+    coverage_manifest = load_coverage_manifest(MANIFEST_PATH)
+    dependencies = derive_dependencies(ROOT, coverage_manifest)
+    triggers = workflow_patterns(WORKFLOW)
+    coverage_rows = verify_coverage(dependencies, triggers)
+    require(len(dependencies) == 5, "TRIGGER_COVERAGE: wrong class-C count")
+    require(len(coverage_rows) >= 10, "TRIGGER_COVERAGE: missing test/import dependencies")
+    for nodeid, paths in dependencies.items():
+        script_paths = [path for path in paths if path.startswith("scripts/")]
+        require(script_paths, f"TRIGGER_COVERAGE: no direct script import {nodeid}")
+        for dependency in paths:
+            for event, (mode, patterns) in triggers.items():
+                covered, decisive = trigger_match(dependency, mode, patterns)
+                require(covered, f"TRIGGER_COVERAGE: {event} bypass for {dependency}")
+                print(
+                    f"TRIGGER_CAUSAL: PASS nodeid={nodeid} dependency={dependency} "
+                    f"event={event} pattern={decisive} exit=0"
+                )
+    broken_triggers = deepcopy(triggers)
+    for event, (mode, patterns) in broken_triggers.items():
+        broken_triggers[event] = (
+            mode,
+            [pattern for pattern in patterns if pattern != "scripts/**"],
+        )
+    try:
+        verify_coverage(dependencies, broken_triggers)
+    except CoverageError as exc:
+        require("uncovered" in str(exc), "TRIGGER_COVERAGE_ATTACK: wrong first cause")
+        print(f"TRIGGER_COVERAGE_ATTACK: FAIL first_cause={exc} exit=2")
+    else:
+        raise RuntimeError("TRIGGER_COVERAGE_ATTACK: missing scripts/** survived")
+
     multiline = SimpleNamespace(
         longrepr=SimpleNamespace(
             reprcrash=SimpleNamespace(
@@ -151,7 +210,7 @@ def main() -> int:
         inventory(current_nodeids, evidence_lost + repaired),
         "PASS",
         0,
-        "declared evidence loss plus repairable debt only",
+        "quarantined evidence loss plus repairable debt only",
     )
     check(
         "ATTACK_5_C_REINTRODUCTION",
@@ -173,12 +232,16 @@ def main() -> int:
     require(decision["status"] == "PASS" and code == 0, "B_VISIBILITY: baseline rejected")
     require(len(decision["evidence_loss_active"]) == 4, "B_VISIBILITY: active B set hidden")
     require(len(decision["repairable_debt"]) == 5, "B_VISIBILITY: C debt count wrong")
-    print("B_VISIBILITY: PASS active_B=4 repairable_C=5 owner_decision=E_UNDECIDED exit=0")
+    require(
+        decision["owner_decision"] == owner_decision,
+        "B_VISIBILITY: decided quarantine record hidden or changed",
+    )
+    print("B_VISIBILITY: PASS active_B=4 repairable_C=5 owner_decision=E_DECIDED:quarantine exit=0")
 
     decision, code = evaluate(manifest, base, inventory(current_nodeids, repairable))
     require(decision["status"] == "PASS" and code == 0, "B_INACTIVE: passing B rejected")
     require(len(decision["evidence_loss_inactive"]) == 4, "B_INACTIVE: inactive B set hidden")
-    print("B_INACTIVE: PASS inactive_B=4 owner_decision=E_UNDECIDED exit=0")
+    print("B_INACTIVE: PASS inactive_B=4 owner_decision=E_DECIDED:quarantine exit=0")
 
     changed_b = dict(evidence_lost[0])
     changed_b["first_cause"] = "AssertionError: changed evidence-loss symptom"
@@ -200,8 +263,18 @@ def main() -> int:
         require(not stale.exists(), "ATTACK_6 stale PASS survived invalidation")
         print("ATTACK_6_STALE_PASS: ABSENT first_cause=invalidated exit=0")
 
-    tree = ast.parse(SCRIPT.read_text(encoding="utf-8"))
-    require(not any(isinstance(node, ast.Assert) for node in ast.walk(tree)), "ATTACK_7 decisive assert found")
+    trees = [
+        ast.parse(path.read_text(encoding="utf-8"))
+        for path in (SCRIPT, TRIGGER_SCRIPT)
+    ]
+    require(
+        not any(
+            isinstance(node, ast.Assert)
+            for tree in trees
+            for node in ast.walk(tree)
+        ),
+        "ATTACK_7 decisive assert found",
+    )
     print(f"ATTACK_7_OPTIMIZATION: PASS first_cause=no-assert optimize={sys.flags.optimize} exit=0")
 
     with tempfile.TemporaryDirectory(prefix="manifest-attacks-") as directory:
@@ -211,6 +284,15 @@ def main() -> int:
         early_failure_attack(missing, "HEAD", "ATTACK_8_MISSING_MANIFEST")
         early_failure_attack(corrupt, "HEAD", "ATTACK_8_CORRUPT_MANIFEST")
         early_failure_attack(MANIFEST_PATH, "0" * 40, "ATTACK_8_UNRESOLVABLE_BASE")
+        decision_drift = Path(directory) / "decision-drift.json"
+        drifted = deepcopy(manifest)
+        drifted["owner_decision"]["record"]["sha256"] = "0" * 64
+        decision_drift.write_text(json.dumps(drifted), encoding="utf-8")
+        early_failure_attack(
+            decision_drift,
+            "HEAD",
+            "OWNER_DECISION_RECORD_DRIFT",
+        )
     return 0
 
 
