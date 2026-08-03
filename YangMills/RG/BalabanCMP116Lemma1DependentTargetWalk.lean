@@ -12,7 +12,9 @@ PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
 and the result has not yet been verified by the Lean compiler.
 
 CMP99 equation (3.107) suppresses the intermediate carrier types in its
-displayed product.  The reconstructed Section-C generator instead returns a
+displayed expansion of the square propagator `G`.  The rectangular minimizer
+`H` is represented later by (3.126), and Theorem 3.12 transfers the random-walk
+conclusions to it.  The reconstructed Section-C generator instead returns a
 sigma type
 
 `Sigma target, DependentArrowWalk Hom source target`.
@@ -24,10 +26,11 @@ silently select a target, forget the readout, or replace the source statement
 by a family of independently chosen fixed-target identities.
 
 Honest scope: the complete CMP99 factor alphabet hidden by the printed word
-"etc.", the physical endpoint readout, and the reconstruction (3.107) remain
-one named source input.  This module only fixes the type of that input.  It
-does not identify the already reconstructed displayed subalphabet with the
-complete propagator and it does not accept a free weakened family.
+"etc.", the physical endpoint readout, and the `H` reconstruction obtained
+from the `G` series, (3.126), and Theorem 3.12 remain one named source input.
+This module only fixes the type of that input.  It does not identify the
+already reconstructed displayed subalphabet with the complete propagator and
+it does not accept a free weakened family.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No placeholders or
 local axioms.

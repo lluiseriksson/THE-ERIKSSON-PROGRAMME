@@ -1464,6 +1464,50 @@
       ]
     },
     {
+      "claim_id": "cmp99.eq3.107.generalized-walk-expansion-G",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Generalized random-walk expansion of the square propagator G.",
+      "formula_ascii": "G = sum_omega R_0(X_0) R_alpha1(X_1) ... R_alphan(X_n)",
+      "formula_latex": null,
+      "conclusion": "This is the source walk series for G, not by itself the rectangular minimizer H.",
+      "source_verified": true,
+      "equations": [
+        "3.107"
+      ],
+      "assumptions": [
+        "M is sufficiently large and the configuration satisfies the regularity hypothesis stated in CMP99 Theorem 3.10.",
+        "Consecutive localization domains intersect and only carrier-compatible alpha sequences are admissible, although the displayed formula suppresses those types."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.126.rectangular-minimizer-H",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "exact_formula",
+      "confidence": "visual",
+      "statement": "Rectangular minimizer represented through the square propagator.",
+      "formula_ascii": "H B = G Q* (Q G Q*)^(-1) B",
+      "formula_latex": null,
+      "conclusion": "A source-faithful H walk reconstruction must compose the G expansion and the inverse/readout factors in (3.126); citing (3.107) alone is insufficient.",
+      "source_verified": true,
+      "equations": [
+        "3.126"
+      ],
+      "assumptions": [
+        "H is the unique minimizer of (3.109)-(3.110).",
+        "The vanishing identities (3.124) have been proved."
+      ]
+    },
+    {
       "claim_id": "cmp99.theorem3.3.background-field-green-bounds",
       "citation_key": "cmp99.background-field-propagator-source-target",
       "source_id": "cmp99",

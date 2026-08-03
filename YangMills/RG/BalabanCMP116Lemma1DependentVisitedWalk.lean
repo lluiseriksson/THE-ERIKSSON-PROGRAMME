@@ -16,7 +16,10 @@ and the result has not yet been verified by the Lean compiler.
 CMP99 printed page 413 states that the factors in its generalized random-walk
 expansion generally act between different scales and that only type-correct
 label sequences are admitted.  Equation (3.107) suppresses those intermediate
-carriers in its displayed product because they do not affect the bounds.
+carriers in the displayed expansion of the square propagator `G` because they
+do not affect the bounds.  The rectangular minimizer `H` is represented later
+by equation (3.126), and Theorem 3.12 transports the random-walk conclusions
+to that operator.
 
 This module keeps the carrier changes literal.  Each physical factor is an
 arrow in a `DependentArrowWalk`; its localization domain contributes one
@@ -32,9 +35,10 @@ preselected family `s |-> H(s)`.
 
 Honest scope: this file does not enumerate the complete CMP99 Section-C factor
 alphabet hidden by the printed word "etc.", and it does not prove the physical
-reconstruction (3.107).  Those remain one named source input.  It also does not
-identify the already validated fixed-carrier auxiliary specialization with
-this dependent one.
+`H` reconstruction obtained by composing the `G` expansion with (3.126) and
+Theorem 3.12.  Those remain one named source input.  It also does not identify
+the already validated fixed-carrier auxiliary specialization with this
+dependent one.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No placeholders or
 local axioms.

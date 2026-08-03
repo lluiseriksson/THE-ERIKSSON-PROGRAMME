@@ -25,9 +25,10 @@ once.  This is the dictionary needed to transport the printed L1 long-walk
 split across the grouping step without replacing `m` by word length.
 
 Honest scope: the source-specific parser of the exhaustive atoms from the
-physical correction, the three-attachment estimate, and the exact CMP99
-(3.107) reconstruction remain open.  No complete factor alphabet or physical
-propagator is supplied here.
+physical correction, the three-attachment estimate, and the exact physical
+`H` reconstruction through CMP99 (3.126) and Theorem 3.12 remain open.  The
+displayed (3.107) series is for `G`, not by itself the rectangular minimizer.
+No complete factor alphabet or physical propagator is supplied here.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No placeholders or
 local axioms.

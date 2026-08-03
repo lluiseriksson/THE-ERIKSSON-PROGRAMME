@@ -2084,8 +2084,12 @@ In particular, neither total letter degree nor the multiplicity expansion of
 occurrences of one cube remain visible only in that auxiliary algebraic
 family.  This gate leaves one genuinely source-cited input open: the concrete
 CMP99 rectangular generalized-walk reconstruction of the physical minimizer.
-It is narrower than accepting an arbitrary weakened `H(s)` family and makes
-the missing source content explicit.
+The citation is not equation (3.107) alone: (3.107) is the series for the
+square propagator `G`; the rectangular minimizer is represented by (3.126),
+and Theorem 3.12 transports the random-walk conclusions to `H`.  The named
+input must therefore encode that composition.  It is narrower than accepting
+an arbitrary weakened `H(s)` family and makes the missing source content
+explicit.
 
 Two tempting shortcuts are excluded.  First, evaluating the current
 fine-head/tail word expansion at `s = 1` and weakening those terms again does
@@ -2100,13 +2104,14 @@ printed family.
 The physical walk index must therefore be fixed only after the CMP99
 rectangular random-walk reconstruction is made explicit.  CMP99 printed page
 427 does describe a later `H1` expansion as tree-like, but that is not the
-object used here: CMP116 printed page 3 explicitly defines the present
-`H(s)`, `G-tilde(s)`, and `H0(s)` from the linear generalized walks of
-(1.6)/(3.107).  Importing the `H1` tree geometry into this dictionary would be
-another object mismatch.  The existing visited-state algebra therefore has
-the correct linear shape.  What remains is to extend its square transfer
-product by the source's rectangular head/readout and to identify the resulting
-unweakened series with the physical minimizer.
+linear weakening object used here.  The relevant source chain is: generalized
+linear walks for `G` in (3.107), the rectangular formula
+`H = G Q* (Q G Q*)^-1` in (3.126), and Theorem 3.12 for the resulting `H`
+random-walk conclusions.  Importing the later `H1` tree geometry into this
+dictionary would be another object mismatch.  The existing visited-state
+algebra therefore has the correct linear shape.  What remains is to extend its
+square transfer product by the source's rectangular head/readout and to
+identify the resulting unweakened series with the physical minimizer.
 
 `BalabanCMP116Lemma1RectangularVisitedWalk` supplies a compiler-verified
 **fixed-carrier auxiliary specialization**: one `R0(X0)` head, square
@@ -2126,9 +2131,10 @@ or prove an additional common-ambient reduction preserving every ordered
 product.  No such reduction exists today.  Moreover the reconstructed
 displayed alphabet is explicitly incomplete because CMP99 says "etc.".  The
 remaining named input is consequently the **dependent**, complete-alphabet
-identity `sum_walk walkTerm = physicalH`, not the fixed-carrier certificate's
-reconstruction field.  No free weakened family is accepted, and no live
-producer counter moves at this correction.
+identity `sum_walk walkTerm = physicalH`, justified by the (3.107) `G` series,
+the rectangular formula (3.126), and Theorem 3.12, not the fixed-carrier
+certificate's reconstruction field.  No free weakened family is accepted,
+and no live producer counter moves at this correction.
 
 There is one further endpoint gate that must remain visible.  The generic
 dependent certificate fixes both its source and target, whereas the current
@@ -2140,12 +2146,14 @@ physical operator, or supply the printed rectangular endpoint readout and
 prove that summing its readouts over the sigma target gives the same
 `physicalH`.  Silently forgetting the sigma target is not an admissible
 dictionary step.  This is an endpoint/type obligation inside the exact
-(3.107) reconstruction, not a second analytic hypothesis and not a terminal
-producer.
+(3.126)/Theorem-3.12 reconstruction, not a second analytic hypothesis and not
+a terminal producer.
 
 The primary CMP99 paper itself is not an acquisition blocker here: equation
-(3.107) is visually confirmed on printed page 416 / PDF page 28 and the
-source-db records CMP99 as `visual_confirmed`.  The remaining debt is the
-source-to-Lean reconstruction just described--in particular the exhaustive
-typed atom/parser and endpoint readout hidden behind the printed "etc."--not
-the absence of the paper.
+(3.107) for `G` is visually confirmed on printed page 416 / PDF page 28,
+(3.126) for `H` is visible on printed page 420, and Theorem 3.12 is visible on
+printed page 423; the source-db records CMP99 as `visual_confirmed`.  The
+remaining debt is the source-to-Lean reconstruction just described--in
+particular the exhaustive typed atom/parser, the rectangular composition, and
+the endpoint readout hidden behind the printed "etc."--not the absence of the
+paper.
