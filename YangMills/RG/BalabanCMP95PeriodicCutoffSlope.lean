@@ -88,15 +88,13 @@ theorem norm_cmp95PeriodicCutoff_sub_le
     rw [hx, EuclideanSpace.norm_eq]
     congr 1
     rw [← W.sum_attach]
-    simp only [Finset.attach_eq_univ, vx, WithLp.norm_toLp,
-      PiLp.norm_apply, Real.norm_eq_abs, sq_abs]
+    simp only [Finset.attach_eq_univ, vx, Real.norm_eq_abs, sq_abs]
   have hvy : cmp95PeriodicCutoff P Q cell y = ‖vy‖ := by
     unfold cmp95PeriodicCutoff
     rw [hy, EuclideanSpace.norm_eq]
     congr 1
     rw [← W.sum_attach]
-    simp only [Finset.attach_eq_univ, vy, WithLp.norm_toLp,
-      PiLp.norm_apply, Real.norm_eq_abs, sq_abs]
+    simp only [Finset.attach_eq_univ, vy, Real.norm_eq_abs, sq_abs]
   have hcard : W.card ≤ 4 := by
     calc
       W.card ≤
