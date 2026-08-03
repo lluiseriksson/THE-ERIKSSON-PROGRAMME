@@ -180,6 +180,46 @@ acts on the regional zero-cochain carrier.  It is therefore a separate scalar
 target in the joint smallness registry, with its physical attainment left to
 the finite-range/commutator estimates.
 
+### Source scale gate for the `O(M^-1)` factor
+
+The primary text on printed p. 408 makes the scale separation explicit.  Its
+large blocks have side `M * L^(j eta)`, while the local operator range is on
+the `L^(j eta)` scale; it assumes the large-block parameter `M` is sufficiently
+large (more precisely it writes `M = K R0 M0`).  This ratio is what survives as
+the `O(M^-1)` factor in (3.89).
+
+The current generated periodic specialization must not be identified with
+that source partition merely because it proves a linear cutoff slope.  It uses
+
+```text
+cutoffScale = 2 * M^(depth+1)
+finiteRange =     M^(depth+1),
+```
+
+so its scale/range ratio is the fixed number `2`; composing the slope with a
+finite-range or Combes--Thomas estimate cancels the displayed inverse scale
+up to a constant.  Thus this specialization cannot by itself witness the
+source `O(M^-1)` contraction.  A source-facing producer must retain an
+independent large-block/localization factor (equivalently, a factorization of
+the ambient torus by the larger cutoff spacing) and derive the active-cell
+overlap from that same partition.  Until that dictionary is present, a green
+slope or overlap module is algebraic infrastructure, not attainment of the
+regional defect window.
+
+The tree already contains the correct scale *shape* in
+`cmp99SourceGeneratedSmoothCutoffScale M depth = M^(depth+2)`, exactly one
+factor `M` above the certified range `M^(depth+1)`.  What remains is not to
+postulate its slope, but to construct the exact periodic square partition and
+ambient-torus factorization at that scale and then transport the same derived
+overlap theorem to it.
+
+The overlap cost is not a second constant at this larger scale.  It is
+derived from the same CMP95 profile support: at most two active translates
+per coordinate and hence at most `2^4 = 16` active source cells in four
+dimensions.  The source-facing specialization must prove this for the
+large-block partition itself rather than import an independent overlap datum
+from the auxiliary terminal-scale partition.
+
 The dependent-arrow alphabet and changing intermediate carriers recorded on
 printed page 413 belong to the later cross-scale Section-C expansion.  They
 must not be imported into (3.90), whose displayed walks are ordinary linear
