@@ -3,8 +3,8 @@
   "generated": "2026-06-26",
   "purpose": "Single flat registry of formulas and formula-shaped targets indexed for LLM agents. source_verified=false means this is a route target or paraphrase, not a theorem-feedable source formula.",
   "counts": {
-    "formulas": 70,
-    "source_verified": 61,
+    "formulas": 71,
+    "source_verified": 62,
     "inferred_or_unverified": 9
   },
   "formulas": [
@@ -1461,6 +1461,32 @@
       "assumptions": [
         "Delta_a is the background-field operator defined in Eq. (3.26).",
         "Dirichlet boundary conditions on Omega_0 are in force in the displayed restriction."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.90.regional-green-neumann",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Regional Green operator reconstructed from the square-partition parametrix and its commutator defect.",
+      "formula_ascii": "G'_0 = sum_Pi h_Pi G'_Pi h_Pi; Delta' G'_0 = I - R'; R' = sum_Pi K(h_Pi) G'_Pi h_Pi; G' = G'_0 sum_(n>=0) (R')^n",
+      "formula_latex": null,
+      "conclusion": "This is the source-faithful fine regional G' walk reconstruction required inside the composite Eq. (3.95) species; it is not the coarse covariance Neumann series already formalized in the Eq395 modules.",
+      "source_verified": true,
+      "equations": [
+        "3.87",
+        "3.88",
+        "3.89",
+        "3.90",
+        "Theorem 3.7"
+      ],
+      "assumptions": [
+        "The square partition and regional local Green operators of Eqs. (3.87)-(3.89) are in force.",
+        "M is sufficiently large so that the correction R' is contractive, as stated in Theorem 3.7."
       ]
     },
     {

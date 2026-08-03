@@ -99,14 +99,29 @@ only relocate the CMP99 reconstruction hypothesis.
 
 ## Next source-facing unit
 
-The next unit is below any one-species expansion.  It must reconstruct one
-literal regional `G'` factor from the CMP99 Section-C generalized walks on the
-same active zero-cochain carrier, and prove exact evaluation to the generated
-regional Green operator.  Its statement must fix internally:
+The next unit is below any one-species expansion.  CMP99 Theorem 3.7 and
+equations (3.87)--(3.90), visually checked on printed pages 408--410 / PDF
+pages 20--22 of the primary PDF with SHA-256
+`39F8033B35838C7BDD14F97C7FB1EDB0B35D4190B8B88F31D19D12A72D542861`, give
+the exact regional construction:
 
-- the regional precision and active carrier;
-- the complete dependent walk alphabet and its intermediate carriers;
-- the squarefree union of visited cubes; and
+```text
+G'_0 = sum_Pi h_Pi G'_Pi h_Pi,
+Delta' G'_0 = I - sum_Pi K(h_Pi) G'_Pi h_Pi = I - R',
+G' = G'_0 (I - R')^-1 = G'_0 sum_n (R')^n.
+```
+
+Thus the missing producer is specifically the physical specialization of
+this regional Neumann expansion on one common active fine zero-cochain carrier;
+it is not equation (3.107), which later expands the different square
+propagator `G`.  Its statement must fix internally:
+
+- one ambient regional precision and active carrier;
+- the finite square partition and the linear walk alphabet of square sequences
+  with consecutive intersections;
+- every local Dirichlet Green, extended by zero to that common carrier;
+- the partition multipliers, commutator factors, defect contraction and
+  Neumann summation; and
 - the equality of the walk sum with that literal regional `G'`.
 
 It must not receive an already chosen walk sum or a free equality to `G'`.
@@ -116,3 +131,50 @@ species, prove evaluation back to that species, and then apply the existing
 grouping grammar.  The Pi4 `G(s)` bridge remains useful for the separate
 global one-cochain factor, but is not a replacement for this regional
 zero-cochain reconstruction.
+
+The dependent-arrow alphabet and changing intermediate carriers recorded on
+printed page 413 belong to the later cross-scale Section-C expansion.  They
+must not be imported into (3.90), whose displayed walks are ordinary linear
+sequences of partition squares acting on a common carrier.
+
+### Immediate source-to-tree dictionary
+
+The repository already has the faithful base layer for Theorem 3.7:
+
+- `cmp99OmegaDirichletZeroPrecision` compresses one ambient precision to a
+  regional zero-boundary problem;
+- `cmp99OmegaDirichletZeroGreen` is its two-sided inverse; and
+- `cmp99OmegaSourceGaugeDirichletGreen` specializes the same construction to
+  an ambient source-gauge precision with an explicit `Qprime`.
+
+This is the correct layer on which to formalize the algebra of (3.87)--(3.90).
+The still-open physical dictionary is the identification of the source's one
+ambient `Delta'_a` and `Q'` with the generated physical precision/Green tower
+used by the Section-C factors.  It is **not** licensed to identify each
+region-specific generated precision with a compression of a larger generated
+precision: the existing `cmp99TypedPrecisionDefect` records a genuine
+transition mismatch between such generated levels.  Any specialization must
+therefore prove the ambient/generated identification explicitly rather than
+receive the final equality of Green operators as a free input.
+
+### What the existing Eq. (3.95) Neumann chain does not replace
+
+The repository already proves a complete but different inverse construction:
+
+- `cmp99Eq395PhysicalPatchedCovariance` is the coarse regional sum
+  `sum_Pi h_Pi C_Pi h_Pi`;
+- `cmp99Eq395PhysicalCorrection` is the exhaustive three-species correction
+  in (3.95);
+- `cmp99Eq395PhysicalCorrectedCovariance_eq_tsum_ordered_atom_layers` expands
+  all powers of that correction; and
+- `cmp99Eq395PhysicalCorrectedCovariance_eq_canonical` identifies the
+  convergent sum with the canonical inverse of the global middle
+  `Q' (G')^2 Q'^*`.
+
+This is a reconstruction of the **coarse covariance**
+`(Q' (G')^2 Q'^*)^-1`, not of the fine regional Green operator
+`G' = (Delta')^-1`.  Its local covariance factors still contain the literal
+generated `G'` internally.  Therefore neither the exact (3.95) correction
+alphabet nor right-inverse uniqueness can discharge the (3.90) dictionary.
+Using either as though it were the regional `G'` series would conflate both
+the operator and its carrier.

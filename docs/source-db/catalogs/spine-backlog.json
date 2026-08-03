@@ -589,14 +589,15 @@
       "key": "cmp99.background-field-propagator-source-target",
       "source_id": "cmp99",
       "locator": {
-        "printed_pages": "395-399, 413, 416, 420, 423, 432",
-        "pdf_pages": "7-11, 25, 28, 32, 35, 44",
+        "printed_pages": "395-399, 408-410, 413, 416, 420, 423, 432",
+        "pdf_pages": "7-11, 20-22, 25, 28, 32, 35, 44",
         "equations": [
           "3.26",
           "3.27",
           "3.35",
           "3.36",
           "3.42-3.49",
+          "3.87-3.90",
           "3.107",
           "3.108",
           "3.126",
@@ -605,6 +606,7 @@
           "Theorem 3.1",
           "Theorem 3.2",
           "Theorem 3.3",
+          "Theorem 3.7",
           "Theorem 3.11",
           "Theorem 3.12",
           "Theorem 3.15"
@@ -625,6 +627,7 @@
       "summary": "CMP99 defines the background-field propagator G(U) as the inverse of the background-field operator Delta_a and visually supplies the associated decay, positivity and external-field stability theorems from recorded local render artifacts. Archive cycle 54 render-checked the CMP99 anchor windows as MATCH, including the printed 396 / PDF 8 displays for regularity conditions (3.35)-(3.36). The source pages are located; the Lean covariance/Hessian dictionary remains open.",
       "extracted_claims": [
         "Equation (3.26) defines the background-field operator Delta_a(U), and Eq. (3.27) defines its Dirichlet inverse G(U) = (Delta_a restricted to Omega_0)^(-1).",
+        "CMP99 Theorem 3.7 and Eqs. (3.87)-(3.90), visually checked on printed pages 408-410 / PDF pages 20-22, construct the regional Green operator by G'_0 = sum_Pi h_Pi G'_Pi h_Pi, Delta' G'_0 = I - sum_Pi K(h_Pi) G'_Pi h_Pi = I - R', and G' = G'_0 (I-R')^(-1) = G'_0 sum_n (R')^n. This is the fine regional G' expansion consumed inside Section C; it is distinct from the later Eq. (3.95) Neumann reconstruction of the coarse covariance (Q' G'^2 Q'^*)^(-1).",
         "Equation (3.107), visually checked on printed page 416 / PDF page 28, expands G as the sum over linear generalized walks omega = ((0,X0),(alpha1,X1),...,(alphan,Xn)) with consecutive simple localization domains intersecting, and with ordered term R0(X0) R_alpha1(X1) ... R_alphan(Xn).",
         "Equation (3.126), visually checked on printed page 420 / PDF page 32, represents the rectangular auxiliary as H B = G Q* (Q G Q*)^(-1) B. The paragraph following (3.133) states that the operator solving the variational problems (3.109)-(3.110) additionally inserts the coordinate factor (U eta)^(-1) in this formula (or uses the equivalent transformed-data convention). Therefore (3.107) is an input to the H random-walk construction, not by itself an expansion of the physical H; that reconstruction also consumes the rectangular composition, the coordinate convention, and Theorem 3.12.",
         "Printed page 413 states that the generalized factors R'_alpha(X) usually act between different scales, that not every combination of alpha labels is admissible, and that this typing is omitted from the displayed expansion only because it does not affect the bounds. Printed page 415 says the G expansion has a few additional factor possibilities and leaves the alphabet non-exhaustive with 'etc.'. Thus a common-state square-tail model is auxiliary unless a carrier-preserving reduction is proved; the physical reconstruction requires a complete dependent-arrow alphabet.",
@@ -662,6 +665,19 @@
             "Consecutive localization domains intersect and only carrier-compatible alpha sequences are admissible, although the displayed formula suppresses those types."
           ],
           "conclusion": "This is the source walk series for G, not by itself the rectangular minimizer H.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp99.eq3.90.regional-green-neumann",
+          "statement": "Regional Green operator reconstructed from the square-partition parametrix and its commutator defect.",
+          "ascii": "G'_0 = sum_Pi h_Pi G'_Pi h_Pi; Delta' G'_0 = I - R'; R' = sum_Pi K(h_Pi) G'_Pi h_Pi; G' = G'_0 sum_(n>=0) (R')^n",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "The square partition and regional local Green operators of Eqs. (3.87)-(3.89) are in force.",
+            "M is sufficiently large so that the correction R' is contractive, as stated in Theorem 3.7."
+          ],
+          "conclusion": "This is the source-faithful fine regional G' walk reconstruction required inside the composite Eq. (3.95) species; it is not the coarse covariance Neumann series already formalized in the Eq395 modules.",
           "source_verified": true
         },
         {
@@ -747,6 +763,7 @@
       ],
       "open_questions": [
         "Exact source-to-Lean dictionary from Delta_a and G(U) to the repository physical gauge bonds, Hessian and covariance/root fields.",
+        "Formalize the Theorem-3.7 / Eq.-(3.90) regional G' parametrix first on the existing common-carrier ambient Dirichlet layer, then prove the separate physical dictionary from the source ambient Delta'_a/Q' to the generated Section-C precision/Green tower. Do not assume region-specific generated precisions are literal compressions: cmp99TypedPrecisionDefect records their genuine transition mismatch. The existing Eq395 chain reconstructs a different coarse covariance.",
         "Exact sign and normalization conventions needed to identify the Hessian inverse with the covariance object used by PhysicalLocalizedCovarianceRootCertificate.",
         "How the CMP99 regularity/smallness hypotheses should be represented in the current raw-source Gaussian package.",
         "Construct the exact per-species internal G/G' factor expansion for the three composite Eq. (3.95) correction summands, prove evaluation back to each summand, and only then apply the printed closest-anchor Section-C grouping and at-most-three attachment bound.",
