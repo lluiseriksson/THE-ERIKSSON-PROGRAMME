@@ -80,7 +80,9 @@ theorem mem_cmp95PeriodicActiveCellWindow_of_squareWeight_ne_zero
   have hvalue : P.value (t - (n : ℝ)) ≠ 0 := by
     intro hz
     apply hk
-    simpa [n, hz]
+    push_cast [n] at hz ⊢
+    rw [hz]
+    norm_num
   have hsupp : t - (n : ℝ) ∈ Set.Ioo (-(2 / 3 : ℝ)) (2 / 3) :=
     P.support_subset (Function.mem_support.mpr hvalue)
   have hfloorLower : ((⌊t⌋ : ℤ) : ℝ) ≤ t := Int.floor_le t
