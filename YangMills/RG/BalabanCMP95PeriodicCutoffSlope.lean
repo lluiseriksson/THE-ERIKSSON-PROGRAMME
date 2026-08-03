@@ -88,13 +88,15 @@ theorem norm_cmp95PeriodicCutoff_sub_le
     rw [hx, EuclideanSpace.norm_eq]
     congr 1
     rw [← W.sum_attach]
-    simp only [Finset.attach_eq_univ, vx, Real.norm_eq_abs, sq_abs]
+    simp only [Finset.attach_eq_univ, vx, PiLp.toLp_apply,
+      Real.norm_eq_abs, sq_abs]
   have hvy : cmp95PeriodicCutoff P Q cell y = ‖vy‖ := by
     unfold cmp95PeriodicCutoff
     rw [hy, EuclideanSpace.norm_eq]
     congr 1
     rw [← W.sum_attach]
-    simp only [Finset.attach_eq_univ, vy, Real.norm_eq_abs, sq_abs]
+    simp only [Finset.attach_eq_univ, vy, PiLp.toLp_apply,
+      Real.norm_eq_abs, sq_abs]
   have hcard : W.card ≤ 4 := by
     calc
       W.card ≤
@@ -103,7 +105,8 @@ theorem norm_cmp95PeriodicCutoff_sub_le
         exact Finset.card_union_le _ _
       _ = 4 := by
         rw [card_cmp95PeriodicActiveWindow, card_cmp95PeriodicActiveWindow]
-  have hscale : 0 ≤ 2 * P.derivBound * ‖y - x‖ := by positivity
+  have hscale : 0 ≤ 2 * P.derivBound * ‖y - x‖ :=
+    mul_nonneg (mul_nonneg zero_le_two P.derivBound_nonneg) (norm_nonneg _)
   have hvdiff : ‖vy - vx‖ ≤ 2 * P.derivBound * ‖y - x‖ := by
     rw [← sq_le_sq₀ (norm_nonneg _) hscale, EuclideanSpace.norm_sq_eq]
     calc
@@ -115,7 +118,8 @@ theorem norm_cmp95PeriodicCutoff_sub_le
           (x - ((k.1 * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ))
           (y - ((k.1 * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ))
         have hk' : ‖(vy - vx) k‖ ≤ P.derivBound * ‖y - x‖ := by
-          simpa [vy, vx, Pi.sub_apply] using hk
+          simpa only [vy, vx, Pi.sub_apply, PiLp.toLp_apply,
+            sub_sub_sub_cancel_right] using hk
         exact pow_le_pow_left₀ (norm_nonneg _) hk' 2
       _ = (W.card : ℝ) * (P.derivBound * ‖y - x‖) ^ 2 := by
         rw [Fintype.card_coe]
