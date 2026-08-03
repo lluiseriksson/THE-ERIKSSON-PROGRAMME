@@ -9,8 +9,10 @@ import YangMills.RG.BalabanCMP99SectionCGrouping
 /-!
 # Squarefree weakening through the CMP99 Section-C grouping
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
+VALIDATED: a fresh Colab Pro+ CPU/high-RAM clone at source SHA
+`1d98623715579fbbd6a0db1ebcca7a7696243dc9` completed the focal build
+(`8459` jobs) and all five oracle declarations with exactly
+`[propext, Classical.choice, Quot.sound]` on 2026-08-03.
 
 CMP99 pp. 411--413 groups ordered localized atoms around a small or sealed
 anchor before calling the result one generalized factor `R'_alpha(X)`.  The
