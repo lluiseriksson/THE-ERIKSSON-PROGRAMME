@@ -132,7 +132,6 @@ theorem bandW_eq_tilt {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ)
     (Real.sqrt_pos.mpr (hw (p (Fin.last n)))).ne'
   have hl : lam ^ n ≠ 0 := (pow_pos hlam n).ne'
   field_simp
-  ring
 
 /-- Band two-endpoint sums, multiplied through by `lam^n`: they are
 `gibbsPathSum`s at the tilted observables. -/
@@ -147,9 +146,13 @@ theorem band_sum_mul_pow {w : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ)
   unfold gibbsPathSum
   rw [Finset.sum_mul]
   refine Finset.sum_congr rfl fun p _ => ?_
-  rw [bandW_eq_tilt hw Om β hlam n p,
-    div_mul_eq_mul_div, mul_div_assoc,
-    div_self (pow_pos hlam n).ne', mul_one]
+  rw [bandW_eq_tilt hw Om β hlam n p, mul_assoc,
+    div_mul_cancel₀ _ (pow_pos hlam n).ne']
+  show f (p 0) * g (p (Fin.last n))
+      * (tilt w Om (p 0) * gibbsWeight w β p * tilt w Om (p (Fin.last n)))
+    = f (p 0) * tilt w Om (p 0)
+      * (g (p (Fin.last n)) * tilt w Om (p (Fin.last n)))
+      * gibbsWeight w β p
   ring
 
 /-! ## §3  Mass and marginals against the free sums -/
@@ -261,8 +264,13 @@ theorem bandCov_mul_sq {w Om : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ
     ← marginal_left_mul_pow hw β hlam heig f n,
     ← marginal_right_mul_pow hw β hlam heig g n]
   unfold bandCov bandE
-  field_simp
-  ring
+  have key : ∀ S B F G l : ℝ, S ≠ 0 →
+      (B / S - F / S * (G / S)) * (S * l) ^ 2
+        = B * l * (S * l) - F * l * (G * l) := by
+    intro S B F G l h
+    field_simp
+    ring
+  exact key _ _ _ _ _ hS'
 
 /-! ## §5  Sup bounds, the partition identity, positivity, and the floor -/
 
@@ -271,8 +279,9 @@ noncomputable def supObs (A : (Fin L → Fin 2) → ℝ) : ℝ :=
   Finset.univ.sup' Finset.univ_nonempty fun σ => |A σ|
 
 theorem abs_le_supObs (A : (Fin L → Fin 2) → ℝ) (σ : Fin L → Fin 2) :
-    |A σ| ≤ supObs A :=
-  Finset.le_sup' _ (Finset.mem_univ σ)
+    |A σ| ≤ supObs A := by
+  unfold supObs
+  exact Finset.le_sup' (fun τ => |A τ|) (Finset.mem_univ σ)
 
 theorem supObs_nonneg (A : (Fin L → Fin 2) → ℝ) : 0 ≤ supObs A :=
   le_trans (abs_nonneg (A fun _ => 0)) (abs_le_supObs A fun _ => 0)
@@ -337,7 +346,7 @@ theorem PS_tilt_pos {w Om : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ)
   unfold gibbsPathSum
   refine Finset.sum_pos (fun p _ => ?_) Finset.univ_nonempty
   exact mul_pos (mul_pos (tilt_pos hw hOm (p 0))
-    (gibbsWeight_pos hw β p)) (tilt_pos hw hOm (p (Fin.last n)))
+    (tilt_pos hw hOm (p (Fin.last n)))) (gibbsWeight_pos hw β p)
 
 /-- **The denominator floor** (design note §6): a pointwise lower bound
 `c ≤ ψ` forces `c²·Z ≤ PS(ψ,ψ)`, uniformly in the time horizon, with no
@@ -354,12 +363,7 @@ theorem floor_PS_tilt {w Om : (Fin L → Fin 2) → ℝ} (hw : ∀ σ, 0 < w σ)
     rw [pow_two]
     exact mul_le_mul (hcle (p 0)) (hcle (p (Fin.last n))) hc0
       (tilt_pos hw hOm (p 0)).le
-  calc c ^ 2 * gibbsWeight w β p
-      ≤ (tilt w Om (p 0) * tilt w Om (p (Fin.last n)))
-          * gibbsWeight w β p :=
-        mul_le_mul_of_nonneg_right h1 (gibbsWeight_pos hw β p).le
-    _ = tilt w Om (p 0) * gibbsWeight w β p
-          * tilt w Om (p (Fin.last n)) := by ring
+  exact mul_le_mul_of_nonneg_right h1 (gibbsWeight_pos hw β p).le
 
 /-! ## §6  The free expectation, the free covariance, and stage A's
 endpoint -/
@@ -494,12 +498,13 @@ theorem bandCov_decay_of_free_decay {w Om : (Fin L → Fin 2) → ℝ}
     calc |freeCov w β n u v| * |freeCov w β n ψ ψ|
         ≤ (Ku * Kv * D * α ^ n) * (Kp * Kp * D * α ^ n) :=
           mul_le_mul (hfree n u v) (hfree n ψ ψ) (abs_nonneg _)
-            (by positivity)
+            (mul_nonneg (mul_nonneg (mul_nonneg (hK u) (hK v)) hD) han)
       _ = (Ku * Kv * D * (Kp * Kp * D)) * (α ^ n * α ^ n) := by ring
-      _ ≤ (Ku * Kv * D * (Kp * Kp * D)) * (α ^ n * 1) := by
-          have hKu := hK u; have hKv := hK v; have hKp := hK ψ
-          exact mul_le_mul_of_nonneg_left
-            (mul_le_mul_of_nonneg_left han1 han) (by positivity)
+      _ ≤ (Ku * Kv * D * (Kp * Kp * D)) * (α ^ n * 1) :=
+          mul_le_mul_of_nonneg_left
+            (mul_le_mul_of_nonneg_left han1 han)
+            (mul_nonneg (mul_nonneg (mul_nonneg (hK u) (hK v)) hD)
+              (mul_nonneg (mul_nonneg (hK ψ) (hK ψ)) hD))
       _ = Ku * Kv * D * (Kp * Kp * D) * α ^ n := by ring
   have hb2 : |freeCov w β n u v|
         * (|freeE w β n ψ (fun _ => 1)| * |freeE w β n (fun _ => 1) ψ|)
@@ -507,7 +512,9 @@ theorem bandCov_decay_of_free_decay {w Om : (Fin L → Fin 2) → ℝ}
     calc |freeCov w β n u v|
           * (|freeE w β n ψ (fun _ => 1)| * |freeE w β n (fun _ => 1) ψ|)
         ≤ (Ku * Kv * D * α ^ n) * (Mp * Mp) := by
-          refine mul_le_mul (hfree n u v) ?_ (by positivity) (by positivity)
+          refine mul_le_mul (hfree n u v) ?_
+            (mul_nonneg (abs_nonneg _) (abs_nonneg _))
+            (mul_nonneg (mul_nonneg (mul_nonneg (hK u) (hK v)) hD) han)
           exact mul_le_mul (hmarg ψ) (hmarg' ψ) (abs_nonneg _)
             (supObs_nonneg ψ)
       _ = Ku * Kv * D * (Mp * Mp) * α ^ n := by ring
@@ -517,7 +524,8 @@ theorem bandCov_decay_of_free_decay {w Om : (Fin L → Fin 2) → ℝ}
     calc (|freeE w β n u (fun _ => 1)| * |freeE w β n (fun _ => 1) v|)
           * |freeCov w β n ψ ψ|
         ≤ (Mu * Mv) * (Kp * Kp * D * α ^ n) := by
-          refine mul_le_mul ?_ (hfree n ψ ψ) (abs_nonneg _) (by positivity)
+          refine mul_le_mul ?_ (hfree n ψ ψ) (abs_nonneg _)
+            (mul_nonneg (supObs_nonneg u) (supObs_nonneg v))
           exact mul_le_mul (hmarg u) (hmarg' v) (abs_nonneg _)
             (supObs_nonneg u)
       _ = Mu * Mv * (Kp * Kp * D) * α ^ n := by ring
@@ -526,12 +534,13 @@ theorem bandCov_decay_of_free_decay {w Om : (Fin L → Fin 2) → ℝ}
     calc |freeCov w β n u ψ| * |freeCov w β n ψ v|
         ≤ (Ku * Kp * D * α ^ n) * (Kp * Kv * D * α ^ n) :=
           mul_le_mul (hfree n u ψ) (hfree n ψ v) (abs_nonneg _)
-            (by positivity)
+            (mul_nonneg (mul_nonneg (mul_nonneg (hK u) (hK ψ)) hD) han)
       _ = (Ku * Kp * D * (Kp * Kv * D)) * (α ^ n * α ^ n) := by ring
-      _ ≤ (Ku * Kp * D * (Kp * Kv * D)) * (α ^ n * 1) := by
-          have hKu := hK u; have hKv := hK v; have hKp := hK ψ
-          exact mul_le_mul_of_nonneg_left
-            (mul_le_mul_of_nonneg_left han1 han) (by positivity)
+      _ ≤ (Ku * Kp * D * (Kp * Kv * D)) * (α ^ n * 1) :=
+          mul_le_mul_of_nonneg_left
+            (mul_le_mul_of_nonneg_left han1 han)
+            (mul_nonneg (mul_nonneg (mul_nonneg (hK u) (hK ψ)) hD)
+              (mul_nonneg (mul_nonneg (hK ψ) (hK v)) hD))
       _ = Ku * Kp * D * (Kp * Kv * D) * α ^ n := by ring
   have hb5 : |freeCov w β n u ψ|
         * (|freeE w β n ψ (fun _ => 1)| * |freeE w β n (fun _ => 1) v|)
@@ -539,7 +548,9 @@ theorem bandCov_decay_of_free_decay {w Om : (Fin L → Fin 2) → ℝ}
     calc |freeCov w β n u ψ|
           * (|freeE w β n ψ (fun _ => 1)| * |freeE w β n (fun _ => 1) v|)
         ≤ (Ku * Kp * D * α ^ n) * (Mp * Mv) := by
-          refine mul_le_mul (hfree n u ψ) ?_ (by positivity) (by positivity)
+          refine mul_le_mul (hfree n u ψ) ?_
+            (mul_nonneg (abs_nonneg _) (abs_nonneg _))
+            (mul_nonneg (mul_nonneg (mul_nonneg (hK u) (hK ψ)) hD) han)
           exact mul_le_mul (hmarg ψ) (hmarg' v) (abs_nonneg _)
             (supObs_nonneg ψ)
       _ = Ku * Kp * D * (Mp * Mv) * α ^ n := by ring
@@ -549,7 +560,8 @@ theorem bandCov_decay_of_free_decay {w Om : (Fin L → Fin 2) → ℝ}
     calc (|freeE w β n u (fun _ => 1)| * |freeE w β n (fun _ => 1) ψ|)
           * |freeCov w β n ψ v|
         ≤ (Mu * Mp) * (Kp * Kv * D * α ^ n) := by
-          refine mul_le_mul ?_ (hfree n ψ v) (abs_nonneg _) (by positivity)
+          refine mul_le_mul ?_ (hfree n ψ v) (abs_nonneg _)
+            (mul_nonneg (supObs_nonneg u) (supObs_nonneg ψ))
           exact mul_le_mul (hmarg u) (hmarg' ψ) (abs_nonneg _)
             (supObs_nonneg u)
       _ = Mu * Mp * (Kp * Kv * D) * α ^ n := by ring
