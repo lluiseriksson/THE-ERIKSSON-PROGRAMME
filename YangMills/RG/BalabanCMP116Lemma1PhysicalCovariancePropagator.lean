@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99ComplexFineHeadTailWordExpansion
 /-!
 # Physical covariance specialization of CMP116 Lemma 1 L1
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations are not yet compiler-verified.
-
 The generic L1 certificate constructs a weakened series over one walk type.
 The literal source-Pi4 covariance is stored entrywise as a length `tsum`
 whose fibres are finite dependent types of physical walks.  This module

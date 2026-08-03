@@ -26708,3 +26708,28 @@ the generic series with the three physical propagators `H(s)`, `G(s)`, and
 producer still absent.  This source brick does not discharge a `PreEq136`
 field, so the live numerator remains exactly 18/41 and no `TermSource`
 inhabitant is produced.
+
+## Addendum 537 (2026-08-03, **physical CMP116 Lemma-1 covariance `G(s)` bridge GREEN**)
+
+`BalabanCMP116Lemma1PhysicalCovariancePropagator.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `d21ba0ecde1fcffaf4e1c2060eb35823d12384f6`.  The runtime used the
+official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`.  The focal exited zero with
+`Build completed successfully (8491 jobs).` after 1,470.552 seconds; the
+audit exited zero after 11.510 seconds.  Its three declarations each depend
+exactly on `[propext, Classical.choice, Quot.sound]`, with neither `sorryAx`
+nor `ofReduceBool`.  The evidence archive was downloaded, independently
+rehashed on Windows as
+`a3ecc3e9f8b5b54065ed6c7a969918b22e281567d51d5c30213cad05042d5149`,
+and the runtime was disconnected and deleted immediately afterward.
+
+The verified theorem uses one common physical walk budget for every matrix
+entry, constructs the scalar L1 propagators internally, and identifies their
+matrix exactly with the literal source-Pi4 complex covariance `G(s)`.  It is
+an entrywise identity and does not by itself prove a volume-uniform operator
+norm.  The current physical minimizer `H(s)` contains products with repeated
+weakening coordinates and therefore still needs a multiplicity-aware
+monomial expansion; the literal `H0(s)` producer remains absent.  No
+`PreEq136` field is discharged: the live numerator remains 18/41 and no
+`TermSource` inhabitant is produced.

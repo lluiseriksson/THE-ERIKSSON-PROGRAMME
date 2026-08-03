@@ -1870,3 +1870,21 @@ example a finitely supported natural multiplicity) plus the signed defect
 expansion, or a source theorem proving the relevant carriers disjoint.  No
 such disjointness theorem is present.  `H0(s)` still has no literal producer.
 This audit changes no counter.
+
+The physical covariance specialization is now compiler-verified.  For every
+matrix entry it instantiates the generic L1 certificate with the dependent
+walk index
+`Sigma length, CMP99SourcePi4FineWalkIndex M Q R length`, performs the
+summable reindexing, and identifies the internally constructed propagator
+exactly with `cmp116SourcePi4FullComplexWeakenedCovarianceMatrix`, the literal
+physical `G(s)`.  A single `treeLength`, `baseWeight`, and scalar budget is
+shared by every row/column pair before `s` is quantified, so this does not
+hide an entry-dependent or post-selected polydisc budget.  The result is an
+exact entrywise `G(s)` bridge; scalarization alone does not provide a
+volume-uniform operator-norm estimate.  The multiplicity-aware `H(s)`
+expansion and a literal `H0(s)` producer remain separate open inputs.  One
+fresh Colab Pro+ CPU/high-RAM clone at source checkpoint
+`d21ba0ecde1fcffaf4e1c2060eb35823d12384f6` completed the focal build with
+8,491 jobs and the three-declaration audit with exactly the standard axiom
+trio.  This physical bridge changes neither the live `18/41` producer count
+nor the number of `TermSource` inhabitants.

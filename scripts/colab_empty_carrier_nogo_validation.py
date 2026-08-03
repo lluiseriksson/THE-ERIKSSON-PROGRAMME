@@ -180,24 +180,27 @@ def main() -> None:
         encoding="utf-8",
     )
     audit_output = run("audit", [str(bindir / "lake"), "env", "lean", audit.name], cwd=ROOT, env=env)
-    axiom_lines = [line for line in audit_output.splitlines() if "depends on axioms:" in line]
-    emit("AUDIT_AXIOM_COUNT=" + str(len(axiom_lines)))
+    clean = re.sub(r"\x1b\[[0-9;]*m", "", audit_output).replace("\r", "")
+    compact = "".join(clean.split())
+    axiom_headers = compact.count("dependsonaxioms:")
+    axiom_blocks = re.findall(r"dependsonaxioms:(\[[^\]]*\])", compact)
+    emit("AUDIT_AXIOM_HEADERS=" + str(axiom_headers))
+    emit("AUDIT_AXIOM_BLOCKS=" + str(len(axiom_blocks)))
     allowed = {"propext", "Classical.choice", "Quot.sound"}
-    for line in axiom_lines:
-        emit(line)
-        clean = re.sub(r"\x1b\[[0-9;]*m", "", line).replace("\r", "")
-        match = re.search(r"depends on axioms:\s*(\[[^\]]*\])", clean)
-        if match is None:
-            archive("FAIL", "audit_axioms", 91)
+    forbidden = {"sorryAx", "Lean.ofReduceBool", "ofReduceBool"}
+    if axiom_headers != 2 or len(axiom_blocks) != 2:
+        archive("FAIL", "audit_count", 90)
+    if any(name in compact for name in forbidden):
+        archive("FAIL", "audit_forbidden", 91)
+    for block in axiom_blocks:
         axioms = {
             name.strip()
-            for name in match.group(1).removeprefix("[").removesuffix("]").split(",")
+            for name in block.removeprefix("[").removesuffix("]").split(",")
             if name.strip()
         }
+        emit("AUDIT_AXIOMS=" + ",".join(sorted(axioms)))
         if not axioms.issubset(allowed):
             archive("FAIL", "audit_axioms", 91)
-    if len(axiom_lines) != 2:
-        archive("FAIL", "audit_count", 90)
     status = run("git_status", ["git", "status", "--porcelain"], cwd=ROOT, env=env)
     if status.strip() != "?? EmptyCarrierNoGoAudit.lean":
         archive("FAIL", "unexpected_checkout_state", 89)
