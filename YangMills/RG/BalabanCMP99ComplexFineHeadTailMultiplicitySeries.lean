@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99ComplexFineHeadTailMultiplicityExpansion
 /-!
 # Complete nested multiplicity expansion of the complex CMP99 minimizer
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The literal rectangular minimizer already has a source-ordered expansion
 
 `Neumann length -> coarse word -> tail choice -> head length -> head walk`.

@@ -1914,3 +1914,25 @@ multiplicity degree, rather than a square-free carrier cardinality, into the
 short/long-walk estimate of generic L1.  It supplies neither that analytic
 degree bound nor a literal `H0(s)` producer.  Therefore the live producer
 count remains `18/41` and no `TermSource` inhabitant is produced.
+
+The finite identity is now lifted through the complete literal physical
+`H(s)` series.  The theorem
+`cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_eq_nestedMultiplicitySeries_of_source`
+retains the source nesting
+`Neumann length -> coarse word -> tail choice -> head length -> head walk`
+and replaces only each terminal word by its exact finite powerset sum of
+multiplicity monomials.  In particular it neither interchanges two infinite
+sums nor commutes physical matrix factors.  One fresh Colab Pro+ CPU/high-RAM
+clone at source checkpoint
+`5ae463a2e48bc91d582672ba64dbbac51f4c1f6f` completed the focal build with
+8,492 jobs and the one-declaration audit with exactly
+`[propext, Classical.choice, Quot.sound]`; the independently rehashed evidence
+archive has SHA-256
+`ef52812ec6826038096e29f3fb9d976d966e66420a6bc176c46965e7ede92df7`.
+
+This closes the exact whole-nested-series algebra for physical `H(s)`, not its
+analytic L1 estimate.  Flattening the nested index, proving absolute
+summability of the expanded terms and controlling total multiplicity degree
+remain separate.  A literal `H0(s)` producer is still absent.  The live
+producer count therefore remains `18/41` and no `TermSource` inhabitant is
+produced.

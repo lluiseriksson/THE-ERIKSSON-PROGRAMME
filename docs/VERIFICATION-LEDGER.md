@@ -26769,3 +26769,35 @@ establish the source short/long-walk estimate for total multiplicity degree.
 It also supplies no literal `H0(s)`.  Consequently no `PreEq136` field is
 discharged, the live numerator remains exactly 18/41, and no `TermSource`
 inhabitant is produced.
+
+## Addendum 539 (2026-08-03, **literal physical `H(s)` whole nested multiplicity series GREEN**)
+
+`BalabanCMP99ComplexFineHeadTailMultiplicitySeries.lean` was replayed with
+its focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `5ae463a2e48bc91d582672ba64dbbac51f4c1f6f`.  The runtime opened at
+2026-08-03 02:39:56 UTC and was disconnected and deleted immediately after
+the evidence archive was downloaded.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed; the manifest was unchanged.
+The focal build exited zero with the literal terminal line
+`Build completed successfully (8492 jobs).` after 1,290.468 seconds.  The
+audit exited zero after 10.407 seconds and its single declaration depends
+exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` were absent.  The gate recorded `FINAL_STATUS=PASS`.  The
+archive created in Colab and independently rehashed on Windows has SHA-256
+`ef52812ec6826038096e29f3fb9d976d966e66420a6bc176c46965e7ede92df7`.
+
+The verified theorem expands the literal physical rectangular minimizer
+through its complete source order: Neumann length, coarse word, finite tail
+choice, head length and finite head walk.  Each terminal word is replaced by
+the already verified finite signed powerset expansion, retaining repeated
+weakening coordinates as natural multiplicities and preserving the original
+noncommutative physical matrix word.  No two infinite sums are interchanged.
+
+This is an exact algebraic identity for the whole nested physical `H(s)`
+series.  It does not flatten the nested index, prove absolute summability of
+the expanded series, establish the source short/long-walk bound for total
+multiplicity degree, or construct `H0(s)`.  It therefore discharges no
+`PreEq136` field: the live numerator remains exactly 18/41 and no `TermSource`
+inhabitant is produced.
