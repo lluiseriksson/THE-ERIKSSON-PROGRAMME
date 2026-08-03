@@ -41,6 +41,9 @@ REQUIRED_META = {
     "horizon",
     "knowledge_tree",
     "dashboard_url",
+    "latest_submission",
+    "latest_submission_doc",
+    "latest_submission_sha256",
 }
 REQUIRED_NODE = {"id", "label", "status", "cls", "group", "col", "row", "note"}
 REQUIRED_MILESTONES = {"M0", "M1", "M2", "M3", "M4", "M5"}
@@ -83,6 +86,16 @@ def validate_meta(data: dict[str, Any]) -> dict[str, Any]:
         _dt.date.fromisoformat(str(meta.get("updated", "")))
     except ValueError:
         err(f"meta.updated is not an ISO date: {meta.get('updated')!r}")
+    submission_doc = meta.get("latest_submission_doc")
+    if not isinstance(submission_doc, str) or not repo_path_exists(submission_doc):
+        err(f"meta.latest_submission_doc is not a repository path: {submission_doc!r}")
+    submission_sha = meta.get("latest_submission_sha256")
+    if (
+        not isinstance(submission_sha, str)
+        or len(submission_sha) != 64
+        or any(char not in "0123456789ABCDEF" for char in submission_sha)
+    ):
+        err("meta.latest_submission_sha256 must be 64 uppercase hexadecimal characters")
     return meta
 
 
