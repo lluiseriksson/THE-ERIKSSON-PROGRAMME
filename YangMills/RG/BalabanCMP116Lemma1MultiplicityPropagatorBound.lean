@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116WeakeningMultiplicityPowersetMajorant
+import YangMills.RG.BalabanCMP116Lemma1WeakenedPropagatorBound
 
 /-!
 # CMP116 Lemma 1: multiplicity-aware propagator bound
