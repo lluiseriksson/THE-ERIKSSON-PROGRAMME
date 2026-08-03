@@ -73,15 +73,46 @@ the printed `H(s)`: it expands the algebraic inverse with multiplicities and
 agrees with the physical minimizer only at full coupling.  Its own module
 records this source-dictionary retraction.
 
-## Next implementable unit
+### Why projected-inverse uniqueness does not yet supply the dictionary
 
-The next Lean unit should not be the whole parser.  It should expose one
-source-faithful internal expansion for one literal (3.95) species, with:
+There are two exact inverse packages in the tree, but they are not inverses of
+the same operator on the same carrier:
 
-- a dependent word index;
-- exact evaluation back to that species;
+- `cmp116Lemma1PhysicalCovariancePropagator_eq` reconstructs the Pi4
+  covariance `G(s)` on fine physical one-cochains.  Applying the literal block
+  map produces `cmp99SourcePi4WeakenedCoarseMiddle = Q G(s) Q*` on coarse
+  physical one-cochains; at `s = 1` this is identified with the physical
+  middle of (3.126).
+- `generatedPhysicalCoarseCovarianceMiddleCoordinates_comp_covariance`
+  concerns the regional generated middle `Q' (G')^2 Q'^*` and its inverse on
+  active gauge zero-cochains.  Its ambient version gives the regional
+  characteristic projector, not the identity on the whole torus.
+
+The first construction depends on a fine physical endomorphism `K`; the
+second is generated from the regional covariant Laplacian, mass term, iterated
+`Q'` tower, and active region.  No theorem in the inspected tree identifies
+`Q G(1) Q*` with `Q' (G')^2 Q'^*`, identifies their carriers, or makes the Pi4
+walk covariance a right inverse of the regional middle.  Therefore
+right-inverse uniqueness cannot prove the missing regional walk dictionary
+from the present endpoints.  Assuming that common-middle identification would
+only relocate the CMP99 reconstruction hypothesis.
+
+## Next source-facing unit
+
+The next unit is below any one-species expansion.  It must reconstruct one
+literal regional `G'` factor from the CMP99 Section-C generalized walks on the
+same active zero-cochain carrier, and prove exact evaluation to the generated
+regional Green operator.  Its statement must fix internally:
+
+- the regional precision and active carrier;
+- the complete dependent walk alphabet and its intermediate carriers;
 - the squarefree union of visited cubes; and
-- no grouping-role claim until the printed factor types are present.
+- the equality of the walk sum with that literal regional `G'`.
 
-Only after that first species is exact should the construction be generalized
-to all three and connected to `CMP99SectionCGroupedFactor`.
+It must not receive an already chosen walk sum or a free equality to `G'`.
+Only after this regional Green dictionary exists is a one-species expansion
+implementable: substitute the exact `G'` expansion into a literal (3.95)
+species, prove evaluation back to that species, and then apply the existing
+grouping grammar.  The Pi4 `G(s)` bridge remains useful for the separate
+global one-cochain factor, but is not a replacement for this regional
+zero-cochain reconstruction.
