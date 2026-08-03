@@ -236,23 +236,32 @@ finite-range collar remains a separate geometric input for the common
 ambient/Dirichlet locality dictionary; it is not an overlap surrogate.
 
 The analytic composition must also retain the source scale in the right
-order.  First bound `[h_Pi, Delta']` as a finite-range kernel: its amplitude
-contains `slope * finiteRange`, which is the certified `O(M^-1)` quantity.
-Then compose that finite-range kernel directly with the exponentially
-localized Dirichlet Green, paying only the finite ball cardinality and
-`exp(rate * finiteRange)`.  Converting the commutator separately to an
-exponential kernel and using the generic exponential--exponential
-composition would spend an avoidable factor `1 / rate`; when the
-Combes--Thomas rate scales with coercivity, that route can turn the expected
-`c^-1` dependence into a spurious worse power.  The source-facing defect
-budget must therefore keep the schematic form
+order.  First establish a normalized weighted-row budget `B_Delta` for the
+literal precision.  The commutator then retains that row budget and pays only
+`slope * finiteRange`, the certified `O(M^-1)` quantity.  It must not recreate
+the precision row from a uniform entry bound times the cardinality of the
+range ball: the normalized `Q'^* Q'` mass cancels its block volume, while that
+crude reconstruction would reintroduce a power of the terminal range and can
+erase the gain completely.
+
+The commutator row composes directly with a weighted row for the exponentially
+localized Dirichlet Green, without loss of spatial rate.  Converting the
+commutator separately to an exponential kernel would spend an avoidable
+factor `1 / rate`; rebuilding either row from pointwise decay would spend an
+additional shell or ball factor.  The source-facing defect budget must retain
+the schematic form
 
 ```text
-overlap * (slope * finiteRange) * kernelBound * ballCount
-        * exp(rate * finiteRange) * (2 / coercivity) * shellSum,
+overlap * (slope * finiteRange) * B_Delta
+        * (2 / coercivity) * greenShellSum,
 ```
 
 with `slope * finiteRange = O(M^-1)` established before the composition.
+The currently available
+`cmp99SourceGeneratedPhysicalPrecision_weightedRowKernelBound` is not yet the
+required producer: it is derived from an entry bound and a range-ball
+cardinality.  The missing physical input is a direct row estimate for the
+normalized Laplacian-plus-`Q'^*Q'` precision.
 
 The dependent-arrow alphabet and changing intermediate carriers recorded on
 printed page 413 belong to the later cross-scale Section-C expansion.  They
