@@ -1,0 +1,439 @@
+{
+  "schema_version": 1,
+  "catalog": "continuum-os-adversarial-source-packet",
+  "updated": "2026-07-30",
+  "sources": {
+    "menotti_pelissetto_1987": {
+      "short": "Menotti--Pelissetto CMP 113",
+      "title": "General Proof of Osterwalder-Schrader Positivity for the Wilson Action",
+      "author": "P. Menotti and A. Pelissetto",
+      "journal": "Communications in Mathematical Physics 113 (1987), 369-373",
+      "year": 1987,
+      "doi": "10.1007/BF01221251",
+      "status": "primary_pdf_source_extracted",
+      "web_urls": {
+        "doi": "https://doi.org/10.1007/BF01221251",
+        "primary_record": "https://link.springer.com/article/10.1007/BF01221251",
+        "open_pdf": "https://scispace.com/pdf/general-proof-of-osterwalder-schrader-positivity-for-the-1dpcazlzxm.pdf"
+      }
+    },
+    "luscher_1977": {
+      "short": "Luscher CMP 54",
+      "title": "Construction of a Selfadjoint, Strictly Positive Transfer Matrix for Euclidean Lattice Gauge Theories",
+      "author": "M. Lüscher",
+      "journal": "Communications in Mathematical Physics 54 (1977), 283-292",
+      "year": 1977,
+      "doi": "10.1007/BF01614090",
+      "status": "primary_pdf_source_extracted",
+      "web_urls": {
+        "doi": "https://doi.org/10.1007/BF01614090",
+        "open_pdf": "https://bib-pubdb1.desy.de/record/396349/files/7611148.pdf?version=1"
+      }
+    },
+    "osterwalder_schrader_1973": {
+      "short": "OS I",
+      "title": "Axioms for Euclidean Green's Functions",
+      "author": "K. Osterwalder and R. Schrader",
+      "journal": "Communications in Mathematical Physics 31 (1973), 83-112",
+      "year": 1973,
+      "doi": "10.1007/BF01645738",
+      "status": "primary_pdf_source_extracted_superseded_in_part",
+      "web_urls": {
+        "doi": "https://doi.org/10.1007/BF01645738",
+        "open_pdf": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-31/issue-2/Axioms-for-Euclidean-Greens-functions/cmp/1103858969.pdf"
+      },
+      "artifact_note": "Downloaded primary PDF SHA-256 9E45658863823A5A769891141F8EB7B935F0DDFEC62F6554D9F802D8157DA878. OS II says OS I Lemma 8.8 is wrong and the sufficiency of the original E0-E4 package is open."
+    },
+    "osterwalder_schrader_1975": {
+      "short": "OS II",
+      "title": "Axioms for Euclidean Green's Functions II",
+      "author": "K. Osterwalder and R. Schrader",
+      "journal": "Communications in Mathematical Physics 42 (1975), 281-305",
+      "year": 1975,
+      "doi": "10.1007/BF01608978",
+      "status": "primary_pdf_source_extracted",
+      "web_urls": {
+        "doi": "https://doi.org/10.1007/BF01608978",
+        "open_pdf": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-42/issue-3/Axioms-for-Euclidean-Greens-functions-II-with-an-Appendix-by/cmp/1103899050.pdf"
+      },
+      "artifact_note": "Downloaded primary PDF SHA-256 643A45D3037F788BA80ECFEF2F218778D7D511102F75FFC44468E20C16382C71."
+    },
+    "osterwalder_seiler_1978": {
+      "short": "Osterwalder--Seiler Annals of Physics 110",
+      "title": "Gauge Field Theories on a Lattice",
+      "author": "K. Osterwalder and E. Seiler",
+      "journal": "Annals of Physics 110 (1978), 440-471",
+      "year": 1978,
+      "doi": "10.1016/0003-4916(78)90039-8",
+      "status": "primary_abstract_located_full_theorem_blocked",
+      "web_urls": {
+        "doi": "https://doi.org/10.1016/0003-4916(78)90039-8",
+        "publisher_pdf": "https://www.sciencedirect.com/science/article/pii/0003491678900398"
+      }
+    },
+    "jaffe_witten_2000": {
+      "short": "Clay official Yang--Mills description",
+      "title": "Quantum Yang-Mills Theory",
+      "author": "Arthur Jaffe and Edward Witten",
+      "journal": "Clay Mathematics Institute official Millennium Problem description",
+      "year": 2000,
+      "status": "authoritative_pdf_source_extracted",
+      "web_urls": {
+        "landing": "https://www.claymath.org/millennium/yang-mills-the-maths-gap/",
+        "official_pdf": "https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf"
+      }
+    }
+  },
+  "citations": [
+    {
+      "key": "menotti_pelissetto_1987.wilson-rp",
+      "source_id": "menotti_pelissetto_1987",
+      "locator": {
+        "printed_pages": "369-373",
+        "pdf_pages": "1-5 (viewer P0-P4)",
+        "equations": ["(2.4)", "(2.5)", "(2.6)", "(2.7)", "(2.11)-(2.25)"],
+        "local_text": [],
+        "renders": []
+      },
+      "status": "source_extracted",
+      "summary": "For the Wilson lattice action with gauge fields and Wilson fermions, the paper proves non-negativity of the reflected correlation for every gauge-invariant observable in the designated positive half-space, including reflections through site-containing planes; the fermionic statement assumes hopping parameter K < 1/6.",
+      "formulas": [
+        {
+          "id": "menotti_pelissetto_1987.eq2.4",
+          "statement": "For every gauge-invariant F supported in the stated positive region, the normalized Wilson expectation of Theta(F)F is nonnegative, under the stated Wilson-fermion assumptions.",
+          "ascii": "<Theta(F) F> >= 0",
+          "exactness": "paraphrase of Eq. (2.4) with its adjacent hypotheses",
+          "confidence": "source_extracted",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "future SU(2) Wilson reflection-positivity producer artefact"
+      ],
+      "use_for": [
+        "Site-plane versus link-plane reflection distinction.",
+        "Gauge-invariant-observable scope.",
+        "Required antilinearity and complex conjugation under reflection.",
+        "Wilson-action-specific reflected factorisation architecture."
+      ],
+      "do_not_use_for": [
+        "A proof that this repository's SU(2) splitting identity is correct.",
+        "A continuum limit.",
+        "A mass gap.",
+        "Removal of the K < 1/6 assumption in the paper's fermionic model without separately taking the pure-gauge specialization."
+      ],
+      "open_questions": [
+        "The future producer must exhibit its own lattice geometry, boundary classification, Haar normalisation, and gluing identity; citation alone does not discharge them."
+      ]
+    },
+    {
+      "key": "luscher_1977.transfer-matrix-character-positivity",
+      "source_id": "luscher_1977",
+      "locator": {
+        "printed_pages": "283-289",
+        "pdf_pages": "3-8 (viewer P2-P7)",
+        "equations": ["(4)", "(5)", "(22)", "(23)", "(29)", "(30)"],
+        "local_text": [],
+        "renders": []
+      },
+      "status": "source_extracted",
+      "summary": "On a finite four-dimensional Wilson lattice with gauge group SU(N), Lüscher constructs the physical Hilbert space and transfer matrix. Proposition 1 states that T is bounded, self-adjoint, gauge invariant, and strictly positive. The one-link kernel is expanded in irreducible characters; strict positivity is equivalent to positive coefficients, obtained from tensor-product multiplicities. Proposition 2 identifies the Euclidean expectations with operator Schwinger functions under the stated boundary conditions.",
+      "formulas": [
+        {
+          "id": "luscher_1977.prop1",
+          "statement": "The transfer matrix is self-adjoint, bounded, gauge invariant under the stated transformations, and strictly positive; the Hamiltonian is H = -(1/a) log T.",
+          "ascii": "T = T*, T > 0, H = -(1/a) log(T)",
+          "exactness": "Proposition 1 and immediately following definition",
+          "confidence": "source_extracted",
+          "source_verified": true
+        },
+        {
+          "id": "luscher_1977.eq23",
+          "statement": "The relevant central one-link kernel has an irreducible-character expansion, and positivity of its quadratic form is necessary and sufficient for every character coefficient to be positive.",
+          "ascii": "K(V) = sum_r c_r chi_r(V), with c_r > 0",
+          "exactness": "Eqs. (22)-(23) and following paragraph",
+          "confidence": "source_extracted",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "future SU(2) Wilson character-coefficient proof",
+        "future lattice transfer-operator claim"
+      ],
+      "use_for": [
+        "SU(N), hence SU(2), character-coefficient positivity test.",
+        "Haar-based one-link quadratic form.",
+        "Null quotient/completion and one-step time translation.",
+        "The physical units H = -(1/a) log T.",
+        "Exact separation between infinite-volume lattice and continuum scaling."
+      ],
+      "do_not_use_for": [
+        "Automatic continuum reconstruction.",
+        "Vacuum uniqueness: the paper explicitly says it is not known there.",
+        "Boundary-condition independence.",
+        "A positive physical mass uniform in a or volume."
+      ],
+      "open_questions": [
+        "A producer must match its character and Haar conventions to Eq. (23), including any dimension factors.",
+        "A claimed continuum mass must control the spectrum after the factor 1/a and all regulator limits."
+      ]
+    },
+    {
+      "key": "luscher_1977.thermodynamic-versus-continuum",
+      "source_id": "luscher_1977",
+      "locator": {
+        "printed_pages": "284",
+        "pdf_pages": "4 (viewer P3)",
+        "equations": [],
+        "local_text": [],
+        "renders": []
+      },
+      "status": "source_extracted",
+      "summary": "The paper distinguishes sending the finite lattice extents M,L to infinity, which produces the infinite-volume lattice theory, from a continuum theory obtained only through a further large-distance/critical limit with bare parameters near critical values.",
+      "extracted_claims": [
+        "M,L -> infinity is identified as the infinite-volume lattice theory; the continuum theory is described as a separate critical/large-distance limit."
+      ],
+      "formulas": [],
+      "lean_targets": [
+        "YangMills.L1_GibbsMeasure.FreeBoundaryThermodynamicLimit.tendsto_freeBoundaryThermodynamicExpectation"
+      ],
+      "use_for": [
+        "Rejecting the identification of a thermodynamic limit at fixed lattice regulator with a continuum limit."
+      ],
+      "do_not_use_for": [
+        "Existence of the critical limit.",
+        "Nontriviality of a continuum theory."
+      ],
+      "open_questions": []
+    },
+    {
+      "key": "osterwalder_schrader_1973.original-axiom-package",
+      "source_id": "osterwalder_schrader_1973",
+      "locator": {
+        "printed_pages": "87-90",
+        "pdf_pages": "5-8",
+        "equations": [],
+        "local_text": [],
+        "renders": []
+      },
+      "status": "source_extracted",
+      "summary": "OS I formulates E0 temperedness, E1 Euclidean covariance, E2 positivity, E3 symmetry, and E4 cluster, and states an E-to-R reconstruction theorem. OS II later reports that a lemma in this proof is wrong and that sufficiency of this original E0-E4 package is open.",
+      "formulas": [
+        {
+          "id": "osterwalder_schrader_1973.E0-E4",
+          "statement": "The original Euclidean package is E0 temperedness, E1 Euclidean covariance, E2 positivity, E3 symmetry, and E4 cluster.",
+          "ascii": "E0 + E1 + E2 + E3 + E4",
+          "exactness": "axiom names on printed pages 87-88",
+          "confidence": "source_extracted",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "future continuum OS-reconstruction claim"
+      ],
+      "use_for": [
+        "Historical definition of the OS axiom labels.",
+        "Showing that reflection positivity alone is only E2."
+      ],
+      "do_not_use_for": [
+        "Sufficiency of the unmodified original E0-E4 assumptions; OS II corrects this point.",
+        "Lattice transfer-matrix positivity without the extra lattice argument."
+      ],
+      "open_questions": []
+    },
+    {
+      "key": "osterwalder_schrader_1975.corrected-reconstruction",
+      "source_id": "osterwalder_schrader_1975",
+      "locator": {
+        "printed_pages": "281-288",
+        "pdf_pages": "1-8",
+        "equations": ["(4.1)", "(4.2)", "(4.3)"],
+        "local_text": [],
+        "renders": []
+      },
+      "status": "source_extracted",
+      "summary": "OS II corrects OS I. Its main reconstruction theorem requires the stronger E0' linear-growth condition (or E0'') together with E1-E4. It then yields a unique Wightman theory satisfying R0-R5 and the additional R0' growth property.",
+      "formulas": [
+        {
+          "id": "osterwalder_schrader_1975.main-theorem",
+          "statement": "A sequence satisfying E0' (or E0'') and E1-E4 is the Euclidean Green-function sequence of a uniquely determined Wightman QFT; the Wightman distributions satisfy R0-R5 and R0'.",
+          "ascii": "E0' (or E0'') + E1-E4 => unique Wightman QFT with R0-R5 and R0'",
+          "exactness": "Theorem E' (or E'') -> R' on printed page 287",
+          "confidence": "source_extracted",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "future continuum OS-reconstruction claim"
+      ],
+      "use_for": [
+        "The real hypotheses of corrected continuum OS reconstruction.",
+        "Distinguishing reflection positivity from full Wightman reconstruction.",
+        "Requiring regularity/growth, Euclidean covariance, symmetry, and cluster assumptions in addition to positivity."
+      ],
+      "do_not_use_for": [
+        "Claiming that finite-lattice reflection positivity alone constructs a continuum Wightman QFT.",
+        "Claiming a mass gap; the theorem reconstructs a QFT but does not supply a positive gap."
+      ],
+      "open_questions": [
+        "A producer must state which precise version of the growth condition is proved for its Schwinger functions."
+      ]
+    },
+    {
+      "key": "osterwalder_seiler_1978.abstract-scope",
+      "source_id": "osterwalder_seiler_1978",
+      "locator": {
+        "printed_pages": "440-471",
+        "pdf_pages": "BLOCKED: publisher full text was not accessible to this desk",
+        "equations": [],
+        "local_text": [],
+        "renders": []
+      },
+      "status": "located",
+      "summary": "The publisher abstract says the article treats lattice approximations of Yang-Mills and fermion fields, verifies physical positivity for the Schwinger functions of those approximations, and obtains a positive self-adjoint transfer matrix. Exact theorem numbers, hypotheses, and normalisations remain blocked until the primary full text is inspected.",
+      "formulas": [],
+      "lean_targets": [
+        "future SU(2) Wilson reflection-positivity producer artefact"
+      ],
+      "use_for": [
+        "Bibliographic pointer only until the full primary theorem text is inspected."
+      ],
+      "do_not_use_for": [
+        "Any exact technical claim, theorem hypothesis, coefficient convention, or page-level proof step.",
+        "A continuum limit or mass gap."
+      ],
+      "open_questions": [
+        "Acquire and inspect the primary full text; record exact theorem/page and conventions before upgrading status."
+      ]
+    },
+    {
+      "key": "jaffe_witten_2000.exact-problem",
+      "source_id": "jaffe_witten_2000",
+      "locator": {
+        "printed_pages": "5-6",
+        "pdf_pages": "6-7 (viewer P5-P6)",
+        "equations": ["Problem statement in Section 4", "(2)"],
+        "local_text": [],
+        "renders": []
+      },
+      "status": "source_extracted",
+      "summary": "The official problem asks, for every compact simple gauge group G, for a nontrivial quantum Yang-Mills theory on R^4 with axiomatic properties at least as strong as the cited Wightman/OS requirements and with a mass gap Delta > 0, meaning no Hamiltonian spectrum in (0,Delta).",
+      "formulas": [
+        {
+          "id": "jaffe_witten_2000.problem",
+          "statement": "For every compact simple G, prove existence of a nontrivial quantum Yang-Mills theory on R^4 with a mass gap Delta > 0 and axiomatic properties at least as strong as the cited schemes.",
+          "ascii": "forall compact simple G, exists nontrivial QYM on R^4 with gap Delta > 0",
+          "exactness": "faithful paraphrase of the official boxed problem statement",
+          "confidence": "source_extracted",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "repository-wide Clay comparison"
+      ],
+      "use_for": [
+        "The exact external standard for Clay comparison.",
+        "The spectral definition of the mass gap.",
+        "The required nontriviality and R^4 setting."
+      ],
+      "do_not_use_for": [
+        "Turning a repository percentage into a mathematical estimate.",
+        "Crediting a finite-lattice, fixed-a, conditional, or abelian result as the Clay result."
+      ],
+      "open_questions": []
+    },
+    {
+      "key": "jaffe_witten_2000.regulators-nontriviality-renormalization",
+      "source_id": "jaffe_witten_2000",
+      "locator": {
+        "printed_pages": "6-11 and footnote 2 on 11",
+        "pdf_pages": "7-12 (viewer P6-P11)",
+        "equations": ["(3)", "footnote 2"],
+        "local_text": [],
+        "renders": []
+      },
+      "status": "source_extracted",
+      "summary": "The official description separates compact/finite approximations from R^4, makes uniform estimates central, explains cutoff- and volume-dependent renormalisation in constructive limits, requires a non-Gaussian measure for nonlinear fields, requires both a->0 and volume->infinity for the Wilson lattice route, and explicitly excludes weak existence by compactness unless properties of the limit such as axioms and a mass gap are also established.",
+      "extracted_claims": [
+        "For the Wilson lattice route one must verify limits as lattice spacing tends to zero and volume tends to infinity.",
+        "Weak existence by compactness is explicitly excluded as a solution unless properties of the limit, including axioms and a mass gap, are also established.",
+        "A non-Gaussian Euclidean measure is required to obtain a nonlinear field in the scalar example used to explain nontriviality."
+      ],
+      "formulas": [],
+      "lean_targets": [
+        "future CONT-C0 continuum candidate",
+        "future CONT-C1 uniform-estimate artefact"
+      ],
+      "use_for": [
+        "Regulator and limit-order audit.",
+        "Renormalisation-dependence audit.",
+        "Nontriviality and Gaussian-limit audit.",
+        "Rejecting compactness alone as a Clay solution.",
+        "Requiring uniform-in-volume mass-gap control for the R^4 route."
+      ],
+      "do_not_use_for": [
+        "A ready-made tightness theorem in a producer's chosen topology.",
+        "A substitute for proving convergence, uniqueness, OS axioms, nontriviality, or a mass gap."
+      ],
+      "open_questions": [
+        "CONT-C0 must specify its actual topology and observables; the official description does not choose them for the producer."
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "source_id": "menotti_pelissetto_1987",
+      "importance": "critical",
+      "catalog_status": "source-extracted",
+      "artifact_status": "open primary PDF inspected",
+      "formula_status": "Eq. (2.4) and reflection definitions located",
+      "next_action": "Match every future SU(2) convention and splitting identity; do not infer the producer theorem from the citation.",
+      "priority": 10
+    },
+    {
+      "source_id": "luscher_1977",
+      "importance": "critical",
+      "catalog_status": "source-extracted",
+      "artifact_status": "DESY open primary PDF inspected",
+      "formula_status": "Propositions 1-2 and Eqs. (22)-(23) located",
+      "next_action": "Audit Haar/character/dimension conventions and the factor 1/a in every producer gap claim.",
+      "priority": 10
+    },
+    {
+      "source_id": "osterwalder_schrader_1973",
+      "importance": "high",
+      "catalog_status": "source-extracted-with-correction",
+      "artifact_status": "Project Euclid primary PDF inspected and hashed",
+      "formula_status": "E0-E4 and original E-to-R theorem located; sufficiency superseded in part by OS II",
+      "next_action": "Use only with the OS II correction attached.",
+      "priority": 8
+    },
+    {
+      "source_id": "osterwalder_schrader_1975",
+      "importance": "critical",
+      "catalog_status": "source-extracted",
+      "artifact_status": "Project Euclid primary PDF inspected and hashed",
+      "formula_status": "Theorem E' (or E'') -> R' located",
+      "next_action": "Require a producer-side proof of E0'/E0'' and E1-E4 before continuum reconstruction credit.",
+      "priority": 10
+    },
+    {
+      "source_id": "osterwalder_seiler_1978",
+      "importance": "critical",
+      "catalog_status": "source-pending",
+      "artifact_status": "publisher abstract located; primary full theorem text inaccessible",
+      "formula_status": "blocked",
+      "next_action": "Acquire primary full text and extract exact theorem/page/hypotheses before technical use.",
+      "priority": 9
+    },
+    {
+      "source_id": "jaffe_witten_2000",
+      "importance": "critical",
+      "catalog_status": "source-extracted",
+      "artifact_status": "official Clay PDF inspected",
+      "formula_status": "exact problem statement and regulator discussion located",
+      "next_action": "Run the literal requirement matrix against every new producer headline.",
+      "priority": 10
+    }
+  ]
+}

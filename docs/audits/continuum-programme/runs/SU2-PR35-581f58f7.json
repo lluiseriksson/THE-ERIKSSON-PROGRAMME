@@ -1,0 +1,199 @@
+{
+  "schema_version": 2,
+  "lane": "SU2",
+  "audit_base_sha": "7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a",
+  "observed_main_sha": "1f81ec43404ae2a8c72a8c934807d4b03b8680c9",
+  "observed_at_utc": "2026-07-31T06:51:37.4765467Z",
+  "producer_ref": "origin/codex/su2-wilson-reflection-positivity",
+  "producer_sha": "581f58f71610c3c73243f66d97116022ead1aa9a",
+  "pr_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/35",
+  "freshness_check": {
+    "status": "obsolete",
+    "checked_at_utc": "2026-07-31T08:51:10Z",
+    "producer_sha": "ecbd5c6831f982526602433e3fface0ab964d501",
+    "observed_main_sha": "5683f5929b0d4e2f0114bb8bac73ad39131ad4b7",
+    "changed_files": [
+      "YangMills/OS/SU2WilsonReflectionEndpoint.lean",
+      "YangMills/OS/SU2WilsonReflectionSharp.lean",
+      "docs/su2-os/AUDIT.md",
+      "docs/su2-os/CERTIFICATION.md",
+      "docs/su2-os/CONTRACT.md",
+      "docs/su2-os/ORACLE-TRANSCRIPT.txt",
+      "docs/su2-os/SHARP-GATE.md",
+      "docs/su2-os/SU2OSOracle.lean"
+    ]
+  },
+  "artifact_paths": [
+    "YangMills/OS/SU2WilsonReflectionKernel.lean",
+    "YangMills/OS/SU2WilsonReflectionGeometry.lean",
+    "YangMills/OS/SU2WilsonReflectionEndpoint.lean"
+  ],
+  "normalisations": {
+    "haar_total_mass": "sunHaarProb 2 is a probability measure; the middle integral in the abstract one-plaquette pairing is eliminated using total mass one.",
+    "matrix_coefficient_orthogonality": "Not used. The proof uses eight explicit coordinate/conjugate-coordinate features.",
+    "character_orthogonality": "Not used; there is no Peter-Weyl or character expansion in this endpoint.",
+    "trace_convention": "Unnormalised fundamental 2-by-2 complex matrix trace.",
+    "wilson_action_convention": "Only exp((beta/2) Re tr(x*y^-1)) is proved. su2OnePlaquetteWilsonWeight is defined locally from that kernel, not derived from GaugeConfig.wilsonAction.",
+    "coupling_convention": "Real beta with beta nonnegative for the kernel theorem and strictly positive for the endpoint; exponent coefficient beta/2."
+  },
+  "reflection": {
+    "link_map": "For the declared product type only, reflectSU2Cut swaps the two Half functions and inverts every Cross value.",
+    "orientation_reversal": "The abstract crossing variable is inverted and the right kernel argument occurs as y^-1.",
+    "path_order_reversal": "No path or plaquette-holonomy reflection from repository GaugeConfig is declared.",
+    "group_inverse_or_adjoint": "su2_trace_mul_inv_eq_sum_entries identifies inverse with conjugate-coordinate features.",
+    "antilinear_extension": "The reflected integrand uses star(F x) and the Haar quadratic is complex-valued with a certified real nonnegative result.",
+    "boundary_convention": "One abstract Cross coordinate of type Unit; no physical lattice boundary convention or fixed-edge theorem."
+  },
+  "gluing": {
+    "full_configuration_map": "Absent from repository GaugeConfig; SU2CutConfig is the product by definition.",
+    "inverse_map": "Absent because no assembly map from a full physical configuration is given.",
+    "boundary_identification": "Only the declared Unit crossing coordinate in the autonomous model.",
+    "product_haar_identity": "Exact triple-Haar pairing equals the kernel form inside the declared product model; no pushforward identity from the physical full-configuration Haar measure.",
+    "weight_factorisation": "Exact for the locally defined su2OnePlaquetteCutWeight and su2OnePlaquetteWilsonWeight; not derived from the repository Wilson action."
+  },
+  "core_integration": {
+    "status": "not_applicable",
+    "baseline_sha": "7460e035",
+    "baseline_jobs": 8463,
+    "observed_jobs": 8179,
+    "command_transcript": "At exact head 581f58f7, clean detached target build exited 0 with 8179 jobs; Endpoint source elaboration exited 0, and producer/independent oracles exited 0. Module remains outside YangMillsCore."
+  },
+  "checks": [
+    {
+      "id": "SU2-1-GEOMETRY",
+      "criterion": "The reflection plane, positive half, crossing links/plaquettes, boundary variables, and zero-fixed-edge count are explicit and internally consistent.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "SU2WilsonReflectionGeometry.lean:29-46 declares a product cut and involution, but no lattice reflection plane or GaugeConfig correspondence."
+        }
+      ],
+      "missing_data": [
+        "Physical link/plaquette sets, reflection plane, positive-half algebra, boundary convention, and fixed-edge count."
+      ]
+    },
+    {
+      "id": "SU2-2-SPLITTING",
+      "criterion": "The Wilson action/weight splits into the two half contributions and every crossing term with exact signs and multiplicities.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "su2OnePlaquetteCutWeight_splitting is exact for a weight defined from the kernel; su2OnePlaquetteWilsonWeight_eq_kernel is definitional."
+        }
+      ],
+      "missing_data": [
+        "Derivation from GaugeConfig.plaquetteHolonomy/wilsonAction and a full-lattice crossing multiplicity theorem."
+      ]
+    },
+    {
+      "id": "SU2-2G-GLUING",
+      "criterion": "The pair-of-halves reflected form is exactly equal to the full-configuration product-Haar Wilson integral, including assembly inverse and boundary multiplicities.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm proves the equality only after SU2CutConfig has been defined as Half x Cross x Half."
+        }
+      ],
+      "missing_data": [
+        "Assembly/bijection from repository GaugeConfig, inverse, Haar pushforward, boundary identification, and full Wilson-weight equality."
+      ]
+    },
+    {
+      "id": "SU2-3-HAAR",
+      "criterion": "Haar total mass and every left/right/inversion invariance used by the proof are stated and matched to the actual measure.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "su2WilsonTaylor_isHaarPSDKernel and su2WilsonCrossing_isHaarPSDKernel instantiate sunHaarProb 2; the product-model reduction uses only probability mass one, not an unstated invariance."
+        }
+      ]
+    },
+    {
+      "id": "SU2-3-CHARACTERS",
+      "criterion": "Matrix-coefficient/character orthogonality conventions and all dimension factors are explicit wherever used.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "su2WilsonExponent_finiteRank uses an explicit Fin 2 x Fin 2 x Fin 2 feature index and coefficient beta/4; no orthogonality or character dimension factor is used."
+        }
+      ]
+    },
+    {
+      "id": "SU2-4-CONJUGATION",
+      "criterion": "Link orientation, path-order reversal, inverse/adjoint, complex conjugation, and antilinearity agree through reflection and the integral form.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "The abstract product model verifies cross inversion, dressed cancellation, star(F x), and the SU2 inverse/entry identity."
+        }
+      ],
+      "missing_data": [
+        "A physical GaugeConfig link/path reflection showing orientation and ordered plaquette holonomy reversal."
+      ]
+    },
+    {
+      "id": "SU2-4-COMPLEX-PSD",
+      "criterion": "The claimed quadratic form is nonnegative for arbitrary complex observables in the stated scope, not only for a real or diagonal slice.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "su2WilsonCrossing_isHaarPSDKernel covers every continuous F:SU2->C and su2OnePlaquette_reflection_positive consumes it."
+        }
+      ]
+    },
+    {
+      "id": "SU2-5-COEFFICIENTS",
+      "criterion": "Every coefficient in the crossing-kernel expansion has the claimed sign, normalization, and convergence needed for the limit.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "theorem",
+          "locator": "Kernel lines 374-834 prove beta/4 feature coefficients, nonnegative 1/n! Taylor coefficients, uniform convergence, two dominated integral limits, and endpoint Haar PSD for beta>=0."
+        }
+      ]
+    },
+    {
+      "id": "SU2-5-BOUNDARY-COUNT",
+      "criterion": "Every crossing plaquette and boundary variable is counted exactly once under the selected reflection convention.",
+      "verdict": "BLOCKED",
+      "evidence": [
+        {
+          "kind": "file",
+          "locator": "The one-plaquette model selects Half=Unit and Cross=Unit by definition; this is not a count of a physical lattice cut."
+        }
+      ],
+      "missing_data": [
+        "Crossing-plaquette set and exact physical boundary/multiplicity theorem."
+      ]
+    },
+    {
+      "id": "SU2-HOUSE-PROSE",
+      "criterion": "Prose and headlines match literal declarations, coefficients, observable class, and reflection-positivity scope.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "command",
+          "locator": "check_module_prose.py passed all three modules; producer docs explicitly call the endpoint an autonomous one-plaquette model and leave full lattice gluing open."
+        }
+      ]
+    },
+    {
+      "id": "SU2-HOUSE-CORE",
+      "criterion": "The declared producer module builds from the clean checkout, its direct oracle is clean, and consistency passes; if integrated into YangMillsCore, the separate global integration threshold also applies.",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "kind": "command",
+          "locator": "Clean target build exited 0 (8179 jobs); direct Geometry and Endpoint elaborations exited 0; producer and independent oracles emitted only propext, Classical.choice, Quot.sound; static checks passed."
+        }
+      ]
+    }
+  ]
+}

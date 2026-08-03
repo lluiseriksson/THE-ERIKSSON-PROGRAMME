@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "lane": "CONT-C1",
+  "audit_base_sha": "7c6aaab2f67fd5b9c4a23c45bbffebf476ef221a",
+  "producer_ref": null,
+  "producer_sha": null,
+  "pr_url": null,
+  "artifact_paths": [],
+  "constants": [],
+  "core_integration": {
+    "status": "pending",
+    "baseline_sha": "7460e035",
+    "baseline_jobs": 8463,
+    "observed_jobs": null,
+    "command_transcript": null
+  },
+  "checks": [
+    {
+      "id": "CONT-C1-1-DEPENDENCY-TABLE",
+      "criterion": "Every named constant has an explicit yes/no dependency entry for a, extent, physical volume, UV/IR cutoffs, couplings, support, and renormalisation scale.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C1-1-VALIDITY-DOMAIN",
+      "criterion": "The domain of validity is audited as part of each constant; a volume-free formula with a volume-dependent admissible domain is not uniform.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C1-2-UNITS",
+      "criterion": "All bounds are dimensionally balanced before and after rescaling, with the convention for every numerical rate recorded.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C1-2-A-SCALING",
+      "criterion": "A lattice-unit correlation rate or transfer eigenvalue is converted using the correct factor of a and remains controlled as a tends to zero.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C1-3-VOLUME-UNIFORMITY",
+      "criterion": "Every estimate used after volume removal is uniform in both volume and its validity domain.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C1-3-CUTOFF-UNIFORMITY",
+      "criterion": "Every estimate used after UV/IR cutoff removal is uniform in the removed cutoff after stated renormalisation.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C1-3-LIMIT-ORDER",
+      "criterion": "The proof uses estimates uniform for the exact limit order or joint net that the conclusion takes.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C1-4-CIRCULARITY",
+      "criterion": "Continuum existence, OS axioms, nontriviality, or a uniform physical gap is not assumed through an interface consumed to claim the same item.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C1-4-PHYSICAL-GAP",
+      "criterion": "Any gap identifies the Hilbert space, vacuum sector, operator, units, a-scaling, regulator uniformity, and limiting spectral statement.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No public producer ref, SHA, or PR."]
+    },
+    {
+      "id": "CONT-C1-HOUSE-PROSE",
+      "criterion": "Prose and headlines match literal declarations, constants, and domains.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No producer module or paper."]
+    },
+    {
+      "id": "CONT-C1-HOUSE-CORE",
+      "criterion": "If integrated into YangMillsCore, canonical build is green, oracle is clean, consistency passes, and the job count exceeds 8463.",
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing_data": ["No integrated producer module or clean-checkout transcript."]
+    }
+  ]
+}
