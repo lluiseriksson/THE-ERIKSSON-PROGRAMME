@@ -41,6 +41,9 @@ REQUIRED_META = {
     "horizon",
     "knowledge_tree",
     "dashboard_url",
+    "latest_submission",
+    "latest_submission_state",
+    "latest_submission_record",
 }
 REQUIRED_NODE = {"id", "label", "status", "cls", "group", "col", "row", "note"}
 REQUIRED_MILESTONES = {"M0", "M1", "M2", "M3", "M4", "M5"}
@@ -83,6 +86,9 @@ def validate_meta(data: dict[str, Any]) -> dict[str, Any]:
         _dt.date.fromisoformat(str(meta.get("updated", "")))
     except ValueError:
         err(f"meta.updated is not an ISO date: {meta.get('updated')!r}")
+    latest_record = meta.get("latest_submission_record")
+    if not isinstance(latest_record, str) or not repo_path_exists(latest_record):
+        err(f"meta.latest_submission_record does not exist: {latest_record!r}")
     return meta
 
 
