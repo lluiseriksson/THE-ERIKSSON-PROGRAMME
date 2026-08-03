@@ -30628,3 +30628,52 @@ measured band covariance.  B-2 fabrication is licensed.
 
 **ROLES.**  This desk fabricates and registered its judges before the
 Lean; the audit of the rung belongs to another desk; no score.
+
+## Addendum 598 (2026-08-03, **B-2/B-3 ABSTRACT SIDE GREEN AND ORACLED: the
+transport theorem, at exactly the predicted 8478 and 2999**)
+
+**The abstract transport theorem is a Lean theorem.**
+`YangMills/OS/DobrushinTransport.lean` (sha256 `82a78354…`, 18467 bytes,
+anchor `9088eea6c`): for finite `X`, symmetric `M`, strictly positive `Om`
+with `M Om = Om`, the packaged operator `opOf M` on `EuclideanSpace ℝ X`
+with unit vacuum `vacOf Om` is a `VacuumTransfer`
+(`vacuumTransfer_opOf`); the EXACT identity `connCorr_eq_bandCov` —
+`connCorr (opOf M) (vacOf Om) v n = (∑ Om²) · bandCov M Om n f_v f_v`,
+`f_v = v/Om` — holds for every vector and every `n`; and
+**`abstract_uniform_gap`**: a family of such data whose MEASURE-level band
+covariances decay at a common rate `r < 1` (constants free per `(i, f)`)
+has one `m > 0` with `‖projectedTransfer‖ ≤ exp(−m)` across the whole
+family.  No Ising, no Dobrushin, no entry positivity in the statement;
+the anti-circularity clause of charter Amendment 2(i) is discharged
+because the hypothesis mentions only path sums of `bandW` and the
+identification with operator matrix elements is the proved identity.
+Non-vacuity: `wKernel_bandCov` (band covariance of the two-state witness
+= `((f0−f1)/2)²·rⁿ`, closed form), `wKernel_fluctuation_ne`, and
+`transport_witness` — the pipeline fires end-to-end onto a NONZERO
+projected operator at every rate.  The CLM packaging carries no
+star-algebra API: `opOf_one`/`opOf_mul`/`opOf_pow` are entrywise.
+
+**Verification (fresh runtime, two passes, disconnected on completion).**
+Pass 1 at `e937f50a4`: §1–§4 (identity + transport theorem) elaborated
+CLEAN on the first pass; 13 errors, all in §5's witness = ONE real
+(`wKernel_bandCov`'s script: short `Fin.sum_univ_two` rw count and `ring`
+against `(fun _ => 1) i` beta-redexes → `simp only [Fin.sum_univ_two]`)
+plus a ten-error universe cascade (`ι := PUnit` left the universe free →
+pinned to `Unit`), fixed in `9088eea6c`.  Pass 2, every child zero: ten
+certifier runs (G21-G23's d6b now runs in stage 1, 142/142 both modes on
+the plane), five lane modules, **core «Build completed successfully (8478
+jobs)» — the FIFTH consecutive exact job-count prediction** (8475, 8476,
+8477, 8478), and the FULL repository oracle: **2999 reports (the
+predicted +6), 0 sorryAx, union of axioms = exactly {propext,
+Classical.choice, Quot.sound}** (wrapped continuations read to depth 2).
+Transport build log: 0 errors.  Local COMMITTED BLOBS match the plane's
+stage-5 hashes (the working-copy CRLF difference on Windows is noted and
+irrelevant: the plane builds the blob).
+
+**What remains of D-6**: the Dobrushin-Ising corollary (public theorem
+(ii)) — tilt `ψ = Ω/√w`, five-term formula, denominator floor, geometry
+bridge to D-5's rectangle, D-5 feed, assembly `C_{L,f}·α^n` — per
+`docs/DOBRUSHIN-D6-B2-DESIGN.md` §§4-9, gates already passed (G22/G23).
+
+**ROLES.**  This desk fabricates; the rung's audit belongs to another
+desk; no score.
