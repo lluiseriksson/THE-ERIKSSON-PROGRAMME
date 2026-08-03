@@ -220,6 +220,21 @@ dimensions.  The source-facing specialization must prove this for the
 large-block partition itself rather than import an independent overlap datum
 from the auxiliary terminal-scale partition.
 
+For the regional defect, the relevant overlap is the literal source-side
+one.  Every summand has the ordered form
+
+```text
+[h_Pi, Delta'] G'_Pi h_Pi.
+```
+
+Applied to a one-site probe at `source`, the rightmost multiplier makes that
+summand exactly zero unless `h_Pi(source) != 0`.  The cell sum is therefore
+restricted to the same at-most-sixteen active cells before either Schur sum
+is taken.  No second overlap parameter, and no independently postulated
+overlap of a finite-range enlargement of the supports, is needed.  The
+finite-range collar remains a separate geometric input for the common
+ambient/Dirichlet locality dictionary; it is not an overlap surrogate.
+
 The dependent-arrow alphabet and changing intermediate carriers recorded on
 printed page 413 belong to the later cross-scale Section-C expansion.  They
 must not be imported into (3.90), whose displayed walks are ordinary linear
