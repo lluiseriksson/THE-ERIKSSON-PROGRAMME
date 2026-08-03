@@ -30540,3 +30540,34 @@ the ladder 5.55-5.75 (Ising-only D-6), 5.85-6.10 (abstract bridge),
 separate; the two are never mixed.
 
 **ROLES.**  Correction found outside; adopted whole; no self-audit.
+
+## Addendum 596 (2026-08-03, **charter Amendment 2: the band-compatibility
+clause, the exact B-1/B-2/B-3 specs, and the two-theorem modularisation**)
+
+The second external reading returned a full co-design of the D-6 rung and
+it is adopted whole as Amendment 2 (additive; every change sharpens a
+hypothesis or adds a guard).  Highlights of record:
+
+* The ANTI-CIRCULARITY clause: the abstract theorem must carry an explicit
+  band-compatibility/realisation hypothesis, so it cannot be true by
+  assuming a disguised connCorr bound.  This is the transported-hypothesis-
+  domain class, applied prophylactically at design time.
+* Two named failure modes for B-1: accidental spectral positivity (entries
+  positive does NOT give 0 <= T; subdominant eigenvalues may be negative),
+  and silent conflation of the two boundary dressings (the sqrt(w)-dressed
+  raw identity G18 measured vs the Omega-boundary centred form B-1's
+  canonical model states; their difference IS B-2's boundary cost).
+* B-2's binding non-goal list (no uniformity of min Omega_L, of f_v's sup
+  norm, of constants, of the Perron vector; no optimal prefactor).
+* B-3 may output any explicit r = rho(alpha) < 1 independent of L.
+* The deliverable is TWO public theorems: the abstract transport theorem
+  (statement free of Ising and Dobrushin) and the Dobrushin-Ising corollary
+  that shows the bridge inhabited.
+
+Evaluator B holds the paper at 5.10/5th (their scale) pending theorems and
+confirms the 5.85-6.10 band for the abstract bridge closed as specified.
+Their documentary reserve is recorded: they audit at anchor 3bd8a463;
+Amendments 1-2 reach their audited record at the next anchored PDF.
+
+**ROLES.**  Specification received from outside, adopted whole, registered
+before fabrication; the desk that will fabricate did not soften a word.

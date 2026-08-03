@@ -110,3 +110,68 @@ both bind from here on.
   a boundary-perturbation comparison giving Cauchyness in the exhaustion,
   independence of boundary condition, and uniqueness in the window.  Its
   own charter and gates come later; nothing here licenses it.
+
+## Amendment 2 (2026-08-03, registered BEFORE any Lean of B-1 — additive:
+it sharpens every hypothesis and adds the anti-circularity guard)
+
+Adopted from the second external reading, whole.  Documentary note first:
+that reading audits artifacts at anchor 3bd8a463; Amendments 1-2 and
+Addenda 595-596 are state reported to it, and they enter its audited record
+only at the next anchored PDF.
+
+* THE ANTI-CIRCULARITY CLAUSE (band compatibility).  "Abstract" must NOT
+  mean "positive weight + symmetric matrix => gap": a symmetric strictly
+  positive matrix has a positive Perron vector, but that vector can induce
+  a highly NON-LOCAL boundary weight, and Dobrushin decay for the LOCAL
+  strip weight does not transfer automatically to path measures with Perron
+  boundaries.  The abstract theorem must carry an explicit REALISATION /
+  BAND-COMPATIBILITY hypothesis: the transfer operator's finite correlations
+  are identified with covariances of a strip measure belonging — directly,
+  or through an extension with controlled boundary cost — to the class for
+  which the uniform decay is supplied.  This clause exists so that the
+  abstract theorem cannot come out true by assuming the spectral conclusion
+  in other notation.  (House class: transported-hypothesis-domain; the
+  vacuity test lives in the premises.)
+* B-1, EXACT SPEC.  Finite slice space X; real symmetric T with strictly
+  positive ENTRIES (no spectral positivity anywhere: subdominant eigenvalues
+  may be negative, which is why specRatio takes moduli — introducing 0 <= T
+  accidentally is a named failure mode); Perron pair T Omega = lam0 Omega,
+  lam0 > 0, Omega > 0; normalise That = T/lam0 FROM THE START.  The identity
+  is finite and exact: matrix elements of That^n equal expectations under an
+  explicit finite-band weight, with explicit time orientation, boundary
+  factors, normalisation constant, centering against Omega, multiplication-
+  operator order, and the lam0^{-n} visible in the statement.  Canonical
+  Perron-boundary model: mu_n(x0..xn) prop. to Omega(x0) prod That(xk,xk+1)
+  Omega(xn), normalised by <Omega, That^n Omega> = 1, and
+  Cov_{mu_n}(f(x0), g(xn)) = <(f - E_Omega f) Omega, That^n (g - E_Omega g)
+  Omega>.  NOTE the two boundary dressings in play: G18 measured the RAW
+  sqrt(w)-dressed identity (v-weighted ends, matching T's matrix elements);
+  the Omega-boundary form above is DERIVED from it — the derivation is
+  precisely where B-2's boundary cost lives, and conflating the two
+  dressings silently is a second named failure mode.
+* B-2, EXACT SPEC AND NON-GOALS.  Represent v as a slice observable through
+  Perron positivity, f_v = v / Omega_L, centred automatically when
+  v perp Omega_L.  The cost may depend on L, v, min Omega_L, the
+  oscillations of f_v and the boundary factors — all admissible, because the
+  consumer's quantifier order is: exists r < 1, forall L, forall v, exists
+  C_{L,v}, forall n.  NON-GOALS, binding: no uniform bound on min Omega_L;
+  none on the sup norm of f_v; no constant common to volumes; no uniformity
+  of the Perron vector; no optimal prefactor.  B-2's real content is
+  connecting the Perron boundary to the local bands where the decay
+  hypothesis applies, absorbing the whole cost into C_{L,v}.
+* B-3, RATE FLEXIBILITY.  The output rate need not be alpha itself: any
+  EXPLICIT r = rho(alpha) < 1 independent of L suffices (sqrt(alpha),
+  alpha^{1/c}, ...).  For the rectangular witness, observables on slices
+  separated by n have every support-coordinate pair at distance >= n, so the
+  double oscillation sum may grow with L while factoring as C_{L,v} alpha^n
+  — exactly the permitted growth.  Output shape:
+  |<v, That_L^n v> - <v, Omega_L>^2| <= C_{L,v} r^n, r chosen before L, v.
+* MODULARISATION, binding.  TWO public theorems.  (i) The abstract transport
+  theorem — no Ising, no Dobrushin in its statement: it consumes a family of
+  finite slice spaces, symmetric strictly positive kernels, Perron data, the
+  band identity, the compatibility hypothesis and a common covariance-decay
+  rate, and it produces the uniform gap.  (ii) The Dobrushin-Ising
+  corollary: window => band-decay hypothesis => sup_L specRatio(L) < 1.
+  Ising certifies the bridge is inhabited; the theorem survives
+  Onsager-Kaufman.  The finish line is NOT "prove Ising and abstract the
+  prose"; it is "prove the abstract bridge and use Ising to show it lives."
