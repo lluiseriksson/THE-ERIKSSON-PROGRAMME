@@ -257,7 +257,7 @@ theorem bandZ (M : Matrix X X ℝ) (Om : X → ℝ)
           (fun _ : X => (1 : ℝ)) (v 0)
             * (fun _ : X => (1 : ℝ)) (v (Fin.last n)) * bandW M Om n v :=
     Finset.sum_congr rfl fun v _ => by ring
-  rw [h0, band_pair]
+  rw [h0, band_pair M Om n (fun _ : X => (1 : ℝ)) (fun _ : X => (1 : ℝ))]
   refine Finset.sum_congr rfl fun i _ => ?_
   have h1 : ∀ j : X, ((1 : ℝ) * Om i) * (M ^ n) i j * ((1 : ℝ) * Om j)
       = Om i * ((M ^ n) i j * Om j) := fun j => by ring
