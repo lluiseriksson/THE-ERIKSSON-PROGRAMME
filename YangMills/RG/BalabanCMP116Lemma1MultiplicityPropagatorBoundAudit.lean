@@ -8,8 +8,6 @@ import YangMills.RG.BalabanCMP116Lemma1MultiplicityPropagatorBound
 /-!
 # Axiom audit: CMP116 Lemma-1 multiplicity-aware propagator bound
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its results have not yet been verified by the Lean compiler.
 -/
 
 #print axioms YangMills.RG.summable_cmp116ComplexWeakeningMultiplicitySeries

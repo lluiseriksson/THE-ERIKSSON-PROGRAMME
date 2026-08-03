@@ -1982,3 +1982,30 @@ and independently rehashed on Windows as
 `89e225ae8432711a2d503c8f401ff488645d178b69ceb8a24770fbf8a1f0e59b`.
 The runtime was disconnected and deleted immediately afterward.  The live
 producer count remains `18/41` and there is still no `TermSource` inhabitant.
+
+The norm-producing part of generic L1 is now generalized to total weakening
+multiplicities.  `BalabanCMP116Lemma1MultiplicityPropagatorBound.lean`
+constructs the multiplicity-weighted complex `tsum` internally and proves
+the same `B0 * exp(16*kappa1)` bound from one summable base-weight budget and
+one long-walk estimate written in the total multiplicity degree.  A physical
+instantiation must therefore pay the finite powerset cost inside that
+base-weight summability and prove the degree/tree-length comparison; neither
+is hidden in the certificate.
+
+This is the norm conclusion needed before the L2 fixed-point family.  A
+multiplicity monomial is not affine in one coordinate, so the square-free
+coordinate-derivative proof is not reused: coordinatewise holomorphy and the
+later Cauchy extraction remain separate bricks.  The theorem also makes no
+identification between total degree and the printed CMP116 integer `m`.
+
+One fresh Colab Pro+ CPU/high-RAM clone at source checkpoint
+`49d92ea4c93c1875960db957271df08d27ec6f58` completed the focal target with
+`Build completed successfully (2760 jobs).` in 23.567 seconds.  The focused
+audit exited zero in 5.450 seconds and all nine declarations depend exactly
+on `[propext, Classical.choice, Quot.sound]`.  The complete gate recorded
+`FINAL_STATUS=PASS` after 125.203 seconds; the visible transcript was saved
+and independently rehashed on Windows as
+`15dd1a44036d7a84e43b42d9ffd8853f2e6e0df4c1887ea30e22dc10231a7d7a`.
+The runtime was disconnected and deleted immediately afterward.  This is a
+new proof compiler for the physical L1 bridge, not a new terminal producer:
+the live count remains `18/41` and no `TermSource` inhabitant is produced.

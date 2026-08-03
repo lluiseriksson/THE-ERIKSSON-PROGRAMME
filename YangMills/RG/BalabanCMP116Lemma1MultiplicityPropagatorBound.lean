@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP116Lemma1WeakenedPropagatorBound
 /-!
 # CMP116 Lemma 1: multiplicity-aware propagator bound
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its results have not yet been verified by the Lean compiler.
-
 The literal physical minimizer contains products of independently weakened
 factors.  Overlapping carriers give repeated powers of one weakening
 coordinate, so the square-free L1 propagator certificate is not applicable.

@@ -26855,3 +26855,31 @@ CMP116 integer `m`, absorb the finite factor into a physical ratio, prove the
 remaining nested-series summability, or construct `H0(s)`.  Consequently no
 `PreEq136` field is discharged, the live numerator remains exactly 18/41,
 and no `TermSource` inhabitant is produced.
+
+## Addendum 542 (2026-08-03, **multiplicity-aware Lemma-1 norm bound GREEN**)
+
+`BalabanCMP116Lemma1MultiplicityPropagatorBound.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `49d92ea4c93c1875960db957271df08d27ec6f58`.  The runtime was
+disconnected and deleted immediately after the terminal result.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The focal target exited
+zero with the literal terminal line `Build completed successfully (2760
+jobs).` after 23.567 seconds.  The audit exited zero after 5.450 seconds and
+its nine declarations each depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS` after 125.203 seconds.  The
+visible Colab transcript was saved and independently rehashed on Windows as
+`15dd1a44036d7a84e43b42d9ffd8853f2e6e0df4c1887ea30e22dc10231a7d7a`.
+
+The verified certificate constructs the multiplicity-weighted `tsum`
+internally and derives the uniform `B0 * exp(16*kappa1)` norm bound using the
+total multiplicity degree.  Its base weight is indexed after the finite
+powerset expansion, so the physical combinatorial cost and the physical
+degree/tree-length comparison remain visible source obligations.  The brick
+does not identify total degree with the printed CMP116 integer `m`, flatten
+the literal nested physical `H(s)` series, prove coordinatewise holomorphy,
+or construct `H0(s)`.  Consequently no `PreEq136` field is discharged, the
+live numerator remains exactly 18/41, and no `TermSource` inhabitant is
+produced.
