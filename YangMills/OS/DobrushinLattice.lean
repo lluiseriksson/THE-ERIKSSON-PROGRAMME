@@ -189,7 +189,8 @@ theorem card_horiz_le {L T : ℕ} (p : Fin L × Fin T) :
     have he₂ := (Finset.mem_filter.mp h₂).2.2
     refine Prod.ext (Fin.val_injective hv) ?_
     exact he₁.symm.trans he₂
-  have hle := Finset.card_le_card_of_injOn (fun q => q.1.val) hmaps hinj
+  have hle := Finset.card_le_card_of_injOn
+    (fun q : Fin L × Fin T => q.1.val) hmaps hinj
   have h2 : ({p.1.val - 1, p.1.val + 1} : Finset ℕ).card ≤ 2 := by
     have hins := Finset.card_insert_le (p.1.val - 1)
       ({p.1.val + 1} : Finset ℕ)
@@ -222,7 +223,8 @@ theorem card_vert_le {L T : ℕ} (p : Fin L × Fin T) :
     have he₂ := (Finset.mem_filter.mp h₂).2.1
     refine Prod.ext ?_ (Fin.val_injective hv)
     exact he₁.symm.trans he₂
-  have hle := Finset.card_le_card_of_injOn (fun q => q.2.val) hmaps hinj
+  have hle := Finset.card_le_card_of_injOn
+    (fun q : Fin L × Fin T => q.2.val) hmaps hinj
   have h2 : ({p.2.val - 1, p.2.val + 1} : Finset ℕ).card ≤ 2 := by
     have hins := Finset.card_insert_le (p.2.val - 1)
       ({p.2.val + 1} : Finset ℕ)
