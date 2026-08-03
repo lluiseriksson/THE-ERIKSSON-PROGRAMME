@@ -7,25 +7,14 @@ on:
       - "pytest.ini"
       - "project-state.json"
       - "tests/**"
-      - "scripts/source_citations.py"
-      - "scripts/source_db.py"
-      - "scripts/validate_project_state.py"
-      - "scripts/validate_documentation_state.py"
-      - "scripts/validate_surface_closure.py"
-      - "scripts/check_remainder_localization.py"
-      - "scripts/surface_remainder*.py"
-      - "scripts/validate_run_manifests.py"
-      - "scripts/run_manifest_guard_ci.sh"
-      - "scripts/freeze_run_manifest_debt_baseline.py"
-      - "scripts/validate_changed_run_coverage.py"
-      - "scripts/audit_v88_sanitation.py"
-      - "scripts/**transcript*.txt"
-      - "scripts/**output*.txt"
-      - "scripts/test_monotone_nodes.py"
-      - "scripts/cascade*.py"
+      - "scripts/**"
       - "run-manifests/**"
       - ".github/run-manifest-debt-baseline.json"
       - ".github/run-manifest-debt-baseline.hashes.json"
+      - ".github/scientific-test-triage.json"
+      - "scripts/pytest_scientific_triage_guard.py"
+      - "tests/scientific_test_triage_guard_adversarial.py"
+      - "audit/SCIENTIFIC-TEST-TRIAGE-20260802.md"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
       - "docs/SURFACE-REMAINDER-PREREG.md"
@@ -47,25 +36,14 @@ on:
       - "pytest.ini"
       - "project-state.json"
       - "tests/**"
-      - "scripts/source_citations.py"
-      - "scripts/source_db.py"
-      - "scripts/validate_project_state.py"
-      - "scripts/validate_documentation_state.py"
-      - "scripts/validate_surface_closure.py"
-      - "scripts/check_remainder_localization.py"
-      - "scripts/surface_remainder*.py"
-      - "scripts/validate_run_manifests.py"
-      - "scripts/run_manifest_guard_ci.sh"
-      - "scripts/freeze_run_manifest_debt_baseline.py"
-      - "scripts/validate_changed_run_coverage.py"
-      - "scripts/audit_v88_sanitation.py"
-      - "scripts/**transcript*.txt"
-      - "scripts/**output*.txt"
-      - "scripts/test_monotone_nodes.py"
-      - "scripts/cascade*.py"
+      - "scripts/**"
       - "run-manifests/**"
       - ".github/run-manifest-debt-baseline.json"
       - ".github/run-manifest-debt-baseline.hashes.json"
+      - ".github/scientific-test-triage.json"
+      - "scripts/pytest_scientific_triage_guard.py"
+      - "tests/scientific_test_triage_guard_adversarial.py"
+      - "audit/SCIENTIFIC-TEST-TRIAGE-20260802.md"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
       - "docs/SURFACE-REMAINDER-PREREG.md"
@@ -127,8 +105,15 @@ jobs:
           if-no-files-found: error
 
   test:
+    name: "Scientific pytest triage: repairable-debt ratchet (5) + quarantined evidence-loss set (4)"
     runs-on: ubuntu-latest
     steps:
+      - name: Invalidate any pre-existing scientific-test triage decision
+        shell: bash
+        run: |
+          rm -f -- "$GITHUB_WORKSPACE/scientific-test-triage-decision.json"
+          test ! -e "$GITHUB_WORKSPACE/scientific-test-triage-decision.json"
+
       - uses: actions/checkout@v4
         with:
           # Source metadata records historical commit anchors.  A shallow
@@ -167,5 +152,33 @@ jobs:
       - name: Audit committed v88 sanitation evidence
         run: python scripts/audit_v88_sanitation.py
 
-      - name: Run control-plane tests
-        run: python -m pytest -q
+      - name: Exercise scientific-test triage attacks
+        run: |
+          python tests/scientific_test_triage_guard_adversarial.py
+          python -O tests/scientific_test_triage_guard_adversarial.py
+
+      - name: Verify class-C workflow trigger coverage
+        run: >-
+          python scripts/validate_scientific_triage_trigger_coverage.py
+          --manifest .github/scientific-test-triage.json
+          --workflow .github/workflows/control-plane.yml
+
+      - name: Run pytest with classified evidence-loss and repairable-debt guard
+        env:
+          # A synchronize event carries the prior PR head in `before`, which
+          # makes a repair ratchet immediately.  Opened PRs fall back to the
+          # exact base-branch SHA; pushes also carry their prior head.
+          CHANGE_BASE: ${{ github.event.before || github.event.pull_request.base.sha }}
+        run: >-
+          python scripts/pytest_scientific_triage_guard.py
+          --manifest .github/scientific-test-triage.json
+          --result scientific-test-triage-decision.json
+          --comparison-base "$CHANGE_BASE"
+
+      - name: Publish scientific-test triage decision
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scientific-test-triage-decision
+          path: scientific-test-triage-decision.json
+          if-no-files-found: error
