@@ -12,6 +12,10 @@ import YangMills.RG.BalabanCMP116InteractingPhysicalPrecisionSource
 /-!
 # Source-specific pre-(1.36) assembly on the combined ledger
 
+PRE-VALIDATION: the conditioned covariance, root and lower certificate are
+now generated from the physical precision source, but this refactor has not
+yet been materialized or checked by the compiler.
+
 The preceding 17/41 assembler was compiler-verified at source checkpoint
 `7fb235a3c86d3077b3d978a24a5623cd562eef9c`.  The interacting-precision
 installation in this revision was compiler-verified from one fresh Colab
@@ -99,7 +103,7 @@ structure CMP116CenteredConditionedCombinedSourceData
   contourCarrier : Finset (FinBox 4 (2 * Q))
   contourEquiv : Fin nDelta ≃ ↑contourCarrier
   precisionSource : CMP116InteractingPhysicalPrecisionSource V
-  root : CombinedSourceEndomorphism M Q Nc
+  P_nonempty : P.Nonempty
   choice : CMP99SourcePi4CoarseFineWalkChoice M Q (3 * M) layerWord
   mass : ℝ
   mass_pos : 0 < mass
@@ -124,21 +128,6 @@ structure CMP116CenteredConditionedCombinedSourceData
   gapScale : ℕ
   gapCard : ℕ
   qBound : ℝ
-  conditionedCovariance :
-    Matrix
-      (PhysicalGaugeCoordIndex 4 (M * (2 * Q)) Nc)
-      (PhysicalGaugeCoordIndex 4 (M * (2 * Q)) Nc) ℝ
-  conditionedRoot :
-    MatrixConditionedGaussianRootCertificate
-      conditionedCovariance
-      (cmp116PhysicalEndomorphismRealMatrix root)
-      (cmp116SourcePhysicalLocalizedCoordinates Dict
-        (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P))
-  conditionedCovariance_nondegenerate :
-    MatrixConditionedGaussianCovarianceLowerCertificate
-      conditionedCovariance
-      (cmp116SourcePhysicalLocalizedCoordinates Dict
-        (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P))
   lemma1 : CMP109Lemma1Eq136SourceCertificate (q := q)
     E V gk D epsilon1 C1 C2 kappa1 delta kappa
   C : ℝ
@@ -174,6 +163,68 @@ variable
     {DeltaPi : CombinedSourceFineField M Q Nc →L[ℝ]
       CombinedSourceFineField M Q Nc}
     {J : CombinedSourceFineField M Q Nc}
+
+/-- Literal localized coordinate carrier of the combined direct/native
+source. -/
+noncomputable def localizedCoordinates
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :=
+  cmp116SourcePhysicalLocalizedCoordinates Dict
+    (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P)
+
+/-- The selected physical bonds make the combined localized coordinate
+carrier nonempty.  The direct source bond set is embedded into the union used
+by the combined localization core. -/
+theorem localizedCoordinates_nonempty
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
+    X.localizedCoordinates.Nonempty := by
+  unfold localizedCoordinates cmp116Eq80Lemma1CombinedCenteredRegion
+  apply cmp116SourcePhysicalLocalizedCoordinates_localizationCore_nonempty
+  exact X.P_nonempty.mono Finset.subset_union_left
+
+/-- Literal compression of the inverse interacting precision to the combined
+localized carrier. -/
+noncomputable def conditionedCovariance
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :=
+  X.precisionSource.conditionedCovariance X.localizedCoordinates
+
+/-- Positive localized square root reconstructed as the physical terminal
+root.  It is no longer an independent datum of the source record. -/
+noncomputable def root
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
+    CombinedSourceEndomorphism M Q Nc :=
+  X.precisionSource.conditionedRoot X.localizedCoordinates
+
+/-- Exact square-root/support certificate generated from the physical
+interacting precision. -/
+def conditionedRoot
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
+    MatrixConditionedGaussianRootCertificate
+      X.conditionedCovariance
+      (cmp116PhysicalEndomorphismRealMatrix X.root)
+      X.localizedCoordinates := by
+  exact X.precisionSource.conditionedRoot_certificate X.localizedCoordinates
+
+/-- Strict localized covariance lower certificate.  Its carrier witness is
+the geometric producer above and its analytic bound is generated internally
+from coercivity and the precision norm. -/
+def conditionedCovariance_nondegenerate
+    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
+      Dict P Z anchor domains
+      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
+    MatrixConditionedGaussianCovarianceLowerCertificate
+      X.conditionedCovariance X.localizedCoordinates := by
+  exact X.precisionSource.conditionedCovariance_lowerCertificate
+    X.localizedCoordinates X.localizedCoordinates_nonempty
 
 /-- Literal interacting Wilson-plus-gauge precision installed in the source. -/
 noncomputable def K

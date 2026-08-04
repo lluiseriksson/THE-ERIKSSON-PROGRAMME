@@ -1,10 +1,16 @@
 import YangMills.RG.BalabanCMP116SourcePhysicalCoordinateDictionary
 
+/-!
+PRE-VALIDATION: the new carrier-nonemptiness producer has not yet been
+materialized or checked by the compiler.
+-/
+
 #print axioms YangMills.RG.cmp116SourcePhysicalLocalizedCoordinates
 #print axioms YangMills.RG.mem_cmp116SourcePhysicalLocalizedCoordinates_iff
 #print axioms YangMills.RG.card_cmp116SourcePhysicalLocalizedCoordinates
 #print axioms YangMills.RG.card_cmp116SourcePhysicalLocalizedCoordinates_le
 #print axioms YangMills.RG.cmp116SourcePhysicalLocalizedCoordinates_empty
+#print axioms YangMills.RG.cmp116SourcePhysicalLocalizedCoordinates_localizationCore_nonempty
 #print axioms YangMills.RG.CMP116SourcePhysicalLocalizedRegion
 #print axioms YangMills.RG.instDecidableEqCMP116SourcePhysicalLocalizedRegion
 #print axioms YangMills.RG.cmp116SourcePhysicalBondsOfCells

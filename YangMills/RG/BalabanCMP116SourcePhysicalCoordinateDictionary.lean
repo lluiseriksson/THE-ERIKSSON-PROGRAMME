@@ -9,6 +9,9 @@ import YangMills.RG.BalabanCMP116Eq223PhysicalLocalizationProjector
 /-!
 # Source coordinates transported to the physical bond basis
 
+PRE-VALIDATION: this source has changed since its last materialized `.olean`;
+the new carrier-nonemptiness producer is not yet compiler-verified.
+
 The equation-(2.26) geometry is indexed by CMP116 cubes, whereas the literal
 source Gaussian is indexed by physical bonds and Lie coordinates.  This file
 performs that transport through the certified dictionary equivalence.  It
@@ -106,6 +109,29 @@ theorem cmp116SourcePhysicalLocalizedCoordinates_empty
     simpa using hsource
   · intro hba
     simp at hba
+
+/-- A nonempty selected physical-bond set gives a literal localized Lie
+coordinate in the canonical localization core.  The witness is transported
+through the certified coordinate equivalence; no block cell is identified
+definitionally with a bond. -/
+theorem cmp116SourcePhysicalLocalizedCoordinates_localizationCore_nonempty
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero (Nc ^ 2 - 1)] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Dset : Finset (Finset (FinBox d N')))
+    {P : Finset (PhysicalBond d (M * N'))}
+    (hP : P.Nonempty) :
+    (cmp116SourcePhysicalLocalizedCoordinates Dict
+      (cmp116LocalizationCore Dset P)).Nonempty := by
+  classical
+  rcases hP with ⟨e, he⟩
+  let a : Fin (Nc ^ 2 - 1) := 0
+  refine ⟨(e, a), ?_⟩
+  rw [cmp116SourcePhysicalLocalizedCoordinates, Finset.mem_map]
+  exact ⟨Dict.coordEquiv.symm (e, a),
+    Dict.coordEquiv_symm_mem_physicalLocalizedCoordinates_localizationCore
+      Dset he a, by simp⟩
 
 /-- A physical localization region that carries at least one literal
 localized Lie coordinate.  This is the faithful index type for the

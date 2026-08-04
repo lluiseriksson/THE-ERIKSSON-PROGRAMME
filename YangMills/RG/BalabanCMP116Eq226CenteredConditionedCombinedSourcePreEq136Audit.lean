@@ -6,6 +6,9 @@ The preceding assembler audit was compiler-verified at source checkpoint
 `7fb235a3c86d3077b3d978a24a5623cd562eef9c`.  The interacting-precision
 declarations below were compiler-verified from one fresh Colab CPU/high-RAM
 clone at source checkpoint `5b061eb968885f5d724dc3b9226ee593ddc5d0db`.
+
+PRE-VALIDATION: the generated localized carrier, root and covariance-lower
+certificate have not yet been materialized or checked by the compiler.
 -/
 
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.total
@@ -15,6 +18,9 @@ clone at source checkpoint `5b061eb968885f5d724dc3b9226ee593ddc5d0db`.
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.coercivity_pos
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.K_coercive
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.K_comp_interactingCovariance
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.localizedCoordinates_nonempty
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.conditionedRoot
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.conditionedCovariance_nondegenerate
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.E0
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.threshold
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.alpha
