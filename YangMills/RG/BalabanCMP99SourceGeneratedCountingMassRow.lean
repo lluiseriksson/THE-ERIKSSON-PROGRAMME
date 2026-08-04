@@ -153,6 +153,11 @@ theorem cmp99SourceIteratedLift_generatedCountingMass_weightedRow
     let regions := cmp99SourceIteratedLiftActiveRegionChain
       (M := M) Omega depth
     FinitePiLpTypedWeightedRowKernelBound
+      (ι := ActiveGaugeRegion.Site
+        (cmp99IteratedLiftActiveRegion (M := M) Omega depth))
+      (κ := ActiveGaugeRegion.Site
+        (cmp99IteratedLiftActiveRegion (M := M) Omega depth))
+      (g := SUNLieCoord Nc)
       (regions.generatedCountingMass hd hM rho spacing epsilon background
         chain fineSmall)
       (fun target source => finBoxDist target.1 source.1)
@@ -183,6 +188,11 @@ theorem cmp99SourceIteratedLift_QprimeMass_weightedRow
     let T := regions.weightedQprimeTower hd hM rho spacing epsilon background
       chain fineSmall
     FinitePiLpTypedWeightedRowKernelBound
+      (ι := ActiveGaugeRegion.Site
+        (cmp99IteratedLiftActiveRegion (M := M) Omega depth))
+      (κ := ActiveGaugeRegion.Site
+        (cmp99IteratedLiftActiveRegion (M := M) Omega depth))
+      (g := SUNLieCoord Nc)
       (T.Qprime.adjoint.comp T.Qprime)
       (fun target source => finBoxDist target.1 source.1)
       (Real.exp (rate * ((M ^ depth - 1 : ℕ) : ℝ)) *
