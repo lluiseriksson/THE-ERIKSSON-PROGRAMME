@@ -1,0 +1,63 @@
+{
+  "arithmetic": "exact Fraction; no floating point",
+  "base_birkhoff_equals_dobrushin_exact": "1/2",
+  "base_theta_exact": "9/1",
+  "candidate": 46,
+  "constraints": {
+    "gpu": false,
+    "processes_concurrent": 1,
+    "runtime_limit_seconds": 30,
+    "working_set_limit_bytes": 536870912
+  },
+  "environment": {
+    "host": "Windows owner desktop",
+    "working_tree": "isolated",
+    "lean_lake_oracle_invoked": false
+  },
+  "rows": [
+    {
+      "L": 1,
+      "birkhoff_exact": "1/2",
+      "dimension": 2,
+      "theta_exact": "9/1",
+      "true_product_spectral_ratio_exact": "1/2"
+    },
+    {
+      "L": 2,
+      "birkhoff_exact": "4/5",
+      "dimension": 4,
+      "theta_exact": "81/1",
+      "true_product_spectral_ratio_exact": "1/2"
+    },
+    {
+      "L": 3,
+      "birkhoff_exact": "13/14",
+      "dimension": 8,
+      "theta_exact": "729/1",
+      "true_product_spectral_ratio_exact": "1/2"
+    },
+    {
+      "L": 4,
+      "birkhoff_exact": "40/41",
+      "dimension": 16,
+      "theta_exact": "6561/1",
+      "true_product_spectral_ratio_exact": "1/2"
+    }
+  ],
+  "runs": [
+    {
+      "command": "python scripts/killtest_birkhoff_tensor_wall.py",
+      "elapsed_ms": 225,
+      "exit_code": 0,
+      "sampled_peak_working_set_bytes": 13668352
+    },
+    {
+      "command": "python -O scripts/killtest_birkhoff_tensor_wall.py",
+      "elapsed_ms": 290,
+      "exit_code": 0,
+      "sampled_peak_working_set_bytes": 17801216
+    }
+  ],
+  "status": "KILLED_PROJECTIVE_VOLUME_UNIFORM_BRANCH",
+  "verdict": "Delta(K^tensor L)=L Delta(K); global Birkhoff coefficient tends to 1"
+}
