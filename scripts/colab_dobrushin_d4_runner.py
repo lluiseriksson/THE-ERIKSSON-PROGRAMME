@@ -9,15 +9,11 @@ and D-3 runners.
   stage 1  certifiers, BEFORE any build: judge_dobrushin_d4.py (G12–G14, the
            gates of this rung) plus re-runs of d3/d3b, each in `normal` and
            `optimized`.
-  stage 2  Lean: the lane modules `DobrushinGibbs` and `DobrushinIsing` by name.
-  stage 3  THE CORE, with the six D-3/D-4 modules wired into
-           `YangMillsCore.lean`.  Prediction, CORRECTED before this
-           measurement: the original 8468 -> 8473 used the lane's own earlier
-           count as base, but the branch base (paper 14's anchor) already
-           carries `SpatialReconstruction`, measured at **8469**.  The
-           corrected expectation with six new modules is therefore
-           **8475 jobs**.  The tail of the build log is printed so the
-           count is read from the artefact, not remembered.
+  stage 2  Lean: all eight Dobrushin/OS-R lane modules by name.
+  stage 3  THE CORE, with the lane wired into `YangMillsCore.lean`.
+           The pre-measurement prediction after adding the OS-R composition
+           module is **8481 jobs**.  The tail of the build log is printed so
+           the count is read from the artefact, not remembered.
   stage 4  the FULL repository oracle (`oracle_check.lean`), now carrying the
            D-3/D-4 declarations.
   stage 5  hashes of everything that travels back.
@@ -32,13 +28,14 @@ import re
 import subprocess
 import sys
 
-REPO = "/content/eriksson"
+REPO = os.environ.get("ERIKSSON_REPO", "/content/eriksson")
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB_PIN = "07642720480157414db592fa85b626dafb71355b"
 LANE_MODULES = ["YangMills.OS.DobrushinGibbs", "YangMills.OS.DobrushinIsing",
                 "YangMills.OS.DobrushinLattice", "YangMills.OS.DobrushinBridge",
                 "YangMills.OS.DobrushinTransport", "YangMills.OS.DobrushinTilt",
-                "YangMills.OS.DobrushinCorollary"]
+                "YangMills.OS.DobrushinCorollary",
+                "YangMills.OS.OSReconstructionUniform"]
 CERTIFIERS = ["scripts/judge_os_uniform.py",
               "scripts/judge_dobrushin_d6b.py",
               "scripts/judge_dobrushin_d5.py",
@@ -145,7 +142,7 @@ def stage2():
 
 
 def stage3():
-    print("stage 3 — the core, with the six lane modules wired in")
+    print("stage 3 — the core, with the eight lane modules wired in")
     res = run(["lake", "build", "YangMillsCore"], "YangMillsCore", "normal")
     log = res[2]
     try:
@@ -174,6 +171,7 @@ def stage5(sha):
               "YangMills/OS/DobrushinTransport.lean",
               "YangMills/OS/DobrushinTilt.lean",
               "YangMills/OS/DobrushinCorollary.lean",
+              "YangMills/OS/OSReconstructionUniform.lean",
               "YangMillsCore.lean",
               "oracle_check.lean",
               "scripts/judge_dobrushin_d4.py",

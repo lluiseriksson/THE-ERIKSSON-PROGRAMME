@@ -1,0 +1,488 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+
+\definecolor{deepblue}{RGB}{24,65,108}
+\hypersetup{colorlinks=true,linkcolor=deepblue,citecolor=deepblue,urlcolor=deepblue}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\vac}{\Omega}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+
+\title{\textbf{The Reconstructed Theory Has One Mass}\\[4pt]
+\large A machine-checked volume-uniform transfer gap for a finite Ising strip}
+\author{Llu\'is Eriksson}
+\date{4 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a finite-dimensional Osterwalder--Schrader (OS) reconstruction for an
+anisotropic Ising model on open rectangular strips and prove a spectral gap
+whose rate is uniform in the spatial extent.  For temporal coupling $\beta$,
+spatial coupling $\gamma$, and
+\[
+  0<\alpha<1,\qquad
+  2\tanh |\beta|+2\tanh |\gamma|\leq \alpha,
+\]
+one number $m>0$ works for every spatial length.  Reflection positivity is
+proved directly for the Gibbs measure; the null space of the reflected form
+is identified with the kernel of an explicit boundary-collapse map; the OS
+quotient is linearly equivalent to the finite boundary-vector space; and the
+transfer operator forced by the site and bond forms is intertwined with a
+symmetrised transfer matrix.  Dobrushin comparison supplies positive Perron
+data and the bound
+\[
+ \norm{T_L-|\vac_L\rangle\langle\vac_L|}\leq e^{-m}
+ \quad\text{for every }L.
+\]
+Consequently, connected reconstructed correlations decay at the same common
+rate.  Lean 4 checks the composition without assuming reflection positivity,
+Perron data, a vacuum, a gap, or clustering at the public endpoint.  A
+conservative priority survey found earlier machine-checked OS axioms and
+abstract OS reconstruction, and earlier volume-uniform measure-side
+clustering, but no earlier artifact combining a concrete reconstructed
+transfer operator with a proved volume-uniform spectral gap.
+\end{abstract}
+
+\section{Why the composition matters}
+
+Reflection positivity and high-temperature mixing normally live in different
+mathematical descriptions.  The first is a positivity statement about a
+reflected Euclidean measure and produces a physical Hilbert space and a
+transfer operator.  The second is a contraction statement about conditional
+distributions and produces decay of measure-level correlations.  A paper that
+merely places those facts side by side has not shown that the reconstructed
+operator inherits the quantitative rate.  Conversely, an abstract structure
+containing a field named ``gap'' does not prove a gap for a model.
+
+The result here is the missing composition in a finite system.  All spaces are
+finite, but the spatial dimension of the slice grows with $L$, and the
+conclusion uses one $m$ before quantifying over $L$.  Thus the statement is not
+the tautology that every fixed positive matrix has some finite-volume gap.
+It is also not a thermodynamic-limit construction or a continuum Yang--Mills
+mass-gap theorem; the precise boundary of the claim is discussed in
+Section~\ref{sec:limits}.
+
+This is the promised \emph{commutant plus bulk dissipation} candidate in its
+classical reduction.  On the reconstructed boundary space, multiplication by
+functions on $\Sigma_L$ is a maximal abelian algebra, hence is its own
+commutant.  The vacuum line is the invariant scalar sector, while the
+orthogonal complement is the bulk sector.  The estimate proved below is
+exactly uniform dissipation of that complement.  Nothing here promotes this
+classical statement to a noncommutative commutant theorem; doing so would be a
+separate paper and is deliberately not claimed.
+
+The formal development is in
+\path{YangMills/OS/OSReconstructionUniform.lean}. It composes earlier,
+independently checked modules rather than replacing them with a monolithic
+proof.  This makes the logical inputs visible and permits a direct
+non-vacuity audit.
+
+\section{The finite anisotropic Ising strip}
+
+Let
+\[
+  \Sigma_L=\{0,1\}^{\{0,\ldots,L\}}
+\]
+be the spatial slice space, with the two spin values interpreted as $\pm1$.
+The open-chain spatial weight is
+\[
+  w_{\gamma,L}(\sigma)
+   =\prod_{j=0}^{L-1}\exp\!\bigl(\gamma s(\sigma_j)s(\sigma_{j+1})\bigr)>0,
+\]
+and the bond between consecutive time slices is
+\[
+  K_{\beta,L}(\sigma,\tau)
+   =\prod_{j=0}^{L}\exp\!\bigl(\beta s(\sigma_j)s(\tau_j)\bigr).
+\]
+For a path $X=(X_0,\ldots,X_N)$ of spatial slices, the unnormalised Gibbs
+weight is
+\[
+ W_{L,N}(X)=\prod_{t=0}^{N}w_{\gamma,L}(X_t)
+             \prod_{t=0}^{N-1}K_{\beta,L}(X_t,X_{t+1}).
+\]
+These definitions contain no operator.  The model-to-operator dictionary is
+therefore a theorem rather than a definitional identification.
+
+The symmetrised kernel is
+\[
+ S_L(\sigma,\tau)=
+ \sqrt{w_{\gamma,L}(\sigma)}\,K_{\beta,L}(\sigma,\tau)
+ \sqrt{w_{\gamma,L}(\tau)}.
+\]
+If $\lambda_L>0$ is its Perron value, define the normalised kernel
+$M_L=S_L/\lambda_L$.  Its Euclidean continuous linear operator is denoted
+$T_L$.  For a strictly positive Perron vector $\Omega_L$, its Euclidean
+normalisation is denoted $\widehat\Omega_L$.
+
+\section{The three load-bearing inputs}
+
+\subsection{Reflection positivity on the measure}
+
+For half-path observables $F_i$ and coefficients $c_i\in\CC$, the formal
+theorem \path{os_ising_measure_gram_nonneg} proves that the full Gibbs
+sum
+\[
+ \sum_{i,j}\overline{c_i}c_j
+ \sum_X \overline{F_i(X_{\rm past})}F_j(X_{\rm future}^{\rm rev})W_{L,N}(X)
+\]
+is a nonnegative real number when $\beta\geq0$.  This is a statement about the
+measure itself, not only about an auxiliary quadratic form.
+
+\subsection{The OS quotient is identified}
+
+The boundary-collapse map sums a half-path observable against its Gibbs
+weight while retaining the terminal slice.  The theorem
+\path{os_ising_null_space_iff} states that its kernel is exactly the
+null space of the reflected site form.  Surjectivity then gives the bundled
+linear equivalence
+\[
+  \frac{\{\text{half-path observables}\}}
+       {\ker(\text{collapse})}
+  \simeq_{\CC} \CC^{\Sigma_L},
+\]
+implemented as \path{osIsingPhysicalEquiv}. Hence no unidentified quotient
+is hidden in the reconstruction.
+
+The transfer operator $\mathcal T_L$ on boundary vectors is forced by
+\[
+ \ip{u}{\mathcal T_Lv}_{\rm site}=\ip{u}{v}_{\rm bond}.
+\]
+The theorem \path{os_ising_transfer_is_measure_sum} identifies this
+matrix element with the reflected Gibbs two-point sum one time step farther
+apart.  Thus the operator conclusion has a measure-level reading.
+
+\subsection{A uniform Dobrushin feed}
+
+The rectangular interaction has row sum bounded by
+$2\tanh|\beta|+2\tanh|\gamma|$.  The previously proved theorem
+\path{dobrushin_ising_uniform_gap} converts the common Dobrushin window
+into one $m>0$ and, for every $L$, positive Perron data satisfying
+\[
+  M_L\Omega_L=\Omega_L,
+  \qquad
+  \norm{T_L-|\widehat\Omega_L\rangle
+                    \langle\widehat\Omega_L|}\le e^{-m}.
+\]
+The order of quantifiers is essential: $m$ is selected before $L$.
+
+\section{Main theorem}
+
+\begin{theorem}[Machine-checked OS reconstruction with one mass]
+\label{thm:main}
+Let $0<\alpha<1$, $\beta\geq0$, and
+\[
+  2\tanh|\beta|+2\tanh|\gamma|\leq\alpha.
+\]
+Then the finite Gibbs measure is reflection positive at every reflection
+depth.  Its OS null space is the kernel of the explicit collapse map and its
+physical quotient is linearly equivalent to $\CC^{\Sigma_L}$.  Moreover,
+there exists $m>0$ such that for every $L$ there are
+$\lambda_L>0$ and $\Omega_L>0$ for which:
+\begin{enumerate}
+\item $M_L\Omega_L=\Omega_L$;
+\item $(T_L,\widehat\Omega_L)$ is a symmetric unit-vacuum transfer pair;
+\item
+$\norm{T_L-|\widehat\Omega_L\rangle\langle\widehat\Omega_L|}
+ \le e^{-m}$;
+\item for every real boundary vector $v$ and $n\in\mathbb N$,
+\[
+ \left|\ip{v}{T_L^n v}
+   -\ip{\widehat\Omega_L}{v}^2\right|
+ \le \norm{v}^2 e^{-mn};
+\]
+\item multiplication by $\sqrt{w_{\gamma,L}}$ intertwines the transfer
+operator forced by the OS forms with the unnormalised symmetrised kernel
+$S_L$.
+\end{enumerate}
+\end{theorem}
+
+In Lean, the quantitative portion is the single declaration
+\path{os_reconstruction_uniform_gap}. Its hypotheses are exactly the
+three scalar inequalities $0<\alpha$, $\alpha<1$, and the Dobrushin window.
+The condition $\beta\geq0$ belongs only to the separate reflection-positivity
+theorem.  In particular, the endpoint does not take any of items (1)--(4) as
+an argument.
+
+\section{Proof architecture}
+
+The formal proof is short because the interfaces are strong; its content is
+the exact compatibility of those interfaces.
+
+First, the Dobrushin corollary produces $m$, and for each $L$ produces
+$\lambda_L$, $\Omega_L$, positivity, the fixed-point equation, and the
+projected norm bound.  Symmetry of $M_L$, strict positivity of $\Omega_L$,
+and the fixed-point equation are passed to
+\path{vacuumTransfer_opOf}. That theorem proves, entrywise, symmetry of
+the operator, unit norm of $\widehat\Omega_L$, and
+$T_L\widehat\Omega_L=\widehat\Omega_L$.
+
+Second, \path{clustering_of_gap} applies the projected norm estimate to
+the identity
+\[
+ \ip{v}{T_L^n v}-\ip{\widehat\Omega_L}{v}^2
+   =\ip{v}{(T_L-P_{\widehat\Omega_L})^n v}
+ \quad(n\ge1),
+\]
+with the $n=0$ case treated by Cauchy--Schwarz.  This yields the same $m$,
+not a second rate selected after $L$.
+
+Third, the existing similarity theorem
+\path{transferOp_sqrtWeightEquiv} gives
+\[
+ \mathcal T_L Q_L=Q_L S_L,
+ \qquad (Q_Lu)(\sigma)=\sqrt{w_{\gamma,L}(\sigma)}u(\sigma).
+\]
+Strict positivity of $w_{\gamma,L}$ makes $Q_L$ invertible.  The operator
+whose projected norm is controlled is therefore the normalised version of
+the same symmetrised transfer matrix that is intertwined with the OS-forced
+operator.
+
+Finally, the two measure-identification theorems attach that operator back to
+the reflected Gibbs sums.  This last step is what rules out an isolated
+finite-matrix result with no reconstructed interpretation.
+
+\section{Adversarial non-vacuity audit}
+
+Two failure modes were tested directly.
+
+\paragraph{Empty antecedent.}
+The window is inhabited: for example $\beta=\gamma=0.1$ and $\alpha=0.5$
+satisfy it.  More generally, continuity of $\tanh$ gives a nonempty open
+high-temperature neighbourhood of the origin.  Every Boltzmann weight is a
+strictly positive exponential, so partition functions and the normalising
+Perron mass are nonzero.
+
+\paragraph{Conclusion smuggled into the hypotheses.}
+The public endpoint contains no argument of type \texttt{VacuumTransfer}, no
+Perron vector, no spectral-norm inequality, and no clustering bound.  Its
+only hypotheses are scalar parameter inequalities.  Reflection positivity is
+also not postulated: the Gram theorem consumes only $\beta\ge0$ and constructs
+the nonnegative real witness for the actual Gibbs sum.
+
+The quotient is not circular either.  Its null subspace is proved equal to
+the kernel of a concrete surjective linear map before the quotient
+equivalence is formed.  Likewise, the transfer operator is not selected to
+have a convenient spectrum; it is uniquely forced by the site/bond equation
+and only afterwards intertwined with $S_L$.
+
+\section{Why the general Birkhoff route was rejected}
+
+A tempting route is to seek volume-uniform contraction in the standard
+positive cone using the projective diameter of
+$S_L=\sqrt w\,K\sqrt w$.  A pre-registered numerical falsifier evaluated
+all pairwise Hilbert-metric ratios for $L=2,\ldots,8$, both inside and outside
+the Dobrushin window.  It passed 88 of 88 internal consistency checks in both
+ordinary and optimised Python modes and found
+\[
+ \Delta(S_L)=\Delta(K_L)=4|\beta|(L+1),
+ \qquad
+ \kappa_L=\tanh\!\bigl(|\beta|(L+1)\bigr)\longrightarrow1.
+\]
+The equality of projective diameters is structural: positive diagonal
+congruence does not change the relevant column cross-ratios.  Hence the slice
+weight cannot rescue standard-cone Birkhoff contraction, and tensor
+additivity makes the obstruction grow with $L$.  This does not exclude a
+genuinely different cone, but it kills the proposed general Birkhoff proof.
+The paper therefore uses the surviving Dobrushin reduction and makes no
+beyond-window claim.
+
+\section{Formal artefacts and reuse map}
+
+Table~\ref{tab:files} records the load-bearing in-repository chain.  All paths
+are relative to the repository root.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.31\linewidth}
+                >{\raggedright\arraybackslash}p{0.26\linewidth}
+                >{\raggedright\arraybackslash}p{0.33\linewidth}}
+\toprule
+File & Reused declarations & Role here\\
+\midrule
+\path{YangMills/OS/SpatialOS.lean} &
+\path{gibbsSum_reflected_gram_nonneg} & Gibbs-measure RP\\
+\path{YangMills/OS/SpatialReconstruction.lean} &
+\path{mem_ker_collapseL_iff}, \path{physicalEquiv},
+\path{osPairing_transfer_gibbsSum}, similarity theorem &
+quotient, forced operator, measure dictionary\\
+\path{YangMills/OS/DobrushinCorollary.lean} &
+\path{dobrushin_ising_uniform_gap}, \path{sliceW} &
+one mass and model family\\
+\path{YangMills/OS/DobrushinTransport.lean} &
+\path{vacuumTransfer_opOf} & vacuum packaging\\
+\path{YangMills/OS/TransferGap.lean} &
+\path{clustering_of_gap} & operator gap to decay\\
+\path{YangMills/OS/OSReconstructionUniform.lean} &
+five public declarations & new composition endpoint\\
+\bottomrule
+\end{tabular}
+\caption{Load-bearing formal reuse.}
+\label{tab:files}
+\end{table}
+
+Five satellite repositories were inspected at their public heads on
+4 August 2026.  Their role is negative or terminological, not load-bearing:
+\begin{center}
+\small
+\begin{tabular}{lll}
+\toprule
+Repository & inspected HEAD & reusable verdict\\
+\midrule
+\path{lean-os-positivity} & \path{2ea7692f} & RP vocabulary; mother tree stronger\\
+\path{lean-transfer-matrix} & \path{4e2366a4} & 1D Ising gap only\\
+\path{lean-gaussian-field} & \path{53af447b} & finite covariance algebra only\\
+\path{aqft-split-inclusion-series} & \path{078c39ae} & TeX/numerics, no Lean\\
+\path{physmath-lean-lemmas} & \path{b26ce4c4} & unrelated summability closure\\
+\bottomrule
+\end{tabular}
+\end{center}
+No theorem was vendored from these repositories.  This is deliberate: source
+presence is not treated as a materialised object file or as verification.
+
+\section{Related machine-checked work and priority boundary}
+
+Douglas, Hoback, Mei, and Nissim formalised the Glimm--Jaffe/OS axioms for the
+four-dimensional Gaussian free field in Lean~4~\cite{douglas2026}.  This
+already rules out any claim of first machine-checked OS axioms or reflection
+positivity. The repository \path{mrdouglasny/reflection-positivity}
+constructs an abstract physical Hilbert space and a self-adjoint contractive
+transfer operator from reflection-positive data~\cite{reflectionrepo}; its
+\path{GappedTransfer} interface carries the gap as a hypothesis rather than
+proving it for a concrete family. The repository \path{mrdouglasny/lgt}
+proves Dobrushin-style, volume-uniform measure-side correlation decay for
+lattice gauge theory~\cite{lgtrepo}, but has no OS reconstruction or transfer
+operator.  The active $P(\phi)_2$ project contains transfer-matrix spectral
+infrastructure, with its current headline uniform estimates still represented
+by named project assumptions~\cite{pphi2repo}.
+
+Accordingly, the narrow priority statement is: the public survey found no
+earlier machine-checked result combining (i) a concrete interacting Gibbs
+family, (ii) an OS-reconstructed transfer operator, (iii) a gap proved rather
+than assumed, and (iv) one rate uniform in spatial volume.  This is an
+evidence-qualified statement, not a claim that abstract OS reconstruction,
+reflection positivity, Dobrushin uniqueness, or finite-matrix spectral gaps
+are new.
+
+The classical foundations are the OS reconstruction papers
+\cite{os1973,os1975}, the lattice reflection-positive construction of
+Osterwalder and Seiler~\cite{osterwalderseiler1978}, and Dobrushin's
+comparison method~\cite{dobrushin1968}.  The present work is a finite,
+machine-checked quantitative composition of these themes.
+
+\section{Reproducibility and audit status}
+
+The repository is pinned to Lean \path{v4.29.0-rc6} and Mathlib commit
+\begin{center}
+\path{07642720480157414db592fa85b626dafb71355b}.
+\end{center}
+The OS-R numerical gate contains 110 registered checks and is run with Python assertions enabled and
+disabled.  Lean compilation, full core compilation, and the repository-wide
+axiom oracle are executed only on a Colab Pro+ CPU high-RAM runtime.  The
+pre-measurement predictions are 8481 core jobs and 3015 oracle reports.
+
+The final frozen commit, byte counts, LF and CRLF hashes, realised build
+counts, and Colab opening/closing times are recorded in the accompanying
+verification ledger and release manifest.  This paper does not self-certify
+the terminal verdict: it supplies the frozen object and the attacks attempted;
+an independent audit task must issue the final assessment.
+
+\section{Limitations and next targets}
+\label{sec:limits}
+
+The theorem concerns finite open rectangles and uniformity in the spatial
+extent.  It does not construct an infinite-volume measure, a continuum limit,
+a relativistic Wightman theory, or a Hamiltonian by functional calculus.  The
+correlation theorem is stated for real Euclidean boundary vectors.  Complex
+observables can be split into real and imaginary parts, but that corollary is
+not needed for the headline endpoint.
+
+The Dobrushin window is sufficient and deliberately non-sharp.  The failed
+standard-cone Birkhoff test explains why a naive tensor-product improvement
+cannot enlarge it uniformly.  A credible beyond-window project would need a
+new cone, a block dynamics with a proved uniform contraction, or a comparison
+principle that survives the tensorial wall.  None is claimed here.
+
+\section*{Conclusion}
+
+The main formal fact is compact: one scalar high-temperature window produces
+one mass before the spatial volume is chosen, and the resulting operator is
+the one reconstructed from the reflected Gibbs measure.  Keeping positivity,
+quotient identification, similarity, Perron normalisation, and decay in the
+same theorem suite closes the two most dangerous loopholes: a vacuous
+implication and a gap smuggled into the assumptions.  The result is modest in
+physical scope but, within that scope, fully quantitative and mechanically
+checkable.
+
+\begin{thebibliography}{10}
+
+\bibitem{os1973}
+K.~Osterwalder and R.~Schrader.
+\newblock Axioms for Euclidean Green's functions.
+\newblock \emph{Communications in Mathematical Physics}, 31:83--112, 1973.
+\newblock \url{https://projecteuclid.org/euclid.cmp/1103858969}.
+
+\bibitem{os1975}
+K.~Osterwalder and R.~Schrader.
+\newblock Axioms for Euclidean Green's functions II.
+\newblock \emph{Communications in Mathematical Physics}, 42:281--305, 1975.
+\newblock \url{https://projecteuclid.org/euclid.cmp/1103899050}.
+
+\bibitem{osterwalderseiler1978}
+K.~Osterwalder and E.~Seiler.
+\newblock Gauge field theories on a lattice.
+\newblock \emph{Annals of Physics}, 110:440--471, 1978.
+\newblock DOI: \href{https://doi.org/10.1016/0003-4916(78)90039-8}
+{10.1016/0003-4916(78)90039-8}.
+
+\bibitem{dobrushin1968}
+R.~L. Dobrushin.
+\newblock The description of a random field by means of conditional
+probabilities and conditions of its regularity.
+\newblock \emph{Theory of Probability and Its Applications}, 13:197--224,
+1968.
+\newblock DOI: \href{https://doi.org/10.1137/1113026}{10.1137/1113026}.
+
+\bibitem{douglas2026}
+M.~R. Douglas, S.~Hoback, A.~Mei, and R.~Nissim.
+\newblock Formalization of QFT.
+\newblock arXiv:2603.15770, 2026.
+\newblock \url{https://arxiv.org/abs/2603.15770}.
+
+\bibitem{reflectionrepo}
+M.~R. Douglas and contributors.
+\newblock \texttt{reflection-positivity}: reflection positivity and transfer
+operators in Lean 4, 2026.
+\newblock \url{https://github.com/mrdouglasny/reflection-positivity}.
+
+\bibitem{lgtrepo}
+M.~R. Douglas and contributors.
+\newblock \texttt{lgt}: lattice gauge theory and Dobrushin comparison in
+Lean 4, 2026.
+\newblock \url{https://github.com/mrdouglasny/lgt}.
+
+\bibitem{pphi2repo}
+M.~R. Douglas and contributors.
+\newblock \texttt{pphi2}: construction of $P(\phi)_2$ quantum field theory
+in Lean 4, 2026.
+\newblock \url{https://github.com/mrdouglasny/pphi2}.
+
+\end{thebibliography}
+
+\end{document}

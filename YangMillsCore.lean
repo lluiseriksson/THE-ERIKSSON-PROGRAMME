@@ -1048,6 +1048,7 @@ import YangMills.OS.DobrushinTilt
 -- coupled kernel's Perron data at EVERY extent, through the abstract
 -- transport theorem.
 import YangMills.OS.DobrushinCorollary
+import YangMills.OS.OSReconstructionUniform
 
 -- Congruence lane (docs/CONGRUENCE-CHARTER.md, judges at 49311bad).
 -- What a positive-diagonal congruence K |-> D K D can and cannot change:

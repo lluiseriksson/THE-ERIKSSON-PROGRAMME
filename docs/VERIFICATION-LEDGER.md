@@ -1,5 +1,6 @@
 # Verification ledger — release audit of the KP/Penrose campaign
 
+
 **Date:** 2026-06-10 · **Commit range audited:** `360bf3d..a3343f1` (30 commits)
 **Build:** `lake build YangMillsCore` — **8209 jobs, green.**
 **Source scan:** zero literal `sorry`/`axiom` declarations in `YangMills/KP/`
@@ -31221,3 +31222,41 @@ the union of modalities governs, never a single sweep's negative.
 
 **ROLES.**  Sweeps: four independent search agents.  Synthesis,
 rulings, and the conservative-reading rule: this desk.
+
+
+## Addendum 614 (2026-08-04, **OS-R fabrication wired; counts frozen before measurement**)
+
+OS-R fabrication has begun only after assigning the authorised Colab Pro+
+account `lluiseriksson@gmail.com` a CPU high-RAM runtime (50.99 GB). A first
+attempt on a default 12.67 GB runtime was interrupted and is not evidence.
+The pre-registered OS-R-0 licence unit is running at the frozen source SHA
+`c2723e7ec224191e00a9ab31284839816533ee86`; fabrication results remain
+unlicensed until its logs and terminal sentinel have been read.
+
+The proposed module is `YangMills/OS/OSReconstructionUniform.lean`. It adds
+one core import and five oracle endpoints. **Predictions frozen before any
+fabrication build:** core `8480 -> 8481` jobs; full oracle `3010 -> 3015`
+reports. The module's public endpoint takes only the explicit Dobrushin
+parameter window. Its conclusion constructs, for one `mass > 0` and every
+spatial extent, positive Perron data, a `VacuumTransfer`, the projected norm
+bound, connected-correlation decay, and the exact intertwining with the OS
+transfer operator. Separate wrapper theorems expose Gibbs-measure Gram
+positivity, null-space identification, the quotient equivalence, and the
+measure-level reflected two-point identity. No count in this addendum is a
+measurement and no PASS is claimed here.
+
+**Post-registration reading.** The high-RAM licence run opened at 17:48 CEST
+and closed its cell at 18:42 CEST (54 minutes). It read 110/110 judge cases in
+both normal and optimized modes, `Build completed successfully (8480 jobs)`,
+3010 full-oracle reports, zero `sorryAx`, and terminal unit sentinel zero. The
+new module then materialized successfully (`OSR_MODULE_SENTINEL=0`; targeted
+build total 8191 jobs) after correcting the syntactic placement of its module
+docstring. A subsequent injected-tree core run was deliberately rejected as
+release evidence: the injected current `YangMillsCore.lean` imports
+`YangMills.OS.CongruenceSpectrum`, which does not exist in the historical
+`c2723e7e` licence tree. Lake consequently enumerated 8482 targets and stopped
+on the missing file. This is an environment mismatch, not a Lean failure in
+the new module, and it falsifies use of the historical-tree `8481` prediction
+for the final merged branch. The release test must therefore be a fresh clone
+of the exact frozen body SHA; its measured total, not a repaired prediction,
+will govern.

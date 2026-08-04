@@ -3386,3 +3386,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.row_deltaAt_le
 #print axioms YangMills.OS.Dobrushin.rect_feed
 #print axioms YangMills.OS.Dobrushin.dobrushin_ising_uniform_gap
+
+-- OS-R, finite OS reconstruction plus a volume-uniform reconstructed gap.
+-- Pre-measurement prediction recorded in Verification Ledger Addendum 614:
+-- five new reports, 3010 -> 3015.
+#print axioms YangMills.OS.os_ising_measure_gram_nonneg
+#print axioms YangMills.OS.os_ising_null_space_iff
+#print axioms YangMills.OS.osIsingPhysicalEquiv
+#print axioms YangMills.OS.os_ising_transfer_is_measure_sum
+#print axioms YangMills.OS.os_reconstruction_uniform_gap
