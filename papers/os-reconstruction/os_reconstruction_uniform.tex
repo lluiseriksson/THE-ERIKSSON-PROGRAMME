@@ -2,7 +2,9 @@
 % licence Add. 613).  HOUSE RULES IN FORCE: no theorem stated here is final
 % until its module is green on the plane AND fresh-clone verified; every
 % [SLOT] must be replaced by a number READ FROM A COMMITTED ARTEFACT before
-% the word "final" is pronounced; DO NOT SUBMIT while any [SLOT] lives.
+% the word "final" is pronounced.  STATUS 2026-08-04: NO LIVE SLOTS --
+% every number below is read from committed artefacts (Addenda 616-619).
+% Submission is the owner's decision alone.
 % The abstract's priority sentence is the COLLATED one (Add. 611,
 % docs/OS-R-PRIORITY-COLLATION.md): the naked "first machine-checked OS
 % reconstruction" is FALSE and must never reappear here.
@@ -27,7 +29,7 @@ Mathlib pinned to \lean{0764272048\ldots}.  Repository:
 \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}{THE-ERIKSSON-PROGRAMME},
 branch \lean{d3-closure}, anchor
 \lean{8127e5b52d75116b19c172ea022e12c1cab0f8c2}.}}
-\date{DRAFT --- not for distribution; live slots present}
+\date{2026-08-04 --- complete manuscript; submission is the owner's decision}
 
 \begin{document}
 \maketitle
@@ -253,10 +255,19 @@ passes on a fresh high-RAM Colab runtime (toolchain
 \lean{v4.29.0-rc6}, Mathlib pinned); wired at anchor
 \lean{8127e5b52d75116b19c172ea022e12c1cab0f8c2}.  The count prediction
 $+1/+7$ held exactly --- the ninth consecutive exact count prediction
-of the programme's D/OS lane.  \SLOT{Fresh-clone second witness at the
-anchor: judges both modes, core total, oracle report count with a
-continuation-joining axiom checker, and the sha256 list --- from the
-pass-7 run output.}
+of the programme's D/OS lane.
+
+\emph{Fresh-clone witness} (ledger Addendum 619): a brand-new clone at
+the anchor, toolchain and Mathlib cache from scratch, reproduced ---
+judges $110/110$ in normal and \lean{-O}; core
+\lean{Build completed successfully (8481 jobs)}; oracle
+\lean{REPORTS 3017}, \lean{SORRYAX 0}, zero reports naming any axiom
+outside \lean{[propext, Classical.choice, Quot.sound]} (a
+continuation-joining checker; declarations depending on a strict
+\emph{subset} of the triple occur and are sound); module file sha256
+\lean{5445429f\ldots30cad1} bit-identical to the committed tree.  The
+run cell is committed (\lean{scripts/osr1\_pass7\_freshclone.py}) for
+any further independent reproduction.
 
 \section{What is not claimed}\label{sec:honesty}
 No Wightman axioms, no OS$\to$Wightman analytic continuation, no
