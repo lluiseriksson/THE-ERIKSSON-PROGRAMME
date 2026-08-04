@@ -1,9 +1,10 @@
 ======================================================================
-DEFINITIVE ai.viXra SUBMISSION PACKAGE — wronskian_endpoint_barrier.pdf
+HISTORICAL ai.viXra SUBMISSION RECORD — wronskian_endpoint_barrier.pdf
 ======================================================================
 
-SUBMISSION TYPE
-New submission to ai.viXra.org (AI-assisted e-prints).
+SUBMISSION EVENT
+New submission sent to ai.viXra.org (AI-assisted e-prints).
+This is a historical record of the submitted object; do not resubmit it.
 This is a companion obstruction paper to ai.viXra:2607.0089, not a
 replacement of that paper.
 
@@ -76,10 +77,10 @@ Copyright remains with the author under the default non-exclusive
 ai.viXra archive conditions. No additional Creative Commons license is
 declared in this version.
 
-UPLOAD FILE
+SUBMITTED FILE
 wronskian_endpoint_barrier.pdf
 
-CANONICAL LOCAL UPLOAD PATH
+REPOSITORY PATH OF THE SUBMITTED OBJECT
 output/pdf/wronskian_endpoint_barrier.pdf
 
 FROZEN ARTIFACT HASHES (SHA-256)
@@ -105,29 +106,23 @@ python scripts/wronskian_endpoint_kill_test.py --self-test-mutations
 Expected terminal status:
 MUTATION_SELF_TEST PASS deliberate_false_predicate_rejected
 
-PRE-SUBMISSION CHECKLIST
-[x] Single finished PDF, under 5 MB.
-[x] PDF contains title, real full author name, abstract, article and
-    scientific references.
-[x] Plain-text abstract is under 400 words and avoids complex display
-    equations.
-[x] Comments are limited to pages, companion-paper status and the
-    reproducibility link.
-[x] The paper is author-formatted and contains no journal logo/template.
-[x] No executable or supplementary file is embedded in the PDF.
-[x] Mathematical claims distinguish theorem, diagnostic evidence and the
-    still-open global conjecture.
-[ ] Upload output/pdf/wronskian_endpoint_barrier.pdf through the ai.viXra
-    new-submission form.
-[ ] Paste the title, author, category, abstract, comments and contact data
-    above exactly.
-[ ] Confirm the uploaded preview has 9 pages and shows the correct title
-    and author.
-[ ] After publication, record the assigned ai.viXra identifier in the
-    manuscript/repository in a separate, deliberate replacement cycle.
+SUBMISSION RECORD
+[x] The single finished PDF was sent as a new companion-paper submission.
+[x] The submitted PDF is under 5 MB and has 9 pages.
+[x] The submitted metadata are recorded above.
+[x] The public identifier and administrator outcome remain pending.
+[x] No resubmission is authorized while that outcome is pending.
 
-DO NOT SUBMIT AS
-- a replacement for ai.viXra:2607.0089;
-- a proof or disproof of the global Bessel Wronskian conjecture;
-- a peer-reviewed or computer-certified result.
+CLAIM BOUNDARY
+This companion paper neither proves nor refutes the global Bessel Wronskian
+result. It proves a no-go theorem only for the kernel-and-anchor proof
+architecture; the status established in other project lanes is outside this
+paper's claim boundary.
+
+RECORDED NON-CLAIMS
+- The paper was not submitted as a replacement for ai.viXra:2607.0089.
+- The paper was not submitted as a proof or disproof of the global Bessel
+  Wronskian result.
+- The paper is not represented as a peer-reviewed or computer-certified
+  result.
 ======================================================================

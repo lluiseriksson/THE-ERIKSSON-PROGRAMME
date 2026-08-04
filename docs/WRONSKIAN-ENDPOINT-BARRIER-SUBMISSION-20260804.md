@@ -102,8 +102,10 @@ MUTATION_SELF_TEST PASS deliberate_false_predicate_rejected
 
 That test is reproducibility evidence for the obstruction and its mutation
 harness. It is not a computer-assisted proof of any paper inequality. The
-paper contains ordinary analytic proofs, uses no Lean build or interval
-oracle, and leaves the global Wronskian conjecture open.
+paper contains ordinary analytic proofs and uses no Lean build or interval
+oracle. This companion paper neither proves nor refutes the global Bessel
+Wronskian result; the status established in other project lanes is outside
+this paper's claim boundary.
 
 The clean public replay deliberately excludes the unrelated RG bridge commits
 that contaminated the original working history. The paper, script, records,
