@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "generated-qprime-row-v16"
-SOURCE_SHA = "1986036e8c2403ba57534d5e7d6d627960e05925"
+RUNNER_REV = "generated-qprime-fixed-output-v17"
+SOURCE_SHA = "db04d33a19be5f4e87d842f6cc9a3925e53f4388"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -40,28 +40,68 @@ PATH_MANIFEST = Path("/content/hrpoly-generated-qprime-row-paths.txt")
 ADD_REPRO = Path("/content/hrpoly-qprime-row-add-repro.lean")
 
 SOURCE_BLOBS = {
-    "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectWeightedRow.lean":
-        "56f95b530fe11d0ae042cdb968101d85ecb5b7b17f98803968025049bee44695",
-    "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectWeightedRowAudit.lean":
-        "4333f61eb9a52e90fb0a87e4a524b96549814ba5532786c5b7f8667c0e446884",
+    "YangMills/RG/FinitePiLpTypedFixedOutputWeightedKernel.lean":
+        "e1b0642ef896bf36bc80a9d507164045cf615b35853daa54de4c09b16834738a",
+    "YangMills/RG/FinitePiLpTypedFixedOutputWeightedKernelAudit.lean":
+        "0684867a0e8c8cc4323ff46e1723c1c4f5fe1667be177fff2fd2d27b296ff15d",
+    "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassOutputRow.lean":
+        "e6f3b3c7f243810125d6921601403f111194d55e34501d16e4852a3fae45a014",
+    "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassOutputRowAudit.lean":
+        "eb02f1a9171f4e50cce500f8bd7c72c287b4fbd7a480219915ad267e1b5025a7",
+    "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRow.lean":
+        "21e1a2c693c1a10db1ce21af042338d458de990305484eae0750c7a2034e002d",
+    "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRowAudit.lean":
+        "54d61caf35a85e43e830ced480b00eb4085f33ea11b91ee03853756f761d58fe",
 }
 
 QUEUE = [
     (
-        "physical_precision_direct_weighted_row_focal",
+        "fixed_output_kernel_focal",
         [
             "lake", "build",
-            "YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecisionDirectWeightedRow",
+            "YangMills.RG.FinitePiLpTypedFixedOutputWeightedKernel",
         ],
         None,
     ),
     (
-        "physical_precision_direct_weighted_row_audit",
+        "fixed_output_kernel_audit",
         [
             "lake", "env", "lean",
-            "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectWeightedRowAudit.lean",
+            "YangMills/RG/FinitePiLpTypedFixedOutputWeightedKernelAudit.lean",
+        ],
+        5,
+    ),
+    (
+        "generated_counting_mass_output_row_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceGeneratedCountingMassOutputRow",
+        ],
+        None,
+    ),
+    (
+        "generated_counting_mass_output_row_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassOutputRowAudit.lean",
         ],
         6,
+    ),
+    (
+        "physical_precision_direct_output_row_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRow",
+        ],
+        None,
+    ),
+    (
+        "physical_precision_direct_output_row_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRowAudit.lean",
+        ],
+        2,
     ),
 ]
 
@@ -261,16 +301,19 @@ def main() -> int:
         ADD_REPRO.write_text(
             """import Mathlib
 
-example {E : Type*} [SeminormedAddGroup E]
-    (a : ℝ) (ha : 0 ≤ a) (u v : E) :
-    a * ‖u + v‖ ≤ a * ‖u‖ + a * ‖v‖ := by
-  simpa only [mul_add] using
-    (mul_le_mul_of_nonneg_left (norm_add_le u v) ha)
+example (w x : ℝ) (depth : ℕ) :
+    w * (w ^ (2 * depth) * (w * x)) = w ^ (2 * (depth + 1)) * x := by
+  calc
+    w * (w ^ (2 * depth) * (w * x)) =
+        (w ^ (2 * depth) * w ^ 2) * x := by ring
+    _ = w ^ (2 * depth + 2) * x := by rw [← pow_add]
+    _ = w ^ (2 * (depth + 1)) * x := by
+      rw [show 2 * depth + 2 = 2 * (depth + 1) by omega]
 """,
             encoding="utf-8",
         )
         run(
-            "weighted_row_add_repro",
+            "fixed_output_mass_exponent_repro",
             ["lake", "env", "lean", str(ADD_REPRO)],
             cwd=ROOT,
         )
