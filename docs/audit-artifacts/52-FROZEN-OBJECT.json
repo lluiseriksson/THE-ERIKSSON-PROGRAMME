@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "audit": 52,
+  "captured_at_utc": "2026-08-04T14:06:27.380Z",
+  "branch_at_capture": "codex/cleanup-spatial-toolchain-52",
+  "frozen_draft_commit": "d40c0ecb9a54fbbeb2db5fda2b2de9a600fcc974",
+  "capture_method": "For each path, read exact bytes with git show <commit>:<path>. sha256_blob hashes those bytes. Text projections decode UTF-8, normalize CRLF and CR to LF, then derive a UTF-8/no-BOM CRLF projection; both byte counts and SHA-256 values are recorded.",
+  "self_reference_policy": "This manifest is committed after the frozen draft. The frozen object is d40c0ecb..., not the later commit that contains this manifest.",
+  "lean_execution": "none",
+  "colab_runtime": "not_opened",
+  "draft_files": [
+    {"path": ".github/workflows/ci.yml", "git_blob": "09a83cda14e9e9d95034358e9a335560136fb8f3", "blob_bytes": 1321, "sha256_blob": "3198c8caca04f8f193ceb681a7ec65cf4684ae31fcb95b0e1354eefc56928fd1", "lf_bytes": 1321, "sha256_lf": "3198c8caca04f8f193ceb681a7ec65cf4684ae31fcb95b0e1354eefc56928fd1", "crlf_bytes": 1356, "sha256_crlf": "414e349d50e2700a72ae93e26c30a0cb5c0e1763d24fa01ab635db1f0c792f30"},
+    {"path": "docs/audit-artifacts/52-SPATIAL-RECONSTRUCTION-PARITY-TOOLCHAIN.md", "git_blob": "b6bf66e44fe28482d0443094fd5b804eee49d607", "blob_bytes": 8589, "sha256_blob": "1479d6184fb160c26fa80467e4e228d50f9612af1cc6dc957e480b309203c088", "lf_bytes": 8589, "sha256_lf": "1479d6184fb160c26fa80467e4e228d50f9612af1cc6dc957e480b309203c088", "crlf_bytes": 8745, "sha256_crlf": "54944c22a8afcdb735efd55aac8a0a05ba5a9fabc840ecc37341649d73c860dc"},
+    {"path": "docs/audit-artifacts/52-spatial-placeholder-inventory.json", "git_blob": "b458e89ce88793d2aaa0d3f7b15c5620a9959126", "blob_bytes": 6580, "sha256_blob": "41aec2ff487f30e0bb695f896b5fa6cb1d8d3fe5a88401c5ff5c752ce0a86cef", "lf_bytes": 6580, "sha256_lf": "41aec2ff487f30e0bb695f896b5fa6cb1d8d3fe5a88401c5ff5c752ce0a86cef", "crlf_bytes": 6626, "sha256_crlf": "e3c3f60cc20206f347fe8ba2accc346b8ba9c78e92fd9759b12ab15472a203a5"},
+    {"path": "papers/parity-barriers/ARTIFACT-TOOLCHAIN.json", "git_blob": "e2b113c5aa147b653402d43eca1547fbd71d4248", "blob_bytes": 1500, "sha256_blob": "9a24bef800de910710b5a3e9481220ffefde7ad803d07ea9e370db1d66a58652", "lf_bytes": 1500, "sha256_lf": "9a24bef800de910710b5a3e9481220ffefde7ad803d07ea9e370db1d66a58652", "crlf_bytes": 1533, "sha256_crlf": "c1fc07e0715d6b3cc58ea438c871fea6e492de4042e73db252304a996da00ba7"},
+    {"path": "papers/parity-barriers/README.md", "git_blob": "a85e1dfdfed59ada4362ae401605df4802169b8c", "blob_bytes": 1916, "sha256_blob": "529886b854a0818788fe92a445b1c819b33391d1fb3ed557b480247878726e04", "lf_bytes": 1916, "sha256_lf": "529886b854a0818788fe92a445b1c819b33391d1fb3ed557b480247878726e04", "crlf_bytes": 1936, "sha256_crlf": "1a0ca2151faad8816a3822ce956853c26e7832cedbffb295367c7cb2d4bf0386"},
+    {"path": "scripts/check_publication_provenance.py", "git_blob": "fe10c267a1dfa8de9cf7b776a51616487fd5eb60", "blob_bytes": 7240, "sha256_blob": "db197a92e0ad799b835252ddc1afc651c555cb5513e522405568c886a6659741", "lf_bytes": 7240, "sha256_lf": "db197a92e0ad799b835252ddc1afc651c555cb5513e522405568c886a6659741", "crlf_bytes": 7421, "sha256_crlf": "f7b6e69d084c4a2ad030e6fa7f790df07507841c3f731719dbd5cdd91156b182"},
+    {"path": "tests/test_publication_provenance.py", "git_blob": "4d27ecbd9660c39d5c522cd7b2d370e79df6250a", "blob_bytes": 5632, "sha256_blob": "b52a11d330efe29001d1bacbe4293e9851e6180afedc6ede547a3198b39e7afb", "lf_bytes": 5632, "sha256_lf": "b52a11d330efe29001d1bacbe4293e9851e6180afedc6ede547a3198b39e7afb", "crlf_bytes": 5783, "sha256_crlf": "876a255f997a9a96186236481828f7f64d650a4ec6ca561762063876156f6a80"}
+  ],
+  "spatial_evidence": {
+    "commit": "c76b790505268eedcb8fe126bc399ccab82baa4f",
+    "publication_status": "quarantined_not_frozen",
+    "text_files": [
+      {"path": "papers/spatial-reconstruction/spatial_reconstruction.tex", "git_blob": "92c8bbd31eee16d908c82073add3b71f9c4d656d", "blob_bytes": 40049, "sha256_blob": "da20e4c1dd30a05da542e90853fdadf202aaac0a9b3d3399f86bb2e876c02a9f", "lf_bytes": 40049, "sha256_lf": "da20e4c1dd30a05da542e90853fdadf202aaac0a9b3d3399f86bb2e876c02a9f", "crlf_bytes": 40817, "sha256_crlf": "a28f1121a2c36d31a5db4efe25602a3ee9b3fd18039085e792e6a11828ee181b"},
+      {"path": "papers/spatial-reconstruction/measurements.json", "git_blob": "44934393fdab2e77bec34c86fa6107364f8b2cae", "blob_bytes": 777, "sha256_blob": "b3bb3bb4711ac3125373627828644925e918b5aa74fb875e73df142a2e465100", "lf_bytes": 777, "sha256_lf": "b3bb3bb4711ac3125373627828644925e918b5aa74fb875e73df142a2e465100", "crlf_bytes": 795, "sha256_crlf": "40913b5815d69640537e7ab6b02b49e982c3705146d7057f4380061dd21d974a"},
+      {"path": "YangMills/OS/SpatialReconstruction.lean", "git_blob": "33b5534589b3a22cd3b7bfd4f4592f3e66462252", "blob_bytes": 87601, "sha256_blob": "b1b902604acf8c0ba54d10d0825be8f6368ed66b4fe2f08f833f97d1d8d98729", "lf_bytes": 87601, "sha256_lf": "b1b902604acf8c0ba54d10d0825be8f6368ed66b4fe2f08f833f97d1d8d98729", "crlf_bytes": 89342, "sha256_crlf": "0f0bb1fe3581435fc671de6d143f7b49f0ad52b8f7d3972720555ad68bfc06af"}
+    ],
+    "pdf": {"path": "papers/spatial-reconstruction/spatial_reconstruction.pdf", "git_blob": "7f371ab915609e15870cc6a3e0f41a618a3089d9", "blob_bytes": 298731, "sha256_blob": "8a2c5b8f71d5d92902f538bfefaff8e9a0769b90e180068bd98a08fe9ac86c25"}
+  },
+  "validation": [
+    {"command": "python scripts/check_publication_provenance.py", "result": "PASS"},
+    {"command": "python -m pytest -q tests/test_publication_provenance.py", "result": "7 passed"},
+    {"command": "python scripts/check_consistency.py", "result": "PASS: zero sorry; zero verified-core axioms"},
+    {"command": "git diff --cached --check", "result": "PASS before draft commit"}
+  ],
+  "attack_summary": [
+    "All 32 inventoried spatial placeholders were synthesized in a fixture; the guard returned 32 findings.",
+    "Missing ARTIFACT-TOOLCHAIN.json was rejected.",
+    "A changed Lean source with a stale declared hash was rejected.",
+    "A stable @@TOKEN@@ marker with a measured numeric cell was accepted, while the same row with JOBSAFTER was rejected.",
+    "No Lean, Lake, oracle, LaTeX, or sustained local computation was run."
+  ]
+}
