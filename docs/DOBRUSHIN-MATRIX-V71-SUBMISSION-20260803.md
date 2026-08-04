@@ -1,10 +1,15 @@
-# Dobrushin matrix paper — v7.1 viXra submission record
+# Dobrushin matrix paper — v7.1 viXra v1 submission record
+
+> **Superseded public version.** This v7.1 manuscript is the live `[v1]`
+> submitted on 2026-08-03 20:07:25. A v8.1 replacement has since been
+> submitted as v2 and is pending administrator action. See
+> [`DOBRUSHIN-MATRIX-V81-V2-SUBMISSION-20260804.md`](DOBRUSHIN-MATRIX-V81-V2-SUBMISSION-20260804.md).
 
 Date recorded: **2026-08-03**
 
-Operation: **later replacement submitted to viXra**
+Operation: **initial v1 submitted to viXra**
 
-Moderation/publication outcome: **not recorded here**
+Moderation/publication outcome: **v1 live, as reported by the owner**
 
 ## Submitted paper
 
@@ -40,19 +45,18 @@ rectangle family.
 
 ## Scope and supersession
 
-This v7.1 submission supersedes the earlier 20-page v5.5 submission object at
-`e68b821f7` for attachment purposes. The older record is retained as historical
-provenance; it must not be mistaken for the latest submitted PDF.
+This v7.1 submission was the public v1. It superseded the earlier 20-page v5.5
+preparation object at `e68b821f7` for attachment purposes. The older record is
+retained as historical provenance.
 
 At the time of this record, `ffee6f36` is reachable from remote branch
 `d3-closure` and is not an ancestor of `main`. This publication record does
 not claim integration into the canonical core and does not replace the live
 `main` build baseline.
 
-A further improved edition is in active fabrication. It is **not** represented
-here as submitted, compiled, audited, or publication-ready. Its planned
-currying/feed bridge and any resulting corollary remain separate future work
-until a new frozen SHA and independent verification exist.
+The subsequent v8.1 edition closes the concrete currying/feed composition and
+has been submitted as v2. This file remains the immutable record of what the
+public v1 claimed; it must not be silently rewritten to match v2.
 
 This paper does not prove a continuum limit, a Yang--Mills mass gap, or a
 volume-family spectral theorem beyond the hypotheses printed in the submitted

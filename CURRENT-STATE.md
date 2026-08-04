@@ -17,18 +17,19 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; later replacement submitted).**  The
-24-page v7.1 edition of *The Row Sums Were the Method, Not the Theorem* was
-sent as a later replacement. Its exact PDF is pinned at paper commit
-`ffee6f36`, has SHA-256
-`1F2C967EAA147CFA8A00C12B57251FB01E2D192A5A5DF20A42C30E98007DE821`, and is
+**Latest viXra submission (2026-08-04; v2 replacement pending administrator).**
+The 25-page v8.1 edition of *The Row Sums Were the Method, Not the Theorem* was
+submitted as v2 over the live v1/v7.1. Its exact PDF is pinned at paper commit
+`1b8f7012`, has SHA-256
+`18A02AC2D5AECC1090396E0EFF6BA6207E66A4D10AD501E6F918E44F28F9CC92`, and is
 described in
-[`docs/DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md).
+[`docs/DOBRUSHIN-MATRIX-V81-V2-SUBMISSION-20260804.md`](docs/DOBRUSHIN-MATRIX-V81-V2-SUBMISSION-20260804.md).
 The paper remains on branch `d3-closure`, outside `main`; this submission notice
-does not replace the canonical `main` checkpoint. The earlier v5.5 submission
-at `e68b821f7` remains recorded as superseded provenance. A further improved
-edition is being fabricated but is not yet submitted, compiled, or audited.
-The moderation/publication outcome is not yet recorded here.
+does not replace the canonical `main` checkpoint. The v7.1 object at `ffee6f36`
+is the public v1; v5.5 at `e68b821f7` is preparation provenance. The v2 closes
+the finite-volume transport chain through the uniform projected-operator gap,
+while the infinite-volume D-7 step remains open. Do not resubmit while the
+administrator decision is pending.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),

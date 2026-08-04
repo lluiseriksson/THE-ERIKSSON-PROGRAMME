@@ -21,15 +21,15 @@ Catalan/Schur series through Addendum 465 and the 2026-07-04 diamagnetic
 unitary bridge Addendum 466, while the latest measured source checkpoint is
 `a17d7816` (on `main`).
 
-Publication-only update (2026-08-03): the later 24-page Dobrushin matrix
-manuscript v7.1 was submitted to viXra from paper commit `ffee6f36`. Its exact
-PDF hash, submitted metadata, supersession chain, and the fact that this lane
-remains outside `main` are recorded in
-[`docs/DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md).
+Publication-only update (2026-08-04): the 25-page Dobrushin matrix manuscript
+v8.1 was submitted as the viXra v2 replacement over the live v1/v7.1. Its
+complete replacement metadata, exact PDF identity, supersession chain, and the
+fact that this lane remains outside `main` are recorded in
+[`docs/DOBRUSHIN-MATRIX-V81-V2-SUBMISSION-20260804.md`](docs/DOBRUSHIN-MATRIX-V81-V2-SUBMISSION-20260804.md).
 Do not substitute the older 11-page `dobrushin_matrix3.pdf` at `c3d8e32d`.
-The earlier 20-page v5.5 attachment at `e68b821f7` is also superseded for
-submission purposes. A further improved edition is in fabrication and is not
-yet submitted or verified.
+The 20-page v5.5 object at `e68b821f7` is preparation provenance, not a public
+viXra version. The v7.1 PDF at `ffee6f36` remains the v1 record. Do not submit
+again while v2 is pending administrator action.
 This publication notice does not change the live `hRpoly` frontier below.
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills

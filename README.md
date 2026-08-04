@@ -440,21 +440,23 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ## Latest viXra submission
 
-**Latest replacement submitted 2026-08-03; moderation outcome not yet
-recorded.**  The 24-page v7.1 edition of *The Row Sums Were the Method, Not the
+**viXra v2 replacement submitted 2026-08-04; administrator action pending.**
+The 25-page v8.1 edition of *The Row Sums Were the Method, Not the
 Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay
 of Correlations, and a Misattributed Uniformity Wall* was sent to viXra.  The
-exact PDF is pinned at paper commit [`ffee6f36`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/ffee6f36e2a13b133d99e2ad373139c22a00ee5b/papers/dobrushin-matrix/dobrushin_matrix.pdf)
+exact PDF is pinned at paper commit [`1b8f7012`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/1b8f7012ccc7b92d08129a6385a86d97fdfdf623/papers/dobrushin-matrix/dobrushin_matrix.pdf)
 and has SHA-256
-`1F2C967EAA147CFA8A00C12B57251FB01E2D192A5A5DF20A42C30E98007DE821`.
-See the [latest submission record](docs/DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md)
-for the exact metadata, superseded edition, integration boundary, and scope.
+`18A02AC2D5AECC1090396E0EFF6BA6207E66A4D10AD501E6F918E44F28F9CC92`.
+See the [v2 replacement record](docs/DOBRUSHIN-MATRIX-V81-V2-SUBMISSION-20260804.md)
+for the complete replacement metadata, v1/v2 boundary, integration boundary,
+and exact scope.
 
 The paper/source commits remain on remote branch `d3-closure`; this notice does
 not claim that the lane is integrated into `main`, and it does not alter the
 canonical proof-state DAG or the recorded distance to the Clay problem.
-A further improved edition is being fabricated, but is not yet represented as
-submitted, verified, or publication-ready.
+The live v1 was the 24-page v7.1 edition submitted on 2026-08-03 20:07:25.
+The v2 replacement rewrites the complete metadata record and must not be
+resubmitted while administrator action is pending.
 
 ---
 
