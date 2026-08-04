@@ -31361,3 +31361,37 @@ mathematical one, was the schedule risk.
 
 **ROLES.**  Fabrication and diagnosis: this desk.  The pass-1 execution
 and its reading: the plane, relayed by the owner.
+
+
+## Addendum 615 (2026-08-04, **OS-R module A, plane pass 2: the binder
+error had MASKED the endpoint -- its five names live one namespace
+deeper; Add. 614 partially corrected**)
+
+Pass 2 (module sha256 6475d673..., run by the owner on the warm
+high-RAM runtime) returned ELAB_EXIT 1 with a single CLASS of error:
+sliceW, tiltKernel, opOf, vacOf and dobrushin_ising_uniform_gap are
+unknown identifiers at the endpoint, autoImplicit-poisoned into
+Sort-variables.  Root cause read from source: THE ENTIRE D-LANE NESTS
+'namespace Dobrushin' INSIDE 'YangMills.OS' (DobrushinCorollary.lean:54,
+DobrushinTilt.lean:66, DobrushinTransport.lean:68, ...), while the
+A-part names (spatialKernel, symWeighted, act, dress, siteForm,
+transferOp, projectedTransfer) sit in YangMills.OS proper -- which is
+why A1-A3 resolved and the endpoint did not.  Fix: one line,
+'open Dobrushin' (no collisions -- the A-part names have single
+declarations, re-verified by grep).
+
+**CORRECTION to Addendum 614 (the prose-outruns-the-lemma class,
+again):** 614 claimed the endpoint's obtain-chain and 'every consumed
+name' elaborated on the first pass.  FALSE for the endpoint: pass 1's
+parser stopped at the 148 binder error BEFORE reaching it, so the five
+Dobrushin-namespace names were never tested.  What pass 1 actually
+certified is A1-A3's names only.  The overstatement is retracted here;
+the lesson is the standing one -- a pass certifies exactly what the
+elaborator TOUCHED, and a parse error truncates that set.
+
+Pass-3 source: docs/OS-R-MODULE-A-PASS3.lean.txt (sha256 b48e92e6...,
+8996 bytes), runner cell scripts/osr1_pass3_cell.py.  Still not green.
+
+**ROLES.**  Diagnosis, fix, correction: this desk.  Pass-2 execution
+and output relay: the owner, by hand (the Claude-in-Chrome bridge is
+still down after the account change; ~10 empty polls).
