@@ -30,7 +30,7 @@ theorem cmp99SourceRegionalLargeBlockCutoffScale_mul_Q
       cmp99SourceRegionalLargeBlockCutoffScale M depth * Q := by
   unfold cmp99SourceRegionalLargeBlockSide
     cmp99SourceRegionalLargeBlockCutoffScale
-  ring
+  ac_rfl
 
 /-- The certified generated precision range retains one inverse factor of
 the source large-block parameter after division by the cutoff spacing. -/
@@ -43,9 +43,11 @@ theorem cmp99SourceGenerated_precisionRange_div_largeBlockCutoffScale
     cmp99SourceRegionalLargeBlockSide
   push_cast
   rw [show depth + 2 = (depth + 1) + 1 by omega, pow_succ]
-  have hpow : (M : ℝ) ^ (depth + 1) ≠ 0 := by positivity
-  have hM : (M : ℝ) ≠ 0 := by positivity
-  field_simp
+  have hpow : (M : ℝ) ^ (depth + 1) ≠ 0 :=
+    pow_ne_zero _ (Nat.cast_ne_zero.mpr (NeZero.ne M))
+  have hM : (M : ℝ) ≠ 0 :=
+    Nat.cast_ne_zero.mpr (NeZero.ne M)
+  field_simp [hpow, hM] <;> ring_nf
 
 /-- After one displacement through the certified precision range, the
 literal cutoff slope still carries the source `M⁻¹` gain. -/
@@ -60,9 +62,11 @@ theorem cmp99SourceRegionalLargeBlockSlope_mul_precisionRange
     cmp99SourceRegionalLargeBlockSide
   push_cast
   rw [show depth + 2 = (depth + 1) + 1 by omega, pow_succ]
-  have hpow : (M : ℝ) ^ (depth + 1) ≠ 0 := by positivity
-  have hM : (M : ℝ) ≠ 0 := by positivity
-  field_simp <;> ring
+  have hpow : (M : ℝ) ^ (depth + 1) ≠ 0 :=
+    pow_ne_zero _ (Nat.cast_ne_zero.mpr (NeZero.ne M))
+  have hM : (M : ℝ) ≠ 0 :=
+    Nat.cast_ne_zero.mpr (NeZero.ne M)
+  field_simp [hpow, hM] <;> ring_nf
 
 /-- Literal source `M^-1` slope of the regional partition value field. -/
 theorem norm_cmp99SourceRegionalLargeBlockSquarePartition_value_sub_le
@@ -81,6 +85,8 @@ theorem norm_cmp99SourceRegionalLargeBlockSquarePartition_value_sub_le
       cmp99SourceRegionalLargeBlockSide M depth * (2 * Q) =
         cmp99SourceRegionalLargeBlockCutoffScale M depth * Q :=
     cmp99SourceRegionalLargeBlockCutoffScale_mul_Q M Q depth
+  letI : NeZero (cmp99SourceRegionalLargeBlockCutoffScale M depth) :=
+    ⟨Nat.ne_of_gt (cmp99SourceRegionalLargeBlockCutoffScale_pos M depth)⟩
   let x' : FinBox 4
       (cmp99SourceRegionalLargeBlockCutoffScale M depth * Q) := hsize ▸ x
   let y' : FinBox 4
@@ -98,7 +104,8 @@ theorem norm_cmp99SourceRegionalLargeBlockSquarePartition_value_sub_le
       x' y'
   simpa [cmp99SourceRegionalLargeBlockSquarePartition,
     cmp99SourceRegionalLargeBlockCutoff,
-    cmp99SourceRegionalLargeBlockCoordinate, hxval, hyval, hdist] using h
+    cmp99SourceRegionalLargeBlockCoordinate, hxval, hyval, hdist,
+    sub_eq_add_neg, add_assoc] using h
 
 end
 
