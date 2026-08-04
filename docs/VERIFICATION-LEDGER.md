@@ -30858,3 +30858,30 @@ theorem.
 
 **ROLES.**  This desk fabricates; the rung's audit belongs to another
 desk; no score.
+
+## Addendum 604 (2026-08-04, **paper v8: the corollary inked — 25 pages at
+anchor c7b870b05, artifact-verified**)
+
+The manuscript now carries THE THEOREM the chain was for:
+Section~sec:transport-open, renamed "The last plank, closed", states
+Theorem thm:corollary (`dobrushin_ising_uniform_gap`) with the currying
+identity, the pairing count, the energy split and the feed named as its
+proof; the abstract's "What is not proved" now lists only the honest
+residue (no infinite-volume state, window not sharp, the
+symmetric-operator reading stated where used); claims/frontier item 4
+marked Done, all four planks; Limitations' substantive limitation moves
+to the infinite volume, explicitly a separate unchartered programme;
+Reproducibility carries the seven-count run 8475..8480, the oracle
+ladder ..3004/3010, the corollary's hash row (ffdc5a6a…/34006), the
+six-pass 20→9→5→4→2→0 machinery ladder itemised, and the operational
+note that the first verification queue died with a client session
+(queued Colab cells are browser-submitted) costing one identical rerun.
+Twelve theorems counted in abstract and Limitations; permalink anchor
+moved to c7b870b05.  ARTIFACT VERIFIED by text extraction: the new
+section head, the corollary's Lean name, all four chain-lemma names,
+8480, 3010, the new hash, "twelve theorems" ×2 present; "one plank that
+is not", "claimed by nobody", "All eleven theorems" absent; 25 pages,
+zero LaTeX errors, zero undefined references.
+
+**ROLES.**  The desk that wrote the paper did not audit it; external
+evaluation has its own scales and its own record.
