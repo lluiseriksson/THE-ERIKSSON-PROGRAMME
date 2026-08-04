@@ -41,13 +41,14 @@ theorem cmp99SourceRegionalLargeBlockActiveCells_subset
     (x : FinBox 4
       (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q))) :
     cmp99SourceRegionalLargeBlockActiveCells P M Q depth x ⊆
-      cmp95PeriodicTensorActiveCellWindow Q
+      cmp95RescaledPeriodicTensorActiveCellWindow Q
+        (cmp99SourceRegionalLargeBlockCutoffScale M depth)
         (cmp99SourceRegionalLargeBlockCoordinate M depth
           fun i => (x i).val) := by
   classical
   intro cell hcell
   rw [cmp99SourceRegionalLargeBlockActiveCells, Finset.mem_filter] at hcell
-  apply mem_cmp95PeriodicTensorActiveCellWindow_of_cutoff_ne_zero P Q
+  apply mem_cmp95RescaledPeriodicTensorActiveCellWindow_of_cutoff_ne_zero P Q
   simpa [cmp99SourceRegionalLargeBlockSquarePartition,
     cmp99SourceRegionalLargeBlockCutoff] using hcell.2
 
@@ -61,12 +62,14 @@ theorem card_cmp99SourceRegionalLargeBlockActiveCells_le_sixteen
     (cmp99SourceRegionalLargeBlockActiveCells P M Q depth x).card ≤ 16 := by
   calc
     (cmp99SourceRegionalLargeBlockActiveCells P M Q depth x).card ≤
-        (cmp95PeriodicTensorActiveCellWindow Q
+        (cmp95RescaledPeriodicTensorActiveCellWindow Q
+          (cmp99SourceRegionalLargeBlockCutoffScale M depth)
           (cmp99SourceRegionalLargeBlockCoordinate M depth
             fun i => (x i).val)).card :=
       Finset.card_le_card
         (cmp99SourceRegionalLargeBlockActiveCells_subset P M Q depth x)
-    _ ≤ 16 := card_cmp95PeriodicTensorActiveCellWindow_le_sixteen _ _
+    _ ≤ 16 :=
+      card_cmp95RescaledPeriodicTensorActiveCellWindow_le_sixteen _ _ _
 
 end
 

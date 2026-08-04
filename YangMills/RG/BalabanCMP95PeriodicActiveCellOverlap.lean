@@ -152,6 +152,36 @@ theorem mem_cmp95PeriodicTensorActiveCellWindow_of_cutoff_ne_zero
   unfold cmp95PeriodicTensorSquareWeight
   exact Finset.prod_eq_zero (Finset.mem_univ i) hcoord
 
+/-- Active source cells for a cutoff evaluated at physical scale `M0`.
+The window is not the unscaled window at `x`: it is the same residue window
+at the dimensionless coordinate `x / M0`, exactly as in the definition of
+`cmp95RescaledPeriodicTensorCutoff`. -/
+def cmp95RescaledPeriodicTensorActiveCellWindow
+    (Q : ℕ) [NeZero Q] (M0 : ℝ) (x : Fin 4 → ℝ) :
+    Finset (FinBox 4 Q) :=
+  cmp95PeriodicTensorActiveCellWindow Q (fun i => x i / M0)
+
+/-- Physical rescaling changes the coordinate of the active window but not
+its literal four-dimensional overlap bound `2^4 = 16`. -/
+theorem card_cmp95RescaledPeriodicTensorActiveCellWindow_le_sixteen
+    (Q : ℕ) [NeZero Q] (M0 : ℝ) (x : Fin 4 → ℝ) :
+    (cmp95RescaledPeriodicTensorActiveCellWindow Q M0 x).card ≤ 16 := by
+  exact card_cmp95PeriodicTensorActiveCellWindow_le_sixteen Q
+    (fun i => x i / M0)
+
+/-- A nonzero physically rescaled tensor cutoff lies in the active window at
+the normalized coordinate.  This is a definitional transport through the
+rescaled cutoff, not an identification with the unscaled window at `x`. -/
+theorem mem_cmp95RescaledPeriodicTensorActiveCellWindow_of_cutoff_ne_zero
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (M0 : ℝ) (cell : FinBox 4 Q) (x : Fin 4 → ℝ)
+    (hcutoff : cmp95RescaledPeriodicTensorCutoff P Q M0 cell x ≠ 0) :
+    cell ∈ cmp95RescaledPeriodicTensorActiveCellWindow Q M0 x := by
+  unfold cmp95RescaledPeriodicTensorActiveCellWindow
+  apply mem_cmp95PeriodicTensorActiveCellWindow_of_cutoff_ne_zero P Q
+  change cmp95PeriodicTensorCutoff P Q cell (fun i => x i / M0) ≠ 0
+  exact hcutoff
+
 end
 
 end YangMills.RG
