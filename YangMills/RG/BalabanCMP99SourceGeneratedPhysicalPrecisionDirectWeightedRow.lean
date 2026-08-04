@@ -87,11 +87,12 @@ theorem finitePiLpTypedWeightedRowKernelBound_add
       apply Finset.sum_le_sum
       intro target _
       rw [ContinuousLinearMap.add_apply, PiLp.add_apply]
-      exact mul_le_mul_of_nonneg_left
-        (norm_add_le
-          (S (singleFinitePiLp source v) target)
-          (T (singleFinitePiLp source v) target))
-        (Real.exp_pos _).le
+      simpa only [mul_add] using
+        (mul_le_mul_of_nonneg_left
+          (norm_add_le
+            (S (singleFinitePiLp source v) target)
+            (T (singleFinitePiLp source v) target))
+          (Real.exp_pos (rate * (dist target source : ℝ))).le)
     _ = (∑ target : κ,
           Real.exp (rate * (dist target source : ℝ)) *
             ‖S (singleFinitePiLp source v) target‖) +
