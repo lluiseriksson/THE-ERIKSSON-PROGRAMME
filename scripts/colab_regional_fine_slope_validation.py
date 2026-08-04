@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v8"
-SOURCE_SHA = "d38b1c25cbbed968be7da77b683b54a0aee4cd1f"
+RUNNER_REV = "regional-large-block-v9"
+SOURCE_SHA = "b28d01612475ca0cd860c9046048bc1615dd217d"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -38,21 +38,6 @@ ASSET = Path("/content/lean-4.29.0-rc6-linux.tar.zst")
 TOOLROOT = Path("/content/lean-4.29.0-rc6-linux")
 
 QUEUE = [
-    (
-        "periodic_active_overlap_focal",
-        ["lake", "build", "YangMills.RG.BalabanCMP95PeriodicActiveCellOverlap"],
-        None,
-    ),
-    (
-        "periodic_active_overlap_audit",
-        [
-            "lake",
-            "env",
-            "lean",
-            "YangMills/RG/BalabanCMP95PeriodicActiveCellOverlapAudit.lean",
-        ],
-        4,
-    ),
     (
         "regional_fine_scale_nogo_focal",
         [
