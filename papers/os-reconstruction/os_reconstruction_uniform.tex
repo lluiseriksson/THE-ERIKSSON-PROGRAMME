@@ -65,10 +65,31 @@ progress on the Clay problem.
 
 \section{Introduction and landscape}\label{sec:intro}
 
-\SLOT{2--3 paragraphs: the reconstruction idea; why volume-uniformity is
-the content (a gap at every fixed extent is classical and already in the
-programme's paper 8; ONE $m$ for all extents is what a thermodynamic
-limit can consume); the D-6 input.}
+The Osterwalder--Schrader route builds a physical theory out of
+Euclidean data: a reflection-positive form gives a Hilbert space, and
+composition with the time shift gives a self-adjoint transfer operator.
+For a lattice slice system the construction is elementary --- the
+content is never the construction but the \emph{spectrum}: a spectral
+gap at every fixed spatial extent $L$ is classical (Perron--Frobenius;
+in this programme it is the earlier
+\lean{coupled\_gap\_all\_eigenvalues}), and it degenerates as
+$L \to \infty$ unless something uniform survives.  What a
+thermodynamic limit can actually consume is \emph{one} $m > 0$ valid
+for every $L$ at once.
+
+That uniform input exists in this repository: the Dobrushin corollary
+\lean{dobrushin\_ising\_uniform\_gap} produces, inside the window
+$2\tanh|\beta| + 2\tanh|\gamma| \le \alpha < 1$, a single $m>0$
+bounding the projected transfer operator of the tilted kernel at every
+extent.  The present paper's contribution is the \emph{identification}:
+the operator that bound governs \emph{is} --- unitarily, by the
+explicit $\sqrt{w}$ boundary dressing, with no spectral-transport
+theory --- the transfer operator forced on the reconstructed (site-form)
+theory, and the bound transports to volume-uniform clustering of its
+connected correlators.  The theorem is deliberately cheap: the same
+witnesses, no new estimate.  Cheapness is the honesty of the claim ---
+the uniformity is real because it is D-6's, and the reconstruction adds
+exactly one commuting square, machine-checked.
 
 \subsection{Machine-checked prior work, cited before a referee does}
 \label{sec:prior}
@@ -109,11 +130,31 @@ the raw-measure $n$-step identification (named next step) \\
 \end{center}
 
 \section{The two geometries and the forced operator}\label{sec:forced}
-\SLOT{Cite the programme modules: SpatialReflection (paper 12),
-SpatialOS (paper 13), SpatialReconstruction (paper 14) --- the site form
-weighs by $1/w$, the forced operator $T = D_w K$, self-adjoint at every
-$\beta$, PSD for $\beta \ge 0$.  State the defining equation as the
-Lean theorem names.  NO new mathematics in this section.}
+Everything in this section is prior work of the repository, cited by
+module (the public trace of this lane is the ai.viXra
+\lean{2607.009x} cluster); no new mathematics appears here.  The slice
+system carries two pairings on complex boundary vectors: the
+\emph{site} form, which weighs by $1/w$
+(\lean{siteForm}, module \lean{SpatialReconstruction}), and the
+\emph{bond} form carrying the decoupled kernel
+$\mathrm{spatialKernel}\,\beta$ (\lean{bondForm}).  The transfer
+operator is \emph{forced}: $T = D_w K$ is the unique operator with
+$\mathrm{site}(u, Tv) = \mathrm{bond}(u,v)$
+(\lean{transferOp\_unique}), self-adjoint for the site form at every
+$\beta$ (\lean{transferOp\_selfAdjoint}) and positive for
+$\beta \ge 0$; reflection positivity of the underlying measure is the
+lane's earlier bond/site pair (modules \lean{SpatialReflection},
+\lean{SpatialOS}).  On the Dobrushin side, the same repository carries
+\lean{symWeighted} $= \sqrt{w}K\sqrt{w}$ (module \lean{PerronGap}),
+its normalisation \lean{tiltKernel} $= \mathrm{symWeighted}/\lambda$
+(module \lean{DobrushinTilt}), the Euclidean packaging \lean{opOf},
+\lean{vacOf}, \lean{vacuumTransfer\_opOf} (module
+\lean{DobrushinTransport}), and the corollary
+\lean{dobrushin\_ising\_uniform\_gap} (module
+\lean{DobrushinCorollary}).  The seam fact this paper depends on ---
+one \lean{spatialKernel} declaration serving both geometries --- is
+enforced by the elaborator in the module of
+Section~\ref{sec:unitary}.
 
 \section{The dressing unitary}\label{sec:unitary}
 All three statements are green on the plane (module
@@ -175,10 +216,19 @@ the rate alone is uniform in $L$.
 \end{theorem}
 The packaging is by citation: \lean{vacuumTransfer\_opOf} +
 \lean{tiltKernel\_symm} + \lean{clustering\_of\_gap}, all in-tree.
-\SLOT{The gibbsPathSum-level identification (raw Gibbs two-point sums
-against the operator powers through B0a/B0b and A3) is the one named
-remaining step of the charter's part B; state here exactly what is
-proved when it lands, and nothing more.}
+One step of the campaign charter remains open, and we name it rather
+than blur it: the \emph{raw-measure} $n$-step identification --- the
+statement that the unnormalised Gibbs two-point sums
+(\lean{gibbsPathSum}, whose operator bridge
+\lean{gibbsPathSum\_eq\_iterate} is already in the tree) equal
+$\lambda^n$ times matrix elements of the operator powers through
+B0a/B0b and A3, together with the division-safe six-term connected
+bound against the partition function.  Its bricks are designed and its
+judge identities (G5 of \lean{judge\_os\_uniform.py}) are verified
+numerically at $n \le 4$; it is fabrication, not research.  Nothing in
+Sections~\ref{sec:unitary}--\ref{sec:measure} depends on it: the
+clustering theorem above is a statement about the reconstructed
+operator and stands on its own.
 
 \section{Reproduction}\label{sec:repro}
 All numbers below were read from committed run artefacts (ledger
