@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fresh-clone Colab gate for the CMP99 regional precision split brick.
+"""Fresh-clone Colab gate for the physical localized-carrier bridge.
 
 This file is validation infrastructure only.  It checks the immutable source
 checkpoint named by ``SOURCE_SHA`` and disconnects the Colab runtime at the
@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v21"
-SOURCE_SHA = "699efbad6f05a42fef0ed0e5a9a18a05a06ee11f"
+RUNNER_REV = "localized-covariance-carrier-v22"
+SOURCE_SHA = "79ba00554fe513c95ece862c715a98c1a70ef236"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -31,9 +31,9 @@ TOOLCHAIN_URL = (
     "lean-4.29.0-rc6-linux.tar.zst"
 )
 TOOLCHAIN_SHA256 = "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
-ROOT = Path("/content/hrpoly-regional-large-block")
-EVIDENCE = Path("/content/hrpoly-regional-large-block-evidence")
-ARCHIVE = Path("/content/hrpoly-regional-large-block-evidence.tar.gz")
+ROOT = Path("/content/hrpoly-localized-covariance-carrier")
+EVIDENCE = Path("/content/hrpoly-localized-covariance-carrier-evidence")
+ARCHIVE = Path("/content/hrpoly-localized-covariance-carrier-evidence.tar.gz")
 ASSET = Path("/content/lean-4.29.0-rc6-linux.tar.zst")
 TOOLROOT = Path("/content/lean-4.29.0-rc6-linux")
 
@@ -250,7 +250,42 @@ REGIONAL_PRECISION_QUEUE_V10 = [
     ),
 ]
 
-QUEUE = LEGACY_QUEUE_V9[14:]
+LOCALIZED_CARRIER_QUEUE_V22 = [
+    (
+        "physical_coordinate_dictionary_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP116SourcePhysicalCoordinateDictionary",
+        ],
+        None,
+    ),
+    (
+        "physical_coordinate_dictionary_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP116SourcePhysicalCoordinateDictionaryAudit.lean",
+        ],
+        10,
+    ),
+    (
+        "combined_source_pre_eq136_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136",
+        ],
+        None,
+    ),
+    (
+        "combined_source_pre_eq136_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136Audit.lean",
+        ],
+        16,
+    ),
+]
+
+QUEUE = LOCALIZED_CARRIER_QUEUE_V22
 
 ALGEBRA_REPRO = r"""import Mathlib
 
