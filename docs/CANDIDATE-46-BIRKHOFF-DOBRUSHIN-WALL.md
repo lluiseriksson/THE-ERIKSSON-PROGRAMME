@@ -1,9 +1,12 @@
 # (46) Cálculo Birkhoff–Dobrushin y muro
 
 Estado: **cálculo + muro; la rama proyectiva volumen-uniforme queda
-descartada**.  Este documento no reclama matemática nueva ni un gap uniforme
-por Birkhoff.  Fija un teorema comparativo finito, sus convenciones, los casos
-de igualdad y el contraejemplo que impide sobreinterpretarlo.
+descartada**.  No se reclama como nueva la desigualdad aguda TV--Hilbert ni
+los teoremas clásicos de Birkhoff y Dobrushin. El manuscrito asociado aísla
+como contribución candidata estrecha la clasificación iff de igualdad para
+kernels finitos, la ley tensorial hiperbólica y la dicotomía global/local.
+No se reclama un gap uniforme por Birkhoff ni un dictamen terminal de
+originalidad.
 
 ## 1. Convenciones
 
@@ -230,13 +233,23 @@ La prioridad se asigna a resultados, no a esta presentación comparativa.
 - **Dobrushin (1970):** formulación general mediante distribuciones
   condicionales y base del teorema de comparación.
   DOI: https://doi.org/10.1137/1115049 .
+- **Reeb--Kastoryano--Wolf (2011):** comparación general entre norma base y
+  diámetro proyectivo, incluida la constante tanh.
+  DOI: https://doi.org/10.1063/1.3615729 .
+- **Gaubert--Qu (2015):** identificación del coeficiente de Dobrushin con la
+  contracción de la seminorma de oscilación de Hopf en conos.
+  DOI: https://doi.org/10.1007/s00020-014-2193-2 .
+- **Cohen--Fausti (2024):** desigualdad aguda entre variación total y métrica
+  de Hilbert para medidas de probabilidad, con saturación.
+  arXiv: https://arxiv.org/abs/2309.02413 .
 
 La especialización `tanh |J|` para una condicional binaria es un cálculo
 elemental de Ising dentro de esta teoría clásica. No se reclama prioridad por
 la aditividad tensorial: es una consecuencia inmediata de la fórmula de
-cocientes cruzados. La aportación de (46), si se conserva, es editorial y de
-arquitectura: poner en un único enunciado verificable la coincidencia local y el
-muro global que impide venderla como gap uniforme.
+cocientes cruzados. La búsqueda dirigida no encontró una fuente que enuncie
+la clasificación iff completa para kernels finitos junto con la ley tensorial
+y la localización exacta; eso justifica someter el paquete estrecho a auditoría,
+pero no constituye autocertificación de prioridad.
 
 ## 6. Conocido, ruta del corpus y limitación
 

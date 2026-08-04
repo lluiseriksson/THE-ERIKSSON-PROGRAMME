@@ -1,0 +1,67 @@
+{
+  "candidate": 46,
+  "certificate": "scripts/certify_birkhoff_dobrushin_comparison.py",
+  "arithmetic": "fractions.Fraction",
+  "status": "pass",
+  "normal_run": {
+    "exit": 0,
+    "wall_seconds": 0.489,
+    "sampled_peak_working_set_mib": 13.39
+  },
+  "optimized_run": {
+    "exit": 0,
+    "wall_seconds": 0.508,
+    "sampled_peak_working_set_mib": 18.05
+  },
+  "checks": {
+    "finite_binary_grid_pairs": 1495,
+    "reciprocal_equality_examples": [
+      {
+        "m": "1/3",
+        "M": "3",
+        "tv": "1/2",
+        "rational_envelope": "1/2"
+      },
+      {
+        "m": "1/4",
+        "M": "4",
+        "tv": "3/5",
+        "rational_envelope": "3/5"
+      }
+    ],
+    "strict_three_atom_example": {
+      "tv": "1/3",
+      "rational_envelope": "3/7"
+    },
+    "tensor_cross_ratios": {
+      "theta_A": "9",
+      "theta_B": "4",
+      "theta_A_tensor_B": "36",
+      "theta_A_powers_L_1_to_4": [
+        "9",
+        "81",
+        "729",
+        "6561"
+      ]
+    },
+    "coordinate_saturation": {
+      "delta": "1/2",
+      "input_oscillation": "1",
+      "output_oscillation": "1/2"
+    }
+  },
+  "attack_log": [
+    "The first proposed strict example used two atoms. It was rejected because every two-atom likelihood ratio is automatically an endpoint, so the chord step saturates.",
+    "The corrected strict example uses three atoms and gives TV=1/3 < 3/7.",
+    "The complete harness was repeated under python -O; it uses explicit exceptions rather than assert."
+  ],
+  "governance": {
+    "windows_processes": "one measured child process at a time",
+    "local_limit_seconds": 30,
+    "local_limit_mib": 512,
+    "lean_lake_oracle_invoked": false,
+    "colab_opened": false,
+    "fable_invoked": false,
+    "fable_blocker": "visible account was luis.ebikeride@gmail.com, not the binding account masterythief@gmail.com"
+  }
+}

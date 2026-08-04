@@ -1,0 +1,641 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{wallred}{RGB}{142,31,31}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\TV}{\mathrm{TV}}
+\newcommand{\osc}{\operatorname{osc}}
+\newcommand{\diamH}{\Delta_{H}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\1}{\mathbf{1}}
+
+\title{\textbf{Local Tanh, Global Wall}\\[2mm]
+Tensorization, Equality, and the Birkhoff--Dobrushin Divide}
+\author{The Eriksson Programme}
+\date{August 4, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a strictly positive finite Markov kernel $P$, Birkhoff's projective
+contraction coefficient is $\tanh(\diamH(P)/4)$, whereas Dobrushin's
+coefficient is the exact contraction coefficient for oscillation.  The sharp
+comparison $\delta(P)\leq \tanh(\diamH(P)/4)$ is known.  We give a finite,
+explicit equality classification: apart from the rank-one case, equality
+holds exactly when a diameter-realizing pair of rows has a likelihood ratio
+taking two reciprocal values.  We then record the exact tensor law
+$\diamH(P\otimes Q)=\diamH(P)+\diamH(Q)$.  Consequently the global Birkhoff
+coefficient of $P^{\otimes L}$ obeys hyperbolic addition and tends to one for
+every nonzero single-site diameter.  The global Dobrushin coefficient also
+tends to one in every nontrivial product, while each coordinate oscillation
+contracts with the exact, volume-independent factor $\delta(P)$.  For the
+binary Ising link all local quantities coincide at $\tanh |J|$, but the
+global projective coefficient is $\tanh(L|J|)$.  Thus the same calculation
+both explains the ubiquitous local $\tanh$ and supplies a sharp wall against
+deducing a volume-uniform gap from the global tensor cone.  We separate
+classical inputs, elementary tensor consequences, and the narrow equality
+and localization synthesis, and we include a reproducible exact-arithmetic
+kill test.
+\end{abstract}
+
+\section{Introduction}
+
+Two contraction mechanisms are often placed side by side in finite-volume
+statistical mechanics.  Birkhoff's theorem measures contraction in Hilbert's
+projective metric on a positive cone.  Dobrushin's coefficient measures
+contraction of oscillations, or equivalently total variation between rows of
+a Markov kernel.  Both produce a hyperbolic tangent in the binary Ising
+cell.  It is tempting to read this coincidence as evidence that the global
+projective calculation supplies a volume-uniform mixing constant.  The
+temptation is wrong in the most elementary independent product.
+
+The purpose of this paper is to make the coincidence and the obstruction part
+of one theorem.  There are three points.
+
+\begin{enumerate}[label=(\roman*)]
+\item The sharp total-variation--Hilbert comparison is a pairwise statement.
+We record its complete equality condition and lift it to finite kernels.
+\item Hilbert diameter is exactly additive under tensor products.  Hence the
+Birkhoff coefficient combines by hyperbolic addition, not by taking a maximum.
+\item Dobrushin's global coefficient also degenerates on independent products.
+The volume-uniform statement lives instead in the vector of coordinate
+oscillations and, for interacting specifications, inside the Dobrushin
+interdependence window.
+\end{enumerate}
+
+The wall is therefore not a caveat after the theorem.  It is one of the
+theorem's conclusions.
+
+\subsection*{Claim ledger}
+
+The classical projective contraction formula is due to Birkhoff
+\cite{Birkhoff1957} and was developed further by Bushell
+\cite{BushellRatio,BushellMetric}.  The Markov coefficient and the
+interdependence method originate with Dobrushin
+\cite{Dobrushin1956,Dobrushin1968,Dobrushin1970}.  Gaubert and Qu identify
+Dobrushin contraction with contraction in Hopf's oscillation seminorm on
+cones \cite{GaubertQu2014}.  Reeb, Kastoryano and Wolf prove a general
+base-norm versus projective-diameter estimate
+\cite{ReebKastoryanoWolf2011}.  Cohen and Fausti give the sharp
+total-variation--Hilbert inequality for probability measures, including
+sharpness \cite{CohenFausti2024}.  We do not claim any of these statements as
+new.
+
+The narrow contribution of the present note is the following package: an
+if-and-only-if equality classification for finite positive distributions and
+kernels; the exact tensor hyperbolic law placed next to that classification;
+and an exact global/local product dichotomy with the binary Ising saturation
+as a common test cell.  The tensor identity itself is elementary.  Our
+priority search found no source stating this entire finite-kernel package, but
+that search is not a claim of terminal priority.
+
+\section{Definitions and conventions}
+
+Let $E$ be a nonempty finite set.  For $u,v\in\R^E_{>0}$, Hilbert's
+projective distance is
+\begin{equation}\label{eq:hilbert}
+ d_H(u,v)=\log\frac{\max_{i\in E}u_i/v_i}
+                        {\min_{i\in E}u_i/v_i}.
+\end{equation}
+It is a metric on rays, and it vanishes exactly when $u$ and $v$ are
+proportional.
+
+For a strictly positive matrix $A=(a_{xy})_{x\in X,y\in Y}$, define
+\begin{align}
+ \Theta(A)&=\max_{\substack{x,x'\in X\\ y,y'\in Y}}
+ \frac{a_{xy}a_{x'y'}}{a_{xy'}a_{x'y}},\label{eq:theta}\\
+ \diamH(A)&=\log\Theta(A).
+\end{align}
+Equivalently, $\diamH(A)$ is the largest Hilbert distance between two rows
+of $A$.  Birkhoff's formula gives the projective contraction coefficient
+\begin{equation}\label{eq:birkhoff}
+ \tau(A)=\tanh\!\left(\frac{\diamH(A)}4\right).
+\end{equation}
+Transposition changes neither $\Theta$ nor $\diamH$, so our row convention
+does not affect this number.
+
+A Markov kernel $P$ on $E$ is row stochastic.  Its Dobrushin coefficient is
+\begin{equation}\label{eq:dobrushin}
+ \delta(P)=\frac12\max_{x,x'\in E}
+             \sum_{y\in E}|P(x,y)-P(x',y)|.
+\end{equation}
+We use $\TV(p,q)=\frac12\sum_y|p_y-q_y|$.  Dobrushin's 1956 overlap
+convention is $1-\delta(P)$, so formulas must be translated before comparing
+the two notations.  For $f:E\to\R$, let
+\[
+ \osc(f)=\max_E f-\min_E f.
+\]
+The standard dual formula says
+\begin{equation}\label{eq:osc-exact}
+ \delta(P)=\sup_{\osc(f)>0}\frac{\osc(Pf)}{\osc(f)}.
+\end{equation}
+
+\section{The sharp pairwise comparison and all equality cases}
+
+The inequality in this section is known in a more general measure-theoretic
+form \cite{CohenFausti2024}.  The finite proof is included because it exposes
+the equality condition needed later.
+
+\begin{theorem}[Sharp pairwise comparison]\label{thm:pairwise}
+Let $p,q$ be strictly positive probability vectors on a finite set.  Put
+\[
+ r_i=\frac{p_i}{q_i},\qquad m=\min_i r_i,\qquad M=\max_i r_i.
+\]
+Then
+\begin{equation}\label{eq:two-step}
+ \TV(p,q)
+ \leq \frac{(M-1)(1-m)}{M-m}
+ \leq \frac{\sqrt M-\sqrt m}{\sqrt M+\sqrt m}
+ =\tanh\!\left(\frac{d_H(p,q)}4\right),
+\end{equation}
+with the middle expression interpreted as zero when $p=q$.
+
+If $p\ne q$, equality between the first and last terms holds if and only if
+there is a number $t>1$ such that
+\begin{equation}\label{eq:reciprocal-ratio}
+ \left\{\frac{p_i}{q_i}:i\in E\right\}=\{t,t^{-1}\}.
+\end{equation}
+In that case, with $A=\{i:p_i=tq_i\}$,
+\begin{equation}\label{eq:mass-swap}
+ q(A)=\frac1{t+1},\quad p(A)=\frac{t}{t+1},\quad
+ q(A^c)=\frac{t}{t+1},\quad p(A^c)=\frac1{t+1}.
+\end{equation}
+Thus the two measures exchange the masses of the two blocks.
+\end{theorem}
+
+\begin{proof}
+Since $\sum_iq_ir_i=1$, either $p=q$ or $m<1<M$.  For every
+$r\in[m,M]$,
+\[
+ (r-1)_+\leq \frac{M-1}{M-m}(r-m).
+\]
+Taking expectation under $q$ gives the first inequality because
+$\TV(p,q)=\sum_iq_i(r_i-1)_+$.
+
+Write $a=\sqrt M$ and $b=\sqrt m$.  With the positive common denominator
+$(a-b)(a+b)$, the numerator of the difference between the second and first
+bounds in \eqref{eq:two-step} is
+\begin{align*}
+ (a-b)^2-(a^2-1)(1-b^2)=(ab-1)^2.
+\end{align*}
+This proves the second inequality.  The last identity follows from
+$d_H(p,q)=\log(M/m)$.
+
+In the nontrivial case, equality in the chord bound requires every $r_i$ to
+be an endpoint, so $r_i\in\{m,M\}$.  Equality in the algebraic step requires
+$mM=1$.  Hence $M=t$ and $m=t^{-1}$ for $t>1$.  Conversely these two
+conditions make both inequalities equalities.  Finally normalization gives
+$tq(A)+t^{-1}q(A^c)=1$ together with $q(A)+q(A^c)=1$, which yields
+\eqref{eq:mass-swap}.
+\end{proof}
+
+\begin{remark}
+The equality condition is rigid in likelihood-ratio space but allows an
+arbitrary number of atoms in each of the two blocks.  For two-point
+probabilities it simply says that the two vectors are nontrivial swaps.
+\end{remark}
+
+\section{Kernel comparison and equality classification}
+
+\begin{theorem}[Birkhoff--Dobrushin comparison with equality]
+\label{thm:kernel-equality}
+Let $P$ be a strictly positive finite Markov kernel.  Then
+\begin{equation}\label{eq:kernel-bound}
+ \delta(P)\leq \tau(P)=
+ \tanh\!\left(\frac{\diamH(P)}4\right).
+\end{equation}
+If $\diamH(P)=0$, all rows of $P$ agree and both sides vanish.  If
+$\diamH(P)>0$, equality holds in \eqref{eq:kernel-bound} if and only if there
+are rows $x,x'$ and a number $t>1$ such that
+\begin{enumerate}[label=(\alph*)]
+\item $d_H(P(x,\cdot),P(x',\cdot))=\diamH(P)$; and
+\item $P(x,y)/P(x',y)\in\{t,t^{-1}\}$ for every $y$.
+\end{enumerate}
+Necessarily $t=e^{\diamH(P)/2}$.
+\end{theorem}
+
+\begin{proof}
+Apply Theorem~\ref{thm:pairwise} to every pair of rows:
+\[
+ \TV(P(x,\cdot),P(x',\cdot))
+ \leq \tanh\!\left(\frac{d_H(P(x,\cdot),P(x',\cdot))}{4}\right)
+ \leq \tau(P).
+\]
+Taking the maximum proves \eqref{eq:kernel-bound}.  If equality holds, choose
+a row pair attaining $\delta(P)$.  Both displayed inequalities must then be
+equalities.  The second makes the pair diameter-realizing, and
+Theorem~\ref{thm:pairwise} gives the reciprocal two-valued likelihood ratio.
+The converse is immediate.  For such a pair, its maximum-to-minimum ratio is
+$t^2$, so $2\log t=\diamH(P)$.
+\end{proof}
+
+\begin{corollary}[Binary kernels]
+For a strictly positive two-state kernel with distinct rows,
+$\delta(P)=\tau(P)$ if and only if its rows are $(a,1-a)$ and $(1-a,a)$ for
+some $a\ne\frac12$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:kernel-equality} says the two likelihood ratios are
+reciprocal.  Equivalently $a(1-a)=b(1-b)$ for rows $(a,1-a)$ and $(b,1-b)$.
+Distinctness forces $b=1-a$.
+\end{proof}
+
+The comparison can be strict even in dimension two.  For example, the rows
+$(0.9,0.1)$ and $(0.6,0.4)$ have $\delta=0.3$, while their likelihood ratios
+$3/2$ and $1/4$ are not reciprocal, so $\delta<\tau$.
+
+\section{The tensor theorem and the projective wall}
+
+\begin{theorem}[Exact tensor law]\label{thm:tensor}
+For strictly positive finite matrices $A$ and $B$,
+\begin{equation}\label{eq:tensor-diameter}
+ \Theta(A\otimes B)=\Theta(A)\Theta(B),\qquad
+ \diamH(A\otimes B)=\diamH(A)+\diamH(B).
+\end{equation}
+Consequently
+\begin{equation}\label{eq:hyperbolic-addition}
+ \tau(A\otimes B)=
+ \frac{\tau(A)+\tau(B)}{1+\tau(A)\tau(B)}.
+\end{equation}
+In particular,
+\begin{equation}\label{eq:tensor-power}
+ \diamH(A^{\otimes L})=L\diamH(A),\qquad
+ \tau(A^{\otimes L})=
+ \tanh\!\left(L\operatorname{arctanh}\tau(A)\right).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+A cross ratio of $A\otimes B$ is the product of one cross ratio of $A$ and
+one cross ratio of $B$.  Hence it is at most $\Theta(A)\Theta(B)$.  Because
+all index sets are finite, maximizing indices can be selected independently
+in the two factors, so the upper bound is attained.  This proves
+\eqref{eq:tensor-diameter}.  Equations \eqref{eq:hyperbolic-addition} and
+\eqref{eq:tensor-power} follow from Birkhoff's formula and the addition law
+for $\tanh$.
+\end{proof}
+
+\begin{corollary}[The global projective wall]\label{cor:wall}
+If $\diamH(A)>0$, then $\tau(A^{\otimes L})\uparrow1$.  Therefore direct
+application of Birkhoff's theorem to the full positive tensor cone cannot
+produce a contraction factor $q<1$ independent of $L$.  If $\diamH(A)=0$,
+then $A$ has projective rank one and $\tau(A^{\otimes L})=0$.
+\end{corollary}
+
+The statement is deliberately method-specific.  It rules out a
+volume-uniform constant obtained from the global tensor-cone diameter.  It
+does not rule out a different cone, a quotient adapted to locality, a
+weighted nonproduct seminorm, a block dynamics argument, or an independent
+spectral method.  Each such change is a genuinely different mechanism.
+
+\begin{proposition}[Diagonal-weight blindness]\label{prop:diagonal}
+If $D_X,D_Y$ are positive diagonal matrices, then
+\[
+ \Theta(D_XAD_Y)=\Theta(A),\qquad \diamH(D_XAD_Y)=\diamH(A).
+\]
+Thus positive source and target weights cannot repair the tensor wall while
+the same projective cross ratios are used.
+\end{proposition}
+
+\begin{proof}
+Every row factor from $D_X$ and every column factor from $D_Y$ occurs once in
+the numerator and once in the denominator of each cross ratio, and cancels.
+\end{proof}
+
+\section{Global Dobrushin degeneration and exact localization}
+
+The global wall is not unique to Hilbert's metric.  Independent products
+separate distinct product measures, so their global total-variation
+coefficient also tends to one.
+
+\begin{theorem}[Global degeneration]\label{thm:global-delta}
+Let $P$ be a finite Markov kernel with two distinct positive rows $p$ and
+$q$.  Set their Hellinger affinity
+\[
+ \rho(p,q)=\sum_y\sqrt{p_yq_y}<1.
+\]
+Then
+\begin{equation}\label{eq:global-delta-lower}
+ \delta(P^{\otimes L})
+ \geq \TV(p^{\otimes L},q^{\otimes L})
+ \geq 1-\rho(p,q)^L.
+\end{equation}
+Consequently $\delta(P^{\otimes L})\to1$.
+\end{theorem}
+
+\begin{proof}
+The constant input words corresponding to the two rows select
+$p^{\otimes L}$ and $q^{\otimes L}$ as rows of the product kernel.  For any
+probability vectors $\mu,\nu$,
+\[
+ 1-\TV(\mu,\nu)=\sum_z\min(\mu_z,\nu_z)
+ \leq\sum_z\sqrt{\mu_z\nu_z}.
+\]
+The affinity tensorizes, giving \eqref{eq:global-delta-lower}.  Strict
+Cauchy--Schwarz gives $\rho(p,q)<1$ when $p\ne q$.
+\end{proof}
+
+The volume-uniform statement is coordinatewise.  On $E^L$ define
+\[
+ \osc_i(f)=\max_{x_{-i}}\left(
+       \max_{a\in E}f(x_{-i},a)-\min_{a\in E}f(x_{-i},a)
+                         \right).
+\]
+
+\begin{theorem}[Exact local product contraction]\label{thm:local}
+For every $f:E^L\to\R$ and every coordinate $i$,
+\begin{equation}\label{eq:local-contraction}
+ \osc_i(P^{\otimes L}f)\leq\delta(P)\osc_i(f).
+\end{equation}
+The constant is exact whenever $\delta(P)>0$.  Hence both
+$\max_i\osc_i$ and $\sum_i\osc_i$ contract by the same factor $\delta(P)$,
+independently of $L$.
+\end{theorem}
+
+\begin{proof}
+Compare two inputs that differ only at coordinate $i$ and condition on all
+output coordinates other than $i$.  For each fixed outside output $z_{-i}$,
+the function $a\mapsto f(z_{-i},a)$ has oscillation at most $\osc_i(f)$.
+The one-coordinate dual formula \eqref{eq:osc-exact} bounds the resulting
+difference by $\delta(P)\osc_i(f)$.  Averaging over $z_{-i}$ and maximizing
+over the two inputs proves \eqref{eq:local-contraction}.
+
+For exactness, choose a one-site function $g$ attaining
+\eqref{eq:osc-exact} and put $f(x)=g(x_i)$.  Then both sides reduce to the
+one-site equality.  The final two assertions follow by taking a maximum or a
+sum over $i$.
+\end{proof}
+
+There is no contradiction between Theorems~\ref{thm:global-delta} and
+\ref{thm:local}: the seminorms are different.  The global oscillation can
+compare two words differing at every coordinate; $\osc_i$ permits one
+coordinate change at a time and retains the geometry needed by local
+comparison theory.
+
+\section{The binary Ising cell: exact coincidence and saturation}
+
+For $J\in\R$, consider
+\begin{equation}\label{eq:ising-link}
+ K_J=\begin{pmatrix}e^J&e^{-J}\\ e^{-J}&e^J\end{pmatrix},
+ \qquad P_J=\frac1{2\cosh J}K_J.
+\end{equation}
+
+\begin{proposition}[The common local $\tanh$]\label{prop:ising}
+For the binary link,
+\begin{equation}\label{eq:ising-coincidence}
+ \diamH(K_J)=4|J|,\qquad
+ \tau(K_J)=\delta(P_J)=\tanh|J|.
+\end{equation}
+The nontrivial normalized eigenvalue of $K_J$ is $\tanh J$.  Moreover, for
+the binary conditional
+\[
+ \pi_h(+)=\frac{e^h}{e^h+e^{-h}}=\frac{1+\tanh h}{2},
+\]
+one has, for $J\geq0$,
+\begin{equation}\label{eq:conditional-envelope}
+ \sup_{h\in\R}\TV(\pi_{h+J},\pi_{h-J})=\tanh J,
+\end{equation}
+with equality at $h=0$.
+\end{proposition}
+
+\begin{proof}
+Diagonal entries against antidiagonal entries give the maximal cross ratio
+$e^{4|J|}$.  The two rows of $P_J$ are swaps, and their total variation is
+$|e^J-e^{-J}|/(e^J+e^{-J})=\tanh|J|$.  The eigenvectors $(1,1)$ and $(1,-1)$
+give normalized eigenvalues $1$ and $\tanh J$.
+
+For the conditional calculation,
+\[
+ \TV(\pi_{h+J},\pi_{h-J})
+ =\frac12|\tanh(h+J)-\tanh(h-J)|.
+\]
+The difference is even in $h$ and decreases for $h>0$; at $h=0$ it equals
+$\tanh J$.
+\end{proof}
+
+\begin{corollary}[Ising tensor saturation and wall]
+For $J\ne0$,
+\begin{equation}\label{eq:ising-wall}
+ \tau(K_J^{\otimes L})=\tanh(L|J|)\longrightarrow1,
+\end{equation}
+while the largest modulus below the top normalized eigenvalue of the product
+is $\tanh|J|$ for every $L\geq1$.  The coordinatewise Dobrushin constant is
+also $\tanh|J|$ for every $L$.
+\end{corollary}
+
+For completeness, put $a=(1+\tanh J)/2$.  Two antipodal rows of
+$P_J^{\otimes L}$ induce the laws $\operatorname{Bin}(L,a)$ and
+$\operatorname{Bin}(L,1-a)$ after counting plus spins.  Thus their total
+variation gives an exact finite sum lower bound for the global coefficient,
+and Theorem~\ref{thm:global-delta} yields the transparent estimate
+\begin{equation}\label{eq:ising-hellinger}
+ \delta(P_J^{\otimes L})\geq1-(\operatorname{sech}J)^L.
+\end{equation}
+The spectral constant stays fixed while both global metric coefficients
+degenerate.  This is the promised no-tension example: the obstruction belongs
+to the global instruments, not to slow mixing of the independent system.
+
+\section{From a link to the Dobrushin window}
+
+Let $\gamma_i(\cdot\mid x_{-i})$ be one-site conditional distributions and
+let $C=(c_{ij})$ be a Dobrushin interdependence matrix, so changing only site
+$j$ changes the conditional at $i$ in total variation by at most $c_{ij}$.
+The classical comparison theorem propagates local oscillations through $C$;
+see \cite{Dobrushin1968,Dobrushin1970} and the cone formulation in
+\cite{GaubertQu2014}.
+
+If
+\begin{equation}\label{eq:alpha-window}
+ \alpha=\sup_i\sum_jc_{ij}<1,
+\end{equation}
+then the Neumann series $D=(I-C)^{-1}=\sum_{n\geq0}C^n$ is uniformly bounded
+in the row-sum norm by $(1-\alpha)^{-1}$.  If $c_{ij}=0$ when graph distance
+$d(i,j)>1$, then
+\begin{equation}\label{eq:spatial-resolvent}
+ D_{ij}\leq\sum_{n\geq d(i,j)}(C^n)_{ij}
+ \leq\frac{\alpha^{d(i,j)}}{1-\alpha}.
+\end{equation}
+This is where volume-uniformity lives: in a local vector inequality plus a
+subcritical row sum, not in the full tensor-cone diameter.
+
+For a pairwise Ising specification, Proposition~\ref{prop:ising} gives the
+uniform envelope
+\[
+ c_{ij}\leq\tanh|J_{ij}|.
+\]
+The supremum over the ambient real field is sharp, although the maximizing
+field need not be attainable in a particular finite boundary-value problem.
+On an anisotropic square lattice with horizontal coupling $\beta$ and vertical
+coupling $\gamma$, the familiar sufficient window is
+\begin{equation}\label{eq:anisotropic-window}
+ 2\tanh|\beta|+2\tanh|\gamma|<1.
+\end{equation}
+It is sufficient and generally not necessary.  Nothing here extends a result
+beyond the Dobrushin window or proves optimality of that window.
+
+\section{What the wall rules out---and what it does not}
+
+\begin{theorem}[Comparative theorem with its wall]\label{thm:main-wall}
+For every strictly positive finite Markov kernel $P$:
+\begin{enumerate}[label=(\arabic*)]
+\item Birkhoff's coefficient on the chosen global cone is exactly
+$\tau(P)=\tanh(\diamH(P)/4)$.
+\item Dobrushin's coefficient is exactly the oscillation contraction factor
+and satisfies $\delta(P)\leq\tau(P)$, with equality precisely as in
+Theorem~\ref{thm:kernel-equality}.
+\item Under independent tensor powers, $\tau(P^{\otimes L})$ follows
+\eqref{eq:tensor-power} and tends to one unless $P$ has identical rows.
+The global $\delta(P^{\otimes L})$ also tends to one unless all rows agree.
+\item Each coordinate oscillation contracts with exact factor $\delta(P)$,
+uniformly in $L$.  In interacting systems the analogous uniform comparison
+is controlled by \eqref{eq:alpha-window}.
+\item For the binary Ising cell the three local constants---projective,
+Markov--Dobrushin, and conditional influence envelope---all equal
+$\tanh|J|$, but the global projective tensor coefficient equals
+$\tanh(L|J|)$.
+\end{enumerate}
+Therefore no volume-uniform gap follows from applying the global Birkhoff
+diameter calculation to the tensor cone.  This obstruction is part of the
+comparative conclusion.
+\end{theorem}
+
+The theorem rules out the proposed mechanism, not every projective method.
+A genuinely local cone, a quotient removing extensive directions, or a
+nonproduct Finsler structure might behave differently.  Such a proposal must
+specify its cone and metric and pass the tensor test before a formalization
+campaign.  Merely inserting positive diagonal Gibbs weights does not count,
+by Proposition~\ref{prop:diagonal}.
+
+\section{Reproducibility and formalization status}
+
+The companion script
+\texttt{scripts/killtest\_birkhoff\_tensor\_wall.py} uses exact rational
+arithmetic for
+\[
+ K=\begin{pmatrix}3&1\\1&3\end{pmatrix}.
+\]
+It verifies by enumeration through $L=4$ that
+\[
+ \Theta(K^{\otimes L})=9^L,\qquad
+ \tau(K^{\otimes L})=\frac{3^L-1}{3^L+1},
+\]
+whereas the normalized single-excitation eigenvalue remains $1/2$.  A second
+exact-arithmetic certificate checks the pairwise envelope, equality and
+strict examples, cross-ratio tensorization, and coordinatewise saturation.
+These computations are regression tests, not substitutes for the proofs.
+
+No new Lean module is claimed by this paper.  Historical source files in the
+larger programme are not treated as current compiled artifacts, and no
+\texttt{.olean} verification is inferred from their presence.  The failed
+volume-uniform projective branch was killed before spending remote theorem
+prover time.  A future formalization should begin with
+$\Theta(A\otimes B)=\Theta(A)\Theta(B)$ and the finite equality
+classification, and should be compiled in the designated remote environment.
+
+\section{Limitations and conclusion}
+
+The analysis is finite and strictly positive.  Zeros require faces of the
+cone or extended projective distances.  The Dobrushin window is not claimed
+optimal.  The local product theorem concerns independent coordinate updates;
+interacting dynamics require a specified update rule and comparison matrix.
+No Yang--Mills mass gap, infinite-volume spectral gap, or result outside the
+Dobrushin regime follows from this note.
+
+Within those limits, the conclusion is sharp.  The local binary cell explains
+the common $\tanh$.  Equality is completely visible in a two-valued reciprocal
+likelihood ratio.  Tensorization then turns the same hyperbolic parameter into
+an extensive quantity and drives the global coefficient to one.  Dobrushin's
+uniformity survives only after retaining coordinatewise information.  The
+calculation and the wall are two sides of the same theorem.
+
+\begin{thebibliography}{99}
+
+\bibitem{Birkhoff1957}
+G.~Birkhoff,
+\newblock Extensions of Jentzsch's theorem,
+\newblock \emph{Transactions of the American Mathematical Society} 85
+(1957), 219--227.
+\newblock \href{https://doi.org/10.1090/S0002-9947-1957-0087058-6}
+{doi:10.1090/S0002-9947-1957-0087058-6}.
+
+\bibitem{BushellRatio}
+P.~J. Bushell,
+\newblock On the projective contraction ratio for positive linear mappings,
+\newblock \emph{Journal of the London Mathematical Society} (2) 6 (1973),
+256--258.
+\newblock \href{https://doi.org/10.1112/jlms/s2-6.2.256}
+{doi:10.1112/jlms/s2-6.2.256}.
+
+\bibitem{BushellMetric}
+P.~J. Bushell,
+\newblock Hilbert's metric and positive contraction mappings in a Banach
+space,
+\newblock \emph{Archive for Rational Mechanics and Analysis} 52 (1973),
+330--338.
+\newblock \href{https://doi.org/10.1007/BF00247467}
+{doi:10.1007/BF00247467}.
+
+\bibitem{CohenFausti2024}
+S.~Cohen and M.~Fausti,
+\newblock Hyperbolic contractivity and the Hilbert metric on probability
+measures,
+\newblock arXiv:2309.02413v2 (2024).
+\newblock \href{https://arxiv.org/abs/2309.02413}{arXiv:2309.02413}.
+
+\bibitem{Dobrushin1956}
+R.~L. Dobrushin,
+\newblock Central limit theorem for nonstationary Markov chains. I,
+\newblock \emph{Theory of Probability and Its Applications} 1 (1956),
+65--80.
+\newblock \href{https://doi.org/10.1137/1101006}{doi:10.1137/1101006}.
+
+\bibitem{Dobrushin1968}
+R.~L. Dobrushin,
+\newblock The description of a random field by means of conditional
+probabilities and conditions of its regularity,
+\newblock \emph{Theory of Probability and Its Applications} 13 (1968),
+197--224.
+\newblock \href{https://doi.org/10.1137/1113026}{doi:10.1137/1113026}.
+
+\bibitem{Dobrushin1970}
+R.~L. Dobrushin,
+\newblock Prescribing a system of random variables by conditional
+distributions,
+\newblock \emph{Theory of Probability and Its Applications} 15 (1970),
+458--486.
+\newblock \href{https://doi.org/10.1137/1115049}{doi:10.1137/1115049}.
+
+\bibitem{GaubertQu2014}
+S.~Gaubert and Z.~Qu,
+\newblock Dobrushin's ergodicity coefficient for Markov operators on cones,
+\newblock \emph{Integral Equations and Operator Theory} 81 (2015), 127--150.
+\newblock \href{https://doi.org/10.1007/s00020-014-2193-2}
+{doi:10.1007/s00020-014-2193-2}.
+
+\bibitem{ReebKastoryanoWolf2011}
+D.~Reeb, M.~J. Kastoryano and M.~M. Wolf,
+\newblock Hilbert's projective metric in quantum information theory,
+\newblock \emph{Journal of Mathematical Physics} 52 (2011), 082201.
+\newblock \href{https://doi.org/10.1063/1.3615729}
+{doi:10.1063/1.3615729}.
+
+\end{thebibliography}
+
+\end{document}
