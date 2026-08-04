@@ -438,21 +438,22 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ---
 
-## Latest viXra submission
+## Latest ai.viXra submission
 
-**Submitted 2026-08-03 as a v2 replacement; moderation outcome not yet
-recorded.**  The 20-page v5.5 edition of *The Row Sums Were the Method, Not the
-Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay
-of Correlations, and a Misattributed Uniformity Wall* was sent to viXra.  The
-exact PDF is pinned at paper commit [`e68b821f7`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e68b821f7b5a766551c7e249706aaf7dc4d0eb66/papers/dobrushin-matrix/dobrushin_matrix.pdf)
-and has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`.
-See the [submission record](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md)
-for the clean-clone build, oracle evidence, superseded edition, and exact scope.
+**Sent 2026-08-04 as a NEW PAPER; moderation is pending and public visibility
+is not confirmed.** Version 1.4 of *Exact-Kernel Fourier Families Obstruct Every
+Penalty Factored Through a Block Map in a Flat Lattice Gauge Form* was sent to
+ai.viXra. The canonical 13-page PDF is
+[`output/pdf/critical_rescaling_fourier_no_go_v1.4.pdf`](output/pdf/critical_rescaling_fourier_no_go_v1.4.pdf):
+365036 bytes, SHA-256
+`48B2B725422263A272D9862621FA723D3D82C9D186DD7151BE39C6FF1E3FF2E7`.
+See the canonical [submission record](papers/critical-rescaling-no-go-all-coarse/SUBMISSION-INFO.txt).
 
-The paper/source commits remain on remote branch `d3-closure`; this notice does
-not claim that the lane is integrated into `main`, and it does not alter the
-canonical proof-state DAG or the recorded distance to the Clay problem.
+Version 1.3 and the ZIP bundles are obsolete for editorial use. Do not resend
+the paper while moderation is pending, and do not call it visible, published,
+accepted, or moderated until ai.viXra records that outcome. This notice does
+not alter the canonical proof-state DAG or the recorded distance to the Clay
+problem.
 
 ---
 

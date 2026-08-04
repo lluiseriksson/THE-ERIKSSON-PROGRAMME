@@ -17,7 +17,18 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
+**Latest ai.viXra submission (2026-08-04; NEW PAPER sent, moderation
+pending).** Version 1.4 of *Exact-Kernel Fourier Families Obstruct Every Penalty
+Factored Through a Block Map in a Flat Lattice Gauge Form* was sent as a new
+paper. The canonical 13-page PDF is
+`output/pdf/critical_rescaling_fourier_no_go_v1.4.pdf`, 365036 bytes, SHA-256
+`48B2B725422263A272D9862621FA723D3D82C9D186DD7151BE39C6FF1E3FF2E7`.
+The exact administrative state is frozen in
+[`papers/critical-rescaling-no-go-all-coarse/SUBMISSION-INFO.txt`](papers/critical-rescaling-no-go-all-coarse/SUBMISSION-INFO.txt).
+Moderation and public visibility are not confirmed. Version 1.3 and ZIP
+bundles are obsolete for editorial use; do not resend.
+
+**Previous viXra submission (2026-08-03; v2 replacement submitted).**  The
 20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
 sent as the v2 replacement.  Its exact PDF is pinned at paper commit
 `e68b821f7`, has SHA-256

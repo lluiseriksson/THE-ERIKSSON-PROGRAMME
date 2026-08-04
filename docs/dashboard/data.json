@@ -2,7 +2,7 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-08-03",
+    "updated": "2026-08-04",
     "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
@@ -17,15 +17,17 @@
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "latest_submission": {
-      "date": "2026-08-03",
-      "status": "viXra v2 replacement submitted; moderation outcome not recorded",
-      "title": "The Row Sums Were the Method, Not the Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay of Correlations, and a Misattributed Uniformity Wall",
-      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md",
-      "pdf": "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e68b821f7b5a766551c7e249706aaf7dc4d0eb66/papers/dobrushin-matrix/dobrushin_matrix.pdf",
-      "pdf_sha256": "3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888",
-      "source_anchor": "8e8375d3415575e997765e61515e1a8af283df97",
-      "paper_commit": "e68b821f7b5a766551c7e249706aaf7dc4d0eb66",
-      "integration": "remote branch d3-closure; not in main when recorded"
+      "date": "2026-08-04",
+      "status": "ai.viXra NEW PAPER v1.4 sent; moderation pending; public visibility not confirmed; do not resend",
+      "title": "Exact-Kernel Fourier Families Obstruct Every Penalty Factored Through a Block Map in a Flat Lattice Gauge Form",
+      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/papers/critical-rescaling-no-go-all-coarse/SUBMISSION-INFO.txt",
+      "pdf": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/output/pdf/critical_rescaling_fourier_no_go_v1.4.pdf",
+      "pdf_sha256": "48B2B725422263A272D9862621FA723D3D82C9D186DD7151BE39C6FF1E3FF2E7",
+      "pdf_bytes": 365036,
+      "pages": 13,
+      "source_anchor": "f21539ed0bb880a04078de369bf5cbf063f7b101",
+      "paper_commit": "a880051451ffb4f66b84419e76208b22ccf619a4",
+      "integration": "branch codex/poincare-rescaled-gate-47; submission record pending merge"
     }
   },
   "status_legend": {
