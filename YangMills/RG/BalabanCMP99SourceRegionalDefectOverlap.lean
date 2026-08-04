@@ -34,6 +34,13 @@ variable {M Q depth : ℕ} [NeZero M] [NeZero Q]
 variable {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
   [FiniteDimensional ℝ g]
 
+private instance instNeZeroSourceRegionalLargeBlockSide
+    (M depth : ℕ) [NeZero M] :
+    NeZero (cmp99SourceRegionalLargeBlockSide M depth) :=
+  ⟨by
+    unfold cmp99SourceRegionalLargeBlockSide
+    exact (pow_pos (NeZero.pos M) (depth + 2)).ne'⟩
+
 /-- A zero value of the rightmost square multiplier kills the corresponding
 regional correction on a one-site source probe. -/
 theorem cmp99RegionalGreenCorrection_single_eq_zero_of_value_eq_zero
