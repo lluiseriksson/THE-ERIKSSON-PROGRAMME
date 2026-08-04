@@ -364,7 +364,9 @@ theorem freeCov_eq_rect_covar (β γ : ℝ) {T L : ℕ}
       = gibbsZ (isingWeight (rectJ β γ)) := by
     unfold gibbsPartition gibbsZ
     refine Fintype.sum_equiv
-      ((Equiv.curry (Fin (T + 1)) (Fin (L + 1)) (Fin 2)).symm) _ _
+      ((Equiv.curry (Fin (T + 1)) (Fin (L + 1)) (Fin 2)).symm)
+      (fun X => gibbsWeight (sliceW γ L) β X)
+      (fun η => isingWeight (rectJ β γ) η)
       fun X => ?_
     show gibbsWeight (sliceW γ L) β X
       = isingWeight (rectJ β γ) (fun P => X P.1 P.2)
@@ -378,7 +380,10 @@ theorem freeCov_eq_rect_covar (β γ : ℝ) {T L : ℕ}
     intro A' B'
     unfold gibbsPathSum
     refine Fintype.sum_equiv
-      ((Equiv.curry (Fin (T + 1)) (Fin (L + 1)) (Fin 2)).symm) _ _
+      ((Equiv.curry (Fin (T + 1)) (Fin (L + 1)) (Fin 2)).symm)
+      (fun X => A' (X 0) * B' (X (Fin.last T)) * gibbsWeight (sliceW γ L) β X)
+      (fun η => isingWeight (rectJ β γ) η
+        * (A' (fun j => η (0, j)) * B' (fun j => η (Fin.last T, j))))
       fun X => ?_
     show A' (X 0) * B' (X (Fin.last T)) * gibbsWeight (sliceW γ L) β X
       = isingWeight (rectJ β γ) (fun P => X P.1 P.2)
@@ -425,7 +430,10 @@ theorem row_deltaAt_zero {T L : ℕ} (A : (Fin (L + 1) → Fin 2) → ℝ)
     exact ht ((congrArg Prod.fst h).symm)
   refine le_antisymm ?_ ?_
   · refine Finset.sup'_le _ _ fun q _ => ?_
+    show |A (fun j' => q.1 (0, j'))
+        - A (fun j' => Function.update q.1 (t, j) q.2 (0, j'))| ≤ 0
     rw [hconst q.1 q.2, sub_self, abs_zero]
+    exact le_refl 0
   · have h0 := abs_sub_update_le_deltaAt
       ((t, j) : Fin (T + 1) × Fin (L + 1))
       (fun η => A (fun j' => η (0, j')))
@@ -450,7 +458,10 @@ theorem row_deltaAt_zero' {T L : ℕ} (B : (Fin (L + 1) → Fin 2) → ℝ)
     exact ht ((congrArg Prod.fst h).symm)
   refine le_antisymm ?_ ?_
   · refine Finset.sup'_le _ _ fun q _ => ?_
+    show |B (fun j' => q.1 (Fin.last T, j'))
+        - B (fun j' => Function.update q.1 (t, j) q.2 (Fin.last T, j'))| ≤ 0
     rw [hconst q.1 q.2, sub_self, abs_zero]
+    exact le_refl 0
   · have h0 := abs_sub_update_le_deltaAt
       ((t, j) : Fin (T + 1) × Fin (L + 1))
       (fun η => B (fun j' => η (Fin.last T, j')))
@@ -466,6 +477,9 @@ theorem row_deltaAt_le {T L : ℕ} (A : (Fin (L + 1) → Fin 2) → ℝ)
     deltaAt (((0 : Fin (T + 1)), j) : Fin (T + 1) × Fin (L + 1))
       (fun η => A (fun j' => η (0, j'))) ≤ deltaAt j A := by
   refine Finset.sup'_le _ _ fun q _ => ?_
+  show |A (fun j' => q.1 (0, j'))
+      - A (fun j' => Function.update q.1 ((0 : Fin (T + 1)), j) q.2
+          (0, j'))| ≤ deltaAt j A
   have hrow : (fun j' => Function.update q.1 ((0 : Fin (T + 1)), j) q.2
       (0, j'))
       = Function.update (fun j' => q.1 (0, j')) j q.2 := by
@@ -482,6 +496,9 @@ theorem row_deltaAt_le' {T L : ℕ} (B : (Fin (L + 1) → Fin 2) → ℝ)
     deltaAt ((Fin.last T, j) : Fin (T + 1) × Fin (L + 1))
       (fun η => B (fun j' => η (Fin.last T, j'))) ≤ deltaAt j B := by
   refine Finset.sup'_le _ _ fun q _ => ?_
+  show |B (fun j' => q.1 (Fin.last T, j'))
+      - B (fun j' => Function.update q.1 (Fin.last T, j) q.2
+          (Fin.last T, j'))| ≤ deltaAt j B
   have hrow : (fun j' => Function.update q.1 (Fin.last T, j) q.2
       (Fin.last T, j'))
       = Function.update (fun j' => q.1 (Fin.last T, j')) j q.2 := by
@@ -649,6 +666,7 @@ theorem rect_feed (β γ : ℝ) {α : ℝ} (hα0 : 0 ≤ α) (hα1 : α < 1)
         (fun _ => (∑ j, deltaAt j A) * (α ^ T / (1 - α))
           * ∑ j', deltaAt j' B),
       if_pos (Finset.mem_univ _)]
+    ring
   calc |covar (gibbsMu (isingWeight (rectJ β γ))) f g|
       ≤ (∑ P, ∑ Q, deltaAt P f * (α ^ rectDist P Q / (1 - α))
           * deltaAt Q g) / 4 := hbase
@@ -657,7 +675,9 @@ theorem rect_feed (β γ : ℝ) {α : ℝ} (hα0 : 0 ≤ α) (hα1 : α < 1)
         exact le_trans hsum (le_of_eq hcollapse)
     _ = (∑ j, deltaAt j A) * (∑ j, deltaAt j B)
           * (1 / (4 * (1 - α))) * α ^ T := by
-        ring
+        have h1 : (1 : ℝ) - α ≠ 0 := by linarith
+        field_simp
+        try ring
 
 /-! ## §6  The public corollary -/
 
