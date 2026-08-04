@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "surface-remainder-k4-centered-lower-current-20260724",
-  "status": "current-candidate-local-only",
+  "status": "quarantined",
   "claim_scope": "Current-head candidate K4 centred lower union delta=[0.0275,0.0305], t=2.9; six adjacent units and 55296 cells. No K4/G2/G6/S1'''/S2''' promotion.",
   "git_head": "c9ca8a0ff141d7d90ee3e8d0681f4c30841a2582",
   "manifest_generated_head": "f56e5fe4e8cc7d53dc247b60d8234377daa208d7",
@@ -143,5 +143,6 @@
     "production_replay_byte_identical": true
   },
   "promotion": "NONE",
-  "notes": "Current dependency hashes and local fractions pass. Regular delta=0 splice, full delta/t union, overlap theorem, and literal weighted judges remain open."
+  "notes": "Current dependency hashes and local fractions pass. Regular delta=0 splice, full delta/t union, overlap theorem, and literal weighted judges remain open.",
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys."
 }

@@ -36,5 +36,5 @@
     {"path": "scripts/surface_scaled_bulk_low_22_89_4_rerun.txt", "sha256": "6b7470b46ca215a113da4d4439b3c4e4d3f70dc5223be0a73512a3cb61e5970e", "sha256_lf": "6b7470b46ca215a113da4d4439b3c4e4d3f70dc5223be0a73512a3cb61e5970e"}
   ],
   "supersedes": [],
-  "quarantine_reason": "Fresh preregistered candidate closes the topology gap [22,89/4] but does not prove the finite-beta relay or the sign-to-H_tail lemma; retained outside the terminal G2 set."
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys. Prior quarantine reason retained verbatim: Fresh preregistered candidate closes the topology gap [22,89/4] but does not prove the finite-beta relay or the sign-to-H_tail lemma; retained outside the terminal G2 set."
 }

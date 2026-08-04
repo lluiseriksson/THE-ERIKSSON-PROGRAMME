@@ -2,7 +2,7 @@
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-high-78-seam-20260719",
   "claim_scope": "Candidate-only paired production/replay topology for [78,100.25] seam units [78,78.125] and [78.125,78.25]. Sign rows do not imply H_tail; no G2/G6 promotion.",
-  "status": "current",
+  "status": "quarantined",
   "started_utc": "2026-07-19T18:08:20.179692Z",
   "finished_utc": "2026-07-19T18:08:20.179692Z",
   "command": [
@@ -77,5 +77,5 @@
   ],
   "supersedes": [],
   "superseded_by": null,
-  "quarantine_reason": null
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys."
 }

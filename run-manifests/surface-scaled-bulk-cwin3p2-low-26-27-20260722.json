@@ -2,7 +2,7 @@
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-low-26-27-20260722",
   "claim_scope": "Candidate-only paired production/replay for beta [26,27] with CWIN=3/2, order-30/t-order-37 rows. Sign rows do not imply H_tail; no G2/G6 promotion.",
-  "status": "current",
+  "status": "quarantined",
   "git_head": "7479987c91e3f89d110425065aaa3560ce3247bc",
   "configuration": {"cwin": "3/2", "beta_order": 30, "t_order": 37, "min_dt": "1/100000", "precision": 180},
   "inputs": [
@@ -20,5 +20,6 @@
     {"name": "low_107p4_27", "beta": ["107/4", "27"], "production": {"path": "scripts/surface_scaled_bulk_low_107p4_27.txt", "sha256": "B4B11A2DC84179610B135B133662E7B5DA2BDD8C712C3AE6000E9B2D9B2E653C"}, "replay": {"path": "scripts/surface_scaled_bulk_low_107p4_27_rerun.txt", "sha256": "B4B11A2DC84179610B135B133662E7B5DA2BDD8C712C3AE6000E9B2D9B2E653C"}}
   ],
   "promotion": "NONE",
-  "nonpromotion_reasons": ["finite relay remains open above beta 27", "sign rows do not prove H_tail", "global G2/G6 promotion is explicitly forbidden"]
+  "nonpromotion_reasons": ["finite relay remains open above beta 27", "sign rows do not prove H_tail", "global G2/G6 promotion is explicitly forbidden"],
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys."
 }

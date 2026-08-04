@@ -2,7 +2,7 @@
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-high-79p75-79p875-20260723",
   "claim_scope": "Candidate-only paired production/replay unit [319/4,639/8] with CWIN=3/2, beta order 30, t order 37. Strict sign rows and replay equality only; no H_tail, G2, or G6 promotion.",
-  "status": "current",
+  "status": "quarantined",
   "started_utc": "2026-07-23T10:14:39Z",
   "finished_utc": "2026-07-23T10:24:14Z",
   "command": ["python", "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py", "--unit", "79p75_79p875", "--lo", "319/4", "--hi", "639/8"],
@@ -20,5 +20,5 @@
     {"path": "scripts/surface_scaled_bulk_79p75_79p875.txt", "sha256": "59975A21E56A726DC551B99637A853640EE6D05F83B641BA3A020ED1C64C06EE", "sha256_lf": "59975A21E56A726DC551B99637A853640EE6D05F83B641BA3A020ED1C64C06EE"},
     {"path": "scripts/surface_scaled_bulk_79p75_79p875_rerun.txt", "sha256": "59975A21E56A726DC551B99637A853640EE6D05F83B641BA3A020ED1C64C06EE", "sha256_lf": "59975A21E56A726DC551B99637A853640EE6D05F83B641BA3A020ED1C64C06EE"}
   ],
-  "supersedes": [], "superseded_by": null, "quarantine_reason": null
+  "supersedes": [], "superseded_by": null, "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys."
 }

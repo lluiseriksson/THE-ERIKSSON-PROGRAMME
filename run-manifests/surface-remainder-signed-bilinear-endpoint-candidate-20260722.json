@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "surface-remainder-signed-bilinear-endpoint-candidate-20260722",
-  "status": "candidate_only",
+  "status": "quarantined",
   "claim_scope": "Signed cellwise K2 endpoint cancellation on [0,1/1000] x [0,pi]; no K2/G2/G6/S1'''/S2''' promotion.",
   "configuration": {
     "delta": "[0,1/1000]",
@@ -43,5 +43,5 @@
     "worst_margin_lower": "0.884364280881655074615012602496",
     "promotion": "NONE"
   },
-  "quarantine_reason": "The signed endpoint route is not yet an independently audited K2 terminal proof and does not address the finite-beta H_tail relay or K4/S1'''/S2''' union."
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys. Prior quarantine reason retained verbatim: The signed endpoint route is not yet an independently audited K2 terminal proof and does not address the finite-beta H_tail relay or K4/S1'''/S2''' union."
 }

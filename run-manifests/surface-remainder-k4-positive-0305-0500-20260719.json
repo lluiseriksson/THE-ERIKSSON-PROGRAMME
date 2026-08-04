@@ -2,7 +2,7 @@
   "schema_version": 1,
   "run_id": "surface-remainder-k4-positive-0305-0500-20260719",
   "claim_scope": "Candidate-only K4 centred-delta local bands [0.0305,0.05] at t=2.9; 39 adjacent rational bands, 2304 cells each. No K4/G2/G6/S1'''/S2''' promotion.",
-  "status": "candidate_local_only",
+  "status": "quarantined",
   "git_head": "c39fef6c7de8d21790dc717a09fc0806c32f1d68",
   "started_utc": "2026-07-22T20:33:34.310533Z",
   "finished_utc": "2026-07-22T20:33:34.310533Z",
@@ -660,5 +660,5 @@
   },
   "supersedes": [],
   "superseded_by": null,
-  "quarantine_reason": "Local positive-delta witness only; regular endpoint, t-union, overlap, and literal global weighted judges remain open."
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys. Prior quarantine reason retained verbatim: Local positive-delta witness only; regular endpoint, t-union, overlap, and literal global weighted judges remain open."
 }

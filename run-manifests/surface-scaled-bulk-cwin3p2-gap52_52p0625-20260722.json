@@ -68,5 +68,5 @@
   ],
   "supersedes": [],
   "superseded_by": null,
-  "quarantine_reason": "Pilot diagnostic cell; retained as an isolated midpoint stress witness, not a relay unit."
+  "quarantine_reason": "Owner decision 2026-08-02 (Lluis Eriksson): quarantined because declared script/input evidence is unavailable in public refs; paths and digests are retained as recovery keys. Prior quarantine reason retained verbatim: Pilot diagnostic cell; retained as an isolated midpoint stress witness, not a relay unit."
 }
