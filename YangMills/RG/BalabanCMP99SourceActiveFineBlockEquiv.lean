@@ -48,11 +48,21 @@ noncomputable def cmp99ActiveFineBlockSigmaEquiv
     rfl
   right_inv z := by
     rcases z with ⟨y, x⟩
-    apply Sigma.ext
-    · apply Subtype.ext
+    let y' : ActiveGaugeRegion.Site
+        (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega) :=
+      ⟨blockSite M N' x.1,
+        (mem_cmp99ActiveCoarseRegion_sites_iff Omega _).2
+          (hOmega x.1
+            (cmp99ActiveFineSiteOfBlock Omega y x).2)⟩
+    have hy' : y' = y := by
+      apply Subtype.ext
       exact (mem_blockOf M N' y.1 x.1).1 x.2
-    · apply Subtype.ext
-      rfl
+    change (⟨y', ⟨x.1, _⟩⟩ :
+      Σ y : ActiveGaugeRegion.Site
+          (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega),
+        {x : FinBox d (M * N') // x ∈ blockOf M N' y.1}) = ⟨y, x⟩
+    subst y'
+    rfl
 
 /-- Reindex a sum over a saturated fine region as the iterated sum over its
 active coarse blocks and the complete fine sites of each block. -/
@@ -69,7 +79,18 @@ theorem sum_activeGaugeRegion_eq_sum_activeBlocks
   classical
   let e := cmp99ActiveFineBlockSigmaEquiv Omega hOmega
   have h := e.sum_comp (fun z => f (e.symm z))
-  simpa [e, Fintype.sum_sigma'] using h
+  calc
+    (∑ x, f x) = ∑ z, f (e.symm z) := by simpa using h
+    _ = ∑ y, ∑ x, f (e.symm ⟨y, x⟩) := Fintype.sum_sigma _
+    _ = ∑ y : ActiveGaugeRegion.Site
+          (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega),
+        ∑ x : {x : FinBox d (M * N') // x ∈ blockOf M N' y.1},
+          f (cmp99ActiveFineSiteOfBlock Omega y x) := by
+      apply Fintype.sum_congr
+      intro y
+      apply Fintype.sum_congr
+      intro x
+      rfl
 
 end
 
