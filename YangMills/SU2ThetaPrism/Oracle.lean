@@ -1,0 +1,52 @@
+import YangMills.SU2ThetaPrism.Endpoint
+
+/-! Separate axiom oracle for (9) Fabricante del prisma theta. -/
+
+#print axioms YangMills.SU2ThetaPrism.threeBranch_cycleRank
+#print axioms YangMills.SU2ThetaPrism.reduced_cycleRank
+#print axioms YangMills.SU2ThetaPrism.holonomy_reflect
+#print axioms YangMills.SU2ThetaPrism.chi_star_eq
+#print axioms YangMills.SU2ThetaPrism.traceRealityConcrete
+#print axioms YangMills.SU2ThetaPrism.characterBoundConcrete
+#print axioms YangMills.SU2ThetaPrism.cellWeight_reflection_invariant
+#print axioms YangMills.SU2ThetaPrism.witness_simultaneous_conj
+#print axioms YangMills.SU2ThetaPrism.witness_ne_zero
+#print axioms YangMills.SU2ThetaPrism.conditionalU_zero
+#print axioms YangMills.SU2ThetaPrism.conditionalV_zero
+#print axioms YangMills.SU2ThetaPrism.conditionalRelative_zero
+#print axioms YangMills.SU2ThetaPrism.cellHaar_mass_one
+#print axioms YangMills.SU2ThetaPrism.cellHaar_coordinate_marginal
+#print axioms YangMills.SU2ThetaPrism.haarSchurConcrete
+#print axioms YangMills.SU2ThetaPrism.relativeCoordinateEquiv_measurePreserving
+#print axioms YangMills.SU2ThetaPrism.fubiniCoordinatesConcrete
+#print axioms YangMills.SU2ThetaPrism.complete_U_orthogonality
+#print axioms YangMills.SU2ThetaPrism.complete_V_orthogonality
+#print axioms YangMills.SU2ThetaPrism.complete_relative_orthogonality
+#print axioms YangMills.SU2ThetaPrism.witnessNormSq_eq_three_quarters
+#print axioms YangMills.SU2ThetaPrism.normMomentsConcrete
+#print axioms YangMills.SU2ThetaPrism.theta_coupling_multiplicity_one
+#print axioms YangMills.SU2ThetaPrism.singletProjectionCoefficient_eq_half
+#print axioms YangMills.SU2ThetaPrism.thetaPairing_factor_sixteen
+#print axioms YangMills.SU2ThetaPrism.thetaPairing_gate
+#print axioms YangMills.SU2ThetaPrism.su2WeylPolynomial_spinHalf_representation_bridge
+#print axioms YangMills.SU2ThetaPrism.su2WeylPolynomial_spinOne_tensor_square_bridge
+#print axioms YangMills.SU2ThetaPrism.chi_negIdentity_mul
+#print axioms YangMills.SU2ThetaPrism.chi_re_sq_integral_one
+#print axioms YangMills.SU2ThetaPrism.alpha_spinHalf_eq_integral_mul_sinh
+#print axioms YangMills.SU2ThetaPrism.alpha_spinHalf_lower
+#print axioms YangMills.SU2ThetaPrism.chi_re_sq_integral_one_quaternion
+#print axioms YangMills.SU2ThetaPrism.chi_re_fourth_integral_two_quaternion
+#print axioms YangMills.SU2ThetaPrism.coshRemainder_monotoneOn_nonnegative
+#print axioms YangMills.SU2ThetaPrism.signed_coshRemainder_nonnegative
+#print axioms YangMills.SU2ThetaPrism.alpha_spinOne_eq_integral_mul_cosh
+#print axioms YangMills.SU2ThetaPrism.alpha_spinOne_eq_quadratic_add_remainder
+#print axioms YangMills.SU2ThetaPrism.spinOneCoefficientRemainderStepConcrete
+#print axioms YangMills.SU2ThetaPrism.coefficientRemainderSteps_of_spinOne
+#print axioms YangMills.SU2ThetaPrism.cellWeight_measurable
+#print axioms YangMills.SU2ThetaPrism.weightMeasurabilityConcrete
+#print axioms YangMills.SU2ThetaPrism.cellWeight_integrable
+#print axioms YangMills.SU2ThetaPrism.manufactured_six_point_theta_gate
+#print axioms YangMills.SU2ThetaPrism.manufacturingTechnicalInputsConcrete
+#print axioms YangMills.SU2ThetaPrism.manufacturingTechnicalInputsConcrete_betaOne_specialization
+#print axioms YangMills.SU2ThetaPrism.manufactured_six_point_theta_gate_concrete
+#print axioms YangMills.SU2ThetaPrism.endpoint_anti_vacuity

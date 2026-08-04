@@ -83,6 +83,36 @@ def validate_meta(data: dict[str, Any]) -> dict[str, Any]:
         _dt.date.fromisoformat(str(meta.get("updated", "")))
     except ValueError:
         err(f"meta.updated is not an ISO date: {meta.get('updated')!r}")
+    submission = meta.get("latest_submission")
+    if submission is not None:
+        submission_obj = require_dict(submission, "meta.latest_submission")
+        required = {
+            "date",
+            "status",
+            "title",
+            "record",
+            "pdf",
+            "pdf_sha256",
+            "source_anchor",
+            "paper_commit",
+            "integration",
+        }
+        for key in sorted(required - submission_obj.keys()):
+            err(f"meta.latest_submission.{key} missing")
+        try:
+            _dt.date.fromisoformat(str(submission_obj.get("date", "")))
+        except ValueError:
+            err(
+                "meta.latest_submission.date is not an ISO date: "
+                f"{submission_obj.get('date')!r}"
+            )
+        digest = submission_obj.get("pdf_sha256")
+        if not isinstance(digest, str) or len(digest) != 64:
+            err("meta.latest_submission.pdf_sha256 must be a 64-character digest")
+        for key in ("source_anchor", "paper_commit"):
+            oid = submission_obj.get(key)
+            if not isinstance(oid, str) or len(oid) != 40:
+                err(f"meta.latest_submission.{key} must be a full 40-character SHA")
     return meta
 
 

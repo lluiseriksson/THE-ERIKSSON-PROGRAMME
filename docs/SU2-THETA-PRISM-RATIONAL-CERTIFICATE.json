@@ -1,0 +1,13 @@
+{
+  "calculations": {
+    "gate_factor_from_coefficient_lowers_and_pairing": "1/512",
+    "pairing_factor_from_norm_and_dimensions": "1/16",
+    "reduced_cycle_rank": 1,
+    "singlet_projection_coefficient": "1/2",
+    "three_branch_cycle_rank": 2,
+    "witness_norm_sq_from_four_moments": "3/4"
+  },
+  "domain": "0 < beta <= 1",
+  "external_audit_verdict": null,
+  "task": "(9) Fabricante del prisma theta"
+}

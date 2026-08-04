@@ -952,3 +952,10 @@ import YangMills.OS.SpatialUniform
 import YangMills.OS.SpatialReflection
 import YangMills.OS.SpatialOS
 import YangMills.OS.SpatialRing
+
+-- Congruence lane (docs/CONGRUENCE-CHARTER.md, judges at 49311bad).
+-- What a positive-diagonal congruence K |-> D K D can and cannot change:
+-- definiteness is rigid, the subdominant ratio is not, and Hilbert's
+-- projective diameter is itself a congruence invariant.  Pure linear algebra
+-- and elementary real analysis; no Gibbs measure and no physics claim.
+import YangMills.OS.CongruenceSpectrum
