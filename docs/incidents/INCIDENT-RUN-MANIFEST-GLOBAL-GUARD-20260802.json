@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "base": {
+    "sha": "55d2f5171b8570e8dc4c49f0cc55895d13536d2d",
+    "ref": "origin/main",
+    "fetched_on": "2026-08-02"
+  },
+  "workflow": {
+    "name": "Validate repository control plane",
+    "job": "test",
+    "step": "Validate committed run manifests",
+    "command": "python scripts/validate_run_manifests.py --require-nonempty"
+  },
+  "github_actions_reproduction": {
+    "run_id": 30748288338,
+    "job_id": 91497624170,
+    "runner_image": "ubuntu-24.04/20260720.247.2",
+    "runner_version": "2.336.0",
+    "python": "CPython 3.12.13 x64",
+    "manifest_count": 623,
+    "error_count": 4134,
+    "exit_code": 1,
+    "failed_log_sha256": "99218ca81d34d30061406bf2240c72fd1406e04a80a8b6a0ea7b9ba1397c15e4",
+    "failed_log_byte_representation": "raw downloaded GitHub Actions log bytes",
+    "failed_log_normalization": "none"
+  },
+  "local_reproduction": {
+    "recorded_utc": "2026-08-02T13:53:59.9753091Z",
+    "host": "LLUISPC",
+    "os": "Microsoft Windows 11 Home 10.0.26200 x64",
+    "architecture": "x64",
+    "python": "CPython 3.12.6",
+    "git": "2.43.0.windows.1",
+    "elapsed_seconds": 8.866,
+    "process_count": 1,
+    "process_pool": false,
+    "peak_rss_bytes": 28872704,
+    "manifest_count": 623,
+    "error_count": 3950,
+    "exit_code": 1,
+    "output_sha256": "3faf8ddb68e67a4d34c39e6b107b4674c4316f2ee8e1066aad6a4353201e1e15",
+    "output_byte_representation": "raw captured Windows transcript bytes",
+    "output_normalization": "none"
+  },
+  "stabilized_local_reproduction": {
+    "recorded_utc": "2026-08-02T14:07:29.8152079Z",
+    "elapsed_seconds": 5.486,
+    "process_count": 1,
+    "process_pool": false,
+    "peak_rss_bytes": 30527488,
+    "manifest_count": 623,
+    "valid_manifest_count": 39,
+    "invalid_manifest_count": 584,
+    "error_count": 3814,
+    "exit_code": 1,
+    "output_sha256": "646d03015bd4adad0222809bc71bfa160d74dcc94fb29209f4fce20bd343c7a0",
+    "output_byte_representation": "raw captured Windows transcript bytes",
+    "output_normalization": "none"
+  },
+  "sanctioned_linux_recomputation": {
+    "workflow_run_id": 30751762660,
+    "runner": "ubuntu-latest",
+    "manifest_count": 623,
+    "valid_manifest_count": 39,
+    "invalid_manifest_count": 584,
+    "error_count": 3814,
+    "guard_status": "PASS",
+    "exit_code": 0,
+    "first_cause": null,
+    "decision_record_sha256": "d27ff57051321d0ff03c00c4fe321e6b3766087abba3203ed97aa4ebcced478b",
+    "decision_record_byte_representation": "raw downloaded JSON artifact bytes",
+    "decision_record_normalization": "none"
+  },
+  "case_normalized_linux_recomputation": {
+    "workflow_run_id": 30751963063,
+    "manifest_count": 623,
+    "valid_manifest_count": 39,
+    "invalid_manifest_count": 584,
+    "error_count": 3760,
+    "guard_status": "PASS",
+    "exit_code": 0,
+    "first_cause": null,
+    "decision_record_sha256": "6ff9bfad13ea428447b1f8b394a9fe9d41435f5d95cd9f7692f008a2c8a06ca0",
+    "decision_record_byte_representation": "raw downloaded JSON artifact bytes",
+    "decision_record_normalization": "none"
+  },
+  "downstream_test_debt": {
+    "workflow_run_id": 30751963063,
+    "passed": 695,
+    "failed": 9,
+    "elapsed_seconds": 377.68,
+    "action": "left unchanged and separated from the run-manifest guard"
+  },
+  "baseline": {
+    "path": ".github/run-manifest-debt-baseline.json",
+    "encoding": "UTF-8 without BOM",
+    "sha256_by_byte_representation": {
+      "git_blob_lf": "09ca858cd7bef66b4b78e6ca2199a17add3a6064b5483e54a7cf0d6c25dfce0e",
+      "windows_checkout_crlf": "b846059fb0c6525999582132c3a945ad3b1dfbaa28faeec41a4f0ea3769a3d22"
+    },
+    "normalization": {
+      "git_blob_lf": "Replace every CRLF byte pair (0d0a) with LF (0a); leave every other byte unchanged.",
+      "windows_checkout_crlf": "Starting from Git blob/LF bytes, replace every LF byte (0a) with CRLF (0d0a); leave every other byte unchanged."
+    },
+    "manifest_count": 623,
+    "error_count": 3814
+  },
+  "audit_reopen_c1_c2": {
+    "pre_fix_sha": "1a3cb1cd6a78043256854f310fc078171703dd02",
+    "c1_missing_comparison": {
+      "normal": {
+        "elapsed_seconds": 5.122,
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      "optimized": {
+        "elapsed_seconds": 5.177,
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      "manifest_count": 623,
+      "comparison_manifest_count": 0,
+      "current_error_count": 3760,
+      "frozen_ceiling": 3814
+    },
+    "c2_stale_decision": {
+      "preseeded_status": "PASS",
+      "pre_validator_command_exit_code": 128,
+      "record_survived_pre_fix": true,
+      "record_state_after_fix": "absent",
+      "publishable_as_current_decision_after_fix": false
+    },
+    "post_fix_comparison_attacks": {
+      "normal": {
+        "missing_root_exit_code": 2,
+        "empty_root_exit_code": 2
+      },
+      "optimized": {
+        "missing_root_exit_code": 2,
+        "empty_root_exit_code": 2
+      },
+      "first_cause_prefix": "comparison guard:"
+    },
+    "rejected_local_measurement_attempt": {
+      "purpose": "combined normal/optimized reconstruction to add peak RSS",
+      "terminated_after_seconds": 34.024,
+      "emitted_record": false,
+      "used_as_evidence": false,
+      "action": "no further global local scan; delegate whole-tree validation to GitHub Actions"
+    }
+  },
+  "audit_reopen_c3_cleanup_order": {
+    "pre_fix_sha": "8eb733ddd54eeb28849cdfa8d9d8e7c09c6d0363",
+    "pre_fix_reproduction": {
+      "missing_argument_2": {
+        "exit_code": 1,
+        "decision_state": "PRESENT/PASS",
+        "stale_marker_survived": true
+      },
+      "missing_argument_3": {
+        "exit_code": 1,
+        "decision_state": "PRESENT/PASS",
+        "stale_marker_survived": true
+      }
+    },
+    "post_fix_executed_fixtures": {
+      "modes": [
+        "normal",
+        "optimized via PYTHONOPTIMIZE=1"
+      ],
+      "a_missing_result_file": {
+        "exit_code": 1,
+        "decision_state": "ABSENT",
+        "boundary": "caller precleans exact canonical GITHUB_WORKSPACE result path before invoking wrapper without arguments"
+      },
+      "b_missing_comparison_root": {
+        "exit_code": 1,
+        "decision_state": "ABSENT"
+      },
+      "c_missing_change_base": {
+        "exit_code": 1,
+        "decision_state": "ABSENT"
+      },
+      "d_materialization_failure": {
+        "exit_code": 128,
+        "decision_state": "ABSENT"
+      },
+      "e_python_failure": {
+        "exit_code": 2,
+        "decision_state": "FAIL/no-PASS",
+        "recorded_exit_code": 2,
+        "first_cause_required": true
+      },
+      "f_success": {
+        "exit_code": 0,
+        "decision_state": "PASS/new-valid",
+        "recorded_exit_code": 0
+      },
+      "stale_marker_survived_any_route": false
+    }
+  },
+  "known_open_provenance_boundary_e": {
+    "affected_manifest_count": 319,
+    "path_missing_reference_count": 688,
+    "family_breakdown": {
+      "surface_scaled_bulk_cwin3p2": {
+        "manifest_count": 315,
+        "path_missing_reference_count": 679
+      },
+      "surface_remainder": {
+        "manifest_count": 4,
+        "path_missing_reference_count": 9
+      }
+    },
+    "distinct_missing_referenced_artifact_count": 31,
+    "artifact_search_result": "absent from Git and the available legacy clone",
+    "date_is_not_a_repair": true,
+    "owner_decision_required": [
+      "explicit quarantine/reclassification using schema vocabulary",
+      "withdraw the affected reproducibility claim"
+    ],
+    "decision_taken_by_this_pr": false,
+    "manifests_modified_by_this_pr": false
+  },
+  "frozen_pr_body": {
+    "path": ".github/PULL_REQUEST_BODY_RUN_MANIFEST_GUARD_20260802.md",
+    "capture_method": "gh pr view 51 --json body; encode the returned body field as UTF-8",
+    "encoding": "UTF-8 without BOM",
+    "byte_count_by_representation": {
+      "git_blob_lf": 6641,
+      "windows_checkout_crlf": 6775
+    },
+    "sha256_by_byte_representation": {
+      "git_blob_lf": "75b8c7a6460f9bcfb0bd5961cf24c99a3288c4341e251c7a580bc107a40e5dde",
+      "windows_checkout_crlf": "36f7a0e97221f2b97b7e3f0fff93403d2ca809f4794ad0916e97b52a1659ae1a"
+    },
+    "normalization": {
+      "git_blob_lf": "Replace every CRLF byte pair (0d0a) with LF (0a); leave every other byte unchanged.",
+      "windows_checkout_crlf": "Starting from Git blob/LF bytes, replace every LF byte (0a) with CRLF (0d0a); leave every other byte unchanged."
+    }
+  },
+  "local_light_limits": {
+    "max_seconds": 30,
+    "max_rss_bytes": 536870912,
+    "pool_allowed": false
+  },
+  "wsl_attempt": {
+    "environment": "Ubuntu 24.04 over mounted NTFS",
+    "result": "terminated after exceeding 30 seconds",
+    "used_as_evidence": false
+  }
+}

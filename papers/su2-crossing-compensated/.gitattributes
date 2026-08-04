@@ -1,0 +1,5 @@
+/.gitattributes text eol=lf
+source/*.lean text eol=lf
+*.md text eol=lf
+RECOVERED-HASHES.txt text eol=lf
+CLEAN-SOURCE-RECONSTRUCTION-SU2-CROSSING-DESCENT-20260802.txt binary
