@@ -17,19 +17,19 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
-20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
-sent as the v2 replacement.  Its exact PDF is pinned at paper commit
-`e68b821f7`, has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`, and is
+**Latest viXra submission (2026-08-04; v2 replacement pending administrator).**
+The 25-page v8.1 edition of *The Row Sums Were the Method, Not the Theorem* was
+submitted as v2 over the live v1/v7.1. Its exact PDF is pinned at paper commit
+`1b8f7012`, has SHA-256
+`18A02AC2D5AECC1090396E0EFF6BA6207E66A4D10AD501E6F918E44F28F9CC92`, and is
 described in
-[`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).
-The fresh-clone evidence on branch `d3-closure` records a green 8,475-job core
-and a 2,980-report repository oracle at verified source anchor `8e8375d34`.
-Those are branch measurements, not a replacement for the canonical `main`
-checkpoint: neither the paper commit nor its source anchor was in `main` when
-this notice was written.  The moderation/publication outcome is not yet
-recorded here.
+[`docs/DOBRUSHIN-MATRIX-V81-V2-SUBMISSION-20260804.md`](docs/DOBRUSHIN-MATRIX-V81-V2-SUBMISSION-20260804.md).
+The paper remains on branch `d3-closure`, outside `main`; this submission notice
+does not replace the canonical `main` checkpoint. The v7.1 object at `ffee6f36`
+is the public v1; v5.5 at `e68b821f7` is preparation provenance. The v2 closes
+the finite-volume transport chain through the uniform projected-operator gap,
+while the infinite-volume D-7 step remains open. Do not resubmit while the
+administrator decision is pending.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),

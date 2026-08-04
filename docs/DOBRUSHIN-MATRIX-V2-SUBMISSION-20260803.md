@@ -1,8 +1,14 @@
-# Dobrushin matrix paper — viXra v2 submission record
+# Dobrushin matrix paper — historical v5.5 preparation record
+
+> **Owner-corrected chronology.** The public viXra v1 was the later 24-page
+> v7.1 manuscript submitted on 2026-08-03. Its identities are recorded in
+> [`DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md`](DOBRUSHIN-MATRIX-V71-SUBMISSION-20260803.md).
+> The v5.5 object below is retained as preparation provenance and is not the
+> public v1 or v2 attachment.
 
 Date recorded: **2026-08-03**
 
-Operation: **v2 replacement submitted to viXra**
+Operation: **historical pre-v1 submission preparation**
 
 Moderation/publication outcome: **not recorded here**
 
@@ -12,7 +18,7 @@ Title: *The Row Sums Were the Method, Not the Theorem: a Machine-Checked
 Chain from a Positive Weight to Exponential Decay of Correlations, and a
 Misattributed Uniformity Wall*
 
-- Edition: v5.5 manuscript, used as the viXra v2 replacement
+- Edition: v5.5 manuscript, superseded before the live v1
 - Length: 20 pages
 - Paper commit: [`e68b821f7b5a766551c7e249706aaf7dc4d0eb66`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/e68b821f7b5a766551c7e249706aaf7dc4d0eb66)
 - Verified source anchor: [`8e8375d3415575e997765e61515e1a8af283df97`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/8e8375d3415575e997765e61515e1a8af283df97)
@@ -45,14 +51,14 @@ statements. That sibling paper's mathematical audit remains a separate matter.
 
 ## Scope and integration boundary
 
-This is a submission record, not an integration claim. At the time this record
+This is a preparation record, not an integration claim. At the time this record
 was written, `e68b821f7` was the head of remote branch `d3-closure` and was not
 an ancestor of `main`. Consequently the 8,475-job and 2,980-report measurements
 must not replace the canonical `main` checkpoint until the exact source history
 is integrated and independently checked under the repository's merge rules.
 
 The earlier 11-page `dobrushin_matrix3.pdf` at `c3d8e32d` is a superseded
-ancestor of this manuscript. It must not be used as the viXra v2 replacement.
+ancestor of this manuscript. It must not be used as either public viXra version.
 The v5.5 paper absorbs that earlier three-theorem version and closes the
 formerly open Dobrushin comparison step; it does not prove a continuum limit,
 a Yang–Mills mass gap, or a volume-family theorem beyond the hypotheses and

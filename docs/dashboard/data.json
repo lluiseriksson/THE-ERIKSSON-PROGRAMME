@@ -2,7 +2,7 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-08-03",
+    "updated": "2026-08-04",
     "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
@@ -17,14 +17,16 @@
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "latest_submission": {
-      "date": "2026-08-03",
-      "status": "viXra v2 replacement submitted; moderation outcome not recorded",
+      "date": "2026-08-04",
+      "status": "viXra v2 replacement submitted; pending administrator; do not resubmit",
       "title": "The Row Sums Were the Method, Not the Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay of Correlations, and a Misattributed Uniformity Wall",
-      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md",
-      "pdf": "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e68b821f7b5a766551c7e249706aaf7dc4d0eb66/papers/dobrushin-matrix/dobrushin_matrix.pdf",
-      "pdf_sha256": "3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888",
-      "source_anchor": "8e8375d3415575e997765e61515e1a8af283df97",
-      "paper_commit": "e68b821f7b5a766551c7e249706aaf7dc4d0eb66",
+      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/DOBRUSHIN-MATRIX-V81-V2-SUBMISSION-20260804.md",
+      "pdf": "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/1b8f7012ccc7b92d08129a6385a86d97fdfdf623/papers/dobrushin-matrix/dobrushin_matrix.pdf",
+      "pdf_sha256": "18A02AC2D5AECC1090396E0EFF6BA6207E66A4D10AD501E6F918E44F28F9CC92",
+      "source_anchor": "1b8f7012ccc7b92d08129a6385a86d97fdfdf623",
+      "paper_commit": "1b8f7012ccc7b92d08129a6385a86d97fdfdf623",
+      "viXra_revision": "v2 replacement pending administrator",
+      "previous_public_version": "v1 = v7.1 at ffee6f36e2a13b133d99e2ad373139c22a00ee5b",
       "integration": "remote branch d3-closure; not in main when recorded"
     }
   },
