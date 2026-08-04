@@ -56,7 +56,8 @@ theorem sum_norm_cmp99TransportedBlockSynthesisCLM
         (fun x => |w| * ‖eta.ofLp x‖) ((M : ℝ) ^ d)).symm
     _ = (M : ℝ) ^ d *
         (|w| * ∑ x ∈ Finset.univ, ‖eta.ofLp x‖) := by
-      rw [Finset.mul_sum]
+      exact congrArg (fun z : ℝ => (M : ℝ) ^ d * z)
+        (Finset.mul_sum Finset.univ (fun x => ‖eta.ofLp x‖) |w|).symm
     _ = _ := by ring
 
 /-- At the literal CMP99 coefficient `M^{-d}`, the counting adjoint has
