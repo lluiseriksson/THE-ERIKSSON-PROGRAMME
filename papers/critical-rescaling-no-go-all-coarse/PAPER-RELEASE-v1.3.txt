@@ -1,0 +1,107 @@
+Postconditioned Fourier no-go paper release
+Version: 1.3
+Date: 2026-08-04
+
+Title:
+Exact-Kernel Fourier Modes Obstruct Every Postconditioned Block Penalty
+in a Flat Lattice Gauge Form
+
+Final PDF:
+- file: output/pdf/critical_rescaling_fourier_no_go_v1.3.pdf
+- bytes: 347536
+- SHA-256: BAB1545FA009417A79B98B79BBACEAC01A564ED4C9D89B6E9C407A0AC2233208
+- pages: 11
+- page size: US Letter, 612 x 792 pt
+
+Theorem-source packet:
+- file: output/pdf/critical_rescaling_fourier_no_go_sources_v1.3.zip
+- bytes: 19527
+- SHA-256: 089A1E0ABA8544C4468E7BF21D92D77C764BD7A7FF19FE934E09A46AC67A43C5
+- entries: 14; UTF-8/LF text with fixed ZIP timestamps
+
+Paper submission bundle:
+- file: output/pdf/critical_rescaling_fourier_no_go_paper_v1.3.zip
+- bytes: 343662
+- SHA-256: 74314821137F67612661165541749FF565532DEA1CC2DD626A33AA516C2C9731
+- entries: 6; text entries canonicalized to UTF-8/LF
+
+TeX body capture:
+- file: papers/critical-rescaling-no-go-all-coarse/critical_rescaling_no_go_all_coarse.tex
+- working-tree raw bytes: 34144
+- working-tree raw SHA-256:
+  3A0C42F54648A54A9DF55FABA62A6306E5E937D43FBFE65435476824681866A9
+- canonical LF bytes: 33734
+- canonical LF SHA-256:
+  9FA1CF84AA327BA8A763266F739C6DF86F6E00371B5DA49A7FD2A6EB4E45F192
+- deterministic CRLF bytes: 34514
+- deterministic CRLF SHA-256:
+  E79EB5F7B129C4BAE0467FB2CD48D911B2A1AF6DE6269FFF45D88A436B7B4449
+
+Formalization manifest capture:
+- file: papers/critical-rescaling-no-go-all-coarse/FORMALIZATION-MANIFEST-v1.3.txt
+- raw/LF bytes: 2794
+- raw/LF SHA-256:
+  9C577EB92FB0151929A92D57AC7AFD1037925DBC1092D5ACD4A6AD1871165D74
+- deterministic CRLF bytes: 2841
+- deterministic CRLF SHA-256:
+  FE37141942C81BA60CF545EE285C0B10C082C1C77135D74B6B79ACAC2DFE94F3
+
+Postconditioned audit record capture:
+- file: papers/critical-rescaling-no-go-all-coarse/POSTCONDITIONED-LEAN-AUDIT-v1.3.txt
+- raw/LF bytes: 2441
+- raw/LF SHA-256:
+  AED0C93A1D3BC278F73362B1EA3117A1CB41EA7824FA200DA02E507DBB97FEDF
+- deterministic CRLF bytes: 2502
+- deterministic CRLF SHA-256:
+  7E1215BF3A4DF3861D89D7F152D90D8DACA58281F33195E88F21CFE077F1B830
+
+Formal source captures:
+- postconditioned theorem LF SHA-256:
+  5851FAD3E9541F78C397E71781063C30EA7153CCE0A72CEDD6E522A69F9A990B
+- focused oracle LF SHA-256:
+  64112BECD145C01FCBFE02D6332790331EB0B2535E0208BC897D5755693B1AFA
+- original theorem source commit:
+  f21539ed0bb880a04078de369bf5cbf063f7b101
+- original independent audit commit:
+  5bbc9347a64083fb3936f8240a5b0108e5d03fea
+- Lean v4.29.0-rc6 commit:
+  00659f8e6071d7e46131ed643bf8003b99b044e9
+- Mathlib:
+  07642720480157414db592fa85b626dafb71355b
+
+Remote formal QA:
+- account visibly confirmed: lluiseriksson@gmail.com
+- Colab Pro+ CPU/high-RAM, 50.99 GB visible RAM, no GPU
+- frozen upload: 1776253 bytes, matching local/remote SHA-256
+  E5BB59166A8D79A80F942C8ADD65C78F27916F89F53559FB6B389900DF42933A
+- focused build: exit 0, 8185 jobs, 243.662 s
+- focused oracle: exit 0, 5/5 declarations, 12.653 s
+- axiom result: exactly [propext, Classical.choice, Quot.sound]
+- runtime disconnected and deleted after the audit
+
+Paper QA:
+- final pdflatex passes: exit 0
+- LaTeX warnings: none
+- overfull/underfull boxes: none
+- undefined or multiply defined references: none
+- PDF text extraction: nonempty on all 11 pages
+- PDF link annotations: 47
+- unclassified/broken annotations: 0
+- external URI links: 7
+- internal links: 40
+- all 11 final rendered pages visually inspected
+- no clipping, overlap, broken glyph, or unreadable table observed
+- cited Balaban, Dimock, and Combes--Thomas records checked against primary
+  article/DOI or author-preprint records
+
+Scientific status:
+- formal result: every continuous linear postconditioner after the exact block
+  map fails to restore a scale-uniform full-space Poincare constant
+- analytic result: exact necessary repair budget and witness-line iff criterion
+- positive interacting/full-space replacement theorem: not claimed
+- external certification: pending
+- this release record is reproduction evidence, not self-certification
+
+The release commit is the Git commit containing this manifest. Its SHA is
+reported in the task handoff so this file does not introduce a self-referential
+hash cycle.

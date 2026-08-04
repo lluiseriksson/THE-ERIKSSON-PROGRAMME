@@ -1,0 +1,128 @@
+Factor-through-kernel Fourier no-go paper release
+Version: 1.4
+Date: 2026-08-04
+
+Title:
+Exact-Kernel Fourier Families Obstruct Every Penalty Factored Through a Block Map
+in a Flat Lattice Gauge Form
+
+Final PDF:
+- file: output/pdf/critical_rescaling_fourier_no_go_v1.4.pdf
+- bytes: 365036
+- SHA-256: 48B2B725422263A272D9862621FA723D3D82C9D186DD7151BE39C6FF1E3FF2E7
+- pages: 13
+- page size: US Letter, 612 x 792 pt
+
+Theorem-source packet:
+- file: output/pdf/critical_rescaling_fourier_no_go_sources_v1.4.zip
+- bytes: 25170
+- SHA-256: EF5501145398B5F672DCDFB66206C1F5F280F2C61B231D2C9AC0E1A4E693F82A
+- entries: 16
+
+Paper submission bundle:
+- file: output/pdf/critical_rescaling_fourier_no_go_paper_v1.4.zip
+- bytes: 374953
+- SHA-256: F832BCAE7B702F137C858941DD0D80D371350CAC09B18985BE8125012872610D
+- entries: 6
+
+TeX body capture:
+- file: papers/critical-rescaling-no-go-all-coarse/critical_rescaling_no_go_all_coarse.tex
+- working-tree raw bytes: 41195
+- working-tree raw SHA-256:
+  553A9EA4306A53ADB0FBB78965AEBCE1EEF8DFF87983F7DD52B8BCB0ED318CC3
+- canonical LF bytes: 40815
+- canonical LF SHA-256:
+  2255745D9D8B2CD2BAF7B0B3C06BB6593CAED8A6EFC628D4B604C2A3B5471299
+- deterministic CRLF bytes: 41737
+- deterministic CRLF SHA-256:
+  44AD8F4C4A78B4C8496D92D9D3EE9AEF2E959B946F6E5C2E2E632032EA9A5486
+
+Formalization manifest capture:
+- file: papers/critical-rescaling-no-go-all-coarse/FORMALIZATION-MANIFEST-v1.4.txt
+- raw/LF bytes: 4243
+- raw/LF SHA-256:
+  FC6D4254F9514F70267547A8D4426D7F6D4F8CD138415CCCCE0E50F231F628F5
+- deterministic CRLF bytes: 4312
+- deterministic CRLF SHA-256:
+  72D5896098DE71D902CD97F9D213860C699213A53C4FBAE3D0DC39A594F0CAC5
+
+Factorized/repair audit record capture:
+- file: papers/critical-rescaling-no-go-all-coarse/FACTORIZED-REPAIR-LEAN-AUDIT-v1.4.txt
+- raw/LF bytes: 6342
+- raw/LF SHA-256:
+  3D242024B6FC17F54D133F4E3A9FCC22155D4EF9DFC066D23509202B33A9ECC4
+- deterministic CRLF bytes: 6482
+- deterministic CRLF SHA-256:
+  57B7562476B0296F5718C9C3E4F943612DAC3B0915F86B3E6A706104AC00A0B0
+
+Formal source captures:
+- factorized/repair theorem raw/LF bytes: 12064
+- theorem raw/LF SHA-256:
+  D7586D24D7B7E9050001AC5A8E4A8061A3EE3F7D441C5373186EBAEB7B97DE38
+- theorem deterministic CRLF bytes: 12353
+- theorem deterministic CRLF SHA-256:
+  2C6D3B1D6EE2D0EDA942FB23F7CD5A84DD19CC69DD03FAB43328CBCBBA5CAEC7
+- focused oracle raw/LF bytes: 537
+- oracle raw/LF SHA-256:
+  6334EE25A6A0D8778A91CC49269BC92563C327DD1BD0E5CA9CF477F5E90738E1
+- oracle deterministic CRLF bytes: 547
+- oracle deterministic CRLF SHA-256:
+  0F3506852DDECAB364241F1AC53706BC410B665814378871CECDB208E0F2F466
+- original theorem source commit:
+  f21539ed0bb880a04078de369bf5cbf063f7b101
+- prior independent audit commit:
+  5bbc9347a64083fb3936f8240a5b0108e5d03fea
+- prior postconditioned paper commit:
+  ce675deb71c4001ec19095d533afe72bbd14201f
+- Lean v4.29.0-rc6 commit:
+  00659f8e6071d7e46131ed643bf8003b99b044e9
+- Mathlib:
+  07642720480157414db592fa85b626dafb71355b
+
+Remote formal QA:
+- account visibly confirmed: lluiseriksson@gmail.com
+- Colab Pro+ CPU/high-RAM, 50.99 GB visible RAM, no GPU
+- public base plus 17 frozen LF-normalized bodies, each byte/hash checked
+- final focused build: exit 0, 8186 jobs, 18.835 s, target .olean present
+- focused oracle: exit 0, 6/6 declarations, 14.953 s
+- axiom result: exactly [propext, Classical.choice, Quot.sound]
+- final frozen run: 19:07:36.898702--19:08:10.693578 UTC
+- full reconstruction audit: 18:56:52.878156--19:08:10.693578 UTC
+- notebook:
+  https://colab.research.google.com/drive/1iXBNBeBEGr7O3pEbuRtac1VE1mMHX0Lh
+- runtime disconnected and deleted after the audit
+- no Claude Code, Opus 5, or Fable 5 invocation was made
+
+Paper QA:
+- final pdflatex passes: exit 0
+- LaTeX warnings: none
+- overfull/underfull boxes: none
+- undefined or multiply defined references: none
+- PDF text extraction: nonempty on all 13 pages
+- PDF link annotations: 58
+- unclassified/broken annotations: 0
+- external URI links: 9
+- internal links: 49
+- all 13 final rendered pages visually inspected
+- no clipping, overlap, broken glyph, or unreadable table observed
+- temporary page renders and LaTeX auxiliary files removed after QA
+- bibliography uses exact primary article DOI links and primary Lean records
+
+Scientific status:
+- formal result: every real-valued penalty factored through the original block
+  map and satisfying Phi(0)=0 fails to restore a scale-uniform full-space
+  Poincare constant; no regularity, linearity, positivity, or growth condition
+  on Phi is required
+- formal repair result: exact repaired-witness Rayleigh identity and necessary
+  finite-scale full-space budget
+- analytic spectral result: an orthogonal 2R-dimensional Fourier subspace and
+  min-max bound mu_(2R) <= 4*pi^2*R^2/L^2
+- analytic repair result: asymptotic liminf consequence and witness-line iff
+- full-space positive interacting/gauge-restricted replacement: not claimed
+- infinite-volume, continuum, and Yang--Mills mass-gap conclusions: not claimed
+- external certification: pending
+- this release record is reproduction evidence, not self-certification
+
+The release commit is the Git commit containing this manifest. Its SHA is
+reported in the task handoff so this file does not introduce a self-referential
+hash cycle.

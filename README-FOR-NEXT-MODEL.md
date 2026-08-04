@@ -21,7 +21,14 @@ Catalan/Schur series through Addendum 465 and the 2026-07-04 diamagnetic
 unitary bridge Addendum 466, while the latest measured source checkpoint is
 `a17d7816` (on `main`).
 
-Publication-only update (2026-08-03): the 20-page Dobrushin matrix manuscript
+Publication-only update (2026-08-04): P47 v1.4, *Exact-Kernel Fourier Families
+Obstruct Every Penalty Factored Through a Block Map in a Flat Lattice Gauge
+Form*, was sent to ai.viXra as a NEW PAPER. Moderation and public visibility
+remain pending. The exact 13-page, 365036-byte PDF and action lock are recorded
+in [`papers/critical-rescaling-no-go-all-coarse/SUBMISSION-INFO.txt`](papers/critical-rescaling-no-go-all-coarse/SUBMISSION-INFO.txt).
+Do not resend; v1.3 and the ZIP bundles are obsolete for editorial use.
+
+Earlier publication-only update (2026-08-03): the 20-page Dobrushin matrix manuscript
 v5.5 was submitted to viXra as its v2 replacement.  The exact paper commit,
 PDF hash, fresh-clone 8,475-job/2,980-report evidence, and the fact that this
 lane remains outside `main` are recorded in

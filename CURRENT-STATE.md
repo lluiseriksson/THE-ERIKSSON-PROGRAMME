@@ -17,7 +17,18 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
+**Latest ai.viXra submission (2026-08-04; NEW PAPER sent, moderation
+pending).** Version 1.4 of *Exact-Kernel Fourier Families Obstruct Every Penalty
+Factored Through a Block Map in a Flat Lattice Gauge Form* was sent as a new
+paper. The canonical 13-page PDF is
+`output/pdf/critical_rescaling_fourier_no_go_v1.4.pdf`, 365036 bytes, SHA-256
+`48B2B725422263A272D9862621FA723D3D82C9D186DD7151BE39C6FF1E3FF2E7`.
+The exact administrative state is frozen in
+[`papers/critical-rescaling-no-go-all-coarse/SUBMISSION-INFO.txt`](papers/critical-rescaling-no-go-all-coarse/SUBMISSION-INFO.txt).
+Moderation and public visibility are not confirmed. Version 1.3 and ZIP
+bundles are obsolete for editorial use; do not resend.
+
+**Previous viXra submission (2026-08-03; v2 replacement submitted).**  The
 20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
 sent as the v2 replacement.  Its exact PDF is pinned at paper commit
 `e68b821f7`, has SHA-256
@@ -67,6 +78,77 @@ block map obeys `‖QA‖² ≤ (M+M)⁻¹‖A‖²`, while the exact Hodge rati
 FALSE for every positive `N'`, `d ≥ 3`, `Nc ≥ 2`, and every adjoint model.
 This refutes the registered gate under its current unscaled `Q` and
 unweighted coarse norm; it does not address a rescaled or weighted gate.
+
+**W-4 DONE — critical-normalization audit, positive but not gate-closing**
+(2026-08-02, `PhysicalPoincareCriticalRescaling.lean`, ledger Addendum 575).
+For an explicitly scaled block constraint `s Q`, every four-dimensional flat
+Hodge/block-Poincaré estimate must satisfy `L^2 <= CP * ‖s‖^2`.  Hence the
+critical choice `s = L` is necessary in order and is proved exactly isometric
+on the direction-wise constant sector; that sector now forces only `1 <= CP`
+instead of `L^2 <= CP`.  The correctly quantified
+`VolumeUniformCriticalRescaledFlatPoincareGate` is defined but deliberately
+not inhabited.  The remaining positive problem is an all-fluctuation-mode
+uniform estimate (or interacting-Wilson-Hessian coercivity).  Target build:
+8170 jobs; full core: 8471 jobs; focused seven-declaration oracle: only
+`[propext, Classical.choice, Quot.sound]`.
+
+**W-4b DONE — joint CT parameter audit, operator inputs still open**
+(2026-08-02, `PhysicalCriticalRescalingCTAudit.lean`, ledger Addendum 576).
+The fine-metric range certificate grows as `3L`, so the natural rate is not a
+fixed fine-bond `theta` but `theta_L = tau/L`.  Assuming the critical-scale
+Gram amplitude `M_L <= L^-4`, the proved ball majorant satisfies
+`M_L N_{R,L} <= 16384`; an explicit positive `tau` then satisfies the CT
+budget uniformly in block units.  Remaining load-bearing inputs are exactly
+the critical-scale `L^-4` operator kernel theorem and the all-mode coercivity
+gate.
+
+**W-4c DONE — critical-scale Gram kernel** (2026-08-02,
+`PhysicalCriticalRescalingKernel.lean`, ledger Addendum 577).  The actual
+single-probe estimate is `‖Q delta_p v‖ <= L^-d L ‖v‖`; hence in `d=4` the
+critical map obeys `‖(LQ) delta_p v‖ <= L^-2 ‖v‖`, and its Gram operator has
+entrywise amplitude `L^-4` with fine range `3L`.  The kernel/ball/range/tilt
+side is now closed.  Only the volume-uniform all-mode coercivity gate remains
+load-bearing at this checkpoint; W-4d/W-4e below audit and close that proposal.
+
+**W-4e DONE — critical full-space gate fails at every positive coarse side**
+(2026-08-02, `PhysicalCriticalRescalingNoGoAllCoarse.lean`, ledger Addendum
+579).  For every `N' > 0`, every even scale `L = 2M`, and `Nc >= 2`, an
+explicit block-periodic transverse square mode obeys both `(LQ)A = 0` and
+zero flat divergence exactly.  Its flat-Hodge Rayleigh quotient remains
+`8/L`: the factor `N'` in the interface count cancels against the total fine
+side.  Hence
+`VolumeUniformCriticalRescaledFlatPoincareGate N' Nc rho` is false for every
+positive coarse side.  The next positive theorem cannot be the present
+full-space gate unchanged: it must restrict/quotient the domain or add a
+further positive operator such as an interacting Hessian.
+The result is written as the separate manuscript
+`papers/critical-rescaling-no-go-all-coarse/critical_rescaling_no_go_all_coarse.tex`;
+it is not a v0.8 revision of the Combes--Thomas paper.
+
+**W-4f DONE — all-scales Fourier strengthening** (2026-08-02,
+`PhysicalCriticalRescalingFourierNoGoAllScales.lean`, ledger Addendum 580).
+For every block side `L >= 2`, every fixed positive coarse side `N'`, and
+`Nc >= 2`, the first within-block Fourier mode lies exactly in `ker Q_L` and
+the flat-divergence kernel.  Its norm and flat-Hodge energy are
+`(L N')^d` and `(L N')^d lambda_L`, respectively, where
+`lambda_L = ‖exp(2 pi i/L)-1‖^2 <= 4 pi^2/L^2`.  Thus the earlier square-mode
+no-go is strengthened from the even-scale rate `8/L` to an all-scale
+`O(L^-2)` obstruction.  Here the uniformity question varies the block/fine
+side `L` while `N' > 0` is arbitrary but fixed; it is not an `N' -> infinity`
+claim.
+The standalone manuscript is now version 1.1 and makes this Fourier theorem
+the headline result.  The verified delivery PDF, including the corrected
+Dimock bibliographic record, has SHA-256
+`B8E655D3F1253D0EA915BA54DF00A5C72F4CE5B5D229F74FE82EC152333EA726`;
+the companion source packet has SHA-256
+`AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132`.
+The paper is closed at v1.1.  A proposed next strengthening that identifies
+its Fourier quotient with the full bottom of `K0` on
+`ker Q_L ∩ ker delta` is false as stated: at `L = N' = 2`, the blockwise
+profile `(1,-1|-1,1)` has quotient `2 < lambda_2 = 4`.  The next spectral
+project must diagonalize the constrained coarse-Bloch family rather than
+assume the displayed witness is a minimizer; see
+`docs/FOURIER-NOGO-SPECTRAL-GUARDRAIL.md`.
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at

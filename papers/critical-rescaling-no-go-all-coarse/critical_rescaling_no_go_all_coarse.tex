@@ -1,0 +1,922 @@
+% Standalone no-go paper. This is not a revision of poincare_wall.tex.
+\documentclass[11pt]{article}
+\usepackage[margin=1.02in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,enumitem,microtype,xurl}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\hypersetup{
+  pdftitle={Exact-Kernel Fourier Families Obstruct Every Penalty Factored Through a Block Map},
+  pdfauthor={Lluis Eriksson},
+  pdfsubject={A machine-checked no-go theorem and a quantitative repair criterion for a flat lattice gauge block form},
+  pdfkeywords={lattice gauge theory, block averaging, Poincare inequality, Fourier mode, postconditioning, Lean 4}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\CP}{C_{\mathrm P}}
+\newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\codepath}[1]{\nolinkurl{#1}}
+
+\emergencystretch=3em
+\tolerance=1800
+
+\title{Exact-Kernel Fourier Families Obstruct\\
+Every Penalty Factored Through a Block Map\\
+in a Flat Lattice Gauge Form}
+\author{Lluis Eriksson}
+\date{August 4, 2026 (version 1.4)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let a fine periodic lattice have side $LN'$ and let $Q_L$ be the
+$L^{-d}$-normalized block average of length-$L$ line integrals.  In four
+dimensions, the rescaling $Q_L\mapsto LQ_L$ repairs the elementary
+constant-field scaling obstruction to a Poincar\'e estimate.  More generally,
+for a power rescaling $L^\sigma Q_L$ in dimension $d$, that sector only forces
+$\sigma\ge(d-2)/2$; equality is the unique scale-neutral choice, not a
+sufficient coercivity theorem.  We prove a stronger factor-through-kernel
+no-go: no scalar functional $\Phi_L(Q_LA)$ with $\Phi_L(0)=0$ can yield
+full-space coercivity with a constant uniform in the block side.  The
+functional may depend on $L$ and may be nonlinear, discontinuous, anisotropic,
+or unbounded; no positivity or growth assumption is used.  For every $L\ge2$,
+fixed $N'\ge1$, and $N_c\ge2$, we embed within-block Fourier phases in a real
+two-plane of the internal coordinate space and construct transverse
+one-cochains.  The first mode $A_L$ satisfies
+\[
+ Q_LA_L=0,\qquad \operatorname{div}A_L=0,
+\]
+and, for every dimension $d\ge2$,
+\[
+ \norm{A_L}^2=(LN')^d,\qquad
+ \ip{A_L}{K_0A_L}=(LN')^d\lambda_L,
+ \qquad
+ \lambda_L=4\sin^2\!\left(\frac{\pi}{L}\right)
+ \le \frac{4\pi^2}{L^2}.
+\]
+Thus every factorized penalty vanishes on the witness.  In the linear case,
+the Rayleigh quotient of $K_0+(T_LQ_L)^*(T_LQ_L)$ is exactly $\lambda_L$ for
+every scale-dependent continuous linear coarse postconditioner $T_L$, with no
+bound on $\norm{T_L}$.  Higher frequencies give an orthogonal $2R$-dimensional
+real subspace on which the maximal Rayleigh quotient is
+$4\sin^2(\pi R/L)$.  Hence the ordered spectrum of the linear operator has at
+least $2R$ eigenvalues below $4\pi^2R^2/L^2$; choosing
+$R=\lfloor L^\alpha\rfloor$, $0<\alpha<1$, produces a growing low-energy
+cluster rather than a single exceptional line.  Every admissible full-space Poincar\'e constant obeys
+$\CP(L)\ge1/\lambda_L\ge L^2/(4\pi^2)$, so no constant chosen before $L$
+can work.  We also give an exact repair budget.  If the block map is perturbed
+to $\widetilde Q_L$, and a positive term $V_L$ is added, the same witness has
+Rayleigh quotient
+\[
+ \lambda_L+\frac{\norm{T_L\widetilde Q_LA_L}^2}{\norm{A_L}^2}
+ +\frac{\ip{A_L}{V_LA_L}}{\norm{A_L}^2}.
+\]
+Uniform coercivity therefore requires a scale-independent positive lift of
+this channel; the condition is also sufficient on the witness line, but not
+on the full space.  Here ``volume-uniform'' means uniform while $L$ varies at
+an arbitrary fixed positive coarse side $N'$; it is not a claim about
+$N'\to\infty$ at fixed $L$.
+
+The construction, kernel identities, exact Hodge energy, factorized-penalty
+no-go, repair Rayleigh identity, and necessary repair budget are formalized in
+Lean~4.  The focused axiom audit reports only \lean{propext},
+\lean{Classical.choice}, and \lean{Quot.sound}.  The higher-frequency spectral
+multiplicity theorem is proved analytically here and is not claimed as part of
+the formalized surface.  The theorem concerns the stated flat full-domain form; it
+does not contradict gauge-restricted propagator constructions and makes no
+infinite-volume, continuum, or Yang--Mills mass-gap claim.
+\end{abstract}
+
+\noindent\textbf{Keywords.}
+Lattice gauge theory; block averaging; Poincar\'e inequality; Fourier mode;
+postconditioning; formal verification; Lean~4.
+
+\section{Introduction}
+
+Finite-range positive operators admit Combes--Thomas localization estimates
+whose constants depend on the lower spectral edge~\cite{CombesThomas}.  In a
+block-spin treatment of lattice gauge fields, a natural finite-dimensional
+precision is a flat Hodge operator plus a positive block penalty.  The
+question addressed here is sharply limited: can any penalty factored through
+the original block variable, in the form
+\begin{equation}\label{eq:intro-form}
+ \ip{A}{K_0A}+\Phi_L(Q_LA),\qquad \Phi_L(0)=0,
+\end{equation}
+control the full fine one-cochain norm with a constant independent of the
+block side $L$?  The familiar linear postconditioned form
+$\Phi_L(B)=\norm{T_LB}^2$ is a special case.
+
+The factor $L$ is not arbitrary.  With the line-integral block map used below,
+it exactly balances direction-wise constant fields in dimension four.  The
+corresponding general-dimensional arithmetic is often compressed into the
+phrase ``critical exponent $(d-2)/2$.''  We separate two statements that this
+phrase can obscure: exponents at or above that threshold avoid growth forced
+by constant fields, while equality is selected only by exact scale neutrality.
+Neither statement is sufficient for full-space coercivity.  The block map also
+has mean-zero transverse modes in its exact kernel.  Because a map applied
+\emph{after} $Q_L$ cannot distinguish zero from zero, no factorized functional
+that vanishes at the coarse zero field can lift them.  This includes every
+scalar, anisotropic, mixing, or unbounded scale-dependent linear
+postconditioner.  The within-block Fourier family makes the obstruction local
+to every block and supplies a growing cluster of low modes, not merely one
+adversarial vector.
+
+The main result has eight components.
+\begin{enumerate}[label=(\roman*)]
+\item The constant-sector calculation isolates exactly what the exponent
+  $(d-2)/2$ does and does not imply.
+\item The witness is defined on the exact finite periodic lattice and works
+  for every $L\ge2$, with no parity restriction.
+\item Its cancellation under $Q_L$ and under the flat divergence is exact in
+  every block and at every positive coarse side $N'$.
+\item Its Hodge Rayleigh quotient is the first-cycle eigenvalue
+  $4\sin^2(\pi/L)$, hence is $O(L^{-2})$.
+\item Frequencies $1\le r\le R$ produce an orthogonal real subspace of
+  dimension $2R$ and an explicit min--max bound on the $2R$-th eigenvalue.
+\item The no-go is uniform over arbitrary factorized scalar functionals
+  $\Phi_L$ satisfying only $\Phi_L(0)=0$; linear postconditioners are a strict
+  subclass.
+\item The quantifier order is explicit and machine checked: the family $T_L$
+  or $\Phi_L$, and one proposed constant $\CP$, are chosen before all block
+  sides $L$.
+\item An exact repair identity quantifies how much a changed block map or an
+  added positive Hessian must contribute on the missed channel.
+\end{enumerate}
+
+An earlier square-wave witness gives the weaker even-scale quotient $8/L$.
+It already disproves the same gate, but the Fourier construction identifies
+the actual low-frequency mechanism and strengthens the quantitative lower
+bound on Poincar\'e constants from linear to quadratic growth.
+
+The conclusion is a domain diagnosis, not a general no-go for lattice gauge
+renormalization.  Classical constructions use gauge restrictions, quotient
+structures, or background-dependent operators.  The present theorem instead
+tests the unrestricted flat form in~\eqref{eq:intro-form}.  A repaired theorem
+may still hold on a physically justified sector, after changing the
+information captured before postconditioning, or after adding a positive
+interacting Hessian that lifts the explicit transverse family.
+
+\section{Finite lattice, block map, and quantifiers}
+
+Fix integers $d\ge2$, $L\ge1$, $N'\ge1$, and $N_c\ge2$.  The fine site set is
+\[
+ \Lambda_{L,N'}=\left(\Z/(LN')\Z\right)^d,
+\]
+and a positive bond is $(x,\mu)$ with $x\in\Lambda_{L,N'}$ and
+$\mu\in\{0,\ldots,d-1\}$.  The real internal coordinate space is
+$E_{N_c}=\R^{N_c^2-1}$.  For a one-cochain $A(x,\mu)\in E_{N_c}$, set
+\[
+ \norm{A}^2=\sum_{x\in\Lambda_{L,N'}}\sum_{\mu=0}^{d-1}
+ \norm{A(x,\mu)}^2.
+\]
+
+At the trivial background, let $D_1$ be the discrete exterior derivative and
+$\delta$ the discrete divergence.  The flat Hodge operator $K_0$ satisfies
+\begin{equation}\label{eq:hodge}
+ \ip{A}{K_0A}=\norm{D_1A}^2+\norm{\delta A}^2.
+\end{equation}
+In the formal development this is derived from the adjoint-defined operator;
+it is not introduced as an axiom.
+
+For a coarse site $y\in(\Z/N'\Z)^d$, write
+\[
+ B_y=\{Ly+r:0\le r_\nu<L\text{ for every }\nu\}.
+\]
+For a coarse positive bond $(y,\mu)$, define the linearized line-integral
+average
+\begin{equation}\label{eq:Q}
+ (Q_LA)(y,\mu)=L^{-d}\sum_{x\in B_y}\sum_{k=0}^{L-1}
+ A(x+ke_\mu,\mu).
+\end{equation}
+For a continuous linear endomorphism $T_L$ of the coarse one-cochain space,
+the tested precision is
+\begin{equation}\label{eq:H}
+ H_{L,T}=K_0+(T_LQ_L)^*(T_LQ_L).
+\end{equation}
+This class includes scalar rescaling $T_L=s_LI$, direction-dependent weights,
+and mixing of coarse sites, directions, or internal coordinates.  No uniform
+operator-norm bound on $T_L$ is imposed.
+
+\begin{proposition}[what the constant-sector wall fixes]
+\label{prop:critical-exponent}
+Let $A_v(x,\mu)=v_\mu$ be a direction-wise constant field and put
+$S_v=\sum_\mu\norm{v_\mu}^2>0$.  Then
+\begin{equation}\label{eq:constant-norms}
+ \norm{A_v}^2=L^d(N')^dS_v,
+ \qquad
+ \norm{L^\sigma Q_LA_v}^2=L^{2\sigma+2}(N')^dS_v.
+\end{equation}
+Consequently, a Poincar\'e estimate with a constant independent of unbounded
+$L$ can pass this sector only if
+\begin{equation}\label{eq:critical-threshold}
+ \sigma\ge\frac{d-2}{2}.
+\end{equation}
+Equality is the unique exponent for which the two norms in
+\eqref{eq:constant-norms} have identical scale dependence; larger exponents
+overweight the constant sector and also pass this necessary test.
+\end{proposition}
+
+\begin{proof}
+There are $(LN')^d$ fine sites.  For a constant field, the inner line sum in
+\eqref{eq:Q} supplies $L$, while the $L^{-d}$ normalization cancels the $L^d$
+source sites in a block, so $Q_LA_v=L v$ on each coarse bond.  This gives
+\eqref{eq:constant-norms}.  Substitution in a Poincar\'e estimate and
+cancellation of the positive factor $(N')^dS_v$ yields
+$L^{d-2-2\sigma}\le\CP$.  Uniformity for arbitrarily large $L$ forces
+\eqref{eq:critical-threshold}; equality is exactly the zero exponent in this
+last power.
+\end{proof}
+
+\begin{remark}[necessary is not sufficient]\label{rem:not-sufficient}
+The threshold in Proposition~\ref{prop:critical-exponent} is sufficient only
+for preventing the \emph{constant-sector} lower bound from diverging.  Calling
+$\sigma=(d-2)/2$ necessary and sufficient for the full gate would silently add
+scale neutrality as a hypothesis and would ignore the kernel exhibited below.
+\end{remark}
+
+\begin{definition}[critical full-space gate]\label{def:gate}
+In $d=4$, fix $N'\ge1$, $N_c\ge2$, and the adjoint-model parameter defining
+the flat maps.  The gate asserts that there is a number $\CP>0$ such that, for
+every integer $L\ge1$ and every fine one-cochain $A$,
+\begin{equation}\label{eq:gate}
+ \norm{A}^2\le\CP\left(\ip{A}{K_0A}+\norm{LQ_LA}^2\right).
+\end{equation}
+\end{definition}
+
+\begin{definition}[postconditioned full-space gate]\label{def:postgate}
+Fix the same parameters and an arbitrary family $(T_L)_{L\ge1}$ of continuous
+linear coarse-space endomorphisms.  The postconditioned gate asserts that
+there is one $\CP>0$, chosen after the family but before the scale, such that
+for every $L\ge1$ and every fine one-cochain $A$,
+\begin{equation}\label{eq:postgate}
+ \norm{A}^2\le\CP\left(\ip{A}{K_0A}+\norm{T_LQ_LA}^2\right).
+\end{equation}
+The critical scalar gate is the special case $T_L=LI$ in $d=4$.
+\end{definition}
+
+\begin{definition}[factorized full-space gate]\label{def:factorgate}
+Fix the same parameters and an arbitrary family of scalar functionals
+\[
+ \Phi_L:\{\text{coarse one-cochains at side }N'\}\longrightarrow\R,
+ \qquad \Phi_L(0)=0.
+\]
+The factorized gate asserts that there is one $\CP>0$, chosen after the family
+but before the scale, such that for every $L\ge1$ and every fine one-cochain
+$A$,
+\begin{equation}\label{eq:factorgate}
+ \norm{A}^2\le\CP\left(\ip{A}{K_0A}+\Phi_L(Q_LA)\right).
+\end{equation}
+No linearity, continuity, positivity, or growth hypothesis on $\Phi_L$ is
+needed for the no-go below.  If ``penalty'' is reserved for nonnegative
+functionals, that narrower class is of course included.  Definition
+\ref{def:postgate} is recovered by $\Phi_L(B)=\norm{T_LB}^2$.
+\end{definition}
+
+\begin{remark}[meaning of volume-uniform]\label{rem:volume}
+The coarse side $N'$ is arbitrary but fixed inside one instance of the gate.
+The family $(T_L)$ or $(\Phi_L)$ and $\CP$ may depend on $N'$, $N_c$, and the
+fixed adjoint model, but not on the subsequently quantified $L$.  The fine volume $(LN')^4$
+then varies and the same $\CP$ must work for all of it.  This paper does not call a bound
+``volume-uniform'' merely because it is uniform as $N'\to\infty$ at fixed
+$L$; that is a different quantifier statement.
+\end{remark}
+
+\section{The block-periodic Fourier witness}
+
+Let
+\[
+ \zeta_L=\exp(2\pi i/L),\qquad L\ge2.
+\]
+Then $\zeta_L^L=1$, $\zeta_L\ne1$, and the finite geometric sum gives
+\begin{equation}\label{eq:rootsum}
+ \sum_{r=0}^{L-1}\zeta_L^r=0.
+\end{equation}
+Choose orthonormal vectors $u_0,u_1\in E_{N_c}$, possible because
+$N_c^2-1\ge3$, and define the real-linear isometry
+\[
+ \iota:\C\longrightarrow E_{N_c},\qquad
+ \iota(a+ib)=au_0+bu_1.
+\]
+For $m\in\Z/(LN')\Z$, define the block-periodic internal profile
+\begin{equation}\label{eq:profile}
+ \phi_L(m)=\iota\!\left(\zeta_L^{\,m\bmod L}\right).
+\end{equation}
+It has unit norm and exact zero mean in every length-$L$ block.
+
+Choose distinct directions $i\ne j$ and set
+\begin{equation}\label{eq:witness}
+ A_L(x,\mu)=
+ \begin{cases}
+ \phi_L(x_j),&\mu=i,\\
+ 0,&\mu\ne i.
+ \end{cases}
+\end{equation}
+The field points in direction $i$ and varies only in the transverse direction
+$j$.
+
+\begin{lemma}[norm and block kernel]\label{lem:norm-q}
+For every $L\ge2$ and $N'\ge1$,
+\begin{equation}\label{eq:norm-q}
+ \norm{A_L}^2=(LN')^d,
+ \qquad Q_LA_L=0.
+\end{equation}
+Consequently $(T_LQ_L)A_L=0$ for every linear postconditioner $T_L$.
+More generally, $\Phi_L(Q_LA_L)=0$ for every scalar functional with
+$\Phi_L(0)=0$.
+\end{lemma}
+
+\begin{proof}
+Only direction-$i$ bonds contribute to the norm, one at each fine site, and
+$\norm{\phi_L(m)}=1$.  For the block map, a coarse bond outside direction $i$
+sees only zero components.  In direction $i$, line shifts preserve $x_j$.
+After the line sum is factored out, the sum over the within-block $j$-offset
+is~\eqref{eq:rootsum}.  This cancellation occurs separately in every source
+block, hence for every $N'$.
+\end{proof}
+
+\begin{lemma}[transverse divergence]\label{lem:div}
+At the trivial background,
+\[
+ \delta A_L=0.
+\]
+\end{lemma}
+
+\begin{proof}
+Only the direction-$i$ component enters.  That component depends only on
+$x_j$ and is invariant under forward and backward shifts in direction $i$.
+\end{proof}
+
+The witness therefore lies simultaneously in the exact kernel of the block
+map and the flat gauge-constraint kernel.  Its remaining energy is purely
+curvature energy.
+
+\section{Exact first-mode energy}
+
+Define
+\begin{equation}\label{eq:lambda}
+ \lambda_L=\lvert\zeta_L-1\rvert^2.
+\end{equation}
+For every $r$, multiplication by the unit complex number $\zeta_L^r$ gives
+\begin{equation}\label{eq:jump}
+ \norm{\iota(\zeta_L^r)-\iota(\zeta_L^{r+1})}^2
+ =\lvert1-\zeta_L\rvert^2=\lambda_L,
+\end{equation}
+including the periodic jump $r=L-1$ because $\zeta_L^L=1$.  Elementary
+trigonometry yields
+\begin{equation}\label{eq:sin}
+ \lambda_L=2-2\cos(2\pi/L)
+ =4\sin^2(\pi/L)\le\frac{4\pi^2}{L^2}.
+\end{equation}
+
+\begin{proposition}[exact flat Hodge energy]\label{prop:energy}
+For the transverse witness~\eqref{eq:witness},
+\begin{equation}\label{eq:energy}
+ \ip{A_L}{K_0A_L}=(LN')^d\lambda_L.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Lemma~\ref{lem:div} removes the divergence term in~\eqref{eq:hodge}.  In the
+plaquette curl, every direction pair other than the pair containing $i$ and
+$j$ vanishes: either the field component is zero or its profile is unchanged
+by the shift.  Each $(i,j)$ plaquette contributes the common value
+$\lambda_L$ from~\eqref{eq:jump}.  There is one contributing geometric
+plaquette at each of the $(LN')^d$ fine sites under the convention used by
+$D_1$.  Summation gives~\eqref{eq:energy}.
+\end{proof}
+
+\begin{theorem}[postconditioner-invariant Rayleigh quotient]\label{thm:rayleigh}
+For every continuous linear coarse-space endomorphism $T_L$,
+\begin{equation}\label{eq:rayleigh}
+ \frac{\ip{A_L}{H_{L,T}A_L}}{\norm{A_L}^2}
+ =\lambda_L=4\sin^2(\pi/L).
+\end{equation}
+Thus the best full-space coercivity constant $c_L$ of $H_{L,T}$ obeys
+\begin{equation}\label{eq:coerc-upper}
+ c_L\le\lambda_L\le\frac{4\pi^2}{L^2}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Linearity gives $T_L0=0$, so Lemma~\ref{lem:norm-q} removes the block term
+from~\eqref{eq:H}, irrespective of $\norm{T_L}$.  Divide
+Proposition~\ref{prop:energy} by the positive norm in
+Lemma~\ref{lem:norm-q}; the entire volume factor cancels.
+\end{proof}
+
+\section{A spectral ladder, not an isolated witness}
+
+The same cancellation is available at every nonzero within-block frequency.
+For $1\le r<L$ and $c\in\C$, define the real one-cochain
+\begin{equation}\label{eq:higher-mode}
+ A_{r,c}(x,\mu)=
+ \begin{cases}
+  \iota\!\left(c\exp(2\pi i r x_j/L)\right),&\mu=i,\\
+  0,&\mu\ne i,
+ \end{cases}
+\end{equation}
+and let $E_r=\{A_{r,c}:c\in\C\}$.  Each $E_r$ is a real two-dimensional
+subspace.  The root-of-unity sum, transverse-divergence calculation, and
+plaquette calculation used above give
+\begin{equation}\label{eq:higher-identities}
+ Q_LA_{r,c}=0,\qquad \delta A_{r,c}=0,\qquad
+ \ip{A_{r,c}}{K_0A_{r,c}}=\lambda_{r,L}\norm{A_{r,c}}^2,
+ \quad
+ \lambda_{r,L}=4\sin^2(\pi r/L).
+\end{equation}
+
+\begin{theorem}[growing low-energy multiplicity]\label{thm:ladder}
+Let $L\ge3$ and
+$1\le R\le\lfloor(L-1)/2\rfloor$.  For every continuous linear
+postconditioner $T_L$, the spaces $E_1,\ldots,E_R$ are mutually orthogonal,
+and
+\[
+ S_R:=E_1\oplus\cdots\oplus E_R\subseteq\ker Q_L,
+ \qquad \dim_{\R}S_R=2R.
+\]
+Every nonzero $A\in S_R$ satisfies
+\begin{equation}\label{eq:subspace-rayleigh}
+ \frac{\ip{A}{H_{L,T}A}}{\norm{A}^2}
+ \le\lambda_{R,L}
+ =4\sin^2(\pi R/L)
+ \le\frac{4\pi^2R^2}{L^2}.
+\end{equation}
+Consequently, if
+$\mu_1(H_{L,T})\le\mu_2(H_{L,T})\le\cdots$ are the eigenvalues counted with
+multiplicity, then
+\begin{equation}\label{eq:minmax}
+ \mu_{2R}(H_{L,T})\le\frac{4\pi^2R^2}{L^2}.
+\end{equation}
+In particular, for every $0<\alpha<1$ and all sufficiently large $L$, the
+choice $R=\lfloor L^\alpha\rfloor$ gives at least
+$2\lfloor L^\alpha\rfloor$ eigenvalues bounded by
+$4\pi^2L^{-2(1-\alpha)}$.
+\end{theorem}
+
+\begin{proof}
+The internal embedding satisfies
+$\ip{\iota(z)}{\iota(w)}=\operatorname{Re}(z\overline w)$.  Summing the inner
+product of an $r$-profile and an $s$-profile over $x_j$ therefore reduces, for
+$r\ne s$, to the real part of a nontrivial root-of-unity sum and vanishes.
+This proves orthogonality and the dimension count.  Equations
+\eqref{eq:higher-identities} show that the block term vanishes and that the
+quadratic form is diagonal on the orthogonal sum.  Since
+$r\mapsto\sin(\pi r/L)$ is increasing on the stated range, the Rayleigh
+quotient of any vector in $S_R$ is at most $\lambda_{R,L}$.  The last
+inequality in~\eqref{eq:subspace-rayleigh} is $\sin t\le t$.  The finite
+dimensional min--max principle applied to the $2R$-dimensional test subspace
+gives~\eqref{eq:minmax}.  Finally,
+$\lfloor L^\alpha\rfloor\le(L-1)/2$ for all sufficiently large $L$, and
+$R^2/L^2\le L^{-2(1-\alpha)}$.
+\end{proof}
+
+Theorem~\ref{thm:ladder} concerns the linear self-adjoint operator
+$H_{L,T}$.  For a nonlinear factorized functional $\Phi_L$, an eigenvalue
+statement need not make sense; nevertheless, every vector in every $E_r$ is
+still erased by $Q_L$, so the domination inequality fails already on $E_1$.
+The multiplicity theorem is analytic and is not part of the Lean surface
+claimed below.
+
+\section{No uniform critical coercivity}
+
+\begin{theorem}[factor-through-kernel all-scales no-go]\label{thm:nogo}
+Fix $N'\ge1$, $N_c\ge2$, the adjoint-model parameter defining the flat
+operators, and any family $(\Phi_L)_{L\ge1}$ of scalar functionals on the
+coarse field space with $\Phi_L(0)=0$.  The factorized full-space gate in
+Definition~\ref{def:factorgate} is false.  More quantitatively, at every
+$L\ge2$ any constant valid at that scale must satisfy
+\begin{equation}\label{eq:CP-lower}
+ \CP(L)\ge\frac{1}{\lambda_L}
+ \ge\frac{L^2}{4\pi^2}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Insert $A_L$ into~\eqref{eq:factorgate}.  By Lemma~\ref{lem:norm-q} and
+Proposition~\ref{prop:energy},
+\[
+ (LN')^4\le\CP(LN')^4\lambda_L.
+\]
+The volume factor is positive, so $1\le\CP\lambda_L$, proving the first
+inequality in~\eqref{eq:CP-lower}; the second follows from~\eqref{eq:sin}.
+If one $\CP$ worked for all $L$, it would force $L^2\le4\pi^2\CP$ for every
+$L$, a contradiction.
+\end{proof}
+
+\begin{corollary}[arbitrary linear postconditioning]\label{cor:post}
+The postconditioned gate in Definition~\ref{def:postgate} is false for every
+family of continuous linear maps $T_L$, even if their norms diverge with $L$.
+\end{corollary}
+
+\begin{proof}
+Apply Theorem~\ref{thm:nogo} to $\Phi_L(B)=\norm{T_LB}^2$.
+\end{proof}
+
+\begin{corollary}[critical and supercritical scalar normalizations]\label{cor:scalar}
+No real scalar sequence $s_L$ can restore full-space uniform coercivity for
+$K_0+(s_LQ_L)^*(s_LQ_L)$.  In particular, neither the critical choice
+$s_L=L^{(d-2)/2}$ nor any faster scalar growth repairs the full-space gate.
+\end{corollary}
+
+\begin{proof}
+Take $T_L=s_LI$ in Corollary~\ref{cor:post}.
+\end{proof}
+
+The point is stronger than ``the critical exponent is insufficient.''  Even
+an arbitrary rule depending only on the retained coarse variable acts after
+the witness has already been erased.  The proof uses only $\Phi_L(0)=0$;
+linearity was never the essential hypothesis.
+
+The theorem isolates the lower spectral edge as the obstruction.  Separate
+finite-range, kernel-amplitude, ball-count, and block-metric localization
+estimates are not invalidated.  What fails is the positive scale-independent
+coercivity input required to turn those estimates into a uniform inverse or
+inverse-square-root bound on the full domain.
+
+\section{Exact repair budget on the missed channel}
+
+The kernel theorem says precisely what postconditioning cannot do.  It also
+allows a quantitative statement about changes made \emph{before} that kernel
+or outside the block penalty.  Let $\widetilde Q_L$ be any linear replacement
+for $Q_L$, let $T_L$ be any continuous linear postconditioner, and let $V_L$
+be a positive semidefinite self-adjoint operator on fine one-cochains.  Set
+\begin{equation}\label{eq:repaired-H}
+ \widetilde H_L=K_0+(T_L\widetilde Q_L)^*(T_L\widetilde Q_L)+V_L
+\end{equation}
+and define the two dimensionless lifts
+\begin{equation}\label{eq:lifts}
+ \varepsilon_L=
+ \frac{\norm{T_L\widetilde Q_LA_L}}{\norm{A_L}},
+ \qquad
+ \nu_L=\frac{\ip{A_L}{V_LA_L}}{\norm{A_L}^2}\ge0.
+\end{equation}
+
+\begin{theorem}[sharp witness-channel repair criterion]\label{thm:repair}
+For every $L\ge2$,
+\begin{equation}\label{eq:repair-identity}
+ \frac{\ip{A_L}{\widetilde H_LA_L}}{\norm{A_L}^2}
+ =\lambda_L+\varepsilon_L^2+\nu_L.
+\end{equation}
+Consequently, if one constant $\CP>0$ gives full-space coercivity for
+$\widetilde H_L$ at every scale, then
+\begin{equation}\label{eq:repair-necessary}
+ \varepsilon_L^2+\nu_L\ge \CP^{-1}-\lambda_L
+ \quad(L\ge2),
+ \qquad
+ \liminf_{L\to\infty}(\varepsilon_L^2+\nu_L)\ge\CP^{-1}.
+\end{equation}
+Conversely, uniform coercivity restricted to the one-dimensional spaces
+$\operatorname{span}\{A_L\}$ holds if and only if
+\begin{equation}\label{eq:repair-iff}
+ \inf_{L\ge2}(\lambda_L+\varepsilon_L^2+\nu_L)>0.
+\end{equation}
+This equivalence is only a witness-sector statement; it is not sufficient for
+coercivity on the full one-cochain space.
+\end{theorem}
+
+\begin{proof}
+Expand the three quadratic terms in~\eqref{eq:repaired-H}, use
+Proposition~\ref{prop:energy}, and divide by $\norm{A_L}^2$ to obtain
+\eqref{eq:repair-identity}.  Testing a full-space Poincar\'e estimate on
+$A_L$ gives $1\le\CP(\lambda_L+\varepsilon_L^2+\nu_L)$, hence
+\eqref{eq:repair-necessary} because $\lambda_L\to0$.  On the line spanned by
+$A_L$, homogeneity makes the displayed Rayleigh quotient the unique quotient,
+so a uniform lower bound is equivalent to~\eqref{eq:repair-iff}.
+\end{proof}
+
+The exact identity~\eqref{eq:repair-identity} and the finite-scale necessary
+budget obtained by testing the full-space estimate are machine checked in
+Lean.  The asymptotic liminf statement and the witness-line equivalence
+\eqref{eq:repair-iff} are elementary analytic consequences; no full-space
+sufficiency claim is made or smuggled into the hypotheses.
+
+The formula distinguishes three logically different repairs.  A
+postconditioner after the original $Q_L$ has $\varepsilon_L=0$ exactly and is
+therefore powerless.  A new pre-kernel measurement may give
+$\varepsilon_L>0$.  An additional Hessian contributes $\nu_L$.  Any proposed
+interacting continuation must prove, rather than assume, that their combined
+contribution stays uniformly positive on this explicit family.
+
+There is a useful scaling corollary.  Write
+$\widetilde Q_L=Q_L+R_L$, take the constant-sector critical scalar
+$T_L=L^{(d-2)/2}I$, and put
+\begin{equation}\label{eq:leakage}
+ \eta_L=\frac{\norm{R_LA_L}}{\norm{A_L}}.
+\end{equation}
+Because $Q_LA_L=0$, the block contribution is exactly
+$\varepsilon_L^2=L^{d-2}\eta_L^2$.  In four dimensions, with $V_L=0$, a
+uniform repair of even this one channel requires
+\begin{equation}\label{eq:d4-leakage}
+ \liminf_{L\to\infty}L^2\eta_L^2>0;
+\end{equation}
+leakage $o(L^{-1})$ cannot work.  This exposes the scale at which a changed
+block observable must see the missing Fourier mode.  It does not manufacture
+such an observable or establish its gauge covariance.
+
+\section{Relation to prior gauge-RG constructions}
+
+Ba\l aban's propagator papers study the Gaussian vector-field theory underlying
+lattice gauge renormalization and then extend the analysis to operators with
+restrictions at several scales and to iterated renormalization
+transformations~\cite{BalabanI,BalabanII}.  His separate treatment of averaging
+operations studies their regularity on selected classes of gauge fields and
+gauge transformations~\cite{BalabanAveraging}.  In that program, block
+averages are not used in isolation: gauge conditions, restricted domains,
+minimizers, and background-dependent propagators are part of the construction.
+Modern expositions of covariant axial gauge likewise emphasize an axial
+restriction adapted to block averaging~\cite{DimockAxial}.
+
+There is therefore no conflict between classical positivity statements on a
+gauge-fixed or otherwise restricted subspace and Theorem~\ref{thm:nogo}.  The
+claims have different domains.  The exact delta established here is:
+\begin{quote}
+For the explicit finite periodic line-integral map~\eqref{eq:Q}, the flat
+full-space form has block-periodic transverse Fourier families in the
+simultaneous kernels of $Q_L$ and the flat divergence.  Therefore every term
+$\Phi_L(Q_LA)$ with $\Phi_L(0)=0$ misses them exactly.  In the linear case,
+$K_0+(T_LQ_L)^*(T_LQ_L)$ has at least $2R$ eigenvalues no larger than
+$4\pi^2R^2/L^2$ for $1\le R\le\lfloor(L-1)/2\rfloor$, at every $N'\ge1$.
+\end{quote}
+This is a no-go for that unrestricted coercivity proposal, not a priority
+claim over the general observation that gauge fields require gauge fixing,
+and not a no-go for Ba\l aban's restricted propagators.  Indeed, the result
+explains why a domain restriction or quotient is mathematically load-bearing
+rather than cosmetic.
+
+\section{Machine-checked realization}
+
+The Lean~4 development is an eight-module theorem chain, plus three focused
+oracle files, headed by
+\begin{center}
+\codepath{YangMills/RG/PhysicalCriticalRescalingFourierFactorizedRepair.lean}.
+\end{center}
+Table~\ref{tab:map} maps the analytic statements to selected declarations.
+
+The constant-sector norm identity and lower bound used in
+Proposition~\ref{prop:critical-exponent} are formalized in
+\codepath{PhysicalPoincareCriticalRescaling.lean}; the specialization to a
+general real exponent $\sigma$ is the elementary power comparison displayed
+in the proof.  The Fourier chain then tests the sector that the constant-field
+calculation cannot see.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.35\textwidth}
+                  >{\raggedright\arraybackslash}p{0.55\textwidth}@{}}
+\toprule
+Mathematical content & Lean declaration \\
+\midrule
+Root-of-unity block cancellation &
+\codepath{sum_blockFourierRoot_pow_eq_zero} \\
+Lie-valued cancellation in every block &
+\codepath{sum_blockFourierProfile_block_eq_zero} \\
+Eigenvalue bound $\lambda_L\le(2\pi/L)^2$ &
+\codepath{blockFourierEigenvalue_le} \\
+Exact block-map kernel &
+\codepath{flatBlockConstraintQCLM_blockFourierMode_eq_zero} \\
+Zero transverse divergence &
+\codepath{gaugeConstraintQCLM_blockFourierModeCochain_eq_zero_of_ne} \\
+Exact Hodge quadratic form &
+\codepath{flatGaugeHodgeK0_inner_blockFourierModeCochain_of_ne} \\
+Exact Rayleigh quotient &
+\codepath{blockFourierMode_rayleigh_eq} \\
+Necessary bound $1\le\CP\lambda_L$ &
+\codepath{criticalRescaledFlatPoincare_fourier_lower_bound} \\
+All-scales no-go &
+\codepath{volumeUniformCriticalRescaledFlatPoincareGate_fourier_false} \\
+Arbitrary-postconditioner lower bound &
+\codepath{postconditionedFlatPoincare_fourier_lower_bound} \\
+Postconditioned all-scales no-go &
+\codepath{volumeUniformPostconditionedFlatPoincareGate_fourier_false} \\
+Arbitrary factorized-penalty lower bound &
+\codepath{factorizedFlatPoincare_fourier_lower_bound} \\
+Factor-through-kernel all-scales no-go &
+\codepath{volumeUniformFactorizedFlatPoincareGate_fourier_false} \\
+Exact repaired witness quotient &
+\codepath{repairedFlatPoincare_blockFourier_rayleigh_eq} \\
+Necessary repaired full-space budget &
+\codepath{repairedFlatPoincare_blockFourier_budget} \\
+\bottomrule
+\end{tabular}
+\caption{Theorem-to-artifact map.}
+\label{tab:map}
+\end{table}
+
+The formal result uses the exact norm definition
+$\lambda_L=\norm{\zeta_L-1}^2$ and proves the bound
+$\lambda_L\le(2\pi/L)^2$.  Equation~\eqref{eq:sin} is the elementary
+closed-form identification of that norm.  The original focused oracle
+\begin{center}
+\codepath{YangMills/RG/PhysicalCriticalRescalingFourierNoGoOracle.lean}
+\end{center}
+reports exactly
+\[
+ [\lean{propext},\ \lean{Classical.choice},\ \lean{Quot.sound}]
+\]
+for all nine audited declarations, with no project axiom and no
+\lean{sorryAx}.  A second focused oracle,
+\begin{center}
+\codepath{YangMills/RG/PhysicalCriticalRescalingFourierPostconditionedNoGoOracle.lean},
+\end{center}
+reports the same list for the block-kernel theorem, the exact Hodge energy,
+the eigenvalue estimate, and both postconditioned theorems.  The third oracle,
+\begin{center}
+\codepath{YangMills/RG/PhysicalCriticalRescalingFourierFactorizedRepairOracle.lean},
+\end{center}
+reports the same list for six declarations: the reused exact kernel and Hodge
+energy, the factorized lower bound and all-scales no-go, and the repaired
+Rayleigh identity and necessary budget.
+
+\subsection*{Immutable source and reproduction}
+
+The original seven-file theorem source is fixed at repository commit
+\begin{center}
+\lean{f21539ed0bb880a04078de369bf5cbf063f7b101}.
+\end{center}
+Its former head theorem file has LF-normalized SHA-256
+\begin{center}
+\lean{5F0890D14EA6981CBE6459605A634386ED2C844F6D03A6947E33B34250E2F5AE}.
+\end{center}
+The v1.4 factorized-and-repair extension has 12,064 LF bytes and SHA-256
+\begin{center}
+\lean{D7586D24D7B7E9050001AC5A8E4A8061A3EE3F7D441C5373186EBAEB7B97DE38},
+\end{center}
+and its 537-byte focused oracle has SHA-256
+\begin{center}
+\lean{6334EE25A6A0D8778A91CC49269BC92563C327DD1BD0E5CA9CF477F5E90738E1}.
+\end{center}
+The companion packet
+\codepath{critical_rescaling_fourier_no_go_sources_v1.4.zip} has SHA-256
+\begin{center}
+\lean{EF5501145398B5F672DCDFB66206C1F5F280F2C61B231D2C9AC0E1A4E693F82A}.
+\end{center}
+It contains the eight theorem modules, all three focused oracles, the v1.4
+manifest and audit record, the Lean toolchain, and the pinned Lake files.  The
+toolchain is Lean \lean{v4.29.0-rc6}.  The pinned Mathlib revision is
+\begin{center}
+\lean{07642720480157414db592fa85b626dafb71355b}.
+\end{center}
+From the repository root, run
+\begin{quote}
+\footnotesize
+\lean{lake build}\\
+\codepath{YangMills.RG.PhysicalCriticalRescalingFourierFactorizedRepair}
+\\[0.3em]
+\lean{lake env lean}\\
+\codepath{YangMills/RG/PhysicalCriticalRescalingFourierFactorizedRepairOracle.lean}
+\end{quote}
+The v1.4 reproduction on August 4, 2026 used a Colab Pro+ CPU/high-RAM runtime
+(50.99~GB visible RAM) with no GPU, under the visibly confirmed account
+\lean{lluiseriksson@gmail.com}.  A disconnected preparation reconstructed the
+public base \lean{04f87347f3e4d46a05e77bc1c70855794e111477} plus 17
+LF-normalized frozen bodies, checking every body hash before execution.  Lake
+update took 124.412 seconds and cache retrieval 6.507 seconds.  The first
+target pass materialized the 8,185 imported jobs and exposed a target-local
+arithmetic proof defect; the judge and criterion were not changed.  After two
+source-only proof repairs, the final 12,064-byte body was frozen at the hash
+above.  The final target invocation succeeded with 8,186 jobs in 18.835
+seconds and materialized the target \lean{.olean}.  The focused oracle then
+exited successfully in 14.953 seconds and returned exactly
+$[\lean{propext},\lean{Classical.choice},\lean{Quot.sound}]$ for all six
+declarations.  The final frozen run spanned
+19:07:36.898702--19:08:10.693578 UTC; the full reconstruction audit spanned
+18:56:52.878156--19:08:10.693578 UTC.  The runtime was visibly open no later
+than 18:48:10.965571 UTC and was disconnected and deleted immediately after
+the audit.  The only two warnings were pre-existing style lints in imported
+files.  A local code-token scan found no \lean{sorry}, \lean{admit}, or project
+\lean{axiom} in the new source.  The notebook is archived at
+\href{https://colab.research.google.com/drive/1iXBNBeBEGr7O3pEbuRtac1VE1mMHX0Lh}
+{Colab audit notebook 1iXBNBeBEGr7O3pEbuRtac1VE1mMHX0Lh}.  This is
+reproduction evidence and a frozen object for external audit, not an external
+certification.
+
+\section{What remains open}
+
+\paragraph{Restricted or quotient sector.}
+A repaired domain may remove or quotient the obstructive transverse family,
+but the restriction must be physically justified and stable under the
+renormalization operations.  Coercivity on that new domain remains to be
+proved.
+
+\paragraph{Additional positive Hessian.}
+An interacting Wilson Hessian or another positive term $V_L$ could lift the
+family.  Theorem~\ref{thm:repair} gives its exact required contribution on
+this channel, but establishing a lower bound for the physical interacting
+Hessian remains open.  Such a bound is not a consequence of the flat
+calculation and is not assumed in the no-go theorem.
+
+\paragraph{Changed block observable.}
+A map $\widetilde Q_L$ that measures information discarded by $Q_L$ may lift
+the witness.  Equation~\eqref{eq:d4-leakage} gives the necessary four-dimensional
+leakage scale for the critical scalar normalization.  Constructing a local,
+gauge-covariant, renormalization-compatible map with this property and proving
+full-space coercivity remain open.
+
+\paragraph{No continuum conclusion.}
+The theorem is finite-dimensional.  It proves no positive coercivity for an
+interacting theory, no infinite-volume measure, no continuum limit, no
+Osterwalder--Schrader reconstruction, and no Yang--Mills mass gap.
+
+\section{Conclusion}
+
+Critical scalar rescaling can correct a normalization mismatch but cannot
+remove an exact kernel; neither can any functional of the block variable
+performed after that kernel has formed, provided it vanishes at the coarse
+zero field.  The constant-sector wall selects
+$\sigma=(d-2)/2$ only when exact scale neutrality is required; uniformity of
+that sector alone allows every larger exponent.  None of these scalar choices
+acts on $\ker Q_L$.  The first within-block Fourier phase produces, at
+every $L\ge2$ and every positive coarse side, a transverse divergence-free
+cochain annihilated by $Q_L$.  Its exact Rayleigh quotient is
+$4\sin^2(\pi/L)$, so the best full-space spectral lower bound is at most
+$4\pi^2/L^2$.  Higher frequencies give a $2R$-dimensional orthogonal test
+space below $4\pi^2R^2/L^2$, hence a growing low-energy spectral cluster in
+the linear problem.  The current flat full-domain gate is therefore
+impossible for every factorized penalty $\Phi_L(Q_LA)$ with $\Phi_L(0)=0$;
+continuity, linearity, positivity, and bounded growth play no role.
+
+The negative result is operational: it identifies the precise input that
+must change.  A successful continuation must justify a different domain,
+measure the missing channel before postconditioning, or add an operator that
+supplies uniform energy to the explicitly exhibited Fourier sector.  The
+machine-checked repair identity and necessary budget quantify this last
+requirement without assuming full-space sufficiency.
+
+\appendix
+\section{The square-wave precursor}
+
+For even $L=2M$, the real profile that equals $+1$ on the first half of each
+block and $-1$ on the second half also has zero block mean.  Its two jumps per
+block have squared magnitude four, giving total one-dimensional energy
+$8N'$ and Rayleigh quotient $8/L$.  This witness is useful because it requires
+only a single internal vector and elementary interface counting.  The Fourier
+witness is stronger in three ways: it works for every $L\ge2$, it identifies
+the first periodic eigenmode, and it improves the quantitative obstruction
+from $8/L$ to $4\sin^2(\pi/L)=O(L^{-2})$.
+
+\begin{thebibliography}{9}
+
+\bibitem{BalabanI}
+T.~Ba\l aban,
+\emph{Propagators and renormalization transformations for lattice gauge
+theories. I},
+Communications in Mathematical Physics \textbf{95} (1984), 17--40.
+\href{https://doi.org/10.1007/BF01215753}{doi:10.1007/BF01215753}.
+
+\bibitem{BalabanII}
+T.~Ba\l aban,
+\emph{Propagators and renormalization transformations for lattice gauge
+theories. II},
+Communications in Mathematical Physics \textbf{96} (1984), 223--250.
+\href{https://doi.org/10.1007/BF01240221}{doi:10.1007/BF01240221}.
+
+\bibitem{BalabanAveraging}
+T.~Ba\l aban,
+\emph{Averaging operations for lattice gauge theories},
+Communications in Mathematical Physics \textbf{98} (1985), 17--51.
+\href{https://doi.org/10.1007/BF01211042}{doi:10.1007/BF01211042}.
+
+\bibitem{DimockAxial}
+J.~Dimock,
+\emph{Covariant axial gauge},
+Letters in Mathematical Physics \textbf{105} (2015), 959--987.
+\href{https://doi.org/10.1007/s11005-015-0763-0}
+{doi:10.1007/s11005-015-0763-0}.
+
+\bibitem{CombesThomas}
+J.~M.~Combes and L.~Thomas,
+\emph{Asymptotic behaviour of eigenfunctions for multiparticle
+Schr\"odinger operators},
+Communications in Mathematical Physics \textbf{34} (1973), 251--270.
+\href{https://doi.org/10.1007/BF01646473}{doi:10.1007/BF01646473}.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+Automated Deduction -- CADE 28, LNCS 12699 (2021), 625--635.
+\href{https://doi.org/10.1007/978-3-030-79876-5_37}
+{doi:10.1007/978-3-030-79876-5\_37}.
+
+\bibitem{mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+Proceedings of CPP 2020 (2020), 367--381.
+\href{https://doi.org/10.1145/3372885.3373824}
+{doi:10.1145/3372885.3373824}.
+
+\end{thebibliography}
+
+\end{document}

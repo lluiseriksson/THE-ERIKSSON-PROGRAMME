@@ -1,0 +1,10 @@
+import YangMills.RG.PhysicalCriticalRescalingNoGoAllCoarse
+
+/-! Focused axiom audit for the all-coarse-volume critical no-go. -/
+
+#print axioms YangMills.RG.flatBlockConstraintQCLM_blockPeriodicSquareMode_eq_zero
+#print axioms YangMills.RG.criticalScaledBlockConstraintQCLM_blockPeriodicSquareMode_eq_zero
+#print axioms YangMills.RG.gaugeConstraintQCLM_blockPeriodicSquareModeCochain_eq_zero_of_ne
+#print axioms YangMills.RG.norm_sq_covariantD1CLM_blockPeriodicSquareModeCochain_of_ne
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner_blockPeriodicSquareModeCochain_of_ne
+#print axioms YangMills.RG.volumeUniformCriticalRescaledFlatPoincareGate_false

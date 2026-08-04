@@ -293,6 +293,93 @@ gives a Rayleigh numerator at most `9/L` times the norm and forces
 map and unweighted coarse norm; rescaled/weighted variants are different
 gates and remain outside this theorem.
 
+**W-4 — critical rescaling audit: DONE, gate remains OPEN (2026-08-02,
+ledger Addendum 575, `PhysicalPoincareCriticalRescaling.lean`).**  With an
+explicit scalar normalization `s`, the constant sector forces
+`L^d ≤ CP ‖s‖² L²`; in `d = 4`, `L² ≤ CP ‖s‖²`.  The critical choice `s = L`
+is exactly isometric on constants and reduces their necessary condition to
+`1 ≤ CP`, so the W-1 constant witness no longer refutes the rescaled gate.
+This is not the missing all-mode theorem: the new
+`VolumeUniformCriticalRescaledFlatPoincareGate` is defined but uninhabited.
+Next positive obligation: control every fluctuation mode for `L Q`, or prove
+coercivity directly for the interacting Wilson Hessian.
+
+**W-4b — scale-adapted CT audit: DONE, critical-scale operator input OPEN
+(2026-08-02, ledger Addendum 576,
+`PhysicalCriticalRescalingCTAudit.lean`).**  The existing locality certificate
+has fine range `R_L = 3L`.  With the candidate critical-scale Gram amplitude
+`M_L = L^-4`, the four-dimensional ball growth cancels uniformly:
+`M_L N_{R,L} <= 16384`.  The explicit choice
+`tau = log(1 + c/(2*16384))/3`, `theta_L = tau/L` satisfies the CT budget with
+`theta_L R_L = 3 tau`.  Thus the scientifically appropriate endpoint is
+uniform exponential decay in block distance, not a fixed fine-bond rate.
+Still open at this checkpoint: prove the critical-scale `L^-4` kernel bound
+for the actual critical Gram operator and inhabit the all-mode coercivity
+gate.
+
+**W-4c — critical-scale Gram kernel: DONE (2026-08-02, ledger Addendum 577,
+`PhysicalCriticalRescalingKernel.lean`).**  The retained block normalization
+gives `‖Q delta_p v‖ <= L^-d L ‖v‖`; in four dimensions the critical map
+therefore obeys `‖(LQ) delta_p v‖ <= L^-2 ‖v‖`.  The actual Gram operator
+`(LQ)^*(LQ)` now has the proved entrywise majorant `L^-4` and fine-metric
+range `3L`.  Combined with W-4b, the kernel/ball/range/tilt side is closed.
+At this checkpoint the remaining candidate input was the volume-uniform
+all-mode coercivity gate; W-4d below audits whether its present domain permits
+such a theorem.
+
+**W-4d — critical full-space gate at `N' = 1`: CLOSED NEGATIVELY
+(2026-08-02, ledger Addendum 578,
+`PhysicalCriticalRescalingNoGo.lean`).**  For every even scale `L = 2M` and
+`Nc >= 2`, an explicit transverse square mode lies exactly in `ker(LQ)` and
+has flat-Hodge Rayleigh quotient `8/L`.  Therefore
+`VolumeUniformCriticalRescaledFlatPoincareGate 1 Nc rho` is false.  This is a
+no-go for the combined form `K0 + (LQ)^*(LQ)`, not merely for the Gram term.
+The next positive route must expose a restricted/quotient physical sector or
+add a further positive term (most significantly an interacting Wilson
+Hessian).  Extension of the no-go witness to arbitrary `N'` remains open.
+
+**W-4e — block-periodic no-go for every `N' > 0`: CLOSED NEGATIVELY
+(2026-08-02, ledger Addendum 579,
+`PhysicalCriticalRescalingNoGoAllCoarse.lean`).**  Repeating the transverse
+square profile independently in every `L = 2M` block gives an exact family
+in `ker Q` and in the flat-divergence kernel for every positive coarse side.
+Its curvature energy is
+`8 N' ((L N')^(d-1)) ‖w‖²`, while its norm is
+`(L N')^d ‖w‖²`; hence the Rayleigh quotient is still exactly `8/L`.
+Lean therefore proves
+`¬ VolumeUniformCriticalRescaledFlatPoincareGate N' Nc rho` for all
+`N' > 0` and `Nc >= 2`.  The full-domain flat route is now formally closed,
+not merely at one coarse site.  The live positive alternatives are a
+physically justified restricted/quotient sector or an additional positive
+interacting-Hessian term controlling this transverse family.
+The associated paper is a standalone no-go manuscript under
+`papers/critical-rescaling-no-go-all-coarse/`, not a v0.8 of the CT paper.
+
+**W-4f — Fourier strengthening at every `L >= 2`: CLOSED NEGATIVELY
+(2026-08-02, ledger Addendum 580,
+`PhysicalCriticalRescalingFourierNoGoAllScales.lean`).**  Embedding the first
+complex Fourier phase into a real two-plane of `SUNLieCoord Nc` yields an
+exact block-periodic transverse cochain at every block side, without the
+evenness restriction.  It obeys `Q_L A = 0`, `div A = 0`, and has exact
+Rayleigh quotient
+`lambda_L = ‖exp(2 pi i/L)-1‖^2 <= 4 pi^2/L^2`.  Therefore every putative
+constant for the current full-space gate must satisfy
+`1 <= CP lambda_L`, and the gate is impossible as `L -> infinity` for each
+fixed positive `N'`.  This strengthens the witness and the decay rate; it
+does not change the negative scope or create a continuum/mass-gap result.
+
+**W-4g — characterize the constrained spectral bottom: OPEN, with a
+counterexample guardrail (2026-08-02).**  Do not conjecture that the v1.1
+Fourier quotient `4 sin^2(pi/L)` is automatically the infimum of `K0` on
+`ker Q_L ∩ ker delta`.  For `L = N' = 2`, the transverse blockwise profile
+`(1,-1|-1,1)` has exact quotient `2`, whereas the paper's within-block
+periodic Fourier value is `lambda_2 = 4`.  The correct project is a
+coarse-Bloch decomposition with exact block-sum constraints, followed by
+diagonalization of the constrained within-block matrix and minimization over
+coarse quasi-momentum.  The finite counterexample and the required route are
+recorded in `docs/FOURIER-NOGO-SPECTRAL-GUARDRAIL.md`.  This does not alter
+the v1.1 no-go.
+
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
 coercivity are all three proved for the physical shell".  FALSE as stated:

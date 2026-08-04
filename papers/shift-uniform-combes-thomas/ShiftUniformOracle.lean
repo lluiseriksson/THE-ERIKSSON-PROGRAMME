@@ -1,0 +1,47 @@
+import YangMills.RG.PhysicalCoerciveCombesThomasInverse
+import YangMills.RG.CoerciveCovariancePositiveSqrt
+import YangMills.RG.PhysicalGaugeCovariancePositiveRoot
+import YangMills.RG.StieltjesKernelIntegration
+import YangMills.RG.CoerciveCovarianceStieltjes
+
+/-!
+Focused axiom audit for the thirty-six declarations claimed as formalized in
+`shift_uniform_combes_thomas.tex`.
+-/
+
+#print axioms YangMills.RG.physicalTiltConjCLM_id
+#print axioms YangMills.RG.physicalTiltConjCLM_add_smul_id_sub
+#print axioms YangMills.RG.isCoerciveCLM_add_smul_id
+#print axioms YangMills.RG.norm_physicalTiltConj_add_smul_id_sub_le
+#print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj_add_smul_id
+#print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj_add_smul_id_half
+#print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_of_coercive_add_smul_id
+#print axioms YangMills.RG.finiteDimensionalRealPositiveSqrt_comp_self
+#print axioms YangMills.RG.finiteDimensionalRealPositiveSqrt_isPositive
+#print axioms YangMills.RG.covarianceSqrtOfIsCoerciveCLM_comp_self
+#print axioms YangMills.RG.covarianceSqrtOfIsCoerciveCLM_isPositive
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_positive_covariance
+#print axioms YangMills.RG.norm_covarianceSqrtOfIsCoerciveCLM_le
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_coercive_precision
+#print axioms YangMills.RG.integrableOn_Ioi_inv_add_sq
+#print axioms YangMills.RG.integral_Ioi_inv_add_sq
+#print axioms YangMills.RG.physicalCovarianceKernelBound_stieltjesIntegralOperator
+#print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_stieltjesIntegralOperator
+#print axioms YangMills.RG.eq_of_isPositive_of_comp_self_eq
+#print axioms YangMills.RG.shiftedCovarianceFamily_comp_precision
+#print axioms YangMills.RG.precision_comp_shiftedCovarianceFamily
+#print axioms YangMills.RG.norm_shiftedCovarianceFamily_le
+#print axioms YangMills.RG.shiftedCovarianceFamily_sub
+#print axioms YangMills.RG.continuous_shiftedCovarianceFamily
+#print axioms YangMills.RG.integrableOn_shiftedCovarianceFamily
+#print axioms YangMills.RG.physicalShiftedCovarianceFamily_stieltjes_exponentialKernelBound
+#print axioms YangMills.RG.eigenvalue_pos_of_isCoerciveCLM
+#print axioms YangMills.RG.shiftedCovarianceFamily_apply_of_eigenvector
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_apply_of_eigenvector
+#print axioms YangMills.RG.shiftedCovarianceFamily_isPositive
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_isPositive
+#print axioms YangMills.RG.covarianceOfIsCoerciveCLM_apply_of_eigenvector
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_comp_self
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_eq_covarianceSqrt
+#print axioms YangMills.RG.physicalCovarianceSqrt_exponentialKernelBound_of_shiftUniform
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_shiftUniform

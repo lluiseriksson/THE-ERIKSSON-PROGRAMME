@@ -29315,3 +29315,434 @@ recorded because the record is what the next campaign reads.  Ten versions of a
 paper is exactly when the ledger entry stops feeling urgent and starts being
 necessary.  Written now, after the fact, and dated as such rather than
 back-dated.
+
+## Addendum 570 (2026-08-01, **shift-uniform physical Combes--Thomas resolvents
+and the paper-level Stieltjes root corollary**)
+
+**FORMALIZED DELTA.**  The physical-cochain tilt now proves that scalar identity
+shifts cancel exactly:
+
+    (K + s I)_theta - (K + s I) = K_theta - K.
+
+`PhysicalCoerciveCombesThomas.lean` supplies the tilt identity, additivity and
+scalar rules, the cancellation theorem, shifted coercivity for `s >= 0`, and the
+unchanged defect estimate.  `PhysicalCoerciveCombesThomasInverse.lean` combines
+these facts with the existing inverse theorem.  If `K + s I` has the stated
+right inverse and `K` is coercive with constant `c`, the resulting kernel bound
+is
+
+    ||(C_s (delta_p v))(q)|| <= 2 / (c + s) * exp (-theta * dist q p) * ||v||.
+
+The theorem is uniform in the admissible tilt angle because the perturbation
+budget is inherited from `K`, not recomputed for every shift.
+
+**CHECKED.**  Both edited modules pass direct `lake env lean`; both target
+`.olean` builds pass.  A focused oracle query for the seven core declarations
+prints exactly `[propext, Classical.choice, Quot.sound]` for each.  The
+declarations are registered in `oracle_check.lean`; neither edited module
+contains `sorry`.
+
+**NOT YET FORMALIZED.**  The manuscript derives, on paper, the classical
+Stieltjes consequence
+
+    K^(-1/2) = (2/pi) integral_0^infinity (K + t^2 I)^(-1) dt,
+
+and hence the coefficient bound `2 / sqrt(c) * exp (-theta * dist q p)`.  The
+continuous-functional-calculus construction of the positive CLM square root,
+the operator-valued improper integral, and the fields of
+`PhysicalLocalizedCovarianceRootCertificate` remain open Lean work.  The paper
+labels this boundary explicitly; it does not report the corollary as a checked
+Lean theorem or as an analytic-priority claim.
+
+**PUBLICATION PROVENANCE.**  The paper records the separate August 1 audit state:
+all thirteen corrective/supersession forms were sent and remain
+`ENVIADO/PENDIENTE`; none is described as published or eligible for resubmission.
+The 2607.0035/2607.0039 scope split is preserved, and 2607.0089 remains
+`REVIEW-PENDING` even if its public record is visible.  These antecedents are
+provenance only and are not used as premises of the new theorem.
+
+## Addendum 571 (2026-08-01, **finite-dimensional real positive covariance root**)
+
+**FORMALIZED DELTA.**  `FiniteDimensionalRealPositiveSqrt.lean` constructs a
+positive square root of every positive continuous linear endomorphism on a
+finite-dimensional real inner-product space.  It chooses an orthonormal basis,
+uses the real spectral decomposition of the associated positive-semidefinite
+matrix, replaces each eigenvalue by its nonnegative real square root, and
+transports the result back to a continuous linear map.  Lean proves both
+
+    root.comp root = T
+
+and positivity, hence the required symmetric bilinear form and nonnegative
+quadratic form.  No direct real continuous-functional-calculus instance is
+assumed and no source-level root object is postulated.
+
+`CoerciveCovariancePositiveSqrt.lean` specializes this construction.  For a
+strictly coercive precision `A`, the exact inverse already existed.  Under the
+additional and necessary hypothesis `A.IsSymmetric`, the inverse is now proved
+symmetric and positive, and `covarianceSqrtOfIsCoerciveCLM` is constructed with
+an exact square identity.
+
+`PhysicalGaugeCovariancePositiveRoot.lean` reduces
+`PhysicalLocalizedCovarianceRootCertificate` to the honest analytic residue.
+Given a localized covariance certificate, covariance positivity, and a kernel
+bound for the canonical root, it derives `root_square`, `root_norm_bound`,
+`root_selfAdjoint_form`, and `root_psd`.  Only the root-kernel bound remains a
+source input; the norm field uses the exact operator norm and is deliberately
+non-quantitative.
+
+**CHECKED.**  The three new module targets pass `lake build`.  Focused
+`#print axioms` queries for the generic square/positivity theorems, their
+coercive-covariance specializations, and the physical certificate adapter each
+print exactly `[propext, Classical.choice, Quot.sound]`.  The declarations are
+registered in `oracle_check.lean`; the new modules contain no `sorry`.
+
+Two attempts to rebuild the full `YangMillsCore` aggregator were terminated by
+the command wrapper after 10 and 20 minutes respectively, with no Lean error
+emitted.  Therefore this addendum claims successful target builds, not a fresh
+successful full-core rebuild.
+
+**STILL OPEN.**  The operator-valued Stieltjes identity has not been formalized,
+and no integrated single-bond kernel estimate for the canonical root has been
+proved.  Consequently the physical root certificate is reduced but not
+unconditionally discharged.  The fixed-volume coercivity limitation is
+unchanged.
+
+## Addendum 572 (2026-08-02, **scalar Stieltjes integral and integrated physical kernel bound**)
+
+**FORMALIZED DELTA.**  `StieltjesKernelIntegration.lean` proves the exact
+scalar improper integral
+
+    ∫ t in Set.Ioi 0, (c + t^2)⁻¹ = Real.pi / (2 * Real.sqrt c)
+
+for `0 < c`, including Bochner integrability.  It defines the normalized
+operator-valued integral `stieltjesIntegralOperator F` and proves that any
+integrable physical operator family with single-bond kernel bound
+`A / (c + t^2) * weight` has integrated kernel bound
+`A / Real.sqrt c * weight`.  The exponential specialization turns the
+shift-uniform resolvent amplitude `2 / (c + t^2)` into exactly
+`2 / Real.sqrt c`, preserving the same decay rate and distance.
+
+`CoerciveCovariancePositiveSqrt.lean` now proves the quantitative estimate
+
+    ‖covarianceSqrtOfIsCoerciveCLM A hc hA hSymm‖ ≤ Real.sqrt c⁻¹.
+
+The proof uses the exact square identity, symmetry, the covariance bound from
+coercivity, and Cauchy--Schwarz.  The new coercive physical adapter installs
+this constant in `PhysicalLocalizedCovarianceRootCertificate`, replacing the
+previous tautological norm constant whenever the covariance is the canonical
+inverse of a symmetric coercive precision.
+
+**BOUNDARY.**  The integrated kernel theorem is no longer open as an abstract
+Bochner-transport statement.  Its hypotheses still require an integrable
+operator family.  The remaining central bridge is to prove that the canonical
+shifted inverse family is integrable and that its normalized integral equals
+the already-constructed spectral root.  Until that identification is checked,
+the physical root certificate still takes the canonical root-kernel bound as
+an explicit input.  No volume-uniform lower bound on `c` is claimed.
+
+## Addendum 573 (2026-08-02, **canonical shifted inverse and localized Stieltjes operator**)
+
+**FORMALIZED DELTA.**  `CoerciveCovarianceStieltjes.lean` defines the actual
+finite-dimensional resolvent family
+
+    shiftedCovarianceFamily A hc hA t = (A + t^2 I)⁻¹.
+
+It proves both exact inverse identities, the sharp coercivity majorant
+`‖F t‖ ≤ (c + t^2)⁻¹`, the resolvent identity, and the explicit continuity
+estimate
+
+    ‖F t - F u‖ ≤ |u^2 - t^2| * c⁻¹ * c⁻¹.
+
+Consequently the canonical family is continuous and Bochner integrable on
+`Set.Ioi 0`; the abstract family and integrability hypotheses from Addendum
+572 are discharged.  The physical capstone
+`physicalShiftedCovarianceFamily_stieltjes_exponentialKernelBound` applies the
+shift-uniform Combes--Thomas estimate directly to this canonical family and
+proves exponential localization of its normalized Stieltjes integral with
+amplitude `2 / Real.sqrt c`.  Separately,
+`eq_of_isPositive_of_comp_self_eq` proves uniqueness of positive square roots
+in finite real dimension, preparing the final identification step.
+
+**CHECKED.**  `lake build YangMills.RG.CoerciveCovarianceStieltjes` completed
+successfully with 8203 jobs.  The focused 26-declaration oracle prints exactly
+`[propext, Classical.choice, Quot.sound]` for every entry.  A fresh
+`lake build YangMillsCore` completed successfully with 8470 jobs after adding
+the module to the aggregator.  The new code contains no `sorry` or project
+axiom.
+
+**BOUNDARY.**  The only remaining operator-level Stieltjes bridge is the exact
+identity between the normalized integral of this canonical family and the
+already-constructed spectral positive root.  The present addendum proves
+localization of the canonical integral, not yet of that root.  The physical
+root certificate therefore remains conditional on this final identification;
+no volume-uniform lower bound on `c` and no continuum/Clay implication are
+claimed.
+
+## Addendum 574 (2026-08-02, **canonical Stieltjes root identification closed**)
+
+**FORMALIZED DELTA.**  `CoerciveCovarianceStieltjes.lean` now evaluates the
+canonical shifted inverse on an orthonormal eigenbasis, integrates the scalar
+eigenvalue formula, and proves positivity of both the shifted family and its
+normalized Stieltjes integral.  It then proves the exact operator identity
+
+    (stieltjesIntegralOperator (shiftedCovarianceFamily A hc hA))^2
+      = covarianceOfIsCoerciveCLM A hc hA
+
+and uses uniqueness of the positive square root to obtain
+
+    stieltjesIntegralOperator (shiftedCovarianceFamily A hc hA)
+      = covarianceSqrtOfIsCoerciveCLM A hc hA hSymm.
+
+The physical exponential kernel estimate therefore applies to the canonical
+spectral covariance root itself, with amplitude `2 / Real.sqrt c`.  The new
+end-to-end adapter `physicalLocalizedCovarianceRootCertificate_of_shiftUniform`
+constructs `PhysicalLocalizedCovarianceRootCertificate` from the explicit
+coercivity, symmetry, Combes--Thomas, and base localized-covariance premises;
+it no longer carries an additional root-kernel hypothesis.
+
+**CHECKED.**  `lake build YangMills.RG.CoerciveCovarianceStieltjes` completed
+successfully with 8204 jobs.  The focused thirty-six-declaration oracle prints
+exactly `[propext, Classical.choice, Quot.sound]` for every entry.  A fresh
+`lake build YangMillsCore` completed successfully with 8470 jobs.  The new
+source contains no `sorry` or project axiom.
+
+**BOUNDARY.**  The operator-level Stieltjes bridge and the associated
+root-certificate field are closed in the stated finite-dimensional physical
+model.  The result still assumes a supplied positive coercivity constant,
+shift-uniform Combes--Thomas hypotheses, and a base localized covariance
+certificate.  It does not prove that the coercivity constant is uniform in
+volume, an infinite-volume limit, a continuum limit, or the Clay mass-gap
+claim.
+
+## Addendum 575 (2026-08-02, **critical four-dimensional block normalization**)
+
+**FORMALIZED DELTA.**  `PhysicalPoincareCriticalRescaling.lean` keeps an
+explicit scalar `s` in the physical line-integral block constraint and proves
+the exact constant-sector law forced by any scaled flat Hodge/block-Poincare
+estimate:
+
+    L^d <= CP * ‖s‖^2 * L^2.
+
+In physical dimension four this becomes `L^2 <= CP * ‖s‖^2`.  Thus the old
+choice `s = 1` necessarily has `CP >= L^2`, while the critical RG
+normalization `s = L` is proved exactly isometric on direction-wise constant
+cochains.  Under that normalization the constant sector forces only the
+scale-independent condition `1 <= CP`.  The module defines the correctly
+quantified `VolumeUniformCriticalRescaledFlatPoincareGate`, with the constant
+before the volume quantifier.
+
+**CHECKED.**  `lake build YangMills.RG.PhysicalPoincareCriticalRescaling`
+completed successfully with 8170 jobs.  The focused seven-declaration oracle
+prints exactly `[propext, Classical.choice, Quot.sound]` for every entry; the
+same declarations are registered in the global oracle.  A fresh
+`lake build YangMillsCore` completed successfully with 8471 jobs.  The source
+contains no `sorry` or project axiom.
+
+**BOUNDARY.**  This is a necessary-normalization theorem and a genuine removal
+of the old constant-sector obstruction; it is not an all-mode Poincare
+estimate and does not inhabit the new volume-uniform gate.  The remaining
+positive problem is a uniform estimate on all fluctuation modes (or direct
+coercivity of the interacting Wilson Hessian).  No volume-uniform covariance,
+root bound, infinite-volume limit, continuum limit, mass gap, or Clay progress
+is claimed.
+
+## Addendum 576 (2026-08-02, **scale-adapted CT parameter balance**)
+
+**FORMALIZED DELTA.**  `PhysicalCriticalRescalingCTAudit.lean` audits the
+other parameters that a future volume-family Combes--Thomas theorem must
+control.  At the proved fine-metric range certificate `R_L = 3L`, the standard
+four-dimensional physical-bond ball majorant is `O(L^4)`.  The module proves
+the exact uniform scalar compensation
+
+    L^-4 * (2 * (3L + 1))^4 * 4 <= 16384.
+
+For every `c > 0` it defines an explicit positive block-scale rate
+
+    tau = log(1 + c / (2 * 16384)) / 3
+
+and the fine-lattice rate `theta_L = tau / L`.  Lean proves
+`theta_L * (3L) = 3 tau` exactly and proves the CT budget for every
+nonnegative kernel-times-ball product bounded by `16384`.
+
+**CHECKED.**  `lake build YangMills.RG.PhysicalCriticalRescalingCTAudit`
+completed successfully with 8171 jobs.  Its focused six-declaration oracle
+prints exactly `[propext, Classical.choice, Quot.sound]` for every entry.  A
+fresh `lake build YangMillsCore` completed successfully with 8472 jobs.  The
+new source contains no `sorry` or project axiom.
+
+**BOUNDARY.**  The theorem shows that growing range need not destroy
+localization when decay is measured in block units.  It is conditional on
+the still-unproved critical-scale operator kernel amplitude `M_L <= L^-4` for the
+critically rescaled Gram term, and it does not prove the all-mode coercivity
+gate.  The current fine-metric rate is `theta_L = tau/L`, not a positive
+fine-bond rate uniform in `L`; `tau` is the uniform block-scale rate.  No
+volume-uniform certificate or continuum/mass-gap implication is claimed.
+
+## Addendum 577 (2026-08-02, **critical-scale Gram kernel closed**)
+
+**FORMALIZED DELTA.**  `PhysicalCriticalRescalingKernel.lean` revisits the
+existing single-bond sampling proof without discarding its `L^-d`
+normalization.  It proves
+
+    ‖Q delta_p v‖ <= L^-d * L * ‖v‖.
+
+In dimension four, the critical map `LQ` therefore satisfies
+`‖(LQ) delta_p v‖ <= L^-2 ‖v‖`.  The Gram package converts this probe estimate
+into the actual entrywise operator theorem
+
+    KernelBound ((LQ)^* (LQ)) (L^-4),
+
+and proves that the same operator has fine-metric range `3L`.  Thus the
+`L^-4` input used in Addendum 576 is no longer hypothetical.
+
+**BOUNDARY.**  The kernel/ball/range/tilt side of the critical CT budget is
+now closed.  The remaining decisive positive input is the all-mode coercivity
+gate with a constant independent of `L`.  No such coercivity, uniform root
+certificate, infinite-volume limit, continuum limit, or mass gap is claimed.
+
+**CHECKED.**  `lake build YangMills.RG.PhysicalCriticalRescalingKernel`
+completed successfully (8205 jobs); the focused
+`CriticalRescalingKernelOracle.lean` reports exactly `[propext,
+Classical.choice, Quot.sound]` for all four new declarations; and
+`lake build YangMillsCore` completed successfully (8473 jobs).
+
+## Addendum 578 (2026-08-02, **critical full-space coercivity no-go at one coarse site**)
+
+**FORMALIZED DELTA.**  `PhysicalCriticalRescalingNoGo.lean` audits the exact
+domain of the remaining coercivity proposal.  For `N' = 1`, every even scale
+`L = M + M`, and two distinct directions, the already certified transverse
+square mode satisfies
+
+    Q_L A = 0,             (L Q_L) A = 0,
+    <A, K0 A> / ‖A‖² = 8/L.
+
+The cancellation of `Q_L A` is exact: transverse line shifts preserve the
+square profile and its finite `+1/-1` sum vanishes on the one coarse block.
+For `Nc >= 2` the mode is nonzero.  Any constant-before-volume instance of
+the current critical gate would force `L <= 8 CP` at every even scale, which
+is impossible.  Thus Lean proves
+
+    ¬ VolumeUniformCriticalRescaledFlatPoincareGate 1 Nc rho.
+
+**INTERPRETATION.**  The gate being refuted is the combined full-space form
+`K0 + (LQ)^*(LQ)`, not coercivity of the Gram in isolation.  The result leaves
+the critical-scale kernel bound, ball count, range, and block-scale CT budget
+from Addenda 576-577 intact.  It shows that the next positive input cannot be
+the present full-space gate unchanged: the domain must be restricted or
+quotiented, or another positive operator (for example an interacting Wilson
+Hessian) must control these modes.
+
+**BOUNDARY.**  This theorem is exact for `N' = 1`; it does not yet prove the
+analogous no-go for every coarse side `N'`.  It proves no positive uniform
+coercivity, root localization, infinite-volume limit, continuum limit, or
+mass gap.  The term “critical-scale” replaces an unsupported claim of global
+optimality: no saturating lower-bound witness for the `L^-4` kernel constant
+is asserted.
+
+**CHECKED.**  `lake build YangMills.RG.PhysicalCriticalRescalingNoGo`
+completed successfully (8177 jobs), and the separately rebuilt
+`PhysicalCriticalRescalingKernel` completed successfully (8205 jobs).  The
+two focused oracles report exactly `[propext, Classical.choice, Quot.sound]`
+for all seven audited declarations.  `lake build YangMillsCore` completed
+successfully (8474 jobs).
+
+## Addendum 579 (2026-08-02, **critical full-space no-go at every coarse side**)
+
+**FORMALIZED DELTA.**  `PhysicalCriticalRescalingNoGoAllCoarse.lean`
+removes the remaining `N' = 1` boundary from Addendum 578.  On every positive
+coarse torus, repeat the transverse square profile in each fine `L = 2M`
+block.  The resulting explicit cochain satisfies
+
+    Q_L A = 0,             (L Q_L) A = 0,
+    div A = 0,
+    ‖dA‖² = 8 N' (L N')^(d-1) ‖w‖²,
+    ‖A‖²  =       (L N')^d     ‖w‖².
+
+Thus its flat-Hodge Rayleigh quotient is exactly `8/L`, independently of
+`N'`.  For `Nc >= 2`, inserting a nonzero Lie-coordinate vector proves
+
+    ¬ VolumeUniformCriticalRescaledFlatPoincareGate N' Nc rho
+
+for every `N' > 0`.
+
+**INTERPRETATION.**  The obstruction is a whole block-periodic transverse
+sector, not an exceptional one-site mode.  The present full-domain flat
+coercivity proposal is therefore formally closed at all finite coarse
+volumes.  The critical-scale kernel/ball/range/tilt results remain valid.
+A positive continuation must use a physically justified restriction or
+quotient, or add a positive operator—most naturally an interacting Wilson
+Hessian—that gives uniform energy to this sector.
+
+**BOUNDARY.**  This is a no-go for the current flat combined form and proves
+no positive coercivity, root localization, infinite-volume limit, continuum
+limit, or mass gap.  It does not establish optimality of the `L^-4` kernel
+amplitude; “critical-scale” remains the correct terminology.
+
+**PAPER ARTIFACT.**  The separate eight-page manuscript
+`papers/critical-rescaling-no-go-all-coarse/critical_rescaling_no_go_all_coarse.pdf`
+presents this result as an autonomous no-go contribution, not as a v0.8 of
+the Combes--Thomas paper.  The byte-identical delivery copy under
+`output/pdf/` has SHA-256
+`B94A123D04126F94FB05A0D622092B849B7C237DC7090BC848704F2FEB66AC33`.
+
+**CHECKED.**  `lake build
+YangMills.RG.PhysicalCriticalRescalingNoGoAllCoarse` completed successfully
+(8178 jobs); the focused six-declaration oracle reports exactly `[propext,
+Classical.choice, Quot.sound]` for every headline; and `lake build
+YangMillsCore` completed successfully (8475 jobs).
+
+## Addendum 580 (2026-08-02, **all-scales Fourier no-go with quadratic decay**)
+
+**FORMALIZED DELTA.**  The six-module chain headed by
+`PhysicalCriticalRescalingFourierNoGoAllScales.lean` replaces the repeated
+square profile by the primitive phase `zeta_L = exp(2 pi i/L)`, embedded
+real-linearly and isometrically in two Lie coordinates.  For every `L >= 2`,
+every fixed `N' > 0`, and `Nc >= 2`, the explicit transverse cochain satisfies
+
+    Q_L A_L = 0,          (L Q_L) A_L = 0,
+    div A_L = 0,
+    ‖A_L‖^2 = (L N')^d,
+    <A_L, K0 A_L> = (L N')^d lambda_L,
+
+where
+
+    lambda_L = ‖zeta_L - 1‖^2 <= (2 pi/L)^2 = 4 pi^2/L^2.
+
+Lean consequently proves the exact Rayleigh identity, the necessary bound
+`1 <= CP lambda_L` for every candidate Poincare constant, and
+
+    ¬ VolumeUniformCriticalRescaledFlatPoincareGate N' Nc rho.
+
+**INTERPRETATION.**  This strictly strengthens Addendum 579: it removes the
+even-side restriction and improves the explicit obstruction from `8/L` to
+`O(L^-2)`.  In this gate, “volume-uniform” quantifies the varying block/fine
+side `L` at an arbitrary but fixed positive coarse side `N'`; it does not mean
+an `N' -> infinity` limit at fixed `L`.
+
+**BOUNDARY.**  The theorem remains a no-go for the current flat full-domain
+combined form.  It proves no positive coercivity, no interacting-Hessian
+estimate, no infinite-volume or continuum limit, and no mass gap.  The
+critical-scale kernel/ball/range/tilt results remain valid.
+
+**CHECKED.**  `lake build
+YangMills.RG.PhysicalCriticalRescalingFourierNoGoAllScales` completed
+successfully (8184 jobs).  The focused nine-declaration oracle reports exactly
+`[propext, Classical.choice, Quot.sound]` for every headline; no `sorry`,
+`admit`, or project axiom occurs in the seven new source files.  `lake build
+YangMillsCore` completed successfully (8481 jobs).  The theorem source is
+fixed at commit `f21539ed0bb880a04078de369bf5cbf063f7b101`; the head theorem
+file has SHA-256
+`5F0890D14EA6981CBE6459605A634386ED2C844F6D03A6947E33B34250E2F5AE`.
+
+**PAPER ARTIFACT.**  Version 1.1 of the standalone eight-page manuscript
+promotes the Fourier witness to the main theorem, states the precise `L`
+versus `N'` quantifiers, adds a prior-art/domain-delta section, and records an
+immutable reproduction manifest.  The byte-identical paper and delivery PDFs
+have SHA-256
+`B8E655D3F1253D0EA915BA54DF00A5C72F4CE5B5D229F74FE82EC152333EA726`.
+The bibliography records J. Dimock, *Covariant axial gauge*, Letters in
+Mathematical Physics 105 (2015), 959--987,
+DOI `10.1007/s11005-015-0763-0`; the previously quoted AIP DOI was incorrect
+and is not present in the final PDF.
+The companion source packet under `output/pdf/` has SHA-256
+`AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132`.

@@ -1,0 +1,140 @@
+P47 v1.4 FACTORIZED/REPAIR LEAN EXECUTION RECORD
+Date: 2026-08-04
+Status: PASS for the frozen criteria below; not an external certification
+
+1. Frozen object and capture
+
+Branch at audit: codex/poincare-rescaled-gate-47
+Starting branch HEAD: ce675deb71c4001ec19095d533afe72bbd14201f
+Public reconstruction base: 04f87347f3e4d46a05e77bc1c70855794e111477
+
+Final target body:
+  YangMills/RG/PhysicalCriticalRescalingFourierFactorizedRepair.lean
+  capture: exact UTF-8 filesystem bytes, then explicit LF/CRLF transforms
+  raw bytes: 12064
+  raw SHA-256: D7586D24D7B7E9050001AC5A8E4A8061A3EE3F7D441C5373186EBAEB7B97DE38
+  LF bytes: 12064
+  LF SHA-256: D7586D24D7B7E9050001AC5A8E4A8061A3EE3F7D441C5373186EBAEB7B97DE38
+  CRLF bytes: 12353
+  CRLF SHA-256: 2C6D3B1D6EE2D0EDA942FB23F7CD5A84DD19CC69DD03FAB43328CBCBBA5CAEC7
+
+Final oracle body:
+  YangMills/RG/PhysicalCriticalRescalingFourierFactorizedRepairOracle.lean
+  capture: exact UTF-8 filesystem bytes, then explicit LF/CRLF transforms
+  raw bytes: 537
+  raw SHA-256: 6334EE25A6A0D8778A91CC49269BC92563C327DD1BD0E5CA9CF477F5E90738E1
+  LF bytes: 537
+  LF SHA-256: 6334EE25A6A0D8778A91CC49269BC92563C327DD1BD0E5CA9CF477F5E90738E1
+  CRLF bytes: 547
+  CRLF SHA-256: 0F3506852DDECAB364241F1AC53706BC410B665814378871CECDB208E0F2F466
+
+The disconnected-preparation cell reconstructed the public base plus 17
+LF-normalized source/config bodies embedded as base64. It verified every
+declared byte count and SHA-256 before any Lean command.
+
+2. Judge, criterion, and expected result
+
+Judge commands:
+  lake build YangMills.RG.PhysicalCriticalRescalingFourierFactorizedRepair
+  lake env lean YangMills/RG/PhysicalCriticalRescalingFourierFactorizedRepairOracle.lean
+
+Expected result frozen before the final invocation:
+  - build exit code 0
+  - target .olean physically present
+  - oracle exit code 0
+  - all six declarations report exactly
+    [propext, Classical.choice, Quot.sound]
+
+The judge, commands, declarations, and expected axiom list were not changed
+after the final body freeze.
+
+3. Remote execution
+
+Provider: Google Colab Pro+
+Account visibly confirmed: lluiseriksson@gmail.com
+Accelerator: CPU/high-RAM; no GPU (GPU_VISIBLE empty)
+Visible memory: 50.99 GB; /proc/meminfo MemTotal 53467192 kB
+Notebook:
+  https://colab.research.google.com/drive/1iXBNBeBEGr7O3pEbuRtac1VE1mMHX0Lh
+
+Preparation timings:
+  lake update: 124.412 s
+  lake exe cache get: 6.507 s
+  first target pass: 227.319 s; 8185 imports materialized, target proof failed
+
+The first target pass found arithmetic rearrangement failures in the new
+target only. Two proof-only repairs were made locally and re-injected into the
+same prepared runtime. No statement, definition, oracle, criterion, expected
+output, imported theorem, or judge command was weakened or changed.
+
+Final frozen run:
+  FINAL_START_UTC=2026-08-04T19:07:36.898702+00:00
+  body bytes=12064
+  body SHA-256=D7586D24D7B7E9050001AC5A8E4A8061A3EE3F7D441C5373186EBAEB7B97DE38
+  FINAL_BUILD exit=0 seconds=18.835 jobs=8186
+  target .olean materialized=yes
+  FINAL_ORACLE exit=0 seconds=14.953
+  oracle declarations=6/6 exact expected axiom list
+  FINAL_END_UTC=2026-08-04T19:08:10.693578+00:00
+  AUDIT47_V14_FINAL=PASS
+
+Full reconstruction interval:
+  2026-08-04T18:56:52.878156+00:00 to
+  2026-08-04T19:08:10.693578+00:00
+
+The runtime was visibly open no later than
+2026-08-04T18:48:10.965571+00:00. It was disconnected and deleted immediately
+after the final audit; the Colab UI returned to the reconnect state with no
+RAM indicator. The only two warnings were pre-existing style lints in imported
+AveragingL2.lean and PhysicalPoincareLowModeBlock.lean.
+
+4. Mandatory attacks and scope audit
+
+- Constants: the same CP is chosen before all scales L; the proof forces
+  1 <= CP * lambda_L and lambda_L <= 4*pi^2/L^2.
+- Volume quantifiers: N' is arbitrary but fixed inside one gate. The positive
+  factor ((L*N')^4) is cancelled explicitly, so no N'-dependent divergence is
+  hidden. No claim about N' -> infinity at fixed L is made.
+- Endpoints: the formal first-mode no-go covers every L >= 2. The analytic
+  multiplicity ladder starts at L >= 3 because R >= 1 and
+  R <= floor((L-1)/2); this endpoint is stated, not suppressed.
+- Factorization: Phi may be nonlinear, discontinuous, nonpositive, anisotropic,
+  scale-dependent, or unbounded. The proof uses only Phi(0)=0 after Q A=0.
+- Hidden regularity: no norm, continuity, measurability, derivative, or growth
+  hypothesis on Phi appears in the formal theorem.
+- Repair hypotheses: the exact Rayleigh identity assumes no positivity of V.
+  Positivity is separately named for physical interpretation. The necessary
+  budget assumes a full-space estimate only to derive a necessary consequence;
+  no lower bound on Qtilde, T, or V is assumed.
+- Disguised conclusion: the paper states full-space sufficiency remains open.
+  The iff statement is confined to span{A_L}; the Lean surface proves only the
+  exact identity and necessary finite-scale budget.
+- Spectral multiplicity: the 2R-dimensional min-max result is analytic and is
+  not mislabeled as machine checked.
+- Physical scope: flat finite periodic full-domain form only. Gauge quotient,
+  gauge fixing, Wilson interaction, thermodynamic/continuum limits, and mass
+  gap remain outside the theorem.
+
+5. Axiom surface and local scan
+
+The final oracle printed exactly [propext, Classical.choice, Quot.sound] for:
+  flatBlockConstraintQCLM_blockFourierMode_eq_zero
+  flatGaugeHodgeK0_inner_blockFourierModeCochain_of_ne
+  factorizedFlatPoincare_fourier_lower_bound
+  volumeUniformFactorizedFlatPoincareGate_fourier_false
+  repairedFlatPoincare_blockFourier_rayleigh_eq
+  repairedFlatPoincare_blockFourier_budget
+
+A local token scan found no sorry, admit, or project axiom declaration in the
+two v1.4 Lean bodies. Source presence was not treated as verification: PASS
+requires the recorded .olean materialization and oracle execution.
+
+6. Governance
+
+- Isolated worktree used; shared checkout not used.
+- No Lean, Lake, oracle, or sustained compute ran on the Windows owner desktop.
+- Colab used CPU/high RAM and no GPU.
+- Runtime disconnected and deleted after execution.
+- No Claude Code, Opus 5, or Fable 5 invocation was made.
+- The frozen object and attacks are delivered for another task to judge; this
+  record does not self-certify mathematical correctness.

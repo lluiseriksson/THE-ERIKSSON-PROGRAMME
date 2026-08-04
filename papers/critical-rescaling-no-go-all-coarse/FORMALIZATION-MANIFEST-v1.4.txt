@@ -1,0 +1,69 @@
+Factor-through-kernel critical-rescaling Fourier no-go and repair manifest
+Version: 1.4
+Date: 2026-08-04
+
+Repository: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+Original theorem-source commit: f21539ed0bb880a04078de369bf5cbf063f7b101
+Prior independent-audit commit: 5bbc9347a64083fb3936f8240a5b0108e5d03fea
+Prior postconditioned paper commit: ce675deb71c4001ec19095d533afe72bbd14201f
+Lean: v4.29.0-rc6 (00659f8e6071d7e46131ed643bf8003b99b044e9)
+Mathlib: 07642720480157414db592fa85b626dafb71355b
+
+SHA-256 of LF-normalized Lean files:
+53993EAAA55418AE7EA1235CDEDB0793A4EA58D452F577EA0A677AD203733793  PhysicalCriticalRescalingFourierCochain.lean
+A94083D9FCE54442AAC8C3990180F92469F1A7915F530A287CF16611A5C3E149  PhysicalCriticalRescalingFourierEnergy.lean
+C311EEB648DD0371C7B9D343A37BC659DF537FD5E1A33F6EA7F20CBD702665E9  PhysicalCriticalRescalingFourierHodge.lean
+B3884618CC9B82B1E138089323DEAEF24D6E4613DAAE6A10D6EC0AFC37526993  PhysicalCriticalRescalingFourierMode.lean
+6F0D69D79B6C93D01A8C298EC6E9E5A53FD37DE43DF5963B8A0411DE2930153D  PhysicalCriticalRescalingFourierNoGo.lean
+5F0890D14EA6981CBE6459605A634386ED2C844F6D03A6947E33B34250E2F5AE  PhysicalCriticalRescalingFourierNoGoAllScales.lean
+5851FAD3E9541F78C397E71781063C30EA7153CCE0A72CEDD6E522A69F9A990B  PhysicalCriticalRescalingFourierPostconditionedNoGo.lean
+D7586D24D7B7E9050001AC5A8E4A8061A3EE3F7D441C5373186EBAEB7B97DE38  PhysicalCriticalRescalingFourierFactorizedRepair.lean
+ADAEB6E955E83C4CEC97A84D45590AD449B038F0CA6B08FAF2586652961C3CCB  PhysicalCriticalRescalingFourierNoGoOracle.lean
+64112BECD145C01FCBFE02D6332790331EB0B2535E0208BC897D5755693B1AFA  PhysicalCriticalRescalingFourierPostconditionedNoGoOracle.lean
+6334EE25A6A0D8778A91CC49269BC92563C327DD1BD0E5CA9CF477F5E90738E1  PhysicalCriticalRescalingFourierFactorizedRepairOracle.lean
+
+Frozen v1.4 criteria:
+lake build YangMills.RG.PhysicalCriticalRescalingFourierFactorizedRepair
+lake env lean YangMills/RG/PhysicalCriticalRescalingFourierFactorizedRepairOracle.lean
+
+Frozen expected output:
+- target command exits 0 and materializes
+  .lake/build/lib/lean/YangMills/RG/PhysicalCriticalRescalingFourierFactorizedRepair.olean
+- oracle command exits 0
+- each of the six printed declarations reports exactly
+  [propext, Classical.choice, Quot.sound]
+
+Independent execution on 2026-08-04:
+- Colab Pro+ CPU/high-RAM runtime, 50.99 GB visible RAM, no GPU
+- visibly confirmed account: lluiseriksson@gmail.com
+- public base: 04f87347f3e4d46a05e77bc1c70855794e111477
+- 17 LF-normalized source/config bodies embedded as base64 and hash-checked
+- lake update: 124.412 s
+- cache get: 6.507 s
+- first target pass materialized all 8185 imports and exposed a target-local
+  arithmetic proof defect; judge and criterion were unchanged
+- final frozen target body: 12064 bytes, SHA-256 D7586D24D7B7E9050001AC5A8E4A8061A3EE3F7D441C5373186EBAEB7B97DE38
+- final focused build: success, 8186 jobs, 18.835 s, target .olean present
+- final focused axiom audit: success, 6/6 declarations, 14.953 s
+- final run: 2026-08-04T19:07:36.898702+00:00 to
+  2026-08-04T19:08:10.693578+00:00
+- full reconstruction audit: 2026-08-04T18:56:52.878156+00:00 to
+  2026-08-04T19:08:10.693578+00:00
+- runtime visibly open no later than 2026-08-04T18:48:10.965571+00:00;
+  disconnected and deleted immediately after the audit
+- notebook: https://colab.research.google.com/drive/1iXBNBeBEGr7O3pEbuRtac1VE1mMHX0Lh
+
+Scope
+- Formalized: exact kernel and Hodge witness energy; arbitrary real-valued
+  factorized penalties Phi(Q A) satisfying only Phi(0)=0; all-scale no-go;
+  exact repaired-witness Rayleigh identity; finite-scale necessary repair
+  budget for a changed linear block map, a linear postconditioner, and a fine
+  linear term.
+- Analytic only in paper: higher-frequency orthogonality, the 2R-dimensional
+  min-max spectral multiplicity bound, the asymptotic liminf consequence, and
+  witness-line necessary-and-sufficient criterion.
+- Not claimed: full-space sufficiency of the repair budget, gauge-quotient or
+  gauge-fixed coercivity, interacting Wilson-Hessian coercivity, a positive
+  replacement theorem, infinite-volume/continuum construction, or mass gap.
+
+This manifest records execution evidence; it is not external certification.

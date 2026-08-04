@@ -1,0 +1,243 @@
+SHIFT-UNIFORM COMBES--THOMAS VERIFICATION TRANSCRIPT
+====================================================
+
+Date: 2026-08-01
+Repository branch: codex/stieltjes-root
+Formal artifact commit: b542b3f2f066b60a914977f2a50160e403a53367
+Formal artifact parent: 81e9cf064d6771f986978ccffb96018c78b5e459
+Lean: 4.29.0-rc6 (00659f8e6071d7e46131ed643bf8003b99b044e9)
+Mathlib: 07642720480157414db592fa85b626dafb71355b
+
+FOCUSED SOURCE AND BUILD CHECKS
+-------------------------------
+
+Command:
+  lake env lean YangMills/RG/PhysicalCoerciveCombesThomas.lean
+Result:
+  exit code 0; wall time 218.8 seconds; no diagnostic output
+
+Command:
+  lake env lean YangMills/RG/PhysicalCoerciveCombesThomasInverse.lean
+Result:
+  exit code 0; wall time 74.7 seconds; no diagnostic output
+
+Command:
+  lake build +YangMills.RG.PhysicalCoerciveCombesThomas:olean
+Result:
+  exit code 0; wall time 128 seconds; 8198 jobs; build completed successfully
+  Warnings printed by the build were in pre-existing imported modules, not in
+  either module named above.
+
+Command:
+  lake build +YangMills.RG.PhysicalCoerciveCombesThomasInverse:olean
+Result:
+  exit code 0; wall time 7 seconds; 8199 jobs; build completed successfully
+  Warnings printed by the build were in pre-existing imported modules, not in
+  either module named above.
+
+FOCUSED AXIOM CHECK
+-------------------
+
+Command:
+  lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
+
+The first repetition reached a 304-second wrapper timeout without diagnostic
+output. Its three child lake/Lean processes were identified by exact PID and
+terminated. The clean second repetition completed with exit code 0 in 102.3
+seconds and printed:
+
+'YangMills.RG.physicalTiltConjCLM_id' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalTiltConjCLM_add_smul_id_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.isCoerciveCLM_add_smul_id' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.norm_physicalTiltConj_add_smul_id_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.isCoerciveCLM_physicalTiltConj_add_smul_id' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.isCoerciveCLM_physicalTiltConj_add_smul_id_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalCovariance_exponentialKernelBound_of_coercive_add_smul_id' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+SOURCE HYGIENE
+--------------
+
+There is no Lean `sorry` command in either modified module. Each occurrence of
+the word "sorry" is inside the module-level audit comment "No sorry, no
+axioms." `git diff --check` completed with exit code 0 before manuscript
+packaging.
+
+CLAIM BOUNDARY
+--------------
+
+These checks cover the seven formalized declarations and their two source
+modules. They do not formalize the Stieltjes identity, construct the positive
+real continuous-linear-map inverse square root, prove its single-bond kernel
+bound, or discharge PhysicalLocalizedCovarianceRootCertificate.
+=== Version 0.4 positive-root extension (2026-08-01) ===
+
+Formal root commit:
+  bd11e55f9cfe572d5ec4200f49c45339df4e3c03
+
+Successful target builds:
+  lake build YangMills.RG.FiniteDimensionalRealPositiveSqrt
+  lake build YangMills.RG.CoerciveCovariancePositiveSqrt
+  lake build YangMills.RG.PhysicalGaugeCovariancePositiveRoot
+
+Representative terminal results:
+  Built YangMills.RG.FiniteDimensionalRealPositiveSqrt
+  Built YangMills.RG.CoerciveCovariancePositiveSqrt
+  Built YangMills.RG.PhysicalGaugeCovariancePositiveRoot
+
+Focused axiom audit:
+  finiteDimensionalRealPositiveSqrt_comp_self
+  finiteDimensionalRealPositiveSqrt_isPositive
+  covarianceSqrtOfIsCoerciveCLM_comp_self
+  covarianceSqrtOfIsCoerciveCLM_isPositive
+  physicalLocalizedCovarianceRootCertificate_of_positive_covariance
+
+Each declaration printed exactly:
+  [propext, Classical.choice, Quot.sound]
+
+Full-aggregator attempts:
+  lake build YangMillsCore  -- wrapper timeout after 10 minutes, no Lean error
+  lake build YangMillsCore  -- wrapper timeout after 20 minutes, no Lean error
+
+No successful fresh full-core rebuild is claimed for version 0.4.
+
+=== Version 0.5 Stieltjes-integration extension (2026-08-02) ===
+
+Formal integration commit:
+  73179102f2bc2cdec77b4b448cf116b5128fdd4f
+
+Successful target checks:
+  lake env lean YangMills/RG/StieltjesKernelIntegration.lean
+    exit code 0; wall time 32.9 seconds; no diagnostic output
+
+  lake build YangMills.RG.CoerciveCovariancePositiveSqrt
+    exit code 0; target built successfully
+
+  lake build YangMills.RG.StieltjesKernelIntegration
+    exit code 0; target built successfully in 41 seconds
+
+  lake build YangMills.RG.PhysicalGaugeCovariancePositiveRoot
+    exit code 0; target built successfully in 44 seconds
+
+Focused axiom audit:
+  lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
+    exit code 0; wall time 62.5 seconds
+
+The audit covered all eighteen declarations listed in the manuscript.  Every
+declaration printed exactly:
+  [propext, Classical.choice, Quot.sound]
+
+The six new or strengthened declarations were:
+  norm_covarianceSqrtOfIsCoerciveCLM_le
+  physicalLocalizedCovarianceRootCertificate_of_coercive_precision
+  integrableOn_Ioi_inv_add_sq
+  integral_Ioi_inv_add_sq
+  physicalCovarianceKernelBound_stieltjesIntegralOperator
+  physicalCovariance_exponentialKernelBound_stieltjesIntegralOperator
+
+Source hygiene:
+  git diff --check: exit code 0
+  no Lean `sorry` occurs in the Stieltjes-integration module or the three root
+  modules (the word occurs only in existing audit prose where present).
+
+Claim boundary:
+  Version 0.5 formalizes the scalar improper integral, the abstract Bochner
+  transport of the kernel bound, and the quantitative root norm.  It does not
+  yet prove integrability of the canonical shifted-inverse family or identify
+  its normalized integral with the canonical spectral root.  No fresh
+  successful full YangMillsCore rebuild is claimed.
+
+=== Version 0.6 canonical shifted-inverse extension (2026-08-02) ===
+
+Formal canonical-family commit:
+  9f19b2d7c3dbcee1cc95683c9bc1ea29629c6b91
+
+Successful target build:
+  lake build YangMills.RG.CoerciveCovarianceStieltjes
+    exit code 0; 8203 jobs; build completed successfully
+
+Successful full-core build:
+  lake build YangMillsCore
+    exit code 0; wall time 474 seconds; 8470 jobs;
+    build completed successfully
+
+Focused axiom audit:
+  lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
+    exit code 0; wall time 62.9 seconds
+
+The audit covered all twenty-six declarations listed in the version-0.6
+manuscript.  Every declaration printed exactly:
+  [propext, Classical.choice, Quot.sound]
+
+The eight added declarations were:
+  eq_of_isPositive_of_comp_self_eq
+  shiftedCovarianceFamily_comp_precision
+  precision_comp_shiftedCovarianceFamily
+  norm_shiftedCovarianceFamily_le
+  shiftedCovarianceFamily_sub
+  continuous_shiftedCovarianceFamily
+  integrableOn_shiftedCovarianceFamily
+  physicalShiftedCovarianceFamily_stieltjes_exponentialKernelBound
+
+Source hygiene:
+  git diff --check: exit code 0
+  no Lean `sorry` or project `axiom` occurs in either changed formal module
+
+Claim boundary:
+  Version 0.6 constructs the canonical family (K+t^2 I)^(-1), proves its exact
+  inverse identities, resolvent identity, continuity, Bochner integrability,
+  and the exponential kernel bound for its normalized Stieltjes integral.  It
+  does not yet identify this integral with the separately constructed spectral
+  positive root.  The physical root certificate remains conditional on that
+  single equality; no volume-uniform coercivity or continuum claim is made.
+
+=== Version 0.7 canonical Stieltjes-root identification (2026-08-02) ===
+
+Formal identification commit:
+  b44907f005515c7f841471a8da6e870402f0e5ec
+
+Successful target build:
+  lake build YangMills.RG.CoerciveCovarianceStieltjes
+    exit code 0; 8204 jobs; build completed successfully
+
+Successful full-core build:
+  lake build YangMillsCore
+    exit code 0; 8470 jobs; build completed successfully
+
+Focused axiom audit:
+  lake env lean papers/shift-uniform-combes-thomas/ShiftUniformOracle.lean
+    exit code 0; wall time 66.5 seconds
+
+The audit covered all thirty-six declarations listed in the version-0.7
+manuscript.  Every declaration printed exactly:
+  [propext, Classical.choice, Quot.sound]
+
+The ten added declarations were:
+  eigenvalue_pos_of_isCoerciveCLM
+  shiftedCovarianceFamily_apply_of_eigenvector
+  stieltjesIntegralOperator_shifted_apply_of_eigenvector
+  shiftedCovarianceFamily_isPositive
+  stieltjesIntegralOperator_shifted_isPositive
+  covarianceOfIsCoerciveCLM_apply_of_eigenvector
+  stieltjesIntegralOperator_shifted_comp_self
+  stieltjesIntegralOperator_shifted_eq_covarianceSqrt
+  physicalCovarianceSqrt_exponentialKernelBound_of_shiftUniform
+  physicalLocalizedCovarianceRootCertificate_of_shiftUniform
+
+The declarations were also added to oracle_check.lean.  An additional global
+oracle execution remained silent but did not complete within an extended
+wrapper run, so no successful global-oracle execution is claimed here.
+
+Source hygiene:
+  git diff --check: exit code 0
+  no Lean `sorry` or project `axiom` occurs in the changed formal module
+
+Claim boundary:
+  Version 0.7 proves that the canonical normalized Stieltjes integral is
+  positive, squares exactly to the covariance, and equals the independently
+  constructed spectral positive root.  The exponential kernel bound is
+  transported to that root and the physical root-certificate kernel field is
+  discharged without assuming the desired bound.  The theorem remains
+  finite-dimensional and conditional on explicit coercivity, symmetry,
+  shift-uniform Combes--Thomas hypotheses, and the base localized covariance
+  certificate.  No volume-uniform coercivity, infinite-volume limit,
+  continuum limit, or Clay implication is claimed.

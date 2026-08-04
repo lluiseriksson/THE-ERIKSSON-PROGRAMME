@@ -1389,6 +1389,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_sourceEstimate
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_halfBudget
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_rawMetricDecay_canonicalRoot_halfBudget_of_source
+-- Proposal bridge: discharge hactivityKsharp from the banked K# estimate;
+-- hsmall/hbudget exposed as explicit scalar conditions on eps_val = 2*H0*K0.
+#print axioms YangMills.RG.ksharp_hactivityKsharp
+#print axioms YangMills.RG.ksharp_smallness_scalar
+#print axioms YangMills.RG.ksharp_budget_scalar
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_pointwise_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_expWeight_leafSummation
@@ -2188,10 +2193,38 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatBasePrecision_kernelBound
 #print axioms YangMills.RG.flatGaugeFixedPrecisionCLM_zeroSigma_eq_base
 #print axioms YangMills.RG.IsCoerciveCLM.mono_const
+#print axioms YangMills.RG.physicalTiltConjCLM_id
+#print axioms YangMills.RG.physicalTiltConjCLM_add_smul_id_sub
+#print axioms YangMills.RG.isCoerciveCLM_add_smul_id
+#print axioms YangMills.RG.norm_physicalTiltConj_add_smul_id_sub_le
+#print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj_add_smul_id
 #print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj_half
+#print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj_add_smul_id_half
 #print axioms YangMills.RG.exists_physicalTiltConj_inverse_of_budget
 #print axioms YangMills.RG.physicalTiltCLM_single_root
 #print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_of_coercive
+#print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_of_coercive_add_smul_id
+#print axioms YangMills.RG.finiteDimensionalRealPositiveSqrt_comp_self
+#print axioms YangMills.RG.finiteDimensionalRealPositiveSqrt_isPositive
+#print axioms YangMills.RG.covarianceSqrtOfIsCoerciveCLM_comp_self
+#print axioms YangMills.RG.covarianceSqrtOfIsCoerciveCLM_isPositive
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_positive_covariance
+#print axioms YangMills.RG.norm_covarianceSqrtOfIsCoerciveCLM_le
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_coercive_precision
+#print axioms YangMills.RG.integrableOn_Ioi_inv_add_sq
+#print axioms YangMills.RG.integral_Ioi_inv_add_sq
+#print axioms YangMills.RG.physicalCovarianceKernelBound_stieltjesIntegralOperator
+#print axioms YangMills.RG.physicalCovariance_exponentialKernelBound_stieltjesIntegralOperator
+#print axioms YangMills.RG.eigenvalue_pos_of_isCoerciveCLM
+#print axioms YangMills.RG.shiftedCovarianceFamily_apply_of_eigenvector
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_apply_of_eigenvector
+#print axioms YangMills.RG.shiftedCovarianceFamily_isPositive
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_isPositive
+#print axioms YangMills.RG.covarianceOfIsCoerciveCLM_apply_of_eigenvector
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_comp_self
+#print axioms YangMills.RG.stieltjesIntegralOperator_shifted_eq_covarianceSqrt
+#print axioms YangMills.RG.physicalCovarianceSqrt_exponentialKernelBound_of_shiftUniform
+#print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_shiftUniform
 #print axioms YangMills.RG.exists_pos_tiltBudget
 #print axioms YangMills.RG.zeroSigma_budget
 #print axioms YangMills.RG.flatGaugeFixedCovariance_CT_fixedVolume
@@ -2538,6 +2571,49 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.blockScaleSquareMode_rayleigh_numerator_le
 #print axioms YangMills.RG.quotientPoincare_squareMode_linear_lower_bound
 #print axioms YangMills.RG.volumeUniformQuotientPoincareGate_false
+-- W-4: exact normalization audit for the surviving rescaled route in d = 4.
+-- The critical choice s = L removes the constant-sector divergence but the
+-- volume-uniform all-mode gate remains deliberately uninhabited.
+#print axioms YangMills.RG.scaledFlatBlockConstraintQCLM_constant
+#print axioms YangMills.RG.scaledFlatBlockConstraintQCLM_constant_norm_sq
+#print axioms YangMills.RG.scaledFlatGaugeHodgePoincare_constantSector_lower_bound
+#print axioms YangMills.RG.scaledFlatGaugeHodgePoincare_four_necessary
+#print axioms YangMills.RG.criticalRescaledFlatBlockConstraint_constant_isometry
+#print axioms YangMills.RG.criticalRescaledFlatGaugeHodgePoincare_constantSector_lower_bound
+#print axioms YangMills.RG.VolumeUniformCriticalRescaledFlatPoincareGate
+-- W-4b: the scale-adapted CT parameter balance.  Conditional on the critical-scale
+-- L^-4 kernel amplitude, the L^4 ball growth cancels and theta_L = tau/L
+-- preserves a positive block-scale rate.
+#print axioms YangMills.RG.criticalKernel_mul_ball_le
+#print axioms YangMills.RG.criticalBlockTiltRate_pos
+#print axioms YangMills.RG.criticalBlockTiltRate_budget_eq
+#print axioms YangMills.RG.criticalFineTiltRate_pos
+#print axioms YangMills.RG.criticalFineTiltRate_mul_range
+#print axioms YangMills.RG.criticalScale_tiltBudget
+-- W-4c: actual critical-scale operator input for the critical Gram term.
+#print axioms YangMills.RG.flatBlockConstraint_single_norm_le_criticalScale
+#print axioms YangMills.RG.criticalScaledBlockConstraint_single_norm_le
+#print axioms YangMills.RG.criticalScaledBlockGram_kernelBound
+#print axioms YangMills.RG.criticalScaledBlockGram_finiteRange
+-- W-4d: the present full-space critical Poincare gate already fails at N'=1.
+#print axioms YangMills.RG.flatBlockConstraintQCLM_squareMode_one_eq_zero
+#print axioms YangMills.RG.criticalScaledBlockConstraintQCLM_squareMode_one_eq_zero
+#print axioms YangMills.RG.volumeUniformCriticalRescaledFlatPoincareGate_one_false
+-- W-4e: the obstruction is block-periodic and closes the gate for every N'>0.
+#print axioms YangMills.RG.flatBlockConstraintQCLM_blockPeriodicSquareMode_eq_zero
+#print axioms YangMills.RG.criticalScaledBlockConstraintQCLM_blockPeriodicSquareMode_eq_zero
+#print axioms YangMills.RG.gaugeConstraintQCLM_blockPeriodicSquareModeCochain_eq_zero_of_ne
+#print axioms YangMills.RG.norm_sq_covariantD1CLM_blockPeriodicSquareModeCochain_of_ne
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner_blockPeriodicSquareModeCochain_of_ne
+#print axioms YangMills.RG.volumeUniformCriticalRescaledFlatPoincareGate_false
+#print axioms YangMills.RG.sum_blockFourierProfile_block_eq_zero
+#print axioms YangMills.RG.blockFourierEigenvalue_le
+#print axioms YangMills.RG.flatBlockConstraintQCLM_blockFourierMode_eq_zero
+#print axioms YangMills.RG.gaugeConstraintQCLM_blockFourierModeCochain_eq_zero_of_ne
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner_blockFourierModeCochain_of_ne
+#print axioms YangMills.RG.blockFourierMode_rayleigh_eq
+#print axioms YangMills.RG.criticalRescaledFlatPoincare_fourier_lower_bound
+#print axioms YangMills.RG.volumeUniformCriticalRescaledFlatPoincareGate_fourier_false
 -- O-1: the operator bridge (charter docs/O-BRIDGE-CHARTER.md).  Headlines,
 -- non-vacuity witnesses, and load-bearing substrate.
 #print axioms YangMills.OS.clustering_iff_gap

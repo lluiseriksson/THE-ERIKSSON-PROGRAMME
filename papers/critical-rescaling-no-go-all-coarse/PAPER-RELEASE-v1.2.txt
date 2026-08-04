@@ -1,0 +1,76 @@
+Fourier transverse-mode no-go paper release
+Version: 1.2
+Date: 2026-08-04
+
+Title:
+Fourier Transverse Modes Obstruct Volume-Uniform Critical Coercivity
+in a Flat Lattice Gauge Block Form
+
+Final PDF:
+- file: output/pdf/critical_rescaling_fourier_no_go_v1.2.pdf
+- bytes: 316153
+- SHA-256: D5D485858E788DE4E5FA9C7736138A59893122846AFAEB07DAB2E06D43E20180
+- pages: 9
+- page size: US Letter, 612 x 792 pt
+
+Theorem-source packet:
+- file: output/pdf/critical_rescaling_fourier_no_go_sources_v1.2.zip
+- bytes: 20742
+- SHA-256: DB9EA587A8F889062B9C0B77A1995C4BC76764251284DF62473745225D36AFEC
+
+Paper submission bundle:
+- file: output/pdf/critical_rescaling_fourier_no_go_paper_v1.2.zip
+- bytes: 315250
+- SHA-256: EBAB7B05D0FFE40D5BF87C532F89AAA98A18A59F38E319E68811F19EE4D541E9
+
+TeX body capture:
+- file: papers/critical-rescaling-no-go-all-coarse/critical_rescaling_no_go_all_coarse.tex
+- working-tree raw bytes: 26045
+- working-tree raw SHA-256:
+  05BC0887F4820823F7E68108C45CAD64727D22AC23273D3B268F86DE78BDE67D
+- canonical LF bytes: 25552
+- canonical LF SHA-256:
+  09EB460ED4487E30051B684361B83FCDA95DD17F82D8C957A20D8012696B94B5
+- deterministic CRLF bytes: 26176
+- deterministic CRLF SHA-256:
+  89B47410D4CB2257E725DBD65069FA878330E1AC8652F75DDB538877BBE80F59
+
+Formalization manifest capture:
+- file: papers/critical-rescaling-no-go-all-coarse/FORMALIZATION-MANIFEST-v1.2.txt
+- raw/LF bytes: 2251
+- raw/LF SHA-256:
+  410826AE841CC6D9AB5B2D0F0D5E2A2BA8D0E2C83E02967447735DCC61ABEDF4
+- deterministic CRLF bytes: 2291
+- deterministic CRLF SHA-256:
+  469350BA5C4EDDE081A0EFF63E56D7AF51D013155712ACC115FE27612B1FCA2B
+
+Source anchors:
+- theorem source commit: f21539ed0bb880a04078de369bf5cbf063f7b101
+- independent audit commit: 5bbc9347a64083fb3936f8240a5b0108e5d03fea
+- Lean v4.29.0-rc6:
+  00659f8e6071d7e46131ed643bf8003b99b044e9
+- Mathlib:
+  07642720480157414db592fa85b626dafb71355b
+
+Release QA:
+- pdflatex pass 2: exit 0
+- LaTeX warnings: none
+- overfull/underfull boxes: none
+- undefined references: none
+- PDF link annotations: 39
+- broken PDF link annotations: 0
+- external URI links: 7
+- internal links: 32
+- all nine rendered pages visually inspected
+- no clipping, overlap, broken glyph, or unreadable table observed
+- seven frozen Lean bodies unchanged from the theorem source commit
+
+Scientific status:
+- result: full-space critically rescaled Poincare gate falsified
+- positive replacement theorem: not claimed
+- external certification: pending
+- this release record is reproduction evidence, not self-certification
+
+The release commit is the Git commit containing this manifest. Its SHA is
+reported in the task handoff so this file does not introduce a self-referential
+hash cycle.
