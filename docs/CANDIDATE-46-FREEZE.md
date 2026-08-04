@@ -328,3 +328,115 @@ The revised binary PDF is frozen separately:
 10. **Runtime-governance attack.** Lean/Lake stayed off the Windows owner
     desktop. Colab used the specified Pro+ account, CPU high RAM, no GPU, and
     the runtime was disconnected and deleted after verification.
+
+## Closed-simplex equality supplement freeze (August 4, 2026)
+
+Freeze status: **closed-simplex equality classification added; singular
+branch machine-checked; external priority and score verdict still required**.
+
+This supplement responds to the 5.07/10 review, which accepted the positive
+probability theorem as the principal formal contribution but identified
+strict positivity and narrow scope as remaining weaknesses. The extension
+does not claim the boundary inequality as new: Cohen--Fausti already treat
+common faces and noncomparable measures. The candidate addition is the exact
+classification of all equality cases on the closed finite simplex.
+
+- Branch: `codex/candidate-46-birkhoff-dobrushin-wall`
+- Frozen body commit: `d3c59375ef668cb948a00a490fd63f7d48a73a1a`
+- Base `main`: `12bf6e241694aa5cfb5c7a6e08a96c8fa47ff9b1`
+- Main divergence at capture: branch ahead by nine commits; `main` ahead by
+  zero commits
+- Capture host: Windows owner desktop, isolated worktree
+- Capture method: `System.IO.File.ReadAllBytes`, UTF-8 decode, explicit LF and
+  CRLF normalization, and `System.Security.Cryptography.SHA256.HashData`
+- Primary priority audit: Cohen--Fausti, arXiv:2309.02413v2, Theorem 5.1,
+  proof at the boundary-face reduction, and Remark 15
+- Local Lean/Lake/oracle: not invoked
+- Remote runtime: Colab Pro+ CPU, high RAM (50.99 GiB visible), no GPU, account
+  `lluiseriksson@gmail.com`
+- Runtime opened: approximately `2026-08-04T22:07:27+02:00`
+- Runtime closed: `2026-08-04T22:20:41+02:00`
+- Close method: Colab UI “disconnect and delete runtime”; disconnected state
+  verified after confirmation
+- Lean: `leanprover/lean4:v4.29.0-rc6`
+- Mathlib: `07642720480157414db592fa85b626dafb71355b`
+- Notebook capture:
+  `https://colab.research.google.com/drive/11N9BAjGa_w4ikrI9bAl9Jkx-5iYxpRzS`
+- Final standalone compile: exit 0 in 12.480 s; `.olean` SHA-256
+  `131116b2421c1efca7920746b982c864e6931b35b13d74c1b4c65877e0e9192b`
+- Final package module/import pass: both exit 0 in 19.786 s; module `.olean`
+  SHA-256
+  `6e37e9416c42dbdc9ab2667ea0843a5ba9bf34d7821c7a16c77cc583659cd919`;
+  importer `.olean` SHA-256
+  `e0985e10eea3709f7907fb54fe1aa3532f1298026c8d8524bb5324799c5cd8ce`
+- Exact closed-simplex certificate: 26,662 rational three-point pairs, 1,174
+  equality pairs, normal and `python -O` exit 0
+- Measured local certificate runs: normal 1.325 s and 13.40 MiB sampled peak;
+  optimized 1.330 s and 13.51 MiB sampled peak
+- PDF compiler: Tectonic, final exit 0 in 5.657 s; only the host Fontconfig
+  default-file diagnostic remained, with no TeX warnings
+- PDF QA: all 10 final pages rendered at 1.6x and visually inspected; no
+  clipping, overlap, broken glyph, unreadable reference, or residual page was
+  found
+- Fable/Claude: not invoked because the last visible account check showed
+  `luis.ebikeride@gmail.com`, not the binding account
+  `masterythief@gmail.com`
+- External audit: not performed; no terminal score or priority verdict is
+  claimed
+
+### Frozen closed-simplex bodies
+
+| Path | Raw bytes | SHA-256 raw | LF bytes | SHA-256 LF | CRLF bytes | SHA-256 CRLF |
+|---|---:|---|---:|---|---:|---|
+| `YangMills/BirkhoffDobrushin/Wall.lean` | 26267 | `0360a91a7061d9a47dbfec0dc2518175d05fb14edffacdf5b8452b1ebfa442cb` | 26267 | `0360a91a7061d9a47dbfec0dc2518175d05fb14edffacdf5b8452b1ebfa442cb` | 26952 | `e3ae6981443bcb93770d4c568936a2ab80167f0cdedcaad802010a0088101d53` |
+| `docs/CANDIDATE-46-BIRKHOFF-DOBRUSHIN-WALL.md` | 15473 | `a664f0df91ee8c97493764a466fdd2c3295d48df62eb04e1293b6cd347a698d8` | 15473 | `a664f0df91ee8c97493764a466fdd2c3295d48df62eb04e1293b6cd347a698d8` | 15841 | `e4ed40cb1ef3c7787fdfab0c0b606bae637b9ec40d2f97df6f14db8ac72261e2` |
+| `docs/CANDIDATE-46-CERTIFICATE-TRANSCRIPT.json` | 2763 | `e937cb1abc649b36829f1ed352ec74ffd4ab8366fb9011734246c3ac73d15775` | 2763 | `e937cb1abc649b36829f1ed352ec74ffd4ab8366fb9011734246c3ac73d15775` | 2842 | `07281c1fd7ba165315a037b5d4994385a613d5cfca96645ed2641ec6c44b7166` |
+| `docs/CANDIDATE-46-LEAN-VERIFICATION.json` | 10270 | `ad84babdaaad693dee3259041cc3d21dc2cf3109f13a6e67c6960d24d8cf39bf` | 10270 | `ad84babdaaad693dee3259041cc3d21dc2cf3109f13a6e67c6960d24d8cf39bf` | 10516 | `a29a59c4ba224b7140202e214ac7d7aed1989e904eb9a388db211a94bbf9346e` |
+| `papers/birkhoff-dobrushin-wall/birkhoff_dobrushin_wall.tex` | 31309 | `860b71470173d63e76aca7e81b47aa6ea9fbe259f7c5411c4fb2dc0056ea65e8` | 31309 | `860b71470173d63e76aca7e81b47aa6ea9fbe259f7c5411c4fb2dc0056ea65e8` | 32053 | `9e374e3bc180fd2f639f4fff2a3c1e22c1670de9941de7f32e0e541bf61fc1a7` |
+| `scripts/certify_birkhoff_dobrushin_comparison.py` | 8843 | `cb3a58641bf65aa7a0f2b30213f530521073516749ae3260c9dbe7235cadda6a` | 8843 | `cb3a58641bf65aa7a0f2b30213f530521073516749ae3260c9dbe7235cadda6a` | 9097 | `a824eca3f9e05698a8b6bda162943ded77f42cab98095919496f76912196efcd` |
+| `scripts/killtest_birkhoff_tensor_wall.py` | 2679 | `b0bd9f744331acdf769b194d922e75bcff7f64d15709904584cfe85526729412` | 2679 | `b0bd9f744331acdf769b194d922e75bcff7f64d15709904584cfe85526729412` | 2763 | `cebcb22f2da82be389dd62f7598bd9f679141612105484d9fadb0cb49aa146f9` |
+
+The revised binary PDF is frozen separately:
+
+| Path | Bytes | SHA-256 |
+|---|---:|---|
+| `output/pdf/birkhoff_dobrushin_wall.pdf` | 111071 | `16ab7a3f838a563232052abcf6e5dd7a1d543eb127590eeeab7459a5b8359428` |
+
+### Closed-simplex attacks attempted
+
+1. **Priority-overclaim attack.** Cohen--Fausti already prove the sharp bound
+   for common boundary faces and treat noncomparable measures by the trivial
+   infinite-distance bound. The manuscript now attributes this explicitly and
+   claims only the complete equality classification as candidate-new.
+2. **Wrong-envelope kill test.** The first certificate compared TV with the
+   intermediate rational chord envelope. It was killed by
+   `p=(0,1/4,3/4)`, `q=(0,1/2,1/2)`, which saturates the chord step but not the
+   square-root Hilbert envelope.
+3. **Exact-root repair.** The corrected certificate avoids floating point and
+   checks the Hilbert bound through
+   `(1-TV)^2 M >= (1+TV)^2 m`, with equality tested by exact rational
+   arithmetic.
+4. **Closed-simplex enumeration.** All 26,662 same-denominator rational pairs
+   on three atoms through denominator 12 passed the claimed two-branch iff;
+   1,174 were equality cases.
+5. **Face-versus-singular split.** Equal supports reduce to the positive
+   theorem on their common face. Unequal supports give infinite Hilbert
+   distance; equality is equivalent to TV one, hence to pointwise disjoint
+   support by the overlap identity.
+6. **Kernel-zero lift.** If all rows share a support, the positive kernel
+   theorem applies on that face. Otherwise the diameter is infinite, and the
+   global comparison saturates exactly when a row pair is disjoint.
+7. **Lean first-draft attack.** The first 26,252-byte draft failed on a sum
+   rewrite, an unavailable lemma name, and a missing membership argument. It
+   produced no accepted `.olean`; the corrected 26,267-byte source was
+   compiled independently.
+8. **Package/import attack.** The corrected source compiled standalone, in the
+   package path, and through a separate importer checking the overlap and
+   disjoint-support theorems together with the positive pairwise theorem.
+9. **Scope-inflation attack.** The common-face subtype reduction is stated as
+   a finite mathematical reduction, not falsely advertised as a separate Lean
+   theorem. Tensor cross-ratios remain restricted to strictly positive
+   matrices.
+10. **No-false-gap and governance attacks.** The global tensor wall is
+    unchanged. Lean/Lake stayed off Windows; Colab used the required account,
+    CPU high RAM, no GPU, and was disconnected and deleted after verification.
