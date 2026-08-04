@@ -30885,3 +30885,27 @@ zero LaTeX errors, zero undefined references.
 
 **ROLES.**  The desk that wrote the paper did not audit it; external
 evaluation has its own scales and its own record.
+
+## Addendum 605 (2026-08-04, **paper v8.1: the frontier residue killed;
+the external verdict — 5.98, FIRST PLACE provisional**)
+
+The second external reading scored v8 at **5.98/1st on its scale**
+(interval 5.88-6.08; a technical tie with the area law, this paper
+slightly ahead on the reusable architecture: the abstract interface
+measure-decay => uniform operator gap, inhabited by a non-degenerate
+physical family) and found ONE editorial residue: the frontier's "What
+changed" paragraph still said "one open discharge" and "the single
+identification ... connecting the two chains" — contradicting
+Theorem thm:corollary three lines above.  v8.1 replaces the paragraph
+with the reading's proposed sentence (adapted): step 4 closed, the five
+planks composing to the corollary, and what remains lying beyond the
+finite-volume transport; the section retitled "What is now closed, and
+what remains".  Artifact verified: the new head and sentences present,
+all three stale phrases absent, 25 pages, zero errors.  The evaluator's
+stated reasons not to go above 6 are the manuscript's own limits
+(classical mathematics, rectangles with free boundary, no
+infinite-volume state, no thermodynamic limit, no YM consequence) —
+exactly the honesty the regime requires, recorded here without dispute.
+
+**ROLES.**  Score and residue are the evaluator's; the fix and the sweep
+are this desk's; the click is the owner's.

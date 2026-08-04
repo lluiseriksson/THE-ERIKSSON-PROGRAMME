@@ -1253,7 +1253,7 @@ expected number of checks actually executed, because an empty failure list is
 also what zero checks produce.  No acceptance decision anywhere in this lane
 depends on a Python \texttt{assert}.
 
-\section{What remains, named exactly}
+\section{What is now closed, and what remains}
 \label{sec:frontier}
 
 Theorems~\ref{thm:coeff}--\ref{thm:gibbs} are an engine, not a conclusion.
@@ -1308,18 +1308,23 @@ order:
 paper named step~2 as the only currently identified new analytic estimate and
 the bottleneck of the chain; a later one proved it, for arbitrary invariant
 data, and left step~3 open; the version before this one closed both and
-described step~4 as untouched.  Step~4's translation is now itself three
-theorems and one open discharge.  The translation \emph{did} run through
+described step~4 as untouched; its successor closed three of step~4's four
+planks and named the fourth.  Step~4 is now closed.  The finite band
+identity, the abstract transport theorem, the Perron-boundary tilt, the
+currying identification and the rectangle-family feed compose to
+Theorem~\ref{thm:corollary}, a volume-uniform projected-operator gap
+throughout the Dobrushin window.  The translation \emph{did} run through
 finite time extent with explicit boundary control, exactly as the design
 decision below prescribed: the band identity is finite and exact at every
 horizon, the boundary control is the tilt layer's floor and sup bounds, and
 the limit is taken nowhere --- the conclusion is an operator-norm bound
 obtained from finite covariances.  What this paper claims is that between a
 positive weight and exponential decay of its correlations there is no gap,
-and that between \emph{uniform band decay} and a \emph{uniform operator
-gap} there is no gap either; what remains, and is not claimed, is the
-single identification of Section~\ref{sec:transport-open} connecting the
-two chains for the coupled family.
+that between uniform band decay and a uniform operator gap there is no gap
+either, and that for the coupled family the two chains are connected.
+What remains lies beyond this finite-volume transport: no infinite-volume
+state, thermodynamic limit or boundary-condition independence is
+constructed here.
 
 
 \textbf{The consumer, named.}  It is \texttt{volumeUniform\_gap} in
