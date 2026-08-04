@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fresh-clone Colab gate for the CMP99 source large-block scale brick.
+"""Fresh-clone Colab gate for the CMP99 regional precision split brick.
 
 This file is validation infrastructure only.  It checks the immutable source
 checkpoint named by ``SOURCE_SHA`` and disconnects the Colab runtime at the
@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v9"
-SOURCE_SHA = "b28d01612475ca0cd860c9046048bc1615dd217d"
+RUNNER_REV = "regional-precision-commutator-v10"
+SOURCE_SHA = "86da6d482ad0994e9fce514558848e9e716ddd8d"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -37,7 +37,7 @@ ARCHIVE = Path("/content/hrpoly-regional-large-block-evidence.tar.gz")
 ASSET = Path("/content/lean-4.29.0-rc6-linux.tar.zst")
 TOOLROOT = Path("/content/lean-4.29.0-rc6-linux")
 
-QUEUE = [
+LEGACY_QUEUE_V9 = [
     (
         "regional_fine_scale_nogo_focal",
         [
@@ -225,6 +225,49 @@ QUEUE = [
     ),
 ]
 
+QUEUE = [
+    (
+        "commutator_algebra_repro",
+        ["lake", "env", "lean", "/content/regional-commutator-repro.lean"],
+        None,
+    ),
+    (
+        "regional_source_precision_commutator_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceRegionalGaugePrecisionCommutator",
+        ],
+        None,
+    ),
+    (
+        "regional_source_precision_commutator_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/"
+            "BalabanCMP99SourceRegionalGaugePrecisionCommutatorAudit.lean",
+        ],
+        1,
+    ),
+]
+
+ALGEBRA_REPRO = r"""import Mathlib
+
+noncomputable section
+
+variable {E : Type*}
+variable [NormedAddCommGroup E] [NormedSpace ℝ E]
+
+example (H K Q : E →L[ℝ] E) (a : ℝ) :
+    H.comp (K + a • Q) - (K + a • Q).comp H =
+      (H.comp K - K.comp H) + a • (H.comp Q - Q.comp H) := by
+  apply ContinuousLinearMap.ext
+  intro phi
+  simp only [ContinuousLinearMap.sub_apply, ContinuousLinearMap.add_apply,
+    ContinuousLinearMap.smul_apply, ContinuousLinearMap.comp_apply,
+    map_add, map_smul]
+  module
+"""
+
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 
@@ -404,6 +447,10 @@ def main() -> int:
         if mathlib != EXPECTED_MATHLIB:
             raise RuntimeError("MATHLIB_PIN_MISMATCH=" + mathlib)
         run("cache_get", ["lake", "exe", "cache", "get"], cwd=ROOT)
+
+        Path("/content/regional-commutator-repro.lean").write_text(
+            ALGEBRA_REPRO, encoding="utf-8"
+        )
 
         for stage, command, expected_axioms in QUEUE:
             output = run(stage, command, cwd=ROOT)
