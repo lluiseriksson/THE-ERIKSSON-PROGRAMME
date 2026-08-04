@@ -1,0 +1,141 @@
+(9) Fabricante del prisma theta -- reproducibility transcript
+Date: 2026-07-31
+Timezone: Europe/Stockholm
+Status: manufacturer transcript; no external audit verdict
+
+PROVENANCE
+construction_base_sha=43c003b2c0c98aceeabbf10ba28a4783de5859f1
+preregistered_charter_commit=4fffaa6ffdf52dd016b6aa7a6c92084718b56671
+charter_amendment_commit=1a88a2307468f988183d2e75b8413650486e0560
+frozen_reference_sha=a66b1c7da3c7441e06864e327b5c4efa43e9c79d
+branch=codex/su2-theta-prism-artifact
+tag_queries_or_resolution=none
+
+HOST AND TOOLCHAIN
+OS=Microsoft Windows 11 Home 10.0.26200 build 26200
+ARCH=AMD64
+CPU=AMD Ryzen 7 5800X 8-Core Processor
+LOGICAL_PROCESSORS=16
+lean-toolchain=leanprover/lean4:v4.29.0-rc6
+lean=Lean 4.29.0-rc6 x86_64-w64-windows-gnu
+lean_commit=00659f8e6071d7e46131ed643bf8003b99b044e9
+lake=Lake 5.0.0-src+00659f8
+mathlib_sha=07642720480157414db592fa85b626dafb71355b
+
+CACHE DISCIPLINE
+Before the first heavy build, active Lean/Lake command lines were inspected.
+No duplicate task target was launched.  The local worktree cache initially
+lacked Mathlib.olean.  The source and destination .lake/packages paths were
+resolved to absolute paths and verified as ordinary directories with empty
+LinkType/Target fields.  The source Mathlib raw SHA matched the manifest SHA.
+The cache was copied with:
+
+  robocopy <verified-source-packages> <this-worktree>/.lake/packages
+    /E /COPY:DAT /DCOPY:DAT /R:2 /W:1 /NFL /NDL /NP
+
+robocopy_exit=3 (successful copy plus extras; no mirror and no deletion)
+copied_bytes=7.702 GiB
+junctions_created=0
+shared_caches_deleted=0
+
+EXACT TARGET BUILD
+Command:
+  lake build YangMills.SU2ThetaPrism.Endpoint
+
+Jobs were selected by Lake.  The final console reported 8169 jobs.  No Lean or
+Lake process was active at the pre-build inspection point.
+
+stdout/stderr console (Lake combines progress and warnings in this capture):
+  Replayed YangMills.P8_PhysicalGap.SUN_Compact
+  Three existing upstream unused-section-variable warnings at lines 34, 42,
+  and 49 of SUN_Compact.lean.
+  Build completed successfully (8169 jobs).
+exit_code=0
+
+SEPARATE ORACLE
+Command:
+  lake env lean YangMills/SU2ThetaPrism/Oracle.lean
+
+stdout:
+'YangMills.SU2ThetaPrism.threeBranch_cycleRank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.reduced_cycleRank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.holonomy_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.cellWeight_reflection_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.witness_simultaneous_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.witness_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.conditionalU_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.conditionalV_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.conditionalRelative_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.complete_U_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.complete_V_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.complete_relative_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.witnessNormSq_eq_three_quarters' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.theta_coupling_multiplicity_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.singletProjectionCoefficient_eq_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.thetaPairing_factor_sixteen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.thetaPairing_gate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.cellWeight_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.manufactured_six_point_theta_gate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.SU2ThetaPrism.endpoint_anti_vacuity' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+stderr=empty
+exit_code=0
+elapsed_seconds=282.1
+
+STATIC AND DOCUMENTARY VALIDATION
+Command:
+  python scripts/validate_su2_theta_prism_contract.py
+stdout:
+  PASS: checked 8 Lean files; loaded-hypothesis rule visible
+exit_code=0
+
+Command:
+  rg -n '\b(sorry|admit|sorryAx)\b|^\s*axiom\b|YangMills\.OS\.ReflectionSplitting' YangMills/SU2ThetaPrism -g '*.lean'
+stdout=empty
+exit_code=1 (expected: no matches)
+
+Command:
+  git diff --check
+stdout=empty apart from Git's CRLF advisory for documentary files
+exit_code=0
+
+INDEPENDENT EXACT-RATIONAL REPLAY
+Command executed twice:
+  python scripts/certify_su2_theta_prism_rationals.py
+
+byte_identical=true
+utf8_bytes=410
+sha256=ad027cbe00176826c0a5657f2a1d674cb0711e548a57befcfc30d447ac65a723
+checked_in_json_matches_replay=true
+
+The replay asserts independently:
+  three_branch_cycle_rank=2
+  reduced_cycle_rank=1
+  singlet_projection_coefficient=1/2
+  witness_norm_sq_from_four_moments=3/4
+  pairing_factor_from_norm_and_dimensions=1/16
+  gate_factor_from_coefficient_lowers_and_pairing=1/512
+
+SOURCE HASHES (SHA-256 RAW / LF-NORMALIZED)
+Analysis.lean       ad862f93baa55e792908e753166a436f4a67328f89c0f6efd3de0bd2ac44508a / ad862f93baa55e792908e753166a436f4a67328f89c0f6efd3de0bd2ac44508a
+Cell.lean           bfea943c601a430a0ce2da67846530280a90fa96334bf6a0e7ff3b0a4827373e / bfea943c601a430a0ce2da67846530280a90fa96334bf6a0e7ff3b0a4827373e
+Coefficients.lean   624f817302b5714a5f4185d4cf9ed4a5bbbd5f4a06be052ee6771cf263ef76cb / 624f817302b5714a5f4185d4cf9ed4a5bbbd5f4a06be052ee6771cf263ef76cb
+Combinatorics.lean  0eb2eb727e33fb853b3943c01f41ed1e4907428c8612594339b175cb7bf8e26a / 0eb2eb727e33fb853b3943c01f41ed1e4907428c8612594339b175cb7bf8e26a
+Endpoint.lean       8dea4b488181bc05aabb979313b1949c945bc680359515603d3a4b9ab70aabb1 / 8dea4b488181bc05aabb979313b1949c945bc680359515603d3a4b9ab70aabb1
+Oracle.lean         d4f4f071facf45cda43510272701477d3be5ccad41da270f83235118d1d6a2b2 / d4f4f071facf45cda43510272701477d3be5ccad41da270f83235118d1d6a2b2
+Representation.lean 6e08e28bd3930bf10cb3e5f95752bbe2f74aedd39b8846f1a6769303f752b543 / 6e08e28bd3930bf10cb3e5f95752bbe2f74aedd39b8846f1a6769303f752b543
+Witness.lean        0dc7ab2f7e078b81995bc01c5696d34d1b3ca7cdb69f4d953bccb396c7a3c36c / 0dc7ab2f7e078b81995bc01c5696d34d1b3ca7cdb69f4d953bccb396c7a3c36c
+
+BINARY HASHES (SHA-256)
+Endpoint.olean cf9ff8e5dbc6efba7ccc0b634aff4e8bd761bd9dbd4116f36fb2ea443a5577e4 bytes=96568
+Oracle.olean   aca0f3518b9fbb3c1293f8847fbfb69ca7d29586d66da1ae86658c371f121bb6 bytes=1968
+
+NEGATIVE DIFF
+Command:
+  git diff --name-only 43c003b2c0c98aceeabbf10ba28a4783de5859f1 --
+    'YangMills/OS/SU2WilsonReflection*' 'docs/su2-os/**'
+stdout=empty
+exit_code=0
+
+No command modified pull request 35.  The frozen reference raw commit was not
+checked out or mutated.  No paper or merge action was performed.
