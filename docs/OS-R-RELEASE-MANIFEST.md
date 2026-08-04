@@ -1,7 +1,7 @@
 # OS-R release manifest: finite reconstruction with one uniform mass
 
-Date: 2026-08-04.  Status: frozen audit object, not a terminal
-self-certification.
+Date: 2026-08-04.  Status: frozen audit object with an external manuscript
+evaluation recorded below; not a terminal proof self-certification.
 
 ## Frozen body and claim
 
@@ -135,6 +135,23 @@ identified with either normalisation.
 
 The regenerated seven-page paper PDF and its TeX source are frozen by the
 byte counts and hashes in the last two rows above.
-An external audit should reproduce the body SHA, inspect the complete logs and
-issue the terminal verdict; this manifest deliberately stops at PASS
-candidate.
+
+## External manuscript evaluation
+
+An independent manuscript-reading task on 2026-08-04 assigned a scientific
+score of **5.32/10**, a final-manuscript quality score of **5.35/10**, and
+ranked this paper sixth among the programme papers (seventh when the external
+*Kerr Stability* reference is included).  The reader explicitly held the
+scientific score fixed: the clarified supersession, finite-volume meaning of
+“one mass”, and infinite-volume boundary improve presentation but add no new
+theorem, estimate, coupling window, noncommutative reconstruction, or Lean
+endpoint.  The supplied evaluation text has 5269 raw bytes and SHA-256
+`0a06ebc2ccfbed4de858f30abcc32aa65d53fb4d6f3d25def3e2c2a680616b19`.
+
+The catalogue consequence is therefore fixed: this manuscript is the sole
+active entry for the three-step reconstructed-gap/correlator/operator chain;
+the stepping-stone manuscripts are not additional ranked contributions.  This
+evaluation is a scientific/editorial assessment, not a reproduction of the
+formal build.  A terminal proof audit must still reproduce the body SHA and
+inspect the complete logs; the manifest deliberately remains a PASS candidate
+rather than self-certification.
