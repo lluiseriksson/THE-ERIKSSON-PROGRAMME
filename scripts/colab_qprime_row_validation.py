@@ -3,7 +3,7 @@
 
 This validation runner compiles the immutable PRE-VALIDATION source checkpoint
 named by ``SOURCE_SHA``.  It is infrastructure only: the source object and its
-eight Lean blobs are hash-gated before any Lean command is run.
+ten Lean blobs are hash-gated before any Lean command is run.
 """
 
 from __future__ import annotations
@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "generated-qprime-row-v8"
-SOURCE_SHA = "c2038c046a6fbcdd1e4ceefdd5832b16b0b870ab"
+RUNNER_REV = "generated-qprime-row-v9"
+SOURCE_SHA = "9f76c4e70e5740b045eb6afc38de12ddf9e5216c"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -39,6 +39,10 @@ TOOLROOT = Path("/content/lean-4.29.0-rc6-linux")
 PATH_MANIFEST = Path("/content/hrpoly-generated-qprime-row-paths.txt")
 
 SOURCE_BLOBS = {
+    "YangMills/RG/BalabanCMP99SourceActiveFineBlockEquiv.lean":
+        "09ca7e7fa70096abf8c6177ff61bc341a68ca60eea38ba4c61ea9c1458e05599",
+    "YangMills/RG/BalabanCMP99SourceActiveFineBlockEquivAudit.lean":
+        "d425c148327e87f2fd997729ec8274b37d02264ae09692cd53d5dce4f1b935ea",
     "YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMass.lean":
         "d015d9f74e62224194283c67dcfe67f0bcc9c7191a23d03b6da226e72bc3d6ea",
     "YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMassAudit.lean":
@@ -59,30 +63,17 @@ SOURCE_BLOBS = {
 
 QUEUE = [
     (
-        "qprime_row_mass_focal",
-        ["lake", "build", "YangMills.RG.BalabanCMP99SourceGeneratedQprimeRowMass"],
+        "active_fine_block_equiv_focal",
+        ["lake", "build", "YangMills.RG.BalabanCMP99SourceActiveFineBlockEquiv"],
         None,
     ),
     (
-        "qprime_row_mass_audit",
+        "active_fine_block_equiv_audit",
         [
             "lake", "env", "lean",
-            "YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMassAudit.lean",
+            "YangMills/RG/BalabanCMP99SourceActiveFineBlockEquivAudit.lean",
         ],
-        7,
-    ),
-    (
-        "qprime_weighted_row_focal",
-        ["lake", "build", "YangMills.RG.BalabanCMP99SourceGeneratedQprimeWeightedRow"],
-        None,
-    ),
-    (
-        "qprime_weighted_row_audit",
-        [
-            "lake", "env", "lean",
-            "YangMills/RG/BalabanCMP99SourceGeneratedQprimeWeightedRowAudit.lean",
-        ],
-        3,
+        2,
     ),
     (
         "generated_counting_mass_row_focal",
