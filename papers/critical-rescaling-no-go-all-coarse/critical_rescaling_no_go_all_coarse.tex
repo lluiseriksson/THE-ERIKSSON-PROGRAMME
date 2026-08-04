@@ -2,12 +2,13 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1.02in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{booktabs,array,enumitem,microtype}
+\usepackage{booktabs,array,enumitem,microtype,xurl}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
 \hypersetup{
   pdftitle={Fourier Transverse Modes Obstruct Volume-Uniform Critical Coercivity},
   pdfauthor={Lluis Eriksson},
-  pdfsubject={A machine-checked no-go theorem for a flat lattice gauge block form}
+  pdfsubject={A machine-checked no-go theorem for a flat lattice gauge block form},
+  pdfkeywords={lattice gauge theory, block averaging, Poincare inequality, Fourier mode, Lean 4}
 }
 
 \newtheorem{theorem}{Theorem}[section]
@@ -34,7 +35,7 @@
 Volume-Uniform Critical Coercivity\\
 in a Flat Lattice Gauge Block Form}
 \author{Lluis Eriksson}
-\date{August 2, 2026 (version 1.1)}
+\date{August 4, 2026 (version 1.2)}
 
 \begin{document}
 \maketitle
@@ -43,9 +44,12 @@ in a Flat Lattice Gauge Block Form}
 Let a fine periodic lattice have side $LN'$ and let $Q_L$ be the
 $L^{-d}$-normalized block average of length-$L$ line integrals.  In four
 dimensions, the rescaling $Q_L\mapsto LQ_L$ repairs the elementary
-constant-field scaling obstruction to a Poincare estimate.  We prove that it
-cannot yield coercivity on the full one-cochain space with a constant uniform
-in the block side.  For every $L\ge2$, every fixed $N'\ge1$, and $N_c\ge2$,
+constant-field scaling obstruction to a Poincar\'e estimate.  More generally,
+for a power rescaling $L^\sigma Q_L$ in dimension $d$, that sector only forces
+$\sigma\ge(d-2)/2$; equality is the unique scale-neutral choice, not a
+sufficient coercivity theorem.  We prove that no scalar rescaling can yield
+coercivity on the full one-cochain space with a constant uniform in the block
+side.  For every $L\ge2$, every fixed $N'\ge1$, and $N_c\ge2$,
 we embed the first within-block Fourier phase
 $\zeta_L=\exp(2\pi i/L)$ in a real two-plane of the internal coordinate space
 and construct a transverse one-cochain $A_L$.  It satisfies
@@ -62,7 +66,7 @@ and, for every dimension $d\ge2$,
 \]
 Thus the Rayleigh quotient of
 $K_0+(s_LQ_L)^*(s_LQ_L)$ is exactly $\lambda_L$ for every scalar rescaling
-$s_L$.  Every admissible full-space Poincare constant obeys
+$s_L$.  Every admissible full-space Poincar\'e constant obeys
 $\CP(L)\ge1/\lambda_L\ge L^2/(4\pi^2)$, so no constant chosen before $L$
 can work.  Here ``volume-uniform'' means uniform while the block/fine side
 $L$ varies at an arbitrary fixed positive coarse side $N'$; it is not a claim
@@ -75,6 +79,10 @@ audit reports only \lean{propext}, \lean{Classical.choice}, and
 does not contradict gauge-restricted propagator constructions and makes no
 infinite-volume, continuum, or Yang--Mills mass-gap claim.
 \end{abstract}
+
+\noindent\textbf{Keywords.}
+Lattice gauge theory; block averaging; Poincar\'e inequality; Fourier mode;
+formal verification; Lean~4.
 
 \section{Introduction}
 
@@ -90,14 +98,20 @@ control the full fine one-cochain norm with a constant independent of the
 block side $L$?
 
 The factor $L$ is not arbitrary.  With the line-integral block map used below,
-it exactly balances direction-wise constant fields in dimension four.  That
-necessary scaling test passes, but it probes only the constant sector.  The
-block map also has mean-zero transverse modes in its exact kernel.  The first
-Fourier mode on the within-block cycle makes this obstruction both local to
-every block and spectrally sharp at low momentum.
+it exactly balances direction-wise constant fields in dimension four.  The
+corresponding general-dimensional arithmetic is often compressed into the
+phrase ``critical exponent $(d-2)/2$.''  We separate two statements that this
+phrase can obscure: exponents at or above that threshold avoid growth forced
+by constant fields, while equality is selected only by exact scale neutrality.
+Neither statement is sufficient for full-space coercivity.  The block map also
+has mean-zero transverse modes in its exact kernel, and no scalar multiplier
+can lift them.  The first Fourier mode on the within-block cycle makes this
+obstruction both local to every block and spectrally sharp at low momentum.
 
-The main result has four components.
+The main result has five components.
 \begin{enumerate}[label=(\roman*)]
+\item The constant-sector calculation isolates exactly what the exponent
+  $(d-2)/2$ does and does not imply.
 \item The witness is defined on the exact finite periodic lattice and works
   for every $L\ge2$, with no parity restriction.
 \item Its cancellation under $Q_L$ and under the flat divergence is exact in
@@ -111,7 +125,7 @@ The main result has four components.
 An earlier square-wave witness gives the weaker even-scale quotient $8/L$.
 It already disproves the same gate, but the Fourier construction identifies
 the actual low-frequency mechanism and strengthens the quantitative lower
-bound on Poincare constants from linear to quadratic growth.
+bound on Poincar\'e constants from linear to quadratic growth.
 
 The conclusion is a domain diagnosis, not a general no-go for lattice gauge
 renormalization.  Classical constructions use gauge restrictions, quotient
@@ -156,6 +170,43 @@ For a scalar sequence $s_L$, the tested precision is
 \begin{equation}\label{eq:H}
  H_{L,s}=K_0+(s_LQ_L)^*(s_LQ_L).
 \end{equation}
+
+\begin{proposition}[what the constant-sector wall fixes]
+\label{prop:critical-exponent}
+Let $A_v(x,\mu)=v_\mu$ be a direction-wise constant field and put
+$S_v=\sum_\mu\norm{v_\mu}^2>0$.  Then
+\begin{equation}\label{eq:constant-norms}
+ \norm{A_v}^2=L^d(N')^dS_v,
+ \qquad
+ \norm{L^\sigma Q_LA_v}^2=L^{2\sigma+2}(N')^dS_v.
+\end{equation}
+Consequently, a Poincar\'e estimate with a constant independent of unbounded
+$L$ can pass this sector only if
+\begin{equation}\label{eq:critical-threshold}
+ \sigma\ge\frac{d-2}{2}.
+\end{equation}
+Equality is the unique exponent for which the two norms in
+\eqref{eq:constant-norms} have identical scale dependence; larger exponents
+overweight the constant sector and also pass this necessary test.
+\end{proposition}
+
+\begin{proof}
+There are $(LN')^d$ fine sites.  For a constant field, the inner line sum in
+\eqref{eq:Q} supplies $L$, while the $L^{-d}$ normalization cancels the $L^d$
+source sites in a block, so $Q_LA_v=L v$ on each coarse bond.  This gives
+\eqref{eq:constant-norms}.  Substitution in a Poincar\'e estimate and
+cancellation of the positive factor $(N')^dS_v$ yields
+$L^{d-2-2\sigma}\le\CP$.  Uniformity for arbitrarily large $L$ forces
+\eqref{eq:critical-threshold}; equality is exactly the zero exponent in this
+last power.
+\end{proof}
+
+\begin{remark}[necessary is not sufficient]\label{rem:not-sufficient}
+The threshold in Proposition~\ref{prop:critical-exponent} is sufficient only
+for preventing the \emph{constant-sector} lower bound from diverging.  Calling
+$\sigma=(d-2)/2$ necessary and sufficient for the full gate would silently add
+scale neutrality as a hypothesis and would ignore the kernel exhibited below.
+\end{remark}
 
 \begin{definition}[critical full-space gate]\label{def:gate}
 In $d=4$, fix $N'\ge1$, $N_c\ge2$, and the adjoint-model parameter defining
@@ -340,11 +391,13 @@ inverse-square-root bound on the full domain.
 Ba\l aban's propagator papers study the Gaussian vector-field theory underlying
 lattice gauge renormalization and then extend the analysis to operators with
 restrictions at several scales and to iterated renormalization
-transformations~\cite{BalabanI,BalabanII}.  In that program, block averages
-are not used in isolation: gauge conditions, restricted domains, minimizers,
-and background-dependent propagators are part of the construction.  Modern
-expositions of covariant axial gauge likewise emphasize an axial restriction
-adapted to block averaging~\cite{DimockAxial}.
+transformations~\cite{BalabanI,BalabanII}.  His separate treatment of averaging
+operations studies their regularity on selected classes of gauge fields and
+gauge transformations~\cite{BalabanAveraging}.  In that program, block
+averages are not used in isolation: gauge conditions, restricted domains,
+minimizers, and background-dependent propagators are part of the construction.
+Modern expositions of covariant axial gauge likewise emphasize an axial
+restriction adapted to block averaging~\cite{DimockAxial}.
 
 There is therefore no conflict between classical positivity statements on a
 gauge-fixed or otherwise restricted subspace and Theorem~\ref{thm:nogo}.  The
@@ -368,6 +421,13 @@ The Lean~4 development is a seven-file chain headed by
 \codepath{YangMills/RG/PhysicalCriticalRescalingFourierNoGoAllScales.lean}.
 \end{center}
 Table~\ref{tab:map} maps the analytic statements to selected declarations.
+
+The constant-sector norm identity and lower bound used in
+Proposition~\ref{prop:critical-exponent} are formalized in
+\codepath{PhysicalPoincareCriticalRescaling.lean}; the specialization to a
+general real exponent $\sigma$ is the elementary power comparison displayed
+in the proof.  The Fourier chain then tests the sector that the constant-field
+calculation cannot see.
 
 \begin{table}[ht]
 \centering
@@ -426,12 +486,13 @@ The SHA-256 of the head theorem file is
 \lean{5F0890D14EA6981CBE6459605A634386ED2C844F6D03A6947E33B34250E2F5AE}.
 \end{center}
 The companion source packet
-\codepath{critical_rescaling_fourier_no_go_sources_v1.1.zip} has SHA-256
+\codepath{critical_rescaling_fourier_no_go_sources_v1.2.zip} has SHA-256
 \begin{center}
-\lean{AEF0AEAB6841FE4B26F6A5160305793646083EB72166BC5C751C8E2A5AA88132}.
+\lean{DB9EA587A8F889062B9C0B77A1995C4BC76764251284DF62473745225D36AFEC}.
 \end{center}
-The packet contains the seven theorem/oracle files, the manifest, the Lean
-toolchain, and the pinned Lake manifest.  The toolchain is Lean
+The packet contains the seven theorem/oracle files, the v1.2 manifest, the
+independent audit record, the Lean toolchain, and the pinned Lake files.  The
+toolchain is Lean
 \lean{v4.29.0-rc6}.  The pinned Mathlib revision is
 \begin{center}
 \lean{07642720480157414db592fa85b626dafb71355b}.
@@ -442,10 +503,19 @@ lake build YangMills.RG.PhysicalCriticalRescalingFourierNoGoAllScales
 lake env lean YangMills/RG/PhysicalCriticalRescalingFourierNoGoOracle.lean
 lake build YangMillsCore
 \end{verbatim}
-The verified runs completed successfully with 8184 jobs for the focused
-theorem build and 8481 jobs for the aggregate core.  The oracle dependencies
-are exactly those displayed above.  A direct search found no \lean{sorry},
-\lean{admit}, or project \lean{axiom} in the seven source files.
+The source release originally completed successfully with 8184 jobs for the
+focused theorem build and 8481 jobs for the aggregate core.  An independent
+reproduction on August 4, 2026 used a Colab Pro+ CPU/high-RAM runtime with
+eight processors and no GPU.  It recomputed all seven LF-normalized source
+hashes, checked that the pinned manifest was semantically unchanged, rebuilt
+the focused theorem with 8184 successful jobs, and obtained the expected
+axiom list for all nine oracle declarations.  A code-token scan found no
+\lean{sorry}, \lean{admit}, or project \lean{axiom}.  The runtime was then
+disconnected and deleted.  Raw/LF/CRLF hashes, log hashes, endpoint attacks,
+and the manifest line-ending incident are recorded in
+\codepath{docs/03_runbooks/P47_POINCARE_RESCALED_GATE_FAIL.md} at audit commit
+\lean{5bbc9347a64083fb3936f8240a5b0108e5d03fea}.  This is reproduction
+evidence, not an external certification.
 
 \section{What remains open}
 
@@ -472,7 +542,10 @@ Osterwalder--Schrader reconstruction, and no Yang--Mills mass gap.
 \section{Conclusion}
 
 Critical scalar rescaling can correct a normalization mismatch but cannot
-remove an exact kernel.  The first within-block Fourier phase produces, at
+remove an exact kernel.  The constant-sector wall selects
+$\sigma=(d-2)/2$ only when exact scale neutrality is required; uniformity of
+that sector alone allows every larger exponent.  None of these scalar choices
+acts on $\ker Q_L$.  The first within-block Fourier phase produces, at
 every $L\ge2$ and every positive coarse side, a transverse divergence-free
 cochain annihilated by $Q_L$.  Its exact Rayleigh quotient is
 $4\sin^2(\pi/L)$, so the best full-space spectral lower bound is at most
@@ -511,6 +584,12 @@ T.~Ba\l aban,
 theories. II},
 Communications in Mathematical Physics \textbf{96} (1984), 223--250.
 \href{https://doi.org/10.1007/BF01240221}{doi:10.1007/BF01240221}.
+
+\bibitem{BalabanAveraging}
+T.~Ba\l aban,
+\emph{Averaging operations for lattice gauge theories},
+Communications in Mathematical Physics \textbf{98} (1985), 17--51.
+\href{https://doi.org/10.1007/BF01211042}{doi:10.1007/BF01211042}.
 
 \bibitem{DimockAxial}
 J.~Dimock,

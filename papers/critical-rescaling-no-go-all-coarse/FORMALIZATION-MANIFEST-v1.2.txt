@@ -1,0 +1,40 @@
+Critical-rescaling Fourier no-go formalization manifest
+Version: 1.2
+Date: 2026-08-04
+
+Repository: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+Theorem source commit: f21539ed0bb880a04078de369bf5cbf063f7b101
+Independent audit commit: 5bbc9347a64083fb3936f8240a5b0108e5d03fea
+Lean: v4.29.0-rc6 (00659f8e6071d7e46131ed643bf8003b99b044e9)
+Lake: 5.0.0-src+00659f8
+Mathlib: 07642720480157414db592fa85b626dafb71355b
+
+SHA-256 of LF-normalized theorem-source files:
+53993EAAA55418AE7EA1235CDEDB0793A4EA58D452F577EA0A677AD203733793  PhysicalCriticalRescalingFourierCochain.lean
+A94083D9FCE54442AAC8C3990180F92469F1A7915F530A287CF16611A5C3E149  PhysicalCriticalRescalingFourierEnergy.lean
+C311EEB648DD0371C7B9D343A37BC659DF537FD5E1A33F6EA7F20CBD702665E9  PhysicalCriticalRescalingFourierHodge.lean
+B3884618CC9B82B1E138089323DEAEF24D6E4613DAAE6A10D6EC0AFC37526993  PhysicalCriticalRescalingFourierMode.lean
+6F0D69D79B6C93D01A8C298EC6E9E5A53FD37DE43DF5963B8A0411DE2930153D  PhysicalCriticalRescalingFourierNoGo.lean
+5F0890D14EA6981CBE6459605A634386ED2C844F6D03A6947E33B34250E2F5AE  PhysicalCriticalRescalingFourierNoGoAllScales.lean
+ADAEB6E955E83C4CEC97A84D45590AD449B038F0CA6B08FAF2586652961C3CCB  PhysicalCriticalRescalingFourierNoGoOracle.lean
+
+Frozen criteria:
+lake build YangMills.RG.PhysicalCriticalRescalingFourierNoGoAllScales
+lake env lean YangMills/RG/PhysicalCriticalRescalingFourierNoGoOracle.lean
+
+Independent execution on 2026-08-04:
+- Colab Pro+ CPU/high-RAM runtime, 8 processors, no GPU
+- focused theorem build: success, 8184 jobs
+- focused axiom audit: 9/9 declarations use exactly
+  [propext, Classical.choice, Quot.sound]
+- no sorry, admit, or project axiom in the seven source bodies
+- theorem-source tree identical to the frozen source commit
+- build log: 2330 bytes,
+  SHA-256 2976F3B2FA0CFB8640CE4B6139F7AF9320F3C616894B4B59612C843FECAC8C97
+- oracle log: 1071 bytes,
+  SHA-256 D3594ECB7DDB2DF7A4A6958527F9AC8BAF387C50CED89AB5848EFCA340EFBB45
+- runtime disconnected and deleted after the audit
+
+The audit record P47_POINCARE_RESCALED_GATE_FAIL.md gives raw, LF, and CRLF
+byte counts and hashes, quantifier checks, endpoint attacks, and scope limits.
+This manifest records execution evidence; it is not an external certification.
