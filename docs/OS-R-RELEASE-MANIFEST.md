@@ -28,6 +28,13 @@ the exact intertwining between the OS-forced `transferOp` and the symmetric
 weighted operator.  No Perron vector, vacuum, gap, mass, contraction or
 clustering statement occurs among its hypotheses.
 
+Here “one mass” means one common finite-volume decay exponent selected before
+`L`.  It does not assert a unique particle excitation, a one-particle spectral
+interpretation, or an infinite-volume Hamiltonian.  The paper supersedes the
+three internal stepping-stone manuscripts that separately treated the
+reconstructed gap, reconstructed correlator decay and operator
+identification; it is not an additional fourth result.
+
 Four adjacent public declarations supply the finite OS side:
 `os_ising_measure_gram_nonneg`, `os_ising_null_space_iff`,
 `osIsingPhysicalEquiv`, and `os_ising_transfer_is_measure_sum`.
@@ -123,13 +130,11 @@ identified with either normalisation.
 | `oracle_check.lean` | 238531 / `c84367b86383b87e3d6ea3e2ea399b7c6500e2bd51783b20380a5abc1bf1830b` | 235144 / `0ceb1309159ba124d0b61409ad8b86d7c4a7a5b5f1a544aa3d30d49d0eed89f3` | 238541 / `923bc36df56f362c766701c6189867e4de8c533250aa744b1e8f941d3d56d94e` |
 | `scripts/colab_dobrushin_d4_runner.py` | 8224 / `ea6cf85f05f477262b0f8a9b5a16b55278fb86131bfb5fa1df52d281ee508834` | 8020 / `affb651fee7568e67a9208f0906895f1956b2f99c0e8bb51d125053a62caa078` | 8240 / `19d8582f3b94432ca6bf9ee271bd7874a97ab7d42269825b8bf03df1401aff0a` |
 | `scripts/colab_osr_final_bootstrap.sh` | 1380 / `e32d8ad573bbc9bdba57a4adbdaeef6a18402a9cffaa2b04b31d2d2d4e77f77d` | 1380 / same | 1416 / `fe8046765f69d68606caaac9efb7a33e2b70f86e9d4e17f00ff498b593f73a05` |
-| `papers/os-reconstruction-uniform/main.tex` | 20665 / `7f6c0056f93aa305266f51d82adb009425ae55b48848c3c435a598bd2caf689c` | 20665 / same | 21153 / `ea9a80f1e6438a52dbb1f609d6ee9cfc02f4bf01b686fa38551c89fc8d760329` |
-| `output/pdf/os-reconstruction-uniform-gap.pdf` | 302174 / `7cb7463ec3b8280ccf61b64b3a6fc64ff8aa0f157adc6b4aec7679910046803b` | binary | binary |
+| `papers/os-reconstruction-uniform/main.tex` | 21675 / `8b3a6d8797ff99762f5bb0ba03f25e03f9749786b64e060f20b23e6e1886d33e` | 21675 / same | 22183 / `5b225ff81d92de73c952240af98873ea20955ba34f2eb12287c290a1b1e6eff3` |
+| `output/pdf/os-reconstruction-uniform-gap.pdf` | 304489 / `299ea9fc8f207f5111b779301ea17d270f536ca8f49eb25e908134041a2e9c85` | binary | binary |
 
-The regenerated seven-page paper PDF has 302679 raw bytes and SHA-256
-`c776e4dda627834b03091b34e8785aa3e220591b84ebfffb59c8ce140dbb8299`;
-its TeX source has 20990 raw bytes and SHA-256
-`7d88d02ac3f67ac3be45f07e855c8f3f6b4fcd5da2080c6449d0cdd0db1a1e9a`.
+The regenerated seven-page paper PDF and its TeX source are frozen by the
+byte counts and hashes in the last two rows above.
 An external audit should reproduce the body SHA, inspect the complete logs and
 issue the terminal verdict; this manifest deliberately stops at PASS
 candidate.
