@@ -31514,3 +31514,39 @@ open step (OS-R-2), on which nothing shipped depends.
 **ROLES.**  Unit design: this desk.  Every plane execution: the
 owner's hand.  The instrument defect of Add. 618's checker is fixed
 in this unit's joiner and its residual artefact is described above.
+
+
+## Addendum 620 (2026-08-05, **submission decision: NOTHING ships today;
+v4 archived as a technical note; the catalogue entry will be the OS-R-2
+version**)
+
+The owner, on the external evaluator's recommendation, decided:
+(1) the 4-page note of Add. 616-619 is module documentation, not a
+catalogue entry (evaluated 5.11 standalone, absorbed);
+(2) the parallel desk's fuller v4 ('Exact Diagonal and Mixed
+Reconstructed Correlator Decay...', 7 pp, evaluated 5.32 -- exact
+diagonal AND mixed reconstructed correlators with the zero-time case,
+end-to-end chain, exemplary section-7 reproduction block) is archived
+at docs/technical-notes/os_reconstruction_uniform_v4.pdf (sha256
+152011c10f1da904e94ad31506dc2a8dd287b86bca0d17b6e70f0674be487bb6)
+and NOT submitted;
+(3) the submission candidate is the OS-R-2 version: raw-measure n-step
+identification + the mixed-correlator endpoints + the landscape
+positioning of Add. 611, in one manuscript.
+
+Priority insurance is already in force: the repository is public and
+every claim above is commit-pinned -- a verifiable timestamp that does
+not spend a catalogue slot.
+
+**RECONCILIATION FLAG (standing):** two desks now hold OVERLAPPING
+Lean lanes -- d3-closure's YangMills/OS/OSReconstructionUniform.lean
+(sha 5445429f, core 8481, oracle 3017, this ledger) and the parallel
+desk's reconstruction+bridge modules (shas a3089a96/1dd660dc, builds
+8191/8482, oracle 3054, per the v4 paper) with OVERLAPPING THEOREM
+NAMES (siteForm_qEmbed, transferOp_qEmbed,
+os_reconstruction_uniform_gap).  The lanes must be reconciled by the
+owner's assignment BEFORE either merges over the other; OS-R-2 should
+be fabricated on the reconciled tree.
+
+**ROLES.**  Decision: the owner.  External evaluation: the owner's
+evaluator.  Archival and this record: this desk.
