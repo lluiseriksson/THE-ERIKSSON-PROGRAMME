@@ -3,7 +3,7 @@
 
 This validation runner compiles the immutable PRE-VALIDATION source checkpoint
 named by ``SOURCE_SHA``.  It is infrastructure only: the source object and its
-ten Lean blobs are hash-gated before any Lean command is run.
+six Lean blobs are hash-gated before any Lean command is run.
 """
 
 from __future__ import annotations
@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "generated-qprime-row-v10"
-SOURCE_SHA = "41612cb7e7064caf47ad2d8169f9ddddeadc736d"
+RUNNER_REV = "generated-qprime-row-v11"
+SOURCE_SHA = "850c7b1e6f7f434012b58585afe72a9f11cd59ef"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -39,18 +39,10 @@ TOOLROOT = Path("/content/lean-4.29.0-rc6-linux")
 PATH_MANIFEST = Path("/content/hrpoly-generated-qprime-row-paths.txt")
 
 SOURCE_BLOBS = {
-    "YangMills/RG/BalabanCMP99SourceActiveFineBlockEquiv.lean":
-        "ad4d845a0cb67b79f87e7667afc21936f66d7da671833ad6f0a99e38d359b76b",
-    "YangMills/RG/BalabanCMP99SourceActiveFineBlockEquivAudit.lean":
-        "d425c148327e87f2fd997729ec8274b37d02264ae09692cd53d5dce4f1b935ea",
-    "YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMass.lean":
-        "d015d9f74e62224194283c67dcfe67f0bcc9c7191a23d03b6da226e72bc3d6ea",
-    "YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMassAudit.lean":
-        "24aa47f9436a323e7dfcba6d6f7e746feae9d59e783c789ce0b217a1f92c3c90",
-    "YangMills/RG/BalabanCMP99SourceGeneratedQprimeWeightedRow.lean":
-        "fd4d768c07a876ba7a85cee1f066a0ee4dec13930ebf034947a604c9a94b6572",
-    "YangMills/RG/BalabanCMP99SourceGeneratedQprimeWeightedRowAudit.lean":
-        "6c0ca21c91306b7c64653a6a20c5945295b9af8bb8bf15ba1271934104a01258",
+    "YangMills/RG/BalabanCMP99SourceTransportedBlockSynthesisRowSum.lean":
+        "4ebb88d6448d119c4d4dcc9cf92783a675ff0c19272180dc1b4b74c7316ffbc6",
+    "YangMills/RG/BalabanCMP99SourceTransportedBlockSynthesisRowSumAudit.lean":
+        "b9ec5a25ceae3e5e2e9890e561bb90fb65f6fb36691f450f590925f586997915",
     "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassRow.lean":
         "afde56b8c0bcc2834e647f306f3c72ce72360ab3b79372ee8357144ad5e4611d",
     "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassRowAudit.lean":
@@ -63,15 +55,18 @@ SOURCE_BLOBS = {
 
 QUEUE = [
     (
-        "active_fine_block_equiv_focal",
-        ["lake", "build", "YangMills.RG.BalabanCMP99SourceActiveFineBlockEquiv"],
+        "transported_block_synthesis_row_sum_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceTransportedBlockSynthesisRowSum",
+        ],
         None,
     ),
     (
-        "active_fine_block_equiv_audit",
+        "transported_block_synthesis_row_sum_audit",
         [
             "lake", "env", "lean",
-            "YangMills/RG/BalabanCMP99SourceActiveFineBlockEquivAudit.lean",
+            "YangMills/RG/BalabanCMP99SourceTransportedBlockSynthesisRowSumAudit.lean",
         ],
         2,
     ),
