@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "generated-qprime-row-v5"
-SOURCE_SHA = "89bb42643bec00d76c0e9be7460b08457ed7f549"
+RUNNER_REV = "generated-qprime-row-v6"
+SOURCE_SHA = "656ac6b04554ffede3f208fd99e59f4d14914a8d"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -40,7 +40,7 @@ PATH_MANIFEST = Path("/content/hrpoly-generated-qprime-row-paths.txt")
 
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMass.lean":
-        "814ab8be04a2bab0bdbc2ed251fa4093bef66fe954309e34d1baededa02e67d2",
+        "996e4ce7db9e7815f3063eb1d40cf2bba0e01128c4192d46448bbc0c5b5e399d",
     "YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMassAudit.lean":
         "24aa47f9436a323e7dfcba6d6f7e746feae9d59e783c789ce0b217a1f92c3c90",
     "YangMills/RG/BalabanCMP99SourceGeneratedQprimeWeightedRow.lean":
@@ -48,7 +48,7 @@ SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedQprimeWeightedRowAudit.lean":
         "6c0ca21c91306b7c64653a6a20c5945295b9af8bb8bf15ba1271934104a01258",
     "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassRow.lean":
-        "eac19e61b30f7502ff35b407e580ae179e6e862c7a130e98d1efefabdb82f38c",
+        "d636ff1008646da012cd162bb54d77d979d8a8c405dbfe866fb18b50e8b682f4",
     "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassRowAudit.lean":
         "8b5f4320f92e0372b7bc551e7899ccf719a9858d85a891f65a14645dcfb250d0",
     "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectWeightedRow.lean":
