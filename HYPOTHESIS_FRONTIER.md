@@ -11,6 +11,19 @@ it was corrected.
 
 ---
 
+## SU(2) two-transporter design note — DESIGN NO-GO / AUDIT PENDING
+
+The 2026-07-31 design note
+[`docs/SU2-TWO-TRANSPORTER-NOGO-20260731.md`](docs/SU2-TWO-TRANSPORTER-NOGO-20260731.md)
+derives and Lean-formalizes for the concrete reduced SU(2) Wilson weight that,
+for each of the two explicitly stated orientations, two
+independent freely Haar-integrated transporters absent from the observable
+project the quadratic form to the trivial sector.  The derivation uses only
+left Haar invariance plus pointwise SU(2) trace identities.  This is a limited
+design no-go, not a physical interpretation or an extension of the frozen
+reduced-kernel lane.  Independent terminal audit is still missing; status is
+**AUDIT PENDING**, not PROVED, and no dashboard status changes with this note.
+
 ## The verified core has ZERO axioms and ZERO `sorry`
 
 `#print axioms` on **every** headline result of `YangMillsCore` returns

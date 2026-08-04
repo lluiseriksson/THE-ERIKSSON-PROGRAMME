@@ -1,0 +1,155 @@
+PR #39 EXTERNAL INSTRUMENTAL BUNDLE VERIFICATION TRANSCRIPT
+Date: 2026-08-02
+Repository: lluiseriksson/THE-ERIKSSON-PROGRAMME
+PR: #39 (draft)
+Remote branch: codex/su2-two-transporter-nogo-20260731
+Observed remote HEAD before editing: e1c5eeece32ca46a45c0aaa1f91bec913df5cfe7
+Literal source-base anchor: 5172a51b0fad455d9009b1805a48b8be54acbbcc
+Checkpoint A: 29a3f203f2a4323af18ef43a4eddb83c3b500c16
+Evidence commit B: intentionally not recorded or required (no self-reference)
+
+SCOPE
+This replacement repairs only the instrumental boundary.  It does not edit or
+re-audit the mathematics, YangMills/OS/TwoTransporterHaarProjection.lean, the
+finite certificate, its self-test logic, or the Lean oracle.  No Colab, Lean,
+Lake, or mathematical oracle was used.  A fresh independent audit is required.
+
+A/B PROTOCOL
+Relative to the observed remote head, checkpoint A changes only
+scripts/verify_pr39_instrumental_bundle.py.  Evidence commit B changes exactly
+this transcript and the adjacent JSON manifest.  The
+verifier resolves A and HEAD as commits, requires A to be the direct parent of
+HEAD, and rejects every A..HEAD path outside that exact two-path evidence set.
+All protected inputs are read with git show SHA:path.
+
+LITERAL TRUST ANCHORS AND HUMAN BOUNDARY
+Acceptance resolves the certificate, oracle, and mathematics blob OIDs directly
+with Git at checkpoint A and compares them to constants compiled literally into
+the verifier.  The manifest repeats those OIDs only as evidence and never defines
+them.  The literal source base must be an ancestor of A.  A self-consistent
+replacement of the base/checkpoint/manifest/protected package is therefore
+rejected with nonzero exit.
+
+The preceding verifier at checkpoint f32638ac98d62f05321d8c586326457deabf0d77
+had blob OID 53a7afdc694fcb9c653150b906cef44b5e0771e8.  The modified verifier at checkpoint
+A has blob OID 5645fa99017e775a5168e0139ae1697270499410.  This new OID is an out-of-band
+human-review anchor, not a value the verifier tries to authenticate.  Replacing
+the verifier itself requires a new human review and is outside automatic scope.
+
+EOL POLICY
+Raw hashes cover exact Git-blob or process bytes.  LF hashes remove every CR
+byte before SHA-256.  Git-blob raw bytes are canonical.  On this Windows host,
+captured Python stdout/stderr uses CRLF; the LF hashes remain platform-neutral.
+
+PROTECTED CHECKPOINT-A BLOBS
+certificate:
+  raw_sha256 = lf_sha256 = de851de7b4ca9d244d2745f1fb610bb6e677779c73049cc7c0785a2c1125ab05
+  git_blob_oid = 9fac6370bb016d674465da6110c701e24f5f9de8
+oracle:
+  raw_sha256 = lf_sha256 = 9f33ca176557cff433740e547bbf37549507ea139ab4a8f13ee8779aea675cb2
+  git_blob_oid = 0b10c1ecebe1791cbdf6d3e02dbb5c7e2ecd6606
+mathematics:
+  raw_sha256 = lf_sha256 = 3fcd675b9958c920db7074b579fb22633ddcb10c29b2c017c6c3f68df2506dee
+  git_blob_oid = e785ce28d92cb7a8d77a5ef901e8fd860f5b0c36
+verifier:
+  raw_sha256 = lf_sha256 = 0867ac581a66e73f8b3d10a749f09800d2d60c8368f25034192b1353dfcc497f
+  git_blob_oid = 5645fa99017e775a5168e0139ae1697270499410
+verifier contract sha256:
+  e4c72c52c806b3cb2cdb8b33fe65a5c4d82a1fc4e3e992d1fff3c569f8f7e47c
+
+STATIC CONTRACT
+The certificate AST has no assert node, EXPECTED_CHECKS is the integer 14,
+MUTATIONS is the exact three-name tuple, and the two check functions contain
+exactly 14 checks.require calls.  CheckLedger.require increments explicitly and
+raises on failure; CheckLedger.close compares the count and raises.  certify
+calls the word checks, quaternion checks, close, and print in that order.  Its
+single emitted RESULT: PASS follows close and CHECKS.
+
+The oracle parser accepts only the import plus the exact ordered sequence of 16
+#print axioms headlines.  Omission, rename, duplicate, addition, or reordering
+is rejected.  The verifier itself contains no assert node, uses a fixed 313
+check ledger, and writes its PASS token only after ledger.close succeeds.
+
+CERTIFICATE ACCEPTANCE EXECUTIONS
+Commands were executed from the checkpoint-A certificate blob materialized in
+a new temporary directory:
+  python certificate.py                         exit 0 (twice)
+  python -O certificate.py                      exit 0 (twice)
+All four stdout streams are byte-identical:
+  raw_sha256 = 3ecd84ec2a1276d95ba62b647c7c3a540ae6c44910f78fcce89e931a04e43ad9
+  lf_sha256  = a241ef37805085b51860490ae53f0c97674f3d79f3466c980cb18d55f5ea67db
+All four stderr streams are empty:
+  raw_sha256 = lf_sha256 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+Each stdout has exactly one RESULT: PASS occurrence.
+
+CERTIFICATE SELF-TEST EXECUTIONS
+  python certificate.py --self-test             exit 0
+  python -O certificate.py --self-test          exit 0
+The two stdout streams are byte-identical:
+  raw_sha256 = 964b33b023e9987d76509b313a9fd56a4672b81341ed14e72cf0d5d91335d9b9
+  lf_sha256  = ffe62f6a04a46a3ee72af34040ef444c01fedd80723801c9cd5fe091021a774c
+Both stderr streams are empty with SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.
+
+DIRECT CERTIFICATE MUTATIONS (NORMAL AND -O)
+Each mode rejected each mutation with exit 1, empty stdout, and zero RESULT:
+PASS hits.  Raw/LF stderr SHA-256 pairs were:
+  decisive-trace:
+    beab7805dd2b1e66ee88bda84701a74587b17ddae12584ed46d54aea4eb72de0
+    e301d2824ae24370fd098d88ae1b5d51a04d04161350ff755b4d6b5567a672e6
+  witness-condition:
+    c1a564ddf63006f0e15cce73cfa172be61aba1280e673900d99c1d7af8679ce5
+    96584263b6c16bed06b74d2b2674c864259950c5da2672c853b98a924d7f4aea
+  omit-check:
+    22a5365a77508f832b132c7b029f0c9bcf112c872bd932dade07aaefe771b656
+    4091cce15864596eac01e5676690ad63251e7fc372937fd9279d769c90a4447e
+
+STALE-PASS TRUNCATION
+For all six direct mutation/mode pairs, stdout was pre-seeded with
+"RESULT: PASS\n" (SHA-256 5817bdd02cdb5414d701685058e562c27ccb64be651cdc48c0d184fab266ffc2),
+then opened with wb before execution.  Each replay exited nonzero, reproduced
+the recorded empty stdout and stderr bytes, and left zero stale PASS hits.
+
+EXTERNAL VERIFIER EXECUTIONS
+  python scripts/verify_pr39_instrumental_bundle.py      exit 0 (twice)
+  python -O scripts/verify_pr39_instrumental_bundle.py   exit 0 (twice)
+All four stdout streams are the same two LF-terminated lines:
+  PR39 VERIFIER CHECKS: 313/313
+  PR39 EXTERNAL INSTRUMENTAL VERIFIER: PASS
+  raw_sha256 = lf_sha256 = 48ae3ef824506511a84a4c2aacd7d7244a1e67e63b01b45b7012dcd95319d64b
+All four stderr streams are empty with SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.
+
+ADVERSARIAL VERIFIER MUTATIONS
+Temporary synthetic Git objects exercised 32 cases.  All 32 exited nonzero and
+emitted zero external-verifier PASS hits.  The cases covered:
+  - altered certificate, oracle, mathematics, and verifier hashes;
+  - altered verifier contract;
+  - expected_checks 14 -> 13 and oracle_headlines 16 -> 15;
+  - omitted, renamed, duplicated, and added oracle headlines, both in manifest
+    metadata and in checkpoint-A oracle blobs;
+  - nonexistent and non-ancestor checkpoints;
+  - changed allowed-path metadata and an actual forbidden A..HEAD path;
+  - altered certificate stdout hash, stderr hash, exit code, and verifier stdout
+    hash;
+  - post-A edits of every protected blob;
+  - post-A and checkpoint-A certificate variants with a neutralized condition or
+    PASS moved before close.
+
+The literal-anchor repair additionally rejected a self-consistent replacement
+of base/checkpoint/manifest/protected package in both normal and optimized modes;
+both commands exited 1 and emitted zero external-verifier PASS hits.
+
+PROVENANCE
+  Python: 3.12.6 (CPython, MSC v.1940 64 bit AMD64)
+  Git: 2.43.0.windows.1
+  OS/architecture: Windows 11 10.0.26200 SP0 / AMD64
+  host: local Codex Windows workstation (non-secret label; hostname omitted)
+  python scripts/verify_pr39_instrumental_bundle.py: exits 0, 0
+  python -O scripts/verify_pr39_instrumental_bundle.py: exits 0, 0
+  synthetic prior-attack suite: 32/32 exits nonzero
+  self-consistent literal-anchor attack, normal: exit 1
+  self-consistent literal-anchor attack, optimized: exit 1
+
+CONCLUSION
+External instrumental bundle verification: PASS.  This result repairs only the
+evidence boundary and is not an audit of the protected sources.  The new
+verifier requires a fresh independent audit.

@@ -1,0 +1,177 @@
+TASK=canonical-22 Lean cache health / Colab Pro+
+DATE=2026-08-01
+NOTE=faithful compact transcript copied from the live notebook output; full executable procedure is in notebooks/lean_cache_health_20260801.ipynb
+NOTE=no GitHub token, no push, isolated /content directory
+
+UTC_START=2026-07-31T23:24:39Z
+RUN=/content/lean-health-20260801-232439
+KERNEL=Linux 6.6.122+ x86_64
+CPUS=2
+GIT=2.34.1
+PYTHON=3.12.13
+ELAN_INSTALLER_SHA256=a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53
+
+REMOTE_REFS_AT_START
+main=b954a67538fdde62f932309af98271cf99667ec9
+pr39=5172a51b0fad455d9009b1805a48b8be54acbbcc
+live_pr43=5b30fcdd3ca02ed33371be07bdcfa325170b73f9
+
+PR39_HEAD=5172a51b0fad455d9009b1805a48b8be54acbbcc
+PR39_LAKE_PREEXISTS=no
+lean-toolchain_sha256=dc6d65016fad3123d44bf17b5bf0598286284ab16ba75d5c17eb22ed11f47361
+lakefile_sha256=ba6348d6929187216ef39fe9ccdcd4e2590653c4fd80b3e71478e4c645410167
+lake-manifest_sha256=1c72b465ab37a0418de6f82573c18bb0e79f9e0165e901fd9da0ddabecdb2611
+
+COMMAND_START label=pr39-lake-update utc=2026-07-31T23:25:04Z
+COMMAND=lake update
+RESULT=all 9 exact manifest revisions cloned; official leanprover-community/mathlib4 Azure cache; 8142 files downloaded and decompressed
+COMMAND_END label=pr39-lake-update exit=0 elapsed_seconds=251
+LOG_SHA256=677eb2e69c69b53f48345d3422f68de135fad2ce61110e5c1654cd56b0a0b955
+PR39_MANIFEST_UNCHANGED=yes
+
+COMMAND_START label=pr39-cache-get utc=2026-07-31T23:29:15Z
+COMMAND=lake exe cache get
+RESULT=no files to download; 8142 already decompressed
+COMMAND_END label=pr39-cache-get exit=0 elapsed_seconds=9
+LOG_SHA256=18cfb29942326ace51032bafb8c557fb732db93edb34b6930fc372497a2503c1
+
+COMMAND_START label=pr39-import-1 utc=2026-07-31T23:29:24Z
+COMMAND=lake env lean /content/lean-health-20260801-232439/ImportMathlib.lean
+COMMAND_END label=pr39-import-1 exit=0 elapsed_seconds=86
+LOG_SHA256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+COMMAND_START label=pr39-import-2 utc=2026-07-31T23:30:50Z
+COMMAND=lake env lean /content/lean-health-20260801-232439/ImportMathlib.lean
+COMMAND_END label=pr39-import-2 exit=0 elapsed_seconds=9
+LOG_SHA256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+COMMAND_START label=pr39-oracle-prebuild utc=2026-07-31T23:30:59Z
+COMMAND=lake env lean docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean
+COMMAND_END label=pr39-oracle-prebuild exit=1 elapsed_seconds=2
+LOG_SHA256=900ddd915aeaac8119d76d4a8020136d206e6c73af9e68c8179ef5ef7725b64e
+STDERR=unknown module prefix 'YangMills'
+INTERPRETATION=project library was not built; dependency cache alone is insufficient
+
+COMMAND_START label=pr39-minimal-build utc=2026-07-31T23:45:08Z
+COMMAND=lake build YangMills.OS.TwoTransporterHaarProjection
+COMMAND_END label=pr39-minimal-build exit=0 elapsed_seconds=96
+JOBS=8159
+LOG_SHA256=cf99d6b28aa5bd72a6bb4b41fecb3bf8f2e61534db3d476f4f4fde39f9ae9192
+
+COMMAND_START label=pr39-oracle-after-build-1 utc=2026-07-31T23:46:44Z
+COMMAND=lake env lean docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean
+COMMAND_END label=pr39-oracle-after-build-1 exit=0 elapsed_seconds=29
+HEADLINE_COUNT=16
+OBSERVED_AXIOMS=propext,Classical.choice,Quot.sound
+LOG_SHA256=3ca4fb93c0c212a98dc6b0845d32245406f1ac041e97d5444482e010b8eaaa2f
+
+COMMAND_START label=pr39-oracle-after-build-2 utc=2026-07-31T23:47:13Z
+COMMAND=lake env lean docs/SU2-TWO-TRANSPORTER-NOGO-ORACLE.lean
+COMMAND_END label=pr39-oracle-after-build-2 exit=0 elapsed_seconds=27
+HEADLINE_COUNT=16
+OBSERVED_AXIOMS=propext,Classical.choice,Quot.sound
+LOG_SHA256=3ca4fb93c0c212a98dc6b0845d32245406f1ac041e97d5444482e010b8eaaa2f
+
+COMMAND_START label=pr39-core-build utc=2026-07-31T23:47:40Z
+COMMAND=lake build YangMillsCore
+COMMAND_END label=pr39-core-build exit=124 elapsed_seconds=1800
+LAST_RECORDED_JOBS=8302/8323
+LOG_SHA256=04e9427ba677614feb81f6f8802fdbd848336f04cb30b2ab9952f13d1606806e
+INTERPRETATION=controlled resource timeout; minimum target and both oracles had already passed independently
+
+PR43_AUDITED_HEAD=0ac9b18c98cf12b305611fd74087816a3b5f1e32
+PR43_LAKE_PREEXISTS=no
+
+COMMAND_START label=pr43-lake-update utc=2026-08-01T00:18:03Z
+COMMAND=lake update
+COMMAND_END label=pr43-lake-update exit=0 elapsed_seconds=221
+LOG_SHA256=ca5c8c728389fc31eb5027163786ac63352801d6934e572531ab376e724bcc68
+PR43_MANIFEST_UNCHANGED=yes
+
+COMMAND_START label=pr43-cache-get utc=2026-08-01T00:21:44Z
+COMMAND=lake exe cache get
+COMMAND_END label=pr43-cache-get exit=0 elapsed_seconds=22
+LOG_SHA256=18cfb29942326ace51032bafb8c557fb732db93edb34b6930fc372497a2503c1
+
+COMMAND_START label=pr43-import-1 utc=2026-08-01T00:22:06Z
+COMMAND_END label=pr43-import-1 exit=0 elapsed_seconds=192
+LOG_SHA256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+COMMAND_START label=pr43-import-2 utc=2026-08-01T00:25:18Z
+COMMAND_END label=pr43-import-2 exit=0 elapsed_seconds=55
+LOG_SHA256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+COMMAND_START label=pr43-oracle-build utc=2026-08-01T00:26:13Z
+COMMAND=lake build YangMills.SU2ThetaPrism.Oracle
+COMMAND_END label=pr43-oracle-build exit=0 elapsed_seconds=168
+JOBS=8170
+LOG_SHA256=32eaae9e6a93042bcd5be1969fed1b7355c5b071d0139d539d78f5f61910fc03
+
+COMMAND_START label=pr43-oracle utc=2026-08-01T00:29:01Z
+COMMAND=lake env lean YangMills/SU2ThetaPrism/Oracle.lean
+COMMAND_END label=pr43-oracle exit=0 elapsed_seconds=27
+HEADLINE_COUNT=20
+OBSERVED_AXIOMS=propext,Classical.choice,Quot.sound
+FAIL_OR_PASS_TEXT_LINES=0
+LOG_SHA256=87d23b4819bbe00bb31254b768c3097f49fe65b723dae1c63da8f32e555794e1
+PR43_FINAL_HEAD=0ac9b18c98cf12b305611fd74087816a3b5f1e32
+
+CONTINUATION_END_UTC=2026-08-01T00:29:28Z
+CONTINUATION_FAILURE_COUNT=1
+CONTINUATION_FAILURE_SOURCE=pr39-core-build controlled timeout only
+TRANSCRIPT_SHA256_AT_CONTINUATION_END=95f143cc478ab89b4ad8baed9138fc4b78021a8ff2d95fb5b4c28de6ab57737b
+
+REPEAT_START_UTC=2026-08-01T00:31:03Z
+PR39_REPEAT_HEAD=5172a51b0fad455d9009b1805a48b8be54acbbcc
+PR39_REPEAT_LAKE_PREEXISTS=no
+
+COMMAND_START label=pr39-repeat-lake-update utc=2026-08-01T00:31:26Z
+COMMAND_END label=pr39-repeat-lake-update exit=0 elapsed_seconds=250
+LOG_SHA256=64cc6eb5f1f5e568b0e743e064aec5a21ff4e7ecabd8c65a8dd70350bd73bb38
+PR39_REPEAT_MANIFEST_UNCHANGED=yes
+
+COMMAND_START label=pr39-repeat-cache-get utc=2026-08-01T00:35:36Z
+COMMAND_END label=pr39-repeat-cache-get exit=0 elapsed_seconds=19
+LOG_SHA256=18cfb29942326ace51032bafb8c557fb732db93edb34b6930fc372497a2503c1
+
+COMMAND_START label=pr39-repeat-import-1 utc=2026-08-01T00:35:55Z
+COMMAND_END label=pr39-repeat-import-1 exit=0 elapsed_seconds=175
+LOG_SHA256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+COMMAND_START label=pr39-repeat-import-2 utc=2026-08-01T00:38:50Z
+COMMAND_END label=pr39-repeat-import-2 exit=0 elapsed_seconds=110
+LOG_SHA256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+COMMAND_START label=pr39-repeat-minimal-build utc=2026-08-01T00:40:40Z
+COMMAND=lake build -j 2 YangMills.OS.TwoTransporterHaarProjection
+COMMAND_END label=pr39-repeat-minimal-build exit=1 elapsed_seconds=1
+STDERR=error: unknown short option '-j'
+LOG_SHA256=6eb9f824393e2883798e31623b90151f66016b936934a979df7c696c1c0e0040
+INTERPRETATION=not a repository build; Lake rejected the CLI option before compilation
+
+The two immediate oracle probes after that rejected command exited 1 because
+the project module had not been built.  The notebook was corrected to omit
+`-j`; the two-CPU runtime supplies the measured parallelism.
+
+COMMAND_START label=pr39-repeat-minimal-build-retry utc=2026-08-01T00:42:26Z
+COMMAND=lake build YangMills.OS.TwoTransporterHaarProjection
+COMMAND_END label=pr39-repeat-minimal-build-retry exit=0 elapsed_seconds=190
+JOBS=8159
+LOG_SHA256=72e7f344efaf8e4514dacbd49545609d6fe7d8c1db21f3148c524dcca1334470
+
+COMMAND_START label=pr39-repeat-oracle-retry-1 utc=2026-08-01T00:45:36Z
+COMMAND_END label=pr39-repeat-oracle-retry-1 exit=0 elapsed_seconds=31
+HEADLINE_COUNT=16
+OBSERVED_AXIOMS=propext,Classical.choice,Quot.sound
+LOG_SHA256=3ca4fb93c0c212a98dc6b0845d32245406f1ac041e97d5444482e010b8eaaa2f
+
+COMMAND_START label=pr39-repeat-oracle-retry-2 utc=2026-08-01T00:46:07Z
+COMMAND_END label=pr39-repeat-oracle-retry-2 exit=0 elapsed_seconds=28
+HEADLINE_COUNT=16
+OBSERVED_AXIOMS=propext,Classical.choice,Quot.sound
+LOG_SHA256=3ca4fb93c0c212a98dc6b0845d32245406f1ac041e97d5444482e010b8eaaa2f
+
+REPEAT_RETRY_END_UTC=2026-08-01T00:46:35Z
+REPEAT_RETRY_FAILURE_COUNT=0
+FINAL_TRANSCRIPT_SHA256=b079c1efdb207cfb76466b4cce9ba40e5532ee596183d2aed09a827b0c0f7bb2
+LIVE_NOTEBOOK=https://colab.research.google.com/drive/1CQhdGcCSLMgF4Sou98kOcNjRtvYYUw3I
