@@ -1389,6 +1389,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_sourceEstimate
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_halfBudget
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_rawMetricDecay_canonicalRoot_halfBudget_of_source
+-- Proposal bridge: discharge hactivityKsharp from the banked K# estimate;
+-- hsmall/hbudget exposed as explicit scalar conditions on eps_val = 2*H0*K0.
+#print axioms YangMills.RG.ksharp_hactivityKsharp
+#print axioms YangMills.RG.ksharp_smallness_scalar
+#print axioms YangMills.RG.ksharp_budget_scalar
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_pointwise_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_expWeight_leafSummation
