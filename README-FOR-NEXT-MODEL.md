@@ -21,7 +21,14 @@ Catalan/Schur series through Addendum 465 and the 2026-07-04 diamagnetic
 unitary bridge Addendum 466, while the latest measured source checkpoint is
 `a17d7816` (on `main`).
 
-Publication-only update (2026-08-03): the 20-page Dobrushin matrix manuscript
+Publication-only update (2026-08-04): *The Reconstructed Theory Has One Mass*,
+by Lluis Eriksson, was sent as the v2 replacement of ai.viXra:2607.0078.
+Moderation and public visibility remain pending. The exact 7-page, 304834-byte
+PDF and the action lock are recorded in the canonical
+[`papers/os-reconstruction-uniform/SUBMISSION-INFO.txt`](papers/os-reconstruction-uniform/SUBMISSION-INFO.txt).
+Do not resend and do not replace that `.txt` record with a Markdown surrogate.
+
+Earlier publication-only update (2026-08-03): the 20-page Dobrushin matrix manuscript
 v5.5 was submitted to viXra as its v2 replacement.  The exact paper commit,
 PDF hash, fresh-clone 8,475-job/2,980-report evidence, and the fact that this
 lane remains outside `main` are recorded in

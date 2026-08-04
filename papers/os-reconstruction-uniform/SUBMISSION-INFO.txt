@@ -3,7 +3,15 @@ AI.VIXRA REPLACEMENT PACKAGE - ai.viXra.org:2607.0078
 ======================================================================
 
 STATUS
-Prepared for the owner's replacement-form submission. Not submitted by Codex.
+Owner-reported first replacement (v2) SENT / PENDING MODERATION on 2026-08-04.
+Not submitted by Codex. Public visibility and moderator acceptance are not
+confirmed. Do not resubmit while moderation is pending.
+
+CANONICAL RECORD
+This SUBMISSION-INFO.txt file remains the canonical administrative source.
+Do not replace it with a Markdown reconstruction. The submitted PDF identity
+is 304834 bytes and SHA-256
+7fdc9d22f8fca69a174efad3e9384b5756775af44d2ac202a8dd8daa86bfa377.
 
 REPLACEMENT TARGET
 ai.viXra.org:2607.0078 (v1)
@@ -14,7 +22,7 @@ Original category: Mathematical Physics
 Original author record: Lluis Eriksson
 
 REPLACEMENT ELIGIBILITY CHECK
-This is the proposed first replacement (v2), seven days after v1. It is
+This was the first replacement (v2), seven days after v1. It was
 outside ai.viXra's four-day immediate-replacement exclusion and below the
 published limit of four replacements.
 
@@ -127,3 +135,10 @@ OWNER CHECKLIST
 [ ] Submit only after the owner has reviewed the final preview.
 [ ] After publication, record the v2 timestamp and URL in the release
     manifest; do not resubmit merely because moderation takes up to 48 hours.
+
+POST-SUBMISSION LOCK
+- Submission operation: replacement of ai.viXra:2607.0078, not a new paper.
+- Author: Lluis Eriksson.
+- State: SENT / PENDING MODERATION.
+- Visibility: not confirmed.
+- Action: do not resend; wait for the moderator outcome.

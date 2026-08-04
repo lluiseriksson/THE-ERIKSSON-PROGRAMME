@@ -438,21 +438,21 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ---
 
-## Latest viXra submission
+## Latest ai.viXra submission
 
-**Submitted 2026-08-03 as a v2 replacement; moderation outcome not yet
-recorded.**  The 20-page v5.5 edition of *The Row Sums Were the Method, Not the
-Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay
-of Correlations, and a Misattributed Uniformity Wall* was sent to viXra.  The
-exact PDF is pinned at paper commit [`e68b821f7`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e68b821f7b5a766551c7e249706aaf7dc4d0eb66/papers/dobrushin-matrix/dobrushin_matrix.pdf)
-and has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`.
-See the [submission record](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md)
-for the clean-clone build, oracle evidence, superseded edition, and exact scope.
+**Replacement of ai.viXra:2607.0078 sent 2026-08-04; moderation is pending and
+public visibility is not confirmed.** *The Reconstructed Theory Has One Mass:
+A Machine-Checked Volume-Uniform Transfer Gap for a Finite Ising Strip*, by
+Lluis Eriksson, was sent as the v2 replacement. The canonical 7-page PDF is
+[`output/pdf/os-reconstruction-uniform-gap.pdf`](output/pdf/os-reconstruction-uniform-gap.pdf):
+304834 bytes, SHA-256
+`7fdc9d22f8fca69a174efad3e9384b5756775af44d2ac202a8dd8daa86bfa377`.
+See the canonical [submission record](papers/os-reconstruction-uniform/SUBMISSION-INFO.txt).
 
-The paper/source commits remain on remote branch `d3-closure`; this notice does
-not claim that the lane is integrated into `main`, and it does not alter the
-canonical proof-state DAG or the recorded distance to the Clay problem.
+Do not resend while moderation is pending, and do not call the replacement
+visible, accepted, published, or moderated until ai.viXra records that outcome.
+This notice does not alter the canonical proof-state DAG or the recorded
+distance to the Clay problem.
 
 ---
 
