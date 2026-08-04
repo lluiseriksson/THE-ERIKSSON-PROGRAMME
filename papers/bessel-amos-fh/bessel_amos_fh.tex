@@ -18,8 +18,8 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-\title{Sharp Continuous-Order Comparison for Modified-Bessel Ratios:
-a Riccati Proof, the Optimal Real-Order Domain, and Lean Verification}
+\title{An Explicit Optimal-Domain Synthesis for Modified-Bessel Ratios:
+a Recurrence-Only Riccati Proof and Lean Verification}
 \author{Lluis Eriksson}
 \date{August 2026}
 
@@ -50,14 +50,16 @@ Bessel asymptotic expansion is needed.
 Thus, on the natural positivity range $-1<\mu<\nu$, the upper bound
 holds for every $x>0$ if and only if $\mu+\nu\ge0$.
 
-The nonnegative-order statement itself is known: it is equivalent to
-Lemma~10 of Freitas--Laugesen.  Their proof already contains a
-first-contact argument, so no novelty is claimed for that mechanism.
-The contributions here are the explicit sharp ratio formulation, the
-optimal extension/obstruction across negative orders, an elementary
-proof without asymptotics, the correction of an earlier unit-step
-paper statement, and a Lean~4/Mathlib formalization of the complete
-optimal-domain theorem.  The Lean
+The analytic classification is not presented as a new theorem.
+Freitas--Laugesen prove the nonnegative comparison, Garofalo records
+the exact unit-shift threshold $-1/2$ as classical, and the remaining
+negative-order extension follows immediately from the standard
+$I_{-a}$ connection formula and the $I_a,K_a$ Wronskian; necessity
+also follows from the classical large-$x$ expansion.  What this note
+adds is an explicit synthesis of these facts, an alternative
+recurrence-only Riccati proof that avoids both $K$ and asymptotics,
+and a Lean~4/Mathlib formalization of the complete optimal-domain
+statement.  The Lean
 artifact has no \texttt{sorry}; its axiom oracle returns exactly
 \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
 We retain the resulting Feynman--Hellmann application: every character
@@ -106,7 +108,7 @@ If $\mu+\nu<0$, then the upper inequality fails for at least one
 $x>0$.
 \end{theorem}
 
-\begin{remark}[priority and corrected scope]
+\begin{remark}[priority-negative audit and corrected scope]
 \label{rem:scope}
 The nonnegative-order conclusion \eqref{eq:continuouslog} is Lemma~10
 of Freitas and Laugesen \cite{FreitasLaugesen}.  A previous version of
@@ -118,18 +120,23 @@ directly from the modified-Bessel differential equation.  The
 two-flow calculation below is the same contact geometry written for
 $\rho_\mu$ and $\rho_\nu$.  We therefore claim neither the
 nonnegative-order theorem nor the first-contact mechanism as new.
-Segura's Riccati/nullcline analysis \cite{Segura2021} is also close in
-method, although its stated monotonicity results vary $x$ at fixed
-order rather than compare two arbitrary orders.  We also checked the
-negative-order individual-ratio bounds of Hornik--Gr\"un
-\cite{HornikGrun2024} and the accessible primary record for the later
-modified-Lommel monotonicity paper of Mao--Tian \cite{MaoTian}; neither
-source states the cross-order iff boundary below.  The candidate
-contribution isolated here is the optimal negative-order
-classification in Theorem~\ref{thm:domain}, together with its formal
-verification.  A targeted primary-source search found no prior
-statement of this exact boundary; that conclusion remains explicitly
-subject to external priority review.
+Garofalo \cite[Prop.~8.8]{Garofalo}, citing Yuan--Kalbfleisch
+\cite[Appendix]{YuanKalbfleisch}, states the exact global unit-shift
+threshold: $I_{\alpha+1}/I_\alpha$ is strictly increasing in $x$ iff
+$\alpha\ge-1/2$.  As shown in Section~\ref{sec:unitstep}, this is
+precisely the unit-shift slice of Theorem~\ref{thm:domain}.
+
+More decisively, Section~\ref{sec:classicalroute} derives the full
+arbitrary-shift iff from Freitas--Laugesen plus standard DLMF connection,
+Wronskian, and large-argument formulas.  Hartman's much earlier complete
+monotonicity theorem for $I_a(t)/I_a(\tau)$ as a function of $a^2$
+\cite[Thm.~1.0]{Hartman1976} is a further structural antecedent for the
+nonnegative comparison.  Thus, even though this audit did not locate the
+arbitrary-shift iff as a single displayed theorem before this note, its
+analytic content is a short corollary of classical results.  No novelty or
+priority claim is made for Theorem~\ref{thm:domain}.  Segura's
+Riccati/nullcline analysis \cite{Segura2021} remains the closest antecedent
+for the alternative proof style below.
 \end{remark}
 
 The purpose of this corrected note is threefold.
@@ -138,7 +145,8 @@ The purpose of this corrected note is threefold.
 Riccati contact identity.  This avoids Bessel zeros and high-order
 uniform asymptotics in the proof region $\mu+\nu>0$.
 
-\emph{Second}, we resolve the contact-degenerate line $\mu+\nu=0$ by
+\emph{Second}, we give a self-contained alternative proof: we resolve the
+contact-degenerate line $\mu+\nu=0$ by
 ODE uniqueness and prove necessity below the line from the recurrence
 alone.  This produces an exact global domain rather than a sufficient
 condition, without invoking asymptotics.
@@ -159,6 +167,48 @@ Section~\ref{sec:lean} presents the machine-checked Lean~4/Mathlib
 verification of the full optimal-domain theorem (no
 \texttt{sorry}; standard axioms only).
 Section~\ref{sec:numerics} reports an independent numerical audit.
+
+\section{A classical route and the priority witness}
+\label{sec:classicalroute}
+
+Write $r_\alpha=I_\alpha'/I_\alpha$.  By
+\eqref{eq:closedform}, the upper inequality in
+Theorem~\ref{thm:domain} is exactly $r_\mu<r_\nu$.  If
+$0\le\mu<\nu$, this is Freitas--Laugesen's Lemma~10.
+
+Suppose next that $-1<\mu<0$ and put $a=-\mu\in(0,1)$.  The DLMF
+connection formula and Wronskian \cite[10.27.2, 10.28.2]{DLMF} give
+\[
+ I_{-a}=I_a+c_aK_a,\qquad c_a=\frac2\pi\sin(\pi a)>0,
+ \qquad \frac{K_a'}{K_a}<\frac{I_a'}{I_a}.
+\]
+Consequently $r_{-a}$ is a strict positive weighted average of
+$K_a'/K_a$ and $I_a'/I_a$, and hence
+\begin{equation}
+\label{eq:reflection-order}
+ r_{-a}<r_a.
+\end{equation}
+If $\mu+\nu\ge0$, then $\nu\ge a$.  Equation
+\eqref{eq:reflection-order}, followed when necessary by the known
+nonnegative order comparison, yields $r_\mu<r_\nu$.
+
+Conversely, the classical fixed-order large-$x$ expansion
+\cite[10.40.1--10.40.4]{DLMF} gives
+\[
+ r_\alpha(x)=1-\frac1{2x}+
+ \frac{4\alpha^2-1}{8x^2}+O(x^{-3}).
+\]
+If $\mu<\nu$ and $\mu+\nu<0$, then
+$\mu^2-\nu^2=(\mu-\nu)(\mu+\nu)>0$, so
+\[
+ r_\mu(x)-r_\nu(x)
+ =\frac{\mu^2-\nu^2}{2x^2}+O(x^{-3})>0
+\]
+for all sufficiently large $x$.  Thus the upper inequality fails.
+This proves the full iff using only results available before the present
+note and is the bibliographic witness that prevents treating
+Theorem~\ref{thm:domain} as a new analytic theorem.  The next section is
+retained because its recurrence-only proof is the form formalized in Lean.
 
 \section{The two-flow Riccati proof and the optimal domain}
 \label{sec:proof}
@@ -274,7 +324,9 @@ For a concrete audit witness, at $100$ decimal digits,
 \section{The unit-step Amos calibration}
 \label{sec:unitstep}
 
-Throughout, $x>0$, $\nu \ge 0$, $I_\nu$ is the modified Bessel function
+Throughout the four-step Amos derivation, $x>0$ and $\nu \ge 0$; later in
+this section we record the already-known sharp classification on
+$-1<\nu<0$.  The function $I_\nu$ is the modified Bessel function
 of the first kind, all values $I_\nu(x)$ are strictly positive, and
 $\rho_\nu(x) = I_{\nu+1}(x)/I_\nu(x) \in (0,1)$. We use two classical
 facts, valid for all real orders (see \cite[10.29.1--10.29.2]{DLMF}):
@@ -294,6 +346,21 @@ Specializing Theorem~\ref{thm:main} to the unit shift gives
 \end{equation}
 The older four-step proof of this specialization is retained because
 it records the exact equivalence with the Amos bound.
+
+There is also a more direct equivalence.  The Riccati equation
+\eqref{eq:riccati} says
+\[
+ \rho_\nu'=1-\rho_\nu^2-\frac{2\nu+1}{x}\rho_\nu,
+\]
+while the recurrence in Step~2 below shows that the right-hand side is
+positive exactly when
+$\rho_\nu-\rho_{\nu+1}<1/x$.  Hence the unit-shift upper inequality is
+equivalent to strict increase of $I_{\nu+1}/I_\nu$ in $x$.  Garofalo's
+Proposition~8.8 \cite{Garofalo} states that this occurs globally exactly
+for $\nu\ge-1/2$, and that for $-1<\nu<-1/2$ the quotient eventually
+decreases after one maximum.  This recovers the slice
+$2\nu+1\ge0$ of Theorem~\ref{thm:domain} and shows that its exact
+negative threshold was already classical in the unit-step case.
 
 \subsection*{Step 1: a closed form for the logarithmic derivative}
 
@@ -540,9 +607,10 @@ disconnected and deleted after 31 minutes.
 
 \emph{Honest scope.}  The machine-checked theorem now covers both strict
 inequalities on the optimal strip, including the negative-order
-boundary and obstruction in Theorem~\ref{thm:domain}.  The priority
-claim is not machine-checkable and remains a candidate pending an
-independent bibliographic review.  Source presence is not reported as
+boundary and obstruction in Theorem~\ref{thm:domain}.  It verifies the
+alternative recurrence-only proof, not a novelty claim: the preceding
+priority audit shows that the analytic classification is a short corollary
+of classical facts.  Source presence is not reported as
 verification: the claim above refers to the materialized Colab builds
 and their oracle output.
 
@@ -589,9 +657,12 @@ adversarial-audit process itself.  It first located
 second error in version~6: the paper said its method did not close
 fractional steps and misdescribed Lemma~10 as a Bessel-zero proof.  The
 contact calculation \eqref{eq:touch} corrects that statement.  This
-version separates the known nonnegative-order theorem and its known
-first-contact route from the candidate contribution: the optimal
-negative-order classification, now formalized end to end.  Numerical
+version also records a third correction forced by the priority audit:
+Garofalo's Proposition~8.8 already contains the exact unit-shift negative
+threshold, and the full arbitrary-shift iff follows quickly from the
+standard connection, Wronskian and asymptotic formulas.  The theorem is
+therefore presented as a classical synthesis with a machine-checked,
+recurrence-only proof, not as a new analytic classification.  Numerical
 residuals and a finite mesh are never used as proof.
 
 \begin{thebibliography}{10}
@@ -636,6 +707,25 @@ P.~Freitas and R.~S. Laugesen,
 way},
 Amer. J. Math. \textbf{143} (2021), 969--994;
 doi:10.1353/ajm.2021.0024; arXiv:1810.07461; Lemma~10.
+
+\bibitem{Garofalo}
+N.~Garofalo,
+\emph{Two classical properties of the Bessel quotient
+$I_{\nu+1}/I_\nu$ and their implications in PDEs},
+arXiv:1810.09756 (2018); Proposition~8.8.
+
+\bibitem{YuanKalbfleisch}
+L.~Yuan and J.~D. Kalbfleisch,
+\emph{On the Bessel distribution and related problems},
+Ann. Inst. Statist. Math. \textbf{52} (2000), 438--447;
+doi:10.1023/A:1004152916478.
+
+\bibitem{Hartman1976}
+P.~Hartman,
+\emph{Completely monotone families of solutions of $n$-th order linear
+differential equations and infinitely divisible distributions},
+Ann. Scuola Norm. Sup. Pisa Cl. Sci. (4) \textbf{3} (1976), 267--287;
+Theorem~1.0 (with the published erratum at p.~725).
 
 \bibitem{Segura2021}
 J.~Segura,
@@ -682,7 +772,7 @@ Press, 1994.
 \bibitem{DLMF}
 F.~W.~J. Olver et al.,
 \emph{NIST Digital Library of Mathematical Functions},
-\S\S10.27--10.29, \url{https://dlmf.nist.gov/10}.
+\S\S10.27--10.29 and 10.40, \url{https://dlmf.nist.gov/10}.
 
 \bibitem{Migdal}
 A.~A. Migdal,

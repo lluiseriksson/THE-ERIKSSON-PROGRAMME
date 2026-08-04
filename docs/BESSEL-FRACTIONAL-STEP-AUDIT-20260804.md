@@ -6,8 +6,9 @@ Rama aislada: `codex/audit-bessel-fractional-49`
 
 ## Dictamen
 
-**FAIL para el candidato 6.0 literal. PASS técnico para fabricar únicamente el
-enunciado ajustado de la versión 7, sujeto a auditoría externa de prioridad.**
+**FAIL para el candidato 6.0 literal y FAIL para fabricación como teorema
+analítico nuevo de nivel +6. PASS únicamente como nota de síntesis,
+formalización y prueba alternativa.**
 
 El enunciado sin restricciones de orden es falso. Un testigo holgado es
 
@@ -31,9 +32,12 @@ y, si mu+nu >= 0,
 ```
 
 La parte `0 <= mu < nu` y su geometría de primer contacto ya están en
-Freitas--Laugesen, Lemma 10. La frontera óptima negativa es una contribución
-candidata: el barrido dirigido no encontró el iff exacto, pero este documento
-no se autocertifica como dictamen terminal de prioridad.
+Freitas--Laugesen, Lemma 10. El barrido ampliado de v8 encontró además que
+Garofalo, Proposición 8.8, ya contiene el umbral negativo exacto para salto
+unitario, y que el iff de salto arbitrario es un corolario corto de resultados
+clásicos (fórmula de conexión, Wronskiano y expansión en infinito). Aunque no
+se localizó el iff arbitrario como un único teorema publicado, su contenido
+analítico no supera el umbral de novedad exigido para fabricar un paper +6.
 
 ## 1. Cálculo reconstruido
 
@@ -151,9 +155,63 @@ entre dos órdenes arbitrarios.
   33 (2015), DOI `10.1016/j.exmath.2014.07.001`, arXiv `1202.4853`: cubre la
   monotonía clásica inferior del cociente en el orden.
 
-Conclusión: conocida la región no negativa y conocido el estilo de prueba;
-posible aportación nueva sólo en la clasificación óptima negativa y su prueba
-elemental/formal. Se requiere árbitro bibliográfico independiente.
+### Barrido ampliado v8: testigo de prioridad adverso
+
+N. Garofalo, *Two classical properties of the Bessel quotient
+`I_(nu+1)/I_nu` and their implications in PDEs*, arXiv `1810.09756`
+(2018), Proposición 8.8, enuncia que `I_(a+1)/I_a` crece estrictamente en
+`x` para `a>=-1/2`, mientras que para `-1<a<-1/2` primero crece y luego
+decrece hacia 1. Garofalo califica el hecho como clásico y remite a la
+discusión del apéndice de L. Yuan y J. D. Kalbfleisch, *On the Bessel
+distribution and related problems*, Ann. Inst. Statist. Math. 52 (2000),
+438--447, DOI `10.1023/A:1004152916478`.
+
+Registros primarios exactos:
+
+- Garofalo: `https://arxiv.org/abs/1810.09756`, PDF pp. 38--40;
+- Yuan--Kalbfleisch:
+  `https://www.ism.ac.jp/editsec/aism/52/438.html`;
+- Hartman 1976:
+  `https://www.numdam.org/item/ASNSP_1976_4_3_2_267_0/` y errata
+  `https://www.numdam.org/item/ASNSP_1976_4_3_4_725_0/`;
+- DLMF: `https://dlmf.nist.gov/10.27`, `/10.28` y `/10.40`.
+
+La recurrencia muestra exactamente
+
+```text
+(rho_a)' > 0  iff  rho_a-rho_(a+1) < 1/x.
+```
+
+Por tanto Garofalo/Yuan--Kalbfleisch ya contienen la rebanada de salto
+unitario del iff, incluido el umbral óptimo `2a+1=0`.
+
+Hay un testigo aún más decisivo para el desplazamiento arbitrario. Escribiendo
+`r_a=I_a'/I_a`, la cota superior equivale a `r_mu<r_nu`. Para
+`mu=-a in (-1,0)`, las fórmulas DLMF 10.27.2 y 10.28.2 dan
+
+```text
+I_(-a) = I_a + (2/pi) sin(pi a) K_a,
+K_a'/K_a < I_a'/I_a,
+```
+
+luego `r_(-a)<r_a`. Si `mu+nu>=0`, entonces `nu>=a`, y
+Freitas--Laugesen aplica entre `a` y `nu`. Si `mu+nu<0`, DLMF
+10.40.1--10.40.4 da
+
+```text
+r_mu-r_nu = (mu^2-nu^2)/(2x^2) + O(x^-3) > 0
+```
+
+para `x` suficientemente grande. Esto reconstruye el iff completo a partir
+de hechos clásicos. Hartman, *Completely monotone families of solutions...*,
+Ann. Scuola Norm. Sup. Pisa (1976), Teorema 1.0, ya proporciona además el
+antecedente estructural de monotonía completa en el parámetro `a^2`.
+
+Conclusión v8: no se halló una única proposición previa con la frase exacta
+`mu+nu>=0`, pero la clasificación analítica es un corolario breve de fuentes
+anteriores. **FAIL de prioridad para venderla como teorema nuevo +6.** Quedan
+como aportaciones defendibles la síntesis explícita, la prueba alternativa
+sin `K` ni asintótica y la formalización Lean completa.
 
 ## 4. Corrección exacta de `bessel-amos-fh`
 
@@ -169,6 +227,11 @@ La versión previa debía corregir estas afirmaciones:
    `-1<mu<nu` y `mu+nu>=0`, con fallo existencial si `mu+nu<0`.
 5. El alcance Lean anterior, que declaraba ausente la región negativa, quedó
    obsoleto tras la formalización actual.
+6. «La frontera negativa óptima es una contribución candidata nueva» ya no
+   es sostenible tras el barrido v8: el salto unitario es clásico y el iff
+   arbitrario se deduce en pocas líneas de resultados clásicos.
+7. El paper debe describirse como síntesis con prueba alternativa y
+   formalización, no como descubrimiento de una clasificación analítica.
 
 El Teorema 2 corregido dice exactamente: para `-1<mu<nu`, la desigualdad
 inferior vale para todo `x>0`; la superior vale para todo `x>0` si y sólo si

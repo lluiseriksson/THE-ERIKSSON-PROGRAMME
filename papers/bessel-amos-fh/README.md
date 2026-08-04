@@ -1,8 +1,8 @@
-# Bessel--Amos / Feynman--Hellmann 2D note (v7, corrected continuous-order version)
+# Bessel--Amos / Feynman--Hellmann 2D note (v8, priority-corrected synthesis)
 
-**Sharp Continuous-Order Comparison for Modified-Bessel Ratios: a Riccati
-Proof, the Optimal Real-Order Domain, and Lean Verification** -- Lluis
-Eriksson, August 2026.
+**An Explicit Optimal-Domain Synthesis for Modified-Bessel Ratios: a
+Recurrence-Only Riccati Proof and Lean Verification** -- Lluis Eriksson,
+August 2026.
 
 Contents: `bessel_amos_fh.tex` / `.pdf`, the original unit-step audit
 `verify_fh.py`, the fractional adversarial audit
@@ -21,9 +21,16 @@ Status and corrected scope:
   (Amer. J. Math. 143 (2021), DOI 10.1353/ajm.2021.0024). Version 6's claim
   that fractional steps did not follow from the method was false and is
   explicitly corrected.
-- The candidate contribution is the optimal negative-order
-  boundary/obstruction and its machine verification. Priority
-  remains subject to independent external review.
+- The v8 priority sweep found a decisive classical route. Garofalo,
+  Proposition 8.8 (arXiv:1810.09756), already gives the exact unit-shift
+  threshold `nu >= -1/2`, citing Yuan--Kalbfleisch (2000). For arbitrary
+  shifts, Freitas--Laugesen on nonnegative orders plus the standard
+  connection formula `I_-a = I_a + (2/pi) sin(pi a) K_a` and the
+  `I_a,K_a` Wronskian prove sufficiency when `mu+nu >= 0`; the classical
+  large-argument expansion proves failure when `mu+nu < 0`.
+- Accordingly, the optimal-domain theorem is no longer claimed as new.
+  The contribution retained is the explicit synthesis, the alternative
+  recurrence-only proof, and its end-to-end machine verification.
 - The two new Lean modules prove the full optimal-domain iff, both strict
   inequalities, and an existential upper-bound failure below the boundary,
   with no `sorry`. Colab Pro+ materialization on 2026-08-04 used Lean
