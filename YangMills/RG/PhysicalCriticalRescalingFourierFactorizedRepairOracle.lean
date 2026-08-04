@@ -1,0 +1,10 @@
+import YangMills.RG.PhysicalCriticalRescalingFourierFactorizedRepair
+
+open YangMills.RG
+
+#print axioms YangMills.RG.flatBlockConstraintQCLM_blockFourierMode_eq_zero
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner_blockFourierModeCochain_of_ne
+#print axioms YangMills.RG.factorizedFlatPoincare_fourier_lower_bound
+#print axioms YangMills.RG.volumeUniformFactorizedFlatPoincareGate_fourier_false
+#print axioms YangMills.RG.repairedFlatPoincare_blockFourier_rayleigh_eq
+#print axioms YangMills.RG.repairedFlatPoincare_blockFourier_budget
