@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "artifact": "papers/parity-barriers",
+  "status": "legacy_external_toolchain_only",
+  "sources": [
+    {
+      "path": "papers/parity-barriers/ParityBarrier.lean",
+      "git_blob": "2ce01e28e5e1ccfadf99ac0e3cb8c3369d957bb7",
+      "sha256_lf": "3d341e22ba7e9f2a4708a070597eb3c1d240c6f8d32b0013a24b992e2b90489c"
+    }
+  ],
+  "verified_environment": {
+    "lean_toolchain": "leanprover/lean4:v4.30.0-rc2",
+    "mathlib_commit": "cd3b69baae9cd81a572a3720f2372655eca39038",
+    "command": "lake env lean ParityBarrier.lean",
+    "recorded_date": "2026-07-09",
+    "evidence_path": "papers/parity-barriers/LEAN-VERIFICATION-LOG.txt",
+    "evidence_git_blob": "d79c65b32d0890cb95cd33861422432da763f231",
+    "evidence_sha256_lf": "5117163f09ae506cab44118033cd2e9231e71544dac806b485f2cc9d6c8d3fb4",
+    "capture_limit": "The log records the command and pins but no committed adjacent toolchain files or frozen runtime image."
+  },
+  "main_tree_environment": {
+    "lean_toolchain": "leanprover/lean4:v4.29.0-rc6",
+    "mathlib_commit": "07642720480157414db592fa85b626dafb71355b"
+  },
+  "compatibility": {
+    "status": "not_reproduced_on_main_tree",
+    "source_present_is_not_olean_materialized": true,
+    "statement_change_requirement": "not_determined",
+    "migration_authorized": false,
+    "next_gate": "Run the frozen source blob on the main-tree pins in an isolated Colab CPU runtime; if any proof or statement edit is required, stop and submit a migration plan."
+  }
+}

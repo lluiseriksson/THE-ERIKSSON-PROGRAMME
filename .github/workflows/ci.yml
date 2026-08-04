@@ -29,3 +29,7 @@ jobs:
       - name: Zero sorry (proof tree) + zero axioms (verified-core tree)
         # Comment-aware scanner; the core dirs/files are listed in the script.
         run: python scripts/check_consistency.py
+
+      - name: Publication provenance (placeholders + artifact toolchains)
+        # Text/JSON/hash guard only: this step never invokes Lean or Lake.
+        run: python scripts/check_publication_provenance.py
