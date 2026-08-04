@@ -11,9 +11,19 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from math import ceil, sqrt
+import argparse
 import platform
 
 import mpmath as mp
+
+
+class CheckFailure(RuntimeError):
+    """Raised when a named acceptance condition is false."""
+
+
+def require(condition: bool, label: str) -> None:
+    if not condition:
+        raise CheckFailure("REQUIREMENT_FAILED " + label)
 
 
 @dataclass
@@ -113,8 +123,8 @@ def check_small_beta_anchor() -> None:
         )
 
 
-def normalized_j(beta: mp.mpf, u: mp.mpf) -> mp.mpf:
-    """The signed c3 integrand divided by f(y) f(z) beta^3."""
+def endpoint_j(beta: mp.mpf, u: mp.mpf) -> mp.mpf:
+    """The signed integrand J in c3=(6*pi)^(-1) integral J."""
     y = 2 * beta * mp.sin(u)
     z = 2 * beta * mp.cos(u)
     f = lambda x: mp.besseli(1, x) / 2
@@ -125,7 +135,42 @@ def normalized_j(beta: mp.mpf, u: mp.mpf) -> mp.mpf:
         + z * y**2 * fp(y) * fpp(z)
         + y * f(y) * fp(z)
     )
-    return j_value / (f(y) * f(z) * beta**3)
+    return j_value
+
+
+def normalized_j(beta: mp.mpf, u: mp.mpf) -> mp.mpf:
+    """The signed c3 integrand divided by f(y) f(z) beta^3."""
+    y = 2 * beta * mp.sin(u)
+    z = 2 * beta * mp.cos(u)
+    f = lambda x: mp.besseli(1, x) / 2
+    return endpoint_j(beta, u) / (f(y) * f(z) * beta**3)
+
+
+def check_integral_identities() -> None:
+    for beta_value in (1, 8):
+        data = make_data(beta_value, extra=70)
+        c3, _, bpi, _ = endpoint_quantities(data)
+        cuts = [mp.mpf("0"), mp.pi / 4, mp.pi / 2]
+        c3_integral = mp.quad(
+            lambda u: endpoint_j(data.beta, u), cuts
+        ) / (6 * mp.pi)
+        bpi_integral = data.beta**2 / mp.pi * mp.quad(
+            lambda u: (
+                mp.sin(u)
+                * mp.cos(u)
+                * mp.besseli(1, 2 * data.beta * mp.cos(u))
+                * mp.besseli(1, 2 * data.beta * mp.sin(u))
+            ),
+            cuts,
+        )
+        c_rel = abs(c3_integral / c3 - 1)
+        b_rel = abs(bpi_integral / bpi - 1)
+        print(
+            "ENDPOINT_INTEGRALS beta=%d c3_rel=%s Bpi_rel=%s"
+            % (beta_value, mp.nstr(c_rel, 8), mp.nstr(b_rel, 8))
+        )
+        require(c_rel < mp.mpf("1e-45"), "c3_integral_beta_%d" % beta_value)
+        require(b_rel < mp.mpf("1e-45"), "Bpi_integral_beta_%d" % beta_value)
 
 
 def check_endpoint() -> None:
@@ -170,11 +215,12 @@ def check_endpoint() -> None:
         "STRUCTURAL_PERTURBATION beta=32 c3_over_A1=%s positive=%s ratio_increasing=%s"
         % (mp.nstr(c3 / data.a[1], 10), positive, increasing)
     )
-    assert all(
+    require(all(
         original_ratios[m] < original_ratios[m + 1]
         for m in range(len(original_ratios) - 1)
-    )
-    assert positive and increasing
+    ), "original_ratio_order")
+    require(positive, "perturbed_coefficients_positive")
+    require(increasing, "perturbed_ratio_order")
 
     for beta_value in (1, 8, 32, 125):
         beta_mpf = mp.mpf(beta_value)
@@ -192,16 +238,41 @@ def check_endpoint() -> None:
                 mp.nstr(max(samples), 8),
             )
         )
-        assert negative > 0 and negative < len(samples)
+        require(negative > 0, "c3_integrand_has_negative_sample_beta_%d" % beta_value)
+        require(
+            negative < len(samples),
+            "c3_integrand_has_positive_sample_beta_%d" % beta_value,
+        )
+
+
+def mutation_self_test() -> None:
+    """Check that a deliberately false acceptance predicate is rejected."""
+    rejected = False
+    try:
+        require(False, "deliberate_mutation")
+    except CheckFailure as exc:
+        rejected = str(exc) == "REQUIREMENT_FAILED deliberate_mutation"
+    require(rejected, "mutation_was_rejected")
+    print("MUTATION_SELF_TEST PASS deliberate_false_predicate_rejected")
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--self-test-mutations",
+        action="store_true",
+        help="also prove that a deliberately false predicate is rejected",
+    )
+    args = parser.parse_args()
     mp.mp.dps = 180
     print("WRONSKIAN_ENDPOINT_KILL_TEST")
     print("python=" + platform.python_version() + " mpmath=" + mp.__version__)
     check_graf_kernel()
     check_small_beta_anchor()
+    check_integral_identities()
     check_endpoint()
+    if args.self_test_mutations:
+        mutation_self_test()
     print("VERDICT FB_KERNEL_PASS; GLOBAL_PARABOLIC_ROUTE_FAILS_ENDPOINT_KILL_TEST")
     return 0
 

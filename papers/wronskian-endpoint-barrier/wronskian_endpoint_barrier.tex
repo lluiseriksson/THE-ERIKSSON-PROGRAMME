@@ -1,0 +1,562 @@
+\documentclass[11pt]{article}
+\usepackage{cmap}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+\input{glyphtounicode}
+\pdfgentounicode=1
+\fi
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\definecolor{linkblue}{rgb}{0.08,0.19,0.52}
+\hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,
+  urlcolor=linkblue,pdftitle={Endpoint Parity Loss in a Bessel Wronskian},
+  pdfauthor={Lluis Eriksson}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\FA}{F_{\!A}}
+\newcommand{\FB}{F_{\!B}}
+\newcommand{\W}{\mathcal W}
+\newcommand{\dd}{\,d}
+\newcommand{\I}{I}
+
+\title{Endpoint Parity Loss in a Bessel Wronskian:\\
+\large an exact obstruction to kernel-and-anchor proofs of global ratio monotonicity}
+\author{Lluis Eriksson}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For $\beta>0$ write $I_m=I_m(\beta)$ and define
+\[
+ a_m=I_m^2\bigl((m-1)I_{m-1}^2+(m+1)I_{m+1}^2\bigr),
+ \qquad b_m=mI_m^4,
+\]
+with sine series $\FA(t)=\sum_{m\geq1}a_m\sin(mt)$ and
+$\FB(t)=\sum_{m\geq1}b_m\sin(mt)$.  The associated Wronskian
+$\W=2(\FA'\FB-\FA\FB')$ is negative exactly when $\FA/\FB$ is
+decreasing.  We isolate what can and cannot be proved from two natural
+inputs: the Neumann convolution kernel
+$I_0(2\beta\sin(\phi/2))$ and the small-coupling anchor
+$(-4096/\beta^{10})\W\to4\sin^3t$.
+
+First, the convolution does prove the denominator statement
+$\FB(t)>0$ for $0<t<\pi$.  Second, the endpoint is governed by two
+alternating quantities, $c_3$ and $B_\pi$, through the exact law
+$\W(\pi-d)=-4c_3B_\pi d^3+O(d^5)$.  We prove $B_\pi>0$, derive integral
+representations, and establish the logarithmic cancellation law
+\[
+ \lim_{\beta\to\infty}-\frac{1}{\beta}\log
+ \frac{|c_3B_\pi|}{c_3^{\rm abs}B_\pi^{\rm abs}}
+ =8-4\sqrt2.
+\]
+Thus a positive-term majorant loses an exponentially decisive factor.
+Finally, we give a smooth one-parameter perturbation theorem: one may keep
+$\FB$ and its kernel unchanged, preserve positivity and strict coefficient-ratio
+ordering, and preserve every jet at $\beta=0$, while choosing either sign of
+the endpoint cubic coefficient.  Consequently those structural data, even
+taken together, do not imply global Wronskian negativity.  This is a no-go
+theorem for a proof architecture, not a counterexample to the Bessel
+conjecture.  A short high-precision kill-test accompanies the paper; no
+computer-assisted inequality is used in the proofs.
+\end{abstract}
+
+\section{The question and the status of the result}
+
+The following ratio-monotonicity statement arises after an exact
+Wronskian reduction of a surface-positivity problem.
+
+\begin{conjecture}[Bessel Wronskian conjecture]\label{conj:main}
+For every $\beta>0$,
+\[
+ \FB(t)>0,
+ \qquad
+ \left(\frac{\FA}{\FB}\right)'(t)<0
+ \quad (0<t<\pi).
+\]
+Equivalently, $\FB>0$ and $\W<0$ on $(0,\pi)$.
+\end{conjecture}
+
+The first assertion will be proved exactly below.  The second assertion is
+\emph{not} proved here.  Our main result instead separates a valid part of
+the proposed kernel route from a fatal loss at $t=\pi$.  The distinction is
+important: the perturbations in Theorem~\ref{thm:nogo} do not obey all
+modified-Bessel recurrences, and hence do not refute
+Conjecture~\ref{conj:main}.
+
+The Wronskian identity itself is elementary.  If
+$F_x(t)=\sum_{m\ge1}x_m\sin(mt)$, then
+\begin{equation}\label{eq:wronskian}
+ 2(F_a'F_b-F_aF_b')=
+ \sum_{m<n}(a_mb_n-a_nb_m)
+ \bigl[(m-n)\sin((m+n)t)+(m+n)\sin((n-m)t)\bigr].
+\end{equation}
+It follows by expanding the products and antisymmetrizing.  Throughout,
+all Bessel series and their differentiated series converge locally
+uniformly; the rearrangements below are therefore legitimate.
+
+\section{The convolution kernel closes \texorpdfstring{$\FB>0$}{FB > 0}}
+
+The Neumann addition theorem gives the two parity forms
+\begin{align}
+ K_+(\phi)&=I_0\!\left(2\beta\cos\frac{\phi}{2}\right)
+   =\sum_{m\in\mathbb Z}I_m(\beta)^2e^{im\phi},\label{eq:kplus}\\
+ K_-(\phi)&=I_0\!\left(2\beta\sin\frac{\phi}{2}\right)
+   =\sum_{m\in\mathbb Z}(-1)^mI_m(\beta)^2e^{im\phi}.
+   \label{eq:kminus}
+\end{align}
+For periodic convolution normalized by $(f*g)(t)=(2\pi)^{-1}
+\int_0^{2\pi}f(s)g(t-s)\,ds$, both squares give
+\begin{equation}\label{eq:p4}
+ P_4:=K_+*K_+=K_-*K_-
+ =\sum_{m\in\mathbb Z}I_m(\beta)^4e^{imt},
+ \qquad \FB=-\frac12P_4'.
+\end{equation}
+
+\begin{lemma}[strict circular convolution]\label{lem:circle}
+If $q$ is a nonconstant, even, continuous function on the circle that is
+strictly decreasing with geodesic distance from $0$, then $q*q$ is strictly
+decreasing on $(0,\pi)$ and $(q*q)'<0$ there whenever $q$ is smooth.
+\end{lemma}
+
+\begin{proof}
+Use the layer-cake representation of $q-\min q$ by centered circular arcs.
+The convolution is a positive superposition of overlap lengths of two such
+arcs whose centers are separated by $t$.  Each overlap length is
+nonincreasing for $0<t<\pi$.  At any fixed $t$ there is an open set of pairs
+of level arcs whose endpoints meet in the unsaturated regime; on this set
+the derivative of the overlap is strictly negative.  Strict decrease of
+$q$ makes this set have positive level measure.  Differentiation is allowed
+for smooth $q$ and yields the pointwise derivative claim.
+\end{proof}
+
+\begin{theorem}\label{thm:fb}
+For every $\beta>0$, $\FB(t)>0$ for $0<t<\pi$.
+\end{theorem}
+
+\begin{proof}
+On $[0,\pi]$, $K_+(t)=I_0(2\beta\cos(t/2))$ is strictly decreasing,
+because $I_0'(x)=I_1(x)>0$ for $x>0$.  Apply
+Lemma~\ref{lem:circle} to \eqref{eq:p4}: $P_4'(t)<0$, and hence
+$\FB(t)=-P_4'(t)/2>0$.
+\end{proof}
+
+This proof uses the kernel at full strength and contains no alternating
+majorization.  The obstruction begins with the numerator and becomes sharp
+at the opposite endpoint.
+
+\section{The exact small-coupling anchor}
+
+The fixed-order Taylor expansions of $I_m$ give
+\begin{align*}
+ a_1&=\frac{\beta^6}{128}+O(\beta^8),&
+ b_1&=\frac{\beta^4}{16}+O(\beta^6),\\
+ a_2&=\frac{\beta^6}{256}+O(\beta^8),&
+ b_2&=\frac{\beta^8}{2048}+O(\beta^{10}).
+\end{align*}
+All remaining modes enter later.  Substitution in the Wronskian yields,
+uniformly for $t\in[0,\pi]$,
+\begin{equation}\label{eq:anchor}
+ \W(t;\beta)=-\frac{\beta^{10}}{1024}\sin^3t+O(\beta^{12}),
+ \qquad
+ -\frac{4096}{\beta^{10}}\W(t;\beta)\longrightarrow4\sin^3t.
+\end{equation}
+Thus the parabolic anchor has the desired sign for every fixed interior
+$t$ when $\beta$ is small.  Uniformity of the absolute error in
+\eqref{eq:anchor}, however, does not supply a relative estimate near
+$t=\pi$, where the leading term has a triple zero.
+
+\section{The endpoint coefficient}
+
+Put $d=\pi-t$.  The linear coefficient of $\FA(\pi-d)$ vanishes by an
+edgewise telescoping:
+\begin{equation}\label{eq:telescoping}
+ \sum_{m\ge1}(-1)^{m+1}ma_m=0.
+\end{equation}
+Indeed, the two appearances of $I_m^2I_{m+1}^2$ have coefficients
+\[
+ (-1)^{m+1}m(m+1)
+ \quad\hbox{and}\quad
+ (-1)^{m+2}(m+1)m,
+\]
+which cancel.  Define
+\begin{align}
+ c_3(\beta)&=\frac{1}{6}\sum_{m\ge1}(-1)^{m+1}
+ m(m+1)(2m+1)I_m^2I_{m+1}^2,\label{eq:c3}\\
+ B_\pi(\beta)&=\sum_{m\ge1}(-1)^{m+1}m^2I_m^4.\label{eq:bpi}
+\end{align}
+Taylor expansion, followed by the same edge collection used in
+\eqref{eq:telescoping}, gives
+\begin{equation}\label{eq:endexp}
+ \FA(\pi-d)=c_3d^3+O(d^5),\qquad
+ \FB(\pi-d)=B_\pi d+O(d^3),
+\end{equation}
+and consequently
+\begin{equation}\label{eq:wend}
+ \W(\pi-d)=-4c_3B_\pi d^3+O(d^5),
+ \qquad
+ \lim_{t\uparrow\pi}\frac{-\W(t)}{\sin^3t}=4c_3B_\pi.
+\end{equation}
+
+The denominator coefficient has a positive integral.  From
+$P_4''(\pi)=2B_\pi$, differentiating the convolution and integrating by
+parts once gives
+\begin{equation}\label{eq:bpi-integral}
+ B_\pi=\frac{\beta^2}{\pi}\int_0^{\pi/2}
+ \sin u\cos u\,I_1(2\beta\cos u)I_1(2\beta\sin u)\,du>0.
+\end{equation}
+Therefore the desired endpoint sign is exactly the nontrivial statement
+$c_3(\beta)>0$.
+
+For later use, set $f(x)=I_1(x)/2$, $y=2\beta\sin u$ and
+$z=2\beta\cos u$.  Applying \eqref{eq:kminus}, differentiating the
+correlation, and integrating by parts gives the half-range identity
+\begin{equation}\label{eq:c3-integral}
+ c_3=\frac{1}{6\pi}\int_0^{\pi/2}J(u,\beta)\,du,
+\end{equation}
+where
+\begin{equation}\label{eq:J}
+ J=-z^2f'(y)f'(z)+zy^2f'(y)f''(z)+yf(y)f'(z).
+\end{equation}
+The integrand is not pointwise positive.  This is not a numerical
+accident: for every sufficiently large $\beta$, its negative boundary
+region and positive saddle region are both nonempty.  Hence
+\eqref{eq:c3-integral} is a signed cancellation identity rather than a
+positive-kernel proof of $c_3>0$.
+
+\section{The exponential parity loss}
+
+Introduce the positive envelopes
+\begin{align}
+ c_3^{\rm abs}&=\frac{1}{6}\sum_{m\ge1}
+ m(m+1)(2m+1)I_m^2I_{m+1}^2,\label{eq:cabs}\\
+ B_\pi^{\rm abs}&=\sum_{m\ge1}m^2I_m^4.\label{eq:babs}
+\end{align}
+
+\begin{theorem}[endpoint cancellation exponent]\label{thm:exponent}
+As $\beta\to\infty$,
+\begin{align}
+ c_3(\beta)&=\frac{\beta^{3/2}e^{2\sqrt2\beta}}
+  {24\,2^{1/4}\pi^{3/2}}\bigl(1+O(\beta^{-1})\bigr),
+  \label{eq:c3asymp}\\
+ B_\pi(\beta)&=\frac{\beta^{1/2}e^{2\sqrt2\beta}}
+  {4\,2^{3/4}\pi^{3/2}}\bigl(1+O(\beta^{-1})\bigr).
+  \label{eq:bpiasymp}
+\end{align}
+Moreover
+\begin{equation}\label{eq:absrate}
+ \lim_{\beta\to\infty}\frac{1}{\beta}\log c_3^{\rm abs}
+ =\lim_{\beta\to\infty}\frac{1}{\beta}\log B_\pi^{\rm abs}=4,
+\end{equation}
+and therefore
+\begin{equation}\label{eq:loss}
+ \boxed{\displaystyle
+ \lim_{\beta\to\infty}-\frac{1}{\beta}\log
+ \frac{|c_3B_\pi|}{c_3^{\rm abs}B_\pi^{\rm abs}}
+ =8-4\sqrt2.}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+We give the details needed to identify both the sign and the exponential
+scale.  In \eqref{eq:c3-integral}, the phase is
+$y+z=2\beta(\sin u+\cos u)$.  It has a unique nondegenerate maximum at
+$u_0=\pi/4$.  Write $x=\sqrt2\beta$ and $u=u_0+v$.  Uniformly for
+$|v|\leq\beta^{-2/5}$, the fixed-order large-argument expansion and its
+differentiated forms give
+\[
+ f^{(j)}(y)=\frac{e^y}{2\sqrt{2\pi y}}
+ (1+O(\beta^{-1}+|v|)),\qquad j=0,1,2,
+\]
+and the analogous statement at $z$.  The leading term in $J$ is
+$zy^2f(y)f(z)$; at the saddle it equals
+\[
+ \frac{x^2e^{2x}}{8\pi}\bigl(1+O(\beta^{-1}+|v|)\bigr).
+\]
+Also $y+z=2x-xv^2+O(\beta v^4)$.  Laplace's method in
+\eqref{eq:c3-integral} now gives
+\[
+ c_3=\frac{1}{6\pi}\frac{x^2e^{2x}}{8\pi}
+ \sqrt{\frac{\pi}{x}}\,(1+O(\beta^{-1})),
+\]
+which is \eqref{eq:c3asymp}.  Outside the displayed central window,
+$\sin u+\cos u$ has a uniform quadratic deficit until a fixed
+neighborhood is exited and a uniform positive deficit thereafter; the
+standard exponential Bessel bound makes that contribution smaller than
+the stated error.  This also justifies the differentiated asymptotics.
+
+The same saddle applied to \eqref{eq:bpi-integral} is simpler.  At $u_0$
+the prefactor $\sin u\cos u$ equals $1/2$, and
+$I_1(x)^2=e^{2x}(2\pi x)^{-1}(1+O(x^{-1}))$.  The Gaussian factor
+$\sqrt{\pi/x}$ yields \eqref{eq:bpiasymp}.
+
+For \eqref{eq:absrate}, any fixed positive summand gives the lower
+exponential rate $4$, since $I_m(\beta)=e^\beta
+(2\pi\beta)^{-1/2}(1+O(\beta^{-1}))$ for fixed $m$.  For the upper bound,
+the generating function
+\[
+ \sum_{m\in\mathbb Z}I_m(\beta)z^m
+ =\exp\!\left(\frac{\beta}{2}(z+z^{-1})\right)
+\]
+and the three-term recurrence control every fixed absolute polynomial
+moment.  Positivity and repeated product bounds dominate
+\eqref{eq:cabs} and \eqref{eq:babs} by a polynomial in $\beta$ times
+$e^{4\beta}$.  Taking logarithms proves \eqref{eq:absrate}.  Combining
+the two signed rates $2\sqrt2$ with the two absolute rates $4$ proves
+\eqref{eq:loss}.
+\end{proof}
+
+The rate $8-4\sqrt2=2.3431457505\ldots$ is the kill-test for any
+positive-term or absolute-value barrier.  A barrier whose slack decays only
+algebraically cannot resolve the endpoint sign at large $\beta$.
+
+\section{A structural no-go theorem}
+
+We now show that the loss is logical, not merely a weakness of a particular
+estimate.  Let $p=(2,1,0,\ldots)$.  It satisfies
+\begin{equation}\label{eq:p}
+ \sum_{m\ge1}(-1)^{m+1}mp_m=0,
+ \qquad
+ -\frac{1}{6}\sum_{m\ge1}(-1)^{m+1}m^3p_m=1.
+\end{equation}
+
+\begin{theorem}[structural non-identifiability]
+\label{thm:nogo}
+Let $(A_m(\beta),B_m(\beta))=(a_m(\beta),b_m(\beta))$ be the Bessel
+arrays above, and suppose the known strict ordering
+$A_m/B_m<A_{m+1}/B_{m+1}$ is included among the structural inputs.
+There are two families $\widetilde A^+$ and $\widetilde A^-$ such that:
+\begin{enumerate}
+\item $B$ is unchanged; hence the convolution representation and
+      $\FB>0$ are unchanged;
+\item every $\widetilde A_m^\pm$ is positive and
+      $\widetilde A_m^\pm/B_m$ remains strictly increasing in $m$ for
+      every $\beta>0$;
+\item $\widetilde A^\pm-A$ is flat at $\beta=0$, so the two families
+      have the same complete small-$\beta$ asymptotic expansion and in
+      particular the same anchor \eqref{eq:anchor};
+\item at one common $\beta=\beta_*$, the endpoint cubic coefficients
+      have opposite signs.  Thus their Wronskians have opposite signs
+      in a punctured left neighborhood of $t=\pi$.
+\end{enumerate}
+Consequently items 1--3 cannot imply global Wronskian negativity.
+\end{theorem}
+
+\begin{proof}
+For a scalar function $h$, put
+\[
+ \widetilde A_m=A_m+h(\beta)p_m,
+ \qquad \widetilde B_m=B_m.
+\]
+By \eqref{eq:p}, the endpoint linear cancellation is preserved and the
+cubic coefficient becomes $\widetilde c_3=c_3+h$.
+
+Choose a large center $\beta_*=R$.  Theorem~\ref{thm:exponent} shows
+$|c_3(R)|=O(R^{3/2}e^{2\sqrt2R})$.  In contrast, the fixed-mode
+coefficients $A_1,A_2,B_1,B_2$ have exponential scale $e^{4R}$ times
+an inverse power of $R$.  Direct insertion of the fixed-order Bessel
+expansions gives, for fixed $m$,
+\[
+ \frac{A_{m+1}}{B_{m+1}}-\frac{A_m}{B_m}
+ =\frac{4(2m+1)}{R^2}+O(R^{-3}).
+\]
+Multiplying these gaps by the relevant $B_m$ shows that the admissible
+size of a perturbation in modes $1,2$ has exponential scale $e^{4R}$
+times an inverse power of $R$.  Therefore, for all sufficiently large
+$R$, there is an $\eta_R>|c_3(R)|$ such that $|h(R)|<\eta_R$ preserves
+positivity and both affected ratio inequalities.
+
+Fix $0<\varepsilon<\eta_R-|c_3(R)|$ and, for $\sigma>0$, set
+\[
+ \psi_{R,\sigma}(\beta)=
+ \exp\!\left(-\frac{1}{\beta^2}-\frac{(\beta-R)^2}{\sigma^2}
+             +\frac{1}{R^2}\right),
+ \qquad
+ h_\pm(\beta)=(-c_3(R)\pm\varepsilon)\psi_{R,\sigma}(\beta).
+\]
+Here $\psi(R)=1$; it is real analytic on $(0,\infty)$ and extends by
+$0$ to a $C^\infty$ function flat at $0$.  At $R$ we have
+$\widetilde c_3^\pm(R)=\pm\varepsilon$.
+
+It remains only to choose $\sigma$.  In a neighborhood of $R$, strict
+positivity and the two strict ratio gaps persist by continuity and the
+choice of $\eta_R$.  On compact sets separated from that neighborhood,
+$\psi_{R,\sigma}\to0$ uniformly as $\sigma\downarrow0$.  Near $0$ it is
+smaller than every power of $\beta$, whereas the coefficients and their
+strict gaps have finite algebraic orders.  Near infinity its Gaussian
+decay dominates the fixed-mode coefficient scales and gap denominators.
+Thus a sufficiently small $\sigma$ preserves positivity and ratio order
+for all $\beta>0$.  Flatness gives item 3, and \eqref{eq:wend} gives item
+4.
+\end{proof}
+
+\begin{remark}[exact scope]
+The theorem rules out any argument whose hypotheses see only the $B$-kernel,
+positivity of the coefficients, strict ordering of $A_m/B_m$, and the full
+small-coupling jet.  A successful proof of Conjecture~\ref{conj:main} must
+use additional Bessel structure that rejects the perturbation, for example
+an exact signed identity, recurrence-compatible differential inequality,
+or a cancellation-preserving certificate.
+\end{remark}
+
+\section{Reproducible kill-test}
+
+The companion script
+\texttt{scripts/wronskian\_endpoint\_kill\_test.py} is a diagnostic, not
+an interval proof.  It uses 180-decimal arithmetic, truncates well beyond
+the active Bessel modes, and checks the exact normalizations before
+measuring the cancellation.  A representative run is:
+\begin{center}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+$\beta$ & endpoint ratio & $\log$(ratio) & next fitted rate\\
+\midrule
+8  & $3.86868117\,10^{-5}$  & $-10.1600118$ & $2.1068310$\\
+16 & $1.85217583\,10^{-12}$ & $-27.0146600$ & $2.2301610$\\
+32 & $5.90114568\,10^{-28}$ & $-62.6972361$ & $2.2878524$\\
+64 & $9.45545116\,10^{-60}$ & $-135.9085142$ & ---\\
+\bottomrule
+\end{tabular}
+\end{center}
+Here ``endpoint ratio'' is
+$|c_3B_\pi|/(c_3^{\rm abs}B_\pi^{\rm abs})$.  The fitted rates approach
+$8-4\sqrt2$.  At $\beta=32$ and $d=10^{-4}$, the quotient of
+$\W(\pi-d)/d^3$ by $-4c_3B_\pi$ is $1.0000009109773$.  The finite
+perturbation that flips $c_3$ has relative size
+$c_3/A_1=1.270694641\,10^{-12}$ and preserves positivity and the checked
+ratio order.
+
+The acceptance checks use explicit exceptions rather than Python
+\texttt{assert}; the same run is required under ordinary Python and
+\texttt{python -O}.  The option \texttt{--self-test-mutations} injects a
+false predicate and requires the harness to reject it.  None of these
+floating-point observations is used to establish
+Theorems~\ref{thm:fb}, \ref{thm:exponent}, or \ref{thm:nogo}.
+
+\section{Implications for proof design}
+
+The two proposed legs now have sharply different outcomes.
+\begin{enumerate}
+\item The convolution kernel is strong enough to prove $\FB>0$ globally.
+It should be retained as the denominator lemma.
+\item The parabola $4\sin^3t$ is an exact small-$\beta$ anchor but is not a
+global barrier by itself.  Any continuation in $(t,\beta)$ must carry an
+endpoint variable normalized by $c_3B_\pi$, not merely absolute Fourier
+moments.
+\item The large-$\beta$ endpoint window requires signed resolution on the
+scale $e^{-(8-4\sqrt2)\beta}$ relative to the naive positive envelope.
+Polynomially accurate structural bounds necessarily miss it.
+\item Coefficient-ratio order is useful but logically insufficient for
+sine-series ratio monotonicity.  Theorem~\ref{thm:nogo} remains true even
+after adjoining all jets at $\beta=0$.
+\end{enumerate}
+
+A plausible surviving architecture is therefore modular: use the exact
+convolution for $\FB$; isolate $c_3>0$ by a cancellation-preserving signed
+identity; prove a normalized endpoint window after factoring $\sin^3t$;
+and bridge that window to a compact interior region.  The present paper
+does not claim that this program has been completed.
+
+\section{Priority and limitations}
+
+The addition formulas \eqref{eq:kplus}--\eqref{eq:kminus} are classical
+Neumann--Graf identities; standard sources are Watson's treatise and the
+NIST Digital Library of Mathematical Functions~\cite{DLMFaddition,Watson}.
+The large-argument expansions with differentiable error control are also
+classical~\cite{DLMFasymptotic,Olver}.  Ratio criteria for ordinary power
+series go back at least to Biernacki and Krzy\.z~\cite{BK}; they do not
+directly apply to sine series.  Positivity and monotonicity phenomena for
+Bessel sums have a substantial earlier literature, including
+Askey--Steinig~\cite{AskeySteinig}.
+
+The contribution claimed here is narrower: the exact endpoint reduction,
+the cancellation exponent \eqref{eq:loss}, and the perturbative
+non-identifiability theorem for the specified proof architecture.  We do
+not claim novelty for the classical identities or Laplace method.  We also
+do not claim a proof or disproof of Conjecture~\ref{conj:main}.  Related
+programme manuscripts record the Wronskian reduction and a separate
+certificate-based route to the global inequality~\cite{WRnote,Surface};
+the present result is useful precisely because it explains why a much
+shorter kernel-and-anchor proof cannot close without a new signed lemma.
+
+\section*{Data and verification statement}
+
+The source, diagnostic script, invocation commands, output transcript,
+byte counts, and SHA-256 hashes are distributed with the manuscript.  The
+paper proofs are ordinary analytic arguments.  No Lean build, interval
+oracle, or sustained remote computation was used for this paper.  The
+numerical kill-test is labelled diagnostic and is reproducible on a single
+CPU process.
+
+\begin{thebibliography}{99}
+\small
+\setlength{\itemsep}{2pt plus 0.2pt}
+
+\bibitem{AskeySteinig}
+R.~Askey and J.~Steinig,
+Some positive trigonometric sums,
+\emph{Transactions of the American Mathematical Society} \textbf{187}
+(1974), 295--307.
+\href{https://doi.org/10.1090/S0002-9947-1974-0338481-3}
+{doi:10.1090/S0002-9947-1974-0338481-3}.
+
+\bibitem{BK}
+M.~Biernacki and J.~Krzy\.z,
+On the monotonicity of certain functionals in the theory of analytic
+functions,
+\emph{Annales Universitatis Mariae Curie-Sk\l odowska, Sectio A}
+\textbf{9} (1955), 5--23.
+\href{https://bc.umcs.pl/dlibra/publication/33796/edition/30632}
+{UMCS digital repository record}.
+
+\bibitem{DLMFaddition}
+NIST Digital Library of Mathematical Functions,
+\S10.44(ii), addition theorems for modified Bessel functions,
+\href{https://dlmf.nist.gov/10.44.ii}{dlmf.nist.gov/10.44.ii},
+accessed 4 August 2026.
+
+\bibitem{DLMFasymptotic}
+NIST Digital Library of Mathematical Functions,
+\S10.40, asymptotic expansions for large argument,
+\href{https://dlmf.nist.gov/10.40}{dlmf.nist.gov/10.40},
+accessed 4 August 2026.
+
+\bibitem{Olver}
+F.~W.~J. Olver,
+\emph{Asymptotics and Special Functions},
+A K Peters, Wellesley, MA, 1997.
+
+\bibitem{Watson}
+G.~N. Watson,
+\emph{A Treatise on the Theory of Bessel Functions}, 2nd ed.,
+Cambridge University Press, 1944.
+
+\bibitem{WRnote}
+L.~Eriksson,
+A Wronskian identity for antisymmetrized sine sums,
+programme manuscript, July 2026.
+
+\bibitem{Surface}
+L.~Eriksson,
+Global ratio monotonicity for a killed von Mises bridge,
+programme manuscript, July 2026;
+\href{https://ai.vixra.org/abs/2607.0089}{ai.vixra:2607.0089}.
+
+\end{thebibliography}
+
+\end{document}

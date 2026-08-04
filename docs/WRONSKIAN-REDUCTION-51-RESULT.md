@@ -265,15 +265,16 @@ convierte la barrera parabólica propuesta en un lema analítico nuevo.
 Ejecutar local-light (un proceso, menos de 30 s en la corrida registrada):
 
 ```text
-python scripts/wronskian_endpoint_kill_test.py
+python scripts/wronskian_endpoint_kill_test.py --self-test-mutations
+python -O scripts/wronskian_endpoint_kill_test.py --self-test-mutations
 ```
 
 El script es diagnóstico multiprecisión, no aritmética de intervalos. Las
 identidades exactas que diagnostica se justifican arriba y en los objetos
 primarios del carril:
 
-- NIST DLMF, §10.23(ii), fórmulas de adición de Neumann/Graf, identificadores
-  10.23.2--10.23.8: https://dlmf.nist.gov/10.23.ii
+- NIST DLMF, §10.44(ii), fórmulas de adición de Neumann/Graf para Bessel
+  modificadas: https://dlmf.nist.gov/10.44.ii
 - NIST DLMF, §10.29(i), recurrencias y derivadas de `I_nu`, identificador
   10.29.1: https://dlmf.nist.gov/10.29.E1
 - `ai.viXra:2607.0023v2`, paper primario del carril, que deja la conjetura
@@ -286,4 +287,6 @@ primarios del carril:
 
 No se reclama prioridad nueva para Graf/Neumann, la positividad por convolución
 ni el principio de máximo. El aporte de este objeto es el kill-test exacto que
-obliga a una futura prueba analítica a pagar la cancelación de endpoint.
+obliga a una futura prueba analítica a pagar la cancelación de endpoint, junto
+con el teorema de no-identificabilidad estructural desarrollado en
+`papers/wronskian-endpoint-barrier/wronskian_endpoint_barrier.tex`.
