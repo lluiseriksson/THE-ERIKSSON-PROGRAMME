@@ -110,24 +110,69 @@ $\beta$, PSD for $\beta \ge 0$.  State the defining equation as the
 Lean theorem names.  NO new mathematics in this section.}
 
 \section{The dressing unitary}\label{sec:unitary}
-\SLOT{A1 \lean{siteForm\_qEmbed}, A2 \lean{transferOp\_qEmbed},
-A3 \lean{transferOp\_iterate\_qEmbed} --- statements verbatim from the
-green module; the per-site cancellation $\sqrt{w}u\cdot\sqrt{w}v\cdot
-(1/w) = uv$ written once in prose.}
+All three statements are green on the plane (module
+\lean{YangMills/OS/OSReconstructionUniform.lean}, sha256
+\lean{5445429f\ldots}, five-pass ladder, \lean{ELAB\_EXIT 0}).  Write
+$Qu := \sqrt{w}\,u$ for the boundary dressing of a real Euclidean
+vector (\lean{qEmbed}); the site form weighs by $1/w$.
+
+\begin{theorem}[A1, \lean{siteForm\_qEmbed}]
+For $w > 0$ and real $u, v$:
+$\mathrm{siteForm}\,w\,(Qu)\,(Qv) = \sum_\sigma u_\sigma v_\sigma$.
+Per site the cancellation is elementary:
+$\sqrt{w}u \cdot \sqrt{w}v \cdot (1/w) = uv$.
+\end{theorem}
+
+\begin{theorem}[A2, \lean{transferOp\_qEmbed}]
+$T(Qu) = Q\big(\mathrm{act}\,(\mathrm{symWeighted}\,w\,\beta)\,u\big)$
+pointwise: the forced transfer operator on a dressed vector is the
+dressing of the symmetrised kernel's action.
+\end{theorem}
+
+\begin{theorem}[A3, \lean{transferOp\_iterate\_qEmbed}]
+$T^{[n]}(Qu) = Q\big((\mathrm{act}\,S)^{[n]} u\big)$ --- the shape the
+in-tree measure bridge \lean{gibbsPathSum\_eq\_iterate} consumes.
+\end{theorem}
 
 \section{The transported volume-uniform gap}\label{sec:gap}
-\SLOT{The endpoint \lean{os\_reconstruction\_uniform\_gap}: statement
-verbatim; proof narrative = obtain the D-6 family, append the A2
-identity; emphasise SAME witnesses, no new analytic content --- the
-honesty point that makes the theorem cheap and the uniformity real.}
+\begin{theorem}[\lean{os\_reconstruction\_uniform\_gap}]
+In the window $2\tanh|\beta|+2\tanh|\gamma| \le \alpha < 1$ there is
+$m>0$ such that for every $L$ there are $\lambda > 0$ and $\Omega > 0$
+with the fixed-point equation
+$\sum_\tau \mathrm{tiltKernel}\,(\mathrm{sliceW}\,\gamma\,L)\,\beta\,
+\lambda\,\sigma\,\tau\,\Omega_\tau = \Omega_\sigma$, the projected
+bound $\lVert\mathrm{projectedTransfer}\ldots\rVert \le e^{-m}$, and
+the A2 identity at $w := \mathrm{sliceW}\,\gamma\,L$.
+\end{theorem}
+The proof is an \lean{obtain} on \lean{dobrushin\_ising\_uniform\_gap}
+followed by A2: \emph{the same witnesses}, no new analytic content ---
+which is precisely the point.  The uniformity is real because it is
+D-6's; the reconstruction contributes the identification, not a new
+estimate.
 
 \section{Identification against the measure}\label{sec:measure}
-\SLOT{Part B (second module pass): B0a act/opOf bridge, B0b tilt
-scaling, B0c VacuumTransfer packaging, B1/B2 citations
-(\lean{gibbsPathSum\_eq\_iterate}, \lean{gibbsPartition\_eq\_iterate}),
-B3 the division-safe six-term bound with per-observable constants and
-the uniform rate.  Until this module is green this section is a
-skeleton and the paper DOES NOT SHIP.}
+Green at pass 5 (operator side):
+\begin{theorem}[B0b, \lean{act\_symWeighted\_eq\_smul\_act\_tilt}]
+$\mathrm{act}\,S\,u = \lambda\cdot \mathrm{act}\,(\mathrm{tilt})\,u$
+for $\lambda \ne 0$.
+\end{theorem}
+\begin{theorem}[B0a, \lean{act\_iterate\_eq\_opOf\_pow}]
+$(\mathrm{act}\,M)^{[n]} u = (\mathrm{opOf}\,M)^n(\mathrm{toLp}\,u)$
+pointwise.
+\end{theorem}
+\begin{theorem}[\lean{os\_reconstruction\_uniform\_clustering}]
+In the window: ONE $m>0$ such that for EVERY spatial extent $L$, every
+connected correlator of the transported transfer operator obeys
+$\lvert \mathrm{connCorr}\,T\,\Omega\,v\,n\rvert \le
+\lVert v\rVert^2 \cdot (e^{-m})^n$.  The constant is per-observable;
+the rate alone is uniform in $L$.
+\end{theorem}
+The packaging is by citation: \lean{vacuumTransfer\_opOf} +
+\lean{tiltKernel\_symm} + \lean{clustering\_of\_gap}, all in-tree.
+\SLOT{The gibbsPathSum-level identification (raw Gibbs two-point sums
+against the operator powers through B0a/B0b and A3) is the one named
+remaining step of the charter's part B; state here exactly what is
+proved when it lands, and nothing more.}
 
 \section{Reproduction}\label{sec:repro}
 \SLOT{jobs count with predicted-vs-measured table (baseline discrepancy
