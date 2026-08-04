@@ -19,7 +19,7 @@ certificate have not yet been materialized or checked by the compiler.
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.K_coercive
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.K_comp_interactingCovariance
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.localizedRegion
-#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.localizedRegion_val
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.localizedRegion_eq
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.localizedCoordinates_nonempty
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.conditionedRoot
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.conditionedCovariance_nondegenerate

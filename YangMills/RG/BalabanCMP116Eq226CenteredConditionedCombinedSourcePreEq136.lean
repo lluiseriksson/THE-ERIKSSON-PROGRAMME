@@ -103,9 +103,9 @@ structure CMP116CenteredConditionedCombinedSourceData
   contourCarrier : Finset (FinBox 4 (2 * Q))
   contourEquiv : Fin nDelta ≃ ↑contourCarrier
   precisionSource : CMP116InteractingPhysicalPrecisionSource V
-  localizedCarrier_nonempty :
-    (cmp116SourcePhysicalLocalizedCoordinates Dict
-      (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P)).Nonempty
+  localizedRegion : CMP116SourcePhysicalLocalizedRegion Dict
+  localizedRegion_eq : localizedRegion.1 =
+    cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P
   choice : CMP99SourcePi4CoarseFineWalkChoice M Q (3 * M) layerWord
   mass : ℝ
   mass_pos : 0 < mass
@@ -175,23 +175,6 @@ noncomputable def localizedCoordinates
   cmp116SourcePhysicalLocalizedCoordinates Dict
     (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P)
 
-/-- The combined raw region packaged in the proof-carrying index used by the
-terminal centered-conditioned family. -/
-noncomputable def localizedRegion
-    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
-      Dict P Z anchor domains
-      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
-    CMP116SourcePhysicalLocalizedRegion Dict :=
-  ⟨cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P,
-    X.localizedCarrier_nonempty⟩
-
-@[simp] theorem localizedRegion_val
-    (X : CMP116CenteredConditionedCombinedSourceData (nDelta := nDelta)
-      Dict P Z anchor domains
-      E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
-    X.localizedRegion.1 =
-      cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P := rfl
-
 /-- The literal combined localized coordinate carrier is nonempty.  This is
 the exact geometric datum required by the conditioned covariance: unlike a
 `P.Nonempty` field, it also covers valid terms with `P = ∅` whose witness
@@ -201,6 +184,8 @@ theorem localizedCoordinates_nonempty
       Dict P Z anchor domains
       E V baseCoarseCovariance layerWord D D₃ V₀ Pprop T DeltaPi J) :
     X.localizedCoordinates.Nonempty := by
+  unfold localizedCoordinates
+  rw [← X.localizedRegion_eq]
   exact X.localizedRegion.2
 
 /-- Literal compression of the inverse interacting precision to the combined
