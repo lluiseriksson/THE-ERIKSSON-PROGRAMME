@@ -25,7 +25,8 @@ for a Concrete Transfer Operator}
 the programme's Colab plane; toolchain \lean{leanprover/lean4:v4.29.0-rc6},
 Mathlib pinned to \lean{0764272048\ldots}.  Repository:
 \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}{THE-ERIKSSON-PROGRAMME},
-branch \lean{d3-closure}, anchor \SLOT{anchor SHA of the green module}.}}
+branch \lean{d3-closure}, anchor
+\lean{8127e5b52d75116b19c172ea022e12c1cab0f8c2}.}}
 \date{DRAFT --- not for distribution; live slots present}
 
 \begin{document}
@@ -39,10 +40,11 @@ the transfer operator carries \emph{one} mass: there is a single $m>0$
 such that for \emph{every} spatial extent $L$ the reconstructed
 (site-form) transfer operator is unitarily conjugate --- by the explicit
 $\sqrt{w}$ boundary dressing --- to the symmetrised kernel whose
-projected norm the Dobrushin corollary bounds by $e^{-m}$, and the
-reconstructed two-point functions are identified $n$-step against the
-Gibbs measure with the volume-uniform rate \SLOT{B3 clause shape as
-proved}.  All quantifiers live in the Lean statements; the prose here
+projected norm the Dobrushin corollary bounds by $e^{-m}$, and every
+connected correlator of the transported transfer operator decays as
+$\lvert\mathrm{connCorr}\,T\,\Omega\,v\,n\rvert \le \lVert v\rVert^2
+(e^{-m})^n$ --- constant per-observable, rate alone uniform in the
+volume.  All quantifiers live in the Lean statements; the prose here
 copies the kernel's cut.  To situate the claim in the 2026 landscape of
 machine-checked constructive field theory: the abstract construction
 (reflection-positive data $\to$ physical Hilbert space $\to$
@@ -97,8 +99,12 @@ gap; any reconstruction; the statement is per-volume on the measure
 side \\
 \lean{pphi2} & transfer-matrix spectral machinery for $\varphi^4_2$ &
 rests on 27--29 project axioms \\
-This paper & \SLOT{one-line summary of the green endpoints} &
-Wightman axioms; continuum limit; $SU(N)$; Clay \\
+This paper & the $\sqrt{w}$-dressing unitary; the transported
+volume-uniform gap; volume-uniform clustering of the reconstructed
+operator (\lean{os\_reconstruction\_uniform\_gap},
+\lean{os\_reconstruction\_uniform\_clustering}; core 8481, oracle 3017,
+0 sorry) & Wightman axioms; continuum limit; $SU(N)$; Clay;
+the raw-measure $n$-step identification (named next step) \\
 \end{tabular}
 \end{center}
 
@@ -175,10 +181,32 @@ remaining step of the charter's part B; state here exactly what is
 proved when it lands, and nothing more.}
 
 \section{Reproduction}\label{sec:repro}
-\SLOT{jobs count with predicted-vs-measured table (baseline discrepancy
-8366-vs-8480 must be RESOLVED from logs before this row is written);
-oracle report count; axiom triple; sha256 of every travelling file;
-fresh-clone protocol (runner LANE\_MODULES extension).}
+All numbers below were read from committed run artefacts (ledger
+Addenda 616--618); predictions were committed \emph{before} their
+measurements.
+
+\begin{center}
+\begin{tabular}{lll}
+\textbf{Quantity} & \textbf{Predicted} & \textbf{Measured} \\ \hline
+core jobs, unwired & 8480 (ledger baseline) & 8480 \\
+core jobs, wired & $8480+1$ & 8481 \\
+oracle reports, wired & $3010+7$ & 3017 \\
+\lean{sorryAx} occurrences & 0 & 0 \\
+OS-R endpoint axiom sets & standard triple & exactly
+\lean{[propext, Classical.choice, Quot.sound]} $\times 7$ \\
+\end{tabular}
+\end{center}
+
+Module: \lean{YangMills/OS/OSReconstructionUniform.lean}, sha256
+\lean{5445429f7736\ldots30cad1} (12{,}347 bytes), five elaboration
+passes on a fresh high-RAM Colab runtime (toolchain
+\lean{v4.29.0-rc6}, Mathlib pinned); wired at anchor
+\lean{8127e5b52d75116b19c172ea022e12c1cab0f8c2}.  The count prediction
+$+1/+7$ held exactly --- the ninth consecutive exact count prediction
+of the programme's D/OS lane.  \SLOT{Fresh-clone second witness at the
+anchor: judges both modes, core total, oracle report count with a
+continuation-joining axiom checker, and the sha256 list --- from the
+pass-7 run output.}
 
 \section{What is not claimed}\label{sec:honesty}
 No Wightman axioms, no OS$\to$Wightman analytic continuation, no
