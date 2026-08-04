@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v15"
-SOURCE_SHA = "1812600d1b37f588d9f74d046473dceac9d86b56"
+RUNNER_REV = "regional-large-block-v16"
+SOURCE_SHA = "a160ccb0160bda60e8454994e833b2966cade54b"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -250,24 +250,7 @@ REGIONAL_PRECISION_QUEUE_V10 = [
     ),
 ]
 
-QUEUE = [
-    (
-        "periodic_active_cell_overlap_focal",
-        [
-            "lake", "build",
-            "YangMills.RG.BalabanCMP95PeriodicActiveCellOverlap",
-        ],
-        None,
-    ),
-    (
-        "periodic_active_cell_overlap_audit",
-        [
-            "lake", "env", "lean",
-            "YangMills/RG/BalabanCMP95PeriodicActiveCellOverlapAudit.lean",
-        ],
-        6,
-    ),
-] + LEGACY_QUEUE_V9[6:]
+QUEUE = LEGACY_QUEUE_V9[10:]
 
 ALGEBRA_REPRO = r"""import Mathlib
 
