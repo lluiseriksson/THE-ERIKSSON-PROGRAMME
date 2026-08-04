@@ -31093,3 +31093,56 @@ then.  RI campaign stays registered and parked.
 (connected-bound cross terms; Jacobi iteration budget) were found by
 this desk's own pre-registration audit, recorded here.  Fresh-clone
 verification and external evaluation retain their own roles.
+
+
+## Addendum 609 (2026-08-04, **OS-R-0: the first firing is unrecoverable;
+bootstrap fixed; second firing in a NAMED, SAVED notebook**)
+
+Operational addendum; no mathematical content.
+
+**The first OS-R-0 firing (approx. 15:53 local) is lost as a reading.**
+The previous session's record said the cell ran in Untitled99.ipynb and
+was 'verified running at ~90 s'.  Audit at ~16:10-16:25: (i) Untitled99's
+recents timestamp sat untouched at 10:57, and opening a notebook DOES
+bump that timestamp, so the notebook was never opened at end of session;
+(ii) its document (55 cells) contains no OSR0/c2723e7ec cell; (iii) its
+runtime history reports no executed code.  The execution almost
+certainly lives in the 'unknown notebook' session visible in Aktiva
+sessioner: a cell fired into a document that was never saved leaves a
+running kernel with no reattachable notebook, so its output cannot be
+read.  Class lesson, recorded: VERIFYING THAT A CELL IS RUNNING WITHOUT
+VERIFYING WHICH SAVED DOCUMENT ANCHORS IT IS NOT VERIFICATION.  Name
+and save the notebook BEFORE firing; confirm the session appears in
+Aktiva sessioner under that name.
+
+**Bootstrap fixed at b58e551b1**: the committed
+scripts/colab_osr0_bootstrap.sh passed the SHORT SHA to the runner while
+stage 0 compares against git rev-parse HEAD (full 40 hex) and dies FATAL
+on mismatch; now full SHA c2723e7ec224191e00a9ab31284839816533ee86, plus
+a terminal sentinel /content/OSR0_UNIT_DONE carrying the runner's real
+decimal exit code (atomic tmp+rename, validated before publication), so
+a later reader can distinguish absent / malformed / nonzero / zero.
+
+**Second firing**: notebook osr0_licence_run.ipynb (Drive id
+1U01dF7ifeu2hD4dYE0tBP8SDfB3eY767), renamed and SAVED before execution;
+4-line cell: curl of the bootstrap pinned to b58e551b1 + bash.  Queued
+16:28, execution confirmed started 16:28 (cell counter [1], Koers).
+Expected at c2723e7ec: judge_os_uniform 110/110 both modes, core 8480,
+oracle 3010.  The licensing decision still requires READING THE LOGS,
+not the exit banner (charter section 5).
+
+**Multi-desk observation** (operational, for the owner): at ~16:10 the
+Colab account carried, besides this desk and the long-standing
+colab_regional_fine_slope_validation desk, three live notebooks from
+other desks created 15:53-16:01: Untitled124 (a poincare47 audit unit
+over YangMills/RG/PhysicalCriticalRescalingFourier*), Untitled125
+(iterative fabrication of YangMills/OS/DobrushinMeasureComparison.lean
+in /content/eriksson_d7 at BASE_SHA c76b79050 — adjacent to this
+campaign's lane), Untitled126 (task48, injecting
+YangMills/OS/SU2TransportWitness.lean).  None was touched.  The
+Untitled125 overlap with the OS/Dobrushin namespace deserves the
+owner's attention before both desks write into YangMills/OS/**.
+
+**ROLES.**  Audit of the lost firing, bootstrap fix, second firing:
+this desk.  The license reading remains pending; fabrication remains
+unlicensed at the time of this addendum.
