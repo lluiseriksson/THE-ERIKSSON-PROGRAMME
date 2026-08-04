@@ -3400,4 +3400,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.transferOp_iterate_qEmbed
 #print axioms YangMills.OS.transferOp_qEmbed_tilt
 #print axioms YangMills.OS.transferOp_qEmbed_tilt_iterate
+#print axioms YangMills.OS.opOf_pow_toLp_act
+#print axioms YangMills.OS.reconstructedConnCorr_eq_connCorr
+#print axioms YangMills.OS.reconstructedConnCorr_decay
 #print axioms YangMills.OS.os_reconstruction_uniform_gap
