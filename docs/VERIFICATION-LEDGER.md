@@ -31189,7 +31189,7 @@ in the script header before the run.  The structural claims (a)/(b) are
 classical and were verified numerically by the same run that used them.
 
 
-## Addendum 612 (2026-08-04, **OS-R priority collation: the naked
+## Addendum 611 (2026-08-04, **OS-R priority collation: the naked
 first-reconstruction claim is DEAD; the volume-uniform claim survives
 with named competitors; a live Harvard programme occupies the field**)
 
