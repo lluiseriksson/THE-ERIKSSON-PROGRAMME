@@ -31221,3 +31221,51 @@ the union of modalities governs, never a single sweep's negative.
 
 **ROLES.**  Sweeps: four independent search agents.  Synthesis,
 rulings, and the conservative-reading rule: this desk.
+
+
+## Addendum 612 (2026-08-04, **OS-R-0 second firing: judge PASS read on
+the plane in both modes; the run then died mid-oracle when the default
+12 GB runtime was replaced -- operator error recorded; third firing on
+high-RAM with a fail-fast RAM guard**)
+
+Timeline of the second firing (notebook osr0_licence_run.ipynb, clone
+at c2723e7ec, bootstrap pinned to b58e551b1, queued+started 16:28):
+
+* stage 1 COMPLETE and READ from the artefact logs (~17 min in), via
+  the runtime terminal: judge_os_uniform sentinel 0 in BOTH modes,
+  logs ending "checks run: 110  passed: 110  failed: 0  expected:
+  110 / JUDGE VERDICT: PASS (all checks, count matches registration)"
+  in normal AND optimized.  The other five certifiers: sentinel 0,
+  both modes.  This reading is witnessed by session screenshots; the
+  artefact files themselves did NOT survive (below), so by the
+  committed-transcript standard the licence still rests on the THIRD
+  firing's artefacts.
+* stage 2 COMPLETE: all seven lane modules, sentinel 0.
+* stage 3 nearly complete when last observed: core at [8362/8366].
+  NOTE THE TOTAL: 8366, not the 8480 measured at c7b870b05 -- the
+  discrepancy is UNRESOLVED and must be settled from the third
+  firing's full stage-3 log against the ledger's baselines before any
+  wiring prediction is made.  No number from memory.
+* ~74 min in (15:42 local): the client disconnected; on reconnect the
+  VM hostname had changed (a9897167a4a9 -> bcb734134ca5) and the cell
+  reported "Process is interrupted" -- the VM was REPLACED mid-stage-4
+  and every artefact under /content was lost.
+* Root cause, diagnosed from the runtime dialog: the notebook had been
+  created with the DEFAULT runtime type -- "Mycket RAM-minne" was OFF,
+  so the run executed on a 12.67 GB VM.  The repo-wide oracle does not
+  fit; death by OOM/replacement.  THE OPERATOR ERROR IS MINE: the
+  owner rule prescribes CPU/high-RAM and the second firing did not
+  verify the runtime type before executing.  Class lesson: a cell
+  cannot fix the runtime type, so the bootstrap must REFUSE to start
+  on a low-RAM runtime rather than die 70 minutes later.
+
+Remediation, committed at ba87c9737: the bootstrap now measures
+MemTotal at stage start and exits 65 with an explicit message on
+non-high-RAM runtimes (override OSR0_ALLOW_LOW_RAM=1 for deliberate
+small runs).  Third firing: runtime type set to High-RAM in the
+notebook, cell repinned to ba87c9737, queued ~15:50 local.
+
+**ROLES.**  Diagnosis, remediation, third firing: this desk.  The
+stage-1 PASS reading above is a live-terminal reading by this desk,
+not a committed transcript; it is recorded as evidence of state, not
+as the licence.
