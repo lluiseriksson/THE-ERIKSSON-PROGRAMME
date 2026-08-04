@@ -51,7 +51,9 @@ both explains the ubiquitous local $\tanh$ and supplies a sharp wall against
 deducing a volume-uniform gap from the global tensor cone.  We separate
 classical inputs, elementary tensor consequences, and the narrow equality
 and localization synthesis, and we include a reproducible exact-arithmetic
-kill test.
+kill test.  A companion Lean module machine-checks the algebraic core of the
+equality, tensorization, hyperbolic-addition, and coordinate-averaging steps;
+the classical analytic Birkhoff--Hopf input remains external.
 \end{abstract}
 
 \section{Introduction}
@@ -541,13 +543,35 @@ exact-arithmetic certificate checks the pairwise envelope, equality and
 strict examples, cross-ratio tensorization, and coordinatewise saturation.
 These computations are regression tests, not substitutes for the proofs.
 
-No new Lean module is claimed by this paper.  Historical source files in the
-larger programme are not treated as current compiled artifacts, and no
-\texttt{.olean} verification is inferred from their presence.  The failed
-volume-uniform projective branch was killed before spending remote theorem
-prover time.  A future formalization should begin with
-$\Theta(A\otimes B)=\Theta(A)\Theta(B)$ and the finite equality
-classification, and should be compiled in the designated remote environment.
+The companion module
+\texttt{YangMills/BirkhoffDobrushin/Wall.lean} formalizes the algebraic core
+that survived the kill test.  In particular it checks: the scalar square
+identity and reciprocal-extrema equality condition; nonnegativity and endpoint
+rigidity of the chord slack, including its strictly positive finite weighted
+sum form; factorization of projective cross-ratios and preservation of a
+realized maximum under tensor products; the rational hyperbolic-addition law
+for Birkhoff coefficients; and the finite conditioning estimate that carries
+a fibrewise oscillation bound through averaging.  The exact source was
+compiled with Lean \texttt{v4.29.0-rc6} on a Colab Pro+ CPU high-memory
+runtime.  The successful package-import artifacts are:
+\begin{center}
+\scriptsize
+\begin{tabular}{@{}ll@{}}
+Mathlib commit & \texttt{07642720480157414db592fa85b626dafb71355b} \\
+source SHA-256 & \texttt{a477ca8b77133583b16f40f9a55ffab6da6296d873a62de7bebddd1571dca0e8} \\
+module SHA-256 & \texttt{1283835e606faa1797d86d47ea01b23e1aa1baf378a9c3d559642f6c60026490}
+\end{tabular}
+\end{center}
+Both module compilation and a separate importing file had exit code zero.
+
+This is deliberately not described as an end-to-end formalization of every
+analytic statement in the paper.  Probability normalization, the general
+Birkhoff--Hopf contraction theorem, the logarithmic passage from maximal
+cross-ratio to Hilbert diameter, the Hellinger proof for the global product
+Dobrushin coefficient, and the interacting Dobrushin comparison theorem remain
+classical external inputs.  Failed compiler and packaging passes are retained
+in the verification transcript rather than erased.  No Lean or Lake process
+was run on the Windows owner desktop.
 
 \section{Limitations and conclusion}
 

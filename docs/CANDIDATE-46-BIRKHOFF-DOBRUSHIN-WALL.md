@@ -271,9 +271,10 @@ históricas del repositorio existen fuentes separadas para:
   `717b7e5d78871e72ee2c3751766ccf35c960ac8d` en
   `origin/davinci/dobrushin-uniform`.
 
-La presencia de esas fuentes no se presenta como `.olean` materializado en
-este worktree ni como verificación actual. No se ha ejecutado Lean, Lake ni un
-oráculo en Windows.
+La presencia de esas fuentes históricas no se presenta como `.olean`
+materializado en este worktree ni como verificación actual. No se ha ejecutado
+Lean, Lake ni un oráculo en Windows. La formalización nueva y su compilación
+remota se describen por separado en la sección 7.
 
 **Ruta nueva que sí sobrevivió.** El teorema comparativo empaqueta las dos
 normas sin confundirlas, prueba la aditividad exacta y localiza el mismo `tanh`
@@ -292,10 +293,33 @@ esa ventana, ni consecuencia para Yang–Mills. El muro es parte del teorema.
 
 ## 7. Decisión Lean
 
-No se añaden módulos Lean en (46). El candidato a mecanismo proyectivo
-volumen-uniforme no pasó el kill-test, y traer fuentes históricas al `main`
-actual sin una sesión Colab de compilación/oráculo violaría la regla «fuente
-presente no equivale a verificación». Un futuro módulo aceptable debería
-formalizar primero `Theta_tensor` y `Delta_tensor`; solo después, en Colab CPU,
-podría conectar esos lemas con una formalización explícita de la métrica de
-Hilbert y con los módulos Dobrushin ya auditados para sus blobs exactos.
+El kill-test impide formalizar como teorema un gap proyectivo global falso,
+pero no impide formalizar el cálculo honesto y su muro. Se añade
+`YangMills/BirkhoffDobrushin/Wall.lean`, integrado por importación en
+`YangMills.lean`. El módulo formaliza:
+
+1. la identidad cuadrática y la condición de igualdad de extremos recíprocos;
+2. la rigidez de igualdad en la cota de cuerda, también para sumas finitas con
+   pesos estrictamente positivos;
+3. la factorización de cocientes cruzados y la multiplicación de máximos
+   realizados bajo producto tensorial;
+4. la ley racional de adición hiperbólica del coeficiente de Birkhoff;
+5. el paso finito de condicionamiento que preserva una cota de contracción
+   fibra a fibra al promediar las coordenadas exteriores.
+
+La fuente exacta de 9.277 bytes, SHA-256
+`a477ca8b77133583b16f40f9a55ffab6da6296d873a62de7bebddd1571dca0e8`,
+se compiló en Colab Pro+ CPU/alta RAM con Lean `v4.29.0-rc6` y Mathlib
+`07642720480157414db592fa85b626dafb71355b`. La pasada de paquete materializó
+el `.olean` bajo `.lake/build/lib/lean/YangMills/BirkhoffDobrushin/`, SHA-256
+`1283835e606faa1797d86d47ea01b23e1aa1baf378a9c3d559642f6c60026490`, y un
+segundo archivo lo importó con salida 0.
+
+El alcance verificado no se infla: siguen externos el teorema analítico de
+Birkhoff--Hopf, el paso logarítmico de máximo de cocientes cruzados a diámetro
+de Hilbert, la normalización probabilística completa, la prueba Hellinger del
+coeficiente Dobrushin global y el teorema de comparación para especificaciones
+interactuantes. Los intentos fallidos se conservan en el transcript. Fuente
+presente no equivale a verificación; aquí la afirmación de verificación se
+apoya específicamente en la materialización remota del `.olean` y en el import
+separado.

@@ -1,4 +1,5 @@
 import YangMillsCore
+import YangMills.BirkhoffDobrushin.Wall
 
 /- Root aggregator.  The sound, self-contained, compiler-verified development now
    lives in YangMillsCore.  See README.md, HORIZON.md, CLEANUP_PLAN.md.

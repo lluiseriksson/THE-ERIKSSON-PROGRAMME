@@ -1,0 +1,121 @@
+{
+  "candidate": 46,
+  "title": "Local Tanh, Global Wall",
+  "status": "verified_algebraic_core_not_terminal_audit",
+  "source": {
+    "path": "YangMills/BirkhoffDobrushin/Wall.lean",
+    "bytes": 9277,
+    "sha256": "a477ca8b77133583b16f40f9a55ffab6da6296d873a62de7bebddd1571dca0e8"
+  },
+  "environment": {
+    "provider": "Google Colab Pro+",
+    "account": "lluiseriksson@gmail.com",
+    "accelerator": "CPU",
+    "high_memory": true,
+    "visible_ram_gib": 50.99,
+    "gpu_used": false,
+    "opened_local_time_approx": "2026-08-04T19:36:00+02:00",
+    "closed_local_time": "2026-08-04T20:04:18+02:00",
+    "close_method": "Colab UI: disconnect and delete runtime",
+    "close_verified": true,
+    "notebook_url": "https://colab.research.google.com/drive/11N9BAjGa_w4ikrI9bAl9Jkx-5iYxpRzS"
+  },
+  "toolchain": {
+    "lean": "leanprover/lean4:v4.29.0-rc6",
+    "mathlib_commit": "07642720480157414db592fa85b626dafb71355b",
+    "setup_seconds": 521.509
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "kind": "standalone_compile",
+      "lean_exit": 1,
+      "compile_seconds": 24.504,
+      "source_bytes": 6916,
+      "source_sha256": "e4a4af59f8706e5b4aadc251e290fc71707dbb76667df28473bfe1af72c1f50e",
+      "olean_exists": false,
+      "attack_result": "Real.tanh_add was unavailable in the pinned Mathlib; the proof was replaced by the equivalent rational hyperbolic-addition identity."
+    },
+    {
+      "pass": 2,
+      "kind": "standalone_compile",
+      "lean_exit": 0,
+      "compile_seconds": 6.409,
+      "source_bytes": 7819,
+      "source_sha256": "33c2e0c07f06cafffe7a57dfdef11532cef50ba5483df6eea282345c0c9ceaf0",
+      "olean_bytes": 568392,
+      "olean_sha256": "79fde07c2df1faaa3b91461294094e0141889b664b3ee16947a53985dc93a706"
+    },
+    {
+      "pass": 3,
+      "kind": "standalone_compile_with_local_averaging",
+      "lean_exit": 1,
+      "compile_seconds": 5.869,
+      "source_bytes": 9208,
+      "source_sha256": "64f8cc30cfde84cddc29e0399542ed8ef7c62a3a86b5a1c5e5bd215dca98a97e",
+      "stale_olean_present": true,
+      "stale_olean_sha256": "79fde07c2df1faaa3b91461294094e0141889b664b3ee16947a53985dc93a706",
+      "attack_result": "A rewrite in weightedAverage_constant had the wrong orientation; the stale olean was explicitly excluded as evidence."
+    },
+    {
+      "pass": 4,
+      "kind": "notebook_patch_cell",
+      "python_exit": 1,
+      "attack_result": "The first patch cell had an unclosed Python dictionary and did not invoke Lean."
+    },
+    {
+      "pass": 5,
+      "kind": "standalone_compile_final_source",
+      "lean_exit": 0,
+      "compile_seconds": 6.193,
+      "source_bytes": 9277,
+      "source_sha256": "a477ca8b77133583b16f40f9a55ffab6da6296d873a62de7bebddd1571dca0e8",
+      "olean_bytes": 589952,
+      "olean_sha256": "179cee43945981785936b03094f0ef150241aa530556a74496a2f9c7f706aa4c"
+    },
+    {
+      "pass": 6,
+      "kind": "nested_module_wrong_search_path",
+      "module_exit": 0,
+      "import_exit": 1,
+      "elapsed_seconds": 7.951,
+      "module_olean_bytes": 590464,
+      "module_olean_sha256": "1283835e606faa1797d86d47ea01b23e1aa1baf378a9c3d559642f6c60026490",
+      "attack_result": "The module compiled, but the importing file correctly failed because the olean was outside .lake/build/lib/lean."
+    },
+    {
+      "pass": 7,
+      "kind": "package_module_and_separate_import",
+      "module_exit": 0,
+      "import_exit": 0,
+      "elapsed_seconds": 11.214,
+      "source_bytes": 9277,
+      "source_sha256": "a477ca8b77133583b16f40f9a55ffab6da6296d873a62de7bebddd1571dca0e8",
+      "module_olean_bytes": 590464,
+      "module_olean_sha256": "1283835e606faa1797d86d47ea01b23e1aa1baf378a9c3d559642f6c60026490",
+      "check_olean_sha256": "a93b85bd3d6bfc23a6f0117e5ba20e26ad85b47b542419497ba16a9ab5d852d4"
+    }
+  ],
+  "verified_scope": [
+    "scalar Hilbert-gap identity and reciprocal-extrema equality",
+    "chord-slack nonnegativity and endpoint rigidity",
+    "strictly positive finite weighted equality classification",
+    "tensor cross-ratio factorization and realized-maximum multiplication",
+    "rational hyperbolic addition law for Birkhoff coefficients",
+    "finite fibrewise-to-coordinate averaging contraction"
+  ],
+  "external_inputs_not_formalized_here": [
+    "general analytic Birkhoff-Hopf contraction theorem",
+    "logarithmic passage from cross-ratio maximum to Hilbert diameter",
+    "full probability-normalized kernel equality theorem",
+    "Hellinger proof of global product Dobrushin degeneration",
+    "interacting Dobrushin comparison theorem"
+  ],
+  "governance": {
+    "lean_or_lake_run_on_windows": false,
+    "local_sustained_compute": false,
+    "fable_invoked": false,
+    "fable_blocker": "Visible account was luis.ebikeride@gmail.com, not the binding account masterythief@gmail.com.",
+    "external_terminal_verdict": false
+  }
+}
