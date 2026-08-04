@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-precision-commutator-v10"
-SOURCE_SHA = "86da6d482ad0994e9fce514558848e9e716ddd8d"
+RUNNER_REV = "regional-large-block-v11"
+SOURCE_SHA = "27264802a87381a85a3be5feaea3f2f8db6d2778"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -225,7 +225,7 @@ LEGACY_QUEUE_V9 = [
     ),
 ]
 
-QUEUE = [
+REGIONAL_PRECISION_QUEUE_V10 = [
     (
         "commutator_algebra_repro",
         ["lake", "env", "lean", "/content/regional-commutator-repro.lean"],
@@ -249,6 +249,8 @@ QUEUE = [
         1,
     ),
 ]
+
+QUEUE = LEGACY_QUEUE_V9
 
 ALGEBRA_REPRO = r"""import Mathlib
 
@@ -447,10 +449,6 @@ def main() -> int:
         if mathlib != EXPECTED_MATHLIB:
             raise RuntimeError("MATHLIB_PIN_MISMATCH=" + mathlib)
         run("cache_get", ["lake", "exe", "cache", "get"], cwd=ROOT)
-
-        Path("/content/regional-commutator-repro.lean").write_text(
-            ALGEBRA_REPRO, encoding="utf-8"
-        )
 
         for stage, command, expected_axioms in QUEUE:
             output = run(stage, command, cwd=ROOT)
