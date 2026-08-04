@@ -26,11 +26,55 @@ def ratio_extrema(p: Vector, q: Vector) -> tuple[Fraction, Fraction]:
     return min(ratios), max(ratios)
 
 
+def support(p: Vector) -> frozenset[int]:
+    return frozenset(i for i, mass in enumerate(p) if mass > 0)
+
+
+def restricted_ratio_extrema(p: Vector, q: Vector) -> tuple[Fraction, Fraction]:
+    common_support = support(p)
+    require(common_support == support(q), "restricted ratios require a common face")
+    ratios = tuple(p[i] / q[i] for i in common_support)
+    return min(ratios), max(ratios)
+
+
 def rational_envelope(p: Vector, q: Vector) -> Fraction:
     m, big_m = ratio_extrema(p, q)
     if m == big_m:
         return Fraction()
     return (big_m - 1) * (1 - m) / (big_m - m)
+
+
+def extended_hilbert_bound_holds(p: Vector, q: Vector) -> bool:
+    """Check TV <= tanh(d_H/4) exactly, without approximating square roots."""
+    if support(p) != support(q):
+        return tv(p, q) <= 1
+    m, big_m = restricted_ratio_extrema(p, q)
+    distance = tv(p, q)
+    # distance <= (sqrt(M)-sqrt(m))/(sqrt(M)+sqrt(m)) iff the
+    # following inequality holds; both sides before squaring are nonnegative.
+    return (1 - distance) ** 2 * big_m >= (1 + distance) ** 2 * m
+
+
+def extended_hilbert_equality_holds(p: Vector, q: Vector) -> bool:
+    """Check TV = tanh(d_H/4) using the same exact squared identity."""
+    if support(p) != support(q):
+        return tv(p, q) == 1
+    m, big_m = restricted_ratio_extrema(p, q)
+    distance = tv(p, q)
+    return (1 - distance) ** 2 * big_m == (1 + distance) ** 2 * m
+
+
+def closed_simplex_equality_classification(p: Vector, q: Vector) -> bool:
+    """Claimed iff classification for equality in the extended bound."""
+    support_p = support(p)
+    support_q = support(q)
+    if support_p != support_q:
+        return support_p.isdisjoint(support_q)
+    if p == q:
+        return True
+    m, big_m = restricted_ratio_extrema(p, q)
+    ratios = {p[i] / q[i] for i in support_p}
+    return m * big_m == 1 and ratios == {m, big_m}
 
 
 def theta(matrix: Matrix) -> Fraction:
@@ -107,6 +151,30 @@ def main() -> None:
                 require(tv(p, q) <= rational_envelope(p, q), "pairwise envelope failed")
                 grid_pairs_checked += 1
 
+    closed_simplex_pairs_checked = 0
+    closed_simplex_equality_pairs = 0
+    for denominator in range(1, 13):
+        probabilities_3 = tuple(
+            (Fraction(i, denominator), Fraction(j, denominator),
+             Fraction(denominator - i - j, denominator))
+            for i in range(denominator + 1)
+            for j in range(denominator - i + 1)
+        )
+        for p in probabilities_3:
+            for q in probabilities_3:
+                equality = extended_hilbert_equality_holds(p, q)
+                predicted = closed_simplex_equality_classification(p, q)
+                require(
+                    extended_hilbert_bound_holds(p, q),
+                    "closed-simplex Hilbert envelope failed",
+                )
+                require(
+                    equality == predicted,
+                    "closed-simplex equality classification failed",
+                )
+                closed_simplex_pairs_checked += 1
+                closed_simplex_equality_pairs += int(equality)
+
     a: Matrix = (
         (Fraction(3, 4), Fraction(1, 4)),
         (Fraction(1, 4), Fraction(3, 4)),
@@ -153,6 +221,14 @@ def main() -> None:
         "status": "pass",
         "arithmetic": "fractions.Fraction",
         "grid_pairs_checked": grid_pairs_checked,
+        "closed_simplex": {
+            "pairs_checked": closed_simplex_pairs_checked,
+            "equality_pairs": closed_simplex_equality_pairs,
+            "classification": (
+                "common face: identical or reciprocal two-block ratios; "
+                "different faces: equality iff supports are disjoint"
+            ),
+        },
         "equality_examples": equality_records,
         "strict_example": {
             "tv": str(strict_tv),

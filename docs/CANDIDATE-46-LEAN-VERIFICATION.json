@@ -1,11 +1,11 @@
 {
   "candidate": 46,
   "title": "Local Tanh, Global Wall",
-  "status": "verified_finite_probability_and_kernel_comparison_not_terminal_audit",
+  "status": "verified_closed_simplex_singular_branch_not_terminal_audit",
   "source": {
     "path": "YangMills/BirkhoffDobrushin/Wall.lean",
-    "bytes": 23744,
-    "sha256": "f2df04ae3b3f8f06730ab33b5d6e25673b3ae822d0727db4e925045fdf5cde65"
+    "bytes": 26267,
+    "sha256": "0360a91a7061d9a47dbfec0dc2518175d05fb14edffacdf5b8452b1ebfa442cb"
   },
   "environment": {
     "provider": "Google Colab Pro+",
@@ -25,6 +25,13 @@
       "close_method": "Colab UI: disconnect and delete runtime",
       "close_verified": true,
       "setup_seconds": 158.73
+    },
+    "closed_simplex_session": {
+      "opened_local_time_approx": "2026-08-04T22:07:27+02:00",
+      "closed_local_time": "2026-08-04T22:20:41+02:00",
+      "close_method": "Colab UI: disconnect and delete runtime",
+      "close_verified": true,
+      "historical_setup_and_compile_seconds": 170.724
     }
   },
   "toolchain": {
@@ -174,6 +181,39 @@
       "elapsed_seconds": 7.367,
       "check_olean_bytes": 1376,
       "check_olean_sha256": "caefea43e2e8a1e8676728ecfbffec4102cf89cef8297c2c5f932c8e16558209"
+    },
+    {
+      "pass": 15,
+      "kind": "closed_simplex_singular_branch_first_draft",
+      "lean_exit": 1,
+      "compile_seconds": 36.083,
+      "source_bytes": 26252,
+      "source_sha256": "0aaa18089c649bbbd7c6c89e3d90450fc298f5fa94bd3d88825bc81394e94a2d",
+      "olean_exists": false,
+      "attack_result": "The first draft exposed one wrongly oriented sum rewrite, one unavailable min_nonneg lemma, and a missing Finset membership argument; no olean was accepted."
+    },
+    {
+      "pass": 16,
+      "kind": "closed_simplex_singular_branch_standalone_compile",
+      "lean_exit": 0,
+      "compile_seconds": 12.48,
+      "source_bytes": 26267,
+      "source_sha256": "0360a91a7061d9a47dbfec0dc2518175d05fb14edffacdf5b8452b1ebfa442cb",
+      "olean_bytes": 1340632,
+      "olean_sha256": "131116b2421c1efca7920746b982c864e6931b35b13d74c1b4c65877e0e9192b"
+    },
+    {
+      "pass": 17,
+      "kind": "closed_simplex_package_and_explicit_import",
+      "module_exit": 0,
+      "import_exit": 0,
+      "elapsed_seconds": 19.786,
+      "source_bytes": 26267,
+      "source_sha256": "0360a91a7061d9a47dbfec0dc2518175d05fb14edffacdf5b8452b1ebfa442cb",
+      "module_olean_bytes": 1341136,
+      "module_olean_sha256": "6e37e9416c42dbdc9ab2667ea0843a5ba9bf34d7821c7a16c77cc583659cd919",
+      "check_olean_bytes": 1376,
+      "check_olean_sha256": "e0985e10eea3709f7907fb54fe1aa3532f1298026c8d8524bb5324799c5cd8ce"
     }
   ],
   "verified_scope": [
@@ -184,6 +224,8 @@
     "sharp chord and square-root envelopes with equality equivalence",
     "finite probability TV-Hilbert comparison with if-and-only-if equality",
     "realized finite-kernel Dobrushin comparison with if-and-only-if equality",
+    "finite overlap identity for normalized nonnegative vectors",
+    "total variation one if and only if supports are pointwise disjoint",
     "tensor cross-ratio factorization and realized-maximum multiplication",
     "rational hyperbolic addition law for Birkhoff coefficients",
     "finite fibrewise-to-coordinate averaging contraction"

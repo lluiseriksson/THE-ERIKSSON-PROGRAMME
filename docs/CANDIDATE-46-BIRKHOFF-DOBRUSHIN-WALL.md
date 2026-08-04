@@ -4,7 +4,8 @@ Estado: **cálculo + muro; la rama proyectiva volumen-uniforme queda
 descartada**.  No se reclama como nueva la desigualdad aguda TV--Hilbert ni
 los teoremas clásicos de Birkhoff y Dobrushin. El manuscrito asociado aísla
 como contribución candidata estrecha la clasificación iff de igualdad para
-kernels finitos, la ley tensorial hiperbólica y la dicotomía global/local.
+distribuciones y kernels finitos, incluida la frontera del simplex, la ley
+tensorial hiperbólica y la dicotomía global/local.
 No se reclama un gap uniforme por Birkhoff ni un dictamen terminal de
 originalidad.
 
@@ -17,6 +18,10 @@ $u,v\in\mathbb R^Y_{>0}$,
 \[
 d_H(u,v)=\log\frac{\max_y u_y/v_y}{\min_y u_y/v_y}.
 \]
+
+Para probabilidades no negativas se usa la extensión estándar: si los
+soportes coinciden, la fórmula se evalúa en el soporte común; si difieren,
+$d_H=+\infty$ y $\tanh(d_H/4)=1$.
 
 Definimos
 
@@ -161,6 +166,27 @@ cantidad relevante.
 
    Esta ventana es suficiente y normalmente no óptima.
 
+7. **Clasificación exacta en el simplex cerrado.** Para probabilidades finitas
+   no negativas,
+
+   \[
+   \operatorname{TV}(p,q)\le \tanh\!\left(\frac{d_H(p,q)}4\right).
+   \]
+
+   Si los soportes coinciden, la igualdad ocurre solo para $p=q$ o para el
+   cociente de verosimilitudes recíproco de dos bloques en esa cara. Si los
+   soportes difieren, la cota tiene lado derecho uno y la igualdad ocurre si y
+   solo si los soportes son disjuntos. En efecto,
+
+   \[
+   \operatorname{TV}(p,q)=1-\sum_i\min(p_i,q_i).
+   \]
+
+   Para kernels no negativos, la rama de diámetro infinito satura si y solo
+   si existen dos filas de soportes disjuntos. La desigualdad en caras y el
+   tratamiento trivial de medidas no comparables ya están en Cohen--Fausti;
+   la contribución candidata es la clasificación completa de igualdad.
+
 ### Demostración del paso nuevo de diseño
 
 Una entrada de $A\otimes B$ es $a_{xy}b_{uv}$. Cada cociente cruzado del
@@ -240,7 +266,9 @@ La prioridad se asigna a resultados, no a esta presentación comparativa.
   contracción de la seminorma de oscilación de Hopf en conos.
   DOI: https://doi.org/10.1007/s00020-014-2193-2 .
 - **Cohen--Fausti (2024):** desigualdad aguda entre variación total y métrica
-  de Hilbert para medidas de probabilidad, con saturación.
+  de Hilbert para medidas de probabilidad, incluidas caras de frontera y
+  medidas no comparables, con saturación pero sin una clasificación explícita
+  de todos los casos de igualdad.
   arXiv: https://arxiv.org/abs/2309.02413 .
 
 La especialización `tanh |J|` para una condicional binaria es un cálculo
@@ -306,29 +334,35 @@ pero no impide formalizar el cálculo honesto y su muro. Se añade
 4. la desigualdad TV--Hilbert finita completa, con clasificación `iff` de la
    igualdad, y su levantamiento a kernels mediante máximos Dobrushin
    realizados;
-5. la factorización de cocientes cruzados y la multiplicación de máximos
+5. la identidad de solapamiento para probabilidades no negativas y la
+   equivalencia entre variación total uno y soportes puntualmente disjuntos;
+6. la factorización de cocientes cruzados y la multiplicación de máximos
    realizados bajo producto tensorial;
-6. la ley racional de adición hiperbólica del coeficiente de Birkhoff;
-7. el paso finito de condicionamiento que preserva una cota de contracción
+7. la ley racional de adición hiperbólica del coeficiente de Birkhoff;
+8. el paso finito de condicionamiento que preserva una cota de contracción
    fibra a fibra al promediar las coordenadas exteriores.
 
-La fuente exacta de 23.744 bytes, SHA-256
-`f2df04ae3b3f8f06730ab33b5d6e25673b3ae822d0727db4e925045fdf5cde65`,
+La fuente exacta de 26.267 bytes, SHA-256
+`0360a91a7061d9a47dbfec0dc2518175d05fb14edffacdf5b8452b1ebfa442cb`,
 se compiló en Colab Pro+ CPU/alta RAM con Lean `v4.29.0-rc6` y Mathlib
 `07642720480157414db592fa85b626dafb71355b`. La pasada de paquete materializó
 el `.olean` bajo `.lake/build/lib/lean/YangMills/BirkhoffDobrushin/`, SHA-256
-`8196837adae2215bb3a85f92bd317531a867121672cc2629efb5af68540c8ffe`, y un
+`6e37e9416c42dbdc9ab2667ea0843a5ba9bf34d7821c7a16c77cc583659cd919`, y un
 segundo archivo lo importó con salida 0. Un tercer importador comprobó
-explícitamente los teoremas de comparación para probabilidades y kernels y
+explícitamente los teoremas de comparación positiva, la rama singular de
+soportes disjuntos y la elevación a kernels, y
 materializó un `.olean` con SHA-256
-`caefea43e2e8a1e8676728ecfbffec4102cf89cef8297c2c5f932c8e16558209`.
+`e0985e10eea3709f7907fb54fe1aa3532f1298026c8d8524bb5324799c5cd8ce`.
 
 El alcance verificado no se infla: siguen externos el teorema analítico de
 Birkhoff--Hopf, el paso logarítmico de máximo de cocientes cruzados a diámetro
 de Hilbert, la prueba Hellinger del coeficiente Dobrushin global y el teorema de
 comparación para especificaciones interactuantes. La normalización
 probabilística, la cota par a par, su igualdad `iff` y el levantamiento por
-máximo realizado ya no están en esa lista externa. Los intentos fallidos se
+máximo realizado, así como la rama singular de soportes disjuntos, ya no están
+en esa lista externa. La reducción de una cara común a su soporte positivo se
+mantiene como argumento finito en el manuscrito, no como teorema Lean
+separado. Los intentos fallidos se
 conservan en el transcript. Fuente presente no equivale a verificación; aquí
 la afirmación se apoya específicamente en la materialización remota del
 `.olean` y en dos imports separados.

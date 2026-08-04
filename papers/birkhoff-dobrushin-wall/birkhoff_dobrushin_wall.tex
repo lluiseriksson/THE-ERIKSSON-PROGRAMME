@@ -39,7 +39,10 @@ coefficient is the exact contraction coefficient for oscillation.  The sharp
 comparison $\delta(P)\leq \tanh(\diamH(P)/4)$ is known.  We give a finite,
 explicit equality classification: apart from the rank-one case, equality
 holds exactly when a diameter-realizing pair of rows has a likelihood ratio
-taking two reciprocal values.  We then record the exact tensor law
+taking two reciprocal values.  On the closed probability simplex, the same
+classification holds inside a common face, while across distinct faces the
+infinite-distance bound is an equality exactly for disjoint supports.  We
+then record the exact tensor law
 $\diamH(P\otimes Q)=\diamH(P)+\diamH(Q)$.  Consequently the global Birkhoff
 coefficient of $P^{\otimes L}$ obeys hyperbolic addition and tends to one for
 every nonzero single-site diameter.  The global Dobrushin coefficient also
@@ -53,8 +56,9 @@ classical inputs, elementary tensor consequences, and the narrow equality
 and localization synthesis, and we include a reproducible exact-arithmetic
 kill test.  A companion Lean module machine-checks the probability-normalized
 finite TV--Hilbert theorem with its equality classification and kernel lift,
-as well as the tensorization, hyperbolic-addition, and coordinate-averaging
-steps; the classical analytic Birkhoff--Hopf input remains external.
+the singular disjoint-support equality branch, and the tensorization,
+hyperbolic-addition, and coordinate-averaging steps; the classical analytic
+Birkhoff--Hopf input remains external.
 \end{abstract}
 
 \section{Introduction}
@@ -73,7 +77,8 @@ of one theorem.  There are three points.
 
 \begin{enumerate}[label=(\roman*)]
 \item The sharp total-variation--Hilbert comparison is a pairwise statement.
-We record its complete equality condition and lift it to finite kernels.
+We record its complete equality condition on the closed simplex and lift it
+to finite kernels.
 \item Hilbert diameter is exactly additive under tensor products.  Hence the
 Birkhoff coefficient combines by hyperbolic addition, not by taking a maximum.
 \item Dobrushin's global coefficient also degenerates on independent products.
@@ -97,16 +102,19 @@ cones \cite{GaubertQu2014}.  Reeb, Kastoryano and Wolf prove a general
 base-norm versus projective-diameter estimate
 \cite{ReebKastoryanoWolf2011}.  Cohen and Fausti give the sharp
 total-variation--Hilbert inequality for probability measures, including
-sharpness \cite{CohenFausti2024}.  We do not claim any of these statements as
-new.
+boundary faces, noncomparable measures, and sharpness
+\cite[Theorem~5.1 and Remark~15]{CohenFausti2024}.  We do not claim any of
+these statements as new.
 
 The narrow contribution of the present note is the following package: an
-if-and-only-if equality classification for finite positive distributions and
-kernels; the exact tensor hyperbolic law placed next to that classification;
-and an exact global/local product dichotomy with the binary Ising saturation
-as a common test cell.  The tensor identity itself is elementary.  Our
-priority search found no source stating this entire finite-kernel package, but
-that search is not a claim of terminal priority.
+if-and-only-if equality classification for finite distributions and kernels,
+including the closed-simplex singular branch; the exact tensor hyperbolic law
+placed next to that classification; and an exact global/local product
+dichotomy with the binary Ising saturation as a common test cell.  The tensor
+identity itself is elementary.  Cohen--Fausti state attainability, but we did
+not find the all-equality-cases statement in their paper.  Our priority search
+found no source stating this entire finite-kernel package, but that search is
+not a claim of terminal priority.
 
 \section{Definitions and conventions}
 
@@ -118,6 +126,12 @@ projective distance is
 \end{equation}
 It is a metric on rays, and it vanishes exactly when $u$ and $v$ are
 proportional.
+
+For nonnegative probability vectors we use the standard extended convention:
+if $\operatorname{supp}p=\operatorname{supp}q$, formula
+\eqref{eq:hilbert} is evaluated on that common
+support; otherwise $d_H(p,q)=+\infty$.  Thus
+$\tanh(d_H(p,q)/4)=1$ for vectors in distinct faces.
 
 For a strictly positive matrix $A=(a_{xy})_{x\in X,y\in Y}$, define
 \begin{align}
@@ -214,6 +228,32 @@ arbitrary number of atoms in each of the two blocks.  For two-point
 probabilities it simply says that the two vectors are nontrivial swaps.
 \end{remark}
 
+\begin{corollary}[All equality cases on the closed simplex]
+\label{cor:closed-simplex}
+Let $p,q$ be nonnegative probability vectors on a finite set, and use the
+extended Hilbert distance above.  Then
+\[
+ \TV(p,q)\leq\tanh\!\left(\frac{d_H(p,q)}4\right).
+\]
+Equality holds exactly in one of the following mutually exclusive ways:
+\begin{enumerate}[label=(\alph*)]
+\item $\operatorname{supp}p=\operatorname{supp}q$ and either $p=q$, or the likelihood ratio on the
+common support takes two reciprocal values $\{t,t^{-1}\}$ for some $t>1$;
+\item $\operatorname{supp}p\cap\operatorname{supp}q=\varnothing$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+If the supports agree, restrict to their common face and apply
+Theorem~\ref{thm:pairwise}.  If they differ, the extended Hilbert distance is
+infinite and the right-hand side is one.  For nonnegative normalized vectors,
+\[
+ \TV(p,q)=1-\sum_i\min(p_i,q_i).
+\]
+Consequently $\TV(p,q)=1$ exactly when every minimum vanishes, which is
+equivalent to disjoint supports.
+\end{proof}
+
 \section{Kernel comparison and equality classification}
 
 \begin{theorem}[Birkhoff--Dobrushin comparison with equality]
@@ -263,6 +303,25 @@ Distinctness forces $b=1-a$.
 The comparison can be strict even in dimension two.  For example, the rows
 $(0.9,0.1)$ and $(0.6,0.4)$ have $\delta=0.3$, while their likelihood ratios
 $3/2$ and $1/4$ are not reciprocal, so $\delta<\tau$.
+
+\begin{corollary}[Finite kernels with zeros]
+\label{cor:kernel-zeros}
+Let $P$ be a finite nonnegative Markov kernel and let $\diamH(P)$ be the
+largest extended Hilbert distance between its rows.  Then
+\[
+ \delta(P)\leq\tanh\!\left(\frac{\diamH(P)}4\right).
+\]
+If all rows have a common support, equality is classified by
+Theorem~\ref{thm:kernel-equality} after restriction to that face.  Otherwise
+$\diamH(P)=+\infty$, and equality holds exactly when two rows have disjoint
+supports.
+\end{corollary}
+
+\begin{proof}
+Apply Corollary~\ref{cor:closed-simplex} pairwise and take maxima.  In the
+infinite-diameter branch the right-hand side is one, while
+$\delta(P)=1$ exactly when a maximizing row pair is disjoint.
+\end{proof}
 
 \section{The tensor theorem and the projective wall}
 
@@ -542,6 +601,8 @@ It verifies by enumeration through $L=4$ that
 whereas the normalized single-excitation eigenvalue remains $1/2$.  A second
 exact-arithmetic certificate checks the pairwise envelope, equality and
 strict examples, cross-ratio tensorization, and coordinatewise saturation.
+It also checks 26,662 rational pairs in the closed three-point simplex,
+including all boundary faces, against the two-branch equality classification.
 These computations are regression tests, not substitutes for the proofs.
 
 The companion module
@@ -553,7 +614,9 @@ sum form; the equality of total variation with the positive-part likelihood
 expectation for normalized positive vectors; the sharp chord and square-root
 envelopes; the probability-normalized pairwise inequality with its complete
 if-and-only-if equality classification; its lift to a realized finite-kernel
-Dobrushin maximum; factorization of projective cross-ratios and preservation
+Dobrushin maximum; the overlap identity and the equivalence between total
+variation one and pointwise disjoint support for normalized nonnegative
+vectors; factorization of projective cross-ratios and preservation
 of a realized maximum under tensor products; the rational hyperbolic-addition
 law for Birkhoff coefficients; and the finite conditioning estimate that
 carries a fibrewise oscillation bound through averaging.  The exact source was
@@ -563,17 +626,21 @@ runtime.  The successful package-import artifacts are:
 \scriptsize
 \begin{tabular}{@{}ll@{}}
 Mathlib commit & \texttt{07642720480157414db592fa85b626dafb71355b} \\
-source SHA-256 & \texttt{f2df04ae3b3f8f06730ab33b5d6e25673b3ae822d0727db4e925045fdf5cde65} \\
-module SHA-256 & \texttt{8196837adae2215bb3a85f92bd317531a867121672cc2629efb5af68540c8ffe}
+source SHA-256 & \texttt{0360a91a7061d9a47dbfec0dc2518175d05fb14edffacdf5b8452b1ebfa442cb} \\
+module SHA-256 & \texttt{6e37e9416c42dbdc9ab2667ea0843a5ba9bf34d7821c7a16c77cc583659cd919}
 \end{tabular}
 \end{center}
 Both module compilation and a separate importing file had exit code zero.  A
-second importing file explicitly checked the pairwise and kernel comparison
-theorems and materialized with SHA-256
-\texttt{caefea43e2e8a1e8676728ecfbffec4102cf89cef8297c2c5f932c8e16558209}.
+second importing file explicitly checked the positive pairwise theorem, the
+closed-simplex singular branch, and the kernel comparison theorem, and
+materialized with SHA-256
+\texttt{e0985e10eea3709f7907fb54fe1aa3532\allowbreak{}f1298026c8d8524bb5324799c5cd8ce}.
 
-The pairwise probability theorem and its realized-maximum kernel lift are now
-formalized end to end.  This is still not an end-to-end formalization of every
+The positive pairwise probability theorem, its realized-maximum kernel lift,
+and the disjoint-support equality branch are now formalized end to end.  The
+reduction of a common boundary face to its positive support is retained as a
+finite mathematical reduction rather than a separate Lean theorem.  This is
+still not an end-to-end formalization of every
 analytic statement in the paper: the general Birkhoff--Hopf contraction
 theorem, the logarithmic passage from maximal cross-ratio to Hilbert diameter,
 the Hellinger proof for the global product Dobrushin coefficient, and the
@@ -584,9 +651,11 @@ owner desktop.
 
 \section{Limitations and conclusion}
 
-The analysis is finite and strictly positive.  Zeros require faces of the
-cone or extended projective distances.  The Dobrushin window is not claimed
-optimal.  The local product theorem concerns independent coordinate updates;
+The analysis is finite.  Zero entries are covered for the pairwise and kernel
+comparison through faces and the extended distance, but the tensor
+cross-ratio formalism itself is still stated on the strictly positive cone.
+The Dobrushin window is not claimed optimal.  The local product theorem
+concerns independent coordinate updates;
 interacting dynamics require a specified update rule and comparison matrix.
 No Yang--Mills mass gap, infinite-volume spectral gap, or result outside the
 Dobrushin regime follows from this note.
@@ -598,6 +667,7 @@ an extensive quantity and drives the global coefficient to one.  Dobrushin's
 uniformity survives only after retaining coordinatewise information.  The
 calculation and the wall are two sides of the same theorem.
 
+\small
 \begin{thebibliography}{99}
 
 \bibitem{Birkhoff1957}

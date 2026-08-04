@@ -378,6 +378,75 @@ theorem totalVariation_eq_positivePart
       rw [weighted_likelihoodRatio_sub_one_sum p q hq hsump hsumq]
       ring
 
+/-- Pointwise disjointness of two nonnegative finite measures. -/
+def PointwiseDisjoint {ι : Type*} (p q : ι → ℝ) : Prop :=
+  ∀ i, p i = 0 ∨ q i = 0
+
+/-- The scalar overlap identity used on boundary faces of the simplex. -/
+theorem abs_sub_eq_add_sub_two_mul_min (a b : ℝ) :
+    |a - b| = a + b - 2 * min a b := by
+  by_cases hab : a ≤ b
+  · rw [abs_of_nonpos (sub_nonpos.mpr hab), min_eq_left hab]
+    ring
+  · have hba : b ≤ a := le_of_not_ge hab
+    rw [abs_of_nonneg (sub_nonneg.mpr hba), min_eq_right hba]
+    ring
+
+/-- Total variation equals one minus the common mass. -/
+theorem totalVariation_eq_one_sub_overlap
+    {ι : Type*} [Fintype ι] (p q : ι → ℝ)
+    (hsump : ∑ i, p i = 1) (hsumq : ∑ i, q i = 1) :
+    totalVariation p q = 1 - ∑ i, min (p i) (q i) := by
+  unfold totalVariation
+  calc
+    (1 / 2 : ℝ) * ∑ i, |p i - q i| =
+        (1 / 2 : ℝ) * ∑ i, (p i + q i - 2 * min (p i) (q i)) := by
+      congr 1
+      apply Finset.sum_congr rfl
+      intro i _
+      exact abs_sub_eq_add_sub_two_mul_min (p i) (q i)
+    _ = 1 - ∑ i, min (p i) (q i) := by
+      rw [Finset.sum_sub_distrib, Finset.sum_add_distrib,
+        hsump, hsumq, ← Finset.mul_sum]
+      ring
+
+/--
+For normalized nonnegative vectors, total variation reaches one exactly when
+the supports are pointwise disjoint.  This is the equality branch when the
+extended Hilbert distance is infinite.
+-/
+theorem totalVariation_eq_one_iff_pointwiseDisjoint
+    {ι : Type*} [Fintype ι] (p q : ι → ℝ)
+    (hp : ∀ i, 0 ≤ p i) (hq : ∀ i, 0 ≤ q i)
+    (hsump : ∑ i, p i = 1) (hsumq : ∑ i, q i = 1) :
+    totalVariation p q = 1 ↔ PointwiseDisjoint p q := by
+  rw [totalVariation_eq_one_sub_overlap p q hsump hsumq]
+  constructor
+  · intro h
+    have hsum : ∑ i, min (p i) (q i) = 0 := by linarith
+    have hnonneg :
+        ∀ j ∈ (Finset.univ : Finset ι), 0 ≤ min (p j) (q j) := by
+      intro j _
+      exact le_min (hp j) (hq j)
+    intro i
+    have hmin : min (p i) (q i) = 0 :=
+      (Finset.sum_eq_zero_iff_of_nonneg hnonneg).mp hsum
+        i (Finset.mem_univ i)
+    by_cases hi : p i ≤ q i
+    · left
+      simpa [min_eq_left hi] using hmin
+    · right
+      have hqi : q i ≤ p i := le_of_not_ge hi
+      simpa [min_eq_right hqi] using hmin
+  · intro hdisjoint
+    have hzero : ∀ i, min (p i) (q i) = 0 := by
+      intro i
+      rcases hdisjoint i with hpi | hqi
+      · simp [hpi, hq i]
+      · simp [hqi, hp i]
+    rw [Finset.sum_eq_zero (fun i _ => hzero i)]
+    ring
+
 /-- Exact sum identity whose nonnegativity gives the chord bound. -/
 theorem weighted_chordSlack_sum
     {ι : Type*} [Fintype ι] (p q : ι → ℝ) (m M : ℝ)
