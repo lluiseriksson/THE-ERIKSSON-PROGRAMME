@@ -7,7 +7,7 @@ import YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedPartialTermSour
 import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedRootedResidual
 import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedVolumeBudget
 import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedTerminalEq143
-import YangMills.RG.BalabanCMP116InteractingPhysicalPrecisionSource
+import YangMills.RG.BalabanCMP116InteractingConditionedCovariance
 
 /-!
 # Source-specific pre-(1.36) assembly on the combined ledger
