@@ -31269,3 +31269,49 @@ notebook, cell repinned to ba87c9737, queued ~15:50 local.
 stage-1 PASS reading above is a live-terminal reading by this desk,
 not a committed transcript; it is recorded as evidence of state, not
 as the licence.
+
+
+## Addendum 613 (2026-08-04, **the judge gate is PASSED ON THE PLANE with
+three witnesses -- FABRICATION IS LICENSED per charter section 5; the
+full-ladder baselines remain the next plane read**)
+
+While this desk's third full-ladder firing sat in an allocation stall
+(no literal rejection message -- the connect spinner only; compute-unit
+inspection left to the owner), the save-conflict comparison view of
+osr0_licence_run.ipynb revealed that ANOTHER DESK (cell protocol name
+osr52) had opened the same notebook document, checked out 174fd6dfd
+(this desk's ledger-fix commit, pushed minutes earlier), and run
+scripts/judge_os_uniform.py in normal AND -O with tee'd transcripts,
+run metadata (START/END UTC, commit, python --version, uname) and
+sha256sums of the judge and charter.  Their output, SAVED IN THE DRIVE
+DOCUMENT (~17:44): checks run: 110  passed: 110  failed: 0  expected:
+110; JUDGE VERDICT: PASS (all checks, count matches registration) --
+both modes.  This desk cancelled its own save so as not to overwrite
+that evidence.
+
+**Licence declaration.**  Charter section 5 gates fabrication on the
+judges PASSing on the plane in normal and -O.  That gate now has three
+independent witnesses: (1) this desk's live terminal read of the
+second firing's artefacts (Add. 612: sentinels 0, 110/110 both modes);
+(2) the osr52 desk's tee'd transcripts persisted in the notebook
+document at 174fd6dfd; (3) the registered local run (Add. 608).
+**OS-R FABRICATION IS LICENSED.**  The module-A fabrication text is
+staged (session scratchpad, sha256 e8e2a49866046a037927c1f1ed5d5c94
+aa17d6c6c83eeeffec04f2cdd9ff7293, 7866 bytes) and enters the tree only
+through the D-6-cadence plane passes.
+
+**Still owed to the plane before any WIRING PREDICTION:** the core
+baseline read (the 8366-vs-8480 stage-3 total discrepancy of Add. 612
+is UNRESOLVED) and the repo-wide oracle read (expected 3010 reports,
+triple axioms, 0 sorryAx).  Nothing is predicted from memory.
+
+**Coordination note for the owner:** the osr52 desk co-edits the same
+notebook document; two desks writing one .ipynb produced a save
+conflict and a stalled reconnect for this desk.  One notebook per desk
+per unit is the cheap fix; also note Untitled125's live fabrication of
+YangMills/OS/DobrushinMeasureComparison (Add. 609) -- the OS namespace
+now has TWO active writers and the owner should assign lanes.
+
+**ROLES.**  Discovery and licence declaration: this desk.  The osr52
+judge run: another desk, independently.  Module-A fabrication passes:
+the next plane unit of this campaign.
