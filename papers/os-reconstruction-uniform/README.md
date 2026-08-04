@@ -60,3 +60,15 @@ V4 verification and response records:
 `../../docs/audit-artifacts/52-os-reconstruction-uniform-v4-verification.json`
 
 `../../docs/audit-artifacts/52-OS-RECONSTRUCTION-UNIFORM-V4-RESPONSE.md`
+
+Editorial technical-note copy after the 5.23/10 reassessment:
+`os_reconstruction_uniform_technical_note.tex`
+
+This copy preserves the frozen v4 mathematical body, uses the author name
+`Lluis Eriksson`, and is explicitly labelled `Technical Note`.  It is retained
+as a citable technical record rather than presented as an independent main
+paper because of its substantial overlap with *The Reconstructed Theory Has
+One Mass*.
+
+Technical-note PDF:
+`../../output/pdf/os_reconstruction_uniform_technical_note.pdf`
