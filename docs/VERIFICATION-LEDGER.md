@@ -30909,3 +30909,66 @@ exactly the honesty the regime requires, recorded here without dispute.
 
 **ROLES.**  Score and residue are the evaluator's; the fix and the sweep
 are this desk's; the click is the owner's.
+
+## Addendum 606 (2026-08-04, **the 17-satellite audit and the RI charter:
+Conjecture 1's commuting case collapses — registered before fabrication**)
+
+Two units, both audit-first.  UNIT 1 — the owner asked whether the two
+attached coherence papers (ai.viXra 2512.0105v2, 2512.0064v2) crossed
+with the 17 satellite repos hide overlooked ≥9 potential.  Four
+independent Fable sessions audited all 17 at statement level (shallow
+clones, no builds).  Verdict: NOTHING ≥6; zero sorry/zero axiom
+everywhere (grep-verified); the repos' own disclaimers are accurate —
+the dominant defect is content-to-scaffolding ratio, not dishonesty.
+Best: lean-2d-yang-mills (5, real mechanization of exact 2D SU(2),
+Casimir area law, closed-form transfer gap 1−e^{−3t/4} = best exact
+non-Ising witness candidate for the D-6 transport theorem);
+rooted-tree-catalan-closure (5, unconditional 1287-line bijection,
+classical identity); aqft-split-inclusion-series (5, as campaign
+infrastructure).  Defects recorded: PrimeResolventData trivially
+inhabited (riemann-resolvent-programme Program.lean:67 — its "Theorem
+C" collapses to Theorem A; transported-hypothesis class), sibling
+Riemann repos formalize DIFFERENT xi functions under one name, the
+mathlib-plane-tree-catalan "PR kit" whose Mathlib PR was never opened
+(the gap in Mathlib is real), free-Prop vacuity interfaces
+(TruncatedCorrelationDecay, representsExpectation,
+measure_is_wilson_gibbs), modus-ponens dictionary theorems
+(lean-transfer-matrix Finite.lean), and the prospective 2602.0085
+re-entry point at lean-ym-flow's planned M1 bridge.  Memory:
+satellite-repo-audit.md.
+
+UNIT 2 — the owner chose the Conjecture 1 commuting-buffer campaign
+(2512.0064v2 §6).  This desk's design analysis found the case
+DEGENERATE: for pairwise-commuting finite-range buffers the Heisenberg
+cone is STRICT (far factors cancel exactly) and a local dissipator
+annihilates disjoint-support operators, so the boundary observable
+never feels the sink at operator level.  An INDEPENDENT adversarial
+Fable session, ordered to refute, CONFIRMED the cone and blindness
+steps as airtight, found the missed corollary (the buffer+sink
+Lindbladian is NON-ERGODIC: conserved local observables, degenerate
+stationary manifold, closed unitary reduced dynamics beyond range R),
+and caught THREE holes in the draft's spectral step plus one backwards
+gloss: (i) "rho_ss" does not refer — thermalization must be a
+HYPOTHESIS; (ii) the linear-in-population floor is WRONG — coherences
+enter at first order, correct floor = sqrt(excited weight) by
+Cauchy-Schwarz, linear iff the local state commutes with H_near,
+exactly zero for ground preparation; (iii) the Davies limit does not
+exist for atomic C(t) — restated as time-averaged golden-rule at
+resonant atoms (the suspected Heisenberg/Schrodinger bookkeeping error
+was checked and is NOT there — QRT duality closes it); (iv) the gloss
+is xi* -> 0, not infinity: commutativity kills the CHANNEL (the
+quasi-free exponent is Green-function evanescence, not spreading), so
+the commuting case sits OUTSIDE the conjecture's mixing regime and
+every floor is a preparation floor.  The one true epsilon-exponential
+left is the Gibbs preparation's boundary correction e^{-eps/xi_th},
+whose classical shadow is exactly D-6.  CHARTER REGISTERED:
+docs/RATE-INHERITANCE-CHARTER.md — collapse theorem as target, short
+paper, four judges with two-stage tolerance freeze (structure now,
+numbers after a labeled design pilot, before the certified run), death
+sites named.  Draft's four failures recorded in its section 8.
+
+**ROLES.**  Design: this desk.  Refutation audit: an independent
+session, pen and paper, load-bearing computations reproduced.  All
+four (C3) defects were found by the auditor, none by the fabricator —
+the split-roles rule bought exactly what it was written to buy.  The
+judges have not run; nothing beyond the charter is licensed.
