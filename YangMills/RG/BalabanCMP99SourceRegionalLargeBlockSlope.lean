@@ -28,8 +28,8 @@ theorem cmp99SourceRegionalLargeBlockCutoffScale_mul_Q
     (M Q depth : ℕ) :
     cmp99SourceRegionalLargeBlockSide M depth * (2 * Q) =
       cmp99SourceRegionalLargeBlockCutoffScale M depth * Q := by
-  unfold cmp99SourceRegionalLargeBlockSide
-    cmp99SourceRegionalLargeBlockCutoffScale
+  unfold cmp99SourceRegionalLargeBlockCutoffScale
+    cmp99SourceRegionalLargeBlockSide
   ac_rfl
 
 /-- The certified generated precision range retains one inverse factor of
@@ -97,15 +97,41 @@ theorem norm_cmp99SourceRegionalLargeBlockSquarePartition_value_sub_le
     exact finBox_cast_apply_val hsize y i
   have hdist : finBoxDist x' y' = finBoxDist x y := by
     exact finBoxDist_cast_size hsize x y
+  have hxcoord :
+      cmp99SourceRegionalLargeBlockCoordinate M depth
+          (fun i => (x i).val) =
+        fun i => (x' i).val +
+          (1 / 2 -
+            (cmp99SourceRegionalLargeBlockCutoffScale M depth : ℝ) / 2) := by
+    funext i
+    rw [hxval i]
+    unfold cmp99SourceRegionalLargeBlockCoordinate
+    ring
+  have hycoord :
+      cmp99SourceRegionalLargeBlockCoordinate M depth
+          (fun i => (y i).val) =
+        fun i => (y' i).val +
+          (1 / 2 -
+            (cmp99SourceRegionalLargeBlockCutoffScale M depth : ℝ) / 2) := by
+    funext i
+    rw [hyval i]
+    unfold cmp99SourceRegionalLargeBlockCoordinate
+    ring
   have h := norm_cmp95RescaledPeriodicTensorCutoff_finBox_sub_le
     P (cmp99SourceRegionalLargeBlockCutoffScale M depth) Q cell
       (fun _ => 1 / 2 -
         (cmp99SourceRegionalLargeBlockCutoffScale M depth : ℝ) / 2)
       x' y'
-  simpa [cmp99SourceRegionalLargeBlockSquarePartition,
-    cmp99SourceRegionalLargeBlockCutoff,
-    cmp99SourceRegionalLargeBlockCoordinate, hxval, hyval, hdist,
-    sub_eq_add_neg, add_assoc] using h
+  change ‖cmp95RescaledPeriodicTensorCutoff P Q
+        (cmp99SourceRegionalLargeBlockCutoffScale M depth) cell
+          (cmp99SourceRegionalLargeBlockCoordinate M depth
+            fun i => (y i).val) -
+      cmp95RescaledPeriodicTensorCutoff P Q
+        (cmp99SourceRegionalLargeBlockCutoffScale M depth) cell
+          (cmp99SourceRegionalLargeBlockCoordinate M depth
+            fun i => (x i).val)‖ ≤ _
+  rw [hycoord, hxcoord]
+  simpa [hdist] using h
 
 end
 
