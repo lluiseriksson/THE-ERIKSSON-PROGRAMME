@@ -4,7 +4,7 @@
 % verified; every [SLOT] must be replaced by a number READ FROM A COMMITTED
 % ARTEFACT before the word "final" is pronounced.  STATUS: pass-10 module
 % green on the plane (sha d9919e25..., ELAB_EXIT 0); pass-11 wiring and the
-% fresh clone are IN FLIGHT -- their two numbers are the live slots below.
+% fresh clone is the one live slot below.
 % Submission is the owner's decision alone.
 % The abstract's priority sentence is the COLLATED one (Add. 611,
 % docs/OS-R-PRIORITY-COLLATION.md): the naked "first machine-checked OS
@@ -31,8 +31,8 @@ Mathlib pinned to \lean{0764272048\ldots}.  Repository:
 \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}{THE-ERIKSSON-PROGRAMME},
 branch \lean{d3-closure}, module anchor commit
 \lean{3b0dfa9e81835106b6d43a1d582b8c12dcb8f36b}; verification anchor
-\SLOT{fresh-clone SHA, pending pass 12}.}}
-\date{2026-08-05 --- manuscript with two live measurement slots;
+\SLOT{fresh-clone SHA, pending pass 14}.}}
+\date{2026-08-05 --- manuscript with ONE live measurement slot (the fresh clone);
 submission is the owner's decision}
 
 \begin{document}
@@ -144,8 +144,8 @@ volume-uniform gap; the \emph{exact} identities
 $\mathrm{gibbsPathSum} = \lambda^N\ip{\hat T^N QA}{QB}$ and
 $Z_N = \lambda^N\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}$; volume-uniform
 \emph{mixed} clustering with the zero-time case
-(\lean{os\_reconstruction\_measure\_uniform}; core \SLOT{8481, pass-11
-measurement in flight}, oracle \SLOT{3026, same}, 0 sorry) & Wightman
+(\lean{os\_reconstruction\_measure\_uniform}; core 8481, oracle 3026,
+0 sorry --- measured, Addendum 622) & Wightman
 axioms; continuum limit; $SU(N)$; Clay; the division-safe
 \emph{normalised} six-term connected bound (named open step,
 Section~\ref{sec:honesty}) \\
@@ -192,6 +192,54 @@ the corollary \lean{dobrushin\_ising\_uniform\_gap} (module
 one \lean{spatialKernel} declaration serving both geometries --- is
 enforced by the elaborator in the module of
 Section~\ref{sec:unitary}.
+
+\subsection{The OS provenance: reflection positivity, collapse, null
+space, physical quotient}\label{sec:provenance}
+The operator of Section~\ref{sec:forced} is not an ansatz; its
+Osterwalder--Schrader provenance is machine-checked in the same tree,
+and we present it here because the reconstruction claim of this paper
+rests on it.  All items below are green, in-tree prior work of the
+lane (modules \lean{SpatialReflection}, \lean{SpatialOS},
+\lean{SpatialReconstruction}); nothing in this subsection is new.
+
+\begin{itemize}
+\item \emph{Reflection positivity over the measure.}  The bond OS
+pairing of two half-chain observables is literally a sum over whole
+Gibbs paths --- \lean{osPairingBond\_eq\_gibbsSum}, through the
+splitting equivalence \lean{bondEquiv} and the weight identity
+\lean{gibbsWeight\_joinBond} --- and it is nonnegative on the diagonal
+for $\beta \ge 0$ (\lean{osPairingBond\_nonneg}; the restriction is
+sharp: \lean{gibbsPathSum\_neg\_of\_neg\_beta} exhibits negativity at
+$\beta < 0$).
+\item \emph{The collapse and its null space.}  Half-chain observables
+collapse linearly onto boundary vectors (\lean{collapseL},
+surjective by \lean{collapseL\_surjective}), and the null space of the
+reflected site form is \emph{exactly} the kernel of the collapse:
+$F \in \ker(\mathrm{collapseL}) \iff
+\mathrm{osPairingSite}\,F = 0$ (\lean{mem\_ker\_collapseL\_iff}).
+The quotient is by something identified, not by an abstract null
+space that happens to be there.
+\item \emph{The physical quotient.}  The quotient of half-chain
+observables by that kernel \emph{is} the boundary space, as a bundled
+linear equivalence (\lean{physicalEquiv}, via
+\lean{quotKerEquivOfSurjective}).
+\item \emph{The operator's provenance.}  The transfer operator's
+matrix element between two collapsed half-chain observables is the
+reflected two-point sum of the Gibbs measure over whole paths, one
+slice further apart --- \lean{osPairing\_transfer\_gibbsSum}, stated
+for two observables, not one.  Together with forcing
+(\lean{transferOp\_unique}), self-adjointness at every $\beta$
+(\lean{transferOp\_selfAdjoint}) and positivity for $\beta \ge 0$
+(\lean{transferOp\_nonneg}), this is the OS construction of the
+operator whose spectrum Sections~\ref{sec:gap}--\ref{sec:endpoint}
+control.
+\end{itemize}
+
+At finite extent the site form with $w > 0$ is definite, so on
+boundary vectors no further quotient intervenes; the quotient content
+lives one level up, on half-chain observables, where it is the
+\lean{physicalEquiv} above.  This is the honest division of labour
+between construction and spectrum in this model.
 
 \section{The dressing unitary}\label{sec:unitary}
 All statements of this and the following sections live in one module
@@ -398,20 +446,24 @@ normal and \lean{-O}; core 8481; oracle 3017; module sha256
 bit-identical (Addendum 619; run cell
 \lean{scripts/osr1\_pass7\_freshclone.py}).
 
-\subsection*{Stage OS-R-2 (predictions registered, Addendum 621;
-measurements \SLOT{pass-11/12 in flight})}
+\subsection*{Stage OS-R-2 (predictions Addendum 621, committed before
+the run; measurements Addendum 622)}
 \begin{center}
 \begin{tabular}{lll}
 \textbf{Quantity} & \textbf{Predicted (committed first)} &
 \textbf{Measured} \\ \hline
-core jobs & 8481 exact (file grew, no module added) &
-\SLOT{pass 11} \\
-oracle reports & $3017+9 = 3026$ exact & \SLOT{pass 11} \\
-\lean{sorryAx} occurrences & 0 & \SLOT{pass 11} \\
+core jobs & 8481 exact (file grew, no module added) & 8481 \\
+oracle reports & $3017+9 = 3026$ exact & 3026 \\
+\lean{sorryAx} occurrences & 0 & 0 \\
+new endpoint axiom sets & standard triple & exactly
+\lean{[propext, Classical.choice, Quot.sound]} $\times 9$ \\
 fresh-clone reproduction & bit-identical module, same counts &
-\SLOT{pass 12} \\
+\SLOT{pass 14} \\
 \end{tabular}
 \end{center}
+The core count is the tenth consecutive exact count prediction of this
+lane: the module file grew from $12{,}347$ to $20{,}428$ bytes and the
+job total did not move.
 Module: \lean{YangMills/OS/OSReconstructionUniform.lean}, sha256
 \lean{d9919e256ae59ac9189e397e5abf1249cfaca3284efa8f1a9307f86a27bac149}
 ($20{,}428$ bytes), banked at commit \lean{3b0dfa9e8} after the plane

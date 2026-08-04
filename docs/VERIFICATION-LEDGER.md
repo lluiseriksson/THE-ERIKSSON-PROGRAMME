@@ -31622,3 +31622,50 @@ favour unless the owner rules otherwise.
 autonomous via the browser bridge (this desk driving Colab directly;
 no owner paste).  Audit of the wiring numbers: the pass-11 unit
 itself, predictions above committed before measurement.
+
+
+## Addendum 622 (2026-08-05, **OS-R-2 WIRING MEASURED: all three
+Add.-621 predictions HELD EXACTLY (core 8481; oracle 3026 = 3017+9;
+sorryAx 0) -- tenth consecutive exact count prediction**)
+
+`scripts/osr2_pass11_wiring.py` (committed 520e177a7 with the
+predictions already registered in Add. 621 at 3b0dfa9e8) ran on the
+warm high-RAM runtime, driven autonomously through the browser bridge.
+Read from the run output:
+
+* STEP A: `FETCH_EXIT 0`, `CHECKOUT_EXIT 0` (checkout -f 3b0dfa9e8).
+* STEP B (hash gate): `MODULE 20428
+  d9919e256ae59ac9189e397e5abf1249cfaca3284efa8f1a9307f86a27bac149`
+  (byte-identical to the banked blob); travelling files
+  `YangMillsCore.lean` 8625afbf13f2dcb154215f86fb9ad88166a28aff1bfa53
+  7b6eb1347eded4db04 (63502 B), `oracle_check.lean` bc7a9a2428af77db6
+  0eef97b06f02648566d6930b95a8b12396a8da46cd778ce (235522 B);
+  `ORACLE_STATIC_LINES 3053` (static, recorded per ghost #26, not
+  assumed).
+* STEP C: `CORE_EXIT 0 TOTAL 8481 | Build completed successfully
+  (8481 jobs)` -- `PREDICTION_CORE_8481 True`.  The file grew from
+  12347 to 20428 bytes and the job count DID NOT move: the tenth
+  consecutive exact count prediction of the D/OS lane.
+* STEP D: `ORACLE_EXIT 0 REPORTS 3026 SORRYAX_REPORTS 0
+  NONSTANDARD_JOINED 119` -- `PREDICTION_ORACLE_3026 True`,
+  `PREDICTION_SORRYAX_0 True`.  The 119 joined non-triple reports are
+  the same class as Add. 619: declarations depending on a strict
+  SUBSET of the triple (e.g. `[propext, Quot.sound]`,
+  `[propext]`) -- sound, plus the known joiner glue artefact; sampled
+  lines in the run output confirm the subset shape.
+* All NINE new OS-R-2 endpoints report exactly
+  `[propext, Classical.choice, Quot.sound]`: `act_smul_fun`,
+  `act_iterate_smul_fun`, `act_symWeighted_iterate_eq_smul_tilt`,
+  `gibbsPathSum_eq_inner_pow`, `gibbsPartition_eq_inner_pow`,
+  `norm_sub_inner_smul_le`, `pow_apply_norm_le`,
+  `mixed_connCorr_bound`, `os_reconstruction_measure_uniform`.
+* `OSR2_WIRING_DONE` printed; run left on the notebook document.
+
+Remaining before "final": pass 12 (six-term module, staged at
+1a29a8516, NOW ELABORATING), its wiring (+2 endpoints, prediction
+3028), and the fresh clone (template scripts/osr2_pass14_freshclone.py,
+predictions 8481/3028).
+
+**ROLES.**  Unit design + predictions: this desk (committed before the
+run).  Plane execution: autonomous browser bridge.  This record: this
+desk, numbers read from the visible run output (screenshot-verified).
