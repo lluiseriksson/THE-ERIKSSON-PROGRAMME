@@ -148,6 +148,47 @@ theorem transferOp_iterate_qEmbed (w : (Fin L → Fin 2) → ℝ)
       rw [Function.iterate_succ_apply', ih, Function.iterate_succ_apply']
       exact transferOp_qEmbed w hw β ((act (symWeighted w β))^[n] u)
 
+/-! ## B0 — the operator-side bridges (pass 4)
+
+`vacuumTransfer_opOf`, `opOf_symm`, `opOf_fix`, `vacOf_norm`,
+`tiltKernel_symm` and `clustering_of_gap` are already in the tree; the
+only new bricks are the tilt scaling and the act/opOf power bridge. -/
+
+/-- **B0b — tilt scaling.**  The symmetrised action is `lam` times the
+normalised (tilt) action, per site. -/
+theorem act_symWeighted_eq_smul_act_tilt (w : (Fin L → Fin 2) → ℝ)
+    (β lam : ℝ) (hlam : lam ≠ 0) (u : (Fin L → Fin 2) → ℝ) :
+    act (symWeighted w β) u
+      = fun σ => lam * act (fun a b => tiltKernel w β lam a b) u σ := by
+  funext σ
+  unfold act
+  rw [Finset.mul_sum]
+  refine Finset.sum_congr rfl fun τ _ => ?_
+  -- PASS 4: rw is blind to the beta-redex `(fun a b => tiltKernel …) σ τ`
+  -- (the D-6 pin trap, verbatim); `show` the reduced form first.
+  show symWeighted w β σ τ * u τ = lam * (tiltKernel w β lam σ τ * u τ)
+  rw [tiltKernel_apply]
+  field_simp
+
+/-- **B0a — the act/opOf power bridge.**  The `n`-fold `act` iterate is the
+`n`-th operator power, pointwise, through `WithLp.toLp`. -/
+theorem act_iterate_eq_opOf_pow
+    (M : Matrix (Fin L → Fin 2) (Fin L → Fin 2) ℝ) (n : ℕ)
+    (u : (Fin L → Fin 2) → ℝ) (σ : Fin L → Fin 2) :
+    (act (fun a b => M a b))^[n] u σ
+      = ((opOf M) ^ n) (WithLp.toLp 2 u) σ := by
+  induction n generalizing u with
+  | zero => simp
+  | succ n ih =>
+      have hstep : WithLp.toLp 2 (act (fun a b => M a b) u)
+          = opOf M (WithLp.toLp 2 u) := by
+        refine PiLp.ext fun y => ?_
+        rw [opOf_apply]
+        rfl
+      rw [Function.iterate_succ_apply, pow_succ,
+        ContinuousLinearMap.mul_apply, ← hstep]
+      exact ih (act (fun a b => M a b) u)
+
 /-! ## The endpoint — the transported volume-uniform gap -/
 
 /-- **OS reconstruction with one mass.**  In the Dobrushin window with
@@ -177,5 +218,32 @@ theorem os_reconstruction_uniform_gap (β γ : ℝ) {alpha : ℝ}
   obtain ⟨lam, Om, hlam, hOm, hfix, hnorm⟩ := hL L
   exact ⟨lam, Om, hlam, hOm, hfix, hnorm,
     fun u => transferOp_qEmbed (sliceW γ L) (sliceW_pos γ L) β u⟩
+
+/-- **The volume-uniform clustering of the reconstructed operator.**  In
+the Dobrushin window: ONE `m > 0` such that for EVERY spatial extent the
+D-6 Perron data packages into a `VacuumTransfer`
+(`vacuumTransfer_opOf`, with `tiltKernel_symm` and the fixed-point
+clause), and `clustering_of_gap` reads the projected bound as geometric
+decay of EVERY connected correlator of the transported transfer
+operator: `|connCorr T Ω v n| ≤ ‖v‖² · (e^{-m})ⁿ`.  The constant is
+per-observable (`‖v‖²`); the RATE alone is uniform in `L` — the
+honesty split o-bridge demands. -/
+theorem os_reconstruction_uniform_clustering (β γ : ℝ) {alpha : ℝ}
+    (halpha0 : 0 < alpha) (halpha1 : alpha < 1)
+    (hwin : 2 * Real.tanh |β| + 2 * Real.tanh |γ| ≤ alpha) :
+    ∃ m : ℝ, 0 < m ∧ ∀ L : ℕ,
+      ∃ (lam : ℝ) (Om : (Fin (L + 1) → Fin 2) → ℝ),
+        0 < lam ∧ (∀ σ, 0 < Om σ) ∧
+        (∀ σ, ∑ τ, tiltKernel (sliceW γ L) β lam σ τ * Om τ = Om σ) ∧
+        ∀ (v : EuclideanSpace ℝ (Fin (L + 1) → Fin 2)) (n : ℕ),
+          |connCorr (opOf (tiltKernel (sliceW γ L) β lam)) (vacOf Om) v n|
+            ≤ ‖v‖ ^ 2 * Real.exp (-m) ^ n := by
+  obtain ⟨m, hm, hL⟩ := dobrushin_ising_uniform_gap β γ halpha0 halpha1 hwin
+  refine ⟨m, hm, fun L => ?_⟩
+  obtain ⟨lam, Om, hlam, hOm, hfix, hnorm⟩ := hL L
+  have hT : VacuumTransfer (opOf (tiltKernel (sliceW γ L) β lam)) (vacOf Om) :=
+    vacuumTransfer_opOf _ Om (tiltKernel_symm _ β lam) hOm hfix
+  exact ⟨lam, Om, hlam, hOm, hfix,
+    fun v n => clustering_of_gap hT hnorm v n⟩
 
 end YangMills.OS

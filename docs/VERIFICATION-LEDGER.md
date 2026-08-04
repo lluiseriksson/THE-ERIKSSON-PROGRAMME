@@ -31417,3 +31417,30 @@ oracle remain owed before any headline is called final.
 
 **ROLES.**  Fabrication ladder: this desk.  All three plane executions
 and output relays: the owner, by hand.
+
+
+## Addendum 617 (2026-08-04, **OS-R module GREEN AT FULL PASS-5 SCOPE:
+A1-A3 + B0a + B0b + BOTH endpoints, ELAB_EXIT 0**)
+
+Pass 5 (sha256 5445429f773628659eee0fa41202f277b239ec9ac87a15ae4a...
+full hash in the commit; 12347 bytes) returned ELAB_EXIT 0 on the warm
+high-RAM runtime.  The module now proves, green on the plane:
+A1 siteForm_qEmbed; A2 transferOp_qEmbed; A3 transferOp_iterate_qEmbed;
+B0b act_symWeighted_eq_smul_act_tilt (tilt scaling); B0a
+act_iterate_eq_opOf_pow (act/opOf power bridge);
+os_reconstruction_uniform_gap; and
+**os_reconstruction_uniform_clustering** -- in the Dobrushin window,
+ONE m > 0 such that for EVERY spatial extent every connected correlator
+of the transported transfer operator obeys
+|connCorr T Omega v n| <= norm(v)^2 * exp(-m)^n, by
+vacuumTransfer_opOf + tiltKernel_symm + clustering_of_gap, the
+per-observable constant / uniform rate split stated exactly as
+o-bridge demands.  Five-pass ladder total; the two pass-4/5 defects
+were the catalogued beta-redex pin trap and nothing else.
+The file replaces the pass-3 version in the tree, still UNWIRED.
+Next: the wiring unit with its count prediction (baseline to be READ,
+8366-vs-8480 resolved from the same unit's unwired build), fresh-clone
+verification, paper slots.
+
+**ROLES.**  Fabrication: this desk.  All plane executions: the owner's
+hand on the committed cells; hashes verified on both sides each pass.
