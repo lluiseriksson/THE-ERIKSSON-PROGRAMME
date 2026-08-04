@@ -225,3 +225,106 @@ The revised binary PDF is frozen separately:
    wall; it does not assert a volume-uniform global projective gap.
 10. **Runtime-governance attack.** Lean/Lake stayed off Windows; Colab used CPU
     high RAM without GPU and was disconnected and deleted at completion.
+
+## End-to-end finite comparison supplement freeze (August 4, 2026)
+
+Freeze status: **probability-normalized finite comparison and realized-kernel
+lift machine-checked; external mathematical, priority, and score verdict still
+required**.
+
+This supplement responds to the revised 4.98/10 review, whose main formal
+objection was that probability normalization and the finite-kernel comparison
+were still external. It supersedes the preceding supplement for the current
+paper and Lean source while retaining all earlier failed passes as provenance.
+
+- Branch: `codex/candidate-46-birkhoff-dobrushin-wall`
+- Frozen body commit: `f25369040c8b2bfd23438b7a6bd94d6fa1769e5d`
+- Base `main`: `12bf6e241694aa5cfb5c7a6e08a96c8fa47ff9b1`
+- Main divergence at capture: branch ahead by seven commits; `main` ahead by
+  zero commits, so no merge commit was required
+- Capture host: Windows owner desktop, isolated worktree
+- Capture method: `System.IO.File.ReadAllBytes`, UTF-8 decode, explicit LF and
+  CRLF normalization, and `System.Security.Cryptography.SHA256.HashData`
+- Local Lean/Lake/oracle: not invoked
+- Remote runtime: Colab Pro+ CPU, high RAM (50.99 GiB visible), no GPU, account
+  `lluiseriksson@gmail.com`
+- Extension runtime opened: approximately `2026-08-04T21:26:00+02:00`
+- Extension runtime closed: `2026-08-04T21:43:16+02:00`
+- Close method: Colab UI “disconnect and delete runtime”; the disconnected
+  state was verified after confirmation
+- Lean: `leanprover/lean4:v4.29.0-rc6`
+- Mathlib: `07642720480157414db592fa85b626dafb71355b`
+- Notebook capture:
+  `https://colab.research.google.com/drive/11N9BAjGa_w4ikrI9bAl9Jkx-5iYxpRzS`
+- Final standalone compile: exit 0 in 13.109 s; `.olean` SHA-256
+  `100d7cb6100420f5913bc0f110f70ff50aed23269c86555faf7e66fe063f984d`
+- Final package module/import pass: both exit 0 in 19.817 s; module `.olean`
+  SHA-256
+  `8196837adae2215bb3a85f92bd317531a867121672cc2629efb5af68540c8ffe`
+- Explicit pairwise-and-kernel importer: exit 0 in 7.367 s; importer `.olean`
+  SHA-256
+  `caefea43e2e8a1e8676728ecfbffec4102cf89cef8297c2c5f932c8e16558209`
+- PDF compiler: Tectonic, exit 0 in 8.3 s; only the host Fontconfig
+  default-file diagnostic remained, with no TeX warnings
+- PDF QA: all 10 pages rendered at 1.6x and visually inspected; no clipping,
+  overlap, broken glyph, or illegible reference was found
+- Arithmetic regression: normal and `python -O` runs both exit 0; measured
+  outer wall times were 0.790 s and 1.035 s respectively
+- Fable/Claude: not invoked because the last visible account check showed
+  `luis.ebikeride@gmail.com`, not the binding account
+  `masterythief@gmail.com`
+- External audit: not performed; no terminal score or priority verdict is
+  claimed
+
+### Frozen finite-comparison bodies
+
+| Path | Raw bytes | SHA-256 raw | LF bytes | SHA-256 LF | CRLF bytes | SHA-256 CRLF |
+|---|---:|---|---:|---|---:|---|
+| `YangMills/BirkhoffDobrushin/Wall.lean` | 23744 | `f2df04ae3b3f8f06730ab33b5d6e25673b3ae822d0727db4e925045fdf5cde65` | 23744 | `f2df04ae3b3f8f06730ab33b5d6e25673b3ae822d0727db4e925045fdf5cde65` | 24360 | `bf9dab84bb1e2800a78b7d8e7a26ed767d5370b7fea96c83cca9e50fa2cb8e7e` |
+| `docs/CANDIDATE-46-BIRKHOFF-DOBRUSHIN-WALL.md` | 13900 | `3ae25a92b721f42c80faaf26a2ad6a48ebf94b97024841a3030043e3fdc151cd` | 13900 | `3ae25a92b721f42c80faaf26a2ad6a48ebf94b97024841a3030043e3fdc151cd` | 14234 | `ea1b31e7a266ae0cbfec78a34fc56001844fd97807cc24f80e997895006fab1d` |
+| `docs/CANDIDATE-46-LEAN-VERIFICATION.json` | 8411 | `c4ebf9c277ebf3afa6d4629c0cbd9b82e6458876bac93a1a8db90b2be10f6616` | 8411 | `c4ebf9c277ebf3afa6d4629c0cbd9b82e6458876bac93a1a8db90b2be10f6616` | 8615 | `806a6c0d6524f022e240d32bad231e65b314555f0c4c1d2b0f05870e587d68bd` |
+| `papers/birkhoff-dobrushin-wall/birkhoff_dobrushin_wall.tex` | 28148 | `a4bdcbaf5a88bf08e6f903a2dffc754c9a3fc9cc09fcbbd40dd4b7556997457b` | 28148 | `a4bdcbaf5a88bf08e6f903a2dffc754c9a3fc9cc09fcbbd40dd4b7556997457b` | 28822 | `f38afe9373cb31cac6bbbfb51d5a4effde5c73ca7f190380a518fd797831bf8e` |
+| `scripts/certify_birkhoff_dobrushin_comparison.py` | 5803 | `4d677c431d63721710e15b39bd1472149c5e9487b0b6d7010d8963be782fdbde` | 5803 | `4d677c431d63721710e15b39bd1472149c5e9487b0b6d7010d8963be782fdbde` | 5981 | `a35806ca0eeee6c480f88104fcba4827e0f1490b6495bdf74796289a88970afa` |
+| `scripts/killtest_birkhoff_tensor_wall.py` | 2679 | `b0bd9f744331acdf769b194d922e75bcff7f64d15709904584cfe85526729412` | 2679 | `b0bd9f744331acdf769b194d922e75bcff7f64d15709904584cfe85526729412` | 2763 | `cebcb22f2da82be389dd62f7598bd9f679141612105484d9fadb0cb49aa146f9` |
+
+The revised binary PDF is frozen separately:
+
+| Path | Bytes | SHA-256 |
+|---|---:|---|
+| `output/pdf/birkhoff_dobrushin_wall.pdf` | 107248 | `d4e773f9d738a43e6237bf4dd4157e64d91c9a648485cba07c47511d7461a994` |
+
+### End-to-end finite-comparison attacks attempted
+
+1. **Normalization-gap attack.** The source now defines finite total variation
+   and likelihood ratios, proves the weighted likelihood-ratio identities from
+   normalized positive vectors, and derives total variation as the weighted
+   positive part. Probability normalization is no longer an external premise
+   for the finite pairwise theorem.
+2. **Envelope-chain attack.** The chord envelope and its square-root bound are
+   formalized separately, so equality cannot be inherited merely from a loose
+   composite inequality.
+3. **Equality-converse attack.** The finite probability theorem proves both the
+   sharp bound and the iff equality classification; the converse uses the same
+   reciprocal endpoint condition as the paper.
+4. **Kernel-lift attack.** A realized Dobrushin maximum is an explicit
+   hypothesis, and the pairwise iff is lifted to that maximizing pair without
+   pretending that non-attained or infinite suprema were formalized.
+5. **First-draft compiler attack.** Four unresolved
+   `Finset.sum_sub_distrib` inference failures produced exit 1 and no accepted
+   `.olean`; the corrected source was compiled independently.
+6. **Standalone-versus-package attack.** The final 23,744-byte source was
+   compiled both standalone and in the package search path. A separate file
+   explicitly imported and checked both the pairwise and kernel theorems.
+7. **Hash-identity attack.** The local source SHA-256
+   `f2df04ae3b3f8f06730ab33b5d6e25673b3ae822d0727db4e925045fdf5cde65`
+   matches the final remote source byte for byte.
+8. **Scope-inflation attack.** The paper and transcript still list the analytic
+   Birkhoff--Hopf contraction theorem, the logarithmic cross-ratio-to-diameter
+   passage, the Hellinger global-product proof, and the interacting Dobrushin
+   theorem as external classical inputs.
+9. **No-false-gap attack.** Neither the Lean extension nor the revised paper
+   claims a volume-uniform global projective gap; the tensor wall remains part
+   of the theorem.
+10. **Runtime-governance attack.** Lean/Lake stayed off the Windows owner
+    desktop. Colab used the specified Pro+ account, CPU high RAM, no GPU, and
+    the runtime was disconnected and deleted after verification.
