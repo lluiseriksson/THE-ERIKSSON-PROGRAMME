@@ -397,22 +397,35 @@ theorem freeCov_eq_rect_covar (β γ : ℝ) {T L : ℕ}
           / gibbsZ (isingWeight (rectJ (L := T + 1) (T := L + 1) β γ)) := by
     intro F
     unfold expect gibbsMu
-    rw [← Finset.sum_div]
-    refine congrArg (· / _) (Finset.sum_congr rfl fun η _ => ?_)
-    ring
-  unfold freeCov freeE covar
-  rw [hZ, hPS, hPS, hPS, hexp, hexp, hexp]
-  congr 1
-  · congr 1
-    refine Finset.sum_congr rfl fun η _ => ?_
-    ring
-  · congr 1
-    · congr 1
-      refine Finset.sum_congr rfl fun η _ => ?_
-      ring
-    · congr 1
-      refine Finset.sum_congr rfl fun η _ => ?_
-      ring
+    rw [Finset.sum_div]
+    exact Finset.sum_congr rfl fun η _ => by ring
+  -- one normalised two-endpoint expectation, identified
+  have hE2 : ∀ A' B' : (Fin (L + 1) → Fin 2) → ℝ,
+      freeE (sliceW γ L) β T A' B'
+      = expect (gibbsMu (isingWeight (rectJ (L := T + 1) (T := L + 1) β γ)))
+          (fun η => A' (fun j => η (0, j))
+            * B' (fun j => η (Fin.last T, j))) := by
+    intro A' B'
+    unfold freeE
+    rw [hPS A' B', hZ, hexp]
+    exact congrArg (· / _) (Finset.sum_congr rfl fun η _ => rfl)
+  unfold freeCov covar
+  rw [hE2 A B, hE2 A (fun _ => (1 : ℝ)), hE2 (fun _ => (1 : ℝ)) B]
+  have hb1 : (fun η : Fin (T + 1) × Fin (L + 1) → Fin 2 =>
+      A (fun j => η (0, j))
+        * (fun _ : Fin (L + 1) → Fin 2 => (1 : ℝ))
+            (fun j => η (Fin.last T, j)))
+      = fun η : Fin (T + 1) × Fin (L + 1) → Fin 2 =>
+          A (fun j => η (0, j)) :=
+    funext fun η => mul_one _
+  have hb2 : (fun η : Fin (T + 1) × Fin (L + 1) → Fin 2 =>
+      (fun _ : Fin (L + 1) → Fin 2 => (1 : ℝ)) (fun j => η (0, j))
+        * B (fun j => η (Fin.last T, j)))
+      = fun η : Fin (T + 1) × Fin (L + 1) → Fin 2 =>
+          B (fun j => η (Fin.last T, j)) :=
+    funext fun η => one_mul _
+  rw [hb1, hb2]
+  rfl
 
 /-! ## §5  Oscillation transport, and the family feed -/
 
