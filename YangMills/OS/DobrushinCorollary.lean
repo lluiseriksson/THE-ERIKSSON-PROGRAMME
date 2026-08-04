@@ -408,7 +408,6 @@ theorem freeCov_eq_rect_covar (β γ : ℝ) {T L : ℕ}
     intro A' B'
     unfold freeE
     rw [hPS A' B', hZ, hexp]
-    exact congrArg (· / _) (Finset.sum_congr rfl fun η _ => rfl)
   unfold freeCov covar
   rw [hE2 A B, hE2 A (fun _ => (1 : ℝ)), hE2 (fun _ => (1 : ℝ)) B]
   have hb1 : (fun η : Fin (T + 1) × Fin (L + 1) → Fin 2 =>
@@ -425,7 +424,6 @@ theorem freeCov_eq_rect_covar (β γ : ℝ) {T L : ℕ}
           B (fun j => η (Fin.last T, j)) :=
     funext fun η => one_mul _
   rw [hb1, hb2]
-  rfl
 
 /-! ## §5  Oscillation transport, and the family feed -/
 
