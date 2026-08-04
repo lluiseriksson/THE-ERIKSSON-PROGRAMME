@@ -13,6 +13,19 @@ That matters for how they must be proved:
 Both blocks are invariant subspaces of a symmetric operator, so the operator
 norm on each is the largest `|eigenvalue|` there, which is what this computes.
 
+THIS IS NOT A GATE, AND MUST NEVER BE CITED AS ONE.
+====================================================
+It was written AFTER the same measurement had already been run inline and its
+answer read.  Adopting it as a criterion afterwards would be choosing the judge
+knowing the verdict, which is the one thing a pre-registration exists to
+prevent.  It carries an exit code so that a later run can detect a REGRESSION
+against a previously measured state --- non-zero here means "the numbers moved",
+not "a gate failed".
+
+A real gate for either block obligation has to be written before its number is
+computed, and has to predict a NUMBER rather than an inequality.  None exists
+yet for the odd or the even bound.
+
 Reported as VERIFIED.  It proves nothing; it says where the slack is.
 """
 import math
@@ -81,4 +94,6 @@ print("near q^2.  So the odd obligation is TIGHT and its proof cannot afford a")
 print("single lossy step, while the even one carries a factor of q in hand.")
 print("The campaign should not treat them as equally hard: the sharp one is the")
 print("ODD block, not the even one.")
+# Non-zero means REGRESSION against the measured state above, not a gate
+# verdict: this script was written after its own answer was known.
 sys.exit(0 if bad == 0 else 1)

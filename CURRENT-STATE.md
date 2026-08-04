@@ -17,7 +17,17 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
+**Latest ai.viXra submission (2026-08-04; replacement sent, moderation
+pending).** *The Reconstructed Theory Has One Mass: A Machine-Checked
+Volume-Uniform Transfer Gap for a Finite Ising Strip*, by Lluis Eriksson, was
+sent as the v2 replacement of ai.viXra:2607.0078. The canonical 7-page PDF is
+`output/pdf/os-reconstruction-uniform-gap.pdf`, 304834 bytes, SHA-256
+`7fdc9d22f8fca69a174efad3e9384b5756775af44d2ac202a8dd8daa86bfa377`.
+The exact administrative state is frozen in the canonical
+[`papers/os-reconstruction-uniform/SUBMISSION-INFO.txt`](papers/os-reconstruction-uniform/SUBMISSION-INFO.txt).
+Moderation and public visibility are not confirmed; do not resend.
+
+**Previous viXra submission (2026-08-03; v2 replacement submitted).**  The
 20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
 sent as the v2 replacement.  Its exact PDF is pinned at paper commit
 `e68b821f7`, has SHA-256

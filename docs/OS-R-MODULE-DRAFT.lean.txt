@@ -1,0 +1,249 @@
+-- OS-R FABRICATION DRAFT (design artifact, NOT wired, NOT built).
+-- Target file: YangMills/OS/OSReconstructionUniform.lean
+-- Status: written 2026-08-04 on the dying session, from the blueprint,
+-- with all definition bodies verified in-source at c2723e7ec.  Expect
+-- machinery-error ladders on the plane (D-6 ran 20->9->5->4->2->0).
+-- The charter's licence gate (plane judges) still governs: this text
+-- becomes a module only after judge_os_uniform PASSes on the plane.
+-- SECOND PASS 2026-08-04 (~16:45, while OS-R-0's second firing cooks):
+-- Part B drafted in full from the sources — B1/B2 turned out to be
+-- IN-TREE THEOREMS (gibbsPathSum_eq_iterate / gibbsPartition_eq_iterate,
+-- SpatialGibbs) and clustering_of_gap (TransferGap:355) already carries
+-- the gap->decay step; the genuinely new bricks are B0a (act<->opOf
+-- bridge), B0b (tilt scaling), B0c (VacuumTransfer packaging from D-6's
+-- emitted clauses), and B3's six-term division-safe bound.  The symIter
+-- detour and its sorry marker are DELETED (no sorry anywhere, house rule).
+--
+-- SEAM FACTS verified in-source (risk R1 CLOSED definitionally):
+--   siteForm w u v      = SUM conj(u s) * v s * ((1 / w s : R) : C)
+--   bondForm b u v      = SUM SUM conj(u s) * ((spatialKernel b s t : R) : C) * v t
+--   transferOp w b v s  = ((w s : R) : C) * SUM ((spatialKernel b s t : R) : C) * v t
+--   symWeighted w b s t = Real.sqrt (w s) * spatialKernel b s t * Real.sqrt (w t)
+--   tiltKernel w b lam  = Matrix.of fun s t => symWeighted w b s t / lam
+--   spatialKernel b s t = PROD j, z2Bond b (s j) (t j)   -- ONE declaration everywhere
+--   sliceW g L          = z2PathWeight g  (positive, sliceW_pos)
+
+import YangMills.OS.SpatialReconstruction
+import YangMills.OS.DobrushinCorollary
+import YangMills.OS.DobrushinTilt
+import YangMills.OS.DobrushinTransport
+import YangMills.OS.TransferGap
+
+open scoped BigOperators
+open Finset
+
+namespace OSReconstructionUniform
+
+variable {L : ℕ}
+
+/-- The embedding `Q`: a real Euclidean vector dressed by `√w`, read as a
+complex boundary vector.  The unitary of the charter, in its elementary
+(fallback-primary) form. -/
+noncomputable def qEmbed (w : (Fin L → Fin 2) → ℝ) (u : (Fin L → Fin 2) → ℝ) :
+    (Fin L → Fin 2) → ℂ :=
+  fun σ => ((Real.sqrt (w σ) * u σ : ℝ) : ℂ)
+
+/-- **A1 — the isometry.**  The site form (weight `1/w`) of two dressed real
+vectors is the plain Euclidean pairing.  Per-σ: `√w·u · √w·v / w = u·v`. -/
+theorem siteForm_qEmbed (w : (Fin L → Fin 2) → ℝ) (hw : ∀ σ, 0 < w σ)
+    (u v : (Fin L → Fin 2) → ℝ) :
+    siteForm w (qEmbed w u) (qEmbed w v) = ((∑ σ, u σ * v σ : ℝ) : ℂ) := by
+  unfold siteForm qEmbed
+  push_cast
+  refine Eq.trans (Finset.sum_congr rfl fun σ _ => ?_) ?_
+  · -- conj of a real coercion is itself; then √w·√w = w cancels 1/w
+    -- traps: starRingEnd on ofReal -> Complex.conj_ofReal;
+    -- Real.mul_self_sqrt needs (hw σ).le
+    have hs : Real.sqrt (w σ) * Real.sqrt (w σ) = w σ :=
+      Real.mul_self_sqrt (hw σ).le
+    have hσ : (w σ : ℝ) ≠ 0 := (hw σ).ne'
+    -- goal after push_cast should be an ofReal equation; close in ℝ:
+    -- (√w u)·(√w v)·(1/w) = u·v
+    rw [Complex.conj_ofReal]  -- CHECK: may already be discharged by push_cast
+    push_cast
+    rw [show ((1 : ℂ) / (w σ : ℂ)) = ((1 / w σ : ℝ) : ℂ) by push_cast; ring]
+    -- fall back to field_simp in ℝ through ofReal injectivity if the
+    -- complex route fights:
+    have : Real.sqrt (w σ) * u σ * (Real.sqrt (w σ) * v σ) * (1 / w σ)
+        = u σ * v σ := by
+      field_simp
+      nlinarith [hs]
+    exact_mod_cast congrArg (Complex.ofReal) this
+  · norm_cast
+
+/-- **A2 — the conjugation.**  `T ∘ Q = Q ∘ S` pointwise: the forced
+operator on a dressed vector is the dressing of the symmetrised kernel's
+action.  LHS σ = `w σ · Σ K σ τ · √(w τ)·u τ`; RHS σ = `√(w σ) · Σ
+√(w σ)·K σ τ·√(w τ) · u τ`; equal by `√w·√w = w` pulled out of the sum. -/
+theorem transferOp_qEmbed (w : (Fin L → Fin 2) → ℝ) (hw : ∀ σ, 0 < w σ)
+    (β : ℝ) (u : (Fin L → Fin 2) → ℝ) :
+    transferOp w β (qEmbed w u)
+      = qEmbed w (fun σ => ∑ τ, symWeighted w β σ τ * u τ) := by
+  funext σ
+  unfold transferOp qEmbed symWeighted
+  have hs : Real.sqrt (w σ) * Real.sqrt (w σ) = w σ :=
+    Real.mul_self_sqrt (hw σ).le
+  push_cast
+  rw [Finset.mul_sum, Finset.mul_sum]
+  refine Finset.sum_congr rfl fun τ _ => ?_
+  push_cast
+  ring_nf
+  -- residue should close by rewriting w σ = √w σ · √w σ (hs) then ring;
+  -- if ring_nf normalises past it, use: rw [← hs]; ring
+  rw [← hs]; ring
+
+-- DESIGN CORRECTION (2026-08-04, second pass, read from SpatialGibbs in
+-- source): do NOT define symIter.  SpatialGibbs already owns the iterate
+-- as `(act K)^[n]` (act K A i = Σ j, K i j * A j, SpatialGibbs.lean:95)
+-- and B1/B2 are ALREADY THEOREMS there:
+--   gibbsPathSum_eq_iterate  (hw) :  gibbsPathSum w β N A B
+--       = Σ σ, (act (symWeighted w β))^[N] (dress w A) σ * dress w B σ
+--   gibbsPartition_eq_iterate     : same at A = B = 1
+-- with dress w A σ = √(w σ) * A σ  (SpatialGibbs.lean:197) — note
+-- qEmbed w u = fun σ => ((dress w u σ : ℝ) : ℂ): state that as a rfl
+-- lemma `qEmbed_eq_dress` and reuse `dress` everywhere real.
+
+/-- **A3 — the iterate transport**, in `act` form (seams directly into
+`gibbsPathSum_eq_iterate`).  Induction on A2. -/
+theorem transferOp_iterate_qEmbed (w : (Fin L → Fin 2) → ℝ)
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (n : ℕ) (u : (Fin L → Fin 2) → ℝ) :
+    (transferOp w β)^[n] (qEmbed w u)
+      = qEmbed w ((act (symWeighted w β))^[n] u) := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+      rw [Function.iterate_succ_apply', ih, Function.iterate_succ_apply']
+      -- CHECK orientation: both iterates peel the OUTER application; A2
+      -- rewrites T (Q v) with v := (act S)^[n] u, and act S v σ is
+      -- definitionally Σ τ, S σ τ * v τ — the A2 RHS shape.
+      exact transferOp_qEmbed w hw β ((act (symWeighted w β))^[n] u)
+
+/-! ## Part B — the measure identification (CONSUME SpatialGibbs; the
+only new content is the tilt scaling, the VacuumTransfer packaging, and
+the division-safe six-term bound).  All names below verified in-source
+at 95ee356f9 except those marked CHECK. -/
+
+-- The Euclidean packaging of a dressed observable.  `WithLp.toLp 2`
+-- matches vacOf's construction (DobrushinTransport.lean:101).
+-- noncomputable def qVec (w : (Fin L → Fin 2) → ℝ) (A : (Fin L → Fin 2) → ℝ) :
+--     EuclideanSpace ℝ (Fin (L+1) → Fin 2) := WithLp.toLp 2 (dress w A)
+-- (instantiated at L+1-site slices; keep the L of the OS lane abstract
+-- in the section and specialise at the endpoint as everywhere else)
+
+-- **B0a (act ↔ opOf bridge).**  (act K)^[n] u = (opOf (Matrix.of K))^n
+-- applied to toLp u, pointwise.  One induction using opOf_apply
+-- (DobrushinTransport.lean:104: opOf M v x = Σ y, M x y * v y — same
+-- index order as act ✓).  CHECK whether DobrushinTransport already
+-- carries this (D-6 fed act-style fixed points into opOf somewhere in
+-- DobrushinCorollary's proof; if a named lemma exists, consume it).
+
+-- **B0b (tilt scaling, replaces the abandoned symIter lemma).**  From
+-- tiltKernel w β lam = Matrix.of fun σ τ => symWeighted w β σ τ / lam
+-- (rfl seam, DobrushinTilt):  for lam ≠ 0,
+--   act (symWeighted w β) u = lam • act (fun σ τ => tiltKernel w β lam σ τ) u
+-- and by induction
+--   (act (symWeighted w β))^[n] u = lam ^ n • (act tilt)^[n] u.
+-- Proof: per σ, Σ τ (S σ τ) u τ = lam * Σ τ (S σ τ / lam) u τ by
+-- Finset.mul_sum + mul_div_cancel₀ (hlam); induction step needs
+-- act_smul : act K (c • u) = c • act K u (Finset.mul_sum; if SpatialGibbs
+-- lacks it, prove locally — 3 lines).
+
+-- **B0c (VacuumTransfer packaging).**  From D-6's emitted clauses
+-- (0 < lam, 0 < Om, fixed point of tiltKernel, projected norm ≤ e^{−m}),
+-- reconstruct `VacuumTransfer (opOf (tiltKernel (sliceW γ L) β lam))
+-- (vacOf Om)`:
+--   • unit: ‖vacOf Om‖ = 1 — vacOf divides by √(ΣOm²) > 0 (Om > 0 ⟹
+--     ΣOm² > 0); CHECK an existing `vacOf_unit`/`norm_vacOf` in
+--     DobrushinTransport (D-6 must have proved it to state its endpoint).
+--   • fixed: T (vacOf Om) = vacOf Om from the Σ-form fixed point by
+--     linearity of the scalar division (opOf_apply + Finset.sum_div).
+--   • selfAdjoint: tiltKernel is symmetric (symWeighted_symm / lam);
+--     CHECK the name of the symmetric-matrix ⟹ IsSelfAdjoint (opOf) lemma
+--     in DobrushinTransport (D-6 used one to run TransferGap machinery).
+
+-- **B1 (dressed n-step) — CITE, do not re-prove:**
+--   gibbsPathSum_eq_iterate hw β N A B, then B0a+B0b+inner_eq_sum
+--   (DobrushinTransport.lean:111) to land on the operator form:
+--     gibbsPathSum w β N A B = lam ^ N * ⟪qVec w A, (T ^ N) (qVec w B)⟫
+--   with T := opOf (tiltKernel w β lam).  (Judge G5 verified raw =
+--   dressed numerically at N = 1..4, five parameter cases.)
+
+-- **B2 (partition) — CITE:** gibbsPartition_eq_iterate, same route:
+--     gibbsPartition w β N = lam ^ N * ⟪qVec w 1, (T ^ N) (qVec w 1)⟫.
+
+-- **B3 (the division-safe six-term connected bound — endpoint clause).**
+-- Define (unnormalised, NO quotient anywhere):
+--   conn2 w β N A B := gibbsPartition w β N * gibbsPathSum w β N A B
+--                    − gibbsPathSum w β N A 1 * gibbsPathSum w β N 1 B
+-- (CHECK gibbsPathSum's constant-observable argument order: A at time 0,
+-- B at time N; the two cross terms use A,1 and 1,B respectively.)
+-- Statement:  in the window with the D-6 data (lam, Om, m),
+--   |conn2 w β N A B| ≤ lam ^ (2*N) * Real.exp (−m * N) * Cconst
+-- where Cconst (per (L, A, B), NOT uniform in L — o-bridge honesty) is
+--   c₁²·nA·nB + |a|·|b|·n₁² + 2·nA·nB·n₁² + |a|·c₁·n₁·nB + |b|·c₁·n₁·nA
+-- with a := ⟪Ω̂, qA⟫, b := ⟪Ω̂, qB⟫, c₁ := ⟪Ω̂, q1⟫, nX := ‖qX‖,
+-- Ω̂ := vacOf Om.  Proof skeleton (all pieces in-tree):
+--   (1) By B1/B2, conn2 / lam^{2N} = ⟪q1,Tᴺq1⟫⟪qA,TᴺqB⟫ − ⟪qA,Tᴺq1⟫⟪q1,TᴺqB⟫.
+--   (2) For N ≥ 1, T^N v = ⟪Ω̂,v⟫•Ω̂ + S^N v with S := projectedTransfer T Ω̂
+--       (VacuumTransfer.projected_pow_succ, TransferGap — the lemma
+--       connCorr_eq at :235 uses exactly this; CHECK its exact name and
+--       whether it is stated as T^n = P + S^n or applied form).
+--   (3) Writing X := ⟪qA,SᴺqB⟫, Y := ⟪q1,Sᴺq1⟫, U := ⟪qA,Sᴺq1⟫,
+--       V := ⟪q1,SᴺqB⟫, the product collapses (ring) to
+--         c₁²X + abY + XY − a·c₁·V − b·c₁·U − UV      (SIX terms — the
+--       vacuum cross terms do NOT vanish; judge G5 caught the one-term
+--       draft as FALSE, this expansion is the corrected one).
+--   (4) |X| ≤ nA·nB·e^{−mN} etc. by Cauchy–Schwarz (real_inner_le_norm /
+--       abs_real_inner_le_norm) + ‖Sᴺ‖ ≤ ‖S‖ᴺ ≤ e^{−mN}
+--       (CHECK power-norm lemma name: `norm_pow_le` for CLM^n; D-6's
+--       tree used it inside clustering_of_gap:355 — reuse that route or
+--       cite clustering_of_gap directly for the diagonal terms).
+--   (5) Collapse e^{−2mN} ≤ e^{−mN} (m > 0) into the 2·nA·nB·n₁² term.
+--   N = 0: conn2 bound holds with the same constant (⟪q,q'⟫ products,
+--   Cauchy–Schwarz only; check separately, no S needed) — OR state the
+--   endpoint clause for N ≥ 1 only and say so in prose (quantifiers in
+--   Lean, never in prose — prefer covering N = 0).
+
+-- **B4 (complex corollary):** for A B : (Fin L → Fin 2) → ℂ split into
+-- re/im (SpatialOS's complexQuad_eq pattern) and apply B3 four times;
+-- constants add.  Statement deferred to fabrication (design decision:
+-- only if the paper needs the ℂ form; the charter lists it as corollary).
+
+/-- **THE ENDPOINT (shape).**  In the Dobrushin window with β ≥ 0: OS
+positivity (lane citation), the Perron data and ONE m > 0 for every
+extent (D-6 verbatim), and the transport identities that read the same
+bound on the reconstructed operator.  Final clause layout per blueprint
+Part C; may split into three named theorems sharing the ∃ m. -/
+theorem os_reconstruction_uniform_gap (β γ : ℝ) {α : ℝ}
+    (hα0 : 0 < α) (hα1 : α < 1)
+    (hwin : 2 * Real.tanh |β| + 2 * Real.tanh |γ| ≤ α) (hβ : 0 ≤ β) :
+    ∃ m : ℝ, 0 < m ∧ ∀ L : ℕ,
+      ∃ (lam : ℝ) (Om : (Fin (L + 1) → Fin 2) → ℝ),
+        0 < lam ∧ (∀ σ, 0 < Om σ) ∧
+        (∀ σ, ∑ τ, tiltKernel (sliceW γ L) β lam σ τ * Om τ = Om σ) ∧
+        ‖projectedTransfer (opOf (tiltKernel (sliceW γ L) β lam))
+            (vacOf Om)‖ ≤ Real.exp (-m) ∧
+        -- the transported reading (A2 at w := sliceW γ L):
+        (∀ u, transferOp (sliceW γ L) β (qEmbed (sliceW γ L) u)
+            = qEmbed (sliceW γ L)
+                (fun σ => ∑ τ, symWeighted (sliceW γ L) β σ τ * u τ)) := by
+  obtain ⟨m, hm, hL⟩ := dobrushin_ising_uniform_gap β γ hα0 hα1 hwin
+  refine ⟨m, hm, fun L => ?_⟩
+  obtain ⟨lam, Om, hlam, hOm, hfix, hnorm⟩ := hL L
+  exact ⟨lam, Om, hlam, hOm, hfix, hnorm,
+    fun u => transferOp_qEmbed (sliceW γ L) (sliceW_pos γ L) β u⟩
+
+-- REMAINING FOR FABRICATION (updated 2026-08-04 second pass; B-part is
+-- now DRAFTED above as B0a-B0c + B1-B4 with skeletons):
+--   • endpoint clause (v): append the conn2 six-term bound (B3) to
+--     os_reconstruction_uniform_gap, or ship it as a second named
+--     endpoint theorem sharing the ∃ m (house pattern);
+--   • positivity citations (osPairingBond_gram_nonneg at
+--     w := sliceW γ L, needs hβ), quotient citation (physicalEquiv);
+--   • oracle endpoints: A1, A2, A3, B0c package, B1-operator form, B3,
+--     endpoint(s) — predict +6..+8 reports, COUNT AT WIRING TIME;
+--   • re-verify core baseline unchanged (docs/scripts-only commits since
+--     c7b870b05: c76b79050..95ee356f9 touch docs/ and scripts/ only,
+--     so 8480 stands — confirm from the OS-R-0 stage-3 log, not memory).
+
+end OSReconstructionUniform

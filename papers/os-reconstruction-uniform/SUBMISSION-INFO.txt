@@ -1,0 +1,144 @@
+======================================================================
+AI.VIXRA REPLACEMENT PACKAGE - ai.viXra.org:2607.0078
+======================================================================
+
+STATUS
+Owner-reported first replacement (v2) SENT / PENDING MODERATION on 2026-08-04.
+Not submitted by Codex. Public visibility and moderator acceptance are not
+confirmed. Do not resubmit while moderation is pending.
+
+CANONICAL RECORD
+This SUBMISSION-INFO.txt file remains the canonical administrative source.
+Do not replace it with a Markdown reconstruction. The submitted PDF identity
+is 304834 bytes and SHA-256
+7fdc9d22f8fca69a174efad3e9384b5756775af44d2ac202a8dd8daa86bfa377.
+
+REPLACEMENT TARGET
+ai.viXra.org:2607.0078 (v1)
+Original title: From the Gibbs Weight to the Spectral Gap: A Complete
+Machine-Checked Osterwalder-Seiler Chain for the Z_2 Lattice Gauge Chain
+Original submission: 2026-07-28 13:19:32
+Original category: Mathematical Physics
+Original author record: Lluis Eriksson
+
+REPLACEMENT ELIGIBILITY CHECK
+This was the first replacement (v2), seven days after v1. It was
+outside ai.viXra's four-day immediate-replacement exclusion and below the
+published limit of four replacements.
+
+FORM ROUTE
+Use the ai.viXra replacement form, not the new-submission form.
+Use the same email address that was used for the v1 submission.
+Do not substitute a Colab, Claude/Fable, or repository account address.
+Official instructions: https://ai.vixra.org/submit
+Existing record: https://www.ai.vixra.org/abs/2607.0078
+
+REPLACEMENT FORM VALUES
+Submission action: Replace an existing paper
+Existing identifier: 2607.0078
+Existing version: v1
+Requested version after acceptance: v2
+Original submission date and time: 2026-07-28 13:19:32
+Author: Lluis Eriksson
+Category: Mathematical Physics
+Email: use exactly the same owner-controlled address used for v1
+Reason for replacement: the new manuscript consolidates and strictly extends
+the point-slice OS chain to finite spatial strips with one decay rate uniform
+in every finite spatial length, while retaining explicit finite-volume scope.
+
+NEW TITLE
+The Reconstructed Theory Has One Mass: A Machine-Checked Volume-Uniform
+Transfer Gap for a Finite Ising Strip
+
+AUTHOR
+Lluis Eriksson
+
+AFFILIATION
+Leave blank unless the owner supplies a verifiable affiliation.
+
+PRIMARY CATEGORY
+Mathematical Physics
+
+KEYWORDS
+Osterwalder-Schrader reconstruction; reflection positivity; transfer
+operator; spectral gap; Dobrushin comparison; Ising model; Lean 4;
+formalized mathematics
+
+ABSTRACT (PLAIN TEXT; PASTE AS ONE PARAGRAPH)
+We give a finite-dimensional Osterwalder-Schrader reconstruction for an
+anisotropic Ising model on open rectangular strips and prove a spectral gap
+whose rate is uniform in the finite spatial extent. For temporal coupling
+beta, spatial coupling gamma, and parameters satisfying 0 < alpha < 1 and
+2 tanh|beta| + 2 tanh|gamma| <= alpha, one number m > 0 works for every
+spatial length. Reflection positivity is proved directly for the Gibbs
+measure; the null space of the reflected form is identified with the kernel
+of an explicit boundary-collapse map; the OS quotient is linearly equivalent
+to the finite boundary-vector space; and the transfer operator forced by the
+site and bond forms is intertwined with a symmetrised transfer matrix.
+Dobrushin comparison supplies positive Perron data and a projected operator
+norm bounded by exp(-m) for every spatial length. Consequently, connected
+reconstructed correlations decay at the same common rate. Lean 4 checks the
+composition without assuming reflection positivity, Perron data, a vacuum, a
+gap, or clustering at the public endpoint. This replacement extends the
+point-slice, fixed-size v1 to finite strips with one rate uniform in spatial
+size. It does not construct an infinite-volume operator or Hamiltonian, prove
+a unique particle excitation or relativistic mass shell, or claim a
+Yang-Mills mass gap.
+
+COMMENTS FIELD
+7 pages. Replacement of ai.viXra.org:2607.0078 (v1); proposed v2. Lean 4 /
+Mathlib formalization; frozen body commit
+b5da95f33f5af32e992e0ba7c3084507d06f3a7c; 8482 core jobs, 3015 oracle
+reports, and zero sorryAx.
+
+AI-ASSISTANCE DISCLOSURE (IF THE FORM REQUESTS IT)
+AI-assisted manuscript preparation and verification workflow. Every formal
+claim was checked against the frozen Lean 4 / Mathlib artifact; the named
+human author remains responsible for the submission and its content.
+
+UPLOAD FILE
+output/pdf/os-reconstruction-uniform-gap.pdf
+
+UPLOAD FILE FACTS
+Pages: 7
+Raw bytes: 304834
+SHA-256: 7fdc9d22f8fca69a174efad3e9384b5756775af44d2ac202a8dd8daa86bfa377
+
+FORMAL FREEZE
+Lean-bearing body commit:
+b5da95f33f5af32e992e0ba7c3084507d06f3a7c
+
+Submission-package branch:
+codex/os-reconstruction-uniform
+
+REPLACEMENT JUSTIFICATION (FOR OWNER/ADMIN QUERY; NOT THE COMMENTS FIELD)
+Version 1 treated a single Z_2 degree of freedom per time slice, a 2 by 2
+transfer matrix, a fixed finite size, and no nontrivial OS quotient. Version 2
+retains the finite and classical scope but treats finite spatial strips of
+arbitrary length, identifies the nontrivial quotient with boundary vectors,
+and proves one positive reconstructed decay exponent chosen before and valid
+for every finite spatial length. It consolidates the earlier OS-chain
+stepping stones instead of adding another short paper on the same idea.
+
+OWNER CHECKLIST
+[ ] Open the official ai.viXra replacement form.
+[ ] Enter 2607.0078 as the paper being replaced.
+[ ] Use the same email address as the v1 submission.
+[ ] Select Mathematical Physics.
+[ ] Paste the new title, author, abstract and brief comments above.
+[ ] Upload output/pdf/os-reconstruction-uniform-gap.pdf.
+[ ] Confirm the upload reports one PDF smaller than 5 MB and 7 pages.
+[ ] Confirm the PDF title and author on page 1.
+[ ] Confirm that the abstract contains all finite-volume disclaimers.
+[ ] Do not claim a thermodynamic limit, particle mass, relativistic mass
+    shell, noncommutative reconstruction, or Yang-Mills mass gap.
+[ ] Submit only after the owner has reviewed the final preview.
+[ ] After publication, record the v2 timestamp and URL in the release
+    manifest; do not resubmit merely because moderation takes up to 48 hours.
+
+POST-SUBMISSION LOCK
+- Submission operation: replacement of ai.viXra:2607.0078, not a new paper.
+- Author: Lluis Eriksson.
+- State: SENT / PENDING MODERATION.
+- Visibility: not confirmed.
+- Action: do not resend; wait for the moderator outcome.

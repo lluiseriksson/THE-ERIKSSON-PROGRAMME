@@ -11,6 +11,7 @@ is not a copy, it is a fork.
 """
 import io
 import re
+import sys
 
 TEX = r"C:\Users\lluis\AppData\Local\Temp\eriksson-push2\papers\spatial-reflection\spatial_reflection.tex"
 FORM = r"C:\Users\lluis\Desktop\YangMills\ENVIAR-AHORA\FORMULARIO-spatial-reflection.txt"
@@ -68,8 +69,41 @@ for para in t.split("\n\n"):
     out.append("")
 abstract = "\n".join(out).strip()
 
-RETRACTED = "weight that destroys uniformity leaves positivity"
-assert RETRACTED not in abstract, "the retracted sentence is still in the paper!"
+# --------------------------------------------------------------------------
+# THE GUARD, AND WHY IT IS NOT AN `assert`.
+#
+# This check is the only thing stopping a retracted sentence from reaching the
+# one artefact that leaves the building.  It used to be written `assert`, which
+# `python -O` DELETES: the form would then have been written with the retracted
+# claim and nothing would have said so.  Two certifiers in this repository have
+# already emitted a false PASS exactly that way.
+#
+# So: explicit conditions, an explicit count of how many ran, exit code 2 on
+# failure, and identical behaviour under `-O`.
+# --------------------------------------------------------------------------
+CHECKS = [
+    ("retracted uniformity sentence absent",
+     "weight that destroys uniformity leaves positivity" not in abstract),
+    ("abstract is non-empty", len(abstract.strip()) > 0),
+    ("no unresolved TeX control sequence", "\\" not in abstract),
+    ("no unresolved math delimiter", "$" not in abstract),
+]
+
+ran = 0
+failed = []
+for name, ok in CHECKS:
+    ran += 1
+    if not ok:
+        failed.append(name)
+
+if ran != len(CHECKS):
+    print("check counter disagrees: %d of %d ran" % (ran, len(CHECKS)))
+    sys.exit(2)
+if failed:
+    for name in failed:
+        print("FAILED CHECK:", name)
+    print("form NOT written")
+    sys.exit(2)
 
 f = io.open(FORM, encoding="utf-8", newline="").read()
 nl = "\r\n" if "\r\n" in f else "\n"
@@ -79,4 +113,5 @@ head = "[4] ABSTRACT (derived from the paper's own abstract -- do not retype)" +
 head += "-" * 70 + nl + nl
 f = f[:start] + head + abstract.replace("\n", nl) + nl + nl + nl + f[end:]
 io.open(FORM, "w", encoding="utf-8", newline="").write(f)
+print("checks run: %d, all passed" % ran)
 print("form abstract regenerated from the .tex (%d chars)" % len(abstract))
