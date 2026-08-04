@@ -28,7 +28,8 @@ theorem finitePiLpTypedWeightedRowKernelBound_sum_of_sourceOverlap
     {ι g n : Type*} [Fintype ι] [DecidableEq ι] [Fintype n]
     [NormedAddCommGroup g] [NormedSpace ℝ g]
     (term : n → FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
-    (active : n → ι → Prop) (dist : ι → ι → ℕ)
+    (active : n → ι → Prop) [DecidableRel active]
+    (dist : ι → ι → ℕ)
     {N : ℕ} {A rate : ℝ}
     (hA : 0 ≤ A) (hrate : 0 ≤ rate)
     (hoverlap : ∀ source,
