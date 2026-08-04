@@ -118,8 +118,7 @@ theorem CMP99SourceActiveRegionChain.sum_norm_generatedCountingMass_single
               ((cmp99SourceBlockAverageWeight M d) ^ depth *
                 cmp99SourceBlockAverageWeight M d) * ‖v‖ := by ring
             _ = (cmp99SourceBlockAverageWeight M d) ^ (depth + 1) * ‖v‖ := by
-              congr 1
-              exact (pow_succ (cmp99SourceBlockAverageWeight M d) depth).symm
+              rw [pow_succ]
 
 /-- Inequality form of the exact generated counting-mass row. -/
 theorem CMP99SourceActiveRegionChain.sum_norm_generatedCountingMass_single_le
