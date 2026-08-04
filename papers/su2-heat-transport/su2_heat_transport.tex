@@ -1,0 +1,486 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{leanblue}{RGB}{31,78,121}
+\definecolor{codegray}{RGB}{245,246,248}
+\lstdefinelanguage{Lean}{
+  morekeywords={theorem,def,by,have,exact,refine,rw,calc,let,noncomputable,
+    namespace,end,import,open,if,then,else,fun,forall,exists},
+  sensitive=true,
+  morecomment=[l]{--},
+  morecomment=[s]{/-}{-/},
+  morestring=[b]"
+}
+\lstset{language=Lean,basicstyle=\ttfamily\small,backgroundcolor=\color{codegray},
+  keywordstyle=\color{leanblue}\bfseries,commentstyle=\color{gray},
+  columns=fullflexible,breaklines=true,frame=single,rulecolor=\color{gray!30},
+  xleftmargin=1mm,xrightmargin=1mm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\SU}{\mathrm{SU}(2)}
+\newcommand{\Haar}{\mu_{\mathrm H}}
+\newcommand{\chiN}[1]{\chi_{#1}}
+\newcommand{\K}{K}
+\newcommand{\Proj}{\mathsf P}
+
+\title{An Exact $\SU$ Heat-Mode Witness for Transport\\
+\large A mechanized bridge from Haar convolution to a non-vacuous finite Dobrushin endpoint}
+\author{Lluis Eriksson}
+\date{August 4, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a machine-checked bridge between two independently formalized pieces of
+two-dimensional Yang--Mills transport.  The first is the concrete $\SU$ heat
+kernel on normalized Haar probability, already constructed as an infinite
+character series.  The second is a finite Dobrushin transfer theorem whose
+premises had previously been discharged by an exact two-holonomy witness.  The
+new result proves that Haar convolution by the infinite heat kernel acts on
+every Chebyshev character $\chi_n$ with the exact Casimir eigenvalue
+\[
+  \exp\!\left(-\frac{t\,n(n+2)}4\right).
+\]
+It then proves that $\chi_1$ is a nonzero sharp slowest non-vacuum mode, with
+rate $e^{-3t/4}$, and identifies this rate definitionally with the parameter
+used by the finite witness.  The infinite identity is not postulated: finite
+character orthogonality is integrated first and the limit is passed through
+the Haar integral by dominated convergence.  The finite carrier consists of
+two distinct bundled elements of $\SU$, its covariance decay is an equality,
+and its projected transfer operator is proved nonzero.  Thus the construction
+is an exact invariant-mode interface, not a claim that $\SU$ is finite and not
+a construction of four-dimensional continuum Yang--Mills.  All decisive
+statements compile in Lean 4 against pinned parent, satellite, and Mathlib
+revisions.
+\end{abstract}
+
+\paragraph{Artifact statement.}
+The formal source is
+\texttt{YangMills/OS/SU2HeatTransport.lean}; its two concrete dependencies are
+the pinned satellite \texttt{lean-2d-yang-mills} and the parent module
+\texttt{SU2TransportWitness.lean}.  Exact revisions, byte counts, line-ending
+hashes, build commands, and runtime information are recorded in the release
+manifest distributed with this paper.
+
+\section{Problem and contribution}
+
+For a compact gauge group, heat-kernel convolution is the natural transfer
+mechanism behind the exact solution of two-dimensional Yang--Mills theory.
+At the formal level, however, three distinctions matter.
+
+First, an abstract transfer theorem is not yet an inhabited gauge-theoretic
+endpoint.  Second, a finite Markov matrix carrying a suggestive parameter is
+not by itself a theorem about the Haar heat operator.  Third, a numerical
+certificate for a matrix identity is not a Lean witness inhabiting $\SU$.
+The purpose of the present construction is to close precisely this interface.
+
+The contribution is the following chain, checked without a project-local
+axiom and without assuming any of its conclusions:
+\begin{enumerate}[label=(\roman*)]
+\item finite heat-kernel partial sums act diagonally on every character already
+  present in the sum;
+\item dominated convergence upgrades this to the actual infinite heat kernel;
+\item the Casimir ordering $3\le n(n+2)$ for $n\ge1$ identifies $\chi_1$ as the
+  sharp slowest non-vacuum mode;
+\item evaluation at the identity proves $\chi_1\ne0$ exactly;
+\item the eigenvalue $e^{-3t/4}$ is identified with the parameter of a
+  separately proved two-holonomy Dobrushin witness; and
+\item the combined theorem returns both the continuous eigenfunction identity
+  and a positive projected-operator gap bound with a nonzero projected
+  operator.
+\end{enumerate}
+
+The novelty is deliberately narrower than the exact area-law results already
+available in the satellite.  We do not rename those results as new.  Instead,
+we add the missing spectral map needed by the parent transport endpoint.
+
+\section{Canonical endpoint map}
+
+Table~\ref{tab:endpoint} records the exact division of labor.  This is also the
+minimum interpretation that connects the continuous heat kernel to the
+published parent theorem: omitting the infinite convolution theorem leaves the
+finite rate semantically ungrounded, while demanding a completed full
+$L^2(\SU)$ spectral theorem would exceed what the endpoint consumes.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{p{.22\textwidth}p{.34\textwidth}p{.34\textwidth}}
+\toprule
+Layer & Exact object & Role \\
+\midrule
+Satellite & normalized Haar probability, Chebyshev characters, finite and
+infinite class heat kernels, character convolution orthogonality & published
+analytic input \\
+New bridge & \texttt{heatKernel\_character\_eigen}, Casimir-rate ordering,
+nonzero fundamental mode & continuous spectral interface \\
+Frozen parent & two bundled $\SU$ holonomies, exact two-state covariance,
+\texttt{exact\_transport\_witness} & finite non-vacuous endpoint \\
+Abstract endpoint & abstract uniform-gap theorem & converts exact
+band decay into a projected transfer norm bound \\
+\bottomrule
+\end{tabular}
+\caption{Canonical endpoint map.  The middle row is the new theorem lane.}
+\label{tab:endpoint}
+\end{table}
+
+The parent endpoint is not merely existential at the carrier level.  Its type
+is a sigma type whose elements contain a finite label, a bundled $2\times2$
+complex matrix, a proof of unitarity, a proof of determinant one, and an
+equality with one of two explicitly constructed holonomies.  Hence every
+carrier element inhabits $\SU$ in Lean.
+
+\section{The concrete heat operator}
+
+Let $\Haar$ be normalized Haar probability on $\SU$.  For functions $f,h$ the
+satellite convolution convention is
+\[
+  (f*h)(g)=\int_{\SU} f(x)h(x^{-1}g)\,d\Haar(x).
+\]
+Write $\chi_n$ for the real-valued Chebyshev character of highest-weight label
+$n$, regarded as a complex function, and set
+\[
+  a_n(t)=\exp\!\left(-\frac{t\,n(n+2)}4\right).
+\]
+The class heat kernel is the convergent series
+\[
+  K_t(g)=\sum_{n=0}^{\infty}(n+1)a_n(t)\chi_n(g).
+\]
+The factor $n+1$ is the representation dimension, while $n(n+2)/4$ is the
+$\SU$ quadratic Casimir in the satellite's normalization.
+
+The input orthogonality statement is already stronger than a scalar inner
+product identity.  It gives the convolution formula
+\begin{equation}\label{eq:charconv}
+  (\chi_n*\chi_m)(g)=
+  \begin{cases}
+    \chi_n(g)/(n+1),&n=m,\\
+    0,&n\ne m.
+  \end{cases}
+\end{equation}
+This normalization cancels the dimension in $K_t$ exactly.
+
+\subsection{Finite partial sums}
+
+Let $K_t^{<N}=\sum_{n<N}(n+1)a_n(t)\chi_n$.  The first new Lean theorem is the
+finite identity below.
+
+\begin{theorem}[finite character eigenidentity]\label{thm:finite}
+For $m<N$, $t\in\mathbb R$, and $g\in\SU$,
+\[
+  (K_t^{<N}*\chi_m)(g)=a_m(t)\chi_m(g).
+\]
+\end{theorem}
+
+\begin{proof}
+Finite integrability follows from continuity on the compact group.  Linearity
+of the Haar integral turns convolution with the partial sum into a finite sum
+of integrals.  Equation~\eqref{eq:charconv} kills every term except $n=m$;
+the remaining factor $(m+1)$ cancels its reciprocal.  The Lean proof expands
+the integrand before invoking the satellite theorem, so no desired
+eigenidentity is passed as a premise.
+\end{proof}
+
+The formal statement is:
+\begin{lstlisting}
+theorem heatKernelPartial_character_eigen_of_lt
+    (N : Nat) (t : Real) (m : Nat) (hm : m < N) (g : SU2) :
+  su2Convolution (su2HeatKernelPartial N t)
+      (su2CharacterChebyshev m) g =
+    su2ClassHeatWeight t m * su2CharacterChebyshev m g
+\end{lstlisting}
+
+\subsection{Passage to the infinite kernel}
+
+The infinite theorem requires more than rewriting a formal series.  For fixed
+$m$ and $g$, define
+\[
+  F_N(x)=K_t^{<N}(x)\chi_m(x^{-1}g),\qquad
+  F(x)=K_t(x)\chi_m(x^{-1}g).
+\]
+The satellite supplies pointwise convergence $K_t^{<N}(x)\to K_t(x)$ for
+$t>0$ and a summable heat-kernel majorant.  It also supplies
+$|\chi_m(y)|\le m+1$.  Thus
+\[
+  |F_N(x)|\le
+  \left(\sum_{n=0}^{\infty}M_t(n)\right)(m+1),
+\]
+a constant integrable against the probability measure $\Haar$.  Dominated
+convergence passes the limit through the Haar integral.  For all $N\ge m+1$,
+Theorem~\ref{thm:finite} makes that integral the same constant; uniqueness of
+limits completes the proof.
+
+\begin{theorem}[infinite heat-mode identity]\label{thm:infinite}
+If $t>0$, then for every $m\in\mathbb N$ and $g\in\SU$,
+\[
+  (K_t*\chi_m)(g)=
+  \exp\!\left(-\frac{t\,m(m+2)}4\right)\chi_m(g).
+\]
+\end{theorem}
+
+The crucial point is quantification over the actual bundled compact group and
+the actual infinite kernel.  No finite carrier appears in
+Theorem~\ref{thm:infinite}.
+
+\section{Sharp fundamental mode}
+
+Define $r_n(t)=\exp(-t n(n+2)/4)$.  The vacuum mode is $r_0(t)=1$.  For
+$n\ge1$ the elementary inequality
+\[
+  3\le n(n+2)
+\]
+and monotonicity of the real exponential give
+\[
+  r_n(t)\le r_1(t)=e^{-3t/4}\qquad(t\ge0).
+\]
+For $t>0$, $0<r_1(t)<1$.  Consequently the fundamental representation is the
+sharp slowest mode among all non-vacuum character labels.  ``Sharp'' here
+means that equality is attained at $n=1$, not that a Peter--Weyl completeness
+theorem for the completed class-function Hilbert space has been formalized.
+
+Non-vacuity is exact.  The satellite proves $\chi_n(1)=n+1$; hence
+$\chi_1(1)=2$, and function extensionality shows $\chi_1$ cannot be the zero
+function.  The specialization of Theorem~\ref{thm:infinite} is therefore a
+genuine eigenmode:
+\begin{equation}\label{eq:fundamental}
+  (K_t*\chi_1)(g)=e^{-3t/4}\chi_1(g),\qquad \chi_1\ne0.
+\end{equation}
+
+\section{Finite \texorpdfstring{$\SU$}{SU(2)}-inhabited transport witness}
+
+The finite endpoint is a quotient/interface object, not an approximation in
+which group axioms are discarded.  Its two labels carry two explicit matrices:
+the identity and a noncentral diagonal phase with determinant one.  Both are
+bundled as elements of $\SU$, and their inequality is proved exactly.
+
+For a rate $0<r<1$, the transition kernel is
+\[
+  W_r=\frac12
+  \begin{pmatrix}1+r&1-r\\1-r&1+r\end{pmatrix}.
+\]
+Its rows sum to one, it is symmetric and strictly positive, and
+\[
+  W_r^k=W_{r^k}.
+\]
+For any observable $f$ on the two carrier points, the band covariance is the
+identity
+\begin{equation}\label{eq:cov}
+  \operatorname{Cov}_k(f,f)=
+  \left(\frac{f(0)-f(1)}2\right)^2r^k.
+\end{equation}
+Thus the decay premise consumed by the Dobrushin theorem is derived, not
+assumed.  The sign observable $(1,-1)$ is orthogonal to the normalized constant
+vacuum, and the projected transfer sends its first component to $r$.  Since
+$r>0$, the projected operator is not zero.
+
+The frozen witness instantiates $r$ by
+\[
+  \operatorname{heatRate}(t)=e^{-3t/4}.
+\]
+The new bridge proves this is definitionally the same real number as $r_1(t)$
+in the continuous heat theorem.  It then combines
+Equation~\eqref{eq:fundamental} with the existing endpoint:
+
+\begin{theorem}[continuous-to-finite transport bridge]\label{thm:bridge}
+For $t>0$:
+\begin{enumerate}[label=(\alph*)]
+\item $K_t*\chi_1=\operatorname{heatRate}(t)\chi_1$ pointwise on $\SU$;
+\item $\chi_1\ne0$;
+\item there exists $m>0$ for which the norm of the vacuum-projected finite
+transfer operator is at most $e^{-m}$; and
+\item that projected operator is nonzero.
+\end{enumerate}
+\end{theorem}
+
+The theorem does not claim that the finite matrix equals the full heat operator
+on $L^2(\SU)$.  It states the smaller fact actually required by the endpoint:
+the non-vacuum rate used in the exact finite quotient is the eigenvalue of a
+nonzero mode of the genuine Haar heat operator.
+
+\section{Formal proof architecture}
+
+The formal dependency graph is intentionally short:
+\[
+\begin{array}{c}
+\text{satellite character convolution + heat majorant}\\
+\Downarrow\\
+\texttt{heatKernelPartial\_character\_eigen\_of\_lt}\\
+\Downarrow\ \text{dominated convergence}\\
+\texttt{heatKernel\_character\_eigen}\\
+\Downarrow\ \text{Casimir ordering + }\chi_1(1)=2\\
+\texttt{heatKernel\_fundamental\_eigen}\\
+\Downarrow\ \text{rate identification}\\
+\texttt{continuous\_mode\_to\_finite\_transport}.
+\end{array}
+\]
+
+Table~\ref{tab:hypotheses} performs the hypothesis-discharge audit requested
+for the endpoint.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{p{.25\textwidth}p{.28\textwidth}p{.36\textwidth}}
+\toprule
+Required fact & Source & Discharge \\
+\midrule
+$t>0$ & bridge input & used for summability and $r<1$ \\
+Haar integrability & compact continuity & satellite continuity lemmas and
+probability measure \\
+dominating function & heat majorant & summable constant times $m+1$ \\
+character orthogonality & satellite theorem & used termwise before the limit \\
+Casimir ordering & new arithmetic lemma & proved by casting $1\le n$ and
+nonlinear arithmetic \\
+$\chi_1\ne0$ & new exact lemma & evaluation at the identity gives $2$ \\
+finite kernel laws & frozen witness & explicit two-by-two algebra \\
+decay premise & frozen witness & equality~\eqref{eq:cov}, not a hypothesis \\
+projected nonzero & frozen witness & exact sign-vector evaluation \\
+\bottomrule
+\end{tabular}
+\caption{Every load-bearing hypothesis and where it is discharged.}
+\label{tab:hypotheses}
+\end{table}
+
+The Lean proof uses classical choice and standard analytic facts inherited
+from Mathlib, as expected for Haar integration and infinite series.  The audit
+criterion is therefore not an empty \texttt{\#print axioms} list, but absence
+of \texttt{sorryAx} and absence of project-local axioms.  The exact printed
+axiom sets are captured in the verification log.
+
+\section{Reproducibility and frozen revisions}
+
+The artifact uses Lean 4 through the parent repository's pinned toolchain.
+The satellite is fetched as an exact Lake dependency, not as an unversioned
+copy.  At fabrication time the pins were:
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Object & Revision \\
+\midrule
+parent starting point & \texttt{e6b672dda3e41da25a22178a7ef73ab8e7f8edb7} \\
+\texttt{lean-2d-yang-mills} & \texttt{05c4ec316cb9aa295416670a2578b1c2e77e1c36} \\
+Mathlib & \texttt{07642720480157414db592fa85b626dafb71355b} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The decisive commands are:
+\begin{lstlisting}[language={}]
+lake update
+lake build YangMills.OS.SU2HeatTransport
+lake build YangMillsCore
+lake env lean Task48Axioms.lean
+\end{lstlisting}
+They were run in a fresh Google Colab Pro+ CPU/high-RAM runtime with no GPU.
+Local desktop work was limited to source editing, Git, hashing, TeX compilation
+and PDF rendering.  A source file on disk was not counted as verified until its
+\texttt{.olean} had been materialized remotely.
+
+\section{Scope, limitations, and interpretation}
+
+The results support the following exact statement: the infinite class heat
+kernel has a nonzero fundamental eigencharacter at rate $e^{-3t/4}$, and this
+same rate parametrizes a genuine $\SU$-inhabited finite transfer witness that
+fires the parent gap endpoint non-vacuously.
+
+They do not establish any of the following:
+\begin{itemize}
+\item four-dimensional continuum Yang--Mills or the Clay mass-gap problem;
+\item a thermodynamic or continuum limit of the finite witness;
+\item Peter--Weyl completeness or an operator-norm computation on the completed
+full Haar $L^2$ class space;
+\item a new proof of the satellite's Migdal recursion, semigroup law, or exact
+finite-cellulation area law; or
+\item that two carrier points exhaust, discretize, or approximate the compact
+group.
+\end{itemize}
+
+The right interpretation is an exact transport interface.  It replaces a
+previously merely rate-labelled finite endpoint by a theorem that its rate is
+realized by a nonzero mode of the continuous operator.  This is sufficient for
+the published parent theorem and no stronger completion claim is needed.
+
+\section{Relation to the literature}
+
+The use of heat kernels and character expansions in two-dimensional
+Yang--Mills goes back to Migdal's recursion equations~\cite{Migdal1975}.
+Driver constructed the Yang--Mills measure and related it to the heat equation
+on compact groups~\cite{Driver1989}; rigorous compact-surface developments
+include Sengupta~\cite{Sengupta1997} and L\'evy~\cite{Levy2003}.  The present
+paper does not reprove those broad analytic constructions.  It contributes a
+small, exact, inspectable theorem interface inside Lean.
+
+The formalization builds on Mathlib~\cite{Mathlib2020} and on the pinned
+two-dimensional satellite~\cite{Lean2dYM}.  The repository citation is a
+commit permalink: it identifies the precise source used by Lake rather than a
+moving branch.
+
+\section{Conclusion}
+
+The endpoint is now connected at the correct level of abstraction.  The
+continuous side is an actual Haar integral on bundled $\SU$, the infinite
+series is handled by dominated convergence, the fundamental eigencharacter is
+proved nonzero, and the finite side consists of distinct genuine holonomies
+with an exact covariance identity and nonzero projected transport.  The rate
+$e^{-3t/4}$ is no longer an analogy between two modules; it is a checked
+equality used in a single end-to-end Lean theorem.
+
+\begin{thebibliography}{9}
+
+\bibitem{Migdal1975}
+A. A. Migdal,
+``Recursion equations in gauge field theories,''
+\emph{Soviet Physics JETP} 42 (1975), 413--418.
+\url{http://www.jetp.ras.ru/cgi-bin/e/index/e/42/3/p413?a=list}
+
+\bibitem{Driver1989}
+B. K. Driver,
+``YM$_2$: continuum expectations, lattice convergence, and lassos,''
+\emph{Communications in Mathematical Physics} 123 (1989), 575--616.
+\href{https://doi.org/10.1007/BF01238812}{doi:10.1007/BF01238812}.
+
+\bibitem{Sengupta1997}
+A. Sengupta,
+\emph{Gauge Theory on Compact Surfaces},
+Memoirs of the American Mathematical Society 126, no. 600 (1997).
+\href{https://doi.org/10.1090/memo/0600}{doi:10.1090/memo/0600}.
+
+\bibitem{Levy2003}
+T. L\'evy,
+\emph{Yang--Mills Measure on Compact Surfaces},
+Memoirs of the American Mathematical Society 166, no. 790 (2003).
+\href{https://doi.org/10.1090/memo/0790}{doi:10.1090/memo/0790}.
+
+\bibitem{Mathlib2020}
+The mathlib Community,
+``The Lean Mathematical Library,''
+in \emph{Proceedings of CPP 2020}, 367--381.
+\href{https://doi.org/10.1145/3372885.3373824}{doi:10.1145/3372885.3373824}.
+
+\bibitem{Lean2dYM}
+L. Eriksson,
+\emph{lean-2d-yang-mills}, commit
+\href{https://github.com/lluiseriksson/lean-2d-yang-mills/tree/05c4ec316cb9aa295416670a2578b1c2e77e1c36}
+{\texttt{05c4ec316cb9aa295416670a2578b1c2e77e1c36}} (2026).
+
+\end{thebibliography}
+
+\end{document}

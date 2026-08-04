@@ -1035,6 +1035,7 @@ import YangMills.OS.DobrushinTransport
 -- and a nonzero fluctuation identity are all proved in Lean.  This witnesses
 -- the interface only and is not a full compact-group heat semigroup.
 import YangMills.OS.SU2TransportWitness
+import YangMills.OS.SU2HeatTransport
 
 -- D-6 corollary, stage A: the tilt layer.  The band weight of the
 -- normalised coupled data is the free strip Gibbs weight tilted at the two

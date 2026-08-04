@@ -1,0 +1,77 @@
+TASK 48 — EXACT SU(2) HEAT TRANSPORT
+LEAN VERIFICATION LOG
+Date: 2026-08-04
+
+EXECUTION ENVIRONMENT
+- Service: Google Colab Pro+
+- Account visibly confirmed before connection: lluiseriksson@gmail.com
+- Runtime: CPU / high RAM (50.99 GB), no GPU
+- Opened UTC: 2026-08-04T15:41:40Z
+- Closed UTC: 2026-08-04T16:30:14Z
+- Elapsed: 00:48:34
+- Close action: “disconnect and delete runtime” selected and confirmation accepted
+- Lean: 4.29.0-rc6, x86_64-unknown-linux-gnu
+- Lean commit: 00659f8e6071d7e46131ed643bf8003b99b044e9
+
+FROZEN INPUTS
+- Parent starting SHA: e6b672dda3e41da25a22178a7ef73ab8e7f8edb7
+- Satellite SHA: 05c4ec316cb9aa295416670a2578b1c2e77e1c36
+- Mathlib SHA: 07642720480157414db592fa85b626dafb71355b
+
+COMMAND GATES
+1. lake update
+   Resolved the satellite to 05c4ec316cb9aa295416670a2578b1c2e77e1c36.
+
+2. lake build YangMills.OS.SU2HeatTransport
+   Result: BUILD48D_RC=0
+   Materialized:
+   .lake/build/lib/lean/YangMills/OS/SU2HeatTransport.olean
+
+3. lake build YangMillsCore
+   Result: ROOT48_RC=0
+   Materialized:
+   .lake/build/lib/lean/YangMillsCore.olean
+
+4. lake env lean papers/su2-heat-transport/Task48Axioms.lean
+   Result: AXIOMS48_RC=0
+
+AXIOM AUDIT
+The following decisive theorems were printed:
+- heatKernelPartial_character_eigen_of_lt
+- heatKernel_character_eigen
+- modeRate_le_fundamental
+- fundamental_character_ne_zero
+- heatKernel_fundamental_eigen
+- continuous_mode_to_finite_transport
+
+For every theorem, #print axioms returned exactly the standard Lean/Mathlib
+axioms:
+  [propext, Classical.choice, Quot.sound]
+
+grep result: SORRYAX=absent
+No project-local axiom occurred in any printed set.
+
+REMOTE SHA-256 CAPTURE
+- Compiled bridge source:
+  d86eb10d8bb104ce0419ee84466081def43d18b7bb85cbd68a38a365b051c931
+- Successful module-build log:
+  af48ce7c8f3b4e91e29975ec1863505225dd810e4838e35a4a9fae082c05d7d2
+- Successful root-build log:
+  36d8957602c4f22969b5b7b7894fa546ab2170c7cd3353c00cd278e72c59bf18
+- Axiom-audit log:
+  f8203de71560fcf9d2ef999502575e9900314da4441daeaf575cc1a20784d171
+
+ATTACKS EXECUTED
+- Actual group inhabitance: inherited carrier elements are bundled SU(2)
+  matrices with unitarity and determinant-one proofs.
+- No conclusion-as-hypothesis: the infinite eigenidentity is derived from the
+  finite character convolution theorem and dominated convergence.
+- Nontrivial continuous mode: chi_1(1)=2 proves chi_1 is not the zero function.
+- Nontrivial finite endpoint: exact sign-vector evaluation proves the projected
+  transfer operator is not zero.
+- Exact rate link: both continuous and finite rates reduce to exp(-3t/4).
+- Python was used only to render the completed PDF for visual QA; it was not a
+  proof oracle or a substitute for a Lean witness.
+
+This fabrication log is evidence for an external audit. It is not a terminal
+novelty or correctness verdict.

@@ -1,0 +1,8 @@
+import YangMills.OS.SU2HeatTransport
+
+#print axioms YangMills.OS.SU2HeatTransport.heatKernelPartial_character_eigen_of_lt
+#print axioms YangMills.OS.SU2HeatTransport.heatKernel_character_eigen
+#print axioms YangMills.OS.SU2HeatTransport.modeRate_le_fundamental
+#print axioms YangMills.OS.SU2HeatTransport.fundamental_character_ne_zero
+#print axioms YangMills.OS.SU2HeatTransport.heatKernel_fundamental_eigen
+#print axioms YangMills.OS.SU2HeatTransport.continuous_mode_to_finite_transport
