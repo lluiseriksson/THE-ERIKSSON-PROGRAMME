@@ -134,6 +134,16 @@ noncomputable def reconstructedConnCorr (w : (Fin L → Fin 2) → ℝ)
       ((((lam : ℂ)⁻¹ • transferOp w β)^[n]) (qEmbed w u))).re
     - (siteForm w (qEmbed w (fun σ => vacOf Om σ)) (qEmbed w u)).re ^ 2
 
+/-- The mixed connected two-point function written entirely in reconstructed
+coordinates.  It exposes two independent boundary observables instead of
+leaving their covariance bound as a paper-level polarization corollary. -/
+noncomputable def reconstructedMixedConnCorr (w : (Fin L → Fin 2) → ℝ)
+    (β lam : ℝ) (Om u v : (Fin L → Fin 2) → ℝ) (n : ℕ) : ℝ :=
+  (siteForm w (qEmbed w u)
+      ((((lam : ℂ)⁻¹ • transferOp w β)^[n]) (qEmbed w v))).re
+    - (siteForm w (qEmbed w (fun σ => vacOf Om σ)) (qEmbed w u)).re
+      * (siteForm w (qEmbed w (fun σ => vacOf Om σ)) (qEmbed w v)).re
+
 /-- The reconstructed-site correlator is exactly the standard connected
 correlator of the tilted Euclidean transfer operator.  This is an identity,
 not an estimate or a comparison of rates. -/
@@ -149,6 +159,22 @@ theorem reconstructedConnCorr_eq_connCorr (w : (Fin L → Fin 2) → ℝ)
     siteForm_qEmbed w hw (fun σ => vacOf Om σ) u]
   simp only [Complex.ofReal_re]
   rw [inner_eq_sum, inner_eq_sum, opOf_pow_toLp_act]
+
+/-- The reconstructed mixed correlator is exactly the mixed connected
+correlator of the tilted Euclidean transfer operator. -/
+theorem reconstructedMixedConnCorr_eq_mixedConnCorr
+    (w : (Fin L → Fin 2) → ℝ) (hw : ∀ σ, 0 < w σ) (β lam : ℝ)
+    (Om u v : (Fin L → Fin 2) → ℝ) (n : ℕ) :
+    reconstructedMixedConnCorr w β lam Om u v n
+      = mixedConnCorr (opOf (tiltKernel w β lam)) (vacOf Om)
+          (WithLp.toLp 2 u) (WithLp.toLp 2 v) n := by
+  unfold reconstructedMixedConnCorr mixedConnCorr
+  rw [transferOp_qEmbed_tilt_iterate w hw β lam n v,
+    siteForm_qEmbed w hw u ((act (fun σ τ => tiltKernel w β lam σ τ))^[n] v),
+    siteForm_qEmbed w hw (fun σ => vacOf Om σ) u,
+    siteForm_qEmbed w hw (fun σ => vacOf Om σ) v]
+  simp only [Complex.ofReal_re]
+  rw [inner_eq_sum, inner_eq_sum, inner_eq_sum, opOf_pow_toLp_act]
 
 /-- A gap bound for the tilted Euclidean operator therefore gives exponential
 clustering for the connected correlator defined directly by the reconstructed
@@ -168,6 +194,24 @@ theorem reconstructedConnCorr_decay (w : (Fin L → Fin 2) → ℝ)
       (tiltKernel_symm w β lam) hOm heig)
     hgap (WithLp.toLp 2 u) n
 
+/-- A tilted Euclidean gap gives the mixed reconstructed covariance bound with
+the exact product prefactor and no loss in the exponent, also at `n = 0`. -/
+theorem reconstructedMixedConnCorr_decay (w : (Fin L → Fin 2) → ℝ)
+    (hw : ∀ σ, 0 < w σ) (β lam : ℝ)
+    (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ)
+    (heig : ∀ σ, ∑ τ, tiltKernel w β lam σ τ * Om τ = Om σ)
+    {r : ℝ}
+    (hgap : ‖projectedTransfer (opOf (tiltKernel w β lam)) (vacOf Om)‖ ≤ r)
+    (u v : (Fin L → Fin 2) → ℝ) (n : ℕ) :
+    |reconstructedMixedConnCorr w β lam Om u v n|
+      ≤ ‖(WithLp.toLp 2 u : EuclideanSpace ℝ (Fin L → Fin 2))‖
+        * ‖(WithLp.toLp 2 v : EuclideanSpace ℝ (Fin L → Fin 2))‖ * r ^ n := by
+  rw [reconstructedMixedConnCorr_eq_mixedConnCorr w hw β lam Om u v n]
+  exact mixed_clustering_of_gap
+    (vacuumTransfer_opOf (tiltKernel w β lam) Om
+      (tiltKernel_symm w β lam) hOm heig)
+    hgap (WithLp.toLp 2 u) (WithLp.toLp 2 v) n
+
 /-- In the explicit Dobrushin window, one positive exponent works for every
 spatial extent. The final clause records the exact conjugation that reads the
 uniform tilt gap on the forced reconstructed transfer operator. -/
@@ -185,6 +229,13 @@ theorem os_reconstruction_uniform_gap (β γ : ℝ) {α : ℝ}
             ≤ ‖(WithLp.toLp 2 u :
                 EuclideanSpace ℝ (Fin (L + 1) → Fin 2))‖ ^ 2
                 * Real.exp (-m) ^ n) ∧
+        (∀ u v n,
+          |reconstructedMixedConnCorr (sliceW γ L) β lam Om u v n|
+            ≤ ‖(WithLp.toLp 2 u :
+                EuclideanSpace ℝ (Fin (L + 1) → Fin 2))‖
+              * ‖(WithLp.toLp 2 v :
+                EuclideanSpace ℝ (Fin (L + 1) → Fin 2))‖
+              * Real.exp (-m) ^ n) ∧
         (∀ u,
           (lam : ℂ)⁻¹ • transferOp (sliceW γ L) β
               (qEmbed (sliceW γ L) u)
@@ -196,6 +247,8 @@ theorem os_reconstruction_uniform_gap (β γ : ℝ) {α : ℝ}
   exact ⟨lam, Om, hlam, hOm, hfix, hnorm,
     fun u n => reconstructedConnCorr_decay (sliceW γ L) (sliceW_pos γ L)
       β lam Om hOm hfix hnorm u n,
+    fun u v n => reconstructedMixedConnCorr_decay (sliceW γ L) (sliceW_pos γ L)
+      β lam Om hOm hfix hnorm u v n,
     fun u => transferOp_qEmbed_tilt (sliceW γ L) (sliceW_pos γ L)
       β lam u⟩
 

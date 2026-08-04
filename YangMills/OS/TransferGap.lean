@@ -147,6 +147,14 @@ noncomputable def projectedTransfer (T : H →L[ℝ] H) (Ω : H) : H →L[ℝ] H
 noncomputable def connCorr (T : H →L[ℝ] H) (Ω : H) (v : H) (n : ℕ) : ℝ :=
   ⟪v, (T ^ n) v⟫ - (⟪Ω, v⟫ : ℝ) ^ 2
 
+/-- The mixed connected two-point function at Euclidean time `n`:
+`⟨u, Tⁿ v⟩ − ⟨Ω,u⟩⟨Ω,v⟩`.  Keeping the two boundary vectors separate
+is useful for finite covariance matrices and avoids a paper-only polarization
+step at the reconstruction endpoint. -/
+noncomputable def mixedConnCorr (T : H →L[ℝ] H) (Ω : H)
+    (u v : H) (n : ℕ) : ℝ :=
+  ⟪u, (T ^ n) v⟫ - (⟪Ω, u⟫ : ℝ) * (⟪Ω, v⟫ : ℝ)
+
 /-- The data of a transfer operator with a vacuum: symmetric, with a fixed unit
 vector.  These are exactly the properties Osterwalder–Seiler reflection
 positivity is used to produce; here they are hypotheses, not axioms. -/
@@ -236,6 +244,15 @@ theorem connCorr_eq (hT : VacuumTransfer T Ω) (v : H) (n : ℕ) :
     connCorr T Ω v (n + 1) = ⟪v, (projectedTransfer T Ω ^ (n + 1)) v⟫ := by
   rw [connCorr, hT.projected_pow_succ v n, inner_sub_right, real_inner_smul_right,
     real_inner_comm v Ω]
+  ring
+
+/-- The mixed connected correlator is the corresponding matrix element of the
+projected transfer operator at every positive time. -/
+theorem mixedConnCorr_eq (hT : VacuumTransfer T Ω) (u v : H) (n : ℕ) :
+    mixedConnCorr T Ω u v (n + 1) =
+      ⟪u, (projectedTransfer T Ω ^ (n + 1)) v⟫ := by
+  rw [mixedConnCorr, hT.projected_pow_succ v n, inner_sub_right,
+    real_inner_smul_right, real_inner_comm u Ω]
   ring
 
 end VacuumTransfer
@@ -381,6 +398,77 @@ theorem clustering_of_gap {T : H →L[ℝ] H} {Ω : H} (hT : VacuumTransfer T Ω
         _ ≤ ‖v‖ * (r ^ (m + 1) * ‖v‖) :=
             mul_le_mul_of_nonneg_left hstep (norm_nonneg v)
         _ = ‖v‖ ^ 2 * r ^ (m + 1) := by ring
+
+/-- The orthogonal-complement projection has operator norm at most one when
+the vacuum is normalised. -/
+theorem norm_one_sub_vacuumProjection_le {Ω : H} (hΩ : ‖Ω‖ = 1) :
+    ‖(1 : H →L[ℝ] H) - vacuumProjection Ω‖ ≤ 1 := by
+  refine ContinuousLinearMap.opNorm_le_bound _ zero_le_one fun v => ?_
+  have hΩΩ : (⟪Ω, Ω⟫ : ℝ) = 1 := by
+    rw [real_inner_self_eq_norm_sq, hΩ]
+    norm_num
+  have hexp : ‖v - (⟪Ω, v⟫ : ℝ) • Ω‖ ^ 2 =
+      ‖v‖ ^ 2 - (⟪Ω, v⟫ : ℝ) ^ 2 := by
+    rw [← real_inner_self_eq_norm_sq, inner_sub_sub_self]
+    simp only [real_inner_smul_left, real_inner_smul_right, hΩΩ]
+    rw [real_inner_self_eq_norm_sq, real_inner_comm v Ω]
+    ring
+  have hsquare : ‖v - (⟪Ω, v⟫ : ℝ) • Ω‖ ^ 2 ≤ ‖v‖ ^ 2 := by
+    rw [hexp]
+    nlinarith [sq_nonneg (⟪Ω, v⟫ : ℝ)]
+  have hnonneg := norm_nonneg (v - (⟪Ω, v⟫ : ℝ) • Ω)
+  simp only [ContinuousLinearMap.sub_apply, ContinuousLinearMap.one_apply,
+    vacuumProjection_apply, one_mul]
+  nlinarith [norm_nonneg v]
+
+/-- **Mixed gap ⟹ clustering.**  The same gap controls every mixed matrix
+element, including `n = 0`, with the sharp product prefactor. -/
+theorem mixed_clustering_of_gap {T : H →L[ℝ] H} {Ω : H}
+    (hT : VacuumTransfer T Ω) {r : ℝ}
+    (hgap : ‖projectedTransfer T Ω‖ ≤ r) (u v : H) (n : ℕ) :
+    |mixedConnCorr T Ω u v n| ≤ ‖u‖ * ‖v‖ * r ^ n := by
+  cases n with
+  | zero =>
+      have hrepr : mixedConnCorr T Ω u v 0 =
+          ⟪u, ((1 : H →L[ℝ] H) - vacuumProjection Ω) v⟫ := by
+        unfold mixedConnCorr
+        simp only [pow_zero, ContinuousLinearMap.one_apply,
+          ContinuousLinearMap.sub_apply, vacuumProjection_apply,
+          inner_sub_right, real_inner_smul_right]
+        rw [real_inner_comm u Ω]
+        ring
+      rw [hrepr, pow_zero, mul_one]
+      calc
+        |⟪u, ((1 : H →L[ℝ] H) - vacuumProjection Ω) v⟫|
+            ≤ ‖u‖ * ‖((1 : H →L[ℝ] H) - vacuumProjection Ω) v‖ :=
+              abs_real_inner_le_norm _ _
+        _ ≤ ‖u‖ * (1 * ‖v‖) := by
+              gcongr
+              calc
+                ‖((1 : H →L[ℝ] H) - vacuumProjection Ω) v‖
+                    ≤ ‖(1 : H →L[ℝ] H) - vacuumProjection Ω‖ * ‖v‖ :=
+                      ((1 : H →L[ℝ] H) - vacuumProjection Ω).le_opNorm v
+                _ ≤ 1 * ‖v‖ := mul_le_mul_of_nonneg_right
+                      (norm_one_sub_vacuumProjection_le hT.unit) (norm_nonneg v)
+        _ = ‖u‖ * ‖v‖ := by ring
+  | succ m =>
+      rw [hT.mixedConnCorr_eq u v m]
+      set S := projectedTransfer T Ω
+      have hstep : ‖(S ^ (m + 1)) v‖ ≤ r ^ (m + 1) * ‖v‖ := by
+        calc
+          ‖(S ^ (m + 1)) v‖ ≤ ‖S ^ (m + 1)‖ * ‖v‖ :=
+            (S ^ (m + 1)).le_opNorm v
+          _ ≤ ‖S‖ ^ (m + 1) * ‖v‖ :=
+            mul_le_mul_of_nonneg_right (norm_pow_le' S (Nat.succ_pos m)) (norm_nonneg v)
+          _ ≤ r ^ (m + 1) * ‖v‖ :=
+            mul_le_mul_of_nonneg_right
+              (pow_le_pow_left₀ (norm_nonneg S) hgap (m + 1)) (norm_nonneg v)
+      calc
+        |⟪u, (S ^ (m + 1)) v⟫| ≤ ‖u‖ * ‖(S ^ (m + 1)) v‖ :=
+          abs_real_inner_le_norm _ _
+        _ ≤ ‖u‖ * (r ^ (m + 1) * ‖v‖) :=
+          mul_le_mul_of_nonneg_left hstep (norm_nonneg u)
+        _ = ‖u‖ * ‖v‖ * r ^ (m + 1) := by ring
 
 /-- **Clustering ⟹ gap.**  Exponential decay of the connected two-point
 function at *every* vector, with a vector-dependent constant, already forces the

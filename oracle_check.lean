@@ -2550,6 +2550,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.clustering_iff_gap
 #print axioms YangMills.OS.gap_of_clustering
 #print axioms YangMills.OS.clustering_of_gap
+#print axioms YangMills.OS.mixed_clustering_of_gap
+#print axioms YangMills.OS.norm_one_sub_vacuumProjection_le
 #print axioms YangMills.OS.gap_of_dense_clustering
 #print axioms YangMills.OS.volumeUniform_gap
 #print axioms YangMills.OS.exists_vacuumTransfer_gap
@@ -2562,6 +2564,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.pow_succ_apply
 #print axioms YangMills.OS.pow_succ_apply'
 #print axioms YangMills.OS.VacuumTransfer.connCorr_eq
+#print axioms YangMills.OS.VacuumTransfer.mixedConnCorr_eq
 #print axioms YangMills.OS.VacuumTransfer.projected_pow_succ
 #print axioms YangMills.OS.VacuumTransfer.projected_symm
 #print axioms YangMills.OS.VacuumTransfer.projected_vacuum
@@ -3403,4 +3406,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.opOf_pow_toLp_act
 #print axioms YangMills.OS.reconstructedConnCorr_eq_connCorr
 #print axioms YangMills.OS.reconstructedConnCorr_decay
+#print axioms YangMills.OS.reconstructedMixedConnCorr_eq_mixedConnCorr
+#print axioms YangMills.OS.reconstructedMixedConnCorr_decay
 #print axioms YangMills.OS.os_reconstruction_uniform_gap

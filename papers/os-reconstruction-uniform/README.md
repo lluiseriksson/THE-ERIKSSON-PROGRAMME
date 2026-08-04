@@ -43,3 +43,20 @@ finite slice, and derives the mixed-correlator bound.  It changes no Lean
 source or theorem statement and does not claim a sharper analytic estimate.
 
 V3 PDF: `../../output/pdf/os_reconstruction_uniform_v3.pdf`
+
+Formal revision responding to the 5.18/10 review:
+`os_reconstruction_uniform_v4.tex`
+
+V4 promotes the mixed reconstructed connected-correlator consequence to
+named Lean declarations, including an explicit zero-time argument, an exact
+coordinate identity, and the volume-uniform product-norm decay endpoint.  It
+does not sharpen the inherited Dobrushin estimate or claim a thermodynamic or
+continuum limit.
+
+V4 PDF: `../../output/pdf/os_reconstruction_uniform_v4.pdf`
+
+V4 verification and response records:
+
+`../../docs/audit-artifacts/52-os-reconstruction-uniform-v4-verification.json`
+
+`../../docs/audit-artifacts/52-OS-RECONSTRUCTION-UNIFORM-V4-RESPONSE.md`
