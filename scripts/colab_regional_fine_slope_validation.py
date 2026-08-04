@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v14"
-SOURCE_SHA = "c5eaba7ed47b14b738da7baef8877ca2b8c84af7"
+RUNNER_REV = "regional-large-block-v15"
+SOURCE_SHA = "1812600d1b37f588d9f74d046473dceac9d86b56"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -252,11 +252,22 @@ REGIONAL_PRECISION_QUEUE_V10 = [
 
 QUEUE = [
     (
-        "slope_algebra_repro",
-        ["lake", "env", "lean", "/content/regional-slope-repro.lean"],
+        "periodic_active_cell_overlap_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP95PeriodicActiveCellOverlap",
+        ],
         None,
     ),
-] + LEGACY_QUEUE_V9[4:]
+    (
+        "periodic_active_cell_overlap_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP95PeriodicActiveCellOverlapAudit.lean",
+        ],
+        6,
+    ),
+] + LEGACY_QUEUE_V9[6:]
 
 ALGEBRA_REPRO = r"""import Mathlib
 
@@ -484,10 +495,6 @@ def main() -> int:
         if mathlib != EXPECTED_MATHLIB:
             raise RuntimeError("MATHLIB_PIN_MISMATCH=" + mathlib)
         run("cache_get", ["lake", "exe", "cache", "get"], cwd=ROOT)
-
-        Path("/content/regional-slope-repro.lean").write_text(
-            SLOPE_REPRO, encoding="utf-8"
-        )
 
         for stage, command, expected_axioms in QUEUE:
             output = run(stage, command, cwd=ROOT)
