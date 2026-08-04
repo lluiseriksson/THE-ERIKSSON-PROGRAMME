@@ -46,16 +46,16 @@ theorem sum_norm_cmp99TransportedBlockSynthesisCLM
     LinearIsometryEquiv.norm_map]
   simp only [Finset.sum_const, Finset.card_univ, Fintype.card_coe,
     blockOf_card, nsmul_eq_mul, Nat.cast_pow, Real.norm_eq_abs]
-  change (∑ x in Finset.univ,
+  change (∑ x ∈ Finset.univ,
       (M : ℝ) ^ d * (|w| * ‖eta.ofLp x‖)) =
-    |w| * (M : ℝ) ^ d * ∑ x in Finset.univ, ‖eta.ofLp x‖
+    |w| * (M : ℝ) ^ d * ∑ x ∈ Finset.univ, ‖eta.ofLp x‖
   calc
     _ = (M : ℝ) ^ d *
-        (∑ x in Finset.univ, |w| * ‖eta.ofLp x‖) :=
+        (∑ x ∈ Finset.univ, |w| * ‖eta.ofLp x‖) :=
       (Finset.mul_sum Finset.univ
         (fun x => |w| * ‖eta.ofLp x‖) ((M : ℝ) ^ d)).symm
     _ = (M : ℝ) ^ d *
-        (|w| * ∑ x in Finset.univ, ‖eta.ofLp x‖) := by
+        (|w| * ∑ x ∈ Finset.univ, ‖eta.ofLp x‖) := by
       rw [Finset.mul_sum]
     _ = _ := by ring
 
