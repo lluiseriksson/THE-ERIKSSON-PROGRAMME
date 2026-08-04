@@ -285,7 +285,7 @@ theorem CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single
               ((cmp99SourceBlockAverageWeight M d) ^ depth *
                 cmp99SourceBlockAverageWeight M d) * ‖v‖ := by ring
             _ = (cmp99SourceBlockAverageWeight M d) ^ (depth + 1) * ‖v‖ := by
-              rw [pow_succ]
+              congr 1
 
 /-- Inequality form of the exact generated source-row mass, for direct use by
 weighted-row adapters. -/
