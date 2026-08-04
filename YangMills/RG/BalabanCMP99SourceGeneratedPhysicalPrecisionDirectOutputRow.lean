@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecisionDirectWeightedRo
 /-!
 # CMP99 fixed-output row of the generated physical precision
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 This module places the two literal summands of the generated precision in the
 orientation printed in CMP99 (3.88): the output is fixed and input sites are
 summed.  The covariant Laplacian is bounded directly from its one-link range;

@@ -298,9 +298,12 @@ cardinality.  The source-faithful producer should iterate this identity along
 `(cmp99SourceBlockAverageWeight M d)^depth` (and then use
 `generatedCountingMass_eq_QprimeMass`).  At positive row rate its certified
 finite range additionally costs `exp (rate * range)`, but still no block-ball
-cardinality.  This recursive row theorem is an open, compiler-unverified
-obligation; the operator-norm contraction of `Qprime` is not a substitute for
-it.
+cardinality.  This recursion and its fixed-output orientation are now proved
+by `cmp99SourceIteratedLift_generatedCountingMass_fixedOutputWeighted` and
+`cmp99SourceIteratedLift_QprimeMass_fixedOutputWeighted`.  They were verified
+in a fresh Colab clone at source checkpoint
+`db04d33a19be5f4e87d842f6cc9a3925e53f4388`.  The operator-norm contraction
+of `Qprime` is not used as a substitute.
 
 There is also an orientation boundary that the source dictionary must keep
 visible.  `FinitePiLpTypedWeightedRowKernelBound` fixes a source delta and
@@ -312,6 +315,14 @@ turn the two pointwise-in-vector sums into the same inequality.  The direct
 source-fixed estimate is the right input for the existing delta-propagation
 composition, but a claim about the literal fixed-output row of (3.88) still
 requires a proved adjoint/block bridge or a separate direct estimate.
+
+The literal complete precision now has that separate producer:
+`cmp99SourceGeneratedPhysicalPrecision_directFixedOutputWeighted`.  Its
+amplitude is definitionally the sum of two separately recoverable budgets:
+the nearest-neighbour covariant-Laplacian row and
+`|cmp99SourceGeneratedPhysicalMass|` times the normalized `Q'^*Q'` row.  This
+is a direct input to the three-term identity (3.88); it does not prove that
+identity, its physical cutoff slope, or the subsequent defect contraction.
 
 The dependent-arrow alphabet and changing intermediate carriers recorded on
 printed page 413 belong to the later cross-scale Section-C expansion.  They

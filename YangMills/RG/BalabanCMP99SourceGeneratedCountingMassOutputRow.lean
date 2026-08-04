@@ -9,9 +9,6 @@ import YangMills.RG.FinitePiLpTypedFixedOutputWeightedKernel
 /-!
 # Printed fixed-output rows of the generated CMP99 counting mass
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 The source-fixed row already proved for `Q'^* Q'` cannot be turned into the
 fixed-output row of CMP99 (3.88) by abstract self-adjointness: for a
 vector-valued kernel, adjunction transposes each fibre block and does not

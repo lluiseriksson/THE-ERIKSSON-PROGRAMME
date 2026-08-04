@@ -8,9 +8,6 @@ import YangMills.RG.FinitePiLpTypedKernel
 /-!
 # Fixed-output weighted sums for rectangular finite kernels
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 CMP99 (3.88) fixes the displayed output coordinate and sums over input
 coordinates.  This is not the source-fixed convention of
 `FinitePiLpTypedWeightedRowKernelBound`.  For vector-valued kernels the two

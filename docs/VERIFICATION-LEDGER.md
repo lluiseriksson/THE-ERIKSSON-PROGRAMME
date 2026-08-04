@@ -26923,3 +26923,44 @@ fourteen windows, not physical attainment of the regional defect bound or the
 collar estimate.  It therefore discharges no additional `PreEq136` field: the
 live numerator remains exactly `18/41`, and no `TermSource` inhabitant is
 produced.
+
+## Addendum 544 (2026-08-04, **generated Qprime fixed-output row chain GREEN**)
+
+`FinitePiLpTypedFixedOutputWeightedKernel.lean`,
+`BalabanCMP99SourceGeneratedCountingMassOutputRow.lean`, and
+`BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRow.lean` were
+replayed with their focused audits in one fresh Colab Pro+ CPU/high-RAM clone
+from source checkpoint `db04d33a19be5f4e87d842f6cc9a3925e53f4388`.
+The runtime opened at 2026-08-04 08:36:15 UTC and auto-disconnected after the
+terminal result at approximately 09:17 UTC; the cell ran for 2,473.484
+seconds.
+
+The official Lean `v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.  The generic fixed-output focal
+exited zero with `Build completed successfully (8172 jobs).` after 153.873
+seconds, and its five-declaration audit exited zero after 11.882 seconds.  The
+generated counting-mass focal exited zero with `Build completed successfully
+(8483 jobs).` after 1,982.229 seconds, and its six-declaration audit exited
+zero after 30.978 seconds.  The complete physical-precision focal exited zero
+with `Build completed successfully (8488 jobs).` after 118.568 seconds, and
+its two-declaration audit exited zero after 14.277 seconds.  All thirteen
+audited declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS` and requested runtime
+unassignment.  The evidence JSON has SHA-256
+`97ea35c85380a13644d92aaa9d4745ad6ce05b5b290023855335046d2a9c6597`;
+the evidence archive created in Colab has SHA-256
+`2fa57e39cb4de72b71eb3ab36392a07de33f95eb8b81c8c9a0c12219fb11f28f`.
+
+The verified physical orientation is not obtained from abstract
+self-adjointness.  It is proved block-by-block for the literal generated
+counting mass: the block norm is exact within one terminal fibre and zero
+outside it.  The complete precision keeps separate the nearest-neighbour
+covariant-Laplacian budget and the scalar multiple of the normalized
+`Q'^*Q'` budget.  This closes the fixed-output row input to CMP99 (3.88), but
+does not prove the displayed three-term identity, the source physical
+large-block slope, the collar estimate, or `norm R' < 1`.  Consequently no
+additional `PreEq136` field is discharged: the live numerator remains exactly
+`18/41`, and no `TermSource` inhabitant is produced.

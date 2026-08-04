@@ -485,6 +485,14 @@ bridge (or prove that orientation directly); the source-fixed bound may still
 be used for the repository's delta-propagation compositions without silently
 renaming it as the printed row.
 
+The fixed-output orientation is now produced directly for the literal
+generated counting mass and for `Q'^*Q'`.  The complete physical precision
+then retains, in its public amplitude, the literal sum of the
+nearest-neighbour Laplacian budget and the scalar-mass multiple of the
+normalized counting budget.  These theorems were compiler-verified at
+checkpoint `db04d33a19be5f4e87d842f6cc9a3925e53f4388`; they are inputs to,
+not a replacement for, the still-open exact three-term identity (3.88).
+
 The two source estimates must not be identified:
 
 * `cmp116Eq136ResidualMajorant` bounds the residual `V''_k(Y,B)`;
