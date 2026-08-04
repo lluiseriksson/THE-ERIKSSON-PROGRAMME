@@ -1,15 +1,16 @@
 # (46) Submission sheet: Local Tanh, Global Wall
 
-Status: final scientific body with author fixed as **Lluis Eriksson**; **do not submit until the license is confirmed**.
+Status: **public technical note / NOT SUBMITTED**. The scientific body and PDF are frozen; no arXiv or journal submission is planned at this closure.
 
-## Recommended route
+## Editorial closure (2026-08-04)
 
-1. Deposit the technical note on arXiv.
-2. Primary category: `math.PR` (Probability).
-3. Suggested cross-list: `math.FA` (Functional Analysis). Use the cross-list only if the submission form permits it or the moderator accepts it.
-4. After an independent mathematical audit, submit the 10-page note to *Electronic Communications in Probability* (ECP). ECP is the best-fit journal route because it publishes short probability papers; the initial journal PDF must be converted to the current ECP LaTeX template before journal submission.
+- Public object: technical note, available from the repository branch.
+- Editorial state: `NOT SUBMITTED`.
+- arXiv state: not submitted; do not initiate an arXiv deposit from this record.
+- Journal state: not submitted; do not initiate an ECP or other journal submission from this record.
+- Frozen PDF: `output/pdf/birkhoff_dobrushin_wall.pdf`, 110645 bytes, SHA-256 `2d9791a475e21a793f63cc2f00793968c28e3cc50cd1f5716dc3babc7a638d86`.
 
-This route is deliberately narrow. The paper does not claim a volume-uniform Birkhoff gap. Its publishable unit is the equality classification, the exact tensor wall, and the localization comparison.
+The paper does not claim a volume-uniform Birkhoff gap. Its public technical-note unit is the equality classification, the exact tensor wall, and the localization comparison.
 
 ## Author data
 
@@ -24,7 +25,7 @@ The manuscript and arXiv metadata identify the author as `Lluis Eriksson`.
 
 Do not infer an affiliation from an email address or residence.
 
-## arXiv metadata (copy/paste)
+## Dormant arXiv metadata (reference only; do not submit)
 
 **Title**
 
@@ -69,7 +70,7 @@ Hilbert projective metric; Birkhoff contraction; Dobrushin coefficient; total va
 - Report number: leave blank unless a real institution assigned one.
 - License: `[REQUIRED AUTHOR DECISION]`. For maximum journal compatibility, check the target journal/funder policy before choosing. arXiv's license choice is irrevocable for that version.
 
-## arXiv upload checklist
+## Dormant arXiv upload checklist (inactive)
 
 - Upload `candidate-46-arxiv-source.zip`; it contains one self-contained top-level TeX file and no generated PDF.
 - Confirm the detected compiler and top-level file `birkhoff_dobrushin_wall.tex`.
@@ -79,9 +80,9 @@ Hilbert projective metric; Birkhoff contraction; Dobrushin coefficient; total va
 - Preview once more before selecting the final submit action.
 - Keep the resulting arXiv identifier and DOI for the repository record and any journal submission.
 
-## ECP journal route (after independent audit)
+## Dormant ECP journal route (inactive)
 
-Current destination: *Electronic Communications in Probability*.
+Historical candidate destination (inactive): *Electronic Communications in Probability*.
 
 - Scope/length fit: short research articles in probability; the manuscript is 10 pages.
 - Initial submission portal: `https://www.e-publications.org/ims/submission/`
@@ -117,4 +118,4 @@ Sincerely,
 - TeX bytes (LF worktree): `31301`
 - TeX SHA-256 (LF worktree): `399d0495141f67e3c335a937438c6e29232722eb24040425e59ba1949b5ea391`
 
-The final external submit action is intentionally not performed here: it requires the submitter to certify rights and make an irrevocable license choice.
+No external submission action was performed. This closure records a public technical note with editorial state `NOT SUBMITTED`; any future submission would require a new, explicit owner instruction and a fresh identity check.
