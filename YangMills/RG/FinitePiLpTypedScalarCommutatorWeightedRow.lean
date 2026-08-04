@@ -46,7 +46,8 @@ theorem finitePiLpTypedWeightedRowKernelBound_comp_scalarMultiplier_right
         ≤ A * ‖h source • v‖ := hT.2.2 source (h source • v)
     _ = A * (‖h source‖ * ‖v‖) := by rw [norm_smul]
     _ ≤ A * (1 * ‖v‖) := by
-      gcongr
+      apply mul_le_mul_of_nonneg_left _ hT.1
+      exact mul_le_mul_of_nonneg_right (hh source) (norm_nonneg v)
     _ = A * ‖v‖ := by ring
 
 /-- A scalar commutator against a finite-range operator preserves an existing
@@ -85,13 +86,26 @@ theorem finitePiLpTypedWeightedRowKernelBound_scalarCommutator
             (singleFinitePiLp source v) target =
           (h target - h source) •
             K (singleFinitePiLp source v) target := by
-      simp [ContinuousLinearMap.comp_apply,
-        finitePiLpScalarMultiplier_apply,
-        finitePiLpScalarMultiplier_single, sub_smul]
+      rw [ContinuousLinearMap.sub_apply,
+        ContinuousLinearMap.comp_apply]
+      change h target • K (singleFinitePiLp source v) target -
+          K ((finitePiLpScalarMultiplier (g := g) h)
+            (singleFinitePiLp source v)) target = _
+      rw [finitePiLpScalarMultiplier_single]
+      have hsingle : singleFinitePiLp source (h source • v) =
+          h source • singleFinitePiLp source v := by
+        apply PiLp.ext
+        intro i
+        by_cases hi : i = source
+        · subst i
+          simp
+        · simp [singleFinitePiLp_of_ne, hi]
+      rw [hsingle, map_smul, PiLp.smul_apply, sub_smul]
     rw [hcomm, norm_smul]
     by_cases hfar : range < dist target source
     · have hzero := hfinite source target v hfar
       rw [hzero, norm_zero, mul_zero, mul_zero]
+      positivity
     · have hnear : (dist target source : ℝ) ≤ range := by
         exact_mod_cast Nat.le_of_not_gt hfar
       have hvariation : ‖h target - h source‖ ≤ slope * (range : ℝ) :=
