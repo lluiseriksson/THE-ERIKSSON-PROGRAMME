@@ -52,6 +52,7 @@ open Finset
 -- names (spatialKernel, symWeighted, act, dress, siteForm, transferOp)
 -- have single declarations in YangMills.OS proper.
 open Dobrushin
+open scoped RealInnerProductSpace
 
 variable {L : ℕ}
 
@@ -245,5 +246,175 @@ theorem os_reconstruction_uniform_clustering (β γ : ℝ) {alpha : ℝ}
     vacuumTransfer_opOf _ Om (tiltKernel_symm _ β lam) hOm hfix
   exact ⟨lam, Om, hlam, hOm, hfix,
     fun v n => clustering_of_gap hT hnorm v n⟩
+
+/-! ## B1/B2 — the raw Gibbs sums meet the operator powers (pass 8) -/
+
+/-- `act` is homogeneous in the vector. -/
+theorem act_smul_fun (K : (Fin L → Fin 2) → (Fin L → Fin 2) → ℝ) (c : ℝ)
+    (u : (Fin L → Fin 2) → ℝ) :
+    act K (fun τ => c * u τ) = fun σ => c * act K u σ := by
+  funext σ
+  unfold act
+  rw [Finset.mul_sum]
+  exact Finset.sum_congr rfl fun τ _ => by ring
+
+/-- Iterates of `act` pull scalars through. -/
+theorem act_iterate_smul_fun (K : (Fin L → Fin 2) → (Fin L → Fin 2) → ℝ)
+    (c : ℝ) (n : ℕ) (u : (Fin L → Fin 2) → ℝ) :
+    (act K)^[n] (fun τ => c * u τ) = fun σ => c * (act K)^[n] u σ := by
+  induction n generalizing u with
+  | zero => rfl
+  | succ n ih =>
+      funext σ
+      rw [Function.iterate_succ_apply, act_smul_fun]
+      have h := congrFun (ih (act K u)) σ
+      rw [h, Function.iterate_succ_apply]
+
+/-- Iterated tilt scaling: `(act S)^[n] = λⁿ · (act tilt)^[n]`. -/
+theorem act_symWeighted_iterate_eq_smul_tilt (w : (Fin L → Fin 2) → ℝ)
+    (β lam : ℝ) (hlam : lam ≠ 0) (n : ℕ) (u : (Fin L → Fin 2) → ℝ) :
+    (act (symWeighted w β))^[n] u
+      = fun σ => lam ^ n
+          * (act (fun a b => tiltKernel w β lam a b))^[n] u σ := by
+  induction n generalizing u with
+  | zero => funext σ; simp
+  | succ n ih =>
+      funext σ
+      rw [Function.iterate_succ_apply,
+        act_symWeighted_eq_smul_act_tilt w β lam hlam u]
+      have h1 := congrFun
+        (ih (fun τ => lam * act (fun a b => tiltKernel w β lam a b) u τ)) σ
+      rw [h1]
+      have h2 := congrFun (act_iterate_smul_fun
+        (fun a b => tiltKernel w β lam a b) lam n
+        (act (fun a b => tiltKernel w β lam a b) u)) σ
+      rw [h2, Function.iterate_succ_apply]
+      ring
+
+/-- **B1 — the raw Gibbs two-point sum IS `λᴺ` times a matrix element of the
+operator powers.**  Exact identity, no bound. -/
+theorem gibbsPathSum_eq_inner_pow (w : (Fin L → Fin 2) → ℝ)
+    (hw : ∀ σ, 0 < w σ) (β lam : ℝ) (hlam : lam ≠ 0) (N : ℕ)
+    (A B : (Fin L → Fin 2) → ℝ) :
+    gibbsPathSum w β N A B
+      = lam ^ N * ⟪((opOf (tiltKernel w β lam)) ^ N)
+          (WithLp.toLp 2 (dress w A)), WithLp.toLp 2 (dress w B)⟫ := by
+  rw [gibbsPathSum_eq_iterate hw β N A B, inner_eq_sum, Finset.mul_sum]
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  have h1 := congrFun
+    (act_symWeighted_iterate_eq_smul_tilt w β lam hlam N (dress w A)) σ
+  rw [h1]
+  have h2 := act_iterate_eq_opOf_pow (tiltKernel w β lam) N (dress w A) σ
+  rw [h2]
+  have h3 : (WithLp.toLp 2 (dress w B)) σ = dress w B σ := rfl
+  rw [h3]
+  ring
+
+/-- **B2 — the partition function, same shape at the dressed constant.** -/
+theorem gibbsPartition_eq_inner_pow (w : (Fin L → Fin 2) → ℝ)
+    (hw : ∀ σ, 0 < w σ) (β lam : ℝ) (hlam : lam ≠ 0) (N : ℕ) :
+    gibbsPartition w β N
+      = lam ^ N * ⟪((opOf (tiltKernel w β lam)) ^ N)
+          (WithLp.toLp 2 (dress w (fun _ => 1))),
+          WithLp.toLp 2 (dress w (fun _ => 1))⟫ := by
+  have h : gibbsPartition w β N
+      = gibbsPathSum w β N (fun _ => 1) (fun _ => 1) := by
+    unfold gibbsPartition gibbsPathSum
+    exact Finset.sum_congr rfl fun X _ => by ring
+  rw [h, gibbsPathSum_eq_inner_pow w hw β lam hlam N]
+
+/-! ## The mixed clustering machinery (generic Hilbert, pass 8) -/
+
+section MixedHilbert
+
+variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+  [CompleteSpace H]
+
+/-- Pythagoras: removing the vacuum component does not grow the norm. -/
+theorem norm_sub_inner_smul_le (Om v : H) (hOm : ‖Om‖ = 1) :
+    ‖v - (⟪Om, v⟫) • Om‖ ≤ ‖v‖ := by
+  have hsq : ‖v - (⟪Om, v⟫) • Om‖ ^ 2 ≤ ‖v‖ ^ 2 := by
+    rw [norm_sub_sq_real, real_inner_smul_right, norm_smul, hOm,
+      real_inner_comm v Om]
+    simp only [Real.norm_eq_abs, mul_one]
+    nlinarith [sq_abs ((⟪v, Om⟫ : ℝ)), sq_abs ((⟪Om, v⟫ : ℝ)),
+      sq_nonneg ((⟪v, Om⟫ : ℝ)), real_inner_comm v Om]
+  nlinarith [norm_nonneg (v - (⟪Om, v⟫) • Om), norm_nonneg v]
+
+/-- Powers of an operator obey the geometric norm bound. -/
+theorem pow_apply_norm_le (S : H →L[ℝ] H) {r : ℝ} (hr : 0 ≤ r)
+    (hS : ‖S‖ ≤ r) (v : H) (n : ℕ) : ‖(S ^ n) v‖ ≤ r ^ n * ‖v‖ := by
+  induction n with
+  | zero => simp
+  | succ n ih =>
+      have hstep : (S ^ (n + 1)) v = S ((S ^ n) v) := by rw [pow_succ']; rfl
+      calc ‖(S ^ (n + 1)) v‖ = ‖S ((S ^ n) v)‖ := by rw [hstep]
+        _ ≤ ‖S‖ * ‖(S ^ n) v‖ := S.le_opNorm _
+        _ ≤ r * (r ^ n * ‖v‖) :=
+            mul_le_mul hS ih (norm_nonneg _) hr
+        _ = r ^ (n + 1) * ‖v‖ := by ring
+
+/-- **Mixed clustering from the gap** — two independent observables, the
+zero-time case included. -/
+theorem mixed_connCorr_bound {T : H →L[ℝ] H} {Om : H}
+    (hT : VacuumTransfer T Om) {r : ℝ} (hr : 0 ≤ r)
+    (hgap : ‖projectedTransfer T Om‖ ≤ r) (u v : H) (n : ℕ) :
+    |(⟪u, (T ^ n) v⟫) - (⟪Om, u⟫) * (⟪Om, v⟫)|
+      ≤ ‖u‖ * ‖v‖ * r ^ n := by
+  have hkey : (⟪u, (T ^ n) v⟫) - (⟪Om, u⟫) * (⟪Om, v⟫)
+      = ⟪u, (T ^ n) v - (⟪Om, v⟫) • Om⟫ := by
+    rw [inner_sub_right, real_inner_smul_right, real_inner_comm u Om]
+    ring
+  rw [hkey]
+  cases n with
+  | zero =>
+      have h0 : ((T ^ 0) v) = v := by simp
+      rw [h0, pow_zero, mul_one]
+      calc |⟪u, v - (⟪Om, v⟫) • Om⟫|
+            ≤ ‖u‖ * ‖v - (⟪Om, v⟫) • Om‖ := abs_real_inner_le_norm _ _
+        _ ≤ ‖u‖ * ‖v‖ := mul_le_mul_of_nonneg_left
+            (norm_sub_inner_smul_le Om v hT.unit) (norm_nonneg u)
+  | succ m =>
+      rw [← hT.projected_pow_succ v m]
+      calc |⟪u, (projectedTransfer T Om ^ (m + 1)) v⟫|
+            ≤ ‖u‖ * ‖(projectedTransfer T Om ^ (m + 1)) v‖ :=
+            abs_real_inner_le_norm _ _
+        _ ≤ ‖u‖ * (r ^ (m + 1) * ‖v‖) := mul_le_mul_of_nonneg_left
+            (pow_apply_norm_le _ hr hgap v (m + 1)) (norm_nonneg u)
+        _ = ‖u‖ * ‖v‖ * r ^ (m + 1) := by ring
+
+end MixedHilbert
+
+/-- **The reconstructed theory has one mass, measured against the raw Gibbs
+sums.**  In the window: ONE `m > 0` such that for EVERY spatial extent the
+D-6 data exist, the raw Gibbs two-point sum equals `λᴺ` times a matrix
+element of the operator powers (EXACT identity, dressed observables), and
+every MIXED connected correlator of the transported operator decays at the
+rate `m` with per-observable constants — the zero-time case included. -/
+theorem os_reconstruction_measure_uniform (β γ : ℝ) {alpha : ℝ}
+    (halpha0 : 0 < alpha) (halpha1 : alpha < 1)
+    (hwin : 2 * Real.tanh |β| + 2 * Real.tanh |γ| ≤ alpha) :
+    ∃ m : ℝ, 0 < m ∧ ∀ L : ℕ,
+      ∃ (lam : ℝ) (Om : (Fin (L + 1) → Fin 2) → ℝ),
+        0 < lam ∧ (∀ σ, 0 < Om σ) ∧
+        (∀ σ, ∑ τ, tiltKernel (sliceW γ L) β lam σ τ * Om τ = Om σ) ∧
+        (∀ (N : ℕ) (A B : (Fin (L + 1) → Fin 2) → ℝ),
+          gibbsPathSum (sliceW γ L) β N A B
+            = lam ^ N * ⟪((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+                (WithLp.toLp 2 (dress (sliceW γ L) A)),
+                WithLp.toLp 2 (dress (sliceW γ L) B)⟫) ∧
+        (∀ (u v : EuclideanSpace ℝ (Fin (L + 1) → Fin 2)) (n : ℕ),
+          |(⟪u, ((opOf (tiltKernel (sliceW γ L) β lam)) ^ n) v⟫)
+              - (⟪vacOf Om, u⟫) * (⟪vacOf Om, v⟫)|
+            ≤ ‖u‖ * ‖v‖ * Real.exp (-m) ^ n) := by
+  obtain ⟨m, hm, hL⟩ := dobrushin_ising_uniform_gap β γ halpha0 halpha1 hwin
+  refine ⟨m, hm, fun L => ?_⟩
+  obtain ⟨lam, Om, hlam, hOm, hfix, hnorm⟩ := hL L
+  have hT : VacuumTransfer (opOf (tiltKernel (sliceW γ L) β lam)) (vacOf Om) :=
+    vacuumTransfer_opOf _ Om (tiltKernel_symm _ β lam) hOm hfix
+  exact ⟨lam, Om, hlam, hOm, hfix,
+    fun N A B => gibbsPathSum_eq_inner_pow (sliceW γ L) (sliceW_pos γ L)
+      β lam hlam.ne' N A B,
+    fun u v n => mixed_connCorr_bound hT (Real.exp_nonneg _) hnorm u v n⟩
 
 end YangMills.OS

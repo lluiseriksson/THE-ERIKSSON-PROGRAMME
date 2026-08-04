@@ -3393,3 +3393,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.act_iterate_eq_opOf_pow
 #print axioms YangMills.OS.os_reconstruction_uniform_gap
 #print axioms YangMills.OS.os_reconstruction_uniform_clustering
+#print axioms YangMills.OS.act_smul_fun
+#print axioms YangMills.OS.act_iterate_smul_fun
+#print axioms YangMills.OS.act_symWeighted_iterate_eq_smul_tilt
+#print axioms YangMills.OS.gibbsPathSum_eq_inner_pow
+#print axioms YangMills.OS.gibbsPartition_eq_inner_pow
+#print axioms YangMills.OS.norm_sub_inner_smul_le
+#print axioms YangMills.OS.pow_apply_norm_le
+#print axioms YangMills.OS.mixed_connCorr_bound
+#print axioms YangMills.OS.os_reconstruction_measure_uniform

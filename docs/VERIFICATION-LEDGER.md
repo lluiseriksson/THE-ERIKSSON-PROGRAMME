@@ -31550,3 +31550,75 @@ be fabricated on the reconciled tree.
 
 **ROLES.**  Decision: the owner.  External evaluation: the owner's
 evaluator.  Archival and this record: this desk.
+
+
+## Addendum 621 (2026-08-05, **OS-R-2 module GREEN on the plane in
+three passes (8-10); pass-11 wiring predictions REGISTERED before
+measurement**)
+
+**What grew.**  The OS-R module was extended in place (same file,
+YangMills/OS/OSReconstructionUniform.lean; no new module) from the
+pass-5 wired version (sha 5445429f, 12347 bytes, 7 endpoints) to the
+OS-R-2 version: sha256
+d9919e256ae59ac9189e397e5abf1249cfaca3284efa8f1a9307f86a27bac149,
+20428 bytes.  Nine new public theorems:
+
+* `act_smul_fun`, `act_iterate_smul_fun` -- scalar transport of the
+  raw kernel action and its iterates (helpers, printed anyway);
+* `act_symWeighted_iterate_eq_smul_tilt` -- N-step tilt scaling: the
+  raw symWeighted N-fold action equals lam^N times the tilted one;
+* `gibbsPathSum_eq_inner_pow` (B1, EXACT) -- `gibbsPathSum w beta N A B
+  = lam^N * <(opOf (tiltKernel w beta lam))^N (dress A), dress B>`;
+* `gibbsPartition_eq_inner_pow` (B2, EXACT) -- the partition function
+  as the same matrix element at A = B = 1;
+* `norm_sub_inner_smul_le` -- the Pythagoras step on a generic real
+  Hilbert space (projection against a unit vector);
+* `pow_apply_norm_le` -- geometric decay of operator powers under a
+  norm bound on the projected complement;
+* `mixed_connCorr_bound` -- mixed connected-correlator decay on a
+  generic Hilbert space, n = 0 by Pythagoras, n >= 1 via
+  `projected_pow_succ`;
+* `os_reconstruction_measure_uniform` -- THE endpoint: the raw Gibbs
+  measure identification clause (exact identity) + the mixed decay
+  clause, witnesses consumed verbatim from
+  `dobrushin_ising_uniform_gap` + `vacuumTransfer_opOf` +
+  `tiltKernel_symm`.
+
+**Pass history (all witnessed on the plane, warm /content/osr1).**
+Pass 8 (staged 26a67a625): five `expected token` errors, ALL on
+inner-product lines -- at this Mathlib pin `open scoped
+RealInnerProductSpace` provides PLAIN angle-bracket notation, not the
+`_R`-subscripted form; fix = open the scope + strip 22 subscripts
+(committed 866dfb8fd, pass 9).  Pass 9: single surviving error 340:4,
+an `nlinarith` failure in the Pythagoras lemma whose hypothesis
+carried both `<v,Om>*<v,Om>` and `|<v,Om>|^2` while only one
+orientation was supplied; fix = arm nlinarith with both
+`sq_abs` orientations + `sq_nonneg` + `real_inner_comm` (committed
+8462cb31a, pass 10).  Pass 10: **ELAB_EXIT 0**, `SOURCE 20428
+d9919e256ae59ac9` printed by the cell -- the plane elaborated
+byte-identical source to the local scratch (hash matched before
+banking; the banked repo file hashes identically).
+
+**Pass-11 predictions, REGISTERED NOW, measured by
+scripts/osr2_pass11_wiring.py in the next commit:**
+
+1. `lake build YangMillsCore` total = **8481 EXACT** (file grew, no
+   module added; tenth consecutive exact count prediction if it
+   holds).
+2. Full oracle run reports = **3026 EXACT** (3017 at the pass-6/7
+   runs + 9 new `#print axioms` lines).  Static grep at this tip says
+   3053 lines; ghost #26 -- only the RUN's count is honest; both are
+   recorded, neither assumed.
+3. sorryAx reports = **0**; every joined report on the standard
+   triple `[propext, Classical.choice, Quot.sound]` (continuation-
+   joining checker of Add. 619, subset-of-triple residuals allowed as
+   there).
+
+**RECONCILIATION FLAG** of Add. 620 stands; OS-R-2 is being fabricated
+entirely on d3-closure, which resolves it de facto in this lane's
+favour unless the owner rules otherwise.
+
+**ROLES.**  Fabrication + unit design: this desk.  Plane executions:
+autonomous via the browser bridge (this desk driving Colab directly;
+no owner paste).  Audit of the wiring numbers: the pass-11 unit
+itself, predictions above committed before measurement.
