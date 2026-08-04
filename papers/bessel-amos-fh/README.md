@@ -7,7 +7,8 @@ Eriksson, August 2026.
 Contents: `bessel_amos_fh.tex` / `.pdf`, the original unit-step audit
 `verify_fh.py`, the fractional adversarial audit
 `../../scripts/audit49_fractional_bessel.py`, and the integrated Lean module
-`../../AmosClosure/FractionalOrder.lean`.
+pair `../../AmosClosure/BesselNegative.lean` and
+`../../AmosClosure/FractionalOrderOptimal.lean`.
 
 Status and corrected scope:
 
@@ -20,14 +21,15 @@ Status and corrected scope:
   (Amer. J. Math. 143 (2021), DOI 10.1353/ajm.2021.0024). Version 6's claim
   that fractional steps did not follow from the method was false and is
   explicitly corrected.
-- The candidate-new content is the sharp ratio formulation, optimal
-  negative-order boundary/obstruction, and machine verification. Priority
+- The candidate contribution is the optimal negative-order
+  boundary/obstruction and its machine verification. Priority
   remains subject to independent external review.
-- `AmosClosure/FractionalOrder.lean` proves the complete nonnegative-order
-  upper theorem on C4's Gamma-series Bessel implementation, with no `sorry`.
-  Colab Pro+ materialization on 2026-08-04 used Lean 4.29.0-rc6 and Mathlib
-  `07642720480157414db592fa85b626dafb71355b`; all five oracle entries return
-  `[propext, Classical.choice, Quot.sound]`.
+- The two new Lean modules prove the full optimal-domain iff, both strict
+  inequalities, and an existential upper-bound failure below the boundary,
+  with no `sorry`. Colab Pro+ materialization on 2026-08-04 used Lean
+  4.29.0-rc6 and Mathlib
+  `07642720480157414db592fa85b626dafb71355b`; the registered oracle entries
+  return `[propext, Classical.choice, Quot.sound]`.
 - The 2D Wilson `U(1)` and `SU(2)` Feynman--Hellmann sector-gap corollary is
   retained. Nothing is claimed about the open 4D mass-gap bracket.
 

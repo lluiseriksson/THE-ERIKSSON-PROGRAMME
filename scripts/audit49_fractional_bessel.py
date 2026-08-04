@@ -21,24 +21,36 @@ def rho(order: mp.mpf, x: mp.mpf) -> mp.mpf:
 
 
 def valid_domain_sweep() -> None:
-    mp.mp.dps = 70
+    mp.mp.dps = 100
     rng = random.Random(SEED)
     least_lower = (mp.inf, None)
     least_upper = (mp.inf, None)
     started = time.perf_counter()
 
     for index in range(CASES):
-        # Log-uniform stress: near-zero and large orders, nearly coincident
-        # orders, and x across seventeen decades.  Every seventeenth case
-        # pins the lower order exactly at the C4 endpoint mu = 0.
-        mu = (
-            mp.mpf("0")
-            if index % 17 == 0
-            else mp.power(10, rng.uniform(-10, 3)) * mp.mpf(rng.random())
-        )
-        delta = mp.power(10, rng.uniform(-12, 2))
-        nu = mu + delta
-        x = mp.power(10, rng.uniform(-10, 7))
+        # Modes 0--1 stress the newly formalized negative-order strip.
+        # Mode 0 lies exactly on mu+nu=0; its x-range is capped because the
+        # strict slack becomes exponentially small and finite precision is
+        # diagnostic, not a replacement for the homogeneous-ODE proof.
+        mode = index % 5
+        if mode == 0:
+            a = mp.power(10, rng.uniform(-10, -0.0001))
+            mu, nu = -a, a
+            x = mp.power(10, rng.uniform(-10, mp.log10(20)))
+        elif mode == 1:
+            a = mp.power(10, rng.uniform(-10, -0.0001))
+            mu = -a
+            nu = a + mp.power(10, rng.uniform(-12, 2))
+            x = mp.power(10, rng.uniform(-10, 7))
+        else:
+            mu = (
+                mp.mpf("0")
+                if index % 17 == 0
+                else mp.power(10, rng.uniform(-10, 3)) * mp.mpf(rng.random())
+            )
+            nu = mu + mp.power(10, rng.uniform(-12, 2))
+            x = mp.power(10, rng.uniform(-10, 7))
+        delta = nu - mu
 
         difference = rho(mu, x) - rho(nu, x)
         barrier = delta / x
@@ -89,6 +101,14 @@ def unrestricted_order_witness() -> None:
         print(f"{label}: {mp.nstr(value, 60)}")
     if not difference > barrier:
         raise AssertionError("registered witness did not violate the upper bound")
+
+    mu2 = mp.mpf("-0.8")
+    nu2 = mp.mpf("0.3")
+    x2 = mp.mpf("2")
+    excess2 = rho(mu2, x2) - rho(nu2, x2) - (nu2 - mu2) / x2
+    print("second invalid-domain excess:", mp.nstr(excess2, 60))
+    if not excess2 > 0:
+        raise AssertionError("second witness did not violate the upper bound")
 
 
 if __name__ == "__main__":

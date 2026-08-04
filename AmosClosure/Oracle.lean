@@ -17,6 +17,9 @@ import AmosClosure.AmosFamily
 import AmosClosure.AmosLowerReal
 import AmosClosure.AmosCrossing
 import AmosClosure.AmosTangency
+import AmosClosure.FractionalOrder
+import AmosClosure.BesselNegative
+import AmosClosure.FractionalOrderOptimal
 
 /-!
 Run with:
@@ -214,3 +217,19 @@ nonnegative axis, proved by the two-flow Riccati barrier. -/
 #print axioms AmosClosure.fractionalBarrierGap_seed
 #print axioms AmosClosure.besselRatioReal_fractional_upper
 #print axioms AmosClosure.besselIReal_logDeriv_fractional_lt
+
+/- C6 optimal real-order domain: extension of the Gamma-series and Riccati
+layer to nu > -1, strict order monotonicity, the exact iff boundary, and the
+two-sided theorem. -/
+#print axioms AmosClosure.summable_besselRealTerm_gt_neg_one
+#print axioms AmosClosure.besselIReal_pos_gt_neg_one
+#print axioms AmosClosure.besselIReal_recurrence_gt_neg_one
+#print axioms AmosClosure.besselIReal_hasDerivAt_gt_neg_one
+#print axioms AmosClosure.besselRatioReal_hasDerivAt_gt_neg_one
+#print axioms AmosClosure.fractionalBarrierGap_hasDerivAt_ode
+#print axioms AmosClosure.besselRatioReal_strictAnti_order
+#print axioms AmosClosure.besselRatioReal_fractional_upper_gt_neg_one_of_pos_sum
+#print axioms AmosClosure.besselRatioReal_fractional_upper_gt_neg_one_of_sum_eq_zero
+#print axioms AmosClosure.exists_fractional_upper_failure_of_sum_neg
+#print axioms AmosClosure.besselRatioReal_fractional_upper_all_iff
+#print axioms AmosClosure.besselRatioReal_fractional_two_sided

@@ -18,6 +18,8 @@ import AmosClosure.AmosLowerReal
 import AmosClosure.AmosCrossing
 import AmosClosure.AmosTangency
 import AmosClosure.FractionalOrder
+import AmosClosure.BesselNegative
+import AmosClosure.FractionalOrderOptimal
 
 /-!
 # AmosClosure

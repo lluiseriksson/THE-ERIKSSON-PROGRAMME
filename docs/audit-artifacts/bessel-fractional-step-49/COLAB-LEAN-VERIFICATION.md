@@ -1,38 +1,47 @@
-# Colab Lean verification record — audit 49
+# Colab Lean verification record — audit 49, optimal-domain completion
 
-This record documents the remote verification of the exact local source later
-included in the final frozen body.  It is an execution record, not a terminal
-independent certification.
+This is an execution record for the source offered to external review, not a
+terminal self-certification.
 
 - Date: 2026-08-04
 - Visible signed-in account: `lluiseriksson@gmail.com`
 - Runtime: Google Colab Pro+, CPU, high-memory; no GPU
-- Runtime opened: 2026-08-04 15:42:40 UTC (17:42:40 CEST)
-- Runtime disconnected and deleted: 2026-08-04 16:01:33 UTC (18:01:33 CEST)
-- Elapsed wall time: 18 min 53 s
-- Local Windows policy: no Lean, Lake, oracle, or sustained computation was run
-  locally
+- Runtime opened: approximately 20:07 CEST
+- Runtime disconnected and deleted: 20:38 CEST
+- Elapsed wall time: 31 minutes
+- Other active owner sessions: three, left untouched
+- Local Windows: no Lean, Lake, oracle, or sustained computation
+- Toolchain: Lean `v4.29.0-rc6`
+- Mathlib: `07642720480157414db592fa85b626dafb71355b`
 
 Commands and results:
 
-1. `lake build AmosClosure.AmosBarrierReal`
-   - success, 8164 jobs
-2. `lake env lean AmosClosure/FractionalOrder.lean`
-   - success, no diagnostics
-3. `lake build AmosClosure.FractionalOrder`
-   - success, 8165 jobs; `.olean` materialized
-4. `lake env lean Oracle49.lean`
-   - success
-   - each of the five audited declarations printed only
+1. `lake build AmosClosure.BesselNegative`
+   - success, 8163 jobs; `.olean` materialized
+2. `lake build AmosClosure.FractionalOrderOptimal`
+   - success, 8167 jobs; `.olean` materialized
+3. `lake build AmosClosure`
+   - success, 8178 jobs; integrated root `.olean` materialized
+4. `lake env lean AmosClosure/Oracle.lean`
+   - success; all historical and twelve new registrations printed only
      `[propext, Classical.choice, Quot.sound]`
 
-Audited declarations:
+New registered declarations:
 
-- `fractionalBarrierGap_hasDerivAt`
-- `fractionalBarrierGap_hasDerivAt_of_touch`
-- `fractionalBarrierGap_seed`
-- `besselRatioReal_fractional_upper`
-- `besselIReal_logDeriv_fractional_lt`
+- `summable_besselRealTerm_gt_neg_one`
+- `besselIReal_pos_gt_neg_one`
+- `besselIReal_recurrence_gt_neg_one`
+- `besselIReal_hasDerivAt_gt_neg_one`
+- `besselRatioReal_hasDerivAt_gt_neg_one`
+- `fractionalBarrierGap_hasDerivAt_ode`
+- `besselRatioReal_strictAnti_order`
+- `besselRatioReal_fractional_upper_gt_neg_one_of_pos_sum`
+- `besselRatioReal_fractional_upper_gt_neg_one_of_sum_eq_zero`
+- `exists_fractional_upper_failure_of_sum_neg`
+- `besselRatioReal_fractional_upper_all_iff`
+- `besselRatioReal_fractional_two_sided`
 
-The transient notebook/runtime was closed after the checks.  No Claude Code,
-Opus 5, or Fable 5 invocation was made.
+The notebook tab was closed immediately after deleting the current runtime to
+prevent automatic reconnection. No Claude Code, Opus 5, or Fable 5 invocation
+was made because a visible `masterythief@gmail.com` session could not be
+confirmed.

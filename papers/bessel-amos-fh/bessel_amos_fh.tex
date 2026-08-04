@@ -43,9 +43,10 @@ $h=b$ at a contact point, then
 \]
 The second identity, not the first, is the contact orientation.  It
 proves the bound for $\mu+\nu>0$.  The degenerate boundary
-$\mu+\nu=0$ follows from the connection formula between $I_{-a}$,
-$I_a$, and $K_a$ together with their Wronskian.  Conversely the
-large-$x$ expansion gives counterexamples whenever $\mu+\nu<0$.
+$\mu+\nu=0$ follows from uniqueness for the resulting homogeneous
+scalar ODE.  Conversely, elementary recurrence bounds force a
+counterexample whenever $\mu+\nu<0$; neither a $K$ function nor a
+Bessel asymptotic expansion is needed.
 Thus, on the natural positivity range $-1<\mu<\nu$, the upper bound
 holds for every $x>0$ if and only if $\mu+\nu\ge0$.
 
@@ -53,9 +54,10 @@ The nonnegative-order statement itself is known: it is equivalent to
 Lemma~10 of Freitas--Laugesen.  Their proof already contains a
 first-contact argument, so no novelty is claimed for that mechanism.
 The contributions here are the explicit sharp ratio formulation, the
-optimal extension/obstruction across negative orders, the correction
-of an earlier unit-step paper statement, and a Lean~4/Mathlib
-formalization of the complete nonnegative-order upper bound.  The Lean
+optimal extension/obstruction across negative orders, an elementary
+proof without asymptotics, the correction of an earlier unit-step
+paper statement, and a Lean~4/Mathlib formalization of the complete
+optimal-domain theorem.  The Lean
 artifact has no \texttt{sorry}; its axiom oracle returns exactly
 \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
 We retain the resulting Feynman--Hellmann application: every character
@@ -100,8 +102,8 @@ holds for every $x>0$ if and only if
 \[
   \mu+\nu\ge0.
 \]
-If $\mu+\nu<0$, then the upper inequality fails for all sufficiently
-large $x$.
+If $\mu+\nu<0$, then the upper inequality fails for at least one
+$x>0$.
 \end{theorem}
 
 \begin{remark}[priority and corrected scope]
@@ -118,9 +120,16 @@ $\rho_\mu$ and $\rho_\nu$.  We therefore claim neither the
 nonnegative-order theorem nor the first-contact mechanism as new.
 Segura's Riccati/nullcline analysis \cite{Segura2021} is also close in
 method, although its stated monotonicity results vary $x$ at fixed
-order rather than compare two arbitrary orders.  The genuinely new
-candidate isolated here is the optimal negative-order boundary in
-Theorem~\ref{thm:domain}, together with the formal verification.
+order rather than compare two arbitrary orders.  We also checked the
+negative-order individual-ratio bounds of Hornik--Gr\"un
+\cite{HornikGrun2024} and the accessible primary record for the later
+modified-Lommel monotonicity paper of Mao--Tian \cite{MaoTian}; neither
+source states the cross-order iff boundary below.  The candidate
+contribution isolated here is the optimal negative-order
+classification in Theorem~\ref{thm:domain}, together with its formal
+verification.  A targeted primary-source search found no prior
+statement of this exact boundary; that conclusion remains explicitly
+subject to external priority review.
 \end{remark}
 
 The purpose of this corrected note is threefold.
@@ -129,9 +138,10 @@ The purpose of this corrected note is threefold.
 Riccati contact identity.  This avoids Bessel zeros and high-order
 uniform asymptotics in the proof region $\mu+\nu>0$.
 
-\emph{Second}, we resolve the contact-degenerate line $\mu+\nu=0$ and
-show by asymptotics that crossing it reverses the large-$x$ sign.  This
-produces an exact global domain rather than a sufficient condition.
+\emph{Second}, we resolve the contact-degenerate line $\mu+\nu=0$ by
+ODE uniqueness and prove necessity below the line from the recurrence
+alone.  This produces an exact global domain rather than a sufficient
+condition, without invoking asymptotics.
 
 \emph{Third}, we record a consequence in two-dimensional lattice gauge
 theory (we are not aware of an explicit statement in the literature,
@@ -146,7 +156,7 @@ statement about the exactly soluble two-dimensional theory; nothing
 here is claimed about four-dimensional gauge theory.
 
 Section~\ref{sec:lean} presents the machine-checked Lean~4/Mathlib
-verification of the full nonnegative-order upper theorem (no
+verification of the full optimal-domain theorem (no
 \texttt{sorry}; standard axioms only).
 Section~\ref{sec:numerics} reports an independent numerical audit.
 
@@ -181,66 +191,79 @@ This distinction is essential: the first displayed derivative is the
 derivative of the ratio difference, whereas first-contact orientation
 is controlled by the second.
 
-For $\alpha>-1$, the defining series gives
+For $\alpha>-1$, positivity of the Gamma series and the three-term
+recurrence give the exact reciprocal identity
 \begin{equation}
-\label{eq:smallx}
- \rho_\alpha(x)=\frac{x}{2(\alpha+1)}
- \left(1-\frac{x^2}{4(\alpha+1)(\alpha+2)}+O(x^4)\right).
+\label{eq:reciprocal}
+ \frac1{\rho_\alpha(x)}=\frac{2(\alpha+1)}x+\rho_{\alpha+1}(x).
 \end{equation}
-Consequently $h(x)>0$ for small $x$, while $G(x)\to-\infty$ as
-$x\downarrow0$.  If $\mu+\nu>0$ and $G$ had a first zero $c$, then
-$G<0$ immediately to its left but \eqref{eq:touch} would give
-$G'(c)<0$.  Differentiability would instead force $G>G(c)=0$
-immediately to the left, a contradiction.  Hence $G<0$ for all
-$x>0$.  This proves the upper half of Theorem~\ref{thm:main} and the
-sufficiency assertion of Theorem~\ref{thm:domain} away from the
-boundary.  Notice also that at any putative zero of $h$,
-\eqref{eq:twoflow} gives
+In particular,
+\begin{equation}
+\label{eq:seedbounds}
+ 0<\rho_\alpha(x)<\frac{x}{2(\alpha+1)},\qquad
+ \rho_\alpha(x)>
+ \frac1{2(\alpha+1)/x+x/(2(\alpha+2))}.
+\end{equation}
+These elementary bounds give an explicit interval near zero on which
+both $h>0$ and $G<0$; no asymptotic notation is required.
+
+If $\mu+\nu>0$ and $G$ had a first zero $c$, then $G<0$
+immediately to its left but \eqref{eq:touch} would give $G'(c)<0$.
+Differentiability would instead force $G>G(c)=0$ immediately to the
+left, a contradiction.  Hence $G<0$ for all $x>0$.  This proves the
+upper half of Theorem~\ref{thm:main} and sufficiency in
+Theorem~\ref{thm:domain} away from the boundary.  At a putative zero
+of $h$, \eqref{eq:twoflow} gives
 \[
  h'=\frac{2\delta}{x}\rho_\nu>0.
 \]
-Together with the small-$x$ sign this is the analogous first-contact
-orientation for the lower inequality.  More generally, strict order
-decrease of $\alpha\mapsto\rho_\alpha(x)$ on $(-1,\infty)$ is a
-classical consequence of order log-concavity; see
-\cite{BariczRatio}.  We use that standard result for the full lower
-statement.
+The same first-contact argument, now using the positive seed from
+\eqref{eq:seedbounds}, proves $h>0$ throughout $(-1,\infty)$.
 
-It remains to handle the degenerate line $\mu+\nu=0$.  Write
-$\mu=-a$, $\nu=a$, where $0<a<1$.  The connection formula
-\cite[10.27.4]{DLMF}
+For the boundary and obstruction it is useful to retain the gap rather
+than specialize at contact.  Direct algebra in the two Riccati flows
+gives the exact linear equation
 \begin{equation}
-\label{eq:connection}
- I_{-a}(x)=I_a(x)+\frac{2}{\pi}\sin(\pi a)K_a(x)
+\label{eq:gapode}
+ G'=-\left(\rho_\mu+\rho_\nu+
+       \frac{\mu+\nu+1}{x}\right)G
+       -\frac{\delta(\mu+\nu)}{x^2}.
 \end{equation}
-has a strictly positive coefficient of $K_a$.  The Wronskian
-\cite[10.28.2]{DLMF} gives
-\begin{equation}
-\label{eq:wronskian}
- \left(\frac{K_a}{I_a}\right)'
- =\frac{K_a'I_a-K_aI_a'}{I_a^2}
- =-\frac{1}{xI_a(x)^2}<0.
-\end{equation}
-Thus $I_a/I_{-a}=\bigl(1+c_aK_a/I_a\bigr)^{-1}$ is strictly
-increasing.  Equivalently,
-$(\log I_a)'-(\log I_{-a})'>0$, which by
-$(\log I_\alpha)'=\rho_\alpha+\alpha/x$ is precisely
-$\rho_{-a}-\rho_a<2a/x$.  This proves strictness on the boundary.
+When $\mu+\nu=0$ this equation is homogeneous.  If $G$ vanished after
+the negative seed, reverse the interval from that zero back to the
+seed.  The coefficient is continuous and bounded there, so uniqueness
+for a scalar linear ODE (equivalently, Gronwall's inequality) would
+force $G$ to vanish identically on the reversed interval, contradicting
+the strict seed.  Thus $G<0$ also on the boundary.
 
-Finally, the standard large-$x$ expansion is
+It remains to prove that the half-plane cannot be enlarged.  Suppose
+$s:=\mu+\nu<0$ and, for contradiction, $G(x)<0$ for every $x>0$.
+From \eqref{eq:seedbounds}, whenever
+$x^2\ge12(\alpha+1)(\alpha+2)$,
 \begin{equation}
-\label{eq:largex}
- \rho_\alpha(x)=1-\frac{\alpha+\tfrac12}{x}
- +\frac{4\alpha^2-1}{8x^2}+O(x^{-3}).
+\label{eq:largelower}
+ \rho_\alpha(x)>\frac{3(\alpha+2)}{2x}.
 \end{equation}
-Hence
-\begin{equation}
-\label{eq:obstruction}
- h(x)-\frac{\delta}{x}
- =-\frac{\delta(\mu+\nu)}{2x^2}+O(x^{-3}).
-\end{equation}
-When $\mu+\nu<0$, the right-hand side is positive for all sufficiently
-large $x$, proving necessity and completing Theorem~\ref{thm:domain}.
+Hence, for all sufficiently large $x$,
+\[
+ A(x):=\rho_\mu(x)+\rho_\nu(x)+\frac{s+1}{x}
+ >\frac{5s+14}{2x}>\frac2x,
+\]
+where the last inequality uses $s>-2$.  Put
+$F=-\delta s>0$, $H=x^2G$, and $J=H-Fx$.  Equation
+\eqref{eq:gapode} yields
+\[
+ H'=(2x-x^2A)G+F>F,
+ \qquad J'>0
+\]
+on that tail, because both $2x-x^2A$ and $G$ are negative.  Choose a
+tail point $X$ and then $z=X-H(X)/F+1$.  Monotonicity of $J$ gives
+\[
+ H(z)\ge H(X)+F(z-X)=F>0,
+\]
+contradicting $H(z)=z^2G(z)<0$.  Therefore the upper bound fails at
+some positive argument whenever $\mu+\nu<0$, completing
+Theorem~\ref{thm:domain} without asymptotics.
 
 For a concrete audit witness, at $100$ decimal digits,
 \[
@@ -352,7 +375,9 @@ is equivalent to the classical Amos upper bound \eqref{eq:amos}}. Any
 of the many proofs of the latter \cite{Amos, Segura2011, HornikGrun,
 RuizSegura} yields the former, and conversely the continuous
 monotonicity of Freitas--Laugesen \cite{FreitasLaugesen} yields, in
-particular, a Bessel-zero proof of the Amos bound. The bound $U_\nu$
+particular, the Amos bound.  Their proof of order monotonicity is the
+first-contact argument described in Remark~\ref{rem:scope}, not a
+Bessel-zero argument. The bound $U_\nu$
 is also recognizable as the $b_0$-type bound of \cite{Segura2011}: the
 positive root of the Riccati-derived quadratic
 $t^2 + \frac{2\nu+1}{x}t - 1 = 0$.
@@ -471,31 +496,35 @@ programme to which this note belongs, the 2D instance is
 \label{sec:lean}
 
 \begin{sloppypar}
-The continuous-order upper theorem on $0\le\mu<\nu$ is formalized in
-the C4 module \texttt{FractionalOrder.lean}.  Unlike the earlier
-standalone algebraic artifact, this file works on C4's actual
-Gamma-series definition of $I_\nu$, invokes the proved real-order
-Riccati equation and Amos bound, supplies a uniform small-$x$ seed, and
-executes the $\inf$ first-contact argument.  It contains no
-\texttt{sorry} and introduces no project axiom.  The checked endpoint
-is:
+The full optimal-domain theorem is formalized in the C4 modules
+\texttt{BesselNegative.lean} and
+\texttt{FractionalOrderOptimal.lean}.  The first extends the actual
+Gamma-series definition, positivity, recurrence, derivative identity,
+and Riccati equation from nonnegative order to the natural strip
+$\nu>-1$.  The second checks the strict order decrease, the positive-sum
+first-contact barrier, the homogeneous-ODE boundary argument, and the
+recurrence-only negative-sum obstruction.  Both files contain no
+\texttt{sorry} and introduce no project axiom.  The principal checked
+endpoints are:
 \end{sloppypar}
 \begin{verbatim}
-theorem besselRatioReal_fractional_upper
-    (mu nu : Real) (hmu : 0 <= mu) (hmunu : mu < nu)
-    {x : Real} (hx : 0 < x) :
+theorem besselRatioReal_fractional_upper_all_iff
+    (mu nu : Real) (hmu : -1 < mu) (hmunu : mu < nu) :
+    (forall x, 0 < x ->
+      besselRatioReal mu x - besselRatioReal nu x
+        < (nu - mu) / x) <-> 0 <= mu + nu
+
+theorem besselRatioReal_fractional_two_sided
+    (mu nu : Real) (hmu : -1 < mu) (hmunu : mu < nu)
+    (hsum : 0 <= mu + nu) {x : Real} (hx : 0 < x) :
+    0 < besselRatioReal mu x - besselRatioReal nu x /\
     besselRatioReal mu x - besselRatioReal nu x
       < (nu - mu) / x
-
-theorem besselIReal_logDeriv_fractional_lt
-    (mu nu : Real) (hmu : 0 <= mu) (hmunu : mu < nu)
-    {x : Real} (hx : 0 < x) :
-    deriv (fun y => Real.log (besselIReal mu y)) x
-      < deriv (fun y => Real.log (besselIReal nu y)) x
 \end{verbatim}
-The implementation exposes three audit lemmas: the derivative of the
-signed gap, its exact derivative at contact, and the small-$x$ seed.
-The axiom oracle for all five declarations returns exactly:
+The obstruction endpoint is existential: if $\mu+\nu<0$, Lean produces
+an $x>0$ at which the upper inequality fails.  The implementation also
+exposes the full signed-gap ODE and the exact contact derivative.  The
+axiom oracle for the registered headline declarations returns exactly:
 \begin{verbatim}
 [propext, Classical.choice, Quot.sound]
 \end{verbatim}
@@ -503,30 +532,30 @@ Verification used Lean \texttt{4.29.0-rc6} and pinned Mathlib commit
 \begin{center}\small
 \texttt{07642720480157414db592fa85b626dafb71355b}.
 \end{center}
-On 4 August 2026
-the module was built in a Colab Pro+ CPU/high-memory runtime: 8165 Lake
-jobs completed, the module's \texttt{.olean} was materialized, and the
-oracle file compiled.  Runtime opening and teardown were recorded; the
-runtime was disconnected and deleted after 18 minutes 53 seconds.
+On 4 August 2026 the modules were built in a Colab Pro+
+CPU/high-memory runtime: 8167 Lake jobs completed for the optimal
+module, its \texttt{.olean} was materialized, and the oracle file was
+compiled.  Runtime opening and teardown were recorded; the runtime was
+disconnected and deleted after 31 minutes.
 
-\emph{Honest scope.}  The machine-checked theorem covers the sharp
-upper inequality on the nonnegative order axis.  The classical lower
-inequality and the negative-order boundary/obstruction in
-Theorem~\ref{thm:domain} are proved on paper but are not represented in
-C4, whose real-order Bessel interface currently assumes nonnegative
-order.  Source presence is not reported as verification: the claim
-above refers to the materialized Colab build and its oracle output.
+\emph{Honest scope.}  The machine-checked theorem now covers both strict
+inequalities on the optimal strip, including the negative-order
+boundary and obstruction in Theorem~\ref{thm:domain}.  The priority
+claim is not machine-checkable and remains a candidate pending an
+independent bibliographic review.  Source presence is not reported as
+verification: the claim above refers to the materialized Colab builds
+and their oracle output.
 
 \section{Numerical audit}
 \label{sec:numerics}
 
-The fractional-order statement was attacked independently at 70
+The fractional-order statement was attacked independently at 100
 decimal digits on 800 deterministic adversarial points (seed
 \texttt{490060}), including tiny order separations, values near
 $\mu+\nu=0$, and arguments from the small- to large-$x$ regimes.  No
-failure occurred in the valid nonnegative domain; this is diagnostic,
+failure occurred in the valid domain $\mu+\nu\ge0$; this is diagnostic,
 not proof.  The same script verifies the explicit invalid-domain
-witness following \eqref{eq:obstruction}.  In addition, the older
+witness in Section~\ref{sec:proof}.  In addition, the older
 unit-step/application inequalities were checked at 50 decimal digits
 (mpmath), on the grid $\beta \in \{10^{-2}, \dots, 10^4\}$ (16 values,
 geometrically spread), $\nu \in \{0, 1, \dots, 29\} \cup \{50, 100,
@@ -561,9 +590,9 @@ second error in version~6: the paper said its method did not close
 fractional steps and misdescribed Lemma~10 as a Bessel-zero proof.  The
 contact calculation \eqref{eq:touch} corrects that statement.  This
 version separates the known nonnegative-order theorem and its known
-first-contact route from the candidate-new optimal negative-order
-classification.  Numerical residuals and a finite mesh are never used
-as proof.
+first-contact route from the candidate contribution: the optimal
+negative-order classification, now formalized end to end.  Numerical
+residuals and a finite mesh are never used as proof.
 
 \begin{thebibliography}{10}
 
@@ -614,6 +643,18 @@ J.~Segura,
 Bessel functions and sharp trigonometric bounds},
 Results Math. \textbf{76} (2021), article 221;
 doi:10.1007/s00025-021-01531-1; arXiv:2105.02524.
+
+\bibitem{HornikGrun2024}
+K.~Hornik and B.~Gr\"un,
+\emph{Generalized Amos-type bounds for modified Bessel function ratios},
+Math. Inequal. Appl. \textbf{27} (2024), 1001--1024;
+doi:10.7153/mia-2024-27-55.
+
+\bibitem{MaoTian}
+Z.-H.~Mao and J.-F.~Tian,
+\emph{The monotonicity of the ratio of two modified Lommel functions},
+Results Math. \textbf{80} (2025), article 248;
+doi:10.1007/s00025-025-02488-1.
 
 \bibitem{BariczTuran}
 \'A.~Baricz,

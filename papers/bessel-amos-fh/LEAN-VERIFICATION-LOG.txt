@@ -1,16 +1,28 @@
-LEAN VERIFICATION LOG - papers/bessel-amos-fh/FHBesselAmos.lean
-Date: 2026-07-09
-Machine: operator's Windows host (elan 4.2.1)
-Command: lake env lean FHBesselAmos.lean
-Toolchain: leanprover/lean4:v4.30.0-rc2
-Mathlib commit: cd3b69baae9cd81a572a3720f2372655eca39038
-Exit code: 0
-Output (verbatim):
-'amos_calibration' depends on axioms: [propext, Classical.choice, Quot.sound]
-'unit_step_of_recurrence_and_amos' depends on axioms: [propext, Classical.choice, Quot.sound]
-'logderiv_unit_step_increase' depends on axioms: [propext, Classical.choice, Quot.sound]
+LEAN VERIFICATION LOG — full optimal real-order theorem
+Date: 2026-08-04
+Environment: Colab Pro+ CPU/high-memory, no GPU
+Visible account: lluiseriksson@gmail.com
+Toolchain: leanprover/lean4:v4.29.0-rc6
+Mathlib commit: 07642720480157414db592fa85b626dafb71355b
 
-No sorry, no admit, no project axioms. The two analytic inputs (three-term
-recurrence, Amos-type bound) enter as named hypotheses hrec/hamos per the
-paper's Section 5. Reproduce: place the file in a built Mathlib checkout at
-the pinned commit and run the command above.
+Commands:
+  lake build AmosClosure.BesselNegative
+    success, 8163 jobs, .olean materialized
+  lake build AmosClosure.FractionalOrderOptimal
+    success, 8167 jobs, .olean materialized
+  lake build AmosClosure
+    success, 8178 jobs, integrated root materialized
+  lake env lean AmosClosure/Oracle.lean
+    success
+
+Every registered new declaration printed exactly:
+  [propext, Classical.choice, Quot.sound]
+
+Headline declarations:
+  besselRatioReal_fractional_upper_all_iff
+  besselRatioReal_fractional_two_sided
+  exists_fractional_upper_failure_of_sum_neg
+
+No sorry, no admit, no project axioms. Runtime opened at approximately 20:07
+CEST, disconnected and deleted at 20:38 CEST (31 minutes). Lean/Lake/oracles
+were not run on the local Windows host.
