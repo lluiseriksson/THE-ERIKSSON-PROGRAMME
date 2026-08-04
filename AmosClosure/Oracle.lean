@@ -206,3 +206,11 @@ exists-unique.  Six entries; 110 total at this registration. -/
 #print axioms AmosClosure.crossing_unique_unconditional
 #print axioms AmosClosure.amosFamily_global_crossing
 #print axioms AmosClosure.amosFamily_crossing_orientation
+
+/- C6 continuous-order endpoint: arbitrary real order increments on the
+nonnegative axis, proved by the two-flow Riccati barrier. -/
+#print axioms AmosClosure.fractionalBarrierGap_hasDerivAt
+#print axioms AmosClosure.fractionalBarrierGap_hasDerivAt_of_touch
+#print axioms AmosClosure.fractionalBarrierGap_seed
+#print axioms AmosClosure.besselRatioReal_fractional_upper
+#print axioms AmosClosure.besselIReal_logDeriv_fractional_lt

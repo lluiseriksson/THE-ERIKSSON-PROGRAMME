@@ -17,6 +17,7 @@ import AmosClosure.AmosFamily
 import AmosClosure.AmosLowerReal
 import AmosClosure.AmosCrossing
 import AmosClosure.AmosTangency
+import AmosClosure.FractionalOrder
 
 /-!
 # AmosClosure

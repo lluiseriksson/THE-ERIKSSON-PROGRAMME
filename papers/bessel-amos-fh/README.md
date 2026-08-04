@@ -1,41 +1,35 @@
-# Bessel–Amos / Feynman–Hellmann 2D note (v3, post-review)
+# Bessel--Amos / Feynman--Hellmann 2D note (v7, corrected continuous-order version)
 
-**An Elementary Recurrence–Amos Proof of the Unit-Step Order-Monotonicity of
-(log I_ν)′, with a Feynman–Hellmann Application to Two-Dimensional Lattice
-Gauge Theory** — Lluis Eriksson, July 2026.
+**Sharp Continuous-Order Comparison for Modified-Bessel Ratios: a Riccati
+Proof, the Optimal Real-Order Domain, and Lean Verification** -- Lluis
+Eriksson, August 2026.
 
-Contents: `bessel_amos_fh.tex` / `.pdf` (7 pp) and `verify_fh.py`
-(independent numerical audit: sympy symbolic identities + mpmath dps=50 grid
-checks of every inequality used; run `python verify_fh.py`).
+Contents: `bessel_amos_fh.tex` / `.pdf`, the original unit-step audit
+`verify_fh.py`, the fractional adversarial audit
+`../../scripts/audit49_fractional_bessel.py`, and the integrated Lean module
+`../../AmosClosure/FractionalOrder.lean`.
 
-Status and honest scope:
-- The continuous order-monotonicity of I_ν′/I_ν is **known**
-  (Freitas–Laugesen, arXiv:1810.07461, Lemma 10). This note proves the
-  **unit-step** form 0 < ρ_ν − ρ_{ν+1} < 1/x elementarily (recurrence +
-  exactly-calibrated Amos bound, no Bessel zeros), shows unit-step
-  monotonicity ⟺ Amos upper bound, and derives the 2D corollary:
-  every character-sector mass gap of 2D Wilson lattice gauge theory
-  (U(1) and SU(2)) is strictly decreasing in β.
-- This is the proved 2D instance of the programme's 4D bracket
-  m′(β) ≤ 0 (THE_FH_BESSEL_THEOREM, v87). Nothing is claimed about 4D.
-- Lean targets (Section 5) are the exact goals for the
-  lean-transfer-matrix satellite: `amos_calibration` (~30 lines, pure real
-  algebra) and the recurrence-hypothesis chain.
+Status and corrected scope:
 
-Review trail: v1 (novelty claim corrected in-house via literature red-team) →
-7.2/10 external review (unit-step scope gap) → v2 (theorem restated to what
-the proof closes) → 8.0/10 → v3 (SU(2) character-coefficient normalization
-fixed: c_j = I_{2j+1}(2β)/β after dividing by d_j = 2j+1; "unstated
-corollary" softened).
+- For `rho_a(x)=I_{a+1}(x)/I_a(x)`, the paper proves
+  `0 < rho_mu-rho_nu < (nu-mu)/x` for `0 <= mu < nu`, and classifies the
+  natural real-order domain: for `-1 < mu < nu`, the upper bound holds for
+  every `x>0` exactly when `mu+nu >= 0`.
+- The nonnegative-order logarithmic-derivative monotonicity and a
+  first-contact proof are already in Freitas--Laugesen, Lemma 10
+  (Amer. J. Math. 143 (2021), DOI 10.1353/ajm.2021.0024). Version 6's claim
+  that fractional steps did not follow from the method was false and is
+  explicitly corrected.
+- The candidate-new content is the sharp ratio formulation, optimal
+  negative-order boundary/obstruction, and machine verification. Priority
+  remains subject to independent external review.
+- `AmosClosure/FractionalOrder.lean` proves the complete nonnegative-order
+  upper theorem on C4's Gamma-series Bessel implementation, with no `sorry`.
+  Colab Pro+ materialization on 2026-08-04 used Lean 4.29.0-rc6 and Mathlib
+  `07642720480157414db592fa85b626dafb71355b`; all five oracle entries return
+  `[propext, Classical.choice, Quot.sound]`.
+- The 2D Wilson `U(1)` and `SU(2)` Feynman--Hellmann sector-gap corollary is
+  retained. Nothing is claimed about the open 4D mass-gap bracket.
 
-v4 (8.35/10 review applied): explicit statement that the elementary novelty
-is the UPPER bound (positivity imported from Turán); physics citations added
-for the exact character-basis diagonalization (Gross–Witten PRD 21 (1980) 446;
-Montvay–Münster); formalization targets rewritten as syntactically coherent
-Lean 4 signatures (`amos_calibration`, `unit_step_of_recurrence_and_amos`)
-with `sorry` marking the two proof obligations; repository links added to the
-numerical-audit and acknowledgements sections.
-
-v5 (8.65/10 review applied): Lean Target 2 signature now carries (hnu : 0 <= nu) for a clean amos_calibration call; PDF text-layer encoding fixed (cmap + lmodern + glyphtounicode) so extracted text is search/copy-clean.
-
-v6 (FINAL, submitted to viXra): the algebraic core is now MACHINE-CHECKED - FHBesselAmos.lean proves amos_calibration, unit_step_of_recurrence_and_amos and logderiv_unit_step_increase with NO sorry; axiom oracle [propext, Classical.choice, Quot.sound] for all three (lake env lean, Lean 4.30.0-rc2, Mathlib cd3b69b). hrec/hamos remain classical cited inputs (honest scope in Section 5).
+Audit record: `../../docs/BESSEL-FRACTIONAL-STEP-AUDIT-20260804.md` and
+`../../docs/audit-artifacts/bessel-fractional-step-49/FREEZE.md`.
