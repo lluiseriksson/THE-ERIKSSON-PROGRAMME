@@ -243,6 +243,21 @@ certificados de intervalos y relés de alta `beta`, no mediante las dos piernas
 de este ataque. Eso es una solución global asistida por certificados, pero no
 convierte la barrera parabólica propuesta en un lema analítico nuevo.
 
+### 7.1. Endurecimiento tras la primera revisión especializada
+
+La versión revisada despliega las cuatro cargas que la evaluación inicial
+marcó como comprimidas: un lema uniforme para restos Bessel diferenciados,
+la separación cuantitativa de la ventana de Laplace y sus dos colas, cotas
+de las envolventes mediante productos explícitos de momentos, y un radio
+continuo `rho(beta)` que controla exactamente positividad y los dos gaps de
+cocientes alterados. El bump se sustituyó por uno cuyo exponente es
+estrictamente cóncavo y tiene máximo global probado en `beta=R`; las regiones
+pequeña, compacta y grande de `beta` se cierran por separado.
+
+El kill-test ahora comprueba además que en `beta=32` la inversión de signo
+ensayada queda dentro de ese radio con `rho/c3 = 965917182.921`. Este número
+es diagnóstico y no se usa en la demostración ordinaria.
+
 ## 8. Resultado, coste y criterio de reanudación
 
 - `F_B>0`: **PASS exacto**, coste de formalización moderado si se formaliza la

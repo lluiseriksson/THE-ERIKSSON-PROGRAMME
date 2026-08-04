@@ -206,14 +206,28 @@ def check_endpoint() -> None:
     perturbed[2] -= 2 * c3
     original_ratios = [data.a[m] / data.b[m] for m in range(1, 8)]
     perturbed_ratios = [perturbed[m] / data.b[m] for m in range(1, 8)]
+    d12 = original_ratios[1] - original_ratios[0]
+    d23 = original_ratios[2] - original_ratios[1]
+    rho = min(
+        data.a[1] / 4,
+        data.a[2] / 2,
+        d12 / (2 * (2 / data.b[1] + 1 / data.b[2])),
+        data.b[2] * d23 / 2,
+    )
     positive = all(perturbed[m] > 0 for m in range(1, 8))
     increasing = all(
         perturbed_ratios[m] < perturbed_ratios[m + 1]
         for m in range(len(perturbed_ratios) - 1)
     )
     print(
-        "STRUCTURAL_PERTURBATION beta=32 c3_over_A1=%s positive=%s ratio_increasing=%s"
-        % (mp.nstr(c3 / data.a[1], 10), positive, increasing)
+        "STRUCTURAL_PERTURBATION beta=32 c3_over_A1=%s rho_over_c3=%s "
+        "positive=%s ratio_increasing=%s"
+        % (
+            mp.nstr(c3 / data.a[1], 10),
+            mp.nstr(rho / abs(c3), 12),
+            positive,
+            increasing,
+        )
     )
     require(all(
         original_ratios[m] < original_ratios[m + 1]
@@ -221,6 +235,7 @@ def check_endpoint() -> None:
     ), "original_ratio_order")
     require(positive, "perturbed_coefficients_positive")
     require(increasing, "perturbed_ratio_order")
+    require(2 * abs(c3) < rho, "perturbation_inside_explicit_rho")
 
     for beta_value in (1, 8, 32, 125):
         beta_mpf = mp.mpf(beta_value)

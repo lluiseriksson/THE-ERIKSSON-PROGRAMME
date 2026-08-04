@@ -22,10 +22,10 @@ digits. Both commands completed below the 30-second per-process limit.
 
 ```text
 python scripts/wronskian_endpoint_kill_test.py --self-test-mutations
-exit 0; wall time 17.7 s
+exit 0; wall time 14.6 s
 
 python -O scripts/wronskian_endpoint_kill_test.py --self-test-mutations
-exit 0; wall time 15.2 s
+exit 0; wall time 14.9 s
 ```
 
 The two runs produced the same acceptance data:
@@ -43,13 +43,33 @@ fitted slopes: 2.10683103077, 2.23016100277, 2.2878524398
 asymptotic slope: 8-4sqrt(2)=2.34314575051
 ENDPOINT_IDENTITY beta=32 quotient=1.0000009109773
 STRUCTURAL_PERTURBATION beta=32 c3_over_A1=1.270694641e-12
-positive=True ratio_increasing=True
+rho_over_c3=965917182.921 positive=True ratio_increasing=True
 MUTATION_SELF_TEST PASS deliberate_false_predicate_rejected
 VERDICT FB_KERNEL_PASS; GLOBAL_PARABOLIC_ROUTE_FAILS_ENDPOINT_KILL_TEST
 ```
 
 All acceptance predicates are implemented with explicit exceptions, not
 Python `assert`, and therefore remain active under `python -O`.
+
+## Proof hardening after specialist review
+
+The revised manuscript addresses the four concentrated review risks
+explicitly:
+
+- differentiated fixed-order Bessel remainders are isolated in a lemma;
+- the central Laplace window and both exterior deficit regions are bounded
+  separately;
+- the absolute envelopes are dominated by explicit products of polynomial
+  Bessel moments, avoiding an implicit tail interchange;
+- a positive continuous radius `rho(beta)` controls coefficient positivity
+  and the only two ratio gaps affected by the perturbation;
+- the bump has a strictly concave exponent and a proved global maximum of
+  one at `beta=R`; the small, compact, and large beta regions are closed
+  separately.
+
+The diagnostic value `rho/c3 = 965917182.921` at `beta=32` is not used in
+the proof, but checks the normalization and shows that the tested sign-flip
+lies comfortably inside the explicit preservation radius.
 
 ## Build and external-computation status
 

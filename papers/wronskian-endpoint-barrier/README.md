@@ -6,6 +6,11 @@ cubic coefficient, proves its exponential cancellation rate, and gives a
 structural no-go theorem for proofs using only the denominator kernel,
 coefficient positivity/order, and the complete small-coupling jet.
 
+The revised proof exposes the uniform Laplace tails, polynomial-moment
+envelope bounds, an explicit perturbation radius, and a globally normalized
+flat bump. These additions address the concentrated technical reservations
+from the first specialist review.
+
 It does **not** claim a proof or counterexample to the global Bessel
 Wronskian conjecture.
 
