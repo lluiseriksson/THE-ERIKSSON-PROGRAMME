@@ -40,8 +40,8 @@
 \newcommand{\K}{K}
 \newcommand{\Proj}{\mathsf P}
 
-\title{An Exact $\SU$ Heat-Mode Witness for Transport\\
-\large A mechanized bridge from Haar convolution to a non-vacuous finite Dobrushin endpoint}
+\title{An Exact Two-Mode Intertwining for $\SU$ Heat Transport\\
+\large A machine-checked operator bridge from Haar convolution to a finite Dobrushin transfer}
 \author{Lluis Eriksson}
 \date{August 4, 2026}
 
@@ -49,34 +49,41 @@
 \maketitle
 
 \begin{abstract}
-We give a machine-checked bridge between two independently formalized pieces of
-two-dimensional Yang--Mills transport.  The first is the concrete $\SU$ heat
-kernel on normalized Haar probability, already constructed as an infinite
-character series.  The second is a finite Dobrushin transfer theorem whose
-premises had previously been discharged by an exact two-holonomy witness.  The
-new result proves that Haar convolution by the infinite heat kernel acts on
-every Chebyshev character $\chi_n$ with the exact Casimir eigenvalue
+We give a machine-checked operator bridge between two independently formalized
+pieces of two-dimensional Yang--Mills transport.  The first is the concrete
+$\SU$ heat operator on normalized Haar probability; the second is an exact
+two-state Dobrushin transfer whose states contain genuine bundled elements of
+$\SU$.  The bridge is not an equality of two rates.  We construct a common
+coefficient space $E=\mathbb R^2$, an injective continuous lift
+$\Phi_\infty:E\to\{f:\SU\to\mathbb C\}$ and a bijective finite lift
+$\Phi_2:E\to\mathbb R^2$.  For $t>0$, both actual operators intertwine with
+the same diagonal map
+\[
+ D_t=\operatorname{diag}(1,e^{-3t/4}):
+ \qquad H_t\Phi_\infty=\Phi_\infty D_t,
+ \qquad W_t\Phi_2=\Phi_2D_t.
+\]
+Moreover $\Phi_\infty$ preserves the exact Haar pairing on this two-mode
+sector, so its injectivity is spectral rather than merely set-theoretic.  The
+continuous proof first establishes that Haar convolution by the infinite heat
+kernel acts on every Chebyshev character $\chi_n$ with Casimir eigenvalue
 \[
   \exp\!\left(-\frac{t\,n(n+2)}4\right).
 \]
-It then proves that $\chi_1$ is a nonzero sharp slowest non-vacuum mode, with
-rate $e^{-3t/4}$, and identifies this rate definitionally with the parameter
-used by the finite witness.  The infinite identity is not postulated: finite
-character orthogonality is integrated first and the limit is passed through
-the Haar integral by dominated convergence.  The finite carrier consists of
-two distinct bundled elements of $\SU$, its covariance decay is an equality,
-and its projected transfer operator is proved nonzero.  Thus the construction
-is an exact invariant-mode interface, not a claim that $\SU$ is finite and not
-a construction of four-dimensional continuum Yang--Mills.  All decisive
-statements compile in Lean 4 against pinned parent, satellite, and Mathlib
-revisions.
+The infinite identity is obtained by finite character orthogonality and
+dominated convergence, not postulated.  The finite lift sends the fundamental
+coefficient to the exact nonzero sign vector; the carrier matrices satisfy
+unitarity and determinant one by their Lean proof fields.  The result is an
+exact invariant restriction and finite conjugacy, not a completed spectral
+theorem for all of $L^2(\SU)$ and not a claim that $\SU$ is finite.  Every
+load-bearing identity compiles in Lean 4 against pinned revisions.
 \end{abstract}
 
 \paragraph{Artifact statement.}
-The formal source is
-\texttt{YangMills/OS/SU2HeatTransport.lean}; its two concrete dependencies are
-the pinned satellite \texttt{lean-2d-yang-mills} and the parent module
-\texttt{SU2TransportWitness.lean}.  Exact revisions, byte counts, line-ending
+The new formal source is
+\path{YangMills/OS/SU2HeatIntertwining.lean}.  Its concrete dependencies are
+\path{YangMills/OS/SU2HeatTransport.lean}, the pinned satellite and
+\path{YangMills/OS/SU2TransportWitness.lean}.  Exact revisions, byte counts, line-ending
 hashes, build commands, and runtime information are recorded in the release
 manifest distributed with this paper.
 
@@ -87,10 +94,11 @@ mechanism behind the exact solution of two-dimensional Yang--Mills theory.
 At the formal level, however, three distinctions matter.
 
 First, an abstract transfer theorem is not yet an inhabited gauge-theoretic
-endpoint.  Second, a finite Markov matrix carrying a suggestive parameter is
-not by itself a theorem about the Haar heat operator.  Third, a numerical
+endpoint.  Second, equality of one scalar decay rate is not an operator map.
+Third, a numerical
 certificate for a matrix identity is not a Lean witness inhabiting $\SU$.
-The purpose of the present construction is to close precisely this interface.
+The purpose of the present construction is to close precisely this interface
+by a commuting diagram.
 
 The contribution is the following chain, checked without a project-local
 axiom and without assuming any of its conclusions:
@@ -101,11 +109,13 @@ axiom and without assuming any of its conclusions:
 \item the Casimir ordering $3\le n(n+2)$ for $n\ge1$ identifies $\chi_1$ as the
   sharp slowest non-vacuum mode;
 \item evaluation at the identity proves $\chi_1\ne0$ exactly;
-\item the eigenvalue $e^{-3t/4}$ is identified with the parameter of a
-  separately proved two-holonomy Dobrushin witness; and
-\item the combined theorem returns both the continuous eigenfunction identity
-  and a positive projected-operator gap bound with a nonzero projected
-  operator.
+\item the real span of $\chi_0,\chi_1$ is embedded by an exact Haar-isometric
+  lift and is invariant under the actual heat convolution;
+\item the same coefficient space maps bijectively to the full finite transfer
+  space, with the fundamental coefficient mapping to the sign vector; and
+\item both operators commute with the same diagonal step, yielding an actual
+  restriction and conjugacy theorem in Lean, while the earlier nonzero projected
+  gap endpoint remains available as a corollary.
 \end{enumerate}
 
 The novelty is deliberately narrower than the exact area-law results already
@@ -116,9 +126,9 @@ we add the missing spectral map needed by the parent transport endpoint.
 
 Table~\ref{tab:endpoint} records the exact division of labor.  This is also the
 minimum interpretation that connects the continuous heat kernel to the
-published parent theorem: omitting the infinite convolution theorem leaves the
-finite rate semantically ungrounded, while demanding a completed full
-$L^2(\SU)$ spectral theorem would exceed what the endpoint consumes.
+published parent theorem.  A rate equality alone is too weak; a full completed
+$L^2(\SU)$ spectral theorem is stronger than necessary.  The exact middle
+object is the invariant two-character sector and its induced finite quotient.
 
 \begin{table}[ht]
 \centering
@@ -130,15 +140,17 @@ Layer & Exact object & Role \\
 Satellite & normalized Haar probability, Chebyshev characters, finite and
 infinite class heat kernels, character convolution orthogonality & published
 analytic input \\
-New bridge & \texttt{heatKernel\_character\_eigen}, Casimir-rate ordering,
-nonzero fundamental mode & continuous spectral interface \\
+New heat bridge & \texttt{heatKernel\_character\_eigen}, Casimir-rate ordering,
+nonzero fundamental mode & continuous spectral input \\
+New intertwining & injective Haar-isometric lift, bijective finite lift,
+two commuting operator identities & genuine restriction/conjugacy map \\
 Frozen parent & two bundled $\SU$ holonomies, exact two-state covariance,
 \texttt{exact\_transport\_witness} & finite non-vacuous endpoint \\
 Abstract endpoint & abstract uniform-gap theorem & converts exact
 band decay into a projected transfer norm bound \\
 \bottomrule
 \end{tabular}
-\caption{Canonical endpoint map.  The middle row is the new theorem lane.}
+\caption{Canonical endpoint map.  The two middle rows are the new theorem lane.}
 \label{tab:endpoint}
 \end{table}
 
@@ -264,6 +276,64 @@ genuine eigenmode:
   (K_t*\chi_1)(g)=e^{-3t/4}\chi_1(g),\qquad \chi_1\ne0.
 \end{equation}
 
+\section{The exact two-mode operator intertwining}\label{sec:intertwining}
+
+Let $E=\mathbb R^2$ and write $a=(a_0,a_1)$.  Define the common diagonal
+step
+\[
+  D_ta=(a_0,e^{-3t/4}a_1).
+\]
+The continuous lift and finite lift are
+\begin{align*}
+  (\Phi_\infty a)(g)&=a_0\chi_0(g)+a_1\chi_1(g),\\
+  (\Phi_2 a)(x)&=a_0+a_1\sigma(x),
+  &\sigma(0)=1,\quad \sigma(1)=-1.
+\end{align*}
+These are not informal identifications.  The Lean development proves all of
+the following identities.
+
+\begin{theorem}[exact two-mode intertwining]\label{thm:intertwining}
+For every $t>0$:
+\begin{enumerate}[label=(\alph*)]
+\item $\Phi_\infty$ is injective and
+\[
+ \int_{\SU}(\Phi_\infty a)(g)(\Phi_\infty b)(g)\,d\Haar(g)
+   =a_0b_0+a_1b_1;
+\]
+\item $\Phi_2$ is bijective onto the entire Euclidean space of the finite
+carrier, with inverse coefficients
+\[
+ a_0=\frac{v(0)+v(1)}2,\qquad
+ a_1=\frac{v(0)-v(1)}2;
+\]
+\item actual normalized-Haar heat convolution obeys
+$H_t\Phi_\infty=\Phi_\infty D_t$; and
+\item the actual finite transfer obeys $W_t\Phi_2=\Phi_2D_t$.
+\end{enumerate}
+Consequently the induced map
+$Q(\Phi_\infty a)=\Phi_2a$ is well defined and bijective from the continuous
+two-mode sector to the finite space, and it satisfies
+\[
+  QH_t=W_tQ
+\]
+on that sector.
+\end{theorem}
+
+The key point is operator-level, not scalar-level.  The first commuting
+identity is proved by establishing integrability of the infinite heat kernel
+against each translated character, distributing the Haar integral, and using
+the already proved character eigenidentities.  The second is proved entrywise
+from the two carrier sums and the exact entries of $W_t$.  The common map $Q$
+is the map induced by two Lean-proved intertwiners; no discretization or
+sampling assertion is inserted as a hypothesis.
+
+Injectivity of $\Phi_\infty$ also has a concrete independent check.  For the
+bundled phase holonomy $p=\operatorname{diag}(i,-i)$, the fundamental character
+satisfies $\chi_1(p)=0$, while $\chi_1(1)=2$.  Evaluation at $p$ recovers
+$a_0$, and evaluation at the identity then recovers $a_1$.  On the finite
+side $\Phi_2(0,1)$ is definitionally the nonzero sign vector used in the
+projected-transfer witness.
+
 \section{Finite \texorpdfstring{$\SU$}{SU(2)}-inhabited transport witness}
 
 The finite endpoint is a quotient/interface object, not an approximation in
@@ -310,10 +380,13 @@ transfer operator is at most $e^{-m}$; and
 \end{enumerate}
 \end{theorem}
 
-The theorem does not claim that the finite matrix equals the full heat operator
-on $L^2(\SU)$.  It states the smaller fact actually required by the endpoint:
-the non-vacuum rate used in the exact finite quotient is the eigenvalue of a
-nonzero mode of the genuine Haar heat operator.
+Theorem~\ref{thm:bridge} is retained because it is the published parent gap
+endpoint.  The new content of Theorem~\ref{thm:intertwining} is strictly
+stronger than its former scalar bridge: it identifies the complete finite
+operator with the restriction of the continuous heat operator after transport
+through $Q$.  It still does not identify the two-state matrix with the full
+operator on completed $L^2(\SU)$; the equality is exactly on the invariant
+sector $\operatorname{span}_{\mathbb R}\{\chi_0,\chi_1\}$.
 
 \section{Formal proof architecture}
 
@@ -327,11 +400,16 @@ The formal dependency graph is intentionally short:
 \texttt{heatKernel\_character\_eigen}\\
 \Downarrow\ \text{Casimir ordering + }\chi_1(1)=2\\
 \texttt{heatKernel\_fundamental\_eigen}\\
-\Downarrow\ \text{rate identification}\\
-\texttt{continuous\_mode\_to\_finite\_transport}.
+\Downarrow\ \text{integrability + linearity + two explicit lifts}\\
+\texttt{heatOperator\_continuousLift}\quad
+\texttt{finiteOperator\_finiteLift}\\
+\Downarrow\\
+\texttt{exact\_two\_mode\_intertwining}.
 \end{array}
 \]
 
+\par\medskip
+\noindent
 Table~\ref{tab:hypotheses} performs the hypothesis-discharge audit requested
 for the endpoint.
 
@@ -350,6 +428,12 @@ character orthogonality & satellite theorem & used termwise before the limit \\
 Casimir ordering & new arithmetic lemma & proved by casting $1\le n$ and
 nonlinear arithmetic \\
 $\chi_1\ne0$ & new exact lemma & evaluation at the identity gives $2$ \\
+continuous lift injective & new exact lemma & evaluation at the phase and
+identity; independently certified by Haar pairing \\
+continuous invariance & new intertwining & dominated integrability, integral
+linearity, and the two character eigenidentities \\
+finite conjugacy & new intertwining & bijective coefficient lift and exact
+entrywise matrix algebra \\
 finite kernel laws & frozen witness & explicit two-by-two algebra \\
 decay premise & frozen witness & equality~\eqref{eq:cov}, not a hypothesis \\
 projected nonzero & frozen witness & exact sign-vector evaluation \\
@@ -375,7 +459,7 @@ copy.  At fabrication time the pins were:
 \toprule
 Object & Revision \\
 \midrule
-parent starting point & \texttt{e6b672dda3e41da25a22178a7ef73ab8e7f8edb7} \\
+frozen predecessor & \texttt{59c42d93ec5f4bf660792163c41407d9b1f3d8b4} \\
 \texttt{lean-2d-yang-mills} & \texttt{05c4ec316cb9aa295416670a2578b1c2e77e1c36} \\
 Mathlib & \texttt{07642720480157414db592fa85b626dafb71355b} \\
 \bottomrule
@@ -386,7 +470,7 @@ The decisive commands are:
 \begin{lstlisting}[language={}]
 lake update
 lake build YangMills.OS.SU2HeatTransport
-lake build YangMillsCore
+lake build YangMills.OS.SU2HeatIntertwining
 lake env lean Task48Axioms.lean
 \end{lstlisting}
 They were run in a fresh Google Colab Pro+ CPU/high-RAM runtime with no GPU.
@@ -396,27 +480,29 @@ and PDF rendering.  A source file on disk was not counted as verified until its
 
 \section{Scope, limitations, and interpretation}
 
-The results support the following exact statement: the infinite class heat
-kernel has a nonzero fundamental eigencharacter at rate $e^{-3t/4}$, and this
-same rate parametrizes a genuine $\SU$-inhabited finite transfer witness that
-fires the parent gap endpoint non-vacuously.
+The results support the following exact statement: the infinite Haar heat
+operator has an invariant Haar-orthonormal real sector spanned by
+$\chi_0,\chi_1$; its restriction is conjugate, through an explicit coefficient
+map, to the entire genuine $\SU$-inhabited two-state transfer operator; and the
+same finite witness fires the parent projected-gap endpoint non-vacuously.
 
 They do not establish any of the following:
 \begin{itemize}
 \item four-dimensional continuum Yang--Mills or the Clay mass-gap problem;
 \item a thermodynamic or continuum limit of the finite witness;
-\item Peter--Weyl completeness or an operator-norm computation on the completed
-full Haar $L^2$ class space;
+\item Peter--Weyl completeness, the spectrum on every isotypic class, or an
+operator-norm computation on the completed full Haar $L^2$ class space;
 \item a new proof of the satellite's Migdal recursion, semigroup law, or exact
 finite-cellulation area law; or
 \item that two carrier points exhaust, discretize, or approximate the compact
 group.
 \end{itemize}
 
-The right interpretation is an exact transport interface.  It replaces a
-previously merely rate-labelled finite endpoint by a theorem that its rate is
-realized by a nonzero mode of the continuous operator.  This is sufficient for
-the published parent theorem and no stronger completion claim is needed.
+The right interpretation is an exact finite-dimensional invariant restriction.
+It replaces a previously rate-labelled endpoint by an explicit, injective
+continuous lift, a bijective finite lift, and two commuting operator identities.
+This is the minimal operator statement that answers the endpoint question;
+completion beyond this sector remains separate work.
 
 \section{Relation to the literature}
 
@@ -435,13 +521,14 @@ moving branch.
 
 \section{Conclusion}
 
-The endpoint is now connected at the correct level of abstraction.  The
-continuous side is an actual Haar integral on bundled $\SU$, the infinite
-series is handled by dominated convergence, the fundamental eigencharacter is
-proved nonzero, and the finite side consists of distinct genuine holonomies
-with an exact covariance identity and nonzero projected transport.  The rate
-$e^{-3t/4}$ is no longer an analogy between two modules; it is a checked
-equality used in a single end-to-end Lean theorem.
+The endpoint is now connected at operator level.  The continuous side is an
+actual Haar integral on bundled $\SU$, the infinite series is handled by
+dominated convergence, and the two-mode lift preserves its exact Haar pairing.
+The finite side consists of distinct genuine holonomies; its coefficient lift
+is bijective, its covariance identity is exact, and its projected transfer is
+nonzero.  Both operators commute with the same diagonal map, so
+$e^{-3t/4}$ is no longer merely a shared label: it is one entry of an exact
+Lean-checked conjugacy on the specified invariant sector.
 
 \begin{thebibliography}{9}
 

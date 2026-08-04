@@ -1,4 +1,4 @@
-TASK 48 — EXACT SU(2) HEAT TRANSPORT
+TASK 48E — EXACT SU(2) TWO-MODE INTERTWINING
 LEAN VERIFICATION LOG
 Date: 2026-08-04
 
@@ -6,72 +6,74 @@ EXECUTION ENVIRONMENT
 - Service: Google Colab Pro+
 - Account visibly confirmed before connection: lluiseriksson@gmail.com
 - Runtime: CPU / high RAM (50.99 GB), no GPU
-- Opened UTC: 2026-08-04T15:41:40Z
-- Closed UTC: 2026-08-04T16:30:14Z
-- Elapsed: 00:48:34
-- Close action: “disconnect and delete runtime” selected and confirmation accepted
+- Opened UTC: 2026-08-04T17:28:01Z
+- Disconnect-and-delete: selected and confirmation accepted after the axiom
+  audit; the UI returned to “Reconnect” at approximately 17:50 UTC.
 - Lean: 4.29.0-rc6, x86_64-unknown-linux-gnu
-- Lean commit: 00659f8e6071d7e46131ed643bf8003b99b044e9
 
 FROZEN INPUTS
-- Parent starting SHA: e6b672dda3e41da25a22178a7ef73ab8e7f8edb7
+- Frozen predecessor SHA: 59c42d93ec5f4bf660792163c41407d9b1f3d8b4
+- Earlier finite-witness SHA: e6b672dda3e41da25a22178a7ef73ab8e7f8edb7
 - Satellite SHA: 05c4ec316cb9aa295416670a2578b1c2e77e1c36
 - Mathlib SHA: 07642720480157414db592fa85b626dafb71355b
 
 COMMAND GATES
-1. lake update
-   Resolved the satellite to 05c4ec316cb9aa295416670a2578b1c2e77e1c36.
+1. The predecessor branch was cloned and Lake dependencies/cache materialized.
 
-2. lake build YangMills.OS.SU2HeatTransport
-   Result: BUILD48D_RC=0
+2. lake build YangMills.OS.SU2HeatIntertwining
+   Clean successful pass:
+   - TASK48E_PASS=5
+   - OPEN_UTC=2026-08-04T17:47:28Z
+   - CLOSE_UTC=2026-08-04T17:47:44Z
+   - ELAPSED_SECONDS=16
+   - BUILD48E_RC=0
+   - SOURCE_BYTES=17500
+   - SOURCE_SHA256=000f7c2c9ec407aa5451dda115e1be3fe08749ff76e8493ee90754f34008905a
+   - OLEAN_BYTES=483824
    Materialized:
-   .lake/build/lib/lean/YangMills/OS/SU2HeatTransport.olean
+   .lake/build/lib/lean/YangMills/OS/SU2HeatIntertwining.olean
 
-3. lake build YangMillsCore
-   Result: ROOT48_RC=0
-   Materialized:
-   .lake/build/lib/lean/YangMillsCore.olean
-
-4. lake env lean papers/su2-heat-transport/Task48Axioms.lean
-   Result: AXIOMS48_RC=0
+3. lake env lean papers/su2-heat-transport/Task48Axioms.lean
+   - TASK48E_AXIOMS_OPEN_UTC=2026-08-04T17:48:51Z
+   - TASK48E_AXIOMS_CLOSE_UTC=2026-08-04T17:49:16Z
+   - AXIOMS_ELAPSED_SECONDS=25
+   - AXIOMS48E_RC=0
+   - AXIOMS_SOURCE_SHA256=a627b726859829e6ca48941143c0f3e339bad8923583db6147cbd9a81d090140
 
 AXIOM AUDIT
-The following decisive theorems were printed:
-- heatKernelPartial_character_eigen_of_lt
-- heatKernel_character_eigen
-- modeRate_le_fundamental
-- fundamental_character_ne_zero
-- heatKernel_fundamental_eigen
-- continuous_mode_to_finite_transport
+The new decisive theorems printed were:
+- fundamental_at_phase
+- continuousLift_haar_pairing
+- integrable_heatKernel_mul_character
+- heatOperator_continuousLift
+- finiteOperator_finiteLift
+- exact_two_mode_intertwining
 
-For every theorem, #print axioms returned exactly the standard Lean/Mathlib
-axioms:
+The six predecessor heat-mode theorems were printed again. For all twelve
+theorems, #print axioms returned exactly:
   [propext, Classical.choice, Quot.sound]
+No project-local axiom and no sorryAx occurred in any printed set.
 
-grep result: SORRYAX=absent
-No project-local axiom occurred in any printed set.
-
-REMOTE SHA-256 CAPTURE
-- Compiled bridge source:
-  d86eb10d8bb104ce0419ee84466081def43d18b7bb85cbd68a38a365b051c931
-- Successful module-build log:
-  af48ce7c8f3b4e91e29975ec1863505225dd810e4838e35a4a9fae082c05d7d2
-- Successful root-build log:
-  36d8957602c4f22969b5b7b7894fa546ab2170c7cd3353c00cd278e72c59bf18
-- Axiom-audit log:
-  f8203de71560fcf9d2ef999502575e9900314da4441daeaf575cc1a20784d171
+ATTESTED OPERATOR IDENTITIES
+- The common coefficient operator is diag(1, exp(-3t/4)).
+- The continuous lift is injective and preserves the exact Haar pairing.
+- Actual infinite-kernel Haar convolution intertwines the continuous lift.
+- The finite lift is bijective onto the full two-state Euclidean space.
+- The actual finite transfer matrix intertwines the finite lift.
+- The fundamental coefficient maps exactly to the nonzero sign vector.
 
 ATTACKS EXECUTED
-- Actual group inhabitance: inherited carrier elements are bundled SU(2)
-  matrices with unitarity and determinant-one proofs.
-- No conclusion-as-hypothesis: the infinite eigenidentity is derived from the
-  finite character convolution theorem and dominated convergence.
-- Nontrivial continuous mode: chi_1(1)=2 proves chi_1 is not the zero function.
-- Nontrivial finite endpoint: exact sign-vector evaluation proves the projected
-  transfer operator is not zero.
-- Exact rate link: both continuous and finite rates reduce to exp(-3t/4).
-- Python was used only to render the completed PDF for visual QA; it was not a
-  proof oracle or a substitute for a Lean witness.
+- Genuine SU(2): finite states contain bundled matrices; unitarity and
+  determinant one are proof fields inherited from the frozen witness.
+- No desired conclusion as hypothesis: both intertwining identities are proved
+  from integrability, character eigenidentities, finite enumeration and exact
+  matrix entries.
+- Continuous nontriviality: chi_1(1)=2 and chi_1(phase)=0 recover coefficients.
+- Finite nontriviality: finiteLift(0,1) is the exact sign vector, already proved
+  nonzero at the transport endpoint.
+- L2 relevance: the exact Haar pairing on span{chi_0,chi_1} is the Euclidean
+  coefficient pairing; no full completed-L2 claim is made.
+- Python was not a proof oracle. It is used only for PDF rendering/inspection.
 
 This fabrication log is evidence for an external audit. It is not a terminal
-novelty or correctness verdict.
+novelty, correctness, or publication-grade verdict.

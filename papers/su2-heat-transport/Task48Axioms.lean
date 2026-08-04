@@ -1,4 +1,4 @@
-import YangMills.OS.SU2HeatTransport
+import YangMills.OS.SU2HeatIntertwining
 
 #print axioms YangMills.OS.SU2HeatTransport.heatKernelPartial_character_eigen_of_lt
 #print axioms YangMills.OS.SU2HeatTransport.heatKernel_character_eigen
@@ -6,3 +6,9 @@ import YangMills.OS.SU2HeatTransport
 #print axioms YangMills.OS.SU2HeatTransport.fundamental_character_ne_zero
 #print axioms YangMills.OS.SU2HeatTransport.heatKernel_fundamental_eigen
 #print axioms YangMills.OS.SU2HeatTransport.continuous_mode_to_finite_transport
+#print axioms YangMills.OS.SU2HeatIntertwining.fundamental_at_phase
+#print axioms YangMills.OS.SU2HeatIntertwining.continuousLift_haar_pairing
+#print axioms YangMills.OS.SU2HeatIntertwining.integrable_heatKernel_mul_character
+#print axioms YangMills.OS.SU2HeatIntertwining.heatOperator_continuousLift
+#print axioms YangMills.OS.SU2HeatIntertwining.finiteOperator_finiteLift
+#print axioms YangMills.OS.SU2HeatIntertwining.exact_two_mode_intertwining
