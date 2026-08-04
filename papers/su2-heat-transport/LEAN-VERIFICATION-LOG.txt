@@ -77,3 +77,73 @@ ATTACKS EXECUTED
 
 This fabrication log is evidence for an external audit. It is not a terminal
 novelty, correctness, or publication-grade verdict.
+
+TASK 48F — EXACT SU(2) ALGEBRAIC ALL-MODE INTERTWINING
+LEAN VERIFICATION ADDENDUM
+Date: 2026-08-04
+
+EXECUTION ENVIRONMENT
+- Service: Google Colab Pro+
+- Account visibly confirmed: lluiseriksson@gmail.com
+- Runtime: CPU / high RAM (50.99 GB), no GPU
+- Runtime connected after the account check at approximately 19:44 UTC.
+- Disconnect-and-delete was selected and confirmed after the axiom audit;
+  the UI returned to the disconnected “Reconnect” state at approximately
+  20:19 UTC.
+- Base checkout: immutable Task 48E body
+  3a1aee16b01d0ab3aa9c2279577b9b8e6bcb2d7d
+- Satellite SHA: 05c4ec316cb9aa295416670a2578b1c2e77e1c36
+- Mathlib SHA: 07642720480157414db592fa85b626dafb71355b
+
+TRANSFER IDENTITY
+- Source bytes: 13049
+- Local and remote source SHA-256:
+  b85e633d7dd9910a415cc63f061d1f5d0f90ca12600f7fa65b9ce04528d3377e
+- Axiom driver bytes: 1392
+- Local and remote axiom-driver SHA-256:
+  8af6b665b194c487667360f10181f1441ffa803b588f4db61c3b87e5d278b85a
+
+CLEAN BUILD GATE
+- Command: lake build YangMills.OS.SU2HeatAllModes
+- TASK48F_CLEAN_OPEN_UTC=2026-08-04T20:16:11Z
+- TASK48F_CLEAN_CLOSE_UTC=2026-08-04T20:16:27Z
+- CLEAN_ELAPSED_SECONDS=16
+- CLEAN48F_RC=0
+- Materialized .olean bytes: 205240
+
+AXIOM GATE
+- Command: lake env lean papers/su2-heat-transport/Task48Axioms.lean
+- TASK48F_AXIOMS_OPEN_UTC=2026-08-04T20:17:24Z
+- TASK48F_AXIOMS_CLOSE_UTC=2026-08-04T20:18:18Z
+- AXIOMS_ELAPSED_SECONDS=54
+- AXIOMS48F_RC=0
+
+The six new declarations printed were:
+- spectralStep_apply
+- coefficient_extraction
+- characterLift_injective
+- characterLift_haar_pairing
+- heatOperator_characterLift
+- exact_algebraic_all_mode_intertwining
+
+Every printed new set was exactly:
+  [propext, Classical.choice, Quot.sound]
+No project-local axiom and no sorryAx occurred in any printed set.
+
+DECISIVE CONTENT AND ATTACKS
+- The coefficient object is one algebraic direct sum N →₀ R; there is no fixed
+  two-mode cutoff.
+- Coefficient extraction is proved from the concrete SU(2) Haar character
+  orthogonality theorem and finite-sum integrability.
+- Injectivity and exact Haar pairing are consequences, not hypotheses.
+- The actual infinite SU(2) heat kernel acts through the diagonal Casimir step
+  on every finite-support character expansion.
+- The finite Dobrushin carrier and its genuine bundled SU(2) proof fields remain
+  in the imported two-mode quotient; this addendum does not replace SU(2) by a
+  finite matrix model.
+- No Peter–Weyl completeness, completed-L2 spectrum, or full operator norm is
+  claimed.
+- No Python certificate participates in any Lean proof.
+
+This addendum freezes fabrication evidence and attempted attacks. It does not
+issue the terminal external correctness, novelty, or publication-grade verdict.

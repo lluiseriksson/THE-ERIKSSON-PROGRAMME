@@ -1,4 +1,5 @@
 import YangMills.OS.SU2HeatIntertwining
+import YangMills.OS.SU2HeatAllModes
 
 #print axioms YangMills.OS.SU2HeatTransport.heatKernelPartial_character_eigen_of_lt
 #print axioms YangMills.OS.SU2HeatTransport.heatKernel_character_eigen
@@ -12,3 +13,9 @@ import YangMills.OS.SU2HeatIntertwining
 #print axioms YangMills.OS.SU2HeatIntertwining.heatOperator_continuousLift
 #print axioms YangMills.OS.SU2HeatIntertwining.finiteOperator_finiteLift
 #print axioms YangMills.OS.SU2HeatIntertwining.exact_two_mode_intertwining
+#print axioms YangMills.OS.SU2HeatAllModes.spectralStep_apply
+#print axioms YangMills.OS.SU2HeatAllModes.coefficient_extraction
+#print axioms YangMills.OS.SU2HeatAllModes.characterLift_injective
+#print axioms YangMills.OS.SU2HeatAllModes.characterLift_haar_pairing
+#print axioms YangMills.OS.SU2HeatAllModes.heatOperator_characterLift
+#print axioms YangMills.OS.SU2HeatAllModes.exact_algebraic_all_mode_intertwining

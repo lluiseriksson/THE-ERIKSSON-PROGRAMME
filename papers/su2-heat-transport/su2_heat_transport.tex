@@ -40,8 +40,8 @@
 \newcommand{\K}{K}
 \newcommand{\Proj}{\mathsf P}
 
-\title{An Exact Two-Mode Intertwining for $\SU$ Heat Transport\\
-\large A machine-checked operator bridge from Haar convolution to a finite Dobrushin transfer}
+\title{An Exact Algebraic All-Mode Intertwining for $\SU$ Heat Transport\\
+\large Machine-checked Haar spectral coordinates and the finite Dobrushin quotient}
 \author{Lluis Eriksson}
 \date{August 4, 2026}
 
@@ -49,39 +49,34 @@
 \maketitle
 
 \begin{abstract}
-We give a machine-checked operator bridge between two independently formalized
-pieces of two-dimensional Yang--Mills transport.  The first is the concrete
-$\SU$ heat operator on normalized Haar probability; the second is an exact
-two-state Dobrushin transfer whose states contain genuine bundled elements of
-$\SU$.  The bridge is not an equality of two rates.  We construct a common
-coefficient space $E=\mathbb R^2$, an injective continuous lift
-$\Phi_\infty:E\to\{f:\SU\to\mathbb C\}$ and a bijective finite lift
-$\Phi_2:E\to\mathbb R^2$.  For $t>0$, both actual operators intertwine with
-the same diagonal map
+We give a machine-checked spectral-coordinate theorem for the concrete
+$\SU$ heat operator on normalized Haar probability.  The coefficient object
+is the algebraic direct sum $\mathcal A=\mathbb N\to_0\mathbb R$, so one
+statement covers every finite real character expansion without a fixed mode
+cutoff.  Its lift $\Phi:\mathcal A\to\{f:\SU\to\mathbb C\}$ is injective;
+Haar pairing recovers every coefficient and gives the exact finite-support
+Euclidean pairing.  For $t>0$, actual convolution by the infinite heat kernel
+intertwines $\Phi$ with the diagonal Casimir step
 \[
- D_t=\operatorname{diag}(1,e^{-3t/4}):
- \qquad H_t\Phi_\infty=\Phi_\infty D_t,
- \qquad W_t\Phi_2=\Phi_2D_t.
+ (D_ta)_n=\exp\!\left(-\frac{t\,n(n+2)}4\right)a_n,
+ \qquad H_t\Phi=\Phi D_t.
 \]
-Moreover $\Phi_\infty$ preserves the exact Haar pairing on this two-mode
-sector, so its injectivity is spectral rather than merely set-theoretic.  The
-continuous proof first establishes that Haar convolution by the infinite heat
-kernel acts on every Chebyshev character $\chi_n$ with Casimir eigenvalue
-\[
-  \exp\!\left(-\frac{t\,n(n+2)}4\right).
-\]
-The infinite identity is obtained by finite character orthogonality and
-dominated convergence, not postulated.  The finite lift sends the fundamental
-coefficient to the exact nonzero sign vector; the carrier matrices satisfy
-unitarity and determinant one by their Lean proof fields.  The result is an
-exact invariant restriction and finite conjugacy, not a completed spectral
-theorem for all of $L^2(\SU)$ and not a claim that $\SU$ is finite.  Every
-load-bearing identity compiles in Lean 4 against pinned revisions.
+This upgrades the preceding two-mode bridge to all algebraic character modes.
+The previously formalized two-state Dobrushin transfer remains an exact
+quotient of the $\{0,1\}$ sector: its states contain genuine bundled elements
+of $\SU$, its finite lift is bijective, and its actual operator intertwines
+with $\operatorname{diag}(1,e^{-3t/4})$.  The infinite-kernel identity follows
+from finite character orthogonality and dominated convergence, not from an
+eigenvalue hypothesis.  The result is an exact invariant algebraic sector
+plus a finite conjugacy on its first two modes, not a Peter--Weyl completeness
+theorem for completed $L^2(\SU)$ and not a claim that $\SU$ is finite.  Every
+load-bearing identity is checked in Lean 4 against pinned revisions.
 \end{abstract}
 
 \paragraph{Artifact statement.}
 The new formal source is
-\path{YangMills/OS/SU2HeatIntertwining.lean}.  Its concrete dependencies are
+\path{YangMills/OS/SU2HeatAllModes.lean}.  Its concrete dependencies are
+\path{YangMills/OS/SU2HeatIntertwining.lean},
 \path{YangMills/OS/SU2HeatTransport.lean}, the pinned satellite and
 \path{YangMills/OS/SU2TransportWitness.lean}.  Exact revisions, byte counts, line-ending
 hashes, build commands, and runtime information are recorded in the release
@@ -109,9 +104,11 @@ axiom and without assuming any of its conclusions:
 \item the Casimir ordering $3\le n(n+2)$ for $n\ge1$ identifies $\chi_1$ as the
   sharp slowest non-vacuum mode;
 \item evaluation at the identity proves $\chi_1\ne0$ exactly;
-\item the real span of $\chi_0,\chi_1$ is embedded by an exact Haar-isometric
-  lift and is invariant under the actual heat convolution;
-\item the same coefficient space maps bijectively to the full finite transfer
+\item all finite-support real character expansions are embedded through one
+  exact Haar-isometric lift, and coefficient extraction proves injectivity;
+\item the actual infinite-kernel heat operator intertwines this lift with the
+  diagonal Casimir step on $\mathbb N\to_0\mathbb R$;
+\item the first two coefficient modes map bijectively to the full finite transfer
   space, with the fundamental coefficient mapping to the sign vector; and
 \item both operators commute with the same diagonal step, yielding an actual
   restriction and conjugacy theorem in Lean, while the earlier nonzero projected
@@ -128,7 +125,9 @@ Table~\ref{tab:endpoint} records the exact division of labor.  This is also the
 minimum interpretation that connects the continuous heat kernel to the
 published parent theorem.  A rate equality alone is too weak; a full completed
 $L^2(\SU)$ spectral theorem is stronger than necessary.  The exact middle
-object is the invariant two-character sector and its induced finite quotient.
+object is the algebraic direct sum of all character modes, together with its
+two-character finite quotient.  Completed-$L^2$ completeness is neither needed
+for the parent endpoint nor silently assumed.
 
 \begin{table}[ht]
 \centering
@@ -142,15 +141,19 @@ infinite class heat kernels, character convolution orthogonality & published
 analytic input \\
 New heat bridge & \texttt{heatKernel\_character\_eigen}, Casimir-rate ordering,
 nonzero fundamental mode & continuous spectral input \\
-New intertwining & injective Haar-isometric lift, bijective finite lift,
-two commuting operator identities & genuine restriction/conjugacy map \\
+New all-mode bridge & $\mathbb N\to_0\mathbb R$, coefficient extraction,
+exact Haar pairing and diagonal heat intertwining & all finite character
+expansions in one theorem \\
+Two-mode quotient & bijective finite lift and exact finite commuting identity
+& genuine finite restriction/conjugacy map \\
 Frozen parent & two bundled $\SU$ holonomies, exact two-state covariance,
 \texttt{exact\_transport\_witness} & finite non-vacuous endpoint \\
 Abstract endpoint & abstract uniform-gap theorem & converts exact
 band decay into a projected transfer norm bound \\
 \bottomrule
 \end{tabular}
-\caption{Canonical endpoint map.  The two middle rows are the new theorem lane.}
+\caption{Canonical endpoint map.  The all-mode row is the new theorem lane;
+the two-mode quotient is the minimum connection to the parent endpoint.}
 \label{tab:endpoint}
 \end{table}
 
@@ -276,63 +279,71 @@ genuine eigenmode:
   (K_t*\chi_1)(g)=e^{-3t/4}\chi_1(g),\qquad \chi_1\ne0.
 \end{equation}
 
-\section{The exact two-mode operator intertwining}\label{sec:intertwining}
+\section{The exact algebraic all-mode intertwining}\label{sec:intertwining}
 
-Let $E=\mathbb R^2$ and write $a=(a_0,a_1)$.  Define the common diagonal
-step
-\[
-  D_ta=(a_0,e^{-3t/4}a_1).
-\]
-The continuous lift and finite lift are
+Let $\mathcal A=\mathbb N\to_0\mathbb R$ be the algebraic direct sum: an
+element $a$ is a real sequence with finite support, but no global cutoff is
+fixed.  Define
 \begin{align*}
-  (\Phi_\infty a)(g)&=a_0\chi_0(g)+a_1\chi_1(g),\\
-  (\Phi_2 a)(x)&=a_0+a_1\sigma(x),
-  &\sigma(0)=1,\quad \sigma(1)=-1.
+  (\Phi a)(g)&=\sum_{n\in\operatorname{supp}(a)}a_n\chi_n(g),\\
+  (D_ta)_n&=r_n(t)a_n,
+  &r_n(t)&=\exp\!\left(-\frac{t n(n+2)}4\right).
 \end{align*}
-These are not informal identifications.  The Lean development proves all of
-the following identities.
+Since $D_t$ cannot enlarge support, it is an endomorphism of $\mathcal A$.
+The point of using a single finitely supported object, instead of a theorem
+for each chosen $N$, is uniformity: every finite character sector and every
+finite linear combination is an instance of the same commuting diagram.
 
-\begin{theorem}[exact two-mode intertwining]\label{thm:intertwining}
+\begin{theorem}[exact algebraic all-mode intertwining]\label{thm:allmodes}
 For every $t>0$:
 \begin{enumerate}[label=(\alph*)]
-\item $\Phi_\infty$ is injective and
+\item coefficient extraction is exact,
 \[
- \int_{\SU}(\Phi_\infty a)(g)(\Phi_\infty b)(g)\,d\Haar(g)
-   =a_0b_0+a_1b_1;
+ \int_{\SU}(\Phi a)(g)\chi_m(g)\,d\Haar(g)=a_m
+ \qquad(m\in\mathbb N);
 \]
-\item $\Phi_2$ is bijective onto the entire Euclidean space of the finite
-carrier, with inverse coefficients
+\item $\Phi$ is injective and preserves the finite-support Haar pairing,
 \[
- a_0=\frac{v(0)+v(1)}2,\qquad
- a_1=\frac{v(0)-v(1)}2;
+ \int_{\SU}(\Phi a)(g)(\Phi b)(g)\,d\Haar(g)
+   =\sum_{n\in\operatorname{supp}(b)}a_nb_n;
 \]
 \item actual normalized-Haar heat convolution obeys
-$H_t\Phi_\infty=\Phi_\infty D_t$; and
-\item the actual finite transfer obeys $W_t\Phi_2=\Phi_2D_t$.
-\end{enumerate}
-Consequently the induced map
-$Q(\Phi_\infty a)=\Phi_2a$ is well defined and bijective from the continuous
-two-mode sector to the finite space, and it satisfies
 \[
-  QH_t=W_tQ
+ H_t\Phi=\Phi D_t.
 \]
-on that sector.
+\end{enumerate}
 \end{theorem}
 
-The key point is operator-level, not scalar-level.  The first commuting
-identity is proved by establishing integrability of the infinite heat kernel
-against each translated character, distributing the Haar integral, and using
-the already proved character eigenidentities.  The second is proved entrywise
-from the two carrier sums and the exact entries of $W_t$.  The common map $Q$
-is the map induced by two Lean-proved intertwiners; no discretization or
-sampling assertion is inserted as a hypothesis.
+No linear-independence or eigenvalue conclusion is passed as a hypothesis.
+Coefficient extraction expands a finite support sum, moves that sum through
+the Haar integral using proved integrability, and invokes the concrete
+orthogonality theorem.  Injectivity follows by extracting every coefficient.
+For the commuting identity, the proof again moves only a finite sum through
+the integral, then uses Theorem~\ref{thm:infinite} term by term.  Thus the
+actual infinite heat kernel participates in the proof of every coordinate.
 
-Injectivity of $\Phi_\infty$ also has a concrete independent check.  For the
-bundled phase holonomy $p=\operatorname{diag}(i,-i)$, the fundamental character
-satisfies $\chi_1(p)=0$, while $\chi_1(1)=2$.  Evaluation at $p$ recovers
-$a_0$, and evaluation at the identity then recovers $a_1$.  On the finite
-side $\Phi_2(0,1)$ is definitionally the nonzero sign vector used in the
-projected-transfer witness.
+\subsection{The exact two-mode finite quotient}
+
+Restrict $\mathcal A$ to coefficients supported on $\{0,1\}$ and identify
+them with $E=\mathbb R^2$.  The continuous lift becomes
+$a_0\chi_0+a_1\chi_1$, and $D_t$ becomes
+$\operatorname{diag}(1,e^{-3t/4})$.  The finite lift is
+\[
+  (\Phi_2a)(x)=a_0+a_1\sigma(x),
+  \qquad \sigma(0)=1,\quad\sigma(1)=-1.
+\]
+The preceding formal module proves that $\Phi_2$ is bijective onto the full
+two-state Euclidean transfer space and that the actual finite operator obeys
+$W_t\Phi_2=\Phi_2D_t$.  Therefore the induced map from the $\{0,1\}$
+continuous sector to the finite space is a genuine operator conjugacy.  This
+is the minimum restriction that connects Theorem~\ref{thm:allmodes} to the
+published parent transport endpoint.
+
+Non-vacuity has two independent exact checks.  The all-mode theorem recovers
+every coefficient by Haar integration.  On the finite quotient, evaluation
+at the bundled phase $p=\operatorname{diag}(i,-i)$ and at the identity recovers
+$a_0$ and $a_1$, while $\Phi_2(0,1)$ is the exact nonzero sign vector used in
+the projected-transfer witness.
 
 \section{Finite \texorpdfstring{$\SU$}{SU(2)}-inhabited transport witness}
 
@@ -381,12 +392,11 @@ transfer operator is at most $e^{-m}$; and
 \end{theorem}
 
 Theorem~\ref{thm:bridge} is retained because it is the published parent gap
-endpoint.  The new content of Theorem~\ref{thm:intertwining} is strictly
-stronger than its former scalar bridge: it identifies the complete finite
-operator with the restriction of the continuous heat operator after transport
-through $Q$.  It still does not identify the two-state matrix with the full
-operator on completed $L^2(\SU)$; the equality is exactly on the invariant
-sector $\operatorname{span}_{\mathbb R}\{\chi_0,\chi_1\}$.
+endpoint.  Theorem~\ref{thm:allmodes} is stronger on the continuous side: it
+simultaneously identifies every finite character expansion with an exact
+diagonal coordinate vector.  The finite matrix remains the quotient of the
+$\{0,1\}$ sector only.  It is not identified with the operator on completed
+$L^2(\SU)$, and no two-state approximation of the compact group is claimed.
 
 \section{Formal proof architecture}
 
@@ -400,7 +410,9 @@ The formal dependency graph is intentionally short:
 \texttt{heatKernel\_character\_eigen}\\
 \Downarrow\ \text{Casimir ordering + }\chi_1(1)=2\\
 \texttt{heatKernel\_fundamental\_eigen}\\
-\Downarrow\ \text{integrability + linearity + two explicit lifts}\\
+\Downarrow\ \text{finite-support linearity + coefficient extraction}\\
+\texttt{exact\_algebraic\_all\_mode\_intertwining}\\
+\Downarrow\ \text{restriction to }\{0,1\}\text{ + two explicit lifts}\\
 \texttt{heatOperator\_continuousLift}\quad
 \texttt{finiteOperator\_finiteLift}\\
 \Downarrow\\
@@ -430,6 +442,10 @@ nonlinear arithmetic \\
 $\chi_1\ne0$ & new exact lemma & evaluation at the identity gives $2$ \\
 continuous lift injective & new exact lemma & evaluation at the phase and
 identity; independently certified by Haar pairing \\
+all-mode coefficient extraction & new exact lemma & finite-support integral
+linearity plus concrete Haar character orthogonality \\
+all-mode invariance & new intertwining & termwise infinite-kernel eigenidentity
+on the support of each coefficient vector \\
 continuous invariance & new intertwining & dominated integrability, integral
 linearity, and the two character eigenidentities \\
 finite conjugacy & new intertwining & bijective coefficient lift and exact
@@ -471,6 +487,7 @@ The decisive commands are:
 lake update
 lake build YangMills.OS.SU2HeatTransport
 lake build YangMills.OS.SU2HeatIntertwining
+lake build YangMills.OS.SU2HeatAllModes
 lake env lean Task48Axioms.lean
 \end{lstlisting}
 They were run in a fresh Google Colab Pro+ CPU/high-RAM runtime with no GPU.
@@ -481,28 +498,33 @@ and PDF rendering.  A source file on disk was not counted as verified until its
 \section{Scope, limitations, and interpretation}
 
 The results support the following exact statement: the infinite Haar heat
-operator has an invariant Haar-orthonormal real sector spanned by
-$\chi_0,\chi_1$; its restriction is conjugate, through an explicit coefficient
-map, to the entire genuine $\SU$-inhabited two-state transfer operator; and the
-same finite witness fires the parent projected-gap endpoint non-vacuously.
+operator has an invariant algebraic sector containing every finite real
+character expansion; Haar pairing supplies exact spectral coordinates there;
+the heat operator is diagonal in those coordinates; the $\{0,1\}$ restriction
+is conjugate to the entire genuine $\SU$-inhabited two-state transfer operator;
+and the same finite witness fires the parent projected-gap endpoint
+non-vacuously.
 
 They do not establish any of the following:
 \begin{itemize}
 \item four-dimensional continuum Yang--Mills or the Clay mass-gap problem;
 \item a thermodynamic or continuum limit of the finite witness;
-\item Peter--Weyl completeness, the spectrum on every isotypic class, or an
-operator-norm computation on the completed full Haar $L^2$ class space;
+\item Peter--Weyl completeness or density of the algebraic character span in
+the completed class-function Hilbert space;
+\item the spectrum on non-class matrix coefficients, or an operator-norm
+computation on the completed full Haar $L^2$ space;
 \item a new proof of the satellite's Migdal recursion, semigroup law, or exact
 finite-cellulation area law; or
 \item that two carrier points exhaust, discretize, or approximate the compact
 group.
 \end{itemize}
 
-The right interpretation is an exact finite-dimensional invariant restriction.
-It replaces a previously rate-labelled endpoint by an explicit, injective
-continuous lift, a bijective finite lift, and two commuting operator identities.
-This is the minimal operator statement that answers the endpoint question;
-completion beyond this sector remains separate work.
+The right interpretation is an exact locally finite invariant restriction:
+each vector uses finitely many modes, but the formal coefficient object has no
+fixed dimension.  It replaces a previously two-mode continuous endpoint by an
+injective all-mode lift and an exact diagonal intertwining.  The finite parent
+still consumes only the first two coordinates.  Hilbert completion and
+Peter--Weyl density remain separate work.
 
 \section{Relation to the literature}
 
@@ -521,14 +543,16 @@ moving branch.
 
 \section{Conclusion}
 
-The endpoint is now connected at operator level.  The continuous side is an
-actual Haar integral on bundled $\SU$, the infinite series is handled by
-dominated convergence, and the two-mode lift preserves its exact Haar pairing.
-The finite side consists of distinct genuine holonomies; its coefficient lift
-is bijective, its covariance identity is exact, and its projected transfer is
-nonzero.  Both operators commute with the same diagonal map, so
-$e^{-3t/4}$ is no longer merely a shared label: it is one entry of an exact
-Lean-checked conjugacy on the specified invariant sector.
+The continuous endpoint now covers every algebraic character mode in one
+Lean object.  It is an actual Haar integral on bundled $\SU$; the infinite
+kernel is handled by dominated convergence; coefficient extraction proves
+non-vacuity; and the lift preserves the exact finite-support Haar pairing.
+The heat operator commutes with the full Casimir diagonal on this algebraic
+sector.  The finite side still consists of distinct genuine holonomies; its
+two-coordinate lift is bijective, its covariance identity is exact, and its
+projected transfer is nonzero.  Thus $e^{-3t/4}$ is the fundamental entry of a
+proved all-mode diagonalization and, on the first two modes, an exact
+Lean-checked finite conjugacy.
 
 \begin{thebibliography}{9}
 
