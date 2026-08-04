@@ -3400,3 +3400,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.centered_local_observable_comparison
 #print axioms YangMills.OS.Dobrushin.cauchySeq_centeredLocalGibbsExpectation
 #print axioms YangMills.OS.Dobrushin.tendsto_infiniteCenteredLocalGibbsExpectation
+#print axioms YangMills.OS.Dobrushin.infiniteCenteredLocalGibbsExpectation_add
+#print axioms YangMills.OS.Dobrushin.infiniteCenteredLocalGibbsExpectation_smul
+#print axioms YangMills.OS.Dobrushin.infiniteCenteredLocalGibbsExpectation_one
+#print axioms YangMills.OS.Dobrushin.infiniteCenteredLocalGibbsExpectation_nonneg
+#print axioms YangMills.OS.Dobrushin.tendsto_infiniteCenteredLocalGibbsExpectation_comp
+#print axioms YangMills.OS.Dobrushin.infiniteCenteredLocalGibbsExpectation_independent_alpha
+#print axioms YangMills.OS.Dobrushin.infiniteCenteredLocalGibbsExpectation_lift
+#print axioms YangMills.OS.Dobrushin.infiniteCenteredLocalGibbsStateFamily
+#print axioms YangMills.OS.Dobrushin.abs_centeredLocal_sub_perturbed_le
+#print axioms YangMills.OS.Dobrushin.tendsto_centeredPerturbedGibbsExpectation
+#print axioms YangMills.OS.Dobrushin.tendsto_centeredPeriodicGibbsExpectation

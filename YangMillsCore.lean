@@ -1059,3 +1059,4 @@ import YangMills.OS.DobrushinCorollary
 -- fixed centred local spin observable.  The visible hypothesis remains
 -- 2*tanh|beta| + 2*tanh|gamma| <= alpha < 1; no KP premise is imported.
 import YangMills.OS.DobrushinThermodynamicLimit
+import YangMills.OS.DobrushinInfiniteState
