@@ -31055,3 +31055,41 @@ DIFFERENT toolchain (4.30.0-rc2 / Mathlib cd3b69b) than the main tree.
 **ROLES.**  Mining: four independent sessions.  Synthesis and the
 self-kills: this desk.  Nothing here is licensed for fabrication; each
 candidate needs its own charter and judges under the standing regime.
+
+## Addendum 608 (2026-08-04, **OS-R REGISTERED: the charter, the judges,
+and a design correction bought by reading the files**)
+
+The owner chose the OS reconstruction campaign (the 6.5-band composition
+of Add. 607).  Charter registered: docs/OS-RECONSTRUCTION-CHARTER.md —
+target = volume-uniform machine-checked OS reconstruction (window ∩
+{beta >= 0}: OS positivity + GNS quotient + forced transfer operator +
+ONE m > 0 for every extent via unitary transport onto the operator D-6
+already bounds + n-step identification against the measure).  Design
+grounded in the sources, and the reading CORRECTED the lane memory:
+the site form weighs by 1/w (the shared slice divided out once), NOT by
+w; with that, Q = multiplication by sqrt(w) is a unitary Euclidean ->
+site, Q^-1 T Q = sqrt(w) K sqrt(w) EXACTLY, and DobrushinTilt's
+tiltKernel w beta lam = symWeighted w beta / lam means the operator
+D-6 bounds IS the transported normalised transfer operator — no
+spectral-transport theorem, no complexification theory needed; the
+remaining work is the n-step identification (consume SpatialGibbs's
+generic bridge) plus plumbing.  Judges: scripts/judge_os_uniform.py
+(NOT judge_os_reconstruction.py — that name belongs to paper 14's gate,
+another desk, and was left untouched after a collision was caught by
+looking before writing).  G1-G6, 110 registered checks: collapse
+factorisation both parities, forced-operator defining equation +
+self-adjointness at every beta + PSD at beta >= 0, the Q isometry and
+entrywise conjugation, tiltKernel alignment + Perron condition, n-step
+dressing/partition identities at N = 1..4 with the CONNECTED bound in
+its full vacuum-cross-term expansion (the first draft's single-term
+bound was WRONG — the D-6 tilt lesson re-learned at judge level and
+fixed BEFORE first run), and the window/RP overlap witness.  Local
+measured run (light class, 0.86 s, single process): 110/110 PASS in
+normal and -O modes.  The licensing PASS remains the plane run
+(runner stage 1) per the charter; fabrication is not licensed until
+then.  RI campaign stays registered and parked.
+
+**ROLES.**  Design, charter, judges: this desk.  The two judge defects
+(connected-bound cross terms; Jacobi iteration budget) were found by
+this desk's own pre-registration audit, recorded here.  Fresh-clone
+verification and external evaluation retain their own roles.
