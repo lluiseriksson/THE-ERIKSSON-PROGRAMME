@@ -3,7 +3,7 @@
 
 This validation runner compiles the immutable PRE-VALIDATION source checkpoint
 named by ``SOURCE_SHA``.  It is infrastructure only: the source object and its
-six Lean blobs are hash-gated before any Lean command is run.
+four Lean blobs are hash-gated before any Lean command is run.
 """
 
 from __future__ import annotations
@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "generated-qprime-row-v13"
-SOURCE_SHA = "245ed26d9bc3b44bd1dc0c94e28e9f4453e57509"
+RUNNER_REV = "generated-qprime-row-v14"
+SOURCE_SHA = "a0d02845d7024ed365292fe2999baf28c259e51c"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -37,15 +37,10 @@ ARCHIVE = Path("/content/hrpoly-generated-qprime-row-evidence.tar.gz")
 ASSET = Path("/content/lean-4.29.0-rc6-linux.tar.zst")
 TOOLROOT = Path("/content/lean-4.29.0-rc6-linux")
 PATH_MANIFEST = Path("/content/hrpoly-generated-qprime-row-paths.txt")
-ALGEBRA_REPRO = Path("/content/hrpoly-qprime-row-algebra-repro.lean")
 
 SOURCE_BLOBS = {
-    "YangMills/RG/BalabanCMP99SourceTransportedBlockSynthesisRowSum.lean":
-        "4da0de8e6e2257549e7b741cc1e897ef3c3effa4e15ed985a594517862e420fd",
-    "YangMills/RG/BalabanCMP99SourceTransportedBlockSynthesisRowSumAudit.lean":
-        "b9ec5a25ceae3e5e2e9890e561bb90fb65f6fb36691f450f590925f586997915",
     "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassRow.lean":
-        "afde56b8c0bcc2834e647f306f3c72ce72360ab3b79372ee8357144ad5e4611d",
+        "402aba33329f96a2206c098c9dce1d765e7403ac747e3d31f21cc351490cbd7c",
     "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassRowAudit.lean":
         "8b5f4320f92e0372b7bc551e7899ccf719a9858d85a891f65a14645dcfb250d0",
     "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectWeightedRow.lean":
@@ -55,22 +50,6 @@ SOURCE_BLOBS = {
 }
 
 QUEUE = [
-    (
-        "transported_block_synthesis_row_sum_focal",
-        [
-            "lake", "build",
-            "YangMills.RG.BalabanCMP99SourceTransportedBlockSynthesisRowSum",
-        ],
-        None,
-    ),
-    (
-        "transported_block_synthesis_row_sum_audit",
-        [
-            "lake", "env", "lean",
-            "YangMills/RG/BalabanCMP99SourceTransportedBlockSynthesisRowSumAudit.lean",
-        ],
-        2,
-    ),
     (
         "generated_counting_mass_row_focal",
         [
@@ -221,7 +200,7 @@ def main() -> int:
         for path in (ROOT, EVIDENCE, TOOLROOT):
             if path.exists():
                 shutil.rmtree(path)
-        for path in (ASSET, ARCHIVE, PATH_MANIFEST, ALGEBRA_REPRO):
+        for path in (ASSET, ARCHIVE, PATH_MANIFEST):
             if path.exists():
                 path.unlink()
 
@@ -297,28 +276,6 @@ def main() -> int:
         if mathlib != EXPECTED_MATHLIB:
             raise RuntimeError("MATHLIB_PIN_MISMATCH=" + mathlib)
         run("cache_get", ["lake", "exe", "cache", "get"], cwd=ROOT)
-
-        ALGEBRA_REPRO.write_text(
-            """import Mathlib
-
-open scoped BigOperators
-
-example {ι : Type*} [Fintype ι] (M w : ℝ) (d : ℕ) (f : ι → ℝ) :
-    (∑ x, M ^ d * (w * f x)) = M ^ d * (w * ∑ x, f x) := by
-  calc
-    _ = M ^ d * (∑ x ∈ Finset.univ, w * f x) :=
-      (Finset.mul_sum Finset.univ (fun x => w * f x) (M ^ d)).symm
-    _ = M ^ d * (w * ∑ x ∈ Finset.univ, f x) := by
-      exact congrArg (fun z : ℝ => M ^ d * z)
-        (Finset.mul_sum Finset.univ f w).symm
-""",
-            encoding="utf-8",
-        )
-        run(
-            "row_sum_algebra_repro",
-            ["lake", "env", "lean", str(ALGEBRA_REPRO)],
-            cwd=ROOT,
-        )
 
         for stage, command, expected_axioms in QUEUE:
             output = run(stage, command, cwd=ROOT)
