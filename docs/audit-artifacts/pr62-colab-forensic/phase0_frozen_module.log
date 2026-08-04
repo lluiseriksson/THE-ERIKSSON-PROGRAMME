@@ -1,0 +1,42 @@
+✔ [8158/8172] Built YangMills.OS.PSDKernel (6.5s)
+⚠ [8159/8172] Built YangMills.OS.WilsonCharCombo (7.2s)
+warning: YangMills/OS/WilsonCharCombo.lean:148:6: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [8160/8172] Built YangMills.OS.DenseClustering (18s)
+✔ [8161/8172] Built YangMills.OS.SharpBridge (9.7s)
+✔ [8162/8172] Built YangMills.OS.Z2Transfer (7.3s)
+✔ [8163/8172] Built YangMills.OS.Z2Identification (6.8s)
+✔ [8164/8172] Built YangMills.OS.Z2Quotient (6.0s)
+✔ [8165/8172] Built YangMills.OS.SpatialExtent (4.9s)
+✔ [8166/8172] Built YangMills.OS.SpatialPerron (9.7s)
+✔ [8167/8172] Built YangMills.OS.PerronKernel (7.7s)
+⚠ [8168/8172] Built YangMills.OS.PerronGap (5.9s)
+warning: YangMills/OS/PerronGap.lean:117:17: unused variable `hu`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8169/8172] Built YangMills.OS.SpatialGibbs (5.4s)
+warning: YangMills/OS/SpatialGibbs.lean:511:15: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  simp only [if_p̵o̵s̵ ̵r̵f̵l̵,̵ ̵i̵f̵_̵neg (Ne.symm hne ∘ Eq.symm), Pi.zero_apply] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8170/8172] Built YangMills.OS.SpatialSpectral (8.0s)
+warning: YangMills/OS/SpatialSpectral.lean:301:14: This simp argument is unused:
+  specGap
+
+Hint: Omit it from the simp argument list.
+  simp [s̵p̵e̵c̵G̵a̵p̵,̵ ̵h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8171/8172] Built YangMills.OS.SpatialRing (8.0s)
+warning: YangMills/OS/SpatialRing.lean:479:18: unused variable `hγ`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8172/8172] Built YangMills.OS.SpatialSharpWitness (9.3s)
+warning: YangMills/OS/SpatialSharpWitness.lean:190:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Build completed successfully (8172 jobs).
