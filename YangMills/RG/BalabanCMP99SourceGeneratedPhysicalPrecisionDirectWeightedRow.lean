@@ -87,7 +87,10 @@ theorem finitePiLpTypedWeightedRowKernelBound_add
       apply Finset.sum_le_sum
       intro target _
       rw [ContinuousLinearMap.add_apply, PiLp.add_apply]
-      exact mul_le_mul_of_nonneg_left (norm_add_le _ _)
+      exact mul_le_mul_of_nonneg_left
+        (norm_add_le
+          (S (singleFinitePiLp source v) target)
+          (T (singleFinitePiLp source v) target))
         (Real.exp_pos _).le
     _ = (∑ target : κ,
           Real.exp (rate * (dist target source : ℝ)) *
@@ -117,6 +120,9 @@ theorem cmp99ActiveRegionSourceCovariantLaplacian_weightedRow
     (background : PhysicalGaugeBackground d N Nc)
     {spacing rate : ℝ} (hspacing : 0 < spacing) (hrate : 0 ≤ rate) :
     FinitePiLpTypedWeightedRowKernelBound
+      (ι := ActiveGaugeRegion.Site Omega)
+      (κ := ActiveGaugeRegion.Site Omega)
+      (g := SUNLieCoord Nc)
       (cmp99ActiveRegionSourceCovariantLaplacian
         Omega rho background spacing)
       (fun target source => finBoxDist target.1 source.1)
@@ -172,6 +178,11 @@ theorem cmp99SourceGeneratedPhysicalPrecision_directWeightedRow
       (cmp99RegionalLatticeSize M N (depth + 1)),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     FinitePiLpTypedWeightedRowKernelBound
+      (ι := ActiveGaugeRegion.Site
+        (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+      (κ := ActiveGaugeRegion.Site
+        (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+      (g := SUNLieCoord Nc)
       (cmp99SourceGeneratedPhysicalPrecision hd hM Omega depth spacing epsilon
         background budget fineSmall)
       (fun target source => finBoxDist target.1 source.1)
