@@ -440,19 +440,23 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ## Latest viXra submission
 
-**Submitted 2026-08-03 as a v2 replacement; moderation outcome not yet
-recorded.**  The 20-page v5.5 edition of *The Row Sums Were the Method, Not the
-Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay
-of Correlations, and a Misattributed Uniformity Wall* was sent to viXra.  The
-exact PDF is pinned at paper commit [`e68b821f7`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e68b821f7b5a766551c7e249706aaf7dc4d0eb66/papers/dobrushin-matrix/dobrushin_matrix.pdf)
+**Submitted 2026-08-04 as a new ai.viXra paper; public identifier and
+administrator outcome not yet recorded.**  The 9-page paper *Endpoint Parity
+Loss in a Bessel Wronskian: an exact obstruction to kernel-and-anchor proofs of
+global ratio monotonicity* is a companion to
+[`ai.viXra:2607.0089`](https://ai.vixra.org/abs/2607.0089), not a replacement.
+The exact PDF is pinned at clean replay commit
+[`644671f6`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/644671f66bed1558d57df6607b60d9c466404acd/output/pdf/wronskian_endpoint_barrier.pdf)
 and has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`.
-See the [submission record](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md)
-for the clean-clone build, oracle evidence, superseded edition, and exact scope.
+`C51CD46C1DC577E4D3BB6F2E36DF748E715D2E6DC614C7290D8E9837D92986BE`.
+See the [submission record](docs/WRONSKIAN-ENDPOINT-BARRIER-SUBMISSION-20260804.md)
+for the exact metadata, hashes, clean-history replay, and claim boundary.
 
-The paper/source commits remain on remote branch `d3-closure`; this notice does
-not claim that the lane is integrated into `main`, and it does not alter the
-canonical proof-state DAG or the recorded distance to the Clay problem.
+The paper proves a no-go theorem for a kernel-and-anchor proof architecture.
+It does not prove or disprove the global Wronskian conjecture; its numerical
+kill-test is diagnostic and no computer-assisted inequality is used in the
+paper proofs. This publication notice does not alter the canonical proof-state
+DAG or the recorded distance to the Clay problem.
 
 ---
 
@@ -478,7 +482,7 @@ Four short, adversarially-reviewed notes, each with completed Lean verification
 | Bessel-Amos / F-H 2D | [`papers/bessel-amos-fh`](papers/bessel-amos-fh) | unit-step order-monotonicity of (log I_nu)' via the exactly calibrated Amos bound; all 2D Wilson sector gaps strictly decreasing in beta |
 | Parity Barriers | [`papers/parity-barriers`](papers/parity-barriers) | no certifying bounded-order comparison inequality exists (parametric-in-r Lean) |
 | phi-lemma | [`papers/phi-lemma`](papers/phi-lemma) | weighted Turan-type monotonicity => determinant ordering c_mn < 0 of the pi-local surface expansion |
-| Wronskian reduction | [`papers/wronskian-reduction`](papers/wronskian-reduction) | the surface double sum IS a Wronskian; the asterisk = global sine-series ratio monotonicity; naive route provably dead |
+| Wronskian reduction / endpoint barrier | [`papers/wronskian-reduction`](papers/wronskian-reduction), [`papers/wronskian-endpoint-barrier`](papers/wronskian-endpoint-barrier) | the surface double sum is a Wronskian; the companion paper proves that the convolution kernel plus the all-orders small-coupling anchor cannot by themselves force the global sign; the global conjecture is not proved or disproved there |
 
 **Closed theorem (2026-07-28).**  The definitive 33-page manuscript
 [`papers/surface-complete/surface_theorem_complete.pdf`](papers/surface-complete/surface_theorem_complete.pdf)

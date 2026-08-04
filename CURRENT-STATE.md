@@ -17,19 +17,19 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
-20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
-sent as the v2 replacement.  Its exact PDF is pinned at paper commit
-`e68b821f7`, has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`, and is
+**Latest ai.viXra submission (2026-08-04; NEW PAPER).**  The 9-page paper
+*Endpoint Parity Loss in a Bessel Wronskian: an exact obstruction to
+kernel-and-anchor proofs of global ratio monotonicity* was submitted as a
+companion to `ai.viXra:2607.0089`, not a replacement. Its exact PDF is pinned
+at clean replay commit `644671f6`, has SHA-256
+`C51CD46C1DC577E4D3BB6F2E36DF748E715D2E6DC614C7290D8E9837D92986BE`, and is
 described in
-[`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).
-The fresh-clone evidence on branch `d3-closure` records a green 8,475-job core
-and a 2,980-report repository oracle at verified source anchor `8e8375d34`.
-Those are branch measurements, not a replacement for the canonical `main`
-checkpoint: neither the paper commit nor its source anchor was in `main` when
-this notice was written.  The moderation/publication outcome is not yet
-recorded here.
+[`docs/WRONSKIAN-ENDPOINT-BARRIER-SUBMISSION-20260804.md`](docs/WRONSKIAN-ENDPOINT-BARRIER-SUBMISSION-20260804.md).
+The paper proves structural non-identifiability for a proposed proof
+architecture. It neither proves nor disproves the global Wronskian conjecture;
+the kill-test is diagnostic, and no computer-assisted inequality is used in
+the proofs. The public identifier and administrator outcome are not yet
+recorded; do not resubmit.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),

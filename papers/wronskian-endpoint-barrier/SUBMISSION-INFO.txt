@@ -1,0 +1,128 @@
+======================================================================
+HISTORICAL ai.viXra SUBMISSION RECORD — wronskian_endpoint_barrier.pdf
+======================================================================
+
+SUBMISSION EVENT
+New submission sent to ai.viXra.org (AI-assisted e-prints).
+This is a historical record of the submitted object; do not resubmit it.
+This is a companion obstruction paper to ai.viXra:2607.0089, not a
+replacement of that paper.
+
+TITLE
+Endpoint Parity Loss in a Bessel Wronskian: an exact obstruction to
+kernel-and-anchor proofs of global ratio monotonicity
+
+AUTHOR
+Lluis Eriksson
+
+AFFILIATION
+Independent Researcher
+
+CONTACT E-MAIL
+lluiseriksson@gmail.com
+
+AUTHOR PAGE
+https://ai.vixra.org/author/lluis_eriksson
+
+PRIMARY CATEGORY
+Mathematical Physics
+
+SUGGESTED MSC 2020
+Primary:   33C10 (Bessel and Airy functions, cylinder functions)
+Secondary: 42A32 (trigonometric series of special types)
+Secondary: 41A60 (asymptotic approximations and expansions)
+
+KEYWORDS
+modified Bessel functions; Wronskians; sine-series ratio monotonicity;
+Neumann convolution; endpoint asymptotics; parity cancellation;
+structural non-identifiability
+
+ABSTRACT (PLAIN TEXT; UNDER 400 WORDS)
+For beta > 0 let I_m = I_m(beta) denote the modified Bessel function
+of the first kind and define
+
+  a_m = I_m^2 ((m-1) I_(m-1)^2 + (m+1) I_(m+1)^2),
+  b_m = m I_m^4,
+
+with sine series F_A(t) = sum_(m>=1) a_m sin(mt) and
+F_B(t) = sum_(m>=1) b_m sin(mt). The associated Wronskian is negative
+exactly when F_A/F_B is decreasing. We isolate what can and cannot be
+proved from two natural inputs: the Neumann convolution kernel
+I_0(2 beta sin(phi/2)) and the small-coupling anchor whose normalized
+limit is 4 sin^3(t).
+
+First, the convolution does prove F_B(t) > 0 for 0 < t < pi. Second,
+the endpoint is governed by two alternating quantities, c_3 and B_pi,
+through an exact cubic law. We prove B_pi > 0, derive integral
+representations, and establish that the cancellation lost by replacing
+the alternating quantities with positive-term majorants has exponential
+rate 8 - 4 sqrt(2). Finally, we prove a smooth one-parameter perturbation
+theorem: one may keep F_B and its kernel unchanged, preserve positivity
+and strict coefficient-ratio ordering, and preserve every jet at beta = 0,
+while choosing either sign of the endpoint cubic coefficient.
+
+Consequently those structural data, even taken together, do not imply
+global Wronskian negativity. This is a no-go theorem for a proof
+architecture, not a counterexample to the original Bessel conjecture.
+A short high-precision kill-test accompanies the paper; no
+computer-assisted inequality is used in the proofs.
+
+COMMENTS FIELD
+9 pages. New companion obstruction paper to ai.viXra:2607.0089, not a
+replacement. Diagnostic code and reproducibility record:
+https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+
+LICENSE
+Copyright remains with the author under the default non-exclusive
+ai.viXra archive conditions. No additional Creative Commons license is
+declared in this version.
+
+SUBMITTED FILE
+wronskian_endpoint_barrier.pdf
+
+REPOSITORY PATH OF THE SUBMITTED OBJECT
+output/pdf/wronskian_endpoint_barrier.pdf
+
+FROZEN ARTIFACT HASHES (SHA-256)
+TeX, normalized LF content:
+cd702cb3c54a952bb5f8002b64be699e6822ab9d1e7e1c857e969dd1f73fd989
+
+PDF, raw bytes:
+c51cd46c1dc577e4d3bb6f2e36df748e715d2e6dc614c7290d8e9837d92986be
+
+PDF SIZE
+398436 bytes (below the ai.viXra 5 MB limit)
+
+PAGE COUNT
+9
+
+REPRODUCIBILITY
+Repository:
+https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+
+Diagnostic command, from the repository root:
+python scripts/wronskian_endpoint_kill_test.py --self-test-mutations
+
+Expected terminal status:
+MUTATION_SELF_TEST PASS deliberate_false_predicate_rejected
+
+SUBMISSION RECORD
+[x] The single finished PDF was sent as a new companion-paper submission.
+[x] The submitted PDF is under 5 MB and has 9 pages.
+[x] The submitted metadata are recorded above.
+[x] The public identifier and administrator outcome remain pending.
+[x] No resubmission is authorized while that outcome is pending.
+
+CLAIM BOUNDARY
+This companion paper neither proves nor refutes the global Bessel Wronskian
+result. It proves a no-go theorem only for the kernel-and-anchor proof
+architecture; the status established in other project lanes is outside this
+paper's claim boundary.
+
+RECORDED NON-CLAIMS
+- The paper was not submitted as a replacement for ai.viXra:2607.0089.
+- The paper was not submitted as a proof or disproof of the global Bessel
+  Wronskian result.
+- The paper is not represented as a peer-reviewed or computer-certified
+  result.
+======================================================================
