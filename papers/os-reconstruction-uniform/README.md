@@ -33,3 +33,13 @@ v1 evidence is not overwritten:
 `../../docs/audit-artifacts/52-OS-RECONSTRUCTION-UNIFORM-V2-FROZEN-OBJECT.json`
 
 V2 PDF: `../../output/pdf/os_reconstruction_uniform_v2.pdf`
+
+Integrated source responding to the 5.14/10 review:
+`os_reconstruction_uniform_v3.tex`
+
+V3 reproduces the already checked Dobrushin-to-operator argument inside the
+paper, identifies the boundary space with the full real function algebra of a
+finite slice, and derives the mixed-correlator bound.  It changes no Lean
+source or theorem statement and does not claim a sharper analytic estimate.
+
+V3 PDF: `../../output/pdf/os_reconstruction_uniform_v3.pdf`

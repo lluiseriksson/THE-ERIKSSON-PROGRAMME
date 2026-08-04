@@ -1,0 +1,489 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,microtype}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\lean}[1]{\nolinkurl{#1}}
+\newcommand{\ModuleHash}{\nolinkurl{199229725d2d359e19a08792317d7f7e552cf027990505a4a4ffb2542295437a}}
+\newcommand{\OleanHash}{\nolinkurl{2741f4c24178f2ea632d914f309acc71c714b831a5c5b282b9e8bd8a94a34478}}
+\setlength{\emergencystretch}{2em}
+
+\title{From a Dobrushin Window to Exact Reconstructed Correlator Decay\\
+for Finite Coupled $\Z_2$ Slices}
+\author{Llu\'is Eriksson}
+\date{4 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give one end-to-end account of a finite-volume chain that had previously
+been split between a Dobrushin comparison development and a reconstruction
+interface.  For anisotropic coupled $\Z_2$ slices, the explicit condition
+\[
+  0<\alpha<1,
+  \qquad 2\tanh|\beta|+2\tanh|\gamma|\leq\alpha
+\]
+first controls the intrinsic single-site interdependence matrix, then the
+finite-strip covariances, then the fluctuation norm of the normalized symmetric
+transfer kernel.  An exact square-root dressing transports that bound to the
+reconstructed site form.  Consequently, with $m=-\log\alpha>0$, one obtains
+for every spatial extent and every finite temporal separation
+\[
+  |C^{\rm rec}_L(u;n)|\leq \|u\|_2^2 e^{-mn}.
+\]
+The exponent and prefactor are unchanged by reconstruction.  We also make
+explicit that $u$ ranges over the full real algebra of functions on a boundary
+slice and record the mixed-correlator consequence.  No sharper Dobrushin
+window, thermodynamic limit, continuum reconstruction, or Yang--Mills mass gap
+is claimed.  The contribution of this version is an autonomous proof chain and
+an exact observable endpoint, assembled from already machine-checked pieces.
+\end{abstract}
+
+\section{Result and exact scope}
+
+Let
+\[
+  X_L=(\operatorname{Fin}(L+1)\to\operatorname{Fin}2),
+  \qquad \cA_L=\R^{X_L}.
+\]
+The space $\cA_L$ is not merely a chosen vector class: with pointwise
+multiplication it is the complete finite-dimensional commutative algebra of
+real observables on one boundary slice.  Thus every cylinder observable that
+depends on that whole slice, as well as every finite sum and pointwise product
+of such observables, is represented by some $u\in\cA_L$.  What remains finite
+is the slice itself and the temporal separation.
+
+The slice weight $w_{\gamma,L}:X_L\to\R_{>0}$ contains the spatial coupling
+$\gamma$.  The temporal kernel $K_\beta$ is dressed symmetrically as
+\[
+  S_{w,\beta}=\diag(\sqrt w)K_\beta\diag(\sqrt w).
+\]
+For positive Perron data $(\lambda_L,\Omega_L)$ put
+\[
+  P_L=\lambda_L^{-1}S_{w_{\gamma,L},\beta},
+  \qquad P_L\Omega_L=\Omega_L,
+  \qquad \|\Omega_L\|_2=1.
+\]
+The reconstructed site form and forced transfer operator are denoted by
+$\mathfrak q_w$ and $T_{w,\beta}$.  Their precise finite sums appear in
+Section~\ref{sec:reconstruction}.
+
+\begin{theorem}[end-to-end finite reconstructed clustering]
+\label{thm:main}
+Assume
+\[
+  0<\alpha<1,
+  \qquad 2\tanh|\beta|+2\tanh|\gamma|\leq\alpha .
+\]
+Set $m=-\log\alpha$.  Then $m>0$ and, for every $L\geq0$, there are positive
+normalized Perron data $(\lambda_L,\Omega_L)$ such that
+\[
+  \|P_L-|\Omega_L\rangle\langle\Omega_L|\|\leq e^{-m}
+\]
+and, for all $u\in\cA_L$ and $n\in\mathbb N$,
+\[
+  |C^{\rm rec}_L(u;n)|
+  \leq \|u\|_2^2 e^{-mn}.
+\]
+Moreover $C^{\rm rec}_L(u;n)$ is exactly the Euclidean connected correlator
+of $P_L$, not merely bounded by it.
+\end{theorem}
+
+The binder order is load-bearing:
+\[
+  \exists m>0\;\forall L\;\exists(\lambda_L,\Omega_L)\;\forall u,n.
+\]
+Perron data may depend on the volume; the exponent does not.  The theorem is
+the mathematical statement exposed by
+\lean{os\_reconstruction\_uniform\_gap}.  The following sections give the
+entire implication chain rather than referring to the analytic input as a
+black box.
+
+\section{The intrinsic Dobrushin estimate}
+\label{sec:dobrushin}
+
+Let $I$ be a finite site set, $S=\{\pm1\}$, and let $W:S^I\to\R_{>0}$ be a
+strictly positive Gibbs weight.  Its normalized measure and heat-bath
+conditional are
+\[
+  \mu_W(\eta)=\frac{W(\eta)}{\sum_\xi W(\xi)},
+  \qquad
+  p_i^W(\eta,s)=
+  \frac{W(\eta^{i\to s})}{\sum_{t\in S}W(\eta^{i\to t})}.
+\]
+Define the intrinsic interdependence coefficient
+\[
+  c^W_{ik}=
+  \max_{\eta\equiv\eta'\;\mathrm{off}\;k}
+  \|p_i^W(\eta,\cdot)-p_i^W(\eta',\cdot)\|_{\TV}.
+\]
+For an observable $f$ let
+\[
+  \delta_i(f)=\max_{\eta\equiv\eta'\;\mathrm{off}\;i}
+  |f(\eta)-f(\eta')|.
+\]
+
+\begin{lemma}[finite Dobrushin comparison]
+\label{lem:comparison}
+If $\sum_k c^W_{ik}\leq\alpha<1$ for every $i$, then
+\[
+  |\Cov_{\mu_W}(f,g)|
+  \leq \frac14\sum_{i,j}\delta_i(f)
+       \left(\sum_{q\geq0}(c^W)^q_{ij}\right)\delta_j(g).
+\]
+If $c^W_{ik}=0$ whenever $d(i,k)>1$, then
+\[
+  |\Cov_{\mu_W}(f,g)|
+  \leq \frac{1}{4(1-\alpha)}
+  \sum_{i,j}\delta_i(f)\delta_j(g)\alpha^{d(i,j)}.
+\]
+\end{lemma}
+
+\begin{proof}
+The heat-bath update $E_i$ is invariant under $\mu_W$.  Indeed, after
+expanding $\mathbb E_{\mu_W}[E_iF]$ over $(\eta,s)$, the involution
+$(\eta,s)\mapsto(\eta^{i\to s},\eta_i)$ preserves the local partition sum
+and cancels its denominator.  The conditional Gr\"uss estimate contributes
+the factor $1/4$.  A single update transports the oscillation vector by
+$c^W$; iteration and invariance give the Neumann resolvent
+$D=\sum_{q\geq0}(c^W)^q$.  The row-sum hypothesis makes the series
+entrywise summable.  Under range one, $(c^W)^q_{ij}=0$ for
+$q<d(i,j)$ and its row sum is at most $\alpha^q$, hence
+\[
+  D_{ij}\leq\sum_{q\geq d(i,j)}\alpha^q
+  =\frac{\alpha^{d(i,j)}}{1-\alpha}.
+\]
+Substitution proves both bounds.  The corresponding checked endpoints are
+\lean{gibbs\_covar\_le\_resolvent} and
+\lean{gibbs\_covar\_exp\_decay}.
+\end{proof}
+
+\section{The anisotropic rectangle and the common rate}
+\label{sec:rectangle}
+
+For a symmetric zero-diagonal Ising coupling $J$, write
+\[
+  W_J(\eta)=\exp\!\left(\frac12\sum_{a,b}J_{ab}\eta_a\eta_b\right).
+\]
+The heat-bath conditional is the sigmoid of the local field
+$h_i(\eta)=\sum_kJ_{ik}\eta_k$:
+\[
+  p_i^{W_J}(\eta,+1)=\frac{1+\tanh h_i(\eta)}2.
+\]
+Changing spin $k$ moves $h_i$ by at most $2|J_{ik}|$.  The elementary
+two-point sigmoid calculation therefore gives
+\[
+  c^{W_J}_{ik}\leq\tanh|J_{ik}|.
+\]
+This is an envelope, not a claim that the intrinsic coefficient always
+attains it.
+
+Consider a finite rectangular strip, with coupling $\beta$ in the temporal
+direction and $\gamma$ in the spatial direction, and free boundary.  Every
+site has at most two neighbors of each type, hence
+\[
+  \sum_k c^{W_J}_{ik}
+  \leq 2\tanh|\beta|+2\tanh|\gamma|
+  \leq\alpha.
+\]
+Boundary sites have a smaller row sum.  Since the coupling has range one for
+Manhattan distance, Lemma~\ref{lem:comparison} yields, uniformly in both side
+lengths,
+\[
+  |\Cov_{\mu_{L,T}}(f,g)|
+  \leq \frac{1}{4(1-\alpha)}
+  \sum_{p,q}\delta_p(f)\delta_q(g)\alpha^{d_\square(p,q)}.
+\]
+For observables supported on the two end slices of a strip of temporal length
+$n$, every contributing pair has $d_\square(p,q)\geq n$.  Therefore
+\begin{equation}
+\label{eq:end-slice-decay}
+  |\Cov_{\mu_{L,n}}(f,g)|
+  \leq C_{L,f,g}\,\alpha^n,
+\end{equation}
+where $C_{L,f,g}$ may depend on the spatial extent and the observables, but not
+on $n$.  This precise freedom is sufficient for the operator transport.  The
+checked rectangle endpoints are \lean{rect\_ising\_uniform\_decay} and
+\lean{rect\_ising\_uniform\_two\_point}.
+
+\section{From strip covariances to an operator gap}
+\label{sec:transport}
+
+Let $M$ be a symmetric matrix on a finite set $X$, with a strictly positive
+vector $\Omega$ satisfying $M\Omega=\Omega$ and $\|\Omega\|_2=1$.  For a path
+$v=(v_0,\ldots,v_n)$ define
+\[
+  W_n(v)=\Omega(v_0)\prod_{k<n}M_{v_kv_{k+1}}\Omega(v_n).
+\]
+Successively summing the eigen-relation shows that $\sum_vW_n(v)=1$.  For
+endpoint observables $f,g:X\to\R$, direct matrix multiplication gives
+\begin{equation}
+\label{eq:band-identity}
+  \operatorname{bandCov}_n(f,g)
+  =\langle(f-\mathbb Ef)\Omega,
+      M^n(g-\mathbb Eg)\Omega\rangle.
+\end{equation}
+No spectral positivity is used; symmetry and the Perron relation suffice.
+
+For the physical slice weight $w$ and temporal kernel $K_\beta$, take
+\[
+  S=\diag(\sqrt w)K_\beta\diag(\sqrt w),
+  \qquad M=S/\lambda,
+  \qquad \psi=\Omega/\sqrt w.
+\]
+Then the band weight is exactly a free-strip Gibbs weight with the two endpoint
+factors $\psi$, divided by $\lambda^n$.  The identity is pointwise, so the
+boundary factors change only $C_{L,f,g}$ in
+\eqref{eq:end-slice-decay}; they do not change the common rate $\alpha$.
+The currying bijection between rectangle configurations and slice paths then
+identifies the free strip covariance with the rectangle covariance.
+
+\begin{proposition}[uniform projected norm]
+\label{prop:gap}
+Under the window of Theorem~\ref{thm:main}, for every $L$ the normalized
+symmetric slice kernel has Perron data with
+\[
+  \|M_L-|\Omega_L\rangle\langle\Omega_L|\|\leq\alpha.
+\]
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:end-slice-decay}, the exact tilt identity, and
+\eqref{eq:band-identity} give, for every vector $v$, a constant $C_{L,v}$ with
+\[
+  |\langle v,(M_L^n-|\Omega_L\rangle\langle\Omega_L|)v\rangle|
+  \leq C_{L,v}\alpha^n.
+\]
+The fluctuation operator is self-adjoint.  If its norm exceeded $\alpha$, a
+finite-dimensional spectral vector in the fluctuation sector would make the
+left side decay at a strictly slower exponential rate, contradicting the
+display.  Hence its norm is at most $\alpha=e^{-m}$ with
+$m=-\log\alpha$.  In Lean this is the composition ending at
+\lean{dobrushin\_ising\_uniform\_gap}, through
+\lean{abstract\_uniform\_gap}.
+\end{proof}
+
+This step explains why a volume-dependent prefactor in the measure estimate
+does not spoil the conclusion: the contradiction is performed separately in
+each finite volume, whereas the forbidden rate is common.
+
+\section{Exact reconstruction}
+\label{sec:reconstruction}
+
+For $u,v\in\cA_L$ define the reconstructed site form
+\[
+  \mathfrak q_w(Q_wu,Q_wv)=\sum_{\sigma\in X_L}u(\sigma)v(\sigma),
+  \qquad (Q_wu)(\sigma)=\sqrt{w(\sigma)}u(\sigma).
+\]
+In the implementation the form is first written with the weight $w$ and the
+inverse square-root dressing; strict positivity of $w$ cancels those factors
+exactly.  Consequently $Q_w$ is an isometry from the Euclidean boundary space
+onto the real reconstructed site coordinates.
+
+The forced transfer matrix satisfies the exact intertwining relation
+\begin{equation}
+\label{eq:intertwining}
+  T_{w,\beta}Q_wu=Q_wS_{w,\beta}u.
+\end{equation}
+Induction gives the equality for every finite iterate.  After Perron
+normalization,
+\[
+  (\lambda^{-1}T_{w,\beta})^nQ_wu=Q_wP^nu.
+\]
+The checked declarations are \lean{siteForm\_qEmbed},
+\lean{transferOp\_qEmbed}, \lean{transferOp\_iterate\_qEmbed}, and
+\lean{transferOp\_qEmbed\_tilt\_iterate}.
+
+Define the reconstructed connected autocorrelator by
+\[
+  C^{\rm rec}_{w,\beta,\lambda,\Omega}(u;n)
+  =\operatorname{Re}\mathfrak q_w
+     \left(Q_wu,(\lambda^{-1}T_{w,\beta})^nQ_wu\right)
+   -\operatorname{Re}\mathfrak q_w(Q_w\Omega,Q_wu)^2.
+\]
+Equations above give the exact identity
+\begin{equation}
+\label{eq:corr-exact}
+  C^{\rm rec}_{w,\beta,\lambda,\Omega}(u;n)
+  =\langle u,P^nu\rangle-\langle\Omega,u\rangle^2.
+\end{equation}
+Thus, writing $\Pi=|\Omega\rangle\langle\Omega|$ and
+$R_n=P^n-\Pi$,
+\[
+  |C^{\rm rec}(u;n)|=|\langle u,R_nu\rangle|
+  \leq\|u\|_2^2\|P-\Pi\|^n.
+\]
+For $n\geq1$ this uses $P^n-\Pi=(P-\Pi)^n$; for $n=0$ it uses
+$\|I-\Pi\|\leq1$.  This separate zero-time case is necessary because the
+zeroth power of $P-\Pi$ is $I$, not $I-\Pi$.
+Combining this with Proposition~\ref{prop:gap} proves
+Theorem~\ref{thm:main}.  The endpoint is checked as
+\lean{reconstructedConnCorr\_eq\_connCorr} and
+\lean{reconstructedConnCorr\_decay}.
+
+\section{The full boundary observable algebra}
+\label{sec:observables}
+
+The diagonal notation in \eqref{eq:corr-exact} can obscure the scope.  For
+$u,v\in\cA_L$ define the mixed connected form
+\[
+  B^{\rm rec}_L(u,v;n)
+  =\langle u,P_L^nv\rangle
+   -\langle\Omega_L,u\rangle\langle\Omega_L,v\rangle.
+\]
+It is bilinear and, since $P_L$ is symmetric, symmetric in $u,v$.
+
+\begin{corollary}[mixed boundary observables]
+\label{cor:mixed}
+Under the hypotheses of Theorem~\ref{thm:main},
+\[
+  |B^{\rm rec}_L(u,v;n)|
+  \leq\|u\|_2\|v\|_2e^{-mn}
+\]
+for all $u,v\in\cA_L$ and $n\in\mathbb N$.
+\end{corollary}
+
+\begin{proof}
+Put $\Pi_L=|\Omega_L\rangle\langle\Omega_L|$.  For $n\geq1$, the vacuum
+projection commutes with $P_L$ and
+$P_L^n-\Pi_L=(P_L-\Pi_L)^n$.  Cauchy--Schwarz and
+$\|P_L-\Pi_L\|\leq e^{-m}$ give the claim.  At $n=0$, use
+$\|I-\Pi_L\|\leq1=e^{-m\cdot0}$.
+\end{proof}
+
+This corollary is a paper-level consequence of the checked operator-norm
+theorem; it is not listed as a separate Lean declaration in the frozen v2
+module.  It shows that the result is not restricted to one preferred scalar
+observable.  Every real boundary function is admitted, and any finite
+covariance matrix built from a family $u_1,\ldots,u_k\in\cA_L$ inherits the
+same entrywise exponential rate.  It does not enlarge the support beyond one
+finite slice or construct an infinite-time observable algebra.
+
+\section{Machine-checked map and reproducibility}
+
+No Lean source changed between v2 and this integrated exposition.  The frozen
+module contains two definitions and nine theorems.  The exact source has
+$8682$ LF bytes and SHA-256
+\begin{center}\ModuleHash\end{center}
+and its materialized \texttt{.olean} has SHA-256
+\begin{center}\OleanHash\end{center}
+The accepted Colab Pro+ CPU/high-RAM build completed all $8191$ jobs with exit
+code zero.  The repository oracle emitted $3049$ reports: $3022$ used only
+Lean's standard axioms \lean{Classical.choice}, \lean{Quot.sound}, and
+\lean{propext}; $27$ were axiom-free; there were zero nonstandard axioms, zero
+\lean{sorry}, and zero core errors.  The body commit is
+\nolinkurl{3478813bf02427bc48fbbbdb46a64d809882838b} and its v2 frozen-object
+manifest records LF/CRLF projections and PDF hashes.
+
+\begin{center}\small
+\begin{tabular}{p{0.43\linewidth}p{0.47\linewidth}}
+\toprule
+Mathematical step & Checked endpoint or source lane\\
+\midrule
+Intrinsic heat-bath comparison & \lean{gibbs\_covar\_le\_resolvent}\\
+Range-one exponential decay & \lean{gibbs\_covar\_exp\_decay}\\
+Anisotropic rectangle, all volumes & \lean{rect\_ising\_uniform\_decay}\\
+Band covariance identity & \lean{band\_covariance\_eq}\\
+Measure decay to operator norm & \lean{abstract\_uniform\_gap}\\
+Perron tilt and rectangle feed & \lean{dobrushin\_ising\_uniform\_gap}\\
+Exact reconstructed correlator & \lean{reconstructedConnCorr\_eq\_connCorr}\\
+Reconstructed decay & \lean{reconstructedConnCorr\_decay}\\
+Uniform physical endpoint & \lean{os\_reconstruction\_uniform\_gap}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The analytic declarations in the first six rows predate the reconstruction
+module.  This paper does not relabel them as new; it reproduces their argument
+so the endpoint can be read without consulting a separate paper.
+
+\section{Limitations and precise contribution}
+
+The proof is finite-volume throughout.  It does not construct an
+infinite-volume Gibbs state, prove boundary-condition independence, take a
+thermodynamic or continuum limit, reconstruct Wightman fields, or prove a
+Yang--Mills mass gap.  The Dobrushin window is sufficient and deliberately
+conservative; for the two-dimensional Ising cell it is weaker than the exact
+solution.  No improvement of that window or of $m=-\log\alpha$ is claimed.
+
+What the integrated statement adds is exact compositional control.  The
+classical single-site condition is carried through a finite rectangle, a
+Perron boundary tilt, a projected operator norm, and the reconstructed site
+form.  Every transition is an equality or a bound with its quantifiers visible,
+and reconstruction loses neither rate nor prefactor.  The mixed-observable
+corollary makes explicit that the boundary variable ranges over the full real
+function algebra of the finite slice.  These are useful endpoints of a
+formalization program, but they remain finite and high-temperature.
+
+\section*{Primary references}
+
+\begin{thebibliography}{9}
+
+\bibitem{Dobrushin1968}
+R.~L. Dobrushin,
+\emph{The description of a random field by means of conditional probabilities
+and conditions of its regularity},
+Theory of Probability and its Applications \textbf{13} (1968), 197--224.
+\href{https://doi.org/10.1137/1113026}{doi:10.1137/1113026}.
+
+\bibitem{Dobrushin1970}
+R.~L. Dobrushin,
+\emph{Prescribing a system of random variables by conditional distributions},
+Theory of Probability and its Applications \textbf{15} (1970), 458--486.
+\href{https://doi.org/10.1137/1115049}{doi:10.1137/1115049}.
+
+\bibitem{Simon1993}
+B.~Simon,
+\emph{The Statistical Mechanics of Lattice Gases, Volume I},
+Princeton University Press, 1993, Chapter V.
+
+\bibitem{OS1}
+K.~Osterwalder and R.~Schrader,
+\emph{Axioms for Euclidean Green's functions},
+Communications in Mathematical Physics \textbf{31} (1973), 83--112.
+\href{https://doi.org/10.1007/BF01645738}{doi:10.1007/BF01645738}.
+
+\bibitem{OS2}
+K.~Osterwalder and R.~Schrader,
+\emph{Axioms for Euclidean Green's functions II},
+Communications in Mathematical Physics \textbf{42} (1975), 281--305.
+\href{https://doi.org/10.1007/BF01608978}{doi:10.1007/BF01608978}.
+
+\bibitem{OsterwalderSeiler}
+K.~Osterwalder and E.~Seiler,
+\emph{Gauge field theories on a lattice},
+Annals of Physics \textbf{110} (1978), 440--471.
+\href{https://doi.org/10.1016/0003-4916(78)90039-8}{doi:10.1016/0003-4916(78)90039-8}.
+
+\bibitem{FILS}
+J.~Fr\"ohlich, R.~Israel, E.~H.~Lieb, and B.~Simon,
+\emph{Phase transitions and reflection positivity. I. General theory and
+long range lattice models},
+Communications in Mathematical Physics \textbf{62} (1978), 1--34.
+\href{https://doi.org/10.1007/BF01940327}{doi:10.1007/BF01940327}.
+
+\end{thebibliography}
+
+\end{document}
