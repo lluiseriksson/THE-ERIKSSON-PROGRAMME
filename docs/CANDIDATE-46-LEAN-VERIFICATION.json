@@ -1,11 +1,11 @@
 {
   "candidate": 46,
   "title": "Local Tanh, Global Wall",
-  "status": "verified_algebraic_core_not_terminal_audit",
+  "status": "verified_finite_probability_and_kernel_comparison_not_terminal_audit",
   "source": {
     "path": "YangMills/BirkhoffDobrushin/Wall.lean",
-    "bytes": 9277,
-    "sha256": "a477ca8b77133583b16f40f9a55ffab6da6296d873a62de7bebddd1571dca0e8"
+    "bytes": 23744,
+    "sha256": "f2df04ae3b3f8f06730ab33b5d6e25673b3ae822d0727db4e925045fdf5cde65"
   },
   "environment": {
     "provider": "Google Colab Pro+",
@@ -18,7 +18,14 @@
     "closed_local_time": "2026-08-04T20:04:18+02:00",
     "close_method": "Colab UI: disconnect and delete runtime",
     "close_verified": true,
-    "notebook_url": "https://colab.research.google.com/drive/11N9BAjGa_w4ikrI9bAl9Jkx-5iYxpRzS"
+    "notebook_url": "https://colab.research.google.com/drive/11N9BAjGa_w4ikrI9bAl9Jkx-5iYxpRzS",
+    "extension_session": {
+      "opened_local_time_approx": "2026-08-04T21:26:00+02:00",
+      "closed_local_time": "2026-08-04T21:43:16+02:00",
+      "close_method": "Colab UI: disconnect and delete runtime",
+      "close_verified": true,
+      "setup_seconds": 158.73
+    }
   },
   "toolchain": {
     "lean": "leanprover/lean4:v4.29.0-rc6",
@@ -94,12 +101,89 @@
       "module_olean_bytes": 590464,
       "module_olean_sha256": "1283835e606faa1797d86d47ea01b23e1aa1baf378a9c3d559642f6c60026490",
       "check_olean_sha256": "a93b85bd3d6bfc23a6f0117e5ba20e26ad85b47b542419497ba16a9ab5d852d4"
+    },
+    {
+      "pass": 8,
+      "kind": "extension_runtime_setup_and_historical_source_compile",
+      "lean_exit": 1,
+      "compile_seconds": 20.635,
+      "setup_seconds": 158.73,
+      "source_bytes": 6916,
+      "source_sha256": "e4a4af59f8706e5b4aadc251e290fc71707dbb76667df28473bfe1af72c1f50e",
+      "olean_exists": false,
+      "attack_result": "The new runtime deliberately replayed the historical Real.tanh_add failure before compiling the extension; it is setup provenance, not final-source evidence."
+    },
+    {
+      "pass": 9,
+      "kind": "finite_probability_first_draft",
+      "lean_exit": 1,
+      "compile_seconds": 13.595,
+      "source_bytes": 20559,
+      "source_sha256": "1b83b0fb44d410f4a3a89b20027677107db83ae40a85f6470a38a085f49b6054",
+      "olean_exists": false,
+      "attack_result": "Four direct uses of Finset.sum_sub_distrib failed type inference; no olean was accepted as evidence."
+    },
+    {
+      "pass": 10,
+      "kind": "finite_probability_standalone_compile",
+      "lean_exit": 0,
+      "compile_seconds": 12.912,
+      "source_bytes": 20592,
+      "source_sha256": "c7b709132d06d454b074b69e199423f18eb90850f973a19985483dd147c0cbe3",
+      "olean_bytes": 1241280,
+      "olean_sha256": "c55d24e6a8ab6b921853808dfdef5f83c5d332bf6bdd1cd8910f2cfeb6824575"
+    },
+    {
+      "pass": 11,
+      "kind": "finite_probability_package_module_and_import",
+      "module_exit": 0,
+      "import_exit": 0,
+      "elapsed_seconds": 20.341,
+      "source_bytes": 20592,
+      "source_sha256": "c7b709132d06d454b074b69e199423f18eb90850f973a19985483dd147c0cbe3",
+      "module_olean_bytes": 1241792,
+      "module_olean_sha256": "18888092e69d204949f3b8a278b289a4f724baf5109da0dce6c4d85673f26a01",
+      "check_olean_sha256": "f9980a0824a66e596deca85e899c475376bb5dcb86b79a9f8e5581cf89c16f9f"
+    },
+    {
+      "pass": 12,
+      "kind": "finite_kernel_final_standalone_compile",
+      "lean_exit": 0,
+      "compile_seconds": 13.109,
+      "source_bytes": 23744,
+      "source_sha256": "f2df04ae3b3f8f06730ab33b5d6e25673b3ae822d0727db4e925045fdf5cde65",
+      "olean_bytes": 1286824,
+      "olean_sha256": "100d7cb6100420f5913bc0f110f70ff50aed23269c86555faf7e66fe063f984d"
+    },
+    {
+      "pass": 13,
+      "kind": "finite_kernel_final_package_module_and_import",
+      "module_exit": 0,
+      "import_exit": 0,
+      "elapsed_seconds": 19.817,
+      "source_bytes": 23744,
+      "source_sha256": "f2df04ae3b3f8f06730ab33b5d6e25673b3ae822d0727db4e925045fdf5cde65",
+      "module_olean_bytes": 1287336,
+      "module_olean_sha256": "8196837adae2215bb3a85f92bd317531a867121672cc2629efb5af68540c8ffe",
+      "check_olean_sha256": "f9980a0824a66e596deca85e899c475376bb5dcb86b79a9f8e5581cf89c16f9f"
+    },
+    {
+      "pass": 14,
+      "kind": "explicit_pairwise_and_kernel_import",
+      "import_exit": 0,
+      "elapsed_seconds": 7.367,
+      "check_olean_bytes": 1376,
+      "check_olean_sha256": "caefea43e2e8a1e8676728ecfbffec4102cf89cef8297c2c5f932c8e16558209"
     }
   ],
   "verified_scope": [
     "scalar Hilbert-gap identity and reciprocal-extrema equality",
     "chord-slack nonnegativity and endpoint rigidity",
     "strictly positive finite weighted equality classification",
+    "probability-normalized total variation as a positive likelihood-ratio part",
+    "sharp chord and square-root envelopes with equality equivalence",
+    "finite probability TV-Hilbert comparison with if-and-only-if equality",
+    "realized finite-kernel Dobrushin comparison with if-and-only-if equality",
     "tensor cross-ratio factorization and realized-maximum multiplication",
     "rational hyperbolic addition law for Birkhoff coefficients",
     "finite fibrewise-to-coordinate averaging contraction"
@@ -107,7 +191,6 @@
   "external_inputs_not_formalized_here": [
     "general analytic Birkhoff-Hopf contraction theorem",
     "logarithmic passage from cross-ratio maximum to Hilbert diameter",
-    "full probability-normalized kernel equality theorem",
     "Hellinger proof of global product Dobrushin degeneration",
     "interacting Dobrushin comparison theorem"
   ],

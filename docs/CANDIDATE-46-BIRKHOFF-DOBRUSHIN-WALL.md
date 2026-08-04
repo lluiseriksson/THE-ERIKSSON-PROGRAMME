@@ -301,25 +301,34 @@ pero no impide formalizar el cálculo honesto y su muro. Se añade
 1. la identidad cuadrática y la condición de igualdad de extremos recíprocos;
 2. la rigidez de igualdad en la cota de cuerda, también para sumas finitas con
    pesos estrictamente positivos;
-3. la factorización de cocientes cruzados y la multiplicación de máximos
+3. la identidad normalizada que expresa variación total como esperanza de la
+   parte positiva del cociente de verosimilitudes;
+4. la desigualdad TV--Hilbert finita completa, con clasificación `iff` de la
+   igualdad, y su levantamiento a kernels mediante máximos Dobrushin
+   realizados;
+5. la factorización de cocientes cruzados y la multiplicación de máximos
    realizados bajo producto tensorial;
-4. la ley racional de adición hiperbólica del coeficiente de Birkhoff;
-5. el paso finito de condicionamiento que preserva una cota de contracción
+6. la ley racional de adición hiperbólica del coeficiente de Birkhoff;
+7. el paso finito de condicionamiento que preserva una cota de contracción
    fibra a fibra al promediar las coordenadas exteriores.
 
-La fuente exacta de 9.277 bytes, SHA-256
-`a477ca8b77133583b16f40f9a55ffab6da6296d873a62de7bebddd1571dca0e8`,
+La fuente exacta de 23.744 bytes, SHA-256
+`f2df04ae3b3f8f06730ab33b5d6e25673b3ae822d0727db4e925045fdf5cde65`,
 se compiló en Colab Pro+ CPU/alta RAM con Lean `v4.29.0-rc6` y Mathlib
 `07642720480157414db592fa85b626dafb71355b`. La pasada de paquete materializó
 el `.olean` bajo `.lake/build/lib/lean/YangMills/BirkhoffDobrushin/`, SHA-256
-`1283835e606faa1797d86d47ea01b23e1aa1baf378a9c3d559642f6c60026490`, y un
-segundo archivo lo importó con salida 0.
+`8196837adae2215bb3a85f92bd317531a867121672cc2629efb5af68540c8ffe`, y un
+segundo archivo lo importó con salida 0. Un tercer importador comprobó
+explícitamente los teoremas de comparación para probabilidades y kernels y
+materializó un `.olean` con SHA-256
+`caefea43e2e8a1e8676728ecfbffec4102cf89cef8297c2c5f932c8e16558209`.
 
 El alcance verificado no se infla: siguen externos el teorema analítico de
 Birkhoff--Hopf, el paso logarítmico de máximo de cocientes cruzados a diámetro
-de Hilbert, la normalización probabilística completa, la prueba Hellinger del
-coeficiente Dobrushin global y el teorema de comparación para especificaciones
-interactuantes. Los intentos fallidos se conservan en el transcript. Fuente
-presente no equivale a verificación; aquí la afirmación de verificación se
-apoya específicamente en la materialización remota del `.olean` y en el import
-separado.
+de Hilbert, la prueba Hellinger del coeficiente Dobrushin global y el teorema de
+comparación para especificaciones interactuantes. La normalización
+probabilística, la cota par a par, su igualdad `iff` y el levantamiento por
+máximo realizado ya no están en esa lista externa. Los intentos fallidos se
+conservan en el transcript. Fuente presente no equivale a verificación; aquí
+la afirmación se apoya específicamente en la materialización remota del
+`.olean` y en dos imports separados.
