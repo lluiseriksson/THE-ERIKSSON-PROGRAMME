@@ -136,3 +136,92 @@ The binary PDF is frozen separately:
 10. **Independent-review attack unavailable.** Fable was not run because the
     visible account violated the binding account instruction. This absence is
     a recorded limitation, not silently treated as review.
+
+## Formalization supplement freeze (August 4, 2026)
+
+Freeze status: **machine-checked algebraic core and revised paper; external
+mathematical, novelty, and score verdict still required**.
+
+This supplement responds to the external-review attack that assigned 4.86/10
+and identified the absence of a current Lean artifact as a material weakness.
+It supersedes the paper-level formalization-status paragraph and PDF above,
+while preserving the earlier freeze as provenance.
+
+- Branch: `codex/candidate-46-birkhoff-dobrushin-wall`
+- Frozen body commit: `1b91f245c83b60d7d833c5fbb1448151ec19df71`
+- Base `main`: `12bf6e241694aa5cfb5c7a6e08a96c8fa47ff9b1`
+- Main divergence at freeze: branch ahead, `main` ahead by zero commits; no
+  merge commit was required
+- Capture host: Windows owner desktop, isolated worktree
+- Capture method: `System.IO.File.ReadAllBytes`, UTF-8 decode, explicit LF and
+  CRLF normalization, and `System.Security.Cryptography.SHA256.HashData`
+- Local Lean/Lake/oracle: not invoked
+- Remote runtime: Colab Pro+ CPU, high RAM (50.99 GiB visible), no GPU, account
+  `lluiseriksson@gmail.com`
+- Runtime opened: approximately `2026-08-04T19:36:00+02:00`
+- Runtime closed: `2026-08-04T20:04:18+02:00`
+- Close method: Colab UI “disconnect and delete runtime”; disconnected state
+  verified after confirmation
+- Lean: `leanprover/lean4:v4.29.0-rc6`
+- Mathlib: `07642720480157414db592fa85b626dafb71355b`
+- Notebook capture:
+  `https://colab.research.google.com/drive/11N9BAjGa_w4ikrI9bAl9Jkx-5iYxpRzS`
+- PDF compiler: Tectonic, final exit 0 in 8.3 s; only the host Fontconfig
+  default-file diagnostic remained, with no TeX warnings
+- PDF QA: 9 pages rendered; changed abstract and formalization/conclusion pages
+  inspected after the final compile; temporary PNGs deleted and reproducible
+- Arithmetic regression: normal and `python -O` runs both exit 0
+- Fable/Claude: not invoked because the visible account remained
+  `luis.ebikeride@gmail.com`, not the binding account
+  `masterythief@gmail.com`
+- External audit: not performed; no terminal score or priority verdict is
+  claimed
+
+### Frozen text and source bodies
+
+| Path | Raw bytes | SHA-256 raw | LF bytes | SHA-256 LF | CRLF bytes | SHA-256 CRLF |
+|---|---:|---|---:|---|---:|---|
+| `YangMills.lean` | 264 | `0d6a40e97e745223356b97ed4ec4fa0925848b03245ea98d1a82d1bf056ffdbd` | 260 | `2ef46f1966e8746c7ecc007591344f8bc396e1f84169a599a8b8ff156d0fdfe1` | 266 | `e9bbfef0a5f3f63f11ac178d43f9a8d4bc3be685681391a9363a0367cb96a48f` |
+| `YangMills/BirkhoffDobrushin/Wall.lean` | 9277 | `a477ca8b77133583b16f40f9a55ffab6da6296d873a62de7bebddd1571dca0e8` | 9277 | `a477ca8b77133583b16f40f9a55ffab6da6296d873a62de7bebddd1571dca0e8` | 9546 | `3fd48240bbbdca777bb0c7baaca5ccf60220978e56bc0a28d5dd50a42e7709d6` |
+| `docs/CANDIDATE-46-BIRKHOFF-DOBRUSHIN-WALL.md` | 13304 | `650c5ae8bb45fd8efd5c1e1a0790146a202f7d3f11dcaef4d9abde85eb845fea` | 13304 | `650c5ae8bb45fd8efd5c1e1a0790146a202f7d3f11dcaef4d9abde85eb845fea` | 13629 | `1f25e811ac0732620e3dce9a5bcbd1069cdc4b5a345b44bbf3bb0a8f8c328681` |
+| `docs/CANDIDATE-46-LEAN-VERIFICATION.json` | 4853 | `9d935ab1d70c96f1d1fbce0e72a880a91743c905ba2a5c809326c66c44599933` | 4853 | `9d935ab1d70c96f1d1fbce0e72a880a91743c905ba2a5c809326c66c44599933` | 4974 | `b1071930346df687ad733f49e6b3e3e9444ccd50d57684d0f7c8209412d5ccb1` |
+| `papers/birkhoff-dobrushin-wall/birkhoff_dobrushin_wall.tex` | 27507 | `5ff076ff978e2e5f24d6aef20423eb19dc9cf2134845b9173f360ad1e5142605` | 27507 | `5ff076ff978e2e5f24d6aef20423eb19dc9cf2134845b9173f360ad1e5142605` | 28172 | `5c00e938a68cd33524db86f25bfe589aafbaeb99069eaa5cfd031b41cba8a6c3` |
+| `scripts/certify_birkhoff_dobrushin_comparison.py` | 5803 | `4d677c431d63721710e15b39bd1472149c5e9487b0b6d7010d8963be782fdbde` | 5803 | `4d677c431d63721710e15b39bd1472149c5e9487b0b6d7010d8963be782fdbde` | 5981 | `a35806ca0eeee6c480f88104fcba4827e0f1490b6495bdf74796289a88970afa` |
+| `scripts/killtest_birkhoff_tensor_wall.py` | 2679 | `b0bd9f744331acdf769b194d922e75bcff7f64d15709904584cfe85526729412` | 2679 | `b0bd9f744331acdf769b194d922e75bcff7f64d15709904584cfe85526729412` | 2763 | `cebcb22f2da82be389dd62f7598bd9f679141612105484d9fadb0cb49aa146f9` |
+
+The revised binary PDF is frozen separately:
+
+| Path | Bytes | SHA-256 |
+|---|---:|---|
+| `output/pdf/birkhoff_dobrushin_wall.pdf` | 105847 | `b670a475354bded1a7c01530da95b2cabc97da88d6acbf51da19b88c9872cb52` |
+
+### Formalization attacks attempted
+
+1. **Pinned-library attack.** The first compile failed because
+   `Real.tanh_add` was unavailable in the pinned Mathlib. The proof was
+   reformulated as the equivalent rational hyperbolic-addition identity.
+2. **Stale-olean attack.** A later failed compile left the previous `.olean`
+   on disk. The transcript marks it stale, deletes it before the successful
+   pass, and never counts source presence or stale output as verification.
+3. **Equality-rigidity attack.** Endpoint rigidity is checked both pointwise
+   and for strictly positive finite weighted sums.
+4. **Local-step attack.** A wrongly oriented sum rewrite failed compilation;
+   the corrected `calc` proof was recompiled from a source whose hash matches
+   the local file byte for byte.
+5. **Notebook-transport attack.** A malformed Python patch cell failed before
+   invoking Lean and remains in the transcript as a failed pass.
+6. **Package-search-path attack.** A nested module compiled, but a separate
+   import correctly failed while the `.olean` was outside
+   `.lake/build/lib/lean`. The final pass materialized it in the package search
+   path and separately compiled three imported `#check` declarations.
+7. **Final import result.** Module exit 0, separate-import exit 0, module
+   `.olean` SHA-256
+   `1283835e606faa1797d86d47ea01b23e1aa1baf378a9c3d559642f6c60026490`.
+8. **Scope-inflation attack.** The paper and transcript explicitly leave the
+   general analytic Birkhoff--Hopf theorem, logarithmic diameter passage,
+   probability-normalized end-to-end kernel theorem, Hellinger product proof,
+   and interacting Dobrushin theorem as external inputs.
+9. **No-false-gap attack.** The Lean module formalizes the calculation and
+   wall; it does not assert a volume-uniform global projective gap.
+10. **Runtime-governance attack.** Lean/Lake stayed off Windows; Colab used CPU
+    high RAM without GPU and was disconnected and deleted at completion.
