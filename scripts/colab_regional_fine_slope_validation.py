@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v12"
-SOURCE_SHA = "fbd0ccf6859df59972c74519e97e449b1fa1cd18"
+RUNNER_REV = "regional-large-block-v13"
+SOURCE_SHA = "c5eaba7ed47b14b738da7baef8877ca2b8c84af7"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -250,7 +250,13 @@ REGIONAL_PRECISION_QUEUE_V10 = [
     ),
 ]
 
-QUEUE = LEGACY_QUEUE_V9[4:]
+QUEUE = [
+    (
+        "slope_algebra_repro",
+        ["lake", "env", "lean", "/content/regional-slope-repro.lean"],
+        None,
+    ),
+] + LEGACY_QUEUE_V9[4:]
 
 ALGEBRA_REPRO = r"""import Mathlib
 
@@ -268,6 +274,33 @@ example (H K Q : E →L[ℝ] E) (a : ℝ) :
     ContinuousLinearMap.smul_apply, ContinuousLinearMap.comp_apply,
     map_add, map_smul]
   module
+"""
+
+SLOPE_REPRO = r"""import Mathlib
+
+example (M Q depth : ℕ) :
+    M ^ (depth + 2) * (2 * Q) = (2 * M ^ (depth + 2)) * Q := by
+  ac_rfl
+
+example (M depth : ℕ) [NeZero M] :
+    (M : ℝ) ^ (depth + 1) / (2 * (M : ℝ) ^ (depth + 2)) =
+      1 / (2 * (M : ℝ)) := by
+  rw [show depth + 2 = (depth + 1) + 1 by omega, pow_succ]
+  have hpow : (M : ℝ) ^ (depth + 1) ≠ 0 :=
+    pow_ne_zero _ (Nat.cast_ne_zero.mpr (NeZero.ne M))
+  have hM : (M : ℝ) ≠ 0 :=
+    Nat.cast_ne_zero.mpr (NeZero.ne M)
+  field_simp [hpow, hM] <;> ring_nf
+
+def sourceCoordinate (scale : ℕ) (x : Fin 4 → ℕ) : Fin 4 → ℝ :=
+  fun i => (x i : ℝ) + 1 / 2 - (scale : ℝ) / 2
+
+example (scale : ℕ) (x : Fin 4 → ℕ) :
+    sourceCoordinate scale x =
+      fun i => (x i : ℝ) + (1 / 2 - (scale : ℝ) / 2) := by
+  funext i
+  unfold sourceCoordinate
+  ring
 """
 
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
@@ -449,6 +482,10 @@ def main() -> int:
         if mathlib != EXPECTED_MATHLIB:
             raise RuntimeError("MATHLIB_PIN_MISMATCH=" + mathlib)
         run("cache_get", ["lake", "exe", "cache", "get"], cwd=ROOT)
+
+        Path("/content/regional-slope-repro.lean").write_text(
+            SLOPE_REPRO, encoding="utf-8"
+        )
 
         for stage, command, expected_axioms in QUEUE:
             output = run(stage, command, cwd=ROOT)
