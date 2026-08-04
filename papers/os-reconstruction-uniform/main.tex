@@ -396,6 +396,11 @@ The OS-R numerical gate contains 110 registered checks and is run with Python as
 disabled.  Lean compilation, full core compilation, and the repository-wide
 axiom oracle are executed only on a Colab Pro+ CPU high-RAM runtime.  The
 pre-measurement predictions are 8481 core jobs and 3015 oracle reports.
+On the exact frozen merged tree the realised totals are 8482 core jobs and
+3015 oracle reports, with zero \texttt{sorryAx}; the incorrect core prediction
+is retained in the record rather than repaired after measurement.  The final
+fresh-clone run ended with every child sentinel and the atomic parent sentinel
+equal to zero.
 
 The final frozen commit, byte counts, LF and CRLF hashes, realised build
 counts, and Colab opening/closing times are recorded in the accompanying

@@ -31354,3 +31354,48 @@ the new module, and it falsifies use of the historical-tree `8481` prediction
 for the final merged branch. The release test must therefore be a fresh clone
 of the exact frozen body SHA; its measured total, not a repaired prediction,
 will govern.
+
+
+## Addendum 615 (2026-08-04, **fresh-body run reached child zeroes but lost
+the parent sentinel when the runtime slot was reclaimed; not release PASS**)
+
+The exact pushed body
+`b5da95f33f5af32e992e0ba7c3084507d06f3a7c` was cloned detached on the
+authorised Colab Pro+ account `lluiseriksson@gmail.com`, CPU high-RAM
+(50.99 GB), at approximately 18:50 CEST. Stage 0 checked that full SHA,
+Lean `v4.29.0-rc6`, and Mathlib
+`07642720480157414db592fa85b626dafb71355b`. The run peaked at approximately
+32.5 GB and materialised the OS-R module (`8191 jobs`) and the complete merged
+core (`8482 jobs`). Its child sentinels for both OS-uniform judge modes, the
+OS-R module, the core, and the full-oracle process were all zero.
+
+At approximately 19:41 CEST, after about 51 minutes, the notebook lost its
+runtime slot before the bootstrap could atomically publish
+`/content/OSR_FINAL_DONE`. A read-only recovery cell confirmed the body SHA,
+the child zeroes, zero textual `sorryAx`, and the two successful build tails,
+but also confirmed that the parent sentinel was absent. Its first oracle grep
+yielded 1841 `depends on axioms` lines, contradicting the preregistered 3015
+count; before the complete log could be diagnosed, the VM disappeared. The
+account's session manager then showed five other active notebooks and did not
+list this notebook. None of those other sessions was terminated.
+
+**Ruling:** this is useful attack evidence and fixes the merged-core total at
+8482 for this body, but it is not the release run. A fresh sanctioned runtime
+must repeat the exact-body runner through its atomic parent sentinel and the
+oracle log must be counted by both source commands and emitted reports. No
+terminal PASS is claimed from the child sentinels alone.
+
+**Successful repetition.** A new CPU high-RAM runtime was allocated without
+terminating any of the five other account sessions. From an empty `/content`,
+the same full-SHA bootstrap ran for 52 minutes (approximately 19:51--20:44
+CEST) and published `OSR_FINAL_DONE=0`. Stage 0 read the exact body SHA above,
+the pinned toolchain and Mathlib commit. All twelve certifier invocations and
+all eight named module builds had zero child sentinels; the OS-uniform judge
+reported 110/110 in normal and optimized modes. The focal module completed
+8191 jobs and the complete core completed 8482 jobs. The full oracle had zero
+sentinel, 3015 `depends on axioms` reports, zero `sorryAx`, and exactly one
+report for each of the five new declarations. The post-run audit was read at
+20:46:22 CEST. The high-RAM runtime was disconnected and deleted through the
+Colab UI at 20:50 CEST. This is a PASS candidate with preserved notebook
+output, not this desk's terminal certification; the frozen object and attacks
+are handed to a separate audit task.
