@@ -31477,3 +31477,40 @@ with the module in LANE_MODULES), and the paper slots it feeds.
 
 **ROLES.**  Unit design and predictions (committed BEFORE the run):
 this desk.  Execution and relay: the owner.
+
+
+## Addendum 619 (2026-08-04, **FRESH-CLONE VERIFICATION GREEN at
+8127e5b52: judges 110/110 both modes, core 8481, oracle 3017 / 0
+sorryAx, module hash bit-identical; the OS-R unit is COMPLETE**)
+
+Pass 7 -- a brand-new clone in /content/osrfresh at
+8127e5b52d75116b19c172ea022e12c1cab0f8c2, elan + cache from scratch --
+returned, relayed by the owner:
+
+* judge_os_uniform: checks run 110, passed 110, expected 110, JUDGE
+  VERDICT PASS, in normal AND -O.
+* lake build YangMillsCore: **Build completed successfully (8481
+  jobs)** -- the second, fully-independent witness of the wired count.
+* Full oracle with the continuation-joining checker: ORACLE_EXIT 0,
+  **REPORTS 3017, SORRYAX_REPORTS 0**.  NONSTANDARD_JOINED 119, read
+  honestly: every sampled entry is either a declaration depending on a
+  strict SUBSET of the standard triple ([propext, Quot.sound] --
+  choice-free proofs, i.e. cleaner, not dirtier) or one line where the
+  joiner glued a type-signature output onto a report; ZERO reports
+  name any axiom outside [propext, Classical.choice, Quot.sound], and
+  both OS-R endpoints print exactly the standard triple.
+* Travelling hashes: OSReconstructionUniform.lean sha256
+  5445429f773628659eee0fa41202f277b239ec9ac87a15ae2a7c43626230cad1
+  (12347 bytes) -- bit-identical to the committed tree; core/oracle/
+  judge hashes recorded in the run output.
+
+With this the OS-R fabrication unit closes: licence (Add. 613) ->
+module green in five passes (616/617) -> wiring with two exact
+predictions (618) -> fresh-clone witness (619).  The paper's last slot
+is filled by this addendum's numbers; submission remains the owner's
+decision, and the raw-measure n-step identification stays the NAMED
+open step (OS-R-2), on which nothing shipped depends.
+
+**ROLES.**  Unit design: this desk.  Every plane execution: the
+owner's hand.  The instrument defect of Add. 618's checker is fixed
+in this unit's joiner and its residual artefact is described above.
