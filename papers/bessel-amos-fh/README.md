@@ -42,3 +42,8 @@ Status and corrected scope:
 
 Audit record: `../../docs/BESSEL-FRACTIONAL-STEP-AUDIT-20260804.md` and
 `../../docs/audit-artifacts/bessel-fractional-step-49/FREEZE.md`.
+
+Submission gate: see `SUBMISSION-STATUS.md`. The current disposition is
+`NO-GO` as a new analytic theorem / `+6` paper, and `READY` only for
+circulation as a priority-corrected synthesis and machine-checked alternative
+proof. Version 7 and duplicate v7 filenames are withdrawn from submission.
