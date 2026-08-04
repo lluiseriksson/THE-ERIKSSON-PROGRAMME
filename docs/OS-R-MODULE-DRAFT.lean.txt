@@ -1,0 +1,155 @@
+-- OS-R FABRICATION DRAFT (design artifact, NOT wired, NOT built).
+-- Target file: YangMills/OS/OSReconstructionUniform.lean
+-- Status: written 2026-08-04 on the dying session, from the blueprint,
+-- with all definition bodies verified in-source at c2723e7ec.  Expect
+-- machinery-error ladders on the plane (D-6 ran 20->9->5->4->2->0).
+-- The charter's licence gate (plane judges) still governs: this text
+-- becomes a module only after judge_os_uniform PASSes on the plane.
+--
+-- SEAM FACTS verified in-source (risk R1 CLOSED definitionally):
+--   siteForm w u v      = SUM conj(u s) * v s * ((1 / w s : R) : C)
+--   bondForm b u v      = SUM SUM conj(u s) * ((spatialKernel b s t : R) : C) * v t
+--   transferOp w b v s  = ((w s : R) : C) * SUM ((spatialKernel b s t : R) : C) * v t
+--   symWeighted w b s t = Real.sqrt (w s) * spatialKernel b s t * Real.sqrt (w t)
+--   tiltKernel w b lam  = Matrix.of fun s t => symWeighted w b s t / lam
+--   spatialKernel b s t = PROD j, z2Bond b (s j) (t j)   -- ONE declaration everywhere
+--   sliceW g L          = z2PathWeight g  (positive, sliceW_pos)
+
+import YangMills.OS.SpatialReconstruction
+import YangMills.OS.DobrushinCorollary
+import YangMills.OS.DobrushinTilt
+import YangMills.OS.DobrushinTransport
+import YangMills.OS.TransferGap
+
+open scoped BigOperators
+open Finset
+
+namespace OSReconstructionUniform
+
+variable {L : ℕ}
+
+/-- The embedding `Q`: a real Euclidean vector dressed by `√w`, read as a
+complex boundary vector.  The unitary of the charter, in its elementary
+(fallback-primary) form. -/
+noncomputable def qEmbed (w : (Fin L → Fin 2) → ℝ) (u : (Fin L → Fin 2) → ℝ) :
+    (Fin L → Fin 2) → ℂ :=
+  fun σ => ((Real.sqrt (w σ) * u σ : ℝ) : ℂ)
+
+/-- **A1 — the isometry.**  The site form (weight `1/w`) of two dressed real
+vectors is the plain Euclidean pairing.  Per-σ: `√w·u · √w·v / w = u·v`. -/
+theorem siteForm_qEmbed (w : (Fin L → Fin 2) → ℝ) (hw : ∀ σ, 0 < w σ)
+    (u v : (Fin L → Fin 2) → ℝ) :
+    siteForm w (qEmbed w u) (qEmbed w v) = ((∑ σ, u σ * v σ : ℝ) : ℂ) := by
+  unfold siteForm qEmbed
+  push_cast
+  refine Eq.trans (Finset.sum_congr rfl fun σ _ => ?_) ?_
+  · -- conj of a real coercion is itself; then √w·√w = w cancels 1/w
+    -- traps: starRingEnd on ofReal -> Complex.conj_ofReal;
+    -- Real.mul_self_sqrt needs (hw σ).le
+    have hs : Real.sqrt (w σ) * Real.sqrt (w σ) = w σ :=
+      Real.mul_self_sqrt (hw σ).le
+    have hσ : (w σ : ℝ) ≠ 0 := (hw σ).ne'
+    -- goal after push_cast should be an ofReal equation; close in ℝ:
+    -- (√w u)·(√w v)·(1/w) = u·v
+    rw [Complex.conj_ofReal]  -- CHECK: may already be discharged by push_cast
+    push_cast
+    rw [show ((1 : ℂ) / (w σ : ℂ)) = ((1 / w σ : ℝ) : ℂ) by push_cast; ring]
+    -- fall back to field_simp in ℝ through ofReal injectivity if the
+    -- complex route fights:
+    have : Real.sqrt (w σ) * u σ * (Real.sqrt (w σ) * v σ) * (1 / w σ)
+        = u σ * v σ := by
+      field_simp
+      nlinarith [hs]
+    exact_mod_cast congrArg (Complex.ofReal) this
+  · norm_cast
+
+/-- **A2 — the conjugation.**  `T ∘ Q = Q ∘ S` pointwise: the forced
+operator on a dressed vector is the dressing of the symmetrised kernel's
+action.  LHS σ = `w σ · Σ K σ τ · √(w τ)·u τ`; RHS σ = `√(w σ) · Σ
+√(w σ)·K σ τ·√(w τ) · u τ`; equal by `√w·√w = w` pulled out of the sum. -/
+theorem transferOp_qEmbed (w : (Fin L → Fin 2) → ℝ) (hw : ∀ σ, 0 < w σ)
+    (β : ℝ) (u : (Fin L → Fin 2) → ℝ) :
+    transferOp w β (qEmbed w u)
+      = qEmbed w (fun σ => ∑ τ, symWeighted w β σ τ * u τ) := by
+  funext σ
+  unfold transferOp qEmbed symWeighted
+  have hs : Real.sqrt (w σ) * Real.sqrt (w σ) = w σ :=
+    Real.mul_self_sqrt (hw σ).le
+  push_cast
+  rw [Finset.mul_sum, Finset.mul_sum]
+  refine Finset.sum_congr rfl fun τ _ => ?_
+  push_cast
+  ring_nf
+  -- residue should close by rewriting w σ = √w σ · √w σ (hs) then ring;
+  -- if ring_nf normalises past it, use: rw [← hs]; ring
+  rw [← hs]; ring
+
+/-- Iterated dressing: `T^[n] ∘ Q = Q ∘ S^[n]` (explicit-sum form of the
+matrix power; avoids Matrix.pow API entirely). -/
+noncomputable def symIter (w : (Fin L → Fin 2) → ℝ) (β : ℝ) :
+    ℕ → ((Fin L → Fin 2) → ℝ) → ((Fin L → Fin 2) → ℝ)
+  | 0, u => u
+  | n + 1, u => fun σ => ∑ τ, symWeighted w β σ τ * symIter w β n u τ
+
+/-- **A3 — the iterate transport.**  Induction on A2. -/
+theorem transferOp_iterate_qEmbed (w : (Fin L → Fin 2) → ℝ)
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (n : ℕ) (u : (Fin L → Fin 2) → ℝ) :
+    (transferOp w β)^[n] (qEmbed w u) = qEmbed w (symIter w β n u) := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+      rw [Function.iterate_succ_apply', ih]
+      -- CHECK orientation: iterate_succ_apply' peels the OUTER application;
+      -- symIter peels the outer sum — they match by construction.
+      exact transferOp_qEmbed w hw β (symIter w β n u)
+
+/-- The symmetrised iterate is `n` applications of `opOf`-style mulVec —
+the bridge to D-6's operator side (`tiltKernel = symWeighted / lam`).
+Stated as the scaling identity that converts `symIter` into powers of the
+NORMALISED kernel: `symIter n u = lam^n · (tilt-iterate n u)`. -/
+theorem symIter_tilt_scaling (w : (Fin L → Fin 2) → ℝ) (β lam : ℝ)
+    (hlam : lam ≠ 0) (n : ℕ) (u : (Fin L → Fin 2) → ℝ) :
+    symIter w β n u
+      = fun σ => lam ^ n *
+          (fun v => (Nat.rec v
+            (fun _ prev τ => ∑ ρ, tiltKernel w β lam τ ρ * prev ρ) n : _)) u σ := by
+  -- DRAFT NOTE: fabrication will replace this Nat.rec phrasing by a named
+  -- def tiltIter mirroring symIter, and the proof is induction + the
+  -- tiltKernel_apply rfl (symWeighted / lam) + field_simp on lam ≠ 0.
+  sorry -- scratch marker; the committed module carries no sorry (house rule)
+
+/-- **THE ENDPOINT (shape).**  In the Dobrushin window with β ≥ 0: OS
+positivity (lane citation), the Perron data and ONE m > 0 for every
+extent (D-6 verbatim), and the transport identities that read the same
+bound on the reconstructed operator.  Final clause layout per blueprint
+Part C; may split into three named theorems sharing the ∃ m. -/
+theorem os_reconstruction_uniform_gap (β γ : ℝ) {α : ℝ}
+    (hα0 : 0 < α) (hα1 : α < 1)
+    (hwin : 2 * Real.tanh |β| + 2 * Real.tanh |γ| ≤ α) (hβ : 0 ≤ β) :
+    ∃ m : ℝ, 0 < m ∧ ∀ L : ℕ,
+      ∃ (lam : ℝ) (Om : (Fin (L + 1) → Fin 2) → ℝ),
+        0 < lam ∧ (∀ σ, 0 < Om σ) ∧
+        (∀ σ, ∑ τ, tiltKernel (sliceW γ L) β lam σ τ * Om τ = Om σ) ∧
+        ‖projectedTransfer (opOf (tiltKernel (sliceW γ L) β lam))
+            (vacOf Om)‖ ≤ Real.exp (-m) ∧
+        -- the transported reading (A2 at w := sliceW γ L):
+        (∀ u, transferOp (sliceW γ L) β (qEmbed (sliceW γ L) u)
+            = qEmbed (sliceW γ L)
+                (fun σ => ∑ τ, symWeighted (sliceW γ L) β σ τ * u τ)) := by
+  obtain ⟨m, hm, hL⟩ := dobrushin_ising_uniform_gap β γ hα0 hα1 hwin
+  refine ⟨m, hm, fun L => ?_⟩
+  obtain ⟨lam, Om, hlam, hOm, hfix, hnorm⟩ := hL L
+  exact ⟨lam, Om, hlam, hOm, hfix, hnorm,
+    fun u => transferOp_qEmbed (sliceW γ L) (sliceW_pos γ L) β u⟩
+
+-- REMAINING FOR FABRICATION (blueprint Part B, not drafted here):
+--   B1 dressed n-step identity (consume SpatialGibbs.pathSum_eq_iterate /
+--      gibbsWeight_eq_dressed; judge G5 verified the arithmetic),
+--   B2 partition identity, B3 the division-safe six-term connected bound
+--      (multiply through by Z²; per-observable constants free, rate m
+--      uniform), B4 complex splitting via complexQuad_eq.
+--   Then: positivity citations (osPairingBond_gram_nonneg at
+--   w := sliceW γ L, needs hβ), quotient citation (physicalEquiv), and
+--   the oracle endpoints (+5..+7 reports predicted; count at wiring).
+
+end OSReconstructionUniform
