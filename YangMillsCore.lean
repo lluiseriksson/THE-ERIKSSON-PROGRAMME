@@ -1053,3 +1053,9 @@ import YangMills.OS.DobrushinTilt
 -- coupled kernel's Perron data at EVERY extent, through the abstract
 -- transport theorem.
 import YangMills.OS.DobrushinCorollary
+
+-- D-7: Dobrushin comparison transplanted to two genuine finite Ising
+-- volumes, followed by the whole-sequence thermodynamic limit for every
+-- fixed centred local spin observable.  The visible hypothesis remains
+-- 2*tanh|beta| + 2*tanh|gamma| <= alpha < 1; no KP premise is imported.
+import YangMills.OS.DobrushinThermodynamicLimit

@@ -3391,3 +3391,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.row_deltaAt_le
 #print axioms YangMills.OS.Dobrushin.rect_feed
 #print axioms YangMills.OS.Dobrushin.dobrushin_ising_uniform_gap
+
+-- D-7: common-chart comparison, genuine volume transport, and whole-sequence
+-- Cauchy convergence.
+#print axioms YangMills.OS.Dobrushin.measure_comparison_boundary_decay
+#print axioms YangMills.OS.Dobrushin.ising_boundary_comparison
+#print axioms YangMills.OS.Dobrushin.ising_active_volume_comparison
+#print axioms YangMills.OS.Dobrushin.centered_local_observable_comparison
+#print axioms YangMills.OS.Dobrushin.cauchySeq_centeredLocalGibbsExpectation
+#print axioms YangMills.OS.Dobrushin.tendsto_infiniteCenteredLocalGibbsExpectation
