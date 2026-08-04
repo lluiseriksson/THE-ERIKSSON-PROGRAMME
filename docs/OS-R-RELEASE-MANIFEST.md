@@ -130,8 +130,8 @@ identified with either normalisation.
 | `oracle_check.lean` | 238531 / `c84367b86383b87e3d6ea3e2ea399b7c6500e2bd51783b20380a5abc1bf1830b` | 235144 / `0ceb1309159ba124d0b61409ad8b86d7c4a7a5b5f1a544aa3d30d49d0eed89f3` | 238541 / `923bc36df56f362c766701c6189867e4de8c533250aa744b1e8f941d3d56d94e` |
 | `scripts/colab_dobrushin_d4_runner.py` | 8224 / `ea6cf85f05f477262b0f8a9b5a16b55278fb86131bfb5fa1df52d281ee508834` | 8020 / `affb651fee7568e67a9208f0906895f1956b2f99c0e8bb51d125053a62caa078` | 8240 / `19d8582f3b94432ca6bf9ee271bd7874a97ab7d42269825b8bf03df1401aff0a` |
 | `scripts/colab_osr_final_bootstrap.sh` | 1380 / `e32d8ad573bbc9bdba57a4adbdaeef6a18402a9cffaa2b04b31d2d2d4e77f77d` | 1380 / same | 1416 / `fe8046765f69d68606caaac9efb7a33e2b70f86e9d4e17f00ff498b593f73a05` |
-| `papers/os-reconstruction-uniform/main.tex` | 21675 / `8b3a6d8797ff99762f5bb0ba03f25e03f9749786b64e060f20b23e6e1886d33e` | 21675 / same | 22183 / `5b225ff81d92de73c952240af98873ea20955ba34f2eb12287c290a1b1e6eff3` |
-| `output/pdf/os-reconstruction-uniform-gap.pdf` | 304489 / `299ea9fc8f207f5111b779301ea17d270f536ca8f49eb25e908134041a2e9c85` | binary | binary |
+| `papers/os-reconstruction-uniform/main.tex` | 22003 / `02a3f9d2855b0d81738d33aa8f8cc4269e7d2de91297c2a35cbcfe44dfe117a7` | 22003 / same | 22520 / `0019836f9e09bb7ea26f20a63d7ea277058b6cb7d0af2ec558df4b13a09f7cad` |
+| `output/pdf/os-reconstruction-uniform-gap.pdf` | 304834 / `7fdc9d22f8fca69a174efad3e9384b5756775af44d2ac202a8dd8daa86bfa377` | binary | binary |
 
 The regenerated seven-page paper PDF and its TeX source are frozen by the
 byte counts and hashes in the last two rows above.
@@ -165,3 +165,6 @@ scope disclaimers, upload hash and owner-only checklist are frozen in
 `papers/os-reconstruction-uniform/SUBMISSION-INFO.txt`.  This records a
 prepared package, not an external submission: the owner must use the official
 replacement form and the same email address used for v1.
+The upload artifact itself now prints `Lluis Eriksson` without an accent and
+identifies the replacement target on page 1; its PDF metadata repeats the
+author, full title, and `ai.viXra.org:2607.0078 (v1)` replacement subject.

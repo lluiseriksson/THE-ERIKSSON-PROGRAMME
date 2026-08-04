@@ -25,6 +25,19 @@ Do not substitute a Colab, Claude/Fable, or repository account address.
 Official instructions: https://ai.vixra.org/submit
 Existing record: https://www.ai.vixra.org/abs/2607.0078
 
+REPLACEMENT FORM VALUES
+Submission action: Replace an existing paper
+Existing identifier: 2607.0078
+Existing version: v1
+Requested version after acceptance: v2
+Original submission date and time: 2026-07-28 13:19:32
+Author: Lluis Eriksson
+Category: Mathematical Physics
+Email: use exactly the same owner-controlled address used for v1
+Reason for replacement: the new manuscript consolidates and strictly extends
+the point-slice OS chain to finite spatial strips with one decay rate uniform
+in every finite spatial length, while retaining explicit finite-volume scope.
+
 NEW TITLE
 The Reconstructed Theory Has One Mass: A Machine-Checked Volume-Uniform
 Transfer Gap for a Finite Ising Strip
@@ -65,7 +78,8 @@ a unique particle excitation or relativistic mass shell, or claim a
 Yang-Mills mass gap.
 
 COMMENTS FIELD
-7 pages. Replacement v2. Lean 4 / Mathlib formalization; frozen body commit
+7 pages. Replacement of ai.viXra.org:2607.0078 (v1); proposed v2. Lean 4 /
+Mathlib formalization; frozen body commit
 b5da95f33f5af32e992e0ba7c3084507d06f3a7c; 8482 core jobs, 3015 oracle
 reports, and zero sorryAx.
 
@@ -79,8 +93,8 @@ output/pdf/os-reconstruction-uniform-gap.pdf
 
 UPLOAD FILE FACTS
 Pages: 7
-Raw bytes: 304489
-SHA-256: 299ea9fc8f207f5111b779301ea17d270f536ca8f49eb25e908134041a2e9c85
+Raw bytes: 304834
+SHA-256: 7fdc9d22f8fca69a174efad3e9384b5756775af44d2ac202a8dd8daa86bfa377
 
 FORMAL FREEZE
 Lean-bearing body commit:
