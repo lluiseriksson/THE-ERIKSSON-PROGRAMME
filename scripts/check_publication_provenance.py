@@ -18,6 +18,7 @@ from typing import Iterable
 DEFAULT_TEX_PATHS = (
     "papers/spatial-reconstruction",
     "papers/parity-barriers",
+    "papers/os-reconstruction-uniform",
 )
 DEFAULT_TOOLCHAIN_PATHS = ("papers/parity-barriers",)
 OSLINE_RE = re.compile(r"\\osline\{[^{}]+\}\{(?P<line>[^{}]+)\}\{[^{}]+\}")
@@ -29,7 +30,9 @@ TOKEN_RE = re.compile(
     r"SORRYCOUNT|COREERRORS|[A-Z][A-Z0-9_]*(?:LINE|VEC))\b"
 )
 EXPLICIT_PLACEHOLDER_RE = re.compile(
-    r"\b(?:TBD|TO_BE_FILLED|UNVERIFIED_VALUE|PUBLISHABLE_PLACEHOLDER)\b"
+    r"\b(?:TBD|TO_BE_FILLED|UNVERIFIED_VALUE|PUBLISHABLE_PLACEHOLDER|"
+    r"pending independent count)\b",
+    re.IGNORECASE,
 )
 
 
@@ -142,9 +145,43 @@ def toolchain_errors(repo: Path, relative_paths: Iterable[str]) -> list[str]:
             verified["lean_toolchain"] != actual_lean
             or verified["mathlib_commit"] != actual_mathlib
         )
-        if pins_differ and compatibility.get("migration_authorized") is not False:
+        if pins_differ and compatibility.get("migration_authorized") is True:
+            reproduction = compatibility.get("main_tree_reproduction")
+            if not isinstance(reproduction, dict):
+                errors.append(
+                    f"{relative}: authorized migration lacks main-tree reproduction evidence"
+                )
+                continue
+            reproduction_evidence = repo / str(reproduction.get("evidence_path", ""))
+            reproduction_source = repo / str(reproduction.get("source_path", ""))
+            unchanged = (
+                compatibility.get("status") == "reproduced_unchanged_on_main_tree"
+                and compatibility.get("statement_change_requirement") == "none"
+                and reproduction.get("lean_toolchain") == actual_lean
+                and reproduction.get("mathlib_commit") == actual_mathlib
+                and reproduction.get("exit_code") == 0
+                and isinstance(reproduction.get("command"), str)
+                and bool(reproduction["command"])
+                and reproduction_source.is_file()
+                and reproduction_source in lean_sources
+                and reproduction.get("source_sha256_lf")
+                == sha256_lf(reproduction_source)
+            )
+            if not unchanged:
+                errors.append(
+                    f"{relative}: authorized migration is not an unchanged main-tree reproduction"
+                )
+            if not reproduction_evidence.is_file():
+                errors.append(f"{relative}: main-tree reproduction evidence is missing")
+            elif reproduction.get("evidence_sha256_lf") != sha256_lf(
+                reproduction_evidence
+            ):
+                errors.append(
+                    f"{relative}: main-tree reproduction evidence hash mismatch"
+                )
+        elif pins_differ and compatibility.get("migration_authorized") is not False:
             errors.append(
-                f"{relative}: differing pins require migration_authorized=false until reproduced"
+                f"{relative}: differing pins require explicit migration decision"
             )
     return errors
 

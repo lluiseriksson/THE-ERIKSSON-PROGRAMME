@@ -12,6 +12,7 @@ import YangMills.RG.AppendixFFiberEntropy
 import YangMills.RG.PolymerClusterWithHolesBridge
 import YangMills.RG.AppendixFLocalSummability
 import YangMills.RG.AppendixFKsharpEstimate
+import YangMills.RG.AppendixFKsharpToHsharpBridge
 import YangMills.RG.AppendixFKsharpCanonicalRoot
 import YangMills.RG.AppendixFSecondGas
 import YangMills.RG.RelativeBVRetraction
@@ -42,6 +43,7 @@ import YangMills.Paper.GapRefinementChallenge
 import YangMills.SUSY.ValenceCarry
 import YangMills.SUSY.FiniteBerezin
 import YangMills.SUSY.WardPolymer
+import YangMills.OS.OSReconstructionUniform
 
 /-! # Oracle check — one command, every headline
 
@@ -3391,3 +3393,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.row_deltaAt_le
 #print axioms YangMills.OS.Dobrushin.rect_feed
 #print axioms YangMills.OS.Dobrushin.dobrushin_ising_uniform_gap
+
+/-! ## Volume-uniform reconstructed transfer operator -/
+#print axioms YangMills.OS.siteForm_qEmbed
+#print axioms YangMills.OS.transferOp_qEmbed
+#print axioms YangMills.OS.transferOp_iterate_qEmbed
+#print axioms YangMills.OS.transferOp_qEmbed_tilt
+#print axioms YangMills.OS.transferOp_qEmbed_tilt_iterate
+#print axioms YangMills.OS.os_reconstruction_uniform_gap

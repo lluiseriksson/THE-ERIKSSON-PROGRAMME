@@ -101,6 +101,18 @@ def test_unfilled_counter_cell_is_rejected_but_stable_marker_is_allowed(
     assert guard.placeholder_errors(tmp_path, ("papers/spatial-reconstruction",)) == []
 
 
+def test_prose_placeholder_in_publishable_tex_is_rejected(tmp_path: Path) -> None:
+    target = tmp_path / "papers" / "os-reconstruction-uniform"
+    target.mkdir(parents=True)
+    (target / "paper.tex").write_text(
+        "Repository oracle: pending independent count.\n",
+        encoding="utf-8",
+    )
+    errors = guard.placeholder_errors(tmp_path, ("papers/os-reconstruction-uniform",))
+    assert len(errors) == 1
+    assert "pending independent count" in errors[0].lower()
+
+
 def test_lean_artifact_without_toolchain_declaration_is_rejected(tmp_path: Path) -> None:
     write_root_pins(tmp_path)
     target = tmp_path / "papers" / "parity-barriers"
@@ -149,3 +161,42 @@ def test_declared_source_hash_drift_is_rejected(tmp_path: Path) -> None:
     )
     errors = guard.toolchain_errors(tmp_path, ("papers/parity-barriers",))
     assert any("declared source hash mismatch" in error for error in errors)
+
+
+def test_authorized_migration_requires_main_tree_reproduction(tmp_path: Path) -> None:
+    write_root_pins(tmp_path)
+    target = tmp_path / "papers" / "parity-barriers"
+    target.mkdir(parents=True)
+    source = target / "ParityBarrier.lean"
+    evidence = target / "LEAN-VERIFICATION-LOG.txt"
+    source.write_text("import Mathlib\n", encoding="utf-8")
+    evidence.write_text("legacy pass\n", encoding="utf-8")
+    declaration = {
+        "sources": [
+            {
+                "path": "papers/parity-barriers/ParityBarrier.lean",
+                "sha256_lf": guard.sha256_lf(source),
+            }
+        ],
+        "verified_environment": {
+            "lean_toolchain": "leanprover/lean4:v4.30.0-rc2",
+            "mathlib_commit": "cd3b69baae9cd81a572a3720f2372655eca39038",
+            "command": "lake env lean ParityBarrier.lean",
+            "evidence_path": "papers/parity-barriers/LEAN-VERIFICATION-LOG.txt",
+            "evidence_sha256_lf": guard.sha256_lf(evidence),
+        },
+        "main_tree_environment": {
+            "lean_toolchain": "leanprover/lean4:v4.29.0-rc6",
+            "mathlib_commit": "07642720480157414db592fa85b626dafb71355b",
+        },
+        "compatibility": {
+            "status": "reproduced_unchanged_on_main_tree",
+            "statement_change_requirement": "none",
+            "migration_authorized": True,
+        },
+    }
+    (target / "ARTIFACT-TOOLCHAIN.json").write_text(
+        json.dumps(declaration), encoding="utf-8"
+    )
+    errors = guard.toolchain_errors(tmp_path, ("papers/parity-barriers",))
+    assert any("lacks main-tree reproduction evidence" in error for error in errors)

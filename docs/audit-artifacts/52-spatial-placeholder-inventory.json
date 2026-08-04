@@ -4,7 +4,7 @@
   "publication_status": "quarantined_not_frozen",
   "captured_ref": "origin/d3-closure",
   "captured_commit": "c76b790505268eedcb8fe126bc399ccab82baa4f",
-  "tex_path": "papers/spatial-reconstruction/spatial_reconstruction.tex",
+  "tex_path": "papers/spatial-reconstruction/spatial_reconstruction.tex.unverified",
   "tex_git_blob": "92c8bbd31eee16d908c82073add3b71f9c4d656d",
   "lean_path": "YangMills/OS/SpatialReconstruction.lean",
   "lean_git_blob": "33b5534589b3a22cd3b7bfd4f4592f3e66462252",

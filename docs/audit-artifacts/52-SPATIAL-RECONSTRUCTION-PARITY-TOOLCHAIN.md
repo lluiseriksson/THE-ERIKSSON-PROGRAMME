@@ -7,7 +7,8 @@ cerrar la clasificación con objetos y registros ya existentes.
 
 ## Dictamen operativo
 
-1. `papers/spatial-reconstruction/spatial_reconstruction.tex` no está en
+1. La captura original `papers/spatial-reconstruction/spatial_reconstruction.tex`
+   no está en
    `origin/main`; se localizó en la procedencia lateral `origin/d3-closure`.
    En la captura `c76b790505268eedcb8fe126bc399ccab82baa4f`, su blob es
    `92c8bbd31eee16d908c82073add3b71f9c4d656d` (40049 bytes).
@@ -18,16 +19,31 @@ cerrar la clasificación con objetos y registros ya existentes.
 3. El artefacto queda **QUARANTINED / NOT FROZEN**. No debe citarse como
    artefacto congelado, ni su PDF como render reproducible del TeX, hasta que
    exista un único anchor final, una medición perteneciente a ese anchor y un
-   relleno fail-closed que termine sin marcadores.
-4. `papers/parity-barriers` sí está en el árbol principal, pero su verificación
-   pertenece a Lean `4.30.0-rc2` + Mathlib
+   relleno fail-closed que termine sin marcadores. Tras integrar la procedencia
+   lateral en la rama de trabajo, ambos archivos se conservan con los nombres
+   `spatial_reconstruction.tex.unverified` y
+   `spatial_reconstruction.pdf.unverified`; esos sufijos son parte del bloqueo
+   de publicación y no alteran sus bytes capturados.
+4. `papers/parity-barriers` sí está en el árbol principal. Su verificación
+   histórica pertenece a Lean `4.30.0-rc2` + Mathlib
    `cd3b69baae9cd81a572a3720f2372655eca39038`. El árbol principal fija Lean
    `4.29.0-rc6` + Mathlib
-   `07642720480157414db592fa85b626dafb71355b`. La fuente presente no equivale
-   a `.olean` materializado ni a verificación en el pin principal.
-5. La migración de parity **no está demostrada y no queda autorizada**. No hay
-   evidencia para afirmar que requiera o no cambios de enunciado. Por ello esta
-   tarea se detiene antes de tocar Lean y entrega el plan de gate de migración.
+   `07642720480157414db592fa85b626dafb71355b`; la mera fuente presente no
+   equivalía a `.olean` materializado ni a verificación en ese pin.
+5. El gate posterior ya fue ejecutado en Colab sobre el blob exacto. Pasó y
+   materializó `.olean` sin cambios de fuente ni enunciados, por lo que la
+   migración técnica queda autorizada con procedencia dual explícita.
+
+## Separación del nuevo carril matemático y del paper
+
+La ampliación posterior solicitada por el owner se mantiene fuera de esta
+limpieza de procedencia. `YangMills/OS/OSReconstructionUniform.lean` compone
+resultados Lean ya existentes sin rellenar ninguna medida de
+spatial-reconstruction ni migrar parity-barriers. El manuscrito independiente
+`papers/os-reconstruction-uniform/os_reconstruction_uniform.tex` documenta esa
+composición; es un paper nuevo, no una revisión ni una resubida de los papers
+preexistentes. Su validación Colab y su objeto congelado se registran en
+artefactos de auditoría separados.
 
 ## Inventario exhaustivo de spatial-reconstruction
 
@@ -117,25 +133,22 @@ ahora esa diferencia sin reetiquetarla como compatibilidad.
 No se añade ninguna afirmación de prioridad bibliográfica en esta tarea; por
 ello no se amplía la bibliografía ni se sustituyen fuentes primarias.
 
-## Decisión y plan de migración
+## Decisión de migración
 
-**Decisión actual:** no migrar y no cambiar enunciados en silencio. El estado es
-`not_reproduced_on_main_tree`; `statement_change_requirement` queda
-`not_determined`.
+**Decisión medida:** se puede migrar el artefacto Lean a los pins principales
+sin cambiar un byte de fuente, prueba, firma o enunciado. El blob LF
+`3d341e22…` pasó sin edición con `lake env lean
+papers/parity-barriers/ParityBarrier.lean` (exit 0, 17:17:26Z--17:17:35Z) en
+Lean 4.29.0-rc6/Mathlib `0764272…`. Una segunda invocación explícita con `-o`
+materializó un `.olean` de 270184 bytes, SHA-256 `7cb4d44f…`, también con exit
+0. El estado queda `reproduced_unchanged_on_main_tree`,
+`statement_change_requirement=none` y `migration_authorized=true`.
 
-Gate para una tarea posterior:
-
-1. Congelar `ParityBarrier.lean` por commit, blob, bytes y SHA-256 LF/CRLF,
-   junto con los pins exactos del árbol principal.
-2. Abrir un Colab Pro+ CPU/alta RAM, sin GPU, con runtime inicialmente
-   desconectado; capturar hora de apertura, bootstrap y cierre.
-3. Materializar exactamente el blob congelado y ejecutar primero
-   `lake env lean papers/parity-barriers/ParityBarrier.lean`, sin editarlo.
-4. Si pasa, registrar log, exit, hashes y objeto `.olean` materializado; solo
-   entonces cambiar `migration_authorized` mediante otra tarea/auditoría.
-5. Si falla, conservar el log completo y detenerse. Antes de reparar, producir
-   un diff de firmas/enunciados. Si cualquier reparación exige cambiar una
-   firma, entregar plan separado y pedir autorización; no aplicarla.
+Esto no reescribe la procedencia histórica: el PDF enviado conserva su pase
+registrado en 4.30.0-rc2/`cd3b69b…`; la reproducción en pins principales es una
+evidencia posterior y separada. El transcript queda en
+`papers/parity-barriers/MAIN-TREE-REPRODUCTION-LOG.txt`. Ningún paper existente
+necesita resubirse por este saneamiento.
 
 ## Guards y ataques intentados
 
@@ -147,10 +160,22 @@ normaliza EOL y calcula hashes. En los carriles gobernados:
 - falla ante placeholders explícitos;
 - falla si un artefacto Lean gobernado carece de
   `ARTIFACT-TOOLCHAIN.json`, si los pins principales declarados derivan, o si
-  cambian el source/log respecto de sus hashes.
+  cambian el source/log respecto de sus hashes;
+- una autorización de migración solo es aceptada si declara reproducción
+  inalterada, exit 0, pins principales, hash de fuente y evidencia adyacente.
 
 CI ejecuta el guard, pero no Lean/Lake. Ataques reproducidos por tests: variantes
 `DEFLINE`/`SITENNVEC`, `JOBSAFTER` en celda marcada, ausencia de declaración y
-drift del hash de la fuente. Un barrido inicial de todos los refs agotó el límite
+drift del hash de la fuente y una autorización sin evidencia de reproducción.
+Un barrido inicial de todos los refs agotó el límite
 local-light a ~34 s y se abandonó; las consultas posteriores fueron dirigidas y
 menores de 30 s. No se usó ese barrido truncado como evidencia.
+
+El oráculo exhaustivo del carril del paper añadió ataques instrumentales: una
+fuente presente sin `.olean`, cuerpo transferido con 302 bytes LF de drift,
+tres consultas a constantes sin import del bridge, y un proceso secuencial
+huérfano que seguía escribiendo el primer log combinado. El escritor fue
+identificado con `fuser`, detenido y descartado; el log aceptado se reconstruyó
+solo desde los cuatro chunks completos y produjo 3046 informes, cero `sorry` y
+cero axiomas no estándar. El detalle y los hashes están en
+`52-os-reconstruction-uniform-verification.json`.
