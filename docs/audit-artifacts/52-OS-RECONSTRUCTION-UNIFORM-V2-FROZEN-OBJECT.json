@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "audit": 52,
+  "revision": "os_reconstruction_uniform_v2",
+  "captured_at_utc": "2026-08-04T18:33:37.827Z",
+  "branch_at_capture": "codex/cleanup-spatial-toolchain-52",
+  "frozen_body_commit": "3478813bf02427bc48fbbbdb46a64d809882838b",
+  "repository_base_commit_used_in_colab": "174fd6dfd12f1fb0103622c6a08aec531c1321e6",
+  "capture_method": "For each path, read exact bytes with git show <frozen_body_commit>:<path>. sha256_blob hashes those bytes. Text projections decode UTF-8, normalize CRLF and CR to LF, then derive a UTF-8/no-BOM CRLF projection; both projection byte counts and SHA-256 values are recorded. Binary PDF entries have exact blob bytes and SHA-256 only.",
+  "self_reference_policy": "This manifest is committed after the frozen body. The auditable body is 3478813bf02427bc48fbbbdb46a64d809882838b, not the later commit that contains this manifest.",
+  "audit_policy": "Compilation, counters, and PDF inspection are evidence, not a terminal verdict or numerical score. An independent task must issue any terminal audit judgment.",
+  "execution": {
+    "local_lean_lake_oracle": "not_run",
+    "colab": "Pro+ CPU/high-RAM, 8 CPUs, 54750404608 memory bytes, GPU disabled",
+    "account_observed": "lluiseriksson@gmail.com",
+    "open_utc_derived": "2026-08-04T17:15:51Z",
+    "measurement_utc": "2026-08-04T18:29:10Z",
+    "uptime_seconds_at_measurement": 4399.11,
+    "close_ui_confirmation_observed_by_utc": "2026-08-04T18:31:30Z",
+    "disconnect_and_delete_confirmed": true,
+    "claude_opus_fable": "not_invoked"
+  },
+  "files": [
+    {"path":"lean-toolchain","git_blob":"87b20aaf848f44309e4d34c1f941c70a2283f22b","blob_bytes":29,"sha256_blob":"dc6d65016fad3123d44bf17b5bf0598286284ab16ba75d5c17eb22ed11f47361","lf_bytes":29,"sha256_lf":"dc6d65016fad3123d44bf17b5bf0598286284ab16ba75d5c17eb22ed11f47361","crlf_bytes":30,"sha256_crlf":"8c46c0308e92095e478bcfae7c357327e88c5a624b54abf5ad1660ee0e51df5a"},
+    {"path":"lake-manifest.json","git_blob":"a9ef7ddbb466ffb360718a5e0f3e54f5b5217a87","blob_bytes":3141,"sha256_blob":"1c72b465ab37a0418de6f82573c18bb0e79f9e0165e901fd9da0ddabecdb2611","lf_bytes":3141,"sha256_lf":"1c72b465ab37a0418de6f82573c18bb0e79f9e0165e901fd9da0ddabecdb2611","crlf_bytes":3236,"sha256_crlf":"e2f2d45a5fef5ae352e6f8be858726d603d83fde30d740a14a8a2a588579381d"},
+    {"path":"YangMills/OS/OSReconstructionUniform.lean","git_blob":"19519f8037e13f546ab0fc7165109855b1a266e7","blob_bytes":8682,"sha256_blob":"199229725d2d359e19a08792317d7f7e552cf027990505a4a4ffb2542295437a","lf_bytes":8682,"sha256_lf":"199229725d2d359e19a08792317d7f7e552cf027990505a4a4ffb2542295437a","crlf_bytes":8884,"sha256_crlf":"e279968714e703c46b16d2c2f4ada40a562fd8c1c065c931e9ef8edf1809fdf2"},
+    {"path":"YangMills/RG/AppendixFKsharpToHsharpBridge.lean","git_blob":"38fcbd9e182ad5f58edc838078ab7c393972cb58","blob_bytes":9013,"sha256_blob":"13922434578f0e8b21395e3a99a2b6b84bde11727f96eaf33e2e289c222cce79","lf_bytes":9013,"sha256_lf":"13922434578f0e8b21395e3a99a2b6b84bde11727f96eaf33e2e289c222cce79","crlf_bytes":9200,"sha256_crlf":"d345213c06c6b4c01303836ee496e71fd3854f80bb0c72a30c94175e9ec12318"},
+    {"path":"oracle_check.lean","git_blob":"69bd3e682df2b30922d84c95b4522d07fef926cc","blob_bytes":235606,"sha256_blob":"3f4b2a744baa5cf7cef8493296da46d722c7c492abe89496fe0aa88af0657a72","lf_bytes":235606,"sha256_lf":"3f4b2a744baa5cf7cef8493296da46d722c7c492abe89496fe0aa88af0657a72","crlf_bytes":239012,"sha256_crlf":"e602bd496348eb3b714d0bfeb44f09eb5c4ca3b55acbd91527b8dff69c3bce2f"},
+    {"path":"scripts/oracle_counters.py","git_blob":"48201d9983296a705d7e1188fd0558a6efbd2339","blob_bytes":2694,"sha256_blob":"eca0eb636f935f75641342711bbb076f64c2d58fde297c4e6d05c275dfcd7b8f","lf_bytes":2694,"sha256_lf":"eca0eb636f935f75641342711bbb076f64c2d58fde297c4e6d05c275dfcd7b8f","crlf_bytes":2765,"sha256_crlf":"20884fc1d3240a539191f103723352742023ab2b607cd332165b3d0926f85b1b"},
+    {"path":"docs/audit-artifacts/52-OS-RECONSTRUCTION-UNIFORM-V2-RESPONSE.md","git_blob":"552a922500d4d1aba1080f433e99e7429730452f","blob_bytes":1967,"sha256_blob":"68e38b9c1286c0bcf74e20ebdf13396d674edc6958dbde876697406d9f2cc3ad","lf_bytes":1967,"sha256_lf":"68e38b9c1286c0bcf74e20ebdf13396d674edc6958dbde876697406d9f2cc3ad","crlf_bytes":1995,"sha256_crlf":"a048ebdcae2b95037ae6bf3d5c4421fe46f9ddcbebc0938b5d3f6dc0c4482269"},
+    {"path":"docs/audit-artifacts/52-os-reconstruction-uniform-v2-verification.json","git_blob":"43cdf2bf72a70a6661714bccbf4cb5034d5f29d8","blob_bytes":7316,"sha256_blob":"76d2e6337ad8f2cbc5bf9db0e1c544aba2920fe236dade968ab9a4b63775dfd5","lf_bytes":7316,"sha256_lf":"76d2e6337ad8f2cbc5bf9db0e1c544aba2920fe236dade968ab9a4b63775dfd5","crlf_bytes":7471,"sha256_crlf":"b8b2f4249de3229b3de4ec5d09ce78c3dae012f95bc1c4c5f96229f45cfc3de6"},
+    {"path":"papers/os-reconstruction-uniform/README.md","git_blob":"56073204bd60e5806ec0f9d1cd783a245b7e2e68","blob_bytes":1351,"sha256_blob":"8779ea1b093155304f14ce5bcaefd7dbeadebdeb97a5132586c90d54bc79077f","lf_bytes":1351,"sha256_lf":"8779ea1b093155304f14ce5bcaefd7dbeadebdeb97a5132586c90d54bc79077f","crlf_bytes":1386,"sha256_crlf":"0e781eae1f838aa1b300e9d847ea2dc69275723a84624e2df493d36d18a4b2de"},
+    {"path":"papers/os-reconstruction-uniform/os_reconstruction_uniform_v2.tex","git_blob":"d1905331ddd16d881f773198959c5c602e82fa78","blob_bytes":17137,"sha256_blob":"a03991f93d390d4b01e2c8aa21b7870da0c7ac14ce3bee5f90396f18aedb6f5f","lf_bytes":17137,"sha256_lf":"a03991f93d390d4b01e2c8aa21b7870da0c7ac14ce3bee5f90396f18aedb6f5f","crlf_bytes":17530,"sha256_crlf":"870a555d73e289ca0e9912755ec1d0ff04568e84ce3154662bc4277dcf0fa84c"},
+    {"path":"output/pdf/os_reconstruction_uniform_v2.pdf","git_blob":"18be16fc122e8f19b4aeb74067917f32ce0d17b2","blob_bytes":339311,"sha256_blob":"6819ea2a8880faa0b29e771d2037ef543e02eaa11feabd055a802c17a1495351"},
+    {"path":"papers/parity-barriers/ARTIFACT-TOOLCHAIN.json","git_blob":"7deb6a3d5a5dd6650fe47018af67b4d43daee6c4","blob_bytes":2627,"sha256_blob":"37752b2fde46a833862c49dd7090badccf26308642a9957945ce31c2147a532f","lf_bytes":2627,"sha256_lf":"37752b2fde46a833862c49dd7090badccf26308642a9957945ce31c2147a532f","crlf_bytes":2679,"sha256_crlf":"6a4a0fa336bac30c480fb4119388b0c5a3d751f0a7889b494d109b0ebe7ad865"},
+    {"path":"papers/parity-barriers/MAIN-TREE-REPRODUCTION-LOG.txt","git_blob":"e1235e3997b73ed1f741e1d38131645f357a9805","blob_bytes":1657,"sha256_blob":"b2c865ff0042a3a97b7bf24939704ff732719f5a985ec17752bcb0adc053e71b","lf_bytes":1657,"sha256_lf":"b2c865ff0042a3a97b7bf24939704ff732719f5a985ec17752bcb0adc053e71b","crlf_bytes":1688,"sha256_crlf":"bbbde492a5ec941258c85ddfc2ec3d7cd33482e11d5bccf8a9773c120b4fa845"},
+    {"path":"scripts/check_publication_provenance.py","git_blob":"f44714a704b34796061915b78295c8747d071954","blob_bytes":9157,"sha256_blob":"24f75afe0de3bf23d513492801d3d6b25710d34f443066b2f0373de83ed354e7","lf_bytes":9157,"sha256_lf":"24f75afe0de3bf23d513492801d3d6b25710d34f443066b2f0373de83ed354e7","crlf_bytes":9375,"sha256_crlf":"26f87917c047febb448faf563fa87c6eb30c4ce9b5d4fa9347a6245115a20528"},
+    {"path":"tests/test_publication_provenance.py","git_blob":"b91fd67b359b70a999c554b1e6a21e45170791f3","blob_bytes":7766,"sha256_blob":"6041794cf2bd213a47562eb0a4e50782aa29ee39ef593fb4d3ec39eaac3fa6e4","lf_bytes":7766,"sha256_lf":"6041794cf2bd213a47562eb0a4e50782aa29ee39ef593fb4d3ec39eaac3fa6e4","crlf_bytes":7968,"sha256_crlf":"9f1dc871d25b622c9c5fcc21add0acb1823f924990598ff0402bd7854927aeaa"}
+  ],
+  "validation": [
+    {"environment":"Colab","command":"lake build YangMills.OS.OSReconstructionUniform","result":"8191 jobs, exit 0; corrected exact source and .olean materialized"},
+    {"environment":"Colab","command":"lake build YangMillsCore YangMills.RG.AppendixFKsharpToHsharpBridge","result":"8481 jobs, exit 0"},
+    {"environment":"Colab","command":"four exhaustive lake env lean oracle chunks + oracle_counters.py","result":"3049 reports; 3022 standard-axiom, 27 axiom-free, zero nonstandard, zero sorry, zero core errors"},
+    {"environment":"Windows local-light","command":"python scripts/check_publication_provenance.py","result":"PASS"},
+    {"environment":"Windows local-light","command":"python -m pytest -q tests/test_publication_provenance.py","result":"9 passed"},
+    {"environment":"Windows local-light","command":"pdflatex twice + bundled Poppler render","result":"6-page PDF, no log findings; all pages visually inspected"},
+    {"environment":"Windows local-light","command":"git diff --cached --check","result":"PASS before frozen body commit"}
+  ],
+  "attack_summary": [
+    "A redundant trailing rfl was rejected by the first target build after rw had already closed the goal; the corrected source was rebuilt successfully.",
+    "Exact source bytes, materialized .olean, full oracle counters, ordered chunk logs, and two equal combined-log hashes were captured separately.",
+    "Three historical duplicate print commands were preserved: 3049 reports cover 3046 unique declarations.",
+    "The paper labels the Dobrushin input as inherited and makes no new continuum or Yang-Mills mass-gap claim.",
+    "Parity-barriers was not silently migrated or reinterpreted; unchanged v1 main-tree reproduction and declared toolchain evidence are included by hash.",
+    "No Claude Code, Opus 5, or Fable 5 invocation occurred."
+  ]
+}
