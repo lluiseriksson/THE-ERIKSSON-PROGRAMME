@@ -703,6 +703,11 @@ import YangMills.RG.PhysicalCriticalRescalingKernel
 import YangMills.RG.PhysicalCriticalRescalingNoGo
 import YangMills.RG.PhysicalCriticalRescalingNoGoAllCoarse
 import YangMills.RG.PhysicalCriticalRescalingFourierNoGoAllScales
+-- Proposal bridge: discharge the `hactivityKsharp` source obligation of the
+-- all-tail residual H# theorem from the banked rooted K# estimate, exposing
+-- the remaining `hsmall`/`hbudget` as explicit scalar conditions on the
+-- prefactor eps_val = 2*H0*K0.  (Not a Clay/M3 discharge; see module header.)
+import YangMills.RG.AppendixFKsharpToHsharpBridge
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
