@@ -1,0 +1,66 @@
+{
+  "actual_checkout_sha": "36a02972d0f6771acb2f9594b6306cc08db39faf",
+  "all_exit_zero": true,
+  "branch_cloned": "codex/testigo-agudo-n2-q",
+  "mathematical_sha": "36a02972d0f6771acb2f9594b6306cc08db39faf",
+  "purpose": "PR #62 forensic preservation; external provenance input only",
+  "repository": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+  "runs": [
+    {
+      "bytes": 10173,
+      "command": "lake exe cache get",
+      "cr_count": 88,
+      "ended_utc": "2026-08-04T23:02:18.834361+00:00",
+      "exit_code": 0,
+      "lf_count": 49,
+      "path": "phase0_frozen_cache.log",
+      "sha256": "36a184938168b7d019c5df0ea9cdedd29fc4dcd193ae5f29aa6e3d9f550a388a",
+      "started_utc": "2026-08-04T23:00:46.246696+00:00"
+    },
+    {
+      "bytes": 2106,
+      "command": "lake build YangMills.OS.SpatialSharpWitness",
+      "cr_count": 0,
+      "ended_utc": "2026-08-04T23:04:12.239725+00:00",
+      "exit_code": 0,
+      "lf_count": 42,
+      "path": "phase0_frozen_module.log",
+      "sha256": "5544e5406d132928c735108062c3227435fda135697ffd66650594dd9e1f844f",
+      "started_utc": "2026-08-04T23:02:18.836172+00:00"
+    },
+    {
+      "bytes": 106497,
+      "command": "lake build YangMillsCore",
+      "cr_count": 0,
+      "ended_utc": "2026-08-04T23:14:04.977547+00:00",
+      "exit_code": 0,
+      "lf_count": 1643,
+      "path": "phase0_frozen_core.log",
+      "sha256": "67cc3646acf800c809d8e116d9c1c0c8652a7700b0487cef4d898d39d002817f",
+      "started_utc": "2026-08-04T23:04:12.240986+00:00"
+    },
+    {
+      "bytes": 346431,
+      "command": "lake env lean oracle_check.lean",
+      "cr_count": 0,
+      "ended_utc": "2026-08-04T23:38:18.611873+00:00",
+      "exit_code": 0,
+      "lf_count": 5189,
+      "path": "phase0_frozen_oracle.log",
+      "sha256": "8dc4dfaa790d0d42155ac2ef9d1410a2dc2d47f78af512cc94b4f1a0f0a00188",
+      "started_utc": "2026-08-04T23:14:04.978880+00:00"
+    }
+  ],
+  "runtime": {
+    "accelerator_requested": "none",
+    "cpu_model": "AMD EPYC 7B12",
+    "mem_total_kib": 53467192,
+    "nvidia_smi_present": false,
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.35",
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "service": "Google Colab Pro+"
+  },
+  "schema_version": 1,
+  "session_end_utc": "2026-08-04T23:38:18.614625+00:00",
+  "session_start_utc": "2026-08-04T23:00:39.021495+00:00"
+}

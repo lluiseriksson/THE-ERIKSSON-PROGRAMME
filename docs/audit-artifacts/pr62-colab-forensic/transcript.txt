@@ -1,0 +1,54 @@
+PR #62 FORENSIC COLAB REPRODUCTION
+session_start_utc=2026-08-04T23:00:39.021495+00:00
+session_end_utc=2026-08-04T23:38:18.614625+00:00
+repository=lluiseriksson/THE-ERIKSSON-PROGRAMME
+branch_cloned=codex/testigo-agudo-n2-q
+mathematical_sha=36a02972d0f6771acb2f9594b6306cc08db39faf
+actual_checkout_sha=36a02972d0f6771acb2f9594b6306cc08db39faf
+runtime_service=Google Colab Pro+
+runtime_accelerator=none
+nvidia_smi_present=False
+cpu_model=AMD EPYC 7B12
+mem_total_kib=53467192
+
+log=phase0_frozen_cache.log
+command=lake exe cache get
+started_utc=2026-08-04T23:00:46.246696+00:00
+ended_utc=2026-08-04T23:02:18.834361+00:00
+exit_code=0
+bytes=10173
+sha256=36a184938168b7d019c5df0ea9cdedd29fc4dcd193ae5f29aa6e3d9f550a388a
+lf_count=49
+cr_count=88
+
+log=phase0_frozen_module.log
+command=lake build YangMills.OS.SpatialSharpWitness
+started_utc=2026-08-04T23:02:18.836172+00:00
+ended_utc=2026-08-04T23:04:12.239725+00:00
+exit_code=0
+bytes=2106
+sha256=5544e5406d132928c735108062c3227435fda135697ffd66650594dd9e1f844f
+lf_count=42
+cr_count=0
+
+log=phase0_frozen_core.log
+command=lake build YangMillsCore
+started_utc=2026-08-04T23:04:12.240986+00:00
+ended_utc=2026-08-04T23:14:04.977547+00:00
+exit_code=0
+bytes=106497
+sha256=67cc3646acf800c809d8e116d9c1c0c8652a7700b0487cef4d898d39d002817f
+lf_count=1643
+cr_count=0
+
+log=phase0_frozen_oracle.log
+command=lake env lean oracle_check.lean
+started_utc=2026-08-04T23:14:04.978880+00:00
+ended_utc=2026-08-04T23:38:18.611873+00:00
+exit_code=0
+bytes=346431
+sha256=8dc4dfaa790d0d42155ac2ef9d1410a2dc2d47f78af512cc94b4f1a0f0a00188
+lf_count=5189
+cr_count=0
+
+all_exit_zero=True

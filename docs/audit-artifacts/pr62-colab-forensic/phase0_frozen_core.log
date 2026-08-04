@@ -1,0 +1,1643 @@
+ℹ [8160/8469] Built YangMills.KP.PlaneTreeCatalan (4.2s)
+info: YangMills/KP/PlaneTreeCatalan.lean:211:0: 'RootedTreeCatalan.PlaneTree.card_treesOfSizeSucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:212:0: 'RootedTreeCatalan.PlaneTree.mem_treesOfSizeSucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:213:0: 'RootedTreeCatalan.PlaneTree.numNodes_forestToBin' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:214:0: 'RootedTreeCatalan.sum_card_eq_card_sigma' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8161/8469] Built YangMills.P8_PhysicalGap.MemLpLogIntegrability (4.6s)
+✔ [8162/8469] Built YangMills.ClayCore.ContinuousUnitaryRep (6.2s)
+✔ [8163/8469] Built YangMills.OS.ZNSubstrate (9.3s)
+✔ [8164/8469] Built YangMills.SUSY.WardComplex (10s)
+✔ [8165/8469] Built YangMills.RG.YMActivityBudget (12s)
+✔ [8166/8469] Built YangMills.RG.SUNAdjointMatrixSubstrate (15s)
+✔ [8167/8469] Built YangMills.OS.CongruenceSpectrum (21s)
+✔ [8168/8469] Built YangMills.RG.RelativeBVRetraction (18s)
+✔ [8169/8469] Built YangMills.RG.ActivityLimit (13s)
+✔ [8170/8469] Built YangMills.RG.GaussianBlockKernel (15s)
+✔ [8171/8469] Built YangMills.RG.GaussianStep (9.0s)
+✔ [8172/8469] Built YangMills.OS.TransferGap (29s)
+✔ [8173/8469] Built YangMills.RG.GaussianMGF (10s)
+✔ [8174/8469] Built YangMills.RG.CouplingFlowBridge (9.6s)
+✔ [8176/8469] Built YangMills.RG.AnimalCount (9.0s)
+✔ [8177/8469] Built YangMills.RG.KernelDecay (14s)
+⚠ [8178/8469] Replayed YangMills.OS.WilsonCharCombo
+warning: YangMills/OS/WilsonCharCombo.lean:148:6: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [8179/8469] Built YangMills.RG.LocalFunctional (9.9s)
+✔ [8180/8469] Built YangMills.Paper.GapRefinementChallenge (8.3s)
+✔ [8181/8469] Built YangMills.RG.GroupAverage (10s)
+✔ [8182/8469] Built YangMills.SUSY.FiniteBerezin (40s)
+✔ [8183/8469] Built YangMills.Paper.UVSummation (9.1s)
+✔ [8184/8469] Built YangMills.Paper.MassGapAssembly (9.5s)
+✔ [8185/8469] Built YangMills.Paper.CouplingControl (10s)
+✔ [8186/8469] Built YangMills.ClayCore.U1FourierOrthogonality (9.4s)
+ℹ [8187/8469] Built YangMills.KP.LabeledPlaneTreeCatalan (5.3s)
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:377:0: 'RootedTreeCatalan.mem_headZeroPerms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:378:0: 'RootedTreeCatalan.card_headZeroPerms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:379:0: 'RootedTreeCatalan.decorate_shape_labels' depends on axioms: [propext]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:380:0: 'RootedTreeCatalan.labels_decorate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:381:0: 'RootedTreeCatalan.mem_labeledTreesOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:382:0: 'RootedTreeCatalan.card_labeledTreesOn'' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8188/8469] Built YangMills.KP.Basic (9.3s)
+✔ [8189/8469] Built YangMills.ClayCore.TracePathExpansion (11s)
+✔ [8190/8469] Built YangMills.L0_Lattice.FiniteLattice (9.9s)
+✔ [8191/8469] Built YangMills.KP.WalkBound (11s)
+✔ [8192/8469] Built YangMills.L1_GibbsMeasure.ExpActivityExpansion (11s)
+✔ [8193/8469] Built YangMills.ClayCore.GenericSchurOrthogonality (13s)
+✔ [8195/8469] Built YangMills.OS.ReflectionSplitting (10s)
+✔ [8196/8469] Built YangMills.RG.SUNAdjointInnerSpace (10s)
+✔ [8197/8469] Built YangMills.SUSY.ValenceCarry (12s)
+✔ [8198/8469] Built YangMills.RG.CouplingFlow (11s)
+✔ [8199/8469] Built YangMills.RG.LocalSPDPrecision (11s)
+✔ [8201/8469] Built YangMills.RG.KernelSchur (12s)
+✔ [8202/8469] Built YangMills.KP.Cluster (8.1s)
+✔ [8203/8469] Built YangMills.RG.RawMayerWithHoles (8.3s)
+✔ [8204/8469] Built YangMills.L0_Lattice.GaugeConfigurations (8.1s)
+⚠ [8206/8469] Built YangMills.RG.NearLog (41s)
+warning: YangMills/RG/NearLog.lean:64:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_logCoeff_smul_pow_le`:
+  [CompleteSpace 𝔸]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace 𝔸] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NearLog.lean:330:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_expTerm_le`:
+  [CompleteSpace 𝔸]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace 𝔸] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NearLog.lean:440:8: automatically included section variable(s) unused in theorem `YangMills.RG.nearLog_zero`:
+  [CompleteSpace 𝔸]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace 𝔸] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8207/8469] Built YangMills.OS.Z2Endpoint (7.9s)
+✔ [8208/8469] Built YangMills.RG.BlockLattice (9.0s)
+⚠ [8209/8469] Built YangMills.KP.PinnedWalk (10s)
+warning: YangMills/KP/PinnedWalk.lean:107:51: This simp argument is unused:
+  zero_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [Option.elim_none, Option.elim_some, zero_m̵u̵l̵,̵ ̵z̵e̵r̵o̵_̵add] at key
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/KP/PinnedWalk.lean:107:61: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  simp only [Option.elim_none, Option.elim_some, zero_mul,̵ ̵z̵e̵r̵o̵_̵a̵d̵d̵] at key
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8210/8469] Built YangMills.KP.Criterion (8.8s)
+✔ [8211/8469] Built YangMills.RG.CovarianceKernel (9.5s)
+✔ [8212/8469] Built YangMills.KP.PenrosePrep (9.2s)
+✔ [8213/8469] Built YangMills.RG.MarginalCoupling (13s)
+✔ [8214/8469] Built YangMills.L0_Lattice.WilsonAction (8.8s)
+✔ [8216/8469] Built YangMills.KP.Ursell (12s)
+✔ [8217/8469] Built YangMills.RG.SUNAdjointDimension (25s)
+✔ [8218/8469] Built YangMills.ClayCore.WilsonLoopCenter (8.5s)
+⚠ [8219/8469] Built YangMills.P8_PhysicalGap.SUN_Compact (8.8s)
+warning: YangMills/P8_PhysicalGap/SUN_Compact.lean:34:8: automatically included section variable(s) unused in theorem `_private.YangMills.P8_PhysicalGap.SUN_Compact.0.YangMills.specialUnitaryGroup_subset_entryBox`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/P8_PhysicalGap/SUN_Compact.lean:42:8: automatically included section variable(s) unused in theorem `_private.YangMills.P8_PhysicalGap.SUN_Compact.0.YangMills.isClosed_unitaryGroup_set`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/P8_PhysicalGap/SUN_Compact.lean:49:8: automatically included section variable(s) unused in theorem `_private.YangMills.P8_PhysicalGap.SUN_Compact.0.YangMills.isClosed_det_eq_one`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8220/8469] Built YangMills.KP.Convergence (7.0s)
+✔ [8222/8469] Built YangMills.ClayCore.WilsonLine (10s)
+✔ [8223/8469] Built YangMills.L0_Lattice.ChainComplex (11s)
+✔ [8224/8469] Built YangMills.KP.SharpMajorant (7.7s)
+✔ [8226/8469] Built YangMills.RG.PolymerRemainder (26s)
+⚠ [8227/8469] Replayed YangMills.OS.PerronGap
+warning: YangMills/OS/PerronGap.lean:117:17: unused variable `hu`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8228/8469] Built YangMills.L0_Lattice.GaugeInvariance (7.0s)
+⚠ [8229/8469] Replayed YangMills.OS.SpatialGibbs
+warning: YangMills/OS/SpatialGibbs.lean:511:15: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  simp only [if_p̵o̵s̵ ̵r̵f̵l̵,̵ ̵i̵f̵_̵neg (Ne.symm hne ∘ Eq.symm), Pi.zero_apply] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8230/8469] Built YangMills.KP.Expansion (7.0s)
+⚠ [8231/8469] Replayed YangMills.OS.SpatialSpectral
+warning: YangMills/OS/SpatialSpectral.lean:301:14: This simp argument is unused:
+  specGap
+
+Hint: Omit it from the simp argument list.
+  simp [s̵p̵e̵c̵G̵a̵p̵,̵ ̵h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8232/8469] Built YangMills.Paper.ClusteringToGap (8.3s)
+warning: YangMills/Paper/ClusteringToGap.lean:204:9: unused variable `d`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/Paper/ClusteringToGap.lean:214:9: unused variable `d`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/Paper/ClusteringToGap.lean:219:19: unused variable `d`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8233/8469] Built YangMills.KP.PenroseScheme (8.7s)
+⚠ [8234/8469] Replayed YangMills.OS.SpatialRing
+warning: YangMills/OS/SpatialRing.lean:479:18: unused variable `hγ`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8235/8469] Built YangMills.OS.SpatialBirkhoff (9.3s)
+✔ [8236/8469] Built YangMills.RG.HolonomyGauge (8.0s)
+✔ [8237/8469] Built YangMills.RG.AnimalTour (8.5s)
+✔ [8238/8469] Built YangMills.KP.ClusterWeight (9.6s)
+✔ [8239/8469] Built YangMills.RG.UVMassGap (8.8s)
+⚠ [8240/8469] Replayed YangMills.OS.SpatialSharpWitness
+warning: YangMills/OS/SpatialSharpWitness.lean:190:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8241/8469] Built YangMills.L0_Lattice.FiniteLatticeGeometryInstance (10s)
+✔ [8242/8469] Built YangMills.KP.SinglePolymer (9.6s)
+✔ [8243/8469] Built YangMills.KP.PenroseBFS (8.3s)
+⚠ [8244/8469] Built YangMills.OS.SpatialUniform (12s)
+warning: YangMills/OS/SpatialUniform.lean:185:5: unused variable `hc`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/OS/SpatialUniform.lean:420:13: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  simp only ̵[̵i̵f̵_̵p̵o̵s̵ ̵r̵f̵l̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/OS/SpatialUniform.lean:601:23: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/OS/SpatialUniform.lean:634:44: This simp argument is unused:
+  Fintype.card_fun
+
+Hint: Omit it from the simp argument list.
+  simp [Finset.sum_const, Finset.card_univ,̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵c̵a̵r̵d̵_̵f̵u̵n̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8245/8469] Built YangMills.OS.SpatialDualBond (8.2s)
+✔ [8246/8469] Built YangMills.RG.AveragedContour (7.5s)
+✔ [8247/8469] Built YangMills.RG.MatrixRealization (8.3s)
+✔ [8248/8469] Built YangMills.KP.PinnedCluster (8.6s)
+✔ [8249/8469] Built YangMills.L1_GibbsMeasure.GibbsMeasure (8.4s)
+✔ [8250/8469] Built YangMills.RG.CubeLattice (11s)
+✔ [8251/8469] Built YangMills.RG.SingleScaleUVDecay (9.2s)
+⚠ [8252/8469] Built YangMills.OS.SpatialVacuum (12s)
+warning: YangMills/OS/SpatialVacuum.lean:416:19: unused variable `hx1`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8253/8469] Built YangMills.RG.BlockMaps (7.3s)
+✔ [8254/8469] Built YangMills.RG.LinearAveraging (9.7s)
+✔ [8255/8469] Built YangMills.RG.FiniteTorusCurlDiv (11s)
+✔ [8256/8469] Built YangMills.KP.UrsellRecurrence (9.0s)
+✔ [8257/8469] Built YangMills.KP.PenroseFiber (9.6s)
+⚠ [8258/8469] Built YangMills.OS.SpatialReflection (11s)
+warning: YangMills/OS/SpatialReflection.lean:227:5: unused variable `hw`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/OS/SpatialReflection.lean:439:5: unused variable `hw`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8259/8469] Built YangMills.L1_GibbsMeasure.CenterInvariance (9.7s)
+warning: YangMills/L1_GibbsMeasure/CenterInvariance.lean:57:0: automatically included section variable(s) unused in theorem `YangMills.centerAct_apply_pos`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/CenterInvariance.lean:108:0: automatically included section variable(s) unused in theorem `YangMills.wilsonLine_center_smul_of_mem`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8260/8469] Built YangMills.P8_PhysicalGap.SUN_StateConstruction (13s)
+✔ [8261/8469] Built YangMills.L1_GibbsMeasure.Expectation (8.7s)
+✔ [8262/8469] Built YangMills.ClayCore.GaugeMarginal (9.2s)
+⚠ [8263/8469] Built YangMills.RG.Diamagnetic (20s)
+warning: YangMills/RG/Diamagnetic.lean:629:9: unused variable `hx`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8264/8469] Built YangMills.RG.MarginalUVMassGap (11s)
+✔ [8265/8469] Built YangMills.RG.ModifiedMetric (18s)
+⚠ [8266/8469] Built YangMills.RG.AveragingL2 (11s)
+warning: YangMills/RG/AveragingL2.lean:194:53: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8267/8469] Built YangMills.RG.Ubar (12s)
+✔ [8268/8469] Built YangMills.KP.KPBound (14s)
+✔ [8269/8469] Built YangMills.KP.RootedChildCount (12s)
+✔ [8270/8469] Built YangMills.ClayCore.SchurZeroMean (12s)
+✔ [8271/8469] Built YangMills.RG.GaussianPi (72s)
+⚠ [8272/8469] Built YangMills.L1_GibbsMeasure.PolymerExpansion (14s)
+warning: YangMills/L1_GibbsMeasure/PolymerExpansion.lean:138:0: automatically included section variable(s) unused in theorem `YangMills.config_apply_neg`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/PolymerExpansion.lean:405:10: This simp argument is unused:
+  measure_univ
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵m̵e̵a̵s̵u̵r̵e̵_̵u̵n̵i̵v̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8273/8469] Built YangMills.OS.SpatialOS (15s)
+✔ [8274/8469] Built YangMills.ClayCore.GaugeMeasureProps (8.0s)
+⚠ [8275/8469] Built YangMills.ClayCore.WilsonPlaquetteEnergy (10s)
+warning: YangMills/ClayCore/WilsonPlaquetteEnergy.lean:99:47: This simp argument is unused:
+  Fintype.sum_empty
+
+Hint: Omit it from the simp argument list.
+  simp [wilsonPlaquetteEnergy, Matrix.trace,̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵e̵m̵p̵t̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8276/8469] Built YangMills.RG.OmegaConnectedCover (9.9s)
+✔ [8277/8469] Built YangMills.RG.YMActivityBudgetUV (14s)
+⚠ [8278/8469] Built YangMills.KP.SharpShell (39s)
+warning: YangMills/KP/SharpShell.lean:404:23: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead
+warning: YangMills/KP/SharpShell.lean:491:4: Try this: intro pl _ hadm
+✔ [8279/8469] Built YangMills.RG.PhysicalGaugeCochains (42s)
+✔ [8280/8469] Built YangMills.RG.AveragingAdjoint (15s)
+✔ [8281/8469] Built YangMills.KP.PinnedBound (14s)
+✔ [8282/8469] Built YangMills.RG.LocalLinearOperator (20s)
+✔ [8283/8469] Built YangMills.KP.RootedLeafSummation (12s)
+✔ [8284/8469] Built YangMills.ClayCore.SchurMomentVanishing (9.3s)
+✔ [8285/8469] Built YangMills.ClayCore.SchurNormSquared (8.0s)
+✔ [8286/8469] Built YangMills.ClayCore.LeftInvariantVanishing (7.7s)
+✔ [8287/8469] Built YangMills.ClayCore.SUOneDegenerate (7.7s)
+✔ [8288/8469] Built YangMills.ClayCore.SchurTwoSitePhase (7.0s)
+⚠ [8289/8469] Built YangMills.KP.RootedCatalanBridge (21s)
+warning: YangMills/KP/RootedCatalanBridge.lean:683:0: automatically included section variable(s) unused in theorem `YangMills.KP.rootLabel_mem_labels`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/KP/RootedCatalanBridge.lean:776:0: automatically included section variable(s) unused in theorem `YangMills.KP.disjoint_labels_of_ne_of_pairwise`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/KP/RootedCatalanBridge.lean:1183:7: unused variable `h1`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: YangMills/KP/RootedCatalanBridge.lean:1267:0: 'YangMills.KP.penroseTree_eq_of_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1268:0: 'YangMills.KP.card_of_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1269:0: 'YangMills.KP.bfsLevel_le_of_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1270:0: 'YangMills.KP.mem_fiberListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1271:0: 'YangMills.KP.card_fiberListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1272:0: 'YangMills.KP.card_childListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1273:0: 'YangMills.KP.sum_prod_factorial_eq_card_sigma_childListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1274:0: 'YangMills.KP.rootLabel_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1275:0: 'YangMills.KP.bfsLevel_parIter' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1276:0: 'YangMills.KP.mem_labels_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1277:0: 'YangMills.KP.nodup_labels_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1278:0: 'YangMills.KP.orderedBFSTree_mem_labeledTreesOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1279:0: 'YangMills.KP.childrenOf_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1280:0: 'YangMills.KP.spanningTree_eq_of_listings_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1281:0: 'YangMills.KP.orderedBFSTree_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1282:0: 'YangMills.KP.orderedBFSTree_eq_of_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1283:0: 'YangMills.KP.orderedBFSTree_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1284:0: 'YangMills.KP.treeEdges_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1285:0: 'YangMills.KP.rootedChildren_treeEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1286:0: 'YangMills.KP.card_sigma_childListings_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1287:0: 'YangMills.KP.sum_prod_rootedChildCount_factorial_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8290/8469] Built YangMills.L1_GibbsMeasure.PolymerFactorization (8.9s)
+✔ [8291/8469] Built YangMills.KP.SharpKP (7.5s)
+✔ [8292/8469] Built YangMills.RG.SourceOnlyUVDecay (8.4s)
+✔ [8293/8469] Built YangMills.KP.ClusterTail (8.3s)
+✔ [8294/8469] Built YangMills.RG.HRpolyAnimalSummability (10s)
+✔ [8295/8469] Built YangMills.RG.PhysicalGaugeHodgePoincare (8.1s)
+✔ [8296/8469] Built YangMills.RG.SUNAdjointModelInstance (10s)
+✔ [8297/8469] Built YangMills.RG.PhysicalBondDistance (10s)
+✔ [8298/8469] Built YangMills.KP.RootedCatalan (7.7s)
+✔ [8299/8469] Built YangMills.ClayCore.SchurPhysicalBridge (7.7s)
+✔ [8300/8469] Built YangMills.L1_GibbsMeasure.SUNSelectionRule (8.9s)
+✔ [8301/8469] Built YangMills.ClayCore.SchurMixedMomentVanishing (9.4s)
+✔ [8302/8469] Built YangMills.ClayCore.SchurDiagPhase (8.3s)
+✔ [8303/8469] Built YangMills.ClayCore.SchurOffDiagonal (8.0s)
+⚠ [8304/8469] Built YangMills.L1_GibbsMeasure.WeightedGas (8.0s)
+warning: YangMills/L1_GibbsMeasure/WeightedGas.lean:59:8: unused variable `A`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/L1_GibbsMeasure/WeightedGas.lean:59:10: unused variable `A'`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/L1_GibbsMeasure/WeightedGas.lean:62:0: automatically included section variable(s) unused in theorem `YangMills.prod_weight_congr`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/WeightedGas.lean:190:0: automatically included section variable(s) unused in theorem `YangMills.prod_one_add_eq_sum`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/WeightedGas.lean:278:0: automatically included section variable(s) unused in theorem `YangMills.one_add_deformWeight_of_mem`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/WeightedGas.lean:288:0: automatically included section variable(s) unused in theorem `YangMills.deformWeight_of_not_mem`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/WeightedGas.lean:298:0: automatically included section variable(s) unused in theorem `YangMills.isLocalWeight_deformWeight`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/WeightedGas.lean:312:0: automatically included section variable(s) unused in theorem `YangMills.abs_deformWeight_le`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/WeightedGas.lean:390:0: automatically included section variable(s) unused in theorem `YangMills.deformWeight_union_of_not_mem_left`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/WeightedGas.lean:403:0: automatically included section variable(s) unused in theorem `YangMills.deformWeight_union_of_not_mem_right`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8305/8469] Built YangMills.RG.GaugePrecision (16s)
+✔ [8306/8469] Built YangMills.L1_GibbsMeasure.EdgeFactorization (9.6s)
+✔ [8307/8469] Built YangMills.L1_GibbsMeasure.LatticePolymerSystem (11s)
+ℹ [8308/8469] Built YangMills.KP.RootedCatalanIdentityProof (11s)
+info: YangMills/KP/RootedCatalanIdentityProof.lean:61:0: 'YangMills.KP.rootedChildFactorialCatalanIdentity_holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanIdentityProof.lean:62:0: 'YangMills.KP.rootedChildFactorialTreeSumNormalized_le_catalan' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [8309/8469] Built YangMills.ClayCore.SchurEntryNAlitySelection (11s)
+⚠ [8310/8469] Built YangMills.L1_GibbsMeasure.GibbsSelectionRule (14s)
+warning: YangMills/L1_GibbsMeasure/GibbsSelectionRule.lean:41:8: automatically included section variable(s) unused in theorem `_private.YangMills.L1_GibbsMeasure.GibbsSelectionRule.0.YangMills.central_four`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/GibbsSelectionRule.lean:61:0: automatically included section variable(s) unused in theorem `YangMills.centerAct_apply_neg`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8311/8469] Built YangMills.ClayCore.SchurEntryOrthogonality (10s)
+✔ [8312/8469] Built YangMills.RG.HolePolymerSystem (18s)
+⚠ [8313/8469] Built YangMills.ClayCore.SchurL25 (11s)
+warning: YangMills/ClayCore/SchurL25.lean:28:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.continuous_val_entry`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurL25.lean:57:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.normSq_val_diag_le_one`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurL25.lean:77:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.trace_mul_conj_trace_eq_double_sum`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8314/8469] Built YangMills.RG.CoercivePerturbation (9.3s)
+✔ [8315/8469] Built YangMills.RG.PhysicalGaugeFlatPoincare (21s)
+✔ [8316/8469] Built YangMills.L1_GibbsMeasure.WilsonLoopExpansion (8.2s)
+✔ [8317/8469] Built YangMills.KP.RootedCatalanExact (7.8s)
+✔ [8318/8469] Built YangMills.RG.UltralocalFactorization (11s)
+✔ [8319/8469] Built YangMills.ClayCore.CenterVanishing (9.4s)
+✔ [8320/8469] Built YangMills.ClayCore.SchurEntryOffDiag (9.8s)
+✔ [8321/8469] Built YangMills.RG.Translation (11s)
+✔ [8322/8469] Built YangMills.ClayCore.GaugeEdgeExpectation (11s)
+✔ [8323/8469] Built YangMills.L1_GibbsMeasure.WilsonObservable (10s)
+✔ [8324/8469] Built YangMills.RG.PhysicalPoincareWall (9.9s)
+✔ [8325/8469] Built YangMills.RG.CoerciveCovariance (12s)
+✔ [8326/8469] Built YangMills.KP.RootedCatalanMajorant (12s)
+⚠ [8327/8469] Built YangMills.L1_GibbsMeasure.ConnectedEntropy (26s)
+warning: YangMills/L1_GibbsMeasure/ConnectedEntropy.lean:387:29: This simp argument is unused:
+  hjcast
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵j̵c̵a̵s̵t̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/ConnectedEntropy.lean:390:29: This simp argument is unused:
+  hjsucc
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵j̵s̵u̵c̵c̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/ConnectedEntropy.lean:398:31: This simp argument is unused:
+  hjcast
+
+Hint: Omit it from the simp argument list.
+  simp [̵h̵j̵c̵a̵s̵t̵,̵ ̵h̵c̵2̵]̵[̲h̲c̲2̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/ConnectedEntropy.lean:418:33: This simp argument is unused:
+  hjcast
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵j̵c̵a̵s̵t̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8328/8469] Built YangMills.ClayCore.SchurPowerSumVanishing (9.4s)
+✔ [8329/8469] Built YangMills.RG.BalabanCMP116Dmu0 (10s)
+✔ [8330/8469] Built YangMills.RG.MayerCoverFactorization (15s)
+⚠ [8331/8469] Built YangMills.ClayCore.SchurNormOne (13s)
+warning: YangMills/ClayCore/SchurNormOne.lean:22:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.signedSwapMat_apply`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurNormOne.lean:29:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.signedSwapMat_of_i`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurNormOne.lean:37:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.signedSwapMat_of_j`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurNormOne.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.signedSwapMat_of_other`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurNormOne.lean:53:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.signedSwapMat_column_i`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurNormOne.lean:64:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.signedSwapMat_column_j`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurNormOne.lean:96:12: This simp argument is unused:
+  hij
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵i̵j̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/SchurNormOne.lean:124:14: This simp argument is unused:
+  hij.symm
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵i̵j̵.̵s̵y̵m̵m̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/SchurNormOne.lean:150:14: This simp argument is unused:
+  hai
+
+Hint: Omit it from the simp argument list.
+  simp [hai̵,̵ ̵h̵a̵j]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/SchurNormOne.lean:150:19: This simp argument is unused:
+  haj
+
+Hint: Omit it from the simp argument list.
+  simp [hai,̵ ̵h̵a̵j̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/SchurNormOne.lean:246:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.signedSwapMat_prod_swap`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurNormOne.lean:367:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.unitary_row_normSq_sum`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8332/8469] Built YangMills.RG.PhysicalPoincareSectorQuotient (9.3s)
+✔ [8333/8469] Built YangMills.RG.SchurCatalanBudget (9.0s)
+✔ [8334/8469] Built YangMills.ClayCore.SchurMixedPowerSumVanishing (7.9s)
+✔ [8335/8469] Built YangMills.L1_GibbsMeasure.ClusterGeometry (11s)
+✔ [8336/8469] Built YangMills.RG.BalabanCMP116Localization (9.7s)
+✔ [8337/8469] Built YangMills.RG.AppendixFFiniteCover (12s)
+✔ [8338/8469] Built YangMills.RG.PhysicalPoincareLowModeFalsifier (8.8s)
+⚠ [8339/8469] Built YangMills.ClayCore.SchurFundamentalOrthogonality (9.1s)
+warning: YangMills/ClayCore/SchurFundamentalOrthogonality.lean:53:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.fundamentalUnitaryRep_apply`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurFundamentalOrthogonality.lean:59:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.fundamentalUnitaryRep_matrixCoeff_apply`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurFundamentalOrthogonality.lean:65:0: automatically included section variable(s) unused in theorem `YangMills.ClayCore.diagPhaseSU_apply_entry_right`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/SchurFundamentalOrthogonality.lean:207:7: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/ClayCore/SchurFundamentalOrthogonality.lean:215:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [8340/8469] Built YangMills.L1_GibbsMeasure.SupportFactorization (9.1s)
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:56:0: automatically included section variable(s) unused in theorem `YangMills.DependsOnPos.mono`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:61:0: automatically included section variable(s) unused in theorem `YangMills.DependsOnPos.mul`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:69:0: automatically included section variable(s) unused in theorem `YangMills.DependsOnPos.finset_prod`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:85:0: automatically included section variable(s) unused in theorem `YangMills.mem_edgeSupport_of_mem`:
+  [NeZero d]
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:105:0: automatically included section variable(s) unused in theorem `YangMills.posToFun_congr_at`:
+  [NeZero d]
+  [NeZero N]
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero N] [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:159:0: automatically included section variable(s) unused in theorem `YangMills.plaquettePosSupport_eq`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:165:4: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  simp only [plaquettePosSupport, edgeSupport, plaquetteList, plaquetteSupport,
+  ̵  ̵ ̵ ̵ConcreteEdge.pos,
+  ̲  ̲ ̲ ̲List.mem_toFinset, List.mem_map, List.mem_cons,
+  ̵  ̵ ̵ ̵List.m̵e̵m̵_̵s̵i̵ng̵l̵e̵t̵on̵,̵ ̵L̵i̵s̵t.̵n̵o̵t̵_mem_nil, or_false, Finset.mem_insert,
+      Finset.mem_singleton]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:255:0: automatically included section variable(s) unused in theorem `YangMills.nearLoop_subset`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:264:0: automatically included section variable(s) unused in theorem `YangMills.mem_plaqComponents_of_mem`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:377:0: automatically included section variable(s) unused in theorem `YangMills.mem_nearLoop_iff_reachable`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:434:0: automatically included section variable(s) unused in theorem `YangMills.walk_confined`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:457:0: automatically included section variable(s) unused in theorem `YangMills.reachable_union_of_reachable`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:482:0: automatically included section variable(s) unused in theorem `YangMills.reachable_descend`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:596:0: automatically included section variable(s) unused in theorem `YangMills.plaquetteSupport_nonempty`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/SupportFactorization.lean:655:0: automatically included section variable(s) unused in theorem `YangMills.plaqComponents_touches_of_pinned`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8341/8469] Built YangMills.RG.GaugeFixedPrecision (12s)
+✔ [8342/8469] Built YangMills.RG.PhysicalPoincareLowModeHodge (11s)
+✔ [8343/8469] Built YangMills.L1_GibbsMeasure.LocalMarginal (8.1s)
+✔ [8344/8469] Built YangMills.RG.GaugeFixedCovariance (9.9s)
+⚠ [8345/8469] Built YangMills.L1_GibbsMeasure.LocalObservableSubstrate (12s)
+warning: YangMills/L1_GibbsMeasure/LocalObservableSubstrate.lean:144:0: automatically included section variable(s) unused in theorem `YangMills.CompatibleLocalObservable.edgeAt_mem_realizedSupport`:
+  [NeZero d]
+  [Group G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [Group G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalObservableSubstrate.lean:152:0: automatically included section variable(s) unused in theorem `YangMills.CompatibleLocalObservable.card_realizedSupport`:
+  [NeZero d]
+  [Group G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [Group G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8346/8469] Built YangMills.L1_GibbsMeasure.LocalWindowGeometry (17s)
+warning: YangMills/L1_GibbsMeasure/LocalWindowGeometry.lean:246:21: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [8347/8469] Built YangMills.L1_GibbsMeasure.FiniteTranslation (13s)
+warning: YangMills/L1_GibbsMeasure/FiniteTranslation.lean:377:0: automatically included section variable(s) unused in theorem `YangMills.CompatibleLocalObservable.translateList_nil`:
+  [NeZero d]
+  [Group G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [Group G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/FiniteTranslation.lean:381:0: automatically included section variable(s) unused in theorem `YangMills.CompatibleLocalObservable.translateList_cons`:
+  [NeZero d]
+  [Group G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [Group G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8348/8469] Built YangMills.L1_GibbsMeasure.LocalObservableAlgebra (13s)
+warning: YangMills/L1_GibbsMeasure/LocalObservableAlgebra.lean:34:0: automatically included section variable(s) unused in theorem `YangMills.CompatibleLocalObservable.coord_mem_coordinateFinset`:
+  [NeZero d]
+  [Group G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [Group G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalObservableAlgebra.lean:171:0: automatically included section variable(s) unused in theorem `YangMills.CompatibleLocalObservable.minVolume_smul`:
+  [NeZero d]
+  [Group G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [Group G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalObservableAlgebra.lean:184:21: This simp argument is unused:
+  addLeftAssignment
+
+Hint: Omit it from the simp argument list.
+  simp only [CompatibleLocalObservable.realize, dif_pos h, dif_pos hO, dif_pos hP, add,
+  ̲  ̲ ̲ ̲a̵d̵d̵L̵e̵f̵t̵A̵s̵s̵i̵g̵n̵m̵e̵n̵t̵,̵ ̵addRightAssignment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/LocalObservableAlgebra.lean:184:40: This simp argument is unused:
+  addRightAssignment
+
+Hint: Omit it from the simp argument list.
+  simp only [CompatibleLocalObservable.realize, dif_pos h, dif_pos hO, dif_pos hP, add,
+  ̲  ̲ ̲ ̲a̵d̵d̵L̵e̵f̵t̵A̵s̵s̵i̵g̵n̵m̵e̵n̵t̵,̵ ̵a̵d̵d̵R̵i̵g̵h̵t̵A̵s̵s̵i̵g̵n̵m̵e̵n̵t̵]̵a̲d̲d̲L̲e̲f̲t̲A̲s̲s̲i̲g̲n̲m̲e̲n̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/LocalObservableAlgebra.lean:196:21: This simp argument is unused:
+  addLeftAssignment
+
+Hint: Omit it from the simp argument list.
+  simp only [CompatibleLocalObservable.realize, dif_pos h, dif_pos hO, dif_pos hP, mul,
+  ̲  ̲ ̲ ̲a̵d̵d̵L̵e̵f̵t̵A̵s̵s̵i̵g̵n̵m̵e̵n̵t̵,̵ ̵addRightAssignment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/LocalObservableAlgebra.lean:196:40: This simp argument is unused:
+  addRightAssignment
+
+Hint: Omit it from the simp argument list.
+  simp only [CompatibleLocalObservable.realize, dif_pos h, dif_pos hO, dif_pos hP, mul,
+  ̲  ̲ ̲ ̲a̵d̵d̵L̵e̵f̵t̵A̵s̵s̵i̵g̵n̵m̵e̵n̵t̵,̵ ̵a̵d̵d̵R̵i̵g̵h̵t̵A̵s̵s̵i̵g̵n̵m̵e̵n̵t̵]̵a̲d̲d̲L̲e̲f̲t̲A̲s̲s̲i̲g̲n̲m̲e̲n̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/LocalObservableAlgebra.lean:242:0: automatically included section variable(s) unused in theorem `YangMills.localGibbsExpectation_smul`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8349/8469] Built YangMills.RG.PhysicalPoincareLowModeBlock (19s)
+warning: YangMills/RG/PhysicalPoincareLowModeBlock.lean:419:30: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8350/8469] Built YangMills.RG.PhysicalGaugeFixedPrecision (17s)
+⚠ [8351/8469] Built YangMills.ClayCore.WilsonLoopMonomial (29s)
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:63:0: automatically included section variable(s) unused in theorem `YangMills.posToFun_val_apply`:
+  [NeZero N_c]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N_c] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:182:21: This simp argument is unused:
+  if_false
+
+Hint: Omit it from the simp argument list.
+  simp only [hs,̵ ̵i̵f̵_̵f̵a̵l̵s̵e̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:371:21: This simp argument is unused:
+  if_false
+
+Hint: Omit it from the simp argument list.
+  simp only [hs,̵ ̵i̵f̵_̵f̵a̵l̵s̵e̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:549:17: This simp argument is unused:
+  hhead
+
+Hint: Omit it from the simp argument list.
+  simp only [hh̵e̵a̵d̵,̵ ̵h̵tail]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:551:38: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:555:0: automatically included section variable(s) unused in theorem `YangMills.posEdgeOf_eq_and_sign_iff`:
+  [NeZero d]
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:581:0: automatically included section variable(s) unused in theorem `YangMills.posEdgeOf_eq_and_not_sign_iff`:
+  [NeZero d]
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:615:0: automatically included section variable(s) unused in theorem `YangMills.signed_count_eq_loopChain`:
+  [NeZero N_c]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N_c] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:654:0: automatically included section variable(s) unused in theorem `YangMills.loopChain_zmod_eq_intCast`:
+  [NeZero N_c]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N_c] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:967:0: automatically included section variable(s) unused in theorem `YangMills.norm_trace_wilsonLine_le`:
+  [NeZero N_c]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N_c] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:1039:19: This simp argument is unused:
+  if_false
+
+Hint: Omit it from the simp argument list.
+  simp only [hs,̵ ̵i̵f̵_̵f̵a̵l̵s̵e̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:1081:0: automatically included section variable(s) unused in theorem `YangMills.star_trace_wilsonLine`:
+  [NeZero N_c]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N_c] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:1210:38: This simp argument is unused:
+  hσb
+
+Hint: Omit it from the simp argument list.
+  simp [hσ̵b̵,̵ ̵h̵s]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:1211:38: This simp argument is unused:
+  hσb
+
+Hint: Omit it from the simp argument list.
+  simp [hσ̵b̵,̵ ̵h̵s]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:2960:27: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  simp only [FinBox.shift,̵ ̵i̵f̵_̵p̵o̵s̵ ̵r̵f̵l̵] at h1
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/ClayCore/WilsonLoopMonomial.lean:2977:0: automatically included section variable(s) unused in theorem `YangMills.loopChain_plaquetteList_ne_zero`:
+  [NeZero N_c]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N_c] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8352/8469] Built YangMills.L1_GibbsMeasure.LocalCentering (6.1s)
+✔ [8353/8469] Built YangMills.RG.PhysicalGaugeCovarianceLocalization (7.4s)
+✔ [8354/8469] Built YangMills.RG.PhysicalGaugeOperator (43s)
+✔ [8355/8469] Built YangMills.RG.PhysicalGaugeCMP116OperatorTransport (15s)
+✔ [8356/8469] Built YangMills.RG.PhysicalGramKernel (16s)
+✔ [8357/8469] Built YangMills.RG.PhysicalCoerciveCombesThomas (17s)
+✔ [8358/8469] Built YangMills.RG.PhysicalGaugeLocalSPDPrecisionRoot (17s)
+✔ [8359/8469] Built YangMills.RG.PhysicalGaugeFluctuationActivity (8.3s)
+✔ [8360/8469] Built YangMills.KP.MayerInversion (127s)
+⚠ [8361/8469] Built YangMills.RG.PhysicalShellLocalityD1 (9.2s)
+warning: YangMills/RG/PhysicalShellLocalityD1.lean:210:0: automatically included section variable(s) unused in theorem `YangMills.RG.piLp_norm_le_sum_norm`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalShellLocalityD1.lean:290:0: automatically included section variable(s) unused in theorem `YangMills.RG.card_plaquettes_slot_eq_le`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8362/8469] Built YangMills.KP.ActivityDomain (6.2s)
+✔ [8363/8469] Built YangMills.RG.PhysicalCoerciveCombesThomasInverse (15s)
+✔ [8364/8469] Built YangMills.RG.BalabanCMP116Lemma3Estimate (10s)
+⚠ [8365/8469] Built YangMills.KP.Restriction (9.7s)
+warning: YangMills/KP/Restriction.lean:33:14: unused variable `X`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/KP/Restriction.lean:33:16: unused variable `Y`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/KP/Restriction.lean:34:14: unused variable `X`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8366/8469] Built YangMills.RG.BalabanCMP116Lemma3 (7.7s)
+✔ [8367/8469] Built YangMills.RG.PhysicalShellLocalityDiv (17s)
+✔ [8368/8469] Built YangMills.RG.LocalKP (11s)
+⚠ [8369/8469] Built YangMills.L1_GibbsMeasure.PolymerRepresentation (23s)
+warning: YangMills/L1_GibbsMeasure/PolymerRepresentation.lean:2436:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/PolymerRepresentation.lean:2615:16: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/PolymerRepresentation.lean:3490:0: automatically included section variable(s) unused in theorem `YangMills.prod_one_add_plaquetteWeight`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8370/8469] Built YangMills.RG.BalabanCMP116Eq229 (7.5s)
+✔ [8371/8469] Built YangMills.RG.AppendixFCover (9.2s)
+✔ [8372/8469] Built YangMills.RG.AppendixFHoleCompression (10s)
+⚠ [8373/8469] Built YangMills.RG.PhysicalShellLocalityQ (20s)
+warning: YangMills/RG/PhysicalShellLocalityQ.lean:162:0: automatically included section variable(s) unused in theorem `YangMills.RG.flatBlockConstraint_single_apply`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalShellLocalityQ.lean:251:0: automatically included section variable(s) unused in theorem `YangMills.RG.sum_blocks_eq_sum_sites`:
+  [NeZero N']
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N'] [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8374/8469] Built YangMills.RG.PolymerClusterWithHolesBridge (17s)
+✔ [8375/8469] Built YangMills.RG.BalabanCMP116Eq231 (18s)
+✔ [8376/8469] Built YangMills.RG.BalabanCMP116Eq229CammarotaSource (13s)
+✔ [8377/8469] Built YangMills.RG.ClusterDecay (23s)
+✔ [8378/8469] Built YangMills.RG.BalabanCMP116Eq229Criteria (13s)
+✔ [8379/8469] Built YangMills.RG.AppendixFFactorization (12s)
+⚠ [8380/8469] Built YangMills.L1_GibbsMeasure.RestrictedGate (28s)
+warning: YangMills/L1_GibbsMeasure/RestrictedGate.lean:47:0: automatically included section variable(s) unused in theorem `YangMills.prod_one_add_truncWeight`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/RestrictedGate.lean:64:0: automatically included section variable(s) unused in theorem `YangMills.isLocalWeight_truncWeight`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/RestrictedGate.lean:89:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/L1_GibbsMeasure/RestrictedGate.lean:93:0: automatically included section variable(s) unused in theorem `YangMills.truncWeight_bound`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/RestrictedGate.lean:331:13: unused variable `ht0`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/L1_GibbsMeasure/RestrictedGate.lean:457:0: automatically included section variable(s) unused in theorem `YangMills.card_compl_farRegion_le`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/RestrictedGate.lean:1229:5: unused variable `hlam`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8381/8469] Built YangMills.RG.PhysicalShellCombesThomasEndpoint (10s)
+warning: YangMills/RG/PhysicalShellCombesThomasEndpoint.lean:64:0: automatically included section variable(s) unused in theorem `YangMills.RG.zeroSigma_norm_le`:
+  [NeZero d]
+  [NeZero Nc]
+  [NeZero (L * N')]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] [NeZero (L * N')] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalShellCombesThomasEndpoint.lean:73:0: automatically included section variable(s) unused in theorem `YangMills.RG.zeroSigma_budget`:
+  [NeZero (L * N')]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero (L * N')] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8382/8469] Built YangMills.RG.PolymerSummabilityBridge (9.0s)
+✔ [8383/8469] Built YangMills.RG.PhysicalGaugeCMP116Dictionary (16s)
+✔ [8384/8469] Built YangMills.RG.AppendixFHoleTarget (9.7s)
+⚠ [8385/8469] Built YangMills.L1_GibbsMeasure.TwoPlaquetteCorrelator (32s)
+warning: YangMills/L1_GibbsMeasure/TwoPlaquetteCorrelator.lean:79:0: automatically included section variable(s) unused in theorem `YangMills.abs_obs_le`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/TwoPlaquetteCorrelator.lean:623:19: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/L1_GibbsMeasure/TwoPlaquetteCorrelator.lean:627:17: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/L1_GibbsMeasure/TwoPlaquetteCorrelator.lean:623:19: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: YangMills/L1_GibbsMeasure/TwoPlaquetteCorrelator.lean:627:17: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [8386/8469] Built YangMills.RG.BalabanCMP116Lemma3ResidualStages (12s)
+✔ [8387/8469] Built YangMills.RG.SUNAdjointModelWitness (7.5s)
+✔ [8388/8469] Built YangMills.SUSY.WardPolymer (8.3s)
+⚠ [8389/8469] Built YangMills.L1_GibbsMeasure.LocalMarkedExpansion (9.6s)
+warning: YangMills/L1_GibbsMeasure/LocalMarkedExpansion.lean:38:8: automatically included section variable(s) unused in theorem `_private.YangMills.L1_GibbsMeasure.LocalMarkedExpansion.0.YangMills.positiveRepresentative_eq`:
+  [NeZero d]
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalMarkedExpansion.lean:120:0: automatically included section variable(s) unused in theorem `YangMills.card_plaquetteSupport_le_four`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalMarkedExpansion.lean:343:0: automatically included section variable(s) unused in theorem `YangMills.dependsOnPos_plaquetteWeight_ofReal`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalMarkedExpansion.lean:450:0: automatically included section variable(s) unused in theorem `YangMills.localGibbsExpectation_eq_boltzmann_div`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalMarkedExpansion.lean:520:0: automatically included section variable(s) unused in theorem `YangMills.restrictedWeightedPartition_div_eq_exp_clusterDiff`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalMarkedExpansion.lean:651:0: automatically included section variable(s) unused in theorem `YangMills.supportPinnedBoundaryRemainder_le_volumeUniform`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8390/8469] Built YangMills.RG.AppendixFHoleTargetFamily (7.3s)
+✔ [8391/8469] Built YangMills.RG.PhysicalGaugeWilsonHessianDictionary (8.2s)
+✔ [8392/8469] Built YangMills.RG.CorrelatorBridge (7.4s)
+✔ [8393/8469] Built YangMills.L1_GibbsMeasure.LocalWindowActivity (6.3s)
+✔ [8394/8469] Built YangMills.RG.AppendixFQuantitative (6.7s)
+✔ [8395/8469] Built YangMills.RG.AppendixFKsharp (7.5s)
+✔ [8396/8469] Built YangMills.RG.CorrelatorBridgeProvenance (6.6s)
+✔ [8397/8469] Built YangMills.RG.AppendixFFiberEntropy (4.8s)
+✔ [8398/8469] Built YangMills.RG.AppendixFSecondGas (5.8s)
+⚠ [8399/8469] Built YangMills.RG.ConcreteGaugeRGStep (7.9s)
+warning: YangMills/RG/ConcreteGaugeRGStep.lean:194:0: automatically included section variable(s) unused in theorem `YangMills.RG.coarseSiteEmbed_shift`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGStep.lean:224:0: automatically included section variable(s) unused in theorem `YangMills.RG.blockMap_apply_pos`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGStep.lean:255:0: automatically included section variable(s) unused in theorem `YangMills.RG.finBoxGeometry_src`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGStep.lean:259:0: automatically included section variable(s) unused in theorem `YangMills.RG.finBoxGeometry_dst`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGStep.lean:262:8: automatically included section variable(s) unused in theorem `YangMills.RG.srcV_mk_pos`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGStep.lean:265:8: automatically included section variable(s) unused in theorem `YangMills.RG.dstV_mk_pos`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8400/8469] Built YangMills.RG.AppendixFLocalSummability (6.9s)
+✔ [8401/8469] Built YangMills.RG.AppendixFHsharp (6.5s)
+✔ [8402/8469] Built YangMills.L1_GibbsMeasure.LocalWindowCluster (15s)
+✔ [8403/8469] Built YangMills.RG.AppendixFCluster3Geometry (7.8s)
+✔ [8404/8469] Built YangMills.RG.AppendixFKsharpEstimate (8.8s)
+✔ [8405/8469] Built YangMills.RG.AppendixFHsharpResidual (7.7s)
+✔ [8406/8469] Built YangMills.L1_GibbsMeasure.LocalWindowCauchy (6.5s)
+⚠ [8407/8469] Built YangMills.RG.ConcreteGaugeRGFidelity (12s)
+warning: YangMills/RG/ConcreteGaugeRGFidelity.lean:230:0: automatically included section variable(s) unused in theorem `YangMills.RG.finBox_shift_ne`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGFidelity.lean:244:0: automatically included section variable(s) unused in theorem `YangMills.RG.mem_plaquetteSupport_iff`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGFidelity.lean:280:0: automatically included section variable(s) unused in theorem `YangMills.RG.coarseSiteEmbed_injective`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGFidelity.lean:489:0: automatically included section variable(s) unused in theorem `YangMills.RG.shift_val_zmod`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGFidelity.lean:585:0: automatically included section variable(s) unused in theorem `YangMills.RG.canonicalPlaquette_site`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8408/8469] Built YangMills.RG.AppendixFHsharpPartial (6.3s)
+✔ [8409/8469] Built YangMills.RG.BalabanCMP116KsharpAdapter (7.8s)
+✔ [8410/8469] Built YangMills.L1_GibbsMeasure.LocalRootedTail (8.0s)
+✔ [8411/8469] Built YangMills.RG.AppendixFHsharpLimit (5.5s)
+✔ [8412/8469] Built YangMills.RG.AppendixFHsharpConvergence (6.6s)
+✔ [8413/8469] Built YangMills.RG.PhysicalGaugeCMP116ActivityAdapter (7.2s)
+⚠ [8414/8469] Built YangMills.RG.ConcreteGaugeRGLiteralGate (15s)
+warning: YangMills/RG/ConcreteGaugeRGLiteralGate.lean:296:0: automatically included section variable(s) unused in theorem `YangMills.RG.mem_fineEdgePair`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGLiteralGate.lean:309:0: automatically included section variable(s) unused in theorem `YangMills.RG.mem_fineSupport`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGLiteralGate.lean:321:0: automatically included section variable(s) unused in theorem `YangMills.RG.card_fineEdgePair_le`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGLiteralGate.lean:396:8: automatically included section variable(s) unused in theorem `YangMills.RG.shiftIter_zero`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGLiteralGate.lean:399:0: automatically included section variable(s) unused in theorem `YangMills.RG.shiftIter_succ`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGLiteralGate.lean:403:0: automatically included section variable(s) unused in theorem `YangMills.RG.shiftIter_coord_self`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGLiteralGate.lean:417:0: automatically included section variable(s) unused in theorem `YangMills.RG.shiftIter_coord_other`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGLiteralGate.lean:639:8: automatically included section variable(s) unused in theorem `YangMills.RG.kStepBlockSupport_zero`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGLiteralGate.lean:643:0: automatically included section variable(s) unused in theorem `YangMills.RG.kStepBlockSupport_succ`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGLiteralGate.lean:860:24: This simp argument is unused:
+  measure_univ
+
+Hint: Omit it from the simp argument list.
+  simp [integral_const,̵ ̵m̵e̵a̵s̵u̵r̵e̵_̵u̵n̵i̵v̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8415/8469] Built YangMills.RG.AppendixFHsharpMajorant (5.4s)
+✔ [8416/8469] Built YangMills.RG.BalabanCMP116SecondGasAdapter (6.9s)
+✔ [8417/8469] Built YangMills.L1_GibbsMeasure.LocalCorrectionTail (13s)
+✔ [8418/8469] Built YangMills.RG.AppendixFHsharpGeometricMajorant (6.8s)
+✔ [8419/8469] Built YangMills.RG.ConcreteGaugeRGTerminalGate (8.8s)
+✔ [8420/8469] Built YangMills.L1_GibbsMeasure.LocalCorrectionSeries (8.7s)
+✔ [8421/8469] Built YangMills.RG.AppendixFHsharpProfile (7.3s)
+✔ [8422/8469] Built YangMills.RG.TripleInfinityClosure (7.8s)
+✔ [8423/8469] Built YangMills.RG.AppendixFHsharpSourceMajorant (9.6s)
+✔ [8424/8469] Built YangMills.L1_GibbsMeasure.LocalCenteredWindow (7.0s)
+✔ [8425/8469] Built YangMills.RG.PhysicalGaugeCMP116ActivityConstruction (25s)
+✔ [8426/8469] Built YangMills.RG.AppendixFSecondUrsellSource (6.1s)
+✔ [8427/8469] Built YangMills.RG.AppendixFHsharpCluster3 (7.1s)
+⚠ [8428/8469] Built YangMills.RG.ConcreteGaugeRGPhysicalGate (16s)
+warning: YangMills/RG/ConcreteGaugeRGPhysicalGate.lean:325:0: automatically included section variable(s) unused in theorem `YangMills.RG.shift_shiftIter_comm`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGPhysicalGate.lean:367:8: automatically included section variable(s) unused in theorem `YangMills.RG.iterEmbed_zero`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGPhysicalGate.lean:370:0: automatically included section variable(s) unused in theorem `YangMills.RG.iterEmbed_succ`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGPhysicalGate.lean:377:0: automatically included section variable(s) unused in theorem `YangMills.RG.iterEmbed_coord`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGPhysicalGate.lean:554:0: automatically included section variable(s) unused in theorem `YangMills.RG.kStepBlockSupport_one`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8429/8469] Built YangMills.L1_GibbsMeasure.LocalSmallClusterTransport (6.5s)
+✔ [8430/8469] Built YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter (5.3s)
+⚠ [8431/8469] Built YangMills.RG.ConcreteGaugeRGSupport (6.8s)
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:210:8: automatically included section variable(s) unused in theorem `YangMills.RG.iteratedBlockMap_zero`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:213:0: automatically included section variable(s) unused in theorem `YangMills.RG.iteratedBlockMap_succ`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:219:0: automatically included section variable(s) unused in theorem `YangMills.RG.iteratedBlockMap_one`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:254:7: unused variable `g`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:255:11: unused variable `g`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:350:4: unused variable `m`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:361:8: automatically included section variable(s) unused in theorem `YangMills.RG.kStepPullbackSupport_zero`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:365:0: automatically included section variable(s) unused in theorem `YangMills.RG.kStepPullbackSupport_succ`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:373:0: automatically included section variable(s) unused in theorem `YangMills.RG.kStepPullbackSupport_one`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:464:0: automatically included section variable(s) unused in theorem `YangMills.RG.kStepPullbackSupport_succ_fine`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:468:7: unused variable `SS`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/ConcreteGaugeRGSupport.lean:468:11: unused variable `n`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8432/8469] Built YangMills.RG.BalabanCMP116HsharpAdapter (9.0s)
+✔ [8433/8469] Built YangMills.RG.AppendixFSecondUrsellWeightedTree (10s)
+✔ [8434/8469] Built YangMills.L1_GibbsMeasure.LocalSmallCorrectionCauchy (8.5s)
+✔ [8435/8469] Built YangMills.RG.BalabanCMP116HsharpSource (10s)
+✔ [8436/8469] Built YangMills.RG.AppendixFHsharpCertifiedTail (12s)
+✔ [8437/8469] Built YangMills.L1_GibbsMeasure.LocalMarkedTail (15s)
+✔ [8438/8469] Built YangMills.RG.AppendixFSecondUrsellGeometry (18s)
+✔ [8439/8469] Built YangMills.RG.AppendixFSecondUrsellMarkedFugacity (24s)
+✔ [8440/8469] Built YangMills.RG.BalabanCMP116Lemma3ScaleFamily (31s)
+✔ [8441/8469] Built YangMills.RG.AppendixFHsharpMarkedVertexSource (9.6s)
+✔ [8442/8469] Built YangMills.L1_GibbsMeasure.LocalMarkedTransport (16s)
+✔ [8443/8469] Built YangMills.RG.BalabanCMP116Lemma3AdmissibleAdapter (9.7s)
+✔ [8444/8469] Built YangMills.RG.BalabanCMP116Eq237 (11s)
+✔ [8445/8469] Built YangMills.RG.AppendixFSecondUrsellLeafSummation (16s)
+⚠ [8446/8469] Built YangMills.L1_GibbsMeasure.LocalMarkedCorrectionTransport (12s)
+warning: YangMills/L1_GibbsMeasure/LocalMarkedCorrectionTransport.lean:507:5: unused variable `hSm`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8447/8469] Built YangMills.RG.AppendixFParameterWitness (8.3s)
+✔ [8448/8469] Built YangMills.RG.AppendixFSecondUrsellClosure (8.3s)
+✔ [8449/8469] Built YangMills.L1_GibbsMeasure.LocalMarkedCorrectionCauchy (6.7s)
+✔ [8450/8469] Built YangMills.RG.AppendixFKsharpCanonicalRoot (5.2s)
+✔ [8451/8469] Built YangMills.RG.AppendixFHsharpLeafSource (10s)
+ℹ [8452/8469] Built YangMills.L1_GibbsMeasure.LocalMarkedSmallCauchy (8.9s)
+info: YangMills/L1_GibbsMeasure/LocalMarkedSmallCauchy.lean:338:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [8453/8469] Built YangMills.RG.AppendixFHsharpSourceResidual (4.0s)
+✔ [8454/8469] Built YangMills.RG.PhysicalGaugeCMP116RawHsharp (6.1s)
+⚠ [8455/8469] Built YangMills.L1_GibbsMeasure.ThermodynamicLimit (6.2s)
+info: YangMills/L1_GibbsMeasure/ThermodynamicLimit.lean:63:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: YangMills/L1_GibbsMeasure/ThermodynamicLimit.lean:115:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: YangMills/L1_GibbsMeasure/ThermodynamicLimit.lean:153:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: YangMills/L1_GibbsMeasure/ThermodynamicLimit.lean:361:30: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicLimit.lean:361:30: 'simp' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicLimit.lean:431:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8456/8469] Built YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot (5.6s)
+✔ [8457/8469] Built YangMills.RG.PhysicalGaugeCMP116RawM3 (8.9s)
+✔ [8458/8469] Built YangMills.L1_GibbsMeasure.ThermodynamicCorrelation (7.4s)
+⚠ [8459/8469] Built YangMills.L1_GibbsMeasure.LocalFreeBoundary (9.2s)
+warning: YangMills/L1_GibbsMeasure/LocalFreeBoundary.lean:70:0: automatically included section variable(s) unused in theorem `YangMills.FreeBoundary.mem_freeBoundaryPlaquettes`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalFreeBoundary.lean:118:0: automatically included section variable(s) unused in theorem `YangMills.FreeBoundary.freeBoundaryPlaquetteWeight_eq_of_mem`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalFreeBoundary.lean:128:0: automatically included section variable(s) unused in theorem `YangMills.FreeBoundary.freeBoundaryPlaquetteWeight_eq_zero_of_not_mem`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalFreeBoundary.lean:246:0: automatically included section variable(s) unused in theorem `YangMills.FreeBoundary.abs_plaquetteSubsetWeight_le`:
+  [MeasurableSpace G]
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalFreeBoundary.lean:333:0: automatically included section variable(s) unused in theorem `YangMills.FreeBoundary.freeBoundaryBoltzmann_eq_prod`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalFreeBoundary.lean:496:0: automatically included section variable(s) unused in theorem `YangMills.WindowPolymer.markedSet_subset_freeBoundaryPlaquettes`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalFreeBoundary.lean:521:0: automatically included section variable(s) unused in theorem `YangMills.WindowPolymer.smallCluster_subset_freeBoundaryPlaquettes`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalFreeBoundary.lean:559:0: automatically included section variable(s) unused in theorem `YangMills.WindowPolymer.smallCluster_unionMarkedSupport_subset_freeBoundaryPlaquettes`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/LocalFreeBoundary.lean:742:0: automatically included section variable(s) unused in theorem `YangMills.WindowPolymer.freeBoundaryLocalGibbsExpectation_eq_numerator_div`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8460/8469] Built YangMills.L1_GibbsMeasure.ThermodynamicNonvacuity (9.3s)
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:121:13: unused variable `hz0`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:128:13: unused variable `hz0`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:162:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:175:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:188:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:201:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:222:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:325:13: unused variable `hz0`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:333:13: unused variable `hz0`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:365:44: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:367:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:376:44: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:378:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:387:48: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:389:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:398:48: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:400:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:420:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:479:13: unused variable `hz0`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:487:13: unused variable `hz0`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:522:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:534:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:546:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:558:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/L1_GibbsMeasure/ThermodynamicNonvacuity.lean:579:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8461/8469] Built YangMills.L1_GibbsMeasure.IntegerTranslation (9.3s)
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:415:0: automatically included section variable(s) unused in theorem `YangMills.integerLocalGibbsExpectation_nonneg`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:452:0: automatically included section variable(s) unused in theorem `YangMills.integerLocalGibbsExpectation_smul`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:521:49: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [IntegerLocalObservable.edgeAt, IntegerLocalObservable.unitVector, FinBox.shift,
+  ̲  ̲ ̲ ̲ ̲ ̲Pi.single_eq_same, if_pos, I̵n̵t̵e̵g̵e̵r̵L̵o̵c̵a̵l̵O̵b̵s̵e̵r̵v̵a̵b̵l̵e̵.̵c̵o̵o̵r̵d̵_̵v̵a̵d̵d̵,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]̵I̲n̲t̲e̲g̲e̲r̲L̲o̲c̲a̲l̲O̲b̲s̲e̲r̲v̲a̲b̲l̲e̲.̲c̲o̲o̲r̲d̲_̲v̲a̲d̲d̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:524:20: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [IntegerLocalObservable.edgeAt, IntegerLocalObservable.unitVector, FinBox.shift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hji]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:542:6: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [IntegerLocalObservable.edgeAt, IntegerLocalObservable.negUnitVector,
+  ̲  ̲ ̲ ̲ ̲ ̲FinBox.shiftBack, Pi.single_eq_same, if_pos, I̵n̵t̵e̵g̵e̵r̵L̵o̵c̵a̵l̵O̵b̵s̵e̵r̵v̵a̵b̵l̵e̵.̵c̵o̵o̵r̵d̵_̵v̵a̵d̵d̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]̵I̲n̲t̲e̲g̲e̲r̲L̲o̲c̲a̲l̲O̲b̲s̲e̲r̲v̲a̲b̲l̲e̲.̲c̲o̲o̲r̲d̲_̲v̲a̲d̲d̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:547:6: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [IntegerLocalObservable.edgeAt, IntegerLocalObservable.negUnitVector, FinBox.shiftBack,
+      P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hji]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:577:0: automatically included section variable(s) unused in theorem `YangMills.integerLocalGibbsExpectation_vadd_unitVector`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:589:0: automatically included section variable(s) unused in theorem `YangMills.integerLocalGibbsExpectation_vadd_negUnitVector`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:614:10: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:628:14: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:631:16: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [IntegerLocalObservable.unitVector, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hji]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:657:16: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [IntegerLocalObservable.negUnitVector, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hji]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/L1_GibbsMeasure/IntegerTranslation.lean:682:8: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8462/8469] Built YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier (7.3s)
+✔ [8463/8469] Built YangMills.RG.M3FrontierDependencies (7.3s)
+⚠ [8464/8469] Built YangMills.L1_GibbsMeasure.LocalBoundaryCorrection (13s)
+warning: YangMills/L1_GibbsMeasure/LocalBoundaryCorrection.lean:416:9: unused variable `hS₀`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/L1_GibbsMeasure/LocalBoundaryCorrection.lean:1412:12: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8465/8469] Built YangMills.L1_GibbsMeasure.FreeBoundaryThermodynamicLimit (4.9s)
+⚠ [8466/8469] Built YangMills.L1_GibbsMeasure.IntegerThermodynamicLimit (5.8s)
+warning: YangMills/L1_GibbsMeasure/IntegerThermodynamicLimit.lean:128:0: automatically included section variable(s) unused in theorem `YangMills.integerLocalGibbsExpectation_lowerShiftVector`:
+  [MeasurableMul₂ G]
+  [MeasurableInv G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableMul₂ G] [MeasurableInv G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/IntegerThermodynamicLimit.lean:327:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8467/8469] Built YangMills.RG.BalabanCMP116SourceTheorem (30s)
+✔ [8468/8469] Built YangMillsCore (3.9s)
+Build completed successfully (8469 jobs).

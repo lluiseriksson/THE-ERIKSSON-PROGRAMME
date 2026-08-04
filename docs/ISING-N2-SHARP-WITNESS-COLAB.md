@@ -102,7 +102,13 @@ The command group ended with `COMMANDS_EXIT=0` and
 `FROZEN_REPRO_EXIT=0`.  The module build completed successfully with 8172
 jobs; the core build completed successfully with 8469 jobs.
 
-## Raw log manifest
+## Original manufacture manifest
+
+The manufacture transcript recorded the following four digests, but the raw
+files themselves were not added to Git at `254687f52993aad70191c014bace1184a11487b5`.
+That omission is the only provenance failure reported by the limited external
+audit; the table is retained as historical metadata rather than presented as
+an archived artifact.
 
 | Log | Bytes | SHA-256 |
 | --- | ---: | --- |
@@ -110,6 +116,35 @@ jobs; the core build completed successfully with 8469 jobs.
 | `phase0_frozen_module.log` | 2095 | `b84d58b9c33b65e3bdcba491f80e6e3167d7b5474147369782ec7fca998f3f14` |
 | `phase0_frozen_core.log` | 106345 | `86e09b3fe3a14a06412931f7d464ca7b8040163fc8d87dcbfb100c3ecb30f465` |
 | `phase0_frozen_oracle.log` | 346431 | `8dc4dfaa790d0d42155ac2ef9d1410a2dc2d47f78af512cc94b4f1a0f0a00188` |
+
+## Forensic preservation rerun
+
+On `2026-08-04T23:00:39Z`, a new disconnected notebook was prepared and then
+run in a fresh Colab Pro+ CPU/high-RAM runtime with no GPU.  It cloned the same
+branch, detached at the same raw proof SHA
+`36a02972d0f6771acb2f9594b6306cc08db39faf`, verified a clean checkout, and
+executed the same four commands.  All four exits were zero.  The module and
+Core builds again completed with 8172 and 8469 jobs.
+
+The complete byte streams are preserved under
+`docs/audit-artifacts/pr62-colab-forensic/`:
+
+| Log | Bytes | LF | CR | SHA-256 |
+| --- | ---: | ---: | ---: | --- |
+| `phase0_frozen_cache.log` | 10173 | 49 | 88 | `36a184938168b7d019c5df0ea9cdedd29fc4dcd193ae5f29aa6e3d9f550a388a` |
+| `phase0_frozen_module.log` | 2106 | 42 | 0 | `5544e5406d132928c735108062c3227435fda135697ffd66650594dd9e1f844f` |
+| `phase0_frozen_core.log` | 106497 | 1643 | 0 | `67cc3646acf800c809d8e116d9c1c0c8652a7700b0487cef4d898d39d002817f` |
+| `phase0_frozen_oracle.log` | 346431 | 5189 | 0 | `8dc4dfaa790d0d42155ac2ef9d1410a2dc2d47f78af512cc94b4f1a0f0a00188` |
+
+The oracle log is byte-identical to the historical digest.  The cache log is
+larger because this rerun acquired the toolchain and package cache in the new
+runtime; build timing text also varies.  The Colab-generated `manifest.json`,
+`transcript.txt`, `setup-transcript.txt`, and `SHA256SUMS` freeze the commands,
+runtime, checkout, exits, bytes, line endings, and hashes.  The downloaded ZIP
+was 44,156 bytes with SHA-256
+`e11022dcee1a77637f6ab41aa03877c6905f6cc8158b47e33b4969bc1d0f6593`;
+Windows verified that digest before extraction and then matched every entry in
+`SHA256SUMS`.  Windows did not execute Lean, Lake, or the oracle.
 
 ## Focused oracle output
 
