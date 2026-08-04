@@ -1,0 +1,146 @@
+% DRAFT SKELETON -- OS-R paper (campaign: docs/OS-RECONSTRUCTION-CHARTER.md,
+% licence Add. 613).  HOUSE RULES IN FORCE: no theorem stated here is final
+% until its module is green on the plane AND fresh-clone verified; every
+% [SLOT] must be replaced by a number READ FROM A COMMITTED ARTEFACT before
+% the word "final" is pronounced; DO NOT SUBMIT while any [SLOT] lives.
+% The abstract's priority sentence is the COLLATED one (Add. 611,
+% docs/OS-R-PRIORITY-COLLATION.md): the naked "first machine-checked OS
+% reconstruction" is FALSE and must never reappear here.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\SLOT}[1]{\textbf{[SLOT: #1]}}
+\newcommand{\lean}[1]{\texttt{#1}}
+
+\title{The Reconstructed Theory Has One Mass:\\
+a Machine-Checked Volume-Uniform Spectral Gap\\
+for a Concrete Transfer Operator}
+\author{Llu\'is Eriksson\thanks{With machine-checked artefacts produced on
+the programme's Colab plane; toolchain \lean{leanprover/lean4:v4.29.0-rc6},
+Mathlib pinned to \lean{0764272048\ldots}.  Repository:
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}{THE-ERIKSSON-PROGRAMME},
+branch \lean{d3-closure}, anchor \SLOT{anchor SHA of the green module}.}}
+\date{DRAFT --- not for distribution; live slots present}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the spatial $\mathbb{Z}_2$ (Ising-slice) system in the Dobrushin
+window $2\tanh|\beta| + 2\tanh|\gamma| \le \alpha < 1$, we machine-check
+in Lean~4 that the Osterwalder--Schrader (site-form) reconstruction of
+the transfer operator carries \emph{one} mass: there is a single $m>0$
+such that for \emph{every} spatial extent $L$ the reconstructed
+(site-form) transfer operator is unitarily conjugate --- by the explicit
+$\sqrt{w}$ boundary dressing --- to the symmetrised kernel whose
+projected norm the Dobrushin corollary bounds by $e^{-m}$, and the
+reconstructed two-point functions are identified $n$-step against the
+Gibbs measure with the volume-uniform rate \SLOT{B3 clause shape as
+proved}.  All quantifiers live in the Lean statements; the prose here
+copies the kernel's cut.  To situate the claim in the 2026 landscape of
+machine-checked constructive field theory: the abstract construction
+(reflection-positive data $\to$ physical Hilbert space $\to$
+self-adjoint contractive transfer operator) has been machine-checked,
+sorry-free, in the Harvard formalization programme, \emph{with the
+spectral gap carried as an undischarged hypothesis}
+(\lean{GappedTransfer}); the Osterwalder--Schrader axioms have been
+machine-checked for the free field; and measure-side Dobrushin
+clustering has been machine-checked for lattice Yang--Mills.  What we
+add, and what to our knowledge no machine-checked artefact yet
+contains, is the combination \{concrete interacting model, gap
+\emph{proved} rather than hypothesised, uniform in the spatial
+volume\} on the reconstructed operator --- i.e.\ a concrete discharge
+of exactly the hypothesis shape the abstract frameworks carry.  We do
+not claim Wightman reconstruction, a continuum limit, $SU(N)$, or any
+progress on the Clay problem.
+\end{abstract}
+
+\section{Introduction and landscape}\label{sec:intro}
+
+\SLOT{2--3 paragraphs: the reconstruction idea; why volume-uniformity is
+the content (a gap at every fixed extent is classical and already in the
+programme's paper 8; ONE $m$ for all extents is what a thermodynamic
+limit can consume); the D-6 input.}
+
+\subsection{Machine-checked prior work, cited before a referee does}
+\label{sec:prior}
+The following table is load-bearing and its rows were collected by a
+four-modality search on 2026-08-04 (evidence:
+\lean{docs/OS-R-PRIORITY-COLLATION.md} in the repository).
+
+\begin{center}
+\begin{tabular}{p{4.1cm}p{5.2cm}p{4.6cm}}
+\textbf{Artefact} & \textbf{What is machine-checked} & \textbf{What is
+not} \\ \hline
+\lean{mrdouglasny/reflection-positivity} (sorry-free $\sim$2026-06) &
+RP data $\to$ Hilbert space (completion/quotient) $\to$ self-adjoint
+contraction $T$; trace formulas; susceptibility bounds from a gap &
+the gap itself: carried as the \lean{GappedTransfer} \emph{hypothesis};
+no spatial-volume-uniform statement; concrete instance is finite-lattice
+RP only \\
+\lean{OSforGFF} (arXiv:2603.15770) & all five GJ/OS axioms for the
+$d{=}4$ Gaussian free field, 0 sorries & reconstruction (listed as next
+milestone); any interacting model \\
+\lean{xiyin137/OSreconstruction} & Wightman-side GNS lane of the full
+OS$\leftrightarrow$Wightman theorem & the theorem: 53 sorries + 12
+axioms at last README snapshot \\
+\lean{mrdouglasny/lgt} (complete 2026-05-04) & Chatterjee-style
+Dobrushin uniqueness for lattice YM, $U(n)$, with exponential
+clustering whose constants depend only on $(n,d,\beta)$ & an operator
+gap; any reconstruction; the statement is per-volume on the measure
+side \\
+\lean{pphi2} & transfer-matrix spectral machinery for $\varphi^4_2$ &
+rests on 27--29 project axioms \\
+This paper & \SLOT{one-line summary of the green endpoints} &
+Wightman axioms; continuum limit; $SU(N)$; Clay \\
+\end{tabular}
+\end{center}
+
+\section{The two geometries and the forced operator}\label{sec:forced}
+\SLOT{Cite the programme modules: SpatialReflection (paper 12),
+SpatialOS (paper 13), SpatialReconstruction (paper 14) --- the site form
+weighs by $1/w$, the forced operator $T = D_w K$, self-adjoint at every
+$\beta$, PSD for $\beta \ge 0$.  State the defining equation as the
+Lean theorem names.  NO new mathematics in this section.}
+
+\section{The dressing unitary}\label{sec:unitary}
+\SLOT{A1 \lean{siteForm\_qEmbed}, A2 \lean{transferOp\_qEmbed},
+A3 \lean{transferOp\_iterate\_qEmbed} --- statements verbatim from the
+green module; the per-site cancellation $\sqrt{w}u\cdot\sqrt{w}v\cdot
+(1/w) = uv$ written once in prose.}
+
+\section{The transported volume-uniform gap}\label{sec:gap}
+\SLOT{The endpoint \lean{os\_reconstruction\_uniform\_gap}: statement
+verbatim; proof narrative = obtain the D-6 family, append the A2
+identity; emphasise SAME witnesses, no new analytic content --- the
+honesty point that makes the theorem cheap and the uniformity real.}
+
+\section{Identification against the measure}\label{sec:measure}
+\SLOT{Part B (second module pass): B0a act/opOf bridge, B0b tilt
+scaling, B0c VacuumTransfer packaging, B1/B2 citations
+(\lean{gibbsPathSum\_eq\_iterate}, \lean{gibbsPartition\_eq\_iterate}),
+B3 the division-safe six-term bound with per-observable constants and
+the uniform rate.  Until this module is green this section is a
+skeleton and the paper DOES NOT SHIP.}
+
+\section{Reproduction}\label{sec:repro}
+\SLOT{jobs count with predicted-vs-measured table (baseline discrepancy
+8366-vs-8480 must be RESOLVED from logs before this row is written);
+oracle report count; axiom triple; sha256 of every travelling file;
+fresh-clone protocol (runner LANE\_MODULES extension).}
+
+\section{What is not claimed}\label{sec:honesty}
+No Wightman axioms, no OS$\to$Wightman analytic continuation, no
+continuum limit, no $SU(N)$, no statement about the Clay problem.  The
+window is the Dobrushin window; outside it the programme's own
+kill-test (repository, Addendum 610) shows the standard-cone Birkhoff
+route is projectively blind to the site weight, which is why no claim
+beyond the window appears here.
+
+\end{document}
