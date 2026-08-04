@@ -531,6 +531,11 @@ import YangMills.RG.AppendixFHsharpLeafSource
 -- Source-fed residual H# bound: Dimock-II rate extraction feeds the all-tail
 -- certified residual theorem without exposing intermediate tree bookkeeping.
 import YangMills.RG.AppendixFHsharpSourceResidual
+-- Proposal bridge: discharge the `hactivityKsharp` source obligation of the
+-- all-tail residual H# theorem from the banked rooted K# estimate, exposing
+-- the remaining `hsmall`/`hbudget` as explicit scalar conditions on the
+-- prefactor eps_val = 2*H0*K0.  (Not a Clay/M3 discharge; see module header.)
+import YangMills.RG.AppendixFKsharpToHsharpBridge
 -- Canonical-root source-fed residual H# bound: raw metric decay plus the
 -- canonical-root half-budget/profile conditions feed the residual theorem
 -- without exposing the intermediate K# activity hypothesis.
@@ -932,7 +937,122 @@ import YangMills.OS.SpatialSpectral
 import YangMills.OS.SpatialUniform
 import YangMills.OS.SpatialReflection
 import YangMills.OS.SpatialOS
+-- The operator the two reflected geometries FORCE.  Site form on the left of
+-- <u, T v>_site = <u, v>_bond, bond form on the right, because T advances the
+-- half-chain by one slice and so changes the parity of the separation.  It is
+-- self-adjoint at every beta and positive for beta >= 0, and it is SIMILAR to
+-- the symmetrised kernel, so their eigenvalue SETS coincide.  It is NOT proved
+-- here to transport the Perron labelling, multiplicity or ratio, nor the
+-- spectral-gap statement, and there is no Hamiltonian.
+import YangMills.OS.SpatialReconstruction
 import YangMills.OS.SpatialRing
+
+-- D-1 of the Dobrushin lane (docs/DOBRUSHIN-CHARTER.md, judges at 118e32e9).
+-- PURE LINEAR ALGEBRA: a nonnegative matrix supported at distance <= 1 with row
+-- sums BOUNDED (never constant) by alpha < 1 has its resolvent series bounded
+-- entrywise by alpha^dist/(1-alpha) -- with no reference to the size of the
+-- index type.  That volume-freeness is the whole point; the row sums of the
+-- coupled spatial kernel are provably NOT constant, which is what closed the
+-- Schur route.  No probability, no Gibbs measure and no physics claim here.
+import YangMills.OS.DobrushinMatrix
+
+-- D-2a of the Dobrushin lane (docs/DOBRUSHIN-CHARTER.md).  The single-site
+-- coefficient of ONE bond: flipping a neighbour across a bond of strength
+-- J >= 0 moves a two-state site's conditional by at most tanh J, and by exactly
+-- tanh J at h = J, so tanh J is the LEAST upper bound.  That is the number which,
+-- summed over the neighbours of a site, is the Dobrushin coefficient.  Still no
+-- measure theory, no Gibbs measure and no decay statement: composing it over a
+-- site and feeding D-1 is D-2b (below) and D-3 (the comparison chain, below).
+import YangMills.OS.DobrushinCoefficient
+
+-- D-2b of the Dobrushin lane: the bond coefficients of D-2a assembled into a
+-- matrix, discharging all three structural hypotheses of D-1, leaving only the
+-- row-sum bound -- which IS the coupling window.  starDist_rowSum computes that
+-- window for a site with two bonds of strength beta and two of strength gamma
+-- and gets 2 tanh|beta| + 2 tanh|gamma|, so the window is a hypothesis of a
+-- theorem rather than a sentence.
+import YangMills.OS.DobrushinRowSum
+
+-- D-3a of the Dobrushin lane (docs/DOBRUSHIN-D3-CHARTER.md): the analytic
+-- ingredient of the comparison chain.  A zero-sum signed mass tested against g
+-- is controlled by half its total variation times osc(g), with the attainment
+-- witness that makes the constant the constant.
+import YangMills.OS.DobrushinOscillation
+
+-- The quarter constant: Popoviciu's variance bound, the mean-absolute-deviation
+-- bound, and the Gruss covariance bound |Cov| <= (M1-m1)(M2-m2)/4 with its own
+-- attainment.  Deliberately NOT a dependency of the transport lemma.
+import YangMills.OS.DobrushinGruss
+
+-- D-3b/c: the single-site conditional operator and THE KEY LEMMA
+-- delta_k(E_i f) <= delta_k f + C i k * delta_i f, in the three declared
+-- pieces of charter Amendment 1 (semantic vanishing; transport with C a
+-- MAJORANT; the matrix form as the only consumer of C i i = 0).
+import YangMills.OS.DobrushinConditional
+
+-- D-3d/e: Dobrushin's comparison estimate.  Random-scan telescoping, one-step
+-- conditional Gruss, a finite vector induction against the partial resolvent,
+-- and the endpoints |Cov| <= (1/4) delta_f (sum C^n) delta_g, the
+-- alpha^dist/(1-alpha) composition with D-1, and the two-point corollary, with
+-- the Bernoulli witness where the bound is an EQUALITY.
+import YangMills.OS.DobrushinComparison
+
+-- D-4a: the Gibbs instantiation.  From a strictly positive weight alone:
+-- normalised measure, heat-bath kernel, invariance by the site involution, and
+-- the INTRINSIC Dobrushin matrix with zero diagonal proved and domination by
+-- construction.  The one surviving hypothesis is Dobrushin's condition.
+import YangMills.OS.DobrushinGibbs
+
+-- D-4b: the interaction, instantiated.  For the Ising weight of a symmetric
+-- zero-diagonal coupling: the heat-bath conditional is the sigmoid of the
+-- local field (G13 as a theorem), the intrinsic matrix is dominated by the
+-- tanh|J| envelope (G14 as a theorem, an EQUALITY on the one-bond witness),
+-- and the lane's window 2tanh|b|+2tanh|g| < 1 becomes the hypothesis of a
+-- decay theorem about the star-cell weight.
+import YangMills.OS.DobrushinIsing
+
+-- D-5: the volume family.  The anisotropic Ising rectangle L x T: envelope
+-- row sums respect the window at every site of every rectangle (two
+-- horizontal and two vertical bonds at most, counted by injection), so the
+-- D-4b endpoints hold with rate and prefactor fixed BEFORE the quantifier
+-- over volumes.  At zero coupling the bound forces exact independence.
+import YangMills.OS.DobrushinLattice
+
+-- D-6/B-1: the finite band identity, ABSTRACT (Amendment 2): for any
+-- symmetric kernel with a normalised eigenvector, the Perron-boundary band
+-- weight has n-independent mass and its covariance IS the matrix element of
+-- M^n at the centred dressed observables.  No spectral positivity, no
+-- Ising, no Dobrushin: the bridge's first plank, with the eigenvalue kept
+-- visible through normalise_eig.
+import YangMills.OS.DobrushinBridge
+
+-- D-6/B-2+B-3: the abstract transport theorem.  The exact identity
+-- connCorr = (sum Om^2) * bandCov(f_v) packages B-1's band weight into the
+-- consumer volumeUniform_gap: uniform MEASURE-level band decay (common rate,
+-- constants free per (i, v)) forces the uniform operator gap.  The
+-- anti-circularity clause is discharged by theorem, not assumption; the
+-- two-state witness has a nonzero fluctuation sector at every rate.
+import YangMills.OS.DobrushinTransport
+
+-- D-6 corollary, stage A: the tilt layer.  The band weight of the
+-- normalised coupled data is the free strip Gibbs weight tilted at the two
+-- ends by psi = Omega/sqrt(w) over lam^n; band covariances satisfy a
+-- division-free identity against free path sums; and free two-endpoint
+-- covariance decay transports to band-covariance decay at the same rate,
+-- the whole boundary cost absorbed per (L, f, g).  The geometry bridge to
+-- D-5's rectangle is stage B.
+import YangMills.OS.DobrushinTilt
+
+-- D-6 corollary, stage B: the currying discharge.  The free strip Gibbs
+-- weight IS the rectangle Ising weight under currying (the Ising weight's
+-- half compensates ordered double counting exactly); the tilt layer's free
+-- covariance IS the rectangle covariance of end-slice observables; the
+-- family theorem feeds it at rate alpha^n (every site pair at rectangle
+-- distance >= n); and the public Dobrushin-Ising corollary lands: inside
+-- the window, one m > 0 bounds the projected transfer operator of the
+-- coupled kernel's Perron data at EVERY extent, through the abstract
+-- transport theorem.
+import YangMills.OS.DobrushinCorollary
 
 -- Congruence lane (docs/CONGRUENCE-CHARTER.md, judges at 49311bad).
 -- What a positive-diagonal congruence K |-> D K D can and cannot change:

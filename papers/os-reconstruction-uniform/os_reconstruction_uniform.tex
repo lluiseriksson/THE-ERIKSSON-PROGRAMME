@@ -1,0 +1,311 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\SigmaL}{\Sigma_L}
+\newcommand{\OracleReports}{3,046 reports: 3,019 using only standard axioms and 27 axiom-free; zero nonstandard axioms and zero \texttt{sorry}}
+\newcommand{\ModuleHash}{\texttt{c474ba533c25c46f920ce70284980998bcdadeff8c246ec0e38a1240102b3e14}}
+\newcommand{\OleanHash}{\texttt{0751d3b593c3f845175cf05e1e863ced46343748796885a76705046d8c3cad0e}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{From Reflection Positivity to a Uniform Reconstructed Gap:\\
+A Machine-Checked Transfer Operator for Coupled $\mathbb Z_2$ Slices}
+\author{Llu\'is Eriksson}
+\date{4 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We close a compositional gap between two previously machine-checked finite-volume
+constructions.  The first reconstructs a transfer operator from the positive
+site form forced by reflection positivity.  The second proves a
+volume-uniform Dobrushin spectral gap for a concrete tilted kernel.  We define
+the square-root dressing of real boundary vectors, prove that it is an
+isometry for the reconstructed site form, identify the forced transfer
+operator with the symmetric weighted kernel, transport this identity through
+all finite iterates and Perron normalisation, and finally compose it with the
+existing Dobrushin theorem.  Under
+\[
+  2\tanh |\beta|+2\tanh |\gamma|\leq \alpha<1,
+\]
+one positive exponent works for every spatial extent.  The six interface
+theorems are checked by Lean~4 against Mathlib.  The contribution is the exact
+machine-checked composition and its binder order, not a new analytic estimate.
+\end{abstract}
+
+\section{Scope and claim discipline}
+
+Osterwalder--Schrader (OS) reflection positivity turns Euclidean data into a
+physical Hilbert-space structure and a time-translation operator
+\cite{OS1,OS2,OsterwalderSeiler}.  In finite volume the relevant algebra is
+elementary, but a formal development still has to identify which positive form
+is physical, prove that the operator is forced by that form, and connect its
+normalised spectrum to a mixing estimate whose constants do not deteriorate
+with the spatial size.
+
+This paper proves precisely that interface for the coupled $\mathbb Z_2$ slice
+model already developed in the repository.  It does \emph{not} claim a new
+Dobrushin estimate, a continuum limit, a Wightman reconstruction, or the first
+formal treatment of reflection positivity.  In particular, recent Lean work
+verifies Euclidean axioms for the free bosonic field
+\cite{DouglasFormalQFT}.  Our narrower contribution is a concrete reconstructed
+finite-volume transfer operator whose normalised fluctuation operator inherits
+a single, explicit, volume-uniform gap exponent.
+
+\section{Finite slice data}
+
+For $L\in\N$, let
+\[
+  \SigmaL=(\operatorname{Fin} L\to\operatorname{Fin}2)
+\]
+be the finite set of spin configurations on a spatial slice.  Fix a positive
+weight $w:\SigmaL\to\R_{>0}$ and the real symmetric spatial kernel
+$K_\beta(\sigma,\tau)$.  The reconstructed site form on complex boundary
+vectors is
+\begin{equation}\label{eq:site-form}
+  \langle u,v\rangle_{\mathrm{site},w}
+   =\sum_{\sigma\in\SigmaL}
+      \overline{u(\sigma)}v(\sigma)\,w(\sigma)^{-1}.
+\end{equation}
+The transfer operator forced by the site--bond identity is
+\begin{equation}\label{eq:transfer}
+  (T_{w,\beta}v)(\sigma)
+   =w(\sigma)\sum_{\tau\in\SigmaL}K_\beta(\sigma,\tau)v(\tau).
+\end{equation}
+The symmetric weighted kernel is
+\begin{equation}\label{eq:symmetric}
+  S_{w,\beta}(\sigma,\tau)
+  =\sqrt{w(\sigma)}K_\beta(\sigma,\tau)\sqrt{w(\tau)}.
+\end{equation}
+All three objects precede the present module.  The missing step was to state
+and verify the exact real-to-complex dressing through which the Dobrushin lane
+can be read on the reconstructed operator.
+
+Define
+\begin{equation}\label{eq:qembed}
+  (Q_w u)(\sigma)=\sqrt{w(\sigma)}\,u(\sigma),
+  \qquad u:\SigmaL\to\R,
+\end{equation}
+where the result is regarded as a complex boundary vector.  Since $w>0$, this
+is the real restriction of the already available complex linear equivalence
+given by multiplication by $\sqrt w$.
+
+\section{The six machine-checked interfaces}
+
+The new file \texttt{YangMills/OS/OSReconstructionUniform.lean} contains one
+definition and the following six theorem declarations.
+
+\begin{center}
+\small
+\begin{tabular}{@{}P{0.34\linewidth}P{0.58\linewidth}@{}}
+\toprule
+Lean declaration & Mathematical content \\
+\midrule
+\texttt{siteForm\_qEmbed} & $Q_w$ is an isometry from the real Euclidean pairing to \eqref{eq:site-form}. \\
+\texttt{transferOp\_qEmbed} & $T_{w,\beta}Q_w=Q_wS_{w,\beta}$ on real boundary vectors. \\
+\texttt{transferOp\_iterate\_qEmbed} & The same conjugation holds for every finite iterate. \\
+\texttt{transferOp\_qEmbed\_tilt} & Perron normalisation corresponds to the Dobrushin tilt in one step. \\
+\texttt{transferOp\_qEmbed\_tilt\_iterate} & The normalised conjugation holds for every finite iterate. \\
+\texttt{os\_reconstruction\_uniform\_gap} & One positive exponent and the full reconstructed identity hold for all $L$. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The first identity is exact:
+\begin{proposition}[Dressing isometry]
+For $w(\sigma)>0$ and real $u,v$,
+\[
+  \langle Q_wu,Q_wv\rangle_{\mathrm{site},w}
+   =\sum_{\sigma\in\SigmaL}u(\sigma)v(\sigma).
+\]
+\end{proposition}
+Indeed, each summand contains
+$\sqrt{w(\sigma)}^2/w(\sigma)=1$.  In Lean the positivity hypothesis supplies
+both the square-root identity and the nonzero denominator.
+
+The second identity is the actual bridge:
+\begin{proposition}[Forced-operator conjugation]
+For every real boundary vector $u$,
+\begin{equation}\label{eq:conjugation}
+  T_{w,\beta}(Q_wu)=Q_w(S_{w,\beta}u).
+\end{equation}
+Consequently, for every $n\in\N$,
+\[
+  T_{w,\beta}^{n}(Q_wu)=Q_w(S_{w,\beta}^{n}u).
+\]
+\end{proposition}
+The one-step proof reuses the previously checked complex conjugation theorem;
+the iterate theorem is induction on $n$.  Thus the new file introduces no
+parallel definition of the physical transfer operator.
+
+\section{Perron tilt and the uniform endpoint}
+
+Let $\lambda\in\R$ be the Perron eigenvalue and define the real tilt matrix
+\begin{equation}\label{eq:tilt}
+  P_{w,\beta,\lambda}(\sigma,\tau)
+   =\lambda^{-1}S_{w,\beta}(\sigma,\tau).
+\end{equation}
+Scalar multiplication on the complex function space and matrix action on the
+real function space then satisfy
+\begin{equation}\label{eq:tilt-conj}
+  \lambda^{-1}T_{w,\beta}(Q_wu)
+   =Q_w(P_{w,\beta,\lambda}u),
+\end{equation}
+and the same equation holds after every finite iterate.  Formally,
+\eqref{eq:tilt-conj} is division-free as a statement about the inverse scalar:
+the proof merely distributes the same inverse through a finite sum.  The final
+endpoint supplies $\lambda>0$.
+
+For the coupled-slice weight $w=\operatorname{sliceW}(\gamma,L)$, the existing
+Dobrushin endpoint produces $m>0$ independent of $L$, a positive Perron value
+$\lambda_L$, and a positive vector $\Omega_L$.  The new composition is the
+following statement.  The library parameter $L$ indexes the configuration
+space $\Sigma_{L+1}$ in this endpoint; we preserve that convention instead of
+silently rebasing the formal binder.
+
+\begin{theorem}[Volume-uniform reconstructed gap]
+Let $0<\alpha<1$ and suppose
+\[
+  2\tanh|\beta|+2\tanh|\gamma|\leq\alpha.
+\]
+Then there is $m>0$ such that for every $L\in\N$ there are
+$\lambda_L>0$ and $\Omega_L:\Sigma_{L+1}\to\R_{>0}$ with
+\begin{align*}
+  \sum_\tau P_L(\sigma,\tau)\Omega_L(\tau)&=\Omega_L(\sigma),\\
+  \bigl\|\operatorname{projectedTransfer}(\operatorname{opOf}P_L,
+       \operatorname{vacOf}\Omega_L)\bigr\|&\leq e^{-m},
+\end{align*}
+and, for every real boundary vector $u$,
+\[
+  \lambda_L^{-1}T_{\operatorname{sliceW}(\gamma,L),\beta}
+       (Q_{\operatorname{sliceW}(\gamma,L)}u)
+  =Q_{\operatorname{sliceW}(\gamma,L)}(P_Lu).
+\]
+Here $P_L=P_{\operatorname{sliceW}(\gamma,L),\beta,\lambda_L}$.
+\end{theorem}
+
+The quantifier order is essential: $m$ is chosen before $L$.  This is the
+precise sense in which the reconstructed gap is volume-uniform.
+
+\section{Relation to prior work}
+
+The classical reconstruction and reflection-positivity literature supplies
+the conceptual framework \cite{OS1,OS2,OsterwalderSeiler,FILS}.  Dobrushin's
+uniqueness theory supplies the high-temperature contraction mechanism
+\cite{Dobrushin1968}.  Neither fact is claimed as new here.
+
+\begin{center}
+\small
+\begin{tabular}{@{}P{0.25\linewidth}P{0.29\linewidth}P{0.36\linewidth}@{}}
+\toprule
+Work & Machine-checked content & Difference from the present endpoint \\
+\midrule
+Douglas et al.~\cite{DouglasFormalQFT} & Euclidean/Glimm--Jaffe axioms for a free bosonic field & Axiom verification, not a concrete reconstructed transfer operator with a measured uniform gap. \\
+Classical OS papers \cite{OS1,OS2} & Analytic reconstruction theorem & Not proof-assistant checked and not specialised to this finite coupled-slice kernel. \\
+Osterwalder--Seiler \cite{OsterwalderSeiler} & Lattice gauge reconstruction and positivity & Classical framework; no Lean object or repository-wide axiom report. \\
+This paper & Six Lean interfaces joining a forced reconstructed operator to an existing Dobrushin gap & Finite $\mathbb Z_2$ slices only; no continuum or Wightman limit. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A survey of public formal artifacts performed on 4 August 2026 found no prior
+artifact with this exact conjunction: a concrete OS-reconstructed transfer
+operator, an explicit Dobrushin window, and a gap exponent quantified before
+the spatial volume.  Because repository-level and unindexed work can be missed,
+we use this only as a qualified comparison, never as an unqualified ``first OS
+reconstruction'' claim.
+
+\section{Verification and reproducibility}
+
+The authoritative source is the Lean file, not this prose.  Verification used
+a Colab Pro+ CPU, high-RAM runtime with GPU disabled.  The clean target build
+completed 8191 jobs with exit code zero between 16:25:28Z and 16:25:39Z on
+4 August 2026.  The source contained exactly six theorem declarations.  Its
+SHA-256 digest was
+\[
+  \ModuleHash,
+\]
+and the materialised \texttt{.olean} digest was
+\[
+  \OleanHash.
+\]
+The repository-wide oracle count for the frozen object is
+\OracleReports.  A separate manifest records the branch SHA, byte counts,
+line-ending hashes, capture method, full command transcript, and the attacks
+attempted.  Successful compilation is evidence of elaboration, not a terminal
+audit verdict; the frozen object is intended for independent review.
+
+\section{Limitations}
+
+The result is finite-volume and model-specific.  It does not construct a
+continuum field theory, prove the full OS reconstruction theorem in generality,
+or establish a Yang--Mills mass gap.  The physical space used here is the
+finite reconstructed site space already identified by the reflection-positive
+slice construction.  The analytic small-coupling window and the operator-norm
+estimate are inherited without alteration from the Dobrushin lane.  Finally,
+the formalisation does not turn a bibliographic survey into a mathematical
+priority theorem; comparison language remains deliberately qualified.
+
+\section{Conclusion}
+
+The square-root dressing $Q_w$ is the missing typed interface between the
+reflection-positive reconstruction and the symmetric kernel used by the
+Dobrushin argument.  Once that interface is stated, the one-step equality,
+its iterates, the Perron tilt, and the volume-uniform endpoint form a short but
+fully checkable chain.  The resulting theorem says exactly what is uniform,
+exactly which reconstructed operator carries the gap, and exactly which parts
+are inherited.
+
+\begin{thebibliography}{9}
+
+\bibitem{OS1}
+K.~Osterwalder and R.~Schrader,
+\newblock Axioms for Euclidean Green's functions,
+\newblock \emph{Communications in Mathematical Physics} \textbf{31} (1973), 83--112.
+\newblock \href{https://doi.org/10.1007/BF01645738}{doi:10.1007/BF01645738}.
+
+\bibitem{OS2}
+K.~Osterwalder and R.~Schrader,
+\newblock Axioms for Euclidean Green's functions II,
+\newblock \emph{Communications in Mathematical Physics} \textbf{42} (1975), 281--305.
+\newblock \href{https://doi.org/10.1007/BF01608978}{doi:10.1007/BF01608978}.
+
+\bibitem{OsterwalderSeiler}
+K.~Osterwalder and E.~Seiler,
+\newblock Gauge field theories on a lattice,
+\newblock \emph{Annals of Physics} \textbf{110} (1978), 440--471.
+\newblock \href{https://doi.org/10.1016/0003-4916(78)90039-8}{doi:10.1016/0003-4916(78)90039-8}.
+
+\bibitem{FILS}
+J.~Fr\"ohlich, R.~Israel, E.~H.~Lieb, and B.~Simon,
+\newblock Phase transitions and reflection positivity. I. General theory and long range lattice models,
+\newblock \emph{Communications in Mathematical Physics} \textbf{62} (1978), 1--34.
+\newblock \href{https://doi.org/10.1007/BF01940327}{doi:10.1007/BF01940327}.
+
+\bibitem{Dobrushin1968}
+R.~L.~Dobrushin,
+\newblock The description of a random field by means of conditional probabilities and conditions of its regularity,
+\newblock \emph{Theory of Probability and its Applications} \textbf{13} (1968), 197--224.
+\newblock \href{https://doi.org/10.1137/1113026}{doi:10.1137/1113026}.
+
+\bibitem{DouglasFormalQFT}
+M.~R.~Douglas, S.~Hoback, A.~Mei, and R.~Nissim,
+\newblock Formalization of QFT,
+\newblock \href{https://arxiv.org/abs/2603.15770}{arXiv:2603.15770} (2026).
+
+\end{thebibliography}
+
+\end{document}

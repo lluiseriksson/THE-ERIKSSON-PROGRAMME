@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "audit": 52,
+  "revision": "os_reconstruction_uniform_v4",
+  "captured_at_utc": "2026-08-04T20:53:23.280Z",
+  "branch_at_capture": "codex/cleanup-spatial-toolchain-52",
+  "frozen_body_commit": "4474daac9ac6df317495bebef4e702024d101dc3",
+  "capture_method": "For each path, the blob id was resolved with git rev-parse <frozen_body_commit>:<path> and exact blob bytes were read through git cat-file blob into an in-memory byte stream. sha256_blob hashes those bytes. Text projections decode strict UTF-8, normalize CRLF and CR to LF, and derive a UTF-8/no-BOM CRLF projection. The binary PDF entry records exact blob bytes and SHA-256.",
+  "self_reference_policy": "This manifest is committed after the v4 body. The auditable body is frozen_body_commit; this later manifest cannot alter it.",
+  "audit_policy": "The object records reproducible evidence and attempted attacks for independent reassessment. It is not a terminal mathematical verdict or a numerical score.",
+  "execution": {
+    "local_lean_lake_oracle": "not_run",
+    "colab": "Lean 4.29.0-rc6, CPU/high-RAM, GPU disabled; account lluiseriksson@gmail.com was visibly verified; runtime was disconnected and deleted after validation",
+    "local_light": "TeX compilation, Poppler rendering, hashing, provenance guard, unit tests, and Git operations",
+    "claude_opus_fable": "not_invoked"
+  },
+  "oracle_capture": {
+    "exact_source_sha256_raw": "154c6794aa2dabe43a5fb8df0d3bb47c8384ee91609c1605511b2a36acaf71c4",
+    "chunk_source_sha256": [
+      "2eec4982ba5abc775b6f2ee4b69baa42a76cb19784a124ee36d042f807510440",
+      "5bb0ce5237c87fc3fc34637422a8b81086c59ccd54002b13d5ffd1259ce1ae10",
+      "23d53ee6433fb133445be8e03d5511beee46dd4afacf61a3dffba9109485b0e6",
+      "17b11cf926480897c72c9a3a1931e0d0effaa057ca5291a2f12931b5c9a78b31"
+    ],
+    "chunk_log_sha256": [
+      "9408b6fbc9f4fc3dfdfb65193a3403d8a26503004119120190f8874ff2e9778c",
+      "08bd58b9aed6ca6eb4c16dd3a4caff611e0ca76d200ebab58665084cc6420656",
+      "a732181f6174fb76b061de257f4b4eee14eda32c8bcd90cc5502c203a0cecb3b",
+      "a3ee9e21f80bda471b9a5e7ce832121077e43fe85c82ea5bfbab5ff9a788fa62"
+    ],
+    "combined_log_sha256": "800c33e27e6e59803433ce0ace2e18d4fea8022bd45a164696de511da7b1aeef",
+    "counters_json_sha256": "d7308245aba650ef89a0d5e4dc2bbc5021f39548c721e48fa8d5e5c867b2a83a"
+  },
+  "files": [
+    {
+      "path": "YangMills/OS/TransferGap.lean",
+      "git_blob": "ebe823b6d18e2098e08359c6115f7d98add65a05",
+      "blob_bytes": 36484,
+      "sha256_blob": "1dd660dceb92b133a5dd75e4e9a7bb3afad9d5d635010c61b8586c686227cbe9",
+      "lf_bytes": 36484,
+      "sha256_lf": "1dd660dceb92b133a5dd75e4e9a7bb3afad9d5d635010c61b8586c686227cbe9",
+      "crlf_bytes": 37220,
+      "sha256_crlf": "940ca6d7324e24f28508b270572c08ba663b6d807e9b48e7b35bb5a90ec3d06a"
+    },
+    {
+      "path": "YangMills/OS/OSReconstructionUniform.lean",
+      "git_blob": "adc0aaa24e8c1e4131bc547ab0a1924d16ac91d6",
+      "blob_bytes": 11621,
+      "sha256_blob": "a3089a961a3f7659c9a5317981168ffcccd980bffc10f894adab1788076ed43b",
+      "lf_bytes": 11621,
+      "sha256_lf": "a3089a961a3f7659c9a5317981168ffcccd980bffc10f894adab1788076ed43b",
+      "crlf_bytes": 11876,
+      "sha256_crlf": "7c7ab877aa77567ad522e02a15ce429b27c3969205f11d7ec3fe878c4e8dc094"
+    },
+    {
+      "path": "oracle_check.lean",
+      "git_blob": "5ce663720b88a9500b3e1e49eeb9cb985cd21b52",
+      "blob_bytes": 235907,
+      "sha256_blob": "47b88d5bd965092f3f260a42f365ffa69ee4d11fc174a47dce54e171924e6cb6",
+      "lf_bytes": 235907,
+      "sha256_lf": "47b88d5bd965092f3f260a42f365ffa69ee4d11fc174a47dce54e171924e6cb6",
+      "crlf_bytes": 239318,
+      "sha256_crlf": "3b9e1c92e456695ad0b9e159a36828c616ab270e6e75592db3414dbf1ebe4588"
+    },
+    {
+      "path": "papers/os-reconstruction-uniform/os_reconstruction_uniform_v4.tex",
+      "git_blob": "69c8a651fccea75b2d4a2ee994ddae7658fdadda",
+      "blob_bytes": 21132,
+      "sha256_blob": "6751357049adaca3a44667e72f23d48cfc93350d802554b5c417a0fb9fc765f8",
+      "lf_bytes": 21132,
+      "sha256_lf": "6751357049adaca3a44667e72f23d48cfc93350d802554b5c417a0fb9fc765f8",
+      "crlf_bytes": 21666,
+      "sha256_crlf": "d0970233a490ac9dca86da8ac3eca6686bbf37cfd80d0e65cea4e1526b724d8f"
+    },
+    {
+      "path": "output/pdf/os_reconstruction_uniform_v4.pdf",
+      "git_blob": "d7756b9be403ab4c0c5c7728c866654c5decc347",
+      "blob_bytes": 399126,
+      "sha256_blob": "152011c10f1da904e94ad31506dc2a8dd287b86bca0d17b6e70f0674be487bb6"
+    },
+    {
+      "path": "papers/os-reconstruction-uniform/README.md",
+      "git_blob": "4d29270c475db6d8082a4ff19d18af2ffb199175",
+      "blob_bytes": 2466,
+      "sha256_blob": "d8929e87ecfd1e874a09f88602f2c3685d4136b3cf02b2956d493003bae46d88",
+      "lf_bytes": 2466,
+      "sha256_lf": "d8929e87ecfd1e874a09f88602f2c3685d4136b3cf02b2956d493003bae46d88",
+      "crlf_bytes": 2528,
+      "sha256_crlf": "acc983cb097ec2d877ff9fc4925424beabd979ec85b5089350e35a005562a357"
+    },
+    {
+      "path": "docs/audit-artifacts/52-OS-RECONSTRUCTION-UNIFORM-V4-RESPONSE.md",
+      "git_blob": "71929ebde3ff082e22b02e2a686eecdb09520fca",
+      "blob_bytes": 2352,
+      "sha256_blob": "a296f6d6d1d4ef72a8edff7a688469face09ade1cee92851d4ead9b203c44d9b",
+      "lf_bytes": 2352,
+      "sha256_lf": "a296f6d6d1d4ef72a8edff7a688469face09ade1cee92851d4ead9b203c44d9b",
+      "crlf_bytes": 2385,
+      "sha256_crlf": "cc527d7c2704c34f35e09ac8383ee1e3b74220ff175270e1afba46c99daf0925"
+    },
+    {
+      "path": "docs/audit-artifacts/52-os-reconstruction-uniform-v4-verification.json",
+      "git_blob": "671d9a57223a0951a6eb98066c429541c057b2c3",
+      "blob_bytes": 6623,
+      "sha256_blob": "cc68bceb5fc2d06a28b5501e56c13927a16be1c6f9506c492ead425afc43a1f6",
+      "lf_bytes": 6623,
+      "sha256_lf": "cc68bceb5fc2d06a28b5501e56c13927a16be1c6f9506c492ead425afc43a1f6",
+      "crlf_bytes": 6759,
+      "sha256_crlf": "c7ab28506f1e8884a807bfcaaa93a4174ba39f882470c4b7342df55f05b7e1f2"
+    }
+  ],
+  "validation": [
+    {
+      "environment": "Colab Pro+ CPU/high RAM",
+      "command": "lake build YangMills.OS.OSReconstructionUniform",
+      "result": "PASS after the explicit n=0 proof repair; 8191 jobs; completed 2026-08-04T19:44:32Z"
+    },
+    {
+      "environment": "Colab Pro+ CPU/high RAM",
+      "command": "lake build YangMillsCore YangMills.RG.AppendixFKsharpToHsharpBridge",
+      "result": "PASS; 8482 jobs; completed 2026-08-04T20:03:29Z"
+    },
+    {
+      "environment": "Colab Pro+ CPU/high RAM",
+      "command": "exact oracle_check.lean in four exhaustive chunks",
+      "result": "3054 reports for 3051 unique declarations; 3027 with standard axioms; 27 axiom-free; zero nonstandard axioms, sorry markers, or core errors"
+    },
+    {
+      "environment": "Windows local-light",
+      "command": "pdflatex twice and bundled Poppler render at 130 dpi",
+      "result": "7-page PDF; zero reference, box, package, or LaTeX warnings; all pages visually inspected without layout defect"
+    },
+    {
+      "environment": "Windows local-light",
+      "command": "python scripts/check_publication_provenance.py",
+      "result": "PASS"
+    },
+    {
+      "environment": "Windows local-light",
+      "command": "python -m pytest -q tests/test_publication_provenance.py",
+      "result": "9 passed"
+    },
+    {
+      "environment": "Windows local-light",
+      "command": "git diff --cached --check",
+      "result": "PASS before frozen body commit"
+    }
+  ],
+  "attack_summary": [
+    "A public-clone validation attempt was rejected when it proved incomplete for unpublished local modules.",
+    "The first changed-target build exposed a real-product commutation goal in the n=0 branch; the corrected proof adds ring normalization and rebuilt successfully.",
+    "An oracle method that appended a duplicate theorem was rejected as a capture artifact; the accepted run used the exact local oracle source.",
+    "The n=0 statement is proved through the complementary vacuum projection rather than the false identity P^0-Pi=(P-Pi)^0.",
+    "The formal improvement introduces no sharper Dobrushin estimate and no thermodynamic, continuum, Wightman, or Yang-Mills mass-gap conclusion.",
+    "No numerical score is self-issued."
+  ]
+}

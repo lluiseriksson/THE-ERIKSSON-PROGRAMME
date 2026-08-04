@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "audit": 52,
+  "revision": "os_reconstruction_uniform_v3",
+  "captured_at_utc": "2026-08-04T19:01:29.900Z",
+  "branch_at_capture": "codex/cleanup-spatial-toolchain-52",
+  "frozen_body_commit": "4b874aa84cf5958055219d90baeee6a8f9573d86",
+  "formal_body_inherited_from": "3478813bf02427bc48fbbbdb46a64d809882838b",
+  "capture_method": "For each path, exact bytes were read with git show <frozen_body_commit>:<path>. sha256_blob hashes those bytes. Text projections decode UTF-8, normalize CRLF and CR to LF, and derive a UTF-8/no-BOM CRLF projection. The binary PDF entry records exact blob bytes and SHA-256.",
+  "self_reference_policy": "This manifest is committed after the v3 body. The auditable v3 body is 4b874aa84cf5958055219d90baeee6a8f9573d86. Formal evidence remains the independently frozen v2 body because v3 changes no Lean source or statement.",
+  "audit_policy": "The documentary revision is evidence for reassessment, not a terminal verdict or numerical score.",
+  "execution": {
+    "local_lean_lake_oracle": "not_run",
+    "colab": "not_opened; no formal source or statement changed",
+    "local_light": "TeX compilation, Poppler rendering, hashing, provenance guard, and unit tests",
+    "claude_opus_fable": "not_invoked"
+  },
+  "files": [
+    {"path":"papers/os-reconstruction-uniform/os_reconstruction_uniform_v3.tex","git_blob":"ba7a7a2cf81ccef0aff3f9cd347147620010ea85","blob_bytes":18585,"sha256_blob":"a93bae57c698ab47ae1d126ccf042c42381fa4769a5452fc9a8ce94055d0237f","lf_bytes":18585,"sha256_lf":"a93bae57c698ab47ae1d126ccf042c42381fa4769a5452fc9a8ce94055d0237f","crlf_bytes":19074,"sha256_crlf":"72f1343eb6adb0054c21f753957b6ff715709c130469adb5a731550aa6da7fa4"},
+    {"path":"output/pdf/os_reconstruction_uniform_v3.pdf","git_blob":"376559e6ad8342a6edebd9ef010a000563fb1e1e","blob_bytes":393799,"sha256_blob":"735170c934fafc579545de29d1ccb66fb363cc841525632e88b6166a61e8457d"},
+    {"path":"papers/os-reconstruction-uniform/README.md","git_blob":"8ce4e5792feaff732ed6cda221c672f94c43a105","blob_bytes":1805,"sha256_blob":"61b7aa71e783373762413c90fec56407a1c5c22d706a3bacc1c9f20fd57eb757","lf_bytes":1805,"sha256_lf":"61b7aa71e783373762413c90fec56407a1c5c22d706a3bacc1c9f20fd57eb757","crlf_bytes":1850,"sha256_crlf":"ffea10cc3ab036840e085b47ca747159778459e568fdb4c2f0225704ed10b49c"},
+    {"path":"docs/audit-artifacts/52-OS-RECONSTRUCTION-UNIFORM-V3-RESPONSE.md","git_blob":"5ce99d66a8d9fc628076266ce569d8aefaf8118a","blob_bytes":2236,"sha256_blob":"9e1ad0132d4eb3de9d6f0cc87fa2981811c62ee20c814c9c09da21d6fd3a8362","lf_bytes":2236,"sha256_lf":"9e1ad0132d4eb3de9d6f0cc87fa2981811c62ee20c814c9c09da21d6fd3a8362","crlf_bytes":2267,"sha256_crlf":"5e233690fffb81df9349a3385a1d5f6c2982deb2d5033c257030e680ccc1ee4d"},
+    {"path":"docs/audit-artifacts/52-os-reconstruction-uniform-v3-verification.json","git_blob":"7c0fdf6a30fbf910a260a8460cff1256057b1be0","blob_bytes":3758,"sha256_blob":"40b9ccd9ead457776b4bf2d8fe3c6ce985af9bbbe3a8b586977912e2116c938c","lf_bytes":3758,"sha256_lf":"40b9ccd9ead457776b4bf2d8fe3c6ce985af9bbbe3a8b586977912e2116c938c","crlf_bytes":3831,"sha256_crlf":"02b22f4de025f11d51ea402646c0549385efdcb11d1cef1a7a39c0445f16baa9"},
+    {"path":"docs/audit-artifacts/52-OS-RECONSTRUCTION-UNIFORM-V2-FROZEN-OBJECT.json","git_blob":"36f2fe32d53e0ee0cc57d61b64b55b4e188447e7","blob_bytes":9331,"sha256_blob":"75c949dd593706ac8e086966468fce44f7069b7b58d3be720c702c26db3c56ea","lf_bytes":9331,"sha256_lf":"75c949dd593706ac8e086966468fce44f7069b7b58d3be720c702c26db3c56ea","crlf_bytes":9388,"sha256_crlf":"b6cb1e0425aef1409a7c565e3d6d929496c9f1a0a1a1188ff013792c96baa32a"},
+    {"path":"YangMills/OS/OSReconstructionUniform.lean","git_blob":"19519f8037e13f546ab0fc7165109855b1a266e7","blob_bytes":8682,"sha256_blob":"199229725d2d359e19a08792317d7f7e552cf027990505a4a4ffb2542295437a","lf_bytes":8682,"sha256_lf":"199229725d2d359e19a08792317d7f7e552cf027990505a4a4ffb2542295437a","crlf_bytes":8884,"sha256_crlf":"e279968714e703c46b16d2c2f4ada40a562fd8c1c065c931e9ef8edf1809fdf2"}
+  ],
+  "validation": [
+    {"environment":"Windows local-light","command":"pdflatex twice","result":"6-page PDF; zero undefined references, overfull boxes, underfull boxes, or package warnings"},
+    {"environment":"Windows local-light","command":"bundled Poppler render at 130 dpi","result":"all six pages visually inspected; no layout defect"},
+    {"environment":"Windows local-light","command":"python scripts/check_publication_provenance.py","result":"PASS"},
+    {"environment":"Windows local-light","command":"python -m pytest -q tests/test_publication_provenance.py","result":"9 passed"},
+    {"environment":"Windows local-light","command":"git diff --cached --check","result":"PASS before frozen body commit"}
+  ],
+  "attack_summary": [
+    "The first layout pass exposed unbreakable theorem names and hashes; the accepted PDF uses URL-aware breaking and has zero box warnings.",
+    "A proof read caught and repaired the n = 0 power identity before freezing: P^0 - Pi is handled as I - Pi, separately from n >= 1.",
+    "The paper-level mixed-correlator corollary is distinguished from frozen Lean declarations.",
+    "The integrated analytic proof is inherited mathematics and is not advertised as a sharper Dobrushin estimate.",
+    "No numerical rescore is self-issued."
+  ]
+}

@@ -1,0 +1,393 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\SigmaL}{\Sigma_L}
+\newcommand{\ModuleHash}{\texttt{199229725d2d359e19a08792317d7f7e552cf027990505a4a4ffb2542295437a}}
+\newcommand{\OleanHash}{\texttt{2741f4c24178f2ea632d914f309acc71c714b831a5c5b282b9e8bd8a94a34478}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{Exact Intertwining and Uniform Clustering in the\\
+Reconstructed Site Form for Coupled $\mathbb Z_2$ Slices}
+\author{Llu\'is Eriksson}
+\date{4 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a finite reflection-positive coupled $\mathbb Z_2$ slice, we identify the
+connected two-point function written directly with the reconstructed site form
+and the forced transfer operator with the standard connected correlator of a
+symmetric Euclidean matrix operator.  The identification is exact at every
+time separation.  It follows that the already established Dobrushin
+fluctuation bound gives
+\[
+  |C^{\mathrm{rec}}_L(u;n)|\leq \|u\|_2^2 e^{-mn}
+\]
+with one $m>0$ chosen before the spatial extent $L$.  The proof preserves both
+the exponent and the prefactor.  Nine interface theorems are elaborated by
+Lean~4 against Mathlib, including the finite-iterate intertwining, the exact
+correlator identity, and the reconstructed-site clustering endpoint.  The new
+contribution is this operator/correlator composition.  The small-coupling
+Dobrushin estimate is inherited unchanged; no new analytic estimate or
+continuum reconstruction is claimed.
+\end{abstract}
+
+\section{Result and claim boundary}
+
+Reflection positivity supplies a positive form on boundary data and makes a
+time-translation operator meaningful in the reconstructed space
+\cite{OS1,OS2,OsterwalderSeiler}.  A spectral estimate written for an auxiliary
+Euclidean matrix, however, is not yet a bound on the correlator expressed in
+that physical form.  One must identify the two coordinate descriptions,
+transport all finite powers, and check that the vacuum subtraction agrees.
+This paper carries out exactly those steps for the coupled $\mathbb Z_2$ slice.
+
+The endpoint is stronger than an operator-only interface: the reconstructed
+connected correlator itself obeys a volume-uniform exponential estimate.  It
+is also deliberately narrower than a general Osterwalder--Schrader (OS)
+reconstruction theorem.  We do not prove a new contraction estimate, a
+thermodynamic or continuum limit, or a Wightman reconstruction.  The analytic
+input is a previously checked finite-state Dobrushin theorem.  The present
+work proves that its gap controls the correlator defined by the previously
+checked reflection-positive site form, without a change of constants.
+
+\section{Three descriptions of the same finite slice}
+
+For $L\in\N$, let
+\[
+  \SigmaL=(\operatorname{Fin} L\to\operatorname{Fin}2)
+\]
+be the finite set of spin configurations.  Fix a strictly positive weight
+$w:\SigmaL\to\R_{>0}$ and the real symmetric spatial kernel
+$K_\beta(\sigma,\tau)$.  The reconstructed site form on complex boundary
+vectors is
+\begin{equation}\label{eq:site-form-v2}
+  \langle f,g\rangle_{\mathrm{site},w}
+  =\sum_{\sigma\in\SigmaL}
+    \overline{f(\sigma)}g(\sigma)w(\sigma)^{-1}.
+\end{equation}
+The transfer operator forced by the site--bond identity is
+\begin{equation}\label{eq:forced-v2}
+  (T_{w,\beta}g)(\sigma)
+  =w(\sigma)\sum_{\tau\in\SigmaL}K_\beta(\sigma,\tau)g(\tau).
+\end{equation}
+The symmetric weighted matrix used in the spectral lane is
+\begin{equation}\label{eq:sym-v2}
+  S_{w,\beta}(\sigma,\tau)
+  =\sqrt{w(\sigma)}K_\beta(\sigma,\tau)\sqrt{w(\tau)}.
+\end{equation}
+These objects were already present in the formal development.  The bridge is
+the square-root dressing
+\begin{equation}\label{eq:q-v2}
+  (Q_wu)(\sigma)=\sqrt{w(\sigma)}u(\sigma),
+  \qquad u:\SigmaL\to\R,
+\end{equation}
+with the result regarded as a complex boundary vector.
+
+\begin{proposition}[Isometry and one-step intertwining]\label{prop:intertwine}
+If $w(\sigma)>0$ for every $\sigma$, then for real $u,v$,
+\begin{align}
+ \langle Q_wu,Q_wv\rangle_{\mathrm{site},w}
+   &=\sum_\sigma u(\sigma)v(\sigma),\label{eq:isom-v2}\\
+ T_{w,\beta}(Q_wu)&=Q_w(S_{w,\beta}u).\label{eq:one-step-v2}
+\end{align}
+Consequently, for every $n\in\N$,
+\begin{equation}\label{eq:iterate-v2}
+  T_{w,\beta}^{,n}(Q_wu)=Q_w(S_{w,\beta}^{,n}u).
+\end{equation}
+\end{proposition}
+
+The equality \eqref{eq:isom-v2} cancels
+$\sqrt{w(\sigma)}^2/w(\sigma)$ pointwise.  Equation
+\eqref{eq:one-step-v2} is the exact conjugation of the forced transfer
+operator, not a comparison in norm.  Equation \eqref{eq:iterate-v2} follows by
+induction, so no diagonalisation or unrecorded spectral assumption enters.
+
+Let $\lambda\in\R$ and set
+\begin{equation}\label{eq:tilt-v2}
+ P_{w,\beta,\lambda}(\sigma,\tau)
+ =\lambda^{-1}S_{w,\beta}(\sigma,\tau).
+\end{equation}
+Scalar multiplication on the complex boundary space and matrix action on the
+real Euclidean space obey
+\begin{equation}\label{eq:tilt-iterate-v2}
+ \bigl(\lambda^{-1}T_{w,\beta}\bigr)^n(Q_wu)
+ =Q_w\bigl(P_{w,\beta,\lambda}^{,n}u\bigr)
+ \qquad(n\in\N).
+\end{equation}
+The formal statement uses function iteration for the bare matrix action; a
+separate lemma identifies it exactly with powers of the continuous linear
+operator $\operatorname{opOf}(P)$ on finite Euclidean space.
+
+\section{The reconstructed connected correlator}
+
+Let $\Omega:\SigmaL\to\R_{>0}$ be a Perron vector and write
+\begin{equation}\label{eq:vac-v2}
+ \widehat\Omega(\sigma)
+ =\frac{\Omega(\sigma)}
+ {\sqrt{\sum_\tau\Omega(\tau)^2}}.
+\end{equation}
+For a real boundary observable $u$ and a time separation $n$, define directly
+in the reconstructed site coordinates
+\begin{align}
+ C^{\mathrm{rec}}_{w,\beta,\lambda,\Omega}(u;n)
+  :={}&\operatorname{Re}\left\langle Q_wu,
+      (\lambda^{-1}T_{w,\beta})^n Q_wu
+       \right\rangle_{\mathrm{site},w}\notag\\
+ &-\operatorname{Re}\left\langle Q_w\widehat\Omega,
+       Q_wu\right\rangle_{\mathrm{site},w}^{,2}.
+ \label{eq:rec-corr}
+\end{align}
+This is the connected, or truncated, two-point function: the second term is
+the squared vacuum expectation.  Both terms use the same reconstructed form
+and the same dressing map.
+
+The spectral lane uses the real Euclidean correlator
+\begin{equation}\label{eq:conn-standard}
+ C_P(u;n)=\langle u,(\operatorname{opOf}P)^n u\rangle_2
+   -\langle\widehat\Omega,u\rangle_2^2.
+\end{equation}
+The central new identity closes the gap between \eqref{eq:rec-corr} and
+\eqref{eq:conn-standard}.
+
+\begin{theorem}[Exact correlator identification]\label{thm:corr-id}
+For every positive $w$, every real $\beta,\lambda$, every real $\Omega,u$, and
+every $n\in\N$,
+\begin{equation}\label{eq:corr-id}
+ C^{\mathrm{rec}}_{w,\beta,\lambda,\Omega}(u;n)
+ =C_{P_{w,\beta,\lambda}}(u;n).
+\end{equation}
+\end{theorem}
+
+The proof applies \eqref{eq:tilt-iterate-v2} to the time-dependent term,
+\eqref{eq:isom-v2} to both pairings, and the matrix-power lemma to change from
+iteration to $\operatorname{opOf}(P)^n$.  It is an equality for every finite
+$n$; there is no limiting argument and no loss of exponent or prefactor.
+
+\section{Gap implies reconstructed-site clustering}
+
+Let
+\[
+ \Pi_\Omega v=\langle\widehat\Omega,v\rangle_2\widehat\Omega,
+ \qquad P_\perp=\operatorname{opOf}(P)-\Pi_\Omega.
+\]
+If $P$ is symmetric, $P\Omega=\Omega$, and $\Omega$ is positive, the formal
+library packages $\operatorname{opOf}(P)$ and $\widehat\Omega$ as a vacuum
+transfer pair.  The existing gap-to-clustering theorem gives
+\begin{equation}\label{eq:gap-cluster}
+ |C_P(u;n)|\leq \|u\|_2^2 r^n
+ \quad\text{whenever}\quad \|P_\perp\|\leq r.
+\end{equation}
+Combining this with Theorem~\ref{thm:corr-id} yields the physical-form
+endpoint.
+
+\begin{corollary}[Reconstructed-site decay]\label{cor:rec-decay}
+Under the hypotheses above, if $\|P_\perp\|\leq r$, then
+\begin{equation}\label{eq:rec-decay}
+ |C^{\mathrm{rec}}_{w,\beta,\lambda,\Omega}(u;n)|
+ \leq \|u\|_2^2 r^n
+\end{equation}
+for every real boundary vector $u$ and every $n\in\N$.
+\end{corollary}
+
+The result preserves the exact constant in \eqref{eq:gap-cluster}.  In
+particular, it does not replace $r$ by a larger comparison rate or introduce a
+volume-dependent equivalence-of-norms factor.
+
+\section{The volume-uniform endpoint}
+
+For the coupled-slice weight $w=\operatorname{sliceW}(\gamma,L)$, the inherited
+Dobrushin theorem supplies a positive exponent before the spatial size is
+chosen.  The formal convention uses configurations on $\Sigma_{L+1}$; we keep
+that binder rather than silently renumbering it.
+
+\begin{theorem}[Uniform reconstructed-site clustering]\label{thm:uniform-v2}
+Let $0<\alpha<1$ and suppose
+\begin{equation}\label{eq:window-v2}
+ 2\tanh|\beta|+2\tanh|\gamma|\leq\alpha.
+\end{equation}
+Then there exists $m>0$ such that, for every $L\in\N$, there are a positive
+Perron value $\lambda_L$ and a positive vector
+$\Omega_L:\Sigma_{L+1}\to\R_{>0}$ satisfying
+\begin{align}
+ P_L\Omega_L&=\Omega_L,\label{eq:fixed-v2}\\
+ \left\|\operatorname{opOf}(P_L)-\Pi_{\Omega_L}\right\|
+   &\leq e^{-m},\label{eq:gap-v2}
+\end{align}
+where
+$P_L=P_{\operatorname{sliceW}(\gamma,L),\beta,\lambda_L}$.  Moreover, for all
+real $u:\Sigma_{L+1}\to\R$ and all $n\in\N$,
+\begin{equation}\label{eq:uniform-corr-v2}
+ \left|C^{\mathrm{rec}}_{
+   \operatorname{sliceW}(\gamma,L),\beta,\lambda_L,\Omega_L}(u;n)\right|
+ \leq \|u\|_2^2 e^{-mn},
+\end{equation}
+and the exact intertwining \eqref{eq:tilt-iterate-v2} holds.
+\end{theorem}
+
+The quantifier order
+\[
+ \exists m>0\;\forall L\;\exists(\lambda_L,\Omega_L)
+\]
+is part of the theorem type.  This, rather than the mere existence of a
+finite-volume Perron gap for each $L$, is the asserted uniformity.  The new
+clause \eqref{eq:uniform-corr-v2} makes the endpoint a statement about the
+reconstructed connected correlator, not only an auxiliary operator norm.
+
+\section{Dependency ledger: inherited and proved here}
+
+The proof has a short exact layer on top of a longer analytic dependency.
+Keeping them separate prevents a compositional result from being advertised
+as a new estimate.
+
+\begin{center}
+\small
+\begin{tabular}{@{}P{0.27\linewidth}P{0.30\linewidth}P{0.34\linewidth}@{}}
+\toprule
+Layer & Status in this paper & Mathematical role \\
+\midrule
+Reflection-positive site form and forced $T_{w,\beta}$ & inherited & identifies the reconstructed finite boundary space and its time translation \\
+Symmetric weighted kernel and Perron tilt & inherited & supplies the real Euclidean operator used by the spectral lane \\
+Dobrushin window \eqref{eq:window-v2} and bound \eqref{eq:gap-v2} & inherited unchanged & chooses $m$ before $L$ \\
+Square-root isometry and all-iterate intertwining & proved in the interface module & identifies reconstructed and Euclidean coordinates exactly \\
+Matrix powers versus bare action iteration & proved in the interface module & aligns the two implementations of finite time evolution \\
+Identity \eqref{eq:corr-id} and decay \eqref{eq:rec-decay} & proved in the interface module & transports the gap to the reconstructed connected correlator without loss \\
+Uniform endpoint \eqref{eq:uniform-corr-v2} & proved by composition & exposes the physical-form conclusion with the correct binder order \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This ledger also describes the paper's autonomy.  The result depends on
+machine-checked repository modules, but its new claim is not merely that those
+files coexist: the exact correlator equality and its uniform corollary are
+new theorem declarations whose types mention both lanes.
+
+\section{Formal artifact and reproducibility}
+
+The authoritative file is
+\texttt{YangMills/OS/OSReconstructionUniform.lean}.  It contains two
+definitions and nine theorem declarations:
+
+\begin{center}
+\small
+\begin{tabular}{@{}P{0.40\linewidth}P{0.50\linewidth}@{}}
+\toprule
+Lean declaration & Role \\
+\midrule
+\texttt{siteForm\_qEmbed} & reconstructed-form isometry \\
+\texttt{transferOp\_qEmbed} & one-step forced-operator intertwining \\
+\texttt{transferOp\_iterate\_qEmbed} & unnormalised finite iterates \\
+\texttt{transferOp\_qEmbed\_tilt} & one-step Perron-normalised intertwining \\
+\texttt{transferOp\_qEmbed\_tilt\_iterate} & normalised finite iterates \\
+\texttt{opOf\_pow\_toLp\_act} & operator powers equal matrix-action iteration \\
+\texttt{reconstructedConnCorr\_eq\_connCorr} & exact identity \eqref{eq:corr-id} \\
+\texttt{reconstructedConnCorr\_decay} & reconstructed-site decay \eqref{eq:rec-decay} \\
+\texttt{os\_reconstruction\_uniform\_gap} & uniform theorem, including \eqref{eq:uniform-corr-v2} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Validation used a Colab Pro+ CPU/high-RAM runtime with the GPU disabled; no
+Lean or Lake command ran on the local Windows desktop.  The target build
+completed all 8191 jobs with exit code zero.  The exact LF source had 8682
+bytes and SHA-256
+\[
+ \ModuleHash,
+\]
+while the materialised \texttt{.olean} had SHA-256
+\[
+ \OleanHash.
+\]
+A separate verification manifest records timestamps, toolchain pins, oracle
+counters, byte counts, and attacks attempted.  Compilation and counters are
+evidence for an independent audit, not a self-issued terminal verdict.
+
+\section{Relation to primary literature}
+
+The OS papers formulate Euclidean reconstruction and reflection positivity
+\cite{OS1,OS2}; Osterwalder and Seiler develop the lattice-gauge setting
+\cite{OsterwalderSeiler}; and Fr\"ohlich, Israel, Lieb, and Simon use reflection
+positivity in lattice systems \cite{FILS}.  Dobrushin's conditional-probability
+criterion is the primary source for the high-temperature uniqueness mechanism
+\cite{Dobrushin1968}.  These are conceptual and analytic antecedents, not
+claims of novelty.
+
+The closest public papers in the author's own sequence separate the
+reflection-positive site form, the transfer bridge, the finite-volume Perron
+vacuum, and fluctuation-sector bounds.  The present paper's distinct endpoint
+is the exact equality \eqref{eq:corr-id} followed by the reconstructed-site
+bound \eqref{eq:uniform-corr-v2}.  We make no global priority claim: unindexed
+formal developments may exist, and bibliographic search is not a mathematical
+proof of precedence.
+
+\section{Limitations}
+
+The state space is finite and specific to coupled $\mathbb Z_2$ slices.  The
+paper does not prove a general OS theorem, a continuum field theory, or a
+Yang--Mills mass gap.  It does not improve the Dobrushin region
+\eqref{eq:window-v2} or compute a sharper $m$.  The observable is a real
+boundary vector; extensions to larger observable algebras are not addressed.
+Finally, \eqref{eq:uniform-corr-v2} is an exponential time-separation estimate
+inside the reconstructed finite-volume site space.  Calling it more than that
+would exceed the formal theorem.
+
+\section{Conclusion}
+
+The square-root dressing does more than match two transfer matrices: it
+matches their iterates, vacuum expectation, and connected correlator.  That
+identity turns the inherited uniform fluctuation bound into an explicit
+reconstructed-site clustering theorem with the same rate and prefactor.  The
+result is a compact but nontrivial endpoint whose dependency, quantifier order,
+and limitations are all visible in the machine-checked statement.
+
+\begin{thebibliography}{9}
+
+\bibitem{OS1}
+K.~Osterwalder and R.~Schrader,
+\newblock Axioms for Euclidean Green's functions,
+\newblock \emph{Communications in Mathematical Physics} \textbf{31} (1973), 83--112.
+\newblock \href{https://doi.org/10.1007/BF01645738}{doi:10.1007/BF01645738}.
+
+\bibitem{OS2}
+K.~Osterwalder and R.~Schrader,
+\newblock Axioms for Euclidean Green's functions II,
+\newblock \emph{Communications in Mathematical Physics} \textbf{42} (1975), 281--305.
+\newblock \href{https://doi.org/10.1007/BF01608978}{doi:10.1007/BF01608978}.
+
+\bibitem{OsterwalderSeiler}
+K.~Osterwalder and E.~Seiler,
+\newblock Gauge field theories on a lattice,
+\newblock \emph{Annals of Physics} \textbf{110} (1978), 440--471.
+\newblock \href{https://doi.org/10.1016/0003-4916(78)90039-8}{doi:10.1016/0003-4916(78)90039-8}.
+
+\bibitem{FILS}
+J.~Fr\"ohlich, R.~Israel, E.~H.~Lieb, and B.~Simon,
+\newblock Phase transitions and reflection positivity. I. General theory and long range lattice models,
+\newblock \emph{Communications in Mathematical Physics} \textbf{62} (1978), 1--34.
+\newblock \href{https://doi.org/10.1007/BF01940327}{doi:10.1007/BF01940327}.
+
+\bibitem{Dobrushin1968}
+R.~L.~Dobrushin,
+\newblock The description of a random field by means of conditional probabilities and conditions of its regularity,
+\newblock \emph{Theory of Probability and its Applications} \textbf{13} (1968), 197--224.
+\newblock \href{https://doi.org/10.1137/1113026}{doi:10.1137/1113026}.
+
+\end{thebibliography}
+
+\end{document}

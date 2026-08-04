@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "task": 52,
+  "captured_date": "2026-08-04",
+  "status": "draft_evidence_for_independent_audit",
+  "terminal_verdict": "not_self_certified",
+  "revision": "v2_response_to_5.03_review",
+  "execution_policy": {
+    "local_lean_or_lake": "not_run",
+    "local_oracle": "not_run",
+    "local_work": "editing, hashing, local-light Python tests and LaTeX/PDF rendering only",
+    "sustained_validation": "Colab Pro+ CPU/high-RAM",
+    "gpu": "disabled",
+    "claude_opus_fable": "not_invoked"
+  },
+  "colab_runtime": {
+    "account_observed_before_execution": "lluiseriksson@gmail.com",
+    "runtime_open_utc_derived_from_proc_uptime": "2026-08-04T17:15:51Z",
+    "runtime_measurement_utc": "2026-08-04T18:29:10Z",
+    "runtime_uptime_seconds_at_measurement": 4399.11,
+    "runtime_close_ui_confirmation_observed_by_utc": "2026-08-04T18:31:30Z",
+    "task_processes_at_close_measurement": 0,
+    "disconnect_and_delete_confirmed_in_ui": true,
+    "cpu_count": 8,
+    "memory_bytes": 54750404608,
+    "repository_base_commit": "174fd6dfd12f1fb0103622c6a08aec531c1321e6",
+    "lean_toolchain": "leanprover/lean4:v4.29.0-rc6",
+    "lean_toolchain_file_sha256_lf": "dc6d65016fad3123d44bf17b5bf0598286284ab16ba75d5c17eb22ed11f47361",
+    "lean_version_commit": "00659f8e6071d7e46131ed643bf8003b99b044e9",
+    "mathlib_commit": "07642720480157414db592fa85b626dafb71355b",
+    "lake_manifest_sha256_lf": "1c72b465ab37a0418de6f82573c18bb0e79f9e0165e901fd9da0ddabecdb2611"
+  },
+  "os_reconstruction_uniform_v2": {
+    "source_path": "YangMills/OS/OSReconstructionUniform.lean",
+    "source_bytes_lf": 8682,
+    "source_sha256_lf": "199229725d2d359e19a08792317d7f7e552cf027990505a4a4ffb2542295437a",
+    "definition_count": 2,
+    "theorem_count": 9,
+    "new_declarations": [
+      "opOf_pow_toLp_act",
+      "reconstructedConnCorr",
+      "reconstructedConnCorr_eq_connCorr",
+      "reconstructedConnCorr_decay"
+    ],
+    "strengthened_declaration": "os_reconstruction_uniform_gap",
+    "target_build": {
+      "command": "lake build YangMills.OS.OSReconstructionUniform",
+      "start_utc": "not_independently_captured",
+      "end_utc": "2026-08-04T17:51:39Z",
+      "jobs": 8191,
+      "exit_code": 0,
+      "log_bytes": 24817,
+      "log_lines": 409,
+      "log_sha256": "d3f978feb91c08d38f9d3e80643b6185b9ea5453bc91dde2926439e465f176a4",
+      "olean_bytes": 390488,
+      "olean_sha256": "2741f4c24178f2ea632d914f309acc71c714b831a5c5b282b9e8bd8a94a34478"
+    }
+  },
+  "dependency_materialization": {
+    "command": "lake build YangMillsCore YangMills.RG.AppendixFKsharpToHsharpBridge",
+    "start_utc": "2026-08-04T17:58:55Z",
+    "end_utc": "2026-08-04T18:14:10Z",
+    "jobs": 8481,
+    "exit_code": 0,
+    "log_bytes": 127992,
+    "log_lines": 1986,
+    "log_sha256": "92abdd25079569176d0dc3788cd8e492bc60a7dce43321c620726d20f5ec276e",
+    "bridge_source_bytes_lf": 9013,
+    "bridge_source_sha256_lf": "13922434578f0e8b21395e3a99a2b6b84bde11727f96eaf33e2e289c222cce79"
+  },
+  "repository_oracle": {
+    "command_model": "four exhaustive concurrent lake env lean chunks derived from the exact oracle_check.lean body, followed by ordered stable concatenation and scripts/oracle_counters.py",
+    "start_utc": "2026-08-04T18:15:15Z",
+    "end_utc": "2026-08-04T18:27:46Z",
+    "exit_codes": [0, 0, 0, 0],
+    "oracle_source_path": "oracle_check.lean",
+    "oracle_source_bytes_lf": 235606,
+    "oracle_source_sha256_lf": "3f4b2a744baa5cf7cef8493296da46d722c7c492abe89496fe0aa88af0657a72",
+    "imports": 46,
+    "source_print_commands": 3049,
+    "unique_print_commands": 3046,
+    "chunk_print_commands": [763, 762, 762, 762],
+    "reports": 3049,
+    "with_axioms": 3022,
+    "axiom_free": 27,
+    "distinct_axioms": ["Classical.choice", "Quot.sound", "propext"],
+    "nonstandard_axioms": 0,
+    "sorry_count": 0,
+    "core_errors": 0,
+    "stable_combined_log": {
+      "bytes": 357050,
+      "lines": 5294,
+      "sha256": "9c22b8445e5791961a14bcb856d70e8c342522704e39d45c9f7ab8366fa0cbd4",
+      "repeated_hash_agreement": true,
+      "open_writers": 0
+    },
+    "counters_json": {
+      "bytes": 294,
+      "lines": 15,
+      "sha256": "190af9e6ef5464bc0130542f0377de99edd5ee4fa4e95be54915ddf2c4efbb03"
+    },
+    "chunk_source_sha256": [
+      "fc7f257d1d183a666a8af58ca1caa53bb2b46ad9dc1d0786ff9fb1cddfde4ac9",
+      "bc72262fb1527085cc380902f869e25288d9ccc759e43052f6e463cbf3c48f23",
+      "3a6b0553c50870a562908ebab25923ef76e08e1ae8aae485c8c58647581ad0e4",
+      "d006608ee1c83a722caedd94e6e70750a425d0e5b7f9b8373f0c0a05e4f78bac"
+    ],
+    "chunk_log_sha256": [
+      "4726cde745cb7dc519dcd1d94260f19f400473bcf02867435454158fd8c24633",
+      "1912f670b2f446c3432249f01db56c43e46070125f6368d470e6ab26ce175896",
+      "470d5e2f4e05669c58dc32ef8857ad88fbcd56e979ce3d4ac368188c4308d15b",
+      "a9c43b76ef9a8ae04e3862bc7de3de29eb14466812149f15b671b140a294f0b6"
+    ],
+    "chunk_log_bytes": [92342, 105672, 87406, 71630],
+    "chunk_log_lines": [1399, 1850, 1257, 788]
+  },
+  "parity_barriers": {
+    "source_changed_in_v2": false,
+    "toolchain_changed_in_v2": false,
+    "inherited_frozen_evidence": "docs/audit-artifacts/52-os-reconstruction-uniform-verification.json",
+    "inherited_result": "main-tree reproduction exited 0 without statement or source change; migration compatible without statement change"
+  },
+  "paper": {
+    "source_path": "papers/os-reconstruction-uniform/os_reconstruction_uniform_v2.tex",
+    "source_bytes_lf": 17137,
+    "source_sha256_lf": "a03991f93d390d4b01e2c8aa21b7870da0c7ac14ce3bee5f90396f18aedb6f5f",
+    "output_path": "output/pdf/os_reconstruction_uniform_v2.pdf",
+    "latex_engine": "pdfTeX 3.141592653-2.6-1.40.28 (MiKTeX 25.12)",
+    "passes": 2,
+    "exit_codes": [0, 0],
+    "pages": 6,
+    "pdf_bytes": 339311,
+    "pdf_sha256": "6819ea2a8880faa0b29e771d2037ef543e02eaa11feabd055a802c17a1495351",
+    "log_findings": {
+      "undefined_references": 0,
+      "overfull_boxes": 0,
+      "underfull_boxes": 0,
+      "latex_or_package_warnings": 0
+    },
+    "visual_qa": "All six pages rendered with bundled Poppler at 130 dpi and inspected; no clipping, overlap, truncated table, or missing glyph was observed."
+  },
+  "local_light_validation": [
+    {"command": "python scripts/check_publication_provenance.py", "result": "PASS"},
+    {"command": "python -m pytest -q tests/test_publication_provenance.py", "result": "9 passed"},
+    {"command": "git diff --check", "result": "PASS"}
+  ],
+  "attacks_and_failed_assumptions": [
+    "The first target-build attempt was rejected because a trailing rfl followed a rw that had already closed the goal; the redundant line was removed and the corrected exact source was rebuilt.",
+    "Source presence was not treated as .olean materialization; the target and its dependency targets were built explicitly in Colab.",
+    "The exhaustive oracle retained three historical duplicate print commands: 3049 reports correspond to 3046 unique declarations.",
+    "No reconstructed decay rate or prefactor was invented: the new theorem transfers the already measured and checked gap bound exactly.",
+    "The prior parity-barriers reproduction and toolchain record were reused only because neither source nor toolchain changed in v2.",
+    "No Claude Code, Opus 5, or Fable 5 invocation occurred."
+  ]
+}

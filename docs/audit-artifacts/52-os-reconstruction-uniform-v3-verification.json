@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "task": 52,
+  "captured_date": "2026-08-04",
+  "status": "documentary_revision_for_independent_reassessment",
+  "terminal_verdict": "not_self_certified",
+  "revision": "v3_response_to_5.14_review",
+  "scope": {
+    "lean_source_changed_from_v2": false,
+    "theorem_statement_changed_from_v2": false,
+    "new_analytic_estimate_claimed": false,
+    "new_paper_level_corollary": "mixed connected correlator bound derived from the frozen operator-norm theorem by Cauchy-Schwarz",
+    "local_lean_lake_oracle": "not_run",
+    "colab": "not_opened because no formal source or statement changed",
+    "claude_opus_fable": "not_invoked"
+  },
+  "inherited_formal_evidence": {
+    "frozen_v2_body_commit": "3478813bf02427bc48fbbbdb46a64d809882838b",
+    "v2_frozen_object": "docs/audit-artifacts/52-OS-RECONSTRUCTION-UNIFORM-V2-FROZEN-OBJECT.json",
+    "v2_verification": "docs/audit-artifacts/52-os-reconstruction-uniform-v2-verification.json",
+    "lean_source_path": "YangMills/OS/OSReconstructionUniform.lean",
+    "lean_source_bytes_lf": 8682,
+    "lean_source_sha256_lf": "199229725d2d359e19a08792317d7f7e552cf027990505a4a4ffb2542295437a",
+    "olean_sha256": "2741f4c24178f2ea632d914f309acc71c714b831a5c5b282b9e8bd8a94a34478",
+    "target_build_jobs": 8191,
+    "target_build_exit_code": 0,
+    "oracle_reports": 3049,
+    "oracle_with_standard_axioms": 3022,
+    "oracle_axiom_free": 27,
+    "oracle_nonstandard_axioms": 0,
+    "oracle_sorry_count": 0,
+    "oracle_core_errors": 0
+  },
+  "paper": {
+    "source_path": "papers/os-reconstruction-uniform/os_reconstruction_uniform_v3.tex",
+    "source_bytes_lf": 18585,
+    "source_sha256_lf": "a93bae57c698ab47ae1d126ccf042c42381fa4769a5452fc9a8ce94055d0237f",
+    "output_path": "output/pdf/os_reconstruction_uniform_v3.pdf",
+    "latex_engine": "pdfTeX 3.141592653-2.6-1.40.28 (MiKTeX 25.12)",
+    "passes_after_final_source": 2,
+    "exit_codes": [0, 0],
+    "pages": 6,
+    "page_size": "A4 595.276 x 841.89 pt",
+    "pdf_bytes": 393799,
+    "pdf_sha256": "735170c934fafc579545de29d1ccb66fb363cc841525632e88b6166a61e8457d",
+    "log_findings": {
+      "undefined_references": 0,
+      "overfull_boxes": 0,
+      "underfull_boxes": 0,
+      "latex_or_package_warnings": 0
+    },
+    "visual_qa": "All six pages rendered with bundled Poppler at 130 dpi and inspected; no clipping, overlap, truncated table, malformed equation, or missing glyph was observed."
+  },
+  "review_response": {
+    "path": "docs/audit-artifacts/52-OS-RECONSTRUCTION-UNIFORM-V3-RESPONSE.md",
+    "input_score": "5.14/10",
+    "changes": [
+      "Integrated the finite Dobrushin comparison proof and anisotropic rectangle specialization.",
+      "Integrated the finite-band, Perron-tilt, and decay-to-operator-gap transport.",
+      "Identified the boundary space as the full real function algebra on a finite slice.",
+      "Added an explicitly paper-level mixed-correlator corollary with the product-norm prefactor.",
+      "Kept limitations and inherited mathematical status explicit."
+    ]
+  },
+  "attacks_and_boundaries": [
+    "A first formatting pass exposed overfull theorem-name and hash lines; URL-aware line breaking removed them before the accepted PDF.",
+    "A proof read caught that P^0 - Pi is I - Pi rather than (P - Pi)^0; the accepted paper treats n = 0 separately in both diagonal and mixed bounds.",
+    "The integrated proof does not relabel inherited analytic declarations as new mathematics.",
+    "The mixed-correlator statement is marked as a paper-level consequence rather than a frozen Lean declaration.",
+    "No score above 5.14, or any other numerical score, is self-certified.",
+    "No thermodynamic, continuum, Wightman, or Yang-Mills mass-gap conclusion is added."
+  ]
+}

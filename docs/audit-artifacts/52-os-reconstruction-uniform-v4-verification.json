@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "task": 52,
+  "captured_date": "2026-08-04",
+  "status": "formal_and_documentary_revision_for_independent_reassessment",
+  "terminal_verdict": "not_self_certified",
+  "revision": "v4_response_to_5.18_review",
+  "scope": {
+    "lean_source_changed_from_v3": true,
+    "headline_theorem_changed": "strengthened with a mixed reconstructed connected-correlator clause; existing diagonal clause preserved",
+    "new_analytic_estimate_claimed": false,
+    "new_formal_endpoints": [
+      "YangMills.OS.mixedConnCorr",
+      "YangMills.OS.VacuumTransfer.mixedConnCorr_eq",
+      "YangMills.OS.norm_one_sub_vacuumProjection_le",
+      "YangMills.OS.mixed_clustering_of_gap",
+      "YangMills.OS.reconstructedMixedConnCorr",
+      "YangMills.OS.reconstructedMixedConnCorr_eq_mixedConnCorr",
+      "YangMills.OS.reconstructedMixedConnCorr_decay"
+    ],
+    "local_lean_lake_oracle": "not_run",
+    "claude_opus_fable": "not_invoked"
+  },
+  "colab": {
+    "account_verified_visible": "lluiseriksson@gmail.com",
+    "runtime": "Colab Pro+ CPU/high RAM; GPU disabled",
+    "lean_version": "4.29.0-rc6",
+    "lean_commit": "00659f8e6071d7e46131ed643bf8003b99b044e9",
+    "cpu_count": 8,
+    "mem_total_kb": 53467184,
+    "source_transfer": "temporary git archive of frozen repository body plus exact changed files",
+    "first_attempt": "failed before Lean because the public GitHub commit did not contain local modules",
+    "first_formal_attack": "build exposed a real-product commutation goal in the n=0 proof; the source was repaired with ring and rebuilt",
+    "target_build": {
+      "command": "lake build YangMills.OS.OSReconstructionUniform",
+      "jobs": 8191,
+      "exit_code": 0,
+      "completed_utc": "2026-08-04T19:44:32Z"
+    },
+    "dependency_build": {
+      "command": "lake build YangMillsCore YangMills.RG.AppendixFKsharpToHsharpBridge",
+      "jobs": 8482,
+      "exit_code": 0,
+      "started_utc": "2026-08-04T19:46:59Z",
+      "completed_utc": "2026-08-04T20:03:29Z",
+      "log_bytes": 128044,
+      "log_lines": 1987,
+      "log_sha256": "ec4aad3600b85aaca3ffca7fddb77b5bf3c2eb5d0da315d5c95a2291f66f14ef"
+    },
+    "exhaustive_oracle": {
+      "method": "exact local oracle_check.lean uploaded and executed in four exhaustive chunks; no declaration was added by the capture method",
+      "started_utc": "2026-08-04T20:33:05Z",
+      "completed_utc": "2026-08-04T20:43:20Z",
+      "source_bytes_raw": 239293,
+      "source_sha256_raw": "154c6794aa2dabe43a5fb8df0d3bb47c8384ee91609c1605511b2a36acaf71c4",
+      "chunk_print_counts": [764, 764, 763, 763],
+      "reports": 3054,
+      "unique_declarations": 3051,
+      "with_standard_axioms": 3027,
+      "axiom_free": 27,
+      "distinct_axioms": ["Classical.choice", "Quot.sound", "propext"],
+      "nonstandard_axioms": 0,
+      "sorry_count": 0,
+      "core_errors": 0,
+      "combined_log_bytes": 357586,
+      "combined_log_lines": 5299,
+      "combined_log_sha256": "800c33e27e6e59803433ce0ace2e18d4fea8022bd45a164696de511da7b1aeef",
+      "counters_json_bytes": 294,
+      "counters_json_lines": 15,
+      "counters_json_sha256": "d7308245aba650ef89a0d5e4dc2bbc5021f39548c721e48fa8d5e5c867b2a83a"
+    },
+    "olean": {
+      "YangMills.OS.TransferGap": {
+        "bytes": 1135520,
+        "sha256": "77eb1ed915efc4c3ce7905de7b72bc3d82e117d72d18a8bab21df2da35da9555"
+      },
+      "YangMills.OS.OSReconstructionUniform": {
+        "bytes": 437712,
+        "sha256": "739a3c64a53802e1f6483ce63b53f72b1ce06cdbf0ddd856b6efbb70f7f5ffa7"
+      }
+    },
+    "closure": "runtime disconnected and deleted; the Colab UI returned to the reconnect state"
+  },
+  "source_projections": {
+    "YangMills/OS/TransferGap.lean": {
+      "raw_bytes": 37126,
+      "raw_sha256": "1f813f5990f05fd96923c54fa779a5ba5ec89e9fecfc2ef92b41bb660ba3d21d",
+      "lf_bytes": 36484,
+      "lf_sha256": "1dd660dceb92b133a5dd75e4e9a7bb3afad9d5d635010c61b8586c686227cbe9",
+      "crlf_bytes": 37220,
+      "crlf_sha256": "940ca6d7324e24f28508b270572c08ba663b6d807e9b48e7b35bb5a90ec3d06a"
+    },
+    "YangMills/OS/OSReconstructionUniform.lean": {
+      "raw_bytes": 11621,
+      "raw_sha256": "a3089a961a3f7659c9a5317981168ffcccd980bffc10f894adab1788076ed43b",
+      "lf_bytes": 11621,
+      "lf_sha256": "a3089a961a3f7659c9a5317981168ffcccd980bffc10f894adab1788076ed43b",
+      "crlf_bytes": 11876,
+      "crlf_sha256": "7c7ab877aa77567ad522e02a15ce429b27c3969205f11d7ec3fe878c4e8dc094"
+    },
+    "oracle_check.lean": {
+      "raw_bytes": 239293,
+      "raw_sha256": "154c6794aa2dabe43a5fb8df0d3bb47c8384ee91609c1605511b2a36acaf71c4",
+      "lf_bytes": 235907,
+      "lf_sha256": "47b88d5bd965092f3f260a42f365ffa69ee4d11fc174a47dce54e171924e6cb6",
+      "crlf_bytes": 239318,
+      "crlf_sha256": "3b9e1c92e456695ad0b9e159a36828c616ab270e6e75592db3414dbf1ebe4588"
+    }
+  },
+  "paper": {
+    "source_path": "papers/os-reconstruction-uniform/os_reconstruction_uniform_v4.tex",
+    "output_path": "output/pdf/os_reconstruction_uniform_v4.pdf",
+    "latex_engine": "pdfTeX 3.141592653-2.6-1.40.28 (MiKTeX 25.12)",
+    "passes_after_final_source": 2,
+    "exit_codes": [0, 0],
+    "pages": 7,
+    "page_size": "A4 595.276 x 841.89 pt",
+    "pdf_bytes": 399126,
+    "pdf_sha256": "152011c10f1da904e94ad31506dc2a8dd287b86bca0d17b6e70f0674be487bb6",
+    "log_findings": {
+      "undefined_references": 0,
+      "overfull_boxes": 0,
+      "underfull_boxes": 0,
+      "latex_or_package_warnings": 0
+    },
+    "visual_qa": "All seven pages rendered with bundled Poppler at 130 dpi and inspected; no clipping, overlap, truncation, missing glyph, or malformed equation was observed."
+  },
+  "attacks_and_boundaries": [
+    "The public-clone path was rejected after it proved incomplete for unpublished local modules; the accepted build used a measured temporary archive.",
+    "The first changed-target build failed on the explicit n=0 proof; a ring normalization closed the exposed commutation goal and the corrected target rebuilt successfully.",
+    "An initial oracle capture that appended a duplicate theorem was rejected as a measurement artifact; the accepted exhaustive run used the exact local oracle source and reports 3054 print commands for 3051 unique declarations.",
+    "Source presence is not treated as .olean materialization; the accepted .olean hashes come from the corrected Colab build.",
+    "The mixed endpoint is a formal interface and reconstruction improvement, not a new or sharper analytic estimate.",
+    "No numerical rescore is self-issued, and no thermodynamic, continuum, Wightman, or Yang-Mills mass-gap conclusion is added."
+  ]
+}

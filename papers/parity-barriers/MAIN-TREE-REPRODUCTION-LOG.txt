@@ -1,0 +1,31 @@
+MAIN-TREE REPRODUCTION LOG - papers/parity-barriers/ParityBarrier.lean
+Date: 2026-08-04
+Runtime: Colab Pro+ CPU/high-RAM, GPU disabled
+Account observed before execution: lluiseriksson@gmail.com
+Repository base commit: 174fd6dfd12f1fb0103622c6a08aec531c1321e6
+Lean: 4.29.0-rc6, commit 00659f8e6071d7e46131ed643bf8003b99b044e9
+Mathlib: 07642720480157414db592fa85b626dafb71355b
+Source SHA-256 (LF): 3d341e22ba7e9f2a4708a070597eb3c1d240c6f8d32b0013a24b992e2b90489c
+
+Command: lake env lean papers/parity-barriers/ParityBarrier.lean
+Start UTC: 2026-08-04T17:17:26Z
+End UTC: 2026-08-04T17:17:35Z
+Exit code: 0
+Raw output: 391 bytes, SHA-256 fdaeee6d11b03b5a6620668d2c2953b95f4fe2a3feb555d2ef73ebb41dbf31bb
+
+'sum_chi_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'parity_kwise' depends on axioms: [propext, Classical.choice, Quot.sound]
+'parity_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'parity_kwise_r4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'certifying_barrier_schema' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Materialization command: lake env lean -o /content/osr52_ParityBarrier.olean papers/parity-barriers/ParityBarrier.lean
+Start UTC: 2026-08-04T17:17:35Z
+End UTC: 2026-08-04T17:17:44Z
+Exit code: 0
+Olean: 270184 bytes, SHA-256 7cb4d44f85ad4d4fe445f80cdac8c6bb62ce3101a0e4ddeb712e162fe2195c18
+
+Decision: the exact frozen source reproduces on the main-tree pins with no
+source, proof, signature, or theorem-statement edit.  Migration is therefore
+technically compatible; this record does not alter the already submitted PDF
+or replace its historical toolchain provenance.

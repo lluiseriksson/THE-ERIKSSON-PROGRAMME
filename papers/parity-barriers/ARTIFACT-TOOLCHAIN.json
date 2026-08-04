@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "artifact": "papers/parity-barriers",
+  "status": "legacy_verified_and_main_tree_reproduced",
+  "sources": [
+    {
+      "path": "papers/parity-barriers/ParityBarrier.lean",
+      "git_blob": "2ce01e28e5e1ccfadf99ac0e3cb8c3369d957bb7",
+      "sha256_lf": "3d341e22ba7e9f2a4708a070597eb3c1d240c6f8d32b0013a24b992e2b90489c"
+    }
+  ],
+  "verified_environment": {
+    "lean_toolchain": "leanprover/lean4:v4.30.0-rc2",
+    "mathlib_commit": "cd3b69baae9cd81a572a3720f2372655eca39038",
+    "command": "lake env lean ParityBarrier.lean",
+    "recorded_date": "2026-07-09",
+    "evidence_path": "papers/parity-barriers/LEAN-VERIFICATION-LOG.txt",
+    "evidence_git_blob": "d79c65b32d0890cb95cd33861422432da763f231",
+    "evidence_sha256_lf": "5117163f09ae506cab44118033cd2e9231e71544dac806b485f2cc9d6c8d3fb4",
+    "capture_limit": "The log records the command and pins but no committed adjacent toolchain files or frozen runtime image."
+  },
+  "main_tree_environment": {
+    "lean_toolchain": "leanprover/lean4:v4.29.0-rc6",
+    "mathlib_commit": "07642720480157414db592fa85b626dafb71355b",
+    "repository_base_commit": "174fd6dfd12f1fb0103622c6a08aec531c1321e6"
+  },
+  "compatibility": {
+    "status": "reproduced_unchanged_on_main_tree",
+    "source_present_is_not_olean_materialized": true,
+    "statement_change_requirement": "none",
+    "migration_authorized": true,
+    "decision": "The exact source can migrate to the main-tree pins without changing a source byte, proof, signature, or theorem statement.",
+    "main_tree_reproduction": {
+      "lean_toolchain": "leanprover/lean4:v4.29.0-rc6",
+      "mathlib_commit": "07642720480157414db592fa85b626dafb71355b",
+      "command": "lake env lean papers/parity-barriers/ParityBarrier.lean",
+      "source_path": "papers/parity-barriers/ParityBarrier.lean",
+      "start_utc": "2026-08-04T17:17:26Z",
+      "end_utc": "2026-08-04T17:17:35Z",
+      "exit_code": 0,
+      "source_sha256_lf": "3d341e22ba7e9f2a4708a070597eb3c1d240c6f8d32b0013a24b992e2b90489c",
+      "raw_log_bytes": 391,
+      "raw_log_sha256": "fdaeee6d11b03b5a6620668d2c2953b95f4fe2a3feb555d2ef73ebb41dbf31bb",
+      "materialization_command": "lake env lean -o /content/osr52_ParityBarrier.olean papers/parity-barriers/ParityBarrier.lean",
+      "materialization_exit_code": 0,
+      "olean_bytes": 270184,
+      "olean_sha256": "7cb4d44f85ad4d4fe445f80cdac8c6bb62ce3101a0e4ddeb712e162fe2195c18",
+      "evidence_path": "papers/parity-barriers/MAIN-TREE-REPRODUCTION-LOG.txt",
+      "evidence_sha256_lf": "b2c865ff0042a3a97b7bf24939704ff732719f5a985ec17752bcb0adc053e71b"
+    }
+  }
+}

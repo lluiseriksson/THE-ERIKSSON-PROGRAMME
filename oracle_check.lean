@@ -12,6 +12,7 @@ import YangMills.RG.AppendixFFiberEntropy
 import YangMills.RG.PolymerClusterWithHolesBridge
 import YangMills.RG.AppendixFLocalSummability
 import YangMills.RG.AppendixFKsharpEstimate
+import YangMills.RG.AppendixFKsharpToHsharpBridge
 import YangMills.RG.AppendixFKsharpCanonicalRoot
 import YangMills.RG.AppendixFSecondGas
 import YangMills.RG.RelativeBVRetraction
@@ -42,6 +43,7 @@ import YangMills.Paper.GapRefinementChallenge
 import YangMills.SUSY.ValenceCarry
 import YangMills.SUSY.FiniteBerezin
 import YangMills.SUSY.WardPolymer
+import YangMills.OS.OSReconstructionUniform
 
 /-! # Oracle check — one command, every headline
 
@@ -1387,6 +1389,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFSecondUrsell_sourceObligations_of_halfBudget
 #print axioms YangMills.RG.dimockII_appendixF_weightedTree_sourceEstimate
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_sourceEstimate
+-- Proposal bridge: discharge hactivityKsharp from the banked K# estimate;
+-- hsmall/hbudget exposed as explicit scalar conditions on eps_val = 2*H0*K0.
+#print axioms YangMills.RG.ksharp_hactivityKsharp
+#print axioms YangMills.RG.ksharp_smallness_scalar
+#print axioms YangMills.RG.ksharp_budget_scalar
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_halfBudget
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_rawMetricDecay_canonicalRoot_halfBudget_of_source
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_expWeight_leafSummation
@@ -2543,6 +2550,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.clustering_iff_gap
 #print axioms YangMills.OS.gap_of_clustering
 #print axioms YangMills.OS.clustering_of_gap
+#print axioms YangMills.OS.mixed_clustering_of_gap
+#print axioms YangMills.OS.norm_one_sub_vacuumProjection_le
 #print axioms YangMills.OS.gap_of_dense_clustering
 #print axioms YangMills.OS.volumeUniform_gap
 #print axioms YangMills.OS.exists_vacuumTransfer_gap
@@ -2555,6 +2564,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.pow_succ_apply
 #print axioms YangMills.OS.pow_succ_apply'
 #print axioms YangMills.OS.VacuumTransfer.connCorr_eq
+#print axioms YangMills.OS.VacuumTransfer.mixedConnCorr_eq
 #print axioms YangMills.OS.VacuumTransfer.projected_pow_succ
 #print axioms YangMills.OS.VacuumTransfer.projected_symm
 #print axioms YangMills.OS.VacuumTransfer.projected_vacuum
@@ -3111,6 +3121,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.joinBond
 #print axioms YangMills.OS.pastOf
 #print axioms YangMills.OS.futRevOf
+#print axioms YangMills.OS.pastOf_joinBond
+#print axioms YangMills.OS.futRevOf_joinBond
 #print axioms YangMills.OS.joinBond_pastOf_futRevOf
 #print axioms YangMills.OS.bondEquiv
 #print axioms YangMills.OS.joinBond_left
@@ -3122,7 +3134,116 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.gibbsWeight_joinBond
 #print axioms YangMills.OS.osPairingBond_eq_gibbsSum
 #print axioms YangMills.OS.gibbsSum_reflected_nonneg
+#print axioms YangMills.OS.osPairingBondCross_eq_gibbsSum
 #print axioms YangMills.OS.gibbsSum_reflected_gram_nonneg
+#print axioms YangMills.OS.joinSite
+#print axioms YangMills.OS.midOf
+#print axioms YangMills.OS.pastSiteOf
+#print axioms YangMills.OS.futSiteOf
+#print axioms YangMills.OS.joinSite_left
+#print axioms YangMills.OS.joinSite_right
+#print axioms YangMills.OS.edgeOf_pastSiteOf
+#print axioms YangMills.OS.edgeOf_futSiteOf
+#print axioms YangMills.OS.futSiteOf_joinSite
+#print axioms YangMills.OS.pastSiteOf_joinSite
+#print axioms YangMills.OS.joinSite_pastSiteOf_futSiteOf
+#print axioms YangMills.OS.joinSite_past
+#print axioms YangMills.OS.prod_w_joinSite
+#print axioms YangMills.OS.prod_K_joinSite
+#print axioms YangMills.OS.gibbsWeight_joinSite
+#print axioms YangMills.OS.pathsAt
+#print axioms YangMills.OS.mem_halvesAt
+#print axioms YangMills.OS.mem_pathsAt
+#print axioms YangMills.OS.sum_paths_by_mid
+#print axioms YangMills.OS.sum_pathsAt_eq
+#print axioms YangMills.OS.osPairingSiteCross_eq_gibbsSum
+#print axioms YangMills.OS.osPairingSite_eq_gibbsSum
+#print axioms YangMills.OS.gibbsSumSite_reflected_nonneg
+#print axioms YangMills.OS.gibbsSumSite_reflected_gram_nonneg
+#print axioms YangMills.OS.siteForm
+#print axioms YangMills.OS.bondForm
+#print axioms YangMills.OS.siteForm_collapse
+#print axioms YangMills.OS.bondForm_collapse
+#print axioms YangMills.OS.transferOp
+#print axioms YangMills.OS.siteForm_transferOp
+#print axioms YangMills.OS.siteForm_transferOp_left
+#print axioms YangMills.OS.transferOp_selfAdjoint
+#print axioms YangMills.OS.siteForm_self_nonneg
+#print axioms YangMills.OS.bondForm_self_nonneg
+#print axioms YangMills.OS.transferOp_nonneg
+#print axioms YangMills.OS.const_mem_halvesAt
+#print axioms YangMills.OS.collapse_surjective
+#print axioms YangMills.OS.osPairing_transfer
+#print axioms YangMills.OS.osPairing_transfer_gibbsSum
+#print axioms YangMills.OS.siteForm_sub_right
+#print axioms YangMills.OS.siteForm_self_eq
+#print axioms YangMills.OS.siteForm_self_eq_zero_iff
+#print axioms YangMills.OS.siteForm_right_ext
+#print axioms YangMills.OS.transferOp_unique
+#print axioms YangMills.OS.transferOp_add
+#print axioms YangMills.OS.transferOp_smul
+#print axioms YangMills.OS.transferOpL
+#print axioms YangMills.OS.transferOpL_apply
+#print axioms YangMills.OS.sqrtw_kernel_mul
+#print axioms YangMills.OS.transferOp_sqrtw
+#print axioms YangMills.OS.transferOp_eigen_of_symWeighted
+#print axioms YangMills.OS.two_mul_le_weighted
+#print axioms YangMills.OS.quad_le_perron
+#print axioms YangMills.OS.siteQ
+#print axioms YangMills.OS.bondQ
+#print axioms YangMills.OS.siteForm_self_eq_siteQ
+#print axioms YangMills.OS.bondForm_self_eq_bondQ
+#print axioms YangMills.OS.symWeighted_quad_transport
+#print axioms YangMills.OS.sq_div_sqrt
+#print axioms YangMills.OS.transferOp_le_perron
+#print axioms YangMills.OS.transferOp_perron_attained
+#print axioms YangMills.OS.exists_contraction_constant
+#print axioms YangMills.OS.norm_sq_le_perron
+#print axioms YangMills.OS.siteQ_transferOp_le
+#print axioms YangMills.OS.siteQ_perron_pos
+#print axioms YangMills.OS.perron_constant_minimal
+#print axioms YangMills.OS.transferOp_perron_eigen
+#print axioms YangMills.OS.siteQ_transferOp_perron
+#print axioms YangMills.OS.perron_norm_constant_minimal
+#print axioms YangMills.OS.spatialKernel_coercive
+#print axioms YangMills.OS.minWeight
+#print axioms YangMills.OS.minWeight_pos
+#print axioms YangMills.OS.minWeight_le
+#print axioms YangMills.OS.bondQ_ge_siteQ
+#print axioms YangMills.OS.transferOp_coercive
+#print axioms YangMills.OS.coercivity_constant_pos
+#print axioms YangMills.OS.coercivity_constant_zero
+#print axioms YangMills.OS.coercivity_constant_zero_extent
+#print axioms YangMills.OS.transferOp_injective
+#print axioms YangMills.OS.exists_two_sided_bound
+#print axioms YangMills.OS.transferOp_injective'
+#print axioms YangMills.OS.transferOpL_injective
+#print axioms YangMills.OS.transferOpL_ker_eq_bot
+#print axioms YangMills.OS.transferOpL_bijective
+#print axioms YangMills.OS.transferEquiv
+#print axioms YangMills.OS.normalisedTransferOpL
+#print axioms YangMills.OS.normalisedTransferOpL_apply
+#print axioms YangMills.OS.normalised_two_sided
+#print axioms YangMills.OS.siteForm_smul_right
+#print axioms YangMills.OS.siteForm_normalisedTransferOpL
+#print axioms YangMills.OS.siteForm_normalisedTransferOpL_self
+#print axioms YangMills.OS.normalisedTransferOpL_bijective
+#print axioms YangMills.OS.normalisedTransferEquiv
+#print axioms YangMills.OS.transferOp_injective_zero_extent
+#print axioms YangMills.OS.collapseL
+#print axioms YangMills.OS.collapseL_apply
+#print axioms YangMills.OS.collapseL_surjective
+#print axioms YangMills.OS.mem_ker_collapseL_iff
+#print axioms YangMills.OS.physicalEquiv
+#print axioms YangMills.OS.sqrtWeightEquiv
+#print axioms YangMills.OS.sqrtWeightEquiv_apply
+#print axioms YangMills.OS.symWeightedOp
+#print axioms YangMills.OS.symWeightedOp_add
+#print axioms YangMills.OS.symWeightedOp_smul
+#print axioms YangMills.OS.symWeightedOpL
+#print axioms YangMills.OS.transferOp_sqrtWeightEquiv
+#print axioms YangMills.OS.transferOpL_comp_sqrtWeightEquiv
+#print axioms YangMills.OS.transferOp_eigenvalue_iff
 #print axioms YangMills.OS.z2Flip
 #print axioms YangMills.OS.flipCfg
 #print axioms YangMills.OS.flipCfg_involutive
@@ -3135,3 +3256,156 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.perron_even
 #print axioms YangMills.OS.symWeighted_eigen_of_sourceWeighted
 #print axioms YangMills.OS.symWeighted_perron_even
+
+-- D-1, the Dobrushin matrix lemma (docs/DOBRUSHIN-CHARTER.md; judges 118e32e9).
+#print axioms YangMills.OS.Matrix.pow_apply_nonneg
+#print axioms YangMills.OS.Matrix.pow_rowSum_le
+#print axioms YangMills.OS.Matrix.pow_apply_le
+#print axioms YangMills.OS.Matrix.pow_apply_eq_zero_of_lt_dist
+#print axioms YangMills.OS.Matrix.sum_range_pow_apply_le
+#print axioms YangMills.OS.Matrix.tsum_pow_apply_le
+#print axioms YangMills.OS.Matrix.witnessD_self
+#print axioms YangMills.OS.Matrix.witnessD_triangle
+#print axioms YangMills.OS.Matrix.witnessC_nonneg
+#print axioms YangMills.OS.Matrix.witnessC_supp
+#print axioms YangMills.OS.Matrix.witnessC_rowSum
+#print axioms YangMills.OS.Matrix.witnessD_endpoints
+#print axioms YangMills.OS.Matrix.witnessC_ne_zero
+#print axioms YangMills.OS.Matrix.witness_bound
+
+-- D-2a, the single-bond Dobrushin coefficient (docs/DOBRUSHIN-CHARTER.md).
+#print axioms YangMills.OS.Dobrushin.tvField_eq
+#print axioms YangMills.OS.Dobrushin.tanh_sub_eq
+#print axioms YangMills.OS.Dobrushin.cosh_mul_cosh
+#print axioms YangMills.OS.Dobrushin.cosh_mul_cosh_ge
+#print axioms YangMills.OS.Dobrushin.sinh_nonneg_of_nonneg
+#print axioms YangMills.OS.Dobrushin.tanh_nonneg_of_nonneg
+#print axioms YangMills.OS.Dobrushin.tvField_le
+#print axioms YangMills.OS.Dobrushin.tvField_attained
+#print axioms YangMills.OS.Dobrushin.tvField_isLUB
+#print axioms YangMills.OS.Dobrushin.tanh_nonneg
+#print axioms YangMills.OS.Dobrushin.tanh_lt_one
+
+-- D-2b, the Dobrushin matrix of a bonded system and the computed window.
+#print axioms YangMills.OS.Dobrushin.dobMatrix_nonneg
+#print axioms YangMills.OS.Dobrushin.dobMatrix_supp
+#print axioms YangMills.OS.Dobrushin.dobMatrix_diag
+#print axioms YangMills.OS.Dobrushin.dobrushin_resolvent_bound
+#print axioms YangMills.OS.Dobrushin.dobrushin_resolvent_tsum
+#print axioms YangMills.OS.Dobrushin.starDist_self
+#print axioms YangMills.OS.Dobrushin.starDist_triangle
+#print axioms YangMills.OS.Dobrushin.starDist_rowSum
+
+-- D-2c: local geometry to the row-sum hypothesis, uniformly over volumes.
+#print axioms YangMills.OS.Dobrushin.dobMatrix_le_tanh
+#print axioms YangMills.OS.Dobrushin.rowSum_le_sum_cover
+#print axioms YangMills.OS.Dobrushin.rowSum_bound_of_local_cover
+#print axioms YangMills.OS.Dobrushin.dobrushin_bound_of_local_cover
+
+-- D-3a, the analytic ingredient of the comparison chain
+-- (docs/DOBRUSHIN-D3-CHARTER.md; gates judge_dobrushin_d3.py).
+#print axioms YangMills.OS.Dobrushin.osc_nonneg
+#print axioms YangMills.OS.Dobrushin.abs_sub_mid_le
+#print axioms YangMills.OS.Dobrushin.sum_zero_sub_const
+#print axioms YangMills.OS.Dobrushin.abs_sum_signed_le
+#print axioms YangMills.OS.Dobrushin.TV_nonneg
+#print axioms YangMills.OS.Dobrushin.abs_sum_sub_le_tv_mul_osc
+#print axioms YangMills.OS.Dobrushin.signed_bound_attained
+
+-- The quarter constant: Popoviciu, the MAD bound, and the Gruss covariance
+-- bound with its attainment (gate J10q).
+#print axioms YangMills.OS.Dobrushin.popoviciu_variance_le
+#print axioms YangMills.OS.Dobrushin.popoviciu_attained
+#print axioms YangMills.OS.Dobrushin.mad_le_half_spread
+#print axioms YangMills.OS.Dobrushin.gruss_covariance_le
+#print axioms YangMills.OS.Dobrushin.gruss_covariance_osc_le
+#print axioms YangMills.OS.Dobrushin.gruss_attained
+
+-- D-3b/c, the key lemma in the three pieces of Amendment 1 (gates J9, J11).
+#print axioms YangMills.OS.Dobrushin.TV_self
+#print axioms YangMills.OS.Dobrushin.deltaAt_nonneg
+#print axioms YangMills.OS.Dobrushin.deltaAt_eq_zero_iff
+#print axioms YangMills.OS.Dobrushin.osc_section_le_deltaAt
+#print axioms YangMills.OS.Dobrushin.deltaAt_condExp_self
+#print axioms YangMills.OS.Dobrushin.deltaAt_condExp_le
+#print axioms YangMills.OS.Dobrushin.deltaAt_condExp_le_matrix
+
+-- D-3d/e, the comparison estimate (gates J10, J10q).
+#print axioms YangMills.OS.Dobrushin.osc_le_sum_deltaAt
+#print axioms YangMills.OS.Dobrushin.transportSum_le
+#print axioms YangMills.OS.Dobrushin.seriesPartial_eq_pow_sum
+#print axioms YangMills.OS.Dobrushin.abs_expect_mul_sub_condExp_le
+#print axioms YangMills.OS.Dobrushin.covar_le_resolvent_partial
+#print axioms YangMills.OS.Dobrushin.covar_le_resolvent_tsum
+#print axioms YangMills.OS.Dobrushin.covar_exp_decay
+#print axioms YangMills.OS.Dobrushin.covar_two_point
+#print axioms YangMills.OS.Dobrushin.Witness.witness_bound
+#print axioms YangMills.OS.Dobrushin.Witness.witness_attained
+
+-- D-4a, the Gibbs instantiation (gates G12/G14, judge_dobrushin_d4.py).
+#print axioms YangMills.OS.Dobrushin.gibbsMu_sum_one
+#print axioms YangMills.OS.Dobrushin.heatBath_sum_one
+#print axioms YangMills.OS.Dobrushin.heatBath_local
+#print axioms YangMills.OS.Dobrushin.expect_heatBath
+#print axioms YangMills.OS.Dobrushin.dobCoeff_diag
+#print axioms YangMills.OS.Dobrushin.dobCoeff_dominates
+#print axioms YangMills.OS.Dobrushin.gibbs_covar_le_resolvent
+#print axioms YangMills.OS.Dobrushin.gibbs_covar_exp_decay
+#print axioms YangMills.OS.Dobrushin.gibbs_covar_two_point
+#print axioms YangMills.OS.Dobrushin.GibbsWitness.witness_attained
+#print axioms YangMills.OS.Dobrushin.GibbsWitness.witness_bound_holds
+#print axioms YangMills.OS.Dobrushin.energy_update
+#print axioms YangMills.OS.Dobrushin.heatBath_ising
+#print axioms YangMills.OS.Dobrushin.heatBath_ising_pPlus
+#print axioms YangMills.OS.Dobrushin.TV_heatBath_ising
+#print axioms YangMills.OS.Dobrushin.dobCoeff_ising_le
+#print axioms YangMills.OS.Dobrushin.dobCoeff_ising_zero
+#print axioms YangMills.OS.Dobrushin.ising_covar_le_resolvent
+#print axioms YangMills.OS.Dobrushin.ising_covar_exp_decay
+#print axioms YangMills.OS.Dobrushin.ising_covar_two_point
+#print axioms YangMills.OS.Dobrushin.IsingBondWitness.dobCoeff_bond_attained
+#print axioms YangMills.OS.Dobrushin.IsingBondWitness.bond_covar_two_point
+#print axioms YangMills.OS.Dobrushin.StarWitness.star_covar_two_point
+#print axioms YangMills.OS.Dobrushin.rectDist_triangle
+#print axioms YangMills.OS.Dobrushin.rectJ_row
+#print axioms YangMills.OS.Dobrushin.rect_ising_uniform_two_point
+#print axioms YangMills.OS.Dobrushin.rect_ising_uniform_decay
+#print axioms YangMills.OS.Dobrushin.rect_zero_coupling_indep
+#print axioms YangMills.OS.Dobrushin.normalise_eig
+#print axioms YangMills.OS.Dobrushin.pow_fix
+#print axioms YangMills.OS.Dobrushin.pow_entry_symm
+#print axioms YangMills.OS.Dobrushin.pow_pairing
+#print axioms YangMills.OS.Dobrushin.band_pair
+#print axioms YangMills.OS.Dobrushin.bandZ
+#print axioms YangMills.OS.Dobrushin.centered_dressed_orth
+#print axioms YangMills.OS.Dobrushin.band_covariance_eq
+#print axioms YangMills.OS.Dobrushin.vacuumTransfer_opOf
+#print axioms YangMills.OS.Dobrushin.connCorr_eq_bandCov
+#print axioms YangMills.OS.Dobrushin.abstract_uniform_gap
+#print axioms YangMills.OS.Dobrushin.wKernel_bandCov
+#print axioms YangMills.OS.Dobrushin.wKernel_fluctuation_ne
+#print axioms YangMills.OS.Dobrushin.transport_witness
+#print axioms YangMills.OS.Dobrushin.bandW_eq_tilt
+#print axioms YangMills.OS.Dobrushin.mass_mul_pow
+#print axioms YangMills.OS.Dobrushin.bandCov_mul_sq
+#print axioms YangMills.OS.Dobrushin.floor_PS_tilt
+#print axioms YangMills.OS.Dobrushin.bandCov_decay_of_free_decay
+#print axioms YangMills.OS.Dobrushin.rectJ_energy_split
+#print axioms YangMills.OS.Dobrushin.curry_weight
+#print axioms YangMills.OS.Dobrushin.freeCov_eq_rect_covar
+#print axioms YangMills.OS.Dobrushin.row_deltaAt_le
+#print axioms YangMills.OS.Dobrushin.rect_feed
+#print axioms YangMills.OS.Dobrushin.dobrushin_ising_uniform_gap
+
+/-! ## Volume-uniform reconstructed transfer operator -/
+#print axioms YangMills.OS.siteForm_qEmbed
+#print axioms YangMills.OS.transferOp_qEmbed
+#print axioms YangMills.OS.transferOp_iterate_qEmbed
+#print axioms YangMills.OS.transferOp_qEmbed_tilt
+#print axioms YangMills.OS.transferOp_qEmbed_tilt_iterate
+#print axioms YangMills.OS.opOf_pow_toLp_act
+#print axioms YangMills.OS.reconstructedConnCorr_eq_connCorr
+#print axioms YangMills.OS.reconstructedConnCorr_decay
+#print axioms YangMills.OS.reconstructedMixedConnCorr_eq_mixedConnCorr
+#print axioms YangMills.OS.reconstructedMixedConnCorr_decay
+#print axioms YangMills.OS.os_reconstruction_uniform_gap

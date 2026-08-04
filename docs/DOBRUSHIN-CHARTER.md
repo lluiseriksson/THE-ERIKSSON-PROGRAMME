@@ -1,0 +1,174 @@
+# DOBRUSHIN CHARTER — "The wall was in the wrong place":
+# volume-uniform clustering for the COUPLED spatial kernel,
+# by a coupling argument rather than a spectral one.
+#
+# Registered 2026-08-01, BEFORE any fabrication in this lane.
+
+## Why this lane exists
+
+The S block proved its uniform statements with **Schur's test on constant row
+sums** (`YangMills/OS/SpatialUniform.lean`).  At nonzero spatial coupling the
+row sums stop being constant — that is `coupled_rowSums_not_constant`
+(`YangMills/OS/SpatialExtent.lean:208`), proved on a two-site witness, and it is
+labelled THE OBSTRUCTION in that module.
+
+**It is an obstruction to the METHOD, not to the theorem.**  The claim "the
+weight destroys uniformity" was already retracted of record (ledger Addendum
+561) as unproved; what survived was a measurement of degeneracy.  This lane
+opens because the retracted claim kept selecting targets anyway.
+
+## Correction of record, entered before any work
+
+An earlier reading of this desk asserted that `ReflectionSplitting`
+(`YangMills/OS/ReflectionSplitting.lean:74`) could be instantiated directly by
+the paper-13 producer (`bondEquiv`, `gibbsWeight_joinBond`).  **That is wrong as
+stated and is withdrawn here.**  `ReflectionSplitting` is indexed by
+`GaugeData N Edge Plaq`, whose `boltz` is `∏ p, weight (hol p)` with ONE weight
+function `weight : ZMod N → ℝ` shared by every plaquette.  The S block's slice
+weight `w` is an arbitrary positive function of a whole slice, and even when it
+factorises over spatial bonds the model is ANISOTROPIC (`β ≠ γ`), which the
+single shared `weight` field cannot express.
+
+The connection therefore needs one generalisation first —
+`weight : Plaq → ZMod N → ℝ` — and that generalisation is a separate brick,
+registered here as D-0 and NOT claimed as free.
+
+## The target
+
+For the coupled kernel of the S block, symmetrised,
+
+    T_L(σ,τ) = √(w_γ(σ)) · K_β(σ,τ) · √(w_γ(τ)),
+    K_β(σ,τ) = ∏_j z2Bond β (σ_j) (τ_j),
+    w_γ(σ)   = ∏_j z2Bond γ (σ_j) (σ_{j+1}),
+
+prove `specRatio(T_L) ≤ ρ < 1` with `ρ` INDEPENDENT of `L`, on an explicit
+non-empty window of `(β,γ)`.
+
+The consumer already exists and was verified by elaboration on this branch:
+
+    volumeUniform_gap   (YangMills/OS/TransferGap.lean:546)
+      (∀ i, ∀ v, ∃ C, ∀ n, |connCorr (T i) (Ω i) v n| ≤ C * r ^ n) → …
+      → ∃ m, 0 < m ∧ ∀ i, ‖projectedTransfer (T i) (Ω i)‖ ≤ exp (-m)
+
+Note the quantifier order, which is load-bearing and is the reason this lane is
+possible at all: **`C` may depend on the volume `i` and on `v`; only `r` is
+common.**  The lane's own standing objection — "a bound `C(L)·ρ^N` with
+`C(L)→∞` says nothing" (`SpatialUniform.lean`) — does not apply to this
+consumer, because its conclusion is an operator-norm bound.
+
+## The ladder, and what each rung alone is worth
+
+* **D-1 — the Dobrushin matrix lemma (pure linear algebra, no probability).**
+  For `C : ι → ι → ℝ`, `C ≥ 0`, `C i j = 0` whenever `dist i j > 1`, and
+  `∀ i, ∑ j, C i j ≤ α < 1`:  `∑_n (C^n) i j ≤ α ^ (dist i j) / (1 - α)`.
+  This is where volume-freeness comes from, and it is a self-contained,
+  reusable brick.  **Worth alone: a library lemma, nothing more.  No physics
+  claim may be attached to D-1.**
+* **D-2 — the Dobrushin coefficient of the S-block cell**, `C_ij = tanh|J_ij|`,
+  and the explicit window `2 tanh β + 2 tanh γ < 1`.
+* **D-3 — comparison ⇒ exponential decay of connected correlations**, rate
+  free of `L` and `N`.  This is THE bottleneck; everything else is assembly.
+* **D-4 — transport to `connCorr`** through the paper-9 identification.
+* **D-5 — `volumeUniform_gap` ⇒ the uniform `specRatio` bound.**
+
+## PRE-REGISTERED JUDGES
+
+`scripts/judge_dobrushin.py`, committed in this same commit, BEFORE a line of
+Lean.  Every gate exits NON-ZERO on failure — a gate that cannot fail a CI is a
+report, not a gate (paper-12 lesson).  Gates are SEPARATE: no gate bundles a
+theorem with its witness (Addendum 548 / paper-12 gate B lesson).
+
+* **J1 — phase localisation.**  Pre-registered cells.  For every cell with
+  `sinh2β·sinh2γ < 1`: the Aitken limit of `r(L)` must be `≤ 0.95` and the
+  increment ratio `< 1` (saturation).  For every cell with `sinh2β·sinh2γ > 1`:
+  `r(12) ≥ 0.99`.  **Licenses the claim that the degeneracy is a property of
+  the ORDERED phase and not of the weight.**
+* **J2 — D-1 predicted as a NUMBER, not sampled.**  Deterministic matrices on a
+  path and on a grid; `∑_n (C^n) i j` computed to convergence and compared
+  against `α^dist/(1-α)` at `1e-12`.  **Licenses fabricating D-1.**
+* **J3 — the window is non-empty AND conservative.**  Every grid point with
+  `2tanh β + 2tanh γ < 1` must satisfy `sinh2β·sinh2γ < 1`, and both sets must
+  be non-empty.  **Licenses calling the window explicit and non-sharp.**  If a
+  Dobrushin point fell outside the Onsager region this gate FAILS and the
+  interpretation of the whole lane changes.
+
+## PROHIBITIONS (registered, self-audited before any commit)
+
+1. The word **clustering** is not used for an infinite-volume statement; no
+   infinite-volume state is constructed in this lane.
+2. The window is never called **sharp**.  Onsager's line is the true boundary
+   and the Dobrushin window is strictly inside it.
+3. No consequence for Yang–Mills is stated, suggested, or implied.
+4. Dobrushin's theorem is **classical**.  Nothing in this lane may be presented
+   as new mathematics.  **AMENDED 2026-08-01 — the claim was too wide.**  The
+   surviving novelty is TWO items, not three: the mechanisation, and closing a
+   registered open wall of this corpus.  **"Explicit constants" is struck.**
+   The cell here is the anisotropic two-dimensional Ising model, whose transfer
+   spectrum has been in closed form since Onsager (1944) and Kaufman (1949);
+   the Dobrushin constant is strictly WORSE than the exact answer, by a factor
+   measured between 2 and 36 on the tested cells.  What replaces it is
+   **generality**: Dobrushin's coefficient is computed from the single-site
+   conditionals of an ARBITRARY positive finite-range slice weight `w`, which
+   is what `gibbsWeight` actually quantifies over, and where the exact solution
+   says nothing at all.  The axis is generality, not constants.
+5. No claim of "delivered" without an external verdict (C6 Amendment-2 lesson).
+6. **J1's table may never be printed as evidence FOR the theorem.**  Of its
+   eight cells only two — `(0.1,0.1)` at `α = 0.399` and `(0.2,0.2)` at
+   `α = 0.790` — lie inside the Dobrushin window; the other four disordered
+   cells sit at `α` between `1.165` and `1.527`.  J1 measures the whole
+   disordered phase and licenses ONE claim: where the degeneracy lives.  The
+   theorem will cover a strict subset of what J1 displays.
+7. **Registered before D-4, not to be discovered inside it.**  `⟪Ω, · Ω⟫` is an
+   infinite-time state.  Writing `connCorr` as a two-point function of the
+   Gibbs measure therefore either constructs an infinite-time state — which
+   prohibition 1 forbids — or must run through finite `M` with explicit
+   boundary control, taking `M → ∞` only at the level of the BOUND.  The second
+   route is the one this lane takes; it is a design decision made here, not a
+   finding of D-4.
+
+## ENVIRONMENT (owner's rule of 2026-08-01; supersedes CLAUDE.md's build section)
+
+The Windows box is the owner's **desktop**, not build infrastructure.  Nothing in
+this lane may compile, elaborate, oracle or sweep on it without an explicit,
+per-errand authorisation naming the command.
+
+**What this lane already spent on that machine, before the rule existed, stated
+plainly rather than left to be discovered:** five `lake` invocations
+(`lake env lean` on `DobrushinMatrix.lean` three times at roughly 300–600 s each;
+`lake build YangMills.OS.DobrushinMatrix` at 358 s; `lake build YangMillsCore`
+twice at 822 s, the second one purely to measure the pre-change baseline), plus
+three numerical sweeps whose inner loop is a dense `eigvalsh` on 4096×4096
+float64.  The job counts 8465 → 8466 and the 14/14 oracle in Addendum 570 are
+products of those runs.  **They are not repeatable here.**
+
+**Classification under the ≤30 s / single process / ≤512 MiB contract:**
+
+| Artefact | Class | Basis |
+|---|---|---|
+| `scripts/judge_dobrushin.py` J1 | **MEASURED heavy** | dense `eigvalsh` on 4096×4096 float64, eight cells; past both limits |
+| `judge_dobrushin.py` J2, J3 | **PRESUMED heavy** | no reliable measurement exists, and the rule's default is presumption, not estimation |
+| D-2 … D-5 (all Lean) | **heavy** | elaboration and oracle |
+| charter/ledger edits, `git`, hashes | light | file operations only |
+
+So the whole judge script and every future rung go to **Colab (Linux, CPU /
+high-RAM, never GPU)**.  No GitHub token there and no push from there: artefacts
+return to the desktop, are verified by hash, and only then are committed.
+
+**Certificates.**  No acceptance decision in this lane may rest on a Python
+`assert` — `python -O` deletes them, and this repository has already had two
+certifiers emit a false PASS that way.  `judge_dobrushin.py` contains no
+`assert`; as of Amendment 2 it also counts the checks it actually performed and
+**refuses to print PASS when fewer ran than expected**, because an empty failure
+list is also what zero checks produce.  Self-tests run in both `normal` and
+`optimized` modes, with semantically named logs and sentinels.
+
+## ROLES
+
+This session FABRICATES.  It does not audit itself.  The five-role audit and
+any external verdict are a different desk, per CLAUDE.md Part I §4.
+
+## STAGING
+
+Explicit paths only.  `git add -A` is forbidden while other desks share this
+clone; `p39.py`, `p40.py` and `scripts/__pycache__/` are other desks' untracked
+files and are not this lane's to commit.
