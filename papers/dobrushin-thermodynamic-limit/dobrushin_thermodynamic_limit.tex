@@ -1,0 +1,827 @@
+% D-7: thermodynamic limit by Dobrushin comparison.
+% Source freeze for all Lean links: 39cad01b1d2032dc15244e9af19ce6fbffa55a1f.
+\documentclass[11pt]{article}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,
+  urlcolor=blue!60!black,citecolor=blue!60!black]{hyperref}
+\hypersetup{
+  pdftitle={From Dobrushin Comparison to a Thermodynamic Cylinder-State Family},
+  pdfauthor={Lluis Eriksson},
+  pdfsubject={A Lean-checked Dobrushin thermodynamic-limit construction}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=1800
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\E}{\mathbb E}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\osc}{\operatorname{osc}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+
+\newcommand{\sourceanchor}{39cad01b1d2032dc15244e9af19ce6fbffa55a1f}
+\newcommand{\leanfile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\sourceanchor/YangMills/OS/#1.lean}{\nolinkurl{#2.lean}}}
+\newcommand{\leanline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\sourceanchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+
+\title{From Dobrushin Comparison to a Thermodynamic\\
+Cylinder-State Family:\\
+A Lean-Checked Boundary Transplant for the Two-Dimensional Ising Model}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a Lean~4 formalization of a thermodynamic-limit argument for the
+anisotropic nearest-neighbour Ising model on odd centred squares.  The new
+analytic brick is a comparison theorem for two finite Gibbs specifications on
+one product space.  A random-scan telescoping identity and the classical
+Dobrushin resolvent turn single-site total-variation defects into an
+expectation bound.  When every defect row is at graph distance at least $R$
+from the support of a local observable $g$, the result is
+\[
+  \abs{\mu(g)-\nu(g)}
+  \le \frac{\alpha^R}{1-\alpha}\sum_j\delta_j(g),
+  \qquad 0\le\alpha<1.
+\]
+The order of summation is essential: the defect sites are summed inside the
+resolvent, so no cardinality of the ambient volume appears.
+
+We then construct exact restriction and reindexing maps between genuine Gibbs
+measures on two different squares.  For a kernel $g$ supported in the square
+of radius $r$ and $r\le n\le m$, the machine-checked comparison is
+\[
+  \abs{\E_m g-\E_n g}
+  \le
+  \frac{\alpha^{n-r}}{1-\alpha},
+  \abs{\Lambda_r}\,\osc(g).
+\]
+It yields convergence of the complete free-boundary sequence, not merely of a
+subsequence.  The limit is packaged as a compatible family of positive,
+normalized, real-linear cylinder functionals.  It is independent of the
+admissible auxiliary envelope $\alpha$, of every cofinal sampling of the
+centred-square sequence, and of enlargement of the declared support.
+Finally, a second application of the comparison theorem proves stability under
+arbitrary symmetric boundary-row perturbations receding from the support and,
+as a concrete corollary, equality of the free and periodic thermodynamic
+limits.  All concrete results use only
+\[
+  2\tanh\abs\beta+2\tanh\abs\gamma\le\alpha<1.
+\]
+No Kotecky--Preiss hypothesis enters.  The development does not yet package a
+full $\Z^2$ translation action or a C$^*$-algebraic state, and no Yang--Mills
+consequence is claimed.
+\end{abstract}
+
+\section{Introduction}
+
+Dobrushin's uniqueness method replaces a global comparison of Gibbs measures
+by a matrix of one-site influences.  Its finite-volume form is classical
+\cite{Dobrushin1968,Dobrushin1970}; covariance estimates based on the same
+resolvent appear, for example, in Follmer's work \cite{Follmer1982}.  The
+mathematical theorem proved here is therefore not a new high-temperature phase
+diagram.  The contribution is an end-to-end formal chain whose interfaces are
+usually suppressed on paper:
+\begin{enumerate}
+\item two probability weights and their one-site kernels are compared on a
+  common finite product space;
+\item differences of conditionals are telescoped site by site;
+\item the resolvent is summed in an order that avoids a spurious volume factor;
+\item Gibbs measures on genuinely different rectangles are transported to a
+  common chart without changing either Hamiltonian or normalization;
+\item the resulting pairwise estimate constructs a whole-sequence limit;
+\item positivity, normalization, linearity, support-presentation coherence,
+  cofinal schedule independence, and free--periodic boundary independence are
+  all passed to the limit.
+\end{enumerate}
+
+The formalization was motivated by a precise gap in an earlier finite-volume
+Dobrushin development: exponential estimates held uniformly in the volume,
+but no infinite-volume state value had been constructed.  A uniform
+finite-volume estimate is not itself a thermodynamic limit.  The missing
+statement is a comparison of \emph{two volumes} with an error controlled by
+the distance between a fixed support and the smaller boundary.
+
+The main pitfall is easy to state.  Bounding the effect of every changed row
+separately and then summing can produce a term such as
+$\abs{\Lambda_m}\alpha^{m-r}$.  Such a bound may still vanish along some
+exhaustions, but it obscures the mechanism and does not give the uniform
+boundary stability one expects from Dobrushin comparison.  The proof below
+instead sums the defect field against the resolvent before estimating the
+geometric tail.
+
+\subsection*{What is machine-checked}
+
+Every theorem labelled ``machine-checked'' is a Lean declaration compiled at
+the source anchor
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/\sourceanchor}{\nolinkurl{\sourceanchor}}.
+The terminal source contains no \texttt{sorry}.  A theorem-to-source table is
+given in Section~\ref{sec:audit}.  The logical audit reports only Lean's
+standard classical foundations: \texttt{propext}, \texttt{Classical.choice},
+and \texttt{Quot.sound}.
+
+\subsection*{What is not claimed}
+
+The paper constructs a compatible centred-cylinder state family and proves
+free--periodic equality for the centred square exhaustion.  It does not yet
+construct shifted cylinder charts on all of $\Z^2$, prove invariance under the
+full translation group, compare every possible shape, or form a C$^*$
+completion.  These distinctions are substantive, not terminological.  In
+particular, ``positive normalized cylinder-state family'' below is not used as
+a synonym for a completed C$^*$-algebraic Gibbs state.
+
+\section{Finite products and one-site influence}
+
+Let $I$ be a finite nonempty site set and $S$ a finite nonempty spin set.  A
+configuration is $\eta\in S^I$.  For a probability weight $\mu$ and an
+observable $f:S^I\to\R$, write
+\[
+  \E_\mu f=\sum_{\eta\in S^I}\mu(\eta)f(\eta).
+\]
+The one-coordinate oscillation is
+\[
+  \delta_i(f)=
+  \sup_{\eta\in S^I,\,s\in S}
+  \abs{f(\eta)-f(\eta^{i\leftarrow s})}.
+\]
+All suprema are finite suprema in the Lean development.
+
+A one-site kernel $p_i(\eta,\cdot)$ is normalized and local: it depends on
+$\eta$ only outside $i$.  Its conditional-expectation operator is
+\[
+  P_i f(\eta)=\sum_{s\in S}p_i(\eta,s)
+     f(\eta^{i\leftarrow s}).
+\]
+The matrix $C=(C_{ik})$ is an influence majorant when, for $k\ne i$ and
+configurations differing only at $k$,
+\[
+  \TV\bigl(p_i(\eta,\cdot),p_i(\eta',\cdot)\bigr)\le C_{ik}.
+\]
+The formal comparison theorem permits any nonnegative majorant with zero
+diagonal and row sums
+\[
+  \sum_k C_{ik}\le\alpha<1.
+\]
+
+\subsection{Random-scan telescoping}
+
+Define the random-scan operator
+\[
+  Pf=\frac1{\abs I}\sum_{i\in I}P_i f.
+\]
+If $\mu$ is invariant under all $P_i$, it is invariant under $P$.  For a
+second specification $q$ with invariant weight $\nu$, the difference
+$\mu(f)-\nu(f)$ is telescoped through iterates of the two scan operators.
+At a single step, the discrepancy separates into:
+\begin{itemize}
+\item propagation of the current coordinate oscillations through $C$; and
+\item a source term $b_i\delta_i(f)$, where
+  $\TV(p_i(\eta),q_i(\eta))\le b_i$.
+\end{itemize}
+Iteration produces partial sums of $I+C+C^2+\cdots$.  The remainder vanishes
+because the scan contracts the total oscillation under the row-sum condition.
+This is formalized in
+\leanfile{DobrushinMeasureComparison}{DobrushinMeasureComparison}.
+
+\begin{proposition}[resolvent comparison; machine-checked]
+Under the hypotheses above,
+\[
+  \abs{\E_\mu f-\E_\nu f}
+  \le
+  \sum_i b_i\sum_j\left(\sum_{q\ge0}(C^q)_{ji}\right)\delta_j(f).
+\]
+No Cauchy sequence, limiting state, or boundary-tail estimate occurs among the
+hypotheses.
+\end{proposition}
+
+\section{The volume-free boundary tail}
+
+Assume a graph distance $d$ on $I$ and range-one support:
+\[
+  d(j,i)>1\quad\Longrightarrow\quad C_{ji}=0.
+\]
+Matrix multiplication and the triangle inequality imply
+\[
+  q<d(j,i)\quad\Longrightarrow\quad (C^q)_{ji}=0.
+\]
+The row-sum hypothesis propagates to every power,
+\[
+  \sum_i(C^q)_{ji}\le\alpha^q.
+\]
+
+Suppose $0\le b_i\le1$ and every nonzero defect lies at distance at least $R$
+from coordinate $j$.  Then
+\begin{align*}
+  \sum_i b_i\sum_{q\ge0}(C^q)_{ji}
+  &=\sum_{q\ge0}\sum_i b_i(C^q)_{ji}\\
+  &=\sum_{q\ge R}\sum_i b_i(C^q)_{ji}\\
+  &\le\sum_{q\ge R}\alpha^q
+   =\frac{\alpha^R}{1-\alpha}.
+\end{align*}
+The finite sum over sites is moved inside the infinite sum before the row-sum
+bound is applied.  No estimate of the number of defect sites is used.
+
+\begin{theorem}[boundary comparison; machine-checked]
+\label{thm:abstract-boundary}
+Let $\mu,\nu$ be invariant probability weights for two one-site
+specifications $p,q$.  Let $C$ majorize the influence of $p$, with
+$0\le\alpha<1$, row sums at most $\alpha$, and range one in $d$.  Suppose
+\[
+  \TV(p_i(\eta),q_i(\eta))\le b_i\le1
+\]
+and
+\[
+  b_i\ne0,\quad\delta_j(f)\ne0
+  \quad\Longrightarrow\quad R\le d(j,i).
+\]
+Then
+\[
+  \abs{\E_\mu f-\E_\nu f}
+  \le\frac{\alpha^R}{1-\alpha}\sum_j\delta_j(f).
+\]
+\end{theorem}
+
+The terminal Lean declaration is
+\leanline{DobrushinMeasureComparison}{488}{measure_comparison_boundary_decay}.
+The theorem is genuinely two-specification: its only cross-model input is the
+pointwise total-variation defect.  In particular, it does not assume the
+conclusion in the form of a Cauchy estimate or a pre-existing boundary tail.
+
+\section{Specialization to Ising Hamiltonians}
+
+For a symmetric zero-diagonal coupling $J:I\times I\to\R$ and two-state spins
+$\sigma:S\to\{-1,+1\}$, the finite Ising weight is
+\[
+  w_J(\eta)=\exp\!\left(
+    \frac12\sum_{i,k\in I}J_{ik}\sigma(\eta_i)\sigma(\eta_k)
+  \right).
+\]
+The associated heat-bath conditional is strictly positive and normalized.
+Changing spin $k$ moves the local field at $i$ by at most $2\abs{J_{ik}}$, and
+the two-point conditional calculation yields the classical envelope
+\[
+  c_{ik}\le\tanh\abs{J_{ik}}.
+\]
+
+Let $J$ and $K$ live on the same finite site set.  If their complete rows agree
+at $i$, their heat-bath kernels agree exactly at $i$.  On a changed row, total
+variation is bounded by one.  Thus Theorem~\ref{thm:abstract-boundary} applies
+with the defect predicate
+\[
+  D(i)\quad\Longleftrightarrow\quad
+  \exists k,\;J_{ik}\ne K_{ik}.
+\]
+
+\begin{theorem}[Ising row-perturbation comparison; machine-checked]
+\label{thm:ising-boundary}
+Assume the envelope row sums of $J$ are at most $\alpha<1$, and $J$ has range
+one.  If every row changed between $J$ and a second symmetric zero-diagonal
+coupling $K$ is at distance at least $R$ from the active coordinates of $f$,
+then
+\[
+  \abs{\E_J f-\E_K f}
+  \le\frac{\alpha^R}{1-\alpha}\sum_j\delta_j(f).
+\]
+No Dobrushin condition is required of $K$.
+\end{theorem}
+
+The last observation is useful: comparison is oriented.  The reference model
+$J$ supplies the resolvent; the perturbed Hamiltonian needs positivity and
+normalization, but its own influence matrix need not be controlled.  The Lean
+endpoint is
+\leanline{DobrushinIsingComparison}{57}{ising_boundary_comparison}.
+
+\section{Two genuine rectangles}
+
+Let
+\[
+  \Lambda_n=\{0,\ldots,2n\}^2
+\]
+with anisotropic free nearest-neighbour coupling $\beta$ horizontally and
+$\gamma$ vertically.  The square $\Lambda_n$ is embedded centrally in
+$\Lambda_m$ by adding $m-n$ to each coordinate.
+
+Comparing two different finite products requires more than identifying their
+cardinalities.  The formal development performs three exact operations.
+
+\paragraph{Restriction.}
+Delete every bond of the $m$-coupling with at least one endpoint outside the
+central copy of $\Lambda_n$.  The outside spins become uniform spectators.
+The partition sum factors, and normalized expectations of observables that
+ignore the spectators are unchanged.
+
+\paragraph{Reindexing.}
+The active subtype of the large chart is explicitly equivalent to
+$\Lambda_n$.  Under that equivalence the restricted coupling is exactly the
+free $n$-coupling, not merely isomorphic in an informal sense.  Gibbs sums and
+normalizations are transported through the equivalence.
+
+\paragraph{Observable lifting.}
+For $r\le n$, a kernel $g$ on $\Lambda_r$ is lifted to $\Lambda_n$ by
+restriction to the centred core and reindexing.  These lifts compose exactly.
+Outside the core, every coordinate oscillation vanishes.  Inside,
+\[
+  \sum_{j\in\Lambda_n}\delta_j(g^{\uparrow n})
+  \le\abs{\Lambda_r}\osc(g).
+\]
+This is the second place where the ambient volume disappears.
+
+The files \leanfile{DobrushinVolumeRestriction}{DobrushinVolumeRestriction},
+\leanfile{DobrushinVolumeEquiv}{DobrushinVolumeEquiv}, and
+\leanfile{DobrushinRectangleVolume}{DobrushinRectangleVolume} implement these
+steps separately.  Their separation is deliberate: it makes the normalization
+and spectator cancellation auditable independently of the comparison bound.
+
+\begin{theorem}[two-volume estimate; machine-checked]
+\label{thm:two-volume}
+Let $g:(\{0,1\}^{\Lambda_r})\to\R$, and let $g^{\uparrow n}$ denote its
+canonical lift to $\Lambda_n$.  If $r\le n\le m$ and
+\[
+  0\le\alpha<1,
+  \qquad
+  2\tanh\abs\beta+2\tanh\abs\gamma\le\alpha,
+\]
+then
+\[
+  \abs{\E_m(g^{\uparrow m})-\E_n(g^{\uparrow n})}
+  \le
+  \frac{\alpha^{n-r}}{1-\alpha},
+  \abs{\Lambda_r}\osc(g).
+\]
+\end{theorem}
+
+This is
+\leanline{DobrushinRectangleVolume}{278}{centered_local_observable_comparison}.
+Every quantity on the right is fixed once the observable and the smaller
+radius are fixed, except for the decaying distance factor.
+
+\subsection{The visible coupling window}
+
+Every site of a free rectangle has at most two horizontal and two vertical
+neighbours.  Hence the envelope row sum is bounded by
+\[
+  2\tanh\abs\beta+2\tanh\abs\gamma.
+\]
+In the isotropic case $\beta=\gamma$, the condition becomes
+\[
+  4\tanh\abs\beta<1,
+  \qquad
+  \abs\beta<\operatorname{atanh}(1/4)\approx0.2554.
+\]
+This is a sufficient high-temperature window, not the exact critical point
+and not a sharp uniqueness criterion.  Its role here is transparency: the
+same macroscopic Dobrushin window is visible in the finite comparison, the
+limit theorem, and the boundary-independence results.  No cluster-expansion or
+Kotecky--Preiss constant is inherited from the proof architecture.
+
+\section{Whole-sequence thermodynamic limit}
+
+Fix $r$ and $g$ on $\Lambda_r$.  Define the complete sequence
+\[
+  E_n(g)=\E_{r+n}(g^{\uparrow(r+n)}),\qquad n\in\N.
+\]
+Theorem~\ref{thm:two-volume} gives, for $n\le m$,
+\[
+  \abs{E_m(g)-E_n(g)}
+  \le
+  \alpha^n\frac{\abs{\Lambda_r}\osc(g)}{1-\alpha}.
+\]
+Since $\alpha^n\to0$, this is a direct Cauchy proof for the entire sequence.
+Completeness of $\R$ selects a value $\omega_r(g)$, and the same construction
+proves $E_n(g)\to\omega_r(g)$.
+
+\begin{theorem}[complete free-boundary sequence; machine-checked]
+\label{thm:limit}
+In the window of Theorem~\ref{thm:two-volume}, the sequence $E_n(g)$ is Cauchy
+and converges to a constructed real value $\omega_r(g)$.
+\end{theorem}
+
+The Cauchy statement is
+\leanline{DobrushinThermodynamicLimit}{64}{cauchySeq_centeredLocalGibbsExpectation};
+the convergence statement is
+\leanline{DobrushinThermodynamicLimit}{98}{tendsto_infiniteCenteredLocalGibbsExpectation}.
+The declaration order is itself a circularity check: the finite comparison is
+imported by the Cauchy module, the Cauchy theorem constructs the limit, and the
+limit is consumed by convergence.  No earlier declaration takes a Cauchy
+sequence, a limit, or a tail estimate as input.
+
+\section{A compatible positive normalized cylinder-state family}
+\label{sec:state}
+
+At each fixed radius $r$, the finite-volume expectation is linear, positive,
+and normalized.  These properties pass to the complete-sequence limit by
+uniqueness of limits and order closure.
+
+\begin{theorem}[state properties at fixed radius; machine-checked]
+For kernels $f,g:\{0,1\}^{\Lambda_r}\to\R$ and $c\in\R$,
+\begin{align*}
+  \omega_r(f+g)&=\omega_r(f)+\omega_r(g),\\
+  \omega_r(cf)&=c\,\omega_r(f),\\
+  \omega_r(\one)&=1,\\
+  f\ge0&\Longrightarrow\omega_r(f)\ge0.
+\end{align*}
+\end{theorem}
+
+The four declarations begin at
+\leanline{DobrushinInfiniteState}{86}{infiniteCenteredLocalGibbsExpectation_add}
+and end at
+\leanline{DobrushinInfiniteState}{151}{infiniteCenteredLocalGibbsExpectation_nonneg}.
+
+A local observable may be presented at many radii.  If $r\le s$, let
+$\iota_{r,s}g$ be its canonical lift from $\Lambda_r$ to $\Lambda_s$.
+The finite sequences associated with the two presentations are not termwise
+identical: their $n$th terms live in squares of radii $r+n$ and $s+n$.
+The two-volume estimate nevertheless shows that their difference tends to
+zero.  This proves the coherence relation
+\[
+  \omega_s(\iota_{r,s}g)=\omega_r(g).
+\]
+
+\begin{theorem}[compatible cylinder-state family; machine-checked]
+\label{thm:family}
+The family $(\omega_r)_{r\in\N}$ consists of positive normalized real-linear
+functionals and is compatible with every canonical support enlargement.
+\end{theorem}
+
+Lean bundles exactly these fields in
+\leanline{DobrushinInfiniteState}{262}{infiniteCenteredLocalGibbsStateFamily}.
+Equivalently, the machine-checked data are sufficient for a functional on the
+algebraic direct limit of the centred cylinder spaces.  The quotient/direct-
+limit carrier itself is not constructed in the present code, so the formal
+headline remains the compatible family rather than a quotient-level object.
+
+\subsection{Two further canonicality statements}
+
+First, the construction is independent of the auxiliary $\alpha$.  If two
+numbers $\alpha,\alpha'<1$ both dominate the same Ising row sum, both
+completeness constructions are limits of the same finite sequence and hence
+are equal.  This is
+\leanline{DobrushinInfiniteState}{183}{infiniteCenteredLocalGibbsExpectation_independent_alpha}.
+
+Second, if $v:\N\to\N$ is cofinal, then
+\[
+  E_{v(k)}(g)\longrightarrow\omega_r(g).
+\]
+Thus skipping radii, changing the rate at which centred squares grow, or
+repeating finitely many volumes does not change the limit, provided the
+schedule tends to infinity.  The theorem is
+\leanline{DobrushinInfiniteState}{168}{tendsto_infiniteCenteredLocalGibbsExpectation_comp}.
+This is schedule independence within the same shape family; it is not yet a
+comparison with arbitrary non-square F\o lner sets.
+
+\section{Boundary-condition stability}
+\label{sec:boundary}
+
+The finite comparison gives more than free-boundary convergence.  For each
+$n$, let $K_n$ be any symmetric zero-diagonal coupling on $\Lambda_{r+n}$.
+Let $D_n$ be a set of rows such that
+\[
+  i\notin D_n\quad\Longrightarrow\quad
+  K_n(i,k)=J_n^{\mathrm{free}}(i,k)\quad\text{for every }k.
+\]
+Suppose every active coordinate of the lifted observable is at distance at
+least $n$ from every row in $D_n$.  No row-sum hypothesis is imposed on
+$K_n$.
+
+\begin{theorem}[receding row perturbations; machine-checked]
+\label{thm:receding}
+Under the Dobrushin hypothesis for the free reference coupling,
+\[
+  \abs{E_n^{\mathrm{free}}(g)-E_n^{K}(g)}
+  \le
+  \frac{\alpha^n}{1-\alpha}\abs{\Lambda_r}\osc(g),
+\]
+and
+\[
+  E_n^{K}(g)\longrightarrow\omega_r(g).
+\]
+The assumptions on $(K_n)$ are local row equality, symmetry, zero diagonal,
+and separation from the fixed support.  They do not include Cauchy or
+convergence of $E_n^K$.
+\end{theorem}
+
+The generic convergence endpoint is
+\leanline{DobrushinInfiniteState}{328}{tendsto_centeredPerturbedGibbsExpectation}.
+This result covers boundary modifications expressible by changed interaction
+rows on the common chart.  Fixed external fields would require an explicit
+one-body or ghost-site encoding and are not silently included.
+
+\subsection{Periodic rectangles}
+
+For an actual boundary condition, the formalization defines cyclic adjacency
+on each finite coordinate and the corresponding anisotropic periodic coupling.
+Periodic and free rows agree away from the four edges.  If the observable is
+supported in $\Lambda_r\subset\Lambda_{r+n}$, every edge row is at Manhattan
+distance at least $n$ from every active coordinate.  Theorem~\ref{thm:receding}
+therefore applies directly.
+
+\begin{theorem}[free--periodic equality; machine-checked]
+\label{thm:periodic}
+Throughout
+\[
+  0\le\alpha<1,
+  \qquad
+  2\tanh\abs\beta+2\tanh\abs\gamma\le\alpha,
+\]
+the complete periodic sequence satisfies
+\[
+  E_n^{\mathrm{per}}(g)\longrightarrow\omega_r(g),
+\]
+the same limit as the complete free-boundary sequence.
+\end{theorem}
+
+The concrete endpoint is
+\leanline{DobrushinInfiniteState}{468}{tendsto_centeredPeriodicGibbsExpectation}.
+The periodic model itself need not be re-analysed by a second Dobrushin
+argument: the oriented comparison uses the free resolvent and the fact that
+periodicity changes only boundary rows.
+
+\section{Proof architecture and kill tests}
+
+The proof was designed around failure modes that can survive informal
+notation.
+
+\paragraph{No hidden limit premise.}
+The abstract comparison theorem is finite.  The rectangle theorem imports it.
+Only then is Cauchy proved, and only Cauchy is passed to completeness.  The
+boundary-perturbed sequence is shown convergent from a quantitative comparison
+with the already constructed free sequence; its convergence is not assumed.
+
+\paragraph{No synthetic common-volume shortcut.}
+The smaller Gibbs measure is not defined by assertion on the larger space.
+Spectator spins are eliminated by an exact partition-sum factorization, and an
+explicit equivalence reindexes the remaining Gibbs sum.  These modules
+participate in the terminal comparison theorem.
+
+\paragraph{No volume factor.}
+The sum over defect sites is performed inside the resolvent.  The vanishing of
+short matrix powers and the row-sum estimate are used before any cardinality
+bound.  The only cardinality in Theorem~\ref{thm:two-volume} is the fixed
+support size $\abs{\Lambda_r}$.
+
+\paragraph{No drifting observable norm.}
+The canonical lift has zero coordinate oscillation outside the core.  Its
+total coordinate oscillation is bounded by the fixed core cardinality times
+the global oscillation of the original kernel.
+
+\paragraph{No hidden cluster-expansion window.}
+The terminal theorem types mention only $0\le\alpha<1$ and the explicit Ising
+row-sum inequality.  The proof reuses the architecture of a separate
+thermodynamic-limit development but none of its Kotecky--Preiss hypotheses.
+
+\paragraph{No false translation coercion.}
+The existing $\Z^2$ action elsewhere in the repository is typed for gauge-link
+coordinates.  It is not coerced into a site-spin action.  Translation
+covariance remains a stated frontier.
+
+\section{Relation to classical work}
+
+Dobrushin's 1968 paper formulates regularity and uniqueness conditions through
+conditional probabilities \cite{Dobrushin1968}; the 1970 paper develops the
+prescription of random fields by conditional distributions and the associated
+comparison machinery \cite{Dobrushin1970}.  The resolvent-based covariance
+estimate is classically associated with Follmer \cite{Follmer1982}.  The
+finite-spin Ising specialization used here is standard: the single-bond
+conditional has a hyperbolic-tangent variation, and summing those envelopes
+gives the Dobrushin coefficient.
+
+The new content is not a stronger uniqueness region.  It is the explicit,
+kernel-checked assembly of the following interfaces in Lean~4:
+\[
+\begin{gathered}
+\text{sitewise TV defects}
+\Longrightarrow
+\text{two-specification comparison}
+\Longrightarrow
+\text{two genuine rectangles}\\
+\Longrightarrow
+\text{whole-sequence Cauchy}
+\Longrightarrow
+\text{compatible positive normalized family}\\
+\Longrightarrow
+\text{receding-boundary stability}
+\Longrightarrow
+\text{free--periodic equality}.
+\end{gathered}
+\]
+We make no categorical priority claim about formalizations in other proof
+assistants.  The reproducible contribution is the particular Lean theorem
+chain and its audited source anchor.
+
+\section{Formal audit and reproducibility}
+\label{sec:audit}
+
+The development uses Lean~4 and Mathlib \cite{Lean4,Mathlib}.  Table
+\ref{tab:api} lists the principal terminal declarations.  The source links are
+immutable because they include the source commit rather than a moving branch.
+
+\begingroup
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.58\textwidth}
+                  >{\raggedright\arraybackslash}p{0.34\textwidth}}
+\caption{Machine-checked API at the source freeze.}\label{tab:api}\\
+\toprule
+Lean declaration & Mathematical role\\
+\midrule
+\endfirsthead
+\toprule
+Lean declaration & Mathematical role\\
+\midrule
+\endhead
+\leanline{DobrushinMeasureComparison}{488}{measure_comparison_boundary_decay}
+& Abstract volume-free boundary tail.\\
+\leanline{DobrushinIsingComparison}{57}{ising_boundary_comparison}
+& Two Ising couplings on one chart.\\
+\leanline{DobrushinRectangleVolume}{278}{centered_local_observable_comparison}
+& Genuine two-rectangle estimate.\\
+\leanline{DobrushinThermodynamicLimit}{64}{cauchySeq_centeredLocalGibbsExpectation}
+& Cauchy property of the complete sequence.\\
+\leanline{DobrushinThermodynamicLimit}{98}{tendsto_infiniteCenteredLocalGibbsExpectation}
+& Construction and convergence of the limit.\\
+\leanline{DobrushinInfiniteState}{183}{infiniteCenteredLocalGibbsExpectation_independent_alpha}
+& Independence of the auxiliary envelope.\\
+\leanline{DobrushinInfiniteState}{200}{infiniteCenteredLocalGibbsExpectation_lift}
+& Coherence under support enlargement.\\
+\leanline{DobrushinInfiniteState}{262}{infiniteCenteredLocalGibbsStateFamily}
+& Positive normalized compatible family.\\
+\leanline{DobrushinInfiniteState}{328}{tendsto_centeredPerturbedGibbsExpectation}
+& Generic receding-boundary stability.\\
+\leanline{DobrushinInfiniteState}{468}{tendsto_centeredPeriodicGibbsExpectation}
+& Free--periodic exhaustion equality.\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection*{Build protocol}
+
+The release protocol is:
+\begin{enumerate}
+\item clone the public repository and detach at the frozen source commit;
+\item restore Mathlib/Lake artifacts with \texttt{lake exe cache get};
+\item build the terminal module
+  \texttt{YangMills.OS.DobrushinInfiniteState};
+\item build \texttt{YangMillsCore};
+\item run \texttt{lake env lean oracle\_check.lean};
+\item compile this manuscript twice with \texttt{pdflatex};
+\item render every PDF page to PNG and inspect page geometry and typography.
+\end{enumerate}
+The release manifest accompanying the PDF records exact commands, exit codes,
+times, byte counts, and SHA-256 digests.  A source file being present is not
+reported as verified unless its target was materialized successfully.
+
+\section{Limitations and next theorem}
+
+The current result is materially stronger than a centred scalar limit: it is
+a compatible family of positive normalized real-linear functionals, stable
+under cofinal resampling and under free--periodic boundary change.  Three
+boundaries remain.
+
+\begin{enumerate}
+\item \textbf{Full translations.}  A site-cylinder observable type on
+  $\Z^2$, its additive action including inverse translations, and shifted
+  rectangle charts have not been implemented.  Consequently this paper does
+  not assert $\omega(\tau_x f)=\omega(f)$ for all $x\in\Z^2$.
+\item \textbf{Arbitrary shapes.}  Cofinal schedules of centred squares and
+  the free--periodic pair are covered.  Arbitrary aspect ratios, general
+  F\o lner exhaustions, and all one-body boundary fields are not bundled.
+\item \textbf{Completed algebra.}  Compatibility supplies the data expected
+  of the algebraic direct limit, but the quotient carrier, norm completion,
+  and C$^*$-state structure are not formalized.
+\end{enumerate}
+
+The natural next theorem is therefore not another finite-volume decay bound.
+It is a covariant site-cylinder state: build the $\Z^2$ action, show that
+translated presentations compare through shifted rectangles, and combine
+that covariance with Theorem~\ref{thm:family}.  The boundary comparison proved
+here is already the analytic input; the remaining work is geometric and
+algebraic packaging.
+
+\section{Conclusion}
+
+The thermodynamic limit is obtained from the estimate that was actually
+missing: a two-volume comparison whose cost is the distance from a fixed
+support to a changed boundary.  Random-scan telescoping produces the
+Dobrushin resolvent; finite propagation kills powers shorter than that
+distance; row sums bound the remaining geometric tail.  Exact restriction and
+reindexing then identify the comparison with two genuine Gibbs rectangles.
+
+The final Lean development proves the complete free sequence convergent,
+packages its values into a compatible positive normalized cylinder-state
+family, removes dependence on the auxiliary envelope and on cofinal sampling,
+and proves that periodic and free rectangles select the same limit.  The
+visible region remains the Dobrushin window, rather than a constant imported
+from a cluster expansion.  Translation invariance on the full lattice is left
+as a precise next step, not hidden behind terminology.
+
+\appendix
+
+\section{Dependency map}
+
+The terminal import chain is
+\[
+\begin{array}{c}
+\texttt{DobrushinConditional},\ 
+\texttt{DobrushinComparison},\ 
+\texttt{DobrushinGibbs},\ 
+\texttt{DobrushinIsing},\ 
+\texttt{DobrushinLattice}\\[0.3em]
+\Downarrow\\[-0.1em]
+\texttt{DobrushinMeasureComparison}
+\longrightarrow
+\texttt{DobrushinIsingComparison}\\[0.3em]
+\Downarrow\\[-0.1em]
+\texttt{DobrushinVolumeRestriction}
+\quad+
+\quad\texttt{DobrushinVolumeEquiv}\\[0.3em]
+\Downarrow\\[-0.1em]
+\texttt{DobrushinRectangleVolume}
+\longrightarrow
+\texttt{DobrushinThermodynamicLimit}
+\longrightarrow
+\texttt{DobrushinInfiniteState}.
+\end{array}
+\]
+Each arrow corresponds to an actual Lean import and theorem consumption.  The
+Kotecky--Preiss thermodynamic-limit development is an architectural precedent,
+not an analytic dependency of the Dobrushin terminal theorem.
+
+\section{Glossary of scopes}
+
+\begin{description}
+\item[Complete sequence.] Every $n\in\N$ is used; no compactness subsequence is
+  selected.
+\item[Cofinal schedule.] A map $v:\N\to\N$ tending to infinity; monotonicity is
+  unnecessary.
+\item[Centred cylinder presentation.] A real kernel on configurations of one
+  finite centred square, with canonical lifts to larger centred squares.
+\item[Compatible state family.] One positive normalized linear functional at
+  each radius, with equality under canonical lift.
+\item[Receding boundary perturbation.] A coupling whose changed rows are at
+  graph distance at least $n$ from the fixed support at stage $n$.
+\item[Periodic exhaustion.] The explicit cyclic nearest-neighbour coupling on
+  every odd square; not an informal boundary-condition label.
+\item[Not included.] Full $\Z^2$ translation covariance, arbitrary shapes, a
+  C$^*$ completion, or a Yang--Mills conclusion.
+\end{description}
+
+\begin{thebibliography}{99}
+
+\bibitem{Dobrushin1968}
+R.~L. Dobrushin,
+\newblock The description of a random field by means of conditional
+probabilities and conditions of its regularity,
+\newblock \emph{Theory of Probability and Its Applications} 13 (1968),
+197--224.
+\newblock \href{https://doi.org/10.1137/1113026}{doi:10.1137/1113026}.
+
+\bibitem{Dobrushin1970}
+R.~L. Dobrushin,
+\newblock Prescribing a system of random variables by conditional
+distributions,
+\newblock \emph{Theory of Probability and Its Applications} 15 (1970),
+458--486.
+\newblock \href{https://doi.org/10.1137/1115049}{doi:10.1137/1115049}.
+
+\bibitem{Follmer1982}
+H.~Follmer,
+\newblock A covariance estimate for Gibbs measures,
+\newblock \emph{Journal of Functional Analysis} 46 (1982), 387--395.
+\newblock \href{https://doi.org/10.1016/0022-1236(82)90053-2}{doi:10.1016/0022-1236(82)90053-2}.
+
+\bibitem{Lean4}
+L.~de Moura and S.~Ullrich,
+\newblock The Lean 4 theorem prover and programming language,
+\newblock in \emph{Automated Deduction -- CADE 28}, LNCS 12699, 2021,
+625--635.
+\newblock \href{https://doi.org/10.1007/978-3-030-79876-5_37}{doi:10.1007/978-3-030-79876-5\_37}.
+
+\bibitem{Mathlib}
+The Mathlib Community,
+\newblock The Lean mathematical library,
+\newblock in \emph{Proceedings of CPP 2020}, 367--381.
+\newblock \href{https://doi.org/10.1145/3372885.3373824}{doi:10.1145/3372885.3373824}.
+
+\end{thebibliography}
+
+\end{document}

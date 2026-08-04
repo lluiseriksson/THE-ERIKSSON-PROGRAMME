@@ -1,6 +1,9 @@
 # (45) D-7 por trasplante Dobrushin
 
-Estado: borrador congelable para auditoría externa; no es un dictamen terminal.
+Estado: manuscrito completo y objeto congelable para auditoría externa; no es
+un dictamen terminal. El paper maquetado vive en
+`papers/dobrushin-thermodynamic-limit/` y el PDF en
+`output/pdf/dobrushin_thermodynamic_limit.pdf`.
 
 ## Resultado probado
 
@@ -18,6 +21,14 @@ De esta cota se deduce Cauchy para la secuencia entera de radios `r+n`, se
 construye el límite por completitud de `ℝ` y se prueba convergencia al valor
 construido. No se supone Cauchy, convergencia, existencia de estado infinito ni
 una estimación de cola de frontera.
+
+El límite se empaqueta además, radio a radio, como una familia compatible de
+funcionales reales lineales, positivos y normalizados sobre kernels
+cilíndricos centrados. Se demuestra independencia del parámetro auxiliar
+`α`, de la presentación del radio de soporte y de todo muestreo cofinal. Una
+segunda aplicación de la comparación prueba estabilidad frente a
+perturbaciones de filas que retroceden hacia la frontera y, en particular, que
+las exhaustiones libres y periódicas explícitas convergen al mismo límite.
 
 La ventana utilizada en todos los teoremas concretos es
 
@@ -44,6 +55,9 @@ En el caso isótropo esto conserva `tanh|β| < 1/4`, es decir
 - `DobrushinRectangleVolume`: chart centrado, geometría del corte, soporte y
   oscilación uniformes, y comparación de dos volúmenes genuinos.
 - `DobrushinThermodynamicLimit`: secuencia entera, Cauchy, límite y convergencia.
+- `DobrushinInfiniteState`: linealidad, positividad, normalización,
+  compatibilidad entre radios, independencia canónica, estabilidad de frontera
+  y comparación libre--periódica.
 
 El brick KP se reutiliza como arquitectura de prueba (chart común, cota
 par-a-par, Cauchy de toda la secuencia y selección del límite), no como
@@ -72,10 +86,11 @@ instanciar honestamente con spins de sitios Ising.
   transportado todavía al nuevo tipo de observables de spins. El código KP
   actúa sobre coordenadas de enlaces gauge; reutilizarlo por coerciones sería
   falso. Falta construir el observable cilíndrico de sitios sobre `ℤ²` y
-  comparar charts rectangulares desplazados (o una aproximación periódica) para
-  demostrar invariancia del límite. Por tanto este draft prueba el límite
-  termodinámico local centrado, no certifica aún un estado `ℤ²` plenamente
-  covariante.
+  comparar charts rectangulares desplazados para demostrar invariancia del
+  límite. La periodicidad finita sí está formalizada, pero no sustituye la
+  acción trasladada sobre el portador infinito. Por tanto el paper prueba una
+  familia compatible de estados cilíndricos centrados, no certifica aún un
+  estado `ℤ²` plenamente covariante ni su completación C*.
 - No se afirma ninguna consecuencia adicional para Yang–Mills.
 
 ## Fuentes primarias
@@ -96,6 +111,11 @@ instanciar honestamente con spins de sitios Ising.
 4. `YangMills/OS/DobrushinVolumeEquiv.lean`
 5. `YangMills/OS/DobrushinRectangleVolume.lean`
 6. `YangMills/OS/DobrushinThermodynamicLimit.lean`
-7. `YangMillsCore.lean`
-8. `oracle_check.lean`
-9. `docs/DOBRUSHIN-D7-DRAFT.md`
+7. `YangMills/OS/DobrushinInfiniteState.lean`
+8. `YangMillsCore.lean`
+9. `oracle_check.lean`
+10. `docs/DOBRUSHIN-D7-DRAFT.md`
+11. `papers/dobrushin-thermodynamic-limit/dobrushin_thermodynamic_limit.tex`
+12. `papers/dobrushin-thermodynamic-limit/README.md`
+13. `papers/dobrushin-thermodynamic-limit/RELEASE-MANIFEST.md`
+14. `output/pdf/dobrushin_thermodynamic_limit.pdf`
