@@ -30804,3 +30804,57 @@ instantiation, and the public corollary through abstract_uniform_gap.
 
 **ROLES.**  Score and verdict are the evaluator's; the record is this
 desk's; the click is the owner's.
+
+## Addendum 603 (2026-08-04, **D-6 COMPLETE: the currying discharge and THE
+PUBLIC DOBRUSHIN-ISING COROLLARY, green and oracled at exactly 8480/3010**)
+
+**The single weld is a Lean theorem.**
+`YangMills/OS/DobrushinCorollary.lean` (sha256 `ffdc5a6a…`, 34006 bytes,
+anchor `c7b870b05`): `adj_pairing` (the 1D nearest-neighbour pairing:
+ordered double sum = twice the step sum); `rectJ_energy_split` (the
+rectangle coupling's halved ordered double energy = single-counted
+temporal energy at β plus spatial at γ — exactly the half `isingWeight`
+carries); **`curry_weight`** (the free strip Gibbs weight IS the rectangle
+Ising weight under currying — exact, no measure approximates another);
+**`freeCov_eq_rect_covar`** (the tilt layer's free covariance IS the
+rectangle covariance of end-slice observables); `row_deltaAt_zero/zero'`
+and `row_deltaAt_le/le'` (end-slice observables oscillate only on their
+slice, at slice-level oscillations); **`rect_feed`** (the family
+theorem's decay fed through: every site pair at rectangle distance ≥ the
+horizon, `α^{d□}` becomes `α^T`, slice oscillation-sum constants); and
+**`dobrushin_ising_uniform_gap`** — THE PUBLIC COROLLARY (charter
+Amendment 2, theorem (ii)): inside the window `2tanh|β|+2tanh|γ| ≤ α <
+1`, ONE `m > 0` bounds `‖projectedTransfer‖ ≤ e^{−m}` for normalised
+Perron data of the coupled kernel at EVERY extent, through
+`abstract_uniform_gap`.  Ising certifies the abstract bridge is
+inhabited by the physical family; the bridge never mentions it.
+
+**Verification (six passes across two fresh runtimes — the session
+teardown killed the first runtime's client-side queue mid-flight, one
+rerun cost — every child zero at the end).**  The error ladder:
+20 → 9 → 5 → 4 → 2 → 0, EVERY one machinery, ZERO mathematical: pin
+renames (`update_of_ne`/`update_self`/`pow_le_pow_of_le_one`); a `have`
+made the currying equiv OPAQUE and its `rfl` died (data must be `let` or
+inlined — the house note is worth its sentence); a duplicate
+`deltaAt_nonneg` (DobrushinConditional already had it); a doubled
+`le_trans`+`calc`; a Fintype instance stuck on `rectJ`'s metavariable
+extents (pinned by name at all twelve sites); four rewrites blind to
+beta-redexes (given `show`s); `Finset.sum_div` used backwards; a congr
+cascade against divisions (replaced by one `hE2` identification lemma);
+and five closers that died as the chains beneath them became exact.
+**Core «Build completed successfully (8480 jobs)» — the SEVENTH
+consecutive exact prediction** (8475…8480).  **Oracle: 3010 reports (the
+predicted +6, the EIGHTH exact), 0 sorryAx, union = exactly {propext,
+Classical.choice, Quot.sound}** (wrapped continuations read).  Corollary
+build log: 0 errors.  Local committed blob = the plane's stage-5 hash.
+
+**D-6 IS CLOSED.**  Both public theorems of Amendment 2 are oracled Lean
+theorems; the chain local interaction ⟹ Dobrushin matrix ⟹ uniform
+Gibbs decay ⟹ band decay ⟹ uniform operator gap is machine-checked end
+to end, with the abstract bridge stated free of Ising and inhabited by
+it.  What the paper's Section on the transport declared open is open no
+longer; the paper's v2 inks it as a corollary without touching a printed
+theorem.
+
+**ROLES.**  This desk fabricates; the rung's audit belongs to another
+desk; no score.
