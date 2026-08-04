@@ -48,7 +48,8 @@ theorem cmp99RegionalGreenCorrection_single_eq_zero_of_value_eq_zero
         (singleFinitePiLp source v) = 0 := by
   unfold cmp99RegionalGreenCorrection
   rw [ContinuousLinearMap.comp_apply, ContinuousLinearMap.comp_apply]
-  rw [finitePiLpScalarMultiplier_single, hzero, zero_smul]
+  rw [cmp99RegionalSquareMultiplier, finitePiLpScalarMultiplier_single,
+    hzero, zero_smul]
   simp
 
 /-- A uniform single-cell exponential estimate sums with the literal source
