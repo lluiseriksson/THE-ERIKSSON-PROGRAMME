@@ -31187,3 +31187,37 @@ calibration recorded in HANDOFF-OS-R.md section 2.
 **ROLES.**  Test authorship and execution: this desk, criterion frozen
 in the script header before the run.  The structural claims (a)/(b) are
 classical and were verified numerically by the same run that used them.
+
+
+## Addendum 612 (2026-08-04, **OS-R priority collation: the naked
+first-reconstruction claim is DEAD; the volume-uniform claim survives
+with named competitors; a live Harvard programme occupies the field**)
+
+Charter-mandated collation (before any abstract), four independent web
+sweeps, full evidence in docs/OS-R-PRIORITY-COLLATION.md.  Rulings:
+(1) "first machine-checked OS reconstruction" (unqualified) is DEAD --
+mrdouglasny/reflection-positivity machine-checks the abstract RP ->
+Hilbert -> self-adjoint contractive transfer operator construction
+sorry-free (~2026-06), and xiyin137/OSreconstruction attempts the full
+OS<->Wightman theorem (incomplete, 53 sorries + 12 axioms).
+(2) "first machine-checked RP/OS axioms" is DEAD (OSforGFF,
+arXiv:2603.15770, GFF d=4, 0 sorries).  (3) "first formalized
+Dobrushin uniqueness" is DEAD (mrdouglasny/lgt, lattice YM, U(n),
+complete 2026-05-04, with measure-side exponential clustering whose
+constants depend only on (n,d,beta)); our dobrushin-matrix paper is
+SAFE (its prior-work section already declined the claim) but future
+revisions must cite lgt.  (4) SURVIVES: "first machine-checked
+volume-uniform spectral gap of a concrete, reconstructed transfer
+operator" -- nothing found carries {concrete model, PROVED gap,
+volume-uniform} together on the reconstructed side; the closest
+framework (reflection-positivity's GappedTransfer) carries the gap as
+an UNDISCHARGED HYPOTHESIS, which is exactly the shape our endpoint
+discharges.  Strategic: Douglas (Harvard CMSA) + Yin run a live
+programme whose declared fronts are OS reconstruction, P(phi)_2, and
+strong-coupling YM -- the niche will not stay open; cite their repos
+generously and ship.  Method note recorded: one agent's negative
+("Dobrushin: empty") was overturned by another's repo-level positive;
+the union of modalities governs, never a single sweep's negative.
+
+**ROLES.**  Sweeps: four independent search agents.  Synthesis,
+rulings, and the conservative-reading rule: this desk.
