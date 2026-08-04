@@ -20,6 +20,13 @@ require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git" @
     "07642720480157414db592fa85b626dafb71355b"
 
+-- Exact two-dimensional SU(2) heat-kernel input.  The revision is frozen:
+-- the bridge modules below consume concrete Haar integrals and character
+-- convolution theorems, never an unpinned moving branch.
+require «lean-2d-yang-mills» from git
+  "https://github.com/lluiseriksson/lean-2d-yang-mills.git" @
+    "05c4ec316cb9aa295416670a2578b1c2e77e1c36"
+
 lean_lib «MarkedRootedClosure» where
   -- C1 paper endpoints (lean-rooted-tree-polymer-expansion, integrated
   -- 2026-07-11; exact applications of pinned core theorems)

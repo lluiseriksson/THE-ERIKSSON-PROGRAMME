@@ -29315,3 +29315,1781 @@ recorded because the record is what the next campaign reads.  Ten versions of a
 paper is exactly when the ledger entry stops feeling urgent and starts being
 necessary.  Written now, after the fact, and dated as such rather than
 back-dated.
+
+## Addendum 570 (2026-08-01, **D-1: the Dobrushin matrix, and a wall that was
+in the wrong place**)
+
+**WHY THIS LANE EXISTS, and it is a finding about the record rather than about
+mathematics.**  Every uniform statement of the S block is proved by Schur's test
+on CONSTANT row sums (`SpatialUniform.lean`).  `coupled_rowSums_not_constant`
+(`SpatialExtent.lean`) proves those row sums stop being constant the moment the
+spatial weight is switched on, and the module labels it THE OBSTRUCTION.  It
+obstructs the METHOD.  The stronger reading --- that the weight destroys
+uniformity --- was already RETRACTED of record in Addendum 561 as unproved, and
+what survived was a measurement of degeneracy.  The retracted claim nevertheless
+kept selecting targets.  **A retracted sentence was purged from the paper, from
+the module and from the submission form, and went on living in the work queue,
+where no guard looks.**
+
+**MEASURED, BEFORE ANY LEAN.**  `r(L) = |lambda_1|/|lambda_0|` of the coupled
+symmetrised transfer matrix, `L = 2..12`, free spatial boundary.  In every tested
+cell of the disordered region (`sinh 2b · sinh 2g < 1`) the ratio SATURATES
+strictly below one --- Aitken limits 0.121, 0.292, 0.523, 0.816, 0.457, 0.808,
+with geometric increment ratios near 0.6.  In both ordered cells it reaches one
+to six decimals (1.000003, 1.000000).  **The degeneracy is a property of the
+ORDERED phase, and the boundary is Onsager's line, not the switching-on of the
+weight.**  The `g = 0` control reproduces `tanh b` to six decimals, which is the
+PROVED `spatialKernel_specGap_eq`: the harness is validated against a theorem of
+this repository, not against itself.
+
+**CHARTER AND JUDGES FIRST.**  `docs/DOBRUSHIN-CHARTER.md` and
+`scripts/judge_dobrushin.py` were committed together at `118e32e9`, before a line
+of Lean.  Three SEPARATE gates, none bundling a theorem with its witness (the
+Addendum-548 / paper-12 gate-B lesson), each exiting NON-ZERO on failure (the
+paper-12 artefact defect).  J2 predicts D-1 as a NUMBER rather than sampling it:
+worst slack `-3.078e-04`, where a POSITIVE slack would refute the lemma.  J3
+checks the window is non-empty AND conservative: 9818 Dobrushin points, none
+outside the disordered region, and 30718 Onsager points outside Dobrushin ---
+so the window is explicit and provably NOT sharp.
+
+**D-1 (`YangMills/OS/DobrushinMatrix.lean`).**  Pure linear algebra over a finite
+index type.  For `C >= 0` supported on pairs at distance at most one, with row
+sums BOUNDED (never constant) by `alpha < 1`:
+
+    sum_{n < N} (C^n) i j  <=  alpha ^ dist(i,j) / (1 - alpha)   for every N,
+
+and the same for the series.  **No cardinality of the index type appears
+anywhere**, and that is the entire point: it is where volume-freeness comes from,
+and it is exactly the hypothesis the coupled kernel still satisfies after Schur's
+test has died.  Route: entries are dominated by row sums, row sums multiply, and
+a walk of `n` steps of range one cannot cross a larger distance (the only use of
+the triangle inequality).
+
+**NON-VACUITY.**  A three-point chain carrying `1/4` on every admissible pair:
+`alpha = 3/4 < 1`, endpoints genuinely at distance `2`, `C` not the zero matrix,
+and the conclusion says something --- the whole resolvent series between the ends
+is at most `9/4`.
+
+**MEASUREMENT (exclusive window, this tree).**  Core **8465 -> 8466 jobs**, the
+delta MEASURED by rebuilding the same tree with the import removed and restored,
+not inferred from the registered baseline.  Oracle: 14 declarations, all
+`[propext, Classical.choice, Quot.sound]`, zero `sorryAx`, zero nonstandard.
+
+**WHAT THIS IS NOT.**  Dobrushin's theorem is CLASSICAL; nothing here is new
+mathematics.  D-1 carries no probability, no Gibbs measure and no physics claim,
+and none may be attached to it.  The bottleneck of the lane is D-3 (comparison
+=> exponential decay of connected correlations), untouched.  The consumer
+`volumeUniform_gap` (`TransferGap.lean:546`) exists and was verified by
+elaboration; its quantifier order is load-bearing --- `C` may depend on the
+volume, only `r` is common --- so this lane's own standing objection about
+`C(L)` diverging does not apply to it.  No consequence for Yang-Mills is stated
+or implied.
+
+**CORRECTION OF RECORD.**  An earlier reading of this desk asserted that
+`ReflectionSplitting` could be instantiated directly by the paper-13 producer
+(`bondEquiv`, `gibbsWeight_joinBond`).  WITHDRAWN.  `GaugeData` carries ONE
+shared `weight : ZMod N -> R` for all plaquettes and cannot express an
+anisotropic cell; the connection needs `weight : Plaq -> ZMod N -> R` first,
+registered as D-0 and NOT claimed as free.
+
+**ROLES.**  This session FABRICATED and does not audit itself.  No external
+verdict exists, and no claim of "delivered" is made.
+
+## Addendum 571 (2026-08-01, **the audit round of the Dobrushin lane: what an
+outside desk found, what survived my own re-verification, and one gate I did
+NOT take**)
+
+**PROVENANCE AND TIMING, recorded first because they are the point.**  A second
+desk audited D-1 and returned findings through a cross-session channel.  Nothing
+in that message was adopted on trust: every claim below was re-checked against
+this tree or against sources, by this desk, before anything moved.  Charter
+Amendment 1 is `9a79eac3`.
+
+**WHAT SURVIVED (three corrections, all mine to make).**
+
+  * `coupled_rowSums_not_constant` is at `SpatialExtent.lean:208`.  The charter
+    cited `:205`, where its docstring begins.  A reference that names the right
+    object and points one paragraph early --- the deictic class already on the
+    record.
+  * **Prohibition 4 claimed more than it can, and is CUT.**  It listed "explicit
+    constants" among the surviving novelties of the lane.  The cell here is the
+    anisotropic two-dimensional Ising model, whose transfer spectrum has been in
+    closed form since Onsager (1944) and Kaufman (1949); the Dobrushin constant
+    is WORSE than the exact answer by a factor measured between 2 and 36.  What
+    replaces it is **generality** --- the coefficient is read off the single-site
+    conditionals of an ARBITRARY positive finite-range slice weight, which is
+    what `gibbsWeight` quantifies over and where the exact solution is silent.
+    **Two surviving axes, not three.**  The correction moves the merit, it does
+    not remove it.
+  * **J2 did not exercise its own theorem's distinctive hypothesis.**  The module
+    docstring says the point is row sums BOUNDED by `alpha` and never constant
+    --- the crack the coupled kernel falls through --- and J2 normalised every
+    row to EXACTLY `alpha`.  Redesigned with deterministically UNEQUAL row sums,
+    one attaining `alpha` and the rest strictly below, plus an assertion that the
+    construction really is unequal.  STRICTLY HARDER, declared in the gate's own
+    docstring, committed BEFORE being run.  Re-run at this commit: **PASS**,
+    worst slack `-3.117e-04` (was `-3.078e-04` under the weaker construction).
+    All three gates PASS.
+
+**TWO TRAPS, registered as prohibitions 6 and 7.**  Of J1's eight cells only two
+lie inside the Dobrushin window --- `(0.1,0.1)` at `alpha = 0.399` and
+`(0.2,0.2)` at `alpha = 0.790` --- while the other four disordered cells sit at
+`alpha` between `1.165` and `1.527`.  J1 measures the whole disordered phase and
+licenses exactly one claim: where the degeneracy lives.  **Its table may never be
+printed as evidence FOR the theorem.**  And `⟪Ω, · Ω⟫` is an infinite-time state,
+so writing `connCorr` as a two-point function of the Gibbs measure must run
+through finite `M` with explicit boundary control, taking `M -> ∞` only at the
+level of the BOUND --- a design decision taken HERE, not a discovery to be made
+inside D-4.
+
+**THE GATE I DID NOT TAKE.**  That desk also proposed a necessary-condition gate:
+`r_inf <= alpha` on every in-window cell, since a bound cannot decay faster than
+what it bounds; one violation refutes D-3 and no Lean repairs it.  The reasoning
+is correct and I verified the claim INDEPENDENTLY, writing the check from the
+statement of the obligation rather than from their script: **PASS on 12 in-window
+cells, minimum margin 2.003x**, and as `gamma -> 0` the ratio tends to `2.0007`
+while `r_inf -> tanh(beta)`, which is the PROVED `spatialKernel_specGap_eq` of
+paper 11 --- so the constant is calibrated against a theorem this repository owns,
+the same discipline already applied to the harness.  **It is NOT adopted.**
+Taking a gate authored by the desk next door is the owner's call, and if it is
+ever taken this entry is the record that it came from outside and that it passed
+BEFORE it was taken.  A gate the fabricator chose is not a judge, and this
+programme has that failure mode registered twice.
+
+**PRIOR-ART CORRECTION.**  Addendum 570's lane notes leaned on a search result
+reporting no formalisation of the Ising model.  Too strong: `arXiv:2606.29687`
+formalises the transverse-field Ising chain in Lean 4 with momentum-mode
+decomposition, Jordan-Wigner and Anderson pseudospin.  It is the quantum chain,
+not the classical two-dimensional transfer matrix, so it displaces nothing in
+this lane --- but the blanket sentence does not survive review and is withdrawn.
+
+**NOT THIS DESK'S TO ACT ON, and passed to the owner unexecuted:** a claimed
+priority note against `2607.0085` of the S block (Perron-Frobenius for
+irreducible nonnegative matrices already in mathlib), `arXiv:2606.07922`
+(Washburn & Simons) as the nearest non-mechanised neighbour --- neither verified
+here --- and a proposal to synthesise the fifteen S-block papers into one
+monograph.
+
+**D-1 ITSELF IS UNTOUCHED.**  Still green, core 8466, oracle 14/14, zero
+`sorryAx`.  What changed in this round was a charter and an instrument, never a
+theorem.
+
+## Addendum 572 (2026-08-01, **the Dobrushin lane reproduced on the sanctioned
+plane, and the paper it actually supports**)
+
+**COLAB RUNTIME.**  Opened 14:10, closed 15:06, CPU / high-RAM (Python 3), never
+GPU, one runtime owned by one thread, disconnected the moment the work unit
+finished.  Notebook `Untitled83.ipynb`; clone at `1e4f9c0f`.  Stage 0 verified
+repo SHA, toolchain `leanprover/lean4:v4.29.0-rc6` and the Mathlib pin
+`0764272048...` **before compiling anything**, and would have aborted on any
+mismatch.
+
+**WHAT THE PLANE ADDED, and it is why the trip was worth taking.**
+
+  * `lake build YangMillsCore` → **8466 jobs, zero errors**, in a fresh Linux
+    clone.  The desktop had measured 8465 → 8466 by rebuilding the same tree
+    twice; the number is no longer a Windows-only artefact.
+  * Repository-wide oracle → exit **zero**, **2794** axiom reports, **zero**
+    `sorryAx`.
+  * Both certifiers in **`normal` AND `optimized`** (`python -O`): four runs,
+    four zero sentinels, 29/29 and 18/18 checks accounted for.  This is the
+    first time the `-O` discipline of the environment rule was exercised on real
+    gates rather than asserted.
+  * **Independent hash agreement.**  A second desk, on another operating system
+    and without coordinating on the value, reported
+    `12c1fcdb12e39e46381fa372a102503f5d63522ecbae27c0b3911671a7c04eb7` at 11467
+    bytes for `DobrushinMatrix.lean`.  The Linux run computed the same digest and
+    size.  Oleans, axiom reports and elaboration refer to the same bytes.
+
+**D-2a FAILED, and the failure is the useful part.**  `DobrushinCoefficient.lean`
+exits non-zero: unknown constants `Real.tanh_nonneg_iff`, `Real.tanh_nonpos_iff`,
+unknown identifier `div_le_div_iff`, plus several `No goals to be solved` and one
+`rewrite` miss — all library naming and tactic-level, none structural.  It was
+written on the desktop with no compiler and pushed saying so IN ADVANCE, not in a
+later correction.  **It contaminated nothing**: it is imported by neither the core
+nor the oracle, so the checkpoint above and its errors came back in the SAME run.
+The runner reported `RUN VERDICT: FAIL — 1 child not zero`, which is what a
+runner is for.  Per the standing rule the module is kept with its diagnosis and
+not deleted; the anchor tree is left exactly as measured.
+
+**THE IDENTITY IS TRUE; ITS PROOF IS NOT WRITTEN.**  The pre-registered D-2 gate
+predicted `sup_h |P_h(+1) − P_{h−2J}(+1)| = tanh|J|`, attained at `h = J`, as an
+IDENTITY and before the quantity was computed once.  It passes: maximum violation
+over a 200001-point field sweep is `5.551e-17` on the worst of six pre-registered
+`J` and exactly `0` on the other five.  **This is labelled measured, not proved,
+and no theorem of the paper depends on it.**  Promoting it because a gate passed
+would be confusing a judge with a compiler.
+
+**THE PAPER** (`papers/dobrushin-matrix/`, 7 pp, TeX+PDF same commit): *The Row
+Sums Were the Method, Not the Theorem*.  It claims exactly three things, each
+labelled: the machine-checked resolvent bound with its non-vacuity witness; the
+measured relocation of the uniformity wall to Onsager's line, with the `γ = 0`
+control reproducing the PROVED `tanh β` to six decimals so the harness is
+calibrated against a theorem rather than against itself; and a statement about
+the record — that `coupled_rowSums_not_constant` obstructs the METHOD, was read
+as obstructing the CONCLUSION, and that the reading outlived its own retraction
+because it had migrated into the work queue, where the guards do not look.
+
+**WHAT THE PAPER REFUSES TO SAY.**  That `specRatio` of the coupled kernel is
+uniformly bounded away from one — D-3 is open and named as the bottleneck.  That
+the window is sharp — it is not, and the paper states the Dobrushin constant is
+WORSE than Onsager/Kaufman by a measured factor of 2 to 36, so the axis claimed
+is generality, not constants.  That any of this bears on Yang–Mills.  Dobrushin's
+theorem is classical and the paper says so in its abstract.
+
+**INSTRUMENT MEASUREMENT.**  The PDF build was timed: 3 s wall, one process, two
+`pdflatex` passes, zero LaTeX errors — inside the local light contract by
+measurement rather than by presumption.
+
+## Addendum 573 (2026-08-01, **the chain closes: D-2a and D-2b green, and the
+paper stops being two bricks**)
+
+**MEASURED at `56c8987d` on the sanctioned Linux plane.**  Core **8468 jobs**,
+zero errors (8466 at the previous anchor; the `+2` is one job per new module, a
+difference between two measurements on the same plane).  Repository oracle exit
+**zero**, **2813** axiom reports, **zero** `sorryAx`.  Nineteen of those reports
+are this lane's new declarations --- eleven for D-2a, eight for D-2b --- each on
+exactly `[propext, Classical.choice, Quot.sound]`.  Both certifiers zero in
+`normal` and `optimized`.  `RUN VERDICT: every child exited zero`, reported by
+the runner as a PASS CANDIDATE and not a PASS.
+
+**D-2a GREEN after five passes: 12 → 3 → 2 → 1 → 0 errors.**  `tvField_le`,
+`tvField_attained`, `tvField_isLUB`: flipping one neighbour across a bond of
+strength `J ≥ 0` moves a two-state site's conditional by at most `tanh J` and by
+exactly `tanh J` at `h = J`, so `tanh J` is the LEAST upper bound.  **Not one of
+the fifteen errors across those passes was mathematical.**  The mechanism ---
+`tanh a − tanh b = sinh(a−b)/(cosh a cosh b)` with the denominator minimal at
+fields symmetric about zero --- is the one in the first draft and was never
+altered.  Every failure was a library name or form recalled wrongly
+(`Real.tanh_nonneg_iff` and `Real.tanh_nonpos_iff` do not exist;
+`div_le_div_iff` is renamed; `Real.cosh_two_mul` is the `cosh²+sinh²` form, not
+`2cosh²−1`) or a tactic emitting a different number of goals than the script
+assumed.
+
+**ONE OF THOSE WAS MINE FOR OVER-CORRECTING, and it is the transferable
+lesson.**  Pass 2 reported a closing `ring` as `No goals to be solved`, so pass 3
+removed it --- but that report was DOWNSTREAM NOISE from a failure earlier in the
+same file.  With the chain repaired the goal was really there.  The repair was
+not to put the tactic back and hope: the modulus is now computed in its own
+`have` so the closing step faces an arithmetic identity and nothing else.
+**A tactic that can succeed by accident is a tactic whose failure tells you
+nothing**, and the same principle produced `refine` with explicit arguments in
+place of bullets, and an entry-by-entry row-sum computation with closed
+decidable side conditions in place of a global `norm_num`.
+
+**D-2b GREEN on pass 2, and it is the brick that makes the paper a paper.**
+Before it, the manuscript had a matrix lemma and a hyperbolic identity with
+nothing joining them.  `dobMatrix` assembles the bond coefficients, discharges
+all three structural hypotheses of D-1 by construction, and leaves exactly one
+input: the row-sum bound, which IS the coupling window.  `starDist_rowSum`
+computes that window at a site with two bonds of strength `β` and two of `γ` and
+gets exactly `2 tanh|β| + 2 tanh|γ|`.  **The window stops being prose and becomes
+the hypothesis of `dobrushin_resolvent_bound`.**  Star distance proved reflexive
+and triangular by `decide` over the 125 triples.
+
+**THE PAPER, v2** (`papers/dobrushin-matrix/`, 10 pp): three theorems and the
+corollary composing them, replacing v1.1's two disconnected results.  The
+frontier section drops from three open steps to ONE --- Dobrushin's comparison
+estimate --- and the paper says plainly that the chain does not shorten that
+difficulty: what it does is remove every OTHER obligation from between the
+coefficient and the resolvent bound, so a reader can see that one thing is
+missing and what it is.  The reproducibility section no longer has to disclose a
+non-compiling module, and instead records what the five passes cost.
+
+**REGISTERED, because a reader counting modules would not otherwise find it:**
+the runner builds two lane modules by name and `DobrushinRowSum` is not one of
+them; it is covered by the core build and appears in the oracle, and the paper
+says so.
+
+**COLAB.**  Second and third work units of the lane, same notebook, CPU /
+high-RAM, never GPU, disconnected at the end of each.  The first unit's runtime
+was deleted on disconnect per the environment rule, so the second paid the full
+elan-plus-cache setup again; once cached, a single-module iteration is ~7 s,
+which is what made five passes affordable.
+
+## Addendum 574 (2026-08-01, **five findings of an external reading, four of
+them defects, and the one that needed Lean**)
+
+**MEASURED at `c3d8e32d`.**  Core **8468 jobs** --- unchanged, because the new
+theorems went into an EXISTING module and a declaration does not create a build
+job, only a module does.  Oracle exit **zero**, **2817** reports (2813 + 4),
+**zero** `sorryAx`.  All eight children zero; `RUN VERDICT: every child exited
+zero`, reported as a PASS CANDIDATE.
+
+**THE SUBSTANTIVE FINDING, and it was a real over-claim.**  D-2a proves
+`sup` over **all** `h ∈ ℝ`.  In a concrete finite system the reachable effective
+fields form a DISCRETE subset, and the maximiser `h = J` need not correspond to
+any admissible boundary condition; so the true Dobrushin coefficient of a
+particular model can satisfy `c_ij < tanh|J_ij|` strictly.  What is proved is a
+**sharp field-uniform one-bond influence envelope** --- a valid interdependence
+majorant, which is all Dobrushin's condition needs and which invalidates nothing
+downstream --- **not** the minimal interdependence matrix of any system.  The
+paper now states this with the formula for `c_ij` and drops "tanh J is the
+coefficient".
+
+**THE FINDING THAT NEEDED LEAN, not prose (D-2c).**  `starDist_rowSum` computes
+ONE site of ONE five-point graph, while `dobrushin_resolvent_bound` consumes a
+bound at EVERY site: "the window is done" was local arithmetic standing in for a
+claim about the family.  `rowSum_bound_of_local_cover` closes it --- if at every
+site the influence support is contained in a finite set whose coefficients sum
+below `alpha`, the row-sum hypothesis holds at every site, with the cardinality
+of the index type nowhere in the statement --- and
+`dobrushin_bound_of_local_cover` composes the chain from local data alone.
+
+**THREE SCOPE DEFECTS.**  (i) "every structural hypothesis" was wrong: the
+construction discharges the MATRIX-SIDE hypotheses; `d i i = 0` and the triangle
+inequality remain hypotheses of the endpoint.  (ii) "refute" was too strong for
+eight cells at `L ≤ 12` with a three-term Aitken: the data CONTRADICT the blanket
+attribution on the tested grid and are not offered as refuting an asymptotic
+claim, since a sequence can appear to saturate and turn afterwards.  (iii) the
+19-versus-14 accounting did not close semantically; it now distinguishes newly
+added reports from pre-existing ones and totals 37.
+
+**THE ABSTRACT OVERSTATED THE BODY FOR THE THIRD TIME.**  Both (i) and (ii) had
+already been written correctly in the body while the abstract kept the strong
+form; the v1.1 round had the identical defect one level up.  This is now a
+standing check for this lane: **after any scope correction, re-read the abstract
+against the body sentence by sentence, because the abstract is where the
+correction is least likely to have been applied and most likely to be read.**
+
+**PRIOR ART narrowed.**  The mechanisation claim now names its search strategy
+and restricts to the finite-lattice interdependence matrix and comparison
+estimate, because "Dobrushin" names several distinct results and mechanised work
+using others of them exists.
+
+**PAPER v3** (10 pp): unchanged in mathematics, corrected in scope everywhere the
+reading found it, plus the new bridge.
+
+## Addendum 575 (2026-08-01, **fourth instance of "corrected in one place, alive
+in another" — and the guard I adopted yesterday could not have caught it**)
+
+**NO LEAN CHANGED, NO NUMBER MOVED.**  Anchor still `c3d8e32d`, core 8468,
+oracle 2817 with zero `sorryAx`.  `git status` on `YangMills/`,
+`oracle_check.lean` and `YangMillsCore.lean` is clean; only the manuscript
+moved.  Stated because a version bump is not a licence to reprint counters.
+
+**THE FINDING.**  Addendum 574 corrected `tanh|J|` from "the coefficient" to a
+sharp field-uniform envelope --- in the abstract, in the theorem discussion, and
+in the limitations.  An external reading then found the strong phrasing still
+alive in three places the correction never visited: the title of subsection 3.1
+(*"and that it is least"*), the roadmap item in section 5 (*"the single-site
+coefficient of the model ... Done"*), and a bibliography annotation.  All three
+now say envelope or majorant, and a sweep of every remaining occurrence of the
+word was run rather than trusting the three sites named.
+
+**WHY IT MATTERS MORE THAN THE FIX.**  Addendum 574 adopted a standing check:
+*after any scope correction, re-read the abstract against the body.*  That check
+**could not have caught this**, because none of the three survivors is in the
+abstract or the body prose --- they are a section title, a roadmap bullet, and a
+citation annotation.  **I calibrated the guard to the shape of the previous
+failure and the next instance appeared immediately outside it.**  This is the
+guard-blindness pattern already on the record, now with a fourth data point, and
+the honest generalisation is not another location-specific rule but:
+**when a term is redefined, grep the term across the whole artefact and read
+every hit, including titles, list items and bibliography.**  A location-based
+check will always be one instance behind.
+
+**SECOND FINDING, and it was over-tidiness.**  "Step 2 is the only mathematical
+obligation left" was too clean: the downstream consumer exists but its
+instantiation still needs the finite-time boundary interface the same section
+describes.  Now: step 2 is the only *new analytic estimate* currently
+identified, and the sentence says explicitly that this is not the same as one
+obligation remaining.  The consumer is also named at last ---
+`volumeUniform_gap` in `YangMills/OS/TransferGap.lean` --- with its full
+hypothesis printed from the elaborated signature rather than from memory, since
+a paper that says "the consumer exists" without naming it is asking to be taken
+on trust.
+
+## Addendum 576 (2026-08-01, **fifth instance, and the guard generalisation of
+Addendum 575 was still one class too narrow**)
+
+**NO LEAN CHANGED, NO NUMBER MOVED.**  Anchor still `c3d8e32d`, core 8468,
+oracle 2817, zero `sorryAx`; `git status` clean on `YangMills/`,
+`oracle_check.lean`, `YangMillsCore.lean`.  Manuscript only.
+
+**A LOGICAL DEFECT, not a stylistic one.**  The abstract described
+Theorem~3.3's hypothesis as row sums "bounded by `alpha < 1` **and never
+constant**".  The theorem asks no such thing: it holds whether or not the row
+sums are constant, and what matters is that constancy is *not required*.
+**"I do not need P" is not "I prove not-P".**  The body had it right --- "It
+never asks for them to be constant" --- and the abstract had turned the absence
+of a hypothesis into the assertion of its negation.  Now: "without any
+constancy assumption".
+
+**AND THE GUARD, one class too narrow AGAIN.**  Addendum 575 generalised from
+"check the abstract" to "when a TERM is redefined, grep the term across the whole
+artefact".  That was applied to *coefficient* and worked.  It could not catch
+this round, because what survived was not a term but a **claim**: the abstract
+kept "a single remaining obligation" while Section 5 had already been corrected
+to "It is not the only remaining work ... too tidy a sentence for the actual
+state", and Limitations kept "one thing is missing".  Fifth instance of the
+class in this lane, and the second time in two rounds that a guard calibrated to
+the previous failure missed the next one by exactly one level of abstraction:
+locations -> terms -> claims.
+
+**The generalisation that does not obviously fail next, recorded as such and
+not as a solved problem:** a correction is not applied until every
+*summary-shaped* location has been re-derived from the corrected statement ---
+abstract, limitations, roadmap, section titles, conclusions.  Summaries are
+where claims get compressed, and compression is exactly where a hedge dies.
+This lane has now paid for that sentence five times, and the guards it owns read
+identifiers, never assertions, so no script will catch the sixth.
+
+## Addendum 577 (2026-08-01, **the sixth instance, predicted in Addendum 576 —
+and the sweep that was built to catch it was blinded by its own `cut`**)
+
+**NO LEAN CHANGED, NO NUMBER MOVED.**  Anchor `c3d8e32d`, core 8468, oracle 2817,
+zero `sorryAx`.  Manuscript only.
+
+**THE DEFECT.**  Limitations still read "It refutes an attribution", while the
+abstract and Section 4 had both been corrected in v3 to *contradicts on the
+tested grid* / *counterevidence*.  Eight cells at `L ≤ 12` with a three-term
+Aitken cannot refute an asymptotic claim.  Fixed; the two surviving uses of the
+word in the shipped PDF were audited and are correct --- the abstract's explicit
+disclaimer, and `coupled_rowSums_not_constant` genuinely refuting constancy.
+
+**TWO FAILURES OF PROCESS, and the second is the one worth keeping.**
+
+*First:* when *refute* was corrected in v3, no sweep was run --- the sweep rule
+did not exist yet.  When it was adopted in Addendum 575 it was applied only to
+the term being corrected at that moment.  **A sweep rule adopted after earlier
+corrections must be run RETROACTIVELY over every term and claim already
+corrected in the lane, not merely over the next one.**
+
+*Second, and it is the sharper lesson:* the retroactive sweep WAS run this
+round, it DID find the line, and the finding was destroyed by the command's own
+`... | tr '\n' ' ' | cut -c1-150`, which truncated grep's output mid-list.  The
+instrument built to catch the class was blinded in the same command that
+invoked it, and the defect was then found by extracting text from the shipped
+PDF instead.  **An audit whose output is truncated is not an audit; it is a
+sample.**  This is the same family as the paper-12 gate that could not fail a
+CI and the certifier that printed PASS after zero checks, and it belongs beside
+them: the failure was not in knowing what to check but in silently discarding
+the answer.
+
+**Practice added:** audit commands print in full, or write to a file that is
+then read in full; no `head`, no `cut`, no truncation on any command whose
+purpose is to establish that something is absent.
+
+## Addendum 580 (2026-08-02, **both reflections, and the operator they force —
+the site bridge closed and an OS transfer operator that is not chosen**)
+
+**MEASURED at ``c90dc745``** on the sanctioned Colab Linux plane (CPU, 2 cores,
+12 GiB, no GPU), Mathlib from cache, toolchain and pin re-checked before any
+compilation.  Core **8468 → 8469 jobs**, delta **exactly +1**, which
+is what the runner predicted *before any count was taken*.  Oracle exit zero,
+**2883** reports, **0** with a non-standard axiom, **0**
+`sorryAx`.
+
+**THE BASELINE WAS MEASURED, NOT COPIED --- AND THE FIRST BASELINE WAS THE WRONG
+ONE.**  Rule 7 forbids using a job count copied into `CLAUDE.md`.  The runner
+therefore takes a `--before` from a core build in the SAME runtime.  Its header
+named `6d71e51b`, the MERGE-BASE WITH `main`, as "this campaign's base".  It is
+not: this branch descends from the Dobrushin lane, which had already added three
+modules to the core.  That comparison returned **8465 -> 8469 = +4** and looked
+like a failed prediction.  It was not a failed prediction; it was the wrong
+`before`.  Measured at the campaign's real base `345479fa`, the parent of its
+first commit, the core is **8468** and the delta is **exactly +1**.
+
+Both numbers are true and they answer different questions: `+4` is
+branch-versus-`main` and carries `+3` inherited from another lane, `+1` is this
+campaign.  **Practice added: a prediction about a campaign is tested against the
+campaign's own parent commit, never against a merge-base; and a measurement that
+disagrees with a registered prediction is first suspected of measuring the wrong
+thing.**  That is the same distinction Addendum 577 drew between an inconclusive
+harness and a failed judge, arriving from the other side.
+
+**AND THE ORACLE COUNTER I FIRST WROTE WAS THE WRONG TEST.**  It counted
+"non-standard axioms" as the report lines not containing the literal string
+`propext, Classical.choice, Quot.sound`, and returned 1232 of 2855 --- a
+meaningless number, because a declaration depending on FEWER axioms fails that
+test while being perfectly clean, and this core has 27 axiom-FREE declarations.
+The question is never whether a line reads like the standard triple; it is
+whether any axiom anywhere is OUTSIDE the standard set.
+`scripts/oracle_counters.py` now parses every list, takes the union, and fails
+on one name outside it.  The union here is exactly
+`{propext, Classical.choice, Quot.sound}`.
+
+### What closed
+
+**(1) The site bridge** — the half paper 13 shipped as OPEN.  A path of `2m+1`
+slices through a site plane is exactly a pair of halves that SHARE the slice the
+plane passes through: a fibred product, not a product.  Its weight identity is
+proved DIVISION-FREE,
+
+    w(σ) · W(joinSite a b) = W(a) · W(b),
+
+so it carries no hypothesis on `w` at all; positivity of `w` is then spent in
+exactly one place, dividing by `w(σ)` inside the bridge, and that is visible
+rather than buried.  Through a site NO kernel factor crosses the plane — the
+`2m` bonds are exactly the `m` bonds of each half — and that missing crossing
+factor is the entire difference from the bond case, and the reason the site
+statements hold at every `β` while the bond ones need `β ≥ 0`.
+
+**(2) The transfer operator, which is not chosen.**  The site form is definite
+as soon as `w > 0`, so the equation
+
+    ⟨u, T v⟩_site = ⟨u, v⟩_bond
+
+has at most one solution, and reading it off gives `T = D_w K`.  Proved:
+`siteForm_transferOp` (the equation), `transferOp_selfAdjoint` (self-adjoint at
+EVERY β, negative included), `transferOp_nonneg` (positive for β ≥ 0),
+`collapse_surjective` (the physical space is the WHOLE boundary space, so no
+statement here is secretly about a subspace), and `osPairing_transfer_gibbsSum`
+(the same identity read on the measure, for two observables).
+
+**WHY BOTH GEOMETRIES WERE A PRECONDITION AND NOT A SYMMETRY.**  `T` advances a
+half-chain by ONE slice, which flips the parity of the separation.  So the
+defining equation has the site geometry on its left and the bond geometry on its
+right.  A construction owning only the bond case has no equation to define `T`
+by at all.  This is recorded because the campaign's first plan treated the site
+case as tidying-up.
+
+### Three findings of the run itself
+
+**THE BUILD CORRECTED A THEOREM I HAD STATED TOO WEAKLY.**  Its unused-variable
+warning on `prod_w_joinSite` was right: the `w`-product identity never uses the
+two halves agreeing at the boundary; it holds for ANY pair.  Only the kernel
+product needs them to agree.  Hypothesis dropped.  A warning is a reading, and
+this one was better than mine.
+
+**AN INSTRUMENT LIED, IN THE ONE PLACE THAT HAD NO SENTINEL.**
+`colab_bootstrap.sh` printed `lane build exit: 0` under a build that had failed
+with three errors: it read `${PIPESTATUS[0]}` **after an intervening `echo`**,
+which resets it.  Fixed by capturing the code into a variable on the same
+command as the build.  This is exactly the class the sentinel protocol exists to
+prevent, and it happened where the protocol had not been applied.  **Practice
+added: any exit code that is reported must be captured on the same command list
+that produced it, or carried by a sentinel; never read after another command
+has run.**
+
+**MY OWN PROSE OUTRAN MY OWN LEMMA — in the same session that cites the rule.**
+The draft's §7 displayed the identity for two observables `F, G` while Lean had
+only the diagonal `G = F`.  Raised the lemma rather than lowering the sentence:
+the bond bridge's CROSS form existed only as a `have` inside the Gram proof,
+where nothing could cite it, and was extracted as
+`osPairingBondCross_eq_gibbsSum`.  **A statement that lives only inside a proof
+cannot be cited, and a green build does not notice a theorem carrying less than
+its sentence.**
+
+### The gates, both registered before the work they license
+
+`scripts/judge_site_bridge.py` (at `2392c080`, before it was run and before the
+section existed): S1 predicted the count of paths and of assembling pairs to be
+the same INTEGER `2^(L(2m+1))`; S2 predicted the weight residual to be ZERO to
+`1e-12`.  Both passed.  The file states the falsifier: an S2 residual that was a
+fraction of the weight rather than roundoff would have meant paper 13's site
+form was the WRONG form, not merely an unidentified one.
+
+`scripts/judge_os_reconstruction.py` (at `47d48fc2`, before a line of the
+module): R1 `rank(collapse) = 2^L` exactly; R2 self-adjointness residual zero;
+R3 the residual of the defining equation zero; R4 the spectrum of `T` equal
+entry by entry to that of `symWeighted`, all real, `max|eig|/λ = 1`.  All four
+passed.
+
+**R4 IS A GATE AND IS CITED IN NO PROOF.**  It says where the next theorem would
+come from — the Perron and gap results of papers 7, 8 and 11 — and registering
+it before the fact is the only way it can ever count as evidence.  Nothing in
+the module or the paper depends on it.
+
+### What is NOT closed
+
+No Hamiltonian.  No proof that `T` inherits the Perron eigenvalue or the
+spectral gap.  No contraction bound, and therefore no `H = -log(T/λ)`.  No
+thermodynamic limit — every constant may depend on `L` and `m`.  Necessity of
+`β ≥ 0` for positivity is not proved and could not hold at `L = 0`.  Nothing
+here is a gauge theory.
+
+
+## Addendum 583 (2026-08-02, **D-3 CLOSED: the comparison estimate is a theorem,
+and the bottleneck moved rather than vanished**)
+
+**NUMBERING, CORRECTED BEFORE THIS ENTRY WAS READ BY ANYONE ELSE.**  This entry
+was first appended as 581.  It is not: a SECOND Dobrushin desk, on
+`davinci/dobrushin-uniform`, had already taken **581** (D-3a certified as
+`Formalized`, eleven conjunctive conditions) and **582** (the J8/J9/J10 gate
+results, which that desk found had never been committed).  Its 581 says in its
+own header which numbers belong to which desk; I did not read it before
+appending, and the collision is mine.  Renumbered to **583**, and the two
+desks' relation is recorded below rather than left for a merge to discover.
+
+**MEASURED at `85f6e86b`** on the sanctioned Colab Linux plane (CPU, one runtime,
+opened for this work unit and deleted on disconnect, never GPU).  Stage 0
+re-verified repo SHA, toolchain `leanprover/lean4:v4.29.0-rc6` and the Mathlib
+pin before compiling anything.  `RUN VERDICT: every child exited zero`, reported
+by the runner as a PASS CANDIDATE and not a PASS.
+
+  * Four certifier runs zero: `judge_dobrushin_d3.py` 11/11 and
+    `judge_dobrushin_d3b.py` 6/6, each in `normal` AND `optimized`.  They ran
+    BEFORE the build in the same invocation, so the record shows the gates
+    passing before the theorems they license compiled.
+  * Four lane modules zero: `DobrushinOscillation`, `DobrushinGruss`,
+    `DobrushinConditional`, `DobrushinComparison`.
+  * Targeted oracle zero over **17** endpoints.  The axiom UNION over every
+    printed list is exactly `{propext, Classical.choice, Quot.sound}` — computed
+    as a union, per the Addendum-580 correction, not by matching each line
+    against the standard triple.  Zero `sorry` in all four build logs.
+
+**WHAT CLOSED.**  D-3, which the paper of Addendum 574 named as the only
+currently identified new analytic estimate and the bottleneck of the lane:
+
+    |Cov_mu(f,g)|  <=  (1/4) * sum_{i,j} delta_i(f) * (sum_n C^n)_{ij} * delta_j(g)
+
+for any probability weight on a finite product space invariant under a local
+single-site kernel whose influence is dominated by `C` with zero diagonal and
+row sums below `alpha < 1`; composing with D-1 gives
+`alpha^dist/(4(1-alpha))` and, for single-site observables, exponential decay in
+the distance at a rate free of the volume.  The ladder is the charter's:
+D-3a (signed mass vs oscillation), D-3b (the conditional operator), **D-3c the
+key lemma** in its three declared pieces, D-3d (random-scan iteration, finite
+vector induction, no limits), D-3e (the estimate).
+
+**THE THREE-WAY SPLIT OF AMENDMENT 1 HELD.**  `deltaAt_condExp_self` is semantic
+and mentions no matrix; `deltaAt_condExp_le` consumes `C` only as a MAJORANT;
+`deltaAt_condExp_le_matrix` is the ONLY statement assuming `C i i = 0`.  Deciding
+that before writing the module is why the zero did not arrive by simplification.
+
+**THE CONSTANT IS THE CONSTANT, INSIDE THE KERNEL.**  `Witness.witness_attained`:
+one site, two states, fair kernel, uniform weight, `C = 0` — every hypothesis
+discharged by computation, and the two-point conclusion an EQUALITY at `1/4`.
+So `1/4` cannot be lowered by any proof of this inequality, and the
+non-vacuity question (is invariance under all `E_i` even satisfiable?) is
+answered by exhibiting a case, not by asserting it.
+
+**J11 DISCRIMINATED, WHICH IS RARE.**  On an Ising cell the minimal coefficients
+are symmetric, so a transposed index would survive every other gate.  On a
+three-site cell from eight distinct weights the declared orientation passes with
+0 violations and the transposed one FAILS with **24**.  The convention is
+established by measurement.  J9's worst `lhs - rhs` over all 256 Boolean
+observables at three sites is `+1.11e-16`, one ulp.
+
+**THE SPLIT DEBT WAS REAL, AND THE RUNNER WAS BUILT TO FIND IT.**
+`DobrushinOscillation.lean` was committed at `cb8f57f8` after being verified in
+its PRE-SPLIT working form; the committed bytes had never been elaborated
+(`e75f64e8...` was the working copy, `e66f1477...` what was committed).  The
+runner re-verified them by design and the first Colab round failed there.  **A
+module green before an edit is not green after it, and the hash says which one
+was compiled.**
+
+**SEVEN ROUNDS, NONE MATHEMATICAL.**  `le_or_lt` absent under that name in this
+pin (`le_or_gt`); `abs_add`/`abs_sub_le` likewise, both derived once from
+`le_abs_self`/`abs_neg`/`abs_le`; `Finset.not_mem_empty` is `notMem_empty`;
+`deltaAt_const`'s STATEMENT contains no occurrence of `S`, so the section
+variable was never bound and `Nonempty ?S` stuck — fixed by a named implicit;
+`rw [← hp1]` rewrote the literal `1` INSIDE an indicator `ite`; two goals equal
+only after beta closed by `rfl`.  **And one parser ghost of the class of #27: an
+identifier `hΣv` whose `Σ` the parser reads as a token, not a letter.  It was an
+unused `have`, so the file was rejected by a name that carried nothing.**
+
+**WHAT DID NOT CLOSE, and the sentence is the point.**  The estimate is proved
+for an ARBITRARY invariant weight with dominated influence.  It is NOT
+instantiated at the S block's `gibbsWeight`: constructing its single-site
+conditionals and discharging invariance and domination is a separate rung
+(paper's step 3), and operator transport a further one (step 4).  **The
+bottleneck MOVED from an estimate to an assembly; assembly can still fail, and
+invariance is a real constraint on the pair (weight, kernel), not a formality.**
+No claim about `specRatio` of the coupled kernel.  No infinite-volume state:
+every statement up to the final series form is a finite inequality, and the one
+limit is taken at the level of the BOUND, as prohibition 2 requires.  Nothing
+here bears on Yang–Mills.
+
+**NOT IN THE CORE, stated rather than left to be found.**  None of the four
+modules is imported by `YangMillsCore` or by `oracle_check.lean`, so the core
+count at this anchor is still **8468** and no repository-wide number covers
+them.  Wiring them in — with the delta measured against this campaign's own
+parent commit, never a merge-base (Addendum 580) — is separate work not done.
+
+**THE PAPER, v4** (`papers/dobrushin-matrix/`, 15 pp, TeX+PDF same commit),
+retitled from *a Machine-Checked Dobrushin Resolvent Chain* to *a Machine-Checked
+Dobrushin Comparison Estimate*.  Section 4 is new and carries the theorem, both
+lemmas, the witness and the gates.  Every summary-shaped location was re-derived
+from the corrected statement rather than edited in place — abstract, claims
+section, frontier, limitations, reproducibility, title, bibliography annotations
+— which is the Addendum-576 rule applied prospectively for the first time in
+this lane, and a retroactive sweep over *refute*, *coefficient* and *only
+remaining obligation* found no survivor.  PDF build measured at 2.5 s, one
+process: inside the local light contract by measurement.
+
+**ROLES.**  This session FABRICATED and does not audit itself.  No external
+verdict exists and no claim of "delivered" is made.
+
+### TWO DESKS, ONE MODULE — and they converged on the same repair
+
+`davinci/dobrushin-uniform` and this branch both carry
+`YangMills/OS/DobrushinOscillation.lean`, and they are **different files with
+the same theorem names**: `sum_zero_sub_const`, `abs_sub_mid_le`,
+`abs_sum_signed_le`, `abs_sum_sub_le_tv_mul_osc`, `signed_bound_attained`,
+identical inventories, 107 differing lines of prose and structure.  That desk's
+version carries an audit-status banner and a sharper account of the two
+distinct `1/2`s; mine carries the minimal repair.
+
+**The convergence is the finding.**  Their blob `0a14617b` closes
+`signed_bound_attained` by passing the witness function EXPLICITLY to
+`Finset.le_sup'` — which is exactly the repair this branch reached in its third
+pass, after the first two failed on precisely that line.  Two desks, no
+coordination, same fix.  What that says about the DEFECT is the useful part:
+the form committed at `cb8f57f8` on `paper14-clean` (`le_sup' _ ... |>.trans_eq
+(by norm_num)`) had **never been elaborated in its committed form** on either
+branch, and both desks had to discover it independently — one by building it,
+one by auditing it.
+
+**NOT THIS DESK'S TO RESOLVE, and passed to the owner unexecuted:** which of
+the two files survives a merge.  They are not interchangeable — the other
+desk's carries a committed external audit record naming its exact commit and
+blob, and mine does not.  Overwriting either from here would destroy evidence
+that belongs to a desk that is not this one.  What this entry establishes is
+only that both compile, both prove the same five endpoints, and the repair they
+share is the same repair.
+
+## Addendum 584 (2026-08-02, **D-4a: the chain now starts at a weight, and the
+gates passed before the Lean was judged**)
+
+**MEASURED at `4f3b8640`** on the sanctioned Colab Linux plane.
+`YangMills.OS.DobrushinGibbs` builds with exit **zero**; a targeted oracle over
+its **eleven** endpoints exits **zero**, and every axiom list printed is exactly
+`[propext, Classical.choice, Quot.sound]`.  Zero `sorry`.
+
+**THE GATES PASSED FIRST, AND THAT IS THE ORDER THAT MATTERS.**
+`scripts/judge_dobrushin_d4.py` was committed at `2cda729f5`, one commit BEFORE
+the Lean, and exited **zero on its first run in both modes**:
+
+  * **G12 — invariance as an IDENTITY.**  On deliberately asymmetric positive
+    weights (2 and 3 sites), exhaustively over all Boolean observables and all
+    sites, the residual `|E_mu[E_i F] - E_mu F|` is at machine zero.  A residual
+    above roundoff would have killed the involution argument before it was
+    written.
+  * **G13 — the sigmoid identity** `p_i(+1) = (1 + tanh h)/2` at the local
+    field, on a chain and on an anisotropic 2x2 cell.
+  * **G14 — the envelope dominates the INTRINSIC matrix.**  The minimal
+    coefficients of the Ising measure, by exhaustive enumeration, are bounded
+    entrywise by `tanh|J|`, with intrinsic row sums below envelope row sums
+    below one on every registered in-window cell.
+
+**WHAT CLOSED.**  From a strictly positive weight `w` on a finite product space
+ALONE: the normalised measure, the heat-bath kernel with locality, INVARIANCE
+proved by the involution `(eta,s) -> (eta^{i->s}, eta_i)` on `Omega x S`, and the
+INTRINSIC Dobrushin matrix `dobCoeff` with **zero diagonal proved** (locality,
+not hypothesis) and **domination by construction** (`le_sup'`).  The endpoints
+`gibbs_covar_{le_resolvent, exp_decay, two_point}` discharge every kernel-side
+hypothesis of Addendum 583's comparison estimate.  **The single surviving
+hypothesis is Dobrushin's condition itself** --- a condition on the interaction,
+not on the machinery.  Witness: the uniform weight's Gibbs measure IS the
+comparison module's witness measure, and the instantiated two-point bound is
+attained at `1/4`.
+
+**ONE ERROR IN 300 LINES WRITTEN WITHOUT A COMPILER, and it was not
+mathematical.**  The involution proof of `expect_heatBath` --- the only step
+with content --- elaborated whole on the first attempt.  The single failure was
+a closing `ring` after a `field_simp` that had already closed the goal.  This is
+the first module of the lane to reach green in two passes rather than five to
+seven, and the difference is that its design had been validated numerically
+first.
+
+**WHAT IS NOT MEASURED, and is stated rather than left to be found.**  The five
+lane modules were wired into `YangMillsCore.lean` and their 41 endpoints added
+to `oracle_check.lean` at `80b0160d7`, with the prediction `8468 -> 8473`
+registered in that commit's message BEFORE any count.  **That prediction is
+still untested**: a full core build in a fresh runtime must compile roughly 330
+YangMills modules that `lake exe cache get` does not cover, it ran for 26
+minutes without finishing, and it was interrupted rather than left to consume
+the unit's budget.  The paper says so in those words.  A predicted number that
+has not been taken is not evidence, and the run that takes it is a separate
+work unit.
+
+**THE PAPER, v5** (`papers/dobrushin-matrix/`, 17 pp), retitled to *a
+Machine-Checked Chain from a Positive Weight to Exponential Decay of
+Correlations*.  Section 5 is new.  The frontier drops to ONE open step ---
+transport into the operator formulation --- and the paper is explicit that this
+step is a translation between two languages rather than a missing estimate,
+which does not make it small.  Every summary-shaped location was re-derived
+from the corrected statement, and the retroactive sweep over *refute*,
+*coefficient* and *only remaining obligation* found no survivor.
+
+**ROLES.**  This session FABRICATED and does not audit itself.  No external
+verdict exists.
+
+## Addendum 585 (2026-08-02, **paper v5.1: the four contradictions an external
+reading found, one of them a paragraph stranded past the end of the
+document**)
+
+An external evaluation of v5 (5.72 as-filed / 5.82 for the mathematics once
+corrected, its numbers not this desk's) named four defects.  All four were
+CONFIRMED against the source before any edit, and all four are the same
+family: prose written before an insertion, left standing after it — the
+deictic ghost of the house memory, again.
+
+1. **"a chain of four theorems"** while the same abstract enumerates First
+   through Fifth.  The count predates the Fifth block.  Fixed.
+2. **The abstract's "What is not proved" still said the Gibbs instantiation
+   "is not done here"**, contradicting the Fifth block forty lines above it
+   and Theorem 5.2 itself.  Replaced by what is actually not proved: the
+   operator transport, and Dobrushin's condition for any particular family.
+3. **"the single hypothesis" compressed two different endpoints into one.**
+   `gibbs_covar_le_resolvent` consumes Dobrushin's condition alone;
+   `gibbs_covar_exp_decay` and `gibbs_covar_two_point` consume in addition a
+   distance (with `d i i = 0` and the triangle inequality) and the range-one
+   support of the intrinsic matrix.  The three compressions (abstract,
+   Section 1, frontier item 3) now state both; Section 5's own remark already
+   did.
+4. **The reproducibility section contradicted itself, and the PDF only showed
+   the false half.**  The v5 edit that recorded the wiring appended its
+   paragraph AFTER `\end{document}`: it existed in the source and never
+   reached the PDF, while the pre-wiring paragraph — "the four modules are
+   not in the core" — kept rendering.  Verified against the anchor:
+   `git show 4f3b8640:YangMillsCore.lean` imports all five modules, so the
+   rendered sentence was FALSE at the anchor it cited.  The true paragraph
+   now stands in the body, the stranded copy is deleted, and the defect is
+   recorded in the paper itself.
+
+Rebuilt PDF verified by text extraction: "four theorems" 0, "not instantiated
+at the Gibbs weight" 0, "are not in the core" 0, "single hypothesis" 0,
+"not yet tested" 1 (the wiring paragraph finally renders).  17 pages, zero
+LaTeX errors.
+
+**MECHANISM, for the next desk.**  An Edit that anchors on a unique string can
+still land in dead source — after `\end{document}`, inside a comment, in a
+file the build does not read.  A guard that greps the SOURCE passes; only the
+ARTIFACT knows.  The verification that caught nothing in v5 grepped the tex;
+the one that caught everything in v5.1 extracted text from the PDF.  Verify
+the artifact, not the source, whenever the two can differ.
+
+**ROLES.**  The defects were found by an external reading, not by this desk;
+this desk verified, fixed, and re-verified.  No score in the paper; the
+external numbers stay external.
+
+## Addendum 586 (2026-08-02, **D-4b written with no compiler: the interaction
+instantiated, and a job-count base error corrected BEFORE the measurement**)
+
+**THE RUNG.**  `YangMills/OS/DobrushinIsing.lean`, written blind on the owner
+desktop, licensed by gates G13/G14 of `judge_dobrushin_d4.py` (committed
+`2cda729f5`, passed in both modes BEFORE any Lean of this rung existed).
+Contents:
+
+* `energy_update` — the quadratic energy of an updated configuration splits
+  into an s-free block plus `spin s * localField`; the only structural
+  computation of the module.
+* `heatBath_ising` / `heatBath_ising_pPlus` — **G13 as a theorem**: the
+  heat-bath conditional of the Ising weight is the sigmoid `(1 + tanh h)/2`
+  at the local field.
+* `TV_heatBath_ising` — the total variation of two conditionals IS the
+  envelope's `tvField` at the two fields; `localField_update` — updating a
+  site moves the field by the bond times the spin move (`0` or `±2`).
+* `dobCoeff_ising_le` — **G14 as a theorem**: the INTRINSIC Dobrushin
+  coefficient of the Ising weight is dominated by `tanh |J i k|`.  With
+  `dobCoeff_ising_zero` (range) and `dobCoeff_ising_row_le` (row sums),
+  every kernel-side hypothesis of the D-4a endpoints becomes a computation
+  on `J`.
+* `ising_covar_le_resolvent` / `ising_covar_exp_decay` /
+  `ising_covar_two_point` — the instantiated endpoints.
+* `IsingBondWitness` — **attainment**: on the one-bond system the intrinsic
+  coefficient EQUALS `tanh β` (`dobCoeff_bond_attained`) because the optimal
+  field is reachable there; and that system satisfies Dobrushin's condition
+  at EVERY coupling (`bond_covar_two_point`, no smallness hypothesis).
+* `StarWitness` — **the lane's window instantiated at a weight**:
+  `star_covar_two_point` takes `2 tanh|β| + 2 tanh|γ| < 1` — the row-sum
+  computation of D-2b's star cell — and returns exponential decay of the
+  anisotropic star Ising weight's correlations.  This is the composition
+  the external evaluation of v5 named as the step that would connect the
+  paper's two halves.
+
+Wired into `YangMillsCore.lean` and `oracle_check.lean` (twelve new
+endpoints).  NOT yet verified: this addendum records the fabrication; the
+Colab run follows in this same unit and its results will be recorded
+separately.  No PASS is claimed here.
+
+**THE BASE CORRECTION, made before the number is taken.**  Addendum 584 and
+the wiring commit `80b0160d7` registered the core prediction `8468 → 8473`.
+That base is WRONG: `8468` was the lane's own D-2 measurement, but this
+branch is cut from `paper14-clean`, whose `SpatialReconstruction` module was
+measured at `8468 → 8469` (paper 14's ledger entry).  `git show
+4f3b8640:YangMillsCore.lean` confirms the module is imported at this lane's
+anchor.  The latest applicable measured baseline is therefore **8469**, and
+the corrected expectation with six new modules is **8475**.  This is the
+exact defect the Part II house rule names — "never use a job count copied
+into CLAUDE.md as the current baseline" — committed by this desk against a
+sibling branch's measurement instead.  The correction is registered BEFORE
+the fresh-clone measurement, which will test 8475, not 8473, and the
+original mis-based prediction stays in the record.
+
+**ROLES.**  This session FABRICATED and does not audit itself.
+
+## Addendum 587 (2026-08-02, **D-4b GREEN: the interaction instantiated and
+certified — and the core count blocked by a sibling module, with this desk's
+own evidence-truncation recorded**)
+
+**THE RUNG IS GREEN.**  `YangMills/OS/DobrushinIsing.lean` at anchor
+`c8e9ae51b2aee8c86bb365b1ed68ae5be7ea30d2`, sha256
+`4e880ff013508c55bbbe43db0a511bcecfb51f509a8ebc78f9d49201f577bf23`, 29158
+bytes.  Lane build sentinel ZERO.  Targeted oracle at the anchor: exit 0,
+TWELVE endpoints — energy_update, heatBath_ising, heatBath_ising_pPlus,
+TV_heatBath_ising, dobCoeff_ising_le, dobCoeff_ising_zero, the three
+ising_covar endpoints, IsingBondWitness.dobCoeff_bond_attained,
+IsingBondWitness.bond_covar_two_point, StarWitness.star_covar_two_point —
+every axiom list exactly `[propext, Classical.choice, Quot.sound]`.
+
+**PASS ECONOMY.**  Three passes.  Pass 1 (029c595a7): the ENTIRE mathematical
+chain elaborated first try; failures were a missing import (RowSum, star
+section), one dead `ring`, one no-progress `simp only []`, and a `congr 1`
+whose goal count the bullets did not expect.  Pass 2 (0d6e2d7bd): four
+survivors, all one defect — `rw` cannot see through `fin_cases`' literal
+representation of `Fin` values, while `exact` bridges it by defeq (branch 0
+of the same dispatcher, written with `exact`, passed; branches 1-4, written
+with `rw`, failed).  Pass 3 (c8e9ae51b): zero errors.  Judges G12-G14 zero in
+both modes before every pass.
+
+**THE CORE COUNT: observed, not certified.**  The corrected prediction of
+Addendum 586 was **8475**; the fresh-clone build at the anchor showed exactly
+8475 jobs in its lake denominator and completed 8473 with all six Dobrushin
+modules green.  It did NOT reach zero errors: `SpatialReconstruction.lean`
+(paper 14's lane; material of the D-3e/f/g/h commits, written without a
+compiler by the parallel desk) fails.  This desk deleted four dead `ring`s
+after `field_simp` (mechanical, behaviour-preserving) — and then a fuller
+read showed SIX more errors (1219 rewrite-failed, 1221/1354 no-goals, 1268
+unknown `Finset.mul_add`, 1286 linarith-failed, 1508 unknown
+`self_eq_add_left.mp`), which need the author's understanding and are NOT
+mechanical.  The repair is handed to that desk (task chip spawned).  A
+denominator observed in a failing build is not a certified count; the paper
+says so in those words.
+
+**THIS DESK'S OWN DEFECT, recorded.**  The 'four dead tactics' diagnosis was
+made from `grep ... | head -8` — the six further errors were behind the
+truncation, and this desk declared a repair complete on truncated evidence.
+Same family as Addendum 585's lesson, one level up: verify the artifact, and
+read ALL of it — an error list cut at eight lines reads as 'four errors'
+exactly the way an unrendered paragraph reads as 'corrected'.
+
+**RUNTIME RECORD.**  This unit reused the runtime left connected by the
+previous unit (itself a rule deviation, noted), executed three runner passes
+and one targeted oracle, and DISCONNECTED it on completion (Koppla från och
+radera).
+
+**PAPER v5.2** (19 pp): sixth theorem block in the abstract; new Section 5
+subsection (Definition ising, Theorem thm:ising, Proposition
+prop:ising-witness with the EQUALITY on the one-bond system, Theorem
+thm:star = the window as the hypothesis of a decay theorem about the star
+weight); the envelope remark rewritten (domination now proved, strictness
+still measured); reproducibility re-anchored at c8e9ae51b with the full job
+accounting and the blocked-core statement; oracle paragraph now the union
+over THREE targeted runs.  Verified by text extraction: 'five theorems' 0,
+'six theorems' 2, '8475' 2, stale phrases 0, LaTeX errors 0, undefined
+references 0.
+
+**ROLES.**  This session FABRICATED and does not audit itself.  The external
+evaluation that scored v5 has not seen v5.2; no score appears in the paper.
+
+## Addendum 588 (2026-08-03, **paper v5.3: the four items of the v5.2
+evaluation, plus two more sentences of the same deictic family the sweep
+then caught**)
+
+An external evaluation of v5.2 (mathematics 6.08, the exact PDF 5.97, its
+numbers not this desk's) confirmed D-4b as the move that crossed its 6.00
+line and named four artifact defects.  All confirmed against the source, all
+fixed:
+
+1. **Limitations still said the paper answers the Dobrushin condition "for
+   no interaction"** — false since Theorem thm:ising's witnesses (one-bond:
+   every coupling; star: inside the window).  Replaced by the family-scoped
+   statement: beyond those two cells, uniformity for a lattice family
+   remains open.
+2. **"Every module in the anchor compiles"** — false at this anchor
+   (SpatialReconstruction fails there).  Now "Every module OF THIS PAPER in
+   the anchor compiles", with the sibling failure cross-referenced.
+3. **The certifier record omitted D-4**: now five scripts, ten runs, with
+   judge_dobrushin_d4.py reported at its true count 14 of 14 (expected =
+   2+3+9 read from the script, not remembered) in both modes at this
+   anchor, before every fabrication pass of the rung it licenses.
+4. **"the only open step in this list"** — now conditioned: a volume-uniform
+   Dobrushin window for the chosen lattice family is discharged here only
+   on cells, not a family of volumes; GIVEN such a window, the operator
+   transport is the only remaining structural step.
+
+The sweep this time was SEMANTIC (re-read every summary-shaped location),
+and it caught two more sentences of the same family the evaluation had not
+listed: Section 2's "this paper does not make that claim" (since D-4b the
+paper PROVES envelope = intrinsic coefficient on the one-bond system —
+rewritten to say exactly where the coincidence is a theorem and where the
+gap is measured), and frontier item 1's "Not done, and not needed: the
+minimal interdependence matrix of any particular system" (partially done
+since the witness — rescoped to "of a general system").  Running count of
+this deictic class across the lane: SIX sentences, every one an insertion
+making older prose false without touching it.  The phrase-list sweep catches
+none of them; only re-derivation from the current theorems does.
+
+Rebuilt, 19 pp, zero LaTeX errors, zero undefined references; all fixes
+verified by PDF text extraction (old phrases count 0, new phrases count 1).
+
+**ROLES.**  Defects 1-4 found by the external reading; 5-6 by this desk's
+semantic sweep; no score in the paper; v5.3 has not been externally
+evaluated.
+
+## Addendum 589 (2026-08-03, **paper v5.4: the two micro-adjustments and the
+count, from the v5.3 evaluation**)
+
+The external evaluation of v5.3 (6.08 confirmed, third in portfolio, all six
+prior corrections verified in the artifact) left three micro-items; all
+applied and extraction-verified:
+
+1. "Every declaration is oracled" (abstract + Section 1) claimed more than
+   the three targeted runs cover.  Now "every claimed ENDPOINT is oracled",
+   with Section 1 pointing at the itemised counts in Reproducibility.
+2. The abstract's envelope sentence read as a universal negation while the
+   Sixth block proves equality on the one-bond cell.  Now: a field-uniform
+   majorant that NEED NOT equal the intrinsic coefficient, with both sides
+   occurring and the equality named.
+3. "Six theorems" vs a results list carrying the star theorem too.  Now
+   "six headline theorems, plus the star-cell specialisation they compose
+   to."
+
+No theorem changed; the anchor stays c8e9ae51b.  Extraction: old phrases 0,
+new phrases 1, 19 pp, zero LaTeX errors, zero undefined references.
+
+**ROLES.**  Items found by the external reading; this desk verified, fixed,
+re-verified; no score in the paper; v5.4 not externally evaluated.
+
+## Addendum 590 (2026-08-03, **THE COUNT, TAKEN: fresh clone, core green at
+exactly 8475, repository-wide oracle exit 0 — and the sibling module
+repaired along the way, seven defects in three commits**)
+
+Owner instruction: leave the v2 replacement without its declared reserves.
+Both are now closed by measurement.
+
+**THE FRESH-CLONE RUN** (new Colab runtime, rm -rf + git clone, elan from
+scratch, `lake exe cache get` for Mathlib only).  At `c88604c01`: judges
+10/10 zero in both modes; `DobrushinGibbs` and `DobrushinIsing` built green
+from nothing with their whole chain; the core build ran to its tail and
+failed in exactly ONE line of the sibling module.  After the one-line repair
+(`8e8375d34`), the same clone completed:
+
+* **`Build completed successfully (8475 jobs)`** — lake's own closing line,
+  zero errors, the corrected prediction of Addendum 586 EXACT;
+* **repository-wide oracle exit 0**: 2980 axiom reports, 76 of them this
+  lane's, ZERO `sorryAx`, union of every list = exactly
+  `{propext, Classical.choice, Quot.sound}`;
+* stage-5 hashes: every module of this paper byte-identical to the certified
+  bytes (DobrushinIsing still `4e880ff0…`/29158), `git diff c8e9ae51b..
+  8e8375d34 -- YangMills/OS/` touches ONLY SpatialReconstruction.
+
+**THE SIBLING REPAIR, complete record.**  Seven defects across three
+commits, none of them a statement change: four dead `ring`s after
+`field_simp` (c8e9ae51b), then — measured by the fresh clone — a metavariable
+sum_congr rewrite in the coercivity zero case replaced by an explicit
+equation, `Finset.mul_add` (absent from the pin) rewritten out of the hpar
+chain, an nlinarith that needed a product it could not form replaced by
+`linear_combination` with coefficient −(D^L·D)/2 computed by hand, a FIFTH
+dead ring, `self_eq_add_left` (absent) re-derived through
+`add_right_cancel` (c88604c01), and finally a `simpa` that unfolded the goal
+to a mul_eq_zero disjunction but could not unfold `transferOp` in the
+hypothesis — deleted in favour of `congrFun hu σ`, which was ALREADY the
+proof by defeq (8e8375d34).  The handoff's own warning held: everything
+after 27bda084 in that module had never met a compiler.  Its lane's
+mathematical audit stays with its author.
+
+**RUNTIME RECORD.**  One fresh runtime for the whole unit; three runner
+invocations (fresh full, incremental after repair) plus one validation cell;
+disconnected on completion.
+
+**PAPER v5.5** (20 pp): anchor `8e8375d34`; the job paragraph now states the
+taken number with the fresh-clone pedigree and the honesty note about the
+repair; the repo-wide oracle paragraph added; "Every module in the anchor
+compiles" restored to its strong form, true again; the RowSum coverage
+doubled by the green core.  Extraction-verified: 'Build completed
+successfully (8475 jobs)' 1, '2980 axiom reports' 1, 'remains unmeasured' 0,
+'not reach zero errors' 0.
+
+**ROLES.**  This desk fabricated the Dobrushin lane and repaired the sibling
+under owner instruction; it does not audit itself; no score in the paper.
+
+## Addendum 591 (2026-08-03, **D-5 PRE-REGISTERED: the volume family — gates
+G15/G16/G17 committed before any Lean of the rung; and D-6 declared**)
+
+**THE RUNG.**  D-5 instantiates the Ising chain of Theorem thm:ising at a
+concrete FAMILY of volumes: the L x T rectangle with coupling beta on
+horizontal nearest neighbours, gamma on vertical, free boundary, Manhattan
+distance `Nat.dist + Nat.dist`.  The claim to be fabricated: envelope row
+sums are at most the window `2tanh|b|+2tanh|g|` at every site of every
+rectangle (interior sites attain it; boundary sites sit strictly below), so
+the D-4b endpoints apply with alpha and prefactor fixed BEFORE the volume —
+the statement quantifies over every (L,T) AFTER its constants.
+
+**GATES, registered before the Lean** (`scripts/judge_dobrushin_d5.py`, this
+commit): G15 row sums with interior attainment on four lattices and three
+cells; G16 the bound itself against EXHAUSTIVE Gibbs covariances (full
+enumeration, no sampling) over every ordered pair of distinct sites on three
+lattices per cell; G17 the uniformity probe — one bound computed once, four
+growing volumes measured under it.  37 checks expected; no assert; counter;
+both interpreter modes on the Colab plane.
+
+**D-6, DECLARED with its true price** (charter to follow in
+`docs/DOBRUSHIN-D6-CHARTER.md`): the spectral endpoint — transport of the
+family's measure-level decay into `volumeUniform_gap`, requiring the
+transfer-matrix identification (space-time Gibbs correlators as matrix
+elements of powers of the coupled kernel).  This is the open step the paper
+names; it is a translation with a consumer already elaborated, and it is
+declared BEFORE being attempted, with failure a possible and recordable
+outcome.
+
+**ROLES.**  Gates written by the fabricating desk before fabrication;
+their verdict on the plane licenses or blocks the Lean.
+
+## Addendum 592 (2026-08-03, **D-6 CHARTERED: the spectral endpoint, with its
+gates registered and its possible corpse named in advance**)
+
+`docs/DOBRUSHIN-D6-CHARTER.md` + `scripts/judge_dobrushin_d6.py`, committed
+together BEFORE any Lean of the rung.  Target: specRatio of the normalised
+coupled kernel bounded away from 1 uniformly in the extent, inside the
+Dobrushin window — the open step the paper's frontier names.  The structural
+discovery that turns it from leap to assembly: `volumeUniform_gap` accepts
+(L, v)-dependent PREFACTORS; only the RATE must be uniform, and the uniform
+rate is what D-5 certifies at the measure level.  Sub-bridges: B-1 strip
+identity (finite sums), B-2 per-extent prefactor control (strict Perron gap
+of paper 8, per-L only — assuming a uniform Perron gap would be assuming the
+conclusion), B-3 rate transport.  Risk concentrated in B-3's free-boundary
+vs dressed-ends bookkeeping; failure is a recordable outcome.  Gates: G18
+strip identity exact; G19 the target measured (specRatio <= window, in-window
+cells, L=2..8; out-of-window control reported unjudged); G20 geometric
+prefactor convergence at fixed L.  60 checks, no assert, both modes.
+
+**ROLES.**  Chartered by the fabricating desk; the gates license or block.
+
+## Addendum 593 (2026-08-03, **D-5 GREEN: the volume family — gates 37/37
+first run both modes, module green in two passes, core at exactly 8476,
+repository-wide oracle 2985 — and paper v6**)
+
+**THE RUNG.**  `YangMills/OS/DobrushinLattice.lean` at anchor
+`3bd8a463d647d2ef4ea8afd44c19855244729705`, sha256 `78b57a5b…`, 15135
+bytes.  The L x T rectangle: `rectJ_row` bounds every site's envelope row
+sum by the window (neighbour sets injected into two-element sets of
+naturals), and the endpoints `rect_ising_uniform_two_point` /
+`rect_ising_uniform_decay` bind beta, gamma, alpha and the prefactor BEFORE
+the quantifier over (L, T) — the volume-uniformity is the binder order of
+one declaration.  `rect_zero_coupling_indep` is the family-wide witness:
+at zero coupling the bound forces exact independence at every volume.
+
+**MEASUREMENTS, all in a fresh clone.**  Gates G15-G17: 37/37, both modes,
+FIRST run — the third rung in a row whose judges passed before its Lean and
+whose mathematics then elaborated essentially first-try (pass 1's only
+defects: two bare lambdas whose projections the elaborator met before their
+domains; pass 2 clean).  Core: `Build completed successfully (8476 jobs)` —
+the prediction 8475→8476, exact for the third consecutive registered count.
+Repository-wide oracle: exit 0, 2985 reports (2980 + the five new
+endpoints), zero sorryAx, union exactly the standard triple.  Runtime
+disconnected on completion.
+
+**PAPER v6** (21 pp): the family block in the abstract; Section 5 subsection
+with Theorem thm:family, its proof sketch, the zero-coupling witness and the
+G15-G17 record; frontier step 4 now cites the committed D-6 charter and its
+registered gates; reproducibility at the new anchor with the second
+fresh-clone story, 8476, 2985, 37/37 and the Lattice hash row.  The
+semantic sweep caught THREE more deictic-family sentences (abstract WNP,
+Section 1 not-claimed, Limitations) that thm:family's insertion had made
+false — the running count of this class is NINE, and the sweep that catches
+them is re-derivation, never grep.
+
+**ROLES.**  Fabricating desk; gates licensed; no self-audit; no score.
+v6 is the intended viXra v2 payload when the submitted v1 surfaces.
+
+## Addendum 594 (2026-08-03, **D-6 GATES PASS: 60/60 both modes at a3278ee6d
+— the spectral rung's fabrication is licensed; and the pending viXra v1 was
+cancelled by the owner, so the record converges on one future submission**)
+
+The G18-G20 run (fresh shallow clone, python only, both interpreter modes):
+**60 of 60 checks, exit 0 twice.**  G18: the strip identity is EXACT to
+1e-10 — dense linear algebra equals full-enumeration half-dressed strip
+sums on every registered (L, n, cell, observable).  G19: **specRatio of the
+normalised coupled kernel sits UNDER the Dobrushin window on every
+in-window cell, L = 2..8** — the target theorem's numeric shadow, measured;
+the out-of-window control was reported unjudged as registered.  G20: the
+Z-ratio converges at the per-extent rate with the constant fitted at n=1
+only (worst deviation printed 4.4e-16).
+
+Consequence under the charter: B-1 (the strip identity in Lean) may now be
+fabricated.  B-2 and B-3 wait their turn; the risk stays where the charter
+put it.
+
+Separately, the owner CANCELLED the pending viXra v1 (v5.5) through the
+cancellation form: there is now no in-flight submission, and the single
+future submission is the finished paper — the spectral theorem if B-1..B-3
+close, or v6 plus the recorded corpse if B-3 dies.  Either endpoint is a
+finish; only an unmeasured claim is not.
+
+**ROLES.**  Gates run by the fabricating desk before fabrication, as
+registered; no self-audit; no score.
+
+## Addendum 595 (2026-08-03, **charter amendment: the gates authorise
+building, they are not the theorem — and the deliverable is the ABSTRACT
+bridge, with Ising as corollary**)
+
+The second external reading corrected one sentence of this lane's acta and
+it is adopted verbatim: not "the D-6 judges passed" but **"every
+pre-registered judge that AUTHORISES BUILDING D-6 passed"** — the rung is
+empirically de-risked, architecturally closed, mathematically open.
+
+Its category table is adopted as a DESIGN INSTRUCTION and registered as
+Amendment 1 of `docs/DOBRUSHIN-D6-CHARTER.md` (additive; raises the target,
+touches no gate): B-1..B-3 will be stated for arbitrary positive slice
+weights and symmetric kernel data — the reusable interface from
+uniform-rate Gibbs decay to the uniform operator gap — with the Ising
+rectangle window as the instantiating corollary.  The reading's B-2 warning
+is hardened into a non-goal (no prefactor uniformity, not even as a lemma),
+and its D-7 shape (boundary-perturbation comparison, Cauchy exhaustion,
+uniqueness in the window) is recorded as a seed that nothing yet licenses.
+
+Score bookkeeping: evaluator B holds v6 at 5.10/5th pending theorems, with
+the ladder 5.55-5.75 (Ising-only D-6), 5.85-6.10 (abstract bridge),
+6.10-6.35 (plus thermodynamic limit).  Evaluator A's scale remains
+separate; the two are never mixed.
+
+**ROLES.**  Correction found outside; adopted whole; no self-audit.
+
+## Addendum 596 (2026-08-03, **charter Amendment 2: the band-compatibility
+clause, the exact B-1/B-2/B-3 specs, and the two-theorem modularisation**)
+
+The second external reading returned a full co-design of the D-6 rung and
+it is adopted whole as Amendment 2 (additive; every change sharpens a
+hypothesis or adds a guard).  Highlights of record:
+
+* The ANTI-CIRCULARITY clause: the abstract theorem must carry an explicit
+  band-compatibility/realisation hypothesis, so it cannot be true by
+  assuming a disguised connCorr bound.  This is the transported-hypothesis-
+  domain class, applied prophylactically at design time.
+* Two named failure modes for B-1: accidental spectral positivity (entries
+  positive does NOT give 0 <= T; subdominant eigenvalues may be negative),
+  and silent conflation of the two boundary dressings (the sqrt(w)-dressed
+  raw identity G18 measured vs the Omega-boundary centred form B-1's
+  canonical model states; their difference IS B-2's boundary cost).
+* B-2's binding non-goal list (no uniformity of min Omega_L, of f_v's sup
+  norm, of constants, of the Perron vector; no optimal prefactor).
+* B-3 may output any explicit r = rho(alpha) < 1 independent of L.
+* The deliverable is TWO public theorems: the abstract transport theorem
+  (statement free of Ising and Dobrushin) and the Dobrushin-Ising corollary
+  that shows the bridge inhabited.
+
+Evaluator B holds the paper at 5.10/5th (their scale) pending theorems and
+confirms the 5.85-6.10 band for the abstract bridge closed as specified.
+Their documentary reserve is recorded: they audit at anchor 3bd8a463;
+Amendments 1-2 reach their audited record at the next anchored PDF.
+
+**ROLES.**  Specification received from outside, adopted whole, registered
+before fabrication; the desk that will fabricate did not soften a word.
+
+## Addendum 597 (2026-08-03, **B-1 GREEN AND ORACLED: the finite band
+identity, at exactly the predicted 8477 — and gates G21-G23 registered and
+passed before any Lean of B-2**)
+
+**B-1 is a Lean theorem.**  `YangMills/OS/DobrushinBridge.lean`
+(sha256 `d2db5202…`, 16594 bytes, anchor `b4469a797`) holds, for finite
+`X`, symmetric `M`, strictly positive `Om` with the NORMALISED
+eigen-relation (`normalise_eig` keeps `lam` visible): `pow_fix` /
+`pow_fix_left` (powers fix the eigenvector on both sides),
+`pow_entry_symm`, `pow_pairing` (the path expansion of a matrix-power
+pairing, first-step `Fin.cons` induction inheriting the tree's
+`TracePathExpansion` pattern), `band_pair` (two-endpoint band sums are
+matrix elements at the dressed observables), `bandZ` (the band mass is
+`∑ Om²`, n-INDEPENDENT — the Perron-boundary normalisation is exact),
+`bandNorm_pos`, `centered_dressed_orth`, and the headline
+`band_covariance_eq`: band covariance = matrix element of `M^n` at the
+centred dressed observables over `∑ Om²`, exact, every `n`.  Per
+Amendment 2: no spectral positivity anywhere; the module never touches
+the physical kernel — it is the Omega-boundary form only.
+
+**Verification (fresh runtime, two passes, disconnected on completion).**
+Pass 1 at `85fc8158` died at its SINGLE error — `rw [band_pair]` against
+a beta-redex (`?f (v 0)` cannot match `(fun x => 1) (v 0)`); the fix is
+the explicit instantiation, commit `b4469a797`.  Pass 2, every child
+zero: 8 certifier runs (d5/d4/d3/d3b, both modes), the four lane modules,
+**core «Build completed successfully (8477 jobs)» — the FOURTH
+consecutive exact job-count prediction** (8475, 8476, 8477 after the
+corrected base), and the FULL repository oracle: **2993 reports (the
+predicted +8), 0 sorryAx, union of axioms = exactly
+{propext, Classical.choice, Quot.sound}** (wrapped log lines read to
+their continuations; unique sets are the triple and its subsets).
+Bridge build log: 0 errors.  Local bytes match the plane's stage-5
+hashes for both the module and the judge script.
+
+**B-2/B-3 design registered BEFORE fabrication**
+(`docs/DOBRUSHIN-D6-B2-DESIGN.md`, commit `68b9ba4c3`): two modules —
+`DobrushinTransport.lean` (abstract transport theorem: the exact identity
+`connCorr = (∑ Om²) · bandCov(f_v)` with `f_v = v/Om` feeds
+`volumeUniform_gap`; the decay hypothesis lives at the MEASURE level, so
+the anti-circularity clause is discharged by B-1's theorem, not assumed)
+and `DobrushinCorollary.lean` (band measure = free strip measure TILTED
+at the ends by `psi = Om/sqrt(w)` — the note records that the fabricating
+desk first wrote `Om·sqrt(w)` in scratch, i.e. Amendment 2's conflation
+failure mode fired live and the derivation caught it; five-term
+covariance formula; denominator floor `(min psi)²`; geometry bridge to
+D-5's rectangle; assembly `C_{L,f}·alpha^n`).
+
+**Gates G21-G23 (`scripts/judge_dobrushin_d6b.py`, sha256 `54c326f2…`)
+PASSED on the plane, 142/142 in BOTH modes**: G21 the B-2 identity exact
+on registered matrices INCLUDING one with negative subdominant eigenvalue;
+G22 the tilt algebra exact with `psi = Om/sqrt(w)`; G23 the D-5 feed at
+the tilt observables and the ASSEMBLED per-extent prefactor bounding the
+measured band covariance.  B-2 fabrication is licensed.
+
+**ROLES.**  This desk fabricates and registered its judges before the
+Lean; the audit of the rung belongs to another desk; no score.
+
+## Addendum 598 (2026-08-03, **B-2/B-3 ABSTRACT SIDE GREEN AND ORACLED: the
+transport theorem, at exactly the predicted 8478 and 2999**)
+
+**The abstract transport theorem is a Lean theorem.**
+`YangMills/OS/DobrushinTransport.lean` (sha256 `82a78354…`, 18467 bytes,
+anchor `9088eea6c`): for finite `X`, symmetric `M`, strictly positive `Om`
+with `M Om = Om`, the packaged operator `opOf M` on `EuclideanSpace ℝ X`
+with unit vacuum `vacOf Om` is a `VacuumTransfer`
+(`vacuumTransfer_opOf`); the EXACT identity `connCorr_eq_bandCov` —
+`connCorr (opOf M) (vacOf Om) v n = (∑ Om²) · bandCov M Om n f_v f_v`,
+`f_v = v/Om` — holds for every vector and every `n`; and
+**`abstract_uniform_gap`**: a family of such data whose MEASURE-level band
+covariances decay at a common rate `r < 1` (constants free per `(i, f)`)
+has one `m > 0` with `‖projectedTransfer‖ ≤ exp(−m)` across the whole
+family.  No Ising, no Dobrushin, no entry positivity in the statement;
+the anti-circularity clause of charter Amendment 2(i) is discharged
+because the hypothesis mentions only path sums of `bandW` and the
+identification with operator matrix elements is the proved identity.
+Non-vacuity: `wKernel_bandCov` (band covariance of the two-state witness
+= `((f0−f1)/2)²·rⁿ`, closed form), `wKernel_fluctuation_ne`, and
+`transport_witness` — the pipeline fires end-to-end onto a NONZERO
+projected operator at every rate.  The CLM packaging carries no
+star-algebra API: `opOf_one`/`opOf_mul`/`opOf_pow` are entrywise.
+
+**Verification (fresh runtime, two passes, disconnected on completion).**
+Pass 1 at `e937f50a4`: §1–§4 (identity + transport theorem) elaborated
+CLEAN on the first pass; 13 errors, all in §5's witness = ONE real
+(`wKernel_bandCov`'s script: short `Fin.sum_univ_two` rw count and `ring`
+against `(fun _ => 1) i` beta-redexes → `simp only [Fin.sum_univ_two]`)
+plus a ten-error universe cascade (`ι := PUnit` left the universe free →
+pinned to `Unit`), fixed in `9088eea6c`.  Pass 2, every child zero: ten
+certifier runs (G21-G23's d6b now runs in stage 1, 142/142 both modes on
+the plane), five lane modules, **core «Build completed successfully (8478
+jobs)» — the FIFTH consecutive exact job-count prediction** (8475, 8476,
+8477, 8478), and the FULL repository oracle: **2999 reports (the
+predicted +6), 0 sorryAx, union of axioms = exactly {propext,
+Classical.choice, Quot.sound}** (wrapped continuations read to depth 2).
+Transport build log: 0 errors.  Local COMMITTED BLOBS match the plane's
+stage-5 hashes (the working-copy CRLF difference on Windows is noted and
+irrelevant: the plane builds the blob).
+
+**What remains of D-6**: the Dobrushin-Ising corollary (public theorem
+(ii)) — tilt `ψ = Ω/√w`, five-term formula, denominator floor, geometry
+bridge to D-5's rectangle, D-5 feed, assembly `C_{L,f}·α^n` — per
+`docs/DOBRUSHIN-D6-B2-DESIGN.md` §§4-9, gates already passed (G22/G23).
+
+**ROLES.**  This desk fabricates; the rung's audit belongs to another
+desk; no score.
+
+## Addendum 599 (2026-08-03/04, **corollary stage A GREEN AND ORACLED: the
+tilt layer, at exactly the predicted 8479 and 3004**)
+
+**The tilt layer is Lean.**  `YangMills/OS/DobrushinTilt.lean` (sha256
+`a14bb43e…`, 31280 bytes, anchor `082e89b1a`; design note §§4-6, gates
+G22-G23): `bandW_eq_tilt` — the band weight of the normalised coupled
+data `tiltKernel = symWeighted/lam` is EXACTLY the free strip Gibbs
+weight tilted at the two end slices by `ψ = Ω/√w`, over `lam^n`;
+`band_sum_mul_pow`/`mass_mul_pow`/`marginal_left_mul_pow`/
+`marginal_right_mul_pow` — band sums, mass, and marginals as
+`gibbsPathSum`s (multiplied through by `lam^n`: no division by the
+eigenvalue anywhere); `bandCov_mul_sq` — the DIVISION-FREE identity
+`bandCov·PS(ψ,ψ)² = PS(fψ,gψ)·PS(ψ,ψ) − PS(fψ,ψ)·PS(ψ,gψ)`;
+`floor_PS_tilt` — `c²·Z ≤ PS(ψ,ψ)` from pointwise positivity, no decay
+input; and the endpoint **`bandCov_decay_of_free_decay`**: free
+two-endpoint covariance decay at rate `α` (constants `K·K·D` per
+observable) forces band-covariance decay at the SAME rate, constant per
+`(L, f, g)` — B-2's boundary cost absorbed exactly where the consumer's
+quantifiers permit.  No geometry, no extent-uniformity, no spectral
+input; the stage is the corollary's LEMMA and manufactures no witness
+(the physical inhabitant is stage B).
+
+**Verification (fresh runtime, three passes, disconnected on
+completion).**  Pass 1 at `3ddff2528`: 12 errors in 6 machinery classes,
+ZERO mathematical defects — dead `ring` after `field_simp`
+(bandW_eq_tilt); a div-rewrite chain blocked by associativity
+(band_sum: fixed by `mul_assoc` + `div_mul_cancel₀` + a beta-reduced
+`show`); `field_simp;ring` choking on giant sum atoms (bandCov_mul_sq:
+replaced by a five-variable abstract `key` lemma); the product order of
+`gibbsPathSum` is `ψ₀·ψₙ·gW` not `ψ₀·gW·ψₙ` (PS_tilt_pos, floor);
+`le_sup'` needing its function explicit; and eight `positivity` calls
+against OPAQUE atoms (`K u`, `supObs`) replaced by explicit
+`mul_nonneg` chains.  Pass 2 at `5b9450d73`: ONE error — the `key`
+lemma's `ring` was dead too (its `field_simp` closes alone).  Pass 3 at
+`082e89b1a`, every child zero: ten certifier runs, six lane modules,
+**core «Build completed successfully (8479 jobs)» — the SIXTH
+consecutive exact core prediction** (8475…8479), and the FULL oracle:
+**3004 reports (the predicted +5), 0 sorryAx, union = exactly
+{propext, Classical.choice, Quot.sound}**.  Tilt build log: 0 errors.
+Local committed blob = the plane's stage-5 hash.
+
+**What remains of the corollary (stage B, licensed and inventoried)**:
+the geometry bridge `gibbsWeight (z2PathWeight γ) β = isingWeight (rectJ
+β γ) ∘ curry` (the `/2` in `isingWeight` compensates ordered double
+counting; single-counted products on both sides — checked in source),
+the D-5 feed `ising_covar_exp_decay` at end-slice observables with
+`rectDist ≥ n`, the Perron instantiation via `symVacuum_exists`, the
+discharge of `bandCov_decay_of_free_decay`'s hypothesis, and the public
+corollary: window ⟹ `sup_L ‖projectedTransfer‖ ≤ exp(−m)` through
+`abstract_uniform_gap`.  Then paper v7.
+
+**ROLES.**  This desk fabricates; the rung's audit belongs to another
+desk; no score.
+
+## Addendum 600 (2026-08-04, **paper v7: the transport inked — 24 pages at
+anchor 082e89b1a, artifact-verified**)
+
+The manuscript `papers/dobrushin-matrix/dobrushin_matrix.tex` (+pdf, same
+commit) now carries the transport: a new section states
+Theorems~thm:band (the finite band identity), thm:transport (the abstract
+transport theorem, with its anti-circularity discussion and the two-state
+witness) and thm:tilt (the tilt layer), and a subsection names THE ONE
+PLANK NOT CLOSED — the currying discharge of the free-decay hypothesis by
+the family theorem — exactly, claiming nothing that has not compiled.
+Abstract, claims, frontier item 4, and the whole Reproducibility section
+updated: anchor moved to 082e89b1a (every permalink now resolves at an
+anchor containing every cited module), the six-count run of
+registered-then-taken job numbers (8475..8479), the oracle ladder
+2985/2993/2999/3004 with the union rule, the three new module hashes, the
+eight certifiers at sixteen zero exits, and the transport rungs' pass
+costs itemised (every error machinery, none mathematical).  One LaTeX
+defect caught at compile (an undefined \E macro in the new section) fixed
+before any artifact was produced.  ARTIFACT VERIFIED per the v5 lesson:
+the PDF's extracted text contains the new section head, the three theorem
+names, both gate tallies (60/60, 142/142), the negative-subdominant
+sentence, all three new hashes and all three new counts; 24 pages, zero
+LaTeX errors, zero undefined references.
+
+**ROLES.**  The desk that wrote the paper did not audit it; external
+evaluation has its own scales and its own record.
+
+## Addendum 601 (2026-08-04, **paper v7.1: the two deictic corrections of
+the external reading, plus the sweep**)
+
+The second external reading scored v7 at 5.62/3rd on its scale (up from
+5.10/5th; its stated band on closing the one discharge: 5.90-6.05) and
+found two DEICTIC-CLASS defects — Section 6's insertion had made two old
+sentences false without touching them, the exact house class.  Fixed:
+the Limitations opener now counts ELEVEN elementary theorems and describes
+the three transport proofs honestly (the uniformisation inside the operator
+interface is Banach--Steinhaus, proved in the tree's O-1 module, not here);
+"the transport is D-6's, chartered and not begun" replaced by "three
+machine-checked theorems and one open concrete discharge; no spectral
+statement is yet claimed for the rectangle family"; the stale "translation
+between two languages" limitation updated to the true residue; and the
+abstract's headline count now says eleven.  The house sweep (grep for every
+summary-shaped count/openness phrase, then re-derivation) found NOTHING
+further stale.  Artifact verified: the corrected sentences present in the
+extracted PDF text, both old sentences absent, 24 pages, zero errors.
+Submission comments corrected to "Eleven machine-checked theorems" (194
+chars).
+
+**ROLES.**  Corrections found outside; adopted; the sweep is this desk's,
+the score is the evaluator's.
+
+## Addendum 602 (2026-08-04, **the external verdict on v7.1: editorially
+closed, ready for submission; the recorded path to the top slot**)
+
+The second external reading confirms v7.1: science 5.62, manuscript 5.66,
+3rd place in a technical tie with 2nd on its scale; "no editorial reason
+remains to delay submission"; the epistemic hierarchy called clean
+(mechanised theorems / measurements separated / explicit negative claims /
+one identified open discharge / a coherent count of eleven theorems / the
+reproducibility apparatus).  Its stated path: closing the currying
+discharge does not correct this paper but ADDS a corollary, with an
+estimated 5.92-6.05 and a real contest for 1st.  The owner holds the
+submission click; the manuscript of record is commit ffee6f36e.
+
+Stage B accordingly proceeds under the standing order: the geometry bridge
+(the 1D adjacency pairing, the exponent identity against isingWeight's
+half, the curry weight equality), the measure transport into freeCov, the
+deltaAt support transport, the D-5 feed with rectDist >= n, the Perron
+instantiation, and the public corollary through abstract_uniform_gap.
+
+**ROLES.**  Score and verdict are the evaluator's; the record is this
+desk's; the click is the owner's.
+
+## Addendum 603 (2026-08-04, **D-6 COMPLETE: the currying discharge and THE
+PUBLIC DOBRUSHIN-ISING COROLLARY, green and oracled at exactly 8480/3010**)
+
+**The single weld is a Lean theorem.**
+`YangMills/OS/DobrushinCorollary.lean` (sha256 `ffdc5a6a…`, 34006 bytes,
+anchor `c7b870b05`): `adj_pairing` (the 1D nearest-neighbour pairing:
+ordered double sum = twice the step sum); `rectJ_energy_split` (the
+rectangle coupling's halved ordered double energy = single-counted
+temporal energy at β plus spatial at γ — exactly the half `isingWeight`
+carries); **`curry_weight`** (the free strip Gibbs weight IS the rectangle
+Ising weight under currying — exact, no measure approximates another);
+**`freeCov_eq_rect_covar`** (the tilt layer's free covariance IS the
+rectangle covariance of end-slice observables); `row_deltaAt_zero/zero'`
+and `row_deltaAt_le/le'` (end-slice observables oscillate only on their
+slice, at slice-level oscillations); **`rect_feed`** (the family
+theorem's decay fed through: every site pair at rectangle distance ≥ the
+horizon, `α^{d□}` becomes `α^T`, slice oscillation-sum constants); and
+**`dobrushin_ising_uniform_gap`** — THE PUBLIC COROLLARY (charter
+Amendment 2, theorem (ii)): inside the window `2tanh|β|+2tanh|γ| ≤ α <
+1`, ONE `m > 0` bounds `‖projectedTransfer‖ ≤ e^{−m}` for normalised
+Perron data of the coupled kernel at EVERY extent, through
+`abstract_uniform_gap`.  Ising certifies the abstract bridge is
+inhabited by the physical family; the bridge never mentions it.
+
+**Verification (six passes across two fresh runtimes — the session
+teardown killed the first runtime's client-side queue mid-flight, one
+rerun cost — every child zero at the end).**  The error ladder:
+20 → 9 → 5 → 4 → 2 → 0, EVERY one machinery, ZERO mathematical: pin
+renames (`update_of_ne`/`update_self`/`pow_le_pow_of_le_one`); a `have`
+made the currying equiv OPAQUE and its `rfl` died (data must be `let` or
+inlined — the house note is worth its sentence); a duplicate
+`deltaAt_nonneg` (DobrushinConditional already had it); a doubled
+`le_trans`+`calc`; a Fintype instance stuck on `rectJ`'s metavariable
+extents (pinned by name at all twelve sites); four rewrites blind to
+beta-redexes (given `show`s); `Finset.sum_div` used backwards; a congr
+cascade against divisions (replaced by one `hE2` identification lemma);
+and five closers that died as the chains beneath them became exact.
+**Core «Build completed successfully (8480 jobs)» — the SEVENTH
+consecutive exact prediction** (8475…8480).  **Oracle: 3010 reports (the
+predicted +6, the EIGHTH exact), 0 sorryAx, union = exactly {propext,
+Classical.choice, Quot.sound}** (wrapped continuations read).  Corollary
+build log: 0 errors.  Local committed blob = the plane's stage-5 hash.
+
+**D-6 IS CLOSED.**  Both public theorems of Amendment 2 are oracled Lean
+theorems; the chain local interaction ⟹ Dobrushin matrix ⟹ uniform
+Gibbs decay ⟹ band decay ⟹ uniform operator gap is machine-checked end
+to end, with the abstract bridge stated free of Ising and inhabited by
+it.  What the paper's Section on the transport declared open is open no
+longer; the paper's v2 inks it as a corollary without touching a printed
+theorem.
+
+**ROLES.**  This desk fabricates; the rung's audit belongs to another
+desk; no score.
+
+## Addendum 604 (2026-08-04, **paper v8: the corollary inked — 25 pages at
+anchor c7b870b05, artifact-verified**)
+
+The manuscript now carries THE THEOREM the chain was for:
+Section~sec:transport-open, renamed "The last plank, closed", states
+Theorem thm:corollary (`dobrushin_ising_uniform_gap`) with the currying
+identity, the pairing count, the energy split and the feed named as its
+proof; the abstract's "What is not proved" now lists only the honest
+residue (no infinite-volume state, window not sharp, the
+symmetric-operator reading stated where used); claims/frontier item 4
+marked Done, all four planks; Limitations' substantive limitation moves
+to the infinite volume, explicitly a separate unchartered programme;
+Reproducibility carries the seven-count run 8475..8480, the oracle
+ladder ..3004/3010, the corollary's hash row (ffdc5a6a…/34006), the
+six-pass 20→9→5→4→2→0 machinery ladder itemised, and the operational
+note that the first verification queue died with a client session
+(queued Colab cells are browser-submitted) costing one identical rerun.
+Twelve theorems counted in abstract and Limitations; permalink anchor
+moved to c7b870b05.  ARTIFACT VERIFIED by text extraction: the new
+section head, the corollary's Lean name, all four chain-lemma names,
+8480, 3010, the new hash, "twelve theorems" ×2 present; "one plank that
+is not", "claimed by nobody", "All eleven theorems" absent; 25 pages,
+zero LaTeX errors, zero undefined references.
+
+**ROLES.**  The desk that wrote the paper did not audit it; external
+evaluation has its own scales and its own record.
+
+## Addendum 605 (2026-08-04, **paper v8.1: the frontier residue killed;
+the external verdict — 5.98, FIRST PLACE provisional**)
+
+The second external reading scored v8 at **5.98/1st on its scale**
+(interval 5.88-6.08; a technical tie with the area law, this paper
+slightly ahead on the reusable architecture: the abstract interface
+measure-decay => uniform operator gap, inhabited by a non-degenerate
+physical family) and found ONE editorial residue: the frontier's "What
+changed" paragraph still said "one open discharge" and "the single
+identification ... connecting the two chains" — contradicting
+Theorem thm:corollary three lines above.  v8.1 replaces the paragraph
+with the reading's proposed sentence (adapted): step 4 closed, the five
+planks composing to the corollary, and what remains lying beyond the
+finite-volume transport; the section retitled "What is now closed, and
+what remains".  Artifact verified: the new head and sentences present,
+all three stale phrases absent, 25 pages, zero errors.  The evaluator's
+stated reasons not to go above 6 are the manuscript's own limits
+(classical mathematics, rectangles with free boundary, no
+infinite-volume state, no thermodynamic limit, no YM consequence) —
+exactly the honesty the regime requires, recorded here without dispute.
+
+**ROLES.**  Score and residue are the evaluator's; the fix and the sweep
+are this desk's; the click is the owner's.
+
+## Addendum 606 (2026-08-04, **the 17-satellite audit and the RI charter:
+Conjecture 1's commuting case collapses — registered before fabrication**)
+
+Two units, both audit-first.  UNIT 1 — the owner asked whether the two
+attached coherence papers (ai.viXra 2512.0105v2, 2512.0064v2) crossed
+with the 17 satellite repos hide overlooked ≥9 potential.  Four
+independent Fable sessions audited all 17 at statement level (shallow
+clones, no builds).  Verdict: NOTHING ≥6; zero sorry/zero axiom
+everywhere (grep-verified); the repos' own disclaimers are accurate —
+the dominant defect is content-to-scaffolding ratio, not dishonesty.
+Best: lean-2d-yang-mills (5, real mechanization of exact 2D SU(2),
+Casimir area law, closed-form transfer gap 1−e^{−3t/4} = best exact
+non-Ising witness candidate for the D-6 transport theorem);
+rooted-tree-catalan-closure (5, unconditional 1287-line bijection,
+classical identity); aqft-split-inclusion-series (5, as campaign
+infrastructure).  Defects recorded: PrimeResolventData trivially
+inhabited (riemann-resolvent-programme Program.lean:67 — its "Theorem
+C" collapses to Theorem A; transported-hypothesis class), sibling
+Riemann repos formalize DIFFERENT xi functions under one name, the
+mathlib-plane-tree-catalan "PR kit" whose Mathlib PR was never opened
+(the gap in Mathlib is real), free-Prop vacuity interfaces
+(TruncatedCorrelationDecay, representsExpectation,
+measure_is_wilson_gibbs), modus-ponens dictionary theorems
+(lean-transfer-matrix Finite.lean), and the prospective 2602.0085
+re-entry point at lean-ym-flow's planned M1 bridge.  Memory:
+satellite-repo-audit.md.
+
+UNIT 2 — the owner chose the Conjecture 1 commuting-buffer campaign
+(2512.0064v2 §6).  This desk's design analysis found the case
+DEGENERATE: for pairwise-commuting finite-range buffers the Heisenberg
+cone is STRICT (far factors cancel exactly) and a local dissipator
+annihilates disjoint-support operators, so the boundary observable
+never feels the sink at operator level.  An INDEPENDENT adversarial
+Fable session, ordered to refute, CONFIRMED the cone and blindness
+steps as airtight, found the missed corollary (the buffer+sink
+Lindbladian is NON-ERGODIC: conserved local observables, degenerate
+stationary manifold, closed unitary reduced dynamics beyond range R),
+and caught THREE holes in the draft's spectral step plus one backwards
+gloss: (i) "rho_ss" does not refer — thermalization must be a
+HYPOTHESIS; (ii) the linear-in-population floor is WRONG — coherences
+enter at first order, correct floor = sqrt(excited weight) by
+Cauchy-Schwarz, linear iff the local state commutes with H_near,
+exactly zero for ground preparation; (iii) the Davies limit does not
+exist for atomic C(t) — restated as time-averaged golden-rule at
+resonant atoms (the suspected Heisenberg/Schrodinger bookkeeping error
+was checked and is NOT there — QRT duality closes it); (iv) the gloss
+is xi* -> 0, not infinity: commutativity kills the CHANNEL (the
+quasi-free exponent is Green-function evanescence, not spreading), so
+the commuting case sits OUTSIDE the conjecture's mixing regime and
+every floor is a preparation floor.  The one true epsilon-exponential
+left is the Gibbs preparation's boundary correction e^{-eps/xi_th},
+whose classical shadow is exactly D-6.  CHARTER REGISTERED:
+docs/RATE-INHERITANCE-CHARTER.md — collapse theorem as target, short
+paper, four judges with two-stage tolerance freeze (structure now,
+numbers after a labeled design pilot, before the certified run), death
+sites named.  Draft's four failures recorded in its section 8.
+
+**ROLES.**  Design: this desk.  Refutation audit: an independent
+session, pen and paper, load-bearing computations reproduced.  All
+four (C3) defects were found by the auditor, none by the fabricator —
+the split-roles rule bought exactly what it was written to buy.  The
+judges have not run; nothing beyond the charter is licensed.
+
+## Addendum 607 (2026-08-04, **the 28-paper idea sweep: no reachable >=7;
+a dense 6-6.5 portfolio; two 7-shaped doors with named kill-tests**)
+
+Owner's order: keep auditing for a >=7 idea across the whole paper corpus.
+Four independent Fable sessions mined the 28 papers of papers/** for
+mechanisms, named open problems, exact results, and cross-lane
+compositions; this desk added two candidates of its own and audited one
+of them to death before delivery.  CONSENSUS OF ALL FIVE READERS: nothing
+composes to >=7 at honest reachability (calibration: 7 = genuinely new
+theorem with a new mechanism, plausibly reachable).
+
+The portfolio that IS on the table (miner calibration, not the external
+evaluator's scale -- the two are never mixed):
+* 6.5, low risk, ~weeks: volume-uniform machine-checked OS
+  reconstruction ("the reconstructed theory has one mass") -- papers
+  12/13/14 + os-chain-z2 + o-bridge + D-6 compose; the GNS machinery is
+  ALREADY in pinned Mathlib (PreInnerProductSpace.Core,
+  SeparationQuotient inner-product instance, completion; verified
+  locally), paper 14's quotient is already constructed; missing = n-step
+  identification at extent (os-chain-z2 says porting = re-typing),
+  vacuum packaging, one Q-unitary transport lemma, D-6 window plumbing.
+  External priority claim (first machine-checked OS reconstruction
+  anywhere) survives; internal headline already spent (os-chain-z2).
+* 6.0, days-to-weeks, very high reachability: THE FRACTIONAL BESSEL
+  STEP CLOSED -- a two-flow Riccati barrier (difference of two flows,
+  touch of level (nu-mu)/x collapses exactly, every touch an upward
+  crossing) proves 0 < rho_mu - rho_nu < (nu-mu)/x for ALL real
+  0 <= mu < nu, x > 0.  This CONTRADICTS the published scope remark of
+  papers/bessel-amos-fh (rem:scope: "would need two-sided bounds sharp
+  to O(x^-2)").  Statement known (Freitas-Laugesen Lemma 10); new =
+  route + bilateral sharp difference form + first mechanized
+  continuous-order monotonicity.  Verified in-session: both load-bearing
+  identities to 1e-22, 392-point strict grid.  REGIME: the sketch was
+  generated by a reader session; a DIFFERENT session must audit before
+  fabrication; literature collation (Segura 2021) mandatory first.
+* 6.0: D-7 by transplant -- close the dobrushin paper's named
+  "substantive limitation" with the thermodynamic-limit-kp machinery
+  (charts, whole-sequence Cauchy, Z^2 inverses) fed by the PROVED
+  Dobrushin decay instead of the KP tail; window 0.25-order vs 1e-6.
+  New brick: two-volume comparison via the comparison estimate.
+* 6.0 conditional: the rescaled Poincare gate at the unique exponent
+  s = (d-2)/2 dictated by the wall's own arithmetic; falsifier-first
+  protocol; either outcome publishable.
+* 5.5: SU(2) heat-kernel witness for the abstract transport theorem;
+  abstract two-geometry reconstruction module; calibrated crossing
+  theory.
+
+The two 7-SHAPED doors, both with named kill-tests and presumed death:
+(1) a NEW volume-uniform contraction mechanism (site-local projective
+cone / beyond-Dobrushin window) -- both the S-lane and OS miners
+independently identified it as the only genuinely-new-mathematics shape,
+and both judge it not plausibly reachable (Birkhoff diameter is additive
+under tensor product -- proved as a wall in spatial-birkhoff -- and the
+lane's memory locates the uniformity wall in the ordered phase);
+30-second kill-test BEFORE any investment: Birkhoff ratio of sqrt(w) K
+sqrt(w) at L=2..8 outside the window; if -> 1 uniformly, dead on
+arrival.  (2) the wronskian-reduction Conjecture (F_B > 0 and F_A/F_B
+decreasing on (0,pi), all beta) -- 7+ if landed, but the corpus itself
+proved the barrier (parity-mirror cancellation e^{-2.1beta} at t=pi;
+counterexample killing all bounded-structural-data routes).
+
+This desk's own two candidates, disposed of honestly: (a) "exact tanh
+ratios attain Birkhoff" -- KILLED as a unification by the miners (Z_3
+convolution counterexample computed in-session; attainment is a
+projective-line accident, equal-diagonal 2x2 only; survives as a 4.5-5
+note: on the bisymmetric 2x2 semigroup Birkhoff's inequality is an
+EQUALITY and the 1D Ising fusion rule is its equality case); (b)
+"commuting buffer + bulk dissipation = classical reduction" --
+self-audited down before delivery: bulk noise broadens the LOCAL
+spectral density at site 1 directly, so the probe rate saturates at a
+gamma-floor independent of epsilon; yields a floor proposition for the
+RI paper (the two degenerate corners: boundary sink = frozen, bulk sink
+= floor), not a standalone theorem.
+
+Housekeeping caught in passing: papers/spatial-reconstruction tex on
+disk carries unfilled placeholders (JOBSAFTER, DEFLINE, SITENNVEC) in
+its repro table; freeze before any citation.  parity-barriers is on a
+DIFFERENT toolchain (4.30.0-rc2 / Mathlib cd3b69b) than the main tree.
+
+**ROLES.**  Mining: four independent sessions.  Synthesis and the
+self-kills: this desk.  Nothing here is licensed for fabrication; each
+candidate needs its own charter and judges under the standing regime.
+
+## Addendum 608 (2026-08-04, **OS-R REGISTERED: the charter, the judges,
+and a design correction bought by reading the files**)
+
+The owner chose the OS reconstruction campaign (the 6.5-band composition
+of Add. 607).  Charter registered: docs/OS-RECONSTRUCTION-CHARTER.md —
+target = volume-uniform machine-checked OS reconstruction (window ∩
+{beta >= 0}: OS positivity + GNS quotient + forced transfer operator +
+ONE m > 0 for every extent via unitary transport onto the operator D-6
+already bounds + n-step identification against the measure).  Design
+grounded in the sources, and the reading CORRECTED the lane memory:
+the site form weighs by 1/w (the shared slice divided out once), NOT by
+w; with that, Q = multiplication by sqrt(w) is a unitary Euclidean ->
+site, Q^-1 T Q = sqrt(w) K sqrt(w) EXACTLY, and DobrushinTilt's
+tiltKernel w beta lam = symWeighted w beta / lam means the operator
+D-6 bounds IS the transported normalised transfer operator — no
+spectral-transport theorem, no complexification theory needed; the
+remaining work is the n-step identification (consume SpatialGibbs's
+generic bridge) plus plumbing.  Judges: scripts/judge_os_uniform.py
+(NOT judge_os_reconstruction.py — that name belongs to paper 14's gate,
+another desk, and was left untouched after a collision was caught by
+looking before writing).  G1-G6, 110 registered checks: collapse
+factorisation both parities, forced-operator defining equation +
+self-adjointness at every beta + PSD at beta >= 0, the Q isometry and
+entrywise conjugation, tiltKernel alignment + Perron condition, n-step
+dressing/partition identities at N = 1..4 with the CONNECTED bound in
+its full vacuum-cross-term expansion (the first draft's single-term
+bound was WRONG — the D-6 tilt lesson re-learned at judge level and
+fixed BEFORE first run), and the window/RP overlap witness.  Local
+measured run (light class, 0.86 s, single process): 110/110 PASS in
+normal and -O modes.  The licensing PASS remains the plane run
+(runner stage 1) per the charter; fabrication is not licensed until
+then.  RI campaign stays registered and parked.
+
+**ROLES.**  Design, charter, judges: this desk.  The two judge defects
+(connected-bound cross terms; Jacobi iteration budget) were found by
+this desk's own pre-registration audit, recorded here.  Fresh-clone
+verification and external evaluation retain their own roles.

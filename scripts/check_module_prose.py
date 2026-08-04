@@ -27,9 +27,9 @@ import re
 import sys
 import os
 
-DECL = re.compile(r"^(?:noncomputable\s+)?(?:private\s+)?"
-                  r"(?:theorem|def|lemma|abbrev|instance|structure|inductive|class)\s+"
-                  r"([A-Za-z_][A-Za-z0-9_']*)")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lean_decls import declaration_name   # ONE grammar, self-tested
+
 IDENT = re.compile(r"^[A-Za-z_][A-Za-z0-9_']*$")
 SUBSCRIPT = re.compile(r"^[A-Za-z]_[A-Za-z0-9]{1,2}$")   # `Z_2`, `Z_N`: notation
 SECREF = re.compile(r"§(\d+)")
@@ -61,9 +61,9 @@ def declarations(path):
                     if depth == 0:
                         keep.append(line[i])
                     i += 1
-            m = DECL.match("".join(keep))
-            if m:
-                names.add(m.group(1))
+            nm = declaration_name("".join(keep))
+            if nm:
+                names.add(nm)
     return names
 
 
@@ -119,9 +119,9 @@ def mathlib_names(repo):
                 with open(os.path.join(base, entry), encoding="utf-8",
                           errors="replace") as fh:
                     for line in fh:
-                        m = DECL.match(line)
-                        if m:
-                            _MATHLIB.add(m.group(1))
+                        nm = declaration_name(line)
+                        if nm:
+                            _MATHLIB.add(nm)
     return _MATHLIB
 
 

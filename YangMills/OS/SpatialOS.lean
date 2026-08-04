@@ -23,13 +23,21 @@ is the reflected two-point sum of the Gibbs measure, the reflection entering
 through the PAIR `(pastOf, futRevOf)`.  At odd separation the positivity
 theorems are therefore about the MEASURE, not about a form standing in for it.
 
-**THE SITE BRIDGE IS NOT.**  Through a site the halves SHARE the middle slice, so
-pairs of halves are not a product but a fibred product over that slice, and the
-weight of the shared slice is counted twice and must be divided out.  That is a
-different statement, not a variation on the bond one.  Until it is proved,
-`osPairingSite` remains a CANDIDATE: it is positive and has a PSD Gram matrix,
-but its full-path identification is open, and the only evidence for it is a
-pre-registered gate verifying it to `1e-12` against brute-force enumeration.
+**AND SO IS THE SITE BRIDGE** (§9).  Through a site the halves SHARE the middle
+slice, so pairs of halves are not a product but a fibred product over that slice,
+and the weight of the shared slice is counted twice and must be divided out.
+That is a different statement, not a variation on the bond one, and it is proved
+here separately: `sum_pathsAt_eq` for the fibred bijection,
+`gibbsWeight_joinSite` for the weight identity in its division-free form
+`w σ * W(joinSite a b) = W a * W b`, and `osPairingSite_eq_gibbsSum` composing
+them.  `osPairingSite` is therefore no longer a candidate either.
+
+Owning BOTH geometries is what makes the pair of theorems worth having: the
+transfer operator shifts by one slice, so it turns an even separation into an
+odd one.  A construction owning only one of the two has no operator that could
+be self-adjoint on it.  That is why the site case is a precondition rather than
+a symmetric afterthought --- and it is as far as this module goes: the operator
+itself is not built here.
 
 `futRevOf` sends a PATH to a HALF --- the reflected future half.  It is not an
 involution on paths and is deliberately not called `Θ` anywhere; the reflection
@@ -58,11 +66,14 @@ where the two cases genuinely differ.
 Every POSITIVITY result for the two half-chain forms is a corollary of the two
 identities saying the pairing is a quadratic form in `collapse F` ---
 `osPairingSite_eq` and `osPairingBond_eq` --- together with the kernel facts of
-paper 12.  Identifying the BOND form with the full-path Gibbs measure needs a
-second layer that is not a corollary of those: the assembly `joinBond`, the
-equivalence `bondEquiv`, and the weight identity `gibbsWeight_joinBond`.
+paper 12.  Identifying either form with the full-path Gibbs measure needs a
+second layer that is not a corollary of those: an assembly, a bijection, and a
+weight identity, once for each geometry (`joinBond`/`bondEquiv`/
+`gibbsWeight_joinBond`, and `joinSite`/`sum_pathsAt_eq`/`gibbsWeight_joinSite`).
 
 ## Pre-registration
+
+Two, and each was committed before the work it licenses existed.
 
 `scripts/judge_spatial_os.py`, committed at `08a548cf` **before** a line of this
 file was written.  Four gates, each licensing one theorem: A1 the site
@@ -71,10 +82,17 @@ sharpness witness.  A1/A2 are matrix identities to `1e-12` against a pairing
 matrix built by brute force over every full path; B and C read a MINIMUM
 EIGENVALUE rather than sampling observables.  All four passed.
 
+`scripts/judge_site_bridge.py`, committed at `2392c080` **before** it was run
+and before §9 existed.  Two gates, each predicting a NUMBER rather than a range:
+S1 that the count of paths and the count of assembling pairs are the same
+integer `2^(L(2m+1))`, S2 that the weight residual is zero to `1e-12` relative.
+Both passed, and the file states what a failure would have meant.
+
 ## What is NOT here
 
-No reconstruction: the physical Hilbert space as the quotient by this form's
-null space is not built in this file.
+No reconstruction: the physical Hilbert space as the quotient by these forms'
+null space is not built in this file, and neither is the transfer operator whose
+self-adjointness on it is the reason both geometries are proved.
 -/
 
 namespace YangMills.OS
@@ -143,11 +161,12 @@ noncomputable def osPairingBond {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : 
       ((gibbsWeight w β a * spatialKernel β (edgeOf a) (edgeOf b)
           * gibbsWeight w β b : ℝ) : ℂ)
 
-/-- The CANDIDATE reflected form through a SITE (`N = 2m`).  Only pairs of
-halves agreeing on the shared slice come from a path, and that slice's weight is
-carried by both halves, so it is divided out once.  Still a CANDIDATE, and now
-for a reason the bond form no longer shares: the site full-path bridge is open,
-the bond one is proved. -/
+/-- The reflected form through a SITE (`N = 2m`).  Only pairs of halves agreeing
+on the shared slice come from a path, and that slice's weight is carried by both
+halves, so it is divided out once.  That this IS the reflected Gibbs sum on the
+site geometry is proved in §9, at `osPairingSite_eq_gibbsSum`; as with the bond
+form it is stated first in this convenient form because every factorisation
+argument runs on it. -/
 noncomputable def osPairingSite {L : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
     (m : ℕ) (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) : ℂ :=
   ∑ σ : Fin L → Fin 2, ∑ a ∈ halvesAt L m σ, ∑ b ∈ halvesAt L m σ,
@@ -759,6 +778,26 @@ theorem osPairingBond_eq_gibbsSum {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) (�
       * ((gibbsWeight w β (N := m + 1 + m) (joinBond a b) : ℝ) : ℂ) = _
   rw [pastOf_joinBond, futRevOf_joinBond, gibbsWeight_joinBond]
 
+/-- **THE BOND BRIDGE, CROSS FORM.**  One observable against the reflection of
+another.  Extracted as a theorem rather than left inside the Gram proof, where
+it lived as a `have`: a statement that exists only inside a proof cannot be
+cited, and the reconstruction's headline needs exactly this one. -/
+theorem osPairingBondCross_eq_gibbsSum {L m : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (β : ℝ) (F G : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    (∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
+        (starRingEnd ℂ) (F (pastOf X)) * G (futRevOf X)
+          * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))
+      = osPairingBondCross w β m F G := by
+  rw [← Equiv.sum_comp (bondEquiv L m)
+        (fun X => (starRingEnd ℂ) (F (pastOf X)) * G (futRevOf X)
+          * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))]
+  rw [Fintype.sum_prod_type]
+  unfold osPairingBondCross
+  refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
+  show (starRingEnd ℂ) (F (pastOf (joinBond a b))) * G (futRevOf (joinBond a b))
+      * ((gibbsWeight w β (N := m + 1 + m) (joinBond a b) : ℝ) : ℂ) = _
+  rw [pastOf_joinBond, futRevOf_joinBond, gibbsWeight_joinBond]
+
 /-- **AND THEREFORE IT IS NON-NEGATIVE, for `β ≥ 0`.**  The reflected two-point
 sum of the Gibbs measure itself, not of a form standing in for it. -/
 theorem gibbsSum_reflected_nonneg {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) {β : ℝ}
@@ -783,23 +822,332 @@ theorem gibbsSum_reflected_gram_nonneg {L m : ℕ} (w : (Fin L → Fin 2) → �
         ∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
           (starRingEnd ℂ) (F i (pastOf X)) * F j (futRevOf X)
             * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ)) = (r : ℂ) := by
-  have hcross : ∀ i j : ι,
-      (∑ X : Fin ((m + 1) + (m + 1)) → (Fin L → Fin 2),
-        (starRingEnd ℂ) (F i (pastOf X)) * F j (futRevOf X)
-          * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))
-        = osPairingBondCross w β m (F i) (F j) := by
-    intro i j
-    rw [← Equiv.sum_comp (bondEquiv L m)
-          (fun X => (starRingEnd ℂ) (F i (pastOf X)) * F j (futRevOf X)
-            * ((gibbsWeight w β (N := m + 1 + m) X : ℝ) : ℂ))]
-    rw [Fintype.sum_prod_type]
-    unfold osPairingBondCross
-    refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
-    show (starRingEnd ℂ) (F i (pastOf (joinBond a b))) * F j (futRevOf (joinBond a b))
-        * ((gibbsWeight w β (N := m + 1 + m) (joinBond a b) : ℝ) : ℂ) = _
-    rw [pastOf_joinBond, futRevOf_joinBond, gibbsWeight_joinBond]
-  rw [Finset.sum_congr rfl fun i _ =>
-        Finset.sum_congr rfl fun j _ => by rw [hcross i j]]
+  rw [Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by
+        rw [osPairingBondCross_eq_gibbsSum w β (F i) (F j)]]
   exact osPairingBond_gram_nonneg w hβ m c F
+
+/-! ## §9  The SITE bridge
+
+The bond bridge above is not this one with a different index.  Through a bond
+the two halves are disjoint and pairs of halves are ALL paths; through a site
+they SHARE the boundary slice, so the pairs that come from a path form a FIBRED
+PRODUCT over that slice, and the shared slice's weight, carried by both halves,
+is counted twice.
+
+Why the site geometry is needed at all, and not for symmetry: the transfer
+operator shifts by ONE slice, which turns an even separation into an odd one.  A
+construction owning only one of the two geometries has no operator that could be
+self-adjoint on it.  So this is a precondition for a reconstruction, not an
+ornament on the bond case.
+
+Pre-registered as `scripts/judge_site_bridge.py`, committed at `2392c080`
+**before** it was run and before this section existed.  Gate S1 predicted the
+count of paths and the count of assembling pairs to be the SAME INTEGER,
+`2^(L(2m+1))`; gate S2 predicted the weight residual to be ZERO to `1e-12`
+relative.  Both passed, and the falsifier was stated in the same file: an S2
+residual that was a fraction of the weight rather than roundoff would have meant
+`osPairingSite` was the WRONG form, not merely an unidentified one.
+
+The weight identity is proved here in its DIVISION-FREE form,
+`w σ * W(joinSite a b) = W a * W b`, which needs no hypothesis on `w` at all;
+the divided form the definition uses follows from it wherever `w σ ≠ 0`. -/
+
+/-- The assembly through a SITE: the interior of the past half, then the shared
+slice and the future half read backwards.  The block sizes are `m` and `m+1`,
+which is what makes the total `2m+1` a successor and lets `gibbsWeight` accept
+it with `N = m+m`.  The shared slice is taken from `b`; on the pairs that come
+from a path the two halves agree there, and that hypothesis is discharged where
+it is used, never assumed silently. -/
+noncomputable def joinSite {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2)) :
+    Fin (m + (m + 1)) → (Fin L → Fin 2) :=
+  Fin.append (fun i : Fin m => a i.castSucc) (fun j : Fin (m + 1) => b (Fin.rev j))
+
+/-- The slice a site plane passes through. -/
+noncomputable def midOf {L m : ℕ} (X : Fin (m + (m + 1)) → (Fin L → Fin 2)) :
+    Fin L → Fin 2 := X (Fin.natAdd m 0)
+
+/-- The past half of a path through a site plane.  It ends AT the shared slice,
+which lives in the second block of the assembly --- hence the `snoc`. -/
+noncomputable def pastSiteOf {L m : ℕ}
+    (X : Fin (m + (m + 1)) → (Fin L → Fin 2)) :
+    Fin (m + 1) → (Fin L → Fin 2) :=
+  Fin.snoc (fun i : Fin m => X (Fin.castAdd (m + 1) i)) (X (Fin.natAdd m 0))
+
+/-- The future half, read backwards from the far end.  Like `futRevOf` it sends
+a PATH to a HALF, so it is not an involution and is not `Θ`. -/
+noncomputable def futSiteOf {L m : ℕ}
+    (X : Fin (m + (m + 1)) → (Fin L → Fin 2)) :
+    Fin (m + 1) → (Fin L → Fin 2) := fun j => X (Fin.natAdd m (Fin.rev j))
+
+theorem joinSite_left {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2))
+    (i : Fin m) : joinSite a b (Fin.castAdd (m + 1) i) = a i.castSucc :=
+  Fin.append_left _ _ _
+
+theorem joinSite_right {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2))
+    (j : Fin (m + 1)) : joinSite a b (Fin.natAdd m j) = b (Fin.rev j) :=
+  Fin.append_right _ _ _
+
+@[simp] theorem edgeOf_pastSiteOf {L m : ℕ}
+    (X : Fin (m + (m + 1)) → (Fin L → Fin 2)) :
+    edgeOf (pastSiteOf X) = midOf X := by
+  simp [edgeOf, pastSiteOf, midOf]
+
+@[simp] theorem edgeOf_futSiteOf {L m : ℕ}
+    (X : Fin (m + (m + 1)) → (Fin L → Fin 2)) :
+    edgeOf (futSiteOf X) = midOf X := by
+  show X (Fin.natAdd m (Fin.rev (Fin.last m))) = X (Fin.natAdd m 0)
+  rw [Fin.rev_last]
+
+/-- **BOTH HALVES OF AN ASSEMBLED PATH ARE THE HALVES IT WAS BUILT FROM** ---
+the future one unconditionally. -/
+theorem futSiteOf_joinSite {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2)) :
+    futSiteOf (joinSite a b) = b := by
+  funext j
+  show joinSite a b (Fin.natAdd m (Fin.rev j)) = b j
+  rw [joinSite_right, Fin.rev_rev]
+
+/-- The past one needs the halves to agree on the shared slice: `joinSite`
+discards `a`'s copy of it, and only the hypothesis puts it back. -/
+theorem pastSiteOf_joinSite {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2))
+    (h : edgeOf a = edgeOf b) : pastSiteOf (joinSite a b) = a := by
+  have h0 : joinSite a b (Fin.natAdd m 0) = a (Fin.last m) := by
+    rw [joinSite_right, Fin.rev_zero]
+    exact h.symm
+  have hf : (fun i : Fin m => joinSite a b (Fin.castAdd (m + 1) i))
+      = Fin.init a := by
+    funext i
+    exact joinSite_left a b i
+  show Fin.snoc (fun i : Fin m => joinSite a b (Fin.castAdd (m + 1) i))
+      (joinSite a b (Fin.natAdd m 0)) = a
+  rw [hf, h0]
+  exact Fin.snoc_init_self a
+
+/-- And conversely: a path is the assembly of its own two halves. -/
+theorem joinSite_pastSiteOf_futSiteOf {L m : ℕ}
+    (X : Fin (m + (m + 1)) → (Fin L → Fin 2)) :
+    joinSite (pastSiteOf X) (futSiteOf X) = X := by
+  funext t
+  induction t using Fin.addCases with
+  | left i =>
+      rw [joinSite_left]
+      simp [pastSiteOf]
+  | right j =>
+      rw [joinSite_right]
+      show X (Fin.natAdd m (Fin.rev (Fin.rev j))) = X (Fin.natAdd m j)
+      rw [Fin.rev_rev]
+
+/-- **THE PAST HALF SITS AT THE FRONT OF THE ASSEMBLY, SHARED SLICE INCLUDED.**
+The shared slice is the exception --- it lives in the SECOND block --- and this
+one lemma is where that is handled.  Proving it once, by cases on the slice,
+is what keeps the two product identities below free of case splits. -/
+theorem joinSite_past {L m : ℕ} (a b : Fin (m + 1) → (Fin L → Fin 2))
+    (h : edgeOf a = edgeOf b) (i : Fin (m + 1)) :
+    joinSite a b (Fin.castLE (Nat.le_add_left (m + 1) m) i) = a i := by
+  refine Fin.lastCases ?_ ?_ i
+  · have e : Fin.castLE (Nat.le_add_left (m + 1) m) (Fin.last m)
+        = Fin.natAdd m (0 : Fin (m + 1)) := by ext; simp
+    rw [e, joinSite_right, Fin.rev_zero]
+    exact h.symm
+  · intro j
+    have e : Fin.castLE (Nat.le_add_left (m + 1) m) (Fin.castSucc j)
+        = Fin.castAdd (m + 1) j := by ext; simp
+    rw [e, joinSite_left]
+
+/-- **THE `w` FACTORS, DIVISION-FREE.**  The shared slice is carried by both
+halves and appears once in the path, so multiplying by it on the left restores
+the balance exactly.  No hypothesis on `w` is used --- and, as the build's own
+unused-variable warning pointed out, no hypothesis relating the two halves
+either: this identity holds for ANY pair, agreeing at the boundary or not.  Only
+the kernel product below needs them to agree. -/
+theorem prod_w_joinSite {L m : ℕ} (w : (Fin L → Fin 2) → ℝ)
+    (a b : Fin (m + 1) → (Fin L → Fin 2)) :
+    w (edgeOf a) * (∏ t : Fin (m + m + 1), w (joinSite a b t))
+      = (∏ t : Fin (m + 1), w (a t)) * ∏ t : Fin (m + 1), w (b t) := by
+  show w (edgeOf a) * (∏ t : Fin (m + (m + 1)), w (joinSite a b t)) = _
+  rw [Fin.prod_univ_add]
+  have h1 : (∏ i : Fin m, w (joinSite a b (Fin.castAdd (m + 1) i)))
+      = ∏ i : Fin m, w (a i.castSucc) :=
+    Finset.prod_congr rfl fun i _ => by rw [joinSite_left]
+  have h2a : (∏ j : Fin (m + 1), w (joinSite a b (Fin.natAdd m j)))
+      = ∏ j : Fin (m + 1), w (b (Fin.rev j)) :=
+    Finset.prod_congr rfl fun j _ => by rw [joinSite_right]
+  have h2 : (∏ j : Fin (m + 1), w (joinSite a b (Fin.natAdd m j)))
+      = ∏ j : Fin (m + 1), w (b j) := by
+    rw [h2a]
+    simpa using Equiv.prod_comp (Fin.revPerm (n := m + 1)) (fun j => w (b j))
+  rw [h1, h2, Fin.prod_univ_castSucc (f := fun t : Fin (m + 1) => w (a t))]
+  simp only [edgeOf]
+  ring
+
+/-- **THE KERNEL FACTORS, AND WHAT IS NOT THERE.**  Through a site NO bond
+crosses the plane: the `2m` bonds are exactly the `m` bonds of each half, the
+future ones read backwards, which the symmetry of the kernel undoes.  The
+missing crossing factor is the entire difference from `prod_K_joinBond`. -/
+theorem prod_K_joinSite {L m : ℕ} (β : ℝ)
+    (a b : Fin (m + 1) → (Fin L → Fin 2)) (h : edgeOf a = edgeOf b) :
+    (∏ t : Fin (m + m),
+        spatialKernel β (joinSite a b t.castSucc) (joinSite a b t.succ))
+      = (∏ t : Fin m, spatialKernel β (a t.castSucc) (a t.succ))
+        * ∏ t : Fin m, spatialKernel β (b t.castSucc) (b t.succ) := by
+  rw [Fin.prod_univ_add]
+  congr 1
+  · refine Finset.prod_congr rfl fun i _ => ?_
+    have e1 : (Fin.castAdd m i).castSucc
+        = Fin.castLE (Nat.le_add_left (m + 1) m) i.castSucc := by ext; simp
+    have e2 : (Fin.castAdd m i).succ
+        = Fin.castLE (Nat.le_add_left (m + 1) m) i.succ := by ext; simp
+    rw [e1, e2, joinSite_past a b h, joinSite_past a b h]
+  · have hstep : ∀ j : Fin m,
+        spatialKernel β (joinSite a b (Fin.natAdd m j).castSucc)
+            (joinSite a b (Fin.natAdd m j).succ)
+          = spatialKernel β (b (Fin.rev j).castSucc) (b (Fin.rev j).succ) := by
+      intro j
+      have e1 : (Fin.natAdd m j).castSucc
+          = Fin.natAdd m (Fin.castSucc j) := by ext; simp; try omega
+      have e2 : (Fin.natAdd m j).succ
+          = Fin.natAdd m (Fin.succ j) := by ext; simp; try omega
+      rw [e1, e2, joinSite_right, joinSite_right, rev_castSucc_eq, rev_succ_eq,
+        spatialKernel_symm]
+    rw [Finset.prod_congr rfl fun j (_ : j ∈ Finset.univ) => hstep j]
+    simpa using Equiv.prod_comp (Fin.revPerm (n := m))
+      (fun j => spatialKernel β (b j.castSucc) (b j.succ))
+
+/-- **THE SITE WEIGHT IDENTITY.**  Stated without division, so it carries no
+hypothesis on `w` whatsoever. -/
+theorem gibbsWeight_joinSite {L m : ℕ} (w : (Fin L → Fin 2) → ℝ) (β : ℝ)
+    (a b : Fin (m + 1) → (Fin L → Fin 2)) (h : edgeOf a = edgeOf b) :
+    w (edgeOf a) * gibbsWeight w β (N := m + m) (joinSite a b)
+      = gibbsWeight w β a * gibbsWeight w β b := by
+  unfold gibbsWeight
+  rw [prod_K_joinSite β a b h, ← mul_assoc, prod_w_joinSite w a b]
+  ring
+
+/-- The paths whose middle slice is `σ`. -/
+noncomputable def pathsAt (L m : ℕ) (σ : Fin L → Fin 2) :
+    Finset (Fin (m + (m + 1)) → (Fin L → Fin 2)) :=
+  Finset.univ.filter (fun X => midOf X = σ)
+
+theorem mem_halvesAt {L m : ℕ} {σ : Fin L → Fin 2}
+    {a : Fin (m + 1) → (Fin L → Fin 2)} :
+    a ∈ halvesAt L m σ ↔ edgeOf a = σ := by
+  simp [halvesAt]
+
+theorem mem_pathsAt {L m : ℕ} {σ : Fin L → Fin 2}
+    {X : Fin (m + (m + 1)) → (Fin L → Fin 2)} :
+    X ∈ pathsAt L m σ ↔ midOf X = σ := by
+  simp [pathsAt]
+
+theorem sum_paths_by_mid {L m : ℕ}
+    (f : (Fin (m + (m + 1)) → (Fin L → Fin 2)) → ℂ) :
+    ∑ σ : Fin L → Fin 2, ∑ X ∈ pathsAt L m σ, f X
+      = ∑ X : Fin (m + (m + 1)) → (Fin L → Fin 2), f X :=
+  Finset.sum_fiberwise Finset.univ midOf f
+
+/-- **THE ASSEMBLY IS A BIJECTION ONTO EACH FIBRE.**  This is the fibred-product
+statement in the only form the sums need: for a fixed shared slice, the paths
+through it are exactly the pairs of halves ending there.  Stated per fibre
+rather than as one global equivalence because the global source is a subtype and
+the sums are already fibred. -/
+theorem sum_pathsAt_eq {L m : ℕ} (σ : Fin L → Fin 2)
+    (g : (Fin (m + (m + 1)) → (Fin L → Fin 2)) → ℂ) :
+    ∑ a ∈ halvesAt L m σ, ∑ b ∈ halvesAt L m σ, g (joinSite a b)
+      = ∑ X ∈ pathsAt L m σ, g X := by
+  have hprod : ∑ a ∈ halvesAt L m σ, ∑ b ∈ halvesAt L m σ, g (joinSite a b)
+      = ∑ p ∈ halvesAt L m σ ×ˢ halvesAt L m σ, g (joinSite p.1 p.2) :=
+    (Finset.sum_product' (halvesAt L m σ) (halvesAt L m σ)
+      (fun a b => g (joinSite a b))).symm
+  rw [hprod]
+  refine Finset.sum_nbij' (fun p => joinSite p.1 p.2)
+    (fun X => (pastSiteOf X, futSiteOf X)) ?_ ?_ ?_ ?_ ?_
+  · intro p hp
+    rw [Finset.mem_product] at hp
+    rw [mem_pathsAt]
+    show joinSite p.1 p.2 (Fin.natAdd m 0) = σ
+    rw [joinSite_right, Fin.rev_zero]
+    exact mem_halvesAt.mp hp.2
+  · intro X hX
+    rw [mem_pathsAt] at hX
+    rw [Finset.mem_product]
+    exact ⟨mem_halvesAt.mpr (by rw [edgeOf_pastSiteOf, hX]),
+      mem_halvesAt.mpr (by rw [edgeOf_futSiteOf, hX])⟩
+  · intro p hp
+    rw [Finset.mem_product] at hp
+    have hab : edgeOf p.1 = edgeOf p.2 :=
+      (mem_halvesAt.mp hp.1).trans (mem_halvesAt.mp hp.2).symm
+    show (pastSiteOf (joinSite p.1 p.2), futSiteOf (joinSite p.1 p.2)) = p
+    rw [pastSiteOf_joinSite p.1 p.2 hab, futSiteOf_joinSite]
+  · intro X _
+    exact joinSite_pastSiteOf_futSiteOf X
+  · intro p _
+    rfl
+
+/-- **THE SITE BRIDGE, CROSS FORM.**  The candidate site pairing IS the
+reflected two-point sum of the Gibbs measure on the site geometry, the
+reflection entering through the pair `(pastSiteOf, futSiteOf)`.  Positivity of
+`w` is used for exactly one thing: dividing by `w σ`. -/
+theorem osPairingSiteCross_eq_gibbsSum {L m : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    (F G : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    (∑ X : Fin (m + (m + 1)) → (Fin L → Fin 2),
+        (starRingEnd ℂ) (F (pastSiteOf X)) * G (futSiteOf X)
+          * ((gibbsWeight w β (N := m + m) X : ℝ) : ℂ))
+      = osPairingSiteCross w β m F G := by
+  rw [← sum_paths_by_mid (fun X => (starRingEnd ℂ) (F (pastSiteOf X))
+        * G (futSiteOf X) * ((gibbsWeight w β (N := m + m) X : ℝ) : ℂ))]
+  unfold osPairingSiteCross
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  rw [← sum_pathsAt_eq σ (fun X => (starRingEnd ℂ) (F (pastSiteOf X))
+        * G (futSiteOf X) * ((gibbsWeight w β (N := m + m) X : ℝ) : ℂ))]
+  refine Finset.sum_congr rfl fun a ha => Finset.sum_congr rfl fun b hb => ?_
+  have hea : edgeOf a = σ := mem_halvesAt.mp ha
+  have heb : edgeOf b = σ := mem_halvesAt.mp hb
+  have hab : edgeOf a = edgeOf b := hea.trans heb.symm
+  have hσ : w σ ≠ 0 := (hw σ).ne'
+  have hgw : gibbsWeight w β (N := m + m) (joinSite a b)
+      = gibbsWeight w β a * gibbsWeight w β b / w σ := by
+    have hkey := gibbsWeight_joinSite w β a b hab
+    rw [hea] at hkey
+    field_simp
+    linear_combination hkey
+  rw [pastSiteOf_joinSite a b hab, futSiteOf_joinSite, hgw]
+
+/-- **THE SITE BRIDGE.**  The diagonal case: `osPairingSite` is no longer a
+candidate. -/
+theorem osPairingSite_eq_gibbsSum {L m : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    (∑ X : Fin (m + (m + 1)) → (Fin L → Fin 2),
+        (starRingEnd ℂ) (F (pastSiteOf X)) * F (futSiteOf X)
+          * ((gibbsWeight w β (N := m + m) X : ℝ) : ℂ))
+      = osPairingSite w β m F := by
+  rw [osPairingSiteCross_eq_gibbsSum hw β F F, osPairingSiteCross_self]
+
+/-- **AND THEREFORE IT IS NON-NEGATIVE, AT EVERY `β`.**  Negative couplings
+included: through a site the kernel never enters, so nothing here needs
+`β ≥ 0`.  This is the reflected two-point sum of the Gibbs measure itself. -/
+theorem gibbsSumSite_reflected_nonneg {L m : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    (F : (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    ∃ r : ℝ, 0 ≤ r ∧
+      (∑ X : Fin (m + (m + 1)) → (Fin L → Fin 2),
+        (starRingEnd ℂ) (F (pastSiteOf X)) * F (futSiteOf X)
+          * ((gibbsWeight w β (N := m + m) X : ℝ) : ℂ)) = (r : ℂ) := by
+  rw [osPairingSite_eq_gibbsSum hw]
+  exact osPairingSite_nonneg hw β m F
+
+/-- **THE MATRIX FORM, ON THE MEASURE ITSELF, AT EVERY `β`.**  The site
+counterpart of `gibbsSum_reflected_gram_nonneg`, and the second of the two
+geometries a reconstruction needs. -/
+theorem gibbsSumSite_reflected_gram_nonneg {L m : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) {ι : Type*} [Fintype ι] (c : ι → ℂ)
+    (F : ι → (Fin (m + 1) → (Fin L → Fin 2)) → ℂ) :
+    ∃ r : ℝ, 0 ≤ r ∧
+      (∑ i, ∑ j, (starRingEnd ℂ) (c i) * c j *
+        ∑ X : Fin (m + (m + 1)) → (Fin L → Fin 2),
+          (starRingEnd ℂ) (F i (pastSiteOf X)) * F j (futSiteOf X)
+            * ((gibbsWeight w β (N := m + m) X : ℝ) : ℂ)) = (r : ℂ) := by
+  rw [Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by
+        rw [osPairingSiteCross_eq_gibbsSum hw β (F i) (F j)]]
+  exact osPairingSite_gram_nonneg hw β m c F
 
 end YangMills.OS
