@@ -3375,6 +3375,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.wKernel_bandCov
 #print axioms YangMills.OS.Dobrushin.wKernel_fluctuation_ne
 #print axioms YangMills.OS.Dobrushin.transport_witness
+#print axioms YangMills.OS.Dobrushin.SU2Transport.holonomy_unitary
+#print axioms YangMills.OS.Dobrushin.SU2Transport.holonomy_det
+#print axioms YangMills.OS.Dobrushin.SU2Transport.holonomy_injective
+#print axioms YangMills.OS.Dobrushin.SU2Transport.kernel_pow
+#print axioms YangMills.OS.Dobrushin.SU2Transport.kernel_bandCov
+#print axioms YangMills.OS.Dobrushin.SU2Transport.projected_apply_sign_zero
+#print axioms YangMills.OS.Dobrushin.SU2Transport.projected_ne_zero
+#print axioms YangMills.OS.Dobrushin.SU2Transport.exact_transport_witness
 #print axioms YangMills.OS.Dobrushin.bandW_eq_tilt
 #print axioms YangMills.OS.Dobrushin.mass_mul_pow
 #print axioms YangMills.OS.Dobrushin.bandCov_mul_sq

@@ -1029,6 +1029,13 @@ import YangMills.OS.DobrushinBridge
 -- two-state witness has a nonzero fluctuation sector at every rate.
 import YangMills.OS.DobrushinTransport
 
+-- Exact non-Ising inhabitant of the abstract transport interface.  The
+-- finite carrier contains two actual bundled SU(2) matrices (identity and
+-- diag(I,-I)); unitarity, determinant one, exact heat-rate band covariance,
+-- and a nonzero fluctuation identity are all proved in Lean.  This witnesses
+-- the interface only and is not a full compact-group heat semigroup.
+import YangMills.OS.SU2TransportWitness
+
 -- D-6 corollary, stage A: the tilt layer.  The band weight of the
 -- normalised coupled data is the free strip Gibbs weight tilted at the two
 -- ends by psi = Omega/sqrt(w) over lam^n; band covariances satisfy a
