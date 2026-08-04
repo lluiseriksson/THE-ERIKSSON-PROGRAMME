@@ -21,7 +21,7 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v13"
+RUNNER_REV = "regional-large-block-v14"
 SOURCE_SHA = "c5eaba7ed47b14b738da7baef8877ca2b8c84af7"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
@@ -277,6 +277,8 @@ example (H K Q : E →L[ℝ] E) (a : ℝ) :
 """
 
 SLOPE_REPRO = r"""import Mathlib
+
+noncomputable section
 
 example (M Q depth : ℕ) :
     M ^ (depth + 2) * (2 * Q) = (2 * M ^ (depth + 2)) * Q := by
