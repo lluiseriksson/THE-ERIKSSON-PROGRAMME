@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "generated-qprime-row-v15"
-SOURCE_SHA = "0de32b698711b3f616d8f6c520a4c3ce856bee17"
+RUNNER_REV = "generated-qprime-row-v16"
+SOURCE_SHA = "1986036e8c2403ba57534d5e7d6d627960e05925"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -37,10 +37,11 @@ ARCHIVE = Path("/content/hrpoly-generated-qprime-row-evidence.tar.gz")
 ASSET = Path("/content/lean-4.29.0-rc6-linux.tar.zst")
 TOOLROOT = Path("/content/lean-4.29.0-rc6-linux")
 PATH_MANIFEST = Path("/content/hrpoly-generated-qprime-row-paths.txt")
+ADD_REPRO = Path("/content/hrpoly-qprime-row-add-repro.lean")
 
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectWeightedRow.lean":
-        "5d2ac2a77838449fdd10adc1a5067fefc9e3c743cc0e5b287d94b746a567b12e",
+        "56f95b530fe11d0ae042cdb968101d85ecb5b7b17f98803968025049bee44695",
     "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectWeightedRowAudit.lean":
         "4333f61eb9a52e90fb0a87e4a524b96549814ba5532786c5b7f8667c0e446884",
 }
@@ -180,7 +181,7 @@ def main() -> int:
         for path in (ROOT, EVIDENCE, TOOLROOT):
             if path.exists():
                 shutil.rmtree(path)
-        for path in (ASSET, ARCHIVE, PATH_MANIFEST):
+        for path in (ASSET, ARCHIVE, PATH_MANIFEST, ADD_REPRO):
             if path.exists():
                 path.unlink()
 
@@ -256,6 +257,23 @@ def main() -> int:
         if mathlib != EXPECTED_MATHLIB:
             raise RuntimeError("MATHLIB_PIN_MISMATCH=" + mathlib)
         run("cache_get", ["lake", "exe", "cache", "get"], cwd=ROOT)
+
+        ADD_REPRO.write_text(
+            """import Mathlib
+
+example {E : Type*} [SeminormedAddGroup E]
+    (a : ℝ) (ha : 0 ≤ a) (u v : E) :
+    a * ‖u + v‖ ≤ a * ‖u‖ + a * ‖v‖ := by
+  simpa only [mul_add] using
+    (mul_le_mul_of_nonneg_left (norm_add_le u v) ha)
+""",
+            encoding="utf-8",
+        )
+        run(
+            "weighted_row_add_repro",
+            ["lake", "env", "lean", str(ADD_REPRO)],
+            cwd=ROOT,
+        )
 
         for stage, command, expected_axioms in QUEUE:
             output = run(stage, command, cwd=ROOT)
