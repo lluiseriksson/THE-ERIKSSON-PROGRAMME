@@ -126,7 +126,12 @@ noncomputable def CMP99SourceActiveRegionChain.transportedQprime
   let hCoord : regions.terminalHilbertSpace Nc =
       regions.terminalCoordinateHilbertSpace (Nc := Nc) :=
     regions.terminalHilbertSpace_eq_coordinate
-  exact cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord) T.Qprime
+  exact cmp99SourceTerminalCLMTransport
+    (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+    (F := T.TerminalSpace)
+    (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+    (F' := regions.terminalCoordinateHilbertSpace (Nc := Nc))
+    rfl (hT.trans hCoord) T.Qprime
 
 /-- The direct recursive coordinate realization is exactly the bundled
 generated tower after canonical terminal transport. -/
@@ -219,8 +224,10 @@ theorem CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single
   induction regions with
   | stop Omega =>
       intro spacing epsilon background chain fineSmall source v
-      simpa [CMP99SourceActiveRegionChain.physicalQprime,
-        sum_norm_singleFinitePiLp]
+      change (∑ target, ‖singleFinitePiLp source v target‖) =
+        (cmp99SourceBlockAverageWeight M d) ^ 0 * ‖v‖
+      rw [sum_norm_singleFinitePiLp]
+      simp
   | @step N' depth _ Omega hOmega tail ih =>
       intro spacing epsilon background chain fineSmall source v
       letI : NeZero (M * N') := inferInstance
@@ -271,8 +278,15 @@ theorem CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single
             dsimp [sourceValue]
             rw [norm_smul, LinearIsometryEquiv.norm_map, Real.norm_eq_abs,
               abs_of_nonneg (cmp99SourceBlockAverageWeight_nonneg M d)]
-          rw [hsourceValueNorm, pow_succ]
-          ring
+          rw [hsourceValueNorm]
+          calc
+            (cmp99SourceBlockAverageWeight M d) ^ depth *
+                (cmp99SourceBlockAverageWeight M d * ‖v‖) =
+              ((cmp99SourceBlockAverageWeight M d) ^ depth *
+                cmp99SourceBlockAverageWeight M d) * ‖v‖ := by ring
+            _ = (cmp99SourceBlockAverageWeight M d) ^ (depth + 1) * ‖v‖ := by
+              congr 1
+              exact (pow_succ (cmp99SourceBlockAverageWeight M d) depth).symm
 
 /-- Inequality form of the exact generated source-row mass, for direct use by
 weighted-row adapters. -/

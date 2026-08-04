@@ -51,8 +51,10 @@ theorem CMP99SourceActiveRegionChain.sum_norm_generatedCountingMass_single
   induction regions with
   | stop Omega =>
       intro spacing epsilon background chain fineSmall source v
-      simpa [CMP99SourceActiveRegionChain.generatedCountingMass,
-        sum_norm_singleFinitePiLp]
+      change (∑ target, ‖singleFinitePiLp source v target‖) =
+        (cmp99SourceBlockAverageWeight M d) ^ 0 * ‖v‖
+      rw [sum_norm_singleFinitePiLp]
+      simp
   | @step N' depth _ Omega hOmega tail ih =>
       intro spacing epsilon background chain fineSmall source v
       letI : NeZero (M * N') := inferInstance
@@ -104,10 +106,20 @@ theorem CMP99SourceActiveRegionChain.sum_norm_generatedCountingMass_single
         _ = (cmp99SourceBlockAverageWeight M d) ^ depth *
             ‖sourceValue‖ := htail
         _ = (cmp99SourceBlockAverageWeight M d) ^ (depth + 1) * ‖v‖ := by
-          dsimp [sourceValue]
-          rw [norm_smul, LinearIsometryEquiv.norm_map, Real.norm_eq_abs,
-            abs_of_nonneg (cmp99SourceBlockAverageWeight_nonneg M d), pow_succ]
-          ring
+          have hsourceValueNorm : ‖sourceValue‖ =
+              cmp99SourceBlockAverageWeight M d * ‖v‖ := by
+            dsimp [sourceValue]
+            rw [norm_smul, LinearIsometryEquiv.norm_map, Real.norm_eq_abs,
+              abs_of_nonneg (cmp99SourceBlockAverageWeight_nonneg M d)]
+          rw [hsourceValueNorm]
+          calc
+            (cmp99SourceBlockAverageWeight M d) ^ depth *
+                (cmp99SourceBlockAverageWeight M d * ‖v‖) =
+              ((cmp99SourceBlockAverageWeight M d) ^ depth *
+                cmp99SourceBlockAverageWeight M d) * ‖v‖ := by ring
+            _ = (cmp99SourceBlockAverageWeight M d) ^ (depth + 1) * ‖v‖ := by
+              congr 1
+              exact (pow_succ (cmp99SourceBlockAverageWeight M d) depth).symm
 
 /-- Inequality form of the exact generated counting-mass row. -/
 theorem CMP99SourceActiveRegionChain.sum_norm_generatedCountingMass_single_le
