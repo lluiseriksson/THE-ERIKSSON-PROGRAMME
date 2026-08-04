@@ -21,6 +21,19 @@
 set -e
 SHA=c2723e7ec224191e00a9ab31284839816533ee86
 
+# RAM guard (added after the SECOND firing died): the repo-wide oracle
+# needs the high-RAM runtime; on the default 12 GB VM the kernel died by
+# OOM mid-stage-4 at ~74 min and the VM was replaced, losing every
+# artefact.  The runtime TYPE is a notebook setting the cell cannot fix,
+# so fail FAST and loudly instead of 70 minutes in.
+mem_kb=$(awk '/MemTotal/ {print $2}' /proc/meminfo)
+echo "OSR0_MEMTOTAL_KB=$mem_kb"
+if [ "$mem_kb" -lt 40000000 ] && [ "${OSR0_ALLOW_LOW_RAM:-0}" != "1" ]; then
+  echo "FATAL: this is not a high-RAM runtime (MemTotal < 40 GB)."
+  echo "Set the runtime type to High-RAM (Andra korningstyp) and rerun."
+  exit 65
+fi
+
 rm -rf /content/eriksson
 cd /content
 git clone -b d3-closure --single-branch \

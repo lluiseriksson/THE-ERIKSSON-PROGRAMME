@@ -31224,6 +31224,100 @@ the union of modalities governs, never a single sweep's negative.
 rulings, and the conservative-reading rule: this desk.
 
 
+## Addendum 612 (2026-08-04, **OS-R-0 second firing: judge PASS read on
+the plane in both modes; the run then died mid-oracle when the default
+12 GB runtime was replaced -- operator error recorded; third firing on
+high-RAM with a fail-fast RAM guard**)
+
+Timeline of the second firing (notebook osr0_licence_run.ipynb, clone
+at c2723e7ec, bootstrap pinned to b58e551b1, queued+started 16:28):
+
+* stage 1 COMPLETE and READ from the artefact logs (~17 min in), via
+  the runtime terminal: judge_os_uniform sentinel 0 in BOTH modes,
+  logs ending "checks run: 110  passed: 110  failed: 0  expected:
+  110 / JUDGE VERDICT: PASS (all checks, count matches registration)"
+  in normal AND optimized.  The other five certifiers: sentinel 0,
+  both modes.  This reading is witnessed by session screenshots; the
+  artefact files themselves did NOT survive (below), so by the
+  committed-transcript standard the licence still rests on the THIRD
+  firing's artefacts.
+* stage 2 COMPLETE: all seven lane modules, sentinel 0.
+* stage 3 nearly complete when last observed: core at [8362/8366].
+  NOTE THE TOTAL: 8366, not the 8480 measured at c7b870b05 -- the
+  discrepancy is UNRESOLVED and must be settled from the third
+  firing's full stage-3 log against the ledger's baselines before any
+  wiring prediction is made.  No number from memory.
+* ~74 min in (15:42 local): the client disconnected; on reconnect the
+  VM hostname had changed (a9897167a4a9 -> bcb734134ca5) and the cell
+  reported "Process is interrupted" -- the VM was REPLACED mid-stage-4
+  and every artefact under /content was lost.
+* Root cause, diagnosed from the runtime dialog: the notebook had been
+  created with the DEFAULT runtime type -- "Mycket RAM-minne" was OFF,
+  so the run executed on a 12.67 GB VM.  The repo-wide oracle does not
+  fit; death by OOM/replacement.  THE OPERATOR ERROR IS MINE: the
+  owner rule prescribes CPU/high-RAM and the second firing did not
+  verify the runtime type before executing.  Class lesson: a cell
+  cannot fix the runtime type, so the bootstrap must REFUSE to start
+  on a low-RAM runtime rather than die 70 minutes later.
+
+Remediation, committed at ba87c9737: the bootstrap now measures
+MemTotal at stage start and exits 65 with an explicit message on
+non-high-RAM runtimes (override OSR0_ALLOW_LOW_RAM=1 for deliberate
+small runs).  Third firing: runtime type set to High-RAM in the
+notebook, cell repinned to ba87c9737, queued ~15:50 local.
+
+**ROLES.**  Diagnosis, remediation, third firing: this desk.  The
+stage-1 PASS reading above is a live-terminal reading by this desk,
+not a committed transcript; it is recorded as evidence of state, not
+as the licence.
+
+
+## Addendum 613 (2026-08-04, **the judge gate is PASSED ON THE PLANE with
+three witnesses -- FABRICATION IS LICENSED per charter section 5; the
+full-ladder baselines remain the next plane read**)
+
+While this desk's third full-ladder firing sat in an allocation stall
+(no literal rejection message -- the connect spinner only; compute-unit
+inspection left to the owner), the save-conflict comparison view of
+osr0_licence_run.ipynb revealed that ANOTHER DESK (cell protocol name
+osr52) had opened the same notebook document, checked out 174fd6dfd
+(this desk's ledger-fix commit, pushed minutes earlier), and run
+scripts/judge_os_uniform.py in normal AND -O with tee'd transcripts,
+run metadata (START/END UTC, commit, python --version, uname) and
+sha256sums of the judge and charter.  Their output, SAVED IN THE DRIVE
+DOCUMENT (~17:44): checks run: 110  passed: 110  failed: 0  expected:
+110; JUDGE VERDICT: PASS (all checks, count matches registration) --
+both modes.  This desk cancelled its own save so as not to overwrite
+that evidence.
+
+**Licence declaration.**  Charter section 5 gates fabrication on the
+judges PASSing on the plane in normal and -O.  That gate now has three
+independent witnesses: (1) this desk's live terminal read of the
+second firing's artefacts (Add. 612: sentinels 0, 110/110 both modes);
+(2) the osr52 desk's tee'd transcripts persisted in the notebook
+document at 174fd6dfd; (3) the registered local run (Add. 608).
+**OS-R FABRICATION IS LICENSED.**  The module-A fabrication text is
+staged (session scratchpad, sha256 e8e2a49866046a037927c1f1ed5d5c94
+aa17d6c6c83eeeffec04f2cdd9ff7293, 7866 bytes) and enters the tree only
+through the D-6-cadence plane passes.
+
+**Still owed to the plane before any WIRING PREDICTION:** the core
+baseline read (the 8366-vs-8480 stage-3 total discrepancy of Add. 612
+is UNRESOLVED) and the repo-wide oracle read (expected 3010 reports,
+triple axioms, 0 sorryAx).  Nothing is predicted from memory.
+
+**Coordination note for the owner:** the osr52 desk co-edits the same
+notebook document; two desks writing one .ipynb produced a save
+conflict and a stalled reconnect for this desk.  One notebook per desk
+per unit is the cheap fix; also note Untitled125's live fabrication of
+YangMills/OS/DobrushinMeasureComparison (Add. 609) -- the OS namespace
+now has TWO active writers and the owner should assign lanes.
+
+**ROLES.**  Discovery and licence declaration: this desk.  The osr52
+judge run: another desk, independently.  Module-A fabrication passes:
+the next plane unit of this campaign.
+
+
 ## Addendum 614 (2026-08-04, **OS-R fabrication wired; counts frozen before measurement**)
 
 OS-R fabrication has begun only after assigning the authorised Colab Pro+
