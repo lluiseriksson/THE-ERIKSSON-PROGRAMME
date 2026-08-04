@@ -50,7 +50,7 @@ theorem cmp99RegionalGreenCorrection_single_eq_zero_of_value_eq_zero
   rw [ContinuousLinearMap.comp_apply, ContinuousLinearMap.comp_apply]
   rw [cmp99RegionalSquareMultiplier, finitePiLpScalarMultiplier_single,
     hzero, zero_smul]
-  simp
+  rfl
 
 /-- A uniform single-cell exponential estimate sums with the literal source
 overlap and not with the number of regional cells. -/
