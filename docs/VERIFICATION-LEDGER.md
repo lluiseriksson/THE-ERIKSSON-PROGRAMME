@@ -26964,3 +26964,46 @@ does not prove the displayed three-term identity, the source physical
 large-block slope, the collar estimate, or `norm R' < 1`.  Consequently no
 additional `PreEq136` field is discharged: the live numerator remains exactly
 `18/41`, and no `TermSource` inhabitant is produced.
+
+## Addendum 545 (2026-08-04, **regional large-block overlap and weighted-row chain GREEN**)
+
+The remaining regional large-block queue was replayed once, stop-on-first-error,
+in one fresh Colab Pro+ CPU/high-RAM clone from source checkpoint
+`699efbad6f05a42fef0ed0e5a9a18a05a06ee11f`.  The runner checkpoint was
+`45244ed342ccd66736f410afbd626f64553e6b06` and its blob had SHA-256
+`42d329584cb4dd06f8d96009d42388a2738d2556c04271875e75363530bb6045`.
+The runtime opened at 2026-08-04 19:23:04 UTC with 50.99 GiB of RAM and
+requested automatic unassignment immediately after the terminal result.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The regional-defect and
+overlap focal exited zero with `Build completed successfully (8517 jobs).`
+after 1,995.497 seconds, and its three-declaration audit exited zero after
+11.604 seconds.  The generic weighted-row-from-range focal exited zero with
+`Build completed successfully (8173 jobs).` after 36.683 seconds, and its
+one-declaration audit exited zero after 7.920 seconds.  The source-overlap
+weighted-row focal exited zero with `Build completed successfully (8173
+jobs).` after 16.770 seconds, and its one-declaration audit exited zero after
+7.657 seconds.  The active-fine-block equivalence focal exited zero with
+`Build completed successfully (8395 jobs).` after 19.944 seconds, and its
+two-declaration audit exited zero after 7.226 seconds.  Finally, the
+transported-synthesis-row focal exited zero with `Build completed successfully
+(8399 jobs).` after 17.212 seconds, and its two-declaration audit exited zero
+after 9.468 seconds.
+
+All nine targeted declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS` and
+`RUNTIME_UNASSIGN_REQUESTED=1`.  The evidence JSON has SHA-256
+`39a56a70e5e11652515cdd9416814f6c90dda53b326dbd42497d0fb62484fb39`,
+and the evidence archive created in Colab has SHA-256
+`ce44e53fcaa08d7c207c453e51a72173ac0e53b05b8305fef80794d8f849df1f`.
+
+Together with the previously sealed source-partition, physical-slope,
+single-overlap, typed scalar-commutator and generated-Qprime row bricks, this
+closes the verified infrastructure immediately below the source-facing CMP99
+(3.88) calculation.  It does **not** prove the displayed three-term (3.88)
+identity, its finite-range collar estimate, or physical attainment of
+`norm R' < 1`.  It therefore discharges no additional `PreEq136` field: the
+live numerator remains exactly `18/41`, and no `TermSource` inhabitant is
+produced.

@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
 /-!
 # The CMP99 regional partition at the source large-block scale
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 CMP99 printed p. 408 separates the terminal operator scale `L^(j eta)` from
 the large-block scale `M * L^(j eta)`.  In the generated tree these have the
 shapes `M^(depth+1)` and `M^(depth+2)`.  A partition cell contains two large

@@ -5,10 +5,5 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceRegionalLargeBlockOverlap
 
-/-!
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
--/
-
 #print axioms YangMills.RG.cmp99SourceRegionalLargeBlockActiveCells_subset
 #print axioms YangMills.RG.card_cmp99SourceRegionalLargeBlockActiveCells_le_sixteen

@@ -181,14 +181,20 @@ grouping grammar.  The Pi4 `G(s)` bridge remains useful for the separate
 global one-cochain factor, but is not a replacement for this regional
 zero-cochain reconstruction.
 
-There are two distinct support requirements in this step.  For the exact
-operator identity it is enough that the multiplier `h_Pi` be supported in its
-Dirichlet region: the local Green is generated from the literal compression
-`R Delta' E`, and the outer multiplier permits insertion of `E R` after
-`Delta'`.  No finite-range premise is used in that algebra.  The later
-analytic estimate is stronger.  To prove sparsity of consecutive correction
-factors and make the regional defect contractive, the physical specialization
-must expose a collar condition of the form
+There are two distinct algebraic layers before the finite-range requirement.
+The diagonal-multiplier intertwiners with restriction and zero extension are
+unconditional: `finitePiLpScalarMultiplier_comp_extendZeroZeroCLM` and
+`restrictZeroCLM_comp_finitePiLpScalarMultiplier` prove that both sides vanish
+identically off the regional carrier.  Support becomes essential only when the
+ambient projector `E R` is inserted, through the separately named theorem
+`cmp99RegionalSquareMultiplier_comp_regionProjector` and its premise
+`CMP99RegionalSquarePartitionSupported`.  Thus compression of the commutator
+itself must not carry a redundant support hypothesis, while an ambient inverse
+sandwich that inserts `E R` must cite the support theorem explicitly rather
+than hide it in `simp`.  No finite-range premise is used in either exact
+algebraic layer.  The later analytic estimate is stronger.  To prove sparsity
+of consecutive correction factors and make the regional defect contractive,
+the physical specialization must expose a collar condition of the form
 
 ```text
 finiteRange < dist(supp h_Pi, complement Omega_Pi).
@@ -241,6 +247,26 @@ per coordinate and hence at most `2^4 = 16` active source cells in four
 dimensions.  The source-facing specialization must prove this for the
 large-block partition itself rather than import an independent overlap datum
 from the auxiliary terminal-scale partition.
+
+The active-window coordinate is itself scale-sensitive.  The rescaled cutoff
+at physical coordinate `x` is definitionally the periodic cutoff at `x / M0`;
+therefore its active cells live in
+`cmp95PeriodicTensorActiveCellWindow Q (fun i => x i / M0)`, now exposed as
+`cmp95RescaledPeriodicTensorActiveCellWindow Q M0 x`.  Reusing the unscaled
+window at `x` is not a harmless change of notation: it changes the residue
+classes and was rejected by the fresh-clone overlap gate.
+
+The source-scale implementation also records three local elaboration rules
+learned from the failed pre-validation passes.  First, normalize natural casts
+in the direction demanded by the goal: `((M ^ n : ℕ) : ℝ)` and
+`(M : ℝ) ^ n` are propositionally equal but Lean may require the cast lemma
+in one specific orientation.  Second, unfold dependent scale abbreviations
+from the outer definition inward; unfolding the inner abbreviation first may
+cause the outer one to reappear and defeat an otherwise trivial `ac_rfl`.
+Third, when `simp` does not rewrite a coordinate expression below a function
+argument, prove the corresponding equality of functions by `funext` and
+rewrite with that equality explicitly.  These are elaboration conventions,
+not source estimates and not discharged mathematical obligations.
 
 For the regional defect, the relevant overlap is the literal source-side
 one.  Every summand has the ordered form

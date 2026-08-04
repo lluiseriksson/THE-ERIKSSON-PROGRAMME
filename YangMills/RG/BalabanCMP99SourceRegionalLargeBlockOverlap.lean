@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceRegionalLargeBlockPartition
 /-!
 # Pointwise overlap of the CMP99 source large-block partition
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 The large-block source cutoffs use the same one-dimensional CMP95 profile as
 the auxiliary terminal-scale partition.  Hence their pointwise overlap is
 derived from the same two-residue active window: there is no second overlap

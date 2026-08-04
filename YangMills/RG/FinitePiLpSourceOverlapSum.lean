@@ -8,9 +8,6 @@ import YangMills.RG.FinitePiLpTypedKernel
 /-!
 # Source-overlap bounds for finite families of kernels
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 A family of localized operators must not pay for the total number of charts.
 The theorem below records the weaker hypothesis needed by the CMP99 regional
 defect: for every source coordinate, at most `N` family members act on a

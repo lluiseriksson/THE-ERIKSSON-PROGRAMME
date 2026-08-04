@@ -9,9 +9,6 @@ import YangMills.RG.FinitePiLpSourceOverlapSum
 /-!
 # Source-overlap removal in the CMP99 regional Green defect
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 The regional defect is the sum
 
 `R' = sum_Pi [h_Pi, Delta'] G'_Pi h_Pi`.

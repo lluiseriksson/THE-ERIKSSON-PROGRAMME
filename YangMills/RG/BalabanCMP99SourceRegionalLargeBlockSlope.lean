@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceRegionalLargeBlockPartition
 /-!
 # Source-scale slope for the CMP99 regional partition
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 This transports the boundary-safe CMP95 estimate to the source large-block
 partition.  Its denominator is `2 * M^(depth+2)`, while the generated
 precision range is `M^(depth+1)`; the surviving ratio is therefore genuinely

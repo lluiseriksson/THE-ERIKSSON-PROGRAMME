@@ -8,9 +8,6 @@ import YangMills.RG.FinitePiLpTypedWeightedRowKernel
 /-!
 # Source-overlap sums of weighted rows
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 The rightmost cutoff in the regional CMP99 defect kills every inactive cell
 before the row sum is taken.  Thus a family with source overlap `N` pays `N`,
 not the total number of cells and not a second analytic overlap constant.

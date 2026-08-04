@@ -9,9 +9,6 @@ import YangMills.RG.FinitePiLpTypedWeightedRowKernel
 /-!
 # Weighted rows for finite-range scalar commutators
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 The point of this estimate is quantitative.  If `K` already has a normalized
 weighted-row budget, the commutator `[h,K]` pays only the Lipschitz variation
 of `h` across the finite range of `K`.  It does not reconstruct that row budget

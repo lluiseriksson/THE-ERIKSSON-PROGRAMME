@@ -5,11 +5,6 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceRegionalLargeBlockSlope
 
-/-!
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
--/
-
 #print axioms YangMills.RG.cmp99SourceRegionalLargeBlockCutoffScale_mul_Q
 #print axioms YangMills.RG.cmp99SourceGenerated_precisionRange_div_largeBlockCutoffScale
 #print axioms YangMills.RG.cmp99SourceRegionalLargeBlockSlope_mul_precisionRange

@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceRegionalCoarseAverage
 /-!
 # Reindexing a saturated source region by its active blocks
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 A block-saturated active region is the disjoint union of the complete fine
 blocks indexed by its active coarse region.  This is the exact reindexing
 needed to expose the cancellation

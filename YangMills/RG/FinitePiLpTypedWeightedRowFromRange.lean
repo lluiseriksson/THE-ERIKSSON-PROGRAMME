@@ -8,9 +8,6 @@ import YangMills.RG.FinitePiLpTypedWeightedRowKernel
 /-!
 # Weighted rows from normalized row sums
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 This adapter preserves an already proved row normalization.  Finite range is
 used only to bound the exponential weight; no range-ball cardinality is
 introduced.
