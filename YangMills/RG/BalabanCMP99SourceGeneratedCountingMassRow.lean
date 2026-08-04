@@ -10,9 +10,6 @@ import YangMills.RG.FinitePiLpTypedWeightedRowFromRange
 /-!
 # Exact source rows of the generated CMP99 counting mass
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 The load-bearing mass in the source precision is `Q'^* Q'`, not `Q'` alone.
 At one scale `Q'` sends a source delta to one owner with coefficient `M^{-d}`;
 the counting adjoint then spreads the result over the complete block with

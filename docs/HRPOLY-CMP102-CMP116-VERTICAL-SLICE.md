@@ -465,11 +465,25 @@ following table is normative for new interfaces and proofs:
 | `cmp116CubeEdgeTreeMetric Y` | number of coarse cube edges in a shortest carrier, on the lattice native to `Y` | it is already a normalized combinatorial length; it is not a fine-site distance |
 | `cmp116Eq80Lemma1CombinedDomainMetric` | branch-local native tree metric | direct and native metrics retain their own block lattices; the native metric is not recomputed after support coarsification |
 | `physicalBondDist b b'` | fine-lattice Chebyshev bond distance, including the direction coordinate | comparison with block counts costs an explicit factor of `M`, e.g. `physicalBondDist <= 4*M*blocks.card` |
+| `cmp99SourceBlockAverageWeight M d` | normalized mass of one generated `Q'` row at one blocking scale | exactly `M^-d`; this is a row mass, not a count of the `M^d` fine sites in the owner block |
+| `(cmp99SourceBlockAverageWeight M d)^depth` | normalized row mass of the depth-`depth` generated counting tower | exactly `(M^-d)^depth`; every induction step contributes one new normalized row mass |
+| owner-block count times one-scale row mass | cancellation between counting and averaging units | `M^d * M^-d = 1`; never replace the normalized row mass by the raw owner-block cardinality or apply the normalization a second time |
 
 Consequently, an interface whose `domainCard` is `blocks.card` must never
 multiply that value by another `M^-4`.  The printed prefactor `alpha4*M^-4`
 is a different amplitude normalization and remains present.  The two
 conventions are kept distinct in every equation-(1.43)/(2.19) budget.
+
+The repository's `FinitePiLpTypedWeightedRowKernelBound` uses a
+**source-fixed** convention: it fixes the input delta and sums over output
+targets.  The displayed kernel identity (3.88) instead fixes the output
+site `x` and sums over input sites.  The literal generated physical precision
+is symmetric, but for vector-valued blocks symmetry alone does not identify
+the two vector-by-vector sums.  Any source claim that needs the printed
+fixed-output orientation must therefore provide an explicit adjoint/block
+bridge (or prove that orientation directly); the source-fixed bound may still
+be used for the repository's delta-propagation compositions without silently
+renaming it as the printed row.
 
 The two source estimates must not be identified:
 

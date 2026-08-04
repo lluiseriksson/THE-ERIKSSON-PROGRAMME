@@ -138,6 +138,28 @@ Delta' G'_0 = I - sum_Pi K(h_Pi) G'_Pi h_Pi = I - R',
 G' = G'_0 (I - R')^-1 = G'_0 sum_n (R')^n.
 ```
 
+The internal formula for `K(h)` is also visually fixed now.  Printed page
+409 / PDF page 21 of the same primary artifact expands
+`Delta'_a (h lambda)` into exactly three correction species before identifying
+their sum with `K(h) lambda`:
+
+```text
+Delta'_a(h lambda)(x)
+  = h(x) Delta'_a(lambda)(x)
+    - sum_{b in st(x)} (partial h)(b) (D lambda)(b)
+    + (Delta h)(x) lambda(x)
+    + a_j (L^j eta)^(-2) sum_{x' in B_j(y)} L^(-jd)
+        (partial h)(Gamma_xy^(j) union Gamma_yx'^(j))
+        R(U(Gamma_yx^(j))^(-1)) R(U(Gamma_yx'^(j))) lambda(x')
+  = h(x) Delta'_a(lambda)(x) - (K(h) lambda)(x).
+```
+
+This is a literal formula gate, not merely a bound.  In particular, the
+`Q'^* a Q'` species retains the normalized `L^(-jd)` row mass printed in the
+source; it cannot be recovered by multiplying a uniform entry estimate by a
+terminal range-ball cardinality.  The direct generated-precision row is an
+input to this gate, but does not by itself prove the three-term identity.
+
 Thus the missing producer is specifically the physical specialization of
 this regional Neumann expansion on one common active fine zero-cochain carrier;
 it is not equation (3.107), which later expands the different square
@@ -279,6 +301,17 @@ finite range additionally costs `exp (rate * range)`, but still no block-ball
 cardinality.  This recursive row theorem is an open, compiler-unverified
 obligation; the operator-norm contraction of `Qprime` is not a substitute for
 it.
+
+There is also an orientation boundary that the source dictionary must keep
+visible.  `FinitePiLpTypedWeightedRowKernelBound` fixes a source delta and
+sums its image over targets.  Equation (3.88) fixes the displayed output site
+`x` and sums over input sites.  Although
+`cmp99SourceGeneratedPhysicalPrecision_isSymmetric` proves symmetry of the
+complete physical precision, vector-valued block symmetry does not by itself
+turn the two pointwise-in-vector sums into the same inequality.  The direct
+source-fixed estimate is the right input for the existing delta-propagation
+composition, but a claim about the literal fixed-output row of (3.88) still
+requires a proved adjoint/block bridge or a separate direct estimate.
 
 The dependent-arrow alphabet and changing intermediate carriers recorded on
 printed page 413 belong to the later cross-scale Section-C expansion.  They

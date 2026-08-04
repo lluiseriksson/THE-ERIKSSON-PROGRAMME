@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceWeightedRegionalAdjoint
 /-!
 # Exact row sum of one transported source synthesis
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 The counting-space adjoint of one source average spreads a coarse value over
 one complete block.  Reindexing the saturated fine region by active blocks
 shows that its `l1` row cost is exactly `|w| M^d`.  At the printed source

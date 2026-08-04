@@ -10,9 +10,6 @@ import YangMills.RG.FinitePiLpTypedWeightedRowFromRange
 /-!
 # Weighted source rows of the generated CMP99 average
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 The literal generated `Q'_depth` sends a fine source delta only to its
 terminal owner.  Combining this exact support with the source-row mass
 `(M^{-d})^depth` gives a weighted row bound with the sole range cost

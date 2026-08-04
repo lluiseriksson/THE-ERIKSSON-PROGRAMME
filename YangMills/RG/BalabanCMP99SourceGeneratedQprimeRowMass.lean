@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedWeightedAdjointRange
 /-!
 # Exact source-row mass of the generated CMP99 average
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 Every literal one-step average sends a source delta to the delta at its owner
 block, with coefficient `M^{-d}`.  Iterating the generated physical tower
 therefore gives the exact row amplitude `(M^{-d})^depth`; no range-ball or

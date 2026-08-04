@@ -10,9 +10,6 @@ import YangMills.RG.FinitePiLpTypedWeightedRowFromRange
 /-!
 # Direct weighted rows of the generated CMP99 physical precision
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
-
 The source precision is the literal sum of a nearest-neighbour covariant
 Laplacian and the normalized mass `a_j Q'^* Q'`.  Reconstructing a row of the
 whole precision from its terminal range would introduce a false block-ball
@@ -24,6 +21,11 @@ factor.  This module instead bounds the two printed summands separately:
 
 Thus the terminal range appears only inside the exponential weight of the
 normalized mass row, never as a cardinality factor.
+
+The bound here uses the repository's source-fixed delta convention.  The
+fixed-output row displayed in CMP99 (3.88) still requires a separate physical
+block/adjoint bridge; global symmetry alone does not identify the two
+vector-valued row sums with the same constant.
 -/
 
 namespace YangMills.RG
