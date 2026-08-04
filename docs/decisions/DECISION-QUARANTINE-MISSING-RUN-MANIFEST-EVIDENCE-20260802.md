@@ -27,6 +27,35 @@ claim that reproducibility has been restored. The 810 existing recursively
 declared `outputs[*].path` references in the affected population are outside
 scope and remain untouched.
 
+A transient selector reported 316 manifests and 683 absent references. That
+selector omitted five absent `script.path` references; including the schema's
+`script.path` address adds three affected manifests and five references. The
+decision population was and remains the complete 319 manifests / 688 absent
+references measured at both `script.path` and `inputs[*].path`.
+
+## Exact strict-guard delta and unrepaired output mismatches
+
+The strict guard's visible error count changes from 3,760 on base
+`f51d0ee117cb83533382ca6ceb7b02cf6d2f47f2` to 3,717 after quarantine, a
+delta of -43 composed exactly of:
+
+- 37 `status` violations removed by replacing non-contract lifecycle labels;
+- two `quarantine_reason` violations removed by supplying the required reason;
+- four `outputs[*].sha256_lf` mismatches that cease to be checked when the
+  manifests become `quarantined`.
+
+The last four mismatches were not repaired. Their recorded digests and output
+bytes remain unchanged. Raw and LF-normalized SHA-256 values are recomputable
+from the checked-out output files as follows (hexadecimal case is
+presentation-only):
+
+| Manifest | Output | Path | Recorded `sha256` | Observed raw SHA-256 | Recorded `sha256_lf` | Observed LF SHA-256 |
+| --- | ---: | --- | --- | --- | --- | --- |
+| `surface-scaled-bulk-cwin3p2-high-79p75-79p875-20260723.json` | 0 | `scripts/surface_scaled_bulk_79p75_79p875.txt` | `59975A21E56A726DC551B99637A853640EE6D05F83B641BA3A020ED1C64C06EE` | `59975A21E56A726DC551B99637A853640EE6D05F83B641BA3A020ED1C64C06EE` | `59975A21E56A726DC551B99637A853640EE6D05F83B641BA3A020ED1C64C06EE` | `0A64BF83B8CD1044AB782F8B0E257F8539819DBEEB1474AA7D3E53D2131FFE9F` |
+| `surface-scaled-bulk-cwin3p2-high-79p75-79p875-20260723.json` | 1 | `scripts/surface_scaled_bulk_79p75_79p875_rerun.txt` | `59975A21E56A726DC551B99637A853640EE6D05F83B641BA3A020ED1C64C06EE` | `59975A21E56A726DC551B99637A853640EE6D05F83B641BA3A020ED1C64C06EE` | `59975A21E56A726DC551B99637A853640EE6D05F83B641BA3A020ED1C64C06EE` | `0A64BF83B8CD1044AB782F8B0E257F8539819DBEEB1474AA7D3E53D2131FFE9F` |
+| `surface-scaled-bulk-cwin3p2-high-79p875-80-20260723.json` | 0 | `scripts/surface_scaled_bulk_79p875_80.txt` | `C3B36D8FE82E2D4C0237F027E2FC90F4316027D5E9EF9DDB281CB23883CB0CC4` | `C3B36D8FE82E2D4C0237F027E2FC90F4316027D5E9EF9DDB281CB23883CB0CC4` | `C3B36D8FE82E2D4C0237F027E2FC90F4316027D5E9EF9DDB281CB23883CB0CC4` | `D7429A2E485F273A1A5AD02BC6EBA1CA1752B669176FE4C2339C0AFFE0648C57` |
+| `surface-scaled-bulk-cwin3p2-high-79p875-80-20260723.json` | 1 | `scripts/surface_scaled_bulk_79p875_80_rerun.txt` | `C3B36D8FE82E2D4C0237F027E2FC90F4316027D5E9EF9DDB281CB23883CB0CC4` | `C3B36D8FE82E2D4C0237F027E2FC90F4316027D5E9EF9DDB281CB23883CB0CC4` | `C3B36D8FE82E2D4C0237F027E2FC90F4316027D5E9EF9DDB281CB23883CB0CC4` | `D7429A2E485F273A1A5AD02BC6EBA1CA1752B669176FE4C2339C0AFFE0648C57` |
+
 ## Alternatives considered
 
 1. **Quarantine/reclassification.** Mark every affected manifest
@@ -65,6 +94,14 @@ The migration may change only the top-level `status` and
 byte for byte as a JSON string value. Existing quarantine reasons are retained
 verbatim inside the new owner-decision reason. Existing output references are
 neither selected nor rewritten.
+
+The migration is anchored to exact base
+`f51d0ee117cb83533382ca6ceb7b02cf6d2f47f2`. Before preparing any replacement,
+it resolves that exact commit, reads and validates every manifest blob from its
+base-tree path, and compares the corresponding worktree manifest with that
+blob. Any difference outside top-level `status` and `quarantine_reason`, any
+invalid/missing base, path, or blob, or any lifecycle state other than the base
+state or the idempotent target state aborts the entire plan before writing.
 
 ## Exact reversal conditions
 

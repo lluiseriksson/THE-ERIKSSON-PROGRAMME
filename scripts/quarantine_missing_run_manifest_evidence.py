@@ -1,10 +1,11 @@
 """Quarantine run manifests whose declared script/input evidence is absent.
 
-The migration is intentionally narrow.  Population membership is derived from
-exact-case paths tracked by ``HEAD`` and is accepted only at the frozen owner
-counts.  Only the top-level ``status`` and ``quarantine_reason`` JSON values may
-change; every other parsed value, including every path and digest, is checked
-before any file is replaced.
+The migration is intentionally narrow.  Population membership and every
+manifest blob are anchored to the exact publication base
+``f51d0ee117cb83533382ca6ceb7b02cf6d2f47f2`` and accepted only at the frozen
+owner counts.  Only the top-level ``status`` and ``quarantine_reason`` JSON
+values may change from that base; every other parsed value, including every
+path and digest, is checked before any file is replaced.
 
 Run without arguments for a read-only plan.  Pass ``--apply`` to write the
 validated plan.  The operation is deterministic and idempotent, uses no
@@ -18,13 +19,15 @@ import argparse
 from collections import Counter
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+import re
 import stat
 import subprocess
 import tempfile
 from typing import Any, Iterable
 
 
+BASE_COMMIT = "f51d0ee117cb83533382ca6ceb7b02cf6d2f47f2"
 EXPECTED_MANIFESTS = 623
 EXPECTED_AFFECTED = 319
 EXPECTED_REFERENCES = 688
@@ -42,6 +45,7 @@ OWNER_REASON = (
     "retained as recovery keys."
 )
 MUTABLE_KEYS = {"status", "quarantine_reason"}
+OBJECT_ID = re.compile(r"^[0-9a-f]{40,64}$")
 
 
 class MigrationError(RuntimeError):
@@ -90,8 +94,89 @@ def git_output(root: Path, *args: str) -> str:
     return result.stdout
 
 
-def tracked_paths(root: Path) -> set[str]:
-    return set(git_output(root, "ls-tree", "-r", "--name-only", "HEAD").splitlines())
+def git_bytes(root: Path, *args: str, input_bytes: bytes | None = None) -> bytes:
+    result = subprocess.run(
+        ["git", *args],
+        cwd=root,
+        check=False,
+        input=input_bytes,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if result.returncode != 0:
+        detail = result.stderr.decode("utf-8", errors="replace").strip()
+        if not detail:
+            detail = result.stdout.decode("utf-8", errors="replace").strip()
+        raise MigrationError(f"git {' '.join(args)} failed: {detail}")
+    return result.stdout
+
+
+def safe_repo_path(raw: bytes) -> str:
+    try:
+        path = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise MigrationError(f"base tree path is not UTF-8: {exc}") from exc
+    pure = PurePosixPath(path)
+    require(path == pure.as_posix(), f"invalid base tree path: {path!r}")
+    require(not pure.is_absolute(), f"absolute base tree path: {path!r}")
+    require("\\" not in path, f"backslash in base tree path: {path!r}")
+    require(all(part not in {"", ".", ".."} for part in pure.parts), f"unsafe base tree path: {path!r}")
+    require(not any(ord(character) < 32 for character in path), f"control byte in base tree path: {path!r}")
+    return path
+
+
+def base_tree(root: Path) -> dict[str, tuple[str, str, str]]:
+    resolved = git_output(root, "rev-parse", "--verify", f"{BASE_COMMIT}^{{commit}}").strip()
+    require(resolved == BASE_COMMIT, f"base commit resolved to {resolved!r}, expected {BASE_COMMIT}")
+    raw = git_bytes(root, "ls-tree", "-r", "-z", "--full-tree", BASE_COMMIT)
+    entries: dict[str, tuple[str, str, str]] = {}
+    for record in raw.split(b"\0"):
+        if not record:
+            continue
+        try:
+            header, raw_path = record.split(b"\t", 1)
+            raw_mode, raw_type, raw_oid = header.split(b" ", 2)
+            mode = raw_mode.decode("ascii")
+            object_type = raw_type.decode("ascii")
+            oid = raw_oid.decode("ascii")
+        except (ValueError, UnicodeDecodeError) as exc:
+            raise MigrationError(f"invalid base tree record: {record!r}") from exc
+        path = safe_repo_path(raw_path)
+        require(path not in entries, f"duplicate base tree path: {path}")
+        require(OBJECT_ID.fullmatch(oid) is not None, f"invalid blob id for {path}: {oid!r}")
+        entries[path] = (mode, object_type, oid)
+    require(entries, "base tree is empty")
+    return entries
+
+
+def batch_blobs(root: Path, path_entries: dict[str, tuple[str, str, str]]) -> dict[str, bytes]:
+    ordered_oids = list(dict.fromkeys(entry[2] for entry in path_entries.values()))
+    request = b"".join(oid.encode("ascii") + b"\n" for oid in ordered_oids)
+    response = git_bytes(root, "cat-file", "--batch", input_bytes=request)
+    position = 0
+    blobs: dict[str, bytes] = {}
+    for expected_oid in ordered_oids:
+        newline = response.find(b"\n", position)
+        require(newline >= 0, f"truncated cat-file header for blob {expected_oid}")
+        header = response[position:newline]
+        position = newline + 1
+        parts = header.split(b" ")
+        require(len(parts) == 3, f"invalid cat-file header for blob {expected_oid}: {header!r}")
+        try:
+            actual_oid = parts[0].decode("ascii")
+            object_type = parts[1].decode("ascii")
+            size = int(parts[2].decode("ascii"))
+        except (UnicodeDecodeError, ValueError) as exc:
+            raise MigrationError(f"invalid cat-file header for blob {expected_oid}: {header!r}") from exc
+        require(actual_oid == expected_oid, f"cat-file returned {actual_oid!r}, expected {expected_oid}")
+        require(object_type == "blob", f"base object {expected_oid} is {object_type}, expected blob")
+        require(size >= 0 and position + size < len(response), f"invalid blob size for {expected_oid}: {size}")
+        blobs[expected_oid] = response[position : position + size]
+        position += size
+        require(response[position : position + 1] == b"\n", f"missing cat-file terminator for {expected_oid}")
+        position += 1
+    require(position == len(response), "unexpected trailing cat-file output")
+    return blobs
 
 
 def normalized_repo_path(value: str) -> str:
@@ -194,12 +279,35 @@ def replacement_reason(manifest: dict[str, Any]) -> str:
     return OWNER_REASON
 
 
-def rewrite_manifest(raw: bytes, path: Path, before: dict[str, Any]) -> bytes:
+def without_mutable(manifest: dict[str, Any]) -> dict[str, Any]:
+    return {key: value for key, value in manifest.items() if key not in MUTABLE_KEYS}
+
+
+def immutable_lf_members(raw: bytes, path: Path) -> list[tuple[str, str]]:
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise MigrationError(f"{path}: not UTF-8: {exc}") from exc
+    members, _ = top_level_members(text, path)
+    return [
+        (key, text[start:end].replace("\r\n", "\n"))
+        for key, (start, end) in members.items()
+        if key not in MUTABLE_KEYS
+    ]
+
+
+def rewrite_manifest(
+    raw: bytes,
+    path: Path,
+    before: dict[str, Any],
+    base: dict[str, Any],
+    base_raw: bytes,
+    reason: str,
+) -> bytes:
     text = raw.decode("utf-8")
     members, last_value_end = top_level_members(text, path)
     require("status" in members, f"{path}: missing top-level status")
 
-    reason = replacement_reason(before)
     edits: list[tuple[int, int, str]] = []
     status_start, status_end = members["status"]
     edits.append((status_start, status_end, json.dumps("quarantined")))
@@ -222,38 +330,80 @@ def rewrite_manifest(raw: bytes, path: Path, before: dict[str, Any]) -> bytes:
     updated = text.encode("utf-8")
     after = load_object(updated, path)
 
-    before_other = {key: value for key, value in before.items() if key not in MUTABLE_KEYS}
-    after_other = {key: value for key, value in after.items() if key not in MUTABLE_KEYS}
-    require(before_other == after_other, f"{path}: a field outside status/quarantine_reason changed")
+    require(without_mutable(before) == without_mutable(base), f"{path}: current content differs from base outside status/quarantine_reason")
+    require(without_mutable(after) == without_mutable(base), f"{path}: rewrite changed a field outside status/quarantine_reason")
+    require(immutable_lf_members(raw, path) == immutable_lf_members(base_raw, path), f"{path}: non-lifecycle LF-normalized JSON bytes differ from base")
+    require(immutable_lf_members(updated, path) == immutable_lf_members(base_raw, path), f"{path}: rewrite changed non-lifecycle LF-normalized JSON bytes")
     require(after.get("status") == "quarantined", f"{path}: status was not quarantined")
     require(after.get("quarantine_reason") == reason, f"{path}: quarantine reason mismatch")
-    require(sensitive_scalars(before) == sensitive_scalars(after), f"{path}: path/digest scalar count changed")
+    require(sensitive_scalars(base) == sensitive_scalars(after), f"{path}: path/digest scalar count changed")
     return updated
 
 
 def prepare(root: Path) -> tuple[dict[Path, bytes], dict[str, Any]]:
     manifest_dir = root / "run-manifests"
-    paths = sorted(manifest_dir.glob("*.json"))
-    require(len(paths) == EXPECTED_MANIFESTS, f"manifest population is {len(paths)}, expected {EXPECTED_MANIFESTS}")
-    tracked = tracked_paths(root)
+    tree = base_tree(root)
+    manifest_entries = {
+        path: entry
+        for path, entry in tree.items()
+        if path.startswith("run-manifests/")
+        and len(PurePosixPath(path).parts) == 2
+        and path.endswith(".json")
+    }
+    require(
+        len(manifest_entries) == EXPECTED_MANIFESTS,
+        f"base manifest population is {len(manifest_entries)}, expected {EXPECTED_MANIFESTS}",
+    )
+    for repo_path, (mode, object_type, _) in manifest_entries.items():
+        require(object_type == "blob", f"base manifest {repo_path} is {object_type}, expected blob")
+        require(mode in {"100644", "100755"}, f"base manifest {repo_path} has invalid mode {mode}")
 
-    affected: list[tuple[Path, dict[str, Any], list[tuple[str, str]]]] = []
-    for path in paths:
-        manifest = load_object(path.read_bytes(), path)
+    worktree_repo_paths = {
+        path.relative_to(root).as_posix() for path in manifest_dir.glob("*.json")
+    }
+    expected_repo_paths = set(manifest_entries)
+    missing_paths = sorted(expected_repo_paths - worktree_repo_paths)
+    extra_paths = sorted(worktree_repo_paths - expected_repo_paths)
+    require(not missing_paths, f"worktree is missing base manifest: {missing_paths[:1]}")
+    require(not extra_paths, f"worktree has manifest absent from base: {extra_paths[:1]}")
+
+    blobs = batch_blobs(root, manifest_entries)
+    rows: list[
+        tuple[Path, bytes, dict[str, Any], dict[str, Any], list[tuple[str, str]]]
+    ] = []
+    tracked = set(tree)
+    for repo_path in sorted(manifest_entries):
+        path = root / Path(*PurePosixPath(repo_path).parts)
+        require(path.is_file() and not path.is_symlink(), f"invalid worktree manifest path: {repo_path}")
+        base_oid = manifest_entries[repo_path][2]
+        base_raw = blobs[base_oid]
+        current_raw = path.read_bytes()
+        base_path = Path(f"{BASE_COMMIT}:{repo_path}")
+        base_manifest = load_object(base_raw, base_path)
+        current_manifest = load_object(current_raw, path)
+        require(
+            without_mutable(current_manifest) == without_mutable(base_manifest),
+            f"{repo_path}: current content differs from base blob {base_oid} outside status/quarantine_reason",
+        )
+        require(
+            immutable_lf_members(current_raw, path) == immutable_lf_members(base_raw, base_path),
+            f"{repo_path}: non-lifecycle LF-normalized JSON bytes differ from base blob {base_oid}",
+        )
         missing = [
             (field, value)
-            for field, value in declared_evidence(manifest)
+            for field, value in declared_evidence(base_manifest)
             if normalized_repo_path(value) not in tracked
         ]
-        if missing:
-            affected.append((path, manifest, missing))
+        rows.append((path, base_raw, base_manifest, current_manifest, missing))
 
-    bulk = [row for row in affected if str(row[1].get("run_id", "")).startswith(BULK_PREFIX)]
-    remainder = [row for row in affected if str(row[1].get("run_id", "")).startswith(REMAINDER_PREFIX)]
+    affected = [row for row in rows if row[4]]
+
+    bulk = [row for row in affected if str(row[2].get("run_id", "")).startswith(BULK_PREFIX)]
+    remainder = [row for row in affected if str(row[2].get("run_id", "")).startswith(REMAINDER_PREFIX)]
     other = [row for row in affected if row not in bulk and row not in remainder]
-    reference_count = sum(len(row[2]) for row in affected)
-    bulk_references = sum(len(row[2]) for row in bulk)
-    remainder_references = sum(len(row[2]) for row in remainder)
+    reference_count = sum(len(row[4]) for row in affected)
+    bulk_references = sum(len(row[4]) for row in bulk)
+    remainder_references = sum(len(row[4]) for row in remainder)
 
     require(not other, "affected population contains a manifest outside bulk/remainder")
     require(len(affected) == EXPECTED_AFFECTED, f"affected manifests are {len(affected)}, expected {EXPECTED_AFFECTED}")
@@ -263,25 +413,46 @@ def prepare(root: Path) -> tuple[dict[Path, bytes], dict[str, Any]]:
     require(len(remainder) == EXPECTED_REMAINDER_MANIFESTS, f"remainder manifests are {len(remainder)}, expected {EXPECTED_REMAINDER_MANIFESTS}")
     require(remainder_references == EXPECTED_REMAINDER_REFERENCES, f"remainder references are {remainder_references}, expected {EXPECTED_REMAINDER_REFERENCES}")
 
-    output_paths = [value for _, manifest, _ in affected for value in nested_paths(manifest.get("outputs"))]
+    output_paths = [value for _, _, manifest, _, _ in affected for value in nested_paths(manifest.get("outputs"))]
     missing_outputs = [value for value in output_paths if normalized_repo_path(value) not in tracked]
     require(len(output_paths) == EXPECTED_EXISTING_OUTPUT_REFERENCES, f"affected output references are {len(output_paths)}, expected {EXPECTED_EXISTING_OUTPUT_REFERENCES}")
     if missing_outputs:
         raise MigrationError(f"affected output reference is absent: {missing_outputs[0]}")
 
-    before_status = Counter(str(manifest.get("status")) for _, manifest, _ in affected)
+    before_status = Counter(str(manifest.get("status")) for _, _, manifest, _, _ in affected)
     updates: dict[Path, bytes] = {}
     protected_scalars = 0
-    for path, manifest, _ in affected:
+    affected_paths = {path for path, _, _, _, _ in affected}
+    for path, base_raw, base_manifest, current_manifest, _ in rows:
+        if path not in affected_paths:
+            require(current_manifest == base_manifest, f"{path}: unaffected manifest differs from base")
+            continue
+
+        reason = replacement_reason(base_manifest)
+        base_lifecycle = (
+            base_manifest.get("status"),
+            base_manifest.get("quarantine_reason"),
+        )
+        current_lifecycle = (
+            current_manifest.get("status"),
+            current_manifest.get("quarantine_reason"),
+        )
+        target_lifecycle = ("quarantined", reason)
+        require(
+            current_lifecycle == base_lifecycle or current_lifecycle == target_lifecycle,
+            f"{path}: status/quarantine_reason is neither the base nor idempotent target state",
+        )
         raw = path.read_bytes()
-        updated = rewrite_manifest(raw, path, manifest)
-        protected_scalars += sensitive_scalars(manifest)
+        updated = rewrite_manifest(raw, path, current_manifest, base_manifest, base_raw, reason)
+        protected_scalars += sensitive_scalars(base_manifest)
         if updated != raw:
             updates[path] = updated
 
     summary = {
+        "base_commit": BASE_COMMIT,
+        "base_manifest_blobs_verified": len(manifest_entries),
         "head": git_output(root, "rev-parse", "HEAD").strip(),
-        "manifests_total": len(paths),
+        "manifests_total": len(manifest_entries),
         "affected_manifests": len(affected),
         "missing_references": reference_count,
         "bulk": {"manifests": len(bulk), "references": bulk_references},
