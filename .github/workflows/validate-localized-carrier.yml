@@ -1,0 +1,172 @@
+name: Validate localized covariance carrier
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/cmp116-interacting-wilson-hessian
+    paths:
+      - .github/workflows/validate-localized-carrier.yml
+
+permissions:
+  contents: read
+
+env:
+  SOURCE_SHA: 83a1f260d87f207d2dc7bde61c2ed1ff0d3c038d
+  EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
+  TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
+  TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
+
+jobs:
+  localized-carrier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout exact source checkpoint
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          fetch-depth: 1
+
+      - name: Verify source checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          actual="$(git rev-parse HEAD)"
+          printf 'SOURCE_SHA=%s\nACTUAL_HEAD=%s\nWORKFLOW_SHA=%s\n' \
+            "$SOURCE_SHA" "$actual" "$GITHUB_SHA" | tee evidence/checkpoint.txt
+          test "$actual" = "$SOURCE_SHA"
+          test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
+
+      - name: Install exact Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          asset=/tmp/lean-4.29.0-rc6-linux.tar.zst
+          curl --fail --location --retry 5 --retry-all-errors --retry-delay 2 \
+            -o "$asset" "$TOOLCHAIN_URL"
+          printf '%s  %s\n' "$TOOLCHAIN_SHA256" "$asset" | sha256sum -c -
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq zstd
+          mkdir -p /tmp/lean-toolchain
+          tar --use-compress-program=unzstd -xf "$asset" -C /tmp/lean-toolchain
+          bindir=/tmp/lean-toolchain/lean-4.29.0-rc6-linux/bin
+          test -x "$bindir/lean"
+          test -x "$bindir/lake"
+          echo "$bindir" >> "$GITHUB_PATH"
+          {
+            printf 'TOOLCHAIN_URL=%s\nTOOLCHAIN_ASSET_SHA256=%s\n' \
+              "$TOOLCHAIN_URL" "$TOOLCHAIN_SHA256"
+            sha256sum "$bindir/lean" "$bindir/lake"
+          } | tee evidence/toolchain.txt
+
+      - name: Materialize pinned dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          lean --version | tee -a evidence/toolchain.txt
+          lake --version | tee -a evidence/toolchain.txt
+          manifest_before="$(sha256sum lake-manifest.json | cut -d' ' -f1)"
+          toolchain_before="$(sha256sum lean-toolchain | cut -d' ' -f1)"
+          lake update 2>&1 | tee evidence/lake-update.log
+          test "$(sha256sum lake-manifest.json | cut -d' ' -f1)" = "$manifest_before"
+          test "$(sha256sum lean-toolchain | cut -d' ' -f1)" = "$toolchain_before"
+          mathlib="$(git -C .lake/packages/mathlib rev-parse HEAD)"
+          printf 'MATHLIB_SHA=%s\n' "$mathlib" | tee evidence/mathlib.txt
+          test "$mathlib" = "$EXPECTED_MATHLIB"
+          lake exe cache get 2>&1 | tee evidence/cache-get.log
+
+      - name: Run focal queue stop on first error
+        shell: bash
+        run: |
+          set -euo pipefail
+          run_stage() {
+            local stage="$1"
+            shift
+            local started ended code
+            started="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            printf 'STAGE=%s STARTED=%s CMD=' "$stage" "$started" | tee -a evidence/stages.txt
+            printf '%q ' "$@" | tee -a evidence/stages.txt
+            printf '\n' | tee -a evidence/stages.txt
+            set +e
+            "$@" 2>&1 | tee "evidence/${stage}.log"
+            code=${PIPESTATUS[0]}
+            set -e
+            ended="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            printf 'STAGE=%s EXIT=%s ENDED=%s\n' "$stage" "$code" "$ended" | \
+              tee -a evidence/stages.txt
+            test "$code" -eq 0
+          }
+
+          run_stage physical_coordinate_dictionary_focal \
+            lake build YangMills.RG.BalabanCMP116SourcePhysicalCoordinateDictionary
+          run_stage physical_coordinate_dictionary_audit \
+            lake env lean YangMills/RG/BalabanCMP116SourcePhysicalCoordinateDictionaryAudit.lean
+          run_stage combined_source_pre_eq136_focal \
+            lake build YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136
+          run_stage combined_source_pre_eq136_audit \
+            lake env lean YangMills/RG/BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136Audit.lean
+          run_stage conditioned_qbound_wall_focal \
+            lake build YangMills.RG.BalabanCMP116ConditionedRootQBoundWall
+          run_stage conditioned_qbound_wall_audit \
+            lake env lean YangMills/RG/BalabanCMP116ConditionedRootQBoundWallAudit.lean
+
+      - name: Verify axiom gates and seal evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          import re
+
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          audits = {
+              "physical_coordinate_dictionary_audit.log": 10,
+              "combined_source_pre_eq136_audit.log": 18,
+              "conditioned_qbound_wall_audit.log": 1,
+          }
+          result = {}
+          for name, expected in audits.items():
+              text = (Path("evidence") / name).read_text(encoding="utf-8")
+              compact = re.sub(r"\s+", "", text)
+              for forbidden in ("sorryAx", "ofReduceBool"):
+                  if forbidden in compact:
+                      raise SystemExit(f"FORBIDDEN_AXIOM={forbidden} FILE={name}")
+              blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
+              if len(blocks) != expected:
+                  raise SystemExit(
+                      f"AXIOM_BLOCK_COUNT={len(blocks)} EXPECTED={expected} FILE={name}"
+                  )
+              parsed = []
+              for body in blocks:
+                  names = {item for item in body.split(",") if item}
+                  if not names.issubset(allowed):
+                      raise SystemExit(f"AXIOM_SET={sorted(names)} FILE={name}")
+                  parsed.append(sorted(names))
+              result[name] = parsed
+          (Path("evidence") / "axioms.json").write_text(
+              json.dumps(result, sort_keys=True, indent=2) + "\n", encoding="utf-8"
+          )
+          PY
+          printf 'FINAL_STATUS=PASS\n' | tee evidence/FINAL_STATUS
+          sums="$(mktemp)"
+          find evidence -maxdepth 1 -type f ! -name SHA256SUMS -print0 | \
+            sort -z | xargs -0 sha256sum > "$sums"
+          mv "$sums" evidence/SHA256SUMS
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
+            --numeric-owner -cf - evidence | gzip -n > localized-carrier-evidence.tar.gz
+          sha256sum localized-carrier-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+
+      - name: Upload durable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: localized-carrier-${{ env.SOURCE_SHA }}
+          path: |
+            evidence
+            localized-carrier-evidence.tar.gz
+          if-no-files-found: error
+          retention-days: 14
