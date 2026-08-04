@@ -38,7 +38,8 @@ theorem cmp99SourceGenerated_precisionRange_div_cellCutoffScale
     (M ^ (depth + 1) : ℝ) /
         cmp99SourceGeneratedCellCutoffScale M depth = 1 / 2 := by
   rw [cmp99SourceGeneratedCellCutoffScale_eq_two_mul_precisionRange]
-  have hpow : (M ^ (depth + 1) : ℝ) ≠ 0 := by positivity
+  have hpow : (M ^ (depth + 1) : ℝ) ≠ 0 :=
+    Nat.cast_ne_zero.mpr (pow_ne_zero _ (NeZero.ne M))
   field_simp
 
 /-- The literal slope coefficient from the generated regional cutoff loses
@@ -50,7 +51,8 @@ theorem cmp99SourceGenerated_cellSlope_mul_precisionRange
         cmp99SourceGeneratedCellCutoffScale M depth) *
       (M ^ (depth + 1) : ℝ) = 4 * P.derivBound := by
   rw [cmp99SourceGeneratedCellCutoffScale_eq_two_mul_precisionRange]
-  have hpow : (M ^ (depth + 1) : ℝ) ≠ 0 := by positivity
+  have hpow : (M ^ (depth + 1) : ℝ) ≠ 0 :=
+    Nat.cast_ne_zero.mpr (pow_ne_zero _ (NeZero.ne M))
   field_simp <;> ring
 
 end
