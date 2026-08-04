@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "regional-large-block-v17"
-SOURCE_SHA = "28290c43a04d5f284e49f0b6acb16917c070ec0a"
+RUNNER_REV = "regional-large-block-v18"
+SOURCE_SHA = "76e31d10d6dadb07576ba5cc4a8e753a718892db"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -250,7 +250,7 @@ REGIONAL_PRECISION_QUEUE_V10 = [
     ),
 ]
 
-QUEUE = LEGACY_QUEUE_V9[12:]
+QUEUE = LEGACY_QUEUE_V9[14:]
 
 ALGEBRA_REPRO = r"""import Mathlib
 
