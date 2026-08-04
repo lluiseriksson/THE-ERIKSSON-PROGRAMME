@@ -1,6 +1,6 @@
 # (46) Submission sheet: Local Tanh, Global Wall
 
-Status: final scientific body; **do not submit until the author block and license are confirmed**.
+Status: final scientific body with author fixed as **Lluis Eriksson**; **do not submit until the license is confirmed**.
 
 ## Recommended route
 
@@ -11,16 +11,16 @@ Status: final scientific body; **do not submit until the author block and licens
 
 This route is deliberately narrow. The paper does not claim a volume-uniform Birkhoff gap. Its publishable unit is the equality classification, the exact tensor wall, and the localization comparison.
 
-## Blocking author data
+## Author data
 
-The current manuscript says `The Eriksson Programme`. Before arXiv upload, replace this with the complete and accurate human author list and include any genuine affiliations in the paper. A collaboration name may be retained in addition to the human authors.
+The manuscript and arXiv metadata identify the author as `Lluis Eriksson`.
 
-- Authors: `[REQUIRED: complete human author list]`
-- Collaboration, if desired: `The Eriksson Programme`
+- Authors: `Lluis Eriksson`
+- Collaboration: none stated
 - Affiliations: `[OPTIONAL, BUT MUST BE ACCURATE IF USED]`
 - Corresponding email: `[REQUIRED BY THE SUBMISSION ACCOUNT/EDITORIAL SYSTEM]`
 - ORCID: `[OPTIONAL]`
-- Author consent: `[REQUIRED: confirm for every author]`
+- Author consent: confirmed by the owner's explicit author instruction on August 4, 2026
 
 Do not infer an affiliation from an email address or residence.
 
@@ -35,10 +35,8 @@ Local Tanh, Global Wall: Tensorization, Equality, and the Birkhoff--Dobrushin Di
 **Authors**
 
 ```text
-[REQUIRED: Firstname Lastname, ...]
+Lluis Eriksson
 ```
-
-If the collaboration label is kept, use an arXiv-supported collaboration form and list all human authors in the printed paper.
 
 **Abstract** (ASCII and under arXiv's 1920-character limit)
 
@@ -77,7 +75,7 @@ Hilbert projective metric; Birkhoff contraction; Dobrushin coefficient; total va
 - Confirm the detected compiler and top-level file `birkhoff_dobrushin_wall.tex`.
 - Compare arXiv's generated PDF page by page with the frozen final PDF.
 - Paste the ASCII metadata above; do not paste Unicode punctuation from a PDF viewer.
-- Confirm the complete author list, affiliations, category, and license.
+- Confirm the author name, any genuine affiliation, category, and license.
 - Preview once more before selecting the final submit action.
 - Keep the resulting arXiv identifier and DOI for the repository record and any journal submission.
 
@@ -111,12 +109,12 @@ Sincerely,
 ## Frozen paper identity
 
 - Branch at packaging: `codex/candidate-46-birkhoff-dobrushin-wall`
-- Scientific-body commit before packaging: `7c2401e2a2c7`
+- Scientific-body commit before author update: `7c2401e2a2c7`
 - Final PDF: `output/pdf/birkhoff_dobrushin_wall.pdf`
-- PDF bytes: `111071`
-- PDF SHA-256: `16ab7a3f838a563232052abcf6e5dd7a1d543eb127590eeeab7459a5b8359428`
+- PDF bytes: `110645`
+- PDF SHA-256: `2d9791a475e21a793f63cc2f00793968c28e3cc50cd1f5716dc3babc7a638d86`
 - TeX: `papers/birkhoff-dobrushin-wall/birkhoff_dobrushin_wall.tex`
-- TeX bytes (LF worktree): `31309`
-- TeX SHA-256 (LF worktree): `860b71470173d63e76aca7e81b47aa6ea9fbe259f7c5411c4fb2dc0056ea65e8`
+- TeX bytes (LF worktree): `31301`
+- TeX SHA-256 (LF worktree): `399d0495141f67e3c335a937438c6e29232722eb24040425e59ba1949b5ea391`
 
-The final external submit action is intentionally not performed here: it requires the submitter to certify identity, author consent, rights, and an irrevocable license choice.
+The final external submit action is intentionally not performed here: it requires the submitter to certify rights and make an irrevocable license choice.

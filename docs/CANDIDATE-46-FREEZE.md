@@ -440,3 +440,23 @@ The revised binary PDF is frozen separately:
 10. **No-false-gap and governance attacks.** The global tensor wall is
     unchanged. Lean/Lake stayed off Windows; Colab used the required account,
     CPU high RAM, no GPU, and was disconnected and deleted after verification.
+
+## Author-only amendment — August 4, 2026
+
+At the owner's explicit instruction, the manuscript author line was changed
+from `The Eriksson Programme` to `Lluis Eriksson`. No theorem, proof,
+reference, certificate, Lean source, or limitation statement changed.
+
+| Path | Raw bytes | SHA-256 raw | LF bytes | SHA-256 LF | CRLF bytes | SHA-256 CRLF |
+|---|---:|---|---:|---|---:|---|
+| `papers/birkhoff-dobrushin-wall/birkhoff_dobrushin_wall.tex` | 31301 | `399d0495141f67e3c335a937438c6e29232722eb24040425e59ba1949b5ea391` | 31301 | `399d0495141f67e3c335a937438c6e29232722eb24040425e59ba1949b5ea391` | 32045 | `cd6a641bf6769ecaadf6f1e9aaefe857e40f75aa219048f828b62ced3329d990` |
+
+The author-updated PDF is frozen separately:
+
+| Path | Bytes | SHA-256 |
+|---|---:|---|
+| `output/pdf/birkhoff_dobrushin_wall.pdf` | 110645 | `2d9791a475e21a793f63cc2f00793968c28e3cc50cd1f5716dc3babc7a638d86` |
+
+Tectonic completed in 4.1 seconds. All 10 pages were rendered at 110 dpi and
+visually inspected; the author line is centered and legible, and no clipping,
+overlap, broken glyph, or pagination change was found.

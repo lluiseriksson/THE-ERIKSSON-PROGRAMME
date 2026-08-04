@@ -1,5 +1,5 @@
-1e6282aba6286165290cde8eb6c6e76ee232abf9f08136513d7ffe1b0fa7e74a  candidate-46-arxiv-source.zip
-cbf661e224f771c1278e1d0309fcfe0d02775508082b74905e39206c28ce82e8  candidate-46-review-bundle.zip
-16ab7a3f838a563232052abcf6e5dd7a1d543eb127590eeeab7459a5b8359428  ../pdf/birkhoff_dobrushin_wall.pdf
-860b71470173d63e76aca7e81b47aa6ea9fbe259f7c5411c4fb2dc0056ea65e8  ../../papers/birkhoff-dobrushin-wall/birkhoff_dobrushin_wall.tex
-364cf9150d32b0b8bc3a38d97c79b3cbc40dad294908a856ecb512f0eef8a585  ../../papers/birkhoff-dobrushin-wall/SUBMISSION.md
+0f0bcfb122719d7ab2ef8d22723a6bd2f9ad9ef1f7c318ea19d96bdfa591f9a7  candidate-46-arxiv-source.zip
+1161042942bf3f4eecc1581ff29cf26c4391aaacde70d2ec7656cbf0d62e41af  candidate-46-review-bundle.zip
+2d9791a475e21a793f63cc2f00793968c28e3cc50cd1f5716dc3babc7a638d86  ../pdf/birkhoff_dobrushin_wall.pdf
+399d0495141f67e3c335a937438c6e29232722eb24040425e59ba1949b5ea391  ../../papers/birkhoff-dobrushin-wall/birkhoff_dobrushin_wall.tex
+8a1bbda2c5caae0d252e4924b75b034b68779a44c7c61848745ab55e383918f2  ../../papers/birkhoff-dobrushin-wall/SUBMISSION.md
