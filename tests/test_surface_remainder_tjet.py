@@ -1,0 +1,81 @@
+import importlib.util
+from pathlib import Path
+import sys
+
+from flint import arb, ctx
+
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT/"scripts"))
+
+
+def load(name):
+    spec = importlib.util.spec_from_file_location(name, ROOT/"scripts"/(name+".py"))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+MOD = load("surface_remainder_tjet")
+SPATIAL = load("surface_remainder_spatial_jet3")
+
+
+def test_tjet_chain_rules():
+    ctx.prec = 140
+    x = MOD.tjet(arb("0.3"), arb(1))
+    value = ((x.sin()*x.exp())/(1+x**2)).sqrt()
+    expected = ((x.v.sin()*x.v.exp())/(1+x.v**2)).sqrt()
+    assert (value.v-expected).contains(0)
+    numerator = x.v.sin()*x.v.exp()
+    numerator_d = x.v.exp()*(x.v.sin()+x.v.cos())
+    direct = (numerator_d/(1+x.v**2)
+              -numerator*2*x.v/(1+x.v**2)**2)/(2*expected)
+    assert (value.d-direct).contains(0)
+
+    simple = x.sin().exp()
+    simple_d2 = x.v.sin().exp()*(x.v.cos()**2-x.v.sin())
+    assert (simple.d2-simple_d2).contains(0)
+    # exp(x) has every ordinary derivative equal to exp(x).
+    pure = x.exp()
+    assert (pure.d3-pure.v).contains(0)
+    assert (pure.d4-pure.v).contains(0)
+
+
+def test_spatial_jet_accepts_tjet_coefficients():
+    x = MOD.tjet(arb("0.2"), arb(1))
+    result = SPATIAL.jexp(SPATIAL.variable_x(x))
+    assert (result.get(0, 0).v-arb("0.2").exp()).contains(0)
+    assert (result.get(0, 0).d-arb("0.2").exp()).contains(0)
+    assert (result.get(0, 0).d2-arb("0.2").exp()).contains(0)
+    assert (result.get(0, 0).d3-arb("0.2").exp()).contains(0)
+    assert (result.get(0, 0).d4-arb("0.2").exp()).contains(0)
+
+
+def test_power_one_does_not_form_zero_times_inverse_at_zero():
+    x = MOD.tjet(arb("0 +/- 1"), arb("2 +/- 0.1"), arb("3 +/- 0.1"))
+    result = x**1
+    assert result.v.is_finite()
+    assert result.d.is_finite()
+    assert result.d2.is_finite()
+    assert result == x
+
+
+def test_symmetric_derivative_square_uses_interval_multiplication():
+    # python-flint 0.9.0 returns NaN for ``arb("0 +/- r")**2`` while
+    # multiplication gives the required enclosure.  Jet chain rules must use
+    # the latter operation.
+    x = MOD.tjet(arb("5000 +/- 10"), arb("0 +/- 10000"), arb("0 +/- 2"))
+    inverse = x.inv()
+    exponential = x.exp()
+    assert inverse.d2.is_finite()
+    assert exponential.d2.is_finite()
+    assert inverse.d3.is_finite() and inverse.d4.is_finite()
+    assert exponential.d3.is_finite() and exponential.d4.is_finite()
+
+
+def test_fourth_order_product_rule_on_quartic():
+    x = MOD.tjet(arb(2), arb(1))
+    quartic = x**4
+    expected = (arb(16), arb(32), arb(48), arb(48), arb(24))
+    assert all((actual-target).contains(0)
+               for actual, target in zip(quartic.derivatives(), expected))

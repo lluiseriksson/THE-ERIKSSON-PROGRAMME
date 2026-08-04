@@ -297,6 +297,10 @@
           "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85"
         ],
         "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md",
+          "docs/source-db/indices/CAMMAROTA-ACQUISITION-AND-CITATION-LEDGER.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
@@ -307,7 +311,8 @@
         "Rank 4 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: cmp116.eq229.d-stage-summability, cmp109.ref26.cammarota-infinite-range-cluster, cammarota.cmp85.polymer-mayer-source-target, crosswalk.eq229.cammarota-dstage-route",
         "Live hypotheses/blockers: CMP116Lemma3Eq229ScaleBoundary; CMP116Eq229Summability; DIndex/DParts dictionary",
-        "Next action: Obtain clean Cammarota CMP85 theorem text or PDF page; extract theorem, assumptions, constants, and route to Balaban Eq. (2.29)."
+        "Subfield route cards to inspect before adding Lean wrappers: proof.eq229.cammarota.theorem1.extraction-target.v2, proof.eq229.d-family.dictionary.v2, proof.eq229.thresholds.largeK-smallAlpha6.v2.",
+        "Next action: use the Archive-private Cammarota CMP85 packet or a repo-private clean artifact manifest only to extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, uniformity, and the Balaban D-family dictionary; the existing Eq. (1.4) premise field is not theorem evidence for Eq. (2.29)."
       ],
       "formulas": [
         {
@@ -317,7 +322,7 @@
           "exactness": "inferred",
           "confidence": "operational_crosswalk",
           "assumptions": [
-            "Cammarota theorem statement",
+            "Cammarota theorem conclusion beyond the extracted Eq. (1.4) premise",
             "smallness threshold dependencies",
             "Balaban D-family dictionary",
             "metric d_k convention"
@@ -328,10 +333,19 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
-        "cmp116H_postD_sum_le_of_eq229",
-        "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116Eq229Weight",
+        "YangMills.RG.cmp116Eq229Product",
+        "YangMills.RG.CammarotaCMP85Threshold",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold",
+        "YangMills.RG.CammarotaCMP85FiniteDStageSource",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource",
+        "YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource",
+        "YangMills.RG.cmp116Eq229Product_nonneg",
+        "YangMills.RG.cmp116_DStage_sum_le_of_eq229",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -343,8 +357,8 @@
         "Do not turn 'K sufficiently large and alpha6 sufficiently small' into constants without proof."
       ],
       "open_questions": [
-        "Cammarota theorem statement",
-        "smallness threshold dependencies",
+        "Cammarota theorem conclusion beyond the extracted Eq. (1.4) premise",
+        "smallness threshold dependencies, constants, compatibility relation, and uniformity",
         "Balaban D-family dictionary",
         "metric d_k convention"
       ],
@@ -352,7 +366,7 @@
         {
           "id": "proof.eq229.cammarota-dstage-summability.source-key.1",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability is relevant to CMP116Lemma3Eq229ScaleBoundary through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
@@ -361,7 +375,7 @@
         {
           "id": "proof.eq229.cammarota-dstage-summability.source-key.2",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster is relevant to CMP116Eq229Summability through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
@@ -370,20 +384,47 @@
         {
           "id": "proof.eq229.cammarota-dstage-summability.source-key.3",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "cmp116H_postD_sum_le_of_eq229",
+          "lean_symbol": "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "cammarota.cmp85.polymer-mayer-source-target is relevant to cmp116H_postD_sum_le_of_eq229 through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target is relevant to cmp116H_termWeightSum_le_of_eq229 through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
           "blocker": "blocked_on_external_source"
         },
         {
           "id": "proof.eq229.cammarota-dstage-summability.source-key.4",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
+          "lean_symbol": "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route is relevant to cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
           "blocker": "blocked_on_external_source"
+        },
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.live-field.1",
+          "source_symbol": "proof.eq229.cammarota.theorem1.extraction-target.v2",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "The Cammarota Theorem 1 extraction card must supply the theorem conclusion, half-rate conclusion route, constants, compatibility relation, polymer weight, and finite-volume uniformity before CMP116Eq229Summability can be theorem-fed.",
+          "blocker": "cammarota_theorem1_conclusion_half_rate_constants_dictionary_open"
+        },
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.live-field.2",
+          "source_symbol": "proof.eq229.d-family.dictionary.v2",
+          "lean_symbol": "YangMills.RG.cmp116_DStage_sum_le_of_eq229",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "The D-family dictionary card must identify Balaban source D-families with the Lean DIndex/DParts representation and metric convention before the D-stage sum consumer can be theorem-fed.",
+          "blocker": "d_family_to_DIndex_DParts_dictionary_open"
+        },
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.live-field.3",
+          "source_symbol": "proof.eq229.thresholds.largeK-smallAlpha6.v2",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "The threshold card must extract the large-K/small-alpha6 dependencies and uniformity before the qualitative CMP116 Eq. (2.29) assertion can be converted into a Lean summability theorem.",
+          "blocker": "largeK_smallAlpha6_threshold_dependencies_dictionary_open"
         }
       ]
     },
@@ -397,17 +438,24 @@
           "CMP116 Eq. (2.37) fixed-Z0' source estimate"
         ],
         "local_text": [
+          "docs/source-db/indices/EQ237-POSTP-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ237-POSTP-PROOF-PROMPTS.md",
+          "docs/source-db/indices/EQ237-CITATION-EXTRACTION-REQUESTS.md",
+          "docs/source-db/indices/EQ237-DICTIONARY-COMMIT-QUEUE.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
       },
       "status": "lean_linked",
-      "summary": "Proof-obligation card: CMP116 Eq. (2.37) fixed-Z0' source estimate. Current status: analytic_blocker.",
+      "summary": "Proof-obligation card: CMP116 Eq. (2.37) fixed-Z0' source estimate. Current status: source-display/dictionary blocker.",
       "extracted_claims": [
         "Rank 5 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: cmp116.eq237.post-p-resummation, cmp116.constants.c3-alpha5, crosswalk.eq237.combined-postp-route",
-        "Live hypotheses/blockers: fixed-Z0' Eq. (2.37) premise; post-(2.37) final summation; Z0/Z0' source dictionary",
-        "Next action: Extract exact fixed-Z0' theorem shape and final summation as two named source premises."
+        "Live hypotheses/blockers: fixed-Z0' Eq. (2.37) visual display; post-(2.37) final summation; Z0/Z0' source dictionary",
+        "CMP116 Eq. (2.37) and the following paragraph are visual-confirmed in cmp116.eq237.post-p-resummation, but the Lean-facing fiber/component dictionaries and final summation theorem remain open.",
+        "CMP116 constants.c3-alpha5 visually locates the alpha5/C3 region, but common-majorant and exponent-reserve proofs remain open.",
+        "Subfield route cards to inspect before adding Lean wrappers: proof.eq237.fixed-z0prime-display.v2, proof.eq237.post-summation.final-z0prime.v2, proof.eq237.z0-z0prime-dictionary.v2, proof.eq237.component-product-to-family.v2, proof.eq237.constant-majorants.alpha5-c3.v2, proof.eq237.residual-exponent-budget.v2.",
+        "Next action: consume the named fixed-Z0' display and post-(2.37) final-summation premises by closing the D/P/Z0/Z0' dictionary, connected-component product dictionary, alpha5/C3 majorants, and half-exponent reserve; do not split off standalone normalized Z0 or Z0' theorems."
       ],
       "formulas": [
         {
@@ -428,10 +476,19 @@
         }
       ],
       "lean_targets": [
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116Eq237Amplitude"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -452,38 +509,92 @@
         {
           "id": "proof.eq237.fixed-z0prime-source-estimate.source-key.1",
           "source_symbol": "cmp116.eq237.post-p-resummation",
-          "lean_symbol": "cmp116PostPResidualSourceBound_of_eq237",
+          "lean_symbol": "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq237.post-p-resummation is relevant to cmp116PostPResidualSourceBound_of_eq237 through CMP116 Eq. (2.37) fixed-Z0' source estimate.",
-          "blocker": "analytic_blocker"
+          "blocker": "visual_confirmed_fixed_z0prime_display_dictionary_open"
         },
         {
           "id": "proof.eq237.fixed-z0prime-source-estimate.source-key.2",
           "source_symbol": "cmp116.constants.c3-alpha5",
-          "lean_symbol": "CMP116Eq237MajorizationBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Eq237MajorizationBoundary",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp116.constants.c3-alpha5 is relevant to CMP116Eq237MajorizationBoundary through CMP116 Eq. (2.37) fixed-Z0' source estimate.",
-          "blocker": "analytic_blocker"
+          "blocker": "visual_confirmed_constant_majorants_open"
         },
         {
           "id": "proof.eq237.fixed-z0prime-source-estimate.source-key.3",
           "source_symbol": "crosswalk.eq237.combined-postp-route",
-          "lean_symbol": "cmp116Eq237FixedZ0PrimeWeight",
+          "lean_symbol": "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.eq237.combined-postp-route is relevant to cmp116Eq237FixedZ0PrimeWeight through CMP116 Eq. (2.37) fixed-Z0' source estimate.",
-          "blocker": "analytic_blocker"
+          "blocker": "operational_crosswalk_dictionary_open"
         },
         {
           "id": "proof.eq237.fixed-z0prime-source-estimate.source-key.4",
           "source_symbol": "cmp116.eq237.post-p-resummation",
-          "lean_symbol": "cmp116Eq237Amplitude",
+          "lean_symbol": "YangMills.RG.cmp116Eq237Amplitude",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp116.eq237.post-p-resummation is relevant to cmp116Eq237Amplitude through CMP116 Eq. (2.37) fixed-Z0' source estimate.",
-          "blocker": "analytic_blocker"
+          "blocker": "visual_confirmed_amplitude_majorization_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.1",
+          "source_symbol": "proof.eq237.fixed-z0prime-display.v2",
+          "lean_symbol": "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.fixed-z0prime-display.v2 is the fixed-Z0prime display route card for the heq237_fixed source premise; it is not itself a theorem discharge.",
+          "blocker": "fixed_z0prime_display_source_theorem_dictionary_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.2",
+          "source_symbol": "proof.eq237.post-summation.final-z0prime.v2",
+          "lean_symbol": "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.post-summation.final-z0prime.v2 is the post-(2.37) final-summation route card for the hpost_eq237 source premise; it keeps the final summation separate from the fixed display.",
+          "blocker": "post_eq237_final_summation_source_theorem_dictionary_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.3",
+          "source_symbol": "proof.eq237.z0-z0prime-dictionary.v2",
+          "lean_symbol": "YangMills.RG.cmp116Eq237Z0Fiber",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.z0-z0prime-dictionary.v2 is the D/P/Z0/Z0prime and fiber dictionary route card for the Eq. (2.37) packet.",
+          "blocker": "z0_z0prime_source_to_lean_dictionary_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.4",
+          "source_symbol": "proof.eq237.component-product-to-family.v2",
+          "lean_symbol": "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.component-product-to-family.v2 is the connected-component product dictionary route card for converting the source product over Zi prime into Lean component-family weights.",
+          "blocker": "component_product_to_family_dictionary_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.5",
+          "source_symbol": "proof.eq237.constant-majorants.alpha5-c3.v2",
+          "lean_symbol": "YangMills.RG.CMP116Eq237MajorizationBoundary",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.constant-majorants.alpha5-c3.v2 is the alpha5/epsilon2/O(1)/C3 majorant route card for the Eq. (2.37) packet.",
+          "blocker": "alpha5_c3_constant_majorants_dictionary_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.6",
+          "source_symbol": "proof.eq237.residual-exponent-budget.v2",
+          "lean_symbol": "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.residual-exponent-budget.v2 is the seven-delta to eight-delta exponent-reserve route card for the Eq. (2.37) packet.",
+          "blocker": "residual_exponent_budget_source_dictionary_open"
         }
       ]
     },
@@ -498,7 +609,11 @@
         ],
         "local_text": [
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
-          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md",
+          "docs/source-db/indices/LEAN-SOURCE-CROSSWALK.md",
+          "docs/source-db/indices/ACTIVITY-TERMWISE-LIVE-FIELDS.md",
+          "docs/source-db/indices/ACTIVITY-TERMWISE-PROOF-PROMPTS.md",
+          "repo-ready-packets/CMP116-LOCALIZED-ACTIVITY-HZ-LEMMA3-WINDOW-EVIDENCE.md"
         ]
       },
       "status": "lean_linked",
@@ -507,7 +622,11 @@
         "Rank 6 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: cmp116.localized-activity.2.7-2.10, cmp116.lemma3.window.2.14-2.38, crosswalk.gaussian-root-activity-route",
         "Live hypotheses/blockers: CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification; CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
-        "Next action: Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then feed termwise estimates around (2.14)-(2.38)."
+        "Archive cycle 47 visually confirms the source-side H(Z,Z0), H(Z), and component-factorization displays for CMP116 (2.8)-(2.10), but this is render provenance only and not a source-to-Lean dictionary discharge.",
+        "Dictionary-open sub-obligations named by Source-Dictionary: index-stack identification, summand identification, termWeight identification, component-factorization compatibility, and field-uniformity of the termwise bound.",
+        "Field-uniformity locator: CMP116 printed p.15 frames the termwise-estimate window on U^c_{k+1}(X, alpha0, alpha1), and printed p.16 around (2.20)/(2.22) contains the field-dependent estimates to match before termwise_estimate can be theorem-fed.",
+        "Dedicated live-field and prompt indices now route the H(Z) finite-sum dictionary, termwise estimate, component factorization, and field-uniformity sub-obligations without promoting any source status.",
+        "Next action: Extract the source-to-Lean H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then separately feed termwise estimates around (2.14)-(2.38)."
       ],
       "formulas": [
         {
@@ -517,19 +636,31 @@
           "exactness": "inferred",
           "confidence": "operational_crosswalk",
           "assumptions": [
-            "source H(Z,Z0)/H(Z) localization",
-            "finite resummation dictionary",
-            "complex norm termwise estimate"
+            "Archive cycle 47 render provenance for CMP116 (2.8)-(2.10) H(Z,Z0), H(Z), and component factorization",
+            "source-to-Lean index-stack identification",
+            "source-to-Lean summand identification",
+            "source-to-Lean termWeight identification",
+            "component-factorization compatibility",
+            "field-uniform termwise estimate around CMP116 (2.14)-(2.38)"
           ],
-          "conclusion": "manual hglobal activity identification; manual hterm termwise norm estimate",
+          "conclusion": "manual hglobal activity identification and manual hterm termwise norm estimate remain open until the source-to-Lean index stack, summand, termWeight, factorization, and field-uniformity dictionaries are supplied",
           "source_verified": false,
-          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+          "notes": "Operational target, not a primary-source formula. Archive-47 render evidence confirms the source display roles only; it does not identify the Lean resummation data or discharge activity_identification/termwise_estimate."
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3ActivityTermwiseScaleBoundary",
-        "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
-        "PhysicalGaugeLocalActivity.globalEval"
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
+        "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
+        "YangMills.RG.LocalActivity.globalEval"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -537,40 +668,70 @@
       ],
       "do_not_use_for": [
         "Do not cite this card as a primary mathematical source.",
-        "Do not use final Lemma 3 bound to backfill termwise estimates."
+        "Do not use final Lemma 3 bound to backfill termwise estimates.",
+        "Do not discharge the boundary with a synthetic one-point R, a post-hoc summand, or a post-hoc termWeight."
       ],
       "open_questions": [
-        "source H(Z,Z0)/H(Z) localization",
-        "finite resummation dictionary",
-        "complex norm termwise estimate"
+        "source-to-Lean index-stack identification for H(Z,Z0)/H(Z)",
+        "source-to-Lean summand identification for the flattened D/P/Z0/Z0' resummation",
+        "source-to-Lean termWeight identification for the termwise norm estimate",
+        "component-factorization compatibility between the printed H(Z) factorization and the Lean flat finite sum",
+        "field-uniformity of the termwise estimate on U^c_{k+1}(X, alpha0, alpha1), with the printed p.16 (2.20)/(2.22) field terms matched to Lean field variables"
       ],
       "dictionary_links": [
         {
           "id": "proof.activity.termwise-identification.source-key.1",
           "source_symbol": "cmp116.localized-activity.2.7-2.10",
-          "lean_symbol": "CMP116Lemma3ActivityTermwiseScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
-          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to CMP116Lemma3ActivityTermwiseScaleBoundary through CMP116 H(Z) activity identification and termwise estimate.",
-          "blocker": "source_to_lean_dictionary_blocker"
+          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to CMP116Lemma3ActivityTermwiseScaleBoundary through the visually confirmed H(Z,Z0), H(Z), and component-factorization displays; the Lean index-stack/summand dictionary remains open.",
+          "blocker": "visual_confirmed_source_display_dictionary_open"
         },
         {
           "id": "proof.activity.termwise-identification.source-key.2",
           "source_symbol": "cmp116.lemma3.window.2.14-2.38",
-          "lean_symbol": "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+          "lean_symbol": "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "cmp116.lemma3.window.2.14-2.38 is relevant to cmp116Lemma3ActivityEstimateScaleFamily_of_resummation through CMP116 H(Z) activity identification and termwise estimate.",
-          "blocker": "source_to_lean_dictionary_blocker"
+          "statement": "cmp116.lemma3.window.2.14-2.38 is relevant to cmp116Lemma3ActivityEstimateScaleFamily_of_resummation through the termwise estimate window; the Lean summand/termWeight dictionary and field-uniformity check remain open.",
+          "blocker": "termwise_estimate_dictionary_open"
         },
         {
           "id": "proof.activity.termwise-identification.source-key.3",
           "source_symbol": "crosswalk.gaussian-root-activity-route",
-          "lean_symbol": "PhysicalGaugeLocalActivity.globalEval",
+          "lean_symbol": "YangMills.RG.LocalActivity.globalEval",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "crosswalk.gaussian-root-activity-route is relevant to PhysicalGaugeLocalActivity.globalEval through CMP116 H(Z) activity identification and termwise estimate.",
-          "blocker": "source_to_lean_dictionary_blocker"
+          "statement": "crosswalk.gaussian-root-activity-route is relevant to PhysicalGaugeLocalActivity.globalEval through the activity globalEval identification, but it does not identify the printed H(Z) resummation with Lean local activity by itself.",
+          "blocker": "globalEval_activity_dictionary_open"
+        },
+        {
+          "id": "proof.activity.termwise-identification.live-field.1",
+          "source_symbol": "proof.activity.termwise.live-fields.v2",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.activity.termwise.live-fields.v2 is the dedicated live-field route for the H(Z) activity-identification blocker; it requires the source index-stack, summand, and component-factorization dictionary before activity_identification can be theorem-fed.",
+          "blocker": "source_to_lean_activity_identification_dictionary"
+        },
+        {
+          "id": "proof.activity.termwise-identification.live-field.2",
+          "source_symbol": "proof.activity.termwise.live-fields.v2",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.activity.termwise.live-fields.v2 is the dedicated live-field route for the CMP116 (2.14)-(2.38) termwise-estimate blocker; it keeps summand, termWeight, and field-uniformity dictionaries separate from the final Lemma 3 bound.",
+          "blocker": "source_to_lean_termwise_estimate_dictionary"
+        },
+        {
+          "id": "proof.activity.termwise-identification.consumer.activityTermwiseBoundary",
+          "source_symbol": "proof.activity.termwise-identification",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The post-P source-assumptions activityTermwiseBoundary field consumes the same H(Z) activity-identification and termwise-estimate dictionary package.",
+          "blocker": "source_to_lean_activity_boundary_dictionary_open: H(Z) finite-sum index stack, summand identity, termWeight, component factorization, and field-uniformity still must be supplied from CMP116 source text."
         }
       ]
     },
@@ -584,6 +745,10 @@
           "Gaussian pushforward and covariance-root localization certificate"
         ],
         "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-PROOF-PROMPTS.md",
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-COMMIT-QUEUE.md",
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
@@ -592,9 +757,9 @@
       "summary": "Proof-obligation card: Gaussian pushforward and covariance-root localization certificate. Current status: source_to_lean_dictionary_blocker.",
       "extracted_claims": [
         "Rank 7 in the Batch 003 hypothesis-removal queue.",
-        "Primary source keys to inspect first: cmp116.gaussian-pushforward.2.5-2.6, cmp116.localized-activity.2.7-2.10, cmp95.covariance-green.bounds-source-target, cmp96.one-step-covariance-law-source-target",
+        "Primary source keys to inspect first: cmp116.gaussian-pushforward.2.5-2.6, cmp116.localized-activity.2.7-2.10, cmp95.covariance-green.bounds-source-target, cmp99.background-field-propagator-source-target, cmp102.variational-hessian-expansion-source-target, cmp96.one-step-covariance-law-source-target",
         "Live hypotheses/blockers: gaussian_pushforward; root_localization; PhysicalLocalizedCovarianceRootCertificate",
-        "Next action: Create CMP95/CMP96 structured catalogs, then link root localization to CMP116 activity construction."
+        "Next action: prove the source-to-Lean dictionary linking CMP95/CMP99/CMP102 objects to the repository covariance/root and Hessian interfaces; CMP96 remains pending for the one-step covariance law."
       ],
       "formulas": [
         {
@@ -606,7 +771,8 @@
           "assumptions": [
             "coordinate dictionary",
             "Jacobian/normalization",
-            "CMP95/CMP96 covariance bounds",
+            "CMP95/CMP99/CMP102 covariance/Hessian bounds",
+            "CMP96 one-step covariance law",
             "resolvent/root localization"
           ],
           "conclusion": "manual Gaussian/root/source package fields",
@@ -615,9 +781,12 @@
         }
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
-        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
-        "balabanCMP116Dmu0"
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization",
+        "YangMills.RG.balabanCMP116Dmu0"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -630,14 +799,15 @@
       "open_questions": [
         "coordinate dictionary",
         "Jacobian/normalization",
-        "CMP95/CMP96 covariance bounds",
+        "CMP95/CMP99/CMP102 covariance/Hessian dictionary",
+        "CMP96 one-step covariance law",
         "resolvent/root localization"
       ],
       "dictionary_links": [
         {
           "id": "proof.gaussian.root.localization-certificate.source-key.1",
           "source_symbol": "cmp116.gaussian-pushforward.2.5-2.6",
-          "lean_symbol": "PhysicalLocalizedCovarianceRootCertificate",
+          "lean_symbol": "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.gaussian-pushforward.2.5-2.6 is relevant to PhysicalLocalizedCovarianceRootCertificate through Gaussian pushforward and covariance-root localization certificate.",
@@ -646,7 +816,7 @@
         {
           "id": "proof.gaussian.root.localization-certificate.source-key.2",
           "source_symbol": "cmp116.localized-activity.2.7-2.10",
-          "lean_symbol": "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp116.localized-activity.2.7-2.10 is relevant to PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward through Gaussian pushforward and covariance-root localization certificate.",
@@ -655,11 +825,65 @@
         {
           "id": "proof.gaussian.root.localization-certificate.source-key.3",
           "source_symbol": "cmp95.covariance-green.bounds-source-target",
-          "lean_symbol": "balabanCMP116Dmu0",
+          "lean_symbol": "YangMills.RG.balabanCMP116Dmu0",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp95.covariance-green.bounds-source-target is relevant to balabanCMP116Dmu0 through Gaussian pushforward and covariance-root localization certificate.",
           "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.source-key.4",
+          "source_symbol": "cmp116.gaussian-pushforward.2.5-2.6",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.gaussian-pushforward.2.5-2.6 is relevant to BalabanCMP116SourceAssumptions.covariance_root_certificate through the Gaussian/root live-field map.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.source-key.5",
+          "source_symbol": "cmp116.localized-activity.2.7-2.10",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to BalabanCMP116SourceAssumptions.root_localization through the Gaussian/root live-field map.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.source-key.6",
+          "source_symbol": "cmp116.localized-activity.2.7-2.10",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization through the Gaussian/root live-field map; the raw activity package inherits this parent source field.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.live-field.1",
+          "source_symbol": "proof.gaussian.covariance-root-certificate.v2",
+          "lean_symbol": "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.gaussian.covariance-root-certificate.v2 is the dedicated live-field route for the finite/physical covariance-root certificate; CMP95/CMP96/CMP99 transport, coordinate, and normalization dictionaries remain open.",
+          "blocker": "covariance_root_certificate_dictionary_open"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.live-field.2",
+          "source_symbol": "proof.gaussian.pushforward.dictionary.v2",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.gaussian.pushforward.dictionary.v2 is the dedicated live-field route for the CMP116 Gaussian pushforward equality; the finite-dimensional coordinate dictionary and determinant/Jacobian normalization remain open.",
+          "blocker": "gaussian_pushforward_coordinate_jacobian_dictionary_open"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.live-field.3",
+          "source_symbol": "proof.root.localization.v2",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.root.localization.v2 is the dedicated live-field route for the root-localization source field; exact finite root-piece reconstruction, support/enlargement, and rootWeight/decay constants remain open.",
+          "blocker": "root_localization_dictionary_open"
         }
       ]
     },
@@ -673,17 +897,22 @@
           "Dimock Appendix F H# route into hole-cluster machinery"
         ],
         "local_text": [
+          "docs/source-db/indices/HSHARP-APPENDIXF-LIVE-FIELDS.md",
+          "docs/source-db/indices/HSHARP-APPENDIXF-PROOF-PROMPTS.md",
+          "docs/source-db/indices/HSHARP-ROOTED-REMAINDER-HANDOFF.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
       },
       "status": "lean_linked",
-      "summary": "Proof-obligation card: Dimock Appendix F H# route into hole-cluster machinery. Current status: partially_source_extracted.",
+      "summary": "Proof-obligation card: Dimock Appendix F H# feed/route into hole-cluster machinery. Current status: partially_source_extracted.",
       "extracted_claims": [
         "Rank 8 in the Batch 003 hypothesis-removal queue.",
-        "Primary source keys to inspect first: crosswalk.dimock.appendixf-hole-cluster-route, dimockii.appendix-f.cluster-with-holes, dimockii.appendix-f.second-ursell.642-646",
+        "Primary source keys to inspect first: crosswalk.dimock.appendixf-hole-cluster-route, dimockii.appendix-f.cluster-with-holes, dimockii.appendix-f.second-ursell.645-646",
         "Live hypotheses/blockers: activity bound |H(X)| <= H0 exp(-kappa d_M); H0 <= c0; kappa >= 3*kappa0+3; modified metric summability",
-        "Next action: Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban."
+        "Next action: Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban.",
+        "The backlog phrase 'H# feed' denotes the still-open CMP116/Balaban activity-bound input into the Dimock Appendix-F with-holes route; it does not prove the Appendix-F consumer.",
+        "Dedicated H#/Appendix-F indices route the activity-bound feed, holes/Omega dictionary, exponential-weight loss, and rooted physical Rsc identity without promoting upstream raw-source fields."
       ],
       "formulas": [
         {
@@ -703,9 +932,9 @@
         }
       ],
       "lean_targets": [
-        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
-        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-        "appendixFHoleExpWeight"
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "YangMills.RG.appendixFHoleExpWeight"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -724,7 +953,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.source-key.1",
           "source_symbol": "crosswalk.dimock.appendixf-hole-cluster-route",
-          "lean_symbol": "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "lean_symbol": "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.dimock.appendixf-hole-cluster-route is relevant to omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound through Dimock Appendix F H# route into hole-cluster machinery.",
@@ -733,7 +962,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.source-key.2",
           "source_symbol": "dimockii.appendix-f.cluster-with-holes",
-          "lean_symbol": "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "lean_symbol": "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "dimockii.appendix-f.cluster-with-holes is relevant to balabanCMP116AppendixFHsharpOfIntegratedKsharp through Dimock Appendix F H# route into hole-cluster machinery.",
@@ -741,12 +970,48 @@
         },
         {
           "id": "proof.dimock.appendixf.hsharp-feed.source-key.3",
-          "source_symbol": "dimockii.appendix-f.second-ursell.642-646",
-          "lean_symbol": "appendixFHoleExpWeight",
+          "source_symbol": "dimockii.appendix-f.second-ursell.645-646",
+          "lean_symbol": "YangMills.RG.appendixFHoleExpWeight",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "dimockii.appendix-f.second-ursell.642-646 is relevant to appendixFHoleExpWeight through Dimock Appendix F H# route into hole-cluster machinery.",
+          "statement": "dimockii.appendix-f.second-ursell.645-646 is relevant to appendixFHoleExpWeight through Dimock Appendix F H# route into hole-cluster machinery.",
           "blocker": "partially_source_extracted"
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.kp-consumer",
+          "source_symbol": "proof.dimock.appendixf.hsharp-feed",
+          "lean_symbol": "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The H# feed card can feed the omega-hole KP consumer only after the CMP116/Balaban activity bound, Omega-connectivity relation and skeleton modified-metric dictionary are supplied.",
+          "blocker": "hsharp_feed_dictionary_open: activity bound |H(X)| <= H0 exp(-kappa d_M), H0 <= c0, kappa >= 3*kappa0+3, Omega-connectivity, and skeleton metric dictionary remain open."
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.integrated-ksharp-consumer",
+          "source_symbol": "proof.dimock.appendixf.hsharp-feed",
+          "lean_symbol": "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The H# feed card can feed the integrated K# to H# adapter only after the CMP116/Balaban activity-bound input and Appendix-F with-holes dictionary are supplied.",
+          "blocker": "hsharp_feed_dictionary_open: activity bound |H(X)| <= H0 exp(-kappa d_M), H0 <= c0, kappa >= 3*kappa0+3, Omega-connectivity, and skeleton metric dictionary remain open."
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.exp-weight-consumer",
+          "source_symbol": "proof.dimock.appendixf.hsharp-feed",
+          "lean_symbol": "YangMills.RG.appendixFHoleExpWeight",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The H# feed card can feed the Appendix-F hole exponential-weight target only after the exponential-weight loss and modified-metric summability dictionaries are supplied.",
+          "blocker": "hsharp_feed_dictionary_open: activity bound |H(X)| <= H0 exp(-kappa d_M), H0 <= c0, kappa >= 3*kappa0+3, Omega-connectivity, and skeleton metric dictionary remain open."
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.rooted-remainder-live-field",
+          "source_symbol": "proof.rooted-hsharp-remainder.identity.v2",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.rooted-hsharp-remainder.identity.v2 is the dedicated live-field route for the downstream rooted H# remainder identity; Dimock Appendix-F architecture alone does not identify the physical Yang-Mills raw-source scale-family Rsc series.",
+          "blocker": "rooted_hsharp_remainder_dictionary_open"
         }
       ]
     },
@@ -760,39 +1025,181 @@
           "CMP122-I/II and CMP119 localized R-operation bounds"
         ],
         "local_text": [
+          "docs/source-db/indices/CMP122-R-OPERATION-LIVE-FIELDS.md",
+          "docs/source-db/indices/CMP122-R-OPERATION-PROOF-PROMPTS.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
       },
       "status": "lean_linked",
-      "summary": "Proof-obligation card: CMP122-I/II and CMP119 localized R-operation bounds. Current status: located_not_fully_extracted.",
+      "summary": "Proof-obligation card: CMP122-I/II and CMP119 localized R-operation bounds. Current status: located_not_fully_extracted; source-certificate schema is split below without promoting any source fact.",
       "extracted_claims": [
         "Rank 9 in the Batch 003 hypothesis-removal queue.",
-        "Primary source keys to inspect first: cmp119.r-term-bound.2.31, cmp122i.large-field-c-bound.1.70, cmp122ii.rprime-bound.1.98-1.100, crosswalk.r-operation-polymer-local-route",
-        "Live hypotheses/blockers: RawYMActivityDecay; polymer-local R/B/C source bounds; large-field dictionary",
-        "Next action: Extract CMP122-I Eq. (1.70) and CMP122-II Eqs. (1.98)-(1.100) into source_extracted entries."
+        "Primary source keys to inspect first: cmp119.density-expansion-form.2.18, cmp119.t-operation-action-factorization.2.19-2.23, cmp119.e-term-local-regularity.2.24-2.29, cmp119.r-term-bound.2.31, cmp119.b-term-local-regularity-bound.2.34-2.42, cmp119.eq2.23.erb-decomposition-source-target, cmp119.eq2.42.blocal-bound-source-target, cmp119.rt-improved-new-expressions.before-theorem1, cmp119.theorem1.rt-inductive-assumptions, cmp122ii.theorem1.coupling-interval-induction, cmp122i.large-field-c-bound.1.70, cmp122i.eq1.70.large-field-bound-source-target, cmp122ii.rprime-bound.1.98-1.100, cmp122ii.eq1.98-1.100.r-operation-bound-source-target, cmp122ii.post-r-action-split.1.101, cmp122ii.eq1.101.post-r-erb-update-source-target, crosswalk.r-operation-polymer-local-route",
+        "Live hypotheses/blockers: RawYMActivityDecay; polymer-local R/B/C source bounds; large-field dictionary; post-R action/local-activity dictionary",
+        "Source-certificate schema fields: CMP122-II Theorem 1 small-coupling/CMP119 Sect. 2 handoff; CMP122-II R' expansion and bound (1.98)-(1.100); CMP122-II post-R action split (1.101)-(1.102); CMP122-I large-field C_k bound (1.70); CMP119 E/R/B and R/B local-regularity handoff (2.18)-(2.42).",
+        "Certificate field extracted (visual formula only): cmp122ii.rprime-bound.1.98-1.100 records the R' exponentiation field, the pre-split localized R' bound, and the second-group d_k(X) replacement bound; source-to-Lean dictionary and component-decay uses remain open.",
+        "Certificate field extracted (visual formula only): cmp122ii.post-r-action-split.1.101 records the post-R action split, first-group boundary versus second-group R dictionary statement, and CMP119 Sect. 2 induction-handoff statement; source-to-Lean post-R action/local-activity dictionary and component-decay uses remain open.",
+        "Certificate field extracted (visual formula only): cmp122i.large-field-c-bound.1.70 records the intermediate large-field C_k^(n) exponential bound; source-to-Lean large-field/component dictionary and final post-R use remain open.",
+        "Next action: Extract each certificate field and the post-R action/local-activity dictionary separately; do not collapse them into RawYMActivityDecay or component decay."
       ],
       "formulas": [
         {
           "id": "proof.cmp122.r-operation-polymer-local-bound.target",
-          "statement": "CMP122-I/II and CMP119 localized R-operation bounds",
-          "ascii": "|R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X)); |R^(j)(X)| <= g_j^kappa0*exp(-kappa*d_j(X))",
+          "statement": "CMP122-I/II and CMP119 localized R-operation bounds plus post-R action split",
+          "ascii": "CMP119 Theorem 1: RT-generated rho_k satisfies inductive assumptions under RG coupling inequalities; CMP122-II Theorem 1: small effective coupling -> rho_k has CMP119 Sect.2 form/conditions/bounds; T_k factorizes over disjoint large-field components and one-step operations; A_k = -A + E_k + R_k + B_k - mathcalE_k; E_k has localized regular pieces E^(j)(X,U,z) with analytic/gauge/covariance properties; |R^(j)(X,(U,J))| <= g_j^kappa0*exp(-kappa*d_j(X)); B_k has localized terms with |B^(j)(X,(U,J),A,{S_i cap X})| < B0*exp(-kappa*d_j(X)); new E^(k),R^(k),B^(k) after T have reserve such as kappa -> (1+4 beta)*kappa; |R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X)); A_k = A'_k + sum_X R'^(k)(X) + sum_X B'^(k)(X)",
           "exactness": "inferred",
           "confidence": "operational_crosswalk",
           "assumptions": [
             "CMP122-I/II theorem extraction",
             "source-to-Lean polymer metric",
-            "large-field operation dictionary"
+            "large-field operation dictionary",
+            "CMP119 E/R/B action-component dictionary",
+            "CMP119 RT reserve/enlarged-space dictionary",
+            "post-R action/local-activity dictionary"
           ],
           "conclusion": "surrogate scalar R_k <= M r^k when replaced by faithful polymer-local bound plus flow bridge",
           "source_verified": false,
           "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-certificate-schema",
+          "statement": "Source-certificate schema for the CMP122 post-R action/local-activity dictionary.",
+          "ascii": "theorem1_hypotheses + rprime_bound + postR_split + largeFieldC_bound + CMP119_ERB_handoff -> postR action/local-activity source certificate, with source-to-Lean dictionary_open",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff",
+            "CMP122-II Eqs. (1.98)-(1.100) R' expansion and bounds",
+            "CMP122-II Eqs. (1.101)-(1.102) post-R action split",
+            "CMP122-I Eq. (1.70) large-field C_k bound",
+            "CMP119 E/R/B and R/B local-regularity handoff",
+            "source-to-Lean post-R action/local-activity dictionary"
+          ],
+          "conclusion": "navigation schema for a future source certificate only; no RawYMActivityDecay, component decay, or local-activity equality is discharged",
+          "source_verified": false,
+          "notes": "This schema names the fields a future source certificate must carry. It is not itself a theorem and must not be used as a source proof."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.largeField.eq1.70.bound",
+          "statement": "CMP122-I large-field C field extraction: each C_k^(n)(X,U_k^(n)) term has an analytic extension and satisfies the large-field exponential bound.",
+          "ascii": "|C_k^(n)(X,(U,J))| <= C_0 * exp(-(1+3*beta)*kappa*d_m(X))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "source key cmp122i.large-field-c-bound.1.70",
+            "source-target anchor cmp122i.eq1.70.large-field-bound-source-target",
+            "spine-backlog formula cmp122i.eq1.70.bound"
+          ],
+          "conclusion": "one visual formula field for the future certificate only; source-to-Lean large-field/component dictionary, final post-R use, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
+          "source_verified": true,
+          "notes": "Narrow field extraction from the visual-confirmed spine entry. Use only as visual source evidence for the CMP122-I large-field subfield, not as a bloc_decay or RawYMActivityDecay proof."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.rprime.eq1.98.exponentiation",
+          "statement": "CMP122-II R' field extraction: exponentiated cluster expansion as the exponential of the localized R' term sum.",
+          "ascii": "{...} = exp R'^(k) = exp (sum_X R'^(k)(X))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "source key cmp122ii.rprime-bound.1.98-1.100",
+            "source-target anchor cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
+            "visual formula-registry claim cmp122ii.eq1.98.exponentiation"
+          ],
+          "conclusion": "one visual formula field for the future certificate only; source-to-Lean dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
+          "source_verified": true,
+          "notes": "Narrow field extraction from the formula registry. Use only as visual source evidence for the R' subfield, not as the full CMP122 certificate."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.rprime.eq1.99.bound",
+          "statement": "CMP122-II R' field extraction: localized R'^(k)(X) has an analytic extension and a pre-split bound with c_1.",
+          "ascii": "|R'^(k)(X,(U,J))| <= O(1) * c_1 * exp(-(1 + (1/2)*beta)*kappa*d_{k, union Y_i}(X))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "source key cmp122ii.rprime-bound.1.98-1.100",
+            "source-target anchor cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
+            "visual formula-registry claim cmp122ii.eq1.99.bound",
+            "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md",
+            "Archive-49 crop crops/pdf-036_printed-390_eq199-rate-400dpi.png"
+          ],
+          "conclusion": "one visual formula field for the future certificate only; source-to-Lean dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
+          "source_verified": true,
+          "notes": "Narrow field extraction from the formula registry. The domain and source-to-Lean metric dictionary remain open."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.rprime.eq1.100.bound",
+          "statement": "CMP122-II R' field extraction: for the second group, c_1 becomes exp(-p_0(g_k)) and d_k(X) replaces the pre-split linear-size distance.",
+          "ascii": "|R'^(k)(X,(U,J))| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "source key cmp122ii.rprime-bound.1.98-1.100",
+            "source-target anchor cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
+            "visual formula-registry claim cmp122ii.eq1.100.bound"
+          ],
+          "conclusion": "one visual formula field for the future certificate only; source-to-Lean dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
+          "source_verified": true,
+          "notes": "Narrow field extraction from the formula registry. The first-group/second-group boundary and Lean metric dictionary remain open."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.postR.eq1.101.action-split",
+          "statement": "CMP122-II post-R field extraction: after the kth RT transformation, the new action is the pre-split action plus the localized second-group R' terms and new boundary terms.",
+          "ascii": "A_k((1/g_k(.))^2, U_k) = A'_k((1/g_k(.))^2, U_k) + sum_X R'^(k)(X,U_k) + sum_X B'^(k)(X,U_k)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "source key cmp122ii.post-r-action-split.1.101",
+            "source-target anchor cmp122ii.eq1.101.post-r-erb-update-source-target",
+            "spine-backlog formula cmp122ii.eq1.101.action-split",
+            "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md"
+          ],
+          "conclusion": "one visual formula field for the future certificate only; source-to-Lean post-R action/local-activity dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
+          "source_verified": true,
+          "notes": "Narrow field extraction from the visual-confirmed spine entry. Use only as visual source evidence for the post-R split subfield, not as a RawYMActivityDecay or decomposes proof."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.postR.eq1.101.group-dictionary",
+          "statement": "CMP122-II post-R field extraction: first-group terms become new boundary terms and second-group terms give the basic R contribution.",
+          "ascii": "first group: X intersects Z_k^c union union_i Y_i -> B'^(k)(X); second group: X disjoint from that region -> R-terms",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "source key cmp122ii.post-r-action-split.1.101",
+            "source-target anchor cmp122ii.eq1.101.post-r-erb-update-source-target",
+            "spine-backlog formula cmp122ii.eq1.101.group-dictionary",
+            "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md"
+          ],
+          "conclusion": "one visual formula field for the future certificate only; source-to-Lean first-group boundary versus second-group R dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
+          "source_verified": true,
+          "notes": "Narrow field extraction from the visual-confirmed spine entry. It records the source-side split but does not identify source groups with Lean local-activity components."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.postR.eq1.101.induction-handoff",
+          "statement": "CMP122-II post-R field extraction: after the R-operation, the density has the CMP119 form and the expressions satisfy the CMP119 Sect. 2 induction hypotheses.",
+          "ascii": "R rho_k has form (2.18) [III] and all expressions satisfy the Sect. 2 [III] induction hypothesis",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "source key cmp122ii.post-r-action-split.1.101",
+            "source-target anchor cmp122ii.eq1.101.post-r-erb-update-source-target",
+            "spine-backlog formula cmp122ii.eq1.101.induction-handoff",
+            "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md"
+          ],
+          "conclusion": "one visual formula field for the future certificate only; exact CMP122-II theorem hypotheses, CMP119 Sect. 2 handoff dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
+          "source_verified": true,
+          "notes": "Narrow field extraction from the visual-confirmed spine entry. It records the handoff statement without extracting the full theorem hypotheses or proving any Lean consumer."
         }
       ],
       "lean_targets": [
-        "RawYMActivityDecay",
-        "future_R_operation_bound",
-        "CMP116RawSourceM3Frontier"
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+        "YangMills.RG.CMP119BLocalSourceBound",
+        "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -803,37 +1210,166 @@
         "Do not call the polymer-local bound a global scalar mass-gap estimate."
       ],
       "open_questions": [
-        "CMP122-I/II theorem extraction",
-        "source-to-Lean polymer metric",
-        "large-field operation dictionary"
+        "Exact CMP122-II Theorem 1 small-coupling hypotheses and CMP119 Sect. 2 handoff conditions.",
+        "Exact source-to-Lean polymer metric/domain dictionary for d_k(X), d_j(X), X, D_k, and large-field regions.",
+        "Exact post-R action/local-activity dictionary mapping A_k, A'_k, R'^(k), B'^(k), and T_k(Y) into Lean PhysicalGaugeLocalActivity / LocalActivity.finsetSum components.",
+        "Exact source-to-Lean first-group boundary versus second-group R dictionary in CMP122-II (1.98)-(1.101).",
+        "Exact role of CMP122-I Eq. (1.70) C_k^(n) bounds in the final post-R certificate rather than a pre-R surrogate.",
+        "Exact CMP119 E/R/B, R-term, B-term, and RT reserve handoff fields required by the certificate."
       ],
       "dictionary_links": [
         {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.0",
+          "source_symbol": "cmp119.density-expansion-form.2.18",
+          "lean_symbol": "YangMills.RG.RawYMActivityDecay",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp119.density-expansion-form.2.18 is relevant to RawYMActivityDecay through the density/action form that CMP122-II says is restored after the R-operation.",
+          "blocker": "visual_confirmed_but_dictionary_open"
+        },
+        {
           "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.1",
+          "source_symbol": "cmp119.t-operation-action-factorization.2.19-2.23",
+          "lean_symbol": "YangMills.RG.RawYMActivityDecay",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp119.t-operation-action-factorization.2.19-2.23 is relevant to RawYMActivityDecay because it identifies T_k as a factored large-field operation and decomposes A_k into E/R/B terms before CMP122-II applies the post-R split.",
+          "blocker": "visual_confirmed_but_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2",
+          "source_symbol": "cmp119.theorem1.rt-inductive-assumptions",
+          "lean_symbol": "YangMills.RG.RawYMActivityDecay",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp119.theorem1.rt-inductive-assumptions is relevant because it packages the CMP119 inductive assumptions preserved by successive RT applications under coupling and constant restrictions.",
+          "blocker": "visual_confirmed_but_inductive_assumptions_not_extracted"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2a",
+          "source_symbol": "cmp119.e-term-local-regularity.2.24-2.29",
+          "lean_symbol": "YangMills.RG.RawYMActivityDecay",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp119.e-term-local-regularity.2.24-2.29 narrows the CMP119 inductive assumptions by isolating the E/local-regular action component and its locality, analytic-extension, gauge-invariance, and covariance properties.",
+          "blocker": "visual_confirmed_but_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2b",
+          "source_symbol": "cmp119.b-term-local-regularity-bound.2.34-2.42",
+          "lean_symbol": "YangMills.RG.YMActivityErrorBudget.RawYMActivityDecomposition",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp119.b-term-local-regularity-bound.2.34-2.42 narrows the CMP119 inductive assumptions by isolating the B/large-field-local action component and its exponential localization bound.",
+          "blocker": "visual_confirmed_but_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2b1",
+          "source_symbol": "cmp119.eq2.23.erb-decomposition-source-target",
+          "lean_symbol": "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "cmp119.eq2.23.erb-decomposition-source-target is the exact consumer-facing CMP119 E/R/B decomposition anchor for the CMP119/CMP122 source-decomposition route.",
+          "blocker": "visual_confirmed_but_source_to_Lean_action_decomposition_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2b2",
+          "source_symbol": "cmp119.eq2.42.blocal-bound-source-target",
+          "lean_symbol": "YangMills.RG.CMP119BLocalSourceBound",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "cmp119.eq2.42.blocal-bound-source-target is the exact B/local exponential-bound source anchor feeding the CMP119BLocalSourceBound side of the CMP119/CMP122 E/R/B route.",
+          "blocker": "visual_confirmed_but_B_local_activity_metric_rate_and_amplitude_dictionaries_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2c",
+          "source_symbol": "cmp119.rt-improved-new-expressions.before-theorem1",
+          "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp119.rt-improved-new-expressions.before-theorem1 records the reserve/enlarged-space margin needed for the R-operation step before Theorem 1.",
+          "blocker": "visual_confirmed_but_numeric_reserve_not_extracted"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.3",
           "source_symbol": "cmp119.r-term-bound.2.31",
-          "lean_symbol": "RawYMActivityDecay",
+          "lean_symbol": "YangMills.RG.RawYMActivityDecay",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp119.r-term-bound.2.31 is relevant to RawYMActivityDecay through CMP122-I/II and CMP119 localized R-operation bounds.",
           "blocker": "located_not_fully_extracted"
         },
         {
-          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2",
-          "source_symbol": "cmp122i.large-field-c-bound.1.70",
-          "lean_symbol": "future_R_operation_bound",
-          "relation": "also_routes_to",
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.4",
+          "source_symbol": "cmp122ii.theorem1.coupling-interval-induction",
+          "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
+          "relation": "routes_to",
           "status": "operational",
-          "statement": "cmp122i.large-field-c-bound.1.70 is relevant to future_R_operation_bound through CMP122-I/II and CMP119 localized R-operation bounds.",
-          "blocker": "located_not_fully_extracted"
+          "statement": "cmp122ii.theorem1.coupling-interval-induction is relevant because it states that, under small effective coupling, CMP122-II completes the R-operation and obtains the CMP119 Sect. 2 form/conditions/bounds.",
+          "blocker": "visual_confirmed_but_theorem_hypotheses_not_extracted"
         },
         {
-          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.3",
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.5",
+          "source_symbol": "cmp122i.large-field-c-bound.1.70",
+          "lean_symbol": "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp122i.large-field-c-bound.1.70 is relevant to the CMP119/CMP122 source-decomposition route as a large-field certificate field; it is not a standalone Lean declaration.",
+          "blocker": "visual_formula_field_extracted_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.5a",
+          "source_symbol": "cmp122i.eq1.70.large-field-bound-source-target",
+          "lean_symbol": "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "cmp122i.eq1.70.large-field-bound-source-target is the exact large-field C-bound source-target anchor used by the CMP122 certificate schema.",
+          "blocker": "visual_formula_field_extracted_but_large_field_component_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.6",
           "source_symbol": "cmp122ii.rprime-bound.1.98-1.100",
-          "lean_symbol": "CMP116RawSourceM3Frontier",
+          "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp122ii.rprime-bound.1.98-1.100 is relevant to CMP116RawSourceM3Frontier through CMP122-I/II and CMP119 localized R-operation bounds.",
-          "blocker": "located_not_fully_extracted"
+          "blocker": "visual_formula_field_extracted_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.6a",
+          "source_symbol": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
+          "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target is the exact R/R-prime operation-bound source-target anchor for the CMP122 certificate schema.",
+          "blocker": "visual_formula_field_extracted_but_R_operation_metric_and_activity_dictionaries_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.7",
+          "source_symbol": "cmp122ii.post-r-action-split.1.101",
+          "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp122ii.post-r-action-split.1.101 is relevant to CMP116RawSourceM3Frontier through the post-R action split, boundary/R dictionary, and CMP119 induction-hypothesis handoff.",
+          "blocker": "visual_confirmed_but_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.7a",
+          "source_symbol": "cmp122ii.eq1.101.post-r-erb-update-source-target",
+          "lean_symbol": "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "cmp122ii.eq1.101.post-r-erb-update-source-target is the exact post-R E/R/B update anchor for the CMP119/CMP122 source-decomposition route.",
+          "blocker": "visual_confirmed_but_post_R_action_to_local_activity_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.8",
+          "source_symbol": "cmp122ii.post-r-action-split.1.101 plus cmp119.eq2.23.erb-decomposition-source-target and cmp119.eq2.42.blocal-bound-source-target",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "The component-estimates E/R/B boundary route consumes the CMP119/CMP122 source decomposition, source-to-Lean activity identifications, CMP119 B/local source bound, and B/local metric/rate transport without proving any of those source facts.",
+          "blocker": "visual_confirmed_but_dictionary_open"
         }
       ]
     },
@@ -847,6 +1383,8 @@
           "Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction"
         ],
         "local_text": [
+          "docs/source-db/indices/FLOW-IR-LIVE-FIELDS.md",
+          "docs/source-db/indices/FLOW-IR-PROOF-PROMPTS.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
@@ -857,7 +1395,10 @@
         "Rank 10 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: crosswalk.flow-ir-asymptotic-freedom-route",
         "Live hypotheses/blockers: coupling flow assumptions; ir_bound; geometric contraction of irrelevant operators",
-        "Next action: Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate."
+        "Next action: Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate.",
+        "Dedicated Flow/IR indices route marginal coupling recursion, irrelevant contraction, IR covariance, and scale-dictionary fields without promoting the logistic/geometric surrogate to a source theorem.",
+        "Consumer-side marginal mass-gap endpoints such as lattice_mass_gap_of_singleScaleUVDecay_marginal and marginal_coupling_remainder_tsum_le_of_recursion keep covIR, hIRbound, and the coupling recursion explicit; they do not discharge the missing CMP109/CMP119 Flow/IR dictionary.",
+        "The repository Flow/IR source dictionary interface and projections are search anchors only; they keep beta-flow, marginal scale, irrelevant-contraction, IR-covariance, and scale-dictionary source obligations explicit."
       ],
       "formulas": [
         {
@@ -874,13 +1415,39 @@
           "conclusion": "misuse of g_k <= C*r^k for 4D marginal gauge coupling",
           "source_verified": false,
           "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        },
+        {
+          "id": "proof.flow.ir.bridge.consumer-context",
+          "statement": "Flow/IR consumer context for the SingleScaleUVDecay marginal assembly keeps covIR, hIRbound, and marginal coupling recursion explicit.",
+          "ascii": "lattice_mass_gap_of_singleScaleUVDecay_marginal consumes covIR, hIRbound, hrec, and SingleScaleUVDecay; marginal_coupling_remainder_tsum_le_of_recursion derives summable g_k^kappa0 rather than g_k <= C*r^k",
+          "exactness": "inferred",
+          "confidence": "repository_lean_symbols",
+          "assumptions": [
+            "SingleScaleUVDecay producer",
+            "IR covariance bound hIRbound",
+            "marginal coupling recursion hrec",
+            "CMP109/CMP119 source dictionary still open"
+          ],
+          "conclusion": "consumer discoverability for Flow/IR blockers without promoting a source theorem",
+          "source_verified": false,
+          "notes": "Repository Lean context only. This records where the open Flow/IR fields are consumed; it does not prove or source-extract them."
         }
       ],
       "lean_targets": [
-        "CouplingFlow.logistic_geometric_decay",
-        "remainder_geometric_of_logistic",
-        "BalabanCMP116SourceAssumptions.coupling_recursion",
-        "BalabanCMP116SourceAssumptions.ir_bound"
+        "YangMills.RG.logistic_geometric_decay",
+        "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+        "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -899,7 +1466,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.1",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "CouplingFlow.logistic_geometric_decay",
+          "lean_symbol": "YangMills.RG.logistic_geometric_decay",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to CouplingFlow.logistic_geometric_decay through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -908,7 +1475,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.2",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "remainder_geometric_of_logistic",
+          "lean_symbol": "YangMills.RG.remainder_geometric_of_logistic",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to remainder_geometric_of_logistic through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -917,7 +1484,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.3",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.coupling_recursion",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to BalabanCMP116SourceAssumptions.coupling_recursion through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -926,11 +1493,137 @@
         {
           "id": "proof.flow.ir.bridge.source-key.4",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.ir_bound",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to BalabanCMP116SourceAssumptions.ir_bound through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
           "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.source-key.5",
+          "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
+          "lean_symbol": "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to lattice_mass_gap_of_singleScaleUVDecay_marginal because that consumer keeps covIR, hIRbound, the marginal recursion, and SingleScaleUVDecay as separate assumptions.",
+          "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.source-key.6",
+          "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
+          "lean_symbol": "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to marginal_coupling_remainder_tsum_le_of_recursion as the repository theorem that sums marginal-recursion powers without asserting geometric coupling decay.",
+          "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-interface",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary",
+          "relation": "dictionary_interface",
+          "status": "lean_linked",
+          "statement": "The Flow/IR source dictionary interface records the beta-flow, marginal scale convention, irrelevant-contraction separation, IR covariance, and scale-dictionary obligations as explicit Prop fields before exposing coupling_recursion and ir_bound.",
+          "blocker": "flow_ir_dictionary_open: the interface is a staging boundary only; CMP109/CMP119 beta-flow extraction, source-to-Lean recursion dictionary, irrelevant operator scaling theorem, IR covariance decay, and scale dictionary remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-to-coupling-recursion",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection from the staged Flow/IR dictionary to the explicit marginal coupling recursion field.",
+          "blocker": "flow_ir_dictionary_open: this projection uses a supplied source dictionary record and does not prove the CMP109/CMP119 recursion."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-to-ir-bound",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection from the staged Flow/IR dictionary to the explicit IR covariance bound field.",
+          "blocker": "flow_ir_dictionary_open: this projection uses a supplied source dictionary record and does not prove the IR covariance decay theorem."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-source-identification",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection exposing the still-open beta-flow source-identification obligation.",
+          "blocker": "flow_ir_dictionary_open: exact CMP109/CMP119 beta-flow source text and dictionary remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-scale-convention",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection exposing the still-open marginal scale-convention source dictionary obligation.",
+          "blocker": "flow_ir_dictionary_open: source scale and marginal-coupling convention remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-irrelevant-separation",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection exposing the obligation separating irrelevant geometric contraction from marginal gauge-coupling flow.",
+          "blocker": "flow_ir_dictionary_open: irrelevant-operator scaling and marginal-flow separation remain source-dictionary obligations."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-ir-covariance",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection exposing the still-open IR covariance source-identification obligation.",
+          "blocker": "flow_ir_dictionary_open: source IR covariance decay, constants, and uniformity remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-scale-identification",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection exposing the still-open Flow/IR scale-dictionary obligation.",
+          "blocker": "flow_ir_dictionary_open: source scale, block, and metric conventions linking CMP109/CMP119 to repository indices remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.coupling-recursion-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the BalabanCMP116SourceAssumptions coupling_recursion field only after the CMP109/CMP119 beta-flow formula and source-to-Lean recursion dictionary are supplied.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.ir-bound-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the BalabanCMP116SourceAssumptions ir_bound field only after the IR covariance decay source, constants, and uniformity dictionary are supplied.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.single-scale-marginal-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the single-scale marginal mass-gap consumer only after covIR, hIRbound, the marginal recursion, and the SingleScaleUVDecay source handoff are kept as separate supplied inputs.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.marginal-remainder-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the marginal-coupling summability theorem only after the source beta-recursion, smallness window, exponent dictionary, and non-geometric marginal-flow separation are supplied.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
         }
       ]
     },
@@ -964,10 +1657,10 @@
           "exactness": "inferred",
           "confidence": "operational_crosswalk",
           "assumptions": [
-            "artifact hash",
-            "visual page confirmation",
-            "local_text/render locator",
-            "Lean target link"
+            "target citation artifact hash and relative private-artifact path",
+            "target citation visual page confirmation",
+            "target citation exact formula/hypothesis/quantifier dictionary",
+            "target theorem_checked build/oracle evidence for the named consumer"
           ],
           "conclusion": "false progress from plausible OCR or theorem-looking wrappers",
           "source_verified": false,
@@ -988,10 +1681,10 @@
         "Do not promote visual_confirmed to source_extracted just because the formula shape is useful."
       ],
       "open_questions": [
-        "artifact hash",
-        "visual page confirmation",
-        "local_text/render locator",
-        "Lean target link"
+        "target citation artifact hash and relative private-artifact path",
+        "target citation visual page confirmation",
+        "target citation exact formula/hypothesis/quantifier dictionary",
+        "target theorem_checked build/oracle evidence for the named consumer"
       ],
       "dictionary_links": [
         {
@@ -1061,9 +1754,9 @@
         }
       ],
       "lean_targets": [
-        "CMP116RawSourceM3Frontier",
-        "BalabanCMP116SourceTheorem",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.BalabanCMP116SourceTheorem",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -1080,7 +1773,7 @@
         {
           "id": "proof.final-frontier.pipeline.source-key.1",
           "source_symbol": "crosswalk.final-frontier-pipeline",
-          "lean_symbol": "CMP116RawSourceM3Frontier",
+          "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.final-frontier-pipeline is relevant to CMP116RawSourceM3Frontier through End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier.",
@@ -1089,7 +1782,7 @@
         {
           "id": "proof.final-frontier.pipeline.source-key.2",
           "source_symbol": "cmp116.lemma3.final-2.38",
-          "lean_symbol": "BalabanCMP116SourceTheorem",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceTheorem",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp116.lemma3.final-2.38 is relevant to BalabanCMP116SourceTheorem through End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier.",
@@ -1098,7 +1791,7 @@
         {
           "id": "proof.final-frontier.pipeline.source-key.3",
           "source_symbol": "cmp116.effective-action.2.39-2.41",
-          "lean_symbol": "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp116.effective-action.2.39-2.41 is relevant to CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237 through End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier.",

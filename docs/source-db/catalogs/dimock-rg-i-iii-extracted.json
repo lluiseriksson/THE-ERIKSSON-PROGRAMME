@@ -60,7 +60,7 @@
         }
       ],
       "lean_targets": [
-        "norm_appendixFConnectedActivity_le_metricCoverSum",
+        "YangMills.RG.norm_appendixFConnectedActivity_le_metricCoverSum",
         "AppendixFSecondUrsellClosure",
         "AppendixFHsharpLeafSource"
       ],
@@ -122,7 +122,7 @@
         }
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
         "CovarianceKernel",
         "KernelDecay"
       ],
@@ -205,7 +205,7 @@
         }
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
         "gaussian_pushforward",
         "Fluctuation_covariance_identification"
       ],
@@ -273,7 +273,7 @@
       "lean_targets": [
         "polymerRootSumConstant",
         "KPCriterion_volumeUniform",
-        "appendixFHoleRootSumConstant"
+        "YangMills.RG.appendixFHoleRootSumConstant"
       ],
       "use_for": [
         "Combinatorial source for rooted/pinned exponential polymer sums."
@@ -345,7 +345,7 @@
       "lean_targets": [
         "KernelDecay",
         "Covariance_localization",
-        "PhysicalLocalizedCovarianceRootCertificate"
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate"
       ],
       "use_for": [
         "Source shape for Green/covariance localization and random-walk reconstruction."
@@ -420,9 +420,9 @@
         }
       ],
       "lean_targets": [
-        "appendixFHoleRootSumConstant",
-        "appendixFSecondUrsellLeafConstant",
-        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound"
+        "YangMills.RG.appendixFHoleRootSumConstant",
+        "YangMills.RG.appendixFSecondUrsellLeafConstant",
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound"
       ],
       "use_for": [
         "Geometric substrate for cluster-expansion root sums and local KP windows."
@@ -529,7 +529,7 @@
       ],
       "lean_targets": [
         "local_physical_activity_construction",
-        "RawYMActivityDecay",
+        "YangMills.RG.RawYMActivityDecay",
         "CMP116Lemma3ActivityEstimateScaleFamily"
       ],
       "use_for": [
@@ -614,9 +614,9 @@
         }
       ],
       "lean_targets": [
-        "appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum",
-        "appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum",
-        "norm_appendixFConnectedActivity_le_metricCoverSum",
+        "YangMills.RG.appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum",
+        "YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum",
+        "YangMills.RG.norm_appendixFConnectedActivity_le_metricCoverSum",
         "AppendixFKsharpEstimate"
       ],
       "use_for": [
@@ -667,8 +667,8 @@
       "lean_targets": [
         "AppendixFSecondUrsellGeometry",
         "AppendixFSecondUrsellClosure",
-        "appendixFSecondUrsellLeafConstant",
-        "appendixFSecondUrsellMomentConstant"
+        "YangMills.RG.appendixFSecondUrsellLeafConstant",
+        "YangMills.RG.appendixFSecondUrsellMomentConstant"
       ],
       "use_for": [
         "Exact source definition of the second connected/Ursell activity and its union fiber."
@@ -846,7 +846,7 @@
         }
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
         "root_localization",
         "gaussian_pushforward",
         "Covariance_localization"
@@ -1006,8 +1006,8 @@
         }
       ],
       "lean_targets": [
-        "appendixFHoleRootSumConstant",
-        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound"
+        "YangMills.RG.appendixFHoleRootSumConstant",
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound"
       ],
       "use_for": [
         "Geometric substrate for the volume-uniform cluster expansion with holes."
@@ -1220,9 +1220,9 @@
         }
       ],
       "lean_targets": [
-        "RawYMActivityDecay",
-        "PhysicalGaugeCMP116RawHsharpFrontier",
-        "CMP116RawSourceM3Frontier"
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier",
+        "YangMills.RG.CMP116RawSourceM3Frontier"
       ],
       "use_for": [
         "Source-faithful architectural target showing distinct regular, remainder and active-boundary local activities."

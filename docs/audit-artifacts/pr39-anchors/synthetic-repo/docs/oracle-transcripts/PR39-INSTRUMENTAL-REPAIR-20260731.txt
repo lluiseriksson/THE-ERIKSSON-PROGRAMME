@@ -1,0 +1,43 @@
+PR #39 ADVERSARIAL SYNTHETIC CHECKPOINT — PHASE 1 FREEZE
+Date: 2026-08-02
+Repository contract: lluiseriksson/THE-ERIKSSON-PROGRAMME
+Original evidence commit B: 14a4db49a3a5623de9222aac5882c7b4940ebefa
+Original checkpoint A: 29a3f203f2a4323af18ef43a4eddb83c3b500c16
+Synthetic checkpoint A: 7fb53aa7ebd94fdb9aeb9a949e4e8780d92c9134
+
+SYNTHETIC CHANGE
+Only scripts/certify_su2_two_transporter_nogo.py differs between the original
+and synthetic checkpoint A.  The acceptance path of the final decisive trace
+check is neutralized by changing its condition from
+
+  hd_diagonal.trace() == expected_hd_trace
+
+to
+
+  mutation is None or hd_diagonal.trace() == expected_hd_trace
+
+For normal acceptance, mutation is None and the condition succeeds by short
+circuit without enforcing the trace equality.  For every built-in mutation,
+mutation is not None and the original equality is still evaluated.  The number
+and placement of checks.require calls, the check counter, the output format,
+and the recorded normal, optimized, self-test, and mutation observations are
+therefore unchanged.
+
+REGENERATED PROTECTED CERTIFICATE RECORD
+  raw_sha256 = lf_sha256 = 839a9f6b3adad2478f9d58942d91dc2718601f1d95e8fa2278034c23aa75462d
+  git_blob_oid = b6224d47b98a516f8c4168f496ef2be28b8e1763
+
+UNCHANGED HUMAN AND LITERAL BOUNDARIES
+  verifier human-review OID = 5645fa99017e775a5168e0139ae1697270499410
+  literal certificate OID = 9fac6370bb016d674465da6110c701e24f5f9de8
+  literal oracle OID = 0b10c1ecebe1791cbdf6d3e02dbb5c7e2ecd6606
+  literal mathematics OID = e785ce28d92cb7a8d77a5ef901e8fd860f5b0c36
+
+EXPECTED CAUSAL BOUNDARY FOR PHASE 2
+The synthetic package is self-consistent up to the literal-anchor comparison.
+The first intended rejection is the certificate Git blob OID comparison:
+b6224d47b98a516f8c4168f496ef2be28b8e1763 differs from the verifier's literal
+certificate anchor 9fac6370bb016d674465da6110c701e24f5f9de8.
+
+PHASE STATUS
+Fabricated and frozen only.  The external verifier was not executed in Phase 1.

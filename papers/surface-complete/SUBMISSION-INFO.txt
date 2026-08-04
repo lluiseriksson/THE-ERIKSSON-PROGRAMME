@@ -1,0 +1,112 @@
+======================================================================
+DEFINITIVE SUBMISSION PACKAGE — surface_theorem_complete.pdf
+======================================================================
+
+TITLE
+Global Ratio Monotonicity for a Killed von Mises Bridge
+
+AUTHOR
+Lluis Eriksson
+
+PRIMARY CATEGORY
+Mathematical Physics
+
+SUGGESTED ARXIV CLASSIFICATION
+Primary: math.CA (Classical Analysis and ODEs)
+Cross-list: math-ph; math.PR
+
+SUGGESTED MSC 2020
+33C10 (Bessel and Airy functions)
+42A05 (trigonometric polynomials, inequalities, extremal problems)
+26D15 (inequalities for sums, series and integrals)
+60J10 (Markov chains)
+
+KEYWORDS
+modified Bessel functions; ratio monotonicity; von Mises bridge;
+trigonometric series; interval arithmetic; lattice gauge theory;
+machine-checked mathematics
+
+ABSTRACT (PLAIN TEXT)
+For beta > 0 let I_m = I_m(beta) denote modified Bessel functions of
+the first kind, and set
+
+  a_m = I_m^2 [(m-1) I_(m-1)^2 + (m+1) I_(m+1)^2],
+  b_m = m I_m^4,
+  F_A(t) = sum_(m>=1) a_m sin(mt),
+  F_B(t) = sum_(m>=1) b_m sin(mt),
+  E(t) = F_A(t)/(2 F_B(t)).
+
+The global ratio-monotonicity problem for the surface expansion of a
+two-dimensional SU(2) lattice gauge observable is: (i) F_B > 0 on
+(0,pi), and (ii) E' < 0 on (0,pi), for every beta > 0. Both
+statements are proved. Positivity of F_B has two exact proofs. Ratio
+monotonicity is reduced to exact algebraic identities and
+outward-rounded interval certificates: small and compact beta are
+handled by pair identities and interval Taylor models;
+20 <= beta <= 1000/9 by a direct Wronskian cover; and
+beta >= 1000/9 has three certified moving-edge lambda lanes. The
+remaining lambda >= 3 lane is closed by the exact identity
+E'/(-sin(t/2)/2) = Q + X_full, where Q > 19/20, an exact
+main--mirror--rest decomposition, and a division-free covariance
+certificate proving X_main > -1/20 on two adjacent rectangles that
+cover the full angular interval. The exact near and far relay margins
+are positive. All load-bearing production and independent replay
+transcripts are checked for exact rational coverage, dependency
+hashes, strict outward-rounded decision endpoints, and byte equality.
+The structural core is exact: E is, as an algebraic identity, the mean
+of cos(psi) under the midpoint law of a four-step killed von Mises
+bridge; the generating kernels reduce, via the Neumann addition
+theorem, to two-dimensional integrals of a single Bessel function
+whose saddle deficit is an exact sum of two squares; and exact saddle
+cancellations yield the coefficients of the verified closed
+second-order law
+
+  E = cos(t/2)(1 - c(t)/beta) + O(beta^-2),
+  c(t) = (4 cos^2(t/4) - 1)/(2 cos(t/4) cos(t/2)).
+
+Three certified negative results (interval arithmetic, two
+implementations, nested enclosures) kill every monotone full-path
+coupling, with an exact mechanism at threshold beta |cos t| = 3/2. At
+the pi endpoint we also give exact identities for the cubic
+coefficient c_3 (telescoped alternating form, integral form, parity)
+together with its verified prefactor law. Every claim is labelled
+exact / certified / verified; the machine-checked lemmas are Lean
+4/Mathlib, machine-checked modulo classical Bessel inputs carried as
+named hypotheses.
+
+COMMENTS FIELD
+33 pages. Exact identities, outward-rounded Arb certificates,
+independent production/replay transcripts, and Lean 4/Mathlib lemmas.
+Definitive archived version and executable audit:
+https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/releases/tag/surface-theorem-v1.0
+
+UPLOAD FILE
+surface_theorem_complete.pdf
+
+FROZEN ARTIFACT HASHES (SHA-256)
+TeX, normalized LF content:
+ebe578725f9ae049be059c1bc133b58a74b36819707c805b7afda799da609801
+
+PDF, raw bytes:
+e8cc61a1c370d941baff0ae9019dde4c0d528dbeb42f7c81b221667c1e67333e
+
+PAGE COUNT
+33
+
+REPRODUCIBILITY
+Repository:
+https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+
+Terminal audit command:
+python scripts/audit_surface_final_seal.py
+
+Required terminal result:
+FINAL-SEAL PASS: terminal gates, manuscript, and PDF are present
+
+SUBMISSION CHECKLIST
+[ ] Upload surface_theorem_complete.pdf.
+[ ] Paste the title, author, category, abstract, keywords and comments above.
+[ ] Confirm the uploaded PDF displays 33 pages and the correct title/author.
+[ ] Retain the default non-exclusive arXiv license if submitting to arXiv.
+[ ] Add an ORCID only if it belongs to the author and is already controlled.
+[ ] Do not claim a four-dimensional continuum Yang--Mills mass gap.

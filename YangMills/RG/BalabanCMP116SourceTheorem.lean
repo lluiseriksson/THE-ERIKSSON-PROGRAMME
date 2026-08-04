@@ -73,6 +73,857 @@ def of_components
 
 end PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 
+/-- Source-facing Gaussian/covariance-root/root-localization dictionary staging.
+
+The five Prop parameters name the open source-to-Lean dictionary checks for
+CMP116 Eq. (2.5)-(2.6), the covariance-root certificate, and the root
+localization convention.  This record proves none of those source facts by
+itself; it keeps the source identifications explicit before exposing the
+already-supplied Gaussian split records, covariance-root certificate, and
+root-localization fact as the existing Lean boundaries. -/
+structure CMP116GaussianCovarianceRootSourceDictionary
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourcePhysicalGaussian physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (precision covariance :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (covNormBound rootNormBound : ℝ)
+    (covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (rootLocalization : Prop)
+    (coordinateMapIdentified physicalLawIdentified
+      normalizedPushforwardIdentified covarianceRootFieldsIdentified
+      rootLocalizationIdentified : Prop) : Prop where
+
+  coordinate_map_identification : coordinateMapIdentified
+  physical_law_identification : physicalLawIdentified
+  normalized_pushforward_identification :
+    normalizedPushforwardIdentified
+  covariance_root_fields_identification :
+    covarianceRootFieldsIdentified
+  root_localization_identification :
+    rootLocalizationIdentified
+
+  coordinate_source :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource
+      D root sourceCoordinateMap
+  physical_law_source :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianPhysicalLawSource
+      sourcePhysicalGaussian physicalGaussian
+  normalized_pushforward_source :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource
+      sourceCoordinateMap sourcePhysicalGaussian
+  covariance_root_certificate :
+    PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight
+  root_localization :
+    rootLocalization
+
+namespace CMP116GaussianCovarianceRootSourceDictionary
+
+variable
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {sourcePhysicalGaussian physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {precision covariance :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {rootLocalization coordinateMapIdentified physicalLawIdentified
+      normalizedPushforwardIdentified covarianceRootFieldsIdentified
+      rootLocalizationIdentified : Prop}
+
+/-- Forget the source-dictionary staging fields and expose the structured
+Gaussian-normalization boundary consumed downstream. -/
+def to_gaussianPushforwardNormalization
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization
+      D root physicalGaussian :=
+  PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords
+    sourceCoordinateMap sourcePhysicalGaussian
+    h.coordinate_source h.physical_law_source h.normalized_pushforward_source
+
+/-- Project the Gaussian pushforward identity after the staged source
+dictionary has supplied the three split Gaussian records. -/
+theorem to_gaussian_pushforward
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    (balabanCMP116Dmu0 (Cube d L) lieDim).map
+        (D.gaussianRootMap root) =
+      physicalGaussian :=
+  PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward
+    (to_gaussianPushforwardNormalization h)
+
+/-- Project the staged covariance-root certificate. -/
+theorem to_covariance_root_certificate
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight :=
+  h.covariance_root_certificate
+
+/-- Project the staged root-localization source fact. -/
+theorem to_root_localization
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    rootLocalization :=
+  h.root_localization
+
+/-- Project the still-open coordinate-map dictionary obligation. -/
+theorem to_coordinate_map_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    coordinateMapIdentified :=
+  h.coordinate_map_identification
+
+/-- Project the still-open physical Gaussian-law dictionary obligation. -/
+theorem to_physical_law_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    physicalLawIdentified :=
+  h.physical_law_identification
+
+/-- Project the still-open determinant/Jacobian normalization obligation. -/
+theorem to_normalized_pushforward_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    normalizedPushforwardIdentified :=
+  h.normalized_pushforward_identification
+
+/-- Project the still-open covariance-root field dictionary obligation. -/
+theorem to_covariance_root_fields_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    covarianceRootFieldsIdentified :=
+  h.covariance_root_fields_identification
+
+/-- Project the still-open root-localization dictionary obligation. -/
+theorem to_root_localization_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    rootLocalizationIdentified :=
+  h.root_localization_identification
+
+end CMP116GaussianCovarianceRootSourceDictionary
+
+/-- Source-facing support/measurability dictionary staging for the CMP116
+localized physical activity.
+
+The five Prop parameters name the open source-to-Lean dictionary checks for the
+localized-domain support convention, the repository `physicalActiveSupport`
+enlargement, the skeleton convention, measurable summands, and finite-index
+measurability.  This record proves none of those facts by itself; it keeps them
+explicit before exposing the already-supplied support and measurability fields
+used by `BalabanCMP116SourceAssumptions`. -/
+structure CMP116SupportMeasurabilitySourceDictionary
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (spectatorPull :
+      ∀ _ : PhysicalBond dPhys N, β → SUNLieCoord Nc)
+    (physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc)
+    (physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N))
+    (localizedDomainIdentified physicalActiveSupportIdentified
+      skeletonConventionIdentified measurableSummandIdentified
+      finiteIndexMeasurabilityIdentified : Prop) : Prop where
+
+  localized_domain_identification : localizedDomainIdentified
+  physicalActiveSupport_identification : physicalActiveSupportIdentified
+  skeleton_convention_identification : skeletonConventionIdentified
+  measurable_summand_identification : measurableSummandIdentified
+  finite_index_measurability_identification :
+    finiteIndexMeasurabilityIdentified
+
+  spectator_support_subset :
+    ∀ X,
+      (physicalActivity X).spectatorSupport ⊆ physicalActiveSupport X
+  fluctuation_support_subset :
+    ∀ X,
+      (physicalActivity X).fluctuationSupport ⊆ physicalActiveSupport X
+  activity_stronglyMeasurable :
+    ∀ X, ∀ ψ : ∀ _ : Cube d L, β,
+      StronglyMeasurable
+        (fun ξ : CMP116FluctuationField d L lieDim =>
+          ((PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+            (Ψ := fun _ : Cube d L => β)
+            D
+            (fun X : OmegaPolymerType HF z => X)
+            spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ)
+  active_support_subset_omega :
+    ∀ X,
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells D.siteMap.Omega
+  active_support_subset_skeleton :
+    ∀ X, X ∈ Λ →
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells (skeleton HF X.val)
+
+namespace CMP116SupportMeasurabilitySourceDictionary
+
+variable
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {spectatorPull :
+      ∀ _ : PhysicalBond dPhys N, β → SUNLieCoord Nc}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N)}
+    {localizedDomainIdentified physicalActiveSupportIdentified
+      skeletonConventionIdentified measurableSummandIdentified
+      finiteIndexMeasurabilityIdentified : Prop}
+
+/-- Project the staged spectator-support containment field. -/
+theorem to_spectator_support_subset
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X,
+      (physicalActivity X).spectatorSupport ⊆ physicalActiveSupport X :=
+  h.spectator_support_subset
+
+/-- Project the staged fluctuation-support containment field. -/
+theorem to_fluctuation_support_subset
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X,
+      (physicalActivity X).fluctuationSupport ⊆ physicalActiveSupport X :=
+  h.fluctuation_support_subset
+
+/-- Project the staged adapted-field measurability field. -/
+theorem to_activity_stronglyMeasurable
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X, ∀ ψ : ∀ _ : Cube d L, β,
+      StronglyMeasurable
+        (fun ξ : CMP116FluctuationField d L lieDim =>
+          ((PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+            (Ψ := fun _ : Cube d L => β)
+            D
+            (fun X : OmegaPolymerType HF z => X)
+            spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ) :=
+  h.activity_stronglyMeasurable
+
+/-- Project the staged `physicalActiveSupport` containment in the repository
+Omega support convention. -/
+theorem to_active_support_subset_omega
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X,
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells D.siteMap.Omega :=
+  h.active_support_subset_omega
+
+/-- Project the staged `physicalActiveSupport` containment in the skeleton
+support convention. -/
+theorem to_active_support_subset_skeleton
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X, X ∈ Λ →
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells (skeleton HF X.val) :=
+  h.active_support_subset_skeleton
+
+/-- Project the still-open localized-domain support dictionary obligation. -/
+theorem to_localized_domain_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    localizedDomainIdentified :=
+  h.localized_domain_identification
+
+/-- Project the still-open `physicalActiveSupport` enlargement obligation. -/
+theorem to_physicalActiveSupport_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    physicalActiveSupportIdentified :=
+  h.physicalActiveSupport_identification
+
+/-- Project the still-open skeleton-convention dictionary obligation. -/
+theorem to_skeleton_convention_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    skeletonConventionIdentified :=
+  h.skeleton_convention_identification
+
+/-- Project the still-open measurable-summand dictionary obligation. -/
+theorem to_measurable_summand_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    measurableSummandIdentified :=
+  h.measurable_summand_identification
+
+/-- Project the still-open finite-index measurability dictionary obligation. -/
+theorem to_finite_index_measurability_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    finiteIndexMeasurabilityIdentified :=
+  h.finite_index_measurability_identification
+
+end CMP116SupportMeasurabilitySourceDictionary
+
+/-- Source-facing Appendix-F/H# feed dictionary staging for one scale.
+
+The five Prop parameters name the open source-to-Lean checks for feeding the
+CMP116/Balaban activity bound into the Dimock Appendix-F with-holes route:
+activity/locality bound, H0 smallness, kappa-loss convention,
+Omega-connectivity, and skeleton metric dictionary.  This record proves none
+of those source facts; it only keeps them explicit before exposing the
+quantitative Lean fields already consumed by the raw-source M3/H# frontier. -/
+structure CMP116AppendixFHsharpFeedSourceDictionary
+    {HF : HoleFamily d L}
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc)
+    (weight : OmegaPolymerType HF z → ℝ)
+    (amplitude C Hbar c0 kappa kappa0 gk : ℝ)
+    (t : ℕ)
+    (activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+      omegaConnectivityIdentified skeletonMetricIdentified : Prop) : Prop where
+
+  activity_bound_identification : activityBoundIdentified
+  h0_smallness_identification : h0SmallnessIdentified
+  kappa_loss_identification : kappaLossIdentified
+  omega_connectivity_identification : omegaConnectivityIdentified
+  skeleton_metric_identification : skeletonMetricIdentified
+
+  raw_pointwise_decay :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      ‖(physicalActivity X).globalEval ψ φ‖ ≤ amplitude * weight X
+  amplitude_nonneg :
+    0 ≤ amplitude
+  weight_nonneg :
+    ∀ X, 0 ≤ weight X
+  weight_domination :
+    ∀ X, X ∈ Λ →
+      weight X ≤ appendixFHoleExpWeight HF kappa X.val
+  appendix_f_geometric_smallness :
+    ((3 ^ d : ℕ) : ℝ) ^ 2 *
+        (Real.exp (-kappa0) * 2 ^ (3 ^ d + 1)) < 1
+  amplitude_le_one :
+    amplitude ≤ 1
+  profile_constant_nonneg :
+    0 ≤ C
+  hbar_nonneg :
+    0 ≤ Hbar
+  kappa_margin :
+    4 * kappa0 + 3 ≤ kappa
+  kappa0_gt_one :
+    1 < kappa0
+  time_decay_positive :
+    0 < c0
+  half_budget :
+    appendixFSecondUrsellLeafConstant d kappa0 *
+        (2 * amplitude * appendixFHoleRootSumConstant d kappa0) ≤ 1 / 2
+  profile_bound :
+    4 * appendixFSecondUrsellMomentConstant d kappa0 *
+        amplitude *
+        appendixFHoleRootSumConstant d kappa0 ≤
+      C * Hbar *
+        Real.exp (-(c0 * (t : ℝ))) *
+        gk ^ kappa0
+
+namespace CMP116AppendixFHsharpFeedSourceDictionary
+
+variable
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {weight : OmegaPolymerType HF z → ℝ}
+    {amplitude C Hbar c0 kappa kappa0 gk : ℝ}
+    {t : ℕ}
+    {activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+      omegaConnectivityIdentified skeletonMetricIdentified : Prop}
+
+/-- Project the staged raw pointwise activity bound feeding H#. -/
+theorem to_raw_pointwise_decay
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      ‖(physicalActivity X).globalEval ψ φ‖ ≤ amplitude * weight X :=
+  h.raw_pointwise_decay
+
+/-- Project nonnegativity of the H# amplitude parameter. -/
+theorem to_amplitude_nonneg
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    0 ≤ amplitude :=
+  h.amplitude_nonneg
+
+/-- Project nonnegativity of the Appendix-F/H# weight. -/
+theorem to_weight_nonneg
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    ∀ X, 0 ≤ weight X :=
+  h.weight_nonneg
+
+/-- Project domination by the repository Appendix-F hole exponential weight. -/
+theorem to_weight_domination
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    ∀ X, X ∈ Λ →
+      weight X ≤ appendixFHoleExpWeight HF kappa X.val :=
+  h.weight_domination
+
+/-- Project the staged Appendix-F geometric smallness field. -/
+theorem to_appendix_f_geometric_smallness
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    ((3 ^ d : ℕ) : ℝ) ^ 2 *
+        (Real.exp (-kappa0) * 2 ^ (3 ^ d + 1)) < 1 :=
+  h.appendix_f_geometric_smallness
+
+/-- Project the staged amplitude upper bound. -/
+theorem to_amplitude_le_one
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    amplitude ≤ 1 :=
+  h.amplitude_le_one
+
+/-- Project the staged profile constant nonnegativity field. -/
+theorem to_profile_constant_nonneg
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    0 ≤ C :=
+  h.profile_constant_nonneg
+
+/-- Project the staged Hbar nonnegativity field. -/
+theorem to_hbar_nonneg
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    0 ≤ Hbar :=
+  h.hbar_nonneg
+
+/-- Project the staged kappa-loss margin field. -/
+theorem to_kappa_margin
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    4 * kappa0 + 3 ≤ kappa :=
+  h.kappa_margin
+
+/-- Project the staged `kappa0` lower bound. -/
+theorem to_kappa0_gt_one
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    1 < kappa0 :=
+  h.kappa0_gt_one
+
+/-- Project positivity of the time-decay parameter. -/
+theorem to_time_decay_positive
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    0 < c0 :=
+  h.time_decay_positive
+
+/-- Project the staged Appendix-F half-budget field. -/
+theorem to_half_budget
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    appendixFSecondUrsellLeafConstant d kappa0 *
+        (2 * amplitude * appendixFHoleRootSumConstant d kappa0) ≤ 1 / 2 :=
+  h.half_budget
+
+/-- Project the staged H# profile-bound field. -/
+theorem to_profile_bound
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    4 * appendixFSecondUrsellMomentConstant d kappa0 *
+        amplitude *
+        appendixFHoleRootSumConstant d kappa0 ≤
+      C * Hbar *
+        Real.exp (-(c0 * (t : ℝ))) *
+        gk ^ kappa0 :=
+  h.profile_bound
+
+/-- Project the still-open source activity/locality bound dictionary
+obligation. -/
+theorem to_activity_bound_identification
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    activityBoundIdentified :=
+  h.activity_bound_identification
+
+/-- Project the still-open H0-smallness dictionary obligation. -/
+theorem to_h0_smallness_identification
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    h0SmallnessIdentified :=
+  h.h0_smallness_identification
+
+/-- Project the still-open kappa-loss dictionary obligation. -/
+theorem to_kappa_loss_identification
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    kappaLossIdentified :=
+  h.kappa_loss_identification
+
+/-- Project the still-open Omega-connectivity dictionary obligation. -/
+theorem to_omega_connectivity_identification
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    omegaConnectivityIdentified :=
+  h.omega_connectivity_identification
+
+/-- Project the still-open skeleton metric dictionary obligation. -/
+theorem to_skeleton_metric_identification
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    skeletonMetricIdentified :=
+  h.skeleton_metric_identification
+
+end CMP116AppendixFHsharpFeedSourceDictionary
+
+/-- Source-facing Flow/IR bridge dictionary staging.
+
+The five Prop parameters name the open source-to-Lean checks for the
+CMP109/CMP119 marginal coupling flow, the marginal scale convention, the
+separation of irrelevant geometric contraction from gauge-coupling flow, the
+IR covariance bound, and the scale dictionary feeding the repository indices.
+This record proves none of those source facts; it only keeps them explicit
+before exposing the already-supplied coupling recursion and IR bound consumed
+by `BalabanCMP116SourceAssumptions`. -/
+structure CMP116FlowIRBridgeSourceDictionary
+    (covIR g : ℕ → ℝ)
+    (C1 ε betaFlow : ℝ)
+    (betaFlowSourceIdentified marginalScaleConventionIdentified
+      irrelevantContractionSeparated irCovarianceIdentified
+      scaleDictionaryIdentified : Prop) : Prop where
+
+  beta_flow_source_identification : betaFlowSourceIdentified
+  marginal_scale_convention_identification :
+    marginalScaleConventionIdentified
+  irrelevant_contraction_separation : irrelevantContractionSeparated
+  ir_covariance_identification : irCovarianceIdentified
+  scale_dictionary_identification : scaleDictionaryIdentified
+
+  epsilon_positive :
+    0 < ε
+  beta_flow_positive :
+    0 < betaFlow
+  coupling_positive :
+    ∀ k, 0 < g k
+  coupling_small :
+    ∀ k, betaFlow * g k < 1
+  coupling_recursion :
+    ∀ k,
+      g (k + 1) =
+        g k * (1 - betaFlow * g k)
+  ir_bound :
+    ∀ k : ℕ,
+      |covIR k| ≤
+        C1 * Real.exp (-(ε * (k : ℝ)))
+
+namespace CMP116FlowIRBridgeSourceDictionary
+
+variable
+    {covIR g : ℕ → ℝ}
+    {C1 ε betaFlow : ℝ}
+    {betaFlowSourceIdentified marginalScaleConventionIdentified
+      irrelevantContractionSeparated irCovarianceIdentified
+      scaleDictionaryIdentified : Prop}
+
+/-- Project positivity of the IR-decay exponent. -/
+theorem to_epsilon_positive
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    0 < ε :=
+  h.epsilon_positive
+
+/-- Project positivity of the staged beta-flow coefficient. -/
+theorem to_beta_flow_positive
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    0 < betaFlow :=
+  h.beta_flow_positive
+
+/-- Project positivity of the marginal coupling sequence. -/
+theorem to_coupling_positive
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    ∀ k, 0 < g k :=
+  h.coupling_positive
+
+/-- Project the small-coupling premise for the logistic source recurrence. -/
+theorem to_coupling_small
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    ∀ k, betaFlow * g k < 1 :=
+  h.coupling_small
+
+/-- Project the staged marginal coupling recurrence. -/
+theorem to_coupling_recursion
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    ∀ k,
+      g (k + 1) =
+        g k * (1 - betaFlow * g k) :=
+  h.coupling_recursion
+
+/-- Project the staged IR covariance bound. -/
+theorem to_ir_bound
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    ∀ k : ℕ,
+      |covIR k| ≤
+        C1 * Real.exp (-(ε * (k : ℝ))) :=
+  h.ir_bound
+
+/-- Project the still-open beta-flow source dictionary obligation. -/
+theorem to_beta_flow_source_identification
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    betaFlowSourceIdentified :=
+  h.beta_flow_source_identification
+
+/-- Project the still-open marginal scale-convention dictionary obligation. -/
+theorem to_marginal_scale_convention_identification
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    marginalScaleConventionIdentified :=
+  h.marginal_scale_convention_identification
+
+/-- Project the explicit separation between irrelevant contraction and
+marginal gauge-coupling flow. -/
+theorem to_irrelevant_contraction_separation
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    irrelevantContractionSeparated :=
+  h.irrelevant_contraction_separation
+
+/-- Project the still-open IR covariance dictionary obligation. -/
+theorem to_ir_covariance_identification
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    irCovarianceIdentified :=
+  h.ir_covariance_identification
+
+/-- Project the still-open scale dictionary obligation. -/
+theorem to_scale_dictionary_identification
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    scaleDictionaryIdentified :=
+  h.scale_dictionary_identification
+
+end CMP116FlowIRBridgeSourceDictionary
+
 /-- Source-facing CMP116 assumptions with the current `raw_source` package
 unfolded into individually auditable source fields.
 

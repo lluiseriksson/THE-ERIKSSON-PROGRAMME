@@ -1,0 +1,1 @@
+K2 hybrid ninth birth transcripts OK: 158 regular units, t<=313/100; moving-edge complement assigned to G5; worst parent_145 margin_lower [0.016955128115248844463235013756244346321090895518705245478025846906218474320759748 +/- 8.55e-83]

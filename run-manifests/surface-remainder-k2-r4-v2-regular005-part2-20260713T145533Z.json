@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-r4-v2-regular005-part2-20260713T145533Z",
+  "claim_scope": "Authoritative second segment of the corrected-outer exact-r4 regular K2 extension on delta in [0,1/200]: born t-box indices 150 through 157. Every row uses grid 192, moving-band radius 14, componentwise moment perturbations, and a strictly positive lower margin.",
+  "status": "current",
+  "started_utc": "2026-07-13T14:55:33Z",
+  "finished_utc": "2026-07-13T14:57:21Z",
+  "command": ["python", "scripts/certify_surface_remainder_delta0_r4_extension_v2.py", "--start-index", "150", "--stop-index", "158"],
+  "working_directory": ".",
+  "script": {"path": "scripts/certify_surface_remainder_delta0_r4_extension_v2.py", "sha256": "b28f810cc1fbccedd3508fdb549e98f06a8d4294b2aa6cd95a6e3480e295abd4", "sha256_lf": "b28f810cc1fbccedd3508fdb549e98f06a8d4294b2aa6cd95a6e3480e295abd4"},
+  "environment": {"python": "3.12.6", "libraries": {"python-flint": "0.9.0", "arb_bits": "140"}},
+  "inputs": [
+    {"path": "scripts/surface_remainder_delta0_r4_extension_v2_probe.py", "sha256": "0819fcd410f2a8664fde9f0beeb01448ccb1d584d91cbbc396575ef486a80c1e", "sha256_lf": "0819fcd410f2a8664fde9f0beeb01448ccb1d584d91cbbc396575ef486a80c1e"},
+    {"path": "scripts/surface_remainder_delta0_r4_extension_v2_cover.py", "sha256": "6fed70896d32b4937db703fad287511d961012381a9189ae9a0fc707a6920057", "sha256_lf": "6fed70896d32b4937db703fad287511d961012381a9189ae9a0fc707a6920057"},
+    {"path": "scripts/surface_remainder_delta0_outer_domain_v2.py", "sha256": "73d7a0e4ffb0893fbc26ac9bd127d076280083a64f9584b01c8deec81f08eed0", "sha256_lf": "73d7a0e4ffb0893fbc26ac9bd127d076280083a64f9584b01c8deec81f08eed0"},
+    {"path": "scripts/surface_remainder_delta0_r4_extension_probe.py", "sha256": "c7938bdf681cc124ffafcd8a8e5b2193dde456233511e120c67a360704652315", "sha256_lf": "c7938bdf681cc124ffafcd8a8e5b2193dde456233511e120c67a360704652315"},
+    {"path": "scripts/surface_remainder_delta0_extension_probe.py", "sha256": "44f884b7766baede0ea8885a93692461f3e84be583ed78d0fb051530f90e4140", "sha256_lf": "44f884b7766baede0ea8885a93692461f3e84be583ed78d0fb051530f90e4140"},
+    {"path": "scripts/surface_remainder_delta0_series_cover_design.py", "sha256": "d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428", "sha256_lf": "d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428"},
+    {"path": "scripts/surface_remainder_delta0_series_design.py", "sha256": "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063", "sha256_lf": "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063"},
+    {"path": "scripts/surface_remainder_delta0_companion_error.py", "sha256": "c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2", "sha256_lf": "c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2"},
+    {"path": "scripts/surface_remainder_delta0_derivative_tail.py", "sha256": "63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b", "sha256_lf": "63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b"},
+    {"path": "scripts/surface_remainder_delta0_fourth_coefficient.py", "sha256": "aba6b6e3cc85b3a21672ee68981dd1e1db32e755fca33e5c35398fd0739ddd6d", "sha256_lf": "aba6b6e3cc85b3a21672ee68981dd1e1db32e755fca33e5c35398fd0739ddd6d"},
+    {"path": "scripts/surface_remainder_s2_direct_judge.py", "sha256": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780", "sha256_lf": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780"},
+    {"path": "scripts/surface_bessel_integral_remainder.py", "sha256": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e", "sha256_lf": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"}
+  ],
+  "outputs": [{"path": "scripts/certify_surface_remainder_delta0_r4_extension_v2_part2.txt", "sha256": "0c1a9fec85968135509d518028d37fa901d315a21ae7cc90490a452c95c50429", "sha256_lf": "15304d28ded5f339cbe435aeac0f0d6f797de89d1ce91f68404d09c9e150402b"}],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

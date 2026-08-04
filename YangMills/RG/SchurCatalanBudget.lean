@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import Mathlib
+import YangMills.KP.RootedCatalanMajorant
 
 /-!
 # Schur-Catalan scalar budget closure
@@ -71,6 +72,29 @@ theorem schurCatalanBudget_nonneg
   unfold schurCatalanBudget
   exact div_nonneg (by nlinarith) (by positivity)
 
+/-- The KP finite Catalan majorant partial sums fit inside the RG
+Schur-Catalan scalar budget.  This is the unscaled consumer form of
+`YangMills.KP.mul_catalanMajorantPartial_le_scaledClosed`, so later RG callers
+can use `schurCatalanBudget` without reopening the square-root proof. -/
+theorem catalanMajorantPartial_le_schurCatalanBudget
+    {M epsilon : ℝ} (hM : 0 < M) (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1) (N : ℕ) :
+    YangMills.KP.catalanMajorantPartial M epsilon N ≤
+      schurCatalanBudget M epsilon := by
+  have hscaled :
+      M * YangMills.KP.catalanMajorantPartial M epsilon N ≤
+        YangMills.KP.catalanScaledClosedMajorant M epsilon :=
+    YangMills.KP.mul_catalanMajorantPartial_le_scaledClosed
+      (M := M) (ε := epsilon) (N := N) hM.le hepsilon hsmall
+  calc
+    YangMills.KP.catalanMajorantPartial M epsilon N
+        ≤ YangMills.KP.catalanScaledClosedMajorant M epsilon / M := by
+          apply (le_div_iff₀ hM).2
+          simpa [mul_comm] using hscaled
+    _ = schurCatalanBudget M epsilon := by
+          unfold YangMills.KP.catalanScaledClosedMajorant schurCatalanBudget
+          field_simp [ne_of_gt hM]
+
 /-- Finite coercivity bookkeeping: if the base form dominates
 `cBase * q v` and every selected defect is bounded by `budget i * q v`, then
 the base minus the selected defects dominates the remaining scalar budget. -/
@@ -137,6 +161,37 @@ theorem schurCatalan_lower_bound_of_finset_budget
   exact quadraticBudget_sub_finset_le q Qbase defect
     (fun i => schurCatalanBudget (M i) (epsilon i)) s hbase hdefect
 
+/-- Finite coercivity bookkeeping fed by KP Catalan partial sums.  If every
+selected defect is bounded by a finite Catalan majorant truncation, the landed
+KP square-root bound upgrades those truncations to the RG Schur-Catalan budget
+used by `schurCatalan_lower_bound_of_finset_budget`. -/
+theorem schurCatalan_lower_bound_of_catalanMajorantPartial_budget
+    {ι E : Type*} [DecidableEq ι]
+    (q : E → ℝ) (Qbase : E → ℝ) (defect : ι → E → ℝ)
+    (M epsilon : ι → ℝ) (N : ι → ℕ) (s : Finset ι) {cBase : ℝ}
+    (hbase : ∀ v, cBase * q v ≤ Qbase v)
+    (hq_nonneg : ∀ v, 0 ≤ q v)
+    (hM : ∀ i ∈ s, 0 < M i)
+    (hepsilon : ∀ i ∈ s, 0 ≤ epsilon i)
+    (hsmall : ∀ i ∈ s, 4 * M i ^ 2 * epsilon i ≤ 1)
+    (hdefect : ∀ i, i ∈ s → ∀ v,
+      defect i v ≤
+        YangMills.KP.catalanMajorantPartial (M i) (epsilon i) (N i) * q v) :
+    ∀ v,
+      (cBase - ∑ i ∈ s, schurCatalanBudget (M i) (epsilon i)) * q v ≤
+        Qbase v - ∑ i ∈ s, defect i v := by
+  refine schurCatalan_lower_bound_of_finset_budget
+    q Qbase defect M epsilon s hbase ?_
+  intro i hi v
+  have hcat :
+      YangMills.KP.catalanMajorantPartial (M i) (epsilon i) (N i) ≤
+        schurCatalanBudget (M i) (epsilon i) :=
+    catalanMajorantPartial_le_schurCatalanBudget
+      (M := M i) (epsilon := epsilon i)
+      (hM i hi) (hepsilon i hi) (hsmall i hi) (N i)
+  exact (hdefect i hi v).trans
+    (mul_le_mul_of_nonneg_right hcat (hq_nonneg v))
+
 /-- Schur-Catalan strict finite coercivity closure.  This is the finite-scale
 version of the abstract principle "base positivity beats the accumulated
 Schur-Catalan self-energy budget". -/
@@ -154,5 +209,41 @@ theorem schurCatalan_coercive_of_finset_budget
   exact quadraticBudget_sub_finset_pos q Qbase defect
     (fun i => schurCatalanBudget (M i) (epsilon i)) s
     hbase hdefect hbudget
+
+/-- Strict finite coercivity closure fed by KP Catalan partial sums.  This is
+the positive form of
+`schurCatalan_lower_bound_of_catalanMajorantPartial_budget`: Catalan-truncated
+defect estimates are upgraded to the Schur-Catalan budget, and strict leftover
+base coercivity gives positivity. -/
+theorem schurCatalan_coercive_of_catalanMajorantPartial_budget
+    {ι E : Type*} [DecidableEq ι]
+    (q : E → ℝ) (Qbase : E → ℝ) (defect : ι → E → ℝ)
+    (M epsilon : ι → ℝ) (N : ι → ℕ) (s : Finset ι) {cBase : ℝ}
+    (hbase : ∀ v, cBase * q v ≤ Qbase v)
+    (hq_nonneg : ∀ v, 0 ≤ q v)
+    (hM : ∀ i ∈ s, 0 < M i)
+    (hepsilon : ∀ i ∈ s, 0 ≤ epsilon i)
+    (hsmall : ∀ i ∈ s, 4 * M i ^ 2 * epsilon i ≤ 1)
+    (hdefect : ∀ i, i ∈ s → ∀ v,
+      defect i v ≤
+        YangMills.KP.catalanMajorantPartial (M i) (epsilon i) (N i) * q v)
+    (hbudget :
+      (∑ i ∈ s, schurCatalanBudget (M i) (epsilon i)) < cBase) :
+    ∀ v, 0 < q v →
+      0 < Qbase v - ∑ i ∈ s, defect i v := by
+  exact quadraticBudget_sub_finset_pos q Qbase defect
+    (fun i => schurCatalanBudget (M i) (epsilon i)) s
+    hbase
+    (by
+      intro i hi v
+      have hcat :
+          YangMills.KP.catalanMajorantPartial (M i) (epsilon i) (N i) ≤
+            schurCatalanBudget (M i) (epsilon i) :=
+        catalanMajorantPartial_le_schurCatalanBudget
+          (M := M i) (epsilon := epsilon i)
+          (hM i hi) (hepsilon i hi) (hsmall i hi) (N i)
+      exact (hdefect i hi v).trans
+        (mul_le_mul_of_nonneg_right hcat (hq_nonneg v)))
+    hbudget
 
 end YangMills.RG

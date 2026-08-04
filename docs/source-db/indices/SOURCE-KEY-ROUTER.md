@@ -5,7 +5,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cammarota.cmp85.polymer-mayer-source-target`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `CMP116Lemma3Eq229ScaleBoundary`, `CMP116Eq229Summability`, `cmp116H_postD_sum_le_of_eq229`, `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116Eq229Weight`, `YangMills.RG.cmp116Eq229Product`, `YangMills.RG.CammarotaCMP85Threshold`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold`, `YangMills.RG.CammarotaCMP85FiniteDStageSource`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource`, `YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource`, `YangMills.RG.cmp116Eq229Product_nonneg`, `YangMills.RG.cmp116_DStage_sum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `cmp109.bond-convention.positive-oriented`
 
@@ -17,22 +17,22 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp109.ref26.cammarota-infinite-range-cluster`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `CMP116Lemma3Eq229ScaleBoundary`, `CMP116Eq229Summability`, `cmp116H_postD_sum_le_of_eq229`, `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116Eq229Weight`, `YangMills.RG.cmp116Eq229Product`, `YangMills.RG.CammarotaCMP85Threshold`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold`, `YangMills.RG.CammarotaCMP85FiniteDStageSource`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource`, `YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource`, `YangMills.RG.cmp116Eq229Product_nonneg`, `YangMills.RG.cmp116_DStage_sum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `cmp116.constants.c3-alpha5`
 
 - Rank 5: `proof.eq237.fixed-z0prime-source-estimate` — CMP116 Eq. (2.37) fixed-Z0' source estimate
-  - Lean: `cmp116PostPResidualSourceBound_of_eq237`, `CMP116Eq237MajorizationBoundary`, `cmp116Eq237FixedZ0PrimeWeight`, `cmp116Eq237Amplitude`
+  - Lean: `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237Z0PrimeIndex`, `YangMills.RG.cmp116Eq237Z0Fiber`, `YangMills.RG.cmp116Eq237Z0Fiber_mem_iff`, `YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum`, `YangMills.RG.cmp116Eq237Amplitude`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.cmp116Eq237_residualExponent_absorbed`, `YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `cmp116.effective-action.2.39-2.41`
 
 - Rank 12: `proof.final-frontier.pipeline` — End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier
-  - Lean: `CMP116RawSourceM3Frontier`, `BalabanCMP116SourceTheorem`, `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
+  - Lean: `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.BalabanCMP116SourceTheorem`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `cmp116.eq229.d-stage-summability`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `CMP116Lemma3Eq229ScaleBoundary`, `CMP116Eq229Summability`, `cmp116H_postD_sum_le_of_eq229`, `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116Eq229Weight`, `YangMills.RG.cmp116Eq229Product`, `YangMills.RG.CammarotaCMP85Threshold`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold`, `YangMills.RG.CammarotaCMP85FiniteDStageSource`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource`, `YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource`, `YangMills.RG.cmp116Eq229Product_nonneg`, `YangMills.RG.cmp116_DStage_sum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `cmp116.eq231.p-bond-sum`
 
@@ -51,64 +51,145 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.eq237.post-p-resummation`
 
 - Rank 5: `proof.eq237.fixed-z0prime-source-estimate` — CMP116 Eq. (2.37) fixed-Z0' source estimate
-  - Lean: `cmp116PostPResidualSourceBound_of_eq237`, `CMP116Eq237MajorizationBoundary`, `cmp116Eq237FixedZ0PrimeWeight`, `cmp116Eq237Amplitude`
+  - Lean: `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237Z0PrimeIndex`, `YangMills.RG.cmp116Eq237Z0Fiber`, `YangMills.RG.cmp116Eq237Z0Fiber_mem_iff`, `YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum`, `YangMills.RG.cmp116Eq237Amplitude`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.cmp116Eq237_residualExponent_absorbed`, `YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `cmp116.gaussian-pushforward.2.5-2.6`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
 
 ## `cmp116.lemma3.final-2.38`
 
 - Rank 12: `proof.final-frontier.pipeline` — End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier
-  - Lean: `CMP116RawSourceM3Frontier`, `BalabanCMP116SourceTheorem`, `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
+  - Lean: `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.BalabanCMP116SourceTheorem`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `cmp116.lemma3.window.2.14-2.38`
 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
-  - Lean: `CMP116Lemma3ActivityTermwiseScaleBoundary`, `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `PhysicalGaugeLocalActivity.globalEval`
+  - Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification`, `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate`, `YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction`, `YangMills.RG.rawSource_of_lemma3ActivityEstimate`, `YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization`, `YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily`, `YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary`, `YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate`, `YangMills.RG.LocalActivity.globalEval`
 
 ## `cmp116.localized-activity.2.7-2.10`
 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
-  - Lean: `CMP116Lemma3ActivityTermwiseScaleBoundary`, `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `PhysicalGaugeLocalActivity.globalEval`
+  - Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification`, `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate`, `YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction`, `YangMills.RG.rawSource_of_lemma3ActivityEstimate`, `YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization`, `YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily`, `YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary`, `YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate`, `YangMills.RG.LocalActivity.globalEval`
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
+- Rank 13: `proof.activity.support-measurability.v2` — CMP116 support containment and activity measurability dictionary
+  - Lean: `YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset`, `YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset`, `YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable`, `YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega`, `YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton`, `YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells`, `YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells`
+
+## `cmp119.b-term-local-regularity-bound.2.34-2.42`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp119.eq2.23.erb-decomposition-source-target`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp119.eq2.42.blocal-bound-source-target`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp119.density-expansion-form.2.18`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp119.e-term-local-regularity.2.24-2.29`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
 
 ## `cmp119.r-term-bound.2.31`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `RawYMActivityDecay`, `future_R_operation_bound`, `CMP116RawSourceM3Frontier`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp119.rt-improved-new-expressions.before-theorem1`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp119.t-operation-action-factorization.2.19-2.23`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp119.theorem1.rt-inductive-assumptions`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
 
 ## `cmp122i.large-field-c-bound.1.70`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `RawYMActivityDecay`, `future_R_operation_bound`, `CMP116RawSourceM3Frontier`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp122i.eq1.70.large-field-bound-source-target`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp122ii.post-r-action-split.1.101`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp122ii.eq1.101.post-r-erb-update-source-target`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
 
 ## `cmp122ii.rprime-bound.1.98-1.100`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `RawYMActivityDecay`, `future_R_operation_bound`, `CMP116RawSourceM3Frontier`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp122ii.eq1.98-1.100.r-operation-bound-source-target`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
+
+## `cmp122ii.theorem1.coupling-interval-induction`
+
+- Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
 
 ## `cmp95.covariance-green.bounds-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
+
+## `cmp99.background-field-propagator-source-target`
+
+- Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.physicalGaugeWilsonHessianIdentification`, `YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate`
+- Rank 7 companion: `proof.wilson.hessian.identification.v2` — physical precision defect Catalan-bound blocker
+  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect`, `YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision`, `YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd`
+
+## `cmp102.variational-hessian-expansion-source-target`
+
+- Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
+  - Lean: `YangMills.RG.physicalGaugeWilsonHessianIdentification`, `YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.wilson_hessian_identification`
+- Rank 7 companion: `proof.wilson.hessian.identification.v2` — physical precision defect Catalan-bound blocker
+  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect`, `YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision`, `YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd`
 
 ## `cmp96.one-step-covariance-law-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
 
 ## `crosswalk.dimock.appendixf-hole-cluster-route`
 
 - Rank 8: `proof.dimock.appendixf.hsharp-feed` — Dimock Appendix F H# route into hole-cluster machinery
-  - Lean: `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `appendixFHoleExpWeight`
+  - Lean: `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `YangMills.RG.appendixFHoleExpWeight`
 
 ## `crosswalk.eq229.cammarota-dstage-route`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `CMP116Lemma3Eq229ScaleBoundary`, `CMP116Eq229Summability`, `cmp116H_postD_sum_le_of_eq229`, `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116Eq229Weight`, `YangMills.RG.cmp116Eq229Product`, `YangMills.RG.CammarotaCMP85Threshold`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold`, `YangMills.RG.CammarotaCMP85FiniteDStageSource`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource`, `YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource`, `YangMills.RG.cmp116Eq229Product_nonneg`, `YangMills.RG.cmp116_DStage_sum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `crosswalk.eq231.p-family-source-dictionary-route`
 
@@ -118,37 +199,49 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.eq237.combined-postp-route`
 
 - Rank 5: `proof.eq237.fixed-z0prime-source-estimate` — CMP116 Eq. (2.37) fixed-Z0' source estimate
-  - Lean: `cmp116PostPResidualSourceBound_of_eq237`, `CMP116Eq237MajorizationBoundary`, `cmp116Eq237FixedZ0PrimeWeight`, `cmp116Eq237Amplitude`
+  - Lean: `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237Z0PrimeIndex`, `YangMills.RG.cmp116Eq237Z0Fiber`, `YangMills.RG.cmp116Eq237Z0Fiber_mem_iff`, `YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum`, `YangMills.RG.cmp116Eq237Amplitude`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.cmp116Eq237_residualExponent_absorbed`, `YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `crosswalk.final-frontier-pipeline`
 
 - Rank 12: `proof.final-frontier.pipeline` — End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier
-  - Lean: `CMP116RawSourceM3Frontier`, `BalabanCMP116SourceTheorem`, `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
+  - Lean: `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.BalabanCMP116SourceTheorem`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `crosswalk.flow-ir-asymptotic-freedom-route`
 
 - Rank 10: `proof.flow.ir.bridge` — Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction
-  - Lean: `CouplingFlow.logistic_geometric_decay`, `remainder_geometric_of_logistic`, `BalabanCMP116SourceAssumptions.coupling_recursion`, `BalabanCMP116SourceAssumptions.ir_bound`
+  - Lean: `YangMills.RG.logistic_geometric_decay`, `YangMills.RG.remainder_geometric_of_logistic`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification`, `YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion`, `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`, `YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal`, `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion`
 
 ## `crosswalk.gaussian-root-activity-route`
 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
-  - Lean: `CMP116Lemma3ActivityTermwiseScaleBoundary`, `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `PhysicalGaugeLocalActivity.globalEval`
+  - Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification`, `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate`, `YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction`, `YangMills.RG.rawSource_of_lemma3ActivityEstimate`, `YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization`, `YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily`, `YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary`, `YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate`, `YangMills.RG.LocalActivity.globalEval`
+- Rank 7: `proof.wilson.hessian.identification.v2` — Wilson-Hessian/source-defect dictionary needed before feeding the Catalan `hdefect` hypothesis for `physicalPrecisionDefect`
+  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect`, `YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision`, `YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd`
+
+## `proof.activity.support-measurability.v2`
+
+- Rank 13: `proof.activity.support-measurability.v2` — CMP116 support containment and activity measurability dictionary
+  - Lean: `YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset`, `YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset`, `YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable`, `YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega`, `YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton`, `YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells`, `YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells`
+
+## `proof.local-activity.construction.v2`
+
+- Rank 13: `proof.activity.support-measurability.v2` — CMP116 support containment and activity measurability dictionary
+  - Lean: `YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset`, `YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset`, `YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable`, `YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega`, `YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton`, `YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells`, `YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells`
 
 ## `crosswalk.r-operation-polymer-local-route`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `RawYMActivityDecay`, `future_R_operation_bound`, `CMP116RawSourceM3Frontier`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP119BLocalSourceBound`, `YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries`
 
 ## `dimockii.appendix-f.cluster-with-holes`
 
 - Rank 8: `proof.dimock.appendixf.hsharp-feed` — Dimock Appendix F H# route into hole-cluster machinery
-  - Lean: `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `appendixFHoleExpWeight`
+  - Lean: `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `YangMills.RG.appendixFHoleExpWeight`
 
-## `dimockii.appendix-f.second-ursell.642-646`
+## `dimockii.appendix-f.second-ursell.645-646`
 
 - Rank 8: `proof.dimock.appendixf.hsharp-feed` — Dimock Appendix F H# route into hole-cluster machinery
-  - Lean: `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `appendixFHoleExpWeight`
+  - Lean: `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `YangMills.RG.appendixFHoleExpWeight`
 
 ## `docs.SOURCE-CITATIONS`
 

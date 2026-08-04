@@ -145,6 +145,209 @@ tour is the crux and must be built.  Honest sub-ladder:
 P1b-ii is a genuine standalone combinatorial development (no Mathlib
 primitive); it — not a quick follow-on — is the real next working brick.
 
+## 3bis. P3.5 sub-ladder — REGISTERED 2026-07-12 (before fabrication)
+
+**Frontier re-audit finding (12-reader sweep + gap synthesis, 2026-07-12).**
+The (642)-shaped renormalized-activity decay ALREADY exists as a composed
+conditional theorem: `hraw` → K# at `appendixFKsharpRate κ κ₀ = κ−κ₀−2`
+(`norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_canonicalRoot`)
+→ weighted-tree/leaf summation → H# residual at
+`polymerClusterResidualRate κ κ₀ = κ−3κ₀−3`
+(`norm_appendixFHoleHsharp_le_residual_of_rawMetricDecay_canonicalRoot_halfBudget_of_source`)
+→ `SingleScaleUVDecay` → marginal mass gap; (641) is proved three times and
+consumed.  The connected-cover entropy estimate anticipated by §3/P3 is NOT
+the missing brick.  What remains open, in order of size:
+
+* **(O2)** no numeric witness anywhere that the parameter regime of the whole
+  chain is non-empty (house rule 3 exposure);
+* **(O3)** the carried cardinality-compression binder
+  `(X.val.card : ℝ) ≤ θ·((d_M(X)+1 : ℕ) : ℝ)` is undischarged in
+  `appendixFHoleTargetFiber_card_le_metricSum_of_source_card_le_metric`,
+  `appendixFHoleMetricCoverWeight_mul_exp_card_le_shifted_of_source_card_le_metric`,
+  `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric`;
+* **(O4)** the `hact` binder of
+  `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`
+  is not yet reachable from the H# lane (card-tilt composition);
+* **(O5)** no end-to-end non-vacuity witness with NONZERO activities;
+* **(O1)** the raw YM activity bound = hRpoly proper (months, unchanged).
+
+**The ladder (each brick oracle-checkable, +1 job-count witness):**
+
+| Brick | Module | Content | Kind | Status |
+|---|---|---|---|---|
+| **B1** | `RG/AppendixFParameterWitness.lean` | numeric κ₀(d), κ = 4κ₀+3, H₀ witnessing geometric smallness + leaf/root half-budget + the θ-extended budget for B3.  κ₀(d) = (3^d+1)log2 + 2d·log3 + 1 collapses the geometric product to EXACTLY e⁻¹; root ≤ 2, moment ≤ 2, leaf ≤ 16, H₀ = 1/256, half-budget margin ×2 | exp/log arithmetic | **DONE** (core 8386, ledger Add. 468) |
+| **B2** | `RG/AppendixFHoleCompression.lean` | **bounded-hole cardinality compression** `X.card ≤ (1+3^d·B)·(d_M(X)+1)` for connected hole-respecting X with nonempty skeleton, holes of card ≤ B; discharges the (O3) binder verbatim with θ = 1+3^d·B; + no-holes exactness guard + concrete-hole strict witness | finite combinatorics | **DONE** (core 8385, ledger Add. 467) |
+| **B3** | `RG/AppendixFHsharpCardTilt.lean` | H# residual + B2 + `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric` + B1 θ-budget ⟹ the (O4) `hact` binder; first connection of the H# lane to the volume-uniform local-KP consumers | composition | open |
+| **B4** | `RG/AppendixFEndToEndWitness.lean` | end-to-end instantiation at B1's parameters with nonzero constant activities on a small torus; Addendum-17t-style non-vacuity seal | witness | open |
+
+**METHOD DEVIATION RECORDED (Trap C, C4-Amendment-1 style).**  The
+unconditional compression `|X| ≤ θ(d_M(X)+1)` is FALSE — absorbed holes
+inflate `X.card` at fixed skeleton.  Dimock pays the hole volume analytically
+with the P4 Gaussian factor `e^{−c|H₀|}`; B2 pays with the uniform bound
+`|H₀| ≤ B` as the honest finite-stage substitute.  When P4 lands, the `hB`
+hypothesis must be revisited against the source's Gaussian payment; the
+difference is on record here and in the module docstring.
+
+**Registered traps (binding for B1–B4):** no terminal bound through
+`appendixFHolePinnedMetricCoverSum` may be sold as (642) — pinning discards
+`d_M(Y)` (Trap A); all new bricks stay on the `omegaHolePolymerSystem` side,
+never the touching system (Trap B); `RawYMActivityDecay` must not be wired
+directly to H# bypassing the fluctuation-integral structure (Trap D); filling
+the free Prop slots of `AppendixFHsharpCluster3Contract` is zero content, not
+a brick (Trap E).
+
+## 3ter. P4-CT sub-ladder — REGISTERED 2026-07-12 (O1 attack, propagator-decay leg)
+
+**Recon finding (2026-07-12, same session as §3bis).**  `KernelDecay.lean`
+already proves the Neumann-series Combes–Thomas engine
+(`expDecay_resolvent`, `finiteRange_resolvent_isExpDecay`) — but ONLY in the
+small-hopping regime `M·e^{κR}·S < 1`.  The ACTUAL fixed-volume physical
+precision operator (`flatGaugeHodgeK0 + a·Q†Q`, `GaugeFixedCovariance` lane)
+is Laplacian-type: its invertibility is by COERCIVITY (block-Poincaré), not
+entrywise smallness, and the existing engine cannot reach its inverse.  The
+missing propagator-decay theorem of the O1/hRpoly statement is therefore:
+
+**Weighted-conjugation Combes–Thomas for coercive finite-range lattice
+operators** — for `K` self-adjoint coercive (`⟨f,Kf⟩ ≥ c‖f‖²`) with kernel
+range `R` and entrywise bound `M` on a finite metric graph with shell
+constant `N_R = max_x #{y : d x y ≤ R}`: for `θ` with
+`M·(e^{θR}−1)·N_R ≤ c/2`,
+
+`|K⁻¹(x,y)| ≤ (2/c)·e^{−θ·d(x,y)}`  (volume-uniform constants).
+
+| Brick | Content | Kind | Status |
+|---|---|---|---|
+| **CT1** | tilt algebra (`physicalTiltCLM`/`physicalTiltConjCLM`, PhysicalCoerciveCombesThomas.lean): additive composition, conjugation identity, entry identity `e^{θ(dist r q − dist r p)}`, range preservation, tilted entry bound `M·e^{θR}` | finite algebra | **DONE** (core 8387, ledger Add. 469) |
+| **CT2** | block Schur bound `‖A‖ ≤ β·N_R` (`physicalOpNorm_le_of_kernelBound_finiteRange`), perturbation bound `‖K_θ − K‖ ≤ M(e^{θR}−1)N_R`, coercivity survival `isCoerciveCLM_physicalTiltConj` | operator arithmetic | **DONE** (core 8387, ledger Add. 469) |
+| **CT3** | tilted inverse: `K_θ` invertible with `‖K_θ⁻¹‖ ≤ (c/2)⁻¹ = 2/c` at the θ-budget `M(e^{θR}−1)N_R ≤ c/2`, via `covarianceOfIsCoerciveCLM` (`exists_physicalTiltConj_inverse_of_budget`, PhysicalCoerciveCombesThomasInverse.lean) | composition | **DONE** (core 8394, ledger Add. 475) |
+| **CT4** | kernel extraction at root `r := source`: exact identity in two named halves (`physicalCovariance_entry_untilt` + `physicalTiltConj_tilted_probe`) ⟹ the headline `PhysicalCovarianceExponentialKernelBound C dist (2/c) θ` (`physicalCovariance_exponentialKernelBound_of_coercive`); instantiated at the flat physical shell: `flatGaugeFixedCovariance_CT_fixedVolume` + positive-rate `exists_flatGaugeFixedCovariance_CT_fixedVolume` (PhysicalShellCombesThomasEndpoint.lean) — the owner acceptance list (1)-(8) is CLOSED at fixed volume | composition + instantiation | **DONE** (core 8394, ledger Add. 475-476) |
+
+**Non-vacuity obligations (binding):** CT4 must be instantiated on the
+concrete flat physical shell with its PROVED finite stencils
+(`fineLineSupport`/`linAvgSupport`/`flatBlockConstraintSupport`) and the
+PROVED fixed-volume block-Poincaré constant — not on an abstract `K` chosen
+to make the hypotheses easy.  CT4's fixed-volume statement says fixed-volume.
+
+**W-1 — the volume-uniform Poincaré WALL: DONE, negative result (2026-07-13,
+ledger Addendum 495, `PhysicalPoincareWall.lean`).**  The status of the
+volume-uniformity of `c` is now FOUR distinct statements, none of which may
+be conflated:
+1. A volume-uniform POSITIVE Poincaré/coercivity theorem: **not proved**
+   (and not claimed).
+2. The uniform-constant gate for the CURRENT flat `linAvg` normalization
+   (`VolumeUniformFlatPoincareGate`, constant quantified before the
+   volume): **PROVED FALSE** for `d ≥ 3`, `Nc ≥ 2`
+   (`volumeUniformFlatPoincareGate_false`; the wall is `L^d/L^2 ≤ CP`,
+   hence `L ≤ CP`).
+3. The current route to volume-uniform CT through `c = min 1 a / CP`:
+   **CLOSED NEGATIVELY** (`no_volumeUniform_coercivity_via_flatPoincare`:
+   any `c₀` dominated at every volume is `≤ 0`); the per-volume constants
+   exist (`perVolume_flatPoincare_family`), so the dead route is real.
+4. Registered continuations (in leverage order): harmonic/constant-sector
+   quotient before the Poincaré step, rescaled block map (the wall must be
+   re-audited there — it may merely move), or coercivity from the
+   interacting Wilson Hessian directly.  `d = 2` is the scale-invariant
+   exemption and is not covered by the wall.
+
+**W-2 — the constant-sector quotient interface: DONE, result-neutral
+(2026-07-13, ledger Addendum 499, `PhysicalPoincareSectorQuotient.lean`).**
+Continuation (b) executed at the interface level: the constant sector
+packaged as a linear inclusion (harmonic under the flat Hodge operator),
+the fluctuation space as generator-wise orthogonality
+(`IsFluctuationCochain`), the quotient(-interface) Poincaré predicate
+`QuotientFlatGaugeHodgePoincare`, full → quotient at the same constant,
+fixed-volume non-vacuity, and THE NON-TRANSFER LEMMA
+(`constant_not_fluctuation`): the W-1 constant witness does not transfer
+to the fluctuation space.  The volume-uniform QUOTIENT gate
+(`VolumeUniformQuotientPoincareGate`) remains OPEN — neither proved nor
+refuted; no claim in either direction is on record.  **W-3 (the
+lowest-Fourier-mode falsifier) is ONE-SIDED**: it refutes the gate if the
+low mode's Rayleigh quotient forces `CP → ∞` (a second wall); a bounded
+quotient on that mode only removes one counter-witness candidate — proving
+the gate additionally requires an all-fluctuation-modes estimate or a
+spectral completeness/diagonalization theorem showing the studied mode
+minimizes the quadratic form.  Formal precision (evaluator, on record):
+no quotient TYPE or orthogonal-complement `Submodule` is constructed yet —
+the predicate is a restriction to the fluctuation cochains; "quotient
+interface" is the accurate name until the packaged subspace exists.
+
+**W-3a/W-3b/W-3c — witness, exact Hodge term, and second wall: DONE
+(2026-07-14, ledger Addenda 503/506/507).**  W-3a constructs the half-period
+two-interface mode on the even torus `N = M + M`, proves exact orthogonality
+to constants, exact norm `(M+M)^d * ‖w‖²`, genuine non-constancy, and
+fluctuation-space non-vacuity.  W-3b (`PhysicalPoincareLowModeHodge.lean`)
+evaluates its flat-Hodge energy exactly:
+`⟪A,K₀A⟫ = 8 * (M+M)^(d-1) * ‖w‖²`.  The mechanism is explicit: `i = j`
+has zero curl and all energy in divergence; `i ≠ j` has zero divergence and
+all energy in the unique ordered `{i,j}` curl plane.  Hypotheses retained:
+`d > 0`, `M > 0`, `Nc > 0`, even side; the identity itself needs neither
+`Nc ≥ 2` nor `w ≠ 0`.  W-3c (`PhysicalPoincareLowModeBlock.lean`) resolves
+the dependent side equality by canonical linear-isometric reindexing and
+proves that constants, fluctuations, curl, divergence, norms, and Hodge
+energy are preserved.  The current physical `Q` satisfies
+`‖QA‖² ≤ L⁻¹‖A‖²` for `d ≥ 3`; combined with the exact Hodge ratio this
+gives a Rayleigh numerator at most `9/L` times the norm and forces
+`L/9 ≤ CP`.  Thus the ONE-SIDED falsifier fires:
+`VolumeUniformQuotientPoincareGate` is false for every positive `N'`,
+`d ≥ 3`, `Nc ≥ 2`.  This is the second wall for the current unscaled block
+map and unweighted coarse norm; rescaled/weighted variants are different
+gates and remain outside this theorem.
+
+**OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
+The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
+coercivity are all three proved for the physical shell".  FALSE as stated:
+only COERCIVITY is connected to `flatGaugeFixedPrecisionCLM` (block-Poincaré
+route).  `PhysicalCovarianceFiniteRange` and the uniform
+`PhysicalCovarianceKernelBound` are NOT yet proved for the concrete operator
+`K₀ + a·Q†Q − Σᵢ Σᵢ`, whose `Sigma` family is arbitrary; the
+`fineLineSupport`/`flatBlockConstraintSupport` stencils localize `K₀` and
+`Q†Q` but NOT an arbitrary `∑ᵢ Sigmaᵢ`, and a norm bound `‖Sigmaᵢ‖ ≤ δᵢ` is
+NOT locality.  Binding obligations for the CT3+locality+CT4 checkpoint
+(owner, verbatim intent): (1) a CONCRETE `physicalBondDist` with symmetry,
+triangle, `dist p p = 0`, and an explicit ball bound `N_R`; (2) term-by-term
+`FiniteRange` + `KernelBound` for `flatGaugeHodgeK0CLM`, `a•Q†Q`, and the
+`Sigma` term; (3) `Sigma` resolved honestly — free shell `Sigma = 0` named
+as such (`zeroSigma`), or common range + summed kernel bounds, never
+norm-as-locality; (4) CT3 at the budget `δ_θ = M(e^{θR}−1)N_R ≤ c/2` with
+`0 < c − δ_θ` and `‖K_θ⁻¹‖ ≤ 2/c` explicit; (5) CT4 at root `r := source`
+with the exact identity `K⁻¹δ_p(q) = e^{−θd(p,q)}·K_θ⁻¹δ_p(q)`; (6) endpoint
+literally `PhysicalCovarianceExponentialKernelBound
+(flatGaugeFixedCovarianceCLM …) physicalBondDist (2/c) θ`; (7) `0 < θ` with
+a non-vacuous witness satisfying the CT budget at the physical constants;
+(8) named `CT_fixedVolume`.  NOT accepted: abstract CT3 alone; `Sigma`
+treated as local via norms; constant operator bounds sold as decay; `θ = 0`;
+a certificate whose `hkernel` stays hypothetical; a fresh covariance not
+identified with `flatGaugeFixedCovarianceCLM`.
+
+**Honest scope:** CT1–CT4 deliver the propagator-decay leg of O1 for the
+gauge-fixed FREE shell.  The interacting correction (G5 — the fluctuation
+integral with small/large-field split surviving the interaction) remains the
+wall, per `docs/UV-S2-GAUSSIAN-PLAN.md`.
+
+**P4-ADJ (registered 2026-07-13, external-review finding).**
+`SUNAdjointModel` had no constructed instance; the trivial witness
+`trivialSUNAdjointModel` (adCLM g := id, exact for the flat lane where only
+`adCLM 1` is consumed) and the full-chain audit `CT_fixedVolume_nonvacuous`
+now close the NON-VACUITY half (`SUNAdjointModelWitness.lean`, ledger
+Add. 477).  **DONE (2026-07-13, ledger Addenda 486/488/490/492): the TRUE
+matricial adjoint model is `matrixSUNAdjointModel`**
+(`SUNAdjointModelInstance.lean`) — `Ad(g)X = gXgᴴ` on traceless
+skew-Hermitian matrices with the trace inner product
+(`SUNAdjointMatrixSubstrate` + `SUNAdjointInnerSpace`), transported to
+`EuclideanSpace ℝ (Fin (n²−1))` by the isometric basis identification
+`suLieCoordIso` built on `finrank ℝ su(n) = n²−1`
+(`SUNAdjointDimension`).  The trivial witness is no longer the only
+instance.  Standing rule unchanged: the model becomes load-bearing the
+moment the background is non-trivial (interacting lane); do not silently
+substitute the trivial model there.
+
+**External calibration on record (2026-07-13, ledger Add. 477).**  Reviewer
+scale for the whole lane: fixed-volume free-shell CT = ~3.1/10 Clay
+proximity (consistent with, and weaker than, hard rule 6's ~0%); the
+recorded upgrade path: volume-uniform CT for the INTERACTING Wilson Hessian
++ root localization → 4–5; uniform interacting RG + lattice clustering/mass
+gap → 6–7; continuum limit + QFT axioms → 8–9.
+
 ## 4. Source material — RECEIVED + corrections (2026-06-13)
 
 The Dimock II/III page-level statements have now been provided and

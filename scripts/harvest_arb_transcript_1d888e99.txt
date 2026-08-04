@@ -1,0 +1,32 @@
+=== HARVEST DRIVER (Arb): point -> stability -> 3x3 box ===
+script : C:\Users\lluis\AppData\Local\Temp\eriksson-push\scripts\exp_integrator_arb.py
+sha256 : 1d888e9920287f077240187556c75e56712840326b35c2584be9361511038fe3
+python : 3.12.6 (tags/v3.12.6:a4a2d2b, Sep  6 2024, 20:11:23) [MSC v.1940 64 bit (AMD64)]
+flint  : python-flint 0.9.0
+date   : 2026-07-10T10:04:48.806862
+argv   : C:\Users\lluis\AppData\Local\Temp\eriksson-push\scripts\exp_integrator_arb.py
+stages : point(prec 90, dz1 0.8, dz2 0.15) -> stability(prec 120, dz2 0.12) -> box t[1.5,1.51] b[8,8.05](prec 90, dz2 0.15, db<=0.02, dt<=0.005)
+[point] pass1: 62470 cells, E enclosure = [0.405019, 0.770760], Ebar = 587889/1e6
+[point] pass2: 1951141 cells; <D> > 0: True; Wc < 0: True
+[point] Wc  = [-8.7168e+21, -3.51304e+21]  (certified margin: upper end)
+[point] <D> = [1.38499e+11, 1.41584e+11]
+[point] Wc/<D>^2 = [-0.454541, -0.175248]
+[point] VERDICT: True  713s
+[stability] pass1: 62470 cells, E enclosure = [0.405019, 0.770760], Ebar = 587889/1e6
+[stability] pass2: 2500336 cells; <D> > 0: True; Wc < 0: True
+[stability] Wc  = [-8.28054e+21, -3.95293e+21]  (certified margin: upper end)
+[stability] <D> = [1.38719e+11, 1.41338e+11]
+[stability] Wc/<D>^2 = [-0.430389, -0.197879]
+[stability] VERDICT: True  856s
+  sub-box t[1.5,1.5033333333333334] b[8.0,8.016666666666667]: OK (2550695 cells) Wc = [-9.97136e+21, -2.90762e+21]
+  sub-box t[1.5,1.5033333333333334] b[8.016666666666667,8.033333333333333]: OK (2555753 cells) Wc = [-1.12198e+22, -3.27307e+21]
+  sub-box t[1.5,1.5033333333333334] b[8.033333333333333,8.05]: OK (2560622 cells) Wc = [-1.26313e+22, -3.67796e+21]
+  sub-box t[1.5033333333333334,1.5066666666666666] b[8.0,8.016666666666667]: OK (2548859 cells) Wc = [-9.80953e+21, -2.86254e+21]
+  sub-box t[1.5033333333333334,1.5066666666666666] b[8.016666666666667,8.033333333333333]: OK (2554178 cells) Wc = [-1.10375e+22, -3.22194e+21]
+  sub-box t[1.5033333333333334,1.5066666666666666] b[8.033333333333333,8.05]: OK (2559086 cells) Wc = [-1.24253e+22, -3.6206e+21]
+  sub-box t[1.5066666666666666,1.51] b[8.0,8.016666666666667]: OK (2547383 cells) Wc = [-9.65e+21, -2.81793e+21]
+  sub-box t[1.5066666666666666,1.51] b[8.016666666666667,8.033333333333333]: OK (2552321 cells) Wc = [-1.0862e+22, -3.16733e+21]
+  sub-box t[1.5066666666666666,1.51] b[8.033333333333333,8.05]: OK (2557490 cells) Wc = [-1.22225e+22, -3.56361e+21]
+BOX CERTIFIED as union of 9 sub-boxes; 22986387 cells total
+[box 3x3] VERDICT: True  7558s
+HARVEST COMPLETE: point True / stability True / box True

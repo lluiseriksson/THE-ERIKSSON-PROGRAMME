@@ -1,0 +1,29 @@
+REPRODUCTION WITNESS v2 - dual-hash clarification (2026-07-12)
+Supplements (does not replace) c1_admissibility_rerun_20260711_COMPARISON.txt.
+
+The v1 witness recorded SHA-256
+  0319DACACD74D4DDFEF2810E7A46146E1288007B6AA717D801B9EA95B73B8F70
+for both transcripts.  That value is the hash of the WINDOWS WORKTREE
+representation (CRLF line endings, core.autocrlf=true on this box).
+The canonical git-blob (LF) representation of the SAME content hashes to
+  46C6C1718B086BD1A2F3E1310B22EE9B749476C4D4B22298B0F3DBF5E3FD4C52
+for both files.  There is no content discrepancy: 0319... is exactly the
+CRLF conversion of the 46C6... bytes; both hashes were re-derived at
+this desk on 2026-07-12 and independently by the external reviewer.
+
+Canonical statement of the witness:
+  scripts/c1_admissibility_transcript.txt
+    git blob / LF  SHA-256: 46C6C1718B086BD1A2F3E1310B22EE9B749476C4D4B22298B0F3DBF5E3FD4C52
+    worktree / CRLF SHA-256: 0319DACACD74D4DDFEF2810E7A46146E1288007B6AA717D801B9EA95B73B8F70
+  scripts/c1_admissibility_rerun_20260711.txt
+    git blob / LF  SHA-256: 46C6C1718B086BD1A2F3E1310B22EE9B749476C4D4B22298B0F3DBF5E3FD4C52
+    worktree / CRLF SHA-256: 0319DACACD74D4DDFEF2810E7A46146E1288007B6AA717D801B9EA95B73B8F70
+  Byte-identical in both representations: True
+
+Script (no EOL ambiguity - blob and disk representations coincide):
+  scripts/c1_admissibility_arb.py
+    SHA-256 (blob == disk): F114FC4BCF2193C47603FB595B91B4E3EA62ADDC3A1BFEBE0AA0C147C447F1F9
+
+Rule reaffirmed for this box (also flagged by the release auditor):
+byte-for-byte comparisons must be made against `git show <rev>:path`,
+never against the worktree checkout.

@@ -43,3 +43,56 @@ source-packets/manifests/cammarota-cmp85-artifacts.json
 ```
 
 Each artifact should have SHA-256, bytes, scan date, page range, and source URL/access note.
+
+## Local artifact check — 2026-07-02
+
+The repo currently contains `source-packets/manifests/batch-005-eq229-cammarota-live-fields.json`, but that file is only the batch-005 operational metadata manifest for the Eq229/Cammarota live-field cards. It is not the required Cammarota primary-source artifact manifest, and it does not certify theorem text, page renders, constants, or hypotheses.
+
+Missing primary-source artifacts remain:
+
+```text
+source-packets/private/cammarota_cmp85/cammarota-cmp85.pdf
+source-packets/private/cammarota_cmp85/text/cammarota-cmp85.txt
+source-packets/private/cammarota_cmp85/renders/cammarota-theorem1-page-*.png
+source-packets/manifests/cammarota-cmp85-artifacts.json
+```
+
+No theorem extraction, D-family dictionary, smallness threshold, metric convention, or Eq. (2.29) source discharge is claimed by this ledger note.
+
+## Archive holdings note — 2026-07-02
+
+Archive cycle 51 reports that the private Archive lane holds all four
+Cammarota CMP85 artifact classes: the paywalled/private PDF
+`primary-pdfs\cammarota\cammarota-cmp85-decay-correlations-1982.pdf`, OCR under
+`ocr\cammarota-cmp85-decay-correlations-1982\`, twelve page renders, and
+`constructor-packets\CAMMAROTA-CMP85-POLYMER-MAYER-PACKET.md`.
+
+This is an acquisition-status improvement only. The public repo paths listed
+above remain missing, the private scan must not be committed, and the equation
+bodies/theorem constants/hypotheses still require visual extraction before
+Eq. (2.29), `CMP116Eq229Summability`, or any D-family dictionary can be
+theorem-fed.
+
+## First visual premise field — 2026-07-02
+
+Using the Archive-private render for printed p.517, Theorem 1's first premise
+field is now recorded in the source-db as
+`cammarota.theorem1.eq1.4.potential_decay`:
+`|Phi_xy(S_x,S_y)| <= exp(-delta(x,y)) * J(x,y) * v_x(S_x) * v_y(S_y)`.
+
+This is a one-field visual extraction only. The theorem conclusion, smallness
+conditions, constants, Mayer/polymer convergence statement, finite-volume
+uniformity, and the CMP116 D-family dictionary remain open, and no private scan
+or render is committed to the repository.
+
+## Half-rate conclusion caution — 2026-07-05
+
+Archive cycle 55 also records a rate-normalization caution from the private
+Cammarota render check: Eq. (1.4)'s premise uses plain `delta(x,y)`, while the
+later Eq. (1.5) summability condition and the Theorem 1 conclusion display
+Eq. (1.11) use the half-rate `exp(-(1/2) delta(x,y))`.
+
+This is routing precision only. It does not extract the full theorem statement,
+constants, compatibility relation, uniformity, or Balaban D-family dictionary.
+Do not propagate the Eq. (1.4) premise exponent as the theorem-conclusion decay
+rate for Eq. (2.29).

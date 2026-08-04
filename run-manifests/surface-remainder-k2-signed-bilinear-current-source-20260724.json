@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-signed-bilinear-current-source-20260724",
+  "status": "current-source-candidate-only",
+  "claim_scope": "Signed cellwise K2 endpoint cancellation on delta [0,1/1000] and t [0,pi_hi], 158 boxes, grid 48. Source hashes match the current worktree; no K2/G2/G6/S1'''/S2''' promotion.",
+  "source_transcript_git_head": "4d5d7d6fe5d1c00bb5910585f7d9a9fcde947e9a",
+  "current_manifest_git_head": "8f388f3b97adf2c78298e0928f772b73df084349",
+  "configuration": {
+    "delta": "[0,1/1000]",
+    "t_boxes": 158,
+    "t_birth_width": "1/50",
+    "grid": 48,
+    "arb_bits": 140,
+    "order5_companion": true,
+    "pi_endpoint": "31415926535897932384626433832795028841971693993751/10^49"
+  },
+  "outputs": [
+    {"path": "scripts/surface_remainder_signed_bilinear_current_20260723.txt", "sha256": "05CED729DC5260F8D5DC68813D6E221185B7560E28F2D1B6FD41B712DE8D5DA4"},
+    {"path": "scripts/surface_remainder_signed_bilinear_current_20260723_replay.txt", "sha256": "05CED729DC5260F8D5DC68813D6E221185B7560E28F2D1B6FD41B712DE8D5DA4"}
+  ],
+  "dependencies": {
+    "scripts/run_surface_remainder_signed_bilinear_parallel_candidate.py": "0b36d0243fec7a27bd466d9b02708266a0d72cb300d3097f5a184f107a331521",
+    "scripts/surface_remainder_signed_bilinear_cover_design.py": "b55c284f1d98ff57ba9d59e35fd3e659c81d1f282b27c1025ef3b3d720fa865f",
+    "scripts/probe_surface_remainder_signed_bilinear_with_tails.py": "1cf394bb41e865fac25363c9ae7e4b0ec1d7d8ca6b37b639a046662c3510dd3c",
+    "scripts/probe_surface_remainder_signed_bilinear_series.py": "e7dc4581048a88c1caabaad994a04897abbe6a1b8317f8c432d0f6d8cb4de62e",
+    "scripts/surface_remainder_delta0_series_design.py": "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063",
+    "scripts/surface_remainder_delta0_derivative_tail.py": "63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b",
+    "scripts/surface_remainder_delta0_companion_error.py": "c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2",
+    "scripts/surface_remainder_s2_direct_judge.py": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780"
+  },
+  "validation": {
+    "production_structure": "PASS",
+    "replay_byte_identity": true,
+    "b0_identity": "PASS",
+    "rows": 158,
+    "kd0_positive": true,
+    "promotion": "NONE"
+  },
+  "supersedes": ["surface-remainder-k2-signed-bilinear-candidate-20260720"],
+  "notes": "This repairs current-source provenance only. The signed cancellation is not the complete K2 remainder inequality and does not establish H_tail or any global gate."
+}

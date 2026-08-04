@@ -1,0 +1,22 @@
+{
+  "artifact": "surface-remainder-k4-centered-00280-00285",
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "scope": "single local positive-delta K4 band; no K4/G2/G6/S1'''/S2''' promotion",
+  "promotion": "NONE",
+  "domain": {"delta": ["7/250", "57/2000"], "t": "29/10"},
+  "configuration": {"seed_grid": 12, "max_cells": 9216, "precision": 140, "fallbacks": 295},
+  "fractions": {
+    "MD2r_mirror": "[0.113686314629504 +/- 1.64e-16]",
+    "MDFr_mirror": "[0.0123797429786540 +/- 4.74e-17]",
+    "MD_mirror": "[0.0591510868273959 +/- 6.43e-17]",
+    "MF_mirror": "[0.00829545662214470 +/- 8.02e-18]",
+    "muF_main": "[0.316141659611650 +/- 5.83e-16]",
+    "nuD_main": "[0.435071099584748 +/- 7.83e-16]",
+    "nuF_main": "[0.390611363673250 +/- 4.42e-16]"
+  },
+  "cells": 9216,
+  "transcript": "scripts/surface_remainder_k4_k4_00280_00285.txt",
+  "replay": "scripts/surface_remainder_k4_k4_00280_00285_rerun.txt",
+  "transcript_sha256": "3efb3348f0a3a7bc11456f7ebf04c95addb26d4fb772b1b89ae147f7277c16d1",
+  "replay_sha256": "3efb3348f0a3a7bc11456f7ebf04c95addb26d4fb772b1b89ae147f7277c16d1"
+}

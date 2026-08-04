@@ -1,0 +1,610 @@
+% A complete machine-checked Osterwalder-Seiler chain for the Z_2 chain.
+% Lane: O (operator bridge), modules YangMills/OS/**.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.  Freeze: Lean tree of source checkpoint
+% bd2c18394ce8a55ec73413c11a9f311bbf002248, full core build 8422 jobs,
+% 2431 oracle commands (see Section 8).
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\anchor}{bd2c18394ce8a55ec73413c11a9f311bbf002248}
+\newcommand{\osfile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean}{\nolinkurl{#2}}}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Om}{\Omega}
+\newcommand{\inn}[2]{\langle #1,\, #2\rangle}
+\newcommand{\Ex}{\mathbb{E}}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1|}
+
+\title{From the Gibbs Weight to the Spectral Gap:\\
+A Complete Machine-Checked Osterwalder--Seiler Chain\\
+for the $\Z_2$ Lattice Gauge Chain\\
+\large The mathematics is textbook; what is verified\\
+is that every interface composes}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A mass gap is a statement about the spectrum of an operator, but a lattice
+gauge theory is given as a measure.  The passage between the two --- the
+Osterwalder--Seiler reconstruction --- proceeds through reflection positivity,
+a Gelfand--Naimark--Segal space, a transfer operator, and an \emph{identification}
+theorem asserting that expectations in the measure are matrix elements of that
+operator.  This paper reports a complete formal verification of that passage,
+in Lean 4 with \texttt{mathlib}, for the $\Z_2$ lattice gauge chain: from the
+Boltzmann weight $e^{\beta s}$ to exponential decay of a correlation function
+of the measure, with every arrow a machine-checked theorem and no arrow
+assumed.  The endpoint is the exact identity
+$\Ex_n[f(\sigma_0)f(\sigma_n)] = (\tanh\beta)^n$ for the sign observable, a
+statement in which no operator occurs and whose proof goes through one, and
+whose rate is exactly the verified non-vacuum transfer eigenvalue
+$\tanh\beta$; equivalently, the normalised transfer operator has spectral gap
+$1-\tanh\beta > 0$, and the corresponding mass is
+$-\log(\tanh\beta) > 0$ for $\beta > 0$.  All three are machine-checked.
+
+We state the limits with the same precision as the results.  The system has one
+$\Z_2$ variable per time slice, so its spatial slice is a point and its transfer
+operator is a $2\times 2$ matrix; a lattice with spatial extent is not treated.
+The bound is at fixed finite size and is \emph{not} volume-uniform.  The pairing
+of this system is definite --- proved, not assumed --- so the
+Gelfand--Naimark--Segal quotient is the identity and therefore does no work;
+a system with a degenerate pairing still needs it.  The underlying
+mathematics is textbook: Osterwalder--Seiler is from 1978 and the transfer
+matrix of the Ising chain is older still.  The contribution claimed here is not
+a new theorem but a verified composition: that the interfaces of the
+reconstruction fit together with nothing hidden between them, exhibited on the
+smallest system where all of them are simultaneously present.  Nothing in this
+paper is a claim about $\SU(N)$, the continuum limit, or the Yang--Mills mass
+gap.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{The gap between a measure and a spectrum}
+
+Constructive lattice gauge theory produces a measure.  The mass gap is a
+property of an operator.  The bridge between them is the Osterwalder--Seiler
+reconstruction \cite{OsterwalderSeiler}; the surrounding framework is
+\cite{GlimmJaffe}.  Reflection positivity of the measure
+gives a positive semi-definite pairing on functions of the fields in a half
+space; quotienting by its null space and completing gives a Hilbert space;
+translation in the reflected direction descends to a self-adjoint contraction
+$T$ fixing the vacuum vector $\Om$; and the \emph{identification} theorem states
+that the Euclidean expectation of an observable separated by $n$ time steps
+from another is the matrix element $\inn{A\Om}{T^n B\Om}$.  Only after that
+last step does exponential decay of correlations become a statement about the
+spectrum of $T$, and only then can ``mass gap'' mean what it is supposed to
+mean.
+
+The identification is the step that is easiest to assume and hardest to supply.
+It is where a formalisation can quietly become circular: if the measure is
+\emph{defined} through the operator, the identification is a tautology and the
+chain proves nothing.  This paper's central design constraint --- fixed in
+advance, and verified mechanically rather than by inspection --- is that the two
+sides be defined independently.
+
+\subsection{What is proved here}
+
+For the $\Z_2$ chain with $n{+}1$ time slices we define, using
+$\exp$ and the bond sign and nothing else,
+\[
+  W_\beta(\sigma) \;=\; \prod_{t} e^{\beta\, s(\sigma_t,\sigma_{t+1})},
+  \qquad
+  s(i,j) = \begin{cases} +1 & i=j\\ -1 & i\neq j,\end{cases}
+\]
+the partition function $Z_n = \sum_\sigma W_\beta(\sigma)$ and the expectation
+$\Ex_n$.  Separately, and without reference to any measure, we define the
+operator
+\[
+  T_\beta \;=\; a(\beta)\,\mathbf{1} \;+\; b(\beta)\,S,
+  \qquad
+  a = \frac{e^{\beta}}{e^{\beta}+e^{-\beta}},\quad
+  b = \frac{e^{-\beta}}{e^{\beta}+e^{-\beta}},
+\]
+where $S$ exchanges the two configurations.  The results are:
+
+\begin{itemize}
+\item $Z_n = 2\,(e^\beta+e^{-\beta})^n$, computed;
+\item the identification $\Ex_n[\overline{A(\sigma_0)}\,B(\sigma_n)]
+      = \inn{A\Om}{T_\beta^{\,n} B\Om}$ for every $n$ and every pair of
+      observables;
+\item the non-vacuum bound $\|T_\beta - |\Om\rangle\langle\Om|\| \le a-b = \tanh\beta$,
+      hence spectral gap $1-\tanh\beta$, and for $\beta > 0$ mass
+      $-\log(\tanh\beta)$;
+\item and the endpoint $\Ex_n[f(\sigma_0)f(\sigma_n)] = (\tanh\beta)^n$.
+\end{itemize}
+
+Verification data for all of the above are collected in Section~\ref{sec:repro}.
+
+Reflection positivity of the same weight was verified separately
+\cite{ErikssonRP} and the abstract criterion relating a gap to exponential
+clustering was verified separately \cite{ErikssonOBridge}; both are consumed
+here, so the chain is complete end to end within one formal development.
+
+\subsection{What is deliberately not claimed}
+
+We separate this out because thematic proximity is not mathematical
+transfer.
+
+\begin{enumerate}
+\item \textbf{The system is the smallest one.}  One $\Z_2$ variable per time
+slice.  The spatial slice is a point; $T_\beta$ is a $2\times 2$ matrix.  A
+lattice with spatial extent has a transfer operator on a space growing with the
+volume and is not treated here.
+\item \textbf{The bound is not volume-uniform.}  It is a statement at fixed finite
+size.  At this size the question of volume-uniformity does not arise, which is
+exactly why the result is not evidence about the volume-uniform case.
+\item \textbf{The Gelfand--Naimark--Segal quotient is absent, not closed.}  The
+pairing of this system is already definite --- Remark~\ref{rem:complete} proves
+it --- so the quotient is the identity map.  That is an evasion of the
+difficulty, not a solution of it; a system with a degenerate pairing still
+requires it.
+\item \textbf{The mathematics is not new.}  The transfer matrix of the Ising
+chain predates all of this, and the reconstruction is \cite{OsterwalderSeiler}.
+What is new is that each interface is a machine-checked theorem and that they
+compose without a gap.
+\item \textbf{Nothing here concerns $\SU(N)$, the continuum limit, or the Clay
+problem} \cite{Clay}.  No reduction from any statement in this paper to the
+Yang--Mills mass gap is claimed, and none is known to the author.
+\end{enumerate}
+
+\section{The system and the measure}
+
+\begin{definition}[Configurations and weight]
+A configuration of the chain with $n$ bonds is a map
+$\sigma : \{0,\dots,n\} \to \Z_2$.  With $s(i,j) = +1$ if $i=j$ and $-1$
+otherwise, the bond weight is $k_\beta(i,j) = e^{\beta s(i,j)}$ and the path
+weight is $W_\beta(\sigma) = \prod_{t=0}^{n-1} k_\beta(\sigma_t,\sigma_{t+1})$.
+\end{definition}
+
+In Lean these are \osline{Z2Identification}{67}{z2Sign},
+\osline{Z2Identification}{76}{z2Bond} and
+\osline{Z2Identification}{84}{z2PathWeight}.  The partition function
+\osline{Z2Identification}{88}{z2Partition} and the expectation
+\osline{Z2Identification}{99}{z2Expect} are built from these.
+
+\begin{remark}[Non-circularity, verified mechanically]\label{rem:noncirc}
+The definitions above and the two derived from them form a closed dependency
+set:
+\[
+  \texttt{z2Expect} \to \{\texttt{z2PathSum},\texttt{z2Partition}\}
+  \to \texttt{z2PathWeight} \to \texttt{z2Bond} \to \{\exp,\texttt{z2Sign}\}
+  \to \varnothing .
+\]
+Printing all six definitions and inspecting the printouts shows that no
+transfer operator, and neither of the coefficients $a$, $b$, occurs anywhere on
+the measure side.  Because the closure is closed, this is a complete check
+rather than a sample.  This is the condition that makes the identification of
+Section~\ref{sec:ident} a theorem rather than a restatement of a definition.
+\end{remark}
+
+\section{Reflection positivity}
+
+Reflection positivity of the $\Z_2$ Wilson weight was established in a
+companion development \cite{ErikssonRP} and is recalled here only to place the
+present chain.  The route avoids both Bochner's theorem and the Schur product
+theorem by formulating the hypothesis as \emph{non-negative combination of
+characters} rather than as non-negativity of Fourier coefficients; that class is
+closed under products by indexing over pairs, which is what the reflected
+pairing requires.  For $\Z_2$ at $\beta \ge 0$ the coefficients are
+$(e^{\beta} \pm e^{-\beta})/2$, and their non-negativity is monotonicity of
+$\exp$.  The relevant artifacts are
+\osline{ReflectionSplitting}{131}{osPairing\_nonneg},
+\osline{WilsonCharCombo}{169}{z2Wilson\_isPSDKernel} and
+\osline{Z2Endpoint}{116}{z2Wilson\_reflectionPositive}, with non-degeneracy at
+\osline{Z2Endpoint}{123}{z2WilsonSystem\_nondegenerate}.
+
+\begin{remark}
+For $\Z_N$ with $N > 2$ the corresponding coefficients are discrete
+Bessel-type sums and their non-negativity is \emph{not} proved in this
+development.  The chain of this paper is therefore specific to $\Z_2$ and does
+not extend to $\Z_N$ without that missing input.
+\end{remark}
+
+\section{The transfer operator, read off the Gibbs weight}
+
+\begin{definition}
+On $\C^2$ with the Euclidean inner product let $S$ be the exchange of the two
+configurations and
+$T_\beta = a(\beta)\mathbf{1} + b(\beta) S$ with $a,b$ as above.
+\end{definition}
+
+The point of this definition is what it does \emph{not} contain: no eigenvector,
+no projection, no spectral datum.  The coefficients are the normalised
+Boltzmann weights.  In Lean, \osline{Z2Transfer}{158}{z2TransferOp}.
+
+\begin{theorem}[The vacuum is fixed, as a consequence]\label{thm:fix}
+$T_\beta \Om = \Om$ for the uniform vector $\Om = 2^{-1/2}(1,1)$.
+\end{theorem}
+
+\begin{proof}
+$T_\beta \Om = (a+b)\Om$ and $a + b = 1$ by construction of the normalisation.
+\end{proof}
+
+Formally \osline{Z2Transfer}{189}{z2TransferOp\_fix}.  We stress that this is a
+consequence of normalisation rather than a hypothesis; a development in which
+$T\Om = \Om$ is assumed has moved the content elsewhere.
+
+\begin{theorem}[Non-vacuum spectral bound]\label{thm:gap}
+For $\beta \ge 0$,
+$\bigl\| T_\beta - \ket{\Om}\bra{\Om} \bigr\| \le a(\beta) - b(\beta)
+= \tanh\beta < 1$,
+where $\ket{\Om}\bra{\Om}$ denotes the orthogonal projection onto $\C\Om$.
+\end{theorem}
+
+\begin{proof}[Proof, as formalised]
+The projected operator acts componentwise as $(a-b)$ times the projection off
+the vacuum; this identity is proved from $a+b=1$ alone.  The norm bound then
+follows from an explicit operator-norm estimate, with no appeal to a spectral
+theorem.  The evaluation $a - b = \tanh\beta$ is proved rather than asserted.
+\end{proof}
+
+Artifacts: \osline{Z2Transfer}{261}{z2TransferOp\_gap},
+\osline{Z2Transfer}{142}{z2A\_sub\_z2B\_eq\_tanh}, and the packaging
+\osline{Z2Transfer}{220}{z2TransferOp\_vacuumTransfer}.
+
+\begin{remark}[Three quantities, kept apart]\label{rem:terminology}
+With the vacuum eigenvalue normalised to $1$, three different numbers are in
+play, and we name them as the literature does.
+\begin{itemize}
+\item $\tanh\beta$ is the \emph{non-vacuum eigenvalue}: the spectral radius of
+$T_\beta$ restricted to the orthogonal complement of the vacuum, equivalently
+the contraction rate.  This is what Theorem~\ref{thm:gap} bounds and what
+appears as the decay rate in Theorem~\ref{thm:endpoint}.
+\item $1-\tanh\beta$ is the \emph{spectral gap} of the transfer operator,
+strictly positive for every $\beta$: \osline{Z2Transfer}{331}{z2\_spectral\_gap\_pos}.
+\item $-\log(\tanh\beta)$ is the \emph{mass} --- the gap of $H$ in
+$T_\beta = e^{-H}$ --- strictly positive for $\beta > 0$:
+\osline{Z2Transfer}{348}{z2\_mass\_pos}.
+\end{itemize}
+Earlier drafts of this development, and the identifiers
+\lean{z2TransferOp\_gap}, \lean{connCorrC\_le\_of\_gap} and
+\lean{sharp\_clustering\_iff\_gap}, use ``gap'' for the first of the three.
+Those names are retained because companion developments already consume
+them and their permalinks are fixed; an identifier is not a claim, and what
+each of them states is the non-vacuum bound.  In this paper's prose the
+three are kept distinct.
+\end{remark}
+
+\section{The identification}\label{sec:ident}
+
+Write $A\Om$ for the vector with entries $A(i)\,\Om(i)$.
+
+\begin{theorem}[Identification]\label{thm:ident}
+For every $n \in \mathbb{N}$ and all observables $A, B : \Z_2 \to \C$,
+\[
+  \Ex_n\bigl[\overline{A(\sigma_0)}\;B(\sigma_n)\bigr]
+  \;=\; \inn{A\Om}{\,T_\beta^{\,n}\,B\Om}.
+\]
+\end{theorem}
+
+\begin{proof}[Proof, as formalised]
+Split the sum over configurations at the first spin.  Writing
+$\sigma = (s,\tau)$, the first bond factors out of the path weight and the
+inner sum over $s$ turns the observable $A$ into
+$A'(i) = \sum_s \overline{A(s)}\,k_\beta(s,i)$, which is
+$(e^\beta+e^{-\beta})$ times one application of $T_\beta$.  Each bond therefore
+emits one factor of the normalisation and one application of the operator, and
+closing the induction step requires only the symmetry of the kernel --- that is,
+the self-adjointness of $T_\beta$.  After $n$ steps,
+\[
+  \sum_\sigma \overline{A(\sigma_0)}B(\sigma_n) W_\beta(\sigma)
+  = (e^\beta+e^{-\beta})^n\,\inn{A}{T_\beta^{\,n} B},
+\]
+where $A,B$ on the right are read as vectors of $\C^2$.  Taking $A=B=1$ and
+using $T_\beta \mathbf{1} = \mathbf{1}$ --- again $a+b=1$ --- gives
+$Z_n = 2(e^\beta+e^{-\beta})^n$.  The two powers of the normalisation cancel in
+the quotient, leaving $\tfrac12 \inn{A}{T_\beta^n B}$; and
+$\inn{A\Om}{T_\beta^n B\Om} = (2^{-1/2})^2 \inn{A}{T_\beta^n B}$ is the same
+number.
+\end{proof}
+
+The induction step is \osline{Z2Identification}{171}{z2PathSum\_succ}, the
+partition function \osline{Z2Identification}{221}{z2Partition\_eq}, and the
+theorem \osline{Z2Identification}{269}{z2\_identification}.
+
+\begin{remark}
+The cancellation of $(e^\beta+e^{-\beta})^n$ between numerator and denominator
+is not arranged by hand: both sides are computed independently and the factor
+appears in each.  Judge~2 of the pre-registration
+(\repofile{docs/O-BRIDGE-CHARTER.md}{docs/O-BRIDGE-CHARTER.md}, Amendment~8)
+required exactly this --- that the partition function be \emph{computed} rather
+than symbolically cancelled --- because a development that divides by an
+uncomputed $Z$ can hide an error of normalisation that would falsify the
+identification.
+\end{remark}
+
+\begin{remark}[What in this argument is general, and what is not]
+It is worth separating the two, because the next system will reuse one and
+not the other.  The induction above --- splitting configurations at the
+first spin, factoring one bond out of the path weight, and absorbing it into
+the observable --- uses only that the state space is finite and that the bond
+kernel is symmetric.  It does not use that the group has two elements, and it
+does not use the explicit form of $k_\beta$.  Everything downstream of it
+does: the dictionary between observables and vectors, the evaluation
+$Z_n = 2(e^\beta+e^{-\beta})^n$, the eigenvector computation of the
+next section, and the operator-norm bound of Theorem~\ref{thm:gap} are all
+carried out in explicit coordinates on a two-dimensional space.  The
+formalisation reflects this asymmetry in its proofs but not in its types:
+every declaration is stated at the concrete state space, so the general half
+of the argument is \emph{present but not abstracted}.  Porting to a larger
+system therefore means re-typing the induction rather than reproving it, and
+redoing the rest.
+\end{remark}
+
+\section{The endpoint}
+
+Let $f(0) = +1$, $f(1) = -1$.
+
+\begin{theorem}[Exact two-point function]\label{thm:endpoint}
+For every $n$,
+$\;\Ex_n\bigl[f(\sigma_0) f(\sigma_n)\bigr] = (\tanh\beta)^n$.
+Moreover $\Ex_n[f(\sigma_0)] = 0$, so the connected two-point function
+coincides with the full one.
+\end{theorem}
+
+\begin{proof}
+$f$, read as a vector, satisfies $T_\beta f = (a-b) f$, so
+$T_\beta^n f = (a-b)^n f$; Theorem~\ref{thm:ident} and
+$\inn{f}{f} = 2$ give the value, and $a - b = \tanh\beta$.  The one-point
+function is $\inn{f\Om}{\Om}$, which vanishes because $f$ sums to zero.
+\end{proof}
+
+Artifacts: \osline{Z2Identification}{346}{z2\_two\_point\_tanh},
+\osline{Z2Identification}{364}{z2\_measure\_clustering} (the same in norm form),
+and non-vacuity at
+\osline{Z2Identification}{375}{z2\_two\_point\_ne\_zero}.
+
+This is the statement the whole chain exists to produce.  Its left-hand side
+contains no operator: it is an expectation in a measure defined from
+$e^{\beta s}$.  Its right-hand side is a number that came out of the spectrum of
+$T_\beta$.  Its rate is exactly the non-vacuum eigenvalue bounded in
+Theorem~\ref{thm:gap}; the spectral gap and the mass are the derived
+quantities of Remark~\ref{rem:terminology}.  That the measure-side decay
+rate equals the non-vacuum transfer eigenvalue, from which the spectral gap
+and the mass follow, is the content of the reconstruction, and here it is
+checked rather
+than asserted.
+
+\begin{remark}[On what an exact answer does and does not show]
+For this system the two-point function can be computed directly, without any of
+the machinery above; the value $(\tanh\beta)^n$ is classical \cite{Simon}.  The verification
+reported here is therefore not evidence that the machinery is \emph{necessary}
+--- at this size it plainly is not.  It is evidence that the machinery is
+\emph{correct}: an independently constructed operator-theoretic route reproduces
+the classical answer exactly, which is the check one wants before applying the
+same route where no direct computation is available.
+\end{remark}
+
+\begin{remark}[What ``complete'' means here]\label{rem:complete}
+The reconstruction quotients by the null space of the pairing, and a reader
+is entitled to ask whether the operator of this paper is literally the
+descent of time translation to that quotient or is instead read off the
+bond kernel and then matched to the measure.  It is the latter, and that is
+deliberate --- an independently constructed operator is what makes
+Theorem~\ref{thm:ident} a theorem rather than a definition.  What makes the
+chain nonetheless complete is that the quotient step is present and is
+proved to be the identity, not assumed to be.  The $n=0$ instance of
+Theorem~\ref{thm:ident} \emph{is} the pairing of this system, and
+\osline{Z2Identification}{417}{z2\_pairing\_nondegenerate} shows its null
+space is zero; \osline{Z2Identification}{399}{z2Obs\_injective} shows
+$A \mapsto A\Om$ is injective, so that map is the reconstruction map.  The
+general-$n$ identification then says that $T_\beta$ implements the time
+translation on its image.  In this definite finite model the
+Osterwalder--Seiler quotient is therefore canonically trivial, and the
+operator obtained from the normalised bond kernel realises the same
+reconstructed Hilbert-space dynamics.  ``Complete'' means every link of the
+chain is present and composes; it does not mean that every link was hard.
+\end{remark}
+
+\section{The abstract criterion, consumed}
+
+The companion development \cite{ErikssonOBridge} proves, for a self-adjoint
+contraction $T$ with $T\Om = \Om$ and $\|\Om\| = 1$, that a bound
+$\|T - \ket{\Om}\bra{\Om}\| \le r$ is \emph{equivalent} to exponential decay of
+the connected two-point function at rate $r$ along a family with dense span,
+with an unconstrained constant per observable.  Theorem~\ref{thm:gap} supplies a
+hypothesis of that criterion from an operator that came from the measure, so the
+criterion is consumed rather than merely stated:
+\osline{SharpBridge}{218}{connCorrC\_le\_of\_gap} and
+\osline{SharpBridge}{270}{sharp\_clustering\_iff\_gap}, resting on
+\osline{DenseClustering}{225}{norm\_le\_of\_dense\_decayDomain}.
+
+\begin{remark}
+Before the present work, every witness of that criterion in the development had
+the form $r\mathbf{1} + (1-r)P$ --- an operator built \emph{from} the conclusion.
+An adversarial audit and an external review both identified this as the
+criterion's outstanding weakness.  $T_\beta$ is not of that form; it is read off
+the Gibbs weight.  We record that the objection applied, and that it is answered
+for this system and for no larger one.
+\end{remark}
+
+\section{Formalisation architecture}
+
+The development is Lean~4 \cite{Lean4} with \texttt{mathlib} \cite{Mathlib}
+pinned to an exact commit.  Three design decisions are worth recording because
+they are what made the chain composable.
+
+\paragraph{Separation of the two sides into disjoint definition sets.}
+The measure side and the operator side share no definitions; they meet in
+exactly one lemma, which states that the normalised bond weight equals the
+transfer matrix entry.  This is what makes Remark~\ref{rem:noncirc} checkable by
+printing definitions.  A development that shares a ``kernel'' definition between
+the two sides cannot make that check.
+
+\paragraph{Observables as plain functions, vectors as a separate type.}
+Observables are $\Z_2 \to \C$; vectors live in the Euclidean space.  A single
+explicit dictionary maps between them.  Identifying the two types would have
+made the identification theorem read as a triviality.
+
+\paragraph{Induction on the path, not on the operator.}
+The proof of Theorem~\ref{thm:ident} inducts on the number of bonds, splitting
+configurations with the standard cons equivalence, and never manipulates
+$T^n$ symbolically.  The operator power is assembled by the induction rather
+than assumed to interact with the sum.
+
+\paragraph{House notes.}  Two recurrences cost builds and are recorded for
+re-use.  First, goals produced by the self-adjointness/symmetry interface sit
+over the \emph{linear-map} coercion, so a lemma stated about the continuous
+linear map does not apply until the coercion is bridged.  Second, the two
+unfolding lemmas for powers act on opposite sides, and pairing an iteration
+lemma that unfolds on the left with a power lemma that unfolds on the right
+leaves the two sides of an induction step misaligned in a way whose error
+message points nowhere near the cause.
+
+\section{Reproducibility and verification data}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}
+of \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Every link in
+this paper was resolved against that commit before compilation.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8422 jobs, success \\
+Oracle commands & 2431 \\
+\quad with axiom dependencies & 2409 \\
+\quad axiom-free & 22 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
+Project axioms & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The oracle script is \repofile{oracle\_check.lean}{oracle\_check.lean}; the core
+root is \repofile{YangMillsCore.lean}{YangMillsCore.lean}.  The five criteria this work was
+required to meet --- including the non-circularity condition of
+Remark~\ref{rem:noncirc} and the computed partition function of
+Section~\ref{sec:ident} --- were fixed in
+\repofile{docs/O-BRIDGE-CHARTER.md}{docs/O-BRIDGE-CHARTER.md}, Amendment~8,
+in a commit preceding the existence of the module they govern; their verdicts
+are recorded in
+\repofile{docs/VERIFICATION-LEDGER.md}{docs/VERIFICATION-LEDGER.md},
+Addendum~512.
+
+\section{Theorem--artifact map}
+
+\begin{center}
+\begin{longtable}{p{0.30\textwidth} p{0.62\textwidth}}
+\toprule
+Statement & Artifact \\
+\midrule
+\endhead
+Bond weight, path weight & \osline{Z2Identification}{76}{z2Bond},
+  \osline{Z2Identification}{84}{z2PathWeight} \\
+Expectation in the measure & \osline{Z2Identification}{99}{z2Expect} \\
+Transfer operator & \osline{Z2Transfer}{158}{z2TransferOp} \\
+Theorem~\ref{thm:fix} (vacuum fixed) & \osline{Z2Transfer}{189}{z2TransferOp\_fix} \\
+Transfer data & \osline{Z2Transfer}{220}{z2TransferOp\_vacuumTransfer} \\
+Theorem~\ref{thm:gap} (gap) & \osline{Z2Transfer}{261}{z2TransferOp\_gap} \\
+Rate equals $\tanh\beta$ & \osline{Z2Transfer}{142}{z2A\_sub\_z2B\_eq\_tanh} \\
+Spectral gap $1-\tanh\beta>0$ & \osline{Z2Transfer}{331}{z2\_spectral\_gap\_pos} \\
+Mass $-\log(\tanh\beta)>0$ & \osline{Z2Transfer}{348}{z2\_mass\_pos} \\
+Induction step & \osline{Z2Identification}{171}{z2PathSum\_succ} \\
+Partition function & \osline{Z2Identification}{221}{z2Partition\_eq} \\
+Theorem~\ref{thm:ident} (identification) & \osline{Z2Identification}{269}{z2\_identification} \\
+Theorem~\ref{thm:endpoint} (endpoint) & \osline{Z2Identification}{346}{z2\_two\_point\_tanh} \\
+Endpoint, norm form & \osline{Z2Identification}{364}{z2\_measure\_clustering} \\
+Non-vacuity & \osline{Z2Identification}{375}{z2\_two\_point\_ne\_zero} \\
+Reconstruction map injective & \osline{Z2Identification}{399}{z2Obs\_injective} \\
+Quotient is the identity & \osline{Z2Identification}{417}{z2\_pairing\_nondegenerate} \\
+Reflection positivity & \osline{Z2Endpoint}{116}{z2Wilson\_reflectionPositive} \\
+Non-degeneracy & \osline{Z2Endpoint}{123}{z2WilsonSystem\_nondegenerate} \\
+Positive-definite kernel & \osline{WilsonCharCombo}{169}{z2Wilson\_isPSDKernel} \\
+Reflected pairing & \osline{ReflectionSplitting}{131}{osPairing\_nonneg} \\
+Gap $\Rightarrow$ clustering & \osline{SharpBridge}{218}{connCorrC\_le\_of\_gap} \\
+Clustering $\Leftrightarrow$ gap & \osline{SharpBridge}{270}{sharp\_clustering\_iff\_gap} \\
+Dense-family criterion & \osline{DenseClustering}{225}{norm\_le\_of\_dense\_decayDomain} \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\section{Continuation}
+
+The next step is not a larger gauge group but a harder pairing.  The
+Gelfand--Naimark--Segal quotient does no work in this paper because the pairing
+is definite; the first genuine test is a system whose pairing is degenerate, so
+that the quotient must be constructed and its properties transported through it.
+After that comes spatial extent --- a transfer operator acting on a space that
+grows with the volume --- and only after that does volume-uniformity become a
+meaningful question.  Volume-uniformity is the first point at which any of this
+could bear on a mass gap, and it is not reached here.  We state this ordering
+because the temptation in this area is to jump to the last item; the intervening
+steps are where constructions of this kind are expected to fail, and the present
+one has not yet been asked the question.
+
+\begin{thebibliography}{9}
+
+\bibitem{OsterwalderSeiler}
+K.~Osterwalder and E.~Seiler,
+\emph{Gauge field theories on a lattice},
+Annals of Physics \textbf{110} (1978), 440--471.
+
+\bibitem{GlimmJaffe}
+J.~Glimm and A.~Jaffe,
+\emph{Quantum Physics: A Functional Integral Point of View},
+2nd ed., Springer, 1987.
+
+\bibitem{Simon}
+B.~Simon,
+\emph{The Statistical Mechanics of Lattice Gases, Volume I},
+Princeton University Press, 1993.
+
+\bibitem{ErikssonOBridge}
+L.~Eriksson,
+\emph{Clustering and the Transfer-Operator Gap: A Machine-Checked Dense-Family
+Criterion}, viXra, 2026.
+
+\bibitem{ErikssonRP}
+L.~Eriksson,
+\emph{Reflection Positivity for Abelian Lattice Gauge Theory, Machine-Checked},
+viXra, 2026.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+CADE-28, Lecture Notes in Computer Science \textbf{12699} (2021), 625--635.
+
+\bibitem{Mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+CPP 2020, 367--381.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills theory},
+Clay Mathematics Institute Millennium Prize Problem description, 2000.
+
+\end{thebibliography}
+
+\end{document}

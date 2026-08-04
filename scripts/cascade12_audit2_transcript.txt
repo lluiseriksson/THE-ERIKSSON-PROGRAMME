@@ -1,0 +1,303 @@
+=== CASCADES 1+2 - FRESH INDEPENDENT AUDIT, ROUND 2 (audit desk, 2026-07-11) ===
+[hash context: on top of 7d62a46 (>= 4cce5ba as commissioned); audits the
+ v62 repair of the v61 fabrication + the cascade-2 fabrication]
+
+Objects under audit:
+  [CASCADE 1] scripts/cascade1_signed_minoration.py + transcript;
+              scripts/cascade1_floor_arb.py + transcript.
+              Claim: m(beta,c) = beta^{3/2} e^{-4 beta c} <D> >= m_low >= 1/2
+              on beta >= 15, t in (0, pi - 1.5/beta].
+  [CASCADE 2] scripts/cascade2_step0_eps.py + transcript (+ two preserved
+              fail transcripts).  Claim: <P>_K/<D> <= [4 beta c]^{-1}(1+eps_b)
+              + C_mir e^{-2 beta delta4}, eps_b = 2.0 (t<=2.9) / 4.85 (t>2.9),
+              C_mir = 3.0.
+
+Split roles honored: this desk fabricated nothing; every number below was
+re-derived with the auditor's own code (mpmath dps 30-40, numpy float
+grids, python-flint only to reproduce the in-script computed constants).
+Commission: full four steps, STOP AT FIRST FAILURE.  This audit STOPPED
+inside STEP 1(d).  Record follows.
+
+--------------------------------------------------------------------
+PROVENANCE (pinned before auditing; incident #27 rule - all numbers
+read from files on disk, none from relay messages)
+--------------------------------------------------------------------
+HEAD = 7d62a465f879be2623c4647829721b96448228c7.
+sha256(cascade1_signed_minoration.py) =
+  5e1f61312f3d3fc98578ffbbb2365fa88848fef834892d787feefd931e92b9e8
+  == hash printed in cascade1_signed_minoration_transcript.txt.
+sha256(cascade1_floor_arb.py) =
+  722368f7fc4f4c974b64fad9fd845913733547d9525f5a3ef54fc3569c860055
+  == hash printed in cascade1_floor_arb_transcript.txt.
+sha256(cascade2_step0_eps.py) =
+  ddfe5efdfe96c46f9b4f3185f37134ad47f62574dbcb782885208067edd00450
+  == hash printed in cascade2_step0_eps_transcript.txt.
+The committed transcripts correspond to the committed scripts; findings
+attach to exactly those bytes.
+
+--------------------------------------------------------------------
+STEP 1(a) - ROUND-1 REPAIR (the GB constant): RE-DERIVED, PASS
+--------------------------------------------------------------------
+(i)   Chain re-derived independently:
+        GB_m <= C_abs * pi / (16 sqrt(2pi) (CP*1.9*FLB)^2) / (beta c^{7/2}).
+      With inked constants (1.089, 0.2214, 1.9, 0.6811):
+        2.078325832625169248312 / 2 = 1.039162916312...  (dps 40).
+      With sharp constants (1.0887396, 0.2214036, 0.6811789): 1.0386405.
+      The v62 record "1.0392 rounded UP from 1.0391629" is honest:
+      1.0392 > 1.03916291631.  PASS.
+(ii)  The scripts now COMPUTE the coefficient.  Reproduced both arb
+      expressions bit-for-bit at prec 120:
+        GBC (floor script)  = [2.0783258326251692483 +/- 1.24e-20]
+        GBC2 (cascade 2)    = [2.0783258326251692483 +/- 1.24e-20]
+      Difference vs the auditor's derived value: [+/- 7.30e-35] - identical
+      to 34 digits.  Nothing hand-assembled remains.  PASS.
+(iii) Validity as an upper-bound coefficient: the arb value is a ball
+      CONTAINING the true chain product of ball-enclosed decimal
+      constants; downstream arb arithmetic propagates the enclosure, so
+      SEG-C's T2 = -GBC*x/(1.5 c^{7/2}) encloses the true |T2| on the
+      path beta = 1.5/x (and overstates it for beta > 1.5/x, the safe
+      direction, since |T2| ~ 1/beta).  Constant orientations checked:
+      CABS 1.089 >= sharp (upper-safe), CP 0.2214 <= sharp and FLB
+      0.6811 <= sharp (both denominators, lower-safe).  Absorption
+      endpoint re-derived: h(wmax) = 0.0850207, e^h = 1.0887396 <= 1.089;
+      h convex (h'' = (3/4)/(1-w)^2 > 0), endpoint evaluation valid;
+      the 0.1-slice shrinks for beta c > 15/sqrt2.  PASS.
+(iv)  Elementary links re-verified with the auditor's own grids:
+      root-from-below on [0,0.7]; sin-chord concavity (sharp constant
+      0.22140356 >= 0.2214); companions bracket on z in [20,200];
+      A(z) <= 1/2 and decreasing.  All PASS.
+
+--------------------------------------------------------------------
+STEP 1(c) - MIRROR CHART: RE-DERIVED, PASS
+--------------------------------------------------------------------
+(i)   Identity 1-w = (s4/c)^2 (1-w') proved algebraically by this desk:
+      with P' = 1-P, Q' = 1-Q, c^2+s4^2 = 1,
+      (s4/c)^2(1-w') = [(P+Q-1)(s4^2-1) + PQ]/c^2 = 1-P-Q+PQ/c^2 = 1-w.
+      EXACT.  Numeric confirmation at four points incl. c = sqrt2/2.
+(ii)  w' >= 0 on B': exact condition derived: s4^2 >= max_{B'} P'Q'/(P'+Q')
+      = PR/2 (P'Q'/(P'+Q') increasing in each argument, corner max at
+      P'=Q'=PR = sin^2(0.6)), i.e. s4 >= sin(0.6)/sqrt2 = 0.3992625.
+      The zone edge 0.40 >= 0.3992625: zones L and C valid.  PASS.
+      (The design script's comment "min(P',Q') <= sin^2(0.6)/2 <= s4^2"
+      is a garbled justification of the right condition - cosmetic.)
+(iii) Zone L z-floor at the worst corner: 4*15*0.58*sqrt(1-wmax) =
+      20.948 >= 20 (companions applicable); beta*s4 >= 8.7 for C'_abs;
+      C'_abs endpoint 1.2294829 <= 1.230 (ink).  Rate floor
+      w' >= (1 - wmax/(4 s4^2))(P'+Q') from P'Q' <= (P'+Q')^2/4;
+      1-q4 > 0 needs the same s4 >= 0.3993.  Mirror-moment prefactor
+      re-assembled: beta/(4 sqrt(2pi) s4^{3/2}) * C'_abs * pi/lamp
+      * e^{-4 beta delta4} - matches the scripts.  PASS.
+(iv)  Zone C validity on [0.40, 0.58): K = 2 beta A(z) e^z <= beta e^z
+      <= beta e^{z_s(s4)} requires z <= z_s(s4) iff w' >= 0: holds for
+      s4 >= 0.3992625 <= 0.40.  Area(B') = 4r'^2 = 5.76 exact.
+      delta4 >= c(0.58) - 0.58 = 0.234616 in the zone.  PASS.
+(v)   Zone F: R^2 = 4c^2(1-P)(1-Q) + 4 s4^2 PQ (exact expansion,
+      re-derived) <= 4c^2 sin^4(0.6) + 4 s4^2 on B'; K <= beta e^z valid
+      for ALL s4 (A <= 1/2 global), so zone F is universally valid and
+      straddling dispatch (s4lo rules) is conservative.  Delta_far =
+      c - sqrt(c^2 PR^2 + s4^2) is decreasing on s4 in [0, 0.40] (both
+      derivative terms negative, re-derived); min = 0.42115325 at
+      s4 = 0.40 >= 0.42 as claimed.  Dead uniformly: at beta = 15 the
+      zone-F mirror mass <= 5.33e-8, and beta^{5/2}e^{-4 beta d} is
+      decreasing for d > 5/(8 beta) = 0.0417 << 0.4212.  PASS.
+
+--------------------------------------------------------------------
+STEP 1(d) - REST FLOOR + AREA LEMMA + LAYER SUM: THE LAYER SUM'S
+STIELTJES SUBSTITUTION DOES NOT DERIVE
+            *** FIRST FAILURE - AUDIT STOPS HERE ***
+--------------------------------------------------------------------
+Links re-derived and PASSING first:
+(i)   Rest floor: w >= P+Q-2PQ (c^2 >= 1/2) and the complete case
+      analysis redone by this desk (M = max(P,Q) >= PR off B; m =
+      min <= 1-PR off B'):  M <= 1/2: g >= M >= PR;  1/2 < M <= 1-PR:
+      g >= 2M(1-M) >= 2PR(1-PR) = 0.4344;  M > 1-PR: g linear in M,
+      subcases m <= 1/2 (floor 1/2) and m > 1/2 (floor at M=1: 1-m >=
+      PR).  Overall floor PR = 0.3188211 >= inked 0.318.  Fine-grid
+      (2400^2) confirmation: min 0.31898 on the grid.  PASS.
+(ii)  Area lemma: quarter measure dPdQ/sqrt(PQ(1-P)(1-Q)),
+      (1-P)(1-Q) >= 1-u on {P+Q <= u}, and the exact Beta integral
+      iint_{P+Q<=u}(PQ)^{-1/2} = u*B(1/2,3/2)*2 = pi u; times 4:
+      Area({P+Q <= u}) <= 4 pi u/sqrt(1-u).  EXACT, re-derived.  PASS.
+(iii) Both components: w <= sigma := P+Q and w >= sigma - sigma^2/2
+      give {w <= v} (subset) {sigma <= u(v)} u {sigma >= 2-u(v)},
+      u(v) = 1-sqrt(1-2v) <= 2v; mirror chart symmetric; hence
+      Area({w<=v}) <= 16 pi v/sqrt(1-2v) (valid v < 1/2).  Global
+      branch: P >= (s/pi)^2 gives 4 pi^3 v, valid for v >= 1/pi =
+      0.3183 (for v >= 1/2 it dominates the full torus area 4pi^2).
+      True crossover 0.4178721; script switches at 0.418 - on
+      [0.41787, 0.418) it uses the larger of two VALID bounds; as a
+      CDF bound Abar is valid everywhere used.  (Note: Abar as coded
+      has a 0.0404 downward step at 0.418; the 0.02-grid loop never
+      brackets it - the 0.398 -> 0.418 increment is positive.)  PASS
+      as a CDF bound.
+(iv)  Coverage of layers + bridge + shard: layers [0.318, wz_lo]
+      (z >= 20 there), bridge [wz_lo, wz_hi] (companions valid on the
+      z >= 20 part; the z < 20 part is double-covered by the shard -
+      safe direction), shard {w > wz20} = {z < 20} with K <= beta e^{20}
+      via A(z) <= 1/2 and full-torus area (2pi)^2.  Bridge prefactor
+      (zs_hi/20)^{3/2} = sup of (1-w)^{-3/4} on the bridge; mass
+      4 pi^3 (wz_hi - wz_lo) valid (wz_lo >= 0.788 >= 0.418 on the
+      certified segments).  No uncovered territory between layers,
+      bridge, shard.  PASS.
+
+THE FAILURE:
+(v)   The layered sum itself.  The chain claims
+        J := int_{REST & z>=20} (1-w)^{-3/4} e^{-2 beta c w} ds dalpha
+          <= S := sum_k (1-v_{k+1})^{-3/4} e^{-2 beta c v_k}
+                        (Abar(v_{k+1}) - Abar(v_k)),
+      layers v_k = 0.318 + 0.02k ("layered Stieltjes sum", design
+      script [T5]; identically in cascade1_floor_arb.T5_layers and
+      cascade2_step0_eps.rest_layers).  This inference is NOT valid
+      from the documented ingredients, on two independent counts:
+
+      (v.1) MISSING BOTTOM-MASS TERM.  For phi nonincreasing and any
+      CDF A(v) <= Abar(v) with A(v_0) = 0, summation by parts yields
+      only
+        J <= S + phi(v_0) * Abar(v_0),
+      and Abar(0.318) = 26.493924 is NOT zero.  The committed scripts
+      omit the bottom term everywhere.  The substitution dA -> dAbar
+      without it is false as an abstract lemma (worst-case mass
+      Abar(v_0) sitting at w = v_0+ is charged g_0*Abar(v_0), which S
+      does not contain).
+
+      (v.2) THE PER-LAYER CREDIT IS EXCEEDED BY WHAT THE DOCUMENTED
+      LEMMAS PERMIT.  The best layer-mass bound derivable from the
+      committed area lemma (sigma-window [v_k, u(v_{k+1})], Beta
+      integral pi*(b-a), both components, REST floor sigma >= 0.3188):
+        layer   permitted mass   credited Abar increment   ratio
+          0        3.73064            3.35399              1.112
+          1        4.44407            3.91918              1.134
+          2        5.29372            4.69799              1.127
+          3        6.37001            5.82819              1.093
+          4        7.78150            7.58962              1.025
+      The early layers - which dominate the weighted sum, weights
+      e^{-2 beta c v_k} decaying by ~0.65 per layer - are under-
+      credited by up to 13%.  No committed lemma closes the gap
+      ("Area({w<=v} & REST) <= Abar(v) - Abar(0.318)" is nowhere
+      stated or proved, and is not derivable from the area lemma:
+      the permitted CDF at v_1 is 3.73 > credited 3.35).
+
+      CONSEQUENCE: the inequality REST_m <= pref*S + shard - the [T5]
+      link of the signed minoration - is UNPROVEN as committed.  The
+      arb transcripts are valid certificates of the elementary-function
+      floor "m_low >= 1/2", but m_low's claim to minorize m rests on
+      [T5]; the chain m >= m_low therefore does not close.  Exactly as
+      in round 1: the mathematics survives, THE WITNESS DOES NOT.
+
+      MEASURED SEVERITY (auditor's own computations):
+      * Truth calibration at (t,beta) = (3.0416, 15) (3000^2 grid):
+        J_true = 1.078e-3 vs S = 1.645e-2 - the credited sum is 15.3x
+        ABOVE the true integral; true layer-0 area 0.0985 vs credit
+        3.354.  No numerical violation exists anywhere tested (the
+        committed bench's rest slack x49-468 concurs).  The failure is
+        the derivation, not the number.
+      * Abel-corrected chain (add the omitted term; g_k verified
+        nonincreasing on the checked segments so the corrected form is
+        rigorous): corrected floor m_low - 2*pref*g_0*Abar(0.318):
+          t = 0.000262, b=15 (SEG-A worst): 1.04250 -> 1.03473
+          t = 2.9,      b=15:               1.90487 -> 1.77273
+          t = pi-0.1,   b=15 (SEG-B end):   1.24251 -> 1.06817
+          SEG-B[59] hull-worst 0.96842 ->   approx 0.79
+          SEG-C: correction < 1e-280, unaffected.
+        ALL still > 1/2: CASCADE 1's floor claim survives the honest
+        completion with margin; the repair is mechanical.
+      * CASCADE 2 does NOT survive its inked constants under the
+        corrected chain (REST enters the numerator AND m_low):
+          eps_b at t = 2.9, beta = 15:  1.944 -> 3.837  vs ceiling 2.0
+          worst eps_b bulk  (t<=2.9):   3.84            vs ceiling 2.0
+          worst eps_b edge  (t>2.9):    8.52            vs ceiling 4.85
+          worst C_mir witness:          2.74            vs ceiling 3.0
+        The bulk and edge eps_b ceilings are BROKEN by the corrected
+        chain (point values at beta = 15; box hulls only worsen this).
+        C_mir marginally survives.  Cascade 2's inked constants are
+        not derivable from any currently-committed valid chain.
+
+      WHERE THE INVALID STEP BEARS LOAD:
+      (1) scripts/cascade1_signed_minoration.py [T5] docstring + m_low
+          (the derived-closed-form claim m >= m_low);
+      (2) scripts/cascade1_floor_arb.py T5_layers (the certificate
+          certifies the floor of a formula strictly SMALLER in |T5|
+          than any honestly-derived REST bound - the unsafe direction);
+      (3) scripts/cascade2_step0_eps.py rest_layers + assemble (both
+          eps_b and the m_low denominator inherit it);
+      (4) docs/SURFACE-CLOSURE-NOTES.md v61 records the route
+          ("layered Stieltjes sum in w with the absorbed kernel") as
+          part of REST^up - the acta carries the gap, not just the
+          scripts.
+
+--------------------------------------------------------------------
+NOT AUDITED (stopped at first failure, per the commission)
+--------------------------------------------------------------------
+STEP 1(e) full beta-monotonicity, 1(f) segment logic, 1(g) cascade-2
+re-derivation beyond the severity diagnostics above; STEP 2 rerun
+(provenance pinned by sha256 match instead); STEP 3 full adversarial
+code review.  These remain OWED to the next round; nothing here is
+their approval.  PROVISIONAL NOTES gathered in passing (recorded so
+the repair desk can fix cheaply; they are NOT rulings):
+  (a) 1(e): the per-piece beta-directions re-derive cleanly (T1 up;
+      |T2| ~ 1/beta down; zone L pure e^{-4 beta d4}, beta cancels
+      exactly; zones C/F decreasing since d >= 0.2346/0.4212 >>
+      5/(8*15); layer terms decreasing since v_k >= 0.318 >
+      1/(2*15*c); shard decreasing since 4c >> 5/(2*15)).  BUT the
+      layer COUNT grows with beta (wz20 -> 1), and |T5|-monotonicity
+      with the moving truncation is confirmed only numerically (3a,
+      five t's) - not proven.  The extra layers are exponentially
+      dominated (e^{-2 beta c wz20} vs e^{-2 beta c 0.318}); a one-line
+      domination argument should be written when [T5] is repaired.
+  (b) 1(f): SEG-A/SEG-B junction is NOT closed: tb =
+      float(blo(pi - 0.1)) = 3.0415926535897930272 sits 2.06e-16 BELOW
+      SEG-B's lowest t = pi - 0.1float; the sliver is inside the
+      window (window edge pi - 0.1dec is 2.11e-16 above tb).  A
+      width-2e-16 uncovered set of real t - vacuous by continuity but
+      a strict cover hole; repair by overlapping the segments.
+  (c) 1(g): the cascade-2 bulk/edge zone split is guarded at
+      float(2.9) = 2.9 - 8.9e-17 < decimal 2.9; points t in
+      (float2.9, 2.9] - including the exact stress-cell abscissa if
+      read as decimal - are certified only at the EDGE ceiling.  Pin
+      the inked zone edge to the certified convention.
+  (d) cascade2 fail1/fail2 transcripts are present and coherent with
+      the v62 failure history (regime pt 5 honored).
+  (e) design bench m_true(1.5,15) = 1.4918 and (2.5,15) = 2.1101
+      reproduce conv:mass (1.492/2.110) - consistency gift intact.
+
+--------------------------------------------------------------------
+REPAIR THE FAILURE DEMANDS (for the coordinating desk; not executed
+here - the audit desk does not fabricate)
+--------------------------------------------------------------------
+(1) Replace the [T5]/rest_layers inference by a valid one.  Two named
+    routes: (a) keep the w-layer increments and ADD the bottom-mass
+    term phi(v_0)*Abar(v_0) (plus a proof that g_k is nonincreasing,
+    which holds on the certified segments); the floor then still
+    clears 1/2 everywhere (worst approx 0.79) but cascade 2 must be
+    re-fabricated with honest ceilings; or (b) re-layer in sigma = P+Q
+    directly (sigma-windows, kernel exponent e^{-2 beta c (sigma -
+    sigma^2/2)}, Beta-integral mass pi*(b-a) per window - no bottom
+    term arises and the result is sharper); re-derive cascade 2's
+    (eps_b, C_mir) from whatever the honest chain yields.
+(2) Amend the v61 acta record of REST^up (amend, never erase) and the
+    scripts' docstrings; write the one-line moving-truncation
+    domination for beta-monotonicity of |T5| (note (a)).
+(3) While repairing: close the SEG-A/SEG-B junction sliver (note (b))
+    and pin the 2.9 zone-edge convention (note (c)).
+(4) Rerun all three scripts, recommit scripts + transcripts same
+    commit, and resubmit BOTH cascades to a fresh independent audit
+    owing the full four steps, including everything listed above as
+    NOT AUDITED.
+
+--------------------------------------------------------------------
+AUDIT VERDICT: FAIL — the layered Stieltjes substitution in [T5]
+(design script) and its twins (cascade1_floor_arb.T5_layers,
+cascade2_step0_eps.rest_layers) is not a valid inference from the
+committed area lemma: the dA -> dAbar replacement omits the required
+bottom-mass term phi(v_0)*Abar(v_0) (Abar(0.318) = 26.49 != 0), and
+the per-layer credits are exceeded by the lemma-permitted layer masses
+by up to 13% on the dominant layers.  The chain m >= m_low is
+therefore unproven as committed, and the certified floor transcripts
+witness the floor of a formula whose REST term no committed derivation
+supports.  Mathematics survives numerically (true rest mass 15-470x
+below the bound; Abel-corrected floor still >= 0.79 > 1/2 everywhere
+checked), so CASCADE 1 is repairable mechanically; CASCADE 2's inked
+ceilings do NOT survive the corrected chain (bulk eps_b 3.84 vs 2.0,
+edge 8.52 vs 4.85) and must be re-fabricated.  No ink for lem:mass or
+rem:step0 this round.
+--------------------------------------------------------------------

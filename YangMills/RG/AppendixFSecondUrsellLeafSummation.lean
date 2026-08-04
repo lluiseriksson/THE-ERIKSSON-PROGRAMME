@@ -1166,13 +1166,14 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum_le_kernelSum
           simp [appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum,
             marked, all, topTrees, nonroot, kernel]
 
-/-- Marked-root `H#` leaf summation with the closed finite geometric ratio.
+/-- Marked-root `H#` leaf summation reduced to the finite rooted tree-shape
+factor.
 
-This is the aggregate finite theorem: the raw marked-root tree sum is
-overcounted by complete-tree parent kernels, each fixed tree is bounded by the
-child-factorial moment power, and the complete-tree shapes are summed by the
-rooted child-count `4^n` theorem. -/
-theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_le_geometric_of_expWeight
+This is the aggregate analytic theorem shared by the `4^n` and Catalan
+endpoints: the raw marked-root tree sum is overcounted by complete-tree parent
+kernels, and each fixed tree is bounded by the child-factorial moment power.
+The only remaining input is the finite rooted child-count summation. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_le_treeShape_of_expWeight
     {d L : ℕ} [NeZero L]
     (HF : HoleFamily d L)
     (zK : Finset (Cube d L) → ℂ)
@@ -1198,8 +1199,10 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_le_geometric_of_expWeight
         appendixFHoleHsharpWeightedTreeMarkedRootSum
           HF zK w r n
       ≤
-    appendixFSecondUrsellMomentConstant d κ₀ *
-      appendixFSecondUrsellLeafConstant d κ₀ ^ n := by
+    appendixFSecondUrsellMomentConstant d κ₀ ^ (2 * n + 1) *
+      (((n : ℝ) + 1) * (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ T ∈ KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+          ∏ v : Fin (n + 1), ((KP.rootedChildCount T v).factorial : ℝ)) := by
   classical
   let topTrees : Finset (Finset (Sym2 (Fin (n + 1)))) :=
     KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1)))
@@ -1245,16 +1248,13 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_le_geometric_of_expWeight
         ∑ T ∈ topTrees,
           (∏ v : Fin (n + 1),
             ((KP.rootedChildCount T v).factorial : ℝ)) *
-            M ^ (2 * n + 1) := by
+          M ^ (2 * n + 1) := by
             refine Finset.sum_le_sum ?_
             intro T hT
             simpa [M] using
               appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_le_childFactor_mul_momentPow
                 HF zK w κ₀ r n T hT hw hw_exp hκ₀ hdisj hnoedges
                 hholes_ne hCq
-  have htree_sum : norm * S ≤ (4 : ℝ) ^ n := by
-    simpa [norm, S, topTrees] using
-      KP.rootedChildCount_factorialTreeSum_normalized_le_four_pow n
   have hsum_const :
       (∑ T ∈ topTrees,
         (∏ v : Fin (n + 1),
@@ -1288,13 +1288,142 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_le_geometric_of_expWeight
       M ^ (2 * n + 1) * (norm * S) := by
         rw [hsum_const]
         ring
-    _ ≤ M ^ (2 * n + 1) * (4 : ℝ) ^ n := by
-        exact mul_le_mul_of_nonneg_left htree_sum (pow_nonneg hM_nonneg _)
+    _ =
+      appendixFSecondUrsellMomentConstant d κ₀ ^ (2 * n + 1) *
+        (((n : ℝ) + 1) * (((n + 1).factorial : ℝ))⁻¹ *
+          ∑ T ∈ KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+            ∏ v : Fin (n + 1), ((KP.rootedChildCount T v).factorial : ℝ)) := by
+        simp [M, norm, S, topTrees]
+
+/-- Marked-root `H#` leaf summation with the closed finite geometric ratio.
+
+This is the `4^n` endpoint of
+`appendixFHoleHsharpWeightedTreeMarkedRootSum_le_treeShape_of_expWeight`. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_le_geometric_of_expWeight
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (κ₀ : ℝ)
+    (hκ₀ : 0 < κ₀)
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q)
+    (hw_exp :
+      ∀ Q : OmegaPolymerType HF zK,
+        w Q ≤ appendixFHoleExpWeight HF (2 * κ₀) Q.val)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ((n : ℝ) + 1) *
+        appendixFHoleHsharpWeightedTreeMarkedRootSum
+          HF zK w r n
+      ≤
+    appendixFSecondUrsellMomentConstant d κ₀ *
+      appendixFSecondUrsellLeafConstant d κ₀ ^ n := by
+  classical
+  let shape : ℝ :=
+    ((n : ℝ) + 1) * (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ T ∈ KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+        ∏ v : Fin (n + 1), ((KP.rootedChildCount T v).factorial : ℝ)
+  have hshape : shape ≤ (4 : ℝ) ^ n := by
+    simpa [shape] using KP.rootedChildCount_factorialTreeSum_normalized_le_four_pow n
+  have hcommon :
+      ((n : ℝ) + 1) *
+          appendixFHoleHsharpWeightedTreeMarkedRootSum
+            HF zK w r n
+        ≤ appendixFSecondUrsellMomentConstant d κ₀ ^ (2 * n + 1) *
+            shape := by
+    simpa [shape] using
+      appendixFHoleHsharpWeightedTreeMarkedRootSum_le_treeShape_of_expWeight
+        HF zK w r n κ₀ hκ₀ hw hw_exp hdisj hnoedges hholes_ne hCq
+  have hM_nonneg : 0 ≤ appendixFSecondUrsellMomentConstant d κ₀ :=
+    appendixFSecondUrsellMomentConstant_nonneg d κ₀
+  calc
+    ((n : ℝ) + 1) *
+        appendixFHoleHsharpWeightedTreeMarkedRootSum
+          HF zK w r n
+        ≤ appendixFSecondUrsellMomentConstant d κ₀ ^ (2 * n + 1) *
+            shape := hcommon
+    _ ≤ appendixFSecondUrsellMomentConstant d κ₀ ^ (2 * n + 1) *
+          (4 : ℝ) ^ n := by
+        exact mul_le_mul_of_nonneg_left hshape (pow_nonneg hM_nonneg _)
     _ =
       appendixFSecondUrsellMomentConstant d κ₀ *
         appendixFSecondUrsellLeafConstant d κ₀ ^ n := by
-        simp [appendixFSecondUrsellLeafConstant, M]
+        simp [appendixFSecondUrsellLeafConstant]
         ring_nf
+
+/-- Marked-root `H#` leaf summation with the exact Catalan tree-shape
+constant.
+
+This is the Catalan-strengthened companion to
+`appendixFHoleHsharpWeightedTreeMarkedRootSum_le_geometric_of_expWeight`.
+It keeps the same analytic hypotheses and replaces only the complete rooted
+child-factorial tree-shape summation, using the exact
+`KP.rootedChildCount_factorialTreeSum_normalized_le_catalan` endpoint instead
+of the coarser `4^n` envelope. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_le_catalan_of_expWeight
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (κ₀ : ℝ)
+    (hκ₀ : 0 < κ₀)
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q)
+    (hw_exp :
+      ∀ Q : OmegaPolymerType HF zK,
+        w Q ≤ appendixFHoleExpWeight HF (2 * κ₀) Q.val)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ((n : ℝ) + 1) *
+        appendixFHoleHsharpWeightedTreeMarkedRootSum
+          HF zK w r n
+      ≤
+    appendixFSecondUrsellMomentConstant d κ₀ ^ (2 * n + 1) *
+      (catalan n : ℝ) := by
+  classical
+  let shape : ℝ :=
+    ((n : ℝ) + 1) * (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ T ∈ KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+        ∏ v : Fin (n + 1), ((KP.rootedChildCount T v).factorial : ℝ)
+  have hshape : shape ≤ (catalan n : ℝ) := by
+    simpa [shape] using KP.rootedChildCount_factorialTreeSum_normalized_le_catalan n
+  have hcommon :
+      ((n : ℝ) + 1) *
+          appendixFHoleHsharpWeightedTreeMarkedRootSum
+            HF zK w r n
+        ≤ appendixFSecondUrsellMomentConstant d κ₀ ^ (2 * n + 1) *
+            shape := by
+    simpa [shape] using
+      appendixFHoleHsharpWeightedTreeMarkedRootSum_le_treeShape_of_expWeight
+        HF zK w r n κ₀ hκ₀ hw hw_exp hdisj hnoedges hholes_ne hCq
+  have hM_nonneg : 0 ≤ appendixFSecondUrsellMomentConstant d κ₀ :=
+    appendixFSecondUrsellMomentConstant_nonneg d κ₀
+  calc
+    ((n : ℝ) + 1) *
+        appendixFHoleHsharpWeightedTreeMarkedRootSum
+          HF zK w r n
+        ≤ appendixFSecondUrsellMomentConstant d κ₀ ^ (2 * n + 1) *
+            shape := hcommon
+    _ ≤ appendixFSecondUrsellMomentConstant d κ₀ ^ (2 * n + 1) *
+          (catalan n : ℝ) := by
+        exact mul_le_mul_of_nonneg_left hshape (pow_nonneg hM_nonneg _)
 
 /-- Target-decaying composition from a marked-root leaf-summation bound.
 

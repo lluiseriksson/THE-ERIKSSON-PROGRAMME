@@ -49,18 +49,19 @@
         }
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237Z0PrimeIndex",
-        "cmp116Eq237Z0Fiber",
-        "cmp116Eq237_nested_sum_eq_fiber_sum",
-        "cmp116Eq237Amplitude",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "cmp116Eq237_residualExponent_absorbed",
-        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
@@ -82,20 +83,41 @@
       "key": "proof.eq237.fixed-z0prime-display.v2",
       "source_id": "repo_eq237_postp_live_fields",
       "locator": {
-        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
-        "pdf_pages": "n/a; see primary citation keys",
+        "printed_pages": "primary anchors: cmp116.eq237.post-p-resummation printed 19-20; cmp116.constants.c3-alpha5 printed 20",
+        "pdf_pages": "primary anchors: cmp116.eq237.post-p-resummation PDF 19-20; cmp116.constants.c3-alpha5 PDF 20",
         "equations": [
           "CMP116 2.37",
           "CMP116 2.38",
           "post-(2.37) summation"
         ]
       },
+      "primary_source_locators": [
+        {
+          "citation_key": "cmp116.eq237.post-p-resummation",
+          "local_text": "text/cmp116-pages-15-20.txt lines 281-311",
+          "renders": [
+            "renders/cmp116-source-19.png",
+            "renders/cmp116-source-20.png"
+          ],
+          "role": "fixed-Z0prime display and post-(2.37) route locator only"
+        },
+        {
+          "citation_key": "cmp116.constants.c3-alpha5",
+          "local_text": "text/cmp116-pages-15-20.txt lines 313-327",
+          "renders": [
+            "renders/cmp116-source-20.png"
+          ],
+          "role": "alpha5/C3 locator for later constant-majorant work only"
+        }
+      ],
       "status": "lean_linked",
       "summary": "Target the visually confirmed fixed-Z0prime display before the last Z0prime summation.",
       "extracted_claims": [
+        "Locator sharpened only: primary citation keys cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5 carry printed/PDF pages, local text ranges and render artifacts for this live field.",
         "The display includes an exp(-(kappa1-1)*(LM)^-4*|Z\\Z0prime|) reserve factor.",
         "It includes a product over connected components Zi prime of Z0prime with amplitude 2*(L+2)^4*O(1)*epsilon2 and seven-delta decay.",
-        "It also contains an exp(O(1)*alpha5*|Z|) factor that later needs a constant-majorant/exponent-reserve proof."
+        "It also contains an exp(O(1)*alpha5*|Z|) factor that later needs a constant-majorant/exponent-reserve proof.",
+        "This field is the intended source premise for the Lean-facing heq237_fixed obligation."
       ],
       "formulas": [
         {
@@ -113,18 +135,19 @@
         }
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237Z0PrimeIndex",
-        "cmp116Eq237Z0Fiber",
-        "cmp116Eq237_nested_sum_eq_fiber_sum",
-        "cmp116Eq237Amplitude",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "cmp116Eq237_residualExponent_absorbed",
-        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
@@ -178,18 +201,19 @@
         }
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237Z0PrimeIndex",
-        "cmp116Eq237Z0Fiber",
-        "cmp116Eq237_nested_sum_eq_fiber_sum",
-        "cmp116Eq237Amplitude",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "cmp116Eq237_residualExponent_absorbed",
-        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
@@ -223,7 +247,9 @@
       "summary": "Dictionary target for D/P/Z0/Z0prime indices and the fixed-Z0prime fiber.",
       "extracted_claims": [
         "Eq. (2.37) is order-sensitive: the source sums over D, P, Z0 and then reorganizes by fixed Z0prime.",
-        "Lean already has names such as cmp116Eq237Z0PrimeIndex, cmp116Eq237Z0Fiber and cmp116Eq237_nested_sum_eq_fiber_sum.",
+        "Lean already has names such as cmp116Eq237Z0PrimeIndex, cmp116Eq237GlobalZ0PrimeIndex, cmp116Eq237Z0Fiber, cmp116Eq237Z0Fiber_mem_iff and cmp116Eq237_nested_sum_eq_fiber_sum.",
+        "Lean also exposes cmp116Eq237Z0PrimeIndex_subset_global plus global-index and source-membership variants of cmp116PostPResidualSourceBound_of_eq237; these are existing consumers of the Z0prime dictionary, not new source closure.",
+        "Lean also exposes cmp116Eq237GlobalZ0PrimeIndex_mem_iff and cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff as repository-side global-index dictionary helpers; the source-side membership equivalence remains an explicit input.",
         "The source dictionary must prove that the Lean fiber exactly captures the source choices for fixed Z0prime."
       ],
       "formulas": [
@@ -239,13 +265,34 @@
           ],
           "conclusion": "Feeds nested-sum equality and fixed-Z0prime bound application.",
           "source_verified": false
+        },
+        {
+          "id": "eq237.dictionary.global-z0prime-index",
+          "statement": "Target dictionary for the global fixed-Z0prime index used by the final post-(2.37) summation.",
+          "ascii": "sourceZ0PrimeIndex = cmp116Eq237GlobalZ0PrimeIndex R after a supplied source membership iff",
+          "latex": "\\mathrm{sourceZ0PrimeIndex}=\\mathrm{cmp116Eq237GlobalZ0PrimeIndex}(R)",
+          "exactness": "inferred",
+          "confidence": "repository_lean_symbols",
+          "assumptions": [
+            "Needs source membership equivalence for fixed Z0prime choices.",
+            "Needs D/P/Z0 source dictionaries before this can feed the final summation."
+          ],
+          "conclusion": "Feeds the final Z0prime summation and fixed-Z0prime fiber reindexing.",
+          "source_verified": false
         }
       ],
       "lean_targets": [
-        "cmp116Eq237Z0PrimeIndex",
-        "cmp116Eq237Z0Fiber",
-        "cmp116Eq237_nested_sum_eq_fiber_sum",
-        "CMP116Eq237MajorizationBoundary"
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global",
+        "YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex_mem_iff",
+        "YangMills.RG.cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_globalIndex",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
@@ -298,10 +345,10 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3Parameters",
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237Amplitude",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+        "YangMills.RG.CMP116Lemma3Parameters",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
@@ -354,9 +401,9 @@
         }
       ],
       "lean_targets": [
-        "cmp116Eq237_residualExponent_absorbed",
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237"
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
@@ -409,9 +456,9 @@
         }
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116Eq237Amplitude"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116Eq237Amplitude"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
@@ -462,8 +509,8 @@
         }
       ],
       "lean_targets": [
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
@@ -517,18 +564,19 @@
         }
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237Z0PrimeIndex",
-        "cmp116Eq237Z0Fiber",
-        "cmp116Eq237_nested_sum_eq_fiber_sum",
-        "cmp116Eq237Amplitude",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "cmp116Eq237_residualExponent_absorbed",
-        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
@@ -581,8 +629,8 @@
         }
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116PostPResidualSourceBound_of_eq237"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",

@@ -51,7 +51,7 @@
     "risk": 8,
     "lean_nearness": 4,
     "source_dependency": "Catalan identity",
-    "recommended_next_action": "do not integrate until tree class matches"
+    "recommended_next_action": "integrate KP Catalan endpoint; keep source/component mapping separate"
   },
   {
     "rank": 7,

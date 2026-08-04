@@ -1,0 +1,93 @@
+==================================================================
+RECEPTION DESK - MARK 5 FINAL C1 CONFIRMATION AND PAGE CLOSURE
+==================================================================
+Date: 2026-07-11
+Desk: reception (reconvened, third sitting on this mark)
+Repo: C:\Users\lluis\AppData\Local\Temp\eriksson-push2
+Diff under ruling: e9b3383..11e589d (HEAD at ruling = 11e589d)
+Prior rulings in force:
+  scripts/reception_mark5_transcript.txt        (RECEIVED, C1/C2/C3)
+  scripts/reception_mark5_c1_confirmation.txt   (C1: MARK STANDS)
+
+------------------------------------------------------------------
+1. PERIMETER CHECK
+------------------------------------------------------------------
+git diff --stat e9b3383..11e589d:
+  docs/SURFACE-CLOSURE-NOTES.md                     (acta v81)
+  papers/surface-complete/surface_theorem_complete.pdf (same commit)
+  papers/surface-complete/surface_theorem_complete.tex (3 hunks)
+Exactly the declared perimeter: three purges + PDF + acta.
+No other file touched. PASS.
+
+------------------------------------------------------------------
+2. THE THREE PURGES, CHECKED AGAINST C1
+------------------------------------------------------------------
+C1 reopens on: weakening of claims, alteration of the
+verified/derived split, or disturbance of (H_cube)'s 17x3
+verification record or its ink labeling.
+
+(a) Step (v) bench note: "the true mirror-ball mass" ->
+    "the verified-quadrature mirror-ball mass". The x2.7
+    domination figure and every judged quantity byte-identical.
+    Same class as EDIT (2) of the prior confirmation (tricotomy
+    correction: quadrature provenance wears the VERIFIED label,
+    never "true"). Downward-only. Mark undisturbed.
+
+(b) Stress-cell accounting: "its true mirror-ball counterpart by
+    direct quadrature ... true term sum 0.0733" -> "its
+    verified-quadrature mirror-ball counterpart ... verified
+    quadrature term sum 0.0733". The five term bounds
+    (4.74+7.71+8.70+8.49+0.64=30.3), the 0.0733, the -0.0707,
+    the +0.023553 saddle piece: all byte-identical. Same
+    edit-(2) class. Downward-only. Mark undisturbed.
+
+(c) rem:extractionstatus: "the divergence ruling of the committed
+    audit transcripts" -> the measured fact ("the computed
+    absolute contributions cease to decrease between j=7 and
+    j=8, so increasing extraction depth alone supplies no
+    convergent absolute-tail bound --- the fifth audit round's
+    measured ruling"). This is the RESIDUAL RESURRECTION of the
+    overclaim the (v') redaction had already retired; the new
+    wording is verbatim-consistent with the received (H_cube)
+    ink at the step itself (lines 1172-1176 of the tex). The
+    conditionality structure ((H_tail) named by the relay table;
+    (H_cube) local to the mirror clause; one joint integral-form
+    remainder work item) is unchanged. Downward-only: a claim
+    replaced by its committed witness. Mark undisturbed.
+
+(H_cube)'s record itself: "$B_m$ is \emph{verified} at all $17$
+judge cells at three $\beta$'s each" - OUTSIDE the diff, byte-
+untouched (no hunk contains the string 17). The verified/derived
+split moves nowhere upward; two labels move DOWN toward their
+witnesses. C1 test: PASS, same downward-only class as before.
+
+------------------------------------------------------------------
+3. THE STANDING CHECK, RUN BY THIS DESK
+------------------------------------------------------------------
+Governing test (adopted from the external reviewer, acta v81),
+to be run before every ink commit touching the page:
+
+  rg -n -i "diverg|no finite extraction depth|true mirror-ball|true term sum" papers/surface-complete
+
+Result at 11e589d, run by this desk: ZERO HITS (exit 1),
+including the PDF binary. PASS.
+
+------------------------------------------------------------------
+4. RULING
+------------------------------------------------------------------
+C1 FINAL: MARK 5 STANDS — PAGE CLOSED
+
+The diff e9b3383..11e589d is confirmed as the same downward-only
+class the prior C1 ruling blessed: no claim weakened beyond its
+witness, no judged quantity altered, the 17x3 record and its ink
+labeling untouched, the residual divergence overclaim purged.
+Mark 5 stands IN FINAL FORM. No further redaction rounds are
+entertained on this page short of a SUBSTANTIVE change to
+(H_cube)'s verification record. The standing check quoted in
+section 3 governs all future ink commits touching the page; a
+nonzero hit count is an automatic C1 reopening. The next round
+is exclusively the joint integral-form composite-Taylor remainder
+discharging (H_tail)+(H_cube).
+
+RECEPTION DESK, final sitting on mark 5. The page is closed.
+==================================================================

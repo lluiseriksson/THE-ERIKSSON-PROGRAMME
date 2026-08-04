@@ -1,0 +1,19 @@
+PROVENANCE git_head 8b4a17c0681601d0d433ed769d23ce8daa8269a9
+PROVENANCE python 3.12.6
+PROVENANCE python_flint 0.9.0
+PROVENANCE arb_bits 180
+DEPENDENCY scripts/certify_surface_scaled_bulk_31_35_candidate.py 2b514fb4ecd9d2708a919920fd7da39bd6eef22db63c17ccb8496eafdb207ff2
+DEPENDENCY scripts/certify_bulk_beta_taylor_scaled_design.py 32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d
+DEPENDENCY scripts/certify_bulk_beta_taylor_arb.py f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+CONFIG unit 32_33 beta 32 33 step 1/10 CWIN 4 beta_order 12 t_order 9 prec 180
+beta-box [32.0, 32.1]: 385 t-boxes
+beta-box [32.1, 32.2]: 395 t-boxes
+beta-box [32.2, 32.3]: 403 t-boxes
+beta-box [32.3, 32.4]: 412 t-boxes
+beta-box [32.4, 32.5]: 421 t-boxes
+beta-box [32.5, 32.6]: 430 t-boxes
+beta-box [32.6, 32.7]: 438 t-boxes
+beta-box [32.7, 32.8]: 447 t-boxes
+beta-box [32.8, 32.9]: 458 t-boxes
+beta-box [32.9, 33.0]: 467 t-boxes
+PRODUCTION SCALED BULK UNIT 32_33 beta_boxes 10 t_boxes 4256

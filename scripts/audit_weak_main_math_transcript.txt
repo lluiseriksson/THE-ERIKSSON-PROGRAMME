@@ -1,0 +1,180 @@
+ADVERSARIAL MATH AUDIT TRANSCRIPT - WEAK-MAIN ROUTE (Surface Theorem seal 97a9a7f2)
+Mesa: Claude Fable 5 (High), independent desk. Date: 2026-07-28.
+Worktree audited: C:\Users\lluis\AppData\Local\Temp\eriksson-codex-audit (read-only; this
+file is the only new artifact). Python: C:\Python312\python.exe (mpmath 1.x, sympy, numpy).
+All verification code was written by this desk from the manuscript/acta definitions
+(lem:master, lem:sfree, cor:chat, lem:mini, lem:mass, prop:highbeta, Target k2endpoint),
+NOT from Codex script comments. Scratch scripts: audit_part1_symbolic.py,
+audit_part2_endtoend.py, audit_part3_rows.py, audit_part4_assembly.py (session scratchpad).
+
+================================================================================
+Q1. THE ASSEMBLY IDENTITY - PASS
+================================================================================
+Definitions derived independently from the tex:
+  s = phi - t/2; P = sin^2(s/2), Q = sin^2(alpha/2); c = cos(t/4), C = cos(t/2)
+  R^2 = c1^2+c2^2+2 c1 c2 cos(alpha) = 4[c^2(1-P-Q)+PQ]   (verified symbolically, sympy)
+  K = I1(2 beta R)/R, z = 2 beta R, H_B = I2(z)/z^2
+  D = cos s + cos alpha = 2(1-P-Q)                          (sympy: exact)
+  N = C cos2s + cos a (C cos s - sin^2 s); F = N - C D
+  Phi = cos2s + cos a cos s;  N_t = -(S/2) Phi, D_t = 0     (sympy: exact)
+  F = -4P * [2C+1-2CP-CQ+2PQ-P-2Q]                          (sympy with expand_trig: exact
+     -> the weak-main certifier's f-weight bracket is the true F; the first naive
+        simplify() returned False, expand_trig closes it to 0)
+  dK/dt = 32 beta^3 c c' (1-P-Q) H_B  via z I1'(z)-I1 = z I2 (hand derivation, exact)
+
+sfree identity E'/(-S/2) = Qcal + X_full, Qcal = <Phi>/<D>,
+X_full = 8 beta^3 (<D>J_N - <N>J_D)/<D>^2, J_f = iint f (1-P-Q) H_B:
+END-TO-END numeric check, E' computed from the DEFINING quartic Bessel series
+(a_m, b_m, E = FA/2FB) vs the integral identity, my own quadrature:
+  (t,beta)=(2.2, 6)            rel err E' = 5.2e-31   (also E itself: 7.2e-31)
+  (t,beta)=(pi-27/1000,1000/9) rel err E' = 8.6e-17
+  (t,beta)=(1.0, 1000/9)       rel err E' = 6.2e-17
+  (t,beta)=(2.11, 1000/9)      rel err E' = 6.8e-17
+  (t,beta)=(pi-3/500, 500)     rel err E' = 4.5e-13  (needs dps>=2.2beta+40 and ~900
+     series terms; a first attempt with dps=220/M=320 gave garbage -0.00098 - this is
+     MY artifact, and it independently confirms the manuscript's precision policy)
+The identity chain (master representation -> sfree -> Qcal + X_full) is EXACT.
+
+Three-block assembly (independent sympy re-derivation, my A11-A13):
+  X_1 = X_main/(1-rho) + C_mirror,  rho = -b/a
+  X_full = (d1/d) X_1 + C_rest = (a/d) X_main + (d1/d) C_mirror + C_rest,  d1 = a(1-rho)
+  with a,b,e = mu_D on B/B'/rest, f,g,k = mu_F, u,v,y = nu_D, w,x,z = nu_F,
+  B = [-6/5,6/5]^2, B' = {|s|>=pi-6/5,|alpha|>=pi-6/5} (lem:mass proof), rest = complement.
+  All three identities are polynomial identities: sympy cancel == 0. EXACT.
+  Numerically at 4 high-beta points: assembly residual <= 1.5e-25 (machine-exact).
+
+Scaling of the certified integrand (hand-derived): with sigma = s/sqrt(delta),
+p = P/delta, the certifier's moments are kd = beta^{3/2} e^{-z_s} mu_D,
+kf = beta^{3/2} e^{-z_s} mu_F/delta, gdd/gdf the r0-centered H-moments; the centering
+r0 = 1/(4c) adds a multiple of the first row -> determinant unchanged; then
+4(kd*gdf - kf*gdd)/kd^2 = 4 beta^3 (mu_D nu_F - mu_F nu_D)/mu_D^2 = X_main of Target
+prop:k2endpoint. EXACT (and confirmed empirically by Q4 row consistency below).
+NOTE (editorial, not load-bearing): the tex display "X_main = 4 Cov_P(F/D,(H/K)D)"
+is literally exact only in the scaled normalization of the prereg ("the common positive
+normalization already used by the high-beta relay"); read with unscaled H = H_B it is
+missing the beta^3. H is also not defined at that point of the tex. Blemish, no error.
+
+================================================================================
+Q2. THE FOUR CERTIFIED CONSTANTS + EXACT RATIONAL MARGIN - PASS
+================================================================================
+Provenance and domains:
+  Qcal > 19/20: scripts/surface_high_beta_q_half_transcript_20260727.txt, terminal line
+    "CERTIFIED: <Phi>-(19/20)<D>>0", domain beta>=1000/9, 0<t<=pi-3/(2beta) - a strict
+    superset of the lambda>=3 lane (pi-3/beta < pi-3/(2beta)). Its analytic skeleton
+    (three pointwise inequalities for Phi_sym - (19/20)D, Phi_sym = s<->alpha
+    symmetrization, legitimate because R^2 and D are P<->Q symmetric) was re-verified by
+    this desk on a 2401^2 grid: main-rectangle claim min = 0.0 (exact at saddle), mirror
+    floor 0.08239 <= min 0.08603, global floor -1-h^2/3 = -1.3008333 vs min -1.3008332
+    (sharp, consistent with completing the square). PASS.
+  rho < 7/200 and |C_mirror| < 43/50: Arb transcript
+    scripts/surface_high_beta_lambda3_joint_production_20260728.txt (= replay, sha
+    a2e9f9b7...), worst rho = 0.034107... < 0.035, worst adverse = 0.852989... < 0.86,
+    domain beta>=1000/9, lambda>=3, p>=101/200 (x = pi-t in [0, 103/100], 512+2048
+    boxes, 180-bit). Margins thin but strict.
+  |C_rest| < 1/100000: verify_surface_high_beta_rest_perturbation_bound.py (Abel-layer
+    rest majorant L < 1e-18 at beta0 + declared monotonicity rates + Step-0 ratio
+    29.4/(beta c)+36 e^{-3/pi}; c-s4 >= (pi-t)/pi re-derived by this desk: exact by
+    sin concavity). Domain: whole weak-main lane.
+  d1/d < 1+1e-15 (and d1/d, a/d > 0): |e| <= 2L, L < 1e-18, d = beta^{3/2}e^{-z_s}<D>
+    >= 1/2 by lem:mass (unconditional, beta>=15, t<=pi-1.5/beta). rho>0 because D < 0
+    pointwise on B' (P+Q >= 2 sin^2((pi-1.2)/2) = 1.363 > 1). Charge directionality
+    audited: the upper bound of a/d multiplies the negative premise; d1/d in (0,1+1e-15)
+    multiplies |C_mirror|; both require exactly the positivity facts above. Sound.
+Exact rational arithmetic (reproduced by this desk with Fraction, independently):
+  near: 19/20 - (1+1e-15)*(200/193)*(1/20) - (1+1e-15)*(43/50) - 1/100000
+      = 368403499999991201/9650000000000000000  EXACTLY (match manuscript), > 0,
+      = 0.038176528497408414...
+  far:  19/20 - 1/20 - 1e-30 - 1/100000 = 0.89999 > 899/1000. PASS.
+Direct measurements by this desk (mpmath, full-torus block integrals):
+  (pi-0.027, 1000/9): rho=0.014865, C_mirror=-0.12765, C_rest=1.7e-24, Q=1.01711
+  (pi-3/500, 500):    rho=0.014478, C_mirror=-0.12598, C_rest=1.3e-107, Q=1.02647
+  (2.11, 1000/9):     rho=9.3e-70,  C_mirror=-3.1e-67, C_rest=1.7e-29,  Q=0.98957
+  (1.0, 1000/9):      rho=1.7e-121, C_mirror=-2.4e-119, C_rest=5.3e-33, Q=0.99071
+  All strictly inside every certified bound; certified bounds conservative (6-60x).
+  beta-uniformity at the worst seam lambda=3 confirmed at beta=500 (the mirror
+  suppression there is e^{-sqrt2*lambda}, beta-independent, as the moving-lane
+  certificate assumes).
+
+================================================================================
+Q3. DOMAIN OF THE PREMISE - PASS
+================================================================================
+delta = 1/beta exactly; lambda = beta(pi-t). Coverage inventory vs the literal
+theorem (forall beta>0, t in (0,pi)):
+  (0,1/20] small-beta lemma (exact); [1/20,3] thm:B; [3,20] bulk rows + left edge
+  (0,0.6] + right edge [pi-1.5/beta,pi); [20,1000/9] finite Wronskian role (all t);
+  beta>=1000/9: G5 lanes lambda in (0,3/2],[3/2,2],[2,3] and weak-main lambda>=3.
+  All beta seams (1/20, 3, 20, 1000/9) and lambda seams (3/2, 2, 3) are closed
+  overlaps of closed certificates.
+Weak-main rectangles: [0,9/1000] x [0,21/10] and [0,9/1000] x [21/10,31415927/1e7].
+  - delta in [0,9/1000] <=> beta >= 1000/9 (superset: includes delta=0).
+  - delta=0 row: the Arb enclosure of a closed box containing delta=0 covers every
+    physical delta>0 in the box; delta=0 itself (beta=infinity) is not a point of the
+    theorem. Legitimate superset, not a gap. The delta=0 integrand is the analytic
+    sinc-series limit (removable), used only as box endpoint.
+  - t seam 21/10: both lanes contain it (closed). 31415927/1e7 > pi strict.
+  - p seam: t* = 4 asin(101/200) = 2.1174... > 21/10, and sin(21/40) = 0.50145 < 0.505,
+    so the near rectangle starts strictly BEFORE the p seam: the premise exists on
+    both sides of the lane switch. Joint lane p-floor: sin((pi-103/100)/4) = 0.50373
+    <= 101/200, so the near-relay constants cover all p >= 101/200 within lambda>=3.
+    Far lane (p <= 101/200): mirror gap floor sqrt(1-p0^2)-p0 > 7/20 (rational square
+    comparison, checked), and lambda >= 111*1.02 >> 3 automatically.
+  - t->0: far rectangle + Q certificate reach t->0; identity nonsingular (S cancelled
+    identically). t->pi: owned by G5 lanes (lambda<=3), not weak-main.
+  - Q certificate domain t <= pi-3/(2beta) strictly contains the weak-main lane
+    t <= pi-3/beta. <D> > 0 on the lane by lem:mass (t <= pi-1.5/beta).
+No hole found between the rectangles, the finite role, the G5 lanes, and the edges.
+
+================================================================================
+Q4. TRANSCRIPT ROW SAMPLING - PASS
+================================================================================
+Method: box-center evaluation with my own integrator (mpmath besseli, Gauss-Legendre
+in the scaled chart sigma = s/sqrt(delta), quadrant symmetry, e^{-z_s} common scaling;
+definitions from the tex only). Consistency required: my X_main(center) inside the
+printed XMAIN ball and > the printed 50-digit XMAINLOWER; my scaled KD inside KD ball.
+  near d2:t6  (delta=0.00125, t=2.3116, beta=800):  mine +0.00048065 > -0.0498798; in ball [+/-0.0532]; KD 1.952 in [1.283,3.07]  OK
+  far  d17:t31(delta=0.00875, t=2.0672, beta=114.3): mine +0.00338335 > -0.0498952; KD 1.777 in [1.431,2.57]  OK
+  far  d2:t6  (delta=0.00125, t=0.4266, beta=800):  mine +0.00046978 > -0.0109719; KD 1.271 in [1.027,1.59]  OK
+  near d17:t31(delta=0.00875, t=3.1253, beta=114.3): mine +0.00313528 > -0.0380666; KD 2.952 in [2.427,3.61]  OK
+  near d0:t0  (delta=0.00025, t=2.1163, beta=4000): mine +0.00009624 > -0.0238526; KD 1.810 in [1.186,2.86]  OK
+All five consistent. True center values are small POSITIVE; the certified negative
+lower endpoints are interval slack of the first-passing-grid rule, exactly as the
+"evidence-margin interpretation" section declares (and the manuscript correctly
+quotes only the strict predicate X_main > -1/20, not the adaptive endpoints).
+
+================================================================================
+Q5. THE MANUSCRIPT STATEMENT - PASS (two editorial notes)
+================================================================================
+- thm:main states exactly what the evidence covers: (i) F_B>0 (thm:A, exact, two
+  proofs), (ii) E'<0 on (0,pi) for all beta>0 via the closed relay table. Not vacuous:
+  E' measured at my four high-beta points is -0.238..-0.451, matching the identity to
+  1e-16; the strict inequality carries content everywhere.
+- No [SLOT], no DO-NOT-SUBMIT banner in the tex. Completion proof enumerates the
+  partition with closed endpoints; consistent with the certificates on disk.
+- Conditional-era material is quarantined, not laundered: lem:extraction is titled
+  "conditional historical ... not used in Theorem thm:main" and (H_tail) appears only
+  there; Target prop:k2endpoint (sharp X_main>0) is titled superseded, its old
+  transcript chain declared non-evidence (double-normalization incident); K4/S1'''/
+  S2''' declared research obligations of the sharp route only. The terminal composer
+  audit_surface_g2_weak_terminal_cover.py imports none of the superseded chain
+  (import list checked line by line).
+- Labels respected: prop:highbeta "certified"; thm:B "exact modulo the certified
+  computation"; truth-map and second-order law explicitly verified/non-load-bearing;
+  lem:mass "chains exact, floor certified"; m_* >= 1/2 unconditional.
+- Editorial notes (no mathematical load): (1) the display X_main = 4 Cov_P(F/D,(H/K)D)
+  suppresses the scaled normalization (beta^3) and uses an H undefined at that point;
+  (2) a, d, d1, rho, C_mirror, C_rest are used in the prop:highbeta proof without
+  in-tex definitions (they are fixed by the B/B'/rest split and the prereg docs).
+- Standing (out of this desk's object, established by the main desk): the executable
+  final seal does not reproduce on a fresh checkout due to an EOL-representation-
+  sensitive dependency-hash comparison in
+  validate_surface_high_beta_lambda3_weak_relay_inputs.py (single-value compare while
+  surface_eol_hashes.sha256_variants exists for exactly this). One-line plumbing fix;
+  READY_FOR_CLAIM_AUDIT is premature until it lands, but no mathematical content is
+  affected.
+
+================================================================================
+VERDICT
+================================================================================
+Q1 PASS  Q2 PASS  Q3 PASS  Q4 PASS  Q5 PASS (editorial notes only)
+
+AUDITORIA WEAK-MAIN: PASS

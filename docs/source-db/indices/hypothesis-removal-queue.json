@@ -87,12 +87,21 @@
         "crosswalk.eq229.cammarota-dstage-route"
       ],
       "lean_targets": [
-        "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
-        "cmp116H_postD_sum_le_of_eq229",
-        "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116Eq229Weight",
+        "YangMills.RG.cmp116Eq229Product",
+        "YangMills.RG.CammarotaCMP85Threshold",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold",
+        "YangMills.RG.CammarotaCMP85FiniteDStageSource",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource",
+        "YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource",
+        "YangMills.RG.cmp116Eq229Product_nonneg",
+        "YangMills.RG.cmp116_DStage_sum_le_of_eq229",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
       ],
-      "next_action": "Obtain clean Cammarota CMP85 theorem text or PDF page; extract theorem, assumptions, constants, and route to Balaban Eq. (2.29)."
+      "next_action": "Use the Archive-private Cammarota CMP85 packet or a repo-private clean artifact manifest only to extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, uniformity, and the Balaban D-family dictionary. Do not theorem-feed Eq. (2.29), CMP116Eq229Summability, or DIndex/DParts from the single Eq. (1.4) premise field."
     },
     {
       "rank": 5,
@@ -111,12 +120,21 @@
         "crosswalk.eq237.combined-postp-route"
       ],
       "lean_targets": [
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116Eq237Amplitude"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
-      "next_action": "Extract exact fixed-Z0' theorem shape and final summation as two named source premises."
+      "next_action": "Consume the named fixed-Z0' display and post-(2.37) final-summation premises by closing the D/P/Z0/Z0' dictionary, connected-component product dictionary, alpha5/C3 majorants, and half-exponent reserve; do not split off standalone normalized Z0 or Z0' theorems."
     },
     {
       "rank": 6,
@@ -135,11 +153,20 @@
         "crosswalk.gaussian-root-activity-route"
       ],
       "lean_targets": [
-        "CMP116Lemma3ActivityTermwiseScaleBoundary",
-        "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
-        "PhysicalGaugeLocalActivity.globalEval"
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
+        "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
+        "YangMills.RG.LocalActivity.globalEval"
       ],
-      "next_action": "Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then feed termwise estimates around (2.14)-(2.38)."
+      "next_action": "Extract the source-to-Lean H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then separately feed termwise estimates around (2.14)-(2.38)."
     },
     {
       "rank": 7,
@@ -156,14 +183,19 @@
         "cmp116.gaussian-pushforward.2.5-2.6",
         "cmp116.localized-activity.2.7-2.10",
         "cmp95.covariance-green.bounds-source-target",
+        "cmp99.background-field-propagator-source-target",
+        "cmp102.variational-hessian-expansion-source-target",
         "cmp96.one-step-covariance-law-source-target"
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
-        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
-        "balabanCMP116Dmu0"
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "YangMills.RG.balabanCMP116Dmu0",
+        "YangMills.RG.physicalPrecisionDefect",
+        "YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect"
       ],
-      "next_action": "Create CMP95/CMP96 structured catalogs, then link root localization to CMP116 activity construction."
+      "next_action": "Prove the source-to-Lean dictionary linking CMP95/CMP99/CMP102 objects to the repository covariance/root and Hessian interfaces; CMP96 remains pending for the one-step covariance law."
     },
     {
       "rank": 8,
@@ -180,12 +212,12 @@
       "source_keys": [
         "crosswalk.dimock.appendixf-hole-cluster-route",
         "dimockii.appendix-f.cluster-with-holes",
-        "dimockii.appendix-f.second-ursell.642-646"
+        "dimockii.appendix-f.second-ursell.645-646"
       ],
       "lean_targets": [
-        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
-        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-        "appendixFHoleExpWeight"
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "YangMills.RG.appendixFHoleExpWeight"
       ],
       "next_action": "Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban."
     },
@@ -195,23 +227,42 @@
       "live_hypotheses": [
         "RawYMActivityDecay",
         "polymer-local R/B/C source bounds",
-        "large-field dictionary"
+        "large-field dictionary",
+        "post-R action/local-activity dictionary"
       ],
       "removes": [
         "surrogate scalar R_k <= M r^k when replaced by faithful polymer-local bound plus flow bridge"
       ],
       "source_keys": [
+        "cmp119.density-expansion-form.2.18",
+        "cmp119.t-operation-action-factorization.2.19-2.23",
+        "cmp119.e-term-local-regularity.2.24-2.29",
         "cmp119.r-term-bound.2.31",
+        "cmp119.b-term-local-regularity-bound.2.34-2.42",
+        "cmp119.eq2.23.erb-decomposition-source-target",
+        "cmp119.eq2.42.blocal-bound-source-target",
+        "cmp119.rt-improved-new-expressions.before-theorem1",
+        "cmp119.theorem1.rt-inductive-assumptions",
+        "cmp122ii.theorem1.coupling-interval-induction",
         "cmp122i.large-field-c-bound.1.70",
+        "cmp122i.eq1.70.large-field-bound-source-target",
         "cmp122ii.rprime-bound.1.98-1.100",
+        "cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
+        "cmp122ii.post-r-action-split.1.101",
+        "cmp122ii.eq1.101.post-r-erb-update-source-target",
         "crosswalk.r-operation-polymer-local-route"
       ],
       "lean_targets": [
-        "RawYMActivityDecay",
-        "future_R_operation_bound",
-        "CMP116RawSourceM3Frontier"
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+        "YangMills.RG.CMP119BLocalSourceBound",
+        "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
       ],
-      "next_action": "Extract CMP122-I Eq. (1.70) and CMP122-II Eqs. (1.98)-(1.100) into source_extracted entries."
+      "next_action": "Extract each certificate field and the post-R action/local-activity dictionary separately; do not collapse them into RawYMActivityDecay or component decay."
     },
     {
       "rank": 10,
@@ -228,10 +279,20 @@
         "crosswalk.flow-ir-asymptotic-freedom-route"
       ],
       "lean_targets": [
-        "CouplingFlow.logistic_geometric_decay",
-        "remainder_geometric_of_logistic",
-        "BalabanCMP116SourceAssumptions.coupling_recursion",
-        "BalabanCMP116SourceAssumptions.ir_bound"
+        "YangMills.RG.logistic_geometric_decay",
+        "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+        "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion"
       ],
       "next_action": "Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate."
     },
@@ -277,11 +338,41 @@
         "cmp116.effective-action.2.39-2.41"
       ],
       "lean_targets": [
-        "CMP116RawSourceM3Frontier",
-        "BalabanCMP116SourceTheorem",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.BalabanCMP116SourceTheorem",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
       "next_action": "Use this only as a dashboard; implement the smallest upstream source theorem first."
+    },
+    {
+      "rank": 13,
+      "key": "proof.activity.support-measurability.v2",
+      "live_hypotheses": [
+        "spectator_support_subset",
+        "fluctuation_support_subset",
+        "activity_stronglyMeasurable",
+        "physicalActiveSupport enlargement",
+        "physicalBondsOfCells/skeleton convention"
+      ],
+      "removes": [
+        "manual support containment fields",
+        "manual adapted-field measurability field"
+      ],
+      "source_keys": [
+        "proof.activity.support-measurability.v2",
+        "proof.local-activity.construction.v2",
+        "cmp116.localized-activity.2.7-2.10"
+      ],
+      "lean_targets": [
+        "YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells"
+      ],
+      "next_action": "Extract the source localized-domain to physicalActiveSupport enlargement and the adapted-field measurability theorem separately; keep physicalBondsOfCells/skeleton as repository API dictionary fields, not source proofs."
     }
   ]
 }

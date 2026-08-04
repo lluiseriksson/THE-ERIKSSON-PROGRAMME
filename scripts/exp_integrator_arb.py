@@ -1,0 +1,401 @@
+"""Arb port of exp_integrator.py (v2b) - the [6,15] machine, fast lane.
+Same pinned target, same A/B profiles, same parametric sub-box layer:
+see the mpmath.iv twin's docstring. Harvest driver at the bottom runs
+point -> stability -> 3x3 box in sequence, one transcript.
+"""
+from flint import arb, ctx
+from math import factorial
+from fractions import Fraction
+
+D = 10**6
+DZMAX = 0.15
+
+
+def hull(lo, hi):
+    # GHOST #22: python-flint's arb.union returns VALID but symmetric-wide
+    # balls (union(0,1) = [+/- 1.01]); downstream that widened R^2 past
+    # clip0 into sqrt(negative) = NaN, and NaN never exits series loops.
+    # ALWAYS use the tight midpoint form.
+    return (lo + hi)/2 + ((hi - lo)/2)*arb("0 +/- 1")
+
+
+def ball_lo(z):
+    return arb(z.mid()) - arb(z.rad())
+
+
+def ball_hi(z):
+    return arb(z.mid()) + arb(z.rad())
+
+
+def clip0(x):
+    """kept for values used WITHOUT sqrt; true-square values may carry a
+    -ulp lower end from rounding, which is harmless outside sqrt."""
+    return x
+
+
+def safe_sqrt(x):
+    """GHOST #22 (the real fix). CONTRACT (audit round 2026-07-10s):
+
+    * APPLIES ONLY to expressions mathematically known nonnegative
+      (true squares: R^2, z^2). For such x the enclosing ball satisfies
+      ball_hi(x) >= true max >= 0; a lower end below 0 can only be
+      rounding slack (the -ulp of ball reconstruction), never truth.
+    * ENDPOINTS ARE OUTWARD by construction: ball_lo/ball_hi are
+      arb(mid) -/+ arb(rad) computed in ball arithmetic, so each is a
+      ball CONTAINING the true endpoint; .sqrt() of each is a ball
+      containing the true sqrt; the hull inherits by monotonicity.
+    * RETURNS an enclosure of [sqrt(max(0,x_lo)), sqrt(max(0,x_hi))].
+    * RAISES ValueError if the input is PROVABLY negative (upper bound
+      arf < 0): that cannot be rounding slack on a true square, so it
+      is a caller bug and must never be masked by clamping.
+    * Upper endpoint via x.abs_upper() (arb_get_abs_ubound_arf): under
+      the precondition x >= 0 it is an AUTOMATIC outer bound on the
+      true upper end - no ad-hoc dyadic, no scale assumption (audit
+      round 2026-07-10u; replaces the unproven 2^(8-prec/2) branch).
+    * FINITENESS is checked immediately: a non-finite result raises
+      instead of propagating (NaN comparisons are always False and
+      would silently corrupt downstream control flow - the #22 chain).
+    * Unit tests: scripts/test_safe_sqrt.py ([-ulp,1], [0,0], tiny
+      intervals, truly negative input).
+
+    sqrt of a ball whose rounded lower end dips below 0 is NaN in arb,
+    and NaN never exits the series loops - hence all of the above."""
+    if x.upper() < 0:
+        # the upper bound arf itself is negative: the input cannot be
+        # a true square - contract violation must be LOUD, never masked
+        raise ValueError("safe_sqrt CONTRACT VIOLATION: provably "
+                         "negative input x=%s" % x.str(10))
+    lo = ball_lo(x)
+    s_lo = lo.sqrt() if (lo >= 0) else arb(0)
+    # abs_upper() is an outer bound on |x|; under the precondition
+    # x >= 0 it bounds the true upper end from above, uniformly - no
+    # branch, no ad-hoc constant. arb(arf) conversion is exact.
+    s_hi = arb(x.abs_upper()).sqrt()
+    out = hull(s_lo, s_hi)
+    if not out.is_finite():
+        raise RuntimeError("safe_sqrt: non-finite result for x=%s "
+                           "(lo=%s hi=%s)" % (x.str(10), s_lo.str(10),
+                                              s_hi.str(10)))
+    return out
+
+
+def i1_over_z_at(x):
+    s = arb(0)
+    term = arb(1)/2
+    x2q = (x/2)**2
+    j = 0
+    while True:
+        s += term
+        r = x2q/(arb(j+1)*arb(j+2))
+        nxt = term*r
+        if r < arb(1)/2 and nxt < arb(10)**(-45)*s:
+            return s + hull(arb(0), nxt/(1-r))
+        term = nxt
+        j += 1
+        if j > 20000:   # defense in depth: NaN never satisfies the exit
+            raise RuntimeError(
+                "i1_over_z series did not converge after %d terms: "
+                "x=%s s=%s term=%s ratio=%s prec=%d (NaN input?)"
+                % (j, x.str(10), s.str(10), term.str(10), r.str(10),
+                   ctx.prec))
+
+
+def H_at(x):
+    s = arb(0)
+    term = arb(1)/8
+    x2 = x*x
+    j = 0
+    while True:
+        s += term
+        fac = x2/(arb(4)*arb(j+1)*arb(j+3))
+        r = fac
+        nxt = term*fac
+        if r < arb(1)/2 and nxt < arb(10)**(-45)*s:
+            return s + hull(arb(0), nxt/(1-r))
+        term = nxt
+        j += 1
+        if j > 20000:
+            raise RuntimeError(
+                "H series did not converge after %d terms: "
+                "x=%s s=%s term=%s ratio=%s prec=%d (NaN input?)"
+                % (j, x.str(10), s.str(10), term.str(10), r.str(10),
+                   ctx.prec))
+
+
+def A_enclose(z):
+    zl = ball_lo(z); zh = ball_hi(z)
+    a_lo = (-zh).exp()*i1_over_z_at(zh)
+    a_hi = (-zl).exp()*i1_over_z_at(zl)
+    return hull(a_lo, a_hi)
+
+
+def B_enclose(z):
+    zl = ball_lo(z); zh = ball_hi(z)
+    lo = (-zh).exp()*H_at(zl)
+    hi = (-zl).exp()*H_at(zh)
+    return hull(lo, hi)
+
+
+def L_lin(g_num, h_num, den):
+    g = arb(g_num)/den
+    h = arb(h_num)/den
+    if abs(g_num) < 10:
+        m = (abs(g)*h/2).exp()
+        return hull(h/m, h*m)
+    a = g*h/2
+    return (a.exp() - (-a).exp())/g
+
+
+class V2:
+    def __init__(self, t_q, b_q, prec=90, t_q2=None, b_q2=None):
+        ctx.prec = prec
+        self.prec = prec
+        self.T = arb(t_q[0])/arb(t_q[1])
+        if t_q2 is not None:
+            self.T = hull(self.T, arb(t_q2[0])/arb(t_q2[1]))
+        self.B = arb(b_q[0])/arb(b_q[1])
+        if b_q2 is not None:
+            self.B = hull(self.B, arb(b_q2[0])/arb(b_q2[1]))
+        self.C = (self.T/2).cos()
+        self.c0 = (self.T/4).cos()
+        self.cp = -(self.T/4).sin()/4
+        self.S2 = (self.T/2).sin()
+        self.Gpre = 32*self.B**3*self.c0*self.cp
+        self.PI = arb.pi()
+
+    def geom(self, X, Y):
+        S = self.PI*X; A = self.PI*Y
+        P = (S/2).sin()**2
+        Q = (A/2).sin()**2
+        R2 = clip0(4*(self.c0**2*(1-P-Q) + P*Q))
+        z = safe_sqrt(4*self.B**2*R2)
+        return S, A, P, Q, R2, z
+
+    def trig(self, S, A, Eb):
+        cs = S.cos(); ca = A.cos(); c2s = (2*S).cos(); ss = S.sin()
+        N = self.C*c2s + ca*(self.C*cs - ss**2)
+        Dd = cs + ca
+        Nt = -(self.S2/2)*(c2s + ca*cs)
+        Nc = N - Eb*Dd
+        return Nc, Dd, Nt
+
+    def cell(self, x1, x2, y1, y2, Eb):
+        X = hull(arb(x1)/D, arb(x2)/D)
+        Y = hull(arb(y1)/D, arb(y2)/D)
+        S, A, P, Q, R2, z = self.geom(X, Y)
+        Nc, Dd, Nt = self.trig(S, A, Eb)
+        Af = A_enclose(z)
+        Bf = B_enclose(z)
+        Kslow = 2*self.B*Af
+        Gslow = self.Gpre*(1-P-Q)*Bf
+        if float(ball_hi(z)) < 4:
+            area = (arb(x2-x1)/D)*(arb(y2-y1)/D)*self.PI**2
+            core = z.exp()*area
+            return (core*Kslow*Nc, core*Kslow*Dd, core*Kslow*Nt,
+                    core*Gslow*Nc, core*Gslow*Dd)
+        xc2 = x1 + x2; yc2 = y1 + y2
+        Xc = arb(xc2)/(2*D); Yc = arb(yc2)/(2*D)
+        _, _, _, _, _, zc = self.geom(Xc, Yc)
+        R = safe_sqrt(R2)
+        dR2x = 4*(Q - self.c0**2)*(self.PI/2)*(self.PI*X).sin()
+        dR2y = 4*(P - self.c0**2)*(self.PI/2)*(self.PI*Y).sin()
+        Gx = self.B*dR2x/R
+        Gy = self.B*dR2y/R
+        # A minimum-size cell (hmin floor) can reach here with R
+        # touching 0 in the exp branch => G = NaN => int(NaN) crashed
+        # LOUDLY (the #22-family defense working as bought). The valid
+        # cure is not a center choice (NaN gradient poisons the
+        # remainder too): FALL BACK TO THE PLAIN BRANCH, which is
+        # always rigorous (z finite by safe_sqrt; direct e^z
+        # enclosure over the cell).
+        import math as _math
+        _gxm = (float(ball_lo(Gx))+float(ball_hi(Gx)))/2
+        _gym = (float(ball_lo(Gy))+float(ball_hi(Gy)))/2
+        if _math.isnan(_gxm) or _math.isnan(_gym):
+            area = (arb(x2-x1)/D)*(arb(y2-y1)/D)*self.PI**2
+            core = z.exp()*area
+            return (core*Kslow*Nc, core*Kslow*Dd, core*Kslow*Nt,
+                    core*Gslow*Nc, core*Gslow*Dd)
+        gx_num = int(round(_gxm*2*D))
+        gy_num = int(round(_gym*2*D))
+        gx = arb(gx_num)/(2*D); gy = arb(gy_num)/(2*D)
+        hx = x2 - x1; hy = y2 - y1
+        r = (Gx-gx)*hull(arb(-hx)/(2*D), arb(hx)/(2*D)) \
+            + (Gy-gy)*hull(arb(-hy)/(2*D), arb(hy)/(2*D))
+        Lx = L_lin(gx_num, 2*hx, 2*D)
+        Ly = L_lin(gy_num, 2*hy, 2*D)
+        core = zc.exp()*Lx*Ly*r.exp()*self.PI**2
+        return (core*Kslow*Nc, core*Kslow*Dd, core*Kslow*Nt,
+                core*Gslow*Nc, core*Gslow*Dd)
+
+
+def integrate(pt, Eb, dzmax=DZMAX, hmin=30, max_cells=3000000):
+    stack = [(0, D, 0, D)]
+    tot = [arb(0)]*5
+    cells = 0
+    while stack:
+        x1, x2, y1, y2 = stack.pop()
+        X = hull(arb(x1)/D, arb(x2)/D)
+        Y = hull(arb(y1)/D, arb(y2)/D)
+        _, _, _, _, _, z = pt.geom(X, Y)
+        dz = float(ball_hi(z)) - float(ball_lo(z))
+        if dz > dzmax and (x2-x1) > hmin and cells + len(stack) < max_cells:
+            xm = (x1+x2)//2; ym = (y1+y2)//2
+            stack += [(x1, xm, y1, ym), (xm, x2, y1, ym),
+                      (x1, xm, ym, y2), (xm, x2, ym, y2)]
+            continue
+        vals = pt.cell(x1, x2, y1, y2, Eb)
+        for i in range(5):
+            tot[i] += vals[i]
+        cells += 1
+    return tot, cells
+
+
+def certify_point(t_q, b_q, dz1=0.8, dz2=0.15, prec=90, tag=""):
+    pt = V2(t_q, b_q, prec=prec)
+    tot, c1 = integrate(pt, arb(0), dzmax=dz1)
+    E = tot[0]/tot[1]
+    eb_num = int(round((float(ball_lo(E))+float(ball_hi(E)))/2*D))
+    Eb = arb(eb_num)/D
+    # Print the ENCLOSURE of E, not just the rational center: Ebar is a
+    # CHOICE (any constant works in the centered target), so the cross-
+    # implementation witness is enclosure consistency (E_iv and E_arb
+    # intersect and both contain the common truth), never Ebar equality.
+    print("%spass1: %d cells, E enclosure = [%.6f, %.6f], Ebar = %d/1e6"
+          % (tag, c1, float(ball_lo(E)), float(ball_hi(E)), eb_num),
+          flush=True)
+    tot, c2 = integrate(pt, Eb, dzmax=dz2)
+    KNc, KD, KNt, GNc, GD = tot
+    Wc = KNt*KD + GNc*KD - KNc*GD
+    okD = bool(KD > 0); okW = bool(Wc < 0)
+    print("%spass2: %d cells; <D> > 0: %s; Wc < 0: %s" %
+          (tag, c2, okD, okW), flush=True)
+    # FULL BALLS as [lo, hi] - the verdict's evidence must be readable
+    # by eye (audit round 2026-07-10t): the certified margin is the
+    # UPPER end of Wc, which must be strictly negative.
+    # Endpoints printed as ARB BALLS via .str() - never floats, whose
+    # nearest-rounding can move an endpoint inward on paper (audit
+    # round 2026-07-10u). The strict booleans above remain authority.
+    q = Wc/KD**2
+    print("%sWc  = [%s, %s]  (certified margin: upper end; Wc<0: %s)"
+          % (tag, ball_lo(Wc).str(6), ball_hi(Wc).str(6), okW),
+          flush=True)
+    print("%s<D> = [%s, %s]  (<D>>0: %s)"
+          % (tag, ball_lo(KD).str(6), ball_hi(KD).str(6), okD),
+          flush=True)
+    print("%sWc/<D>^2 = [%s, %s]  (strictly neg: %s)"
+          % (tag, ball_lo(q).str(6), ball_hi(q).str(6), bool(q < 0)),
+          flush=True)
+    return okD and okW, q
+
+
+def _subbox(t1_q, t2_q, b1_q, b2_q, dz1, dz2, prec):
+    pt = V2(t1_q, b1_q, prec=prec, t_q2=t2_q, b_q2=b2_q)
+    tot, c1 = integrate(pt, arb(0), dzmax=dz1)
+    E = tot[0]/tot[1]
+    eb_num = int(round((float(ball_lo(E))+float(ball_hi(E)))/2*D))
+    Eb = arb(eb_num)/D
+    tot, c2 = integrate(pt, Eb, dzmax=dz2)
+    KNc, KD, KNt, GNc, GD = tot
+    Wc = KNt*KD + GNc*KD - KNc*GD
+    # normalized margin q = Wc/<D>^2: the raw Wc scales exponentially
+    # in (t, beta) and is NOT comparable across boxes; q is the number
+    # that sizes the adaptive coverage (audit round 2026-07-10w)
+    q = Wc/KD**2
+    return (bool((Wc < 0) and (KD > 0)), c1, c2, Wc, KD, q)
+
+
+def certify_box(t1_q, t2_q, b1_q, b2_q, dz1=0.8, dz2=0.15, prec=90,
+                db_max=0.02, dt_max=0.005):
+    """Per-sub-box lines carry the FULL design table (audit round
+    2026-07-10w): exact rational coords, cells per pass, time, Wc
+    endpoints, normalized margin q = Wc/<D>^2 endpoints - the number
+    that sizes the adaptive coverage - plus the running worst
+    (largest) q upper end across sub-boxes."""
+    import time as _time
+    t1 = Fraction(*t1_q); t2 = Fraction(*t2_q)
+    b1 = Fraction(*b1_q); b2 = Fraction(*b2_q)
+    nb = max(1, int(float(b2 - b1)/db_max) + 1)
+    nt = max(1, int(float(t2 - t1)/dt_max) + 1)
+    total = 0
+    worst_q_hi = None
+    for i in range(nt):
+        ta = t1 + (t2 - t1)*i/nt
+        tb = t1 + (t2 - t1)*(i+1)/nt
+        for j in range(nb):
+            ba = b1 + (b2 - b1)*j/nb
+            bb = b1 + (b2 - b1)*(j+1)/nb
+            ts = _time.time()
+            ok, c1, c2, Wc, KD, q = _subbox(
+                (ta.numerator, ta.denominator),
+                (tb.numerator, tb.denominator),
+                (ba.numerator, ba.denominator),
+                (bb.numerator, bb.denominator), dz1, dz2, prec)
+            total += c1 + c2
+            qhi = ball_hi(q)
+            if worst_q_hi is None or bool(worst_q_hi < qhi):
+                worst_q_hi = qhi
+            print("  sub-box t[%s/%s,%s/%s] b[%s/%s,%s/%s]: %s "
+                  "(pass1 %d + pass2 %d cells, %.0fs) "
+                  "Wc = [%s, %s] q = [%s, %s] (Wc<0 and D>0: %s)"
+                  % (ta.numerator, ta.denominator,
+                     tb.numerator, tb.denominator,
+                     ba.numerator, ba.denominator,
+                     bb.numerator, bb.denominator,
+                     "OK" if ok else "FAIL", c1, c2, _time.time()-ts,
+                     ball_lo(Wc).str(6), ball_hi(Wc).str(6),
+                     ball_lo(q).str(6), ball_hi(q).str(6), ok),
+                  flush=True)
+            if not ok:
+                return False, total
+    print("BOX CERTIFIED as union of %d sub-boxes; %d cells total; "
+          "worst normalized margin (largest q upper end): %s"
+          % (nt*nb, total, worst_q_hi.str(6)), flush=True)
+    return True, total
+
+
+if __name__ == "__main__":
+    import time, sys, hashlib, datetime
+    import flint as _flint
+    t0 = time.time()
+    print("=== HARVEST DRIVER (Arb): point -> stability -> 3x3 box ===",
+          flush=True)
+    # PROVENANCE (self-contained transcript, audit round 2026-07-10t):
+    # the sha256 of the script bytes is the authoritative identifier
+    # (the run clone's git HEAD is frozen for git ops and may lag).
+    _src = open(__file__, "rb").read()
+    print("script : %s" % __file__, flush=True)
+    print("sha256 : %s" % hashlib.sha256(_src).hexdigest(), flush=True)
+    print("python : %s" % sys.version.replace("\n", " "), flush=True)
+    print("flint  : python-flint %s" %
+          getattr(_flint, "__version__", "(version attr absent)"),
+          flush=True)
+    print("date   : %s" % datetime.datetime.now().isoformat(), flush=True)
+    print("argv   : %s" % " ".join(sys.argv), flush=True)
+    print("stages : point(prec 90, dz1 0.8, dz2 0.15) -> "
+          "stability(prec 120, dz2 0.12) -> "
+          "box t[1.5,1.51] b[8,8.05](prec 90, dz2 0.15, "
+          "db<=0.02, dt<=0.005)", flush=True)
+    ok1, q1 = certify_point((15, 10), (8, 1), dz2=0.15, prec=90,
+                            tag="[point] ")
+    print("[point] VERDICT:", ok1, " %.0fs" % (time.time()-t0), flush=True)
+    t1 = time.time()
+    ok2, q2 = certify_point((15, 10), (8, 1), dz2=0.12, prec=120,
+                            tag="[stability] ")
+    print("[stability] VERDICT:", ok2, " %.0fs" % (time.time()-t1),
+          flush=True)
+    # NESTING ASSERT (protocol desk, round 2026-07-10v): the finer
+    # stage's enclosure must sit inside the coarser one - the same
+    # self-verification the thmB certificates carry, now between
+    # stages. Emerged spontaneously in the anchored run; made law.
+    nested = bool(ball_lo(q1) <= ball_lo(q2)) and \
+             bool(ball_hi(q2) <= ball_hi(q1))
+    print("[nesting] stability ratio inside point ratio: %s" % nested,
+          flush=True)
+    assert nested, "NESTING FAILURE: stability enclosure not inside point"
+    t2 = time.time()
+    ok3, cells = certify_box((15, 10), (151, 100), (8, 1), (805, 100),
+                             dz2=0.15, prec=90)
+    print("[box 3x3] VERDICT:", ok3, " %.0fs" % (time.time()-t2), flush=True)
+    print("HARVEST COMPLETE: point %s / stability %s / box %s"
+          % (ok1, ok2, ok3), flush=True)

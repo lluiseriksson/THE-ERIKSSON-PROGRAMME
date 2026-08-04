@@ -7,6 +7,7 @@ Only Python's standard library is required.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import os
@@ -192,6 +193,7 @@ def validate_catalogs(records: list[CatalogRecord], root: Path | None = None) ->
     except SystemExit as exc:
         return [str(exc)]
 
+    dictionary_link_ids: set[str] = set()
     for path, citation in citations:
         key = citation.get("key", "<missing>")
         citation_keys.add(str(key))
@@ -236,14 +238,90 @@ def validate_catalogs(records: list[CatalogRecord], root: Path | None = None) ->
             # Not forbidden, but must be explicit because theorem_checked may only
             # concern one consumer, not the whole source claim.
             pass
+        links = citation.get("dictionary_links", [])
+        if not isinstance(links, list):
+            errors.append(f"{path}: {key}: dictionary_links must be a list")
+            links = []
+        for index, link in enumerate(links):
+            label = f"dictionary_links[{index + 1}]"
+            if not isinstance(link, dict):
+                errors.append(f"{path}: {key}: {label} must be an object")
+                continue
+            link_id = link.get("id")
+            if not isinstance(link_id, str) or not link_id:
+                errors.append(f"{path}: {key}: {label}.id missing")
+            elif link_id in dictionary_link_ids:
+                errors.append(f"{path}: {key}: duplicate dictionary link id {link_id}")
+            else:
+                dictionary_link_ids.add(link_id)
+            for field in ("source_symbol", "lean_symbol"):
+                value = link.get(field)
+                if not isinstance(value, str) or not value:
+                    errors.append(f"{path}: {key}: {label}.{field} missing")
+            for field in ("relation", "status"):
+                value = link.get(field)
+                if value is not None and (not isinstance(value, str) or not value):
+                    errors.append(f"{path}: {key}: {label}.{field} must be a non-empty string")
+            for field in ("statement", "blocker", "discharged_by"):
+                value = link.get(field)
+                if value is not None and (not isinstance(value, str) or not value):
+                    errors.append(f"{path}: {key}: {label}.{field} must be a non-empty string")
 
     for record in records:
-        for coverage in record.data.get("coverage", []):
+        coverage_ids: set[str] = set()
+        for index, coverage in enumerate(record.data.get("coverage", [])):
+            label = f"coverage[{index + 1}]"
             if not isinstance(coverage, dict):
-                errors.append(f"{record.path}: coverage entry must be an object")
+                errors.append(f"{record.path}: {label} must be an object")
                 continue
-            if coverage.get("source_id") not in sources:
-                errors.append(f"{record.path}: coverage unknown source {coverage.get('source_id')!r}")
+            source_id = coverage.get("source_id")
+            if source_id not in sources:
+                errors.append(f"{record.path}: {label} unknown source {source_id!r}")
+            elif source_id in coverage_ids:
+                errors.append(f"{record.path}: duplicate coverage source_id {source_id}")
+            else:
+                coverage_ids.add(str(source_id))
+            for field in ("importance", "catalog_status", "artifact_status", "formula_status", "next_action"):
+                value = coverage.get(field)
+                if not isinstance(value, str) or not value:
+                    errors.append(f"{record.path}: {label}.{field} must be a non-empty string")
+            priority = coverage.get("priority")
+            if not isinstance(priority, int):
+                errors.append(f"{record.path}: {label}.priority must be an integer")
+    return errors
+
+
+def validate_csv_files(root: Path | None = None) -> list[str]:
+    root = root or repo_root()
+    errors: list[str] = []
+    bases = [root / "docs" / "source-db", root / "docs" / "source-citations"]
+    for base in bases:
+        if not base.exists():
+            continue
+        for path in sorted(base.rglob("*.csv")):
+            relpath = path.relative_to(root)
+            try:
+                with path.open(encoding="utf-8", newline="") as csv_file:
+                    reader = csv.DictReader(csv_file, strict=True)
+                    if not reader.fieldnames:
+                        errors.append(f"{relpath}: CSV header missing")
+                        continue
+                    for line_number, row in enumerate(reader, start=2):
+                        if None in row:
+                            errors.append(
+                                f"{relpath}:{line_number}: CSV row has extra fields {row[None]!r}"
+                            )
+                        missing = [
+                            field
+                            for field, value in row.items()
+                            if field is not None and value is None
+                        ]
+                        if missing:
+                            errors.append(
+                                f"{relpath}:{line_number}: CSV row missing fields {missing!r}"
+                            )
+            except csv.Error as exc:
+                errors.append(f"{relpath}: CSV parse error: {exc}")
     return errors
 
 
@@ -345,6 +423,19 @@ def build_database(output: Path | None = None, root: Path | None = None) -> Path
                 search_parts.extend(
                     [str(formula.get("statement", "")), str(formula.get("ascii", "")), str(formula.get("latex", ""))]
                 )
+            for link in citation.get("dictionary_links", []):
+                search_parts.extend(
+                    [
+                        str(link.get("id", "")),
+                        str(link.get("source_symbol", "")),
+                        str(link.get("lean_symbol", "")),
+                        str(link.get("relation", "")),
+                        str(link.get("status", "")),
+                        str(link.get("statement", "")),
+                        str(link.get("blocker", "")),
+                        str(link.get("discharged_by", "")),
+                    ]
+                )
             conn.execute(
                 """INSERT INTO citations(citation_key,source_id,catalog_file,status,summary,printed_pages,pdf_pages,locator_json,local_text_json,use_for_json,do_not_use_for_json,search_text)
                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",
@@ -411,12 +502,12 @@ def build_database(output: Path | None = None, root: Path | None = None) -> Path
                 )
             for link in citation.get("dictionary_links", []):
                 conn.execute(
-                    """INSERT INTO dictionary_links(link_id,citation_key,source_symbol,lean_symbol,relation,status,statement,blocker)
-                       VALUES (?,?,?,?,?,?,?,?)""",
+                    """INSERT INTO dictionary_links(link_id,citation_key,source_symbol,lean_symbol,relation,status,statement,blocker,discharged_by)
+                       VALUES (?,?,?,?,?,?,?,?,?)""",
                     (
                         link["id"], key, link["source_symbol"], link["lean_symbol"],
                         link.get("relation", "corresponds_to"), link.get("status", "pending"),
-                        link.get("statement"), link.get("blocker"),
+                        link.get("statement"), link.get("blocker"), link.get("discharged_by"),
                     ),
                 )
 
@@ -540,7 +631,7 @@ def print_show(key: str, path: Path | None = None) -> None:
             for target in targets:
                 print(f"    - {target}")
         links = conn.execute(
-            """SELECT source_symbol,lean_symbol,relation,status,statement,blocker
+            """SELECT source_symbol,lean_symbol,relation,status,statement,blocker,discharged_by
                FROM dictionary_links
                WHERE citation_key=?
                ORDER BY link_id""",
@@ -557,6 +648,8 @@ def print_show(key: str, path: Path | None = None) -> None:
                     print(f"      statement: {link['statement']}")
                 if link["blocker"]:
                     print(f"      blocker: {link['blocker']}")
+                if link["discharged_by"]:
+                    print(f"      discharged_by: {link['discharged_by']}")
         questions = [r[0] for r in conn.execute("SELECT question FROM open_questions WHERE citation_key=? ORDER BY ordinal", (key,))]
         if questions:
             print("  open questions:")
@@ -565,7 +658,8 @@ def print_show(key: str, path: Path | None = None) -> None:
 
 
 def print_search(term: str, path: Path | None = None) -> None:
-    needle = f"%{normalize_search_text(term)}%"
+    normalized = normalize_search_text(term)
+    needle = f"%{normalized}%"
     with connect_existing(path) as conn:
         rows = conn.execute(
             """SELECT citation_key,status,summary,printed_pages,pdf_pages
@@ -575,6 +669,17 @@ def print_search(term: str, path: Path | None = None) -> None:
             (needle, needle),
         ).fetchall()
         if not rows:
+            tokens = [token for token in normalized.split() if token]
+            if tokens:
+                where = " AND ".join("search_text LIKE ?" for _ in tokens)
+                rows = conn.execute(
+                    f"""SELECT citation_key,status,summary,printed_pages,pdf_pages
+                        FROM citations
+                        WHERE {where}
+                        ORDER BY citation_key""",
+                    tuple(f"%{token}%" for token in tokens),
+                ).fetchall()
+        if not rows:
             print("no matches")
             return
         for row in rows:
@@ -583,45 +688,157 @@ def print_search(term: str, path: Path | None = None) -> None:
 
 
 def print_lean(term: str, path: Path | None = None) -> None:
-    needle = f"%{term.lower()}%"
+    normalized_term = term.lower()
+    terms = [normalized_term]
+    parts = normalized_term.split(".")
+    if len(parts) > 1:
+        for index in range(1, len(parts)):
+            suffix = ".".join(parts[index:])
+            if suffix and suffix not in terms:
+                terms.append(suffix)
     with connect_existing(path) as conn:
-        rows = conn.execute(
-            """SELECT l.lean_target,c.citation_key,c.status,c.summary
-               FROM lean_targets l JOIN citations c USING(citation_key)
-               WHERE lower(l.lean_target) LIKE ?
-               ORDER BY l.lean_target,c.citation_key""",
-            (needle,),
-        ).fetchall()
-        if not rows:
+        rows = []
+        link_rows = []
+        for candidate in terms:
+            needle = f"%{candidate}%"
+            rows = conn.execute(
+                """SELECT l.lean_target,c.citation_key,c.status,c.summary
+                   FROM lean_targets l JOIN citations c USING(citation_key)
+                   WHERE lower(l.lean_target) LIKE ?
+                   ORDER BY l.lean_target,c.citation_key""",
+                (needle,),
+            ).fetchall()
+            link_rows = conn.execute(
+                """SELECT d.lean_symbol,d.relation,d.status AS link_status,d.blocker,
+                          d.discharged_by,
+                          c.citation_key,c.status AS citation_status,c.summary
+                   FROM dictionary_links d JOIN citations c USING(citation_key)
+                   WHERE lower(d.lean_symbol) LIKE ?
+                   ORDER BY d.lean_symbol,c.citation_key,d.link_id""",
+                (needle,),
+            ).fetchall()
+            if rows or link_rows:
+                break
+        if not rows and not link_rows:
             print("no Lean target matches")
             return
         for row in rows:
             print(f"{row['lean_target']} <- {row['citation_key']} [{row['status']}]")
             print(f"  {row['summary']}")
+        for row in link_rows:
+            print(f"{row['lean_symbol']} <- {row['citation_key']} [{row['citation_status']}]")
+            print(f"  dictionary link: {row['relation']}/{row['link_status']}")
+            print(f"  {row['summary']}")
+            if row["blocker"]:
+                print(f"  blocker: {row['blocker']}")
+            if row["discharged_by"]:
+                print(f"  discharged_by: {row['discharged_by']}")
 
 
-def print_blockers(path: Path | None = None) -> None:
+def blocker_entry_matches(
+    row: sqlite3.Row,
+    questions: Iterable[str],
+    link_blockers: Iterable[sqlite3.Row],
+    term: str,
+) -> bool:
+    needle = term.casefold()
+    fields: list[Any] = [
+        row["citation_key"],
+        row["status"],
+        row["summary"],
+        row["printed_pages"],
+        row["pdf_pages"],
+    ]
+    fields.extend(questions)
+    for link in link_blockers:
+        fields.extend(
+            [
+                link["lean_symbol"],
+                link["relation"],
+                link["link_status"],
+                link["blocker"],
+            ]
+        )
+    return any(
+        needle in str(field).casefold()
+        for field in fields
+        if field is not None
+    )
+
+
+def unique_link_blockers(link_blockers: Iterable[sqlite3.Row]) -> list[sqlite3.Row]:
+    unique: list[sqlite3.Row] = []
+    seen: set[tuple[Any, ...]] = set()
+    for link in link_blockers:
+        key = (
+            link["lean_symbol"],
+            link["relation"],
+            link["link_status"],
+            link["blocker"],
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(link)
+    return unique
+
+
+def print_blockers(term: str | None = None, path: Path | None = None) -> None:
     with connect_existing(path) as conn:
         placeholders = ",".join("?" for _ in BLOCKING_STATUSES)
+        params: tuple[str, ...] = tuple(BLOCKING_STATUSES)
+        where = f"c.status IN ({placeholders})"
+        if term:
+            where = (
+                f"{where} OR EXISTS (SELECT 1 FROM open_questions q "
+                "WHERE q.citation_key=c.citation_key) "
+                "OR EXISTS (SELECT 1 FROM dictionary_links d "
+                "WHERE d.citation_key=c.citation_key AND d.blocker IS NOT NULL)"
+            )
         rows = conn.execute(
-            f"""SELECT citation_key,status,summary,printed_pages,pdf_pages
-                FROM citations WHERE status IN ({placeholders})
-                ORDER BY CASE status
+            f"""SELECT c.citation_key,c.status,c.summary,c.printed_pages,c.pdf_pages
+                FROM citations c WHERE {where}
+                ORDER BY CASE c.status
                   WHEN 'ocr_corrupted' THEN 0
                   WHEN 'source_pending' THEN 1
                   WHEN 'located' THEN 2
-                  ELSE 3 END, citation_key""",
-            tuple(BLOCKING_STATUSES),
+                  ELSE 3 END, c.citation_key""",
+            params,
         ).fetchall()
+        matched_rows: list[tuple[sqlite3.Row, list[str], list[sqlite3.Row]]] = []
         for row in rows:
+            questions = [
+                item["question"]
+                for item in conn.execute(
+                    "SELECT question FROM open_questions WHERE citation_key=? ORDER BY ordinal",
+                    (row["citation_key"],),
+                ).fetchall()
+            ]
+            link_blocker_rows = conn.execute(
+                """SELECT lean_symbol,relation,status AS link_status,blocker
+                   FROM dictionary_links
+                   WHERE citation_key=? AND blocker IS NOT NULL
+                   ORDER BY link_id""",
+                (row["citation_key"],),
+            ).fetchall()
+            link_blockers = unique_link_blockers(link_blocker_rows)
+            if term and not blocker_entry_matches(row, questions, link_blockers, term):
+                continue
+            matched_rows.append((row, questions, link_blockers))
+        if term and not matched_rows:
+            raise SystemExit(f"no blocker entries match: {term}")
+        for row, questions, link_blockers in matched_rows:
             print(f"{row['citation_key']} [{row['status']}] pp. {row['printed_pages']}/{row['pdf_pages']}")
             print(f"  {row['summary']}")
-            question = conn.execute(
-                "SELECT question FROM open_questions WHERE citation_key=? ORDER BY ordinal LIMIT 1",
-                (row["citation_key"],),
-            ).fetchone()
-            if question:
-                print(f"  next: {question[0]}")
+            if questions:
+                print(f"  next: {questions[0]}")
+            if term and link_blockers:
+                for link in link_blockers:
+                    print(
+                        f"  dictionary blocker: {link['lean_symbol']} "
+                        f"[{link['relation']}/{link['link_status']}]"
+                    )
+                    print(f"    {link['blocker']}")
 
 
 def print_frontier(
@@ -703,34 +920,74 @@ def print_frontier(
                 )
 
 
-def print_coverage(path: Path | None = None) -> None:
+def coverage_entry_matches(row: sqlite3.Row, term: str) -> bool:
+    needle = term.casefold()
+    fields = [
+        row["source_id"],
+        row["short"],
+        row["importance"],
+        row["catalog_status"],
+        row["formula_status"],
+        row["artifact_status"],
+        row["next_action"],
+        row["priority"],
+    ]
+    return any(
+        needle in str(field).casefold()
+        for field in fields
+        if field is not None
+    )
+
+
+def print_coverage(term: str | None = None, path: Path | None = None) -> None:
     with connect_existing(path) as conn:
         rows = conn.execute(
             """SELECT c.*,s.short FROM coverage c JOIN sources s USING(source_id)
                ORDER BY priority DESC,source_id"""
         ).fetchall()
+        if term:
+            rows = [row for row in rows if coverage_entry_matches(row, term)]
+            if not rows:
+                raise SystemExit(f"no coverage entries match: {term}")
         for row in rows:
             print(f"P{row['priority']:02d} {row['source_id']} — {row['short']} [{row['catalog_status']}; {row['formula_status']}; {row['artifact_status']}]")
             print(f"  {row['next_action']}")
 
 
+def artifact_entry_matches(
+    source: sqlite3.Row,
+    artifacts: Iterable[sqlite3.Row],
+    web_urls: dict[str, Any],
+    term: str,
+) -> bool:
+    needle = term.casefold()
+    fields: list[Any] = [source["source_id"], source["short"]]
+    for name, url in web_urls.items():
+        fields.extend([name, url])
+    for artifact in artifacts:
+        fields.extend(
+            [
+                artifact["artifact_name"],
+                artifact["relative_path"],
+                artifact["media_type"],
+                artifact["sha256"],
+            ]
+        )
+    return any(
+        needle in str(field).casefold()
+        for field in fields
+        if field is not None
+    )
+
+
 def print_artifacts(source_id: str | None = None, path: Path | None = None) -> None:
     with connect_existing(path) as conn:
-        params: tuple[str, ...] = ()
-        where = ""
-        if source_id:
-            where = "WHERE s.source_id=?"
-            params = (source_id,)
         sources = conn.execute(
-            f"""SELECT s.source_id,s.short,s.metadata_json
+            """SELECT s.source_id,s.short,s.metadata_json
                 FROM sources s
-                {where}
                 ORDER BY s.source_id""",
-            params,
         ).fetchall()
-        if not sources:
-            raise SystemExit(f"unknown source_id: {source_id}")
-        print(f"source root: {source_root()}")
+        entries: list[tuple[sqlite3.Row, list[sqlite3.Row], dict[str, Any]]] = []
         for source in sources:
             artifacts = conn.execute(
                 """SELECT artifact_name,relative_path,sha256,byte_size,media_type,exists_local
@@ -741,6 +998,15 @@ def print_artifacts(source_id: str | None = None, path: Path | None = None) -> N
             ).fetchall()
             metadata = json.loads(source["metadata_json"])
             web_urls = metadata.get("web_urls", {})
+            if source_id and not artifact_entry_matches(
+                source, artifacts, web_urls, source_id
+            ):
+                continue
+            entries.append((source, artifacts, web_urls))
+        if source_id and not entries:
+            raise SystemExit(f"no artifact sources match: {source_id}")
+        print(f"source root: {source_root()}")
+        for source, artifacts, web_urls in entries:
             if not artifacts and not web_urls:
                 continue
             print(f"{source['source_id']} - {source['short']}")
@@ -770,6 +1036,7 @@ def verify(root: Path | None = None, check_local: bool = False) -> int:
     root = root or repo_root()
     records = load_catalogs(root)
     errors = validate_catalogs(records, root)
+    errors.extend(validate_csv_files(root))
     if check_local:
         sources = merge_sources(records)
         local_root = source_root()
@@ -959,14 +1226,16 @@ def parser() -> argparse.ArgumentParser:
     search.add_argument("term")
     lean = sub.add_parser("lean", help="find citations linked to a Lean declaration")
     lean.add_argument("term")
-    sub.add_parser("blockers", help="list non-theorem-feedable entries")
+    blockers = sub.add_parser("blockers", help="list non-theorem-feedable entries")
+    blockers.add_argument("term", nargs="?", help="optional citation/status/question/blocker search term")
     frontier = sub.add_parser("frontier", help="list open source/Lean frontier entries")
     frontier.add_argument("--term", help="optional search filter")
     frontier.add_argument("--status", choices=sorted(VALID_STATUSES), help="optional status filter")
     frontier.add_argument("--limit", type=int, default=40, help="maximum entries to print")
-    sub.add_parser("coverage", help="show source-spine coverage and priorities")
+    coverage = sub.add_parser("coverage", help="show source-spine coverage and priorities")
+    coverage.add_argument("term", nargs="?", help="optional source id/status/action search term to filter")
     artifacts = sub.add_parser("artifacts", help="show required local artifacts and acquisition URLs")
-    artifacts.add_argument("source_id", nargs="?", help="optional source id to filter")
+    artifacts.add_argument("source_id", nargs="?", help="optional source id or search term to filter")
     sub.add_parser("stats", help="show database statistics")
     sub.add_parser("head-refs", help="list git HEAD/commit anchors in source metadata")
     packet = sub.add_parser("packet", help="create a reproducible source packet ZIP")
@@ -994,13 +1263,13 @@ def main(argv: list[str] | None = None) -> int:
         print_lean(args.term)
         return 0
     if args.command == "blockers":
-        print_blockers()
+        print_blockers(args.term)
         return 0
     if args.command == "frontier":
         print_frontier(term=args.term, status=args.status, limit=args.limit)
         return 0
     if args.command == "coverage":
-        print_coverage()
+        print_coverage(args.term)
         return 0
     if args.command == "artifacts":
         print_artifacts(args.source_id)

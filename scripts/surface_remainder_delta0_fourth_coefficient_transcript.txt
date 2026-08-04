@@ -1,0 +1,10 @@
+PROVENANCE script=scripts/surface_remainder_delta0_fourth_coefficient.py
+PROVENANCE script_sha256=aba6b6e3cc85b3a21672ee68981dd1e1db32e755fca33e5c35398fd0739ddd6d
+PROVENANCE git_head=9999a0f783e8c7d62934b2888697c091361824f8
+PROVENANCE python=3.12.6
+PROVENANCE sympy=1.14.0
+Y delta coefficient 0 = (2*c - 1)*(2*c + 1)/(8*c**3)
+Y delta coefficient 1 = -(8*c**4 - 15*c**2 + 4)/(32*c**6)
+Y delta coefficient 2 = -(12*c**6 + 485*c**4 - 796*c**2 + 224)/(1024*c**9)
+Y delta coefficient 3 = (28*c**8 + 41*c**6 - 1464*c**4 + 1856*c**2 - 500)/(1024*c**12)
+TARGET MATCH: fourth coefficient r4(c)

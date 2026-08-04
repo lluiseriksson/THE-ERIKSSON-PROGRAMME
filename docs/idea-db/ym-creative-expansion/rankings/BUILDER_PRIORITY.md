@@ -5,6 +5,6 @@
 3. **Falsification suite** — prevents false progress.
 4. **Eq. (2.29) threshold interface** — high payoff but needs source extraction.
 5. **Covariance-root resolvent toy** — creative but must remain experimental until error terms are controlled.
-6. **Catalan second-Ursell closure** — promising but blocked by exact Catalan identity/tree-class matching.
+6. **Catalan second-Ursell closure** — exact rooted child-factorial Catalan identity is closed in Lean; remaining blockers are the separate Appendix-F/source-dictionary hypotheses and downstream tree-class matching.
 
 Avoid: adding new consumers for Eq. (2.31) or Eq. (2.37) before removing a source-shaped hypothesis.

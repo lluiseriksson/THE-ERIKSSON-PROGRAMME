@@ -1,0 +1,106 @@
+"""Write a paper's changed-file list FROM `git diff --name-only`, never by hand.
+
+Twice that sentence was written from memory with the command's output on screen,
+and twice it was wrong: once omitting a generated file, once naming a file that
+had never been touched.  A list a human types is a claim ABOUT the command; a
+list this script derives IS the command.
+
+    python scripts/gen_changed_file_list.py <repo> <tex> <measured-rev> <anchor-rev> [lean-path]
+
+Default lean-path: YangMills/OS/SpatialOS.lean.  The script asserts the Lean
+file is present in the diff, since the whole paragraph exists to say which
+elaborated file changed.  Exit 0 on success, 2 if git fails or the paragraph
+markers are absent.
+"""
+import io
+import subprocess
+import sys
+
+DEFAULT_LEAN = "YangMills/OS/SpatialOS.lean"
+
+# The paragraph this script owns: recognised by its opening words and ended by
+# the sentence that follows it.  Both markers live in the .tex.
+START = "Between that commit and this checkpoint"
+END = "That is a checkable claim"
+
+
+def tt(path: str) -> str:
+    return r"\texttt{" + path.replace("_", r"\_") + "}"
+
+
+def main() -> int:
+    if len(sys.argv) < 5:
+        print(__doc__)
+        return 2
+    repo, tex, measured, anchor = sys.argv[1:5]
+    lean = sys.argv[5] if len(sys.argv) > 5 else DEFAULT_LEAN
+
+    r = subprocess.run(["git", "diff", "--name-only", measured, anchor],
+                       cwd=repo, capture_output=True)
+    if r.returncode != 0:
+        print("git diff failed:", r.stderr.decode(errors="replace").strip())
+        return 2
+    files = [f for f in r.stdout.decode().split() if f]
+    if not files:
+        print("empty diff between", measured, "and", anchor)
+        return 2
+    if lean not in files:
+        print("the Lean file", lean, "is not in the diff")
+        return 2
+
+    # The generated sentence says every OTHER changed file is a non-Lean
+    # artefact the elaborator never sees.  That is a claim about the diff, so
+    # the diff has to be gated on it: a second `.lean` file, or a change to the
+    # toolchain or manifest, would make the sentence false while the file list
+    # around it stayed correct.  Refuse rather than print it.
+    lean_files = [f for f in files if f.endswith(".lean")]
+    if lean_files != [lean]:
+        print("unexpected Lean files in the diff:", lean_files)
+        print("the generated sentence would claim they are not elaborated")
+        return 2
+    config = [f for f in files
+              if f in ("lean-toolchain", "lake-manifest.json")]
+    if config:
+        print("elaboration environment changed in the diff:", config)
+        print("the inherited measurement cannot be carried across that")
+        return 2
+
+    others = [f for f in files if f != lean]
+    if len(others) > 1:
+        listing = ", ".join(tt(f) for f in others[:-1]) + " and " + tt(others[-1])
+    elif others:
+        listing = tt(others[0])
+    else:
+        listing = "nothing else"
+
+    # The gloss must not enumerate categories.  A hand-written paraphrase of a
+    # derived list desynchronises the moment the list grows -- which is exactly
+    # what happened when a second script joined the diff and the sentence still
+    # spoke of "the comparison script" in the singular.
+    para = (r"Between that commit and this checkpoint "
+            r"\verb|git diff --name-only| returns exactly " + listing +
+            r" together with " + tt(lean) +
+            r""".  Of those, only """ + tt(lean) +
+            r""" is elaborated, and it changed \emph{only in comments}; every
+other file listed is a non-Lean artefact that the elaborator never sees.  Both
+the list and this sentence are produced from the command's output rather than
+typed, because twice the list was typed and twice it was wrong.""")
+
+    t = io.open(tex, encoding="utf-8", newline="").read()
+    nl = "\r\n" if "\r\n" in t else "\n"
+    i = t.find(START)
+    j = t.find(END, i + 1 if i >= 0 else 0)
+    if i < 0 or j <= i:
+        print("paragraph markers not found in", tex)
+        return 2
+    io.open(tex, "w", encoding="utf-8", newline="").write(
+        t[:i] + para.replace("\n", nl) + nl + nl + t[j:])
+
+    print("file list generated from the diff:")
+    for f in files:
+        print("   ", f)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,8 +1,78 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-06-28.  **Latest recorded verification
+**Surface Theorem closed and terminally sealed (2026-07-28).**  The paper
+*Global Ratio Monotonicity for a Killed von Mises Bridge* proves
+`F_B(t)>0` and `E'(t)<0` for every `beta>0` and `0<t<pi`.  The last
+`lambda>=3` lane is discharged by the exact main--mirror--rest relay and two
+adjacent division-free Arb covariance certificates.  Production/replay
+pairs are byte-identical, all decision endpoints are printed explicitly,
+and `python scripts/audit_surface_final_seal.py` returns `FINAL-SEAL PASS`
+from a clean public checkout.  The frozen 33-page TeX/PDF live in
+[`papers/surface-complete/`](papers/surface-complete/); the terminal chain,
+hashes, supersessions, and repository-level caveats are recorded in
+[`docs/SURFACE-CLOSURE-NOTES.md`](docs/SURFACE-CLOSURE-NOTES.md) and
+[`docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`](docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md).
+This closes the Bessel/surface theorem only; it does not assert a
+four-dimensional continuum Yang--Mills mass gap.
+The canonical repository-wide proof-state contract remains
+[`project-state.json`](project-state.json).
+
+**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
+20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
+sent as the v2 replacement.  Its exact PDF is pinned at paper commit
+`e68b821f7`, has SHA-256
+`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`, and is
+described in
+[`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).
+The fresh-clone evidence on branch `d3-closure` records a green 8,475-job core
+and a 2,980-report repository oracle at verified source anchor `8e8375d34`.
+Those are branch measurements, not a replacement for the canonical `main`
+checkpoint: neither the paper commit nor its source anchor was in `main` when
+this notice was written.  The moderation/publication outcome is not yet
+recorded here.
+
+**Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-latest addendum.
+the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
+Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
+unitary bridge Addendum 466.  The latest measured source checkpoint is
+`a17d7816` (on `main`) with the latest recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 508; the STANDALONE PAPER v1.2 (Addendum 508) lives at `papers/poincare-wall/` — TeX+PDF same editorial commit `61d56ce6`, submission-ready, formal freeze = `a17d7816`/8412).
+
+**PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
+is paper commit `193bb675`: all 24 theorem-map names link to the immutable
+`a17d7816` Lean sources, and the oracle, ledger, repository provenance, and
+eight actually cited programme papers are clickable.  This supersedes the
+Addendum-508 pre-link PDF without changing its mathematics or formal freeze.
+
+**W-3b DONE — exact Hodge term, endpoint-neutral** (2026-07-14,
+`PhysicalPoincareLowModeHodge.lean`, ledger Addendum 506).  On the even torus
+of side `N = M + M`, with `d > 0`, `M > 0`, and `Nc > 0` explicit, the
+two-interface witness satisfies
+`⟪A, K₀ A⟫ = 8 * (M + M)^(d - 1) * ‖w‖²` exactly.  The mechanism is split:
+for `i = j` the curl vanishes and divergence carries the full energy; for
+`i ≠ j` divergence vanishes and curl carries the full energy in the unique
+ordered `{i,j}` plane.  No `Nc ≥ 2` or `w ≠ 0` assumption is needed for the
+identity.  At the W-3b checkpoint alone this did not decide the gate; W-3c
+below supplies the block response and the registered one-sided endpoint.
+
+**W-3c DONE — quotient Poincaré second wall** (2026-07-14,
+`PhysicalPoincareLowModeBlock.lean`, ledger Addendum 507).  A canonical
+linear-isometric reindexing places the witness on the exact fine side
+`(M+M)*N'` and is proved to preserve constants, fluctuations, curl,
+divergence, norm, and flat Hodge energy.  For `d ≥ 3`, the current physical
+block map obeys `‖QA‖² ≤ (M+M)⁻¹‖A‖²`, while the exact Hodge ratio is
+`8/((M+M)N')`.  Hence the Rayleigh numerator is at most
+`9/(M+M)‖A‖²`, forcing every quotient Poincaré constant to satisfy
+`(M+M)/9 ≤ CP`.  Therefore `VolumeUniformQuotientPoincareGate` is PROVED
+FALSE for every positive `N'`, `d ≥ 3`, `Nc ≥ 2`, and every adjoint model.
+This refutes the registered gate under its current unscaled `Q` and
+unweighted coarse norm; it does not address a rescaled or weighted gate.
+
+The public static dashboard now lives at
+[`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
+`https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/`.  It mirrors
+the HORIZON/M3 dependency DAG as curated green/amber/open nodes and is guarded
+by `scripts/validate_dashboard.py`.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -47,6 +117,13 @@ refresh commits to find source metadata prompts that still mention older
 `HEAD`/`Git commit` anchors; it classifies each anchor as current, ancestor,
 not-ancestor, or missing without treating historical anchors as validation
 failures.
+The source-db CLI now also indexes dictionary-link provenance, `discharged_by`
+search scope, proof-obligation cards, and the hypothesis-removal queue.  Use
+`python scripts/source_db.py blockers` for the ranked blocker view and
+`python scripts/source_db.py frontier --term <topic> --status lean_linked`
+when the obstruction is an operational card rather than a primary-source
+citation.  These indices are navigation and audit tools; their presence does
+not upgrade any source-pending record into a theorem.
 The Eq. (2.31) Batch 004 operational prompts were refreshed at public main
 `0d87ecc6` so the first visible target is again the corrected
 `CMP116Eq231Y0cStarInteriorBoundaryToGapSource` source-lock.  The source-db
@@ -112,6 +189,71 @@ upstream-field closure for the definitional convention only; an independently
 specified CMP116 physical Gaussian law still needs the primary-source
 determinant/Jacobian normalization theorem, and `raw_pointwise_decay` remains
 open.
+The physical source frontier now also exposes the Wilson-Hessian/Green inverse
+dictionary directly through
+`YangMills.RG.PhysicalGaugeWilsonHessianSourceDictionary`.  Its fields name the
+CMP102/CMP99 source quadratic form, positivity, Green left/right inverse,
+sign/normalization scale, precision-form transport, and covariance transport.
+This is a source-to-Lean contract only: it does not prove the Hessian
+identification, covariance-root localization, Gaussian pushforward, local
+activity construction, or `hRpoly`.
+The physical fluctuation activity lane now also separates the CMP119/CMP122
+E/R/B source decomposition and B/local component route.  The new interfaces
+`CMP119CMP122ERBSourceDecomposition`, `CMP119BLocalSourceBound`,
+`CMP119BLocalActivityEstimate`, `PhysicalGaugeDimock318BLocalComponentBoundary`,
+and the corresponding `PhysicalGaugeDimock318ERBComponentBoundary` constructors
+make the paper-native decomposition, B/local bound, source metric, and
+source-to-Lean activity dictionaries explicit before they feed physical raw
+decay.  The CMP116 Lemma 3 side now keeps the `deltaE` and local-`R` estimates
+separate from the B/local component, and the E/R/B boundary can be assembled
+through CMP119/CMP122 decomposition plus explicit metric or packaged weight
+transport into the Lemma-3 weight.  These are dictionary and packaging closures,
+not new source estimates.
+The B/local route has since been sharpened further into named dictionary
+frontiers for source-metric domination, rate margin, amplitude relaxation,
+activity identification, Nat-metric specialization, and source-native E/R/B
+boundary assembly.  `BalabanCMP116Lemma3Estimate.lean` can now feed source
+component packages into the E/R/B boundary once those dictionaries are supplied,
+but it still proves none of CMP119 Eq. (2.42), the B/local paper-to-Lean
+activity equality, the metric/rate constants, or the final component decay.
+Eq. (2.31) also now has the candidate
+`cmp116Eq231GapCubesOfY0cStarInteriorBoundary` plus the definitional membership
+lemma `cmp116Eq231_mem_gapCubesOfY0cStarInteriorBoundary`.  This gives the
+`Y0^{c,*}` interior-boundary path a concrete Lean target, but it does not prove
+the full `gapCubes` bridge, endpoint/base encoding, source admissibility iff,
+or downstream `PBondBoundary` routing.
+The flow-diamagnetic UV route has also moved from a written kill-test plan into
+initial theorem-fed infrastructure.  `YangMills.RG.MarginalCoupling` proves the
+robust marginal-recursion and summability side, while `YangMills.RG.Diamagnetic`
+adds killed-region walks, endpoint recursion, finite transport sums, and
+factorial kernel convergence/bound objects for the finite-dimensional kernel branch.  This is
+valuable producer-side scaffolding toward `hRpoly`; it does not prove the
+matrix-unitary bridge, flow-sliced measure transport, local Jacobian, marginal
+extraction, or the activity-decay theorem.
+The Catalan/KP closure has now landed through the physical precision consumer
+path.  `YangMills.KP.RootedCatalanMajorant` proves the finite partial-sum
+substrate, convolution support/flattening, quadratic and reset recursions, and
+the scaled closed square-root bound; `YangMills.RG.SchurCatalanBudget` bridges
+that bound into the RG Schur-Catalan budget; `GaugeFixedPrecision` feeds
+Catalan partial budgets into block-Poincare coercivity; and
+`PhysicalGaugeOperator` derives exact covariance, inverse identities, PSD, and
+norm bounds from a Catalan-controlled physical precision defect.  The Catalan
+defect estimate and physical/source identification remain explicit hypotheses,
+so this still does not prove the Wilson Hessian, covariance-root localization,
+Appendix-F source term, `hRpoly`, M3, or Clay.
+The 2026-07-04 source window also folds in the first upstreamed satellite
+consumer: `YangMills.KP.ActivityDomain` proves that the KP criterion is
+monotone under pointwise activity domination, hence one KP weight certifies a
+closed zero-free activity polydisc, and the fugacity section is an explicit
+polynomial.  On the flow-diamagnetic side,
+`Matrix.UnitaryGroup.toEuclideanLinearIsometry` and
+`norm_sum_unitary_toEuclideanLinearIsometry_apply_le_card` now remove the
+finite-dimensional unitary-to-isometry adapter from the TODO list.  The oracle
+file also covers the KP activity-domain results, the physical precision
+residual budget, and Appendix-F hole target geometry/family targets.  These are
+real finite interface closures; they still do not prove a heat-kernel identity,
+source term, Wilson-flow measure decomposition, raw activity estimate, M3, or
+Clay.
 The theorem-fed `YangMills.RG.YMActivityBudget` module now provides the
 source-independent error-budget landing pad for the `hRpoly` lane: a
 source-shaped activity plus covariance, dictionary, support, and Jacobian
@@ -260,6 +402,29 @@ and
 so callers no longer need to rewrite the CMP116 Gaussian/spectator-integrated
 activity back to the abstract integrated-`K#` family before invoking the
 marginal consumer.
+The first `K#` source-estimate lane now also has the canonical-root module
+`YangMills.RG.AppendixFKsharpCanonicalRoot`: the generic and CMP116
+scale-family `K#` estimators no longer require callers to supply the rooted
+finite summability premise `hroot`.  They use
+`appendixFHole_rootedFiniteExpWeightSum_le` with the canonical constant
+`appendixFHoleRootSumConstant d kappa0`.  This discharges only the root-sum
+field; the raw metric activity estimate, `K#` smallness, source constants,
+integrability, and hole-geometry hypotheses remain explicit.
+The same module now has half-budget variants of the generic and CMP116
+canonical-root `K#` estimates.  The new algebra lemma
+`appendixFSecondUrsell_ksharpSmallness_of_halfBudget` names the fact that the
+second-Ursell half-budget already implies the first-gas condition
+`2 * H0 * K <= 1`; therefore callers on the H# route no longer need to pass
+K# smallness separately from the residual half-budget.  The source extraction
+of that half-budget and the final profile inequality remains open.
+The residual H# route now also has the source-facing canonical-root module
+`YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot`.  Its theorem
+`norm_appendixFHoleHsharp_le_residual_of_rawMetricDecay_canonicalRoot_halfBudget_of_source`
+feeds the CMP116 integrated `K#` canonical-root half-budget estimator directly
+into the Dimock-II residual `H#` theorem.  Thus callers no longer supply the
+intermediate `hactivityKsharp` premise in this lane; they still supply the real
+source inputs `hraw`, the half-budget, the profile inequality, spectator
+probability, and hole-geometry hypotheses.
 The concrete SU(N) center-selection layer now also includes the open Wilson-line
 matrix-coefficient theorem
 `integral_wilsonLineSU_entry_eq_zero`: for positively oriented edge lists with
@@ -296,10 +461,10 @@ the axiom oracle, and the verification ledger.
 | Verified core integrity | `100% [##########]` | zero `sorry`, zero project axioms, standard Lean axioms only |
 | Strong-coupling lattice package | `100% [##########]` | KP/Mayer, clustering, and Wilson-loop area laws are theorem-fed |
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
-| Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
-| Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `69% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, local-SPD precision/root frontier packaging, a local fluctuation-activity certificate, dictionary-instantiated CMP116 localized-family bridge, Appendix-F support packaging, dictionary-backed Gaussian/activity construction scaffolding, a canonical Gaussian pushforward integral consumer, source-package accessors for that consumer, and a structured Gaussian-pushforward normalization interface are in Lean |
-| Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
+| Conditional M3 assembly | `CONDITIONAL` | the assembly is verified; the UV producer remains explicit |
+| Appendix-F/H# bridge to UV consumer | `PARTIAL` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, newly oracle-covered Appendix-F hole target geometry/family targets, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
+| P4 physical-operator vertical slice | `PARTIAL` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
+| Concrete `hRpoly` discharge | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Catalan/Schur budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
 The full human-readable progress board now lives directly in
@@ -308,7 +473,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8363 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8412 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -817,6 +982,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   from a source budget `|X| <= theta * (d_M(X)+1)` on `Λ`, every target-fiber
   cover absorbs `exp |Y|` by shifting the cover rate from `κ` to `κ - θ`.
   This is still a cover-sum statement, not a direct target-metric compression.
+  The companion module `YangMills/RG/AppendixFKsharpCanonicalRoot.lean` now
+  feeds the canonical rooted finite summability theorem directly into the
+  generic and CMP116 source-shaped `K#` estimators, closing the former `hroot`
+  premise with `appendixFHoleRootSumConstant d κ₀`.  It does not change the
+  raw activity estimate, K# smallness, source constants, integrability, or
+  hole-geometry obligations.
+  The half-budget variants in the same module use
+  `appendixFSecondUrsell_ksharpSmallness_of_halfBudget` to derive K# smallness
+  from the second-Ursell half-budget, so a downstream H# source route carries
+  one scalar half-budget rather than both half-budget and an independent K#
+  smallness proof.
   The linearized `κ - κ₀ - 2` corollary, Dimock (643) factorization, second
   Ursell gas, final `H#` residual rate, and concrete Yang-Mills raw activity
   estimate remain open;
@@ -1037,12 +1213,20 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `w`/`Croot`/`Cleaf`/`hactivity`/`hleaf_dimockF` tuple to obtain the
   target-sensitive residual `H#` bound; they pass the source-facing
   `hactivityKsharp`, smallness, scalar budget, and hole-geometry hypotheses.
+  Its half-budget corollary
+  `norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_halfBudget`
+  removes the separate smallness and closed scalar-budget premises from that
+  call site, deriving them from the already-formal Appendix-F real-algebra
+  conditions
+  `appendixFSecondUrsellLeafConstant d kappa0 * (2*A*K) <= 1/2` and
+  `4*appendixFSecondUrsellMomentConstant d kappa0*A*K <=
+  C*H0*exp(-c0*t)*g k^kappa0`.
   It removes only summability, prefix/tail, weighted-tree scalarization, and
-  finite leaf-summation bookkeeping after the source/certificate inputs are
-  supplied;
+  finite leaf-summation plus denominator/scalar-budget bookkeeping after the
+  source/certificate inputs are supplied;
   it does not extract Dimock F.1 from the paper, prove the preceding `K/K#`
-  activity estimate (Dimock (642)), discharge smallness or the scalar budget,
-  prove `hRpoly`, or prove any continuum/Clay theorem;
+  activity estimate (Dimock (642)), prove the half-budget/profile inequalities
+  from paper constants, prove `hRpoly`, or prove any continuum/Clay theorem;
 * the triple-infinity closure module
   `YangMills/RG/TripleInfinityClosure.lean`: it packages the marked-infinity
   bookkeeping suggested by the current notes.  A pointwise estimate

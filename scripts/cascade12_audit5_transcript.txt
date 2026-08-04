@@ -1,0 +1,153 @@
+=== CASCADES 1+2 - INDEPENDENT AUDIT, ROUND 5 (audit desk, 2026-07-11) ===
+[hash context: on top of 9c1bd96 (the round-4 repair + v66 commit);
+ working-tree diffs are cascade3b/reception files belonging to other
+ live desks and touch no audit object; scope = round 4's closing
+ instruction: verify the two named mechanical repairs (counts 1-2)
+ + reruns + the v66 acta record.  Everything else was RULED PASS in
+ round 4 (scripts/cascade12_audit4_transcript.txt, B.1-B.5, A.1-A.3)
+ and those rulings attach to chains the two diffs do not touch.]
+
+Split roles honored: this desk fabricated nothing; every check below
+was re-derived with the auditor's own code (exact-Fraction census,
+python 3.12.6, python-flint 0.9.0, mpmath 1.3.0) and read from files
+on disk only; no number in the commissioning message bore load.
+
+--------------------------------------------------------------------
+PROVENANCE
+--------------------------------------------------------------------
+Repair commit 9c1bd96 touches exactly (besides acta/audit-transcript/
+3b files): cascade1_floor_arb.py (+4/-1), cascade2_step0_eps.py
+(+27/-14), and the two certified transcripts (hash line; cascade2
+also the timing suffix - NO certified number changed, verified on
+the committed diff line by line).  cascade1_signed_minoration.py is
+NOT in the commit's file list; its on-disk sha256
+  6fd329167bae1f2039eafa26d27e22315b0354ff5a72426c8248ce950faf186a
+still equals its committed transcript's printed hash (design script
+UNTOUCHED this round - confirmed).
+On-disk script sha256 (CRLF bytes) == the hash PRINTED in each
+committed transcript == the hash printed by this desk's own reruns:
+  cascade1_floor_arb.py
+    a270f85abf79242760144043146ddc2258b6750c88bc1266aa96c4acd11f66f5
+  cascade2_step0_eps.py
+    d3332c549e79ce932a0b72ea41d24daaded73f0e5a0a8f98c7776f64ad5e1617
+
+--------------------------------------------------------------------
+COUNT 1 - THE STALE COMMENTS (cascade2_step0_eps.py).  VERIFIED.
+--------------------------------------------------------------------
+* The two ACTUAL flagged assertions are GONE.  Round 4 cited lines
+  214 and 248 asserting "2*1.0378/c^{5/2}"; on disk today the
+  beta-monotonicity comment (now lines 217-218) reads "beta-FREE
+  (= GBC2/c^{5/2}, the computed coefficient)" and the SEG-C comment
+  (now line 260) reads "4 beta c GB/2 = GBC2/c^{5/2} (computed
+  coefficient)".  Grep for 1.0378 / 2.0756 over all three cascade
+  scripts: every remaining occurrence is an attributed HISTORY
+  record (docstrings/derivation comments naming audit round 1 as
+  the catch), none is a live assertion of the disowned constant.
+* The junction comment is REWRITTEN to the true mechanism: former
+  lines 219-220 ("tb rounded UP so SEG-A overlaps SEG-B") now read
+  (lines 224-227) "The SEG-A2/SEG-B junction is closed by the
+  EXPLICIT 1e-9 overlap bump on the last SEG-A2 box (audit round 3
+  A.4: bhi-rounding alone is illusory at float precision)" -
+  consistent with the inline comment at the bump itself (lines
+  236-238).  The file no longer carries two contradictory junction
+  accounts.
+* The two softened HONEST history records are RESTORED WITH THEIR
+  NUMBERS: docstring lines 54-56 ("the hand-assembled GB constant
+  1.0378 did not re-derive (the chain gives 1.0391629...)"), and
+  the GBC2 derivation comment (lines 108-110: "= 2*1.0391629...,
+  not the disowned 2.0756").  The parallel record in
+  cascade1_floor_arb.py (lines 56-58) and the design script's
+  (lines 53-55, "rounded UP from the computed 1.0391629...") are
+  intact and numerically honest.  COUNT 1 CLOSED.
+
+--------------------------------------------------------------------
+COUNT 2 - SEG-B HULL BOTTOMS (both arb scripts).  VERIFIED.
+--------------------------------------------------------------------
+* Code: cascade1_floor_arb.py line 184 `blo_beta =
+  math.nextafter(1.5/xhi, 0.0)` (import math at line 177, module
+  level, before use); cascade2_step0_eps.py line 252 `beta_iv =
+  IV(max(15.0, math.nextafter(1.5/xhi, 0.0)), max(15.0, 1.5/xlo))`
+  (import math at line 75).  Both hulls keep the max(15, .) clamp.
+* AUDITOR'S OWN EXACT-FRACTION CENSUS, re-run from scratch over all
+  60 + 200 boxes with the scripts' own float expressions
+  (xlo/xhi = 1e-3*100.0**(k/NB)):
+    - Old bottom float(1.5/xhi) rounds ABOVE the true rational on
+      34/60 (floor) and 109/200 (cascade2) boxes, worst excess
+      1.0571e-13 - round 4's counts and its "1.06e-13" reproduce
+      exactly.
+    - NEW bottom: on EVERY box, the certified hull bottom is <= the
+      claim-domain infimum max(15, true 1.5/xhi).  ZERO leaks.
+      (nextafter moves the correctly-rounded float one full ulp
+      down, hence strictly below the true quotient wherever the
+      quotient exceeds 15.)
+    - The only boxes where the 15-clamp binds on the bottom are the
+      last boxes (k = 59 resp. 199), where xhi == 0.1float > 0.1
+      decimal, so true 1.5/xhi = 14.99999999999999917 < 15; the
+      claim window is beta >= 15, so the required bottom there IS
+      15 - leak-free, exactly as round 4 already ruled for that box.
+    - Box adjacency bit-for-bit (xhi(k) == xlo(k+1)) in both grids;
+      hull TOPS still round below the true corner on 26/60 resp.
+      91/200 boxes - rescued by the beta-monotonicity round 4
+      RULED at 1(e)/(B.3), unchanged by these diffs.
+    - The widened hulls are a harmless SUPERSET (they certify a
+      <= 1-ulp sliver below the claimed window in addition).
+  COUNT 2 CLOSED: the float hull now provably contains the claimed
+  window's beta values on every SEG-B box.
+
+--------------------------------------------------------------------
+RERUNS (this desk's own, outputs to auditor scratch - committed
+transcripts NOT overwritten)
+--------------------------------------------------------------------
+Both scripts run from scripts/ with C:\Python312\python.exe
+(python 3.12.6, python-flint 0.9.0, mpmath 1.3.0), both exit 0:
+* cascade1_floor_arb.py: output BYTE-IDENTICAL (LF-normalized) to
+  the committed cascade1_floor_arb_transcript.txt, including the
+  printed script hash and the certified enclosures SEG-A 1.03611 /
+  stub True / SEG-B 0.811835 / SEG-C [2.20442, 2.21398] > 1/2 True;
+  VERDICT line CERTIFIED.
+* cascade2_step0_eps.py: IDENTICAL except the timing line (363s vs
+  366s); the entire certificate portion byte-equal - claim line,
+  SEG-A worst 7.67715 / SEG-B worst 8.77726 (the thin 8.8 margin
+  rerun-stable to the last digit) / C_mir witness 2.84340 / SEG-C
+  eps [1.2313, 1.2424] and cm [0.50025, 0.50285] / VERDICT
+  CERTIFIED / all seven calibration bench lines.
+* Committed-transcript diffs across the repair commit show ONLY the
+  hash line (+ cascade2's timing suffix) changed: v66's "re-CERTIFIED
+  identical numbers" is TRUE - the repair moved no certified digit,
+  as round 4 predicted (< 1e-12).
+
+--------------------------------------------------------------------
+ACTA v66.  ACCURATE.
+--------------------------------------------------------------------
+docs/SURFACE-CLOSURE-NOTES.md v66 records: COUNT 1 with the correct
+line numbers, the correct true coefficient (GBC2/c^{5/2} =
+2.0783258...), the junction mis-attribution, the softened-history
+finding, and the explicit amendment "v65's 'stale constant comments
+purged' is hereby AMENDED: FALSE as committed" (v65 itself preserved
+at its place - amended, never erased); COUNT 2 with the census
+counts 34/60, 109/200, worst excess 1.06e-13, and the nextafter fix
+in both scripts; the round-4 rulings and both binding ink conditions
+(mini-lemma inked with lem:mass; rem:step0 pins t <= 2.9_float64 =
+2.8999999999999999112).  Every v66 statement checked against the
+actual diffs matches - NO claimed-but-absent repair this time.  The
+repair descriptions are exactly what is on disk.
+
+--------------------------------------------------------------------
+AUDIT VERDICT: PASS
+--------------------------------------------------------------------
+Both round-4 counts are genuinely repaired as committed in 9c1bd96:
+the stale 2*1.0378 assertions are purged and replaced by the
+computed GBC2 reference, the junction comment attributes closure to
+the explicit 1e-9 bump, the honest history records are restored
+with their numbers, and the SEG-B hull bottoms are nextafter-closed
+in both arb scripts with a zero-leak exact-Fraction census; reruns
+are exit-0, hash-matched, and numerically identical to the
+committed transcripts; the design script is untouched; v66 is an
+accurate acta record.  Together with round 4's rulings (B.1-B.5,
+A.1-A.3), this AUTHORIZES INK for CASCADE 1 (lem:mass promotion,
+WITH the global mini-lemma I_1(z) <= e^z/sqrt(2 pi z), z > 0, inked
+in the same commit) and CASCADE 2 (rem:step0 epsilon, WITH the bulk
+boundary pinned as t <= 2.9_float64 = 2.8999999999999999112 or a
+restated decimal breakpoint <= 2.9float).  The two binding ink
+conditions are conditions OF the authorization, not open findings.
+--------------------------------------------------------------------

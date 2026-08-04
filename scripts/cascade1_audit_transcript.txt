@@ -1,0 +1,176 @@
+=== CASCADE 1 - INDEPENDENT AUDIT TRANSCRIPT (audit desk, 2026-07-11) ===
+[hash context: on top of 15727e1; audits the v61 fabrication record]
+
+Object under audit: the signed minoration discharging candidate lem:mass
+  m(beta,c) = beta^{3/2} e^{-4 beta c} <D> >= m_low(beta,t) >= 1/2
+  for beta >= 15, t in (0, pi - 1.5/beta]
+  (chain: scripts/cascade1_signed_minoration.py;
+   floor:  scripts/cascade1_floor_arb.py, python-flint arb, 120 bits).
+Split roles honored: this desk fabricated nothing; every number below
+was re-derived with the auditor's own code/methods (mpmath, dps 30),
+not copied from the fabrication scripts.
+
+Commission: four steps, STOP AT FIRST FAILURE (v43-style order).
+This audit STOPPED inside STEP 1(b). Record follows.
+
+--------------------------------------------------------------------
+PROVENANCE (pinned before auditing)
+--------------------------------------------------------------------
+sha256(scripts/cascade1_signed_minoration.py) =
+  f34660762f6f293c4e4c3521631c9acf67497b7f664d8a69b2f4c95fd0fd0ff4
+  == the hash printed in cascade1_signed_minoration_transcript.txt.
+sha256(scripts/cascade1_floor_arb.py) =
+  d98f9861e4f4a8222618774abcd7ff51e7ec830583eda19c65eb85bbd99e8077
+  == the hash printed in cascade1_floor_arb_transcript.txt.
+The committed transcripts correspond to the committed scripts; the
+audit findings attach to exactly those bytes.
+
+--------------------------------------------------------------------
+STEP 1(a) - T1 (mu_1 lower) chain: RE-DERIVED, ALL LINKS PASS
+--------------------------------------------------------------------
+(i)    KD = 2K - 2K(P+Q) on B: exact, immediate from D = 2(1-P-Q).
+(ii)   On B: P,Q <= sin^2(0.6), so w <= P+Q <= wmax = 2 sin^2(0.6)
+       = 0.637642; w >= 0 for c^2 >= 1/2 (PQ/c^2 <= 2PQ <= P+Q).
+       z = z_s sqrt(1-w) in [z_s sqrt(1-wmax), z_s],
+       sqrt(1-wmax) = 0.601962.
+(iii)  Companions applicability, WORST corner beta=15, c=sqrt2/2,
+       w=wmax: z >= 4*15*(sqrt2/2)*0.601962 = 25.54 >= 20. PASS.
+       (c >= sqrt2/2 holds on the whole window: t < pi.)
+(iv)   Root from below: (1-u/2-u^2/4)^2 <= 1-u iff u^2(u^2+4u-4)<=0
+       iff u <= 2(sqrt2-1) = 0.8284; RHS >= 0 at u <= 0.7. wmax =
+       0.6376 < 0.7. EXACT, re-derived by squaring. PASS.
+(v)    Frozen bracket: f(x) = x^{-3/2}(1 - a/x - b/x^2),
+       x = z/z_s in [0.60196, 1]; f' has sign of
+       -3/2 + (5a/2)/x + (7b/2)/x^2; at the INFLATED a = 3/160,
+       b = 0.6/400 (z_s >= 20; actual z_s >= 42.43 gives smaller
+       a,b, and the f'-factor is increasing in a,b so inflating is
+       the safe direction) the worst value is -1.407 < 0. Freezing
+       the bracket at z_s is therefore a valid LOWER bound. PASS.
+(vi)   Quartic factorization: z - z_s >= -2 beta c w - beta c w^2;
+       w <= P+Q <= (s^2+a^2)/4, w^2 <= (P+Q)^2 <= 2(P^2+Q^2)
+       <= (s^4+a^4)/8 (P <= s^2/4 exact). The joint quartic factor
+       e^{-beta c (s^4+a^4)/8} factorizes EXACTLY per variable, so
+       no two-variable (1-x)(1-y) issue arises; per variable
+       e^{-u} >= 1-u holds pointwise for ALL u (also where 1-u<0,
+       in the favorable direction), giving
+       j >= A - q with A = sqrt(2pi/(beta c))(1 - e^{-beta c r^2/2})
+       (erfc(x) <= e^{-x^2}, re-derived), q = full-line quartic
+       moment = sqrt(2pi/(beta c)) * 3/(8 beta c) (exact Gaussian
+       moment (3/4)sqrt(pi) lambda^{-5/2}, re-derived); A - q > 0
+       in range (br2 >= 0.964 at beta c >= 15/sqrt2), so
+       J = j^2 >= (2pi/(beta c)) br2^2. PASS.
+(vii)  Assembled T1 coefficient, re-derived:
+       2 * (2 beta/sqrt(2pi)) (4 beta c)^{-3/2} (2pi/(beta c))
+       * beta^{3/2} = 2 * sqrt(2pi)/4 * c^{-5/2}
+       = (sqrt(2pi)/2) c^{-5/2} = 1.253314 c^{-5/2}.  MATCHES. PASS.
+
+--------------------------------------------------------------------
+STEP 1(b) - GB chain: LINKS PASS UNTIL THE ASSEMBLY; THE ASSEMBLED
+CONSTANT FAILS TO RE-DERIVE  ***FIRST FAILURE - AUDIT STOPS HERE***
+--------------------------------------------------------------------
+Links re-derived and PASSING:
+(i)    Upper companion: I_1(z) <= e^z/sqrt(2pi z) for z >= 1.6
+       (bracket 1 - 3/(8z) + 0.6/z^2 <= 1 iff z >= 1.6); z >= 25.54
+       on B. PASS.
+(ii)   Prefactor identity z^{-3/2} = z_s^{-3/2}(1-w)^{-3/4}: exact.
+(iii)  e^{z-z_s} <= e^{-2 beta c w} (sqrt(1-w) <= 1 - w/2): exact.
+(iv)   Absorption endpoint, recomputed: h(w) = -(3/4)ln(1-w)
+       - 0.1*(15/sqrt2)*w is convex; h(0) = 0, h(wmax) =
+       0.761418 - 0.676328 = 0.085090, e^{0.085090} = 1.088735
+       <= 1.089 (ink). Valid for all beta c >= 15/sqrt2 since the
+       0.1-slice only shrinks. PASS.
+(v)    Rate floor: w >= (P+Q)(1 - (P+Q)/(4c^2)) >= (1 - wmax/2)(P+Q)
+       = 0.681179 (P+Q) >= 0.6811 (P+Q) on B at c^2 >= 1/2. PASS.
+(vi)   Concavity: P = sin^2(s/2) >= (sin^2(0.6)/1.44) s^2 =
+       0.221404 s^2 >= 0.2214 s^2 on |s| <= 1.2 (chord bound on the
+       concave sin over [0, 0.6], re-derived). PASS.
+(vii)  Gamma moment: iint_{R^2} ((s^2+a^2)/4) e^{-lam(s^2+a^2)}
+       = pi/(4 lam^2) (polar, int rho^3 e^{-lam rho^2} = 1/(2 lam^2)),
+       re-derived exactly. PASS.
+
+THE FAILURE:
+(viii) Assembled constant. From the INKED constants the chain gives
+         GB_m <= [1.089 * pi / (16 sqrt(2pi) * (0.2214*1.9*0.6811)^2)]
+                 / (beta c^{7/2})
+               = 1.0391629 / (beta c^{7/2}),
+       re-derived independently (mpmath, dps 30). With the SHARP
+       constants (1.088735, 0.221404, 0.681179) it gives
+       1.0386405 / (beta c^{7/2}). The v61 acta claim
+       "assembled GB_m <= 1.0378/(beta c^{7/2})" is NOT derivable
+       from either constant set: 1.0378 < 1.03864 (sharp)
+       < 1.03916 (inked). The constant does not re-derive.
+
+       CONSISTENCY WITNESS that 1.03916 is what the chain (and the
+       design script's m_low) actually carries: at (beta,t)=(15,0.5),
+       c = cos(0.125), the T2 coefficient 2*1.0391629 = 2.0783258
+       reproduces the design transcript's printed T2 = -0.1424
+       (computed: 0.1424061); the acta's constant would print
+       0.1422194. The design script's PART 2/3/4 and the floor
+       script's SEG-A/SEG-B use the full formula (coefficient
+       2.0783258) and are NOT infected.
+
+       WHERE THE WRONG CONSTANT BEARS LOAD:
+       (1) docs/SURFACE-CLOSURE-NOTES.md v61 records 1.0378 as the
+           assembled GB constant - a non-derived constant one step
+           from ink (ghost #23 class).
+       (2) scripts/cascade1_floor_arb.py line "GBC = arb('2.0756')"
+           ("2 * 1.0378 assembled in design script" - the design
+           script assembles no such number). SEG-C (deep tail
+           x = pi - t in (0, 1e-3]) computes
+           T2 = -GBC * x/(1.5 c^{7/2}) with GBC = 2.0756
+           < 2.0783258. SEG-C therefore UNDERSTATES |T2|, i.e. it
+           encloses a function strictly LARGER than m_low - the
+           UNSAFE direction for a floor certificate. The committed
+           "CERTIFIED" transcript does not witness the claim
+           "m_low >= 1/2" on SEG-C; it witnesses the floor of a
+           different (larger) function.
+
+       MEASURED SEVERITY (auditor's own bound): the deficit is
+       (2.0783258 - 2.0756) * x / (1.5 c^{7/2})
+       <= 0.0027258 * 1e-3 / (1.5 * cos(pi/4)^{3.5})
+       =  6.12e-6,
+       against SEG-C's certified enclosure lower bound 2.20443.
+       The MATHEMATICS survives (2.20443 - 6.2e-6 >> 1/2); the
+       WITNESS does not. Under the regime (tricotomy: "certified"
+       only with a transcript that witnesses the claim; ghost #23:
+       only derived constants travel) this is a failure of the
+       certificate as committed, not a numerical near-miss to wave
+       through. The confession does not amend the judge; neither
+       does the auditor.
+
+--------------------------------------------------------------------
+NOT AUDITED (stopped at first failure, per the commission)
+--------------------------------------------------------------------
+STEP 1(c) mirror chart (beyond noting that SEG-C's zone-L algebra
+  has the beta cancellation right and c - s4 = sqrt2 sin(x/4) is
+  exact), 1(d) rest floor + area lemma + layer sum, 1(e) full
+  beta-monotonicity, 1(f) segment logic; STEP 2 rerun (provenance
+  was instead pinned by sha256 match of scripts to transcripts);
+  STEP 3 full adversarial code review. These remain OWED to the
+  next audit round; nothing here should be read as their approval.
+
+--------------------------------------------------------------------
+REPAIR THE FAILURE DEMANDS (for the coordinating desk; not executed
+here - the audit desk does not fabricate)
+--------------------------------------------------------------------
+(1) Re-derive and record the GB constant honestly: 1.0392 (rounded
+    UP from 1.0391629) from the inked constants; amend the v61
+    record (amend, never erase).
+(2) Fix scripts/cascade1_floor_arb.py: GBC must be a rounded-UP
+    enclosure of 2 * 1.0391629, e.g. arb('2.0784') (or compute it
+    in-script from the inked constants instead of hard-coding).
+(3) Rerun the floor sweep, recommit script + transcript same
+    commit, and resubmit CASCADE 1 to a FRESH independent audit,
+    which then owes the full four steps including everything listed
+    as NOT AUDITED above.
+
+--------------------------------------------------------------------
+AUDIT VERDICT: FAIL — the assembled GB constant does not re-derive
+(claimed 1.0378/(beta c^{7/2}); the chain with the inked constants
+gives 1.0391629, with sharp constants 1.0386405), and the certified
+floor's SEG-C inherits it as GBC = 2.0756 < 2.0783258, understating
+the negative term |T2| so that the committed interval transcript
+certifies a function strictly larger than m_low on the deep tail
+x in (0, 1e-3]. The certificate as committed is not a witness for
+the floor claim. No ink for lem:mass this round.
+--------------------------------------------------------------------

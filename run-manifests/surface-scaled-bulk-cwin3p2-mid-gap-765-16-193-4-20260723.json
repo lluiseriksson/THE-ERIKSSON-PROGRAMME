@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-mid-gap-765-16-193-4-20260723",
+  "claim_scope": "Quarantined CWIN=3/2 mid-order replacement evidence for beta [765/16,193/4]; no G2/G6 or H_tail promotion.",
+  "status": "quarantined",
+  "started_utc": "2026-07-23T00:00:00Z",
+  "finished_utc": "2026-07-23T00:00:00Z",
+  "config": {
+    "cwin": "3/2",
+    "beta_order": 20,
+    "t_order": 25,
+    "prec": 180,
+    "min_dt": "1/100000",
+    "units": ["00"],
+    "beta_domain": ["765/16", "193/4"]
+  },
+  "outputs": [
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_00_765_16_193_4.txt",
+      "sha256": "91f798c445c5642c938391749411a36ace41f42eaee084aebd90934b51bc9e35",
+      "sha256_lf": "716b3dee461cc8bb2e1fcfcc996bc2143f332399f341ff769c14277d14974dd6"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_00_765_16_193_4_rerun.txt",
+      "sha256": "91f798c445c5642c938391749411a36ace41f42eaee084aebd90934b51bc9e35",
+      "sha256_lf": "716b3dee461cc8bb2e1fcfcc996bc2143f332399f341ff769c14277d14974dd6"
+    }
+  ],
+  "validator": {
+    "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_gap_765_16_193_4.py",
+    "verdict": "PASS",
+    "units": 1,
+    "t_rows": 198,
+    "production_replay_byte_identical": true
+  },
+  "inputs": [
+    {"path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_gap_765_16_193_4.py", "sha256": "29b403c5acf23d21e2847518a8db93374037a1c008f17566d7c3ac9b0bfb9986", "sha256_lf": "29b403c5acf23d21e2847518a8db93374037a1c008f17566d7c3ac9b0bfb9986"},
+    {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_gap_765_16_193_4.py", "sha256": "be54b1e1523edfc7d5c3599b6cdd982abfe3848227cedb93510c0cbf286e16a2", "sha256_lf": "be54b1e1523edfc7d5c3599b6cdd982abfe3848227cedb93510c0cbf286e16a2"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d", "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa", "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "docs/SURFACE-G2-CWIN3P2-MID-PREREG-20260722.md", "sha256": "b3d2834255ecb83ff4ddb907b5d834daee958f2091f11b97c05b82657fa8814a", "sha256_lf": "b3d2834255ecb83ff4ddb907b5d834daee958f2091f11b97c05b82657fa8814a"}
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": "This replacement unit repairs one finite-beta coverage gap after the high-order timeout. It is local sign evidence only and is not the analytic H_tail relay."
+}

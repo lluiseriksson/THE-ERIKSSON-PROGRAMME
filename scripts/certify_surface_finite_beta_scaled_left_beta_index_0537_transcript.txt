@@ -1,0 +1,17 @@
+PROVENANCE git_head 5ab23b29392239af6fb263aecbb4b4f22dbaa4ff
+PROVENANCE python 3.12.6
+PROVENANCE python_flint 0.9.0
+PROVENANCE arb_bits 180
+DEPENDENCY scripts/certify_surface_finite_beta_scaled_left.py f5536733816073bcd5b2854f0ce31b52238f04df2e15e79ee8d03d4b30bdb9e8
+DEPENDENCY scripts/surface_finite_beta_scaled_partition.py 3abc0499f4cdd79d06a571c11347b8e0166c60e4f20d741bfab551cfa2cb94da
+DEPENDENCY scripts/certify_left_edge_beta_taylor_scaled_paired_design.py 9d13e9c67ba211cf96ce03d648de5b7dcceedc5073b7a39d155b1f3a43fbbcc8
+DEPENDENCY scripts/certify_bulk_beta_taylor_scaled_design.py 32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d
+DEPENDENCY scripts/certify_left_edge_beta_taylor_arb.py 1ea85d53518f71dd4a1986e91b8b3c8df56fa9eaad01b462be2c5862019d6ddc
+DEPENDENCY scripts/certify_bulk_beta_taylor_arb.py f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+CONFIG beta_start 20 beta_stop 1000/9 beta_step 1/10 beta_order 20 t_order 20 splice 19/100
+ROW {"W_upper": "[-1.7532409659403007074586985004767554083837167495546762296983403362872351903356273e-8 +/- 9.57e-89]", "beta_hi": "369/5", "beta_index": 537, "beta_lo": "737/10", "lane": "normalized", "t_hi": "19/100", "t_lo": "0"}
+ROW {"W_upper": "[-4.6849638613311508979562348439864654098148184765608202372927276304675641271059251e-10 +/- 1.52e-90]", "beta_hi": "369/5", "beta_index": 537, "beta_lo": "737/10", "lane": "regular", "t_hi": "79/200", "t_lo": "19/100"}
+ROW {"W_upper": "[-2.0517088116256161261617912916541253283281427508868996528530692752973607768177935e-10 +/- 3.73e-90]", "beta_hi": "369/5", "beta_index": 537, "beta_lo": "737/10", "lane": "regular", "t_hi": "199/400", "t_lo": "79/200"}
+ROW {"W_upper": "[-1.1941702521773041320446766454380831485511372155289943141784090394418899523790140e-10 +/- 1.31e-90]", "beta_hi": "369/5", "beta_index": 537, "beta_lo": "737/10", "lane": "regular", "t_hi": "439/800", "t_lo": "199/400"}
+ROW {"W_upper": "[-4.7991594960893559688699483807203306295520920602810479208761079137052015523113542e-11 +/- 3.99e-91]", "beta_hi": "369/5", "beta_index": 537, "beta_lo": "737/10", "lane": "regular", "t_hi": "3/5", "t_lo": "439/800"}
+CERTIFIED FINITE-BETA SCALED LEFT UNIT beta_index_0537 1 beta_intervals 5 rows worst_upper [-4.7991594960893559688699483807203306295520920602810479209e-11 +/- 3.14e-67] elapsed_seconds 9.146040300000095

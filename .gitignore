@@ -3,6 +3,9 @@
 .lake/
 
 # Scratch / build artifacts
+tmp/
+__pycache__/
+*.py[cod]
 build_log.txt
 run_build.bat
 *.log

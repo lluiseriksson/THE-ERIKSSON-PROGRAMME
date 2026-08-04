@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-hybrid009-current-head-replay-20260722",
+  "status": "VALIDATED_PARTIAL_EVIDENCE_NO_G2_PROMOTION",
+  "claim_scope": "Independent replay of all 158 regular hybrid009 K2 units for delta in [1/125,9/1000] and t in [0,313/100]. The replay directory is compared with the canonical production transcripts after normalizing only terminal wall-clock elapsed_seconds. This closes reproducibility of this regular hybrid009 lane only; the moving-edge complement, scaled bulk H_tail, K4, S1'''/S2''' and G6 remain open.",
+  "git_head_used_for_both_runs": "027885a6b9c052cd518787f70d41617ad3aa6ab8",
+  "production": {
+    "directory": "scripts",
+    "glob": "certify_surface_remainder_delta0_r4_extension_009_hybrid_*.txt",
+    "unit_count": 158,
+    "aggregate_sha256_name_nul_bytes": "d1ad2e1267c2b92cec2aa09d4916cb39b5dc7f200680880bfc77d21cf3447081"
+  },
+  "replay": {
+    "directory": "replay-hybrid009-027885a6",
+    "glob": "certify_surface_remainder_delta0_r4_extension_009_hybrid_*.txt",
+    "unit_count": 158,
+    "aggregate_sha256_name_nul_bytes": "aa625724db4f1cad3572c1d132b13b4eff744d6cfc05f4806c85242930db72b0"
+  },
+  "commands": {
+    "production": "python scripts/run_surface_remainder_delta0_r4_extension_009_hybrid_units.py --workers 2",
+    "production_validator": "python scripts/validate_surface_remainder_delta0_r4_extension_009_hybrid_transcripts.py",
+    "replay": "python scripts/run_surface_remainder_delta0_r4_extension_009_hybrid_replay.py --replay-dir replay-hybrid009-027885a6 --workers 2",
+    "replay_validator": "python scripts/validate_surface_remainder_delta0_r4_extension_009_hybrid_replay.py --replay replay-hybrid009-027885a6"
+  },
+  "validators": {
+    "production_validator_sha256": "e54f4ed9990865e8139b9d1877eaf2d7974106a125039e9fa7477b0c71abe244",
+    "replay_validator_sha256": "5f9c4da5ad2bcbf7367b5e86e477f8e1d1b626c6d04fe80670f60cb5c67853a4",
+    "replay_result": "158 units; deterministic fields identical; all replay margins strictly positive"
+  },
+  "nonpromotion": ["G2", "K4", "S1'''", "S2'''", "G6", "surface_theorem_complete.tex"]
+}

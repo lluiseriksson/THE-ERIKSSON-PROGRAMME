@@ -1,0 +1,18 @@
+=== DESIGN PROBES v2, priority subdivision (dz=0.30, cap 3000000) ===
+script sha256 : 1c61089f286ca90c144b7645c1ef63c8c2e6559de1f7394f3056a46844960b3b
+module sha256 : 834802f9c9ee43b23a49573e3923febb4a7f124c0ad404c476596dc306d9be87
+  ... 500000 cells (341s)
+  ... 1000000 cells (707s)
+  ... 1500000 cells (1054s)
+  ... 2000000 cells (1361s)
+  ... 2500000 cells (1665s)
+  ... 3000000 cells (1971s)
+  NOTE: cell budget bound before dz criterion was met everywhere (finalized coarse cells are the lowest-priority ones by construction).
+  [probe14v2] KNc = [[-1.89555e+19 +/- 7.99e+12], [-8.90152e+18 +/- 3.34e+12]]
+  [probe14v2] KD = [[2.85463e+20 +/- 2.23e+14], [3.68071e+20 +/- 1.89e+14]]
+  [probe14v2] KNt = [[-1.16633e+20 +/- 2.34e+14], [-8.95176e+19 +/- 1.08e+13]]
+  [probe14v2] GNc = [[-1.83316e+17 +/- 3.79e+11], [1.35433e+20 +/- 5.11e+13]]
+  [probe14v2] GD = [[-2.38891e+21 +/- 2.47e+15], [-9.38070e+20 +/- 2.94e+14]]
+  [probe14v2] Wc = [[-9.38662e+40 +/- 3.07e+34], [2.43581e+40 +/- 2.88e+34]]
+DESIGN ENCLOSURE [probe14v2] t[3/2,151/100] b[14,281/20]: q = [[-1.20223 +/- 3.67e-6], [0.311976 +/- 8.69e-8]] width 1.5142 (3308219 cells)
+v2 probe complete (2092s) - design only.

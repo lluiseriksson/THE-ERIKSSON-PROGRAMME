@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-r6-exact-outer-010-20260721",
+  "status": "quarantined",
+  "claim_scope": "Design-only exact-outer cover of the tenth-birth regular lane delta in [0,1/100] and t in [0,313/100]; 158 production/replay rows pass, but this artifact carries no G2, G5, S1''', S2''' or G6 theorem load.",
+  "started_utc": "2026-07-21T00:00:00Z",
+  "finished_utc": "2026-07-21T00:00:01Z",
+  "command": [
+    "python",
+    "scripts/certify_surface_remainder_r6_exact_outer_010.py"
+  ],
+  "working_directory": ".",
+  "environment": {
+    "python": "3.x",
+    "libraries": {
+      "arb": "repository-pinned"
+    }
+  },
+  "script": {
+    "path": "scripts/certify_surface_remainder_r6_exact_outer_010.py",
+    "sha256": "42b1f30d3bf9691dbbc0ce4b5b3876e6c616a91088bddda2701b8aa5fab26037",
+    "sha256_lf": "42b1f30d3bf9691dbbc0ce4b5b3876e6c616a91088bddda2701b8aa5fab26037"
+  },
+  "inputs": [
+    {"path": "scripts/surface_remainder_delta0_r6_exact_outer_three_witness.py", "sha256": "49a375f27b418de7876895fa1f132ed5c76260c20fae623bd82c07aabab4529a", "sha256_lf": "49a375f27b418de7876895fa1f132ed5c76260c20fae623bd82c07aabab4529a"},
+    {"path": "scripts/surface_remainder_delta0_r6_extension_010_cover.py", "sha256": "8767acc4f92ece7b7bbdb004ee162c6d7234e4617d03642d3f576c7bb1cb0fc9", "sha256_lf": "8767acc4f92ece7b7bbdb004ee162c6d7234e4617d03642d3f576c7bb1cb0fc9"},
+    {"path": "scripts/surface_remainder_delta0_outer_domain_r6split.py", "sha256": "855736b71543584b19343f22ffcba3300ec2ab79259d12a97284b55cd50f8fb4", "sha256_lf": "855736b71543584b19343f22ffcba3300ec2ab79259d12a97284b55cd50f8fb4"},
+    {"path": "scripts/probe_surface_remainder_r6_exact_box_integral.py", "sha256": "d733e2da18fd5684f9fe5feabe4adf5986fe02f8826518ddfe3e40eed613396d", "sha256_lf": "d733e2da18fd5684f9fe5feabe4adf5986fe02f8826518ddfe3e40eed613396d"},
+    {"path": "scripts/probe_surface_remainder_r6_companion_charge.py", "sha256": "779343eb1cb0f1763752cb511e76a6adbc5820df535bba92fc347f7c9da530e8", "sha256_lf": "779343eb1cb0f1763752cb511e76a6adbc5820df535bba92fc347f7c9da530e8"},
+    {"path": "scripts/surface_remainder_delta0_r4_extension_010_hybrid_contract.py", "sha256": "d514fcb8e976227f1484ccc6ab0ade5d7bdbb6037aa675d709500eb159ee8a98", "sha256_lf": "d514fcb8e976227f1484ccc6ab0ade5d7bdbb6037aa675d709500eb159ee8a98"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_remainder_r6_exact_outer_010_production.txt", "sha256": "222df0569e96050dab05aabf4738be3237ed79b1f16c36145ec02706fb41dc0f", "sha256_lf": "17b9b3f1256eded706e58eabf3f924d5805fe953087870cc432932e9921d1152"},
+    {"path": "scripts/surface_remainder_r6_exact_outer_010_replay.txt", "sha256": "222df0569e96050dab05aabf4738be3237ed79b1f16c36145ec02706fb41dc0f", "sha256_lf": "17b9b3f1256eded706e58eabf3f924d5805fe953087870cc432932e9921d1152"}
+  ],
+  "supersedes": [],
+  "quarantine_reason": "Design cover passes its dedicated validator, but the registered finite-beta relay, moving-edge G5 splice, later positive births, and literal weighted S1'''/S2''' union are open."
+}

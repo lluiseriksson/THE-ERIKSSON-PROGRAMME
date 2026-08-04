@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k4-tbox-current-regen-20260723",
+  "status": "quarantined",
+  "claim_scope": "Current-dependency regeneration of candidate K4 t-box evidence on t in [3, pi]; no K4/S1'''/S2'''/G2/G6 promotion.",
+  "config": {
+    "delta": [
+      "1/25",
+      "81/2000"
+    ],
+    "seed_grid": 12,
+    "max_cells": 2304,
+    "precision": 140
+  },
+  "t_union": [
+    "3",
+    "31415927/10000000"
+  ],
+  "units": [
+    {
+      "unit": "300_301",
+      "t_domain": [
+        "3",
+        "301/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_300_301_20260723.txt",
+        "sha256": "b6deca8ddc9aff5396bd9de0be3be4ac9c589b251a381d0826fbf13cc4759fa7"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_300_301_20260723_rerun.txt",
+        "sha256": "b6deca8ddc9aff5396bd9de0be3be4ac9c589b251a381d0826fbf13cc4759fa7"
+      }
+    },
+    {
+      "unit": "301_302",
+      "t_domain": [
+        "301/100",
+        "151/50"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_301_302_20260723.txt",
+        "sha256": "b08765796dce9e19c98ab45544aba69d954b23d9bf6b63b2d45fad1ff5f0632f"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_301_302_20260723_rerun.txt",
+        "sha256": "b08765796dce9e19c98ab45544aba69d954b23d9bf6b63b2d45fad1ff5f0632f"
+      }
+    },
+    {
+      "unit": "302_303",
+      "t_domain": [
+        "151/50",
+        "303/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_302_303_20260723.txt",
+        "sha256": "6725c0a65f466845b54ead8980e789c9140c5a0a9d97981cacf8030152ec6f79"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_302_303_20260723_rerun.txt",
+        "sha256": "6725c0a65f466845b54ead8980e789c9140c5a0a9d97981cacf8030152ec6f79"
+      }
+    },
+    {
+      "unit": "303_304",
+      "t_domain": [
+        "303/100",
+        "76/25"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_303_304_20260723.txt",
+        "sha256": "ec4958490ef5aefd69f12cd0c3cd0e53941a3f3d7b02a388ee8cc9314001a9d7"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_303_304_20260723_rerun.txt",
+        "sha256": "ec4958490ef5aefd69f12cd0c3cd0e53941a3f3d7b02a388ee8cc9314001a9d7"
+      }
+    },
+    {
+      "unit": "304_305",
+      "t_domain": [
+        "76/25",
+        "61/20"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_304_305_20260723.txt",
+        "sha256": "a3b9f57e86a22e604e5df73f3eee18eedc142bc463a871995378264ac3a1d9c2"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_304_305_20260723_rerun.txt",
+        "sha256": "a3b9f57e86a22e604e5df73f3eee18eedc142bc463a871995378264ac3a1d9c2"
+      }
+    },
+    {
+      "unit": "305_306",
+      "t_domain": [
+        "61/20",
+        "153/50"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_305_306_20260723.txt",
+        "sha256": "96b0000f4f81b18de866eb966e4a1fd94ffbc9fbd1f88faa842238aa0b925506"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_305_306_20260723_rerun.txt",
+        "sha256": "96b0000f4f81b18de866eb966e4a1fd94ffbc9fbd1f88faa842238aa0b925506"
+      }
+    },
+    {
+      "unit": "306_307",
+      "t_domain": [
+        "153/50",
+        "307/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_306_307_20260723.txt",
+        "sha256": "3398f4923f713c8ecdcb2bddea3fd9df0ec83aec818ba38f2c2b47fe89cf2741"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_306_307_20260723_rerun.txt",
+        "sha256": "3398f4923f713c8ecdcb2bddea3fd9df0ec83aec818ba38f2c2b47fe89cf2741"
+      }
+    },
+    {
+      "unit": "307_308",
+      "t_domain": [
+        "307/100",
+        "77/25"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_307_308_20260723.txt",
+        "sha256": "c82e6a20fbeb7778a26a187fa8f8168281a0e64f451eb5ac4fa6290e3358ef64"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_307_308_20260723_rerun.txt",
+        "sha256": "c82e6a20fbeb7778a26a187fa8f8168281a0e64f451eb5ac4fa6290e3358ef64"
+      }
+    },
+    {
+      "unit": "308_309",
+      "t_domain": [
+        "77/25",
+        "309/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_308_309_20260723.txt",
+        "sha256": "72e5380770286d8e61750a1aa123fd73d82a82269910c4574054f5a2ce414b56"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_308_309_20260723_rerun.txt",
+        "sha256": "72e5380770286d8e61750a1aa123fd73d82a82269910c4574054f5a2ce414b56"
+      }
+    },
+    {
+      "unit": "309_310",
+      "t_domain": [
+        "309/100",
+        "31/10"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_309_310_20260723.txt",
+        "sha256": "62ef830aa705ea487c955328b731772a0cf8e77e13a2e54a26051894a1f702af"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_309_310_20260723_rerun.txt",
+        "sha256": "62ef830aa705ea487c955328b731772a0cf8e77e13a2e54a26051894a1f702af"
+      }
+    },
+    {
+      "unit": "310_311",
+      "t_domain": [
+        "31/10",
+        "311/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_310_311_20260723.txt",
+        "sha256": "283c73e200efe954f93339a0edf67636b48fd017bf5bbccc9f1abdffc6245d13"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_310_311_20260723_rerun.txt",
+        "sha256": "283c73e200efe954f93339a0edf67636b48fd017bf5bbccc9f1abdffc6245d13"
+      }
+    },
+    {
+      "unit": "311_312",
+      "t_domain": [
+        "311/100",
+        "78/25"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_311_312_20260723.txt",
+        "sha256": "63bfcb5cadd26bbf5cae366348e0b0c9db12115d9523e060c36da790c602e0de"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_311_312_20260723_rerun.txt",
+        "sha256": "63bfcb5cadd26bbf5cae366348e0b0c9db12115d9523e060c36da790c602e0de"
+      }
+    },
+    {
+      "unit": "312_313",
+      "t_domain": [
+        "78/25",
+        "313/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_312_313_20260723.txt",
+        "sha256": "95b995184b2dbe650bbfddee97edb363222e9775c1fb11f08ee83ef3d9ae54bc"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_312_313_20260723_rerun.txt",
+        "sha256": "95b995184b2dbe650bbfddee97edb363222e9775c1fb11f08ee83ef3d9ae54bc"
+      }
+    },
+    {
+      "unit": "313_314",
+      "t_domain": [
+        "313/100",
+        "157/50"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_313_314_20260723.txt",
+        "sha256": "4a2270294a927aceb9d73cdeeb98d26e2bc1003a27789cc58f03461d84290bfd"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_313_314_20260723_rerun.txt",
+        "sha256": "4a2270294a927aceb9d73cdeeb98d26e2bc1003a27789cc58f03461d84290bfd"
+      }
+    },
+    {
+      "unit": "314_pi",
+      "t_domain": [
+        "157/50",
+        "31415927/10000000"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts\\surface_remainder_k4_tbox_314_pi_20260723.txt",
+        "sha256": "a850415595ddbca3a90332d92850e835d548708ac2bdcdff41d58866cfb2e1c2"
+      },
+      "replay": {
+        "path": "scripts\\surface_remainder_k4_tbox_314_pi_20260723_rerun.txt",
+        "sha256": "a850415595ddbca3a90332d92850e835d548708ac2bdcdff41d58866cfb2e1c2"
+      }
+    }
+  ],
+  "total_cells": 34560,
+  "dependencies": {
+    "scripts/certify_surface_remainder_k4_t_box_probe.py": {
+      "path": "scripts/certify_surface_remainder_k4_t_box_probe.py",
+      "sha256": "5a1eaaa451b1cc4c5cd3a6fcaba0dc4b134ef3b557aa9cf2866bc89972d2a9fa"
+    },
+    "scripts/certify_surface_remainder_k4_centered_band.py": {
+      "path": "scripts/certify_surface_remainder_k4_centered_band.py",
+      "sha256": "c27eda831179f35e357cb3ea922e1e6035b8816960261dbff076165a7aa2f612"
+    },
+    "scripts/surface_remainder_centered_delta_integrator_design.py": {
+      "path": "scripts/surface_remainder_centered_delta_integrator_design.py",
+      "sha256": "f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d"
+    },
+    "scripts/surface_remainder_centered_delta_carrier.py": {
+      "path": "scripts/surface_remainder_centered_delta_carrier.py",
+      "sha256": "59343fa26b1b16fdb4f7d91f8e43fa05dbe8c12740e771df0a62ef1206acdd2a"
+    },
+    "scripts/surface_remainder_complement_l3_smoke.py": {
+      "path": "scripts/surface_remainder_complement_l3_smoke.py",
+      "sha256": "caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37"
+    },
+    "scripts/surface_remainder_complement.py": {
+      "path": "scripts/surface_remainder_complement.py",
+      "sha256": "cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0"
+    },
+    "scripts/run_surface_remainder_k4_tbox_current_regen.py": {
+      "path": "scripts/run_surface_remainder_k4_tbox_current_regen.py",
+      "sha256": "e429fbde03fd88a5efc184449ed7231f5eb6825ac8ed555acd8fec9b74633f26"
+    },
+    "scripts/audit_surface_remainder_k4_tbox_current_regen.py": {
+      "path": "scripts/audit_surface_remainder_k4_tbox_current_regen.py",
+      "sha256": "c0cf710fc28d69775ccdac5ccecd6ea9907e8f8a7dfe15c20bc4bdbcdcdc5d6d"
+    }
+  },
+  "validator": {
+    "path": "scripts/audit_surface_remainder_k4_tbox_current_regen.py",
+    "verdict": "PASS",
+    "production_replay_byte_identical": true
+  },
+  "promotion": "NONE"
+}

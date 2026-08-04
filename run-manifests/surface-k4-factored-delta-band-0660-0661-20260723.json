@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-k4-factored-delta-band-0660-0661-20260723",
+  "status": "quarantined",
+  "claim_scope": "One-sided low-z scaled core band delta=[0.0660,0.0661], t=2.9; no outer-band or global K4/S1'''/S2''' promotion.",
+  "config": {
+    "delta_lo": "0.0660",
+    "delta_hi": "0.0661",
+    "t": "29/10",
+    "seed_grid": 4,
+    "max_cells": 256,
+    "arb_bits": 100,
+    "weight": "(hi-lo)*(delta_final-(hi+lo)/2)"
+  },
+  "production": {
+    "path": "scripts/surface_k4_factored_delta_band_0660_0661.txt",
+    "sha256": "759CD4B54C7DD793DAECED453C66BF0C6AB69C5B1A2A5C69DA91751533FA842D"
+  },
+  "replay": {
+    "path": "scripts/surface_k4_factored_delta_band_0660_0661_rerun.txt",
+    "sha256": "759CD4B54C7DD793DAECED453C66BF0C6AB69C5B1A2A5C69DA91751533FA842D"
+  },
+  "validator": "scripts/validate_surface_k4_factored_delta_band.py",
+  "worst_fraction": "0.0003439366459453",
+  "rows": 7,
+  "cells": 256,
+  "promotion": "NONE"
+}

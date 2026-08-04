@@ -1,0 +1,98 @@
+PROVENANCE script=scripts/certify_bulk_beta_taylor_arb.py
+PROVENANCE script_sha256=f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+PROVENANCE git_head=668ed6ac4061f9930d0b2dfdd46ff312b755a296
+PROVENANCE python=3.12.6
+PROVENANCE python_flint=0.9.0
+PROVENANCE arb_prec_bits=130
+CONFIG prec=130 beta_order=12 t_order=9 initial_db=0.1 CWIN=3/2 PI_UP=31415927/10000000
+beta-box [15.0, 15.1]: 53 t-boxes
+beta-box [15.1, 15.2]: 53 t-boxes
+beta-box [15.2, 15.3]: 53 t-boxes
+beta-box [15.3, 15.4]: 54 t-boxes
+beta-box [15.4, 15.5]: 55 t-boxes
+beta-box [15.5, 15.6]: 55 t-boxes
+beta-box [15.6, 15.7]: 56 t-boxes
+beta-box [15.7, 15.8]: 57 t-boxes
+beta-box [15.8, 15.9]: 58 t-boxes
+beta-box [15.9, 16.0]: 58 t-boxes
+beta-box [16.0, 16.1]: 61 t-boxes
+narrowing beta step to 0.05 at beta=16.1 (bulk failure near t=3.0441141399384817)
+beta-box [16.1, 16.15]: 43 t-boxes
+beta-box [16.15, 16.2]: 43 t-boxes
+beta-box [16.2, 16.25]: 43 t-boxes
+beta-box [16.25, 16.3]: 43 t-boxes
+beta-box [16.3, 16.35]: 43 t-boxes
+beta-box [16.35, 16.4]: 43 t-boxes
+beta-box [16.4, 16.45]: 43 t-boxes
+beta-box [16.45, 16.5]: 45 t-boxes
+beta-box [16.5, 16.55]: 45 t-boxes
+beta-box [16.55, 16.6]: 45 t-boxes
+beta-box [16.6, 16.65]: 45 t-boxes
+beta-box [16.65, 16.7]: 45 t-boxes
+beta-box [16.7, 16.75]: 45 t-boxes
+beta-box [16.75, 16.8]: 45 t-boxes
+beta-box [16.8, 16.85]: 45 t-boxes
+beta-box [16.85, 16.9]: 46 t-boxes
+beta-box [16.9, 16.95]: 46 t-boxes
+beta-box [16.95, 17.0]: 46 t-boxes
+beta-box [17.0, 17.05]: 46 t-boxes
+beta-box [17.05, 17.1]: 47 t-boxes
+beta-box [17.1, 17.15]: 47 t-boxes
+beta-box [17.15, 17.2]: 47 t-boxes
+beta-box [17.2, 17.25]: 49 t-boxes
+beta-box [17.25, 17.3]: 49 t-boxes
+beta-box [17.3, 17.35]: 49 t-boxes
+beta-box [17.35, 17.4]: 49 t-boxes
+beta-box [17.4, 17.45]: 49 t-boxes
+beta-box [17.45, 17.5]: 49 t-boxes
+beta-box [17.5, 17.55]: 49 t-boxes
+beta-box [17.55, 17.6]: 50 t-boxes
+beta-box [17.6, 17.65]: 50 t-boxes
+beta-box [17.65, 17.7]: 50 t-boxes
+beta-box [17.7, 17.75]: 51 t-boxes
+beta-box [17.75, 17.8]: 51 t-boxes
+beta-box [17.8, 17.85]: 51 t-boxes
+beta-box [17.85, 17.9]: 51 t-boxes
+beta-box [17.9, 17.95]: 51 t-boxes
+beta-box [17.95, 18.0]: 52 t-boxes
+beta-box [18.0, 18.05]: 52 t-boxes
+beta-box [18.05, 18.1]: 52 t-boxes
+beta-box [18.1, 18.15]: 52 t-boxes
+beta-box [18.15, 18.2]: 52 t-boxes
+beta-box [18.2, 18.25]: 52 t-boxes
+beta-box [18.25, 18.3]: 52 t-boxes
+beta-box [18.3, 18.35]: 53 t-boxes
+beta-box [18.35, 18.4]: 53 t-boxes
+beta-box [18.4, 18.45]: 54 t-boxes
+beta-box [18.45, 18.5]: 55 t-boxes
+beta-box [18.5, 18.55]: 55 t-boxes
+beta-box [18.55, 18.6]: 55 t-boxes
+beta-box [18.6, 18.65]: 55 t-boxes
+beta-box [18.65, 18.7]: 56 t-boxes
+beta-box [18.7, 18.75]: 56 t-boxes
+beta-box [18.75, 18.8]: 57 t-boxes
+beta-box [18.8, 18.85]: 57 t-boxes
+beta-box [18.85, 18.9]: 57 t-boxes
+beta-box [18.9, 18.95]: 57 t-boxes
+beta-box [18.95, 19.0]: 57 t-boxes
+beta-box [19.0, 19.05]: 58 t-boxes
+beta-box [19.05, 19.1]: 59 t-boxes
+beta-box [19.1, 19.15]: 59 t-boxes
+beta-box [19.15, 19.2]: 59 t-boxes
+beta-box [19.2, 19.25]: 59 t-boxes
+beta-box [19.25, 19.3]: 60 t-boxes
+beta-box [19.3, 19.35]: 61 t-boxes
+beta-box [19.35, 19.4]: 61 t-boxes
+beta-box [19.4, 19.45]: 61 t-boxes
+beta-box [19.45, 19.5]: 62 t-boxes
+beta-box [19.5, 19.55]: 64 t-boxes
+beta-box [19.55, 19.6]: 64 t-boxes
+beta-box [19.6, 19.65]: 64 t-boxes
+beta-box [19.65, 19.7]: 64 t-boxes
+beta-box [19.7, 19.75]: 64 t-boxes
+beta-box [19.75, 19.8]: 65 t-boxes
+beta-box [19.8, 19.85]: 65 t-boxes
+beta-box [19.85, 19.9]: 66 t-boxes
+beta-box [19.9, 19.95]: 66 t-boxes
+beta-box [19.95, 20.0]: 67 t-boxes
+CERTIFIED (beta-Taylor, Arb): W < 0 on [0.6, pi-1.5/beta] x [15.0, 20.0]; 4736 t-boxes total

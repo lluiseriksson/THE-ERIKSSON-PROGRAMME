@@ -1,0 +1,103 @@
+SU(2) OS ORACLE CERTIFICATION TRANSCRIPT
+========================================
+
+Certification model
+-------------------
+
+This transcript certifies source checkpoint commit
+81118e2e5d64d6dc30c9cf44242b3246d8e222d5, with Git tree
+989802a0db73a6e3af89e013e7c45d22def12656.
+
+The oracle was executed from a clean detached checkout of that commit:
+
+  detached branch name: (empty)
+  git status --porcelain=v1: (empty)
+
+This file is intentionally committed only in a child commit of the certified
+source checkpoint. It certifies the source checkpoint above, not the child
+commit that contains this transcript. No self-hash of the containing commit
+is asserted.
+
+Execution provenance
+--------------------
+
+Command:
+lake env lean docs/su2-os/SU2OSOracle.lean
+
+UTC start: 2026-07-31T09:51:22.585Z
+UTC end:   2026-07-31T09:51:58.416Z
+Host: LLUISPC
+OS: Microsoft Windows 11 Home 10.0.26200 build 26200 64 bitar
+PowerShell: 7.6.3
+
+Lean toolchain pin:
+leanprover/lean4:v4.29.0-rc6
+
+Lean:
+Lean (version 4.29.0-rc6, x86_64-w64-windows-gnu, commit 00659f8e6071d7e46131ed643bf8003b99b044e9, Release)
+
+Lake:
+Lake version 5.0.0-src+00659f8 (Lean version 4.29.0-rc6)
+
+Mathlib:
+URL: https://github.com/leanprover-community/mathlib4.git
+rev: 07642720480157414db592fa85b626dafb71355b
+inputRev: 07642720480157414db592fa85b626dafb71355b
+
+Python (used by the separately recorded prose and honesty validators):
+Python 3.12.6
+
+Exit code: 0
+
+STDOUT_BEGIN
+'YangMills.OS.su2WilsonExponent_finiteRank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2WilsonCrossing_isHaarPSDKernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.reflectSU2Cut_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2WilsonCrossingKernel_dressed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2OnePlaquetteCutWeight_eq_undressedKernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2OnePlaquetteReflectedPairing_eq_kernelIntegralForm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.OS.su2TraceObservable_haar_mean_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2TraceEntryMoment_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2Trace_degreeOne_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2Trace_taylorTwo_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2WilsonTaylorTail_isHaarPSDKernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2Trace_crossing_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2OnePlaquette_reflection_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2GaugePureCut_trace_pairing_positive_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2WilsonCrossingKernel_nonconstant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.su2OnePlaquette_constant_pairing_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+STDOUT_END
+
+STDERR_BEGIN
+(empty)
+STDERR_END
+
+Input hashes
+------------
+
+The source checkpoint SHA covers the complete tracked repository tree.
+The table below additionally hashes every lane-owned Lean source, oracle
+runner, lane document, validation script, and toolchain/manifest input used
+for this repair. "binary_sha256" hashes the exact bytes in the detached
+checkout. "lf_normalized_sha256" decodes UTF-8, maps CRLF and CR to LF, and
+encodes UTF-8 without a BOM before hashing.
+
+binary_sha256                                                   lf_normalized_sha256                                             path
+8c46c0308e92095e478bcfae7c357327e88c5a624b54abf5ad1660ee0e51df5a  dc6d65016fad3123d44bf17b5bf0598286284ab16ba75d5c17eb22ed11f47361  lean-toolchain
+09d3ff29b030a20c396cdd5f729230eeb7bcde3ae91cda519c0643ac6b715bd5  ba6348d6929187216ef39fe9ccdcd4e2590653c4fd80b3e71478e4c645410167  lakefile.lean
+e2f2d45a5fef5ae352e6f8be858726d603d83fde30d740a14a8a2a588579381d  1c72b465ab37a0418de6f82573c18bb0e79f9e0165e901fd9da0ddabecdb2611  lake-manifest.json
+df11637dc7837c9d4fec141f59d1de6aaab12395fcee14423a060337d5eaaee8  e352b1f4cc61e3ff54830161ba7452e0b166a75edca0e489b7612069bb45d4b4  YangMills/OS/SU2WilsonReflectionKernel.lean
+44d80ae28fa27c245789baaed3b86c56136ea453e84df68e57b111cf0c32b74e  45e72c0690aef89da4a144be84f8293fcc8b9e7f0adbea5e76069a73d39dca4b  YangMills/OS/SU2WilsonReflectionGeometry.lean
+d5645ad6c766b33c65e8282fef62819b45e28c0370e1ec698e6907b7109f069c  e088daac3249e6d243224845731c8ff8796cfb9468199827dc1c6e5a4f64e861  YangMills/OS/SU2WilsonReflectionSharp.lean
+fe567b34778806b7170cfaa7fc6a4c4689b5b8c3fa56d88664d4e3042f38e12e  67e92cc658d3265a30446f8a88855c6f0e4c95fe9199cf29c1c6cc87253148ef  YangMills/OS/SU2WilsonReflectionEndpoint.lean
+fc28100bd21a51c4bca4393fd5e059b73ef9fb4b86c6543e2989a5f75ef3f528  724081bce339114f63dbd41a6174228c29dac2b9c45d8583e1b8d132b519a3ab  docs/su2-os/SU2OSOracle.lean
+b4c11ffface2afb4b78456a143ed0c9067e787433f705cfc5f779154492b0013  86ad6a86760c9bf4dac031b495445ed659566103e4130c13d7a31861ff76f7db  docs/su2-os/CONTRACT.md
+6fe59f0ef20b930bd15952be5261a02402490fe901c74e53d6a9cba6d78aa9aa  e3111187e153dacfcd4b2c0b8e3820a3312811452572d7be0231975cb10b7b75  docs/su2-os/SHARP-GATE.md
+aadeccdc7422ecec9e1b047c540b0bf988b3ee05b8a4ef796b0b9af896479d7a  21a8ce33cb24e5deeec4d4cfd9a7e2763b2177b839f201d4de51ec2d279fbb01  docs/su2-os/CERTIFICATION.md
+2f967fd67e5f6f95cb4e7961d9be92a71add149fc04598bcf985c30c6f791c9b  474790c7cae3bef4bbc99d5a9412eaabf27174ed35e55185f6b164213d51ab0b  docs/su2-os/INTEGRATION-NOTE.md
+680814bcdccea0a149d7f02f3b1e4a29f69dc0d71fa0608e9d17cb62be44c451  53e7f884b9555101dbe30e7490d47a869c8c2482dd37cda096c22d3425bc351b  docs/su2-os/AUDIT.md
+a3c7969a2b3e74a6f95052cf8fd40d8fe5a1368874fbffd29a9a9d68088efd4a  eb5cf9474b5f4d91e7ef55555e0c379a5feb5d7e550c1f86fbb0bb5670810c84  docs/su2-os/DEPENDENCY-MAP.md
+7b63618c872b6483a97644033561736bca6ed7c9d2270226e737785bfbc26563  3bfe05a819240c6c16baa600c75c652f03fc9c187b787abc635b334fea9a4b52  scripts/check_module_prose.py
+d03cccc145f22f699eaf01287b4084d902ffb33562f082ac9cc3383eaf0612c4  d03cccc145f22f699eaf01287b4084d902ffb33562f082ac9cc3383eaf0612c4  scripts/check_su2_os_honesty.py

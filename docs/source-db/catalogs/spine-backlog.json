@@ -7,29 +7,42 @@
       "short": "Balaban CMP95",
       "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories I",
       "author": "T. Balaban",
-      "status": "bibliography_verified",
+      "status": "primary_pdf_visual_confirmed",
       "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts.",
       "journal": "Communications in Mathematical Physics 95 (1984), 17-40",
       "year": 1984,
-      "bibliography_evidence": "Dimock I reference [6], arXiv:1108.1335, printed page 50."
+      "bibliography_evidence": "Dimock I reference [6], arXiv:1108.1335, printed page 50; local primary PDF 1103941451.pdf inspected on 2026-06-29.",
+      "local_artifacts": {
+        "primary_pdf": "cmp95/1103941451.pdf",
+        "render_pdf_page_17_printed_33": "cmp95/render/cmp95-page-17.png",
+        "render_pdf_page_19_printed_35": "cmp95/render/cmp95-page-19.png",
+        "render_pdf_page_20_printed_36": "cmp95/render/cmp95-page-20.png"
+      },
+      "artifact_note": "Primary PDF SHA-256 6F637E4C85941A4DFD91BE0F8845F05104EDEC962CA7E3307F8AE3DC3B5BF875 under YM_SOURCE_ROOT/runtime source cache."
     },
     "cmp96": {
       "short": "Balaban CMP96",
       "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories II",
       "author": "T. Balaban",
-      "status": "bibliography_verified",
+      "status": "primary_pdf_metadata_ready",
       "journal": "Communications in Mathematical Physics 96 (1984), 223-250",
       "year": 1984,
-      "bibliography_evidence": "Dimock I reference [7], arXiv:1108.1335, printed page 50; Dimock II reference [6], printed page 92."
+      "bibliography_evidence": "Dimock I reference [7], arXiv:1108.1335, printed page 50; Dimock II reference [6], printed page 92.",
+      "doi": "10.1007/BF01240221",
+      "license_note": "Keep primary PDF/renders in the private source archive; commit only metadata, locators and short paraphrases.",
+      "artifact_note": "External repo-ready packet reports local private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp96-propagators-II-1984-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp96-propagators-II-1984.md; private PDF SHA-256 7c64078602177b8abfec064b33cc388674b4fd1176ed009f8d4622e85d90e147."
     },
     "cmp98": {
       "short": "Balaban CMP98",
       "title": "Averaging Operators for Lattice Gauge Field Theories",
       "author": "T. Balaban",
-      "status": "bibliography_verified",
+      "status": "primary_pdf_metadata_ready",
       "journal": "Communications in Mathematical Physics 98 (1985), 17-51",
       "year": 1985,
-      "bibliography_evidence": "Dimock I reference [8], arXiv:1108.1335, printed page 50."
+      "bibliography_evidence": "Dimock I reference [8], arXiv:1108.1335, printed page 50.",
+      "doi": "10.1007/BF01205787",
+      "license_note": "Keep primary PDF/renders in the private source archive; commit only metadata, locators and short paraphrases.",
+      "artifact_note": "External repo-ready packet reports local private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp98-averaging-1985-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp98-averaging-1985.md; private PDF SHA-256 03409ad81885593d65535550eafac08639e66123d4acf92462847ae2ee4dd7d6."
     },
     "cmp122_i": {
       "short": "Balaban CMP122-I",
@@ -45,7 +58,14 @@
       "author": "T. Balaban",
       "journal": "Communications in Mathematical Physics 122 (1989), 355-392",
       "doi": "10.1007/BF01238433",
-      "status": "registered"
+      "status": "registered",
+      "local_artifacts": {
+        "pdf": "balaban-largefield-II-cmp122-1104178467.pdf",
+        "text_full": "text/balaban-largefield-II-cmp122-1104178467.txt",
+        "render_source_01": "renders/largefieldII-source-01.png",
+        "render_source_02": "renders/largefieldII-source-02.png",
+        "render_source_36": "renders/largefieldII-p36-36.png"
+      }
     },
     "dimock_i": {
       "short": "Dimock I",
@@ -121,12 +141,103 @@
       "author": "T. Balaban",
       "journal": "Communications in Mathematical Physics 99 (1985), 389-434",
       "year": 1985,
-      "status": "bibliography_verified",
-      "bibliography_evidence": "Dimock I reference [9], arXiv:1108.1335, printed page 50; Dimock II reference [7], printed page 92.",
-      "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts."
+      "status": "primary_pdf_visual_confirmed",
+      "bibliography_evidence": "Dimock I reference [9], arXiv:1108.1335, printed page 50; Dimock II reference [7], printed page 92; local primary PDF 1103942769.pdf inspected on 2026-06-29.",
+      "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts.",
+      "local_artifacts": {
+        "primary_pdf": "cmp99/1103942769.pdf",
+        "render_pdf_page_07_printed_395": "cmp99/render/cmp99-page-07.png",
+        "render_pdf_page_08_printed_396": "cmp99/render/cmp99-page-08.png",
+        "render_pdf_page_09_printed_397": "cmp99/render/cmp99-page-09.png",
+        "render_pdf_page_10_printed_398": "cmp99/render/cmp99-page-10.png",
+        "render_pdf_page_11_printed_399": "cmp99/render/cmp99-page-11.png",
+        "render_pdf_page_28_printed_416": "cmp99/render/cmp99-page-28.png",
+        "render_pdf_page_35_printed_423": "cmp99/render/cmp99-page-35.png",
+        "render_pdf_page_44_printed_432": "cmp99/render/cmp99-page-44.png"
+      },
+      "artifact_note": "Primary PDF SHA-256 39F8033B35838C7BDD14F97C7FB1EDB0B35D4190B8B88F31D19D12A72D542861 under YM_SOURCE_ROOT/runtime source cache."
+    },
+    "cmp102_variational": {
+      "short": "Balaban CMP102",
+      "title": "The Variational Problem and Background Fields in Renormalization Group Method for Lattice Gauge Theories",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 102 (1985), 277-309",
+      "year": 1985,
+      "status": "primary_pdf_visual_confirmed",
+      "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts.",
+      "local_artifacts": {
+        "primary_pdf": "cmp102_variational/1104114383.pdf",
+        "render_pdf_page_01_printed_277": "cmp102_variational/render/cmp102-page-01.png",
+        "render_pdf_page_03_printed_279": "cmp102_variational/render/cmp102-page-03.png",
+        "render_pdf_page_05_printed_281": "cmp102_variational/render/cmp102-page-05.png",
+        "render_pdf_page_09_printed_285": "cmp102_variational/render/cmp102-page-09.png",
+        "render_pdf_page_23_printed_299": "cmp102_variational/render/cmp102-page-23.png"
+      },
+      "artifact_note": "Primary PDF SHA-256 838056B5C578F81D058DEB3D394C66D934690E3B94C6CF2956534EC6D211B541 under YM_SOURCE_ROOT/runtime source cache."
     }
   },
   "citations": [
+    {
+      "key": "cmp122ii.theorem1.coupling-interval-induction",
+      "source_id": "cmp122_ii",
+      "locator": {
+        "printed_pages": "355",
+        "pdf_pages": "1",
+        "equations": [
+          "Theorem 1",
+          "0.1"
+        ],
+        "local_text": "balaban-largefield-II-cmp122-1104178467.txt around lines 13-38",
+        "renders": [
+          "render_source_01"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP122-II Theorem 1 states that if the effective coupling constants stay in a sufficiently small interval, then the effective densities have the CMP119 Sect. 2 form and satisfy all its conditions and bounds.",
+      "formulas": [
+        {
+          "id": "cmp122ii.theorem1.small-coupling-to-cmp119-form",
+          "statement": "If the sequence of effective coupling constants is contained in (0, gamma] for sufficiently small positive gamma, the effective densities rho_k have the form and satisfy all conditions and bounds described in CMP119 Sect. 2.",
+          "ascii": "({g_k} subset (0,gamma], gamma sufficiently small) -> rho_k has CMP119 Sect.2 form and satisfies all CMP119 Sect.2 conditions and bounds",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.eq0.1.ultraviolet-stability-bound",
+          "statement": "As an immediate consequence, the paper displays ultraviolet-stability bounds for rho_k with constants E_- and E_+ independent of the indicated scale/background variables.",
+          "ascii": "chi_k * exp[-(1/g_k^2)*A(U_k) - E_-*|T_eta|] <= rho_k <= exp(E_+*|T_eta|)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.theorem1.assumption-not-removed-here",
+          "statement": "The text explicitly says Theorem 1 is retained with the small-coupling assumption because the second-order perturbative Theorem 2 removing that assumption had not been published in this paper.",
+          "ascii": "CMP122-II keeps Theorem 1 with the effective-coupling interval assumption",
+          "exactness": "paraphrase",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.CMP116RawSourceM3Frontier"
+      ],
+      "use_for": [
+        "Theorem-level source anchor that CMP122-II completes the R-operation and returns densities satisfying the CMP119 Sect. 2 form/conditions/bounds under small effective coupling.",
+        "Use with cmp119.theorem1.rt-inductive-assumptions and cmp122ii.rprime-bound.1.98-1.100 when extracting a source-faithful R-operation certificate."
+      ],
+      "do_not_use_for": [
+        "Do not cite this as an unconditional removal of the effective-coupling assumption.",
+        "Do not treat the displayed UV stability bound as a Lean mass-gap theorem without the missing source-to-Lean activity and continuum dictionaries."
+      ],
+      "open_questions": [
+        "Exact gamma/small-coupling hypothesis and how the effective coupling sequence maps to the repository coupling notation.",
+        "Exact list of CMP119 Sect. 2 conditions and bounds invoked by CMP122-II Theorem 1.",
+        "Exact source-to-Lean dictionary from the resulting density form to RawYMActivityDecay / CMP116RawSourceM3Frontier."
+      ]
+    },
     {
       "key": "cmp122i.large-field-c-bound.1.70",
       "source_id": "cmp122_i",
@@ -137,20 +248,22 @@
           "1.70"
         ]
       },
-      "status": "located",
-      "summary": "Intermediate large-field C_k^(n) term bound; needs exact visual extraction and symbol dictionary.",
+      "status": "visual_confirmed",
+      "summary": "Intermediate large-field C_k^(n) term bound visually checked at Eq. (1.70); still needs the full symbol dictionary before theorem use.",
       "formulas": [
         {
           "id": "cmp122i.eq1.70.bound",
-          "statement": "Narrative transcription pending visual recheck.",
+          "statement": "For each term C_k^(n)(X, U_k^(n)) in the representation (1.63), the analytic extension on the stated U-bar space satisfies the large-field bound.",
           "ascii": "|C_k^(n)(X,(U,J))| <= C_0 * exp(-(1+3*beta)*kappa*d_m(X))",
-          "exactness": "paraphrase",
+          "exactness": "normalized_formula",
           "confidence": "visual",
-          "source_verified": false
+          "source_verified": true
         }
       ],
       "open_questions": [
-        "Exact quantifiers, domain X in D_m and parameter restrictions."
+        "Exact quantifiers and hypotheses of representation (1.63), including the U-bar analyticity space.",
+        "Source-to-Lean dictionary for X in D_m, d_m(X), and the component activity to which C_k^(n) contributes.",
+        "How this intermediate C_k^(n) bound feeds the final post-R activity rather than a pre-R surrogate."
       ]
     },
     {
@@ -165,97 +278,523 @@
           "1.100"
         ]
       },
-      "status": "located",
-      "summary": "Exponentiated R' cluster expansion and local decay bound; needs exact extraction.",
+      "status": "visual_confirmed",
+      "summary": "Exponentiated R' cluster expansion, local bound, and second-group post-R bound visually checked at Eqs. (1.98)--(1.100); still needs the activity dictionary.",
+      "lean_targets": [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
+      ],
       "formulas": [
         {
-          "id": "cmp122ii.eq1.100.bound",
-          "statement": "Narrative transcription pending visual recheck.",
-          "ascii": "|R'^(k)(X,(U,J))| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))",
-          "exactness": "paraphrase",
+          "id": "cmp122ii.eq1.98.exponentiation",
+          "statement": "The exponentiated cluster expansion is written as exp R'^(k) = exp of the sum over localized R'^(k)(X) terms.",
+          "ascii": "{...} = exp R'^(k) = exp (sum_X R'^(k)(X))",
+          "exactness": "normalized_formula",
           "confidence": "visual",
-          "source_verified": false
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.eq1.99.bound",
+          "statement": "The localized R'^(k)(X) term has an analytic extension and satisfies the page's pre-split bound with c_1.",
+          "ascii": "|R'^(k)(X,(U,J))| <= O(1) * c_1 * exp(-(1 + (1/2)*beta)*kappa*d_{k, union Y_i}(X))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true,
+          "provenance": [
+            "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md",
+            "Archive-49 crop crops/pdf-036_printed-390_eq199-rate-400dpi.png"
+          ]
+        },
+        {
+          "id": "cmp122ii.eq1.100.bound",
+          "statement": "For the second group, whose localization domains are disjoint from the indicated large-field region, c_1 is exp(-p_0(g_k)) and the linear size in (1.99) is replaced by d_k(X).",
+          "ascii": "|R'^(k)(X,(U,J))| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
         }
       ],
       "open_questions": [
-        "Theorem 1 hypotheses and exact relation to the second-group R terms."
+        "Full Theorem 1 hypotheses and parameter restrictions for the exponentiated expansion.",
+        "Exact dictionary from first-group R' terms to new boundary terms B'^(k)(X), and from second-group terms to final R terms.",
+        "Source-to-Lean dictionary for d_{k, union Y_i}(X), d_k(X), admissible domains, and the repository PhysicalGaugeLocalActivity/LocalActivity.finsetSum conventions.",
+        "How the post-R action split in cmp122ii.post-r-action-split.1.101 instantiates the repository post-R physical activity."
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122ii.rprime-bound.visual-formula.to-erb-boundary-rloc-decay",
+          "source_symbol": "CMP122-II Eqs. (1.98)-(1.100) visual R/R-prime formula field",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Makes the visual formula entry discoverable from the existing rloc_decay source-target route without promoting the R-operation dictionary.",
+          "blocker": "The dictionary identifying the R/R-prime operation bounds with the Lean rloc component decay obligation is not theorem-fed."
+        }
+      ]
+    },
+    {
+      "key": "cmp122ii.post-r-action-split.1.101",
+      "source_id": "cmp122_ii",
+      "locator": {
+        "printed_pages": "390-391",
+        "pdf_pages": "36-37",
+        "equations": [
+          "1.101",
+          "1.102"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Post-R action split Eq. (1.101), the printed tilded group-split region versus the untilded post-(1.101) new large-field region, and the induction-hypothesis handoff after the R-operation were visually checked by Archive-51 ADDENDUM 2 and SD-38; still needs the Lean activity dictionary.",
+      "lean_targets": [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
+      ],
+      "formulas": [
+        {
+          "id": "cmp122ii.eq1.101.action-split",
+          "statement": "After the kth RT transformation, the new action is the pre-split action A'_k plus the localized second-group R' terms and the new boundary terms B'^(k).",
+          "ascii": "A_k((1/g_k(.))^2, U_k) = A'_k((1/g_k(.))^2, U_k) + sum_X R'^(k)(X,U_k) + sum_X B'^(k)(X,U_k)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.eq1.101.group-dictionary",
+          "statement": "The printed group split uses the tilded large-field region, while the subsequent post-(1.101) new large-field region is untilded; this record keeps those regions distinct and treats the tilde collision as a dictionary hazard for the first-group boundary terms and second-group R contribution.",
+          "ascii": "printed group split: X intersects tilded large-field region -> B'^(k)(X); post-(1.101) new large-field region: untilded; second group disjoint from printed split region -> R-terms",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.eq1.101.induction-handoff",
+          "statement": "From Eqs. (1.72), (1.98), and the definitions, the result R rho_k of the R-operation can be written in the form (2.18) of CMP119, with all expressions satisfying the induction hypothesis of CMP119 Sect. 2.",
+          "ascii": "R rho_k has form (2.18) [III] and all expressions satisfy the Sect. 2 [III] induction hypothesis",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "open_questions": [
+        "Full Theorem 1 hypotheses and parameter restrictions for Eq. (1.101) and the induction-hypothesis handoff.",
+        "Exact mapping from source symbols A_k, A'_k, R'^(k), B'^(k), and T_k(Y) to Lean PhysicalGaugeLocalActivity / LocalActivity.finsetSum components.",
+        "Exact domain/support dictionary for X, Z_k^c, Y_i, D_k, d_k(X), background U_k, and source variables (U,J).",
+        "Whether the first-group boundary terms should enter the finite local-source certificate as components or remain in a separate boundary package.",
+        "Tilde-collision hazard: Archive-51 ADDENDUM 2 and SD-38 distinguish the printed tilded group-split region from the untilded post-(1.101) new large-field region; do not identify them without a source-to-Lean dictionary."
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122ii.post-r-action-split.visual-formula.to-erb-boundary-decomposes",
+          "source_symbol": "CMP122-II Eq. (1.101) visual post-R action split field",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Makes the visual formula entry discoverable from the existing decomposes source-target route while preserving the post-R action/local-activity dictionary blocker.",
+          "blocker": "The dictionary identifying the post-R action split with the Lean local-activity decomposition is not theorem-fed."
+        }
       ]
     },
     {
       "key": "cmp95.covariance-green.bounds-source-target",
       "source_id": "cmp95",
       "locator": {
-        "printed_pages": "pending",
-        "pdf_pages": "pending",
+        "printed_pages": "33, 35-36",
+        "pdf_pages": "17, 19-20",
         "equations": [
           "1.89",
+          "1.110",
+          "1.111",
+          "1.112",
+          "1.113",
           "1.114"
         ]
       },
-      "status": "source_pending",
-      "summary": "Dedicated extraction target for uniform Green/operator bounds and localized exponential decay currently recorded only narratively.",
+      "status": "visual_confirmed",
+      "summary": "CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized exponential Green/operator estimates (1.110)-(1.114). The source formulas are visually confirmed from recorded local render artifacts, with Archive-53/SD-40 adding targeted render provenance for the (1.110)-(1.114) window. The Lean covariance-root dictionary remains open.",
+      "extracted_claims": [
+        "Proposition 1.1 states that G is a symmetric operator on L2(T_eta) and records simultaneous L2 bounds for G, nabla G, G nabla*, nabla G nabla*, second derivatives of G, and adjoint second derivatives of G by gamma0^-1 times the L2 norm of J.",
+        "The constant gamma0 is positive, independent of k and T_eta, and depends only on d when a=1.",
+        "Proposition 1.2 states localized exponential estimates for the same Green/operator family over the cube families Delta(y), B^k(y), and tilde-Delta(y), with equations (1.110)-(1.114).",
+        "The text following (1.114) says the localized inequalities (1.110)-(1.114) imply the corresponding global inequalities (1.115)-(1.117) and (1.89), with the same dependence of the constants O(1)."
+      ],
+      "formulas": [
+        {
+          "id": "cmp95.prop1.1.eq1.89.l2-green-bounds",
+          "statement": "Uniform L2 Green/operator bounds.",
+          "ascii": "||GJ||, ||nabla GJ||, ||G nabla* J||, ||nabla G nabla* J||, ||nabla nabla GJ||, ||G nabla* nabla* J|| <= gamma0^-1 ||J||",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "G is the operator of CMP95 Prop. 1.1 on L2(T_eta).",
+            "a = 1 for the stated constant-dependence note."
+          ],
+          "conclusion": "Uniform Green/operator L2 control independent of k and T_eta, with constants depending only on d.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp95.prop1.2.eq1.110.localized-pointwise-decay",
+          "statement": "Localized pointwise exponential decay for G and first/second derivative variants.",
+          "ascii": "|GJ(x)|, |nabla GJ(x)|, |G nabla* J(x)|, |Delta GJ(x)| <= O(1) exp(-delta0 |y-y'|) |J|",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "x in Delta-tilde(y).",
+            "supp J subset Delta-tilde(y')."
+          ],
+          "conclusion": "Localized Green/operator decay with O(1) depending on d only.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp95.prop1.2.eq1.114.localized-l2-decay",
+          "statement": "Localized L2 exponential decay with cutoff zeta.",
+          "ascii": "||zeta GJ||, ||zeta nabla GJ||, ||zeta G nabla* J||, ||zeta nabla G nabla* J||, ||zeta nabla nabla GJ||, ||zeta G nabla* nabla* J|| <= O(1) exp(-delta0 |y-y'|) |zeta| ||J||",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "supp zeta subset Delta-tilde(y).",
+            "supp J subset Delta-tilde(y')."
+          ],
+          "conclusion": "Localized L2 decay for the Green/operator family.",
+          "source_verified": true,
+          "provenance": [
+            "Archive-53 packet repo-ready-packets/CMP95-COVARIANCE-GREEN-BOUNDS-RENDER-CHECK.md",
+            "Archive-53 crop page-renders/balaban-cmp95-propagators-I-1984/crops/pdf-020_printed-36_eq1112-1114-band-400dpi.png",
+            "Source-Dictionary cycle 40 notes that (1.114) uses |zeta| rather than ||zeta||"
+          ]
+        }
+      ],
       "lean_targets": [
         "covarianceBilinDual_map_le",
         "PhysicalLocalizedCovarianceRootCertificate"
       ],
       "open_questions": [
-        "Exact paper title, proposition numbering and quantifiers.",
         "Exact conversion from G_k bounds to the repository C_k covariance convention.",
-        "Uniformity in scale, volume, lattice spacing and boundary conditions."
+        "Exact boundary/gauge-condition dictionary between CMP95 G on T_eta and the repository physical covariance/root fields.",
+        "How CMP96/CMP99 transport these CMP95 Green estimates into the background-field covariance used by PhysicalLocalizedCovarianceRootCertificate.",
+        "Back-audit provenance: recorded local PDF/render artifacts and hashes exist for printed pages 33 and 35-36, and Archive-53/SD-40 target-check the CMP95 Prop. 1.2 window with page-straddle precision: (1.110)-(1.111) on printed 35 and (1.112)-(1.114) on printed 36. Do not consume covariance-root from (1.114) beyond this corrected source formula without the remaining CMP95/CMP99 dictionary route."
       ]
     },
     {
       "key": "cmp96.one-step-covariance-law-source-target",
       "source_id": "cmp96",
       "locator": {
-        "printed_pages": "pending",
-        "pdf_pages": "pending",
-        "equations": []
+        "printed_pages": "223-250; key labels 230, 234-235, 238-239, 245-247, 249",
+        "pdf_pages": "1-28; key labels 8, 12-13, 16-17, 23-25, 27",
+        "equations": [
+          "Proposition 1.2",
+          "Proposition 1.3",
+          "Propositions 2.2-2.7",
+          "Corollary 2.8",
+          "equation ranges 2.1-2.157"
+        ]
       },
-      "status": "source_pending",
-      "summary": "Locate and extract the one-step covariance law, normalization and scale dictionary.",
+      "status": "located",
+      "summary": "CMP96 primary metadata and label/page map are located for the one-step covariance/root and Hessian companion route; formula bodies remain visual-only and the Lean dictionary is open.",
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate"
+        "PhysicalLocalizedCovarianceRootCertificate",
+        "wilsonHessianIdentification"
       ],
       "open_questions": [
-        "Exact theorem/equation and its hypotheses."
+        "Which CMP96 proposition/equation is the exact one-step covariance/root theorem consumed by PhysicalLocalizedCovarianceRootCertificate?",
+        "What normalization and scale dictionary relates the CMP96 propagator notation to the repository covariance/root fields?",
+        "How does CMP96 interact with the already anchored CMP95 and CMP99 source records for wilsonHessianIdentification?"
+      ],
+      "use_for": [
+        "Locate candidate CMP96 proposition/equation windows for covariance-root and Wilson-Hessian dictionary construction.",
+        "Companion metadata to the visually confirmed CMP95 and CMP99 propagator/Hessian source anchors."
+      ],
+      "do_not_use_for": [
+        "Do not claim the CMP96 covariance theorem is extracted.",
+        "Do not claim PhysicalLocalizedCovarianceRootCertificate is proved.",
+        "Do not claim wilsonHessianIdentification, source_construction, hRpoly, or Clay."
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp96.label-map.to-covariance-root-certificate",
+          "source_symbol": "CMP96 Propagators II label/page map",
+          "lean_symbol": "PhysicalLocalizedCovarianceRootCertificate",
+          "relation": "candidate_context_for",
+          "status": "dictionary_open",
+          "statement": "CMP96 label/page metadata locates candidate proposition/equation windows for the one-step covariance/root certificate.",
+          "blocker": "The exact theorem statement, formula body, normalization and source-to-Lean covariance/root dictionary are not yet extracted."
+        },
+        {
+          "id": "cmp96.label-map.to-wilson-hessian-identification",
+          "source_symbol": "CMP96 quadratic-form and propagator labels",
+          "lean_symbol": "wilsonHessianIdentification",
+          "relation": "candidate_context_for",
+          "status": "dictionary_open",
+          "statement": "CMP96 label/page metadata is a companion location set for the Hessian/propagator dictionary.",
+          "blocker": "The Wilson-Hessian identification still depends on exact source formula extraction and the CMP95/CMP99/CMP102 dictionary."
+        }
       ]
     },
     {
       "key": "cmp98.eq14-15-source-target",
       "source_id": "cmp98",
       "locator": {
-        "printed_pages": "19-20",
-        "pdf_pages": "pending",
+        "printed_pages": "19-20, 22, 26-27, 36-38, 40, 42-43, 45, 49-50",
+        "pdf_pages": "3-4, 6, 10-11, 20-22, 24, 26-27, 29, 33-34",
         "equations": [
-          "14",
-          "15"
+          "Theorem 2.14",
+          "Propositions 1-10",
+          "equation (1.8)",
+          "equation (1.11)"
         ]
       },
-      "status": "source_pending",
-      "summary": "Extract the page-19/20 formulas (14)-(15) and map every symbol to the repository.",
+      "status": "located",
+      "summary": "CMP98 primary metadata and label/page map are located for the Q_k averaging-operation dictionary feeding gaussian_pushforward; formula bodies remain visual-only.",
       "open_questions": [
-        "Exact formula transcription and surrounding definitions."
+        "Which CMP98 theorem/proposition supplies the exact Q_k averaging operator needed by the repository Gaussian pushforward records?",
+        "How do the CMP98 Q_k conventions align with CMP116 (2.5)-(2.6) and the Lean Gaussian root map?",
+        "What determinant/Jacobian normalization remains outside CMP98 and must be supplied by CMP116/CMP102/CMP99 sources?"
+      ],
+      "lean_targets": [
+        "gaussian_pushforward",
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward"
+      ],
+      "use_for": [
+        "Locate CMP98 Q_k/block-averaging operation source windows for the Gaussian pushforward dictionary."
+      ],
+      "do_not_use_for": [
+        "Do not claim Gaussian pushforward is proved.",
+        "Do not claim the CMP98 formula bodies are extracted.",
+        "Do not claim source_construction, hRpoly, or Clay."
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp98.label-map.to-gaussian-pushforward",
+          "source_symbol": "CMP98 Q_k averaging-operation labels",
+          "lean_symbol": "gaussian_pushforward",
+          "relation": "candidate_context_for",
+          "status": "dictionary_open",
+          "statement": "CMP98 label/page metadata locates candidate Q_k averaging-operation windows for the Gaussian pushforward dictionary.",
+          "blocker": "The exact formula body and determinant/Jacobian/normalization dictionary are not theorem-fed."
+        }
       ]
     },
     {
       "key": "cmp99.background-field-propagator-source-target",
       "source_id": "cmp99",
       "locator": {
-        "printed_pages": "pending",
-        "pdf_pages": "pending",
-        "equations": []
+        "printed_pages": "395-399, 416, 423, 432",
+        "pdf_pages": "7-11, 28, 35, 44",
+        "equations": [
+          "3.26",
+          "3.27",
+          "3.35",
+          "3.36",
+          "3.42-3.49",
+          "3.107",
+          "3.108",
+          "3.185",
+          "3.187",
+          "Theorem 3.1",
+          "Theorem 3.2",
+          "Theorem 3.3",
+          "Theorem 3.11",
+          "Theorem 3.12",
+          "Theorem 3.15"
+        ],
+        "renders": [
+          "render_pdf_page_07_printed_395",
+          "render_pdf_page_08_printed_396",
+          "render_pdf_page_09_printed_397",
+          "render_pdf_page_10_printed_398",
+          "render_pdf_page_11_printed_399",
+          "render_pdf_page_28_printed_416",
+          "render_pdf_page_35_printed_423",
+          "render_pdf_page_44_printed_432"
+        ]
       },
-      "status": "source_pending",
-      "summary": "Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary needed by the physical covariance campaign.",
+      "status": "visual_confirmed",
+      "summary": "CMP99 defines the background-field propagator G(U) as the inverse of the background-field operator Delta_a and visually supplies the associated decay, positivity and external-field stability theorems from recorded local render artifacts. Archive cycle 54 render-checked the CMP99 anchor windows as MATCH, including the printed 396 / PDF 8 displays for regularity conditions (3.35)-(3.36). The source pages are located; the Lean covariance/Hessian dictionary remains open.",
+      "extracted_claims": [
+        "Equation (3.26) defines the background-field operator Delta_a(U), and Eq. (3.27) defines its Dirichlet inverse G(U) = (Delta_a restricted to Omega_0)^(-1).",
+        "Theorem 3.3 says that, under the assumptions of Theorem 3.1, G(U) satisfies the inequalities (3.42)-(3.47) with the source term interpreted on lattice bonds.",
+        "Theorem 3.11 states positivity of the relevant Delta_a/G operator family under the hypotheses of Theorems 3.1-3.10.",
+        "Theorem 3.12 transports the Theorems 3.3, 3.10 and 3.11 conclusions to external gauge-field configurations satisfying regularity conditions (3.35) and (3.36), with the stated exception.",
+        "Theorem 3.15 gives the later covariance propagator C^(k)(A) by Eq. (3.185) and the exponential bound (3.187).",
+        "Source-Dictionary cycle 42 records three annotation-grade body-precision cautions for future dictionary work: Theorem 3.3 is under the Theorem 3.1 assumptions with a = 1; Eq. (3.27) is the Dirichlet inverse on Omega_0 rather than Omega_0^c; and Theorem 3.15 uses the printed covariance-domain variable A/Lambda notation that must not be silently normalized across the Lean dictionary.",
+        "These precision cautions do not alter the visual formula bodies, status, or source-to-Lean dictionary blocker."
+      ],
+      "formulas": [
+        {
+          "id": "cmp99.eq3.27.background-field-propagator",
+          "statement": "Background-field propagator definition.",
+          "ascii": "G(U) = G = (Delta_a | Omega_0)^(-1)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "Delta_a is the background-field operator defined in Eq. (3.26).",
+            "Dirichlet boundary conditions on Omega_0 are in force in the displayed restriction."
+          ],
+          "conclusion": "Defines the background-field Green operator whose dictionary must be related to the repository covariance/Hessian objects.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp99.theorem3.3.background-field-green-bounds",
+          "statement": "Background-field Green estimates.",
+          "ascii": "Assumptions of Theorem 3.1 -> G(U) satisfies inequalities (3.42)-(3.47)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "The regularity/smallness assumptions of CMP99 Theorem 3.1.",
+            "G'(U) in the displayed inequalities is replaced by G(U), and lambda is replaced by a bond-valued source J."
+          ],
+          "conclusion": "Source-side boundedness/decay theorem for the background-field propagator.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp99.theorem3.11.positive-definite-family",
+          "statement": "Positive definiteness of the operator family.",
+          "ascii": "Theorems 3.1-3.10 assumptions -> Delta'_a, G', (Q'G'^2Q'^*)^(-1), Delta_a, G are positive definite",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "M sufficiently large and alpha_0 sufficiently small, as stated in Theorem 3.11."
+          ],
+          "conclusion": "Source-side positivity needed before treating G(U) as a covariance-like inverse.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp99.theorem3.12.external-gauge-field-propagators",
+          "statement": "External-field propagator stability.",
+          "ascii": "Regularity conditions (3.35),(3.36) with alpha_0 sufficiently small -> Theorems 3.3, 3.10, 3.11 hold for G,G1, and the stated H,H1 estimates hold, with the listed exception",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "External gauge field U satisfies regularity conditions (3.35) and (3.36)."
+          ],
+          "conclusion": "Source-side transport of background-field propagator estimates to the external-field setting.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp99.theorem3.15.covariance-propagator-decay",
+          "statement": "Covariance propagator exponential decay.",
+          "ascii": "M*alpha_0 sufficiently small -> C^(k)(A) is given by (3.185) and |C^(k)(Lambda; y,y')| <= B0 * exp(-delta0 * |y-y'|)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "M alpha_0 sufficiently small, as stated in Theorem 3.15."
+          ],
+          "conclusion": "Later source-side covariance-propagator decay theorem; still requires dictionary to repository covariance fields.",
+          "source_verified": true
+        }
+      ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
-        "wilson_hessian_identification"
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.physicalGaugeWilsonHessianIdentification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate"
+      ],
+      "use_for": [
+        "Citing the located CMP99 background-field propagator and decay/positivity theorems when designing the covariance-root and Wilson-Hessian dictionary.",
+        "Supporting the source-side claim that the relevant background-field inverse G(U) has controlled decay and positivity under stated regularity/smallness hypotheses."
+      ],
+      "do_not_use_for": [
+        "Do not treat this as a Lean proof of PhysicalLocalizedCovarianceRootCertificate without the repository covariance/root dictionary.",
+        "Do not identify G(U) with the Wilson Hessian inverse or covariance root without the missing coordinate/sign/normalization theorem."
       ],
       "open_questions": [
-        "Exact theorem/equation numbers.",
-        "Uniformity and background-field smallness hypotheses.",
-        "Dictionary to the repository physical gauge bonds and Hessian."
+        "Exact source-to-Lean dictionary from Delta_a and G(U) to the repository physical gauge bonds, Hessian and covariance/root fields.",
+        "Exact sign and normalization conventions needed to identify the Hessian inverse with the covariance object used by PhysicalLocalizedCovarianceRootCertificate.",
+        "How the CMP99 regularity/smallness hypotheses should be represented in the current raw-source Gaussian package.",
+        "Back-audit provenance: recorded local PDF/render artifacts and hashes exist for printed pages 395-399, 416, 423, and 432. Archive cycle 54 reported CMP99 render check ALL windows MATCH in repo-ready-packets\\CMP99-PROPAGATOR-HESSIAN-ANCHOR-RENDER-CHECK.md, with Theorem 3.12 local on printed 423 / PDF 35 and its (3.35)-(3.36) displays cross-referenced on printed 396 / PDF 8. Source-Dictionary cycle 42 adds the P1/P2/P3 precision cautions (a = 1, Omega_0 vs Omega_0^c, A/Lambda notation). This provenance still does not discharge the source-to-Lean covariance/Hessian dictionary."
+      ]
+    },
+    {
+      "key": "cmp102.variational-hessian-expansion-source-target",
+      "source_id": "cmp102_variational",
+      "locator": {
+        "printed_pages": "281, 285, 299",
+        "pdf_pages": "5, 9, 23",
+        "equations": [
+          "22",
+          "44",
+          "45",
+          "46",
+          "142",
+          "Theorem 1"
+        ],
+        "renders": [
+          "render_pdf_page_05_printed_281",
+          "render_pdf_page_09_printed_285",
+          "render_pdf_page_23_printed_299"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP102 gives the variational/action expansion route: Eq. (22) expands the gauge configuration, Eqs. (44)-(46) define and bound the linearizing operator H using CMP99 Theorem 3.12, and Eq. (142) displays the second-variation quadratic form and states its positivity.",
+      "extracted_claims": [
+        "Equation (22) expands U_1 = exp(i eta A) to fourth order in A with remainder bounds.",
+        "Equations (44)-(46) define the source-side linearizing operator H through the Delta/Q/R minimization problem and record the CMP99 Theorem 3.12 bounds used for H.",
+        "Equation (142) writes the transformed functional as A(U_k) plus one half of the quadratic form in the Hessian-like operator plus a remainder V(A').",
+        "Immediately after Eq. (142), the paper states that the second-order differential at A' = 0 is given by that quadratic form and is positive definite."
+      ],
+      "formulas": [
+        {
+          "id": "cmp102.eq22.gauge-action-expansion-input",
+          "statement": "Gauge configuration expansion used for the variational action expansion.",
+          "ascii": "U_1 = exp(i eta A) = 1 + i eta A + (i eta)^2 A^2 / 2! + (i eta)^3 A^3 / 3! + (i eta)^4 A^4 R_4(i eta A)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "The notation of CMP102 Sect. B and fixed background U_0/scale eta."
+          ],
+          "conclusion": "Source-side input for the expansion of the action around the background configuration.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp102.eq44-46.linearizing-operator-H",
+          "statement": "Linearizing operator H and its source bounds.",
+          "ascii": "H minimizes (1/2)<A,Delta A> subject to L^j_eta Q_j A = B and RD^*A = 0; L^j_eta Q_j H B = B, RD^*H B = 0, and |HB|, |nabla HB| have CMP99 Theorem 3.12 bounds",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "CMP102 Eqs. (44)-(46) and the cited CMP99 Theorem 3.12."
+          ],
+          "conclusion": "Source-side H operator that mediates the Hessian/propagator dictionary.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp102.eq142.hessian-quadratic-expansion",
+          "statement": "Quadratic expansion at the transformed critical configuration.",
+          "ascii": "F(A') = A(U_k) + (1/2)<A', Delta_1 A'> + V(A'); the second-order differential at A'=0 is this positive-definite quadratic form",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "The preceding CMP102 construction leading to the configuration U_k and transformed variable A'."
+          ],
+          "conclusion": "Source-side Wilson/action Hessian expansion; still needs mapping to the repository wilson_hessian_identification field.",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp102.eq142.blocal-amplitude-positivity-anchor",
+          "source_symbol": "CMP102 Eq. (142) positive-definite quadratic form, printed 299 / PDF 23",
+          "lean_symbol": "CMP119BLocalAmplitudeRelaxationDictionary.HbSrc_nonneg",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for positivity input used by the B/local source-amplitude side.",
+          "blocker": "CMP102 anchors the positivity source meaning, but the exact Lean object HbSrc and its B/local component projection remain dictionary obligations."
+        }
+      ],
+      "lean_targets": [
+        "YangMills.RG.physicalGaugeWilsonHessianIdentification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.wilson_hessian_identification"
+      ],
+      "use_for": [
+        "Citing the located source formulas for the Wilson/action Hessian expansion and H-operator bridge.",
+        "Designing the missing theorem that identifies the source Hessian/inverse-propagator with the repository physical gauge Hessian/covariance convention."
+      ],
+      "do_not_use_for": [
+        "Do not use this entry alone to discharge wilson_hessian_identification; the coordinate, sign and normalization dictionary remains open.",
+        "Do not use Eq. (142) as a raw activity decay theorem or Appendix-F/H# theorem."
+      ],
+      "open_questions": [
+        "Exact dictionary from CMP102 A', Delta_1, H and U_k to repository PhysicalGaugeField/PhysicalBond/Hessian objects.",
+        "Sign and normalization conventions relating the source quadratic form to the repository Wilson-Hessian interface.",
+        "How the CMP102 H operator and CMP99 G(U) inverse-propagator should be unified as the repository covariance object."
       ]
     },
     {
@@ -364,25 +903,1090 @@
         "Repository theorem closing the connected-cover entropy step behind Eq. (642).",
         "Measurable/type-local realization of K, K# and H# for the physical field types."
       ]
+    },
+    {
+      "key": "cmp119.eq2.17-2.18.inductive-density-source-target",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "257",
+        "pdf_pages": "15",
+        "equations": [
+          "(2.17)",
+          "(2.18)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source-anchor-only support for the CMP119 paper-native inductive/effective density side of the B/local activity-identification dictionary; the Lean source-to-activity equality remains open.",
+      "lean_targets": [
+        "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+      ],
+      "use_for": [
+        "Source-anchor-only meaning of the paper-native sourceEval/decomposition side in the B/local activity-identification dictionary."
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp119.eq2.17-2.18.inductive-density-source-target.formula",
+          "statement": "CMP119 Eqs. (2.17)-(2.18), located at printed page 257 / PDF page 15, anchor the paper-native effective-density source side used by the B/local activity-identification dictionary.",
+          "ascii": "paper-native effective density / sourceEval side (after the CMP119 dictionary is supplied)",
+          "exactness": "source-anchor only; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp119.eq2.17-2.18.blocal-activity-sourceEval-anchor",
+          "source_symbol": "CMP119 Eqs. (2.17)-(2.18) paper-native effective-density/sourceEval side, printed 257 / PDF 15",
+          "lean_symbol": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the paper-native sourceEval side of the B/local activity-identification equality.",
+          "blocker": "CMP119 anchors the paper-native source side but does not prove (bloc X).globalEval psi phi = sourceEval X psi phi; the source-to-Lean physical-activity identification remains an explicit dictionary obligation."
+        }
+      ]
+    },
+    {
+      "key": "cmp119.eq2.29-2.33.blocal-component-source-target",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "260",
+        "pdf_pages": "18",
+        "equations": [
+          "(2.29)",
+          "(2.30)",
+          "(2.31)",
+          "(2.32)",
+          "(2.33)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source-anchor-only support for the CMP119 B/local component meaning used by the B/local activity-identification dictionary; the equality with Lean bloc.globalEval remains open.",
+      "lean_targets": [
+        "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+      ],
+      "use_for": [
+        "Source-anchor-only meaning of the B/local component in the B/local activity-identification dictionary."
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp119.eq2.29-2.33.blocal-component-source-target.formula",
+          "statement": "CMP119 Eqs. (2.29)-(2.33), located at printed page 260 / PDF page 18, anchor the paper-native B/local component context.",
+          "ascii": "paper-native B/local component context (after the CMP119 dictionary is supplied)",
+          "exactness": "source-anchor only; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp119.eq2.29-2.33.blocal-activity-bloc-anchor",
+          "source_symbol": "CMP119 Eqs. (2.29)-(2.33) B/local component context, printed 260 / PDF 18",
+          "lean_symbol": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the paper-native B/local component side of the Lean bloc activity identification.",
+          "blocker": "CMP119 anchors which paper component is the B/local component but does not prove its equality with Lean bloc.globalEval; the physical-activity identification remains dictionary_open."
+        }
+      ]
+    },
+    {
+      "key": "cmp119.eq2.23.erb-decomposition-source-target",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "258-259",
+        "pdf_pages": "16-17",
+        "equations": [
+          "(2.23)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the E/R/B decomposition field of PhysicalGaugeDimock318ERBComponentBoundary; archive cross-check locates CMP119 Eq. (2.23) on printed pages 258-259 / PDF pages 16-17, and the Lean dictionary from CMP119 action notation to the local-activity decomposition remains open.",
+      "lean_targets": [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp119.eq2.23.erb-decomposition-source-target.formula",
+          "statement": "CMP119 Eq. (2.23), located at printed pages 258-259 / PDF pages 16-17, is the cited E/R/B action decomposition source candidate for the Lean decomposes field.",
+          "ascii": "activity = deltaE + rloc + bloc (after the CMP119 dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp119.eq2.23.to-erb-boundary-decomposes",
+          "source_symbol": "CMP119 Eq. (2.23) E/R/B decomposition, printed 258-259 / PDF 16-17",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary from CMP119 action notation to PhysicalGaugeLocalActivity.globalEval has not been theorem-fed."
+        },
+        {
+          "id": "cmp119.eq2.23.erb-decomposition-shape",
+          "source_symbol": "CMP119 Eq. (2.23) E/R/B decomposition, printed 258-259 / PDF 16-17",
+          "lean_symbol": "CMP119CMP122ERBDecomposition",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Provides the Lean source-shaped decomposition interface activity = deltaE + rloc + bloc, plus the projection into PhysicalGaugeDimock318ERBComponentBoundary once component decays are supplied.",
+          "blocker": "This interface does not prove CMP119 Eq. (2.23) or identify Balaban action notation with PhysicalGaugeLocalActivity.globalEval; that dictionary remains open.",
+          "discharged_by": "YangMills.RG.CMP119CMP122ERBDecomposition; YangMills.RG.cmp119CMP122ERBDecomposition_decomposes; YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBDecomposition_componentDecays"
+        },
+        {
+          "id": "cmp119.eq2.23.erb-source-decomposition-shape",
+          "source_symbol": "CMP119 Eq. (2.23) / CMP122-II post-R E/R/B source decomposition before Lean activity dictionaries",
+          "lean_symbol": "CMP119CMP122ERBSourceDecomposition",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Separates the paper-native scalar E/R/B source decomposition from the four dictionaries identifying the total, deltaE, local-R, and B/local source terms with Lean PhysicalGaugeLocalActivity.globalEval.",
+          "blocker": "This record does not prove CMP119 Eq. (2.23), the CMP122 post-R term dictionary, or any source-to-Lean activity identification; it only names the source-side decomposition shape.",
+          "discharged_by": "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+        },
+        {
+          "id": "cmp119.eq2.23.erb-source-decomposition-to-lean",
+          "source_symbol": "CMP119/CMP122 E/R/B source decomposition dictionary route to the Lean decomposition predicate",
+          "lean_symbol": "CMP119CMP122ERBSourceDecomposition.to_ERBDecomposition",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Converts a paper-native scalar E/R/B decomposition into CMP119CMP122ERBDecomposition when all four source scalar terms are explicitly identified with the matching Lean local activities.",
+          "blocker": "The paper-native source decomposition and the total/component activity-identification dictionaries remain explicit obligations.",
+          "discharged_by": "YangMills.RG.CMP119CMP122ERBSourceDecomposition.to_ERBDecomposition"
+        },
+        {
+          "id": "cmp119.eq2.23.erb-source-decomposition-to-boundary",
+          "source_symbol": "CMP119/CMP122 E/R/B source decomposition plus explicit activity dictionaries and component decays",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBSourceDecomposition_componentDecays",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Feeds a supplied paper-native CMP119/CMP122 source decomposition through the four explicit source-to-Lean activity identifications and separately supplied component decays into the E/R/B component boundary.",
+          "blocker": "This bridge does not prove the source decomposition, any of the four activity-identification dictionaries, or any component decay; those eight core inputs remain explicit obligations, with source-amplitude nonnegativity also supplied separately.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBSourceDecomposition_componentDecays"
+        },
+        {
+          "id": "cmp119.eq2.23.erb-source-delta-rloc-blocal-source-bound-to-boundary",
+          "source_symbol": "CMP119/CMP122 E/R/B source decomposition with CMP116 delta/local-R source estimates and CMP119 B/local source bound",
+          "lean_symbol": "CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Feeds source-native CMP116 delta/local-R estimates, a supplied CMP119/CMP122 source decomposition, four explicit activity-identification dictionaries, and a supplied CMP119 B/local source bound through the B/local weight transport dictionary into the E/R/B boundary.",
+          "blocker": "This bridge does not prove CMP116 Lemma 3, CMP119 Eq. (2.23), CMP119 Eq. (2.42), source-to-Lean activity identifications, or the B/local metric/rate transport dictionary; those remain explicit inputs.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
+        },
+        {
+          "id": "cmp119.eq2.23.to-erb-boundary-localActivitySum",
+          "source_symbol": "Definitional E/R/B local-activity sum convention",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_componentDecays_localActivitySum",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "For the convention activity X := ((deltaE X).add (rloc X)).add (bloc X), the E/R/B boundary decomposes field is discharged by LocalActivity algebra while the three component decays remain explicit obligations.",
+          "blocker": "Closed only for the literal local-activity sum convention; the CMP119/CMP122 action-notation dictionary for an independently specified physical activity remains dictionary_open.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_componentDecays_localActivitySum"
+        }
+      ]
+    },
+    {
+      "key": "cmp119.eq2.42.blocal-bound-source-target",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "261-263",
+        "pdf_pages": "19-21",
+        "equations": [
+          "(2.42)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the B/local component decay side of PhysicalGaugeDimock318ERBComponentBoundary; archive cross-check locates CMP119 Eq. (2.42) on printed pages 261-263 / PDF pages 19-21, and the B-component dictionary remains open.",
+      "lean_targets": [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        "YangMills.RG.CMP119BLocalMetricDictionary",
+        "YangMills.RG.CMP119BLocalToLemma3WeightTransport.rate_margin",
+        "bloc_identification"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp119.eq2.42.blocal-bound-source-target.formula",
+          "statement": "CMP119 Eq. (2.42), first appearing at printed page 261 / PDF page 19 and discussed through printed pages 261-263 / PDF pages 19-21, gives the paper-native B/local bound with exponential metric d_j(X).",
+          "ascii": "|B^(j)(X,(U,J),A,{S_i cap X})| < B_0 * exp (-(kappa * d_j(X)))",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp119.eq2.42.to-erb-boundary-bloc-decay",
+          "source_symbol": "CMP119 Eq. (2.42) B/local bound, printed 261-263 / PDF 19-21",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the CMP119 B/local term with the Lean bloc activity and source weight is not theorem-fed."
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-component-boundary-record",
+          "source_symbol": "CMP119 Eq. (2.42) B/local bound, printed 261-263 / PDF 19-21",
+          "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages the B/local source-amplitude nonnegativity and the raw-decay obligation for the Lean bloc component against the chosen source weight.",
+          "blocker": "This record does not prove the CMP119 B/local bound or the source-to-Lean B/local dictionary; the bloc_decay source-target link remains dictionary_open.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.to_rawActivityDecay"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-activity-estimate-shape",
+          "source_symbol": "CMP119 Eq. (2.42) B/local exponential bound, printed 261-263 / PDF 19-21",
+          "lean_symbol": "CMP119BLocalActivityEstimate",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Provides the Lean source-shaped estimate interface for a B/local component bound of the form ||bloc|| <= HbSrc * exp (-(kappaB * sourceMetric X)), plus the conversion to PhysicalGaugeRawActivityDecay and the B/local boundary record.",
+          "blocker": "This interface does not prove Eq. (2.42), identify Balaban's B/local activity with the Lean bloc, or identify the paper polymer metric with sourceMetric; those source dictionaries remain open.",
+          "discharged_by": "YangMills.RG.CMP119BLocalActivityEstimate; YangMills.RG.cmp119BLocal_rawActivityDecay; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-source-bound-shape",
+          "source_symbol": "CMP119 Eq. (2.42) paper-native B/local bound before Lean activity and metric dictionaries",
+          "lean_symbol": "CMP119BLocalSourceBound",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Separates the paper-native B/local scalar evaluation bound from the later dictionary identifying that evaluation with Lean bloc.globalEval and transporting the paper metric to the Lean metric.",
+          "blocker": "This record does not prove Eq. (2.42), the B/local activity-identification dictionary, or the source-metric dictionary; it only names the source-side bound shape.",
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-source-bound-to-activity-estimate",
+          "source_symbol": "CMP119 Eq. (2.42) source-bound dictionary route to Lean CMP119BLocalActivityEstimate",
+          "lean_symbol": "CMP119BLocalSourceBound.to_activityEstimate_of_metric_domination",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Converts a paper-native B/local source bound into the Lean CMP119BLocalActivityEstimate when the source activity is identified with bloc.globalEval, the target Lean metric is dominated by the source-paper metric, and the source amplitude and B/local decay rate are nonnegative.",
+          "blocker": "The source bound, activity identification, metric domination, and scalar nonnegativity facts remain explicit source/dictionary obligations.",
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_activityEstimate; YangMills.RG.CMP119BLocalSourceBound.to_activityEstimate_of_metric_domination; YangMills.RG.cmp119BLocalWeight_le_of_metric_domination"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-activity-identification-source-target",
+          "source_symbol": "CMP119 Eq. (2.42) paper-native B/local scalar term, source-anchor only for B/local activity identification",
+          "lean_symbol": "bloc_identification",
+          "relation": "source_to_lean_activity_identification_for",
+          "status": "dictionary_open",
+          "statement": "Names the explicit source-to-Lean B/local activity-identification input used to turn the paper-native B/local scalar bound into a Lean bound on bloc.globalEval; CMP119 Eq. (2.42) anchors the budget region only.",
+          "blocker": "No theorem currently identifies the CMP119 B/local scalar term B^(j)(X,(U,J),A,{S_i cap X}) with the Lean local activity evaluation (bloc X).globalEval ψ φ. Archive cycle 24 supplies source-anchor-only meanings for both sides, but the equality is not a printed source line and remains a physical-activity dictionary obligation."
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-activity-identification-dictionary-interface",
+          "source_symbol": "CMP119 Eq. (2.42) paper-native B/local scalar term identified with Lean bloc.globalEval",
+          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages exactly the narrow B/local source-to-Lean activity-identification field forall X psi phi, (bloc X).globalEval psi phi = sourceEval X psi phi, and projects it into the B/local source-bound-to-bloc-decay route.",
+          "blocker": "This record does not prove CMP119 Eq. (2.42), identify the paper B/local scalar term with Lean bloc.globalEval, theorem-feed the source bound, prove the metric/rate/amplitude dictionaries, or prove any component decay; the bloc_identification field remains dictionary_open.",
+          "discharged_by": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary; YangMills.RG.CMP119BLocalActivityIdentificationDictionary.to_bloc_identification; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_sourceDictionaries; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-activity-identification-staging-interface",
+          "source_symbol": "B/local source-to-Lean activity-identification staging inputs",
+          "lean_symbol": "CMP119BLocalActivityIdentificationStaging",
+          "relation": "staging_interface",
+          "status": "lean_linked",
+          "statement": "Names the source-facing activity-identification staging fields source_activity_constructed, lean_bloc_matches_paper_bloc, and bloc_identification; projection helpers expose the two staging flags and forget only the supplied identification field into CMP119BLocalActivityIdentificationDictionary.",
+          "blocker": "This staging record does not construct the physical activity, identify the paper B/local scalar term with Lean bloc.globalEval, prove bloc_identification, prove CMP119 Eq. (2.42), theorem-feed the source bound, or prove component decay; all fields remain explicit dictionary obligations.",
+          "discharged_by": "YangMills.RG.CMP119BLocalActivityIdentificationStaging; YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_activityIdentificationDictionary; YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_source_activity_constructed; YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_lean_bloc_matches_paper_bloc"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-boundary-weight-amplitude-transport",
+          "source_symbol": "B/local component boundary transport across downstream weights and amplitudes",
+          "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary.mono",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Transports a supplied B/local component boundary along a pointwise source-weight domination and scalar amplitude relaxation, reusing PhysicalGaugeRawActivityDecay.mono.",
+          "blocker": "This transport does not prove CMP119 Eq. (2.42), identify the B/local source activity with Lean bloc, or identify source weights; those dictionary links remain open.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono_weight; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono_amplitude; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-amplitude-relaxation-dictionary-interface",
+          "source_symbol": "B/local source amplitude compared with the downstream E/R/B B-amplitude budget",
+          "lean_symbol": "CMP119BLocalAmplitudeRelaxationDictionary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages exactly the narrow B/local amplitude-relaxation fields 0 <= HbSrc and HbSrc <= Hb, and projects them into the B/local component-boundary and source-bound-to-bloc-decay routes.",
+          "blocker": "This record does not prove CMP119 Eq. (2.42), theorem-feed the B/local source amplitude hierarchy, identify the B/local activity with Lean bloc, prove the metric/rate dictionary, or prove any component decay; the amplitude-relaxation fields remain explicit dictionary obligations.",
+          "discharged_by": "YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_nonneg; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_le; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.Hb_nonneg; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.of_slack; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport_amplitudeDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_sourceDictionaries; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-to-lemma3-weight-comparison",
+          "source_symbol": "B/local native exponential weight compared with the CMP116 Lemma-3 source weight",
+          "lean_symbol": "cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Reduces the B/local-to-Lemma-3 source-weight domination to explicit metric domination, rate margin, and Lemma-3 rate nonnegativity hypotheses; B/local metric nonnegativity is derived from domination of the Nat-valued Lemma-3 metric.",
+          "blocker": "This comparison does not prove CMP119 Eq. (2.42), identify the B/local source metric with the CMP116 Lemma-3 source metric, or prove the source rate margin; those dictionary links remain open.",
+          "discharged_by": "YangMills.RG.cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_exponent_comparison; YangMills.RG.cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-to-lemma3-weight-transport-dictionary",
+          "source_symbol": "B/local native metric/rate dictionary for transport to the CMP116 Lemma-3 source weight",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages the three explicit B/local-to-Lemma-3 weight-transport obligations: metric domination, B/local rate margin, and Lemma-3 rate nonnegativity. B/local metric nonnegativity is no longer a carried hypothesis because it follows from metric domination.",
+          "blocker": "This record does not prove CMP119 Eq. (2.42), identify Balaban's B/local metric with the Lean metric, prove the B/local rate margin, or identify the B/local activity with Lean bloc; those dictionary links remain open.",
+          "discharged_by": "YangMills.RG.CMP119BLocalToLemma3WeightTransport; YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricDictionary_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricDictionary_delta_le_one_sixteen_and_four_le_blockScale; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricAndRateDictionaries_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricAndRateDictionaries_delta_le_one_sixteen_and_four_le_blockScale"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-rate-margin-source-target",
+          "source_symbol": "B/local decay rate in CMP119 Eq. (2.42), source-anchor only for the RHS of the rate margin",
+          "lean_symbol": "YangMills.RG.CMP119BLocalToLemma3WeightTransport.rate_margin",
+          "relation": "source_rate_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Names the scalar rate-margin obligation needed to transport the CMP119 B/local native exponential weight to the CMP116 Lemma-3 source weight; CMP119 anchors the B/local rate meaning, but not the comparison.",
+          "blocker": "No source constant hierarchy has yet been theorem-fed to prove balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB; the CMP116/CMP119/CMP122 rate anchors are source-anchor-only and the exact margin remains open."
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-rate-margin-dictionary-interface",
+          "source_symbol": "B/local decay-rate margin compared with the CMP116 Lemma-3 decay rate",
+          "lean_symbol": "CMP119BLocalRateMarginDictionary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages exactly the narrow B/local rate-margin field balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB and projects it into the B/local-to-Lemma-3 transport constructors.",
+          "blocker": "This record does not prove CMP119 Eq. (2.42), theorem-feed the B/local constant hierarchy, identify the B/local activity with Lean bloc, prove the metric dictionary, or prove any component decay; the rate_margin field remains dictionary_open.",
+          "discharged_by": "YangMills.RG.CMP119BLocalRateMarginDictionary; YangMills.RG.CMP119BLocalRateMarginDictionary.to_rate_margin; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricAndRateDictionaries_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricAndRateDictionaries_delta_le_one_sixteen_and_four_le_blockScale"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-rate-amplitude-constant-staging-interface",
+          "source_symbol": "B/local rate and amplitude constant hierarchy staging inputs",
+          "lean_symbol": "CMP119BLocalRateAmplitudeConstantStaging",
+          "relation": "staging_interface",
+          "status": "lean_linked",
+          "statement": "Names the source-facing rate/amplitude staging fields rate_constants_identified, amplitude_constants_identified, rate_margin, HbSrc_nonneg, and HbSrc_le; projection helpers expose the two staging flags and forget only the supplied scalar fields into the pre-existing rate-margin and amplitude-relaxation dictionaries.",
+          "blocker": "This staging record does not prove the B/local constant hierarchy, rate_margin, HbSrc_nonneg, HbSrc_le, CMP119 Eq. (2.42), activity identification, metric domination, or component decay; all scalar fields remain explicit dictionary obligations.",
+          "discharged_by": "YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_rateMarginDictionary; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_amplitudeRelaxationDictionary; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_rate_constants_identified; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_amplitude_constants_identified"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-metric-definition-source-link",
+          "source_symbol": "CMP109 printed page 257 / PDF page 9 definition of d_j(X) as shortest tree-graph length divided by M",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.sourceMetric_domination",
+          "relation": "source_metric_anchor_for",
+          "status": "dictionary_open",
+          "statement": "CMP109 supplies the paper-native geometric meaning of d_j(X) used in CMP119 Eq. (2.42); this narrows the B/local metric dictionary to comparing that tree-length metric with the CMP116 Lemma-3 source metric.",
+          "blocker": "The source-to-Lean comparison (sourceMetricLemma X : ℝ) <= sourceMetricB X is not proved by this source anchor and remains a separate metric-domination theorem/dictionary obligation."
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-metric-dictionary-interface",
+          "source_symbol": "CMP109/CMP119 d_j(X) metric compared with the CMP116 Lemma-3 source metric",
+          "lean_symbol": "YangMills.RG.CMP119BLocalMetricDictionary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages exactly the narrow B/local metric dictionary field ∀ X, (sourceMetricLemma X : ℝ) <= sourceMetricB X, with a Nat-valued helper for future concrete d_j-style metrics.",
+          "blocker": "This record does not define CMP109 d_j(X), prove that CMP109/CMP119 print the inequality, prove CMP119 Eq. (2.42), identify the B/local activity with Lean bloc, prove the B/local rate margin, or prove any component decay; the sourceMetric_domination field remains dictionary_open.",
+          "discharged_by": "YangMills.RG.CMP119BLocalMetricDictionary; YangMills.RG.CMP119BLocalMetricDictionary.to_sourceMetric_domination; YangMills.RG.CMP119BLocalMetricDictionary.sourceMetric_domination_of_natMetric; YangMills.RG.CMP119BLocalMetricDictionary.of_natMetric; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricDictionary_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricDictionary_delta_le_one_sixteen_and_four_le_blockScale"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-source-metric-staging-interface",
+          "source_symbol": "CMP109/CMP119 d_j(X) metric staging inputs for the B/local metric dictionary",
+          "lean_symbol": "CMP119BLocalSourceMetricStaging",
+          "relation": "staging_interface",
+          "status": "lean_linked",
+          "statement": "Names the source-facing staging fields cmp109_dj_identified, cmp119_uses_dj, and sourceMetric_domination; projection helpers expose the two d_j staging flags and forget only the already supplied domination field into CMP119BLocalMetricDictionary.",
+          "blocker": "This staging record does not define d_j(X), prove CMP109/CMP119 metric identification, prove sourceMetric_domination, prove CMP119 Eq. (2.42), identify B/local activity, prove rate/amplitude dictionaries, or prove component decay; all fields remain explicit obligations.",
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceMetricStaging; YangMills.RG.CMP119BLocalSourceMetricStaging.to_metricDictionary; YangMills.RG.CMP119BLocalSourceMetricStaging.to_cmp109_dj_identified; YangMills.RG.CMP119BLocalSourceMetricStaging.to_cmp119_uses_dj"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-sourceMetric-domination-theorem-shape",
+          "source_symbol": "CMP109/CMP119 d_j(X) metric compared with the CMP116 Lemma-3 source metric",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.sourceMetric_domination",
+          "relation": "theorem_shape",
+          "status": "dictionary_open",
+          "statement": "The exact remaining B/local metric-comparison target is ∀ X, (sourceMetricLemma X : ℝ) <= sourceMetricB X, with sourceMetricB intended to represent the CMP109/CMP119 d_j(X) metric used by CMP119 Eq. (2.42) and sourceMetricLemma the CMP116 Lemma-3 source metric.",
+          "blocker": "CMP109 printed page 257 / PDF page 9 defines d_j(X), and CMP119 Eq. (2.42) uses d_j(X) in the B/local exponential bound, but the repo still needs a source/dictionary theorem proving that the chosen CMP116 Lemma-3 source metric is bounded above by that B/local metric. This record asserts only the theorem shape, not the inequality."
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-to-lemma3-rate-nonneg-from-decay-reserve",
+          "source_symbol": "Lemma-3 decay-rate nonnegativity slot in the B/local-to-Lemma-3 transport dictionary",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Derives the Lemma-3 decay-rate nonnegativity field of CMP119BLocalToLemma3WeightTransport from the standard decay-factor reserve and nonnegative source rate, with a primitive delta <= 1/16 and 4 <= blockScale constructor also available.",
+          "blocker": "This scalar bridge does not prove CMP119 Eq. (2.42), the B/local metric domination, the B/local rate margin, or any component decay; those remain explicit source/dictionary obligations. B/local metric nonnegativity follows from metric domination.",
+          "discharged_by": "YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_nonneg; YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_reserve; YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_delta_le_one_sixteen_and_four_le_blockScale; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_delta_le_one_sixteen_and_four_le_blockScale"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-to-lemma3-natmetric-transport",
+          "source_symbol": "Nat-valued B/local source metric specialization for the B/local-to-Lemma-3 transport dictionary",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.of_natMetric_decayFactor_reserve",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Specializes the B/local-to-Lemma-3 transport dictionary to a Nat-valued B/local metric while reusing the decay-factor reserve or primitive delta/block bounds for Lemma-3 rate nonnegativity.",
+          "blocker": "This constructor does not prove CMP119 Eq. (2.42), identify the paper B/local metric, prove B/local metric domination, prove the B/local rate margin, identify the B/local activity with Lean bloc, or prove any component decay.",
+          "discharged_by": "YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_natMetric_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_natMetric_delta_le_one_sixteen_and_four_le_blockScale"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-activity-estimate-lemma3-weight-transport",
+          "source_symbol": "CMP119 Eq. (2.42) B/local estimate transported to the CMP116 Lemma-3 source weight",
+          "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Builds a B/local component boundary against the CMP116 Lemma-3 source weight from a CMP119BLocalActivityEstimate, amplitude relaxation, and the packaged B/local-to-Lemma-3 weight-transport dictionary.",
+          "blocker": "This adapter does not prove CMP119 Eq. (2.42), the B/local activity dictionary, the B/local metric dictionary, or the B/local rate margin; it only isolates the transported bloc_decay field for downstream E/R/B assembly.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport_amplitudeDictionary"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-source-bound-to-lemma3-bloc-decay",
+          "source_symbol": "CMP119 Eq. (2.42) B/local source bound routed to the CMP116 Lemma-3 bloc_decay field",
+          "lean_symbol": "CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Produces the PhysicalGaugeRawActivityDecay obligation used as PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay from a supplied CMP119BLocalSourceBound, the explicit source-to-Lean B/local activity identification, amplitude relaxation, and the packaged B/local-to-Lemma-3 weight-transport dictionary.",
+          "blocker": "This bridge does not prove CMP119 Eq. (2.42), the B/local source-to-Lean activity identification, the B/local-to-Lemma-3 metric/rate dictionary, or any full E/R/B boundary; those remain explicit inputs.",
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_sourceDictionaries"
+        }
+      ]
+    },
+    {
+      "key": "cmp109.localization-domain-linear-size-dj",
+      "source_id": "cmp109",
+      "locator": {
+        "printed_pages": "257",
+        "pdf_pages": "9",
+        "equations": [
+          "definition before (0.24)",
+          "(0.24)-(0.26)"
+        ],
+        "local_text": "text/balaban-rg-I-cmp109-1104116842.txt lines 363-380",
+        "renders": [
+          "render_source_09"
+        ]
+      },
+      "status": "source_extracted",
+      "summary": "CMP109 defines Balaban localization domains D_j and the linear-size metric d_j(X) used by later CMP119 exponential B/local and R bounds.",
+      "lean_targets": [
+        "CMP119BLocalToLemma3WeightTransport.sourceMetric_domination",
+        "CMP119BLocalSourceBound",
+        "CMP119BLocalActivityEstimate"
+      ],
+      "use_for": [
+        "Paper-native definition of the d_j(X) metric appearing in CMP119 Eq. (2.42)",
+        "Future B/local metric dictionary comparing CMP119 d_j(X) with the CMP116 Lemma-3 source metric"
+      ],
+      "do_not_use_for": [
+        "Proof of CMP119 Eq. (2.42)",
+        "Proof of B/local metric domination",
+        "Proof of the B/local rate margin",
+        "Proof of bloc_decay",
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp109.localization-domain-linear-size-dj.definition",
+          "statement": "CMP109 defines a localization domain as a union of a connected finite family of cubes from pi_j, and defines d_j(X) as the length of a shortest tree graph contained in X and intersecting all cubes in X, divided by M.",
+          "ascii": "d_j(X) = shortest-tree-length(X) / M, for X a connected finite union of pi_j-cubes",
+          "exactness": "source-extracted definition; visual_confirmed",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        },
+        {
+          "id": "cmp109.localization-domain-linear-size-dj.exponential-bound-context",
+          "statement": "CMP109 Eq. (0.25) uses the same metric shape in an exponential decay bound for localized E terms, giving the predecessor geometric convention later reused by CMP119 Eq. (2.42).",
+          "ascii": "|E^(j)(X,U)| <= E_0 * exp (-(kappa * d_j(X)))",
+          "exactness": "source-extracted formula; visual_confirmed",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp109.dj-to-cmp119-blocal-metric",
+          "source_symbol": "CMP109 d_j(X) shortest tree-graph metric",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.sourceMetric_domination",
+          "relation": "source_metric_definition_for",
+          "status": "dictionary_open",
+          "statement": "Identifies the paper-native metric symbol in CMP119 Eq. (2.42) as Balaban's CMP109 localization-domain linear size d_j(X).",
+          "blocker": "A Lean theorem still must compare the CMP116 Lemma-3 source metric with this CMP109/CMP119 tree-length metric; no domination inequality is claimed here."
+        },
+        {
+          "id": "cmp109.dj-to-cmp119-blocal-natmetric",
+          "source_symbol": "CMP109 d_j(X) shortest tree-graph length divided by M",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.of_natMetric_decayFactor_reserve",
+          "relation": "candidate_dictionary_input",
+          "status": "dictionary_open",
+          "statement": "Because CMP109 defines d_j(X) by a shortest graph length after rescaling pi_j-cubes to unit cubes, it is a candidate source for a Nat-valued B/local metric representation.",
+          "blocker": "The repo still needs a formal Lean representation of this metric and proof that it matches the source metric used in CMP119 Eq. (2.42); Nat-valued representation is not asserted by this metadata alone."
+        }
+      ],
+      "open_questions": [
+        "Which existing Lean metric, if any, represents CMP109 d_j(X) for the CMP119 B/local domain X?",
+        "What exact theorem or dictionary proves (sourceMetricLemma X : ℝ) <= d_j(X) for the CMP116 Lemma-3 source metric?",
+        "Which source condition proves the B/local rate margin balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB?"
+      ]
+    },
+    {
+      "key": "cmp116.lemma3.eq2.38.component-decay-source-target",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "20",
+        "pdf_pages": "20",
+        "equations": [
+          "Lemma 3",
+          "(2.38)",
+          "(2.37)",
+          "(2.7)-(2.10)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the Lemma-3 component decay obligations feeding deltaE_decay and rloc_decay; source-to-Lean component dictionaries remain open.",
+      "lean_targets": [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122",
+        "Spanning-set active-subtype boundary adapters from commit 53235028: consumer-use dictionary slots for sourceWeight_le, not source theorem targets."
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp116.lemma3.eq2.38.component-decay-source-target.formula",
+          "statement": "CMP116 Lemma 3 / Eq. (2.38), with its local context, is the cited component-decay source candidate for deltaE_decay and rloc_decay.",
+          "ascii": "deltaE and rloc native component decay bounds (after the CMP116 dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp116.lemma3.eq2.38.to-erb-boundary-deltaE-decay",
+          "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) delta component",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the CMP116 delta/source component with the Lean deltaE activity and source weight is not theorem-fed."
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.to-erb-boundary-rloc-decay",
+          "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) local R component",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the CMP116 local R component with the Lean rloc activity and source weight is not theorem-fed."
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.blocal-rate-margin-source-anchor",
+          "source_symbol": "CMP116 Lemma 3 source exponential rate, printed 20 / PDF 20",
+          "lean_symbol": "CMP119BLocalRateMarginDictionary.rate_margin",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the Lemma-3 side of the B/local rate-margin comparison.",
+          "blocker": "CMP116 anchors the Lemma-3 source rate, but does not compare it to the CMP119 B/local rate kappaB; the rate margin remains an explicit dictionary obligation."
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.blocal-activity-globalEval-source-anchor",
+          "source_symbol": "CMP116 Lemma 3 / activity stack globalEval side, printed 20 / PDF 20",
+          "lean_symbol": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the physical-activity/globalEval side of the B/local activity-identification equality.",
+          "blocker": "CMP116 anchors the activity-stack meaning used on the Lean globalEval side, but does not prove equality with the CMP119/CMP122 paper-native B/local sourceEval term; the bloc_identification field remains a cross-lane physical-activity dictionary obligation."
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-source-estimates-record",
+          "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) source-native delta and local R scalar estimates",
+          "lean_symbol": "CMP116Lemma3DeltaRlocSourceEstimates",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages the paper-native scalar delta and local-R component bounds against the native Lemma-3 source weight, before identifying those source scalars with Lean local activities.",
+          "blocker": "This record does not prove CMP116 Eq. (2.38), the source-metric dictionary, or the source-to-Lean delta/local-R activity identifications; it only names the source-native scalar estimate shape.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-source-estimates-to-component-estimates",
+          "source_symbol": "CMP116 Lemma 3 source-native delta/local-R scalar estimates plus activity dictionaries",
+          "lean_symbol": "CMP116Lemma3DeltaRlocSourceEstimates.to_deltaRlocComponentEstimates",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Converts source-native scalar delta/local-R estimates into CMP116Lemma3DeltaRlocComponentEstimates when the source delta and local-R scalars are explicitly identified with Lean deltaE.globalEval and rloc.globalEval.",
+          "blocker": "The source estimates and the two source-to-Lean activity-identification dictionaries remain explicit obligations; this adapter proves no component estimate and no physical activity identification.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_deltaEActivityEstimate; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_rlocActivityEstimate; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_deltaRlocComponentEstimates"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.to-erb-boundary-component-estimates-bridge",
+          "source_symbol": "CMP116 Lemma 3 native component estimates",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116Lemma3ComponentEstimates",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Once the E/R/B decomposition and the three native CMP116Lemma3ActivityEstimate component estimates are supplied, the Lean boundary record fields deltaE_decay, rloc_decay, and bloc_decay are assembled against the native Lemma-3 source weight.",
+          "blocker": "This bridge does not prove the component estimates, the E/R/B decomposition, or the physical activity dictionary; the source-target links above remain dictionary_open.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116Lemma3ComponentEstimates"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-component-estimates-record",
+          "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) delta and local R component estimates",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages the two CMP116-native deltaE and local-R component estimates and exposes their raw-decay conclusions against the native Lemma-3 source weight; the B/local component remains a separate CMP119/CMP122 obligation.",
+          "blocker": "This record does not prove the estimates, the component dictionaries, the E/R/B decomposition, or the B/local component decay; the source-target links above remain dictionary_open.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.deltaE_decay; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.rloc_decay; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-plus-blocal-boundary-adapter",
+          "source_symbol": "CMP116 Lemma 3 delta/local-R component estimates plus separately sourced B/local boundary",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_blocal",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Assembles the E/R/B boundary from the CMP116-native deltaE/local-R obligation pair, a separately supplied PhysicalGaugeDimock318BLocalComponentBoundary, and the E/R/B decomposition.",
+          "blocker": "This adapter does not prove the CMP116 component estimates, the B/local component decay, or the E/R/B decomposition; all source-target dictionary links remain explicit.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_blocal"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-blocal-cmp119cmp122-boundary-adapter",
+          "source_symbol": "CMP116 Lemma 3 delta/local-R pair plus CMP119/CMP122 decomposition and B/local inputs",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Assembles the E/R/B boundary from the CMP116-native deltaE/local-R obligation pair, the named CMP119/CMP122 E/R/B decomposition interface, and a separately supplied B/local component boundary.",
+          "blocker": "This adapter does not prove the CMP116 component estimates, the CMP119/CMP122 decomposition, the B/local component decay, or any source-to-Lean activity dictionary; all source-target links remain explicit.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-blocal-transported-boundary-adapter",
+          "source_symbol": "CMP116 Lemma 3 delta/local-R pair plus transported CMP119/CMP122 B/local boundary",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_transport",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Assembles the E/R/B boundary when the B/local component boundary is supplied against its native source weight, then transported to the CMP116 Lemma-3 source weight by an explicit pointwise weight comparison and amplitude relaxation.",
+          "blocker": "This adapter does not prove the CMP116 component estimates, the CMP119/CMP122 decomposition, the B/local component decay, the B/local-to-Lemma-3 weight comparison, or any source-to-Lean activity dictionary; all source-target links remain explicit.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_transport"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-cmp119-blocal-metric-transport-boundary-adapter",
+          "source_symbol": "CMP116 Lemma 3 delta/local-R pair plus CMP119 B/local estimate with native-weight metric/rate transport",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_cmp119BLocalActivityEstimate_metricTransport",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Assembles the E/R/B boundary directly from the CMP116-native deltaE/local-R pair, a CMP119BLocalActivityEstimate against its native B/local exponential weight, explicit B/local-to-Lemma-3 metric/rate transport hypotheses, and the CMP119/CMP122 decomposition interface.",
+          "blocker": "This adapter does not prove the CMP116 component estimates, CMP119 Eq. (2.42), B/local metric identification, B/local rate margin, CMP119/CMP122 decomposition, or any source-to-Lean activity dictionary; all source-target links remain explicit.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_metricTransport; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_cmp119BLocalActivityEstimate_metricTransport"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-cmp119-blocal-weight-transport-dictionary-adapter",
+          "source_symbol": "CMP116 Lemma 3 delta/local-R pair plus CMP119 B/local estimate with packaged native-weight transport dictionary",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_cmp119BLocalActivityEstimate_weightTransport",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Assembles the same E/R/B boundary route using the packaged CMP119BLocalToLemma3WeightTransport dictionary instead of four separate metric/rate hypotheses.",
+          "blocker": "This adapter only groups explicit dictionary obligations; it does not prove CMP116 component estimates, CMP119 Eq. (2.42), B/local metric identification, B/local rate margin, CMP119/CMP122 decomposition, or physical activity identification.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_weightTransport; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_cmp119BLocalActivityEstimate_weightTransport"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-cmp119-source-bound-source-decomposition-boundary-adapter",
+          "source_symbol": "CMP116 Lemma 3 delta/local-R source estimates plus CMP119/CMP122 source decomposition and CMP119 Eq. (2.42) B/local source bound",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Assembles the E/R/B boundary from a supplied CMP116Lemma3DeltaRlocComponentEstimates package, a supplied CMP119CMP122ERBSourceDecomposition, explicit source-to-Lean activity identifications, a supplied CMP119BLocalSourceBound, amplitude relaxation, and the packaged B/local-to-Lemma-3 weight-transport dictionary.",
+          "blocker": "This adapter does not prove CMP116 component estimates, CMP119 Eq. (2.42), the CMP119/CMP122 source decomposition, any source-to-Lean activity identification, the B/local metric/rate dictionary, raw_pointwise_decay, or source_construction; all source-target links remain explicit.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport"
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.spanningSet",
+          "source_symbol": "CMP116 Lemma 3 spanning-set/source-polymer geometry",
+          "lean_symbol": "cmp116Lemma3SelfSpanningSet",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Self-spanning convention supplied by cmp116Lemma3SelfSpanningSet, with spanningSet t k X := X.val.",
+          "blocker": "Closed for the self-spanning convention only; the general spanning-set route remains available separately.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3SelfSpanningSet"
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.skeleton-coverage",
+          "source_symbol": "CMP116 Lemma 3 skeleton/spanning geometry",
+          "lean_symbol": "cmp116Lemma3SelfSpanningSet_skeleton_subset",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Self-spanning skeleton coverage is theorem-fed by skeleton_subset for spanningSet t k X := X.val.",
+          "blocker": "Closed for the self-spanning convention; no component decay or sourceMetric cardinality comparison is proved here.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3SelfSpanningSet_skeleton_subset"
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.containment",
+          "source_symbol": "CMP116 Lemma 3 spanning-set containment",
+          "lean_symbol": "cmp116Lemma3SelfSpanningSet_subset",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Self-spanning containment is definitional for spanningSet t k X := X.val.",
+          "blocker": "Closed for the self-spanning convention; no component decay or sourceMetric cardinality comparison is proved here.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3SelfSpanningSet_subset"
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.connectedness",
+          "source_symbol": "CMP116 Lemma 3 connected spanning geometry",
+          "lean_symbol": "cmp116Lemma3SelfSpanningSet_cubeConnected",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Self-spanning connectedness is inherited from the OmegaPolymerType cubeConnected field.",
+          "blocker": "Closed for the self-spanning convention; no component decay or sourceMetric cardinality comparison is proved here.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3SelfSpanningSet_cubeConnected"
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.cardinality-sourceMetric",
+          "source_symbol": "CMP116 Lemma 3 source-metric/cardinality comparison",
+          "lean_symbol": "card_le_sourceMetric : |spanningSet t k X| ≤ sourceMetric t k X",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide the cardinality comparison that lets the spanning-set source metric feed the Lemma-3 weight capstone.",
+          "blocker": "The source metric normalization and the Lean cardinality coercion comparison remain dictionary-open."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.self-cardinality-sourceMetric",
+          "source_symbol": "Canonical self-spanning cardinal source metric",
+          "lean_symbol": "cmp116Lemma3SelfCardSourceMetric_card_le",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "For the canonical self-spanning metric sourceMetric t k X := X.val.card, card_le_sourceMetric is theorem-fed by reflexivity.",
+          "blocker": "Closed only for the canonical self-cardinality metric; comparison into an independently specified or coarser source metric remains dictionary-open.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3SelfCardSourceMetric_card_le"
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.target-le-source",
+          "source_symbol": "CMP116 Lemma 3 source-rate reserve",
+          "lean_symbol": "target_le_source : ∀ t k, kappa ≤ kappaSource t k",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide the rate comparison consumed by the sourceRate/decayFactor spanning adapter.",
+          "blocker": "The paper constant hierarchy has not yet been theorem-fed as the Lean `target_le_source` input."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.constant-source-rate",
+          "source_symbol": "Canonical constant Lemma-3 source-rate convention",
+          "lean_symbol": "cmp116Lemma3ConstantSourceRate_target_le",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "For the canonical convention kappaSource t k := kappa, target_le_source is theorem-fed by reflexivity and kappaSource_nonneg follows from kappa_nonneg.",
+          "blocker": "Closed only for the definitionally constant source-rate convention; the paper source-rate hierarchy for an independently specified kappaSource remains dictionary-open.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3ConstantSourceRate_target_le; YangMills.RG.cmp116Lemma3ConstantSourceRate_nonneg"
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.delta-le-one-sixteenth",
+          "source_symbol": "CMP116 Lemma 3 small-delta reserve",
+          "lean_symbol": "delta_le_one_sixteen : ∀ t k, delta t k ≤ 1 / 16",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide the small-delta reserve used to discharge the decay-factor reserve in the delta-bounds spanning adapter.",
+          "blocker": "The source smallness hierarchy for delta has not yet been theorem-fed into this Lean inequality."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.four-le-blockScale",
+          "source_symbol": "CMP116 Lemma 3 block-scale reserve",
+          "lean_symbol": "four_le_blockScale : ∀ t k, 4 ≤ blockScale t k",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide the block-scale lower bound used to discharge the decay-factor reserve in the delta-bounds spanning adapter.",
+          "blocker": "The source block-scale hierarchy has not yet been theorem-fed into this Lean inequality."
+        }
+      ],
+      "open_questions": [
+        "For an independently specified sourceMetric, card_le_sourceMetric remains open; the canonical self-cardinality metric sourceMetric t k X := X.val.card is theorem-fed separately by cmp116Lemma3SelfCardSourceMetric_card_le.",
+        "For an independently specified kappaSource, target_le_source remains open; the constant source-rate convention kappaSource t k := kappa is theorem-fed separately by cmp116Lemma3ConstantSourceRate_target_le and cmp116Lemma3ConstantSourceRate_nonneg. The source smallness reserves delta <= 1/16 and 4 <= blockScale remain open.",
+        "For the genuine E/R/B source boundary, theorem-feed decomposes, deltaE_decay, rloc_decay, and bloc_decay from the CMP119/CMP116/CMP122 activity dictionary."
+      ]
+    },
+    {
+      "key": "cmp122i.eq1.70.large-field-bound-source-target",
+      "source_id": "cmp122_i",
+      "locator": {
+        "printed_pages": "192",
+        "pdf_pages": "18",
+        "equations": [
+          "(1.70)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the large-field/B component context feeding bloc_decay; the component dictionary remains open.",
+      "lean_targets": [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp122i.eq1.70.large-field-bound-source-target.formula",
+          "statement": "CMP122-I Eq. (1.70) is the cited large-field bound source candidate for the B/local component context.",
+          "ascii": "large-field/B component bound context (after the CMP122-I dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122i.eq1.70.to-erb-boundary-bloc-decay",
+          "source_symbol": "CMP122-I Eq. (1.70) large-field bound",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the large-field source term with the Lean bloc component decay obligation is not theorem-fed."
+        },
+        {
+          "id": "cmp122i.eq1.70.blocal-component-boundary-record-context",
+          "source_symbol": "CMP122-I Eq. (1.70) large-field/B component context",
+          "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Records that the B/local component boundary interface is the Lean obligation shape receiving the large-field/B component context.",
+          "blocker": "This context link does not prove the CMP122-I large-field bound or identify it with the Lean bloc component; the source-target dictionary remains open.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary"
+        },
+        {
+          "id": "cmp122i.eq1.70.blocal-rate-margin-source-anchor",
+          "source_symbol": "CMP122-I Eq. (1.70) B/local exponential-rate support, printed 192 / PDF 18",
+          "lean_symbol": "CMP119BLocalRateMarginDictionary.rate_margin",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for supporting B/local rate usage in the rate-margin dictionary.",
+          "blocker": "CMP122-I supports the B/local rate context but does not prove balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB; the scalar margin remains an explicit dictionary obligation."
+        },
+        {
+          "id": "cmp122i.eq1.70.blocal-activity-bloc-source-anchor",
+          "source_symbol": "CMP122-I Eq. (1.70) B/local terminal bound context, printed 192 / PDF 18",
+          "lean_symbol": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the B/local terminal-bound context of the Lean bloc activity identification.",
+          "blocker": "CMP122-I anchors the B/local terminal-bound context but does not identify the paper-native B/local scalar term with Lean bloc.globalEval; the physical-activity identification remains dictionary_open."
+        }
+      ]
+    },
+    {
+      "key": "cmp122ii.eq1.70.blocal-bound-source-target",
+      "source_id": "cmp122_ii",
+      "locator": {
+        "printed_pages": "377",
+        "pdf_pages": "23",
+        "equations": [
+          "(1.70)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source-anchor-only support for the CMP122-II B/local terminal-bound context used by the B/local activity-identification dictionary; the equality with Lean bloc.globalEval remains open.",
+      "lean_targets": [
+        "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+      ],
+      "use_for": [
+        "Source-anchor-only B/local terminal-bound context for the B/local activity-identification dictionary."
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp122ii.eq1.70.blocal-bound-source-target.formula",
+          "statement": "CMP122-II display Eq. (1.70), located at printed page 377 / PDF page 23, anchors the B/local terminal-bound context.",
+          "ascii": "B/local terminal-bound context (after the CMP122-II dictionary is supplied)",
+          "exactness": "source-anchor only; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122ii.eq1.70.blocal-activity-bloc-source-anchor",
+          "source_symbol": "CMP122-II display Eq. (1.70) B/local terminal-bound context, printed 377 / PDF 23",
+          "lean_symbol": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the B/local terminal-bound context of the Lean bloc activity identification.",
+          "blocker": "CMP122-II anchors the B/local terminal-bound context but does not identify the paper-native B/local scalar term with Lean bloc.globalEval; the physical-activity identification remains dictionary_open."
+        }
+      ]
+    },
+    {
+      "key": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
+      "source_id": "cmp122_ii",
+      "locator": {
+        "printed_pages": "390",
+        "pdf_pages": "36",
+        "equations": [
+          "(1.98)",
+          "(1.99)",
+          "(1.100)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the R/R-prime operation bounds feeding rloc_decay; the R-operation dictionary remains open.",
+      "lean_targets": [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target.formula",
+          "statement": "CMP122-II Eqs. (1.98)-(1.100) are the cited R-operation bound source candidates for the Lean rloc_decay field.",
+          "ascii": "R/Rprime operation bounds for the local R component (after the CMP122-II dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122ii.eq1.98-1.100.to-erb-boundary-rloc-decay",
+          "source_symbol": "CMP122-II Eqs. (1.98)-(1.100) R-operation bounds",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the R/R-prime operation bounds with the Lean rloc component decay obligation is not theorem-fed."
+        },
+        {
+          "id": "cmp122ii.eq1.98-1.100.blocal-amplitude-source-anchor",
+          "source_symbol": "CMP122-II Eqs. (1.98)-(1.100) B/local amplitude context, printed 390 / PDF 36",
+          "lean_symbol": "CMP119BLocalAmplitudeRelaxationDictionary.HbSrc_le",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the downstream B/local amplitude budget Hb in the amplitude-relaxation dictionary.",
+          "blocker": "CMP122-II anchors the downstream B/local amplitude context but does not prove HbSrc <= Hb; the scalar relaxation remains an explicit dictionary obligation."
+        }
+      ]
+    },
+    {
+      "key": "cmp122ii.eq1.101.post-r-erb-update-source-target",
+      "source_id": "cmp122_ii",
+      "locator": {
+        "printed_pages": "390",
+        "pdf_pages": "36",
+        "equations": [
+          "(1.101)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the post-R E/R/B update feeding the decomposes field; visual check confirms the local CMP122-II Eq. (1.101) on printed page 390 / PDF page 36, while printed page 391 / PDF page 37 is later final-bounds context. The post-R dictionary remains open.",
+      "lean_targets": [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp122ii.eq1.101.post-r-erb-update-source-target.formula",
+          "statement": "CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, is the cited post-R E/R/B update source candidate for the Lean decomposes field.",
+          "ascii": "post-R activity/action split into E/R/B terms (after the CMP122-II dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122ii.eq1.101.to-erb-boundary-decomposes",
+          "source_symbol": "CMP122-II Eq. (1.101) post-R E/R/B update, printed 390 / PDF 36",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the post-R action split with the Lean local-activity decomposition is not theorem-fed; printed page 391 / PDF page 37 is final-bounds context, not the exact Eq. (1.101) locator."
+        },
+        {
+          "id": "cmp122ii.eq1.101.erb-decomposition-shape",
+          "source_symbol": "CMP122-II Eq. (1.101) post-R E/R/B update, printed 390 / PDF 36",
+          "lean_symbol": "CMP119CMP122ERBDecomposition",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Shares the named Lean source-shaped decomposition interface used for the CMP119/CMP122 E/R/B boundary route.",
+          "blocker": "This interface does not prove CMP122-II Eq. (1.101) or identify the post-R action split with PhysicalGaugeLocalActivity.globalEval; that dictionary remains open.",
+          "discharged_by": "YangMills.RG.CMP119CMP122ERBDecomposition; YangMills.RG.cmp119CMP122ERBDecomposition_decomposes; YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBDecomposition_componentDecays"
+        }
+      ]
     }
   ],
   "coverage": [
     {
+      "source_id": "cammarota_cmp85",
+      "importance": "critical",
+      "catalog_status": "source-pending",
+      "artifact_status": "archive-private-packet-present; repo-clean-primary-missing",
+      "formula_status": "Eq. (1.4) premise visually confirmed via archive-private render; theorem conclusion and D-family dictionary still open",
+      "next_action": "Use the Archive-private Cammarota CMP85 packet or a repo-private clean artifact manifest to extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, uniformity, and Balaban D-family dictionary.",
+      "priority": 10
+    },
+    {
       "source_id": "cmp95",
       "importance": "critical",
-      "catalog_status": "backlog",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "narrative-only",
-      "next_action": "Locate primary PDF and extract (1.89), (1.114), Prop. 1.1/1.2.",
+      "catalog_status": "structured-partial",
+      "artifact_status": "local-pdf-renders-present",
+      "formula_status": "Prop. 1.1 (1.89) and Prop. 1.2 (1.110)-(1.114) visually confirmed; covariance dictionary still open",
+      "next_action": "Map CMP95 G/G_k Green bounds to the repository covariance/root certificate and identify the CMP96/CMP99 transport into the physical background-field covariance.",
       "priority": 10
     },
     {
       "source_id": "cmp122_ii",
       "importance": "critical",
       "catalog_status": "seeded",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "narrative",
-      "next_action": "Extract Theorem 1 and Eqs. (1.98)-(1.100).",
+      "artifact_status": "local-pdf-text-renders-present",
+      "formula_status": "Theorem 1 and Eqs. (1.98)-(1.101) visually confirmed; dictionary still open",
+      "next_action": "Extract exact Theorem 1 small-coupling constants and CMP119 Sect. 2 condition dictionary into Lean source-record fields.",
       "priority": 9
     },
     {
@@ -397,19 +2001,19 @@
     {
       "source_id": "cmp96",
       "importance": "high",
-      "catalog_status": "backlog",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "missing",
-      "next_action": "Identify full bibliography and one-step covariance theorem.",
+      "catalog_status": "metadata-located",
+      "artifact_status": "repo-ready-packet-present; private-pdf-held-out-of-repo",
+      "formula_status": "label/page map available; equation bodies visual-only; covariance theorem dictionary still open",
+      "next_action": "Choose the exact CMP96 proposition/equation window for the one-step covariance/root dictionary, visually confirm the formula body from private renders, then map it to PhysicalLocalizedCovarianceRootCertificate and wilsonHessianIdentification.",
       "priority": 8
     },
     {
       "source_id": "cmp98",
       "importance": "high",
-      "catalog_status": "backlog",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "missing",
-      "next_action": "Visually extract pages 19-20, equations (14)-(15).",
+      "catalog_status": "metadata-located",
+      "artifact_status": "repo-ready-packet-present; private-pdf-held-out-of-repo",
+      "formula_status": "label/page map available; equation bodies visual-only; Q_k/averaging dictionary still open",
+      "next_action": "Use CMP98 Theorem 2.14 / averaging-operation labels to identify the Q_k block-averaging dictionary feeding gaussian_pushforward; visually confirm formula bodies before stronger status.",
       "priority": 8
     },
     {
@@ -426,8 +2030,8 @@
       "importance": "high",
       "catalog_status": "seeded",
       "artifact_status": "local-status-unknown",
-      "formula_status": "narrative",
-      "next_action": "Visual confirmation and exact hypotheses for Eq. (1.70).",
+      "formula_status": "Eq. (1.70) large-field C_k bound visually confirmed; exact hypotheses and post-R dictionary still open",
+      "next_action": "Extract exact Eq. (1.70) hypotheses and map the C_k^(n) large-field bound into the CMP119/CMP122 post-R B/local/component dictionary without promoting it to RawYMActivityDecay.",
       "priority": 7
     },
     {

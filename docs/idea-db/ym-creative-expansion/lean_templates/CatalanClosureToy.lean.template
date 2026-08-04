@@ -1,5 +1,6 @@
 /-
-Catalan closure toy route. Keep conditional until RootedChildFactorialCatalanIdentity is proved generally.
+Catalan closure toy route. The rooted child-factorial Catalan identity is now
+proved generally; keep later YM/source-shape hypotheses explicit.
 -/
 
 import Mathlib

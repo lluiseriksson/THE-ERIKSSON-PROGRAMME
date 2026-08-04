@@ -1,0 +1,32 @@
+{
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "promotion": "NONE",
+  "scope": "one beta/lambda cell only; no G2/G6 promotion",
+  "domain": {
+    "beta": ["101.96875", "101.984375"],
+    "lambda": ["1.5", "1.9"]
+  },
+  "configuration": {
+    "modes": 115,
+    "beta_order": 50,
+    "lambda_order": 50,
+    "arb_bits": 500
+  },
+  "execution": {
+    "git_head": "edd3a137065a056fdd34d1bcb08eaf585d711e25",
+    "production": "scripts/surface_scaled_pair_mean_value_gap_cell_101p96875_101p984375_lambda150_190.txt",
+    "replay": "scripts/surface_scaled_pair_mean_value_gap_cell_101p96875_101p984375_lambda150_190_rerun.txt",
+    "production_sha256": "d67359e9b94a97696c37c82f554f692bbc297e8d27fe5a313dcb22766cf3b074",
+    "replay_sha256": "d67359e9b94a97696c37c82f554f692bbc297e8d27fe5a313dcb22766cf3b074",
+    "validator": "scripts/validate_surface_scaled_pair_mean_value_gap_cell_20260722.py"
+  },
+  "result": {
+    "total_upper": "-3.196183918960269285091193372097125489286463007142994701644074183310391846511755467451650095782525675e-109",
+    "lambda_beta_remainder": "3.5e-134 +/- 1.22e-136"
+  },
+  "nonpromotion_reasons": [
+    "remaining beta interval up to 1000/9 is not covered",
+    "moving t cover and scaled-tail splice remain open",
+    "this cell is not a global S1'''/S2''' relay"
+  ]
+}

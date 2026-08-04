@@ -66,25 +66,62 @@ remain to be extracted before the record can be populated from primary source.
 ## First source keys to open
 
 ```powershell
+python scripts/source_db.py show proof.gaussian.covariance-root-certificate.v2
+python scripts/source_db.py show proof.root.localization.v2
+python scripts/source_db.py show proof.gaussian.pushforward.dictionary.v2
 python scripts/source_citations.py show cmp116.gaussian-pushforward.2.5-2.6
 python scripts/source_citations.py show cmp116.localized-activity.2.7-2.10
+python scripts/source_db.py show cmp95.covariance-green.bounds-source-target
+python scripts/source_db.py show cmp96.one-step-covariance-law-source-target
 python scripts/source_db.py show dimockii.fluctuation-covariance.271-276
+python scripts/source_db.py show cmp99.background-field-propagator-source-target
+python scripts/source_db.py show cmp102.variational-hessian-expansion-source-target
+python scripts/source_db.py show proof.wilson.hessian.identification.v2
+python scripts/source_db.py show proof.activity.support-measurability.v2
+python scripts/source_db.py show proof.activity.termwise.live-fields.v2
+python scripts/source_db.py show proof.dimock.appendixf.hsharp-feed
+python scripts/source_db.py show proof.rooted-hsharp-remainder.identity.v2
 python scripts/source_db.py show dimockii.appendix-f.second-ursell.645-646
 python scripts/source_db.py show proof.rawsource.m3.live-fields.v2
 ```
+
+Focused blocker lookups:
+
+```powershell
+python scripts/source_db.py blockers covariance_root_certificate_dictionary_open
+python scripts/source_db.py blockers gaussian_pushforward_coordinate_jacobian_dictionary_open
+python scripts/source_db.py blockers root_localization_dictionary_open
+```
+
+These should surface the `proof.gaussian.root.localization-certificate` proof
+card and the matching companion live-field cards where present. Use them to
+route the exact open field before trying to populate
+`YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`,
+`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`,
+or `YangMills.RG.BalabanCMP116SourceAssumptions.root_localization`.
+
+The three `proof.*` keys above are repository live-field cards, not primary
+sources. `cmp95.covariance-green.bounds-source-target` is visually confirmed,
+and `cmp96.one-step-covariance-law-source-target` is located as a label/page map
+only. Keep them attached to the covariance/root route, but do not populate
+`PhysicalLocalizedCovarianceRootCertificate`, `root_localization`, or
+`gaussian_pushforward` until the exact source-to-Lean coordinate,
+normalization, CMP95/CMP96/CMP99 transport, and determinant/Jacobian
+dictionaries are supplied.
 
 ## Live fields
 
 | Field | Source target | Lean target | Danger |
 |---|---|---|---|
-| covariance/root certificate | CMP116 covariance/root definitions + Dimock-style architecture as guide | `PhysicalLocalizedCovarianceRootCertificate` | Product Gaussian display alone is not a root certificate. |
-| gaussian pushforward | CMP116 (2.5)-(2.6) + coordinate/Jacobian dictionary | `gaussian_pushforward` | Do not ignore determinant/normalization. |
-| root localization | CMP116 (2.7)-(2.10), covariance-root localization | `root_localization` | H(Z) display is not exact finite root reconstruction. |
-| Wilson Hessian | Wilson action second variation/dictionary | `wilson_hessian_identification` | Lemma 3 final bound is not Hessian identity. |
+| covariance/root certificate | CMP116 covariance/root definitions + Dimock-style architecture as guide | `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`; `YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate` | Product Gaussian display alone is not a root certificate. |
+| gaussian pushforward | CMP116 (2.5)-(2.6) + coordinate/Jacobian dictionary | `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`; `YangMills.RG.BalabanCMP116SourceAssumptions.gaussian_pushforward` | Do not ignore determinant/normalization. |
+| root localization | CMP116 (2.7)-(2.10), covariance-root localization | `YangMills.RG.BalabanCMP116SourceAssumptions.root_localization`; `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization` | H(Z) display is not exact finite root reconstruction. |
+| Wilson Hessian | CMP102 Eq. (142), CMP102 `H`, CMP99 `G(U)`, and the remaining coordinate/sign/normalization dictionary | `YangMills.RG.physicalGaugeWilsonHessianIdentification`; `YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification` | Located Hessian/propagator pages are not yet the Lean dictionary theorem. |
+| physical precision defect budget | source identification of `physicalPrecisionDefect` plus positive residual margin `schurCatalanBudget M epsilon < min 1 a / CP` | `YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation`; `YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos`; `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision`; `YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect`; `YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le`; `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd` | The Catalan defect bound and residual coercivity budget are separate hypotheses. |
 | local activity | CMP116 localized H(Z) construction | `local_physical_activity_construction` | Construction and decay are separate. |
-| support/measurable | localized domains to physical support | `spectator_support_subset`, `fluctuation_support_subset`, `activity_stronglyMeasurable` | Support is not implied by exponential decay. |
-| termwise/raw decay | Eq. (2.29), Eq. (2.31), Eq. (2.37), activity identity | `raw_pointwise_decay`, `termwise_estimate` | Finite-sum norm bridge is not source termwise estimate. |
-| rooted H# | Appendix F + physical raw-source scale family | `rooted_hsharp_remainder_identity` | H# is downstream, not proof of upstream Gaussian/root/Hessian fields. |
+| support/measurable | localized domains to physical support; see `proof.activity.support-measurability.v2` | `spectator_support_subset`, `fluctuation_support_subset`, `activity_stronglyMeasurable` | Support is not implied by exponential decay. |
+| termwise/raw decay | Eq. (2.29), Eq. (2.31), Eq. (2.37), activity identity; see `proof.activity.termwise.live-fields.v2` | `raw_pointwise_decay`, `termwise_estimate` | Finite-sum norm bridge is not source termwise estimate. |
+| rooted H# | Appendix F + physical raw-source scale family; see `proof.dimock.appendixf.hsharp-feed` and `proof.rooted-hsharp-remainder.identity.v2` | `YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity` | H# is downstream, not proof of upstream Gaussian/root/Hessian fields. |
 
 ## Batch 006 rule
 

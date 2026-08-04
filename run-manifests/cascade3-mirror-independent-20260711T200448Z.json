@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "run_id": "cascade3-mirror-independent-20260711T200448Z",
+  "claim_scope": "Independent clean rerun of the v88 mirror extraction. Fresh stdout SHA-256 21e3cdacd3ef979e9ad658f734eabbdc8c58e622770b1f2173a19d2cc70bee01 was byte-identical to scripts/cascade3_mirror_extraction_transcript.txt; stderr was empty and marks M-A through M-D passed.",
+  "status": "current",
+  "started_utc": "2026-07-11T20:04:48.0224147Z",
+  "finished_utc": "2026-07-11T20:10:57.9360424Z",
+  "command": ["python", "-u", "cascade3_mirror_extraction.py"],
+  "working_directory": "scripts",
+  "script": {
+    "path": "scripts/cascade3_mirror_extraction.py",
+    "sha256": "acdf1f06764c0af65f0d711711cd4124ca64db7ffc0f2066f0802287c4586d9e",
+    "sha256_lf": "aaea0e58cd68ab82a285f10c00b43f768ea52bc318b1f0f6eacb27f8658654e5"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"mpmath": "1.3.0", "sympy": "1.14.0"}
+  },
+  "inputs": [
+    {
+      "path": "scripts/cascade3_judges_transcript.txt",
+      "sha256": "251a29859c3c6942ae3cee5346a1d5e2e5af2da3c4bbb0437c8b63630c14ca0d",
+      "sha256_lf": "7e193d899fd300120a429e5ff24b580e8b42a83a18b7df097badb3cb75b921d9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/cascade3_mirror_extraction_transcript_independent_20260711.txt",
+      "sha256": "21e3cdacd3ef979e9ad658f734eabbdc8c58e622770b1f2173a19d2cc70bee01",
+      "sha256_lf": "dba98db53d78e4349976a95c4f74cc94694a11d0de292b4df6d4d526798dca0b"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

@@ -1,0 +1,135 @@
+=== RECEPTION DESK - C1 CONFIRMATION (mark 5, lem:extraction) ===
+[hash context: HEAD 7c17feb625a35f8b812c299097567141aff7d444; reception
+session 2026-07-11 (reconvened); scope NARROW per the standing C1 of
+scripts/reception_mark5_transcript.txt: do the three external-review
+redactions of commit 7c17feb DISTURB the received mark 5 - i.e. weaken
+any claim, alter the verified/derived split, or misstate the 17x3
+record - or are they honesty-increasing restatements? Split roles
+honored: this desk fabricated none of the redactions; everything below
+read FROM DISK at this desk.]
+
+------------------------------------------------------------------
+1. DIFF PERIMETER - VERIFIED
+
+git diff c9d1ac3..7c17feb touches exactly three files:
+  papers/surface-complete/surface_theorem_complete.tex (ONE hunk,
+    lines 1168-1198, entirely inside the (H_cube) parenthetical /
+    M_sharp display / standing sentence of step (v'));
+  papers/surface-complete/surface_theorem_complete.pdf (same commit,
+    per standing rule);
+  docs/SURFACE-CLOSURE-NOTES.md (v80 entry only, appended).
+No other ink, no transcript, no script, no judge table touched. The
+17x3 sentence itself ("B_m is *verified* at all 17 judge cells at
+three beta's each") survives VERBATIM inside the edited hunk. The
+tex diff is ONLY the three declared edits. PERIMETER CLEAN.
+
+------------------------------------------------------------------
+2. THE THREE EDITS, EACH AGAINST ITS COMMITTED RECORD
+
+(1) DIVERGENCE SENTENCE. Old: "five audit rounds established that
+the moment series is divergent against beta_1, so no finite
+extraction depth discharges it". New: "the computed absolute
+coefficient contributions cease to decrease between orders j=7 and
+j=8, so increasing the extraction depth does not by itself furnish
+a convergent absolute-tail bound (the fifth audit round's ruling)";
+the remainder left as (H_cube) for the integral-form discharge.
+Checked against scripts/cube_audit_diff2_transcript.txt (the fifth
+round): the committed record measures the growth ratio
+|c_{j+1}|/(beta_1|c_j|) crossing 1.0 at j=7->8 (0.9407, 1.0942,
+1.2480, 1.4020, 1.5562), the exact ladder 0.274857/0.375332/
+0.818903 at NORD 14/18/22, and rules "the MODEL series is
+DIVERGENT ... No NORD raise can ever discharge the dropped band".
+Findings: (i) the new measured statement (contributions cease to
+decrease at j=7->8) is EXACTLY the transcript's ratio fact; (ii)
+the old ink said "the MOMENT series" where the transcript
+established divergence of the MODEL series - the new wording
+retreats from that unwitnessed extension to precisely what was
+measured, which is a label moving DOWN to its witness, not a
+weakened claim (the sentence is diagnostic prose about why the
+carrier is OPEN; it bears no load - (H_cube) remains open and its
+discharge path, the integral-form composite-Taylor remainder, is
+retained verbatim); (iii) "the fifth audit round's ruling"
+implements this desk's own ADVISORY defect 3(c) (attribution:
+the fifth round established it, not all five). EDIT (1):
+HONESTY-INCREASING, transcript-faithful, mark undisturbed.
+
+(2) "the true mirror 0.0733" -> "the verified quadrature value
+0.0733". Checked against tricotomy and the number's provenance:
+0.0733 is the quadrature sum of scripts/
+mirror_clause_bench2_transcript.txt ("true |mirror terms| sum =
+0.0733") - a numerical evaluation, whose tricotomy label is
+VERIFIED, not "true"/exact. The number, the ratio x4.97, the
+pre-registered window [0.0733, 0.7], and the x83 sharpening are
+all UNCHANGED (M_sharp display otherwise byte-identical). This is
+the prose finally wearing the label the regime always required.
+EDIT (2): TRICOTOMY CORRECTION, mark undisturbed.
+
+(3) "same standing as (H_tail)" -> "same *logical type* as
+(H_tail) - a named open hypothesis - but local to this step and
+carrying no relay load", plus the milestone label "an
+audit-complete conditional refinement, not a completed analytic
+relay lemma". Checked against this desk's own C2 and section 3(c):
+this desk itself ruled that M_sharp bears no load outside step
+(v') (sole occurrence), that the relay consumes the unconditional
+M, and DEMANDED (C2) that the conditionality be scoped - (H_tail)
+for the relay, (H_cube) for step (v') only. The new sentence
+writes that scoping into the one remaining place that could
+confuse it; "named open hypothesis" is retained; the echo in
+rem:extractionstatus is retained; the joint discharge work item is
+retained. The added milestone label claims LESS than the received
+form claimed (the reception itself was "of the conditional form,
+not a completed relay lemma" - see C3 and the closing paragraph of
+the mark-5 transcript). EDIT (3): EXECUTES THIS DESK'S OWN C2
+SCOPING IN INK and downgrades a label toward its witness. Mark
+undisturbed.
+
+------------------------------------------------------------------
+3. THE C1 TEST, APPLIED EXACTLY AS WRITTEN
+
+C1 reopens the mark on "any weakening, re-scoping, or disturbance
+of (H_cube)'s 17x3 verification record or of its ink labeling."
+  - The 17x3 record: verbatim intact; no transcript touched; the
+    "verified at all 17 judge cells at three beta's each" claim
+    stands letter for letter. NOT DISTURBED.
+  - The ink labeling: "exact" still only on the judged closed
+    forms; "derived in part" retained with the open carrier still
+    NAMED; "verified" retained on the 17x3 record and now ALSO
+    correctly applied to 0.0733; (H_cube) still a named open
+    hypothesis, still echoed, still conditioned where used. Every
+    label moved either nowhere or DOWNWARD toward its witness. No
+    label was upgraded; no claim gained strength. NOT DISTURBED.
+  - Re-scoping: the only scoping change is the one this desk's C2
+    ordered (local to step (v'), no relay load), stated where it
+    was previously ambiguous. That is compliance, not disturbance.
+  - The judged quantities: M_sharp = 0.3646, x4.97, the x10 class,
+    the window, U_D, the zone - all byte-identical. The v41
+    acceptance condition 2 is met by the same bound in the same
+    conditional form this desk received.
+
+One note for the record (no action required): acta v80's gloss
+that the old sentence "does not preclude finite depths inside an
+integral-form proof" is the fabricating desk's reading, not this
+desk's; this confirmation rests on the narrower, sufficient ground
+that the new wording states exactly the transcript's measured
+facts and the old wording's extra strength was diagnostic prose
+carrying no load. Nothing here amends C3: DO NOT SUBMIT stands;
+(H_tail) and (H_cube) remain live obligations.
+
+------------------------------------------------------------------
+4. THE RULING
+
+C1 CONFIRMATION: MARK 5 STANDS.
+
+The three redactions of commit 7c17feb are honesty-increasing
+restatements: edit (1) replaces an over-broad diagnostic with the
+fifth-round transcript's exact measured facts and adopts this
+desk's advisory attribution fix; edit (2) is a tricotomy label
+correction on an unchanged number; edit (3) executes this desk's
+own C2 scoping and lowers a milestone label toward its witness.
+None weakens a claim, alters the verified/derived split, or
+misstates the 17x3 record. C1's reopen clause is NOT triggered;
+mark 5 remains RECEIVED in the conditional form inked, with C1,
+C2 (executed c9d1ac3, unchanged here), and C3 in force exactly as
+written in scripts/reception_mark5_transcript.txt.
+
+=== END OF C1 CONFIRMATION TRANSCRIPT ===

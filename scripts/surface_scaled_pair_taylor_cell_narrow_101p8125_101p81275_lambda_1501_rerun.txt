@@ -1,0 +1,20 @@
+SCALED PAIR TAYLOR CELL CERTIFICATE
+python 3.12.6
+python_flint 0.9.0
+arb_bits 500
+git_head 7270e1268808b299ec0c0db18b74cfad200ebf87
+config beta_order 50 remainder_beta_order 30 lambda_order 28 modes 115 precision 500
+beta_cell 1629/16 407251/4000
+lambda_cell 1501/1000 1501/1000
+finite [-6.62e-109 +/- 2.97e-112]
+mode_tail [5.5e-111 +/- 3.06e-113]
+lambda_remainder 0
+beta_remainder [2.435309439352837267562626640625228914427087978214047122419809416530560425764291838810802888972095936e-150 +/- 3.57e-250]
+total_upper [-6.563823860768352369074437621855097411422982448127079022522889074744084345617427101615429224828693884e-109 +/- 9.61e-210]
+dependency scripts/certify_surface_scaled_pair_taylor_cell.py sha256 898288dd8b723bb317d38618de961f46932a333a8cc3441df5c0a903700ecf09
+dependency scripts/surface_scaled_pair_taylor_design.py sha256 51cbc6fed1b432b86269f4a3c32f6c356678a06ab5f8c798a9e3d051865afc45
+dependency scripts/surface_scaled_pair_taylor_remainder_design.py sha256 c1ddb9d380f08e829bbec9d0dd0a4d343448d458759a87d4a8b02aa99abe567e
+dependency scripts/probe_surface_scaled_pair_sum.py sha256 f688c3bc8b81dc735f0161dddf1c9d10f726a5a0c67e455421eb9524b60fe1bc
+dependency scripts/certify_bulk_beta_taylor_scaled_design.py sha256 32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d
+SCALED PAIR TAYLOR CELL PASS
+SCOPE one rational cell only; no G2/G6 promotion

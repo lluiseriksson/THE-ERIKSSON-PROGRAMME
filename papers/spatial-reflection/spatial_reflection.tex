@@ -1,0 +1,418 @@
+% Reflection positivity for the coupled slice (paper 12 of the O lane).
+% Lane: O (operator bridge), module YangMills/OS/SpatialReflection.lean.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\anchor}{854ff223396630a8a75b0a95a3ada6413f3a395d}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+
+\title{The Weight That Could Not Break It:\\
+Machine-Checked \emph{Endpoint} Reflection Positivity\\
+for the Coupled $\Z_2$ Slice\\
+\large real single-slice observables --- two reflections, two hypotheses,
+and one of them sharp}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{What is proved, stated before anything else.}  The reflected two-point
+form of the Gibbs measure, at the two \emph{ends} of a path, for \emph{real}
+observables of a \emph{single} slice, is non-negative under the parity and
+coupling hypotheses stated below --- at even separation for every $\beta$, and
+at every separation exactly for $\beta\ge0$ --- and the Gram matrix of a finite
+family of such observables is positive semidefinite under the same hypotheses.  \textbf{This is not
+yet the Osterwalder--Schrader axiom}, which quantifies over observables of the
+whole past half-chain and over complex ones.  The half-chain algebra, the
+reflection map and the sesquilinear form are not built here; \S\ref{sec:scope}
+says what is missing and why it is a construction rather than a further
+inequality.
+
+Eleven papers in this lane end with \emph{reflection positivity is untouched}.
+This touches the endpoint form of it, and the interesting part is what the
+spatial source weight does --- namely nothing.  Earlier papers do prove
+statements about the coupled kernel; $\mathrm{specGap}<\lambda$ holds there too
+\cite{ErikssonSpectral}.  What is new is that this result is \emph{unchanged} by
+the weight: same hypothesis, same conclusion, and no constant that depends on
+$w$.  Every earlier coupled-kernel statement contains a number that moves when
+$w$ does.  Positivity is the \emph{sign} of a quadratic form, and conjugation by
+$\sqrt{w}$ is a congruence, so there is nothing for the weight to move.
+
+\textbf{Two reflections, two hypotheses.}  The reflected two-point sum is
+$\langle v, K^{N} v\rangle$ with $v$ the dressed observable, and the two cases
+have genuinely different content.  Through a \emph{site} ($N$ even) the sum is a
+square, hence non-negative for \emph{every} $\beta$ --- negative coupling
+included --- with nothing used but symmetry of the kernel.  Through a
+\emph{bond} ($N$ odd) it is $\langle K^{m}v, K K^{m} v\rangle$, which needs $K$
+itself positive semidefinite; that holds exactly for $\beta\ge0$, by an
+induction on the extent.
+
+\textbf{And the second hypothesis is active.}  At $\beta<0$ and odd separation
+the single-site sign observable gives the reflected sum in closed form,
+$2(e^{\beta}-e^{-\beta})^{N}$, which is negative.  Congruence is invertible, so
+the same witness divided by $\sqrt{w}$ shows the \emph{coupled} kernel is
+indefinite below zero for \emph{every} strictly positive weight, at every extent
+with at least one site.  At $L=0$ there is nothing to witness --- one
+configuration, and there the decoupled kernel is $1$ while the coupled one is
+the positive scalar $w(\varnothing)$ --- and that exception is recorded rather
+than left to be found.  The boundary $\beta=0$ is sharp and exhibited, not inferred.
+
+\textbf{What this is not.}  Neither the full axiom (above) nor any
+reconstruction: the physical Hilbert space as the quotient of the past algebra
+by the null space of this form is not built.  And the degeneration of
+$\mathrm{specRatio}(L)$ under a ring weight is \emph{measured}, not proved; no
+theorem here or elsewhere in the lane says the weight destroys uniformity, only
+that no uniform bound is proved for it.  Nothing here concerns uniformity in the
+extent, $\SU(N)$, the continuum limit, or the Yang--Mills mass gap \cite{Clay}.
+
+\textbf{On the pre-registration.}  Three \emph{active} gates were committed
+before any Lean was written, and \S\ref{sec:gates} reports what happened to
+each.  A fourth is preserved there and not counted: the original Gate~B, which
+failed because of a design error of ours, and which two of the three active
+gates replaced.
+\end{abstract}
+
+\section{Why this one survives the weight}\label{sec:why}
+
+The lane's obstruction has a shape.  Every rate statement it has produced is a
+statement about $\mathrm{specGap}$ or $\mathrm{specRatio}$, and those are
+spectral data: conjugating the kernel by $\sqrt{w}$ moves eigenvalues around,
+and the \emph{measured} evidence is that with a ring weight it moves them to
+degeneracy outside the disordered region.  (Measured: no theorem in this lane
+proves that, and none is claimed here.)
+
+Positivity is not spectral data in that sense.  It is the \emph{sign} of a
+quadratic form, and
+\[
+  \langle u, \sqrt{w}\,T\,\sqrt{w}\, u\rangle
+  \;=\; \langle \sqrt{w}\,u,\; T\, \sqrt{w}\,u\rangle
+\]
+is the same form read on a relabelled vector.  Sylvester's law is the general
+statement; here it is one line, and it is the whole reason the coupled case
+costs nothing once the decoupled one is done.
+
+\section{Through a site: free, at every coupling}\label{sec:site}
+
+\begin{theorem}[site reflection]\label{thm:site}
+Let $K$ be any symmetric kernel.  For every $m$ and every observable $u$,
+\[
+  \sum_i \bigl(K^{2m} u\bigr)(i)\, u(i) \;\ge\; 0 .
+\]
+\end{theorem}
+
+\osline{SpatialReflection}{105}{sum\_iterate\_even\_nonneg}.
+Move half the iterates across the pairing --- which is what symmetry buys --- and
+the sum becomes $\sum_i (K^{m}u)(i)^2$.  No positivity of $K$ is used, and no
+hypothesis on $\beta$: this holds at negative coupling, where the bond
+reflection below fails.
+
+\section{Through a bond: exactly $\beta\ge0$}\label{sec:bond}
+
+\begin{theorem}[the decoupled kernel is positive semidefinite]\label{thm:psd}
+For $\beta\ge0$, every extent $L$ and every observable $u$,
+$\sum_\sigma u(\sigma)\,(Ku)(\sigma) \ge 0$.
+\end{theorem}
+
+\osline{SpatialReflection}{147}{spatialKernel\_posSemidef}.
+By induction on the extent, splitting an observable at the first site into its
+even and odd parts.  Each part inherits positivity from the inductive
+hypothesis, and the two are recombined with the two bond eigenvalues,
+\[
+  Z = e^{\beta}+e^{-\beta} > 0,
+  \qquad
+  D = e^{\beta}-e^{-\beta} \ge 0 \iff \beta \ge 0 ,
+\]
+which is precisely where the hypothesis enters.  It is the same induction the
+companion uniformity paper runs \cite{ErikssonUniform}, with different
+bookkeeping; the split lemma is shared and stated once
+(\osline{SpatialReflection}{126}{act\_spatialKernel\_cons}).
+
+\begin{theorem}[congruence, and the coupled kernel]\label{thm:congr}
+If $K$ is positive semidefinite then so is $c\,K\,c$ for any function $c$.
+Hence for $\beta\ge0$ and \emph{any} strictly positive source weight $w$, the
+symmetrised kernel $\sqrt{w}\,K\,\sqrt{w}$ is positive semidefinite.
+\end{theorem}
+
+\osline{SpatialReflection}{209}{posSemidef\_congr} and
+\osline{SpatialReflection}{226}{symWeighted\_posSemidef}.
+This is the step \S\ref{sec:why} advertised, and it costs one reindexing.
+
+\begin{theorem}[bond reflection]\label{thm:bond}
+For $\beta\ge0$, every $m$ and every observable,
+$\sum_i (K^{2m+1}u)(i)\,u(i) \ge 0$.
+\end{theorem}
+
+\osline{SpatialReflection}{240}{sum\_iterate\_odd\_nonneg}.
+
+\section{The same statements, about the measure}\label{sec:measure}
+
+The bridge of the companion paper \cite{ErikssonGibbs} identifies the reflected
+two-point sum of the Gibbs measure with $\langle v, K^{N} v\rangle$, so both
+theorems transfer verbatim.
+
+\begin{theorem}[endpoint reflection positivity in the measure]\label{thm:rp}
+Let $A$ be a \emph{real} observable of a \emph{single} slice, evaluated at the
+two ends of the path.  For any strictly positive source weight, at every extent:
+\begin{enumerate}
+\item at even separation the reflected two-point sum is non-negative for
+\emph{every} $\beta$
+(\osline{SpatialReflection}{267}{gibbsPathSum\_nonneg\_even});
+\item for $\beta\ge0$ it is non-negative at \emph{every} separation
+(\osline{SpatialReflection}{276}{gibbsPathSum\_nonneg}).
+\end{enumerate}
+\end{theorem}
+
+The statement is about the \emph{unnormalised} sum, which is the object
+reflection positivity is about; the partition function is positive, so the
+normalised expectation has the same sign, but that is a remark and not the
+theorem.
+
+\paragraph{The whole matrix, not one diagonal entry.}  Reflection positivity is
+a statement about a Gram matrix being positive semidefinite.  For these
+observables the matrix form follows from the diagonal one by bilinearity, and is
+stated so the two are not confused:
+
+\begin{theorem}[the Gram matrix]\label{thm:gram}
+For every finite family $A_1,\dots,A_k$ of endpoint observables and every real
+$c_1,\dots,c_k$,
+\[
+  \sum_{i,j} c_i c_j \,
+    \operatorname{gibbsPathSum}(w,\beta,N,A_i,A_j) \;=\;
+  \sum_{i,j} c_i c_j \,
+    \bigl\langle \sqrt{w}\,A_i,\; K_w^{\,N}\, \sqrt{w}\,A_j \bigr\rangle
+  \;\ge\; 0
+\]
+under the hypotheses of Theorem~\ref{thm:rp}, where $K_w=\sqrt{w}\,K\sqrt{w}$.
+\end{theorem}
+
+The factors $\sqrt{w}$ are not decoration.  They are the dressing the bridge
+module produces \cite{ErikssonGibbs}, and they are what makes the operator
+self-adjoint; the same matrix written with undressed $A_i$ and the bare $K$
+would be a true inequality about a \emph{different} object.
+
+\osline{SpatialReflection}{485}{gibbsPathSum\_gram\_nonneg} and
+\osline{SpatialReflection}{492}{gibbsPathSum\_gram\_nonneg\_even}, with
+the bilinearity that makes the matrix visible at
+\osline{SpatialReflection}{460}{gibbsPathSum\_combo}.
+
+\section{Sharpness: the hypothesis is active}\label{sec:sharp}
+
+A hypothesis that is never in force is not worth stating.
+
+\begin{theorem}[the witness, in closed form]\label{thm:witness}
+At one site and constant weight, the single-site sign observable gives
+\[
+  \sum_X A(X_0)A(X_N)\,\text{weight}(X)
+  \;=\; 2\,(e^{\beta}-e^{-\beta})^{N} ,
+\]
+exactly.  For $\beta<0$ and $N$ odd this is negative.
+\end{theorem}
+
+\osline{SpatialReflection}{308}{gibbsPathSum\_siteSign\_eq} and
+\osline{SpatialReflection}{330}{gibbsPathSum\_neg\_of\_neg\_beta}.
+The observable is the one the extent paper already built
+\cite{ErikssonExtent}; it is an eigenvector of the decoupled kernel with
+eigenvalue $D$, so the iterate is $D^{N}$ times it, and the norm counts the two
+configurations.
+
+\paragraph{And for every weight, not only the constant one.}  That witness sits
+at constant weight, so on its own it refutes only the universally quantified
+statement.  Congruence is \emph{invertible} --- $\sqrt{w}$ is nowhere zero ---
+so inertia transports in both directions, and the same observable divided by
+$\sqrt{w}$ witnesses indefiniteness of the coupled kernel itself.
+
+\begin{theorem}[sharp for every positive weight]\label{thm:sharpw}
+For every extent with at least one site, every strictly positive $w$ and every
+$\beta<0$, the quadratic form of $\sqrt{w}\,K\,\sqrt{w}$ takes the value
+$(e^{\beta}-e^{-\beta})\,Z^{L-1}\,2^{L} < 0$.
+\end{theorem}
+
+\osline{SpatialReflection}{365}{symWeighted\_quadForm\_neg\_of\_neg\_beta}.
+
+\paragraph{The exception, recorded --- and it is two kernels, not one.}  At
+$L=0$ the configuration space is a point, and there are two objects to keep
+apart.  The \emph{decoupled} kernel is the number $1$
+(\osline{SpatialReflection}{418}{spatialKernel\_posSemidef\_zero}); the
+\emph{weighted} kernel is the positive scalar $w(\varnothing)$, which need not
+be $1$
+(\osline{SpatialReflection}{438}{symWeighted\_posSemidef\_zero}).  Both quadratic
+forms are squares at every $\beta$ --- $u^2$ and $w(\varnothing)u^2$ --- so
+Theorem~\ref{thm:sharpw} has nothing to witness there, and ``exactly
+$\beta\ge0$'' is a statement from one site upwards.
+
+\section{The three gates, and the one that failed}\label{sec:gates}
+
+The previous campaign in this lane committed a judge whose single joint gate
+read \textsc{fail} and was overridden; that is recorded as a process violation
+in the ledger and is not undoable \cite{ErikssonUniform}.  The remedy applied
+here was structural: separate gates, each licensing one theorem.
+
+\begin{itemize}
+\item \textbf{Gate A} (site reflection, every $\beta$): \textsc{pass}.
+\item \textbf{Gate B} (bond reflection): \textsc{fail} --- and the reason is that
+we made the same design error one level down.  Gate B bundled the $\beta\ge0$
+theorem with its sharpness witness behind ``pass iff both''.  The first half
+passed everywhere; the second missed one cell.
+\end{itemize}
+
+\repofile{scripts/judge\_spatial\_reflection.py}{scripts/judge\_spatial\_reflection.py}.
+The autopsy measured why: at that cell the violating direction carries
+$|D|^{N}/Z^{N} \approx 10^{-3}$ of the weight, so a uniformly random observable
+lands in the violating cone with probability $\approx 2\times10^{-2}$, and sixty
+draws miss it about a third of the time.  \textbf{An existence claim was being
+tested by sampling.}
+\repofile{scripts/judge\_spatial\_reflection\_autopsy.py}{scripts/judge\_spatial\_reflection\_autopsy.py}.
+
+Gate B stays failed.  It was replaced by two new gates, committed before being
+run and declared as a redesign rather than a reinterpretation: B1 keeps the
+$\beta\ge0$ test, and B2 stops sampling and predicts a \emph{number} --- the
+closed form of Theorem~\ref{thm:witness}, to $10^{-12}$ --- which is strictly
+harder than asking some draw to go negative.  Both pass.
+\repofile{scripts/judge\_spatial\_reflection\_v2.py}{scripts/judge\_spatial\_reflection\_v2.py}.
+
+\section{Scope}\label{sec:scope}
+
+\paragraph{An endpoint form, not the full axiom and not a reconstruction.}
+Reflection positivity is one of the Osterwalder--Schrader axioms, and what is
+proved here is its endpoint form rather than the axiom itself.  Building the
+physical Hilbert space --- the quotient of the past algebra by the null space of
+this form, with the transfer operator descending to a self-adjoint contraction
+--- is a further step again, and is neither done here nor claimed.
+
+\paragraph{Endpoint observables only --- and what the full axiom would need.}
+The bridge module supplies correlations of observables at the two ends of the
+path.  The Osterwalder--Schrader axiom is about a general observable $F$ of the
+past half-chain, complex-valued, with the matrix
+$\bigl(\langle\Theta F_i, F_j\rangle\bigr)_{ij}$ positive semidefinite.  Here
+the observables are real and single-slice, and no reflection map $\Theta$ is
+defined.
+
+The missing step is identifiable and is a \emph{construction}, not a further
+inequality: summing out the interior of each half collapses $F$ to a boundary
+vector $G_F$, after which the site reflection reduces to
+$\sum_\sigma G_F(\sigma)^2 \ge 0$ and the bond reflection to
+$\langle G_F, K_w G_F\rangle \ge 0$ --- which are Theorem~\ref{thm:site} and
+Theorem~\ref{thm:congr}, already proved.  Extending from real to complex
+observables is then immediate for a real symmetric kernel, since
+$z^{*}Kz = x^{\top}Kx + y^{\top}Ky$ with the cross terms cancelling by symmetry.
+Both layers are registered as the next step and neither is claimed here.
+
+\paragraph{Nothing about uniformity.}  This paper says nothing about how any
+rate behaves as the extent grows.  The coupled kernel's uniformity is still the
+lane's open analytic question.
+
+\paragraph{No claim about the physical target.}  Nothing here concerns $\SU(N)$,
+the continuum limit, or the Clay problem \cite{Clay}.  The distance to that
+problem is unchanged.
+
+\section{Reproducibility}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}.
+Every hyperlink was resolved against that commit, and checked to point at an
+actual declaration line, before compilation.  Every counter below was measured
+in a window with no other elaborator running on the host, on commit
+\texttt{3ee8b1c7}, whose Lean sources, \texttt{oracle\_check.lean},
+\texttt{lakefile.lean} and \texttt{lake-manifest.json} are byte-identical to this
+checkpoint --- the only change between them is the ledger entry recording the
+measurement, and
+\verb|git diff 3ee8b1c7 |\anchor\verb| -- '*.lean' oracle_check.lean| is empty.
+
+Between the previous version of this paper and this one, an unrelated branch was
+merged into \texttt{main} by a concurrent session.  It adds no declaration to
+this module and changes none of its proofs, but it does enlarge the
+\emph{repository-wide} oracle, which is why the totals below are larger than
+those printed in the previous version.  The module's own row is unchanged.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8463 jobs, success \\
+Oracle commands, and answers & 2752 \\
+\quad distinct declarations & 2749 \\
+\quad commands listed twice & 3 \\
+\quad distinct, with axiom dependencies & 2726 \\
+\quad distinct, axiom-free & 23 \\
+Declarations in this module & 19 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
+Project axioms & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The module is
+\repofile{YangMills/OS/SpatialReflection.lean}{YangMills/OS/SpatialReflection.lean};
+verdicts are in
+\repofile{docs/VERIFICATION-LEDGER.md}{docs/VERIFICATION-LEDGER.md}.
+
+\begin{thebibliography}{9}
+
+\bibitem{ErikssonExtent}
+L.~Eriksson,
+\emph{Where the Elementary Reconstruction Stops: a Machine-Checked Obstruction
+at the Coupled $\Z_2$ Slice}, viXra:2607.0075, 2026.
+
+\bibitem{ErikssonGibbs}
+L.~Eriksson,
+\emph{The Measure the Spectral Results Were About}, viXra, 2026.
+
+\bibitem{ErikssonSpectral}
+L.~Eriksson,
+\emph{The Modulus: a Machine-Checked Operator Bound on the Fluctuation Sector of
+the Coupled $\Z_2$ Slice}, viXra, 2026.
+
+\bibitem{ErikssonUniform}
+L.~Eriksson,
+\emph{The Rate Without the Extent: a Machine-Checked Extent-Independent Spectral
+Rate for the Decoupled $\Z_2$ Slice}, viXra, 2026.
+
+\bibitem{OS}
+K.~Osterwalder and R.~Schrader,
+\emph{Axioms for Euclidean Green's functions}, Comm.\ Math.\ Phys.\
+\textbf{31} (1973), 83--112.
+
+\bibitem{OsterwalderSeiler}
+K.~Osterwalder and E.~Seiler,
+\emph{Gauge field theories on a lattice}, Ann.\ Physics \textbf{110} (1978),
+440--471.
+
+\bibitem{GlimmJaffe}
+J.~Glimm and A.~Jaffe,
+\emph{Quantum Physics: a Functional Integral Point of View}, 2nd ed.,
+Springer, 1987.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills theory}, Clay Mathematics Institute Millennium Prize
+problem description, 2000.
+
+\end{thebibliography}
+
+\end{document}

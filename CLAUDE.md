@@ -1,9 +1,236 @@
-# CLAUDE.md — standing instructions for any model working in this repo
+# CLAUDE.md — standing instructions (one repo, two programmes)
+
+This repo hosts TWO programmes. PART I is the Surface Theorem closure
+(the paper track): ACTIVE and prioritized by owner instruction of
+2026-07-10 — read it first and work its task queue. PART II is the
+Yang–Mills Lean formalization programme: its rules remain binding for
+any work under YangMills/**, and it is precisely the “claimed bridge”
+that Part I’s Yang–Mills instruction says must be audited link-by-link
+(after the paper ships) before any importance transfers.
+
+Repository-wide audit, integration, guard, worktree, and evidence rules live
+in `docs/OPERATIONAL-GOVERNANCE-CHARTER.md`.  They bind both programmes and
+make no mathematical claims.
+
+## Owner rule: environments and operational instruments (2026-08-01)
+
+This active rule supersedes every older local-build token or default in this
+file.
+
+* **Colab Pro+ on Linux is the sanctioned compilation and reproduction
+  plane.**  Lean and Lake builds, oracles, `YangMillsCore`, numerical ovens,
+  campaigns, and all other sustained computation run there, regardless of
+  language or programme.  PART I/Surface being active and prioritized affects
+  scheduling priority within Colab capacity; it creates no environment
+  exception.
+* **Windows is the owner's desktop.**  It is limited to editing, git, hashes,
+  commits/push/PR, and scripts proved by reliable prior measurement to satisfy
+  all three local-light limits: at most 30 seconds wall time, exactly one
+  process with no worker pool, and at most 512 MiB peak RSS.  Without reliable
+  prior measurements for all three limits, a script is presumed heavy and
+  goes to Colab.  Rational certifiers are local only when they satisfy this
+  contract.
+* Running Lean, Lake, an oracle, a numerical oven, or any computation outside
+  that local-light contract on Windows is prohibited.  The only exception is
+  explicit owner authorization in the same assignment naming the command or
+  campaign.  An apparently idle Windows machine grants no permission.  The
+  spatial `symWeighted` judge, measured at 171 seconds, is not light; its
+  former Windows authorization is superseded and it goes to Colab.
+* The former local build token and any one-session-total rule are superseded.
+  Colab Pro+ permits multiple concurrent runtimes.  The operating limit is
+  compute units consumed per hour of connected runtime, not a presumed
+  one-session maximum.  Multiple threads may execute in parallel when the
+  budget permits, but each concrete runtime/session belongs to exactly one
+  thread and must never be shared between threads.
+* Prepare notebooks and commands while disconnected.  Opening a runtime merely
+  to prepare work, or leaving one connected without executing, is prohibited;
+  disconnect it when its execution unit finishes.  CPU/high-RAM is the default
+  runtime.  GPU requires an explicitly justified numerical campaign.  Each
+  thread records runtime opening and closing, runtime type, and connected
+  time.
+* If Colab rejects a runtime, record the literal message and distinguish a
+  concurrent-session limit from exhausted compute units before serializing.
+  Before authorizing more than two simultaneous sessions, inspect the visible
+  compute-unit consumption.  Serialize for budget, never for a fictitious
+  technical one-session restriction.  Terminal reproducibility means two
+  fresh, independent Colab clones at the same SHA with matching output hashes.
+  It does not require two operating systems, and Windows is not closure debt.
+* No decision to accept input, accept a mutation, increment an acceptance
+  counter, or emit `PASS` may depend on a Python `assert`.  `python -O`
+  removes assertions; two repository certifiers consequently emitted false
+  `PASS`.
+  Use explicit checks that raise an error or return non-zero in both normal
+  and `-O` modes.  Emit `PASS` only after every check and an explicit counter.
+  Run self-tests in normal and `-O` modes with real field mutations.  Internal
+  assertions are allowed only when certificate acceptance does not depend on
+  them.
+* A sentinel's existence never means success.  It must contain exactly one
+  line: the child's real decimal exit code, captured after termination.  Write
+  it atomically via a temporary file, close it, validate that it is non-empty
+  and parses as an integer, then rename it.  Its four states are absent,
+  empty/non-integer, non-zero integer, and zero integer.  Only a zero integer
+  plus separate log validation permits a candidate `PASS`.  Logs and
+  sentinels use semantic mode names such as `normal` and `optimized`, never
+  indistinguishable numeric suffixes.
+
+---
+
+# PART I — SURFACE THEOREM CLOSURE (paper track — ACTIVE, owner priority 2026-07-10)
+
+Hash rule: every relay/commit message carries its hash context on the
+first line. Read this file FIRST, then docs/SURFACE-CLOSURE-NOTES.md
+(the acta, v1–v48 — the single source of truth; when anything
+diverges, THE MOST RECENT HASH RULES).
+
+## What this is
+
+An audit-first mathematical research programme closing the SURFACE
+THEOREM: for all beta > 0, (i) F_B > 0 on (0, pi) [proved twice] and
+(ii) E' < 0 on (0, pi) [relay in progress]. The live manuscript is
+papers/surface-complete/surface_theorem_complete.tex (+pdf, always
+same commit). DO NOT SUBMIT while any [SLOT] lives.
+
+## REGIME (non-negotiable, before any work)
+
+1. TRICOTOMY everywhere: "exact" only with proof; "certified" only
+   with a committed interval-arithmetic transcript; "verified" for
+   numerics. No label upgrades without its witness.
+2. Every number travels with (convention, t, beta). Convention:
+   integrals over [-pi,pi]^2 unnormalized (conv:mass in the paper).
+3. JUDGES BEFORE PAGES: no intermediate target is used unless its
+   own pre-registration passed. Standing judges (notes v40–v48):
+   - EXTERIOR: beta·X -> T(c) = (1/2 - 1/(8c^2))/c on nine
+     pre-registered cells; R_1(c) must land in [residual, 3x] with
+     residuals 0.101–0.292; stress cell (2.9, 15) judged in two
+     pieces (saddle +0.023553; mirror -0.0707 vs derived M).
+   - PARTIAL: beta·X_1 -> 2T(c) (frozen-ratio, single measure K);
+     beta·X_2 -> -T(c) (ratio-variation, deficit-weighted).
+   - L CROSS-TABLE: finite-difference L's must match the series
+     table within +-25% cell by cell (v44).
+   - FACTORY tolerances: x2 first-order moments, x3 masses, x10
+     remainders (v37/v38 context).
+   - RECEPTION of THE page: five marks IN ORDER, stop at first
+     failure (v43).
+4. SPLIT ROLES, mandatory: one session FABRICATES, a DIFFERENT
+   session AUDITS against the judges before merging. Never both in
+   one session.  This role separation is not a one-session-total cap and does
+   not prohibit other thread-owned runtimes from executing concurrently when
+   the compute-unit budget permits.
+5. Measured failure = commit with diagnosis. Never delete. (See
+   derive_page_attempt1.py and notes v45–v46.)
+6. Constants: only DERIVED constants go to ink; benches calibrate
+   (ghost #23 rule).
+7. Long runs on the sanctioned Colab plane: absolute script paths (ghosts
+   #20/#21), frozen run clone, transcripts do not exist until committed,
+   iteration caps
+   (ghost #22), ball+boolean in every printed enclosure, provenance
+   header (script sha256, library versions, stage parameters).
+8. Symbolic tooling (class rule, protocol desk 2026-07-10): NO
+   sympy.series() in load-bearing symbolic work - it fabricates
+   spurious rational functions of the integration variables
+   (measured twice in the pass-2 session). Polynomial arithmetic
+   with explicit truncation and explicit geometric reciprocals.
+9. Git staging is EXPLICIT (class rule, same round): never
+   'git add -A' while concurrent sessions work the same clone -
+   it sweeps other desks' in-progress files into your commit.
+
+## WHERE EVERYTHING IS
+
+- Repo: github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME (branch main).
+- Acta: docs/SURFACE-CLOSURE-NOTES.md (v1–v48; ghosts #1–#25 with
+  mechanisms and the rules they bought).
+- Manuscript: papers/surface-complete/surface_theorem_complete.tex.
+  Slots remaining: [6,15] coverage row, analytic relay [15,inf),
+  sinc-cert, pi-window 4 constants, header theorem seal.
+- Scripts (scripts/): exp_integrator_arb.py (DEFINITIVE integrator,
+  sha256 834802f9... post ghost-#25; nesting assert; design table);
+  exp_integrator_arb_RUN_1d888e99.py (pinned bytes of the harvest
+  run); harvest_arb_transcript_1d888e99.txt (the certified local box
+  transcript: point/stability/3x3 box all True, 22,986,387 cells);
+  test_safe_sqrt.py (7 cases, arb-ball containment); margin_map_*
+  (design-only, labeled); derive_page_attempt1.py (failed pass 1,
+  archived); ERRATUM-display-supersets.md.
+- Execution plane: sustained numerical ovens and campaigns run in thread-owned
+  Colab Pro+ Linux runtimes under the concurrency and budget rule above.
+  Lluis's Windows box is the owner desktop under the rule at the top of this
+  file.  The former run clone
+  C:\Users\lluis\AppData\Local\Temp\eriksson-push, push clone
+  ...\eriksson-push2, C:\Python312\python.exe, and oven-output paths under
+  C:\Users\lluis\AppData\Local\Temp\ identify legacy local artifacts only;
+  they grant no permission to resume sustained local computation.
+- Governance frozen at commit f2ea0d0: coverage witness = exhaustive
+  Arb + independent sampled implementation audit (2%, seed =
+  SHA256(f2ea0d0-ASCII | box-id), box-id = exact rational coords;
+  ONE mismatch = full stop + autopsy).
+
+## TASK QUEUE (strict order)
+
+1. PASS 2 of THE PAGE (bilinear saddle extraction lemma): extract
+   X_1 (pure-K bilinear r(z_s)[<D><ND> - <N><D^2>], five v5-templated
+   moments) against judge 2T(c); then X_2 (deficit-weighted moments,
+   bilateral root floor) against -T(c); sum against the exterior
+   judge; Lagrange remainders citing the two-term companions (v40:
+   |eps_1| <= 0.6/z^2, |eps_0| <= 0.4/z^2, R_2 <= 2.12 u^4). The
+   X_2 = -X_1/2 shortcut is CANCELLED (asymptotic only, v48). On
+   pass: ink to manuscript + tooth restored SAME COMMIT.
+2. MECHANICAL CASCADE: minoration via mu_D = 2mu_1 - 4mu_P (exact,
+   v35 — mu_1's integrand is positive, nothing to subtract);
+   C-hat assembly against the 0.42 piece-A budget with the
+   eight-cell law as lock; Region II (= the layer lemma, spec v32);
+   splices; explicit beta_0 with the negotiation rule (analytic
+   margin >= 2x consumed, machine absorbs [15, beta_0]).
+3. OVEN: L matching (+-25% vs v44 table) -> pilot at dz ~ 0.25 with
+   dz(beta) scaling -> full [3,15] campaign under frozen governance,
+   executed in thread-owned Colab Pro+ Linux runtimes.  Parallelize beta ranges
+   across separate runtimes when the compute-unit budget permits; never share
+   one runtime between threads.  Concatenate transcripts with hashes.
+4. EDGES: sinc-cert on (0, t*(beta)] x [3, beta_0] (exact sinc
+   lemma is in the paper; minor criterion + tail m+n > pi/t +
+   uniform overlap pending); pi-window 4 constants (c_3 as a cheap
+   1D passenger in the harness).
+5. MANUSCRIPT: replace each [SLOT] the day its piece closes; relay
+   table without amber (thmB iv canonical + bulk iv resume from
+   beta = 5.7305 are pending second witnesses); PDF+tex same commit.
+6. SUBMISSION: arXiv math.CA (or JMAA direct), the complete paper,
+   ghost ledger included. NOTHING is called final with a live slot.
+
+## ON "ITERATE TO YANG–MILLS" (the honest instruction)
+
+There exists NO proved reduction from the Surface Theorem (or
+anything in these repos) to the Yang–Mills mass-gap problem. The
+instruction is NOT "iterate toward YM" — that order produces
+adjacent theorems with grandiose names, the exact trap this
+programme learned to avoid. The correct sequence:
+(a) finish and submit THIS paper;
+(b) survive the referee — the first real external calibration,
+    worth more than any plan;
+(c) if the repos contain a chain claiming to connect to YM, the
+    next work is auditing that chain LINK BY LINK under this same
+    regime, starting from the weakest link, presuming it dies there
+    (millennium programmes die at the bridge, not in the lemmas);
+(d) only if a bridge link survives adversarial audit, build the
+    next theorem THAT LINK demands — never the one ambition
+    suggests.
+Permanent honesty criterion: importance is not inherited by
+thematic proximity; only a proved reduction transfers it. An agent
+that respects (a)–(d) will advance whatever is mathematically
+advanceable; one that jumps to (d) without (c) will manufacture
+seventy more papers of fog.
+
+## THE OWNER
+
+Lluis decides what is submitted and when. That role is not
+delegable. Bring him the complete manuscript when it exists.
+
+---
+
+# PART II — YANG–MILLS LEAN PROGRAMME (standing rules; owner rule above governs execution)
 
 This file is read automatically by Claude-family agents. It replaces the
-old `.claude/agents/` directory (deleted 2026-06-12: it described an
-OpenRouter/Colab workflow and a vacuous-target strategy that no longer
-exist). The complete operational brief is `README-FOR-NEXT-MODEL.md`;
+old `.claude/agents/` directory (deleted 2026-06-12: it described an obsolete
+OpenRouter-mediated Colab workflow and a vacuous-target strategy that no
+longer exist).  The owner rule above defines the current Colab plane.  The
+complete operational brief is `README-FOR-NEXT-MODEL.md`;
 read it before editing anything. This file is the non-negotiable core.
 
 ## The defining principle
@@ -21,16 +248,20 @@ never repeat that.
 3. **No vacuous weakening.** Never restate a target so that it becomes
    trivially true. Adversarially audit your own statements for
    vacuity (non-emptiness witnesses, non-trivial instantiations).
-4. **Oracle every headline.** `lake build YangMillsCore` must be green
-   and `#print axioms` on every headline result must print exactly
+4. **Oracle every headline on the sanctioned Colab Linux plane.**
+   `lake build YangMillsCore` must be green and `#print axioms` on every
+   headline result must print exactly
    `[propext, Classical.choice, Quot.sound]`.
 5. **Never push broken code.** Commit only from a green checkpoint.
 6. **Keep the Clay distance honest.** Every status document states
    ~0% (<0.1%) distance to the Clay problem until the continuum
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
-7. **After adding a module to the core, confirm the build job count
-   incremented** (latest recorded checkpoint: 8340).
+7. **After adding a module to the core, confirm the expected build-job-count
+   change against the latest measured baseline in
+   `docs/VERIFICATION-LEDGER.md` that applies to the exact SHA/base being
+   audited.**  Never use a job count copied into `CLAUDE.md` as the current
+   baseline.
 
 ## The autonomous loop
 
@@ -40,20 +271,24 @@ oracle checks). After each green checkpoint: update
 `HYPOTHESIS_FRONTIER.md` if touched), commit, push, pick the next
 highest-leverage target, continue. Do not wait for confirmation.
 
-## Build & verification mechanics (Windows host)
+## Build & verification mechanics (sanctioned Colab Linux plane)
 
 * Toolchain: `leanprover/lean4:v4.29.0-rc6`, Mathlib pinned to
   `07642720480157414db592fa85b626dafb71355b` (`lakefile.lean` +
   `lake-manifest.json`). Build: `lake build YangMillsCore` (~minutes
-  when cached). Oracle: `lake env lean oracle_check.lean`.
-* Long builds: detached
-  `Start-Process powershell … | Out-File log + sentinel-file` pattern,
-  poll in ≤45 s slices. `$` gets stripped by some shells — put
-  PowerShell in `.ps1` files and run with `-File`.
-* **Never edit repo files through the Linux mount for large
-  rewrites** — the mount desyncs and truncates files. Do file surgery
-  Windows-side (python script files, `git checkout --` to recover).
-  Never run git from the mount.
+  when cached). Oracle: `lake env lean oracle_check.lean`.  These commands run
+  in a fresh Colab clone, never on Windows absent the owner's explicit local
+  authorization in the same assignment naming the command or campaign.
+* The former detached Windows `Start-Process powershell … | Out-File log +
+  sentinel-file` recommendation is superseded and grants no permission to run
+  locally.  If the owner expressly authorizes a named command or campaign for
+  local execution in the same assignment, a detached wrapper is only an
+  instrument and must obey the sentinel protocol above; it is never the
+  default route.
+* On Windows, **never edit repo files through a Linux mount for large
+  rewrites** — the mount desyncs and truncates files.  Do file surgery
+  Windows-side (python script files, `git checkout --` to recover), and never
+  run git from the mount.  This editing rule does not authorize builds there.
 * Scratch debugging files (`_*.lean`, `_*.ps1`, `_*.py`) are
   fine *uncommitted*; delete before committing. `sorry` is allowed in
   scratch files only.
@@ -68,10 +303,19 @@ are recorded **in the campaign plans** — primarily
 `README-FOR-NEXT-MODEL.md`. Read them before writing analysis-flavoured
 Lean; they save hours.
 
-## Current state (updated 2026-06-23; verified checkpoint 2026-06-22)
+## Current state (programme snapshot 2026-07-04; job-count snapshot updated 2026-08-01)
 
-* Latest recorded core checkpoint: **8340 jobs**, zero sorry, zero axioms.
-  Mathlib **pinned** to an exact commit (lakefile + manifest agree); see
+* Historical merged-core snapshot measured 2026-08-01, not a live baseline:
+  **8465 jobs** at `3421aa1f`.  The earlier 2026-07-04 snapshot was **8463
+  jobs** at `7460e035`, zero sorry, zero nonstandard axioms.  The
+  thermodynamic-limit branch itself was measured at 8460 jobs at `0be45284`.
+  Current job-count comparisons must use the latest applicable measured
+  baseline in `docs/VERIFICATION-LEDGER.md` for the exact SHA/base audited.
+  Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
+  ledger includes the earlier Addendum 444/date-stamped checkpoint material
+  plus the 2026-07-03 Catalan/Schur series through Addendum 465 and the
+  2026-07-04 diamagnetic unitary bridge Addendum 466; the latest measured
+  source checkpoint is `a17d7816` (on `main`).  See
   `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.
@@ -79,18 +323,61 @@ Lean; they save hours.
   remaining analytic input of the §6.3 UV conditional.  The theorem-fed
   substrate now includes animal counting, cube summability, marginal-coupling
   summability, exponential-decay kernel calculus, Schur bounds, PSD kernels,
-  Gaussian MGF bounds, finite-dimensional Gaussian construction, and explicit
-  shell-growth summability.  The open work is the concrete YM
+  Gaussian MGF bounds, finite-dimensional Gaussian construction, explicit
+  shell-growth summability, source-only UV routes, YM activity error-budget
+  records, finite-carrier/profile wrappers, animal-summability bridges,
+  Appendix-F certified-tail/source-fed residual routes, Wilson-Hessian/Green
+  source dictionaries, CMP119/CMP122 E/R/B decomposition interfaces, CMP119
+  B/local source-bound and weight-transport dictionaries, B/local
+  metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31) `gapCubes`
+  candidate definitions, source-db proof-obligation cards and
+  hypothesis-removal queues, canonical-root K# and residual H# adapters, the
+  flow-diamagnetic UV branch's marginal-coupling, killed-walk,
+  block-transport, factorial-kernel substrate, finite unitary-to-isometry
+  bridge, the Catalan majorant / Schur-budget / physical-precision covariance
+  lane, and the KP activity-domain zero-free polydisc.
+  The open work is the concrete YM
   cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
   operator (`hRpoly`): gauge-covariant operator, background-field minimizer,
   propagator decay, localization, and raw activity bound.
 * **Gauge-RG continuum-facing track (`YangMills/RG/**`, ledger Addenda
-  23–263):** local averaging/Gaussian/kernel/combinatorial substrate,
+  23–444):** local averaging/Gaussian/kernel/combinatorial substrate,
   marginal-coupling summability, Appendix-F/H# consumers, integrated
   second-gas adapters, coercivity-budget bricks, gauge-fixed precision
   and covariance composition, physical gauge cochains, flat Hodge/block
-  Poincare bridges, and the finite-torus curl/divergence classification are
-  oracle-clean.  The branch remains lattice/M3-side and conditional on
+  Poincare bridges, the finite-torus curl/divergence classification,
+  source-facing covariance/root localization APIs, a local
+  fluctuation-activity certificate, generic/CMP116 `K#`/`H#` and second-gas
+  dependency wrappers, cluster-union containment facts, exact CMP116
+  local-operator support algebra, physical/CMP116 coordinate dictionaries,
+  localized-root transport, dictionary-backed Gaussian/activity construction,
+  canonical Gaussian integral consumers, raw-source transport into CMP116
+  `hraw`, scale-indexed raw-source H# consumers, raw-source M3 frontier
+  bundles, an executable M3 frontier dependency graph, source-assumption
+  packaging into that frontier, the source-facing Balaban CMP116 theorem
+  target, CMP116 Lemma 3 activity-only estimates, Eq. (2.29) consumers,
+  Eq. (2.31) weighted `P`-stage and post-`P` raw-source M3 routes,
+  residual-stage bridges, P-stage and `Z0` source-budget adapters, Eq. (2.31)
+  source-membership/projected-carrier/positive-tail/interior-boundary routes,
+  Gaussian source-record package constructors, combined post-`P` source
+  packages, visual Eq. (2.37)/C3 citation extraction, the public `source-db`
+  frontier/artifact lookup layer, the resolvent-first local SPD precision
+  substrate, local-SPD root frontier packaging, dictionary root-map norm
+  budgets, finite-piece root sums, finite-family physical activity consumers,
+  source-only UV decay endpoints, finite-carrier/profile wrappers, hRpoly
+  animal-summability bridges, Appendix-F certified-tail profiles, source-rate
+  weighted-tree extraction, source-fed residual estimates, Wilson-Hessian/Green
+  source dictionary packaging, CMP119/CMP122 E/R/B source-decomposition
+  interfaces, CMP119 B/local source-bound and weight-transport dictionaries,
+  B/local metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31)
+  `gapCubes` candidate definitions, source-db proof-obligation cards and
+  hypothesis-removal queues, canonical-root K# summability/smallness discharge,
+  the source-facing canonical-root residual H# route, the flow-diamagnetic
+  UV branch's marginal-coupling, killed-walk, block-transport,
+  factorial-kernel substrate, finite unitary-to-isometry bridge, the Catalan
+  majorant / Schur-budget / physical-precision covariance lane, and the KP
+  activity-domain zero-free polydisc are oracle-clean.
+  The branch remains lattice/M3-side and conditional on
   `hRpoly`; M4/M5/Clay are untouched.
 * Done: sharp KP, Mayer–Ursell `Ξ = exp(clusterSum)`, `Z = Ξ`, the IR
   clustering bound (B4), the two-plaquette correlator decay (T4), the

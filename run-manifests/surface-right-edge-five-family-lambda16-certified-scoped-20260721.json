@@ -1,0 +1,51 @@
+{
+  "artifact": "G5 finite five-family lambda extension",
+  "status": "AUDITED_SCOPED_CANDIDATE",
+  "scope": {
+    "beta": "30 <= beta <= 125",
+    "lambda": "[3/2, 8/5]",
+    "delta_bands": 5,
+    "cells": 25
+  },
+  "git_head": "8b4a17c0681601d0d433ed769d23ce8daa8269a9",
+  "preregistration": {
+    "path": "docs/incidents/INC-G5-LAMBDA-16-EXTENSION-DESIGN-20260720.md",
+    "sha256": "027DB6FC9159B543C7B261453D6E6665EB51EAFFC63C65D73E8525A5FBDCFB51"
+  },
+  "primary": [
+    {
+      "path": "scripts/certify_surface_right_edge_five_family_finite_lambda16_lambda_75_77_design_transcript.txt",
+      "sha256": "710F9782CB30C846F780E46EDDCA449E43E5B19F001338012070F60424EBEAC5",
+      "rows": 10
+    },
+    {
+      "path": "scripts/certify_surface_right_edge_five_family_finite_lambda16_lambda_77_80_design_transcript.txt",
+      "sha256": "51846BF6E3C0C864F40C033CF3B4C31D38621F63F69CFB8CCBFAE6443E824454",
+      "rows": 15
+    }
+  ],
+  "replay": [
+    {
+      "path": "scripts/certify_surface_right_edge_five_family_finite_lambda16_lambda_75_77_rerun.txt.txt",
+      "sha256": "6EADDE8B5EE52B6AEA9A1740158A6C74B8F07E7C0B7F01A3D3C42F166695AA8F",
+      "rows": 10
+    },
+    {
+      "path": "scripts/certify_surface_right_edge_five_family_finite_lambda16_lambda_77_80_rerun.txt.txt",
+      "sha256": "9A329D442D79D8F6039C87A0607D17D569240BA7B3F8DCB537090B6186A4E9BB",
+      "rows": 15
+    }
+  ],
+  "validation": [
+    "scripts/validate_surface_right_edge_five_family_finite_lambda16_production_style.py",
+    "scripts/validate_surface_right_edge_five_family_finite_lambda16_replay.py",
+    "scripts/validate_surface_right_edge_five_family_finite_lambda16_manifest.py"
+  ],
+  "result": {
+    "rows": 25,
+    "worst_delta_index": 3,
+    "worst_lambda_index": 79,
+    "worst_H_lower": "0.0150939547456800937652587890625"
+  },
+  "promotion": "NONE; design contract remains non-terminal"
+}

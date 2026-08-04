@@ -5,16 +5,29 @@ single file is self-contained: it gives you the project's purpose, the build/ver
 the iron rules, the complete map of what is proved, and the exact open targets. Read it once,
 top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 `FOUNDATIONS.md`, `HORIZON.md`, `ROADMAP.md`, `docs/HANDOFF-KP.md`,
-`docs/SOURCE-CLAIM-AUDIT.md`.)
+`docs/SOURCE-CLAIM-AUDIT.md`, and the canonical machine-readable
+[`project-state.json`](project-state.json).)
 
 ---
 
-## Live snapshot (updated 2026-06-23; verified checkpoint 2026-06-22)
+## Live snapshot (updated 2026-07-04; source checkpoint 2026-07-04)
 
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
 handoff below.  The latest verification-ledger checkpoint records the verified
-core green at **8340 jobs**, with Mathlib pinned and every headline oracle-clean at
-`[propext, Classical.choice, Quot.sound]`.
+merged core green at **8463 jobs**, with Mathlib pinned and every headline oracle-clean
+at `[propext, Classical.choice, Quot.sound]`.  The ledger includes the earlier
+Addendum 444/date-stamped checkpoint material plus the 2026-07-03
+Catalan/Schur series through Addendum 465 and the 2026-07-04 diamagnetic
+unitary bridge Addendum 466, while the latest measured source checkpoint is
+`a17d7816` (on `main`).
+
+Publication-only update (2026-08-03): the 20-page Dobrushin matrix manuscript
+v5.5 was submitted to viXra as its v2 replacement.  The exact paper commit,
+PDF hash, fresh-clone 8,475-job/2,980-report evidence, and the fact that this
+lane remains outside `main` are recorded in
+[`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).
+Do not substitute the older 11-page `dobrushin_matrix3.pdf` at `c3d8e32d`.
+This publication notice does not change the live `hRpoly` frontier below.
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
@@ -24,13 +37,72 @@ marginal-coupling summability, animal counting, cube summability,
 shell-growth summability, Appendix-F/H# consumer adapters, integrated
 second-gas KP routes, P4 coercivity-budget algebra, gauge-fixed precision
 and covariance composition, physical gauge cochains, a fixed-volume flat
-Hodge/block Poincare bridge, and the finite-torus curl/divergence
-classification.  Do not replace
+Hodge/block Poincare bridge, finite-torus curl/divergence classification,
+source-facing covariance/root localization APIs, a local fluctuation-activity
+certificate, generic/CMP116 `K#`/`H#` and second-gas dependency wrappers,
+cluster-union containment facts, exact CMP116 local-operator support algebra,
+physical/CMP116 coordinate dictionaries, localized-root transport,
+dictionary-backed Gaussian/activity construction, canonical Gaussian integral
+consumers, raw-source transport into CMP116 `hraw`, scale-indexed raw-source
+H# consumers, raw-source M3 frontier bundles, an executable M3 frontier
+dependency graph, source-assumption packaging into that frontier, the
+source-facing Balaban CMP116 theorem target, the resolvent-first local SPD
+precision substrate, CMP116 Lemma 3 activity-only estimates, Eq. (2.29)
+consumers, Eq. (2.31) weighted `P`-stage and post-`P` raw-source M3 routes,
+residual-stage bridges, P-stage and `Z0` source-budget adapters, combined
+post-`P` source packages, visual Eq. (2.37)/C3 citation extraction,
+Eq. (2.31) source-membership/projected-carrier/positive-tail/interior-boundary
+routes, Gaussian source-record package constructors, local-SPD root frontier
+packaging, dictionary root-map norm budgets, finite-piece root sums,
+finite-family physical activity consumers, the structured source-citation
+CLI, the broader `source-db` coverage/artifact/frontier lookup layer,
+source-only UV decay endpoints, YM activity error-budget records,
+finite-carrier/profile wrappers, `hRpoly` animal-summability bridges,
+Appendix-F certified-tail profiles, source-rate weighted-tree extraction,
+source-fed residual estimates, Wilson-Hessian/Green source dictionary
+packaging, CMP119/CMP122 E/R/B source-decomposition interfaces, CMP119 B/local
+source-bound and weight-transport dictionaries, B/local
+metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31) `gapCubes`
+candidate definitions, source-db proof-obligation cards and hypothesis-removal
+queues, canonical-root K# summability/smallness discharge, the
+source-facing canonical-root residual H# route, the flow-diamagnetic
+UV branch's marginal-coupling, killed-walk, block-transport, and
+factorial-kernel substrate, the finite unitary-to-isometry bridge, the Catalan
+majorant / Schur-budget / physical-precision covariance lane, and the KP
+activity-domain zero-free polydisc.  Do not replace
 `hRpoly` by an axiom or a hollow interface; build it from source-grounded
 constructive-QFT bricks or leave it as an explicit theorem hypothesis.
 
+The independent campaign in
+[`docs/THERMODYNAMIC-LIMIT-KP-PLAN.md`](docs/THERMODYNAMIC-LIMIT-KP-PLAN.md)
+has now constructed the complete-sequence thermodynamic limit of genuine
+local Gibbs expectations in the uniform KP regime.  Exact far-gas
+cancellation, common-window transport, and the literal consumer of
+`connectedLattice_pinned_tail_volumeUniform` give a quantitative Cauchy
+modulus; completeness then yields a positive normalized real local state,
+carrying a genuine `ℤ^d` action and invariant under every integer translation,
+including inverses.  A concrete
+`d=2`, `SU(2)` physical Wilson instance is proved for
+`0 < |β| ≤ 10^-5`, and a separate physical lattice-dimension `d=4` instance
+is proved for `0 < |β| ≤ 10^-6`.  These radii are explicitly conservative
+and unoptimized.  An explicit cofinal sequence of genuine centered free
+boxes converges to the same value as periodic boundary conditions, and the
+normalized finite two-plaquette truncated-correlation bound passes to the
+state under its explicit eventual realization/separation hypotheses.  This
+does not claim arbitrary boundary conditions, a `C*`-state, a continuum
+limit, or OS reconstruction.  The focal modules, twenty headline oracles,
+and a direct root elaboration are green.  The branch's canonical
+Lake root build also terminated literally with
+`Build completed successfully (8460 jobs).` at source checkpoint `0be45284`;
+the final merged checkpoint `7460e035` completed successfully at **8463 jobs**,
+with empty stderr after supplying
+a process-local `safe.directory` setting for the ownership-mismatched
+checkout.  All nine dependency HEADs matched the manifest; no dependency was
+deleted or updated and no global Git configuration was changed.
+
 For a fast human-readable progress scan, read the progress dashboard near the
-top of [`README.md`](README.md#progress-dashboard).
+top of [`README.md`](README.md#progress-dashboard) and the static dashboard in
+[`docs/dashboard/`](docs/dashboard/).
 
 Clay distance remains **~0% (<0.1%)**: no continuum limit, no OS/Wightman
 reconstruction, no continuum mass gap.
@@ -75,7 +147,7 @@ git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6
 lake exe cache get          # fetch prebuilt Mathlib oleans — do NOT build Mathlib from source
-lake build YangMillsCore    # ~8200 jobs; fast with warm cache
+lake build YangMillsCore    # 8463 jobs at the latest merged checkpoint; fast with warm cache
 ```
 
 ---

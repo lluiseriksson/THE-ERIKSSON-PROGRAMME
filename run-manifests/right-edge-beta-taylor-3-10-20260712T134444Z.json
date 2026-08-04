@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "run_id": "right-edge-beta-taylor-3-10-20260712T134444Z",
+  "claim_scope": "Certified compact moving-right-edge inequality W(t,beta)<0 for 3<=beta<=10 and pi-1.5/beta<=t<pi. The exhaustive Arb transcript contains 70 contiguous beta boxes, 70 normalized endpoint boxes, and 1836 regular boxes. This is compact evidence only and does not close the beta>20 analytic tail.",
+  "status": "current",
+  "started_utc": "2026-07-12T13:44:44.7036598Z",
+  "finished_utc": "2026-07-12T14:04:29.1051384Z",
+  "command": ["python", "scripts/certify_right_edge_beta_taylor_arb.py", "3", "10", "0.1"],
+  "working_directory": ".",
+  "script": {"path": "scripts/certify_right_edge_beta_taylor_arb.py", "sha256": "d614f97a120b13b8cb02b00f6906fd76780c6c329062cdc71fec499083137cdc", "sha256_lf": "d614f97a120b13b8cb02b00f6906fd76780c6c329062cdc71fec499083137cdc"},
+  "environment": {"python": "3.12.6", "libraries": {"python-flint": "0.9.0"}},
+  "inputs": [{"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa", "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"}],
+  "outputs": [{"path": "scripts/certify_right_edge_beta_taylor_3_10_transcript.txt", "sha256": "8421f27bbf6d67c71bb1dbfabb334a0c90e349be9e59b94d1595cadeb7108d49", "sha256_lf": "f476f994dc62c520fcec4b7d5e47616ac608811ba53150e751b645993fb666f3"}],
+  "supersedes": [], "superseded_by": null, "quarantine_reason": null
+}

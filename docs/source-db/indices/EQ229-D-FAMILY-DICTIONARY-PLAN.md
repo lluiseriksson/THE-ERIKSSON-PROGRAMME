@@ -2,6 +2,14 @@
 
 The Eq. (2.29) source route must prove more than a scalar inequality.
 
+## Routing invariant
+
+Keep `crosswalk.eq229.cammarota-dstage-route` attached as the repository
+operational route key, but treat it as metadata, not a primary source. The
+D-family dictionary remains open until the primary Cammarota theorem extraction
+and CMP116 D-family predicate identify how Balaban `D` maps to `DIndex` and
+`DParts`; the existing Eq. (1.4) premise field is not enough.
+
 ## Source objects to identify
 
 ```text
@@ -22,6 +30,11 @@ cmp116Eq229Product
 CMP116Eq229Summability
 CMP116Lemma3Eq229ScaleBoundary
 ```
+
+`DIndex` and `DParts` are Lean argument/field surfaces in the Eq229 summability
+route.  They are not standalone source-extracted declarations, and the
+dictionary remains open until the source predicate for Balaban D-families,
+admissibility/overlap convention, and metric convention are extracted.
 
 ## Dictionary theorem shape
 

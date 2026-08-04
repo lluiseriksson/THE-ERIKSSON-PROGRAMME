@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.L0_Lattice.FiniteLatticeGeometryInstance
 import YangMills.RG.AveragingAdjoint
+import YangMills.RG.CoerciveCovariance
 import YangMills.RG.GaugeFixedPrecision
 
 /-!
@@ -459,6 +460,343 @@ theorem physicalPrecision_eq_flat_sub_defect
         - physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a := by
   ext x
   simp [physicalPrecisionDefect]
+
+/-- An operator-norm small-background bound feeds the quadratic-form defect
+hypothesis used by the Catalan coercivity consumers once the same scalar budget
+is compared to the KP finite Catalan majorant.  This is only an algebraic
+bridge; the source theorem producing `SmallBackgroundPerturbation` and the
+scalar comparison remain explicit inputs. -/
+theorem physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon δ : ℝ} (N : ℕ) {a : ℝ}
+    (hpert :
+      SmallBackgroundPerturbation
+        flatSlice physicalPrecision blockConstraintCLM a δ)
+    (hδ :
+      δ ≤ YangMills.KP.catalanMajorantPartial M epsilon N) :
+    ∀ x : E,
+      inner ℝ x
+          (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+        YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2 := by
+  intro x
+  exact
+    inner_apply_le_of_opNorm_le
+      (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a)
+      (hpert.trans hδ) x
+
+/-- Coercivity of a supplied physical precision from a single Catalan-controlled
+physical precision defect.  The theorem instantiates the finite
+block-Poincare/Catalan consumer with the concrete algebraic defect
+`physicalPrecisionDefect`; the source estimate that this defect obeys the
+Catalan partial bound remains the explicit hypothesis `hdefect`. -/
+theorem isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon : ℝ} (N : ℕ) {a CP : ℝ}
+    (ha : 0 ≤ a)
+    (hCP : 0 < CP)
+    (hflat_nonneg :
+      ∀ x : E, 0 ≤ inner ℝ x (flatSlice x))
+    (hPoincare :
+      ∀ x : E,
+        ‖x‖ ^ 2 ≤
+          CP * (inner ℝ x (flatSlice x) + ‖blockConstraintCLM x‖ ^ 2))
+    (hM : 0 < M)
+    (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1)
+    (hdefect :
+      ∀ x : E,
+        inner ℝ x
+            (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+          YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2) :
+    IsCoerciveCLM physicalPrecision
+      (min 1 a / CP - schurCatalanBudget M epsilon) := by
+  have hcoercive :
+      IsCoerciveCLM
+        (gaugeFixedBasePrecisionCLM flatSlice blockConstraintCLM a -
+          ∑ i ∈ (Finset.univ : Finset Unit),
+            (fun _ : Unit =>
+              physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a) i)
+        (min 1 a / CP -
+          ∑ i ∈ (Finset.univ : Finset Unit),
+            (fun _ : Unit => schurCatalanBudget M epsilon) i) := by
+    refine
+      isCoerciveCLM_sub_finset_of_catalanMajorantPartial_blockPoincare
+        flatSlice blockConstraintCLM
+        (fun _ : Unit =>
+          physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a)
+        (fun _ : Unit => M)
+        (fun _ : Unit => epsilon)
+        (fun _ : Unit => N)
+        Finset.univ ha hCP hflat_nonneg hPoincare ?_ ?_ ?_ ?_
+    · intro i hi
+      exact hM
+    · intro i hi
+      exact hepsilon
+    · intro i hi
+      exact hsmall
+    · intro i hi x
+      exact hdefect x
+  rw [physicalPrecision_eq_flat_sub_defect flatSlice physicalPrecision blockConstraintCLM a]
+  simpa using hcoercive
+
+/-- Strict pointwise positivity of a supplied physical precision from a single
+Catalan-controlled physical precision defect and a positive residual
+block-Poincare budget. -/
+theorem inner_physicalPrecision_pos_of_catalanMajorantPartial_defect
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon : ℝ} (N : ℕ) {a CP : ℝ}
+    (ha : 0 ≤ a)
+    (hCP : 0 < CP)
+    (hflat_nonneg :
+      ∀ x : E, 0 ≤ inner ℝ x (flatSlice x))
+    (hPoincare :
+      ∀ x : E,
+        ‖x‖ ^ 2 ≤
+          CP * (inner ℝ x (flatSlice x) + ‖blockConstraintCLM x‖ ^ 2))
+    (hM : 0 < M)
+    (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1)
+    (hdefect :
+      ∀ x : E,
+        inner ℝ x
+            (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+          YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2)
+    (hbudget : schurCatalanBudget M epsilon < min 1 a / CP) :
+    ∀ x : E, x ≠ 0 → 0 < inner ℝ x (physicalPrecision x) := by
+  have hpos :
+      ∀ x : E, x ≠ 0 →
+        0 <
+          inner ℝ x
+            ((gaugeFixedBasePrecisionCLM flatSlice blockConstraintCLM a -
+              ∑ i ∈ (Finset.univ : Finset Unit),
+                (fun _ : Unit =>
+                  physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a) i) x) := by
+    refine
+      inner_sub_finset_pos_of_catalanMajorantPartial_blockPoincare
+        flatSlice blockConstraintCLM
+        (fun _ : Unit =>
+          physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a)
+        (fun _ : Unit => M)
+        (fun _ : Unit => epsilon)
+        (fun _ : Unit => N)
+        Finset.univ ha hCP hflat_nonneg hPoincare ?_ ?_ ?_ ?_ ?_
+    · intro i hi
+      exact hM
+    · intro i hi
+      exact hepsilon
+    · intro i hi
+      exact hsmall
+    · intro i hi x
+      exact hdefect x
+    · simpa using hbudget
+  intro x hx
+  rw [physicalPrecision_eq_flat_sub_defect flatSlice physicalPrecision blockConstraintCLM a]
+  simpa using hpos x hx
+
+/-- The residual coercivity constant for the physical precision shell whose
+single algebraic defect is controlled by a Catalan partial majorant. -/
+noncomputable def physicalPrecisionCatalanDefectCoercivityConstant
+    (M epsilon a CP : ℝ) : ℝ :=
+  min 1 a / CP - schurCatalanBudget M epsilon
+
+theorem physicalPrecisionCatalanDefectCoercivityConstant_pos
+    {M epsilon a CP : ℝ}
+    (hbudget : schurCatalanBudget M epsilon < min 1 a / CP) :
+    0 < physicalPrecisionCatalanDefectCoercivityConstant M epsilon a CP := by
+  dsimp [physicalPrecisionCatalanDefectCoercivityConstant]
+  exact sub_pos.mpr hbudget
+
+/-- The exact finite-dimensional covariance associated with a supplied
+physical precision whose singleton algebraic defect is Catalan-controlled.
+
+This is an inverse-covariance construction from the deterministic coercivity
+bridge only.  The Catalan defect estimate remains the explicit hypothesis
+`hdefect`; no Wilson Hessian or Appendix-F source identification is claimed. -/
+noncomputable def covarianceOfPhysicalPrecisionCatalanDefect
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon : ℝ} (N : ℕ) {a CP : ℝ}
+    (ha : 0 ≤ a)
+    (hCP : 0 < CP)
+    (hflat_nonneg :
+      ∀ x : E, 0 ≤ inner ℝ x (flatSlice x))
+    (hPoincare :
+      ∀ x : E,
+        ‖x‖ ^ 2 ≤
+          CP * (inner ℝ x (flatSlice x) + ‖blockConstraintCLM x‖ ^ 2))
+    (hM : 0 < M)
+    (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1)
+    (hdefect :
+      ∀ x : E,
+        inner ℝ x
+            (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+          YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2)
+    (hbudget : schurCatalanBudget M epsilon < min 1 a / CP)
+    [FiniteDimensional ℝ E] :
+    E →L[ℝ] E :=
+  covarianceOfIsCoerciveCLM
+    physicalPrecision
+    (physicalPrecisionCatalanDefectCoercivityConstant_pos hbudget)
+    (isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
+      flatSlice physicalPrecision blockConstraintCLM N ha hCP hflat_nonneg
+      hPoincare hM hepsilon hsmall hdefect)
+
+/-- Left-inverse identity for the covariance of the Catalan-controlled physical
+precision shell. -/
+theorem covarianceOfPhysicalPrecisionCatalanDefect_comp_precision
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon : ℝ} (N : ℕ) {a CP : ℝ}
+    (ha : 0 ≤ a)
+    (hCP : 0 < CP)
+    (hflat_nonneg :
+      ∀ x : E, 0 ≤ inner ℝ x (flatSlice x))
+    (hPoincare :
+      ∀ x : E,
+        ‖x‖ ^ 2 ≤
+          CP * (inner ℝ x (flatSlice x) + ‖blockConstraintCLM x‖ ^ 2))
+    (hM : 0 < M)
+    (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1)
+    (hdefect :
+      ∀ x : E,
+        inner ℝ x
+            (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+          YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2)
+    (hbudget : schurCatalanBudget M epsilon < min 1 a / CP)
+    [FiniteDimensional ℝ E] :
+    (covarianceOfPhysicalPrecisionCatalanDefect
+        flatSlice physicalPrecision blockConstraintCLM N ha hCP hflat_nonneg
+        hPoincare hM hepsilon hsmall hdefect hbudget).comp
+      physicalPrecision =
+        ContinuousLinearMap.id ℝ E := by
+  dsimp [covarianceOfPhysicalPrecisionCatalanDefect]
+  exact
+    covarianceOfIsCoerciveCLM_comp_precision
+      physicalPrecision
+      (physicalPrecisionCatalanDefectCoercivityConstant_pos hbudget)
+      (isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
+        flatSlice physicalPrecision blockConstraintCLM N ha hCP hflat_nonneg
+        hPoincare hM hepsilon hsmall hdefect)
+
+/-- Right-inverse identity for the covariance of the Catalan-controlled
+physical precision shell. -/
+theorem precision_comp_covarianceOfPhysicalPrecisionCatalanDefect
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon : ℝ} (N : ℕ) {a CP : ℝ}
+    (ha : 0 ≤ a)
+    (hCP : 0 < CP)
+    (hflat_nonneg :
+      ∀ x : E, 0 ≤ inner ℝ x (flatSlice x))
+    (hPoincare :
+      ∀ x : E,
+        ‖x‖ ^ 2 ≤
+          CP * (inner ℝ x (flatSlice x) + ‖blockConstraintCLM x‖ ^ 2))
+    (hM : 0 < M)
+    (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1)
+    (hdefect :
+      ∀ x : E,
+        inner ℝ x
+            (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+          YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2)
+    (hbudget : schurCatalanBudget M epsilon < min 1 a / CP)
+    [FiniteDimensional ℝ E] :
+    physicalPrecision.comp
+      (covarianceOfPhysicalPrecisionCatalanDefect
+        flatSlice physicalPrecision blockConstraintCLM N ha hCP hflat_nonneg
+        hPoincare hM hepsilon hsmall hdefect hbudget) =
+        ContinuousLinearMap.id ℝ E := by
+  dsimp [covarianceOfPhysicalPrecisionCatalanDefect]
+  exact
+    precision_comp_covarianceOfIsCoerciveCLM
+      physicalPrecision
+      (physicalPrecisionCatalanDefectCoercivityConstant_pos hbudget)
+      (isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
+        flatSlice physicalPrecision blockConstraintCLM N ha hCP hflat_nonneg
+        hPoincare hM hepsilon hsmall hdefect)
+
+/-- Operator-norm bound for the covariance of the Catalan-controlled physical
+precision shell. -/
+theorem norm_covarianceOfPhysicalPrecisionCatalanDefect_le
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon : ℝ} (N : ℕ) {a CP : ℝ}
+    (ha : 0 ≤ a)
+    (hCP : 0 < CP)
+    (hflat_nonneg :
+      ∀ x : E, 0 ≤ inner ℝ x (flatSlice x))
+    (hPoincare :
+      ∀ x : E,
+        ‖x‖ ^ 2 ≤
+          CP * (inner ℝ x (flatSlice x) + ‖blockConstraintCLM x‖ ^ 2))
+    (hM : 0 < M)
+    (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1)
+    (hdefect :
+      ∀ x : E,
+        inner ℝ x
+            (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+          YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2)
+    (hbudget : schurCatalanBudget M epsilon < min 1 a / CP)
+    [FiniteDimensional ℝ E] :
+    ‖covarianceOfPhysicalPrecisionCatalanDefect
+        flatSlice physicalPrecision blockConstraintCLM N ha hCP hflat_nonneg
+        hPoincare hM hepsilon hsmall hdefect hbudget‖ ≤
+      (physicalPrecisionCatalanDefectCoercivityConstant M epsilon a CP)⁻¹ := by
+  dsimp [covarianceOfPhysicalPrecisionCatalanDefect]
+  exact
+    norm_covarianceOfIsCoerciveCLM_le
+      physicalPrecision
+      (physicalPrecisionCatalanDefectCoercivityConstant_pos hbudget)
+      (isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
+        flatSlice physicalPrecision blockConstraintCLM N ha hCP hflat_nonneg
+        hPoincare hM hepsilon hsmall hdefect)
+
+/-- Positive-semidefinite covariance quadratic form for the
+Catalan-controlled physical precision shell. -/
+theorem covarianceOfPhysicalPrecisionCatalanDefect_psd
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon : ℝ} (N : ℕ) {a CP : ℝ}
+    (ha : 0 ≤ a)
+    (hCP : 0 < CP)
+    (hflat_nonneg :
+      ∀ x : E, 0 ≤ inner ℝ x (flatSlice x))
+    (hPoincare :
+      ∀ x : E,
+        ‖x‖ ^ 2 ≤
+          CP * (inner ℝ x (flatSlice x) + ‖blockConstraintCLM x‖ ^ 2))
+    (hM : 0 < M)
+    (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1)
+    (hdefect :
+      ∀ x : E,
+        inner ℝ x
+            (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+          YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2)
+    (hbudget : schurCatalanBudget M epsilon < min 1 a / CP)
+    [FiniteDimensional ℝ E]
+    (y : E) :
+    0 ≤
+      inner ℝ y
+        (covarianceOfPhysicalPrecisionCatalanDefect
+          flatSlice physicalPrecision blockConstraintCLM N ha hCP hflat_nonneg
+          hPoincare hM hepsilon hsmall hdefect hbudget y) := by
+  dsimp [covarianceOfPhysicalPrecisionCatalanDefect]
+  exact
+    covarianceOfIsCoerciveCLM_psd
+      physicalPrecision
+      (physicalPrecisionCatalanDefectCoercivityConstant_pos hbudget)
+      (isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
+        flatSlice physicalPrecision blockConstraintCLM N ha hCP hflat_nonneg
+        hPoincare hM hepsilon hsmall hdefect)
+      y
 
 end PhysicalPrecisionShell
 

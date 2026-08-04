@@ -1,0 +1,468 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\emergencystretch=1.5em
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true,
+  literate={∃}{{$\exists$}}1
+           {∧}{{$\land$}}1
+           {≤}{{$\le$}}1
+           {ℝ}{{$\mathbb{R}$}}1
+           {ℕ}{{$\mathbb{N}$}}1
+           {σ}{{$\sigma$}}1,
+}
+
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\loopsupp}{P}
+\newcommand{\Area}{\mathrm{A}}
+
+\title{A Machine-Checked Volume-Uniform Wilson-Loop Area Law\\
+via a Formalized Cluster Expansion}
+\author{Lluis Eriksson}
+\date{July 2, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report a complete formalization, in Lean~4 over Mathlib, of
+volume-uniform Wilson-loop area laws for $SU(N_c)$ lattice gauge theory in
+an explicit strong-coupling window --- including the case of the
+\emph{exact} Wilson Boltzmann factor $\prod_p e^{z_p}$, not a linearized
+surrogate.  The headline theorem bounds the normalized Wilson-loop
+expectation by
+$N_c\, e^{\loopsupp \cdot 4d \cdot K}\,\sigma^{\Area(C)}\,
+e^{\loopsupp \cdot 4d \cdot S(\sigma)}$,
+where $\Area(C)$ is an intrinsic combinatorial filling area of the loop,
+$\loopsupp$ is its edge-support size, and \emph{every constant is
+volume-free}: the bound holds uniformly over all finite lattice sizes.  The
+partition function is cancelled through a fully formalized volume-restricted
+cluster expansion (loop-tagged factorization, restricted Mayer inversion,
+$Z$-ratio bounds, and a pinned-gas resummation built on a
+Koteck\'y--Preiss layer with Penrose-style spanning-tree counting).  A
+reusable repackaging converts the bound into manifest exponential area decay
+with a strictly positive string tension, and --- reflecting a methodological
+lesson from the project's own history --- the \emph{non-vacuity} of every
+hypothesis window is itself machine-checked --- both the cluster smallness
+window and the decay-repackaging window, the latter with an explicit
+witness of tension $\log 2 - \tfrac12$.  For every exported theorem in this
+chain the Lean kernel's axiom oracle reports exactly
+\texttt{[propext, Classical.choice, Quot.sound]}; there is no \texttt{sorry}
+and no project axiom in the dependency cone.  To our knowledge this is the
+first machine-checked cluster-expansion proof in lattice quantum field
+theory.  All artifacts are public, with per-theorem oracle records in a
+verification ledger and continuous-integration builds.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+Wilson's confinement criterion asks whether the expectation of a Wilson
+loop decays with the \emph{area} it spans rather than with its
+perimeter~\cite{Wilson1974}.  At strong coupling this is a classical
+theorem of lattice gauge theory: the character/cluster expansions of
+Osterwalder and Seiler establish area-law decay for the Wilson action in a
+small-$\beta$ regime~\cite{OsterwalderSeiler1978,Seiler1982}.  The
+underlying machinery --- polymer representations, Mayer expansions, and
+tree-graph bounds in the tradition of Penrose~\cite{Penrose1967} and
+Koteck\'y--Preiss~\cite{KoteckyPreiss1986} --- is standard, but it is also
+notoriously bookkeeping-heavy: the mathematical content of
+``volume-uniform'' is precisely that \emph{every} constant produced by the
+expansion can be tracked through the thermodynamic limit without silent
+volume dependence.  This is the kind of proof in which human errors hide in
+constants rather than in ideas, and hence a natural target for machine
+verification.
+
+This paper reports such a verification.  Within the author's larger
+audit-first programme on lattice Yang--Mills
+theory~\cite{Eriksson2026Master,Eriksson2026Audit}, the following family of
+results has been formalized end-to-end in Lean~4~\cite{Lean4} over the
+Mathlib library~\cite{mathlib}:
+
+\begin{enumerate}
+\item \textbf{Area laws in four variants} --- finite-volume and
+  volume-uniform, each for linearized activities and for the \emph{exact}
+  Wilson Boltzmann factor $\prod_p e^{z_p}$ --- with explicit constants and
+  explicit smallness windows (Section~\ref{sec:results}).
+\item \textbf{A formalized cluster expansion} strong enough to cancel the
+  partition function with volume-independent losses: loop-tagged
+  factorization, restricted Mayer inversion, $Z$-ratio bounds, and a
+  pinned-gas resummation over a Koteck\'y--Preiss layer with Penrose-style
+  breadth-first-search spanning-tree counting
+  (Section~\ref{sec:architecture}).
+\item \textbf{A methodological discipline} in which integrability side
+  conditions are theorems rather than hypotheses, per-theorem axiom oracles
+  are recorded in a public ledger, and --- after an early episode in which
+  the repository itself had advertised a vacuous headline statement, since
+  disclaimed in its README --- the non-vacuity of every hypothesis window
+  is itself machine-checked (Section~\ref{sec:lean}).
+\end{enumerate}
+
+The mathematics is classical in spirit; the contribution is the machine
+checking, the explicitness, and the reusable formal toolbox.  We are not
+aware of any prior machine-checked cluster or polymer expansion for a
+lattice quantum field theory in any proof assistant.
+
+\section{Setting}\label{sec:setting}
+
+Fix a dimension $d \ge 1$ and a linear lattice size $N \ge 1$ (both
+positive; the theorems are stated for all such $d, N$).  The repository's
+lattice layer provides a concrete complex of oriented edges and plaquettes
+over the finite hypercubic lattice of linear size $N$; a gauge
+configuration is a map $A$ from oriented edges to the gauge group
+$G = SU(N_c)$ (as Mathlib's \texttt{Matrix.specialUnitaryGroup}) satisfying
+$A(e^{-1}) = A(e)^{-1}$.  The reference measure $\mu_N$ is the product of
+normalized Haar measures over one orientation class of edges, transported
+to the configuration space (\texttt{gaugeMeasureFrom},
+\texttt{sunHaarProb}).
+
+For a list of edges $\mathit{es}$ tracing a closed loop $C$, the Wilson
+line $W_C(A)$ is the ordered product of the edge variables and
+$\tr W_C$ its (matrix) trace.  Plaquette activities take the
+conjugate-pair form
+\[
+  z_p(A) \;=\; c_p \cdot \tr H_p(A) \;+\; \overline{c_p} \cdot
+  \overline{\tr H_p(A)},
+  \qquad \lVert c_p \rVert \le \delta ,
+\]
+where $H_p$ is the plaquette holonomy; the conjugate pairing makes each
+$z_p$ real, and the weight $\prod_p e^{z_p}$ is the \emph{exact} Wilson
+Boltzmann factor.  In particular the standard Wilson action weight
+$\exp\bigl((\beta/N_c)\operatorname{Re}\tr H_p\bigr)$ is the case
+$c_p = \beta/(2N_c)$, so $\delta = \beta/(2N_c)$.  The partition function
+is $Z_N = \int \prod_p e^{z_p}\, d\mu_N$, and the object of interest is the
+normalized expectation
+$\langle \tr W_C \rangle_N = Z_N^{-1} \int \tr W_C \cdot \prod_p e^{z_p}\,
+d\mu_N$.
+
+Two combinatorial quantities of the loop control the bound.  The
+\emph{perimeter charge} $\loopsupp = \loopsupp(C)$ is the number of
+distinct edges supporting the loop (\texttt{edgeSupport}).  The
+\emph{area} $\Area(C)$ is intrinsic and algebraic: the loop determines a
+$1$-chain with coefficients in $\mathbb{Z}/N_c$, and
+\[
+  \Area(C) \;=\; \min \bigl\{\, \#\mathrm{supp}(s) \;:\;
+    s \text{ a plaquette 2-chain over } \mathbb{Z}/N_c,\;
+    \partial_2 s = [C] \,\bigr\}
+\]
+(\texttt{chainAreaA}, \texttt{loopChain}) --- the minimal number of
+plaquettes in an algebraic filling of the loop.  No area hypothesis is
+imposed anywhere; the exponent in the theorems below is this defined
+quantity.
+
+\section{Main results}\label{sec:results}
+
+Write $\rho(\delta) = e^{2\delta N_c} - 1$ for the effective exact-activity
+size, and define the two window functions
+\[
+  K(t;\delta) \;=\;
+    \frac{e \cdot \rho(\delta)\, e^{t}}
+         {1 - (16d+1)^2\, \rho(\delta)\, e^{t}},
+  \qquad
+  S(\sigma) \;=\; \frac{\sigma}{1 - (16d+1)^2 \sigma}.
+\]
+
+\begin{theorem}[volume-uniform area law, exact activities;
+\texttt{normalized\_exp\_wilson\_loop\_area\_law}]\label{thm:main}
+Let $N_c \ge 1$, let $\delta \ge 0$ bound the conjugate-pair activities as
+above, and let $t, \varepsilon \ge 0$ and $\sigma \in [0,1]$ satisfy the
+explicit window inequalities
+\[
+  (16d+1)^2\, \rho(\delta)\, e^{t+\varepsilon+1} < 1, \qquad
+  16d \cdot
+  \frac{\rho(\delta)\, e^{t+\varepsilon+1}}
+       {1 - (16d+1)^2 \rho(\delta) e^{t+\varepsilon+1}} \le t,
+\]
+\[
+  (16d+1)^2 \sigma < 1, \qquad
+  \rho(\delta)\cdot \exp\!\bigl(16d \cdot K(t;\delta)\bigr) \le \sigma^2 .
+\]
+Then for every lattice size $N$ and every closed loop $C$,
+\[
+  \bigl\lVert \langle \tr W_C \rangle_N \bigr\rVert
+  \;\le\;
+  N_c \cdot
+  e^{\loopsupp(C)\cdot 4d \cdot K(t;\delta)} \cdot
+  \sigma^{\Area(C)} \cdot
+  e^{\loopsupp(C)\cdot 4d \cdot S(\sigma)} .
+\]
+Every constant on the right is independent of $N$.
+\end{theorem}
+
+The hypotheses are pure smallness and geometry inequalities: in an earlier
+stage of the development the integrability of the relevant families was
+carried as a hypothesis, and it has since been discharged as a theorem
+(ledger Addendum~17u; \texttt{normalized\_wilson\_loop\_area\_law\_unconditional}),
+so no measure-theoretic side condition remains.  The linearized companion
+(activities $1 + f_p$ with $\lVert f_p\rVert$-control) is
+\texttt{normalized\_wilson\_loop\_area\_law}; the pipeline is
+activity-agnostic and the exact version is obtained from the linearized
+proof by the single substitution $2\delta N_c \rightsquigarrow
+e^{2\delta N_c}-1$.  Together with the finite-volume pair the programme
+comprises four variants:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Variant & Activities & Lean declaration \\
+\midrule
+finite volume & linearized & \texttt{finite\_volume\_area\_law} \\
+finite volume & exact $\prod_p e^{z_p}$ & \texttt{finite\_volume\_area\_law\_exp} \\
+volume-uniform & linearized & \texttt{normalized\_wilson\_loop\_area\_law} \\
+volume-uniform & exact $\prod_p e^{z_p}$ & \texttt{normalized\_exp\_wilson\_loop\_area\_law} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{theorem}[manifest exponential decay;
+\texttt{area\_law\_to\_exp\_area\_decay}]\label{thm:tension}
+On any loop family whose perimeter charge is area-subdominant --- i.e.\
+$\loopsupp \cdot 4d\,(K + S) \le \lambda \cdot \Area(C)$ for some
+$\lambda < -\log\sigma$ --- the bound of Theorem~\ref{thm:main} repackages
+as
+\[
+  \bigl\lVert \langle \tr W_C \rangle_N \bigr\rVert
+  \;\le\; N_c \cdot e^{-\tau\,\Area(C)},
+  \qquad \tau = (-\log\sigma) - \lambda > 0 ,
+\]
+a manifest area law with strictly positive string tension $\tau$.
+\end{theorem}
+
+\begin{proposition}[machine-checked non-vacuity]\label{prop:nonvacuous}
+Two distinct hypothesis windows are involved, and each carries its own
+machine-checked witness.
+\emph{(i) The repackaging window of Theorem~\ref{thm:tension}.}  Its
+quantities $K, S, \sigma, \lambda$ enter only through the inequalities
+displayed there --- they are free parameters of the repackaging lemma, not
+constrained by the cluster expansion --- and the witness
+$\sigma = \tfrac12$, $\lambda = \tfrac12$ yields the strictly positive
+tension $\tau = \log 2 - \tfrac12 > 0$
+(\texttt{area\_law\_to\_exp\_area\_decay\_window\_nonempty}, proved via
+Mathlib's certified numeric bound \texttt{Real.log\_two\_gt\_d9}).  We
+emphasize that $\sigma = \tfrac12$ is \emph{not} claimed to lie in the
+cluster window of Theorem~\ref{thm:main}, which requires the much smaller
+$(16d+1)^2\sigma < 1$.
+\emph{(ii) The cluster-expansion smallness window of
+Theorem~\ref{thm:main} itself.}  For every $d$ and $N_c$ there exists
+$\delta_0 > 0$ such that all activities with $\delta \le \delta_0$ satisfy
+the window (lemmas \texttt{clustering\_window\_nonempty} and
+\texttt{sun\_clustering\_window\_nonempty}, instantiated at
+$t = \varepsilon = 1$; ledger Addendum~17t).
+\end{proposition}
+
+\begin{remark}
+Making non-vacuity a theorem is a deliberate methodological choice; see
+Section~\ref{sec:lean}.
+\end{remark}
+
+\section{Proof architecture}\label{sec:architecture}
+
+The proof is a cluster expansion engineered so that every loss is charged
+either to the loop's perimeter or to its area, never to the volume.
+
+\paragraph{Loop-tagged expansion and the pinned dichotomy.}
+Writing the exact weight as $\prod_p (1 + f_p)$ with
+$f_p = e^{z_p} - 1$ and expanding, the numerator becomes a sum over
+\emph{pinned} plaquette sets $S_0$ of terms
+$\int \tr W_C \cdot \prod_{p \in S_0} f_p \cdot (\text{far factor})$.
+Haar selection rules on $SU(N_c)$ kill every pinned term whose plaquette
+set cannot fill the loop: the formalized dichotomy
+(\texttt{norm\_integral\_exp\_pinned\_term\_le}) bounds each term by
+$\mathbb{1}[\Area(C) \le \#S_0] \cdot N_c \cdot \rho(\delta)^{\#S_0}$.
+This is where the intrinsic $\mathbb{Z}/N_c$-chain area of
+Section~\ref{sec:setting} enters: a surviving monomial exhibits an
+algebraic filling of the loop chain inside $S_0$.
+
+\paragraph{Exact activities via shifted Cauchy products.}
+For the exact factor the expansion of $\prod_{p\in S_0}(e^{z_p}-1)$ is
+organized as a shifted multi-variable Cauchy product
+$\sum'_{m} \prod_p z_p^{m_p+1}/(m_p+1)!$ --- every exponent is at least
+one, so the occupied plaquette set of each monomial is exactly $S_0$ and
+the Haar kill fires uniformly.  The interchange of integral and series is
+justified by dominated summability
+(\texttt{summable\_prod\_pow\_succ\_div\_factorial}); this is the point at
+which the linearized proof generalizes by the substitution
+$2\delta N_c \rightsquigarrow e^{2\delta N_c}-1$.
+
+\paragraph{Cancelling the partition function.}
+The far factor of a pinned term is a restricted partition function
+$Z_{\mathrm{far}}(S_0)$.  A volume-restricted Mayer inversion and a
+$Z$-ratio bound
+(\texttt{norm\_normalized\_exp\_wilson\_loop\_le\_pinned\_sum}) cancel
+$Z_N$ against $Z_{\mathrm{far}}(S_0)$ at a cost exponential in
+$\#S_0$ and in the loop's perimeter charge only --- the decisive
+volume-uniformity step.
+
+\paragraph{Resumming the pinned gas.}
+The remaining sum over pinned sets is controlled by an abstract pinned-gas
+estimate (\texttt{sum\_pinned\_dichotomy\_le}) built on the repository's
+Koteck\'y--Preiss layer: a 26-module, $\approx$11{,}500-line development
+of polymer counting with Penrose-style breadth-first-search spanning-tree
+bounds, Ursell coefficients, and the KP convergence
+criterion~\cite{Penrose1967,KoteckyPreiss1986}.  The geometric rate
+$\sigma$ absorbs one factor per pinned plaquette beyond the area threshold,
+yielding the $\sigma^{\Area(C)}$ decay with the perimeter-only prefactors
+$e^{\loopsupp\cdot 4d\cdot K}$ and $e^{\loopsupp\cdot 4d\cdot S(\sigma)}$.
+
+\section{The formalization}\label{sec:lean}
+
+\paragraph{Scale and toolchain.}
+The area-law dependency cone spans the lattice chain complex (L0), the
+Gibbs-measure layer (L1), a 3{,}075-line Wilson-loop monomial module, the
+26-module Koteck\'y--Preiss layer, and the 2{,}117-line volume-restricted
+gate module containing the headline theorems.  Everything is Lean~4 over
+Mathlib and is rebuilt by continuous integration.
+
+\paragraph{Oracle discipline.}
+The repository maintains a verification ledger recording, for every
+exported theorem, the output of Lean's \texttt{\#print axioms}.  For the
+declarations of Sections~\ref{sec:results} the ledger records exactly the
+canonical classical trio; e.g.
+\begin{lstlisting}
+'YangMills.normalized_exp_wilson_loop_area_law'  [propext, Classical.choice, Quot.sound]
+'YangMills.normalized_wilson_loop_area_law'      [propext, Classical.choice, Quot.sound]
+'YangMills.area_law_to_exp_area_decay'           [propext, Classical.choice, Quot.sound]
+\end{lstlisting}
+There is no \texttt{sorry} and no project-specific axiom anywhere in this
+dependency cone.  For full disclosure: the repository as a whole also
+contains clearly labeled exploratory lanes: the experimental modules carry
+explicit axioms (fifteen, all confined to \texttt{Experimental/}) and
+abandoned proof attempts, while the renormalization-group lane carries
+explicitly named \emph{hypotheses} rather than axioms.  None of these is
+imported by the area-law chain, and the per-theorem oracle is precisely the
+mechanism that makes this separation checkable rather than asserted.
+
+\paragraph{Non-vacuity as a theorem.}
+The project's README retains a legacy disclaimer: an early advertised
+headline of the shape $\exists\, m > 0$ was discovered to be vacuously
+provable and was publicly disclaimed and removed.  The lasting correction
+is procedural: every smallness window now comes with a machine-checked
+non-emptiness witness (Proposition~\ref{prop:nonvacuous} and ledger
+Addenda~17t/20), and integrability side conditions were converted from
+hypotheses into theorems (Addendum~17u).  We highlight this as a
+transferable practice for formalized analysis: \emph{a conditional theorem
+should ship with a formal witness that its conditions are satisfiable}.
+
+\paragraph{Engineering notes for formalizers.}
+Constants are carried symbolically ($K$, $S$, $\rho$) rather than
+numerically, so that volume-uniformity is syntactically visible in the
+statement; the $\int\!\leftrightarrow\!\sum'$ interchanges are localized in
+a small number of dominated-convergence lemmas; and the activity-agnostic
+design of the pinned pipeline is what reduced the exact-activity upgrade to
+a one-parameter substitution --- the entire V4 stage was closed in five
+oracle-checked increments (ledger Addenda~18--18d).
+
+\section{Reproducibility and artifacts}\label{sec:repro}
+
+All artifacts are public in the programme repository
+\begin{center}
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}
+\end{center}
+including the Lean sources (\texttt{YangMills/L1\_GibbsMeasure/RestrictedGate.lean}
+for the headline theorems), the verification ledger
+(\texttt{docs/VERIFICATION-LEDGER.md}) with per-theorem oracle lines, the
+staged plan documents (\texttt{docs/AREA-LAW-VU-PLAN.md}) whose bricks map
+one-to-one onto the lemmas of Section~\ref{sec:architecture}, and
+continuous-integration builds; the pinned sources and ledger support
+independent replay.
+
+\section{Related work and outlook}\label{sec:related}
+
+The strong-coupling area law is classical~\cite{OsterwalderSeiler1978,
+Seiler1982}; the contribution here is its machine-checked, explicitly
+volume-uniform form for the exact Boltzmann factor.  On the formalization
+side, proof assistants have reached deep results in analysis and
+probability, but we are not aware of a prior mechanized polymer or cluster
+expansion for any lattice field theory.  A companion result in the same
+programme --- an exact Catalan evaluation of the factorially weighted
+spanning-tree sums that appear in the Koteck\'y--Preiss counting
+layer~\cite{Eriksson2026Catalan} --- has been formalized with the same
+oracle discipline and is being prepared as generic Mathlib contributions;
+sharpening the tree-counting constants of Section~\ref{sec:architecture}
+with it is natural future work.  The larger programme --- mass gap,
+renormalization-group inputs --- remains open and clearly labeled as such
+in the repository; nothing in this paper depends on it.
+
+\subsection*{Acknowledgments}
+The Lean formalization was developed interactively with Anthropic's
+Claude, in accordance with the ACM authorship policy on AI-assisted work;
+every theorem stated here was checked by the Lean~4 kernel, with the axiom
+oracle outputs archived in the repository ledger.
+
+\begin{thebibliography}{9}
+
+\bibitem{Wilson1974}
+K.~G. Wilson,
+\emph{Confinement of quarks},
+Phys.\ Rev.\ D \textbf{10} (1974), 2445--2459.
+
+\bibitem{OsterwalderSeiler1978}
+K.~Osterwalder and E.~Seiler,
+\emph{Gauge field theories on a lattice},
+Ann.\ Physics \textbf{110} (1978), 440--471.
+
+\bibitem{Seiler1982}
+E.~Seiler,
+\emph{Gauge Theories as a Problem of Constructive Quantum Field Theory and
+Statistical Mechanics},
+Lecture Notes in Physics 159, Springer, 1982.
+
+\bibitem{Penrose1967}
+O.~Penrose,
+\emph{Convergence of fugacity expansions for classical systems},
+in: T.~A.~Bak (ed.), \emph{Statistical Mechanics: Foundations and
+Applications}, Benjamin, New York, 1967, 101--109.
+
+\bibitem{KoteckyPreiss1986}
+R.~Koteck\'y and D.~Preiss,
+\emph{Cluster expansion for abstract polymer models},
+Comm.\ Math.\ Phys.\ \textbf{103} (1986), 491--498.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+in: Automated Deduction -- CADE 28, LNCS 12699, Springer, 2021, 625--635.
+
+\bibitem{mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+in: CPP 2020, ACM, 2020, 367--381.
+
+\bibitem{Eriksson2026Master}
+L.~Eriksson,
+\emph{The Master Map: An Audit-First, Attack-Resistant Navigation Guide to
+the Unconditional Solution of the 4D $SU(N)$ Yang--Mills Existence and Mass
+Gap Problem},
+ai.viXra:2602.0096, 2026.
+
+\bibitem{Eriksson2026Audit}
+L.~Eriksson,
+\emph{Mechanical Audit Experiments and Reproducibility Appendix for a
+Companion-Paper Programme on 4D $SU(N)$ Yang--Mills Existence and Mass
+Gap},
+ai.viXra:2602.0117, 2026.
+
+\bibitem{Eriksson2026Catalan}
+L.~Eriksson,
+\emph{A Machine-Verified Bijective Proof of the Rooted Child-Factorial
+Catalan Identity over Spanning Trees of the Complete Graph},
+ai.viXra:2607.0001, 2026.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,36 @@
+=== CASCADE 3c: the bucket page ===
+script sha256 : e816c2afab2073a4407c07812ad5d393481e460d7dc4212d4b3f9b8731ee23b6
+sympy 1.14.0  mpmath 1.3.0  python 3.12.6
+extracting (NORD = 14, both charts)...
+extraction done.
+assert OK: leads reproduce the judged closed forms (spot: A_D, B_nF).
+  B2 ('mir', 'MD') = 5.0598
+  B2 ('mir', 'MF') = 1.9272
+  B2 ('mir', 'MD2r') = 1.1997
+  B2 ('mir', 'MDFr') = 2.339
+  B2 ('main', 'muF') = 0.078069
+  B2 ('main', 'nuD') = 0.58433
+  B2 ('main', 'nuF') = 0.65987
+  mir MD t=2.6: dominated (B2 = 2.9487)
+  mir MF t=2.6: dominated (B2 = 0.75022)
+  mir MD2r t=2.6: dominated (B2 = 1.148)
+  DOM FAIL mir MDFr t=2.6 beta=15: resid 2.0549 > B2 1.9974
+  mir MD t=2.9: dominated (B2 = 0.75966)
+  DOM FAIL mir MF t=2.9 beta=15: resid 0.46923 > B2 0.2548
+  mir MD2r t=2.9: dominated (B2 = 0.81605)
+  DOM FAIL mir MDFr t=2.9 beta=15: resid 1.3626 > B2 1.3597
+  main muF t=0.5: dominated (B2 = 0.2982)
+  main nuD t=0.5: dominated (B2 = 0.066705)
+  main nuF t=0.5: dominated (B2 = 0.096262)
+  main muF t=1.5: dominated (B2 = 0.31906)
+  main nuD t=1.5: dominated (B2 = 0.10308)
+  main nuF t=1.5: dominated (B2 = 0.15086)
+  main muF t=2.9: dominated (B2 = 0.1309)
+  main nuD t=2.9: dominated (B2 = 0.42008)
+  main nuF t=2.9: dominated (B2 = 0.50462)
+BUCKET DOMINATION: MEASURED FAILURE
+Traceback (most recent call last):
+  File "C:\Users\lluis\AppData\Local\Temp\eriksson-push2\scripts\cascade3c_buckets.py", line 282, in <module>
+    assert okm and oka
+           ^^^^^^^^^^^
+AssertionError

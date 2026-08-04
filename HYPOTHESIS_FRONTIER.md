@@ -1,6 +1,8 @@
 # Hypothesis Frontier — THE ERIKSSON PROGRAMME
 
-**Current as of 2026-06-27.**  This document states the honest assumption
+**Control-plane review: 2026-07-11; theorem content through the recorded
+2026-07-04 Lean checkpoint.**  The canonical stable snapshot is
+[`project-state.json`](project-state.json).  This document states the honest assumption
 frontier of the **verified core** (`YangMillsCore`).  Read the current
 section first; the legacy section at the bottom is **archived, pre-cleanup
 material that describes the EXCLUDED vacuous chain and is NOT the current
@@ -8,6 +10,19 @@ state** — it is kept only as a historical record of over-claiming and how
 it was corrected.
 
 ---
+
+## SU(2) two-transporter design note — DESIGN NO-GO / AUDIT PENDING
+
+The 2026-07-31 design note
+[`docs/SU2-TWO-TRANSPORTER-NOGO-20260731.md`](docs/SU2-TWO-TRANSPORTER-NOGO-20260731.md)
+derives and Lean-formalizes for the concrete reduced SU(2) Wilson weight that,
+for each of the two explicitly stated orientations, two
+independent freely Haar-integrated transporters absent from the observable
+project the quadratic form to the trivial sector.  The derivation uses only
+left Haar invariance plus pointwise SU(2) trace identities.  This is a limited
+design no-go, not a physical interpretation or an extension of the frozen
+reduced-kernel lane.  Independent terminal audit is still missing; status is
+**AUDIT PENDING**, not PROVED, and no dashboard status changes with this note.
 
 ## The verified core has ZERO axioms and ZERO `sorry`
 
@@ -98,6 +113,67 @@ orphaned downstream.  It also checks that the final marginal M3 assembly node
 transitively depends on all 30 frontier fields; this is an audit invariant, not
 a new source estimate.
 
+The latest source-facing UV lane also has source-only and finite-size-count
+specializations.  `YangMills.RG.SourceOnlyUVDecay` handles the definitional
+one-channel case `Hraw = Hsource`, while `YMActivityBudgetUV` and
+`HRpolyAnimalSummability` provide finite-carrier/profile wrappers, animal
+summability bridges, rooted half-budget consumers, and raw activity
+finite-size-count UV routes.  Appendix-F now exposes certified
+finite-prefix/geometric-tail majorants, source-rate weighted-tree extraction,
+source-fed residual estimates, residual half-budget closure, canonical-root
+K# summability, K# smallness from the half-budget, and the source-facing
+canonical-root residual H# theorem.  These are genuine proof obligations made
+smaller and better named; they are not proofs of the underlying Balaban/Dimock
+source estimates.
+The 2026-06-30 source checkpoint adds the next physical-source decomposition
+layer without closing the analytic frontier.  The Wilson-Hessian/Green inverse
+contract is now named by `PhysicalGaugeWilsonHessianSourceDictionary`; it keeps
+the CMP102 quadratic form, CMP99 Green inverse identification, normalization
+scale, precision transport, and covariance transport as explicit source
+fields.  The physical activity side now also exposes
+`CMP119CMP122ERBSourceDecomposition`, `CMP119BLocalSourceBound`,
+`CMP119BLocalActivityEstimate`, `PhysicalGaugeDimock318BLocalComponentBoundary`,
+and E/R/B boundary constructors that combine CMP116 `deltaE`/local-`R`
+component estimates with CMP119/CMP122 B/local and decomposition dictionaries.
+These interfaces remove false monolithic assumptions; they do not prove the
+component estimates, action-notation dictionary, B/local metric transport, or
+the final `hRpoly` activity decay.
+The 2026-07-02 source checkpoint sharpens those same open fields.  B/local now
+has named dictionary frontiers for source-metric domination, rate margin,
+amplitude relaxation, activity identification, Nat-metric specialization, and
+source-native E/R/B boundary assembly.  Eq. (2.31) now has the definition-only
+`cmp116Eq231GapCubesOfY0cStarInteriorBoundary` candidate plus its membership
+lemma, giving the `Y0^{c,*}` interior-boundary path a concrete Lean object.
+The source database also exposes proof-obligation cards and a hypothesis
+removal queue for the highest-leverage blockers.  These changes improve the
+auditability of the remaining hypotheses; they do not prove Eq. (2.31),
+CMP119 Eq. (2.42), the Cammarota CMP85 theorem, activity termwise
+identification, covariance-root localization, or `hRpoly`.
+The same 2026-07-02 source window also starts the flow-diamagnetic UV branch
+as theorem-fed producer-side scaffolding: robust marginal-coupling summability,
+killed-region walk recursion, finite isometry-sum bookkeeping, block-transport
+coefficient bounds, and factorial kernel convergence.  This is useful
+infrastructure toward the `hRpoly` producer; it does not prove the
+matrix-unitary bridge, flow-sliced measure transport, local Jacobian,
+marginal extraction, or activity-decay estimate.
+The 2026-07-03 Catalan/Schur checkpoint closes the finite combinatorial budget
+lane: exact rooted Catalan closure, finite Catalan partial sums, convolution
+support/flattening, quadratic and reset recursions, the scaled closed square-root
+bound, Schur-Catalan budget transport, block-Poincare coercivity consumers, and
+covariance from a Catalan-controlled physical precision defect.  The Catalan
+defect estimate and physical/source identification remain explicit hypotheses,
+so this does not prove the Wilson Hessian, covariance-root localization,
+Appendix-F source construction, `hRpoly`, the lattice mass gap, or Clay.
+The 2026-07-04 source window adds two more finite interface closures.  First,
+`YangMills.KP.ActivityDomain` adopts the zero-free activity-domain interface:
+KP activity domination preserves the criterion, so one KP weight controls a
+closed activity polydisc and the fugacity section is a polynomial.  Second,
+`YangMills.RG.Diamagnetic` now bridges concrete complex unitary matrices to
+Euclidean linear isometries and instantiates the finite path-family isometry
+sum bound.  These remove local adapter obligations; they do not prove the heat
+kernel identity, source term, covariance/root theorem, raw activity estimate,
+Wilson-flow measure decomposition, `hRpoly`, the lattice mass gap, or Clay.
+
 ### What discharging the carried UV inputs would (and would not) buy
 
 * Discharging `hRpoly` would make the **lattice** (M3) mass gap
@@ -107,13 +183,40 @@ a new source estimate.
   primitives.  The older geometric `hg` branch remains documented as the
   irrelevant-operator mechanism; the 4D *marginal* coupling side now uses the
   theorem-fed summable profile instead (see `docs/BALABAN-SOURCE-BOUNDS.md` §4).
-  As of 2026-06-22, the surrounding adapters include Appendix-F/H# source-facing
+  As of 2026-07-04, the surrounding adapters include Appendix-F/H# source-facing
   consumers, integrated second-gas KP wrappers, target-card tilt bookkeeping,
   P4 coercivity budgets, gauge-fixed precision composition, and exact
   finite-dimensional covariance from strict coercivity.  They now also include
   physical gauge cochains, a fixed-volume flat Hodge/block Poincare bridge, a
-  one-dimensional harmonic classification base case, and a finite-torus curl/div
-  classification.  None of these proves the
+  one-dimensional harmonic classification base case, a finite-torus curl/div
+  classification, source-facing covariance/root localization certificates, a
+  local physical fluctuation-activity certificate, generic/CMP116 `K#`/`H#`
+  and second-gas dependency wrappers, cluster-union containment facts, exact
+  CMP116 local-operator support algebra, physical/CMP116 coordinate
+  dictionaries, localized-root transport, dictionary-backed Gaussian/activity
+  construction, canonical Gaussian integral consumers, raw-source transport
+  into CMP116 `hraw`, scale-indexed raw-source H# consumers, raw-source M3
+  frontier bundles, an executable M3 frontier dependency graph,
+  source-assumption packaging into that frontier, the source-facing Balaban
+  CMP116 theorem target, CMP116 Lemma 3 activity-only estimates, raw-source
+  adapters, Eq. (2.29) consumers, Eq. (2.31) weighted `P`-stage and post-`P`
+  routes, P-stage and `Z0` source-budget adapters, Eq. (2.31)
+  source-membership/projected-carrier/positive-tail/interior-boundary routes,
+  Gaussian source-record package constructors, residual-stage/post-`P` source
+  packages, visual Eq. (2.37)/C3 citation extraction, the public `source-db`
+  frontier/artifact lookup layer, the resolvent-first local SPD precision
+  substrate, local-SPD root frontier packaging, dictionary root-map norm
+  budgets, finite-piece root sums, finite-family physical activity consumers,
+  source-only UV routes, finite-size-count and animal-summability bridges,
+  Appendix-F certified-tail/source-fed residual routes, Wilson-Hessian/Green
+  source dictionaries, CMP119/CMP122 E/R/B and B/local component interfaces,
+  B/local metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31)
+  `gapCubes` candidate definitions, source-db proof-obligation cards, and
+  canonical-root K# and residual H# adapters, the flow-diamagnetic
+  marginal-coupling, killed-walk, block-transport, factorial-kernel
+  substrate, and the Catalan majorant / Schur-budget / physical-precision
+  covariance lane, finite unitary-to-isometry bridge, and KP activity-domain
+  zero-free polydisc.  None of these proves the
   concrete YM source estimate.
 * Even a full M3 discharge **does not** touch M4/M5.  The Clay distance
   stays ~0% (<0.1%) until the continuum limit and reconstruction exist.
@@ -123,6 +226,40 @@ Source-grounding for the carried inputs:
 [`docs/BALABAN-SOURCE-BOUNDS.md`](docs/BALABAN-SOURCE-BOUNDS.md).
 Adversarial attribution/provenance audit:
 [`docs/SOURCE-CLAIM-AUDIT.md`](docs/SOURCE-CLAIM-AUDIT.md).
+
+## Fleet frontier (satellite repositories, checkpoint 2026-07-04)
+
+The satellite fleet (see `SATELLITES.md`) advanced today; this section
+records what that does and does NOT change for the frontier above.
+
+**What changed in this repository:** `YangMills/KP/ActivityDomain.lean`
+adopts upstream, from the first external consumer (`lean-zero-free-regions`),
+the observation that `KPCriterion` reads activities only through norms.
+Consequences now proved natively here: the KP criterion is monotone under
+pointwise activity domination, hence one KP weight certifies `Ξ ≠ 0` on the
+whole closed activity polydisc, and the fugacity section `w ↦ Ξ(w·z)` is an
+explicit polynomial.  These are elementary given KP2; their value is the
+region form of the nonvanishing statement.
+
+**What exists fleet-side (external evidence, NOT imported by this
+repository — the dependency direction is satellites → mother, never the
+reverse):** first zero-carried-hypothesis instances of the fleet interfaces
+— the gap⇔clustering dictionary on the ferromagnetic Ising chain
+(`lean-transfer-matrix`), reflection positivity of the ferromagnetic bond
+with the RP ⟺ PSD-kernel characterization (`lean-os-positivity`), the
+identification of the SU(2) Witten zeta with Mathlib's `riemannZeta`
+(`lean-2d-yang-mills`), the discrete parabolic maximum principle with mass
+conservation (`lean-ym-flow`), and a locally verified certified-interval
+numerics layer whose 2D honesty-gap report quantifies the distance between
+the formal `(16d+1)²σ < 1` window and physical couplings at three orders of
+magnitude in `β` (`ym-lattice-numerics`).  All Lean-side session pushes are
+`pending-CI` and count as nothing until their heartbeats are green.
+
+**What did NOT change:** the M3 table above (`hRpoly` remains the carried
+input), and the bottom line.  Nothing in the fleet touches the continuum
+limit, OS–Wightman reconstruction, or the continuum mass gap.
+**Distance to the Clay prize remains ~0% (<0.1%).**
+
 
 ---
 

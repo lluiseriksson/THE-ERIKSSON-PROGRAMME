@@ -32,6 +32,7 @@
       "local_artifacts": {
         "pdf": "balaban-rg-I-cmp109-1104116842.pdf",
         "text_full": "text/balaban-rg-I-cmp109-1104116842.txt",
+        "render_source_09": "renders/cmp109-source-09-09.png",
         "render_source_19_b0_corridor": "renders/cmp109-source-19-b0-corridor-19.png",
         "render_reference_26_page_51": "renders/cmp109-reference-26-page-51.png"
       }
@@ -67,8 +68,13 @@
       "local_artifacts": {
         "pdf": "balaban-convergent-cmp119-from-fusion.pdf",
         "text_full": "text/balaban-convergent-cmp119-from-fusion.txt",
+        "render_source_15": "renders/cmp119-source-15.png",
+        "render_source_16": "renders/cmp119-source-16.png",
+        "render_source_17": "renders/cmp119-source-17.png",
         "render_source_18": "renders/cmp119-source-18.png",
-        "render_source_19": "renders/cmp119-source-19.png"
+        "render_source_19": "renders/cmp119-source-19.png",
+        "render_source_20": "renders/cmp119-source-20.png",
+        "render_source_21": "renders/cmp119-source-21.png"
       }
     }
   },
@@ -90,7 +96,7 @@
         "This citation is an anchor for the split Lean source records `CMP116GaussianCoordinateMapSource`, `CMP116GaussianPhysicalLawSource`, and `CMP116GaussianNormalizedPushforwardSource`; it does not by itself prove those records."
       ],
       "lean_targets": [
-        "balabanCMP116Dmu0",
+        "YangMills.RG.balabanCMP116Dmu0",
         "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
         "BalabanCMP116Lemma3WeightedPostPSourceAssumptions.gaussian_pushforward",
         "PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource",
@@ -135,8 +141,8 @@
       "summary": "Balaban localizes the product-Gaussian expression into quantities H(Z,Z0) and H(Z), with component factorization.",
       "lean_targets": [
         "local_physical_activity_construction",
-        "CMP116Lemma3ActivityTermwiseScaleBoundary",
-        "PhysicalGaugeLocalActivity.globalEval"
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.LocalActivity.globalEval"
       ],
       "use_for": [
         "Source anchor for existence of localized activity H(Z) before Lemma 3 estimates."
@@ -166,7 +172,7 @@
         "CMP116Lemma3Eq229ScaleBoundary",
         "CMP116Eq231PBondBoundary",
         "CMP116Lemma3WeightedPostPSourceScaleBoundary",
-        "CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [
@@ -204,9 +210,9 @@
       ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
+        "YangMills.RG.CMP116Eq229Summability",
         "cmp116Eq229Product",
-        "cmp116H_postD_sum_le_of_eq229",
+        "cmp116H_termWeightSum_le_of_eq229",
         "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
       ],
       "use_for": [
@@ -241,7 +247,7 @@
       ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
+        "YangMills.RG.CMP116Eq229Summability",
         "cmp116_DStage_sum_le_of_eq229"
       ],
       "use_for": [
@@ -264,8 +270,12 @@
       "locator": {
         "printed_pages": "517-528",
         "pdf_pages": "-",
-        "equations": ["Section 1", "Theorem 1", "general polymer Mayer series theorem"],
-        "local_text": "-",
+        "equations": ["Section 1", "Theorem 1", "Eq. (1.4)", "general polymer Mayer series theorem"],
+        "local_text": "Archive-private constructor packet repo-ready-packets\\constructor-packets\\CAMMAROTA-CMP85-POLYMER-MAYER-PACKET.md; visual render pdf-001_printed-517.png",
+        "renders": [
+          "archive_private:page-renders/cammarota-cmp85-decay-correlations-1982/pdf-001_printed-517.png",
+          "archive_private:page-renders/cammarota-cmp85-decay-correlations-1982/pdf-002_printed-518.png"
+        ],
         "web_urls": [
           "https://link.springer.com/article/10.1007/BF01403502",
           "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.full",
@@ -281,11 +291,38 @@
         "Project Euclid advertises a PDF endpoint for this article, but the automation environment received an anti-bot HTML page rather than a PDF.",
         "A 2026-06-28 direct download attempt against the current Project Euclid PDF URL returned a 1164-byte anti-bot HTML body with SHA-256 6368CFB9639DC2FB996F149B82D7D3F45C19882640E1C15E97571458562D81B3, not a usable PDF artifact.",
         "DML/Mathdoc exposes the Euclid item metadata and a legacy Euclid PDF endpoint `download/pdf_1/euclid.cmp/1103921545`; in the automation environment that legacy endpoint also returned HTML rather than a PDF.",
-        "ResearchGate exposes an author-uploaded OCR/full-text view, but it is not yet a local primary PDF artifact and its OCR is too corrupted to theorem-feed Eq. (2.29)."
+        "ResearchGate exposes an author-uploaded OCR/full-text view, but it is not yet a local primary PDF artifact and its OCR is too corrupted to theorem-feed Eq. (2.29).",
+        "Archive cycle 51 reports that the private archive holds the Cammarota CMP85 PDF, OCR, twelve page renders, and a constructor packet, but the repo/runtime source-pending path still lacks a public clean theorem artifact and the equation bodies remain unextracted.",
+        "Archive-55 and Source-Dictionary cycle 42 visually confirm Cammarota Theorem 1 on printed pages 517-518 and its first source-premise field: the two-body potential satisfies the decay bound recorded as Eq. (1.4). The premise exponent is plain delta(x,y); the half-rate exp(-(1/2) delta(x,y)) belongs to the later Eq. (1.5) summability condition and Theorem 1 conclusion route. This is a source-premise extraction only; the theorem conclusion, smallness conditions, constants, and CMP116 D-family dictionary remain open."
+      ],
+      "formulas": [
+        {
+          "id": "cammarota.theorem1.eq1.4.potential_decay",
+          "statement": "Theorem 1 potential-decay premise.",
+          "ascii": "|Phi_xy(S_x,S_y)| <= exp(-delta(x,y)) * J(x,y) * v_x(S_x) * v_y(S_y)",
+          "latex": "|\\Phi_{xy}(S_x,S_y)| \\le e^{-\\delta(x,y)} J(x,y) v_x(S_x) v_y(S_y)",
+          "exactness": "visual_formula_field",
+          "confidence": "archive_private_render_confirmed",
+          "assumptions": [
+            "Cammarota CMP85 Theorem 1",
+            "two-body potential",
+            "delta is the source metric named in the following condition (1.5)",
+            "Archive-55 confirms Eq. (1.5) uses a half-rate summability condition, so consumers must not propagate the premise exponent as the theorem-conclusion rate"
+          ],
+          "conclusion": "A single Cammarota Theorem 1 premise field is visually extracted; it does not prove Eq. (2.29) or supply the CMP116 D-family dictionary.",
+          "source_verified": false,
+          "provenance": [
+            "Archive cycle 51 constructor packet: repo-ready-packets\\constructor-packets\\CAMMAROTA-CMP85-POLYMER-MAYER-PACKET.md",
+            "Archive-private render: page-renders\\cammarota-cmp85-decay-correlations-1982\\pdf-001_printed-517.png",
+            "Archive-55 packet: repo-ready-packets\\CAMMAROTA-CMP85-THEOREM1-EQ14-RENDER-CHECK.md",
+            "Archive-55 crop: page-renders\\cammarota-cmp85-decay-correlations-1982\\crops\\pdf-001_printed-517_thm1-eq14-band-400dpi.png",
+            "Source-Dictionary cycle 42 body ruling CAMMAROTA_EQ14_BODY_MATCH_LOCATED_GATE_LIFTED"
+          ]
+        }
       ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
+        "YangMills.RG.CMP116Eq229Summability",
         "cmp116_DStage_sum_le_of_eq229"
       ],
       "use_for": [
@@ -566,30 +603,30 @@
         "This supports the Lean design in which Eq. (2.37) plus the following paragraph feed a combined post-P source boundary and a separate majorization into the canonical Lemma-3 base factor; it does not justify separate normalized Z0 and Z0' source theorems by itself."
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237Z0PrimeIndex",
-        "cmp116Eq237GlobalZ0PrimeIndex",
-        "cmp116Eq237Z0PrimeIndex_subset_global",
-        "cmp116Eq237GlobalZ0PrimeIndex_mem_iff",
-        "cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff",
-        "cmp116Eq237Z0Fiber",
-        "cmp116Eq237_nested_sum_eq_fiber_sum",
-        "cmp116Eq237Amplitude",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "cmp116PostPResidualSourceBound_of_eq237_globalIndex",
-        "cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff",
-        "cmp116Eq237_residualExponent_absorbed",
-        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_source_bound",
-        "CMP116PostPResidualSourceBound",
-        "CMP116PostPResidualSourceMajorizationScaleFamily"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global",
+        "YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex_mem_iff",
+        "YangMills.RG.cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_globalIndex",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff",
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_source_bound",
+        "YangMills.RG.CMP116PostPResidualSourceBound",
+        "YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily"
       ],
       "use_for": [
         "Source anchor for the combined post-P source boundary supplied to CMP116PostPResidualSourceBound.",
@@ -626,10 +663,10 @@
         "This entry records the geometric source anchor only; it does not prove the adapted Z0' version or any source-to-Lean index dictionary."
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
       ],
       "use_for": [
         "Source anchor for the geometric distance tradeoff referenced in the final post-(2.37) summation.",
@@ -665,10 +702,10 @@
         "This entry records the source summation pattern only; it does not identify the post-(2.37) source Z0' family or prove the adapted final summation."
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "CMP116PostPResidualSourceBound",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116PostPResidualSourceBound",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
       ],
       "use_for": [
         "Source anchor for the Eq. (2.34)-type finite subset summation referenced after Eq. (2.37).",
@@ -704,10 +741,10 @@
         "This entry records the scale-transfer source anchor only; it does not prove the local-case combinatorial theorem in Lean."
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
       ],
       "use_for": [
         "Source anchor for the component-metric comparison in the fixed-Z0' Eq. (2.37) estimate.",
@@ -745,16 +782,16 @@
       ],
       "lean_targets": [
         "CMP116Lemma3Parameters",
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237Amplitude",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary",
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [
@@ -839,8 +876,8 @@
       "status": "visual_confirmed",
       "summary": "Localized R-term decay in the convergent expansion paper.",
       "lean_targets": [
-        "future_R_operation_bound",
-        "RawYMActivityDecay"
+        "RawYMActivityDecay",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
       ],
       "use_for": [
         "Later R-operation/localized remainder source targeting."
@@ -850,6 +887,349 @@
       ],
       "open_questions": [
         "Exact bridge from CMP119 localized R terms to the current raw Yang-Mills activity predicate."
+      ]
+    },
+    {
+      "key": "cmp119.density-expansion-form.2.18",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "257",
+        "pdf_pages": "15",
+        "equations": ["2.17", "2.18"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 582-593",
+        "renders": ["render_source_15"]
+      },
+      "status": "visual_confirmed",
+      "summary": "General CMP119 density expansion form: rho_k is represented as a sum over admissible domain sequences of chi_k, the T_k operation, and exp A_k.",
+      "formulas": [
+        {
+          "id": "cmp119.eq2.18.density-expansion",
+          "statement": "The density rho_k(V_k) is represented by a sum over admissible sequences of domains, with characteristic factor chi_k, operation T_k, and effective action A_k evaluated at 1/g_k^2 and U_k.",
+          "ascii": "rho_k(V_k) = sum_{{Omega_j},{Lambda_j}} chi_k(Omega_k) * T_k({Omega_j},{Lambda_j}) * exp(A_k(1/g_k^2, U_k))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.18.action-dependence",
+          "statement": "The summation is over admissible sequences of domains; summation over the sequences S_j is included in T_k, and A_k depends on the sequences Omega_j, Lambda_j, and S_j, though the dependence is suppressed.",
+          "ascii": "A_k depends on {Omega_j}, {Lambda_j}, {S_j}; T_k includes summation over {S_j}",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+      ],
+      "use_for": [
+        "Source anchor for the CMP119 form (2.18) referenced by CMP122-II after Eq. (1.101).",
+        "Post-R action/local-activity dictionary extraction."
+      ],
+      "do_not_use_for": [
+        "Do not treat the density representation itself as a Lean local activity bound.",
+        "Do not bypass the CMP122 post-R dictionary with this pre/post-induction form alone."
+      ],
+      "open_questions": [
+        "Exact Lean dictionary from rho_k, T_k, A_k and admissible sequences to PhysicalGaugeLocalActivity / LocalActivity.finsetSum.",
+        "Exact hypotheses defining admissible domain sequences and the support/localization conventions.",
+        "How the post-R Eq. (1.101) action A_k instantiates this CMP119 form after the R-operation."
+      ]
+    },
+    {
+      "key": "cmp119.t-operation-action-factorization.2.19-2.23",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "257-258",
+        "pdf_pages": "15-16",
+        "equations": ["2.19", "2.20", "2.21", "2.22", "2.23"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 590-627",
+        "renders": ["render_source_15", "render_source_16"]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP119 factorizes the large-field operation T_k by disjoint components and one-step operations, then writes the effective action A_k in E/R/B form.",
+      "formulas": [
+        {
+          "id": "cmp119.eq2.19.t-operation-disjoint-factorization",
+          "statement": "If the last large-field region Z_k is represented as a disjoint union of regions X_i, then T_k factorizes over those regions.",
+          "ascii": "Z_k = X_1 union ... union X_n, X_i cap X_j = empty -> T_k(Z_k) = prod_{i=1}^n T_k(X_i)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.20.t-operation-one-step-factorization",
+          "statement": "For a large-field region X, T_k(X) factorizes into an ordered product of one-step operations over Z_{j+1} intersect X.",
+          "ascii": "T_k(X) = prod_{j=k-1}^{0} T^(j)(Z_{j+1} cap X)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.21-2.22.t-operation-content",
+          "statement": "The one-step operation integrates gauge-field variables V_j and fluctuation-field variables A_j on the localized region, includes characteristic factors and a quadratic exponential, and the same general form is preserved after an R-operation with changed characteristic functions.",
+          "ascii": "T^(j)(Z_{j+1} cap X): integrate V_j on Omega^c_{j+1} cap X and A_j on Z_{j+1} cap Omega_{j+1} cap X; R-operation preserves the general form with changed characteristic functions",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.23.effective-action-erb-form",
+          "statement": "The effective action A_k is written as the classical action contribution plus E_k, R_k, and B_k terms, minus the scalar E_k constant.",
+          "ascii": "A_k(1/g_k^2, U_k) = -A(1/g_k^2, U_k) + E_k(U_k) + R_k(U_k) + B_k(U_k,A) - mathcalE_k",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "PhysicalGaugeLocalActivity",
+        "CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+      ],
+      "use_for": [
+        "Source anchor for decomposing CMP119 T_k and A_k before mapping to Lean local activity terms.",
+        "Post-R action/local-activity dictionary extraction together with CMP122-II Eq. (1.101)."
+      ],
+      "do_not_use_for": [
+        "Do not treat the factorization of T_k as a bound on R_k or B_k.",
+        "Do not collapse the E/R/B action decomposition into a scalar hRpoly estimate without the missing dictionary and bounds."
+      ],
+      "open_questions": [
+        "Exact Lean dictionary for the one-step operations T^(j), their integration variables, characteristic functions, and delta/gauge-fixing factors.",
+        "Exact mapping from E_k, R_k, and B_k in Eq. (2.23) to source, covariance, dictionary, support, or Jacobian components in the current Lean raw-activity interfaces.",
+        "How CMP122-II Eq. (1.101) updates the E/R/B decomposition after the R-operation while preserving the CMP119 induction form."
+      ]
+    },
+    {
+      "key": "cmp119.e-term-local-regularity.2.24-2.29",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "259-260",
+        "pdf_pages": "17-18",
+        "equations": ["2.24", "2.25", "2.26", "2.27", "2.28", "2.29"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 641-689",
+        "renders": ["render_source_17", "render_source_18"]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP119 starts the detailed Sect. 2 inductive assumptions by defining the localized running coupling g_j(x) and the E_k local regular part with locality, analytic-extension, gauge-invariance, paper-I bound, and Euclidean covariance properties.",
+      "formulas": [
+        {
+          "id": "cmp119.eq2.24.localized-running-coupling",
+          "statement": "CMP119 defines a localized coupling function g_j(x) by a recursive equation generalizing paper-I equations, with phi_j equal to 1 on the last domain.",
+          "ascii": "1 / g_{j-1}^2(x) = 1 / g_j^2(x) + beta_j(g_{j-1}) * phi_j(x); phi_j in C_0^infty(Lambda_j), phi_j = 1 on Lambda_j^~-1",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.25.effective-action-e-regular-part",
+          "statement": "The regular part E_k is localized as a sum over j of E^(j) terms, subtracting the unit-field value and the beta_j coupling counterterm contribution.",
+          "ascii": "E_k(U_k) = sum_{j=1}^k (E^(j)(Lambda_j, g_{j-1}, U_k) - E^(j)(Lambda_j, g_{j-1}, 1) - beta_j(g_{j-1}) * A(phi_j, U_k))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.26-2.28.e-localization-properties",
+          "statement": "The E^(j) term is further localized over domains X in D_j; each localized term depends only on the restricted field, has an analytic extension on U_j^c(X, alpha_0,j, alpha_1,j), is gauge invariant, satisfies the paper-I inequality (I.1.18), and uses alpha_0,j and alpha_1,j proportional to g_j times powers of log(g_j^-2).",
+          "ascii": "E^(j)(Lambda_j,U_k)=sum_z E^(j)(Lambda_j,U_k,z); E^(j)(Lambda_j,U_k,z)=sum_{X contains z} E^(j)(X,U_k,z); alpha_0,j=g_j*C0*(log g_j^-2)^q0, alpha_1,j=g_j*C1*(log g_j^-2)^q1",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.29.e-euclidean-covariance",
+          "statement": "For unrestricted sums over all X containing z, the localized E^(j)(U_j,z) satisfies Euclidean covariance.",
+          "ascii": "E^(j)(r U_j, r z) = E^(j)(U_j, z)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "PhysicalGaugeLocalActivity",
+        "CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+      ],
+      "use_for": [
+        "Source anchor for splitting the CMP119 Sect. 2 inductive assumptions into an E/local-regular-part certificate rather than treating Theorem 1 as an opaque assumption.",
+        "Source navigation for the E-component side of the E/R/B action dictionary used by the R-operation route."
+      ],
+      "do_not_use_for": [
+        "Do not treat the E-term regularity/locality assumptions as a bound on the R or B terms.",
+        "Do not treat the paper-I inequality (I.1.18) as extracted here; it remains an external paper-I source target."
+      ],
+      "open_questions": [
+        "Exact paper-I definitions and hypotheses behind U_j^c(X, alpha_0,j, alpha_1,j) and inequality (I.1.18).",
+        "Exact Lean dictionary from E^(j)(X,U,z) and Euclidean covariance to the current local activity/action-component fields.",
+        "Exact mapping of the localized coupling recursion (2.24) to the current Lean coupling-flow notation."
+      ]
+    },
+    {
+      "key": "cmp119.b-term-local-regularity-bound.2.34-2.42",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "260-262",
+        "pdf_pages": "18-20",
+        "equations": ["2.34", "2.35", "2.36", "2.37", "2.38", "2.39", "2.40", "2.41", "2.42"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 720-782",
+        "renders": ["render_source_18", "render_source_19", "render_source_20"]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP119 defines the multiscale regularity space for the B_k boundary/large-field terms, gives the B_k localized representation, and states the localized exponential B-bound.",
+      "formulas": [
+        {
+          "id": "cmp119.eq2.34-2.39.b-analyticity-domain",
+          "statement": "The space U_j^c(X, alpha_0, alpha_1) is defined by three multiscale regularity/gauge conditions on (U,J), including bounds (2.34)-(2.39); the text notes beta may be taken as 1/4 and that the space is invariant under G-valued gauge transformations.",
+          "ascii": "U_j^c(X,alpha_0,alpha_1): configurations (U,J) on X satisfying conditions (i)-(iii), bounds (2.34)-(2.39), beta small positive e.g. 1/4, gauge-invariant domain",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.40-2.41.b-localized-representation",
+          "statement": "The B_k term is a sum over j, and each B^(j) has a localized representation over domains X in D_j intersecting both Omega_j and the large-field region Z_j.",
+          "ascii": "B_k = sum_{j=1}^k B^(j)(U_k,A,{S_i}); B^(j)(U_k,A,{S_i}) = sum_X B^(j)(X,U_k,A,{S_i cap X}) with X cap Omega_j != empty and X cap Z_j != empty",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.42.b-local-bound",
+          "statement": "Each localized B^(j) term depends only on restricted fields, has an analytic extension, is gauge invariant, and satisfies an exponential localization bound.",
+          "ascii": "|B^(j)(X,(U,J),A,{S_i cap X})| < B0 * exp(-kappa * d_j(X))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.post2.42.b-component-locality-and-resummation",
+          "statement": "The page after (2.42) records a sharper component-locality property and an optional resummed form in which d_j(X) is replaced by d_j(X \\ Z_j).",
+          "ascii": "If a component of X cap Omega_0 does not meet Omega_j, the B term does not depend on fields on that component; a resummed variant gives bound (2.42) with d_j(X) replaced by d_j(X \\ Z_j)",
+          "exactness": "paraphrase",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "YMActivityErrorBudget.RawYMActivityDecomposition",
+        "CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119BLocalSourceBound"
+      ],
+      "use_for": [
+        "Source anchor for the B/large-field-local part of the CMP119 E/R/B action-component dictionary.",
+        "Source navigation for future component-decay or defect-budget records involving boundary/large-field terms."
+      ],
+      "do_not_use_for": [
+        "Do not identify B_k with the entire raw activity or scalar hRpoly.",
+        "Do not infer the Lean weight appendixFHoleExpWeight or polymer metric dictionary from (2.42) without a separate dictionary theorem."
+      ],
+      "open_questions": [
+        "Exact Lean dictionary from CMP119 domains X, Omega_j, Z_j, S_i, and d_j(X) to the repository polymer/metric/weight types.",
+        "How CMP122-II post-R B' terms are identified with this CMP119 B_k local-bound format.",
+        "Whether the resummed d_j(X \\ Z_j) variant is needed for the current raw-activity route or should remain only a source note."
+      ]
+    },
+    {
+      "key": "cmp119.rt-improved-new-expressions.before-theorem1",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "262",
+        "pdf_pages": "20",
+        "equations": ["paragraph before Theorem 1"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 790-798",
+        "renders": ["render_source_20"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Immediately before Theorem 1, CMP119 states that after the k-th RT operation the older-index expressions satisfy the described assumptions, while the newly created E^(k), R^(k), and B^(k) terms are on slightly larger spaces with improved decay, e.g. kappa replaced by (1+4 beta) kappa, for use in the R-operation.",
+      "formulas": [
+        {
+          "id": "cmp119.prethm1.rt-new-expression-improvement",
+          "statement": "After T in the k-th RT step, the newly created E^(k), R^(k), and B^(k) expressions have better analyticity and decay properties than the standing inductive assumptions.",
+          "ascii": "old indices j < k as above; new E^(k), R^(k), B^(k) on slightly larger spaces, coefficients enlarged by beta times a corresponding number, and decay improved with kappa replaced for example by (1+4*beta)*kappa",
+          "exactness": "paraphrase",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "CMP116RawSourceM3Frontier"
+      ],
+      "use_for": [
+        "Source anchor for the margin/reserve needed by the R-operation step when transporting CMP119 Sect. 2 assumptions through CMP122-II.",
+        "Checklist item for any future source certificate claiming that RT maps the index-k density space into the index-(k+1) density space."
+      ],
+      "do_not_use_for": [
+        "Do not treat this qualitative paragraph as a numerical theorem unless the exact enlarged-space coefficients and decay reserve are extracted from the proof.",
+        "Do not use it to bypass the explicit CMP122-II post-R action split or R' bounds."
+      ],
+      "open_questions": [
+        "Exact enlarged-space coefficients and their dependence on beta.",
+        "Exact numerical reserve replacing kappa by (1+4 beta) kappa and how CMP122-II consumes it.",
+        "Exact Lean density-space predicate corresponding to the index-k and index-(k+1) inductive assumptions."
+      ]
+    },
+    {
+      "key": "cmp119.theorem1.rt-inductive-assumptions",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "262",
+        "pdf_pages": "20",
+        "equations": ["Theorem 1", "(0.18)", "(0.20)", "(1.0.33) [I]"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 790-815",
+        "renders": ["render_source_20"]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP119 Theorem 1 states that, under the recursive RG coupling inequalities and constant restrictions, successive RT applications generate densities satisfying all CMP119 inductive assumptions.",
+      "formulas": [
+        {
+          "id": "cmp119.theorem1.rt-preserves-inductive-assumptions",
+          "statement": "If the coupling sequence g_k determined by the recursive RG equations (0.18), (0.20) of paper I satisfies inequalities (1.0.33), then the densities generated by successive RT applications to rho_0 satisfy all CMP119 inductive assumptions.",
+          "ascii": "({g_k} satisfies RG equations (0.18),(0.20) [I] and inequalities (1.0.33)) -> rho_k = RT^k(rho_0) satisfies all CMP119 inductive assumptions",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.theorem1.constant-restrictions",
+          "statement": "The theorem explicitly depends on numerous constant restrictions introduced in the proof, with some restrictions inherited from paper I.",
+          "ascii": "constants kappa, M, epsilon_j, alpha_0,j, alpha_1,j, ... satisfy restrictions from [I] plus new restrictions in CMP119",
+          "exactness": "paraphrase",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.theorem1.space-step-generalization",
+          "statement": "The accompanying remark says the operation RT maps the space of densities satisfying the index-k inductive assumptions into the space with index k+1.",
+          "ascii": "RT : density_space(k) -> density_space(k+1)",
+          "exactness": "paraphrase",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "CMP116RawSourceM3Frontier"
+      ],
+      "use_for": [
+        "Source anchor for the CMP119 theorem-level induction-hypothesis package behind the R-operation route.",
+        "Use with CMP122-II Theorem 1 to justify that the post-R density should satisfy the CMP119 Sect. 2 form and bounds, subject to the still-open Lean dictionary."
+      ],
+      "do_not_use_for": [
+        "Do not cite this theorem as a standalone Lean RawYMActivityDecay proof without extracting the inductive assumptions and constants.",
+        "Do not ignore the explicit inherited and new constant restrictions."
+      ],
+      "open_questions": [
+        "Exact list of CMP119 inductive assumptions and all constant restrictions needed by the theorem.",
+        "Exact form of the paper-I coupling inequalities (1.0.33) and recursive equations (0.18), (0.20) in the current Lean coupling notation.",
+        "Exact dictionary from CMP119 density-space assumptions to RawYMActivityDecay / CMP116RawSourceM3Frontier fields."
       ]
     }
   ]

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-high-split-81-81p25-20260724",
+  "claim_scope": "Candidate-only paired production/replay for beta [81,325/4] using five explicit t partitions, CWIN=3/2, order-30/t-order-37 rows. Sign rows do not imply H_tail; no G2/G6 promotion.",
+  "status": "current",
+  "git_head_at_run": "96e16d17",
+  "command": [
+    "python",
+    "scripts/run_surface_scaled_bulk_cwin3p2_high_split.py",
+    "--unit",
+    "81_81p25_20260724",
+    "--lo",
+    "81",
+    "--hi",
+    "325/4"
+  ],
+  "working_directory": ".",
+  "environment": {
+    "python": "3.12.6",
+    "python_flint": "0.9.0",
+    "arb_bits": 180,
+    "order": 30,
+    "t_order": 37,
+    "min_dt": "1/100000",
+    "partitions": [
+      ["3/5", "3/2"],
+      ["3/2", "9/4"],
+      ["9/4", "3"],
+      ["3", "61/20"],
+      ["61/20", "843230029/270000000"]
+    ]
+  },
+  "inputs": [
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high_split.py", "sha256": "03c0fda18da20a76326601a043e524c0cb69b1be14f8c3e35dd1712376d11207"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py", "sha256": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "scripts/run_surface_scaled_bulk_cwin3p2_high_split.py", "sha256": "68f1eabf0006a4a7b8600833edc3c31ca66ed573ea2c8fb294f688f6a5bd5ed2"},
+    {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_high_split.py", "sha256": "626fb50d5c4fc26aaad5d3242072d644fc7de808a4b7b59ce4aab8d5525f40d6"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_81_81p25_20260724_split.txt", "sha256": "5dcfbccd646910b46137f8f37f46445a2d6f7c12d6f152db1225c912c20fbac6"},
+    {"path": "scripts/surface_scaled_bulk_81_81p25_20260724_split_rerun.txt", "sha256": "5dcfbccd646910b46137f8f37f46445a2d6f7c12d6f152db1225c912c20fbac6"}
+  ],
+  "result": {"t_rows": 246, "production_replay_byte_equal": true, "all_upper_bounds_negative": true},
+  "promotion": "NONE",
+  "supersedes": []
+}

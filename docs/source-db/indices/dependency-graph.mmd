@@ -1,5 +1,5 @@
 flowchart TD
-  cmp95_96_99["CMP95/96/99 covariance and Green bounds\n[source_pending/located]"]
+  cmp95_96_99_102["CMP95/96/99/102 covariance, Green and Hessian sources\n[CMP95/99/102 visual_confirmed; CMP96 pending; dictionaries open]"]
   gaussian_root["Gaussian pushforward + localized covariance root\n[visual_confirmed + pending dictionaries]"]
   activity_termwise["CMP116 H(Z) activity identification + termwise bound\n[open]"]
   eq229["CMP116 Eq. (2.29) D-stage via Cammarota\n[source_pending]"]
@@ -11,7 +11,7 @@ flowchart TD
   flow_ir["Flow + IR separated lanes\n[source_pending]"]
   raw_activity["RawYMActivityDecay / CMP116RawSourceM3Frontier\n[Lean consumers saturated; source facts open]"]
   final["Continuum/mass-gap-facing consumers\n[far downstream]"]
-  cmp95_96_99 -->|covariance/operator/root inputs| gaussian_root
+  cmp95_96_99_102 -->|covariance/operator/root inputs| gaussian_root
   gaussian_root -->|localized fluctuation integral| activity_termwise
   activity_termwise -->|summand identification| lemma3
   eq229 -->|D-stage budget| lemma3

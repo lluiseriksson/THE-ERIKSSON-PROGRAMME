@@ -1,0 +1,423 @@
+% The GNS quotient, exercised on a genuinely degenerate reflection pairing.
+% Lane: O (operator bridge), modules YangMills/OS/**.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.  Freeze: Lean tree of source checkpoint
+% 673d1df122ac7110e6f7b52795b44a02d38d8d24, full core build 8423 jobs,
+% 2460 oracle commands (see Section 7).
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\anchor}{673d1df122ac7110e6f7b52795b44a02d38d8d24}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Om}{\Omega}
+\newcommand{\inn}[2]{\langle #1,\, #2\rangle}
+\newcommand{\Ex}{\mathbb{E}}
+
+\title{The Quotient That Is Not the Identity:\\
+A Machine-Checked Degenerate Reflection Pairing\\
+and Its Gelfand--Naimark--Segal Quotient\\
+\large Four observables, two states, and the collapse in between}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Osterwalder--Seiler reconstruction passes from a reflection-positive measure
+to a Hilbert space by quotienting out the null space of the reflected pairing.
+In a companion development that step was present but did nothing: the pairing
+there was definite, so the quotient was the identity, and that paper says so in
+its own abstract.  This paper supplies the missing case, in Lean~4 with
+\texttt{mathlib}.
+
+For the $\Z_2$ lattice gauge chain we take half-space observables of two time
+slices --- a four-dimensional space --- and form the reflected pairing directly
+from the Boltzmann weights.  For $\beta>0$ the reconstructed physical space is
+two-dimensional.  Integrating out the future collapses four observables onto two
+states, and that collapse is the null space.  We prove: the pairing factors through an
+independently defined reconstruction map $\Phi$; its self-pairing rearranges
+into a manifest sum of two non-negative terms, from which positivity and the
+null space follow together; the null space is \emph{exactly} $\ker\Phi$, not
+merely non-empty; an explicit non-zero observable lies in it; and the quotient is
+isomorphic to the physical space \emph{by the map $\Phi$ itself}, not by a
+dimension count.
+
+The degeneracy is the mechanism the reconstruction exists to handle, and the one
+expected to reappear in systems with larger half-space algebras.  What is not claimed: this is two
+time slices and not $m$; still $\Z_2$, one variable per slice, fixed finite
+size, and not volume-uniform; $\Z_N$ for $N>2$ is untouched; and the completion
+step of the reconstruction is trivial here because every space in sight is
+finite-dimensional, which we state rather than present as work done.  Nothing in
+this paper is a claim about $\SU(N)$, the continuum limit, or the Yang--Mills
+mass gap.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{The step that usually does nothing in small examples}
+
+Reflection positivity gives a positive \emph{semi}-definite pairing on
+half-space observables.  The Hilbert space of the reconstruction is obtained by
+quotienting out its null space and completing \cite{OsterwalderSeiler,
+GlimmJaffe}.  In examples small enough to be fully verified, the pairing is
+often already definite, and then the quotient is the identity map --- the step
+is performed vacuously.  A formalisation in that situation has not exercised the
+construction; it has avoided it.
+
+That was the position of a companion development \cite{ErikssonOSChain}, which
+verified an end-to-end reconstruction for the $\Z_2$ chain and stated in its
+abstract that its own quotient did no work.  This paper removes that limitation
+by exhibiting, for the same measure, a pairing whose null space is provably
+non-zero, computing that null space exactly, and identifying the quotient.
+
+\subsection{Where the degeneracy comes from}
+
+Not from a contrivance.  Take half-space observables depending on \emph{two}
+time slices, $A : \Z_2 \times \Z_2 \to \C$.  That space is four-dimensional.
+For $\beta>0$ the reconstructed physical space is two-dimensional.  A four-dimensional space
+cannot inject into a two-dimensional one, so the pairing \emph{must} be
+degenerate; the content is to compute the degeneracy rather than to observe that
+it exists.  Physically, the collapse is the statement that the future has been
+integrated out: two observables that agree after that integration are the same
+state.
+
+This is the mechanism, and it is the one expected to reappear in systems with
+larger half-space algebras: a lattice with spatial extent has half-space
+observables in far greater number than its transfer operator has states.  We
+state that as an expectation about the systems targeted next, not as a theorem.
+
+\subsection{What is proved}
+
+Write $k_\beta(i,j) = e^{\beta s(i,j)}$ for the Boltzmann bond weight, $s=+1$ on
+equal spins and $-1$ otherwise.  The reflected pairing on two-slice observables
+is the explicit finite sum
+\[
+  \inn{A}{B} \;=\; \sum_{a,b,c,d}
+     \overline{A(b,a)}\; B(c,d)\; k_\beta(a,b)\,k_\beta(b,c)\,k_\beta(c,d),
+\]
+the four spins being $\sigma_{-2},\sigma_{-1},\sigma_0,\sigma_1$ with the
+reflection carrying the half-space $\{0,1\}$ to $\{-1,-2\}$.  Separately we
+define
+\[
+  (\Phi A)(c) \;=\; \sum_d k_\beta(c,d)\, A(c,d).
+\]
+Then:
+\begin{itemize}
+\item $\inn{A}{B} = \sum_{b,c}\overline{(\Phi A)(b)}\,k_\beta(b,c)\,(\Phi B)(c)$
+      --- the pairing factors through $\Phi$;
+\item $\inn{A}{A} = (e^\beta-e^{-\beta})\bigl(|v_0|^2+|v_1|^2\bigr)
+      + e^{-\beta}|v_0+v_1|^2$ with $v=\Phi A$, a manifest sum of two
+      non-negative terms;
+\item hence $\inn{A}{A}\ge 0$ for $\beta\ge 0$, and for $\beta>0$,
+      $\inn{A}{A}=0 \iff \Phi A = 0$;
+\item an explicit $A\neq 0$ with $\Phi A = 0$;
+\item $\bigl(\C^{2\times 2}\bigr)/\ker\Phi \cong \C^2$, the isomorphism
+      induced by $\Phi$;
+\item and, for $\beta>0$, the form the quotient carries is positive definite,
+      so it is a pre-Hilbert space --- though the identification with
+      $\C^2$ is linear, not isometric.
+\end{itemize}
+
+\subsection{What is deliberately not claimed}
+
+\begin{enumerate}
+\item \textbf{Two slices, not $m$.}  The construction is carried out at depth
+two.  Depth $m$ is not treated.
+\item \textbf{Still the smallest gauge group and no spatial extent.}  One
+$\Z_2$ variable per slice; for $\beta>0$ the physical space is two-dimensional
+(and one-dimensional at $\beta=0$, by Remark~\ref{rem:betapos}).
+\item \textbf{Fixed finite size, not volume-uniform.}  No statement here is
+uniform in a volume, and at this size the question does not arise.
+\item \textbf{The completion is trivial.}  Every space here is
+finite-dimensional, so the completion half of the reconstruction is vacuous.  We
+state that; we do not present it as work done.
+\item \textbf{Nothing about $\SU(N)$, the continuum limit, or the Clay problem}
+\cite{Clay}.  No reduction from any statement in this paper to the Yang--Mills
+mass gap is claimed, and none is known to the author.
+\end{enumerate}
+
+\section{The pairing, and the map}
+
+\begin{definition}[Reflected pairing]
+For $A,B : \Z_2\times\Z_2 \to \C$ set
+$\inn{A}{B}$ to be the four-fold sum displayed above.
+\end{definition}
+
+In Lean this is \osline{Z2Quotient}{87}{reflPairing}, built from
+\osline{Z2Identification}{76}{z2Bond} and from nothing else.
+
+\begin{remark}[Non-circularity]\label{rem:noncirc}
+The definition of the pairing mentions no reconstruction map, no transfer
+operator, and neither coefficient of the normalised transfer matrix.  Printing
+it exhibits its whole dependency set.  This is the condition that makes
+Theorem~\ref{thm:factor} a theorem about two independently defined objects
+rather than a restatement of a definition; the same discipline governs the
+companion development \cite{ErikssonOSChain}.
+\end{remark}
+
+\begin{definition}[Reconstruction map]
+$(\Phi A)(c) = \sum_d k_\beta(c,d) A(c,d)$, defined without reference to the
+pairing: \osline{Z2Quotient}{96}{slicePhi}, and as a linear map
+\osline{Z2Quotient}{106}{slicePhiLin}.
+\end{definition}
+
+\begin{theorem}[The pairing factors through $\Phi$]\label{thm:factor}
+$\displaystyle \inn{A}{B} \;=\; \sum_{b,c}
+   \overline{(\Phi A)(b)}\; k_\beta(b,c)\; (\Phi B)(c)$.
+\end{theorem}
+
+\begin{proof}[Proof, as formalised]
+Group the four-fold sum as $\sum_{b,c}\bigl[\sum_a \overline{A(b,a)}k_\beta(a,b)\bigr]
+k_\beta(b,c)\bigl[\sum_d k_\beta(c,d)B(c,d)\bigr]$.  The inner left bracket is
+$\overline{(\Phi A)(b)}$ because $k_\beta$ is real and symmetric; the inner right
+bracket is $(\Phi B)(c)$.
+\end{proof}
+
+Artifact: \osline{Z2Quotient}{128}{reflPairing\_eq}.
+
+\section{One identity, two consequences}
+
+\begin{theorem}[Sum of two non-negative terms]\label{thm:sos}
+With $v = \Phi A$,
+\[
+  \inn{A}{A} \;=\;
+  \bigl(e^{\beta}-e^{-\beta}\bigr)\bigl(|v_0|^2+|v_1|^2\bigr)
+  \;+\; e^{-\beta}\,|v_0+v_1|^2 .
+\]
+\end{theorem}
+
+\begin{proof}
+Expand Theorem~\ref{thm:factor} over the two-element index set, with
+$k_\beta(i,i)=e^\beta$ and $k_\beta(i,j)=e^{-\beta}$ for $i\neq j$, and complete
+the square in $v_0+v_1$.
+\end{proof}
+
+Artifact: \osline{Z2Quotient}{143}{reflPairing\_self}.  Both facts we need come
+from this one line.
+
+\begin{corollary}[Reflection positivity]\label{cor:pos}
+$\inn{A}{A}\ \ge\ 0$ for every $\beta\ge 0$.
+\end{corollary}
+
+\osline{Z2Quotient}{159}{reflPairing\_self\_nonneg}.
+
+\begin{corollary}[The null space, exactly]\label{cor:null}
+For $\beta>0$: $\;\inn{A}{A}=0 \iff \Phi A = 0$.
+\end{corollary}
+
+\osline{Z2Quotient}{171}{reflPairing\_self\_eq\_zero\_iff}.
+
+\begin{remark}[Why $\beta>0$, said rather than avoided]\label{rem:betapos}
+At $\beta=0$ the bond weight is constant and the kernel $k_\beta$ itself
+degenerates, so the coefficient $e^\beta-e^{-\beta}$ of
+Theorem~\ref{thm:sos} vanishes and the equivalence of
+Corollary~\ref{cor:null} fails.  Positivity survives at $\beta=0$;
+definiteness does not: at $\beta=0$ the whole line $v_0=-v_1$ becomes null, so the
+null space of the pairing is strictly larger than $\ker\Phi$ and the reconstructed
+space drops from two dimensions to one.  That is a theorem here, not an
+asserted caveat: \osline{Z2Quotient}{398}{kForm\_not\_definite\_at\_zero}
+exhibits the witness.  The hypotheses in the formalisation record exactly this
+split rather than excluding the point silently.
+\end{remark}
+
+\section{The null space is not zero}
+
+This is the point of the paper: without it the construction would have
+reproduced the trivial case.
+
+\begin{theorem}[Explicit null vector]\label{thm:null}
+Let $N(c,0) = k_\beta(c,1)$ and $N(c,1) = -k_\beta(c,0)$.  Then $\Phi N = 0$ and
+$N \neq 0$; consequently $\inn{N}{N} = 0$ for $\beta > 0$ and the null space is
+non-trivial.
+\end{theorem}
+
+\begin{proof}
+$(\Phi N)(c) = k_\beta(c,0)k_\beta(c,1) - k_\beta(c,1)k_\beta(c,0) = 0$, exactly.
+$N\neq 0$ because $N(0,0) = k_\beta(0,1) = e^{-\beta} > 0$: the Boltzmann weights
+are strictly positive, which is the only property of them used here.
+\end{proof}
+
+Artifacts: \osline{Z2Quotient}{210}{nullObs},
+\osline{Z2Quotient}{220}{slicePhi\_nullObs},
+\osline{Z2Quotient}{229}{nullObs\_ne\_zero},
+\osline{Z2Quotient}{235}{reflPairing\_nullObs}, and as a submodule statement
+\osline{Z2Quotient}{273}{nullSubmodule\_ne\_bot}.
+
+\section{The quotient is the physical space}
+
+\begin{theorem}[Quotient]\label{thm:quot}
+$\Phi$ is surjective, and the induced map
+\[
+  \bigl(\Z_2\times\Z_2 \to \C\bigr)\;/\;\ker\Phi \;\;\xrightarrow{\ \sim\ }\;\; \C^2
+\]
+is a linear isomorphism.  For $\beta>0$ the kernel is exactly the null space of
+the pairing, so this is the Gelfand--Naimark--Segal quotient of the reflected
+pairing.
+\end{theorem}
+
+Artifacts: \osline{Z2Quotient}{252}{slicePhi\_surjective},
+\osline{Z2Quotient}{265}{nullSubmodule},
+\osline{Z2Quotient}{268}{mem\_nullSubmodule\_iff},
+\osline{Z2Quotient}{283}{quotEquivPhysical}.
+
+\begin{remark}[Induced by the map, not by a count]
+Four and two are the dimensions, and a reader could observe that a
+two-dimensional quotient of a four-dimensional space by a two-dimensional
+subspace is $\C^2$ for trivial reasons.  That is not what is proved.  The
+isomorphism here is the one \emph{induced by $\Phi$}, so the quotient is the
+physical space \emph{because of what the reconstruction map does to
+observables}.  A dimension count would leave the identification unanchored to
+the physics.
+\end{remark}
+
+\begin{remark}[Which inner product the quotient carries]\label{rem:inner}
+Theorem~\ref{thm:quot} is a \emph{linear} isomorphism, and it is worth saying
+precisely what that does and does not settle.  The Gelfand--Naimark--Segal
+inner product does not transport to the standard Euclidean structure of
+$\C^2$; it transports to the kernel-weighted form
+\[
+  \inn{v}{w}_{k_\beta} \;=\; \sum_{b,c} \overline{v(b)}\, k_\beta(b,c)\, w(c),
+\]
+and the pairing of this paper is exactly that form pulled back along $\Phi$:
+\osline{Z2Quotient}{304}{reflPairing\_eq\_kForm}.  For $\beta>0$ this form is
+positive definite --- \osline{Z2Quotient}{336}{kForm\_definite} --- so the
+quotient is a genuine pre-Hilbert space and not merely a vector space, which
+is what entitles us to call it the Gelfand--Naimark--Segal quotient.  An
+\emph{isometric} identification with standard Euclidean $\C^2$ would
+additionally require the positive square root of $k_\beta$; that is not
+constructed here, and no isometry is claimed.
+\end{remark}
+\begin{remark}[What this adds to the companion paper]
+\cite{ErikssonOSChain} verified the chain
+measure $\to$ reflection positivity $\to$ Hilbert space $\to$ transfer operator
+$\to$ identification $\to$ decay, and proved that \emph{its} quotient step was
+the identity.  That statement was true of that system and is unaffected.  The
+present paper does not amend it; it supplies the case that paper did not cover.
+The two together exercise both branches: a pairing where the quotient is the
+identity, with that proved, and a pairing from the same measure where it is not.
+\end{remark}
+
+\section{Formalisation notes}
+
+Two decisions are worth recording.
+
+\paragraph{Independently defined, over a shared primitive.}  The pairing and
+the reconstruction map are defined independently over the same primitive
+Boltzmann bond weight $k_\beta$.  Neither is defined from the other --- that is
+the property non-circularity needs --- and their first interaction is
+Theorem~\ref{thm:factor}.  This is what makes
+Remark~\ref{rem:noncirc} checkable by printing a definition, and it is the same
+architecture as the companion development.
+
+\paragraph{Pattern matching instead of conditionals.}  The witnesses of
+Theorems~\ref{thm:null} and~\ref{thm:quot} were first written with a conditional
+on the two-element index.  A conditional on a decidable equality normalises to a
+form that the obvious simplification lemma does not match, and three routine
+proofs failed with goals displaying an unreduced conditional.  Defining the
+witnesses by pattern matching instead makes their two values reduce
+definitionally, and the proofs become rewrites backed by reflexivity.  The
+general lesson --- remove the awkward term from the statement rather than defeat
+it inside the proof --- is the same one that governs the algebraic steps of the
+companion development.
+
+\section{Reproducibility}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}
+of \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Every link in
+this paper was resolved against that commit, and checked to point at an actual
+declaration line, before compilation.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8423 jobs, success \\
+Oracle commands & 2460 \\
+\quad with axiom dependencies & 2438 \\
+\quad axiom-free & 22 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
+Project axioms & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The criteria this work was required to meet --- including the non-circularity
+condition of Remark~\ref{rem:noncirc} and the requirement that the null space be
+proved non-zero --- were fixed in
+\repofile{docs/O-BRIDGE-CHARTER.md}{docs/O-BRIDGE-CHARTER.md}, Amendment~9, in a
+commit preceding the existence of the module they govern.  Their verdicts are in
+\repofile{docs/VERIFICATION-LEDGER.md}{docs/VERIFICATION-LEDGER.md},
+Addendum~516.  The oracle script is
+\repofile{oracle\_check.lean}{oracle\_check.lean}.
+
+\section{Continuation}
+
+The next step is spatial extent: a transfer operator on a space that grows with
+the volume, where the half-space algebra is larger still and the quotient of
+this paper becomes indispensable rather than merely non-trivial.  That is where
+the present style of construction is expected to stop being easy, and it is the
+first step after which volume-uniformity --- the only property in this
+neighbourhood that could eventually bear on a mass gap --- becomes a meaningful
+question.  It is not reached here.
+
+\begin{thebibliography}{9}
+
+\bibitem{OsterwalderSeiler}
+K.~Osterwalder and E.~Seiler,
+\emph{Gauge field theories on a lattice},
+Annals of Physics \textbf{110} (1978), 440--471.
+
+\bibitem{GlimmJaffe}
+J.~Glimm and A.~Jaffe,
+\emph{Quantum Physics: A Functional Integral Point of View},
+2nd ed., Springer, 1987.
+
+\bibitem{ErikssonOSChain}
+L.~Eriksson,
+\emph{From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked
+Osterwalder--Seiler Chain for the $\Z_2$ Lattice Gauge Chain}, 2026.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+CADE-28, Lecture Notes in Computer Science \textbf{12699} (2021), 625--635.
+
+\bibitem{Mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+CPP 2020, 367--381.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills theory},
+Clay Mathematics Institute Millennium Prize Problem description, 2000.
+
+\end{thebibliography}
+
+\end{document}

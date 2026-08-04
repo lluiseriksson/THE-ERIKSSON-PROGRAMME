@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "lean_core": {
+    "source_checkpoint": "0919aa10",
+    "toolchain": "leanprover/lean4:v4.29.0-rc6",
+    "mathlib_commit": "07642720480157414db592fa85b626dafb71355b",
+    "latest_recorded_build": {
+      "status": "green",
+      "jobs": 8369,
+      "evidence": "docs/VERIFICATION-LEDGER.md"
+    },
+    "allowed_oracle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "frontier": {
+    "id": "hRpoly",
+    "status": "explicit_theorem_hypothesis",
+    "evidence": "HYPOTHESIS_FRONTIER.md"
+  },
+  "continuum": {
+    "status": "open",
+    "statement": "No proved 4D continuum limit or OS/Wightman reconstruction.",
+    "evidence": "HORIZON.md"
+  }
+}

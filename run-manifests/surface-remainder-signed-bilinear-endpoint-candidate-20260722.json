@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-signed-bilinear-endpoint-candidate-20260722",
+  "status": "candidate_only",
+  "claim_scope": "Signed cellwise K2 endpoint cancellation on [0,1/1000] x [0,pi]; no K2/G2/G6/S1'''/S2''' promotion.",
+  "configuration": {
+    "delta": "[0,1/1000]",
+    "t_birth_width": "1/50",
+    "boxes": 158,
+    "grid": 48,
+    "arb_bits": 140,
+    "order5_companion": true
+  },
+  "provenance": {
+    "git_head": "089f50530001e6380fd5982927cbad22400b36af",
+    "python": "3.12.6",
+    "python_flint": "0.9.0",
+    "driver": {
+      "path": "scripts/certify_surface_remainder_signed_bilinear_endpoint_candidate.py",
+      "sha256": "eceaa94627af7f3a47f31c28245c7ccb46e389d6b69c1ba3f35d13bce93e42bc"
+    },
+    "validator": {
+      "path": "scripts/validate_surface_remainder_signed_bilinear_endpoint_candidate.py",
+      "sha256": "b733b831bb712073648c09ac46738fe84d1c49419a78497c528cab609ed1b151"
+    }
+  },
+  "inputs": [
+    {"path": "scripts/probe_surface_remainder_signed_bilinear_with_tails.py", "sha256": "1cf394bb41e865fac25363c9ae7e4b0ec1d7d8ca6b37b639a046662c3510dd3c"},
+    {"path": "scripts/probe_surface_remainder_signed_bilinear_series.py", "sha256": "e7dc4581048a88c1caabaad994a04897abbe6a1b8317f8c432d0f6d8cb4de62e"},
+    {"path": "scripts/surface_remainder_delta0_series_design.py", "sha256": "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063"},
+    {"path": "scripts/surface_remainder_delta0_derivative_tail.py", "sha256": "63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b"},
+    {"path": "scripts/surface_remainder_companion_error_ordered.py", "sha256": "31f6d35dde85c47baeed2ab985574ab2cf4cb9210a756fc4dbf20532d2bb6cb2"},
+    {"path": "scripts/surface_bessel_integral_remainder.py", "sha256": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_signed_bilinear_endpoint_candidate_048.txt", "sha256": "fae7b1808a825cbe19704fa4cafbf152c3d3883ea22c974830f7f76bf2840621"},
+    {"path": "scripts/surface_signed_bilinear_endpoint_candidate_048_rerun.txt", "sha256": "fae7b1808a825cbe19704fa4cafbf152c3d3883ea22c974830f7f76bf2840621"}
+  ],
+  "validator_result": {
+    "verdict": "CANDIDATE_PASS",
+    "rows": 158,
+    "production_replay_byte_identical": true,
+    "worst_margin_lower": "0.884364280881655074615012602496",
+    "promotion": "NONE"
+  },
+  "quarantine_reason": "The signed endpoint route is not yet an independently audited K2 terminal proof and does not address the finite-beta H_tail relay or K4/S1'''/S2''' union."
+}

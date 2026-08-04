@@ -1,0 +1,9 @@
+=== CASCADE 1 floor: CERTIFIED interval sweep ===
+script sha256 : 8bfbeba35f7263d2e31c36ebc5fe8abebee0f9df21b1f8e0fbc65551de8f84bc
+python-flint 0.9.0  python 3.12.6  prec 120 bits
+SEG-A (800 intervals + stub): worst enclosure lower [1.03611 +/- 4.07e-6] ; stub [[1.0361 +/- 1.44e-5], [1.0361 +/- 1.44e-5]] True
+SEG-B (60 log intervals): worst enclosure lower [0.811835 +/- 8.65e-8]
+SEG-C deep tail x in (0,1e-3]: enclosure [[2.20442 +/- 3.73e-6], [2.21398 +/- 3.66e-6]] > 1/2 : True
+
+certified sweep complete (0s)
+VERDICT: floor m_low >= 1/2 on the whole window : CERTIFIED (this transcript, when committed, is the witness)

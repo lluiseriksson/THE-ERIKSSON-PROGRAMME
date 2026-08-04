@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-codex-mid24-63-63p25-20260723",
+  "status": "quarantined",
+  "claim_scope": "Fresh order-24 CWIN=3/2 production/replay sign candidate for beta [63,253/4]; direct W-sign evidence only; no H_tail, K2, K4, G2, or G6 promotion.",
+  "git_head": "f49b2ed398b695c1fef404e86ee445596a91bbcf",
+  "configuration": {"cwin": "3/2", "beta_order": 24, "t_order": 25, "min_dt": "1/100000", "precision": 180, "beta_domain": ["63", "253/4"]},
+  "inputs": [
+    {"path": "scripts/certify_surface_scaled_bulk_cwin3p2_mid_generic.py", "sha256": "58a2964b44cfc9e868bd5e77448a53b91b05ec3a140e35d1d520576aeadc9dba"},
+    {"path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_generic.py", "sha256": "b7512248f6efffc4d64a7ac7c629a0d0d962293a041dd1ded1415e963f1a153c"},
+    {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_generic.py", "sha256": "5b83f57679c84e661a8e4ebaaef8eee890e1981de6132c13703a0c90a90c953b"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "docs/SURFACE-G2-CWIN3P2-MID-PREREG-20260722.md", "sha256": "b3d2834255ecb83ff4ddb907b5d834daee958f2091f11b97c05b82657fa8814a"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_codex_mid24_63_63p25_20260723.txt", "sha256": "9566916f3152b0437d11881b3a1d3b9db62a9edcb6ab90c3edf8dc5665e3b5b8", "sha256_lf": "437bd0b25ec0ca5c6847af56472d5e9f92841a3bb31f8211d3c933d280b96b8b"},
+    {"path": "scripts/surface_scaled_bulk_codex_mid24_63_63p25_20260723_rerun.txt", "sha256": "9566916f3152b0437d11881b3a1d3b9db62a9edcb6ab90c3edf8dc5665e3b5b8", "sha256_lf": "437bd0b25ec0ca5c6847af56472d5e9f92841a3bb31f8211d3c933d280b96b8b"}
+  ],
+  "validator": {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_generic.py", "verdict": "PASS", "t_rows": 214, "production_replay_byte_identical": true},
+  "promotion": "NONE"
+}

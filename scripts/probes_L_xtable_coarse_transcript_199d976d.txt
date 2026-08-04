@@ -1,0 +1,13 @@
+=== DESIGN PROBES for L CROSS-TABLE, dz=0.50 TWINS (v2 priority subdivision, cap 3000000) ===
+script sha256 : 199d976d3a888185f9f32c100a4ddf70e1a6500ac26e181bc7651579a109963f
+module sha256 : 834802f9c9ee43b23a49573e3923febb4a7f124c0ad404c476596dc306d9be87
+module path   : C:\Users\lluis\AppData\Local\Temp\claude\C--Users-lluis-AppData-Local-Temp-eriksson-push2\0ba5b78b-54ad-4e59-b1a0-2f96f7549a16\scratchpad\Lxt_run\exp_integrator_arb.py
+DESIGN ENCLOSURE [probeB8a50] t[29/10,291/100] b[8,481/60]: q = [[-1.74043 +/- 1.19e-6], [0.969436 +/- 8.03e-8]] width 2.7099 (108437 cells)
+  [probeB8a50] q_lo = -1.740431184880  q_hi = 0.969436080195  q_mid = -0.385497552343  drained = True  (41s)
+DESIGN ENCLOSURE [probeB8b50] t[291/100,73/25] b[8,481/60]: q = [[-1.76862 +/- 4.37e-6], [1.02010 +/- 1.26e-6]] width 2.7887 (105482 cells)
+  [probeB8b50] q_lo = -1.768624361604  q_hi = 1.020098742098  q_mid = -0.374262809753  drained = True  (41s)
+DESIGN ENCLOSURE [probeBD50] t[29/10,291/100] b[15,301/20]: q = [[-2.06268 +/- 3.96e-6], [0.791870 +/- 4.76e-7]] width 2.8546 (625577 cells)
+  [probeBD50] q_lo = -2.062683958560  q_hi = 0.791869524866  q_mid = -0.635407216847  drained = True  (299s)
+DESIGN ENCLOSURE [probeBD250] t[291/100,73/25] b[15,301/20]: q = [[-2.06287 +/- 4.45e-6], [0.806158 +/- 3.61e-7]] width 2.8690 (620900 cells)
+  [probeBD250] q_lo = -2.062865559012  q_hi = 0.806158360094  q_mid = -0.628353599459  drained = True  (291s)
+dz=0.50 twins complete (673s) - design only.

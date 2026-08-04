@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order24-units41-47-20260724",
+  "status": "quarantined-candidate-only",
+  "claim_scope": "Order-24 candidate sign rows for beta [117/2,241/4]; no exhaustive finite-beta union, H_tail relay, G2, or G6 promotion.",
+  "source_transcript_git_head": "74fd6a283d024de2e0e26c4ca3876dbdc2c541de",
+  "configuration": {
+    "cwin": "3/2",
+    "beta_order": 24,
+    "t_order": 25,
+    "arb_bits": 180,
+    "min_dt": "1/100000",
+    "beta_width": "1/4",
+    "beta_domain": [
+      "117/2",
+      "241/4"
+    ],
+    "rows": 1278
+  },
+  "units": [
+    {
+      "index": 41,
+      "beta_domain": [
+        "117/2",
+        "235/4"
+      ],
+      "t_rows": 179,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_41_117_2_235_4.txt",
+        "sha256": "03c047fdfe3d7455838b719ddd59b77c4c78f7673bae692ae5efc0f2ad8a988d",
+        "sha256_lf": "90f087bd928cffe09aed8c2b973dd451d83542e5abf7cbb57621bc200158ddeb"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_41_117_2_235_4_rerun.txt",
+        "sha256": "03c047fdfe3d7455838b719ddd59b77c4c78f7673bae692ae5efc0f2ad8a988d",
+        "sha256_lf": "90f087bd928cffe09aed8c2b973dd451d83542e5abf7cbb57621bc200158ddeb"
+      }
+    },
+    {
+      "index": 42,
+      "beta_domain": [
+        "235/4",
+        "59"
+      ],
+      "t_rows": 180,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_42_235_4_59.txt",
+        "sha256": "d9c535d6e003a5f3dd6e04c9776f5f641d61032162becfce89b3f4614bef43c3",
+        "sha256_lf": "782e06705f5036bbd7a9e056b09bf99ef327015c24335b6766db10cef80ecd9f"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_42_235_4_59_rerun.txt",
+        "sha256": "d9c535d6e003a5f3dd6e04c9776f5f641d61032162becfce89b3f4614bef43c3",
+        "sha256_lf": "782e06705f5036bbd7a9e056b09bf99ef327015c24335b6766db10cef80ecd9f"
+      }
+    },
+    {
+      "index": 43,
+      "beta_domain": [
+        "59",
+        "237/4"
+      ],
+      "t_rows": 182,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_43_59_237_4.txt",
+        "sha256": "66e5145b8b0a004381e58772b637a9221343513f1ebe2e61673556f9446e4764",
+        "sha256_lf": "e56a8314c31e53ffd501425a4a2ad90cfec83c1423c5705acf0b82766cf49152"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_43_59_237_4_rerun.txt",
+        "sha256": "66e5145b8b0a004381e58772b637a9221343513f1ebe2e61673556f9446e4764",
+        "sha256_lf": "e56a8314c31e53ffd501425a4a2ad90cfec83c1423c5705acf0b82766cf49152"
+      }
+    },
+    {
+      "index": 44,
+      "beta_domain": [
+        "237/4",
+        "119/2"
+      ],
+      "t_rows": 182,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_44_237_4_119_2.txt",
+        "sha256": "5dbedd07cef585afb838a0e18c3faeff207706bd46483d30857ba3b23cc30f7a",
+        "sha256_lf": "db4d48d0c1c30c48f1bd1625abb02038c18132926943d2453a28770e9e269450"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_44_237_4_119_2_rerun.txt",
+        "sha256": "5dbedd07cef585afb838a0e18c3faeff207706bd46483d30857ba3b23cc30f7a",
+        "sha256_lf": "db4d48d0c1c30c48f1bd1625abb02038c18132926943d2453a28770e9e269450"
+      }
+    },
+    {
+      "index": 45,
+      "beta_domain": [
+        "119/2",
+        "239/4"
+      ],
+      "t_rows": 183,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_45_119_2_239_4.txt",
+        "sha256": "9881927fd04fd8dbba3499b0b377a009f707ebdf603d7e46e03f075464bce451",
+        "sha256_lf": "89aef64e979327c9f6d3084192446be3a3b4f3e8a105a0459bc409fbdbb7986e"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_45_119_2_239_4_rerun.txt",
+        "sha256": "9881927fd04fd8dbba3499b0b377a009f707ebdf603d7e46e03f075464bce451",
+        "sha256_lf": "89aef64e979327c9f6d3084192446be3a3b4f3e8a105a0459bc409fbdbb7986e"
+      }
+    },
+    {
+      "index": 46,
+      "beta_domain": [
+        "239/4",
+        "60"
+      ],
+      "t_rows": 185,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_46_239_4_60.txt",
+        "sha256": "e2fb591e5bc12d9650066f885d418447e98988175563c3bfb60b604482b71de3",
+        "sha256_lf": "6d9bdf59cdd3b34c4b130d9f3c6284780567ff1dd5804509601900d6ffad423c"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_46_239_4_60_rerun.txt",
+        "sha256": "e2fb591e5bc12d9650066f885d418447e98988175563c3bfb60b604482b71de3",
+        "sha256_lf": "6d9bdf59cdd3b34c4b130d9f3c6284780567ff1dd5804509601900d6ffad423c"
+      }
+    },
+    {
+      "index": 47,
+      "beta_domain": [
+        "60",
+        "241/4"
+      ],
+      "t_rows": 187,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_47_60_241_4.txt",
+        "sha256": "c65c943638086cf47fa047f66b89101e97cfa5ce3b9e9a44c7f4f5d6750fb731",
+        "sha256_lf": "b7c3c6e446c66908e56945851a870e4470dbe906dd338ae7332c5e34ebbbf54b"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_mid_cover_47_60_241_4_rerun.txt",
+        "sha256": "c65c943638086cf47fa047f66b89101e97cfa5ce3b9e9a44c7f4f5d6750fb731",
+        "sha256_lf": "b7c3c6e446c66908e56945851a870e4470dbe906dd338ae7332c5e34ebbbf54b"
+      }
+    }
+  ],
+  "dependencies": {
+    "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py": {
+      "path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py",
+      "sha256": "ca82fbaadf8bd115a9e59200f20dc3a768b0de04e8eb0169913ca603253f9022"
+    },
+    "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_unit.py": {
+      "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_unit.py",
+      "sha256": "ff9722c0d0fde8e6378bcd8dac3ed78965e7db684205cdca9fb75a746610fa12"
+    },
+    "scripts/certify_bulk_beta_taylor_arb.py": {
+      "path": "scripts/certify_bulk_beta_taylor_arb.py",
+      "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+    },
+    "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION4-PREREG-20260723.md": {
+      "path": "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION4-PREREG-20260723.md",
+      "sha256": "b862ebf27d5734a3ce53e0464a970b78fa310c617fcbb4bc39a444794b65ff4b"
+    }
+  },
+  "validation": {
+    "validator": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_unit.py",
+    "verdict": "PASS",
+    "units": 7,
+    "production_replay_byte_identical": true,
+    "strict_negative_rows": 1278,
+    "promotion": "NONE"
+  },
+  "promotion": "NONE",
+  "notes": "Candidate-only repair chain; global cover, signed derivative-tail contract, and sign-to-H_tail relay remain open."
+}

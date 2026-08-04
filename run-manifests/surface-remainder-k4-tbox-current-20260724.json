@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k4-tbox-current-20260724",
+  "status": "current-candidate-local-only",
+  "claim_scope": "Current-head candidate K4 centred t-box union on t in [3,pi], delta=[1/25,81/2000]; 15 adjacent units and 34560 cells. No K4/S1'''/S2'''/G2/G6 promotion.",
+  "git_head": "3b6da229585f68685fe02ff72126b958cab0d47a",
+  "manifest_generated_head": "f0b4229c303b6cf0c2707fd5b5d5220354d74e1e",
+  "config": {
+    "delta": [
+      "1/25",
+      "81/2000"
+    ],
+    "seed_grid": 12,
+    "max_cells": 2304,
+    "precision": 140
+  },
+  "t_union": [
+    "3",
+    "31415927/10000000"
+  ],
+  "units": [
+    {
+      "unit": "300_301",
+      "t_domain": [
+        "3",
+        "301/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_300_301_20260723_current_regen.txt",
+        "sha256": "b3126c61ef62699c079aed82dcb4d08138b8b3e466c90c56a9551fe962cdca24"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_300_301_20260723_current_regen_rerun.txt",
+        "sha256": "b3126c61ef62699c079aed82dcb4d08138b8b3e466c90c56a9551fe962cdca24"
+      }
+    },
+    {
+      "unit": "301_302",
+      "t_domain": [
+        "301/100",
+        "151/50"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_301_302_20260723_current_regen.txt",
+        "sha256": "cfaf774ea20b83f368ecc3b0585adf9716b013313f3ea86c40f9ee73c541deaf"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_301_302_20260723_current_regen_rerun.txt",
+        "sha256": "cfaf774ea20b83f368ecc3b0585adf9716b013313f3ea86c40f9ee73c541deaf"
+      }
+    },
+    {
+      "unit": "302_303",
+      "t_domain": [
+        "151/50",
+        "303/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_302_303_20260723_current_regen.txt",
+        "sha256": "94e133c3b80655e4f2bdd696fbd75583485bdb7da19a9bb5f5e20429de6fb837"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_302_303_20260723_current_regen_rerun.txt",
+        "sha256": "94e133c3b80655e4f2bdd696fbd75583485bdb7da19a9bb5f5e20429de6fb837"
+      }
+    },
+    {
+      "unit": "303_304",
+      "t_domain": [
+        "303/100",
+        "76/25"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_303_304_20260723_current_regen.txt",
+        "sha256": "21548040ded87e3184aafc78c823aeecdc41159998296cbca4da205fc6fe0ac2"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_303_304_20260723_current_regen_rerun.txt",
+        "sha256": "21548040ded87e3184aafc78c823aeecdc41159998296cbca4da205fc6fe0ac2"
+      }
+    },
+    {
+      "unit": "304_305",
+      "t_domain": [
+        "76/25",
+        "61/20"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_304_305_20260723_current_regen.txt",
+        "sha256": "c65f32a16d4d2be37ea4e03b10337a0c0d625fccc591157e45cbc1a5f8ac8830"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_304_305_20260723_current_regen_rerun.txt",
+        "sha256": "c65f32a16d4d2be37ea4e03b10337a0c0d625fccc591157e45cbc1a5f8ac8830"
+      }
+    },
+    {
+      "unit": "305_306",
+      "t_domain": [
+        "61/20",
+        "153/50"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_305_306_20260723_current_regen.txt",
+        "sha256": "0ac83bcff440fe71c0bd013ab265b1fe14310ecaf2da0b1891d51e344827f419"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_305_306_20260723_current_regen_rerun.txt",
+        "sha256": "0ac83bcff440fe71c0bd013ab265b1fe14310ecaf2da0b1891d51e344827f419"
+      }
+    },
+    {
+      "unit": "306_307",
+      "t_domain": [
+        "153/50",
+        "307/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_306_307_20260723_current_regen.txt",
+        "sha256": "1d27ce310ed8970a3cb2502333da92d8d54e310018cd272d84c0b870972c24e3"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_306_307_20260723_current_regen_rerun.txt",
+        "sha256": "1d27ce310ed8970a3cb2502333da92d8d54e310018cd272d84c0b870972c24e3"
+      }
+    },
+    {
+      "unit": "307_308",
+      "t_domain": [
+        "307/100",
+        "77/25"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_307_308_20260723_current_regen.txt",
+        "sha256": "0fdcc4da84a6506c6e0b465ced6d7d51264ba3693c7cc40609dcea859a391ffb"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_307_308_20260723_current_regen_rerun.txt",
+        "sha256": "0fdcc4da84a6506c6e0b465ced6d7d51264ba3693c7cc40609dcea859a391ffb"
+      }
+    },
+    {
+      "unit": "308_309",
+      "t_domain": [
+        "77/25",
+        "309/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_308_309_20260723_current_regen.txt",
+        "sha256": "36eb7f447b052e3c9fe9203d5da2bdadedbe2a8dd4dbeb89874c6a0051c623e3"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_308_309_20260723_current_regen_rerun.txt",
+        "sha256": "36eb7f447b052e3c9fe9203d5da2bdadedbe2a8dd4dbeb89874c6a0051c623e3"
+      }
+    },
+    {
+      "unit": "309_310",
+      "t_domain": [
+        "309/100",
+        "31/10"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_309_310_20260723_current_regen.txt",
+        "sha256": "57f0ab6bec2cb85678de23ba5d649b3425c7c3ef4b5478126639c76c7eddb5ee"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_309_310_20260723_current_regen_rerun.txt",
+        "sha256": "57f0ab6bec2cb85678de23ba5d649b3425c7c3ef4b5478126639c76c7eddb5ee"
+      }
+    },
+    {
+      "unit": "310_311",
+      "t_domain": [
+        "31/10",
+        "311/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_310_311_20260723_current_regen.txt",
+        "sha256": "0dc865eff3366f2681bd781d6ddd1a79d3b5b464728626f8d0545bbd6a15d2c6"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_310_311_20260723_current_regen_rerun.txt",
+        "sha256": "0dc865eff3366f2681bd781d6ddd1a79d3b5b464728626f8d0545bbd6a15d2c6"
+      }
+    },
+    {
+      "unit": "311_312",
+      "t_domain": [
+        "311/100",
+        "78/25"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_311_312_20260723_current_regen.txt",
+        "sha256": "c6ec84ea0dff9c2c3869d6a6179737ee544814343a4049a8525841073a4da565"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_311_312_20260723_current_regen_rerun.txt",
+        "sha256": "c6ec84ea0dff9c2c3869d6a6179737ee544814343a4049a8525841073a4da565"
+      }
+    },
+    {
+      "unit": "312_313",
+      "t_domain": [
+        "78/25",
+        "313/100"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_312_313_20260723_current_regen.txt",
+        "sha256": "95624f54a7041ab698d59c3d141f2e6e391dd399f3e0041111271ee5bbbd2aa4"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_312_313_20260723_current_regen_rerun.txt",
+        "sha256": "95624f54a7041ab698d59c3d141f2e6e391dd399f3e0041111271ee5bbbd2aa4"
+      }
+    },
+    {
+      "unit": "313_314",
+      "t_domain": [
+        "313/100",
+        "157/50"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_313_314_20260723_current_regen.txt",
+        "sha256": "ae662d1c63a605e4fcce7eeac5f5edcbd4f36cb1808aeef1ecf2ed125215ab2c"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_313_314_20260723_current_regen_rerun.txt",
+        "sha256": "ae662d1c63a605e4fcce7eeac5f5edcbd4f36cb1808aeef1ecf2ed125215ab2c"
+      }
+    },
+    {
+      "unit": "314_pi",
+      "t_domain": [
+        "157/50",
+        "31415927/10000000"
+      ],
+      "cells": 2304,
+      "production": {
+        "path": "scripts/surface_remainder_k4_tbox_314_pi_20260723_current_regen.txt",
+        "sha256": "4a949b481284ca3d2c0d0ab3db9e6625ffaa48ff77495437d36adfcd8cdaa4f9"
+      },
+      "replay": {
+        "path": "scripts/surface_remainder_k4_tbox_314_pi_20260723_current_regen_rerun.txt",
+        "sha256": "4a949b481284ca3d2c0d0ab3db9e6625ffaa48ff77495437d36adfcd8cdaa4f9"
+      }
+    }
+  ],
+  "total_cells": 34560,
+  "dependencies": {
+    "scripts/certify_surface_remainder_k4_t_box_probe.py": {
+      "path": "scripts/certify_surface_remainder_k4_t_box_probe.py",
+      "sha256": "5a1eaaa451b1cc4c5cd3a6fcaba0dc4b134ef3b557aa9cf2866bc89972d2a9fa"
+    },
+    "scripts/certify_surface_remainder_k4_centered_band.py": {
+      "path": "scripts/certify_surface_remainder_k4_centered_band.py",
+      "sha256": "c27eda831179f35e357cb3ea922e1e6035b8816960261dbff076165a7aa2f612"
+    },
+    "scripts/surface_remainder_centered_delta_integrator_design.py": {
+      "path": "scripts/surface_remainder_centered_delta_integrator_design.py",
+      "sha256": "f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d"
+    },
+    "scripts/surface_remainder_centered_delta_carrier.py": {
+      "path": "scripts/surface_remainder_centered_delta_carrier.py",
+      "sha256": "8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51"
+    },
+    "scripts/surface_remainder_complement_l3_smoke.py": {
+      "path": "scripts/surface_remainder_complement_l3_smoke.py",
+      "sha256": "caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37"
+    },
+    "scripts/surface_remainder_complement.py": {
+      "path": "scripts/surface_remainder_complement.py",
+      "sha256": "cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0"
+    },
+    "scripts/run_surface_remainder_k4_tbox_current_regen.py": {
+      "path": "scripts/run_surface_remainder_k4_tbox_current_regen.py",
+      "sha256": "e429fbde03fd88a5efc184449ed7231f5eb6825ac8ed555acd8fec9b74633f26"
+    },
+    "scripts/audit_surface_remainder_k4_tbox_current_regen.py": {
+      "path": "scripts/audit_surface_remainder_k4_tbox_current_regen.py",
+      "sha256": "595c5a30e85aaadb817bf063f7140b096b2abaf2c736afbd4e382cab1ad8d73b"
+    }
+  },
+  "validator": {
+    "path": "scripts/audit_surface_remainder_k4_tbox_current_regen.py",
+    "verdict": "PASS",
+    "production_replay_byte_identical": true
+  },
+  "supersedes": [
+    "surface-remainder-k4-tbox-current-regen-20260723"
+  ],
+  "promotion": "NONE",
+  "notes": "Topology, dependency hashes, local fractions, and replay equality pass; regular-ball overlap, delta union, and literal global S1'''/S2''' remain open."
+}

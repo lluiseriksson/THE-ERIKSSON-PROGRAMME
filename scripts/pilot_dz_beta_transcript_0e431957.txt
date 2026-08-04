@@ -1,0 +1,133 @@
+=== dz(beta) PILOT, priority subdivision ===
+script sha256 : 0e431957ff6f6fc963c531929a3389a7726928afa7e06289928b0b66d5960805
+module sha256 : 834802f9c9ee43b23a49573e3923febb4a7f124c0ad404c476596dc306d9be87
+probes_v2 sha256 : 1c61089f286ca90c144b7645c1ef63c8c2e6559de1f7394f3056a46844960b3b
+  ... 500000 cells (416s)
+  ... 1000000 cells (701s)
+  ... 1500000 cells (995s)
+  ... 2000000 cells (1273s)
+  ... 2500000 cells (1545s)
+  ... 3000000 cells (1809s)
+  ... 3500000 cells (2078s)
+  ... 4000000 cells (2351s)
+  ... 4500000 cells (2624s)
+  ... 5000000 cells (2896s)
+  ... 5500000 cells (3168s)
+  ... 6000000 cells (3441s)
+  ... 6500000 cells (3713s)
+  ... 7000000 cells (3982s)
+  ... 7500000 cells (4250s)
+  ... 8000000 cells (4521s)
+  NOTE: cell budget bound before dz criterion was met everywhere (finalized coarse cells are the lowest-priority ones by construction).
+  [pilotA-dz15] KNc = [[-1.21451e+27 +/- 3.76e+21], [9.33220e+26 +/- 4.99e+20]]
+  [pilotA-dz15] KD = [[-3.39379e+26 +/- 3.21e+20], [4.48365e+26 +/- 5.40e+19]]
+  [pilotA-dz15] KNt = [[-2.24652e+26 +/- 2.53e+20], [2.85811e+26 +/- 3.60e+20]]
+  [pilotA-dz15] GNc = [[-4.68992e+39 +/- 4.56e+33], [5.28348e+39 +/- 3.49e+33]]
+  [pilotA-dz15] GD = [[-1.95052e+39 +/- 4.87e+33], [1.72055e+39 +/- 4.29e+33]]
+  [pilotA-dz15] Wc = [[-4.70551e+66 +/- 2.11e+60], [4.70551e+66 +/- 2.30e+60]]
+PILOT [pilotA-dz15] t[3/2,151/100] b[14,281/20] dz=0.15 cap 8000000: <D> sign UNRESOLVED (8308220 cells, 4646s)
+  ... 500000 cells (382s)
+  ... 1000000 cells (638s)
+  ... 1500000 cells (895s)
+  ... 2000000 cells (1152s)
+  ... 2500000 cells (1410s)
+  ... 3000000 cells (1665s)
+  ... 3500000 cells (1919s)
+  ... 4000000 cells (2171s)
+  ... 4500000 cells (2422s)
+  ... 5000000 cells (2675s)
+  ... 5500000 cells (2939s)
+  ... 6000000 cells (3198s)
+  ... 6500000 cells (3451s)
+  ... 7000000 cells (3709s)
+  ... 7500000 cells (3967s)
+  ... 8000000 cells (4226s)
+  NOTE: cell budget bound before dz criterion was met everywhere (finalized coarse cells are the lowest-priority ones by construction).
+  [pilotB-dz15] KNc = [[-6.35869e+15 +/- 1.49e+8], [4.08819e+14 +/- 4.90e+8]]
+  [pilotB-dz15] KD = [[3.15833e+17 +/- 3.29e+10], [4.11722e+17 +/- 4.51e+11]]
+  [pilotB-dz15] KNt = [[-1.88895e+17 +/- 1.98e+11], [-1.45357e+17 +/- 1.80e+10]]
+  [pilotB-dz15] GNc = [[-3.24842e+22 +/- 2.84e+16], [3.25696e+22 +/- 4.63e+16]]
+  [pilotB-dz15] GD = [[-1.32954e+22 +/- 4.64e+16], [1.32867e+22 +/- 7.31e+15]]
+  [pilotB-dz15] Wc = [[-1.34632e+40 +/- 2.90e+34], [1.34941e+40 +/- 3.25e+33]]
+PILOT ENCLOSURE [pilotB-dz15] t[29/10,291/100] b[15,301/20] dz=0.15 cap 8000000: q = [[-1.41489e+5 +/- 0.491], [1.41815e+5 +/- 0.500]] width 283303.9912 (8144609 cells, 4287s)
+  ... 500000 cells (525s)
+  ... 1000000 cells (794s)
+  ... 1500000 cells (1060s)
+  ... 2000000 cells (1331s)
+  ... 2500000 cells (1604s)
+  ... 3000000 cells (1879s)
+  ... 3500000 cells (2155s)
+  ... 4000000 cells (2431s)
+  ... 4500000 cells (2706s)
+  ... 5000000 cells (2979s)
+  ... 5500000 cells (3255s)
+  ... 6000000 cells (3521s)
+  ... 6500000 cells (3785s)
+  ... 7000000 cells (4049s)
+  ... 7500000 cells (4313s)
+  ... 8000000 cells (4583s)
+  ... 8500000 cells (4854s)
+  ... 9000000 cells (5123s)
+  ... 9500000 cells (5394s)
+  ... 10000000 cells (5664s)
+  ... 10500000 cells (5935s)
+  ... 11000000 cells (6206s)
+  ... 11500000 cells (6478s)
+  ... 12000000 cells (6749s)
+  ... 12500000 cells (7020s)
+  ... 13000000 cells (7291s)
+  ... 13500000 cells (7563s)
+  ... 14000000 cells (7832s)
+  ... 14500000 cells (8101s)
+  ... 15000000 cells (8370s)
+  ... 15500000 cells (8638s)
+  ... 16000000 cells (8906s)
+  NOTE: cell budget bound before dz criterion was met everywhere (finalized coarse cells are the lowest-priority ones by construction).
+  [pilotA-dz10] KNc = [[-1.21451e+27 +/- 3.95e+21], [9.33220e+26 +/- 3.10e+20]]
+  [pilotA-dz10] KD = [[-3.39379e+26 +/- 4.17e+20], [4.48365e+26 +/- 1.50e+20]]
+  [pilotA-dz10] KNt = [[-2.24652e+26 +/- 2.05e+20], [2.85811e+26 +/- 3.12e+20]]
+  [pilotA-dz10] GNc = [[-4.68993e+39 +/- 4.63e+33], [5.28348e+39 +/- 4.31e+33]]
+  [pilotA-dz10] GD = [[-1.95052e+39 +/- 4.46e+33], [1.72055e+39 +/- 3.87e+33]]
+  [pilotA-dz10] Wc = [[-4.70551e+66 +/- 3.87e+60], [4.70551e+66 +/- 4.06e+60]]
+PILOT [pilotA-dz10] t[3/2,151/100] b[14,281/20] dz=0.10 cap 16000000: <D> sign UNRESOLVED (16308221 cells, 9023s)
+  ... 500000 cells (510s)
+  ... 1000000 cells (761s)
+  ... 1500000 cells (1012s)
+  ... 2000000 cells (1263s)
+  ... 2500000 cells (1515s)
+  ... 3000000 cells (1767s)
+  ... 3500000 cells (2018s)
+  ... 4000000 cells (2270s)
+  ... 4500000 cells (2523s)
+  ... 5000000 cells (2778s)
+  ... 5500000 cells (3031s)
+  ... 6000000 cells (3284s)
+  ... 6500000 cells (3538s)
+  ... 7000000 cells (3792s)
+  ... 7500000 cells (4046s)
+  ... 8000000 cells (4301s)
+  ... 8500000 cells (4556s)
+  ... 9000000 cells (4811s)
+  ... 9500000 cells (5067s)
+  ... 10000000 cells (5321s)
+  ... 10500000 cells (5573s)
+  ... 11000000 cells (5827s)
+  ... 11500000 cells (6079s)
+  ... 12000000 cells (6332s)
+  ... 12500000 cells (6593s)
+  ... 13000000 cells (6845s)
+  ... 13500000 cells (7099s)
+  ... 14000000 cells (7346s)
+  ... 14500000 cells (7587s)
+  ... 15000000 cells (7828s)
+  ... 15500000 cells (8069s)
+  ... 16000000 cells (8308s)
+  NOTE: cell budget bound before dz criterion was met everywhere (finalized coarse cells are the lowest-priority ones by construction).
+  [pilotB-dz10] KNc = [[-6.38772e+15 +/- 4.49e+8], [4.37862e+14 +/- 2.32e+8]]
+  [pilotB-dz10] KD = [[3.15367e+17 +/- 4.97e+11], [4.12187e+17 +/- 1.41e+10]]
+  [pilotB-dz10] KNt = [[-1.89093e+17 +/- 4.28e+11], [-1.45158e+17 +/- 3.80e+11]]
+  [pilotB-dz10] GNc = [[-3.24843e+22 +/- 2.97e+15], [3.25697e+22 +/- 1.21e+16]]
+  [pilotB-dz10] GD = [[-1.32954e+22 +/- 1.39e+16], [1.32867e+22 +/- 3.08e+16]]
+  [pilotB-dz10] Wc = [[-1.34787e+40 +/- 4.47e+34], [1.35097e+40 +/- 3.07e+34]]
+PILOT ENCLOSURE [pilotB-dz10] t[29/10,291/100] b[15,301/20] dz=0.10 cap 16000000: q = [[-1.42226e+5 +/- 0.384], [1.42553e+5 +/- 0.303]] width 284779.0811 (16144610 cells, 8369s)
+pilot complete (26326s) - design only.

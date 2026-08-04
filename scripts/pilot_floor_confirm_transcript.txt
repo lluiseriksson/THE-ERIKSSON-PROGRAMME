@@ -1,0 +1,18 @@
+=== parametric-floor confirmation (shrunk box A) ===
+script sha256 : d61dcb5d2e105da0a7fc3d63f871931270eeaf22611900ab1fa5c1213d710944
+module sha256 : 834802f9c9ee43b23a49573e3923febb4a7f124c0ad404c476596dc306d9be87
+probes_v2 sha256 : 1c61089f286ca90c144b7645c1ef63c8c2e6559de1f7394f3056a46844960b3b
+  ... 500000 cells (304s)
+  ... 1000000 cells (583s)
+  ... 1500000 cells (848s)
+  ... 2000000 cells (1100s)
+  ... 2500000 cells (1342s)
+  ... 3000000 cells (1636s)
+  NOTE: cell budget bound before dz criterion was met everywhere (finalized coarse cells are the lowest-priority ones by construction).
+  KNc = [[-8.18135e+18 +/- 2.99e+12], [-3.19792e+18 +/- 6.32e+11]]
+  KD = [[2.94809e+20 +/- 1.45e+14], [3.28424e+20 +/- 4.26e+14]]
+  KNt = [[-1.03775e+20 +/- 1.44e+14], [-9.25407e+19 +/- 2.69e+13]]
+  GNc = [[-5.85720e+18 +/- 1.54e+12], [5.59649e+19 +/- 3.03e+13]]
+  GD = [[-1.83978e+21 +/- 4.12e+15], [-1.23554e+21 +/- 2.16e+14]]
+  Wc = [[-5.18998e+40 +/- 1.39e+34], [-1.11584e+40 +/- 1.65e+34]]
+CONFIRM shrunk-box t[3/2,301/200] b[14,701/50] dz=0.15: <D> RESOLVED, q = [[-0.601059 +/- 3.16e-7], [-0.103451 +/- 4.91e-7]] width 0.4976 (3201524 cells, 1731s)

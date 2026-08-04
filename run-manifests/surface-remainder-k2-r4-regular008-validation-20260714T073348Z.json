@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-r4-regular008-validation-20260714T073348Z",
+  "claim_scope": "Joint executable validation of all eight delta [0,1/125] regular K2 segments: one commit, exact dependency hashes, 158 adjacent t boxes, frozen mixed grids, physical split 1181/1000, band radius 66/5, and strict lower margins.",
+  "status": "current",
+  "started_utc": "2026-07-14T07:33:48Z",
+  "finished_utc": "2026-07-14T07:33:48Z",
+  "command": [
+    "python",
+    "scripts/validate_surface_remainder_delta0_r4_extension_008_transcripts.py"
+  ],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/validate_surface_remainder_delta0_r4_extension_008_transcripts.py",
+    "sha256": "cfb524fa4c5670e7bede11f0ef01ba6a97cacc6c3c4b35f837bc9595c4d7ad3f",
+    "sha256_lf": "cfb524fa4c5670e7bede11f0ef01ba6a97cacc6c3c4b35f837bc9595c4d7ad3f"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {
+      "python-flint": "0.9.0"
+    }
+  },
+  "inputs": [
+    {
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_008.py",
+      "sha256": "77d4e05ce801232ee6a027599d1d702fd207fcc9ac2ac92b225ff915e1d1dffe",
+      "sha256_lf": "77d4e05ce801232ee6a027599d1d702fd207fcc9ac2ac92b225ff915e1d1dffe"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_008_0_13.txt",
+      "sha256": "c6c9e2d2b6cb1b6f8621e2e62ad0e4052e4e402428eceeac726cc82b220d5551",
+      "sha256_lf": "f9f46752de902ba0daf579009e7c5461e6fd8af631d9d60fcea10a5a8764714e"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_008_13_25.txt",
+      "sha256": "25bbeb9bb796dc8eeef4f4dca704c219302976444c4cc67b1bde493fa698729a",
+      "sha256_lf": "c1f2a8a9b553e4ddd850c0c033e15403f4a605e2954b011c4e710e2f5cafff16"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_008_25_38.txt",
+      "sha256": "0cbc5dd65e6ad0963ac35be139fdc489de5b1e63330b3469e5bc59b3b871e623",
+      "sha256_lf": "78355cb8a00600d1b2b83c5ad498cbcaf6234887dcda1172ff2e988066d02898"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_008_38_50.txt",
+      "sha256": "112175dbf4dc192661ec661c0f88d11d3e3b1623fd668f244c1d175ea8ebeb7c",
+      "sha256_lf": "64cca1b3372261decd1b02e5d32e254256daaafc8267ee72aedadbe22cd2a6ae"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_008_50_98.txt",
+      "sha256": "5a2bec1099fe6db413ee4b4c28498a226ff3819743be69b4097862c461aa07fd",
+      "sha256_lf": "6a7fde692227f62d4ce1d4cfdf9eb5f8b352583a6c2bbcb5f77f937de561c349"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_008_98_146.txt",
+      "sha256": "bc187ad141002e2a0c7cca13f38051196a056fc083faccc756734b2979a7bdc6",
+      "sha256_lf": "d43afb961f85bf6ef985eb8e364347bdf43795998708c86292117a51a090df49"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_008_146_152.txt",
+      "sha256": "37474a7945d0aee6ff61303b2084d0406838f9210f7df0cf659df5d9d7e2e661",
+      "sha256_lf": "68cae165dc2400a84557d6b3e26301a2550323137d76f76dd7e088a5833737ab"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_008_152_158.txt",
+      "sha256": "8a44f7c882b75798d0c594b54c431db609616f6c176453a9a7f96cdea1e30ab1",
+      "sha256_lf": "7ba9f8880da9f4f4405fc410b37017acad6372aa37baca821366ebefeae406a2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/validate_surface_remainder_delta0_r4_extension_008_transcript.txt",
+      "sha256": "716750f8bf1c2e950604cce92dbe7d76cea4d7bc6f368574d5b7bbf39950bbf0",
+      "sha256_lf": "3a41de9f79647c41d6cad49c03e62ee2fd62276cbe98f5fa059b363be60f9216"
+    }
+  ],
+  "supersedes": [
+    "surface-remainder-k2-r4-regular007-validation-20260713T182041Z"
+  ],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

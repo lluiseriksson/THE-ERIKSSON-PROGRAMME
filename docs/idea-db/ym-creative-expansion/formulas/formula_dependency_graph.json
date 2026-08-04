@@ -59,7 +59,7 @@
       "id": "tree.catalan_identity",
       "type": "source_atom",
       "repo": "rooted-tree-catalan-closure",
-      "status": "finite_evidence_and_open_general_lean_proof"
+      "status": "verified_artifact"
     },
     {
       "id": "riemann.error_budget",

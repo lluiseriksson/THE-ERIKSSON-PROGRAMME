@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "cascade2-independent-20260711T200448Z",
+  "claim_scope": "Independent clean rerun of the v88 Cascade 2 Step-0 Arb certificate. After replacing only volatile elapsed seconds, the fresh output is identical to scripts/cascade2_step0_eps_transcript.txt; all printed numbers and the CERTIFIED verdict match, and stderr was empty.",
+  "status": "current",
+  "started_utc": "2026-07-11T20:04:48.0648206Z",
+  "finished_utc": "2026-07-11T20:19:55.8492785Z",
+  "command": ["python", "-u", "cascade2_step0_eps.py"],
+  "working_directory": "scripts",
+  "script": {
+    "path": "scripts/cascade2_step0_eps.py",
+    "sha256": "db9fa640116f2c4feb21090df9bc4e70fa08c14809857f86e11ea74c4886d873",
+    "sha256_lf": "b78a0c33ea0dc4633d499d68905a91f0a96846730e83b92018064ed6aa898135"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"mpmath": "1.3.0", "python-flint": "0.9.0"}
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "path": "scripts/cascade2_step0_eps_transcript_independent_20260711.txt",
+      "sha256": "624810a09accef520e48f974b89004028cd783528b5c66d060294e9b16b9bb4e",
+      "sha256_lf": "acebb2d33cfa76bafe6122ac28be9ef282e3a76e64926cd4654e3ec69f07dd6f"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

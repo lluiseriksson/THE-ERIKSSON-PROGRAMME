@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k4-endpoint-strip-t295-20260726",
+  "status": "CERTIFIED_SCOPED_WITNESS",
+  "claim_scope": "Current-hash K4 endpoint strip at t=2.95, delta=[0.048,0.05]; two adjacent boxes, seven aggregate budget fractions with strict outward upper endpoint < 1. This is not a global K4 or S1'''/S2''' certificate.",
+  "git_head": "38c51dfeadeb2a3b37c3b7c3251f2025355ffb56",
+  "transcripts": {
+    "production": {
+      "path": "scripts/surface_remainder_k4_endpoint_strip_t295.txt",
+      "sha256": "8ad83ef9beb39df99e4667503c749ca45bfe6b9368e943c47910aac3968445c3"
+    },
+    "replay": {
+      "path": "scripts/surface_remainder_k4_endpoint_strip_t295_rerun.txt",
+      "sha256": "8ad83ef9beb39df99e4667503c749ca45bfe6b9368e943c47910aac3968445c3"
+    }
+  },
+  "driver": {
+    "path": "scripts/surface_remainder_k4_endpoint_strip_t295.py",
+    "sha256": "5ccc5e87cb96505f0c2716d497c0d5b8df724b8cca8a87fc7c6905f2a73633cc"
+  },
+  "validator": {
+    "path": "scripts/validate_surface_remainder_k4_endpoint_strip_t295.py",
+    "sha256": "8b8cfd4d5b34fd5fa86ea2703bae92329f353fee555ba35728deb9ab4a0ec586"
+  },
+  "dependencies": {
+    "scripts/surface_remainder_centered_delta_integrator_design.py": "f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d",
+    "scripts/surface_remainder_centered_delta_carrier.py": "8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51",
+    "scripts/surface_remainder_complement_l3_smoke.py": "caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37",
+    "scripts/surface_remainder_tjet.py": "fe10e63bb7383e9eb0518fd2fec5c7e3e1f03c5921a9fe661a9b1fcc40c1bd1c",
+    "scripts/surface_remainder_complement.py": "cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56",
+    "scripts/surface_bessel_integral_remainder.py": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"
+  },
+  "result": {
+    "segments": 2,
+    "delta_domain": ["0.048", "0.05"],
+    "t_stress": "2.95",
+    "production_replay_byte_equal": true,
+    "all_seven_totals_strictly_below_one": true,
+    "validator": "K4 T295 ENDPOINT STRIP VALIDATION PASS"
+  },
+  "promotion": "NONE"
+}

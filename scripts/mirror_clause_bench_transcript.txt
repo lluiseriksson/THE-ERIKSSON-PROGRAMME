@@ -1,0 +1,6 @@
+check 4: C = (c-s4)(c+s4) and d4 = sqrt2 sin((pi-t)/4) exact.
+check 1: min P'/s'^2 = 0.2459 (>= 0.2458: True); min w~/(P'+Q') = 0.9441 (>= 0.8881: True)
+check 2: true mirror-ball mass = 4.130500e+15 ; U-bound = 1.107661e+16 ; dominates: True (fat factor 2.7)
+check 3: M_I(2.9,15) = 2.7270 ; measured mirror = 0.0707 ; dominates: True ; slack factor = 38.6 (x10 class: < 100)
+check 4b: sup x e^(-4x) = 1/(4e) = 0.091970 ; beta*d4*e^(-4 beta d4) here = 0.007638 (<= sup: True)
+MIRROR BENCH: ALL CHECKS PASS

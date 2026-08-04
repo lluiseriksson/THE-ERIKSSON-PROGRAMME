@@ -1,5 +1,9 @@
 # Eq. (2.37) source dictionary commit queue
 
+## Routing invariant
+
+Every commit in this queue keeps `crosswalk.eq237.combined-postp-route` attached as the public operational route key. The crosswalk is repository metadata, not a primary source; use it to keep the fixed-`Z0'` display and post-(2.37) final summation on the same route to `cmp116PostPResidualSourceBound_of_eq237`, without splitting the packet into standalone normalized `Z0` or `Z0'` theorems.
+
 ## Commit 1 — source extraction only
 
 ```text
@@ -14,7 +18,13 @@ Touches only citation/catalog/report files. No Lean theorem unless the statement
 feat(RG): identify Eq237 source fiber with Lean Z0Fiber
 ```
 
-Target:
+Repository-side helper now available:
+
+```text
+cmp116Eq237Z0Fiber_mem_iff
+```
+
+Remaining source-side target:
 
 ```text
 cmp116Eq237_sourceFiber_mem_iff

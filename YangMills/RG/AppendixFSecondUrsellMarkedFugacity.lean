@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.AppendixFSecondUrsellWeightedTree
 import YangMills.KP.RootedLeafSummation
+import YangMills.KP.RootedCatalanExact
 
 /-!
 # Appendix F: marked target vertices for the weighted second-Ursell tree term
@@ -458,6 +459,112 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_four_pow_inv_
           simp [appendixFHoleHsharpWeightedTreeMarkedRootVertexSum,
             marked, all, W, B]
 
+/-- Catalan-strengthened aggregate rooted child-factorial consumer.  This is
+the same finite overcounting bridge as
+`appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_four_pow_inv_succ_mul_vertexSum`,
+but it uses the exact rooted child-factorial Catalan identity in place of the
+coarser `4^n` envelope. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_catalan_inv_succ_mul_vertexSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P) :
+    appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n ≤
+      ((((n : ℝ) + 1)⁻¹) * (catalan n : ℝ)) *
+        appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n := by
+  classical
+  let P := omegaHolePolymerSystem HF zK
+  let all : Finset (Fin (n + 1) → OmegaPolymerType HF zK) := Finset.univ
+  let marked : Finset (Fin (n + 1) → OmegaPolymerType HF zK) :=
+    all.filter (fun X => r ∈ skeleton HF (X 0).val)
+  let trees (X : Fin (n + 1) → OmegaPolymerType HF zK) :=
+    KP.spanningTrees (KP.incompGraph P X)
+  let topTrees : Finset (Finset (Sym2 (Fin (n + 1)))) :=
+    KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1)))
+  let W (X : Fin (n + 1) → OmegaPolymerType HF zK) : ℝ := ∏ j, w (X j)
+  let C (T : Finset (Sym2 (Fin (n + 1)))) : ℝ :=
+    ∏ v : Fin (n + 1), ((KP.rootedChildCount T v).factorial : ℝ)
+  let invFact : ℝ := (((n + 1).factorial : ℝ))⁻¹
+  let B : ℝ := (((n : ℝ) + 1)⁻¹) * (catalan n : ℝ)
+  have hW : ∀ X, 0 ≤ W X := by
+    intro X
+    exact Finset.prod_nonneg fun j _ => hw (X j)
+  have hC_nonneg : ∀ T, 0 ≤ C T := by
+    intro T
+    exact Finset.prod_nonneg fun v _ => Nat.cast_nonneg _
+  have htrees_subset_top : ∀ X, trees X ⊆ topTrees := by
+    intro X T hT
+    have hT' : T ∈ KP.spanningTrees (KP.incompGraph P X) := by
+      simpa [trees] using hT
+    unfold KP.spanningTrees at hT'
+    unfold topTrees KP.spanningTrees
+    rw [Finset.mem_filter, Finset.mem_powerset] at hT' ⊢
+    refine ⟨?_, hT'.2⟩
+    intro e he
+    rw [SimpleGraph.mem_edgeFinset, SimpleGraph.edgeSet_top,
+      Set.mem_compl_iff, Sym2.mem_diagSet]
+    have hmem : e ∈ (KP.incompGraph P X).edgeFinset := hT'.1 he
+    rw [SimpleGraph.mem_edgeFinset] at hmem
+    exact (KP.incompGraph P X).not_isDiag_of_mem_edgeSet hmem
+  have htop :
+      invFact * (∑ T ∈ topTrees, C T) ≤ B := by
+    have hagg := KP.rootedChildCount_factorialTreeSum_normalized_le_catalan n
+    have hagg' :
+        ((n : ℝ) + 1) * (invFact * (∑ T ∈ topTrees, C T)) ≤
+          (catalan n : ℝ) := by
+      simpa [topTrees, C, invFact, mul_assoc] using hagg
+    have hpos : 0 < (n : ℝ) + 1 := by positivity
+    calc
+      invFact * (∑ T ∈ topTrees, C T)
+          = (((n : ℝ) + 1)⁻¹) *
+              (((n : ℝ) + 1) *
+                (invFact * (∑ T ∈ topTrees, C T))) := by
+            rw [← mul_assoc, inv_mul_cancel₀ hpos.ne', one_mul]
+      _ ≤ (((n : ℝ) + 1)⁻¹) * (catalan n : ℝ) := by
+            exact mul_le_mul_of_nonneg_left hagg' (by positivity)
+      _ = B := rfl
+  have htreeFactor : ∀ X,
+      invFact * (∑ T ∈ trees X, C T) ≤ B := by
+    intro X
+    have hsub :
+        (∑ T ∈ trees X, C T) ≤ ∑ T ∈ topTrees, C T :=
+      Finset.sum_le_sum_of_subset_of_nonneg
+        (htrees_subset_top X)
+        (fun T _hT _hnot => hC_nonneg T)
+    calc
+      invFact * (∑ T ∈ trees X, C T)
+          ≤ invFact * (∑ T ∈ topTrees, C T) := by
+            exact mul_le_mul_of_nonneg_left hsub (by positivity)
+      _ ≤ B := htop
+  have hpoint : ∀ X ∈ marked,
+      invFact * (∑ T ∈ trees X, C T * W X) ≤ B * W X := by
+    intro X _hX
+    have hsum :
+        (∑ T ∈ trees X, C T * W X) =
+          (∑ T ∈ trees X, C T) * W X := by
+      rw [← Finset.sum_mul]
+    calc
+      invFact * (∑ T ∈ trees X, C T * W X)
+          = (invFact * (∑ T ∈ trees X, C T)) * W X := by
+            rw [hsum]
+            ring
+      _ ≤ B * W X := by
+            exact mul_le_mul_of_nonneg_right (htreeFactor X) (hW X)
+  calc
+    appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n
+        = ∑ X ∈ marked, invFact * (∑ T ∈ trees X, C T * W X) := by
+          simp [appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum,
+            marked, all, trees, W, C, P, invFact, Finset.mul_sum]
+    _ ≤ ∑ X ∈ marked, B * W X := by
+          exact Finset.sum_le_sum fun X hX => hpoint X hX
+    _ = B * ∑ X ∈ marked, W X := by
+          rw [Finset.mul_sum]
+    _ = B * appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n := by
+          simp [appendixFHoleHsharpWeightedTreeMarkedRootVertexSum,
+            marked, all, W, B]
+
 /-- Child-order assignment form of the aggregate rooted child-factorial
 consumer. -/
 theorem appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_four_pow_inv_succ_mul_vertexSum
@@ -473,6 +580,23 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_four_pow_inv_s
   rw [appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_eq_childFactorSum]
   exact
     appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_four_pow_inv_succ_mul_vertexSum
+      HF zK w r n hw
+
+/-- Child-order assignment form of the Catalan-strengthened aggregate rooted
+child-factorial consumer. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_catalan_inv_succ_mul_vertexSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P) :
+    appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum HF zK w r n ≤
+      ((((n : ℝ) + 1)⁻¹) * (catalan n : ℝ)) *
+        appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n := by
+  rw [appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_eq_childFactorSum]
+  exact
+    appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_catalan_inv_succ_mul_vertexSum
       HF zK w r n hw
 
 /-- The root-marked normalized tree sum is bounded by the child-factor version:
@@ -1032,6 +1156,56 @@ theorem appendixFHoleHsharpWeightedTreeTerm_le_four_pow_markedRootVertexSum
             appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n) := by
           exact mul_le_mul_of_nonneg_left hchild_vertex hpos.le
     _ = (4 : ℝ) ^ n *
+          appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n := by
+          rw [mul_assoc, ← mul_assoc ((n : ℝ) + 1) (((n : ℝ) + 1)⁻¹)]
+          rw [mul_inv_cancel₀ hpos.ne', one_mul]
+
+/-- Catalan-strengthened fixed-target weighted tree term reduced to the
+root-marked vertex-product sum.  This is the exact same finite reduction as
+`appendixFHoleHsharpWeightedTreeTerm_le_four_pow_markedRootVertexSum`, with
+the complete tree-shape entropy priced by `catalan n` instead of `4^n`. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_catalan_markedRootVertexSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (Q : OmegaPolymerType HF zK)
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P)
+    (hr : r ∈ skeleton HF Q.val) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Q.val n ≤
+      (catalan n : ℝ) *
+        appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n := by
+  have hmarked :
+      appendixFHoleHsharpWeightedTreeTerm HF zK w Q.val n ≤
+        ((n : ℝ) + 1) *
+          appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n :=
+    appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum
+      HF zK w Q r n hw hr
+  have hroot_child :
+      appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n ≤
+        appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n :=
+    appendixFHoleHsharpWeightedTreeMarkedRootSum_le_childFactorSum
+      HF zK w r n hw
+  have hchild_vertex :
+      appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n ≤
+        ((((n : ℝ) + 1)⁻¹) * (catalan n : ℝ)) *
+          appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n :=
+    appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_catalan_inv_succ_mul_vertexSum
+      HF zK w r n hw
+  have hpos : 0 < (n : ℝ) + 1 := by positivity
+  calc
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Q.val n
+        ≤ ((n : ℝ) + 1) *
+          appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n := hmarked
+    _ ≤ ((n : ℝ) + 1) *
+          appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n := by
+          exact mul_le_mul_of_nonneg_left hroot_child hpos.le
+    _ ≤ ((n : ℝ) + 1) *
+          (((((n : ℝ) + 1)⁻¹) * (catalan n : ℝ)) *
+            appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n) := by
+          exact mul_le_mul_of_nonneg_left hchild_vertex hpos.le
+    _ = (catalan n : ℝ) *
           appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n := by
           rw [mul_assoc, ← mul_assoc ((n : ℝ) + 1) (((n : ℝ) + 1)⁻¹)]
           rw [mul_inv_cancel₀ hpos.ne', one_mul]

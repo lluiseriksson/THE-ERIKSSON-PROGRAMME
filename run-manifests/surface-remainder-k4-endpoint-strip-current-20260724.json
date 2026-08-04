@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k4-endpoint-strip-current-20260724",
+  "status": "CERTIFIED_SCOPED_WITNESS",
+  "claim_scope": "Current-hash K4 endpoint strip at t=2.9, delta=[0.048,0.05]; two adjacent boxes, seven aggregate budget fractions with strict outward upper endpoint < 1. This is not a global K4 or S1'''/S2''' certificate.",
+  "git_head": "898ee08a5176be27d4822797eb15066b1e156ee6",
+  "transcript": {
+    "path": "scripts/surface_remainder_k4_endpoint_strip_transcript.txt",
+    "sha256": "2344be1d7bba38c56dc061db61b400cb8d218abe8e09f092611b1f6f6bb25504"
+  },
+  "driver": {
+    "path": "scripts/surface_remainder_k4_endpoint_strip_terminal.py",
+    "sha256": "c1b0c2c3aa62d1391c7d38feba7406738c679874530305487eb251c358e2b714"
+  },
+  "validator": {
+    "path": "scripts/validate_surface_remainder_k4_endpoint_strip.py",
+    "sha256": "4ba3ade70e7def0494b521bb7fa17a9903427d58a0f661df7c14465a2b2924e2"
+  },
+  "dependencies": {
+    "scripts/surface_remainder_centered_delta_integrator_design.py": "f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d",
+    "scripts/surface_remainder_centered_delta_carrier.py": "59343fa26b1b16fdb4f7d91f8e43fa05dbe8c12740e771df0a62ef1206acdd2a"
+  },
+  "promotion": "NONE"
+}

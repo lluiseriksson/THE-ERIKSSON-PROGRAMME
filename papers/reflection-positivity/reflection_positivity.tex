@@ -1,0 +1,403 @@
+% Machine-checked reflection positivity for finite abelian lattice gauge theory.
+% Lane: O (operator bridge), phase O-3, modules YangMills/OS/**.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\anchor}{bbadf68cb9d2433e2e3f88f910e7240acb6ae21d}
+\newcommand{\osfile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean}{\nolinkurl{#2}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\inn}[2]{\langle #1,\, #2\rangle}
+
+\title{A Machine-Checked Reflection-Positivity Framework\\
+for $\Z_N$ Lattice Gauge Theory,\\
+with the $\Z_2$ Wilson Instance}
+\author{Lluis Eriksson}
+\date{July 27, 2026 (version 1.1)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We machine-check, in Lean~4 with no \lean{sorry} and no project axioms, the
+Osterwalder--Seiler reflection positivity of a lattice gauge theory with finite
+abelian gauge group.  The development is organised so that the three
+ingredients are separated and each is proved on its own: an analytic step, a
+geometric step, and the single place where a property of the Boltzmann factor
+is actually used.
+
+The analytic step is that a crossing kernel of the form
+$K(x,y) = \sum_i c_i\,\varphi_i(x)\overline{\varphi_i(y)}$ with $c_i \ge 0$ is
+positive semidefinite, that this class is closed under products, and that it is
+closed under conjugation by a positive diagonal.  Formulating the hypothesis as
+a non-negative combination of characters rather than as non-negativity of
+Fourier coefficients removes any need for Bochner's theorem on a finite abelian
+group and for the Schur product theorem: the development uses no spectral and
+no matrix-positivity API.
+
+The geometric step is a splitting of the configuration space across the
+reflection plane under which the reflection is the swap and the Gibbs weight
+factors as $w(x)\,w(y)\,K(x,y)$.  We prove that the Osterwalder--Seiler pairing
+of an observable of one half against its reflection is then \emph{exactly} the
+quadratic form of $w(x)K(x,y)w(y)$, so that reflection positivity follows from
+the analytic step.
+
+The physical step is the instance.  For $\Z_2$ the Wilson factor
+$e^{\beta s}$, $s = \pm 1$, expands in the two characters with coefficients
+$(e^{\beta} \pm e^{-\beta})/2$, both non-negative exactly when $\beta \ge 0$;
+so the $\Z_2$ Wilson crossing kernel is positive semidefinite at non-negative
+coupling.  For $\Z_N$ with $N > 2$ the coefficients are discrete Bessel-type
+sums and their non-negativity is \emph{not} established here.
+
+We are explicit about what is absent: no Gelfand--Naimark--Segal quotient, no
+transfer operator, no identification of a Euclidean correlator with a matrix
+element, and therefore no mass gap.  Nothing here is a claim about $\SU(N)$,
+the continuum limit, or the Clay problem.
+\end{abstract}
+
+\section{What is proved, and what is not}
+
+Reflection positivity is the hypothesis from which Osterwalder and
+Seiler~\cite{OsterwalderSeiler} construct the physical Hilbert space of a
+lattice gauge theory and its transfer operator.  It is the first of four steps
+between a Euclidean lattice measure and a statement about a spectrum, the
+others being the Gelfand--Naimark--Segal quotient, the transfer operator
+itself, and the identification of Euclidean correlators with its matrix
+elements.
+
+This paper mechanizes the first step for a finite abelian gauge group, and
+\emph{only} the first step.  In particular the following are not established
+here, nor anywhere in the Lean development accompanying this paper: the GNS
+quotient; the existence of a transfer operator for any gauge theory; the
+identification $\mathbb{E}[A\cdot\theta_n B] = \inn{A\Omega}{T^n B\Omega}$; and
+any statement whatever about a mass gap.  A companion
+development~\cite{ErikssonObridge} proves the operator-theoretic criterion that
+would consume such a transfer operator once it exists; the two are not yet
+joined, and we do not claim they are.
+
+\section{The gauge system}
+
+Let $N \ge 1$ and let $\mathrm{Edge}$, $\mathrm{Plaq}$ be finite types.  A
+\emph{gauge system} is an incidence $\mathrm{inc} : \mathrm{Plaq} \to
+\mathrm{Edge} \to \Z_N$, a strictly positive single-plaquette Boltzmann factor
+$\mathrm{weight} : \Z_N \to \R$, and an involution $\theta$ of the edge set.  A
+configuration is $U : \mathrm{Edge} \to \Z_N$; the holonomy of a plaquette is
+the incidence-weighted sum
+\[
+  \mathrm{hol}(U,p) \;=\; \sum_{e} \mathrm{inc}(p,e)\,U(e),
+\]
+which for an abelian group is the whole content of ``the product around the
+boundary''; and the Gibbs weight is
+$\mathrm{boltz}(U) = \prod_p \mathrm{weight}(\mathrm{hol}(U,p))$.  Every
+expectation is the finite sum
+\[
+  \mathbb{E}[F] \;=\; \Bigl(\sum_U \mathrm{boltz}(U)\,F(U)\Bigr)\Big/ Z,
+  \qquad Z = \sum_U \mathrm{boltz}(U) > 0 ,
+\]
+so no measure theory occurs anywhere in the development.
+
+Carrying the lattice geometry as data rather than fixing a box means the
+analytic content is proved once, for every lattice and every reflection at
+once.  The price is that reflection invariance of the weight is a hypothesis
+rather than a consequence; it is a property of the geometry, and each concrete
+system discharges it.
+
+\section{The analytic step}
+
+\begin{definition}
+For a kernel $K : X \times X \to \C$ on a finite type write
+\[
+  Q_K(F) \;=\; \sum_{x}\sum_{y} \overline{F(x)}\,K(x,y)\,F(y),
+\]
+and call $K$ \emph{positive semidefinite} when $Q_K(F)$ is a non-negative real
+for every $F$.  (Stated in that form, reality is part of the conclusion rather
+than a side condition.)
+\end{definition}
+
+\begin{definition}[non-negative character combination]
+$K$ is a non-negative combination for the family $\varphi$ when $c_i \ge 0$ for
+all $i$ and $K(x,y) = \sum_i c_i\,\varphi_i(x)\overline{\varphi_i(y)}$.
+\end{definition}
+
+\begin{theorem}
+\label{thm:psd}
+A non-negative character combination is positive semidefinite.
+\end{theorem}
+
+\begin{proof}
+Put $w_i = \sum_y \overline{\varphi_i(y)}F(y)$.  Resumming,
+$Q_K(F) = \sum_i c_i\,\overline{w_i}\,w_i = \sum_i c_i |w_i|^2 \ge 0$.
+\end{proof}
+
+\begin{proposition}
+\label{prop:closure}
+The class is closed under entrywise products and under conjugation by a
+diagonal.
+\end{proposition}
+
+\begin{proof}
+For products, index by pairs: $\varphi_i\psi_j$ is again a family and
+$c_id_j \ge 0$.  For the diagonal, replace $\varphi_i$ by $D\varphi_i$; the
+coefficients are unchanged.
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:closure} is what would otherwise be the Schur product
+theorem, and Theorem~\ref{thm:psd} is what would otherwise be one direction of
+Bochner's theorem on a finite abelian group.  Defining the class by the shape
+of the combination rather than by a condition on Fourier coefficients makes
+both elementary, and the development consequently uses no spectral and no
+matrix-positivity API at all.
+\end{remark}
+
+\section{The geometric step}
+
+\begin{definition}[reflection splitting]
+A \emph{splitting} of a gauge system consists of a finite type
+$\mathrm{Half}$, an equivalence $\mathrm{Config} \simeq \mathrm{Half} \times
+\mathrm{Half}$ under which the reflection acts as the swap, a strictly positive
+half-space factor $w$, and a crossing kernel $K$, such that
+\[
+  \mathrm{boltz}(U) \;=\; w(x)\,w(y)\,K(x,y),
+  \qquad (x,y) = \text{the two halves of } U .
+\]
+\end{definition}
+
+\begin{definition}
+For $F$ a function of one half-space configuration, the
+Osterwalder--Seiler pairing is
+\[
+  \langle F \rangle_{\mathrm{OS}} \;=\;
+  \sum_U \mathrm{boltz}(U)\,\overline{F(x_U)}\,F(y_U).
+\]
+\end{definition}
+
+\begin{theorem}[the identity that does the work]
+\label{thm:identity}
+$\langle F\rangle_{\mathrm{OS}} = Q_{M}(F)$ with $M(x,y) = w(x)K(x,y)w(y)$.
+\end{theorem}
+
+\begin{proof}
+Reindex the sum over configurations by the splitting and factor the weight.
+\end{proof}
+
+\begin{corollary}[reflection positivity]
+\label{cor:rp}
+If the crossing kernel is a non-negative character combination then
+$\langle F\rangle_{\mathrm{OS}}$ is a non-negative real for every $F$.
+\end{corollary}
+
+\begin{proof}
+By Proposition~\ref{prop:closure} the half-space factors are absorbed into the
+combination, and Theorem~\ref{thm:psd} applies to $M$; conclude with
+Theorem~\ref{thm:identity}.
+\end{proof}
+
+\section{The physical step: where a Boltzmann factor is used}
+
+Sections 3 and 4 assume nothing about any particular weight.  The single place
+a property of the Boltzmann factor is used is here.
+
+\begin{lemma}[weights to kernels]
+\label{lem:conv}
+Let $X$ be a finite abelian group and let $\chi$ be a family with
+$\chi_i(x-y) = \chi_i(x)\overline{\chi_i(y)}$.  If $k(u) = \sum_i c_i\chi_i(u)$
+with $c_i \ge 0$, then $(x,y)\mapsto k(x-y)$ is a non-negative character
+combination.
+\end{lemma}
+
+\begin{theorem}[the $\Z_2$ Wilson instance]
+\label{thm:z2}
+For $\Z_2$ the Wilson factor is $e^{\beta s}$ with $s = \pm 1$.  Its expansion
+in the two characters of $\Z_2$ is
+\[
+  e^{\beta s} \;=\; c_0 + c_1\,\chi_1,
+  \qquad
+  c_0 = \frac{e^{\beta}+e^{-\beta}}{2},
+  \quad
+  c_1 = \frac{e^{\beta}-e^{-\beta}}{2},
+\]
+and $c_0 \ge 0$ always while $c_1 \ge 0$ exactly when $\beta \ge 0$.  Hence for
+$\beta \ge 0$ the $\Z_2$ Wilson crossing kernel is a non-negative character
+combination, and by Corollary~\ref{cor:rp} the pairing is positive.  For
+$\beta > 0$ the coefficient $c_1$ is strictly positive, so the weight is
+genuinely non-constant and the instance is not the degenerate $\beta = 0$ one.
+\end{theorem}
+
+The coefficients are written in that explicit form, rather than as $\cosh$ and
+$\sinh$, so that the mechanized proof needs no hyperbolic-function lemma: the
+non-negativity of $c_1$ is monotonicity of $\exp$.
+
+\begin{remark}[the limit of the instance]
+\label{rem:limit}
+Theorem~\ref{thm:z2} settles $\Z_2$ at non-negative coupling and nothing more.
+For $\Z_N$ with $N > 2$ the character coefficients of the Wilson factor are
+discrete Bessel-type sums; their non-negativity is a genuine analytic fact and
+is \emph{not} established here.  We state it as the natural next target rather
+than as folklore we are entitled to.
+\end{remark}
+
+\section{One instance carrying all four ingredients}
+\label{sec:endpoint}
+
+The predicates above are of a shape that admits degenerate inhabitants —
+positive semidefiniteness is satisfied by the zero kernel, a splitting by a
+one-point system — so a single named endpoint is given in which nothing is
+degenerate.
+
+\begin{theorem}[endpoint]
+\label{thm:endpoint}
+Consider the $\Z_2$ gauge system with two edges exchanged by the time
+reflection and one plaquette whose boundary is both of them, carrying the
+genuine Wilson factor $e^{\beta s}$.  Its plaquette holonomy is $x+y$, which in
+$\Z_2$ equals $x-y$: the plaquette \emph{straddles the reflection plane}, so the
+entire Gibbs weight is the crossing kernel and there is no half-space factor at
+all.  Then for every $\beta \ge 0$ and every observable $F$ of one half,
+$\langle F\rangle_{\mathrm{OS}}$ is a non-negative real.  For $\beta > 0$ the
+weight takes two distinct values, so the Gibbs measure is genuinely non-uniform
+and the reflection genuinely exchanges the two edges.
+\end{theorem}
+
+This is reflection positivity obtained by \emph{discharging} a gauge system, a
+splitting and a character expansion — not by assuming a pairing, and not with a
+constant weight.
+
+\begin{remark}[the size of the instance]
+\label{rem:size}
+It is a two-edge system.  A full temporal box, with spatial extent, several
+time slices and plaquettes of all three kinds — wholly on one side, wholly on
+the other, and straddling — is \emph{not} treated here.  The splitting
+structure is precisely the interface such a box would have to discharge, and
+discharging it is geometric bookkeeping this paper does not perform.  What the
+endpoint establishes is that the three steps compose on a system whose weight
+is the real Wilson factor at positive coupling, not that any physically
+interesting lattice has been handled.
+\end{remark}
+
+\section{What remains}
+
+Within the Osterwalder--Seiler chain the remaining obligations are the GNS
+quotient of the pairing proved positive here, the transfer operator with
+$0 \le T \le 1$ fixing the vacuum, and the identification of Euclidean
+correlators with its matrix elements.  The first of these is within reach of
+the library as it stands: a positive semidefinite sesquilinear form is a
+\lean{PreInnerProductSpace.Core}, which requires no definiteness, and the
+quotient by its null space is the separation quotient of the induced seminorm,
+which carries an inner-product-space instance already.  We record that as a
+measured observation about the library, not as work done.
+
+We do not claim that list is exhaustive for any particular notion of mass gap,
+and we do not claim any of it here.
+
+\section{Reproducibility and verification}
+
+All statements are machine-checked in Lean~4 (toolchain
+\lean{leanprover/lean4:v4.29.0-rc6}) against Mathlib pinned to commit
+\lean{07642720480157414db592fa85b626dafb71355b}.  The freeze is the source tree
+at commit \lean{\anchor}.  Build and oracle figures are recorded in the
+repository's verification ledger at that commit.  Every declaration reachable
+from the core root is subject to an axiom oracle; the transcript records that
+the axiom sets occurring are subsets of
+\lean{[propext, Classical.choice, Quot.sound]}, with zero occurrences of
+\lean{sorryAx} and no project axioms.
+
+\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.34\textwidth} >{\raggedright\arraybackslash}p{0.48\textwidth} l@{}}
+\toprule
+Statement here & Lean name & Mod. \\
+\midrule
+\endhead
+Gauge system, weight, expectation & \lean{GaugeData}, \lean{boltz},
+  \lean{expect} & Z \\
+Reflection on configurations & \lean{reflConfig}, \lean{ReflInvariant} & Z \\
+$Q_K$, positive semidefiniteness & \lean{kernelForm}, \lean{IsPSDKernel} & P \\
+Character combination & \lean{IsCharCombo} & P \\
+Theorem~\ref{thm:psd} & \lean{isPSDKernel\_of\_charCombo} & P \\
+Prop.~\ref{prop:closure} & \lean{isCharCombo\_mul},
+  \lean{isCharCombo\_diagConj} & P \\
+Splitting & \lean{ReflectionSplitting} & R \\
+OS pairing & \lean{osPairing}, \lean{osKernel} & R \\
+Theorem~\ref{thm:identity} & \lean{osPairing\_eq\_kernelForm} & R \\
+Cor.~\ref{cor:rp} & \lean{osPairing\_nonneg} & R \\
+Lemma~\ref{lem:conv} & \lean{isCharCombo\_of\_convolution} & W \\
+Theorem~\ref{thm:z2} & \lean{z2Wilson\_isCharCombo},
+  \lean{z2Wilson\_isPSDKernel}, \lean{z2Coeff\_one\_pos} & W \\
+Non-vacuity of the chain & \lean{minimalSplitting\_reflectionPositive} & R \\
+Thm.~\ref{thm:endpoint} & \lean{z2Wilson\_reflectionPositive},
+  \lean{z2WilsonSystem\_nondegenerate}, \lean{z2WilsonSystem\_refl\_ne\_id} & E \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+Modules: Z = \osfile{ZNSubstrate}{YangMills/OS/ZNSubstrate.lean};
+P = \osfile{PSDKernel}{YangMills/OS/PSDKernel.lean};
+R = \osfile{ReflectionSplitting}{YangMills/OS/ReflectionSplitting.lean};
+W = \osfile{WilsonCharCombo}{YangMills/OS/WilsonCharCombo.lean};
+E = \osfile{Z2Endpoint}{YangMills/OS/Z2Endpoint.lean}.
+Core root: \repofile{YangMillsCore.lean}{YangMillsCore.lean}; oracle driver:
+\repofile{oracle\_check.lean}{oracle\_check.lean}; governance and scope record:
+\repofile{docs/O-BRIDGE-CHARTER.md}{docs/O-BRIDGE-CHARTER.md}.
+
+\subsection*{Provenance}
+
+Reflection positivity for lattice gauge theories is due to Osterwalder and
+Seiler~\cite{OsterwalderSeiler}, and the character-expansion criterion for
+abelian models is classical; \textbf{no mathematical novelty is claimed for
+either}.  What is offered is the mechanization, and the separation of the
+argument into an analytic step, a geometric step, and a single point of
+contact with a Boltzmann factor, which is what makes the $\Z_N$, $N>2$ gap in
+Remark~\ref{rem:limit} visible as a precise open statement rather than a
+hand-wave.
+
+\begin{thebibliography}{9}
+
+\bibitem{OsterwalderSeiler}
+K.~Osterwalder and E.~Seiler,
+\emph{Gauge field theories on a lattice},
+Ann. Physics \textbf{110} (1978), 440--471.
+
+\bibitem{GlimmJaffe}
+J.~Glimm and A.~Jaffe,
+\emph{Quantum Physics: A Functional Integral Point of View},
+2nd ed., Springer, 1987.
+
+\bibitem{ErikssonObridge}
+L.~Eriksson,
+\emph{Clustering and the transfer-operator gap: a machine-checked
+dense-family criterion}, 2026.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+CADE~28 (2021), 625--635.
+
+\bibitem{Mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+CPP 2020, 367--381.
+
+\end{thebibliography}
+
+\end{document}

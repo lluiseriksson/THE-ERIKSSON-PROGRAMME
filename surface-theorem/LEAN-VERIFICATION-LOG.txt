@@ -1,0 +1,14 @@
+LEAN VERIFICATION LOG - surface-theorem/PhiMonotone.lean
+Date: 2026-07-09
+Command: lake env lean PhiMonotone.lean
+Toolchain: leanprover/lean4:v4.30.0-rc2
+Mathlib commit: cd3b69baae9cd81a572a3720f2372655eca39038
+Exit code: 0
+Output (verbatim):
+'amos_calibration'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'amos_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+'phi_unit_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'phi_step_of_recurrences' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No sorry, no admit, no warnings. Analytic inputs (recurrences at m, m+1; Amos
+bound at m) enter as named hypotheses hrec1/hrec2/hAmos per PHI-LEMMA.md.

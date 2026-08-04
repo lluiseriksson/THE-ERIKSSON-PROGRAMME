@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin4-candidate-36-37-20260722",
+  "claim_scope": "Candidate-only paired production/replay for beta [36,37], CWIN=4, t-order 13. No G2/G6 promotion.",
+  "status": "quarantined",
+  "started_utc": "2026-07-16T14:10:00Z",
+  "finished_utc": "2026-07-16T14:20:00Z",
+  "command": ["python", "scripts/run_surface_scaled_bulk_36_37_candidate.py"],
+  "working_directory": ".",
+  "environment": {"python": "3.12.6", "libraries": {"python-flint": "0.9.0"}},
+  "script": {"path": "scripts/run_surface_scaled_bulk_36_37_candidate.py", "sha256": "CBD0B860F0560BAC50CCEBA0310CD42DE244483572E379CE8B06FDD0E6632B9F"},
+  "supersedes": [],
+  "quarantine_reason": "candidate-only CWIN=4 strip; finite-beta bridge and relay remain open",
+  "git_head_recorded_by_transcripts": "8b4a17c0681601d0d433ed769d23ce8daa8269a9",
+  "configuration": {"cwin": "4", "beta_order": 12, "t_order": 13, "beta_step": "1/8", "precision": 180},
+  "inputs": [
+    {"path": "docs/SURFACE-SCALED-BULK-36-37-PREREG.md", "sha256": "4298A14B9DEC3F28B6D4423D30BBD1823227579C55D0AAE432C85395FA7B7997"},
+    {"path": "scripts/certify_surface_scaled_bulk_36_37_candidate.py", "sha256": "C267F15CF6D72B5881BBFB31013FC37DFAEA68DEAC2BC8EE4F17C559E234B078"},
+    {"path": "scripts/run_surface_scaled_bulk_36_37_candidate.py", "sha256": "CBD0B860F0560BAC50CCEBA0310CD42DE244483572E379CE8B06FDD0E6632B9F"},
+    {"path": "scripts/validate_surface_scaled_bulk_36_37_candidate.py", "sha256": "0A4E429675CC2A79479632E4ECF9AC52DE7C8BA33119AC27E9FC4C7B755ABDE2"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_36_37.txt", "sha256": "D1009B55989BD096C1BA5F46FE9FB3AFF0C7A91931A44A53B5B211022248E7DC"},
+    {"path": "scripts/surface_scaled_bulk_36_37_rerun.txt", "sha256": "D1009B55989BD096C1BA5F46FE9FB3AFF0C7A91931A44A53B5B211022248E7DC"}
+  ],
+  "units": [
+    {"name": "36_37", "beta": ["36", "37"], "production": {"path": "scripts/surface_scaled_bulk_36_37.txt", "sha256": "D1009B55989BD096C1BA5F46FE9FB3AFF0C7A91931A44A53B5B211022248E7DC"}, "replay": {"path": "scripts/surface_scaled_bulk_36_37_rerun.txt", "sha256": "D1009B55989BD096C1BA5F46FE9FB3AFF0C7A91931A44A53B5B211022248E7DC"}}
+  ],
+  "promotion": "NONE",
+  "nonpromotion_reasons": ["CWIN=4 is not the registered CWIN=3/2 G2 relay", "finite-beta bridge and H_tail relay remain open"]
+}

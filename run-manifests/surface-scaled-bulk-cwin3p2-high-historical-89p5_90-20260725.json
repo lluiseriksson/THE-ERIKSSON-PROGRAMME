@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-high-historical-89p5_90-20260725",
+  "claim_scope": "Historical paired production/replay candidate for beta [179/2,90], CWIN=3/2, beta-order 40, t-order 45, Arb precision 220. Current validator replayed the stored pair; no G2/G6 or H_tail promotion.",
+  "status": "current-candidate",
+  "historical_git_head_at_run": "8b4a17c0681601d0d433ed769d23ce8daa8269a9",
+  "command": [
+    "python",
+    "scripts\\validate_surface_scaled_bulk_cwin3p2_high_unit.py",
+    "--unit",
+    "89p5_90",
+    "--lo",
+    "179/2",
+    "--hi",
+    "90"
+  ],
+  "environment": {
+    "python": "3.12.6",
+    "python_flint": "0.9.0",
+    "arb_bits": 220,
+    "beta_order": 40,
+    "t_order": 45
+  },
+  "inputs": [
+    {
+      "path": "scripts\\certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py",
+      "sha256": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248"
+    },
+    {
+      "path": "scripts\\certify_bulk_beta_taylor_scaled_design.py",
+      "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"
+    },
+    {
+      "path": "scripts\\certify_bulk_beta_taylor_arb.py",
+      "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+    },
+    {
+      "path": "scripts\\validate_surface_scaled_bulk_cwin3p2_high_unit.py",
+      "sha256": "ef2348a23101332f48efbb7fdc52777fcaf4a4c92ea4d57d3a4735af50d421b2"
+    }
+  ],
+  "outputs": {
+    "production": {
+      "path": "scripts\\surface_scaled_bulk_89p5_90.txt",
+      "sha256": "f11c69ac719919a5c62982f44cca0dd9c40d6afde2434e5a19047e28885782e4"
+    },
+    "replay": {
+      "path": "scripts\\surface_scaled_bulk_89p5_90_rerun.txt",
+      "sha256": "f11c69ac719919a5c62982f44cca0dd9c40d6afde2434e5a19047e28885782e4"
+    }
+  },
+  "result": {
+    "beta_domain": [
+      "179/2",
+      "90"
+    ],
+    "t_rows": 461,
+    "production_replay_byte_equal": true,
+    "all_upper_bounds_negative": true,
+    "validator": "CWIN3P2 HIGH VALIDATION PASS"
+  },
+  "promotion": "NONE",
+  "supersedes": []
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-gap52_52p0625-20260722",
+  "claim_scope": "Candidate-only paired production/replay for beta [52,833/16] with CWIN=3/2, order-30/t-order-37 rows. Sign rows do not imply H_tail; no G2/G6 promotion.",
+  "status": "quarantined",
+  "started_utc": "2026-07-22T10:56:34.760398Z",
+  "finished_utc": "2026-07-22T10:56:34.760398Z",
+  "command": [
+    "python",
+    "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py",
+    "--unit",
+    "gap52_52p0625",
+    "--lo",
+    "52",
+    "--hi",
+    "833/16"
+  ],
+  "working_directory": ".",
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {
+      "python-flint": "0.9.0"
+    }
+  },
+  "inputs": [
+    {
+      "path": "docs/SURFACE-SCALED-BULK-CWIN3P2-GAP31-74-PILOT-PREREG-20260722.md",
+      "sha256": "e0fa008e77756316af3fddfbd7ce4b5212006cb4f6f827fc28001659c42b49f9",
+      "sha256_lf": "e0fa008e77756316af3fddfbd7ce4b5212006cb4f6f827fc28001659c42b49f9"
+    },
+    {
+      "path": "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py",
+      "sha256": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b",
+      "sha256_lf": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b"
+    },
+    {
+      "path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py",
+      "sha256": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248",
+      "sha256_lf": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248"
+    },
+    {
+      "path": "scripts/certify_bulk_beta_taylor_scaled_design.py",
+      "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d",
+      "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"
+    },
+    {
+      "path": "scripts/certify_bulk_beta_taylor_arb.py",
+      "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa",
+      "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+    },
+    {
+      "path": "scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py",
+      "sha256": "ef2348a23101332f48efbb7fdc52777fcaf4a4c92ea4d57d3a4735af50d421b2",
+      "sha256_lf": "ef2348a23101332f48efbb7fdc52777fcaf4a4c92ea4d57d3a4735af50d421b2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/surface_scaled_bulk_gap52_52p0625.txt",
+      "sha256": "99a1d9c7ea51b0c74b5da509c555b1d8bea759fea7b81daa9376f6dd6a57d617",
+      "sha256_lf": "1ffc1f3d2cf8291fbd1d25b5033a633b27739ce7c5f9c36b9fe9827dbbc651af"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_gap52_52p0625_rerun.txt",
+      "sha256": "99a1d9c7ea51b0c74b5da509c555b1d8bea759fea7b81daa9376f6dd6a57d617",
+      "sha256_lf": "1ffc1f3d2cf8291fbd1d25b5033a633b27739ce7c5f9c36b9fe9827dbbc651af"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": "Pilot diagnostic cell; retained as an isolated midpoint stress witness, not a relay unit."
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-high-78p125-78p625-corrected-20260724",
+  "status": "current",
+  "claim_scope": "Candidate-only paired production/replay topology for beta [625/8,629/8] with CWIN=3/2. Sign rows do not imply H_tail; no G2/G6 promotion.",
+  "working_directory": ".",
+  "environment": {"python": "3.12.6", "libraries": {"python-flint": "0.9.0"}},
+  "units": [
+    {
+      "name": "cwin3p2_high_78p125_78p25",
+      "production": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_78p125_78p25.txt", "sha256": "dd4899037b097e37aeb925648f7372ca67401e0b7451838d96afd101f9973961", "sha256_lf": "2909bdd48e649c8a062ff2954340e8de4272a8c717edd60b09dd61b9a54e2d52"},
+      "replay": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_78p125_78p25_rerun.txt", "sha256": "dd4899037b097e37aeb925648f7372ca67401e0b7451838d96afd101f9973961", "sha256_lf": "2909bdd48e649c8a062ff2954340e8de4272a8c717edd60b09dd61b9a54e2d52"}
+    },
+    {
+      "name": "cwin3p2_high_78p25_78p375",
+      "production": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_78p25_78p375.txt", "sha256": "7093845f033ca32ac5492ba374584a0007fad2f3d90aa6f8c791e99be220dd99", "sha256_lf": "5185d3c985060304bf791259b9a5f04fa5f02674998f1a63ed7840f547bca151"},
+      "replay": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_78p25_78p375_rerun.txt", "sha256": "7093845f033ca32ac5492ba374584a0007fad2f3d90aa6f8c791e99be220dd99", "sha256_lf": "5185d3c985060304bf791259b9a5f04fa5f02674998f1a63ed7840f547bca151"}
+    },
+    {
+      "name": "cwin3p2_high_78p375_78p5",
+      "production": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_78p375_78p5.txt", "sha256": "136934d70f25d4336773e416d18e24a445d88e5ba204da3c36e82aacff7e43be", "sha256_lf": "8df590135cccd1a3cdc2331854c2f3b0b7cace8bffaa5b487ba873ae7264b46a"},
+      "replay": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_78p375_78p5_rerun.txt", "sha256": "136934d70f25d4336773e416d18e24a445d88e5ba204da3c36e82aacff7e43be", "sha256_lf": "8df590135cccd1a3cdc2331854c2f3b0b7cace8bffaa5b487ba873ae7264b46a"}
+    },
+    {
+      "name": "cwin3p2_high_78p5_78p625",
+      "production": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_78p5_78p625.txt", "sha256": "f6a8f4d95c85ea29bd6ff0cb73f4551376725635d54563333af9259a8c2fae03", "sha256_lf": "ef2e4553c96649a18831bec05463c5b6cb17a4d635a0fea5e90f5caa0f7c66a8"},
+      "replay": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_78p5_78p625_rerun.txt", "sha256": "f6a8f4d95c85ea29bd6ff0cb73f4551376725635d54563333af9259a8c2fae03", "sha256_lf": "ef2e4553c96649a18831bec05463c5b6cb17a4d635a0fea5e90f5caa0f7c66a8"}
+    }
+  ],
+  "dependencies": {
+    "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b",
+    "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248",
+    "scripts/certify_bulk_beta_taylor_scaled_design.py": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d",
+    "scripts/certify_bulk_beta_taylor_arb.py": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa",
+    "scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py": "ef2348a23101332f48efbb7fdc52777fcaf4a4c92ea4d57d3a4735af50d421b2"
+  },
+  "promotion": "NONE"
+}

@@ -151,6 +151,31 @@ theorem appendixFSecondUrsell_closed_le_four_mul_rawRoot
     _ = 4 * M * A * K := by
           ring
 
+/-- The Appendix-F half-budget also supplies the convexity/smallness condition
+needed by the first `K#` estimate.
+
+This names the first component of
+`appendixFSecondUrsell_sourceObligations_of_halfBudget` separately, so callers
+that only need the first-gas condition `2*A*K <= 1` do not need to carry the
+closed denominator/profile side of the second-Ursell estimate. -/
+theorem appendixFSecondUrsell_ksharpSmallness_of_halfBudget
+    {d : ℕ} {κ₀ A K : ℝ}
+    (hA : 0 ≤ A)
+    (hK : 0 ≤ K)
+    (hhalf :
+      appendixFSecondUrsellLeafConstant d κ₀ *
+          (2 * A * K) ≤ 1 / 2) :
+    2 * A * K ≤ 1 := by
+  have hAK0 : 0 ≤ 2 * A * K :=
+    mul_nonneg (mul_nonneg zero_le_two hA) hK
+  have hL1 : 1 ≤ appendixFSecondUrsellLeafConstant d κ₀ :=
+    appendixFSecondUrsellLeafConstant_one_le d κ₀
+  have hleL :
+      2 * A * K ≤
+        appendixFSecondUrsellLeafConstant d κ₀ * (2 * A * K) := by
+    nlinarith
+  linarith
+
 /-- A half-budget plus a final profile bound produces the three source
 obligations usually passed separately to the leaf-summation endpoint:
 `hsmall`, `hρ1`, and `hBclosed`. -/
@@ -170,16 +195,8 @@ theorem appendixFSecondUrsell_sourceObligations_of_halfBudget
         (2 * A * K)) *
         (1 - appendixFSecondUrsellLeafConstant d κ₀ *
           (2 * A * K))⁻¹ ≤ S := by
-  have hAK0 : 0 ≤ 2 * A * K :=
-    mul_nonneg (mul_nonneg zero_le_two hA) hK
-  have hL1 : 1 ≤ appendixFSecondUrsellLeafConstant d κ₀ :=
-    appendixFSecondUrsellLeafConstant_one_le d κ₀
   have hsmall : 2 * A * K ≤ 1 := by
-    have hleL :
-        2 * A * K ≤
-          appendixFSecondUrsellLeafConstant d κ₀ * (2 * A * K) := by
-      nlinarith
-    linarith
+    exact appendixFSecondUrsell_ksharpSmallness_of_halfBudget hA hK hhalf
   have hrho :
       appendixFSecondUrsellLeafConstant d κ₀ * (2 * A * K) < 1 := by
     linarith

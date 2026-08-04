@@ -34,6 +34,11 @@ Use `frontier` when the live obstruction is a `lean_linked` operational card
 with open questions rather than a primary `source_pending` citation; it reports
 the first next question, Lean target count, local text pointer, and compact
 artifact/URL availability.
+Use `lean <symbol>` for both direct Lean targets and dictionary-link symbols,
+including `dictionary_open` or `staging_interface` navigation records.
+Use `search <term>` for catalog text, Lean targets, dictionary-link symbols, and
+`discharged_by` provenance strings. Search hits are navigation only: the
+honesty-bearing fields remain the catalog `status` and `blocker` text.
 Use `head-refs` to audit operational source prompts that mention repository
 commits.  It classifies each commit anchor as `current`, `ancestor`,
 `not-ancestor`, or `missing`, so stale prompt context can be refreshed without
@@ -59,6 +64,23 @@ Sin `--include-raw`, el ZIP contiene únicamente catálogos, manifiestos, script
 6. `source_extracted`: fórmula, hipótesis, cuantificadores y convenciones ya están transcritos con precisión.
 7. `lean_linked`: el registro se enlaza con declaraciones Lean concretas.
 8. `theorem_checked`: el consumidor Lean compila y pasa el oracle check.
+
+## Promotion Checklist
+
+Before promoting a citation to `source_extracted`, record all of these gates in
+the catalog entry or an indexed handoff file:
+
+- artifact hash and relative private-artifact path for every PDF, OCR text, or
+  render used;
+- visual page confirmation for formula-bearing pages, especially when OCR is
+  corrupt or tag-localization is ambiguous;
+- exact formula body, assumptions, quantifiers, constants, and source-local
+  conventions;
+- source-to-Lean dictionary fields needed by the named consumer;
+- negative scope: the nearby theorem-looking claim or wrapper that must not be
+  treated as discharged by this citation.
+
+Before promoting a citation to `theorem_checked`, also record the named Lean consumer, the focused Lean command, and the oracle command that passed. A `visual_confirmed` or `source_extracted` entry is still not a proof until that consumer check exists.
 
 ## Política de contenido
 
