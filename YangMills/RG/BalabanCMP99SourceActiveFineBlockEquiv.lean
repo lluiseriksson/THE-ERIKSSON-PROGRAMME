@@ -61,8 +61,11 @@ noncomputable def cmp99ActiveFineBlockSigmaEquiv
       Σ y : ActiveGaugeRegion.Site
           (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega),
         {x : FinBox d (M * N') // x ∈ blockOf M N' y.1}) = ⟨y, x⟩
-    subst y'
-    rfl
+    apply Sigma.ext
+    · exact hy'
+    · apply (Subtype.heq_iff_coe_eq (fun z => by
+          rw [congrArg (fun block => block.1) hy'])).2
+      rfl
 
 /-- Reindex a sum over a saturated fine region as the iterated sum over its
 active coarse blocks and the complete fine sites of each block. -/
