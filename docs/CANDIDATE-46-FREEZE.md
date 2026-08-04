@@ -2,6 +2,13 @@
 
 Freeze status: **fabrication target, not external verdict**.
 
+The earlier commit `da2695a9d2c91b2fce0f7b18d0273e3f4966374a` is **not** an
+audit target: a post-commit control-character scan found that the patch
+transport had interpreted three inline `\\tanh` sequences as tab escapes and
+had stripped several inline TeX delimiters. The mathematics and executable
+were unchanged, but the rendered body was defective. This record supersedes
+that commit without rewriting history.
+
 - Branch: `codex/candidate-46-birkhoff-dobrushin-wall`
 - Base `main`: `12bf6e241694aa5cfb5c7a6e08a96c8fa47ff9b1`
 - Capture host: Windows owner desktop, isolated worktree
@@ -18,7 +25,7 @@ Freeze status: **fabrication target, not external verdict**.
 
 | Path | Raw/LF bytes | SHA-256 raw/LF | CRLF bytes | SHA-256 CRLF |
 |---|---:|---|---:|---|
-| `docs/CANDIDATE-46-BIRKHOFF-DOBRUSHIN-WALL.md` | 11130 | `0e94f9be5b5adc2a7be7972fde286d2b31a23fc596348a540992f85398655b34` | 11417 | `f011ec5fd7cad70581c906ae0e657683bf10b6d5e1b826daa40fb7d838a87ca6` |
+| `docs/CANDIDATE-46-BIRKHOFF-DOBRUSHIN-WALL.md` | 11151 | `c2784a968550418ae02f2be1390a835b9b739cbb3512981ff568ec03f4b9b064` | 11439 | `ac5d7aea58ac2413af3b785415726998e0f24dd27144f7e1ab8ae00b77b5448e` |
 | `docs/CANDIDATE-46-KILLTEST-TRANSCRIPT.json` | 1599 | `b5472762dcc462d05fd70531dec74c7091e342102a01e4fb1092f618ab185e20` | 1662 | `1c3ac33db2c926e7e36f0bc827095c096a739895ec20ac012e8423bca703cf6b` |
 | `scripts/killtest_birkhoff_tensor_wall.py` | 2679 | `b0bd9f744331acdf769b194d922e75bcff7f64d15709904584cfe85526729412` | 2763 | `cebcb22f2da82be389dd62f7598bd9f679141612105484d9fadb0cb49aa146f9` |
 
@@ -42,3 +49,5 @@ these body hashes when handing the object to an external audit.
 6. Scope attack: global oscillation of a product is explicitly excluded from
    the volume-uniform Dobrushin claim; only coordinate oscillations and the
    interdependence window are claimed uniform.
+7. Body-integrity attack: scan for tab/control characters and malformed inline
+   TeX. It rejected the first freeze commit and forced this superseding commit.
