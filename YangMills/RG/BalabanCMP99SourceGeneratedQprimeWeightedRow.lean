@@ -106,6 +106,9 @@ theorem cmp99SourceIteratedLift_physicalQprime_finiteRange
     let regions := cmp99SourceIteratedLiftActiveRegionChain
       (M := M) Omega depth
     FinitePiLpTypedFiniteRange
+      (ι := ActiveGaugeRegion.Site
+        (cmp99IteratedLiftActiveRegion (M := M) Omega depth))
+      (κ := regions.terminalSite) (g := SUNLieCoord Nc)
       (regions.physicalQprime hd hM rho spacing epsilon background
         chain fineSmall)
       (fun target source => finBoxDist source.1
@@ -137,6 +140,9 @@ theorem cmp99SourceIteratedLift_physicalQprime_weightedRow
     let regions := cmp99SourceIteratedLiftActiveRegionChain
       (M := M) Omega depth
     FinitePiLpTypedWeightedRowKernelBound
+      (ι := ActiveGaugeRegion.Site
+        (cmp99IteratedLiftActiveRegion (M := M) Omega depth))
+      (κ := regions.terminalSite) (g := SUNLieCoord Nc)
       (regions.physicalQprime hd hM rho spacing epsilon background
         chain fineSmall)
       (fun target source => finBoxDist source.1
