@@ -21,7 +21,7 @@ import time
 import traceback
 
 
-RUNNER_REV = "localized-covariance-carrier-v24"
+RUNNER_REV = "localized-covariance-carrier-v25"
 SOURCE_SHA = "83a1f260d87f207d2dc7bde61c2ed1ff0d3c038d"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
@@ -544,6 +544,13 @@ def main() -> int:
         print("EVIDENCE_ARCHIVE=" + str(ARCHIVE), flush=True)
         print("EVIDENCE_ARCHIVE_SHA256=" + archive_hash, flush=True)
         print("FINAL_STATUS=" + status, flush=True)
+        try:
+            from google.colab import files
+
+            files.download(str(ARCHIVE))
+            print("EVIDENCE_DOWNLOAD_REQUESTED=1", flush=True)
+        except Exception as error:
+            print("EVIDENCE_DOWNLOAD_ERROR=" + repr(error), flush=True)
         try:
             from google.colab import runtime
 
