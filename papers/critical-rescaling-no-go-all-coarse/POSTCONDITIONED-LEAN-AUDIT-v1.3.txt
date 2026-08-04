@@ -1,0 +1,61 @@
+Postconditioned Fourier no-go: independent remote Lean audit
+Version: 1.3
+Date: 2026-08-04
+
+Governance and environment
+- Execution surface: Google Colab Pro+ hosted runtime
+- Account visibly confirmed before connection: lluiseriksson@gmail.com
+- Accelerator: CPU; no GPU
+- High RAM: enabled; 50.99 GB visible
+- Runtime opened: immediately before AUDIT_START_UTC below
+- Runtime disconnected and deleted: approximately 2026-08-04 17:42 UTC
+- No local Lean, Lake, or oracle execution was performed.
+
+Frozen upload
+- File: colab_postconditioned_source.zip
+- Entries: 434
+- Bytes: 1776253
+- Local SHA-256: E5BB59166A8D79A80F942C8ADD65C78F27916F89F53559FB6B389900DF42933A
+- Remote SHA-256: E5BB59166A8D79A80F942C8ADD65C78F27916F89F53559FB6B389900DF42933A
+- Capture: UTF-8 without BOM, LF-normalized, fixed ZIP timestamps
+
+Pinned environment
+- Lean: v4.29.0-rc6
+- Lean commit: 00659f8e6071d7e46131ed643bf8003b99b044e9
+- Mathlib: 07642720480157414db592fa85b626dafb71355b
+
+Measured execution
+- AUDIT_START_UTC: 2026-08-04T17:33:59.082848+00:00
+- lake update: exit 0, 112.574 s
+- lake exe cache get: exit 0, 6.906 s
+- lake build YangMills.RG.PhysicalCriticalRescalingFourierPostconditionedNoGo:
+  exit 0, 243.662 s, 8185 jobs, .olean materialized
+- lake env lean YangMills/RG/PhysicalCriticalRescalingFourierPostconditionedNoGoOracle.lean:
+  exit 0, 12.653 s
+- AUDIT_END_UTC: 2026-08-04T17:41:22.803930+00:00
+
+Focused axiom output (five declarations)
+- YangMills.RG.flatBlockConstraintQCLM_blockFourierMode_eq_zero
+- YangMills.RG.flatGaugeHodgeK0_inner_blockFourierModeCochain_of_ne
+- YangMills.RG.blockFourierEigenvalue_le
+- YangMills.RG.postconditionedFlatPoincare_fourier_lower_bound
+- YangMills.RG.volumeUniformPostconditionedFlatPoincareGate_fourier_false
+
+Each declaration reported exactly:
+  [propext, Classical.choice, Quot.sound]
+
+Verified LF source captures
+- PhysicalCriticalRescalingFourierPostconditionedNoGo.lean
+  bytes 5915
+  SHA-256 5851FAD3E9541F78C397E71781063C30EA7153CCE0A72CEDD6E522A69F9A990B
+- PhysicalCriticalRescalingFourierPostconditionedNoGoOracle.lean
+  bytes 520
+  SHA-256 64112BECD145C01FCBFE02D6332790331EB0B2535E0208BC897D5755693B1AFA
+
+Warnings
+- Two imported files emitted pre-existing unnecessarySeqFocus lints.
+- The new target and focused oracle emitted no error.
+
+Status
+- This is reproduction evidence for a frozen object, not external
+  certification and not a claim that source text alone constitutes a build.

@@ -1,0 +1,47 @@
+Postconditioned critical-rescaling Fourier no-go formalization manifest
+Version: 1.3
+Date: 2026-08-04
+
+Repository: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+Original theorem-source commit: f21539ed0bb880a04078de369bf5cbf063f7b101
+Original independent-audit commit: 5bbc9347a64083fb3936f8240a5b0108e5d03fea
+Lean: v4.29.0-rc6 (00659f8e6071d7e46131ed643bf8003b99b044e9)
+Mathlib: 07642720480157414db592fa85b626dafb71355b
+
+SHA-256 of LF-normalized Lean files:
+53993EAAA55418AE7EA1235CDEDB0793A4EA58D452F577EA0A677AD203733793  PhysicalCriticalRescalingFourierCochain.lean
+A94083D9FCE54442AAC8C3990180F92469F1A7915F530A287CF16611A5C3E149  PhysicalCriticalRescalingFourierEnergy.lean
+C311EEB648DD0371C7B9D343A37BC659DF537FD5E1A33F6EA7F20CBD702665E9  PhysicalCriticalRescalingFourierHodge.lean
+B3884618CC9B82B1E138089323DEAEF24D6E4613DAAE6A10D6EC0AFC37526993  PhysicalCriticalRescalingFourierMode.lean
+6F0D69D79B6C93D01A8C298EC6E9E5A53FD37DE43DF5963B8A0411DE2930153D  PhysicalCriticalRescalingFourierNoGo.lean
+5F0890D14EA6981CBE6459605A634386ED2C844F6D03A6947E33B34250E2F5AE  PhysicalCriticalRescalingFourierNoGoAllScales.lean
+5851FAD3E9541F78C397E71781063C30EA7153CCE0A72CEDD6E522A69F9A990B  PhysicalCriticalRescalingFourierPostconditionedNoGo.lean
+ADAEB6E955E83C4CEC97A84D45590AD449B038F0CA6B08FAF2586652961C3CCB  PhysicalCriticalRescalingFourierNoGoOracle.lean
+64112BECD145C01FCBFE02D6332790331EB0B2535E0208BC897D5755693B1AFA  PhysicalCriticalRescalingFourierPostconditionedNoGoOracle.lean
+
+Frozen criteria:
+lake build YangMills.RG.PhysicalCriticalRescalingFourierPostconditionedNoGo
+lake env lean YangMills/RG/PhysicalCriticalRescalingFourierPostconditionedNoGoOracle.lean
+
+Independent execution on 2026-08-04:
+- Colab Pro+ CPU/high-RAM runtime, 50.99 GB visible RAM, no GPU
+- visible account: lluiseriksson@gmail.com
+- frozen upload: 1776253 bytes, SHA-256
+  E5BB59166A8D79A80F942C8ADD65C78F27916F89F53559FB6B389900DF42933A
+- focused theorem build: success, 8185 jobs, 243.662 s
+- focused axiom audit: success, 5/5 declarations use exactly
+  [propext, Classical.choice, Quot.sound]
+- new source bodies contain no sorry, admit, or project axiom token
+- audit interval: 2026-08-04T17:33:59.082848+00:00 to
+  2026-08-04T17:41:22.803930+00:00
+- runtime disconnected and deleted after the audit
+
+Scope
+- Formalized: exact kernel, exact flat Hodge witness energy, arbitrary
+  scale-dependent continuous linear coarse endomorphisms, and all-scale no-go.
+- Analytic only in paper: the exact repair-budget identity for a changed block
+  map and/or an added positive Hessian.
+- Not claimed: interacting coercivity, a positive replacement theorem,
+  infinite-volume or continuum construction, or Yang--Mills mass gap.
+
+This manifest records execution evidence; it is not external certification.
