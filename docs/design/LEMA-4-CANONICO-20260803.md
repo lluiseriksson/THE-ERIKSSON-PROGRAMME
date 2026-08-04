@@ -79,7 +79,7 @@ X_j\lvert\sigma_0,\ldots,\sigma_j,\ldots\rangle
 Entonces
 
 \[
-S_N=c_{\beta,a}^{,N}
+S_N=c_{\beta,a}^{N}
 e^{\frac\gamma2\sum_jZ_jZ_{j+1}}
 e^{a\sum_jX_j}
 e^{\frac\gamma2\sum_jZ_jZ_{j+1}}.
@@ -279,13 +279,13 @@ La regla (21)--(22) es la regla sectorial de Bugrij--Lisovyy, ecuaciones (33)--(
 Se definen los valores de vacío formal
 
 \[
-F_{NS}(N)=c_{\beta,a}^{,N}
+F_{NS}(N)=c_{\beta,a}^{N}
 \exp\!\left(\frac12\sum_{k\in K_{NS}(N)}\varepsilon(k)\right),
 \tag{23}
 \]
 
 \[
-F_R(N)=c_{\beta,a}^{,N}
+F_R(N)=c_{\beta,a}^{N}
 \exp\!\left(\frac12\sum_{k\in K_R(N)}\varepsilon(k)\right),
 \tag{24}
 \]
@@ -379,58 +379,161 @@ qR_1^{\mathrm{formal}}=e^{-2a}=\tanh\beta
 \tag{34}
 \]
 
-## 7. Instanciación completa de \(N=2\) y control \(\gamma=0\)
+## 7. Instanciación completa de \(N=2\) para \(0\le\gamma<a\)
 
-Para \(N=2\), el peso espacial de (1) contiene \(2\sigma_0\sigma_1\). Los retículos son exactamente los de (15).
-
-Si \(\gamma=0\), (16) da
+Para \(N=2\), el peso espacial de (1) contiene \(2\sigma_0\sigma_1\). Se usan las bases ortonormales
 
 \[
-\varepsilon(k)=2a
-\quad\text{para los cuatro cuasimomentos de (15)}.
+e_1=\frac{|++\rangle+|--\rangle}{\sqrt2},\qquad
+e_2=\frac{|+-\rangle+|-+\rangle}{\sqrt2}
+\]
+
+de \(\mathcal H_2^+\), y
+
+\[
+o_1=\frac{|++\rangle-|--\rangle}{\sqrt2},\qquad
+o_2=\frac{|+-\rangle-|-+\rangle}{\sqrt2}
+\]
+
+de \(\mathcal H_2^-\). Abreviemos
+
+\[
+C_\beta:=\cosh(2\beta),\qquad D_\beta:=\sinh(2\beta)>0.
+\]
+
+La ecuación (1) da, por ejemplo,
+
+\[
+S_2(++ ,++)\pm S_2(++ ,--)
+=e^{2\gamma}(e^{2\beta}\pm e^{-2\beta}),
+\]
+
+y
+
+\[
+S_2(++ ,+-)\pm S_2(++ ,-+)=1\pm1.
+\]
+
+Las otras entradas se obtienen intercambiando \(e^{2\gamma}\) y \(e^{-2\gamma}\). Por tanto, sin usar (26)--(28), las dos restricciones físicas son
+
+\[
+S_2\restriction\mathcal H_2^+
+=2\begin{pmatrix}
+e^{2\gamma}C_\beta&1\\
+1&e^{-2\gamma}C_\beta
+\end{pmatrix}_{(e_1,e_2)},
+\qquad
+S_2\restriction\mathcal H_2^-
+=2D_\beta
+\begin{pmatrix}
+e^{2\gamma}&0\\
+0&e^{-2\gamma}
+\end{pmatrix}_{(o_1,o_2)}.
 \tag{35}
 \]
 
-Por (23)--(25),
+Sea
 
 \[
-F_R(2)=c_{\beta,a}^{,2}e^{2a}=F_{NS}(2),
-\qquad
-R_2^{\mathrm{formal}}=1.
-\tag{36}
+\Delta_{\beta,\gamma}
+:=\sqrt{1+C_\beta^2\sinh^2(2\gamma)}.
 \]
 
-Por (27)--(28),
+La diagonalización directa de (35) da
+
+\[
+\lambda_+(2)
+=2\bigl(C_\beta\cosh(2\gamma)+\Delta_{\beta,\gamma}\bigr),
+\qquad
+\lambda_-(2)=2D_\beta e^{2\gamma},
+\]
+
+y, en consecuencia,
 
 \[
 \frac{\lambda_-(2)}{\lambda_+(2)}
-=e^{-\varepsilon(0)}R_2^{\mathrm{formal}}
-=e^{-2a}
-=\tanh\beta.
+=\frac{D_\beta e^{2\gamma}}
+{C_\beta\cosh(2\gamma)+\Delta_{\beta,\gamma}}.
+\tag{36}
+\]
+
+El autovalor \(\lambda_+(2)\) es simple para todo \(\gamma\ge0\). El autovalor \(\lambda_-(2)\) es simple cuando \(0<\gamma<a\); cuando \(\gamma=0\), los dos autovalores del bloque impar coinciden y su multiplicidad es dos.
+
+Relacionamos ahora (36) con las definiciones formales, no con el borde general. La relación \(\tanh a=e^{-2\beta}\) implica, por álgebra hiperbólica,
+
+\[
+d_{\beta,a}:=c_{\beta,a}^{2}=2D_\beta,\qquad
+\sinh(2a)=\frac1{D_\beta},\qquad
+\cosh(2a)=\frac{C_\beta}{D_\beta}.
+\]
+
+Los retículos de (15) dan
+
+\[
+\varepsilon(0)=2(a-\gamma),\qquad
+\varepsilon(\pi)=2(a+\gamma),
+\]
+
+y un mismo valor
+
+\[
+\varepsilon_A:=\varepsilon(\pi/2)=\varepsilon(3\pi/2),
+\qquad
+\cosh\varepsilon_A=\frac{C_\beta}{D_\beta}\cosh(2\gamma).
+\]
+
+Además,
+
+\[
+D_\beta\sinh\varepsilon_A
+=\sqrt{C_\beta^2\cosh^2(2\gamma)-D_\beta^2}
+=\Delta_{\beta,\gamma},
+\]
+
+donde se usó \(C_\beta^2-D_\beta^2=1\). Por ello, directamente desde (23)--(25),
+
+\[
+F_{NS}(2)
+=d_{\beta,a}e^{\varepsilon_A}
+=2\bigl(C_\beta\cosh(2\gamma)+\Delta_{\beta,\gamma}\bigr)
+=\lambda_+(2),
+\]
+
+\[
+F_R(2)e^{-\varepsilon(0)}
+=d_{\beta,a}e^{2a}e^{-2(a-\gamma)}
+=2D_\beta e^{2\gamma}
+=\lambda_-(2).
+\]
+
+Así, la diagonalización independiente satisface
+
+\[
+\frac{\lambda_-(2)}{\lambda_+(2)}
+=e^{2\gamma-\varepsilon_A}
+=e^{-2(a-\gamma)}e^{2a-\varepsilon_A}
+=qR_2^{\mathrm{formal}}.
 \tag{37}
 \]
 
-La misma conclusión puede leerse directamente de (1): cuando \(\gamma=0\),
+En la especialización \(\gamma=0\),
 
 \[
-S_2=B_\beta\otimes B_\beta,
-\qquad
-B_\beta=
-\begin{pmatrix}e^\beta&e^{-\beta}\\e^{-\beta}&e^\beta\end{pmatrix},
+\Delta_{\beta,0}=1,\qquad
+\varepsilon_A=2a,\qquad
+R_2^{\mathrm{formal}}=1,
 \]
 
-cuyos autovalores \(X\) son \(b_+=2\cosh\beta\) y \(b_-=2\sinh\beta\). Como \(J=X\otimes X\),
+y (36) se reduce, sin usar el lema general, a
 
 \[
-\lambda_+(2)=b_+^2,
-\qquad
-\lambda_-(2)=b_+b_-,
-\qquad
-\frac{\lambda_-(2)}{\lambda_+(2)}=\frac{b_-}{b_+}=\tanh\beta.
+\frac{\lambda_-(2)}{\lambda_+(2)}
+=\frac{\sinh(2\beta)}{\cosh(2\beta)+1}
+=\tanh\beta.
 \tag{38}
 \]
 
-El borde impar tiene multiplicidad dos, correspondiente a ocupar exactamente uno de los modos \(0,\pi\).
+En este punto el borde impar tiene multiplicidad dos, correspondiente a los dos modos periódicos \(0,\pi\). El punto \(\gamma=a\) no pertenece a esta sección ni al lema: las fórmulas anteriores sólo se afirman bajo \(0\le\gamma<a\), aunque admitan un límite cuando \(\gamma\uparrow a\).
 
 ## 8. Cara \(\gamma=0\) y borde crítico \(\gamma=a\)
 
@@ -492,7 +595,7 @@ Las ecuaciones (5)--(9), incluidas \((-1)^F=J\) y \(c_{j+N}=-Jc_j\), se derivan 
 
 ### Convenciones fijadas, no resultados externos
 
-Los nombres “NS” y “R” significan, respectivamente, antiperiódico y periódico según (8)--(11). La elección local (5) fija \((-1)^F=J\). El lift global se toma con el signo positivo determinado por la positividad de \(S_N\) y por \(c_{\beta,a}^{,N}>0\). No queda en este objeto una convención sectorial o de signo sin fijar.
+Los nombres “NS” y “R” significan, respectivamente, antiperiódico y periódico según (8)--(11). La elección local (5) fija \((-1)^F=J\). El lift global se toma con el signo positivo determinado por la positividad de \(S_N\) y por \(c_{\beta,a}^{N}>0\). No queda en este objeto una convención sectorial o de signo sin fijar.
 
 ---
 
