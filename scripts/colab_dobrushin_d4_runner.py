@@ -39,7 +39,8 @@ LANE_MODULES = ["YangMills.OS.DobrushinGibbs", "YangMills.OS.DobrushinIsing",
                 "YangMills.OS.DobrushinLattice", "YangMills.OS.DobrushinBridge",
                 "YangMills.OS.DobrushinTransport", "YangMills.OS.DobrushinTilt",
                 "YangMills.OS.DobrushinCorollary"]
-CERTIFIERS = ["scripts/judge_dobrushin_d6b.py",
+CERTIFIERS = ["scripts/judge_os_uniform.py",
+              "scripts/judge_dobrushin_d6b.py",
               "scripts/judge_dobrushin_d5.py",
               "scripts/judge_dobrushin_d4.py",
               "scripts/judge_dobrushin_d3.py",
@@ -176,6 +177,7 @@ def stage5(sha):
               "YangMillsCore.lean",
               "oracle_check.lean",
               "scripts/judge_dobrushin_d4.py",
+              "scripts/judge_os_uniform.py",
               "scripts/colab_dobrushin_d4_runner.py"]:
         p = os.path.join(REPO, f)
         if os.path.exists(p):
