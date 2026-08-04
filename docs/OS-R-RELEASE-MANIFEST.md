@@ -155,3 +155,13 @@ evaluation is a scientific/editorial assessment, not a reproduction of the
 formal build.  A terminal proof audit must still reproduce the body SHA and
 inspect the complete logs; the manifest deliberately remains a PASS candidate
 rather than self-certification.
+
+## ai.viXra replacement preparation
+
+The final seven-page PDF is prepared as the proposed v2 replacement of
+`ai.viXra.org:2607.0078`, submitted on 2026-07-28 at 13:19:32 in Mathematical
+Physics under Lluis Eriksson.  The exact form fields, replacement rationale,
+scope disclaimers, upload hash and owner-only checklist are frozen in
+`papers/os-reconstruction-uniform/SUBMISSION-INFO.txt`.  This records a
+prepared package, not an external submission: the owner must use the official
+replacement form and the same email address used for v1.
