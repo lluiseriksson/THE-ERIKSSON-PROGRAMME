@@ -31395,3 +31395,25 @@ Pass-3 source: docs/OS-R-MODULE-A-PASS3.lean.txt (sha256 b48e92e6...,
 **ROLES.**  Diagnosis, fix, correction: this desk.  Pass-2 execution
 and output relay: the owner, by hand (the Claude-in-Chrome bridge is
 still down after the account change; ~10 empty polls).
+
+
+## Addendum 616 (2026-08-04, **OS-R MODULE A IS GREEN ON THE PLANE:
+ELAB_EXIT 0 at pass 3; the file enters the tree, UNWIRED**)
+
+Pass 3 (source sha256 b48e92e6b2d43588ee7e813d02217e62f17356ea4b55f4
+33c5386844e8b00cc4, 8996 bytes) returned **ELAB_EXIT 0** on the warm
+high-RAM runtime against the imports built at a545de4e5: A1
+(siteForm_qEmbed), A2 (transferOp_qEmbed), A3
+(transferOp_iterate_qEmbed) and the endpoint
+(os_reconstruction_uniform_gap, consuming dobrushin_ising_uniform_gap
+verbatim with the same witnesses) all elaborate.  Three-pass ladder --
+(1) per-term cast + masked binder, (2) namespace depth, (3) green --
+against D-6's six.  The file is committed as
+YangMills/OS/OSReconstructionUniform.lean but NOT wired into
+YangMillsCore and NOT counted in any oracle: wiring happens with its
+count prediction after the baseline read (the 8366-vs-8480 question),
+per the standing rule.  Fresh-clone verification and the repo-wide
+oracle remain owed before any headline is called final.
+
+**ROLES.**  Fabrication ladder: this desk.  All three plane executions
+and output relays: the owner, by hand.
