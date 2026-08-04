@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "generated-qprime-row-v9"
-SOURCE_SHA = "9f76c4e70e5740b045eb6afc38de12ddf9e5216c"
+RUNNER_REV = "generated-qprime-row-v10"
+SOURCE_SHA = "41612cb7e7064caf47ad2d8169f9ddddeadc736d"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -40,7 +40,7 @@ PATH_MANIFEST = Path("/content/hrpoly-generated-qprime-row-paths.txt")
 
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceActiveFineBlockEquiv.lean":
-        "09ca7e7fa70096abf8c6177ff61bc341a68ca60eea38ba4c61ea9c1458e05599",
+        "ad4d845a0cb67b79f87e7667afc21936f66d7da671833ad6f0a99e38d359b76b",
     "YangMills/RG/BalabanCMP99SourceActiveFineBlockEquivAudit.lean":
         "d425c148327e87f2fd997729ec8274b37d02264ae09692cd53d5dce4f1b935ea",
     "YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMass.lean":
