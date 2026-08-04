@@ -31315,3 +31315,49 @@ now has TWO active writers and the owner should assign lanes.
 **ROLES.**  Discovery and licence declaration: this desk.  The osr52
 judge run: another desk, independently.  Module-A fabrication passes:
 the next plane unit of this campaign.
+
+
+## Addendum 614 (2026-08-04, **OS-R module A, plane pass 1: TWO machinery
+defects, zero mathematical ones; pass-2 source committed**)
+
+The OS-R-1 unit ran on a high-RAM runtime (notebook osr1_module_a.ipynb,
+clone at a545de4e5, module injected by base64, elaborated with
+'lake env lean').  Result read from the cell output:
+'ELAB_EXIT 1' with EXACTLY two errors.
+
+1. 'OSReconstructionUniform.lean:117:80: unsolved goals' -- the A2 cast
+   step.  The printed goal is the per-term cast
+   '↑(spatialKernel β σ τ) * (↑√(w τ) * ↑(u τ))
+      = ↑(spatialKernel β σ τ * (√(w τ) * u τ))':
+   the hand rewrite (ofReal_mul / ofReal_sum / congrArg) discharged the
+   outer layer and left the inner one.  FIX: 'push_cast; ring' owns the
+   whole chain (both lemmas are norm_cast).
+2. 'OSReconstructionUniform.lean:148:50: expected token' -- a PARSE
+   error on the endpoint's implicit binder '{α : ℝ}'.  FIX: renamed to
+   '{alpha : ℝ}' (with halpha0/halpha1), which is our binder to name;
+   the D-6 source keeps its own.
+
+**What this measures, and it is the interesting part:** everything else
+elaborated on the FIRST pass -- the five imports, every consumed name
+('siteForm', 'transferOp', 'symWeighted', 'act',
+'sliceW'/'sliceW_pos', 'tiltKernel', 'opOf', 'vacOf',
+'projectedTransfer', 'dobrushin_ising_uniform_gap'), A1 in full, A3's
+induction, and the endpoint's obtain-chain.  The seam risk R1 (one
+'spatialKernel' declaration everywhere) is now confirmed by the
+elaborator, not only by reading.  D-6 needed six passes; A needs two.
+
+Pass-2 source committed as docs/OS-R-MODULE-A-PASS2.lean.txt (sha256
+6475d6735c4641e7798c4ce2f4d0bd01dc15b9490b8d61ebc4849f63222a5fd1, 8431
+bytes) with a ready-to-run cell scripts/osr1_pass2_cell.py.  The module
+does NOT enter the tree until that cell returns ELAB_EXIT 0 on the
+plane; nothing here is called green yet.
+
+**Operational note:** the Claude-in-Chrome bridge died mid-unit and did
+not recover across ~40 minutes of retries; the owner read the cell
+output and relayed it.  The likely cause is the extension being signed
+into a different Claude account than the app (three exist).  Recorded
+because it is the second time today that a browser-side failure, not a
+mathematical one, was the schedule risk.
+
+**ROLES.**  Fabrication and diagnosis: this desk.  The pass-1 execution
+and its reading: the plane, relayed by the owner.
