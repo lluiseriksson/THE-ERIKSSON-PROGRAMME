@@ -1048,3 +1048,8 @@ import YangMills.OS.DobrushinTilt
 -- coupled kernel's Perron data at EVERY extent, through the abstract
 -- transport theorem.
 import YangMills.OS.DobrushinCorollary
+
+-- OS-R: the transported volume-uniform gap and clustering of the
+-- reconstructed (site-form) transfer operator; consumes the
+-- Dobrushin corollary verbatim (same witnesses).
+import YangMills.OS.OSReconstructionUniform

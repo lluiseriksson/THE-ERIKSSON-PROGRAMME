@@ -31444,3 +31444,36 @@ verification, paper slots.
 
 **ROLES.**  Fabrication: this desk.  All plane executions: the owner's
 hand on the committed cells; hashes verified on both sides each pass.
+
+
+## Addendum 618 (2026-08-04, **OS-R WIRED GREEN: 8480 -> 8481 EXACT (the
+ninth consecutive count prediction), oracle 3017 = 3010 + 7 EXACT,
+0 sorryAx; the 8366 mystery resolved as a dead-run artefact**)
+
+The pass-6 wiring unit ran on the warm high-RAM runtime, output relayed
+by the owner:
+
+* STEP A, unwired core build: **Build completed successfully (8480
+  jobs)** -- the baseline equals the c7b870b05 ledger value exactly;
+  the 8366 total glimpsed mid-flight in the OOM-killed second firing
+  (Add. 612) was a partial-progress artefact of a dying run, and the
+  question flagged there closes AGAINST the anomaly.
+* STEP B/C, wiring + rebuild: import + 7 oracle endpoints applied
+  idempotently; **Build completed successfully (8481 jobs)**;
+  PREDICTION_CORE_PLUS_ONE True.  YangMills.OS.OSReconstructionUniform
+  built as its own job in 8.8 s.
+* STEP D, full repo oracle: ORACLE_EXIT 0, **REPORTS 3017 = 3010 + 7
+  exactly as predicted**, **SORRYAX 0**, and each of the seven OS-R
+  endpoints reports exactly [propext, Classical.choice, Quot.sound].
+* Instrument defect recorded: the cell's per-line nonstandard-axiom
+  check flagged 1236 lines -- all of them WRAPPED axiom lists cut at
+  '[propext,' (the catalogued read-with-continuations lesson applied
+  to a checker instead of a reader).  The full-union claim therefore
+  rests on the fresh-clone verifier, whose checker joins continuations.
+
+The same wiring is mirrored into the tree in this commit.  Remaining
+before any 'final': the fresh-clone verification at this tip (runner
+with the module in LANE_MODULES), and the paper slots it feeds.
+
+**ROLES.**  Unit design and predictions (committed BEFORE the run):
+this desk.  Execution and relay: the owner.

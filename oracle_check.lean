@@ -3386,3 +3386,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.row_deltaAt_le
 #print axioms YangMills.OS.Dobrushin.rect_feed
 #print axioms YangMills.OS.Dobrushin.dobrushin_ising_uniform_gap
+#print axioms YangMills.OS.siteForm_qEmbed
+#print axioms YangMills.OS.transferOp_qEmbed
+#print axioms YangMills.OS.transferOp_iterate_qEmbed
+#print axioms YangMills.OS.act_symWeighted_eq_smul_act_tilt
+#print axioms YangMills.OS.act_iterate_eq_opOf_pow
+#print axioms YangMills.OS.os_reconstruction_uniform_gap
+#print axioms YangMills.OS.os_reconstruction_uniform_clustering
