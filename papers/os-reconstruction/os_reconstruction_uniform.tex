@@ -1,9 +1,10 @@
-% DRAFT SKELETON -- OS-R paper (campaign: docs/OS-RECONSTRUCTION-CHARTER.md,
-% licence Add. 613).  HOUSE RULES IN FORCE: no theorem stated here is final
-% until its module is green on the plane AND fresh-clone verified; every
-% [SLOT] must be replaced by a number READ FROM A COMMITTED ARTEFACT before
-% the word "final" is pronounced.  STATUS 2026-08-04: NO LIVE SLOTS --
-% every number below is read from committed artefacts (Addenda 616-619).
+% OS-R-2 MANUSCRIPT (campaign: docs/OS-RECONSTRUCTION-CHARTER.md, licence
+% Add. 613; OS-R-2 fabrication Add. 621).  HOUSE RULES IN FORCE: no theorem
+% stated here is final until its module is green on the plane AND fresh-clone
+% verified; every [SLOT] must be replaced by a number READ FROM A COMMITTED
+% ARTEFACT before the word "final" is pronounced.  STATUS: pass-10 module
+% green on the plane (sha d9919e25..., ELAB_EXIT 0); pass-11 wiring and the
+% fresh clone are IN FLIGHT -- their two numbers are the live slots below.
 % Submission is the owner's decision alone.
 % The abstract's priority sentence is the COLLATED one (Add. 611,
 % docs/OS-R-PRIORITY-COLLATION.md): the naked "first machine-checked OS
@@ -19,17 +20,20 @@
 \newtheorem{remark}[theorem]{Remark}
 \newcommand{\SLOT}[1]{\textbf{[SLOT: #1]}}
 \newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\ip}[2]{\langle #1,\,#2\rangle}
 
 \title{The Reconstructed Theory Has One Mass:\\
 a Machine-Checked Volume-Uniform Spectral Gap\\
-for a Concrete Transfer Operator}
+with Exact Identification Against the Gibbs Sums}
 \author{Llu\'is Eriksson\thanks{With machine-checked artefacts produced on
 the programme's Colab plane; toolchain \lean{leanprover/lean4:v4.29.0-rc6},
 Mathlib pinned to \lean{0764272048\ldots}.  Repository:
 \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}{THE-ERIKSSON-PROGRAMME},
-branch \lean{d3-closure}, anchor
-\lean{8127e5b52d75116b19c172ea022e12c1cab0f8c2}.}}
-\date{2026-08-04 --- complete manuscript; submission is the owner's decision}
+branch \lean{d3-closure}, module anchor commit
+\lean{3b0dfa9e81835106b6d43a1d582b8c12dcb8f36b}; verification anchor
+\SLOT{fresh-clone SHA, pending pass 12}.}}
+\date{2026-08-05 --- manuscript with two live measurement slots;
+submission is the owner's decision}
 
 \begin{document}
 \maketitle
@@ -37,17 +41,22 @@ branch \lean{d3-closure}, anchor
 \begin{abstract}
 For the spatial $\mathbb{Z}_2$ (Ising-slice) system in the Dobrushin
 window $2\tanh|\beta| + 2\tanh|\gamma| \le \alpha < 1$, we machine-check
-in Lean~4 that the Osterwalder--Schrader (site-form) reconstruction of
-the transfer operator carries \emph{one} mass: there is a single $m>0$
-such that for \emph{every} spatial extent $L$ the reconstructed
-(site-form) transfer operator is unitarily conjugate --- by the explicit
-$\sqrt{w}$ boundary dressing --- to the symmetrised kernel whose
-projected norm the Dobrushin corollary bounds by $e^{-m}$, and every
-connected correlator of the transported transfer operator decays as
-$\lvert\mathrm{connCorr}\,T\,\Omega\,v\,n\rvert \le \lVert v\rVert^2
-(e^{-m})^n$ --- constant per-observable, rate alone uniform in the
-volume.  All quantifiers live in the Lean statements; the prose here
-copies the kernel's cut.  To situate the claim in the 2026 landscape of
+in Lean~4 an end-to-end chain: (i)~the Osterwalder--Schrader (site-form)
+reconstruction of the transfer operator is unitarily conjugate --- by the
+explicit $\sqrt{w}$ boundary dressing --- to the symmetrised Dobrushin
+kernel; (ii)~the \emph{unnormalised Gibbs sums themselves} are exact
+matrix elements of the reconstructed operator's powers,
+$\;\mathrm{gibbsPathSum}\,w\,\beta\,N\,A\,B = \lambda^N
+\ip{\hat T^N Q A}{Q B}$ and the partition function is the same shape at
+the dressed constant --- identities, not bounds; and (iii)~there is
+\emph{one} mass $m>0$ such that for \emph{every} spatial extent $L$ the
+projected operator norm is at most $e^{-m}$ and every \emph{mixed}
+connected correlator of the reconstructed operator obeys
+$\bigl|\ip{u}{\hat T^{\,n} v} - \ip{\Omega}{u}\ip{\Omega}{v}\bigr| \le
+\lVert u\rVert\,\lVert v\rVert\,(e^{-m})^n$, the zero-time case
+included --- constants per-observable, rate alone uniform in the volume.
+All quantifiers live in the Lean statements; the prose here copies the
+kernel's cut.  To situate the claim in the 2026 landscape of
 machine-checked constructive field theory: the abstract construction
 (reflection-positive data $\to$ physical Hilbert space $\to$
 self-adjoint contractive transfer operator) has been machine-checked,
@@ -58,11 +67,12 @@ machine-checked for the free field; and measure-side Dobrushin
 clustering has been machine-checked for lattice Yang--Mills.  What we
 add, and what to our knowledge no machine-checked artefact yet
 contains, is the combination \{concrete interacting model, gap
-\emph{proved} rather than hypothesised, uniform in the spatial
-volume\} on the reconstructed operator --- i.e.\ a concrete discharge
-of exactly the hypothesis shape the abstract frameworks carry.  We do
-not claim Wightman reconstruction, a continuum limit, $SU(N)$, or any
-progress on the Clay problem.
+\emph{proved} rather than hypothesised, uniform in the spatial volume\}
+on the reconstructed operator, \emph{identified exactly against the raw
+Gibbs sums} --- i.e.\ a concrete discharge of exactly the hypothesis
+shape the abstract frameworks carry.  We do not claim Wightman
+reconstruction, a continuum limit, $SU(N)$, or any progress on the Clay
+problem.
 \end{abstract}
 
 \section{Introduction and landscape}\label{sec:intro}
@@ -83,32 +93,39 @@ That uniform input exists in this repository: the Dobrushin corollary
 \lean{dobrushin\_ising\_uniform\_gap} produces, inside the window
 $2\tanh|\beta| + 2\tanh|\gamma| \le \alpha < 1$, a single $m>0$
 bounding the projected transfer operator of the tilted kernel at every
-extent.  The present paper's contribution is the \emph{identification}:
-the operator that bound governs \emph{is} --- unitarily, by the
-explicit $\sqrt{w}$ boundary dressing, with no spectral-transport
-theory --- the transfer operator forced on the reconstructed (site-form)
-theory, and the bound transports to volume-uniform clustering of its
-connected correlators.  The theorem is deliberately cheap: the same
-witnesses, no new estimate.  Cheapness is the honesty of the claim ---
-the uniformity is real because it is D-6's, and the reconstruction adds
-exactly one commuting square, machine-checked.
+extent.  This paper's contribution is the \emph{identification}, in
+two stages.  Stage one (Section~\ref{sec:unitary}): the operator that
+bound governs \emph{is} --- unitarily, by the explicit $\sqrt{w}$
+boundary dressing, with no spectral-transport theory --- the transfer
+operator forced on the reconstructed (site-form) theory.  Stage two
+(Section~\ref{sec:measure}): the \emph{unnormalised Gibbs sums
+themselves} are exact matrix elements of that operator's powers ---
+$\lambda^N$ times an inner product, an identity valid at every real
+$\beta$ and every positive weight, with the window entering only when
+the gap is invoked.  The theorems are deliberately cheap: the same
+witnesses as D-6, no new estimate.  Cheapness is the honesty of the
+claim --- the uniformity is real because it is D-6's, and the
+reconstruction adds commuting squares, machine-checked.
 
 \subsection{Machine-checked prior work, cited before a referee does}
 \label{sec:prior}
 The following table is load-bearing and its rows were collected by a
 four-modality search on 2026-08-04 (evidence:
-\lean{docs/OS-R-PRIORITY-COLLATION.md} in the repository).
+\lean{docs/OS-R-PRIORITY-COLLATION.md} in the repository; the four raw
+agent reports are appended there verbatim).
 
 \begin{center}
 \begin{tabular}{p{4.1cm}p{5.2cm}p{4.6cm}}
 \textbf{Artefact} & \textbf{What is machine-checked} & \textbf{What is
 not} \\ \hline
-\lean{mrdouglasny/reflection-positivity} (sorry-free $\sim$2026-06) &
-RP data $\to$ Hilbert space (completion/quotient) $\to$ self-adjoint
-contraction $T$; trace formulas; susceptibility bounds from a gap &
-the gap itself: carried as the \lean{GappedTransfer} \emph{hypothesis};
-no spatial-volume-uniform statement; concrete instance is finite-lattice
-RP only \\
+\lean{mrdouglasny/}\newline\lean{reflection-positivity} (sorry-free
+$\sim$2026-06) & RP data $\to$ Hilbert space (completion/quotient)
+$\to$ self-adjoint contraction $T$; the dictionary
+$\ip{[f]}{T^n[g]} = \int f\,(g\circ\tau^n\circ\theta)\,d\mu$; trace
+formulas; susceptibility bounds \emph{from} a gap & the gap itself:
+carried as the \lean{GappedTransfer} \emph{hypothesis}
+(\lean{GroundGap.lean}); no spatial-volume-uniform statement; concrete
+instance is finite-lattice RP only \\
 \lean{OSforGFF} (arXiv:2603.15770) & all five GJ/OS axioms for the
 $d{=}4$ Gaussian free field, 0 sorries & reconstruction (listed as next
 milestone); any interacting model \\
@@ -123,13 +140,25 @@ side \\
 \lean{pphi2} & transfer-matrix spectral machinery for $\varphi^4_2$ &
 rests on 27--29 project axioms \\
 This paper & the $\sqrt{w}$-dressing unitary; the transported
-volume-uniform gap; volume-uniform clustering of the reconstructed
-operator (\lean{os\_reconstruction\_uniform\_gap},
-\lean{os\_reconstruction\_uniform\_clustering}; core 8481, oracle 3017,
-0 sorry) & Wightman axioms; continuum limit; $SU(N)$; Clay;
-the raw-measure $n$-step identification (named next step) \\
+volume-uniform gap; the \emph{exact} identities
+$\mathrm{gibbsPathSum} = \lambda^N\ip{\hat T^N QA}{QB}$ and
+$Z_N = \lambda^N\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}$; volume-uniform
+\emph{mixed} clustering with the zero-time case
+(\lean{os\_reconstruction\_measure\_uniform}; core \SLOT{8481, pass-11
+measurement in flight}, oracle \SLOT{3026, same}, 0 sorry) & Wightman
+axioms; continuum limit; $SU(N)$; Clay; the division-safe
+\emph{normalised} six-term connected bound (named open step,
+Section~\ref{sec:honesty}) \\
 \end{tabular}
 \end{center}
+
+There is a coordinated, active programme (Douglas et al., Harvard CMSA)
+whose declared live fronts are the OS reconstruction theorem,
+$P(\varphi)_2$, and YM mass gap at strong coupling, and whose framework
+carries the spectral gap as an undischarged hypothesis.  The endpoint
+below is a concrete discharge of that hypothesis \emph{shape}
+(different framework, same mathematical hole), which is why the
+comparison table above is printed in full before any claim wording.
 
 \section{The two geometries and the forced operator}\label{sec:forced}
 Everything in this section is prior work of the repository, cited by
@@ -146,24 +175,33 @@ $\mathrm{site}(u, Tv) = \mathrm{bond}(u,v)$
 $\beta$ (\lean{transferOp\_selfAdjoint}) and positive for
 $\beta \ge 0$; reflection positivity of the underlying measure is the
 lane's earlier bond/site pair (modules \lean{SpatialReflection},
-\lean{SpatialOS}).  On the Dobrushin side, the same repository carries
-\lean{symWeighted} $= \sqrt{w}K\sqrt{w}$ (module \lean{PerronGap}),
-its normalisation \lean{tiltKernel} $= \mathrm{symWeighted}/\lambda$
-(module \lean{DobrushinTilt}), the Euclidean packaging \lean{opOf},
-\lean{vacOf}, \lean{vacuumTransfer\_opOf} (module
-\lean{DobrushinTransport}), and the corollary
-\lean{dobrushin\_ising\_uniform\_gap} (module
+\lean{SpatialOS}).  On the measure side, the same repository carries
+the Gibbs bridge (module \lean{SpatialGibbs}): the unnormalised
+two-point path sum \lean{gibbsPathSum} and partition function
+\lean{gibbsPartition} of the coupled slice system, with the in-tree
+operator bridge \lean{gibbsPathSum\_eq\_iterate} (the path sum as an
+$N$-fold kernel iterate against dressed observables,
+$\mathrm{dress}\,w\,A = \sqrt{w}\,A$).  On the Dobrushin side it
+carries \lean{symWeighted} $= \sqrt{w}K\sqrt{w}$ (module
+\lean{PerronGap}), its normalisation \lean{tiltKernel}
+$= \mathrm{symWeighted}/\lambda$ (module \lean{DobrushinTilt}), the
+Euclidean packaging \lean{opOf}, \lean{vacOf},
+\lean{vacuumTransfer\_opOf} (module \lean{DobrushinTransport}), and
+the corollary \lean{dobrushin\_ising\_uniform\_gap} (module
 \lean{DobrushinCorollary}).  The seam fact this paper depends on ---
 one \lean{spatialKernel} declaration serving both geometries --- is
 enforced by the elaborator in the module of
 Section~\ref{sec:unitary}.
 
 \section{The dressing unitary}\label{sec:unitary}
-All three statements are green on the plane (module
-\lean{YangMills/OS/OSReconstructionUniform.lean}, sha256
-\lean{5445429f\ldots}, five-pass ladder, \lean{ELAB\_EXIT 0}).  Write
+All statements of this and the following sections live in one module
+(\lean{YangMills/OS/OSReconstructionUniform.lean}, sha256
+\lean{d9919e256ae59ac9\ldots27bac149}, $20{,}428$ bytes, ten-pass
+ladder on the plane, final \lean{ELAB\_EXIT 0}).  Write
 $Qu := \sqrt{w}\,u$ for the boundary dressing of a real Euclidean
-vector (\lean{qEmbed}); the site form weighs by $1/w$.
+vector (\lean{qEmbed}; it coincides with the measure side's
+\lean{dress}, complexified --- \lean{qEmbed\_eq\_dress} is
+definitional); the site form weighs by $1/w$.
 
 \begin{theorem}[A1, \lean{siteForm\_qEmbed}]
 For $w > 0$ and real $u, v$:
@@ -183,15 +221,24 @@ $T^{[n]}(Qu) = Q\big((\mathrm{act}\,S)^{[n]} u\big)$ --- the shape the
 in-tree measure bridge \lean{gibbsPathSum\_eq\_iterate} consumes.
 \end{theorem}
 
+Together with A1, the dressing is a unitary between the Euclidean
+$\ell^2$ pairing and the site form at every finite extent (the site
+form with $w>0$ is definite, so no quotient intervenes --- this is the
+elementary, finite-volume case of the OS construction, and we say so
+plainly).
+
 \section{The transported volume-uniform gap}\label{sec:gap}
 \begin{theorem}[\lean{os\_reconstruction\_uniform\_gap}]
-In the window $2\tanh|\beta|+2\tanh|\gamma| \le \alpha < 1$ there is
-$m>0$ such that for every $L$ there are $\lambda > 0$ and $\Omega > 0$
+Let $\beta, \gamma \in \mathbb{R}$ and $0 < \alpha < 1$ with
+$2\tanh|\beta|+2\tanh|\gamma| \le \alpha$.  There is $m>0$ such that
+for every $L$ there are $\lambda > 0$ and $\Omega > 0$
 with the fixed-point equation
 $\sum_\tau \mathrm{tiltKernel}\,(\mathrm{sliceW}\,\gamma\,L)\,\beta\,
 \lambda\,\sigma\,\tau\,\Omega_\tau = \Omega_\sigma$, the projected
-bound $\lVert\mathrm{projectedTransfer}\ldots\rVert \le e^{-m}$, and
-the A2 identity at $w := \mathrm{sliceW}\,\gamma\,L$.
+bound $\lVert\mathrm{projectedTransfer}\,
+(\mathrm{opOf}\,(\mathrm{tiltKernel}\ldots))\,(\mathrm{vacOf}\,\Omega)
+\rVert \le e^{-m}$, and the A2 identity at
+$w := \mathrm{sliceW}\,\gamma\,L$.
 \end{theorem}
 The proof is an \lean{obtain} on \lean{dobrushin\_ising\_uniform\_gap}
 followed by A2: \emph{the same witnesses}, no new analytic content ---
@@ -199,44 +246,141 @@ which is precisely the point.  The uniformity is real because it is
 D-6's; the reconstruction contributes the identification, not a new
 estimate.
 
-\section{Identification against the measure}\label{sec:measure}
-Green at pass 5 (operator side):
-\begin{theorem}[B0b, \lean{act\_symWeighted\_eq\_smul\_act\_tilt}]
+\section{Exact identification against the Gibbs sums}
+\label{sec:measure}
+The bridge from the raw measure to the operator is a chain of
+\emph{identities} --- no bound appears until the gap is invoked, and
+none of the statements below needs the window: they hold at every real
+$\beta$, every $\lambda \ne 0$, every positive weight.
+
+\begin{lemma}[B0b, \lean{act\_symWeighted\_eq\_smul\_act\_tilt}]
 $\mathrm{act}\,S\,u = \lambda\cdot \mathrm{act}\,(\mathrm{tilt})\,u$
-for $\lambda \ne 0$.
-\end{theorem}
-\begin{theorem}[B0a, \lean{act\_iterate\_eq\_opOf\_pow}]
+for $\lambda \ne 0$, and iterating
+(\lean{act\_symWeighted\_iterate\_eq\_smul\_tilt}, via the scalar
+transport lemmas \lean{act\_smul\_fun},
+\lean{act\_iterate\_smul\_fun}):
+$(\mathrm{act}\,S)^{[N]} u = \lambda^N \cdot
+(\mathrm{act}\,\mathrm{tilt})^{[N]} u$.
+\end{lemma}
+
+\begin{lemma}[B0a, \lean{act\_iterate\_eq\_opOf\_pow}]
 $(\mathrm{act}\,M)^{[n]} u = (\mathrm{opOf}\,M)^n(\mathrm{toLp}\,u)$
-pointwise.
+pointwise, for any kernel matrix $M$.
+\end{lemma}
+
+\begin{theorem}[B1, \lean{gibbsPathSum\_eq\_inner\_pow}]
+For $w > 0$, $\beta \in \mathbb{R}$, $\lambda \ne 0$, $N \in
+\mathbb{N}$ and real observables $A, B$:
+\[
+\mathrm{gibbsPathSum}\,w\,\beta\,N\,A\,B
+  \;=\; \lambda^N\,
+  \bigl\langle (\mathrm{opOf}\,(\mathrm{tiltKernel}\,w\,\beta\,
+  \lambda))^N\, (Q A),\; Q B \bigr\rangle ,
+\]
+an exact identity: the unnormalised Gibbs two-point sum \emph{is}
+$\lambda^N$ times a matrix element of the reconstructed operator's
+powers, taken between dressed observables.
 \end{theorem}
-\begin{theorem}[\lean{os\_reconstruction\_uniform\_clustering}]
-In the window: ONE $m>0$ such that for EVERY spatial extent $L$, every
-connected correlator of the transported transfer operator obeys
-$\lvert \mathrm{connCorr}\,T\,\Omega\,v\,n\rvert \le
-\lVert v\rVert^2 \cdot (e^{-m})^n$.  The constant is per-observable;
-the rate alone is uniform in $L$.
+
+\begin{theorem}[B2, \lean{gibbsPartition\_eq\_inner\_pow}]
+Under the same hypotheses, the partition function is the same shape at
+the dressed constant:
+$\;\mathrm{gibbsPartition}\,w\,\beta\,N = \lambda^N
+\ip{\hat T^N (Q\mathbf 1)}{Q\mathbf 1}$.
 \end{theorem}
-The packaging is by citation: \lean{vacuumTransfer\_opOf} +
-\lean{tiltKernel\_symm} + \lean{clustering\_of\_gap}, all in-tree.
-One step of the campaign charter remains open, and we name it rather
-than blur it: the \emph{raw-measure} $n$-step identification --- the
-statement that the unnormalised Gibbs two-point sums
-(\lean{gibbsPathSum}, whose operator bridge
-\lean{gibbsPathSum\_eq\_iterate} is already in the tree) equal
-$\lambda^n$ times matrix elements of the operator powers through
-B0a/B0b and A3, together with the division-safe six-term connected
-bound against the partition function.  Its bricks are designed and its
-judge identities (G5 of \lean{judge\_os\_uniform.py}) are verified
-numerically at $n \le 4$; it is fabrication, not research.  Nothing in
-Sections~\ref{sec:unitary}--\ref{sec:measure} depends on it: the
-clustering theorem above is a statement about the reconstructed
-operator and stands on its own.
+
+\begin{remark}
+Dividing B1 by B2 cancels $\lambda^N$, so the \emph{normalised}
+two-point function equals
+$\ip{\hat T^N QA}{QB}/\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}$ --- plain
+arithmetic from the two identities, recorded here as prose.  The
+quantitative six-term \emph{connected} bound for this quotient
+(division-safe, with an explicit floor for the denominator) is the one
+named open step of the campaign; see Section~\ref{sec:honesty}.  We
+print the boundary between identity and estimate exactly where the
+kernel puts it.
+\end{remark}
+
+\section{Mixed clustering on a generic Hilbert space}
+\label{sec:mixed}
+The clustering machinery is stated for an arbitrary real Hilbert
+space $H$ (a \lean{section} with
+\lean{[NormedAddCommGroup H] [InnerProductSpace \(\mathbb{R}\) H]
+[CompleteSpace H]}), so the three lemmas below are reusable against
+any transfer operator packaged as a \lean{VacuumTransfer} --- in
+particular they are exactly the consumer shape of the
+\lean{GappedTransfer} hypothesis of the abstract frameworks in
+Section~\ref{sec:prior}.
+
+\begin{lemma}[\lean{norm\_sub\_inner\_smul\_le}]
+For $\lVert\Omega\rVert = 1$:
+$\lVert v - \ip{\Omega}{v}\,\Omega\rVert \le \lVert v\rVert$
+(Pythagoras; removing the vacuum component does not grow the norm).
+\end{lemma}
+
+\begin{lemma}[\lean{pow\_apply\_norm\_le}]
+$\lVert S^n v\rVert \le r^n \lVert v\rVert$ whenever
+$\lVert S\rVert \le r$, $r \ge 0$.
+\end{lemma}
+
+\begin{theorem}[\lean{mixed\_connCorr\_bound}]
+Let $T$ be a \lean{VacuumTransfer} with vacuum $\Omega$, and suppose
+$\lVert \mathrm{projectedTransfer}\,T\,\Omega\rVert \le r$ with
+$r \ge 0$.  Then for all $u, v \in H$ and all $n \in \mathbb{N}$
+\emph{including $n = 0$}:
+\[
+\bigl|\ip{u}{T^n v} - \ip{\Omega}{u}\,\ip{\Omega}{v}\bigr|
+  \;\le\; \lVert u\rVert\,\lVert v\rVert\, r^n .
+\]
+The $n = 0$ case is the Pythagoras lemma; $n \ge 1$ goes through the
+in-tree \lean{projected\_pow\_succ}.
+\end{theorem}
+
+This strictly extends the lane's earlier diagonal clustering
+(\lean{os\_reconstruction\_uniform\_clustering}, $u = v$, constant
+$\lVert v\rVert^2$), which remains in the module: two \emph{different}
+observables, and the time-zero correlator is bounded too --- the
+zero-time case is where a naive geometric-series argument is silent,
+and it is carried by the projection geometry instead.
+
+\section{The endpoint}\label{sec:endpoint}
+\begin{theorem}[\lean{os\_reconstruction\_measure\_uniform}]
+Let $\beta, \gamma \in \mathbb{R}$ and $0 < \alpha < 1$ with
+$2\tanh|\beta|+2\tanh|\gamma| \le \alpha$.  There is \emph{one}
+$m > 0$ such that for \emph{every} spatial extent $L$ there are
+$\lambda > 0$ and $\Omega > 0$ with:
+\begin{itemize}
+\item[(i)] the fixed-point equation for
+$\mathrm{tiltKernel}\,(\mathrm{sliceW}\,\gamma\,L)\,\beta\,\lambda$
+at $\Omega$;
+\item[(ii)] \emph{exact identification}: for every $N$ and all real
+observables $A, B$,
+$\;\mathrm{gibbsPathSum}\,(\mathrm{sliceW}\,\gamma\,L)\,\beta\,N\,A\,B
+= \lambda^N \ip{\hat T^N (QA)}{QB}$ with
+$\hat T = \mathrm{opOf}\,(\mathrm{tiltKernel}\ldots)$;
+\item[(iii)] \emph{volume-uniform mixed decay}: for all
+$u, v$ in the slice Hilbert space and all $n \ge 0$,
+$\;\bigl|\ip{u}{\hat T^{\,n} v} -
+\ip{\mathrm{vacOf}\,\Omega}{u}\,\ip{\mathrm{vacOf}\,\Omega}{v}\bigr|
+\le \lVert u\rVert\,\lVert v\rVert\,(e^{-m})^n$.
+\end{itemize}
+\end{theorem}
+The witnesses of (i)--(iii) are \lean{dobrushin\_ising\_uniform\_gap}'s,
+consumed verbatim; the packaging is \lean{vacuumTransfer\_opOf} +
+\lean{tiltKernel\_symm}; (ii) is B1 at $w = \mathrm{sliceW}\,\gamma\,L$
+(whose positivity is the in-tree \lean{sliceW\_pos}); (iii) is
+Theorem~\lean{mixed\_connCorr\_bound} at $r = e^{-m}$.  One theorem,
+three clauses, no new constant: the mass that clause (iii) exhibits is
+the mass D-6 proved, now measured against the raw Gibbs sums through
+the exact identity of clause (ii).
 
 \section{Reproduction}\label{sec:repro}
-All numbers below were read from committed run artefacts (ledger
-Addenda 616--618); predictions were committed \emph{before} their
-measurements.
+All numbers below are read from committed run artefacts; predictions
+were committed \emph{before} their measurements (the programme's
+standing discipline --- the ledger records nine consecutive exact
+count predictions for this lane before this paper's two).
 
+\subsection*{Stage OS-R-1 (measured, ledger Addenda 616--619)}
 \begin{center}
 \begin{tabular}{lll}
 \textbf{Quantity} & \textbf{Predicted} & \textbf{Measured} \\ \hline
@@ -244,30 +388,41 @@ core jobs, unwired & 8480 (ledger baseline) & 8480 \\
 core jobs, wired & $8480+1$ & 8481 \\
 oracle reports, wired & $3010+7$ & 3017 \\
 \lean{sorryAx} occurrences & 0 & 0 \\
-OS-R endpoint axiom sets & standard triple & exactly
-\lean{[propext, Classical.choice, Quot.sound]} $\times 7$ \\
+endpoint axiom sets & standard triple & exactly
+\lean{[propext, Classical.choice, Quot.sound]} \\
 \end{tabular}
 \end{center}
+Fresh-clone witness at anchor
+\lean{8127e5b52d75116b19c172ea022e12c1cab0f8c2}: judges $110/110$ in
+normal and \lean{-O}; core 8481; oracle 3017; module sha256
+bit-identical (Addendum 619; run cell
+\lean{scripts/osr1\_pass7\_freshclone.py}).
 
+\subsection*{Stage OS-R-2 (predictions registered, Addendum 621;
+measurements \SLOT{pass-11/12 in flight})}
+\begin{center}
+\begin{tabular}{lll}
+\textbf{Quantity} & \textbf{Predicted (committed first)} &
+\textbf{Measured} \\ \hline
+core jobs & 8481 exact (file grew, no module added) &
+\SLOT{pass 11} \\
+oracle reports & $3017+9 = 3026$ exact & \SLOT{pass 11} \\
+\lean{sorryAx} occurrences & 0 & \SLOT{pass 11} \\
+fresh-clone reproduction & bit-identical module, same counts &
+\SLOT{pass 12} \\
+\end{tabular}
+\end{center}
 Module: \lean{YangMills/OS/OSReconstructionUniform.lean}, sha256
-\lean{5445429f7736\ldots30cad1} (12{,}347 bytes), five elaboration
-passes on a fresh high-RAM Colab runtime (toolchain
-\lean{v4.29.0-rc6}, Mathlib pinned); wired at anchor
-\lean{8127e5b52d75116b19c172ea022e12c1cab0f8c2}.  The count prediction
-$+1/+7$ held exactly --- the ninth consecutive exact count prediction
-of the programme's D/OS lane.
-
-\emph{Fresh-clone witness} (ledger Addendum 619): a brand-new clone at
-the anchor, toolchain and Mathlib cache from scratch, reproduced ---
-judges $110/110$ in normal and \lean{-O}; core
-\lean{Build completed successfully (8481 jobs)}; oracle
-\lean{REPORTS 3017}, \lean{SORRYAX 0}, zero reports naming any axiom
-outside \lean{[propext, Classical.choice, Quot.sound]} (a
-continuation-joining checker; declarations depending on a strict
-\emph{subset} of the triple occur and are sound); module file sha256
-\lean{5445429f\ldots30cad1} bit-identical to the committed tree.  The
-run cell is committed (\lean{scripts/osr1\_pass7\_freshclone.py}) for
-any further independent reproduction.
+\lean{d9919e256ae59ac9189e397e5abf1249cfaca3284efa8f1a9307f86a27bac149}
+($20{,}428$ bytes), banked at commit \lean{3b0dfa9e8} after the plane
+printed \lean{ELAB\_EXIT 0} on byte-identical source (the cell prints
+size and sha256 before elaborating; both matched the local file before
+banking).  Pass history: passes 1--5 (OS-R-1, Addenda 614--616),
+passes 8--10 (OS-R-2, Addendum 621: the inner-product notation trap at
+this Mathlib pin, then a single \lean{nlinarith} orientation failure in
+the Pythagoras lemma, then green).  The wiring unit with the registered
+predictions is committed as \lean{scripts/osr2\_pass11\_wiring.py}
+\emph{before} its run, at commit \lean{520e177a7}.
 
 \section{What is not claimed}\label{sec:honesty}
 No Wightman axioms, no OS$\to$Wightman analytic continuation, no
@@ -275,6 +430,42 @@ continuum limit, no $SU(N)$, no statement about the Clay problem.  The
 window is the Dobrushin window; outside it the programme's own
 kill-test (repository, Addendum 610) shows the standard-cone Birkhoff
 route is projectively blind to the site weight, which is why no claim
-beyond the window appears here.
+beyond the window appears here.  The model is the $\mathbb{Z}_2$
+Ising slice; ``reconstruction'' means the elementary finite-volume
+site-form construction (definite form, no quotient), and the theorems
+are about its \emph{spectrum and its exact relation to the Gibbs
+sums}, not about the construction being difficult.  One step of the
+campaign charter remains open and is named rather than blurred: the
+division-safe \emph{normalised} six-term connected bound --- the
+quantitative decay of
+$\mathrm{gibbsPathSum}/Z - $ (product of one-point quotients), with an
+explicit denominator floor.  Its ingredients are exactly B1, B2 and
+Theorem~\lean{mixed\_connCorr\_bound}; nothing in
+Sections~\ref{sec:unitary}--\ref{sec:endpoint} depends on it, and the
+endpoint theorem stands on its own.
+
+\begin{thebibliography}{9}
+\bibitem{DHMN} M.~R.~Douglas, S.~Hoback, C.~Mei, Y.~Nissim,
+\emph{Formalization of QFT}, arXiv:2603.15770 (2026).  Repositories:
+\lean{mrdouglasny/OSforGFF}, \lean{mrdouglasny/reflection-positivity},
+\lean{mrdouglasny/lgt}, \lean{mrdouglasny/pphi2};
+\lean{xiyin137/OSreconstruction}.
+\bibitem{OS} K.~Osterwalder, R.~Schrader, \emph{Axioms for Euclidean
+Green's functions} I, II, Comm.\ Math.\ Phys.\ \textbf{31} (1973),
+\textbf{42} (1975).
+\bibitem{GJ} J.~Glimm, A.~Jaffe, \emph{Quantum Physics: A Functional
+Integral Point of View}, 2nd ed., Springer (1987).
+\bibitem{Dob} R.~L.~Dobrushin, \emph{The description of a random field
+by means of conditional probabilities and conditions of its
+regularity}, Theory Probab.\ Appl.\ \textbf{13} (1968).
+\bibitem{own-z2} L.~Eriksson, \emph{From the Gibbs Weight to the
+Spectral Gap: A Complete Machine-Checked Osterwalder--Seiler Chain for
+the $\mathbb{Z}_2$ Lattice Gauge Chain}, ai.viXra:2607.0078 (2026) ---
+the zero-extension, explicitly non-volume-uniform predecessor of this
+paper.
+\bibitem{own-d6} L.~Eriksson, \emph{the dobrushin-matrix paper of the
+same repository} (\lean{papers/dobrushin-matrix/}), source of
+\lean{dobrushin\_ising\_uniform\_gap} (D-6, ledger Addendum 603).
+\end{thebibliography}
 
 \end{document}
