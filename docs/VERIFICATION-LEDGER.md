@@ -31146,3 +31146,44 @@ owner's attention before both desks write into YangMills/OS/**.
 **ROLES.**  Audit of the lost firing, bootstrap fix, second firing:
 this desk.  The license reading remains pending; fabrication remains
 unlicensed at the time of this addendum.
+
+
+## Addendum 610 (2026-08-04, **the two 7-shaped doors are DISPOSED: door
+(1) killed by its registered 30-second test; door (2) stays behind its
+proved barrier**)
+
+**Door (1), site-local projective cone / beyond-Dobrushin window: DEAD
+ON ARRIVAL, now measured.**  The registered kill-test of Add. 607 ran as
+scripts/killtest_birkhoff_door.py (definitions pinned line-by-line to
+Z2Identification/SpatialExtent/PerronGap/DobrushinCorollary; window =
+2 tanh|beta| + 2 tanh|gamma| <= 0.8 from judge_os_uniform.py:321;
+decision rule written in the header BEFORE the first run): full
+pairwise Hilbert-metric diameter of symWeighted (sliceW gamma L) beta
+on {0,1}^(L+1), L = 2..8, at the in-window witness (0.2,0.2) and three
+outside points (0.5,0.3), (0.6,0.6), (1.0,1.0).  Measured: 88/88 checks
+in normal AND -O modes (8.34 s / 9.02 s, single process, matrices <= 2
+MB -- light class), and kappa_L = tanh(beta(L+1)) -> 1 at EVERY point.
+The measurement also confirmed the two structural theorems to 1e-9,
+and they close the door harder than the raw numbers: (a) the site
+weight is PROJECTIVELY INVISIBLE -- Delta(sqrt(w) K sqrt(w)) =
+Delta(K) identically, because a diagonal congruence does not move
+columns projectively, so NO choice of slice weight can rescue a
+standard-cone Birkhoff argument; (b) Delta(K) = 4 beta (L+1) exactly
+(the spatial-birkhoff tensor-additivity wall).  Any volume-uniform
+contraction mechanism would need a genuinely different cone; the
+registered test says do not invest.
+
+**Door (2), the wronskian-reduction conjecture: no run needed.**  The
+corpus itself proved the parity-mirror cancellation barrier
+(e^{-2.1 beta} at t = pi) with the counterexample killing all
+bounded-structural-data routes (Add. 607).  Noted, not re-litigated.
+
+**Consequence for the standing order** ('no pares hasta material 7+'):
+the 7+ branch is now CLOSED BY MEASUREMENT, not by opinion -- both
+7-shaped doors are dead under their own registered criteria.  The
+honest execution continues on the OS-R paper (6.5 band), per the
+calibration recorded in HANDOFF-OS-R.md section 2.
+
+**ROLES.**  Test authorship and execution: this desk, criterion frozen
+in the script header before the run.  The structural claims (a)/(b) are
+classical and were verified numerically by the same run that used them.
