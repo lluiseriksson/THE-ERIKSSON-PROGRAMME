@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "localized-covariance-carrier-v23"
-SOURCE_SHA = "8a8c7ba39f1fb73e97812c8f76c1c7602a759818"
+RUNNER_REV = "localized-covariance-carrier-v24"
+SOURCE_SHA = "83a1f260d87f207d2dc7bde61c2ed1ff0d3c038d"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -250,7 +250,7 @@ REGIONAL_PRECISION_QUEUE_V10 = [
     ),
 ]
 
-LOCALIZED_CARRIER_QUEUE_V23 = [
+LOCALIZED_CARRIER_QUEUE_V24 = [
     (
         "physical_coordinate_dictionary_focal",
         [
@@ -283,9 +283,25 @@ LOCALIZED_CARRIER_QUEUE_V23 = [
         ],
         18,
     ),
+    (
+        "conditioned_qbound_wall_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP116ConditionedRootQBoundWall",
+        ],
+        None,
+    ),
+    (
+        "conditioned_qbound_wall_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP116ConditionedRootQBoundWallAudit.lean",
+        ],
+        1,
+    ),
 ]
 
-QUEUE = LOCALIZED_CARRIER_QUEUE_V23
+QUEUE = LOCALIZED_CARRIER_QUEUE_V24
 
 ALGEBRA_REPRO = r"""import Mathlib
 
