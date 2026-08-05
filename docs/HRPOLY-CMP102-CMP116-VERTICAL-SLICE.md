@@ -2523,7 +2523,7 @@ the already verified assembler, discharge rows 23--24.
 | 3 | generated physical precision specialization | the literal generated `K` supplies its finite range and two separately named Laplacian / normalized-mass row budgets | **sealed** at `6bef7974`, run `30994320564`; no counter movement |
 | 4 | source large-block cutoff specialization | instantiate `h` by the one `CMP95SourceSmoothPartitionProfile`, use the source carrier equality, and rewrite slope times range to the exact `4 * derivBound / M` gain | **sealed** at `de57d879`, run `30997349504`; no counter movement |
 | 5 | ambient-to-regional precision dictionary | realize the full generated active carrier as the literal ambient `FinBox`, transport the generated precision/coercivity and source cutoff through one explicit equivalence, and identify the regional commutator with the reindexed active commutator | **sealed** at `8ac1a1c2`, cold run `31001590888`; no counter movement |
-| 6 | uniform single-cell regional correction | compose the cell commutator with the regional Dirichlet Green and the contractive right cutoff, retaining one explicit cell amplitude | open; generic Green and cutoff composition lemmas exist |
+| 6 | uniform single-cell regional correction | compose the cell commutator with the regional Dirichlet Green and the contractive right cutoff, retaining one explicit cell amplitude | **sealed** at `ddda0475`, cold run `31021829343`; no counter movement |
 | 7 | overlap / Schur / contraction endpoint | sum cells with the already derived overlap `16`, pass the exponential kernel estimate to operator norm, and prove the explicit physical defect budget is `< 1` | open; this is physical attainment of window 15 |
 | 8 | two literal centered-conditioned gap producers | prove `alpha < coercivityConstant` and `2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound` from the physical rates produced by the regional construction | open; the assembler then derives `root_small` and `outer_small` and moves the live count to `22/41` |
 
@@ -2575,3 +2575,27 @@ Cold GitHub Actions run `31001590888` compiled the focal in 8,529 jobs and
 then verified all eleven audited declarations with exactly
 `[propext, Classical.choice, Quot.sound]`.  The checkout restored no project
 `.lake/build` cache.  This seal moves neither `20/41` nor window 15.
+
+### Step 6 uniform single-cell regional correction (SEALED)
+
+Checkpoint `ddda0475533573d02f1197340df0d216467702da` constructs, for every
+source large-block cell, the exact finite-range-thickened Dirichlet region
+and the canonical inverse of the compression of the one generated ambient
+precision.  It transports the ambient exponential kernel estimate to that
+regional Green, composes the already sealed physical commutator on the left
+and the contractive source cutoff on the right, and retains one explicit
+cell-independent amplitude.  No separately chosen regional/global Green
+identity and no new constant is accepted from the caller.
+
+Cold GitHub Actions run `31021829343` (workflow checkpoint `83b0b310`) set
+`COLD_MODE=true`, skipped both restoration and saving of `.lake/build`, and
+compiled the focal in 8,552 jobs.  The 16-declaration audit exited zero and
+every declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+The deterministic evidence archive has SHA-256
+`d41bd0f4e0a792cbb631dbcc70c3d630df24e6b493521b503beae1b1dc7addd5`.
+
+This is **step 6 infrastructure, not a terminal field**.  The overlap factor
+`16`, the Schur/operator-norm estimate, the physical defect budget
+`norm R' < 1`, and both scalar producers of step 8 remain open.  Thus window
+15 is still compatible but unattained, the live producer count remains
+exactly `20/41`, and `TermSource = 0`.

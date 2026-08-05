@@ -12,9 +12,6 @@ import YangMills.RG.FinitePiLpTypedCutoff
 /-!
 # The physical single-cell regional correction in CMP99 (3.88)
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler-verified.
-
 For every source large-block cell this file constructs the Dirichlet region
 as the exact finite-range thickening of the physical cutoff support.  The
 regional Green is the canonical inverse of the compression of the one

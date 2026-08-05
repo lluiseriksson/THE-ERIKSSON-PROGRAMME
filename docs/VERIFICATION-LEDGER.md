@@ -27436,3 +27436,40 @@ compose the commutator with a regional Green, prove the overlap/Schur defect
 budget, attain `norm R' < 1`, discharge groups 23--24, or inhabit a
 `TermSource`.  It is step 5 infrastructure below window 15; the live counters
 remain exactly `20/41` and zero.
+
+## Addendum 557 (2026-08-05, **uniform single-cell regional correction GREEN; 20/41 unchanged**)
+
+The step-6 regional correction was validated from exact source checkpoint
+`ddda0475533573d02f1197340df0d216467702da` by cold GitHub Actions run
+`31021829343` (workflow checkpoint
+`83b0b310de6aa326291b3145329246d062e75801`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T15:46:34Z` to `16:43:58Z`, completed with
+`Build completed successfully (8552 jobs).`, and exited zero.  Its
+sixteen-declaration audit ran from `16:43:58Z` to `16:44:22Z` and also exited
+zero.  Every declaration depends exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` are
+absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`d41bd0f4e0a792cbb631dbcc70c3d630df24e6b493521b503beae1b1dc7addd5`.
+The axiom JSON has SHA-256
+`fdeba68c7b0d8ce86afb97738eff6f88872f13b63b52b313f46b8e6f00b72269`;
+the stage ledger has SHA-256
+`91115f8460a794b871eb99e104c69e4a9eb512ccc0e77e2c5982bc7da8f488ce`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+13 recorded files.
+
+This brick constructs the exact finite-range regional cell, the canonical
+Dirichlet Green of the compressed generated ambient precision, its uniform
+exponential decay, and the literal correction
+`K(h_Pi) G'_Pi h_Pi` with one explicit cell-independent amplitude.  It does
+not pay the overlap `16`, prove the Schur/operator-norm defect budget, attain
+`norm R' < 1`, discharge groups 23--24, or inhabit a `TermSource`.  It is
+step 6 infrastructure below window 15; the live counters remain exactly
+`20/41` and zero.
