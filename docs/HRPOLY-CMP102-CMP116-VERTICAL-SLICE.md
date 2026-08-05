@@ -2402,3 +2402,21 @@ covariant stencil.  The normalized `Q'^* Q'` term and the complete
 three-species identity remain open.  This is infrastructure below physical
 attainment of window 15, not a terminal producer, so the live counters remain
 exactly `20/41` and `TermSource = 0`.
+
+### Normalized third species of CMP99 (3.88) (2026-08-05)
+
+Exact source checkpoint
+`1cf90bee75d7927362c94ef338efc46f32153097` passed cold GitHub Actions run
+`30986285981` without restoration or saving of a project build cache.  The
+focal completed 8,466 jobs, its five-declaration audit exited zero, and every
+declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+The new brick expands the scalar commutator at fixed output, preserves exact
+addition and scalar multiplication, exposes the normalized `Q'^* Q'` kernel
+sum with its mass coefficient still visible, and identifies the generic
+source precision definitionally with the literal generated physical tower.
+It does **not** yet combine that third species with the active-region
+transport of the two differential species, prove the complete physical
+(3.88), or attain window 15.  It is infrastructure rather than a terminal
+producer, so the live counters remain exactly `20/41` and
+`TermSource = 0`.

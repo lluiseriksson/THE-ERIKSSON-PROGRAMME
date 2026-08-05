@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecision
 import YangMills.RG.FinitePiLpScalarCommutator
 
 /-!
-# PRE-VALIDATION: the normalized `Q'^* Q'` species in CMP99 (3.88)
+# The normalized `Q'^* Q'` species in CMP99 (3.88)
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler-verified from exact source checkpoint
+`1cf90bee75d7927362c94ef338efc46f32153097` in cold GitHub Actions run
+`30986285981`, without restoring or saving a project `.lake/build` cache.
+The focal completed 8,466 jobs and all five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP99 (3.88), printed p. 409, fixes one output site and writes the mass part
 of `K(h) = h Delta'_a - Delta'_a h` as a sum over input sites.  This file

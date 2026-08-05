@@ -6,10 +6,11 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceGeneratedQprimeMassCutoffIdentity
 
 /-!
-# PRE-VALIDATION audit: normalized `Q'^* Q'` species in CMP99 (3.88)
+# Audit: normalized `Q'^* Q'` species in CMP99 (3.88)
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the Lean compiler.
+Compiler-verified from exact source checkpoint
+`1cf90bee75d7927362c94ef338efc46f32153097` in cold GitHub Actions run
+`30986285981`.
 -/
 
 #print axioms YangMills.RG.finitePiLpScalarCommutator_apply_eq_sum

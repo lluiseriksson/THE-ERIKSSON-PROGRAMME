@@ -27220,3 +27220,41 @@ the normalized `Q'^* Q'` species, prove the complete three-term identity,
 attain `norm R' < 1`, discharge groups 23--24, or inhabit a `TermSource`.
 It is therefore infrastructure below window 15 rather than a terminal field;
 the live counters remain exactly `20/41` and zero.
+
+## Addendum 551 (2026-08-05, **normalized `Q'^* Q'` species of CMP99 (3.88) GREEN; 20/41 unchanged**)
+
+The exact fixed-output scalar-commutator expansion, its additive/scalar
+algebra, and the literal generated-precision dictionary were validated from
+exact source checkpoint
+`1cf90bee75d7927362c94ef338efc46f32153097` by cold GitHub Actions run
+`30986285981` (workflow checkpoint
+`a4be1d140709f73d11c309dc59339881d74142e2`).  The checkout did not restore
+or save a project `.lake/build` cache.  The official Lean `v4.29.0-rc6`
+asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8466 jobs).` and
+exited zero.  Its five-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`6baaab756e69ac8791791d4b4b45f729edf2d8fa78a6c87e28c51c31ceabfab9`.
+The axiom JSON has SHA-256
+`90b8ddfcbcedd5dca4f074b3ffa0f1f101be9e7df15658ac196c7581efb59680`;
+the stage ledger has SHA-256
+`81da9b2cf147492c86bbe001ec509ab0f5a540f1e11bc19a4d641fb766af6df1`.
+The internal `SHA256SUMS` manifest was rechecked independently and matched all
+12 recorded files.
+
+This brick supplies the normalized third algebraic species as the literal
+fixed-output kernel sum and identifies the generic source precision with the
+generated physical tower, adjoint mass and scalar coefficient.  It does not
+yet transport the two ambient differential species to the active carrier,
+combine all three species into the complete physical (3.88), estimate the
+regional defect, attain `norm R' < 1`, discharge groups 23--24, or inhabit a
+`TermSource`.  It is therefore infrastructure below window 15 rather than a
+terminal producer; the live counters remain exactly `20/41` and zero.
