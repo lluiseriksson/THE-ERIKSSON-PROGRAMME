@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 9c5618f4ad9433f80810213bfc028f71d06f2fc8
+  SOURCE_SHA: ddda0475533573d02f1197340df0d216467702da
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -73,9 +73,10 @@ jobs:
       - name: Record diagnostic cache state
         shell: bash
         run: |
-          printf 'PROJECT_CACHE_HIT=%s\nPROJECT_CACHE_PRIMARY_KEY=%s\n' \
+          printf 'PROJECT_CACHE_HIT=%s\nPROJECT_CACHE_PRIMARY_KEY=%s\nPROJECT_CACHE_MATCHED_KEY=%s\n' \
             '${{ steps.project-cache.outputs.cache-hit }}' \
-            '${{ steps.project-cache.outputs.cache-primary-key }}' | \
+            '${{ steps.project-cache.outputs.cache-primary-key }}' \
+            '${{ steps.project-cache.outputs.cache-matched-key }}' | \
             tee evidence/project-cache.txt
 
       - name: Materialize pinned dependencies
