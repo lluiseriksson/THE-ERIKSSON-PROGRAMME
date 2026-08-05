@@ -27510,6 +27510,41 @@ premise itself.  Hence this is the sealed step-7 reduction, not attainment of
 window 15, not discharge of rows 23--24, and not a `TermSource` inhabitant.
 The live counters remain exactly `20/41` and zero.
 
+## Addendum 562 (2026-08-05, **CMP96 (2.40) cutoff-Laplacian species GREEN; (2.43)--(2.44)/(3.89) open; 20/41 unchanged**)
+
+The cutoff-Laplacian source checkpoint
+`972e8d115517c6f1f9bea97ec348bd0e31e1368d` was validated by cold GitHub
+Actions run `31047332477` (workflow checkpoint
+`369870b6a978f247ba416a9ef84478bc7ec256ce`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+Lean was the official `v4.29.0-rc6` asset and Mathlib was exactly
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T21:20:26Z` to `21:46:05Z`, completed with
+`Build completed successfully (8517 jobs).`, and exited zero.  The audit ran
+from `21:46:05Z` to `21:46:15Z` and exited zero.  Its six declarations depend
+exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`6f3e21e5a7b1c8c14cf484a03d9ef67f7171bcf271d4539d251a0497f25e005b`.
+The axiom JSON has SHA-256
+`27e81215558b9c4cd4c6b909a6c6646d9813c18ef27e70fd3dd4a650eace06a7`;
+the stage ledger has SHA-256
+`30d0e8ba6c761af639ba9fd183410db44e1541d436867dc0b65e3b06cd6f0932`.
+All 13 entries of the internal `SHA256SUMS` manifest matched.
+
+The seal covers only the source-specific cutoff side of CMP96 (2.40): the
+two incident first differences per direction, their scalar discrete
+Laplacian, its literal rescaled correction identity, and the exact
+pre-summation gain `32 * derivBound / K`.  No second profile constant is
+introduced and no factor depending on `K` is hidden in the cell count.  The
+regional Green package (2.43), the direct combination (2.44)/CMP99 (3.89),
+`norm R' < 1`, rows 23--24, and a `TermSource` inhabitant all remain open.
+Therefore window 15 is still unattained and the live counters remain exactly
+`20/41` and zero.
+
 ## Addendum 559 (2026-08-05, **diagonal generated Schur majorant NO-GO GREEN; physical window 15 still open; 20/41 unchanged**)
 
 The no-go was validated from exact source checkpoint

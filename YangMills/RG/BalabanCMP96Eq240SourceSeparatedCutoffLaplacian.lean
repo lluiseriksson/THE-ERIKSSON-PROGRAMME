@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition
 import YangMills.RG.PhysicalShellLocalityDiv
 
 /-!
-# PRE-VALIDATION: the cutoff-Laplacian species in CMP96 (2.40)
-
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+# The cutoff-Laplacian species in CMP96 (2.40)
 
 CMP96 (2.40), printed p. 230, bounds the second displayed species by applying
 the localized Green value estimate (2.43) to the scalar discrete Laplacian of
@@ -25,6 +22,11 @@ This file proves only that cutoff-side statement and identifies its scalar
 coefficient with the literal `cmp99CutoffLaplacianCorrection` at the rescaled
 unit lattice spacing.  It does not supply the regional Green estimate (2.43),
 combine the three species, prove (2.44)/(3.89), or attain `norm R' < 1`.
+
+Cold GitHub Actions run `31047332477` verified exact source checkpoint
+`972e8d115517c6f1f9bea97ec348bd0e31e1368d` without restoring the project
+`.lake/build` cache.  The focal built 8,517 jobs and the six-declaration audit
+used exactly `[propext, Classical.choice, Quot.sound]`.
 -/
 
 namespace YangMills.RG

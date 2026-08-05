@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP96Eq240SourceSeparatedCutoffLaplacian
 
 /-!
-# PRE-VALIDATION audit: cutoff-Laplacian species in CMP96 (2.40)
+# Audit: cutoff-Laplacian species in CMP96 (2.40)
 
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+Cold GitHub Actions run `31047332477` verified all six declarations from
+source checkpoint `972e8d115517c6f1f9bea97ec348bd0e31e1368d` with exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp96SourceSeparatedCutoffDifferenceBudget_nonneg

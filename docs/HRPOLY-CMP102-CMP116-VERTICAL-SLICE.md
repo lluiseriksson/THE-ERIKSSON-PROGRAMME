@@ -2613,6 +2613,39 @@ These are admissible prerequisites for step 7.1--7.4, not the direct (3.89)
 estimate itself.  Hence window 15 remains unattained, the live producer count
 remains exactly `20/41`, and `TermSource = 0`.
 
+### Step 7.2 cutoff-Laplacian species (SEALED)
+
+Exact source checkpoint `972e8d115517c6f1f9bea97ec348bd0e31e1368d`
+passed cold GitHub Actions run `31047332477` (workflow checkpoint
+`369870b6a978f247ba416a9ef84478bc7ec256ce`).  The run recorded
+`COLD_MODE=true`, skipped restoration and saving of `.lake/build`, built the
+8,517-job focal, and exited zero in both focal and audit stages.  All six
+audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The seal proves the two incident first-difference bounds in each of four
+directions, their scalar discrete-Laplacian sum, and its exact identification
+with the literal cutoff-Laplacian species of (3.88) at rescaled unit spacing.
+It introduces no second profile constant: the one sealed CMP95
+first-derivative budget gives, before every cell or layer sum,
+
+`8 * cutoffLaplacianBudget * L^(depth+1) = 32 * derivBound / K`.
+
+The independently downloaded evidence archive has SHA-256
+`6f3e21e5a7b1c8c14cf484a03d9ef67f7171bcf271d4539d251a0497f25e005b`.
+Its axiom JSON has SHA-256
+`27e81215558b9c4cd4c6b909a6c6646d9813c18ef27e70fd3dd4a650eace06a7`
+and its stage ledger has SHA-256
+`30d0e8ba6c761af639ba9fd183410db44e1541d436867dc0b65e3b06cd6f0932`;
+all 13 entries of the internal `SHA256SUMS` manifest were independently
+rehash-verified.
+
+This is the cutoff-side part of CMP96 (2.40), not the four regional Green
+estimates (2.43), their combination into (2.44)/CMP99 (3.89), the defect
+contraction, rows 23--24, or a terminal field.  Window 15 therefore remains
+compatible but unattained, the live producer count remains exactly `20/41`,
+and `TermSource = 0`.
+
 ### Step 5 ambient dictionary (SEALED)
 
 Checkpoint `8ac1a1c2508f65e51d4eb89f81bf650780691cf6` freezes the
