@@ -8,9 +8,15 @@ import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedRootedResidual
 import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedVolumeBudget
 import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedTerminalEq143
 import YangMills.RG.BalabanCMP116InteractingConditionedCovariance
+import YangMills.RG.BalabanCMP116ConditionedRootQBoundWall
+import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalR3SourceRate
 
 /-!
 # Source-specific pre-(1.36) assembly on the combined ledger
+
+PRE-VALIDATION: the replacement of terminal root/outer smallness inputs by
+the literal coercivity-gap walls is present in source, but this revision has
+not yet been materialized or checked by the compiler.
 
 The generated conditioned covariance, root and strict lower certificate were
 compiler-verified at source checkpoint
@@ -568,24 +574,14 @@ structure CMP116CenteredConditionedCombinedSourceProofs
         X.C2 X.kappa1 X.delta X.kappa
           (cmp116Eq80Lemma1CombinedDomainMetric anchor domains E Y : ℝ)
   alpha_pos : 0 < X.alpha
-  root_small :
-    X.alpha *
-      (@norm
-        (Matrix
-          (PhysicalGaugeCoordIndex 4 (M * (2 * Q)) Nc)
-          (PhysicalGaugeCoordIndex 4 (M * (2 * Q)) Nc) ℝ)
-        Matrix.instL2OpNormedAddCommGroup.toNorm
-        (cmp116PhysicalEndomorphismRealMatrix X.root)) ^ 2 < 1
+  alpha_lt_coercivity : X.alpha < X.coercivityConstant
   gamma_nonneg : 0 ≤ X.gamma
-  outer_small :
-    2 *
-      (cmp116SourcePi4PhysicalComplexR1DefectBilateralBudget
-          X.K X.root X.coercivity_pos X.mass_pos X.K_coercive
-          (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P)
-          X.Delta X.Ahead X.rho X.rate X.radius (1 + X.radius) +
-        |cmp116Eq225SourceCoefficient
-            (cmp116PhysicalEndomorphismRealMatrix X.root) X.alpha *
-          X.sourceRate|) ≤ X.qBound
+  outer_gap_budget :
+    2 * cmp116SourcePi4PhysicalComplexR1DefectBilateralBudget
+        X.K X.root X.coercivity_pos X.mass_pos X.K_coercive
+        (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P)
+        X.Delta X.Ahead X.rho X.rate X.radius (1 + X.radius) +
+      X.sourceRate / (X.coercivityConstant - X.alpha) ≤ X.qBound
 
 set_option maxHeartbeats 1800000 in
 set_option synthInstance.maxHeartbeats 280000 in
@@ -792,14 +788,41 @@ noncomputable def
     gk_ne := X.lemma1.gk_pos.ne'
     threshold_eq := by rfl
     alpha_nonneg := le_of_lt H.alpha_pos
-    root_small := by simpa [alpha] using H.root_small
+    root_small := by
+      have hA : cmp116Eq226OptimalInteractionAlpha
+          X.potentialRate X.r2Rate X.gamma < X.coercivityConstant := by
+        simpa [CMP116CenteredConditionedCombinedSourceData.alpha] using
+          H.alpha_lt_coercivity
+      have hcovariance :=
+        X.precisionSource.norm_conditionedCovariance_le X.localizedCoordinates
+      have hsmall :=
+        cmp116Eq226_optimalCovarianceSmall_of_conditionedCovarianceNorm
+          X.conditionedRoot X.coercivity_pos hA hcovariance
+      simpa [CMP116Eq226OptimalCovarianceSmall, alpha,
+        CMP116CenteredConditionedCombinedSourceData.alpha] using hsmall
     gamma_nonneg := H.gamma_nonneg
     threshold_nonneg := by
       dsimp [threshold, CMP116CenteredConditionedCombinedSourceData.threshold]
       exact div_nonneg X.lemma1.epsilon1_nonneg (le_of_lt X.lemma1.gk_pos)
     outer_small := by
+      have hA : cmp116Eq226OptimalInteractionAlpha
+          X.potentialRate X.r2Rate X.gamma < X.coercivityConstant := by
+        simpa [CMP116CenteredConditionedCombinedSourceData.alpha] using
+          H.alpha_lt_coercivity
+      have hsource : 0 ≤ X.sourceRate := by
+        apply cmp116SourcePi4PhysicalComplexR3SourceRate_nonneg
+          X.K X.root
+          (cmp116Eq80Lemma1CombinedCenteredRegion anchor domains E P)
+          X.Delta H.Ahead_nonneg H.radius_nonneg H.shell_small
+          H.neumann_small H.neumann_transpose_small
+      have hcovariance :=
+        X.precisionSource.norm_conditionedCovariance_le X.localizedCoordinates
+      have hsmall :=
+        cmp116Eq226_optimalOuterSmall_le_qBound_of_conditionedCovarianceNorm
+          X.conditionedRoot X.coercivity_pos hA hsource hcovariance
+            H.outer_gap_budget
       simpa [alpha, CMP116CenteredConditionedCombinedSourceData.alpha,
-        CMP116CenteredConditionedCombinedSourceData.sourceRate] using H.outer_small
+        CMP116CenteredConditionedCombinedSourceData.sourceRate] using hsmall
     domain_nonempty := by
       simpa [domainSupport] using
         cmp116Eq80Lemma1CombinedDomainSupport_nonempty anchor domains E

@@ -9,6 +9,10 @@ import YangMills.RG.BalabanCMP116SourcePi4FullComplexR3BilateralNorm
 /-!
 # Physical source rate on the conditioned CMP116 outer carrier
 
+PRE-VALIDATION: the new source-rate nonnegativity producer is present, its
+updated `.olean` has not yet been materialized, and the theorem has not yet
+been checked by the compiler.
+
 Equation (2.23) restricts the outer Gaussian to the activity carrier `Z`.
 The literal `R3` operator remains global, while its row and column norms are
 controlled by the physical source construction.  This file records the short
@@ -39,6 +43,98 @@ noncomputable def cmp116SourcePi4PhysicalComplexR3SourceRate
       K root Z0 Delta Ahead rho rate radius Rweak *
     cmp116SourcePi4PhysicalComplexR3ColumnBound
       K root Z0 Delta Ahead rho rate radius Rweak
+
+/-- The literal source-energy rate is nonnegative under the same row and
+transpose Neumann windows used by its physical `R2` factors.  This theorem
+exposes a sign consequence of the existing contour hypotheses; it does not
+add an independent source-rate assumption. -/
+theorem cmp116SourcePi4PhysicalComplexR3SourceRate_nonneg
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (K root : PhysicalEndomorphism M Q Nc)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (Delta : ℕ) {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hradius : 0 ≤ radius)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (hneumann :
+      ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
+        cmp116SourcePi4PhysicalComplexContourDefectBound
+          Nc Delta Ahead rho rate radius Rweak < 1)
+    (hneumannTranspose :
+      cmp116SourcePi4PhysicalComplexTransposeRelativeDefectBound
+        K Delta Ahead rho rate radius Rweak < 1) :
+    0 ≤ cmp116SourcePi4PhysicalComplexR3SourceRate
+      K root Z0 Delta Ahead rho rate radius Rweak := by
+  let defect :=
+    cmp116SourcePi4PhysicalComplexContourDefectBound
+      Nc Delta Ahead rho rate radius Rweak
+  have hgeometric :
+      0 ≤ cmp99PhysicalBondGeometricRowSum 4 rate :=
+    cmp99PhysicalBondGeometricRowSum_nonneg hgeom
+  have hdefect : 0 ≤ defect := by
+    dsimp [defect, cmp116SourcePi4PhysicalComplexContourDefectBound,
+      cmp116SourcePi4ComplexContourPrefactor]
+    positivity
+  have hrowInv :
+      0 ≤ (1 -
+        ‖cmp116PhysicalEndomorphismComplexMatrix K‖ * defect)⁻¹ := by
+    apply inv_nonneg.mpr
+    linarith
+  have hcolumnInv :
+      0 ≤ (1 -
+        ‖(cmp116PhysicalEndomorphismComplexMatrix K).transpose‖ *
+          defect)⁻¹ := by
+    apply inv_nonneg.mpr
+    have hsmall :
+        ‖(cmp116PhysicalEndomorphismComplexMatrix K).transpose‖ *
+          defect < 1 := by
+      simpa [defect,
+        cmp116SourcePi4PhysicalComplexTransposeRelativeDefectBound] using
+        hneumannTranspose
+    linarith
+  have hR2row :
+      0 ≤ cmp116SourcePi4PhysicalComplexR2RowBound
+        K Delta Ahead rho rate radius Rweak := by
+    change 0 ≤
+      ((1 - ‖cmp116PhysicalEndomorphismComplexMatrix K‖ * defect)⁻¹ *
+        ‖cmp116PhysicalEndomorphismComplexMatrix K‖) * defect *
+          ‖cmp116PhysicalEndomorphismComplexMatrix K‖
+    exact mul_nonneg
+      (mul_nonneg
+        (mul_nonneg hrowInv (norm_nonneg _)) hdefect)
+      (norm_nonneg _)
+  have hR2column :
+      0 ≤ cmp116SourcePi4PhysicalComplexR2ColumnBound
+        K Delta Ahead rho rate radius Rweak := by
+    change 0 ≤
+      ((1 -
+          ‖(cmp116PhysicalEndomorphismComplexMatrix K).transpose‖ * defect)⁻¹ *
+        ‖(cmp116PhysicalEndomorphismComplexMatrix K).transpose‖) * defect *
+          ‖(cmp116PhysicalEndomorphismComplexMatrix K).transpose‖
+    exact mul_nonneg
+      (mul_nonneg
+        (mul_nonneg hcolumnInv (norm_nonneg _)) hdefect)
+      (norm_nonneg _)
+  have hR3row :
+      0 ≤ cmp116SourcePi4PhysicalComplexR3RowBound
+        K root Z0 Delta Ahead rho rate radius Rweak := by
+    unfold cmp116SourcePi4PhysicalComplexR3RowBound
+    exact mul_nonneg
+      (mul_nonneg
+        (mul_nonneg (norm_nonneg _) hR2row)
+        (norm_nonneg _))
+      (norm_nonneg _)
+  have hR3column :
+      0 ≤ cmp116SourcePi4PhysicalComplexR3ColumnBound
+        K root Z0 Delta Ahead rho rate radius Rweak := by
+    unfold cmp116SourcePi4PhysicalComplexR3ColumnBound
+    exact mul_nonneg
+      (mul_nonneg
+        (mul_nonneg (norm_nonneg _) (norm_nonneg _))
+        hR2column)
+      (norm_nonneg _)
+  unfold cmp116SourcePi4PhysicalComplexR3SourceRate
+  exact mul_nonneg hR3row hR3column
 
 namespace CMP116Eq214PhysicalContourDensity
 
