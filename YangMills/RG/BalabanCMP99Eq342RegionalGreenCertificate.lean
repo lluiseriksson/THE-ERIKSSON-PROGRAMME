@@ -30,7 +30,7 @@ open scoped RealInnerProductSpace
 
 noncomputable section
 
-variable {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
+variable {m q Nc : ℕ} [NeZero m] [NeZero q] [NeZero Nc]
 
 /-- The source-visible scale vector in CMP99 (3.42). -/
 def cmp99Eq342ScaleVector (ell : ℝ) : Fin 4 → ℝ
@@ -46,12 +46,14 @@ the same regional covariant differential.  In particular, the certificate
 cannot be inhabited by supplying a different operator with convenient
 bounds. -/
 structure CMP99Eq342RegionalGreenCertificate
-    (Omega : ActiveGaugeRegion d N)
+    (Omega : ActiveGaugeRegion 4 (m * (2 * q)))
     (rho : SUNAdjointModel Nc)
-    (U : PhysicalGaugeBackground d N Nc)
+    (U : PhysicalGaugeBackground 4 (m * (2 * q)) Nc)
     (spacing : ℝ)
-    (K : PhysicalGaugeZeroCochain d N Nc →L[ℝ]
-      PhysicalGaugeZeroCochain d N Nc)
+    (K : CMP99RegionalAmbientZeroField (M := m) (Q := q)
+      (g := SUNLieCoord Nc) →L[ℝ]
+      CMP99RegionalAmbientZeroField (M := m) (Q := q)
+        (g := SUNLieCoord Nc))
     (c : ℝ) (hc : 0 < c) (hKcoer : IsCoerciveCLM K c)
     (B0 delta0 ell : ℝ) : Prop where
   B0_nonneg : 0 ≤ B0
@@ -67,7 +69,7 @@ structure CMP99Eq342RegionalGreenCertificate
     FinitePiLpTypedExponentialKernelBound
       ((cmp99ActiveRegionSourceCovariantD0CLM Omega rho U spacing).comp
         (cmp99RegionalDirichletGreen Omega K hc hKcoer))
-      (fun target : PhysicalBond d N =>
+      (fun target : PhysicalBond 4 (m * (2 * q)) =>
         fun source : ActiveGaugeRegion.Site Omega =>
           finBoxDist target.1 source.1)
       (B0 * ell) delta0
@@ -76,7 +78,7 @@ structure CMP99Eq342RegionalGreenCertificate
       ((cmp99RegionalDirichletGreen Omega K hc hKcoer).comp
         (cmp99ActiveRegionSourceCovariantD0CLM Omega rho U spacing).adjoint)
       (fun target : ActiveGaugeRegion.Site Omega =>
-        fun source : PhysicalBond d N =>
+        fun source : PhysicalBond 4 (m * (2 * q)) =>
           finBoxDist target.1 source.1)
       (B0 * ell) delta0
   laplacian_bound :
@@ -90,12 +92,14 @@ structure CMP99Eq342RegionalGreenCertificate
 /-- CMP96 (2.43) uses precisely the value and left-derivative components of
 the stronger four-component CMP99 (3.42) package. -/
 theorem CMP99Eq342RegionalGreenCertificate.cmp96Eq243_value_and_derivative
-    {Omega : ActiveGaugeRegion d N}
+    {Omega : ActiveGaugeRegion 4 (m * (2 * q))}
     {rho : SUNAdjointModel Nc}
-    {U : PhysicalGaugeBackground d N Nc}
+    {U : PhysicalGaugeBackground 4 (m * (2 * q)) Nc}
     {spacing : ℝ}
-    {K : PhysicalGaugeZeroCochain d N Nc →L[ℝ]
-      PhysicalGaugeZeroCochain d N Nc}
+    {K : CMP99RegionalAmbientZeroField (M := m) (Q := q)
+      (g := SUNLieCoord Nc) →L[ℝ]
+      CMP99RegionalAmbientZeroField (M := m) (Q := q)
+        (g := SUNLieCoord Nc)}
     {c : ℝ} {hc : 0 < c} {hKcoer : IsCoerciveCLM K c}
     {B0 delta0 ell : ℝ}
     (C : CMP99Eq342RegionalGreenCertificate Omega rho U spacing K c hc
@@ -108,7 +112,7 @@ theorem CMP99Eq342RegionalGreenCertificate.cmp96Eq243_value_and_derivative
       FinitePiLpTypedExponentialKernelBound
         ((cmp99ActiveRegionSourceCovariantD0CLM Omega rho U spacing).comp
           (cmp99RegionalDirichletGreen Omega K hc hKcoer))
-        (fun target : PhysicalBond d N =>
+        (fun target : PhysicalBond 4 (m * (2 * q)) =>
           fun source : ActiveGaugeRegion.Site Omega =>
             finBoxDist target.1 source.1)
         (B0 * ell) delta0 :=
