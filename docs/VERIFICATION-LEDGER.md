@@ -31923,3 +31923,59 @@ spatial extent.
 
 **ROLES.**  Unit design: this desk.  Plane execution: autonomous
 browser bridge.  This record: this desk.
+
+
+## Addendum 629 (2026-08-05, **THE INFINITE-TIME LIMIT STATE: exists,
+IS the vacuum, and is INDEPENDENT of the far-end boundary observable;
+module green in ONE pass; pass-22 wiring predictions REGISTERED before
+measurement**)
+
+**What the external evaluation listed as absent, and what this answers.**
+The list was: an infinite-volume transfer operator; a thermodynamic
+state; general boundary-condition independence; a continuum limit; a
+Wightman theory; a Yang-Mills consequence.  TWO of the six are
+reachable with the cone in hand -- in the TIME direction, at fixed
+spatial extent -- and the module now proves them.  The other four are
+not, and the manuscript states each with its reason (see the honesty
+section rewritten in the same round).
+
+**The mathematics.**  The cone floor generalises off the diagonal at
+the cost of one line: `inner_pow_floor_offdiag` gives `f > 0` with
+`f <= <T^n u, v>` for ALL n whenever u, v are entrywise positive
+(f = c·<Om,v>, c the cone constant of u, now extracted as
+`exists_cone_constant` and shared with the diagonal floor).  That is
+exactly what licenses dividing by a two-point sum whose far end carries
+an arbitrary positive boundary observable.  Then:
+
+* `inner_ratio_approx` (generic real Hilbert space): with a denominator
+  floor d, `|<qA,T^N qB>/<q1,T^N qB> - <Om,qA>/<Om,q1>| <=
+  2‖qA‖‖qB‖‖q1‖/(d·<Om,q1>) · r^N`.  The right-hand vacuum ratio does
+  NOT mention qB.
+* `os_reconstruction_vacuum_state_limit`: in the window, ONE m > 0 such
+  that for EVERY extent, every observable A and every STRICTLY POSITIVE
+  boundary observable B, there is C (independent of N) with
+  `|S_N(A,B)/S_N(1,B) - <Om,QA>/<Om,Q1>| <= C·e^{-mN}`.
+
+Three readings in one inequality: (i) the N -> infinity limit EXISTS and
+is approached exponentially at the volume-uniform rate; (ii) it IS the
+Perron/vacuum state of the reconstructed operator; (iii) it does NOT
+depend on the boundary condition -- B occurs on the left and not on the
+right.  None of the three survives without the floor: each is about a
+quotient, and the quotient's denominator is what the spectral route
+cannot control at odd N.
+
+**Pass history.**  Pass 21 (staged 2c141bdd7): **ELAB_EXIT 0 at the
+FIRST attempt**, SOURCE 54745 `ec19ffa75cd4`.  One structural note kept:
+`exists_cone_constant` had to be moved ABOVE its consumers (Lean has no
+forward references); the local check that catches this is reading the
+declaration order out of the file before firing, which is now done.
+
+**Pass-22 predictions, REGISTERED NOW:**
+
+1. `lake build YangMillsCore` total = **8481 EXACT** (same file, now
+   43213 -> 54745 B; thirteenth consecutive if it holds).
+2. Full oracle reports = **3040 EXACT** (3035 + 5 new lines).
+3. sorryAx = **0**; all five new endpoints on the standard triple.
+
+**ROLES.**  Fabrication + unit design: this desk.  Plane execution:
+autonomous browser bridge.  Predictions committed before measurement.

@@ -383,6 +383,78 @@ theorem mixed_connCorr_bound {T : H →L[ℝ] H} {Om : H}
             (pow_apply_norm_le _ hr hgap v (m + 1)) (norm_nonneg u)
         _ = ‖u‖ * ‖v‖ * r ^ (m + 1) := by ring
 
+/-- The triangle inequality for a difference, in the shape the ratio estimate
+consumes. -/
+theorem abs_sub_le_add_abs (x y : ℝ) : |x - y| ≤ |x| + |y| := by
+  calc |x - y| = |x + -y| := by rw [sub_eq_add_neg]
+    _ ≤ |x| + |-y| := abs_add_le x (-y)
+    _ = |x| + |y| := by rw [abs_neg]
+
+/-- **The vacuum ratio, with an exponential rate.**  Two matrix elements of the
+SAME power, divided: the quotient sits within `r^N` of the vacuum ratio
+`⟪Ω,qA⟫/⟪Ω,q1⟫` — an expression that does NOT mention the far-end vector `qB`.
+That is the whole content: the limit exists, it is the vacuum state, and the
+boundary vector has been forgotten.  The denominator floor `d` is a hypothesis
+here; the positive cone supplies it downstream. -/
+theorem inner_ratio_approx {T : H →L[ℝ] H} {Om : H}
+    (hT : VacuumTransfer T Om) {r : ℝ} (hr : 0 ≤ r)
+    (hgap : ‖projectedTransfer T Om‖ ≤ r) (qA q1 qB : H) (N : ℕ)
+    {d : ℝ} (hd : 0 < d) (hden : d ≤ ⟪q1, (T ^ N) qB⟫)
+    (hOm1 : 0 < (⟪Om, q1⟫ : ℝ)) :
+    |⟪qA, (T ^ N) qB⟫ / ⟪q1, (T ^ N) qB⟫ - ⟪Om, qA⟫ / ⟪Om, q1⟫|
+      ≤ 2 * ‖qA‖ * ‖qB‖ * ‖q1‖ / (d * ⟪Om, q1⟫) * r ^ N := by
+  have hEA := mixed_connCorr_bound hT hr hgap qA qB N
+  have hE1 := mixed_connCorr_bound hT hr hgap q1 qB N
+  have hbpos : (0 : ℝ) < ⟪q1, (T ^ N) qB⟫ := lt_of_lt_of_le hd hden
+  have hbne : (⟪q1, (T ^ N) qB⟫ : ℝ) ≠ 0 := hbpos.ne'
+  have hOm1ne : (⟪Om, q1⟫ : ℝ) ≠ 0 := hOm1.ne'
+  have hdb : d * (⟪Om, q1⟫ : ℝ) ≠ 0 := (mul_pos hd hOm1).ne'
+  have hA : |(⟪Om, qA⟫ : ℝ)| ≤ ‖qA‖ := by
+    have h := abs_real_inner_le_norm Om qA
+    rwa [hT.unit, one_mul] at h
+  have h1 : |(⟪Om, q1⟫ : ℝ)| ≤ ‖q1‖ := by
+    have h := abs_real_inner_le_norm Om q1
+    rwa [hT.unit, one_mul] at h
+  have hid : ⟪qA, (T ^ N) qB⟫ / ⟪q1, (T ^ N) qB⟫ - ⟪Om, qA⟫ / ⟪Om, q1⟫
+      = ((⟪qA, (T ^ N) qB⟫ - ⟪Om, qA⟫ * ⟪Om, qB⟫) * ⟪Om, q1⟫
+          - ⟪Om, qA⟫ * (⟪q1, (T ^ N) qB⟫ - ⟪Om, q1⟫ * ⟪Om, qB⟫))
+        / (⟪q1, (T ^ N) qB⟫ * ⟪Om, q1⟫) := by
+    field_simp <;> ring
+  have hnum : |(⟪qA, (T ^ N) qB⟫ - ⟪Om, qA⟫ * ⟪Om, qB⟫) * ⟪Om, q1⟫
+        - ⟪Om, qA⟫ * (⟪q1, (T ^ N) qB⟫ - ⟪Om, q1⟫ * ⟪Om, qB⟫)|
+      ≤ 2 * ‖qA‖ * ‖qB‖ * ‖q1‖ * r ^ N := by
+    have t1 : |(⟪qA, (T ^ N) qB⟫ - ⟪Om, qA⟫ * ⟪Om, qB⟫) * ⟪Om, q1⟫|
+        ≤ ‖qA‖ * ‖qB‖ * r ^ N * ‖q1‖ := by
+      rw [abs_mul]
+      exact mul_le_mul hEA h1 (abs_nonneg _)
+        (mul_nonneg (mul_nonneg (norm_nonneg _) (norm_nonneg _)) (pow_nonneg hr N))
+    have t2 : |⟪Om, qA⟫ * (⟪q1, (T ^ N) qB⟫ - ⟪Om, q1⟫ * ⟪Om, qB⟫)|
+        ≤ ‖qA‖ * (‖q1‖ * ‖qB‖ * r ^ N) := by
+      rw [abs_mul]
+      exact mul_le_mul hA hE1 (abs_nonneg _) (norm_nonneg _)
+    calc |(⟪qA, (T ^ N) qB⟫ - ⟪Om, qA⟫ * ⟪Om, qB⟫) * ⟪Om, q1⟫
+          - ⟪Om, qA⟫ * (⟪q1, (T ^ N) qB⟫ - ⟪Om, q1⟫ * ⟪Om, qB⟫)|
+        ≤ |(⟪qA, (T ^ N) qB⟫ - ⟪Om, qA⟫ * ⟪Om, qB⟫) * ⟪Om, q1⟫|
+            + |⟪Om, qA⟫ * (⟪q1, (T ^ N) qB⟫ - ⟪Om, q1⟫ * ⟪Om, qB⟫)| :=
+          abs_sub_le_add_abs _ _
+      _ ≤ ‖qA‖ * ‖qB‖ * r ^ N * ‖q1‖ + ‖qA‖ * (‖q1‖ * ‖qB‖ * r ^ N) :=
+          add_le_add t1 t2
+      _ = 2 * ‖qA‖ * ‖qB‖ * ‖q1‖ * r ^ N := by ring
+  have hcoef : (0 : ℝ) ≤ 2 * ‖qA‖ * ‖qB‖ * ‖q1‖ / (d * ⟪Om, q1⟫) * r ^ N :=
+    mul_nonneg (div_nonneg (by positivity) (le_of_lt (mul_pos hd hOm1)))
+      (pow_nonneg hr N)
+  rw [hid, abs_div, abs_of_pos (mul_pos hbpos hOm1),
+    div_le_iff₀ (mul_pos hbpos hOm1)]
+  calc |(⟪qA, (T ^ N) qB⟫ - ⟪Om, qA⟫ * ⟪Om, qB⟫) * ⟪Om, q1⟫
+        - ⟪Om, qA⟫ * (⟪q1, (T ^ N) qB⟫ - ⟪Om, q1⟫ * ⟪Om, qB⟫)|
+      ≤ 2 * ‖qA‖ * ‖qB‖ * ‖q1‖ * r ^ N := hnum
+    _ = 2 * ‖qA‖ * ‖qB‖ * ‖q1‖ / (d * ⟪Om, q1⟫) * r ^ N * (d * ⟪Om, q1⟫) := by
+        field_simp <;> ring
+    _ ≤ 2 * ‖qA‖ * ‖qB‖ * ‖q1‖ / (d * ⟪Om, q1⟫) * r ^ N
+          * (⟪q1, (T ^ N) qB⟫ * ⟪Om, q1⟫) :=
+        mul_le_mul_of_nonneg_left
+          (mul_le_mul_of_nonneg_right hden hOm1.le) hcoef
+
 /-! ## The division-safe six-term connected bound (pass 12) -/
 
 /-- **The six-term connected bound, division-free.**  With
@@ -561,6 +633,22 @@ theorem vacOf_pos (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ)
   rw [hx]
   exact div_pos (hOm σ) (Real.sqrt_pos.mpr hS)
 
+/-- **The cone constant.**  A positive vector dominates a positive multiple of
+the positive vacuum; the multiple is the in-tree finite minimum of the ratio. -/
+theorem exists_cone_constant (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ)
+    (v : EuclideanSpace ℝ (Fin L → Fin 2)) (hv : ∀ σ, 0 < v σ) :
+    ∃ c : ℝ, 0 < c ∧ ∀ σ, c * vacOf Om σ ≤ v σ := by
+  have hvac : ∀ σ, 0 < vacOf Om σ := vacOf_pos Om hOm
+  refine ⟨minWeight (fun σ => v σ / vacOf Om σ),
+    minWeight_pos (fun σ => div_pos (hv σ) (hvac σ)), fun σ => ?_⟩
+  have h1 : minWeight (fun σ => v σ / vacOf Om σ) ≤ v σ / vacOf Om σ :=
+    minWeight_le _ σ
+  have h2 := mul_le_mul_of_nonneg_right h1 (hvac σ).le
+  have hne : vacOf Om σ ≠ 0 := (hvac σ).ne'
+  have h3 : v σ / vacOf Om σ * vacOf Om σ = v σ := by
+    field_simp
+  rwa [h3] at h2
+
 /-- **Cone propagation.**  A nonnegative kernel with a fixed vector `Ω` pushes
 the ray `c·Ω` up through EVERY power: `c·Ω ≤ v` entrywise gives
 `c·Ω ≤ T^n v` entrywise, for all `n`.  No parity, no spectral input. -/
@@ -597,17 +685,7 @@ theorem inner_pow_floor (M : Matrix (Fin L → Fin 2) (Fin L → Fin 2) ℝ)
     (v : EuclideanSpace ℝ (Fin L → Fin 2)) (hv : ∀ σ, 0 < v σ) :
     ∃ f : ℝ, 0 < f ∧ ∀ n : ℕ, f ≤ ⟪((opOf M) ^ n) v, v⟫ := by
   have hvac : ∀ σ, 0 < vacOf Om σ := vacOf_pos Om hOm
-  obtain ⟨c, hcpos, hcone⟩ :
-      ∃ c : ℝ, 0 < c ∧ ∀ σ, c * vacOf Om σ ≤ v σ := by
-    refine ⟨minWeight (fun σ => v σ / vacOf Om σ),
-      minWeight_pos (fun σ => div_pos (hv σ) (hvac σ)), fun σ => ?_⟩
-    have h1 : minWeight (fun σ => v σ / vacOf Om σ) ≤ v σ / vacOf Om σ :=
-      minWeight_le _ σ
-    have h2 := mul_le_mul_of_nonneg_right h1 (hvac σ).le
-    have hne : vacOf Om σ ≠ 0 := (hvac σ).ne'
-    have h3 : v σ / vacOf Om σ * vacOf Om σ = v σ := by
-      field_simp
-    rwa [h3] at h2
+  obtain ⟨c, hcpos, hcone⟩ := exists_cone_constant Om hOm v hv
   refine ⟨c ^ 2 * ∑ σ, vacOf Om σ * vacOf Om σ, ?_, fun n => ?_⟩
   · exact mul_pos (pow_pos hcpos 2)
       (Finset.sum_pos (fun σ _ => mul_pos (hvac σ) (hvac σ))
@@ -626,6 +704,34 @@ theorem inner_pow_floor (M : Matrix (Fin L → Fin 2) (Fin L → Fin 2) ℝ)
           Finset.sum_le_sum fun σ _ =>
             mul_le_mul_of_nonneg_left (hcone σ)
               (le_trans (mul_nonneg hcpos.le (hvac σ).le) (hprop σ))
+
+/-- **THE OFF-DIAGONAL FLOOR, UNIFORM IN `N`.**  Same cone, one index freed:
+for two positive vectors the matrix elements `⟪Tⁿ u, v⟫` stay above a positive
+constant that does not depend on `n`.  This is what licenses dividing by a
+two-point sum whose far end carries an arbitrary positive boundary
+observable. -/
+theorem inner_pow_floor_offdiag
+    (M : Matrix (Fin L → Fin 2) (Fin L → Fin 2) ℝ) (hM : ∀ σ τ, 0 ≤ M σ τ)
+    (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ)
+    (hfix : opOf M (vacOf Om) = vacOf Om)
+    (u v : EuclideanSpace ℝ (Fin L → Fin 2))
+    (hu : ∀ σ, 0 < u σ) (hv : ∀ σ, 0 < v σ) :
+    ∃ f : ℝ, 0 < f ∧ ∀ n : ℕ, f ≤ ⟪((opOf M) ^ n) u, v⟫ := by
+  have hvac : ∀ σ, 0 < vacOf Om σ := vacOf_pos Om hOm
+  obtain ⟨c, hcpos, hcone⟩ := exists_cone_constant Om hOm u hu
+  have hpair : (0 : ℝ) < ∑ σ, vacOf Om σ * v σ :=
+    Finset.sum_pos (fun σ _ => mul_pos (hvac σ) (hv σ))
+      ⟨Classical.arbitrary _, Finset.mem_univ _⟩
+  refine ⟨c * ∑ σ, vacOf Om σ * v σ, mul_pos hcpos hpair, fun n => ?_⟩
+  have hprop := opOf_pow_ge_smul_fix M hM (vacOf Om) hfix c u hcone n
+  rw [inner_eq_sum]
+  calc c * ∑ σ, vacOf Om σ * v σ
+      = ∑ σ, (c * vacOf Om σ) * v σ := by
+        rw [Finset.mul_sum]
+        exact Finset.sum_congr rfl fun σ _ => by ring
+    _ ≤ ∑ σ, (((opOf M) ^ n) u σ) * v σ :=
+        Finset.sum_le_sum fun σ _ =>
+          mul_le_mul_of_nonneg_right (hprop σ) (hv σ).le
 
 /-! ## The Gibbs-side six-term bound with explicit hypotheses -/
 
@@ -830,4 +936,97 @@ theorem os_reconstruction_normalised_clustering (β γ : ℝ) {alpha : ℝ}
       * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
       * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2 / f ^ 2,
     hCnonneg, key⟩⟩
+/-- **THE INFINITE-TIME LIMIT STATE: IT EXISTS, IT IS THE VACUUM STATE, AND IT
+DOES NOT DEPEND ON THE FAR-END BOUNDARY OBSERVABLE.**  In the window: ONE
+`m > 0` such that for EVERY spatial extent, for every observable `A` and every
+STRICTLY POSITIVE boundary observable `B`, the one-point expectation of `A` at
+the near end of an `N`-step chain terminated by `B`,
+`S_N(A,B)/S_N(1,B)`, sits within `C·e^{-mN}` of
+`⟪Ω, QA⟫ / ⟪Ω, Q1⟫` — a quantity in which `B` does not appear.
+
+Three readings, all in the one statement: (i) the limit EXISTS and is approached
+exponentially at the volume-uniform rate; (ii) the limit IS the Perron/vacuum
+state of the reconstructed transfer operator; (iii) the limit is INDEPENDENT of
+the boundary condition imposed at the far end -- boundary-condition independence
+in the time direction, at fixed spatial extent.  Dividing is licensed by the
+off-diagonal cone floor, which no spectral argument supplies. -/
+theorem os_reconstruction_vacuum_state_limit (β γ : ℝ) {alpha : ℝ}
+    (halpha0 : 0 < alpha) (halpha1 : alpha < 1)
+    (hwin : 2 * Real.tanh |β| + 2 * Real.tanh |γ| ≤ alpha) :
+    ∃ m : ℝ, 0 < m ∧ ∀ L : ℕ,
+      ∃ (lam : ℝ) (Om : (Fin (L + 1) → Fin 2) → ℝ),
+        0 < lam ∧ (∀ σ, 0 < Om σ) ∧
+        (∀ σ, ∑ τ, tiltKernel (sliceW γ L) β lam σ τ * Om τ = Om σ) ∧
+        ∀ (A B : (Fin (L + 1) → Fin 2) → ℝ), (∀ σ, 0 < B σ) →
+          ∃ C : ℝ, 0 ≤ C ∧ ∀ N : ℕ,
+            |gibbsPathSum (sliceW γ L) β N A B
+                  / gibbsPathSum (sliceW γ L) β N (fun _ => 1) B
+                - ⟪vacOf Om, WithLp.toLp 2 (dress (sliceW γ L) A)⟫
+                  / ⟪vacOf Om,
+                      WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))⟫|
+              ≤ C * Real.exp (-m) ^ N := by
+  obtain ⟨m, hm, hL⟩ := dobrushin_ising_uniform_gap β γ halpha0 halpha1 hwin
+  refine ⟨m, hm, fun L => ?_⟩
+  obtain ⟨lam, Om, hlam, hOm, hfix, hnorm⟩ := hL L
+  have hw := sliceW_pos γ L
+  have hT : VacuumTransfer (opOf (tiltKernel (sliceW γ L) β lam)) (vacOf Om) :=
+    vacuumTransfer_opOf _ Om (tiltKernel_symm _ β lam) hOm hfix
+  have hMpos : ∀ σ τ, 0 ≤ tiltKernel (sliceW γ L) β lam σ τ :=
+    fun σ τ => (tiltKernel_pos (sliceW γ L) hw β lam hlam σ τ).le
+  have hvac : ∀ σ, 0 < vacOf Om σ := vacOf_pos Om hOm
+  have hdressPos : ∀ (F : (Fin (L + 1) → Fin 2) → ℝ), (∀ σ, 0 < F σ) →
+      ∀ σ, 0 < (WithLp.toLp 2 (dress (sliceW γ L) F)) σ := by
+    intro F hF σ
+    have h : (WithLp.toLp 2 (dress (sliceW γ L) F)) σ
+        = Real.sqrt (sliceW γ L σ) * F σ := rfl
+    rw [h]
+    exact mul_pos (Real.sqrt_pos.mpr (hw σ)) (hF σ)
+  have hQ1pos := hdressPos (fun _ => (1 : ℝ)) (fun _ => zero_lt_one)
+  have hOm1 : (0 : ℝ)
+      < ⟪vacOf Om, WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ)))⟫ := by
+    rw [inner_eq_sum]
+    exact Finset.sum_pos (fun σ _ => mul_pos (hvac σ) (hQ1pos σ))
+      ⟨Classical.arbitrary _, Finset.mem_univ _⟩
+  refine ⟨lam, Om, hlam, hOm, hfix, fun A B hB => ?_⟩
+  have hQBpos := hdressPos B hB
+  obtain ⟨f, hfpos, hfle⟩ :=
+    inner_pow_floor_offdiag (tiltKernel (sliceW γ L) β lam) hMpos Om hOm hT.fix
+      (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ))))
+      (WithLp.toLp 2 (dress (sliceW γ L) B)) hQ1pos hQBpos
+  refine ⟨2 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
+      * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
+      * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖
+      / (f * ⟪vacOf Om,
+          WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ)))⟫),
+    div_nonneg (by positivity) (le_of_lt (mul_pos hfpos hOm1)), fun N => ?_⟩
+  have hlamN : (lam : ℝ) ^ N ≠ 0 := (pow_pos hlam N).ne'
+  have hsymm := hT.pow_symm N
+  have hden : f ≤ ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ))),
+      ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+        (WithLp.toLp 2 (dress (sliceW γ L) B))⟫ := by
+    rw [← hsymm]
+    exact hfle N
+  have hdenpos : (0 : ℝ) < ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ))),
+      ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+        (WithLp.toLp 2 (dress (sliceW γ L) B))⟫ := lt_of_lt_of_le hfpos hden
+  have hdenne : (⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ))),
+      ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+        (WithLp.toLp 2 (dress (sliceW γ L) B))⟫ : ℝ) ≠ 0 := hdenpos.ne'
+  have heq : gibbsPathSum (sliceW γ L) β N A B
+        / gibbsPathSum (sliceW γ L) β N (fun _ => 1) B
+      = ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
+            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+              (WithLp.toLp 2 (dress (sliceW γ L) B))⟫
+        / ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
+            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+              (WithLp.toLp 2 (dress (sliceW γ L) B))⟫ := by
+    rw [gibbsPathSum_eq_inner_pow (sliceW γ L) hw β lam hlam.ne' N A B,
+      gibbsPathSum_eq_inner_pow (sliceW γ L) hw β lam hlam.ne' N (fun _ => 1) B,
+      hsymm, hsymm]
+    field_simp
+  rw [heq]
+  exact inner_ratio_approx hT (Real.exp_nonneg _) hnorm
+    (WithLp.toLp 2 (dress (sliceW γ L) A))
+    (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))
+    (WithLp.toLp 2 (dress (sliceW γ L) B)) N hfpos hden hOm1
 end YangMills.OS

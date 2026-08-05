@@ -3411,3 +3411,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.abs_scaled_cross_le
 #print axioms YangMills.OS.gibbs_six_term_bound
 #print axioms YangMills.OS.os_reconstruction_normalised_clustering
+#print axioms YangMills.OS.abs_sub_le_add_abs
+#print axioms YangMills.OS.inner_ratio_approx
+#print axioms YangMills.OS.exists_cone_constant
+#print axioms YangMills.OS.inner_pow_floor_offdiag
+#print axioms YangMills.OS.os_reconstruction_vacuum_state_limit
