@@ -220,8 +220,10 @@ theorem norm_cmp99SourceGeneratedPhysicalRegionalDefect_le_budget
       finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound_any source hrate
   have hop := finitePiLpOpNorm_le_of_exponentialKernelBound
     T finBoxDist (fun x y => finBoxDist_comm x y) hrowSum hT hsum
-  simpa [T, rate, rowSum,
-    cmp99SourceGeneratedPhysicalRegionalDefectBudget] using hop
+  change ‖T‖ ≤
+    cmp99SourceGeneratedPhysicalRegionalDefectAmplitude
+        P M depth spacing epsilon * rowSum
+  exact hop
 
 /-- The operator contraction follows from the literal physical scalar
 budget.  The premise is deliberately not manufactured from the abstract
