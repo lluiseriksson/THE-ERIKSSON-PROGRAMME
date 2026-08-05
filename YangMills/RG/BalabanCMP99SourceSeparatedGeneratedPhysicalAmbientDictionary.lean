@@ -84,8 +84,10 @@ theorem finBoxDist_cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv_symm
       finBoxDist x y := by
   let hsize :=
     cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier L K Q depth
-  change finBoxDist (hsize.symm ▸ x) (hsize.symm ▸ y) = finBoxDist x y
-  exact finBoxDist_cast_size hsize.symm x y
+  have hcast :
+      finBoxDist (hsize.symm ▸ x) (hsize.symm ▸ y) = finBoxDist x y :=
+    finBoxDist_cast_size hsize.symm x y
+  simpa only [cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv] using hcast
 
 /-- Generated physical precision with ratio `L`, realized on the separated
 ambient carrier. -/
