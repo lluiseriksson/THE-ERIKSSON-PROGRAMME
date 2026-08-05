@@ -136,7 +136,12 @@ theorem cmp99SourceGeneratedPhysicalRegionalDefectBudget_depth_zero_lower_bound
       0 <= cmp99SourceGeneratedPhysicalLargeBlockMassBudget
         P M 0 spacing epsilon rate := by
     unfold cmp99SourceGeneratedPhysicalLargeBlockMassBudget
-    positivity
+    exact mul_nonneg
+      (div_nonneg (mul_nonneg (by norm_num) P.derivBound_nonneg)
+        (Nat.cast_nonneg _))
+      (mul_nonneg (abs_nonneg _)
+        (mul_nonneg (Real.exp_pos _).le
+          (pow_nonneg (cmp99SourceBlockAverageWeight_nonneg M 4) _)))
   have hlapCutoff : lap <= cutoff := by
     dsimp [cutoff, cmp99SourceGeneratedPhysicalLargeBlockCutoffBudget]
     exact le_add_of_nonneg_right hmassNonneg
@@ -181,7 +186,7 @@ theorem not_cmp99SourceGeneratedPhysicalRegionalDefectBudget_lt_one_depth_zero
     not (cmp99SourceGeneratedPhysicalRegionalDefectBudget
       P M 0 spacing epsilon < 1) := by
   have h := cmp99SourceGeneratedPhysicalRegionalDefectBudget_depth_zero_lower_bound
-    P hM hspacing
+    P hM (epsilon := epsilon) hspacing
   linarith
 
 end
