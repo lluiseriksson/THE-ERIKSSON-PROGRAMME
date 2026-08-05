@@ -55,7 +55,26 @@ projected operator norm is at most $e^{-m}$ and every \emph{mixed}
 connected correlator of the reconstructed operator obeys
 $\bigl|\ip{u}{\hat T^{\,n} v} - \ip{\Omega}{u}\ip{\Omega}{v}\bigr| \le
 \lVert u\rVert\,\lVert v\rVert\,(e^{-m})^n$, the zero-time case
-included --- constants per-observable, rate alone uniform in the volume.
+included; (iv)~the connected two-point function of the \emph{normalised}
+Gibbs measure obeys $\lvert\langle A(X_0)B(X_N)\rangle -
+\langle A(X_0)\rangle\langle B(X_N)\rangle\rvert \le C(A,B)(e^{-m})^N$
+with $C$ independent of the time depth, the division licensed by a
+denominator floor uniform in $N$ that the positive cone supplies and the
+spectrum does not (it controls only the even powers); (v)~the
+$N\to\infty$ limit state exists, \emph{is} the vacuum state of the
+reconstructed operator, and does not depend on the strictly positive
+observable terminating the chain; and (vi)~the reconstructed operator
+\emph{is} a reversible Markov chain --- stochastic and in detailed
+balance for $\pi = \Omega^2$, both proved --- and in that stationary
+state the connected correlator of bounded observables obeys
+$\lvert\mathbb{E}_\pi[f\,P^Ng] - \mathbb{E}_\pi[f]\mathbb{E}_\pi[g]\rvert
+\le K_fK_g\,(e^{-m})^N$ with the quantifier order
+$\exists m\;\forall L$: \emph{no factor depending on the spatial
+extent}.  So the rate is uniform in the volume throughout, and in the
+stationary state so is the constant; the end-of-chain state of (v) keeps
+a boundary-dependent one, and we keep the two apart.  The window is
+non-empty at an interacting point ($\beta=\gamma=1/10$, $\alpha=1/2$),
+machine-checked, so none of these conditionals is vacuous.
 All quantifiers live in the Lean statements; the prose here copies the
 kernel's cut.  To situate the claim in the 2026 landscape of
 machine-checked constructive field theory: the abstract construction
@@ -538,10 +557,16 @@ Section~\ref{sec:honesty}: $C$ still depends on $L$.
 
 \section{Constants uniform in the extent: the ground-state chain}
 \label{sec:ground}
-The $L$-dependence of the constants in
-Sections~\ref{sec:cone}--\ref{sec:state} is an artefact of
-\emph{normalisation}, not a property of the object, and we correct it
-here rather than list it as a limitation.
+The $L$-dependence of the constant in the \emph{stationary-state}
+bound is an artefact of \emph{normalisation}, not a property of the
+object, and we remove it here rather than list it as a limitation.  The
+scope of that claim should be stated before it is made, because it is
+not the whole of Sections~\ref{sec:cone}--\ref{sec:state}: what loses
+its extent is the constant in the stationary state $\pi = \Omega^2$
+constructed below.  The end-of-chain bound of Section~\ref{sec:state}
+keeps a constant depending on the extent \emph{and} on the terminating
+observable, and it is not repaired here --- that state is a different
+object, and Remark~\ref{rem:twostates} says exactly how.
 
 The dressed observables carry an unnormalised partition function in
 their Euclidean norm: $\lVert Q\mathbf 1\rVert^2 = \sum_\sigma w_\sigma$,
@@ -601,7 +626,7 @@ that does not smuggle a partition function into the constant.  In
 particular, for observables bounded by $1$ the connected correlator is
 at most $e^{-mN}$, uniformly in the volume.
 
-\begin{remark}
+\begin{remark}\label{rem:twostates}
 The two states in this paper are different objects and we keep them
 apart.  The state of Section~\ref{sec:state} is the $N\to\infty$ limit
 at the \emph{end} of a chain terminated by $B$; its density against
