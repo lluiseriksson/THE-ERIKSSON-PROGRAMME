@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedRegionalDefectContraction
 
 /-!
-# PRE-VALIDATION audit: physical regional defect contraction
-
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+# Axiom audit: physical regional defect contraction
 -/
 
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalDefect

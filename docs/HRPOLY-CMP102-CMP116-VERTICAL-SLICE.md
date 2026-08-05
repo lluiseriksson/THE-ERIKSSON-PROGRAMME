@@ -2524,7 +2524,7 @@ the already verified assembler, discharge rows 23--24.
 | 4 | source large-block cutoff specialization | instantiate `h` by the one `CMP95SourceSmoothPartitionProfile`, use the source carrier equality, and rewrite slope times range to the exact `4 * derivBound / M` gain | **sealed** at `de57d879`, run `30997349504`; no counter movement |
 | 5 | ambient-to-regional precision dictionary | realize the full generated active carrier as the literal ambient `FinBox`, transport the generated precision/coercivity and source cutoff through one explicit equivalence, and identify the regional commutator with the reindexed active commutator | **sealed** at `8ac1a1c2`, cold run `31001590888`; no counter movement |
 | 6 | uniform single-cell regional correction | compose the cell commutator with the regional Dirichlet Green and the contractive right cutoff, retaining one explicit cell amplitude | **sealed** at `ddda0475`, cold run `31021829343`; no counter movement |
-| 7 | overlap / Schur / contraction endpoint | sum cells with the already derived overlap `16`, pass the exponential kernel estimate to operator norm, and prove the explicit physical defect budget is `< 1` | open; this is physical attainment of window 15 |
+| 7 | overlap / Schur / contraction endpoint | sum cells with the already derived overlap `16`, pass the exponential kernel estimate to operator norm, and reduce `norm R' < 1` to one explicit physical defect budget | **reduction sealed** at `ef157f84`, cold run `31028008613`; the scalar budget `< 1` is not attained, so window 15 remains open |
 | 8 | two literal centered-conditioned gap producers | prove `alpha < coercivityConstant` and `2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound` from the physical rates produced by the regional construction | open; the assembler then derives `root_small` and `outer_small` and moves the live count to `22/41` |
 
 The `coercivityConstant` in step 8 is not an opaque positive scalar.  Its
@@ -2540,6 +2540,11 @@ replace the physical coercivity producer by a free constant.
 Thus window 15 is necessary but is not silently identified with rows 23--24.
 The path has a declared last element.  Step 5 has now frozen the last design
 dictionary; steps 6--8 are quantitative estimates over that fixed object.
+
+The `coercivityConstant` dependence also enters the step-7 budget literally:
+the generated regional Green amplitude uses the transported coercivity of the
+same physical precision.  Therefore neither the Poincare cost `CP` nor its
+block-ratio dependence may be absorbed into an unnamed constant before step 8.
 
 **Elaboration battle note.**  Physical specializations of the generated
 PiLp tower must pin the carrier, fibre, and source/target index types in their
@@ -2599,3 +2604,39 @@ This is **step 6 infrastructure, not a terminal field**.  The overlap factor
 `norm R' < 1`, and both scalar producers of step 8 remain open.  Thus window
 15 is still compatible but unattained, the live producer count remains
 exactly `20/41`, and `TermSource = 0`.
+
+### Step 7 overlap / Schur reduction (SEALED; scalar attainment open)
+
+Checkpoint `ef157f8471ac9b9b7a9b5d12c0502b2aa3fa279d` sums the literal
+single-cell regional corrections with the already derived source overlap
+`16`, retains the two exponential shell factors, applies the fixed-output
+Schur estimate, and defines one explicit generated physical regional defect
+budget.  It proves
+`norm R' <= cmp99SourceGeneratedPhysicalRegionalDefectBudget` and derives
+`norm R' < 1` only from the literal scalar premise that this budget is less
+than one.  It does not prove that premise.
+
+Cold GitHub Actions run `31028008613` (workflow checkpoint `908329ce`) set
+`COLD_MODE=true`, restored no project `.lake/build` cache, and compiled the
+focal with `Build completed successfully (8557 jobs).`  The seven-declaration
+audit exited zero and every declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and the official
+Lean `v4.29.0-rc6` asset.
+
+The deterministic evidence archive has SHA-256
+`79dc5433b7198181cfb87590b0de308231fadfbd38dae93f034f3b3748d3399f`.
+The axiom JSON has SHA-256
+`d0a7fc3f6e5634e32c36456e2840308911f3c9beadbd129fc4bd4f653aaeeaae`;
+the stage ledger has SHA-256
+`e1bdd1fddeba66945ca6db2204aca17a8a7bfde62b953545bb848a9687e339b8`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+13 recorded files.
+
+This seal is the **overlap/Schur reduction**, not physical attainment of
+window 15 and not a terminal producer.  The live counters remain exactly
+`20/41` and `TermSource = 0`.  The next source-specific obligation is to
+decide whether the displayed majorant can satisfy its own scalar premise; a
+failure of that majorant would not imply `norm R' >= 1` for the physical
+operator.

@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP99SourceRegionalDefectOverlap
 import YangMills.RG.FinitePiLpScalarCommutator
 
 /-!
-# PRE-VALIDATION: physical regional defect contraction
-
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+# Physical regional defect contraction
 
 This file performs the quantitative part of step 7 below CMP99 (3.88).  It
 sums the literal single-cell corrections with the source overlap `16`, then

@@ -27473,3 +27473,39 @@ not pay the overlap `16`, prove the Schur/operator-norm defect budget, attain
 `norm R' < 1`, discharge groups 23--24, or inhabit a `TermSource`.  It is
 step 6 infrastructure below window 15; the live counters remain exactly
 `20/41` and zero.
+
+## Addendum 558 (2026-08-05, **overlap/Schur defect reduction GREEN; scalar window 15 open; 20/41 unchanged**)
+
+The step-7 reduction was validated from exact source checkpoint
+`ef157f8471ac9b9b7a9b5d12c0502b2aa3fa279d` by cold GitHub Actions run
+`31028008613` (workflow checkpoint
+`908329ce24a0009835478da8c8d75206115c6d65`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T17:03:30Z` to `18:00:10Z`, completed with
+`Build completed successfully (8557 jobs).`, and exited zero.  Its
+seven-declaration audit ran from `18:00:10Z` to `18:00:28Z` and also exited
+zero.  Every declaration depends exactly on
+`[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`79dc5433b7198181cfb87590b0de308231fadfbd38dae93f034f3b3748d3399f`.
+The axiom JSON has SHA-256
+`d0a7fc3f6e5634e32c36456e2840308911f3c9beadbd129fc4bd4f653aaeeaae`;
+the stage ledger has SHA-256
+`e1bdd1fddeba66945ca6db2204aca17a8a7bfde62b953545bb848a9687e339b8`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+13 recorded files.
+
+The brick sums the literal regional cells with the source overlap `16`,
+retains both exponential shell factors, and passes the resulting kernel bound
+through Schur to one explicit physical defect budget.  It proves the norm
+bound and the implication from `budget < 1`; it does **not** prove the scalar
+premise itself.  Hence this is the sealed step-7 reduction, not attainment of
+window 15, not discharge of rows 23--24, and not a `TermSource` inhabitant.
+The live counters remain exactly `20/41` and zero.
