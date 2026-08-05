@@ -27637,7 +27637,7 @@ the source-specific direct proof that must replace it.  This brick does not
 prove CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource` inhabitant.
 The live counters remain exactly `20/41` and zero.
 
-## Addendum 563 (2026-08-06, **CMP99 (3.42) raw-fine metric retracted before seal; block-scale repair PRE-VALIDATION; 20/41 unchanged**)
+## Addendum 563 (2026-08-06, **CMP99 (3.42) raw-fine metric retracted; block-scale repair GREEN; 20/41 unchanged**)
 
 The attempted cold seal of the regional-Green certificate was cancelled before
 the focal completed.  Primary visual inspection of CMP99 p. 397 and the
