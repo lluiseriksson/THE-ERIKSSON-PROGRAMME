@@ -2551,6 +2551,32 @@ step 8 literally.  The direct (3.89) producer must keep the Poincare cost
 `CP(L)` separate from the independently large `K`; neither may be absorbed
 into an unnamed constant.
 
+Step 7 is itself a finite source-facing chain; it is not the former generic
+Schur step with adjusted constants:
+
+1. expose the four local Theorem-3.1 estimates in (3.42) for the literal
+   regional `G'_Pi`: value, left covariant derivative, right adjoint
+   derivative and covariant Laplacian, with the common `B0`, `delta0` and the
+   printed scale vector;
+2. derive the first-difference and discrete-Laplacian bounds of the one
+   physical CMP95 cutoff at the separated scale `K * L^(depth+1)`, retaining
+   a named second-derivative/profile budget where the current profile API only
+   exposes the first;
+3. rewrite the third species of (3.88) by the exact generated `Q'^*Q'`
+   transported-block formula and cancel its literal normalized row mass
+   against the count before any cell or layer sum;
+4. combine the three displayed species pointwise to obtain (3.89), with
+   `K^-1` already present and no reciprocal coercivity or Poincare constant;
+5. only then use the already sealed overlap `16`, independent of `K`, to
+   obtain `norm R' < 1` for sufficiently large `K`.
+
+The fixed-output predicate currently available in
+`FinitePiLpTypedFixedOutputWeightedKernelBound` quantifies one common fibre
+vector over all source coordinates.  It therefore does not control the
+`Q'^*Q' (single source (lambda source))` sum occurring in (3.88).  Step 7.3
+must use the literal normalized block formula above; adding an abstract
+varying-vector row is not, by itself, a source proof of (3.89).
+
 **Elaboration battle note.**  Physical specializations of the generated
 PiLp tower must pin the carrier, fibre, and source/target index types in their
 public signatures (`ι`, `g`, and typed lambda binders).  Type inference is

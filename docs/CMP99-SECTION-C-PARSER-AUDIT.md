@@ -337,6 +337,34 @@ their Theorem-3.1 producer is formalized.  Replacing `O(1)` by an invented
 numeral, or importing the Poincare constant through `1 / coercivity`, is not
 an admissible discharge of (3.89).
 
+The primary display (3.88) also rules out a tempting abstract shortcut.  Its
+third species is not used through a fixed-output estimate evaluated on one
+common fibre vector.  It is the literal normalized block sum
+
+```text
+a_j * (L^j eta)^(-2) *
+  sum_(x' in B_j(y)) L^(-jd) * (partial h)(Gamma_(x,y)^(j)) *
+    R(U(Gamma_(y,x')^(j)))^-1 * R(U(Gamma_(y,x')^(j))) * lambda(x').
+```
+
+Thus `FinitePiLpTypedFixedOutputWeightedKernelBound`, whose quantified fibre
+vector is common to every source coordinate, cannot be applied to this term
+after substituting `lambda(x')`: those vectors vary with `x'`.  Introducing a
+generic varying-vector row would still lose the source mechanism.  The
+accepted producer must instead retain the displayed `L^(-jd)` average, use
+the exact transported-block formula for `Q'^* Q'`, and cancel the block count
+against that normalization before any cell sum.  The two differential
+species likewise consume the covariant-derivative and value components of
+(3.42), respectively; a bare bound on `norm G'` does not suffice.
+
+There is a second source-visible scalar in the Laplacian species.  The
+current `CMP95SourceSmoothPartitionProfile` exposes a first-derivative budget,
+but `(Delta h)(x) * lambda(x)` in (3.88) needs the corresponding discrete
+second-difference estimate for the same smooth profile.  It may be derived
+from `contDiff` and compact support or carried temporarily as a named profile
+budget, but it must not be replaced by two unsigned first differences: that
+would lose one inverse cutoff scale and destroy the printed `O(K^-1)` gain.
+
 The source tree already fixes the normalization needed for that direct mass
 row.  For one scale,
 `cmp99SourceTransportedBlockAverageCLM_single` contributes one literal
