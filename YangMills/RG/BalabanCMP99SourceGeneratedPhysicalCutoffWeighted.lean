@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceGeneratedCombesThomas
 import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRow
+import YangMills.RG.FinitePiLpScalarCommutator
 import YangMills.RG.FinitePiLpTypedScalarCommutatorFixedOutput
 
 /-!
