@@ -438,21 +438,26 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ---
 
-## Latest viXra submission
+## Latest ai.viXra submission
 
-**Submitted 2026-08-03 as a v2 replacement; moderation outcome not yet
-recorded.**  The 20-page v5.5 edition of *The Row Sums Were the Method, Not the
-Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay
-of Correlations, and a Misattributed Uniformity Wall* was sent to viXra.  The
-exact PDF is pinned at paper commit [`e68b821f7`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e68b821f7b5a766551c7e249706aaf7dc4d0eb66/papers/dobrushin-matrix/dobrushin_matrix.pdf)
-and has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`.
-See the [submission record](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md)
-for the clean-clone build, oracle evidence, superseded edition, and exact scope.
+**Submitted 2026-08-05 as a new AI-assisted paper; moderation outcome and
+public identifier are not yet recorded.** The 13-page paper *The Reconstructed
+Theory Has One Mass: a Machine-Checked Volume-Uniform Spectral Gap with Exact
+Identification Against the Gibbs Sums* was sent to ai.viXra.org. Its exact PDF
+is pinned at paper commit
+[`0894ba06`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/0894ba06616e1af626b960fbca14896d42cb283d/papers/os-reconstruction/os_reconstruction_uniform.pdf),
+has 424,886 bytes, and SHA-256
+`E7B1DE004E105996FDDC4CE98C7B825FF8F3DB402E79FA2A392FF9C90BF3B259`.
+The [submission record](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md)
+links the repository-native metadata manifest, verification anchors and exact
+scope boundary.
 
-The paper/source commits remain on remote branch `d3-closure`; this notice does
-not claim that the lane is integrated into `main`, and it does not alter the
-canonical proof-state DAG or the recorded distance to the Clay problem.
+The paper proves the stated extent-independent transfer-operator gap and
+time-correlation bounds inside the inherited Dobrushin window. It does not
+construct the spatial infinite-volume state or claim a Yang--Mills
+consequence. The earlier [AQFT rapid-maintenance](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md)
+and [Dobrushin C*-state](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md)
+submissions remain recorded independently.
 
 ---
 

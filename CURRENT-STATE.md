@@ -17,19 +17,20 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
-20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
-sent as the v2 replacement.  Its exact PDF is pinned at paper commit
-`e68b821f7`, has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`, and is
-described in
-[`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).
-The fresh-clone evidence on branch `d3-closure` records a green 8,475-job core
-and a 2,980-report repository oracle at verified source anchor `8e8375d34`.
-Those are branch measurements, not a replacement for the canonical `main`
-checkpoint: neither the paper commit nor its source anchor was in `main` when
-this notice was written.  The moderation/publication outcome is not yet
-recorded here.
+**Latest ai.viXra submission (2026-08-05; new paper submitted).** The 13-page
+paper *The Reconstructed Theory Has One Mass: a Machine-Checked Volume-Uniform
+Spectral Gap with Exact Identification Against the Gibbs Sums* was submitted
+to ai.viXra.org. Its exact PDF is pinned at `0894ba06`, has 424,886 bytes and
+SHA-256
+`E7B1DE004E105996FDDC4CE98C7B825FF8F3DB402E79FA2A392FF9C90BF3B259`.
+The exact form metadata, verification anchors, lifecycle rules and scope are
+recorded in
+[`docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md`](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md).
+The stated mass and time-correlation bounds are uniform in spatial extent
+inside the inherited Dobrushin window; no spatial infinite-volume state,
+continuum theory or Yang--Mills consequence is claimed. Moderation/publication
+and a public identifier remain pending. The earlier AQFT rapid-maintenance and
+Dobrushin C*-state submissions remain documented separately.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
