@@ -32109,3 +32109,29 @@ Pass 25 (6df7444b4): **ELAB_EXIT 0**, SOURCE 65975 `dac8e3f5f95c`.
 
 **ROLES.**  Fabrication + unit design: this desk.  Plane execution:
 autonomous browser bridge.  Predictions committed before measurement.
+
+
+## Addendum 633 (2026-08-05, **OS-R-5 ground-state wiring MEASURED: all
+three Add.-632 predictions HELD EXACTLY (core 8481; oracle 3050 =
+3040+10; sorryAx 0) -- FOURTEENTH consecutive exact count prediction**)
+
+`scripts/osr5_pass26_wiring.py` (committed fb2b9824e, predictions in
+Add. 632 at 5812678bb):
+
+* Gate `MODULE 65975 dac8e3f5f95c...`; `ORACLE_STATIC_LINES 3077`.
+* `CORE_EXIT 0 TOTAL 8481` -- prediction True.  FIVE stages, one file,
+  12347 -> 20428 -> 32533 -> 43213 -> 54745 -> 65975 bytes; the core
+  job count has never moved.
+* `ORACLE_EXIT 0 REPORTS 3050 SORRYAX_REPORTS 0 NONSTANDARD_JOINED
+  119` -- both predictions True.
+* All TEN new endpoints on the exact standard triple:
+  `groundKernel_nonneg`, `groundKernel_row_sum`,
+  `groundKernel_reversible`, `sum_vacOf_sq`, `norm_dressVac_le`,
+  `inner_vac_dressVac`, `opOf_dressVac`, `opOf_pow_dressVac`,
+  `inner_dressVac_pow`, `os_reconstruction_ground_state_clustering`.
+
+Remaining debt: the fresh clone, pinned to this commit.
+
+**ROLES.**  Unit design + predictions: this desk, committed before the
+run.  Plane execution: autonomous browser bridge.  This record: this
+desk.
