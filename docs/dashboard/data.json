@@ -19,13 +19,13 @@
     "latest_submission": {
       "date": "2026-08-05",
       "status": "new paper submitted to ai.viXra.org; moderation outcome and public identifier not recorded",
-      "title": "Faithfulness, Not Algebra Type, Controls the Rapid-Maintenance Singularity",
-      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md",
-      "pdf": "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/56e7ea46a38209b0a07f08a85260f55cdc863e4a/papers/aqft-rapid-maintenance/release-v8/Eriksson_Faithfulness_Rapid_Maintenance_AQFT_2026_v8.pdf",
-      "pdf_sha256": "B0370F2ED9E30282F6DCC09F6E4AA32130340C5898F96DCA59F84B398EAF34C0",
-      "source_anchor": "56e7ea46a38209b0a07f08a85260f55cdc863e4a",
-      "paper_commit": "56e7ea46a38209b0a07f08a85260f55cdc863e4a",
-      "integration": "frozen release on agent/record-aqft-rapid-maintenance-submission; not in main when recorded"
+      "title": "The Reconstructed Theory Has One Mass: a Machine-Checked Volume-Uniform Spectral Gap with Exact Identification Against the Gibbs Sums",
+      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md",
+      "pdf": "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/0894ba06616e1af626b960fbca14896d42cb283d/papers/os-reconstruction/os_reconstruction_uniform.pdf",
+      "pdf_sha256": "E7B1DE004E105996FDDC4CE98C7B825FF8F3DB402E79FA2A392FF9C90BF3B259",
+      "source_anchor": "813658de4a1ac5f4365611c444ebf1785ed679cc",
+      "paper_commit": "0894ba06616e1af626b960fbca14896d42cb283d",
+      "integration": "paper and manifest on remote branch d3-closure; not in main when recorded"
     }
   },
   "status_legend": {

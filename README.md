@@ -441,21 +441,23 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 ## Latest ai.viXra submission
 
 **Submitted 2026-08-05 as a new AI-assisted paper; moderation outcome and
-public identifier are not yet recorded.**  The 31-page paper *Faithfulness,
-Not Algebra Type, Controls the Rapid-Maintenance Singularity* was sent to
-ai.viXra.org. Its exact PDF is pinned at release commit
-[`56e7ea46`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/56e7ea46a38209b0a07f08a85260f55cdc863e4a/papers/aqft-rapid-maintenance/release-v8/Eriksson_Faithfulness_Rapid_Maintenance_AQFT_2026_v8.pdf),
-has 681,842 bytes, and SHA-256
-`B0370F2ED9E30282F6DCC09F6E4AA32130340C5898F96DCA59F84B398EAF34C0`.
-The [submission record](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md)
-pins the metadata, companion ZIP and exact scope boundary.
+public identifier are not yet recorded.** The 13-page paper *The Reconstructed
+Theory Has One Mass: a Machine-Checked Volume-Uniform Spectral Gap with Exact
+Identification Against the Gibbs Sums* was sent to ai.viXra.org. Its exact PDF
+is pinned at paper commit
+[`0894ba06`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/0894ba06616e1af626b960fbca14896d42cb283d/papers/os-reconstruction/os_reconstruction_uniform.pdf),
+has 424,886 bytes, and SHA-256
+`E7B1DE004E105996FDDC4CE98C7B825FF8F3DB402E79FA2A392FF9C90BF3B259`.
+The [submission record](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md)
+links the repository-native metadata manifest, verification anchors and exact
+scope boundary.
 
-The unconditional all-time estimate recorded by the release is `O(|lambda|)`
-for the displayed compact Dirac form factor; the sharper `O(lambda^2)` claim
-remains conditional. This AQFT submission is separate from the Yang--Mills
-proof-state DAG and does not alter its canonical checkpoint. The earlier
-[Dobrushin C*-state submission](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md)
-remains recorded independently.
+The paper proves the stated extent-independent transfer-operator gap and
+time-correlation bounds inside the inherited Dobrushin window. It does not
+construct the spatial infinite-volume state or claim a Yang--Mills
+consequence. The earlier [AQFT rapid-maintenance](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md)
+and [Dobrushin C*-state](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md)
+submissions remain recorded independently.
 
 ---
 

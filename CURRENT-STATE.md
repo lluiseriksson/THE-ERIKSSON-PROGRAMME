@@ -17,21 +17,20 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest ai.viXra submission (2026-08-05; new paper submitted).** The 31-page
-paper *Faithfulness, Not Algebra Type, Controls the Rapid-Maintenance
-Singularity* was submitted to ai.viXra.org. Its exact PDF and reproducibility
-ZIP are frozen at release commit `56e7ea46`; the PDF has 681,842 bytes and
+**Latest ai.viXra submission (2026-08-05; new paper submitted).** The 13-page
+paper *The Reconstructed Theory Has One Mass: a Machine-Checked Volume-Uniform
+Spectral Gap with Exact Identification Against the Gibbs Sums* was submitted
+to ai.viXra.org. Its exact PDF is pinned at `0894ba06`, has 424,886 bytes and
 SHA-256
-`B0370F2ED9E30282F6DCC09F6E4AA32130340C5898F96DCA59F84B398EAF34C0`.
-The exact metadata, archive identity, reported review corrections and scope
-boundary are recorded in
-[`docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md`](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md).
-The submitted all-time estimate is `O(|lambda|)` for the displayed compact
-Dirac form factor; the sharper `O(lambda^2)` improvement remains conditional.
-This AQFT artifact is independent of the canonical Yang--Mills proof-state DAG
-and does not alter its recorded build checkpoint. Moderation/publication and a
-public ai.viXra identifier are not yet recorded. The preceding Dobrushin
-C*-state submission remains documented separately.
+`E7B1DE004E105996FDDC4CE98C7B825FF8F3DB402E79FA2A392FF9C90BF3B259`.
+The exact form metadata, verification anchors, lifecycle rules and scope are
+recorded in
+[`docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md`](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md).
+The stated mass and time-correlation bounds are uniform in spatial extent
+inside the inherited Dobrushin window; no spatial infinite-volume state,
+continuum theory or Yang--Mills consequence is claimed. Moderation/publication
+and a public identifier remain pending. The earlier AQFT rapid-maintenance and
+Dobrushin C*-state submissions remain documented separately.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
