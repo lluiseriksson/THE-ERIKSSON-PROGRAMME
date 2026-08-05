@@ -105,6 +105,8 @@ jobs:
             lake env lean YangMills/RG/BalabanCMP116SourcePhysicalCoordinateDictionaryAudit.lean
           run_stage combined_source_pre_eq136_focal \
             lake build YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136
+          run_stage interacting_precision_audit_prerequisite \
+            lake build YangMills.RG.BalabanCMP116InteractingPhysicalPrecisionSourceAudit
           run_stage combined_source_pre_eq136_audit \
             lake env lean YangMills/RG/BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136Audit.lean
           run_stage conditioned_qbound_wall_focal \
