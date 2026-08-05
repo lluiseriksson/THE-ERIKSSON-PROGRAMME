@@ -2658,6 +2658,16 @@ the four CMP99 (3.42) components with the printed scale vector
 The carrier is required to be nonempty.  Thus neither zero amplitude nor an
 empty regional space can inhabit the source contract vacuously.
 
+The decay metric is definitionally the source block-scale distance
+`finBoxDist (blockSite scale coarseN x) (blockSite scale coarseN y)`.  A cold
+seal of the earlier raw-fine-distance version was cancelled before the focal
+completed: the render of CMP99 (3.42) and the rescaling immediately preceding
+CMP96 (2.43) show that the printed exponential is measured on the rescaled
+block lattice.  Retaining raw `finBoxDist x y` would demand a strictly stronger
+source theorem and would introduce an artificial exponential loss in the
+normalized `Q'^*Q'` species.  The metric is not a caller-supplied parameter, so
+the correction cannot be inhabited by choosing a degenerate distance.
+
 This interface deliberately does not derive (3.42) from the existing
 `2 / coercivity` Combes--Thomas estimate.  Doing so would import the
 Poincare/coercivity wall into the direct (3.89) constant and recreate the

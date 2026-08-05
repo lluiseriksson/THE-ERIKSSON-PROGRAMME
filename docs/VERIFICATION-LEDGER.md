@@ -27636,3 +27636,27 @@ The newly confirmed CMP96 equations (2.39), (2.40), (2.43), and (2.44) identify
 the source-specific direct proof that must replace it.  This brick does not
 prove CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource` inhabitant.
 The live counters remain exactly `20/41` and zero.
+
+## Addendum 563 (2026-08-06, **CMP99 (3.42) raw-fine metric retracted before seal; block-scale repair PRE-VALIDATION; 20/41 unchanged**)
+
+The attempted cold seal of the regional-Green certificate was cancelled before
+the focal completed.  Primary visual inspection of CMP99 p. 397 and the
+rescaling immediately preceding CMP96 (2.43) showed that the exponential in
+(3.42) uses the rescaled block-lattice distance, whereas source checkpoint
+`6d010ec0bd7a023ecf64f830eae33ea2e9325b97` demanded the stronger raw
+fine-site `finBoxDist`.  The interrupted run therefore supplies no compiler
+evidence and that checkpoint is superseded as a mathematical interface.
+
+The replacement fixes the metric definitionally as
+`finBoxDist (blockSite scale coarseN x) (blockSite scale coarseN y)` in all
+four components.  It does not accept a caller-supplied metric: in particular,
+neither a constant-zero distance nor a favorable reindexing can inhabit the
+contract.  This correction is load-bearing for the normalized `Q'^*Q'`
+species, because sources in one terminal block have the same coarse label;
+using raw fine distance would introduce an artificial exponential loss across
+that block.
+
+The repaired module and audit remain PRE-VALIDATION until a fresh compiler
+run succeeds.  No part of CMP99 (3.89), `norm R' < 1`, rows 23--24, or a
+`TermSource` inhabitant follows from this source correction.  Window 15 is
+still unattained and the live counters remain exactly `20/41` and zero.

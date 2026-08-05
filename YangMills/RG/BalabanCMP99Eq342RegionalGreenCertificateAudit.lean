@@ -6,6 +6,7 @@ yet been materialized, and the result has not yet been compiler-verified.
 -/
 
 #print axioms YangMills.RG.cmp99Eq342ScaleVector
+#print axioms YangMills.RG.cmp99Eq342RescaledBlockDist
 #print axioms YangMills.RG.CMP99Eq342RegionalGreenCertificate.B0_pos
 #print axioms YangMills.RG.CMP99Eq342RegionalGreenCertificate.B0_nonneg
 #print axioms YangMills.RG.CMP99Eq342RegionalGreenCertificate.carrier_nonempty
