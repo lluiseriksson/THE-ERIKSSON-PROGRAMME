@@ -77,7 +77,7 @@ theorem cmp99GeneratedAmbientScaledCovariantLaplacian_apply_eq_stencil
   rw [cmp99GeneratedAmbientScaledCovariantLaplacian_apply]
   simp only [PiLp.smul_apply, covariantD0CLM_apply, map_smul, map_sub,
     positiveEdgeOfPhysicalBond, rho.ad_inv_apply_ad,
-    FinBox.shiftBack_shift]
+    FinBox.shift_shiftBack]
   simp only [cmp99AmbientCovariantLaplacianStencil, Finset.smul_sum,
     smul_sub]
   module
