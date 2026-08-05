@@ -3,8 +3,8 @@
 % stated here is final until its module is green on the plane AND fresh-clone
 % verified; every [SLOT] must be replaced by a number READ FROM A COMMITTED
 % ARTEFACT before the word "final" is pronounced.  STATUS: ZERO LIVE SLOTS
-% (Addenda 621-625: module green, wiring measured 8481/3028/0 with the
-% predictions committed first, fresh clone bit-identical at 70276c78f).
+% for the OS-R-2 stage (Addenda 621-625).  The OS-R-3 cone stage adds
+% pass-19 wiring + a fresh clone as the live slots (Addendum 626).
 % Submission is the owner's decision alone.
 % The abstract's priority sentence is the COLLATED one (Add. 611,
 % docs/OS-R-PRIORITY-COLLATION.md): the naked "first machine-checked OS
@@ -146,10 +146,10 @@ $Z_N = \lambda^N\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}$; volume-uniform
 \emph{mixed} clustering with the zero-time case
 (\lean{os\_reconstruction\_measure\_uniform}; core 8481, oracle 3026,
 0 sorry --- measured, Addendum 622) & Wightman
-axioms; continuum limit; $SU(N)$; Clay; an
-$N$-uniform denominator floor for the normalised quotient (the
-division-free six-term bound IS a theorem,
-Section~\ref{sec:sixterm}) \\
+axioms; continuum limit; $SU(N)$; Clay; a volume-uniform CONSTANT for the
+normalised bound (the rate is uniform in $L$; $C(A,B)$ is not); the
+$N$-uniform denominator floor IS a theorem
+(Sections~\ref{sec:sixterm}--\ref{sec:cone}) \\
 \end{tabular}
 \end{center}
 
@@ -467,24 +467,73 @@ where $S_N = \mathrm{gibbsPathSum}$, $Z_N = \mathrm{gibbsPartition}$,
 and $Q{\cdot} = \mathrm{toLp}(\mathrm{dress}\,{\cdot})$.
 \end{theorem}
 
-This is the normalised connected-correlator bound multiplied through by
-the positive scale of $Z_N^2$: dividing by
-$Z_N^2 = \lambda^{2N}\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}^2$ recovers
+This is the normalised bound multiplied through by the positive scale
+of $Z_N^2$.  To divide it one needs a lower bound for
+$\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}$ that does not degrade with $N$,
+and that is the content of the next section.
+
+\section{The positive cone: a denominator floor uniform in $N$}
+\label{sec:cone}
+A spectral argument gives the floor only along the even powers: writing
+$Q\mathbf 1 = \ip{\Omega}{Q\mathbf 1}\Omega + q^\perp$ one has
+$\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}
+= \ip{\Omega}{Q\mathbf 1}^2 + \ip{S^N q^\perp}{q^\perp}$ with
+$S$ the projected operator, and the correction is sign-controlled only
+for $N$ even ($S^{2k}$ is positive semidefinite; $S^{2k+1}$ is not).
+The obstruction is an artefact of the method, not of the object: the
+kernel here is entrywise \emph{positive}, so the order-theoretic route
+closes at every $N$.
+
+\begin{lemma}[\lean{tiltKernel\_pos}]
+For $w>0$ and $\lambda>0$, $\mathrm{tiltKernel}\,w\,\beta\,\lambda$ is
+entrywise positive --- at \emph{every} real $\beta$, since
+$\mathrm{spatialKernel}$ is a product of positive bond factors
+(\lean{spatialKernel\_pos}).  The vacuum is positive too
+(\lean{vacOf\_pos}).
+\end{lemma}
+
+\begin{lemma}[cone propagation, \lean{opOf\_pow\_ge\_smul\_fix}]
+Let $M$ be entrywise nonnegative with $\mathrm{opOf}\,M\,\Omega =
+\Omega$.  If $c\,\Omega \le v$ entrywise then $c\,\Omega \le T^n v$
+entrywise, for every $n$.  (Induction on $n$; the step is
+$\sum_\tau M_{\sigma\tau}(c\,\Omega_\tau) \le
+\sum_\tau M_{\sigma\tau}(T^n v)_\tau$ and the fixed-point equation.
+No parity, no spectral input.)
+\end{lemma}
+
+\begin{theorem}[the floor, \lean{inner\_pow\_floor}]
+Let $M$ be entrywise nonnegative, $\Omega$ the normalised positive
+fixed vector, $v$ entrywise positive.  Then there is $f>0$ with
+$\;f \le \ip{T^n v}{v}\;$ for \emph{every} $n$.  Explicitly
+$f = c^2\lVert\Omega\rVert^2$ where $c = \min_\sigma
+(v_\sigma/\Omega_\sigma) > 0$ is the in-tree finite minimum
+\lean{minWeight}.
+\end{theorem}
+
+\begin{theorem}[\lean{os\_reconstruction\_normalised\_clustering}]
+In the window there is \emph{one} $m>0$ such that for \emph{every}
+spatial extent $L$: the partition function is positive at every depth,
+and there is a constant $C(A,B)$ --- depending on the observables and
+on $L$, but \emph{not} on the time depth $N$ --- with
 \[
 \Bigl| \frac{S_N(A,B)}{Z_N}
   - \frac{S_N(A,\mathbf 1)}{Z_N}\,\frac{S_N(\mathbf 1,B)}{Z_N} \Bigr|
-\;\le\;
-\frac{6\,\lVert QA\rVert\,\lVert QB\rVert\,\lVert Q\mathbf 1\rVert^2}
-     {\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}^2}\,(e^{-m})^N ,
+\;\le\; C(A,B)\,(e^{-m})^N ,
+\qquad
+C(A,B) = \frac{6\,\lVert QA\rVert\,\lVert QB\rVert\,
+  \lVert Q\mathbf 1\rVert^2}{f^2} .
 \]
-which is printed here as prose arithmetic, not as a separate Lean
-statement.  We do \emph{not} claim an $N$-uniform denominator floor:
-at fixed $L$ the even powers give
-$\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1} \ge \ip{\Omega}{Q\mathbf 1}^2$,
-but the odd branch admits no such clean uniform bound without further
-work, and the division-free formulation above is exactly what the
-kernel proves.  The boundary between identity and estimate --- and
-between estimate and prose --- sits where the kernel put it.
+\end{theorem}
+
+The three quotients are the expectations of the normalised Gibbs
+measure: $S_N(A,B)/Z_N = \langle A(X_0)B(X_N)\rangle$,
+$S_N(A,\mathbf 1)/Z_N = \langle A(X_0)\rangle$ and
+$S_N(\mathbf 1,B)/Z_N = \langle B(X_N)\rangle$.  So the statement is
+that the connected two-point function \emph{of the measure} decays at
+the volume-uniform rate, with a time-independent prefactor.  This is
+the step the earlier version of this manuscript named as open; it is
+now a theorem, and the honest residue is stated in
+Section~\ref{sec:honesty}: $C$ still depends on $L$.
 
 \section{Reproduction}\label{sec:repro}
 All numbers below are read from committed run artefacts; predictions
@@ -563,11 +612,16 @@ site-form construction (the quotient content lives on half-chain
 observables, Section~\ref{sec:provenance}), and the theorems are
 about its \emph{spectrum and its exact relation to the Gibbs sums},
 not about the construction being difficult.  The connected bound is
-printed in its division-free form (Section~\ref{sec:sixterm}); what
-is NOT claimed is an $N$-uniform lower bound for the denominator
-$\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}$ at fixed $L$ --- the even
-branch has one, the odd branch is not proved here, and the prose does
-not paper over the difference.
+printed in both forms, division-free (Section~\ref{sec:sixterm}) and
+normalised (Section~\ref{sec:cone}); the residue there is precise and
+we state it rather than blur it: the mass $m$ is uniform in the
+spatial extent $L$, but the \emph{constant} $C(A,B)$ of the normalised
+bound is not --- it carries $1/f^2$ with $f = c^2\lVert\Omega\rVert^2$
+and $c$ the minimum ratio $Q\mathbf 1/\Omega$, which may degrade as
+$L\to\infty$.  So this paper proves a volume-uniform \emph{rate} with
+per-extent constants, not a volume-uniform bound; making $C$ uniform
+in $L$ as well is the next step, and it is a genuinely new estimate
+rather than a further identification.
 
 \begin{thebibliography}{9}
 \bibitem{DHMN} M.~R.~Douglas, S.~Hoback, C.~Mei, Y.~Nissim,
