@@ -3,7 +3,7 @@
 % stated here is final until its module is green on the plane AND fresh-clone
 % verified; every [SLOT] must be replaced by a number READ FROM A COMMITTED
 % ARTEFACT before the word "final" is pronounced.  STATUS: ZERO LIVE SLOTS
-% ZERO LIVE SLOTS across all FIVE stages (Addenda 621-634: every module
+% ZERO LIVE SLOTS across all SIX stages (Addenda 621-637: every module
 % green, every wiring measured with the predictions committed first, every
 % stage fresh-clone verified bit-identical).
 % Submission is the owner's decision alone.
@@ -31,10 +31,10 @@ the programme's Colab plane; toolchain \lean{leanprover/lean4:v4.29.0-rc6},
 Mathlib pinned to \lean{0764272048\ldots}.  Repository:
 \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}{THE-ERIKSSON-PROGRAMME},
 branch \lean{d3-closure}, module anchor commit
-\lean{5812678bbdbbc0e9d8cb0b4f463bc11a08b2ea94}; verification anchor
-\lean{fc274db76f7d7f0abf8eb3f55d5ca022014bd9a3} (fresh clone, Addendum 634).}}
+\lean{7230b97b286775781728952d71720902b6e78073}; verification anchor
+\lean{813658de4a1ac5f4365611c444ebf1785ed679cc} (fresh clone, Addendum 637).}}
 \date{2026-08-05 --- complete manuscript, zero live slots across all
-five fabrication stages; submission is the owner's decision}
+six fabrication stages; submission is the owner's decision}
 
 \begin{document}
 \maketitle
@@ -752,10 +752,12 @@ judges $110/110$ both modes; 8481; 3040; 0; module
 \hline
 \multicolumn{3}{l}{\emph{non-vacuity stage (predictions Addendum 635,
 committed before the run):}} \\
-core jobs & 8481 exact (import set unchanged) & \SLOT{pass 31} \\
-oracle reports & $3050+5 = 3055$ exact & \SLOT{pass 31} \\
+core jobs & 8481 exact (import set unchanged) & 8481 \\
+oracle reports & $3050+5 = 3055$ exact & 3055 \\
+\lean{sorryAx} occurrences & 0 & 0 \\
 fresh-clone reproduction & bit-identical module, same counts &
-\SLOT{final pass} \\
+judges $110/110$ both modes; 8481; 3055; 0; module
+\lean{b60120d3\ldots} bit-identical (Addendum 637) \\
 \hline
 \multicolumn{3}{l}{\emph{ground-state stage (predictions Addendum 632,
 committed before the run; measured Addendum 633):}} \\
@@ -776,8 +778,9 @@ $12{,}347$ to $20{,}428$ to $32{,}533$ to $43{,}213$ to $54{,}745$ to
 $65{,}975$ bytes across the five stages and the job total never
 moved.
 Module: \lean{YangMills/OS/OSReconstructionUniform.lean}, final sha256
-\lean{dac8e3f5f95c294c73c4e36c6760be7b5459d88f6c6adfec41db1751bbfdd260}
-($65{,}975$ bytes), banked at commit \lean{5812678bb} (limit-state stage:
+\lean{b60120d38d0632d7088b34ddeec8ba004f81cb473751347a8cda67c0421efb43}
+($70{,}976$ bytes), banked at commit \lean{7230b97b2} (ground-state stage:
+\lean{dac8e3f5\ldots}, $65{,}975$ B at \lean{5812678bb}; limit-state stage:
 \lean{ec19ffa7\ldots}, $54{,}745$ B at \lean{6ff9074b3}; cone stage:
 \lean{2f2f4cf9\ldots}, $43{,}213$ B at \lean{6ef9aee03}; six-term stage:
 \lean{3b3598eb\ldots}, $32{,}533$ B at \lean{b47dda50e}; measure stage:

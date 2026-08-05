@@ -32261,3 +32261,53 @@ Remaining debt: the fresh clone, pinned to this commit.
 
 **ROLES.**  Unit design + predictions: this desk, committed before the
 run.  Plane execution: autonomous browser bridge.  This record: this desk.
+
+
+## Addendum 637 (2026-08-05, **OS-R-6 FRESH-CLONE VERIFICATION GREEN at
+813658de4: judges 110/110 both modes, core 8481, oracle 3055, sorryAx 0,
+module bit-identical -- SIX fabrication stages closed, manuscript at ZERO
+live slots**)
+
+`scripts/osr6_pass32_freshclone.py` (committed e21d232c0, pinned to
+813658de4), brand-new clone /content/osr6fresh, cache from scratch:
+
+* `CLONE_EXIT 0`; judges 110/110 in BOTH modes; `CORE_EXIT 0 TOTAL 8481`;
+  `ORACLE_EXIT 0 REPORTS 3055 SORRYAX_REPORTS 0 NONSTANDARD_JOINED 119`;
+  both predictions True.
+* FIFTEEN sampled endpoints ALL on the exact standard triple, including
+  `window_nonempty_interacting`, `tanh_tenth_le` and
+  `summed_clustering_of_uniform_bound`.
+* Travelling files: module `b60120d38d0632d7...` 70976 B;
+  `YangMillsCore.lean` `8625afbf13f2dcb1...` 63502 B (unchanged across ALL
+  SIX stages); `oracle_check.lean` `18bf9ad328c74cfe...` 236959 B; judge
+  `642208cae0d4f908...` 13613 B.  `OSR6_FRESHCLONE_DONE`.
+
+**Campaign record: six stages, each predictions-first and each fresh-clone
+verified** -- measure (621/622/625), six-term (623/624/625), positive cone
+(626/627/628), limit state (629/630/631), ground state (632/633/634),
+non-vacuity (635/636/this).  FIFTEEN consecutive exact count predictions;
+one module file from 12347 to 70976 bytes with the core job count never
+moving.
+
+**What the paper proves that it did not at the start of the campaign:** the
+raw Gibbs sums are exact matrix elements of the reconstructed operator; the
+normalised connected correlator decays at the volume-uniform rate with an
+N-independent constant; the infinite-time limit state exists, IS the
+vacuum, and forgets the positive terminating observable; the reconstructed
+operator IS a reversible Markov chain and in its stationary state BOTH the
+rate and the constant are free of the spatial extent; the window is
+non-empty at an interacting point, so none of it is vacuous; and the
+extent-free bound sums to a susceptibility bound.
+
+**Still not claimed, printed item by item:** an infinite-volume transfer
+operator; the L -> infinity state (this campaign supplies the necessary
+uniformity, NOT the limit; no inclusion maps, no compatibility between
+pi_L and pi_{L+1}); a continuum limit; a Wightman theory; any Yang-Mills
+consequence.
+
+**Process rule adopted this stage (Add. 635):** an edit tool that cannot
+fail is not an edit tool.  Three abstract edits silently no-opped and
+shipped a stale abstract three times before an external reader caught it.
+
+**ROLES.**  Unit design: this desk.  Plane execution: autonomous browser
+bridge.  This record: this desk.
