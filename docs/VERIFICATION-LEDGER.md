@@ -32004,3 +32004,48 @@ Remaining debt: the fresh clone, pinned to this commit.
 **ROLES.**  Unit design + predictions: this desk, committed before the
 run.  Plane execution: autonomous browser bridge.  This record: this
 desk.
+
+
+## Addendum 631 (2026-08-05, **OS-R-4 FRESH-CLONE VERIFICATION GREEN at
+0a34cec20: judges 110/110 both modes, core 8481, oracle 3040, sorryAx 0,
+module bit-identical -- FOUR fabrication stages closed, manuscript at
+ZERO live slots**)
+
+`scripts/osr4_pass23_freshclone.py` (committed 32938c5e4, pinned to
+0a34cec20), brand-new clone /content/osr4fresh, cache from scratch:
+
+* `CLONE_EXIT 0`, `CACHE_EXIT 0`; judges 110/110 in `normal` AND
+  `optimized`.
+* `CORE_EXIT 0 TOTAL 8481` -- prediction True.
+* `ORACLE_EXIT 0 REPORTS 3040 SORRYAX_REPORTS 0 NONSTANDARD_JOINED
+  119` -- prediction True.
+* Nine sampled endpoints all on the exact standard triple, including
+  `inner_pow_floor_offdiag`, `inner_ratio_approx` and
+  `os_reconstruction_vacuum_state_limit`.
+* Travelling files: module `ec19ffa75cd4ab44...` 54745 B;
+  `YangMillsCore.lean` `8625afbf13f2dcb1...` 63502 B (unchanged across
+  ALL FOUR stages); `oracle_check.lean` `162666fddf5029c3...` 236224 B;
+  judge `642208cae0d4f908...` 13613 B.  `OSR4_FRESHCLONE_DONE`.
+
+**Campaign record, four stages, each predictions-first and each
+fresh-clone verified:** measure (621/622/625), six-term (623/624/625),
+positive cone (626/627/628), limit state (629/630/this).  THIRTEEN
+consecutive exact count predictions.
+
+**What the paper proves now that it did not when the external
+evaluation was written:** the normalised Gibbs connected correlator
+decays at the volume-uniform rate with an N-independent constant
+(cone stage), and the N -> infinity limit state exists, is the vacuum
+state, and is independent of the far-end boundary observable (limit
+stage).  **What it still does not prove, printed item by item in the
+honesty section:** an infinite-volume transfer operator; the L ->
+infinity thermodynamic state (the constants carry 1/f and f is a
+minimum over 2^(L+1) configurations -- the RATE is uniform in L, the
+CONSTANTS are not); boundary-condition independence beyond positive
+time-terminations; a continuum limit; a Wightman theory; any
+Yang-Mills consequence (the model is Ising Z_2, not a gauge theory,
+and this programme's own audit records that its YM chain dies at the
+bridge).
+
+**ROLES.**  Unit design: this desk.  Plane execution: autonomous
+browser bridge.  This record: this desk.
