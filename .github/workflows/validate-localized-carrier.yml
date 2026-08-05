@@ -1,4 +1,4 @@
-name: Validate generated physical regional correction
+name: Validate generated physical regional defect contraction
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: ddda0475533573d02f1197340df0d216467702da
+  SOURCE_SHA: 24a24e22b20954be028699ef18fd951fcd2c6e1b
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  generated-physical-regional-correction:
+  generated-physical-regional-defect-contraction:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -68,8 +68,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-regional-correction-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-regional-defect-contraction-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: |
+            hRpoly-regional-defect-contraction-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-regional-correction-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
 
       - name: Record diagnostic cache state
@@ -103,8 +104,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceGeneratedRegionalCorrectionDecay.lean \
-            YangMills/RG/BalabanCMP99SourceGeneratedRegionalCorrectionDecayAudit.lean \
+            YangMills/RG/BalabanCMP99SourceGeneratedRegionalDefectContraction.lean \
+            YangMills/RG/BalabanCMP99SourceGeneratedRegionalDefectContractionAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -126,10 +127,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage generated_physical_regional_correction_focal \
-            lake build YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay
-          run_stage generated_physical_regional_correction_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedRegionalCorrectionDecayAudit.lean
+          run_stage generated_physical_regional_defect_contraction_focal \
+            lake build YangMills.RG.BalabanCMP99SourceGeneratedRegionalDefectContraction
+          run_stage generated_physical_regional_defect_contraction_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedRegionalDefectContractionAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -142,7 +143,7 @@ jobs:
           import re
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
-          audits = {"generated_physical_regional_correction_audit.log": 16}
+          audits = {"generated_physical_regional_defect_contraction_audit.log": 7}
           result = {}
           for name, expected in audits.items():
               text = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -172,17 +173,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > generated-physical-regional-correction-evidence.tar.gz
-          sha256sum generated-physical-regional-correction-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > generated-physical-regional-defect-contraction-evidence.tar.gz
+          sha256sum generated-physical-regional-defect-contraction-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: generated-physical-regional-correction-${{ env.SOURCE_SHA }}
+          name: generated-physical-regional-defect-contraction-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            generated-physical-regional-correction-evidence.tar.gz
+            generated-physical-regional-defect-contraction-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -191,4 +192,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-regional-correction-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-regional-defect-contraction-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
