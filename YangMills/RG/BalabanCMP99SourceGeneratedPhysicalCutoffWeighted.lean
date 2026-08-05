@@ -9,10 +9,11 @@ import YangMills.RG.FinitePiLpScalarCommutator
 import YangMills.RG.FinitePiLpTypedScalarCommutatorFixedOutput
 
 /-!
-# PRE-VALIDATION: weighted cutoff commutator of the generated physical precision
+# Weighted cutoff commutator of the generated physical precision
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+This module was validated from a cold checkout at source checkpoint
+`6bef7974e800d80534e171a285a7ea5b90d324e4` by GitHub Actions run
+`30994320564` against the pinned Lean/Mathlib environment.
 
 This specializes the direct fixed-output commutator bridge to the literal
 generated CMP99 precision.  The covariant-Laplacian and normalized

@@ -2460,3 +2460,56 @@ large-block cutoff, identify the common ambient/regional operator, estimate
 the Green composition, attain `norm R' < 1`, discharge groups 23--24, or
 inhabit a `TermSource`.  The live counters remain exactly `20/41` and
 `TermSource = 0`.
+
+### Generated physical precision weighted specialization (2026-08-05)
+
+Exact source checkpoint
+`6bef7974e800d80534e171a285a7ea5b90d324e4` passed cold GitHub Actions run
+`30994320564` (workflow checkpoint
+`23652ae655b663dbb1ba5f924ba747b53aae1b4b`) without restoration or saving
+of a project `.lake/build` cache.  The focal completed 8,493 jobs, its
+five-declaration audit exited zero, and all five declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The specialization keeps the covariant-Laplacian and normalized
+`Q'^* Q'` fixed-output budgets as two separately named quantities and only
+adds them in the literal generated physical precision endpoint.  It then
+uses the sealed generic bridge to obtain both the fixed-output weighted
+commutator estimate and its pointwise exponential kernel consequence.  The
+carrier, Lie-coordinate fibre, and target/source indices are pinned in the
+public signatures; no elaboration timeout is hidden by a heartbeat increase.
+
+The cutoff remains an arbitrary Lipschitz scalar function.  This brick does
+not yet install the source large-block profile, prove the ambient-to-regional
+operator dictionary, compose with a regional Green operator, attain
+`norm R' < 1`, discharge groups 23--24, or inhabit a `TermSource`.  It is
+infrastructure below window 15, so the live counters remain exactly `20/41`
+and `TermSource = 0`.
+
+### Declared finite route from CMP99 (3.88) to `20/41 -> 22/41`
+
+The bricks below are the complete declared route.  A green prefix is not a
+counter movement; only the last two physical scalar producers, consumed by
+the already verified assembler, discharge rows 23--24.
+
+| step | nominal brick | exact output | status |
+|---:|---|---|---|
+| 1 | complete generated physical cutoff identity | the three literal species of (3.88) on the active carrier | **sealed** at `39905a39`, run `30990024776` |
+| 2 | fixed-output quantitative commutator bridge | `[h,K]` pays `slope * range` in the printed orientation and yields a pointwise exponential kernel bound | **sealed** at `4e23216a`, run `30992627475` |
+| 3 | generated physical precision specialization | the literal generated `K` supplies its finite range and two separately named Laplacian / normalized-mass row budgets | **sealed** at `6bef7974`, run `30994320564`; no counter movement |
+| 4 | source large-block cutoff specialization | instantiate `h` by the one `CMP95SourceSmoothPartitionProfile`, use the source carrier equality, and rewrite slope times range to the exact `4 * derivBound / M` gain | open; geometry and slope lemmas already exist |
+| 5 | ambient-to-regional precision dictionary | identify the cell active operator with the supported compression of one common generated ambient precision, with the projector premise cited explicitly | **open design frontier**; this is the one remaining dictionary whose exact public signature is not yet frozen |
+| 6 | uniform single-cell regional correction | compose the cell commutator with the regional Dirichlet Green and the contractive right cutoff, retaining one explicit cell amplitude | open; generic Green and cutoff composition lemmas exist |
+| 7 | overlap / Schur / contraction endpoint | sum cells with the already derived overlap `16`, pass the exponential kernel estimate to operator norm, and prove the explicit physical defect budget is `< 1` | open; this is physical attainment of window 15 |
+| 8 | two literal centered-conditioned gap producers | prove `alpha < coercivityConstant` and `2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound` from the physical rates produced by the regional construction | open; the assembler then derives `root_small` and `outer_small` and moves the live count to `22/41` |
+
+Thus window 15 is necessary but is not silently identified with rows 23--24.
+The path has a declared last element, and step 5 is the named design unknown
+that could otherwise let the regional chain grow without a consumer.
+
+**Elaboration battle note.**  Physical specializations of the generated
+PiLp tower must pin the carrier, fibre, and source/target index types in their
+public signatures (`ι`, `g`, and typed lambda binders).  Type inference is
+reserved for the generic leaf lemmas.  Three deterministic `whnf` timeouts
+have now been removed by this same rewrite; increasing heartbeats is not the
+accepted repair for this class.

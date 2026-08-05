@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalCutoffWeighted
 
 /-!
-# PRE-VALIDATION audit for the generated physical cutoff weighted bounds
+# Audit for the generated physical cutoff weighted bounds
 
-The source is present, but this audit has not yet been run by the pinned Lean
-compiler and no `.olean` is claimed for the imported module.
+This audit passed in cold GitHub Actions run `30994320564` at exact source
+checkpoint `6bef7974e800d80534e171a285a7ea5b90d324e4`.
 -/
 
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalLaplacianCutoffBudget

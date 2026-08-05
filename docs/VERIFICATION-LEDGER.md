@@ -27325,3 +27325,39 @@ This bridge works in the printed fixed-output orientation and pays exactly
 the physical cutoff, the regional-operator dictionary, the Green composition,
 or a contraction.  Window 15 remains compatible but unattained; the live
 counters remain exactly `20/41` and zero.
+
+## Addendum 554 (2026-08-05, **generated physical precision weighted specialization GREEN; 20/41 unchanged**)
+
+The literal generated-precision specialization of the fixed-output
+commutator bridge was validated from exact source checkpoint
+`6bef7974e800d80534e171a285a7ea5b90d324e4` by cold GitHub Actions run
+`30994320564` (workflow checkpoint
+`23652ae655b663dbb1ba5f924ba747b53aae1b4b`).  The checkout did not restore
+or save a project `.lake/build` cache.  Lean was the official
+`v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8493 jobs).` and
+exited zero.  Its five-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`540b8a275efd29d5f4e055c0e3dc32d070043a04a9c4f9babb55e405faeeefd7`.
+The axiom JSON has SHA-256
+`25d3804acb5c1f99429bd57c8d3ad5928bf9f5dae8d583aa023f97e3b47e7c66`;
+the stage ledger has SHA-256
+`4db04f4106f0ef9013a79d9b01dfd0c695dca7bed8dfc3c42671749c9f62268f`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+10 recorded files.
+
+This brick keeps the covariant-Laplacian and normalized `Q'^* Q'`
+fixed-output row budgets separate, adds them only in the literal generated
+physical precision, and obtains the weighted and pointwise exponential
+commutator bounds in the source orientation.  It does not yet install the
+source large-block cutoff, identify the ambient and regional precision,
+compose with the regional Green operator, attain `norm R' < 1`, discharge
+groups 23--24, or inhabit a `TermSource`.  It is infrastructure below window
+15; the live counters remain exactly `20/41` and zero.
