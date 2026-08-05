@@ -613,28 +613,101 @@ the Pythagoras lemma, then green).  The wiring unit with the registered
 predictions is committed as \lean{scripts/osr2\_pass11\_wiring.py}
 \emph{before} its run, at commit \lean{520e177a7}.
 
+\section{The infinite-time limit state}\label{sec:state}
+The off-diagonal floor costs one line more than the diagonal one and
+buys a genuine state-theoretic statement.  Fix a strictly positive
+boundary observable $B$ and terminate the chain with it: the one-point
+expectation of $A$ at the near end is
+$\langle A\rangle_{N,B} := S_N(A,B)/S_N(\mathbf 1,B)$, a quantity that
+depends on the chain length $N$ and on the boundary condition $B$.
+
+\begin{lemma}[off-diagonal floor, \lean{inner\_pow\_floor\_offdiag}]
+For $M$ entrywise nonnegative with positive fixed vector $\Omega$ and
+$u,v$ entrywise positive there is $f>0$ with
+$f \le \ip{T^n u}{v}$ for every $n$ --- namely
+$f = c\,\ip{\Omega}{v}$ with $c$ the cone constant of $u$.
+\end{lemma}
+
+\begin{theorem}[\lean{inner\_ratio\_approx}, generic Hilbert space]
+With $T$ a \lean{VacuumTransfer}, $\lVert\mathrm{projectedTransfer}\rVert
+\le r$, and $d \le \ip{q_1}{T^N q_B}$, $d>0$, $\ip{\Omega}{q_1}>0$:
+\[
+\Bigl| \frac{\ip{q_A}{T^N q_B}}{\ip{q_1}{T^N q_B}}
+  - \frac{\ip{\Omega}{q_A}}{\ip{\Omega}{q_1}} \Bigr|
+\;\le\; \frac{2\lVert q_A\rVert\lVert q_B\rVert\lVert q_1\rVert}
+             {d\,\ip{\Omega}{q_1}}\, r^N .
+\]
+\end{theorem}
+
+\begin{theorem}[\lean{os\_reconstruction\_vacuum\_state\_limit}]
+In the window there is \emph{one} $m>0$ such that for \emph{every}
+spatial extent, every observable $A$ and every strictly positive
+boundary observable $B$, there is a constant $C$ (independent of $N$)
+with
+\[
+\Bigl| \langle A\rangle_{N,B}
+  - \frac{\ip{\Omega}{QA}}{\ip{\Omega}{Q\mathbf 1}} \Bigr|
+\;\le\; C\,(e^{-m})^N .
+\]
+\end{theorem}
+
+Three readings sit in that one inequality.  \emph{(i)~The limit
+exists}, and is approached exponentially at the volume-uniform rate.
+\emph{(ii)~The limit is the vacuum state}: the right-hand expression is
+the Perron vector's expectation, so the $N\to\infty$ state of the
+finite-extent chain is the ground state of the reconstructed transfer
+operator.  \emph{(iii)~The limit does not depend on the boundary
+condition}: $B$ appears on the left and \emph{not} on the right, so any
+two strictly positive terminations give the same limit --- boundary
+condition independence, in the time direction, at fixed spatial extent.
+None of the three is available without the floor: every one of them is
+a statement about a quotient, and the quotient's denominator is exactly
+what a spectral argument fails to control at odd $N$.
+
 \section{What is not claimed}\label{sec:honesty}
-No Wightman axioms, no OS$\to$Wightman analytic continuation, no
-continuum limit, no $SU(N)$, no statement about the Clay problem.  The
-window is the Dobrushin window; outside it the programme's own
-kill-test (repository, Addendum 610) shows the standard-cone Birkhoff
-route is projectively blind to the site weight, which is why no claim
-beyond the window appears here.  The model is the $\mathbb{Z}_2$
-Ising slice; ``reconstruction'' means the elementary finite-volume
-site-form construction (the quotient content lives on half-chain
-observables, Section~\ref{sec:provenance}), and the theorems are
-about its \emph{spectrum and its exact relation to the Gibbs sums},
-not about the construction being difficult.  The connected bound is
-printed in both forms, division-free (Section~\ref{sec:sixterm}) and
-normalised (Section~\ref{sec:cone}); the residue there is precise and
-we state it rather than blur it: the mass $m$ is uniform in the
-spatial extent $L$, but the \emph{constant} $C(A,B)$ of the normalised
-bound is not --- it carries $1/f^2$ with $f = c^2\lVert\Omega\rVert^2$
-and $c$ the minimum ratio $Q\mathbf 1/\Omega$, which may degrade as
-$L\to\infty$.  So this paper proves a volume-uniform \emph{rate} with
-per-extent constants, not a volume-uniform bound; making $C$ uniform
-in $L$ as well is the next step, and it is a genuinely new estimate
-rather than a further identification.
+The claims above are finite-extent and time-directional, and the gap
+between them and the objects a constructive field theorist would want
+is worth naming item by item rather than leaving to inference.
+
+\begin{itemize}
+\item \emph{An infinite-volume transfer operator.}  Not here.  Every
+operator in this paper acts on the finite-dimensional slice space at a
+fixed extent $L$; no inductive limit of the spaces is constructed.
+\item \emph{A thermodynamic state.}  Only in the \emph{time} direction:
+Section~\ref{sec:state} produces the $N\to\infty$ limit state at fixed
+$L$ and identifies it.  The $L\to\infty$ limit is not constructed, and
+the obstruction is explicit --- the constants of
+Sections~\ref{sec:cone}--\ref{sec:state} carry $1/f$ with
+$f = c\,\ip{\Omega}{v}$, and $c$, a minimum of a ratio over $2^{L+1}$
+configurations, is not controlled as $L$ grows.  The \emph{rate} is
+uniform in $L$; the \emph{constants} are not.
+\item \emph{General boundary-condition independence.}  Only for
+strictly positive terminations of the chain in the time direction
+(Section~\ref{sec:state}).  Nothing is proved about spatial boundary
+conditions, about non-positive or signed terminations, or about
+independence in the infinite-volume limit.
+\item \emph{A continuum limit.}  Nothing.  The lattice spacing never
+appears.
+\item \emph{A Wightman theory.}  Nothing: no analytic continuation, no
+OS$\to$Wightman reconstruction, no relativistic spectrum condition.
+The reconstruction here is the elementary finite-volume site-form
+construction (the quotient content lives on half-chain observables,
+Section~\ref{sec:provenance}), and the theorems are about its
+\emph{spectrum and its exact relation to the Gibbs sums}, not about
+the construction being difficult.
+\item \emph{A consequence for Yang--Mills.}  None.  The model is the
+$\mathbb{Z}_2$ Ising slice, not a gauge theory; importance is not
+inherited by thematic proximity, and only a proved reduction would
+transfer it.  This programme's own audit of its Yang--Mills chain
+records that the chain dies at the bridge, and nothing in this paper
+repairs it.
+\end{itemize}
+
+Finally, the window is the Dobrushin window, and it is sufficient, not
+optimal; outside it the programme's own kill-test (repository,
+Addendum 610) shows the standard-cone Birkhoff route is projectively
+blind to the site weight, which is why no claim beyond the window
+appears here.
 
 \begin{thebibliography}{9}
 \bibitem{DHMN} M.~R.~Douglas, S.~Hoback, C.~Mei, Y.~Nissim,
