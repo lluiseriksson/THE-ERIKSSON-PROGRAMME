@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f
+  SOURCE_SHA: fbb2d47d5fbc0ccc4900c15b55cc210d9a8e0440
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -103,6 +103,10 @@ jobs:
             lake build YangMills.RG.BalabanCMP116SourcePhysicalCoordinateDictionary
           run_stage physical_coordinate_dictionary_audit \
             lake env lean YangMills/RG/BalabanCMP116SourcePhysicalCoordinateDictionaryAudit.lean
+          run_stage r3_source_rate_focal \
+            lake build YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalR3SourceRate
+          run_stage r3_source_rate_audit \
+            lake env lean YangMills/RG/BalabanCMP116SourceRestrictedConditionedPhysicalR3SourceRateAudit.lean
           run_stage combined_source_pre_eq136_focal \
             lake build YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136
           run_stage interacting_precision_audit_prerequisite \
@@ -127,6 +131,7 @@ jobs:
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
               "physical_coordinate_dictionary_audit.log": 10,
+              "r3_source_rate_audit.log": 3,
               "combined_source_pre_eq136_audit.log": 18,
               "conditioned_qbound_wall_audit.log": 1,
           }
