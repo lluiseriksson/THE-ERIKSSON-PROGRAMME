@@ -40,8 +40,9 @@ noncomputable def cmp99ActiveCovariantCutoffLinkDerivative
     (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
     ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) :=
   restrictZeroCLM Omega
-    (cmp99CovariantCutoffLinkDerivative rho U spacing h
-      (extendZeroZeroCLM Omega phi))
+    (WithLp.toLp 2 fun x : FinBox d N =>
+      cmp99CovariantCutoffLinkDerivative rho U spacing h
+        (extendZeroZeroCLM Omega phi) x)
 
 /-- Restriction of the ambient scalar cutoff-Laplacian species to one active
 Dirichlet carrier. -/
@@ -51,8 +52,9 @@ noncomputable def cmp99ActiveCutoffLaplacianCorrection
     (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
     ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) :=
   restrictZeroCLM Omega
-    (cmp99CutoffLaplacianCorrection spacing h
-      (extendZeroZeroCLM Omega phi))
+    (WithLp.toLp 2 fun x : FinBox d N =>
+      cmp99CutoffLaplacianCorrection spacing h
+        (extendZeroZeroCLM Omega phi) x)
 
 /-- The ambient two-species product rule descends exactly to an arbitrary
 active region.  The multiplier intertwiners need no support hypothesis. -/
@@ -80,6 +82,8 @@ theorem cmp99ActiveRegionSourceCovariantLaplacian_scalarMultiplier_apply
       congrArg (fun A => A phi) hHE
   rw [cmp99ActiveRegionSourceCovariantLaplacian_apply_eq_compression,
     cmp99ActiveRegionSourceCovariantLaplacian_apply_eq_compression]
+  simp only [cmp99ActiveCovariantCutoffLinkDerivative,
+    cmp99ActiveCutoffLaplacianCorrection, restrictZeroCLM]
   change
     cmp99GeneratedAmbientScaledCovariantLaplacian rho U spacing
         (E (Hlocal phi)) target.1 =
