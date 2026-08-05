@@ -58,15 +58,17 @@ theorem norm_cmp99SourceGeneratedPhysicalLargeBlockCutoff_sub_le
         cmp99SourceRegionalLargeBlockCutoffScale M depth) *
         (finBoxDist target.1 source.1 : ℝ) := by
   let hsize := cmp99RegionalLatticeSize_sourceLargeBlockCarrier M Q depth
-  have h :=
-    norm_cmp99SourceRegionalLargeBlockSquarePartition_value_sub_le
+  change ‖(cmp99SourceRegionalLargeBlockSquarePartition
+          (M := M) (Q := Q) (depth := depth) P).value cell
+          (hsize ▸ target.1) -
+        (cmp99SourceRegionalLargeBlockSquarePartition
+          (M := M) (Q := Q) (depth := depth) P).value cell
+          (hsize ▸ source.1)‖ ≤ _
+  rw [← finBoxDist_cast_size hsize target.1 source.1]
+  simpa only [norm_sub_rev] using
+    (norm_cmp99SourceRegionalLargeBlockSquarePartition_value_sub_le
       (M := M) (Q := Q) (depth := depth) P cell
-      (hsize ▸ source.1) (hsize ▸ target.1)
-  have hdist : finBoxDist (hsize ▸ source.1) (hsize ▸ target.1) =
-      finBoxDist source.1 target.1 :=
-    finBoxDist_cast_size hsize source.1 target.1
-  simpa [cmp99SourceGeneratedPhysicalLargeBlockCutoff, hsize, hdist,
-    finBoxDist_comm] using h
+      (hsize ▸ target.1) (hsize ▸ source.1))
 
 /-- Covariant-Laplacian contribution after the exact source-scale
 `slope * range = 4 * derivBound / M` cancellation. -/
@@ -126,7 +128,8 @@ theorem
     cmp99SourceRegionalLargeBlockCutoffScale M depth
   have hslope : 0 ≤ slope := by
     dsimp [slope]
-    positivity
+    exact div_nonneg
+      (mul_nonneg (by norm_num) P.derivBound_nonneg) (Nat.cast_nonneg _)
   have h :=
     cmp99SourceGeneratedPhysicalPrecision_cutoffCommutator_fixedOutputWeighted
       (d := 4) (M := M) (N := 2 * (M * Q)) (Nc := Nc)
