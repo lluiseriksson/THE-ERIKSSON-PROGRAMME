@@ -2,9 +2,9 @@
 % Add. 613; OS-R-2 fabrication Add. 621).  HOUSE RULES IN FORCE: no theorem
 % stated here is final until its module is green on the plane AND fresh-clone
 % verified; every [SLOT] must be replaced by a number READ FROM A COMMITTED
-% ARTEFACT before the word "final" is pronounced.  STATUS: pass-10 module
-% green on the plane (sha d9919e25..., ELAB_EXIT 0); pass-11 wiring and the
-% fresh clone is the one live slot below.
+% ARTEFACT before the word "final" is pronounced.  STATUS: six-term module
+% green on the plane (pass 14, sha 3b3598eb, ELAB_EXIT 0) and banked at
+% b47dda50e; pass-15 wiring numbers + the fresh clone are the live slots.
 % Submission is the owner's decision alone.
 % The abstract's priority sentence is the COLLATED one (Add. 611,
 % docs/OS-R-PRIORITY-COLLATION.md): the naked "first machine-checked OS
@@ -30,10 +30,10 @@ the programme's Colab plane; toolchain \lean{leanprover/lean4:v4.29.0-rc6},
 Mathlib pinned to \lean{0764272048\ldots}.  Repository:
 \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}{THE-ERIKSSON-PROGRAMME},
 branch \lean{d3-closure}, module anchor commit
-\lean{3b0dfa9e81835106b6d43a1d582b8c12dcb8f36b}; verification anchor
-\SLOT{fresh-clone SHA, pending pass 14}.}}
-\date{2026-08-05 --- manuscript with ONE live measurement slot (the fresh clone);
-submission is the owner's decision}
+\lean{b47dda50e3a0b383b4830cab53d945694629ea46}; verification anchor
+\SLOT{fresh-clone SHA, pending the final pass}.}}
+\date{2026-08-05 --- live slots: the pass-15 wiring numbers and the fresh
+clone; submission is the owner's decision}
 
 \begin{document}
 \maketitle
@@ -146,9 +146,10 @@ $Z_N = \lambda^N\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}$; volume-uniform
 \emph{mixed} clustering with the zero-time case
 (\lean{os\_reconstruction\_measure\_uniform}; core 8481, oracle 3026,
 0 sorry --- measured, Addendum 622) & Wightman
-axioms; continuum limit; $SU(N)$; Clay; the division-safe
-\emph{normalised} six-term connected bound (named open step,
-Section~\ref{sec:honesty}) \\
+axioms; continuum limit; $SU(N)$; Clay; an
+$N$-uniform denominator floor for the normalised quotient (the
+division-free six-term bound IS a theorem,
+Section~\ref{sec:sixterm}) \\
 \end{tabular}
 \end{center}
 
@@ -342,11 +343,10 @@ Dividing B1 by B2 cancels $\lambda^N$, so the \emph{normalised}
 two-point function equals
 $\ip{\hat T^N QA}{QB}/\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}$ --- plain
 arithmetic from the two identities, recorded here as prose.  The
-quantitative six-term \emph{connected} bound for this quotient
-(division-safe, with an explicit floor for the denominator) is the one
-named open step of the campaign; see Section~\ref{sec:honesty}.  We
-print the boundary between identity and estimate exactly where the
-kernel puts it.
+quantitative six-term \emph{connected} bound is a theorem of the same
+module, in division-free form: Section~\ref{sec:sixterm}.  We print
+the boundary between identity and estimate exactly where the kernel
+puts it.
 \end{remark}
 
 \section{Mixed clustering on a generic Hilbert space}
@@ -422,6 +422,70 @@ three clauses, no new constant: the mass that clause (iii) exhibits is
 the mass D-6 proved, now measured against the raw Gibbs sums through
 the exact identity of clause (ii).
 
+\section{The division-safe six-term connected bound}
+\label{sec:sixterm}
+The one step the previous version named open is now a theorem, in two
+layers.  The generic layer lives in the same arbitrary-Hilbert-space
+section as the mixed bound:
+
+\begin{theorem}[\lean{six\_term\_connected\_bound}]
+Let $T$ be a \lean{VacuumTransfer} with vacuum $\Omega$, let
+$0 \le r \le 1$ with
+$\lVert\mathrm{projectedTransfer}\,T\,\Omega\rVert \le r$, and write
+$F(u,v) := \ip{u}{T^N v}$.  Then for all $q_A, q_B, q_1$ and all $N$:
+\[
+\bigl| F(q_1,q_1)\,F(q_A,q_B) - F(q_A,q_1)\,F(q_1,q_B) \bigr|
+\;\le\; 6\,\lVert q_A\rVert\,\lVert q_B\rVert\,\lVert q_1\rVert^2\,
+r^N .
+\]
+\end{theorem}
+
+The proof is a ring identity in $E$-terms
+($E(u,v) := F(u,v) - \ip{\Omega}{u}\ip{\Omega}{v}$): the pure product
+terms cancel \emph{exactly}, six terms survive, each carrying at least
+one $E$ factor bounded by Theorem~\lean{mixed\_connCorr\_bound}, and
+the two $E\!\cdot\!E$ terms spend one factor through $r^N \le 1$.  The
+constant $6$ is the honest count of surviving terms, not an optimised
+one.
+
+The model layer consumes it at the dressed observables, \emph{in raw
+Gibbs terms}:
+
+\begin{theorem}[\lean{os\_reconstruction\_connected\_uniform}]
+Let $\beta, \gamma \in \mathbb{R}$ and $0 < \alpha < 1$ with
+$2\tanh|\beta|+2\tanh|\gamma| \le \alpha$.  There is \emph{one}
+$m > 0$ such that for \emph{every} spatial extent $L$ there are
+$\lambda > 0$, $\Omega > 0$ with the fixed-point equation, and for
+every time depth $N$ and all real observables $A, B$:
+\[
+\bigl| Z_N\, S_N(A,B) - S_N(A,\mathbf 1)\, S_N(\mathbf 1,B) \bigr|
+\;\le\; \lambda^{2N}\,
+\bigl(6\,\lVert QA\rVert\,\lVert QB\rVert\,\lVert Q\mathbf 1\rVert^2
+\bigr)\,(e^{-m})^N ,
+\]
+where $S_N = \mathrm{gibbsPathSum}$, $Z_N = \mathrm{gibbsPartition}$,
+and $Q{\cdot} = \mathrm{toLp}(\mathrm{dress}\,{\cdot})$.
+\end{theorem}
+
+This is the normalised connected-correlator bound multiplied through by
+the positive scale of $Z_N^2$: dividing by
+$Z_N^2 = \lambda^{2N}\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}^2$ recovers
+\[
+\Bigl| \frac{S_N(A,B)}{Z_N}
+  - \frac{S_N(A,\mathbf 1)}{Z_N}\,\frac{S_N(\mathbf 1,B)}{Z_N} \Bigr|
+\;\le\;
+\frac{6\,\lVert QA\rVert\,\lVert QB\rVert\,\lVert Q\mathbf 1\rVert^2}
+     {\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}^2}\,(e^{-m})^N ,
+\]
+which is printed here as prose arithmetic, not as a separate Lean
+statement.  We do \emph{not} claim an $N$-uniform denominator floor:
+at fixed $L$ the even powers give
+$\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1} \ge \ip{\Omega}{Q\mathbf 1}^2$,
+but the odd branch admits no such clean uniform bound without further
+work, and the division-free formulation above is exactly what the
+kernel proves.  The boundary between identity and estimate --- and
+between estimate and prose --- sits where the kernel put it.
+
 \section{Reproduction}\label{sec:repro}
 All numbers below are read from committed run artefacts; predictions
 were committed \emph{before} their measurements (the programme's
@@ -457,16 +521,23 @@ oracle reports & $3017+9 = 3026$ exact & 3026 \\
 \lean{sorryAx} occurrences & 0 & 0 \\
 new endpoint axiom sets & standard triple & exactly
 \lean{[propext, Classical.choice, Quot.sound]} $\times 9$ \\
+\hline
+\multicolumn{3}{l}{\emph{six-term stage (predictions Addendum 623,
+committed before the run):}} \\
+core jobs & 8481 exact (file grew again) & \SLOT{pass 15} \\
+oracle reports & $3026+2 = 3028$ exact & \SLOT{pass 15} \\
+\lean{sorryAx} occurrences & 0 & \SLOT{pass 15} \\
 fresh-clone reproduction & bit-identical module, same counts &
-\SLOT{pass 14} \\
+\SLOT{final pass} \\
 \end{tabular}
 \end{center}
 The core count is the tenth consecutive exact count prediction of this
 lane: the module file grew from $12{,}347$ to $20{,}428$ bytes and the
 job total did not move.
-Module: \lean{YangMills/OS/OSReconstructionUniform.lean}, sha256
-\lean{d9919e256ae59ac9189e397e5abf1249cfaca3284efa8f1a9307f86a27bac149}
-($20{,}428$ bytes), banked at commit \lean{3b0dfa9e8} after the plane
+Module: \lean{YangMills/OS/OSReconstructionUniform.lean}, final sha256
+\lean{3b3598ebcfde0ce5f2f6ba358e7e0607473ac66db7afbdd4a8b09e014db7f369}
+($32{,}533$ bytes), banked at commit \lean{b47dda50e} (measure stage:
+sha \lean{d9919e25\ldots}, $20{,}428$ B at \lean{3b0dfa9e8}) after the plane
 printed \lean{ELAB\_EXIT 0} on byte-identical source (the cell prints
 size and sha256 before elaborating; both matched the local file before
 banking).  Pass history: passes 1--5 (OS-R-1, Addenda 614--616),
@@ -484,17 +555,15 @@ kill-test (repository, Addendum 610) shows the standard-cone Birkhoff
 route is projectively blind to the site weight, which is why no claim
 beyond the window appears here.  The model is the $\mathbb{Z}_2$
 Ising slice; ``reconstruction'' means the elementary finite-volume
-site-form construction (definite form, no quotient), and the theorems
-are about its \emph{spectrum and its exact relation to the Gibbs
-sums}, not about the construction being difficult.  One step of the
-campaign charter remains open and is named rather than blurred: the
-division-safe \emph{normalised} six-term connected bound --- the
-quantitative decay of
-$\mathrm{gibbsPathSum}/Z - $ (product of one-point quotients), with an
-explicit denominator floor.  Its ingredients are exactly B1, B2 and
-Theorem~\lean{mixed\_connCorr\_bound}; nothing in
-Sections~\ref{sec:unitary}--\ref{sec:endpoint} depends on it, and the
-endpoint theorem stands on its own.
+site-form construction (the quotient content lives on half-chain
+observables, Section~\ref{sec:provenance}), and the theorems are
+about its \emph{spectrum and its exact relation to the Gibbs sums},
+not about the construction being difficult.  The connected bound is
+printed in its division-free form (Section~\ref{sec:sixterm}); what
+is NOT claimed is an $N$-uniform lower bound for the denominator
+$\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}$ at fixed $L$ --- the even
+branch has one, the odd branch is not proved here, and the prose does
+not paper over the difference.
 
 \begin{thebibliography}{9}
 \bibitem{DHMN} M.~R.~Douglas, S.~Hoback, C.~Mei, Y.~Nissim,
