@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 9393d40434dc913fb2ea749574684d32912aac93
+  SOURCE_SHA: 9c5618f4ad9433f80810213bfc028f71d06f2fc8
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -138,7 +138,7 @@ jobs:
           import re
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
-          audits = {"generated_physical_regional_correction_audit.log": 15}
+          audits = {"generated_physical_regional_correction_audit.log": 16}
           result = {}
           for name, expected in audits.items():
               text = (Path("evidence") / name).read_text(encoding="utf-8")
