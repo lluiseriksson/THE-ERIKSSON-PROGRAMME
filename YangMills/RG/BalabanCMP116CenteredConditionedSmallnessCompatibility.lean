@@ -9,6 +9,10 @@ import YangMills.RG.BalabanCMP109PhysicalPivotSmallnessCompatibility
 /-!
 # A non-vacuous scalar compatibility witness for the centered CMP116 regime
 
+PRE-VALIDATION: the joint registry has been updated to the literal
+coercivity-gap inputs of the current combined assembler, but this revision has
+not yet been materialized or checked by the compiler.
+
 The centered conditioned physical term source asks several smallness
 conditions of the same parameters.  This file checks that their scalar target
 region is not internally contradictory.  It uses the literal source branching,
@@ -17,10 +21,10 @@ contour ratio, geometric row sum, and contour-defect budget.
 This is deliberately **not** an inhabitant of
 `CMP116Eq226CenteredConditionedPhysicalTermSource`.  In particular, the
 numbers called `patchedDefectNorm`, `regionalGreenDefectNorm`,
-`precisionNorm`, `rootNorm`, `outerBudget`, and `pivotDefectNorm` below are
-target values which the physical producers must still attain.  No
-operator-norm estimate or CMP109 diagonal inverse is manufactured from this
-arithmetic check.
+`precisionNorm`, `coercivityConstant`, `r1Budget`, `sourceRate`, and
+`pivotDefectNorm` below are target values which the physical producers must
+still attain.  No operator-norm estimate, coercivity theorem, or CMP109
+diagonal inverse is manufactured from this arithmetic check.
 -/
 
 namespace YangMills.RG
@@ -59,8 +63,9 @@ structure CMP116CenteredConditionedJointSmallnessRegime
   regionalGreenDefectNorm : ℝ
   precisionNorm : ℝ
   transposeDefectNorm : ℝ
-  rootNorm : ℝ
-  outerBudget : ℝ
+  coercivityConstant : ℝ
+  r1Budget : ℝ
+  sourceRate : ℝ
   qBound : ℝ
   summationRatio : ℝ
   delta : ℝ
@@ -85,9 +90,11 @@ structure CMP116CenteredConditionedJointSmallnessRegime
         cmp116CenteredSmallnessWitnessRate
         cmp116CenteredSmallnessWitnessRadius 1 < 1
   neumann_transpose_small : transposeDefectNorm < 1
-  root_small :
-    cmp116CenteredSmallnessWitnessAlpha * rootNorm ^ 2 < 1
-  outer_small : 2 * outerBudget ≤ qBound
+  alpha_lt_coercivity :
+    cmp116CenteredSmallnessWitnessAlpha < coercivityConstant
+  outer_gap_budget :
+    2 * r1Budget + sourceRate /
+      (coercivityConstant - cmp116CenteredSmallnessWitnessAlpha) ≤ qBound
   interaction_budget :
     cmp116CenteredSmallnessWitnessPotentialRate +
         cmp116CenteredSmallnessWitnessR2Rate +
@@ -211,8 +218,9 @@ noncomputable def cmp116CenteredConditionedJointSmallnessRegimeWitness
   regionalGreenDefectNorm := 1 / 4
   precisionNorm := 1
   transposeDefectNorm := 1 / 4
-  rootNorm := 1
-  outerBudget := 1 / 8
+  coercivityConstant := 1
+  r1Budget := 1 / 16
+  sourceRate := 1 / 16
   qBound := 1 / 2
   summationRatio := cmp116CenteredSmallnessWitnessSummationRatio
   delta := cmp116CenteredSmallnessWitnessDelta
@@ -229,8 +237,10 @@ noncomputable def cmp116CenteredConditionedJointSmallnessRegimeWitness
   neumann_small := by
     simpa using cmp116CenteredSmallnessWitness_contourDefect
   neumann_transpose_small := by norm_num
-  root_small := by norm_num [cmp116CenteredSmallnessWitnessAlpha]
-  outer_small := by norm_num
+  alpha_lt_coercivity := by
+    norm_num [cmp116CenteredSmallnessWitnessAlpha]
+  outer_gap_budget := by
+    norm_num [cmp116CenteredSmallnessWitnessAlpha]
   interaction_budget := by
     norm_num [cmp116CenteredSmallnessWitnessPotentialRate,
       cmp116CenteredSmallnessWitnessR2Rate,
@@ -248,16 +258,17 @@ strictly positive target witness.
 
 The first two strict norm targets record, separately, the patched one-cochain
 defect and the regional zero-cochain Green defect at `1/4`.  The later
-Neumann inequalities use target precision row/column norm one, the root
-window uses target root norm one, and the pivot entry is the future diagonal
-defect.  These are named targets, not proofs about the corresponding physical
-operators. -/
+Neumann inequalities use target precision row/column norm one, the two
+conditioned Gaussian walls use target coercivity one and explicit `R1`/`R3`
+budgets, and the pivot entry is the future diagonal defect.  These are named
+targets, not proofs about the corresponding physical operators. -/
 theorem cmp116CenteredConditioned_scalarSmallness_nonempty :
     let patchedDefectNorm : ℝ := 1 / 4
     let regionalGreenDefectNorm : ℝ := 1 / 4
     let precisionNorm : ℝ := 1
-    let rootNorm : ℝ := 1
-    let outerBudget : ℝ := 1 / 8
+    let coercivityConstant : ℝ := 1
+    let r1Budget : ℝ := 1 / 16
+    let sourceRate : ℝ := 1 / 16
     let qBound : ℝ := 1 / 2
     let pivotDefectNorm : ℝ := 1 / 4
     0 < cmp116CenteredSmallnessWitnessRho ∧
@@ -283,8 +294,9 @@ theorem cmp116CenteredConditioned_scalarSmallness_nonempty :
           cmp116CenteredSmallnessWitnessRho
           cmp116CenteredSmallnessWitnessRate
           cmp116CenteredSmallnessWitnessRadius 1 < 1 ∧
-    cmp116CenteredSmallnessWitnessAlpha * rootNorm ^ 2 < 1 ∧
-    2 * outerBudget ≤ qBound ∧
+    cmp116CenteredSmallnessWitnessAlpha < coercivityConstant ∧
+    2 * r1Budget + sourceRate /
+      (coercivityConstant - cmp116CenteredSmallnessWitnessAlpha) ≤ qBound ∧
     pivotDefectNorm < 1 ∧
     cmp116CenteredSmallnessWitnessPotentialRate +
         cmp116CenteredSmallnessWitnessR2Rate +
@@ -314,7 +326,7 @@ theorem cmp116CenteredConditioned_scalarSmallness_nonempty :
   constructor
   · norm_num [cmp116CenteredSmallnessWitnessAlpha]
   constructor
-  · norm_num
+  · norm_num [cmp116CenteredSmallnessWitnessAlpha]
   constructor
   · norm_num
   constructor
