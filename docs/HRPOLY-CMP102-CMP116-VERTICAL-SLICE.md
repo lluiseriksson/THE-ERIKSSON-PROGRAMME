@@ -2559,9 +2559,11 @@ Schur step with adjusted constants:
    derivative and covariant Laplacian, with the common `B0`, `delta0` and the
    printed scale vector;
 2. derive the first-difference and discrete-Laplacian bounds of the one
-   physical CMP95 cutoff at the separated scale `K * L^(depth+1)`, retaining
-   a named second-derivative/profile budget where the current profile API only
-   exposes the first;
+   physical CMP95 cutoff at the separated scale `K * L^(depth+1)` from the
+   one sealed first-derivative budget: the scalar discrete Laplacian is the
+   sum of the two incident first differences in each direction, so no second
+   independent profile constant is introduced and the inverse-`K` factor is
+   present before any cell or layer sum;
 3. rewrite the third species of (3.88) by the exact generated `Q'^*Q'`
    transported-block formula and cancel its literal normalized row mass
    against the count before any cell or layer sum;
