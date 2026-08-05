@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalLargeBlockCutoff
 
 /-!
-# PRE-VALIDATION audit for the generated physical large-block cutoff
+# Audit for the generated physical large-block cutoff
 
-The source is present, but this audit has not yet been run by the pinned Lean
-compiler and no `.olean` is claimed for the imported module.
+Validated from exact source checkpoint
+`de57d8790caaab5d5177b59a76f9057901da8c43` by cold GitHub Actions run
+`30997349504`.  All seven declarations print exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalLargeBlockCutoff

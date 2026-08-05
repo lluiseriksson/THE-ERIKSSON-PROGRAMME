@@ -7,10 +7,11 @@ import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalCutoffWeighted
 import YangMills.RG.BalabanCMP99SourceRegionalLargeBlockSlope
 
 /-!
-# PRE-VALIDATION: source large-block cutoff on the generated physical precision
+# Source large-block cutoff on the generated physical precision
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Validated from exact source checkpoint
+`de57d8790caaab5d5177b59a76f9057901da8c43` by cold GitHub Actions run
+`30997349504` against the pinned toolchain and Mathlib revision.
 
 This specializes the already sealed fixed-output commutator estimate to the
 single physical `CMP95SourceSmoothPartitionProfile`.  The carrier equality is

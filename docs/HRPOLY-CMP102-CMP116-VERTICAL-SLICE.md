@@ -2486,6 +2486,30 @@ operator dictionary, compose with a regional Green operator, attain
 infrastructure below window 15, so the live counters remain exactly `20/41`
 and `TermSource = 0`.
 
+### Source large-block cutoff specialization (2026-08-05)
+
+Exact source checkpoint
+`de57d8790caaab5d5177b59a76f9057901da8c43` passed cold GitHub Actions run
+`30997349504` (workflow checkpoint
+`5c2457849e4e7d916090c772291e090a5ca31c67`) without restoration or saving
+of a project `.lake/build` cache.  The focal completed 8,527 jobs, and its
+seven-declaration audit printed exactly
+`[propext, Classical.choice, Quot.sound]` for all seven declarations.
+
+The brick transports the one `CMP95SourceSmoothPartitionProfile` through the
+exact carrier equality, proves its literal generated-site Lipschitz estimate,
+and specializes both the fixed-output weighted and pointwise exponential
+commutator bounds.  The covariant-Laplacian and normalized `Q'^* Q'` budgets
+remain separately named and are added only in the final cutoff budget.  The
+source-scale cancellation is literal:
+`slope * M^(depth + 1) = 4 * derivBound / M`.
+
+This does not identify the active operator with a supported compression of a
+common ambient precision, compose with a regional Dirichlet Green operator,
+or prove the physical defect budget is less than one.  It is step 4 below
+window 15, not attainment of that window or a terminal field.  The live
+counters remain exactly `20/41` and `TermSource = 0`.
+
 ### Declared finite route from CMP99 (3.88) to `20/41 -> 22/41`
 
 The bricks below are the complete declared route.  A green prefix is not a
@@ -2497,7 +2521,7 @@ the already verified assembler, discharge rows 23--24.
 | 1 | complete generated physical cutoff identity | the three literal species of (3.88) on the active carrier | **sealed** at `39905a39`, run `30990024776` |
 | 2 | fixed-output quantitative commutator bridge | `[h,K]` pays `slope * range` in the printed orientation and yields a pointwise exponential kernel bound | **sealed** at `4e23216a`, run `30992627475` |
 | 3 | generated physical precision specialization | the literal generated `K` supplies its finite range and two separately named Laplacian / normalized-mass row budgets | **sealed** at `6bef7974`, run `30994320564`; no counter movement |
-| 4 | source large-block cutoff specialization | instantiate `h` by the one `CMP95SourceSmoothPartitionProfile`, use the source carrier equality, and rewrite slope times range to the exact `4 * derivBound / M` gain | open; geometry and slope lemmas already exist |
+| 4 | source large-block cutoff specialization | instantiate `h` by the one `CMP95SourceSmoothPartitionProfile`, use the source carrier equality, and rewrite slope times range to the exact `4 * derivBound / M` gain | **sealed** at `de57d879`, run `30997349504`; no counter movement |
 | 5 | ambient-to-regional precision dictionary | identify the cell active operator with the supported compression of one common generated ambient precision, with the projector premise cited explicitly | **open design frontier**; this is the one remaining dictionary whose exact public signature is not yet frozen |
 | 6 | uniform single-cell regional correction | compose the cell commutator with the regional Dirichlet Green and the contractive right cutoff, retaining one explicit cell amplitude | open; generic Green and cutoff composition lemmas exist |
 | 7 | overlap / Schur / contraction endpoint | sum cells with the already derived overlap `16`, pass the exponential kernel estimate to operator norm, and prove the explicit physical defect budget is `< 1` | open; this is physical attainment of window 15 |

@@ -27361,3 +27361,40 @@ source large-block cutoff, identify the ambient and regional precision,
 compose with the regional Green operator, attain `norm R' < 1`, discharge
 groups 23--24, or inhabit a `TermSource`.  It is infrastructure below window
 15; the live counters remain exactly `20/41` and zero.
+
+## Addendum 555 (2026-08-05, **source large-block cutoff specialization GREEN; 20/41 unchanged**)
+
+The literal source-profile specialization on the generated physical
+precision was validated from exact source checkpoint
+`de57d8790caaab5d5177b59a76f9057901da8c43` by cold GitHub Actions run
+`30997349504` (workflow checkpoint
+`5c2457849e4e7d916090c772291e090a5ca31c67`).  The checkout did not restore
+or save a project `.lake/build` cache.  Lean was the official
+`v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8527 jobs).` and
+exited zero.  Its seven-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`6b065cf1e097c4f09940023c847fec6ddd671e89287d2557bffd2aff99bfec6c`.
+The axiom JSON has SHA-256
+`5663ecc2432b502500b61d931a3b7abf446745a3d28aa349cd1f7266bd744ef6`;
+the stage ledger has SHA-256
+`74ddc22e36774b2ab627a5bf0780577ed93e8cf9442406479f5d5314e2698a55`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+10 recorded files.
+
+This brick installs the one source `CMP95SourceSmoothPartitionProfile` on the
+generated physical carrier, proves the transported Lipschitz estimate, and
+derives the fixed-output weighted and pointwise exponential commutator bounds
+with the exact `4 * derivBound / M` gain.  The Laplacian and normalized-mass
+budgets remain separately named until their literal final sum.  It does not
+identify an ambient precision with its regional supported compression,
+compose with a regional Green operator, attain `norm R' < 1`, discharge
+groups 23--24, or inhabit a `TermSource`.  It is step 4 below window 15; the
+live counters remain exactly `20/41` and zero.
