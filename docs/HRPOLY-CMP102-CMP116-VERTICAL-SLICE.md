@@ -2522,14 +2522,24 @@ the already verified assembler, discharge rows 23--24.
 | 2 | fixed-output quantitative commutator bridge | `[h,K]` pays `slope * range` in the printed orientation and yields a pointwise exponential kernel bound | **sealed** at `4e23216a`, run `30992627475` |
 | 3 | generated physical precision specialization | the literal generated `K` supplies its finite range and two separately named Laplacian / normalized-mass row budgets | **sealed** at `6bef7974`, run `30994320564`; no counter movement |
 | 4 | source large-block cutoff specialization | instantiate `h` by the one `CMP95SourceSmoothPartitionProfile`, use the source carrier equality, and rewrite slope times range to the exact `4 * derivBound / M` gain | **sealed** at `de57d879`, run `30997349504`; no counter movement |
-| 5 | ambient-to-regional precision dictionary | identify the cell active operator with the supported compression of one common generated ambient precision, with the projector premise cited explicitly | **open design frontier**; this is the one remaining dictionary whose exact public signature is not yet frozen |
+| 5 | ambient-to-regional precision dictionary | realize the full generated active carrier as the literal ambient `FinBox`, transport the generated precision/coercivity and source cutoff through one explicit equivalence, and identify the regional commutator with the reindexed active commutator | **sealed** at `8ac1a1c2`, cold run `31001590888`; no counter movement |
 | 6 | uniform single-cell regional correction | compose the cell commutator with the regional Dirichlet Green and the contractive right cutoff, retaining one explicit cell amplitude | open; generic Green and cutoff composition lemmas exist |
 | 7 | overlap / Schur / contraction endpoint | sum cells with the already derived overlap `16`, pass the exponential kernel estimate to operator norm, and prove the explicit physical defect budget is `< 1` | open; this is physical attainment of window 15 |
 | 8 | two literal centered-conditioned gap producers | prove `alpha < coercivityConstant` and `2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound` from the physical rates produced by the regional construction | open; the assembler then derives `root_small` and `outer_small` and moves the live count to `22/41` |
 
+The `coercivityConstant` in step 8 is not an opaque positive scalar.  Its
+physical producer must instantiate it definitionally as
+`CMP116InteractingPhysicalPrecisionSource.coercivityConstant`, namely
+`min 1 a / CP - cmp116ConcreteInteractingWilsonGaugeDefectBudget 4 Nc epsilon`.
+Here `CP` belongs to the literal `FlatGaugeHodgePoincare 4 M (2 * Q)` package,
+so the dependence on the block ratio `M` and its Poincare cost remains visible
+in both gap inequalities.  The reduction to `alpha`, `R1Budget`, `sourceRate`,
+and `qBound` stays inside step 8; it is not an unnamed step 7.5 and must not
+replace the physical coercivity producer by a free constant.
+
 Thus window 15 is necessary but is not silently identified with rows 23--24.
-The path has a declared last element, and step 5 is the named design unknown
-that could otherwise let the regional chain grow without a consumer.
+The path has a declared last element.  Step 5 has now frozen the last design
+dictionary; steps 6--8 are quantitative estimates over that fixed object.
 
 **Elaboration battle note.**  Physical specializations of the generated
 PiLp tower must pin the carrier, fibre, and source/target index types in their
@@ -2538,9 +2548,9 @@ reserved for the generic leaf lemmas.  Three deterministic `whnf` timeouts
 have now been removed by this same rewrite; increasing heartbeats is not the
 accepted repair for this class.
 
-### Step 5 public signature (PRE-VALIDATION)
+### Step 5 ambient dictionary (SEALED)
 
-Checkpoint `a2532b1a91bfff09a7d5219e490b8ca43696eb32` freezes the
+Checkpoint `8ac1a1c2508f65e51d4eb89f81bf650780691cf6` freezes the
 ambient-to-regional dictionary without accepting a physical operator equality
 as input.  Its declared chain is:
 
@@ -2561,6 +2571,7 @@ as input.  Its declared chain is:
 The final equality is the consumer-facing dictionary.  It is not a postulated
 identification of two independently chosen precisions.  The regional Green
 composition, the overlap/Schur sum, and `norm R' < 1` remain steps 6--7.
-This source and its eleven-declaration audit remain PRE-VALIDATION until a
-compiler gate succeeds, so this subsection moves neither `20/41` nor window
-15.
+Cold GitHub Actions run `31001590888` compiled the focal in 8,529 jobs and
+then verified all eleven audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.  The checkout restored no project
+`.lake/build` cache.  This seal moves neither `20/41` nor window 15.

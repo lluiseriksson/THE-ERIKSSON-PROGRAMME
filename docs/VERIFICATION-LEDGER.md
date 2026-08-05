@@ -27398,3 +27398,41 @@ identify an ambient precision with its regional supported compression,
 compose with a regional Green operator, attain `norm R' < 1`, discharge
 groups 23--24, or inhabit a `TermSource`.  It is step 4 below window 15; the
 live counters remain exactly `20/41` and zero.
+
+## Addendum 556 (2026-08-05, **ambient-to-regional precision dictionary GREEN; 20/41 unchanged**)
+
+The last design dictionary below the regional Green construction was
+validated from exact source checkpoint
+`8ac1a1c2508f65e51d4eb89f81bf650780691cf6` by cold GitHub Actions run
+`31001590888` (workflow checkpoint
+`3bf67f3cf291edf29e90b58ef61af1dc9bad5b80`).  The checkout did not restore
+or save a project `.lake/build` cache.  Lean was the official
+`v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T11:30:28Z` to `11:48:48Z`, completed with
+`Build completed successfully (8529 jobs).`, and exited zero.  Its
+eleven-declaration audit also exited zero.  Every declaration depends exactly
+on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` are
+absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`9fe9f4767adeb0e885a30d6486992a536a2b277cd9707c775e0d36c9ccc7a56f`.
+The axiom JSON has SHA-256
+`2e476774acec4cf02f41bcfb4129cc7fe54455e0260483e4b3384e3e5902a5b3`;
+the stage ledger has SHA-256
+`f49d4bb08ede72a74e57a189039d16161aa89f8b4fa18234ae19e4f2988c137b`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+10 recorded files.
+
+The brick constructs the full generated active carrier, identifies it with
+the literal ambient `FinBox` through one explicit finite equivalence,
+transports the generated physical precision and its coercivity, proves exact
+cutoff compatibility, and derives the regional commutator and exponential
+kernel bound without a free operator equality or a new constant.  It does not
+compose the commutator with a regional Green, prove the overlap/Schur defect
+budget, attain `norm R' < 1`, discharge groups 23--24, or inhabit a
+`TermSource`.  It is step 5 infrastructure below window 15; the live counters
+remain exactly `20/41` and zero.

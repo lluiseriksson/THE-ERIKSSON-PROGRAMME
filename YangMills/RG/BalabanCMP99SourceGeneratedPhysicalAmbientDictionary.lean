@@ -8,10 +8,11 @@ import YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
 import YangMills.RG.FinitePiLpTypedKernelReindex
 
 /-!
-# PRE-VALIDATION: generated physical precision on the regional ambient carrier
+# Generated physical precision on the regional ambient carrier
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Validated from exact source checkpoint
+`8ac1a1c2508f65e51d4eb89f81bf650780691cf6` by cold GitHub Actions run
+`31001590888` against the pinned toolchain and Mathlib revision.
 
 CMP99 (3.87)--(3.90) needs one ambient precision whose supported
 compressions generate all local Dirichlet Green operators.  The generated

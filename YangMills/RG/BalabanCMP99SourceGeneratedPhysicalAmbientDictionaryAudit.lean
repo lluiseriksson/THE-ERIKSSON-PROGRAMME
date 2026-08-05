@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalAmbientDictionary
 
 /-!
-# PRE-VALIDATION audit for the generated physical ambient dictionary
+# Audit for the generated physical ambient dictionary
 
-The source is present, but this audit has not yet been run by the pinned Lean
-compiler and no `.olean` is claimed for the imported module.
+Validated from exact source checkpoint
+`8ac1a1c2508f65e51d4eb89f81bf650780691cf6` by cold GitHub Actions run
+`31001590888`.  All eleven declarations print exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99IteratedLiftActiveRegion_full_sites_eq_univ
