@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 import YangMills.RG.FinitePiLpTypedCutoff
 
 /-!
-# PRE-VALIDATION: the two differential terms in CMP99 (3.88)
+# The two differential terms in CMP99 (3.88)
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler-verified from exact source checkpoint
+`767f54dd847b2459f05b2e2a9ea5ac320b8ccd35` in cold GitHub Actions run
+`30984221871`, without restoring a project `.lake/build` cache.  The focal
+completed 8,474 jobs and all four audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP99 (3.88), printed p. 409, expands the covariant-Laplacian part of
 `Delta'_a (h lambda)` into a link-derivative term and a scalar cutoff-

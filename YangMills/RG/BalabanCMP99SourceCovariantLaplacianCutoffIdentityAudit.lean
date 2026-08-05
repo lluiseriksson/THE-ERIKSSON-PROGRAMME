@@ -6,10 +6,12 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceCovariantLaplacianCutoffIdentity
 
 /-!
-# PRE-VALIDATION audit: covariant-Laplacian terms in CMP99 (3.88)
+# Audit: covariant-Laplacian terms in CMP99 (3.88)
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the Lean compiler.
+Compiler-verified from exact source checkpoint
+`767f54dd847b2459f05b2e2a9ea5ac320b8ccd35` in cold GitHub Actions run
+`30984221871`.  All four declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99_covariant_cutoff_product_rule_direction

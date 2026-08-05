@@ -2379,3 +2379,26 @@ three-term identity, physical cutoff-slope attainment, `norm R' < 1`, groups
 still has to expose the link-derivative term, cutoff-Laplacian term, and
 normalized `Q'^* Q'` term before estimating their sum.  The live counters
 therefore remain exactly `20/41` and `TermSource = 0`.
+
+### Validation plane and first two species of CMP99 (3.88) (2026-08-05)
+
+For this nonterminal internal brick, the owner-authorized GitHub Actions
+plane is a reproducible remote alternative to Colab: it checks out an exact
+raw source SHA, verifies the fixed Lean/Mathlib pins, emits durable logs and
+hashes, and runs the focal and axiom audit stop-on-first-error.  Project build
+caches are diagnostic only.  A cache-backed run may guide elaboration, but it
+may not move a counter, retire a `PRE-VALIDATION` mark, or seal a brick.  The
+seal must cite a cold checkout without restoration of `.lake/build`.
+Terminal delivery still requires two independent fresh replicas under the
+terminal policy; this intermediate authorization does not amend that gate.
+
+Under that rule, source checkpoint
+`767f54dd847b2459f05b2e2a9ea5ac320b8ccd35` passed cold GitHub Actions run
+`30984221871`: the focal completed 8,474 jobs, the four-declaration audit
+exited zero, and every declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.  The module derives the exact
+link-derivative and scalar cutoff-Laplacian species from the literal periodic
+covariant stencil.  The normalized `Q'^* Q'` term and the complete
+three-species identity remain open.  This is infrastructure below physical
+attainment of window 15, not a terminal producer, so the live counters remain
+exactly `20/41` and `TermSource = 0`.

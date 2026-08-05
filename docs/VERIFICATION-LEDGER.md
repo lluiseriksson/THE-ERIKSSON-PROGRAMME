@@ -27187,3 +27187,36 @@ and the additive split
 It does not prove the displayed physical three-term identity, physical
 cutoff-slope attainment, `norm R' < 1`, groups 23--24, or a `TermSource`
 inhabitant.  The live counters therefore remain exactly `20/41` and zero.
+
+## Addendum 550 (2026-08-05, **first two differential species of CMP99 (3.88) GREEN; 20/41 unchanged**)
+
+The literal periodic covariant-Laplacian stencil and its scalar-cutoff
+product rule were validated from exact source checkpoint
+`767f54dd847b2459f05b2e2a9ea5ac320b8ccd35` by cold GitHub Actions run
+`30984221871` (workflow checkpoint
+`f3d4f5c5fd7dfe5247df59b8abe93fe92ff6b3ca`).  The checkout did not restore
+or save a project `.lake/build` cache.  The official Lean `v4.29.0-rc6`
+asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8474 jobs).` and
+exited zero.  Its four-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`bc8768043448255c8bafba74e3a2f08adc4dc62c9adf5c01262177710a33e53d`.
+The axiom JSON has SHA-256
+`e01a9b0dc3f34d46f8977993454da8d1fef65151a9c226e64b0419437ca95fb0`;
+the stage ledger has SHA-256
+`ad873cbe052709c11654a7d60881c9cac6bd143c307d617f0a159693e9241147`.
+
+This brick derives the exact link-derivative and scalar cutoff-Laplacian
+species from the literal ambient covariant stencil.  It does not yet install
+the normalized `Q'^* Q'` species, prove the complete three-term identity,
+attain `norm R' < 1`, discharge groups 23--24, or inhabit a `TermSource`.
+It is therefore infrastructure below window 15 rather than a terminal field;
+the live counters remain exactly `20/41` and zero.
