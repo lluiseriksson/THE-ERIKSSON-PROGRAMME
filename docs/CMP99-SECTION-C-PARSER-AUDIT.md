@@ -357,13 +357,15 @@ against that normalization before any cell sum.  The two differential
 species likewise consume the covariant-derivative and value components of
 (3.42), respectively; a bare bound on `norm G'` does not suffice.
 
-There is a second source-visible scalar in the Laplacian species.  The
-current `CMP95SourceSmoothPartitionProfile` exposes a first-derivative budget,
-but `(Delta h)(x) * lambda(x)` in (3.88) needs the corresponding discrete
-second-difference estimate for the same smooth profile.  It may be derived
-from `contDiff` and compact support or carried temporarily as a named profile
-budget, but it must not be replaced by two unsigned first differences: that
-would lose one inverse cutoff scale and destroy the printed `O(K^-1)` gain.
+There is no independent second-profile constant in the Laplacian species.
+The exact scalar discrete Laplacian is the **signed** sum of the two incident
+first differences in each direction.  The sealed CMP96 (2.40) specialization
+first proves that identity and only then applies the triangle inequality.
+Thus the one `CMP95SourceSmoothPartitionProfile` derivative budget suffices,
+and the inverse-`K` factor is already present before every cell or layer sum.
+This is not the invalid replacement of a second derivative by an unrelated
+unsigned budget: the signed coefficient is identified definitionally with
+the literal `cmp99CutoffLaplacianCorrection` coefficient.
 
 The source tree already fixes the normalization needed for that direct mass
 row.  For one scale,

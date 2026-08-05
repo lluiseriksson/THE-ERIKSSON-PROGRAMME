@@ -2646,6 +2646,25 @@ contraction, rows 23--24, or a terminal field.  Window 15 therefore remains
 compatible but unattained, the live producer count remains exactly `20/41`,
 and `TermSource = 0`.
 
+### Step 7.1 regional-Green source interface (PRE-VALIDATION)
+
+`BalabanCMP99Eq342RegionalGreenCertificate` records the one source-facing
+analytic input used by the direct route.  Its operator is definitionally the
+canonical regional Dirichlet Green of the literal ambient precision; no Green
+family is a field.  One common positive `B0`, `delta0`, and scale `ell` control
+the four CMP99 (3.42) components with the printed scale vector
+`[ell^2, ell, ell, 1]`: `G'`, `D G'`, `G' D*`, and `Delta G'`.  The CMP96
+(2.43) projection exposes exactly the value and left-derivative components.
+
+This interface deliberately does not derive (3.42) from the existing
+`2 / coercivity` Combes--Thomas estimate.  Doing so would import the
+Poincare/coercivity wall into the direct (3.89) constant and recreate the
+route already closed by the depth-zero no-go.  `B0` and `delta0` therefore
+remain the named Theorem-3.1 source input until their physical producer is
+formalized.  The interface itself is written but NOT CHECKED: it does not yet
+count as a sealed prerequisite, attain window 15, move `20/41`, or inhabit a
+`TermSource`.
+
 ### Step 5 ambient dictionary (SEALED)
 
 Checkpoint `8ac1a1c2508f65e51d4eb89f81bf650780691cf6` freezes the
