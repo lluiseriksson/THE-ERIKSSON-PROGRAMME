@@ -1029,4 +1029,212 @@ theorem os_reconstruction_vacuum_state_limit (β γ : ℝ) {alpha : ℝ}
     (WithLp.toLp 2 (dress (sliceW γ L) A))
     (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))
     (WithLp.toLp 2 (dress (sliceW γ L) B)) N hfpos hden hOm1
+/-! ## The ground-state Markov chain — constants uniform in `L` too (pass 24)
+
+The `L`-dependence of the constants above is an artefact of NORMALISATION, not
+of the object.  The dressed observables `QA = √w·A` have Euclidean norms that
+GROW with the extent, because `‖Q1‖² = ∑_σ w σ` is an unnormalised
+partition-function-like quantity; any bound written in those norms therefore
+carries an extent-dependent prefactor no matter how sharp the operator estimate
+is.  In the correct normalisation the prefactor disappears: the reconstructed
+operator IS -- unitarily, by the positive Perron vector -- a reversible Markov
+chain, and in its own stationary state the connected correlator is bounded by
+the product of the observables' sup norms times `e^{-mN}`, with NO factor
+depending on `L` at all. -/
+
+/-- The **ground-state (Doob `h`-transformed) kernel**: the reconstructed
+operator conjugated by the positive Perron vector.  It is a stochastic matrix,
+and it is reversible for the ground-state measure `Ω²`. -/
+noncomputable def groundKernel (w : (Fin L → Fin 2) → ℝ) (β lam : ℝ)
+    (Om : (Fin L → Fin 2) → ℝ) (σ τ : Fin L → Fin 2) : ℝ :=
+  tiltKernel w β lam σ τ * Om τ / Om σ
+
+theorem groundKernel_nonneg (w : (Fin L → Fin 2) → ℝ) (hw : ∀ σ, 0 < w σ)
+    (β lam : ℝ) (hlam : 0 < lam) (Om : (Fin L → Fin 2) → ℝ)
+    (hOm : ∀ σ, 0 < Om σ) (σ τ : Fin L → Fin 2) :
+    0 ≤ groundKernel w β lam Om σ τ :=
+  le_of_lt (div_pos (mul_pos (tiltKernel_pos w hw β lam hlam σ τ) (hOm τ))
+    (hOm σ))
+
+/-- **It is stochastic**: the rows sum to one, because `Ω` is the fixed
+vector. -/
+theorem groundKernel_row_sum (w : (Fin L → Fin 2) → ℝ) (β lam : ℝ)
+    (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ)
+    (hfix : ∀ σ, ∑ τ, tiltKernel w β lam σ τ * Om τ = Om σ) (σ : Fin L → Fin 2) :
+    ∑ τ, groundKernel w β lam Om σ τ = 1 := by
+  have h : ∑ τ, groundKernel w β lam Om σ τ
+      = (∑ τ, tiltKernel w β lam σ τ * Om τ) / Om σ := by
+    rw [Finset.sum_div]
+    exact Finset.sum_congr rfl fun τ _ => rfl
+  rw [h, hfix σ, div_self (hOm σ).ne']
+
+/-- **It is reversible for `Ω²`** — detailed balance, from the symmetry of the
+tilted kernel. -/
+theorem groundKernel_reversible (w : (Fin L → Fin 2) → ℝ) (β lam : ℝ)
+    (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ) (σ τ : Fin L → Fin 2) :
+    Om σ ^ 2 * groundKernel w β lam Om σ τ
+      = Om τ ^ 2 * groundKernel w β lam Om τ σ := by
+  show Om σ ^ 2 * (tiltKernel w β lam σ τ * Om τ / Om σ)
+      = Om τ ^ 2 * (tiltKernel w β lam τ σ * Om σ / Om τ)
+  rw [tiltKernel_symm w β lam τ σ]
+  have h1 : Om σ ≠ 0 := (hOm σ).ne'
+  have h2 : Om τ ≠ 0 := (hOm τ).ne'
+  field_simp
+
+/-- The unitary `U` from the ground-state picture to the Euclidean one:
+multiplication by the unit vacuum. -/
+noncomputable def dressVac (Om : (Fin L → Fin 2) → ℝ)
+    (f : (Fin L → Fin 2) → ℝ) : EuclideanSpace ℝ (Fin L → Fin 2) :=
+  WithLp.toLp 2 fun σ => vacOf Om σ * f σ
+
+/-- The ground-state measure is a probability measure. -/
+theorem sum_vacOf_sq (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ) :
+    ∑ σ, vacOf Om σ * vacOf Om σ = 1 := by
+  have h : (⟪vacOf Om, vacOf Om⟫ : ℝ) = 1 := by
+    rw [real_inner_self_eq_norm_sq, vacOf_norm Om hOm]
+    norm_num
+  rw [← h, inner_eq_sum]
+
+/-- **`U` is a contraction for the sup norm**: a bounded observable is carried
+to a Euclidean vector of at most that norm.  This is where the extent
+disappears -- the vacuum is a UNIT vector, so no partition function is left
+over. -/
+theorem norm_dressVac_le (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ)
+    (f : (Fin L → Fin 2) → ℝ) {K : ℝ} (hK : 0 ≤ K) (hf : ∀ σ, |f σ| ≤ K) :
+    ‖dressVac Om f‖ ≤ K := by
+  have hsq : ‖dressVac Om f‖ ^ 2 ≤ K ^ 2 := by
+    have h1 : (⟪dressVac Om f, dressVac Om f⟫ : ℝ)
+        = ∑ σ, (vacOf Om σ * f σ) * (vacOf Om σ * f σ) := inner_eq_sum _ _
+    rw [← real_inner_self_eq_norm_sq, h1]
+    calc ∑ σ, (vacOf Om σ * f σ) * (vacOf Om σ * f σ)
+        ≤ ∑ σ, K ^ 2 * (vacOf Om σ * vacOf Om σ) := by
+          refine Finset.sum_le_sum fun σ _ => ?_
+          have hfs : f σ * f σ ≤ K * K := by
+            have hb := abs_le.mp (hf σ)
+            nlinarith [hb.1, hb.2]
+          calc (vacOf Om σ * f σ) * (vacOf Om σ * f σ)
+              = (vacOf Om σ * vacOf Om σ) * (f σ * f σ) := by ring
+            _ ≤ (vacOf Om σ * vacOf Om σ) * (K * K) :=
+                mul_le_mul_of_nonneg_left hfs (mul_self_nonneg _)
+            _ = K ^ 2 * (vacOf Om σ * vacOf Om σ) := by ring
+      _ = K ^ 2 * ∑ σ, vacOf Om σ * vacOf Om σ := by rw [Finset.mul_sum]
+      _ = K ^ 2 := by rw [sum_vacOf_sq Om hOm, mul_one]
+  nlinarith [norm_nonneg (dressVac Om f), hK, hsq]
+
+/-- The vacuum pairing IS the ground-state expectation. -/
+theorem inner_vac_dressVac (Om f : (Fin L → Fin 2) → ℝ) :
+    (⟪vacOf Om, dressVac Om f⟫ : ℝ)
+      = ∑ σ, (vacOf Om σ * vacOf Om σ) * f σ := by
+  rw [inner_eq_sum]
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  show vacOf Om σ * (vacOf Om σ * f σ) = (vacOf Om σ * vacOf Om σ) * f σ
+  ring
+
+/-- **The intertwining**: the reconstructed operator on a dressed observable is
+the dressing of the Markov step.  The normalisation of the vacuum cancels
+between the two ends. -/
+theorem opOf_dressVac (w : (Fin L → Fin 2) → ℝ) (β lam : ℝ)
+    (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ)
+    (g : (Fin L → Fin 2) → ℝ) :
+    opOf (tiltKernel w β lam) (dressVac Om g)
+      = dressVac Om (act (fun a b => groundKernel w β lam Om a b) g) := by
+  have hS : (0 : ℝ) < ∑ y, Om y * Om y :=
+    Finset.sum_pos (fun y _ => mul_pos (hOm y) (hOm y))
+      ⟨Classical.arbitrary _, Finset.mem_univ _⟩
+  have hsne : Real.sqrt (∑ y, Om y * Om y) ≠ 0 := (Real.sqrt_pos.mpr hS).ne'
+  refine PiLp.ext fun σ => ?_
+  rw [opOf_apply]
+  show ∑ τ, tiltKernel w β lam σ τ * (vacOf Om τ * g τ)
+      = vacOf Om σ * ∑ τ, groundKernel w β lam Om σ τ * g τ
+  rw [Finset.mul_sum]
+  refine Finset.sum_congr rfl fun τ _ => ?_
+  show tiltKernel w β lam σ τ * (vacOf Om τ * g τ)
+      = vacOf Om σ * (tiltKernel w β lam σ τ * Om τ / Om σ * g τ)
+  have hvσ : vacOf Om σ = Om σ / Real.sqrt (∑ y, Om y * Om y) := rfl
+  have hvτ : vacOf Om τ = Om τ / Real.sqrt (∑ y, Om y * Om y) := rfl
+  have hne : Om σ ≠ 0 := (hOm σ).ne'
+  rw [hvσ, hvτ]
+  field_simp
+
+/-- The intertwining, iterated. -/
+theorem opOf_pow_dressVac (w : (Fin L → Fin 2) → ℝ) (β lam : ℝ)
+    (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ) (n : ℕ)
+    (g : (Fin L → Fin 2) → ℝ) :
+    ((opOf (tiltKernel w β lam)) ^ n) (dressVac Om g)
+      = dressVac Om ((act (fun a b => groundKernel w β lam Om a b))^[n] g) := by
+  induction n generalizing g with
+  | zero => simp
+  | succ n ih =>
+      rw [pow_succ, ContinuousLinearMap.mul_apply, opOf_dressVac w β lam Om hOm g,
+        ih, Function.iterate_succ_apply]
+
+/-- The `N`-step ground-state correlator IS a matrix element of the
+reconstructed operator's powers. -/
+theorem inner_dressVac_pow (w : (Fin L → Fin 2) → ℝ) (β lam : ℝ)
+    (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ)
+    (f g : (Fin L → Fin 2) → ℝ) (N : ℕ) :
+    (⟪dressVac Om f,
+        ((opOf (tiltKernel w β lam)) ^ N) (dressVac Om g)⟫ : ℝ)
+      = ∑ σ, (vacOf Om σ * vacOf Om σ)
+          * (f σ * ((act (fun a b => groundKernel w β lam Om a b))^[N] g) σ) := by
+  rw [opOf_pow_dressVac w β lam Om hOm N g, inner_eq_sum]
+  refine Finset.sum_congr rfl fun σ _ => ?_
+  show vacOf Om σ * f σ
+      * (vacOf Om σ * ((act (fun a b => groundKernel w β lam Om a b))^[N] g) σ)
+    = (vacOf Om σ * vacOf Om σ)
+      * (f σ * ((act (fun a b => groundKernel w β lam Om a b))^[N] g) σ)
+  ring
+
+/-- **CLUSTERING WITH A CONSTANT UNIFORM IN THE SPATIAL EXTENT.**  In the
+window: ONE `m > 0` such that for EVERY spatial extent the reconstructed
+dynamics is a reversible Markov chain (nonnegative, stochastic, detailed
+balance for `Ω²`), and in ITS OWN stationary state the connected `N`-step
+correlator of any two bounded observables obeys
+`|E[f·PᴺG] − E[f]E[g]| ≤ Kf·Kg·e^{-mN}`, where `Kf, Kg` are sup bounds for the
+observables.  There is NO factor depending on `L`: the quantifier order is
+`∃ m, ∀ L, ∀ f g N`, with the constant `Kf·Kg` supplied by the observables
+alone.  This is the same gap as before, read in the normalisation that does
+not smuggle a partition function into the constant. -/
+theorem os_reconstruction_ground_state_clustering (β γ : ℝ) {alpha : ℝ}
+    (halpha0 : 0 < alpha) (halpha1 : alpha < 1)
+    (hwin : 2 * Real.tanh |β| + 2 * Real.tanh |γ| ≤ alpha) :
+    ∃ m : ℝ, 0 < m ∧ ∀ L : ℕ,
+      ∃ (lam : ℝ) (Om : (Fin (L + 1) → Fin 2) → ℝ),
+        0 < lam ∧ (∀ σ, 0 < Om σ) ∧
+        (∀ σ, ∑ τ, tiltKernel (sliceW γ L) β lam σ τ * Om τ = Om σ) ∧
+        (∀ σ τ, 0 ≤ groundKernel (sliceW γ L) β lam Om σ τ) ∧
+        (∀ σ, ∑ τ, groundKernel (sliceW γ L) β lam Om σ τ = 1) ∧
+        (∀ σ τ, Om σ ^ 2 * groundKernel (sliceW γ L) β lam Om σ τ
+            = Om τ ^ 2 * groundKernel (sliceW γ L) β lam Om τ σ) ∧
+        (∑ σ, vacOf Om σ * vacOf Om σ = 1) ∧
+        (∀ (f g : (Fin (L + 1) → Fin 2) → ℝ) (Kf Kg : ℝ),
+          0 ≤ Kf → 0 ≤ Kg → (∀ σ, |f σ| ≤ Kf) → (∀ σ, |g σ| ≤ Kg) →
+          ∀ N : ℕ,
+            |∑ σ, (vacOf Om σ * vacOf Om σ)
+                  * (f σ * ((act (fun a b =>
+                      groundKernel (sliceW γ L) β lam Om a b))^[N] g) σ)
+              - (∑ σ, (vacOf Om σ * vacOf Om σ) * f σ)
+                * (∑ σ, (vacOf Om σ * vacOf Om σ) * g σ)|
+              ≤ Kf * Kg * Real.exp (-m) ^ N) := by
+  obtain ⟨m, hm, hL⟩ := dobrushin_ising_uniform_gap β γ halpha0 halpha1 hwin
+  refine ⟨m, hm, fun L => ?_⟩
+  obtain ⟨lam, Om, hlam, hOm, hfix, hnorm⟩ := hL L
+  have hw := sliceW_pos γ L
+  have hT : VacuumTransfer (opOf (tiltKernel (sliceW γ L) β lam)) (vacOf Om) :=
+    vacuumTransfer_opOf _ Om (tiltKernel_symm _ β lam) hOm hfix
+  refine ⟨lam, Om, hlam, hOm, hfix,
+    fun σ τ => groundKernel_nonneg (sliceW γ L) hw β lam hlam Om hOm σ τ,
+    fun σ => groundKernel_row_sum (sliceW γ L) β lam Om hOm hfix σ,
+    fun σ τ => groundKernel_reversible (sliceW γ L) β lam Om hOm σ τ,
+    sum_vacOf_sq Om hOm, fun f g Kf Kg hKf hKg hf hg N => ?_⟩
+  have hmix := mixed_connCorr_bound hT (Real.exp_nonneg _) hnorm
+    (dressVac Om f) (dressVac Om g) N
+  rw [inner_dressVac_pow (sliceW γ L) β lam Om hOm f g N,
+    inner_vac_dressVac Om f, inner_vac_dressVac Om g] at hmix
+  refine hmix.trans ?_
+  have hnf := norm_dressVac_le Om hOm f hKf hf
+  have hng := norm_dressVac_le Om hOm g hKg hg
+  have hstep : ‖dressVac Om f‖ * ‖dressVac Om g‖ ≤ Kf * Kg :=
+    mul_le_mul hnf hng (norm_nonneg _) hKf
+  exact mul_le_mul_of_nonneg_right hstep (pow_nonneg (Real.exp_nonneg _) N)
 end YangMills.OS

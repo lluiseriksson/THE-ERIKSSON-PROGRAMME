@@ -3416,3 +3416,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.exists_cone_constant
 #print axioms YangMills.OS.inner_pow_floor_offdiag
 #print axioms YangMills.OS.os_reconstruction_vacuum_state_limit
+#print axioms YangMills.OS.groundKernel_nonneg
+#print axioms YangMills.OS.groundKernel_row_sum
+#print axioms YangMills.OS.groundKernel_reversible
+#print axioms YangMills.OS.sum_vacOf_sq
+#print axioms YangMills.OS.norm_dressVac_le
+#print axioms YangMills.OS.inner_vac_dressVac
+#print axioms YangMills.OS.opOf_dressVac
+#print axioms YangMills.OS.opOf_pow_dressVac
+#print axioms YangMills.OS.inner_dressVac_pow
+#print axioms YangMills.OS.os_reconstruction_ground_state_clustering

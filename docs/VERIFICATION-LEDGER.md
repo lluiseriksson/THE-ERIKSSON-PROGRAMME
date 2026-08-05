@@ -32049,3 +32049,63 @@ bridge).
 
 **ROLES.**  Unit design: this desk.  Plane execution: autonomous
 browser bridge.  This record: this desk.
+
+
+## Addendum 632 (2026-08-05, **CONSTANTS UNIFORM IN `L`: the
+`L`-dependence was a NORMALISATION artefact; the reconstructed operator
+IS a reversible Markov chain and in its stationary state the constant is
+absolute.  Module green in two passes; pass-26 predictions REGISTERED**)
+
+**The diagnosis.**  The external evaluation named the residue exactly:
+the quantifier order was `∀ L, ∃ C` and not `∃ C, ∀ L`.  The cause was
+NOT the operator estimate.  It was the norm the bound was written in:
+the dressed observables carry an unnormalised partition function,
+`‖Q1‖² = ∑_σ w σ`, which grows with the extent.  Any bound in those
+norms has an extent-dependent prefactor however sharp the operator
+input is.
+
+**The correction.**  The Doob h-transform by the positive Perron
+vector, all proved rather than asserted:
+
+* `groundKernel w β lam Om σ τ := tiltKernel σ τ · Om τ / Om σ` --
+  entrywise nonnegative (`groundKernel_nonneg`), STOCHASTIC
+  (`groundKernel_row_sum`, from the fixed-point equation) and
+  REVERSIBLE for `π = Ω²` (`groundKernel_reversible`, from the
+  symmetry of the tilted kernel).  `π` is a probability measure
+  (`sum_vacOf_sq`) because the vacuum is a unit vector.
+* `dressVac Om f := Ω·f` is the unitary; `opOf_dressVac` and
+  `opOf_pow_dressVac` are the intertwining `T̂ᴺ(Uf) = U(Pᴺf)`: the
+  reconstructed operator IS the Markov step conjugated by the vacuum.
+* `norm_dressVac_le`: `|f| ≤ K` pointwise implies `‖Uf‖ ≤ K`.  This is
+  where the extent disappears -- `‖Uf‖² = ∑ Ω²f² ≤ K²∑Ω² = K²`, the
+  last step an EQUALITY because `Ω` is a unit vector.  No partition
+  function survives.
+* `os_reconstruction_ground_state_clustering`: in the window, ONE
+  m > 0 such that for EVERY extent the chain is a reversible Markov
+  chain AND `|E_π[f·Pᴺg] − E_π[f]E_π[g]| ≤ Kf·Kg·e^{-mN}` for all
+  bounded observables and all N.  **Quantifier order `∃ m, ∀ L, ∀ f g
+  N`; the constant is `Kf·Kg`, supplied by the observables alone, and
+  nothing in the bound depends on `L`.**
+
+**Honest bookkeeping.**  This does NOT construct an `L → ∞` state; it
+removes the extent from the CONSTANT of the finite-extent bound.  The
+two states of this paper are different objects and the manuscript keeps
+them apart: the `N → ∞` state of Add. 629 is the end-of-chain state
+(density `Q1` against `Ω`, boundary-dependent approach constant); `π =
+Ω²` is the stationary state (the middle-of-chain marginal), and it is
+the one with the absolute constant.
+
+**Pass history.**  Pass 24 (staged 0a889ebfc): ELAB_EXIT 1 with exactly
+two `No goals to be solved` -- `field_simp` closes the reversibility and
+the intertwining by itself and the trailing `ring` had nothing to do.
+Pass 25 (6df7444b4): **ELAB_EXIT 0**, SOURCE 65975 `dac8e3f5f95c`.
+
+**Pass-26 predictions, REGISTERED NOW:**
+
+1. core total = **8481 EXACT** (54745 -> 65975 B; fourteenth
+   consecutive if it holds).
+2. oracle reports = **3050 EXACT** (3040 + 10 new lines).
+3. sorryAx = **0**; all ten new endpoints on the standard triple.
+
+**ROLES.**  Fabrication + unit design: this desk.  Plane execution:
+autonomous browser bridge.  Predictions committed before measurement.
