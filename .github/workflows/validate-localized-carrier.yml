@@ -1,4 +1,4 @@
-name: Validate localized covariance carrier
+name: Validate centered joint smallness registry
 
 on:
   workflow_dispatch:
@@ -12,13 +12,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: fbb2d47d5fbc0ccc4900c15b55cc210d9a8e0440
+  SOURCE_SHA: c4beb733a1df50ded144c83c390de35d4cfa17ef
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  localized-carrier:
+  centered-smallness:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -99,24 +99,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage physical_coordinate_dictionary_focal \
-            lake build YangMills.RG.BalabanCMP116SourcePhysicalCoordinateDictionary
-          run_stage physical_coordinate_dictionary_audit \
-            lake env lean YangMills/RG/BalabanCMP116SourcePhysicalCoordinateDictionaryAudit.lean
-          run_stage r3_source_rate_focal \
-            lake build YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalR3SourceRate
-          run_stage r3_source_rate_audit \
-            lake env lean YangMills/RG/BalabanCMP116SourceRestrictedConditionedPhysicalR3SourceRateAudit.lean
-          run_stage combined_source_pre_eq136_focal \
-            lake build YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136
-          run_stage interacting_precision_audit_prerequisite \
-            lake build YangMills.RG.BalabanCMP116InteractingPhysicalPrecisionSourceAudit
-          run_stage combined_source_pre_eq136_audit \
-            lake env lean YangMills/RG/BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136Audit.lean
-          run_stage conditioned_qbound_wall_focal \
-            lake build YangMills.RG.BalabanCMP116ConditionedRootQBoundWall
-          run_stage conditioned_qbound_wall_audit \
-            lake env lean YangMills/RG/BalabanCMP116ConditionedRootQBoundWallAudit.lean
+          run_stage centered_smallness_focal \
+            lake build YangMills.RG.BalabanCMP116CenteredConditionedSmallnessCompatibility
+          run_stage centered_smallness_audit \
+            lake env lean YangMills/RG/BalabanCMP116CenteredConditionedSmallnessCompatibilityAudit.lean
 
       - name: Verify axiom gates and seal evidence
         shell: bash
@@ -129,12 +115,7 @@ jobs:
           import re
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
-          audits = {
-              "physical_coordinate_dictionary_audit.log": 10,
-              "r3_source_rate_audit.log": 3,
-              "combined_source_pre_eq136_audit.log": 18,
-              "conditioned_qbound_wall_audit.log": 1,
-          }
+          audits = {"centered_smallness_audit.log": 8}
           result = {}
           for name, expected in audits.items():
               text = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -164,16 +145,16 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > localized-carrier-evidence.tar.gz
-          sha256sum localized-carrier-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > centered-smallness-evidence.tar.gz
+          sha256sum centered-smallness-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: localized-carrier-${{ env.SOURCE_SHA }}
+          name: centered-smallness-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            localized-carrier-evidence.tar.gz
+            centered-smallness-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
