@@ -92,7 +92,7 @@ theorem cmp99SourceSeparatedGeneratedPhysicalRegionalDefectBudget_eq
     cmp99SourceSeparatedGeneratedPhysicalRegionalCorrectionAmplitude
     cmp99SourceSeparatedGeneratedPhysicalRegionalDefectRate
     cmp99SourceSeparatedGeneratedPhysicalRegionalDefectNumerator
-  rw [cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoffBudget_eq]
+  simp only [cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoffBudget_eq]
   ring
 
 /-- The separated scalar Schur majorant is genuinely attainable for every
@@ -143,7 +143,7 @@ theorem cmp99SourceSeparatedGeneratedPhysicalRegionalDefectBudget_self
     cmp99SourceGeneratedPhysicalRegionalDefectAmplitude
     cmp99SourceGeneratedPhysicalRegionalCorrectionAmplitude
     cmp99SourceGeneratedPhysicalRegionalDefectRate
-  rw [cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoffBudget_self]
+  simp only [cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoffBudget_self]
 
 end
 
