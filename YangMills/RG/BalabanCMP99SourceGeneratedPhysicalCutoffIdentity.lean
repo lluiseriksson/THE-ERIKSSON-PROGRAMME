@@ -8,10 +8,12 @@ import YangMills.RG.BalabanCMP99SourceGeneratedQprimeMassCutoffIdentity
 import YangMills.RG.BalabanCMP99SourceEq395HeadDictionary
 
 /-!
-# PRE-VALIDATION: the complete generated physical cutoff identity in CMP99 (3.88)
+# Complete generated physical cutoff identity in CMP99 (3.88)
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`39905a39f58a7e039ebaf17420393a57871e3dac` in cold GitHub Actions run
+`30990024776`.  The focal completed 8,509 jobs and all seven audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 This file combines the three literal algebraic species in CMP99 (3.88): the
 covariant link derivative, the scalar cutoff-Laplacian correction and the

@@ -27258,3 +27258,37 @@ combine all three species into the complete physical (3.88), estimate the
 regional defect, attain `norm R' < 1`, discharge groups 23--24, or inhabit a
 `TermSource`.  It is therefore infrastructure below window 15 rather than a
 terminal producer; the live counters remain exactly `20/41` and zero.
+
+## Addendum 552 (2026-08-05, **complete generated physical CMP99 (3.88) GREEN; 20/41 unchanged**)
+
+The complete active-carrier cutoff identity was validated from exact source
+checkpoint `39905a39f58a7e039ebaf17420393a57871e3dac` by cold GitHub Actions
+run `30990024776` (workflow checkpoint
+`8d9cb3736d5590dc45f7cf77e41c082ecc532130`).  The checkout did not restore
+or save a project `.lake/build` cache.  The official Lean `v4.29.0-rc6`
+asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8509 jobs).` and
+exited zero.  Its seven-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`fd1b162e4539a7308bb5f99343f04133417795dbd2d6c64489bb0525beb41171`.
+The axiom JSON has SHA-256
+`cd7776ab71345da2efc04cc8020d9b71f42545ec1d7dfeb1fb8d539df1305fc4`;
+the stage ledger has SHA-256
+`5c49786524c0434e69bc4c5ec225f516a2171b0192d45082309535a563917436`.
+The internal `SHA256SUMS` manifest was rechecked independently and matched all
+12 recorded files.
+
+The theorem combines the exact active-region differential product rule with
+the normalized generated `Q'^* Q'` fixed-output kernel sum.  It therefore
+closes the complete algebraic three-species identity (3.88) without importing
+the later collar or contraction estimates.  It does not bound the regional
+correction, attain `norm R' < 1`, discharge groups 23--24, or inhabit a
+`TermSource`.  The live counters remain exactly `20/41` and zero.

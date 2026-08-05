@@ -2420,3 +2420,23 @@ transport of the two differential species, prove the complete physical
 (3.88), or attain window 15.  It is infrastructure rather than a terminal
 producer, so the live counters remain exactly `20/41` and
 `TermSource = 0`.
+
+### Complete generated physical cutoff identity CMP99 (3.88) (2026-08-05)
+
+Exact source checkpoint
+`39905a39f58a7e039ebaf17420393a57871e3dac` passed cold GitHub Actions run
+`30990024776` without restoration or saving of a project build cache.  The
+focal completed 8,509 jobs, its seven-declaration audit exited zero, and every
+declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+The brick now combines all three literal species of (3.88): the covariant
+link derivative, the scalar cutoff-Laplacian correction, and the normalized
+`Q'^* Q'` fixed-output kernel sum.  Extension and restriction remain visible
+until the ambient product rule is transported to the active carrier.  No
+finite-range collar, overlap estimate, or contraction premise is borrowed by
+the exact identity.
+
+This does **not** yet bound the resulting regional correction, prove
+`norm R' < 1`, discharge groups 23--24, or inhabit a `TermSource`.  It is the
+complete algebraic identity below window 15, not physical attainment of that
+window.  The live counters remain exactly `20/41` and `TermSource = 0`.

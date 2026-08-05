@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalCutoffIdentity
 
 /-!
-# PRE-VALIDATION audit for the complete generated physical cutoff identity
+# Axiom audit for the complete generated physical cutoff identity
 
-The source is present, but this audit has not yet been run by the pinned Lean
-compiler and no `.olean` is claimed for the imported module.
+Compiler-verified at exact source checkpoint
+`39905a39f58a7e039ebaf17420393a57871e3dac` in cold GitHub Actions run
+`30990024776`; all seven declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99ActiveCovariantCutoffLinkDerivative
