@@ -292,24 +292,50 @@ range ball: the normalized `Q'^* Q'` mass cancels its block volume, while that
 crude reconstruction would reintroduce a power of the terminal range and can
 erase the gain completely.
 
-The commutator row composes directly with a weighted row for the exponentially
-localized Dirichlet Green, without loss of spatial rate.  Converting the
-commutator separately to an exponential kernel would spend an avoidable
-factor `1 / rate`; rebuilding either row from pointwise decay would spend an
-additional shell or ball factor.  The source-facing defect budget must retain
-the schematic form
+The direct fixed-output precision row and its commutator remain useful
+algebraic infrastructure, but the route that composes them with a Green bound
+obtained from the coarse generated coercivity reciprocal and then applies a
+generic Schur estimate is closed.  The sealed depth-zero no-go proves that
+this majorant is never contractive.  Improving constants inside that same
+CT-plus-Schur shape is therefore not an admissible repair.
+
+### Direct Eq. (3.42) to Eq. (3.89) gate
+
+The primary render on printed p. 397 / PDF p. 9 fixes more structure than a
+single exponential kernel estimate.  Equation (3.42) bounds, on a localized
+source `lambda`, the value of `G' lambda`, the left covariant derivative, the
+right adjoint covariant derivative, and `Delta_U G' lambda`, with the literal
+scale vector
 
 ```text
-overlap * (slope * finiteRange) * B_Delta
-        * (2 / coercivity) * greenShellSum,
+[(L^j eta)^2, L^j eta, L^j eta, 1]
 ```
 
-with `slope * finiteRange = O(M^-1)` established before the composition.
-The currently available
-`cmp99SourceGeneratedPhysicalPrecision_weightedRowKernelBound` is not yet the
-required producer: it is derived from an entry bound and a range-ball
-cardinality.  The missing physical input is a direct row estimate for the
-normalized Laplacian-plus-`Q'^*Q'` precision.
+and the common factor `B0 * exp(-delta0 * d(y,y')) * |lambda|`.  The direct
+producer for (3.89) must expose at least the value and covariant-derivative
+components of that package.  A certificate containing only `norm G' <= 1/c`
+or a bare pointwise kernel bound is too weak to justify the printed
+three-species cancellation.
+
+Printed p. 409 / PDF p. 21 then states the single-square action estimate
+
+```text
+|(K(h_Pi) G'_Pi h_Pi lambda)(x)|
+  <= O(K^-1) * exp(-delta0 * d(y,y')) * |lambda|,
+```
+
+in the repository's separated notation, for `x in Delta(y)`,
+`supp lambda subset Delta(y')`, and `y,y' in Pi`.  This is the accepted step-7
+interface.  Its proof must consume the exact three-species identity (3.88),
+the local components of (3.42), and the one physical CMP95 profile.  The
+`K^-1` gain must be present in this single-cell bound before any cell or layer
+sum, and the later overlap remains the already derived constant `16`,
+independent of `K`.
+
+The source constants `B0` and `delta0` remain named positive inputs until
+their Theorem-3.1 producer is formalized.  Replacing `O(1)` by an invented
+numeral, or importing the Poincare constant through `1 / coercivity`, is not
+an admissible discharge of (3.89).
 
 The source tree already fixes the normalization needed for that direct mass
 row.  For one scale,

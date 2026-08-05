@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated": "2026-06-26",
+  "generated": "2026-08-05",
   "purpose": "Single flat registry of formulas and formula-shaped targets indexed for LLM agents. source_verified=false means this is a route target or paraphrase, not a theorem-feedable source formula.",
   "counts": {
-    "formulas": 71,
-    "source_verified": 62,
+    "formulas": 74,
+    "source_verified": 65,
     "inferred_or_unverified": 9
   },
   "formulas": [
@@ -1461,6 +1461,74 @@
       "assumptions": [
         "Delta_a is the background-field operator defined in Eq. (3.26).",
         "Dirichlet boundary conditions on Omega_0 are in force in the displayed restriction."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.42.localized-green-prime-bounds",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Localized value, covariant-derivative and Laplacian bounds for the regional Green operator G'.",
+      "formula_ascii": "[|G' lambda(x)|, |nabla_U G' lambda(x)|, |G' nabla_U^* lambda(x)|, |Delta_U G' lambda(x)|] <= B0 * [(L^j eta)^2, L^j eta, L^j eta, 1] * exp(-delta0 d(y,y')) * |lambda|",
+      "formula_latex": null,
+      "conclusion": "This four-species local estimate, rather than a bare operator-norm inverse bound, is the analytic input used by the source to derive the O(M^-1) defect estimate (3.89).",
+      "source_verified": true,
+      "equations": [
+        "3.42",
+        "Theorem 3.1"
+      ],
+      "assumptions": [
+        "The hypotheses and regularity condition (3.35) of CMP99 Theorem 3.1 are in force, with a = 1.",
+        "x lies in Delta(y), y lies in Lambda_j, and the source lambda is supported in Delta(y')."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.88.precision-cutoff-identity",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "literal_paired_formula",
+      "confidence": "visual",
+      "statement": "Literal three-species expansion of the generated precision acting on one cutoff field.",
+      "formula_ascii": "Delta'_a(h lambda) = h Delta'_a(lambda) - linkDerivative + cutoffLaplacian + normalizedQprimeTerm = h Delta'_a(lambda) - K(h)lambda",
+      "formula_latex": null,
+      "conclusion": "The normalized Qprime species retains the printed L^(-jd) row mass; a terminal range-ball cardinality is not an admissible substitute.",
+      "source_verified": true,
+      "equations": [
+        "3.88"
+      ],
+      "assumptions": [
+        "The source square cutoff h and the regional generated precision Delta'_a of Eq. (3.88) are in force.",
+        "The Qprime contribution uses the printed normalized L^(-jd) block average and parallel transports."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.89.regional-defect-localized-action",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Direct single-square localized action bound for the CMP99 regional Green defect factor.",
+      "formula_ascii": "|(K(h_Pi) G'_Pi h_Pi lambda)(x)| <= O(M^-1) * exp(-delta0 d(y,y')) * |lambda|",
+      "formula_latex": null,
+      "conclusion": "The inverse-scale gain is present before summing correction cells. The overlap count used downstream must remain independent of M; a coarse coercivity-plus-Schur replacement is not source-faithful.",
+      "source_verified": true,
+      "equations": [
+        "3.89"
+      ],
+      "assumptions": [
+        "The three-species identity (3.88) and the localized Green bounds (3.42) are in force.",
+        "x lies in Delta(y), supp lambda is contained in Delta(y'), and y,y' lie in the same square Pi.",
+        "The source large-block parameter M is independent of the local operator range scale."
       ]
     },
     {

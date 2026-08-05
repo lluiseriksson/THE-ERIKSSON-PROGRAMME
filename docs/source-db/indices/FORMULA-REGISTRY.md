@@ -2,7 +2,7 @@
 
 This index flattens every formula-shaped claim in the current source DB. `verified` means the formula record itself is marked source-verified; it still may require a Lean theorem.
 
-Total formulas: **72**. Source-verified records: **63**. Unverified/inferred route targets: **9**.
+Total formulas: **74**. Source-verified records: **65**. Unverified/inferred route targets: **9**.
 
 | Formula id | Source | Status | Equations | Verified | Exactness | ASCII |
 |---|---:|---|---|---:|---|---|
@@ -19,7 +19,9 @@ Total formulas: **72**. Source-verified records: **63**. Unverified/inferred rou
 | `cmp122ii.eq1.99.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= O(1) * c_1 * exp(-(1 + (1/2)*beta)*kappa*d_{k, union Y_i}(X))` |
 | `cmp122ii.eq1.100.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))` |
 | `cmp99.eq3.27.background-field-propagator` | Balaban CMP99 | `visual_confirmed` | 3.26, 3.27 | yes | normalized_formula | `G(U) = G = (Delta_a \| Omega_0)^(-1)` |
+| `cmp99.eq3.42.localized-green-prime-bounds` | Balaban CMP99 | `visual_confirmed` | 3.42, Theorem 3.1 | yes | normalized_formula | `[\|G' lambda(x)\|, \|nabla_U G' lambda(x)\|, \|G' nabla_U^* lambda(x)\|, \|Delta_U G' lambda(x)\|] <= B0 * [(L^j eta)^2, L^j eta, L^j eta, 1] * exp(-delta0 d(y,y')) * \|lambda\|` |
 | `cmp99.eq3.88.precision-cutoff-identity` | Balaban CMP99 | `visual_confirmed` | 3.88 | yes | literal_paired_formula | `Delta'_a(h lambda) = h Delta'_a(lambda) - linkDerivative + cutoffLaplacian + normalizedQprimeTerm = h Delta'_a(lambda) - K(h)lambda` |
+| `cmp99.eq3.89.regional-defect-localized-action` | Balaban CMP99 | `visual_confirmed` | 3.89 | yes | normalized_formula | `\|(K(h_Pi) G'_Pi h_Pi lambda)(x)\| <= O(M^-1) * exp(-delta0 d(y,y')) * \|lambda\|` |
 | `cmp99.eq3.90.regional-green-neumann` | Balaban CMP99 | `visual_confirmed` | 3.87, 3.88, 3.89, 3.90, Theorem 3.7 | yes | normalized_formula | `G'_0 = sum_Pi h_Pi G'_Pi h_Pi; Delta' G'_0 = I - R'; R' = sum_Pi K(h_Pi) G'_Pi h_Pi; G' = G'_0 sum_(n>=0) (R')^n` |
 | `cmp99.eq3.107.generalized-walk-expansion-G` | Balaban CMP99 | `visual_confirmed` | 3.107 | yes | normalized_formula | `G = sum_omega R_0(X_0) R_alpha1(X_1) ... R_alphan(X_n)` |
 | `cmp99.eq3.126.rectangular-minimizer-H` | Balaban CMP99 | `visual_confirmed` | 3.126 + coordinate convention after 3.133 | yes | exact_formula | `H B = G Q* (Q G Q*)^(-1) B` |

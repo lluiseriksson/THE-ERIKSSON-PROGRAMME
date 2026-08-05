@@ -617,6 +617,9 @@
           "render_pdf_page_09_printed_397",
           "render_pdf_page_10_printed_398",
           "render_pdf_page_11_printed_399",
+          "render_pdf_page_20_printed_408",
+          "render_pdf_page_21_printed_409",
+          "render_pdf_page_22_printed_410",
           "render_pdf_page_28_printed_416",
           "render_pdf_page_32_printed_420",
           "render_pdf_page_35_printed_423",
@@ -627,6 +630,8 @@
       "summary": "CMP99 defines the background-field propagator G(U) as the inverse of the background-field operator Delta_a and visually supplies the associated decay, positivity and external-field stability theorems from recorded local render artifacts. Archive cycle 54 render-checked the CMP99 anchor windows as MATCH, including the printed 396 / PDF 8 displays for regularity conditions (3.35)-(3.36). The source pages are located; the Lean covariance/Hessian dictionary remains open.",
       "extracted_claims": [
         "Equation (3.26) defines the background-field operator Delta_a(U), and Eq. (3.27) defines its Dirichlet inverse G(U) = (Delta_a restricted to Omega_0)^(-1).",
+        "Equation (3.42), visually checked on printed page 397 / PDF page 9, bounds the localized action of G'(U), its left covariant derivative, its right adjoint covariant derivative, and Delta_U G'(U) by the common factor B0 exp(-delta0 d(y,y')) times the respective scale weights [(L^j eta)^2, L^j eta, L^j eta, 1], for x in Delta(y) and source lambda supported in Delta(y').",
+        "Equation (3.89), visually checked on printed page 409 / PDF page 21, is the direct localized defect estimate |(K(h_Pi) G'_Pi h_Pi lambda)(x)| <= O(M^-1) exp(-delta0 d(y,y')) |lambda| for x in Delta(y), supp lambda subset Delta(y'), and y,y' in Pi. The O(M^-1) gain occurs in the single-cell action estimate before the walk/cell summation; it must not be replaced by the repository's coarse coercivity-plus-Schur majorant, which is ruled out at depth zero by the sealed no-go theorem.",
         "CMP99 Theorem 3.7 and Eqs. (3.87)-(3.90), visually checked on printed pages 408-410 / PDF pages 20-22, construct the regional Green operator by G'_0 = sum_Pi h_Pi G'_Pi h_Pi, Delta' G'_0 = I - sum_Pi K(h_Pi) G'_Pi h_Pi = I - R', and G' = G'_0 (I-R')^(-1) = G'_0 sum_n (R')^n. Printed page 409 / PDF page 21 additionally expands Delta'_a(h lambda) into the link-derivative, cutoff-Laplacian, and normalized Qprime species, with the printed L^(-jd) average retained, before identifying their sum with K(h)lambda. This is the fine regional G' expansion consumed inside Section C; it is distinct from the later Eq. (3.95) Neumann reconstruction of the coarse covariance (Q' G'^2 Q'^*)^(-1).",
         "Equation (3.107), visually checked on printed page 416 / PDF page 28, expands G as the sum over linear generalized walks omega = ((0,X0),(alpha1,X1),...,(alphan,Xn)) with consecutive simple localization domains intersecting, and with ordered term R0(X0) R_alpha1(X1) ... R_alphan(Xn).",
         "Equation (3.126), visually checked on printed page 420 / PDF page 32, represents the rectangular auxiliary as H B = G Q* (Q G Q*)^(-1) B. The paragraph following (3.133) states that the operator solving the variational problems (3.109)-(3.110) additionally inserts the coordinate factor (U eta)^(-1) in this formula (or uses the equivalent transformed-data convention). Therefore (3.107) is an input to the H random-walk construction, not by itself an expansion of the physical H; that reconstruction also consumes the rectangular composition, the coordinate convention, and Theorem 3.12.",
@@ -655,6 +660,19 @@
           "source_verified": true
         },
         {
+          "id": "cmp99.eq3.42.localized-green-prime-bounds",
+          "statement": "Localized value, covariant-derivative and Laplacian bounds for the regional Green operator G'.",
+          "ascii": "[|G' lambda(x)|, |nabla_U G' lambda(x)|, |G' nabla_U^* lambda(x)|, |Delta_U G' lambda(x)|] <= B0 * [(L^j eta)^2, L^j eta, L^j eta, 1] * exp(-delta0 d(y,y')) * |lambda|",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "The hypotheses and regularity condition (3.35) of CMP99 Theorem 3.1 are in force, with a = 1.",
+            "x lies in Delta(y), y lies in Lambda_j, and the source lambda is supported in Delta(y')."
+          ],
+          "conclusion": "This four-species local estimate, rather than a bare operator-norm inverse bound, is the analytic input used by the source to derive the O(M^-1) defect estimate (3.89).",
+          "source_verified": true
+        },
+        {
           "id": "cmp99.eq3.107.generalized-walk-expansion-G",
           "statement": "Generalized random-walk expansion of the square propagator G.",
           "ascii": "G = sum_omega R_0(X_0) R_alpha1(X_1) ... R_alphan(X_n)",
@@ -678,6 +696,20 @@
             "The Qprime contribution uses the printed normalized L^(-jd) block average and parallel transports."
           ],
           "conclusion": "The physical commutator producer must reconstruct all three displayed species with their signs and normalization; a generic commutator bound or a terminal range-ball cardinality does not discharge this identity.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp99.eq3.89.regional-defect-localized-action",
+          "statement": "Direct single-square localized action bound for the CMP99 regional Green defect factor.",
+          "ascii": "|(K(h_Pi) G'_Pi h_Pi lambda)(x)| <= O(M^-1) * exp(-delta0 d(y,y')) * |lambda|",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "The three-species identity (3.88) and the localized Green bounds (3.42) are in force.",
+            "x lies in Delta(y), supp lambda is contained in Delta(y'), and y,y' lie in the same square Pi.",
+            "The source large-block parameter M is independent of the local operator range scale."
+          ],
+          "conclusion": "The inverse-scale gain is present before summing correction cells. The overlap count used downstream must remain independent of M; a coarse coercivity-plus-Schur replacement is not source-faithful.",
           "source_verified": true
         },
         {
