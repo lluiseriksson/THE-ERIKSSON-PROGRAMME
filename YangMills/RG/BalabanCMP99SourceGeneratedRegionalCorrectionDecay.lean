@@ -45,14 +45,15 @@ theorem CMP99RegionalFineSquarePartition.norm_value_le_one
     (P : CMP99RegionalFineSquarePartition m q)
     (cell : FinBox 4 q) (x : FinBox 4 (m * (2 * q))) :
     ‖P.value cell x‖ ≤ 1 := by
+  classical
   have hterm : P.value cell x ^ 2 ≤
       ∑ c : FinBox 4 q, P.value c x ^ 2 := by
     exact Finset.single_le_sum (fun c _ => sq_nonneg (P.value c x))
       (Finset.mem_univ cell)
   rw [P.square_sum x] at hterm
-  have hsq : ‖P.value cell x‖ ^ 2 ≤ (1 : ℝ) ^ 2 := by
-    simpa [Real.norm_eq_abs, sq_abs] using hterm
-  exact (sq_le_sq₀ (norm_nonneg _) zero_le_one).mp hsq
+  rw [Real.norm_eq_abs]
+  apply (sq_le_sq₀ (abs_nonneg _) zero_le_one).mp
+  simpa only [sq_abs, one_pow] using hterm
 
 /-- Exponential localization of an ambient kernel descends exactly to its
 Dirichlet compression. -/
