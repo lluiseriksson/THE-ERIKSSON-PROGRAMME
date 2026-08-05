@@ -37,6 +37,21 @@ noncomputable section
 variable {L K Q Nc : ℕ}
 variable [NeZero L] [NeZero K] [NeZero Q] [NeZero Nc]
 
+private instance instNeZeroSourceSeparatedLargeBlockSide
+    (L K depth : ℕ) [NeZero L] [NeZero K] :
+    NeZero (cmp99SourceSeparatedLargeBlockSide L K depth) :=
+  ⟨by
+    unfold cmp99SourceSeparatedLargeBlockSide
+    exact (Nat.mul_pos (NeZero.pos K)
+      (pow_pos (NeZero.pos L) (depth + 1))).ne'⟩
+
+private instance instNeZeroSourceSeparatedAmbientSide
+    (L K Q depth : ℕ) [NeZero L] [NeZero K] [NeZero Q] :
+    NeZero (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
+  ⟨(Nat.mul_pos
+    (Nat.mul_pos (NeZero.pos K) (pow_pos (NeZero.pos L) (depth + 1)))
+    (Nat.mul_pos (by omega) (NeZero.pos Q))).ne'⟩
+
 /-- The one-step cutoff budget on the separated physical partition. -/
 noncomputable def cmp96SourceSeparatedCutoffDifferenceBudget
     (P : CMP95SourceSmoothPartitionProfile)
@@ -186,7 +201,7 @@ the cutoff-Laplacian coefficient budget by the generated range cancels the
 RG scale and leaves `32 * derivBound / K`. -/
 theorem cmp96SourceSeparatedCutoffLaplacianBudget_mul_generatedRange
     (P : CMP95SourceSmoothPartitionProfile)
-    (L K depth : ℕ) :
+    (L K depth : ℕ) [NeZero L] [NeZero K] :
     (8 * cmp96SourceSeparatedCutoffDifferenceBudget P L K depth) *
         (L ^ (depth + 1) : ℝ) =
       (32 * P.derivBound) / (K : ℝ) := by
