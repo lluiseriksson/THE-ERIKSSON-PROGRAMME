@@ -1,4 +1,4 @@
-name: Validate CMP99 Eq3.42 Green certificate
+name: Validate CMP99 Eq3.89 covariant link species
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: f08109f46eb3e41e25716f9156ee314b1760f7e9
+  SOURCE_SHA: 750fa1b79f6187eb122f932053210d99e440e8d5
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  cmp99-eq342-green-certificate:
+  cmp99-eq389-covariant-link:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -68,8 +68,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-eq342-green-certificate-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-eq389-covariant-link-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: |
+            hRpoly-cmp99-eq389-covariant-link-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-eq342-green-certificate-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp96-eq240-cutoff-laplacian-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-source-separated-regional-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
@@ -108,8 +109,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99Eq342RegionalGreenCertificate.lean \
-            YangMills/RG/BalabanCMP99Eq342RegionalGreenCertificateAudit.lean \
+            YangMills/RG/BalabanCMP99Eq389CovariantLinkDerivative.lean \
+            YangMills/RG/BalabanCMP99Eq389CovariantLinkDerivativeAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -131,10 +132,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_eq342_green_certificate_focal \
-            lake build YangMills.RG.BalabanCMP99Eq342RegionalGreenCertificate
-          run_stage cmp99_eq342_green_certificate_audit \
-            lake env lean YangMills/RG/BalabanCMP99Eq342RegionalGreenCertificateAudit.lean
+          run_stage cmp99_eq389_covariant_link_focal \
+            lake build YangMills.RG.BalabanCMP99Eq389CovariantLinkDerivative
+          run_stage cmp99_eq389_covariant_link_audit \
+            lake env lean YangMills/RG/BalabanCMP99Eq389CovariantLinkDerivativeAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -148,7 +149,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp99_eq342_green_certificate_audit.log": 12,
+              "cmp99_eq389_covariant_link_audit.log": 3,
           }
           result = {}
           for name, expected in audits.items():
@@ -179,17 +180,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > cmp99-eq342-green-certificate-evidence.tar.gz
-          sha256sum cmp99-eq342-green-certificate-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > cmp99-eq389-covariant-link-evidence.tar.gz
+          sha256sum cmp99-eq389-covariant-link-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp99-eq342-green-certificate-${{ env.SOURCE_SHA }}
+          name: cmp99-eq389-covariant-link-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp99-eq342-green-certificate-evidence.tar.gz
+            cmp99-eq389-covariant-link-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -198,4 +199,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-eq342-green-certificate-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-eq389-covariant-link-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
