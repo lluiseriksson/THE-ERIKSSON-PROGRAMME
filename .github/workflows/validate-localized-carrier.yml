@@ -2,11 +2,12 @@ name: Validate generated physical regional correction
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - codex/cmp116-interacting-wilson-hessian
-    paths:
-      - .github/workflows/validate-localized-carrier.yml
+    inputs:
+      cold:
+        description: Do not restore or save the diagnostic project graph
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -62,6 +63,7 @@ jobs:
           } | tee evidence/toolchain.txt
 
       - name: Restore diagnostic project graph
+        if: ${{ inputs.cold == false }}
         id: project-cache
         uses: actions/cache/restore@v4
         with:
@@ -73,7 +75,8 @@ jobs:
       - name: Record diagnostic cache state
         shell: bash
         run: |
-          printf 'PROJECT_CACHE_HIT=%s\nPROJECT_CACHE_PRIMARY_KEY=%s\nPROJECT_CACHE_MATCHED_KEY=%s\n' \
+          printf 'COLD_MODE=%s\nPROJECT_CACHE_HIT=%s\nPROJECT_CACHE_PRIMARY_KEY=%s\nPROJECT_CACHE_MATCHED_KEY=%s\n' \
+            '${{ inputs.cold }}' \
             '${{ steps.project-cache.outputs.cache-hit }}' \
             '${{ steps.project-cache.outputs.cache-primary-key }}' \
             '${{ steps.project-cache.outputs.cache-matched-key }}' | \
@@ -184,7 +187,7 @@ jobs:
           retention-days: 14
 
       - name: Save diagnostic project graph
-        if: always() && steps.project-cache.outputs.cache-hit != 'true'
+        if: ${{ always() && inputs.cold == false && steps.project-cache.outputs.cache-hit != 'true' }}
         uses: actions/cache/save@v4
         with:
           path: .lake/build
