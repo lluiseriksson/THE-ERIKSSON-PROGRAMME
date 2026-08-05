@@ -183,7 +183,7 @@ fifteenth smallness window, already at base depth. -/
 theorem not_cmp99SourceGeneratedPhysicalRegionalDefectBudget_lt_one_depth_zero
     (P : CMP95SourceSmoothPartitionProfile) (hM : 2 <= M)
     {spacing epsilon : ℝ} (hspacing : 0 < spacing) :
-    not (cmp99SourceGeneratedPhysicalRegionalDefectBudget
+    ¬ (cmp99SourceGeneratedPhysicalRegionalDefectBudget
       P M 0 spacing epsilon < 1) := by
   have h := cmp99SourceGeneratedPhysicalRegionalDefectBudget_depth_zero_lower_bound
     P hM (epsilon := epsilon) hspacing
