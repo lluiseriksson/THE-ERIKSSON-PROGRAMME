@@ -43,7 +43,10 @@ theorem cmp99IteratedLiftActiveRegion_full_sites_eq_univ
   induction k with
   | zero => rfl
   | succ k ih =>
-      rw [cmp99IteratedLiftActiveRegion_succ]
+      change (cmp99LiftActiveRegion (M := M)
+        (cmp99IteratedLiftActiveRegion (M := M)
+          (ActiveGaugeRegion.mk
+            (Finset.univ : Finset (FinBox d N))) k)).sites = Finset.univ
       apply Finset.eq_univ_iff_forall.mpr
       intro x
       rw [mem_cmp99LiftActiveRegion_sites_iff, ih]
@@ -63,10 +66,11 @@ theorem finitePiLpTypedKernelReindex_scalarCommutator
   apply ContinuousLinearMap.ext
   intro phi
   have hmult :
-      finitePiLpScalarMultiplier h
+      (finitePiLpScalarMultiplier (g := g) h)
           ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e.symm) phi) =
         (LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e.symm)
-          (finitePiLpScalarMultiplier (fun x => h (e.symm x)) phi) := by
+          ((finitePiLpScalarMultiplier (g := g) (fun x => h (e.symm x)))
+            phi) := by
     apply PiLp.ext
     intro y
     simp [finitePiLpScalarMultiplier_apply,
@@ -97,9 +101,8 @@ theorem isCoerciveCLM_finitePiLpTypedKernelReindex
         (finitePiLpTypedKernelReindex e e A phi) := by
       have hinner := U.inner_map_map (U.symm phi) (A (U.symm phi))
       rw [U.apply_symm_apply] at hinner
-      change inner ℝ (U.symm phi) (A (U.symm phi)) =
-        inner ℝ phi (U (A (U.symm phi)))
-      exact hinner.symm
+      simpa [finitePiLpTypedKernelReindex, U,
+        LinearIsometryEquiv.piLpCongrLeft_symm] using hinner.symm
 
 variable {M Q Nc : ℕ}
 variable [NeZero M] [NeZero Q] [NeZero Nc]
@@ -109,6 +112,13 @@ precision used by all source large-block Dirichlet regions. -/
 def cmp99SourceGeneratedPhysicalFullCoarseRegion (M Q : ℕ) :
     ActiveGaugeRegion 4 (2 * (M * Q)) :=
   ActiveGaugeRegion.mk Finset.univ
+
+private theorem dependent_cast_cancel_of_opposite_equalities
+    {I : Sort*} {F : I → Sort*} {i j : I}
+    (hij : i = j) (hji : j = i) (x : F j) :
+    hij ▸ (hji ▸ x) = x := by
+  cases hij
+  rfl
 
 /-- Explicit equivalence between the full generated active carrier and the
 factored ambient carrier of the source large-block partition. -/
@@ -128,14 +138,12 @@ noncomputable def cmp99SourceGeneratedPhysicalFullSiteEquiv
     left_inv := by
       intro x
       apply Subtype.ext
-      dsimp
-      cases hsize
-      rfl
+      exact dependent_cast_cancel_of_opposite_equalities
+        hsize.symm hsize x.1
     right_inv := by
       intro x
-      dsimp
-      cases hsize
-      rfl }
+      exact dependent_cast_cancel_of_opposite_equalities
+        hsize hsize.symm x }
 
 /-- The full-site equivalence preserves the literal periodic distance. -/
 theorem finBoxDist_cmp99SourceGeneratedPhysicalFullSiteEquiv_symm
@@ -169,7 +177,9 @@ noncomputable def cmp99SourceGeneratedPhysicalAmbientPrecision
   let Omega := cmp99SourceGeneratedPhysicalFullCoarseRegion M Q
   let e := cmp99SourceGeneratedPhysicalFullSiteEquiv M Q depth
   finitePiLpTypedKernelReindex e e
-    (cmp99SourceGeneratedPhysicalPrecision (by norm_num) hM Omega depth
+    (cmp99SourceGeneratedPhysicalPrecision
+      (d := 4) (M := M) (N := 2 * (M * Q)) (Nc := Nc) (by norm_num) hM
+      Omega depth
       spacing epsilon background budget fineSmall)
 
 /-- The ambient realization retains the exact source-generated coercivity
@@ -192,10 +202,12 @@ theorem isCoerciveCLM_cmp99SourceGeneratedPhysicalAmbientPrecision
       (cmp99SourceGeneratedCoercivity 4 M (depth + 1) spacing epsilon) := by
   exact isCoerciveCLM_finitePiLpTypedKernelReindex
     (cmp99SourceGeneratedPhysicalFullSiteEquiv M Q depth)
-    (cmp99SourceGeneratedPhysicalPrecision (by norm_num) hM
+    (cmp99SourceGeneratedPhysicalPrecision
+      (d := 4) (M := M) (N := 2 * (M * Q)) (Nc := Nc) (by norm_num) hM
       (cmp99SourceGeneratedPhysicalFullCoarseRegion M Q) depth spacing epsilon
       background budget fineSmall)
-    (isCoerciveCLM_cmp99SourceGeneratedPhysicalPrecision (by norm_num) hM
+    (isCoerciveCLM_cmp99SourceGeneratedPhysicalPrecision
+      (d := 4) (M := M) (N := 2 * (M * Q)) (Nc := Nc) (by norm_num) hM
       (cmp99SourceGeneratedPhysicalFullCoarseRegion M Q) depth hspacing
       background budget fineSmall hsmall)
 
@@ -216,8 +228,7 @@ theorem cmp99SourceGeneratedPhysicalLargeBlockCutoff_fullSiteEquiv_symm
     (cmp99SourceRegionalLargeBlockSquarePartition
       (M := M) (Q := Q) (depth := depth) P).value cell
         (hsize ▸ (hsize.symm ▸ x)) = _
-  cases hsize
-  rfl
+  rw [dependent_cast_cancel_of_opposite_equalities hsize hsize.symm x]
 
 /-- Exact dictionary: the regional square commutator of the one ambient
 precision is the isometric reindexing of the already bounded active
@@ -246,7 +257,9 @@ theorem cmp99SourceRegionalLargeBlockPrecisionCommutator_eq_reindex
         (finitePiLpScalarCommutator
           (cmp99SourceGeneratedPhysicalLargeBlockCutoff P
             (cmp99SourceGeneratedPhysicalFullCoarseRegion M Q) depth cell)
-          (cmp99SourceGeneratedPhysicalPrecision (by norm_num) hM
+          (cmp99SourceGeneratedPhysicalPrecision
+            (d := 4) (M := M) (N := 2 * (M * Q)) (Nc := Nc)
+            (by norm_num) hM
             (cmp99SourceGeneratedPhysicalFullCoarseRegion M Q) depth
             spacing epsilon background budget fineSmall)) := by
   rw [finitePiLpTypedKernelReindex_scalarCommutator]
@@ -304,7 +317,8 @@ theorem
   let e := cmp99SourceGeneratedPhysicalFullSiteEquiv M Q depth
   have hactive :=
     cmp99SourceGeneratedPhysicalPrecision_largeBlockCutoff_exponentialKernelBound
-      P hM (cmp99SourceGeneratedPhysicalFullCoarseRegion M Q) depth
+      (M := M) (Q := Q) (Nc := Nc) P hM
+      (cmp99SourceGeneratedPhysicalFullCoarseRegion M Q) depth
       hspacing hrate background budget fineSmall cell
   have hreindexed := finitePiLpTypedExponentialKernelBound_reindex e e _ _
     hactive
