@@ -59,13 +59,12 @@ theorem norm_covariant_reverse_difference_eq
           (rho.adCLM u (phi x) - phi (x.shiftBack i))‖ := by
       congr 1
       rw [map_sub, rho.ad_inv_apply_ad]
-      module
     _ = ‖rho.adCLM u (phi x) - phi (x.shiftBack i)‖ := rho.norm_ad _ _
     _ = ‖phi (x.shiftBack i) - rho.adCLM u (phi x)‖ := norm_sub_rev _ _
     _ = ‖covariantD0CLM rho U phi
         ((FinBox.shiftBack x i, i) : PhysicalBond 4 N)‖ := by
-      simp only [covariantD0CLM_apply, FinBox.shiftBack_shift,
-        positiveEdgeOfPhysicalBond]
+      simp only [covariantD0CLM_apply]
+      rw [FinBox.shiftBack_shift]
       rfl
 
 /-- Direct pointwise estimate for the first species of CMP99 (3.88).
@@ -77,7 +76,7 @@ cardinality or Poincare constant occurs. -/
 theorem norm_cmp99CovariantCutoffLinkDerivative_one_le
     (rho : SUNAdjointModel Nc) (U : PhysicalGaugeBackground 4 N Nc)
     (h : FinBox 4 N → ℝ) (phi : PhysicalGaugeZeroCochain 4 N Nc)
-    (x : FinBox 4 N) (slope : ℝ) (hslope : 0 ≤ slope)
+    (x : FinBox 4 N) (slope : ℝ)
     (hforward : ∀ i : Fin 4, ‖h x - h (x.shift i)‖ ≤ slope)
     (hback : ∀ i : Fin 4, ‖h x - h (x.shiftBack i)‖ ≤ slope) :
     ‖cmp99CovariantCutoffLinkDerivative rho U 1 h phi x‖ ≤
