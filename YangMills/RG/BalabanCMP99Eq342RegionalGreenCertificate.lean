@@ -3,7 +3,9 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay
+import YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
+import YangMills.RG.BalabanCMP99SourceRetainedPhysicalPrecision
+import YangMills.RG.FinitePiLpTypedKernel
 
 /-!
 # CMP99 (3.42): the four local regional-Green estimates
