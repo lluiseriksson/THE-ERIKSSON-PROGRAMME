@@ -74,10 +74,15 @@ theorem cmp99SourceGeneratedPhysicalPrecision_cutoffCommutator_fixedOutputWeight
       ‖h target - h source‖ ≤
         slope * (finBoxDist target.1 source.1 : ℝ)) :
     FinitePiLpTypedFixedOutputWeightedKernelBound
-      (finitePiLpScalarCommutator h
+      (finitePiLpScalarCommutator
+        (ι := ActiveGaugeRegion.Site
+          (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+        (g := SUNLieCoord Nc) h
         (cmp99SourceGeneratedPhysicalPrecision hd hM Omega depth spacing epsilon
           background budget fineSmall))
-      (fun target source => finBoxDist target.1 source.1)
+      (fun (target source : ActiveGaugeRegion.Site
+          (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))) =>
+        finBoxDist target.1 source.1)
       (cmp99SourceGeneratedPhysicalCutoffCommutatorBudget
         d M depth spacing epsilon rate slope) rate := by
   let K := cmp99SourceGeneratedPhysicalPrecision hd hM Omega depth
@@ -122,10 +127,15 @@ theorem cmp99SourceGeneratedPhysicalPrecision_cutoffCommutator_exponentialKernel
       ‖h target - h source‖ ≤
         slope * (finBoxDist target.1 source.1 : ℝ)) :
     FinitePiLpTypedExponentialKernelBound
-      (finitePiLpScalarCommutator h
+      (finitePiLpScalarCommutator
+        (ι := ActiveGaugeRegion.Site
+          (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+        (g := SUNLieCoord Nc) h
         (cmp99SourceGeneratedPhysicalPrecision hd hM Omega depth spacing epsilon
           background budget fineSmall))
-      (fun target source => finBoxDist target.1 source.1)
+      (fun (target source : ActiveGaugeRegion.Site
+          (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))) =>
+        finBoxDist target.1 source.1)
       (cmp99SourceGeneratedPhysicalCutoffCommutatorBudget
         d M depth spacing epsilon rate slope) rate := by
   apply finitePiLpTypedExponentialKernelBound_of_fixedOutputWeighted _ _ hrate
