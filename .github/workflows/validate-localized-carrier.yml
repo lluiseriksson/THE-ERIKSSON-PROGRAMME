@@ -1,4 +1,4 @@
-name: Validate generated regional defect budget no-go
+name: Validate source-separated regional scales
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 8494a73fcf1e6fc2bb59ab6442e7631cfcfe94a0
+  SOURCE_SHA: e4202ce9e4ec40cfcf35f099a92224fcf96668f0
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  generated-regional-defect-budget-nogo:
+  source-separated-regional-scales:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -68,8 +68,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-regional-defect-budget-nogo-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-source-separated-regional-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: |
+            hRpoly-source-separated-regional-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-regional-defect-budget-nogo-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-regional-defect-contraction-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-regional-correction-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
@@ -105,8 +106,14 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceGeneratedRegionalDefectBudgetNoGo.lean \
-            YangMills/RG/BalabanCMP99SourceGeneratedRegionalDefectBudgetNoGoAudit.lean \
+            YangMills/RG/BalabanCMP99SourceSeparatedLargeBlockPartition.lean \
+            YangMills/RG/BalabanCMP99SourceSeparatedLargeBlockPartitionAudit.lean \
+            YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoff.lean \
+            YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoffAudit.lean \
+            YangMills/RG/BalabanCMP99SourceSeparatedGeneratedRegionalDefectBudget.lean \
+            YangMills/RG/BalabanCMP99SourceSeparatedGeneratedRegionalDefectBudgetAudit.lean \
+            YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary.lean \
+            YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionaryAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -128,10 +135,22 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage generated_regional_defect_budget_nogo_focal \
-            lake build YangMills.RG.BalabanCMP99SourceGeneratedRegionalDefectBudgetNoGo
-          run_stage generated_regional_defect_budget_nogo_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedRegionalDefectBudgetNoGoAudit.lean
+          run_stage separated_large_block_partition_focal \
+            lake build YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition
+          run_stage separated_large_block_partition_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceSeparatedLargeBlockPartitionAudit.lean
+          run_stage separated_physical_cutoff_focal \
+            lake build YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoff
+          run_stage separated_physical_cutoff_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoffAudit.lean
+          run_stage separated_regional_defect_budget_focal \
+            lake build YangMills.RG.BalabanCMP99SourceSeparatedGeneratedRegionalDefectBudget
+          run_stage separated_regional_defect_budget_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceSeparatedGeneratedRegionalDefectBudgetAudit.lean
+          run_stage separated_ambient_dictionary_focal \
+            lake build YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary
+          run_stage separated_ambient_dictionary_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionaryAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -144,7 +163,12 @@ jobs:
           import re
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
-          audits = {"generated_regional_defect_budget_nogo_audit.log": 4}
+          audits = {
+              "separated_large_block_partition_audit.log": 17,
+              "separated_physical_cutoff_audit.log": 11,
+              "separated_regional_defect_budget_audit.log": 8,
+              "separated_ambient_dictionary_audit.log": 8,
+          }
           result = {}
           for name, expected in audits.items():
               text = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -174,17 +198,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > generated-regional-defect-budget-nogo-evidence.tar.gz
-          sha256sum generated-regional-defect-budget-nogo-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > source-separated-regional-scales-evidence.tar.gz
+          sha256sum source-separated-regional-scales-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: generated-regional-defect-budget-nogo-${{ env.SOURCE_SHA }}
+          name: source-separated-regional-scales-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            generated-regional-defect-budget-nogo-evidence.tar.gz
+            source-separated-regional-scales-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -193,4 +217,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-regional-defect-budget-nogo-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-source-separated-regional-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
