@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99Eq389CovariantLinkDerivative
+
+set_option pp.universes false in
+#print axioms YangMills.RG.norm_covariant_reverse_difference_eq
+#print axioms YangMills.RG.norm_cmp99CovariantCutoffLinkDerivative_one_le
+#print axioms YangMills.RG.cmp99Eq389SourceSeparatedSlope_mul_leftDerivativeScale
