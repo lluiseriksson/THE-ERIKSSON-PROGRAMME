@@ -126,8 +126,9 @@ theorem finitePiLpExponentialKernelBound_comp_finBox
     finBoxDist finBoxDist finBoxDist
     (fun target middle source => finBoxDist_triangle target middle source)
     hsigma hsigmaRate hS
-    (fun target =>
-      finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound_any target hsigma)
+    (fun target => by
+      simpa [finBoxDist_comm] using
+        finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound_any target hsigma)
     Left Right hLeft hRight
 
 /-- Exponential localization of an ambient kernel descends exactly to its
