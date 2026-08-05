@@ -17,19 +17,23 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
-20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
-sent as the v2 replacement.  Its exact PDF is pinned at paper commit
-`e68b821f7`, has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`, and is
+**Latest ai.viXra submission (2026-08-05; new paper submitted).**  The 17-page
+paper *From Dobrushin Comparison to a Quasi-Local C*-State: A Lean-Checked
+Construction for the Two-Dimensional Ising Model* was submitted to
+ai.viXra.org.  Its exact PDF is pinned at paper commit `c1943b49`, has 377,505
+bytes and SHA-256
+`7FAECBB1A2799A00B93DA255597030E2561104A98D01ABE1C3B455E2661F8993`, and is
 described in
-[`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).
-The fresh-clone evidence on branch `d3-closure` records a green 8,475-job core
-and a 2,980-report repository oracle at verified source anchor `8e8375d34`.
-Those are branch measurements, not a replacement for the canonical `main`
-checkpoint: neither the paper commit nor its source anchor was in `main` when
-this notice was written.  The moderation/publication outcome is not yet
-recorded here.
+[`docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md`](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md).
+Fresh Colab evidence at source anchor `f587b350` records three green targeted
+modules, a green **8,494-job** core and a zero-exit 5,481-line repository
+oracle.  The paper constructs the quasi-local commutative C*-state and exact
+finite-volume Gibbs tower stated there; the infinite-volume DLR fixed-point
+identity for the completed state remains open and no Yang--Mills consequence
+is claimed.  These are branch measurements, not a replacement for the
+canonical `main` checkpoint: neither the paper commit nor its source anchor
+was in `main` when this notice was written.  The moderation/publication outcome
+and public identifier are not yet recorded here.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
