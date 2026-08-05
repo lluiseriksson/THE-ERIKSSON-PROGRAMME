@@ -1,6 +1,101 @@
-# D-7/D-8 release manifest
+# D-7/D-9 release manifest
 
 This is an evidence record for external audit, not a terminal certification.
+
+## D-9 extension status -- FRESH COLAB PASS
+
+The D-9 source is frozen in a dedicated commit.  Three targeted builds, the
+full `YangMillsCore` integration, and the complete axiom oracle passed in a
+fresh Colab Linux runtime.
+
+- Branch: `codex/d9-dlr-cstar`
+- Base D-8 release: `5cab0ba273f9b0d19abfb1ed8e64087919e4488c`
+- D-9 Lean source anchor: `f587b35001f4ae87c7fe0383662864df6bc9a1c0`
+- D-9 source tree: `ea4e4e9a2913275273efe98c09ca58c16ac7f3b7`
+- Source delta: 6 files, 1,657 insertions
+- New modules: `YangMills.OS.DobrushinUniformState`,
+  `YangMills.OS.DobrushinCStarState`, and
+  `YangMills.OS.DobrushinFiniteSetDLR`
+- Lean: `v4.29.0-rc6`
+- Observed fresh-runtime cost: approximately 72 minutes for `YangMillsCore`
+  and 45 minutes for `oracle_check.lean`, excluding the targeted builds
+- Source transport: exact local D-9 files were copied into a fresh Colab
+  Linux project/runtime.  This is fresh-platform compilation evidence, not an
+  independent public-clone replay of the still-unpublished source commit.
+
+Fresh Colab targeted validation:
+
+```text
+lake build YangMills.OS.DobrushinUniformState
+exit 0; Build completed successfully (8178 jobs)
+
+lake build YangMills.OS.DobrushinCStarState
+exit 0; Build completed successfully (8179 jobs)
+
+lake build YangMills.OS.DobrushinFiniteSetDLR
+exit 0; Build completed successfully (8180 jobs)
+
+lake build YangMillsCore
+exit 0; Build completed successfully (8494 jobs)
+2,120 lines; 135,769 bytes
+log SHA-256 8aaffa8ec2d7c7e037302824c327e205a9f46b6c7fd3f257704574b8d4a9971e
+
+lake env lean oracle_check.lean
+exit 0; 5,481 lines; 369,750 bytes
+log SHA-256 f2f06a6f844ff936bdc12310d959a0251dfbb7e411b1f5758360938f6593b5b9
+```
+
+All 19 D-9 declarations listed by the final oracle block were present.  Their
+reported dependencies are subsets of
+`[propext, Classical.choice, Quot.sound]`; notably,
+`finiteSetSwap_involutive` reports only `[propext, Quot.sound]`, while the
+terminal `expect_finiteSetCondExp` reports exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The algebraic result constructs the intrinsic uniform norm on the real local
+cylinder quotient, its explicit complex star algebra and faithful bounded
+continuous-function representation, the concrete commutative C-star closure,
+a dense local embedding, and a positive norm-one continuous extension
+`quasilocalCStarState`.  The finite-geometry result constructs normalized
+positive Gibbs kernels for arbitrary finite subsets of a finite ambient type,
+their conditional expectations, exterior locality, idempotence, and the exact
+finite-volume Gibbs tower/fixed-point identity by an involutive reindexing.
+
+The following claims remain deliberately out of scope: the infinite-volume
+DLR fixed-point identity for the completed state; covariance of that completed
+C-star state under the full `Z^2` action; arbitrary Folner/exhaustion
+independence; nested finite-set specification consistency; a parameter region
+beyond classical Dobrushin uniqueness; and any Yang--Mills consequence.  In
+particular, the anisotropic Dobrushin envelope is sharper than a square window
+but is not described as a non-classical region.
+
+D-9 source corpus:
+
+| File | Bytes | SHA-256 | LF | CR |
+|---|---:|---|---:|---:|
+| `YangMills/OS/DobrushinUniformState.lean` | 11,918 | `7de826a36be867ba9c67ec73710bfbc7b309873c6821c67cbd9d03afa34b6e26` | 312 | 0 |
+| `YangMills/OS/DobrushinCStarState.lean` | 38,513 | `c42c9430cca4137626b4ee4915cf224596fcf84bccba288e3bed285fc9bc5dcf` | 881 | 0 |
+| `YangMills/OS/DobrushinFiniteSetDLR.lean` | 11,467 | `23addb21e08f8195e113f98f31286d199cc8d20cfbfb455eef71b00a1280c94f` | 284 | 0 |
+| `YangMillsCore.lean` | 65,991 | `32ae69630fb2b15006d0afae817e8082ba5ed6f4d1ec858222dd4bce73ddc7ba` | 1,077 | 1,060 |
+| `oracle_check.lean` | 242,649 | `35f97ce1f2ffd1600ca9be602b70f3d724f77f22f2cef90be9bcd0a7ed5cf901` | 3,453 | 3,412 |
+| `docs/D9-DLR-CSTAR-PLAN.md` | 6,623 | `bed0e1895b1c0938f0f76055d011123864cc01347fe875621772569205d3d740` | 141 | 0 |
+
+Paper artifact after the verified render:
+
+| File | Bytes | SHA-256 | LF | CR |
+|---|---:|---|---:|---:|
+| `papers/dobrushin-thermodynamic-limit/dobrushin_thermodynamic_limit.tex` | 49,756 | `2965e1351059815dc3ecb324b7372c7242c7c8ea7256617ccb1ac2b5c939816b` | 1,163 | 729 |
+| `papers/dobrushin-thermodynamic-limit/README.md` | 1,207 | `0abf895f26b09b5ac808c0c519304485dbe93594ca1bbb2de664125abf55651a` | 22 | 7 |
+| `output/pdf/dobrushin_thermodynamic_limit.pdf` | 377,505 | `7faecbb1a2799a00b93da255597030e2561104a98d01abe1c3b455e2661f8993` | n/a | n/a |
+
+The PDF was produced with two final `pdflatex` passes, both exit 0.  It has 17
+letter-size pages, correct title/author metadata, extractable text, no
+encryption, no overfull boxes or undefined references, and every page was
+rendered at 110 dpi and visually inspected.  The only remaining log diagnostic
+is a visually harmless longtable page-break glue warning.
+
+The remainder of this file preserves the D-8 and D-7 evidence records.  Their
+counts and hashes apply only to the frozen objects named in those sections.
 
 ## D-8 extension status -- FRESH COLAB PASS
 

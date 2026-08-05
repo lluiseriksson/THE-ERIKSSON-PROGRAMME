@@ -1,4 +1,4 @@
-% D-7/D-8: thermodynamic limit and full Z^2 covariance.
+% D-7/D-9: thermodynamic limit, covariance, and C-star completion.
 % Source freeze is assigned only after the extended Lean corpus is committed.
 \documentclass[11pt]{article}
 \usepackage[margin=1.08in]{geometry}
@@ -9,9 +9,9 @@
 \usepackage[colorlinks=true,linkcolor=blue!60!black,
   urlcolor=blue!60!black,citecolor=blue!60!black]{hyperref}
 \hypersetup{
-  pdftitle={From Dobrushin Comparison to a Translation-Invariant Infinite-Volume State},
+  pdftitle={From Dobrushin Comparison to a Quasi-Local C*-State},
   pdfauthor={Lluis Eriksson},
-  pdfsubject={A Lean-checked Dobrushin thermodynamic-limit construction}
+  pdfsubject={A Lean-checked thermodynamic limit and commutative C*-state for the two-dimensional Ising model}
 }
 
 \newtheorem{theorem}{Theorem}[section]
@@ -37,14 +37,13 @@
 \newcommand{\abs}[1]{\lvert #1\rvert}
 \newcommand{\norm}[1]{\lVert #1\rVert}
 
-\newcommand{\sourceanchor}{6ce506bb6ad627e793485631a12f1271423f2bd4}
+\newcommand{\sourceanchor}{f587b35001f4ae87c7fe0383662864df6bc9a1c0}
 \newcommand{\leanfile}[2]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\sourceanchor/YangMills/OS/#1.lean}{\nolinkurl{#2.lean}}}
 \newcommand{\leanline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\sourceanchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 
-\title{From Dobrushin Comparison to a Translation-Invariant\\
-Infinite-Volume State:\\
+\title{From Dobrushin Comparison to a Quasi-Local C$^*$-State:\\
 A Lean-Checked Construction for the Two-Dimensional Ising Model}
 \author{Lluis Eriksson}
 \date{}
@@ -97,12 +96,23 @@ produces a positive normalized real-linear functional $\omega$ satisfying
 \[
   \omega(\tau_z f)=\omega(f),\qquad z\in\Z^2.
 \]
+The real cylinder algebra is then given its intrinsic uniform norm, faithfully
+complexified as a star algebra, and represented in the bounded continuous
+functions on the product spin space.  The closure is a commutative C$^*$-
+algebra, and the cylinder functional extends continuously to a positive complex
+linear functional of norm one.  We also construct, for every finite ambient
+spin system and every finite conditioning set, the exact Gibbs conditional
+kernel.  Lean verifies positivity, normalization, exterior locality,
+idempotence, and the finite-volume DLR tower identity by an involutive
+reindexing of the finite sum.  The passage of this finite-set identity to the
+infinite-volume C$^*$-state is not claimed here.
 All concrete results use only
 \[
   2\tanh\abs\beta+2\tanh\abs\gamma\le\alpha<1.
 \]
-No Kotecky--Preiss hypothesis enters.  A norm completion and a complex
-C$^*$-state are not constructed, and no Yang--Mills consequence is claimed.
+No Kotecky--Preiss hypothesis enters.  The parameter region remains the
+classical Dobrushin region; no beyond-Dobrushin phase-diagram improvement and
+no Yang--Mills consequence is claimed.
 \end{abstract}
 
 \section{Introduction}
@@ -128,6 +138,12 @@ usually suppressed on paper:
 \item intrinsic integer-site cylinders are quotiented by equality of their
   global realization, and exact periodic translations prove invariance of the
   resulting state under the full group $\Z^2$.
+\item the local quotient is complexified and completed in its faithful uniform
+  representation, and the state is extended to a positive norm-one functional
+  on the resulting commutative C$^*$-algebra;
+\item arbitrary finite conditioning sets produce positive normalized
+  exterior-local idempotent Gibbs kernels, and the finite Gibbs measure is
+  proved to satisfy their exact tower identity.
 \end{enumerate}
 
 The formalization was motivated by a precise gap in an earlier finite-volume
@@ -157,12 +173,13 @@ and \texttt{Quot.sound}.
 
 \subsection*{What is not claimed}
 
-The paper constructs an algebraic local state with a full $\Z^2$ action and
-proves free--periodic equality for the centred square exhaustion.  It does not
-compare every possible shape or form a norm-completed complex C$^*$-algebra.
-These distinctions are substantive, not terminological.  In particular,
-``positive normalized local state'' below is not used as a synonym for a
-completed C$^*$-algebraic Gibbs state.
+The paper constructs both an algebraic local state with a full $\Z^2$ action
+and a positive norm-one state on a concrete commutative C$^*$ completion; it
+also proves free--periodic equality for the centred square exhaustion.  It
+does not compare every possible exhaustion shape, extend the full $\Z^2$
+action to the completed algebra, or prove that the completed state satisfies
+the infinite-volume DLR equations.  The finite-set tower theorem below is a
+load-bearing finite identity, not a relabelling of the completed state as DLR.
 
 \section{Finite products and one-site influence}
 
@@ -667,6 +684,116 @@ then invokes Theorem~\ref{thm:periodic} twice.  Hence Dobrushin comparison
 participates through the free--periodic convergence theorem, while the
 translation step itself introduces no narrower analytic window.
 
+\section{Uniform completion and finite-set Gibbs specification}
+\label{sec:cstar-dlr}
+
+\subsection{A concrete commutative C$^*$-algebra and its state}
+
+The quotient realization is now used as a norm producer, rather than as
+informal notation.  For $F\in\mathcal A_{\mathrm{loc}}$ put
+\[
+  \norm F_\infty=\sup_{\sigma\in\mathcal X}\abs{\widehat F(\sigma)}.
+\]
+Faithfulness of the global realization makes this a genuine norm.  Positivity
+and normalization of the state imply the machine-checked estimate
+\[
+  \abs{\omega(F)}\le \norm F_\infty.
+\]
+The proof applies positivity to the two nonnegative cylinders
+$\norm F_\infty\one\pm F$; contractivity is therefore derived from the state
+laws and is not an extra continuity hypothesis.
+
+A complex local cylinder is the explicit pair $F+iG$ with
+$F,G\in\mathcal A_{\mathrm{loc}}$.  Multiplication is
+$(F+iG)(H+iK)=(FH-GK)+i(FK+GH)$ and the involution is pointwise conjugation.
+The map
+\[
+ F+iG\longmapsto
+ \bigl(\sigma\mapsto\widehat F(\sigma)+i\widehat G(\sigma)\bigr)
+\]
+is proved to be an injective star-algebra homomorphism into the bounded
+continuous complex functions on the compact product space $\mathcal X$.
+Define
+\[
+  \mathcal A=\overline{\mathcal A_{\mathrm{loc}}+i\mathcal A_{\mathrm{loc}}}
+     ^{\,\norm\cdot_\infty}
+  \subset C_b(\mathcal X;\mathbb C).
+\]
+In Lean, $\mathcal A$ is literally the topological closure of the range star
+subalgebra.  Its closed-subalgebra instance supplies completeness and the
+C$^*$ identity; neither is postulated in a record field.  The local embedding
+is isometric and has dense range.
+
+\begin{theorem}[quasi-local C$^*$-state; machine-checked]
+\label{thm:cstar-state}
+Under the hypotheses of Theorem~\ref{thm:covariant-state}, there is a complex
+linear functional $\widetilde\omega:\mathcal A\to\mathbb C$ satisfying
+\begin{align*}
+ \widetilde\omega(F+iG)&=\omega(F)+i\omega(G),\qquad F,G\in\mathcal A_{\rm loc},\\
+ x\ge0&\Longrightarrow \widetilde\omega(x)\ge0,\\
+ \widetilde\omega(\one)&=1,\qquad \norm{\widetilde\omega}=1.
+\end{align*}
+Thus $\widetilde\omega$ is a positive normalized state on the explicit
+commutative C$^*$-algebra $\mathcal A$.
+\end{theorem}
+
+The faithful representation is
+\leanline{DobrushinCStarState}{423}{realizeGlobalBCFStarAlgHom_injective};
+density is
+\leanline{DobrushinCStarState}{737}{denseRange_localToQuasilocal}; positivity
+on all positive elements is
+\leanline{DobrushinCStarState}{812}{quasilocalStateCLM_nonneg}; and the terminal
+positive map is
+\leanline{DobrushinCStarState}{866}{quasilocalCStarState}.  The norm-one
+identity is separately proved at
+\leanline{DobrushinCStarState}{843}{norm_quasilocalStateCLM}.
+
+\subsection{Arbitrary finite conditioning sets}
+
+Let $I$ and $S$ be finite nonempty types, let $w:S^I\to\R_{>0}$, and let
+$\Lambda\subset I$ be any finite set.  If
+$\eta[x]_\Lambda$ replaces precisely the spins of $\eta$ in $\Lambda$ by
+$x\in S^\Lambda$, define
+\[
+ Z_\Lambda(\eta)=\sum_{x\in S^\Lambda}w(\eta[x]_\Lambda),\qquad
+ \gamma_\Lambda(x\mid\eta)=
+   \frac{w(\eta[x]_\Lambda)}{Z_\Lambda(\eta)},
+\]
+and
+\[
+ (\Gamma_\Lambda F)(\eta)=
+   \sum_{x\in S^\Lambda}\gamma_\Lambda(x\mid\eta)
+       F(\eta[x]_\Lambda).
+\]
+No rectangular geometry is built into these definitions.
+
+\begin{theorem}[finite-set Gibbs tower; machine-checked]
+\label{thm:finite-dlr}
+For every positive finite weight and every finite $\Lambda\subset I$,
+$\gamma_\Lambda$ is strictly positive, sums to one, and depends on $\eta$ only
+through $I\setminus\Lambda$.  The operator $\Gamma_\Lambda$ preserves one and
+positivity, is exterior-local and idempotent, and the Gibbs probability
+$\mu_w=w/\sum_\xi w(\xi)$ satisfies
+\[
+   \E_{\mu_w}[\Gamma_\Lambda F]=\E_{\mu_w}[F]
+\]
+for every $F:S^I\to\R$.
+\end{theorem}
+
+The tower identity is not passed as an antecedent.  Its Lean proof reindexes
+the double sum by the involution
+\[
+  (\eta,x)\longmapsto(\eta[x]_\Lambda,\eta|_\Lambda),
+\]
+then cancels the positive local and global partition functions.  The main
+endpoints are
+\leanline{DobrushinFiniteSetDLR}{78}{finiteSetGibbsKernel_sum_one},
+\leanline{DobrushinFiniteSetDLR}{146}{finiteSetCondExp_idem}, and
+\leanline{DobrushinFiniteSetDLR}{209}{expect_finiteSetCondExp}.
+This theorem supplies the finite algebraic DLR layer.  Identifying the stable
+nearest-neighbour kernel on $\Z^2$ and passing the identity through the
+thermodynamic limit remain separate obligations.
+
 \section{Proof architecture and kill tests}
 
 The proof was designed around failure modes that can survive informal
@@ -706,6 +833,21 @@ finite periodic symmetry and infinite-state invariance are proved on that
 carrier itself.  The gauge-link action elsewhere in the repository is not
 imported into any statement of the construction.
 
+\paragraph{No asserted C$^*$ completion.}
+The norm is induced by an injective realization into bounded continuous
+functions.  The quasi-local carrier is the topological closure of the actual
+local range, and density is proved.  Positivity is first proved on local
+star-squares, propagated by continuity, and then converted to positivity on
+all positive elements using the C$^*$ spectral order.  Normalization and the
+operator-norm lower and upper bounds are separate theorems.
+
+\paragraph{No DLR conclusion as premise.}
+The finite-set kernel is defined from the positive weight and a replacement
+map.  The fixed-point equation for the finite Gibbs measure is the conclusion
+of an explicit involutive sum reindexing.  Conversely, no infinite-volume DLR
+label is attached to the completed state until the stable lattice kernel and
+limit passage have been formalized.
+
 \section{Relation to classical work}
 
 Dobrushin's 1968 paper formulates regularity and uniqueness conditions through
@@ -739,9 +881,17 @@ kernel-checked assembly of the following interfaces in Lean~4:
 \Longrightarrow
 \text{exact periodic translations}
 \Longrightarrow
-\text{full $\Z^2$-invariant local state}.
+\text{full $\Z^2$-invariant local state}\\
+\Longrightarrow
+\text{uniform complex star closure}
+\Longrightarrow
+\text{positive norm-one C$^*$-state},
 \end{gathered}
 \]
+Alongside this thermodynamic chain, the finite product layer now constructs
+arbitrary finite-set conditional kernels and proves their Gibbs tower
+identity.  This auxiliary theorem is parameter-free and does not enlarge the
+classical Dobrushin uniqueness region.
 We make no categorical priority claim about formalizations in other proof
 assistants.  The reproducible contribution is the particular Lean theorem
 chain and its audited source anchor.
@@ -798,6 +948,22 @@ Lean declaration & Mathematical role\\
 & Invariance under every integer displacement.\\
 \leanline{DobrushinCovariantState}{496}{infiniteTranslationInvariantSiteCylinderState}
 & Positive normalized fully invariant local state.\\
+\leanline{DobrushinUniformState}{256}{abs_infiniteStateValue_le_uniformNorm}
+& Intrinsic uniform contractivity.\\
+\leanline{DobrushinCStarState}{423}{realizeGlobalBCFStarAlgHom_injective}
+& Faithful complex star representation.\\
+\leanline{DobrushinCStarState}{737}{denseRange_localToQuasilocal}
+& Dense local inclusion in the C$^*$ closure.\\
+\leanline{DobrushinCStarState}{812}{quasilocalStateCLM_nonneg}
+& Positivity on every positive completed element.\\
+\leanline{DobrushinCStarState}{843}{norm_quasilocalStateCLM}
+& Operator norm exactly one.\\
+\leanline{DobrushinCStarState}{866}{quasilocalCStarState}
+& Terminal positive normalized C$^*$ functional.\\
+\leanline{DobrushinFiniteSetDLR}{146}{finiteSetCondExp_idem}
+& Idempotent arbitrary finite-set Markov operator.\\
+\leanline{DobrushinFiniteSetDLR}{209}{expect_finiteSetCondExp}
+& Exact finite Gibbs tower/DLR identity.\\
 \bottomrule
 \end{longtable}
 \endgroup
@@ -809,7 +975,8 @@ The release protocol is:
 \item clone the public repository and detach at the frozen source commit;
 \item restore Mathlib/Lake artifacts with \texttt{lake exe cache get};
 \item build the terminal module
-  \texttt{YangMills.OS.DobrushinCovariantState};
+  \texttt{YangMills.OS.DobrushinFiniteSetDLR}, which imports the uniform and
+  C$^*$ state layers;
 \item build \texttt{YangMillsCore};
 \item run \texttt{lake env lean oracle\_check.lean};
 \item compile this manuscript twice with \texttt{pdflatex};
@@ -824,24 +991,34 @@ reported as verified unless its target was materialized successfully.
 The current result is materially stronger than a centred scalar limit: it is
 a positive normalized real-linear functional on an explicit quotient of
 finite $\Z^2$ site cylinders, invariant under the complete translation group
-and stable under the free--periodic boundary change.  Two boundaries remain.
+and stable under the free--periodic boundary change, together with a positive
+norm-one extension to a concrete commutative C$^*$-algebra.  It also includes
+the exact finite-system, finite-set Gibbs tower.  Three boundaries remain.
 
 \begin{enumerate}
-\item \textbf{Arbitrary shapes and DLR packaging.}  Cofinal schedules of centred squares and
-  the free--periodic pair are covered.  Arbitrary aspect ratios, general
-  F\o lner exhaustions, all one-body boundary fields, and a DLR specification
-  on the infinite product space are not bundled.
-\item \textbf{C$^*$ completion.}  The real local quotient and its pointwise
-  operations are formalized, but complexification, the uniform norm,
-  completion, involution, continuity of $\omega$, and extension to a
-  norm-one complex C$^*$-state are not.
+\item \textbf{Infinite-volume DLR passage.}  The arbitrary finite-set kernel,
+  its Markov laws and the finite Gibbs fixed-point identity are formalized.
+  The stable nearest-neighbour kernel on the infinite product space and the
+  limit theorem $\widetilde\omega(\Gamma_\Lambda F)=\widetilde\omega(F)$ are
+  not yet proved.
+\item \textbf{Arbitrary exhaustion geometry.}  Cofinal schedules of centred
+  squares and the free--periodic pair are covered.  Arbitrary aspect ratios,
+  general F\o lner exhaustions, and all one-body boundary fields are not.
+\item \textbf{Completed covariance and parameter frontier.}  The local real
+  state has the full $\Z^2$ invariance theorem, while the continuous
+  automorphism action and its invariance on the C$^*$ closure are not bundled.
+  The analytic window remains the classical, conservative entrywise
+  Dobrushin envelope.  No ``non-classical'' region is inferred from the new
+  algebraic completion.
 \end{enumerate}
 
-The natural next project is therefore a normed one: complexify the local
-quotient, prove the uniform bound $\abs{\omega(F)}\le\norm{F}_\infty$, complete
-the algebra and extend both $\omega$ and the translations continuously.  That
-work is not needed for Theorem~\ref{thm:covariant-state} and is not silently
-included in its terminology.
+The next theorem is therefore the infinite-volume interface: define the
+finite-range Ising specification on $\Z^2$, prove its cylinder locality, and
+pass Theorem~\ref{thm:finite-dlr} through the already established complete
+thermodynamic-limit sequence.  Completed covariance can then be obtained by
+extending the isometric local translations.  Any genuine enlargement beyond
+the classical Dobrushin region requires a separate analytic mechanism and is
+not supplied by terminology.
 
 \section{Conclusion}
 
@@ -856,11 +1033,15 @@ The final Lean development proves the complete free sequence convergent,
 packages its values into a compatible positive normalized cylinder-state
 family, removes dependence on the auxiliary envelope and on cofinal sampling,
 and proves that periodic and free rectangles select the same limit.  It then
-constructs the integer-site quotient, proves exact periodic symmetries and
-obtains a positive normalized state invariant under every translation in
-$\Z^2$.  The visible region remains the Dobrushin window, rather than a
-constant imported from a cluster expansion.  Norm completion and a complex
-C$^*$-state remain explicit future work.
+  constructs the integer-site quotient, proves exact periodic symmetries and
+  obtains a positive normalized state invariant under every translation in
+  $\Z^2$.  The quotient is then faithfully complexified and uniformly closed;
+  the state extends to a positive functional of norm one on the resulting
+  commutative C$^*$-algebra.  Arbitrary finite conditioning sets satisfy an
+  exact finite Gibbs tower identity.  The visible region remains the classical
+  Dobrushin window, rather than a constant imported from a cluster expansion;
+  infinite-volume DLR passage, completed covariance, and a beyond-Dobrushin
+  region remain explicit future work.
 
 \appendix
 
@@ -893,7 +1074,13 @@ The terminal import chain is
 \longrightarrow
 \texttt{DobrushinPeriodicTranslation}\\[0.3em]
 \Downarrow\\[-0.1em]
-\texttt{DobrushinCovariantState}.
+\texttt{DobrushinCovariantState}
+\longrightarrow
+\texttt{DobrushinUniformState}\\[0.3em]
+\Downarrow\\[-0.1em]
+\texttt{DobrushinCStarState}
+\longrightarrow
+\texttt{DobrushinFiniteSetDLR}.
 \end{array}
 \]
 Each arrow corresponds to an actual Lean import and theorem consumption.  The
@@ -914,13 +1101,24 @@ not an analytic dependency of the Dobrushin terminal theorem.
 \item[Integer site-cylinder quotient.] Finite supports in $\Z^2$, identified
   exactly when their represented functions on $\{0,1\}^{\Z^2}$ agree.
 \item[Full covariance.] The identity $\omega(\tau_zF)=\omega(F)$ for every
-  $z\in\Z^2$, including negative displacements as group inverses.
+  $z\in\Z^2$, including negative displacements as group inverses, on the real
+  local cylinder algebra.
+\item[Quasi-local C$^*$-algebra.] The uniform topological closure of the
+  faithfully represented finite-support complex star algebra inside
+  $C_b(\{0,1\}^{\Z^2};\mathbb C)$.
+\item[C$^*$-state.] The positive complex-linear norm-one extension
+  $\widetilde\omega$ to that closure.  Completed translation covariance is not
+  part of this term here.
+\item[Finite-set Gibbs tower.] The fixed-point identity
+  $\E_{\mu_w}\Gamma_\Lambda F=\E_{\mu_w}F$ for every positive finite weight
+  and every finite conditioning set, derived by a finite involution.
 \item[Receding boundary perturbation.] A coupling whose changed rows are at
   graph distance at least $n$ from the fixed support at stage $n$.
 \item[Periodic exhaustion.] The explicit cyclic nearest-neighbour coupling on
   every odd square; not an informal boundary-condition label.
-\item[Not included.] Arbitrary F\o lner shapes, a DLR package, a C$^*$
-  completion, or a Yang--Mills conclusion.
+\item[Not included.] Arbitrary F\o lner shapes, infinite-volume DLR for the
+  completed state, completed $\Z^2$ covariance, a beyond-Dobrushin parameter
+  region, or a Yang--Mills conclusion.
 \end{description}
 
 \begin{thebibliography}{99}
