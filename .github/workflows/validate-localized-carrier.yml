@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: d701eb10e703b212945eaee9d6f4c9642267c279
+  SOURCE_SHA: 2bcbcde0cd3a3e7e64c1d79a853a844328fadb51
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -76,6 +76,14 @@ jobs:
           printf 'MATHLIB_SHA=%s\n' "$mathlib" | tee evidence/mathlib.txt
           test "$mathlib" = "$EXPECTED_MATHLIB"
           lake exe cache get 2>&1 | tee evidence/cache-get.log
+
+      - name: Restore project build cache
+        uses: actions/cache@v4
+        with:
+          path: .lake/build
+          key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          restore-keys: |
+            cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
 
       - name: Run focal queue stop on first error
         shell: bash
