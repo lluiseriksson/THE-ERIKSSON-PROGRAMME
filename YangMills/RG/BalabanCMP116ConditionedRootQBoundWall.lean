@@ -8,8 +8,10 @@ import YangMills.RG.BalabanCMP116ConditionedRootScalarWall
 /-!
 # The conditioned-root wall at a prescribed `qBound`
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and the result has not yet been verified by the compiler.
+Compiler-verified at source checkpoint
+`fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f` in durable GitHub Actions run
+`30962182007`; the focal completed 8202 jobs and the audit declaration uses
+exactly `[propext, Classical.choice, Quot.sound]`.
 
 The existing scalar-wall theorem proves the normalized Gaussian budget is
 strictly below one.  The terminal centered-conditioned source asks for the

@@ -12,9 +12,11 @@ import YangMills.RG.BalabanCMP116InteractingConditionedCovariance
 /-!
 # Source-specific pre-(1.36) assembly on the combined ledger
 
-PRE-VALIDATION: the conditioned covariance, root and lower certificate are
-now generated from the physical precision source, but this refactor has not
-yet been materialized or checked by the compiler.
+The generated conditioned covariance, root and strict lower certificate were
+compiler-verified at source checkpoint
+`fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f` in durable GitHub Actions run
+`30962182007`.  The focal completed 8978 jobs and all eighteen audit
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The preceding 17/41 assembler was compiler-verified at source checkpoint
 `7fb235a3c86d3077b3d978a24a5623cd562eef9c`.  The interacting-precision
@@ -590,7 +592,7 @@ set_option synthInstance.maxHeartbeats 280000 in
 /-- Genuine source-specific assembler for the pre-(1.36) record.
 
 The caller supplies physical data and the still-open contour, parametrix,
-jet, and scalar windows.  Every field listed in the live 18/41 producer map
+jet, and scalar windows.  Every field listed in the live 20/41 producer map
 is installed from a literal definition or an independent theorem.  No
 inhabited `PreEq136`, ledger-identification record, free equation-(1.43)
 estimate, rooted sum, or volume budget is an input. -/

@@ -27007,3 +27007,55 @@ identity, its finite-range collar estimate, or physical attainment of
 `norm R' < 1`.  It therefore discharges no additional `PreEq136` field: the
 live numerator remains exactly `18/41`, and no `TermSource` inhabitant is
 produced.
+
+## Addendum 546 (2026-08-05, **literal localized carrier, generated conditioned root/lower certificate GREEN; 20/41**)
+
+The proof-carrying localized-region dictionary,
+`BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136.lean`, and the
+prescribed-`qBound` scalar reduction were validated stop-on-first-error from
+the exact source checkpoint
+`fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f` by durable GitHub Actions run
+`30962182007` (workflow checkpoint
+`183c6457c796137d0c379427ebd1c8796555fcff`).  The official Lean
+`v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The coordinate-dictionary focal completed with `Build completed successfully
+(8527 jobs).`; its ten-declaration audit exited zero.  The combined source
+assembler completed with `Build completed successfully (8978 jobs).`; its
+eighteen-declaration audit exited zero after the historical interacting-
+precision audit prerequisite was materialized explicitly.  The `qBound` wall
+completed with `Build completed successfully (8202 jobs).`; its one-
+declaration audit exited zero.  All 29 declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` are
+absent.  The gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`b158aa22fd02e38813502f0e8876f422f73b13bdb0d4cc31805937bc6238456d`.
+The axiom JSON has SHA-256
+`421dd2cafe275b830d036d74a69b5ccb358fb342e926d706a88dd5cc56677f81`;
+the stage ledger has SHA-256
+`66f1364eaf044ce889d43d5eff93cbbf7d39a903dd64d35c3a2fc5969b4f7d70`.
+
+Two earlier durable runs are retained as negative evidence.  Run
+`30955155960` exposed the missing import of the module that actually exports
+the conditioned covariance declarations.  After that one-line source fix,
+run `30959517987` compiled both the dictionary and the complete source
+assembler, then stopped because the historical precision audit `.olean` had
+not been materialized in the fresh clone.  The final runner makes that
+prerequisite explicit; neither incident changed a theorem, hypothesis, or
+constant.
+
+The verified source data no longer accept an independent conditioned
+covariance, Gaussian root, square-root certificate, or strict lower
+certificate.  They construct all four from the literal interacting precision
+and the literal proof-carrying localized region.  This installs terminal
+groups 12a and 13 and moves the auditable producer numerator exactly from
+`18/41` to `20/41`.  The compression bridge 12b remains genuine
+infrastructure outside the raw denominator, and the `qBound` theorem only
+reduces `outer_small` to a visible scalar gap budget.  It does not attain that
+budget, construct a complete `PreEq136`, or inhabit a `TermSource`; the latter
+counter remains zero.

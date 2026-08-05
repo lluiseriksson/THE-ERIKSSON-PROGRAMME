@@ -143,14 +143,14 @@ Its current status against the CMP102 lane is:
 |---|---|
 | `contour` | **non-circular constructor exists**: `CMP116Eq214PhysicalContourDensity.ofSourcePi4RestrictedPhysicalContour` starts from a private neutral dependent shell and overwrites the potential, bond field, and full restricted complex Gaussian from physical producers; no inhabited contour density is an input |
 | `source` | physical Gamma/operator ingredients and their complex-contour installation exist; source faithfulness still depends on the literal indexed potential/remainder ledger supplied to the constructor |
-| `domainMetric`, `domainCard`, `domainSupport` | the combined direct/native dictionary is explicit and its nonemptiness/subset laws are proved; installation in a source-specific `PreEq136` inhabitant remains pending |
+| `domainMetric`, `domainCard`, `domainSupport` | the combined direct/native dictionary and its nonemptiness/subset laws are installed by the compiler-verified source-specific `PreEq136` assembler |
 | Cauchy-radius identities | generic CMP116 formulas exist and the target identities are explicit fields of `PreEq136`; their source-specific installation is still pending |
 | positivity/smallness scalars | many scalar lemmas exist; no complete source record |
 | `outer_bound`, `inner_bound`, `source_bound` | generated in the centered-conditioned physical contour lane from the covariance/contour producers, subject to the named contraction and scalar windows; they are not consequences of equation (80) alone |
 | contour `potential` summand | **combined partial ledger constructed**: the direct Eq-80 fixed quadratic core and cubic Taylor residual are literal, and direct (1.36) is derived from the physical third-jet/walk producers; the native Lemma-1 residual is separately indexed and carries its named restricted source certificate; installation in a complete pre-source and the remaining printed species are open |
 | `interaction_bound` | **open at installation level**: the direct (1.36) and combined Eq-219/rooted ledgers now have producers, while the native analytic (1.36) remains the explicit CMP109 certificate; the final centered AE potential bound and scalar interaction budget have not yet been assembled into `PreEq136` |
 | `domain_nonempty`, `domain_subset` | discharged for the combined direct/native dictionary, with the centered region enlarged rather than silently dropping boundary domains |
-| `rooted_residual` | direct and native producers are combined under one explicit root bound; installation remains pending |
+| `rooted_residual` | direct and native producers are combined under one explicit root bound and installed by the verified source-specific assembler |
 | `volume_budget` | an exact combined physical volume rate/cost producer exists; the remaining scalar target and installation stay visible |
 
 Therefore:
@@ -208,13 +208,23 @@ exited zero.  The focal, root, and oracle log hashes are respectively
 `7afa58d2c5771c975e81e35e2b6d6969d6679b18eba717c3f0b432f6140d390f`,
 and `511a0a43775e8d75ab5f17cd8114e02a3eaa4cbb0f07433a4179d5069f9d7d34`.
 
+The proof-carrying localized-region repair, generated conditioned root and
+strict covariance-lower certificate, and the prescribed-`qBound` reduction
+were then validated at source checkpoint
+`fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f` by durable GitHub Actions run
+`30962182007`.  The dictionary and combined-source focal builds completed
+8527 and 8978 jobs; the `qBound` wall completed 8202 jobs.  All 29 audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The downloaded deterministic evidence archive has SHA-256
+`b158aa22fd02e38813502f0e8876f422f73b13bdb0d4cc31805937bc6238456d`.
+
 | Obligation group | Source status |
 |---|---|
 | non-circular contour density | producer compiled: `ofSourcePi4RestrictedPhysicalContour`; the literal direct/native potential adapter still supplies its inputs |
 | combined `total` / `residual` ledger | exact direct/native definitions and sum identities compiled |
 | `domainMetric`, `domainCard`, `domainSupport` | canonical appended dictionary compiled |
 | `domain_nonempty`, `domain_subset`, `domainMetric_nonneg` | producers compiled for the enlarged centered region |
-| `rooted_residual`, `rootBound_nonneg` | direct/native combined producers compiled; terminal installer pending |
+| `rooted_residual`, `rootBound_nonneg` | direct/native combined producers compiled and installed by the source-specific assembler |
 | `volume_budget` | exact combined physical volume-rate producer compiled; scalar target remains visible |
 | equation (1.43) | combined physical producer and source-specific terminal-field adapter compiled; neither accepts a free Hessian estimate |
 | equation (1.36) | direct sector derived from CMP102 jets and walks; native sector is the named positive, nonempty-small-field CMP109 certificate; the combined finalizer is compiled but still requires a `PreEq136` inhabitant |
@@ -222,32 +232,36 @@ and `511a0a43775e8d75ab5f17cd8114e02a3eaa4cbb0f07433a4179d5069f9d7d34`.
 | `smooth`, `hessian_zero_off_support` | source proofs compiled from the projected direct core and zero native core |
 | covariance range (`sourceRange_bound`, `finiteRange`) | literal interacting-precision producer compiled and installed |
 | covariance/parametrix contractions and contour bounds | remain explicit physical producer inputs; no source-specific pre-record yet assembles all of them |
-| conditioned covariance lower certificate | mandatory nondegeneracy input; it must not be synthesized by choosing a degenerate Gaussian root |
-| scalar windows (`shell`, contour/Neumann, root, outer, interaction, volume) | individually named; the compiled combined ledger pins `alpha` to the canonical sum of the literal potential rate, literal bilateral R2 rate, and `gamma`, but this normalization does not discharge `root_small` or `outer_small`; a single source-specific compatibility witness covering the live set remains open |
+| conditioned Gaussian root and covariance lower certificate | generated and installed from the literal interacting precision and the proof-carrying localized carrier; neither is an independent source datum |
+| scalar windows (`shell`, contour/Neumann, root, outer, interaction, volume) | individually named; the joint target registry is inhabited, but physical attainment of `root_small`, `outer_small`, and the remaining operator bounds is still open |
 
 Under the 41-obligation grouping above, the current auditable numerator is
 
 ```text
-18 / 41
+20 / 41
 ```
 
-The eighteen independently produced entries are: the non-circular contour
+The twenty independently produced entries are: the non-circular contour
 density; literal `total` and `residual`; literal `domainMetric`, `domainCard`,
 and `domainSupport`; `domain_nonempty`, `domain_subset`, and
 `domainMetric_nonneg`; `rooted_residual` and `rootBound_nonneg`;
 `volume_budget`; equation `(1.43)`; literal `kernelSupport`; `metric_budget`;
 `smooth`; `hessian_zero_off_support`; and the literal covariance-range
-package (`sourceRange_bound`, `finiteRange`).  Equation `(1.36)` is
+package (`sourceRange_bound`, `finiteRange`); together with the generated
+conditioned Gaussian root and strict covariance-lower certificate.  Equation `(1.36)` is
 deliberately outside this denominator.  The canonical `E0`, `threshold`, and
 `alpha` equalities are not added to the numerator while their only terminal
 use still passes through an already inhabited `PreEq136` record.
 
-The complementary `23 / 41` is the following explicit audit list.  These are
-**obligation groups**, not raw Lean fields: a group may contain the sign
+The table below retains the newly closed rows 12a and 13 so that their route
+remains auditable, and retains auxiliary bridge 12b even though it is outside
+the raw denominator.  Excluding those closed/auxiliary rows, the live
+complement is `21 / 41`.  These are **obligation groups**, not raw Lean
+fields: a group may contain the sign
 conditions and structural certificates which have to be inhabited together.
 "Partial producer" means that the physical expression or a propagation
 theorem already exists, but at least one source-facing hypothesis or joint
-smallness inequality is still an input.  It does not increase the 18/41
+smallness inequality is still an input.  It does not increase the 20/41
 numerator.
 
 The `terminal demand` column prevents two different questions from being
@@ -280,9 +294,9 @@ applicable label.
 | 9 | contour adjacency budget (`degree_bound`, `one_le_Delta`) | any finite degree majorant; larger `Delta` worsens group 11 | partial combinatorial producer | tree |
 | 10 | contour radius envelope (`radius_nonneg`, `radius_cap`) | any nonnegative envelope; larger radius worsens group 11 | open scalar/geometric envelope | tree |
 | 11 | contour contraction package (`Ahead_nonneg`, `rho_nonneg`, `rate_pos`, `shell_small`, `contour_series_small`, `neumann_small`, `neumann_transpose_small`) | **joint threshold** package | partial physical producer; joint contraction is open | tree + corpus: CMP116 |
-| 12a | conditioned Gaussian root (`conditionedRoot`) | **exact** square-root/support certificate | partial covariance producer; the abstract matrix square-root certificate is present | tree |
-| 12b | **localized covariance compression bridge** | **exact** compression/root identification plus quantitative upper/lower bounds | **upper and lower analytic bridges verified** in a fresh Colab clone at `460c05e5`.  The lower construction uses the deliberately coarse constant `coercivityConstant / precisionUpperBound^2`.  A geometric proof that the localized carrier is nonempty is still required, so this does not change `18/41`. | tree; CMP99 [14] can sharpen the lower constant but is not required by the terminal type |
-| 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | **some positive** lower bound plus carrier nonemptiness; no optimal eigenvalue bound | analytic producer compiler-verified at `460c05e5`; only the geometric `S.Nonempty` producer remains open before installation | tree, downstream of groups 2 and 12b |
+| 12a | conditioned Gaussian root (`conditionedRoot`) | **exact** square-root/support certificate | **producer installed** from the literal compressed covariance at `fe9a2cd3`; counted in `20/41` | tree |
+| 12b | **localized covariance compression bridge** | **exact** compression/root identification plus quantitative upper/lower bounds | **complete source-facing bridge**: the analytic bounds from `460c05e5` and the literal proof-carrying localized carrier were jointly installed and compiler-verified at `fe9a2cd3`.  This bridge is outside the raw denominator. | tree; CMP99 [14] can sharpen the lower constant but is not required by the terminal type |
+| 13 | strict conditioned covariance lower certificate (`conditionedCovariance_nondegenerate`) | **some positive** lower bound plus carrier nonemptiness; no optimal eigenvalue bound | **producer installed** from the interacting precision and literal nonempty carrier at `fe9a2cd3`; counted in `20/41` | tree, downstream of groups 2 and 12b |
 | 14 | sigma Cauchy-radius normalization (`deltaRadius_eq`) | **exact** equality against the installed contour | open equality against the installed base contour | tree |
 | 15 | cardinality normalization (`normalizedGap`) | **exact** equality in the chosen convention | open equality in the source convention | tree |
 | 16 | tau Cauchy-radius normalization (`yRadius_eq`) | **exact** equality against the combined metric | open equality against the combined domain metric | tree |
@@ -292,8 +306,8 @@ applicable label.
 | 20 | direct third-jet envelope (`hD`, `hD₃`, `hV₀`, `hC`, `hRjet`, `hsourceJet`, `sourceJetBound_nonneg`) | **source bounds** on the literal physical maps | partial CMP102 producer; the printed component estimates remain hypotheses | tree + absent: CMP102/[15] source text genuinely bites here |
 | 21 | walk factorization and Eq.-(1.43) budget (`cardRatio_nonneg`, `metricRatio_nonneg`, `summationRatio_nonneg`, `walk_split`, both decay rates, `cardDecay`, `metricDecay`, `walk_small`, `eq143_budget`) | **source bounds plus thresholds** on the literal walk ratios | partial producer; these inputs already feed the verified Eq.-(1.43) conclusion | tree + corpus: CMP116; source provenance still audited field by field |
 | 22 | residual/rooted animal windows (`residual_rate_nonneg`, `rooted_rate_nonneg`, `animal_small`, `rooted_animal_small`) | **threshold** windows | the simultaneous target witness is compiler-verified at `9e4161dc`; physical residual-rate production and the deferred Mayer input remain open | tree + corpus: CMP116 + absent: Cammarota [26] for the deferred Mayer input |
-| 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | **threshold** on the physically linked root | open scalar wall at the least admissible `alpha`; its one-variable reduction is proved, but it is not physically instantiable before bridge 12b and group 13 | tree, downstream of groups 2, 12b, and 13 |
-| 24 | outer Gaussian stability (`outer_small`) | **threshold** coupled to the same `alpha` and root | open scalar wall; its one-variable reduction is proved, but it is not physically instantiable before bridge 12b and group 13 | tree, downstream of groups 2, 12b, and 13 |
+| 23 | canonical interaction/root stability (`alpha_pos`, `gamma_nonneg`, `root_small`) | **threshold** on the physically linked root | open scalar wall at the least admissible `alpha`; the physical root/covariance bridge is now installed, so the remaining task is attainment of the literal gap inequality | tree, downstream of groups 2, 12b, and 13 |
+| 24 | outer Gaussian stability (`outer_small`) | **threshold** coupled to the same `alpha` and root | open scalar wall; the physical root has been eliminated from the sufficient bound, but the literal `qBound` gap budget and nonnegativity inputs remain to be attained | tree, downstream of groups 2, 12b, and 13 |
 
 This type-level audit falsifies the strong version of the predicted
 `30--34/41` plateau.  Groups 2, 5, 9, 10, and 13 do not require the fine
@@ -306,14 +320,13 @@ important without being logically required by the corresponding field type.
 For group 13, `domain_nonempty` and `domain_subset` do not by themselves
 produce the required localized-coordinate carrier witness.  The combined
 domain index may be empty, subset containment creates no interior bond, and
-the selected physical bond carrier `P` may itself be empty.  Conversely, an
-explicit `P.Nonempty` is sufficient: the existing
-`coordEquiv_symm_mem_physicalLocalizedCoordinates_localizationCore` theorem
-places every Lie coordinate of a selected bond in the localization core, and
-the source-coordinate dictionary transports that witness to
-`cmp116SourcePhysicalLocalizedCoordinates`.  Carrier nonemptiness is thus a
-small but genuine geometric obligation, not a consequence of the two domain
-fields already counted.
+the selected marked carrier `P` may itself be empty.  Requiring `P.Nonempty`
+would therefore exclude valid direct-branch terms.  The verified repair
+instead indexes the physical source by the literal combined localized region
+together with a proof that its transported coordinate carrier is nonempty.
+That witness may come from either branch and is consumed directly by the
+strict covariance-lower producer; no independent nonemptiness hypothesis is
+introduced into the terminal record.
 
 There is a terminal interface obstruction one level above that local
 producer.  The former
@@ -325,15 +338,16 @@ while the mandatory covariance-lower certificate contains a
 compiler-verified audit: no centered-conditioned physical term source exists
 at the empty raw region.
 
-The faithful repair is now present in source under PRE-VALIDATION.  The new
+The faithful repair is compiler-verified at `fe9a2cd3`.  The new
 `CMP116SourcePhysicalLocalizedRegion Dict` is the subtype of regions whose
 literal localized-coordinate carrier is nonempty, and the centered physical
 family together with its `ToRaw`/`ToKP`/`ToUV` consumers quantifies over that
 proof-carrying index.  The existing generic resummation already accepts an
 arbitrary index type, so Appendix F remains unchanged.  This does not
-fabricate a covariance certificate or an off-index physical term, and it does
-not change the live `18/41` numerator.  Until the fresh-Colab focal and audits
-pass, the repaired interface is source only and is not counted as verified.
+fabricate a covariance certificate or an off-index physical term.  Its
+nonempty carrier now feeds the generated root and strict lower certificate;
+those two terminal producers, not bridge 12b itself, move the live numerator
+from `18/41` to `20/41`.
 
 Elaboration failures are triaged separately from project mathematics.  If the
 first error occurs in a proof step whose statement and diagnostic mention no
@@ -360,10 +374,10 @@ invented as a fifteenth threshold: its terminal field asks only for
 positivity, while its quantitative coupling enters the already listed
 `root_small` and `outer_small` walls.
 
-Thus `18/41 -> 41/41` is the route to the first source-specific
+Thus `20/41 -> 41/41` is the route to the first source-specific
 `TermSource` **conditional on the named Lemma-1 certificate**.  Proving the
 analytic Lemma-1 instance of equation (1.36) is a separate step which removes
-that condition; it is not one of these twenty-three remaining pre-(1.36)
+that condition; it is not one of these twenty-one remaining pre-(1.36)
 groups.  Row 12b is shown separately because it is a genuine source-facing
 construction gate before groups 23--24, even though it is not an additional
 raw `PreEq136` field and therefore does not change the formal denominator 41.
@@ -2315,3 +2329,14 @@ finite-range collar contract, and simultaneous scalar compatibility.  It does
 not prove the physical locality estimate or that the physical regional defect
 attains the fifteenth target; the live counters therefore remain `18/41` and
 `TermSource = 0`.
+
+### Current superseding checkpoint (2026-08-05)
+
+The later source checkpoint `fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f`
+installs the literal proof-carrying localized carrier, generates the
+conditioned covariance/root and strict lower certificate from the interacting
+precision, and passes 29 focused axiom audits in durable run `30962182007`.
+Consequently rows 12a and 13 are now discharged and the live producer count
+is exactly `20/41`.  Row 12b remains infrastructure outside the denominator;
+the regional target `norm R' < 1`, `root_small`, and `outer_small` remain
+unattained physical/scalar walls.  No `TermSource` inhabitant is produced.

@@ -7,8 +7,11 @@ The preceding assembler audit was compiler-verified at source checkpoint
 declarations below were compiler-verified from one fresh Colab CPU/high-RAM
 clone at source checkpoint `5b061eb968885f5d724dc3b9226ee593ddc5d0db`.
 
-PRE-VALIDATION: the generated localized carrier, root and covariance-lower
-certificate have not yet been materialized or checked by the compiler.
+The generated localized carrier, root and covariance-lower certificate were
+compiler-verified at source checkpoint
+`fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f` in durable GitHub Actions run
+`30962182007`; all eighteen declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.total

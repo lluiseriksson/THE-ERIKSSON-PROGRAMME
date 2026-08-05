@@ -1,8 +1,10 @@
 import YangMills.RG.BalabanCMP116SourcePhysicalCoordinateDictionary
 
 /-!
-PRE-VALIDATION: the new carrier-nonemptiness producer has not yet been
-materialized or checked by the compiler.
+Compiler-verified at source checkpoint
+`fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f` in durable GitHub Actions run
+`30962182007`; all ten declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp116SourcePhysicalLocalizedCoordinates

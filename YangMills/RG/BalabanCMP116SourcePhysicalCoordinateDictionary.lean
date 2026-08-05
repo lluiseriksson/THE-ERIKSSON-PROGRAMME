@@ -9,8 +9,10 @@ import YangMills.RG.BalabanCMP116Eq223PhysicalLocalizationProjector
 /-!
 # Source coordinates transported to the physical bond basis
 
-PRE-VALIDATION: this source has changed since its last materialized `.olean`;
-the new carrier-nonemptiness producer is not yet compiler-verified.
+Compiler-verified at source checkpoint
+`fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f` in durable GitHub Actions run
+`30962182007`; the focal completed 8527 jobs and all ten audit declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The equation-(2.26) geometry is indexed by CMP116 cubes, whereas the literal
 source Gaussian is indexed by physical bonds and Lie coordinates.  This file

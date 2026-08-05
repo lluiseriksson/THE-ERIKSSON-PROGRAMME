@@ -6,9 +6,10 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP116ConditionedRootQBoundWall
 
 /-!
-PRE-VALIDATION: the source is present, its `.olean` has not yet been
-materialized, and the declaration below has not yet been checked by the
-compiler.
+Compiler-verified at source checkpoint
+`fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f` in durable GitHub Actions run
+`30962182007`; the declaration below uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp116Eq226_optimalOuterSmall_le_qBound_of_conditionedCovarianceNorm
