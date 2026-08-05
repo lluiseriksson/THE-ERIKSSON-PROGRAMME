@@ -3404,3 +3404,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.os_reconstruction_measure_uniform
 #print axioms YangMills.OS.six_term_connected_bound
 #print axioms YangMills.OS.os_reconstruction_connected_uniform
+#print axioms YangMills.OS.tiltKernel_pos
+#print axioms YangMills.OS.vacOf_pos
+#print axioms YangMills.OS.opOf_pow_ge_smul_fix
+#print axioms YangMills.OS.inner_pow_floor
+#print axioms YangMills.OS.abs_scaled_cross_le
+#print axioms YangMills.OS.gibbs_six_term_bound
+#print axioms YangMills.OS.os_reconstruction_normalised_clustering

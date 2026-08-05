@@ -530,6 +530,147 @@ theorem os_reconstruction_measure_uniform (β γ : ℝ) {alpha : ℝ}
       β lam hlam.ne' N A B,
     fun u v n => mixed_connCorr_bound hT (Real.exp_nonneg _) hnorm u v n⟩
 
+/-! ## The positive cone — a denominator floor uniform in `N` (pass 17)
+
+The parity obstruction of the previous version is not intrinsic: it was an
+artefact of trying to bound `⟪T̂ᴺ q, q⟫` from below by SPECTRAL means (only the
+even powers are positive semidefinite).  The kernel here is entrywise
+POSITIVE, so the order-theoretic route works at every `N`: the ray through the
+positive fixed vector is preserved, and it never collapses. -/
+
+/-- The tilt kernel is entrywise POSITIVE for a positive weight and a positive
+scale — at EVERY real `β`, since `spatialKernel` is a product of positive bond
+factors (`spatialKernel_pos`). -/
+theorem tiltKernel_pos (w : (Fin L → Fin 2) → ℝ) (hw : ∀ σ, 0 < w σ)
+    (β lam : ℝ) (hlam : 0 < lam) (σ τ : Fin L → Fin 2) :
+    0 < tiltKernel w β lam σ τ := by
+  rw [tiltKernel_apply]
+  have hsym : 0 < symWeighted w β σ τ := by
+    unfold symWeighted
+    exact mul_pos (mul_pos (Real.sqrt_pos.mpr (hw σ)) (spatialKernel_pos β σ τ))
+      (Real.sqrt_pos.mpr (hw τ))
+  exact div_pos hsym hlam
+
+/-- The normalised vacuum of a positive Perron vector is positive entrywise. -/
+theorem vacOf_pos (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ)
+    (σ : Fin L → Fin 2) : 0 < vacOf Om σ := by
+  have hS : (0 : ℝ) < ∑ y, Om y * Om y :=
+    Finset.sum_pos (fun y _ => mul_pos (hOm y) (hOm y))
+      ⟨Classical.arbitrary _, Finset.mem_univ _⟩
+  have hx : vacOf Om σ = Om σ / Real.sqrt (∑ y, Om y * Om y) := rfl
+  rw [hx]
+  exact div_pos (hOm σ) (Real.sqrt_pos.mpr hS)
+
+/-- **Cone propagation.**  A nonnegative kernel with a fixed vector `Ω` pushes
+the ray `c·Ω` up through EVERY power: `c·Ω ≤ v` entrywise gives
+`c·Ω ≤ T^n v` entrywise, for all `n`.  No parity, no spectral input. -/
+theorem opOf_pow_ge_smul_fix (M : Matrix (Fin L → Fin 2) (Fin L → Fin 2) ℝ)
+    (hM : ∀ σ τ, 0 ≤ M σ τ) (Om : EuclideanSpace ℝ (Fin L → Fin 2))
+    (hfix : opOf M Om = Om) (c : ℝ) (v : EuclideanSpace ℝ (Fin L → Fin 2))
+    (hv : ∀ σ, c * Om σ ≤ v σ) (n : ℕ) :
+    ∀ σ, c * Om σ ≤ ((opOf M) ^ n) v σ := by
+  induction n with
+  | zero => intro σ; simpa using hv σ
+  | succ n ih =>
+      intro σ
+      have hstep : ((opOf M) ^ (n + 1)) v = opOf M (((opOf M) ^ n) v) := by
+        rw [pow_succ']; rfl
+      have hfixσ : ∑ τ, M σ τ * Om τ = Om σ := by
+        rw [← opOf_apply M Om σ, hfix]
+      rw [hstep, opOf_apply]
+      calc c * Om σ = c * ∑ τ, M σ τ * Om τ := by rw [hfixσ]
+        _ = ∑ τ, M σ τ * (c * Om τ) := by
+            rw [Finset.mul_sum]
+            exact Finset.sum_congr rfl fun τ _ => by ring
+        _ ≤ ∑ τ, M σ τ * (((opOf M) ^ n) v τ) :=
+            Finset.sum_le_sum fun τ _ =>
+              mul_le_mul_of_nonneg_left (ih τ) (hM σ τ)
+
+/-- **THE DENOMINATOR FLOOR, UNIFORM IN `N`.**  For a nonnegative kernel whose
+normalised positive vector is fixed, the diagonal matrix elements of the powers
+against a POSITIVE vector never fall below a positive constant depending only
+on the data — not on `N`.  The constant is `c²‖Ω‖²` with `c` the minimum of the
+ratio `v/Ω` (in-tree `minWeight`, a genuine finite minimum). -/
+theorem inner_pow_floor (M : Matrix (Fin L → Fin 2) (Fin L → Fin 2) ℝ)
+    (hM : ∀ σ τ, 0 ≤ M σ τ) (Om : (Fin L → Fin 2) → ℝ) (hOm : ∀ σ, 0 < Om σ)
+    (hfix : opOf M (vacOf Om) = vacOf Om)
+    (v : EuclideanSpace ℝ (Fin L → Fin 2)) (hv : ∀ σ, 0 < v σ) :
+    ∃ f : ℝ, 0 < f ∧ ∀ n : ℕ, f ≤ ⟪((opOf M) ^ n) v, v⟫ := by
+  have hvac : ∀ σ, 0 < vacOf Om σ := vacOf_pos Om hOm
+  obtain ⟨c, hcpos, hcone⟩ :
+      ∃ c : ℝ, 0 < c ∧ ∀ σ, c * vacOf Om σ ≤ v σ := by
+    refine ⟨minWeight (fun σ => v σ / vacOf Om σ),
+      minWeight_pos (fun σ => div_pos (hv σ) (hvac σ)), fun σ => ?_⟩
+    have h1 : minWeight (fun σ => v σ / vacOf Om σ) ≤ v σ / vacOf Om σ :=
+      minWeight_le _ σ
+    have h2 := mul_le_mul_of_nonneg_right h1 (hvac σ).le
+    have hne : vacOf Om σ ≠ 0 := (hvac σ).ne'
+    have h3 : v σ / vacOf Om σ * vacOf Om σ = v σ := by
+      field_simp
+    rwa [h3] at h2
+  refine ⟨c ^ 2 * ∑ σ, vacOf Om σ * vacOf Om σ, ?_, fun n => ?_⟩
+  · exact mul_pos (pow_pos hcpos 2)
+      (Finset.sum_pos (fun σ _ => mul_pos (hvac σ) (hvac σ))
+        ⟨Classical.arbitrary _, Finset.mem_univ _⟩)
+  · have hprop := opOf_pow_ge_smul_fix M hM (vacOf Om) hfix c v hcone n
+    rw [inner_eq_sum]
+    calc c ^ 2 * ∑ σ, vacOf Om σ * vacOf Om σ
+        = ∑ σ, (c * vacOf Om σ) * (c * vacOf Om σ) := by
+          rw [Finset.mul_sum]
+          exact Finset.sum_congr rfl fun σ _ => by ring
+      _ ≤ ∑ σ, (((opOf M) ^ n) v σ) * (c * vacOf Om σ) :=
+          Finset.sum_le_sum fun σ _ =>
+            mul_le_mul_of_nonneg_right (hprop σ)
+              (mul_nonneg hcpos.le (hvac σ).le)
+      _ ≤ ∑ σ, (((opOf M) ^ n) v σ) * v σ :=
+          Finset.sum_le_sum fun σ _ =>
+            mul_le_mul_of_nonneg_left (hcone σ)
+              (le_trans (mul_nonneg hcpos.le (hvac σ).le) (hprop σ))
+
+/-! ## The Gibbs-side six-term bound with explicit hypotheses -/
+
+/-- The scale factor of the two-point/partition identities, pulled out of an
+absolute value.  Pure algebra, isolated so the endpoints stay readable. -/
+theorem abs_scaled_cross_le {lam : ℝ} (hlam : 0 < lam) (N : ℕ)
+    (p q s t K rN : ℝ) (h : |p * q - s * t| ≤ K * rN) :
+    |lam ^ N * p * (lam ^ N * q) - lam ^ N * s * (lam ^ N * t)|
+      ≤ lam ^ (2 * N) * K * rN := by
+  have hrw : lam ^ N * p * (lam ^ N * q) - lam ^ N * s * (lam ^ N * t)
+      = lam ^ (2 * N) * (p * q - s * t) := by
+    rw [pow_mul]
+    ring
+  rw [hrw, abs_mul, abs_of_nonneg (le_of_lt (pow_pos hlam (2 * N)))]
+  calc lam ^ (2 * N) * |p * q - s * t|
+      ≤ lam ^ (2 * N) * (K * rN) :=
+        mul_le_mul_of_nonneg_left h (le_of_lt (pow_pos hlam (2 * N)))
+    _ = lam ^ (2 * N) * K * rN := by ring
+
+/-- **The six-term connected bound in raw Gibbs terms, hypotheses explicit.**
+Both endpoints below consume this one algebra. -/
+theorem gibbs_six_term_bound (w : (Fin L → Fin 2) → ℝ) (hw : ∀ σ, 0 < w σ)
+    (β lam : ℝ) (hlam : 0 < lam) (Om : (Fin L → Fin 2) → ℝ)
+    (hT : VacuumTransfer (opOf (tiltKernel w β lam)) (vacOf Om))
+    {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r ≤ 1)
+    (hgap : ‖projectedTransfer (opOf (tiltKernel w β lam)) (vacOf Om)‖ ≤ r)
+    (N : ℕ) (A B : (Fin L → Fin 2) → ℝ) :
+    |gibbsPartition w β N * gibbsPathSum w β N A B
+        - gibbsPathSum w β N A (fun _ => 1)
+          * gibbsPathSum w β N (fun _ => 1) B|
+      ≤ lam ^ (2 * N)
+          * (6 * ‖WithLp.toLp 2 (dress w A)‖ * ‖WithLp.toLp 2 (dress w B)‖
+              * ‖WithLp.toLp 2 (dress w (fun _ => 1))‖ ^ 2)
+          * r ^ N := by
+  have hsix := six_term_connected_bound hT hr0 hr1 hgap
+    (WithLp.toLp 2 (dress w A)) (WithLp.toLp 2 (dress w B))
+    (WithLp.toLp 2 (dress w (fun _ => 1))) N
+  have hAB := gibbsPathSum_eq_inner_pow w hw β lam hlam.ne' N A B
+  have hA1 := gibbsPathSum_eq_inner_pow w hw β lam hlam.ne' N A (fun _ => 1)
+  have h1B := gibbsPathSum_eq_inner_pow w hw β lam hlam.ne' N (fun _ => 1) B
+  have hZ := gibbsPartition_eq_inner_pow w hw β lam hlam.ne' N
+  have hsymm := hT.pow_symm N
+  rw [hAB, hA1, h1B, hZ, hsymm, hsymm, hsymm, hsymm]
+  exact abs_scaled_cross_le hlam N _ _ _ _ _ _ hsix
+
 /-- **The division-safe connected bound in raw Gibbs terms.**  In the
 window: ONE `m > 0` such that for EVERY spatial extent, every time depth
 `N` and all real observables `A, B`, the truncated combination
@@ -562,76 +703,131 @@ theorem os_reconstruction_connected_uniform (β γ : ℝ) {alpha : ℝ}
   obtain ⟨lam, Om, hlam, hOm, hfix, hnorm⟩ := hL L
   have hT : VacuumTransfer (opOf (tiltKernel (sliceW γ L) β lam)) (vacOf Om) :=
     vacuumTransfer_opOf _ Om (tiltKernel_symm _ β lam) hOm hfix
-  refine ⟨lam, Om, hlam, hOm, hfix, fun N A B => ?_⟩
   have hexp1 : Real.exp (-m) ≤ 1 := by
     rw [show (1 : ℝ) = Real.exp 0 from (Real.exp_zero).symm]
     exact Real.exp_le_exp.mpr (by linarith)
-  have hsix := six_term_connected_bound hT (Real.exp_nonneg _) hexp1 hnorm
-    (WithLp.toLp 2 (dress (sliceW γ L) A))
-    (WithLp.toLp 2 (dress (sliceW γ L) B))
-    (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))) N
-  have hAB := gibbsPathSum_eq_inner_pow (sliceW γ L) (sliceW_pos γ L)
-    β lam hlam.ne' N A B
-  have hA1 := gibbsPathSum_eq_inner_pow (sliceW γ L) (sliceW_pos γ L)
-    β lam hlam.ne' N A (fun _ => 1)
-  have h1B := gibbsPathSum_eq_inner_pow (sliceW γ L) (sliceW_pos γ L)
-    β lam hlam.ne' N (fun _ => 1) B
-  have hZ := gibbsPartition_eq_inner_pow (sliceW γ L) (sliceW_pos γ L)
-    β lam hlam.ne' N
-  have hsymm := hT.pow_symm N
-  rw [hAB, hA1, h1B, hZ, hsymm, hsymm, hsymm, hsymm]
-  have habs : lam ^ N * ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
-        ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-          (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
-        * (lam ^ N * ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
-            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-              (WithLp.toLp 2 (dress (sliceW γ L) B))⟫)
-      - lam ^ N * ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
-            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-              (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
-        * (lam ^ N * ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
-            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-              (WithLp.toLp 2 (dress (sliceW γ L) B))⟫)
-      = lam ^ (2 * N)
-          * (⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
-              ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-                (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
-            * ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
-              ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-                (WithLp.toLp 2 (dress (sliceW γ L) B))⟫
-            - ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
-              ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-                (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
-            * ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
-              ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-                (WithLp.toLp 2 (dress (sliceW γ L) B))⟫) := by
-    rw [pow_mul]
-    ring
-  rw [habs, abs_mul,
-    abs_of_nonneg (le_of_lt (pow_pos hlam (2 * N)))]
-  calc lam ^ (2 * N)
-        * |⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
-            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-              (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
-          * ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
-            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-              (WithLp.toLp 2 (dress (sliceW γ L) B))⟫
-          - ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
-            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-              (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
-          * ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
-            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
-              (WithLp.toLp 2 (dress (sliceW γ L) B))⟫|
-      ≤ lam ^ (2 * N)
-        * (6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
-            * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
-            * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2
-            * Real.exp (-m) ^ N) :=
-        mul_le_mul_of_nonneg_left hsix (le_of_lt (pow_pos hlam (2 * N)))
-    _ = lam ^ (2 * N)
-        * (6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
-            * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
-            * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2)
-        * Real.exp (-m) ^ N := by ring
+  exact ⟨lam, Om, hlam, hOm, hfix, fun N A B =>
+    gibbs_six_term_bound (sliceW γ L) (sliceW_pos γ L) β lam hlam Om hT
+      (Real.exp_nonneg _) hexp1 hnorm N A B⟩
 
+/-- **THE NORMALISED CONNECTED CORRELATOR OF THE GIBBS MEASURE DECAYS AT THE
+UNIFORM RATE.**  In the window: ONE `m > 0` such that for EVERY spatial extent
+the partition function is positive at every depth AND there is a constant
+`C A B` — depending on the observables and the extent, but NOT on the time
+depth `N` — with
+`|⟨A(X₀)B(X_N)⟩ − ⟨A(X₀)⟩⟨B(X_N)⟩| ≤ C A B · e^{-mN}`,
+the expectations taken in the NORMALISED Gibbs measure.  This is the
+division-free bound divided through by `Z_N²`; what makes the division safe is
+the positive cone (`inner_pow_floor`): `tiltKernel` is entrywise positive and
+the vacuum is positive and fixed, so `⟪T̂ᴺ Q1, Q1⟫` never falls below a positive
+constant, at EVERY `N` — even and odd alike. -/
+theorem os_reconstruction_normalised_clustering (β γ : ℝ) {alpha : ℝ}
+    (halpha0 : 0 < alpha) (halpha1 : alpha < 1)
+    (hwin : 2 * Real.tanh |β| + 2 * Real.tanh |γ| ≤ alpha) :
+    ∃ m : ℝ, 0 < m ∧ ∀ L : ℕ,
+      (∀ N : ℕ, 0 < gibbsPartition (sliceW γ L) β N) ∧
+      ∃ C : ((Fin (L + 1) → Fin 2) → ℝ) → ((Fin (L + 1) → Fin 2) → ℝ) → ℝ,
+        (∀ A B, 0 ≤ C A B) ∧
+        ∀ (N : ℕ) (A B : (Fin (L + 1) → Fin 2) → ℝ),
+          |gibbsPathSum (sliceW γ L) β N A B / gibbsPartition (sliceW γ L) β N
+              - gibbsPathSum (sliceW γ L) β N A (fun _ => 1)
+                  / gibbsPartition (sliceW γ L) β N
+                * (gibbsPathSum (sliceW γ L) β N (fun _ => 1) B
+                    / gibbsPartition (sliceW γ L) β N)|
+            ≤ C A B * Real.exp (-m) ^ N := by
+  obtain ⟨m, hm, hL⟩ := dobrushin_ising_uniform_gap β γ halpha0 halpha1 hwin
+  refine ⟨m, hm, fun L => ?_⟩
+  obtain ⟨lam, Om, hlam, hOm, hfix, hnorm⟩ := hL L
+  have hw := sliceW_pos γ L
+  have hT : VacuumTransfer (opOf (tiltKernel (sliceW γ L) β lam)) (vacOf Om) :=
+    vacuumTransfer_opOf _ Om (tiltKernel_symm _ β lam) hOm hfix
+  have hexp1 : Real.exp (-m) ≤ 1 := by
+    rw [show (1 : ℝ) = Real.exp 0 from (Real.exp_zero).symm]
+    exact Real.exp_le_exp.mpr (by linarith)
+  have hMpos : ∀ σ τ, 0 ≤ tiltKernel (sliceW γ L) β lam σ τ :=
+    fun σ τ => (tiltKernel_pos (sliceW γ L) hw β lam hlam σ τ).le
+  have hQ1pos : ∀ σ,
+      0 < (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ)))) σ := by
+    intro σ
+    have h : (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ)))) σ
+        = Real.sqrt (sliceW γ L σ) * 1 := rfl
+    rw [h, mul_one]
+    exact Real.sqrt_pos.mpr (hw σ)
+  obtain ⟨f, hfpos, hfle⟩ :=
+    inner_pow_floor (tiltKernel (sliceW γ L) β lam) hMpos Om hOm hT.fix
+      (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ)))) hQ1pos
+  have hfne : f ≠ 0 := hfpos.ne'
+  have hZeq : ∀ N : ℕ, gibbsPartition (sliceW γ L) β N
+      = lam ^ N * ⟪((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+          (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ)))),
+          WithLp.toLp 2 (dress (sliceW γ L) (fun _ => (1 : ℝ)))⟫ :=
+    fun N => gibbsPartition_eq_inner_pow (sliceW γ L) hw β lam hlam.ne' N
+  have hZpos : ∀ N : ℕ, 0 < gibbsPartition (sliceW γ L) β N := by
+    intro N
+    rw [hZeq N]
+    exact mul_pos (pow_pos hlam N) (lt_of_lt_of_le hfpos (hfle N))
+  have hCnonneg : ∀ A B : (Fin (L + 1) → Fin 2) → ℝ,
+      0 ≤ 6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
+            * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
+            * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2 / f ^ 2 := by
+    intro A B
+    positivity
+  have key : ∀ (N : ℕ) (A B : (Fin (L + 1) → Fin 2) → ℝ),
+      |gibbsPathSum (sliceW γ L) β N A B / gibbsPartition (sliceW γ L) β N
+          - gibbsPathSum (sliceW γ L) β N A (fun _ => 1)
+              / gibbsPartition (sliceW γ L) β N
+            * (gibbsPathSum (sliceW γ L) β N (fun _ => 1) B
+                / gibbsPartition (sliceW γ L) β N)|
+        ≤ 6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
+              * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
+              * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2 / f ^ 2
+            * Real.exp (-m) ^ N := by
+    intro N A B
+    have hZp := hZpos N
+    have hZne : gibbsPartition (sliceW γ L) β N ≠ 0 := hZp.ne'
+    have hnum := gibbs_six_term_bound (sliceW γ L) hw β lam hlam Om hT
+      (Real.exp_nonneg _) hexp1 hnorm N A B
+    have hid : gibbsPathSum (sliceW γ L) β N A B
+            / gibbsPartition (sliceW γ L) β N
+          - gibbsPathSum (sliceW γ L) β N A (fun _ => 1)
+              / gibbsPartition (sliceW γ L) β N
+            * (gibbsPathSum (sliceW γ L) β N (fun _ => 1) B
+                / gibbsPartition (sliceW γ L) β N)
+        = (gibbsPartition (sliceW γ L) β N * gibbsPathSum (sliceW γ L) β N A B
+            - gibbsPathSum (sliceW γ L) β N A (fun _ => 1)
+              * gibbsPathSum (sliceW γ L) β N (fun _ => 1) B)
+          / gibbsPartition (sliceW γ L) β N ^ 2 := by
+      field_simp <;> ring
+    have hpow : lam ^ (2 * N) = (lam ^ N) ^ 2 := by
+      rw [two_mul, pow_add, pow_two]
+    have hZ2 : lam ^ (2 * N) * f ^ 2
+        ≤ gibbsPartition (sliceW γ L) β N ^ 2 := by
+      rw [hZeq N, mul_pow, hpow]
+      exact mul_le_mul_of_nonneg_left
+        (pow_le_pow_left₀ hfpos.le (hfle N) 2)
+        (pow_nonneg (pow_nonneg hlam.le N) 2)
+    rw [hid, abs_div, abs_of_pos (pow_pos hZp 2),
+      div_le_iff₀ (pow_pos hZp 2)]
+    calc |gibbsPartition (sliceW γ L) β N * gibbsPathSum (sliceW γ L) β N A B
+            - gibbsPathSum (sliceW γ L) β N A (fun _ => 1)
+              * gibbsPathSum (sliceW γ L) β N (fun _ => 1) B|
+        ≤ lam ^ (2 * N)
+            * (6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
+                * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
+                * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2)
+            * Real.exp (-m) ^ N := hnum
+      _ = 6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
+              * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
+              * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2 / f ^ 2
+            * Real.exp (-m) ^ N * (lam ^ (2 * N) * f ^ 2) := by
+          field_simp <;> ring
+      _ ≤ 6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
+              * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
+              * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2 / f ^ 2
+            * Real.exp (-m) ^ N * gibbsPartition (sliceW γ L) β N ^ 2 :=
+          mul_le_mul_of_nonneg_left hZ2 (by positivity)
+  exact ⟨hZpos, ⟨fun A B => 6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
+      * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
+      * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2 / f ^ 2,
+    hCnonneg, key⟩⟩
 end YangMills.OS

@@ -31793,3 +31793,65 @@ decision alone.
 
 **ROLES.**  Unit design: this desk.  Plane execution: autonomous
 browser bridge.  This record: this desk.
+
+
+## Addendum 626 (2026-08-05, **THE DENOMINATOR FLOOR IS A THEOREM: the
+positive cone kills the parity obstruction; module green in two passes;
+pass-19 wiring predictions REGISTERED before measurement**)
+
+**The mathematics.**  The previous version declined an `N`-uniform lower
+bound for `⟪T̂ᴺ Q1, Q1⟫` and said so in print: the even powers have a
+clean floor, the odd branch does not.  That obstruction was an artefact
+of asking for the floor by SPECTRAL means (only `S^{2k}` is positive
+semidefinite).  The kernel here is entrywise POSITIVE, so the
+order-theoretic route works at EVERY `N`:
+
+* `tiltKernel_pos` -- `tiltKernel w β lam` is entrywise positive for a
+  positive weight and positive scale, at EVERY real β, because
+  `spatialKernel` is a product of positive bond factors
+  (in-tree `spatialKernel_pos`; NO β >= 0 needed here);
+* `vacOf_pos` -- the normalised Perron vacuum is positive entrywise;
+* `opOf_pow_ge_smul_fix` -- **cone propagation**: a nonnegative kernel
+  with a fixed vector `Ω` pushes the ray `c·Ω` up through every power
+  (`c·Ω <= v` entrywise implies `c·Ω <= Tⁿ v` entrywise).  Induction on
+  `n`, no parity, no spectral theory;
+* `inner_pow_floor` -- **the floor**: `∃ f > 0, ∀ n, f <= ⟪Tⁿ v, v⟫`
+  with `f = c²‖Ω‖²` and `c` the minimum of the ratio `v/Ω`, taken with
+  the in-tree `minWeight` (a genuine finite minimum, `minWeight_pos` +
+  `minWeight_le`).
+
+**What that buys, and it is the piece the external evaluation named as
+the one thing still missing:** `os_reconstruction_normalised_clustering`
+-- in the window, ONE `m > 0` such that for EVERY spatial extent the
+partition function is positive at every depth AND there is a constant
+`C A B`, depending on the observables and the extent but **NOT on the
+time depth N**, with
+
+    |S_N(A,B)/Z_N - (S_N(A,1)/Z_N)(S_N(1,B)/Z_N)| <= C A B · e^{-mN},
+
+i.e. the connected two-point function of the NORMALISED Gibbs measure
+decays at the volume-uniform rate.  `C A B = 6‖QA‖‖QB‖‖Q1‖²/f²`.
+
+**Refactor in the same pass:** the endpoint algebra was extracted into
+`gibbs_six_term_bound` (explicit hypotheses) + `abs_scaled_cross_le`
+(pure scale algebra), so BOTH the division-free and the normalised
+statements consume one proof instead of two copies.  The module got
+STRUCTURALLY smaller per theorem while gaining seven declarations.
+
+**Pass history.**  Pass 17 (589c71dab): ELAB_EXIT 1, ONE error --
+`field_simp` left `v·Ω/Ω = v` open because the nonvanishing of the
+vacuum entry was not in context; two linter warnings ("tactic never
+executed") confirmed the `field_simp <;> ring` guards where field_simp
+closes alone.  Pass 18 (4d2996205): **ELAB_EXIT 0**, SOURCE 43213
+`2f2f4cf95eb9`, byte-identical to the local scratch and to the file
+banked here.
+
+**Pass-19 predictions, REGISTERED NOW, measured next:**
+
+1. `lake build YangMillsCore` total = **8481 EXACT** (same file grew
+   32533 -> 43213 B; no module added; twelfth consecutive if it holds).
+2. Full oracle reports = **3035 EXACT** (3028 + 7 new `#print axioms`).
+3. sorryAx = **0**; all seven new endpoints on the standard triple.
+
+**ROLES.**  Fabrication + unit design: this desk.  Plane execution:
+autonomous browser bridge.  Predictions committed before measurement.
