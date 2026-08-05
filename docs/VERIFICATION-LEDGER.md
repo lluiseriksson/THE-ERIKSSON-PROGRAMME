@@ -31757,3 +31757,39 @@ sorryAx 0 / module 3b3598eb bit-identical), pinned to THIS commit.
 **ROLES.**  Unit design + predictions: this desk, committed before the
 run.  Plane execution: autonomous browser bridge.  This record: this
 desk.
+
+
+## Addendum 625 (2026-08-05, **OS-R-2 FRESH-CLONE VERIFICATION GREEN
+at 70276c78f: judges 110/110 both modes, core 8481, oracle 3028,
+sorryAx 0, module bit-identical -- ZERO live slots; OS-R-2 CLOSED**)
+
+`scripts/osr2_pass16_freshclone.py` (committed e744c62fa, pinned to
+70276c78f) ran on the plane: brand-new clone /content/osr2fresh,
+toolchain + Mathlib cache from scratch.  Read from the run output:
+
+* `CLONE_EXIT 0`, `CHECKOUT_EXIT 0` (70276c78f), `CACHE_EXIT 0`.
+* Judges `judge_os_uniform.py`: `checks run: 110  passed: 110
+  failed: 0` -- `JUDGE VERDICT: PASS` in BOTH `normal` and
+  `optimized` (-O) modes.
+* Core: `CORE_EXIT 0 TOTAL 8481` -- `PREDICTION_CORE True`.
+* Oracle: `ORACLE_EXIT 0 REPORTS 3028 SORRYAX_REPORTS 0
+  NONSTANDARD_JOINED 119` -- `PREDICTION_REPORTS True`; the 119 are
+  the documented subset-of-triple class.
+* Sampled endpoints all on the exact standard triple:
+  `os_reconstruction_uniform_gap`, `os_reconstruction_measure_uniform`,
+  `os_reconstruction_connected_uniform`, `six_term_connected_bound`.
+* Travelling files, sha256 (bit-identical to the committed tree):
+  module `3b3598ebcfde0ce5...` 32533 B; `YangMillsCore.lean`
+  `8625afbf13f2dcb1...` 63502 B; `oracle_check.lean`
+  `98d9c41440ff59e6...` 235637 B; `scripts/judge_os_uniform.py`
+  `642208cae0d4f908...` 13613 B.  `OSR2_FRESHCLONE_DONE`.
+
+**The OS-R-2 fabrication campaign is CLOSED.**  Chain of records:
+licence Add. 613; measure stage Add. 621/622 (predictions -> held);
+six-term stage Add. 623/624 (predictions -> held; eleventh
+consecutive exact count); this fresh clone.  The manuscript loses its
+last [SLOT] in this same commit.  Submission remains the owner's
+decision alone.
+
+**ROLES.**  Unit design: this desk.  Plane execution: autonomous
+browser bridge.  This record: this desk.
