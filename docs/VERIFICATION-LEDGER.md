@@ -31883,3 +31883,43 @@ Remaining verification debt: the fresh clone, pinned to this commit.
 **ROLES.**  Unit design + predictions: this desk, committed before the
 run.  Plane execution: autonomous browser bridge.  This record: this
 desk.
+
+
+## Addendum 628 (2026-08-05, **OS-R-3 FRESH-CLONE VERIFICATION GREEN at
+639296c4d: judges 110/110 both modes, core 8481, oracle 3035, sorryAx 0,
+module bit-identical -- the cone stage is CLOSED, manuscript back to
+ZERO live slots**)
+
+`scripts/osr3_pass20_freshclone.py` (committed 0235a0881, pinned to
+639296c4d) ran on the plane: brand-new clone /content/osr3fresh,
+toolchain + Mathlib cache from scratch.  Read from the run output:
+
+* `CLONE_EXIT 0`, `CACHE_EXIT 0`.
+* Judges `judge_os_uniform.py`: `checks run: 110  passed: 110
+  failed: 0` in BOTH `normal` and `optimized` (-O) modes.
+* `CORE_EXIT 0 TOTAL 8481` -- `PREDICTION_CORE True`.
+* `ORACLE_EXIT 0 REPORTS 3035 SORRYAX_REPORTS 0 NONSTANDARD_JOINED
+  119` -- `PREDICTION_REPORTS True`.
+* Sampled endpoints all on the exact standard triple:
+  `os_reconstruction_uniform_gap`, `os_reconstruction_measure_uniform`,
+  `os_reconstruction_connected_uniform`, `six_term_connected_bound`,
+  `inner_pow_floor`, `os_reconstruction_normalised_clustering`.
+* Travelling files, sha256 (bit-identical to the committed tree):
+  module `2f2f4cf95eb9a5cc...` 43213 B; `YangMillsCore.lean`
+  `8625afbf13f2dcb1...` 63502 B (unchanged across all three stages);
+  `oracle_check.lean` `2e0e240471c1c4ea...` 235969 B;
+  `scripts/judge_os_uniform.py` `642208cae0d4f908...` 13613 B.
+  `OSR3_FRESHCLONE_DONE`.
+
+**Campaign record.**  Three fabrication stages, each with predictions
+committed BEFORE measurement and each fresh-clone verified: the measure
+stage (Add. 621/622/625), the six-term stage (Add. 623/624/625) and the
+positive-cone stage (Add. 626/627/this).  Twelve consecutive exact
+count predictions.  What the manuscript now proves that it did not two
+stages ago: the connected two-point function of the NORMALISED Gibbs
+measure decays at the volume-uniform rate with an `N`-independent
+constant.  The residue, printed: that constant still depends on the
+spatial extent.
+
+**ROLES.**  Unit design: this desk.  Plane execution: autonomous
+browser bridge.  This record: this desk.

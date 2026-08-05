@@ -3,8 +3,9 @@
 % stated here is final until its module is green on the plane AND fresh-clone
 % verified; every [SLOT] must be replaced by a number READ FROM A COMMITTED
 % ARTEFACT before the word "final" is pronounced.  STATUS: ZERO LIVE SLOTS
-% for the OS-R-2 stage (Addenda 621-625).  The OS-R-3 cone stage adds
-% pass-19 wiring + a fresh clone as the live slots (Addendum 626).
+% ZERO LIVE SLOTS across all three stages (Addenda 621-628: every module
+% green, every wiring measured with the predictions committed first, every
+% stage fresh-clone verified bit-identical).
 % Submission is the owner's decision alone.
 % The abstract's priority sentence is the COLLATED one (Add. 611,
 % docs/OS-R-PRIORITY-COLLATION.md): the naked "first machine-checked OS
@@ -30,10 +31,10 @@ the programme's Colab plane; toolchain \lean{leanprover/lean4:v4.29.0-rc6},
 Mathlib pinned to \lean{0764272048\ldots}.  Repository:
 \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}{THE-ERIKSSON-PROGRAMME},
 branch \lean{d3-closure}, module anchor commit
-\lean{b47dda50e3a0b383b4830cab53d945694629ea46}; verification anchor
-\lean{70276c78f3f33215c0075200faa43e33143dc57e} (fresh clone, Addendum 625).}}
-\date{2026-08-05 --- complete manuscript, zero live slots; submission is
-the owner's decision}
+\lean{6ef9aee03ffaeac062358b81afa8b3f89610d8ea}; verification anchor
+\lean{639296c4d43219b0966e4d273eebd4222ef9396c} (fresh clone, Addendum 628).}}
+\date{2026-08-05 --- complete manuscript, zero live slots across all
+three fabrication stages; submission is the owner's decision}
 
 \begin{document}
 \maketitle
@@ -581,16 +582,28 @@ $\times 2$ \\
 fresh-clone reproduction & bit-identical module, same counts &
 judges $110/110$ both modes; 8481; 3028; 0; module
 \lean{3b3598eb\ldots} bit-identical (Addendum 625) \\
+\hline
+\multicolumn{3}{l}{\emph{positive-cone stage (predictions Addendum 626,
+committed before the run; measured Addendum 627):}} \\
+core jobs & 8481 exact (file grew a third time) & 8481 \\
+oracle reports & $3028+7 = 3035$ exact & 3035 \\
+\lean{sorryAx} occurrences & 0 & 0 \\
+new endpoint axiom sets & standard triple & exactly the triple
+$\times 7$ \\
+fresh-clone reproduction & bit-identical module, same counts &
+judges $110/110$ both modes; 8481; 3035; 0; module
+\lean{2f2f4cf9\ldots} bit-identical (Addendum 628) \\
 \end{tabular}
 \end{center}
 The core count is the tenth consecutive exact count prediction of this
-lane; the six-term stage made it eleven: the module file grew from
-$12{,}347$ to $20{,}428$ to $32{,}533$ bytes across the two stages and
-the job total never moved.
+lane; the six-term stage made it eleven and the cone stage twelve: the module file grew from
+$12{,}347$ to $20{,}428$ to $32{,}533$ to $43{,}213$ bytes across the
+three stages and the job total never moved.
 Module: \lean{YangMills/OS/OSReconstructionUniform.lean}, final sha256
-\lean{3b3598ebcfde0ce5f2f6ba358e7e0607473ac66db7afbdd4a8b09e014db7f369}
-($32{,}533$ bytes), banked at commit \lean{b47dda50e} (measure stage:
-sha \lean{d9919e25\ldots}, $20{,}428$ B at \lean{3b0dfa9e8}) after the plane
+\lean{2f2f4cf95eb9a5ccb51f4b93ee7cf87b8cb49b34a3fe51eb746c34e4996e9e4e}
+($43{,}213$ bytes), banked at commit \lean{6ef9aee03} (six-term stage:
+\lean{3b3598eb\ldots}, $32{,}533$ B at \lean{b47dda50e}; measure stage:
+\lean{d9919e25\ldots}, $20{,}428$ B at \lean{3b0dfa9e8}) after the plane
 printed \lean{ELAB\_EXIT 0} on byte-identical source (the cell prints
 size and sha256 before elaborating; both matched the local file before
 banking).  Pass history: passes 1--5 (OS-R-1, Addenda 614--616),
