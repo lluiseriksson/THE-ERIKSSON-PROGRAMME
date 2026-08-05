@@ -20,4 +20,5 @@ materialized, and its declarations have not yet been compiler-verified.
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalGreenRate_pos
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalCorrectionAmplitude
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalExtendedGreen_exponentialKernelBound
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalCorrection
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound

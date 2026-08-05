@@ -463,6 +463,40 @@ theorem
       (M := M) (Q := Q) (Nc := Nc) hM depth hspacing
       background budget fineSmall hsmall) hK
 
+/-- The literal physical single-cell correction with all carrier, fibre and
+source/target indices fixed in its public type.  This wrapper exposes no new
+choice: its Green is still the canonical inverse of the compression of the
+one generated ambient precision. -/
+noncomputable def cmp99SourceGeneratedPhysicalRegionalCorrection
+    (P : CMP95SourceSmoothPartitionProfile) (hM : 2 ≤ M)
+    (depth : ℕ) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * (M * Q)) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * (M * Q)) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) (cell : FinBox 4 Q) :
+    GaugeZeroCochain 4
+        (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q))
+        (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4
+        (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q))
+        (SUNLieCoord Nc) :=
+  cmp99RegionalGreenCorrection
+    (cmp99SourceRegionalLargeBlockSquarePartition
+      (M := M) (Q := Q) (depth := depth) P)
+    (cmp99SourceGeneratedPhysicalRegionalCell P M Q depth)
+    (cmp99SourceGeneratedPhysicalAmbientPrecision
+      (M := M) (Q := Q) (Nc := Nc) (spacing := spacing)
+      (epsilon := epsilon) hM depth background budget fineSmall)
+    (cmp99SourceGeneratedCoercivity_pos 4 M depth hspacing hsmall)
+    (isCoerciveCLM_cmp99SourceGeneratedPhysicalAmbientPrecision
+      (M := M) (Q := Q) (Nc := Nc) hM depth hspacing
+      background budget fineSmall hsmall)
+    cell
+
 /-- Step 6 of the declared route: a uniform exponential estimate for every
 literal correction `K(h_Pi) G'_Pi h_Pi`.  The amplitude is independent of
 the cell and periodic volume; the overlap factor `16` is deliberately not
@@ -478,20 +512,10 @@ theorem cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
       spacing epsilon < 1) (cell : FinBox 4 Q) :
-    let partition := cmp99SourceRegionalLargeBlockSquarePartition
-      (M := M) (Q := Q) (depth := depth) P
-    let regions := cmp99SourceGeneratedPhysicalRegionalCell P M Q depth
-    let K := cmp99SourceGeneratedPhysicalAmbientPrecision
-      (M := M) (Q := Q) (Nc := Nc) (spacing := spacing)
-      (epsilon := epsilon) hM depth background budget fineSmall
-    let hc := cmp99SourceGeneratedCoercivity_pos
-      4 M depth hspacing hsmall
-    let hKcoer :=
-      isCoerciveCLM_cmp99SourceGeneratedPhysicalAmbientPrecision
-        (M := M) (Q := Q) (Nc := Nc) hM depth hspacing
-        background budget fineSmall hsmall
     FinitePiLpExponentialKernelBound
-      (cmp99RegionalGreenCorrection partition regions K hc hKcoer cell)
+      (cmp99SourceGeneratedPhysicalRegionalCorrection
+        (M := M) (Q := Q) (Nc := Nc) P hM depth hspacing
+        background budget fineSmall hsmall cell)
       (finBoxDist : FinBox 4
           (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) →
         FinBox 4
@@ -563,7 +587,17 @@ theorem cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound
       (cmp99SourceGeneratedPhysicalLargeBlockCutoffBudget
           P M depth spacing epsilon rate * (2 / c) * S)
       (rate - rate / 2) := by
-    apply finitePiLpTypedExponentialKernelBound_comp
+    exact finitePiLpTypedExponentialKernelBound_comp
+      (ι := FinBox 4
+        (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)))
+      (κ := FinBox 4
+        (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)))
+      (ν := FinBox 4
+        (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)))
+      (g := SUNLieCoord Nc)
+      (A := cmp99SourceGeneratedPhysicalLargeBlockCutoffBudget
+        P M depth spacing epsilon rate)
+      (B := 2 / c) (rate := rate) (sigma := rate / 2) (S := S)
       (finBoxDist : FinBox 4
           (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) →
         FinBox 4
@@ -586,8 +620,31 @@ theorem cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound
         (Q := Q) (g := SUNLieCoord Nc) partition cell K)
       (cmp99RegionalExtendedDirichletGreen
         (regions cell) K hc hKcoer) hcomm hgreen
-  have hcut :=
-    finitePiLpTypedExponentialKernelBound_comp_scalarMultiplier_right
+  have hcut : FinitePiLpExponentialKernelBound
+      (((cmp99RegionalSquarePrecisionCommutator
+        (M := cmp99SourceRegionalLargeBlockSide M depth)
+        (Q := Q) (g := SUNLieCoord Nc) partition cell K).comp
+          (cmp99RegionalExtendedDirichletGreen
+            (regions cell) K hc hKcoer)).comp
+        (finitePiLpScalarMultiplier
+          (g := SUNLieCoord Nc) (fun x => partition.value cell x)))
+      (finBoxDist : FinBox 4
+          (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) →
+        FinBox 4
+          (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) → ℕ)
+      (cmp99SourceGeneratedPhysicalLargeBlockCutoffBudget
+          P M depth spacing epsilon rate * (2 / c) * S)
+      (rate - rate / 2) := by
+    exact finitePiLpTypedExponentialKernelBound_comp_scalarMultiplier_right
+      (ι := FinBox 4
+        (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)))
+      (κ := FinBox 4
+        (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)))
+      (g := SUNLieCoord Nc)
+      (dist := finBoxDist)
+      (A := cmp99SourceGeneratedPhysicalLargeBlockCutoffBudget
+        P M depth spacing epsilon rate * (2 / c) * S)
+      (rate := rate - rate / 2)
       (fun x => partition.value cell x)
       ((cmp99RegionalSquarePrecisionCommutator
         (M := cmp99SourceRegionalLargeBlockSide M depth)
@@ -598,6 +655,7 @@ theorem cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound
   have hrateEq : rate - rate / 2 = rate / 2 := by ring
   rw [hrateEq] at hcut
   simpa [cmp99RegionalGreenCorrection, cmp99RegionalSquareMultiplier,
+    cmp99SourceGeneratedPhysicalRegionalCorrection,
     cmp99SourceGeneratedPhysicalRegionalCorrectionAmplitude,
     partition, regions, K, c, hc, hKcoer, rate, S,
     ContinuousLinearMap.comp_assoc] using hcut
