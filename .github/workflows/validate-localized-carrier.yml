@@ -1,4 +1,4 @@
-name: Diagnose CMP99 generated physical cutoff identity
+name: Seal CMP99 generated physical cutoff identity
 
 on:
   workflow_dispatch:
@@ -77,14 +77,6 @@ jobs:
           test "$mathlib" = "$EXPECTED_MATHLIB"
           lake exe cache get 2>&1 | tee evidence/cache-get.log
 
-      - name: Restore project build cache for diagnosis
-        uses: actions/cache/restore@v4
-        with:
-          path: .lake/build
-          key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
-          restore-keys: |
-            cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-
       - name: Run focal queue stop on first error
         shell: bash
         run: |
@@ -112,15 +104,7 @@ jobs:
           run_stage generated_physical_cutoff_audit \
             lake env lean YangMills/RG/BalabanCMP99SourceGeneratedPhysicalCutoffIdentityAudit.lean
 
-      - name: Save project build cache after diagnosis
-        if: always()
-        continue-on-error: true
-        uses: actions/cache/save@v4
-        with:
-          path: .lake/build
-          key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
-
-      - name: Verify axiom gates and package diagnostic evidence
+      - name: Verify axiom gates and package cold-seal evidence
         shell: bash
         run: |
           set -euo pipefail
