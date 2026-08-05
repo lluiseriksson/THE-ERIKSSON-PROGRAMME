@@ -1237,4 +1237,103 @@ theorem os_reconstruction_ground_state_clustering (β γ : ℝ) {alpha : ℝ}
   have hstep : ‖dressVac Om f‖ * ‖dressVac Om g‖ ≤ Kf * Kg :=
     mul_le_mul hnf hng (norm_nonneg _) hKf
   exact mul_le_mul_of_nonneg_right hstep (pow_nonneg (Real.exp_nonneg _) N)
+/-! ## Non-vacuity, and the summed form (pass 28)
+
+Every theorem above is conditional on the Dobrushin window.  A conditional
+theorem whose hypothesis is unsatisfiable says nothing, so the window's
+non-emptiness at an INTERACTING point is machine-checked here rather than
+asserted, and the bound is put in the summed form a thermodynamic-limit
+argument actually consumes. -/
+
+
+/-- `tanh x = 1 − 2/(e^{2x}+1)`.  This identity is already in the tree
+(`SpatialBirkhoff.tanh_eq_one_sub`); it is reproved here, verbatim, rather than
+imported, so that this module's import set -- and therefore the measured core
+job count -- does not move for the sake of one arithmetic fact. -/
+theorem tanh_eq_one_sub_local (x : ℝ) :
+    Real.tanh x = 1 - 2 / (Real.exp (2 * x) + 1) := by
+  have hx : (0 : ℝ) < Real.exp x := Real.exp_pos x
+  have hne : Real.exp x ≠ 0 := ne_of_gt hx
+  have h2 : (0 : ℝ) < Real.exp (2 * x) + 1 := by positivity
+  have hxx : Real.exp (2 * x) = Real.exp x * Real.exp x := by
+    rw [show (2 : ℝ) * x = x + x by ring, Real.exp_add]
+  rw [Real.tanh_eq_sinh_div_cosh, Real.sinh_eq, Real.cosh_eq, Real.exp_neg, hxx]
+  rw [hxx] at h2
+  field_simp
+  ring
+
+/-- `tanh (1/10) ≤ 1/9`.  Proof without decimal arithmetic: the in-tree form
+`tanh x = 1 − 2/(e^{2x}+1)` reduces the claim to `e^{1/5} ≤ 5/4`, and that
+follows from `1 + x ≤ eˣ` at `x = −1/5` together with `e^{1/5}·e^{−1/5} = 1`. -/theorem tanh_tenth_le : Real.tanh (1 / 10) ≤ 1 / 9 := by
+  have hEpos : (0 : ℝ) < Real.exp (2 * (1 / 10)) := Real.exp_pos _
+  have h45 : (4 : ℝ) / 5 ≤ Real.exp (-(1 / 5)) := by
+    have h := Real.add_one_le_exp (-(1 / 5) : ℝ)
+    linarith
+  have hprod : Real.exp (2 * (1 / 10 : ℝ)) * Real.exp (-(1 / 5)) = 1 := by
+    rw [← Real.exp_add]
+    norm_num
+  have hstep : Real.exp (2 * (1 / 10 : ℝ)) * (4 / 5)
+      ≤ Real.exp (2 * (1 / 10 : ℝ)) * Real.exp (-(1 / 5)) :=
+    mul_le_mul_of_nonneg_left h45 hEpos.le
+  rw [hprod] at hstep
+  have hub : Real.exp (2 * (1 / 10 : ℝ)) ≤ 5 / 4 := by linarith
+  have hden : (0 : ℝ) < Real.exp (2 * (1 / 10 : ℝ)) + 1 := by positivity
+  rw [tanh_eq_one_sub_local]
+  have hkey : (8 : ℝ) / 9 ≤ 2 / (Real.exp (2 * (1 / 10 : ℝ)) + 1) := by
+    rw [le_div_iff₀ hden]
+    linarith
+  linarith
+
+/-- **THE WINDOW IS NOT EMPTY, AND NOT ONLY AT THE FREE POINT.**  The pair
+`β = γ = 1/10` with `α = 1/2` satisfies `2 tanh|β| + 2 tanh|γ| ≤ α < 1` with
+BOTH couplings nonzero, so every conditional theorem of this module has a
+satisfiable hypothesis at an interacting point.  (`4/9 ≤ 1/2`.) -/
+theorem window_nonempty_interacting :
+    ∃ β γ alpha : ℝ, β ≠ 0 ∧ γ ≠ 0 ∧ 0 < alpha ∧ alpha < 1 ∧
+      2 * Real.tanh |β| + 2 * Real.tanh |γ| ≤ alpha := by
+  refine ⟨1 / 10, 1 / 10, 1 / 2, by norm_num, by norm_num, by norm_num,
+    by norm_num, ?_⟩
+  have habs : |(1 / 10 : ℝ)| = 1 / 10 := abs_of_pos (by norm_num)
+  rw [habs]
+  linarith [tanh_tenth_le]
+
+/-- A geometric tail, in the form the summed bound needs. -/
+theorem geom_sum_le_inv_one_sub {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r < 1) (M : ℕ) :
+    ∑ N ∈ Finset.range M, r ^ N ≤ 1 / (1 - r) := by
+  have hne : r ≠ 1 := ne_of_lt hr1
+  have h1r : (0 : ℝ) < 1 - r := by linarith
+  have h1rne : (1 : ℝ) - r ≠ 0 := ne_of_gt h1r
+  have hrne : r - 1 ≠ 0 := fun h => h1rne (by linarith)
+  have hpow : (0 : ℝ) ≤ r ^ M := pow_nonneg hr0 M
+  rw [geom_sum_eq hne]
+  have hform : (r ^ M - 1) / (r - 1) = (1 - r ^ M) / (1 - r) := by
+    field_simp
+    ring
+  rw [hform, div_le_div_iff₀ h1r h1r]
+  nlinarith [hpow, h1r]
+
+/-- **THE SUMMED (SUSCEPTIBILITY) FORM, UNIFORM IN THE EXTENT.**  Summing the
+ground-state clustering bound over all time separations gives a bound that is
+finite, independent of the cut-off `M`, and independent of the spatial extent:
+`∑_{N<M} |Cov_π(f, PᴺG)| ≤ Kf·Kg/(1 − e^{-m})`.  This is the shape a
+thermodynamic-limit argument consumes; it exists only because the constant of
+the ground-state bound carries no extent. -/
+theorem summed_clustering_of_uniform_bound {m : ℝ} (hm : 0 < m)
+    (Kf Kg : ℝ) (hKf : 0 ≤ Kf) (hKg : 0 ≤ Kg) (c : ℕ → ℝ)
+    (hc : ∀ N, |c N| ≤ Kf * Kg * Real.exp (-m) ^ N) (M : ℕ) :
+    ∑ N ∈ Finset.range M, |c N| ≤ Kf * Kg / (1 - Real.exp (-m)) := by
+  have hr0 : (0 : ℝ) ≤ Real.exp (-m) := (Real.exp_pos _).le
+  have hr1 : Real.exp (-m) < 1 := by
+    rw [show (1 : ℝ) = Real.exp 0 from (Real.exp_zero).symm]
+    exact Real.exp_lt_exp.mpr (by linarith)
+  have hKfg : 0 ≤ Kf * Kg := mul_nonneg hKf hKg
+  calc ∑ N ∈ Finset.range M, |c N|
+      ≤ ∑ N ∈ Finset.range M, Kf * Kg * Real.exp (-m) ^ N :=
+        Finset.sum_le_sum fun N _ => hc N
+    _ = Kf * Kg * ∑ N ∈ Finset.range M, Real.exp (-m) ^ N := by
+        rw [Finset.mul_sum]
+    _ ≤ Kf * Kg * (1 / (1 - Real.exp (-m))) :=
+        mul_le_mul_of_nonneg_left (geom_sum_le_inv_one_sub hr0 hr1 M) hKfg
+    _ = Kf * Kg / (1 - Real.exp (-m)) := by
+        rw [mul_one_div]
 end YangMills.OS

@@ -32181,3 +32181,58 @@ continuum limit; a Wightman theory; any Yang-Mills consequence.
 
 **ROLES.**  Unit design: this desk.  Plane execution: autonomous
 browser bridge.  This record: this desk.
+
+
+## Addendum 635 (2026-08-05, **NON-VACUITY at an INTERACTING point, and the
+summed form; module green in three passes; pass-31 predictions REGISTERED.
+Also: a PROCESS DEFECT of this desk, disclosed**)
+
+**The process defect first, because it is the more useful record.**  Three
+earlier edits that were supposed to add clauses (iv), (v), (vi) to the
+manuscript abstract NEVER LANDED.  They were done with PowerShell
+`String.Replace`, which returns the string unchanged when the pattern does
+not match -- silently, with no error and no exit code.  The desk did not
+verify, so three shipped PDFs carried an abstract still claiming that only
+the RATE is uniform in the volume, several stages after that stopped being
+the strongest true statement.  The external evaluation caught it.  **Rule
+adopted: an edit tool that cannot fail is not an edit tool.**  Use the
+editor that errors on a missed match, or assert the post-condition; never
+`.Replace()` un-checked on load-bearing prose.
+
+**The mathematics.**  Every theorem of this module is conditional on the
+Dobrushin window.  A conditional theorem whose hypothesis is unsatisfiable
+says nothing, and until now nothing in Lean witnessed the window:
+
+* `tanh_eq_one_sub_local` -- `tanh x = 1 - 2/(e^{2x}+1)`, reproved verbatim
+  from `SpatialBirkhoff` rather than imported, so the import set and hence
+  the measured core job count do not move for one arithmetic fact;
+* `tanh_tenth_le` -- `tanh(1/10) <= 1/9`, with NO decimal arithmetic: the
+  identity reduces it to `e^{1/5} <= 5/4`, which follows from
+  `1 + x <= e^x` at `x = -1/5` plus `e^{1/5}·e^{-1/5} = 1`;
+* `window_nonempty_interacting` -- `beta = gamma = 1/10`, `alpha = 1/2`
+  satisfies `2tanh|b| + 2tanh|g| <= alpha < 1` with **both couplings
+  nonzero** (`4/9 <= 1/2`).  Not the free point.
+* `geom_sum_le_inv_one_sub` + `summed_clustering_of_uniform_bound` -- the
+  extent-free bound in SUSCEPTIBILITY form:
+  `sum_{N<M} |Cov| <= Kf·Kg/(1 - e^{-m})`, finite, independent of the
+  cut-off M AND of the spatial extent.  That is the shape a
+  thermodynamic-limit argument consumes, and it exists only because the
+  ground-state constant carries no extent.
+
+**Pass history.**  Pass 28: `tanh_eq_one_sub` unknown (it lives in a module
+this one does not import) + the geometric `field_simp` DID need its `ring`
+this time.  Pass 29: parse error -- the inline insertion left TWO docstrings
+back to back; a formatting defect, not a proof defect.  Pass 30:
+**ELAB_EXIT 0**, SOURCE 70976 `b60120d38d06`.
+
+**Pass-31 predictions, REGISTERED NOW:**
+
+1. core total = **8481 EXACT** (65975 -> 70976 B, import set UNCHANGED --
+   this is why the identity was reproved instead of imported; fifteenth
+   consecutive if it holds).
+2. oracle reports = **3055 EXACT** (3050 + 5 new lines).
+3. sorryAx = **0**; all five new endpoints on the standard triple.
+
+**ROLES.**  Fabrication + unit design + the disclosed defect: this desk.
+Plane execution: autonomous browser bridge.  Predictions committed before
+measurement.

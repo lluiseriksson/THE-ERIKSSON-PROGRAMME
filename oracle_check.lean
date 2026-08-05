@@ -3426,3 +3426,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.opOf_pow_dressVac
 #print axioms YangMills.OS.inner_dressVac_pow
 #print axioms YangMills.OS.os_reconstruction_ground_state_clustering
+#print axioms YangMills.OS.tanh_eq_one_sub_local
+#print axioms YangMills.OS.tanh_tenth_le
+#print axioms YangMills.OS.window_nonempty_interacting
+#print axioms YangMills.OS.geom_sum_le_inv_one_sub
+#print axioms YangMills.OS.summed_clustering_of_uniform_bound
