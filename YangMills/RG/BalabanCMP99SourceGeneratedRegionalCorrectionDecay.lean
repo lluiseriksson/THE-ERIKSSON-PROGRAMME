@@ -524,7 +524,6 @@ theorem cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound
         P M depth spacing epsilon)
       (cmp99SourceGeneratedPhysicalRegionalGreenRate
         M depth spacing epsilon / 2) := by
-  dsimp only
   let partition := cmp99SourceRegionalLargeBlockSquarePartition
     (M := M) (Q := Q) (depth := depth) P
   let regions := cmp99SourceGeneratedPhysicalRegionalCell P M Q depth
