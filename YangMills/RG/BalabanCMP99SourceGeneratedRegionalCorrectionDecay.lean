@@ -103,6 +103,33 @@ theorem finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound_any
       (σ := sigma) (fun k => (((2 * k + 1) ^ 4 : ℕ) : ℝ))
       hN hsummable)
 
+/-- Same-carrier specialization of exponential-kernel composition on an
+arbitrary four-dimensional periodic box.  The physical callers therefore do
+not ask elaboration to infer three copies of a large generated carrier. -/
+theorem finitePiLpExponentialKernelBound_comp_finBox
+    {N : ℕ} [NeZero N]
+    {g : Type*} [NormedAddCommGroup g] [NormedSpace ℝ g]
+    {A B rate sigma : ℝ} (hsigma : 0 < sigma) (hsigmaRate : sigma < rate)
+    (Left Right : GaugeZeroCochain 4 N g →L[ℝ] GaugeZeroCochain 4 N g)
+    (hLeft : FinitePiLpExponentialKernelBound Left finBoxDist A rate)
+    (hRight : FinitePiLpExponentialKernelBound Right finBoxDist B rate) :
+    FinitePiLpExponentialKernelBound (Left.comp Right) finBoxDist
+      (A * B * cmp99OmegaSiteExpSumBound sigma) (rate - sigma) := by
+  have hS : 0 ≤ cmp99OmegaSiteExpSumBound sigma := by
+    unfold cmp99OmegaSiteExpSumBound
+    exact tsum_nonneg fun _ =>
+      mul_nonneg (Nat.cast_nonneg _) (Real.exp_pos _).le
+  exact finitePiLpTypedExponentialKernelBound_comp
+    (ι := FinBox 4 N) (κ := FinBox 4 N) (ν := FinBox 4 N) (g := g)
+    (A := A) (B := B) (rate := rate) (sigma := sigma)
+    (S := cmp99OmegaSiteExpSumBound sigma)
+    finBoxDist finBoxDist finBoxDist
+    (fun target middle source => finBoxDist_triangle target middle source)
+    hsigma hsigmaRate hS
+    (fun target =>
+      finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound_any target hsigma)
+    Left Right hLeft hRight
+
 /-- Exponential localization of an ambient kernel descends exactly to its
 Dirichlet compression. -/
 theorem cmp99RegionalDirichletPrecision_exponentialKernelBound
@@ -544,10 +571,6 @@ theorem cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound
   have hrate : 0 < rate := by
     exact cmp99SourceGeneratedPhysicalRegionalGreenRate_pos
       M depth hspacing hsmall
-  have hS : 0 ≤ S := by
-    dsimp [S, cmp99OmegaSiteExpSumBound]
-    exact tsum_nonneg fun _ =>
-      mul_nonneg (Nat.cast_nonneg _) (Real.exp_pos _).le
   have hcomm : FinitePiLpExponentialKernelBound
       (cmp99RegionalSquarePrecisionCommutator
         (M := cmp99SourceRegionalLargeBlockSide M depth)
@@ -586,34 +609,13 @@ theorem cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound
       (cmp99SourceGeneratedPhysicalLargeBlockCutoffBudget
           P M depth spacing epsilon rate * (2 / c) * S)
       (rate - rate / 2) := by
-    exact finitePiLpTypedExponentialKernelBound_comp
-      (ι := FinBox 4
-        (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)))
-      (κ := FinBox 4
-        (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)))
-      (ν := FinBox 4
-        (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)))
+    simpa [S] using finitePiLpExponentialKernelBound_comp_finBox
+      (N := cmp99SourceRegionalLargeBlockSide M depth * (2 * Q))
       (g := SUNLieCoord Nc)
       (A := cmp99SourceGeneratedPhysicalLargeBlockCutoffBudget
         P M depth spacing epsilon rate)
-      (B := 2 / c) (rate := rate) (sigma := rate / 2) (S := S)
-      (finBoxDist : FinBox 4
-          (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) →
-        FinBox 4
-          (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) → ℕ)
-      (finBoxDist : FinBox 4
-          (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) →
-        FinBox 4
-          (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) → ℕ)
-      (finBoxDist : FinBox 4
-          (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) →
-        FinBox 4
-          (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) → ℕ)
-      (fun target middle source => finBoxDist_triangle target middle source)
-      (by positivity) (by linarith) hS
-      (fun target =>
-        finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound_any target
-          (show 0 < rate / 2 by positivity))
+      (B := 2 / c) (rate := rate) (sigma := rate / 2)
+      (show 0 < rate / 2 by positivity) (by linarith)
       (cmp99RegionalSquarePrecisionCommutator
         (M := cmp99SourceRegionalLargeBlockSide M depth)
         (Q := Q) (g := SUNLieCoord Nc) partition cell K)
