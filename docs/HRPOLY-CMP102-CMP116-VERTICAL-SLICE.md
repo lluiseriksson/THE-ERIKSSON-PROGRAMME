@@ -2537,3 +2537,30 @@ public signatures (`ι`, `g`, and typed lambda binders).  Type inference is
 reserved for the generic leaf lemmas.  Three deterministic `whnf` timeouts
 have now been removed by this same rewrite; increasing heartbeats is not the
 accepted repair for this class.
+
+### Step 5 public signature (PRE-VALIDATION)
+
+Checkpoint `a2532b1a91bfff09a7d5219e490b8ca43696eb32` freezes the
+ambient-to-regional dictionary without accepting a physical operator equality
+as input.  Its declared chain is:
+
+1. the full coarse region on `2 * (M * Q)` is `Finset.univ`;
+2. every complete-block lift of that region is proved to remain `Finset.univ`;
+3. an explicit finite equivalence identifies its generated active-site type
+   with the factored ambient carrier
+   `FinBox 4 (M^(depth+2) * (2*Q))`;
+4. the one ambient precision is defined by isometric reindexing of the literal
+   generated physical precision, and its generated coercivity constant is
+   transported as a theorem;
+5. pulling the active source cutoff through the same equivalence is proved
+   equal to the literal regional `CMP95SourceSmoothPartitionProfile` cutoff;
+6. consequently the regional square commutator is proved equal to the
+   reindexed active commutator, and its existing exponential kernel bound is
+   transported without a new constant.
+
+The final equality is the consumer-facing dictionary.  It is not a postulated
+identification of two independently chosen precisions.  The regional Green
+composition, the overlap/Schur sum, and `norm R' < 1` remain steps 6--7.
+This source and its eleven-declaration audit remain PRE-VALIDATION until a
+compiler gate succeeds, so this subsection moves neither `20/41` nor window
+15.

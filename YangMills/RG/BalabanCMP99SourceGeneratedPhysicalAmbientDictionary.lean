@@ -62,10 +62,19 @@ theorem finitePiLpTypedKernelReindex_scalarCommutator
         (finitePiLpTypedKernelReindex e e A) := by
   apply ContinuousLinearMap.ext
   intro phi
+  have hmult :
+      finitePiLpScalarMultiplier h
+          ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e.symm) phi) =
+        (LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e.symm)
+          (finitePiLpScalarMultiplier (fun x => h (e.symm x)) phi) := by
+    apply PiLp.ext
+    intro y
+    simp [finitePiLpScalarMultiplier_apply,
+      LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
   apply PiLp.ext
   intro x
   simp [finitePiLpTypedKernelReindex, finitePiLpScalarCommutator,
-    ContinuousLinearMap.comp_apply, finitePiLpScalarMultiplier_apply,
+    finitePiLpScalarMultiplier_apply, hmult,
     LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
 
 /-- Square isometric reindexing preserves a coercivity constant exactly. -/
@@ -86,9 +95,11 @@ theorem isCoerciveCLM_finitePiLpTypedKernelReindex
     _ ≤ inner ℝ (U.symm phi) (A (U.symm phi)) := h
     _ = inner ℝ phi
         (finitePiLpTypedKernelReindex e e A phi) := by
-      rw [← U.inner_map_map]
-      simp [U, finitePiLpTypedKernelReindex,
-        LinearIsometryEquiv.piLpCongrLeft_symm]
+      have hinner := U.inner_map_map (U.symm phi) (A (U.symm phi))
+      rw [U.apply_symm_apply] at hinner
+      change inner ℝ (U.symm phi) (A (U.symm phi)) =
+        inner ℝ phi (U (A (U.symm phi)))
+      exact hinner.symm
 
 variable {M Q Nc : ℕ}
 variable [NeZero M] [NeZero Q] [NeZero Nc]
@@ -114,10 +125,17 @@ noncomputable def cmp99SourceGeneratedPhysicalFullSiteEquiv
         rw [cmp99SourceGeneratedPhysicalFullCoarseRegion,
           cmp99IteratedLiftActiveRegion_full_sites_eq_univ]
         exact Finset.mem_univ _⟩
-    left_inv := fun x => Subtype.ext
-      (cast_cancel_of_opposite_equalities hsize.symm hsize x.1)
-    right_inv := fun x =>
-      cast_cancel_of_opposite_equalities hsize hsize.symm x }
+    left_inv := by
+      intro x
+      apply Subtype.ext
+      dsimp
+      cases hsize
+      rfl
+    right_inv := by
+      intro x
+      dsimp
+      cases hsize
+      rfl }
 
 /-- The full-site equivalence preserves the literal periodic distance. -/
 theorem finBoxDist_cmp99SourceGeneratedPhysicalFullSiteEquiv_symm
@@ -168,8 +186,9 @@ theorem isCoerciveCLM_cmp99SourceGeneratedPhysicalAmbientPrecision
     (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
       spacing epsilon < 1) :
     IsCoerciveCLM
-      (cmp99SourceGeneratedPhysicalAmbientPrecision hM depth background
-        budget fineSmall)
+      (cmp99SourceGeneratedPhysicalAmbientPrecision
+        (M := M) (Q := Q) (Nc := Nc) (spacing := spacing)
+        (epsilon := epsilon) hM depth background budget fineSmall)
       (cmp99SourceGeneratedCoercivity 4 M (depth + 1) spacing epsilon) := by
   exact isCoerciveCLM_finitePiLpTypedKernelReindex
     (cmp99SourceGeneratedPhysicalFullSiteEquiv M Q depth)
@@ -197,7 +216,8 @@ theorem cmp99SourceGeneratedPhysicalLargeBlockCutoff_fullSiteEquiv_symm
     (cmp99SourceRegionalLargeBlockSquarePartition
       (M := M) (Q := Q) (depth := depth) P).value cell
         (hsize ▸ (hsize.symm ▸ x)) = _
-  rw [cast_cancel_of_opposite_equalities hsize hsize.symm x]
+  cases hsize
+  rfl
 
 /-- Exact dictionary: the regional square commutator of the one ambient
 precision is the isometric reindexing of the already bounded active
@@ -217,8 +237,9 @@ theorem cmp99SourceRegionalLargeBlockPrecisionCommutator_eq_reindex
         (Q := Q) (g := SUNLieCoord Nc)
         (cmp99SourceRegionalLargeBlockSquarePartition
           (M := M) (Q := Q) (depth := depth) P) cell
-        (cmp99SourceGeneratedPhysicalAmbientPrecision hM depth background
-          budget fineSmall) =
+        (cmp99SourceGeneratedPhysicalAmbientPrecision
+          (M := M) (Q := Q) (Nc := Nc) (spacing := spacing)
+          (epsilon := epsilon) hM depth background budget fineSmall) =
       finitePiLpTypedKernelReindex
         (cmp99SourceGeneratedPhysicalFullSiteEquiv M Q depth)
         (cmp99SourceGeneratedPhysicalFullSiteEquiv M Q depth)
@@ -233,17 +254,20 @@ theorem cmp99SourceRegionalLargeBlockPrecisionCommutator_eq_reindex
       (fun x =>
         (cmp99SourceRegionalLargeBlockSquarePartition
           (M := M) (Q := Q) (depth := depth) P).value cell x)
-      (cmp99SourceGeneratedPhysicalAmbientPrecision hM depth background
-        budget fineSmall) =
+      (cmp99SourceGeneratedPhysicalAmbientPrecision
+        (M := M) (Q := Q) (Nc := Nc) (spacing := spacing)
+        (epsilon := epsilon) hM depth background budget fineSmall) =
     finitePiLpScalarCommutator
       (fun x => cmp99SourceGeneratedPhysicalLargeBlockCutoff P
         (cmp99SourceGeneratedPhysicalFullCoarseRegion M Q) depth cell
         ((cmp99SourceGeneratedPhysicalFullSiteEquiv M Q depth).symm x))
-      (cmp99SourceGeneratedPhysicalAmbientPrecision hM depth background
-        budget fineSmall)
+      (cmp99SourceGeneratedPhysicalAmbientPrecision
+        (M := M) (Q := Q) (Nc := Nc) (spacing := spacing)
+        (epsilon := epsilon) hM depth background budget fineSmall)
   apply congrArg (fun h => finitePiLpScalarCommutator h
-    (cmp99SourceGeneratedPhysicalAmbientPrecision hM depth background
-      budget fineSmall))
+    (cmp99SourceGeneratedPhysicalAmbientPrecision
+      (M := M) (Q := Q) (Nc := Nc) (spacing := spacing)
+      (epsilon := epsilon) hM depth background budget fineSmall))
   funext x
   exact (cmp99SourceGeneratedPhysicalLargeBlockCutoff_fullSiteEquiv_symm
     P depth cell x).symm
@@ -268,8 +292,9 @@ theorem
         (Q := Q) (g := SUNLieCoord Nc)
         (cmp99SourceRegionalLargeBlockSquarePartition
           (M := M) (Q := Q) (depth := depth) P) cell
-        (cmp99SourceGeneratedPhysicalAmbientPrecision hM depth background
-          budget fineSmall))
+        (cmp99SourceGeneratedPhysicalAmbientPrecision
+          (M := M) (Q := Q) (Nc := Nc) (spacing := spacing)
+          (epsilon := epsilon) hM depth background budget fineSmall))
       (fun target source : FinBox 4
           (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) =>
         finBoxDist target source)
