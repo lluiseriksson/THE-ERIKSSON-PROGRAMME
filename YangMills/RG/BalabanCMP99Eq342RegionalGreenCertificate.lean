@@ -56,7 +56,8 @@ structure CMP99Eq342RegionalGreenCertificate
       GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc))
     (c : ℝ) (hc : 0 < c) (hKcoer : IsCoerciveCLM K c)
     (B0 delta0 ell : ℝ) : Prop where
-  B0_nonneg : 0 ≤ B0
+  B0_pos : 0 < B0
+  carrier_nonempty : Nonempty (ActiveGaugeRegion.Site Omega)
   delta0_pos : 0 < delta0
   ell_pos : 0 < ell
   value_bound :
@@ -88,6 +89,22 @@ structure CMP99Eq342RegionalGreenCertificate
       (fun target source : ActiveGaugeRegion.Site Omega =>
         finBoxDist target.1 source.1)
       B0 delta0
+
+/-- Strict source positivity rules out the zero-amplitude witness while still
+providing the nonnegativity needed by downstream norm estimates. -/
+theorem CMP99Eq342RegionalGreenCertificate.B0_nonneg
+    {Omega : ActiveGaugeRegion 4 (m * (2 * q))}
+    {rho : SUNAdjointModel Nc}
+    {U : PhysicalGaugeBackground 4 (m * (2 * q)) Nc}
+    {spacing : ℝ}
+    {K : GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc)}
+    {c : ℝ} {hc : 0 < c} {hKcoer : IsCoerciveCLM K c}
+    {B0 delta0 ell : ℝ}
+    (C : CMP99Eq342RegionalGreenCertificate Omega rho U spacing K c hc
+      hKcoer B0 delta0 ell) :
+    0 ≤ B0 :=
+  C.B0_pos.le
 
 /-- CMP96 (2.43) uses precisely the value and left-derivative components of
 the stronger four-component CMP99 (3.42) package. -/

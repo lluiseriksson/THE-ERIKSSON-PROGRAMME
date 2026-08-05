@@ -2651,10 +2651,12 @@ and `TermSource = 0`.
 `BalabanCMP99Eq342RegionalGreenCertificate` records the one source-facing
 analytic input used by the direct route.  Its operator is definitionally the
 canonical regional Dirichlet Green of the literal ambient precision; no Green
-family is a field.  One common positive `B0`, `delta0`, and scale `ell` control
+family is a field.  One common strictly positive `B0`, `delta0`, and scale `ell` control
 the four CMP99 (3.42) components with the printed scale vector
 `[ell^2, ell, ell, 1]`: `G'`, `D G'`, `G' D*`, and `Delta G'`.  The CMP96
 (2.43) projection exposes exactly the value and left-derivative components.
+The carrier is required to be nonempty.  Thus neither zero amplitude nor an
+empty regional space can inhabit the source contract vacuously.
 
 This interface deliberately does not derive (3.42) from the existing
 `2 / coercivity` Combes--Thomas estimate.  Doing so would import the
