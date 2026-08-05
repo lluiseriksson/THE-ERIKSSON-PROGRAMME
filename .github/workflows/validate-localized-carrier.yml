@@ -77,14 +77,6 @@ jobs:
           test "$mathlib" = "$EXPECTED_MATHLIB"
           lake exe cache get 2>&1 | tee evidence/cache-get.log
 
-      - name: Restore project build cache
-        uses: actions/cache/restore@v4
-        with:
-          path: .lake/build
-          key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
-          restore-keys: |
-            cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-
       - name: Run focal queue stop on first error
         shell: bash
         run: |
@@ -111,14 +103,6 @@ jobs:
             lake build YangMills.RG.BalabanCMP99SourceCovariantLaplacianCutoffIdentity
           run_stage covariant_laplacian_cutoff_audit \
             lake env lean YangMills/RG/BalabanCMP99SourceCovariantLaplacianCutoffIdentityAudit.lean
-
-      - name: Save project build cache
-        if: always()
-        continue-on-error: true
-        uses: actions/cache/save@v4
-        with:
-          path: .lake/build
-          key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
 
       - name: Verify axiom gates and seal evidence
         shell: bash
