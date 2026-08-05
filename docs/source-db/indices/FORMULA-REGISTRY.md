@@ -2,7 +2,7 @@
 
 This index flattens every formula-shaped claim in the current source DB. `verified` means the formula record itself is marked source-verified; it still may require a Lean theorem.
 
-Total formulas: **74**. Source-verified records: **65**. Unverified/inferred route targets: **9**.
+Total formulas: **78**. Source-verified records: **69**. Unverified/inferred route targets: **9**.
 
 | Formula id | Source | Status | Equations | Verified | Exactness | ASCII |
 |---|---:|---|---|---:|---|---|
@@ -18,6 +18,10 @@ Total formulas: **74**. Source-verified records: **65**. Unverified/inferred rou
 | `cmp122ii.eq1.98.exponentiation` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `{...} = exp R'^(k) = exp (sum_X R'^(k)(X))` |
 | `cmp122ii.eq1.99.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= O(1) * c_1 * exp(-(1 + (1/2)*beta)*kappa*d_{k, union Y_i}(X))` |
 | `cmp122ii.eq1.100.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))` |
+| `cmp96.eq2.39.regional-commutator-three-species` | Balaban CMP96 | `visual_confirmed` | 2.39 | yes | normalized_formula | `K(h)lambda(x) = derivativeSpecies - laplacianSpecies - normalizedAverageSpecies` |
+| `cmp96.eq2.40.rescaled-regional-commutator` | Balaban CMP96 | `visual_confirmed` | 2.40 | yes | normalized_formula | `K(h_Pi)G'(Pi)h_Pi lambda = derivativeSpecies - laplacianSpecies - normalizedAverageSpecies` |
+| `cmp96.eq2.43.localized-green-value-derivative` | Balaban CMP96 | `visual_confirmed` | 2.43 | yes | normalized_formula | `[\|G'(Pi) lambda(x)\|, \|partial G'(Pi) lambda(x)\|] <= O(1)*exp(-delta0*dist(x,supp lambda))*\|lambda\|` |
+| `cmp96.eq2.44.regional-defect-localized-action` | Balaban CMP96 | `visual_confirmed` | 2.44 | yes | normalized_formula | `\|(K(h_Pi) G'(Pi) h_Pi lambda)(x)\| <= O(M^-1)*exp(-delta0*\|x-y\|)*\|lambda\|` |
 | `cmp99.eq3.27.background-field-propagator` | Balaban CMP99 | `visual_confirmed` | 3.26, 3.27 | yes | normalized_formula | `G(U) = G = (Delta_a \| Omega_0)^(-1)` |
 | `cmp99.eq3.42.localized-green-prime-bounds` | Balaban CMP99 | `visual_confirmed` | 3.42, Theorem 3.1 | yes | normalized_formula | `[\|G' lambda(x)\|, \|nabla_U G' lambda(x)\|, \|G' nabla_U^* lambda(x)\|, \|Delta_U G' lambda(x)\|] <= B0 * [(L^j eta)^2, L^j eta, L^j eta, 1] * exp(-delta0 d(y,y')) * \|lambda\|` |
 | `cmp99.eq3.88.precision-cutoff-identity` | Balaban CMP99 | `visual_confirmed` | 3.88 | yes | literal_paired_formula | `Delta'_a(h lambda) = h Delta'_a(lambda) - linkDerivative + cutoffLaplacian + normalizedQprimeTerm = h Delta'_a(lambda) - K(h)lambda` |

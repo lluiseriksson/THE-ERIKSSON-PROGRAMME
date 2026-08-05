@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalAmbientDictionary
 import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoff
 
 /-!
-# PRE-VALIDATION: separated-scale generated physical ambient dictionary
-
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+# Separated-scale generated physical ambient dictionary
 
 This realizes the generated precision with RG ratio `L` on the literal
 regional carrier whose large-block parameter is `K`.  The ambient operator,

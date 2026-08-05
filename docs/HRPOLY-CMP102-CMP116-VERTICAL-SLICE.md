@@ -2584,6 +2584,33 @@ reserved for the generic leaf lemmas.  Three deterministic `whnf` timeouts
 have now been removed by this same rewrite; increasing heartbeats is not the
 accepted repair for this class.
 
+### Source-separated prerequisites for the direct CMP99 (3.89) route (SEALED)
+
+Exact source checkpoint `b90c3c2efbfa100b38a87cc3591c799f7499fd78`
+passed cold GitHub Actions run `31041990728` (workflow checkpoint
+`ad9d4493cf10fcda390465f696c6a01a36a1b0ba`).  The run recorded
+`COLD_MODE=true` and skipped restoration and saving of `.lake/build`.
+All six focal/audit stages exited zero.  The three audits cover 36
+declarations; every printed axiom set is a subset of
+`[propext, Classical.choice, Quot.sound]`, with no outside name.
+
+The independently downloaded evidence archive has SHA-256
+`b0a46d83e48b30ec9f16b86738e16f82985b8df42c771e67a867cde54bad0eb8`.
+Its axiom JSON has SHA-256
+`c3811bd50de0c2d5257f64c88b47e52f1491f53b98ed42925dc03f1c93210ec1`
+and its stage ledger has SHA-256
+`5bc7640a7edbe21b7f3f5772c8c3e4bc14b8db37eb447ac97fed690004717177`;
+all 17 entries of the internal `SHA256SUMS` manifest were independently
+rehashed and matched.
+
+This seal covers exactly the source-separated large-block partition, the
+physical cutoff with gain `4 * derivBound / K`, and the generated ambient
+dictionary, together with their audits.  The auxiliary two-scale CT + Schur
+budget remains PRE-VALIDATION and is not part of the accepted physical route.
+These are admissible prerequisites for step 7.1--7.4, not the direct (3.89)
+estimate itself.  Hence window 15 remains unattained, the live producer count
+remains exactly `20/41`, and `TermSource = 0`.
+
 ### Step 5 ambient dictionary (SEALED)
 
 Checkpoint `8ac1a1c2508f65e51d4eb89f81bf650780691cf6` freezes the

@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalLargeBlockCutoff
 import YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition
 
 /-!
-# PRE-VALIDATION: separated-scale physical CMP99 cutoff
-
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+# Separated-scale physical CMP99 cutoff
 
 This is the source-faithful two-parameter specialization of the generated
 physical cutoff estimate.  The RG ratio `L` controls the generated precision,

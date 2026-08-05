@@ -3,8 +3,8 @@
   "generated": "2026-08-05",
   "purpose": "Single flat registry of formulas and formula-shaped targets indexed for LLM agents. source_verified=false means this is a route target or paraphrase, not a theorem-feedable source formula.",
   "counts": {
-    "formulas": 74,
-    "source_verified": 65,
+    "formulas": 78,
+    "source_verified": 69,
     "inferred_or_unverified": 9
   },
   "formulas": [
@@ -1438,6 +1438,94 @@
         "localized polymer domain X",
         "small coupling",
         "large-field/R-operation hypotheses"
+      ]
+    },
+    {
+      "claim_id": "cmp96.eq2.39.regional-commutator-three-species",
+      "citation_key": "cmp96.eq2.39-2.44.regional-defect",
+      "source_id": "cmp96",
+      "short": "Balaban CMP96",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "The regional commutator K(h) is the sum of the link-derivative, cutoff-Laplacian and normalized block-average species.",
+      "formula_ascii": "K(h)lambda(x) = sum_(b in st(x)) (partial h)(b)*(partial lambda)(b) - (Delta h)(x)*lambda(x) - a_j*(L^j*eta)^(-2)*sum_(x' in B_j(y(x))) L^(-jd)*(partial h)(Gamma_(x,y(x),x')^(j))*lambda(x')",
+      "formula_latex": null,
+      "conclusion": "This is the scalar predecessor of the three-species background-field identity CMP99 (3.88).",
+      "source_verified": true,
+      "equations": [
+        "2.39"
+      ],
+      "assumptions": [
+        "x lies in B^j(Lambda_j) and derivatives are taken on eta-scale.",
+        "The source square cutoff h and regional precision Delta'_a are the objects of CMP96 Section B."
+      ]
+    },
+    {
+      "claim_id": "cmp96.eq2.40.rescaled-regional-commutator",
+      "citation_key": "cmp96.eq2.39-2.44.regional-defect",
+      "source_id": "cmp96",
+      "short": "Balaban CMP96",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "After rescaling to L^-j scale, the regional commutator retains the derivative, Laplacian and normalized averaging terms.",
+      "formula_ascii": "K(h_Pi)G'(Pi)h_Pi lambda = derivativeSpecies - laplacianSpecies - normalizedAverageSpecies",
+      "formula_latex": null,
+      "conclusion": "The M^-1 gain must be proved termwise before any regional sum.",
+      "source_verified": true,
+      "equations": [
+        "2.40"
+      ],
+      "assumptions": [
+        "Pi has side 2*M*L^j*eta and is connected with the L^j*eta scale.",
+        "G'(Pi) is evaluated on L^-j scale with the displayed L^-jd kernel normalization."
+      ]
+    },
+    {
+      "claim_id": "cmp96.eq2.43.localized-green-value-derivative",
+      "citation_key": "cmp96.eq2.39-2.44.regional-defect",
+      "source_id": "cmp96",
+      "short": "Balaban CMP96",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "The regional Green and its covariant derivative satisfy a common localized exponential action bound.",
+      "formula_ascii": "[|G'(Pi) lambda(x)|, |partial^(L^-j) G'(Pi) lambda(x)|] <= O(1)*exp(-delta0*dist(x,supp lambda))*|lambda|",
+      "formula_latex": null,
+      "conclusion": "These are the two local Green inputs used directly in (2.40).",
+      "source_verified": true,
+      "equations": [
+        "2.43"
+      ],
+      "assumptions": [
+        "The regional Green properties cited from CMP95 Lemmas 2.2, 2.4 and Proposition 2.3 hold.",
+        "lambda is localized in one source block."
+      ]
+    },
+    {
+      "claim_id": "cmp96.eq2.44.regional-defect-localized-action",
+      "citation_key": "cmp96.eq2.39-2.44.regional-defect",
+      "source_id": "cmp96",
+      "short": "Balaban CMP96",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "The direct single-square regional defect factor has an inverse-large-block localized action bound.",
+      "formula_ascii": "|(K(h_Pi) G'(Pi) h_Pi lambda)(x)| <= O(M^-1)*exp(-delta0*|x-y|)*|lambda|",
+      "formula_latex": null,
+      "conclusion": "CMP99 (3.89) explicitly identifies itself as this estimate rescaled to eta-scale.",
+      "source_verified": true,
+      "equations": [
+        "2.44"
+      ],
+      "assumptions": [
+        "Either supp lambda is contained in B^j(y), y in Lambda_j, or in B^(j+1)(y), y in Lambda_(j+1).",
+        "Distance is measured on L^-j scale."
       ]
     },
     {

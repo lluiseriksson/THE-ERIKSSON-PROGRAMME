@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary
 
 /-!
-# PRE-VALIDATION audit: separated-scale physical ambient dictionary
-
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+# Audit: separated-scale physical ambient dictionary
 -/
 
 #print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion

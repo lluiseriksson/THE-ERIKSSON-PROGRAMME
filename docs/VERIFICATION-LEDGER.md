@@ -27563,3 +27563,41 @@ scalar algebra has been classified as auxiliary and removed from the physical
 validation queue; it must not be used to claim attainment of window 15.  This
 is a route correction only: rows 23--24 remain open, the live count remains
 exactly `20/41`, and `TermSource` remains uninhabited.
+
+## Addendum 561 (2026-08-05, **source-separated direct-route prerequisites GREEN; physical CMP99 (3.89) still open; 20/41 unchanged**)
+
+The admissible source-separated prerequisites were validated from exact
+source checkpoint `b90c3c2efbfa100b38a87cc3591c799f7499fd78` by cold GitHub
+Actions run `31041990728` (workflow checkpoint
+`ad9d4493cf10fcda390465f696c6a01a36a1b0ba`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The source-separated large-block partition focal ran from
+`2026-08-05T20:01:52Z` to `20:26:12Z`; its audit exited zero.  The physical
+large-block cutoff focal ran from `20:26:20Z` to `20:30:26Z`; its audit exited
+zero.  The ambient dictionary focal ran from `20:30:38Z` to `20:31:09Z`; its
+audit exited zero.  The three audits cover 36 declarations, and every axiom
+set is a subset of `[propext, Classical.choice, Quot.sound]`.  The gate
+recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`b0a46d83e48b30ec9f16b86738e16f82985b8df42c771e67a867cde54bad0eb8`.
+The axiom JSON has SHA-256
+`c3811bd50de0c2d5257f64c88b47e52f1491f53b98ed42925dc03f1c93210ec1`;
+the stage ledger has SHA-256
+`5bc7640a7edbe21b7f3f5772c8c3e4bc14b8db37eb447ac97fed690004717177`.
+All 17 entries of the internal `SHA256SUMS` manifest were independently
+rehash-verified.
+
+The seal covers exactly the source-separated partition, the physical cutoff
+with the exact `4 * derivBound / K` gain, the generated ambient dictionary,
+and their audits.  The auxiliary separated-scale CT + Schur budget remains
+PRE-VALIDATION and excluded from the physical route after Addenda 559--560.
+The newly confirmed CMP96 equations (2.39), (2.40), (2.43), and (2.44) identify
+the source-specific direct proof that must replace it.  This brick does not
+prove CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource` inhabitant.
+The live counters remain exactly `20/41` and zero.

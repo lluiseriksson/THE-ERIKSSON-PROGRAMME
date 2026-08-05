@@ -24,13 +24,13 @@
       "short": "Balaban CMP96",
       "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories II",
       "author": "T. Balaban",
-      "status": "primary_pdf_metadata_ready",
+      "status": "structured_partial",
       "journal": "Communications in Mathematical Physics 96 (1984), 223-250",
       "year": 1984,
       "bibliography_evidence": "Dimock I reference [7], arXiv:1108.1335, printed page 50; Dimock II reference [6], printed page 92.",
       "doi": "10.1007/BF01240221",
       "license_note": "Keep primary PDF/renders in the private source archive; commit only metadata, locators and short paraphrases.",
-      "artifact_note": "External repo-ready packet reports local private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp96-propagators-II-1984-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp96-propagators-II-1984.md; private PDF SHA-256 7c64078602177b8abfec064b33cc388674b4fd1176ed009f8d4622e85d90e147."
+      "artifact_note": "The complete paper is present inside the private balabanfusion.pdf anthology at PDF pages 331-358; anthology SHA-256 00cc6b218dcf0e1c2884e135caa1d57b3591df036540b685e7440f30cbd4ff16. Printed pages 229-232 / anthology PDF pages 337-340 were rendered at 300 dpi and equations (2.39), (2.40), (2.43) and (2.44) were visually confirmed on 2026-08-05. The earlier repo-ready packet and page map remain provenance for the standalone private artifact, SHA-256 7c64078602177b8abfec064b33cc388674b4fd1176ed009f8d4622e85d90e147."
     },
     "cmp98": {
       "short": "Balaban CMP98",
@@ -500,7 +500,7 @@
         ]
       },
       "status": "located",
-      "summary": "CMP96 primary metadata and label/page map are located for the one-step covariance/root and Hessian companion route; formula bodies remain visual-only and the Lean dictionary is open.",
+      "summary": "CMP96 primary metadata and label/page map are located for the one-step covariance/root and Hessian companion route; the exact covariance/root formula body and Lean dictionary remain open.",
       "lean_targets": [
         "PhysicalLocalizedCovarianceRootCertificate",
         "wilsonHessianIdentification"
@@ -977,6 +977,70 @@
         "Acquire and register a clean primary artifact before extracting any equation body.",
         "Classify any future bare citation of CMP102 equations (1)-(71) by paper title or source key rather than volume number alone."
       ]
+    },
+    {
+      "key": "cmp96.eq2.39-2.44.regional-defect",
+      "source_id": "cmp96",
+      "locator": {
+        "printed_pages": "229-232",
+        "pdf_pages": "337-340 in balabanfusion.pdf",
+        "equations": ["2.39", "2.40", "2.43", "2.44"]
+      },
+      "status": "visual_confirmed",
+      "summary": "The direct regional-defect chain is visually confirmed from the private fusion anthology: the three-species commutator, its rescaled localized form, the two Green inputs and the O(M^-1) endpoint. This record does not discharge the separate covariance/root dictionary.",
+      "lean_targets": [
+        "cmp99SourceGeneratedPhysicalPrecision_cutoffCommutator_apply_eq",
+        "cmp99RegionalGreenDefect"
+      ],
+      "formulas": [
+        {
+          "id": "cmp96.eq2.39.regional-commutator-three-species",
+          "statement": "The regional commutator K(h) is the sum of the link-derivative, cutoff-Laplacian and normalized block-average species.",
+          "ascii": "K(h)lambda(x) = sum_(b in st(x)) (partial h)(b)*(partial lambda)(b) - (Delta h)(x)*lambda(x) - a_j*(L^j*eta)^(-2)*sum_(x' in B_j(y(x))) L^(-jd)*(partial h)(Gamma_(x,y(x),x')^(j))*lambda(x')",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": ["x lies in B^j(Lambda_j) and derivatives are taken on eta-scale.", "The source square cutoff h and regional precision Delta'_a are the objects of CMP96 Section B."],
+          "conclusion": "This is the scalar predecessor of the three-species background-field identity CMP99 (3.88).",
+          "source_verified": true
+        },
+        {
+          "id": "cmp96.eq2.40.rescaled-regional-commutator",
+          "statement": "After rescaling to L^-j scale, the regional commutator retains the derivative, Laplacian and normalized averaging terms.",
+          "ascii": "K(h_Pi)G'(Pi)h_Pi lambda = derivativeSpecies - laplacianSpecies - normalizedAverageSpecies",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": ["Pi has side 2*M*L^j*eta and is connected with the L^j*eta scale.", "G'(Pi) is evaluated on L^-j scale with the displayed L^-jd kernel normalization."],
+          "conclusion": "The M^-1 gain must be proved termwise before any regional sum.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp96.eq2.43.localized-green-value-derivative",
+          "statement": "The regional Green and its covariant derivative satisfy a common localized exponential action bound.",
+          "ascii": "[|G'(Pi) lambda(x)|, |partial^(L^-j) G'(Pi) lambda(x)|] <= O(1)*exp(-delta0*dist(x,supp lambda))*|lambda|",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": ["The regional Green properties cited from CMP95 Lemmas 2.2, 2.4 and Proposition 2.3 hold.", "lambda is localized in one source block."],
+          "conclusion": "These are the two local Green inputs used directly in (2.40).",
+          "source_verified": true
+        },
+        {
+          "id": "cmp96.eq2.44.regional-defect-localized-action",
+          "statement": "The direct single-square regional defect factor has an inverse-large-block localized action bound.",
+          "ascii": "|(K(h_Pi) G'(Pi) h_Pi lambda)(x)| <= O(M^-1)*exp(-delta0*|x-y|)*|lambda|",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": ["Either supp lambda is contained in B^j(y), y in Lambda_j, or in B^(j+1)(y), y in Lambda_(j+1).", "Distance is measured on L^-j scale."],
+          "conclusion": "CMP99 (3.89) explicitly identifies itself as this estimate rescaled to eta-scale.",
+          "source_verified": true
+        }
+      ],
+      "open_questions": [
+        "Construct the discrete cutoff-Laplacian budget from the same CMP95 smooth partition profile.",
+        "Map the normalized average in (2.40) to the generated Qprime tower without replacing it by a range-ball cardinality.",
+        "Specialize the localized Green inputs to the literal generated regional Green before summing regional layers."
+      ],
+      "use_for": ["Primary printed proof route from the exact three-species commutator to CMP99 (3.89).", "Source-specific replacement for the coarse CT-plus-Schur route closed by no-go."],
+      "do_not_use_for": ["Do not infer the CMP96 covariance/root theorem from this defect window.", "Do not identify the common-vector Qprime row predicate with the varying-vector normalized average.", "Do not claim norm R' < 1, root_small, outer_small, hRpoly, or Clay."]
     },
     {
       "key": "dimockii.appendix-f.cluster-with-holes",
@@ -2182,10 +2246,10 @@
     {
       "source_id": "cmp96",
       "importance": "high",
-      "catalog_status": "metadata-located",
-      "artifact_status": "repo-ready-packet-present; private-pdf-held-out-of-repo",
-      "formula_status": "label/page map available; equation bodies visual-only; covariance theorem dictionary still open",
-      "next_action": "Choose the exact CMP96 proposition/equation window for the one-step covariance/root dictionary, visually confirm the formula body from private renders, then map it to PhysicalLocalizedCovarianceRootCertificate and wilsonHessianIdentification.",
+      "catalog_status": "structured-partial",
+      "artifact_status": "complete-paper-in-private-fusion-anthology; rendered-window-present",
+      "formula_status": "equations (2.39), (2.40), (2.43), (2.44) visually confirmed; direct regional-defect route identified; covariance theorem dictionary still open",
+      "next_action": "Formalize the source-specific three-species route to the O(M^-1) defect bound; separately locate and map the covariance/root theorem to PhysicalLocalizedCovarianceRootCertificate.",
       "priority": 8
     },
     {

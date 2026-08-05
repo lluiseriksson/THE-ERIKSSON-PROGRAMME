@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoff
 
 /-!
-# PRE-VALIDATION audit: separated-scale physical CMP99 cutoff
-
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+# Audit: separated-scale physical CMP99 cutoff
 -/
 
 #print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoff

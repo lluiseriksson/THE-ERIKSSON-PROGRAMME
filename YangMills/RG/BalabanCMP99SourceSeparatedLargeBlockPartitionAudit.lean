@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition
 
 /-!
-# PRE-VALIDATION audit: source-separated CMP99 large-block partition
-
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+# Audit: source-separated CMP99 large-block partition
 -/
 
 #print axioms YangMills.RG.cmp99SourceSeparatedLargeBlockSide

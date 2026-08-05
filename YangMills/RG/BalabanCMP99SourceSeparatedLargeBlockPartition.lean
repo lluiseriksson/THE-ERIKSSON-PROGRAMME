@@ -9,10 +9,7 @@ import YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
 import YangMills.RG.BalabanCMP99SourceRegionalLargeBlockPartition
 
 /-!
-# PRE-VALIDATION: source-separated CMP99 large-block partition
-
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+# Source-separated CMP99 large-block partition
 
 CMP99 printed p. 408 uses two independent scales: the RG block ratio `L`,
 which fixes the terminal operator range `L^(depth+1)`, and a sufficiently
