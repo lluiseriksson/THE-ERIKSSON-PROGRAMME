@@ -536,6 +536,83 @@ the step the earlier version of this manuscript named as open; it is
 now a theorem, and the honest residue is stated in
 Section~\ref{sec:honesty}: $C$ still depends on $L$.
 
+\section{Constants uniform in the extent: the ground-state chain}
+\label{sec:ground}
+The $L$-dependence of the constants in
+Sections~\ref{sec:cone}--\ref{sec:state} is an artefact of
+\emph{normalisation}, not a property of the object, and we correct it
+here rather than list it as a limitation.
+
+The dressed observables carry an unnormalised partition function in
+their Euclidean norm: $\lVert Q\mathbf 1\rVert^2 = \sum_\sigma w_\sigma$,
+which grows with the extent.  Any bound written in those norms
+therefore has an extent-dependent prefactor \emph{however sharp the
+operator estimate is}.  The right normalisation is the one the
+operator itself provides.
+
+\begin{theorem}[the reconstructed dynamics is a reversible Markov
+chain]
+Write $P(\sigma,\tau) := \mathrm{tiltKernel}(\sigma,\tau)\,
+\Omega_\tau/\Omega_\sigma$ (\lean{groundKernel}; the Doob
+$h$-transform by the positive Perron vector).  Then $P$ is entrywise
+nonnegative (\lean{groundKernel\_nonneg}), stochastic ---
+$\sum_\tau P(\sigma,\tau) = 1$, by the fixed-point equation
+(\lean{groundKernel\_row\_sum}) --- and reversible for the ground-state
+measure $\pi_\sigma := \Omega_\sigma^2$:
+$\pi_\sigma P(\sigma,\tau) = \pi_\tau P(\tau,\sigma)$
+(\lean{groundKernel\_reversible}).  Moreover $\pi$ is a probability
+measure, $\sum_\sigma \Omega_\sigma^2 = 1$
+(\lean{sum\_vacOf\_sq}), because the vacuum is a unit vector.
+\end{theorem}
+
+\begin{lemma}[the intertwining, \lean{opOf\_dressVac} and its iterate]
+Let $(Uf)_\sigma := \Omega_\sigma f_\sigma$.  Then
+$\hat T (Uf) = U(Pf)$, hence $\hat T^{\,N}(Uf) = U(P^N f)$: the
+reconstructed operator \emph{is} the Markov step, conjugated by the
+vacuum.  The normalisation of $\Omega$ cancels between the two ends.
+\end{lemma}
+
+\begin{lemma}[\lean{norm\_dressVac\_le}]
+If $\lvert f_\sigma\rvert \le K$ for all $\sigma$ then
+$\lVert Uf\rVert \le K$.  \emph{This is where the extent
+disappears}: $\lVert Uf\rVert^2 = \sum_\sigma \Omega_\sigma^2
+f_\sigma^2 \le K^2\sum_\sigma \Omega_\sigma^2 = K^2$, and the last
+step is an equality precisely because $\Omega$ is a unit vector --- no
+partition function survives.
+\end{lemma}
+
+\begin{theorem}[\lean{os\_reconstruction\_ground\_state\_clustering}]
+In the window there is \emph{one} $m>0$ such that for \emph{every}
+spatial extent $L$, and for all observables $f,g$ with
+$\lvert f\rvert \le K_f$, $\lvert g\rvert\le K_g$ pointwise, and every
+$N$:
+\[
+\Bigl| \mathbb{E}_\pi\bigl[f\cdot P^N g\bigr]
+  - \mathbb{E}_\pi[f]\,\mathbb{E}_\pi[g] \Bigr|
+\;\le\; K_f\,K_g\,(e^{-m})^N .
+\]
+\end{theorem}
+
+The quantifier order is $\exists m\;\forall L\;\forall f,g,N$: the
+constant is $K_fK_g$, supplied by the observables alone, and
+\emph{nothing in the bound depends on the spatial extent}.  This is the
+same gap as before --- $m$ is still D-6's --- read in the normalisation
+that does not smuggle a partition function into the constant.  In
+particular, for observables bounded by $1$ the connected correlator is
+at most $e^{-mN}$, uniformly in the volume.
+
+\begin{remark}
+The two states in this paper are different objects and we keep them
+apart.  The state of Section~\ref{sec:state} is the $N\to\infty$ limit
+at the \emph{end} of a chain terminated by $B$; its density against
+$\Omega$ is $Q\mathbf 1$, and its approach constant is
+boundary-dependent.  The state $\pi = \Omega^2$ of this section is the
+stationary state of the chain --- the marginal in the \emph{middle} of
+a doubly infinite chain --- and it is the one in which the constant is
+absolute.  Both are legitimate; only the second gives an $L$-uniform
+bound, and saying which is which is the point.
+\end{remark}
+
 \section{Reproduction}\label{sec:repro}
 All numbers below are read from committed run artefacts; predictions
 were committed \emph{before} their measurements (the programme's
@@ -687,12 +764,18 @@ operator in this paper acts on the finite-dimensional slice space at a
 fixed extent $L$; no inductive limit of the spaces is constructed.
 \item \emph{A thermodynamic state.}  Only in the \emph{time} direction:
 Section~\ref{sec:state} produces the $N\to\infty$ limit state at fixed
-$L$ and identifies it.  The $L\to\infty$ limit is not constructed, and
-the obstruction is explicit --- the constants of
-Sections~\ref{sec:cone}--\ref{sec:state} carry $1/f$ with
-$f = c\,\ip{\Omega}{v}$, and $c$, a minimum of a ratio over $2^{L+1}$
-configurations, is not controlled as $L$ grows.  The \emph{rate} is
-uniform in $L$; the \emph{constants} are not.
+$L$ and identifies it.  The $L\to\infty$ limit is \emph{not}
+constructed: there is no inductive limit of the slice spaces, no
+compatibility between the ground states of different extents, and no
+state on an infinite spatial lattice.  What Section~\ref{sec:ground}
+does supply is the missing \emph{uniformity in the constant}: in the
+stationary state $\pi = \Omega^2$ the connected correlator is bounded
+by $K_fK_g e^{-mN}$ with no extent-dependent factor, so the finite-$L$
+bounds no longer degrade as $L$ grows.  That is a necessary condition
+for a spatial thermodynamic limit; it is not the limit itself, and we
+do not present it as one.  (The end-of-chain state of
+Section~\ref{sec:state} keeps its boundary-dependent constant; the two
+states are different objects.)
 \item \emph{General boundary-condition independence.}  Only for
 strictly positive terminations of the chain in the time direction
 (Section~\ref{sec:state}).  Nothing is proved about spatial boundary
