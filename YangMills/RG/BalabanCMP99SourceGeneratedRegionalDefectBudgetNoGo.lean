@@ -7,10 +7,11 @@ import YangMills.RG.BalabanCMP99SourceGeneratedRegionalDefectContraction
 import YangMills.RG.BalabanCMP99SourceEq395CorrectionOperatorNorm
 
 /-!
-# PRE-VALIDATION: no-go for the generated regional Schur budget
+# No-go for the generated regional Schur budget
 
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+Validated from exact source checkpoint
+`8494a73fcf1e6fc2bb59ab6442e7631cfcfe94a0` by cold GitHub Actions run
+`31034176002` against the pinned toolchain and Mathlib revision.
 
 The step-7 contraction endpoint reduces `norm R' < 1` to one explicit Schur
 budget.  At base depth that particular budget cannot be smaller than one.

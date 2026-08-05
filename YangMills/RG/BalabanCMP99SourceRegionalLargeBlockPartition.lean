@@ -10,11 +10,16 @@ import YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
 # The CMP99 regional partition at the source large-block scale
 
 CMP99 printed p. 408 separates the terminal operator scale `L^(j eta)` from
-the large-block scale `M * L^(j eta)`.  In the generated tree these have the
-shapes `M^(depth+1)` and `M^(depth+2)`.  A partition cell contains two large
-blocks, so its cutoff spacing is `2 * M^(depth+2)`.  This file constructs the
-exact periodic square partition at that larger scale; it does not reuse the
-two-terminal-block auxiliary partition whose scale/range ratio is fixed.
+the large-block scale `M * L^(j eta)`.  This module records the algebraically
+valid diagonal specialization in which the repository RG ratio and the
+source's independent large-block parameter are both named `M`; its two scales
+therefore have the shapes `M^(depth+1)` and `M^(depth+2)`.  A partition cell
+contains two large blocks, so its cutoff spacing is `2 * M^(depth+2)`.
+
+The diagonal specialization is not the source's full sufficiently-large-`M`
+freedom.  It remains useful as an exact comparison object, but physical
+smallness must keep the RG ratio and the independent large-block parameter
+separate.
 -/
 
 namespace YangMills.RG

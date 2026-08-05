@@ -482,6 +482,9 @@ following table is normative for new interfaces and proofs:
 | `cmp99SourceBlockAverageWeight M d` | normalized mass of one generated `Q'` row at one blocking scale | exactly `M^-d`; this is a row mass, not a count of the `M^d` fine sites in the owner block |
 | `(cmp99SourceBlockAverageWeight M d)^depth` | normalized row mass of the depth-`depth` generated counting tower | exactly `(M^-d)^depth`; every induction step contributes one new normalized row mass |
 | owner-block count times one-scale row mass | cancellation between counting and averaging units | `M^d * M^-d = 1`; never replace the normalized row mass by the raw owner-block cardinality or apply the normalization a second time |
+| `L` in the source-separated regional route | RG block ratio of the generated tower | controls the precision range `L^(depth+1)` and the Poincare/coercivity package `CP(L)`; it is held fixed when the independent large-block parameter grows |
+| `K` in the source-separated regional route | source's sufficiently-large regional parameter (printed as `M`, renamed in Lean) | controls the cell side `K * L^(depth+1)` and cutoff spacing `2*K*L^(depth+1)`; it does not enter `CP(L)`, but the later covariance dictionary must still retain CMP99 Theorem 3.15's separate `M * alpha_0` smallness condition |
+| old one-parameter regional specialization | diagonal comparison `K = L = M` | all existing identities remain exact, but this diagonal object does not realize the source freedom used to attain the contraction |
 
 Consequently, an interface whose `domainCard` is `blocks.card` must never
 multiply that value by another `M^-4`.  The printed prefactor `alpha4*M^-4`
@@ -2640,3 +2643,41 @@ window 15 and not a terminal producer.  The live counters remain exactly
 decide whether the displayed majorant can satisfy its own scalar premise; a
 failure of that majorant would not imply `norm R' >= 1` for the physical
 operator.
+
+### Diagonal step-7 majorant no-go (SEALED; physical contraction not refuted)
+
+Checkpoint `8494a73fcf1e6fc2bb59ab6442e7631cfcfe94a0` proves that the
+particular one-parameter generated Combes--Thomas/Schur majorant used by the
+sealed step-7 reduction cannot satisfy its own `< 1` premise already at
+depth zero when `M >= 2` and the spacing is positive.  The proof derives
+`3 <= derivBound`, exposes the exact depth-zero generated coercivity, and
+gives the explicit (inessential) lower bound `11943936` for that majorant.
+
+Cold GitHub Actions run `31034176002` (workflow checkpoint `85e787fc`) set
+`COLD_MODE=true`, restored no project `.lake/build` cache, and compiled the
+focal with `Build completed successfully (8569 jobs).`  The four-declaration
+audit exited zero and every declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and the official Lean
+`v4.29.0-rc6` asset.
+
+The deterministic evidence archive has SHA-256
+`2c569535f50d50c1864be0287253adfe8554e32776efd288368fb9e9e16ebd7b`.
+The axiom JSON has SHA-256
+`6ee8ef575065609b28fc399f5b580fc2a70da078df0ecf65c6f611c0a7121741`;
+the stage ledger has SHA-256
+`c12115adf80030df05f9303fe5cfe8d69082b9793cdeb72003223ef50b9da366`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+13 recorded files.
+
+This is a no-go for the **majorant**, not for the physical defect operator:
+it proves neither `1 <= norm R'` nor failure of the printed CMP99
+contraction.  The obstruction comes from identifying the RG block ratio with
+the source's independently large regional parameter.  The source-faithful
+replacement keeps the generated tower and its Poincare cost at fixed ratio
+`L`, introduces a separate regional parameter `K`, and targets the exact
+gain `4 * derivBound / K`.  The later CMP99 Theorem-3.15 condition coupling
+the printed large parameter to `alpha_0` remains a separate covariance/source
+dictionary obligation.  Window 15 therefore remains open, and the live
+counters remain exactly `20/41` and `TermSource = 0`.

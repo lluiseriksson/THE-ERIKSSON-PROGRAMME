@@ -14,10 +14,13 @@ Validated from exact source checkpoint
 `30997349504` against the pinned toolchain and Mathlib revision.
 
 This specializes the already sealed fixed-output commutator estimate to the
-single physical `CMP95SourceSmoothPartitionProfile`.  The carrier equality is
-used explicitly, and the certified slope times the generated precision range
-is rewritten to the literal `4 * derivBound / M` gain.  The Laplacian and
-normalized `Q'^* Q'` budgets remain separate until their final addition.
+single physical `CMP95SourceSmoothPartitionProfile` in the diagonal case where
+the RG ratio and the source's independent large-block parameter are both
+named `M`.  The carrier equality is used explicitly, and slope times range is
+rewritten to `4 * derivBound / M`.  The identity is exact, but this diagonal
+specialization does not by itself preserve the source's independent
+large-block smallness.  The Laplacian and normalized `Q'^* Q'` budgets remain
+separate until their final addition.
 
 This file does not identify an ambient precision with a regional compression,
 compose with a Dirichlet Green operator, or claim `‖R'‖ < 1`.

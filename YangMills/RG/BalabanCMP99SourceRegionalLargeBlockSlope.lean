@@ -8,10 +8,13 @@ import YangMills.RG.BalabanCMP99SourceRegionalLargeBlockPartition
 /-!
 # Source-scale slope for the CMP99 regional partition
 
-This transports the boundary-safe CMP95 estimate to the source large-block
-partition.  Its denominator is `2 * M^(depth+2)`, while the generated
-precision range is `M^(depth+1)`; the surviving ratio is therefore genuinely
-of order `M^-1` rather than the fixed ratio of the auxiliary partition.
+This transports the boundary-safe CMP95 estimate to the diagonal generated
+large-block partition.  Its denominator is `2 * M^(depth+2)`, while the
+generated precision range is `M^(depth+1)`; the surviving algebraic ratio is
+`M^-1`.  Here the same `M` also controls the generated Poincare cost, so this
+identity alone does not realize the independent sufficiently-large-block
+parameter used by CMP99.  The source-faithful specialization keeps those two
+parameters separate.
 -/
 
 namespace YangMills.RG

@@ -27509,3 +27509,41 @@ bound and the implication from `budget < 1`; it does **not** prove the scalar
 premise itself.  Hence this is the sealed step-7 reduction, not attainment of
 window 15, not discharge of rows 23--24, and not a `TermSource` inhabitant.
 The live counters remain exactly `20/41` and zero.
+
+## Addendum 559 (2026-08-05, **diagonal generated Schur majorant NO-GO GREEN; physical window 15 still open; 20/41 unchanged**)
+
+The no-go was validated from exact source checkpoint
+`8494a73fcf1e6fc2bb59ab6442e7631cfcfe94a0` by cold GitHub Actions run
+`31034176002` (workflow checkpoint
+`85e787fc79864883b36b818dd705db57a72a7c25`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T18:29:48Z` to `19:27:16Z`, completed with
+`Build completed successfully (8569 jobs).`, and exited zero.  Its
+four-declaration audit ran from `19:27:16Z` to `19:27:24Z` and also exited
+zero.  Every declaration depends exactly on
+`[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`2c569535f50d50c1864be0287253adfe8554e32776efd288368fb9e9e16ebd7b`.
+The axiom JSON has SHA-256
+`6ee8ef575065609b28fc399f5b580fc2a70da078df0ecf65c6f611c0a7121741`;
+the stage ledger has SHA-256
+`c12115adf80030df05f9303fe5cfe8d69082b9793cdeb72003223ef50b9da366`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+13 recorded files.
+
+The four theorems prove that every literal source profile has
+`3 <= derivBound`, expose the exact depth-zero generated coercivity, lower
+bound the current diagonal step-7 majorant by `11943936`, and hence refute
+its `< 1` premise.  They do **not** lower bound the physical operator norm.
+The failure is the diagonal identification of the RG ratio with the source's
+independently large regional parameter; the source-faithful continuation
+keeps `CP(L)` at fixed RG ratio and obtains the cutoff gain through a separate
+`K^-1`.  Window 15 remains open, rows 23--24 remain undischarged, and the
+live counters remain exactly `20/41` and zero.
