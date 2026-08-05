@@ -11,6 +11,6 @@ compiler and no `.olean` is claimed for the imported module.
 #print axioms YangMills.RG.cmp99ActiveCutoffLaplacianCorrection
 #print axioms YangMills.RG.finitePiLpScalarCommutator_apply_eq
 #print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantLaplacian_scalarMultiplier_apply
-#print axioms YangMills.RG.finitePiLpScalarCommutator_activeCovariantLaplacian_apply_eq
-#print axioms YangMills.RG.finitePiLpScalarCommutator_activeSourceGaugePrecision_apply_eq
+#print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantLaplacian_cutoffCommutator_apply_eq
+#print axioms YangMills.RG.cmp99ActiveSourceGaugePrecision_cutoffCommutator_apply_eq
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalPrecision_cutoffCommutator_apply_eq
