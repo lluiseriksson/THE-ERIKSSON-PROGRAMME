@@ -9,8 +9,10 @@ import Mathlib.Data.Fintype.BigOperators
 /-!
 # Transposed overlap of the CMP95 periodic cutoffs
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
+Compiler-verified at source checkpoint
+`837040284f5ce1d358d42eb8f6c01689829db29b` in durable GitHub Actions run
+`30971247380`.  The focal completed 8,495 jobs and all six audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP95 (1.118) uses one profile supported in `(-2/3,2/3)`.  Consequently, at
 one fixed coordinate only the two integers bracketing that coordinate can

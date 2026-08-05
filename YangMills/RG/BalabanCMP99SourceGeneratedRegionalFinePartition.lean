@@ -9,8 +9,10 @@ import YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
 /-!
 # An auxiliary terminal-scale partition for the CMP99 regional Green algebra
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
+Compiler-verified at source checkpoint
+`837040284f5ce1d358d42eb8f6c01689829db29b` in durable GitHub Actions run
+`30971247380`.  The focal completed 8,509 jobs and all three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The regional Neumann algebra must use a smooth cutoff on the actual fine
 lattice.  Pulling a coarse partition back through `blockSite` is piecewise

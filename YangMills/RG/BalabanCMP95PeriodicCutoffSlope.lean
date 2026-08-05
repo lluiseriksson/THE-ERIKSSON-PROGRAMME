@@ -9,8 +9,10 @@ import YangMills.RG.BlockBasepointDistance
 /-!
 # The linear slope of the periodized CMP95 cutoff
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
+Compiler-verified at source checkpoint
+`837040284f5ce1d358d42eb8f6c01689829db29b` in durable GitHub Actions run
+`30971247380`.  The focal completed 8,494 jobs and all eight audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The already audited periodic estimate controls the square weight `h^2`.
 Using that estimate under a square root would lose half of the physical

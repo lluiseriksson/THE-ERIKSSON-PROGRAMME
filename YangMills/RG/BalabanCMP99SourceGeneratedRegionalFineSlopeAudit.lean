@@ -1,8 +1,10 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedRegionalFineSlope
 
 /-!
-PRE-VALIDATION: the imported source has not yet been materialized to `.olean`;
-these audit commands have not yet been checked by Lean.
+Compiler-verified at source checkpoint
+`837040284f5ce1d358d42eb8f6c01689829db29b` in durable GitHub Actions run
+`30971247380`; both declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.finBoxDist_cmp99RegionalFactoredToGeneratedFineSite

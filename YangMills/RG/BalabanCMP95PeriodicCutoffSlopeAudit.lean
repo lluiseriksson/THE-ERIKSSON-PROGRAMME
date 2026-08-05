@@ -3,8 +3,10 @@ import YangMills.RG.BalabanCMP95PeriodicCutoffSlope
 /-!
 # Axiom audit for the linear periodic-cutoff slope
 
-PRE-VALIDATION: this audit has not yet been materialized to `.olean`; its
-result is not compiler-verified.
+Compiler-verified at source checkpoint
+`837040284f5ce1d358d42eb8f6c01689829db29b` in durable GitHub Actions run
+`30971247380`; all eight declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp95PeriodicCutoff_nonneg

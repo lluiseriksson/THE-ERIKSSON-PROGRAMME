@@ -27144,3 +27144,46 @@ that the literal scalar targets are jointly compatible.  It does not prove
 that the physical interacting precision or the literal `R1`/`R3` budgets
 attain those targets, discharge groups 23--24, or construct a `TermSource`.
 The live counters therefore remain exactly `20/41` and zero.
+
+## Addendum 549 (2026-08-05, **regional CMP99 (3.88) prerequisites GREEN; 20/41 unchanged**)
+
+The regional prerequisite chain below the physical three-term commutator
+identity was validated stop-on-first-error from exact source checkpoint
+`837040284f5ce1d358d42eb8f6c01689829db29b` by durable GitHub Actions run
+`30971247380` (workflow checkpoint
+`6e26007370edaba7be09e4299f3d9441b644ff7d`).  The official Lean
+`v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The eight source focal builds completed respectively with 8,495 jobs
+(periodic active-cell overlap), 8,494 jobs (periodic cutoff slope), 8,509 jobs
+(generated regional fine partition), 8,514 jobs (generated regional fine
+slope), 8,515 jobs (regional fine-scale no-go), 8,174 jobs (normalized
+weighted-row scalar commutator), 8,507 jobs (regional Green Neumann algebra),
+and 8,508 jobs (regional source-precision commutator split).  Their matching
+audits checked respectively 6, 8, 3, 2, 3, 2, 11, and 1 declarations.  All
+sixteen recorded stages exited zero.  All 36 audited declarations depend
+exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`59a54466cbb3d4659eaecc94d14a922b7ec2a626db7ee222cf44732c0c8c61de`.
+The axiom JSON has SHA-256
+`4523f4783e12b5496d16225a04a2e229f8ebbbb5bbafb03afa3b45108cc61d28`;
+the stage ledger has SHA-256
+`49f542994ee6fdd2159182e69224c834cc98378bfd89f87b58a39a7a4f012cc7`.
+The internal `SHA256SUMS` manifest was rechecked independently and matched all
+24 recorded files.
+
+This is **prerequisites/infrastructure for CMP99 (3.88), not a terminal
+field**.  The replay certifies the partition/overlap/slope interfaces, the
+arithmetic no-go for the auxiliary two-terminal-block cutoff, the generic
+weighted-row commutator estimate, the exact regional Neumann inverse algebra,
+and the additive split
+`[h, Delta_U + a Q'^* Q'] = [h, Delta_U] + a [h, Q'^* Q']`.
+It does not prove the displayed physical three-term identity, physical
+cutoff-slope attainment, `norm R' < 1`, groups 23--24, or a `TermSource`
+inhabitant.  The live counters therefore remain exactly `20/41` and zero.

@@ -11,8 +11,10 @@ import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 /-!
 # CMP99 Theorem 3.7: regional Green Neumann reconstruction
 
-PRE-VALIDATION: the fine-carrier partition interface below has not yet been
-materialized to `.olean`; its revised result is not compiler-verified.
+Compiler-verified at source checkpoint
+`837040284f5ce1d358d42eb8f6c01689829db29b` in durable GitHub Actions run
+`30971247380`.  The focal completed 8,507 jobs and all eleven audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP99 equations (3.87)--(3.90) start from one ambient precision `Delta'`,
 compress it to the square regions, construct the local Dirichlet inverses,

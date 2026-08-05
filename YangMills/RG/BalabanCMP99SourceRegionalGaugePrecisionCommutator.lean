@@ -9,8 +9,10 @@ import YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
 /-!
 # Exact regional commutator split for the CMP99 source precision
 
-PRE-VALIDATION: this source is present, but its `.olean` has not yet been
-materialized and its result is not compiler-verified.
+Compiler-verified at source checkpoint
+`837040284f5ce1d358d42eb8f6c01689829db29b` in durable GitHub Actions run
+`30971247380`.  The focal completed 8,508 jobs and its audited declaration
+uses exactly `[propext, Classical.choice, Quot.sound]`.
 
 The source precision is the literal sum
 

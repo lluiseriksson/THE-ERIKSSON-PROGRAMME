@@ -2361,3 +2361,21 @@ verifies one rational witness for the complete updated registry and all eight
 focused axiom blocks.  This prevents the compatibility result from silently
 lagging behind the consumer interface, but it does not show physical
 attainment and therefore leaves `20/41` and `TermSource = 0` unchanged.
+
+The regional prerequisites below CMP99 (3.88) were then replayed from source
+checkpoint `837040284f5ce1d358d42eb8f6c01689829db29b` in durable GitHub
+Actions run `30971247380`.  The verified set comprises the CMP95 periodic
+active-cell overlap and linear cutoff slope, the auxiliary generated fine
+partition/slope and its arithmetic scale no-go, the normalized weighted-row
+commutator estimate, the regional Green Neumann algebra, and the exact
+additive split of the regional source-precision commutator.  All sixteen
+build/audit stages exited zero and all 36 audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+These modules are **prerequisites/infrastructure for CMP99 (3.88), not a
+terminal field**.  In particular, they do not prove the displayed physical
+three-term identity, physical cutoff-slope attainment, `norm R' < 1`, groups
+23--24, or a `TermSource` inhabitant.  The exact source-side construction
+still has to expose the link-derivative term, cutoff-Laplacian term, and
+normalized `Q'^* Q'` term before estimating their sum.  The live counters
+therefore remain exactly `20/41` and `TermSource = 0`.
