@@ -14,9 +14,11 @@ import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalR3SourceRate
 /-!
 # Source-specific pre-(1.36) assembly on the combined ledger
 
-PRE-VALIDATION: the replacement of terminal root/outer smallness inputs by
-the literal coercivity-gap walls is present in source, but this revision has
-not yet been materialized or checked by the compiler.
+The replacement of terminal root/outer smallness inputs by the literal
+coercivity-gap walls was compiler-verified at source checkpoint
+`fbb2d47d5fbc0ccc4900c15b55cc210d9a8e0440` in durable GitHub Actions run
+`30965959088`.  The combined focal completed 8979 jobs and all eighteen audit
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The generated conditioned covariance, root and strict lower certificate were
 compiler-verified at source checkpoint

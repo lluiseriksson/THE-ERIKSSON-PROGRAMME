@@ -27059,3 +27059,51 @@ infrastructure outside the raw denominator, and the `qBound` theorem only
 reduces `outer_small` to a visible scalar gap budget.  It does not attain that
 budget, construct a complete `PreEq136`, or inhabit a `TermSource`; the latter
 counter remains zero.
+
+## Addendum 547 (2026-08-05, **physical root/outer walls reduced to literal scalar gaps GREEN; 20/41 unchanged**)
+
+The restricted `R3` source-rate sign producer and the combined source
+assembler with literal coercivity-gap inputs were validated stop-on-first-error
+from exact source checkpoint
+`fbb2d47d5fbc0ccc4900c15b55cc210d9a8e0440` by durable GitHub Actions run
+`30965959088` (workflow checkpoint
+`fa04a93ddd48f583bc324bf5d9de13085dfc2de0`).  The official Lean
+`v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The coordinate-dictionary focal completed with `Build completed successfully
+(8527 jobs).`; its ten-declaration audit exited zero.  The new restricted
+`R3` source-rate focal completed with `Build completed successfully (8533
+jobs).`; its three-declaration audit exited zero.  The combined source
+assembler completed with `Build completed successfully (8979 jobs).`; its
+eighteen-declaration audit exited zero after the historical interacting-
+precision audit prerequisite was materialized explicitly.  The `qBound` wall
+completed with `Build completed successfully (8202 jobs).`; its one-
+declaration audit exited zero.  All nine recorded stages exited zero.  All 32
+audited declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` are
+absent.  The gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`4b8553eaa49174143571ea503dfaec155bf4d090235b118258a8be028fa592e0`.
+The axiom JSON has SHA-256
+`6332cda2cb9706e138f76891938f2358eb946d1fcf443b67058f4e21a7385c`;
+the stage ledger has SHA-256
+`5984af6f2cd34152bbd5a7cfcf4b3cfe6e93ef801d35e443e9be6fbc262e76b4`.
+The internal `SHA256SUMS` manifest was rechecked independently and matched all
+17 recorded files.
+
+The combined assembler no longer accepts terminal inequalities containing the
+physical conditioned-root norm.  It constructs the generated root internally,
+derives `root_small` from the visible gap `alpha < coercivityConstant`, derives
+the sign of the literal restricted `R3` source rate from the already named
+shell and Neumann windows, and derives `outer_small` from the visible joint
+budget `2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound`.
+Those two gap inequalities remain genuine scalar attainment obligations.
+This brick therefore transforms the interface but installs no additional
+`PreEq136` producer: the live numerator remains exactly `20/41`, bridge 12b
+remains infrastructure outside the denominator, physical attainment of
+`norm R' < 1` remains open, and no `TermSource` inhabitant is produced.

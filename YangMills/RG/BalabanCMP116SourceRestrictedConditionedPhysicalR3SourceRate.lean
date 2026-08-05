@@ -9,9 +9,10 @@ import YangMills.RG.BalabanCMP116SourcePi4FullComplexR3BilateralNorm
 /-!
 # Physical source rate on the conditioned CMP116 outer carrier
 
-PRE-VALIDATION: the new source-rate nonnegativity producer is present, its
-updated `.olean` has not yet been materialized, and the theorem has not yet
-been checked by the compiler.
+The source-rate nonnegativity producer was compiler-verified at source
+checkpoint `fbb2d47d5fbc0ccc4900c15b55cc210d9a8e0440` in durable GitHub
+Actions run `30965959088`.  Its three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 Equation (2.23) restricts the outer Gaussian to the activity carrier `Z`.
 The literal `R3` operator remains global, while its row and column norms are

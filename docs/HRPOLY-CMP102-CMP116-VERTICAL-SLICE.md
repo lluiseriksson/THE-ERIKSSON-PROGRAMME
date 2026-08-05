@@ -2340,3 +2340,16 @@ Consequently rows 12a and 13 are now discharged and the live producer count
 is exactly `20/41`.  Row 12b remains infrastructure outside the denominator;
 the regional target `norm R' < 1`, `root_small`, and `outer_small` remain
 unattained physical/scalar walls.  No `TermSource` inhabitant is produced.
+
+Source checkpoint `fbb2d47d5fbc0ccc4900c15b55cc210d9a8e0440` then removes the
+physical conditioned-root norm from the remaining groups 23--24 inputs.  The
+combined assembler now derives `root_small` from the literal coercivity gap
+`alpha < coercivityConstant`, derives nonnegativity of the literal restricted
+`R3` source rate from the already named Neumann windows, and derives
+`outer_small` from the visible joint gap budget
+`2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound`.
+Durable run `30965959088` verifies that reduction and all 32 focused axiom
+blocks.  These are still scalar attainment obligations rather than new
+terminal producers, so the live count remains exactly `20/41`, `TermSource`
+remains zero, and physical attainment of the regional target `norm R' < 1`
+also remains open.

@@ -7,8 +7,10 @@ The preceding assembler audit was compiler-verified at source checkpoint
 declarations below were compiler-verified from one fresh Colab CPU/high-RAM
 clone at source checkpoint `5b061eb968885f5d724dc3b9226ee593ddc5d0db`.
 
-PRE-VALIDATION: the scalar-wall integration in the combined assembler has
-not yet been materialized or checked by the compiler.
+The scalar-wall integration in the combined assembler was compiler-verified
+at source checkpoint `fbb2d47d5fbc0ccc4900c15b55cc210d9a8e0440` in durable
+GitHub Actions run `30965959088`; all eighteen declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The generated localized carrier, root and covariance-lower certificate were
 compiler-verified at source checkpoint
