@@ -78,11 +78,10 @@ theorem cmp99GeneratedAmbientScaledCovariantLaplacian_apply_eq_stencil
   simp only [PiLp.smul_apply, covariantD0CLM_apply, map_smul, map_sub,
     positiveEdgeOfPhysicalBond, rho.ad_inv_apply_ad,
     FinBox.shift_shiftBack]
-  simp only [cmp99AmbientCovariantLaplacianStencil, Finset.smul_sum,
-    smul_sub]
+  simp only [cmp99AmbientCovariantLaplacianStencil,
+    positiveEdgeOfPhysicalBond, Finset.smul_sum, smul_sub]
   apply Finset.sum_congr rfl
   intro i _hi
-  trace_state
   module
 
 /-- The source-facing link-derivative correction in the first line of CMP99
