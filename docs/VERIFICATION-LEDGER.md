@@ -27107,3 +27107,40 @@ This brick therefore transforms the interface but installs no additional
 `PreEq136` producer: the live numerator remains exactly `20/41`, bridge 12b
 remains infrastructure outside the denominator, physical attainment of
 `norm R' < 1` remains open, and no `TermSource` inhabitant is produced.
+
+## Addendum 548 (2026-08-05, **joint scalar registry aligned with literal coercivity gaps GREEN; 20/41 unchanged**)
+
+The centered-conditioned joint smallness registry and its audit were validated
+from exact source checkpoint
+`c4beb733a1df50ded144c83c390de35d4cfa17ef` by durable GitHub Actions run
+`30969049527` (workflow checkpoint
+`21aa7199cfb33f3a8a185240521dada4d9a0c2b3`).  The official Lean
+`v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8755 jobs).` and
+exited zero.  The eight-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`45d19f31999f82acf23555f29cb422289353b23b369bd9617747c5add1592725`.
+The axiom JSON has SHA-256
+`2ea884f640aa1b7b93a787fe0f85ec0f4b7f1bfea52780518ed71eed6293ffca`;
+the stage ledger has SHA-256
+`2a2a6d2e70937dc7dd369aeb9995173a31ee9d582b203869fbb719f039f1a209`.
+The internal `SHA256SUMS` manifest was rechecked independently and matched all
+10 recorded files.
+
+The registry no longer uses the obsolete targets `rootNorm` and
+`outerBudget`.  Its two conditioned-Gaussian entries are now exactly the
+consumer-facing gaps `alpha < coercivityConstant` and
+`2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound`, with a
+single explicit rational witness for the whole updated regime.  This proves
+that the literal scalar targets are jointly compatible.  It does not prove
+that the physical interacting precision or the literal `R1`/`R3` budgets
+attain those targets, discharge groups 23--24, or construct a `TermSource`.
+The live counters therefore remain exactly `20/41` and zero.

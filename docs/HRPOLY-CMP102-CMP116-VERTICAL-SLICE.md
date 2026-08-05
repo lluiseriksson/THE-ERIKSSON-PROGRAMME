@@ -362,17 +362,17 @@ bootstrap for every candidate proof.
 The accumulated scalar gates are now centralized in
 `CMP116CenteredConditionedJointSmallnessRegime`.  Its fourteen threshold
 fields are: patched defect, shell, contour series, the two Neumann bounds,
-root stability, outer stability, the interaction budget, `qBound < 1`, the
-grouped-walk contraction, the two animal contractions, and the two physical
-CMP109 pivot conditions.  The source value at `L = 4` is used literally,
-`delta = (1/10)(1 - 2/4) = 1/20`; the exact logarithmic rates give explicit
-factor-two margins.  A single witness inhabits the whole record.  Adding a
-new scalar gate to this registry therefore breaks that witness until the
-joint regime is updated, instead of silently leaving an older compatibility
-claim in the tree.  The lower covariance constant `c / Lambda^2` is not
-invented as a fifteenth threshold: its terminal field asks only for
-positivity, while its quantitative coupling enters the already listed
-`root_small` and `outer_small` walls.
+the literal gap `alpha < coercivityConstant`, the literal joint outer budget
+`2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound`, the
+interaction budget, `qBound < 1`, the grouped-walk contraction, the two animal
+contractions, and the two physical CMP109 pivot conditions.  The source value
+at `L = 4` is used literally, `delta = (1/10)(1 - 2/4) = 1/20`; the exact
+logarithmic rates give explicit factor-two margins.  A single witness inhabits
+the whole record.  Adding or changing a scalar gate therefore breaks that
+witness until the joint regime is updated, instead of silently leaving an
+older compatibility claim in the tree.  This witness proves simultaneous
+compatibility of the targets; it does not prove that the literal physical
+coercivity, `R1`, or `R3` producers attain them.
 
 Thus `20/41 -> 41/41` is the route to the first source-specific
 `TermSource` **conditional on the named Lemma-1 certificate**.  Proving the
@@ -2353,3 +2353,11 @@ blocks.  These are still scalar attainment obligations rather than new
 terminal producers, so the live count remains exactly `20/41`, `TermSource`
 remains zero, and physical attainment of the regional target `norm R' < 1`
 also remains open.
+
+The same two literal gaps replace the obsolete `rootNorm`/`outerBudget`
+targets in the joint compatibility registry at source checkpoint
+`c4beb733a1df50ded144c83c390de35d4cfa17ef`.  Durable run `30969049527`
+verifies one rational witness for the complete updated registry and all eight
+focused axiom blocks.  This prevents the compatibility result from silently
+lagging behind the consumer interface, but it does not show physical
+attainment and therefore leaves `20/41` and `TermSource = 0` unchanged.

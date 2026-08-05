@@ -1,8 +1,10 @@
 import YangMills.RG.BalabanCMP116CenteredConditionedSmallnessCompatibility
 
 /-!
-PRE-VALIDATION: the revised literal coercivity-gap compatibility witness has
-not yet been materialized or checked by the compiler.
+The revised literal coercivity-gap compatibility witness was compiler-verified
+at source checkpoint `c4beb733a1df50ded144c83c390de35d4cfa17ef` in durable
+GitHub Actions run `30969049527`; all eight oracle outputs below were exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp116CenteredSmallnessWitness_shell
