@@ -383,6 +383,119 @@ theorem mixed_connCorr_bound {T : H →L[ℝ] H} {Om : H}
             (pow_apply_norm_le _ hr hgap v (m + 1)) (norm_nonneg u)
         _ = ‖u‖ * ‖v‖ * r ^ (m + 1) := by ring
 
+/-! ## The division-safe six-term connected bound (pass 12) -/
+
+/-- **The six-term connected bound, division-free.**  With
+`F u v := ⟪u, Tᴺ v⟫`: the truncated combination
+`F 1 1 · F A B − F A 1 · F 1 B` decays at the gap rate with the crude
+honest constant `6‖A‖‖B‖‖1‖²`.  The proof is the ring identity in
+E-terms (`E u v := F u v − ⟪Ω,u⟫⟪Ω,v⟫`): the pure product terms cancel
+exactly, and each of the six surviving terms carries at least one `E`,
+bounded by `mixed_connCorr_bound`; the two `E·E` terms spend one factor
+`rᴺ ≤ 1`. -/
+theorem six_term_connected_bound {T : H →L[ℝ] H} {Om : H}
+    (hT : VacuumTransfer T Om) {r : ℝ} (hr : 0 ≤ r) (hr1 : r ≤ 1)
+    (hgap : ‖projectedTransfer T Om‖ ≤ r) (qA qB q1 : H) (N : ℕ) :
+    |⟪q1, (T ^ N) q1⟫ * ⟪qA, (T ^ N) qB⟫
+        - ⟪qA, (T ^ N) q1⟫ * ⟪q1, (T ^ N) qB⟫|
+      ≤ 6 * ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by
+  have hEAB := mixed_connCorr_bound hT hr hgap qA qB N
+  have hE11 := mixed_connCorr_bound hT hr hgap q1 q1 N
+  have hEA1 := mixed_connCorr_bound hT hr hgap qA q1 N
+  have hE1B := mixed_connCorr_bound hT hr hgap q1 qB N
+  have hA : |(⟪Om, qA⟫ : ℝ)| ≤ ‖qA‖ := by
+    have h := abs_real_inner_le_norm Om qA
+    rwa [hT.unit, one_mul] at h
+  have hB : |(⟪Om, qB⟫ : ℝ)| ≤ ‖qB‖ := by
+    have h := abs_real_inner_le_norm Om qB
+    rwa [hT.unit, one_mul] at h
+  have hC : |(⟪Om, q1⟫ : ℝ)| ≤ ‖q1‖ := by
+    have h := abs_real_inner_le_norm Om q1
+    rwa [hT.unit, one_mul] at h
+  have hrN : (0 : ℝ) ≤ r ^ N := pow_nonneg hr N
+  have hrN1 : r ^ N ≤ 1 := pow_le_one₀ hr hr1
+  set FAB : ℝ := ⟪qA, (T ^ N) qB⟫ with hFAB_def
+  set F11 : ℝ := ⟪q1, (T ^ N) q1⟫ with hF11_def
+  set FA1 : ℝ := ⟪qA, (T ^ N) q1⟫ with hFA1_def
+  set F1B : ℝ := ⟪q1, (T ^ N) qB⟫ with hF1B_def
+  set a : ℝ := ⟪Om, qA⟫ with ha_def
+  set b : ℝ := ⟪Om, qB⟫ with hb_def
+  set c : ℝ := ⟪Om, q1⟫ with hc_def
+  have h1 : |c * c * (FAB - a * b)| ≤ ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by
+    rw [abs_mul, abs_mul]
+    calc |c| * |c| * |FAB - a * b|
+        ≤ ‖q1‖ * ‖q1‖ * (‖qA‖ * ‖qB‖ * r ^ N) :=
+          mul_le_mul (mul_le_mul hC hC (abs_nonneg _) (norm_nonneg _))
+            hEAB (abs_nonneg _) (mul_nonneg (norm_nonneg _) (norm_nonneg _))
+      _ = ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by ring
+  have h2 : |a * b * (F11 - c * c)| ≤ ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by
+    rw [abs_mul, abs_mul]
+    calc |a| * |b| * |F11 - c * c|
+        ≤ ‖qA‖ * ‖qB‖ * (‖q1‖ * ‖q1‖ * r ^ N) :=
+          mul_le_mul (mul_le_mul hA hB (abs_nonneg _) (norm_nonneg _))
+            hE11 (abs_nonneg _) (mul_nonneg (norm_nonneg _) (norm_nonneg _))
+      _ = ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by ring
+  have h3 : |(F11 - c * c) * (FAB - a * b)|
+      ≤ ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by
+    rw [abs_mul]
+    calc |F11 - c * c| * |FAB - a * b|
+        ≤ (‖q1‖ * ‖q1‖ * r ^ N) * (‖qA‖ * ‖qB‖ * r ^ N) :=
+          mul_le_mul hE11 hEAB (abs_nonneg _) (mul_nonneg (mul_nonneg (norm_nonneg _) (norm_nonneg _)) hrN)
+      _ = (‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N) * r ^ N := by ring
+      _ ≤ (‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N) * 1 :=
+          mul_le_mul_of_nonneg_left hrN1 (mul_nonneg (mul_nonneg (mul_nonneg (norm_nonneg _) (norm_nonneg _)) (pow_nonneg (norm_nonneg _) 2)) hrN)
+      _ = ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := mul_one _
+  have h4 : |a * c * (F1B - c * b)| ≤ ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by
+    rw [abs_mul, abs_mul]
+    calc |a| * |c| * |F1B - c * b|
+        ≤ ‖qA‖ * ‖q1‖ * (‖q1‖ * ‖qB‖ * r ^ N) :=
+          mul_le_mul (mul_le_mul hA hC (abs_nonneg _) (norm_nonneg _))
+            hE1B (abs_nonneg _) (mul_nonneg (norm_nonneg _) (norm_nonneg _))
+      _ = ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by ring
+  have h5 : |c * b * (FA1 - a * c)| ≤ ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by
+    rw [abs_mul, abs_mul]
+    calc |c| * |b| * |FA1 - a * c|
+        ≤ ‖q1‖ * ‖qB‖ * (‖qA‖ * ‖q1‖ * r ^ N) :=
+          mul_le_mul (mul_le_mul hC hB (abs_nonneg _) (norm_nonneg _))
+            hEA1 (abs_nonneg _) (by positivity)
+      _ = ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by ring
+  have h6 : |(FA1 - a * c) * (F1B - c * b)|
+      ≤ ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := by
+    rw [abs_mul]
+    calc |FA1 - a * c| * |F1B - c * b|
+        ≤ (‖qA‖ * ‖q1‖ * r ^ N) * (‖q1‖ * ‖qB‖ * r ^ N) :=
+          mul_le_mul hEA1 hE1B (abs_nonneg _) (mul_nonneg (mul_nonneg (norm_nonneg _) (norm_nonneg _)) hrN)
+      _ = (‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N) * r ^ N := by ring
+      _ ≤ (‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N) * 1 :=
+          mul_le_mul_of_nonneg_left hrN1 (mul_nonneg (mul_nonneg (mul_nonneg (norm_nonneg _) (norm_nonneg _)) (pow_nonneg (norm_nonneg _) 2)) hrN)
+      _ = ‖qA‖ * ‖qB‖ * ‖q1‖ ^ 2 * r ^ N := mul_one _
+  have key : F11 * FAB - FA1 * F1B
+      = c * c * (FAB - a * b) + a * b * (F11 - c * c)
+          + (F11 - c * c) * (FAB - a * b)
+          - a * c * (F1B - c * b) - c * b * (FA1 - a * c)
+          - (FA1 - a * c) * (F1B - c * b) := by ring
+  have tri : ∀ x y : ℝ, |x - y| ≤ |x| + |y| := by
+    intro x y
+    calc |x - y| = |x + -y| := by rw [sub_eq_add_neg]
+      _ ≤ |x| + |-y| := abs_add_le x (-y)
+      _ = |x| + |y| := by rw [abs_neg]
+  rw [key]
+  have s1 := tri (c * c * (FAB - a * b) + a * b * (F11 - c * c)
+      + (F11 - c * c) * (FAB - a * b)
+      - a * c * (F1B - c * b) - c * b * (FA1 - a * c))
+    ((FA1 - a * c) * (F1B - c * b))
+  have s2 := tri (c * c * (FAB - a * b) + a * b * (F11 - c * c)
+      + (F11 - c * c) * (FAB - a * b)
+      - a * c * (F1B - c * b))
+    (c * b * (FA1 - a * c))
+  have s3 := tri (c * c * (FAB - a * b) + a * b * (F11 - c * c)
+      + (F11 - c * c) * (FAB - a * b))
+    (a * c * (F1B - c * b))
+  have s4 := abs_add_le (c * c * (FAB - a * b) + a * b * (F11 - c * c))
+    ((F11 - c * c) * (FAB - a * b))
+  have s5 := abs_add_le (c * c * (FAB - a * b)) (a * b * (F11 - c * c))
+  linarith [h1, h2, h3, h4, h5, h6]
+
 end MixedHilbert
 
 /-- **The reconstructed theory has one mass, measured against the raw Gibbs
@@ -416,5 +529,109 @@ theorem os_reconstruction_measure_uniform (β γ : ℝ) {alpha : ℝ}
     fun N A B => gibbsPathSum_eq_inner_pow (sliceW γ L) (sliceW_pos γ L)
       β lam hlam.ne' N A B,
     fun u v n => mixed_connCorr_bound hT (Real.exp_nonneg _) hnorm u v n⟩
+
+/-- **The division-safe connected bound in raw Gibbs terms.**  In the
+window: ONE `m > 0` such that for EVERY spatial extent, every time depth
+`N` and all real observables `A, B`, the truncated combination
+`Z_N · S_N(A,B) − S_N(A,1) · S_N(1,B)` is bounded by `lam^(2N)` times the
+crude honest constant `6‖QA‖‖QB‖‖Q1‖²` times `(e^{-m})^N`.  This is the
+normalised connected-correlator bound multiplied through by the positive
+scale of `Z_N²`: no division is performed, no denominator floor is
+needed, and dividing by `Z_N² = lam^(2N)·⟪Q1, T̂^N Q1⟫²` recovers the
+normalised statement in prose.  Witnesses are D-6's, consumed through
+B1/B2 and `pow_symm`. -/
+theorem os_reconstruction_connected_uniform (β γ : ℝ) {alpha : ℝ}
+    (halpha0 : 0 < alpha) (halpha1 : alpha < 1)
+    (hwin : 2 * Real.tanh |β| + 2 * Real.tanh |γ| ≤ alpha) :
+    ∃ m : ℝ, 0 < m ∧ ∀ L : ℕ,
+      ∃ (lam : ℝ) (Om : (Fin (L + 1) → Fin 2) → ℝ),
+        0 < lam ∧ (∀ σ, 0 < Om σ) ∧
+        (∀ σ, ∑ τ, tiltKernel (sliceW γ L) β lam σ τ * Om τ = Om σ) ∧
+        ∀ (N : ℕ) (A B : (Fin (L + 1) → Fin 2) → ℝ),
+          |gibbsPartition (sliceW γ L) β N
+                * gibbsPathSum (sliceW γ L) β N A B
+              - gibbsPathSum (sliceW γ L) β N A (fun _ => 1)
+                * gibbsPathSum (sliceW γ L) β N (fun _ => 1) B|
+            ≤ lam ^ (2 * N)
+                * (6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
+                    * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
+                    * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2)
+                * Real.exp (-m) ^ N := by
+  obtain ⟨m, hm, hL⟩ := dobrushin_ising_uniform_gap β γ halpha0 halpha1 hwin
+  refine ⟨m, hm, fun L => ?_⟩
+  obtain ⟨lam, Om, hlam, hOm, hfix, hnorm⟩ := hL L
+  have hT : VacuumTransfer (opOf (tiltKernel (sliceW γ L) β lam)) (vacOf Om) :=
+    vacuumTransfer_opOf _ Om (tiltKernel_symm _ β lam) hOm hfix
+  refine ⟨lam, Om, hlam, hOm, hfix, fun N A B => ?_⟩
+  have hexp1 : Real.exp (-m) ≤ 1 := by
+    rw [show (1 : ℝ) = Real.exp 0 from (Real.exp_zero).symm]
+    exact Real.exp_le_exp.mpr (by linarith)
+  have hsix := six_term_connected_bound hT (Real.exp_nonneg _) hexp1 hnorm
+    (WithLp.toLp 2 (dress (sliceW γ L) A))
+    (WithLp.toLp 2 (dress (sliceW γ L) B))
+    (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))) N
+  have hAB := gibbsPathSum_eq_inner_pow (sliceW γ L) (sliceW_pos γ L)
+    β lam hlam.ne' N A B
+  have hA1 := gibbsPathSum_eq_inner_pow (sliceW γ L) (sliceW_pos γ L)
+    β lam hlam.ne' N A (fun _ => 1)
+  have h1B := gibbsPathSum_eq_inner_pow (sliceW γ L) (sliceW_pos γ L)
+    β lam hlam.ne' N (fun _ => 1) B
+  have hZ := gibbsPartition_eq_inner_pow (sliceW γ L) (sliceW_pos γ L)
+    β lam hlam.ne' N
+  have hsymm := hT.pow_symm N
+  rw [hAB, hA1, h1B, hZ, hsymm, hsymm, hsymm, hsymm]
+  have habs : lam ^ N * ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
+        ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+          (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
+        * (lam ^ N * ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
+            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+              (WithLp.toLp 2 (dress (sliceW γ L) B))⟫)
+      - lam ^ N * ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
+            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+              (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
+        * (lam ^ N * ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
+            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+              (WithLp.toLp 2 (dress (sliceW γ L) B))⟫)
+      = lam ^ (2 * N)
+          * (⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
+              ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+                (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
+            * ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
+              ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+                (WithLp.toLp 2 (dress (sliceW γ L) B))⟫
+            - ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
+              ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+                (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
+            * ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
+              ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+                (WithLp.toLp 2 (dress (sliceW γ L) B))⟫) := by
+    rw [pow_mul]
+    ring
+  rw [habs, abs_mul,
+    abs_of_nonneg (le_of_lt (pow_pos hlam (2 * N)))]
+  calc lam ^ (2 * N)
+        * |⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
+            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+              (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
+          * ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
+            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+              (WithLp.toLp 2 (dress (sliceW γ L) B))⟫
+          - ⟪WithLp.toLp 2 (dress (sliceW γ L) A),
+            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+              (WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)))⟫
+          * ⟪WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1)),
+            ((opOf (tiltKernel (sliceW γ L) β lam)) ^ N)
+              (WithLp.toLp 2 (dress (sliceW γ L) B))⟫|
+      ≤ lam ^ (2 * N)
+        * (6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
+            * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
+            * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2
+            * Real.exp (-m) ^ N) :=
+        mul_le_mul_of_nonneg_left hsix (le_of_lt (pow_pos hlam (2 * N)))
+    _ = lam ^ (2 * N)
+        * (6 * ‖WithLp.toLp 2 (dress (sliceW γ L) A)‖
+            * ‖WithLp.toLp 2 (dress (sliceW γ L) B)‖
+            * ‖WithLp.toLp 2 (dress (sliceW γ L) (fun _ => 1))‖ ^ 2)
+        * Real.exp (-m) ^ N := by ring
 
 end YangMills.OS

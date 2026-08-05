@@ -31669,3 +31669,61 @@ predictions 8481/3028).
 **ROLES.**  Unit design + predictions: this desk (committed before the
 run).  Plane execution: autonomous browser bridge.  This record: this
 desk, numbers read from the visible run output (screenshot-verified).
+
+
+## Addendum 623 (2026-08-05, **OS-R-2 six-term module GREEN on the
+plane (passes 12-14); pass-15 wiring predictions REGISTERED before
+measurement**)
+
+**What grew.**  Same file again (no new module):
+YangMills/OS/OSReconstructionUniform.lean, from the Add.-621/622 state
+(sha d9919e25..., 20428 B) to sha256
+3b3598ebcfde0ce5f2f6ba358e7e0607473ac66db7afbdd4a8b09e014db7f369,
+32533 bytes.  TWO new public theorems:
+
+* `six_term_connected_bound` (generic real Hilbert space, inside the
+  MixedHilbert section): with `F u v := <u, T^N v>` and
+  `0 <= r <= 1`, `|F 1 1 * F A B - F A 1 * F 1 B| <=
+  6 |A||B||1|^2 r^N`.  Proof: the ring identity in E-terms
+  (`E u v := F u v - <Om,u><Om,v>`) -- the pure product terms cancel
+  EXACTLY, six survivors each carry an E bounded by
+  `mixed_connCorr_bound`, the two E*E terms spend one factor through
+  `r^N <= 1`.  The constant 6 is the honest term count, not
+  optimised.
+* `os_reconstruction_connected_uniform` (raw Gibbs terms): in the
+  window, ONE m > 0 s.t. for EVERY L, every N, all A B:
+  `|Z_N * S_N(A,B) - S_N(A,1) * S_N(1,B)| <= lam^(2N) *
+  (6 |QA||QB||Q1|^2) * exp(-m)^N` -- the normalised connected bound
+  multiplied through by Z^2's positive scale.  NO division performed,
+  NO denominator floor claimed: at fixed L the even powers give a
+  floor but the odd branch does not, and the kernel's cut is printed,
+  not blurred.  Witnesses: D-6 verbatim + B1/B2 + `pow_symm`.
+
+**Pass history (plane, warm clone).**  Pass 12 (staged 1a29a8516):
+ELAB_EXIT 1 with FOUR unknown identifiers -- `pow_le_pow_left` and
+`abs_add` x3 do not exist at this pin.  Fix read FROM THE TREE, not
+guessed: `abs_add_le` (the name MultiscaleDecoupling.lean:94 already
+documents as the ambiguity-safe choice) and `pow_le_one₀ hr hr1` (the
+exact DobrushinTilt.lean:493 idiom).  Pass 13 (78534c8c5): ELAB_EXIT 1
+with ONE type mismatch at the six-step abs calc chain -- this pin
+resolves `add_le_add_right` with the constant added on the LEFT (the
+inferred type prints right-nested sums), so the nested-composition
+idiom is a name trap; replaced by five name-free `have`s (the local
+`tri` + `abs_add_le`) closed by a single linarith (2bcbec80b).  Pass
+14: **ELAB_EXIT 0**, SOURCE 32533 3b3598eb printed by the cell,
+byte-identical to the local scratch and to the file banked in this
+commit.
+
+**Pass-15 predictions, REGISTERED NOW, measured by
+scripts/osr2_pass15_wiring.py in the next commit:**
+
+1. `lake build YangMillsCore` total = **8481 EXACT** (file grew
+   20428 -> 32533 B; no module added; eleventh consecutive exact
+   count prediction if it holds).
+2. Full oracle reports = **3028 EXACT** (3026 measured at Add. 622
+   + 2 new `#print axioms` lines appended in this commit).
+3. sorryAx = **0**; both new endpoints on the exact standard triple.
+
+**ROLES.**  Fabrication + unit design: this desk.  Plane executions:
+autonomous browser bridge.  Predictions above committed before
+measurement.
