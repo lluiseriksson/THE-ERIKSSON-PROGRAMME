@@ -133,12 +133,12 @@ theorem cmp99ActiveRegionSourceCovariantLaplacian_cutoffCommutator_apply_eq
 Laplacian is the literal covariant one.  The two differential species and
 the normalized mass kernel sum remain separately visible. -/
 theorem cmp99ActiveSourceGaugePrecision_cutoffCommutator_apply_eq
-    {κ : Type*} [Fintype κ]
+    {F : Type*} [NormedAddCommGroup F] [InnerProductSpace ℝ F]
+    [CompleteSpace F]
     (Omega : ActiveGaugeRegion d N) (rho : SUNAdjointModel Nc)
     (U : PhysicalGaugeBackground d N Nc) (spacing : ℝ)
     (h : FinBox d N → ℝ)
-    (Qprime : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
-      FinitePiLpField κ (SUNLieCoord Nc))
+    (Qprime : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ] F)
     (a : ℝ) (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
     (target : ActiveGaugeRegion.Site Omega) :
     h target.1 •
@@ -173,10 +173,17 @@ theorem cmp99ActiveSourceGaugePrecision_cutoffCommutator_apply_eq
           (h target.1 - h source.1) •
             Qmass (singleFinitePiLp source (phi source)) target := by
     simpa [hlocal, finitePiLpScalarCommutator_apply_eq] using hQsum
-  simp only [cmp99SourceGaugePrecision, ContinuousLinearMap.add_apply,
-    ContinuousLinearMap.smul_apply, PiLp.add_apply, PiLp.smul_apply]
-  rw [hL, hQ]
-  module
+  calc
+    _ = (h target.1 • L phi target -
+          L (finitePiLpScalarMultiplier (g := SUNLieCoord Nc) hlocal phi)
+            target) +
+        a • (h target.1 • Qmass phi target -
+          Qmass (finitePiLpScalarMultiplier (g := SUNLieCoord Nc) hlocal phi)
+            target) := by
+      simp only [cmp99SourceGaugePrecision, ContinuousLinearMap.add_apply,
+        ContinuousLinearMap.smul_apply, PiLp.add_apply, PiLp.smul_apply]
+      module
+    _ = _ := by rw [hL, hQ]
 
 /-- Literal generated-precision specialization of all three species in
 CMP99 (3.88).  The tower `Q'`, its adjoint mass and its scalar coefficient
