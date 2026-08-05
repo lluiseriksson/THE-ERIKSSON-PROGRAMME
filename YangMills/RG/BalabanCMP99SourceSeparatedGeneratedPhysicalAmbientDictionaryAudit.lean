@@ -1,0 +1,17 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary
+
+/-!
+# PRE-VALIDATION audit: separated-scale physical ambient dictionary
+
+The source below is present, but its `.olean` has not yet been materialized
+and its results have not yet been verified by the Lean compiler.
+-/
+
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
+#print axioms YangMills.RG.finBoxDist_cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv_symm
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalAmbientPrecision
+#print axioms YangMills.RG.isCoerciveCLM_cmp99SourceSeparatedGeneratedPhysicalAmbientPrecision
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoff_fullSiteEquiv_symm
+#print axioms YangMills.RG.cmp99SourceSeparatedRegionalLargeBlockPrecisionCommutator_eq_reindex
+#print axioms YangMills.RG.cmp99SourceSeparatedRegionalLargeBlockPrecisionCommutator_exponentialKernelBound

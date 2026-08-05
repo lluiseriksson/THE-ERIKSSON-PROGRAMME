@@ -1,0 +1,20 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoff
+
+/-!
+# PRE-VALIDATION audit: separated-scale physical CMP99 cutoff
+
+The source below is present, but its `.olean` has not yet been materialized
+and its results have not yet been verified by the Lean compiler.
+-/
+
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoff
+#print axioms YangMills.RG.norm_cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoff_sub_le
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalLargeBlockLaplacianBudget
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalLargeBlockMassBudget
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoffNumerator
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoffBudget
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoffBudget_eq
+#print axioms YangMills.RG.exists_cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoffBudget_lt_one
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoffBudget_self
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalPrecision_largeBlockCutoff_fixedOutputWeighted
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalPrecision_largeBlockCutoff_exponentialKernelBound
