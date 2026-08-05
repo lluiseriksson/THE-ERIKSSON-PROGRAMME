@@ -31979,3 +31979,28 @@ declaration order out of the file before firing, which is now done.
 
 **ROLES.**  Fabrication + unit design: this desk.  Plane execution:
 autonomous browser bridge.  Predictions committed before measurement.
+
+
+## Addendum 630 (2026-08-05, **OS-R-4 limit-state wiring MEASURED: all
+three Add.-629 predictions HELD EXACTLY (core 8481; oracle 3040 =
+3035+5; sorryAx 0) -- THIRTEENTH consecutive exact count prediction**)
+
+`scripts/osr4_pass22_wiring.py` (committed 4a508c881, predictions in
+Add. 629 at 6ff9074b3).  Read from the run output:
+
+* Gate: `MODULE 54745 ec19ffa75cd4...`; `ORACLE_STATIC_LINES 3067`.
+* `CORE_EXIT 0 TOTAL 8481` -- `PREDICTION_CORE_8481 True`.  Four
+  stages, one file, 12347 -> 20428 -> 32533 -> 43213 -> 54745 bytes,
+  and the core job count has never moved.
+* `ORACLE_EXIT 0 REPORTS 3040 SORRYAX_REPORTS 0 NONSTANDARD_JOINED
+  119` -- both predictions True; the 119 are the documented
+  subset-of-triple class.
+* All five new endpoints on the exact standard triple:
+  `abs_sub_le_add_abs`, `inner_ratio_approx`, `exists_cone_constant`,
+  `inner_pow_floor_offdiag`, `os_reconstruction_vacuum_state_limit`.
+
+Remaining debt: the fresh clone, pinned to this commit.
+
+**ROLES.**  Unit design + predictions: this desk, committed before the
+run.  Plane execution: autonomous browser bridge.  This record: this
+desk.
