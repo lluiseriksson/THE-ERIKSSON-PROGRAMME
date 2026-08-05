@@ -31,6 +31,20 @@ noncomputable section
 variable {d M N Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
+/-- Pointwise form of an arbitrary scalar commutator.  Keeping the operator
+abstract here prevents later physical specializations from unfolding their
+entire generated towers merely to expose the outer subtraction. -/
+theorem finitePiLpScalarCommutator_apply_eq
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (h : ι → ℝ)
+    (A : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (phi : FinitePiLpField ι g) (target : ι) :
+    finitePiLpScalarCommutator h A phi target =
+      h target • A phi target -
+        A (finitePiLpScalarMultiplier (g := g) h phi) target := by
+  rfl
+
 /-- Restriction of the ambient link-derivative species to one active
 Dirichlet carrier. -/
 noncomputable def cmp99ActiveCovariantCutoffLinkDerivative
@@ -111,9 +125,7 @@ theorem finitePiLpScalarCommutator_activeCovariantLaplacian_apply_eq
         phi target =
       cmp99ActiveCovariantCutoffLinkDerivative Omega rho U spacing h phi target -
         cmp99ActiveCutoffLaplacianCorrection Omega spacing h phi target := by
-  rw [finitePiLpScalarCommutator]
-  simp only [ContinuousLinearMap.sub_apply, ContinuousLinearMap.comp_apply,
-    finitePiLpScalarMultiplier_apply]
+  rw [finitePiLpScalarCommutator_apply_eq]
   rw [cmp99ActiveRegionSourceCovariantLaplacian_scalarMultiplier_apply]
   module
 
