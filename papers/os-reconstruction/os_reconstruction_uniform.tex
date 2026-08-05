@@ -523,17 +523,20 @@ new endpoint axiom sets & standard triple & exactly
 \lean{[propext, Classical.choice, Quot.sound]} $\times 9$ \\
 \hline
 \multicolumn{3}{l}{\emph{six-term stage (predictions Addendum 623,
-committed before the run):}} \\
-core jobs & 8481 exact (file grew again) & \SLOT{pass 15} \\
-oracle reports & $3026+2 = 3028$ exact & \SLOT{pass 15} \\
-\lean{sorryAx} occurrences & 0 & \SLOT{pass 15} \\
+committed before the run; measured Addendum 624):}} \\
+core jobs & 8481 exact (file grew again) & 8481 \\
+oracle reports & $3026+2 = 3028$ exact & 3028 \\
+\lean{sorryAx} occurrences & 0 & 0 \\
+new endpoint axiom sets & standard triple & exactly the triple
+$\times 2$ \\
 fresh-clone reproduction & bit-identical module, same counts &
 \SLOT{final pass} \\
 \end{tabular}
 \end{center}
 The core count is the tenth consecutive exact count prediction of this
-lane: the module file grew from $12{,}347$ to $20{,}428$ bytes and the
-job total did not move.
+lane; the six-term stage made it eleven: the module file grew from
+$12{,}347$ to $20{,}428$ to $32{,}533$ bytes across the two stages and
+the job total never moved.
 Module: \lean{YangMills/OS/OSReconstructionUniform.lean}, final sha256
 \lean{3b3598ebcfde0ce5f2f6ba358e7e0607473ac66db7afbdd4a8b09e014db7f369}
 ($32{,}533$ bytes), banked at commit \lean{b47dda50e} (measure stage:
