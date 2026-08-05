@@ -32236,3 +32236,28 @@ back to back; a formatting defect, not a proof defect.  Pass 30:
 **ROLES.**  Fabrication + unit design + the disclosed defect: this desk.
 Plane execution: autonomous browser bridge.  Predictions committed before
 measurement.
+
+
+## Addendum 636 (2026-08-05, **OS-R-6 non-vacuity wiring MEASURED: all three
+Add.-635 predictions HELD EXACTLY (core 8481; oracle 3055 = 3050+5;
+sorryAx 0) -- FIFTEENTH consecutive exact count prediction**)
+
+`scripts/osr6_pass31_wiring.py` (committed 73d504f4c, predictions in
+Add. 635 at 7230b97b2):
+
+* Gate `MODULE 70976 b60120d38d06...`.  (The derived unit first carried
+  only the 12-character prefix the plane prints; caught and replaced with
+  the full digest BEFORE firing -- a hash gate on a prefix is not a hash
+  gate.)
+* `CORE_EXIT 0 TOTAL 8481` -- prediction True.  This is the one that was
+  in doubt: the stage adds an arithmetic identity that already exists in
+  `SpatialBirkhoff`, and IMPORTING it could have moved the count.  It was
+  reproved inline instead, precisely so the import set would not move, and
+  the count confirms it did not.
+* `ORACLE_EXIT 0 REPORTS 3055 SORRYAX_REPORTS 0 NONSTANDARD_JOINED 119`
+  -- both predictions True.
+
+Remaining debt: the fresh clone, pinned to this commit.
+
+**ROLES.**  Unit design + predictions: this desk, committed before the
+run.  Plane execution: autonomous browser bridge.  This record: this desk.
