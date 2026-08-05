@@ -1066,3 +1066,12 @@ import YangMills.OS.DobrushinInfiniteState
 -- positive normalized state invariant under the full additive Z^2 action.
 -- The analytic input is still only the visible Dobrushin window above.
 import YangMills.OS.DobrushinCovariantState
+
+-- D-9: the intrinsic real cylinder algebra receives its faithful uniform
+-- norm, is complexified as a star algebra, completed concretely inside the
+-- bounded continuous functions, and carries a positive norm-one C-star
+-- state.  In parallel, arbitrary finite-set Gibbs kernels are positive,
+-- normalized, exterior-local, and satisfy the exact finite-volume DLR tower
+-- identity by an explicit involutive reindexing.  The passage of that tower
+-- identity to the infinite-volume C-star state is a later interface theorem.
+import YangMills.OS.DobrushinFiniteSetDLR

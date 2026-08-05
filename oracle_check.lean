@@ -3421,3 +3421,33 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.infiniteStateValue_nonneg
 #print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.infiniteStateValue_vadd
 #print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.infiniteTranslationInvariantSiteCylinderState
+
+-- D-9, stage A: faithful algebra realization, intrinsic uniform norm, and
+-- contractivity of the infinite-volume state.
+#print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.realizeGlobalAlgHom_injective
+#print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.abs_realizeGlobal_le_uniformNorm
+#print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.uniformNorm_translate
+#print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.abs_infiniteStateValue_le_uniformNorm
+#print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.TranslationInvariantSiteCylinderState.contractive
+
+-- D-9, stage B: faithful complex star representation, concrete C-star
+-- completion, dense local inclusion, and its positive normalized norm-one
+-- extension.
+#print axioms YangMills.OS.Dobrushin.ComplexLocalCylinderAlgebra.realizeGlobalBCFStarAlgHom_injective
+#print axioms YangMills.OS.Dobrushin.ComplexLocalCylinderAlgebra.denseRange_localToQuasilocal
+#print axioms YangMills.OS.Dobrushin.ComplexLocalCylinderAlgebra.quasilocalStateCLM_inclusion
+#print axioms YangMills.OS.Dobrushin.ComplexLocalCylinderAlgebra.quasilocalStateCLM_star_mul_self_nonneg
+#print axioms YangMills.OS.Dobrushin.ComplexLocalCylinderAlgebra.quasilocalStateCLM_nonneg
+#print axioms YangMills.OS.Dobrushin.ComplexLocalCylinderAlgebra.norm_quasilocalStateCLM
+#print axioms YangMills.OS.Dobrushin.ComplexLocalCylinderAlgebra.quasilocalCStarState
+#print axioms YangMills.OS.Dobrushin.ComplexLocalCylinderAlgebra.quasilocalCStarState_map_one
+
+-- D-9, stage C: arbitrary finite-set Gibbs specification and exact
+-- finite-volume DLR/tower identity.  The fixed-point conclusion is derived
+-- by the finiteSetSwap involution, not supplied as an assumption.
+#print axioms YangMills.OS.Dobrushin.finiteSetGibbsKernel_sum_one
+#print axioms YangMills.OS.Dobrushin.finiteSetGibbsKernel_exterior
+#print axioms YangMills.OS.Dobrushin.finiteSetCondExp_exterior
+#print axioms YangMills.OS.Dobrushin.finiteSetCondExp_idem
+#print axioms YangMills.OS.Dobrushin.finiteSetSwap_involutive
+#print axioms YangMills.OS.Dobrushin.expect_finiteSetCondExp
