@@ -2659,7 +2659,7 @@ The carrier is required to be nonempty.  Thus neither zero amplitude nor an
 empty regional space can inhabit the source contract vacuously.
 
 The decay metric is definitionally the source block-scale distance
-`finBoxDist (blockSite scale coarseN x) (blockSite scale coarseN y)`.  A cold
+`finBoxDist (blockSite M (2*Q) x) (blockSite M (2*Q) y)`.  A cold
 seal of the earlier raw-fine-distance version was cancelled before the focal
 completed: the render of CMP99 (3.42) and the rescaling immediately preceding
 CMP96 (2.43) show that the printed exponential is measured on the rescaled

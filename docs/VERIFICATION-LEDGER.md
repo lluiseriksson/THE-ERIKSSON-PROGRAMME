@@ -27648,7 +27648,7 @@ fine-site `finBoxDist`.  The interrupted run therefore supplies no compiler
 evidence and that checkpoint is superseded as a mathematical interface.
 
 The replacement fixes the metric definitionally as
-`finBoxDist (blockSite scale coarseN x) (blockSite scale coarseN y)` in all
+`finBoxDist (blockSite M (2*Q) x) (blockSite M (2*Q) y)` in all
 four components.  It does not accept a caller-supplied metric: in particular,
 neither a constant-zero distance nor a favorable reindexing can inhabit the
 contract.  This correction is load-bearing for the normalized `Q'^*Q'`

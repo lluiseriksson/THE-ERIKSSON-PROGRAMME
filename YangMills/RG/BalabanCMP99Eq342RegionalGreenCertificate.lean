@@ -35,8 +35,7 @@ open scoped RealInnerProductSpace
 
 noncomputable section
 
-variable {scale coarseN Nc : ℕ}
-variable [NeZero scale] [NeZero coarseN] [NeZero Nc]
+variable {m q Nc : ℕ} [NeZero m] [NeZero q] [NeZero Nc]
 
 /-- The source-visible scale vector in CMP99 (3.42). -/
 def cmp99Eq342ScaleVector (ell : ℝ) : Fin 4 → ℝ
@@ -51,9 +50,9 @@ The map is fixed definitionally to the physical block map.  In particular,
 this is neither the raw fine-site distance nor an arbitrary distance supplied
 by a caller. -/
 def cmp99Eq342RescaledBlockDist
-    (scale coarseN : ℕ) [NeZero scale]
-    (x y : FinBox 4 (scale * coarseN)) : ℕ :=
-  finBoxDist (blockSite scale coarseN x) (blockSite scale coarseN y)
+    (m q : ℕ) [NeZero m]
+    (x y : FinBox 4 (m * (2 * q))) : ℕ :=
+  finBoxDist (blockSite m (2 * q) x) (blockSite m (2 * q) y)
 
 /-- Source certificate for the four estimates in CMP99 (3.42).
 
@@ -62,12 +61,12 @@ the same regional covariant differential.  In particular, the certificate
 cannot be inhabited by supplying a different operator with convenient
 bounds. -/
 structure CMP99Eq342RegionalGreenCertificate
-    (Omega : ActiveGaugeRegion 4 (scale * coarseN))
+    (Omega : ActiveGaugeRegion 4 (m * (2 * q)))
     (rho : SUNAdjointModel Nc)
-    (U : PhysicalGaugeBackground 4 (scale * coarseN) Nc)
+    (U : PhysicalGaugeBackground 4 (m * (2 * q)) Nc)
     (spacing : ℝ)
-    (K : GaugeZeroCochain 4 (scale * coarseN) (SUNLieCoord Nc) →L[ℝ]
-      GaugeZeroCochain 4 (scale * coarseN) (SUNLieCoord Nc))
+    (K : GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc))
     (c : ℝ) (hc : 0 < c) (hKcoer : IsCoerciveCLM K c)
     (B0 delta0 ell : ℝ) : Prop where
   B0_pos : 0 < B0
@@ -78,41 +77,41 @@ structure CMP99Eq342RegionalGreenCertificate
     FinitePiLpTypedExponentialKernelBound
       (cmp99RegionalDirichletGreen Omega K hc hKcoer)
       (fun target source : ActiveGaugeRegion.Site Omega =>
-        cmp99Eq342RescaledBlockDist scale coarseN target.1 source.1)
+        cmp99Eq342RescaledBlockDist m q target.1 source.1)
       (B0 * ell ^ 2) delta0
   left_derivative_bound :
     FinitePiLpTypedExponentialKernelBound
       ((cmp99ActiveRegionSourceCovariantD0CLM Omega rho U spacing).comp
         (cmp99RegionalDirichletGreen Omega K hc hKcoer))
-      (fun target : PhysicalBond 4 (scale * coarseN) =>
+      (fun target : PhysicalBond 4 (m * (2 * q)) =>
         fun source : ActiveGaugeRegion.Site Omega =>
-          cmp99Eq342RescaledBlockDist scale coarseN target.1 source.1)
+          cmp99Eq342RescaledBlockDist m q target.1 source.1)
       (B0 * ell) delta0
   right_adjoint_derivative_bound :
     FinitePiLpTypedExponentialKernelBound
       ((cmp99RegionalDirichletGreen Omega K hc hKcoer).comp
         (cmp99ActiveRegionSourceCovariantD0CLM Omega rho U spacing).adjoint)
       (fun target : ActiveGaugeRegion.Site Omega =>
-        fun source : PhysicalBond 4 (scale * coarseN) =>
-          cmp99Eq342RescaledBlockDist scale coarseN target.1 source.1)
+        fun source : PhysicalBond 4 (m * (2 * q)) =>
+          cmp99Eq342RescaledBlockDist m q target.1 source.1)
       (B0 * ell) delta0
   laplacian_bound :
     FinitePiLpTypedExponentialKernelBound
       ((cmp99ActiveRegionSourceCovariantLaplacian Omega rho U spacing).comp
         (cmp99RegionalDirichletGreen Omega K hc hKcoer))
       (fun target source : ActiveGaugeRegion.Site Omega =>
-        cmp99Eq342RescaledBlockDist scale coarseN target.1 source.1)
+        cmp99Eq342RescaledBlockDist m q target.1 source.1)
       B0 delta0
 
 /-- Strict source positivity rules out the zero-amplitude witness while still
 providing the nonnegativity needed by downstream norm estimates. -/
 theorem CMP99Eq342RegionalGreenCertificate.B0_nonneg
-    {Omega : ActiveGaugeRegion 4 (scale * coarseN)}
+    {Omega : ActiveGaugeRegion 4 (m * (2 * q))}
     {rho : SUNAdjointModel Nc}
-    {U : PhysicalGaugeBackground 4 (scale * coarseN) Nc}
+    {U : PhysicalGaugeBackground 4 (m * (2 * q)) Nc}
     {spacing : ℝ}
-    {K : GaugeZeroCochain 4 (scale * coarseN) (SUNLieCoord Nc) →L[ℝ]
-      GaugeZeroCochain 4 (scale * coarseN) (SUNLieCoord Nc)}
+    {K : GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc)}
     {c : ℝ} {hc : 0 < c} {hKcoer : IsCoerciveCLM K c}
     {B0 delta0 ell : ℝ}
     (C : CMP99Eq342RegionalGreenCertificate Omega rho U spacing K c hc
@@ -123,12 +122,12 @@ theorem CMP99Eq342RegionalGreenCertificate.B0_nonneg
 /-- CMP96 (2.43) uses precisely the value and left-derivative components of
 the stronger four-component CMP99 (3.42) package. -/
 theorem CMP99Eq342RegionalGreenCertificate.cmp96Eq243_value_and_derivative
-    {Omega : ActiveGaugeRegion 4 (scale * coarseN)}
+    {Omega : ActiveGaugeRegion 4 (m * (2 * q))}
     {rho : SUNAdjointModel Nc}
-    {U : PhysicalGaugeBackground 4 (scale * coarseN) Nc}
+    {U : PhysicalGaugeBackground 4 (m * (2 * q)) Nc}
     {spacing : ℝ}
-    {K : GaugeZeroCochain 4 (scale * coarseN) (SUNLieCoord Nc) →L[ℝ]
-      GaugeZeroCochain 4 (scale * coarseN) (SUNLieCoord Nc)}
+    {K : GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc)}
     {c : ℝ} {hc : 0 < c} {hKcoer : IsCoerciveCLM K c}
     {B0 delta0 ell : ℝ}
     (C : CMP99Eq342RegionalGreenCertificate Omega rho U spacing K c hc
@@ -136,14 +135,14 @@ theorem CMP99Eq342RegionalGreenCertificate.cmp96Eq243_value_and_derivative
     FinitePiLpTypedExponentialKernelBound
         (cmp99RegionalDirichletGreen Omega K hc hKcoer)
         (fun target source : ActiveGaugeRegion.Site Omega =>
-          cmp99Eq342RescaledBlockDist scale coarseN target.1 source.1)
+          cmp99Eq342RescaledBlockDist m q target.1 source.1)
         (B0 * ell ^ 2) delta0 ∧
       FinitePiLpTypedExponentialKernelBound
         ((cmp99ActiveRegionSourceCovariantD0CLM Omega rho U spacing).comp
           (cmp99RegionalDirichletGreen Omega K hc hKcoer))
-        (fun target : PhysicalBond 4 (scale * coarseN) =>
+        (fun target : PhysicalBond 4 (m * (2 * q)) =>
           fun source : ActiveGaugeRegion.Site Omega =>
-            cmp99Eq342RescaledBlockDist scale coarseN target.1 source.1)
+            cmp99Eq342RescaledBlockDist m q target.1 source.1)
         (B0 * ell) delta0 :=
   ⟨C.value_bound, C.left_derivative_bound⟩
 
