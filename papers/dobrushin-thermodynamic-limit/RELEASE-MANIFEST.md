@@ -14,7 +14,7 @@ immediately following it.
 - Base D-7 release: `daa1b40d940d1f1b2a07de303271b37b6e736121`
 - D-8 Lean source anchor: `6ce506bb6ad627e793485631a12f1271423f2bd4`
 - D-8 source tree: `a65af9a2c13a290948cf5ba2a8b6500cc5097172`
-- Paper/PDF artifact commit: `PAPER_ARTIFACT_COMMIT_PENDING`
+- Paper/PDF artifact commit: `f49c4241d816174e13921cc7fca238a664d3819d`
 - Source delta: 5 files, 1,282 insertions
 - New terminal module: `YangMills.OS.DobrushinCovariantState`
 - Analytic window: `0 <= alpha < 1` and
