@@ -33,8 +33,7 @@ Mathlib pinned to \lean{0764272048\ldots}.  Repository:
 branch \lean{d3-closure}, module anchor commit
 \lean{7230b97b286775781728952d71720902b6e78073}; verification anchor
 \lean{813658de4a1ac5f4365611c444ebf1785ed679cc} (fresh clone, Addendum 637).}}
-\date{2026-08-05 --- complete manuscript, zero live slots across all
-six fabrication stages; submission is the owner's decision}
+\date{2026-08-05}
 
 \begin{document}
 \maketitle
@@ -113,19 +112,29 @@ That uniform input exists in this repository: the Dobrushin corollary
 \lean{dobrushin\_ising\_uniform\_gap} produces, inside the window
 $2\tanh|\beta| + 2\tanh|\gamma| \le \alpha < 1$, a single $m>0$
 bounding the projected transfer operator of the tilted kernel at every
-extent.  This paper's contribution is the \emph{identification}, in
-two stages.  Stage one (Section~\ref{sec:unitary}): the operator that
-bound governs \emph{is} --- unitarily, by the explicit $\sqrt{w}$
-boundary dressing, with no spectral-transport theory --- the transfer
-operator forced on the reconstructed (site-form) theory.  Stage two
-(Section~\ref{sec:measure}): the \emph{unnormalised Gibbs sums
+extent.  This paper's contribution is the \emph{identification}, and
+then the \emph{normalisation}.  First (Section~\ref{sec:unitary}): the
+operator that bound governs \emph{is} --- unitarily, by the explicit
+$\sqrt{w}$ boundary dressing, with no spectral-transport theory --- the
+transfer operator forced on the reconstructed (site-form) theory.
+Second (Section~\ref{sec:measure}): the \emph{unnormalised Gibbs sums
 themselves} are exact matrix elements of that operator's powers ---
 $\lambda^N$ times an inner product, an identity valid at every real
 $\beta$ and every positive weight, with the window entering only when
-the gap is invoked.  The theorems are deliberately cheap: the same
-witnesses as D-6, no new estimate.  Cheapness is the honesty of the
-claim --- the uniformity is real because it is D-6's, and the
-reconstruction adds commuting squares, machine-checked.
+the gap is invoked.  Third (Sections~\ref{sec:sixterm}--\ref{sec:state}):
+dividing by the partition function needs a denominator that does not
+degrade, and the positive cone supplies one where the spectrum cannot,
+which turns the operator gap into decay of the \emph{measure's} connected
+correlator and into an infinite-time limit state that forgets its
+boundary.  Fourth (Section~\ref{sec:ground}): read in the normalisation
+the operator itself provides --- the reversible Markov chain it is --- the
+constant loses its dependence on the extent as well.
+
+The analytic content is deliberately cheap: the same witnesses as D-6, no
+new estimate, no wider window.  Cheapness is the honesty of the claim ---
+the uniformity is real because it is D-6's, and what the reconstruction
+contributes is commuting squares, exact identities, and the right
+normalisation, all machine-checked.
 
 \subsection{Machine-checked prior work, cited before a referee does}
 \label{sec:prior}
@@ -163,13 +172,18 @@ This paper & the $\sqrt{w}$-dressing unitary; the transported
 volume-uniform gap; the \emph{exact} identities
 $\mathrm{gibbsPathSum} = \lambda^N\ip{\hat T^N QA}{QB}$ and
 $Z_N = \lambda^N\ip{\hat T^N Q\mathbf 1}{Q\mathbf 1}$; volume-uniform
-\emph{mixed} clustering with the zero-time case
-(\lean{os\_reconstruction\_measure\_uniform}; core 8481, oracle 3026,
-0 sorry --- measured, Addendum 622) & Wightman
-axioms; continuum limit; $SU(N)$; Clay; a volume-uniform CONSTANT for the
-normalised bound (the rate is uniform in $L$; $C(A,B)$ is not); the
-$N$-uniform denominator floor IS a theorem
-(Sections~\ref{sec:sixterm}--\ref{sec:cone}) \\
+\emph{mixed} clustering with the zero-time case; the positive-cone
+denominator floor, diagonal and off-diagonal, uniform in $N$; the
+normalised Gibbs connected correlator; the infinite-time limit state,
+identified as the vacuum and independent of the positive terminating
+observable; and the reconstructed operator read as a reversible Markov
+chain, whose stationary-state clustering has \emph{both} rate and
+constant free of the extent (final anchor: core 8481, oracle 3055,
+0 sorry, fresh-clone verified) & Wightman axioms; continuum limit;
+$SU(N)$; Clay; the $L\to\infty$ state \emph{itself} --- the constants
+are extent-free, the limit is not constructed (no inclusion maps, no
+compatibility between $\pi_L$ and $\pi_{L+1}$); boundary independence
+beyond strictly positive time-terminations \\
 \end{tabular}
 \end{center}
 
