@@ -193,7 +193,7 @@ theorem cmp99CutoffLaplacianCorrection_one_eq_cmp96SourceSeparatedCoefficient
       cmp96SourceSeparatedCutoffLaplacianCoefficient
         (L := L) (K := K) P depth cell x • phi x := by
   simp only [cmp99CutoffLaplacianCorrection, inv_one, one_smul]
-  rw [Finset.sum_smul]
+  rw [← Finset.sum_smul]
   rfl
 
 /-- The inverse-`K` factor is present before any sum over cells: multiplying
