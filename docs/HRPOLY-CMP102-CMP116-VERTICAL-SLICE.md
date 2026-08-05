@@ -2527,7 +2527,7 @@ the already verified assembler, discharge rows 23--24.
 | 4 | source large-block cutoff specialization | instantiate `h` by the one `CMP95SourceSmoothPartitionProfile`, use the source carrier equality, and rewrite slope times range to the exact `4 * derivBound / M` gain | **sealed** at `de57d879`, run `30997349504`; no counter movement |
 | 5 | ambient-to-regional precision dictionary | realize the full generated active carrier as the literal ambient `FinBox`, transport the generated precision/coercivity and source cutoff through one explicit equivalence, and identify the regional commutator with the reindexed active commutator | **sealed** at `8ac1a1c2`, cold run `31001590888`; no counter movement |
 | 6 | uniform single-cell regional correction | compose the cell commutator with the regional Dirichlet Green and the contractive right cutoff, retaining one explicit cell amplitude | **sealed** at `ddda0475`, cold run `31021829343`; no counter movement |
-| 7 | overlap / Schur / contraction endpoint | sum cells with the already derived overlap `16`, pass the exponential kernel estimate to operator norm, and reduce `norm R' < 1` to one explicit physical defect budget | **reduction sealed** at `ef157f84`, cold run `31028008613`; the scalar budget `< 1` is not attained, so window 15 remains open |
+| 7 | direct source defect estimate CMP99 (3.89) | prove the printed `O(K^-1)` bound for the physical regional defect with the `K^-1` gain present before layer summation and the overlap `16` independent of `K`; derive `norm R' < 1` for sufficiently large `K` | **open**; the former CT + Schur reduction was sealed at `ef157f84` and then closed as a physical route by the no-go at `8494a73f`; it remains diagnostic infrastructure only |
 | 8 | two literal centered-conditioned gap producers | prove `alpha < coercivityConstant` and `2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound` from the physical rates produced by the regional construction | open; the assembler then derives `root_small` and `outer_small` and moves the live count to `22/41` |
 
 The `coercivityConstant` in step 8 is not an opaque positive scalar.  Its
@@ -2541,13 +2541,15 @@ and `qBound` stays inside step 8; it is not an unnamed step 7.5 and must not
 replace the physical coercivity producer by a free constant.
 
 Thus window 15 is necessary but is not silently identified with rows 23--24.
-The path has a declared last element.  Step 5 has now frozen the last design
-dictionary; steps 6--8 are quantitative estimates over that fixed object.
+The path has a declared last element.  Step 5 has frozen the last design
+dictionary.  Step 6 remains reusable regional infrastructure; step 7 is now
+the source-analytic estimate (3.89), not another generic CT + Schur majorant;
+step 8 consumes the resulting physical rates.
 
-The `coercivityConstant` dependence also enters the step-7 budget literally:
-the generated regional Green amplitude uses the transported coercivity of the
-same physical precision.  Therefore neither the Poincare cost `CP` nor its
-block-ratio dependence may be absorbed into an unnamed constant before step 8.
+The `coercivityConstant` dependence enters both the regional Green input and
+step 8 literally.  The direct (3.89) producer must keep the Poincare cost
+`CP(L)` separate from the independently large `K`; neither may be absorbed
+into an unnamed constant.
 
 **Elaboration battle note.**  Physical specializations of the generated
 PiLp tower must pin the carrier, fibre, and source/target index types in their
@@ -2674,10 +2676,14 @@ The internal `SHA256SUMS` manifest was independently rechecked and matched all
 This is a no-go for the **majorant**, not for the physical defect operator:
 it proves neither `1 <= norm R'` nor failure of the printed CMP99
 contraction.  The obstruction comes from identifying the RG block ratio with
-the source's independently large regional parameter.  The source-faithful
-replacement keeps the generated tower and its Poincare cost at fixed ratio
-`L`, introduces a separate regional parameter `K`, and targets the exact
-gain `4 * derivBound / K`.  The later CMP99 Theorem-3.15 condition coupling
+the source's independently large regional parameter.  The partition/cutoff
+infrastructure for the source-faithful replacement keeps the generated tower
+and its Poincare cost at fixed ratio `L`, introduces a separate regional
+parameter `K`, and proves the exact cutoff gain `4 * derivBound / K` before
+any layer sum.  Its active-cell theorem has the same bound `16` for every
+`K`.  These facts are inputs to, not substitutes for, a direct formalization
+of CMP99 (3.89).  Reassembling another CT + Schur majorant is not an accepted
+repair of step 7.  The later CMP99 Theorem-3.15 condition coupling
 the printed large parameter to `alpha_0` remains a separate covariance/source
 dictionary obligation.  Window 15 therefore remains open, and the live
 counters remain exactly `20/41` and `TermSource = 0`.

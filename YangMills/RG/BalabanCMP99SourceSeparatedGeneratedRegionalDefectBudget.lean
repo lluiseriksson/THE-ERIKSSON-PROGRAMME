@@ -7,20 +7,23 @@ import YangMills.RG.BalabanCMP99SourceGeneratedRegionalDefectContraction
 import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoff
 
 /-!
-# PRE-VALIDATION: scalar regional defect budget with separated source scales
+# PRE-VALIDATION: auxiliary separated-scale Schur budget
 
 The source below is present, but its `.olean` has not yet been materialized
 and its results have not yet been verified by the Lean compiler.
 
-This module propagates the independent large-block factor through the complete
-step-7 scalar budget.  The Green rate, coercivity and shell sums depend on the
-fixed RG ratio `L`; the cutoff budget contributes the only `K^-1` factor.
-Consequently the full scalar Schur majorant is exactly `numerator / K` and is
-below one for a sufficiently large integer `K`.
+This module records the algebra obtained by propagating the independent
+large-block factor through the old CT + Schur scalar budget.  The Green rate,
+coercivity and shell sums depend on the fixed RG ratio `L`; the cutoff budget
+contributes the only `K^-1` factor.  Consequently this auxiliary majorant is
+exactly `numerator / K` and is below one for a sufficiently large integer
+`K`.
 
-No operator is constructed here.  In particular, the existence theorem below
-does not attain window 15 until the separated ambient/regional dictionary and
-the corresponding norm bound have been proved for the same `K`.
+This is **not** the accepted physical repair of step 7.  The physical producer
+must formalize the direct `O(K^-1)` estimate printed in CMP99 (3.89), with the
+gain present before the layer sums and with the overlap `16` independent of
+`K`.  No operator is constructed here, and these auxiliary scalar theorems
+must not be used to claim attainment of window 15.
 -/
 
 namespace YangMills.RG

@@ -27547,3 +27547,19 @@ independently large regional parameter; the source-faithful continuation
 keeps `CP(L)` at fixed RG ratio and obtains the cutoff gain through a separate
 `K^-1`.  Window 15 remains open, rows 23--24 remain undischarged, and the
 live counters remain exactly `20/41` and zero.
+
+## Addendum 560 (2026-08-05, **post-no-go route correction; no new compiler result; 20/41 unchanged**)
+
+The finite route to window 15 now names the direct source estimate CMP99
+(3.89) as step 7.  The former CT + Schur reduction remains a verified
+diagnostic and its impossibility theorem remains a verified no-go, but neither
+is the physical repair.  The accepted replacement must introduce the
+independent regional parameter `K`, obtain the `K^-1` gain before layer
+summation, and retain the same active-cell overlap bound `16` for every `K`.
+
+The source-separated partition, cutoff and ambient dictionary remain
+PRE-VALIDATION infrastructure.  The separately written two-scale CT + Schur
+scalar algebra has been classified as auxiliary and removed from the physical
+validation queue; it must not be used to claim attainment of window 15.  This
+is a route correction only: rows 23--24 remain open, the live count remains
+exactly `20/41`, and `TermSource` remains uninhabited.
