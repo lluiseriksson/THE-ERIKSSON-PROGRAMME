@@ -31855,3 +31855,31 @@ banked here.
 
 **ROLES.**  Fabrication + unit design: this desk.  Plane execution:
 autonomous browser bridge.  Predictions committed before measurement.
+
+
+## Addendum 627 (2026-08-05, **OS-R-3 cone wiring MEASURED: all three
+Add.-626 predictions HELD EXACTLY (core 8481; oracle 3035 = 3028+7;
+sorryAx 0) -- TWELFTH consecutive exact count prediction**)
+
+`scripts/osr3_pass19_wiring.py` (committed f0981ac42, predictions
+registered in Add. 626 at 6ef9aee03) ran on the warm high-RAM runtime.
+Read from the run output:
+
+* Gate: `MODULE 43213 2f2f4cf95eb9...` (byte-identical to the banked
+  blob); `ORACLE_STATIC_LINES 3062`.
+* `CORE_EXIT 0 TOTAL 8481` -- `PREDICTION_CORE_8481 True`.  The module
+  file has now grown 12347 -> 20428 -> 32533 -> 43213 bytes across
+  three stages and the core job count has never moved.
+* `ORACLE_EXIT 0 REPORTS 3035 SORRYAX_REPORTS 0 NONSTANDARD_JOINED
+  119` -- `PREDICTION_ORACLE_3035 True`, `PREDICTION_SORRYAX_0 True`;
+  the 119 are the documented subset-of-triple class (Add. 619).
+* All SEVEN new endpoints on the exact standard triple:
+  `tiltKernel_pos`, `vacOf_pos`, `opOf_pow_ge_smul_fix`,
+  `inner_pow_floor`, `abs_scaled_cross_le`, `gibbs_six_term_bound`,
+  `os_reconstruction_normalised_clustering`.
+
+Remaining verification debt: the fresh clone, pinned to this commit.
+
+**ROLES.**  Unit design + predictions: this desk, committed before the
+run.  Plane execution: autonomous browser bridge.  This record: this
+desk.
