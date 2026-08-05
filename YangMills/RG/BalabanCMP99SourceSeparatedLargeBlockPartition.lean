@@ -59,8 +59,9 @@ theorem cmp99SourceSeparatedLargeBlockSide_self
       cmp99SourceRegionalLargeBlockSide L depth := by
   unfold cmp99SourceSeparatedLargeBlockSide
     cmp99SourceRegionalLargeBlockSide
-  rw [show depth + 2 = (depth + 1) + 1 by omega, pow_succ]
-  ac_rfl
+  rw [show depth + 2 = (depth + 1) + 1 by omega]
+  simp only [pow_succ]
+  ring
 
 /-- The same diagonal specialization holds for the cutoff spacing. -/
 theorem cmp99SourceSeparatedLargeBlockCutoffScale_self
