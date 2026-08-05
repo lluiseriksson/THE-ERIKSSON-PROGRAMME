@@ -38,6 +38,20 @@ noncomputable section
 variable {M Q Nc : ℕ}
 variable [NeZero M] [NeZero Q] [NeZero Nc]
 
+private instance instNeZeroSourceRegionalLargeBlockSide
+    (M depth : ℕ) [NeZero M] :
+    NeZero (cmp99SourceRegionalLargeBlockSide M depth) :=
+  ⟨by
+    unfold cmp99SourceRegionalLargeBlockSide
+    exact (pow_pos (NeZero.pos M) (depth + 2)).ne'⟩
+
+private instance instNeZeroSourceRegionalAmbientSide
+    (M Q depth : ℕ) [NeZero M] [NeZero Q] :
+    NeZero (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) :=
+  ⟨(Nat.mul_pos
+    (pow_pos (NeZero.pos M) (depth + 2))
+    (Nat.mul_pos (by omega) (NeZero.pos Q))).ne'⟩
+
 /-- Every member of an exact real square partition is pointwise contractive.
 This is derived from `square_sum`; no second cutoff bound is stored. -/
 theorem CMP99RegionalFineSquarePartition.norm_value_le_one
@@ -54,6 +68,40 @@ theorem CMP99RegionalFineSquarePartition.norm_value_le_one
   rw [Real.norm_eq_abs]
   apply (sq_le_sq₀ (abs_nonneg _) zero_le_one).mp
   simpa only [sq_abs, one_pow] using hterm
+
+/-- The four-dimensional shell estimate is uniform in the side of the
+periodic box.  Keeping that side arbitrary avoids silently rewriting a
+physical side `M^(depth+2) * (2*Q)` as a box of the special form `2*Q'`. -/
+theorem finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound_any
+    {N : ℕ} [NeZero N] (source : FinBox 4 N)
+    {sigma : ℝ} (hsigma : 0 < sigma) :
+    ∑ target : FinBox 4 N,
+      Real.exp (-(sigma * (finBoxDist target source : ℝ))) ≤
+        cmp99OmegaSiteExpSumBound sigma := by
+  unfold cmp99OmegaSiteExpSumBound
+  have hN : ∀ k,
+      ((Finset.univ.filter
+        (fun target : FinBox 4 N =>
+          finBoxDist target source = k)).card : ℝ) ≤
+        (((2 * k + 1) ^ 4 : ℕ) : ℝ) := by
+    intro k
+    exact_mod_cast (Finset.card_le_card
+      (show Finset.univ.filter
+          (fun target : FinBox 4 N => finBoxDist target source = k) ⊆
+        Finset.univ.filter (fun target => finBoxDist source target ≤ k) by
+        intro target htarget
+        rw [Finset.mem_filter] at htarget ⊢
+        exact ⟨htarget.1, by simpa [finBoxDist_comm] using htarget.2.le⟩)).trans
+          (finBoxDist_ball_card_le_two_mul_add_one_pow source k)
+  have hsummable : Summable
+      (fun k : ℕ => (((2 * k + 1) ^ 4 : ℕ) : ℝ) *
+        Real.exp (-sigma * (k : ℝ))) := by
+    simpa only [neg_mul] using summable_cmp99OmegaSiteExpSumBound hsigma
+  simpa only [neg_mul] using
+    (lattice_exp_sum_le_of_shell
+      (fun target : FinBox 4 N => finBoxDist target source)
+      (σ := sigma) (fun k => (((2 * k + 1) ^ 4 : ℕ) : ℝ))
+      hN hsummable)
 
 /-- Exponential localization of an ambient kernel descends exactly to its
 Dirichlet compression. -/
@@ -137,7 +185,8 @@ theorem cmp99RegionalDirichletGreen_exponentialKernelBound
   · exact isCoerciveCLM_cmp99RegionalDirichletPrecision Omega K hKcoer
   · exact cmp99RegionalDirichletPrecision_comp_green Omega K hc hKcoer
   · intro target
-    exact activeGaugeRegion_finBoxDist_exp_sum_le Omega target (by positivity)
+    exact activeGaugeRegion_finBoxDist_exp_sum_le Omega target
+      (div_pos hK.2.1 (by norm_num))
 
 /-- Zero extension of a regional exponentially localized kernel preserves
 the same amplitude and rate on the ambient metric. -/
@@ -313,6 +362,40 @@ noncomputable def cmp99SourceGeneratedPhysicalRegionalGreenRate
   finitePiLpExponentialInverseDecayRate A decay
     (cmp99OmegaSiteExpSumBound (decay / 4)) c
 
+/-- Positivity of the canonical physical regional Green rate follows from
+the one ambient Combes--Thomas rate and the generated coercivity budget. -/
+theorem cmp99SourceGeneratedPhysicalRegionalGreenRate_pos
+    (M depth : ℕ) [NeZero M] {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    0 < cmp99SourceGeneratedPhysicalRegionalGreenRate
+      M depth spacing epsilon := by
+  let decay := cmp99SourceGeneratedCombesThomasRate
+    4 M depth spacing epsilon
+  let A := cmp99SourceGeneratedPhysicalAmbientPrecisionDecayAmplitude
+    M depth spacing epsilon decay
+  let S := cmp99OmegaSiteExpSumBound (decay / 4)
+  let c := cmp99SourceGeneratedCoercivity
+    4 M (depth + 1) spacing epsilon
+  have hdecay : 0 < decay :=
+    cmp99SourceGeneratedCombesThomasRate_pos
+      4 M depth hspacing hsmall
+  have hA : 0 ≤ A := by
+    dsimp [A, cmp99SourceGeneratedPhysicalAmbientPrecisionDecayAmplitude]
+    exact mul_nonneg
+      (cmp99SourceGeneratedPhysicalPrecisionUpperBound_pos
+        4 M (depth + 1) (epsilon := epsilon) hspacing).le
+      (Real.exp_pos _).le
+  have hS : 0 ≤ S := by
+    dsimp [S, cmp99OmegaSiteExpSumBound]
+    exact tsum_nonneg fun _ =>
+      mul_nonneg (Nat.cast_nonneg _) (Real.exp_pos _).le
+  have hc : 0 < c :=
+    cmp99SourceGeneratedCoercivity_pos 4 M depth hspacing hsmall
+  change 0 < min (decay / 2) (c * decay / (8 * (A * S + 1)))
+  exact lt_min (by positivity) (by positivity)
+
 /-- Explicit amplitude of one physical regional correction before the final
 source-overlap sum. -/
 noncomputable def cmp99SourceGeneratedPhysicalRegionalCorrectionAmplitude
@@ -436,8 +519,8 @@ theorem cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound
     M depth spacing epsilon
   let S := cmp99OmegaSiteExpSumBound (rate / 2)
   have hrate : 0 < rate := by
-    unfold cmp99SourceGeneratedPhysicalRegionalGreenRate
-    exact lt_min (by positivity) (by positivity)
+    exact cmp99SourceGeneratedPhysicalRegionalGreenRate_pos
+      M depth hspacing hsmall
   have hS : 0 ≤ S := by
     dsimp [S, cmp99OmegaSiteExpSumBound]
     exact tsum_nonneg fun _ =>
@@ -496,9 +579,13 @@ theorem cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound
       (fun target middle source => finBoxDist_triangle target middle source)
       (by positivity) (by linarith) hS
       (fun target =>
-        finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound target
+        finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound_any target
           (show 0 < rate / 2 by positivity))
-      _ _ hcomm hgreen
+      (cmp99RegionalSquarePrecisionCommutator
+        (M := cmp99SourceRegionalLargeBlockSide M depth)
+        (Q := Q) (g := SUNLieCoord Nc) partition cell K)
+      (cmp99RegionalExtendedDirichletGreen
+        (regions cell) K hc hKcoer) hcomm hgreen
   have hcut :=
     finitePiLpTypedExponentialKernelBound_comp_scalarMultiplier_right
       (fun x => partition.value cell x)

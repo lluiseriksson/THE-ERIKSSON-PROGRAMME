@@ -8,6 +8,7 @@ materialized, and its declarations have not yet been compiler-verified.
 -/
 
 #print axioms YangMills.RG.CMP99RegionalFineSquarePartition.norm_value_le_one
+#print axioms YangMills.RG.finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound_any
 #print axioms YangMills.RG.cmp99RegionalDirichletPrecision_exponentialKernelBound
 #print axioms YangMills.RG.cmp99RegionalDirichletGreen_exponentialKernelBound
 #print axioms YangMills.RG.cmp99RegionalExtendedDirichletGreen_exponentialKernelBound
@@ -16,6 +17,7 @@ materialized, and its declarations have not yet been compiler-verified.
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalCell
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalCell_hasFiniteRangeMargin
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalGreenRate
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalGreenRate_pos
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalCorrectionAmplitude
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalExtendedGreen_exponentialKernelBound
 #print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalCorrection_exponentialKernelBound
