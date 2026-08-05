@@ -1060,3 +1060,9 @@ import YangMills.OS.DobrushinCorollary
 -- 2*tanh|beta| + 2*tanh|gamma| <= alpha < 1; no KP premise is imported.
 import YangMills.OS.DobrushinThermodynamicLimit
 import YangMills.OS.DobrushinInfiniteState
+
+-- D-8: intrinsic finite-site cylinders on Z^2, quotient by equality of the
+-- represented global function, exact periodic translation symmetry, and the
+-- positive normalized state invariant under the full additive Z^2 action.
+-- The analytic input is still only the visible Dobrushin window above.
+import YangMills.OS.DobrushinCovariantState

@@ -3411,3 +3411,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.Dobrushin.abs_centeredLocal_sub_perturbed_le
 #print axioms YangMills.OS.Dobrushin.tendsto_centeredPerturbedGibbsExpectation
 #print axioms YangMills.OS.Dobrushin.tendsto_centeredPeriodicGibbsExpectation
+
+-- D-8: algebraic direct limit and full Z^2 covariance.
+#print axioms YangMills.OS.Dobrushin.SiteCylinderPresentation.liftCenteredObservable_toCenteredKernelAt
+#print axioms YangMills.OS.Dobrushin.expect_periodic_torusShiftX
+#print axioms YangMills.OS.Dobrushin.expect_periodic_torusShiftY
+#print axioms YangMills.OS.Dobrushin.SiteCylinderPresentation.infiniteValue_eq_of_equivalent
+#print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.infiniteStateValue_add
+#print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.infiniteStateValue_nonneg
+#print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.infiniteStateValue_vadd
+#print axioms YangMills.OS.Dobrushin.LocalCylinderAlgebra.infiniteTranslationInvariantSiteCylinderState
