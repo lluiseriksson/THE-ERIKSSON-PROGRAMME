@@ -27656,7 +27656,30 @@ species, because sources in one terminal block have the same coarse label;
 using raw fine distance would introduce an artificial exponential loss across
 that block.
 
-The repaired module and audit remain PRE-VALIDATION until a fresh compiler
-run succeeds.  No part of CMP99 (3.89), `norm R' < 1`, rows 23--24, or a
-`TermSource` inhabitant follows from this source correction.  Window 15 is
-still unattained and the live counters remain exactly `20/41` and zero.
+The repaired source checkpoint
+`f08109f46eb3e41e25716f9156ee314b1760f7e9` passed cold GitHub Actions run
+`31053742585` (workflow checkpoint
+`e0777c4533da3c06698e39e86bf65d91f06f30a2`).  The run recorded
+`COLD_MODE=true`; project-cache restoration and saving were both skipped.
+Lean was the official `v4.29.0-rc6` asset and Mathlib was exactly
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T22:44:08Z` to `23:08:36Z`, completed with
+`Build completed successfully (8508 jobs).`, and exited zero.  The audit ran
+from `23:08:36Z` to `23:08:50Z` and exited zero.  Its twelve declarations
+depend exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The independently downloaded evidence archive has SHA-256
+`924b257e900c5dc200ab7163c5324bc07aa0d1d73c7948bd97bb11e73b1d1dcf`.
+The axiom JSON has SHA-256
+`316fa78f2b0fe174ced7f9f960ec372d1f7917fb34369f72d50fbe942be3e73d`;
+the stage ledger has SHA-256
+`bdddb5e4cfc75881975d7238a1f13bfada7f353221658ff2ef677875d3f8aa76`.
+Every entry of the internal `SHA256SUMS` manifest was independently rehashed
+and matched.
+
+This seal closes only the source-facing (3.42) prerequisite.  No part of
+CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource` inhabitant follows
+from it.  Window 15 is still unattained and the live counters remain exactly
+`20/41` and zero.

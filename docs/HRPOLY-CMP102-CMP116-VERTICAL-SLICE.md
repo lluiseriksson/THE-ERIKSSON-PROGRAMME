@@ -2646,7 +2646,7 @@ contraction, rows 23--24, or a terminal field.  Window 15 therefore remains
 compatible but unattained, the live producer count remains exactly `20/41`,
 and `TermSource = 0`.
 
-### Step 7.1 regional-Green source interface (PRE-VALIDATION)
+### Step 7.1 regional-Green source interface (SEALED)
 
 `BalabanCMP99Eq342RegionalGreenCertificate` records the one source-facing
 analytic input used by the direct route.  Its operator is definitionally the
@@ -2668,14 +2668,26 @@ source theorem and would introduce an artificial exponential loss in the
 normalized `Q'^*Q'` species.  The metric is not a caller-supplied parameter, so
 the correction cannot be inhabited by choosing a degenerate distance.
 
+Exact source checkpoint `f08109f46eb3e41e25716f9156ee314b1760f7e9`
+passed cold GitHub Actions run `31053742585` with `COLD_MODE=true`; no project
+`.lake/build` cache was restored or saved.  The focal completed 8,508 jobs,
+the audit exited zero, and all twelve declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.  The downloaded evidence archive
+has SHA-256
+`924b257e900c5dc200ab7163c5324bc07aa0d1d73c7948bd97bb11e73b1d1dcf`;
+its axiom JSON has SHA-256
+`316fa78f2b0fe174ced7f9f960ec372d1f7917fb34369f72d50fbe942be3e73d`
+and its stage ledger has SHA-256
+`bdddb5e4cfc75881975d7238a1f13bfada7f353221658ff2ef677875d3f8aa76`.
+Every entry of the internal manifest was independently rehashed and matched.
+
 This interface deliberately does not derive (3.42) from the existing
 `2 / coercivity` Combes--Thomas estimate.  Doing so would import the
 Poincare/coercivity wall into the direct (3.89) constant and recreate the
 route already closed by the depth-zero no-go.  `B0` and `delta0` therefore
 remain the named Theorem-3.1 source input until their physical producer is
-formalized.  The interface itself is written but NOT CHECKED: it does not yet
-count as a sealed prerequisite, attain window 15, move `20/41`, or inhabit a
-`TermSource`.
+formalized.  This seal closes only prerequisite 7.1: it does not attain window
+15, move `20/41`, or inhabit a `TermSource`.
 
 ### Step 5 ambient dictionary (SEALED)
 

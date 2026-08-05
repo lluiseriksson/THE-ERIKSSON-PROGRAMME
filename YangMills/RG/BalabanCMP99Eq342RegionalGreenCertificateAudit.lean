@@ -1,9 +1,7 @@
 import YangMills.RG.BalabanCMP99Eq342RegionalGreenCertificate
 
-/-!
-PRE-VALIDATION: this source is present in the branch, its `.olean` has not
-yet been materialized, and the result has not yet been compiler-verified.
--/
+/-! Cold-audited at source checkpoint `f08109f46eb3e41e25716f9156ee314b1760f7e9`
+in GitHub Actions run `31053742585`. -/
 
 #print axioms YangMills.RG.cmp99Eq342ScaleVector
 #print axioms YangMills.RG.cmp99Eq342RescaledBlockDist

@@ -11,8 +11,10 @@ import YangMills.RG.FinitePiLpTypedKernel
 /-!
 # CMP99 (3.42): the four local regional-Green estimates
 
-PRE-VALIDATION: this source is present in the branch, its `.olean` has not
-yet been materialized, and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`f08109f46eb3e41e25716f9156ee314b1760f7e9` by cold GitHub Actions run
+`31053742585`.  The focal completed 8,508 jobs and all twelve audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP99 Theorem 3.1, equation (3.42), printed p. 397, bounds four actions of
 one and the same localized Green: `G'`, `D G'`, `G' D*`, and `Delta G'`.
