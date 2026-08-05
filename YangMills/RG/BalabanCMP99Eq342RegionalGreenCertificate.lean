@@ -50,10 +50,8 @@ structure CMP99Eq342RegionalGreenCertificate
     (rho : SUNAdjointModel Nc)
     (U : PhysicalGaugeBackground 4 (m * (2 * q)) Nc)
     (spacing : ℝ)
-    (K : CMP99RegionalAmbientZeroField (M := m) (Q := q)
-      (g := SUNLieCoord Nc) →L[ℝ]
-      CMP99RegionalAmbientZeroField (M := m) (Q := q)
-        (g := SUNLieCoord Nc))
+    (K : GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc))
     (c : ℝ) (hc : 0 < c) (hKcoer : IsCoerciveCLM K c)
     (B0 delta0 ell : ℝ) : Prop where
   B0_nonneg : 0 ≤ B0
@@ -96,10 +94,8 @@ theorem CMP99Eq342RegionalGreenCertificate.cmp96Eq243_value_and_derivative
     {rho : SUNAdjointModel Nc}
     {U : PhysicalGaugeBackground 4 (m * (2 * q)) Nc}
     {spacing : ℝ}
-    {K : CMP99RegionalAmbientZeroField (M := m) (Q := q)
-      (g := SUNLieCoord Nc) →L[ℝ]
-      CMP99RegionalAmbientZeroField (M := m) (Q := q)
-        (g := SUNLieCoord Nc)}
+    {K : GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4 (m * (2 * q)) (SUNLieCoord Nc)}
     {c : ℝ} {hc : 0 < c} {hKcoer : IsCoerciveCLM K c}
     {B0 delta0 ell : ℝ}
     (C : CMP99Eq342RegionalGreenCertificate Omega rho U spacing K c hc
