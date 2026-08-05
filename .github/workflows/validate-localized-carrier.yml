@@ -1,4 +1,4 @@
-name: Seal generated physical large-block cutoff
+name: Diagnose generated physical ambient dictionary
 
 on:
   workflow_dispatch:
@@ -12,13 +12,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: de57d8790caaab5d5177b59a76f9057901da8c43
+  SOURCE_SHA: a2532b1a91bfff09a7d5219e490b8ca43696eb32
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  generated-physical-large-block-cutoff:
+  generated-physical-ambient-dictionary:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -77,6 +77,14 @@ jobs:
           test "$mathlib" = "$EXPECTED_MATHLIB"
           lake exe cache get 2>&1 | tee evidence/cache-get.log
 
+      - name: Restore project build cache for diagnosis
+        uses: actions/cache/restore@v4
+        with:
+          path: .lake/build
+          key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          restore-keys: |
+            cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
+
       - name: Run focal queue stop on first error
         shell: bash
         run: |
@@ -99,12 +107,20 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage generated_physical_large_block_cutoff_focal \
-            lake build YangMills.RG.BalabanCMP99SourceGeneratedPhysicalLargeBlockCutoff
-          run_stage generated_physical_large_block_cutoff_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedPhysicalLargeBlockCutoffAudit.lean
+          run_stage generated_physical_ambient_dictionary_focal \
+            lake build YangMills.RG.BalabanCMP99SourceGeneratedPhysicalAmbientDictionary
+          run_stage generated_physical_ambient_dictionary_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedPhysicalAmbientDictionaryAudit.lean
 
-      - name: Verify axiom gates and package cold-seal evidence
+      - name: Save project build cache after diagnosis
+        if: always()
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: .lake/build
+          key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+
+      - name: Verify axiom gates and package diagnostic evidence
         shell: bash
         run: |
           set -euo pipefail
@@ -115,7 +131,7 @@ jobs:
           import re
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
-          audits = {"generated_physical_large_block_cutoff_audit.log": 7}
+          audits = {"generated_physical_ambient_dictionary_audit.log": 11}
           result = {}
           for name, expected in audits.items():
               text = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -145,16 +161,16 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > generated-physical-large-block-cutoff-evidence.tar.gz
-          sha256sum generated-physical-large-block-cutoff-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > generated-physical-ambient-dictionary-evidence.tar.gz
+          sha256sum generated-physical-ambient-dictionary-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: generated-physical-large-block-cutoff-${{ env.SOURCE_SHA }}
+          name: generated-physical-ambient-dictionary-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            generated-physical-large-block-cutoff-evidence.tar.gz
+            generated-physical-ambient-dictionary-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
