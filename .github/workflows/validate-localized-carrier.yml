@@ -1,4 +1,4 @@
-name: Validate centered joint smallness registry
+name: Validate regional CMP99 (3.88) prerequisites
 
 on:
   workflow_dispatch:
@@ -12,13 +12,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: c4beb733a1df50ded144c83c390de35d4cfa17ef
+  SOURCE_SHA: 837040284f5ce1d358d42eb8f6c01689829db29b
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  centered-smallness:
+  regional-three88-prerequisites:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -99,10 +99,38 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage centered_smallness_focal \
-            lake build YangMills.RG.BalabanCMP116CenteredConditionedSmallnessCompatibility
-          run_stage centered_smallness_audit \
-            lake env lean YangMills/RG/BalabanCMP116CenteredConditionedSmallnessCompatibilityAudit.lean
+          run_stage periodic_active_cell_overlap_focal \
+            lake build YangMills.RG.BalabanCMP95PeriodicActiveCellOverlap
+          run_stage periodic_active_cell_overlap_audit \
+            lake env lean YangMills/RG/BalabanCMP95PeriodicActiveCellOverlapAudit.lean
+          run_stage periodic_cutoff_slope_focal \
+            lake build YangMills.RG.BalabanCMP95PeriodicCutoffSlope
+          run_stage periodic_cutoff_slope_audit \
+            lake env lean YangMills/RG/BalabanCMP95PeriodicCutoffSlopeAudit.lean
+          run_stage regional_fine_partition_focal \
+            lake build YangMills.RG.BalabanCMP99SourceGeneratedRegionalFinePartition
+          run_stage regional_fine_partition_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedRegionalFinePartitionAudit.lean
+          run_stage regional_fine_slope_focal \
+            lake build YangMills.RG.BalabanCMP99SourceGeneratedRegionalFineSlope
+          run_stage regional_fine_slope_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedRegionalFineSlopeAudit.lean
+          run_stage regional_fine_scale_nogo_focal \
+            lake build YangMills.RG.BalabanCMP99SourceRegionalFineScaleNoGo
+          run_stage regional_fine_scale_nogo_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceRegionalFineScaleNoGoAudit.lean
+          run_stage typed_scalar_commutator_row_focal \
+            lake build YangMills.RG.FinitePiLpTypedScalarCommutatorWeightedRow
+          run_stage typed_scalar_commutator_row_audit \
+            lake env lean YangMills/RG/FinitePiLpTypedScalarCommutatorWeightedRowAudit.lean
+          run_stage regional_green_neumann_focal \
+            lake build YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
+          run_stage regional_green_neumann_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceRegionalGreenNeumannAudit.lean
+          run_stage regional_precision_commutator_focal \
+            lake build YangMills.RG.BalabanCMP99SourceRegionalGaugePrecisionCommutator
+          run_stage regional_precision_commutator_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceRegionalGaugePrecisionCommutatorAudit.lean
 
       - name: Verify axiom gates and seal evidence
         shell: bash
@@ -115,7 +143,16 @@ jobs:
           import re
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
-          audits = {"centered_smallness_audit.log": 8}
+          audits = {
+              "periodic_active_cell_overlap_audit.log": 6,
+              "periodic_cutoff_slope_audit.log": 8,
+              "regional_fine_partition_audit.log": 3,
+              "regional_fine_slope_audit.log": 2,
+              "regional_fine_scale_nogo_audit.log": 3,
+              "typed_scalar_commutator_row_audit.log": 2,
+              "regional_green_neumann_audit.log": 11,
+              "regional_precision_commutator_audit.log": 1,
+          }
           result = {}
           for name, expected in audits.items():
               text = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -145,16 +182,16 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > centered-smallness-evidence.tar.gz
-          sha256sum centered-smallness-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > regional-three88-evidence.tar.gz
+          sha256sum regional-three88-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: centered-smallness-${{ env.SOURCE_SHA }}
+          name: regional-three88-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            centered-smallness-evidence.tar.gz
+            regional-three88-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
