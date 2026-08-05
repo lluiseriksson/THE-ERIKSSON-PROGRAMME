@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 2bcbcde0cd3a3e7e64c1d79a853a844328fadb51
+  SOURCE_SHA: 648139497fa4bb791c4e35a313220300713fc21d
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -78,7 +78,7 @@ jobs:
           lake exe cache get 2>&1 | tee evidence/cache-get.log
 
       - name: Restore project build cache
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: .lake/build
           key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
@@ -111,6 +111,14 @@ jobs:
             lake build YangMills.RG.BalabanCMP99SourceCovariantLaplacianCutoffIdentity
           run_stage covariant_laplacian_cutoff_audit \
             lake env lean YangMills/RG/BalabanCMP99SourceCovariantLaplacianCutoffIdentityAudit.lean
+
+      - name: Save project build cache
+        if: always()
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: .lake/build
+          key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
 
       - name: Verify axiom gates and seal evidence
         shell: bash
