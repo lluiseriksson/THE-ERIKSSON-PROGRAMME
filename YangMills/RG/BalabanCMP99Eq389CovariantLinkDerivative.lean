@@ -64,7 +64,7 @@ theorem norm_covariant_reverse_difference_eq
     _ = ‖covariantD0CLM rho U phi
         ((FinBox.shiftBack x i, i) : PhysicalBond 4 N)‖ := by
       simp only [covariantD0CLM_apply]
-      rw [FinBox.shiftBack_shift]
+      rw [FinBox.shift_shiftBack]
       rfl
 
 /-- Direct pointwise estimate for the first species of CMP99 (3.88).
