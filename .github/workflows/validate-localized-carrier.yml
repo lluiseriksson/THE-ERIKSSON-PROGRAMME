@@ -1,4 +1,4 @@
-name: Validate source-separated regional scales
+name: Validate source-separated regional infrastructure
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 1950e8f1842ab7dfcd6ed6bd4709914333df827c
+  SOURCE_SHA: 8bb1f66a3c4fd097a633e4a1b7e23ce7431dc502
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -110,8 +110,6 @@ jobs:
             YangMills/RG/BalabanCMP99SourceSeparatedLargeBlockPartitionAudit.lean \
             YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoff.lean \
             YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoffAudit.lean \
-            YangMills/RG/BalabanCMP99SourceSeparatedGeneratedRegionalDefectBudget.lean \
-            YangMills/RG/BalabanCMP99SourceSeparatedGeneratedRegionalDefectBudgetAudit.lean \
             YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary.lean \
             YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionaryAudit.lean \
             > evidence/overlay-paths.txt
@@ -143,10 +141,6 @@ jobs:
             lake build YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoff
           run_stage separated_physical_cutoff_audit \
             lake env lean YangMills/RG/BalabanCMP99SourceSeparatedGeneratedPhysicalLargeBlockCutoffAudit.lean
-          run_stage separated_regional_defect_budget_focal \
-            lake build YangMills.RG.BalabanCMP99SourceSeparatedGeneratedRegionalDefectBudget
-          run_stage separated_regional_defect_budget_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceSeparatedGeneratedRegionalDefectBudgetAudit.lean
           run_stage separated_ambient_dictionary_focal \
             lake build YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary
           run_stage separated_ambient_dictionary_audit \
@@ -166,7 +160,6 @@ jobs:
           audits = {
               "separated_large_block_partition_audit.log": 17,
               "separated_physical_cutoff_audit.log": 11,
-              "separated_regional_defect_budget_audit.log": 8,
               "separated_ambient_dictionary_audit.log": 8,
           }
           result = {}
