@@ -80,9 +80,6 @@ theorem cmp99GeneratedAmbientScaledCovariantLaplacian_apply_eq_stencil
     FinBox.shift_shiftBack]
   simp only [cmp99AmbientCovariantLaplacianStencil,
     positiveEdgeOfPhysicalBond, Finset.smul_sum, smul_sub]
-  apply Finset.sum_congr rfl
-  intro i _hi
-  module
 
 /-- The source-facing link-derivative correction in the first line of CMP99
 (3.88).  Both bonds in the star of `x` are written using the positive-bond
