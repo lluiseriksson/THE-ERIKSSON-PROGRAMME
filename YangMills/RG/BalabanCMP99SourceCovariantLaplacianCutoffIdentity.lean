@@ -75,8 +75,8 @@ theorem cmp99GeneratedAmbientScaledCovariantLaplacian_apply_eq_stencil
       spacing⁻¹ • spacing⁻¹ •
         cmp99AmbientCovariantLaplacianStencil rho U phi x := by
   rw [cmp99GeneratedAmbientScaledCovariantLaplacian_apply]
-  simp only [ContinuousLinearMap.smul_apply, covariantD0CLM_apply,
-    map_smul, map_sub, rho.ad_inv_apply_ad, FinBox.shiftBack_shift]
+  simp only [PiLp.smul_apply, covariantD0CLM_apply, map_smul, map_sub,
+    rho.ad_inv_apply_ad, FinBox.shiftBack_shift]
   simp only [cmp99AmbientCovariantLaplacianStencil, Finset.smul_sum,
     smul_sub]
   module
