@@ -82,6 +82,7 @@ theorem cmp99GeneratedAmbientScaledCovariantLaplacian_apply_eq_stencil
     smul_sub]
   apply Finset.sum_congr rfl
   intro i _hi
+  trace_state
   module
 
 /-- The source-facing link-derivative correction in the first line of CMP99
