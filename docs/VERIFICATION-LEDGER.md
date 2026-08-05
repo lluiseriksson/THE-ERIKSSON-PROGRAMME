@@ -32135,3 +32135,49 @@ Remaining debt: the fresh clone, pinned to this commit.
 **ROLES.**  Unit design + predictions: this desk, committed before the
 run.  Plane execution: autonomous browser bridge.  This record: this
 desk.
+
+
+## Addendum 634 (2026-08-05, **OS-R-5 FRESH-CLONE VERIFICATION GREEN at
+fc274db76: judges 110/110 both modes, core 8481, oracle 3050, sorryAx 0,
+module bit-identical -- FIVE fabrication stages closed, manuscript at
+ZERO live slots**)
+
+`scripts/osr5_pass27_freshclone.py` (committed 06d75b811, pinned to
+fc274db76), brand-new clone /content/osr5fresh, cache from scratch:
+
+* `CLONE_EXIT 0`, `CACHE_EXIT 0`; judges 110/110 in BOTH modes.
+* `CORE_EXIT 0 TOTAL 8481`; `ORACLE_EXIT 0 REPORTS 3050
+  SORRYAX_REPORTS 0 NONSTANDARD_JOINED 119`; both predictions True.
+* Twelve sampled endpoints ALL on the exact standard triple, including
+  `groundKernel_reversible`, `norm_dressVac_le` and
+  `os_reconstruction_ground_state_clustering`.
+* Travelling files: module `dac8e3f5f95c294c...` 65975 B;
+  `YangMillsCore.lean` `8625afbf13f2dcb1...` 63502 B (unchanged across
+  ALL FIVE stages); `oracle_check.lean` `5b34d2aa5c28c372...` 236701 B;
+  judge `642208cae0d4f908...` 13613 B.  `OSR5_FRESHCLONE_DONE`.
+
+**Campaign record: five stages, each predictions-first and each
+fresh-clone verified** -- measure (621/622/625), six-term (623/624/625),
+positive cone (626/627/628), limit state (629/630/631), ground state
+(632/633/this).  FOURTEEN consecutive exact count predictions; one
+module file from 12347 to 65975 bytes with the core job count never
+moving.
+
+**The arc of the five stages, in the order a reader meets them:** OS
+provenance and the forced operator (prior work) -> the sqrt(w) dressing
+unitary -> the volume-uniform gap transported -> the raw Gibbs sums as
+EXACT matrix elements -> mixed clustering including the zero-time case
+-> the division-free six-term connected bound -> the positive-cone
+denominator floor, uniform in N -> the NORMALISED Gibbs connected
+correlator -> the infinite-time limit state, identified as the vacuum
+and independent of the far-end boundary observable -> and finally the
+reconstructed operator read as a reversible Markov chain, where the
+constant loses its dependence on the spatial extent.
+
+**Still not claimed, printed item by item in the manuscript:** an
+infinite-volume transfer operator; the L -> infinity state (this stage
+supplies the necessary UNIFORMITY of the constant, not the limit); a
+continuum limit; a Wightman theory; any Yang-Mills consequence.
+
+**ROLES.**  Unit design: this desk.  Plane execution: autonomous
+browser bridge.  This record: this desk.
