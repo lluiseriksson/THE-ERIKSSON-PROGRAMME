@@ -134,7 +134,9 @@ theorem cmp99AmbientCovariantLaplacianStencil_scalarMultiplier
           ((h x - h (x.shift i)) + (h x - h (x.shiftBack i))) • phi x := by
   simp only [cmp99AmbientCovariantLaplacianStencil,
     finitePiLpScalarMultiplier_apply, map_smul]
-  rw [Finset.smul_sum, Finset.sum_sub_distrib, Finset.sum_add_distrib]
+  conv_rhs =>
+    rw [Finset.smul_sum, ← Finset.sum_sub_distrib,
+      ← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
   intro i _hi
   exact cmp99_covariant_cutoff_product_rule_direction
