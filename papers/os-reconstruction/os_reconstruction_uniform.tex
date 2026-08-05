@@ -638,6 +638,49 @@ absolute.  Both are legitimate; only the second gives an $L$-uniform
 bound, and saying which is which is the point.
 \end{remark}
 
+\section{Non-vacuity, and the summed form}\label{sec:nonvacuity}
+Every theorem above is conditional on the Dobrushin window.  A conditional
+theorem whose hypothesis cannot be satisfied says nothing, so the window's
+non-emptiness is machine-checked here rather than assumed --- and at an
+\emph{interacting} point, not at the free one.
+
+\begin{lemma}[\lean{tanh\_tenth\_le}]
+$\tanh(1/10) \le 1/9$.  No decimal arithmetic is used: the identity
+$\tanh x = 1 - 2/(e^{2x}+1)$ reduces the claim to $e^{1/5} \le 5/4$,
+and that follows from $1+x \le e^x$ at $x = -1/5$ together with
+$e^{1/5}e^{-1/5} = 1$.
+\end{lemma}
+
+\begin{theorem}[\lean{window\_nonempty\_interacting}]
+There are $\beta,\gamma \ne 0$ and $\alpha$ with $0<\alpha<1$ and
+$2\tanh|\beta| + 2\tanh|\gamma| \le \alpha$ --- namely
+$\beta = \gamma = 1/10$, $\alpha = 1/2$, since $4/9 \le 1/2$.
+\end{theorem}
+
+So the hypothesis of every theorem in this paper is satisfiable with both
+couplings switched on, and none of the conditionals is vacuous.  We
+emphasise what this does and does not say: it makes the statements
+non-empty, and it says nothing about how large the window is.  The window
+is sufficient, not optimal.
+
+Finally, the extent-free bound of Section~\ref{sec:ground} is put in the
+form a thermodynamic-limit argument actually consumes.
+
+\begin{theorem}[\lean{summed\_clustering\_of\_uniform\_bound}]
+If $\lvert c_N\rvert \le K_fK_g\,r^N$ for all $N$, with $r = e^{-m} < 1$,
+then for every cut-off $M$
+\[
+\sum_{N<M} \lvert c_N\rvert \;\le\; \frac{K_fK_g}{1 - e^{-m}} .
+\]
+\end{theorem}
+
+Applied to the ground-state correlator this bounds the summed connected
+correlation --- a susceptibility --- by a quantity independent of the
+cut-off \emph{and} of the spatial extent.  The summed form exists only
+because the constant of Section~\ref{sec:ground} carries no extent; with
+an $L$-dependent prefactor the sum would still converge for each $L$ but
+would carry that $L$ into every consumer.
+
 \section{Reproduction}\label{sec:repro}
 All numbers below are read from committed run artefacts; predictions
 were committed \emph{before} their measurements (the programme's
@@ -706,6 +749,13 @@ $\times 5$ \\
 fresh-clone reproduction & bit-identical module, same counts &
 judges $110/110$ both modes; 8481; 3040; 0; module
 \lean{ec19ffa7\ldots} bit-identical (Addendum 631) \\
+\hline
+\multicolumn{3}{l}{\emph{non-vacuity stage (predictions Addendum 635,
+committed before the run):}} \\
+core jobs & 8481 exact (import set unchanged) & \SLOT{pass 31} \\
+oracle reports & $3050+5 = 3055$ exact & \SLOT{pass 31} \\
+fresh-clone reproduction & bit-identical module, same counts &
+\SLOT{final pass} \\
 \hline
 \multicolumn{3}{l}{\emph{ground-state stage (predictions Addendum 632,
 committed before the run; measured Addendum 633):}} \\
