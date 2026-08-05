@@ -1,4 +1,4 @@
-# (45) D-7 por trasplante Dobrushin
+# (55) D-7/D-8: límite Dobrushin y estado covariante
 
 Estado: manuscrito completo y objeto congelable para auditoría externa; no es
 un dictamen terminal. El paper maquetado vive en
@@ -30,6 +30,15 @@ segunda aplicación de la comparación prueba estabilidad frente a
 perturbaciones de filas que retroceden hacia la frontera y, en particular, que
 las exhaustiones libres y periódicas explícitas convergen al mismo límite.
 
+La ampliación D-8 construye presentaciones cilíndricas con soporte finito
+directamente en `ℤ²`, las cocienta por igualdad de la función realizada sobre
+configuraciones globales y hace descender suma, producto y escalares. La
+traslación del soporte define una acción aditiva literal de `ℤ²`, con
+inversas. La invariancia exacta del acoplamiento periódico bajo los dos
+generadores cíclicos, combinada con la igualdad libre--periódica D-7, produce
+un funcional positivo, normalizado y real-lineal `ω` que satisface
+`ω (z +ᵥ O) = ω O` para todo `z : Fin 2 → ℤ`.
+
 La ventana utilizada en todos los teoremas concretos es
 
 ```text
@@ -58,6 +67,12 @@ En el caso isótropo esto conserva `tanh|β| < 1/4`, es decir
 - `DobrushinInfiniteState`: linealidad, positividad, normalización,
   compatibilidad entre radios, independencia canónica, estabilidad de frontera
   y comparación libre--periódica.
+- `DobrushinSiteCylinder`: soporte finito intrínseco en `ℤ²`, cociente por
+  realización global, operaciones puntuales y acción completa con inversas.
+- `DobrushinPeriodicTranslation`: simetría exacta de la adyacencia, del
+  acoplamiento y de toda expectativa Gibbs periódica en ambas direcciones.
+- `DobrushinCovariantState`: descenso del límite al cociente, linealidad,
+  positividad, normalización e invariancia bajo todo `ℤ²`.
 
 El brick KP se reutiliza como arquitectura de prueba (chart común, cota
 par-a-par, Cauchy de toda la secuencia y selección del límite), no como
@@ -82,15 +97,10 @@ instanciar honestamente con spins de sitios Ising.
 
 ## Frontera no probada
 
-- La acción completa de traslaciones `ℤ²` con inversas del brick KP no se ha
-  transportado todavía al nuevo tipo de observables de spins. El código KP
-  actúa sobre coordenadas de enlaces gauge; reutilizarlo por coerciones sería
-  falso. Falta construir el observable cilíndrico de sitios sobre `ℤ²` y
-  comparar charts rectangulares desplazados para demostrar invariancia del
-  límite. La periodicidad finita sí está formalizada, pero no sustituye la
-  acción trasladada sobre el portador infinito. Por tanto el paper prueba una
-  familia compatible de estados cilíndricos centrados, no certifica aún un
-  estado `ℤ²` plenamente covariante ni su completación C*.
+- No se construye todavía la complejificación, norma uniforme, involución,
+  completación ni extensión continua necesarias para un estado C* genuino.
+- No se comparan formas Følner arbitrarias ni se empaqueta una especificación
+  DLR sobre el espacio producto infinito.
 - No se afirma ninguna consecuencia adicional para Yang–Mills.
 
 ## Fuentes primarias
@@ -103,7 +113,7 @@ instanciar honestamente con spins de sitios Ising.
   Distributions*, Theory Probab. Appl. 15 (1970), 458–486, DOI
   [10.1137/1115049](https://doi.org/10.1137/1115049).
 
-## Lista cerrada de ficheros D-7
+## Lista cerrada de ficheros D-7/D-8
 
 1. `YangMills/OS/DobrushinMeasureComparison.lean`
 2. `YangMills/OS/DobrushinIsingComparison.lean`
@@ -112,10 +122,13 @@ instanciar honestamente con spins de sitios Ising.
 5. `YangMills/OS/DobrushinRectangleVolume.lean`
 6. `YangMills/OS/DobrushinThermodynamicLimit.lean`
 7. `YangMills/OS/DobrushinInfiniteState.lean`
-8. `YangMillsCore.lean`
-9. `oracle_check.lean`
-10. `docs/DOBRUSHIN-D7-DRAFT.md`
-11. `papers/dobrushin-thermodynamic-limit/dobrushin_thermodynamic_limit.tex`
-12. `papers/dobrushin-thermodynamic-limit/README.md`
-13. `papers/dobrushin-thermodynamic-limit/RELEASE-MANIFEST.md`
-14. `output/pdf/dobrushin_thermodynamic_limit.pdf`
+8. `YangMills/OS/DobrushinSiteCylinder.lean`
+9. `YangMills/OS/DobrushinPeriodicTranslation.lean`
+10. `YangMills/OS/DobrushinCovariantState.lean`
+11. `YangMillsCore.lean`
+12. `oracle_check.lean`
+13. `docs/DOBRUSHIN-D7-DRAFT.md`
+14. `papers/dobrushin-thermodynamic-limit/dobrushin_thermodynamic_limit.tex`
+15. `papers/dobrushin-thermodynamic-limit/README.md`
+16. `papers/dobrushin-thermodynamic-limit/RELEASE-MANIFEST.md`
+17. `output/pdf/dobrushin_thermodynamic_limit.pdf`

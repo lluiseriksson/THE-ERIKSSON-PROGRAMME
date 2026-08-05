@@ -1,5 +1,5 @@
-% D-7: thermodynamic limit by Dobrushin comparison.
-% Source freeze for all Lean links: 39cad01b1d2032dc15244e9af19ce6fbffa55a1f.
+% D-7/D-8: thermodynamic limit and full Z^2 covariance.
+% Source freeze is assigned only after the extended Lean corpus is committed.
 \documentclass[11pt]{article}
 \usepackage[margin=1.08in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
@@ -9,7 +9,7 @@
 \usepackage[colorlinks=true,linkcolor=blue!60!black,
   urlcolor=blue!60!black,citecolor=blue!60!black]{hyperref}
 \hypersetup{
-  pdftitle={From Dobrushin Comparison to a Thermodynamic Cylinder-State Family},
+  pdftitle={From Dobrushin Comparison to a Translation-Invariant Infinite-Volume State},
   pdfauthor={Lluis Eriksson},
   pdfsubject={A Lean-checked Dobrushin thermodynamic-limit construction}
 }
@@ -37,15 +37,15 @@
 \newcommand{\abs}[1]{\lvert #1\rvert}
 \newcommand{\norm}[1]{\lVert #1\rVert}
 
-\newcommand{\sourceanchor}{39cad01b1d2032dc15244e9af19ce6fbffa55a1f}
+\newcommand{\sourceanchor}{6ce506bb6ad627e793485631a12f1271423f2bd4}
 \newcommand{\leanfile}[2]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\sourceanchor/YangMills/OS/#1.lean}{\nolinkurl{#2.lean}}}
 \newcommand{\leanline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\sourceanchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 
-\title{From Dobrushin Comparison to a Thermodynamic\\
-Cylinder-State Family:\\
-A Lean-Checked Boundary Transplant for the Two-Dimensional Ising Model}
+\title{From Dobrushin Comparison to a Translation-Invariant\\
+Infinite-Volume State:\\
+A Lean-Checked Construction for the Two-Dimensional Ising Model}
 \author{Lluis Eriksson}
 \date{}
 
@@ -78,20 +78,31 @@ of radius $r$ and $r\le n\le m$, the machine-checked comparison is
   \abs{\Lambda_r}\,\osc(g).
 \]
 It yields convergence of the complete free-boundary sequence, not merely of a
-subsequence.  The limit is packaged as a compatible family of positive,
+subsequence.  The limit is first packaged as a compatible family of positive,
 normalized, real-linear cylinder functionals.  It is independent of the
 admissible auxiliary envelope $\alpha$, of every cofinal sampling of the
 centred-square sequence, and of enlargement of the declared support.
 Finally, a second application of the comparison theorem proves stability under
 arbitrary symmetric boundary-row perturbations receding from the support and,
 as a concrete corollary, equality of the free and periodic thermodynamic
-limits.  All concrete results use only
+limits.
+
+We then construct finite-site cylinder presentations directly on $\Z^2$ and
+quotient them by equality of the represented function on the full spin space.
+Pointwise addition, multiplication and real scalar multiplication descend to
+this algebraic local carrier.  Translation of supports gives a literal
+additive $\Z^2$ action, including inverses.  Exact cyclic reindexing of every
+finite periodic Gibbs sum, combined with the free--periodic limit theorem,
+produces a positive normalized real-linear functional $\omega$ satisfying
+\[
+  \omega(\tau_z f)=\omega(f),\qquad z\in\Z^2.
+\]
+All concrete results use only
 \[
   2\tanh\abs\beta+2\tanh\abs\gamma\le\alpha<1.
 \]
-No Kotecky--Preiss hypothesis enters.  The development does not yet package a
-full $\Z^2$ translation action or a C$^*$-algebraic state, and no Yang--Mills
-consequence is claimed.
+No Kotecky--Preiss hypothesis enters.  A norm completion and a complex
+C$^*$-state are not constructed, and no Yang--Mills consequence is claimed.
 \end{abstract}
 
 \section{Introduction}
@@ -113,7 +124,10 @@ usually suppressed on paper:
 \item the resulting pairwise estimate constructs a whole-sequence limit;
 \item positivity, normalization, linearity, support-presentation coherence,
   cofinal schedule independence, and free--periodic boundary independence are
-  all passed to the limit.
+  all passed to the limit;
+\item intrinsic integer-site cylinders are quotiented by equality of their
+  global realization, and exact periodic translations prove invariance of the
+  resulting state under the full group $\Z^2$.
 \end{enumerate}
 
 The formalization was motivated by a precise gap in an earlier finite-volume
@@ -143,13 +157,12 @@ and \texttt{Quot.sound}.
 
 \subsection*{What is not claimed}
 
-The paper constructs a compatible centred-cylinder state family and proves
-free--periodic equality for the centred square exhaustion.  It does not yet
-construct shifted cylinder charts on all of $\Z^2$, prove invariance under the
-full translation group, compare every possible shape, or form a C$^*$
-completion.  These distinctions are substantive, not terminological.  In
-particular, ``positive normalized cylinder-state family'' below is not used as
-a synonym for a completed C$^*$-algebraic Gibbs state.
+The paper constructs an algebraic local state with a full $\Z^2$ action and
+proves free--periodic equality for the centred square exhaustion.  It does not
+compare every possible shape or form a norm-completed complex C$^*$-algebra.
+These distinctions are substantive, not terminological.  In particular,
+``positive normalized local state'' below is not used as a synonym for a
+completed C$^*$-algebraic Gibbs state.
 
 \section{Finite products and one-site influence}
 
@@ -466,10 +479,8 @@ functionals and is compatible with every canonical support enlargement.
 
 Lean bundles exactly these fields in
 \leanline{DobrushinInfiniteState}{262}{infiniteCenteredLocalGibbsStateFamily}.
-Equivalently, the machine-checked data are sufficient for a functional on the
-algebraic direct limit of the centred cylinder spaces.  The quotient/direct-
-limit carrier itself is not constructed in the present code, so the formal
-headline remains the compatible family rather than a quotient-level object.
+Section~\ref{sec:covariance} constructs the corresponding quotient-level
+carrier and proves that this compatible family descends to it.
 
 \subsection{Two further canonicality statements}
 
@@ -557,6 +568,105 @@ The periodic model itself need not be re-analysed by a second Dobrushin
 argument: the oriented comparison uses the free resolvent and the fact that
 periodicity changes only boundary rows.
 
+\section{The integer site-cylinder carrier and full covariance}
+\label{sec:covariance}
+
+The centred family is now converted into a state on an intrinsic local
+carrier.  Write $\mathcal X=\{0,1\}^{\Z^2}$.  A finite presentation consists
+of a finite set $S\subset\Z^2$ and a kernel
+\[
+  F_S:\{0,1\}^{S}\longrightarrow\R.
+\]
+It represents the global cylinder function
+\[
+  \widehat F_S(\sigma)=F_S(\sigma|_S),\qquad \sigma\in\mathcal X.
+\]
+Presentations are equivalent precisely when their represented functions agree
+on every $\sigma\in\mathcal X$.  Lean forms the quotient
+\[
+  \mathcal A_{\mathrm{loc}}
+   =\{\text{finite site-cylinder presentations}\}/\!\sim .
+\]
+This is an actual quotient carrier, not merely the assertion that a compatible
+family could be quotiented.  Union of finite supports defines pointwise
+addition and multiplication; negation and real scalar multiplication preserve
+the support.  All operations descend because their global realizations are
+pointwise operations.  The realization map from the quotient to
+$\mathcal X\to\R$ is injective.
+
+For $z\in\Z^2$, translation sends the support $S$ to $S+z$ and satisfies
+\[
+  \widehat{\tau_z F}(\sigma)
+   =\widehat F\bigl(q\mapsto\sigma(q+z)\bigr).
+\]
+The quotient carries a literal additive action:
+\[
+  \tau_0F=F,\qquad
+  \tau_{z+w}F=\tau_z(\tau_wF),\qquad
+  \tau_{-z}(\tau_zF)=F.
+\]
+The construction is typed for Ising sites.  It does not coerce the separate
+gauge-link observable type used elsewhere in the repository.
+
+\subsection{Exact finite periodic translations}
+
+Let $\rho_N$ be cyclic successor on $\operatorname{Fin}N$.  Direct arithmetic
+shows that cyclic nearest-neighbour adjacency is invariant under $\rho_N$.
+Consequently the anisotropic periodic coupling obeys
+\[
+  J_N^{\mathrm{per}}(\rho_Np,\rho_Nq)
+   =J_N^{\mathrm{per}}(p,q)
+\]
+for a shift in either coordinate.  Reindexing the finite configuration sum
+then gives, for every test function $H$ and without a small-coupling premise,
+\[
+  \E_N^{\mathrm{per}}(H\circ\tau_{e_i})
+   =\E_N^{\mathrm{per}}(H),\qquad i=1,2.
+\]
+These are the machine-checked declarations
+\leanline{DobrushinPeriodicTranslation}{200}{expect_periodic_torusShiftX}
+and
+\leanline{DobrushinPeriodicTranslation}{222}{expect_periodic_torusShiftY}.
+
+Each integer presentation has a canonical radius large enough to contain its
+support.  In any larger centred chart, adding the chart centre to the integer
+coordinates realizes its kernel.  Enlarging the chart agrees exactly with the
+old canonical lift.  Thus the compatible centred state descends to a
+well-defined functional $\omega$ on $\mathcal A_{\mathrm{loc}}$; equality of
+global cylinder functions, including presentations with redundant sites,
+implies equality of state values.
+
+\begin{theorem}[fully translation-invariant local state; machine-checked]
+\label{thm:covariant-state}
+Suppose
+\[
+  0\le\alpha<1,
+  \qquad 2\tanh\abs\beta+2\tanh\abs\gamma\le\alpha.
+\]
+There is a functional $\omega:\mathcal A_{\mathrm{loc}}\to\R$ such that
+\begin{align*}
+  \omega(F+G)&=\omega(F)+\omega(G),&
+  \omega(cF)&=c\,\omega(F),\\
+  \omega(\one)&=1,&
+  F\ge0&\Longrightarrow\omega(F)\ge0,\\
+  \omega(\tau_zF)&=\omega(F)&&\text{for every }z\in\Z^2.
+\end{align*}
+Negative translations are included as group inverses.  The hypothesis list
+contains neither a thermodynamic-limit premise nor translation invariance.
+\end{theorem}
+
+The quotient descent is
+\leanline{DobrushinCovariantState}{40}{infiniteValue_eq_of_equivalent};
+the full group identity is
+\leanline{DobrushinCovariantState}{394}{infiniteStateValue_vadd};
+and the terminal bundled object is
+\leanline{DobrushinCovariantState}{496}{infiniteTranslationInvariantSiteCylinderState}.
+The proof of the group identity first compares both translated presentations
+in one sufficiently large periodic chart, uses the exact finite symmetry, and
+then invokes Theorem~\ref{thm:periodic} twice.  Hence Dobrushin comparison
+participates through the free--periodic convergence theorem, while the
+translation step itself introduces no narrower analytic window.
+
 \section{Proof architecture and kill tests}
 
 The proof was designed around failure modes that can survive informal
@@ -591,9 +701,10 @@ row-sum inequality.  The proof reuses the architecture of a separate
 thermodynamic-limit development but none of its Kotecky--Preiss hypotheses.
 
 \paragraph{No false translation coercion.}
-The existing $\Z^2$ action elsewhere in the repository is typed for gauge-link
-coordinates.  It is not coerced into a site-spin action.  Translation
-covariance remains a stated frontier.
+The new support coordinates are Ising sites in $\Z^2$.  The action laws,
+finite periodic symmetry and infinite-state invariance are proved on that
+carrier itself.  The gauge-link action elsewhere in the repository is not
+imported into any statement of the construction.
 
 \section{Relation to classical work}
 
@@ -622,7 +733,13 @@ kernel-checked assembly of the following interfaces in Lean~4:
 \Longrightarrow
 \text{receding-boundary stability}
 \Longrightarrow
-\text{free--periodic equality}.
+\text{free--periodic equality}\\
+\Longrightarrow
+\text{integer-site quotient}
+\Longrightarrow
+\text{exact periodic translations}
+\Longrightarrow
+\text{full $\Z^2$-invariant local state}.
 \end{gathered}
 \]
 We make no categorical priority claim about formalizations in other proof
@@ -669,6 +786,18 @@ Lean declaration & Mathematical role\\
 & Generic receding-boundary stability.\\
 \leanline{DobrushinInfiniteState}{468}{tendsto_centeredPeriodicGibbsExpectation}
 & Free--periodic exhaustion equality.\\
+\leanline{DobrushinSiteCylinder}{307}{LocalCylinderAlgebra}
+& Quotient of finite site presentations by global equality.\\
+\leanline{DobrushinSiteCylinder}{447}{neg_vadd_vadd}
+& Literal inverse law for the $\Z^2$ action.\\
+\leanline{DobrushinPeriodicTranslation}{200}{expect_periodic_torusShiftX}
+& Exact horizontal periodic Gibbs symmetry.\\
+\leanline{DobrushinPeriodicTranslation}{222}{expect_periodic_torusShiftY}
+& Exact vertical periodic Gibbs symmetry.\\
+\leanline{DobrushinCovariantState}{394}{infiniteStateValue_vadd}
+& Invariance under every integer displacement.\\
+\leanline{DobrushinCovariantState}{496}{infiniteTranslationInvariantSiteCylinderState}
+& Positive normalized fully invariant local state.\\
 \bottomrule
 \end{longtable}
 \endgroup
@@ -680,7 +809,7 @@ The release protocol is:
 \item clone the public repository and detach at the frozen source commit;
 \item restore Mathlib/Lake artifacts with \texttt{lake exe cache get};
 \item build the terminal module
-  \texttt{YangMills.OS.DobrushinInfiniteState};
+  \texttt{YangMills.OS.DobrushinCovariantState};
 \item build \texttt{YangMillsCore};
 \item run \texttt{lake env lean oracle\_check.lean};
 \item compile this manuscript twice with \texttt{pdflatex};
@@ -693,29 +822,26 @@ reported as verified unless its target was materialized successfully.
 \section{Limitations and next theorem}
 
 The current result is materially stronger than a centred scalar limit: it is
-a compatible family of positive normalized real-linear functionals, stable
-under cofinal resampling and under free--periodic boundary change.  Three
-boundaries remain.
+a positive normalized real-linear functional on an explicit quotient of
+finite $\Z^2$ site cylinders, invariant under the complete translation group
+and stable under the free--periodic boundary change.  Two boundaries remain.
 
 \begin{enumerate}
-\item \textbf{Full translations.}  A site-cylinder observable type on
-  $\Z^2$, its additive action including inverse translations, and shifted
-  rectangle charts have not been implemented.  Consequently this paper does
-  not assert $\omega(\tau_x f)=\omega(f)$ for all $x\in\Z^2$.
-\item \textbf{Arbitrary shapes.}  Cofinal schedules of centred squares and
+\item \textbf{Arbitrary shapes and DLR packaging.}  Cofinal schedules of centred squares and
   the free--periodic pair are covered.  Arbitrary aspect ratios, general
-  F\o lner exhaustions, and all one-body boundary fields are not bundled.
-\item \textbf{Completed algebra.}  Compatibility supplies the data expected
-  of the algebraic direct limit, but the quotient carrier, norm completion,
-  and C$^*$-state structure are not formalized.
+  F\o lner exhaustions, all one-body boundary fields, and a DLR specification
+  on the infinite product space are not bundled.
+\item \textbf{C$^*$ completion.}  The real local quotient and its pointwise
+  operations are formalized, but complexification, the uniform norm,
+  completion, involution, continuity of $\omega$, and extension to a
+  norm-one complex C$^*$-state are not.
 \end{enumerate}
 
-The natural next theorem is therefore not another finite-volume decay bound.
-It is a covariant site-cylinder state: build the $\Z^2$ action, show that
-translated presentations compare through shifted rectangles, and combine
-that covariance with Theorem~\ref{thm:family}.  The boundary comparison proved
-here is already the analytic input; the remaining work is geometric and
-algebraic packaging.
+The natural next project is therefore a normed one: complexify the local
+quotient, prove the uniform bound $\abs{\omega(F)}\le\norm{F}_\infty$, complete
+the algebra and extend both $\omega$ and the translations continuously.  That
+work is not needed for Theorem~\ref{thm:covariant-state} and is not silently
+included in its terminology.
 
 \section{Conclusion}
 
@@ -729,10 +855,12 @@ reindexing then identify the comparison with two genuine Gibbs rectangles.
 The final Lean development proves the complete free sequence convergent,
 packages its values into a compatible positive normalized cylinder-state
 family, removes dependence on the auxiliary envelope and on cofinal sampling,
-and proves that periodic and free rectangles select the same limit.  The
-visible region remains the Dobrushin window, rather than a constant imported
-from a cluster expansion.  Translation invariance on the full lattice is left
-as a precise next step, not hidden behind terminology.
+and proves that periodic and free rectangles select the same limit.  It then
+constructs the integer-site quotient, proves exact periodic symmetries and
+obtains a positive normalized state invariant under every translation in
+$\Z^2$.  The visible region remains the Dobrushin window, rather than a
+constant imported from a cluster expansion.  Norm completion and a complex
+C$^*$-state remain explicit future work.
 
 \appendix
 
@@ -742,7 +870,7 @@ The terminal import chain is
 \[
 \begin{array}{c}
 \texttt{DobrushinConditional},\ 
-\texttt{DobrushinComparison},\ 
+\texttt{DobrushinComparison}\\[-0.1em]
 \texttt{DobrushinGibbs},\ 
 \texttt{DobrushinIsing},\ 
 \texttt{DobrushinLattice}\\[0.3em]
@@ -757,9 +885,15 @@ The terminal import chain is
 \Downarrow\\[-0.1em]
 \texttt{DobrushinRectangleVolume}
 \longrightarrow
-\texttt{DobrushinThermodynamicLimit}
+\texttt{DobrushinThermodynamicLimit}\\[0.3em]
+\Downarrow\\[-0.1em]
+\texttt{DobrushinInfiniteState}\\[0.3em]
+\Downarrow\\[-0.1em]
+\texttt{DobrushinSiteCylinder}
 \longrightarrow
-\texttt{DobrushinInfiniteState}.
+\texttt{DobrushinPeriodicTranslation}\\[0.3em]
+\Downarrow\\[-0.1em]
+\texttt{DobrushinCovariantState}.
 \end{array}
 \]
 Each arrow corresponds to an actual Lean import and theorem consumption.  The
@@ -777,12 +911,16 @@ not an analytic dependency of the Dobrushin terminal theorem.
   finite centred square, with canonical lifts to larger centred squares.
 \item[Compatible state family.] One positive normalized linear functional at
   each radius, with equality under canonical lift.
+\item[Integer site-cylinder quotient.] Finite supports in $\Z^2$, identified
+  exactly when their represented functions on $\{0,1\}^{\Z^2}$ agree.
+\item[Full covariance.] The identity $\omega(\tau_zF)=\omega(F)$ for every
+  $z\in\Z^2$, including negative displacements as group inverses.
 \item[Receding boundary perturbation.] A coupling whose changed rows are at
   graph distance at least $n$ from the fixed support at stage $n$.
 \item[Periodic exhaustion.] The explicit cyclic nearest-neighbour coupling on
   every odd square; not an informal boundary-condition label.
-\item[Not included.] Full $\Z^2$ translation covariance, arbitrary shapes, a
-  C$^*$ completion, or a Yang--Mills conclusion.
+\item[Not included.] Arbitrary F\o lner shapes, a DLR package, a C$^*$
+  completion, or a Yang--Mills conclusion.
 \end{description}
 
 \begin{thebibliography}{99}
