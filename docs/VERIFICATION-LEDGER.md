@@ -27292,3 +27292,36 @@ closes the complete algebraic three-species identity (3.88) without importing
 the later collar or contraction estimates.  It does not bound the regional
 correction, attain `norm R' < 1`, discharge groups 23--24, or inhabit a
 `TermSource`.  The live counters remain exactly `20/41` and zero.
+
+## Addendum 553 (2026-08-05, **fixed-output quantitative commutator bridge GREEN; 20/41 unchanged**)
+
+The direct fixed-output scalar-commutator estimate and its pointwise
+exponential extraction were validated from exact source checkpoint
+`4e23216a121fc64451528ce050443ee460ce589a` by cold GitHub Actions run
+`30992627475` (workflow checkpoint
+`e20f2aafb9838189636e7207c5f17391b1e02711`).  The checkout did not restore
+or save a project `.lake/build` cache.  Lean was the official
+`v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8174 jobs).` and
+exited zero.  Its two-declaration audit also exited zero.  Both declarations
+depend exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`16c82c8b92eb2c828e9db665991b8d2255b6d4ea15c0fbbbab95c26c36640b21`.
+The axiom JSON has SHA-256
+`34edcccc435fa8c68671081a3fe7380f9cdad30ea77ca32e3892736d11c701ad`;
+the stage ledger has SHA-256
+`3acd9e02aead177e431a57b8ea50833647edb15ba8513f4653a738c9b66acd74`.
+The internal `SHA256SUMS` manifest was independently rechecked with no
+mismatch.
+
+This bridge works in the printed fixed-output orientation and pays exactly
+`slope * range` against an existing weighted budget.  It does not yet supply
+the physical cutoff, the regional-operator dictionary, the Green composition,
+or a contraction.  Window 15 remains compatible but unattained; the live
+counters remain exactly `20/41` and zero.

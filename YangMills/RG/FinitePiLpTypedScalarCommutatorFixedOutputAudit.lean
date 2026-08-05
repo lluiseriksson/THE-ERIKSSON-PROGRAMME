@@ -6,10 +6,12 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpTypedScalarCommutatorFixedOutput
 
 /-!
-# PRE-VALIDATION audit for fixed-output scalar-commutator bounds
+# Axiom audit for fixed-output scalar-commutator bounds
 
-The source of this audit is present, but it has not yet been checked by the
-Lean compiler and no `.olean` is claimed for the imported module.
+Compiler-verified at exact source checkpoint
+`4e23216a121fc64451528ce050443ee460ce589a` in cold GitHub Actions run
+`30992627475`; both declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.finitePiLpTypedFixedOutputWeightedKernelBound_scalarCommutator

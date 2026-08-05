@@ -2440,3 +2440,23 @@ This does **not** yet bound the resulting regional correction, prove
 `norm R' < 1`, discharge groups 23--24, or inhabit a `TermSource`.  It is the
 complete algebraic identity below window 15, not physical attainment of that
 window.  The live counters remain exactly `20/41` and `TermSource = 0`.
+
+### Fixed-output quantitative commutator bridge (2026-08-05)
+
+Exact source checkpoint
+`4e23216a121fc64451528ce050443ee460ce589a` passed cold GitHub Actions run
+`30992627475` without restoration or saving of a project build cache.  The
+focal completed 8,174 jobs, its two-declaration audit exited zero, and both
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The bridge estimates `[h,K]` directly in the fixed-output orientation printed
+in CMP99 (3.88).  A pre-existing fixed-output weighted budget pays exactly
+`slope * range`; no self-adjoint orientation transport and no range-ball
+cardinality are introduced.  The same fixed-output sum then yields the
+pointwise exponential kernel bound term by term.
+
+This is still generic infrastructure.  It does not choose the physical
+large-block cutoff, identify the common ambient/regional operator, estimate
+the Green composition, attain `norm R' < 1`, discharge groups 23--24, or
+inhabit a `TermSource`.  The live counters remain exactly `20/41` and
+`TermSource = 0`.

@@ -7,10 +7,12 @@ import YangMills.RG.FinitePiLpTypedCutoff
 import YangMills.RG.FinitePiLpTypedFixedOutputWeightedKernel
 
 /-!
-# PRE-VALIDATION: fixed-output scalar-commutator bounds
+# Fixed-output scalar-commutator bounds
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`4e23216a121fc64451528ce050443ee460ce589a` in cold GitHub Actions run
+`30992627475`.  The focal completed 8,174 jobs and both audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP99 (3.88) fixes the output coordinate and sums over input coordinates.
 This file estimates the scalar commutator directly in that orientation.  It
