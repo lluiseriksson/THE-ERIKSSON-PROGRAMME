@@ -118,15 +118,16 @@ theorem finitePiLpScalarCommutator_sourceGaugePrecision_apply_eq
     finitePiLpScalarCommutator_smul,
     ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
     PiLp.add_apply, PiLp.smul_apply,
-    finitePiLpScalarCommutator_apply_eq_sum]
+    finitePiLpScalarCommutator_apply_eq_sum h
+      (Qprime.adjoint.comp Qprime) phi target]
 
 variable {d M N Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
-/-- Source-generated specialization of the third species.  The tower, its
-adjoint mass and the normalization coefficient are all constructed inside
-the literal physical precision. -/
-theorem cmp99SourceGeneratedPhysicalPrecision_scalarCommutator_apply_eq
+/-- The literal generated physical precision is definitionally the source
+precision used above, with its tower, adjoint mass and normalization
+coefficient all constructed internally. -/
+theorem cmp99SourceGeneratedPhysicalPrecision_eq_sourceGaugePrecision
     (hd : 2 ≤ d) (hM : 2 ≤ M) (Omega : ActiveGaugeRegion d N)
     (depth : ℕ) (spacing epsilon : ℝ)
     (background : GaugeConfig d
@@ -135,37 +136,20 @@ theorem cmp99SourceGeneratedPhysicalPrecision_scalarCommutator_apply_eq
     (fineSmall : ∀ e : ConcreteEdge d
       (cmp99RegionalLatticeSize M N (depth + 1)),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
-    let OmegaFine :=
-      cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)
-    let regions := cmp99SourceIteratedLiftActiveRegionChain
-      (M := M) Omega (depth + 1)
-    let T := regions.weightedQprimeTower hd hM (matrixSUNAdjointModel Nc)
-      spacing epsilon background budget.toRadiusChain fineSmall
-    ∀ (h : ActiveGaugeRegion.Site OmegaFine → ℝ)
-      (phi : ActiveGaugeZeroCochain OmegaFine (SUNLieCoord Nc))
-      (target : ActiveGaugeRegion.Site OmegaFine),
-      finitePiLpScalarCommutator h
-          (cmp99SourceGeneratedPhysicalPrecision hd hM Omega depth spacing
-            epsilon background budget fineSmall) phi target =
-        finitePiLpScalarCommutator h
-            (cmp99ActiveRegionSourceCovariantLaplacian OmegaFine
-              (matrixSUNAdjointModel Nc) background spacing) phi target +
-          cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing epsilon •
-            ∑ source : ActiveGaugeRegion.Site OmegaFine,
-              (h target - h source) •
-                (T.Qprime.adjoint.comp T.Qprime)
-                  (singleFinitePiLp source (phi source)) target := by
-  dsimp only
-  intro h phi target
-  exact finitePiLpScalarCommutator_sourceGaugePrecision_apply_eq h
-    (cmp99ActiveRegionSourceCovariantLaplacian
-      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
-      (matrixSUNAdjointModel Nc) background spacing)
-    ((cmp99SourceIteratedLiftActiveRegionChain (M := M) Omega (depth + 1)).
-      weightedQprimeTower hd hM (matrixSUNAdjointModel Nc) spacing epsilon
-        background budget.toRadiusChain fineSmall).Qprime
-    (cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing epsilon)
-    phi target
+    cmp99SourceGeneratedPhysicalPrecision hd hM Omega depth spacing epsilon
+        background budget fineSmall =
+      let OmegaFine :=
+        cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)
+      let regions := cmp99SourceIteratedLiftActiveRegionChain
+        (M := M) Omega (depth + 1)
+      let T := regions.weightedQprimeTower hd hM (matrixSUNAdjointModel Nc)
+        spacing epsilon background budget.toRadiusChain fineSmall
+      cmp99SourceGaugePrecision
+        (cmp99ActiveRegionSourceCovariantLaplacian OmegaFine
+          (matrixSUNAdjointModel Nc) background spacing)
+        T.Qprime
+        (cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing epsilon) :=
+  rfl
 
 end
 

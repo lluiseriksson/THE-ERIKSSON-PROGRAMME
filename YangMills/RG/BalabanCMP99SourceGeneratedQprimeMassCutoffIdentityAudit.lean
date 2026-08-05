@@ -16,4 +16,4 @@ result has not yet been verified by the Lean compiler.
 #print axioms YangMills.RG.finitePiLpScalarCommutator_add
 #print axioms YangMills.RG.finitePiLpScalarCommutator_smul
 #print axioms YangMills.RG.finitePiLpScalarCommutator_sourceGaugePrecision_apply_eq
-#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalPrecision_scalarCommutator_apply_eq
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalPrecision_eq_sourceGaugePrecision
