@@ -19,13 +19,13 @@
     "latest_submission": {
       "date": "2026-08-05",
       "status": "new paper submitted to ai.viXra.org; moderation outcome and public identifier not recorded",
-      "title": "From Dobrushin Comparison to a Quasi-Local C*-State: A Lean-Checked Construction for the Two-Dimensional Ising Model",
-      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md",
-      "pdf": "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/c1943b4957c2eacbfecf73e83a0d81f788118d33/output/pdf/dobrushin_thermodynamic_limit.pdf",
-      "pdf_sha256": "7FAECBB1A2799A00B93DA255597030E2561104A98D01ABE1C3B455E2661F8993",
-      "source_anchor": "f587b35001f4ae87c7fe0383662864df6bc9a1c0",
-      "paper_commit": "c1943b4957c2eacbfecf73e83a0d81f788118d33",
-      "integration": "remote branch codex/d9-dlr-cstar; not in main when recorded"
+      "title": "Faithfulness, Not Algebra Type, Controls the Rapid-Maintenance Singularity",
+      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md",
+      "pdf": "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/56e7ea46a38209b0a07f08a85260f55cdc863e4a/papers/aqft-rapid-maintenance/release-v8/Eriksson_Faithfulness_Rapid_Maintenance_AQFT_2026_v8.pdf",
+      "pdf_sha256": "B0370F2ED9E30282F6DCC09F6E4AA32130340C5898F96DCA59F84B398EAF34C0",
+      "source_anchor": "56e7ea46a38209b0a07f08a85260f55cdc863e4a",
+      "paper_commit": "56e7ea46a38209b0a07f08a85260f55cdc863e4a",
+      "integration": "frozen release on agent/record-aqft-rapid-maintenance-submission; not in main when recorded"
     }
   },
   "status_legend": {

@@ -441,21 +441,21 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 ## Latest ai.viXra submission
 
 **Submitted 2026-08-05 as a new AI-assisted paper; moderation outcome and
-public identifier are not yet recorded.**  The 17-page paper *From Dobrushin
-Comparison to a Quasi-Local C*-State: A Lean-Checked Construction for the
-Two-Dimensional Ising Model* was sent to ai.viXra.org.  Its exact PDF is pinned
-at paper commit [`c1943b49`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/c1943b4957c2eacbfecf73e83a0d81f788118d33/output/pdf/dobrushin_thermodynamic_limit.pdf),
-has 377,505 bytes, and SHA-256
-`7FAECBB1A2799A00B93DA255597030E2561104A98D01ABE1C3B455E2661F8993`.
-See the [submission record](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md) for
-the exact form metadata, D-9 validation evidence and stated frontier.
+public identifier are not yet recorded.**  The 31-page paper *Faithfulness,
+Not Algebra Type, Controls the Rapid-Maintenance Singularity* was sent to
+ai.viXra.org. Its exact PDF is pinned at release commit
+[`56e7ea46`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/56e7ea46a38209b0a07f08a85260f55cdc863e4a/papers/aqft-rapid-maintenance/release-v8/Eriksson_Faithfulness_Rapid_Maintenance_AQFT_2026_v8.pdf),
+has 681,842 bytes, and SHA-256
+`B0370F2ED9E30282F6DCC09F6E4AA32130340C5898F96DCA59F84B398EAF34C0`.
+The [submission record](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md)
+pins the metadata, companion ZIP and exact scope boundary.
 
-The result reaches a positive norm-one state on the commutative C*-closure and
-finite-set Gibbs tower identities inside the classical Dobrushin region.  It
-does not claim the infinite-volume DLR fixed-point identity for the completed
-state or any Yang--Mills consequence.  The paper/source commits remain on
-remote branch `codex/d9-dlr-cstar`; this notice does not claim integration into
-`main` and does not alter the canonical Yang--Mills proof-state DAG.
+The unconditional all-time estimate recorded by the release is `O(|lambda|)`
+for the displayed compact Dirac form factor; the sharper `O(lambda^2)` claim
+remains conditional. This AQFT submission is separate from the Yang--Mills
+proof-state DAG and does not alter its canonical checkpoint. The earlier
+[Dobrushin C*-state submission](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md)
+remains recorded independently.
 
 ---
 

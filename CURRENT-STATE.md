@@ -17,23 +17,21 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest ai.viXra submission (2026-08-05; new paper submitted).**  The 17-page
-paper *From Dobrushin Comparison to a Quasi-Local C*-State: A Lean-Checked
-Construction for the Two-Dimensional Ising Model* was submitted to
-ai.viXra.org.  Its exact PDF is pinned at paper commit `c1943b49`, has 377,505
-bytes and SHA-256
-`7FAECBB1A2799A00B93DA255597030E2561104A98D01ABE1C3B455E2661F8993`, and is
-described in
-[`docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md`](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md).
-Fresh Colab evidence at source anchor `f587b350` records three green targeted
-modules, a green **8,494-job** core and a zero-exit 5,481-line repository
-oracle.  The paper constructs the quasi-local commutative C*-state and exact
-finite-volume Gibbs tower stated there; the infinite-volume DLR fixed-point
-identity for the completed state remains open and no Yang--Mills consequence
-is claimed.  These are branch measurements, not a replacement for the
-canonical `main` checkpoint: neither the paper commit nor its source anchor
-was in `main` when this notice was written.  The moderation/publication outcome
-and public identifier are not yet recorded here.
+**Latest ai.viXra submission (2026-08-05; new paper submitted).** The 31-page
+paper *Faithfulness, Not Algebra Type, Controls the Rapid-Maintenance
+Singularity* was submitted to ai.viXra.org. Its exact PDF and reproducibility
+ZIP are frozen at release commit `56e7ea46`; the PDF has 681,842 bytes and
+SHA-256
+`B0370F2ED9E30282F6DCC09F6E4AA32130340C5898F96DCA59F84B398EAF34C0`.
+The exact metadata, archive identity, reported review corrections and scope
+boundary are recorded in
+[`docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md`](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md).
+The submitted all-time estimate is `O(|lambda|)` for the displayed compact
+Dirac form factor; the sharper `O(lambda^2)` improvement remains conditional.
+This AQFT artifact is independent of the canonical Yang--Mills proof-state DAG
+and does not alter its recorded build checkpoint. Moderation/publication and a
+public ai.viXra identifier are not yet recorded. The preceding Dobrushin
+C*-state submission remains documented separately.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
