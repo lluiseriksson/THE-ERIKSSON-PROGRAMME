@@ -31727,3 +31727,33 @@ scripts/osr2_pass15_wiring.py in the next commit:**
 **ROLES.**  Fabrication + unit design: this desk.  Plane executions:
 autonomous browser bridge.  Predictions above committed before
 measurement.
+
+
+## Addendum 624 (2026-08-05, **OS-R-2 six-term wiring MEASURED: all
+three Add.-623 predictions HELD EXACTLY (core 8481; oracle 3028 =
+3026+2; sorryAx 0) -- ELEVENTH consecutive exact count prediction**)
+
+`scripts/osr2_pass15_wiring.py` (committed 682490cca, predictions
+registered in Add. 623 at b47dda50e) ran on the warm high-RAM runtime,
+autonomous browser bridge.  Read from the run output:
+
+* Gate: `MODULE 32533 3b3598ebcfde...` (byte-identical to the banked
+  blob); `YangMillsCore.lean` 8625afbf13f2... 63502 B (unchanged
+  since Add. 622, as expected -- no new module); `oracle_check.lean`
+  98d9c41440ff... 235637 B; `ORACLE_STATIC_LINES 3055`.
+* `CORE_EXIT 0 TOTAL 8481` -- `PREDICTION_CORE_8481 True`.  File grew
+  20428 -> 32533 B; job count did not move.  Eleventh consecutive.
+* `ORACLE_EXIT 0 REPORTS 3028 SORRYAX_REPORTS 0 NONSTANDARD_JOINED
+  119` -- `PREDICTION_ORACLE_3028 True`, `PREDICTION_SORRYAX_0 True`;
+  the 119 are the known subset-of-triple class (Add. 619/622).
+* Both new endpoints on the exact standard triple:
+  `six_term_connected_bound`, `os_reconstruction_connected_uniform`.
+* `OSR2_WIRING14_DONE` printed (the unit's internal marker name).
+
+The ONLY remaining verification debt is the fresh clone
+(scripts/osr2_pass16_freshclone.py, EXPECT core 8481 / reports 3028 /
+sorryAx 0 / module 3b3598eb bit-identical), pinned to THIS commit.
+
+**ROLES.**  Unit design + predictions: this desk, committed before the
+run.  Plane execution: autonomous browser bridge.  This record: this
+desk.
