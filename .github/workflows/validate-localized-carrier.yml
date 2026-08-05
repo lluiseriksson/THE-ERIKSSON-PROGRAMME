@@ -1,4 +1,4 @@
-name: Seal CMP99 generated Qprime cutoff identity
+name: Diagnose CMP99 generated physical cutoff identity
 
 on:
   workflow_dispatch:
@@ -12,13 +12,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 1cf90bee75d7927362c94ef338efc46f32153097
+  SOURCE_SHA: 7e6c3d7e1adad2a82e378fb001863057bb05dac3
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  generated-qprime-cutoff-identity:
+  generated-physical-cutoff-identity:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -77,6 +77,14 @@ jobs:
           test "$mathlib" = "$EXPECTED_MATHLIB"
           lake exe cache get 2>&1 | tee evidence/cache-get.log
 
+      - name: Restore project build cache for diagnosis
+        uses: actions/cache/restore@v4
+        with:
+          path: .lake/build
+          key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          restore-keys: |
+            cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
+
       - name: Run focal queue stop on first error
         shell: bash
         run: |
@@ -99,12 +107,20 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage generated_qprime_cutoff_focal \
-            lake build YangMills.RG.BalabanCMP99SourceGeneratedQprimeMassCutoffIdentity
-          run_stage generated_qprime_cutoff_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedQprimeMassCutoffIdentityAudit.lean
+          run_stage generated_physical_cutoff_focal \
+            lake build YangMills.RG.BalabanCMP99SourceGeneratedPhysicalCutoffIdentity
+          run_stage generated_physical_cutoff_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedPhysicalCutoffIdentityAudit.lean
 
-      - name: Verify axiom gates and package cold-seal evidence
+      - name: Save project build cache after diagnosis
+        if: always()
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: .lake/build
+          key: cmp99-project-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+
+      - name: Verify axiom gates and package diagnostic evidence
         shell: bash
         run: |
           set -euo pipefail
@@ -115,7 +131,7 @@ jobs:
           import re
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
-          audits = {"generated_qprime_cutoff_audit.log": 5}
+          audits = {"generated_physical_cutoff_audit.log": 6}
           result = {}
           for name, expected in audits.items():
               text = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -145,16 +161,16 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > generated-qprime-cutoff-evidence.tar.gz
-          sha256sum generated-qprime-cutoff-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > generated-physical-cutoff-evidence.tar.gz
+          sha256sum generated-physical-cutoff-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: generated-qprime-cutoff-${{ env.SOURCE_SHA }}
+          name: generated-physical-cutoff-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            generated-qprime-cutoff-evidence.tar.gz
+            generated-physical-cutoff-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
