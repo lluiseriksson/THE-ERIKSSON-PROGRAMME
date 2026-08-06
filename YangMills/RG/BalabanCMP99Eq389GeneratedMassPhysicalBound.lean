@@ -50,6 +50,41 @@ private instance instNeZeroEq389MassPhysicalAmbientSide
       (pow_pos (NeZero.pos L) (depth + 1)))
     (Nat.mul_pos (by omega) (NeZero.pos Q))).ne'⟩
 
+/-- Algebraic kernel expansion used by the physical third species.  It is
+kept generic so specializing the generated tower does not ask elaboration to
+reduce that tower merely to expose linearity. -/
+theorem finitePiLpScalarCommutator_smul_comp_single_apply_eq_sum
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (h : ι → ℝ) (mass : ℝ)
+    (T G : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (probe target : ι) (v : g) :
+    ((finitePiLpScalarCommutator h (mass • T)).comp G)
+        (singleFinitePiLp probe v) target =
+      ∑ source, (-mass) • T (singleFinitePiLp source
+        ((h source - h target) •
+          G (singleFinitePiLp probe v) source)) target := by
+  rw [ContinuousLinearMap.comp_apply,
+    finitePiLpScalarCommutator_apply_eq_sum]
+  apply Finset.sum_congr rfl
+  intro source _hsource
+  have hsingle :
+      singleFinitePiLp source
+          ((h source - h target) •
+            G (singleFinitePiLp probe v) source) =
+        (h source - h target) •
+          singleFinitePiLp source (G (singleFinitePiLp probe v) source) := by
+    apply PiLp.ext
+    intro x
+    by_cases hx : x = source
+    · subst x
+      simp
+    · rw [singleFinitePiLp_of_ne _ hx, PiLp.smul_apply,
+        singleFinitePiLp_of_ne _ hx, smul_zero]
+  rw [hsingle, map_smul]
+  simp only [ContinuousLinearMap.smul_apply, PiLp.smul_apply]
+  module
+
 /-- Pre-overlap amplitude of the complete generated-mass species.  The
 literal physical mass and the one surviving normalized counting-mass weight
 are intentionally not absorbed into a shared constant. -/
@@ -130,40 +165,16 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_apply_eq_sum
       ∑ source, cmp99Eq389GeneratedMassAmbientKernelAtom
         (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
         chain fineSmall cell Omega A c hc hAcoer target probe source v := by
-  let h := cmp99SourceSeparatedSignedLargeBlockCutoff P L K Q depth cell
-  let mass := cmp99SourceGeneratedPhysicalMass
-    4 L (depth + 1) spacing epsilon
-  let T := cmp99SourceSeparatedGeneratedCountingMass
-    (L := L) (K := K) (Q := Q) hL depth (matrixSUNAdjointModel Nc)
-    spacing epsilon background chain fineSmall
-  let G := cmp99RegionalExtendedDirichletGreen Omega A hc hAcoer
-  change finitePiLpScalarCommutator h (mass • T)
-      (G (singleFinitePiLp probe v)) target = _
-  rw [finitePiLpScalarCommutator_apply_eq_sum]
-  apply Finset.sum_congr rfl
-  intro source _hsource
-  have hsingle :
-      singleFinitePiLp source
-          ((h source - h target) •
-            G (singleFinitePiLp probe v) source) =
-        (h source - h target) •
-          singleFinitePiLp source (G (singleFinitePiLp probe v) source) := by
-    apply PiLp.ext
-    intro x
-    by_cases hx : x = source
-    · subst x
-      simp
-    · rw [singleFinitePiLp_of_ne _ hx, PiLp.smul_apply,
-        singleFinitePiLp_of_ne _ hx, smul_zero]
-  change (h target - h source) •
-      (mass • T) (singleFinitePiLp source
-        (G (singleFinitePiLp probe v) source)) target =
-      (-mass) • T (singleFinitePiLp source
-        ((h source - h target) •
-          G (singleFinitePiLp probe v) source)) target
-  rw [hsingle, map_smul]
-  simp only [ContinuousLinearMap.smul_apply, PiLp.smul_apply]
-  module
+  simpa only [cmp99Eq389GeneratedMassAmbientCorrection,
+    cmp99Eq389GeneratedMassAmbientKernelAtom] using
+    (finitePiLpScalarCommutator_smul_comp_single_apply_eq_sum
+      (cmp99SourceSeparatedSignedLargeBlockCutoff P L K Q depth cell)
+      (cmp99SourceGeneratedPhysicalMass 4 L (depth + 1) spacing epsilon)
+      (cmp99SourceSeparatedGeneratedCountingMass
+        (L := L) (K := K) (Q := Q) hL depth (matrixSUNAdjointModel Nc)
+        spacing epsilon background chain fineSmall)
+      (cmp99RegionalExtendedDirichletGreen Omega A hc hAcoer)
+      probe target v)
 
 /-- Before the right cutoff, the literal generated-mass commutator has the
 printed common metric and the explicit physical source budget. -/
@@ -318,6 +329,11 @@ theorem cmp99Eq389GeneratedMassRegionalCorrection_exponentialKernelBound
       (cmp99Eq389GeneratedMassSourceBudget
         (L := L) (K := K) P depth spacing epsilon B0 ell) delta0 := by
   exact finitePiLpTypedExponentialKernelBound_comp_scalarMultiplier_right
+    (ι := FinBox 4
+      (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+    (κ := FinBox 4
+      (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+    (g := SUNLieCoord Nc)
     (cmp99SourceSeparatedSignedLargeBlockCutoff P L K Q depth cell)
     (cmp99Eq389GeneratedMassAmbientCorrection
       (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
