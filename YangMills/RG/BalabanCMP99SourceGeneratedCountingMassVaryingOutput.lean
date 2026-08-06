@@ -58,6 +58,10 @@ theorem cmp99GeneratedTerminalBlockResidue_injOn_owner
     exact congrArg Fin.val (congrFun howner i)
   have hrem : (x i).val % M ^ depth = (y i).val % M ^ depth := by
     exact congrArg Fin.val (congrFun hresidue i)
+  have hxdiv : (x i).val = M ^ depth * ((x i).val / M ^ depth) +
+      (x i).val % M ^ depth := (Nat.div_add_mod _ _).symm
+  have hydiv : (y i).val = M ^ depth * ((y i).val / M ^ depth) +
+      (y i).val % M ^ depth := (Nat.div_add_mod _ _).symm
   omega
 
 /-- A terminal-owner fibre of a canonical generated region chain contains at
@@ -71,6 +75,7 @@ theorem card_cmp99SourceIteratedLift_sameTerminalBlock_le
       (cmp99SourceIteratedLiftActiveRegionChain
         (M := M) Omega depth).SameTerminalBlock source target).card ≤
       (M ^ depth) ^ d := by
+  classical
   let regions := cmp99SourceIteratedLiftActiveRegionChain
     (M := M) Omega depth
   let residue : ActiveGaugeRegion.Site
@@ -137,7 +142,8 @@ theorem cmp99GeneratedTerminalBlockCount_mul_weight_sq
               cmp99SourceBlockAverageWeight M d := by ring
         _ = (cmp99SourceBlockAverageWeight M d) ^ depth *
             cmp99SourceBlockAverageWeight M d := by
-          rw [ih, card_mul_cmp99SourceBlockAverageWeight, one_mul]
+          rw [ih, card_mul_cmp99SourceBlockAverageWeight]
+          ring
         _ = (cmp99SourceBlockAverageWeight M d) ^ (depth + 1) := by
           rw [pow_succ]
 
@@ -167,6 +173,7 @@ theorem cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le
           spacing epsilon background chain fineSmall
           (singleFinitePiLp source (phi source)) target‖) ≤
       (cmp99SourceBlockAverageWeight M d) ^ depth * C := by
+  classical
   let regions := cmp99SourceIteratedLiftActiveRegionChain
     (M := M) Omega depth
   let fibre := Finset.univ.filter fun source =>
@@ -180,9 +187,9 @@ theorem cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le
     (∑ source,
         ‖regions.generatedCountingMass hd hM rho spacing epsilon background
           chain fineSmall (singleFinitePiLp source (phi source)) target‖) =
-      ∑ source in fibre,
+      (∑ source in fibre,
         ‖regions.generatedCountingMass hd hM rho spacing epsilon background
-          chain fineSmall (singleFinitePiLp source (phi source)) target‖ := by
+          chain fineSmall (singleFinitePiLp source (phi source)) target‖) := by
         change (∑ source,
             ‖regions.generatedCountingMass hd hM rho spacing epsilon background
               chain fineSmall (singleFinitePiLp source (phi source)) target‖) =
@@ -200,8 +207,8 @@ theorem cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le
               spacing epsilon background chain fineSmall source target
               (phi source) hsame,
             norm_zero]
-    _ ≤ ∑ _source in fibre,
-        (cmp99SourceBlockAverageWeight M d) ^ (2 * depth) * C := by
+    _ ≤ (∑ _source in fibre,
+        (cmp99SourceBlockAverageWeight M d) ^ (2 * depth) * C) := by
       apply Finset.sum_le_sum
       intro source hsource
       have hsame : regions.SameTerminalBlock source target :=
