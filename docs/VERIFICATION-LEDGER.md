@@ -27952,3 +27952,34 @@ remain to be reinstantiated from the generic sealed algebra.  Consequently
 the physical second species, complete CMP99 (3.89), defect contraction, rows
 23--24, and a `TermSource` inhabitant remain open.  Window 15 is compatible
 but unattained; the live counters remain exactly `20/41` and zero.
+
+## Addendum 572 (2026-08-06, **signed periodic CMP95 slope GREEN; regional reinstantiation open; 20/41 unchanged**)
+
+Exact source checkpoint
+`a8a84c302ed116a49b41acc12b85f78aa905c2ea` was validated by cold GitHub
+Actions run `31072468845` (workflow checkpoint
+`085d11706d9cee361d4192a3ae2087035cac7c51`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T04:55:07Z` to `05:18:08Z` and exited zero; the audit
+ran from `05:18:08Z` to `05:18:19Z` and also exited zero.  All ten declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`1206c3853e70aaec368c0afb0da7c42a3ebd9f67c248556b3e843964f88b5765`.
+The axiom JSON has SHA-256
+`c383a81aefd3104eda42af2e0b0582bd89d9d32d194cd08fac9a6b30837b5f21`;
+the stage ledger has SHA-256
+`f35e52ee2be2efc8dfcc3f388a8dd6db72198b590c9d464f63edfb17c66c8c9d`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves the signed one-dimensional slope, its explicit `Q = 1`
+branch, physical rescaling, periodicity, exact tensor square partition,
+contractivity, and the boundary-safe tensor slope with literal constant
+`16 * derivBound / M0`.  It does not reuse the old square-root physical
+partition by definition.  The regional signed partition, active-window
+membership transport, quadratic second difference, physical species,
+complete CMP99 (3.89), defect contraction, rows 23--24, and a `TermSource`
+inhabitant remain open.  This is infrastructure below window 15, not physical
+attainment.  The live counters remain exactly `20/41` and zero.

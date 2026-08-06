@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP95SourceSignedPeriodicCutoff
 import YangMills.RG.BalabanCMP95PeriodicSquareTorusSlope
 
 /-!
-# PRE-VALIDATION: slope of the signed periodic CMP95 cutoff
-
-The source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+# Slope of the signed periodic CMP95 cutoff
 
 This module supplies the first analytic replacement required after switching
 from the square-root cutoff to the source-faithful signed periodization.  The

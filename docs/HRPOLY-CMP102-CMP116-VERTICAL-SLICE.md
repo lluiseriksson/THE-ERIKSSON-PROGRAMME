@@ -2513,6 +2513,43 @@ or prove the physical defect budget is less than one.  It is step 4 below
 window 15, not attainment of that window or a terminal field.  The live
 counters remain exactly `20/41` and `TermSource = 0`.
 
+### Source-faithful signed cutoff slope (SEALED; regional reinstantiation open)
+
+Checkpoint `a8a84c302ed116a49b41acc12b85f78aa905c2ea` replaces the
+analytic slope input of the retired square-root periodization without changing
+the already sealed generic commutator/Green algebra.  It proves the
+one-dimensional signed-periodization bound from the union of the two endpoint
+active windows, treats `Q = 1` by the explicit constant branch, exposes the
+inverse physical scale after rescaling, and tensors the estimate with the
+literal constant
+
+`16 * derivBound / M0`.
+
+The `16` here is four coordinate directions times the one-dimensional slope
+constant `4`; it is not the later active-cell overlap factor.  Cold GitHub
+Actions run `31072468845` (workflow checkpoint `085d1170`) restored no project
+`.lake/build` cache.  The focal ran from `2026-08-06T04:55:07Z` to
+`05:18:08Z`; the ten-declaration audit exited zero at `05:18:19Z`, and every
+declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic evidence archive has SHA-256
+`1206c3853e70aaec368c0afb0da7c42a3ebd9f67c248556b3e843964f88b5765`.
+The axiom JSON has SHA-256
+`c383a81aefd3104eda42af2e0b0582bd89d9d32d194cd08fac9a6b30837b5f21`;
+the stage ledger has SHA-256
+`f35e52ee2be2efc8dfcc3f388a8dd6db72198b590c9d464f63edfb17c66c8c9d`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The existing active-cell window and its cardinal bound `<= 16` are geometric
+and cutoff-independent.  Only the implication from nonzero cutoff to window
+membership mentions the functional cutoff; for the signed cutoff it must be
+reinstantiated through the exact identity `signed^2 = squareWeight`.  The
+regional signed partition, that membership transport, the quadratic second
+difference, both physical species, complete CMP99 (3.89), `norm R' < 1`, rows
+23--24, and a `TermSource` inhabitant remain open.  This seal is infrastructure
+below window 15, not attainment of that window or a terminal producer.  The
+live counters remain exactly `20/41` and `TermSource = 0`.
+
 ### Declared finite route from CMP99 (3.88) to `20/41 -> 22/41`
 
 The bricks below are the complete declared route.  A green prefix is not a
