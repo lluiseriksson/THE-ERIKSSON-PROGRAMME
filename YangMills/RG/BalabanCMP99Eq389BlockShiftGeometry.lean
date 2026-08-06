@@ -51,8 +51,9 @@ theorem blockSite_shiftBack_eq_self_or_shiftBack
           apply Nat.div_eq_of_lt_le
           · have hlt : (n - 1) * m < n * m :=
               Nat.mul_lt_mul_of_pos_right (by omega) hm
+            rw [Nat.mul_comm n m] at hlt
             omega
-          · rw [show n - 1 + 1 = n by omega, Nat.mul_comm]
+          · rw [show n - 1 + 1 = n by omega, Nat.mul_comm n m]
             omega
         rw [hx0, Nat.zero_add, Nat.mod_eq_of_lt (by omega : m * n - 1 < m * n),
           Nat.zero_div, Nat.zero_add, hdiv,
@@ -63,8 +64,14 @@ theorem blockSite_shiftBack_eq_self_or_shiftBack
           rw [show (x i).val + m * n - 1 = ((x i).val - 1) + m * n by omega,
             Nat.add_mod_right, Nat.mod_eq_of_lt (by omega : (x i).val - 1 < m * n)]
         have hdecomp := Nat.div_add_mod (x i).val m
-        have hkm : ((x i).val / m) * m = (x i).val := by omega
-        have hkpos : 0 < (x i).val / m := by omega
+        have hkm : ((x i).val / m) * m = (x i).val := by
+          rw [hrem, Nat.add_zero] at hdecomp
+          exact hdecomp
+        have hkpos : 0 < (x i).val / m := by
+          by_contra hk
+          have hk0 : (x i).val / m = 0 := Nat.eq_zero_of_not_pos hk
+          rw [hk0, Nat.zero_mul] at hkm
+          omega
         have hklt : (x i).val / m < n := Nat.div_lt_of_lt_mul hx
         have hdivpred :
             ((x i).val - 1) / m = (x i).val / m - 1 := by
@@ -107,8 +114,9 @@ theorem blockSite_shiftBack_eq_self_or_shiftBack
       have hrem_lt := Nat.mod_lt (x i).val hm
       have hdivsame : ((x i).val - 1) / m = (x i).val / m := by
         apply Nat.div_eq_of_lt_le
-        · omega
-        · rw [Nat.add_mul]
+        · rw [Nat.mul_comm]
+          omega
+        · rw [Nat.add_mul, one_mul]
           omega
       rw [hpred, hdivsame]
     · apply Fin.ext
