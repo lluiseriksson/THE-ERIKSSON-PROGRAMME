@@ -152,10 +152,12 @@ theorem cmp99SourceSeparatedGeneratedCountingMass_GreenCutoffValue_le
 /-- Literal separated-ambient third-species summand, with the physical scalar
 mass kept outside the normalized generated counting mass.  The helper above
 uses `h(source) - h(target)`, so the explicit minus sign here restores the
-`h(target) - h(source)` orientation of `h * K - K * h` in CMP99 (3.88). -/
+`h(target) - h(source)` orientation of `h * K - K * h` in CMP99 (3.88).
+The averaging tower is specialized definitionally to
+`matrixSUNAdjointModel Nc`, as in the physical generated precision. -/
 noncomputable def cmp99Eq389GeneratedMassAmbientCorrection
     (P : CMP95SourceSmoothPartitionProfile) (hL : 2 ≤ L) (depth : ℕ)
-    (rho : SUNAdjointModel Nc) (spacing epsilon : ℝ)
+    (spacing epsilon : ℝ)
     (background : GaugeConfig 4
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)) (SUN Nc))
     (chain : CMP99SourceUbarRadiusChain 4 L Nc (depth + 1) epsilon)
@@ -177,8 +179,8 @@ noncomputable def cmp99Eq389GeneratedMassAmbientCorrection
     (v : SUNLieCoord Nc) : SUNLieCoord Nc :=
   (-cmp99SourceGeneratedPhysicalMass 4 L (depth + 1) spacing epsilon) •
     cmp99SourceSeparatedGeneratedCountingMass
-      (L := L) (K := K) (Q := Q) hL depth rho spacing epsilon background
-      chain fineSmall
+      (L := L) (K := K) (Q := Q) hL depth (matrixSUNAdjointModel Nc)
+      spacing epsilon background chain fineSmall
       (singleFinitePiLp source
         (cmp99Eq389GeneratedMassGreenCutoffValue P depth cell Omega A c hc
           hAcoer
@@ -192,7 +194,7 @@ noncomputable def cmp99Eq389GeneratedMassAmbientCorrection
 normalized ambient estimate by exactly its absolute value. -/
 theorem cmp99Eq389GeneratedMassAmbientCorrection_sum_norm_le
     (P : CMP95SourceSmoothPartitionProfile) (hL : 2 ≤ L) (depth : ℕ)
-    (rho : SUNAdjointModel Nc) (spacing epsilon : ℝ)
+    (spacing epsilon : ℝ)
     (background : GaugeConfig 4
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)) (SUN Nc))
     (chain : CMP99SourceUbarRadiusChain 4 L Nc (depth + 1) epsilon)
@@ -212,13 +214,13 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_sum_norm_le
         (SUNLieCoord Nc))
     (c : ℝ) (hc : 0 < c) (hAcoer : IsCoerciveCLM A c)
     (B0 delta0 ell : ℝ)
-    (C : CMP99Eq342RegionalGreenCertificate Omega rho U spacing A c hc
-      hAcoer B0 delta0 ell)
+    (C : CMP99Eq342RegionalGreenCertificate Omega (matrixSUNAdjointModel Nc)
+      U spacing A c hc hAcoer B0 delta0 ell)
     (target probe : FinBox 4
       (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
     (v : SUNLieCoord Nc) :
     (∑ source, ‖cmp99Eq389GeneratedMassAmbientCorrection
-      (L := L) (K := K) (Q := Q) P hL depth rho spacing epsilon background
+      (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
       chain fineSmall cell Omega A c hc hAcoer target probe source v‖) ≤
       |cmp99SourceGeneratedPhysicalMass 4 L (depth + 1)
           spacing epsilon| *
@@ -230,12 +232,12 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_sum_norm_le
                 target probe : ℝ))) * ‖v‖))) := by
   calc
     (∑ source, ‖cmp99Eq389GeneratedMassAmbientCorrection
-      (L := L) (K := K) (Q := Q) P hL depth rho spacing epsilon background
+      (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
       chain fineSmall cell Omega A c hc hAcoer target probe source v‖) =
       |cmp99SourceGeneratedPhysicalMass 4 L (depth + 1) spacing epsilon| *
         ∑ source, ‖cmp99SourceSeparatedGeneratedCountingMass
-          (L := L) (K := K) (Q := Q) hL depth rho spacing epsilon background
-          chain fineSmall
+          (L := L) (K := K) (Q := Q) hL depth (matrixSUNAdjointModel Nc)
+          spacing epsilon background chain fineSmall
           (singleFinitePiLp source
             (cmp99Eq389GeneratedMassGreenCutoffValue P depth cell Omega A c
               hc hAcoer
@@ -256,9 +258,9 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_sum_norm_le
                 target probe : ℝ))) * ‖v‖))) := by
       exact mul_le_mul_of_nonneg_left
         (cmp99SourceSeparatedGeneratedCountingMass_GreenCutoffValue_le
-          (L := L) (K := K) (Q := Q) P hL depth rho spacing epsilon
-          background chain fineSmall cell Omega U A c hc hAcoer B0 delta0
-          ell C target probe v)
+          (L := L) (K := K) (Q := Q) P hL depth
+          (matrixSUNAdjointModel Nc) spacing epsilon background chain fineSmall
+          cell Omega U A c hc hAcoer B0 delta0 ell C target probe v)
         (abs_nonneg _)
 
 end
