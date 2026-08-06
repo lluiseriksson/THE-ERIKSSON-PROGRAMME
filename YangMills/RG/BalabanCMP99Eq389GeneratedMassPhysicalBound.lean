@@ -162,7 +162,9 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_apply_eq_sum
         (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
         chain fineSmall cell Omega A c hc hAcoer
         (singleFinitePiLp probe v) target =
-      ∑ source, cmp99Eq389GeneratedMassAmbientKernelAtom
+      ∑ source : FinBox 4
+          (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)),
+        cmp99Eq389GeneratedMassAmbientKernelAtom
         (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
         chain fineSmall cell Omega A c hc hAcoer target probe source v := by
   rw [cmp99Eq389GeneratedMassAmbientCorrection,
