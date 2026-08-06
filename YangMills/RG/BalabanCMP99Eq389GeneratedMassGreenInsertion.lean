@@ -75,7 +75,7 @@ theorem norm_cmp99SourceSeparatedSignedLargeBlockCutoff_sub_le_of_sameTerminalBl
     have h :=
       finBoxDist_cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv_symm
         L K Q depth (e target) (e source)
-    simpa only [Equiv.symm_apply_apply] using h.symm
+    simpa only [e, Equiv.symm_apply_apply] using h.symm
   have hdiam : finBoxDist target.1 source.1 ≤ L ^ (depth + 1) - 1 :=
     cmp99SourceIteratedLift_terminalBlock_diameter
       (M := L)
@@ -296,14 +296,27 @@ theorem cmp99Eq389GeneratedCountingMass_GreenCutoffValue_le
               (cmp99SourceSeparatedLargeBlockSide L K depth) Q
               (cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
                 L K Q depth target) probe : ℝ))) * ‖v‖)) := by
+  let phi : ActiveGaugeZeroCochain
+      (cmp99IteratedLiftActiveRegion (M := L)
+        (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+        (depth + 1)) (SUNLieCoord Nc) :=
+    WithLp.toLp 2 fun source =>
+      cmp99Eq389GeneratedMassGreenCutoffValue P depth cell Omega A c hc
+        hAcoer target probe v source
+  change (∑ source,
+      ‖(cmp99SourceIteratedLiftActiveRegionChain (M := L)
+          (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+          (depth + 1)).generatedCountingMass (by norm_num) hL rho
+        spacing epsilon background chain fineSmall
+        (singleFinitePiLp source (phi source)) target‖) ≤ _
   apply cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le
     (Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
     (depth := depth + 1) (by norm_num) hL rho spacing epsilon background
-    chain fineSmall target
-    (fun source => cmp99Eq389GeneratedMassGreenCutoffValue P depth cell
-      Omega A c hc hAcoer target probe v source)
+    chain fineSmall target phi
   · positivity
   · intro source hsame
+    change ‖cmp99Eq389GeneratedMassGreenCutoffValue P depth cell Omega A c
+      hc hAcoer target probe v source‖ ≤ _
     exact norm_cmp99Eq389GeneratedMassGreenCutoffValue_le
       (L := L) (K := K) (Q := Q) P depth cell Omega rho U spacing A c hc
       hAcoer B0 delta0 ell C target source probe v hsame
