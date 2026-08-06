@@ -81,24 +81,22 @@ theorem norm_cmp99SourceSeparatedSignedCutoffLaplacianCoefficient_le
       (cmp99SourceSeparatedLargeBlockCutoffScale L K depth : ℝ) / 2
   have hxval (j : Fin 4) : (x' j).val = (x j).val :=
     finBox_cast_apply_val hsize x j
-  have hshiftCast (i : Fin 4) :
-      hsize ▸ (x.shift i) = x'.shift i := by
-    change hsize ▸ (x.shift i) = (hsize ▸ x).shift i
-    cases hsize
-    rfl
-  have hshiftBackCast (i : Fin 4) :
-      hsize ▸ (x.shiftBack i) = x'.shiftBack i := by
-    change hsize ▸ (x.shiftBack i) = (hsize ▸ x).shiftBack i
-    cases hsize
-    rfl
   have hshiftVal (i j : Fin 4) :
       ((x'.shift i) j).val = ((x.shift i) j).val := by
-    rw [← hshiftCast i]
-    exact finBox_cast_apply_val hsize (x.shift i) j
+    simp only [FinBox.shift]
+    by_cases hji : j = i
+    · simp only [hji, if_true]
+      rw [hxval i, ← hsize]
+    · simp only [hji, if_false]
+      exact hxval j
   have hshiftBackVal (i j : Fin 4) :
       ((x'.shiftBack i) j).val = ((x.shiftBack i) j).val := by
-    rw [← hshiftBackCast i]
-    exact finBox_cast_apply_val hsize (x.shiftBack i) j
+    simp only [FinBox.shiftBack]
+    by_cases hji : j = i
+    · simp only [hji, if_true]
+      rw [hxval i, ← hsize]
+    · simp only [hji, if_false]
+      exact hxval j
   have hxcoord :
       cmp99SourceSeparatedLargeBlockCoordinate L K depth
           (fun j => (x j).val) =
