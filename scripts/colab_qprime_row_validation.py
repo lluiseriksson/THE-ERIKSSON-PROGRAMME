@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "signed-covariant-link-v1"
-SOURCE_SHA = "bb79148699fbaaaef8a2327204980419d7ece2d0"
+RUNNER_REV = "signed-covariant-link-v2"
+SOURCE_SHA = "b99e84b93f7f0b1f66f068f8e535e40dfd6dbbd2"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -40,7 +40,7 @@ PATH_MANIFEST = Path("/content/hrpoly-signed-covariant-link-paths.txt")
 
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBound.lean":
-        "a820f492865b59376530d5f598de4ed8f9043ef918b9dcdcc19754b6a16f4b19",
+        "e1b434b483e7ee4300adf9b3532fc1039354f64bab2b3c99eaf8f3e38545b10d",
     "YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBoundAudit.lean":
         "63fd60cb8f7ffe7599b26b3fa82f30471a123e0a03d077dbcc182bb88ce6824f",
 }
