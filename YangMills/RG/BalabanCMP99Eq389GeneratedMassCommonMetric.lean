@@ -37,7 +37,8 @@ universe u v u' v' w
 isometric reindexing of both kernel legs. -/
 theorem sum_norm_finitePiLpTypedKernelReindex_single_varying
     {ι : Type u} {κ : Type v} {ι' : Type u'} {κ' : Type v'} {g : Type w}
-    [Fintype ι] [Fintype κ] [Fintype ι'] [DecidableEq ι'] [Fintype κ']
+    [Fintype ι] [DecidableEq ι] [Fintype κ]
+    [Fintype ι'] [DecidableEq ι'] [Fintype κ']
     [NormedAddCommGroup g] [NormedSpace ℝ g]
     (sourceEquiv : ι ≃ ι') (targetEquiv : κ ≃ κ')
     (T : FinitePiLpField ι g →L[ℝ] FinitePiLpField κ g)
@@ -77,7 +78,7 @@ theorem sum_norm_finitePiLpTypedKernelReindex_single_varying
           singleFinitePiLp source (phi (sourceEquiv source)) := by
         rw [singleFinitePiLp_eq_toLp_single,
           singleFinitePiLp_eq_toLp_single]
-        simpa only [sourceBack] using
+        simpa only [sourceBack, Equiv.symm_apply_apply] using
           (LinearIsometryEquiv.piLpCongrLeft_single
             (p := (2 : ENNReal)) (𝕜 := ℝ) sourceEquiv.symm
             (sourceEquiv source) (phi (sourceEquiv source)))
@@ -137,14 +138,14 @@ theorem
   calc
     (source.1 i).val / (K * L ^ (depth + 1)) =
         (source.1 i).val / (L ^ (depth + 1) * K) := by
-      rw [Nat.mul_comm K]
+      simpa only [Nat.mul_comm]
     _ = ((source.1 i).val / L ^ (depth + 1)) / K := by
       rw [Nat.div_div_eq_div_mul]
     _ = ((target.1 i).val / L ^ (depth + 1)) / K := by rw [hi]
     _ = (target.1 i).val / (L ^ (depth + 1) * K) := by
       rw [Nat.div_div_eq_div_mul]
     _ = (target.1 i).val / (K * L ^ (depth + 1)) := by
-      rw [Nat.mul_comm K]
+      simpa only [Nat.mul_comm]
 
 /-- The literal CMP99 (3.42) block metric is exactly constant in its output
 coordinate across one generated terminal fibre. -/
