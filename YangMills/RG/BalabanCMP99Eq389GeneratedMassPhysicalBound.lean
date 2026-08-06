@@ -191,9 +191,7 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_exponentialKernelBound
           cmp99Eq389GeneratedMassAmbientKernelAtom
           (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
           chain fineSmall cell Omega A c hc hAcoer target probe source v‖ := by
-        apply congrArg (fun z : GaugeZeroCochain 4
-          (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
-          (SUNLieCoord Nc) => ‖z‖)
+        apply congrArg (fun z : SUNLieCoord Nc => ‖z‖)
         apply Finset.sum_congr rfl
         intro source _hsource
         unfold cmp99Eq389GeneratedMassAmbientKernelAtom
