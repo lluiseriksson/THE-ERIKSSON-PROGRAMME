@@ -283,11 +283,30 @@ theorem
             (cmp99Eq342RescaledBlockDist
               (cmp99SourceSeparatedLargeBlockSide L Klarge depth) Q
               target source : ℝ))) * ‖v‖ := by
-        rw [show beta * (B0 * (L ^ (depth + 1) : ℝ) ^ 2) =
-            B0 * (beta * (L ^ (depth + 1) : ℝ) ^ 2) by ring,
-          cmp99SourceSeparatedSignedCutoffLaplacianBudget_mul_range_sq]
-        unfold cmp99Eq389SignedCutoffLaplacianSourceBudget
-        ring
+        calc
+          beta * (B0 * (L ^ (depth + 1) : ℝ) ^ 2 *
+              Real.exp (-(delta0 *
+                (cmp99Eq342RescaledBlockDist
+                  (cmp99SourceSeparatedLargeBlockSide L Klarge depth) Q
+                  target source : ℝ))) * ‖v‖) =
+            (B0 * (beta * (L ^ (depth + 1) : ℝ) ^ 2)) *
+              Real.exp (-(delta0 *
+                (cmp99Eq342RescaledBlockDist
+                  (cmp99SourceSeparatedLargeBlockSide L Klarge depth) Q
+                  target source : ℝ))) * ‖v‖ := by ring
+          _ = (B0 * ((12 * P.secondDerivBound) / (Klarge : ℝ) ^ 2)) *
+              Real.exp (-(delta0 *
+                (cmp99Eq342RescaledBlockDist
+                  (cmp99SourceSeparatedLargeBlockSide L Klarge depth) Q
+                  target source : ℝ))) * ‖v‖ := by
+            rw [cmp99SourceSeparatedSignedCutoffLaplacianBudget_mul_range_sq]
+          _ = cmp99Eq389SignedCutoffLaplacianSourceBudget P B0 Klarge *
+              Real.exp (-(delta0 *
+                (cmp99Eq342RescaledBlockDist
+                  (cmp99SourceSeparatedLargeBlockSide L Klarge depth) Q
+                  target source : ℝ))) * ‖v‖ := by
+            unfold cmp99Eq389SignedCutoffLaplacianSourceBudget
+            ring
 
 /-- A zero right signed cutoff kills the isolated second-species cell on a
 one-site source probe. -/
