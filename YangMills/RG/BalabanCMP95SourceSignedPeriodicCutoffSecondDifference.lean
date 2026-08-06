@@ -133,10 +133,10 @@ theorem norm_cmp95SourcePeriodicSignedCutoff_centeredSecondDifference_le
         cmp95SourcePeriodicSignedCutoff P Q cell (x - h)‖ ≤
       (12 * P.secondDerivBound) * ‖h‖ ^ 2 := by
   by_cases hQ1 : Q = 1
-  · simp [cmp95SourcePeriodicSignedCutoff, hQ1]
+  · norm_num [cmp95SourcePeriodicSignedCutoff, hQ1]
     exact mul_nonneg
       (mul_nonneg (show (0 : ℝ) ≤ 12 by norm_num)
-        P.secondDerivBound_nonneg) (sq_nonneg |h|)
+        P.secondDerivBound_nonneg) (sq_nonneg h)
   · simpa [cmp95SourcePeriodicSignedCutoff, hQ1] using
       norm_cmp95PeriodicSignedCutoff_centeredSecondDifference_le
         P Q cell x h
