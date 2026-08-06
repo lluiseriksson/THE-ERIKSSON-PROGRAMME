@@ -9,10 +9,12 @@ import YangMills.RG.BalabanCMP99SourceSeparatedSignedLargeBlockPartition
 import YangMills.RG.FinitePiLpSourceOverlapSum
 
 /-!
-# PRE-VALIDATION: complete generated-mass species in CMP99 (3.89)
+# COLD-SEALED: complete generated-mass species in CMP99 (3.89)
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
+Exact source checkpoint `050783b4155282d06df25c4566fc125fa9463d4a`
+passed cold GitHub Actions run `31113901772` without restoring or saving a
+project `.lake/build` cache.  Focal and audit exited zero, and all nine
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 This file sums the sealed ambient generated-mass atoms to the literal scalar
 commutator, inserts the contractive right signed cutoff, and sums the regional

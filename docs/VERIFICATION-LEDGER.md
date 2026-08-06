@@ -28274,3 +28274,36 @@ commutator sum, right cutoff, cell sum, complete third species, full CMP99
 (3.89), contraction, rows 23--24, and a `TermSource` inhabitant remain open.
 Window 15 remains compatible but unattained; the live counters remain exactly
 `20/41` and zero.
+
+## Addendum 582 (2026-08-06, **complete generated-mass species GREEN; three-species assembly open; 20/41 unchanged**)
+
+Exact source checkpoint
+`050783b4155282d06df25c4566fc125fa9463d4a` was validated by cold GitHub
+Actions run `31113901772` (workflow checkpoint
+`2b961a2d8b28c42ae25eab05f5c86ef80cd8b0ee`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T15:11:42Z` to `15:57:14Z` and exited zero; the
+audit ran from `15:57:14Z` to `15:57:34Z` and also exited zero.  All nine
+declarations use exactly `[propext, Classical.choice, Quot.sound]`, and the
+gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`6467cf2c1d01589853d01aec874610bc7bab01d5e181d98317462f3d6e372dd6`.
+The axiom JSON has SHA-256
+`1e77889f1ba6f1ba04ae922409ca01971167e0b6574da8142bcc6d57858ff9ac`;
+the stage ledger has SHA-256
+`b99e9f557de665dcb257b7aeef82980baba5bcf8ee0297c3a017c15e924eb302`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The module composes the literal physical generated-mass commutator with the
+canonical regional Dirichlet Green and right signed cutoff, then sums cells
+with the exact overlap `16`.  Its source budget leaves visible the physical
+mass, one normalized counting-mass factor and the signed `8 / K` cutoff
+gain; no `K^4` count or shared three-species constant is hidden.
+
+This is the third displayed species only.  The signed first-species
+reinstantiation, complete three-species CMP99 (3.89), contraction, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 is still
+compatible but unattained; the live counters remain exactly `20/41` and
+zero.

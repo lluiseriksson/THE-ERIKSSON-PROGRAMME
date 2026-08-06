@@ -3491,3 +3491,36 @@ the right cutoff, sum regional cells, prove the complete third species or
 full CMP99 (3.89), attain `norm R' < 1`, discharge rows 23--24, or inhabit a
 `TermSource`.  Window 15 remains compatible but unattained; the live counters
 remain exactly `20/41` and `TermSource = 0`.
+
+### Step 7.4k complete generated-mass species (SEALED; three-species assembly open)
+
+Exact source checkpoint `050783b4155282d06df25c4566fc125fa9463d4a`
+passed cold GitHub Actions run `31113901772` (workflow checkpoint
+`2b961a2d8b28c42ae25eab05f5c86ef80cd8b0ee`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+compiled the focal from `2026-08-06T15:11:42Z` to `15:57:14Z`.  The audit
+finished at `15:57:34Z`; both stages exited zero.  All nine audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The brick assembles the literal generated-mass commutator on the separated
+ambient carrier, inserts the canonical regional Dirichlet Green and the
+contractive right signed cutoff, and sums all cells using exactly the sealed
+source overlap `16`.  The pre-overlap budget keeps the physical scalar mass,
+the one surviving normalized counting-mass weight, the signed cutoff gain
+`8 * derivBound / K`, and the Green amplitude as separate visible factors.
+No cardinality `K^4`, generic Schur conversion, Poincare constant or shared
+three-species constant is introduced.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`6467cf2c1d01589853d01aec874610bc7bab01d5e181d98317462f3d6e372dd6`.
+Its axiom JSON has SHA-256
+`1e77889f1ba6f1ba04ae922409ca01971167e0b6574da8142bcc6d57858ff9ac`;
+the stage ledger has SHA-256
+`b99e9f557de665dcb257b7aeef82980baba5bcf8ee0297c3a017c15e924eb302`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This seal completes only the third displayed species of CMP99 (3.89).  The
+first species still requires its signed-cutoff reinstantiation; the literal
+sum of all three species, defect contraction, rows 23--24 and a `TermSource`
+inhabitant remain open.  Window 15 remains compatible but unattained; the
+live counters remain exactly `20/41` and `TermSource = 0`.

@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP99Eq389GeneratedMassPhysicalBound
 
 /-!
-# PRE-VALIDATION audit: complete generated-mass species in CMP99 (3.89)
+# COLD-SEALED audit: complete generated-mass species in CMP99 (3.89)
 
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and these declarations have not yet been compiler-audited.
+Exact source checkpoint `050783b4155282d06df25c4566fc125fa9463d4a`
+passed cold GitHub Actions run `31113901772` without restoring or saving a
+project `.lake/build` cache.  All nine declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99Eq389GeneratedMassSourceBudget
