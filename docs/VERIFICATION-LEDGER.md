@@ -27752,3 +27752,35 @@ with a central metric.  The common-metric transport, complete first species,
 three-species combination, `norm R' < 1`, rows 23--24, and `TermSource`
 inhabitant all remain open.  Window 15 is unattained and the live counters
 remain exactly `20/41` and zero.
+
+## Addendum 566 (2026-08-06, **literal one-step block-owner geometry GREEN; exponential transport open; 20/41 unchanged**)
+
+The block-shift geometry was validated from exact source checkpoint
+`79b8f33b2d73dc62e5d34bbf475c56f52a5331f5` by cold GitHub Actions run
+`31061565085` (workflow checkpoint
+`5e538d6856d5861f66208178a9754731bae4e387`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset and Mathlib was
+exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-06T01:04:19Z` to `01:29:42Z`, completed with
+`Build completed successfully (8521 jobs).`, and exited zero.  The audit ran
+from `01:29:42Z` to `01:29:48Z` and also exited zero.  Both declarations
+depend exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`b83e41e29fa2772e9b632dcc820a65285adda4c139579fe8d3844cc2cdfe3a18`.
+The axiom JSON has SHA-256
+`684448d443268c791b8435142fb1f1bb359e8f9536602b1f7e3acfa9f107747d`;
+the stage ledger has SHA-256
+`6677b456595821773ca62ce9cc745232a5499046b16840deab02a5a7fdae5b34`.
+Every entry of the internal `SHA256SUMS` manifest independently matched.
+
+The first theorem proves that a backward fine shift maps under the literal
+block quotient either to the same owner or its backward coarse neighbor; the
+second derives coarse distance at most one.  This does not yet perform the
+real exponential-rate transport, prove the common-metric first species or
+the complete (3.89), attain window 15, discharge rows 23--24, or inhabit a
+`TermSource`.  The live counters remain exactly `20/41` and zero.

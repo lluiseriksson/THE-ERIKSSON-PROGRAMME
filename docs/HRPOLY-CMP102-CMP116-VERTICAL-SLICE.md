@@ -2759,6 +2759,35 @@ literal block owner by at most one coarse step and pay the corresponding
 remains unattained and the live counters remain exactly `20/41` and
 `TermSource = 0`.
 
+### Step 7.4c one-step block-owner geometry (SEALED; exponential transport open)
+
+Exact source checkpoint `79b8f33b2d73dc62e5d34bbf475c56f52a5331f5`
+passed cold GitHub Actions run `31061565085` (workflow checkpoint
+`5e538d6856d5861f66208178a9754731bae4e387`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+completed the 8,521-job focal.  Focal and audit exited zero; both declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The quotient/remainder proof is literal.  A backward fine step either remains
+inside its current `blockSite` fibre or, precisely when it crosses a lower
+block face (including the periodic wrap), maps to the one-step backward coarse
+neighbor.  Consequently its coarse Chebyshev displacement is at most one.
+The comparison is constructed from `blockSite`; it is not a metric premise.
+
+The independently downloaded evidence archive has SHA-256
+`b83e41e29fa2772e9b632dcc820a65285adda4c139579fe8d3844cc2cdfe3a18`.
+Its axiom JSON has SHA-256
+`684448d443268c791b8435142fb1f1bb359e8f9536602b1f7e3acfa9f107747d`
+and its stage ledger has SHA-256
+`6677b456595821773ca62ce9cc745232a5499046b16840deab02a5a7fdae5b34`.
+Every entry of the internal `SHA256SUMS` manifest independently matched.
+
+This closes the geometry needed to transport each backward incident metric,
+but not the real exponential inequality that pays its `exp(delta0)` factor.
+The common-metric first species, all-species (3.89), `norm R' < 1`, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 is unattained;
+the live counters remain exactly `20/41` and `TermSource = 0`.
+
 ### Step 5 ambient dictionary (SEALED)
 
 Checkpoint `8ac1a1c2508f65e51d4eb89f81bf650780691cf6` freezes the

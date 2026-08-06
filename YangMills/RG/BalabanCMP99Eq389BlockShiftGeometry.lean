@@ -7,11 +7,12 @@ import YangMills.RG.BalabanCMP99Eq389CovariantLinkGreenBound
 import YangMills.RG.PhysicalShellLocalityDiv
 
 /-!
-# PRE-VALIDATION: block geometry for the first CMP99 (3.89) species
+# Block geometry for the first CMP99 (3.89) species
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and its declarations have not yet been verified by the Lean
-compiler.
+Compiler-verified at exact source checkpoint
+`79b8f33b2d73dc62e5d34bbf475c56f52a5331f5` by cold GitHub Actions run
+`31061565085`.  The focal completed 8,521 jobs and both audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The sealed regional-Green link bound retains the exact block metric at each
 backward-shifted fine site.  This module proves from the literal quotient map
