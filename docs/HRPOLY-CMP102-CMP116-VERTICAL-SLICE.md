@@ -2819,6 +2819,41 @@ three species of CMP99 (3.89), prove `norm R' < 1`, discharge rows 23--24, or
 inhabit a `TermSource`.  Window 15 remains compatible but unattained, and the
 live counters remain exactly `20/41` and `TermSource = 0`.
 
+### Step 7.4e physical first-species endpoint (SEALED; remaining two species open)
+
+Exact source checkpoint `68fea228b9f1e7061f73df078b94f4cca6d08c9e`
+passed cold GitHub Actions run `31065483711` (workflow checkpoint
+`c37d1eb0386c6f0840a5e20aa1de6b44fa1adc3b`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+completed the 8,523-job focal.  Focal and audit exited zero; both declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The endpoint specializes the cutoff to the literal source-separated square
+partition and evaluates the four directions.  Its scalar is exactly
+
+`4 * ((4 * B0 * derivBound) / Klarge) * (1 + exp(delta0))`.
+
+Thus the inverse-`Klarge` gain is present before every cell, overlap, or layer
+sum.  The independent large-block parameter is named `Klarge`; the regional
+precision remains the separate operator `A` with its literal CMP99 (3.42)
+certificate.  No shared constant conflates the two contributions to the
+precision.
+
+The independently downloaded evidence archive has SHA-256
+`6603cf0b45e475725ec060e3295f8e55aa8a408c16e38eff6b8b78e83540f11c`.
+Its axiom JSON has SHA-256
+`3ab3832f8f2aefaadac5e753d76e540c9bd87063c380f748422cd6550832d827`
+and its stage ledger has SHA-256
+`32b4b8ec95a1363ad2b786bd8aba010c4dfbe73a6ff0d7bb18b5323937af4419`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This completes only the covariant-link species.  The cutoff-Laplacian and
+normalized `Q'^*Q'` species still require their corresponding regional-Green
+bounds and common-metric endpoints; the three-species CMP99 (3.89) estimate,
+`norm R' < 1`, rows 23--24, and a `TermSource` inhabitant remain open.  Window
+15 is compatible but unattained, and the live counters remain exactly
+`20/41` and `TermSource = 0`.
+
 ### Step 5 ambient dictionary (SEALED)
 
 Checkpoint `8ac1a1c2508f65e51d4eb89f81bf650780691cf6` freezes the

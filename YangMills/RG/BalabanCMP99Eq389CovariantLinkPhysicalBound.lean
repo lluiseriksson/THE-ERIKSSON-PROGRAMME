@@ -6,10 +6,11 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99Eq389CovariantLinkCommonMetric
 
 /-!
-# PRE-VALIDATION: physical first-species bound in CMP99 (3.89)
+# COLD-SEALED: physical first-species bound in CMP99 (3.89)
 
-The source is present, but its `.olean` has not yet been materialized and its
-declarations have not yet been verified by the Lean compiler.
+This module and its audit were compiler-verified from exact source checkpoint
+`68fea228b9f1e7061f73df078b94f4cca6d08c9e` by cold GitHub Actions run
+`31065483711`, without restoring or saving a project `.lake/build` cache.
 
 This module specializes the sealed common-metric link estimate to the literal
 source-separated square partition.  The exact pre-sum `Klarge⁻¹` gain is

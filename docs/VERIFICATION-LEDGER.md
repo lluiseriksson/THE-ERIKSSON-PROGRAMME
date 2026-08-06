@@ -27719,6 +27719,40 @@ pointwise first-species estimate, combine the three species of (3.89), attain
 `norm R' < 1`, discharge rows 23--24, or inhabit a `TermSource`.  Window 15
 therefore remains open and the live counters remain exactly `20/41` and zero.
 
+## Addendum 568 (2026-08-06, **physical first species of CMP99 (3.89) GREEN; other species and window 15 open; 20/41 unchanged**)
+
+The source-separated first-species endpoint was validated from exact source
+checkpoint `68fea228b9f1e7061f73df078b94f4cca6d08c9e` by cold GitHub Actions run
+`31065483711` (workflow checkpoint
+`c37d1eb0386c6f0840a5e20aa1de6b44fa1adc3b`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset and Mathlib was
+exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-06T02:25:40Z` to `02:51:10Z`, completed with
+`Build completed successfully (8523 jobs).`, and exited zero.  The audit ran
+from `02:51:10Z` to `02:51:17Z` and also exited zero.  Both declarations
+depend exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`6603cf0b45e475725ec060e3295f8e55aa8a408c16e38eff6b8b78e83540f11c`.
+The axiom JSON has SHA-256
+`3ab3832f8f2aefaadac5e753d76e540c9bd87063c380f748422cd6550832d827`;
+the stage ledger has SHA-256
+`32b4b8ec95a1363ad2b786bd8aba010c4dfbe73a6ff0d7bb18b5323937af4419`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The theorem consumes the literal CMP99 (3.42) left-derivative estimate and
+the literal source-separated cutoff, transports every incident term to the
+central block metric, and exposes exactly
+`4 * ((4 * B0 * derivBound) / Klarge) * (1 + exp(delta0))` before any cell or
+layer sum.  `Klarge` is separate from the regional precision operator `A`.
+This does not bound the other two species, prove complete CMP99 (3.89), attain
+`norm R' < 1`, discharge rows 23--24, or inhabit a `TermSource`.  Window 15
+remains open and the live counters remain exactly `20/41` and zero.
+
 ## Addendum 565 (2026-08-06, **CMP99 (3.89) regional-Green incident-metric link bound GREEN; common metric open; 20/41 unchanged**)
 
 The regional-Green link bound was validated from exact source checkpoint
