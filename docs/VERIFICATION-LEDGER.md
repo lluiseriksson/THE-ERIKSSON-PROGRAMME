@@ -27889,3 +27889,34 @@ periodic cutoff.  The physical second species, complete CMP99 (3.89), defect
 contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window
 15 is still compatible but unattained; the live counters remain exactly
 `20/41` and zero.
+
+## Addendum 570 (2026-08-06, **CMP95 quadratic profile second difference GREEN; physical periodization open; 20/41 unchanged**)
+
+Exact source checkpoint
+`b6469e61f3db08f17d44c45c1db056841be20974` was validated by cold GitHub
+Actions run `31069570903` (workflow checkpoint
+`b55a1e7f7739b7af0f79f329d519aea196c60225`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored.  The focal ran
+from `2026-08-06T03:52:55Z` to `03:53:04Z` and exited zero; the audit ran from
+`03:53:04Z` to `03:53:10Z` and also exited zero.  All three declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`1d792a3b75f75f1a3c515a2c04537f27e94adf5f3ac369e5264d6ba685d8df7f`.
+The axiom JSON has SHA-256
+`8c1e625514797a3759591e27aed5d0ee7bcf6edb72abf37e4b1d7d582acf4a1e`;
+the stage ledger has SHA-256
+`78dbc802700b0f81424544ca4607d69f1f0616c13adcfa742aaa27b098aaa8ab`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This seal proves a global derivative-Lipschitz estimate, its first-order
+Taylor remainder, and a centred second-difference estimate quadratic in the
+increment, all from the canonical second-derivative budget of the literal
+CMP95 source profile.  It deliberately does not apply those estimates to the
+existing square-root periodization.  A sign-preserving linear periodization,
+its disjoint-support square identity for periods with at least two cells, and
+an explicit one-cell branch remain open.  Hence the physical second species,
+complete CMP99 (3.89), defect contraction, rows 23--24, and a `TermSource`
+inhabitant remain open.  Window 15 is still compatible but unattained; the
+live counters remain exactly `20/41` and zero.

@@ -6,10 +6,11 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP95SourceSmoothPartitionSecondDerivative
 
 /-!
-# PRE-VALIDATION: second differences of the CMP95 source profile
+# Second differences of the CMP95 source profile
 
-The source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+Cold GitHub Actions run `31069570903` materialized this module at source
+checkpoint `b6469e61f3db08f17d44c45c1db056841be20974`; its three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP96 (2.40) multiplies a discrete cutoff Laplacian by the value component of
 the regional Green estimate.  The latter has quadratic physical scale, so the

@@ -2679,6 +2679,43 @@ four regional Green estimates (2.43), their combination into (2.44)/CMP99
 open.  Window 15 therefore remains compatible but unattained, the live
 producer count remains exactly `20/41`, and `TermSource = 0`.
 
+### Quadratic source-profile second difference (SEALED; periodization open)
+
+Exact source checkpoint `b6469e61f3db08f17d44c45c1db056841be20974`
+passed cold GitHub Actions run `31069570903` (workflow checkpoint
+`b55a1e7f7739b7af0f79f329d519aea196c60225`).  The checkout recorded
+`COLD_MODE=true` and restored no project `.lake/build` cache.  The focal and
+audit both exited zero; all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The seal derives, from the canonical source-profile second-derivative budget,
+a global Lipschitz estimate for the first derivative, a first-order Taylor
+remainder, and the centred quadratic estimate
+
+`norm (h(x+u) - 2*h(x) + h(x-u)) <= 2*secondDerivBound*norm(u)^2`.
+
+The factor `2` is intentionally non-sharp and remains visible.  This is a
+profile-level theorem only.  It does not identify the current square-root
+periodization with the source profile and therefore does not yet feed the
+physical cutoff-Laplacian species.  The accepted next dictionary is a linear,
+sign-preserving periodization of the literal profile: disjoint support must
+identify its square with the sealed square weight when the period has at least
+two cells, while the one-cell volume remains an explicit separate branch.
+
+The independently downloaded evidence archive has SHA-256
+`1d792a3b75f75f1a3c515a2c04537f27e94adf5f3ac369e5264d6ba685d8df7f`.
+Its axiom JSON has SHA-256
+`8c1e625514797a3759591e27aed5d0ee7bcf6edb72abf37e4b1d7d582acf4a1e`
+and its stage ledger has SHA-256
+`78dbc802700b0f81424544ca4607d69f1f0616c13adcfa742aaa27b098aaa8ab`;
+all 13 entries of the internal `SHA256SUMS` manifest were independently
+rehash-verified.
+
+This seal does not prove the periodic dictionary, the physical second species,
+complete CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource`
+inhabitant.  Window 15 remains compatible but unattained, the live producer
+count remains exactly `20/41`, and `TermSource = 0`.
+
 ### Step 7.1 regional-Green source interface (SEALED)
 
 `BalabanCMP99Eq342RegionalGreenCertificate` records the one source-facing
