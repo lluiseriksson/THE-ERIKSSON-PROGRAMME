@@ -62,8 +62,10 @@ theorem cmp99GeneratedTerminalBlockResidue_injOn_owner
       (x i).val % M ^ depth := (Nat.div_add_mod _ _).symm
   have hydiv : (y i).val = M ^ depth * ((y i).val / M ^ depth) +
       (y i).val % M ^ depth := (Nat.div_add_mod _ _).symm
+  rw [hquot, hrem] at hxdiv
   omega
 
+open scoped Classical in
 /-- A terminal-owner fibre of a canonical generated region chain contains at
 most the literal block volume `(M^depth)^d`, independently of the ambient
 volume and of the active-region shape. -/
@@ -193,10 +195,10 @@ theorem cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le
         change (∑ source,
             ‖regions.generatedCountingMass hd hM rho spacing epsilon background
               chain fineSmall (singleFinitePiLp source (phi source)) target‖) =
-          ∑ source in Finset.univ.filter (fun source =>
+          (∑ source in Finset.univ.filter (fun source =>
             regions.SameTerminalBlock source target),
             ‖regions.generatedCountingMass hd hM rho spacing epsilon background
-              chain fineSmall (singleFinitePiLp source (phi source)) target‖
+              chain fineSmall (singleFinitePiLp source (phi source)) target‖)
         rw [Finset.sum_filter]
         apply Finset.sum_congr rfl
         intro source _hsource
