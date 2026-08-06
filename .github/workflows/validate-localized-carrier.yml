@@ -1,4 +1,4 @@
-name: Validate CMP99 Eq3.89 covariant link species
+name: Validate CMP99 Eq3.89 physical first species
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 47d02e63a865bb75bba6f14d2da1a12e6a675fe2
+  SOURCE_SHA: 30afb55b5276834a3a1aa00e2ff654c386168e96
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -109,8 +109,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99Eq389CovariantLinkCommonMetric.lean \
-            YangMills/RG/BalabanCMP99Eq389CovariantLinkCommonMetricAudit.lean \
+            YangMills/RG/BalabanCMP99Eq389CovariantLinkPhysicalBound.lean \
+            YangMills/RG/BalabanCMP99Eq389CovariantLinkPhysicalBoundAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -132,10 +132,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_eq389_covariant_link_common_metric_focal \
-            lake build YangMills.RG.BalabanCMP99Eq389CovariantLinkCommonMetric
-          run_stage cmp99_eq389_covariant_link_common_metric_audit \
-            lake env lean YangMills/RG/BalabanCMP99Eq389CovariantLinkCommonMetricAudit.lean
+          run_stage cmp99_eq389_covariant_link_physical_bound_focal \
+            lake build YangMills.RG.BalabanCMP99Eq389CovariantLinkPhysicalBound
+          run_stage cmp99_eq389_covariant_link_physical_bound_audit \
+            lake env lean YangMills/RG/BalabanCMP99Eq389CovariantLinkPhysicalBoundAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -149,7 +149,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp99_eq389_covariant_link_common_metric_audit.log": 2,
+              "cmp99_eq389_covariant_link_physical_bound_audit.log": 2,
           }
           result = {}
           for name, expected in audits.items():
