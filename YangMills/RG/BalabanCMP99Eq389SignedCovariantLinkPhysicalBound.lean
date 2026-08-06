@@ -301,7 +301,8 @@ theorem cmp99Eq389SignedCovariantLinkAmbientOperator_apply
         (cmp99SourceSeparatedSignedLargeBlockCutoff
           P L K Q depth cell) phi x := by
   rw [cmp99Eq389SignedCovariantLinkAmbientOperator,
-    ContinuousLinearMap.add_apply, finitePiLpScalarCommutator_apply_eq,
+    ContinuousLinearMap.add_apply, PiLp.add_apply,
+    finitePiLpScalarCommutator_apply_eq,
     finitePiLpScalarMultiplier_apply,
     cmp99GeneratedAmbientScaledCovariantLaplacian_scalarMultiplier,
     cmp99CutoffLaplacianCorrection_one_eq_sourceSeparatedSignedCoefficient]
