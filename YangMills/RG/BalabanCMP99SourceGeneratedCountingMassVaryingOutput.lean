@@ -189,13 +189,13 @@ theorem cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le
     (∑ source,
         ‖regions.generatedCountingMass hd hM rho spacing epsilon background
           chain fineSmall (singleFinitePiLp source (phi source)) target‖) =
-      (∑ source in fibre,
+      (∑ source ∈ fibre,
         ‖regions.generatedCountingMass hd hM rho spacing epsilon background
           chain fineSmall (singleFinitePiLp source (phi source)) target‖) := by
         change (∑ source,
             ‖regions.generatedCountingMass hd hM rho spacing epsilon background
               chain fineSmall (singleFinitePiLp source (phi source)) target‖) =
-          (∑ source in Finset.univ.filter (fun source =>
+          (∑ source ∈ Finset.univ.filter (fun source =>
             regions.SameTerminalBlock source target),
             ‖regions.generatedCountingMass hd hM rho spacing epsilon background
               chain fineSmall (singleFinitePiLp source (phi source)) target‖)
@@ -209,7 +209,7 @@ theorem cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le
               spacing epsilon background chain fineSmall source target
               (phi source) hsame,
             norm_zero]
-    _ ≤ (∑ _source in fibre,
+    _ ≤ (∑ _source ∈ fibre,
         (cmp99SourceBlockAverageWeight M d) ^ (2 * depth) * C) := by
       apply Finset.sum_le_sum
       intro source hsource
