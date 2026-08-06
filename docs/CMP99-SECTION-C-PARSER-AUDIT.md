@@ -357,15 +357,23 @@ against that normalization before any cell sum.  The two differential
 species likewise consume the covariant-derivative and value components of
 (3.42), respectively; a bare bound on `norm G'` does not suffice.
 
-There is no independent second-profile constant in the Laplacian species.
 The exact scalar discrete Laplacian is the **signed** sum of the two incident
-first differences in each direction.  The sealed CMP96 (2.40) specialization
-first proves that identity and only then applies the triangle inequality.
-Thus the one `CMP95SourceSmoothPartitionProfile` derivative budget suffices,
-and the inverse-`K` factor is already present before every cell or layer sum.
-This is not the invalid replacement of a second derivative by an unrelated
-unsigned budget: the signed coefficient is identified definitionally with
-the literal `cmp99CutoffLaplacianCorrection` coefficient.
+first differences in each direction, and the sealed CMP96 (2.40)
+specialization correctly proves that identity before applying the triangle
+inequality.  That first-difference majorant is nevertheless too coarse for
+the physical scale.  After multiplication by the `B0 * ell^2` value estimate
+from (3.42), it leaves exactly
+`32 * B0 * derivBound * ell / K`.  It is therefore not an admissible uniform
+producer for (2.44)/(3.89), even though the identity and inequality themselves
+remain valid.
+
+The accepted repair uses a quadratic inverse-scale second-difference bound.
+Its finite second-derivative budget must be **derived** from the existing
+`ContDiff` regularity and compact support of the selected CMP95 profile, not
+introduced as a free constant.  The periodic realization also needs the
+source's smooth nonnegative cutoff choice made explicit: the current
+`sqrt (sum h_k^2)` representation is only Lipschitz under the present record
+and cannot silently be differentiated at zero.
 
 The source tree already fixes the normalization needed for that direct mass
 row.  For one scale,

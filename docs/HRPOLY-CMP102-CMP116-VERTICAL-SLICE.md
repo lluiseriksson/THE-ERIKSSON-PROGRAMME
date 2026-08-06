@@ -2558,12 +2558,14 @@ Schur step with adjusted constants:
    regional `G'_Pi`: value, left covariant derivative, right adjoint
    derivative and covariant Laplacian, with the common `B0`, `delta0` and the
    printed scale vector;
-2. derive the first-difference and discrete-Laplacian bounds of the one
-   physical CMP95 cutoff at the separated scale `K * L^(depth+1)` from the
-   one sealed first-derivative budget: the scalar discrete Laplacian is the
-   sum of the two incident first differences in each direction, so no second
-   independent profile constant is introduced and the inverse-`K` factor is
-   present before any cell or layer sum;
+2. derive the first-difference and **second-difference** bounds of the one
+   physical CMP95 cutoff at the separated scale `K * L^(depth+1)`.  The
+   first derivative controls the link species.  The cutoff-Laplacian species
+   must instead use a second-derivative budget derived from the already
+   recorded `ContDiff` regularity and compact support of the selected source
+   profile, so its coefficient is quadratic in the inverse cutoff scale
+   before it meets the `ell^2` Green-value estimate.  No free profile constant
+   may be added;
 3. rewrite the third species of (3.88) by the exact generated `Q'^*Q'`
    transported-block formula and cancel its literal normalized row mass
    against the count before any cell or layer sum;
@@ -2613,7 +2615,7 @@ These are admissible prerequisites for step 7.1--7.4, not the direct (3.89)
 estimate itself.  Hence window 15 remains unattained, the live producer count
 remains exactly `20/41`, and `TermSource = 0`.
 
-### Step 7.2 cutoff-Laplacian species (SEALED)
+### Step 7.2 cutoff-Laplacian species (SEALED algebra; physical majorant retracted)
 
 Exact source checkpoint `972e8d115517c6f1f9bea97ec348bd0e31e1368d`
 passed cold GitHub Actions run `31047332477` (workflow checkpoint
@@ -2626,10 +2628,27 @@ audited declarations use exactly
 The seal proves the two incident first-difference bounds in each of four
 directions, their scalar discrete-Laplacian sum, and its exact identification
 with the literal cutoff-Laplacian species of (3.88) at rescaled unit spacing.
-It introduces no second profile constant: the one sealed CMP95
-first-derivative budget gives, before every cell or layer sum,
+Those algebraic statements remain valid.  They do **not**, however, supply
+the physical uniform majorant.  CMP99 (3.42) gives the Green value component
+the scale `B0 * ell^2`, whereas the sealed triangle estimate cancels only one
+power of `ell`:
 
 `8 * cutoffLaplacianBudget * L^(depth+1) = 32 * derivBound / K`.
+
+Consequently its composition with the value estimate is exactly
+
+`32 * B0 * derivBound * L^(depth+1) / K`,
+
+leaving a positive RG-scale factor.  The first-difference majorant is
+therefore retracted as a producer for the depth-uniform (2.44)/(3.89) bound;
+this does not retract the literal identity or the coefficient inequality.
+The accepted repair derives a finite second-derivative budget from the
+existing smooth compactly supported source profile and proves a quadratic
+inverse-cutoff-scale second difference.  Because the current periodic cutoff
+is represented as `sqrt (sum h_k^2)`, that repair must also expose the
+source's smooth nonnegative cutoff choice (or an equivalent smooth periodic
+realization); smoothness of the underlying `h` alone does not justify
+differentiating the square root at zero.
 
 The independently downloaded evidence archive has SHA-256
 `6f3e21e5a7b1c8c14cf484a03d9ef67f7171bcf271d4539d251a0497f25e005b`.
@@ -2640,11 +2659,12 @@ and its stage ledger has SHA-256
 all 13 entries of the internal `SHA256SUMS` manifest were independently
 rehash-verified.
 
-This is the cutoff-side part of CMP96 (2.40), not the four regional Green
-estimates (2.43), their combination into (2.44)/CMP99 (3.89), the defect
-contraction, rows 23--24, or a terminal field.  Window 15 therefore remains
-compatible but unattained, the live producer count remains exactly `20/41`,
-and `TermSource = 0`.
+This is retained as cutoff-side algebra and as a diagnostic coarse bound, not
+as the physical cutoff-Laplacian producer.  The second-difference repair, the
+four regional Green estimates (2.43), their combination into (2.44)/CMP99
+(3.89), the defect contraction, rows 23--24, and a terminal field remain
+open.  Window 15 therefore remains compatible but unattained, the live
+producer count remains exactly `20/41`, and `TermSource = 0`.
 
 ### Step 7.1 regional-Green source interface (SEALED)
 
