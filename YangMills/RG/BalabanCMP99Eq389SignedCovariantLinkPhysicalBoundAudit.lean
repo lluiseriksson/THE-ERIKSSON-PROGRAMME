@@ -1,0 +1,24 @@
+import YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkPhysicalBound
+
+/-!
+# PRE-VALIDATION audit: signed first species in CMP99 (3.89)
+
+PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
+been materialized, and the result has not yet been compiler-verified.
+-/
+
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkSlopeBudget
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkSlopeBudget_nonneg
+#print axioms YangMills.RG.norm_cmp99SourceSeparatedSignedLargeBlockCutoff_sub_shift_le
+#print axioms YangMills.RG.norm_cmp99SourceSeparatedSignedLargeBlockCutoff_sub_shiftBack_le
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkSourceBudget
+#print axioms YangMills.RG.norm_cmp99CovariantCutoffLinkDerivative_regionalGreen_signedSeparated_le
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkAmbientOperator
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkAmbientOperator_apply
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkAmbientCorrection
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkAmbientCorrection_exponentialKernelBound
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkRegionalCorrection
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkRegionalCorrection_exponentialKernelBound
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkRegionalCorrection_single_eq_zero_of_value_eq_zero
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkRegionalDefect
+#print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkRegionalDefect_exponentialKernelBound
