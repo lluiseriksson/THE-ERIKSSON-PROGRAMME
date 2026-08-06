@@ -135,7 +135,8 @@ theorem norm_cmp95SourcePeriodicSignedCutoff_centeredSecondDifference_le
   by_cases hQ1 : Q = 1
   · simp [cmp95SourcePeriodicSignedCutoff, hQ1]
     exact mul_nonneg
-      (mul_nonneg (by norm_num) P.secondDerivBound_nonneg) (sq_nonneg ‖h‖)
+      (mul_nonneg (show (0 : ℝ) ≤ 12 by norm_num)
+        P.secondDerivBound_nonneg) (sq_nonneg |h|)
   · simpa [cmp95SourcePeriodicSignedCutoff, hQ1] using
       norm_cmp95PeriodicSignedCutoff_centeredSecondDifference_le
         P Q cell x h
@@ -167,7 +168,6 @@ theorem
       rw [norm_div, show ‖M0‖ = M0 by
         simpa [Real.norm_eq_abs] using abs_of_pos hM0]
       field_simp [ne_of_gt hM0]
-      ring
 
 end
 
