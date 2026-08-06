@@ -64,8 +64,15 @@ theorem norm_value_sub_firstOrder_le_secondDerivBound
           ‖deriv P.value z - deriv P.value x‖ := by
         change ‖fderiv ℝ P.value z -
             ContinuousLinearMap.toSpanSingleton ℝ (deriv P.value x)‖ = _
-        rw [← toSpanSingleton_deriv, ← map_sub,
-          ContinuousLinearMap.norm_toSpanSingleton]
+        rw [← toSpanSingleton_deriv]
+        have hspan :
+            ContinuousLinearMap.toSpanSingleton ℝ (deriv P.value z) -
+                ContinuousLinearMap.toSpanSingleton ℝ (deriv P.value x) =
+              ContinuousLinearMap.toSpanSingleton ℝ
+                (deriv P.value z - deriv P.value x) := by
+          ext a
+          simp [sub_smul]
+        rw [hspan, ContinuousLinearMap.norm_toSpanSingleton]
       _ ≤ P.secondDerivBound * ‖z - x‖ :=
         P.norm_deriv_sub_deriv_le_secondDerivBound x z
       _ ≤ P.secondDerivBound * ‖y - x‖ :=
