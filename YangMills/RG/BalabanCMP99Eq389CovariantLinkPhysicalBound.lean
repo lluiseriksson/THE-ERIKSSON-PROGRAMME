@@ -83,8 +83,8 @@ theorem norm_cmp99CovariantCutoffLinkDerivative_regionalGreen_sourceSeparated_le
     (x : FinBox 4
       (cmp99SourceSeparatedLargeBlockSide L Klarge depth * (2 * Q))) :
     ‖cmp99CovariantCutoffLinkDerivative rho U 1
-        (cmp99SourceSeparatedLargeBlockSquarePartition
-          (L := L) (K := Klarge) (Q := Q) (depth := depth) P).value cell
+        (fun y => (cmp99SourceSeparatedLargeBlockSquarePartition
+          (L := L) (K := Klarge) (Q := Q) (depth := depth) P).value cell y)
         (extendZeroZeroCLM Omega
           (cmp99RegionalDirichletGreen Omega A hc hAcoer
             (singleFinitePiLp source v))) x‖ ≤
@@ -115,13 +115,13 @@ theorem norm_cmp99CovariantCutoffLinkDerivative_regionalGreen_sourceSeparated_le
   have hmain :=
     norm_cmp99CovariantCutoffLinkDerivative_regionalGreen_commonMetric
       Omega rho U A c hc hAcoer B0 delta0 (L ^ (depth + 1) : ℝ) C
-      (cmp99SourceSeparatedLargeBlockSquarePartition
-        (L := L) (K := Klarge) (Q := Q) (depth := depth) P).value cell
+      (fun y => (cmp99SourceSeparatedLargeBlockSquarePartition
+        (L := L) (K := Klarge) (Q := Q) (depth := depth) P).value cell y)
       source v x slope hslope hforward hback
   calc
     ‖cmp99CovariantCutoffLinkDerivative rho U 1
-        (cmp99SourceSeparatedLargeBlockSquarePartition
-          (L := L) (K := Klarge) (Q := Q) (depth := depth) P).value cell
+        (fun y => (cmp99SourceSeparatedLargeBlockSquarePartition
+          (L := L) (K := Klarge) (Q := Q) (depth := depth) P).value cell y)
         (extendZeroZeroCLM Omega
           (cmp99RegionalDirichletGreen Omega A hc hAcoer
             (singleFinitePiLp source v))) x‖ ≤
