@@ -1,0 +1,73 @@
+/- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
+Released under the GNU Affero General Public License v3.0
+as described in the file LICENSE.
+Authors: Lluis Eriksson -/
+
+import YangMills.RG.BalabanCMP99Eq389CovariantLinkGreenBound
+import YangMills.RG.PhysicalShellLocalityDiv
+
+/-!
+# PRE-VALIDATION: block geometry for the first CMP99 (3.89) species
+
+The source of this module is present, but its `.olean` has not yet been
+materialized and its declarations have not yet been verified by the Lean
+compiler.
+
+The sealed regional-Green link bound retains the exact block metric at each
+backward-shifted fine site.  This module proves from the literal quotient map
+that one such fine step either remains in the same block or crosses exactly
+one backward coarse face.  No favorable metric comparison is accepted from a
+caller.
+-/
+
+namespace YangMills.RG
+
+open YangMills
+
+variable {d m n : ℕ} [NeZero m] [NeZero n]
+
+/-- One backward fine step either stays in its block or crosses precisely the
+corresponding backward coarse face. -/
+theorem blockSite_shiftBack_eq_self_or_shiftBack
+    (x : FinBox d (m * n)) (i : Fin d) :
+    blockSite m n (x.shiftBack i) = blockSite m n x ∨
+      blockSite m n (x.shiftBack i) = (blockSite m n x).shiftBack i := by
+  by_cases hrem : (x i).val % m = 0
+  · right
+    funext j
+    by_cases hji : j = i
+    · subst j
+      apply Fin.ext
+      simp only [blockSite_val, FinBox.shiftBack, if_pos]
+      have hm : 0 < m := NeZero.pos m
+      have hn : 0 < n := NeZero.pos n
+      have hx : (x i).val < m * n := (x i).isLt
+      omega
+    · apply Fin.ext
+      simp only [blockSite_val, FinBox.shiftBack, if_neg hji]
+  · left
+    funext j
+    by_cases hji : j = i
+    · subst j
+      apply Fin.ext
+      simp only [blockSite_val, FinBox.shiftBack, if_pos]
+      have hm : 0 < m := NeZero.pos m
+      have hn : 0 < n := NeZero.pos n
+      have hx : (x i).val < m * n := (x i).isLt
+      omega
+    · apply Fin.ext
+      simp only [blockSite_val, FinBox.shiftBack, if_neg hji]
+
+/-- The source block owner changes by Chebyshev distance at most one under a
+single backward fine step. -/
+theorem finBoxDist_blockSite_shiftBack_le_one
+    (x : FinBox d (m * n)) (i : Fin d) :
+    finBoxDist (blockSite m n x) (blockSite m n (x.shiftBack i)) ≤ 1 := by
+  rcases blockSite_shiftBack_eq_self_or_shiftBack (m := m) (n := n) x i with
+    hsame | hback
+  · rw [hsame, finBoxDist_self]
+    exact Nat.zero_le _
+  · rw [hback]
+    exact finBoxDist_shiftBack_le (blockSite m n x) i
+
+end YangMills.RG
