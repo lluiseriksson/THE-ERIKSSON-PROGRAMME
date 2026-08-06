@@ -3319,3 +3319,41 @@ repair of step 7.  The later CMP99 Theorem-3.15 condition coupling
 the printed large parameter to `alpha_0` remains a separate covariance/source
 dictionary obligation.  Window 15 therefore remains open, and the live
 counters remain exactly `20/41` and `TermSource = 0`.
+
+### Step 7.4f signed cutoff-Laplacian Green/overlap endpoint (SEALED; third species open)
+
+Exact source checkpoint `d8094af41c78851d8b985b2f7e1550857531202f`
+passed cold GitHub Actions run `31085829837` (workflow checkpoint
+`8e94f9de8ac0b5ed2c90f01b3428cba29fcbfaea`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+compiled the focal from `2026-08-06T08:41:48Z` to `09:44:15Z`.  The audit
+finished at `09:44:28Z`; both stages exited zero.  All eight audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The brick transports the value component of the literal CMP99 (3.42)
+regional-Green certificate through restriction and zero extension, composes
+it with the signed source-separated cutoff-Laplacian coefficient, and proves
+the exact pre-overlap amplitude
+
+`12 * B0 * secondDerivBound / Klarge^2`.
+
+The two powers of the generated Green scale cancel before any family sum.
+The right signed cutoff then restricts the cell sum at each source, so the
+already sealed geometric overlap contributes exactly `16`, independent of
+`Klarge` and of the total number of cells.  The operator is identified with
+the literal cutoff-Laplacian species of CMP99 (3.88); no CT + Schur majorant
+or reciprocal coercivity constant enters the estimate.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`1741117ef8b72e4b8f782564e7224ac0a7caa89a5e7c982022be8354007a57c5`.
+Its axiom JSON has SHA-256
+`385f608fe631b430cfeaaf0ce65b1ae011027329d10f835a54439aa9ea14ff92`;
+the stage ledger has SHA-256
+`69e996f2c372a6f5ab3c02384e19c168bfa06fb132dd335c25081905ea21e1e3`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This completes the signed second species and its overlap sum only.  The
+normalized `Q'^*Q'` third species with varying Green values, the complete
+three-species CMP99 (3.89) estimate, `norm R' < 1`, rows 23--24, and a
+`TermSource` inhabitant remain open.  Window 15 is compatible but unattained;
+the live counters remain exactly `20/41` and `TermSource = 0`.

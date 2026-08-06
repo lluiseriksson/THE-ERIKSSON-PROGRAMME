@@ -9,10 +9,13 @@ import YangMills.RG.BalabanCMP99SourceSeparatedSignedCutoffLaplacian
 import YangMills.RG.FinitePiLpSourceOverlapSum
 
 /-!
-# PRE-VALIDATION: signed cutoff-Laplacian species in CMP99 (3.89)
+# COLD-SEALED: signed cutoff-Laplacian species in CMP99 (3.89)
 
-The source is present, but its `.olean` has not yet been materialized and the
-results below have not yet been verified by the Lean compiler.
+Exact source checkpoint `d8094af41c78851d8b985b2f7e1550857531202f`
+passed cold GitHub Actions run `31085829837` without restoring or saving the
+project `.lake/build` cache.  Focal and audit exited zero, and all eight
+audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module composes the literal signed cutoff-Laplacian coefficient with the
 canonical regional Dirichlet Green from the CMP99 (3.42) certificate.  The

@@ -28108,3 +28108,36 @@ multiply by the regional Dirichlet Green or sum the overlap-16 cells.  The
 third species, complete CMP99 (3.89), contraction, rows 23--24, and a
 `TermSource` inhabitant remain open.  Window 15 is compatible but unattained;
 the live counters remain exactly `20/41` and zero.
+
+## Addendum 577 (2026-08-06, **signed cutoff-Laplacian Green/overlap endpoint GREEN; third species open; 20/41 unchanged**)
+
+Exact source checkpoint
+`d8094af41c78851d8b985b2f7e1550857531202f` was validated by cold GitHub
+Actions run `31085829837` (workflow checkpoint
+`8e94f9de8ac0b5ed2c90f01b3428cba29fcbfaea`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T08:41:48Z` to `09:44:15Z` and exited zero; the
+audit ran from `09:44:15Z` to `09:44:28Z` and also exited zero.  All eight
+declarations use exactly `[propext, Classical.choice, Quot.sound]`, and the
+gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`1741117ef8b72e4b8f782564e7224ac0a7caa89a5e7c982022be8354007a57c5`.
+The axiom JSON has SHA-256
+`385f608fe631b430cfeaaf0ce65b1ae011027329d10f835a54439aa9ea14ff92`;
+the stage ledger has SHA-256
+`69e996f2c372a6f5ab3c02384e19c168bfa06fb132dd335c25081905ea21e1e3`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The module composes the literal signed cutoff-Laplacian coefficient with the
+canonical regional Dirichlet Green certified by CMP99 (3.42), retains the
+exact pre-sum amplitude `12 * B0 * secondDerivBound / Klarge^2`, and sums the
+cells with the literal signed source overlap `16`.  The inverse-square gain
+is present before the family sum and no CT + Schur/Poincare majorant is used.
+
+This seal completes only the second displayed species of CMP99 (3.89).  The
+normalized `Q'^*Q'` third species, complete (3.89), defect contraction, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
+compatible but unattained; the live counters remain exactly `20/41` and
+zero.
