@@ -1,4 +1,4 @@
-name: Validate CMP99 signed second species
+name: Validate CMP99 varying counting-mass row
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: d8094af41c78851d8b985b2f7e1550857531202f
+  SOURCE_SHA: 7df30b8d635cf3bdc3431bb8f0c2c672b60cd6b1
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  cmp99-signed-second-species:
+  cmp99-varying-counting-mass-row:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -68,8 +68,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-signed-second-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-varying-counting-mass-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: |
+            hRpoly-cmp99-varying-counting-mass-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-signed-second-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-signed-source-cutoff-laplacian-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp95-signed-tensor-second-difference-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
@@ -111,8 +112,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99Eq389SignedCutoffLaplacianPhysicalBound.lean \
-            YangMills/RG/BalabanCMP99Eq389SignedCutoffLaplacianPhysicalBoundAudit.lean \
+            YangMills/RG/BalabanCMP99SourceGeneratedCountingMassVaryingOutput.lean \
+            YangMills/RG/BalabanCMP99SourceGeneratedCountingMassVaryingOutputAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -134,10 +135,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_signed_second_species_focal \
-            lake build YangMills.RG.BalabanCMP99Eq389SignedCutoffLaplacianPhysicalBound
-          run_stage cmp99_signed_second_species_audit \
-            lake env lean YangMills/RG/BalabanCMP99Eq389SignedCutoffLaplacianPhysicalBoundAudit.lean
+          run_stage cmp99_varying_counting_mass_focal \
+            lake build YangMills.RG.BalabanCMP99SourceGeneratedCountingMassVaryingOutput
+          run_stage cmp99_varying_counting_mass_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedCountingMassVaryingOutputAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -151,7 +152,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp99_signed_second_species_audit.log": 8,
+              "cmp99_varying_counting_mass_audit.log": 5,
           }
           result = {}
           for name, expected in audits.items():
@@ -182,17 +183,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > cmp99-signed-second-species-evidence.tar.gz
-          sha256sum cmp99-signed-second-species-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > cmp99-varying-counting-mass-evidence.tar.gz
+          sha256sum cmp99-varying-counting-mass-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp99-signed-second-species-${{ env.SOURCE_SHA }}
+          name: cmp99-varying-counting-mass-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp99-signed-second-species-evidence.tar.gz
+            cmp99-varying-counting-mass-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -201,4 +202,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-signed-second-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-varying-counting-mass-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
