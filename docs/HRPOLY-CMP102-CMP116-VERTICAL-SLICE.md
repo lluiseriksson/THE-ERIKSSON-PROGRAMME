@@ -3458,3 +3458,36 @@ physical scalar mass `cmp99SourceGeneratedPhysicalMass`, sum cells, prove the
 complete third species or full CMP99 (3.89), attain `norm R' < 1`, discharge
 rows 23--24, or inhabit a `TermSource`.  Window 15 remains compatible but
 unattained; the live counters remain exactly `20/41` and `TermSource = 0`.
+
+### Step 7.4j separated ambient generated-mass atom (SEALED; right cutoff/cell sum open)
+
+Exact source checkpoint `c221f73c2f48dba9e018752f9fb1813c039fc0e6`
+passed cold GitHub Actions run `31104001016` (workflow checkpoint
+`99d3082cf6d5d68b678f71fdd17f7df4d602830c`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+compiled the focal from `2026-08-06T13:03:52Z` to `13:53:49Z`.  The audit
+finished at `13:54:03Z`; both stages exited zero.  All four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The brick reindexes the literal generated counting mass from its active
+carrier to the separated ambient carrier and installs the literal physical
+scalar `cmp99SourceGeneratedPhysicalMass`.  The sign is fixed by the printed
+commutator orientation: the varying-value helper uses
+`h(source) - h(target)`, while the physical atom restores
+`h(target) - h(source)`.  The endpoint keeps the absolute physical mass and
+the single surviving normalized block-average weight as distinct factors.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`6c364157fade4ff397ef724f11cb7a23dd5434ef1e15ba4e06e03ba072d26183`.
+Its axiom JSON has SHA-256
+`2bff87eb358793668e11f86316917522270d59aa8c428b088f695ad5e88ebc9b`;
+the stage ledger has SHA-256
+`331f6d3c3d6fceb0b2d52db7e821917680d8df8132058287291165ba61319753`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This seals the separated ambient mass atom before the contractive right
+cutoff.  It does not sum the atom to the literal commutator operator, insert
+the right cutoff, sum regional cells, prove the complete third species or
+full CMP99 (3.89), attain `norm R' < 1`, discharge rows 23--24, or inhabit a
+`TermSource`.  Window 15 remains compatible but unattained; the live counters
+remain exactly `20/41` and `TermSource = 0`.

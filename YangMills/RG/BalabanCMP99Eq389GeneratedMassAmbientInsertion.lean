@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP99Eq389GeneratedMassGreenInsertion
 import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecision
 
 /-!
-# PRE-VALIDATION: ambient generated-mass insertion in CMP99 (3.89)
+# COLD-SEALED: ambient generated-mass insertion in CMP99 (3.89)
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
+Exact source checkpoint `c221f73c2f48dba9e018752f9fb1813c039fc0e6`
+passed cold GitHub Actions run `31104001016` without restoring or saving the
+project `.lake/build` cache.  Focal and audit exited zero, and all four
+audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This file transports the literal generated counting mass from its active
 carrier to the separated ambient carrier and then installs the printed scalar

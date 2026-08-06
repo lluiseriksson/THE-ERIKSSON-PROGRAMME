@@ -28242,3 +28242,35 @@ separated ambient mass reindexing, literal physical scalar mass, cell sum,
 complete third species, full CMP99 (3.89), contraction, rows 23--24, and a
 `TermSource` inhabitant remain open.  Window 15 remains compatible but
 unattained; the live counters remain exactly `20/41` and zero.
+
+## Addendum 581 (2026-08-06, **separated ambient generated-mass atom GREEN; right cutoff/cell sum open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c221f73c2f48dba9e018752f9fb1813c039fc0e6` was validated by cold GitHub
+Actions run `31104001016` (workflow checkpoint
+`99d3082cf6d5d68b678f71fdd17f7df4d602830c`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T13:03:52Z` to `13:53:49Z` and exited zero; the
+audit ran from `13:53:49Z` to `13:54:03Z` and also exited zero.  All four
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`6c364157fade4ff397ef724f11cb7a23dd5434ef1e15ba4e06e03ba072d26183`.
+The axiom JSON has SHA-256
+`2bff87eb358793668e11f86316917522270d59aa8c428b088f695ad5e88ebc9b`;
+the stage ledger has SHA-256
+`331f6d3c3d6fceb0b2d52db7e821917680d8df8132058287291165ba61319753`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick transports the literal generated counting mass to the separated
+ambient carrier and installs the physical scalar mass with the printed
+commutator orientation.  Its endpoint retains the physical absolute mass and
+the one surviving normalized block-average weight as separate factors.
+
+This is the ambient atom before the contractive right cutoff.  The exact
+commutator sum, right cutoff, cell sum, complete third species, full CMP99
+(3.89), contraction, rows 23--24, and a `TermSource` inhabitant remain open.
+Window 15 remains compatible but unattained; the live counters remain exactly
+`20/41` and zero.
