@@ -2761,7 +2761,14 @@ Schur step with adjusted constants:
    transported-block formula and cancel its literal normalized row mass
    against the count before any cell or layer sum;
 4. combine the three displayed species pointwise to obtain (3.89), with
-   `K^-1` already present and no reciprocal coercivity or Poincare constant;
+   `K^-1` already present and no reciprocal coercivity or Poincare constant.
+   This composition must specialize all three species to rescaled spacing
+   `1` and must instantiate the differential background `U` by the dependent
+   cast/reindexing of the **same** fine `background` that constructs the
+   generated `Q'` tower, using
+   `cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier`.  A sum whose
+   first two species use an independently supplied `U` is only an abstract
+   three-operator bound, not the physical identity (3.89);
 5. only then use the already sealed overlap `16`, independent of `K`, to
    obtain `norm R' < 1` for sufficiently large `K`.
 
