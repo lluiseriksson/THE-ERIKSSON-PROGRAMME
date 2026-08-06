@@ -1,4 +1,4 @@
-name: Validate CMP99 complete generated-mass species
+name: Validate CMP99 signed covariant-link species
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 050783b4155282d06df25c4566fc125fa9463d4a
+  SOURCE_SHA: bb79148699fbaaaef8a2327204980419d7ece2d0
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  cmp99-generated-mass-physical-bound:
+  cmp99-signed-covariant-link-physical-bound:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -68,8 +68,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-generated-mass-physical-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-signed-covariant-link-physical-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: |
+            hRpoly-cmp99-signed-covariant-link-physical-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-generated-mass-physical-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-generated-mass-ambient-insertion-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-generated-mass-green-insertion-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
@@ -111,8 +112,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99Eq389GeneratedMassPhysicalBound.lean \
-            YangMills/RG/BalabanCMP99Eq389GeneratedMassPhysicalBoundAudit.lean \
+            YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBound.lean \
+            YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBoundAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -134,10 +135,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_generated_mass_physical_bound_focal \
-            lake build YangMills.RG.BalabanCMP99Eq389GeneratedMassPhysicalBound
-          run_stage cmp99_generated_mass_physical_bound_audit \
-            lake env lean YangMills/RG/BalabanCMP99Eq389GeneratedMassPhysicalBoundAudit.lean
+          run_stage cmp99_signed_covariant_link_physical_bound_focal \
+            lake build YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkPhysicalBound
+          run_stage cmp99_signed_covariant_link_physical_bound_audit \
+            lake env lean YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBoundAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -151,7 +152,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp99_generated_mass_physical_bound_audit.log": 9,
+              "cmp99_signed_covariant_link_physical_bound_audit.log": 15,
           }
           result = {}
           for name, expected in audits.items():
@@ -182,17 +183,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > cmp99-generated-mass-physical-bound-evidence.tar.gz
-          sha256sum cmp99-generated-mass-physical-bound-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > cmp99-signed-covariant-link-physical-bound-evidence.tar.gz
+          sha256sum cmp99-signed-covariant-link-physical-bound-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp99-generated-mass-physical-bound-${{ env.SOURCE_SHA }}
+          name: cmp99-signed-covariant-link-physical-bound-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp99-generated-mass-physical-bound-evidence.tar.gz
+            cmp99-signed-covariant-link-physical-bound-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -201,4 +202,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-generated-mass-physical-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-signed-covariant-link-physical-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
