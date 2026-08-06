@@ -88,10 +88,14 @@ theorem cmp95PeriodicTranslate_mul_next_eq_zero
           (t - (((k + 1) * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ)) = 0 := by
   by_cases hk : P.value
       (t - ((k * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ)) = 0
-  · simp [hk]
+  · apply mul_eq_zero.mpr
+    left
+    convert hk using 1 <;> push_cast
   by_cases hk1 : P.value
       (t - (((k + 1) * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ)) = 0
-  · simp [hk1]
+  · apply mul_eq_zero.mpr
+    right
+    convert hk1 using 1 <;> push_cast
   have hsupp := P.support_subset (Function.mem_support.mpr hk)
   have hsupp1 := P.support_subset (Function.mem_support.mpr hk1)
   have hQreal : (2 : ℝ) ≤ Q := by exact_mod_cast hQ
@@ -120,7 +124,8 @@ theorem cmp95PeriodicSignedCutoff_sq
     simpa [n] using cmp95PeriodicActiveWindow_eq_pair Q cell t
   rw [hwindow]
   have hn : n ≠ n + 1 := by omega
-  simp only [Finset.sum_insert hn, Finset.sum_singleton]
+  have hnmem : n ∉ {n + 1} := by simpa using hn
+  simp only [Finset.sum_insert hnmem, Finset.sum_singleton]
   have hcross := cmp95PeriodicTranslate_mul_next_eq_zero
     P Q hQ cell t n
   nlinarith
