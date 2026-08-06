@@ -38,6 +38,7 @@ theorem blockSite_shiftBack_eq_self_or_shiftBack
     by_cases hji : j = i
     · subst j
       apply Fin.ext
+      simp only [blockSite_val, FinBox.shiftBack, if_pos]
       have hm : 0 < m := NeZero.pos m
       have hn : 0 < n := NeZero.pos n
       have hx : (x i).val < m * n := (x i).isLt
@@ -88,6 +89,7 @@ theorem blockSite_shiftBack_eq_self_or_shiftBack
     by_cases hji : j = i
     · subst j
       apply Fin.ext
+      simp only [blockSite_val, FinBox.shiftBack, if_pos]
       have hm : 0 < m := NeZero.pos m
       have hn : 0 < n := NeZero.pos n
       have hx : (x i).val < m * n := (x i).isLt
