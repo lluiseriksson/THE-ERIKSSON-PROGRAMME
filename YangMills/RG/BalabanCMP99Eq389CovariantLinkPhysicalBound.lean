@@ -143,9 +143,23 @@ theorem norm_cmp99CovariantCutoffLinkDerivative_regionalGreen_sourceSeparated_le
             x source.1 : ℝ))) * ‖v‖ := by
       rw [Fin.sum_univ_four]
       unfold cmp99Eq389CovariantLinkSourceBudget slope
-      rw [cmp99Eq389SourceSeparatedSlope_mul_leftDerivativeScale
-        P B0 L Klarge depth]
-      ring
+      calc
+        _ = 4 *
+            (cmp96SourceSeparatedCutoffDifferenceBudget P L Klarge depth *
+              (B0 * (L ^ (depth + 1) : ℝ))) *
+            (1 + Real.exp delta0) *
+            Real.exp (-(delta0 *
+              (cmp99Eq342RescaledBlockDist
+                (cmp99SourceSeparatedLargeBlockSide L Klarge depth) Q
+                x source.1 : ℝ))) * ‖v‖ := by ring
+        _ = 4 * ((4 * B0 * P.derivBound) / (Klarge : ℝ)) *
+            (1 + Real.exp delta0) *
+            Real.exp (-(delta0 *
+              (cmp99Eq342RescaledBlockDist
+                (cmp99SourceSeparatedLargeBlockSide L Klarge depth) Q
+                x source.1 : ℝ))) * ‖v‖ := by
+          rw [cmp99Eq389SourceSeparatedSlope_mul_leftDerivativeScale
+            P B0 L Klarge depth]
 
 end
 
