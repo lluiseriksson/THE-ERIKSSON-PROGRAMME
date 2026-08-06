@@ -58,9 +58,12 @@ theorem norm_periodic_fin_centeredSecondDifference_le
       have hx0R : (x.val : ℝ) = 0 := by exact_mod_cast hx0
       rw [hx0R]
       have hp := hperiod (-1)
-      convert hp using 1
-      push_cast [Nat.cast_sub (by omega : 1 ≤ N)]
-      ring
+      calc
+        f (N - 1 : ℕ) = f (-1 + N) := by
+          congr 1
+          push_cast [Nat.cast_sub (by omega : 1 ≤ N)]
+        _ = f (-1) := hp
+        _ = f (0 - 1) := by norm_num
     · have hnat : x.val + N - 1 = (x.val - 1) + N := by omega
       rw [hnat, Nat.add_mod_right, Nat.mod_eq_of_lt (by omega : x.val - 1 < N)]
       push_cast [Nat.cast_sub (by omega : 1 ≤ x.val)]
@@ -121,7 +124,10 @@ theorem
       simp [FinBox.shiftBack, hji]
   have hrest : ‖rest‖ ≤ 1 := by
     dsimp [rest]
-    rw [Real.norm_eq_abs, Finset.abs_prod]
+    change |∏ j ∈ Finset.univ.erase i,
+      cmp95RescaledSourcePeriodicSignedCutoff P Q M0 (cell j)
+        ((x j).val + offset j)| ≤ 1
+    rw [Finset.abs_prod]
     exact Finset.prod_le_one (fun _ _ => abs_nonneg _) fun j _ => by
       simpa [Real.norm_eq_abs] using
         norm_cmp95RescaledSourcePeriodicSignedCutoff_le_one
@@ -130,7 +136,7 @@ theorem
       ‖f ((((x i).val + 1) % (M0 * Q) : ℕ) : ℝ) - 2 * f (x i).val +
           f ((((x i).val + (M0 * Q) - 1) % (M0 * Q) : ℕ) : ℝ)‖ ≤
         (12 * P.secondDerivBound) / M0 ^ 2 := by
-    apply norm_periodic_fin_centeredSecondDifference_le
+    refine norm_periodic_fin_centeredSecondDifference_le f ?_ ?_ (x i)
     · intro t
       dsimp [f]
       rw [show t + (M0 * Q : ℕ) + offset i =
@@ -139,11 +145,11 @@ theorem
         P Q M0 (by exact_mod_cast NeZero.ne M0) (cell i) (t + offset i)
     · intro t
       dsimp [f]
+      have hM0 : (0 : ℝ) < M0 := by exact_mod_cast NeZero.pos M0
       have h :=
         norm_cmp95RescaledSourcePeriodicSignedCutoff_centeredSecondDifference_le
-          P Q (by exact_mod_cast NeZero.pos M0) (cell i) (t + offset i) 1
+          P Q hM0 (cell i) (t + offset i) 1
       simpa using h
-    · exact x i
   rw [hplus, hzero, hminus]
   calc
     ‖f ((((x i).val + 1) % (M0 * Q) : ℕ) : ℝ) * rest -
