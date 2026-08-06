@@ -248,13 +248,39 @@ noncomputable def cmp99Eq389SignedCovariantLinkAmbientOperator
       GaugeZeroCochain 4
         (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
         (SUNLieCoord Nc) :=
-  let h := cmp99SourceSeparatedSignedLargeBlockCutoff
-    P L K Q depth cell
-  finitePiLpScalarCommutator h
-      (cmp99GeneratedAmbientScaledCovariantLaplacian rho U 1) +
-    finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+  let h : FinBox 4
+      (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) → ℝ :=
+    cmp99SourceSeparatedSignedLargeBlockCutoff P L K Q depth cell
+  let laplacian : GaugeZeroCochain 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
+        (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
+        (SUNLieCoord Nc) :=
+    cmp99GeneratedAmbientScaledCovariantLaplacian rho U 1
+  let commutator : GaugeZeroCochain 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
+        (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
+        (SUNLieCoord Nc) :=
+    finitePiLpScalarCommutator
+      (ι := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (g := SUNLieCoord Nc) h laplacian
+  let scalarCorrection : GaugeZeroCochain 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
+        (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
+        (SUNLieCoord Nc) :=
+    finitePiLpScalarMultiplier
+      (ι := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (g := SUNLieCoord Nc)
       (cmp99SourceSeparatedSignedCutoffLaplacianCoefficient
         (L := L) (K := K) P depth cell)
+  commutator + scalarCorrection
 
 /-- The reconstructed ambient operator is pointwise the literal covariant
 link-derivative species, with no analytic estimate used. -/
