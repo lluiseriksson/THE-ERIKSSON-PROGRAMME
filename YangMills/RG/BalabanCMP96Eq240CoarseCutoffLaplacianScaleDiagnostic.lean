@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP96Eq240SourceSeparatedCutoffLaplacian
 
 /-!
-# PRE-VALIDATION: scale diagnostic for the coarse cutoff-Laplacian bound
+# Scale diagnostic for the coarse cutoff-Laplacian bound
 
-The source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`aaafae326ab952d990c0efb6a66553f0d2a61add` by cold GitHub Actions run
+`31067778196`.  The run restored no project `.lake/build` cache; the focal
+completed 8,518 jobs and the audited declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The previously sealed cutoff-Laplacian theorem is algebraically correct, but
 it estimates the discrete Laplacian by eight first differences.  CMP99 (3.42)

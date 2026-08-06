@@ -6,10 +6,11 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP96Eq240CoarseCutoffLaplacianScaleDiagnostic
 
 /-!
-# PRE-VALIDATION audit: coarse cutoff-Laplacian scale diagnostic
+# Audit: coarse cutoff-Laplacian scale diagnostic
 
-The source is present, but this audit's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`aaafae326ab952d990c0efb6a66553f0d2a61add` by cold GitHub Actions run
+`31067778196`.
 -/
 
 #print axioms YangMills.RG.cmp96CoarseCutoffLaplacianBudget_mul_greenValueScale

@@ -6,10 +6,11 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP95SourceSmoothPartitionSecondDerivative
 
 /-!
-# PRE-VALIDATION audit: derived CMP95 second-derivative budget
+# Audit: derived CMP95 second-derivative budget
 
-The source is present, but this audit's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`aaafae326ab952d990c0efb6a66553f0d2a61add` by cold GitHub Actions run
+`31067778196`.
 -/
 
 #print axioms YangMills.RG.CMP95SourceSmoothPartitionProfile.hasCompactSupport

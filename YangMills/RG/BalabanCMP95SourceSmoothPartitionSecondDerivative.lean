@@ -8,10 +8,13 @@ import Mathlib.Analysis.Calculus.ContDiff.FTaylorSeries
 import Mathlib.Analysis.Calculus.IteratedDeriv.Defs
 
 /-!
-# PRE-VALIDATION: derived second-derivative budget for the CMP95 profile
+# Derived second-derivative budget for the CMP95 profile
 
-The source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`aaafae326ab952d990c0efb6a66553f0d2a61add` by cold GitHub Actions run
+`31067778196`.  The run restored no project `.lake/build` cache; the focal
+completed 2,040 jobs and all four audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The cutoff-Laplacian term in CMP96 (2.40) is multiplied by the value component
 of the regional Green estimate, whose physical scale is quadratic.  The

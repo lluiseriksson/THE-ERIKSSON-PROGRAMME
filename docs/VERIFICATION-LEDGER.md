@@ -27851,3 +27851,41 @@ pre-sum `K^-1` gain remain explicit.  It does not finish the complete
 first-species endpoint, combine all three species of (3.89), attain
 `norm R' < 1`, discharge rows 23--24, or inhabit a `TermSource`.  Window 15
 therefore remains open and the live counters remain exactly `20/41` and zero.
+
+## Addendum 569 (2026-08-06, **cutoff-Laplacian scale defect and derived second-derivative budget GREEN; physical periodization open; 20/41 unchanged**)
+
+Exact source checkpoint
+`aaafae326ab952d990c0efb6a66553f0d2a61add` was validated by cold GitHub
+Actions run `31067778196` (workflow checkpoint
+`8b43c3307ff9e0a8db8d8a9e58b1f2c08801061f`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The second-derivative focal ran from `2026-08-06T03:14:15Z` to `03:14:21Z`,
+completed with `Build completed successfully (2040 jobs).`, and its audit
+exited zero at `03:14:26Z`.  The scale-diagnostic focal then completed with
+`Build completed successfully (8518 jobs).` at `03:41:16Z`; its audit exited
+zero at `03:41:21Z`.  All five declarations use exactly
+`[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`b630bc46b018897c2a9773f74f6d9f044e83ce134a5d34810315ae0d69f879ab`.
+The axiom JSON has SHA-256
+`58b871b137ea610752d1ba095f00dd44b2a39a7f83d33a09c702ff0f8c6a70c0`;
+the stage ledger has SHA-256
+`2ce9488ff892c106e70e633e03e36f6730ca9ec1e8a458ec9e32004948c04520`.
+All 15 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This seal proves that the selected smooth compactly supported CMP95 profile
+has some canonical finite global second-derivative budget.  It also proves
+the exact negative diagnostic: composing the old eight-first-differences
+majorant with the quadratic Green value scale leaves the positive factor
+`L^(depth+1)`.  It does not refute the literal cutoff-Laplacian term and does
+not yet transport the quadratic profile bound through a source-faithful
+periodic cutoff.  The physical second species, complete CMP99 (3.89), defect
+contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window
+15 is still compatible but unattained; the live counters remain exactly
+`20/41` and zero.

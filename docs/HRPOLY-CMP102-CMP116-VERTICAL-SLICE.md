@@ -2650,6 +2650,19 @@ source's smooth nonnegative cutoff choice (or an equivalent smooth periodic
 realization); smoothness of the underlying `h` alone does not justify
 differentiating the square root at zero.
 
+The first half of that repair is now compiler-sealed.  Exact source checkpoint
+`aaafae326ab952d990c0efb6a66553f0d2a61add` passed cold GitHub Actions run
+`31067778196`: compact support plus the existing `ContDiff` field produces a
+canonical finite nonnegative `secondDerivBound`, and the exact coarse
+composition theorem records the leftover factor
+`32 * B0 * derivBound * L^(depth+1) / K`.  This seal does not identify a
+periodic cutoff with the smooth source profile.  The selected continuation is
+a sign-preserving linear periodization of the literal profile: for periods
+with at least two cells, disjoint support must prove that its square is the
+already sealed periodic square weight; the one-cell volume is a separate
+branch.  Only after that dictionary is proved may the quadratic profile bound
+feed the tensor cutoff-Laplacian species.
+
 The independently downloaded evidence archive has SHA-256
 `6f3e21e5a7b1c8c14cf484a03d9ef67f7171bcf271d4539d251a0497f25e005b`.
 Its axiom JSON has SHA-256
