@@ -199,6 +199,21 @@ theorem
           (cmp99Eq342RescaledBlockDist
             (cmp99SourceSeparatedLargeBlockSide L K depth) Q
             x source.1 : ℝ))) * ‖v‖ := by
+      have hscale :
+          cmp99Eq389SignedCovariantLinkSlopeBudget P L K depth *
+              (B0 * (L ^ (depth + 1) : ℝ)) =
+            (8 * B0 * P.derivBound) / (K : ℝ) := by
+        unfold cmp99Eq389SignedCovariantLinkSlopeBudget
+        calc
+          ((16 * P.derivBound) /
+                cmp99SourceSeparatedLargeBlockCutoffScale L K depth) *
+              (B0 * (L ^ (depth + 1) : ℝ)) =
+            B0 * (((16 * P.derivBound) /
+                cmp99SourceSeparatedLargeBlockCutoffScale L K depth) *
+              (L ^ (depth + 1) : ℝ)) := by ring
+          _ = B0 * ((8 * P.derivBound) / (K : ℝ)) := by
+            rw [cmp99SourceSeparatedSignedLargeBlockSlope_mul_precisionRange]
+          _ = (8 * B0 * P.derivBound) / (K : ℝ) := by ring
       rw [Fin.sum_univ_four]
       unfold cmp99Eq389SignedCovariantLinkSourceBudget slope
       calc
@@ -216,17 +231,7 @@ theorem
               (cmp99Eq342RescaledBlockDist
                 (cmp99SourceSeparatedLargeBlockSide L K depth) Q
                 x source.1 : ℝ))) * ‖v‖ := by
-          unfold cmp99Eq389SignedCovariantLinkSlopeBudget
-          calc
-            ((16 * P.derivBound) /
-                  cmp99SourceSeparatedLargeBlockCutoffScale L K depth) *
-                (B0 * (L ^ (depth + 1) : ℝ)) =
-              B0 * (((16 * P.derivBound) /
-                  cmp99SourceSeparatedLargeBlockCutoffScale L K depth) *
-                (L ^ (depth + 1) : ℝ)) := by ring
-            _ = B0 * ((8 * P.derivBound) / (K : ℝ)) := by
-              rw [cmp99SourceSeparatedSignedLargeBlockSlope_mul_precisionRange]
-            _ = (8 * B0 * P.derivBound) / (K : ℝ) := by ring
+          rw [hscale]
 
 /-- Ambient continuous linear operator whose pointwise value is the literal
 first species.  It is reconstructed from the exact product rule as the
