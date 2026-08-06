@@ -62,6 +62,7 @@ theorem norm_periodic_fin_centeredSecondDifference_le
         f (N - 1 : ℕ) = f (-1 + N) := by
           congr 1
           push_cast [Nat.cast_sub (by omega : 1 ≤ N)]
+          ring
         _ = f (-1) := hp
         _ = f (0 - 1) := by norm_num
     · have hnat : x.val + N - 1 = (x.val - 1) + N := by omega
@@ -149,7 +150,7 @@ theorem
       have h :=
         norm_cmp95RescaledSourcePeriodicSignedCutoff_centeredSecondDifference_le
           P Q hM0 (cell i) (t + offset i) 1
-      simpa using h
+      convert h using 1 <;> ring
   rw [hplus, hzero, hminus]
   calc
     ‖f ((((x i).val + 1) % (M0 * Q) : ℕ) : ℝ) * rest -
