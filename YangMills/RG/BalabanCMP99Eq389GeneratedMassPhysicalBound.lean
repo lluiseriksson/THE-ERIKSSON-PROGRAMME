@@ -153,8 +153,8 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_apply_eq_sum
     by_cases hx : x = source
     · subst x
       simp
-    · rw [singleFinitePiLp_of_ne _ hx, singleFinitePiLp_of_ne _ hx]
-      simp
+    · rw [singleFinitePiLp_of_ne _ hx, PiLp.smul_apply,
+        singleFinitePiLp_of_ne _ hx, smul_zero]
   change (h target - h source) •
       (mass • T) (singleFinitePiLp source
         (G (singleFinitePiLp probe v) source)) target =
@@ -191,7 +191,12 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_exponentialKernelBound
     (B0 delta0 ell : ℝ)
     (C : CMP99Eq342RegionalGreenCertificate Omega (matrixSUNAdjointModel Nc)
       U spacing A c hc hAcoer B0 delta0 ell) :
-    FinitePiLpExponentialKernelBound
+    FinitePiLpTypedExponentialKernelBound
+      (ι := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (κ := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (g := SUNLieCoord Nc)
       (cmp99Eq389GeneratedMassAmbientCorrection
         (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
         chain fineSmall cell Omega A c hc hAcoer)
@@ -299,7 +304,12 @@ theorem cmp99Eq389GeneratedMassRegionalCorrection_exponentialKernelBound
     (B0 delta0 ell : ℝ)
     (C : CMP99Eq342RegionalGreenCertificate Omega (matrixSUNAdjointModel Nc)
       U spacing A c hc hAcoer B0 delta0 ell) :
-    FinitePiLpExponentialKernelBound
+    FinitePiLpTypedExponentialKernelBound
+      (ι := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (κ := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (g := SUNLieCoord Nc)
       (cmp99Eq389GeneratedMassRegionalCorrection
         (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
         chain fineSmall cell Omega A c hc hAcoer)
@@ -412,7 +422,12 @@ theorem cmp99Eq389GeneratedMassRegionalDefect_exponentialKernelBound
     (B0 delta0 ell : ℝ)
     (C : ∀ cell, CMP99Eq342RegionalGreenCertificate (Omega cell)
       (matrixSUNAdjointModel Nc) U spacing A c hc hAcoer B0 delta0 ell) :
-    FinitePiLpExponentialKernelBound
+    FinitePiLpTypedExponentialKernelBound
+      (ι := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (κ := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (g := SUNLieCoord Nc)
       (cmp99Eq389GeneratedMassRegionalDefect
         (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
         chain fineSmall Omega A c hc hAcoer)
