@@ -143,7 +143,7 @@ theorem cmp99SourceSeparatedGeneratedCountingMass_GreenCutoffValue_le
             (cmp99Eq342RescaledBlockDist
               (cmp99SourceSeparatedLargeBlockSide L K depth) Q
               target probe : ℝ))) * ‖v‖)) := by
-      simpa only [e, T] using
+      simpa only [e, T, Equiv.apply_symm_apply] using
         (cmp99Eq389GeneratedCountingMass_GreenCutoffValue_le
           (L := L) (K := K) (Q := Q) P hL depth rho spacing epsilon
           background chain fineSmall cell Omega U A c hc hAcoer B0 delta0
