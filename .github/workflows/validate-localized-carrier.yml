@@ -79,7 +79,6 @@ jobs:
             hRpoly-source-separated-regional-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-regional-defect-budget-nogo-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-regional-defect-contraction-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-regional-correction-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
 
       - name: Record diagnostic cache state
         shell: bash
