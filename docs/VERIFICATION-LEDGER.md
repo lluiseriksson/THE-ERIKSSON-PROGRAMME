@@ -28046,3 +28046,34 @@ cutoff-Laplacian species or its ambient/regional dictionary.  Complete CMP99
 (3.89), contraction, rows 23--24, and a `TermSource` inhabitant remain open.
 Window 15 is compatible but unattained; the live counters remain exactly
 `20/41` and zero.
+
+## Addendum 575 (2026-08-06, **signed periodic tensor second difference GREEN; source-separated transport open; 20/41 unchanged**)
+
+Exact source checkpoint
+`4973182cf45705621a00adab78bb7756a1eb81e9` was validated by cold GitHub
+Actions run `31079471965` (workflow checkpoint
+`1a6d50b7c59cd2f6f625b95d20bc952abd9151b1`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T07:05:32Z` to `07:30:26Z` and exited zero; the audit
+ran from `07:30:26Z` to `07:30:33Z` and also exited zero.  All four declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`713ba250a1079b1f4199faf1060b36a1ae3405603d45138a99dff41ce0659a76`.
+The axiom JSON has SHA-256
+`5ccf1a60331bd6914ea6790f188cc2ac68a391ca27e192e270f3290da4cb7b92`;
+the stage ledger has SHA-256
+`9caae24ba47a3f919a524a6afcc53a7289093ab9e14a0e4f8fe73feadf590729`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves the seam-safe one-coordinate tensor second difference with
+budget `12 * secondDerivBound / M0^2`, then sums the four literal lattice
+directions to obtain the explicit scalar coefficient budget
+`48 * secondDerivBound / M0^2`.  Inactive tensor factors are bounded by one;
+no Green, overlap, or regional constant is used.  The source-separated cast,
+the equality with the literal cutoff-Laplacian species, complete CMP99 (3.89),
+contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window 15
+is compatible but unattained; the live counters remain exactly `20/41` and
+zero.

@@ -2625,6 +2625,44 @@ CMP99 (3.89), `norm R' < 1`, rows 23--24, and a `TermSource` inhabitant remain
 open.  Window 15 is compatible but unattained; the live counters remain
 exactly `20/41` and `TermSource = 0`.
 
+### Signed periodic tensor second difference (SEALED; source-separated transport open)
+
+Checkpoint `4973182cf45705621a00adab78bb7756a1eb81e9` transports the
+one-dimensional signed quadratic estimate through the canonical torus seam,
+factors the tensor cutoff along the one active coordinate, and sums the four
+literal directions.  The directional estimate retains
+
+`12 * secondDerivBound / M0^2`,
+
+and the complete scalar tensor-cutoff Laplacian coefficient retains the
+explicit constant
+
+`48 * secondDerivBound / M0^2 = 4 * 12 * secondDerivBound / M0^2`.
+
+The proof pins the modular arithmetic in `Nat`, uses exact periodicity at the
+two seam cases, and bounds the inactive tensor product by one.  It introduces
+no Green norm, no cell-overlap factor, and no regional-compression hypothesis.
+
+Cold GitHub Actions run `31079471965` (workflow checkpoint `1a6d50b7`) used
+`COLD_MODE=true` and restored no project `.lake/build` cache.  The focal ran
+from `2026-08-06T07:05:32Z` to `07:30:26Z`; the four-declaration audit exited
+zero at `07:30:33Z`, and every declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.  The deterministic evidence archive
+has SHA-256
+`713ba250a1079b1f4199faf1060b36a1ae3405603d45138a99dff41ce0659a76`;
+the axiom JSON has SHA-256
+`5ccf1a60331bd6914ea6790f188cc2ac68a391ca27e192e270f3290da4cb7b92`;
+the stage ledger has SHA-256
+`9caae24ba47a3f919a524a6afcc53a7289093ab9e14a0e4f8fe73feadf590729`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This is the canonical tensor analytic core only.  Transport to the literal
+source-separated carrier, identification with
+`cmp99CutoffLaplacianCorrection`, multiplication by the regional Dirichlet
+Green, the overlap-16 sum, complete CMP99 (3.89), `norm R' < 1`, rows 23--24,
+and a `TermSource` inhabitant remain open.  Window 15 is compatible but still
+unattained; the live counters remain exactly `20/41` and `TermSource = 0`.
+
 ### Declared finite route from CMP99 (3.88) to `20/41 -> 22/41`
 
 The bricks below are the complete declared route.  A green prefix is not a

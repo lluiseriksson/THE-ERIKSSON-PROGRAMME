@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP95SourceSignedPeriodicCutoffSecondDifference
 /-!
 # Tensor second differences of the signed periodic CMP95 cutoff
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and the result has not yet been verified by the Lean compiler.
-
 This is the canonical-torus analytic core of the cutoff-Laplacian species in
 CMP99 (3.88).  It transports the sealed one-dimensional quadratic estimate
 through the periodic seam, factors the tensor cutoff along the active
@@ -20,6 +17,12 @@ any Green, cell-overlap, or regional-compression estimate.
 
 No source-separated cast and no identification with the physical precision
 is made in this file.
+
+Cold GitHub Actions run `31079471965` verified exact source checkpoint
+`4973182cf45705621a00adab78bb7756a1eb81e9` without restoring the project
+`.lake/build` cache.  The focal and four-declaration audit exited zero, and
+every audited declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 namespace YangMills.RG
