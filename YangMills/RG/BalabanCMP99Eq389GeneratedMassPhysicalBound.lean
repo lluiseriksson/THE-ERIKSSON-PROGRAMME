@@ -165,16 +165,9 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_apply_eq_sum
       ∑ source, cmp99Eq389GeneratedMassAmbientKernelAtom
         (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
         chain fineSmall cell Omega A c hc hAcoer target probe source v := by
-  simpa only [cmp99Eq389GeneratedMassAmbientCorrection,
-    cmp99Eq389GeneratedMassAmbientKernelAtom] using
-    (finitePiLpScalarCommutator_smul_comp_single_apply_eq_sum
-      (cmp99SourceSeparatedSignedLargeBlockCutoff P L K Q depth cell)
-      (cmp99SourceGeneratedPhysicalMass 4 L (depth + 1) spacing epsilon)
-      (cmp99SourceSeparatedGeneratedCountingMass
-        (L := L) (K := K) (Q := Q) hL depth (matrixSUNAdjointModel Nc)
-        spacing epsilon background chain fineSmall)
-      (cmp99RegionalExtendedDirichletGreen Omega A hc hAcoer)
-      probe target v)
+  rw [cmp99Eq389GeneratedMassAmbientCorrection,
+    finitePiLpScalarCommutator_smul_comp_single_apply_eq_sum]
+  rfl
 
 /-- Before the right cutoff, the literal generated-mass commutator has the
 printed common metric and the explicit physical source budget. -/
