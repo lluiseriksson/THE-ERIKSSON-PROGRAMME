@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99Eq389GeneratedMassAmbientInsertion
+
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedCountingMass
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedCountingMass_GreenCutoffValue_le
+#print axioms YangMills.RG.cmp99Eq389GeneratedMassAmbientCorrection
+#print axioms YangMills.RG.cmp99Eq389GeneratedMassAmbientCorrection_sum_norm_le
