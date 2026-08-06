@@ -195,7 +195,8 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_exponentialKernelBound
         apply Finset.sum_congr rfl
         intro source _hsource
         unfold cmp99Eq389GeneratedMassAmbientKernelAtom
-        rfl
+        simp only [cmp99Eq389GeneratedMassGreenCutoffValue,
+          Equiv.apply_symm_apply]
       _ ≤
           ∑ source, ‖cmp99Eq389GeneratedMassAmbientKernelAtom
             (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
