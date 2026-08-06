@@ -43,10 +43,11 @@ theorem norm_periodic_fin_centeredSecondDifference_le
     · rw [Nat.mod_eq_of_lt htop]
       norm_num
     · have heq : x.val + 1 = N := by omega
+      have heqR : (x.val : ℝ) + 1 = N := by exact_mod_cast heq
       rw [heq, Nat.mod_self]
       have hp := hperiod 0
-      norm_num at hp ⊢
-      exact hp.symm
+      rw [heqR]
+      simpa using hp.symm
   have hback :
       f (((x.val + N - 1) % N : ℕ) : ℝ) = f ((x.val : ℝ) - 1) := by
     by_cases hx0 : x.val = 0
@@ -54,11 +55,16 @@ theorem norm_periodic_fin_centeredSecondDifference_le
         rw [hx0, Nat.zero_add, Nat.mod_eq_of_lt]
         omega
       rw [hmod]
+      have hx0R : (x.val : ℝ) = 0 := by exact_mod_cast hx0
+      rw [hx0R]
       have hp := hperiod (-1)
-      convert hp using 1 <;> push_cast <;> rw [hx0] <;> ring
+      convert hp using 1
+      push_cast [Nat.cast_sub (by omega : 1 ≤ N)]
+      ring
     · have hnat : x.val + N - 1 = (x.val - 1) + N := by omega
       rw [hnat, Nat.add_mod_right, Nat.mod_eq_of_lt (by omega : x.val - 1 < N)]
       push_cast [Nat.cast_sub (by omega : 1 ≤ x.val)]
+      rfl
   rw [hforward, hback]
   exact hsecond x.val
 
@@ -87,7 +93,7 @@ theorem
   have hplus :
       cmp95RescaledSourcePeriodicSignedTensorCutoff P Q M0 cell
           (fun j => ((x.shift i) j).val + offset j) =
-        f (((x i).val + 1) % (M0 * Q)) * rest := by
+        f ((((x i).val + 1) % (M0 * Q) : ℕ) : ℝ) * rest := by
     unfold cmp95RescaledSourcePeriodicSignedTensorCutoff
     rw [← Finset.mul_prod_erase Finset.univ _ (Finset.mem_univ i)]
     congr 1
@@ -101,11 +107,10 @@ theorem
           (fun j => (x j).val + offset j) = f (x i).val * rest := by
     unfold cmp95RescaledSourcePeriodicSignedTensorCutoff
     rw [← Finset.mul_prod_erase Finset.univ _ (Finset.mem_univ i)]
-    rfl
   have hminus :
       cmp95RescaledSourcePeriodicSignedTensorCutoff P Q M0 cell
           (fun j => ((x.shiftBack i) j).val + offset j) =
-        f (((x i).val + (M0 * Q) - 1) % (M0 * Q)) * rest := by
+        f ((((x i).val + (M0 * Q) - 1) % (M0 * Q) : ℕ) : ℝ) * rest := by
     unfold cmp95RescaledSourcePeriodicSignedTensorCutoff
     rw [← Finset.mul_prod_erase Finset.univ _ (Finset.mem_univ i)]
     congr 1
@@ -116,13 +121,14 @@ theorem
       simp [FinBox.shiftBack, hji]
   have hrest : ‖rest‖ ≤ 1 := by
     dsimp [rest]
-    rw [norm_prod]
-    exact Finset.prod_le_one (fun _ _ => norm_nonneg _) fun j _ =>
-      norm_cmp95RescaledSourcePeriodicSignedCutoff_le_one
-        P Q M0 (cell j) ((x j).val + offset j)
+    rw [Real.norm_eq_abs, Finset.abs_prod]
+    exact Finset.prod_le_one (fun _ _ => abs_nonneg _) fun j _ => by
+      simpa [Real.norm_eq_abs] using
+        norm_cmp95RescaledSourcePeriodicSignedCutoff_le_one
+          P Q M0 (cell j) ((x j).val + offset j)
   have hactive :
-      ‖f (((x i).val + 1) % (M0 * Q)) - 2 * f (x i).val +
-          f (((x i).val + (M0 * Q) - 1) % (M0 * Q))‖ ≤
+      ‖f ((((x i).val + 1) % (M0 * Q) : ℕ) : ℝ) - 2 * f (x i).val +
+          f ((((x i).val + (M0 * Q) - 1) % (M0 * Q) : ℕ) : ℝ)‖ ≤
         (12 * P.secondDerivBound) / M0 ^ 2 := by
     apply norm_periodic_fin_centeredSecondDifference_le
     · intro t
@@ -140,19 +146,22 @@ theorem
     · exact x i
   rw [hplus, hzero, hminus]
   calc
-    ‖f (((x i).val + 1) % (M0 * Q)) * rest -
+    ‖f ((((x i).val + 1) % (M0 * Q) : ℕ) : ℝ) * rest -
         2 * (f (x i).val * rest) +
-        f (((x i).val + (M0 * Q) - 1) % (M0 * Q)) * rest‖ =
-      ‖(f (((x i).val + 1) % (M0 * Q)) - 2 * f (x i).val +
-          f (((x i).val + (M0 * Q) - 1) % (M0 * Q))) * rest‖ := by
+        f ((((x i).val + (M0 * Q) - 1) % (M0 * Q) : ℕ) : ℝ) * rest‖ =
+      ‖(f ((((x i).val + 1) % (M0 * Q) : ℕ) : ℝ) - 2 * f (x i).val +
+          f ((((x i).val + (M0 * Q) - 1) % (M0 * Q) : ℕ) : ℝ)) * rest‖ := by
         congr 1
         ring
-    _ = ‖f (((x i).val + 1) % (M0 * Q)) - 2 * f (x i).val +
-          f (((x i).val + (M0 * Q) - 1) % (M0 * Q))‖ * ‖rest‖ :=
+    _ = ‖f ((((x i).val + 1) % (M0 * Q) : ℕ) : ℝ) - 2 * f (x i).val +
+          f ((((x i).val + (M0 * Q) - 1) % (M0 * Q) : ℕ) : ℝ)‖ * ‖rest‖ :=
       norm_mul _ _
     _ ≤ ((12 * P.secondDerivBound) / M0 ^ 2) * 1 := by
+      have hbudget : 0 ≤ (12 * P.secondDerivBound) / (M0 : ℝ) ^ 2 :=
+        div_nonneg (mul_nonneg (by norm_num) P.secondDerivBound_nonneg)
+          (sq_nonneg (M0 : ℝ))
       exact mul_le_mul hactive hrest (norm_nonneg _)
-        (by positivity)
+        hbudget
     _ = (12 * P.secondDerivBound) / M0 ^ 2 := mul_one _
 
 /-- Canonical scalar coefficient of the signed tensor cutoff Laplacian. -/
