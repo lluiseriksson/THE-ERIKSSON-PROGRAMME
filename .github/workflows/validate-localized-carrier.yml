@@ -109,8 +109,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99Eq389CovariantLinkDerivative.lean \
-            YangMills/RG/BalabanCMP99Eq389CovariantLinkDerivativeAudit.lean \
+            YangMills/RG/BalabanCMP99Eq389CovariantLinkGreenBound.lean \
+            YangMills/RG/BalabanCMP99Eq389CovariantLinkGreenBoundAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -132,10 +132,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_eq389_covariant_link_focal \
-            lake build YangMills.RG.BalabanCMP99Eq389CovariantLinkDerivative
-          run_stage cmp99_eq389_covariant_link_audit \
-            lake env lean YangMills/RG/BalabanCMP99Eq389CovariantLinkDerivativeAudit.lean
+          run_stage cmp99_eq389_covariant_link_green_focal \
+            lake build YangMills.RG.BalabanCMP99Eq389CovariantLinkGreenBound
+          run_stage cmp99_eq389_covariant_link_green_audit \
+            lake env lean YangMills/RG/BalabanCMP99Eq389CovariantLinkGreenBoundAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -149,7 +149,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp99_eq389_covariant_link_audit.log": 3,
+              "cmp99_eq389_covariant_link_green_audit.log": 1,
           }
           result = {}
           for name, expected in audits.items():
