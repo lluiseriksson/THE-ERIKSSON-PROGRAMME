@@ -104,7 +104,7 @@ theorem norm_cmp95SourcePeriodicSignedCutoff_sub_le
   by_cases hQ1 : Q = 1
   · simp [cmp95SourcePeriodicSignedCutoff, hQ1]
     exact mul_nonneg (mul_nonneg (by norm_num) P.derivBound_nonneg)
-      (norm_nonneg _)
+      (abs_nonneg _)
   · simpa [cmp95SourcePeriodicSignedCutoff, hQ1] using
       norm_cmp95PeriodicSignedCutoff_sub_le P Q cell x y
 
