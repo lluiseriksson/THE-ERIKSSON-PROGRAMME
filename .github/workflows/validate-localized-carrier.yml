@@ -78,7 +78,6 @@ jobs:
             hRpoly-cmp99-varying-counting-mass-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-signed-second-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-signed-source-cutoff-laplacian-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-cmp95-signed-tensor-second-difference-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-signed-large-block-partition-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
 
       - name: Record diagnostic cache state
