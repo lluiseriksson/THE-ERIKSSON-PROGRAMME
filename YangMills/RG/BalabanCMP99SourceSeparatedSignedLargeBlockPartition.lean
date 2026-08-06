@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP95SourceSignedPeriodicCutoffSlope
 import YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition
 
 /-!
-# PRE-VALIDATION: signed source-separated CMP99 large-block partition
-
-The source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+# Signed source-separated CMP99 large-block partition
 
 This reinstantiates the literal source-separated regional partition with the
 sign-preserving CMP95 periodization.  Its square partition is definitionally

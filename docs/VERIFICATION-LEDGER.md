@@ -27983,3 +27983,35 @@ membership transport, quadratic second difference, physical species,
 complete CMP99 (3.89), defect contraction, rows 23--24, and a `TermSource`
 inhabitant remain open.  This is infrastructure below window 15, not physical
 attainment.  The live counters remain exactly `20/41` and zero.
+
+## Addendum 573 (2026-08-06, **signed source-separated partition and overlap GREEN; species open; 20/41 unchanged**)
+
+Exact source checkpoint
+`d77c64b8c5702ec833c853fffb0afbcf277f93a5` was validated by cold GitHub
+Actions run `31074140752` (workflow checkpoint
+`0b539caf5127fbfe6a74ba04857fe195fa5d8019`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T05:28:54Z` to `05:47:39Z` and exited zero; the audit
+ran from `05:47:39Z` to `05:47:46Z` and also exited zero.  All nine declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`25521f8976f4848cb18c318f242110fb1a0939620aef52eab2e5b710fc5d6200`.
+The axiom JSON has SHA-256
+`82634747e94ccfa1234f9fea470cf2f3e0d2a27b1bf306f1b6c4c67daf0df7cf`;
+the stage ledger has SHA-256
+`f67a9f7845361d6f7de0dd69d2b8af0ab44c5a3d6528479e2e5ef990d62f6c68`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick constructs the literal signed source-separated partition, proves
+its exact square normalization, exposes
+`slope * precisionRange = 8 * derivBound / K`, and derives the same active-cell
+cardinality `<= 16` from the pre-existing geometric window through the exact
+signed-square identity.  It introduces no second overlap parameter and does
+not identify the signed cutoff definitionally with the retired square-root
+one.  Quadratic second differences, both physical species, regional
+dictionaries, complete CMP99 (3.89), contraction, rows 23--24, and a
+`TermSource` inhabitant remain open.  This is infrastructure below window 15;
+the live counters remain exactly `20/41` and zero.

@@ -2550,6 +2550,44 @@ difference, both physical species, complete CMP99 (3.89), `norm R' < 1`, rows
 below window 15, not attainment of that window or a terminal producer.  The
 live counters remain exactly `20/41` and `TermSource = 0`.
 
+### Signed source-separated partition and overlap (SEALED; species open)
+
+Checkpoint `d77c64b8c5702ec833c853fffb0afbcf277f93a5` instantiates the
+source-faithful signed cutoff on the literal separated large-block carrier.
+The exact square partition is inherited from the signed square identity.  The
+physical slope remains explicit:
+
+`(16 * derivBound / cutoffScale) * precisionRange = 8 * derivBound / K`.
+
+Thus the inverse independent large-block parameter enters before every later
+cell or layer sum, while the factor two relative to the retired square-root
+realization is visible rather than absorbed into an unnamed constant.
+
+The active-cell implication is re-proved for the new functional cutoff by
+transporting `signed^2 = squareWeight`; it then lands in the unchanged
+geometric active window.  The pre-existing cardinal theorem consequently
+gives the same literal pointwise overlap `<= 16`, with no new overlap datum.
+
+Cold GitHub Actions run `31074140752` (workflow checkpoint `0b539caf`) restored
+no project `.lake/build` cache.  The focal ran from
+`2026-08-06T05:28:54Z` to `05:47:39Z`; the nine-declaration audit exited zero
+at `05:47:46Z`, and every declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The deterministic evidence archive has SHA-256
+`25521f8976f4848cb18c318f242110fb1a0939620aef52eab2e5b710fc5d6200`.
+The axiom JSON has SHA-256
+`82634747e94ccfa1234f9fea470cf2f3e0d2a27b1bf306f1b6c4c67daf0df7cf`;
+the stage ledger has SHA-256
+`f67a9f7845361d6f7de0dd69d2b8af0ab44c5a3d6528479e2e5ef990d62f6c68`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This closes the cutoff-specific overlap exception but not the quadratic
+second difference, either signed physical commutator species, the ambient /
+regional dictionary reinstantiation, complete CMP99 (3.89), `norm R' < 1`,
+rows 23--24, or a `TermSource` inhabitant.  It is infrastructure below window
+15 and moves neither live counter: `20/41`, `TermSource = 0`.
+
 ### Declared finite route from CMP99 (3.88) to `20/41 -> 22/41`
 
 The bricks below are the complete declared route.  A green prefix is not a
