@@ -27221,6 +27221,37 @@ attain `norm R' < 1`, discharge groups 23--24, or inhabit a `TermSource`.
 It is therefore infrastructure below window 15 rather than a terminal field;
 the live counters remain exactly `20/41` and zero.
 
+## Addendum 574 (2026-08-06, **signed periodic quadratic second difference GREEN; tensor Laplacian open; 20/41 unchanged**)
+
+Exact source checkpoint
+`f844f2faa3f27908581fd735933731dba37894da` was validated by cold GitHub
+Actions run `31076000837` (workflow checkpoint
+`05245920f173c16fef588c3390695bddf6f27b69`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T06:05:06Z` to `06:28:17Z` and exited zero; the audit
+ran from `06:28:17Z` to `06:28:26Z` and also exited zero.  All three declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`a6ded498542500fa14033b0ac530c2729e7b8b58a13f79abbf36d0c7a7fce44d`.
+The axiom JSON has SHA-256
+`219b75d193e74d4c78de0a965ee632924ac39f8206dbf06ef0e6aa81b7ca0e03`;
+the stage ledger has SHA-256
+`2715f5f0981ed8c9668395bf079b970c46acd2c9c5b2e74ef11f7f00c753b400`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick rewrites the three periodic evaluation points over one six-element
+active-window union and derives the quadratic bound
+`12 * secondDerivBound * norm(h)^2`.  The one-cell branch is constant, and
+physical rescaling exposes `12 * secondDerivBound / M0^2` before any tensor,
+cell, overlap, or Green sum.  It does not yet construct the tensor
+cutoff-Laplacian species or its ambient/regional dictionary.  Complete CMP99
+(3.89), contraction, rows 23--24, and a `TermSource` inhabitant remain open.
+Window 15 is compatible but unattained; the live counters remain exactly
+`20/41` and zero.
+
 ## Addendum 551 (2026-08-05, **normalized `Q'^* Q'` species of CMP99 (3.88) GREEN; 20/41 unchanged**)
 
 The exact fixed-output scalar-commutator expansion, its additive/scalar

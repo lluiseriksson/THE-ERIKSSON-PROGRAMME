@@ -2588,6 +2588,43 @@ regional dictionary reinstantiation, complete CMP99 (3.89), `norm R' < 1`,
 rows 23--24, or a `TermSource` inhabitant.  It is infrastructure below window
 15 and moves neither live counter: `20/41`, `TermSource = 0`.
 
+### Signed periodic quadratic second difference (SEALED; tensor Laplacian open)
+
+Checkpoint `f844f2faa3f27908581fd735933731dba37894da` transports the
+canonical source-profile second-derivative budget through the signed linear
+periodization.  The three evaluation points are rewritten over the union of
+their literal two-point active windows, so at most six translates contribute.
+Termwise application of the sealed profile estimate yields the exact bound
+
+`12 * secondDerivBound * norm(h)^2`.
+
+The explicit `Q = 1` branch is constant.  Physical rescaling is then proved
+before tensoring, with literal inverse-square gain
+
+`(12 * secondDerivBound / M0^2) * norm(h)^2`.
+
+No positivity of the profile and no differentiation of a square root enter.
+Cold GitHub Actions run `31076000837` (workflow checkpoint `05245920`) restored
+no project `.lake/build` cache.  The focal ran from
+`2026-08-06T06:05:06Z` to `06:28:17Z`; the three-declaration audit exited zero
+at `06:28:26Z`, and every declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The deterministic evidence archive has SHA-256
+`a6ded498542500fa14033b0ac530c2729e7b8b58a13f79abbf36d0c7a7fce44d`.
+The axiom JSON has SHA-256
+`219b75d193e74d4c78de0a965ee632924ac39f8206dbf06ef0e6aa81b7ca0e03`;
+the stage ledger has SHA-256
+`2715f5f0981ed8c9668395bf079b970c46acd2c9c5b2e74ef11f7f00c753b400`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This is the one-dimensional analytic input, not yet the tensor
+cutoff-Laplacian coefficient or the second physical species.  Tensor transport
+through a torus coordinate shift, the ambient/regional dictionary, complete
+CMP99 (3.89), `norm R' < 1`, rows 23--24, and a `TermSource` inhabitant remain
+open.  Window 15 is compatible but unattained; the live counters remain
+exactly `20/41` and `TermSource = 0`.
+
 ### Declared finite route from CMP99 (3.88) to `20/41 -> 22/41`
 
 The bricks below are the complete declared route.  A green prefix is not a

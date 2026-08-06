@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP95SourceSignedPeriodicCutoffSlope
 
 /-!
-# PRE-VALIDATION: second differences of the signed periodic CMP95 cutoff
-
-The source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+# Second differences of the signed periodic CMP95 cutoff
 
 The three evaluation points of a centred second difference are reduced to the
 union of their literal two-point active windows.  The resulting six-term sum
