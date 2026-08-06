@@ -2756,6 +2756,41 @@ complete CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource`
 inhabitant.  Window 15 remains compatible but unattained, the live producer
 count remains exactly `20/41`, and `TermSource = 0`.
 
+### Sign-preserving periodic profile dictionary (SEALED; physical reinstantiation open)
+
+Exact source checkpoint `85654369b0bf37f2242ad31326393c1ec47d82aa`
+passed cold GitHub Actions run `31070579539` (workflow checkpoint
+`4539b24130bdcf1248e47b88f25bb92062b8e095`).  The run recorded
+`COLD_MODE=true`, restored no project `.lake/build` cache, completed the
+8,494-job focal, and exited zero in both focal and audit stages.  All nine
+audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed object periodizes the literal real CMP95 profile linearly, so its
+sign is retained.  For `Q >= 2`, the printed support interval proves that the
+two possible translates in one residue class cannot both be nonzero; hence
+the square of the signed sum is exactly the already sealed periodic square
+weight.  The `Q = 1` torus is handled by an explicit constant cutoff `1`, not
+by a hidden lower-bound hypothesis.  Tensoring gives the exact finite square
+partition in four dimensions.
+
+The independently downloaded evidence archive has SHA-256
+`555ff32a693c008234c7b424bdc32d44005bed1c0af2d87eda0b99d1b66ee2f3`.
+Its axiom JSON has SHA-256
+`7d70f260953c1a49cb08ab2a1093204f3f8633d2920fe4e87af00f59cdbaebb6`
+and its stage ledger has SHA-256
+`aa8795b19c1305b2a9c9901a109746576f80af34fbdcd77f2217f7b3b2c8c1ba`;
+all 13 entries of the internal `SHA256SUMS` manifest were independently
+rehash-verified.
+
+This seal closes the periodic profile dictionary only.  It does not make the
+old square-root-based source-separated physical specializations valid for the
+new function.  The rescaled signed partition, its first- and second-difference
+bounds, overlap transport, and the physical first-species/ambient-dictionary
+reinstantiations remain explicit next steps.  Therefore the physical second
+species, complete CMP99 (3.89), window 15, rows 23--24, and a `TermSource`
+inhabitant remain open; the live counters stay exactly `20/41` and zero.
+
 ### Step 7.1 regional-Green source interface (SEALED)
 
 `BalabanCMP99Eq342RegionalGreenCertificate` records the one source-facing

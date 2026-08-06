@@ -27920,3 +27920,35 @@ an explicit one-cell branch remain open.  Hence the physical second species,
 complete CMP99 (3.89), defect contraction, rows 23--24, and a `TermSource`
 inhabitant remain open.  Window 15 is still compatible but unattained; the
 live counters remain exactly `20/41` and zero.
+
+## Addendum 571 (2026-08-06, **sign-preserving periodic CMP95 dictionary GREEN; physical reinstantiation open; 20/41 unchanged**)
+
+Exact source checkpoint
+`85654369b0bf37f2242ad31326393c1ec47d82aa` was validated by cold GitHub
+Actions run `31070579539` (workflow checkpoint
+`4539b24130bdcf1248e47b88f25bb92062b8e095`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored.  The focal ran
+from `2026-08-06T04:13:46Z` to `04:37:58Z` and exited zero; the audit ran from
+`04:37:58Z` to `04:38:06Z` and also exited zero.  All nine declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`555ff32a693c008234c7b424bdc32d44005bed1c0af2d87eda0b99d1b66ee2f3`.
+The axiom JSON has SHA-256
+`7d70f260953c1a49cb08ab2a1093204f3f8633d2920fe4e87af00f59cdbaebb6`;
+the stage ledger has SHA-256
+`aa8795b19c1305b2a9c9901a109746576f80af34fbdcd77f2217f7b3b2c8c1ba`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This seal constructs the literal signed linear periodization of the CMP95
+profile.  Disjoint support proves that its square equals the existing periodic
+square weight for `Q >= 2`; an explicit constant branch treats `Q = 1`.
+The tensor product therefore satisfies the exact finite square partition.
+It does not silently transport the old square-root-based physical
+specializations: the rescaled signed partition, its slope and quadratic
+second difference, overlap inclusion, first species, and ambient dictionary
+remain to be reinstantiated from the generic sealed algebra.  Consequently
+the physical second species, complete CMP99 (3.89), defect contraction, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 is compatible
+but unattained; the live counters remain exactly `20/41` and zero.

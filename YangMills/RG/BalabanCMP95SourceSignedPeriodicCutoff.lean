@@ -7,10 +7,11 @@ import YangMills.RG.BalabanCMP95PeriodicSquareSlope
 import YangMills.RG.BalabanCMP95SourceSmoothPartitionSecondDifference
 
 /-!
-# PRE-VALIDATION: sign-preserving periodic CMP95 cutoff
+# Sign-preserving periodic CMP95 cutoff
 
-The source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+Cold GitHub Actions run `31070579539` materialized this module at exact source
+checkpoint `85654369b0bf37f2242ad31326393c1ec47d82aa`; all nine audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP95 (1.118) prints the cutoff as the literal real profile `h`, not as the
 square root of a periodized square weight.  This module periodizes `h`
