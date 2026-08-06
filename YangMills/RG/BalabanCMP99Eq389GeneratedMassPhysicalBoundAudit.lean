@@ -10,7 +10,6 @@ been materialized, and these declarations have not yet been compiler-audited.
 #print axioms YangMills.RG.cmp99Eq389GeneratedMassSourceBudget
 #print axioms YangMills.RG.finitePiLpScalarCommutator_smul_comp_single_apply_eq_sum
 #print axioms YangMills.RG.cmp99Eq389GeneratedMassAmbientCorrection
-#print axioms YangMills.RG.cmp99Eq389GeneratedMassAmbientCorrection_apply_eq_sum
 #print axioms YangMills.RG.cmp99Eq389GeneratedMassAmbientCorrection_exponentialKernelBound
 #print axioms YangMills.RG.cmp99Eq389GeneratedMassRegionalCorrection
 #print axioms YangMills.RG.cmp99Eq389GeneratedMassRegionalCorrection_exponentialKernelBound

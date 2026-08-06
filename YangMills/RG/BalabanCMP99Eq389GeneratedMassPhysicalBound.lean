@@ -133,47 +133,6 @@ noncomputable def cmp99Eq389GeneratedMassAmbientCorrection
   (finitePiLpScalarCommutator h (mass • T)).comp
     (cmp99RegionalExtendedDirichletGreen Omega A hc hAcoer)
 
-/-- The ambient commutator is exactly the sum of the sealed physical kernel
-atoms.  Thus the estimate below is attached to the literal operator rather
-than to a separately chosen majorant. -/
-theorem cmp99Eq389GeneratedMassAmbientCorrection_apply_eq_sum
-    (P : CMP95SourceSmoothPartitionProfile) (hL : 2 ≤ L) (depth : ℕ)
-    (spacing epsilon : ℝ)
-    (background : GaugeConfig 4
-      (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)) (SUN Nc))
-    (chain : CMP99SourceUbarRadiusChain 4 L Nc (depth + 1) epsilon)
-    (fineSmall : ∀ edge : ConcreteEdge 4
-      (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
-      ‖(background edge : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
-    (cell : FinBox 4 Q)
-    (Omega : ActiveGaugeRegion 4
-      (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
-    (A : GaugeZeroCochain 4
-        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
-        (SUNLieCoord Nc) →L[ℝ]
-      GaugeZeroCochain 4
-        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
-        (SUNLieCoord Nc))
-    (c : ℝ) (hc : 0 < c) (hAcoer : IsCoerciveCLM A c)
-    (probe target : FinBox 4
-      (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
-    (v : SUNLieCoord Nc) :
-    cmp99Eq389GeneratedMassAmbientCorrection
-        (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
-        chain fineSmall cell Omega A c hc hAcoer
-        (singleFinitePiLp probe v) target =
-      ∑ source : FinBox 4
-          (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)),
-        cmp99Eq389GeneratedMassAmbientKernelAtom
-        (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
-        chain fineSmall cell Omega A c hc hAcoer target probe source v := by
-  rw [cmp99Eq389GeneratedMassAmbientCorrection,
-    finitePiLpScalarCommutator_smul_comp_single_apply_eq_sum]
-  apply Finset.sum_congr rfl
-  intro source _hsource
-  unfold cmp99Eq389GeneratedMassAmbientKernelAtom
-  rfl
-
 /-- Before the right cutoff, the literal generated-mass commutator has the
 printed common metric and the explicit physical source budget. -/
 theorem cmp99Eq389GeneratedMassAmbientCorrection_exponentialKernelBound
@@ -224,11 +183,20 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_exponentialKernelBound
             (Nat.cast_nonneg K))
           (mul_nonneg C.B0_nonneg (sq_nonneg ell))))
   · intro probe target v
-    rw [cmp99Eq389GeneratedMassAmbientCorrection_apply_eq_sum]
+    rw [cmp99Eq389GeneratedMassAmbientCorrection,
+      finitePiLpScalarCommutator_smul_comp_single_apply_eq_sum]
     calc
-      ‖∑ source, cmp99Eq389GeneratedMassAmbientKernelAtom
+      _ = ‖∑ source : FinBox 4
+          (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)),
+          cmp99Eq389GeneratedMassAmbientKernelAtom
           (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
-          chain fineSmall cell Omega A c hc hAcoer target probe source v‖ ≤
+          chain fineSmall cell Omega A c hc hAcoer target probe source v‖ := by
+        congr 1
+        apply Finset.sum_congr rfl
+        intro source _hsource
+        unfold cmp99Eq389GeneratedMassAmbientKernelAtom
+        rfl
+      _ ≤
           ∑ source, ‖cmp99Eq389GeneratedMassAmbientKernelAtom
             (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
             chain fineSmall cell Omega A c hc hAcoer target probe source v‖ :=
