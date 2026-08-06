@@ -28176,3 +28176,36 @@ cutoff difference, complete third species, full CMP99 (3.89), contraction,
 rows 23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
 compatible but unattained; the live counters remain exactly `20/41` and
 zero.
+
+## Addendum 579 (2026-08-06, **generated-mass common Green metric GREEN; Green insertion open; 20/41 unchanged**)
+
+Exact source checkpoint
+`9d563cdd910276de19787e6f62e0733fe6cd975c` was validated by cold GitHub
+Actions run `31095036070` (workflow checkpoint
+`a98105c8128e17a3e7da8d612f7c94e9ca011f46`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T10:55:24Z` to `11:14:03Z` and exited zero; the
+audit ran from `11:14:03Z` to `11:14:09Z` and also exited zero.  All three
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`798658975077470bdad004fe99bcb49e23a9e3d7f27fffe5c323bb18ab4a68eb`.
+The axiom JSON has SHA-256
+`8bf10186cdd9c1d026ce36ea5f75e6bb247bbc0c0ab6452e53bbc2ebb2551686`;
+the stage ledger has SHA-256
+`fdfcacba9335e99cbbdebfe8cbb311881e765966d0ecc8b6e84b2b1fd48556ad`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves exact sum-level kernel reindexing for varying coordinate
+probes and proves that every generated terminal fibre lies in one separated
+Green block.  The literal CMP99 (3.42) metric is therefore constant across
+that fibre without exponential or cardinality loss.
+
+This is geometry/reindexing infrastructure below the physical third species.
+The Green estimate, signed cutoff difference, normalized mass coefficient,
+cell sum, complete third species, full CMP99 (3.89), contraction, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
+compatible but unattained; the live counters remain exactly `20/41` and
+zero.

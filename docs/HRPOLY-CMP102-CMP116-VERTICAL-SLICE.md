@@ -3393,3 +3393,36 @@ values and signed cutoff difference, the complete third species, full
 CMP99 (3.89), `norm R' < 1`, rows 23--24, and a `TermSource` inhabitant
 remain open.  Window 15 is compatible but unattained; the live counters
 remain exactly `20/41` and `TermSource = 0`.
+
+### Step 7.4h generated-mass common metric (SEALED; Green insertion open)
+
+Exact source checkpoint `9d563cdd910276de19787e6f62e0733fe6cd975c`
+passed cold GitHub Actions run `31095036070` (workflow checkpoint
+`a98105c8128e17a3e7da8d612f7c94e9ca011f46`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+compiled the focal from `2026-08-06T10:55:24Z` to `11:14:03Z`.  The audit
+finished at `11:14:09Z`; both stages exited zero.  All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The brick proves two exact transports needed by the normalized third
+species.  First, a varying-coordinate fixed-output norm sum is invariant
+under isometric reindexing of both kernel legs.  Second, equality of the
+literal generated `L^(depth+1)` terminal owner implies equality of the
+larger separated `K * L^(depth+1)` Green owner.  Hence the printed CMP99
+(3.42) block metric is exactly constant across one terminal fibre, with no
+extra `exp(delta0)` factor and no cardinality estimate.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`798658975077470bdad004fe99bcb49e23a9e3d7f27fffe5c323bb18ab4a68eb`.
+Its axiom JSON has SHA-256
+`8bf10186cdd9c1d026ce36ea5f75e6bb247bbc0c0ab6452e53bbc2ebb2551686`;
+the stage ledger has SHA-256
+`fdfcacba9335e99cbbdebfe8cbb311881e765966d0ecc8b6e84b2b1fd48556ad`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This is geometry and reindexing infrastructure only.  It does not insert the
+regional Green bound, multiply by the signed cutoff difference or normalized
+mass coefficient, sum cells, prove the complete third species or full CMP99
+(3.89), attain `norm R' < 1`, discharge rows 23--24, or inhabit a
+`TermSource`.  Window 15 remains compatible but unattained; the live
+counters remain exactly `20/41` and `TermSource = 0`.

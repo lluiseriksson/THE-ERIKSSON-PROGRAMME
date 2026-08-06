@@ -8,10 +8,12 @@ import YangMills.RG.BalabanCMP99SourceGeneratedCountingMassVaryingOutput
 import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary
 
 /-!
-# PRE-VALIDATION: common Green metric for the generated mass fibre
+# COLD-SEALED: common Green metric for the generated mass fibre
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
+Exact source checkpoint `9d563cdd910276de19787e6f62e0733fe6cd975c`
+passed cold GitHub Actions run `31095036070` without restoring or saving the
+project `.lake/build` cache.  Focal and audit exited zero, and all three
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The normalized third species of CMP99 (3.88)--(3.89) sums Green values which
 vary over one terminal fibre of the literal generated `Q'` tower.  The Green
