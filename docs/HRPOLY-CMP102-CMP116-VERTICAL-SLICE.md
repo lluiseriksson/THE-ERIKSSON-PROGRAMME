@@ -2574,6 +2574,26 @@ Schur step with adjusted constants:
 5. only then use the already sealed overlap `16`, independent of `K`, to
    obtain `norm R' < 1` for sufficiently large `K`.
 
+The overlap input in item 5 splits into a geometric part and one
+cutoff-specific transport.  The finite windows
+`cmp95PeriodicActiveCellWindow` and
+`cmp95PeriodicTensorActiveCellWindow`, together with their cardinality bounds
+`2` and `16`, mention only residue classes and support geometry; they are
+independent of `Real.sqrt` and remain unchanged for the signed linear
+periodization.  The existing membership theorem
+`mem_cmp95RescaledPeriodicTensorActiveCellWindow_of_cutoff_ne_zero`, and hence
+`cmp99SourceSeparatedLargeBlockActiveCells_subset`, is specialized to the old
+square-root cutoff.  It is therefore not silently reused.
+
+Before the signed cutoff becomes the physical separated partition, step 7.2
+has an explicit overlap-transport substep: define its rescaled separated
+active cells, use the exact signed-square identity to turn cutoff nonvanishing
+into nonvanishing of the same tensor square weight, and reprove inclusion in
+the existing geometric window.  The bound `16` is then reused literally,
+with no second overlap constant and no `K` dependence.  Thus no sealed
+geometric overlap theorem is orphaned, but the old functional membership
+lemma is not claimed for a different cutoff object.
+
 The fixed-output predicate currently available in
 `FinitePiLpTypedFixedOutputWeightedKernelBound` quantifies one common fibre
 vector over all source coordinates.  It therefore does not control the
