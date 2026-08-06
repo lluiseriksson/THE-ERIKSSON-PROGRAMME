@@ -150,7 +150,7 @@ theorem
       have h :=
         norm_cmp95RescaledSourcePeriodicSignedCutoff_centeredSecondDifference_le
           P Q hM0 (cell i) (t + offset i) 1
-      convert h using 1 <;> ring
+      convert h using 1 <;> norm_num <;> ring
   rw [hplus, hzero, hminus]
   calc
     ‖f ((((x i).val + 1) % (M0 * Q) : ℕ) : ℝ) * rest -
