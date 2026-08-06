@@ -27718,3 +27718,37 @@ It does not consume the regional-Green derivative bound, prove the complete
 pointwise first-species estimate, combine the three species of (3.89), attain
 `norm R' < 1`, discharge rows 23--24, or inhabit a `TermSource`.  Window 15
 therefore remains open and the live counters remain exactly `20/41` and zero.
+
+## Addendum 565 (2026-08-06, **CMP99 (3.89) regional-Green incident-metric link bound GREEN; common metric open; 20/41 unchanged**)
+
+The regional-Green link bound was validated from exact source checkpoint
+`ec36dd107c2dbfd2db003c331dce23d4d787b683` by cold GitHub Actions run
+`31058984443` (workflow checkpoint
+`659083efed10ac4c54752ccdcbfc0203217cdec9`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset and Mathlib was
+exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-06T00:15:08Z` to `00:39:57Z`, completed with
+`Build completed successfully (8520 jobs).`, and exited zero.  The audit ran
+from `00:39:57Z` to `00:40:02Z` and also exited zero.  Its declaration depends
+exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`911e03835e0e49105a751a04418a5d40f15d7fc3b25f6db866fe8c79d20ff754`.
+The axiom JSON has SHA-256
+`6b800194b86f5d9cfd2983a2dacf187f61de7155f404d14abdd0ffb302de2761`;
+the stage ledger has SHA-256
+`63b97cc4fa280faecf3843489428a83c06a4e5529a0921485231b42a3cf338cd`.
+Every entry of the internal `SHA256SUMS` manifest independently matched.
+
+The theorem consumes the literal `left_derivative_bound` field of the sealed
+CMP99 (3.42) certificate for the canonical regional Green and bounds the
+covariant-link species by the eight exact incident derivative estimates.  It
+retains each shifted block distance rather than postulating their equality
+with a central metric.  The common-metric transport, complete first species,
+three-species combination, `norm R' < 1`, rows 23--24, and `TermSource`
+inhabitant all remain open.  Window 15 is unattained and the live counters
+remain exactly `20/41` and zero.

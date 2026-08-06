@@ -6,11 +6,12 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99Eq389CovariantLinkDerivative
 
 /-!
-# PRE-VALIDATION: the first regional-Green species in CMP99 (3.89)
+# The first regional-Green species in CMP99 (3.89)
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and its declaration has not yet been verified by the Lean
-compiler.
+Compiler-verified at exact source checkpoint
+`ec36dd107c2dbfd2db003c331dce23d4d787b683` by cold GitHub Actions run
+`31058984443`.  The focal completed 8,520 jobs and the audited declaration
+uses exactly `[propext, Classical.choice, Quot.sound]`.
 
 This module consumes the literal left covariant-derivative component of the
 sealed CMP99 (3.42) regional-Green certificate.  It applies that estimate to

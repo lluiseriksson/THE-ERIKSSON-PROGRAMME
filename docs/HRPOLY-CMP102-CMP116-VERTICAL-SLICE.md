@@ -2689,7 +2689,7 @@ remain the named Theorem-3.1 source input until their physical producer is
 formalized.  This seal closes only prerequisite 7.1: it does not attain window
 15, move `20/41`, or inhabit a `TermSource`.
 
-### Step 7.4 first covariant-link species (SEALED interface; physical estimate open)
+### Step 7.4a first covariant-link species (SEALED interface; physical estimate open)
 
 Exact source checkpoint `ed7d4007af46ac8858326578f89dc6726de76665`
 passed cold GitHub Actions run `31056707497` (workflow checkpoint
@@ -2725,6 +2725,39 @@ sites.  It does not yet prove the pointwise first-species (3.89) bound, combine
 the three displayed species, attain `norm R' < 1`, discharge rows 23--24, or
 inhabit a `TermSource`.  Window 15 remains unattained and the live counters
 remain exactly `20/41` and `TermSource = 0`.
+
+### Step 7.4b regional-Green incident-metric bound (SEALED; common metric open)
+
+Exact source checkpoint `ec36dd107c2dbfd2db003c331dce23d4d787b683`
+passed cold GitHub Actions run `31058984443` (workflow checkpoint
+`659083efed10ac4c54752ccdcbfc0203217cdec9`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+completed the 8,520-job focal.  Focal and audit exited zero; the audited
+declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+The theorem applies the sealed CMP99 (3.42) `D G'` estimate to the canonical
+regional Green probe and all eight oriented bonds incident to the output
+site.  Its right side retains the exact source block metric separately at the
+central site and at each of the four backward-shifted sites.  Thus the
+analytic producer is real and source-facing: it neither accepts a convenient
+metric nor assumes the still-missing geometry that collapses neighboring
+block distances to a common output distance.
+
+The independently downloaded evidence archive has SHA-256
+`911e03835e0e49105a751a04418a5d40f15d7fc3b25f6db866fe8c79d20ff754`.
+Its axiom JSON has SHA-256
+`6b800194b86f5d9cfd2983a2dacf187f61de7155f404d14abdd0ffb302de2761`
+and its stage ledger has SHA-256
+`63b97cc4fa280faecf3843489428a83c06a4e5529a0921485231b42a3cf338cd`.
+Every entry of the internal `SHA256SUMS` manifest independently matched.
+
+This seal still does not prove the common-metric first-species (3.89) bound:
+the next named geometry must show that one fine backward step changes the
+literal block owner by at most one coarse step and pay the corresponding
+`exp(delta0)` factor.  Nor does it combine all three species, attain
+`norm R' < 1`, discharge rows 23--24, or inhabit a `TermSource`.  Window 15
+remains unattained and the live counters remain exactly `20/41` and
+`TermSource = 0`.
 
 ### Step 5 ambient dictionary (SEALED)
 
