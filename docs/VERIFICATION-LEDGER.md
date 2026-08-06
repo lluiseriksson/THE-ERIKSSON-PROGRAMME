@@ -27683,3 +27683,38 @@ This seal closes only the source-facing (3.42) prerequisite.  No part of
 CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource` inhabitant follows
 from it.  Window 15 is still unattained and the live counters remain exactly
 `20/41` and zero.
+
+## Addendum 564 (2026-08-06, **CMP99 (3.89) covariant-link orientation and pre-sum `K^-1` gain GREEN; physical bound open; 20/41 unchanged**)
+
+The first covariant-link interface was validated from exact source checkpoint
+`ed7d4007af46ac8858326578f89dc6726de76665` by cold GitHub Actions run
+`31056707497` (workflow checkpoint
+`a1d33287a3b9fd3ab01d000534691f29576e87c5`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T23:34:36Z` to `2026-08-06T00:01:58Z`,
+completed with `Build completed successfully (8519 jobs).`, and exited zero.
+The audit ran from `00:01:58Z` to `00:02:05Z` and also exited zero.  Its three
+declarations depend exactly on `[propext, Classical.choice, Quot.sound]`; the
+gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`37c104fdee6846685286162c3accac55d9307b7f82522349497a7e4ea5262f92`.
+The axiom JSON has SHA-256
+`885e2ae07f89b40de03888c6c8b50f18547035985b72211353df8b75f170b745`;
+the stage ledger has SHA-256
+`901559c3011970ae664f2b9462593fd50819a7ffb16884ba60a68b2d8d402396`.
+Every entry of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves that the reverse incident difference is the literal forward
+covariant derivative at the shifted site up to the physical adjoint isometry,
+bounds the first link species by the eight incident derivative entries, and
+places the exact `4 * B0 * derivBound / K` gain before any cell or layer sum.
+It does not consume the regional-Green derivative bound, prove the complete
+pointwise first-species estimate, combine the three species of (3.89), attain
+`norm R' < 1`, discharge rows 23--24, or inhabit a `TermSource`.  Window 15
+therefore remains open and the live counters remain exactly `20/41` and zero.

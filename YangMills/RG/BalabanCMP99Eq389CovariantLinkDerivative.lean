@@ -7,11 +7,12 @@ import YangMills.RG.BalabanCMP96Eq240SourceSeparatedCutoffLaplacian
 import YangMills.RG.BalabanCMP99Eq342RegionalGreenCertificate
 
 /-!
-# PRE-VALIDATION: the covariant-link species in CMP99 (3.89)
+# CMP99 (3.89): the covariant-link species
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and its declarations have not yet been verified by the Lean
-compiler.
+Compiler-verified at exact source checkpoint
+`ed7d4007af46ac8858326578f89dc6726de76665` by cold GitHub Actions run
+`31056707497`.  The focal completed 8,519 jobs and all three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP99 (3.88)--(3.89), printed p. 409, estimates the link-derivative species
 directly from the `D G'` component of (3.42).  At rescaled unit spacing the

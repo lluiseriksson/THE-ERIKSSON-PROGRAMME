@@ -2689,6 +2689,43 @@ remain the named Theorem-3.1 source input until their physical producer is
 formalized.  This seal closes only prerequisite 7.1: it does not attain window
 15, move `20/41`, or inhabit a `TermSource`.
 
+### Step 7.4 first covariant-link species (SEALED interface; physical estimate open)
+
+Exact source checkpoint `ed7d4007af46ac8858326578f89dc6726de76665`
+passed cold GitHub Actions run `31056707497` (workflow checkpoint
+`a1d33287a3b9fd3ab01d000534691f29576e87c5`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+completed the 8,519-job focal.  Both focal and audit exited zero.  The three
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The seal proves the source-facing orientation that the first species needs:
+at rescaled unit spacing the reverse incident difference has exactly the norm
+of the literal forward covariant derivative at the shifted base point, by the
+adjoint isometry of the actual gauge background.  It then bounds the complete
+link species by the eight incident covariant-derivative entries.  No abstract
+row/column symmetry, operator norm, Combes--Thomas estimate, Schur sum,
+Poincare constant, or cell cardinality enters this step.  Separately, the
+physical cutoff slope times the printed `B0 * L^(depth+1)` derivative scale is
+proved exactly equal to `4 * B0 * derivBound / K`, before every cell or layer
+sum.
+
+The independently downloaded evidence archive has SHA-256
+`37c104fdee6846685286162c3accac55d9307b7f82522349497a7e4ea5262f92`.
+Its axiom JSON has SHA-256
+`885e2ae07f89b40de03888c6c8b50f18547035985b72211353df8b75f170b745`
+and its stage ledger has SHA-256
+`901559c3011970ae664f2b9462593fd50819a7ffb16884ba60a68b2d8d402396`.
+Every entry of the internal `SHA256SUMS` manifest was independently rehashed
+and matched.
+
+This is only the algebraic/orientation interface for the first species.  The
+next producer must consume the literal left-derivative estimate from the
+sealed (3.42) certificate and transport its block metric at the four shifted
+sites.  It does not yet prove the pointwise first-species (3.89) bound, combine
+the three displayed species, attain `norm R' < 1`, discharge rows 23--24, or
+inhabit a `TermSource`.  Window 15 remains unattained and the live counters
+remain exactly `20/41` and `TermSource = 0`.
+
 ### Step 5 ambient dictionary (SEALED)
 
 Checkpoint `8ac1a1c2508f65e51d4eb89f81bf650780691cf6` freezes the
