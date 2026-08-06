@@ -83,11 +83,13 @@ theorem norm_cmp99SourceSeparatedSignedCutoffLaplacianCoefficient_le
     finBox_cast_apply_val hsize x j
   have hshiftCast (i : Fin 4) :
       hsize ▸ (x.shift i) = x'.shift i := by
-    subst hsize
+    change hsize ▸ (x.shift i) = (hsize ▸ x).shift i
+    cases hsize
     rfl
   have hshiftBackCast (i : Fin 4) :
       hsize ▸ (x.shiftBack i) = x'.shiftBack i := by
-    subst hsize
+    change hsize ▸ (x.shiftBack i) = (hsize ▸ x).shiftBack i
+    cases hsize
     rfl
   have hshiftVal (i j : Fin 4) :
       ((x'.shift i) j).val = ((x.shift i) j).val := by
