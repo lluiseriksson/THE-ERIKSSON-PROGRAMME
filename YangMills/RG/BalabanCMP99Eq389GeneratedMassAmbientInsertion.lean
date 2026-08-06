@@ -18,8 +18,8 @@ mass `cmp99SourceGeneratedPhysicalMass`.  The two normalizations remain
 separate in the endpoint: one surviving block-average weight comes from
 `Q'^* Q'`, while the physical mass is an explicit absolute-value factor.
 
-No cell sum, complete third species, full CMP99 (3.89), or contraction is
-claimed here.
+No contractive right cutoff, cell sum, complete third species, full CMP99
+(3.89), or contraction is claimed here.
 -/
 
 namespace YangMills.RG
@@ -149,13 +149,14 @@ theorem cmp99SourceSeparatedGeneratedCountingMass_GreenCutoffValue_le
           background chain fineSmall cell Omega U A c hc hAcoer B0 delta0
           ell C (e.symm target) probe v)
 
-/-- Literal separated-ambient third-species summand, with the physical scalar
-mass kept outside the normalized generated counting mass.  The helper above
-uses `h(source) - h(target)`, so the explicit minus sign here restores the
-`h(target) - h(source)` orientation of `h * K - K * h` in CMP99 (3.88).
-The averaging tower is specialized definitionally to
-`matrixSUNAdjointModel Nc`, as in the physical generated precision. -/
-noncomputable def cmp99Eq389GeneratedMassAmbientCorrection
+/-- Separated-ambient third-species kernel atom before the contractive right
+cutoff is inserted, with the physical scalar mass kept outside the normalized
+generated counting mass.  The helper above uses `h(source) - h(target)`, so
+the explicit minus sign here restores the `h(target) - h(source)` orientation
+of `h * K - K * h` in CMP99 (3.88).  The averaging tower is specialized
+definitionally to `matrixSUNAdjointModel Nc`, as in the physical generated
+precision. -/
+noncomputable def cmp99Eq389GeneratedMassAmbientKernelAtom
     (P : CMP95SourceSmoothPartitionProfile) (hL : 2 ≤ L) (depth : ℕ)
     (spacing epsilon : ℝ)
     (background : GaugeConfig 4
@@ -192,7 +193,7 @@ noncomputable def cmp99Eq389GeneratedMassAmbientCorrection
 
 /-- Installing the literal physical scalar mass multiplies the already
 normalized ambient estimate by exactly its absolute value. -/
-theorem cmp99Eq389GeneratedMassAmbientCorrection_sum_norm_le
+theorem cmp99Eq389GeneratedMassAmbientKernelAtom_sum_norm_le
     (P : CMP95SourceSmoothPartitionProfile) (hL : 2 ≤ L) (depth : ℕ)
     (spacing epsilon : ℝ)
     (background : GaugeConfig 4
@@ -219,7 +220,7 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_sum_norm_le
     (target probe : FinBox 4
       (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
     (v : SUNLieCoord Nc) :
-    (∑ source, ‖cmp99Eq389GeneratedMassAmbientCorrection
+    (∑ source, ‖cmp99Eq389GeneratedMassAmbientKernelAtom
       (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
       chain fineSmall cell Omega A c hc hAcoer target probe source v‖) ≤
       |cmp99SourceGeneratedPhysicalMass 4 L (depth + 1)
@@ -231,7 +232,7 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_sum_norm_le
                 (cmp99SourceSeparatedLargeBlockSide L K depth) Q
                 target probe : ℝ))) * ‖v‖))) := by
   calc
-    (∑ source, ‖cmp99Eq389GeneratedMassAmbientCorrection
+    (∑ source, ‖cmp99Eq389GeneratedMassAmbientKernelAtom
       (L := L) (K := K) (Q := Q) P hL depth spacing epsilon background
       chain fineSmall cell Omega A c hc hAcoer target probe source v‖) =
       |cmp99SourceGeneratedPhysicalMass 4 L (depth + 1) spacing epsilon| *
@@ -246,7 +247,7 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_sum_norm_le
               probe v
               ((cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
                 L K Q depth).symm source))) target‖ := by
-        simp only [cmp99Eq389GeneratedMassAmbientCorrection, norm_smul,
+        simp only [cmp99Eq389GeneratedMassAmbientKernelAtom, norm_smul,
           Real.norm_eq_abs, abs_neg, Finset.mul_sum]
     _ ≤ |cmp99SourceGeneratedPhysicalMass 4 L (depth + 1)
           spacing epsilon| *
