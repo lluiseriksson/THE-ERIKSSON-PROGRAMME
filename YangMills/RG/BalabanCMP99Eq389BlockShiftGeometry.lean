@@ -38,11 +38,49 @@ theorem blockSite_shiftBack_eq_self_or_shiftBack
     by_cases hji : j = i
     · subst j
       apply Fin.ext
-      simp only [blockSite_val, FinBox.shiftBack, if_pos]
       have hm : 0 < m := NeZero.pos m
       have hn : 0 < n := NeZero.pos n
       have hx : (x i).val < m * n := (x i).isLt
-      omega
+      have hmn : 0 < m * n := Nat.mul_pos hm hn
+      change
+        (((x i).val + m * n - 1) % (m * n)) / m =
+          (((x i).val / m + n - 1) % n)
+      by_cases hx0 : (x i).val = 0
+      · have hdiv : (m * n - 1) / m = n - 1 := by
+          apply Nat.div_eq_of_lt_le
+          · have hlt : (n - 1) * m < n * m :=
+              Nat.mul_lt_mul_of_pos_right (by omega) hm
+            omega
+          · rw [show n - 1 + 1 = n by omega, Nat.mul_comm]
+            omega
+        rw [hx0, Nat.zero_add, Nat.mod_eq_of_lt (by omega : m * n - 1 < m * n),
+          Nat.zero_div, Nat.zero_add, hdiv,
+          Nat.mod_eq_of_lt (by omega : n - 1 < n)]
+      · have hpos : 0 < (x i).val := Nat.pos_of_ne_zero hx0
+        have hpred :
+            ((x i).val + m * n - 1) % (m * n) = (x i).val - 1 := by
+          rw [show (x i).val + m * n - 1 = ((x i).val - 1) + m * n by omega,
+            Nat.add_mod_right, Nat.mod_eq_of_lt (by omega : (x i).val - 1 < m * n)]
+        have hdecomp := Nat.div_add_mod (x i).val m
+        have hkm : ((x i).val / m) * m = (x i).val := by omega
+        have hkpos : 0 < (x i).val / m := by omega
+        have hklt : (x i).val / m < n := Nat.div_lt_of_lt_mul hx
+        have hdivpred :
+            ((x i).val - 1) / m = (x i).val / m - 1 := by
+          apply Nat.div_eq_of_lt_le
+          · have hlt : ((x i).val / m - 1) * m <
+                ((x i).val / m) * m :=
+              Nat.mul_lt_mul_of_pos_right (by omega) hm
+            rw [hkm] at hlt
+            omega
+          · rw [show (x i).val / m - 1 + 1 = (x i).val / m by omega, hkm]
+            omega
+        have hcoarse :
+            ((x i).val / m + n - 1) % n = (x i).val / m - 1 := by
+          rw [show (x i).val / m + n - 1 =
+              ((x i).val / m - 1) + n by omega,
+            Nat.add_mod_right, Nat.mod_eq_of_lt (by omega)]
+        rw [hpred, hdivpred, hcoarse]
     · apply Fin.ext
       simp only [blockSite_val, FinBox.shiftBack, if_neg hji]
   · left
@@ -50,11 +88,27 @@ theorem blockSite_shiftBack_eq_self_or_shiftBack
     by_cases hji : j = i
     · subst j
       apply Fin.ext
-      simp only [blockSite_val, FinBox.shiftBack, if_pos]
       have hm : 0 < m := NeZero.pos m
       have hn : 0 < n := NeZero.pos n
       have hx : (x i).val < m * n := (x i).isLt
-      omega
+      change
+        (((x i).val + m * n - 1) % (m * n)) / m = (x i).val / m
+      have hrempos : 0 < (x i).val % m := Nat.pos_of_ne_zero hrem
+      have hpos : 0 < (x i).val := by
+        have hmodle := Nat.mod_le (x i).val m
+        omega
+      have hpred :
+          ((x i).val + m * n - 1) % (m * n) = (x i).val - 1 := by
+        rw [show (x i).val + m * n - 1 = ((x i).val - 1) + m * n by omega,
+          Nat.add_mod_right, Nat.mod_eq_of_lt (by omega : (x i).val - 1 < m * n)]
+      have hdecomp := Nat.div_add_mod (x i).val m
+      have hrem_lt := Nat.mod_lt (x i).val hm
+      have hdivsame : ((x i).val - 1) / m = (x i).val / m := by
+        apply Nat.div_eq_of_lt_le
+        · omega
+        · rw [Nat.add_mul]
+          omega
+      rw [hpred, hdivsame]
     · apply Fin.ext
       simp only [blockSite_val, FinBox.shiftBack, if_neg hji]
 
