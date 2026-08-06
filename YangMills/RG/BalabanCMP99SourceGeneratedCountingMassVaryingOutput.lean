@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceGeneratedCountingMassOutputRow
 
 /-!
-# Generated counting mass on source-dependent fibre values
+# COLD-SEALED: generated counting mass on source-dependent fibre values
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
+Exact source checkpoint `87e5f54efacfdccac6513024e6e44e5c41d184b8`
+passed cold GitHub Actions run `31092556326` without restoring or saving a
+project `.lake/build` cache.  Focal and audit exited zero; the five audited
+declarations use no axioms outside
+`[propext, Classical.choice, Quot.sound]`.
 
 The third species of CMP99 (3.88) fixes an output site and applies the
 normalized `Q'^* Q'` kernel to Green values which vary with the input site.

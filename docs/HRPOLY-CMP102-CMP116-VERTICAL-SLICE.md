@@ -3357,3 +3357,39 @@ normalized `Q'^*Q'` third species with varying Green values, the complete
 three-species CMP99 (3.89) estimate, `norm R' < 1`, rows 23--24, and a
 `TermSource` inhabitant remain open.  Window 15 is compatible but unattained;
 the live counters remain exactly `20/41` and `TermSource = 0`.
+
+### Step 7.4g terminal-fibre varying-value normalization (SEALED; Green/third species open)
+
+Exact source checkpoint `87e5f54efacfdccac6513024e6e44e5c41d184b8`
+passed cold GitHub Actions run `31092556326` (workflow checkpoint
+`718f69da445a13abb4d81caca838b7eb9e174c9a`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+compiled the focal from `2026-08-06T10:18:09Z` to `10:38:32Z`.  The audit
+finished at `10:38:39Z`; both stages exited zero.  One audited declaration
+uses only `[propext]`; the other four use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The brick proves the source-faithful varying-value estimate for the literal
+generated counting mass.  Outside the actual `SameTerminalBlock` fibre every
+kernel block vanishes exactly.  Inside it, each block has norm
+`(L^-4)^(2*r) * norm(phi source)`, while the fibre contains at most
+`L^(4*r)` sites.  The exact cancellation therefore leaves one and only one
+normalized factor `(L^-4)^r`, before any regional-cell or layer sum.  No
+range-ball cardinality, abstract adjoint-orientation transport, or bound on
+`phi` outside the terminal fibre is introduced.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`5a71078c26c371c4a05449993d170bd2bdc1db5dd3fd3dbff766e0827e72bee5`.
+Its axiom JSON has SHA-256
+`08cdb34aa8931541162079ce52476a9e64287d71a16831c1ba855335f5e58946`;
+the stage ledger has SHA-256
+`e8e5897ce0f0ae502d4e08967cad2bd35f85c395ce6317f85e600707e61c31ad`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This is the terminal-fibre normalization input only.  The exact reindexing
+to the separated ambient carrier, equality of the CMP99 (3.42) regional
+metric across one terminal fibre, insertion of the varying regional Green
+values and signed cutoff difference, the complete third species, full
+CMP99 (3.89), `norm R' < 1`, rows 23--24, and a `TermSource` inhabitant
+remain open.  Window 15 is compatible but unattained; the live counters
+remain exactly `20/41` and `TermSource = 0`.

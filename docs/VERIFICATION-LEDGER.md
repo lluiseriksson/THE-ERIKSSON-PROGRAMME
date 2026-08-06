@@ -28141,3 +28141,38 @@ normalized `Q'^*Q'` third species, complete (3.89), defect contraction, rows
 23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
 compatible but unattained; the live counters remain exactly `20/41` and
 zero.
+
+## Addendum 578 (2026-08-06, **varying counting-mass terminal fibre GREEN; Green/third species open; 20/41 unchanged**)
+
+Exact source checkpoint
+`87e5f54efacfdccac6513024e6e44e5c41d184b8` was validated by cold GitHub
+Actions run `31092556326` (workflow checkpoint
+`718f69da445a13abb4d81caca838b7eb9e174c9a`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T10:18:09Z` to `10:38:32Z` and exited zero; the
+audit ran from `10:38:32Z` to `10:38:39Z` and also exited zero.  Of the five
+audited declarations, one uses only `[propext]` and four use exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`5a71078c26c371c4a05449993d170bd2bdc1db5dd3fd3dbff766e0827e72bee5`.
+The axiom JSON has SHA-256
+`08cdb34aa8931541162079ce52476a9e64287d71a16831c1ba855335f5e58946`;
+the stage ledger has SHA-256
+`e8e5897ce0f0ae502d4e08967cad2bd35f85c395ce6317f85e600707e61c31ad`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves that the literal generated counting-mass kernel vanishes
+outside one terminal-owner fibre and that its varying-value sum is bounded by
+exactly one surviving `(L^-4)^r` normalization after the
+`L^(4*r) * (L^-4)^(2*r)` cancellation.  It introduces neither a range-ball
+count nor an abstract adjoint-orientation premise.
+
+This is normalization infrastructure below the physical third species.  The
+ambient reindexing, common regional-Green metric on a terminal fibre, signed
+cutoff difference, complete third species, full CMP99 (3.89), contraction,
+rows 23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
+compatible but unattained; the live counters remain exactly `20/41` and
+zero.
