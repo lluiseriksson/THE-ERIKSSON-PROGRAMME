@@ -313,7 +313,14 @@ theorem cmp99Eq389GeneratedCountingMass_GreenCutoffValue_le
     (Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
     (depth := depth + 1) (by norm_num) hL rho spacing epsilon background
     chain fineSmall target phi
-  · positivity
+  · apply mul_nonneg
+    · exact div_nonneg
+        (mul_nonneg (by norm_num) P.derivBound_nonneg) (Nat.cast_nonneg _)
+    · exact mul_nonneg
+        (mul_nonneg
+          (mul_nonneg C.B0_nonneg (sq_nonneg ell))
+          (Real.exp_pos _).le)
+        (norm_nonneg v)
   · intro source hsame
     change ‖cmp99Eq389GeneratedMassGreenCutoffValue P depth cell Omega A c
       hc hAcoer target probe v source‖ ≤ _
