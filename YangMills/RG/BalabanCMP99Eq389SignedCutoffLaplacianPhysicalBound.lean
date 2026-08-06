@@ -177,6 +177,7 @@ theorem cmp99Eq389SignedCutoffLaplacianRegionalCorrection_apply
     (x : FinBox 4
       (cmp99SourceSeparatedLargeBlockSide L Klarge depth * (2 * Q))) :
     cmp99Eq389SignedCutoffLaplacianRegionalCorrection
+        (L := L) (Klarge := Klarge) (Q := Q) (Nc := Nc)
         P depth cell Omega A c hc hAcoer phi x =
       cmp99CutoffLaplacianCorrection (Nc := Nc) 1
         (cmp99SourceSeparatedSignedLargeBlockCutoff
@@ -215,6 +216,7 @@ theorem
       B0 delta0 (L ^ (depth + 1) : ℝ)) :
     FinitePiLpExponentialKernelBound
       (cmp99Eq389SignedCutoffLaplacianRegionalCorrection
+        (L := L) (Klarge := Klarge) (Q := Q) (Nc := Nc)
         P depth cell Omega A c hc hAcoer)
       (cmp99Eq342RescaledBlockDist
         (cmp99SourceSeparatedLargeBlockSide L Klarge depth) Q)
@@ -238,8 +240,12 @@ theorem
       (cmp99SourceSeparatedSignedLargeBlockSquarePartition
         (L := L) (K := Klarge) (Q := Q) (depth := depth) P).norm_value_le_one
           cell source
-  have hgreen := C.extended_value_bound Omega rho U 1 A c hc hAcoer
-    B0 delta0 (L ^ (depth + 1) : ℝ)
+  have hgreen :=
+    CMP99Eq342RegionalGreenCertificate.extended_value_bound
+      (m := cmp99SourceSeparatedLargeBlockSide L Klarge depth)
+      (q := Q) (Nc := Nc)
+      Omega rho U 1 A c hc hAcoer B0 delta0
+      (L ^ (depth + 1) : ℝ) C
   have hgreenCut :=
     finitePiLpTypedExponentialKernelBound_comp_scalarMultiplier_right
       hcutoff (cmp99RegionalExtendedDirichletGreen Omega A hc hAcoer)
@@ -304,9 +310,11 @@ theorem
     (hzero : cmp99SourceSeparatedSignedLargeBlockCutoff
       P L Klarge Q depth cell source = 0) :
     cmp99Eq389SignedCutoffLaplacianRegionalCorrection
+      (L := L) (Klarge := Klarge) (Q := Q) (Nc := Nc)
       P depth cell Omega A c hc hAcoer (singleFinitePiLp source v) = 0 := by
   unfold cmp99Eq389SignedCutoffLaplacianRegionalCorrection
-  rw [ContinuousLinearMap.comp_apply, finitePiLpScalarMultiplier_single,
+  simp only [ContinuousLinearMap.comp_apply]
+  rw [finitePiLpScalarMultiplier_single,
     hzero, zero_smul]
   have hsingle : singleFinitePiLp source (0 : SUNLieCoord Nc) = 0 := by
     apply PiLp.ext
@@ -331,6 +339,7 @@ noncomputable def cmp99Eq389SignedCutoffLaplacianRegionalDefect
         (SUNLieCoord Nc))
     (c : ℝ) (hc : 0 < c) (hAcoer : IsCoerciveCLM A c) :=
   ∑ cell, cmp99Eq389SignedCutoffLaplacianRegionalCorrection
+    (L := L) (Klarge := Klarge) (Q := Q) (Nc := Nc)
     P depth cell (Omega cell) A c hc hAcoer
 
 /-- The second species pays exactly the signed source overlap `16`, with no
@@ -354,6 +363,7 @@ theorem cmp99Eq389SignedCutoffLaplacianRegionalDefect_exponentialKernelBound
       A c hc hAcoer B0 delta0 (L ^ (depth + 1) : ℝ)) :
     FinitePiLpExponentialKernelBound
       (cmp99Eq389SignedCutoffLaplacianRegionalDefect
+        (L := L) (Klarge := Klarge) (Q := Q) (Nc := Nc)
         P depth Omega A c hc hAcoer)
       (cmp99Eq342RescaledBlockDist
         (cmp99SourceSeparatedLargeBlockSide L Klarge depth) Q)
@@ -361,7 +371,11 @@ theorem cmp99Eq389SignedCutoffLaplacianRegionalDefect_exponentialKernelBound
       delta0 := by
   unfold cmp99Eq389SignedCutoffLaplacianRegionalDefect
   apply finitePiLpExponentialKernelBound_sum_of_sourceOverlap
+    (ι := FinBox 4
+      (cmp99SourceSeparatedLargeBlockSide L Klarge depth * (2 * Q)))
+    (g := SUNLieCoord Nc) (n := FinBox 4 Q)
     (term := fun cell => cmp99Eq389SignedCutoffLaplacianRegionalCorrection
+      (L := L) (Klarge := Klarge) (Q := Q) (Nc := Nc)
       P depth cell (Omega cell) A c hc hAcoer)
     (active := fun cell source =>
       cmp99SourceSeparatedSignedLargeBlockCutoff
@@ -383,11 +397,13 @@ theorem cmp99Eq389SignedCutoffLaplacianRegionalDefect_exponentialKernelBound
   · intro cell source v hinactive
     apply
       cmp99Eq389SignedCutoffLaplacianRegionalCorrection_single_eq_zero_of_value_eq_zero
+        (L := L) (Klarge := Klarge) (Q := Q) (Nc := Nc)
         P depth cell (Omega cell) A c hc hAcoer source v
     simpa using hinactive
   · intro cell
     exact
       cmp99Eq389SignedCutoffLaplacianRegionalCorrection_exponentialKernelBound
+        (L := L) (Klarge := Klarge) (Q := Q) (Nc := Nc)
         P depth cell (Omega cell) rho U A c hc hAcoer B0 delta0 (C cell)
 
 end
