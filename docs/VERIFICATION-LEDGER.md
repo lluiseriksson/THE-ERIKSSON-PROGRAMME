@@ -28077,3 +28077,34 @@ the equality with the literal cutoff-Laplacian species, complete CMP99 (3.89),
 contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window 15
 is compatible but unattained; the live counters remain exactly `20/41` and
 zero.
+
+## Addendum 576 (2026-08-06, **signed source-separated cutoff Laplacian GREEN; Green/overlap composition open; 20/41 unchanged**)
+
+Exact source checkpoint
+`e14ea5903c3ab45179155d9fe530d29c442a78d3` was validated by cold GitHub
+Actions run `31082213055` (workflow checkpoint
+`063bd346a46140b8ab670cfb220f44b55ce13a48`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T07:48:16Z` to `08:13:47Z` and exited zero; the audit
+ran from `08:13:47Z` to `08:13:55Z` and also exited zero.  All four declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`888f5ecd71c67ca9e2da20581e6905b33efb5f10d88dfe5b46460a95958ff2ef`.
+The axiom JSON has SHA-256
+`7092d6184f160ccc86e82d8b7ad8a85686028a8efc39e979377e1b3b61c9f740`;
+the stage ledger has SHA-256
+`143cf54c14eb4fa8a0ee73966a26bbada6c766b9762902c7795613b0789046d4`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick transports the tensor second difference to the literal
+source-separated carrier, proves
+`norm coefficient <= 48 * secondDerivBound / cutoffScale^2`, identifies it
+exactly with `cmp99CutoffLaplacianCorrection` at unit spacing, and proves the
+depth-scale cancellation to `12 * secondDerivBound / K^2`.  It does not
+multiply by the regional Dirichlet Green or sum the overlap-16 cells.  The
+third species, complete CMP99 (3.89), contraction, rows 23--24, and a
+`TermSource` inhabitant remain open.  Window 15 is compatible but unattained;
+the live counters remain exactly `20/41` and zero.

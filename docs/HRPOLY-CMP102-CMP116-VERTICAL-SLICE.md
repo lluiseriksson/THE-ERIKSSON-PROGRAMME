@@ -2663,6 +2663,47 @@ Green, the overlap-16 sum, complete CMP99 (3.89), `norm R' < 1`, rows 23--24,
 and a `TermSource` inhabitant remain open.  Window 15 is compatible but still
 unattained; the live counters remain exactly `20/41` and `TermSource = 0`.
 
+### Signed source-separated cutoff Laplacian (SEALED; Green/overlap composition open)
+
+Checkpoint `e14ea5903c3ab45179155d9fe530d29c442a78d3` transports the
+canonical tensor coefficient through the literal equality
+
+`sourceSeparatedSide * (2 * Q) = cutoffScale * Q`
+
+coordinate by coordinate.  The transport covers both `shift` and `shiftBack`
+without asserting a stronger definitional equality between dependent torus
+types.  It proves the literal cutoff-side estimate
+
+`norm coefficient <= 48 * secondDerivBound / cutoffScale^2`,
+
+identifies that coefficient exactly with
+`cmp99CutoffLaplacianCorrection ... 1`, and exposes the depth-scale
+cancellation
+
+`(48 * secondDerivBound / cutoffScale^2) * generatedRange^2
+  = 12 * secondDerivBound / K^2`.
+
+The Laplacian and normalized-mass species remain separately budgeted; this
+brick does not absorb the factor into a shared precision constant.  Cold
+GitHub Actions run `31082213055` (workflow checkpoint `063bd346`) used
+`COLD_MODE=true` and restored no project `.lake/build` cache.  The focal ran
+from `2026-08-06T07:48:16Z` to `08:13:47Z`; the four-declaration audit exited
+zero at `08:13:55Z`, and every declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.  The deterministic evidence archive
+has SHA-256
+`888f5ecd71c67ca9e2da20581e6905b33efb5f10d88dfe5b46460a95958ff2ef`;
+the axiom JSON has SHA-256
+`7092d6184f160ccc86e82d8b7ad8a85686028a8efc39e979377e1b3b61c9f740`;
+the stage ledger has SHA-256
+`143cf54c14eb4fa8a0ee73966a26bbada6c766b9762902c7795613b0789046d4`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This seals the cutoff-side second physical species only.  The regional
+Dirichlet Green multiplication, the overlap-16 cell sum, the third species,
+complete CMP99 (3.89), `norm R' < 1`, rows 23--24, and a `TermSource`
+inhabitant remain open.  Window 15 is compatible but unattained; the live
+counters remain exactly `20/41` and `TermSource = 0`.
+
 ### Declared finite route from CMP99 (3.88) to `20/41 -> 22/41`
 
 The bricks below are the complete declared route.  A green prefix is not a

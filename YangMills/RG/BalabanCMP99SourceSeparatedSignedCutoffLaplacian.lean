@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99SourceSeparatedSignedLargeBlockPartition
 /-!
 # Signed source-separated cutoff-Laplacian species
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and the result has not yet been verified by the Lean compiler.
-
 This module transports the sealed canonical tensor second difference to the
 literal source-separated carrier and identifies the resulting scalar
 coefficient with the cutoff-Laplacian species in CMP99 (3.88).  The physical
@@ -20,6 +17,12 @@ inverse-square scale is exposed before any regional Green or cell-overlap sum.
 
 No Green estimate, overlap factor, contraction, or CMP99 (3.89) conclusion is
 proved here.
+
+Cold GitHub Actions run `31082213055` verified exact source checkpoint
+`e14ea5903c3ab45179155d9fe530d29c442a78d3` without restoring the project
+`.lake/build` cache.  The focal and four-declaration audit exited zero, and
+every audited declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 namespace YangMills.RG
