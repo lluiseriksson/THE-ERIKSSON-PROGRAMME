@@ -481,6 +481,9 @@ theorem
     (C : CMP99Eq342RegionalGreenCertificate Omega rho U 1 A c hc hAcoer
       B0 delta0 (L ^ (depth + 1) : ℝ)) :
     FinitePiLpExponentialKernelBound
+      (ι := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (g := SUNLieCoord Nc)
       (cmp99Eq389SignedCovariantLinkRegionalCorrection
         (L := L) (K := K) (Q := Q) P depth cell Omega rho U
         A c hc hAcoer)
@@ -585,6 +588,9 @@ theorem
     (C : ∀ cell, CMP99Eq342RegionalGreenCertificate (Omega cell) rho U 1
       A c hc hAcoer B0 delta0 (L ^ (depth + 1) : ℝ)) :
     FinitePiLpExponentialKernelBound
+      (ι := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (g := SUNLieCoord Nc)
       (cmp99Eq389SignedCovariantLinkRegionalDefect
         (L := L) (K := K) (Q := Q) P depth Omega rho U
         A c hc hAcoer)
