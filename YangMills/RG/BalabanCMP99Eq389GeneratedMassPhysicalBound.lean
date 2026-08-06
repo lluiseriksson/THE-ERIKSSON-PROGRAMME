@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99Eq389GeneratedMassAmbientInsertion
+import YangMills.RG.BalabanCMP99SourceGeneratedQprimeMassCutoffIdentity
 import YangMills.RG.BalabanCMP99SourceSeparatedSignedLargeBlockPartition
 import YangMills.RG.FinitePiLpSourceOverlapSum
 
