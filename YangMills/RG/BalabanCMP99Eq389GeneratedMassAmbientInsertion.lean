@@ -150,7 +150,9 @@ theorem cmp99SourceSeparatedGeneratedCountingMass_GreenCutoffValue_le
           ell C (e.symm target) probe v)
 
 /-- Literal separated-ambient third-species summand, with the physical scalar
-mass kept outside the normalized generated counting mass. -/
+mass kept outside the normalized generated counting mass.  The helper above
+uses `h(source) - h(target)`, so the explicit minus sign here restores the
+`h(target) - h(source)` orientation of `h * K - K * h` in CMP99 (3.88). -/
 noncomputable def cmp99Eq389GeneratedMassAmbientCorrection
     (P : CMP95SourceSmoothPartitionProfile) (hL : 2 ≤ L) (depth : ℕ)
     (rho : SUNAdjointModel Nc) (spacing epsilon : ℝ)
@@ -173,7 +175,7 @@ noncomputable def cmp99Eq389GeneratedMassAmbientCorrection
     (target probe source : FinBox 4
       (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
     (v : SUNLieCoord Nc) : SUNLieCoord Nc :=
-  cmp99SourceGeneratedPhysicalMass 4 L (depth + 1) spacing epsilon •
+  (-cmp99SourceGeneratedPhysicalMass 4 L (depth + 1) spacing epsilon) •
     cmp99SourceSeparatedGeneratedCountingMass
       (L := L) (K := K) (Q := Q) hL depth rho spacing epsilon background
       chain fineSmall
@@ -243,7 +245,7 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_sum_norm_le
               ((cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
                 L K Q depth).symm source))) target‖ := by
         simp only [cmp99Eq389GeneratedMassAmbientCorrection, norm_smul,
-          Real.norm_eq_abs, Finset.mul_sum]
+          Real.norm_eq_abs, abs_neg, Finset.mul_sum]
     _ ≤ |cmp99SourceGeneratedPhysicalMass 4 L (depth + 1)
           spacing epsilon| *
         ((cmp99SourceBlockAverageWeight L 4) ^ (depth + 1) *
