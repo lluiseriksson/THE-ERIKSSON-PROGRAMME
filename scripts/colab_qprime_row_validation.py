@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fresh-clone Colab gate for the generated CMP99 Q-prime row brick.
+"""Fresh-clone Colab gate for the signed CMP99 first-species brick.
 
 This validation runner compiles the immutable PRE-VALIDATION source checkpoint
 named by ``SOURCE_SHA``.  It is infrastructure only: the source object and its
@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "generated-qprime-fixed-output-v17"
-SOURCE_SHA = "db04d33a19be5f4e87d842f6cc9a3925e53f4388"
+RUNNER_REV = "signed-covariant-link-v1"
+SOURCE_SHA = "bb79148699fbaaaef8a2327204980419d7ece2d0"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -31,77 +31,36 @@ TOOLCHAIN_URL = (
     "lean-4.29.0-rc6-linux.tar.zst"
 )
 TOOLCHAIN_SHA256 = "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
-ROOT = Path("/content/hrpoly-generated-qprime-row")
-EVIDENCE = Path("/content/hrpoly-generated-qprime-row-evidence")
-ARCHIVE = Path("/content/hrpoly-generated-qprime-row-evidence.tar.gz")
+ROOT = Path("/content/hrpoly-signed-covariant-link")
+EVIDENCE = Path("/content/hrpoly-signed-covariant-link-evidence")
+ARCHIVE = Path("/content/hrpoly-signed-covariant-link-evidence.tar.gz")
 ASSET = Path("/content/lean-4.29.0-rc6-linux.tar.zst")
 TOOLROOT = Path("/content/lean-4.29.0-rc6-linux")
-PATH_MANIFEST = Path("/content/hrpoly-generated-qprime-row-paths.txt")
-ADD_REPRO = Path("/content/hrpoly-qprime-row-add-repro.lean")
+PATH_MANIFEST = Path("/content/hrpoly-signed-covariant-link-paths.txt")
 
 SOURCE_BLOBS = {
-    "YangMills/RG/FinitePiLpTypedFixedOutputWeightedKernel.lean":
-        "e1b0642ef896bf36bc80a9d507164045cf615b35853daa54de4c09b16834738a",
-    "YangMills/RG/FinitePiLpTypedFixedOutputWeightedKernelAudit.lean":
-        "0684867a0e8c8cc4323ff46e1723c1c4f5fe1667be177fff2fd2d27b296ff15d",
-    "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassOutputRow.lean":
-        "e6f3b3c7f243810125d6921601403f111194d55e34501d16e4852a3fae45a014",
-    "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassOutputRowAudit.lean":
-        "eb02f1a9171f4e50cce500f8bd7c72c287b4fbd7a480219915ad267e1b5025a7",
-    "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRow.lean":
-        "21e1a2c693c1a10db1ce21af042338d458de990305484eae0750c7a2034e002d",
-    "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRowAudit.lean":
-        "54d61caf35a85e43e830ced480b00eb4085f33ea11b91ee03853756f761d58fe",
+    "YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBound.lean":
+        "a820f492865b59376530d5f598de4ed8f9043ef918b9dcdcc19754b6a16f4b19",
+    "YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBoundAudit.lean":
+        "63fd60cb8f7ffe7599b26b3fa82f30471a123e0a03d077dbcc182bb88ce6824f",
 }
 
 QUEUE = [
     (
-        "fixed_output_kernel_focal",
+        "signed_covariant_link_focal",
         [
             "lake", "build",
-            "YangMills.RG.FinitePiLpTypedFixedOutputWeightedKernel",
+            "YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkPhysicalBound",
         ],
         None,
     ),
     (
-        "fixed_output_kernel_audit",
+        "signed_covariant_link_audit",
         [
             "lake", "env", "lean",
-            "YangMills/RG/FinitePiLpTypedFixedOutputWeightedKernelAudit.lean",
+            "YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBoundAudit.lean",
         ],
-        5,
-    ),
-    (
-        "generated_counting_mass_output_row_focal",
-        [
-            "lake", "build",
-            "YangMills.RG.BalabanCMP99SourceGeneratedCountingMassOutputRow",
-        ],
-        None,
-    ),
-    (
-        "generated_counting_mass_output_row_audit",
-        [
-            "lake", "env", "lean",
-            "YangMills/RG/BalabanCMP99SourceGeneratedCountingMassOutputRowAudit.lean",
-        ],
-        6,
-    ),
-    (
-        "physical_precision_direct_output_row_focal",
-        [
-            "lake", "build",
-            "YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRow",
-        ],
-        None,
-    ),
-    (
-        "physical_precision_direct_output_row_audit",
-        [
-            "lake", "env", "lean",
-            "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRowAudit.lean",
-        ],
-        2,
+        15,
     ),
 ]
 
@@ -221,7 +180,7 @@ def main() -> int:
         for path in (ROOT, EVIDENCE, TOOLROOT):
             if path.exists():
                 shutil.rmtree(path)
-        for path in (ASSET, ARCHIVE, PATH_MANIFEST, ADD_REPRO):
+        for path in (ASSET, ARCHIVE, PATH_MANIFEST):
             if path.exists():
                 path.unlink()
 
@@ -297,26 +256,6 @@ def main() -> int:
         if mathlib != EXPECTED_MATHLIB:
             raise RuntimeError("MATHLIB_PIN_MISMATCH=" + mathlib)
         run("cache_get", ["lake", "exe", "cache", "get"], cwd=ROOT)
-
-        ADD_REPRO.write_text(
-            """import Mathlib
-
-example (w x : ℝ) (depth : ℕ) :
-    w * (w ^ (2 * depth) * (w * x)) = w ^ (2 * (depth + 1)) * x := by
-  calc
-    w * (w ^ (2 * depth) * (w * x)) =
-        (w ^ (2 * depth) * w ^ 2) * x := by ring
-    _ = w ^ (2 * depth + 2) * x := by rw [← pow_add]
-    _ = w ^ (2 * (depth + 1)) * x := by
-      rw [show 2 * depth + 2 = 2 * (depth + 1) by omega]
-""",
-            encoding="utf-8",
-        )
-        run(
-            "fixed_output_mass_exponent_repro",
-            ["lake", "env", "lean", str(ADD_REPRO)],
-            cwd=ROOT,
-        )
 
         for stage, command, expected_axioms in QUEUE:
             output = run(stage, command, cwd=ROOT)
