@@ -6,11 +6,11 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99Eq389BlockShiftGeometry
 
 /-!
-# PRE-VALIDATION: common block metric for the first CMP99 (3.89) species
+# COLD-SEALED: common block metric for the first CMP99 (3.89) species
 
-The source of this module is present, but its `.olean` has not yet been
-materialized and its declarations have not yet been verified by the Lean
-compiler.
+This module and its audit were compiler-verified from exact source checkpoint
+`47d02e63a865bb75bba6f14d2da1a12e6a675fe2` by cold GitHub Actions run
+`31063213456`, without restoring or saving a project `.lake/build` cache.
 
 The literal one-step block geometry transports each backward incident
 regional-Green decay factor to the central output metric.  The only loss is

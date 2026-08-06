@@ -2788,6 +2788,37 @@ The common-metric first species, all-species (3.89), `norm R' < 1`, rows
 23--24, and a `TermSource` inhabitant remain open.  Window 15 is unattained;
 the live counters remain exactly `20/41` and `TermSource = 0`.
 
+### Step 7.4d common-metric exponential transport (SEALED; complete first species open)
+
+Exact source checkpoint `47d02e63a865bb75bba6f14d2da1a12e6a675fe2`
+passed cold GitHub Actions run `31063213456` (workflow checkpoint
+`92e8f3e8688c437b89fd215c342eb1dae7bc7c66`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+completed the 8,522-job focal.  Focal and audit exited zero; both declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The first theorem turns the sealed one-step block displacement into the exact
+real exponential comparison, paying one visible factor `exp(delta0)`.  The
+second applies that comparison to every backward incident regional-Green term
+and rewrites the first covariant-link species against the one central block
+metric.  The four-direction `Fin 4` sum and the pre-sum `K^-1` gain remain
+visible; no overlap, layer, Schur, Poincare, or operator-norm constant is
+introduced or absorbed.
+
+The independently downloaded evidence archive has SHA-256
+`1d03fe2b762ba4e61cc2f9b3d2d17e476ea717e6bbb3877a7f3622a8c84028b9`.
+Its axiom JSON has SHA-256
+`e96a3d24f8e50e7b8a612228263b957d963997905b6b57ce9b5d7ec2e1ec4d3f`
+and its stage ledger has SHA-256
+`57dc380a606a0ed4c898099b53779f11896956119301936ef1513534132f6437`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This seals the common-metric transport for the first displayed species only.
+It does not yet finish that species' source-normalized endpoint, combine the
+three species of CMP99 (3.89), prove `norm R' < 1`, discharge rows 23--24, or
+inhabit a `TermSource`.  Window 15 remains compatible but unattained, and the
+live counters remain exactly `20/41` and `TermSource = 0`.
+
 ### Step 5 ambient dictionary (SEALED)
 
 Checkpoint `8ac1a1c2508f65e51d4eb89f81bf650780691cf6` freezes the

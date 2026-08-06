@@ -27784,3 +27784,36 @@ second derives coarse distance at most one.  This does not yet perform the
 real exponential-rate transport, prove the common-metric first species or
 the complete (3.89), attain window 15, discharge rows 23--24, or inhabit a
 `TermSource`.  The live counters remain exactly `20/41` and zero.
+
+## Addendum 567 (2026-08-06, **common-metric first-species transport GREEN; complete CMP99 (3.89) open; 20/41 unchanged**)
+
+The common-metric transport was validated from exact source checkpoint
+`47d02e63a865bb75bba6f14d2da1a12e6a675fe2` by cold GitHub Actions run
+`31063213456` (workflow checkpoint
+`92e8f3e8688c437b89fd215c342eb1dae7bc7c66`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset and Mathlib was
+exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-06T01:38:02Z` to `02:05:18Z`, completed with
+`Build completed successfully (8522 jobs).`, and exited zero.  The audit ran
+from `02:05:18Z` to `02:05:24Z` and also exited zero.  Both declarations
+depend exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`1d03fe2b762ba4e61cc2f9b3d2d17e476ea717e6bbb3877a7f3622a8c84028b9`.
+The axiom JSON has SHA-256
+`e96a3d24f8e50e7b8a612228263b957d963997905b6b57ce9b5d7ec2e1ec4d3f`;
+the stage ledger has SHA-256
+`57dc380a606a0ed4c898099b53779f11896956119301936ef1513534132f6437`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick converts the literal one-step block-owner displacement into an
+explicit `exp(delta0)` loss and transports all eight incident derivative
+terms to the central output-block metric.  The finite direction sum and the
+pre-sum `K^-1` gain remain explicit.  It does not finish the complete
+first-species endpoint, combine all three species of (3.89), attain
+`norm R' < 1`, discharge rows 23--24, or inhabit a `TermSource`.  Window 15
+therefore remains open and the live counters remain exactly `20/41` and zero.
