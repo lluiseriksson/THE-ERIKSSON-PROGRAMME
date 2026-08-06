@@ -3426,3 +3426,35 @@ mass coefficient, sum cells, prove the complete third species or full CMP99
 (3.89), attain `norm R' < 1`, discharge rows 23--24, or inhabit a
 `TermSource`.  Window 15 remains compatible but unattained; the live
 counters remain exactly `20/41` and `TermSource = 0`.
+
+### Step 7.4i generated-mass Green/cutoff insertion (SEALED; ambient third-species assembly open)
+
+Exact source checkpoint `c44d8c2a146ef1eaf9aeab6d8edd00046f47a4c5`
+passed cold GitHub Actions run `31097908966` (workflow checkpoint
+`10d8b4464be3347e9e949adeb0d076ae9e8ade83`).  The run recorded
+`COLD_MODE=true`, restored and saved no project `.lake/build` cache, and
+compiled the focal from `2026-08-06T11:38:18Z` to `12:39:21Z`.  The audit
+finished at `12:39:31Z`; both stages exited zero.  All four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The brick inserts two physical values into the normalized generated-mass
+estimate.  The diameter of one terminal fibre multiplied by the signed
+cutoff slope leaves the explicit factor `8 * derivBound / K`.  The regional
+Green value is evaluated with the one common CMP99 (3.42) metric proved in
+Step 7.4h.  Their product is then consumed by the literal generated counting
+mass with exactly one surviving normalized block weight.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`df455019d5d906e738632963c65b4c8a635197a4707c46b7ad6c9cf3e2f51977`.
+Its axiom JSON has SHA-256
+`c8e0e5538fe846684f310aa35ea783ca11d665f4f4472b971000e19d0cd5e158`;
+the stage ledger has SHA-256
+`d53b34a1e120de5cdc200dd18f4f522934546bc8150f406be825513f779f9968`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This is still infrastructure below the complete physical third species.  It
+does not prove the separated ambient mass reindexing, install the literal
+physical scalar mass `cmp99SourceGeneratedPhysicalMass`, sum cells, prove the
+complete third species or full CMP99 (3.89), attain `norm R' < 1`, discharge
+rows 23--24, or inhabit a `TermSource`.  Window 15 remains compatible but
+unattained; the live counters remain exactly `20/41` and `TermSource = 0`.

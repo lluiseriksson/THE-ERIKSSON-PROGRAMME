@@ -28209,3 +28209,36 @@ cell sum, complete third species, full CMP99 (3.89), contraction, rows
 23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
 compatible but unattained; the live counters remain exactly `20/41` and
 zero.
+
+## Addendum 580 (2026-08-06, **generated-mass Green/cutoff insertion GREEN; ambient third species open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c44d8c2a146ef1eaf9aeab6d8edd00046f47a4c5` was validated by cold GitHub
+Actions run `31097908966` (workflow checkpoint
+`10d8b4464be3347e9e949adeb0d076ae9e8ade83`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T11:38:18Z` to `12:39:21Z` and exited zero; the
+audit ran from `12:39:21Z` to `12:39:31Z` and also exited zero.  All four
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`df455019d5d906e738632963c65b4c8a635197a4707c46b7ad6c9cf3e2f51977`.
+The axiom JSON has SHA-256
+`c8e0e5538fe846684f310aa35ea783ca11d665f4f4472b971000e19d0cd5e158`;
+the stage ledger has SHA-256
+`d53b34a1e120de5cdc200dd18f4f522934546bc8150f406be825513f779f9968`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves that one terminal fibre has signed-cutoff variation bounded
+by exactly `8 * derivBound / K`, evaluates the regional Green with one common
+CMP99 (3.42) metric across that fibre, and inserts their product into the
+literal generated counting mass with exactly one surviving normalized block
+weight.
+
+This is infrastructure below the complete physical third species.  The
+separated ambient mass reindexing, literal physical scalar mass, cell sum,
+complete third species, full CMP99 (3.89), contraction, rows 23--24, and a
+`TermSource` inhabitant remain open.  Window 15 remains compatible but
+unattained; the live counters remain exactly `20/41` and zero.

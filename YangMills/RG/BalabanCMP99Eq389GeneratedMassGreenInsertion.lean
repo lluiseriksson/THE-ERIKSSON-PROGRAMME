@@ -8,10 +8,12 @@ import YangMills.RG.BalabanCMP99Eq389SignedCutoffLaplacianPhysicalBound
 import YangMills.RG.BalabanCMP99SourceGeneratedWeightedAdjointRange
 
 /-!
-# PRE-VALIDATION: Green insertion for the generated third species
+# COLD-SEALED: Green insertion for the generated third species
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
+Exact source checkpoint `c44d8c2a146ef1eaf9aeab6d8edd00046f47a4c5`
+passed cold GitHub Actions run `31097908966` without restoring or saving the
+project `.lake/build` cache.  Focal and audit exited zero, and all four
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 This file inserts the literal regional Green value and signed-cutoff
 difference into the varying-value generated counting-mass estimate.  The
