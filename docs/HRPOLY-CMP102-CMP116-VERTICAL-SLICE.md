@@ -2594,6 +2594,26 @@ with no second overlap constant and no `K` dependence.  Thus no sealed
 geometric overlap theorem is orphaned, but the old functional membership
 lemma is not claimed for a different cutoff object.
 
+A transitive dependency audit makes the replacement boundary broader than
+that overlap lemma.  The generic commutator identities and regional-Green
+estimates are cutoff-agnostic, but the sealed *source-separated physical
+specializations* select `cmp99SourceSeparatedLargeBlockSquarePartition`
+definitionally.  That partition's value is the old square-root cutoff.  In
+particular, the sealed source-separated slope, the physical first-species
+specialization, the ambient/regional commutator dictionary, and the old
+cutoff-Laplacian coefficient remain true for that old object but are not
+producers for the signed cutoff merely because they contain no textual
+occurrence of `Real.sqrt`.
+
+The signed route therefore has a finite replacement chain before step 7 can
+be called physical: construct the rescaled signed separated square partition;
+derive its first-difference and quadratic second-difference bounds; transport
+the overlap `16` as above; and reinstantiate the already sealed generic
+first-species and ambient/regional dictionaries with that partition.  The
+generic algebra is reused, not reproved.  The old specializations remain
+sealed algebra for the square-root object and are explicitly retired as
+physical producers for the signed route.
+
 The fixed-output predicate currently available in
 `FinitePiLpTypedFixedOutputWeightedKernelBound` quantifies one common fibre
 vector over all source coordinates.  It therefore does not control the
