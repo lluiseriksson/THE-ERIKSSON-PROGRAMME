@@ -66,7 +66,7 @@ theorem blockSite_shiftBack_eq_self_or_shiftBack
         have hdecomp := Nat.div_add_mod (x i).val m
         have hkm : ((x i).val / m) * m = (x i).val := by
           rw [hrem, Nat.add_zero] at hdecomp
-          exact hdecomp
+          simpa [Nat.mul_comm] using hdecomp
         have hkpos : 0 < (x i).val / m := by
           by_contra hk
           have hk0 : (x i).val / m = 0 := Nat.eq_zero_of_not_pos hk
@@ -111,6 +111,9 @@ theorem blockSite_shiftBack_eq_self_or_shiftBack
         rw [show (x i).val + m * n - 1 = ((x i).val - 1) + m * n by omega,
           Nat.add_mod_right, Nat.mod_eq_of_lt (by omega : (x i).val - 1 < m * n)]
       have hdecomp := Nat.div_add_mod (x i).val m
+      have hdecomp' :
+          ((x i).val / m) * m + (x i).val % m = (x i).val := by
+        simpa [Nat.mul_comm] using hdecomp
       have hrem_lt := Nat.mod_lt (x i).val hm
       have hdivsame : ((x i).val - 1) / m = (x i).val / m := by
         apply Nat.div_eq_of_lt_le
