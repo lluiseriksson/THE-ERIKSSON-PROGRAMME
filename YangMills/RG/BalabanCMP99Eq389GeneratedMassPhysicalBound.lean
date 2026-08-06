@@ -167,6 +167,9 @@ theorem cmp99Eq389GeneratedMassAmbientCorrection_apply_eq_sum
         chain fineSmall cell Omega A c hc hAcoer target probe source v := by
   rw [cmp99Eq389GeneratedMassAmbientCorrection,
     finitePiLpScalarCommutator_smul_comp_single_apply_eq_sum]
+  apply Finset.sum_congr rfl
+  intro source _hsource
+  unfold cmp99Eq389GeneratedMassAmbientKernelAtom
   rfl
 
 /-- Before the right cutoff, the literal generated-mass commutator has the
