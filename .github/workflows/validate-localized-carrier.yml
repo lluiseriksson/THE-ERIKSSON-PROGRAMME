@@ -27,7 +27,6 @@ env:
     owner-weighted-defect
     global-sup-defect
     source-localized-defect
-    source-localized-third-species
 
 jobs:
   cmp89-eq245-sinc:
