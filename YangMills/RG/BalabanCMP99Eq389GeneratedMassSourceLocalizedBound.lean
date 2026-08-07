@@ -105,6 +105,9 @@ theorem
     cmp99SourceSeparatedCarrier_eq_sourceLocalizationCarrier L K Q depth
   funext i
   apply Fin.ext
+  simp only [cmp99Eq389SourceLocalizationOwner,
+    cmp99Eq389SourceLocalizationSiteEquiv,
+    cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv, blockSite_val]
   change ((hcarrier ▸ (hsize ▸ source.1)) i).val / L ^ (depth + 1) =
     ((hcarrier ▸ (hsize ▸ target.1)) i).val / L ^ (depth + 1)
   rw [finBox_cast_apply_val hcarrier (hsize ▸ source.1) i,
@@ -172,7 +175,7 @@ theorem cmp99SourceSeparatedGeneratedCountingMass_varying_le
         simpa only [cmp99SourceSeparatedGeneratedCountingMass, regions, T,
           phiActive, e, Equiv.apply_symm_apply] using
           (sum_norm_finitePiLpTypedKernelReindex_single_varying
-            e e T (fun source => phi (e source)) target)
+            e e T phi target)
     _ ≤ (cmp99SourceBlockAverageWeight L 4) ^ (depth + 1) * C := by
       apply cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le
         (Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
@@ -286,8 +289,10 @@ theorem cmp99Eq389GeneratedMassRegionalCorrection_blockLocalizedSupBound
         owner : ℝ)))
     let sourceValue := slope * ((B0 * ell ^ 2) * decay * finitePiLpSupNorm f)
     have hsourceValue : 0 ≤ sourceValue := by
-      dsimp [sourceValue, decay]
-      positivity
+      exact mul_nonneg hslope
+        (mul_nonneg
+          (mul_nonneg C.B0_nonneg (sq_nonneg ell))
+          (mul_nonneg (Real.exp_pos _).le (finitePiLpSupNorm_nonneg f)))
     have hphi : ∀ source,
         (cmp99SourceIteratedLiftActiveRegionChain (M := L)
           (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
@@ -313,7 +318,10 @@ theorem cmp99Eq389GeneratedMassRegionalCorrection_blockLocalizedSupBound
           hsame
       change ‖(hcutoff (e source) - hcutoff target) • cutGreen (e source)‖ ≤ _
       rw [norm_smul, Real.norm_eq_abs]
-      exact mul_le_mul hdiff hG (norm_nonneg _) hslope
+      have hdiff' : |hcutoff (e source) - hcutoff target| ≤ slope := by
+        simpa only [hcutoff, slope, e, Equiv.apply_symm_apply,
+          Real.norm_eq_abs] using hdiff
+      exact mul_le_mul hdiff' hG (norm_nonneg _) hslope
     have hmass := cmp99SourceSeparatedGeneratedCountingMass_varying_le
       (L := L) (K := K) (Q := Q) hL depth (matrixSUNAdjointModel Nc)
       spacing epsilon background chain fineSmall target phi sourceValue
