@@ -28780,3 +28780,40 @@ No coefficient power, Neumann inverse, strict physical contraction, or
 uniform production of the Green constants is proved.  Window 15 remains
 compatible but unattained; rows 23--24 and a first `TermSource` inhabitant
 remain open.  The live counters stay exactly `20/41` and zero.
+
+## Addendum 596 (2026-08-07, **fixed-rate owner-kernel powers GREEN; Neumann sum and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`be228322bea6ec973369001575f5780f9840f92f` was validated by cold GitHub
+Actions run `31206356093` (workflow checkpoint
+`648024c344673f4efd4daf1fc1e878c7caef8b0a`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T18:20:55Z` to `18:39:22Z`, exited zero, and ended
+with `Build completed successfully (8445 jobs).`  The audit ran from
+`18:39:22Z` to `18:39:31Z` and also exited zero.  All seven declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`d75b6684816720c3b82f7418f1ff27f345df6a800563c58dc71a2fc80de06437`.
+GitHub recorded SHA-256
+`bffaa4b4ee024ea26a47fe7fd7ddf86581ce25d1222e989942a3434a2b6e9958`
+for uploaded artifact `9005492994` (31,940 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, seven-block axiom JSON, `FINAL_STATUS=PASS`, inner archive hash, and
+all per-file hashes.
+
+The sealed theorem constructs literal convolution powers of the owner-block
+coefficient and proves that `T ^ n` retains the same output-fixed weighted
+spatial rate with exact amplitude `A ^ n`.  It pays neither an owner count nor
+a rate degradation.
+
+Runs `31204627351` and `31205040141` retained the first elaboration errors.
+Cached diagnostic run `31206078448` passed.  Run `31205417982` is retained as
+an infrastructure cancellation before Lean; only the cold run above retired
+the two PRE-VALIDATION marks.
+
+No Neumann sum, strict physical contraction, or uniform production of the
+Green constants is proved.  Window 15 remains compatible but unattained;
+rows 23--24 and a first `TermSource` inhabitant remain open.  The live counters
+stay exactly `20/41` and zero.

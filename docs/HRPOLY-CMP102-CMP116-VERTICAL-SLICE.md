@@ -3970,3 +3970,32 @@ This brick proves composition, not coefficient powers, a Neumann inverse, or
 the strict physical budget.  In particular it does not manufacture uniform
 `B0` or `delta0` as `K` varies.  Window 15 remains compatible but unattained;
 rows 23--24 remain open, the live count is `20/41`, and `TermSource = 0`.
+
+### Step 7.5l fixed-rate owner-kernel powers (SEALED; Neumann sum open)
+
+Exact source checkpoint `be228322bea6ec973369001575f5780f9840f92f`
+passed cold GitHub Actions run `31206356093` (workflow checkpoint
+`648024c344673f4efd4daf1fc1e878c7caef8b0a`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T18:20:55Z` to `18:39:22Z` and ended with
+`Build completed successfully (8445 jobs).`; the audit ended at `18:39:31Z`.
+Both stages exited zero, and all seven audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed brick constructs the literal diagonal coefficient for the identity
+operator and the convolution powers of an arbitrary nonnegative owner kernel.
+The composition theorem from Step 7.5k then proves by induction that every
+operator power retains the same output-fixed spatial rate and has exact
+geometric amplitude `A ^ n`.  No owner-cardinality factor and no rate loss are
+introduced.
+
+Runs `31204627351` and `31205040141` exposed only elaboration defects in the
+identity layer; cached run `31206078448` passed.  Run `31205417982` was
+cancelled as an infrastructure stall before Lean after more than twice the
+dependency-materialization prior.  PRE-VALIDATION was retired only after the
+cold run above and local verification of its durable evidence package.
+
+This brick does not form or sum the Neumann series, prove `A < 1`, specialize
+the physical CMP99 amplitude, or produce uniform `B0` and `delta0` as `K`
+varies.  Window 15 remains compatible but unattained; rows 23--24 remain open,
+the live count is `20/41`, and `TermSource = 0`.

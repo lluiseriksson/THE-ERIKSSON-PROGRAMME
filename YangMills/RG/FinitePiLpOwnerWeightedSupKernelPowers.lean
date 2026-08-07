@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernelAlgebra
 
 /-!
-# PRE-VALIDATION: fixed-rate powers of owner-weighted supremum kernels
-
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Fixed-rate powers of owner-weighted supremum kernels
 
 The identity coefficient is the literal diagonal matrix on owner fibres.
 Starting from it, coefficient powers are defined by the already sealed
