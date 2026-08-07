@@ -92,7 +92,11 @@ theorem cmp99Eq389PhysicalOwnerRowNumerators_nonneg
     pow_nonneg (cmp99SourceBlockAverageWeight_nonneg L 4) _
   have hfirst :
       0 ≤ 4 * (8 * B0 * P.derivBound) * (1 + Real.exp delta0) := by
-    positivity
+    exact mul_nonneg
+      (mul_nonneg (by norm_num)
+        (mul_nonneg (mul_nonneg (by norm_num) hB0)
+          P.derivBound_nonneg))
+      (add_nonneg zero_le_one (Real.exp_pos _).le)
   have hthird :
       0 ≤ |cmp99SourceGeneratedPhysicalMass 4 L (depth + 1) 1 epsilon| *
         ((cmp99SourceBlockAverageWeight L 4) ^ (depth + 1) *
@@ -107,8 +111,9 @@ theorem cmp99Eq389PhysicalOwnerRowNumerators_nonneg
       (mul_nonneg (by norm_num) (add_nonneg hfirst hthird)) hS
   · unfold cmp99Eq389PhysicalOwnerRowQuadraticNumerator
     exact mul_nonneg
-      (mul_nonneg (by positivity)
-        (mul_nonneg hB0 P.secondDerivBound_nonneg)) hS
+      (mul_nonneg (by norm_num)
+        (mul_nonneg (mul_nonneg (by norm_num) hB0)
+          P.secondDerivBound_nonneg)) hS
 
 /-- For a fixed leading coefficient and a nonnegative quadratic coefficient,
 the literal mixed `K^-1 + K^-2` shape is below one for a sufficiently large
