@@ -87,12 +87,6 @@ theorem cmp89Eq245ComplexAverageFactor_eq_literal
     if_neg (mul_ne_zero hxi hp),
     cmp89Eq245LiteralComplexAverageFactor]
   simp only [Complex.ofReal_mul]
-  change
-    ((Complex.exp (Complex.I * (-p : ℂ)) - 1) / (p : ℂ)) /
-        ((Complex.exp (Complex.I * (-(xi * p) : ℂ)) - 1) /
-          ((xi : ℂ) * (p : ℂ))) =
-      (Complex.exp (Complex.I * (-p : ℂ)) - 1) /
-        ((Complex.exp (Complex.I * (-(xi * p) : ℂ)) - 1) / (xi : ℂ))
   rw [div_mul_eq_div_div]
   exact div_div_div_cancel_right₀ (Complex.ofReal_ne_zero.mpr hp) _ _
 
