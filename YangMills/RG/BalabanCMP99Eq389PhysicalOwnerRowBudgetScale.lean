@@ -83,15 +83,15 @@ theorem cmp99Eq389PhysicalOwnerRowNumerators_nonneg
         (L := L) P depth epsilon B0 delta0 rate ∧
       0 ≤ cmp99Eq389PhysicalOwnerRowQuadraticNumerator
         P B0 delta0 rate := by
-  constructor <;>
-    unfold cmp99Eq389PhysicalOwnerRowLeadingNumerator
-      cmp99Eq389PhysicalOwnerRowQuadraticNumerator
-  · positivity
-  · exact mul_nonneg
-      (mul_nonneg (by positivity)
-        (mul_nonneg hB0 P.secondDerivBound_nonneg))
-      (tsum_nonneg fun _ =>
-        mul_nonneg (Nat.cast_nonneg _) (Real.exp_pos _).le)
+  have hS : 0 ≤ cmp99OmegaSiteExpSumBound (delta0 - rate) := by
+    unfold cmp99OmegaSiteExpSumBound
+    exact tsum_nonneg fun _ =>
+      mul_nonneg (Nat.cast_nonneg _) (Real.exp_pos _).le
+  constructor
+  · unfold cmp99Eq389PhysicalOwnerRowLeadingNumerator
+    positivity
+  · unfold cmp99Eq389PhysicalOwnerRowQuadraticNumerator
+    positivity
 
 /-- For fixed nonnegative coefficients, the literal mixed `K^-1 + K^-2`
 shape is below one for a sufficiently large integer `K`.
@@ -119,8 +119,8 @@ theorem exists_nat_two_le_and_div_add_div_sq_lt_one
   refine ⟨K, by omega, ?_⟩
   rw [show a₁ / (K : ℝ) + a₂ / (K : ℝ) ^ 2 =
       (a₁ + a₂ / (K : ℝ)) / (K : ℝ) by ring]
-  exact (div_lt_one hKpos).2
-    ((add_le_add_left ha₂div a₁).trans_lt hsumK)
+  apply (div_lt_one hKpos).2
+  linarith
 
 end
 
