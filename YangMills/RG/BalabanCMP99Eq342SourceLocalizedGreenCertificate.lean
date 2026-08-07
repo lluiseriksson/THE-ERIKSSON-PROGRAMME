@@ -34,6 +34,12 @@ noncomputable section
 
 variable {L K Q Nc : ℕ} [NeZero L] [NeZero K] [NeZero Q] [NeZero Nc]
 
+private instance instNeZeroEq342SourceLocalizedBlockSide
+    (L K depth : ℕ) [NeZero L] [NeZero K] :
+    NeZero (cmp99SourceSeparatedLargeBlockSide L K depth) :=
+  ⟨Nat.mul_pos (NeZero.pos K)
+    (pow_pos (NeZero.pos L) (depth + 1)) |>.ne'⟩
+
 private instance instNeZeroEq342SourceLocalizedAmbientSide
     (L K Q depth : ℕ) [NeZero L] [NeZero K] [NeZero Q] :
     NeZero (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
@@ -52,7 +58,7 @@ noncomputable def cmp99Eq342SourceLocalizedActiveOwner
 /-- Source-localization owner of a physical bond, determined by its initial
 fine site. -/
 noncomputable def cmp99Eq342SourceLocalizedBondOwner
-    (L K Q depth : ℕ) [NeZero L]
+    (L K Q depth : ℕ) [NeZero L] [NeZero K] [NeZero Q]
     (b : PhysicalBond 4
       (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))) :
     FinBox 4 (2 * (K * Q)) :=
