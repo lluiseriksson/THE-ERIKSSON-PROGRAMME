@@ -61,7 +61,7 @@ theorem cmp89Eq245ScaledDifferenceNorm_le_abs
   have hraw :
       ‖Complex.exp (Complex.I * (-(xi * p) : ℂ)) - 1‖ ≤
         ‖-(xi * p)‖ := by
-    convert Complex.norm_exp_I_mul_ofReal_sub_one_le (x := -(xi * p)) using 1
+    convert Real.norm_exp_I_mul_ofReal_sub_one_le (x := -(xi * p)) using 1
     all_goals norm_num
   rw [cmp89Eq245ScaledDifferenceNorm, norm_div, Complex.norm_real,
     Real.norm_eq_abs, abs_of_pos hxi]
@@ -71,6 +71,7 @@ theorem cmp89Eq245ScaledDifferenceNorm_le_abs
         ‖-(xi * p)‖ := hraw
     _ = xi * |p| := by
       rw [Real.norm_eq_abs, abs_neg, abs_mul, abs_of_pos hxi]
+      ring
 
 /-- Jordan's inequality gives the uniform lower comparison between continuum
 momentum and the unit-lattice difference on the Brillouin interval. -/
