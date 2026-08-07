@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99Eq342SourceLocalizedGreenCertificate
 
 /-!
-# PRE-VALIDATION: source-localized input L2 scale for CMP99 (3.42)
+# Cold-sealed source-localized input L2 scale for CMP99 (3.42)
 
-The source is present, but this module's `.olean` has not yet been
-materialized and its declarations have not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`d1c9e8585d0496fe283260d9b92447c3b3271ac4` by cold GitHub Actions run
+`31221718782`.  Restoration and saving of `.lake/build` were skipped.  The
+focal completed 8,520 jobs, the audit exited zero, and all three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP99 (3.42) tests the regional Green on an arbitrary field supported in one
 localization block of side `ell = L^(depth+1)`.  Before any Green estimate is

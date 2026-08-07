@@ -28970,3 +28970,41 @@ retired the two PRE-VALIDATION marks.
 Window 15 remains compatible but unattained; rows 23--24 and a first
 `TermSource` inhabitant remain open.  The live counters stay exactly
 `20/41` and zero.
+
+## Addendum 601 (2026-08-08, **CMP99 (3.42) source-input L2 scale GREEN; Green estimates open; 20/41 unchanged**)
+
+Exact source checkpoint
+`d1c9e8585d0496fe283260d9b92447c3b3271ac4` was validated by cold GitHub
+Actions run [`31221718782`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31221718782)
+(workflow checkpoint `e542e12b5f4a1fdd514a156dd49af491ddf28fcf`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-07T21:54:24Z` to `22:21:36Z`, exited zero,
+and ended with `Build completed successfully (8520 jobs).`  The audit ran
+from `22:21:36Z` to `22:21:43Z` and also exited zero.  All three declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`fb8810e92937e1e970fc08c48f00b12a32db26367e607cc0ae7fd8dc021cb0a8`.
+GitHub recorded SHA-256
+`557260f9de10c78d2a87ccaeede0a8800c95695cac09e661d64293a6de440632`
+for uploaded artifact `9011241725` (38,195 bytes).  A local download
+reproduced the source and workflow checkpoints, cold-cache state, stage
+ledger, three-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`.
+
+The sealed input theorem proves that support in one source-localization
+owner fibre costs at most the square root of that fibre's cardinality in the
+counting-L2 norm.  The explicit injection into the complete ambient block
+gives cardinality at most `L^(4*(depth+1))` and hence exactly the source scale
+`L^(2*(depth+1)) * finitePiLpSupNorm f`.  No `K`, `Q`, or ambient-volume
+factor appears.
+
+This is only the input-size conversion beneath the value component of CMP99
+(3.42).  It does not prove any localized Green bound, uniform production of
+`B0` and `delta0`, the three derivative/Laplacian components, physical
+Eq. (3.89), window 15, rows 23--24, or a `TermSource` inhabitant.  Diagnostic
+run `31221320009` retained the first elaboration errors; cached run
+`31221547246` passed.  Only the cold run above retired PRE-VALIDATION.  The
+live counters remain exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.

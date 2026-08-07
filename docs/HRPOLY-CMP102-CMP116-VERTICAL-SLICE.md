@@ -4130,3 +4130,40 @@ for that gate has yet been extracted from the primary text.
 Consequently this brick does not attain window 15, discharge rows 23--24,
 or inhabit a `TermSource`.  The live count remains exactly `20/41`, and
 `TermSource = 0`.
+
+### Step 7.5q exact source-input L2 scale for CMP99 (3.42) (SEALED; Green estimates open)
+
+Exact source checkpoint `d1c9e8585d0496fe283260d9b92447c3b3271ac4`
+passed cold GitHub Actions run `31221718782` (workflow checkpoint
+`e542e12b5f4a1fdd514a156dd49af491ddf28fcf`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T21:54:24Z` to `22:21:36Z`, exited zero, and
+ended with `Build completed successfully (8520 jobs).`; the audit ended at
+`22:21:43Z`.  All three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed geometry injects one active source-localization owner fibre into
+the complete ambient block of side `ell = L^(depth+1)`.  Its cardinality is
+therefore at most `ell^4`, and an arbitrary counting-L2 input supported in
+that fibre obeys the exact four-dimensional conversion
+
+```text
+norm f <= ell^2 * finitePiLpSupNorm f.
+```
+
+No factor depending on the regional parameter `K`, the torus parameter `Q`,
+or the ambient volume is introduced.  This is the input-size component of
+the first printed CMP99 (3.42) scale `ell^2`; it is not a derivation of the
+localized Green action.  In particular it does not produce uniform `B0` or
+`delta0`, the left/right derivative and Laplacian estimates, the physical
+Eq. (3.89) contraction, rows 23--24, or a `TermSource` inhabitant.  The
+existing entrywise Combes--Thomas kernel cannot be summed over the source
+fibre without losing the printed scale; the remaining producer must retain
+the block-localized source quantifier.
+
+Diagnostic run `31221320009` retained the first elaboration errors in the
+decidable fibre filter and subtype-cardinality conversion.  Replacing the
+latter with an explicit injection into the ambient block gave cached
+diagnostic run `31221547246`; only the cold run above retired
+PRE-VALIDATION.  The live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
