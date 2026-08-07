@@ -39,11 +39,24 @@ private instance instNeZeroEq389SourceLocalizedFirstAmbientSide
     (Nat.mul_pos (NeZero.pos K) (pow_pos (NeZero.pos L) (depth + 1)))
     (Nat.mul_pos (by omega) (NeZero.pos Q))).ne'⟩
 
+private instance instNeZeroEq389SourceLocalizedFirstOwnerSide
+    (K Q : ℕ) [NeZero K] [NeZero Q] :
+    NeZero (2 * (K * Q)) :=
+  ⟨(Nat.mul_pos (by omega)
+    (Nat.mul_pos (NeZero.pos K) (NeZero.pos Q))).ne'⟩
+
+private instance instNeZeroEq389SourceLocalizedFirstFineSide
+    (L K Q depth : ℕ) [NeZero L] [NeZero K] [NeZero Q] :
+    NeZero (L ^ (depth + 1) * (2 * (K * Q))) :=
+  ⟨(Nat.mul_pos (pow_pos (NeZero.pos L) (depth + 1))
+    (Nat.mul_pos (by omega)
+      (Nat.mul_pos (NeZero.pos K) (NeZero.pos Q)))).ne'⟩
+
 /-- A backward fine step costs at most one `exp(delta)` in the literal
 source-localization owner metric, uniformly for every selected owner fibre.
 -/
 theorem exp_neg_sourceLocalizationOwner_shiftBack_le_exp_mul
-    (L K Q depth : ℕ) [NeZero L]
+    (L K Q depth : ℕ) [NeZero L] [NeZero K] [NeZero Q]
     (x : FinBox 4
       (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
     (owner : FinBox 4 (2 * (K * Q))) (i : Fin 4)
@@ -61,8 +74,7 @@ theorem exp_neg_sourceLocalizationOwner_shiftBack_le_exp_mul
   have hcastShift :
       cmp99Eq389SourceLocalizationSiteEquiv L K Q depth (x.shiftBack i) =
         (cmp99Eq389SourceLocalizationSiteEquiv L K Q depth x).shiftBack i := by
-    apply FinBox.ext
-    intro j
+    funext j
     simp [cmp99Eq389SourceLocalizationSiteEquiv, FinBox.shiftBack]
   rw [← hcastShift] at hstep
   have hdist :
@@ -116,8 +128,15 @@ theorem cmp99Eq389SignedCovariantLinkRegionalCorrection_blockLocalizedSupBound
       (L := L) (K := K) (Q := Q) (Nc := Nc)
       depth Omega rho U 1 A c hc hAcoer B0 delta0) :
     FinitePiLpTypedBlockLocalizedSupBound
+      (ι := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (κ := FinBox 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+      (β := FinBox 4 (2 * (K * Q)))
+      (g := SUNLieCoord Nc)
       (cmp99Eq389SignedCovariantLinkRegionalCorrection
-        (L := L) (K := K) (Q := Q) P depth cell Omega rho U
+        (L := L) (K := K) (Q := Q) (Nc := Nc)
+        P depth cell Omega rho U
         A c hc hAcoer)
       (cmp99Eq389SourceLocalizationOwner L K Q depth)
       (cmp99Eq389SourceLocalizationOwner L K Q depth)
