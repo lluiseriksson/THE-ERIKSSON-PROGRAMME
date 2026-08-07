@@ -28589,3 +28589,37 @@ complete source equation (3.89).  The overlap-16 sum, source-localized third
 species, three-species assembly, defect contraction, rows 23--24, and a first
 `TermSource` inhabitant remain open.  Window 15 remains compatible but
 unattained; the live counters remain exactly `20/41` and zero.
+
+## Addendum 591 (2026-08-07, **source-localized physical third species GREEN; overlap and complete CMP99 (3.89) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`f8e7b3f2dde8ab286232580f1a69107a4afb5a6e` was validated by cold GitHub
+Actions run `31174809660` (workflow checkpoint
+`45ef1e3f57a6cbd8471dc80d2d72b7411c0cf614`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T11:38:59Z` to `12:39:56Z`, exited zero, and ended
+with `Build completed successfully (8579 jobs).`  The audit ran from
+`12:39:56Z` to `12:40:06Z` and also exited zero.  All four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.  The gate
+recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`65c7899fc4e04793c5f2fd4fbac189361eeaf305f6b83612d40c4a4b5c0bf4b2`.
+GitHub recorded SHA-256
+`ac8cf1249e7c4b6916d97e1a19eb48d11b3e49b0b10715c3c0d9b21a194b01ae`
+for the uploaded artifact ZIP (artifact `8994030444`, 41,750 bytes).  A local
+download reproduced the source/Mathlib checkpoints, cold-cache state, stage
+ledger, four-block axiom JSON, `FINAL_STATUS`, and inner archive hash.
+
+The theorem is the literal generated counting-mass regional correction
+applied to an arbitrary field supported in one source-owner fibre.  The exact
+terminal-fibre relation preserves the source owner, so the source-facing
+Green value estimate is consumed without a coordinate-probe decomposition or
+an ambient/fine-fibre cardinality loss.
+
+This is one regional cell of the third species, not its overlap sum and not
+the complete source equation (3.89).  The overlap-16 sum, three-species
+assembly, defect contraction, rows 23--24, and a first `TermSource` inhabitant
+remain open.  Window 15 remains compatible but unattained; the live counters
+remain exactly `20/41` and zero.

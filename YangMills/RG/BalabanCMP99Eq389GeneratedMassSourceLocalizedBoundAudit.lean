@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP99Eq389GeneratedMassSourceLocalizedBound
 
 /-!
-# PRE-VALIDATION audit: source-localized generated-mass species
+# Audit: source-localized generated-mass species
 
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the declarations remain compiler-unverified.
+Compiler-verified at exact source checkpoint
+`f8e7b3f2dde8ab286232580f1a69107a4afb5a6e` in cold GitHub Actions run
+`31174809660`; all four declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.finitePiLpScalarCommutator_smul_comp_apply_eq_sum

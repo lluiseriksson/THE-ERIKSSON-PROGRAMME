@@ -8,10 +8,12 @@ import YangMills.RG.BalabanCMP99Eq389GeneratedMassPhysicalBound
 import YangMills.RG.FinitePiLpBlockLocalizedSupAlgebra
 
 /-!
-# PRE-VALIDATION: source-localized generated-mass species of CMP99 (3.89)
+# Source-localized generated-mass species of CMP99 (3.89)
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`f8e7b3f2dde8ab286232580f1a69107a4afb5a6e` in cold GitHub Actions run
+`31174809660`; the focal completed 8579 jobs and all four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 This module applies the literal generated counting mass to an arbitrary field
 supported in one source-localization block.  The generated terminal-fibre

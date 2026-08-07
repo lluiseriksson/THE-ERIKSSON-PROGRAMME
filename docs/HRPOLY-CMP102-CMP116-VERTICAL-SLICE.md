@@ -3831,3 +3831,26 @@ cell sum, the source-localized third species, complete (3.89), contraction,
 rows 23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
 compatible but unattained; the live counters remain exactly `20/41` and
 `TermSource = 0`.
+
+### Step 7.5g source-localized third species (SEALED; overlap and complete (3.89) open)
+
+Exact source checkpoint `f8e7b3f2dde8ab286232580f1a69107a4afb5a6e`
+passed cold GitHub Actions run `31174809660` (workflow checkpoint
+`45ef1e3f57a6cbd8471dc80d2d72b7411c0cf614`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T11:38:59Z` to `12:39:56Z`, exited zero, and
+ended with `Build completed successfully (8579 jobs).`  The audit ended at
+`12:40:06Z` with exit zero.  All four declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The theorem applies the literal generated counting-mass species to an
+arbitrary field supported in one source-owner fibre.  The generated terminal
+fibre preserves that owner exactly, so the normalized counting-mass estimate
+retains its source metric and introduces neither a coordinate-probe expansion
+nor an ambient/fine-fibre cardinality loss.
+
+This is one physical regional cell of the third species.  The overlap-16
+cell sum, the three-species assembly, complete (3.89), defect contraction,
+rows 23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
+compatible but unattained; the live counters remain exactly `20/41` and
+`TermSource = 0`.
