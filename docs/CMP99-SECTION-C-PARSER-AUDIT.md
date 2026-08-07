@@ -337,6 +337,26 @@ their Theorem-3.1 producer is formalized.  Replacing `O(1)` by an invented
 numeral, or importing the Poincare constant through `1 / coercivity`, is not
 an admissible discharge of (3.89).
 
+The current Lean certificate
+`CMP99Eq342RegionalGreenCertificate` does not yet implement this accepted
+interface.  Its four fields use
+`FinitePiLpTypedExponentialKernelBound`, which quantifies only coordinate
+probes `singleFinitePiLp source v` in the stored finite `L^2` field.  The
+three-species physical specialization also infers the metric divisor
+`K * L^(depth+1)` from the separated regional-cell carrier, whereas (3.89)
+uses the localization scale `L^(depth+1)`.  Supplying
+`ell = L^(depth+1)` changes the amplitude vector but not that divisor.
+
+Consequently the separately sealed component bounds and their literal sum
+remain valid coordinate-kernel algebra on a coarser metric, but are not a
+producer for the arbitrary localized `lambda` / supremum-norm statement
+above.  The repair must expose the terminal localization owner (equivalently
+the carrier presentation with block side `L^(depth+1)` and coarse side
+`2*(K*Q)`) and prove the three-species action estimate for a general source
+supported in one such block.  Expanding a general source into coordinate
+probes and applying a generic site sum is not accepted: the fine-fibre
+cardinality can erase the printed `K^-1` gain.
+
 The primary display (3.88) also rules out a tempting abstract shortcut.  Its
 third species is not used through a fixed-output estimate evaluated on one
 common fibre vector.  It is the literal normalized block sum

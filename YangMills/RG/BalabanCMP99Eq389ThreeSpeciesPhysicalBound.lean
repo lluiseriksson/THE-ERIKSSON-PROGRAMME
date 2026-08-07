@@ -51,8 +51,8 @@ noncomputable def cmp99Eq389SourceSeparatedPhysicalBackground
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)) (SUN Nc)) :
     PhysicalGaugeBackground 4
       (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) Nc :=
-  (cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier
-    L K Q depth) ▸ background
+  cast (by
+    rw [cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier]) background
 
 /-- The literal generated precision on the separated ambient carrier. -/
 noncomputable def cmp99Eq389SourceSeparatedPhysicalPrecision

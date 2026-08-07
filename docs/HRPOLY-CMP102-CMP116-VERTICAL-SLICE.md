@@ -484,6 +484,8 @@ following table is normative for new interfaces and proofs:
 | owner-block count times one-scale row mass | cancellation between counting and averaging units | `M^d * M^-d = 1`; never replace the normalized row mass by the raw owner-block cardinality or apply the normalization a second time |
 | `L` in the source-separated regional route | RG block ratio of the generated tower | controls the precision range `L^(depth+1)` and the Poincare/coercivity package `CP(L)`; it is held fixed when the independent large-block parameter grows |
 | `K` in the source-separated regional route | source's sufficiently-large regional parameter (printed as `M`, renamed in Lean) | controls the cell side `K * L^(depth+1)` and cutoff spacing `2*K*L^(depth+1)`; it does not enter `CP(L)`, but the later covariance dictionary must still retain CMP99 Theorem 3.15's separate `M * alpha_0` smallness condition |
+| `cmp99Eq342RescaledBlockDist (L^(depth+1)) (K*Q)` | source localization-block distance for CMP99 (3.42)/(3.89) | measures separation in units of `L^(depth+1)` on the `2*(K*Q)` block carrier; this is the metric required by the printed exponential |
+| `cmp99Eq342RescaledBlockDist (K*L^(depth+1)) Q` | separated regional-cell distance used by the currently sealed coordinate-kernel specializations | measures only in units of the full `K*L^(depth+1)` cell; it is a valid coarser metric but is not the source localization metric and cannot be substituted for it in (3.89) |
 | old one-parameter regional specialization | diagonal comparison `K = L = M` | all existing identities remain exact, but this diagonal object does not realize the source freedom used to attain the contraction |
 
 Consequently, an interface whose `domainCard` is `blocks.card` must never
@@ -2760,19 +2762,34 @@ Schur step with adjusted constants:
 3. rewrite the third species of (3.88) by the exact generated `Q'^*Q'`
    transported-block formula and cancel its literal normalized row mass
    against the count before any cell or layer sum;
-4. combine the three displayed species pointwise to obtain (3.89), with
-   `K^-1` already present and no reciprocal coercivity or Poincare constant.
-   This composition must specialize all three species to rescaled spacing
-   `1` and must instantiate the differential background `U` by the dependent
+4. combine the three displayed species on coordinate probes, with `K^-1`
+   already present and no reciprocal coercivity or Poincare constant.  This
+   composition must specialize all three species to rescaled spacing `1` and
+   must instantiate the differential background `U` by the dependent
    cast/reindexing of the **same** fine `background` that constructs the
    generated `Q'` tower, using
    `cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier`.  A sum whose
    first two species use an independently supplied `U` is only an abstract
-   three-operator bound, not the physical identity (3.89);
-5. only then use the already sealed overlap `16`, independent of `K`, to
-   obtain `norm R' < 1` for sufficiently large `K`.
+   three-operator bound.  Even the physical coordinate-probe sum is still
+   strictly weaker than the printed localized-action estimate (3.89);
+5. prove the source-facing localized-action estimate for an arbitrary
+   `lambda` supported in one source block, in the supremum norm fixed by
+   CMP99 (3.39)--(3.42).  The existing
+   `FinitePiLpTypedExponentialKernelBound` quantifies only
+   `singleFinitePiLp source v`; expanding a general `lambda` into such probes
+   and summing pays the cardinality of the fine fibre because
+   `cmp99Eq342RescaledBlockDist` is constant on that fibre.  Such a factor
+   would destroy the printed uniform `K^-1` gain and is not an accepted
+   bridge.  The Green package and the three-species estimate must instead be
+   upgraded to the block-localized sup-norm action that the source states.
+   The source block metric must also be the `L^(depth+1)` localization scale
+   printed in (3.89), not the separated cutoff-cell scale
+   `K * L^(depth+1)`;
+6. only then use the already sealed overlap `16`, independent of `K`, in the
+   same source norm to obtain the defect contraction for sufficiently large
+   `K`, and connect that contraction to the Neumann reconstruction.
 
-The overlap input in item 5 splits into a geometric part and one
+The overlap input in item 6 splits into a geometric part and one
 cutoff-specific transport.  The finite windows
 `cmp95PeriodicActiveCellWindow` and
 `cmp95PeriodicTensorActiveCellWindow`, together with their cardinality bounds
@@ -2818,6 +2835,41 @@ vector over all source coordinates.  It therefore does not control the
 `Q'^*Q' (single source (lambda source))` sum occurring in (3.88).  Step 7.3
 must use the literal normalized block formula above; adding an abstract
 varying-vector row is not, by itself, a source proof of (3.89).
+
+There is a second, independent quantifier gate after that varying-vector
+issue.  `FinitePiLpTypedExponentialKernelBound` itself is an entrywise
+coordinate-probe predicate: it tests only `singleFinitePiLp source v` in the
+stored finite `L^2` field.  The primary statements (3.42) and (3.89) instead
+quantify an arbitrary `lambda` supported in one block and use the supremum
+norm defined in (3.39).  Therefore a literal sum of the three physical
+coordinate kernels is valid algebra below (3.89), but is not yet the printed
+localized-action estimate.  No contraction or window-15 attainment may be
+derived from it until the block-localized sup-norm producer in step 7.5 is
+installed.  A generic entrywise-to-operator summation over fine sites is not
+accepted because its fibre-cardinality loss can cancel the physical
+`K^-1` gain.
+
+The current physical specialization also exposes a scale gate in the metric.
+`CMP99Eq342RegionalGreenCertificate` stores its decay through
+`cmp99Eq342RescaledBlockDist m q`, whose `blockSite` divisor is `m`.  The
+three-species specialization infers
+`m = cmp99SourceSeparatedLargeBlockSide L K depth = K * L^(depth+1)` and
+`q = Q` from the ambient carrier.  By contrast, the primary display (3.89)
+has decay `exp (-delta0 * (L^j eta)^-1 * |y-y'|)` between the localization
+blocks `Delta(y)` and `Delta(y')`.  Passing
+`ell = L^(depth+1)` to the certificate changes the four amplitude powers but
+does not change its metric.  Thus the existing common-metric component
+lemmas are valid bounds on the coarser separated-cell metric, but they are
+not yet the source metric producer.
+
+The faithful repair must expose the same ambient carrier at localization
+scale `m = L^(depth+1)` with `q = K * Q` (or an explicitly equivalent
+terminal-block owner metric), and prove the required carrier/reindexing
+dictionary.  Associativity and commutativity of the side lengths are not a
+definitional identification and may not be hidden in inference.  This metric
+repair and the arbitrary-localized-source repair are both required before
+the coordinate-kernel assembly can feed (3.89), the defect contraction, or
+window 15.
 
 **Elaboration battle note.**  Physical specializations of the generated
 PiLp tower must pin the carrier, fibre, and source/target index types in their
