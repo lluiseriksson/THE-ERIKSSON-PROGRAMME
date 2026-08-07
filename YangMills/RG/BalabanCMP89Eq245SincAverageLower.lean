@@ -101,11 +101,14 @@ theorem pow_two_div_pi_le_abs_cmp89Eq245SincAverageAmplitude
   rw [cmp89Eq245SincAverageAmplitude, Finset.abs_prod]
   have hnonneg : 0 ≤ 2 / Real.pi :=
     (div_pos (by norm_num) Real.pi_pos).le
-  simpa using Finset.prod_le_prod
-    (fun _mu _hmu => hnonneg)
-    (fun mu _hmu =>
-      two_div_pi_le_abs_cmp89Eq245SincAverageFactor
-        hxi hxi1 (hp mu))
+  calc
+    (2 / Real.pi) ^ d = ∏ _mu : Fin d, (2 / Real.pi) := by simp
+    _ ≤ ∏ mu : Fin d, |cmp89Eq245SincAverageFactor xi (p mu)| := by
+      exact Finset.prod_le_prod
+        (fun _mu _hmu => hnonneg)
+        (fun mu _hmu =>
+          two_div_pi_le_abs_cmp89Eq245SincAverageFactor
+            hxi hxi1 (hp mu))
 
 /-- The literal CMP89 scale `xi = L^(-j)` lies in `(0, 1]` for every nonzero
 natural block size. -/
