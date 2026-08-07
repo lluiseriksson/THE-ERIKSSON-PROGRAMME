@@ -17,6 +17,16 @@ env:
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
+  PROJECT_RESTORE_PREFIXES: |
+    owner-weighted-neumann
+    owner-weighted-power-summability
+    owner-weighted-powers
+    owner-weighted-algebra
+    owner-weighted-defect
+    global-sup-defect
+    source-localized-defect
+    source-localized-third-species
+    source-localized-first-species
 
 jobs:
   owner-weighted-neumann-inverse:
@@ -62,6 +72,22 @@ jobs:
             sha256sum "$bindir/lean" "$bindir/lake"
           } | tee evidence/toolchain.txt
 
+      - name: Verify cache-key budget
+        id: cache-keys
+        shell: bash
+        run: |
+          mapfile -t prefixes < <(printf '%s\n' "$PROJECT_RESTORE_PREFIXES" | sed '/^[[:space:]]*$/d')
+          total_count="$((1 + ${#prefixes[@]}))"
+          printf 'CACHE_KEY_COUNT=%s\n' "$total_count"
+          test "$total_count" -le 10
+          {
+            printf 'keys<<EOF\n'
+            for prefix in "${prefixes[@]}"; do
+              printf 'hRpoly-%s-%s-%s-\n' "$prefix" "$RUNNER_OS" "$EXPECTED_MATHLIB"
+            done
+            printf 'EOF\n'
+          } >> "$GITHUB_OUTPUT"
+
       - name: Restore diagnostic project graph
         if: ${{ inputs.cold == false }}
         id: project-cache
@@ -69,16 +95,7 @@ jobs:
         with:
           path: .lake/build
           key: hRpoly-owner-weighted-neumann-inverse-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
-          restore-keys: |
-            hRpoly-owner-weighted-neumann-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-owner-weighted-power-summability-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-owner-weighted-powers-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-owner-weighted-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-owner-weighted-defect-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-global-sup-defect-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-source-localized-defect-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-source-localized-third-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-source-localized-first-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
+          restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
         shell: bash

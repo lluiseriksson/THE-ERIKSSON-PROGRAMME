@@ -4078,6 +4078,8 @@ loss is introduced.
 Run `31212939832` stopped before Lean because the cache action counts the
 primary key inside its maximum of ten.  The restore list was capped without
 changing source, and cached diagnostic run `31213016266` then passed.
+The runner now derives the fallbacks from one prefix list and rejects
+`primary + fallbacks > 10` before invoking `actions/cache`.
 PRE-VALIDATION was retired only after the cold run above and local
 verification of its durable evidence package.
 
