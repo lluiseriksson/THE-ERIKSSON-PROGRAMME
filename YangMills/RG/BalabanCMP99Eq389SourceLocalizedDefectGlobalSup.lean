@@ -8,10 +8,12 @@ import YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay
 import YangMills.RG.FinitePiLpBlockLocalizedSupGlobal
 
 /-!
-# PRE-VALIDATION: global supremum bound for the source-localized CMP99 defect
+# Cold-sealed global supremum bound for the source-localized CMP99 defect
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`49721e8e244fc1aaff93e5881e89483155431301` by cold GitHub Actions run
+`31187878878`.  The focal and audit exited zero, and both audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The sealed source-localized CMP99 (3.89) estimate is first applied to each
 complete source-owner fibre.  The exact owner decomposition and the existing

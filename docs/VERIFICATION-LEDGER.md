@@ -28660,3 +28660,41 @@ second-species `K^-2` term, and a fixed-rate Neumann argument still needs a
 strict rate reserve and a volume-uniform shell convolution estimate.  Window
 15 remains compatible but unattained; rows 23--24 and a first `TermSource`
 inhabitant remain open.  The live counters stay exactly `20/41` and zero.
+
+## Addendum 593 (2026-08-07, **one-application global-sup CMP99 defect GREEN; fixed-rate powers open; 20/41 unchanged**)
+
+Exact source checkpoint
+`49721e8e244fc1aaff93e5881e89483155431301` was validated by cold GitHub
+Actions run `31187878878` (workflow checkpoint
+`81ee5ec95d2ba1135937147683bb1a27472dc5f2`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+generic focal ran from `2026-08-07T14:42:31Z` to `14:59:38Z`; its audit ended
+at `14:59:48Z`.  The physical focal ran from `14:59:48Z` to `15:42:22Z`; its
+audit ended at `15:42:31Z`.  All four stages exited zero.  The six generic and
+two physical axiom blocks are exactly
+`[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`63b98851e889aab84f5eba7bbc0ee02e46e892fce837db343ae672bae87ee31e`.
+GitHub recorded SHA-256
+`d5860fbe7ef3b98962af0cd1aa56828fb73cfa79df2cce44703929f3ba0da90f`
+for uploaded artifact `8999975076` (56,931 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, eight-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all per-file hashes (`SHA256SUMS_MISMATCH=0`).
+
+The sealed physical theorem converts the arbitrary-source-fibre CMP99 (3.89)
+estimate into a global one-application `finitePiLpSupNorm` bound without an
+owner count or a fine-fibre cardinality.  It deliberately retains the two
+`K^-1` species and the one `K^-2` species before the owner-shell factor.
+
+This does not yet give fixed-rate powers or a Neumann inverse.  The next
+source-faithful interface is an output-fixed weighted row of nonnegative
+block-operator coefficients between owner fibres, with a reserved rate below
+`delta0`.  A source-fixed sum over output owners would be the wrong
+orientation for the global supremum contraction, and the existing
+coordinate-delta weighted row would reintroduce the forbidden fine-fibre
+cardinality.  Window 15 remains compatible but unattained; rows 23--24 and a
+first `TermSource` inhabitant remain open.  The live counters stay exactly
+`20/41` and zero.

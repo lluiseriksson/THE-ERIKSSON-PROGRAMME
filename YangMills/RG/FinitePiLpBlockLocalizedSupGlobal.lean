@@ -6,10 +6,12 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpBlockLocalizedSupAlgebra
 
 /-!
-# PRE-VALIDATION: global supremum action from owner-localized decay
+# Cold-sealed global supremum action from owner-localized decay
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`49721e8e244fc1aaff93e5881e89483155431301` by cold GitHub Actions run
+`31187878878`.  The focal and audit exited zero, and all six audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 A block-localized estimate controls an arbitrary field supported in one
 complete owner fibre.  This module decomposes an arbitrary field into those

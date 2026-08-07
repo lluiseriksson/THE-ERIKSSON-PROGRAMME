@@ -3880,3 +3880,31 @@ term.  Iteration at a fixed exponential rate still requires a positive rate
 gap and a volume-uniform shell convolution bound.  No Neumann inverse,
 attainment of window 15, rows 23--24, or `TermSource` inhabitant is proved.
 The live counters remain exactly `20/41` and `TermSource = 0`.
+
+### Step 7.5i one-application global supremum bound (SEALED; fixed-rate powers open)
+
+Exact source checkpoint `49721e8e244fc1aaff93e5881e89483155431301`
+passed cold GitHub Actions run `31187878878` (workflow checkpoint
+`81ee5ec95d2ba1135937147683bb1a27472dc5f2`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The generic focal ran from `2026-08-07T14:42:31Z` to `14:59:38Z`, and the
+physical focal from `14:59:48Z` to `15:42:22Z`; all four focal/audit stages
+exited zero.  The six generic and two physical audit blocks use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed theorem decomposes an arbitrary field into exact source-owner
+fibres and uses the volume-uniform four-dimensional owner-shell sum to bound
+one application of the literal regional defect in `finitePiLpSupNorm`.  No
+number of owners and no fine-fibre cardinality enters.  Its budget keeps the
+two physical `K^-1` contributions and the `K^-2` contribution visible before
+multiplication by the shell sum.
+
+This is not yet the source-faithful Neumann contraction.  Fixed-rate powers
+require a block-operator coefficient matrix with an output-fixed weighted
+owner row and a strict reserved rate `0 <= r < delta0`; the coordinate-delta
+weighted-row predicate is not an admissible substitute because it would
+reintroduce fine-fibre cardinality.  The Green certificate still supplies
+`B0` and `delta0` at the selected `K`, so scalar large-`K` compatibility alone
+does not manufacture their required physical uniformity.  Window 15 remains
+compatible but unattained; rows 23--24 remain open, the live producer count
+is `20/41`, and `TermSource = 0`.

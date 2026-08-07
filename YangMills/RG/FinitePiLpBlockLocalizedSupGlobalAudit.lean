@@ -1,10 +1,11 @@
 import YangMills.RG.FinitePiLpBlockLocalizedSupGlobal
 
 /-!
-# PRE-VALIDATION audit: global supremum action from owner-localized decay
+# Audit: global supremum action from owner-localized decay
 
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the declarations remain compiler-unverified.
+Cold-sealed with its source at exact checkpoint
+`49721e8e244fc1aaff93e5881e89483155431301` in GitHub Actions run
+`31187878878`.
 -/
 
 #print axioms YangMills.RG.finitePiLpOwnerPart
