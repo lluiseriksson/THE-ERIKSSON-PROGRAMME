@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fresh-clone Colab gate for the signed CMP99 first-species brick.
+"""Fresh-clone Colab gate for the literal CMP99 three-species brick.
 
 This validation runner compiles the immutable PRE-VALIDATION source checkpoint
 named by ``SOURCE_SHA``.  It is infrastructure only: the source object and its
@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "signed-covariant-link-v6"
-SOURCE_SHA = "46734245d55a2ae309a01e6b371b35418189dd0f"
+RUNNER_REV = "eq389-three-species-v1"
+SOURCE_SHA = "8ef8827262065f2343a78c3a68bb397158079d90"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -31,36 +31,36 @@ TOOLCHAIN_URL = (
     "lean-4.29.0-rc6-linux.tar.zst"
 )
 TOOLCHAIN_SHA256 = "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
-ROOT = Path("/content/hrpoly-signed-covariant-link")
-EVIDENCE = Path("/content/hrpoly-signed-covariant-link-evidence")
-ARCHIVE = Path("/content/hrpoly-signed-covariant-link-evidence.tar.gz")
+ROOT = Path("/content/hrpoly-eq389-three-species")
+EVIDENCE = Path("/content/hrpoly-eq389-three-species-evidence")
+ARCHIVE = Path("/content/hrpoly-eq389-three-species-evidence.tar.gz")
 ASSET = Path("/content/lean-4.29.0-rc6-linux.tar.zst")
 TOOLROOT = Path("/content/lean-4.29.0-rc6-linux")
-PATH_MANIFEST = Path("/content/hrpoly-signed-covariant-link-paths.txt")
+PATH_MANIFEST = Path("/content/hrpoly-eq389-three-species-paths.txt")
 
 SOURCE_BLOBS = {
-    "YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBound.lean":
-        "11447809e24a3a1dc8675215b89dd241075f19753dff146eb126050282a99a6f",
-    "YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBoundAudit.lean":
-        "63fd60cb8f7ffe7599b26b3fa82f30471a123e0a03d077dbcc182bb88ce6824f",
+    "YangMills/RG/BalabanCMP99Eq389ThreeSpeciesPhysicalBound.lean":
+        "3771536dc68b89c078c5f44cfba2d03e79eb6a2359f68b67410d36eb0c515bb0",
+    "YangMills/RG/BalabanCMP99Eq389ThreeSpeciesPhysicalBoundAudit.lean":
+        "041b74085962f5bc0e4e2fa3632ec2b2e6e0dc11cc62fd85672c010ed2a9aff0",
 }
 
 QUEUE = [
     (
-        "signed_covariant_link_focal",
+        "eq389_three_species_focal",
         [
             "lake", "build",
-            "YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkPhysicalBound",
+            "YangMills.RG.BalabanCMP99Eq389ThreeSpeciesPhysicalBound",
         ],
         None,
     ),
     (
-        "signed_covariant_link_audit",
+        "eq389_three_species_audit",
         [
             "lake", "env", "lean",
-            "YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkPhysicalBoundAudit.lean",
+            "YangMills/RG/BalabanCMP99Eq389ThreeSpeciesPhysicalBoundAudit.lean",
         ],
-        15,
+        9,
     ),
 ]
 
