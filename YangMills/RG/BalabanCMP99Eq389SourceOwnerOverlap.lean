@@ -137,8 +137,8 @@ theorem abs_cmp99SourceSeparatedLargeBlockCoordinate_div_sub_ownerCenter_le_quar
     rw [← hxval]
     exact (hcube i).1
   have hxUpperNat : (x i).val + 1 ≤ ell * (owner i).val + ell := by
-    have hxUpperNat' : (x' i).val + 1 ≤ ell * (owner i).val + ell := by
-      omega
+    have hxUpperNat' : (x' i).val + 1 ≤ ell * (owner i).val + ell :=
+      Nat.succ_le_of_lt (hcube i).2
     simpa only [hxval] using hxUpperNat'
   have hxLower : (ell : ℝ) * (owner i).val ≤ ((x i).val : ℝ) := by
     exact_mod_cast hxLowerNat
@@ -165,6 +165,8 @@ theorem abs_cmp99SourceSeparatedLargeBlockCoordinate_div_sub_ownerCenter_le_quar
           cmp99Eq389SourceOwnerNormalizedCenter (Q := Q) L K depth owner i =
         (((x i).val : ℝ) + 1 / 2 -
           (ell : ℝ) * (owner i).val - (ell : ℝ) / 2) / (M0 : ℝ) := by
+    dsimp only [cmp99SourceSeparatedLargeBlockCoordinate,
+      cmp99Eq389SourceOwnerNormalizedCenter]
     change
       ((((x i).val : ℝ) + 1 / 2 - (M0 : ℝ) / 2) / (M0 : ℝ)) -
           (((ell : ℝ) * (owner i).val + (ell : ℝ) / 2 -
