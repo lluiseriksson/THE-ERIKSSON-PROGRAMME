@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition
 import YangMills.RG.FinitePiLpBlockLocalizedSup
 
 /-!
-# PRE-VALIDATION: source localization owners for CMP99 (3.89)
-
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Source localization owners for CMP99 (3.89)
 
 CMP99 (3.89) measures decay between localization blocks of side
 `L^(depth+1)` on a carrier with `2*(K*Q)` such blocks.  The regional

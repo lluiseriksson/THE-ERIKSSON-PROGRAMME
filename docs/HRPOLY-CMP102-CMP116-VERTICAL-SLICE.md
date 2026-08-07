@@ -3680,3 +3680,28 @@ it, and it does not identify the source localization owners at scale
 CMP99 (3.89), `norm R' < 1`, rows 23--24, and a `TermSource` inhabitant remain
 open.  Window 15 is compatible but unattained; the live counters remain
 exactly `20/41` and `TermSource = 0`.
+
+### Step 7.5b source localization-owner dictionary (SEALED; Green estimates open)
+
+Exact source checkpoint `fd070233dbeaf13ad2d59acfc5295ff76900d86d`
+passed cold GitHub Actions run `31148630489` (workflow checkpoint
+`b94804c37c0e2f23d1dcc3dd9126ae68f2f71b0d`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T04:51:47Z` to `05:19:01Z`, exited zero, and
+ended with `Build completed successfully (8517 jobs).`  The audit ended at
+`05:19:06Z` with exit zero.  Its five declarations use only the allowed
+axioms: one uses `[propext]` and four use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The brick proves the exact carrier equality between the separated regional
+presentation and the `L^(depth+1)` source-localization presentation, builds
+the corresponding explicit site equivalence, and defines the owner and
+owner-distance used by the printed CMP99 (3.89) estimate.  It specializes
+the sealed block-localized sup-norm contract to those owners without
+hard-coding the depth.
+
+This is carrier and metric bookkeeping only.  It does **not** prove any
+regional-Green localized-action estimate, the physical three-species form of
+CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource` inhabitant.
+Window 15 remains compatible but unattained; the live counters remain
+exactly `20/41` and `TermSource = 0`.

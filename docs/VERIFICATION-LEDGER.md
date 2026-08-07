@@ -28422,3 +28422,42 @@ direct three-species estimate remain open.  Hence CMP99 (3.89), the defect
 contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window
 15 is compatible but unattained; the live counters remain exactly `20/41`
 and zero.
+
+## Addendum 586 (2026-08-07, **CMP99 (3.89) source localization-owner dictionary GREEN; Green estimates open; 20/41 unchanged**)
+
+Exact source checkpoint
+`fd070233dbeaf13ad2d59acfc5295ff76900d86d` was validated by cold GitHub
+Actions run `31148630489` (workflow checkpoint
+`b94804c37c0e2f23d1dcc3dd9126ae68f2f71b0d`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T04:51:47Z` to `05:19:01Z`, exited zero, and ended
+with `Build completed successfully (8517 jobs).`  The audit ran from
+`05:19:01Z` to `05:19:06Z` and also exited zero.  One audited declaration
+uses `[propext]`; the other four use exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`2461c67a5f928ed22c12319ccb0a57f05b7f98a62dfb2c4357d5a612c58e47b2`.
+GitHub recorded SHA-256
+`394bab457774d16c4584ee10f1766b291e0143b96f42ef756b1d23a9ea5e28e2`
+for the uploaded artifact ZIP (artifact `8982987360`, 38,378 bytes).  The
+durable artifact remains attached to the run; this seal relies on the cold
+job transcript and GitHub's recorded artifact digest, not on a second local
+download of the package.
+
+The brick proves the exact equality of the separated regional carrier with
+the source's `L^(depth+1)` localization-block carrier, constructs the
+explicit cast equivalence, defines the source owner and owner distance, and
+specializes the block-localized sup-norm action contract to that dictionary.
+The carrier nonemptiness needed by `blockSite` is derived internally from
+the existing positivity assumptions on `L`, `K`, and `Q`; no new hypothesis
+was added.
+
+This is source localization bookkeeping only.  It proves no Green estimate
+and no physical CMP99 (3.89) bound.  The four arbitrary-localized-field Green
+estimates and their three-species assembly remain open, as do the defect
+contraction, rows 23--24, and the first `TermSource` inhabitant.  Window 15
+remains compatible but unattained; the live counters remain exactly
+`20/41` and zero.

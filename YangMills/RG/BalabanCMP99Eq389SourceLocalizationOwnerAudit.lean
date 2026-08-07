@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99Eq389SourceLocalizationOwner
 
 /-!
-# PRE-VALIDATION audit: source localization owners for CMP99 (3.89)
-
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the result has not yet been compiler-verified.
+# Audit: source localization owners for CMP99 (3.89)
 -/
 
 #print axioms YangMills.RG.cmp99SourceSeparatedCarrier_eq_sourceLocalizationCarrier
