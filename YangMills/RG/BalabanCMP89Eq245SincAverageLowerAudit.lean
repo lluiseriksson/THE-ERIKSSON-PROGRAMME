@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP89Eq245SincAverageLower
+
+#print axioms YangMills.RG.two_div_pi_le_abs_sinc_of_abs_le_pi_div_two
+#print axioms YangMills.RG.two_div_pi_le_abs_cmp89Eq245SincAverageFactor
+#print axioms YangMills.RG.pow_two_div_pi_le_abs_cmp89Eq245SincAverageAmplitude
+#print axioms YangMills.RG.cmp89Eq245_inverseScale_mem_Ioc
+#print axioms YangMills.RG.pow_two_div_pi_le_abs_cmp89Eq245SincAverageAmplitude_inverseScale
