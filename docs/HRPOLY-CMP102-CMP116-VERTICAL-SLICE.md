@@ -3655,3 +3655,28 @@ can erase the physical `K^-1` gain.  The next source-facing brick must expose
 those two quantifiers directly.  Hence window 15 remains compatible but
 unattained, the live producer count remains exactly `20/41`, and
 `TermSource = 0`.
+
+### Step 7.5a block-localized sup-norm action contract (SEALED; physical producer open)
+
+Exact source checkpoint `16eed86994e2459bacb765e193c5009b76fdd51c`
+passed cold GitHub Actions run `31147882660` (workflow checkpoint
+`6de2a6f96b72a4863a486b02bb620b0d67743efc`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T04:37:09Z` to `04:38:36Z` and exited zero;
+the audit ended at `04:38:43Z` with exit zero.  All six audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The new predicate quantifies an arbitrary finite field supported in one
+source-owner fibre, uses its finite supremum norm, and measures decay between
+explicit source and target owners.  Its addition lemma preserves the sum of
+amplitudes with no site-cardinality factor.  It is therefore the correct
+generic codomain for the source-facing CMP99 (3.42)/(3.89) estimates, rather
+than an entrywise coordinate-probe predicate.
+
+This brick defines and verifies only the contract.  It does not prove that
+the regional Green components or the physical three-species defect satisfy
+it, and it does not identify the source localization owners at scale
+`L^(depth+1)` with the existing separated-cell presentation.  Complete
+CMP99 (3.89), `norm R' < 1`, rows 23--24, and a `TermSource` inhabitant remain
+open.  Window 15 is compatible but unattained; the live counters remain
+exactly `20/41` and `TermSource = 0`.

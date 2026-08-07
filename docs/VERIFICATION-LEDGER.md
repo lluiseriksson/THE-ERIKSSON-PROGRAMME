@@ -28385,3 +28385,40 @@ the fine-fibre cardinality may cancel the displayed `K^-1` gain.  Complete
 (3.89), the defect contraction, rows 23--24, and a `TermSource` inhabitant
 remain open.  Window 15 remains compatible but unattained; the live counters
 remain exactly `20/41` and zero.
+
+## Addendum 585 (2026-08-07, **block-localized sup-action contract GREEN; physical (3.89) producer open; 20/41 unchanged**)
+
+Exact source checkpoint
+`16eed86994e2459bacb765e193c5009b76fdd51c` was validated by cold GitHub
+Actions run `31147882660` (workflow checkpoint
+`6de2a6f96b72a4863a486b02bb620b0d67743efc`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T04:37:09Z` to `04:38:36Z` and exited zero; the
+audit ran from `04:38:36Z` to `04:38:43Z` and also exited zero.  All six
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`baea5f5afb22cdc86251905af766fe5c2bf702f0b16b3efff8a385de98bd7086`.
+The axiom JSON has SHA-256
+`6933a0c555258068ce553f06f6c2f6cfb00d9bddbab3691581eccb2474477937`;
+the stage ledger has SHA-256
+`7b1a942c8699992c4fc19ae7b9d73c9c6e04a27b17f9683222ed68c6e588c67d`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The contract now expresses the quantifier missing from the coordinate-probe
+route: an arbitrary field supported in one source-owner fibre, controlled by
+its finite supremum norm and evaluated with an explicit owner metric.  The
+addition theorem combines amplitudes without summing over fine source sites.
+The preceding diagnostic at source checkpoint
+`c25d114c3a557038b17d22ae579ac38e4e5719cb` failed only because the generic
+support predicate did not declare `[Zero g]`; the repair changed no theorem,
+constant, quantifier, or hypothesis of the localized-action bound.
+
+This is a verified interface, not a physical producer.  The source-scale
+owner dictionary, the four arbitrary-localized-field Green estimates and the
+direct three-species estimate remain open.  Hence CMP99 (3.89), the defect
+contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window
+15 is compatible but unattained; the live counters remain exactly `20/41`
+and zero.

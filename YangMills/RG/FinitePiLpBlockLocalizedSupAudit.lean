@@ -1,10 +1,12 @@
 import YangMills.RG.FinitePiLpBlockLocalizedSup
 
 /-!
-# PRE-VALIDATION audit: block-localized sup-norm action
+# Cold-sealed audit: block-localized sup-norm action
 
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`16eed86994e2459bacb765e193c5009b76fdd51c` by cold GitHub Actions run
+`31147882660`.  All six declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.finitePiLpSupNorm

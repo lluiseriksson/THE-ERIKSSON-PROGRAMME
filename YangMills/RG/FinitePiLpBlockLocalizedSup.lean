@@ -6,10 +6,12 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpTypedKernel
 
 /-!
-# PRE-VALIDATION: block-localized sup-norm action on finite PiLp fields
+# Cold-sealed block-localized sup-norm action on finite PiLp fields
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`16eed86994e2459bacb765e193c5009b76fdd51c` by cold GitHub Actions run
+`31147882660`.  The focal and audit exited zero, and all six audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP99 (3.42) and (3.89) quantify an arbitrary field supported in one
 localization block and measure that field in the finite supremum norm.  The
