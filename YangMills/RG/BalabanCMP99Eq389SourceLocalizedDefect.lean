@@ -54,7 +54,8 @@ noncomputable def cmp99Eq389SourceLocalizedRegionalDefect
         (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
         (SUNLieCoord Nc) :=
   ∑ cell, cmp99Eq389SourceLocalizedThreeSpeciesRegionalCorrection
-    (L := L) (K := K) (Q := Q) P hL depth epsilon background budget
+    (L := L) (K := K) (Q := Q) (Nc := Nc)
+    P hL depth epsilon background budget
       fineSmall hsmall cell (Omega cell)
 
 /-- Summing the complete physical regional family costs exactly the derived
@@ -95,20 +96,23 @@ theorem cmp99Eq389SourceLocalizedRegionalDefect_blockLocalizedSupBound
   have hcell (cell : FinBox 4 Q) :
       FinitePiLpTypedBlockLocalizedSupBound
         (cmp99Eq389SourceLocalizedThreeSpeciesRegionalCorrection
-          (L := L) (K := K) (Q := Q) P hL depth epsilon background budget
+          (L := L) (K := K) (Q := Q) (Nc := Nc)
+          P hL depth epsilon background budget
           fineSmall hsmall cell (Omega cell))
         (cmp99Eq389SourceLocalizationOwner L K Q depth)
         (cmp99Eq389SourceLocalizationOwner L K Q depth)
         finBoxDist A delta0 := by
     exact cmp99Eq389SourceLocalizedThreeSpeciesRegionalCorrection_bound
-      (L := L) (K := K) (Q := Q) P hL depth background budget fineSmall
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
+      P hL depth background budget fineSmall
       hsmall cell (Omega cell) (carrierNonempty cell) B0 delta0 (C cell)
   let sample : FinBox 4 Q := Classical.choice inferInstance
   have hsample := hcell sample
   unfold cmp99Eq389SourceLocalizedRegionalDefect
   change FinitePiLpTypedBlockLocalizedSupBound
     (∑ cell, cmp99Eq389SourceLocalizedThreeSpeciesRegionalCorrection
-      (L := L) (K := K) (Q := Q) P hL depth epsilon background budget
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
+      P hL depth epsilon background budget
       fineSmall hsmall cell (Omega cell))
     (cmp99Eq389SourceLocalizationOwner L K Q depth)
     (cmp99Eq389SourceLocalizationOwner L K Q depth)
@@ -116,7 +120,8 @@ theorem cmp99Eq389SourceLocalizedRegionalDefect_blockLocalizedSupBound
   apply finitePiLpTypedBlockLocalizedSupBound_sum_of_sourceOwnerOverlap
     (term := fun cell =>
       cmp99Eq389SourceLocalizedThreeSpeciesRegionalCorrection
-        (L := L) (K := K) (Q := Q) P hL depth epsilon background budget
+        (L := L) (K := K) (Q := Q) (Nc := Nc)
+        P hL depth epsilon background budget
         fineSmall hsmall cell (Omega cell))
     (active := fun cell owner =>
       cell ∈ cmp99Eq389SourceOwnerActiveCellWindow L K Q depth owner)
@@ -139,7 +144,8 @@ theorem cmp99Eq389SourceLocalizedRegionalDefect_blockLocalizedSupBound
   · intro cell source v hinactive
     apply
       cmp99Eq389SourceLocalizedThreeSpeciesRegionalCorrection_single_eq_zero_of_value_eq_zero
-        (L := L) (K := K) (Q := Q) P hL depth epsilon background budget
+        (L := L) (K := K) (Q := Q) (Nc := Nc)
+        P hL depth epsilon background budget
         fineSmall hsmall cell (Omega cell) source v
     by_contra hcutoff
     exact hinactive
