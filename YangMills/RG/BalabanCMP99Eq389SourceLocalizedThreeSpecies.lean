@@ -212,7 +212,8 @@ theorem cmp99Eq389SourceLocalizedThreeSpeciesRegionalCorrection_bound
       carrierNonempty B0 delta0) :
     FinitePiLpTypedBlockLocalizedSupBound
       (cmp99Eq389SourceLocalizedThreeSpeciesRegionalCorrection
-        (L := L) (K := K) (Q := Q) P hL depth epsilon background budget
+        (L := L) (K := K) (Q := Q) (Nc := Nc)
+        P hL depth epsilon background budget
         fineSmall hsmall cell Omega)
       (cmp99Eq389SourceLocalizationOwner L K Q depth)
       (cmp99Eq389SourceLocalizationOwner L K Q depth)
