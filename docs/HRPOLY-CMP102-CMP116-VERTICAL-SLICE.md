@@ -4161,6 +4161,18 @@ existing entrywise Combes--Thomas kernel cannot be summed over the source
 fibre without losing the printed scale; the remaining producer must retain
 the block-localized source quantifier.
 
+The primary proof chain now localizes the remaining source boundary exactly.
+CMP99 Corollary 3.6 gauges each regular cell background into the near-identity
+regime and imports the zero-background local Green estimates from CMP96 [4],
+Proposition 2.2 / equation (2.67).  Those estimates feed the local `G'_Pi`
+used in (3.89); Theorem 3.7 then combines (3.89), CMP96 Lemma 2.1, and the
+random-walk formula (3.90) to recover global Theorem 3.1.  Therefore neither
+the existing coarse Combes--Thomas reciprocal-coercivity bound nor a new
+record that simply assumes the four fields of (2.67) is an admissible next
+producer.  The next source-analytic brick must begin below (2.67), at the
+CMP96 zero-background localized Green construction, and transport it through
+the CMP99 near-identity/gauge dictionary.
+
 Diagnostic run `31221320009` retained the first elaboration errors in the
 decidable fibre filter and subtype-cardinality conversion.  Replacing the
 latter with an explicit injection into the ambient block gave cached

@@ -337,6 +337,26 @@ their Theorem-3.1 producer is formalized.  Replacing `O(1)` by an invented
 numeral, or importing the Poincare constant through `1 / coercivity`, is not
 an admissible discharge of (3.89).
 
+The primary proof also fixes where that producer starts.  CMP99 p. 397 says
+that Theorem 3.1 will be proved by a generalized random-walk representation;
+pp. 407--409 first gauge each regular localized background into the small
+near-identity regime and apply Corollary 3.6.  That corollary imports the
+zero-background local Green estimates from CMP96 [4], Proposition 2.2,
+especially its four-component bound (2.67).  The localized operators
+`G'_Pi` therefore receive their uniform `B0` and `delta0` before the CMP99
+cell sum.  Equation (3.89), Lemma 2.1 of CMP96, and the Neumann/random-walk
+formula (3.90) then propagate those local estimates to the global `G'`;
+Theorem 3.7 explicitly says that this completes Theorem 3.1.
+
+Consequently the next honest producer is not another coercivity-based
+Combes--Thomas estimate.  Nor may it introduce a CMP96 certificate whose
+fields are merely the four conclusions of (2.67).  It must expose a genuine
+source step below those conclusions: the CMP96 zero-background localized
+Green construction, followed by the CMP99 near-identity perturbation and
+gauge-covariant transport to the canonical regional Green.  The sealed
+source-input L2 conversion supplies only the `ell^2` input-size factor for
+that route.
+
 The current Lean certificate
 `CMP99Eq342RegionalGreenCertificate` does not yet implement this accepted
 interface.  Its four fields use

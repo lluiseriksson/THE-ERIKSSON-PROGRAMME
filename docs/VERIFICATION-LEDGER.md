@@ -29008,3 +29008,23 @@ run `31221320009` retained the first elaboration errors; cached run
 `31221547246` passed.  Only the cold run above retired PRE-VALIDATION.  The
 live counters remain exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+## Addendum 602 (2026-08-08, **CMP99 (3.42) producer boundary fixed from primary source; documentation only**)
+
+Direct inspection of the local primary extraction fixes the dependency chain
+behind the four source-localized Green estimates.  CMP99 Theorem 3.1 first
+reduces each regular localized background by Corollary 3.6 to the
+near-identity/zero-background case.  That corollary imports CMP96 [4],
+Proposition 2.2 and its four-component equation (2.67).  The local `G'_Pi`
+estimates are then consumed by CMP99 (3.89), Lemma 2.1 of CMP96, and the
+random-walk representation (3.90); Theorem 3.7 states that this completes
+Theorem 3.1.
+
+The parser audit and vertical-slice map now reject two false next steps:
+another reciprocal-coercivity Combes--Thomas estimate, and a new source
+record that merely assumes the four conclusions of CMP96 (2.67).  The next
+honest producer must start below (2.67), at the zero-background localized
+Green construction, then supply the CMP99 near-identity perturbation and
+gauge-covariant transport to the canonical regional Green.  This addendum
+records source provenance only; it adds no theorem, retires no obligation,
+and leaves `20/41`, `TermSource = 0`, and window 15 unchanged.
