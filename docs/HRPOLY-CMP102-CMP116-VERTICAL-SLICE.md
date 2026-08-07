@@ -3705,3 +3705,27 @@ regional-Green localized-action estimate, the physical three-species form of
 CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource` inhabitant.
 Window 15 remains compatible but unattained; the live counters remain
 exactly `20/41` and `TermSource = 0`.
+
+### Step 7.5c source-localized CMP99 (3.42) Green certificate (SEALED; (3.89) open)
+
+Exact source checkpoint `39bf5a9a5978aa52fe6d05a4d057206a027d6af5`
+passed cold GitHub Actions run `31158229361` (workflow checkpoint
+`6d3939b2e164d5f8ee10d2e86e1efe3b2d631710`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T07:36:57Z` to `08:03:14Z`, exited zero, and
+ended with `Build completed successfully (8519 jobs).`  The audit ended at
+`08:03:24Z` with exit zero.  All nine audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The certificate fixes one canonical regional Dirichlet Green and records the
+four source estimates printed in CMP99 (3.42): `G'`, `D G'`, `G' D*`, and
+`Delta G'`, with scale vector `[B0*ell^2, B0*ell, B0*ell, B0]`,
+`ell = L^(depth+1)`, and the sealed source-localization owner metric.  Its
+strictly positive `B0` and `delta0` and its active-carrier nonemptiness are
+visible in the type; it does not accept an arbitrary Green family.
+
+This is a named source certificate for (3.42), not a proof of that theorem
+from CMP99.  It proves neither the physical three-species estimate (3.89),
+the defect contraction, rows 23--24, nor a `TermSource` inhabitant.  Window
+15 remains compatible but unattained; the live counters remain exactly
+`20/41` and `TermSource = 0`.

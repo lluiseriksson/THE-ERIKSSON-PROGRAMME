@@ -28461,3 +28461,34 @@ estimates and their three-species assembly remain open, as do the defect
 contraction, rows 23--24, and the first `TermSource` inhabitant.  Window 15
 remains compatible but unattained; the live counters remain exactly
 `20/41` and zero.
+
+## Addendum 587 (2026-08-07, **source-localized CMP99 (3.42) Green certificate GREEN; physical (3.89) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`39bf5a9a5978aa52fe6d05a4d057206a027d6af5` was validated by cold GitHub
+Actions run `31158229361` (workflow checkpoint
+`6d3939b2e164d5f8ee10d2e86e1efe3b2d631710`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T07:36:57Z` to `08:03:14Z`, exited zero, and ended
+with `Build completed successfully (8519 jobs).`  The audit ran from
+`08:03:14Z` to `08:03:24Z` and also exited zero.  All nine declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`bc761e03cad501a9b2a82e218588cf16238047f52e7c0b17985253bb1a4cc564`.
+GitHub recorded SHA-256
+`7b8864e9912b19932745bbc22bc48d9ea53a65813f8b831a8950b8864f238feb`
+for the uploaded artifact ZIP (artifact `8986697639`, 38,217 bytes).  A local
+download of the durable artifact reproduced its `checkpoint.txt`,
+`axioms.json`, `FINAL_STATUS`, and inner archive hash.
+
+The certificate fixes the canonical regional Dirichlet Green and states the
+four source-localized actions of CMP99 (3.42) with their literal scale vector
+and source-owner metric.  It keeps `B0 > 0`, `delta0 > 0`, and active-carrier
+nonemptiness visible.  It is a named source input, not a derivation of (3.42)
+from CMP99 and not the physical three-species estimate (3.89).  The defect
+contraction, rows 23--24, and a first `TermSource` inhabitant remain open.
+Window 15 is compatible but unattained; the live counters remain exactly
+`20/41` and zero.

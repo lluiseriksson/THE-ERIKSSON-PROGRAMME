@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99Eq342RegionalGreenCertificate
 import YangMills.RG.BalabanCMP99Eq389SourceLocalizationOwner
 
 /-!
-# PRE-VALIDATION: source-localized regional Green package for CMP99 (3.42)
-
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Source-localized regional Green package for CMP99 (3.42)
 
 CMP99 (3.42), printed p. 397, bounds four actions of the same regional
 Dirichlet Green on an arbitrary field supported in one localization block:

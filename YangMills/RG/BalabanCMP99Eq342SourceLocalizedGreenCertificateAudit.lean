@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99Eq342SourceLocalizedGreenCertificate
 
 /-!
-# PRE-VALIDATION audit: source-localized regional Green package
-
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the result has not yet been compiler-verified.
+# Audit: source-localized regional Green package
 -/
 
 #print axioms YangMills.RG.cmp99Eq342SourceLocalizedActiveOwner
