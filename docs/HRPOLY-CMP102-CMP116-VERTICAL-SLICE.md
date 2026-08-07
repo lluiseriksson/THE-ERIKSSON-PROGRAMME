@@ -3774,3 +3774,26 @@ cell sum, first and third source-localized species, complete (3.89), defect
 contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window
 15 remains compatible but unattained; the live counters remain exactly
 `20/41` and `TermSource = 0`.
+
+### Step 7.5f source-localized first species (SEALED; overlap and complete (3.89) open)
+
+Exact source checkpoint `c1b6db9a3c972afac0337677787d7feb7d7a9696`
+passed cold GitHub Actions run `31167654134` (workflow checkpoint
+`3bda3465eaf26fc52dde0d678e4f61bf469ac9bd`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T09:54:14Z` to `10:56:06Z`, exited zero, and
+ended with `Build completed successfully (8579 jobs).`  The audit ended at
+`10:56:12Z` with exit zero.  Both declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The theorem applies the literal left-derivative Green estimate of CMP99
+(3.42) to an arbitrary field supported in one source-owner fibre, then uses
+the exact signed-cutoff slope and one-step owner geometry.  It retains the
+visible `K^-1` gain before cell summation and introduces neither coordinate
+probes, a Schur estimate, nor reciprocal coercivity.
+
+This is one physical regional cell of the first species.  The overlap-16
+cell sum, the source-localized third species, complete (3.89), contraction,
+rows 23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
+compatible but unattained; the live counters remain exactly `20/41` and
+`TermSource = 0`.

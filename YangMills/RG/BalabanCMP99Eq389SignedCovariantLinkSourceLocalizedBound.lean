@@ -8,10 +8,12 @@ import YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkPhysicalBound
 import YangMills.RG.FinitePiLpBlockLocalizedSupAlgebra
 
 /-!
-# PRE-VALIDATION: source-localized first species of CMP99 (3.89)
+# Source-localized first species of CMP99 (3.89)
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`c1b6db9a3c972afac0337677787d7feb7d7a9696` in cold GitHub Actions run
+`31167654134`; the focal completed 8579 jobs and both audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 This module applies the literal left-derivative Green estimate of CMP99
 (3.42) to an arbitrary field supported in one source-localization block.  It
