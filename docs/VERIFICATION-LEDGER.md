@@ -28698,3 +28698,47 @@ coordinate-delta weighted row would reintroduce the forbidden fine-fibre
 cardinality.  Window 15 remains compatible but unattained; rows 23--24 and a
 first `TermSource` inhabitant remain open.  The live counters stay exactly
 `20/41` and zero.
+
+## Addendum 594 (2026-08-07, **output-fixed weighted owner row GREEN; powers and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`596802620b489c55a9a34c0e445323c1f426a125` was validated by cold GitHub
+Actions run `31195176692` (workflow checkpoint
+`f117f7f7b8cea4c3a93e41bd6b8dd2795f5a1f30`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+generic focal ran from `2026-08-07T15:59:09Z` to `16:17:23Z`; its audit ended
+at `16:17:31Z`.  The physical focal ran from `16:17:31Z` to `17:05:09Z`; its
+audit ended at `17:05:18Z`.  All four stages exited zero.  The seven generic
+and three physical axiom blocks are exactly
+`[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`2642e54569a49d9bb4153777d3cfd404df8684ac18317d0ddcfd80d742acd00d`.
+GitHub recorded SHA-256
+`a92f896495a7c99e613f3a4b1122dd84afed29b800099826052612e719c99c8d`
+for uploaded artifact `9002655186` (56,564 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, ten-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all per-file hashes (`SHA256SUMS_MISMATCH=0`).
+
+The source now distinguishes two exact layers: a nonnegative coefficient
+matrix bounding the action between complete owner fibres, and an output-fixed
+weighted row of that matrix.  The physical theorem obtains the row for every
+reserved rate `0 <= rate < delta0` and pays one volume-uniform shell sum at
+`delta0 - rate`.  This is the correct orientation for the global supremum
+norm; a source-fixed output sum or a coordinate-delta row would not be a
+source-faithful substitute.
+
+Runs `31194652789` and `31194784889` stopped before Lean because of an invalid
+expanded source SHA and an overlong cache-key list respectively.  They are
+retained as instrumentation incidents and do not contribute evidence.
+Cached diagnostic run `31194902046` passed; only the cold run above retired
+the four PRE-VALIDATION marks.
+
+No composition, power estimate, Neumann inverse, or strict contraction is
+proved here.  The physical row amplitude keeps the two `K^-1` species and the
+one `K^-2` species literal, while uniform production of the Green constants
+at the eventual large `K` remains visible.  Window 15 is compatible but
+unattained; rows 23--24 and a first `TermSource` inhabitant remain open.  The
+live counters stay exactly `20/41` and zero.

@@ -6,10 +6,12 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpBlockLocalizedSupGlobal
 
 /-!
-# PRE-VALIDATION: output-fixed weighted owner rows in finite supremum norm
+# Cold-sealed output-fixed weighted owner rows in finite supremum norm
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`596802620b489c55a9a34c0e445323c1f426a125` by cold GitHub Actions run
+`31195176692`.  The focal and audit exited zero, and all seven audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 A source-localized CMP99 estimate controls the action from one complete owner
 fibre to one output owner fibre.  Iteration in the global supremum norm needs

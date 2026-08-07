@@ -3908,3 +3908,36 @@ reintroduce fine-fibre cardinality.  The Green certificate still supplies
 does not manufacture their required physical uniformity.  Window 15 remains
 compatible but unattained; rows 23--24 remain open, the live producer count
 is `20/41`, and `TermSource = 0`.
+
+### Step 7.5j output-fixed weighted owner row (SEALED; powers open)
+
+Exact source checkpoint `596802620b489c55a9a34c0e445323c1f426a125`
+passed cold GitHub Actions run `31195176692` (workflow checkpoint
+`f117f7f7b8cea4c3a93e41bd6b8dd2795f5a1f30`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The generic focal ran from `2026-08-07T15:59:09Z` to `16:17:23Z`, and the
+physical focal from `16:17:31Z` to `17:05:09Z`; all four focal/audit stages
+exited zero.  The seven generic and three physical audit blocks use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed interface exposes a nonnegative scalar matrix of supremum-action
+bounds between complete owner fibres.  Its spatial norm fixes an output owner
+and sums source owners with weight `exp(rate * dist)`, the orientation needed
+by the global supremum norm.  The physical CMP99 specialization derives that
+row at every `0 <= rate < delta0`, with literal amplitude
+`16 * threeSpeciesBudget * cmp99OmegaSiteExpSumBound (delta0 - rate)`.
+Neither the number of owner blocks nor a fine coordinate cardinality enters.
+
+The first two attempted workflow vehicles failed before Lean: one pinned a
+nonexistent expanded SHA and one exceeded the cache action's ten-key limit.
+They are instrumentation incidents, not mathematical evidence.  Cached run
+`31194902046` then passed, but PRE-VALIDATION was retired only after the cold
+run above.
+
+This brick fixes the correct Banach norm and rate reserve but proves no
+submultiplicativity, power bound, Neumann inverse, or strict budget.  The
+literal amplitude still contains two `K^-1` species and one `K^-2` species;
+the Green certificate supplies `B0` and `delta0` at the selected `K` rather
+than producing their uniformity.  Window 15 remains compatible but
+unattained; rows 23--24 remain open, the live count is `20/41`, and
+`TermSource = 0`.

@@ -7,10 +7,12 @@ import YangMills.RG.BalabanCMP99Eq389SourceLocalizedDefectGlobalSup
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernel
 
 /-!
-# PRE-VALIDATION: fixed-rate owner row for the physical CMP99 defect
+# Cold-sealed fixed-rate owner row for the physical CMP99 defect
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`596802620b489c55a9a34c0e445323c1f426a125` by cold GitHub Actions run
+`31195176692`.  The focal and audit exited zero, and all three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The complete source-localized CMP99 (3.89) estimate supplies a literal
 nonnegative block-operator coefficient between localization owners.  At every

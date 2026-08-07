@@ -1,10 +1,11 @@
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernel
 
 /-!
-# PRE-VALIDATION audit: output-fixed weighted owner rows
+# Audit: output-fixed weighted owner rows
 
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the declarations remain compiler-unverified.
+Cold-sealed with its source at exact checkpoint
+`596802620b489c55a9a34c0e445323c1f426a125` in GitHub Actions run
+`31195176692`.
 -/
 
 #print axioms YangMills.RG.FinitePiLpTypedOwnerSupKernelBound
