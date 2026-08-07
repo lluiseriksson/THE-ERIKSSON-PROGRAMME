@@ -29,6 +29,13 @@ noncomputable section
 
 variable {L K Q : ℕ} [NeZero L] [NeZero K] [NeZero Q]
 
+private instance instNeZeroEq389SourceLocalizationAmbientSide
+    (L K Q depth : ℕ) [NeZero L] [NeZero K] [NeZero Q] :
+    NeZero (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
+  ⟨(Nat.mul_pos
+    (Nat.mul_pos (NeZero.pos K) (pow_pos (NeZero.pos L) (depth + 1)))
+    (Nat.mul_pos (by omega) (NeZero.pos Q))).ne'⟩
+
 /-- The separated regional presentation and the source localization-block
 presentation are the same fine carrier. -/
 theorem cmp99SourceSeparatedCarrier_eq_sourceLocalizationCarrier
