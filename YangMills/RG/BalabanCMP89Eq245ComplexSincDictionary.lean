@@ -19,11 +19,10 @@ the real sinc amplitude already sealed in
 `BalabanCMP89Eq245SincAverageLower`, and transports its `(2 / pi)^d` lower
 bound to the complex product.
 
-The separate equality with the literal printed quotient is stated only where
-its complex denominator is nonzero.  This module does not yet prove that
-nonvanishing from the Brillouin hypotheses, compare the two Laplacian symbols,
-prove the full denominator estimate (2.50), establish (2.51), or construct the
-uniform analytic strip.
+The separate equality with the literal printed quotient is stated away from
+the removable `p = 0` and `xi = 0` branches.  This module does not yet compare
+the two Laplacian symbols, prove the full denominator estimate (2.50),
+establish (2.51), or construct the uniform analytic strip.
 
 Source catalog key: `cmp89.local-green.fourier.2.34-2.51`.
 -/
@@ -64,9 +63,8 @@ theorem norm_cmp89Eq245RemovableExpSlope (x : ℝ) :
     rw [cmp89Eq245RemovableExpSlope, if_neg hx, norm_div, hnorm,
       Real.sinc_of_ne_zero hxhalf]
     simp only [Real.norm_eq_abs, Real.sin_neg, neg_div, abs_neg,
-      abs_div, abs_mul, abs_ofNat, Complex.norm_real]
+      abs_div, abs_mul, Complex.norm_real]
     field_simp [abs_ne_zero.mpr hx]
-    ring
 
 /-- Exact norm dictionary from the removable complex factor to the real sinc
 factor used in the preceding source brick. -/
@@ -78,19 +76,24 @@ theorem norm_cmp89Eq245ComplexAverageFactor (xi p : ℝ) :
     norm_cmp89Eq245RemovableExpSlope,
     cmp89Eq245SincAverageFactor, abs_div]
 
-/-- Away from the removable singularity and a zero printed denominator, the
-complex factor is literally the exponential quotient printed in (2.45). -/
+/-- Away from the removable `p = 0` and `xi = 0` branches, the complex factor
+is literally the exponential quotient printed in (2.45). -/
 theorem cmp89Eq245ComplexAverageFactor_eq_literal
-    {xi p : ℝ} (hxi : xi ≠ 0) (hp : p ≠ 0)
-    (hden : Complex.exp (Complex.I * (-(xi * p) : ℂ)) - 1 ≠ 0) :
+    {xi p : ℝ} (hxi : xi ≠ 0) (hp : p ≠ 0) :
     cmp89Eq245ComplexAverageFactor xi p =
       cmp89Eq245LiteralComplexAverageFactor xi p := by
   simp only [cmp89Eq245ComplexAverageFactor,
     cmp89Eq245RemovableExpSlope, if_neg hp,
     if_neg (mul_ne_zero hxi hp),
     cmp89Eq245LiteralComplexAverageFactor]
-  field_simp
-  ring
+  change
+    ((Complex.exp (Complex.I * (-p : ℂ)) - 1) / (p : ℂ)) /
+        ((Complex.exp (Complex.I * (-(xi * p) : ℂ)) - 1) /
+          ((xi : ℂ) * (p : ℂ))) =
+      (Complex.exp (Complex.I * (-p : ℂ)) - 1) /
+        ((Complex.exp (Complex.I * (-(xi * p) : ℂ)) - 1) / (xi : ℂ))
+  rw [div_mul_eq_div_div]
+  exact div_div_div_cancel_right₀ (Complex.ofReal_ne_zero.mpr hp) _ _
 
 /-- The product of the removable complex factors in dimension `d`. -/
 def cmp89Eq245ComplexAverageAmplitude
