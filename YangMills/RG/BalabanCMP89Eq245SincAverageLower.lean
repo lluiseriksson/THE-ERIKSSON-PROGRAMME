@@ -102,7 +102,8 @@ theorem pow_two_div_pi_le_abs_cmp89Eq245SincAverageAmplitude
   have hnonneg : 0 ≤ 2 / Real.pi :=
     (div_pos (by norm_num) Real.pi_pos).le
   calc
-    (2 / Real.pi) ^ d = ∏ _mu : Fin d, (2 / Real.pi) := by simp
+    (2 / Real.pi) ^ d = ∏ _mu : Fin d, (2 / Real.pi) := by
+      rw [Finset.prod_const, Finset.card_univ, Fintype.card_fin]
     _ ≤ ∏ mu : Fin d, |cmp89Eq245SincAverageFactor xi (p mu)| := by
       exact Finset.prod_le_prod
         (fun _mu _hmu => hnonneg)
