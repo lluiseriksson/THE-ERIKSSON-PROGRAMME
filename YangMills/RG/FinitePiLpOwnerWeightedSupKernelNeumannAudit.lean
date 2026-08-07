@@ -1,10 +1,7 @@
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernelNeumann
 
 /-!
-# PRE-VALIDATION audit: owner-weighted Neumann series
-
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the declarations remain compiler-unverified.
+# Audit: owner-weighted Neumann series
 -/
 
 #print axioms YangMills.RG.finiteOwnerKernelNeumannCoefficient

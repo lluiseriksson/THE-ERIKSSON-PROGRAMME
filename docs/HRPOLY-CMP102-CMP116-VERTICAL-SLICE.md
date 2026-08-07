@@ -4029,3 +4029,31 @@ inverse identities, the strict physical CMP99 amplitude, or uniform
 production of `B0` and `delta0` as `K` varies.  Window 15 remains compatible
 but unattained; rows 23--24 remain open, the live count is `20/41`, and
 `TermSource = 0`.
+
+### Step 7.5n owner-weighted Neumann `tsum` and fixed-rate bound (SEALED; inverse identities open)
+
+Exact source checkpoint `9ff84c7b54f89ce860a3c4690e60ac9684b886d4`
+passed cold GitHub Actions run `31211383877` (workflow checkpoint
+`7a445d712556ac1076ff354752c3200b7ab6412a`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T19:27:25Z` to `19:40:05Z` and ended with
+`Build completed successfully (8447 jobs).`; the audit ended at `19:40:13Z`.
+Both stages exited zero, and all seven audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed brick forms the literal operator and coefficient `tsum`s.  It
+proves that the coefficient is nonnegative and that the Neumann operator has
+output-fixed weighted owner row at most `(1 - A)⁻¹` at the unchanged spatial
+rate.  No owner-cardinality factor and no loss of rate enter the physical
+owner-sup bound.
+
+Cached diagnostic run `31211060902` passed after run `31210795917` exposed
+one elaboration ambiguity in the weighted finite sum.  Run `31210716821`
+stopped before Lean because the cache action received too many restore keys.
+PRE-VALIDATION was retired only after the cold run above and local
+verification of its durable evidence package.
+
+This brick does not prove the left or right inverse identity for the `tsum`,
+specialize the strict physical CMP99 amplitude, or produce uniform `B0` and
+`delta0` as `K` varies.  Window 15 remains compatible but unattained; rows
+23--24 remain open, the live count is `20/41`, and `TermSource = 0`.

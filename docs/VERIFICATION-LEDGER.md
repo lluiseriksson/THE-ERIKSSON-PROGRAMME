@@ -28853,3 +28853,40 @@ No Neumann `tsum` identity, strict physical contraction, or uniform
 production of the Green constants is proved.  Window 15 remains compatible
 but unattained; rows 23--24 and a first `TermSource` inhabitant remain open.
 The live counters stay exactly `20/41` and zero.
+
+## Addendum 598 (2026-08-07, **owner-weighted Neumann `tsum` GREEN; inverse identities and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`9ff84c7b54f89ce860a3c4690e60ac9684b886d4` was validated by cold GitHub
+Actions run `31211383877` (workflow checkpoint
+`7a445d712556ac1076ff354752c3200b7ab6412a`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T19:27:25Z` to `19:40:05Z`, exited zero, and ended
+with `Build completed successfully (8447 jobs).`  The audit ran from
+`19:40:05Z` to `19:40:13Z` and also exited zero.  All seven declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`c9416cd5e2b8ef9845725a19e1ef9f20a7254ac249176496a7173022a4fd8f41`.
+GitHub recorded SHA-256
+`917ae94d4ea21ea29878f13183394f1fef0cc108618a63df2b0ad5a4608814d2`
+for uploaded artifact `9007211678` (31,889 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, seven-block axiom JSON, `FINAL_STATUS=PASS`, inner archive hash, and
+all per-file hashes.
+
+The sealed theorem forms the literal coefficient and continuous-linear-map
+Neumann `tsum`s and proves the unchanged-rate owner-weighted bound with
+amplitude `(1 - A)⁻¹`.  It introduces neither an owner count nor a degradation
+of the spatial rate.
+
+Run `31210716821` retained the pre-Lean cache-key instrumentation failure;
+run `31210795917` retained the first elaboration error.  Cached diagnostic run
+`31211060902` then passed; only the cold run above retired the two
+PRE-VALIDATION marks.
+
+No left/right inverse identity, strict physical contraction, or uniform
+production of the Green constants is proved.  Window 15 remains compatible
+but unattained; rows 23--24 and a first `TermSource` inhabitant remain open.
+The live counters stay exactly `20/41` and zero.

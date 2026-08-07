@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernelPowerSummability
 
 /-!
-# PRE-VALIDATION: owner-weighted Neumann series at fixed spatial rate
-
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Owner-weighted Neumann series at fixed spatial rate
 
 For a strict owner-sup contraction `A < 1`, the already constructed operator
 powers and their literal convolution coefficients are summable.  This module
