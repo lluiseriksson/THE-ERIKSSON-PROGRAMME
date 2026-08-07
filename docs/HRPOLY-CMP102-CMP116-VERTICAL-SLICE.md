@@ -3941,3 +3941,32 @@ the Green certificate supplies `B0` and `delta0` at the selected `K` rather
 than producing their uniformity.  Window 15 remains compatible but
 unattained; rows 23--24 remain open, the live count is `20/41`, and
 `TermSource = 0`.
+
+### Step 7.5k owner-weighted kernel composition (SEALED; powers open)
+
+Exact source checkpoint `c53f7dcb7ecdcde84570c92041d1e01505a8f3ad`
+passed cold GitHub Actions run `31202378080` (workflow checkpoint
+`e1f1f314ce31aaefbebbd3a7d1323d59a098a9b9`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T17:29:28Z` to `17:46:09Z` and ended with
+`Build completed successfully (8444 jobs).`; the audit ended at `17:46:17Z`.
+Both stages exited zero, and all six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed algebra decomposes an intermediate field into complete owner
+fibres, composes the explicit nonnegative block coefficients by literal
+matrix convolution, and proves that output-fixed weighted rows are
+submultiplicative at the same reserved rate.  The proof uses only the owner
+distance triangle inequality.  It introduces neither an owner-cardinality
+factor nor a fine-coordinate expansion.
+
+Run `31201201776` stopped before Lean because the cache action received eleven
+keys, above its limit of ten.  Run `31201285673` then exposed an over-broad
+rewrite of the owner decomposition; the source was repaired with a directed
+`congrArg`.  Cached diagnostic run `31202127234` passed, but PRE-VALIDATION
+was retired only after the cold run above.
+
+This brick proves composition, not coefficient powers, a Neumann inverse, or
+the strict physical budget.  In particular it does not manufacture uniform
+`B0` or `delta0` as `K` varies.  Window 15 remains compatible but unattained;
+rows 23--24 remain open, the live count is `20/41`, and `TermSource = 0`.

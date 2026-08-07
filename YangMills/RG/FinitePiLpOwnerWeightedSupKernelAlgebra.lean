@@ -6,10 +6,12 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernel
 
 /-!
-# PRE-VALIDATION: algebra of output-fixed weighted owner rows
+# Cold-sealed algebra of output-fixed weighted owner rows
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`c53f7dcb7ecdcde84570c92041d1e01505a8f3ad` by cold GitHub Actions run
+`31202378080`.  The focal and audit exited zero, and all six audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The coefficient matrix between complete owner fibres composes by literal
 matrix convolution.  The output-fixed weighted row is submultiplicative at

@@ -1,10 +1,11 @@
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernelAlgebra
 
 /-!
-# PRE-VALIDATION audit: owner-weighted supremum kernel algebra
+# Cold-sealed audit: owner-weighted supremum kernel algebra
 
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the declarations remain compiler-unverified.
+The audited source was compiler-verified at exact checkpoint
+`c53f7dcb7ecdcde84570c92041d1e01505a8f3ad` by cold GitHub Actions run
+`31202378080`.
 -/
 
 #print axioms YangMills.RG.finiteOwnerKernelConvolution

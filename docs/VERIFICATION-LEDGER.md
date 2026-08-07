@@ -28742,3 +28742,41 @@ one `K^-2` species literal, while uniform production of the Green constants
 at the eventual large `K` remains visible.  Window 15 is compatible but
 unattained; rows 23--24 and a first `TermSource` inhabitant remain open.  The
 live counters stay exactly `20/41` and zero.
+
+## Addendum 595 (2026-08-07, **owner-weighted kernel composition GREEN; powers and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c53f7dcb7ecdcde84570c92041d1e01505a8f3ad` was validated by cold GitHub
+Actions run `31202378080` (workflow checkpoint
+`e1f1f314ce31aaefbebbd3a7d1323d59a098a9b9`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T17:29:28Z` to `17:46:09Z`, exited zero, and ended
+with `Build completed successfully (8444 jobs).`  The audit ran from
+`17:46:09Z` to `17:46:17Z` and also exited zero.  All six declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`82dc1ca0f1d898dd37671dde509af00dbaba18d5096b4a814fbebca68a11af46`.
+GitHub recorded SHA-256
+`ab7f3e856dcc19bfa64b6205a30b5fe20f4aa8c8086a41a7ee776e69c65a35b5`
+for uploaded artifact `9003887617` (30,714 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, inner archive hash, and all
+per-file hashes (`SHA256SUMS_MISMATCH=0`).
+
+The sealed theorem composes complete-owner supremum kernels by literal
+coefficient convolution and proves submultiplicativity of the output-fixed
+weighted row at the same spatial rate.  It pays no owner count and introduces
+no fine-coordinate cardinality.
+
+Run `31201201776` is retained as an instrumentation failure before Lean
+(eleven cache keys for a ten-key limit).  Run `31201285673` exposed a directed
+rewrite error in the owner decomposition.  Cached diagnostic run
+`31202127234` passed; only the cold run above retired the two PRE-VALIDATION
+marks.
+
+No coefficient power, Neumann inverse, strict physical contraction, or
+uniform production of the Green constants is proved.  Window 15 remains
+compatible but unattained; rows 23--24 and a first `TermSource` inhabitant
+remain open.  The live counters stay exactly `20/41` and zero.
