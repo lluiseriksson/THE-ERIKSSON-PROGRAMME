@@ -79,7 +79,6 @@ jobs:
             hRpoly-block-localized-sup-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-source-localized-green-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-source-localization-owners-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-cmp99-generated-mass-physical-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
 
       - name: Record diagnostic cache state
         shell: bash
