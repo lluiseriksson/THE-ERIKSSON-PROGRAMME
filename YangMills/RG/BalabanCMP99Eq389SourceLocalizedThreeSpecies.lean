@@ -27,6 +27,7 @@ norm, establish the defect contraction, or attain window 15.
 namespace YangMills.RG
 
 open YangMills Matrix
+open scoped BigOperators Matrix.Norms.L2Operator RealInnerProductSpace
 
 noncomputable section
 
