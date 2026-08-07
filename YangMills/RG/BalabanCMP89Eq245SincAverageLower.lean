@@ -64,10 +64,11 @@ theorem two_div_pi_le_abs_cmp89Eq245SincAverageFactor
     (hp : |p| ≤ Real.pi) :
     2 / Real.pi ≤ |cmp89Eq245SincAverageFactor xi p| := by
   have hp_half : |p / 2| ≤ Real.pi / 2 := by
-    rw [abs_div, abs_ofNat]
+    rw [abs_div, abs_of_nonneg (show (0 : ℝ) ≤ 2 by norm_num)]
     exact (div_le_div_iff_of_pos_right (show (0 : ℝ) < 2 by norm_num)).2 hp
   have hscaled : |xi * p / 2| ≤ Real.pi / 2 := by
-    rw [abs_div, abs_mul, abs_of_pos hxi, abs_ofNat]
+    rw [abs_div, abs_mul, abs_of_pos hxi,
+      abs_of_nonneg (show (0 : ℝ) ≤ 2 by norm_num)]
     apply (div_le_div_iff_of_pos_right (show (0 : ℝ) < 2 by norm_num)).2
     calc
       xi * |p| ≤ 1 * |p| :=
@@ -97,7 +98,7 @@ theorem pow_two_div_pi_le_abs_cmp89Eq245SincAverageAmplitude
     (hp : ∀ mu, |p mu| ≤ Real.pi) :
     (2 / Real.pi) ^ d ≤
       |cmp89Eq245SincAverageAmplitude d xi p| := by
-  rw [cmp89Eq245SincAverageAmplitude, abs_prod]
+  rw [cmp89Eq245SincAverageAmplitude, Finset.abs_prod]
   have hnonneg : 0 ≤ 2 / Real.pi :=
     (div_pos (by norm_num) Real.pi_pos).le
   simpa using Finset.prod_le_prod
