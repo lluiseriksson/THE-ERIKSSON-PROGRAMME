@@ -86,6 +86,7 @@ theorem cmp89Eq245ComplexAverageFactor_eq_literal
     cmp89Eq245RemovableExpSlope, if_neg hp,
     if_neg (mul_ne_zero hxi hp),
     cmp89Eq245LiteralComplexAverageFactor]
+  simp only [Complex.ofReal_mul]
   change
     ((Complex.exp (Complex.I * (-p : ℂ)) - 1) / (p : ℂ)) /
         ((Complex.exp (Complex.I * (-(xi * p) : ℂ)) - 1) /
