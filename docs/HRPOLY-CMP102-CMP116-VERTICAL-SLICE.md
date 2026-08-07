@@ -349,6 +349,21 @@ nonempty carrier now feeds the generated root and strict lower certificate;
 those two terminal producers, not bridge 12b itself, move the live numerator
 from `18/41` to `20/41`.
 
+The subtype repair does **not** yet construct that index for every tuple of
+combined source data.  In
+`CMP116CenteredConditionedCombinedSourceData`, both `localizedRegion` and
+`localizedRegion_eq` remain supplied fields.  The anchor alone cannot
+discharge them at this generic level: the definition of
+`cmp116Eq80Lemma1CombinedCenteredRegion` contains only the selected direct
+domains, the native expansion supports, and `P`.  With `domains = empty`,
+`E.terms = empty`, and `P = empty`, both the block-domain family and the bond
+carrier reduce to empty, hence so does the localization core and its
+localized-coordinate carrier.  Thus an anchor-only nonemptiness theorem is
+false for the present interface.  The remaining producer obligation is to
+show nonemptiness for the actual physical enumeration (or to prove explicitly
+which tuples contribute); it may not be replaced by a free nonemptiness
+hypothesis or by silently dropping the all-empty tuple.
+
 Elaboration failures are triaged separately from project mathematics.  If the
 first error occurs in a proof step whose statement and diagnostic mention no
 project declaration, variants are tested first in a minimal file importing
