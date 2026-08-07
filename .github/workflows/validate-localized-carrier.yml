@@ -1,4 +1,4 @@
-name: Validate owner-weighted CMP99 defect
+name: Validate owner-weighted sup kernel algebra
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 596802620b489c55a9a34c0e445323c1f426a125
+  SOURCE_SHA: e3d21b734e5788e8e80e82c7cbef8ab8743a7b79
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  owner-weighted-defect:
+  owner-weighted-algebra:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -68,8 +68,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-owner-weighted-defect-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-owner-weighted-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: |
+            hRpoly-owner-weighted-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-owner-weighted-defect-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-global-sup-defect-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-source-localized-defect-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
@@ -111,10 +112,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/FinitePiLpOwnerWeightedSupKernel.lean \
-            YangMills/RG/FinitePiLpOwnerWeightedSupKernelAudit.lean \
-            YangMills/RG/BalabanCMP99Eq389SourceLocalizedDefectOwnerWeightedSup.lean \
-            YangMills/RG/BalabanCMP99Eq389SourceLocalizedDefectOwnerWeightedSupAudit.lean \
+            YangMills/RG/FinitePiLpOwnerWeightedSupKernelAlgebra.lean \
+            YangMills/RG/FinitePiLpOwnerWeightedSupKernelAlgebraAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -136,14 +135,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage owner_weighted_generic_focal \
-            lake build YangMills.RG.FinitePiLpOwnerWeightedSupKernel
-          run_stage owner_weighted_generic_audit \
-            lake env lean YangMills/RG/FinitePiLpOwnerWeightedSupKernelAudit.lean
-          run_stage owner_weighted_physical_focal \
-            lake build YangMills.RG.BalabanCMP99Eq389SourceLocalizedDefectOwnerWeightedSup
-          run_stage owner_weighted_physical_audit \
-            lake env lean YangMills/RG/BalabanCMP99Eq389SourceLocalizedDefectOwnerWeightedSupAudit.lean
+          run_stage owner_weighted_algebra_focal \
+            lake build YangMills.RG.FinitePiLpOwnerWeightedSupKernelAlgebra
+          run_stage owner_weighted_algebra_audit \
+            lake env lean YangMills/RG/FinitePiLpOwnerWeightedSupKernelAlgebraAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -157,8 +152,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "owner_weighted_generic_audit.log": 7,
-              "owner_weighted_physical_audit.log": 3,
+              "owner_weighted_algebra_audit.log": 6,
           }
           result = {}
           for name, expected in audits.items():
@@ -189,17 +183,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > owner-weighted-defect-evidence.tar.gz
-          sha256sum owner-weighted-defect-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > owner-weighted-algebra-evidence.tar.gz
+          sha256sum owner-weighted-algebra-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: owner-weighted-defect-${{ env.SOURCE_SHA }}
+          name: owner-weighted-algebra-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            owner-weighted-defect-evidence.tar.gz
+            owner-weighted-algebra-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -208,4 +202,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-owner-weighted-defect-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-owner-weighted-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
