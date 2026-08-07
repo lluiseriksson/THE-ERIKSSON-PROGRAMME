@@ -106,7 +106,7 @@ theorem
   funext i
   apply Fin.ext
   simp only [cmp99Eq389SourceLocalizationOwner,
-    cmp99Eq389SourceLocalizationSiteEquiv, blockSite_val]
+    cmp99Eq389SourceLocalizationSiteEquiv, Equiv.cast_apply, blockSite_val]
   rw [finBox_cast_apply_val hcarrier
       (cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
         L K Q depth source) i,
