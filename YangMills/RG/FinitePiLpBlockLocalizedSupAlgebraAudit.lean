@@ -1,10 +1,7 @@
 import YangMills.RG.FinitePiLpBlockLocalizedSupAlgebra
 
 /-!
-# PRE-VALIDATION audit: block-localized supremum algebra
-
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the result has not yet been compiler-verified.
+# Audit: block-localized supremum algebra
 -/
 
 #print axioms YangMills.RG.finitePiLpSupNorm_le_of_norm_apply_le

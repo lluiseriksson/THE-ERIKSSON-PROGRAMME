@@ -28492,3 +28492,34 @@ from CMP99 and not the physical three-species estimate (3.89).  The defect
 contraction, rows 23--24, and a first `TermSource` inhabitant remain open.
 Window 15 is compatible but unattained; the live counters remain exactly
 `20/41` and zero.
+
+## Addendum 588 (2026-08-07, **block-localized supremum algebra GREEN; physical CMP99 (3.89) species open; 20/41 unchanged**)
+
+Exact source checkpoint
+`34d70c000e7a0f5836a5c983a38528e9459f62ed` was validated by cold GitHub
+Actions run `31160962546` (workflow checkpoint
+`9a580feaa362ce59d8cbd69c21e0801de2514904`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T08:17:38Z` to `08:35:59Z`, exited zero, and ended
+with `Build completed successfully (8441 jobs).`  The audit ran from
+`08:35:59Z` to `08:36:11Z` and also exited zero.  All ten declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`0bebac35db70165728e7ddc491d35f96726bfa48858a9808b1039b9a7b366105`.
+GitHub recorded SHA-256
+`b1dfaba06bd5eb0e77ee1e0aa9039a743f27e8b43fadd019e744efd48002bdd8`
+for the uploaded artifact ZIP (artifact `8987584056`, 31,936 bytes).  A local
+download reproduced the checkpoint, stage ledger, ten-block axiom JSON,
+`FINAL_STATUS`, and inner archive hash.
+
+The sealed algebra keeps the arbitrary owner-fibre field intact through
+diagonal multiplication, active-region restriction, and zero extension.
+It therefore introduces no coordinate-probe decomposition and no hidden
+fine-fibre cardinality.  This is infrastructure directly below the printed
+(3.89) norm, not a physical first, second, or third species producer.  The
+defect contraction, rows 23--24, and a first `TermSource` inhabitant remain
+open.  Window 15 is compatible but unattained; the live counters remain
+exactly `20/41` and zero.

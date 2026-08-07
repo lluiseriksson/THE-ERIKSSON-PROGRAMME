@@ -3729,3 +3729,25 @@ from CMP99.  It proves neither the physical three-species estimate (3.89),
 the defect contraction, rows 23--24, nor a `TermSource` inhabitant.  Window
 15 remains compatible but unattained; the live counters remain exactly
 `20/41` and `TermSource = 0`.
+
+### Step 7.5d block-localized supremum algebra (SEALED; physical species open)
+
+Exact source checkpoint `34d70c000e7a0f5836a5c983a38528e9459f62ed`
+passed cold GitHub Actions run `31160962546` (workflow checkpoint
+`9a580feaa362ce59d8cbd69c21e0801de2514904`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T08:17:38Z` to `08:35:59Z`, exited zero, and
+ended with `Build completed successfully (8441 jobs).`  The audit ended at
+`08:36:11Z` with exit zero.  All ten audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The brick proves directly in the source supremum norm that contractive
+source multipliers preserve an owner fibre and its norm, bounded target
+multipliers change only the displayed amplitude, and regional restriction
+and zero extension preserve the literal ambient owner metric.  No expansion
+into coordinate probes or fine-fibre cardinality occurs.
+
+This is exact norm/support algebra below (3.89), not a physical species
+estimate.  It proves neither the three-species bound, the defect contraction,
+rows 23--24, nor a `TermSource` inhabitant.  Window 15 remains compatible but
+unattained; the live counters remain exactly `20/41` and `TermSource = 0`.
