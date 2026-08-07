@@ -97,8 +97,24 @@ theorem finitePiLpTypedOwnerSupKernelBound_comp
           ∑ middleBlock,
             finitePiLpOwnerPart targetOwner targetBlock
               (Left (finitePiLpOwnerPart middleOwner middleBlock (Right f))) := by
-      rw [ContinuousLinearMap.comp_apply, hdecomp, map_sum,
-        finitePiLpOwnerPart_sum]
+      rw [ContinuousLinearMap.comp_apply]
+      calc
+        finitePiLpOwnerPart targetOwner targetBlock (Left (Right f)) =
+            finitePiLpOwnerPart targetOwner targetBlock
+              (Left (∑ middleBlock,
+                finitePiLpOwnerPart middleOwner middleBlock (Right f))) :=
+          congrArg
+            (fun u => finitePiLpOwnerPart targetOwner targetBlock (Left u))
+            hdecomp
+        _ = finitePiLpOwnerPart targetOwner targetBlock
+              (∑ middleBlock,
+                Left (finitePiLpOwnerPart middleOwner middleBlock (Right f))) := by
+          rw [map_sum]
+        _ = ∑ middleBlock,
+              finitePiLpOwnerPart targetOwner targetBlock
+                (Left (finitePiLpOwnerPart middleOwner middleBlock
+                  (Right f))) :=
+          finitePiLpOwnerPart_sum targetOwner targetBlock _
     rw [htargetDecomp]
     calc
       finitePiLpSupNorm
