@@ -49,7 +49,9 @@ theorem finitePiLpOwnerPart_eq_zero_of_supported_of_ne
       intro howner
       exact hne (hsource.symm.trans howner)
     rw [if_pos hsource, hf source hsourceNe]
+    simp
   · rw [if_neg hsource]
+    simp
 
 /-- The identity endomorphism has the literal diagonal owner-block
 coefficient matrix. -/
@@ -64,7 +66,8 @@ theorem finitePiLpTypedOwnerSupKernelBound_id
       ownerMap ownerMap finiteOwnerIdentityCoefficient := by
   refine ⟨?_, ?_⟩
   · intro targetBlock sourceBlock
-    simp [finiteOwnerIdentityCoefficient]
+    by_cases h : targetBlock = sourceBlock <;>
+      simp [finiteOwnerIdentityCoefficient, h]
   · intro sourceBlock f hf targetBlock
     by_cases hblocks : targetBlock = sourceBlock
     · subst targetBlock
@@ -73,7 +76,10 @@ theorem finitePiLpTypedOwnerSupKernelBound_id
     · rw [ContinuousLinearMap.id_apply,
         finitePiLpOwnerPart_eq_zero_of_supported_of_ne
           ownerMap f hf hblocks]
-      simp [finiteOwnerIdentityCoefficient, hblocks]
+      rw [finiteOwnerIdentityCoefficient, if_neg hblocks, zero_mul]
+      apply finitePiLpSupNorm_le_of_norm_apply_le
+      intro source
+      simp
 
 /-- The output-fixed weighted row of the identity coefficient has amplitude
 one whenever owner distance vanishes on the diagonal. -/
@@ -90,11 +96,12 @@ theorem finiteOwnerWeightedRowBound_id
     ∑ sourceBlock : β,
           Real.exp (rate * (dist targetBlock sourceBlock : ℝ)) *
             finiteOwnerIdentityCoefficient targetBlock sourceBlock =
-        Real.exp (rate * (dist targetBlock targetBlock : ℝ)) * 1 := by
+        Real.exp (rate * (dist targetBlock targetBlock : ℝ)) *
+          finiteOwnerIdentityCoefficient targetBlock targetBlock := by
       apply Fintype.sum_eq_single targetBlock
       intro sourceBlock hsource
       simp [finiteOwnerIdentityCoefficient, hsource, Ne.symm hsource]
-    _ = 1 := by simp [hdiag]
+    _ = 1 := by simp [finiteOwnerIdentityCoefficient, hdiag]
     _ ≤ 1 := le_rfl
 
 /-- Complete identity certificate for the owner-weighted supremum kernel
@@ -147,6 +154,7 @@ theorem finitePiLpTypedOwnerWeightedSupKernelBound_pow
   | zero =>
       simpa [finiteOwnerKernelPower] using
         (finitePiLpTypedOwnerWeightedSupKernelBound_id
+          (ι := ι) (β := β) (g := g)
           ownerMap dist hT.2.1 hdiag)
   | succ n ih =>
       simpa [finiteOwnerKernelPower, pow_succ] using
