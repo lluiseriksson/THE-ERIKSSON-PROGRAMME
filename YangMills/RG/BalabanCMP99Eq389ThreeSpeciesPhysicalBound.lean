@@ -51,8 +51,20 @@ noncomputable def cmp99Eq389SourceSeparatedPhysicalBackground
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)) (SUN Nc)) :
     PhysicalGaugeBackground 4
       (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) Nc :=
-  cast (by
-    rw [cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier]) background
+  let hsize :=
+    cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier L K Q depth
+  { toFun := fun edge => background
+      { source := hsize.symm ▸ edge.source
+        dir := edge.dir
+        sign := edge.sign }
+    map_reverse := by
+      intro edge
+      cases edge with
+      | mk source dir sign =>
+          exact background.map_reverse
+            { source := hsize.symm ▸ source
+              dir := dir
+              sign := sign } }
 
 /-- The literal generated precision on the separated ambient carrier. -/
 noncomputable def cmp99Eq389SourceSeparatedPhysicalPrecision
