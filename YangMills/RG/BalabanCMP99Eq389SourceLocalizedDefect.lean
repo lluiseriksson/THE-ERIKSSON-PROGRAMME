@@ -26,7 +26,7 @@ attain window 15.
 namespace YangMills.RG
 
 open YangMills Matrix
-open scoped BigOperators
+open scoped BigOperators Matrix.Norms.L2Operator RealInnerProductSpace
 
 noncomputable section
 
@@ -80,7 +80,8 @@ theorem cmp99Eq389SourceLocalizedRegionalDefect_blockLocalizedSupBound
         (carrierNonempty cell) B0 delta0) :
     FinitePiLpTypedBlockLocalizedSupBound
       (cmp99Eq389SourceLocalizedRegionalDefect
-        (L := L) (K := K) (Q := Q) P hL depth epsilon background budget
+        (L := L) (K := K) (Q := Q) (Nc := Nc)
+        P hL depth epsilon background budget
         fineSmall hsmall Omega)
       (cmp99Eq389SourceLocalizationOwner L K Q depth)
       (cmp99Eq389SourceLocalizationOwner L K Q depth)
