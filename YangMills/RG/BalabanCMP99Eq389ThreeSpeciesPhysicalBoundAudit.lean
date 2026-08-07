@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP99Eq389ThreeSpeciesPhysicalBound
 
 /-!
-# PRE-VALIDATION audit: literal three-species CMP99 (3.89) assembly
+# Cold-sealed audit: coarse-cell coordinate-probe assembly below CMP99 (3.89)
 
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`437a4edf584d19abf4df93c3c24cb5e584ccba5e` by cold GitHub Actions run
+`31143972802`.  All nine declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99Eq389SourceSeparatedPhysicalBackground

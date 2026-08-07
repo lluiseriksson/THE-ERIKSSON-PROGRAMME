@@ -3628,3 +3628,30 @@ three-species assembly is still open.  This brick does not prove complete
 CMP99 (3.89), the defect contraction `norm R' < 1`, rows 23--24, or a
 `TermSource` inhabitant.  Window 15 remains compatible but unattained; the
 live counters remain exactly `20/41` and `TermSource = 0`.
+
+### Step 7.4m coarse-cell coordinate-probe three-species assembly (SEALED; source-facing (3.89) open)
+
+Exact source checkpoint `437a4edf584d19abf4df93c3c24cb5e584ccba5e`
+passed cold GitHub Actions run `31143972802` (workflow checkpoint
+`5064ebd73c0578cb732597252396ff0af016e4d4`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T03:20:59Z` to `04:23:04Z` and exited zero;
+the audit ended at `04:23:22Z` with exit zero.  All nine audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The brick constructs one dependent reindexing of the fine physical
+background, one generated precision and one coercivity witness, then adds the
+three separately sealed species with their budgets still visible.  This
+closes the literal operator algebra and its coordinate-probe exponential
+bound on the separated-cell metric.
+
+It does **not** close the printed CMP99 (3.89) estimate.  The sealed predicate
+tests `singleFinitePiLp source v`, whereas the source quantifies an arbitrary
+field supported in one localization block and measures it in the finite sup
+norm.  Its metric divisor is `K * L^(depth+1)`, whereas the source metric is
+at scale `L^(depth+1)` on the `2*(K*Q)` localization carrier.  A generic sum
+over coordinate probes is not accepted because its fine-fibre cardinality
+can erase the physical `K^-1` gain.  The next source-facing brick must expose
+those two quantifiers directly.  Hence window 15 remains compatible but
+unattained, the live producer count remains exactly `20/41`, and
+`TermSource = 0`.

@@ -8,10 +8,12 @@ import YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkPhysicalBound
 import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary
 
 /-!
-# PRE-VALIDATION: literal three-species CMP99 (3.89) assembly
+# Cold-sealed coarse-cell coordinate-probe assembly below CMP99 (3.89)
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`437a4edf584d19abf4df93c3c24cb5e584ccba5e` by cold GitHub Actions run
+`31143972802`.  The focal and audit exited zero, and all nine audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 This module adds the three separately sealed displayed species only after
 specializing all of them to the same source-generated physical data.  The
@@ -22,8 +24,11 @@ and scale `L^(depth+1)`.
 
 Thus the endpoint is not an abstract sum with an independently supplied `U`,
 precision, coercivity or family of unrelated Green operators.  The three
-budgets remain visibly separate.  No contraction, complete Neumann inverse,
-rows 23--24, window-15 attainment or `TermSource` inhabitant is claimed.
+budgets remain visibly separate.  Its predicate nevertheless tests only
+single-coordinate probes and uses the coarser separated-cell metric.  It is
+algebra below the printed arbitrary-localized-source estimate, not a proof of
+the full statement (3.89).  No contraction, complete Neumann inverse, rows
+23--24, window-15 attainment or `TermSource` inhabitant is claimed.
 -/
 
 namespace YangMills.RG
@@ -117,8 +122,9 @@ theorem isCoerciveCLM_cmp99Eq389SourceSeparatedPhysicalPrecision
     (spacing := 1) (epsilon := epsilon)
     hL depth (by norm_num) background budget fineSmall hsmall
 
-/-- Literal sum of the three displayed CMP99 (3.88)--(3.89) regional
-species, all specialized to one fine background and its generated precision.
+/-- Literal sum of the three regional species displayed in CMP99 (3.88), all
+specialized to one fine background and its generated precision.  The
+source-facing arbitrary-localized-field estimate of (3.89) is a later gate.
 -/
 noncomputable def cmp99Eq389ThreeSpeciesPhysicalRegionalDefect
     (P : CMP95SourceSmoothPartitionProfile) (hL : 2 ≤ L) (depth : ℕ)

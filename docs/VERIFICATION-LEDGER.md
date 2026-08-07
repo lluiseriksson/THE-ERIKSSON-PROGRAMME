@@ -28350,3 +28350,38 @@ three-species assembly, complete CMP99 (3.89), defect contraction, rows
 23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
 compatible but unattained; the live counters remain exactly `20/41` and
 zero.
+
+## Addendum 584 (2026-08-07, **coarse-cell coordinate-probe three-species assembly GREEN; source-facing (3.89) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`437a4edf584d19abf4df93c3c24cb5e584ccba5e` was validated by cold GitHub
+Actions run `31143972802` (workflow checkpoint
+`5064ebd73c0578cb732597252396ff0af016e4d4`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T03:20:59Z` to `04:23:04Z` and exited zero; the
+audit ran from `04:23:04Z` to `04:23:22Z` and also exited zero.  All nine
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`ad7e64b6d26f7717ced1202ec4555cbf068970b8170b11a4fded1588591bd8c8`.
+The axiom JSON has SHA-256
+`f136b82c0aa96acd32d2ef5302c6242999fbe7e6efe8275b55c6da9320501ad0`;
+the stage ledger has SHA-256
+`04610a3fc13eb4736112117ed3a0ece586f5f77353cdf8e9a3174ea12bf5c425`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick uses one reindexed fine physical background, one generated
+precision and one coercivity witness for all three species, and retains the
+three source budgets separately.  It proves their literal sum and a
+coordinate-probe exponential bound on the coarser separated-cell metric.
+
+This is algebra below CMP99 (3.89), not the printed source estimate.  The
+latter quantifies arbitrary fields supported in one localization block,
+uses their finite sup norm, and decays at the localization scale
+`L^(depth+1)`.  Summing coordinate probes generically is not accepted because
+the fine-fibre cardinality may cancel the displayed `K^-1` gain.  Complete
+(3.89), the defect contraction, rows 23--24, and a `TermSource` inhabitant
+remain open.  Window 15 remains compatible but unattained; the live counters
+remain exactly `20/41` and zero.
