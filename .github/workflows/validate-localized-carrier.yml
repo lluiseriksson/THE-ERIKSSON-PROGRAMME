@@ -76,9 +76,6 @@ jobs:
             hRpoly-block-localized-sup-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-source-localized-green-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-source-localization-owners-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-block-localized-sup-action-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-cmp99-physical-three-species-assembly-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-cmp99-signed-covariant-link-physical-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-generated-mass-physical-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
 
       - name: Record diagnostic cache state
