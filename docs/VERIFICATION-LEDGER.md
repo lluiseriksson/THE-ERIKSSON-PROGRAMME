@@ -28523,3 +28523,34 @@ fine-fibre cardinality.  This is infrastructure directly below the printed
 defect contraction, rows 23--24, and a first `TermSource` inhabitant remain
 open.  Window 15 is compatible but unattained; the live counters remain
 exactly `20/41` and zero.
+
+## Addendum 589 (2026-08-07, **source-localized physical second species GREEN; overlap and complete CMP99 (3.89) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`8c5f917c2887fd85bec4b0ca2c3d82823fab037c` was validated by cold GitHub
+Actions run `31162995186` (workflow checkpoint
+`da14ec7652726b262f647e906dfe79b830657c81`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T08:47:11Z` to `09:31:25Z`, exited zero, and ended
+with `Build completed successfully (8571 jobs).`  The audit ran from
+`09:31:25Z` to `09:31:30Z` and also exited zero.  Its declaration uses
+exactly `[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`6e3b6be69b7bdf89745b73ed87c0c7231503a9a7ccfece78ac16daf155b42979`.
+GitHub recorded SHA-256
+`e6e81ea6a418a1282d576bdf6606959c1fbb500d7ea7baebed6823b823f00396`
+for the uploaded artifact ZIP (artifact `8989073770`, 40,784 bytes).  A local
+download reproduced the checkpoint, stage ledger, one-block axiom JSON,
+`FINAL_STATUS`, and inner archive hash.
+
+The theorem is about the literal second species operator for one regional
+cell, not a freely supplied correction.  It preserves the arbitrary
+source-owner-fibre field and its supremum norm through the signed cutoff,
+regional Green, and cutoff-Laplacian coefficient, retaining the exact
+`K^-2` amplitude before overlap summation.  The overlap-16 sum, the other two
+source-localized species, complete (3.89), contraction, rows 23--24, and a
+first `TermSource` inhabitant remain open.  Window 15 is compatible but
+unattained; the live counters remain exactly `20/41` and zero.

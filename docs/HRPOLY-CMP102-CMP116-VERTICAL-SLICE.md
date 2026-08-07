@@ -3751,3 +3751,26 @@ This is exact norm/support algebra below (3.89), not a physical species
 estimate.  It proves neither the three-species bound, the defect contraction,
 rows 23--24, nor a `TermSource` inhabitant.  Window 15 remains compatible but
 unattained; the live counters remain exactly `20/41` and `TermSource = 0`.
+
+### Step 7.5e source-localized second species (SEALED; overlap and other species open)
+
+Exact source checkpoint `8c5f917c2887fd85bec4b0ca2c3d82823fab037c`
+passed cold GitHub Actions run `31162995186` (workflow checkpoint
+`da14ec7652726b262f647e906dfe79b830657c81`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T08:47:11Z` to `09:31:25Z`, exited zero, and
+ended with `Build completed successfully (8571 jobs).`  The audit ended at
+`09:31:30Z` with exit zero.  Its declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The theorem applies the literal signed right cutoff, one canonical regional
+Dirichlet Green from the sealed source certificate, and the literal signed
+cutoff-Laplacian coefficient.  It quantifies an arbitrary field supported in
+one source owner fibre and retains the exact pre-overlap amplitude
+`12 * B0 * secondDerivBound / K^2`, with no coordinate-probe expansion.
+
+This is one physical regional cell of the second species.  The overlap-16
+cell sum, first and third source-localized species, complete (3.89), defect
+contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window
+15 remains compatible but unattained; the live counters remain exactly
+`20/41` and `TermSource = 0`.

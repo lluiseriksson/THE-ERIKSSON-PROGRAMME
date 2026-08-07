@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP99Eq389SignedCutoffLaplacianPhysicalBound
 import YangMills.RG.FinitePiLpBlockLocalizedSupAlgebra
 
 /-!
-# PRE-VALIDATION: source-localized second species of CMP99 (3.89)
-
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Source-localized second species of CMP99 (3.89)
 
 This module applies the source-facing Green estimate of CMP99 (3.42) to the
 literal signed cutoff-Laplacian species in (3.88).  The input is an arbitrary
