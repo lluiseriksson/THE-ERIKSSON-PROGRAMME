@@ -101,18 +101,15 @@ theorem
       (depth + 1) source target).1 hsame
   let hsize :=
     cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier L K Q depth
-  let hcarrier :=
-    cmp99SourceSeparatedCarrier_eq_sourceLocalizationCarrier L K Q depth
+  have castFinVal {n m : ℕ} (h : Fin n = Fin m) (x : Fin n) :
+      (cast h x).val = x.val := by
+    cases h
+    rfl
   funext i
   apply Fin.ext
   simp only [cmp99Eq389SourceLocalizationOwner,
-    cmp99Eq389SourceLocalizationSiteEquiv, Equiv.cast_apply, blockSite_val]
-  rw [finBox_cast_apply_val hcarrier
-      (cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
-        L K Q depth source) i,
-    finBox_cast_apply_val hcarrier
-      (cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
-        L K Q depth target) i]
+    cmp99Eq389SourceLocalizationSiteEquiv, Equiv.cast_apply, blockSite_val,
+    castFinVal]
   change ((hsize ▸ source.1) i).val / L ^ (depth + 1) =
     ((hsize ▸ target.1) i).val / L ^ (depth + 1)
   rw [finBox_cast_apply_val hsize source.1 i,
