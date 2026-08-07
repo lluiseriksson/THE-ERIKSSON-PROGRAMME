@@ -1,4 +1,4 @@
-name: Validate source-localized first species
+name: Validate source-localized generated-mass species
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: c1b6db9a3c972afac0337677787d7feb7d7a9696
+  SOURCE_SHA: e446d84eb2499ffb3f552c9c115eef1c5e363c6f
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  source-localized-first-species:
+  source-localized-third-species:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -68,8 +68,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-source-localized-first-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-source-localized-third-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: |
+            hRpoly-source-localized-third-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-source-localized-first-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-source-localized-second-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-block-localized-sup-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
@@ -111,8 +112,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkSourceLocalizedBound.lean \
-            YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkSourceLocalizedBoundAudit.lean \
+            YangMills/RG/BalabanCMP99Eq389GeneratedMassSourceLocalizedBound.lean \
+            YangMills/RG/BalabanCMP99Eq389GeneratedMassSourceLocalizedBoundAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -134,10 +135,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage source_localized_first_species_focal \
-            lake build YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkSourceLocalizedBound
-          run_stage source_localized_first_species_audit \
-            lake env lean YangMills/RG/BalabanCMP99Eq389SignedCovariantLinkSourceLocalizedBoundAudit.lean
+          run_stage source_localized_third_species_focal \
+            lake build YangMills.RG.BalabanCMP99Eq389GeneratedMassSourceLocalizedBound
+          run_stage source_localized_third_species_audit \
+            lake env lean YangMills/RG/BalabanCMP99Eq389GeneratedMassSourceLocalizedBoundAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -151,7 +152,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "source_localized_first_species_audit.log": 2,
+              "source_localized_third_species_audit.log": 4,
           }
           result = {}
           for name, expected in audits.items():
@@ -182,17 +183,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > source-localized-first-species-evidence.tar.gz
-          sha256sum source-localized-first-species-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > source-localized-third-species-evidence.tar.gz
+          sha256sum source-localized-third-species-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: source-localized-first-species-${{ env.SOURCE_SHA }}
+          name: source-localized-third-species-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            source-localized-first-species-evidence.tar.gz
+            source-localized-third-species-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -201,4 +202,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-source-localized-first-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-source-localized-third-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
