@@ -57,8 +57,11 @@ theorem norm_cmp89Eq245RemovableExpSlope (x : ℝ) :
   · subst x
     simp [cmp89Eq245RemovableExpSlope]
   · have hxhalf : x / 2 ≠ 0 := div_ne_zero hx (by norm_num)
-    rw [cmp89Eq245RemovableExpSlope, if_neg hx, norm_div,
-      Complex.norm_exp_I_mul_ofReal_sub_one,
+    have hnorm :
+        ‖Complex.exp (Complex.I * (-x : ℂ)) - 1‖ =
+          ‖2 * Real.sin ((-x) / 2)‖ := by
+      convert Complex.norm_exp_I_mul_ofReal_sub_one (-x) using 1 <;> norm_num
+    rw [cmp89Eq245RemovableExpSlope, if_neg hx, norm_div, hnorm,
       Real.sinc_of_ne_zero hxhalf]
     simp only [Real.norm_eq_abs, Real.sin_neg, neg_div, abs_neg,
       abs_div, abs_mul, abs_ofNat, Complex.norm_real]
@@ -82,8 +85,9 @@ theorem cmp89Eq245ComplexAverageFactor_eq_literal
     (hden : Complex.exp (Complex.I * (-(xi * p) : ℂ)) - 1 ≠ 0) :
     cmp89Eq245ComplexAverageFactor xi p =
       cmp89Eq245LiteralComplexAverageFactor xi p := by
-  rw [cmp89Eq245ComplexAverageFactor, cmp89Eq245RemovableExpSlope,
-    if_neg hp, if_neg (mul_ne_zero hxi hp),
+  simp only [cmp89Eq245ComplexAverageFactor,
+    cmp89Eq245RemovableExpSlope, if_neg hp,
+    if_neg (mul_ne_zero hxi hp),
     cmp89Eq245LiteralComplexAverageFactor]
   field_simp
   ring
