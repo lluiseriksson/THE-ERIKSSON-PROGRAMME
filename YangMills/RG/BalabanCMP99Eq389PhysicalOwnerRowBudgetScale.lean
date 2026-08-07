@@ -87,20 +87,38 @@ theorem cmp99Eq389PhysicalOwnerRowNumerators_nonneg
     unfold cmp99OmegaSiteExpSumBound
     exact tsum_nonneg fun _ =>
       mul_nonneg (Nat.cast_nonneg _) (Real.exp_pos _).le
+  have hweight :
+      0 ≤ (cmp99SourceBlockAverageWeight L 4) ^ (depth + 1) :=
+    pow_nonneg (cmp99SourceBlockAverageWeight_nonneg L 4) _
+  have hfirst :
+      0 ≤ 4 * (8 * B0 * P.derivBound) * (1 + Real.exp delta0) := by
+    positivity
+  have hthird :
+      0 ≤ |cmp99SourceGeneratedPhysicalMass 4 L (depth + 1) 1 epsilon| *
+        ((cmp99SourceBlockAverageWeight L 4) ^ (depth + 1) *
+          (8 * P.derivBound * (B0 * (L ^ (depth + 1) : ℝ) ^ 2))) := by
+    exact mul_nonneg (abs_nonneg _)
+      (mul_nonneg hweight
+        (mul_nonneg (mul_nonneg (by norm_num) P.derivBound_nonneg)
+          (mul_nonneg hB0 (sq_nonneg _))))
   constructor
   · unfold cmp99Eq389PhysicalOwnerRowLeadingNumerator
-    positivity
+    exact mul_nonneg
+      (mul_nonneg (by norm_num) (add_nonneg hfirst hthird)) hS
   · unfold cmp99Eq389PhysicalOwnerRowQuadraticNumerator
-    positivity
+    exact mul_nonneg
+      (mul_nonneg (by positivity)
+        (mul_nonneg hB0 P.secondDerivBound_nonneg)) hS
 
-/-- For fixed nonnegative coefficients, the literal mixed `K^-1 + K^-2`
-shape is below one for a sufficiently large integer `K`.
+/-- For a fixed leading coefficient and a nonnegative quadratic coefficient,
+the literal mixed `K^-1 + K^-2` shape is below one for a sufficiently large
+integer `K`.
 
 This theorem contains no physical data and deliberately does not assert that
 the Green constants used to form the coefficients stay uniform for the
 chosen `K`. -/
 theorem exists_nat_two_le_and_div_add_div_sq_lt_one
-    (a₁ a₂ : ℝ) (ha₁ : 0 ≤ a₁) (ha₂ : 0 ≤ a₂) :
+    (a₁ a₂ : ℝ) (ha₂ : 0 ≤ a₂) :
     ∃ K : ℕ, 2 ≤ K ∧
       a₁ / (K : ℝ) + a₂ / (K : ℝ) ^ 2 < 1 := by
   obtain ⟨n, hn⟩ := exists_nat_gt (a₁ + a₂)
