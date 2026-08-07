@@ -4088,3 +4088,45 @@ one or produce uniform `B0` and `delta0` as `K` varies.  In particular it does
 not supply the dominant `K^-1` coefficient or the one-time conversion factor
 `S(delta0 - r)`.  Window 15 remains compatible but unattained; rows 23--24
 remain open, the live count is `20/41`, and `TermSource = 0`.
+
+### Step 7.5p exact physical large-block scale (SEALED; physical contraction open)
+
+Exact source checkpoint `c4a33843f9081d537c61d157a47f94be699a77aa`
+passed cold GitHub Actions run `31216957809` (workflow checkpoint
+`5c00b66a9ed3f3b50275e0a554d9455239f0d94b`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T20:43:51Z` to `21:30:35Z` and ended with
+`Build completed successfully (8598 jobs).`; the audit ended at `21:30:43Z`.
+Both stages exited zero, and all five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed source-level equality rewrites the literal physical CMP99 (3.89)
+output-fixed owner-row budget as
+
+```text
+leadingNumerator / K + quadraticNumerator / K^2.
+```
+
+The two first-order species remain visibly separate inside
+`leadingNumerator`; the cutoff-Laplacian species is the quadratic numerator.
+Thus the available large-block gain is dominated by `K^-1`, not `K^-2`.
+The conversion from source decay `delta0` to the owner-weighted rate pays
+`cmp99OmegaSiteExpSumBound (delta0 - rate)` exactly once, before Neumann
+composition.  The currently formalized shell bound counts balls
+`(2*n+1)^4`, hence has small-rate order `(delta0-rate)^-5`; the sharper
+`^-4` layer asymptotic is not claimed by this brick.
+
+The scalar lemma proves only that, for fixed nonnegative numerators, some
+natural `K >= 2` makes `a1/K + a2/K^2 < 1`.  It does not construct a family
+of physical Green certificates whose `B0` and `delta0` are uniform as `K`
+varies.  It also leaves visible the independent source gate from CMP99
+Theorem 3.15: the printed large-block parameter times `alpha_0` must remain
+sufficiently small.  Therefore increasing `K` has no formal upper bound in
+the combinatorial overlap geometry, but for fixed `alpha_0` the source gate
+does impose an upper scale; compatibility requires co-tuning `alpha_0`
+downward (or extracting a stronger source theorem).  No numerical threshold
+for that gate has yet been extracted from the primary text.
+
+Consequently this brick does not attain window 15, discharge rows 23--24,
+or inhabit a `TermSource`.  The live count remains exactly `20/41`, and
+`TermSource = 0`.

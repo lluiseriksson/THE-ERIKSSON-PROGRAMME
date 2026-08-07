@@ -28927,3 +28927,46 @@ No strict physical contraction, dominant `K^-1` budget, one-time
 proved.  Window 15 remains compatible but unattained; rows 23--24 and a first
 `TermSource` inhabitant remain open.  The live counters stay exactly `20/41`
 and zero.
+
+## Addendum 600 (2026-08-07, **exact physical Eq. (3.89) large-block scale GREEN; window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c4a33843f9081d537c61d157a47f94be699a77aa` was validated by cold GitHub
+Actions run [`31216957809`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31216957809)
+(workflow checkpoint `5c00b66a9ed3f3b50275e0a554d9455239f0d94b`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-07T20:43:51Z` to `21:30:35Z`, exited zero,
+and ended with `Build completed successfully (8598 jobs).`  The audit ran
+from `21:30:35Z` to `21:30:43Z` and also exited zero.  All five declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`3ad3cce2ba8d13c5f930e174c2e61cb007bbb0c09036bcfdc61b1c6c0a0c31df`.
+GitHub recorded SHA-256
+`2ade134f25e62d041d255a4342d61fc7cb917ee5033d1cc2d80595db26957576`
+for uploaded artifact `9010100076` (43,344 bytes).  A local download
+reproduced the source and workflow checkpoints, cold-cache state, stage
+ledger, five-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all fourteen hashes listed in `SHA256SUMS`.
+
+The sealed equality exposes the literal physical output-fixed owner-row
+budget as `a1 / K + a2 / K^2`.  The dominant available gain is therefore
+`K^-1`.  The owner-shell factor
+`cmp99OmegaSiteExpSumBound (delta0 - rate)` is paid once in the source-to-row
+conversion; its currently formalized ball count has small-rate order `^-5`,
+not the sharper unformalized layer order `^-4`.  A separate scalar theorem
+shows that fixed nonnegative coefficients admit some natural `K >= 2` with
+this budget below one.
+
+This does not prove uniform production of `B0` and `delta0` as `K` varies and
+does not discharge CMP99 Theorem 3.15's separate condition that the printed
+large-block parameter times `alpha_0` be sufficiently small.  Diagnostic
+runs `31215409972`, `31215678778`, and `31215944396` retain the successive
+elaboration errors; run `31216206278` was cancelled as an infrastructure
+hang before Lean; cached run `31216772623` passed.  Only the cold run above
+retired the two PRE-VALIDATION marks.
+
+Window 15 remains compatible but unattained; rows 23--24 and a first
+`TermSource` inhabitant remain open.  The live counters stay exactly
+`20/41` and zero.

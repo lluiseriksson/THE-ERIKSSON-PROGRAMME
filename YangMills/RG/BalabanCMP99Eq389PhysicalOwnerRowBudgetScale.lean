@@ -6,10 +6,12 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99Eq389SourceLocalizedDefectOwnerWeightedSup
 
 /-!
-# PRE-VALIDATION: exact large-block scale of the physical CMP99 owner row
+# Exact large-block scale of the physical CMP99 owner row
 
-The source below is present, but its `.olean` has not yet been materialized
-and its results have not yet been verified by the Lean compiler.
+Cold GitHub Actions run `31216957809` compiled this module from source
+checkpoint `c4a33843f9081d537c61d157a47f94be699a77aa` without restoring or
+saving `.lake/build`; its audit found exactly
+`[propext, Classical.choice, Quot.sound]` in all five declarations.
 
 This module exposes the exact `K` dependence of the already source-localized
 CMP99 (3.89) owner-row budget.  For fixed Green constants `B0`, `delta0` and

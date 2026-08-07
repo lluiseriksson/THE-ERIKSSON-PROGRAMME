@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP99Eq389PhysicalOwnerRowBudgetScale
 
 /-!
-# PRE-VALIDATION audit: exact large-block scale of the physical owner row
+# Audit: exact large-block scale of the physical owner row
 
-The source and audit are present, but their `.olean` files have not yet been
-materialized and the results below have not yet been verified by Lean.
+Cold GitHub Actions run `31216957809` compiled the source and executed this
+audit from source checkpoint `c4a33843f9081d537c61d157a47f94be699a77aa`.
+All five declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99Eq389PhysicalOwnerRowLeadingNumerator
