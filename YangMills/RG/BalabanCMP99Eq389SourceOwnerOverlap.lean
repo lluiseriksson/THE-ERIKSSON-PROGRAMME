@@ -127,13 +127,19 @@ theorem abs_cmp99SourceSeparatedLargeBlockCoordinate_div_sub_ownerCenter_le_quar
     unfold x' cmp99Eq389SourceLocalizationSiteEquiv
     let hcarrier :=
       cmp99SourceSeparatedCarrier_eq_sourceLocalizationCarrier L K Q depth
-    exact finBox_cast_apply_val hcarrier x i
+    have equivCastFinBoxVal {n m : ℕ} (h : n = m) (y : FinBox 4 n)
+        (j : Fin 4) :
+        ((Equiv.cast (congrArg (FinBox 4) h) y) j).val = (y j).val := by
+      subst h
+      rfl
+    exact equivCastFinBoxVal hcarrier x i
   have hxLowerNat : ell * (owner i).val ≤ (x i).val := by
     rw [← hxval]
     exact (hcube i).1
   have hxUpperNat : (x i).val + 1 ≤ ell * (owner i).val + ell := by
-    rw [← hxval]
-    omega
+    have hxUpperNat' : (x' i).val + 1 ≤ ell * (owner i).val + ell := by
+      omega
+    simpa only [hxval] using hxUpperNat'
   have hxLower : (ell : ℝ) * (owner i).val ≤ ((x i).val : ℝ) := by
     exact_mod_cast hxLowerNat
   have hxUpper : ((x i).val : ℝ) + 1 ≤
@@ -159,8 +165,12 @@ theorem abs_cmp99SourceSeparatedLargeBlockCoordinate_div_sub_ownerCenter_le_quar
           cmp99Eq389SourceOwnerNormalizedCenter (Q := Q) L K depth owner i =
         (((x i).val : ℝ) + 1 / 2 -
           (ell : ℝ) * (owner i).val - (ell : ℝ) / 2) / (M0 : ℝ) := by
-    unfold cmp99SourceSeparatedLargeBlockCoordinate
-      cmp99Eq389SourceOwnerNormalizedCenter M0 ell
+    change
+      ((((x i).val : ℝ) + 1 / 2 - (M0 : ℝ) / 2) / (M0 : ℝ)) -
+          (((ell : ℝ) * (owner i).val + (ell : ℝ) / 2 -
+            (M0 : ℝ) / 2) / (M0 : ℝ)) =
+        (((x i).val : ℝ) + 1 / 2 -
+          (ell : ℝ) * (owner i).val - (ell : ℝ) / 2) / (M0 : ℝ)
     ring
   change |cmp99SourceSeparatedLargeBlockCoordinate L K depth
           (fun j => (x j).val) i / (M0 : ℝ) -
