@@ -108,7 +108,8 @@ theorem finitePiLpSupNorm_map_le_of_blockLocalized
   intro target
   have hdecomp : f = ∑ owner, finitePiLpOwnerPart sourceOwner owner f :=
     (sum_finitePiLpOwnerPart_eq sourceOwner f).symm
-  rw [hdecomp, map_sum, WithLp.ofLp_sum, Finset.sum_apply]
+  conv_lhs => rw [hdecomp]
+  rw [map_sum, WithLp.ofLp_sum, Finset.sum_apply]
   calc
     ‖∑ owner, C (finitePiLpOwnerPart sourceOwner owner f) target‖ ≤
         ∑ owner, ‖C (finitePiLpOwnerPart sourceOwner owner f) target‖ :=
