@@ -68,6 +68,10 @@ theorem finiteOwnerKernelPower_le_geometricAmplitude
           Real.exp (rate * (dist targetBlock middleBlock : ℝ)) *
             finiteOwnerKernelPower coefficient n targetBlock middleBlock :=
       Finset.single_le_sum
+        (s := Finset.univ)
+        (f := fun middleBlock : β =>
+          Real.exp (rate * (dist targetBlock middleBlock : ℝ)) *
+            finiteOwnerKernelPower coefficient n targetBlock middleBlock)
         (fun middleBlock _ => mul_nonneg (Real.exp_pos _).le
           (hpow.1.1 targetBlock middleBlock))
         (Finset.mem_univ sourceBlock)
