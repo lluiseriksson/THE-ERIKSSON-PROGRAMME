@@ -101,9 +101,9 @@ theorem
       (depth + 1) source target).1 hsame
   let hsize :=
     cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier L K Q depth
-  have castFinVal {n m : ℕ} (h : Fin n = Fin m) (x : Fin n) :
-      (cast h x).val = x.val := by
-    cases h
+  have castFinVal {n m : ℕ} (h : n = m) (x : Fin n) :
+      (cast (congrArg (fun k => Fin k) h) x).val = x.val := by
+    subst h
     rfl
   funext i
   apply Fin.ext
