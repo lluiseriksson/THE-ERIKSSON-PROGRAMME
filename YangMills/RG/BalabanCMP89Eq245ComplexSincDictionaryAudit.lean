@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP89Eq245ComplexSincDictionary
+
+#print axioms YangMills.RG.norm_cmp89Eq245RemovableExpSlope
+#print axioms YangMills.RG.norm_cmp89Eq245ComplexAverageFactor
+#print axioms YangMills.RG.cmp89Eq245ComplexAverageFactor_eq_literal
+#print axioms YangMills.RG.norm_cmp89Eq245ComplexAverageAmplitude
+#print axioms YangMills.RG.pow_two_div_pi_le_norm_cmp89Eq245ComplexAverageAmplitude_inverseScale
