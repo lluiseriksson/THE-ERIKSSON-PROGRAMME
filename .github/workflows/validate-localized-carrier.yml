@@ -1,4 +1,4 @@
-name: Validate CMP99 source localization owners
+name: Validate CMP99 source-localized Green package
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: fd070233dbeaf13ad2d59acfc5295ff76900d86d
+  SOURCE_SHA: e499876fed30b072f8391315adff1e283efa7d99
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  cmp99-source-localization-owners:
+  cmp99-source-localized-green:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -68,8 +68,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-source-localization-owners-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-source-localized-green-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: |
+            hRpoly-cmp99-source-localized-green-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-source-localization-owners-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-block-localized-sup-action-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-cmp99-physical-three-species-assembly-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
@@ -111,8 +112,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99Eq389SourceLocalizationOwner.lean \
-            YangMills/RG/BalabanCMP99Eq389SourceLocalizationOwnerAudit.lean \
+            YangMills/RG/BalabanCMP99Eq342SourceLocalizedGreenCertificate.lean \
+            YangMills/RG/BalabanCMP99Eq342SourceLocalizedGreenCertificateAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -134,10 +135,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_source_localization_owners_focal \
-            lake build YangMills.RG.BalabanCMP99Eq389SourceLocalizationOwner
-          run_stage cmp99_source_localization_owners_audit \
-            lake env lean YangMills/RG/BalabanCMP99Eq389SourceLocalizationOwnerAudit.lean
+          run_stage cmp99_source_localized_green_focal \
+            lake build YangMills.RG.BalabanCMP99Eq342SourceLocalizedGreenCertificate
+          run_stage cmp99_source_localized_green_audit \
+            lake env lean YangMills/RG/BalabanCMP99Eq342SourceLocalizedGreenCertificateAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -151,7 +152,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp99_source_localization_owners_audit.log": 5,
+              "cmp99_source_localized_green_audit.log": 9,
           }
           result = {}
           for name, expected in audits.items():
@@ -182,17 +183,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > cmp99-source-localization-owners-evidence.tar.gz
-          sha256sum cmp99-source-localization-owners-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > cmp99-source-localized-green-evidence.tar.gz
+          sha256sum cmp99-source-localized-green-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp99-source-localization-owners-${{ env.SOURCE_SHA }}
+          name: cmp99-source-localized-green-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp99-source-localization-owners-evidence.tar.gz
+            cmp99-source-localized-green-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -201,4 +202,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-source-localization-owners-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-source-localized-green-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
