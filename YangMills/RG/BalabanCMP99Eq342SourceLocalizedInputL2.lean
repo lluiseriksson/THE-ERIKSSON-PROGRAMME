@@ -32,6 +32,7 @@ root of that fibre's cardinality when compared with the finite supremum
 norm.  The ambient cardinality does not occur. -/
 theorem norm_finitePiLp_le_sqrt_ownerFiber_card_mul_supNorm
     {ι β g : Type*} [Fintype ι] [Nonempty ι]
+    [DecidableEq β]
     [NormedAddCommGroup g]
     (sourceOwner : ι → β) (owner : β) (f : FinitePiLpField ι g)
     (hf : FinitePiLpSupportedInOwner sourceOwner owner f) :
@@ -92,31 +93,25 @@ theorem card_cmp99Eq342SourceLocalizedActiveOwner_fiber_le
         (L ^ (depth + 1)) ^ 4 := by
   classical
   let siteEquiv := cmp99Eq389SourceLocalizationSiteEquiv L K Q depth
-  let sourceFiber := {x : ActiveGaugeRegion.Site Omega //
-    cmp99Eq342SourceLocalizedActiveOwner L K Q depth x = owner}
-  let ambientBlock := {x : FinBox 4 (L ^ (depth + 1) * (2 * (K * Q))) //
-    x ∈ blockOf (L ^ (depth + 1)) (2 * (K * Q)) owner}
-  let embed : sourceFiber → ambientBlock := fun x =>
-    ⟨siteEquiv x.1.1, by
-      rw [mem_blockOf]
-      simpa [cmp99Eq342SourceLocalizedActiveOwner,
-        cmp99Eq389SourceLocalizationOwner, siteEquiv] using x.2⟩
-  have hinj : Function.Injective embed := by
-    intro x y hxy
+  let sourceFiber := Finset.univ.filter
+    (fun x : ActiveGaugeRegion.Site Omega =>
+      cmp99Eq342SourceLocalizedActiveOwner L K Q depth x = owner)
+  let ambientBlock := blockOf (L ^ (depth + 1)) (2 * (K * Q)) owner
+  have hmaps : ∀ x ∈ sourceFiber, siteEquiv x.1 ∈ ambientBlock := by
+    intro x hx
+    rw [Finset.mem_filter] at hx
+    rw [mem_blockOf]
+    simpa [cmp99Eq342SourceLocalizedActiveOwner,
+      cmp99Eq389SourceLocalizationOwner, siteEquiv] using hx.2
+  have hinj : Set.InjOn (fun x : ActiveGaugeRegion.Site Omega =>
+      siteEquiv x.1) sourceFiber := by
+    intro x _hx y _hy hxy
     apply Subtype.ext
-    apply Subtype.ext
-    exact siteEquiv.injective (congrArg Subtype.val hxy)
-  have hcard : Fintype.card sourceFiber ≤ Fintype.card ambientBlock :=
-    Fintype.card_le_of_injective embed hinj
-  calc
-    (Finset.univ.filter (fun x : ActiveGaugeRegion.Site Omega =>
-        cmp99Eq342SourceLocalizedActiveOwner L K Q depth x = owner)).card =
-        Fintype.card sourceFiber := by simp [sourceFiber]
-    _ ≤ Fintype.card ambientBlock := hcard
-    _ = (blockOf (L ^ (depth + 1)) (2 * (K * Q)) owner).card := by
-      simp [ambientBlock]
-    _ = (L ^ (depth + 1)) ^ 4 :=
-      blockOf_card (L ^ (depth + 1)) (2 * (K * Q)) owner
+    exact siteEquiv.injective hxy
+  have hcard : sourceFiber.card ≤ ambientBlock.card :=
+    Finset.card_le_card_of_injOn (fun x : ActiveGaugeRegion.Site Omega =>
+      siteEquiv x.1) hmaps hinj
+  simpa [sourceFiber, ambientBlock, blockOf_card] using hcard
 
 /-- Exact four-dimensional source-input scale consumed by the value part of
 CMP99 (3.42): support in one source-localization owner gives the factor
