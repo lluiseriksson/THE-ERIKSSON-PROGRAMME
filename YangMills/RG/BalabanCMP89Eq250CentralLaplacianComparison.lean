@@ -69,7 +69,7 @@ theorem cmp89Eq245ScaledDifferenceNorm_le_abs
   calc
     ‖Complex.exp (Complex.I * (-(xi * p) : ℂ)) - 1‖ ≤
         ‖-(xi * p)‖ := hraw
-    _ = xi * |p| := by
+    _ = |p| * xi := by
       rw [Real.norm_eq_abs, abs_neg, abs_mul, abs_of_pos hxi]
       ring
 
