@@ -29059,3 +29059,40 @@ a four-field assumption record as the next producer.
 This is documentation and source provenance only.  It compiles no Lean,
 discharges no terminal field, and leaves `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained.
+
+## Addendum 604 (2026-08-08, **CMP89 (2.45) real sinc-amplitude lower bound GREEN; complex dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint
+`af70e5746a1b0a017a4c2fcb7b915a7837bcc114` was validated by cold GitHub
+Actions run [`31226045386`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31226045386)
+(workflow checkpoint `5db1d41aa0c83dab014aa6ae61987ab3c13ae041`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-07T23:08:01Z` to `23:08:05Z`, exited zero,
+and ended with `Build completed successfully (3273 jobs).`  The audit ran
+from `23:08:05Z` to `23:08:12Z` and also exited zero.  All five declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`5bb7766eb19c1e7a349704566fe1103ed53c7a7bc204d29ce7eebc8504dd0bb0`.
+GitHub recorded SHA-256
+`8321305fac56bf8a9f5c896417ae0510d51159ca5c2bc08bf64db675287fc92a`
+for uploaded artifact `9012150719` (10,828 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, five-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`.
+
+The sealed theorems prove the source-specialized lower bound `(2/pi)^d` for
+the product of real sinc amplitudes at `xi = ((L : R)^j)^(-1)`, uniformly in
+the scale `j` and for Brillouin momenta `|p_mu| <= pi`.  This is the elementary
+positive-amplitude input used by the central alias contribution in CMP89
+(2.50).
+
+The exact complex exponential-quotient norm dictionary of (2.45), both
+Laplacian-symbol comparisons, full denominator estimate (2.50), summability
+(2.51), and the uniform analytic strip remain open.  Diagnostic runs
+`31225389994`, `31225569110`, and `31225726131` retained successive
+elaboration errors; cached run `31225904376` passed.  Only the cold run above
+retired PRE-VALIDATION.  No terminal field is discharged: the live counters
+remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.

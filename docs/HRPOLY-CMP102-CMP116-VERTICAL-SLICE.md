@@ -4198,3 +4198,42 @@ latter with an explicit injection into the ambient block gave cached
 diagnostic run `31221547246`; only the cold run above retired
 PRE-VALIDATION.  The live counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5r real sinc-amplitude lower bound for CMP89 (2.45) (SEALED; complex dictionary open)
+
+Exact source checkpoint `af70e5746a1b0a017a4c2fcb7b915a7837bcc114`
+passed cold GitHub Actions run
+[`31226045386`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31226045386)
+(workflow checkpoint `5db1d41aa0c83dab014aa6ae61987ab3c13ae041`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-07T23:08:01Z` to `23:08:05Z`, exited
+zero, and ended with `Build completed successfully (3273 jobs).`; the audit
+ended at `23:08:12Z`.  All five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed source subbrick defines the real removable sinc quotient beneath
+the one-coordinate factor of CMP89 (2.45) and proves
+
+```text
+2 / pi <= |sinc(p/2) / sinc(xi*p/2)|
+```
+
+for `0 < xi <= 1` and `|p| <= pi`.  Multiplication over `Fin d` gives the
+uniform lower bound `(2/pi)^d`, and the literal source specialization
+`xi = ((L : R)^j)^(-1)` is proved to lie in `(0,1]` for every nonzero natural
+block size.  Thus the elementary positive-amplitude input used by the central
+alias term of CMP89 (2.50) is now compiler verified uniformly in the RG scale.
+
+This is not yet the complex source symbol of (2.45).  In particular the seal
+does not identify the norm of the exponential quotient with the real sinc
+amplitude, compare the two Laplacian symbols, prove the full denominator
+bound (2.50), establish the momentum sum (2.51), or construct the uniform
+analytic strip and contour displacement.  It produces no physical `B0` or
+`delta0`, does not attain window 15, discharges no row 23--24, and does not
+inhabit `TermSource`.  The live counters remain exactly `20/41` and zero.
+
+Diagnostic runs `31225389994`, `31225569110`, and `31225726131` preserve the
+successive elaboration errors.  Cached run `31225904376` passed; only the cold
+run above retired PRE-VALIDATION.  The next honest brick is the exact norm
+dictionary from the removable complex exponential quotient in (2.45) to this
+real sinc amplitude, before any use in (2.50).

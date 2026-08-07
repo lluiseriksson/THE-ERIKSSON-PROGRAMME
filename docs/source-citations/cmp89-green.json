@@ -39,7 +39,7 @@
         ]
       },
       "status": "visual_confirmed",
-      "summary": "CMP89 Lemma 2.4 proves the zero-background local Green value, derivative/Hölder and coarse-covariance decay estimates by an explicit Fourier representation, a uniform complex analytic strip and contour displacement; Lemma 2.2 and the later CMP95/CMP96 transports reduce to this source input.",
+      "summary": "CMP89 Lemma 2.4 proves the zero-background local Green value, derivative/Hölder and coarse-covariance decay estimates by an explicit Fourier representation, a uniform complex analytic strip and contour displacement; Lemma 2.2 and the later CMP95/CMP96 transports reduce to this source input. The elementary real sinc-amplitude lower bound below (2.45) is compiler verified, while its exact complex-symbol dictionary and the remaining Fourier estimates stay open.",
       "extracted_claims": [
         "Lemma 2.4, printed page 582, gives constants c0 and delta0 independent of the scale j for the exponential decay of G_j(Pi) Q_j^*, its first lattice derivative, its Holder difference, and C^(j)(Pi), on rectangular parallelepipeds built of large blocks.",
         "The proof first removes the boundary by the multiple-reflection representation (2.42), then writes the free Green explicitly by the Fourier transform (2.43)-(2.48).",
@@ -48,13 +48,15 @@
         "The argument is internal to CMP89 at this point: the zero-background local decay is not deferred to another paper and is not obtained from a reciprocal-coercivity Combes-Thomas estimate."
       ],
       "lean_targets": [
+        "YangMills.RG.pow_two_div_pi_le_abs_cmp89Eq245SincAverageAmplitude_inverseScale",
         "YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate",
         "YangMills.RG.CMP99Eq342RegionalGreenCertificate",
         "YangMills.RG.CMP99Eq389SourceLocalizedThreeSpeciesGreenCertificate"
       ],
       "use_for": [
         "Primary source boundary below CMP96 Proposition 2.2 / Eq. (2.67) for the zero-background localized Green estimates consumed by CMP99 (3.42) and (3.89).",
-        "Design of a source-faithful Fourier producer with scale-uniform decay, before the CMP95/CMP96 renormalization and CMP99 gauge-transport dictionaries."
+        "Design of a source-faithful Fourier producer with scale-uniform decay, before the CMP95/CMP96 renormalization and CMP99 gauge-transport dictionaries.",
+        "The sealed real sinc-amplitude theorem supplies the scale-uniform `(2/pi)^d` lower subestimate beneath the central alias term of (2.50); it does not by itself identify the complex symbol."
       ],
       "do_not_use_for": [
         "Do not cite this visual extraction as a compiled producer of the four CMP99 (3.42) certificate fields.",
@@ -62,7 +64,7 @@
         "Do not identify CMP89 G_j(Pi) Q_j^* or C^(j)(Pi) definitionally with the repository's canonical generated regional Green before proving the averaging, scaling, boundary and gauge dictionaries."
       ],
       "open_questions": [
-        "Typed Fourier realization of the zero-background operator and averaging symbol u_j in (2.43)-(2.48), including the uniform-in-j analytic strip used after (2.51).",
+        "Exact norm dictionary from the removable complex exponential quotient defining u_j in (2.45) to the compiler-verified real sinc amplitude, followed by the typed Fourier realization of (2.43)-(2.48) and the uniform-in-j analytic strip used after (2.51).",
         "Exact transport of Lemma 2.4 through CMP89 (2.34), CMP95 (1.132)-(1.137), CMP96 (2.43)/(2.67), and CMP99 Corollary 3.6 to the canonical regional Green certificate.",
         "Dictionary from the source derivatives and C^(j)(Pi) to the four literal repository operators G', D G', G' D*, and Delta G'."
       ]

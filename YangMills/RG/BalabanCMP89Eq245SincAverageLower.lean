@@ -7,10 +7,13 @@ import Mathlib.Analysis.SpecialFunctions.Trigonometric.Sinc
 import Mathlib.Tactic
 
 /-!
-# PRE-VALIDATION: the real sinc amplitude below CMP89 (2.45)
+# Cold-sealed real sinc amplitude below CMP89 (2.45)
 
-The primary source is present, but this module's `.olean` has not yet been
-materialized and its declarations have not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`af70e5746a1b0a017a4c2fcb7b915a7837bcc114` by cold GitHub Actions run
+`31226045386`.  Restoration and saving of `.lake/build` were skipped.  The
+focal completed 3,273 jobs, the audit exited zero, and all five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.45), printed p. 584, writes the zero-background averaging symbol as
 a product of one-dimensional exponential quotients at lattice spacing
