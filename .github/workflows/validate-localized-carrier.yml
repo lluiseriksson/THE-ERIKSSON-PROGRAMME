@@ -79,7 +79,6 @@ jobs:
             hRpoly-source-localized-third-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-source-localized-first-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-source-localized-second-species-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
-            hRpoly-block-localized-sup-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
 
       - name: Record diagnostic cache state
         shell: bash
