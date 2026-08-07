@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernelPowers
 
 /-!
-# PRE-VALIDATION: summability of fixed-rate owner-kernel powers
-
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Summability of fixed-rate owner-kernel powers
 
 An output-fixed weighted owner row controls the global finite supremum norm
 without paying either the number of owners or the size of an owner fibre.

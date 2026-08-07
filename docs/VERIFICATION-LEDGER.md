@@ -28817,3 +28817,39 @@ No Neumann sum, strict physical contraction, or uniform production of the
 Green constants is proved.  Window 15 remains compatible but unattained;
 rows 23--24 and a first `TermSource` inhabitant remain open.  The live counters
 stay exactly `20/41` and zero.
+
+## Addendum 597 (2026-08-07, **owner-sup contraction gives summable powers GREEN; Neumann identities and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`816fd138ff952be7bab1105b7b0e11c175d88cca` was validated by cold GitHub
+Actions run `31208946899` (workflow checkpoint
+`992bc3d967c6898fbd287c3425cacd8701b27090`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T18:54:35Z` to `19:10:40Z`, exited zero, and ended
+with `Build completed successfully (8446 jobs).`  The audit ran from
+`19:10:40Z` to `19:10:47Z` and also exited zero.  All six declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`7387b4bfbafb4c3521529c36c5d5d682af900129e08bc4db9cbd0abdde632be8`.
+GitHub recorded SHA-256
+`103b97abb74975bf7a9f2908fad6feb6298307ea1e2df6de4fb6d0d4c701d40c`
+for uploaded artifact `9006394829` (32,008 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, inner archive hash, and all
+per-file hashes.
+
+The sealed bridge proves a volume-uniform global finite-supremum contraction
+from the output-fixed owner row and then uses only the explicit finite
+comparison factor `sqrt(card ι)` to establish ambient summability of
+`fun n => T ^ n`.  The physical geometric ratio remains exactly `A`; no rate
+loss or owner count enters it.
+
+Cached diagnostic run `31208721237` passed on the first source attempt; only
+the cold run above retired the two PRE-VALIDATION marks.
+
+No Neumann `tsum` identity, strict physical contraction, or uniform
+production of the Green constants is proved.  Window 15 remains compatible
+but unattained; rows 23--24 and a first `TermSource` inhabitant remain open.
+The live counters stay exactly `20/41` and zero.

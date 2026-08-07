@@ -1,10 +1,7 @@
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernelPowerSummability
 
 /-!
-# PRE-VALIDATION audit: summability of fixed-rate owner-kernel powers
-
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the declarations remain compiler-unverified.
+# Axiom audit: summability of fixed-rate owner-kernel powers
 -/
 
 #print axioms YangMills.RG.finitePiLpSupNorm_le_norm

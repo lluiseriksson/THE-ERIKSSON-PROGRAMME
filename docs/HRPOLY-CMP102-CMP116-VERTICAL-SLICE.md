@@ -3999,3 +3999,33 @@ This brick does not form or sum the Neumann series, prove `A < 1`, specialize
 the physical CMP99 amplitude, or produce uniform `B0` and `delta0` as `K`
 varies.  Window 15 remains compatible but unattained; rows 23--24 remain open,
 the live count is `20/41`, and `TermSource = 0`.
+
+### Step 7.5m owner-sup contraction implies power summability (SEALED; Neumann identities open)
+
+Exact source checkpoint `816fd138ff952be7bab1105b7b0e11c175d88cca`
+passed cold GitHub Actions run `31208946899` (workflow checkpoint
+`992bc3d967c6898fbd287c3425cacd8701b27090`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T18:54:35Z` to `19:10:40Z` and ended with
+`Build completed successfully (8446 jobs).`; the audit ended at `19:10:47Z`.
+Both stages exited zero, and all six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed bridge first proves that an output-fixed weighted owner row bounds
+one global finite-supremum application with no owner or fibre cardinality.
+Every operator power therefore has ratio `A ^ n` at the same spatial rate.
+The explicit factor `sqrt(card ι)` enters only in the finite-dimensional
+comparison from this supremum norm to the existing counting-L2 topology; it
+is a fixed convergence prefactor, not part of the physical row amplitude.
+Consequently `A < 1` makes `Summable (fun n => T ^ n)` in the continuous
+linear-map space.
+
+Cached diagnostic run `31208721237` passed on the first source attempt.
+PRE-VALIDATION was retired only after the cold run and local verification of
+the downloaded evidence package.
+
+This brick proves convergence, not the value of the `tsum`, its left/right
+inverse identities, the strict physical CMP99 amplitude, or uniform
+production of `B0` and `delta0` as `K` varies.  Window 15 remains compatible
+but unattained; rows 23--24 remain open, the live count is `20/41`, and
+`TermSource = 0`.
