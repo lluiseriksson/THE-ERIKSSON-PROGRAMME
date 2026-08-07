@@ -2824,6 +2824,25 @@ with no second overlap constant and no `K` dependence.  Thus no sealed
 geometric overlap theorem is orphaned, but the old functional membership
 lemma is not claimed for a different cutoff object.
 
+The source-facing sum needs one further, explicit owner-fibre transport.
+Pointwise overlap at a fine site is not identified definitionally with
+overlap for an arbitrary field supported in a complete localization block.
+The intended window is centered at the midpoint of that owner block.  Every
+site in the fibre is at normalized distance at most `1 / (4 * K)` from the
+center; together with the source-profile support radius `2 / 3`, every active
+translate lies within `11 / 12 < 1` of the center.  Hence the same two residue
+classes per coordinate, and therefore the same tensor bound `2^4 = 16`,
+cover the whole fibre.  This must be a theorem derived from
+`blockSite_eq_iff_cube`, not a second overlap hypothesis.
+
+Expanding a supported field into `singleFinitePiLp` probes is permitted only
+inside the exact proof that a cell outside this owner window acts by zero:
+the three physical species already have single-probe zero lemmas, and
+linearity then gives exact annihilation.  The numerical estimate itself must
+sum the already proved arbitrary-field bounds over the at-most-sixteen active
+cells.  Applying probe estimates to the norm would reintroduce the forbidden
+fine-fibre cardinality and is not an admissible proof of item 6.
+
 A transitive dependency audit makes the replacement boundary broader than
 that overlap lemma.  The generic commutator identities and regional-Green
 estimates are cutoff-agnostic, but the sealed *source-separated physical
