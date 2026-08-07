@@ -8,8 +8,10 @@ import YangMills.RG.FinitePiLpBlockLocalizedSup
 /-!
 # Source-owner overlap sums for localized-action bounds
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+This module was compiler-verified at exact source checkpoint
+`a814d95ac5bb20fa8bfe8871e8764caf2353153b` in cold GitHub Actions run
+`31180210309`; its audited declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The CMP99 (3.89) estimate acts on an arbitrary field supported in one complete
 source-owner fibre.  A pointwise probe estimate is therefore not enough to

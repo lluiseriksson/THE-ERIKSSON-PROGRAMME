@@ -9,10 +9,12 @@ import YangMills.RG.BalabanCMP99Eq389SignedCutoffLaplacianSourceLocalizedBound
 import YangMills.RG.BalabanCMP99Eq389ThreeSpeciesPhysicalBound
 
 /-!
-# PRE-VALIDATION: source-localized three-species CMP99 (3.89)
+# Source-localized three-species CMP99 (3.89)
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+This module was compiler-verified at exact source checkpoint
+`a814d95ac5bb20fa8bfe8871e8764caf2353153b` in cold GitHub Actions run
+`31180210309`; its five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module assembles the three literal species of CMP99 (3.88) for one
 regional cell after specializing every term to the same generated background,

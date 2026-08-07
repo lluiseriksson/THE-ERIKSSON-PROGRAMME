@@ -28623,3 +28623,40 @@ the complete source equation (3.89).  The overlap-16 sum, three-species
 assembly, defect contraction, rows 23--24, and a first `TermSource` inhabitant
 remain open.  Window 15 remains compatible but unattained; the live counters
 remain exactly `20/41` and zero.
+
+## Addendum 592 (2026-08-07, **source-localized CMP99 (3.89) regional defect GREEN; global contraction open; 20/41 unchanged**)
+
+Exact source checkpoint
+`a814d95ac5bb20fa8bfe8871e8764caf2353153b` was validated by cold GitHub
+Actions run `31180210309` (workflow checkpoint
+`c0f037231b554b7d55b9cbb8b771bd799067d4b7`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  All
+eight stages exited zero.  The four focals ended with
+`Build completed successfully (8523 jobs).`, `(8173 jobs).`, `(8590 jobs).`,
+and `(8593 jobs).`; the four audits ended with six, one, five, and two axiom
+blocks respectively, every block exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`6529b1b740d4175f19c6cbffc06e42ea3a10a0137e0f670570eaa877d2f776ef`.
+GitHub recorded SHA-256
+`6084a111b0ead3363265dbc4bf839aa9a198fd038a4d415fa795c60b4972404f`
+for the uploaded artifact ZIP (artifact `8996592890`, 85,524 bytes).  A local
+download reproduced the checkpoint, cold-cache state, pinned Mathlib, stage
+ledger, fourteen-block axiom JSON, `FINAL_STATUS`, inner archive hash, and all
+per-file hashes (`SHA256SUMS_MISMATCH=0`).
+
+The sealed chain uses the source-owner geometry and the exact overlap `2^4 =
+16` to sum all three literal CMP99 (3.88) species for an arbitrary field on
+one complete source-owner fibre.  It proves the complete source-localized
+regional defect bound without a coordinate-probe expansion, an owner-count
+factor, or a fine-volume cardinality loss.
+
+This is not yet a global contraction.  Its literal amplitude includes
+first- and third-species terms of order `K^-1` in addition to the
+second-species `K^-2` term, and a fixed-rate Neumann argument still needs a
+strict rate reserve and a volume-uniform shell convolution estimate.  Window
+15 remains compatible but unattained; rows 23--24 and a first `TermSource`
+inhabitant remain open.  The live counters stay exactly `20/41` and zero.

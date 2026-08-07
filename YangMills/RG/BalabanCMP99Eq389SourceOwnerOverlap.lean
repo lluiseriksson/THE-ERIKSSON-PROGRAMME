@@ -9,8 +9,10 @@ import YangMills.RG.BalabanCMP99SourceSeparatedSignedLargeBlockPartition
 /-!
 # Source-owner overlap for the CMP99 (3.89) cell sum
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+This module was compiler-verified at exact source checkpoint
+`a814d95ac5bb20fa8bfe8871e8764caf2353153b` in cold GitHub Actions run
+`31180210309`; its six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP99 (3.89) is first proved for one regional cell and is then summed over
 cells.  Pointwise overlap does not by itself control that sum on a complete

@@ -3854,3 +3854,29 @@ cell sum, the three-species assembly, complete (3.89), defect contraction,
 rows 23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
 compatible but unattained; the live counters remain exactly `20/41` and
 `TermSource = 0`.
+
+### Step 7.5h source-localized regional defect (SEALED; global contraction open)
+
+Exact source checkpoint `a814d95ac5bb20fa8bfe8871e8764caf2353153b`
+passed cold GitHub Actions run `31180210309` (workflow checkpoint
+`c0f037231b554b7d55b9cbb8b771bd799067d4b7`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The four focal/audit pairs all exited zero.  Their focal endpoints were
+`Build completed successfully (8523 jobs).`, `(8173 jobs).`, `(8590 jobs).`,
+and `(8593 jobs).`; all fourteen audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed chain constructs the source-owner geometry, proves the overlap-16
+localized-action sum, assembles all three literal CMP99 (3.88) species on the
+same generated background, and obtains the complete source-localized regional
+defect bound.  The estimate acts on an arbitrary field supported in one
+source-owner fibre and introduces neither the number of fine sites nor the
+number of owners.
+
+This is still a source-localized single-application estimate, not a global
+operator-norm contraction.  The complete amplitude contains the visible
+first- and third-species `K^-1` terms as well as the second-species `K^-2`
+term.  Iteration at a fixed exponential rate still requires a positive rate
+gap and a volume-uniform shell convolution bound.  No Neumann inverse,
+attainment of window 15, rows 23--24, or `TermSource` inhabitant is proved.
+The live counters remain exactly `20/41` and `TermSource = 0`.

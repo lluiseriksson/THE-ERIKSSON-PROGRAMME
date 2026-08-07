@@ -10,8 +10,10 @@ import YangMills.RG.FinitePiLpBlockLocalizedSupOverlapSum
 /-!
 # The source-localized CMP99 (3.89) regional defect
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+This module was compiler-verified at exact source checkpoint
+`a814d95ac5bb20fa8bfe8871e8764caf2353153b` in cold GitHub Actions run
+`31180210309`; its two audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module performs the literal regional-cell sum after the three species of
 CMP99 (3.88) have been assembled for one cell.  Inactive cells are eliminated
