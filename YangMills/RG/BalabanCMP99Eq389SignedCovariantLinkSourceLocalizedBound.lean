@@ -52,6 +52,14 @@ private instance instNeZeroEq389SourceLocalizedFirstFineSide
     (Nat.mul_pos (by omega)
       (Nat.mul_pos (NeZero.pos K) (NeZero.pos Q)))).ne'⟩
 
+private theorem finBoxEquivCast_shiftBack
+    {d N M : ℕ} [NeZero N] [NeZero M]
+    (h : N = M) (x : FinBox d N) (i : Fin d) :
+    Equiv.cast (congrArg (FinBox d) h) (x.shiftBack i) =
+      (Equiv.cast (congrArg (FinBox d) h) x).shiftBack i := by
+  subst M
+  rfl
+
 /-- A backward fine step costs at most one `exp(delta)` in the literal
 source-localization owner metric, uniformly for every selected owner fibre.
 -/
@@ -74,8 +82,9 @@ theorem exp_neg_sourceLocalizationOwner_shiftBack_le_exp_mul
   have hcastShift :
       cmp99Eq389SourceLocalizationSiteEquiv L K Q depth (x.shiftBack i) =
         (cmp99Eq389SourceLocalizationSiteEquiv L K Q depth x).shiftBack i := by
-    funext j
-    simp [cmp99Eq389SourceLocalizationSiteEquiv, FinBox.shiftBack]
+    exact finBoxEquivCast_shiftBack
+      (cmp99SourceSeparatedCarrier_eq_sourceLocalizationCarrier L K Q depth)
+      x i
   rw [← hcastShift] at hstep
   have hdist :
       finBoxDist (cmp99Eq389SourceLocalizationOwner L K Q depth x) owner ≤
@@ -237,7 +246,7 @@ theorem cmp99Eq389SignedCovariantLinkRegionalCorrection_blockLocalizedSupBound
         · apply mul_le_mul_of_nonneg_left
           · exact exp_neg_sourceLocalizationOwner_shiftBack_le_exp_mul
               L K Q depth x owner i C.delta0_pos.le
-          · exact mul_nonneg C.B0_nonneg (Nat.cast_nonneg _)
+          · exact mul_nonneg C.B0_nonneg (by positivity)
         · exact finitePiLpSupNorm_nonneg f
   change ‖cmp99Eq389SignedCovariantLinkAmbientOperator
       (L := L) (K := K) (Q := Q) P depth cell rho U
@@ -294,8 +303,20 @@ theorem cmp99Eq389SignedCovariantLinkRegionalCorrection_blockLocalizedSupBound
           _ = (8 * B0 * P.derivBound) / (K : ℝ) := by ring
       rw [Fin.sum_univ_four]
       unfold cmp99Eq389SignedCovariantLinkSourceBudget slope
-      rw [hscale]
-      ring
+      calc
+        _ = 4 *
+            (cmp99Eq389SignedCovariantLinkSlopeBudget P L K depth *
+              (B0 * (L ^ (depth + 1) : ℝ))) *
+            (1 + Real.exp delta0) *
+            Real.exp (-(delta0 *
+              (finBoxDist (cmp99Eq389SourceLocalizationOwner L K Q depth x)
+                owner : ℝ))) * finitePiLpSupNorm f := by ring
+        _ = 4 * ((8 * B0 * P.derivBound) / (K : ℝ)) *
+            (1 + Real.exp delta0) *
+            Real.exp (-(delta0 *
+              (finBoxDist (cmp99Eq389SourceLocalizationOwner L K Q depth x)
+                owner : ℝ))) * finitePiLpSupNorm f := by
+          rw [hscale]
 
 end
 
