@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq245SincAverageLower
 import Mathlib.Analysis.Complex.Trigonometric
 
 /-!
-# PRE-VALIDATION: complex-to-sinc dictionary for CMP89 (2.45)
+# Cold-sealed complex-to-sinc dictionary for CMP89 (2.45)
 
-The primary source is present, but this module's `.olean` has not yet been
-materialized and its declarations have not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`08acaa13dc8cf79a5d5beb666540b295e158517c` by cold GitHub Actions run
+`31227914423`.  Restoration and saving of `.lake/build` were skipped.  The
+warning-free focal completed 3,274 jobs, the audit exited zero, and all five
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.45), printed p. 584, defines each coordinate of the averaging symbol
 as the quotient of two exponential difference quotients.  This module fills

@@ -2012,3 +2012,4 @@ import YangMills.RG.BalabanCMP116InteractingConditionedCovariance
 import YangMills.RG.BalabanCMP116InteractingConditionedCovarianceAudit
 import YangMills.RG.BalabanCMP99Eq342SourceLocalizedInputL2Audit
 import YangMills.RG.BalabanCMP89Eq245SincAverageLowerAudit
+import YangMills.RG.BalabanCMP89Eq245ComplexSincDictionaryAudit

@@ -29096,3 +29096,41 @@ elaboration errors; cached run `31225904376` passed.  Only the cold run above
 retired PRE-VALIDATION.  No terminal field is discharged: the live counters
 remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
+
+## Addendum 605 (2026-08-08, **CMP89 (2.45) complex-to-sinc dictionary GREEN; denominator comparison open; 20/41 unchanged**)
+
+Exact source checkpoint
+`08acaa13dc8cf79a5d5beb666540b295e158517c` was validated by cold GitHub
+Actions run [`31227914423`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31227914423)
+(workflow checkpoint `813914e4922f1d185b4b77710062484645af6149`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-07T23:43:50Z` to `23:43:56Z`, exited zero
+without warnings, and ended with `Build completed successfully (3274 jobs).`
+The audit ran from `23:43:56Z` to `23:44:00Z` and also exited zero.  All five
+declarations use exactly `[propext, Classical.choice, Quot.sound]` against
+Mathlib `07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`b536cab355a487a793c41a083ac00e09def8e7f72e69e0fa67633f1d542b3a29`.
+GitHub recorded SHA-256
+`d1156bc8906b3f77e7af8929e3d9955a3685fe05b0f5ee75d17e3ddba347f1be`
+for uploaded artifact `9012775812` (11,103 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, five-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`.
+
+The sealed definitions fill the removable singularity of the exponential
+difference slope and reconstruct each coordinate of the complex averaging
+factor as a quotient of those slopes.  The norm is proved exactly equal to
+the real sinc quotient, the literal printed exponential quotient is recovered
+away from `p = 0` and `xi = 0`, and multiplication transports the Step-7.5r
+lower bound `(2/pi)^d` to the complex symbol uniformly in `j`.
+
+The Laplacian-symbol comparisons, full alias denominator estimate (2.50),
+momentum summability (2.51), and uniform analytic strip remain open.  Runs
+`31226608914`, `31226774446`, and `31226972700` retain the elaboration errors;
+green runs `31227277987` and `31227593499` were superseded only to remove
+linter warnings.  Cached run `31227769422` passed the final source; only the
+cold run above retired PRE-VALIDATION.  No terminal field is discharged: the
+live counters remain exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.

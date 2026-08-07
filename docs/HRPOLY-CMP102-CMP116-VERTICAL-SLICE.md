@@ -4237,3 +4237,47 @@ successive elaboration errors.  Cached run `31225904376` passed; only the cold
 run above retired PRE-VALIDATION.  The next honest brick is the exact norm
 dictionary from the removable complex exponential quotient in (2.45) to this
 real sinc amplitude, before any use in (2.50).
+
+### Step 7.5s exact complex-to-sinc dictionary for CMP89 (2.45) (SEALED; denominator comparison open)
+
+Exact source checkpoint `08acaa13dc8cf79a5d5beb666540b295e158517c`
+passed cold GitHub Actions run
+[`31227914423`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31227914423)
+(workflow checkpoint `813914e4922f1d185b4b77710062484645af6149`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-07T23:43:50Z` to `23:43:56Z`, exited
+zero without warnings, and ended with
+`Build completed successfully (3274 jobs).`; the audit ended at `23:44:00Z`.
+All five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed brick defines the exponential difference slope with its removable
+value at zero and forms the CMP89 coordinate factor as the quotient of slopes
+at `p` and `xi*p`.  It proves, for all real `xi,p`, the exact identity
+
+```text
+norm(complexAverageFactor xi p) =
+  |sinc(p/2) / sinc(xi*p/2)|.
+```
+
+Away from the `p = 0` and `xi = 0` branches, a separate theorem identifies
+that object algebraically with the literal printed quotient
+`(exp(-i p)-1) / ((exp(-i xi p)-1)/xi)`.  The product norm is therefore
+exactly the real amplitude sealed in Step 7.5r, and its source-specialized
+lower bound `(2/pi)^d` is transported to the complex product uniformly in
+the RG scale.
+
+This closes the first dictionary explicitly left open by Step 7.5r.  It does
+not compare `Delta^xi(p)` with the continuum/lattice momentum symbols, prove
+the full alias denominator estimate (2.50), establish the momentum sum
+(2.51), or construct the uniform analytic strip.  Hence it produces no
+physical `B0` or `delta0`, does not attain window 15, discharges no row
+23--24, and does not inhabit `TermSource`.  The live counters remain exactly
+`20/41` and zero.
+
+Runs `31226608914`, `31226774446`, and `31226972700` preserve the three
+elaboration errors.  Earlier green runs `31227277987` and `31227593499` were
+superseded solely to remove linter warnings; cached run `31227769422` and the
+cold run above certify the warning-free source.  The next honest producer is
+the pair of Laplacian-symbol comparisons used by the central alias term of
+(2.50), before summing the noncentral aliases.
