@@ -56,7 +56,7 @@ theorem finitePiLpSupNorm_nonneg
 /-- A field is supported in one owner fibre when it vanishes at every index
 whose owner differs from the selected source block. -/
 def FinitePiLpSupportedInOwner
-    {ι β g : Type*}
+    {ι β g : Type*} [Zero g]
     (sourceOwner : ι → β) (owner : β)
     (f : FinitePiLpField ι g) : Prop :=
   ∀ source, sourceOwner source ≠ owner → f source = 0
