@@ -106,13 +106,16 @@ theorem
   funext i
   apply Fin.ext
   simp only [cmp99Eq389SourceLocalizationOwner,
-    cmp99Eq389SourceLocalizationSiteEquiv,
-    cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv, blockSite_val]
-  change ((hcarrier ▸ (hsize ▸ source.1)) i).val / L ^ (depth + 1) =
-    ((hcarrier ▸ (hsize ▸ target.1)) i).val / L ^ (depth + 1)
-  rw [finBox_cast_apply_val hcarrier (hsize ▸ source.1) i,
-    finBox_cast_apply_val hcarrier (hsize ▸ target.1) i,
-    finBox_cast_apply_val hsize source.1 i,
+    cmp99Eq389SourceLocalizationSiteEquiv, blockSite_val]
+  rw [finBox_cast_apply_val hcarrier
+      (cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
+        L K Q depth source) i,
+    finBox_cast_apply_val hcarrier
+      (cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
+        L K Q depth target) i]
+  change ((hsize ▸ source.1) i).val / L ^ (depth + 1) =
+    ((hsize ▸ target.1) i).val / L ^ (depth + 1)
+  rw [finBox_cast_apply_val hsize source.1 i,
     finBox_cast_apply_val hsize target.1 i]
   exact congrArg Fin.val (congrFun howner i)
 
@@ -291,8 +294,10 @@ theorem cmp99Eq389GeneratedMassRegionalCorrection_blockLocalizedSupBound
     have hsourceValue : 0 ≤ sourceValue := by
       exact mul_nonneg hslope
         (mul_nonneg
-          (mul_nonneg C.B0_nonneg (sq_nonneg ell))
-          (mul_nonneg (Real.exp_pos _).le (finitePiLpSupNorm_nonneg f)))
+          (mul_nonneg
+            (mul_nonneg C.B0_nonneg (sq_nonneg ell))
+            (Real.exp_pos _).le)
+          (finitePiLpSupNorm_nonneg f))
     have hphi : ∀ source,
         (cmp99SourceIteratedLiftActiveRegionChain (M := L)
           (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
