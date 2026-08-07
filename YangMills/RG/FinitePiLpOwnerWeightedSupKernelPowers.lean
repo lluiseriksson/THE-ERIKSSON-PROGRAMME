@@ -100,7 +100,7 @@ theorem finiteOwnerWeightedRowBound_id
           finiteOwnerIdentityCoefficient targetBlock targetBlock := by
       apply Fintype.sum_eq_single targetBlock
       intro sourceBlock hsource
-      simp [finiteOwnerIdentityCoefficient, hsource, Ne.symm hsource]
+      simp [finiteOwnerIdentityCoefficient, Ne.symm hsource]
     _ = 1 := by simp [finiteOwnerIdentityCoefficient, hdiag]
     _ ≤ 1 := le_rfl
 
@@ -152,10 +152,15 @@ theorem finitePiLpTypedOwnerWeightedSupKernelBound_pow
   intro n
   induction n with
   | zero =>
-      simpa [finiteOwnerKernelPower] using
+      have hpow :
+          T ^ 0 = ContinuousLinearMap.id ℝ (FinitePiLpField ι g) := by
+        ext f
+        rfl
+      rw [hpow]
+      simpa only [finiteOwnerKernelPower, pow_zero] using
         (finitePiLpTypedOwnerWeightedSupKernelBound_id
           (ι := ι) (β := β) (g := g)
-          ownerMap dist hT.2.1 hdiag)
+          ownerMap dist hT.2.2.1 hdiag)
   | succ n ih =>
       simpa [finiteOwnerKernelPower, pow_succ] using
         (finitePiLpTypedOwnerWeightedSupKernelBound_comp
