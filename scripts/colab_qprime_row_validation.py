@@ -21,8 +21,8 @@ import time
 import traceback
 
 
-RUNNER_REV = "eq389-three-species-v1"
-SOURCE_SHA = "8ef8827262065f2343a78c3a68bb397158079d90"
+RUNNER_REV = "eq389-three-species-v2"
+SOURCE_SHA = "155f5a5c590c94fd336c27e6daa4194795b70ab1"
 REPO_URL = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.29.0-rc6"
 EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
@@ -40,7 +40,7 @@ PATH_MANIFEST = Path("/content/hrpoly-eq389-three-species-paths.txt")
 
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99Eq389ThreeSpeciesPhysicalBound.lean":
-        "3771536dc68b89c078c5f44cfba2d03e79eb6a2359f68b67410d36eb0c515bb0",
+        "f949b23ca9c2463b8bedc3bdc8c55e65ffe197b2f890ee5d46502bd4ad489e0e",
     "YangMills/RG/BalabanCMP99Eq389ThreeSpeciesPhysicalBoundAudit.lean":
         "041b74085962f5bc0e4e2fa3632ec2b2e6e0dc11cc62fd85672c010ed2a9aff0",
 }
