@@ -165,14 +165,11 @@ theorem abs_cmp99SourceSeparatedLargeBlockCoordinate_div_sub_ownerCenter_le_quar
           cmp99Eq389SourceOwnerNormalizedCenter (Q := Q) L K depth owner i =
         (((x i).val : ℝ) + 1 / 2 -
           (ell : ℝ) * (owner i).val - (ell : ℝ) / 2) / (M0 : ℝ) := by
-    dsimp only [cmp99SourceSeparatedLargeBlockCoordinate,
-      cmp99Eq389SourceOwnerNormalizedCenter]
-    change
-      ((((x i).val : ℝ) + 1 / 2 - (M0 : ℝ) / 2) / (M0 : ℝ)) -
-          (((ell : ℝ) * (owner i).val + (ell : ℝ) / 2 -
-            (M0 : ℝ) / 2) / (M0 : ℝ)) =
-        (((x i).val : ℝ) + 1 / 2 -
-          (ell : ℝ) * (owner i).val - (ell : ℝ) / 2) / (M0 : ℝ)
+    unfold cmp99SourceSeparatedLargeBlockCoordinate
+      cmp99Eq389SourceOwnerNormalizedCenter M0 ell
+      cmp99SourceSeparatedLargeBlockCutoffScale
+      cmp99SourceSeparatedLargeBlockSide
+    push_cast
     ring
   change |cmp99SourceSeparatedLargeBlockCoordinate L K depth
           (fun j => (x j).val) i / (M0 : ℝ) -
