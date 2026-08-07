@@ -1,4 +1,4 @@
-name: Validate owner-weighted power summability
+name: Validate owner-weighted Neumann tsum
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 816fd138ff952be7bab1105b7b0e11c175d88cca
+  SOURCE_SHA: 39b0c2fac512062a45cec06959738f3ad5e64b16
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  owner-weighted-power-summability:
+  owner-weighted-neumann:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -68,8 +68,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-owner-weighted-power-summability-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-owner-weighted-neumann-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: |
+            hRpoly-owner-weighted-power-summability-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-owner-weighted-powers-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-owner-weighted-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
             hRpoly-owner-weighted-defect-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-
@@ -111,8 +112,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/FinitePiLpOwnerWeightedSupKernelPowerSummability.lean \
-            YangMills/RG/FinitePiLpOwnerWeightedSupKernelPowerSummabilityAudit.lean \
+            YangMills/RG/FinitePiLpOwnerWeightedSupKernelNeumann.lean \
+            YangMills/RG/FinitePiLpOwnerWeightedSupKernelNeumannAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -134,10 +135,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage owner_weighted_power_summability_focal \
-            lake build YangMills.RG.FinitePiLpOwnerWeightedSupKernelPowerSummability
-          run_stage owner_weighted_power_summability_audit \
-            lake env lean YangMills/RG/FinitePiLpOwnerWeightedSupKernelPowerSummabilityAudit.lean
+          run_stage owner_weighted_neumann_focal \
+            lake build YangMills.RG.FinitePiLpOwnerWeightedSupKernelNeumann
+          run_stage owner_weighted_neumann_audit \
+            lake env lean YangMills/RG/FinitePiLpOwnerWeightedSupKernelNeumannAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -151,7 +152,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "owner_weighted_power_summability_audit.log": 6,
+              "owner_weighted_neumann_audit.log": 7,
           }
           result = {}
           for name, expected in audits.items():
@@ -182,17 +183,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > owner-weighted-power-summability-evidence.tar.gz
-          sha256sum owner-weighted-power-summability-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > owner-weighted-neumann-evidence.tar.gz
+          sha256sum owner-weighted-neumann-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: owner-weighted-power-summability-${{ env.SOURCE_SHA }}
+          name: owner-weighted-neumann-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            owner-weighted-power-summability-evidence.tar.gz
+            owner-weighted-neumann-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -201,4 +202,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-owner-weighted-power-summability-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-owner-weighted-neumann-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
