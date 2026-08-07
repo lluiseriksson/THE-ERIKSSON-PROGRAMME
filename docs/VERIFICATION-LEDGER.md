@@ -28890,3 +28890,40 @@ No left/right inverse identity, strict physical contraction, or uniform
 production of the Green constants is proved.  Window 15 remains compatible
 but unattained; rows 23--24 and a first `TermSource` inhabitant remain open.
 The live counters stay exactly `20/41` and zero.
+
+## Addendum 599 (2026-08-07, **two-sided owner-weighted Neumann inverse GREEN; physical contraction and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`da5a4d257b4bac5d025e500157af83957e8f8f40` was validated by cold GitHub
+Actions run `31213231725` (workflow checkpoint
+`28141ebaea5383d21071bab78734ee7377470c89`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T19:56:33Z` to `20:08:31Z`, exited zero, and ended
+with `Build completed successfully (8448 jobs).`  The audit ran from
+`20:08:31Z` to `20:08:36Z` and also exited zero.  Both declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`09abcde25a77126454e07720cade07928bde6df153ba083ce3b0f51d3f9db6a5`.
+GitHub recorded SHA-256
+`643042fb31ee24821549a7aa936b8121d0d30b502bc7ec4fc41de56554cee857`
+for uploaded artifact `9007968312` (30,507 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, two-block axiom JSON, `FINAL_STATUS=PASS`, inner archive hash, and all
+per-file hashes.
+
+The sealed theorems identify the literal owner-weighted Neumann `tsum` as
+both a left and right inverse of `1 - T`.  They consume the previously proved
+summability and use the ring telescoping identities without adding a spatial
+rate loss or a cardinality factor.
+
+Run `31212939832` retained the pre-Lean cache-key instrumentation failure.
+After capping the restore list, cached diagnostic run `31213016266` passed;
+only the cold run above retired the two PRE-VALIDATION marks.
+
+No strict physical contraction, dominant `K^-1` budget, one-time
+`S(delta0 - r)` conversion, or uniform production of the Green constants is
+proved.  Window 15 remains compatible but unattained; rows 23--24 and a first
+`TermSource` inhabitant remain open.  The live counters stay exactly `20/41`
+and zero.

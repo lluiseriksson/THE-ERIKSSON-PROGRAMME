@@ -4057,3 +4057,32 @@ This brick does not prove the left or right inverse identity for the `tsum`,
 specialize the strict physical CMP99 amplitude, or produce uniform `B0` and
 `delta0` as `K` varies.  Window 15 remains compatible but unattained; rows
 23--24 remain open, the live count is `20/41`, and `TermSource = 0`.
+
+### Step 7.5o two-sided owner-weighted Neumann inverse (SEALED; physical contraction open)
+
+Exact source checkpoint `da5a4d257b4bac5d025e500157af83957e8f8f40`
+passed cold GitHub Actions run `31213231725` (workflow checkpoint
+`28141ebaea5383d21071bab78734ee7377470c89`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran from `2026-08-07T19:56:33Z` to `20:08:31Z` and ended with
+`Build completed successfully (8448 jobs).`; the audit ended at `20:08:36Z`.
+Both stages exited zero, and both audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed ring-level bridge applies the telescoping theorem for a summable
+geometric series to the already certified owner-weighted power sum.  It proves
+both `(sum T^n) * (1 - T) = 1` and `(1 - T) * (sum T^n) = 1` for the literal
+continuous-linear-map `tsum`; no extra norm comparison, owner count, or rate
+loss is introduced.
+
+Run `31212939832` stopped before Lean because the cache action counts the
+primary key inside its maximum of ten.  The restore list was capped without
+changing source, and cached diagnostic run `31213016266` then passed.
+PRE-VALIDATION was retired only after the cold run above and local
+verification of its durable evidence package.
+
+This brick does not prove that the physical CMP99 defect has amplitude below
+one or produce uniform `B0` and `delta0` as `K` varies.  In particular it does
+not supply the dominant `K^-1` coefficient or the one-time conversion factor
+`S(delta0 - r)`.  Window 15 remains compatible but unattained; rows 23--24
+remain open, the live count is `20/41`, and `TermSource = 0`.

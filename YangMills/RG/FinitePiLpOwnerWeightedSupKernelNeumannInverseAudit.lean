@@ -1,10 +1,7 @@
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernelNeumannInverse
 
 /-!
-# PRE-VALIDATION audit: owner-weighted Neumann inverse identities
-
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the declarations remain compiler-unverified.
+# Audit: owner-weighted Neumann inverse identities
 -/
 
 #print axioms YangMills.RG.finitePiLp_ownerWeighted_neumann_mul_one_sub

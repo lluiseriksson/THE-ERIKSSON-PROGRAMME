@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernelNeumann
 
 /-!
-# PRE-VALIDATION: owner-weighted Neumann inverse identities
-
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Owner-weighted Neumann inverse identities
 
 The previously sealed owner-sup contraction makes the literal power series
 summable in the endomorphism ring.  The standard telescoping identities for a
