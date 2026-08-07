@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkPhysicalBound
 
 /-!
-# PRE-VALIDATION audit: signed first species in CMP99 (3.89)
+# COLD-SEALED audit: signed first species in CMP99 (3.89)
 
-PRE-VALIDATION: the source under audit is present, its `.olean` has not yet
-been materialized, and the result has not yet been compiler-verified.
+Exact source checkpoint `46734245d55a2ae309a01e6b371b35418189dd0f`
+passed a cold Colab Pro+ CPU/high-RAM clone.  The focal and this audit both
+exited zero; all fifteen declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99Eq389SignedCovariantLinkSlopeBudget

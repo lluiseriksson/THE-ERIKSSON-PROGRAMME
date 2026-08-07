@@ -8,10 +8,13 @@ import YangMills.RG.BalabanCMP99Eq389SignedCutoffLaplacianPhysicalBound
 import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalCutoffIdentity
 
 /-!
-# PRE-VALIDATION: signed first species in CMP99 (3.89)
+# COLD-SEALED: signed first species in CMP99 (3.89)
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+Exact source checkpoint `46734245d55a2ae309a01e6b371b35418189dd0f`
+passed a cold Colab Pro+ CPU/high-RAM clone against Lean `v4.29.0-rc6` and
+Mathlib `07642720480157414db592fa85b626dafb71355b`.  The focal and its audit
+both exited zero; all fifteen audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module reinstantiates the first covariant-link species with the
 source-faithful signed cutoff.  The signed endpoint pays the visible factor

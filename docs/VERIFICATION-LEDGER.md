@@ -28307,3 +28307,46 @@ reinstantiation, complete three-species CMP99 (3.89), contraction, rows
 23--24, and a `TermSource` inhabitant remain open.  Window 15 is still
 compatible but unattained; the live counters remain exactly `20/41` and
 zero.
+
+## Addendum 583 (2026-08-06, **signed covariant-link first species GREEN; three-species assembly open; 20/41 unchanged**)
+
+Exact source checkpoint
+`46734245d55a2ae309a01e6b371b35418189dd0f` was validated in a cold Colab
+Pro+ CPU/high-RAM clone opened at `2026-08-06T23:56:13.069777Z`.  The runner
+checkpoint was `2a9f0d998ab8246d5addd878a08c4208cfc438bd`; the notebook
+checkpoint was `12e8d03b2920a7373ae9d9d1bc13f4409667174c`.  The focal exited
+zero after `5154.941` seconds with
+`Build completed successfully (8574 jobs).`; the audit exited zero after
+`30.721` seconds.  All fifteen audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`, and the
+runtime then released automatically.
+
+The deterministic evidence payload generated in Colab has SHA-256
+`9c7edd207174abb76cf2fac4296ffd480bae6c579fc366d3246250232a323a3a`;
+the generated archive has SHA-256
+`4d28f76efcb91effb81fb6448ce1970e78ea12278dc3ad5b24712ff47161956c`.
+These are transcript-visible runner outputs, not a claim of an independently
+downloaded and locally rehashed archive.
+
+The brick reconstructs the first covariant-link species from the exact
+ambient product rule with the source-faithful signed cutoff.  Its source
+budget exposes the literal `8 * derivBound / K` gain before the cell sum and
+uses the single sealed overlap `16`; it introduces no shared three-species
+constant, generic row/column symmetry, Combes--Thomas/Schur majorant, or
+Poincare constant.
+
+The preceding v5 diagnostic at source checkpoint
+`c0f892e86288b3e2778dcc44dbdc33f38b78219a` failed only at the two remaining
+endpoint inference timeouts.  Its evidence and archive SHA-256 digests are
+`c3d8b5dcbafb147b5800fcf1c6e4a9648ecae41c1bc95b5e3f160b1d3691fead`
+and `86ae7f66c613614df27b0d3ce87824756e8482cd8745ae0555a3896c436f1b50`.
+The repair pinned the physical carrier and fibre in those two conclusions;
+no theorem, constant, hypothesis, or heartbeat changed.
+
+All three displayed species now have separate cold seals.  Their literal
+three-species assembly, complete CMP99 (3.89), defect contraction, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
+compatible but unattained; the live counters remain exactly `20/41` and
+zero.
