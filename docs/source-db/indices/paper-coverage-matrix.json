@@ -25,6 +25,17 @@
       "title": "Renormalization Group Approach to Lattice Gauge Field Theories II. Cluster Expansions"
     },
     {
+      "source_id": "cmp89",
+      "importance": "critical",
+      "catalog_status": "structured-partial",
+      "artifact_status": "remote-primary-verified; local-private-copy-present",
+      "formula_status": "Lemma 2.2 (2.16)-(2.17), Lemma 2.4 (2.35)-(2.37), and the explicit Fourier/analytic-strip proof (2.42)-(2.51) visually confirmed; generated-regional-Green dictionary still open",
+      "next_action": "Formalize the zero-background Fourier producer and its uniform analytic strip, then transport it through CMP89 (2.34), CMP95 (1.132)-(1.137), CMP96 (2.43)/(2.67), and CMP99 Corollary 3.6 to the literal four-field Eq. (3.42) certificate.",
+      "priority": 10,
+      "short": "Balaban CMP89",
+      "title": "Regularity and Decay of Lattice Green's Functions"
+    },
+    {
       "source_id": "cmp95",
       "importance": "critical",
       "catalog_status": "structured-partial",

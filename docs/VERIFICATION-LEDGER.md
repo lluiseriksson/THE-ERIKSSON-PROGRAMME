@@ -29028,3 +29028,34 @@ Green construction, then supply the CMP99 near-identity perturbation and
 gauge-covariant transport to the canonical regional Green.  This addendum
 records source provenance only; it adds no theorem, retires no obligation,
 and leaves `20/41`, `TermSource = 0`, and window 15 unchanged.
+
+## Addendum 603 (2026-08-08, **CMP89 local Fourier source recovered; first analytic producer named; documentation only**)
+
+The primary CMP89 article, T. Balaban, *Regularity and Decay of Lattice
+Green's Functions*, CMP 89 (1983), 571--597, DOI
+`10.1007/BF01214744`, was recovered from the Project Euclid legacy PDF
+endpoint.  The 2,461,630-byte PDF has SHA-256
+`416E2B1F00B52E7235AB27D2BE066B50D42DDE33CF8596BAEAE0A6688B145143`.
+Printed pages 582--586 / PDF pages 12--16 were rendered and visually
+inspected rather than trusted through OCR.
+
+CMP89 Lemma 2.4 gives the scale-uniform local zero-background Green,
+derivative/Hölder and coarse-covariance decay bounds in (2.35)--(2.37).
+Its proof is internal: multiple reflection (2.42), the explicit Fourier
+representation (2.43)--(2.49), the denominator and momentum-sum bounds
+(2.50)--(2.51), and a contour displacement in a complex strip uniform in
+the scale.  Lemma 2.2 transports this input to small regular backgrounds
+through the renormalization identity (2.34).  CMP95 and CMP96 then consume
+that chain before CMP99's near-identity/gauge transport.
+
+The source database now records
+`cmp89.local-green.fourier.2.34-2.51` as `visual_confirmed` and the paper
+coverage matrix names the first missing producer precisely: formalize the
+CMP89 zero-background Fourier/analytic-strip argument, then prove the
+CMP89/CMP95/CMP96/CMP99 dictionaries to the literal regional Green.  This
+rules out treating another reciprocal-coercivity Combes--Thomas estimate or
+a four-field assumption record as the next producer.
+
+This is documentation and source provenance only.  It compiles no Lean,
+discharges no terminal field, and leaves `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.

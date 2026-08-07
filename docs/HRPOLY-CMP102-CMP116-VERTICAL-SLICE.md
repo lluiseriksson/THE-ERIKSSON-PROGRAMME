@@ -4173,6 +4173,25 @@ producer.  The next source-analytic brick must begin below (2.67), at the
 CMP96 zero-background localized Green construction, and transport it through
 the CMP99 near-identity/gauge dictionary.
 
+Direct visual inspection of the newly recovered CMP89 primary source sharpens
+that boundary by one full paper.  CMP95 reduces its local propagator estimates
+through (1.132)--(1.137), while CMP96 uses its local zero-background bounds in
+(2.43) and Proposition 2.2 / (2.67).  The underlying source theorem is CMP89
+Lemma 2.4: (2.35)--(2.37) are proved by the explicit Fourier representation
+(2.43)--(2.49), the denominator and summability estimates (2.50)--(2.51), and
+a complex contour shift in a strip whose width and bound are uniform in the
+scale `j`.  CMP89 Lemma 2.2 then transports those zero-background estimates
+through (2.34) and the small regular-background perturbation.  No further
+paper is cited for this local analytic step.
+
+Thus the first honest missing producer is now the typed zero-background
+Fourier/analytic-strip construction of CMP89 (2.43)--(2.51), followed by the
+named CMP89/CMP95/CMP96/CMP99 scaling, averaging, boundary and gauge
+dictionaries.  It is not another generic Combes--Thomas theorem and it is not
+a record containing the four desired outputs.  This source recovery changes
+neither the `20/41` numerator nor window 15: no Lean theorem has yet produced
+`B0` and `delta0` uniformly for the literal regional Green.
+
 Diagnostic run `31221320009` retained the first elaboration errors in the
 decidable fibre filter and subtype-cardinality conversion.  Replacing the
 latter with an explicit injection into the ambient block gave cached

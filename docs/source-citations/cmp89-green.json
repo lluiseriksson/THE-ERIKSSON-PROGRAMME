@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "catalog": "cmp89-green",
+  "updated": "2026-08-08",
+  "sources": {
+    "cmp89": {
+      "short": "Balaban CMP89",
+      "title": "Regularity and Decay of Lattice Green's Functions",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 89 (1983), 571-597",
+      "doi": "10.1007/BF01214744",
+      "web_urls": {
+        "springer": "https://link.springer.com/article/10.1007/BF01214744",
+        "project_euclid_html": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-89/issue-4/Regularity-and-decay-of-lattice-Greens-functions/cmp/1103922931.full",
+        "project_euclid_pdf": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-89/issue-4/Regularity-and-decay-of-lattice-Greens-functions/cmp/1103922931.pdf",
+        "project_euclid_legacy_pdf": "https://projecteuclid.org/download/pdf_1/euclid.cmp/1103922931"
+      }
+    }
+  },
+  "citations": [
+    {
+      "key": "cmp89.local-green.fourier.2.34-2.51",
+      "source_id": "cmp89",
+      "locator": {
+        "printed_pages": "582-586",
+        "pdf_pages": "12-16",
+        "equations": ["2.34", "2.35", "2.36", "2.37", "2.42", "2.43", "2.44", "2.45", "2.46", "2.47", "2.48", "2.49", "2.50", "2.51"],
+        "local_text": "private local extraction tmp/cmp89-primary-layout.txt; PDF SHA-256 416E2B1F00B52E7235AB27D2BE066B50D42DDE33CF8596BAEAE0A6688B145143",
+        "renders": [
+          "private local render tmp/cmp89-p-12.png",
+          "private local render tmp/cmp89-p-13.png",
+          "private local render tmp/cmp89-p-14.png",
+          "private local render tmp/cmp89-p-15.png",
+          "private local render tmp/cmp89-p-16.png"
+        ],
+        "web_urls": [
+          "https://projecteuclid.org/download/pdf_1/euclid.cmp/1103922931",
+          "https://link.springer.com/article/10.1007/BF01214744"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP89 Lemma 2.4 proves the zero-background local Green value, derivative/Hölder and coarse-covariance decay estimates by an explicit Fourier representation, a uniform complex analytic strip and contour displacement; Lemma 2.2 and the later CMP95/CMP96 transports reduce to this source input.",
+      "extracted_claims": [
+        "Lemma 2.4, printed page 582, gives constants c0 and delta0 independent of the scale j for the exponential decay of G_j(Pi) Q_j^*, its first lattice derivative, its Holder difference, and C^(j)(Pi), on rectangular parallelepipeds built of large blocks.",
+        "The proof first removes the boundary by the multiple-reflection representation (2.42), then writes the free Green explicitly by the Fourier transform (2.43)-(2.48).",
+        "The denominator is bounded away from zero in (2.50), the momentum sum is uniformly summable in (2.51), and the integrand extends to a complex neighbourhood whose width and bound are uniform in j. Shifting the contour gives the exponential factor in (2.36); the remaining bounds follow by the same method.",
+        "Lemma 2.2 first treats a regular background as a small perturbation of a constant background, gauges the constant background to zero, and reduces its local regularity bounds to Lemma 2.4 through the renormalization identity (2.34).",
+        "The argument is internal to CMP89 at this point: the zero-background local decay is not deferred to another paper and is not obtained from a reciprocal-coercivity Combes-Thomas estimate."
+      ],
+      "lean_targets": [
+        "YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate",
+        "YangMills.RG.CMP99Eq342RegionalGreenCertificate",
+        "YangMills.RG.CMP99Eq389SourceLocalizedThreeSpeciesGreenCertificate"
+      ],
+      "use_for": [
+        "Primary source boundary below CMP96 Proposition 2.2 / Eq. (2.67) for the zero-background localized Green estimates consumed by CMP99 (3.42) and (3.89).",
+        "Design of a source-faithful Fourier producer with scale-uniform decay, before the CMP95/CMP96 renormalization and CMP99 gauge-transport dictionaries."
+      ],
+      "do_not_use_for": [
+        "Do not cite this visual extraction as a compiled producer of the four CMP99 (3.42) certificate fields.",
+        "Do not replace the Fourier/analytic-strip argument by the sealed reciprocal-coercivity Combes-Thomas route; that route is quantitatively excluded by the depth-zero no-go.",
+        "Do not identify CMP89 G_j(Pi) Q_j^* or C^(j)(Pi) definitionally with the repository's canonical generated regional Green before proving the averaging, scaling, boundary and gauge dictionaries."
+      ],
+      "open_questions": [
+        "Typed Fourier realization of the zero-background operator and averaging symbol u_j in (2.43)-(2.48), including the uniform-in-j analytic strip used after (2.51).",
+        "Exact transport of Lemma 2.4 through CMP89 (2.34), CMP95 (1.132)-(1.137), CMP96 (2.43)/(2.67), and CMP99 Corollary 3.6 to the canonical regional Green certificate.",
+        "Dictionary from the source derivatives and C^(j)(Pi) to the four literal repository operators G', D G', G' D*, and Delta G'."
+      ]
+    }
+  ]
+}
