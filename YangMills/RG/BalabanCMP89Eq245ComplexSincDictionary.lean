@@ -59,7 +59,8 @@ theorem norm_cmp89Eq245RemovableExpSlope (x : ℝ) :
     have hnorm :
         ‖Complex.exp (Complex.I * (-x : ℂ)) - 1‖ =
           ‖2 * Real.sin ((-x) / 2)‖ := by
-      convert Complex.norm_exp_I_mul_ofReal_sub_one (-x) using 1 <;> norm_num
+      convert Complex.norm_exp_I_mul_ofReal_sub_one (-x) using 1
+      all_goals norm_num
     rw [cmp89Eq245RemovableExpSlope, if_neg hx, norm_div, hnorm,
       Real.sinc_of_ne_zero hxhalf]
     simp only [Real.norm_eq_abs, Real.sin_neg, neg_div, abs_neg,
