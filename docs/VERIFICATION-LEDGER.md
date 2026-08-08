@@ -30124,3 +30124,41 @@ No alias-weighted complex amplitude or quotient bound, stabilized-denominator
 radius, `B0`, contour shift or physical Green estimate is proved. No terminal
 field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+## Addendum 636 (2026-08-08, **CMP89 alias-weighted entire-average strip bound GREEN; denominator radius open**)
+
+Exact source checkpoint `87ffa0b6a41a1201cfe32b3955f8c4345a05be62`
+passed cold GitHub Actions run
+[`31257291450`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31257291450)
+under workflow checkpoint `f4a8ae30393d49f94765d674e3532685d6d8f5b4`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `12:29:33Z` to `12:30:12Z`, completed 3,292 jobs
+without a source warning, and the audit ended at `12:30:20Z`; both exited
+zero. All seven declarations printed exactly `[propext, Classical.choice,
+Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`dcfdcc9007b730278266b44704599b7bbe78a739749cc577b7437b9840e9be01`;
+the downloaded archive reproduced it locally. GitHub artifact `9021780151`
+has digest
+`6cb9eb351da10e71dacd3b08a4799eab135221d99bd5f0894e38837183943040`.
+
+The sealed producer uses the finite geometric quotient before estimating.
+For each coordinate it cancels the normalized average's `N^-1` against the
+expanded-zone denominator and retains one reciprocal-alias weight under the
+explicit conservative condition `rho * exp rho <= 1/6`. The product theorem
+keeps the full multidimensional weight and never inserts the alias-fibre
+cardinality.
+
+Cold run `31256971974` is retained as green evidence for the previous source
+checkpoint but did not seal because its focal emitted an
+`unnecessarySimpa` warning. Cached run `31257159057` passed the warning-free
+source diagnostically; only the cold run above retired the two PRE-VALIDATION
+marks.
+
+The physical noncentral-gap condition remains distinct and may bind well
+before the amplitude condition. The sharper real trigonometric floor is not
+silently imported into this brick. No stabilized-denominator radius, joint
+`B0`, contour shift, Fourier/physical rate dictionary or regional-Green
+estimate is proved. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

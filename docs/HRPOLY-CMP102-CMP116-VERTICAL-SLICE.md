@@ -5396,3 +5396,41 @@ No alias-weighted complex amplitude bound, quotient variation, stabilized
 denominator radius, joint `B0`, contour shift or physical Green estimate is
 proved. No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5au alias-weighted entire-average strip bound (SEALED; denominator radius open)
+
+Exact source checkpoint `87ffa0b6a41a1201cfe32b3955f8c4345a05be62`
+passed cold GitHub Actions run
+[`31257291450`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31257291450)
+(workflow checkpoint `f4a8ae30393d49f94765d674e3532685d6d8f5b4`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal ran from `12:29:33Z` to `12:30:12Z`, completed 3,292 jobs without a
+source warning, and the audit ended at `12:30:20Z`; both exited zero. All
+seven audited declarations use exactly `[propext, Classical.choice,
+Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`dcfdcc9007b730278266b44704599b7bbe78a739749cc577b7437b9840e9be01`,
+reproduced after downloading artifact `9021780151`; GitHub reports artifact
+digest `6cb9eb351da10e71dacd3b08a4799eab135221d99bd5f0894e38837183943040`.
+
+The finite geometric quotient now preserves one reciprocal-alias weight in
+each coordinate throughout the normalized strip.  Its explicit condition is
+`rho * exp rho <= 1/6`, and the product theorem retains the full
+multidimensional weight without inserting the cardinality of the alias
+fibre.  The `N^-1` in the real denominator is cancelled only against the
+literal normalization of the average; it is not converted mentally into a
+spatial decay rate.
+
+Cold run `31256971974` is preserved as mathematically green evidence for the
+previous source checkpoint, but it contained an `unnecessarySimpa` warning
+and did not retire PRE-VALIDATION. Cached run `31257159057` verified the
+warning-free source diagnostically; only the cold run above sealed it.
+
+This brick does not assert that `rho * exp rho <= 1/6` is the binding physical
+radius.  The noncentral complex-gap budget remains a separate condition, and
+the sharper trigonometric floor is a later optional optimization rather than
+part of this conservative producer. No stabilized-denominator radius, joint
+`B0`, contour shift, Fourier/physical rate dictionary or regional-Green
+estimate is proved. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP89Eq251AliasAmplitudeUpper
 /-!
 # Alias-weighted strip bound for the entire CMP89 average
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
-
 The scale-uniform strip-growth estimate for the finite geometric average is
 not enough for the noncentral alias sum: applying it independently to every
 alias would reintroduce the cardinality of the reciprocal fibre.  This module
