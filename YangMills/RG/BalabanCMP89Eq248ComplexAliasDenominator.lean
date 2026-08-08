@@ -109,8 +109,9 @@ theorem cmp89Eq248ComplexAliasDenominatorSummand_ofReal_eq
   rw [cmp89Eq248ComplexAliasDenominatorSummand]
   rw [halias]
   rw [cmp89Eq245EntireAveragePair_ofReal_eq,
-    cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq,
-    cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq hN hm hp]
+    cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq]
+  simp only [cmp89Eq245AliasShift]
+  rw [cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq hN hm hp]
   push_cast
   rfl
 
