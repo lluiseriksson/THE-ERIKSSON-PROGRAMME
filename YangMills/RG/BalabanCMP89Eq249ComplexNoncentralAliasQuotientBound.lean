@@ -11,9 +11,6 @@ import YangMills.RG.BalabanCMP89Eq251AliasWeightRedistribution
 /-!
 # Alias-weighted complex noncentral quotient in CMP89 (2.47)--(2.49)
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
-
 The noncentral complex denominator summand is an opposite-momentum averaging
 pair divided by the entire fine symbol.  One averaging amplitude retains the
 sealed reciprocal-alias weight; the opposite amplitude uses only the uniform

@@ -5467,3 +5467,43 @@ Runs `31237719609` and `31237880610` preserve the two elaboration failures
 (over-eager quotient decomposition, then the `Nat.cast_pow` dictionary).
 Cached diagnostic run `31238006531` passed but retained PRE-VALIDATION; only
 the cold run above retired it.
+
+### Step 7.5aw complex noncentral alias quotient (SEALED; finite sum open)
+
+Exact source checkpoint `ff09dc112b01d51a5640852a0cc8e1f817862fd3`
+passed cold GitHub Actions run
+[`31259452871`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31259452871)
+(workflow checkpoint `19c58d1f9feb2d4c918ccf6c14102fb3c30603c3`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal ran from `13:25:56Z` to `13:41:39Z`, completed 8,433 jobs without a
+source warning, and the audit ended at `13:41:47Z`; both exited zero. All
+three audited declarations use exactly `[propext, Classical.choice,
+Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`98cc354f59e7d65d5d0856e49ed1a51d3693589c0a9bb680ff767182a649507b`,
+reproduced after downloading artifact `9022536472`; GitHub reports artifact
+digest `7a2fd37533e23a2aa233c29b6b772916f6cdbff6936486870ca161721cb6fcef`.
+
+One side of the physical opposite-momentum average pair now retains the
+reciprocal-alias weight, while the other uses only the uniform strip-growth
+bound. This avoids a false negation-invariance assumption for the half-open
+even alias interval. The noncentral complex gap contributes the literal
+radial factor `|q|_2^(-2)`, and the already sealed CMP89 (2.51)
+redistribution at `alpha=-1` turns it into a summable product weight.
+
+The two scalar conditions remain separate: `rho*exp(rho) <= 1/6` controls the
+amplitude, while `CMP89Eq249UniformNoncentralComplexRadiusCondition rho`
+controls the complex fine-symbol gap. The seal intentionally retains the
+conservative factor-four gap budget; the proposed factor-two sharpening is
+not imported.
+
+Runs `31259057786` and `31259202883` preserve respectively the two explicit
+constant-positivity failures and the last opaque radial-constant sign goal.
+Cached diagnostic run `31259339067` passed but retained PRE-VALIDATION; only
+the cold run above retired it.
+
+No finite complex alias sum, stabilized-denominator lower bound, joint `B0`,
+contour shift, Fourier/physical rate dictionary or regional-Green estimate
+is proved. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

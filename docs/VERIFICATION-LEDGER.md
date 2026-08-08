@@ -30198,3 +30198,38 @@ No complex noncentral quotient sum, stabilized-denominator lower bound, joint
 `B0`, contour shift, Fourier/physical rate dictionary or regional-Green
 estimate is proved. No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 638 (2026-08-08, **CMP89 complex noncentral alias quotient GREEN; finite sum open**)
+
+Exact source checkpoint `ff09dc112b01d51a5640852a0cc8e1f817862fd3`
+passed cold GitHub Actions run
+[`31259452871`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31259452871)
+under workflow checkpoint `19c58d1f9feb2d4c918ccf6c14102fb3c30603c3`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `13:25:56Z` to `13:41:39Z`, completed 8,433 jobs
+without a source warning, and the audit ended at `13:41:47Z`; both exited
+zero. All three declarations printed exactly `[propext, Classical.choice,
+Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`98cc354f59e7d65d5d0856e49ed1a51d3693589c0a9bb680ff767182a649507b`;
+the downloaded archive reproduced it locally. GitHub artifact `9022536472`
+has digest
+`7a2fd37533e23a2aa233c29b6b772916f6cdbff6936486870ca161721cb6fcef`.
+
+The sealed producer bounds one literal complex noncentral quotient. One
+averaging amplitude retains the reciprocal-alias weight and the opposite
+amplitude pays only `exp(rho)^4`; no symmetry of the half-open alias set is
+assumed. The uniform complex gap supplies `|q|_2^(-2)`, and the existing
+source-weight redistribution at `alpha=-1` produces the strictly summable
+four-dimensional product exponent.
+
+Amplitude and gap conditions remain distinct, and the conservative
+factor-four gap variation remains visible. Runs `31259057786` and
+`31259202883` retain the two elaboration failures; cached diagnostic run
+`31259339067` passed but did not retire PRE-VALIDATION.
+
+No finite complex quotient sum, stabilized-denominator lower bound, joint
+`B0`, contour shift, Fourier/physical rate dictionary or regional-Green
+estimate is proved. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
