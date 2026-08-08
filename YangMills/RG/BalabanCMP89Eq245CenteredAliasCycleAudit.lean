@@ -13,6 +13,8 @@ result has not yet been verified by the compiler.
 -/
 
 #print axioms YangMills.RG.cmp89Eq245CenteredAliasIntegers_eq_Ico
+#print axioms YangMills.RG.cmp89Eq245CenteredAliasSucc_value
+#print axioms YangMills.RG.cmp89Eq245CenteredAliasPred_value
 #print axioms YangMills.RG.cmp89Eq245CenteredAliasPred_succ
 #print axioms YangMills.RG.cmp89Eq245CenteredAliasSucc_pred
 #print axioms YangMills.RG.cmp89Eq245CenteredAliasCycle_value_or_wrap

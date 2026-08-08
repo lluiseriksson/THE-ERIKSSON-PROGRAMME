@@ -99,6 +99,30 @@ def cmp89Eq245CenteredAliasPred
         omega
       simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
         Finset.mem_Ico] using hout⟩
+
+/-- Integer value of the centered successor, with the wrap branch visible. -/
+theorem cmp89Eq245CenteredAliasSucc_value
+    (N : ℕ) (hN : 0 < N)
+    (m : {m : ℤ // m ∈ cmp89Eq245CenteredAliasIntegers N}) :
+    (cmp89Eq245CenteredAliasSucc N hN m).1 =
+      if m.1 + 1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) then
+        m.1 + 1
+      else
+        cmp89Eq245CenteredAliasLower N := by
+  unfold cmp89Eq245CenteredAliasSucc
+  split_ifs <;> rfl
+
+/-- Integer value of the centered predecessor, with the wrap branch visible. -/
+theorem cmp89Eq245CenteredAliasPred_value
+    (N : ℕ) (hN : 0 < N)
+    (m : {m : ℤ // m ∈ cmp89Eq245CenteredAliasIntegers N}) :
+    (cmp89Eq245CenteredAliasPred N hN m).1 =
+      if cmp89Eq245CenteredAliasLower N < m.1 then
+        m.1 - 1
+      else
+        cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1 := by
+  unfold cmp89Eq245CenteredAliasPred
+  split_ifs <;> rfl
   else
     ⟨cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1, by
       have hNint : (0 : ℤ) < (N : ℤ) := by exact_mod_cast hN
@@ -121,10 +145,8 @@ theorem cmp89Eq245CenteredAliasPred_succ
       m.1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
     simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
       Finset.mem_Ico] using m.property
-  change (cmp89Eq245CenteredAliasPred N hN
-      (cmp89Eq245CenteredAliasSucc N hN m)).1 = m.1
-  dsimp only [cmp89Eq245CenteredAliasSucc, cmp89Eq245CenteredAliasPred,
-    Subtype.coe_mk]
+  rw [cmp89Eq245CenteredAliasPred_value,
+    cmp89Eq245CenteredAliasSucc_value]
   split_ifs <;> omega
 
 /-- Successor is a left inverse of predecessor on the centered fibre. -/
@@ -138,10 +160,8 @@ theorem cmp89Eq245CenteredAliasSucc_pred
       m.1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
     simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
       Finset.mem_Ico] using m.property
-  change (cmp89Eq245CenteredAliasSucc N hN
-      (cmp89Eq245CenteredAliasPred N hN m)).1 = m.1
-  dsimp only [cmp89Eq245CenteredAliasSucc, cmp89Eq245CenteredAliasPred,
-    Subtype.coe_mk]
+  rw [cmp89Eq245CenteredAliasSucc_value,
+    cmp89Eq245CenteredAliasPred_value]
   split_ifs <;> omega
 
 /-- The cyclic permutation of one centered reciprocal-alias coordinate. -/
@@ -166,7 +186,7 @@ theorem cmp89Eq245CenteredAliasCycle_value_or_wrap
       Finset.mem_Ico] using m.property
   change (cmp89Eq245CenteredAliasSucc N hN m).1 = m.1 + 1 ∨
     (cmp89Eq245CenteredAliasSucc N hN m).1 + (N : ℤ) = m.1 + 1
-  dsimp only [cmp89Eq245CenteredAliasSucc, Subtype.coe_mk]
+  rw [cmp89Eq245CenteredAliasSucc_value]
   split_ifs <;> omega
 
 end
