@@ -1,4 +1,4 @@
-name: Validate CMP89 complex noncentral alias sum
+name: Validate CMP89 weighted alias pair variation
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 832d014a7b3c5558c7b1a8f4821fa22ed5bdc06d
+  SOURCE_SHA: 37c7a8f17dd10dc8df679073c72acfdc1534a3b5
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -29,7 +29,7 @@ env:
     cmp89-eq251-alias-amplitude-upper
 
 jobs:
-  cmp89-complex-noncentral-alias-sum:
+  cmp89-weighted-alias-pair-variation:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-complex-noncentral-alias-sum-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-weighted-alias-pair-variation-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq249ComplexNoncentralAliasSumBound.lean \
-            YangMills/RG/BalabanCMP89Eq249ComplexNoncentralAliasSumBoundAudit.lean \
+            YangMills/RG/BalabanCMP89Eq245EntireAverageAliasWeightedVariation.lean \
+            YangMills/RG/BalabanCMP89Eq245EntireAverageAliasWeightedVariationAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp89_complex_noncentral_alias_sum_focal \
-            lake build YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasSumBound
-          run_stage cmp89_complex_noncentral_alias_sum_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq249ComplexNoncentralAliasSumBoundAudit.lean
+          run_stage cmp89_weighted_alias_pair_variation_focal \
+            lake build YangMills.RG.BalabanCMP89Eq245EntireAverageAliasWeightedVariation
+          run_stage cmp89_weighted_alias_pair_variation_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq245EntireAverageAliasWeightedVariationAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp89_complex_noncentral_alias_sum_audit.log": 1,
+              "cmp89_weighted_alias_pair_variation_audit.log": 4,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              cmp89-complex-noncentral-alias-sum-evidence.tar.gz
-          sha256sum cmp89-complex-noncentral-alias-sum-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              cmp89-weighted-alias-pair-variation-evidence.tar.gz
+          sha256sum cmp89-weighted-alias-pair-variation-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp89-complex-noncentral-alias-sum-${{ env.SOURCE_SHA }}
+          name: cmp89-weighted-alias-pair-variation-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp89-complex-noncentral-alias-sum-evidence.tar.gz
+            cmp89-weighted-alias-pair-variation-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-complex-noncentral-alias-sum-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-weighted-alias-pair-variation-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
