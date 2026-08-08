@@ -230,9 +230,15 @@ theorem cmp89Eq251CentralRealIntegrand_le_constant
     (mul_nonneg (mul_nonneg hb1 hb2) hb3)
   have hproduct := mul_le_mul h1234 hratio hratioNonneg
     (mul_nonneg (mul_nonneg (mul_nonneg hb1 hb2) hb3) hb4)
-  have hfinal := hproduct.trans_eq (by
+  have hconstantEq :
+      ((((2 * (1 + cmp89Eq251CentralMomentumRadius d)) *
+              (cmp89Eq250CentralAliasLowerConstant d a)⁻¹) *
+            cmp89Eq251CentralMomentumRadius d) *
+          (18 * Real.pi) ^ d) * (3 * Real.pi) ^ 2 =
+        cmp89Eq251CentralRealIntegrandConstant d a := by
     rw [cmp89Eq251CentralRealIntegrandConstant]
-    ring)
+    ring
+  have hfinal := hproduct.trans_eq hconstantEq
   rw [cmp89Eq251CentralRealIntegrand,
     cmp89Eq251NoncentralRealIntegrand]
   simpa only [Int.cast_zero, mul_zero, add_zero, one_div, mul_assoc] using hfinal
