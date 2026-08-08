@@ -5600,3 +5600,18 @@ definitional unfoldings and one missing type annotation; cached run
 retired it. The conservative factor-four gap budget remains unchanged.
 No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5ba uniform vertical variation of the finite noncentral alias sum (PRE-VALIDATION)
+
+The source is present but its `.olean` has not yet been materialized and the
+result has not yet been compiler-verified. The proposed producer inserts the
+literal fine-symbol budget into the two-gap quotient estimate, relaxes the
+resulting `|q|_2^(-3)` term to `|q|_2^(-2)` only after proving
+`|q|_2 >= pi > 1`, and applies the existing `alpha=-1` source-weight
+redistribution once. It then sums the finite alias fibre by the sealed product
+tsum, without a cardinality factor.
+
+No optimized trigonometric gap or factor-two fine-symbol variation is used.
+No stabilized-denominator lower bound, joint `B0`, contour shift or physical
+Green estimate is claimed. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
