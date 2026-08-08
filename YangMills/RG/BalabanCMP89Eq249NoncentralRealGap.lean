@@ -112,14 +112,25 @@ theorem cmp89Eq249RealNoncentralAliasSum_nonneg_massUniform
     {d L j : ℕ} [NeZero L] {mass : ℝ} {p : Fin d → ℝ}
     (hp : ∀ mu, |p mu| ≤ Real.pi) :
     0 ≤ cmp89Eq249RealNoncentralAliasSum d L j mass p := by
+  let aliases : Finset (Fin d → ℤ) :=
+    cmp89Eq245CenteredAliasVectors d (L ^ j)
+  let zeroAlias : Fin d → ℤ := cmp89Eq249ZeroAlias d
   have hN : 0 < L ^ j :=
     pow_pos (Nat.pos_of_ne_zero (NeZero.ne L)) j
   rw [cmp89Eq249RealNoncentralAliasSum]
+  change 0 ≤ ∑ m ∈ aliases.erase zeroAlias,
+    cmp89Eq250AliasDenominatorSummand
+      d (((L : ℝ) ^ j)⁻¹) mass p m
   apply Finset.sum_nonneg
   intro m hm
   have hmParts := Finset.mem_erase.mp hm
+  have hmMem : m ∈ cmp89Eq245CenteredAliasVectors d (L ^ j) := by
+    simpa only [aliases] using hmParts.2
+  have hm0 : m ≠ 0 := by
+    simpa only [zeroAlias, cmp89Eq249ZeroAlias] using hmParts.1
   exact cmp89Eq250AliasDenominatorSummand_noncentral_nonneg
-    hN hmParts.2 hmParts.1 hp
+    (d := d) (N := L ^ j) (mass := mass) (m := m) (p := p)
+    hN hmMem hm0 hp
 
 /-- The stabilized real lower bound is independent of the running mass. -/
 theorem cmp89Eq249CentralStabilizedLowerConstant_le_real_massUniform
