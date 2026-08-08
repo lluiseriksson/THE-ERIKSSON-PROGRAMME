@@ -156,9 +156,13 @@ theorem half_momentum_gap_le_norm_cmp89Eq245EntireScaledLaplacianSymbol_noncentr
       funext mu
       simp [cmp89Eq245ComplexMomentumRealSlice, hreal mu, q]
     rw [hzslice, cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq]
-  have hvariationRaw :=
+  have hvariationRaw :
+      ‖cmp89Eq245EntireScaledLaplacianSymbol 4 (N : ℝ)⁻¹ mass z -
+          cmp89Eq245EntireScaledLaplacianSymbol 4 (N : ℝ)⁻¹ mass
+            (cmp89Eq245ComplexMomentumRealSlice z)‖ ≤
+        cmp89Eq245EntireScaledLaplacianVerticalBudget 4 rho z :=
     norm_cmp89Eq245EntireScaledLaplacianSymbol_sub_realSlice_le
-      hxi hxi1 hrho himag
+      (mass := mass) hxi hxi1 hrho himag
   have hvariationBudget :=
     cmp89Eq245EntireScaledLaplacianVerticalBudget_le_noncentralGapBudget
       hrho hreal
