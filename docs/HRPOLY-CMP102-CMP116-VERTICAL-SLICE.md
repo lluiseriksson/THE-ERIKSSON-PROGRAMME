@@ -5626,10 +5626,18 @@ runs `31263405769` and `31263602897` preserve the two elaboration frontiers.
 No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
 
-### Step 7.5bb stabilized denominator vertical variation (PRE-VALIDATION)
+### Step 7.5bb stabilized denominator vertical variation (SEALED; complex floor open)
 
-The source is present but its `.olean` has not yet been materialized and the
-result has not yet been compiler-verified. The proposed producer expands the
+Exact source checkpoint `a71e5d5cceaa20971bf40fe8959c5bc4c3737978`
+passed cold GitHub Actions run
+[`31265445387`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31265445387)
+under workflow checkpoint `596751872e8b55150df95e662b4eb1de81333c9d`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,439 jobs and the focal/audit both exited
+zero; all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed producer expands the
 three literal branches of the stabilized CMP89 (2.49) denominator before
 estimation. It combines the sealed central fine-symbol variation, central
 averaging-pair variation, complex noncentral sum bound and noncentral sum

@@ -30358,3 +30358,35 @@ gap, factor-two fine-symbol variation, stabilized-denominator lower bound,
 joint `B0`, contour shift, Fourier/physical rate dictionary or regional-Green
 estimate is obtained. No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 643 (2026-08-08, **CMP89 stabilized-denominator variation GREEN; complex floor open**)
+
+Exact source checkpoint `a71e5d5cceaa20971bf40fe8959c5bc4c3737978`
+passed cold GitHub Actions run
+[`31265445387`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31265445387)
+with workflow checkpoint `596751872e8b55150df95e662b4eb1de81333c9d`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `15:51:46Z` to `16:08:09Z`, completed 8,439 jobs,
+and the audit ended at `16:08:16Z`; both exited zero. The three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9024211862` has GitHub digest
+`5e02fe501b81390acbcfed505077e29ab54f43e63646dfea245972392ac44543`.
+The deterministic inner archive re-hashed on Windows to
+`de97b0e016d1b5c411f4d7ecb5e7298655e2172529ddb4ca575d06ace0a2a9c4`,
+identical to the hash recorded inside the cold runner.
+
+The sealed producer expands the three literal branches of the stabilized
+CMP89 (2.49) denominator before estimating. It combines the central entire
+fine-symbol variation, the central opposite-momentum averaging-pair
+variation, the uniform complex noncentral alias-sum bound and its vertical
+variation. The product branch retains separate fine-symbol and alias-sum
+budgets, while `mass^2 <= 1` remains an explicit source window.
+
+Cached run `31265297548` passed but did not retire PRE-VALIDATION. Failed
+diagnostic run `31265098501` preserves the local elaboration failures. No
+optimized trigonometric gap or factor-two fine-symbol variation is imported.
+No complex denominator floor, reciprocal `B0`, contour shift,
+Fourier/physical rate dictionary or regional-Green estimate is obtained. No
+terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
