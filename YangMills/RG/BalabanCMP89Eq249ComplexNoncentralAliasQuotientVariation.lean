@@ -169,7 +169,7 @@ theorem norm_cmp89Eq248ComplexAliasDenominatorSummand_sub_realSlice_le_radial
       norm_cmp89Eq245EntireAveragePair_scaled_alias_le
         (N := N) hN hm hrho hp (z := aliasZ0)
         (fun mu => by simp [aliasZ0, cmp89Eq245ComplexMomentumRealSlice,
-          haliasReal mu])
+          haliasReal mu, q])
         hzeroImag hamplitude
     simpa [pair0, cmp89Eq248ComplexAliasPairStripConstant] using hbound
   have hgapPos : 0 < gap := by
@@ -190,7 +190,8 @@ theorem norm_cmp89Eq248ComplexAliasDenominatorSummand_sub_realSlice_le_radial
         (mass := mass) hN hrho hradius hm hm0 hp
         (z := aliasZ0)
         (fun mu => by
-          simp [aliasZ0, cmp89Eq245ComplexMomentumRealSlice, haliasReal mu])
+          simp [aliasZ0, cmp89Eq245ComplexMomentumRealSlice,
+            haliasReal mu, q])
         hzeroImag)
   have hNreal : 0 < (N : ℝ) := by exact_mod_cast hN
   have hxi : 0 < (N : ℝ)⁻¹ := inv_pos.mpr hNreal
@@ -205,7 +206,10 @@ theorem norm_cmp89Eq248ComplexAliasDenominatorSummand_sub_realSlice_le_radial
     have hbudget :=
       cmp89Eq245EntireScaledLaplacianVerticalBudget_le_noncentralGapBudget
         hrho haliasReal
-    exact (by simpa [den, den0, aliasZ0] using hraw).trans hbudget
+    have hraw' : ‖den - den0‖ ≤
+        cmp89Eq245EntireScaledLaplacianVerticalBudget 4 rho aliasZ := by
+      simpa [den, den0, aliasZ0] using hraw
+    exact hraw'.trans hbudget
   have hquot := norm_div_sub_div_le_of_lower_bounds
     hgapPos hgapPos hpairVar hpair0 hdenVar hden hden0
   have haliasSlice :
