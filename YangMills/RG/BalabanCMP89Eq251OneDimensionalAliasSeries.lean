@@ -96,7 +96,9 @@ theorem summable_cmp89Eq251OneDimensionalAliasWeight
   · subst m
     simp only [cmp89Eq251OneDimensionalAliasWeight, majorant, central,
       Int.cast_zero, mul_zero, abs_zero, add_zero, one_div, Real.one_rpow]
-    exact le_add_of_nonneg_right (Real.rpow_nonneg le_rfl (-s))
+    simpa only [inv_one, if_true] using
+      (le_add_of_nonneg_right (Real.rpow_nonneg le_rfl (-s)) :
+        (1 : ℝ) ≤ 1 + 0 ^ (-s))
   · have htail := cmp89Eq251OneDimensionalAliasWeight_le_abs_int_rpow hs hm
     simpa [majorant, central, hm] using htail
 
