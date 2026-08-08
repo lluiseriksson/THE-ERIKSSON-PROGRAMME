@@ -42,9 +42,8 @@ theorem norm_cmp89Eq245EntireAverageBase_pow_eq
   rw [norm_pow, cmp89Eq245EntireAverageBase, Complex.norm_exp,
     ← Real.exp_nat_mul]
   congr 1
-  have hNcomplex : (N : ℂ) ≠ 0 := by exact_mod_cast Nat.ne_of_gt hN
   have hNreal : (N : ℝ) ≠ 0 := by exact_mod_cast Nat.ne_of_gt hN
-  simp [Complex.mul_re, Complex.mul_im, hNcomplex, hNreal, div_eq_mul_inv]
+  simp [Complex.mul_re, Complex.mul_im, hNreal, div_eq_mul_inv]
   ring
 
 /-- Every Fourier mode of the normalized average has scale-uniform strip
@@ -86,9 +85,8 @@ theorem norm_cmp89Eq245EntireAverageFactor_le_exp
           exact norm_cmp89Eq245EntireAverageBase_pow_le_exp hN
             (Finset.mem_range.mp hr) hrho hz
     _ = Real.exp rho := by
-          have hNcomplex : (N : ℂ) ≠ 0 := by exact_mod_cast Nat.ne_of_gt hN
           have hNreal : (N : ℝ) ≠ 0 := by exact_mod_cast Nat.ne_of_gt hN
-          simp [norm_inv, hNcomplex, hNreal]
+          simp [norm_inv, hNreal]
 
 /-- The `d`-coordinate entire averaging amplitude has strip growth
 `exp rho ^ d`, with no scale-dependent constant. -/
