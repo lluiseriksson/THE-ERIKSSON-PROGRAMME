@@ -57,9 +57,12 @@ theorem cmp89Eq249UnitLaplacianSymbol_le_momentumSquare
     cmp89Eq249UnitLaplacianSymbol d mass p ≤
       cmp89Eq251MomentumSquare p + mass ^ 2 := by
   rw [cmp89Eq249UnitLaplacianSymbol, cmp89Eq251MomentumSquare]
-  gcongr with mu
-  exact (sq_le_sq₀ (norm_nonneg _ ) (abs_nonneg _)).2
-    (cmp89Eq249UnitDifferenceNorm_le_abs (p mu))
+  apply add_le_add_right
+  apply Finset.sum_le_sum
+  intro mu _
+  simpa only [sq_abs] using
+    ((sq_le_sq₀ (norm_nonneg _) (abs_nonneg _)).2
+      (cmp89Eq249UnitDifferenceNorm_le_abs (p mu)))
 
 /-- On the expanded alias zone, the scaled massive symbol is bounded below
 by the explicit continuum symbol with coefficient `(1/(3*pi))^2`. -/
@@ -86,7 +89,7 @@ theorem one_div_three_pi_sq_mul_momentumSquare_le_scaledLaplacian
         hxi (hq mu)
     have hsquare := (sq_le_sq₀
       (mul_nonneg hcNonneg (abs_nonneg (q mu))) (norm_nonneg _)).2 hcoord
-    simpa [sq_abs, mul_pow] using hsquare
+    simpa only [sq_abs, mul_pow] using hsquare
   · exact mul_le_of_le_one_left (sq_nonneg mass)
       hcOne
 
@@ -105,7 +108,7 @@ theorem cmp89Eq249_unit_div_scaled_le_momentum_ratio
   have hunit := cmp89Eq249UnitLaplacianSymbol_le_momentumSquare mass p
   have hscaled :=
     one_div_three_pi_sq_mul_momentumSquare_le_scaledLaplacian
-      hxi hqZone
+      (mass := mass) hxi hqZone
   have hcPos : 0 < (1 / (3 * Real.pi)) ^ 2 := by positivity
   have hscaledPos :
       0 < cmp89Eq245ScaledLaplacianSymbol d xi mass q :=
@@ -198,7 +201,9 @@ theorem cmp89Eq249_unit_div_scaled_noncentral_alias_le
       (∑ mu, p mu ^ 2) ≤ ∑ _mu : Fin d, Real.pi ^ 2 := by
         apply Finset.sum_le_sum
         intro mu _
-        exact (sq_le_sq₀ (abs_nonneg _) Real.pi_pos.le).2 (hp mu)
+        rw [← sq_abs (p mu), ← sq_abs Real.pi]
+        exact (sq_le_sq₀ (abs_nonneg _) (abs_nonneg _)).2
+          (by simpa [abs_of_pos Real.pi_pos] using hp mu)
       _ = (d : ℝ) * Real.pi ^ 2 := by
         rw [Fin.sum_const, nsmul_eq_mul]
   have hnum :
