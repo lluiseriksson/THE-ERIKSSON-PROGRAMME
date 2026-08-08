@@ -46,7 +46,7 @@ theorem cmp89Eq245EntireAverageBase_pow_eq_exp_modeExponent
 /-- Exact size of the exponent displacement from `z` to its vertical
 projection on the real slice. -/
 theorem norm_cmp89Eq245EntireAverageModeExponent_sub_realSlice_eq
-    {N r : ℕ} (hN : 0 < N) (z : ℂ) :
+    (N r : ℕ) (z : ℂ) :
     ‖cmp89Eq245EntireAverageModeExponent N r z -
         cmp89Eq245EntireAverageModeExponent N r (z.re : ℂ)‖ =
       ((r : ℝ) / (N : ℝ)) * |z.im| := by
@@ -97,7 +97,7 @@ theorem norm_cmp89Eq245EntireAverageBase_pow_sub_realSlice_le
   · rw [← cmp89Eq245EntireAverageBase_pow_eq_exp_modeExponent,
       norm_cmp89Eq245EntireAverageBase_pow_eq hN]
     simp
-  · rw [norm_cmp89Eq245EntireAverageModeExponent_sub_realSlice_eq hN]
+  · rw [norm_cmp89Eq245EntireAverageModeExponent_sub_realSlice_eq]
     have hNreal : 0 < (N : ℝ) := by exact_mod_cast hN
     have hfreq0 : 0 ≤ (r : ℝ) / (N : ℝ) :=
       div_nonneg (Nat.cast_nonneg r) hNreal.le
