@@ -44,6 +44,7 @@ def cmp89Eq245EntireAverageFactor (N : ℕ) (z : ℂ) : ℂ :=
     ∑ r ∈ Finset.range N, cmp89Eq245EntireAverageBase N z ^ r
 
 /-- The finite geometric averaging factor is entire. -/
+@[fun_prop]
 theorem differentiable_cmp89Eq245EntireAverageFactor (N : ℕ) :
     Differentiable ℂ (cmp89Eq245EntireAverageFactor N) := by
   unfold cmp89Eq245EntireAverageFactor cmp89Eq245EntireAverageBase
@@ -59,10 +60,7 @@ momentum coordinates. -/
 theorem differentiable_cmp89Eq245EntireAverageAmplitude (d N : ℕ) :
     Differentiable ℂ (cmp89Eq245EntireAverageAmplitude d N) := by
   unfold cmp89Eq245EntireAverageAmplitude
-  apply Differentiable.finset_prod
-  intro mu hmu
-  exact (differentiable_cmp89Eq245EntireAverageFactor N).comp
-    (differentiable_apply mu)
+  fun_prop
 
 /-- At a real momentum where the printed denominator is nonzero, the finite
 geometric continuation is exactly the removable factor already used in the
@@ -99,12 +97,17 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_eq
       congr 1
       push_cast
       field_simp [hNreal]
-      ring
+    have hx_exp_mul :
+        Complex.exp
+            (Complex.I *
+              (-((↑((N : ℝ)⁻¹) : ℂ) * (q : ℂ)))) = x := by
+      rw [← hx_exp]
+      push_cast
     rw [cmp89Eq245EntireAverageFactor,
       cmp89Eq245ComplexAverageFactor_eq_literal hxi hq,
       cmp89Eq245LiteralComplexAverageFactor,
       show cmp89Eq245EntireAverageBase N (q : ℂ) = x by rfl,
-      geom_sum_eq hx_ne_one N, hx_pow, ← hx_exp]
+      geom_sum_eq hx_ne_one N, hx_pow, hx_exp_mul]
     push_cast
     field_simp [hNreal, hNcomplex, sub_ne_zero.mpr hx_ne_one]
     ring
