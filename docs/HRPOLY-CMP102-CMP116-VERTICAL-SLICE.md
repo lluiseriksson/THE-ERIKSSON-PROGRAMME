@@ -5801,3 +5801,28 @@ the conservative strip already compiled in the tree: neither the optional
 8x trigonometric sharpening nor the uncompiled 2x opposite-pair variation is
 used or claimed. No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5bg signed endpoint contour momentum (PRE-VALIDATION)
+
+The proposed producer assigns one endpoint displacement `u` the literal
+complex momentum
+
+```text
+z_mu = p_mu + i * rho * sign(u_mu).
+```
+
+It proves coordinatewise strip membership and the exact alias-independent
+identity
+
+```text
+|exp(i (z + 2*pi*m).u)| = exp(-rho * |u|_1).
+```
+
+This construction is endpoint-specific. The two phases exposed by Step 7.5bf
+must be shifted separately after splitting the integral; no single shift of
+their difference is asserted. The equality between the original and shifted
+integrals, the complete strip bound, physical `B0`, flowing `mass^2 <= 1`
+dictionary, Fourier/physical-rate transport and window-15 contraction remain
+open. Neither optional constant sharpening is consumed. No terminal field is
+discharged: counters remain `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained.
