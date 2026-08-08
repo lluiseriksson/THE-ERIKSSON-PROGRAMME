@@ -80,7 +80,7 @@ theorem cmp89Eq245EntireAverageAmplitude_coordinateAliasPeriodShift
     simpa [cmp89Eq251CoordinateAliasPeriodShift] using
       (cmp89Eq245EntireAverageFactor_add_int_aliasPeriod
         hN (1 : ℤ) (z mu))
-  · simp [cmp89Eq251CoordinateAliasPeriodShift, Pi.single_apply, hmu]
+  · simp [cmp89Eq251CoordinateAliasPeriodShift, hmu]
 
 /-- The opposite-momentum amplitude is preserved by the corresponding
 negative alias wrap. -/
@@ -94,10 +94,10 @@ theorem cmp89Eq245EntireAverageAmplitude_neg_coordinateAliasPeriodShift
   intro nu _
   by_cases hmu : nu = mu
   · subst nu
-    simpa [cmp89Eq251CoordinateAliasPeriodShift] using
+    simpa [cmp89Eq251CoordinateAliasPeriodShift, add_comm] using
       (cmp89Eq245EntireAverageFactor_add_int_aliasPeriod
         hN (-1 : ℤ) (-z mu))
-  · simp [cmp89Eq251CoordinateAliasPeriodShift, Pi.single_apply, hmu]
+  · simp [cmp89Eq251CoordinateAliasPeriodShift, hmu]
 
 /-- The holomorphic averaging pairing is invariant under one coordinate
 alias wrap. -/
