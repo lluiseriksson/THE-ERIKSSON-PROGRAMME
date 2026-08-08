@@ -29430,3 +29430,41 @@ above retired PRE-VALIDATION.  The noncentral Laplacian ratio, Holder factor,
 complete physical integrand estimate, analytic strip and transport remain
 open.  No terminal field is discharged: the live counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 614 (2026-08-08, **CMP89 noncentral massive-symbol ratio GREEN conditionally; mass flow open; 20/41 unchanged**)
+
+Exact source checkpoint
+`492318060dbf3b2ab9483f413151665df59ed39c` was validated by cold GitHub
+Actions run [`31234910793`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31234910793)
+(workflow checkpoint `519f3651f0635a38eba91b5a01f06a2c226f8c7b`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T02:26:51Z` to `02:27:26Z`, exited zero
+without warnings, and ended with `Build completed successfully (3286 jobs).`
+The audit ended at `02:27:33Z` and also exited zero.  All seven declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`0f8f1b38c545f357306a63ed10c0dab13327d4c2c73e4a5568382bc791b8521f`.
+GitHub recorded SHA-256
+`2d34b037da32812c999725755610cf25468b385304e7e351802cac5dce38c8ee`
+for uploaded artifact `9015062734` (11,348 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, seven-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning or error line
+appears in the focal or audit logs.
+
+The sealed module proves the literal massive-symbol comparison and the
+noncentral inverse-square alias estimate under the explicit hypothesis
+`mass^2 <= 1`.  It does not prove that the source family satisfies that
+hypothesis.  Visual review of CMP89 printed pp. 584--586 confirms that the
+Fourier proof uses `m_j^2` and that Section 3 uses `m_k^2`, while those pages do
+not state the cross-scale law.  The condition is therefore recorded as a
+source/dictionary obligation on a flowing quantity, not as a sixteenth freely
+chosen smallness window.
+
+Cached run `31234809751` passed the repaired source; only the cold run above
+retired PRE-VALIDATION.  The mass-flow dictionary, Holder factor, complete
+physical integrand estimate, analytic strip and transport remain open.  No
+terminal field is discharged: the live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

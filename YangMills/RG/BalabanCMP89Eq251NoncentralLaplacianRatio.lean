@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251AliasAmplitudeUpper
 
 /-!
-# PRE-VALIDATION: noncentral Laplacian ratio in CMP89 (2.51)
-
-The source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+# Noncentral Laplacian ratio in CMP89 (2.51)
 
 CMP89 printed p. 585 compares the two massive symbols by
 

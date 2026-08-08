@@ -4619,3 +4619,45 @@ stay exactly `20/41` and `TermSource = 0`.
 Run `31233738503` preserves the sole exponent-normalization elaboration
 failure.  Cached run `31233870292` passed the repaired source, and only the
 cold run above retired PRE-VALIDATION.
+
+### Step 7.5ab noncentral massive-symbol ratio for CMP89 (2.51) (SEALED; mass-flow dictionary open)
+
+Exact source checkpoint `492318060dbf3b2ab9483f413151665df59ed39c`
+passed cold GitHub Actions run
+[`31234910793`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31234910793)
+(workflow checkpoint `519f3651f0635a38eba91b5a01f06a2c226f8c7b`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-08T02:26:51Z` to `02:27:26Z`, exited
+zero without warnings, and ended with
+`Build completed successfully (3286 jobs).`; the audit ended at `02:27:33Z`.
+All seven audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed producer proves the literal massive-symbol comparison
+
+```text
+Delta^1(p) / Delta^(1/N)(p+2*pi*m)
+  <= (3*pi)^2 (d*pi^2 + 1) / |p+2*pi*m|^2
+```
+
+for every nonzero printed alias, under the explicit condition `mass^2 <= 1`.
+The lower scaled-symbol estimate uses the already sealed expanded alias zone
+and keeps the coarse constant `1/(3*pi)` visible.  The theorem is not uniform
+over arbitrary mass and does not claim that the RG family satisfies the mass
+condition.
+
+Primary visual review of CMP89 printed pp. 584--586 confirms that (2.44)--(2.51)
+use the scale-indexed quantity `m_j^2`, while the action displayed at the start
+of Section 3 uses `m_k^2`.  The law relating these masses across scales is not
+printed on those pages.  Consequently `mass^2 <= 1` is **not** entered as a
+sixteenth freely chosen smallness window: it is a separate source/dictionary
+obligation about a flowing quantity.  Until its definition is recovered, the
+brick is conditional and cannot feed the uniform-in-depth endpoint.
+
+The Holder exponential difference, complete real integrand comparison in
+(2.51), uniform analytic strip and transport remain open.  No physical `B0` or
+`delta0` is produced, window 15 remains unattained, no row 23--24 is
+discharged, and the live counters stay exactly `20/41` and `TermSource = 0`.
+
+Cached diagnostic run `31234809751` passed the final source.  Only the cold run
+above retired PRE-VALIDATION.
