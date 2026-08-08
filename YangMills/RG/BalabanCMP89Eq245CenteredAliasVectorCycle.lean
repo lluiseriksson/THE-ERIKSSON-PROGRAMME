@@ -41,7 +41,9 @@ theorem cmp89Eq245CenteredAliasVector_coordinate_mem
     (mu : Fin d) :
     m.1 mu ∈ cmp89Eq245CenteredAliasIntegers N := by
   have hm := m.property
-  rw [cmp89Eq245CenteredAliasVectors, Fintype.mem_piFinset] at hm
+  change m.1 ∈ Fintype.piFinset
+    (fun _ : Fin d => cmp89Eq245CenteredAliasIntegers N) at hm
+  rw [Fintype.mem_piFinset] at hm
   exact hm mu
 
 /-- The printed centered alias-vector fibre is the dependent product of its
@@ -54,7 +56,9 @@ def cmp89Eq245CenteredAliasVectorPiEquiv (d N : ℕ) :
     ⟨m.1 mu, cmp89Eq245CenteredAliasVector_coordinate_mem d N m mu⟩
   invFun f :=
     ⟨fun mu => (f mu).1, by
-      rw [cmp89Eq245CenteredAliasVectors, Fintype.mem_piFinset]
+      change (fun mu => (f mu).1) ∈ Fintype.piFinset
+        (fun _ : Fin d => cmp89Eq245CenteredAliasIntegers N)
+      rw [Fintype.mem_piFinset]
       intro mu
       exact (f mu).property⟩
   left_inv m := by
