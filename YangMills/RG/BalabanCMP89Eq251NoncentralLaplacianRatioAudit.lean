@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP89Eq251NoncentralLaplacianRatio
+
+#print axioms YangMills.RG.cmp89Eq251MomentumSquare_nonneg
+#print axioms YangMills.RG.cmp89Eq249UnitDifferenceNorm_le_abs
+#print axioms YangMills.RG.cmp89Eq249UnitLaplacianSymbol_le_momentumSquare
+#print axioms YangMills.RG.one_div_three_pi_sq_mul_momentumSquare_le_scaledLaplacian
+#print axioms YangMills.RG.cmp89Eq249_unit_div_scaled_le_momentum_ratio
+#print axioms YangMills.RG.cmp89Eq251MomentumSquare_shift_pos
+#print axioms YangMills.RG.cmp89Eq249_unit_div_scaled_noncentral_alias_le
