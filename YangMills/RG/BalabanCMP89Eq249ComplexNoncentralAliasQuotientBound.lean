@@ -223,6 +223,11 @@ theorem norm_cmp89Eq248ComplexAliasDenominatorSummand_le_sourceWeight
             (cmp89Eq251AliasSeriesExponent 4 (-1)) m := by
     exact cmp89Eq251EuclideanNorm_rpow_mul_aliasWeight_le_sourceWeight
       (d := 4) (alpha := (-1 : ℝ)) (by norm_num) (by norm_num) hm0 hp
+  have hradialConstant :
+      0 ≤ cmp89Eq249ComplexNoncentralAliasRadialConstant rho := by
+    rw [cmp89Eq249ComplexNoncentralAliasRadialConstant,
+      cmp89Eq245EntireAverageAliasStripConstant]
+    positivity
   calc
     ‖cmp89Eq245EntireAveragePair 4 N
           (cmp89Eq248EntireAliasMomentum z m) /
@@ -237,7 +242,7 @@ theorem norm_cmp89Eq248ComplexAliasDenominatorSummand_le_sourceWeight
           cmp89Eq251MultidimensionalAliasWeight
             (cmp89Eq251AliasSeriesExponent 4 (-1)) m) := by
       exact mul_le_mul_of_nonneg_left hredistribute
-        (by positivity : 0 ≤ cmp89Eq249ComplexNoncentralAliasRadialConstant rho)
+        hradialConstant
     _ = cmp89Eq249ComplexNoncentralAliasQuotientConstant rho *
         cmp89Eq251MultidimensionalAliasWeight
           (cmp89Eq251AliasSeriesExponent 4 (-1)) m := by
