@@ -41,24 +41,6 @@ noncomputable section
 def cmp89Eq245EntireAverageAliasStripConstant (rho : ℝ) : ℝ :=
   18 * Real.pi * (Real.exp rho + 1)
 
-/-- The geometric denominator is the normalized scaled difference, with the
-normalizing factor kept literal. -/
-theorem cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference
-    {N : ℕ} (hN : 0 < N) (z : ℂ) :
-    cmp89Eq245EntireAverageBase N z - 1 =
-      ((N : ℝ)⁻¹ : ℂ) *
-        cmp89Eq245EntireScaledDifference (N : ℝ)⁻¹ z := by
-  have hNcomplex : (N : ℂ) ≠ 0 := by exact_mod_cast Nat.ne_of_gt hN
-  have hinv : (((N : ℝ)⁻¹ : ℝ) : ℂ) = (N : ℂ)⁻¹ := by
-    simpa using Complex.ofReal_inv (N : ℝ)
-  have hscaled :
-      cmp89Eq245EntireScaledDifference (N : ℝ)⁻¹ z =
-        (cmp89Eq245EntireAverageBase N z - 1) / (N : ℂ)⁻¹ := by
-    rw [cmp89Eq245EntireScaledDifference,
-      cmp89Eq245EntireAverageBase, hinv]
-  rw [hinv, hscaled]
-  field_simp [hNcomplex]
-
 /-- The geometric base varies vertically with the normalized factor `N⁻¹`
 still visible. -/
 theorem norm_cmp89Eq245EntireAverageBase_sub_realSlice_le
@@ -74,31 +56,44 @@ theorem norm_cmp89Eq245EntireAverageBase_sub_realSlice_le
     dsimp [xi]
     rw [inv_le_one₀ hNreal]
     exact_mod_cast (Nat.one_le_iff_ne_zero.mpr (Nat.ne_of_gt hN))
-  have hdiff :=
-    norm_cmp89Eq245EntireScaledDifference_sub_realSlice_le
-      hxi hxi1 hrho hz
-  have heq :
-      cmp89Eq245EntireAverageBase N z -
-          cmp89Eq245EntireAverageBase N (z.re : ℂ) =
-        (xi : ℂ) *
-          (cmp89Eq245EntireScaledDifference xi z -
-            cmp89Eq245EntireScaledDifference xi (z.re : ℂ)) := by
+  have hbaseZ :
+      cmp89Eq245EntireAverageBase N z =
+        Complex.exp (cmp89Eq245EntireAverageModeExponent N 1 z) := by
+    simpa using
+      cmp89Eq245EntireAverageBase_pow_eq_exp_modeExponent N 1 z
+  have hbaseReal :
+      cmp89Eq245EntireAverageBase N (z.re : ℂ) =
+        Complex.exp
+          (cmp89Eq245EntireAverageModeExponent N 1 (z.re : ℂ)) := by
+    simpa using
+      cmp89Eq245EntireAverageBase_pow_eq_exp_modeExponent
+        N 1 (z.re : ℂ)
+  have hraw :
+      ‖cmp89Eq245EntireAverageBase N z -
+          cmp89Eq245EntireAverageBase N (z.re : ℂ)‖ ≤
+        (xi * rho) * Real.exp (xi * rho) := by
+    rw [hbaseZ, hbaseReal]
+    apply norm_complex_exp_sub_exp_le_of_norm_sub_le
+      (mul_nonneg hxi.le hrho)
+    · rw [Complex.norm_exp]
+      simp [cmp89Eq245EntireAverageModeExponent,
+        Complex.mul_re, Complex.mul_im]
+    · rw [norm_cmp89Eq245EntireAverageModeExponent_sub_realSlice_eq]
+      have hone : (1 : ℝ) / (N : ℝ) = xi := by simp [xi]
+      rw [hone]
+      exact mul_le_mul_of_nonneg_left hz hxi.le
+  exact hraw.trans <| by
+    have hxirho : xi * rho ≤ rho := by
+      exact mul_le_of_le_one_left hrho hxi1
+    have hexp : Real.exp (xi * rho) ≤ Real.exp rho :=
+      Real.exp_le_exp.mpr hxirho
     calc
-      cmp89Eq245EntireAverageBase N z -
-          cmp89Eq245EntireAverageBase N (z.re : ℂ) =
-        (cmp89Eq245EntireAverageBase N z - 1) -
-          (cmp89Eq245EntireAverageBase N (z.re : ℂ) - 1) := by ring
-      _ = (xi : ℂ) *
-          (cmp89Eq245EntireScaledDifference xi z -
-            cmp89Eq245EntireScaledDifference xi (z.re : ℂ)) := by
-        rw [cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference hN,
-          cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference hN]
-        have hinv : (xi : ℂ) = (N : ℂ)⁻¹ := by
-          simpa [xi] using Complex.ofReal_inv (N : ℝ)
-        rw [hinv]
+      (xi * rho) * Real.exp (xi * rho) ≤
+          (xi * rho) * Real.exp rho :=
+        mul_le_mul_of_nonneg_left hexp (mul_nonneg hxi.le hrho)
+      _ = (N : ℝ)⁻¹ * (rho * Real.exp rho) := by
+        dsimp [xi]
         ring
-  rw [heq, norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hxi]
-  exact mul_le_mul_of_nonneg_left hdiff hxi.le
 
 /-- The numerator of the finite geometric quotient is uniform in the real
 momentum and hence in the reciprocal alias. -/
@@ -138,17 +133,29 @@ theorem one_div_three_pi_mul_abs_le_norm_cmp89Eq245EntireAverageBase_sub_one
   let xi : ℝ := (N : ℝ)⁻¹
   have hNreal : 0 < (N : ℝ) := by exact_mod_cast hN
   have hxi : 0 < xi := inv_pos.mpr hNreal
-  have hscaled :=
-    one_div_three_pi_mul_abs_le_cmp89Eq245ScaledDifferenceNorm hxi hzone
-  have heq :
-      cmp89Eq245EntireAverageBase N (q : ℂ) - 1 =
-        (xi : ℂ) * cmp89Eq245EntireScaledDifference xi (q : ℂ) := by
-    simpa [xi] using
-      (cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference
-        hN (q : ℂ))
-  rw [heq, norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hxi,
-    norm_cmp89Eq245EntireScaledDifference_ofReal_eq]
-  exact mul_le_mul_of_nonneg_left hscaled hxi.le
+  have hunit :=
+    one_div_three_pi_mul_abs_le_cmp89Eq249UnitDifferenceNorm hzone
+  have hinv : (xi : ℂ) = (N : ℂ)⁻¹ := by
+    simpa [xi] using Complex.ofReal_inv (N : ℝ)
+  have hnorm :
+      ‖cmp89Eq245EntireAverageBase N (q : ℂ) - 1‖ =
+        cmp89Eq249UnitDifferenceNorm (xi * q) := by
+    rw [cmp89Eq245EntireAverageBase, cmp89Eq249UnitDifferenceNorm]
+    have hexp :
+        Complex.exp (Complex.I * (-((N : ℂ)⁻¹ * (q : ℂ)))) =
+          Complex.exp (Complex.I * (-((xi * q : ℝ) : ℂ))) := by
+      congr 1
+      rw [← hinv]
+      push_cast
+    rw [hexp]
+  calc
+    (N : ℝ)⁻¹ * ((1 / (3 * Real.pi)) * |q|) =
+        (1 / (3 * Real.pi)) * |xi * q| := by
+      rw [abs_mul, abs_of_pos hxi]
+      dsimp [xi]
+      ring
+    _ ≤ cmp89Eq249UnitDifferenceNorm (xi * q) := hunit
+    _ = ‖cmp89Eq245EntireAverageBase N (q : ℂ) - 1‖ := hnorm.symm
 
 /-- A noncentral coordinate retains half of its real geometric denominator
 under the scale-free strip budget. -/
