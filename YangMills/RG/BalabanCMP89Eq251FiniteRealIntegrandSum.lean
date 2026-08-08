@@ -84,7 +84,22 @@ theorem cmp89Eq251FiniteRealIntegrandSum_le_bound
   have hconstantNonneg :
       0 ≤ cmp89Eq251NoncentralRealIntegrandConstant d a alpha := by
     rw [cmp89Eq251NoncentralRealIntegrandConstant]
-    positivity
+    have hinv :
+        0 ≤ (cmp89Eq250CentralAliasLowerConstant d a)⁻¹ :=
+      inv_nonneg.mpr (cmp89Eq250CentralAliasLowerConstant_pos ha).le
+    have hpod : 0 ≤ (18 * Real.pi) ^ d :=
+      pow_nonneg (mul_nonneg (by norm_num) Real.pi_pos.le) d
+    have hsymbol :
+        0 ≤ (3 * Real.pi) ^ 2 * ((d : ℝ) * Real.pi ^ 2 + 1) :=
+      mul_nonneg (sq_nonneg _)
+        (add_nonneg
+          (mul_nonneg (Nat.cast_nonneg d) (sq_nonneg _)) (by norm_num))
+    have hrpow : 0 ≤ (3 : ℝ) ^ (1 - alpha) :=
+      (Real.rpow_pos_of_pos (by norm_num) (1 - alpha)).le
+    exact mul_nonneg
+      (mul_nonneg
+        (mul_nonneg (mul_nonneg (by norm_num) hinv) hpod) hsymbol)
+      hrpow
   have hnoncentralPointwise :
       ∀ m ∈ aliases.erase zeroAlias,
         integrand m ≤
