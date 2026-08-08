@@ -97,7 +97,9 @@ theorem cmp89Eq247ComplexReducedAliasDenominator_eq_central_add_noncentral
       term zeroAlias =
         cmp89Eq249CentralEntireAveragePair d L j z /
           cmp89Eq249CentralEntireFineSymbol d L j mass z := by
-    rw [term, cmp89Eq248ComplexAliasDenominatorSummand, halias]
+    change
+      cmp89Eq248ComplexAliasDenominatorSummand d L j mass z zeroAlias = _
+    rw [cmp89Eq248ComplexAliasDenominatorSummand, halias]
     rfl
   rw [cmp89Eq247ComplexReducedAliasDenominator]
   change 1 + (a : ℂ) * (∑ m ∈ aliases, term m) = _
