@@ -41,6 +41,7 @@ theorem sum_abs_le_two_mul_cmp89Eq251EuclideanNorm_fin_four
       (∑ mu, |q mu|) ^ 2 ≤ 4 * cmp89Eq251MomentumSquare q := by
     rw [Fin.sum_univ_four, cmp89Eq251MomentumSquare, Fin.sum_univ_four]
     nlinarith [
+      sq_abs (q 0), sq_abs (q 1), sq_abs (q 2), sq_abs (q 3),
       sq_nonneg (|q 0| - |q 1|), sq_nonneg (|q 0| - |q 2|),
       sq_nonneg (|q 0| - |q 3|), sq_nonneg (|q 1| - |q 2|),
       sq_nonneg (|q 1| - |q 3|), sq_nonneg (|q 2| - |q 3|)]
@@ -71,7 +72,6 @@ theorem cmp89Eq245EntireScaledLaplacianVerticalBudget_le_noncentralGapBudget
   have hl1 := sum_abs_le_two_mul_cmp89Eq251EuclideanNorm_fin_four q
   rw [cmp89Eq245EntireScaledLaplacianVerticalBudget,
     cmp89Eq249NoncentralComplexGapBudget]
-  dsimp only [eps]
   simp_rw [hreal]
   rw [Fin.sum_univ_four]
   have hl1' :
@@ -123,7 +123,8 @@ theorem half_momentum_gap_le_norm_cmp89Eq245EntireScaledLaplacianSymbol_noncentr
   have hxi : 0 < (N : ℝ)⁻¹ := inv_pos.mpr hNreal
   have hxi1 : (N : ℝ)⁻¹ ≤ 1 := by
     rw [inv_le_one₀ hNreal]
-    exact_mod_cast hN
+    have hNone : 1 ≤ N := Nat.one_le_iff_ne_zero.mpr (Nat.ne_of_gt hN)
+    exact_mod_cast hNone
   have hzone : ∀ mu, |(N : ℝ)⁻¹ * q mu| ≤ 3 * Real.pi / 2 := by
     intro mu
     exact abs_inverse_count_mul_add_cmp89Eq245AliasShift_le_three_pi_div_two
@@ -131,19 +132,31 @@ theorem half_momentum_gap_le_norm_cmp89Eq245EntireScaledLaplacianSymbol_noncentr
         rw [cmp89Eq245CenteredAliasVectors, Fintype.mem_piFinset] at hm
         exact hm mu) (hp mu)
   have hgapReal : gap ≤ realSymbol := by
-    exact one_div_three_pi_sq_mul_momentumSquare_le_scaledLaplacian
-      hxi hzone
+    have hraw :=
+      one_div_three_pi_sq_mul_momentumSquare_le_scaledLaplacian
+        (d := 4) (xi := (N : ℝ)⁻¹) (mass := mass) (q := q) hxi hzone
+    calc
+      gap ≤ (1 / (3 * Real.pi)) ^ 2 *
+          (cmp89Eq251MomentumSquare q + mass ^ 2) := by
+        dsimp [gap]
+        gcongr
+        exact le_add_of_nonneg_right (sq_nonneg mass)
+      _ ≤ realSymbol := by simpa [realSymbol] using hraw
   have hrealSymbol : 0 ≤ realSymbol := by
-    rw [realSymbol, cmp89Eq245ScaledLaplacianSymbol]
+    dsimp [realSymbol]
+    rw [cmp89Eq245ScaledLaplacianSymbol]
     exact add_nonneg (Finset.sum_nonneg fun _ _ => sq_nonneg _) (sq_nonneg _)
   have hslice :
       cmp89Eq245EntireScaledLaplacianSymbol 4 (N : ℝ)⁻¹ mass
           (cmp89Eq245ComplexMomentumRealSlice z) =
         (realSymbol : ℂ) := by
-    rw [cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq]
-    congr 2
-    funext mu
-    exact hreal mu
+    have hzslice :
+        cmp89Eq245ComplexMomentumRealSlice z =
+          fun mu => (q mu : ℂ) := by
+      funext mu
+      simp [cmp89Eq245ComplexMomentumRealSlice, hreal mu, q]
+    rw [hzslice, cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq]
+    rfl
   have hvariationRaw :=
     norm_cmp89Eq245EntireScaledLaplacianSymbol_sub_realSlice_le
       hxi hxi1 hrho himag
