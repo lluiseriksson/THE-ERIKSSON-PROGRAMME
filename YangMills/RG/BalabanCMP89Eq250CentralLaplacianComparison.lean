@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq245ComplexSincDictionary
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
 
 /-!
-# PRE-VALIDATION: central Laplacian comparison below CMP89 (2.50)
+# Cold-sealed central Laplacian comparison below CMP89 (2.50)
 
-The primary source is present, but this module's `.olean` has not yet been
-materialized and its declarations have not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`1998e2fb71ce126940639cef8fe894642850c430` by cold GitHub Actions run
+`31228925432`.  Restoration and saving of `.lake/build` were skipped.  The
+warning-free focal completed 3,275 jobs, the audit exited zero, and all five
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.45) defines the fine-lattice symbol `Delta^xi`, while (2.49) uses
 the unit-lattice symbol `Delta^1`.  The central alias in the positive

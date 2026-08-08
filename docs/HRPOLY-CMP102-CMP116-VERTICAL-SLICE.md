@@ -4281,3 +4281,44 @@ superseded solely to remove linter warnings; cached run `31227769422` and the
 cold run above certify the warning-free source.  The next honest producer is
 the pair of Laplacian-symbol comparisons used by the central alias term of
 (2.50), before summing the noncentral aliases.
+
+### Step 7.5t central Laplacian comparison for CMP89 (2.50) (SEALED; full central alias open)
+
+Exact source checkpoint `1998e2fb71ce126940639cef8fe894642850c430`
+passed cold GitHub Actions run
+[`31228925432`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31228925432)
+(workflow checkpoint `8f344357d5d16fa6fccd0e4fb382ad9b356cbc7c`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-08T00:03:43Z` to `00:03:51Z`, exited
+zero without warnings, and ended with
+`Build completed successfully (3275 jobs).`; the audit ended at `00:03:58Z`.
+All five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed brick defines the literal coordinate norms and the massive
+fine- and unit-lattice Laplacian symbols below (2.50).  Jordan's inequality
+and the exact exponential-difference norm give, on the Brillouin box and for
+positive `xi`,
+
+```text
+Delta^xi(p) <= (pi / 2)^2 * Delta^1(p).
+```
+
+For positive mass this is inverted without a `0/0` branch:
+
+```text
+((pi / 2)^2)^(-1) <= Delta^1(p) / Delta^xi(p).
+```
+
+This supplies the Laplacian-ratio half of the central alias lower bound in
+(2.50).  It does not yet multiply that ratio by the sealed complex averaging
+amplitude, sum the noncentral aliases, establish (2.51), or construct the
+uniform analytic strip.  Hence it produces no physical `B0` or `delta0`,
+does not attain window 15, discharges no row 23--24, and does not inhabit
+`TermSource`; the live counters remain exactly `20/41` and zero.
+
+Runs `31228493253` and `31228644041` preserve the two elaboration corrections;
+cached run `31228790898` passed the final source, and only the cold run above
+retired PRE-VALIDATION.  The next honest producer combines this reciprocal
+ratio with the Step-7.5s complex-amplitude lower bound to close the central
+alias term of (2.50), before any noncentral summation.

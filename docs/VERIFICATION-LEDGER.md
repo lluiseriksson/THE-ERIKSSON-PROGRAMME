@@ -29134,3 +29134,41 @@ linter warnings.  Cached run `31227769422` passed the final source; only the
 cold run above retired PRE-VALIDATION.  No terminal field is discharged: the
 live counters remain exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+## Addendum 606 (2026-08-08, **CMP89 (2.50) central Laplacian ratio GREEN; full central alias open; 20/41 unchanged**)
+
+Exact source checkpoint
+`1998e2fb71ce126940639cef8fe894642850c430` was validated by cold GitHub
+Actions run [`31228925432`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31228925432)
+(workflow checkpoint `8f344357d5d16fa6fccd0e4fb382ad9b356cbc7c`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T00:03:43Z` to `00:03:51Z`, exited zero
+without warnings, and ended with `Build completed successfully (3275 jobs).`
+The audit ended at `00:03:58Z` and also exited zero.  All five declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`d29059ca71d00e02b68b8566e6167ffe0238764915e458b664243339738fb286`.
+GitHub recorded SHA-256
+`556321b74270e4d26d2cf9c41fa05344219cabc90bed0fe4f06755efcb4232a4`
+for uploaded artifact `9013088932` (10,134 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, five-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed module proves coordinatewise that the scaled difference quotient
+is at most `(pi/2)` times the unit-lattice difference throughout the
+Brillouin interval, sums the squared estimates with the literal mass term,
+and obtains
+`Delta^xi(p) <= (pi/2)^2 * Delta^1(p)`.  Positive mass then yields the
+reciprocal lower bound needed by the central alias in (2.50), without a
+synthetic `0/0` convention.
+
+The complex-amplitude factor has not yet been multiplied into this ratio,
+and the noncentral aliases, (2.51), and the uniform analytic strip remain
+open.  Runs `31228493253` and `31228644041` preserve the two elaboration
+corrections; cached run `31228790898` passed the final source, and only the
+cold run above retired PRE-VALIDATION.  No terminal field is discharged:
+the live counters remain exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
