@@ -94,12 +94,13 @@ theorem half_real_gap_le_norm_of_norm_sub_le_half
     norm_sub_rev] at htri
   nlinarith
 
-/-- Every nonzero printed alias has a moment-dependent complex gap whenever
-the explicit vertical budget spends at most half of the real CMP89 gap. -/
-theorem half_momentum_gap_le_norm_cmp89Eq245EntireScaledLaplacianSymbol_noncentral
+/-- The moment-dependent complex gap left after the explicit vertical budget
+spends at most half of the real CMP89 gap.  Noncentrality is not needed for
+this conditional estimate; it enters the strict nonvanishing corollary below. -/
+theorem half_momentum_gap_le_norm_cmp89Eq245EntireScaledLaplacianSymbol
     {N : ℕ} (hN : 0 < N) {mass rho : ℝ} (hrho : 0 ≤ rho)
     {m : Fin 4 → ℤ}
-    (hm : m ∈ cmp89Eq245CenteredAliasVectors 4 N) (hm0 : m ≠ 0)
+    (hm : m ∈ cmp89Eq245CenteredAliasVectors 4 N)
     {p : Fin 4 → ℝ} (hp : ∀ mu, |p mu| ≤ Real.pi)
     {z : Fin 4 → ℂ}
     (hreal : ∀ mu, (z mu).re = p mu + 2 * Real.pi * (m mu : ℝ))
@@ -173,6 +174,33 @@ theorem half_momentum_gap_le_norm_cmp89Eq245EntireScaledLaplacianSymbol_noncentr
     exact hvariationRaw.trans (hvariationBudget.trans (by simpa [q, gap] using hbudget))
   exact half_real_gap_le_norm_of_norm_sub_le_half
     hrealSymbol hgapReal hvariation
+
+/-- On a nonzero printed alias, the moment-dependent lower bound is strictly
+positive and therefore proves complex nonvanishing. -/
+theorem norm_cmp89Eq245EntireScaledLaplacianSymbol_noncentral_pos
+    {N : ℕ} (hN : 0 < N) {mass rho : ℝ} (hrho : 0 ≤ rho)
+    {m : Fin 4 → ℤ}
+    (hm : m ∈ cmp89Eq245CenteredAliasVectors 4 N) (hm0 : m ≠ 0)
+    {p : Fin 4 → ℝ} (hp : ∀ mu, |p mu| ≤ Real.pi)
+    {z : Fin 4 → ℂ}
+    (hreal : ∀ mu, (z mu).re = p mu + 2 * Real.pi * (m mu : ℝ))
+    (himag : ∀ mu, |(z mu).im| ≤ rho)
+    (hbudget : cmp89Eq249NoncentralComplexGapBudget rho
+        (fun mu => p mu + 2 * Real.pi * (m mu : ℝ)) ≤
+      ((1 / (3 * Real.pi)) ^ 2 *
+        cmp89Eq251MomentumSquare
+          (fun mu => p mu + 2 * Real.pi * (m mu : ℝ))) / 2) :
+    0 < ‖cmp89Eq245EntireScaledLaplacianSymbol
+      4 (N : ℝ)⁻¹ mass z‖ := by
+  have hlower :=
+    half_momentum_gap_le_norm_cmp89Eq245EntireScaledLaplacianSymbol
+      hN hrho hm hp hreal himag hbudget
+  have hmomentum :
+      0 < cmp89Eq251MomentumSquare
+        (fun mu => p mu + 2 * Real.pi * (m mu : ℝ)) :=
+    cmp89Eq251MomentumSquare_shift_pos hm0 hp
+  have hcoef : 0 < (1 / (3 * Real.pi)) ^ 2 := by positivity
+  nlinarith
 
 end
 
