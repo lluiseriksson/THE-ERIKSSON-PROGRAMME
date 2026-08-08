@@ -125,10 +125,13 @@ theorem one_div_three_pi_mul_abs_le_cmp89Eq245ScaledDifferenceNorm
       cmp89Eq245ScaledDifferenceNorm xi p := by
   have hunit :=
     one_div_three_pi_mul_abs_le_cmp89Eq249UnitDifferenceNorm hxp
+  have hnum :
+      ‖Complex.exp (Complex.I * (-(xi * p) : ℂ)) - 1‖ =
+        cmp89Eq249UnitDifferenceNorm (xi * p) := by
+    rw [cmp89Eq249UnitDifferenceNorm]
+    norm_num
   rw [cmp89Eq245ScaledDifferenceNorm, norm_div, Complex.norm_real,
-    Real.norm_eq_abs, abs_of_pos hxi]
-  change (1 / (3 * Real.pi)) * |p| ≤
-    cmp89Eq249UnitDifferenceNorm (xi * p) / xi
+    Real.norm_eq_abs, abs_of_pos hxi, hnum]
   apply (le_div_iff₀ hxi).2
   rw [abs_mul, abs_of_pos hxi] at hunit
   simpa only [mul_assoc, mul_left_comm, mul_comm] using hunit
