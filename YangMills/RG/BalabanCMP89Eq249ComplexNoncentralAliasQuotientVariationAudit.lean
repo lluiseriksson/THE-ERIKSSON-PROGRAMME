@@ -1,8 +1,5 @@
 import YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasQuotientVariation
 
-/-! PRE-VALIDATION: source is present, its `.olean` has not yet been
-materialized, and these oracle results are not yet compiler-verified. -/
-
 #print axioms YangMills.RG.norm_div_sub_div_le_of_lower_bounds
 #print axioms YangMills.RG.cmp89Eq248EntireAliasMomentum_realSlice_eq
 #print axioms YangMills.RG.norm_cmp89Eq248ComplexAliasDenominatorSummand_sub_realSlice_le_radial

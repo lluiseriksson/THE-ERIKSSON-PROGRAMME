@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasQuotientBound
 /-!
 # Vertical variation of one complex noncentral CMP89 alias quotient
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+Cold compiler evidence: exact source checkpoint
+`acf4b2b5a6afd21c1a09eb214580c757c6f33b4d`, GitHub Actions run
+`31262412986` (`COLD_MODE=true`, no project-cache restore/save), warning-free
+focal and audit exit zero, and three audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module combines the sealed alias-weighted variation of the averaging
 pair with the sealed complex fine-symbol gap. The quotient rule is kept as an

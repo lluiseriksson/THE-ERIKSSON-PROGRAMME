@@ -5570,16 +5570,33 @@ retired it.
 No terminal field is discharged: counters remain `20/41`, `TermSource = 0`,
 and window 15 compatible but unattained.
 
-### Step 7.5az complex noncentral quotient vertical variation (PRE-VALIDATION)
+### Step 7.5az complex noncentral quotient vertical variation (SEALED; radial redistribution and finite sum open)
 
-The source is present but its `.olean` has not yet been materialized and the
-result has not yet been compiler-verified. The proposed producer combines the
-sealed weighted averaging-pair variation with the common moment-dependent gap
-at the complex point and its real slice. Numerator variation pays one inverse
-gap and denominator variation pays two; both terms retain the literal alias
-weight and the latter keeps the complete fine-symbol variation budget visible.
+Exact source checkpoint `acf4b2b5a6afd21c1a09eb214580c757c6f33b4d`
+passed cold GitHub Actions run
+[`31262412986`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31262412986)
+(workflow checkpoint `0cc33c1181e23f5299f726da04c4398eec539f70`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal ran from `14:39:48Z` to `14:52:24Z`, completed 8,435 jobs, and the audit
+ended at `14:52:29Z`; both exited zero. All three audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`1c7041b0ac53bfa3eb4cb80ad61af2b4d87bd04356d7a62c38551e7731a3f776`,
+reproduced after downloading artifact `9023321573`; GitHub reports artifact
+digest `dc2ce45d89736d2772a950d3de7f4279ce8ce43b047f052e4df046b8727f7787`.
+
+The producer combines the sealed weighted averaging-pair variation with the
+common moment-dependent gap at the complex point and its real slice.
+Numerator variation pays one inverse gap and denominator variation pays two;
+both terms retain the literal alias weight and the latter keeps the complete
+fine-symbol variation budget visible.
 
 No radial-power redistribution, finite quotient-variation sum, stabilized
 denominator lower bound, joint `B0`, contour shift or physical Green estimate
-is claimed. No terminal field is discharged: counters remain `20/41`,
+is claimed. Failed diagnostic run `31262139783` preserves two missing
+definitional unfoldings and one missing type annotation; cached run
+`31262301181` passed but retained PRE-VALIDATION. Only the cold run above
+retired it. The conservative factor-four gap budget remains unchanged.
+No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.

@@ -30292,3 +30292,34 @@ sharpening is not imported. Diagnostic run `31261520329` preserves the first
 real-slice elaboration failure, and cached run `31261659772` is diagnostic
 only. No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 641 (2026-08-08, **CMP89 complex noncentral quotient variation GREEN; radial redistribution open**)
+
+Exact source checkpoint `acf4b2b5a6afd21c1a09eb214580c757c6f33b4d`
+passed cold GitHub Actions run
+[`31262412986`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31262412986)
+with workflow checkpoint `0cc33c1181e23f5299f726da04c4398eec539f70`.
+Restoration and saving of `.lake/build` were skipped. The focal completed
+8,435 jobs and the focal/audit both exited zero; the three audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9023321573` has GitHub digest
+`dc2ce45d89736d2772a950d3de7f4279ce8ce43b047f052e4df046b8727f7787`.
+The deterministic inner archive re-hashed on Windows to
+`1c7041b0ac53bfa3eb4cb80ad61af2b4d87bd04356d7a62c38551e7731a3f776`,
+identical to the hash recorded inside the cold runner.
+
+The sealed specialization proves the literal vertical quotient identity with
+two visible costs: averaging-pair variation times one inverse radial gap, and
+fine-symbol variation times two inverse radial gaps. Both the complex alias
+and its real slice use the same positive moment-dependent gap, and both terms
+retain the source alias weight. Alias translation is proved to commute exactly
+with projection to the real slice.
+
+No radial-power redistribution, finite quotient-variation sum, stabilized
+denominator lower bound, joint `B0`, contour shift or physical Green estimate
+is obtained. Failed diagnostic run `31262139783` preserves the three local
+elaboration failures; cached run `31262301181` is diagnostic only. The
+conservative factor-four fine-symbol gap budget remains unchanged. No terminal
+field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
