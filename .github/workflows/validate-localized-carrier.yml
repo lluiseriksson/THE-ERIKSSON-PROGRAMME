@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 64aa98d1922f1f4305c2f98e357b559c003268b7
+  SOURCE_SHA: 0f3c2fdf7df89e64fe7a0af37950a009ff5bb43d
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -130,6 +130,8 @@ jobs:
           printf '%s\n' \
             YangMills/RG/BalabanCMP89Eq251EntireAverageAmplitude.lean \
             YangMills/RG/BalabanCMP89Eq251EntireAverageAmplitudeAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251AliasSlopeNonzero.lean \
+            YangMills/RG/BalabanCMP89Eq251AliasSlopeNonzeroAudit.lean \
             YangMills/RG/BalabanCMP89Eq251EntireAverageAliasDictionary.lean \
             YangMills/RG/BalabanCMP89Eq251EntireAverageAliasDictionaryAudit.lean \
             > evidence/overlay-paths.txt
@@ -157,6 +159,8 @@ jobs:
             lake build YangMills.RG.BalabanCMP89Eq251EntireAverageAliasDictionary
           run_stage cmp89_entire_averaging_amplitude_audit \
             lake env lean YangMills/RG/BalabanCMP89Eq251EntireAverageAmplitudeAudit.lean
+          run_stage cmp89_alias_slope_nonzero_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251AliasSlopeNonzeroAudit.lean
           run_stage cmp89_entire_alias_dictionary_audit \
             lake env lean YangMills/RG/BalabanCMP89Eq251EntireAverageAliasDictionaryAudit.lean
 
@@ -173,6 +177,7 @@ jobs:
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
               "cmp89_entire_averaging_amplitude_audit.log": 6,
+              "cmp89_alias_slope_nonzero_audit.log": 1,
               "cmp89_entire_alias_dictionary_audit.log": 2,
           }
           result = {}
