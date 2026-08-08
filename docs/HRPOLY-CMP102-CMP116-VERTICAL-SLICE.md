@@ -5625,3 +5625,20 @@ Green estimate is claimed. Cached run `31263756123` is diagnostic only; failed
 runs `31263405769` and `31263602897` preserve the two elaboration frontiers.
 No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5bb stabilized denominator vertical variation (PRE-VALIDATION)
+
+The source is present but its `.olean` has not yet been materialized and the
+result has not yet been compiler-verified. The proposed producer expands the
+three literal branches of the stabilized CMP89 (2.49) denominator before
+estimation. It combines the sealed central fine-symbol variation, central
+averaging-pair variation, complex noncentral sum bound and noncentral sum
+variation. The product branch keeps the fine-symbol and alias-sum costs
+separate.
+
+The source window `mass^2 <= 1` remains an explicit input. No optimized
+trigonometric gap or factor-two fine-symbol variation is imported. No complex
+lower bound, reciprocal `B0`, contour shift, Fourier/physical rate dictionary
+or regional-Green estimate is claimed. No terminal field is discharged:
+counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
