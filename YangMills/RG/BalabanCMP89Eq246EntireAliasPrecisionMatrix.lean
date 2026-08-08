@@ -86,8 +86,14 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec
         (a : ℂ) * cmp89Eq246EntireAliasAverageColumn d L j z m *
           ∑ n, cmp89Eq246EntireAliasAverageRow d L j z n * phi n := by
   classical
-  simp [cmp89Eq246EntireAliasPrecisionMatrix, Matrix.mulVec, dotProduct,
-    add_mul, Finset.mul_sum]
+  simp only [cmp89Eq246EntireAliasPrecisionMatrix, Matrix.mulVec, dotProduct,
+    add_mul, Finset.sum_add_distrib]
+  rw [Fintype.sum_ite_eq]
+  rw [Finset.mul_sum]
+  congr 1
+  apply Finset.sum_congr rfl
+  intro n _
+  ring
 
 /-- Every matrix entry is entire in the coarse complex momentum. -/
 theorem differentiable_cmp89Eq246EntireAliasPrecisionMatrix_entry
@@ -120,10 +126,11 @@ theorem differentiable_cmp89Eq246EntireAliasPrecisionMatrix_entry
         cmp89Eq246EntireAliasAverageRow d L j z n) := by
     exact
       (differentiable_cmp89Eq245EntireAverageAmplitude d (L ^ j)).comp hshiftN
-  rw [cmp89Eq246EntireAliasPrecisionMatrix]
-  split_ifs
-  · exact hfine.add ((hcolumn.const_mul (a : ℂ)).mul hrow)
-  · exact differentiable_const.add ((hcolumn.const_mul (a : ℂ)).mul hrow)
+  by_cases hmn : m = n
+  · simpa only [cmp89Eq246EntireAliasPrecisionMatrix, hmn, if_pos] using
+      hfine.add ((hcolumn.const_mul (a : ℂ)).mul hrow)
+  · simpa only [cmp89Eq246EntireAliasPrecisionMatrix, hmn, if_neg] using
+      differentiable_const.add ((hcolumn.const_mul (a : ℂ)).mul hrow)
 
 /-- On the real slice, the holomorphic row factor is the complex conjugate of
 the physical column factor. -/
