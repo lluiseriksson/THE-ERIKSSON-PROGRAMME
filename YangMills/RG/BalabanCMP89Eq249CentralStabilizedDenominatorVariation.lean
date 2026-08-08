@@ -86,7 +86,7 @@ theorem cmp89Eq245EntireScaledLaplacianVerticalBudget_le_centralBound
       linarith
     _ = 4 * eps * (2 * Real.pi + eps) := by
       rw [Fin.sum_const, nsmul_eq_mul]
-      norm_num
+      ring
 
 /-- The real-slice central fine symbol has a scale-uniform upper bound once
 the source mass window is named explicitly. -/
@@ -171,14 +171,17 @@ theorem norm_cmp89Eq249CentralStabilizedAliasDenominator_sub_realSlice_le
     have hcube :=
       cmp89Eq245EntireScaledLaplacianVerticalBudget_le_centralBound
         hrho hp hreal
-    exact (by
+    have hraw' : ‖delta - delta0‖ ≤
+        cmp89Eq245EntireScaledLaplacianVerticalBudget 4 rho z := by
       simpa [delta, delta0, z0, cmp89Eq249CentralEntireFineSymbol]
-        using hraw).trans (by simpa [dV] using hcube)
+        using hraw
+    exact hraw'.trans (by simpa [dV] using hcube)
   have hdelta0 : ‖delta0‖ ≤ d0B := by
+    change ‖cmp89Eq249CentralEntireFineSymbol 4 L j mass z0‖ ≤
+      cmp89Eq249CentralFineSymbolRealBound
     rw [hz0]
-    simpa [delta0, d0B] using
-      (norm_cmp89Eq249CentralEntireFineSymbol_realSlice_le
-        (L := L) (j := j) hmass hp)
+    exact norm_cmp89Eq249CentralEntireFineSymbol_realSlice_le
+      (L := L) (j := j) hmass hp
   have huVar : ‖u - u0‖ ≤ uV := by
     have hraw :=
       norm_cmp89Eq245EntireAverageAmplitude_pair_sub_realSlice_le
@@ -207,6 +210,8 @@ theorem norm_cmp89Eq249CentralStabilizedAliasDenominator_sub_realSlice_le
   have huTerm : ‖(a : ℂ) * (u - u0)‖ ≤ a * uV := by
     rw [norm_mul, haNorm]
     exact mul_le_mul_of_nonneg_left huVar ha
+  have hdV : 0 ≤ dV := (norm_nonneg _).trans hdeltaVar
+  have hd0B : 0 ≤ d0B := (norm_nonneg _).trans hdelta0
   have hproductTerm :
       ‖(a : ℂ) * ((delta - delta0) * s + delta0 * (s - s0))‖ ≤
         a * (dV * sB + d0B * sV) := by
@@ -226,7 +231,7 @@ theorem norm_cmp89Eq249CentralStabilizedAliasDenominator_sub_realSlice_le
       ‖delta - delta0‖ + ‖(a : ℂ) * (u - u0)‖ +
         ‖(a : ℂ) * ((delta - delta0) * s + delta0 * (s - s0))‖ := by
       exact (norm_add_le _ _).trans
-        (add_le_add_right (norm_add_le _ _) _)
+        (add_le_add_left (norm_add_le _ _) _)
     _ ≤ dV + a * uV + a * (dV * sB + d0B * sV) := by
       gcongr
     _ = cmp89Eq249CentralStabilizedDenominatorVariationBound a rho := rfl
