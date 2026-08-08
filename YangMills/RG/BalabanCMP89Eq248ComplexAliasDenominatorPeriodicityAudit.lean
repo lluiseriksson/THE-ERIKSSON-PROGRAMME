@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq248ComplexAliasDenominatorPeriodicity
 
 /-!
-# Axiom audit for physical periodicity of the complex alias denominator
-
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and this result has not yet been verified by the compiler.
+# Axiom audit for cold-sealed physical periodicity of the complex alias denominator
 -/
 
 #print axioms YangMills.RG.cmp89Eq248ComplexAliasQuotient

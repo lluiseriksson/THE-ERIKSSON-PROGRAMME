@@ -6191,3 +6191,43 @@ window 15 compatible but unattained.
 Cached diagnostic run `31282807973` passed before the cold seal. No failed
 Lean run was needed for this brick; its first compiler execution accepted
 the statement, scale and proof unchanged.
+
+### Step 7.5bp complete complex-denominator physical period (SEALED; displayed integrand open)
+
+Exact source checkpoint `e631885ae3dcb38bf71bdc73d2c2e241a99c32c8`
+passed cold GitHub Actions run
+[`31283934356`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31283934356)
+with workflow checkpoint `79502bf53dc193cae6dcc084edec84aa442252d4`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `23:27:17Z` to `23:44:56Z`, completed
+8,451 jobs, and the audit ended at `23:45:03Z`. Focal and audit both exited
+zero. All seven audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9029429431`, named
+`cmp89-complex-denominator-periodicity-e631885ae3dcb38bf71bdc73d2c2e241a99c32c8`,
+has GitHub digest
+`7d27c56ff46cd04e22e199f0fe39c10deee0f64a14fa825137955e28b374174e`.
+The deterministic inner archive re-hashed on Windows to
+`0035007110ff5dc299872306c41ffd17a97884562b729d7ed8b03815af563530`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed brick names the literal average/fine-Laplacian quotient, proves
+its pointwise `2*pi*N` period, specializes the sole cast dictionary at
+`N=L^j`, and transports the full centered alias sum under a physical `2*pi`
+shift by exact permutation. It separately proves the `2*pi` period of the
+unit-lattice Laplacian and composes both results into physical periodicity of
+the complete multiplied complex denominator in CMP89 (2.49).
+
+No denominator nonvanishing is inferred from periodicity, and no numerator
+or endpoint-phase periodicity is bundled into this result. The next safe
+endpoint is the displayed finite integrand on its non-singular domain;
+transfer to the stabilized extension must then use the already sealed
+displayed/stabilized equality at both boundary points. No `B0`, rate,
+window-15 attainment or terminal field is produced. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31283828202` passed before the cold seal. No failed
+Lean run was required: the quotient, cast specialization, fibre reindexing
+and two distinct physical periods compiled on their first execution.

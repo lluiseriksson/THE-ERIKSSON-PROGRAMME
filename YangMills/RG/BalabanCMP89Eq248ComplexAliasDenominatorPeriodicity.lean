@@ -10,8 +10,10 @@ import YangMills.RG.BalabanCMP89Eq248ComplexAliasDenominator
 /-!
 # Physical periodicity of the complex CMP89 alias denominator
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and this result has not yet been verified by the compiler.
+Compiler verification: exact source checkpoint
+`e631885ae3dcb38bf71bdc73d2c2e241a99c32c8`, cold GitHub Actions run
+`31283934356` (8,451 jobs; focal and seven-declaration axiom audit exit zero;
+restore and save of `.lake/build` both skipped).
 
 This module composes the separately sealed `2*pi*N` periods of the entire
 averaging pair and fine Laplacian.  Their literal quotient is transported

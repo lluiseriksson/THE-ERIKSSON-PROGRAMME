@@ -30887,3 +30887,37 @@ window 15 compatible but unattained.
 
 Cached run `31282807973` passed first. The brick required no failed compiler
 iteration and changed no statement after its source checkpoint.
+
+## Addendum 657 (2026-08-09, **complete complex-denominator physical period GREEN; displayed integrand open**)
+
+Exact source checkpoint `e631885ae3dcb38bf71bdc73d2c2e241a99c32c8`
+passed cold GitHub Actions run
+[`31283934356`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31283934356)
+with workflow checkpoint `79502bf53dc193cae6dcc084edec84aa442252d4`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were
+both skipped. The focal ran from `23:27:17Z` to `23:44:56Z`, completed 8,451
+jobs, and the audit ended at `23:45:03Z`. Both stages exited zero. All seven
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9029429431`, named
+`cmp89-complex-denominator-periodicity-e631885ae3dcb38bf71bdc73d2c2e241a99c32c8`,
+has GitHub digest
+`7d27c56ff46cd04e22e199f0fe39c10deee0f64a14fa825137955e28b374174e`.
+The deterministic inner archive re-hashed on Windows to
+`0035007110ff5dc299872306c41ffd17a97884562b729d7ed8b03815af563530`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+The module composes the two sealed `2*pi*N` factor periods into the literal
+alias quotient, transports the complete finite alias sum through the exact
+centered-fibre permutation, proves the reduced denominator period, proves
+the separate unit-symbol `2*pi` period, and seals the complete multiplied
+denominator period. No abstract period family or nonvanishing premise is used
+to obtain these equalities.
+
+Displayed numerator/phase periodicity and transfer to the stabilized
+extension remain open, as do `B0`, the physical-rate dictionary, window 15
+and every terminal field. Counters stay `20/41`, `TermSource = 0`, and window
+15 compatible but unattained.
+
+Cached run `31283828202` passed first. This brick required no failed compiler
+iteration and no post-checkpoint change to a statement, scale or hypothesis.
