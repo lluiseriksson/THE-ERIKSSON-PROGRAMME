@@ -73,7 +73,7 @@ theorem norm_exp_I_cmp89Eq251EntireAliasPhase
 /-- A coordinate strip gives an explicit alias-independent phase-growth
 bound. -/
 theorem norm_exp_I_cmp89Eq251EntireAliasPhase_le_growth
-    {d : ℕ} {rho : ℝ} (hrho : 0 ≤ rho)
+    {d : ℕ} {rho : ℝ}
     {z : Fin d → ℂ} (himag : ∀ mu, |(z mu).im| ≤ rho)
     (m : Fin d → ℤ) (displacement : Fin d → ℝ) :
     ‖Complex.exp (Complex.I * cmp89Eq251EntirePhase
@@ -161,7 +161,7 @@ theorem cmp89Eq251ComplexBareAliasNumerator_eq_phaseDifference
 /-- Before choosing a contour direction, the exact phase difference is
 bounded by the sum of the two explicit endpoint growth factors. -/
 theorem norm_cmp89Eq251_endpointPhaseDifference_le
-    {d : ℕ} {rho : ℝ} (hrho : 0 ≤ rho)
+    {d : ℕ} {rho : ℝ}
     {z : Fin d → ℂ} (himag : ∀ mu, |(z mu).im| ≤ rho)
     (m : Fin d → ℤ) (u v : Fin d → ℝ) :
     ‖Complex.exp (Complex.I * cmp89Eq251EntirePhase
@@ -172,8 +172,8 @@ theorem norm_cmp89Eq251_endpointPhaseDifference_le
         cmp89Eq251ContourPhaseGrowth rho v := by
   exact (norm_sub_le _ _).trans
     (add_le_add
-      (norm_exp_I_cmp89Eq251EntireAliasPhase_le_growth hrho himag m u)
-      (norm_exp_I_cmp89Eq251EntireAliasPhase_le_growth hrho himag m v))
+      (norm_exp_I_cmp89Eq251EntireAliasPhase_le_growth himag m u)
+      (norm_exp_I_cmp89Eq251EntireAliasPhase_le_growth himag m v))
 
 end
 
