@@ -128,9 +128,10 @@ theorem cmp89Eq249RealNoncentralAliasSum_nonneg_massUniform
     simpa only [aliases] using hmParts.2
   have hm0 : m ≠ 0 := by
     simpa only [zeroAlias, cmp89Eq249ZeroAlias] using hmParts.1
-  exact cmp89Eq250AliasDenominatorSummand_noncentral_nonneg
-    (d := d) (N := L ^ j) (mass := mass) (m := m) (p := p)
-    hN hmMem hm0 hp
+  simpa only [Nat.cast_pow] using
+    (cmp89Eq250AliasDenominatorSummand_noncentral_nonneg
+      (d := d) (N := L ^ j) (mass := mass) (m := m) (p := p)
+      hN hmMem hm0 hp)
 
 /-- The stabilized real lower bound is independent of the running mass. -/
 theorem cmp89Eq249CentralStabilizedLowerConstant_le_real_massUniform
