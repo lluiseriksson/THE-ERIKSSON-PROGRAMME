@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import Mathlib.Analysis.PSeries
+import Mathlib.Analysis.Real.Pi.Bounds
 import YangMills.RG.BalabanCMP89Eq250FullDenominatorLower
 
 /-!
@@ -93,7 +94,10 @@ theorem summable_cmp89Eq251OneDimensionalAliasWeight
   intro m
   by_cases hm : m = 0
   · subst m
-    simp [cmp89Eq251OneDimensionalAliasWeight, majorant, central]
+    simp only [cmp89Eq251OneDimensionalAliasWeight, majorant, central,
+      Int.cast_zero, mul_zero, abs_zero, add_zero, one_div, Real.one_rpow,
+      if_pos rfl]
+    exact le_add_of_nonneg_right (Real.rpow_nonneg 0 (-s))
   · have htail := cmp89Eq251OneDimensionalAliasWeight_le_abs_int_rpow hs hm
     simpa [majorant, central, hm] using htail
 
