@@ -113,7 +113,8 @@ theorem norm_cmp89Eq245EntireAverageAmplitude_neg_realSlice_alias_le
         simp [cmp89Eq245ComplexMomentumRealSlice,
           cmp89Eq248EntireAliasMomentum, cmp89Eq245AliasShift, hreal mu]
         ring)
-      (fun mu => by simp [hrho])
+      (fun mu => by
+        simp [cmp89Eq245ComplexMomentumRealSlice, hrho])
       (fun mu => by
         have heq :
             (N : ℝ)⁻¹ *
