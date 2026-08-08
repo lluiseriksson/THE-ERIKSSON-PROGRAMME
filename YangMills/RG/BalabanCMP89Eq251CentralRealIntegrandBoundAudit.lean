@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP89Eq251CentralRealIntegrandBound
 
 /-!
-# PRE-VALIDATION: axiom audit for the central real integrand in CMP89 (2.51)
+# Axiom audit: central real integrand in CMP89 (2.51)
 
-The source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold GitHub Actions run `31238966942` verified these eight declarations at
+source checkpoint `f39ad20aa11e47db37bc12bd6c612d7b5b844e26`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251CentralMomentumRadius

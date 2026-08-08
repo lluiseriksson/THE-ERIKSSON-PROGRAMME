@@ -4807,3 +4807,39 @@ Runs `31237719609` and `31237880610` preserve the two elaboration failures
 (over-eager quotient decomposition, then the `Nat.cast_pow` dictionary).
 Cached diagnostic run `31238006531` passed but retained PRE-VALIDATION; only
 the cold run above retired it.
+
+### Step 7.5af central `O(1)` real integrand in CMP89 (2.51) (SEALED; finite alias sum open)
+
+Exact source checkpoint `f39ad20aa11e47db37bc12bd6c612d7b5b844e26`
+passed cold GitHub Actions run
+[`31238966942`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31238966942)
+(workflow checkpoint `9fbaeb9670eb55b640c4dc29699d2ce59ad8bf9f`). The run
+recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T04:15:40Z` to `04:16:18Z`, the audit
+ended at `04:16:24Z`, both exited zero without warnings, and the build closed
+with `Build completed successfully (3290 jobs).` All eight audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`7ee7d554d3f72659719c9e1720f7859c301e7f0eea3b5a400d9a7ae299f5f2d9`,
+reproduced after downloading artifact `9016401875`; GitHub reports artifact
+digest `f30183f173cac75b085a38021195007afb3dd40156e8d7fa7087b0099d4d4fec`.
+
+The sealed endpoint handles the zero alias separately, exactly as the source
+does. The central Brillouin cube has explicit Euclidean radius
+`sqrt(d*pi^2)`; the Holder and derivative factors are uniformly controlled on
+that cube, the amplitude contributes `(18*pi)^d`, and the same-momentum massive
+symbol quotient is at most `(3*pi)^2`. Consequently the central branch has an
+explicit `O(1)` bound and does not require `mass^2 <= 1`; that flowing-mass
+condition belongs only to the noncentral inverse-square estimate.
+
+The remaining real-variable step in (2.51) is the exact finite alias split and
+sum, using this central constant once and the noncentral product series for all
+other aliases. The uniform analytic strip and physical Green transport remain
+open. This is infrastructure below window 15, not a terminal field: counters
+remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
+
+Runs `31238460271`, `31238613347` and `31238736048` preserve the three
+elaboration failures. Cached diagnostic run `31238863986` passed but retained
+PRE-VALIDATION; only the cold run above retired it.

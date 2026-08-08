@@ -6,10 +6,14 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251NoncentralRealIntegrandBound
 
 /-!
-# PRE-VALIDATION: central real integrand in CMP89 (2.51)
+# Cold-sealed central real integrand in CMP89 (2.51)
 
-The source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold GitHub Actions run `31238966942` compiler-verified source checkpoint
+`f39ad20aa11e47db37bc12bd6c612d7b5b844e26` with workflow checkpoint
+`9fbaeb9670eb55b640c4dc29699d2ce59ad8bf9f`. Both restore and save of
+`.lake/build` were skipped; the warning-free focal and audit exited zero, the
+build closed at 3290 jobs, and all eight audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP89 p. 586 separates the zero reciprocal alias as an `O(1)` term.  This
 module constructs that literal branch from the same five-factor integrand as

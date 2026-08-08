@@ -29595,3 +29595,33 @@ smallness window. No terminal field is discharged: counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained. Diagnostic
 runs `31237719609` and `31237880610` retain the two elaboration failures;
 cached run `31238006531` was not used to retire PRE-VALIDATION.
+
+## Addendum 619 (2026-08-08, **CMP89 central real integrand GREEN; finite alias sum open; 20/41 unchanged**)
+
+Source checkpoint `f39ad20aa11e47db37bc12bd6c612d7b5b844e26` passed cold
+GitHub Actions run
+[`31238966942`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31238966942)
+under workflow checkpoint `9fbaeb9670eb55b640c4dc29699d2ce59ad8bf9f`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T04:15:40Z` to `04:16:18Z`, exited zero
+with `Build completed successfully (3290 jobs).`, and the audit ended at
+`04:16:24Z` with exit zero. Both logs are warning-free and all eight audited
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`7ee7d554d3f72659719c9e1720f7859c301e7f0eea3b5a400d9a7ae299f5f2d9`;
+the downloaded artifact reproduced it locally. GitHub artifact `9016401875`
+has digest
+`f30183f173cac75b085a38021195007afb3dd40156e8d7fa7087b0099d4d4fec`.
+
+The zero alias now has its own literal explicit `O(1)` estimate on the central
+Brillouin cube. The proof uses radius `sqrt(d*pi^2)` and the exact central
+symbol cancellation, so it does not borrow the noncentral condition
+`mass^2 <= 1`. This preserves the source's central/noncentral split rather
+than hiding it in an `if` or a common synthetic bound.
+
+The exact finite alias sum, analytic strip and physical transport remain open.
+No terminal field is discharged: counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Runs `31238460271`,
+`31238613347` and `31238736048` preserve the elaboration failures; cached run
+`31238863986` was diagnostic only.
