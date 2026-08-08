@@ -79,8 +79,7 @@ theorem norm_cmp89Eq245EntireAverageBase_sub_realSlice_le
       simp [cmp89Eq245EntireAverageModeExponent,
         Complex.mul_re, Complex.mul_im]
     · rw [norm_cmp89Eq245EntireAverageModeExponent_sub_realSlice_eq]
-      change xi * |z.im| ≤ xi * rho
-      exact mul_le_mul_of_nonneg_left hz hxi.le
+      simpa [xi] using mul_le_mul_of_nonneg_left hz hxi.le
   exact hraw.trans <| by
     have hxirho : xi * rho ≤ rho := by
       exact mul_le_of_le_one_left hrho hxi1
