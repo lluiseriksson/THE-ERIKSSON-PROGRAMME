@@ -5219,3 +5219,35 @@ degree-`N` polynomial.
 No complex variation estimate, strip radius, joint `B0`, contour shift or
 regional-Green transport is claimed. Counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5ap normalized entire-average strip growth (SEALED; variation open)
+
+Exact source checkpoint `0b5d26565740b110c8ef8e0216529c671914f88f`
+passed cold GitHub Actions run
+[`31250433443`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31250433443)
+(workflow checkpoint `ed818e31f2c6a93cdbe992b43f97f5daaedb1f7a`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+warning-free focal completed 3,276 jobs, focal and audit exited zero, and all
+five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The literal finite average is normalized before continuation:
+
+```text
+u_N(z) = N^(-1) * sum_{r < N} exp(-i*(r/N)*z).
+```
+
+The exact norm of the `r`-th summand is
+`exp((r/N)*Im z)`. Since `0 <= r/N < 1`, every summand is bounded by
+`exp(rho)` on `|Im z| <= rho`; the number of summands cancels exactly against
+`N^(-1)`. Thus the one-coordinate bound `|u_N(z)| <= exp(rho)`, the
+`d`-coordinate bound `|u_N(z)| <= exp(rho)^d`, and the holomorphic pairing
+bound `|u_N(z)u_N(-z)| <= exp(rho)^(2d)` are all uniform in `N`.
+
+This rules out the proposed `N`-bandwidth and `N^5` strip loss in the
+normalized momentum variable. Fine/block units remain explicit, but they may
+not be reintroduced through this average. The next brick is the corresponding
+scale-uniform difference/derivative estimate; no complex denominator
+variation, radius, `B0`, contour shift or regional-Green transport is claimed.
+This is infrastructure below window 15: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

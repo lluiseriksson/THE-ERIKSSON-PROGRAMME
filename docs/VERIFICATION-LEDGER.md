@@ -29967,3 +29967,35 @@ strip or `B0`. Diagnostic runs `31249068895` and `31249210530` preserve the
 physical-specialization timeout and cast mismatch; cached run `31249330069`
 was diagnostic only. No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 631 (2026-08-08, **CMP89 normalized entire-average strip growth GREEN; variation open**)
+
+Exact source checkpoint `0b5d26565740b110c8ef8e0216529c671914f88f`
+passed cold GitHub Actions run
+[`31250433443`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31250433443)
+under workflow checkpoint `ed818e31f2c6a93cdbe992b43f97f5daaedb1f7a`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The warning-free focal ran from `09:24:33Z` to `09:24:44Z`, completed
+3,276 jobs, and the audit ended at `09:24:48Z`; both exited zero. All five
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`c716750a07ff43f9ea011813297fb8a0f9851d076c038600610ada0ee3b0b659`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9019848374` has digest
+`7f36ec5ad3844cc930414eaf1f84d4a76793ed26b434fa16020ba749f04d5645`.
+
+For the literal normalized continuation
+`u_N(z) = N^(-1) * sum_(r<N) exp(-i*(r/N)*z)`, the new producer proves the
+exact mode norm `exp((r/N)*Im z)` and uses `r/N < 1` to derive
+`|u_N(z)| <= exp(rho)` on `|Im z| <= rho`. Products over `d` coordinates and
+the holomorphic opposite-momentum pairing cost only `exp(rho)^d` and
+`exp(rho)^(2d)`, with no `N`-dependent constant.
+
+The earlier cold run `31250284831` was mathematically green but retained only
+as non-sealing evidence because the new module emitted two unused-`simp`
+warnings; checkpoint `0b5d2656` removes them and the accepted cold run is
+warning-free. No derivative or difference bound, complex denominator
+variation, strip radius, `B0`, contour shift or physical Green estimate is
+proved. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

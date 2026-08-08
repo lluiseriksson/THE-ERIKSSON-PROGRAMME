@@ -8,8 +8,11 @@ import YangMills.RG.BalabanCMP89Eq251EntireAverageAmplitude
 /-!
 # Scale-uniform strip growth of the entire CMP89 average
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
+Cold compiler evidence: exact source checkpoint
+`0b5d26565740b110c8ef8e0216529c671914f88f`, GitHub Actions run
+`31250433443` (`COLD_MODE=true`, no project-cache restore/save), warning-free
+focal and audit exit zero, and five audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The pole-free continuation used below CMP89 (2.51) is the normalized finite
 average
