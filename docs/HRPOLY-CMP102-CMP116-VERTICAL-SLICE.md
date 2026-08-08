@@ -6067,3 +6067,47 @@ Cached diagnostic run `31279938081` passed before the cold seal. Failed run
 to be changed definitionally to the literal `piFinset` before applying
 `Fintype.mem_piFinset`. The representative set, permutation, sum theorem and
 hypotheses were unchanged.
+
+### Step 7.5bm physical-period alias-momentum transport (SEALED; concrete factor periods open)
+
+Exact source checkpoint `41981f8e6b7cb547d92468563a807c2bacd1c76b`
+passed cold GitHub Actions run
+[`31280717065`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31280717065)
+with workflow checkpoint `d774364717c19ce079a58265eebe1fadce5f56d0`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. Dependency materialization ran from `22:01:47Z` to
+`22:03:17Z`; the focal ran from `22:03:17Z` to `22:19:57Z`, completed 8,448
+jobs, and the audit ended at `22:20:03Z`. Focal and audit both exited zero.
+All five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9028532922`, named
+`cmp89-alias-momentum-cycle-41981f8e6b7cb547d92468563a807c2bacd1c76b`,
+has GitHub digest
+`70ee0c0573376f125c61bcb3a3c6ac44fbec88aa8953da8c96a13671d77f4c8d`.
+The deterministic inner archive re-hashed on Windows to
+`4b14eba43de9e961fc7f1b1090f250d5d888102bab62a71eea0dbeb1b298dbdd`,
+identical to the hash recorded by the cold runner; all 13 entries of its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed theorem shifts a physical momentum coordinate by the literal
+Brillouin period `2*pi` and proves that each resulting alias momentum is
+either the momentum at the cycled representative or its explicit
+`2*pi*N` pointwise-period translate at the wrap. A generic factor with an
+already proved `2*pi*N` period is therefore transported to the cycled alias,
+and both subtype and literal-finset sums are reindexed exactly.
+
+The pointwise period remains an input to the generic endpoint, not a renamed
+physical conclusion. Separate producers are still required for the entire
+average, fine Laplacian and their pairings; the unit Laplacian has the
+different physical period `2*pi`. The complete denominator and displayed
+integrand periodicity remain open, as does transfer to the stabilized
+extension on its non-singular domain. No `B0`, physical-rate bridge,
+window-15 attainment or terminal field is produced. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31280585168` passed before the cold seal. Failed run
+`31280430141` preserves the two purely elaborational repairs: the coefficient
+orientation in `linear_combination` and the explicit `Finset.sum_coe_sort`
+bridge. Neither changed the physical shift, wrap disjunction, periods,
+finite fibre or hypotheses.

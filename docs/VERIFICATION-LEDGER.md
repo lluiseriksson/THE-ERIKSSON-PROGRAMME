@@ -30781,3 +30781,41 @@ producer or terminal field is discharged. Counters remain `20/41`,
 Cached diagnostic run `31279938081` passed first. Failed run `31279799675`
 records the definitional membership repair from the named vector fibre to the
 literal `piFinset`; no statement, alias data or hypothesis changed.
+
+## Addendum 654 (2026-08-08, **physical alias-momentum transport GREEN; concrete factor periods open**)
+
+Exact source checkpoint `41981f8e6b7cb547d92468563a807c2bacd1c76b`
+passed cold GitHub Actions run
+[`31280717065`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31280717065)
+with workflow checkpoint `d774364717c19ce079a58265eebe1fadce5f56d0`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `22:01:47Z` to `22:03:17Z`; the
+focal ran from `22:03:17Z` to `22:19:57Z`, completed 8,448 jobs, and the audit
+ended at `22:20:03Z`. Focal and audit both exited zero. All five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9028532922`, named
+`cmp89-alias-momentum-cycle-41981f8e6b7cb547d92468563a807c2bacd1c76b`,
+has GitHub digest
+`70ee0c0573376f125c61bcb3a3c6ac44fbec88aa8953da8c96a13671d77f4c8d`.
+The deterministic inner archive re-hashed on Windows to
+`4b14eba43de9e961fc7f1b1090f250d5d888102bab62a71eea0dbeb1b298dbdd`,
+identical to the cold-run hash; all 13 manifest entries re-hashed exactly.
+
+The module proves the exact effect of `z -> z + 2*pi*e_mu` on the printed
+centered alias momentum. It is direct equality at an ordinary successor and
+equality after the literal pointwise shift `2*pi*N` at the wrap. From this it
+derives a generic transport theorem for any factor whose `2*pi*N` period has
+been proved and reindexes both the subtype sum and the consumer-facing
+finset sum. No period family is accepted for the complete integrand.
+
+The concrete period producers remain open and are scale-separated: average
+and fine Laplacian at `2*pi*N`, unit Laplacian at `2*pi`. Denominator and
+displayed-integrand periodicity, transfer to the stabilized extension,
+`B0`, the physical-rate dictionary and window 15 remain open. This is not a
+terminal producer. Counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+Cached run `31280585168` passed first. Failed run `31280430141` records only
+the sign of an algebraic combination and the explicit `sum_coe_sort` bridge;
+the theorem statement and physical data were unchanged.

@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq245CenteredAliasVectorCycle
 import YangMills.RG.BalabanCMP89Eq251LatticePhasePeriodicity
 
 /-!
-# PRE-VALIDATION: physical-period transport of CMP89 alias momentum
+# Cold-sealed physical-period transport of CMP89 alias momentum
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`41981f8e6b7cb547d92468563a807c2bacd1c76b` by cold GitHub Actions run
+`31280717065`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,448 jobs, the audit exited zero, and all five audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.45) integrates over the physical Brillouin cube and sums over a
 centered finite reciprocal-alias fibre. Shifting one physical momentum

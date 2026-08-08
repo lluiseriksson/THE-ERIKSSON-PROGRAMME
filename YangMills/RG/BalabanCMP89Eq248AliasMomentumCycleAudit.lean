@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq248AliasMomentumCycle
 
 /-!
-# PRE-VALIDATION: axiom audit for physical alias-momentum transport
-
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+# Axiom audit for cold-sealed physical alias-momentum transport
 -/
 
 #print axioms YangMills.RG.cmp89Eq248PhysicalCoordinatePeriodShift
