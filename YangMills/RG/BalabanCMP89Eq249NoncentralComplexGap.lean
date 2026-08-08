@@ -194,7 +194,7 @@ theorem norm_cmp89Eq245EntireScaledLaplacianSymbol_noncentral_pos
       4 (N : ℝ)⁻¹ mass z‖ := by
   have hlower :=
     half_momentum_gap_le_norm_cmp89Eq245EntireScaledLaplacianSymbol
-      hN hrho hm hp hreal himag hbudget
+      (mass := mass) hN hrho hm hp hreal himag hbudget
   have hmomentum :
       0 < cmp89Eq251MomentumSquare
         (fun mu => p mu + 2 * Real.pi * (m mu : ℝ)) :=
