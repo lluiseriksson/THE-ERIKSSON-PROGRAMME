@@ -79,8 +79,7 @@ theorem norm_cmp89Eq245EntireAverageBase_sub_realSlice_le
       simp [cmp89Eq245EntireAverageModeExponent,
         Complex.mul_re, Complex.mul_im]
     · rw [norm_cmp89Eq245EntireAverageModeExponent_sub_realSlice_eq]
-      have hone : (1 : ℝ) / (N : ℝ) = xi := by simp [xi]
-      rw [hone]
+      change xi * |z.im| ≤ xi * rho
       exact mul_le_mul_of_nonneg_left hz hxi.le
   exact hraw.trans <| by
     have hxirho : xi * rho ≤ rho := by
@@ -147,6 +146,7 @@ theorem one_div_three_pi_mul_abs_le_norm_cmp89Eq245EntireAverageBase_sub_one
       congr 1
       rw [← hinv]
       push_cast
+      ring
     rw [hexp]
   calc
     (N : ℝ)⁻¹ * ((1 / (3 * Real.pi)) * |q|) =
