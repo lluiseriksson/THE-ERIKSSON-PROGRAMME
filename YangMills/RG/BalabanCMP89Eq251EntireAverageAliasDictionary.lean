@@ -33,7 +33,7 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq
     (hm : m ∈ cmp89Eq245CenteredAliasIntegers N)
     {p : ℝ} (hp : |p| ≤ Real.pi) :
     cmp89Eq245EntireAverageFactor N
-        (p + 2 * Real.pi * (m : ℝ) : ℂ) =
+        ((p + 2 * Real.pi * (m : ℝ) : ℝ) : ℂ) =
       cmp89Eq245ComplexAverageFactor (N : ℝ)⁻¹
         (p + 2 * Real.pi * (m : ℝ)) := by
   exact cmp89Eq245EntireAverageFactor_ofReal_eq
@@ -47,7 +47,7 @@ theorem cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq
     (hm : m ∈ cmp89Eq245CenteredAliasVectors d N)
     {p : Fin d → ℝ} (hp : ∀ mu, |p mu| ≤ Real.pi) :
     cmp89Eq245EntireAverageAmplitude d N
-        (fun mu => (p mu + 2 * Real.pi * (m mu : ℝ) : ℂ)) =
+        (fun mu => ((p mu + 2 * Real.pi * (m mu : ℝ) : ℝ) : ℂ)) =
       cmp89Eq245ComplexAverageAmplitude d (N : ℝ)⁻¹
         (fun mu => p mu + 2 * Real.pi * (m mu : ℝ)) := by
   rw [cmp89Eq245EntireAverageAmplitude,
