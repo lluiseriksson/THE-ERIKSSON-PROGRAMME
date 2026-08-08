@@ -29211,3 +29211,39 @@ the sole associativity elaboration correction; cached run `31229442243`
 passed the final source, and only the cold run above retired PRE-VALIDATION.
 No terminal field is discharged: the live counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 608 (2026-08-08, **CMP89 denominator estimate (2.50) GREEN; summability (2.51) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`b84a28046e249df62e56d1b67f5030308830b90e` was validated by cold GitHub
+Actions run [`31230322062`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31230322062)
+(workflow checkpoint `e8e1397c0b2d6436c53e39f2ff608fc9087cadc3`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T00:32:59Z` to `00:33:13Z`, exited zero
+without warnings, and ended with `Build completed successfully (3277 jobs).`
+The audit ended at `00:33:19Z` and also exited zero.  All six declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`01a2747137a69dc2d8a320f3806833c7872d04331cc602ea0e92e965e7363332`.
+GitHub recorded SHA-256
+`b1041534927f9afc56449ede790959b1989d86960fb39225f54248e0db52a1e5`
+for uploaded artifact `9013581469` (10,922 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed producer formalizes the finite centered alias representatives of
+(2.45), their all-zero member and the literal shifts `2*pi*m'`.  Positive mass
+makes every denominator summand nonnegative, so the full finite sum in (2.50)
+dominates the already sealed central term.  This yields the complete printed
+positive denominator estimate without a free alias family and without a
+quantitative noncentral hypothesis.
+
+The polynomial noncentral summability (2.51), uniform analytic strip and
+Fourier-to-regional-Green transport remain open.  Run `31230025181` preserves
+the sole product-association elaboration repair; cached run `31230196579`
+passed the final source, and only the cold run above retired PRE-VALIDATION.
+No terminal field is discharged: the live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

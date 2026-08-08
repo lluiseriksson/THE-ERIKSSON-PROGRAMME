@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq250CentralAliasLower
 
 /-!
-# PRE-VALIDATION: full denominator lower bound in CMP89 (2.50)
+# Cold-sealed full denominator lower bound in CMP89 (2.50)
 
-The primary source is present, but this module's `.olean` has not yet been
-materialized and its declarations have not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`b84a28046e249df62e56d1b67f5030308830b90e` by cold GitHub Actions run
+`31230322062`.  Restoration and saving of `.lake/build` were skipped.  The
+warning-free focal completed 3,277 jobs, the audit exited zero, and all six
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.45) sums over a centered set of `L^j` reciprocal-lattice aliases in
 each coordinate, with shifts `l_mu = 2*pi*m_mu`.  This module constructs that

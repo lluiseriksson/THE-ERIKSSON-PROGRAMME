@@ -4371,3 +4371,45 @@ retired PRE-VALIDATION.  The next honest Fourier brick is the exact centered
 alias enumeration from (2.45), its zero-member theorem, and the resulting
 nonnegative-sum completion of (2.50).  Quantitative noncentral estimates are
 deferred to (2.51), exactly as in the source.
+
+### Step 7.5v full denominator lower bound CMP89 (2.50) (SEALED; summability (2.51) open)
+
+Exact source checkpoint `b84a28046e249df62e56d1b67f5030308830b90e`
+passed cold GitHub Actions run
+[`31230322062`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31230322062)
+(workflow checkpoint `e8e1397c0b2d6436c53e39f2ff608fc9087cadc3`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-08T00:32:59Z` to `00:33:13Z`, exited
+zero without warnings, and ended with
+`Build completed successfully (3277 jobs).`; the audit ended at `00:33:19Z`.
+All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed module constructs the centered coordinate representatives printed
+in (2.45): a closed interval for odd alias count and the half-open interval
+for even alias count.  Their `d`-fold product contains the all-zero alias for
+every nonzero block size, including the coherent singleton at `j=0`.  The
+literal shifts are `l'_mu = 2*pi*m'_mu`.
+
+Every denominator summand is nonnegative under positive mass.  The complete
+finite denominator from (2.50) therefore dominates its zero-alias summand,
+and the Step-7.5u constant gives the literal full estimate
+
+```text
+a * ((2 / pi)^d)^2 * ((pi / 2)^2)^(-1)
+  <= a * (sum over l' of |u_j(p+l')|^2 / Delta^xi(p+l'))
+       * Delta^1(p) + Delta^1(p).
+```
+
+This closes (2.50) without importing any noncentral decay hypothesis.  The
+quantitative estimate over `l != 0` in (2.51), the uniform analytic strip,
+and the Fourier-to-regional-Green dictionary remain open.  Thus no physical
+`B0` or `delta0` is produced yet, window 15 remains unattained, no row
+23--24 is discharged, and `TermSource` remains uninhabited; the counters stay
+exactly `20/41` and zero.
+
+Run `31230025181` preserves the sole product-association elaboration repair;
+cached run `31230196579` passed the final source, and only the cold run above
+retired PRE-VALIDATION.  The next source brick is the explicit polynomial
+alias summability in (2.51), keeping the later complex-strip argument as a
+separate frontier.
