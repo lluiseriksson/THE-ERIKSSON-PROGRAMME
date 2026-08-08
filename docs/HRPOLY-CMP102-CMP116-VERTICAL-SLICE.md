@@ -5851,3 +5851,47 @@ Diagnostic runs `31274463630` and `31274640242` preserved the missing
 qualified source but retained PRE-VALIDATION; only the cold run above retired
 it. These were elaboration repairs and changed no contour formula, constant or
 claim.
+
+### Step 7.5bh periodic holomorphic vertical shift (SEALED infrastructure; physical periodicity open)
+
+Exact source checkpoint `94e7b193304c65ec8aae5c4026056109b9b8c281`
+passed cold GitHub Actions run
+[`31276160414`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31276160414)
+with workflow checkpoint `1db7856bcdd37fa68827897178272679619d42a7`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `20:08:37Z` to `20:10:00Z`; the
+focal then ran from `20:10:06Z` to `20:10:10Z`, completed 2,743 jobs, and the
+audit ended at `20:10:15Z`. Focal and audit both exited zero. The audited
+declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9027072555`, named
+`periodic-holomorphic-vertical-shift-94e7b193304c65ec8aae5c4026056109b9b8c281`,
+has GitHub digest
+`5eacebf4810340aa6d8a30b79a6089f41fd36782173d1df15c77022197e33d5f`.
+The deterministic inner archive re-hashed on Windows to
+`64233520d467be7aae3d6cc20c60a9752149edb06366e7f73af082bc1d9019bb`,
+identical to the hash recorded by the cold runner; all 13 entries of its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed theorem derives equality of the interval integral on `[0,T]` and
+its vertical translate by `eta*I` from complex differentiability on the
+closed rectangle and literal period `T`. It invokes the rectangular Cauchy
+theorem and cancels the vertical sides by periodicity; equality of the two
+horizontal integrals is not accepted as an input. Neither a sign condition on
+`T` nor one on `eta` is needed.
+
+This is the generic one-coordinate contour engine, not the physical CMP89
+contour deformation. The stabilized finite alias sum must still be shown
+holomorphic and periodic under the physical `2*pi` shift. That periodicity is
+a reindexing of the finite alias fibre, not a termwise identity, and the
+stabilized extension separately singles out the central branch. Coordinate
+iteration, the complete strip bound, `B0`, the flowing `mass^2 <= 1`
+dictionary, Fourier/physical-rate transport and window 15 remain open. No
+terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
+
+Cached diagnostic run `31276018596` passed after the sole elaboration repair:
+the real and imaginary coordinates of the Cauchy rectangle endpoint had to be
+normalized before rewriting the vertical integral. Earlier run `31275860871`
+preserves that failed rewrite. Neither run changed the theorem statement or
+introduced an analytic hypothesis.

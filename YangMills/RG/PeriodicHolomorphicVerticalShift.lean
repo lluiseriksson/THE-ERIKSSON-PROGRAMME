@@ -8,8 +8,11 @@ import Mathlib.Analysis.Complex.CauchyIntegral
 /-!
 # Periodic holomorphic vertical contour shift
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
+Cold validation: exact source checkpoint
+`94e7b193304c65ec8aae5c4026056109b9b8c281` passed GitHub Actions run
+`31276160414` with restore and save of `.lake/build` both skipped. The focal
+completed 2,743 jobs, and the audited declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module isolates the one-dimensional analytic engine needed to move one
 Fourier coordinate off the real axis.  It derives equality of the lower and

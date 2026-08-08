@@ -30590,3 +30590,44 @@ physical `B0`, flowing `mass^2 <= 1` dictionary, Fourier/physical-rate
 transport and window-15 contraction remain open. Neither optional constant
 sharpening is consumed. No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 649 (2026-08-08, **periodic holomorphic contour engine GREEN; physical alias periodicity open**)
+
+Exact source checkpoint `94e7b193304c65ec8aae5c4026056109b9b8c281`
+passed cold GitHub Actions run
+[`31276160414`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31276160414)
+with workflow checkpoint `1db7856bcdd37fa68827897178272679619d42a7`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `20:08:37Z` to `20:10:00Z`; the
+focal ran from `20:10:06Z` to `20:10:10Z`, completed 2,743 jobs, and the audit
+ended at `20:10:15Z`. Focal and audit both exited zero. The audited theorem
+uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9027072555`, named
+`periodic-holomorphic-vertical-shift-94e7b193304c65ec8aae5c4026056109b9b8c281`,
+has GitHub digest
+`5eacebf4810340aa6d8a30b79a6089f41fd36782173d1df15c77022197e33d5f`.
+The deterministic inner archive re-hashed on Windows to
+`64233520d467be7aae3d6cc20c60a9752149edb06366e7f73af082bc1d9019bb`,
+identical to the hash recorded by the cold runner; all 13 entries in its
+`SHA256SUMS` manifest re-hashed exactly.
+
+The theorem proves the generic one-dimensional contour displacement directly
+from the rectangular Cauchy theorem. A literal complex period cancels the two
+vertical boundary integrals, so the integral on `[0,T]` equals the integral
+on its translate by `eta*I`. The equality of contours is a conclusion, not a
+premise; no positivity condition on `T` or `eta` is added.
+
+This does not yet instantiate the theorem with the CMP89 stabilized alias
+integrand. Its physical holomorphy and `2*pi` periodicity remain to be proved;
+the latter requires a finite-alias reindexing and cannot be inferred term by
+term from the singled-out central branch. Coordinate iteration, the complete
+strip bound, `B0`, the flowing mass dictionary, Fourier/physical-rate
+transport and window-15 contraction remain open. No terminal field is
+discharged: counters remain `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained.
+
+Cached diagnostic run `31276018596` passed after normalizing the real and
+imaginary coordinates of the Cauchy rectangle endpoint before rewriting the
+vertical side. Failed run `31275860871` preserves the earlier elaboration
+error. This repair changed neither statement nor analytic hypotheses.
