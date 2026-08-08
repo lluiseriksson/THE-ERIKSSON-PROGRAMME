@@ -116,7 +116,7 @@ theorem cmp89Eq245CenteredAliasIntegers_not_pointwise_scaled_brillouin :
       m ∈ cmp89Eq245CenteredAliasIntegers N ∧
       Real.pi < |((N : ℝ)⁻¹ * (p + 2 * Real.pi * (m : ℝ)))| := by
   refine ⟨2, -Real.pi, -1, by norm_num, ?_, ?_, ?_⟩
-  · simpa [abs_of_pos Real.pi_pos]
+  · simp [abs_of_pos Real.pi_pos]
   · simp [cmp89Eq245CenteredAliasIntegers]
   · rw [show ((2 : ℕ) : ℝ) = 2 by norm_num,
       show ((-1 : ℤ) : ℝ) = -1 by norm_num]
