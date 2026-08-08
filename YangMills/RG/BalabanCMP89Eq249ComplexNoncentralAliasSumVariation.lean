@@ -102,12 +102,15 @@ theorem norm_cmp89Eq248ComplexAliasDenominatorSummand_sub_realSlice_le_sourceWei
       cmp89Eq249NoncentralComplexGapBudget rho q ≤ 8 * eps * radius := by
     rw [cmp89Eq249NoncentralComplexGapBudget]
     change eps * (4 * radius + 4 * eps) ≤ 8 * eps * radius
-    apply mul_le_mul_of_nonneg_left _ heps
-    nlinarith
+    calc
+      eps * (4 * radius + 4 * eps) ≤
+          eps * (4 * radius + 4 * radius) := by
+        apply mul_le_mul_of_nonneg_left _ heps
+        linarith
+      _ = 8 * eps * radius := by ring
   have hgapInv : gap⁻¹ = 2 * C * square⁻¹ := by
     dsimp [gap, C]
     field_simp [Real.pi_ne_zero, ne_of_gt hsquarePos]
-    ring
   have hcollapse : radius * square⁻¹ * square⁻¹ ≤ square⁻¹ := by
     have hradiusSquare : radius ≤ square := by
       rw [← hsquareEq]
@@ -164,7 +167,7 @@ theorem norm_cmp89Eq248ComplexAliasDenominatorSummand_sub_realSlice_le_sourceWei
         rw [hgapInv]
       _ ≤ (A * weight) * (2 * C * square⁻¹) +
             (B * (32 * eps * C ^ 2)) * (square⁻¹ * weight) :=
-        add_le_add_left hsecond _
+        add_le_add_right hsecond _
       _ = cmp89Eq249ComplexNoncentralAliasQuotientVariationRadialConstant rho *
           (square⁻¹ * weight) := by
         dsimp [A, B, C, eps, weight,
@@ -217,7 +220,7 @@ theorem norm_cmp89Eq249ComplexNoncentralAliasSum_sub_realSlice_le_bound
       cmp89Eq249ComplexNoncentralAliasSumVariationBound rho := by
   let aliases := cmp89Eq245CenteredAliasVectors 4 (L ^ j)
   let zeroAlias := cmp89Eq249ZeroAlias 4
-  let term : (Fin 4 → ℤ) → Fin 4 → ℂ → ℂ := fun m w =>
+  let term : (Fin 4 → ℤ) → (Fin 4 → ℂ) → ℂ := fun m w =>
     cmp89Eq248ComplexAliasDenominatorSummand 4 L j mass w m
   let weight : (Fin 4 → ℤ) → ℝ := fun m =>
     cmp89Eq251MultidimensionalAliasWeight
@@ -226,6 +229,9 @@ theorem norm_cmp89Eq249ComplexNoncentralAliasSum_sub_realSlice_le_bound
       0 ≤ cmp89Eq249ComplexNoncentralAliasQuotientVariationConstant rho := by
     rw [cmp89Eq249ComplexNoncentralAliasQuotientVariationConstant,
       cmp89Eq249ComplexNoncentralAliasQuotientVariationRadialConstant]
+    unfold cmp89Eq248ComplexAliasPairVerticalConstant
+      cmp89Eq248ComplexAliasPairStripConstant
+      cmp89Eq245EntireAverageAliasStripConstant
     positivity
   have hpointwise : ∀ m ∈ aliases.erase zeroAlias,
       ‖term m z - term m (cmp89Eq245ComplexMomentumRealSlice z)‖ ≤
