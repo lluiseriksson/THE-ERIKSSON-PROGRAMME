@@ -84,7 +84,6 @@ theorem sub_variation_le_norm_cmp89Eq249CentralStabilizedAliasDenominator
         congr 1
         ring
       _ ≤ ‖den‖ + ‖den - den0‖ := norm_sub_le _ _
-  dsimp [floor, variation, den]
   linarith
 
 /-- The literal scalar window makes the stabilized denominator nonzero at
@@ -139,7 +138,7 @@ theorem norm_inv_cmp89Eq249CentralStabilizedAliasDenominator_le
   have hdenPos : 0 < ‖den‖ := hlowerPos.trans_le hlower
   change ‖den⁻¹‖ ≤ _
   rw [norm_inv, cmp89Eq249CentralStabilizedComplexReciprocalBound]
-  exact (inv_le_inv₀ hlowerPos hdenPos).2 hlower
+  exact (inv_le_inv₀ hdenPos hlowerPos).2 hlower
 
 end
 
