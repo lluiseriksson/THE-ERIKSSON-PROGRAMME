@@ -5651,17 +5651,29 @@ or regional-Green estimate is claimed. No terminal field is discharged:
 counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
 
-### Step 7.5bc complex stabilized floor and reciprocal (PRE-VALIDATION)
+### Step 7.5bc complex stabilized floor and reciprocal (SEALED; scalar attainment open)
 
-The source is present but its `.olean` has not yet been materialized and the
-result has not yet been compiler-verified. The proposed endpoint names the
-single scalar comparison
+Exact source checkpoint `4f62edc183ceac0fde4b7b2b847f2270f458545b`
+passed cold GitHub Actions run
+[`31266722921`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31266722921)
+under workflow checkpoint `86468c64ce33632a38066c8057496f92449f3c34`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,440 jobs and the focal/audit both exited
+zero; all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed endpoint names the single scalar comparison
 `stabilizedVariationBound(a,rho) < stabilizedRealFloor(a)`. Under that window,
 the reverse triangle inequality gives a positive complex floor, literal
 nonvanishing and an explicit reciprocal bound throughout the common strip.
+Cached run `31266584461` is diagnostic only. Failed diagnostic run
+`31266441511` preserves the redundant reduction and inverse-orientation
+errors; their repair changed neither the statement nor any scalar constant.
 
 This reduces the remaining analytic question to a scalar target; it does not
-prove that the source flow attains it. No contour shift, Fourier/physical rate
-dictionary, regional-Green estimate or window-15 contraction is claimed. No
-terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
-window 15 compatible but unattained.
+prove that the source flow attains it. The source window `mass^2 <= 1` remains
+an explicit input, and neither the sharper trigonometric gap nor the proposed
+factor-two vertical variation is imported. No contour shift,
+Fourier/physical rate dictionary, regional-Green estimate, physical `B0` or
+window-15 contraction is claimed. No terminal field is discharged: counters
+remain `20/41`, `TermSource = 0`, and window 15 compatible but unattained.

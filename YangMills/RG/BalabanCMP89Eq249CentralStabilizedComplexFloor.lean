@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP89Eq249CentralStabilizedRealLower
 /-!
 # Complex floor for the stabilized CMP89 (2.49) denominator
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+Cold compiler evidence: source checkpoint
+`4f62edc183ceac0fde4b7b2b847f2270f458545b`, GitHub Actions run
+`31266722921` (`COLD_MODE=true`, no project-cache restore/save), focal and
+audit exit zero, and all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The real-slice floor and the sealed vertical-variation budget combine by the
 reverse triangle inequality.  This module keeps their comparison as one

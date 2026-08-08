@@ -30390,3 +30390,35 @@ No complex denominator floor, reciprocal `B0`, contour shift,
 Fourier/physical rate dictionary or regional-Green estimate is obtained. No
 terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained.
+
+## Addendum 644 (2026-08-08, **CMP89 complex stabilized floor GREEN; scalar attainment open**)
+
+Exact source checkpoint `4f62edc183ceac0fde4b7b2b847f2270f458545b`
+passed cold GitHub Actions run
+[`31266722921`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31266722921)
+with workflow checkpoint `86468c64ce33632a38066c8057496f92449f3c34`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `16:22:33Z` to `16:40:30Z`, completed 8,440 jobs,
+and the audit ended at `16:40:39Z`; both exited zero. The three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9024597470` has GitHub digest
+`fc7588b5d8110a445eb5b06def226da7c727755d233c55dc7ce9a118b185454b`.
+The deterministic inner archive re-hashed on Windows to
+`73f995c78c22140e30d05d638579a8529045231b5bfbc3ec4c91e431e8bf2278`,
+identical to the hash recorded inside the cold runner.
+
+The sealed endpoint compares the complete stabilized-denominator variation
+with the matching real floor. That literal scalar window yields a positive
+complex floor, nonvanishing and an explicit reciprocal bound on the common
+strip. Cached run `31266584461` passed but did not retire PRE-VALIDATION.
+Failed diagnostic run `31266441511` preserves a redundant `dsimp` and the
+reversed positivity arguments to `inv_le_inv₀`; the repair changed no theorem
+statement, hypothesis or scalar constant.
+
+The scalar window is not yet shown attainable by the source flow.
+`mass^2 <= 1` remains explicit, and neither optional constant sharpening is
+used. No contour shift, Fourier/physical rate dictionary, regional-Green
+estimate, physical `B0` or window-15 contraction is obtained. No terminal
+field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
