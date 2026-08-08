@@ -59,7 +59,10 @@ theorem abs_cmp89Eq251Phase_le
       cmp89Eq251EuclideanNorm q * cmp89Eq251EuclideanNorm displacement := by
   calc
     |∑ mu, q mu * displacement mu| ≤
-        ∑ mu, |q mu * displacement mu| := Finset.abs_sum_le_sum_abs
+        ∑ mu, |q mu * displacement mu| := by
+      simpa only [Finset.sum_attach, Finset.mem_univ, true_and] using
+        (Finset.abs_sum_le_sum_abs
+          (fun mu : Fin d => q mu * displacement mu) Finset.univ)
     _ = ∑ mu, |q mu| * |displacement mu| := by
       apply Finset.sum_congr rfl
       intro mu _
