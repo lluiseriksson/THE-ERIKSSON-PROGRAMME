@@ -43,14 +43,17 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq
         (p + 2 * Real.pi * (m : ℝ))) / 2)| := by
     exact (div_pos (by norm_num) (mul_pos (by norm_num) Real.pi_pos)).trans_le
       hsinc
-  have hdenNorm :
-      0 < ‖cmp89Eq245RemovableExpSlope
-        ((N : ℝ)⁻¹ * (p + 2 * Real.pi * (m : ℝ)))‖ := by
-    rw [norm_cmp89Eq245RemovableExpSlope]
-    exact hsincPos
+  have hden : cmp89Eq245RemovableExpSlope
+      ((N : ℝ)⁻¹ * (p + 2 * Real.pi * (m : ℝ))) ≠ 0 := by
+    intro hzero
+    have hzeroNorm :
+        |Real.sinc (((N : ℝ)⁻¹ *
+          (p + 2 * Real.pi * (m : ℝ))) / 2)| = 0 := by
+      rw [← norm_cmp89Eq245RemovableExpSlope, hzero, norm_zero]
+    exact (ne_of_gt hsincPos) hzeroNorm
   exact cmp89Eq245EntireAverageFactor_ofReal_eq
     (N := N) (q := p + 2 * Real.pi * (m : ℝ)) hN
-    (norm_pos_iff.mp hdenNorm)
+    hden
 
 /-- Exact real-slice dictionary on every alias printed in CMP89 (2.45). -/
 theorem cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq
