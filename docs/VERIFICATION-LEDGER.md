@@ -29866,3 +29866,39 @@ regional-Green estimate is proved here. Diagnostic runs `31246430537`,
 `31246578810` and `31246711432` preserve the three elaboration failures;
 cached run `31246959854` was diagnostic only. No terminal field is discharged:
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 628 (2026-08-08, **CMP89 central alias cancellation GREEN; quantitative strip open**)
+
+Exact source checkpoint `d44a4877468fb7f3da595d146ad9529ff77c9d1f`
+passed cold GitHub Actions run
+[`31247671591`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31247671591)
+under workflow checkpoint `eb71e70518b91938a25198ce0529f3256637110e`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `08:08:14Z` to `08:09:00Z`, completed 3,292 jobs,
+and the audit ended at `08:09:04Z`; both exited zero. All three declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`7c701e3aa97949118474f5f45201a64000453db34b1e9dadb4c18c3a7217120f`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9019009658` has digest
+`817b1b8e52a8e896df6cbb74e059a9d8a080b64fab8c2d11595c2474c6f5cc61`.
+
+The source split at the zero reciprocal alias is now literal. Multiplying the
+reduced denominator by its central fine symbol is proved exactly equal to
+
+```text
+Delta_0 + a*u_0*u_{-0}
+  + a*Delta_0*sum_{l != 0} u_l*u_{-l}/Delta_l.
+```
+
+The right side extends across a zero of `Delta_0`; only the noncentral
+quotients remain. This is the cancellation needed before a mass-uniform strip
+can be meaningful, not a claim that each displayed quotient is separately
+nonzero. The next obligations are a positive real lower bound for this
+stabilized denominator and a scale-uniform complex variation estimate.
+
+No strip radius, `B0`, contour shift or physical Green estimate is produced.
+Diagnostic runs `31247295117` and `31247418392` preserve the two elaboration
+failures; cached run `31247554050` was diagnostic only. Counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

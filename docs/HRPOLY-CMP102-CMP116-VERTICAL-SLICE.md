@@ -5106,3 +5106,34 @@ for that stabilized object. No matrix inverse, strip radius, `B0`, contour
 shift or regional-Green transport is claimed here. This is infrastructure
 below window 15: counters remain `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+### Step 7.5am central-alias stabilization (SEALED; real gap and strip open)
+
+Exact source checkpoint `d44a4877468fb7f3da595d146ad9529ff77c9d1f`
+passed cold GitHub Actions run
+[`31247671591`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31247671591)
+(workflow checkpoint `eb71e70518b91938a25198ce0529f3256637110e`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal completed 3,292 jobs, focal and audit exited zero, and all three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The solved formula (2.47) is split over the literal zero reciprocal alias and
+its complement. The new stabilized denominator is
+
+```text
+Delta_0 + a*u_0*u_{-0}
+  + a*Delta_0*sum_{l != 0} u_l*u_{-l}/Delta_l,
+```
+
+and is proved exactly equal to `Delta_0` times the reduced rational
+denominator wherever the original central quotient is defined. Unlike a
+product over every alias, this cancellation does not introduce an
+`L^(j*d)`-sized degree or constant. It removes the only pole that can approach
+the real cube with the running mass; the noncentral denominators remain
+visible for their separate geometric strip estimate.
+
+The next endpoint is the real lower bound supplied by `a*u_0*u_{-0}` plus
+nonnegative noncentral contributions, followed by a uniform complex variation
+bound for this exact stabilized object. No strip radius, `B0`, contour shift
+or regional-Green transport is claimed here. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

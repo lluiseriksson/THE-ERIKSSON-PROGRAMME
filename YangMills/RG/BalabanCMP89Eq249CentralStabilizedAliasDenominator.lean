@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP89Eq246EntireAliasPrecisionMatrix
 /-!
 # Central-pole cancellation in the CMP89 (2.47)--(2.49) alias denominator
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these declarations have not yet been verified by the Lean compiler.
-
 The solved formula (2.47) displays one quotient by each fine symbol
 `Delta_l`.  The zero alias is different from the other aliases: its symbol can
 approach zero with the running mass, while the block-averaging rank-one term
@@ -30,6 +27,12 @@ No strip radius, `B0`, contour displacement, or physical Green estimate is
 claimed.
 
 Source catalog key: `cmp89.local-green.fourier.2.34-2.51`.
+
+Cold compiler evidence: exact source checkpoint
+`d44a4877468fb7f3da595d146ad9529ff77c9d1f`, GitHub Actions run
+`31247671591` (`COLD_MODE=true`, no project-cache restore/save), focal and
+audit exit zero, and three audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 namespace YangMills.RG
