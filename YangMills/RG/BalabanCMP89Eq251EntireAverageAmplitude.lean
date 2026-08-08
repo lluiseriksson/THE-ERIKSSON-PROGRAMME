@@ -128,7 +128,7 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq
       cmp89Eq245ComplexAverageFactor (N : ℝ)⁻¹
         (p + 2 * Real.pi * (m : ℝ)) := by
   have hsinc := one_div_three_pi_le_abs_sinc_scaled_alias
-    hN hm hp
+    (N := N) (m := m) (p := p) hN hm hp
   have hsincPos :
       0 < |Real.sinc (((N : ℝ)⁻¹ *
         (p + 2 * Real.pi * (m : ℝ))) / 2)| := by
@@ -139,7 +139,8 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq
         ((N : ℝ)⁻¹ * (p + 2 * Real.pi * (m : ℝ)))‖ := by
     rw [norm_cmp89Eq245RemovableExpSlope]
     exact hsincPos
-  exact cmp89Eq245EntireAverageFactor_ofReal_eq hN
+  exact cmp89Eq245EntireAverageFactor_ofReal_eq
+    (N := N) (q := p + 2 * Real.pi * (m : ℝ)) hN
     (norm_pos_iff.mp hdenNorm)
 
 /-- Exact real-slice dictionary on every alias printed in CMP89 (2.45).
@@ -157,7 +158,8 @@ theorem cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq
     cmp89Eq245ComplexAverageAmplitude]
   apply Finset.prod_congr rfl
   intro mu hmu
-  apply cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq hN
+  apply cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq
+    (N := N) (m := m mu) (p := p mu) hN
   · rw [cmp89Eq245CenteredAliasVectors, Fintype.mem_piFinset] at hm
     exact hm mu
   · exact hp mu
