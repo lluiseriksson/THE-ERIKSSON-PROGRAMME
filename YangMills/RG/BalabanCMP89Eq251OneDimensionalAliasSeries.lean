@@ -8,10 +8,13 @@ import Mathlib.Analysis.Real.Pi.Bounds
 import YangMills.RG.BalabanCMP89Eq250FullDenominatorLower
 
 /-!
-# PRE-VALIDATION: the one-dimensional source series in CMP89 (2.51)
+# Cold-sealed one-dimensional source series in CMP89 (2.51)
 
-The source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`c0bfd4f0be0dc9c28ed4d3b6237b255e38f97e9f` by cold GitHub Actions run
+`31231324004`.  Restoration and saving of `.lake/build` were skipped.  The
+warning-free focal completed 3,281 jobs, the audit exited zero, and all six
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.51) reduces the `d`-dimensional alias estimate to the `d`-th power of
 the one-dimensional reciprocal-lattice series

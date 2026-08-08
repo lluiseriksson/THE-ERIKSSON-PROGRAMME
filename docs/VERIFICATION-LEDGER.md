@@ -29247,3 +29247,40 @@ the sole product-association elaboration repair; cached run `31230196579`
 passed the final source, and only the cold run above retired PRE-VALIDATION.
 No terminal field is discharged: the live counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 609 (2026-08-08, **CMP89 (2.51) one-dimensional alias series GREEN; d-fold factorization open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c0bfd4f0be0dc9c28ed4d3b6237b255e38f97e9f` was validated by cold GitHub
+Actions run [`31231324004`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31231324004)
+(workflow checkpoint `98b1ee69b033c4e3ffd89a18ffdf3ec598693a09`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T00:55:42Z` to `00:55:59Z`, exited zero
+without warnings, and ended with `Build completed successfully (3281 jobs).`
+The audit ended at `00:56:05Z` and also exited zero.  All six declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`576a6fb4cd3fd433a005658771f5482c623ca5cec9751762789e6d16fe1d66a8`.
+GitHub recorded SHA-256
+`f2f01653978d522be6961478c8997eed20b8967fa1251f0a603c851e9977dd4e`
+for uploaded artifact `9013924961` (11,037 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash, and
+all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed module proves the printed exponent `1+(1-alpha)/d` is greater than
+one for `alpha<1` and positive dimension, constructs the literal coordinate
+weight on `2*pi*Z`, and proves its full integer series summable by separating
+the central alias and comparing every noncentral term with the standard
+integer p-series.  Every finite centered alias interval is therefore bounded
+by this same infinite source constant, uniformly in its cardinality.
+
+The `d`-fold finite-product factorization, complete integrand estimate (2.51),
+uniform analytic strip and Fourier-to-regional-Green transport remain open.
+Runs `31230761932`, `31230900496`, and `31231081213` preserve the three
+elaboration corrections; cached run `31231215536` passed the final source,
+and only the cold run above retired PRE-VALIDATION.  No terminal field is
+discharged: the live counters remain exactly `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.

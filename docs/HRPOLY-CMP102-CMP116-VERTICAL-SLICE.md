@@ -4413,3 +4413,48 @@ cached run `31230196579` passed the final source, and only the cold run above
 retired PRE-VALIDATION.  The next source brick is the explicit polynomial
 alias summability in (2.51), keeping the later complex-strip argument as a
 separate frontier.
+
+### Step 7.5w one-dimensional alias series for CMP89 (2.51) (SEALED; d-fold factorization open)
+
+Exact source checkpoint `c0bfd4f0be0dc9c28ed4d3b6237b255e38f97e9f`
+passed cold GitHub Actions run
+[`31231324004`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31231324004)
+(workflow checkpoint `98b1ee69b033c4e3ffd89a18ffdf3ec598693a09`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-08T00:55:42Z` to `00:55:59Z`, exited
+zero without warnings, and ended with
+`Build completed successfully (3281 jobs).`; the audit ended at `00:56:05Z`.
+All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed brick defines the literal source exponent
+
+```text
+s(d, alpha) = 1 + (1 - alpha) / d
+```
+
+and proves `1 < s(d, alpha)` for positive dimension and `alpha < 1`.  Its
+coordinate weight is exactly
+
+```text
+1 / (1 + |2*pi*m|)^s,   m in Z.
+```
+
+The central alias is separated explicitly.  Every noncentral term is bounded
+by the standard integer p-series `|m|^(-s)`, which proves summability on all
+of `Z`.  Consequently every finite centered coordinate window from (2.45),
+for every alias count `N`, is bounded by one and the same infinite-series
+constant.  No cardinality factor depending on `L^j` is introduced.
+
+This does not yet factor the `d`-dimensional sum over `Fintype.piFinset`,
+prove the complete integrand comparison in (2.51), or construct the uniform
+complex strip used after (2.51).  Hence it produces no physical `B0` or
+`delta0`, does not attain window 15, discharges no row 23--24, and does not
+inhabit `TermSource`; the live counters remain exactly `20/41` and zero.
+
+Runs `31230761932`, `31230900496`, and `31231081213` preserve the three local
+elaboration repairs.  Cached run `31231215536` passed the final source, and
+only the cold run above retired PRE-VALIDATION.  The next honest brick is the
+exact finite-product identity supplied by `Finset.sum_prod_piFinset`, followed
+only then by the coordinatewise bound.  The physical integrand and analytic
+strip remain later frontiers.

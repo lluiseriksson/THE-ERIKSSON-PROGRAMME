@@ -2016,3 +2016,4 @@ import YangMills.RG.BalabanCMP89Eq245ComplexSincDictionaryAudit
 import YangMills.RG.BalabanCMP89Eq250CentralLaplacianComparisonAudit
 import YangMills.RG.BalabanCMP89Eq250CentralAliasLowerAudit
 import YangMills.RG.BalabanCMP89Eq250FullDenominatorLowerAudit
+import YangMills.RG.BalabanCMP89Eq251OneDimensionalAliasSeriesAudit

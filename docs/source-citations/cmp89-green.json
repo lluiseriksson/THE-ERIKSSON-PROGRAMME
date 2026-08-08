@@ -39,7 +39,7 @@
         ]
       },
       "status": "visual_confirmed",
-      "summary": "CMP89 Lemma 2.4 proves the zero-background local Green value, derivative/Hölder and coarse-covariance decay estimates by an explicit Fourier representation, a uniform complex analytic strip and contour displacement; Lemma 2.2 and the later CMP95/CMP96 transports reduce to this source input. The real sinc-amplitude lower bound, its exact norm dictionary to (2.45), the central Laplacian ratio, the exact finite alias enumeration, and the complete positive denominator estimate (2.50) are compiler verified; summability (2.51) and the remaining Fourier estimates stay open.",
+      "summary": "CMP89 Lemma 2.4 proves the zero-background local Green value, derivative/Hölder and coarse-covariance decay estimates by an explicit Fourier representation, a uniform complex analytic strip and contour displacement; Lemma 2.2 and the later CMP95/CMP96 transports reduce to this source input. The real sinc-amplitude lower bound, its exact norm dictionary to (2.45), the central Laplacian ratio, the exact finite alias enumeration, the complete positive denominator estimate (2.50), and the one-dimensional uniform p-series input of (2.51) are compiler verified; the d-fold factorization, complete integrand estimate and remaining Fourier estimates stay open.",
       "extracted_claims": [
         "Lemma 2.4, printed page 582, gives constants c0 and delta0 independent of the scale j for the exponential decay of G_j(Pi) Q_j^*, its first lattice derivative, its Holder difference, and C^(j)(Pi), on rectangular parallelepipeds built of large blocks.",
         "The proof first removes the boundary by the multiple-reflection representation (2.42), then writes the free Green explicitly by the Fourier transform (2.43)-(2.48).",
@@ -54,6 +54,7 @@
         "YangMills.RG.inv_pi_div_two_sq_le_cmp89Eq249_unit_div_scaled",
         "YangMills.RG.cmp89Eq250CentralAliasLowerConstant_le_literal_inverseScale",
         "YangMills.RG.cmp89Eq250CentralAliasLowerConstant_le_full_denominator",
+        "YangMills.RG.cmp89Eq251CenteredOneDimensionalAliasSum_source_le_tsum",
         "YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate",
         "YangMills.RG.CMP99Eq342RegionalGreenCertificate",
         "YangMills.RG.CMP99Eq389SourceLocalizedThreeSpeciesGreenCertificate"
@@ -65,7 +66,8 @@
         "The sealed complex dictionary identifies the norm of the removable exponential quotient in (2.45) with that real sinc amplitude, including its product-level lower bound.",
         "The sealed central Laplacian comparison supplies `((pi/2)^2)^(-1) <= Delta^1(p)/Delta^xi(p)` for positive mass, the second lower subestimate in the central alias of (2.50).",
         "The sealed central-alias producer multiplies the two subestimates in literal source order and obtains the strictly positive scale-uniform constant `a*((2/pi)^d)^2*((pi/2)^2)^(-1)` for `0<a`.",
-        "The sealed full-denominator producer constructs the exact centered finite alias set, proves it contains zero, and completes (2.50) by nonnegativity of every discarded summand."
+        "The sealed full-denominator producer constructs the exact centered finite alias set, proves it contains zero, and completes (2.50) by nonnegativity of every discarded summand.",
+        "The sealed one-dimensional (2.51) producer proves the source exponent `1+(1-alpha)/d` is greater than one for `alpha<1`, establishes summability of the literal `2*pi*Z` weight, and bounds every finite centered coordinate window by the same infinite series."
       ],
       "do_not_use_for": [
         "Do not cite this visual extraction as a compiled producer of the four CMP99 (3.42) certificate fields.",
@@ -73,7 +75,7 @@
         "Do not identify CMP89 G_j(Pi) Q_j^* or C^(j)(Pi) definitionally with the repository's canonical generated regional Green before proving the averaging, scaling, boundary and gauge dictionaries."
       ],
       "open_questions": [
-        "Formalize the quantitative polynomial alias summability in (2.51), followed by the Fourier realization of (2.43)-(2.48) and the uniform-in-j analytic strip.",
+        "Factor the finite d-dimensional alias sum in (2.51) into the product of the sealed coordinate sums, then complete the literal integrand comparison; the Fourier realization of (2.43)-(2.48) and uniform-in-j analytic strip remain separate frontiers.",
         "Exact transport of Lemma 2.4 through CMP89 (2.34), CMP95 (1.132)-(1.137), CMP96 (2.43)/(2.67), and CMP99 Corollary 3.6 to the canonical regional Green certificate.",
         "Dictionary from the source derivatives and C^(j)(Pi) to the four literal repository operators G', D G', G' D*, and Delta G'."
       ]
