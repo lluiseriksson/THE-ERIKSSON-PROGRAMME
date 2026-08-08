@@ -115,6 +115,7 @@ theorem cmp89Eq248ComplexAliasDenominatorSummand_ofReal_eq
   rw [cmp89Eq250AliasDenominatorSummand]
   simp only [cmp89Eq245AliasShift]
   push_cast
+  ring
 
 /-- Exact real-slice dictionary for the complete multiplied denominator in
 CMP89 (2.49)--(2.50). -/
