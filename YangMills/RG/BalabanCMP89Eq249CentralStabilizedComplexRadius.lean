@@ -100,7 +100,7 @@ theorem exists_cmp89Eq249CentralStabilizedComplexRadius
   have hampEventually :
       ∀ᶠ rho in nhds (0 : ℝ), amplitude rho < 1 / 6 := by
     have hampAtZero : amplitude 0 < (1 / 6 : ℝ) := by
-      simpa [amplitude] using (by norm_num : (0 : ℝ) < 1 / 6)
+      norm_num [amplitude]
     exact hampCont.eventually (eventually_lt_nhds hampAtZero)
   have hgapEventually :
       ∀ᶠ rho in nhds (0 : ℝ), gapLhs rho < gapRhs := by
