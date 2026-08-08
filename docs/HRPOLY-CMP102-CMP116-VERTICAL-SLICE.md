@@ -5650,3 +5650,18 @@ lower bound, reciprocal `B0`, contour shift, Fourier/physical rate dictionary
 or regional-Green estimate is claimed. No terminal field is discharged:
 counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
+
+### Step 7.5bc complex stabilized floor and reciprocal (PRE-VALIDATION)
+
+The source is present but its `.olean` has not yet been materialized and the
+result has not yet been compiler-verified. The proposed endpoint names the
+single scalar comparison
+`stabilizedVariationBound(a,rho) < stabilizedRealFloor(a)`. Under that window,
+the reverse triangle inequality gives a positive complex floor, literal
+nonvanishing and an explicit reciprocal bound throughout the common strip.
+
+This reduces the remaining analytic question to a scalar target; it does not
+prove that the source flow attains it. No contour shift, Fourier/physical rate
+dictionary, regional-Green estimate or window-15 contraction is claimed. No
+terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
