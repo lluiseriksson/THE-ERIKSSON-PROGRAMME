@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP89Eq245EntireAverageAmplitudeVariation
+import YangMills.RG.BalabanCMP89Eq245EntireLaplacianVariation
 import YangMills.RG.BalabanCMP89Eq251AliasAmplitudeUpper
 
 /-!
@@ -170,7 +170,11 @@ theorem one_div_six_pi_mul_abs_le_norm_cmp89Eq245EntireAverageBase_sub_one
   rw [norm_sub_rev] at hvar
   change xi * ((1 / (6 * Real.pi)) * |q|) ≤ _
   change xi * ((1 / (3 * Real.pi)) * |q|) ≤ _ at hrealDen
-  nlinarith
+  have hdouble :
+      xi * ((1 / (3 * Real.pi)) * |q|) =
+        2 * (xi * ((1 / (6 * Real.pi)) * |q|)) := by ring
+  rw [hdouble] at hrealDen
+  linarith
 
 /-- One coordinate of the entire average preserves the reciprocal-alias
 weight throughout the complex strip. -/
@@ -221,9 +225,6 @@ theorem norm_cmp89Eq245EntireAverageFactor_scaled_alias_le
           6 * Real.pi * (Real.exp rho + 1) / |q| := by
       rw [cmp89Eq245EntireAverageFactor_eq_geometricQuotient hbase,
         norm_mul, norm_div, norm_inv, Complex.norm_natCast]
-      have hNnorm : ‖(N : ℝ)‖ = (N : ℝ) := by
-        rw [Real.norm_eq_abs, abs_of_pos hNreal]
-      rw [hNnorm]
       apply (le_div_iff₀ hqPos).2
       apply (div_le_iff₀ hdenPos).2
       have hscale :
@@ -257,6 +258,10 @@ theorem norm_cmp89Eq245EntireAverageFactor_scaled_alias_le
     rw [cmp89Eq245EntireAverageAliasStripConstant,
       cmp89Eq251OneDimensionalAliasWeight, Real.rpow_one]
     have hwPos : 0 < 1 + |2 * Real.pi * (m : ℝ)| := by positivity
+    change
+      6 * Real.pi * (Real.exp rho + 1) / |q| ≤
+        (18 * Real.pi * (Real.exp rho + 1)) /
+          (1 + |2 * Real.pi * (m : ℝ)|)
     apply (div_le_div_iff₀ hqPos hwPos).2
     nlinarith [Real.pi_pos, Real.exp_pos rho]
 
