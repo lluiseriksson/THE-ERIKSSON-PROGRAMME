@@ -5074,3 +5074,35 @@ alias weight as (2.51), followed by a derived radius such as `c_*/(2*C)` and
 a joint `B0(delta0)`. Per-scale continuity and independent per-alias
 nonvanishing are not accepted substitutes. Counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5al entire alias-fibre precision matrix (SEALED; stabilized strip open)
+
+Exact source checkpoint `3bd8e2e15f69643c999041b7a18871b3ede086eb`
+passed cold GitHub Actions run
+[`31247059031`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31247059031)
+(workflow checkpoint `8579831b063ce8f71325d650ca29ae5e5f565f56`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal completed 3,291 jobs, focal and audit exited zero, and all four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+At fixed coarse complex momentum the new module constructs the source system
+from CMP89 (2.44)--(2.46) on the finite reciprocal-alias fibre:
+
+```text
+diag(Delta_l) + a * u_l * u_{-m}.
+```
+
+Its exact action is the diagonal fine symbol plus one rank-one averaging
+readout; every matrix entry is entire. On the real slice the row factor is
+proved to be the complex conjugate of the column factor and the diagonal is
+identified with the literal nonnegative source symbol. This is the correct
+home for the cancellations hidden by the solved rational formula (2.46): an
+individual displayed `Delta_l` may vanish in complex momentum without making
+the assembled matrix expression singular.
+
+The next source-specific endpoint is the exact zero-alias stabilization,
+followed by a real lower bound and a scale-uniform complex variation estimate
+for that stabilized object. No matrix inverse, strip radius, `B0`, contour
+shift or regional-Green transport is claimed here. This is infrastructure
+below window 15: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.

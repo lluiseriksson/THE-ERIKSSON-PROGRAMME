@@ -29836,3 +29836,33 @@ The next analytic producer must bound the variation of the assembled complex
 denominator/integrand uniformly in `j`, respecting possible removable alias
 cancellations. No terminal field is discharged: counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 627 (2026-08-08, **CMP89 entire alias-fibre precision matrix GREEN; strip open**)
+
+Exact source checkpoint `3bd8e2e15f69643c999041b7a18871b3ede086eb`
+passed cold GitHub Actions run
+[`31247059031`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31247059031)
+under workflow checkpoint `8579831b063ce8f71325d650ca29ae5e5f565f56`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `07:52:00Z` to `07:52:41Z`, completed 3,291 jobs,
+and the audit ended at `07:52:46Z`; both exited zero. All four declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`55decbe0471aee60ae7df9d14bc28b45e7599baf67442b6b4844f13f1e430e32`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9018842106` has digest
+`003255a8077450601a93d4e1b148777c8842615b10d8a84bcd85d881e5192077`.
+
+The new producer constructs the finite alias-fibre precision matrix behind
+CMP89 (2.44)--(2.46) as the literal diagonal fine symbol plus the rank-one
+block-averaging term. Its exact `mulVec` action, entrywise holomorphy, and the
+real-slice opposite-momentum/conjugation dictionaries are compiler verified.
+This makes the removable alias cancellations structural: the later strip
+proof need not demand independent nonvanishing of every displayed quotient.
+
+No inverse, uniform strip, `B0`, contour displacement or physical
+regional-Green estimate is proved here. Diagnostic runs `31246430537`,
+`31246578810` and `31246711432` preserve the three elaboration failures;
+cached run `31246959854` was diagnostic only. No terminal field is discharged:
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

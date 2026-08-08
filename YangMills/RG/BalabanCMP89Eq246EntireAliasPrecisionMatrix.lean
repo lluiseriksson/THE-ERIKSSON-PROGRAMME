@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP89Eq248ComplexAliasDenominator
 /-!
 # Entire alias-fibre precision matrix in CMP89 (2.44)--(2.47)
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these declarations have not yet been verified by the Lean compiler.
-
 CMP89 (2.44)--(2.46) becomes, at fixed coarse momentum, a finite system on
 the reciprocal-lattice aliases.  Its matrix is the diagonal fine-lattice
 symbol plus the rank-one block-averaging term
@@ -29,6 +26,12 @@ complex strip, a strip bound `B0`, contour displacement, or the physical
 regional-Green dictionary.
 
 Source catalog key: `cmp89.local-green.fourier.2.34-2.51`.
+
+Cold compiler evidence: exact source checkpoint
+`3bd8e2e15f69643c999041b7a18871b3ede086eb`, GitHub Actions run
+`31247059031` (`COLD_MODE=true`, no project-cache restore/save), focal and
+audit exit zero, and four audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 namespace YangMills.RG
