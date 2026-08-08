@@ -50,7 +50,6 @@ theorem norm_cmp89Eq245EntireAverageModeExponent_sub_realSlice_eq
     ‖cmp89Eq245EntireAverageModeExponent N r z -
         cmp89Eq245EntireAverageModeExponent N r (z.re : ℂ)‖ =
       ((r : ℝ) / (N : ℝ)) * |z.im| := by
-  have hNreal : (N : ℝ) ≠ 0 := by exact_mod_cast Nat.ne_of_gt hN
   have hz : z - (z.re : ℂ) = (z.im : ℂ) * Complex.I := by
     apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im]
   rw [show
@@ -59,8 +58,7 @@ theorem norm_cmp89Eq245EntireAverageModeExponent_sub_realSlice_eq
         (r : ℂ) * Complex.I * (-(N : ℂ)⁻¹) * (z - (z.re : ℂ)) by
       unfold cmp89Eq245EntireAverageModeExponent
       ring]
-  simp [hz, norm_mul, norm_inv, hNreal, div_eq_mul_inv,
-    Real.norm_eq_abs]
+  simp [hz, norm_inv, div_eq_mul_inv, Real.norm_eq_abs]
 
 /-- General exponential-difference estimate used after the real momentum has
 cancelled. -/
@@ -73,7 +71,7 @@ theorem norm_complex_exp_sub_exp_le_of_norm_sub_le
         Complex.exp B * (Complex.exp (A - B) - 1) := by
     rw [mul_sub, mul_one, ← Complex.exp_add]
     congr 1
-    ring
+    ring_nf
   have htail :
       ‖Complex.exp (A - B) - 1‖ ≤
         ‖A - B‖ * Real.exp ‖A - B‖ := by
@@ -82,9 +80,7 @@ theorem norm_complex_exp_sub_exp_le_of_norm_sub_le
   calc
     ‖Complex.exp B‖ * ‖Complex.exp (A - B) - 1‖ ≤
         1 * (‖A - B‖ * Real.exp ‖A - B‖) := by gcongr
-    _ ≤ 1 * (rho * Real.exp rho) := by
-          gcongr
-          exact Real.exp_le_exp.mpr hAB
+    _ ≤ 1 * (rho * Real.exp rho) := by gcongr
     _ = rho * Real.exp rho := one_mul _
 
 /-- A single normalized mode varies from the matching real point by at most
