@@ -4541,3 +4541,41 @@ Run `31232327344` preserves the two local elaboration repairs; cached run
 `31232461649` passed.  Cold run `31232600125` was mathematically green but
 retained PRE-VALIDATION because of one linter warning.  Only the warning-free
 cold run above retired it.
+
+### Step 7.5z expanded difference and sinc lower bounds for CMP89 (2.51) (SEALED; amplitude numerator open)
+
+Exact source checkpoint `4bf1f1bec890d1dbcf34a0d958ae10b9251e0146`
+passed cold GitHub Actions run
+[`31233308717`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31233308717)
+(workflow checkpoint `ae0740f7563d9feac34f4bcb7b6e8a1b338d3b64`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-08T01:45:00Z` to `01:45:29Z`, exited
+zero without warnings, and ended with
+`Build completed successfully (3284 jobs).`; the audit ended at `01:45:37Z`.
+All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed brick proves the explicit expanded-zone Jordan estimate
+
+```text
+(1/(3*pi))*|x| <= 2*|sin(x/2)|,    |x| <= 3*pi/2,
+```
+
+then transports it to the literal unit and scaled lattice-difference symbols
+of (2.45).  It also proves `1/(3*pi) <= |sinc(x/2)|` on the same zone.  Using
+Step 7.5y's exact alias radius specializes both conclusions to every member of
+the printed centered representative set, including the even extreme that lies
+outside `[-pi,pi]`.  No central-alias theorem is silently reused.
+
+This closes the denominator-side obstruction exposed by the no-go, but not
+the numerator-side averaging decay.  The remaining real chain to the first
+inequalities of (2.51) is: periodic numerator/sinc amplitude upper bound;
+noncentral Laplacian-ratio upper bound with the physical mass range visible;
+Holder exponential difference; and final comparison with the sealed product
+weight.  The complex strip remains later and separate.  No physical `B0` or
+`delta0` is produced, window 15 remains unattained, no row 23--24 is
+discharged, and the live counters stay exactly `20/41` and `TermSource = 0`.
+
+Run `31233039423` preserves the sole complex-cast dictionary repair; cached
+run `31233192928` passed the final source, and only the cold run above retired
+PRE-VALIDATION.

@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251ExpandedAliasGeometry
 
 /-!
-# PRE-VALIDATION: expanded difference lower bound below CMP89 (2.51)
+# Cold-sealed expanded difference lower bound below CMP89 (2.51)
 
-The source is present, but this module's `.olean` has not yet been
-materialized and its results have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`4bf1f1bec890d1dbcf34a0d958ae10b9251e0146` by cold GitHub Actions run
+`31233308717`.  Restoration and saving of `.lake/build` were skipped.  The
+warning-free focal completed 3,284 jobs, the audit exited zero, and all six
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The sealed alias geometry shows that the fixed even representative set in
 CMP89 (2.45) reaches scaled momentum `3*pi/2`, so the central Jordan estimate

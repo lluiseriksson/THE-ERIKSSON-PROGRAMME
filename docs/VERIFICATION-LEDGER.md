@@ -29357,3 +29357,40 @@ cold run above retired PRE-VALIDATION.  Expanded-zone symbol estimates, the
 complete physical integrand comparison (2.51), analytic strip and transport
 remain open.  No terminal field is discharged: the live counters remain
 exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 612 (2026-08-08, **CMP89 expanded difference/sinc lower bounds GREEN; amplitude numerator open; 20/41 unchanged**)
+
+Exact source checkpoint
+`4bf1f1bec890d1dbcf34a0d958ae10b9251e0146` was validated by cold GitHub
+Actions run [`31233308717`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31233308717)
+(workflow checkpoint `ae0740f7563d9feac34f4bcb7b6e8a1b338d3b64`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T01:45:00Z` to `01:45:29Z`, exited zero
+without warnings, and ended with `Build completed successfully (3284 jobs).`
+The audit ended at `01:45:37Z` and also exited zero.  All six declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`cb6fad296a3e836709c673d43814ba5a9ea2dbab6d039d8c5be774fc6a084211`.
+GitHub recorded SHA-256
+`265807f9ce38b92defa0aedd2069299a42ff83f6a3fad06ee13a54e521e56a33`
+for uploaded artifact `9014585285` (10,458 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed producer proves the explicit expanded-zone inequality
+`(1/(3*pi))*|x| <= 2*|sin(x/2)|` for `|x| <= 3*pi/2`, transports it to the
+literal unit and scaled difference symbols, and proves the corresponding
+uniform sinc lower bound.  Combined with Addendum 611's exact alias radius,
+both estimates now hold for every printed coordinate alias, including the
+even extreme outside the central Brillouin interval.
+
+Run `31233039423` preserves the single explicit complex-cast dictionary
+repair; cached run `31233192928` passed, and only the cold run above retired
+PRE-VALIDATION.  The periodic averaging numerator, noncentral Laplacian
+ratio, Holder factor, complete physical integrand estimate, analytic strip
+and transport remain open.  No terminal field is discharged: the live
+counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained.
