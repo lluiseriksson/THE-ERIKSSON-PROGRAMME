@@ -30028,3 +30028,32 @@ No coordinate-product variation, stabilized-denominator variation, strip
 radius, `B0`, contour shift or physical Green estimate is proved. No terminal
 field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+## Addendum 633 (2026-08-08, **CMP89 amplitude and opposite-pair variation GREEN; denominator variation open**)
+
+Exact source checkpoint `c2d64db27a268fbbbca661472e4d8b1310301848`
+passed cold GitHub Actions run
+[`31251690965`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31251690965)
+under workflow checkpoint `1e40b054508be6b5bb533ae951d2a4f7405cac55`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The warning-free focal ran from `09:58:35Z` to `09:58:53Z`, completed
+3,278 jobs, and the audit ended at `09:58:57Z`; both exited zero. All four
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`cc3ec5a1a021fbc3ed4b17fcc777783ffbfcf8b62f23f82ea3382701928936e4`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9020210674` has digest
+`07e5635a479d1f0ab8d508a0b93d810952db593e6f1e631da874822b9a70ea69`.
+
+The sealed one-coordinate estimate is now telescoped through arbitrary finite
+dimension. The resulting amplitude variation has the explicit constant
+`d*(rho*exp rho)*(exp rho)^d`; the opposite-momentum holomorphic pair is
+bounded by the corresponding two product-rule terms, with no `N` or alias
+cardinality. Diagnostic runs `31251341060` and `31251478154` preserve the two
+purely mechanical induction/factor-order failures; cached run `31251590263`
+was diagnostic only.
+
+No stabilized-denominator variation, complex radius, `B0`, contour shift or
+physical Green estimate is proved. No terminal field is discharged: counters
+remain `20/41`, `TermSource = 0`, and window 15 compatible but unattained.

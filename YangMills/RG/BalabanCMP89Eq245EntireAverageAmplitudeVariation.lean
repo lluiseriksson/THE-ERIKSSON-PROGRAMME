@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP89Eq245EntireAverageVerticalVariation
 /-!
 # Coordinatewise variation of the CMP89 entire average
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
+Cold compiler evidence: exact source checkpoint
+`c2d64db27a268fbbbca661472e4d8b1310301848`, GitHub Actions run
+`31251690965` (`COLD_MODE=true`, no project-cache restore/save), warning-free
+focal and audit exit zero, and four audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module telescopes the sealed one-coordinate vertical estimate through
 the product over momentum coordinates.  It keeps the dimension factor and

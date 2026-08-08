@@ -5284,3 +5284,34 @@ through the `d`-dimensional amplitude and its opposite-momentum pairing before
 assembling the stabilized denominator. No denominator variation, radius,
 `B0`, contour shift or regional-Green transport is claimed. Counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5ar coordinate-product and opposite-pair variation (SEALED; denominator variation open)
+
+Exact source checkpoint `c2d64db27a268fbbbca661472e4d8b1310301848`
+passed cold GitHub Actions run
+[`31251690965`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31251690965)
+(workflow checkpoint `1e40b054508be6b5bb533ae951d2a4f7405cac55`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+warning-free focal completed 3,278 jobs, focal and audit exited zero, and all
+four audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+A generic finite-product telescope now turns factor bounds `|f_i|,|g_i|<=R`
+and variations `|f_i-g_i|<=eps` into the explicit estimate
+
+```text
+|prod f_i - prod g_i| <= d * eps * R^d       (R >= 1).
+```
+
+With `R=exp(rho)` and `eps=rho*exp(rho)`, this gives a scale-uniform vertical
+bound for the full `d`-coordinate CMP89 amplitude. A second product-rule
+estimate bounds the holomorphic pair `u(z)u(-z)` against its real slice with
+both contributions and both growth factors visible. The deliberately coarse
+extra power of `exp(rho)` is isolated in the generic telescope; it may be
+sharpened if the final scalar budget requires it, without changing the
+one-coordinate producer.
+
+No stabilized-denominator variation, complex nonvanishing radius, `B0`,
+contour shift or regional-Green transport is claimed. This is infrastructure
+below window 15: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
