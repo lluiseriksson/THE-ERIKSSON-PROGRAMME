@@ -51,6 +51,7 @@ theorem intervalIntegral_eq_verticalShift_of_periodic_of_differentiableOn
     apply intervalIntegral.integral_congr
     intro y _
     simpa [add_comm] using hperiod (y * Complex.I)
+  simp at hboundary
   rw [hvertical] at hboundary
   have hsub :
       (∫ x : ℝ in 0..T, f (x : ℂ)) -
