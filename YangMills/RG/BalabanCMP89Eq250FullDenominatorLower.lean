@@ -138,10 +138,26 @@ theorem cmp89Eq250LiteralCentralAliasContribution_le_full_denominator
     exact add_nonneg (Finset.sum_nonneg fun _ _ => sq_nonneg _) (sq_nonneg _)
   have hscaled := mul_le_mul_of_nonneg_left hsum ha
   have hweighted := mul_le_mul_of_nonneg_right hscaled hunit
-  rw [cmp89Eq250LiteralCentralAliasContribution,
-    cmp89Eq250FullAliasDenominator]
-  simpa [zeroAlias, cmp89Eq250AliasDenominatorSummand_zero, mul_assoc] using
-    hweighted.trans (le_add_of_nonneg_right hunit)
+  rw [cmp89Eq250FullAliasDenominator]
+  calc
+    cmp89Eq250LiteralCentralAliasContribution
+        d (((L : ℝ) ^ j)⁻¹) mass a p =
+        a * cmp89Eq250AliasDenominatorSummand
+          d (((L : ℝ) ^ j)⁻¹) mass p zeroAlias *
+          cmp89Eq249UnitLaplacianSymbol d mass p := by
+      rw [cmp89Eq250LiteralCentralAliasContribution]
+      simp only [zeroAlias, cmp89Eq250AliasDenominatorSummand_zero]
+      ring
+    _ ≤ a * (∑ m ∈ cmp89Eq245CenteredAliasVectors d (L ^ j),
+          cmp89Eq250AliasDenominatorSummand
+            d (((L : ℝ) ^ j)⁻¹) mass p m) *
+        cmp89Eq249UnitLaplacianSymbol d mass p := hweighted
+    _ ≤ a * (∑ m ∈ cmp89Eq245CenteredAliasVectors d (L ^ j),
+          cmp89Eq250AliasDenominatorSummand
+            d (((L : ℝ) ^ j)⁻¹) mass p m) *
+          cmp89Eq249UnitLaplacianSymbol d mass p +
+        cmp89Eq249UnitLaplacianSymbol d mass p :=
+      le_add_of_nonneg_right hunit
 
 /-- Full source denominator form of the positive lower bound (2.50). -/
 theorem cmp89Eq250CentralAliasLowerConstant_le_full_denominator
