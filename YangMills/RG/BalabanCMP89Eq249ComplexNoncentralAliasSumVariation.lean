@@ -279,7 +279,7 @@ theorem norm_cmp89Eq249ComplexNoncentralAliasSum_sub_realSlice_le_bound
   change ‖(∑ m ∈ aliases.erase zeroAlias, term m z) -
       ∑ m ∈ aliases.erase zeroAlias,
         term m (cmp89Eq245ComplexMomentumRealSlice z)‖ ≤ _
-  rw [Finset.sum_sub_distrib]
+  rw [← Finset.sum_sub_distrib]
   exact hfinite.trans (mul_le_mul_of_nonneg_left hseries hconstant)
 
 end
