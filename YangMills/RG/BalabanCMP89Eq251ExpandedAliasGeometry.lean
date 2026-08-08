@@ -70,7 +70,7 @@ theorem abs_add_cmp89Eq245AliasShift_le_pi_mul_succ
     two_mul_abs_cast_le_of_mem_cmp89Eq245CenteredAliasIntegers hm
   calc
     |p + 2 * Real.pi * (m : ℝ)| ≤
-        |p| + |2 * Real.pi * (m : ℝ)| := abs_add _ _
+        |p| + |2 * Real.pi * (m : ℝ)| := abs_add_le _ _
     _ = |p| + Real.pi * (2 * |(m : ℝ)|) := by
       rw [abs_mul, abs_mul, abs_of_nonneg (by positivity : (0 : ℝ) ≤ 2),
         abs_of_pos Real.pi_pos]
@@ -116,13 +116,15 @@ theorem cmp89Eq245CenteredAliasIntegers_not_pointwise_scaled_brillouin :
       m ∈ cmp89Eq245CenteredAliasIntegers N ∧
       Real.pi < |((N : ℝ)⁻¹ * (p + 2 * Real.pi * (m : ℝ)))| := by
   refine ⟨2, -Real.pi, -1, by norm_num, ?_, ?_, ?_⟩
-  · simp [Real.pi_pos.le]
+  · simpa [abs_of_pos Real.pi_pos]
   · simp [cmp89Eq245CenteredAliasIntegers]
-  · rw [show ((2 : ℕ) : ℝ) = 2 by norm_num]
-    have hpi : 0 < Real.pi := Real.pi_pos
-    rw [show ((-1 : ℤ) : ℝ) = -1 by norm_num]
-    simp only [invOf_eq_inv, abs_mul, abs_inv, abs_of_pos (show (0 : ℝ) < 2 by norm_num)]
-    nlinarith [abs_of_neg (by nlinarith : -Real.pi + 2 * Real.pi * (-1) < 0)]
+  · rw [show ((2 : ℕ) : ℝ) = 2 by norm_num,
+      show ((-1 : ℤ) : ℝ) = -1 by norm_num]
+    have hvalue :
+        (2 : ℝ)⁻¹ * (-Real.pi + 2 * Real.pi * (-1)) =
+          -(3 * Real.pi / 2) := by ring
+    rw [hvalue, abs_neg, abs_of_pos (by positivity : 0 < 3 * Real.pi / 2)]
+    nlinarith [Real.pi_pos]
 
 end
 
