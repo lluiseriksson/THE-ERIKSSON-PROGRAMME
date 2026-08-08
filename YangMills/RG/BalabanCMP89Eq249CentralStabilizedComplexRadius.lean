@@ -82,7 +82,8 @@ theorem exists_cmp89Eq249CentralStabilizedComplexRadius
     cmp89Eq249CentralStabilizedDenominatorVariationBound a rho
   let floor : ℝ := cmp89Eq249CentralStabilizedLowerConstant 4 a
   have hfloorPos : 0 < floor := by
-    rw [floor, cmp89Eq249CentralStabilizedLowerConstant]
+    dsimp [floor]
+    rw [cmp89Eq249CentralStabilizedLowerConstant]
     positivity
   have hgapRhsPos : 0 < gapRhs := by
     dsimp [gapRhs]
@@ -96,17 +97,20 @@ theorem exists_cmp89Eq249CentralStabilizedComplexRadius
   have hvariationCont : ContinuousAt variation 0 := by
     simpa [variation] using
       continuousAt_cmp89Eq249CentralStabilizedDenominatorVariationBound a
-  have hampEventually : ∀ᶠ rho in 𝓝 (0 : ℝ), amplitude rho < 1 / 6 := by
+  have hampEventually :
+      ∀ᶠ rho in nhds (0 : ℝ), amplitude rho < 1 / 6 := by
     have h := hampCont.eventually
-      (eventually_lt_nhds (by norm_num : amplitude 0 < 1 / 6))
+      (eventually_lt_nhds
+        (by simpa [amplitude] using (by norm_num : (0 : ℝ) < 1 / 6)))
     exact h
-  have hgapEventually : ∀ᶠ rho in 𝓝 (0 : ℝ), gapLhs rho < gapRhs := by
+  have hgapEventually :
+      ∀ᶠ rho in nhds (0 : ℝ), gapLhs rho < gapRhs := by
     have hzero : gapLhs 0 = 0 := by simp [gapLhs]
     have h := hgapCont.eventually
       (eventually_lt_nhds (by simpa [hzero] using hgapRhsPos))
     exact h
   have hvariationEventually :
-      ∀ᶠ rho in 𝓝 (0 : ℝ), variation rho < floor := by
+      ∀ᶠ rho in nhds (0 : ℝ), variation rho < floor := by
     have hzero : variation 0 = 0 := by
       simpa [variation] using
         cmp89Eq249CentralStabilizedDenominatorVariationBound_zero a
