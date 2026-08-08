@@ -4876,3 +4876,42 @@ not a terminal field: counters remain exactly `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained. Runs `31239333700` and `31239462882`
 preserve the two elaboration failures; cached run `31239604206` was diagnostic
 only and did not retire PRE-VALIDATION.
+
+### Step 7.5ah entire finite averaging amplitude and printed-alias real slice (SEALED; complex denominator open)
+
+Exact source checkpoint `a414b2370c78230856905843cdf327cb56fc4eba`
+passed cold GitHub Actions run
+[`31241734442`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31241734442)
+(workflow checkpoint `2d268b58e944b0bd62f72a5965fc45fe47b456f5`). The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped. Dependency materialization ended at `05:29:49Z`; the focal ended at
+`05:30:25Z`, and the three audits ended at `05:30:30Z`, `05:30:34Z` and
+`05:30:39Z`. All four stages exited zero without focal warnings, and the build
+closed with `Build completed successfully (3288 jobs).` The six generic,
+one slope-nonvanishing and two physical-dictionary declarations all use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`62c7d2a6e98b8d1b54eb217dcecd1aaa61efa7154c85c8e1ec6b365f3fe9a74d`,
+reproduced after downloading artifact `9017266698`; GitHub reports artifact
+digest `24dcc599de11b14265d68d0519cec4db05ed7d80317ece166b31efdec80e13fd`.
+
+The sealed producer replaces the removable exponential quotient in CMP89
+(2.45) by its finite geometric sum at inverse integer scale. The resulting
+one-coordinate factor and its finite-coordinate product are entire, and the
+printed expanded-zone lower bound proves the denominator slope is nonzero on
+every real alias. Consequently the entire product agrees exactly with the
+already sealed physical averaging amplitude on that real slice.
+
+This does not yet construct the holomorphic massive denominator. That object
+must use the analytic pairing `u(z) * u(-z)` rather than a complexified norm
+square. Its uniform nonvanishing strip, the Fourier contour shift and transport
+to the physical regional Green remain open. The flowing condition
+`mass^2 <= 1` is unchanged and remains a physical RG-scaling obligation, not a
+sixteenth selectable window. This is infrastructure below window 15, not a
+terminal field: counters remain exactly `20/41`, `TermSource = 0`, and window
+15 compatible but unattained. Runs `31240261083`, `31240392858`,
+`31240518802`, `31240663340`, `31240791368`, `31240943095`, `31241218628`,
+`31241360285` and `31241511690` preserve the elaboration failures. Cached run
+`31241632503` passed but retained PRE-VALIDATION; only the cold run above
+retired it.

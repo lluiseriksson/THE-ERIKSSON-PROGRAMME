@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq251EntireAverageAmplitude
 
 /-!
-# PRE-VALIDATION: axiom audit for the entire CMP89 averaging amplitude
+# Axiom audit for the entire CMP89 averaging amplitude
 
 Source is present at this checkpoint, but its `.olean` has not yet been
 materialized and the result has not yet been verified by the Lean compiler.

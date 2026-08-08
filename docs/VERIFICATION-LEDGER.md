@@ -29654,3 +29654,36 @@ remain open. No terminal field is discharged: counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained. Runs
 `31239333700` and `31239462882` preserve the elaboration failures; cached run
 `31239604206` was diagnostic only.
+
+## Addendum 621 (2026-08-08, **CMP89 entire averaging amplitude GREEN; complex denominator open; 20/41 unchanged**)
+
+Source checkpoint `a414b2370c78230856905843cdf327cb56fc4eba` passed cold
+GitHub Actions run
+[`31241734442`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31241734442)
+under workflow checkpoint `2d268b58e944b0bd62f72a5965fc45fe47b456f5`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T05:29:49Z` to `05:30:25Z`, exited zero
+with `Build completed successfully (3288 jobs).`, and the three audits ended at
+`05:30:30Z`, `05:30:34Z` and `05:30:39Z`, all with exit zero. The focal log is
+warning-free and all nine audited declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`62c7d2a6e98b8d1b54eb217dcecd1aaa61efa7154c85c8e1ec6b365f3fe9a74d`;
+the downloaded artifact reproduced it and every entry of `SHA256SUMS` locally.
+GitHub artifact `9017266698` has digest
+`24dcc599de11b14265d68d0519cec4db05ed7d80317ece166b31efdec80e13fd`.
+
+The pole-free finite geometric average at inverse integer scale is now an
+entire function, its finite-coordinate product is entire, and both agree
+exactly with the physical CMP89 (2.45) amplitude on every printed real alias.
+The alias-slope nonvanishing is derived from the sealed expanded-zone sinc
+lower bound rather than accepted as a free dictionary.
+
+The holomorphic massive denominator, uniform nonvanishing strip, contour
+displacement and physical regional-Green transport remain open. In particular,
+the later analytic denominator must use `u(z) * u(-z)`, not a norm square.
+The flowing condition `mass^2 <= 1` remains a separate RG-scaling obligation
+and is not counted as a selectable window. No terminal field is discharged:
+counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained. Cached run `31241632503` was diagnostic only.

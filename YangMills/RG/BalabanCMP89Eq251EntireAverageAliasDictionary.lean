@@ -7,10 +7,11 @@ import YangMills.RG.BalabanCMP89Eq251EntireAverageAmplitude
 import YangMills.RG.BalabanCMP89Eq251AliasSlopeNonzero
 
 /-!
-# PRE-VALIDATION: printed-alias dictionary for the entire CMP89 amplitude
+# Printed-alias dictionary for the entire CMP89 amplitude
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler verification: source checkpoint
+`a414b2370c78230856905843cdf327cb56fc4eba`, cold GitHub Actions run
+`31241734442` (3288 jobs; focal and two-declaration axiom audit exit zero).
 
 This module keeps the physical alias geometry on the far side of an `.olean`
 boundary from the generic finite geometric identity.  The expanded-zone sinc

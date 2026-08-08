@@ -6,10 +6,11 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251AliasAmplitudeUpper
 
 /-!
-# PRE-VALIDATION: printed-alias denominator nonvanishing below CMP89 (2.51)
+# Printed-alias denominator nonvanishing below CMP89 (2.51)
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler verification: source checkpoint
+`a414b2370c78230856905843cdf327cb56fc4eba`, cold GitHub Actions run
+`31241734442` (3288 jobs; focal and one-declaration axiom audit exit zero).
 
 This leaf isolates the single physical fact needed by the entire averaging
 dictionary: the expanded-zone sinc lower bound keeps the removable

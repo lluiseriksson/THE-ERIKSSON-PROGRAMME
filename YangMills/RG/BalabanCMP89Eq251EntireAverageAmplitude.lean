@@ -6,10 +6,11 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq245ComplexSincDictionary
 
 /-!
-# PRE-VALIDATION: entire averaging amplitude below CMP89 (2.51)
+# Entire averaging amplitude below CMP89 (2.51)
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler verification: source checkpoint
+`a414b2370c78230856905843cdf327cb56fc4eba`, cold GitHub Actions run
+`31241734442` (3288 jobs; focal and six-declaration axiom audit exit zero).
 
 CMP89 (2.45), printed p. 584, uses the averaging quotient at the physical
 inverse integer scale `xi = 1 / N`.  Dividing exponential differences is not

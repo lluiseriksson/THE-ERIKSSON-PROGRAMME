@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq251EntireAverageAliasDictionary
 
 /-!
-# PRE-VALIDATION: axiom audit for the CMP89 printed-alias dictionary
+# Axiom audit for the CMP89 printed-alias dictionary
 
 Source is present at this checkpoint, but its `.olean` has not yet been
 materialized and the result has not yet been verified by the Lean compiler.
