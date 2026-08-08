@@ -50,7 +50,8 @@ theorem summable_cmp89SignedLatticeOneDimensionalExpWeight
   let q : ℝ := Real.exp (-delta)
   have hqNonneg : 0 ≤ q := Real.exp_pos (-delta) |>.le
   have hqLt : q < 1 := by
-    rw [q, Real.exp_lt_one_iff]
+    dsimp [q]
+    rw [Real.exp_lt_one_iff]
     linarith
   have hgeom : Summable (fun n : ℕ => q ^ n) :=
     summable_geometric_of_lt_one hqNonneg hqLt
@@ -70,7 +71,8 @@ theorem tsum_cmp89SignedLatticeOneDimensionalExpWeight
   let q : ℝ := Real.exp (-delta)
   have hqNonneg : 0 ≤ q := Real.exp_pos (-delta) |>.le
   have hqLt : q < 1 := by
-    rw [q, Real.exp_lt_one_iff]
+    dsimp [q]
+    rw [Real.exp_lt_one_iff]
     linarith
   have hgeom : Summable (fun n : ℕ => q ^ n) :=
     summable_geometric_of_lt_one hqNonneg hqLt
@@ -81,9 +83,13 @@ theorem tsum_cmp89SignedLatticeOneDimensionalExpWeight
       ← Real.exp_nat_mul, mul_comm] using hgeom
   have hneg :
       Summable (fun n : ℕ =>
-        cmp89SignedLatticeOneDimensionalExpWeight delta (-(n + 1 : ℕ) : ℤ)) := by
-    simpa [cmp89SignedLatticeOneDimensionalExpWeight, q,
-      ← Real.exp_nat_mul, mul_comm] using hgeom.comp_injective Nat.succ_injective
+        cmp89SignedLatticeOneDimensionalExpWeight delta (-((n : ℤ) + 1))) := by
+    refine (hgeom.comp_injective Nat.succ_injective).congr ?_
+    intro n
+    have hnatAbs : (-((n : ℤ) + 1)).natAbs = n + 1 := by omega
+    rw [Function.comp_apply, cmp89SignedLatticeOneDimensionalExpWeight,
+      hnatAbs]
+    simp [q, ← Real.exp_nat_mul, mul_comm]
   rw [tsum_of_nat_of_neg_add_one hnat hneg]
   have hnatTsum :
       (∑' n : ℕ,
@@ -94,16 +100,17 @@ theorem tsum_cmp89SignedLatticeOneDimensionalExpWeight
       tsum_geometric_of_lt_one hqNonneg hqLt
   have hnegTsum :
       (∑' n : ℕ,
-        cmp89SignedLatticeOneDimensionalExpWeight delta (-(n + 1 : ℕ) : ℤ)) =
+        cmp89SignedLatticeOneDimensionalExpWeight delta (-((n : ℤ) + 1))) =
         q * (1 - q)⁻¹ := by
     calc
       (∑' n : ℕ,
-          cmp89SignedLatticeOneDimensionalExpWeight delta (-(n + 1 : ℕ) : ℤ)) =
+          cmp89SignedLatticeOneDimensionalExpWeight delta (-((n : ℤ) + 1))) =
           ∑' n : ℕ, q ^ (n + 1) := by
             apply tsum_congr
             intro n
-            simp [cmp89SignedLatticeOneDimensionalExpWeight, q,
-              ← Real.exp_nat_mul, mul_comm]
+            have hnatAbs : (-((n : ℤ) + 1)).natAbs = n + 1 := by omega
+            rw [cmp89SignedLatticeOneDimensionalExpWeight, hnatAbs]
+            simp [q, ← Real.exp_nat_mul, mul_comm]
       _ = ∑' n : ℕ, q * q ^ n := by
             apply tsum_congr
             intro n
