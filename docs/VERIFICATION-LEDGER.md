@@ -29394,3 +29394,39 @@ ratio, Holder factor, complete physical integrand estimate, analytic strip
 and transport remain open.  No terminal field is discharged: the live
 counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained.
+
+## Addendum 613 (2026-08-08, **CMP89 periodic alias amplitude GREEN; Laplacian ratio open; 20/41 unchanged**)
+
+Exact source checkpoint
+`b7ba6f63c066603f2f8c8dc39301801cba4cf09c` was validated by cold GitHub
+Actions run [`31233987197`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31233987197)
+(workflow checkpoint `82d8beab77da54310a3bb351296984ec8c078ade`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T02:02:46Z` to `02:03:14Z`, exited zero
+without warnings, and ended with `Build completed successfully (3285 jobs).`
+The audit ended at `02:03:20Z` and also exited zero.  All six declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`5ca63bc02afba98d0868e76a6e3f95456cbd61421d4604900f16c404b78152c7`.
+GitHub recorded SHA-256
+`6bc8942fa874f83bafdd9006d4fcc1190aaf62d9ff14260fdf22cff88dfa9ef6`
+for uploaded artifact `9014796200` (10,520 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning or error line
+appears in the focal or audit logs.
+
+The sealed producer proves exact reciprocal-lattice periodicity of the
+half-angle sine, a noncentral momentum lower bound, and the explicit
+coordinate estimate `|u_j(p+2*pi*m)| <= 18*pi/(1+|2*pi*m|)` for every printed
+alias.  It then obtains the real and complex `d`-dimensional amplitude bounds
+by multiplying those coordinate weights, with no alias-cardinality loss.
+
+Run `31233738503` records the sole exponent-normalization elaboration failure;
+cached run `31233870292` passed the repaired source, and only the cold run
+above retired PRE-VALIDATION.  The noncentral Laplacian ratio, Holder factor,
+complete physical integrand estimate, analytic strip and transport remain
+open.  No terminal field is discharged: the live counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

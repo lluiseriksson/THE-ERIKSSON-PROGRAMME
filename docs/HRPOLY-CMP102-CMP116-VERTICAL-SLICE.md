@@ -4579,3 +4579,43 @@ discharged, and the live counters stay exactly `20/41` and `TermSource = 0`.
 Run `31233039423` preserves the sole complex-cast dictionary repair; cached
 run `31233192928` passed the final source, and only the cold run above retired
 PRE-VALIDATION.
+
+### Step 7.5aa periodic alias-amplitude upper bound for CMP89 (2.51) (SEALED; Laplacian ratio open)
+
+Exact source checkpoint `b7ba6f63c066603f2f8c8dc39301801cba4cf09c`
+passed cold GitHub Actions run
+[`31233987197`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31233987197)
+(workflow checkpoint `82d8beab77da54310a3bb351296984ec8c078ade`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-08T02:02:46Z` to `02:03:14Z`, exited
+zero without warnings, and ended with
+`Build completed successfully (3285 jobs).`; the audit ended at `02:03:20Z`.
+All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed producer proves the literal reciprocal-lattice periodicity
+`|sin((p+2*pi*m)/2)| = |sin(p/2)|` and the noncentral separation
+`pi*|m| <= |p+2*pi*m|` for `|p| <= pi`.  Consequently the removable numerator
+sinc is at most `6` times the exact source weight
+`(1+|2*pi*m|)^(-1)`.  Combining this with Step 7.5z leaves the denominator
+cost visible and gives the coordinate estimate
+
+```text
+|u_j(p+2*pi*m)| <= 18*pi/(1+|2*pi*m|).
+```
+
+Finite-product multiplication yields both the real and complex
+`d`-dimensional amplitude bounds by `(18*pi)^d` times the sealed
+multidimensional alias weight.  Every printed odd/even alias is covered and
+no alias cardinality is introduced.
+
+This closes only the averaging-amplitude numerator.  The noncentral
+Laplacian-ratio upper bound with the physical mass range visible, the Holder
+exponential difference, the complete comparison in (2.51), and the uniform
+analytic strip remain open.  No physical `B0` or `delta0` is produced, window
+15 remains unattained, no row 23--24 is discharged, and the live counters
+stay exactly `20/41` and `TermSource = 0`.
+
+Run `31233738503` preserves the sole exponent-normalization elaboration
+failure.  Cached run `31233870292` passed the repaired source, and only the
+cold run above retired PRE-VALIDATION.

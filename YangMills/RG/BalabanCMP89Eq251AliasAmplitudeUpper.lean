@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq245ComplexSincDictionary
 import YangMills.RG.BalabanCMP89Eq251ExpandedDifferenceLower
 
 /-!
-# PRE-VALIDATION: alias-amplitude upper bound below CMP89 (2.51)
+# Cold-sealed alias-amplitude upper bound below CMP89 (2.51)
 
-The source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`b7ba6f63c066603f2f8c8dc39301801cba4cf09c` by cold GitHub Actions run
+`31233987197`.  Restoration and saving of `.lake/build` were skipped.  The
+warning-free focal completed 3,285 jobs, the audit exited zero, and all six
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.45), printed p. 584, writes the averaging symbol at every reciprocal
 alias as a product of one-dimensional exponential quotients.  Periodicity
