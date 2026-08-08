@@ -86,9 +86,8 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec
         (a : ℂ) * cmp89Eq246EntireAliasAverageColumn d L j z m *
           ∑ n, cmp89Eq246EntireAliasAverageRow d L j z n * phi n := by
   classical
-  simp only [cmp89Eq246EntireAliasPrecisionMatrix, Matrix.mulVec, dotProduct]
-  rw [Finset.sum_add_distrib]
-  simp [Finset.mul_sum]
+  simp [cmp89Eq246EntireAliasPrecisionMatrix, Matrix.mulVec, dotProduct,
+    add_mul, Finset.mul_sum]
 
 /-- Every matrix entry is entire in the coarse complex momentum. -/
 theorem differentiable_cmp89Eq246EntireAliasPrecisionMatrix_entry
@@ -97,12 +96,34 @@ theorem differentiable_cmp89Eq246EntireAliasPrecisionMatrix_entry
     Differentiable ℂ
       (fun z : Fin d → ℂ =>
         cmp89Eq246EntireAliasPrecisionMatrix d L j mass a z m n) := by
-  unfold cmp89Eq246EntireAliasPrecisionMatrix
-  unfold cmp89Eq246EntireAliasFineSymbol
-  unfold cmp89Eq246EntireAliasAverageColumn
-  unfold cmp89Eq246EntireAliasAverageRow
-  unfold cmp89Eq248EntireAliasMomentum
-  split_ifs <;> fun_prop
+  have hshiftM : Differentiable ℂ
+      (fun z : Fin d → ℂ => cmp89Eq248EntireAliasMomentum z m.1) := by
+    unfold cmp89Eq248EntireAliasMomentum
+    fun_prop
+  have hshiftN : Differentiable ℂ
+      (fun z : Fin d → ℂ => -cmp89Eq248EntireAliasMomentum z n.1) := by
+    unfold cmp89Eq248EntireAliasMomentum
+    fun_prop
+  have hfine : Differentiable ℂ
+      (fun z : Fin d → ℂ =>
+        cmp89Eq246EntireAliasFineSymbol d L j mass z m) := by
+    exact
+      (differentiable_cmp89Eq245EntireScaledLaplacianSymbol
+        d (((L : ℝ) ^ j)⁻¹) mass).comp hshiftM
+  have hcolumn : Differentiable ℂ
+      (fun z : Fin d → ℂ =>
+        cmp89Eq246EntireAliasAverageColumn d L j z m) := by
+    exact
+      (differentiable_cmp89Eq245EntireAverageAmplitude d (L ^ j)).comp hshiftM
+  have hrow : Differentiable ℂ
+      (fun z : Fin d → ℂ =>
+        cmp89Eq246EntireAliasAverageRow d L j z n) := by
+    exact
+      (differentiable_cmp89Eq245EntireAverageAmplitude d (L ^ j)).comp hshiftN
+  rw [cmp89Eq246EntireAliasPrecisionMatrix]
+  split_ifs
+  · exact hfine.add ((hcolumn.const_mul (a : ℂ)).mul hrow)
+  · exact differentiable_const.add ((hcolumn.const_mul (a : ℂ)).mul hrow)
 
 /-- On the real slice, the holomorphic row factor is the complex conjugate of
 the physical column factor. -/
