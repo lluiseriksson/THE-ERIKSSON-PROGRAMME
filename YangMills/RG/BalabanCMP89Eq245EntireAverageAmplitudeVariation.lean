@@ -89,7 +89,8 @@ theorem norm_fin_prod_sub_prod_le_card_mul
               apply mul_le_mul_of_nonneg_right _ hx
               calc
                 1 + (d : ℝ) * R ≤ R + (d : ℝ) * R :=
-                  add_le_add_right hR ((d : ℝ) * R)
+                  by simpa [add_comm] using
+                    add_le_add_right hR ((d : ℝ) * R)
                 _ = ((d : ℝ) + 1) * R := by ring
             _ = ((d + 1 : ℕ) : ℝ) * eps * R ^ (d + 1) := by
               push_cast
