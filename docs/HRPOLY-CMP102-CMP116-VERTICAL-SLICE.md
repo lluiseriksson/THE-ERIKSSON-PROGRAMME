@@ -4803,11 +4803,6 @@ sum, uniform analytic strip and physical Green transport remain open. This is
 infrastructure below window 15, not a terminal field: counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
 
-Runs `31237719609` and `31237880610` preserve the two elaboration failures
-(over-eager quotient decomposition, then the `Nat.cast_pow` dictionary).
-Cached diagnostic run `31238006531` passed but retained PRE-VALIDATION; only
-the cold run above retired it.
-
 ### Step 7.5af central `O(1)` real integrand in CMP89 (2.51) (SEALED; finite alias sum open)
 
 Exact source checkpoint `f39ad20aa11e47db37bc12bd6c612d7b5b844e26`
@@ -5434,3 +5429,41 @@ part of this conservative producer. No stabilized-denominator radius, joint
 `B0`, contour shift, Fourier/physical rate dictionary or regional-Green
 estimate is proved. No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5av uniform noncentral complex radius (SEALED; stabilized sum open)
+
+Exact source checkpoint `6d83d0ed7836df9ce831970f0703aa9f6863a024`
+passed cold GitHub Actions run
+[`31258180333`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31258180333)
+(workflow checkpoint `a87f3dea04ca945bd4ebcce2d65917279ef2d1b9`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal ran from `12:53:06Z` to `13:03:41Z`, completed 8,431 jobs without a
+source warning, and the audit ended at `13:03:45Z`; both exited zero. Both
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`a6b713fa5d383d93fe0ab83a5de6b55f088964299a26dc134a6ce4cb600152eb`,
+reproduced after downloading artifact `9022131263`; GitHub reports artifact
+digest `053272fb9ffcff6a5912f6a390113395bd5575dcd08e3231defa459976c8100d`.
+
+The common noncentral strip condition is now one exact scalar inequality at
+the nearest possible shifted Euclidean momentum, `|q|_2 = pi`. Monotonicity
+then discharges the moment-dependent gap budget for every nonzero printed
+alias without a family of hypotheses, an alias count, or an alias diameter.
+This is a genuine uniform-radius producer below the stabilized denominator.
+
+The producer intentionally consumes the already sealed conservative budget
+`eps * (4*|q|_2 + 4*eps)`, `eps = rho*exp(rho)`. Therefore the sharper
+engineering estimate `rho about 8.8e-3` is not yet a theorem of this route;
+it requires a separate sharpening of the opposite-momentum pair variation.
+The amplitude condition `eps <= 1/6` remains a distinct scalar condition.
+
+No summation of complex noncentral quotients, stabilized-denominator lower
+bound, joint `B0`, contour shift, Fourier/physical rate dictionary or
+regional-Green estimate is proved. No terminal field is discharged: counters
+remain `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+Runs `31237719609` and `31237880610` preserve the two elaboration failures
+(over-eager quotient decomposition, then the `Nat.cast_pow` dictionary).
+Cached diagnostic run `31238006531` passed but retained PRE-VALIDATION; only
+the cold run above retired it.

@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP89Eq249NoncentralComplexGap
 /-!
 # Uniform scalar radius for noncentral CMP89 aliases
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
-
 The moment-dependent complex-gap theorem is useful only after one common
 strip width is shown to satisfy its budget for every nonzero reciprocal
 alias. This module reduces that family of inequalities to the nearest-alias

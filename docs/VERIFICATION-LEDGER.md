@@ -30162,3 +30162,39 @@ silently imported into this brick. No stabilized-denominator radius, joint
 `B0`, contour shift, Fourier/physical rate dictionary or regional-Green
 estimate is proved. No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 637 (2026-08-08, **CMP89 uniform noncentral complex radius GREEN; stabilized sum open**)
+
+Exact source checkpoint `6d83d0ed7836df9ce831970f0703aa9f6863a024`
+passed cold GitHub Actions run
+[`31258180333`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31258180333)
+under workflow checkpoint `a87f3dea04ca945bd4ebcce2d65917279ef2d1b9`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `12:53:06Z` to `13:03:41Z`, completed 8,431 jobs
+without a source warning, and the audit ended at `13:03:45Z`; both exited
+zero. Both declarations printed exactly `[propext, Classical.choice,
+Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`a6b713fa5d383d93fe0ab83a5de6b55f088964299a26dc134a6ce4cb600152eb`;
+the downloaded archive reproduced it locally. GitHub artifact `9022131263`
+has digest
+`053272fb9ffcff6a5912f6a390113395bd5575dcd08e3231defa459976c8100d`.
+
+The sealed producer replaces the pointwise family of noncentral complex-gap
+budgets by one exact inequality at Euclidean radius `pi`, then proves that the
+budget remains valid at every larger radius. The physical corollary consumes
+that single scalar condition and the already sealed nearest-alias geometry;
+it does not accept a family of budget witnesses.
+
+The current formal budget remains
+`eps * (4*|q|_2 + 4*eps)`, with `eps=rho*exp(rho)`. Consequently a numerical
+radius based on the sharper coefficient two is not attributed to this seal;
+such a gain must first be proved in the opposite-pair variation theorem. The
+separate amplitude condition `eps <= 1/6` is neither merged nor advertised as
+binding.
+
+No complex noncentral quotient sum, stabilized-denominator lower bound, joint
+`B0`, contour shift, Fourier/physical rate dictionary or regional-Green
+estimate is proved. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
