@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP89Eq251EntireAverageAliasDictionary
 /-!
 # Complex alias denominator in CMP89 (2.47)--(2.49)
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result is not compiler-verified.
-
 CMP89 (2.47) contains the reciprocal of
 
 `1 + a_j * sum_l |u_j(p+l)|^2 / Delta^xi(p+l)`.
@@ -28,6 +25,12 @@ denominators do not vanish.  No uniform complex nonvanishing strip, explicit
 strip radius, contour displacement, or regional-Green estimate is claimed.
 
 Source catalog key: `cmp89.local-green.fourier.2.34-2.51`.
+
+Cold compiler evidence: source checkpoint
+`3746b6a4ef58ec387ac6939ee819d99ed7729f07`, GitHub Actions run
+`31244335533` (`COLD_MODE=true`, no project-cache restore/save), focal and
+audit exit zero, nine audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 namespace YangMills.RG

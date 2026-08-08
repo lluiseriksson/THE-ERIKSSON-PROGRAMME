@@ -3,8 +3,10 @@ import YangMills.RG.BalabanCMP89Eq248ComplexAliasDenominator
 /-!
 # Axiom audit for the complex CMP89 alias denominator
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result is not compiler-verified.
+Cold compiler evidence: source checkpoint
+`3746b6a4ef58ec387ac6939ee819d99ed7729f07`, GitHub Actions run
+`31244335533`; all nine blocks print exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq248EntireAliasMomentum

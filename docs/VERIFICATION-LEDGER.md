@@ -29744,3 +29744,35 @@ The mass-gap heuristic `delta0 ~ m`, `B0 ~ m^-2`, `K ~ m^-7` is rejected for
 this source mechanism. The flowing-mass dictionary remains separately open at
 CMP85 (2.43). No Lean/Lake/oracle was run and no counter moves: `20/41`,
 `TermSource = 0`, window 15 compatible but unattained.
+
+## Addendum 624 (2026-08-08, **CMP89 complex alias denominator GREEN; uniform strip open; 20/41 unchanged**)
+
+Source checkpoint `3746b6a4ef58ec387ac6939ee819d99ed7729f07` passed cold
+GitHub Actions run
+[`31244335533`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31244335533)
+under workflow checkpoint `0088e233894cc6ab7c8098877ae27c8f77d8e09f`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `06:39:24Z` to `06:39:53Z`, and the audit ended at
+`06:39:59Z`; both exited zero. All nine audited declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`51d383fb311362cfc65b26637c4c49e9af64f5a749f794cff20398408866882f`;
+the downloaded artifact and all entries of `SHA256SUMS` reproduced locally.
+GitHub artifact `9018032031` has digest
+`eb8af486d0d0ad5399a3eb7c3be8d9107c0e6210a6a9dc3a60772d3927cd16ee`.
+
+The new producer constructs the literal complex finite alias denominator of
+CMP89 (2.47), the multiplied denominator of (2.49), and exact real-slice
+dictionaries for every summand and for the complete object. It uses the
+source-faithful opposite-momentum pairing rather than a complexified norm
+square.
+
+The module does not assert individual pole exclusion or a uniform complex
+strip. The source's analyticity claim concerns the complete integrand, so the
+next producer must respect possible removable cancellations in the assembled
+expression. The strip radius, joint bound, contour shift and physical
+regional-Green transport remain open. No terminal field is discharged:
+`20/41`, `TermSource = 0`, window 15 compatible but unattained. Runs
+`31243687034`, `31243835860`, `31243976939` and `31244104328` preserve the
+elaboration failures; cached run `31244234625` was diagnostic only.

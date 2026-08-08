@@ -4950,6 +4950,41 @@ infrastructure below window 15: counters remain exactly `20/41`,
 preserves the failed automatic `fun_prop` composition; cached run `31242614452`
 passed but retained PRE-VALIDATION. Only the cold run above retired it.
 
+### Step 7.5aj literal complex alias denominator and real-slice dictionary (SEALED; uniform strip open)
+
+Exact source checkpoint `3746b6a4ef58ec387ac6939ee819d99ed7729f07`
+passed cold GitHub Actions run
+[`31244335533`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31244335533)
+(workflow checkpoint `0088e233894cc6ab7c8098877ae27c8f77d8e09f`). The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped. The focal ran from `06:39:24Z` to `06:39:53Z`, the audit ended at
+`06:39:59Z`, and both exited zero. All nine audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`51d383fb311362cfc65b26637c4c49e9af64f5a749f794cff20398408866882f`;
+the downloaded artifact and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9018032031` has digest
+`eb8af486d0d0ad5399a3eb7c3be8d9107c0e6210a6a9dc3a60772d3927cd16ee`.
+
+The sealed module assembles the literal finite complex denominator of CMP89
+(2.47), using the opposite-momentum pairing `u(z+l) * u(-z-l)`, and the full
+denominator of (2.49) after multiplication by the entire unit-lattice symbol.
+On the printed real alias set, every complex summand and the complete full
+denominator agree exactly with the previously sealed real objects.
+
+This does not prove that each fine-lattice quotient is individually pole-free,
+nor that the combined expression is nonzero on a scale-uniform strip. The
+source asserts analyticity of the complete integrand; removable cancellations
+may therefore have to be proved after assembly rather than by excluding every
+individual denominator zero. An explicit strip radius, its joint bound
+`B0(delta0)`, contour displacement, reflections and physical regional-Green
+transport remain open. This is infrastructure below window 15: counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+Runs `31243687034`, `31243835860`, `31243976939` and `31244104328` preserve
+the four elaboration failures; cached run `31244234625` passed but retained
+PRE-VALIDATION. Only the cold run above retired it.
+
 Primary render audit of CMP89 printed pp. 584--586 identifies the quantitative
 source of the remaining strip. The full-lattice operator in (2.44) is
 
