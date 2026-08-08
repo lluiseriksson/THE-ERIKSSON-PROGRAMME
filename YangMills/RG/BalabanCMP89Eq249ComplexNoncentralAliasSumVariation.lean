@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasSumBound
 /-!
 # Uniform vertical variation of the CMP89 noncentral alias sum
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
-
 The sealed quotient-variation estimate has two radial terms. The numerator
 variation already pays `|q|_2^(-2)`. The denominator-variation term pays
 `|q|_2^(-3)` after the literal fine-symbol budget is inserted; since every

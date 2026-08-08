@@ -5601,10 +5601,18 @@ retired it. The conservative factor-four gap budget remains unchanged.
 No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
 
-### Step 7.5ba uniform vertical variation of the finite noncentral alias sum (PRE-VALIDATION)
+### Step 7.5ba uniform vertical variation of the finite noncentral alias sum (SEALED)
 
-The source is present but its `.olean` has not yet been materialized and the
-result has not yet been compiler-verified. The proposed producer inserts the
+Exact source checkpoint `8ec5b66891e54bd73859591608aace7d100f618e`
+passed cold GitHub Actions run
+[`31263911984`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31263911984)
+under workflow checkpoint `94787dd73ee0c9e729075012a2753b60d84e24da`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,437 jobs and the focal/audit both exited
+zero; both audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed producer inserts the
 literal fine-symbol budget into the two-gap quotient estimate, relaxes the
 resulting `|q|_2^(-3)` term to `|q|_2^(-2)` only after proving
 `|q|_2 >= pi > 1`, and applies the existing `alpha=-1` source-weight
@@ -5613,5 +5621,7 @@ tsum, without a cardinality factor.
 
 No optimized trigonometric gap or factor-two fine-symbol variation is used.
 No stabilized-denominator lower bound, joint `B0`, contour shift or physical
-Green estimate is claimed. No terminal field is discharged: counters remain
+Green estimate is claimed. Cached run `31263756123` is diagnostic only; failed
+runs `31263405769` and `31263602897` preserve the two elaboration frontiers.
+No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.

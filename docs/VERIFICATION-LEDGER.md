@@ -30323,3 +30323,38 @@ elaboration failures; cached run `31262301181` is diagnostic only. The
 conservative factor-four fine-symbol gap budget remains unchanged. No terminal
 field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+## Addendum 642 (2026-08-08, **CMP89 finite noncentral alias-sum variation GREEN; stabilized denominator open**)
+
+Exact source checkpoint `8ec5b66891e54bd73859591608aace7d100f618e`
+passed cold GitHub Actions run
+[`31263911984`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31263911984)
+with workflow checkpoint `94787dd73ee0c9e729075012a2753b60d84e24da`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `15:15:03Z` to `15:31:00Z`, completed 8,437 jobs,
+and the audit ended at `15:31:07Z`; both exited zero. The two audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9023775011` has GitHub digest
+`bf7db2f3b72cc0f8bc87c82fc6d13a3a57e705afd2bf9f81f0af1fffd1623684`.
+The deterministic inner archive re-hashed on Windows to
+`84f7b3d0a5e89eac280ae471bd054b9453508b46f9ceb0d8ca6ebb42d79abb75`,
+identical to the hash recorded inside the cold runner.
+
+The sealed specialization inserts the literal conservative fine-symbol
+variation budget into the two-gap quotient estimate. The second radial term is
+relaxed from `|q|_2^(-3)` to `|q|_2^(-2)` only on the proved noncentral region
+`|q|_2 >= pi > 1`; one existing CMP89 (2.51) redistribution at `alpha=-1`
+then supplies the same summable source weight for both terms. The complete
+finite alias fibre is bounded by the existing product tsum, without a
+cardinality factor.
+
+Cached run `31263756123` passed but did not retire PRE-VALIDATION. Failed
+diagnostic runs `31263405769` and `31263602897` preserve the local elaboration
+failures. Run `31263334970` stopped before Lean because a comment inside the
+machine-counted cache-prefix block raised `CACHE_KEY_COUNT` to 11; the runner
+was corrected without changing the source theorem. No optimized trigonometric
+gap, factor-two fine-symbol variation, stabilized-denominator lower bound,
+joint `B0`, contour shift, Fourier/physical rate dictionary or regional-Green
+estimate is obtained. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
