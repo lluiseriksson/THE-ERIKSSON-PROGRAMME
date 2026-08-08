@@ -29284,3 +29284,37 @@ elaboration corrections; cached run `31231215536` passed the final source,
 and only the cold run above retired PRE-VALIDATION.  No terminal field is
 discharged: the live counters remain exactly `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained.
+
+## Addendum 610 (2026-08-08, **CMP89 (2.51) multidimensional product GREEN; physical integrand open; 20/41 unchanged**)
+
+Exact source checkpoint
+`1722033a62ab84ed2f545e42f0a0aa1a81784809` was validated by cold GitHub
+Actions run [`31231854020`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31231854020)
+(workflow checkpoint `878e871ae9640c88945f6f77d6ba7da1ecbad8fc`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T01:08:16Z` to `01:08:35Z`, exited zero
+without warnings, and ended with `Build completed successfully (3282 jobs).`
+The audit ended at `01:08:39Z` and also exited zero.  All four declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`a7a14cfdf0b5c0d11d544b999019f07a5efba85ad4f46aac580b679284683420`.
+GitHub recorded SHA-256
+`d354c207bf75676c8b049c6cba172c8568da6c72ce45ee49b8af9e65ee26364e`
+for uploaded artifact `9014097545` (11,535 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, four-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed module proves the exact product-sum factorization over the source
+alias set `S^d` and transports the uniform one-dimensional p-series bound to
+its `d`-th power.  No count of aliases and no scale-dependent cardinality
+constant occurs.  The comparison of the literal physical summand with this
+product weight, the analytic strip and the Fourier-to-regional-Green
+transport remain open.
+
+Run `31231616924` preserves the only elaboration repair; cached run
+`31231751244` passed the final source, and only the cold run above retired
+PRE-VALIDATION.  No terminal field is discharged: the live counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.

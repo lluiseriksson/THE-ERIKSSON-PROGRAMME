@@ -4458,3 +4458,43 @@ only the cold run above retired PRE-VALIDATION.  The next honest brick is the
 exact finite-product identity supplied by `Finset.sum_prod_piFinset`, followed
 only then by the coordinatewise bound.  The physical integrand and analytic
 strip remain later frontiers.
+
+### Step 7.5x multidimensional alias product for CMP89 (2.51) (SEALED; physical integrand open)
+
+Exact source checkpoint `1722033a62ab84ed2f545e42f0a0aa1a81784809`
+passed cold GitHub Actions run
+[`31231854020`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31231854020)
+(workflow checkpoint `878e871ae9640c88945f6f77d6ba7da1ecbad8fc`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-08T01:08:16Z` to `01:08:35Z`, exited
+zero without warnings, and ended with
+`Build completed successfully (3282 jobs).`; the audit ended at `01:08:39Z`.
+All four audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed brick defines the literal product of the Step-7.5w coordinate
+weights over `Fin d` and proves the exact finite identity
+
+```text
+sum_(m in S^d) product_mu w(m_mu) = (sum_(n in S) w(n))^d
+```
+
+for the centered source alias set `S` of (2.45).  The proof uses
+`Finset.sum_prod_piFinset`; it does not estimate the size of `S`.  Monotonicity
+of nonnegative powers then transports the sealed coordinate-series estimate
+to a bound by the `d`-th power of one scale-independent infinite series.
+
+This is the last algebraic factorization in the displayed derivation (2.51),
+but it is not yet the complete estimate: the physical Fourier summand still
+has to be bounded by this product weight using the source estimates preceding
+the last line of (2.51).  The uniform complex strip and contour displacement
+also remain separate.  Thus no physical `B0` or `delta0` is produced, window
+15 remains unattained, no row 23--24 is discharged, and `TermSource` remains
+uninhabited; the live counters stay exactly `20/41` and zero.
+
+Run `31231616924` preserves the sole under-binder unfolding repair; cached run
+`31231751244` passed the final source, and only the cold run above retired
+PRE-VALIDATION.  The next honest brick is the literal physical-summand
+comparison in the first two inequalities of (2.51), with its Laplacian ratio,
+one distinguished momentum coordinate and the noncentral `|p+l|` decay kept
+visible.

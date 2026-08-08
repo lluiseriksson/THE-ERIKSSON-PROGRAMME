@@ -7,10 +7,13 @@ import Mathlib.Algebra.BigOperators.Ring.Finset
 import YangMills.RG.BalabanCMP89Eq251OneDimensionalAliasSeries
 
 /-!
-# PRE-VALIDATION: finite-product factorization in CMP89 (2.51)
+# Cold-sealed finite-product factorization in CMP89 (2.51)
 
-The source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`1722033a62ab84ed2f545e42f0a0aa1a81784809` by cold GitHub Actions run
+`31231854020`.  Restoration and saving of `.lake/build` were skipped.  The
+warning-free focal completed 3,282 jobs, the audit exited zero, and all four
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The final line of CMP89 (2.51) bounds the `d`-dimensional alias sum by the
 `d`-th power of one coordinate series.  This module constructs the literal
