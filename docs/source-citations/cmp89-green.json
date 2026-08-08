@@ -229,6 +229,10 @@
         "Equation (2.43) uses the same coefficients a_j^2 in the solved propagator decomposition, tying the running coefficient directly to the Green-function expansion later cited by CMP89."
       ],
       "lean_targets": [
+        "YangMills.RG.cmp85Eq215SourceAveragingCoefficientFloor",
+        "YangMills.RG.cmp85Eq215SourceAveragingCoefficientFloor_pos",
+        "YangMills.RG.cmp85Eq215SourceAveragingCoefficientFloor_le_massParameter",
+        "YangMills.RG.cmp85Eq215CentralAliasFloor_le_cmp89Eq250FullAliasDenominator",
         "YangMills.RG.cmp89Eq250CentralAliasLowerConstant",
         "YangMills.RG.cmp89Eq250CentralAliasLowerConstant_le_full_denominator",
         "YangMills.RG.cmp89Eq249ComplexFullAliasDenominator"

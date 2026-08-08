@@ -5044,3 +5044,33 @@ where `(2/pi)^10 = 0.010934...`. This closes the question whether `a_j`
 decays along the source flow. It does **not** yet produce a complex strip or
 `B0`: one still has to control the assembled complex denominator/integrand
 uniformly near the real cube, including any removable alias cancellations.
+
+### Step 7.5ak CMP85 coefficient floor into the CMP89 real denominator (SEALED; complex strip open)
+
+Exact source checkpoint `e0aaffdc9afc669bcef22aa040768beaf1b88df8`
+passed cold GitHub Actions run
+[`31245326067`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31245326067)
+(workflow checkpoint `8f68f8994a6c91605052f355287001cb0866772e`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal completed 8,407 jobs, focal and audit exited zero, and all five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The module does not duplicate the source recurrence: it consumes
+`cmp99SourceMassParameter`, proves the printed CMP85 (2.15) floor
+
+```text
+a * (1 - L^(-2)) <= a_j
+```
+
+for every depth, proves the floor strictly positive for `a > 0`, `L > 1`, and
+installs it in the complete real CMP89 denominator. Hence in dimension four
+the real gap `a * (1 - L^(-2)) * (2/pi)^10` is now a compiled consequence
+rather than a source-only calculation.
+
+This closes only the flow-uniformity of the real coefficient. The assembled
+complex denominator still needs a `j`-uniform variation bound. The intended
+next endpoint is a bound `C` on that complete variation, summed with the same
+alias weight as (2.51), followed by a derived radius such as `c_*/(2*C)` and
+a joint `B0(delta0)`. Per-scale continuity and independent per-alias
+nonvanishing are not accepted substitutes. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

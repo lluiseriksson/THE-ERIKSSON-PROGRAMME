@@ -9,8 +9,10 @@ import YangMills.RG.BalabanCMP89Eq250FullDenominatorLower
 /-!
 # The uniform CMP85 averaging-coefficient floor
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`e0aaffdc9afc669bcef22aa040768beaf1b88df8` by cold GitHub Actions run
+`31245326067`. Restoration and saving of `.lake/build` were skipped; the
+focal and five-declaration audit exited zero.
 
 CMP85 (2.13), printed p. 609, gives the recursion
 

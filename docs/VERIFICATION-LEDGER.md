@@ -29803,3 +29803,36 @@ uniform complex strip or its joint bound `B0(delta0)`: the quantitative complex
 perturbation of the assembled integrand and any removable cancellations remain
 open. No Lean/Lake/oracle was run for this source audit. Counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 626 (2026-08-08, **CMP85 coefficient floor and CMP89 real denominator transport GREEN; strip open**)
+
+Exact source checkpoint `e0aaffdc9afc669bcef22aa040768beaf1b88df8`
+passed cold GitHub Actions run
+[`31245326067`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31245326067)
+under workflow checkpoint `8f68f8994a6c91605052f355287001cb0866772e`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `07:05:50Z` to `07:20:04Z`, completed 8,407 jobs,
+and the audit ended at `07:20:11Z`; both exited zero. All five declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`. The only warning in
+the focal transcript is the pre-existing `unnecessarySimpa` linter note in
+`BalabanCMP99SourceGlobalStratification.lean`.
+
+The deterministic inner archive SHA-256 is
+`e84a9ad4af9a78be6b95a0a27a2d69e8c4b2980938cc0c7bd832012483ffe575`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9018475284` has digest
+`0130de91e37ce4f6ffbd030bc3bac463f8b3a9235e938bdbc4f8cfe1b9a6cdbb`.
+
+The new producer uses the existing recursive object
+`cmp99SourceMassParameter`, proves directly that every scale lies above the
+printed CMP85 (2.15) floor `a * (1 - L^(-2))`, proves that floor positive for
+`a > 0` and `L > 1`, and transports it through the sealed CMP89 (2.50) real
+denominator. Thus the real denominator now has one explicit positive lower
+constant independent of depth `j`; the running coefficient is not a remaining
+input.
+
+This does not construct the uniform complex strip or its bound `B0(delta0)`.
+The next analytic producer must bound the variation of the assembled complex
+denominator/integrand uniformly in `j`, respecting possible removable alias
+cancellations. No terminal field is discharged: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
