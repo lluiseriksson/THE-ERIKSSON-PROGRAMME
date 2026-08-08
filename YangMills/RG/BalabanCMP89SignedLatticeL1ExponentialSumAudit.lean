@@ -1,12 +1,5 @@
 import YangMills.RG.BalabanCMP89SignedLatticeL1ExponentialSum
 
-/-!
-# PRE-VALIDATION audit: signed-lattice `l1` exponential sum
-
-This source is present, its `.olean` has not yet been materialized, and its
-result has not yet been verified by the compiler.
--/
-
 #print axioms YangMills.RG.cmp89SignedLatticeOneDimensionalExpWeight_nonneg
 #print axioms YangMills.RG.summable_cmp89SignedLatticeOneDimensionalExpWeight
 #print axioms YangMills.RG.tsum_cmp89SignedLatticeOneDimensionalExpWeight

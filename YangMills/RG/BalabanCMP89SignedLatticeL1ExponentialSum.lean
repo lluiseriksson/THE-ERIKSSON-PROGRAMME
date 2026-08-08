@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251MultidimensionalAliasProduct
 
 /-!
-# PRE-VALIDATION: signed-lattice `l1` exponential sum
+# Cold-sealed signed-lattice `l1` exponential sum
 
-This source is present, its `.olean` has not yet been materialized, and its
-result has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`5ecbb510ba413443374c47bc732f6137f9008810` by cold GitHub Actions run
+`31278070364`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 3,283 jobs, the audit exited zero, and all six audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The signed endpoint contour below CMP89 (2.51) produces the literal decay
 `exp (-delta * sum_mu |u_mu|)` for an integer lattice displacement `u`.  This

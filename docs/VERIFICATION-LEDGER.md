@@ -30669,3 +30669,42 @@ open. No terminal field is discharged: counters remain `20/41`,
 
 Cached diagnostic run `31276564821` passed the unchanged source before the
 cold seal. There were no target warnings or elaboration repairs.
+
+## Addendum 651 (2026-08-08, **signed `l1` exponential sum GREEN; physical owner bridge open**)
+
+Exact source checkpoint `5ecbb510ba413443374c47bc732f6137f9008810`
+passed cold GitHub Actions run
+[`31278070364`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31278070364)
+with workflow checkpoint `464799b71683a780338de1e9ebc43b736be2e2c9`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `20:55:50Z` to `20:57:15Z`; the
+focal ran from `20:57:15Z` to `20:57:37Z`, completed 3,283 jobs, and the audit
+ended at `20:57:42Z`. Focal and audit both exited zero. All six audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9027612767`, named
+`cmp89-signed-lattice-l1-exponential-sum-5ecbb510ba413443374c47bc732f6137f9008810`,
+has GitHub digest
+`e77fad76e9ce6994df89f3754a3fb5aaa14669ae14b9157f9c8caf87afaa4ba5`.
+The deterministic inner archive re-hashed on Windows to
+`11c4f287d9a303988a0e9f2047b20ef572cf6b5489fe0248218828c71fbee670`,
+identical to the hash recorded by the cold runner; all 13 entries in its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The module proves the exact one-dimensional geometric series for
+`exp(-delta * natAbs n)` and factorizes every finite centered product box.
+The resulting uniform constant is
+`((1 + exp(-delta)) / (1 - exp(-delta)))^d`, retaining the `delta^(-d)`
+behavior of the signed `l1` contour decay rather than the `delta^(-(d+1))`
+behavior of the current ball-counting bound. The theorem deliberately claims
+a uniform finite-box bound, not an unproved multidimensional Fubini identity.
+
+Physical owner reindexing, the complete integrand bound, `B0`, the
+Fourier/physical-rate dictionary and window-15 contraction remain open. This
+is a quantitative producer below the consumer, not a terminal field. Counters
+remain `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31277952998` passed before the cold seal. Failed run
+`31277793979` preserves the preliminary normalization errors on local `let`
+values and the negative-integer branch; their repair changed no theorem
+statement, constant or hypothesis.
