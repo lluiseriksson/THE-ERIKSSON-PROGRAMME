@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq248EntireFourierSymbols
 
 /-!
-# PRE-VALIDATION: axiom audit for the entire CMP89 Fourier symbols
+# Axiom audit for the entire CMP89 Fourier symbols
 -/
 
 #print axioms YangMills.RG.cmp89Eq245EntireScaledDifference

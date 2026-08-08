@@ -61,7 +61,7 @@
         ]
       },
       "status": "visual_confirmed",
-      "summary": "CMP89 Lemma 2.4 proves the zero-background local Green value, derivative/Hölder and coarse-covariance decay estimates by an explicit Fourier representation, a uniform complex analytic strip and contour displacement; Lemma 2.2 and the later CMP95/CMP96 transports reduce to this source input. The real sinc-amplitude lower bound, its exact norm dictionary to (2.45), the central Laplacian ratio, the exact finite alias enumeration, the complete positive denominator estimate (2.50), the one-dimensional uniform p-series input of (2.51), its exact d-fold finite-product factorization, the expanded real geometry of every printed alias, explicit expanded-zone difference/sinc lower bounds, the periodic averaging-amplitude upper bound, the noncentral massive-symbol ratio under the explicit condition mass^2 <= 1, the literal Euclidean Hölder phase quotient, the exact noncentral redistribution to exponent 1+(1-alpha)/d, both the noncentral five-factor and central O(1) real integrand comparisons, their exact finite central/noncentral sum, and the entire finite averaging amplitude with its exact printed-alias real-slice dictionary are compiler verified. Primary cross-source rescaling evidence classifies the mass condition: the dimensionless mass grows toward the unit lattice, while CMP89's j index runs in the opposite direction. Uniformity follows from a fixed physical-unit mass bound, equivalently a fine-lattice mass of order L^(-k); exact verification against the RG equation (2.43) in CMP85 remains open. The holomorphic massive denominator, its uniform analytic strip and the remaining Fourier estimates stay open.",
+      "summary": "CMP89 Lemma 2.4 proves the zero-background local Green value, derivative/Hölder and coarse-covariance decay estimates by an explicit Fourier representation, a uniform complex analytic strip and contour displacement; Lemma 2.2 and the later CMP95/CMP96 transports reduce to this source input. The real sinc-amplitude lower bound, its exact norm dictionary to (2.45), the central Laplacian ratio, the exact finite alias enumeration, the complete positive denominator estimate (2.50), the one-dimensional uniform p-series input of (2.51), its exact d-fold finite-product factorization, the expanded real geometry of every printed alias, explicit expanded-zone difference/sinc lower bounds, the periodic averaging-amplitude upper bound, the noncentral massive-symbol ratio under the explicit condition mass^2 <= 1, the literal Euclidean Hölder phase quotient, the exact noncentral redistribution to exponent 1+(1-alpha)/d, both the noncentral five-factor and central O(1) real integrand comparisons, their exact finite central/noncentral sum, the entire finite averaging amplitude with its exact printed-alias real-slice dictionary, and the entire opposite-momentum Laplacian/averaging pairings with exact real slices are compiler verified. Primary cross-source rescaling evidence classifies the mass condition: the dimensionless mass grows toward the unit lattice, while CMP89's j index runs in the opposite direction. Uniformity follows from a fixed physical-unit mass bound, equivalently a fine-lattice mass of order L^(-k); exact verification against the RG equation (2.43) in CMP85 remains open. Uniform nonvanishing of the complete holomorphic denominator, its analytic strip and the remaining Fourier estimates stay open.",
       "extracted_claims": [
         "Lemma 2.4, printed page 582, gives constants c0 and delta0 independent of the scale j for the exponential decay of G_j(Pi) Q_j^*, its first lattice derivative, its Holder difference, and C^(j)(Pi), on rectangular parallelepipeds built of large blocks.",
         "The proof first removes the boundary by the multiple-reflection representation (2.42), then writes the free Green explicitly by the Fourier transform (2.43)-(2.48).",
@@ -78,7 +78,8 @@
         "The sealed noncentral real-integrand endpoint composes the literal Holder quotient, inverse complete denominator, scaled derivative, complex averaging amplitude and massive-symbol ratio, then applies the exact redistribution. Its constant is fully explicit and the mass^2 <= 1 hypothesis remains visible as a flowing-mass condition rather than a selectable window.",
         "The sealed central endpoint treats the zero alias as the separate O(1) branch printed in (2.51), using the explicit central momentum radius sqrt(d*pi^2). The massive-symbol quotient cancels at the same momentum, so this branch does not require the noncentral mass^2 <= 1 condition.",
         "The sealed finite-sum endpoint separates the zero alias exactly once with Finset.sum_erase_add, bounds all remaining aliases by the noncentral product weight, and invokes the uniform multidimensional series without any alias-cardinality factor.",
-        "The sealed pole-free continuation rewrites the one-coordinate averaging quotient at inverse integer scale as a finite geometric sum, proves that factor and its finite-coordinate product are entire, derives printed-alias denominator nonvanishing from the expanded-zone sinc lower bound, and proves exact agreement with the physical amplitude on the real printed-alias slice."
+        "The sealed pole-free continuation rewrites the one-coordinate averaging quotient at inverse integer scale as a finite geometric sum, proves that factor and its finite-coordinate product are entire, derives printed-alias denominator nonvanishing from the expanded-zone sinc lower bound, and proves exact agreement with the physical amplitude on the real printed-alias slice.",
+        "The sealed entire Fourier-symbol producer replaces the real norm squares in (2.47)-(2.49) by the holomorphic opposite-momentum pairings D_xi(z)D_xi(-z) and u_N(z)u_N(-z). Momentum reversal is complex conjugation on the real slice, so these pairings recover exactly the nonnegative scaled Laplacian and squared averaging norm already used in the real proof."
       ],
       "lean_targets": [
         "YangMills.RG.pow_two_div_pi_le_abs_cmp89Eq245SincAverageAmplitude_inverseScale",
@@ -124,6 +125,17 @@
         "YangMills.RG.cmp89Eq245RemovableExpSlope_scaled_alias_ne_zero",
         "YangMills.RG.cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq",
         "YangMills.RG.cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq",
+        "YangMills.RG.cmp89Eq245EntireScaledDifference",
+        "YangMills.RG.differentiable_cmp89Eq245EntireScaledDifference",
+        "YangMills.RG.cmp89Eq245EntireScaledLaplacianSymbol",
+        "YangMills.RG.differentiable_cmp89Eq245EntireScaledLaplacianSymbol",
+        "YangMills.RG.cmp89Eq245EntireScaledDifference_neg_ofReal_eq_conj",
+        "YangMills.RG.cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq",
+        "YangMills.RG.cmp89Eq245EntireAveragePair",
+        "YangMills.RG.differentiable_cmp89Eq245EntireAveragePair",
+        "YangMills.RG.cmp89Eq245EntireAverageFactor_neg_ofReal_eq_conj",
+        "YangMills.RG.cmp89Eq245EntireAverageAmplitude_neg_ofReal_eq_conj",
+        "YangMills.RG.cmp89Eq245EntireAveragePair_ofReal_eq",
         "YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate",
         "YangMills.RG.CMP99Eq342RegionalGreenCertificate",
         "YangMills.RG.CMP99Eq389SourceLocalizedThreeSpeciesGreenCertificate"
@@ -147,7 +159,8 @@
         "The sealed noncentral real-integrand producer assembles all five literal factors of the nonzero-alias branch of (2.51), with separate visible constants and no synthetic bounded function.",
         "The sealed central real-integrand producer supplies the separate compact-momentum O(1) branch without imposing the flowing-mass window.",
         "The sealed finite real-integrand sum combines the central and noncentral branches over the exact alias set and closes the real-variable summation step of (2.51) without a cardinality loss.",
-        "The sealed finite-geometric producer supplies the entire continuation of the averaging numerator and its exact real-slice dictionary. A later holomorphic denominator must pair u(z) with u(-z), not complexify a squared norm."
+        "The sealed finite-geometric producer supplies the entire continuation of the averaging numerator and its exact real-slice dictionary. A later holomorphic denominator must pair u(z) with u(-z), not complexify a squared norm.",
+        "The sealed Fourier-symbol producer supplies those opposite-momentum analytic pairings explicitly and proves their exact real-slice dictionaries; it is the numerator/Laplacian input for a later complete holomorphic denominator."
       ],
       "do_not_use_for": [
         "Do not cite this visual extraction as a compiled producer of the four CMP99 (3.42) certificate fields.",
@@ -157,7 +170,7 @@
       ],
       "open_questions": [
         "Acquire CMP85 (Higgs finite-volume I) and visually verify the exact normalization and index convention in its RG equation (2.43). Cross-source primary evidence already yields the candidate dictionary m_j=L^(k-j)m_k=m_phys L^(-j), but that equality is not yet a direct transcription of CMP85.",
-        "Construct the holomorphic lattice-difference and massive denominator of (2.43)-(2.48), using the pairing u(z)u(-z), and prove its uniform-in-j nonvanishing strip and contour displacement after the now-sealed entire numerator and real-variable alias sum.",
+        "Assemble the finite alias sum of u(z+l)u(-z-l)/Delta^xi(z+l) into the complete holomorphic denominator of (2.47)-(2.48), then prove its uniform-in-j nonvanishing strip and contour displacement. The individual entire pairings and their real-slice dictionaries are sealed; division and uniform complex nonvanishing are not.",
         "Exact transport of Lemma 2.4 through CMP89 (2.34), CMP95 (1.132)-(1.137), CMP96 (2.43)/(2.67), and CMP99 Corollary 3.6 to the canonical regional Green certificate.",
         "Dictionary from the source derivatives and C^(j)(Pi) to the four literal repository operators G', D G', G' D*, and Delta G'."
       ]

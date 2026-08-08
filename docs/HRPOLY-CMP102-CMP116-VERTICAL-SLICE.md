@@ -4915,3 +4915,37 @@ terminal field: counters remain exactly `20/41`, `TermSource = 0`, and window
 `31241360285` and `31241511690` preserve the elaboration failures. Cached run
 `31241632503` passed but retained PRE-VALIDATION; only the cold run above
 retired it.
+
+### Step 7.5ai entire lattice-difference, Laplacian and averaging pairings (SEALED; uniform strip open)
+
+Exact source checkpoint `47a5cb3b626426104ae0f7ef4afd98a2b3aea372`
+passed cold GitHub Actions run
+[`31242779236`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31242779236)
+(workflow checkpoint `0e6879cb1cdf93eb924a3aa6e68d5098208a0986`). The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped. The focal ran from `05:57:48Z` to `05:58:02Z`, the audit ended at
+`05:58:09Z`, both exited zero without focal warnings, and the build closed with
+`Build completed successfully (3277 jobs).` All eleven audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`1cfe4df0f678995b4acdf13bf1d3c699659c26cc26a12c98deb7006f291b081e`,
+reproduced after downloading artifact `9017562424`; GitHub reports artifact
+digest `21d5301d6d8de1ccf6c6239a9f51ca710dd7e6f80bd1fa24e905bd2e258144c7`.
+
+The sealed module constructs the entire fine-lattice difference and its
+bilinear opposite-momentum Laplacian, together with the corresponding
+opposite-momentum pairing of the finite averaging amplitude. On real momentum,
+reversal is proved to be complex conjugation; hence the two pairings recover
+exactly the nonnegative scaled Laplacian and the squared averaging norm used in
+CMP89 (2.47)--(2.49). This is the analytic continuation of the source factors,
+not a complexification of their norm squares.
+
+No inverse is taken. Uniform nonvanishing of the complete complex denominator,
+the analytic strip, contour displacement and regional-Green transport remain
+open. The condition `mass^2 <= 1` is absent from this construction and remains
+a flowing physical-mass obligation, not a sixteenth selectable window. This is
+infrastructure below window 15: counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Run `31242420869`
+preserves the failed automatic `fun_prop` composition; cached run `31242614452`
+passed but retained PRE-VALIDATION. Only the cold run above retired it.

@@ -29687,3 +29687,35 @@ The flowing condition `mass^2 <= 1` remains a separate RG-scaling obligation
 and is not counted as a selectable window. No terminal field is discharged:
 counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained. Cached run `31241632503` was diagnostic only.
+
+## Addendum 622 (2026-08-08, **CMP89 entire Fourier symbols GREEN; uniform strip open; 20/41 unchanged**)
+
+Source checkpoint `47a5cb3b626426104ae0f7ef4afd98a2b3aea372` passed cold
+GitHub Actions run
+[`31242779236`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31242779236)
+under workflow checkpoint `0e6879cb1cdf93eb924a3aa6e68d5098208a0986`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T05:57:48Z` to `05:58:02Z`, exited zero
+with `Build completed successfully (3277 jobs).`, and the audit ended at
+`05:58:09Z` with exit zero. The focal is warning-free and all eleven audited
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`1cfe4df0f678995b4acdf13bf1d3c699659c26cc26a12c98deb7006f291b081e`;
+the downloaded artifact and all entries of `SHA256SUMS` reproduced locally.
+GitHub artifact `9017562424` has digest
+`21d5301d6d8de1ccf6c6239a9f51ca710dd7e6f80bd1fa24e905bd2e258144c7`.
+
+The fine-lattice difference, its opposite-momentum Laplacian pairing and the
+opposite-momentum entire averaging pairing are constructed and jointly entire.
+Their real slices are exactly the previously sealed nonnegative Laplacian and
+squared averaging amplitude. The proof uses explicit momentum reversal and
+complex conjugation; no Hermitian norm is inserted into the holomorphic object.
+
+The complete complex denominator has not been inverted or shown nonzero on a
+uniform strip. Contour displacement and physical regional-Green transport also
+remain open. The flowing mass condition is unchanged and is not a selectable
+smallness window. No terminal field is discharged: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained. Run
+`31242420869` preserves the elaboration failure; cached run `31242614452` was
+diagnostic only.

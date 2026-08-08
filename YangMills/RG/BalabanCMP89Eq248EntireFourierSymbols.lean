@@ -7,10 +7,11 @@ import YangMills.RG.BalabanCMP89Eq250CentralLaplacianComparison
 import YangMills.RG.BalabanCMP89Eq251EntireAverageAmplitude
 
 /-!
-# PRE-VALIDATION: entire Fourier symbols below CMP89 (2.48)
+# Entire Fourier symbols below CMP89 (2.48)
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler verification: source checkpoint
+`47a5cb3b626426104ae0f7ef4afd98a2b3aea372`, cold GitHub Actions run
+`31242779236` (3277 jobs; focal and eleven-declaration axiom audit exit zero).
 
 CMP89 (2.47)--(2.49) contains the real quantities `|u_j(q)|^2` and
 `Delta^xi(q)`.  A holomorphic continuation cannot use complex norm squares.
