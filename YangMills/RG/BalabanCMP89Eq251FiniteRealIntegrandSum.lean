@@ -6,10 +6,14 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251CentralRealIntegrandBound
 
 /-!
-# PRE-VALIDATION: finite real-integrand alias sum in CMP89 (2.51)
+# Cold-sealed finite real-integrand alias sum in CMP89 (2.51)
 
-The source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Cold GitHub Actions run `31239705795` compiler-verified source checkpoint
+`c1b7aa941688a8e3e7003f3b3a9142cc8db9dccd` with workflow checkpoint
+`67247bb7b8f83d280dc74ff13741c8d38153c43c`. Both restore and save of
+`.lake/build` were skipped; the warning-free focal and audit exited zero, the
+build closed at 3291 jobs, and all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module performs the exact finite split printed in CMP89 (2.51).  The
 zero reciprocal alias contributes the separately sealed central `O(1)` term;

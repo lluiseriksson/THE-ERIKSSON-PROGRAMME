@@ -29625,3 +29625,32 @@ No terminal field is discharged: counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained. Runs `31238460271`,
 `31238613347` and `31238736048` preserve the elaboration failures; cached run
 `31238863986` was diagnostic only.
+
+## Addendum 620 (2026-08-08, **CMP89 exact finite alias sum GREEN; analytic strip open; 20/41 unchanged**)
+
+Source checkpoint `c1b7aa941688a8e3e7003f3b3a9142cc8db9dccd` passed cold
+GitHub Actions run
+[`31239705795`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31239705795)
+under workflow checkpoint `67247bb7b8f83d280dc74ff13741c8d38153c43c`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T04:35:02Z` to `04:35:51Z`, exited zero
+with `Build completed successfully (3291 jobs).`, and the audit ended at
+`04:35:55Z` with exit zero. Both logs are warning-free and all three audited
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`90ce34305c9b5cc50e7ad9e0f6f5008ea527d415a7566dd128d943ffbf7d9b14`;
+the downloaded artifact reproduced it locally. GitHub artifact `9016637971`
+has digest
+`b527775ba33fe24c36e0c06275e47a198b03cc560af5890b5a81d79ef6546214`.
+
+The exact finite reciprocal-alias sum now splits into the central `O(1)` term
+once and the noncentral aliases, which are absorbed by the sealed product
+series without a cardinality factor. The flowing mass condition is used only
+on the noncentral summands and remains a separate physical scaling obligation.
+
+The analytic strip, contour displacement and physical regional-Green transport
+remain open. No terminal field is discharged: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained. Runs
+`31239333700` and `31239462882` preserve the elaboration failures; cached run
+`31239604206` was diagnostic only.

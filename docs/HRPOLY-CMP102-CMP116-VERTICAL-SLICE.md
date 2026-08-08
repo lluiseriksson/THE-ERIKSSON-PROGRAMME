@@ -4843,3 +4843,36 @@ unattained.
 Runs `31238460271`, `31238613347` and `31238736048` preserve the three
 elaboration failures. Cached diagnostic run `31238863986` passed but retained
 PRE-VALIDATION; only the cold run above retired it.
+
+### Step 7.5ag exact finite real-integrand alias sum in CMP89 (2.51) (SEALED; analytic strip open)
+
+Exact source checkpoint `c1b7aa941688a8e3e7003f3b3a9142cc8db9dccd`
+passed cold GitHub Actions run
+[`31239705795`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31239705795)
+(workflow checkpoint `67247bb7b8f83d280dc74ff13741c8d38153c43c`). The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T04:35:02Z` to `04:35:51Z`, the audit
+ended at `04:35:55Z`, both exited zero without warnings, and the build closed
+with `Build completed successfully (3291 jobs).` All three audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`90ce34305c9b5cc50e7ad9e0f6f5008ea527d415a7566dd128d943ffbf7d9b14`,
+reproduced after downloading artifact `9016637971`; GitHub reports artifact
+digest `b527775ba33fe24c36e0c06275e47a198b03cc560af5890b5a81d79ef6546214`.
+
+The sealed endpoint splits the exact finite reciprocal-alias set with
+`Finset.sum_erase_add`: the zero alias contributes the central constant once,
+and every remaining alias is bounded by the noncentral product weight. The
+finite product sum is then dominated by the already sealed infinite
+one-dimensional series raised to the `d`-th power. No alias cardinality enters.
+The condition `mass^2 <= 1` is consumed only by the noncentral branch; it is
+not imposed on the central `O(1)` term and is not reclassified as a selectable
+smallness window.
+
+The uniform complex analytic strip, Fourier contour shift and transport to the
+physical regional Green remain open. This is infrastructure below window 15,
+not a terminal field: counters remain exactly `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained. Runs `31239333700` and `31239462882`
+preserve the two elaboration failures; cached run `31239604206` was diagnostic
+only and did not retire PRE-VALIDATION.
