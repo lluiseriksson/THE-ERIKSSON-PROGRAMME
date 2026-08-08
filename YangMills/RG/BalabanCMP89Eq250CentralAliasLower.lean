@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq250CentralLaplacianComparison
 
 /-!
-# PRE-VALIDATION: central alias lower bound in CMP89 (2.50)
+# Cold-sealed central alias lower bound in CMP89 (2.50)
 
-The primary source is present, but this module's `.olean` has not yet been
-materialized and its declarations have not yet been compiler-verified.
+Compiler-verified at exact source checkpoint
+`b7de5c4d80af961acdfaba349ba09d8b54d9c591` by cold GitHub Actions run
+`31229579111`.  Restoration and saving of `.lake/build` were skipped.  The
+warning-free focal completed 3,276 jobs, the audit exited zero, and all four
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 This module combines the two independently sealed factors in the central
 alias of CMP89 (2.50): the complex averaging-amplitude lower bound from

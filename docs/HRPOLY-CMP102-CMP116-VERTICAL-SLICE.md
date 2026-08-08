@@ -4322,3 +4322,47 @@ cached run `31228790898` passed the final source, and only the cold run above
 retired PRE-VALIDATION.  The next honest producer combines this reciprocal
 ratio with the Step-7.5s complex-amplitude lower bound to close the central
 alias term of (2.50), before any noncentral summation.
+
+### Step 7.5u central alias lower bound for CMP89 (2.50) (SEALED; noncentral aliases open)
+
+Exact source checkpoint `b7de5c4d80af961acdfaba349ba09d8b54d9c591`
+passed cold GitHub Actions run
+[`31229579111`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31229579111)
+(workflow checkpoint `3096c9597395d755fddc8847a40e6cf0a3ba9d99`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-08T00:17:36Z` to `00:17:47Z`, exited
+zero without warnings, and ended with
+`Build completed successfully (3276 jobs).`; the audit ended at `00:17:52Z`.
+All four audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The sealed brick retains the positive source coefficient `a` explicitly and
+proves the exact equality between the literal source order
+
+```text
+a * |u_j(p)|^2 / Delta^xi(p) * Delta^1(p)
+```
+
+and its factorized core.  Multiplying the Step-7.5s averaging-amplitude lower
+bound with the Step-7.5t reciprocal Laplacian ratio gives the uniform lower
+constant
+
+```text
+a * ((2 / pi)^d)^2 * ((pi / 2)^2)^(-1),
+```
+
+which is separately proved strictly positive for `0 < a`.  Thus the central
+alias contribution in (2.50) is now closed without a free family or a hidden
+`0/0` convention.
+
+The noncentral aliases still have to be bounded and summed before the full
+denominator estimate (2.50) exists; (2.51), the uniform analytic strip, and
+the Fourier-to-regional-Green dictionary also remain open.  Therefore this
+brick produces no physical `B0` or `delta0`, does not attain window 15,
+discharges no row 23--24, and does not inhabit `TermSource`.  The counters
+remain exactly `20/41` and zero.
+
+Run `31229284523` preserves the single associativity elaboration correction;
+cached run `31229442243` passed the final source, and only the cold run above
+retired PRE-VALIDATION.  The next honest Fourier brick is the noncentral
+alias comparison and its summation in (2.50), followed by (2.51).

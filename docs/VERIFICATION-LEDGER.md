@@ -29172,3 +29172,39 @@ corrections; cached run `31228790898` passed the final source, and only the
 cold run above retired PRE-VALIDATION.  No terminal field is discharged:
 the live counters remain exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+## Addendum 607 (2026-08-08, **CMP89 (2.50) central alias GREEN; noncentral aliases open; 20/41 unchanged**)
+
+Exact source checkpoint
+`b7de5c4d80af961acdfaba349ba09d8b54d9c591` was validated by cold GitHub
+Actions run [`31229579111`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31229579111)
+(workflow checkpoint `3096c9597395d755fddc8847a40e6cf0a3ba9d99`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T00:17:36Z` to `00:17:47Z`, exited zero
+without warnings, and ended with `Build completed successfully (3276 jobs).`
+The audit ended at `00:17:52Z` and also exited zero.  All four declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`b33edb90e167481eeac1980f4cefcef7ede3874ce2df8a8e45d0c2e57d02ae48`.
+GitHub recorded SHA-256
+`08d98c192e14f67d209665992f1a3e8c7b21a50d222bd84f144e44965adaaf0a`
+for uploaded artifact `9013315719` (10,049 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, four-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed producer proves an exact algebraic dictionary between the literal
+central term `a |u_j(p)|^2 / Delta^xi(p) * Delta^1(p)` and its factorized
+form.  It then combines the two preceding cold-sealed lower estimates and
+obtains the explicit scale-uniform constant
+`a * ((2/pi)^d)^2 * ((pi/2)^2)^(-1)`, with strict positivity kept as a
+separate theorem under the visible hypothesis `0 < a`.
+
+The noncentral aliases, their sum in the full denominator estimate (2.50),
+(2.51), and the uniform analytic strip remain open.  Run `31229284523`
+preserves the sole associativity elaboration correction; cached run
+`31229442243` passed the final source, and only the cold run above retired
+PRE-VALIDATION.  No terminal field is discharged: the live counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
