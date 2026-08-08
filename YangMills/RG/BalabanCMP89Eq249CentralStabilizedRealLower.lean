@@ -113,6 +113,7 @@ theorem cmp89Eq249CentralStabilizedAliasDenominator_ofReal_eq
     cmp89Eq249ComplexNoncentralAliasSum_ofReal_eq hp,
     cmp89Eq249RealCentralStabilizedAliasDenominator]
   push_cast
+  ring
 
 /-- The noncentral real sum is nonnegative for positive running mass. -/
 theorem cmp89Eq249RealNoncentralAliasSum_nonneg
