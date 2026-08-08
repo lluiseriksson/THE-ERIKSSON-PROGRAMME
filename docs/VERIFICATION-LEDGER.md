@@ -30461,3 +30461,46 @@ estimate, physical `B0` and window-15 contraction remain open. Neither the
 sharper trigonometric gap nor the proposed factor-two opposite-pair variation
 is used. No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 646 (2026-08-08, **stabilized complete complex integrand GREEN; uniform strip bound still open**)
+
+Exact source checkpoint `fa607d1bb5bed6460c4c852510d2a1cbf538aecc`
+passed cold GitHub Actions run
+[`31271086914`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31271086914)
+with workflow checkpoint `f47d4903c0b2ba241f15d76954dd301c9d738d1d`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `18:06:23Z` to `18:07:48Z`; the
+focal then ran to `18:24:00Z`, completed 8,442 jobs, and the audit ended at
+`18:24:08Z`. Focal and audit both exited zero. All ten audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9025833740`, named
+`cmp89-stabilized-complex-integrand-fa607d1bb5bed6460c4c852510d2a1cbf538aecc`,
+has GitHub digest
+`00e0ef947513e9a9a561b0d809bfc1591697153e34960a80ce65e9c6e89b1f6b`.
+The deterministic inner archive re-hashed on Windows to
+`77db53fa9cb7a99c7ad4513e91a80d6d5a57e638dfa75b4299db401115ea1a62`,
+identical to the hash recorded inside the cold runner.
+
+The sealed module transcribes the complete finite complex integrand under
+CMP89 (2.49). It proves, on the original rational domain, equality between
+the printed expression and the assembled stabilized extension. The central
+branch contains no fine-symbol quotient; each noncentral branch retains the
+literal `Delta_0 / Delta_m` ratio; both share the already sealed stabilized
+denominator. Thus the stabilized object is defined across the two removable
+central zeros without accepting a family of integrands or a bound as input.
+
+Failed diagnostic run `31270479260` preserved the central normalization and
+local-abbreviation elaboration failures. Run `31270628352` reduced the source
+to the zero-alias `1 / L^j` versus `(L^j)⁻¹` normal form, and run
+`31270797452` showed that the explicit helper equality and goal still used
+opposite inverse notations. None changed a theorem statement, hypothesis or
+constant. Cached diagnostic run `31270950242` passed the final source but did
+not retire PRE-VALIDATION; only the cold run above did.
+
+This is an algebraic extension, not a uniform strip estimate. Noncentral
+strip nonvanishing from the positive-radius source, a complex numerator
+bound, the flowing `mass^2 <= 1` condition, physical `B0`, contour shift,
+Fourier/physical-rate dictionary and window-15 contraction remain open. No
+terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.

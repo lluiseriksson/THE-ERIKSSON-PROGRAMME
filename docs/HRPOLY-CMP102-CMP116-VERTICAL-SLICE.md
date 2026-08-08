@@ -5708,7 +5708,7 @@ numerical radius, discharge the flowing `mass^2 <= 1` source condition,
 construct the complete complex integrand or physical `B0`, or attain window
 15. No terminal counter moves.
 
-### Step 7.5be assembled stabilized complex integrand (PRE-VALIDATION)
+### Step 7.5be assembled stabilized complex integrand (SEALED; uniform strip bound open)
 
 The proposed producer transcribes the complete finite complex integrand under
 CMP89 (2.49), keeping the Holder and transport phases, the signed scaled
@@ -5733,3 +5733,24 @@ strip estimate itself. Noncentral complex nonvanishing, the flowing
 Fourier/physical-rate dictionary and window 15 remain open. No terminal field
 is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+Exact source checkpoint `fa607d1bb5bed6460c4c852510d2a1cbf538aecc`
+passed cold GitHub Actions run `31271086914` with workflow checkpoint
+`f47d4903c0b2ba241f15d76954dd301c9d738d1d`. Restore and save of
+`.lake/build` were both skipped. The focal completed 8,442 jobs; focal and
+audit exited zero, and all ten audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`. The deterministic evidence archive
+has SHA-256 `77db53fa9cb7a99c7ad4513e91a80d6d5a57e638dfa75b4299db401115ea1a62`.
+
+The seal proves that the literal printed rational integrand equals the
+assembled stabilized expression on the original rational domain. The central
+branch has no fine-symbol quotient, every noncentral branch retains the
+literal `Delta_0 / Delta_m` ratio, and both use the common stabilized
+denominator. The stabilized object therefore exists at the two removable
+central zeros without assuming those two nonvanishing conditions.
+
+It does **not** prove the noncentral strip from the positive-radius source,
+bound the complex numerator, construct `B0`, justify a contour displacement,
+identify the Fourier and physical rates, resolve the flowing mass condition,
+or attain window 15. The live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

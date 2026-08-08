@@ -8,8 +8,11 @@ import YangMills.RG.BalabanCMP89Eq249CentralStabilizedComplexRadius
 /-!
 # Stabilized complete complex integrand below CMP89 (2.49)
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+Cold validation: exact source checkpoint
+`fa607d1bb5bed6460c4c852510d2a1cbf538aecc` passed GitHub Actions run
+`31271086914` with restore and save of `.lake/build` both skipped. The focal
+completed 8,442 jobs, and all ten audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The expression printed in CMP89 (2.49) contains the unit-lattice symbol both
 in its numerator and in the complete denominator.  Cancelling that common
