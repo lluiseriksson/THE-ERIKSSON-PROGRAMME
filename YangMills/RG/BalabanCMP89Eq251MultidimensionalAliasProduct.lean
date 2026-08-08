@@ -57,25 +57,12 @@ theorem cmp89Eq251CenteredMultidimensionalAliasSum_eq_pow
     (d N : ℕ) (s : ℝ) :
     cmp89Eq251CenteredMultidimensionalAliasSum d N s =
       cmp89Eq251CenteredOneDimensionalAliasSum N s ^ d := by
-  rw [cmp89Eq251CenteredMultidimensionalAliasSum,
+  simp only [cmp89Eq251CenteredMultidimensionalAliasSum,
     cmp89Eq245CenteredAliasVectors,
     cmp89Eq251MultidimensionalAliasWeight,
     cmp89Eq251CenteredOneDimensionalAliasSum]
-  calc
-    (∑ m ∈ Fintype.piFinset
-          (fun _ : Fin d => cmp89Eq245CenteredAliasIntegers N),
-        ∏ mu, cmp89Eq251OneDimensionalAliasWeight s (m mu)) =
-        ∏ _ : Fin d,
-          ∑ n ∈ cmp89Eq245CenteredAliasIntegers N,
-            cmp89Eq251OneDimensionalAliasWeight s n := by
-      simpa using
-        (Finset.sum_prod_piFinset
-          (ι := Fin d) (κ := ℤ)
-          (cmp89Eq245CenteredAliasIntegers N)
-          (fun _ n => cmp89Eq251OneDimensionalAliasWeight s n))
-    _ = (∑ n ∈ cmp89Eq245CenteredAliasIntegers N,
-          cmp89Eq251OneDimensionalAliasWeight s n) ^ d := by
-      simp
+  rw [Finset.sum_prod_piFinset]
+  simp
 
 /-- Uniform `d`-dimensional product bound obtained from the sealed coordinate
 series. -/
