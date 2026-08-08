@@ -1,4 +1,4 @@
-name: Validate CMP89 positive stabilized radius
+name: Validate CMP89 stabilized complex integrand
 
 on:
   workflow_dispatch:
@@ -13,23 +13,23 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: d88c6b1f58882c88189c9fe67e40c6f763faab84
+  SOURCE_SHA: ae87d6b60e004ccc58fd67b51264c4c8052c87a7
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    cmp89-positive-stabilized-radius
     cmp89-stabilized-denominator-variation
     cmp89-stabilized-complex-floor
     cmp89-eq251-finite-real-integrand-sum
     cmp89-eq251-noncentral-real-integrand
-    cmp89-eq251-alias-weight-redistribution
     cmp89-alias-weighted-strip-bound
     cmp89-eq251-noncentral-laplacian-ratio
     cmp89-noncentral-quotient-variation
     cmp89-noncentral-sum-variation
 
 jobs:
-  cmp89-positive-stabilized-radius:
+  cmp89-stabilized-complex-integrand:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-positive-stabilized-radius-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-stabilized-complex-integrand-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq249CentralStabilizedComplexRadius.lean \
-            YangMills/RG/BalabanCMP89Eq249CentralStabilizedComplexRadiusAudit.lean \
+            YangMills/RG/BalabanCMP89Eq249StabilizedComplexIntegrand.lean \
+            YangMills/RG/BalabanCMP89Eq249StabilizedComplexIntegrandAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp89_positive_stabilized_radius_focal \
-            lake build YangMills.RG.BalabanCMP89Eq249CentralStabilizedComplexRadius
-          run_stage cmp89_positive_stabilized_radius_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq249CentralStabilizedComplexRadiusAudit.lean
+          run_stage cmp89_stabilized_complex_integrand_focal \
+            lake build YangMills.RG.BalabanCMP89Eq249StabilizedComplexIntegrand
+          run_stage cmp89_stabilized_complex_integrand_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq249StabilizedComplexIntegrandAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp89_positive_stabilized_radius_audit.log": 3,
+              "cmp89_stabilized_complex_integrand_audit.log": 10,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              cmp89-positive-stabilized-radius-evidence.tar.gz
-          sha256sum cmp89-positive-stabilized-radius-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              cmp89-stabilized-complex-integrand-evidence.tar.gz
+          sha256sum cmp89-stabilized-complex-integrand-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp89-positive-stabilized-radius-${{ env.SOURCE_SHA }}
+          name: cmp89-stabilized-complex-integrand-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp89-positive-stabilized-radius-evidence.tar.gz
+            cmp89-stabilized-complex-integrand-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-positive-stabilized-radius-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-stabilized-complex-integrand-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
