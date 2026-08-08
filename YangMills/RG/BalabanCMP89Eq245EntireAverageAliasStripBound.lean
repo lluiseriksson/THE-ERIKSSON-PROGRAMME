@@ -49,9 +49,14 @@ theorem cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference
       ((N : ℝ)⁻¹ : ℂ) *
         cmp89Eq245EntireScaledDifference (N : ℝ)⁻¹ z := by
   have hNcomplex : (N : ℂ) ≠ 0 := by exact_mod_cast Nat.ne_of_gt hN
-  have hinv : (((N : ℝ)⁻¹ : ℝ) : ℂ) = (N : ℂ)⁻¹ := by push_cast
-  rw [cmp89Eq245EntireAverageBase, cmp89Eq245EntireScaledDifference]
-  rw [hinv]
+  have hinv : (((N : ℝ)⁻¹ : ℝ) : ℂ) = (N : ℂ)⁻¹ := by
+    simpa using Complex.ofReal_inv (N : ℝ)
+  have hscaled :
+      cmp89Eq245EntireScaledDifference (N : ℝ)⁻¹ z =
+        (cmp89Eq245EntireAverageBase N z - 1) / (N : ℂ)⁻¹ := by
+    rw [cmp89Eq245EntireScaledDifference,
+      cmp89Eq245EntireAverageBase, hinv]
+  rw [hinv, hscaled]
   field_simp [hNcomplex]
 
 /-- The geometric base varies vertically with the normalized factor `N⁻¹`
@@ -88,7 +93,9 @@ theorem norm_cmp89Eq245EntireAverageBase_sub_realSlice_le
             cmp89Eq245EntireScaledDifference xi (z.re : ℂ)) := by
         rw [cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference hN,
           cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference hN]
-        dsimp [xi]
+        have hinv : (xi : ℂ) = (N : ℂ)⁻¹ := by
+          simpa [xi] using Complex.ofReal_inv (N : ℝ)
+        rw [hinv]
         ring
   rw [heq, norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hxi]
   exact mul_le_mul_of_nonneg_left hdiff hxi.le
@@ -280,14 +287,11 @@ theorem norm_cmp89Eq245EntireAverageFactor_scaled_alias_le
                     ((N : ℝ)⁻¹ * ((1 / (6 * Real.pi)) * |q|)) *
                       (6 * Real.pi) := by
                         field_simp [Real.pi_ne_zero]
-                        ring
                 _ ≤ ‖cmp89Eq245EntireAverageBase N z - 1‖ *
                     (6 * Real.pi) := hmul
             exact calc
-              (N : ℝ)⁻¹ * |q| *
-                  ‖cmp89Eq245EntireAverageBase N z ^ N - 1‖ ≤
-                (N : ℝ)⁻¹ * |q| * (Real.exp rho + 1) := by gcongr
-              _ ≤ (‖cmp89Eq245EntireAverageBase N z - 1‖ *
+              (N : ℝ)⁻¹ * |q| * (Real.exp rho + 1) ≤
+                  (‖cmp89Eq245EntireAverageBase N z - 1‖ *
                     (6 * Real.pi)) * (Real.exp rho + 1) := by
                 exact mul_le_mul_of_nonneg_right hdenScaled
                   (by positivity)
