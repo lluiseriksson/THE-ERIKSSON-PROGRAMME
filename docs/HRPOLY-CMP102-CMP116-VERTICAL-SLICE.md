@@ -5677,3 +5677,19 @@ factor-two vertical variation is imported. No contour shift,
 Fourier/physical rate dictionary, regional-Green estimate, physical `B0` or
 window-15 contraction is claimed. No terminal field is discharged: counters
 remain `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5bd positive common stabilized radius (PRE-VALIDATION)
+
+The proposed producer proves continuity at zero of the complete stabilized
+variation majorant and its exact value zero there. Since the real floor is
+strictly positive for every `a > 0`, the amplitude budget, noncentral complex
+gap and stabilized complex-floor window hold simultaneously at some common
+`rho > 0`.
+
+This is non-vacuity of the existing conservative scalar regime, not a
+numerical optimization. Neither the sharper trigonometric gap nor the
+factor-two vertical variation is used. The source condition `mass^2 <= 1`,
+the complete complex integrand, contour shift, Fourier/physical rate
+dictionary, physical `B0` and window-15 contraction remain open. No terminal
+field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
