@@ -15,6 +15,26 @@
         "project_euclid_pdf": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-89/issue-4/Regularity-and-decay-of-lattice-Greens-functions/cmp/1103922931.pdf",
         "project_euclid_legacy_pdf": "https://projecteuclid.org/download/pdf_1/euclid.cmp/1103922931"
       }
+    },
+    "cmp97_higgs_rg": {
+      "short": "Balaban-Imbrie-Jaffe CMP97",
+      "title": "Renormalization of the Higgs Model: Minimizers, Propagators and the Stability of Mean Field Theory",
+      "author": "T. Balaban, J. Imbrie, A. Jaffe",
+      "journal": "Communications in Mathematical Physics 97 (1985), 299-329",
+      "doi": "10.1007/BF01206191",
+      "web_urls": {
+        "uva_primary_pdf": "https://uva.theopenscholar.com/files/john-imbrie/files/renormalizationhiggs.pdf"
+      }
+    },
+    "cmp114_higgs_cluster": {
+      "short": "Balaban-Imbrie-Jaffe CMP114",
+      "title": "Effective Action and Cluster Properties of the Abelian Higgs Model",
+      "author": "T. Balaban, J. Z. Imbrie, A. Jaffe",
+      "journal": "Communications in Mathematical Physics 114 (1988), 257-315",
+      "doi": "10.1007/BF01225038",
+      "web_urls": {
+        "uva_primary_pdf": "https://uva.theopenscholar.com/files/john-imbrie/files/effectiveaction.pdf"
+      }
     }
   },
   "citations": [
@@ -41,7 +61,7 @@
         ]
       },
       "status": "visual_confirmed",
-      "summary": "CMP89 Lemma 2.4 proves the zero-background local Green value, derivative/Hölder and coarse-covariance decay estimates by an explicit Fourier representation, a uniform complex analytic strip and contour displacement; Lemma 2.2 and the later CMP95/CMP96 transports reduce to this source input. The real sinc-amplitude lower bound, its exact norm dictionary to (2.45), the central Laplacian ratio, the exact finite alias enumeration, the complete positive denominator estimate (2.50), the one-dimensional uniform p-series input of (2.51), its exact d-fold finite-product factorization, the expanded real geometry of every printed alias, explicit expanded-zone difference/sinc lower bounds, the periodic averaging-amplitude upper bound, and the noncentral massive-symbol ratio under the explicit condition mass^2 <= 1 are compiler verified. The source law for the scale-indexed masses m_j, the complete physical integrand estimate and remaining Fourier estimates stay open.",
+      "summary": "CMP89 Lemma 2.4 proves the zero-background local Green value, derivative/Hölder and coarse-covariance decay estimates by an explicit Fourier representation, a uniform complex analytic strip and contour displacement; Lemma 2.2 and the later CMP95/CMP96 transports reduce to this source input. The real sinc-amplitude lower bound, its exact norm dictionary to (2.45), the central Laplacian ratio, the exact finite alias enumeration, the complete positive denominator estimate (2.50), the one-dimensional uniform p-series input of (2.51), its exact d-fold finite-product factorization, the expanded real geometry of every printed alias, explicit expanded-zone difference/sinc lower bounds, the periodic averaging-amplitude upper bound, and the noncentral massive-symbol ratio under the explicit condition mass^2 <= 1 are compiler verified. Primary cross-source rescaling evidence now classifies the mass condition: the dimensionless mass grows toward the unit lattice, while CMP89's j index runs in the opposite direction. Uniformity follows from a fixed physical-unit bound, equivalently a fine-lattice mass of order L^(-k); exact verification against the RG equation (2.43) in CMP85 remains open. The complete physical integrand estimate and remaining Fourier estimates also stay open.",
       "extracted_claims": [
         "Lemma 2.4, printed page 582, gives constants c0 and delta0 independent of the scale j for the exponential decay of G_j(Pi) Q_j^*, its first lattice derivative, its Holder difference, and C^(j)(Pi), on rectangular parallelepipeds built of large blocks.",
         "The proof first removes the boundary by the multiple-reflection representation (2.42), then writes the free Green explicitly by the Fourier transform (2.43)-(2.48).",
@@ -49,7 +69,10 @@
         "The first inequality in (2.50) retains only the zero alias from the finite sum; the other aliases enter this lower bound solely through nonnegativity, while their quantitative decay is used later in (2.51).",
         "Lemma 2.2 first treats a regular background as a small perturbation of a constant background, gauges the constant background to zero, and reduces its local regularity bounds to Lemma 2.4 through the renormalization identity (2.34).",
         "The argument is internal to CMP89 at this point: the zero-background local decay is not deferred to another paper and is not obtained from a reciprocal-coercivity Combes-Thomas estimate.",
-        "Equations (2.44)-(2.51), visually checked on printed pages 584-586, use the scale-indexed quantity m_j^2; the action displayed at the start of Section 3 uses m_k^2. These pages do not state the cross-scale law for that family."
+        "Equations (2.44)-(2.51), visually checked on printed pages 584-586, use the scale-indexed quantity m_j^2; the action displayed at the start of Section 3 uses m_k^2. These pages do not state the cross-scale law for that family.",
+        "CMP97 printed page 300 displays the unit-lattice scalar mass coefficient as (m^2 + delta m^2) epsilon^2, so the dimensionless mass at lattice spacing a is proportional to the physical mass times a.",
+        "CMP114 printed page 273 states that after n RG transformations the unit lattice represents spacing L^n epsilon, with the process stopped when L^n epsilon reaches a fixed physical length. With CMP89 eta=L^(-k) and its intermediate lattice xi=L^(-j), n=k-j and hence m_j=L^(k-j)m_k for the dimensionless mass, or m_j=m_phys L^(-j).",
+        "Thus m_j increases along forward coarse graining (n increases, CMP89 j decreases), but remains bounded by the unit-scale physical mass. The condition m_j^2 <= 1 for every 0 <= j <= k follows from m_phys^2 <= 1, equivalently m_k^2 <= L^(-2k). This is a physical normalization/bare-mass scaling law, not a freely chosen sixteenth smallness window."
       ],
       "lean_targets": [
         "YangMills.RG.pow_two_div_pi_le_abs_cmp89Eq245SincAverageAmplitude_inverseScale",
@@ -89,16 +112,16 @@
         "The sealed alias-geometry producer proves that the fixed even representative set is not pointwise contained in the central scaled Brillouin interval, records the literal N=2 counterexample, and proves the correct uniform replacement radius 3*pi/2 for every printed alias.",
         "The sealed expanded-zone producer proves the explicit constant 1/(3*pi) for both the scaled lattice-difference symbol and the removable sinc denominator at every printed alias, without reusing the central Brillouin estimate.",
         "The sealed periodic-numerator producer proves exact half-angle periodicity, obtains the explicit coordinate bound `18*pi/(1+|2*pi*m|)`, and multiplies it to the real and complex d-dimensional averaging-amplitude bound without an alias-cardinality loss.",
-        "The sealed noncentral-ratio producer proves the literal massive-symbol comparison and an inverse-square alias estimate under the explicit condition mass^2 <= 1; that condition remains a source/dictionary obligation rather than a freely chosen smallness window."
+        "The sealed noncentral-ratio producer proves the literal massive-symbol comparison and an inverse-square alias estimate under the explicit condition mass^2 <= 1; the rescaling evidence classifies this as a bound on the unit-scale physical mass, equivalently a depth-dependent fine-lattice mass, rather than a freely chosen smallness window."
       ],
       "do_not_use_for": [
         "Do not cite this visual extraction as a compiled producer of the four CMP99 (3.42) certificate fields.",
         "Do not replace the Fourier/analytic-strip argument by the sealed reciprocal-coercivity Combes-Thomas route; that route is quantitatively excluded by the depth-zero no-go.",
         "Do not identify CMP89 G_j(Pi) Q_j^* or C^(j)(Pi) definitionally with the repository's canonical generated regional Green before proving the averaging, scaling, boundary and gauge dictionaries.",
-        "Do not use the sealed noncentral inverse-square estimate for arbitrary mass or as a uniform-in-depth statement until the source definition and flow of m_j have been recovered."
+        "Do not use the sealed noncentral inverse-square estimate for arbitrary physical mass. The cross-source rescaling dictionary supports uniformity only under m_phys^2 <= 1 (equivalently m_k^2 <= L^(-2k)); do not call the exact CMP85 normalization verified until its RG equation (2.43) has been read directly."
       ],
       "open_questions": [
-        "Recover the source definition and cross-scale law of m_j and decide whether m_j^2 <= 1 follows uniformly in depth, requires a bare-mass restriction, or fails in the intended regime.",
+        "Acquire CMP85 (Higgs finite-volume I) and visually verify the exact normalization and index convention in its RG equation (2.43). Cross-source primary evidence already yields the candidate dictionary m_j=L^(k-j)m_k=m_phys L^(-j), but that equality is not yet a direct transcription of CMP85.",
         "Prove the Holder-difference estimate and complete real integrand comparison needed for the literal physical summand in (2.51); the Fourier realization of (2.43)-(2.48) and uniform-in-j analytic strip remain separate frontiers.",
         "Exact transport of Lemma 2.4 through CMP89 (2.34), CMP95 (1.132)-(1.137), CMP96 (2.43)/(2.67), and CMP99 Corollary 3.6 to the canonical regional Green certificate.",
         "Dictionary from the source derivatives and C^(j)(Pi) to the four literal repository operators G', D G', G' D*, and Delta G'."

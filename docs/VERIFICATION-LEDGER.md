@@ -29468,3 +29468,36 @@ retired PRE-VALIDATION.  The mass-flow dictionary, Holder factor, complete
 physical integrand estimate, analytic strip and transport remain open.  No
 terminal field is discharged: the live counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 615 (2026-08-08, **CMP89 mass-flow direction recovered cross-source; exact CMP85 dictionary still open; 20/41 unchanged**)
+
+Primary visual inspection resolves the category of the hypothesis
+`mass^2 <= 1` without turning it into a sixteenth freely chosen window.
+CMP97 printed p. 300 gives the dimensionless unit-lattice mass coefficient as
+`(m^2 + delta m^2) * epsilon^2`.  CMP114 printed p. 273 states that after `n`
+renormalization transformations the rescaled unit lattice represents spacing
+`L^n * epsilon`, and that the expansion stops at a fixed physical length.
+Consequently the dimensionless running mass grows with forward coarse graining
+as `m_phys * L^n * epsilon`.
+
+CMP89 uses the reverse scale label: the initial fine lattice is
+`eta = L^(-k)` and the intermediate lattice in Lemma 2.4 is
+`xi = L^(-j)`, hence `n = k-j`.  The resulting candidate dictionary is
+
+```text
+m_j = L^(k-j) * m_k = m_phys * L^(-j).
+```
+
+Therefore a uniform bound `m_j^2 <= 1` over `0 <= j <= k` follows from the
+single physical-unit normalization `m_phys^2 <= 1`, equivalently the
+depth-dependent fine-lattice condition `m_k^2 <= L^(-2*k)`.  It does not follow
+from choosing a fixed bare dimensionless mass independently of depth.  The
+flow is relevant, but it is compatible with the finite RG chain precisely
+because the ultraviolet mass shrinks with the lattice spacing.
+
+This is a source-derived dimensional dictionary, not yet a verbatim recovery
+of CMP85 Eq. (2.43), which CMP89 cites for (2.34).  Direct acquisition and
+visual verification of that equation, followed by a Lean dictionary theorem,
+remain open.  No Lean/Lake/oracle was run and no compiler-verified claim is
+added.  The live counters remain exactly `20/41`, `TermSource = 0`, and window
+15 compatible but unattained.

@@ -4649,10 +4649,27 @@ condition.
 Primary visual review of CMP89 printed pp. 584--586 confirms that (2.44)--(2.51)
 use the scale-indexed quantity `m_j^2`, while the action displayed at the start
 of Section 3 uses `m_k^2`.  The law relating these masses across scales is not
-printed on those pages.  Consequently `mass^2 <= 1` is **not** entered as a
-sixteenth freely chosen smallness window: it is a separate source/dictionary
-obligation about a flowing quantity.  Until its definition is recovered, the
-brick is conditional and cannot feed the uniform-in-depth endpoint.
+printed on those pages.  Primary cross-source evidence nevertheless fixes the
+direction and dimensional dictionary.  CMP97 printed p. 300 writes the
+unit-lattice mass coefficient as `(m^2 + delta m^2) * epsilon^2`; CMP114 printed
+p. 273 says that after `n` RG transformations the unit lattice represents
+spacing `L^n * epsilon`.  Thus the dimensionless mass at that stage is
+`m_phys * L^n * epsilon`.  In CMP89's reverse index, `epsilon = L^(-k)` and
+`n = k-j`, so the candidate source dictionary is
+
+```text
+m_j = L^(k-j) * m_k = m_phys * L^(-j).
+```
+
+The mass therefore grows along forward coarse graining (`n` increases, `j`
+decreases), but only up to the unit-scale physical mass.  Uniform
+`m_j^2 <= 1` for `0 <= j <= k` follows from the physical normalization
+`m_phys^2 <= 1`, equivalently the fine-lattice restriction
+`m_k^2 <= L^(-2*k)`.  It is **not** a sixteenth freely chosen smallness window
+and it is not a depth-independent choice of the bare dimensionless mass.  The
+exact normalization and index convention must still be checked directly in
+CMP85 Eq. (2.43), which CMP89 cites for the RG decomposition; until that check
+and the Lean dictionary are installed, the brick remains conditional.
 
 The Holder exponential difference, complete real integrand comparison in
 (2.51), uniform analytic strip and transport remain open.  No physical `B0` or
