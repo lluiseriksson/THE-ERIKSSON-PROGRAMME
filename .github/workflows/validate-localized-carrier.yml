@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 99282b2539c912d5685af4a6e6f9412eb2da7c5c
+  SOURCE_SHA: 9604e0540d285ae2d55973ea043e7cdfe6d08c5a
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -130,6 +130,8 @@ jobs:
           printf '%s\n' \
             YangMills/RG/BalabanCMP89Eq251EntireAverageAmplitude.lean \
             YangMills/RG/BalabanCMP89Eq251EntireAverageAmplitudeAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251EntireAverageAliasDictionary.lean \
+            YangMills/RG/BalabanCMP89Eq251EntireAverageAliasDictionaryAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -152,9 +154,11 @@ jobs:
           }
 
           run_stage cmp89_entire_averaging_amplitude_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251EntireAverageAmplitude
+            lake build YangMills.RG.BalabanCMP89Eq251EntireAverageAliasDictionary
           run_stage cmp89_entire_averaging_amplitude_audit \
             lake env lean YangMills/RG/BalabanCMP89Eq251EntireAverageAmplitudeAudit.lean
+          run_stage cmp89_entire_alias_dictionary_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251EntireAverageAliasDictionaryAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +172,8 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp89_entire_averaging_amplitude_audit.log": 8,
+              "cmp89_entire_averaging_amplitude_audit.log": 6,
+              "cmp89_entire_alias_dictionary_audit.log": 2,
           }
           result = {}
           for name, expected in audits.items():
