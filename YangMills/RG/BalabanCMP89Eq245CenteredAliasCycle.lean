@@ -62,13 +62,25 @@ def cmp89Eq245CenteredAliasSucc
     {m : ℤ // m ∈ cmp89Eq245CenteredAliasIntegers N} :=
   if h : m.1 + 1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) then
     ⟨m.1 + 1, by
-      rw [cmp89Eq245CenteredAliasIntegers_eq_Ico, Finset.mem_Ico]
-      rw [cmp89Eq245CenteredAliasIntegers_eq_Ico, Finset.mem_Ico] at m.property
-      omega⟩
+      have hm : cmp89Eq245CenteredAliasLower N ≤ m.1 ∧
+          m.1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
+        simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
+          Finset.mem_Ico] using m.property
+      have hout : cmp89Eq245CenteredAliasLower N ≤ m.1 + 1 ∧
+          m.1 + 1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
+        omega
+      simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
+        Finset.mem_Ico] using hout⟩
   else
     ⟨cmp89Eq245CenteredAliasLower N, by
-      rw [cmp89Eq245CenteredAliasIntegers_eq_Ico, Finset.mem_Ico]
-      exact ⟨le_rfl, by exact_mod_cast hN⟩⟩
+      have hNint : (0 : ℤ) < (N : ℤ) := by exact_mod_cast hN
+      have hout : cmp89Eq245CenteredAliasLower N ≤
+            cmp89Eq245CenteredAliasLower N ∧
+          cmp89Eq245CenteredAliasLower N <
+            cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
+        omega
+      simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
+        Finset.mem_Ico] using hout⟩
 
 /-- Move one step to the left in the centered alias interval, wrapping its
 lower endpoint to the upper endpoint minus one. -/
@@ -78,13 +90,25 @@ def cmp89Eq245CenteredAliasPred
     {m : ℤ // m ∈ cmp89Eq245CenteredAliasIntegers N} :=
   if h : cmp89Eq245CenteredAliasLower N < m.1 then
     ⟨m.1 - 1, by
-      rw [cmp89Eq245CenteredAliasIntegers_eq_Ico, Finset.mem_Ico]
-      rw [cmp89Eq245CenteredAliasIntegers_eq_Ico, Finset.mem_Ico] at m.property
-      omega⟩
+      have hm : cmp89Eq245CenteredAliasLower N ≤ m.1 ∧
+          m.1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
+        simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
+          Finset.mem_Ico] using m.property
+      have hout : cmp89Eq245CenteredAliasLower N ≤ m.1 - 1 ∧
+          m.1 - 1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
+        omega
+      simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
+        Finset.mem_Ico] using hout⟩
   else
     ⟨cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1, by
-      rw [cmp89Eq245CenteredAliasIntegers_eq_Ico, Finset.mem_Ico]
-      constructor <;> omega⟩
+      have hNint : (0 : ℤ) < (N : ℤ) := by exact_mod_cast hN
+      have hout : cmp89Eq245CenteredAliasLower N ≤
+            cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1 ∧
+          cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1 <
+            cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
+        omega
+      simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
+        Finset.mem_Ico] using hout⟩
 
 /-- Predecessor is a left inverse of successor on the centered fibre. -/
 theorem cmp89Eq245CenteredAliasPred_succ
@@ -93,7 +117,10 @@ theorem cmp89Eq245CenteredAliasPred_succ
     cmp89Eq245CenteredAliasPred N hN
         (cmp89Eq245CenteredAliasSucc N hN m) = m := by
   apply Subtype.ext
-  rw [cmp89Eq245CenteredAliasIntegers_eq_Ico, Finset.mem_Ico] at m.property
+  have hm : cmp89Eq245CenteredAliasLower N ≤ m.1 ∧
+      m.1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
+    simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
+      Finset.mem_Ico] using m.property
   simp only [cmp89Eq245CenteredAliasSucc, cmp89Eq245CenteredAliasPred]
   split_ifs <;> omega
 
@@ -104,7 +131,10 @@ theorem cmp89Eq245CenteredAliasSucc_pred
     cmp89Eq245CenteredAliasSucc N hN
         (cmp89Eq245CenteredAliasPred N hN m) = m := by
   apply Subtype.ext
-  rw [cmp89Eq245CenteredAliasIntegers_eq_Ico, Finset.mem_Ico] at m.property
+  have hm : cmp89Eq245CenteredAliasLower N ≤ m.1 ∧
+      m.1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
+    simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
+      Finset.mem_Ico] using m.property
   simp only [cmp89Eq245CenteredAliasSucc, cmp89Eq245CenteredAliasPred]
   split_ifs <;> omega
 
@@ -124,7 +154,10 @@ theorem cmp89Eq245CenteredAliasCycle_value_or_wrap
     (m : {m : ℤ // m ∈ cmp89Eq245CenteredAliasIntegers N}) :
     (cmp89Eq245CenteredAliasCycle N hN m).1 = m.1 + 1 ∨
       (cmp89Eq245CenteredAliasCycle N hN m).1 + (N : ℤ) = m.1 + 1 := by
-  rw [cmp89Eq245CenteredAliasIntegers_eq_Ico, Finset.mem_Ico] at m.property
+  have hm : cmp89Eq245CenteredAliasLower N ≤ m.1 ∧
+      m.1 < cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
+    simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
+      Finset.mem_Ico] using m.property
   simp only [cmp89Eq245CenteredAliasCycle, cmp89Eq245CenteredAliasSucc]
   split_ifs <;> omega
 
