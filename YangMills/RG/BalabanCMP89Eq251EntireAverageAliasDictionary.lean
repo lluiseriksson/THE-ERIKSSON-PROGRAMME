@@ -4,7 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP89Eq251EntireAverageAmplitude
-import YangMills.RG.BalabanCMP89Eq251AliasAmplitudeUpper
+import YangMills.RG.BalabanCMP89Eq251AliasSlopeNonzero
 
 /-!
 # PRE-VALIDATION: printed-alias dictionary for the entire CMP89 amplitude
@@ -36,24 +36,10 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq
         (p + 2 * Real.pi * (m : ℝ) : ℂ) =
       cmp89Eq245ComplexAverageFactor (N : ℝ)⁻¹
         (p + 2 * Real.pi * (m : ℝ)) := by
-  have hsinc := one_div_three_pi_le_abs_sinc_scaled_alias
-    (N := N) (m := m) (p := p) hN hm hp
-  have hsincPos :
-      0 < |Real.sinc (((N : ℝ)⁻¹ *
-        (p + 2 * Real.pi * (m : ℝ))) / 2)| := by
-    exact (div_pos (by norm_num) (mul_pos (by norm_num) Real.pi_pos)).trans_le
-      hsinc
-  have hden : cmp89Eq245RemovableExpSlope
-      ((N : ℝ)⁻¹ * (p + 2 * Real.pi * (m : ℝ))) ≠ 0 := by
-    intro hzero
-    have hzeroNorm :
-        |Real.sinc (((N : ℝ)⁻¹ *
-          (p + 2 * Real.pi * (m : ℝ))) / 2)| = 0 := by
-      rw [← norm_cmp89Eq245RemovableExpSlope, hzero, norm_zero]
-    exact (ne_of_gt hsincPos) hzeroNorm
   exact cmp89Eq245EntireAverageFactor_ofReal_eq
     (N := N) (q := p + 2 * Real.pi * (m : ℝ)) hN
-    hden
+    (cmp89Eq245RemovableExpSlope_scaled_alias_ne_zero
+      (N := N) (m := m) (p := p) hN hm hp)
 
 /-- Exact real-slice dictionary on every alias printed in CMP89 (2.45). -/
 theorem cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq
