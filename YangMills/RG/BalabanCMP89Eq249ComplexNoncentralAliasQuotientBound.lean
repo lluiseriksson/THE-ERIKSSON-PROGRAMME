@@ -73,6 +73,10 @@ theorem norm_cmp89Eq245EntireAveragePair_scaled_alias_le
     apply norm_cmp89Eq245EntireAverageAmplitude_le_exp_pow hN hrho
     intro mu
     simpa using himag mu
+  have hstripNonneg :
+      0 ≤ cmp89Eq245EntireAverageAliasStripConstant rho := by
+    rw [cmp89Eq245EntireAverageAliasStripConstant]
+    positivity
   rw [cmp89Eq245EntireAveragePair, norm_mul]
   calc
     ‖cmp89Eq245EntireAverageAmplitude 4 N z‖ *
@@ -81,7 +85,7 @@ theorem norm_cmp89Eq245EntireAveragePair_scaled_alias_le
           cmp89Eq251MultidimensionalAliasWeight 1 m) *
         Real.exp rho ^ 4 := by
       exact mul_le_mul hweighted hopposite (norm_nonneg _)
-        (mul_nonneg (pow_nonneg (by positivity) 4)
+        (mul_nonneg (pow_nonneg hstripNonneg 4)
           (cmp89Eq251MultidimensionalAliasWeight_nonneg 1 m))
     _ = cmp89Eq245EntireAverageAliasStripConstant rho ^ 4 *
         Real.exp rho ^ 4 *
@@ -147,6 +151,10 @@ theorem norm_cmp89Eq248ComplexAliasDenominatorSummand_le_radialWeight
         (((1 / (3 * Real.pi)) ^ 2 *
           cmp89Eq251MomentumSquare q) / 2)⁻¹ := by
     simpa [one_div] using one_div_le_one_div_of_le hgap hden
+  have hstripNonneg :
+      0 ≤ cmp89Eq245EntireAverageAliasStripConstant rho := by
+    rw [cmp89Eq245EntireAverageAliasStripConstant]
+    positivity
   have hpower :
       cmp89Eq251EuclideanNorm q ^ ((-1 : ℝ) - 1) =
         (cmp89Eq251MomentumSquare q)⁻¹ := by
@@ -172,7 +180,7 @@ theorem norm_cmp89Eq248ComplexAliasDenominatorSummand_le_radialWeight
           cmp89Eq251MomentumSquare q) / 2)⁻¹ := by
       exact mul_le_mul hpair hdenInv (inv_nonneg.mpr (norm_nonneg _))
         (mul_nonneg
-          (mul_nonneg (pow_nonneg (by positivity) 4)
+          (mul_nonneg (pow_nonneg hstripNonneg 4)
             (pow_nonneg (Real.exp_pos rho).le 4))
           (cmp89Eq251MultidimensionalAliasWeight_nonneg 1 m))
     _ = cmp89Eq249ComplexNoncentralAliasRadialConstant rho *
@@ -206,7 +214,7 @@ theorem norm_cmp89Eq248ComplexAliasDenominatorSummand_le_sourceWeight
     fun mu => p mu + 2 * Real.pi * (m mu : ℝ)
   have hradial :=
     norm_cmp89Eq248ComplexAliasDenominatorSummand_le_radialWeight
-      hN hrho hradius hm hm0 hp hreal himag hamplitude
+      (mass := mass) hN hrho hradius hm hm0 hp hreal himag hamplitude
   have hredistribute :
       cmp89Eq251EuclideanNorm q ^ ((-1 : ℝ) - 1) *
           cmp89Eq251MultidimensionalAliasWeight 1 m ≤
