@@ -5895,3 +5895,43 @@ the real and imaginary coordinates of the Cauchy rectangle endpoint had to be
 normalized before rewriting the vertical integral. Earlier run `31275860871`
 preserves that failed rewrite. Neither run changed the theorem statement or
 introduced an analytic hypothesis.
+
+### Step 7.5bi unit-lattice endpoint phase wrap (SEALED; finite-fibre reindexing open)
+
+Exact source checkpoint `1a610d23fd2886f4c3be5dee27153c5f8f59402c`
+passed cold GitHub Actions run
+[`31276699439`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31276699439)
+with workflow checkpoint `c26d21507edcd2af4563c01449987b1e733e7f4e`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `20:21:41Z` to `20:23:08Z`; the
+focal ran from `20:23:13Z` to `20:40:43Z`, completed 8,445 jobs, and the audit
+ended at `20:40:49Z`. Focal and audit both exited zero. All four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9027422768`, named
+`cmp89-lattice-phase-periodicity-1a610d23fd2886f4c3be5dee27153c5f8f59402c`,
+has GitHub digest
+`3df4d6303db77034043bfae319b1866c769f860eb73d8e31a364de67fc008590`.
+The deterministic inner archive re-hashed on Windows to
+`03b83a337d377e23c26939dab72eca01b6ab52f6ddb97874d8d57f6b49a8faf3`,
+identical to the hash recorded by the cold runner; all 13 entries of its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed source embeds a literal unit-lattice displacement
+`u : Fin d -> Int` into the real phase coordinates and adds one full alias
+period `2*pi*N` to a chosen complex momentum coordinate. It proves the exact
+phase increment `2*pi*N*u_mu` and derives invariance of the endpoint
+exponential from `exp(n*2*pi*I)=1`. Periodicity is therefore a theorem from
+the lattice data, not a supplied family.
+
+This closes only the phase factor under a boundary wrap. Periodicity of the
+complete stabilized CMP89 integrand still requires a permutation of the
+centered finite alias fibre and periodicity of the averaging, Laplacian and
+stabilized-denominator factors. The source-to-tree dictionary producing the
+integer endpoint displacements from the physical lattice sites also remains
+to be installed at the final specialization. No integral, `B0`, Fourier-rate
+dictionary or window-15 producer is claimed. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31276564821` passed the same source before the cold
+seal. It required no elaboration repair and introduced no new scalar window.

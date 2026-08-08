@@ -8,8 +8,11 @@ import YangMills.RG.BalabanCMP89Eq251SignedContourPhase
 /-!
 # Lattice phase periodicity below CMP89 (2.49)
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
+Cold validation: exact source checkpoint
+`1a610d23fd2886f4c3be5dee27153c5f8f59402c` passed GitHub Actions run
+`31276699439` with restore and save of `.lake/build` both skipped. The focal
+completed 8,445 jobs, and all four audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The physical endpoints in CMP89 lie on the unit lattice.  Their displacement
 therefore has integer coordinates, even though the analytic phase API is

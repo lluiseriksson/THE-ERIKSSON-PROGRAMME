@@ -30631,3 +30631,41 @@ Cached diagnostic run `31276018596` passed after normalizing the real and
 imaginary coordinates of the Cauchy rectangle endpoint before rewriting the
 vertical side. Failed run `31275860871` preserves the earlier elaboration
 error. This repair changed neither statement nor analytic hypotheses.
+
+## Addendum 650 (2026-08-08, **unit-lattice phase wrap GREEN; complete alias periodicity open**)
+
+Exact source checkpoint `1a610d23fd2886f4c3be5dee27153c5f8f59402c`
+passed cold GitHub Actions run
+[`31276699439`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31276699439)
+with workflow checkpoint `c26d21507edcd2af4563c01449987b1e733e7f4e`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `20:21:41Z` to `20:23:08Z`; the
+focal ran from `20:23:13Z` to `20:40:43Z`, completed 8,445 jobs, and the audit
+ended at `20:40:49Z`. Focal and audit both exited zero. All four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9027422768`, named
+`cmp89-lattice-phase-periodicity-1a610d23fd2886f4c3be5dee27153c5f8f59402c`,
+has GitHub digest
+`3df4d6303db77034043bfae319b1866c769f860eb73d8e31a364de67fc008590`.
+The deterministic inner archive re-hashed on Windows to
+`03b83a337d377e23c26939dab72eca01b6ab52f6ddb97874d8d57f6b49a8faf3`,
+identical to the hash recorded by the cold runner; all 13 entries in its
+`SHA256SUMS` manifest re-hashed exactly.
+
+The module makes the unit-lattice character of a physical displacement
+explicit as `u : Fin d -> Int`, embeds it into the real phase API, and proves
+that adding `2*pi*N` to one momentum coordinate changes the phase by the
+integer multiple `2*pi*N*u_mu`. The corresponding complex exponential is
+then exactly invariant. No abstract periodicity hypothesis is accepted.
+
+This is the phase component of a finite-alias wrap, not periodicity of the
+assembled CMP89 integrand. Reindexing the centered fibre, transporting every
+non-phase factor, and connecting physical sites to the integer displacement
+remain open. The contour integral, complete strip bound, `B0`, flowing-mass
+dictionary, Fourier/physical-rate bridge and window-15 contraction are also
+open. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31276564821` passed the unchanged source before the
+cold seal. There were no target warnings or elaboration repairs.
