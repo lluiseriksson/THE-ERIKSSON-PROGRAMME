@@ -63,7 +63,7 @@ theorem cmp89Eq248EntireAliasMomentum_physicalShift_cycle_or_wrap
       simp [cmp89Eq248EntireAliasMomentum,
         cmp89Eq248PhysicalCoordinatePeriodShift,
         cmp89Eq245AliasShift, Pi.single_apply]
-      linear_combination (2 * (Real.pi : ℂ)) * hC
+      linear_combination -(2 * (Real.pi : ℂ)) * hC
     · have hfix := cmp89Eq245CenteredAliasVectorCycle_apply_of_ne
         d N hN mu nu hnu m
       simp [cmp89Eq248EntireAliasMomentum,
@@ -79,7 +79,7 @@ theorem cmp89Eq248EntireAliasMomentum_physicalShift_cycle_or_wrap
         cmp89Eq248PhysicalCoordinatePeriodShift,
         cmp89Eq251CoordinateAliasPeriodShift,
         cmp89Eq245AliasShift, Pi.single_apply]
-      linear_combination (2 * (Real.pi : ℂ)) * hC
+      linear_combination -(2 * (Real.pi : ℂ)) * hC
     · have hfix := cmp89Eq245CenteredAliasVectorCycle_apply_of_ne
         d N hN mu nu hnu m
       simp [cmp89Eq248EntireAliasMomentum,
@@ -143,9 +143,23 @@ theorem cmp89Eq248AliasFactor_physicalShift_finsetSum_eq
         (cmp89Eq248PhysicalCoordinatePeriodShift mu z) m)) =
       ∑ m ∈ cmp89Eq245CenteredAliasVectors d N,
         F (cmp89Eq248EntireAliasMomentum z m) := by
-  simpa only [Finset.sum_coe_sort] using
-    cmp89Eq248AliasFactor_physicalShift_subtypeSum_eq
-      hN mu z F hperiod
+  calc
+    _ = ∑ m : {m : Fin d → ℤ //
+          m ∈ cmp89Eq245CenteredAliasVectors d N},
+        F (cmp89Eq248EntireAliasMomentum
+          (cmp89Eq248PhysicalCoordinatePeriodShift mu z) m.1) :=
+      (Finset.sum_coe_sort
+        (cmp89Eq245CenteredAliasVectors d N)
+        (fun m => F (cmp89Eq248EntireAliasMomentum
+          (cmp89Eq248PhysicalCoordinatePeriodShift mu z) m))).symm
+    _ = ∑ m : {m : Fin d → ℤ //
+          m ∈ cmp89Eq245CenteredAliasVectors d N},
+        F (cmp89Eq248EntireAliasMomentum z m.1) :=
+      cmp89Eq248AliasFactor_physicalShift_subtypeSum_eq
+        hN mu z F hperiod
+    _ = _ := Finset.sum_coe_sort
+      (cmp89Eq245CenteredAliasVectors d N)
+      (fun m => F (cmp89Eq248EntireAliasMomentum z m))
 
 end
 
