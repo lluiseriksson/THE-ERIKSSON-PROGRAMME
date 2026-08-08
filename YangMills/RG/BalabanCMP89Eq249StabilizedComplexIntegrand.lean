@@ -137,7 +137,6 @@ theorem cmp89Eq251ComplexDisplayedAliasTerm_eq_stabilizedTerm
   rw [cmp89Eq251ComplexDisplayedAliasTerm,
     cmp89Eq249ComplexFullAliasDenominator, ← hstabilized]
   field_simp [hunit, hcentral, hfinite, hreduced]
-  <;> ring
 
 /-- On the zero alias the remaining `Delta_0 / Delta_0` factor cancels
 exactly, leaving the bare central numerator over the stabilized denominator. -/
@@ -159,7 +158,7 @@ theorem cmp89Eq251ComplexDisplayedCentralTerm_eq_stabilized
     simpa [cmp89Eq249CentralEntireFineSymbol] using hcentral
   rw [cmp89Eq251ComplexDisplayedAliasTerm_eq_stabilizedTerm
     hunit hcentral hfinite hreduced]
-  field_simp [hcentral, cmp89Eq249CentralEntireFineSymbol]
+  field_simp [hfinite]
 
 /-- Exact equality of the printed finite rational integrand and its assembled
 stabilized extension wherever every denominator in the printed formula is
@@ -212,6 +211,7 @@ theorem cmp89Eq251ComplexDisplayedIntegrand_eq_stabilized
   have hstabilized : stabilized ≠ 0 := by
     have hEq := cmp89Eq249CentralFine_mul_reduced_eq_stabilized
       d L j mass a z hcentral
+    change cmp89Eq249CentralStabilizedAliasDenominator d L j mass a z ≠ 0
     rw [← hEq]
     exact mul_ne_zero hcentral hreduced
   rw [cmp89Eq251ComplexDisplayedIntegrand,
