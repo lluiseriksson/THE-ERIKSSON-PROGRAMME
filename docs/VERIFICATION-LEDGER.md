@@ -30548,3 +30548,45 @@ Neither the optional 8x trigonometric sharpening nor the uncompiled 2x
 opposite-pair variation is consumed. No terminal field is discharged:
 counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
+
+## Addendum 648 (2026-08-08, **signed endpoint phase decay GREEN; contour deformation still open**)
+
+Exact source checkpoint `8490998241b445e519a401db1bb6af523b4eeb2b`
+passed cold GitHub Actions run
+[`31274961427`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31274961427)
+with workflow checkpoint `9f8b321da33e399651fd3dd9f5ea03cbdf589259`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `19:39:52Z` to `19:41:16Z`; the
+focal then ran to `19:52:14Z`, completed 8,444 jobs, and the audit ended at
+`19:52:19Z`. Focal and audit both exited zero. All six audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9026870452`, named
+`cmp89-signed-contour-phase-8490998241b445e519a401db1bb6af523b4eeb2b`,
+has GitHub digest
+`c6b0b7ff8f180a1e106e7df81e1f23b68466c73712678f026982dac6e05fc1b2`.
+The deterministic inner archive re-hashed on Windows to
+`15690f63c1e1a65704e586630ee117cdc6f9fda69f68fa4028511b757decf038`,
+identical to the hash recorded inside the cold runner; all 13 entries in its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed module constructs, for one physical endpoint displacement `u`,
+the signed complex momentum `p + i*rho*sign(u)`. It proves coordinatewise
+membership in the closed strip when `rho >= 0`, proves that reciprocal aliases
+do not alter the imaginary phase, and derives the exact identity
+`|exp(i (z + 2*pi*m).u)| = exp(-rho*|u|_1)`. No decay family or bound is
+accepted as input.
+
+Diagnostic runs `31274463630` and `31274640242` preserved respectively the
+missing import and unqualified-namespace elaboration failures. Cached run
+`31274809925` passed the qualified source but did not retire PRE-VALIDATION;
+only the cold run above did.
+
+This proves phase decay at the chosen signed momentum, not a contour
+deformation theorem. The two endpoint terms from CMP89 (2.49) must still be
+separated by linearity and their periodic holomorphic integrals shifted
+individually without crossing singularities. The complete strip bound,
+physical `B0`, flowing `mass^2 <= 1` dictionary, Fourier/physical-rate
+transport and window-15 contraction remain open. Neither optional constant
+sharpening is consumed. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP89Eq251ComplexContourPhase
 /-!
 # Signed endpoint contour momentum below CMP89 (2.51)
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+Cold validation: exact source checkpoint
+`8490998241b445e519a401db1bb6af523b4eeb2b` passed GitHub Actions run
+`31274961427` with restore and save of `.lake/build` both skipped. The focal
+completed 8,444 jobs, and all six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 After the physical phase product has been split into its two endpoint phases,
 each endpoint may be assigned its own signed imaginary momentum.  This module

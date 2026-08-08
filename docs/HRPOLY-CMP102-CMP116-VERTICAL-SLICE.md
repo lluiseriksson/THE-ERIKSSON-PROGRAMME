@@ -5802,9 +5802,28 @@ the conservative strip already compiled in the tree: neither the optional
 used or claimed. No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
 
-### Step 7.5bg signed endpoint contour momentum (PRE-VALIDATION)
+### Step 7.5bg signed endpoint contour momentum (SEALED; contour deformation open)
 
-The proposed producer assigns one endpoint displacement `u` the literal
+Exact source checkpoint `8490998241b445e519a401db1bb6af523b4eeb2b`
+passed cold GitHub Actions run
+[`31274961427`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31274961427)
+with workflow checkpoint `9f8b321da33e399651fd3dd9f5ea03cbdf589259`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `19:39:52Z` to `19:41:16Z`; the
+focal then ran to `19:52:14Z`, completed 8,444 jobs, and the audit ended at
+`19:52:19Z`. Focal and audit both exited zero. All six audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9026870452`, named
+`cmp89-signed-contour-phase-8490998241b445e519a401db1bb6af523b4eeb2b`,
+has GitHub digest
+`c6b0b7ff8f180a1e106e7df81e1f23b68466c73712678f026982dac6e05fc1b2`.
+The deterministic inner archive re-hashed on Windows to
+`15690f63c1e1a65704e586630ee117cdc6f9fda69f68fa4028511b757decf038`,
+identical to the hash recorded inside the cold runner; all 13 entries of its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed producer assigns one endpoint displacement `u` the literal
 complex momentum
 
 ```text
@@ -5826,3 +5845,9 @@ dictionary, Fourier/physical-rate transport and window-15 contraction remain
 open. Neither optional constant sharpening is consumed. No terminal field is
 discharged: counters remain `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained.
+
+Diagnostic runs `31274463630` and `31274640242` preserved the missing
+`SignType` import/namespace failures. Cached run `31274809925` then passed the
+qualified source but retained PRE-VALIDATION; only the cold run above retired
+it. These were elaboration repairs and changed no contour formula, constant or
+claim.
