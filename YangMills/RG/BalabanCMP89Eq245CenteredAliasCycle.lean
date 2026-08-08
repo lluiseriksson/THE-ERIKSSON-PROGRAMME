@@ -123,7 +123,8 @@ theorem cmp89Eq245CenteredAliasPred_succ
       Finset.mem_Ico] using m.property
   change (cmp89Eq245CenteredAliasPred N hN
       (cmp89Eq245CenteredAliasSucc N hN m)).1 = m.1
-  dsimp only [cmp89Eq245CenteredAliasSucc, cmp89Eq245CenteredAliasPred]
+  dsimp only [cmp89Eq245CenteredAliasSucc, cmp89Eq245CenteredAliasPred,
+    Subtype.coe_mk]
   split_ifs <;> omega
 
 /-- Successor is a left inverse of predecessor on the centered fibre. -/
@@ -139,7 +140,8 @@ theorem cmp89Eq245CenteredAliasSucc_pred
       Finset.mem_Ico] using m.property
   change (cmp89Eq245CenteredAliasSucc N hN
       (cmp89Eq245CenteredAliasPred N hN m)).1 = m.1
-  dsimp only [cmp89Eq245CenteredAliasSucc, cmp89Eq245CenteredAliasPred]
+  dsimp only [cmp89Eq245CenteredAliasSucc, cmp89Eq245CenteredAliasPred,
+    Subtype.coe_mk]
   split_ifs <;> omega
 
 /-- The cyclic permutation of one centered reciprocal-alias coordinate. -/
@@ -164,7 +166,7 @@ theorem cmp89Eq245CenteredAliasCycle_value_or_wrap
       Finset.mem_Ico] using m.property
   change (cmp89Eq245CenteredAliasSucc N hN m).1 = m.1 + 1 ∨
     (cmp89Eq245CenteredAliasSucc N hN m).1 + (N : ℤ) = m.1 + 1
-  dsimp only [cmp89Eq245CenteredAliasSucc]
+  dsimp only [cmp89Eq245CenteredAliasSucc, Subtype.coe_mk]
   split_ifs <;> omega
 
 end
