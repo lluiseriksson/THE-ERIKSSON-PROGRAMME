@@ -5315,3 +5315,35 @@ No stabilized-denominator variation, complex nonvanishing radius, `B0`,
 contour shift or regional-Green transport is claimed. This is infrastructure
 below window 15: counters remain `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+### Step 7.5as entire fine-symbol vertical variation (SEALED; weighted alias quotient open)
+
+Exact source checkpoint `f7ea5904ce33ba31c5b129bc717871f4ebb478bf`
+passed cold GitHub Actions run
+[`31252428842`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31252428842)
+(workflow checkpoint `f51cddc2c4d82a87038ae8498611ef62a36474be`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+warning-free focal completed 3,281 jobs, focal and audit exited zero, and all
+six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+For `0 < xi <= 1`, one entire scaled difference varies vertically by at most
+`rho*exp(rho)`: the `xi` from the exponent cancels the quotient by `xi`.
+Applying the product rule to opposite momenta and summing coordinates gives
+the explicit bound
+
+```text
+sum_mu (rho*exp(rho)) * (2*|Re z_mu| + rho*exp(rho))
+```
+
+for `Delta^xi(z)-Delta^xi(Re z)`. The mass term cancels exactly. The real
+momentum remains visible on purpose: replacing it by the diameter or
+cardinality of the reciprocal-alias fibre would destroy the later uniform
+sum.
+
+This brick neither inverts a fine symbol nor treats the zero alias as
+nonvanishing. The next source-facing step must preserve reciprocal-alias
+decay in the variation of the averaging pair and combine it with the sealed
+noncentral real gap. No stabilized-denominator variation, strip radius,
+`B0`, contour shift or regional-Green estimate is claimed. Counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

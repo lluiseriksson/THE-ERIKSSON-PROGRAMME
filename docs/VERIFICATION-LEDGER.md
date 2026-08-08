@@ -30057,3 +30057,34 @@ was diagnostic only.
 No stabilized-denominator variation, complex radius, `B0`, contour shift or
 physical Green estimate is proved. No terminal field is discharged: counters
 remain `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 634 (2026-08-08, **CMP89 entire fine-symbol variation GREEN; weighted quotient open**)
+
+Exact source checkpoint `f7ea5904ce33ba31c5b129bc717871f4ebb478bf`
+passed cold GitHub Actions run
+[`31252428842`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31252428842)
+under workflow checkpoint `f51cddc2c4d82a87038ae8498611ef62a36474be`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The warning-free focal ran from `10:18:21Z` to `10:18:43Z`, completed
+3,281 jobs, and the audit ended at `10:18:48Z`; both exited zero. All six
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`f49e4e3fa9b75b9a250dc33804ac5b6846637b20ce029e1884a567f5320d49c7`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9020427408` has digest
+`7ea583b86be32b64fef6fe884d0db66cdb19b0e3a8e9ddbfb5dbce3ab2b9f793`.
+
+The sealed endpoint cancels the lattice-spacing quotient in one entire
+difference, proves the opposite-momentum product-rule estimate, and sums it
+to the complete fine-lattice symbol while cancelling the mass term exactly.
+Its budget keeps `|Re z_mu|` explicit and introduces neither the number nor
+the diameter of aliases. Diagnostic runs `31252040277` and `31252170743`
+preserve only mechanical normalization failures; cached run `31252310463`
+was diagnostic and does not constitute the seal.
+
+No reciprocal is taken and no zero-alias nonvanishing is assumed. The
+weighted variation of the noncentral averaging quotient, the stabilized
+denominator, strip radius, `B0`, contour shift and physical Green estimate
+remain open. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

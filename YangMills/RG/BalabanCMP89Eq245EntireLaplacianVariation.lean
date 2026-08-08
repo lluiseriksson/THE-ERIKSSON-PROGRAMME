@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP89Eq248EntireFourierSymbols
 /-!
 # Vertical variation of the entire CMP89 fine-lattice symbol
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
+Cold compiler evidence: exact source checkpoint
+`f7ea5904ce33ba31c5b129bc717871f4ebb478bf`, GitHub Actions run
+`31252428842` (`COLD_MODE=true`, no project-cache restore/save), warning-free
+focal and audit exit zero, and six audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module compares the entire fine-lattice symbol `Delta^xi(z)` with the
 point on the real slice having the same real part.  The division by `xi` in
