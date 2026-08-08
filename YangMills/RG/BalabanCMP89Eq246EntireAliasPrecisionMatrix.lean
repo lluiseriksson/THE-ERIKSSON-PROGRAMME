@@ -88,7 +88,15 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec
   classical
   simp only [cmp89Eq246EntireAliasPrecisionMatrix, Matrix.mulVec, dotProduct,
     add_mul, Finset.sum_add_distrib]
-  rw [Fintype.sum_ite_eq]
+  have hdiagonal :
+      (∑ x,
+        (if m = x then cmp89Eq246EntireAliasFineSymbol d L j mass z m else 0) *
+          phi x) =
+        cmp89Eq246EntireAliasFineSymbol d L j mass z m * phi m := by
+    simpa only [ite_mul, zero_mul] using
+      (Fintype.sum_ite_eq m
+        (fun x => cmp89Eq246EntireAliasFineSymbol d L j mass z m * phi x))
+  rw [hdiagonal]
   rw [Finset.mul_sum]
   congr 1
   apply Finset.sum_congr rfl
@@ -129,8 +137,9 @@ theorem differentiable_cmp89Eq246EntireAliasPrecisionMatrix_entry
   by_cases hmn : m = n
   · simpa only [cmp89Eq246EntireAliasPrecisionMatrix, hmn, if_pos] using
       hfine.add ((hcolumn.const_mul (a : ℂ)).mul hrow)
-  · simpa only [cmp89Eq246EntireAliasPrecisionMatrix, hmn, if_neg] using
-      differentiable_const.add ((hcolumn.const_mul (a : ℂ)).mul hrow)
+  · simpa only [cmp89Eq246EntireAliasPrecisionMatrix, hmn, if_neg,
+      zero_add] using
+      ((hcolumn.const_mul (a : ℂ)).mul hrow)
 
 /-- On the real slice, the holomorphic row factor is the complex conjugate of
 the physical column factor. -/
