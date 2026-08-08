@@ -94,7 +94,10 @@ def cmp89Eq245EntireAveragePair
 theorem differentiable_cmp89Eq245EntireAveragePair (d N : ℕ) :
     Differentiable ℂ (cmp89Eq245EntireAveragePair d N) := by
   unfold cmp89Eq245EntireAveragePair
-  fun_prop
+  have havg := differentiable_cmp89Eq245EntireAverageAmplitude d N
+  have hneg : Differentiable ℂ (fun z : Fin d → ℂ => -z) := by
+    fun_prop
+  exact havg.mul (havg.comp hneg)
 
 /-- At real momentum, reversing momentum conjugates the finite geometric
 average. -/
