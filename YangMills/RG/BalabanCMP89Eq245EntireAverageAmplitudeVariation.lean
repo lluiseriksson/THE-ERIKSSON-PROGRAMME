@@ -41,7 +41,7 @@ theorem norm_fin_prod_sub_prod_le_card_mul
     (hf : ∀ i, ‖f i‖ ≤ R) (hg : ∀ i, ‖g i‖ ≤ R)
     (hfg : ∀ i, ‖f i - g i‖ ≤ eps) :
     ‖(∏ i, f i) - ∏ i, g i‖ ≤ (d : ℝ) * eps * R ^ d := by
-  induction d generalizing f g with
+  induction d with
   | zero => simp
   | succ d ih =>
       rw [Fin.prod_univ_succ, Fin.prod_univ_succ]
@@ -56,7 +56,7 @@ theorem norm_fin_prod_sub_prod_le_card_mul
       have htail :
           ‖(∏ i : Fin d, f i.succ) - ∏ i : Fin d, g i.succ‖ ≤
             (d : ℝ) * eps * R ^ d := by
-        exact ih (fun i => f i.succ) (fun i => g i.succ) hR heps
+        exact ih (fun i => f i.succ) (fun i => g i.succ)
           (fun i => hf i.succ) (fun i => hg i.succ)
           (fun i => hfg i.succ)
       have hrewrite :
@@ -87,7 +87,10 @@ theorem norm_fin_prod_sub_prod_le_card_mul
                 (1 + (d : ℝ) * R) * (eps * R ^ d) := by ring
             _ ≤ (((d : ℝ) + 1) * R) * (eps * R ^ d) := by
               apply mul_le_mul_of_nonneg_right _ hx
-              nlinarith [Nat.cast_nonneg d]
+              calc
+                1 + (d : ℝ) * R ≤ R + (d : ℝ) * R :=
+                  add_le_add_right hR ((d : ℝ) * R)
+                _ = ((d : ℝ) + 1) * R := by ring
             _ = ((d + 1 : ℕ) : ℝ) * eps * R ^ (d + 1) := by
               push_cast
               rw [pow_succ]
@@ -163,7 +166,7 @@ theorem norm_cmp89Eq245EntireAverageAmplitude_pair_sub_realSlice_le
   have hA0norm : ‖A0‖ ≤ (Real.exp rho) ^ d := by
     apply norm_cmp89Eq245EntireAverageAmplitude_le_exp_pow hN hrho
     intro mu
-    simp [A0, cmp89Eq245ComplexMomentumRealSlice, hrho]
+    simp [cmp89Eq245ComplexMomentumRealSlice, hrho]
   have hrewrite : A * B - A0 * B0 = (A - A0) * B + A0 * (B - B0) := by
     ring
   change ‖A * B - A0 * B0‖ ≤ _
