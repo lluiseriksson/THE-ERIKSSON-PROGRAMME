@@ -5536,19 +5536,36 @@ the cold run above retired it. No stabilized-denominator lower bound, joint
 estimate is proved. No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
 
-### Step 7.5ay alias-weighted opposite-pair vertical variation (PRE-VALIDATION)
+### Step 7.5ay alias-weighted opposite-pair vertical variation (SEALED; quotient variation open)
 
-The source is present but its `.olean` has not yet been materialized and the
-result has not yet been compiler-verified. The proposed producer exposes the
-normalized coordinate-zone premise beneath the existing product strip bound,
-proves the literal CMP89 (2.51) product weight even under alias negation, and
-retains one such weight while varying the opposite-momentum averaging pair to
-its real slice.
+Exact source checkpoint `4f9b86adf7428ead68c159daff0cea3ff50e2b0b`
+passed cold GitHub Actions run
+[`31261770494`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31261770494)
+(workflow checkpoint `eb31362a75c49e0df072e8c96a8e4bf8197a2270`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal ran from `14:23:53Z` to `14:24:36Z`, completed 3,296 jobs, and the audit
+ended at `14:24:42Z`; both exited zero. All four audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`45b58ffcf2c75b0558d80a07d155db4ebe58ad3836de739b74b5cc9550a2bcaa`,
+reproduced after downloading artifact `9023011164`; GitHub reports artifact
+digest `bb69974e17ec179c4f7dc31a2dc79afc201522e7da8c77564cb1f1e6b2d10d19`.
+
+The producer exposes the normalized coordinate-zone premise beneath the
+existing product strip bound, proves the literal CMP89 (2.51) product weight
+even under alias negation, and retains one such weight while varying the
+opposite-momentum averaging pair to its real slice.
 
 The construction does **not** assert that the half-open centered alias set is
 stable under negation: the opposite factor is estimated at `(-p,-m)` only
 after the coordinate-zone premise has been separated from fibre membership.
 No quotient variation, stabilized-denominator lower bound, joint `B0`, contour
 shift, Fourier/physical rate dictionary or regional-Green estimate is claimed.
+In particular, this seal does not replace the conservative factor-four
+fine-symbol gap budget by the proposed factor-two sharpening. Diagnostic run
+`31261520329` preserves the explicit real-slice elaboration failure; cached
+run `31261659772` passed but retained PRE-VALIDATION. Only the cold run above
+retired it.
 No terminal field is discharged: counters remain `20/41`, `TermSource = 0`,
 and window 15 compatible but unattained.

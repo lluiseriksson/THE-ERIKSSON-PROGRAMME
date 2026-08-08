@@ -10,8 +10,11 @@ import YangMills.RG.BalabanCMP89Eq248ComplexAliasDenominator
 /-!
 # Alias-weighted vertical variation of the CMP89 averaging pair
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+Cold compiler evidence: exact source checkpoint
+`4f9b86adf7428ead68c159daff0cea3ff50e2b0b`, GitHub Actions run
+`31261770494` (`COLD_MODE=true`, no project-cache restore/save), warning-free
+focal and audit exit zero, and four audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The unweighted vertical-variation estimate cannot be summed over reciprocal
 aliases. This module retains one literal CMP89 (2.51) product weight while

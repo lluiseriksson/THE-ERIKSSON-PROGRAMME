@@ -30261,3 +30261,34 @@ No stabilized-denominator lower bound, joint `B0`, contour shift,
 Fourier/physical rate dictionary or regional-Green estimate is proved. No
 terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained.
+
+## Addendum 640 (2026-08-08, **CMP89 alias-weighted opposite-pair variation GREEN; quotient variation open**)
+
+Exact source checkpoint `4f9b86adf7428ead68c159daff0cea3ff50e2b0b`
+passed cold GitHub Actions run
+[`31261770494`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31261770494)
+with workflow checkpoint `eb31362a75c49e0df072e8c96a8e4bf8197a2270`.
+Restoration and saving of `.lake/build` were skipped. The focal completed
+3,296 jobs and the focal/audit both exited zero; the four audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9023011164` has GitHub digest
+`bb69974e17ec179c4f7dc31a2dc79afc201522e7da8c77564cb1f1e6b2d10d19`.
+The deterministic inner archive re-hashed on Windows to
+`45b58ffcf2c75b0558d80a07d155db4ebe58ad3836de739b74b5cc9550a2bcaa`,
+identical to the hash recorded inside the cold runner.
+
+The sealed theorem retains one literal summable CMP89 (2.51) product weight
+through vertical variation of the opposite-momentum averaging pair. It does
+not assume negation closure of the half-open centered alias fibre: membership
+is used only to derive the coordinate zone, and the opposite factor is handled
+at `(-p,-m)` after that premise is exposed. The weight's evenness is proved
+definitionally as a separate audited theorem.
+
+No quotient variation, stabilized denominator lower bound, joint `B0`,
+contour shift or physical Green estimate is obtained. The conservative
+factor-four fine-symbol gap budget remains unchanged; the possible factor-two
+sharpening is not imported. Diagnostic run `31261520329` preserves the first
+real-slice elaboration failure, and cached run `31261659772` is diagnostic
+only. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
