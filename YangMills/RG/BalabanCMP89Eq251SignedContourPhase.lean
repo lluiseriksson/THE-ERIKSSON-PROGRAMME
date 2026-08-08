@@ -3,6 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
+import Mathlib.Data.Sign.Basic
 import YangMills.RG.BalabanCMP89Eq251ComplexContourPhase
 
 /-!
@@ -85,8 +86,11 @@ theorem norm_exp_I_cmp89Eq251EntireAliasPhase_signedContour
           (cmp89Eq251SignedContourMomentum rho p displacement) m)
         displacement)‖ =
       Real.exp (-(rho * cmp89Eq251DisplacementL1 displacement)) := by
-  rw [norm_exp_I_cmp89Eq251EntireAliasPhase,
-    cmp89Eq251EntireAliasPhase_signedContour_im]
+  rw [norm_exp_I_cmp89Eq251EntireAliasPhase]
+  have hphase :=
+    cmp89Eq251EntireAliasPhase_signedContour_im rho p displacement m
+  rw [cmp89Eq251EntireAliasPhase_im] at hphase
+  rw [hphase]
 
 end
 
