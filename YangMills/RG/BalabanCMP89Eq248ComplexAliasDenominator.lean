@@ -112,8 +112,9 @@ theorem cmp89Eq248ComplexAliasDenominatorSummand_ofReal_eq
     cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq]
   simp only [cmp89Eq245AliasShift]
   rw [cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq hN hm hp]
+  rw [cmp89Eq250AliasDenominatorSummand]
+  simp only [cmp89Eq245AliasShift]
   push_cast
-  rfl
 
 /-- Exact real-slice dictionary for the complete multiplied denominator in
 CMP89 (2.49)--(2.50). -/
