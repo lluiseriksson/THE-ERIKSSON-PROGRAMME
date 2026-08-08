@@ -83,7 +83,7 @@ theorem cmp89Eq250CentralAliasLowerConstant_le_core_inverseScale
   have hdelta0 : 0 ≤ ((Real.pi / 2) ^ 2)⁻¹ :=
     (inv_nonneg.mpr (sq_nonneg _))
   rw [cmp89Eq250CentralAliasLowerConstant, cmp89Eq250CentralAliasCore]
-  exact mul_le_mul_of_nonneg_left
+  simpa only [mul_assoc] using mul_le_mul_of_nonneg_left
     (mul_le_mul hu2 hdelta hdelta0 (sq_nonneg _)) ha
 
 /-- Literal-source-order form of the central alias lower bound. -/
