@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP89Eq249CentralStabilizedAliasDenominator
 /-!
 # Real lower bound for the stabilized CMP89 (2.49) denominator
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and the result has not yet been verified by the compiler.
+Cold compiler evidence: exact source checkpoint
+`798e941733bcd934bbab683923452b941f3fb1ea`, GitHub Actions run
+`31248239837` (`COLD_MODE=true`, no project-cache restore/save), focal and
+audit exit zero, and eight audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The central-pole cancellation exposes a stronger real-slice lower bound than
 the earlier multiplied form of (2.50).  The stabilized denominator contains

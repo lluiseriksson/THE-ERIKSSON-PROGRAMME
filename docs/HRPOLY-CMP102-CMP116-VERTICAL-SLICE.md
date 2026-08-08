@@ -5137,3 +5137,42 @@ nonnegative noncentral contributions, followed by a uniform complex variation
 bound for this exact stabilized object. No strip radius, `B0`, contour shift
 or regional-Green transport is claimed here. Counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5an stabilized real denominator floor (SEALED; complex variation open)
+
+Exact source checkpoint `798e941733bcd934bbab683923452b941f3fb1ea`
+passed cold GitHub Actions run
+[`31248239837`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31248239837)
+(workflow checkpoint `4755cb07963706c88dc47de506a26e24e3154e0d`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal completed 8,420 jobs, focal and audit exited zero, and all eight audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+On the real momentum cube the stabilized expression is identified exactly
+with
+
+```text
+Delta_0 + a*|u_0|^2 + a*Delta_0*sum_{l != 0} |u_l|^2/Delta_l.
+```
+
+The noncentral sum is nonnegative for positive running mass, so retaining the
+central averaging term gives the stronger scale-uniform floor
+
+```text
+a_j * (2/pi)^(2d).
+```
+
+CMP85 (2.15) is then consumed internally to replace the flowing coefficient
+by `a*(1-L^(-2))`. In dimension four the resulting explicit floor is
+`a*(1-L^(-2))*(2/pi)^8`; unlike the earlier multiplied (2.50) floor, it does
+not pay the extra unit/fine Laplacian comparison factor. The theorem assumes
+positive running mass only to reuse nonnegativity of the noncentral rational
+summands; the lower constant itself is mass independent.
+
+The remaining endpoint is a scale-uniform complex variation estimate for this
+same stabilized object. It must keep the central cancellation assembled and
+sum only the geometrically separated noncentral aliases; an alias-cardinality
+factor or independent central-denominator nonvanishing is not accepted. No
+strip radius, joint `B0`, contour shift or regional-Green transport is claimed.
+This is infrastructure below window 15: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

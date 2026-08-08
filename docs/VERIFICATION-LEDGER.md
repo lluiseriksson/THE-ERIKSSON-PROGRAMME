@@ -29902,3 +29902,37 @@ No strip radius, `B0`, contour shift or physical Green estimate is produced.
 Diagnostic runs `31247295117` and `31247418392` preserve the two elaboration
 failures; cached run `31247554050` was diagnostic only. Counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 629 (2026-08-08, **CMP89 stabilized real denominator floor GREEN; complex strip open**)
+
+Exact source checkpoint `798e941733bcd934bbab683923452b941f3fb1ea`
+passed cold GitHub Actions run
+[`31248239837`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31248239837)
+under workflow checkpoint `4755cb07963706c88dc47de506a26e24e3154e0d`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `08:23:29Z` to `08:38:28Z`, completed 8,420 jobs,
+and the audit ended at `08:38:38Z`; both exited zero. All eight declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`. The focal warnings
+are pre-existing transitive linter warnings, not warnings in the new module.
+
+The deterministic inner archive SHA-256 is
+`ec5ac0666d8af4cf7e13bd2ae94944e4292ab61e964a35493b240c3fd74f3bb9`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9019345069` has digest
+`91e6f8e01a727fd7c9ea4881a34687428c77417704ebf41b9d191c4611606e8e`.
+
+The real-slice dictionaries for the central average pair, noncentral rational
+sum and complete stabilized denominator are now compiler verified. Positive
+running mass makes the noncentral sum nonnegative, so the literal central term
+gives the lower constant `a_j*(2/pi)^(2d)`. The sealed CMP85 coefficient floor
+then produces the depth-uniform positive bound
+`a*(1-L^(-2))*(2/pi)^(2d)`; in dimension four the exponent is eight, with no
+extra Laplacian-comparison loss.
+
+This does not construct a complex strip or `B0`. The next producer must bound
+the complex variation of the exact stabilized expression uniformly in depth,
+without multiplying over aliases or requiring the central fine symbol to be
+separately nonzero. Diagnostic run `31248012004` preserves the one algebraic
+normalization failure; cached run `31248127770` was diagnostic only. No
+terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
