@@ -13,4 +13,5 @@ materialized and the result has not yet been verified by the Lean compiler.
 #print axioms YangMills.RG.cmp89Eq245EntireAverageAmplitude
 #print axioms YangMills.RG.differentiable_cmp89Eq245EntireAverageAmplitude
 #print axioms YangMills.RG.cmp89Eq245EntireAverageFactor_ofReal_eq
+#print axioms YangMills.RG.cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq
 #print axioms YangMills.RG.cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq

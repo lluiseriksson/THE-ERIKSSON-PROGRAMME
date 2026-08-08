@@ -116,6 +116,32 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_eq
     push_cast
     field_simp [hNreal, hNcomplex, sub_ne_zero.mpr hx_ne_one]
 
+/-- Coordinate-specialized real-slice dictionary for a printed alias.  All
+physical indices are explicit so downstream products do not ask elaboration
+to reconstruct them through the generated alias tower. -/
+theorem cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq
+    {N : ℕ} (hN : 0 < N) {m : ℤ}
+    (hm : m ∈ cmp89Eq245CenteredAliasIntegers N)
+    {p : ℝ} (hp : |p| ≤ Real.pi) :
+    cmp89Eq245EntireAverageFactor N
+        (p + 2 * Real.pi * (m : ℝ) : ℂ) =
+      cmp89Eq245ComplexAverageFactor (N : ℝ)⁻¹
+        (p + 2 * Real.pi * (m : ℝ)) := by
+  have hsinc := one_div_three_pi_le_abs_sinc_scaled_alias
+    hN hm hp
+  have hsincPos :
+      0 < |Real.sinc (((N : ℝ)⁻¹ *
+        (p + 2 * Real.pi * (m : ℝ))) / 2)| := by
+    exact (div_pos (by norm_num) (mul_pos (by norm_num) Real.pi_pos)).trans_le
+      hsinc
+  have hdenNorm :
+      0 < ‖cmp89Eq245RemovableExpSlope
+        ((N : ℝ)⁻¹ * (p + 2 * Real.pi * (m : ℝ)))‖ := by
+    rw [norm_cmp89Eq245RemovableExpSlope]
+    exact hsincPos
+  exact cmp89Eq245EntireAverageFactor_ofReal_eq hN
+    (norm_pos_iff.mp hdenNorm)
+
 /-- Exact real-slice dictionary on every alias printed in CMP89 (2.45).
 The expanded-zone sinc lower bound supplies the nonvanishing needed to use
 the geometric quotient, so no global nonvanishing assumption is hidden. -/
@@ -131,23 +157,10 @@ theorem cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq
     cmp89Eq245ComplexAverageAmplitude]
   apply Finset.prod_congr rfl
   intro mu hmu
-  have hmi : m mu ∈ cmp89Eq245CenteredAliasIntegers N := by
-    rw [cmp89Eq245CenteredAliasVectors, Fintype.mem_piFinset] at hm
+  apply cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq hN
+  · rw [cmp89Eq245CenteredAliasVectors, Fintype.mem_piFinset] at hm
     exact hm mu
-  have hsinc := one_div_three_pi_le_abs_sinc_scaled_alias
-    hN hmi (hp mu)
-  have hsincPos :
-      0 < |Real.sinc (((N : ℝ)⁻¹ *
-        (p mu + 2 * Real.pi * (m mu : ℝ))) / 2)| := by
-    exact (div_pos (by norm_num) (mul_pos (by norm_num) Real.pi_pos)).trans_le
-      hsinc
-  have hdenNorm :
-      0 < ‖cmp89Eq245RemovableExpSlope
-        ((N : ℝ)⁻¹ * (p mu + 2 * Real.pi * (m mu : ℝ)))‖ := by
-    rw [norm_cmp89Eq245RemovableExpSlope]
-    exact hsincPos
-  exact cmp89Eq245EntireAverageFactor_ofReal_eq hN
-    (norm_pos_iff.mp hdenNorm)
+  · exact hp mu
 
 end
 
