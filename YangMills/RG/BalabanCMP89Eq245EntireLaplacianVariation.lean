@@ -71,8 +71,22 @@ theorem norm_cmp89Eq245EntireScaledDifference_sub_realSlice_le
     · rw [norm_cmp89Eq245EntireScaledDifferenceExponent_sub_realSlice_eq,
         abs_of_pos hxi]
       exact mul_le_mul_of_nonneg_left hz hxi.le
-  rw [cmp89Eq245EntireScaledDifference,
-    cmp89Eq245EntireScaledDifference, ← sub_div, norm_div,
+  change
+    ‖(Complex.exp (cmp89Eq245EntireScaledDifferenceExponent xi z) - 1) /
+          (xi : ℂ) -
+        (Complex.exp
+            (cmp89Eq245EntireScaledDifferenceExponent xi (z.re : ℂ)) - 1) /
+          (xi : ℂ)‖ ≤ _
+  rw [← sub_div,
+    show
+      (Complex.exp (cmp89Eq245EntireScaledDifferenceExponent xi z) - 1) -
+          (Complex.exp
+            (cmp89Eq245EntireScaledDifferenceExponent xi (z.re : ℂ)) - 1) =
+        Complex.exp (cmp89Eq245EntireScaledDifferenceExponent xi z) -
+          Complex.exp
+            (cmp89Eq245EntireScaledDifferenceExponent xi (z.re : ℂ)) by
+      ring,
+    norm_div,
     Complex.norm_real, Real.norm_eq_abs, abs_of_pos hxi]
   calc
     ‖Complex.exp (cmp89Eq245EntireScaledDifferenceExponent xi z) -
@@ -92,7 +106,6 @@ theorem norm_cmp89Eq245EntireScaledDifference_ofReal_eq
       cmp89Eq245ScaledDifferenceNorm xi q := by
   simp only [cmp89Eq245EntireScaledDifference,
     cmp89Eq245ScaledDifferenceNorm]
-  norm_num
 
 /-- Product-rule estimate with both factor budgets visible. -/
 theorem norm_mul_sub_mul_le_eps_mul_two_mul_add
@@ -136,9 +149,10 @@ theorem norm_cmp89Eq245EntireScaledDifference_pair_sub_realSlice_le
         hxi hxi1 hrho (z := -z) (by simpa using hz))
   · rw [norm_cmp89Eq245EntireScaledDifference_ofReal_eq]
     exact cmp89Eq245ScaledDifferenceNorm_le_abs hxi
-  · rw [norm_cmp89Eq245EntireScaledDifference_ofReal_eq]
-    simpa using
-      (cmp89Eq245ScaledDifferenceNorm_le_abs (xi := xi) (p := -z.re) hxi)
+  · have hneg :=
+      cmp89Eq245ScaledDifferenceNorm_le_abs (xi := xi) (p := -z.re) hxi
+    rw [← norm_cmp89Eq245EntireScaledDifference_ofReal_eq] at hneg
+    simpa using hneg
 
 /-- Explicit scale-uniform vertical budget for the complete entire
 fine-lattice symbol. -/
@@ -157,11 +171,21 @@ theorem norm_cmp89Eq245EntireScaledLaplacianSymbol_sub_realSlice_le
         cmp89Eq245EntireScaledLaplacianSymbol d xi mass
           (cmp89Eq245ComplexMomentumRealSlice z)‖ ≤
       cmp89Eq245EntireScaledLaplacianVerticalBudget d rho z := by
-  rw [cmp89Eq245EntireScaledLaplacianSymbol,
-    cmp89Eq245EntireScaledLaplacianSymbol]
-  simp only [cmp89Eq245ComplexMomentumRealSlice, sub_eq_add_neg]
-  rw [add_assoc, add_neg_cancel_right]
-  rw [← Finset.sum_sub_distrib]
+  have hcancel :
+      cmp89Eq245EntireScaledLaplacianSymbol d xi mass z -
+          cmp89Eq245EntireScaledLaplacianSymbol d xi mass
+            (cmp89Eq245ComplexMomentumRealSlice z) =
+        ∑ mu,
+          (cmp89Eq245EntireScaledDifference xi (z mu) *
+              cmp89Eq245EntireScaledDifference xi (-z mu) -
+            cmp89Eq245EntireScaledDifference xi ((z mu).re : ℂ) *
+              cmp89Eq245EntireScaledDifference xi (-((z mu).re : ℂ))) := by
+    rw [cmp89Eq245EntireScaledLaplacianSymbol,
+      cmp89Eq245EntireScaledLaplacianSymbol,
+      ← Finset.sum_sub_distrib]
+    simp only [cmp89Eq245ComplexMomentumRealSlice]
+    ring
+  rw [hcancel]
   calc
     ‖∑ mu,
         (cmp89Eq245EntireScaledDifference xi (z mu) *
