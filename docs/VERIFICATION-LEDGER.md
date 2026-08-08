@@ -30088,3 +30088,39 @@ weighted variation of the noncentral averaging quotient, the stabilized
 denominator, strip radius, `B0`, contour shift and physical Green estimate
 remain open. No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 635 (2026-08-08, **CMP89 moment-dependent noncentral complex gap GREEN; weighted quotient open**)
+
+Exact source checkpoint `eddb70d1da3f3aa5fb50414d68bd0c60313d78e2`
+passed cold GitHub Actions run
+[`31254402223`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31254402223)
+under workflow checkpoint `cdf6b992d40ec65d9e7858de6ed9ae11ce27fd9b`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `11:12:43Z` to `11:28:13Z`, completed 8,430 jobs,
+and the audit ended at `11:28:21Z`; both exited zero. All five declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`57c539234639e9d103276098c563c6be651886e413c4458cb8038af82176cac3`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9021140614` has digest
+`8f018e848fd25cbe4e3e0c51d463a8d27701c728d2183ffcae75493ad54f3348`.
+
+The physical four-dimensional producer retains the momentum-dependent real
+gap rather than collapsing it to `1/9`. Its vertical budget is
+`eps*(4*|q|_2+4*eps)`, with `eps=rho*exp(rho)`, and spending at most half of
+`(3*pi)^(-2)*|q|_2^2` leaves the other half in the complex norm. The
+conditional estimate is separated from the genuinely noncentral strict
+nonvanishing corollary, so no redundant `m != 0` premise remains.
+
+`rho` is explicitly the strip width in the normalized Brillouin-momentum
+variable. The later conversion to fine spatial units and the final decay rate
+`delta0` remains a named Fourier/physical dictionary; neither an `N` bandwidth
+loss nor an `N^5` penalty is imported into this seal. Runs `31253330707`,
+`31254166319` and `31254286978` preserve respectively the non-sealing warning,
+the explicit-mass elaboration failure and the cached green diagnostic.
+
+No alias-weighted complex amplitude or quotient bound, stabilized-denominator
+radius, `B0`, contour shift or physical Green estimate is proved. No terminal
+field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.

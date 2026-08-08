@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP89Eq249NoncentralRealGap
 /-!
 # Moment-dependent complex gap for noncentral CMP89 aliases
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
+Cold compiler evidence: exact source checkpoint
+`eddb70d1da3f3aa5fb50414d68bd0c60313d78e2`, GitHub Actions run
+`31254402223` (`COLD_MODE=true`, no project-cache restore/save), focal and
+audit exit zero, and five audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The mass-uniform real lower bound for a nonzero alias is stronger than the
 global constant `1/9`: it is proportional to the squared shifted momentum.
@@ -24,6 +27,11 @@ and derives complex nonvanishing whenever that budget spends at most half of
 the real gap.  It does not yet select a uniform radius, vary the averaging
 quotient, sum aliases, construct `B0`, shift a contour or transport the result
 to the regional Green function.
+
+Here `rho` is measured in the normalized Brillouin-momentum variable used by
+the entire symbols.  No fine/block spatial-rate identification is made in this
+module; that conversion remains a named obligation of the later Fourier
+contour and physical Green dictionaries.
 
 Source catalog key: `cmp89.local-green.fourier.2.34-2.51`.
 -/

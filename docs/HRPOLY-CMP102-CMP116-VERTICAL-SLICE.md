@@ -5347,3 +5347,52 @@ decay in the variation of the averaging pair and combine it with the sealed
 noncentral real gap. No stabilized-denominator variation, strip radius,
 `B0`, contour shift or regional-Green estimate is claimed. Counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5at moment-dependent noncentral complex gap (SEALED; weighted alias quotient open)
+
+Exact source checkpoint `eddb70d1da3f3aa5fb50414d68bd0c60313d78e2`
+passed cold GitHub Actions run
+[`31254402223`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31254402223)
+(workflow checkpoint `cdf6b992d40ec65d9e7858de6ed9ae11ce27fd9b`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal ran from `11:12:43Z` to `11:28:13Z`, completed 8,430 jobs, and the audit
+ended at `11:28:21Z`; both exited zero. All five audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`57c539234639e9d103276098c563c6be651886e413c4458cb8038af82176cac3`,
+reproduced after downloading artifact `9021140614`; GitHub reports artifact
+digest `8f018e848fd25cbe4e3e0c51d463a8d27701c728d2183ffcae75493ad54f3348`.
+
+In dimension four, the exact `l1 <= 2*l2` comparison turns the sealed entire
+fine-symbol variation into the moment-dependent budget
+
+```text
+eps * (4*|q|_2 + 4*eps),    eps = rho*exp(rho).
+```
+
+If that budget spends at most half of the real CMP89 lower bound
+`(3*pi)^(-2)*|q|_2^2`, the complex fine symbol retains the other half. The
+conditional lower theorem does not carry a redundant noncentrality premise;
+a separate corollary uses `m != 0` to prove the lower bound is strictly
+positive and hence the complex symbol is nonzero. The momentum dependence is
+kept deliberately: replacing it by the global `1/9` before the quotient sum
+would discard reciprocal-alias decay.
+
+The strip parameter `rho` here is the imaginary displacement in the
+normalized Brillouin-momentum variable used by the literal entire average and
+scaled difference. Their `r/N` and `xi = 1/N` factors already cancel the
+apparent bandwidth loss. The later fine/block spatial-rate conversion must be
+a named Fourier/physical dictionary; this seal neither identifies `rho` with
+the final `delta0` nor introduces an `N^5` factor mentally.
+
+The first cold run `31253330707` was mathematically green but is retained only
+as non-sealing evidence because the new module exposed a redundant `hm0`
+premise. Diagnostic run `31254166319` then caught the missing explicit `mass`
+specialization; cached run `31254286978` passed but retained PRE-VALIDATION.
+Only the cold run above retires it.
+
+No alias-weighted complex amplitude bound, quotient variation, stabilized
+denominator radius, joint `B0`, contour shift or physical Green estimate is
+proved. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
