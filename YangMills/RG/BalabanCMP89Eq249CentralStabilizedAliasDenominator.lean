@@ -88,18 +88,31 @@ theorem cmp89Eq247ComplexReducedAliasDenominator_eq_central_add_noncentral
   have hzero : zeroAlias ∈ aliases := by
     exact cmp89Eq249ZeroAlias_mem d L j
   have hsplit := Finset.sum_erase_add aliases term hzero
+  have halias :
+      cmp89Eq248EntireAliasMomentum z zeroAlias = z := by
+    funext mu
+    simp [cmp89Eq248EntireAliasMomentum, zeroAlias,
+      cmp89Eq249ZeroAlias, cmp89Eq245AliasShift]
   have hcentral :
       term zeroAlias =
         cmp89Eq249CentralEntireAveragePair d L j z /
           cmp89Eq249CentralEntireFineSymbol d L j mass z := by
-    simp [term, zeroAlias, cmp89Eq248ComplexAliasDenominatorSummand,
-      cmp89Eq248EntireAliasMomentum, cmp89Eq245AliasShift,
-      cmp89Eq249CentralEntireAveragePair,
-      cmp89Eq249CentralEntireFineSymbol]
+    rw [term, cmp89Eq248ComplexAliasDenominatorSummand, halias]
+    rfl
   rw [cmp89Eq247ComplexReducedAliasDenominator]
   change 1 + (a : ℂ) * (∑ m ∈ aliases, term m) = _
   rw [← hsplit, hcentral]
-  rfl
+  rw [cmp89Eq249ComplexNoncentralAliasSum]
+  change
+    1 + (a : ℂ) *
+        ((∑ m ∈ aliases.erase zeroAlias, term m) +
+          cmp89Eq249CentralEntireAveragePair d L j z /
+            cmp89Eq249CentralEntireFineSymbol d L j mass z) =
+      1 + (a : ℂ) *
+        (cmp89Eq249CentralEntireAveragePair d L j z /
+            cmp89Eq249CentralEntireFineSymbol d L j mass z +
+          ∑ m ∈ aliases.erase zeroAlias, term m)
+  ring
 
 /-- Exact cancellation of the central displayed quotient.  This theorem is
 stated on the domain of the original rational formula; the stabilized right
