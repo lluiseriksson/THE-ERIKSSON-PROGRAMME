@@ -7,10 +7,14 @@ import YangMills.RG.BalabanCMP89Eq250FullDenominatorLower
 import YangMills.RG.BalabanCMP89Eq251AliasWeightRedistribution
 
 /-!
-# PRE-VALIDATION: noncentral real integrand in CMP89 (2.51)
+# Cold-sealed noncentral real integrand in CMP89 (2.51)
 
-The source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold GitHub Actions run `31238106632` compiler-verified source checkpoint
+`83272ce580198092dcc516c34e2a353a1bee42b8` with workflow checkpoint
+`eb27ce65d6b3c451da33821c5bdcfdb889f53277`. Both restore and save of
+`.lake/build` were skipped; the warning-free focal and audit exited zero, the
+build closed at 3289 jobs, and all four audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module composes the five literal factors in the noncentral summand of
 CMP89 (2.51): the Holder phase quotient, the inverse complete denominator,

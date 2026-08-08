@@ -29562,3 +29562,36 @@ analytic strip and physical transport also remain open. No terminal field is
 discharged: the counters remain exactly `20/41`, `TermSource = 0`, and window
 15 compatible but unattained. Cached run `31237103246` was diagnostic only;
 the cold run above alone retired PRE-VALIDATION.
+
+## Addendum 618 (2026-08-08, **CMP89 literal noncentral real integrand GREEN; central branch and alias sum open; 20/41 unchanged**)
+
+Source checkpoint `83272ce580198092dcc516c34e2a353a1bee42b8` passed cold
+GitHub Actions run
+[`31238106632`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31238106632)
+under workflow checkpoint `eb27ce65d6b3c451da33821c5bdcfdb889f53277`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T03:52:34Z` to `03:53:17Z`, exited zero
+with `Build completed successfully (3289 jobs).`, and the audit ended at
+`03:53:22Z` with exit zero. Both logs are warning-free and all four audited
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`aafc1f28c7ebf52d297aaa7f9f07ad19605c366d2eddfff61bf4e6d4ac6e1f8b`;
+the downloaded artifact reproduced it locally. GitHub artifact `9016145344`
+has digest
+`16bc3f2611f711d74b34b82cc20a9f3ded6633e19a1f1d1f006c3c03f11fd021`.
+
+The endpoint assembles all five literal noncentral factors in CMP89 (2.51)
+and bounds them by the already sealed summable product weight. The explicit
+constant keeps separate the Holder factor `2`, the inverse central denominator
+lower bound, `(18*pi)^d`, the massive-symbol comparison and
+`3^(1-alpha)`. The theorem contains no synthetic integrand, hidden dimension
+constant or alias-cardinality loss.
+
+The central alias remains the separate `O(1)` branch printed by the source;
+the finite alias sum, analytic strip and physical transport remain open. The
+flowing mass condition is visible and is not counted as a freely selectable
+smallness window. No terminal field is discharged: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained. Diagnostic
+runs `31237719609` and `31237880610` retain the two elaboration failures;
+cached run `31238006531` was not used to retire PRE-VALIDATION.

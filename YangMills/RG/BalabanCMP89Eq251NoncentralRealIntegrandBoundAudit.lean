@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP89Eq251NoncentralRealIntegrandBound
 
 /-!
-# PRE-VALIDATION: axiom audit for the noncentral real integrand in CMP89 (2.51)
+# Axiom audit: noncentral real integrand in CMP89 (2.51)
 
-The source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold GitHub Actions run `31238106632` verified these four declarations at
+source checkpoint `83272ce580198092dcc516c34e2a353a1bee42b8`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251NoncentralRealIntegrand

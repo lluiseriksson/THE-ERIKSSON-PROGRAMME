@@ -4766,3 +4766,44 @@ discharged, and the counters remain exactly `20/41` and `TermSource = 0`.
 
 Cached diagnostic run `31237103246` passed but retained PRE-VALIDATION. Only
 the cold run above retired it.
+
+### Step 7.5ae literal noncentral real integrand in CMP89 (2.51) (SEALED; central branch and alias sum open)
+
+Exact source checkpoint `83272ce580198092dcc516c34e2a353a1bee42b8`
+passed cold GitHub Actions run
+[`31238106632`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31238106632)
+(workflow checkpoint `eb27ce65d6b3c451da33821c5bdcfdb889f53277`). The run
+recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T03:52:34Z` to `03:53:17Z`, the audit
+ended at `03:53:22Z`, both exited zero without warnings, and the build closed
+with `Build completed successfully (3289 jobs).` All four audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`aafc1f28c7ebf52d297aaa7f9f07ad19605c366d2eddfff61bf4e6d4ac6e1f8b`,
+reproduced after downloading artifact `9016145344`; GitHub reports artifact
+digest `16bc3f2611f711d74b34b82cc20a9f3ded6633e19a1f1d1f006c3c03f11fd021`.
+
+For every nonzero printed alias, the sealed endpoint constructs the literal
+product of the Holder phase quotient, the inverse complete denominator, one
+scaled derivative, the complex averaging amplitude and the massive-symbol
+ratio. It proves that product is bounded by the exact summable coordinate
+weight with exponent `1+(1-alpha)/d`, paying the fully visible constant
+
+```text
+2 * centralLower(d,a)^(-1) * (18*pi)^d
+  * ((3*pi)^2 * (d*pi^2+1)) * 3^(1-alpha).
+```
+
+No free bound replaces a source factor, and no alias cardinality or hidden
+dimension constant enters. The condition `mass^2 <= 1` remains the named
+flowing-mass hypothesis already classified in the source map; this theorem
+does not assert that RG dynamics preserves it. The central alias, finite alias
+sum, uniform analytic strip and physical Green transport remain open. This is
+infrastructure below window 15, not a terminal field: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+Runs `31237719609` and `31237880610` preserve the two elaboration failures
+(over-eager quotient decomposition, then the `Nat.cast_pow` dictionary).
+Cached diagnostic run `31238006531` passed but retained PRE-VALIDATION; only
+the cold run above retired it.
