@@ -2054,3 +2054,4 @@ import YangMills.RG.BalabanCMP89Eq249StabilizedComplexIntegrandAudit
 import YangMills.RG.BalabanCMP89Eq251ComplexContourPhaseAudit
 import YangMills.RG.BalabanCMP89Eq251SignedContourPhaseAudit
 import YangMills.RG.PeriodicHolomorphicVerticalShiftAudit
+import YangMills.RG.BalabanCMP89Eq251LatticePhasePeriodicityAudit
