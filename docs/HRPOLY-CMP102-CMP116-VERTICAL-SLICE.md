@@ -5754,3 +5754,25 @@ bound the complex numerator, construct `B0`, justify a contour displacement,
 identify the Fourier and physical rates, resolve the flowing mass condition,
 or attain window 15. The live counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5bf complex contour-phase dictionary (PRE-VALIDATION)
+
+The proposed producer rewrites the two phase factors in the stabilized
+CMP89 (2.49) numerator exactly as
+
+```text
+(exp(i q.(x-x')) - 1) * exp(i q.(x'-y))
+  = exp(i q.(x-y)) - exp(i q.(x'-y)).
+```
+
+It also proves that reciprocal aliases do not alter the imaginary part of a
+phase and derives the explicit coordinate-strip growth
+`exp(rho * |displacement|_1)` for each endpoint. No phase-bound family or
+spatial constant is supplied as input.
+
+This is the exact dictionary required before the source contour can be split
+or displaced. It does not choose a contour direction, prove uniform spatial
+decay, bound the complete stabilized numerator, construct `B0`, resolve the
+flowing mass condition or attain window 15. No terminal field is discharged:
+counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
