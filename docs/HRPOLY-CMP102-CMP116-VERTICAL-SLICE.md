@@ -5569,3 +5569,17 @@ run `31261659772` passed but retained PRE-VALIDATION. Only the cold run above
 retired it.
 No terminal field is discharged: counters remain `20/41`, `TermSource = 0`,
 and window 15 compatible but unattained.
+
+### Step 7.5az complex noncentral quotient vertical variation (PRE-VALIDATION)
+
+The source is present but its `.olean` has not yet been materialized and the
+result has not yet been compiler-verified. The proposed producer combines the
+sealed weighted averaging-pair variation with the common moment-dependent gap
+at the complex point and its real slice. Numerator variation pays one inverse
+gap and denominator variation pays two; both terms retain the literal alias
+weight and the latter keeps the complete fine-symbol variation budget visible.
+
+No radial-power redistribution, finite quotient-variation sum, stabilized
+denominator lower bound, joint `B0`, contour shift or physical Green estimate
+is claimed. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
