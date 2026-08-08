@@ -29202,9 +29202,12 @@ obtains the explicit scale-uniform constant
 `a * ((2/pi)^d)^2 * ((pi/2)^2)^(-1)`, with strict positivity kept as a
 separate theorem under the visible hypothesis `0 < a`.
 
-The noncentral aliases, their sum in the full denominator estimate (2.50),
-(2.51), and the uniform analytic strip remain open.  Run `31229284523`
-preserves the sole associativity elaboration correction; cached run
-`31229442243` passed the final source, and only the cold run above retired
-PRE-VALIDATION.  No terminal field is discharged: the live counters remain
-exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+The exact finite alias enumeration, its central zero member, and
+nonnegativity of the remaining summands are still needed to lift this result
+to the full denominator in (2.50).  The primary source discards those terms
+for (2.50); quantitative noncentral decay is needed only in (2.51), which
+remains open with the uniform analytic strip.  Run `31229284523` preserves
+the sole associativity elaboration correction; cached run `31229442243`
+passed the final source, and only the cold run above retired PRE-VALIDATION.
+No terminal field is discharged: the live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

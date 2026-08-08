@@ -4355,14 +4355,19 @@ which is separately proved strictly positive for `0 < a`.  Thus the central
 alias contribution in (2.50) is now closed without a free family or a hidden
 `0/0` convention.
 
-The noncentral aliases still have to be bounded and summed before the full
-denominator estimate (2.50) exists; (2.51), the uniform analytic strip, and
-the Fourier-to-regional-Green dictionary also remain open.  Therefore this
-brick produces no physical `B0` or `delta0`, does not attain window 15,
-discharges no row 23--24, and does not inhabit `TermSource`.  The counters
-remain exactly `20/41` and zero.
+The full denominator estimate (2.50) still needs the exact finite source
+alias set, membership of the central alias `l'=0`, and nonnegativity of every
+remaining summand.  The printed proof then discards the noncentral terms; it
+does not require a quantitative bound on them.  Their decay estimates enter
+later in (2.51), which remains open together with the uniform analytic strip
+and the Fourier-to-regional-Green dictionary.  Therefore this brick produces
+no physical `B0` or `delta0`, does not attain window 15, discharges no row
+23--24, and does not inhabit `TermSource`.  The counters remain exactly
+`20/41` and zero.
 
 Run `31229284523` preserves the single associativity elaboration correction;
 cached run `31229442243` passed the final source, and only the cold run above
-retired PRE-VALIDATION.  The next honest Fourier brick is the noncentral
-alias comparison and its summation in (2.50), followed by (2.51).
+retired PRE-VALIDATION.  The next honest Fourier brick is the exact centered
+alias enumeration from (2.45), its zero-member theorem, and the resulting
+nonnegative-sum completion of (2.50).  Quantitative noncentral estimates are
+deferred to (2.51), exactly as in the source.

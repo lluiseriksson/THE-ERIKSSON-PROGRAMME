@@ -70,7 +70,7 @@
         "Do not identify CMP89 G_j(Pi) Q_j^* or C^(j)(Pi) definitionally with the repository's canonical generated regional Green before proving the averaging, scaling, boundary and gauge dictionaries."
       ],
       "open_questions": [
-        "Prove and sum the noncentral alias estimates to complete (2.50), then establish (2.51), followed by the Fourier realization of (2.43)-(2.48) and the uniform-in-j analytic strip.",
+        "Formalize the exact finite centered alias set from (2.45), prove that it contains the zero alias and that every denominator summand is nonnegative, and thereby complete (2.50) by retaining the sealed central term; quantitative noncentral estimates are then needed for (2.51), followed by the Fourier realization of (2.43)-(2.48) and the uniform-in-j analytic strip.",
         "Exact transport of Lemma 2.4 through CMP89 (2.34), CMP95 (1.132)-(1.137), CMP96 (2.43)/(2.67), and CMP99 Corollary 3.6 to the canonical regional Green certificate.",
         "Dictionary from the source derivatives and C^(j)(Pi) to the four literal repository operators G', D G', G' D*, and Delta G'."
       ]
