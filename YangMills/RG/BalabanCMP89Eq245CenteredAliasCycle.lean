@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq250FullDenominatorLower
 
 /-!
-# PRE-VALIDATION: centered CMP89 alias cycle
+# Cold-sealed centered CMP89 alias cycle
 
-The source is present, its `.olean` has not yet been materialized, and the
-result has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`b962f9a77e6523326a26474ac323b2912f755c71` by cold GitHub Actions run
+`31279450837`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 3,278 jobs, the audit exited zero, and all six audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.45) uses the centered half-open set of `N = L^j` reciprocal aliases
 in each coordinate. A physical momentum shift by `2*pi` does not fix an

@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq245CenteredAliasCycle
 
 /-!
-# PRE-VALIDATION: axiom audit for the centered CMP89 alias cycle
-
-The source is present, its `.olean` has not yet been materialized, and the
-result has not yet been verified by the compiler.
+# Axiom audit for the cold-sealed centered CMP89 alias cycle
 -/
 
 #print axioms YangMills.RG.cmp89Eq245CenteredAliasIntegers_eq_Ico

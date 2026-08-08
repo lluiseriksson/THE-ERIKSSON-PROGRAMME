@@ -30708,3 +30708,36 @@ Cached diagnostic run `31277952998` passed before the cold seal. Failed run
 `31277793979` preserves the preliminary normalization errors on local `let`
 values and the negative-integer branch; their repair changed no theorem
 statement, constant or hypothesis.
+
+## Addendum 652 (2026-08-08, **centered alias cycle GREEN; complete physical periodicity open**)
+
+Exact source checkpoint `b962f9a77e6523326a26474ac323b2912f755c71`
+passed cold GitHub Actions run
+[`31279450837`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31279450837)
+with workflow checkpoint `4a010f5ab19c6482ec5cb906a425352b8f767c21`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ended at `21:31:48Z`; the focal ran from
+`21:31:53Z` to `21:32:10Z`, completed 3,278 jobs, and the audit ended at
+`21:32:13Z`. Focal and audit both exited zero. All six audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9028002537`, named
+`cmp89-centered-alias-cycle-b962f9a77e6523326a26474ac323b2912f755c71`,
+has GitHub digest
+`388d2c7a5839fcf52b28b9f52c1fb82bbb6e0d2c25b419ff94681ab93977cc45`.
+The deterministic inner archive re-hashed on Windows to
+`059d073ce2cc779465850790dfde01279db44a678d6e5cfdcd8c441b75c5faff`,
+identical to the cold-run hash; all 13 manifest entries re-hashed exactly.
+
+The module identifies the printed odd/even centered aliases with one half-open
+interval of length `N`, constructs inverse successor/predecessor maps, and
+seals the resulting coordinate cycle. The upper wrap is recorded by the
+literal alternative `cycle(m)=m+1` or `cycle(m)+N=m+1`; the physical `2*pi`
+period is not confused with pointwise period `2*pi*N`.
+
+The `d`-coordinate lift, finite-sum reindexing and transport of every physical
+integrand factor remain open. This brick therefore produces no `B0`, does not
+attain window 15, and discharges no terminal field. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Cached diagnostic
+run `31279345615` passed before the cold seal; four earlier failed runs retain
+the purely elaborational repairs without changing the statement or data.

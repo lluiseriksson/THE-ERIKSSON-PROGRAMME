@@ -5979,3 +5979,45 @@ seal. Failed run `31277793979` preserves the earlier elaboration errors:
 local `let` values were incorrectly used as rewrite equations, and the
 negative-integer branch needed the literal normal form `-((n : Int) + 1)`.
 The repair changed no statement, constant or hypothesis.
+
+### Step 7.5bk centered reciprocal-alias cycle (SEALED; vector reindexing and physical periodicity open)
+
+Exact source checkpoint `b962f9a77e6523326a26474ac323b2912f755c71`
+passed cold GitHub Actions run
+[`31279450837`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31279450837)
+with workflow checkpoint `4a010f5ab19c6482ec5cb906a425352b8f767c21`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ended at `21:31:48Z`; the focal ran from
+`21:31:53Z` to `21:32:10Z`, completed 3,278 jobs, and the audit ended at
+`21:32:13Z`. Focal and audit both exited zero. All six audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9028002537`, named
+`cmp89-centered-alias-cycle-b962f9a77e6523326a26474ac323b2912f755c71`,
+has GitHub digest
+`388d2c7a5839fcf52b28b9f52c1fb82bbb6e0d2c25b419ff94681ab93977cc45`.
+The deterministic inner archive re-hashed on Windows to
+`059d073ce2cc779465850790dfde01279db44a678d6e5cfdcd8c441b75c5faff`,
+identical to the hash recorded by the cold runner; all 13 entries of its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed brick proves that the odd/even representative set printed in
+CMP89 (2.45) is uniformly the half-open interval of `N` consecutive integers
+beginning at `-floor(N/2)`. It constructs explicit successor and predecessor
+maps, proves them inverse, and packages the successor as a cyclic permutation.
+The wrap is not hidden: the output is either `m+1`, or adding the literal
+alias count `N` to the wrapped output recovers `m+1`.
+
+This is the coordinate fibre permutation required by the physical `2*pi`
+boundary shift. It does not yet lift the cycle to one coordinate of the
+`d`-dimensional alias vectors, reindex a finite sum, transport the averaging,
+Laplacian, denominator and endpoint phase factors, or prove periodicity of
+the complete stabilized integrand. No `B0`, physical rate, window-15
+attainment or terminal field is produced. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31279345615` passed before the cold seal. Failed runs
+`31278649551`, `31278803693`, `31278940403`, and `31279212640` preserve the
+dependent-membership rewrite, subtype-projection normalization, and misplaced
+`else` repairs. None changed the representative set, cycle, constant or
+hypothesis.
