@@ -29776,3 +29776,30 @@ regional-Green transport remain open. No terminal field is discharged:
 `20/41`, `TermSource = 0`, window 15 compatible but unattained. Runs
 `31243687034`, `31243835860`, `31243976939` and `31244104328` preserve the
 elaboration failures; cached run `31244234625` was diagnostic only.
+
+## Addendum 625 (2026-08-08, **CMP85 averaging-coefficient flow visually resolved; uniform positive floor; strip still open**)
+
+The primary Project Euclid PDF of Balaban, *(Higgs)2,3 Quantum Fields in a
+Finite Volume. I. A Lower Bound*, was acquired and rendered. Its SHA-256 is
+`6B6451CE06BB438658BA300B2630CDF769DC65F4A769D76A704090055486E5F6`.
+Printed p. 609 (PDF p. 7), visually checked at 500 dpi, gives
+
+```text
+a_(k+1) = a*a_k/(a*L^(-2)+a_k),
+a_k = a*(1-L^(-2))/(1-L^(-2k)),
+a_k decreases to a_infinity = a*(1-L^(-2)).
+```
+
+Hence `a>0`, `L>1` imply `a_k >= a*(1-L^(-2)) > 0` at every scale. Printed
+p. 612 (PDF p. 10), checked separately at 450 dpi, uses these same coefficients
+`a_j^2` in the propagator decomposition (2.43). The averaging coefficient in
+CMP89's central-alias gap therefore has a scale-uniform positive floor; it does
+not decay away under the source flow.
+
+Combining this source floor with the already sealed real CMP89 lower constant
+gives, in dimension four, the explicit real gap
+`a*(1-L^(-2))*(2/pi)^10`, with `(2/pi)^10 = 0.010934...`. This is not yet the
+uniform complex strip or its joint bound `B0(delta0)`: the quantitative complex
+perturbation of the assembled integrand and any removable cancellations remain
+open. No Lean/Lake/oracle was run for this source audit. Counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

@@ -16,6 +16,18 @@
         "project_euclid_legacy_pdf": "https://projecteuclid.org/download/pdf_1/euclid.cmp/1103922931"
       }
     },
+    "cmp85_higgs_lower": {
+      "short": "Balaban CMP85 Higgs lower bound",
+      "title": "(Higgs)2,3 Quantum Fields in a Finite Volume. I. A Lower Bound",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 85 (1982), 603-626",
+      "doi": "10.1007/BF01403506",
+      "web_urls": {
+        "project_euclid_html": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Higgs_23-quantum-fields-in-a-finite-volume-I-A-lower/cmp/1103921549.full",
+        "project_euclid_pdf": "https://projecteuclid.org/journalArticle/Download?urlId=cmp%2F1103921549",
+        "springer": "https://link.springer.com/article/10.1007/BF01403506"
+      }
+    },
     "cmp97_higgs_rg": {
       "short": "Balaban-Imbrie-Jaffe CMP97",
       "title": "Renormalization of the Higgs Model: Minimizers, Propagators and the Stability of Mean Field Theory",
@@ -181,13 +193,57 @@
         "Do not replace the Fourier/analytic-strip argument by the sealed reciprocal-coercivity Combes-Thomas route; that route is quantitatively excluded by the depth-zero no-go.",
         "Do not identify CMP89 G_j(Pi) Q_j^* or C^(j)(Pi) definitionally with the repository's canonical generated regional Green before proving the averaging, scaling, boundary and gauge dictionaries.",
         "Do not infer delta0 proportional to m_j, B0 proportional to m_j^(-2), or a resulting K proportional to m_j^(-7). CMP89's printed uniform gap comes from a_j Q_j^*Q_j through the central alias, not from the mass term.",
-        "Do not use the sealed noncentral inverse-square estimate for arbitrary physical mass. The cross-source rescaling dictionary supports uniformity only under m_phys^2 <= 1 (equivalently m_k^2 <= L^(-2k)); do not call the exact CMP85 normalization verified until its RG equation (2.43) has been read directly."
+        "Do not use the sealed noncentral inverse-square estimate for arbitrary physical mass. The cross-source rescaling dictionary supports uniformity only under m_phys^2 <= 1 (equivalently m_k^2 <= L^(-2k)).",
+        "Do not treat the real lower bound proportional to a_j as the complete complex-strip estimate. CMP85 gives a uniform positive lower bound for a_j, but the strip radius and B0(delta0) still require quantitative control of the assembled complex integrand."
       ],
       "open_questions": [
-        "Acquire CMP85 (Higgs finite-volume I) and visually verify the exact normalization and index convention in its RG equation (2.43). Cross-source primary evidence already yields the candidate dictionary m_j=L^(k-j)m_k=m_phys L^(-j), but that equality is not yet a direct transcription of CMP85.",
+        "Visually verify the exact running-mass normalization and index convention associated with CMP85 (2.43). The paper directly fixes the averaging coefficient a_j, but the candidate mass dictionary m_j=L^(k-j)m_k=m_phys L^(-j) remains cross-source rather than a direct transcription here.",
         "Construct an explicit j-uniform analytic strip and complete-integrand bound from the sealed finite complex denominator and the central-alias block-averaging gap in (2.50). The literal division and real-slice dictionary are sealed, but quantitative uniform complex nonvanishing and any removable cancellations are not.",
         "Exact transport of Lemma 2.4 through CMP89 (2.34), CMP95 (1.132)-(1.137), CMP96 (2.43)/(2.67), and CMP99 Corollary 3.6 to the canonical regional Green certificate.",
         "Dictionary from the source derivatives and C^(j)(Pi) to the four literal repository operators G', D G', G' D*, and Delta G'."
+      ]
+    },
+    {
+      "key": "cmp85.higgs.averaging-coefficient.2.13-2.15",
+      "source_id": "cmp85_higgs_lower",
+      "locator": {
+        "printed_pages": "609, 612",
+        "pdf_pages": "7, 10",
+        "equations": ["2.13", "2.15", "2.41", "2.42", "2.43"],
+        "local_text": "primary PDF downloaded from Project Euclid; SHA-256 6B6451CE06BB438658BA300B2630CDF769DC65F4A769D76A704090055486E5F6",
+        "renders": [
+          "private local 500-dpi render tmp/pdfs/cmp85-aj-eq215-07.png",
+          "private local 450-dpi render tmp/pdfs/cmp85-rg-eq243-10.png"
+        ],
+        "web_urls": [
+          "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Higgs_23-quantum-fields-in-a-finite-volume-I-A-lower/cmp/1103921549.full",
+          "https://doi.org/10.1007/BF01403506"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP85 fixes the block-averaging coefficient recursively and gives an explicit scale-uniform positive lower bound. This closes the external-flow question for the a_j factor in CMP89's central-alias gap, but not the quantitative complex strip.",
+      "extracted_claims": [
+        "Equation (2.13) defines a_(k+1) = a*a_k/(a*L^(-2)+a_k), with initial condition a_1=a.",
+        "Equation (2.15) solves the recurrence as a_k = a*(1-L^(-2))/(1-L^(-2k)) and states a_k decreases to a_infinity = a*(1-L^(-2)).",
+        "Therefore, for a>0 and L>1, every k>=1 satisfies a_k >= a*(1-L^(-2)) > 0, uniformly in k.",
+        "Equation (2.43) uses the same coefficients a_j^2 in the solved propagator decomposition, tying the running coefficient directly to the Green-function expansion later cited by CMP89."
+      ],
+      "lean_targets": [
+        "YangMills.RG.cmp89Eq250CentralAliasLowerConstant",
+        "YangMills.RG.cmp89Eq250CentralAliasLowerConstant_le_full_denominator",
+        "YangMills.RG.cmp89Eq249ComplexFullAliasDenominator"
+      ],
+      "use_for": [
+        "Uniform positive lower bound for the block-averaging coefficient in the real central-alias gap.",
+        "Source anchor for replacing the open question 'does a_j decay?' by the explicit floor a*(1-L^(-2))."
+      ],
+      "do_not_use_for": [
+        "Do not infer a uniform complex analytic strip from the real coefficient floor alone.",
+        "Do not use this scalar recurrence as the still-open dictionary for the running physical mass m_j."
+      ],
+      "open_questions": [
+        "Quantitative perturbation from the real full-denominator floor to a j-uniform complex strip for the complete assembled integrand.",
+        "Joint bound B0(delta0), including the complex numerator and any removable alias cancellations."
       ]
     }
   ]

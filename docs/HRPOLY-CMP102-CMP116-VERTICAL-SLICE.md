@@ -5015,3 +5015,32 @@ constructed from the complete holomorphic denominator and then transported
 through reflections and the later scale/gauge dictionaries. In particular,
 the heuristic `delta0 ~ mass`, `B0 ~ mass^-2`, and hence `K ~ mass^-7` does not
 describe this CMP89 mechanism and must not be used as a gate.
+
+The remaining flow question for the coefficient `a_j` is now resolved against
+the primary CMP85 paper. Printed p. 609, Eq. (2.13), defines
+
+```text
+a_(k+1) = a*a_k / (a*L^(-2) + a_k),    a_1 = a,
+```
+
+and Eq. (2.15) gives the closed form and limit
+
+```text
+a_k = a*(1-L^(-2))/(1-L^(-2k))
+    decreases to a_infinity = a*(1-L^(-2)).
+```
+
+Thus `a>0` and `L>1` imply the scale-uniform floor
+`a_k >= a*(1-L^(-2)) > 0`. Printed p. 612, Eq. (2.43), uses the same `a_j^2`
+inside the solved propagator decomposition. In dimension four, inserting this
+floor into the already sealed real central-alias estimate gives the explicit
+uniform real denominator gap
+
+```text
+a*(1-L^(-2)) * (2/pi)^10,
+```
+
+where `(2/pi)^10 = 0.010934...`. This closes the question whether `a_j`
+decays along the source flow. It does **not** yet produce a complex strip or
+`B0`: one still has to control the assembled complex denominator/integrand
+uniformly near the real cube, including any removable alias cancellations.
