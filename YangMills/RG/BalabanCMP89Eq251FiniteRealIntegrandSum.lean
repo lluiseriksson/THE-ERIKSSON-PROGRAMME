@@ -68,8 +68,6 @@ theorem cmp89Eq251FiniteRealIntegrandSum_le_bound
   let weight : (Fin d → ℤ) → ℝ := fun m =>
     cmp89Eq251MultidimensionalAliasWeight
       (cmp89Eq251AliasSeriesExponent d alpha) m
-  let noncentralConstant :=
-    cmp89Eq251NoncentralRealIntegrandConstant d a alpha
   have hzero : zeroAlias ∈ aliases := by
     simpa only [aliases, zeroAlias] using
       zero_mem_cmp89Eq245CenteredAliasVectors_pow d L j
@@ -83,13 +81,14 @@ theorem cmp89Eq251FiniteRealIntegrandSum_le_bound
     rw [cmp89Eq251FiniteRealIntegrandSum,
       cmp89Eq251CentralRealIntegrand]
     simpa only [aliases, zeroAlias, integrand] using h.symm
-  have hconstantNonneg : 0 ≤ noncentralConstant := by
-    rw [noncentralConstant,
-      cmp89Eq251NoncentralRealIntegrandConstant]
+  have hconstantNonneg :
+      0 ≤ cmp89Eq251NoncentralRealIntegrandConstant d a alpha := by
+    rw [cmp89Eq251NoncentralRealIntegrandConstant]
     positivity
   have hnoncentralPointwise :
       ∀ m ∈ aliases.erase zeroAlias,
-        integrand m ≤ noncentralConstant * weight m := by
+        integrand m ≤
+          cmp89Eq251NoncentralRealIntegrandConstant d a alpha * weight m := by
     intro m hm
     have hmParts := Finset.mem_erase.mp hm
     exact cmp89Eq251NoncentralRealIntegrand_le_sourceWeight
@@ -105,20 +104,21 @@ theorem cmp89Eq251FiniteRealIntegrandSum_le_bound
           (cmp89Eq251AliasSeriesExponent d alpha) m)
   have hfiniteNoncentral :
       (∑ m ∈ aliases.erase zeroAlias, integrand m) ≤
-        noncentralConstant *
+        cmp89Eq251NoncentralRealIntegrandConstant d a alpha *
           cmp89Eq251CenteredMultidimensionalAliasSum
             d (L ^ j) (cmp89Eq251AliasSeriesExponent d alpha) := by
     calc
       (∑ m ∈ aliases.erase zeroAlias, integrand m) ≤
           ∑ m ∈ aliases.erase zeroAlias,
-            noncentralConstant * weight m :=
+            cmp89Eq251NoncentralRealIntegrandConstant d a alpha * weight m :=
         Finset.sum_le_sum hnoncentralPointwise
-      _ = noncentralConstant *
+      _ = cmp89Eq251NoncentralRealIntegrandConstant d a alpha *
           (∑ m ∈ aliases.erase zeroAlias, weight m) := by
         rw [Finset.mul_sum]
-      _ ≤ noncentralConstant * (∑ m ∈ aliases, weight m) :=
+      _ ≤ cmp89Eq251NoncentralRealIntegrandConstant d a alpha *
+          (∑ m ∈ aliases, weight m) :=
         mul_le_mul_of_nonneg_left heraseWeight hconstantNonneg
-      _ = noncentralConstant *
+      _ = cmp89Eq251NoncentralRealIntegrandConstant d a alpha *
           cmp89Eq251CenteredMultidimensionalAliasSum
             d (L ^ j) (cmp89Eq251AliasSeriesExponent d alpha) := by
         rfl
@@ -127,7 +127,7 @@ theorem cmp89Eq251FiniteRealIntegrandSum_le_bound
       (L ^ j) hd halpha1
   have hnoncentral :
       (∑ m ∈ aliases.erase zeroAlias, integrand m) ≤
-        noncentralConstant *
+        cmp89Eq251NoncentralRealIntegrandConstant d a alpha *
           (∑' n : ℤ,
             cmp89Eq251OneDimensionalAliasWeight
               (cmp89Eq251AliasSeriesExponent d alpha) n) ^ d :=
@@ -141,7 +141,7 @@ theorem cmp89Eq251FiniteRealIntegrandSum_le_bound
     (∑ m ∈ aliases.erase zeroAlias, integrand m) +
         cmp89Eq251CentralRealIntegrand
           d L j mass a alpha p mu displacement ≤
-      noncentralConstant *
+      cmp89Eq251NoncentralRealIntegrandConstant d a alpha *
           (∑' n : ℤ,
             cmp89Eq251OneDimensionalAliasWeight
               (cmp89Eq251AliasSeriesExponent d alpha) n) ^ d +
@@ -152,7 +152,6 @@ theorem cmp89Eq251FiniteRealIntegrandSum_le_bound
           (∑' n : ℤ,
             cmp89Eq251OneDimensionalAliasWeight
               (cmp89Eq251AliasSeriesExponent d alpha) n) ^ d := by
-      rw [noncentralConstant]
       ac_rfl
 
 end
