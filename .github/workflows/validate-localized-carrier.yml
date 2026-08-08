@@ -27,7 +27,6 @@ env:
     cmp89-eq245-complex-sinc
     cmp89-eq245-sinc
     owner-weighted-neumann
-    owner-weighted-power-summability
 
 jobs:
   cmp89-eq251-expanded-alias-geometry:
