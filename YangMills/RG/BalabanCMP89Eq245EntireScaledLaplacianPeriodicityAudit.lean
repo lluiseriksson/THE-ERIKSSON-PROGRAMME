@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq245EntireScaledLaplacianPeriodicity
 
 /-!
-# Axiom audit for fine-lattice entire Laplacian periodicity
-
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and this result has not yet been verified by the compiler.
+# Axiom audit for cold-sealed fine-lattice entire Laplacian periodicity
 -/
 
 #print axioms YangMills.RG.cmp89Eq245EntireScaledDifference_invNat_add_int_aliasPeriod

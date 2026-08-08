@@ -30854,3 +30854,36 @@ extension, `B0`, window 15 and all terminal fields remain open. Counters stay
 Cached run `31281856879` passed first. Failed run `31281679586` records only
 the additive-order normalization in the negative wrap; it changed no
 statement, period, constant or hypothesis.
+
+## Addendum 656 (2026-08-08, **entire fine-Laplacian alias period GREEN; quotient transport open**)
+
+Exact source checkpoint `b38d7f1226fa68be399bea0f972fe3ddaf9bf040`
+passed cold GitHub Actions run
+[`31282931967`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31282931967)
+with workflow checkpoint `652019b0b9ccb3fdb1cc9bad2400a1a6f1660a15`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were
+both skipped. The focal ran from `23:00:43Z` to `23:18:05Z`, completed 8,447
+jobs, and the audit ended at `23:18:11Z`. Both stages exited zero. All three
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9029160130`, named
+`cmp89-fine-laplacian-periodicity-b38d7f1226fa68be399bea0f972fe3ddaf9bf040`,
+has GitHub digest
+`64e1b94abed0803fc324c88dd3512a89a1093af1c11de1dccb77360701fd2177`.
+The deterministic inner archive re-hashed on Windows to
+`8c92c8993e7bf8e2b42ca945bd60b9f0f234e6b7e165979ae52adf21cef6bf37`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+The module proves the literal `2*pi*N` period of the entire fine difference
+at `xi = 1/N`, of its opposite-momentum product, and of the complete fine
+Laplacian symbol. Together with Addendum 655, both constituents of the
+printed alias quotient now have concrete period producers.
+
+Specialization to `N=L^j`, the quotient and finite-sum transport, the
+unit-symbol `2*pi` period, complete denominator and displayed-integrand
+periodicity, transfer to the stabilized extension, `B0`, window 15 and all
+terminal fields remain open. Counters stay `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
+
+Cached run `31282807973` passed first. The brick required no failed compiler
+iteration and changed no statement after its source checkpoint.

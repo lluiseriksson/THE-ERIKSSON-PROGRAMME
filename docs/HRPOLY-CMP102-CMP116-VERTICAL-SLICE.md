@@ -6152,3 +6152,42 @@ Cached diagnostic run `31281856879` passed before the cold seal. Failed run
 `31281679586` preserves the sole mechanical repair: the negative wrap
 normalized `-z-period` versus `-period-z` by commutativity. The theorem
 statement, period, factor and hypotheses were unchanged.
+
+### Step 7.5bo entire fine-Laplacian alias period (SEALED; quotient transport open)
+
+Exact source checkpoint `b38d7f1226fa68be399bea0f972fe3ddaf9bf040`
+passed cold GitHub Actions run
+[`31282931967`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31282931967)
+with workflow checkpoint `652019b0b9ccb3fdb1cc9bad2400a1a6f1660a15`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `23:00:43Z` to `23:18:05Z`, completed
+8,447 jobs, and the audit ended at `23:18:11Z`. Focal and audit both exited
+zero. All three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9029160130`, named
+`cmp89-fine-laplacian-periodicity-b38d7f1226fa68be399bea0f972fe3ddaf9bf040`,
+has GitHub digest
+`64e1b94abed0803fc324c88dd3512a89a1093af1c11de1dccb77360701fd2177`.
+The deterministic inner archive re-hashed on Windows to
+`8c92c8993e7bf8e2b42ca945bd60b9f0f234e6b7e165979ae52adf21cef6bf37`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed brick derives the `2*pi*N` period of the entire scaled difference
+at the literal inverse spacing `xi = 1/N`, proves the matching
+opposite-momentum product, and lifts it coordinatewise to the complete fine
+Laplacian symbol including its mass term. The exponential cycle is inherited
+from the already sealed finite-average base; no period is postulated.
+
+The average and fine-Laplacian periods are now both produced, but their
+quotient has not yet been specialized to `N = L^j` or fed through the alias
+permutation. The unit Laplacian still needs its different `2*pi` period, and
+complete denominator/displayed-integrand periodicity plus transfer to the
+stabilized extension remain open. No `B0`, rate, window-15 attainment or
+terminal field is produced. Counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
+
+Cached diagnostic run `31282807973` passed before the cold seal. No failed
+Lean run was needed for this brick; its first compiler execution accepted
+the statement, scale and proof unchanged.

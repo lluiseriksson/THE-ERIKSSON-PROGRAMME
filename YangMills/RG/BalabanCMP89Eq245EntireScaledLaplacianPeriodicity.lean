@@ -8,8 +8,10 @@ import YangMills.RG.BalabanCMP89Eq245EntireAveragePeriodicity
 /-!
 # Alias-period invariance of the entire fine Laplacian
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and this result has not yet been verified by the compiler.
+Compiler verification: exact source checkpoint
+`b38d7f1226fa68be399bea0f972fe3ddaf9bf040`, cold GitHub Actions run
+`31282931967` (8,447 jobs; focal and three-declaration axiom audit exit zero;
+restore and save of `.lake/build` both skipped).
 
 At inverse integer spacing `xi = 1/N`, the entire difference and the
 opposite-momentum Laplacian pairing have exact coordinate period `2*pi*N`.
