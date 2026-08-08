@@ -5707,3 +5707,29 @@ three conservative strip budgets simultaneously. It does not choose a
 numerical radius, discharge the flowing `mass^2 <= 1` source condition,
 construct the complete complex integrand or physical `B0`, or attain window
 15. No terminal counter moves.
+
+### Step 7.5be assembled stabilized complex integrand (PRE-VALIDATION)
+
+The proposed producer transcribes the complete finite complex integrand under
+CMP89 (2.49), keeping the Holder and transport phases, the signed scaled
+difference, normalized averaging amplitude, unit-lattice symbol and every
+fine-alias denominator literal. It then constructs the removable extension
+with one common stabilized denominator:
+
+```text
+central bare numerator
+  + Delta_0 * sum_{m != 0} bareNumerator_m / Delta_m.
+```
+
+The equality with the printed rational expression is stated only on its
+original domain (`Delta^1`, the reduced denominator and every `Delta_m`
+nonzero). The stabilized expression itself does not require the two central
+nonvanishing assumptions. No bound or family of integrands is accepted as an
+input.
+
+This is the missing algebraic assembly before the strip estimate, not the
+strip estimate itself. Noncentral complex nonvanishing, the flowing
+`mass^2 <= 1` condition, the physical `B0`, contour shift,
+Fourier/physical-rate dictionary and window 15 remain open. No terminal field
+is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
