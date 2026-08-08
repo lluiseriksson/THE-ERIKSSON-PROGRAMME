@@ -5535,3 +5535,20 @@ the cold run above retired it. No stabilized-denominator lower bound, joint
 `B0`, contour shift, Fourier/physical rate dictionary or regional-Green
 estimate is proved. No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5ay alias-weighted opposite-pair vertical variation (PRE-VALIDATION)
+
+The source is present but its `.olean` has not yet been materialized and the
+result has not yet been compiler-verified. The proposed producer exposes the
+normalized coordinate-zone premise beneath the existing product strip bound,
+proves the literal CMP89 (2.51) product weight even under alias negation, and
+retains one such weight while varying the opposite-momentum averaging pair to
+its real slice.
+
+The construction does **not** assert that the half-open centered alias set is
+stable under negation: the opposite factor is estimated at `(-p,-m)` only
+after the coordinate-zone premise has been separated from fibre membership.
+No quotient variation, stabilized-denominator lower bound, joint `B0`, contour
+shift, Fourier/physical rate dictionary or regional-Green estimate is claimed.
+No terminal field is discharged: counters remain `20/41`, `TermSource = 0`,
+and window 15 compatible but unattained.

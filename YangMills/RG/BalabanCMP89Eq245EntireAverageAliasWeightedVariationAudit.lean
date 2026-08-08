@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP89Eq245EntireAverageAliasWeightedVariation
+
+/-! PRE-VALIDATION: source is present, its `.olean` has not yet been
+materialized, and these oracle results are not yet compiler-verified. -/
+
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageAmplitude_scaled_alias_le_of_zone
+#print axioms YangMills.RG.cmp89Eq251MultidimensionalAliasWeight_neg
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageAmplitude_neg_realSlice_alias_le
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAveragePair_alias_sub_realSlice_le
