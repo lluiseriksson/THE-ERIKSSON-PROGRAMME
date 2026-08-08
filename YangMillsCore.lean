@@ -2023,3 +2023,4 @@ import YangMills.RG.BalabanCMP89Eq251ExpandedDifferenceLowerAudit
 import YangMills.RG.BalabanCMP89Eq251AliasAmplitudeUpperAudit
 import YangMills.RG.BalabanCMP89Eq251NoncentralLaplacianRatioAudit
 import YangMills.RG.BalabanCMP89Eq251HolderPhaseAudit
+import YangMills.RG.BalabanCMP89Eq251AliasWeightRedistributionAudit
