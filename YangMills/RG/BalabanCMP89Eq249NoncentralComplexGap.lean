@@ -156,7 +156,6 @@ theorem half_momentum_gap_le_norm_cmp89Eq245EntireScaledLaplacianSymbol_noncentr
       funext mu
       simp [cmp89Eq245ComplexMomentumRealSlice, hreal mu, q]
     rw [hzslice, cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq]
-    rfl
   have hvariationRaw :=
     norm_cmp89Eq245EntireScaledLaplacianSymbol_sub_realSlice_le
       hxi hxi1 hrho himag
