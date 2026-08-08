@@ -113,7 +113,7 @@ theorem abs_sinc_half_add_alias_le_six_mul_weight
         (by positivity : 0 < 1 + 2 * Real.pi * |(m : ℝ)|)).2
       nlinarith [Real.pi_gt_three]
     rw [show p + 2 * Real.pi * (m : ℝ) = q by rfl,
-      cmp89Eq251OneDimensionalAliasWeight, Real.one_rpow]
+      cmp89Eq251OneDimensionalAliasWeight, Real.rpow_one]
     exact hsinc.trans (by simpa [div_eq_mul_inv] using hdecay)
 
 /-- Every printed one-coordinate averaging factor is bounded by the literal
