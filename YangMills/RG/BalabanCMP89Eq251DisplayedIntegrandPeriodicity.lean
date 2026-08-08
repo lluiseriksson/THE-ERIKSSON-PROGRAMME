@@ -66,8 +66,8 @@ theorem cmp89Eq251ComplexBareMomentumFactor_coordinateAliasPeriodShift
         (cmp89Eq245EntireScaledDifference_invNat_add_int_aliasPeriod
           hN (-1 : ℤ) (-q nu))
     · simp [cmp89Eq251CoordinateAliasPeriodShift, hmu]
-  rw [cmp89Eq251ComplexBareMomentumFactor,
-    exp_I_cmp89Eq251EntirePhase_coordinateAliasPeriodShift
+  unfold cmp89Eq251ComplexBareMomentumFactor
+  rw [exp_I_cmp89Eq251EntirePhase_coordinateAliasPeriodShift
       N nu q holderU,
     exp_I_cmp89Eq251EntirePhase_coordinateAliasPeriodShift
       N nu q transportU,
