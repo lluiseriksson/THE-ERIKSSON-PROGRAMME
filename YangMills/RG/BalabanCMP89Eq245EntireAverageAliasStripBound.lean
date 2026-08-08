@@ -48,18 +48,11 @@ theorem cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference
     cmp89Eq245EntireAverageBase N z - 1 =
       ((N : ℝ)⁻¹ : ℂ) *
         cmp89Eq245EntireScaledDifference (N : ℝ)⁻¹ z := by
-  have hNreal : (N : ℝ) ≠ 0 := by exact_mod_cast Nat.ne_of_gt hN
-  have hxi : (N : ℝ)⁻¹ ≠ 0 := inv_ne_zero hNreal
-  have hxiC : (((N : ℝ)⁻¹ : ℂ) : ℂ) ≠ 0 :=
-    Complex.ofReal_ne_zero.mpr hxi
+  have hNcomplex : (N : ℂ) ≠ 0 := by exact_mod_cast Nat.ne_of_gt hN
+  have hinv : (((N : ℝ)⁻¹ : ℝ) : ℂ) = (N : ℂ)⁻¹ := by push_cast
   rw [cmp89Eq245EntireAverageBase, cmp89Eq245EntireScaledDifference]
-  have hexp :
-      Complex.exp (Complex.I * (-((N : ℂ)⁻¹ * z))) =
-        Complex.exp (Complex.I * (-(((N : ℝ)⁻¹ : ℂ) * z))) := by
-    congr 1
-    push_cast
-  rw [hexp]
-  field_simp [hxiC]
+  rw [hinv]
+  field_simp [hNcomplex]
 
 /-- The geometric base varies vertically with the normalized factor `N⁻¹`
 still visible. -/
@@ -85,10 +78,18 @@ theorem norm_cmp89Eq245EntireAverageBase_sub_realSlice_le
         (xi : ℂ) *
           (cmp89Eq245EntireScaledDifference xi z -
             cmp89Eq245EntireScaledDifference xi (z.re : ℂ)) := by
-    rw [cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference hN,
-      cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference hN]
-    dsimp [xi]
-    ring
+    calc
+      cmp89Eq245EntireAverageBase N z -
+          cmp89Eq245EntireAverageBase N (z.re : ℂ) =
+        (cmp89Eq245EntireAverageBase N z - 1) -
+          (cmp89Eq245EntireAverageBase N (z.re : ℂ) - 1) := by ring
+      _ = (xi : ℂ) *
+          (cmp89Eq245EntireScaledDifference xi z -
+            cmp89Eq245EntireScaledDifference xi (z.re : ℂ)) := by
+        rw [cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference hN,
+          cmp89Eq245EntireAverageBase_sub_one_eq_inv_mul_scaledDifference hN]
+        dsimp [xi]
+        ring
   rw [heq, norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hxi]
   exact mul_le_mul_of_nonneg_left hdiff hxi.le
 
@@ -269,8 +270,30 @@ theorem norm_cmp89Eq245EntireAverageFactor_scaled_alias_le
               ‖cmp89Eq245EntireAverageBase N z - 1‖ *
               (6 * Real.pi) := by
             have hpi : 0 < 6 * Real.pi := mul_pos (by norm_num) Real.pi_pos
-            have := mul_le_mul_of_nonneg_right hden hpi.le
-            nlinarith [Real.exp_pos rho]
+            have hdenScaled :
+                (N : ℝ)⁻¹ * |q| ≤
+                  ‖cmp89Eq245EntireAverageBase N z - 1‖ *
+                    (6 * Real.pi) := by
+              have hmul := mul_le_mul_of_nonneg_right hden hpi.le
+              calc
+                (N : ℝ)⁻¹ * |q| =
+                    ((N : ℝ)⁻¹ * ((1 / (6 * Real.pi)) * |q|)) *
+                      (6 * Real.pi) := by
+                        field_simp [Real.pi_ne_zero]
+                        ring
+                _ ≤ ‖cmp89Eq245EntireAverageBase N z - 1‖ *
+                    (6 * Real.pi) := hmul
+            exact calc
+              (N : ℝ)⁻¹ * |q| *
+                  ‖cmp89Eq245EntireAverageBase N z ^ N - 1‖ ≤
+                (N : ℝ)⁻¹ * |q| * (Real.exp rho + 1) := by gcongr
+              _ ≤ (‖cmp89Eq245EntireAverageBase N z - 1‖ *
+                    (6 * Real.pi)) * (Real.exp rho + 1) := by
+                exact mul_le_mul_of_nonneg_right hdenScaled
+                  (by positivity)
+              _ = (Real.exp rho + 1) *
+                  ‖cmp89Eq245EntireAverageBase N z - 1‖ *
+                    (6 * Real.pi) := by ring
       simpa [div_eq_mul_inv, xi, mul_assoc, mul_left_comm, mul_comm] using hscale
     have hshiftAbs :
         |2 * Real.pi * (m : ℝ)| =
@@ -292,7 +315,13 @@ theorem norm_cmp89Eq245EntireAverageFactor_scaled_alias_le
             (1 + |2 * Real.pi * (m : ℝ)|) := by ring
     rw [hrhs]
     apply (div_le_div_iff₀ hqPos hwPos).2
-    nlinarith [Real.pi_pos, Real.exp_pos rho]
+    have hcoef : 0 ≤ 6 * Real.pi * (Real.exp rho + 1) := by positivity
+    calc
+      6 * Real.pi * (Real.exp rho + 1) *
+          (1 + |2 * Real.pi * (m : ℝ)|) ≤
+        (6 * Real.pi * (Real.exp rho + 1)) * (3 * |q|) :=
+          mul_le_mul_of_nonneg_left hweightDen hcoef
+      _ = 18 * Real.pi * (Real.exp rho + 1) * |q| := by ring
 
 /-- Product-level alias-weighted strip bound, uniform in the averaging scale
 and with no reciprocal-fibre cardinality. -/
