@@ -6,10 +6,14 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251HolderPhase
 
 /-!
-# PRE-VALIDATION: alias-weight redistribution in CMP89 (2.51)
+# Alias-weight redistribution in CMP89 (2.51)
 
-The source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold GitHub Actions run `31237236126` compiler-verified source checkpoint
+`351270d9465fe5c9fd934753ae73044cdd6c6b03` with workflow checkpoint
+`e58aa11b3531ebecf5c9d5c1b5f5e3f1029e0894`. Both restore and save of
+`.lake/build` were skipped; the warning-free focal and audit exited zero, the
+build closed at 3288 jobs, and all five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP89 printed p. 586 turns the noncentral factor
 

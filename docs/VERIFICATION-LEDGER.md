@@ -29529,3 +29529,36 @@ is hidden. This is one factor of the printed integrand, not the full (2.51)
 comparison. The residual alias-product geometry, analytic strip and physical
 transport remain open. No terminal field is discharged: the counters remain
 exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 617 (2026-08-08, **CMP89 noncentral alias redistribution GREEN; physical integrand assembly open; 20/41 unchanged**)
+
+Source checkpoint `351270d9465fe5c9fd934753ae73044cdd6c6b03` passed cold
+GitHub Actions run
+[`31237236126`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31237236126)
+under workflow checkpoint `e58aa11b3531ebecf5c9d5c1b5f5e3f1029e0894`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T03:29:31Z` to `03:30:11Z`, exited zero
+with `Build completed successfully (3288 jobs).`, and the audit ended at
+`03:30:15Z` with exit zero. Both logs are warning-free and all five audited
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`51c35d0606cbddafebec77aad263c5d61d572f5553353782cc92f4b62dcd5258`;
+the downloaded artifact reproduced it locally. GitHub artifact `9015859150`
+has digest
+`ba3dea8636a7fe09fdef51dff336385abcb5f43f491095012e6ab3be7f4f0ef3`.
+
+The sealed endpoint proves the exact noncentral passage from
+`|p+l|^(alpha-1)` times the exponent-one coordinate product to the summable
+product weight with exponent `1+(1-alpha)/d`, paying the visible constant
+`3^(1-alpha)` once. It derives the needed coordinate estimate from the source
+central momentum interval and the Euclidean norm; no alias count or norm
+conversion is hidden. The central alias remains the separate `O(1)` branch
+printed in (2.51).
+
+The complete physical integrand has not yet been assembled from the derivative,
+amplitude, symbol-ratio, Holder and redistribution factors. The uniform
+analytic strip and physical transport also remain open. No terminal field is
+discharged: the counters remain exactly `20/41`, `TermSource = 0`, and window
+15 compatible but unattained. Cached run `31237103246` was diagnostic only;
+the cold run above alone retired PRE-VALIDATION.

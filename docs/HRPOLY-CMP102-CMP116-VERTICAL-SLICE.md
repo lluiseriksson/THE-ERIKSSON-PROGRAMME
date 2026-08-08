@@ -4721,3 +4721,48 @@ discharged, and the live counters remain exactly `20/41` and
 Diagnostic run `31236295605` preserved the sole finite-sum elaboration error.
 Cached run `31236414962` passed the repaired source; only the cold run above
 retired PRE-VALIDATION.
+
+### Step 7.5ad noncentral alias-weight redistribution for CMP89 (2.51) (SEALED; physical integrand assembly open)
+
+Exact source checkpoint `351270d9465fe5c9fd934753ae73044cdd6c6b03`
+passed cold GitHub Actions run
+[`31237236126`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31237236126)
+(workflow checkpoint `e58aa11b3531ebecf5c9d5c1b5f5e3f1029e0894`). The run
+recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T03:29:31Z` to `03:30:11Z`, the audit
+ended at `03:30:15Z`, both exited zero without warnings, and the build closed
+with `Build completed successfully (3288 jobs).` All five audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`51c35d0606cbddafebec77aad263c5d61d572f5553353782cc92f4b62dcd5258`,
+reproduced after downloading artifact `9015859150`; GitHub reports artifact
+digest `ba3dea8636a7fe09fdef51dff336385abcb5f43f491095012e6ab3be7f4f0ef3`.
+
+For every nonzero reciprocal alias `m`, central momentum `p`, positive
+dimension and `alpha <= 1`, the sealed producer proves the literal source
+redistribution
+
+```text
+|p+2*pi*m|_2^(alpha-1)
+  * product_mu (1+|2*pi*m_mu|)^(-1)
+<= 3^(1-alpha)
+  * product_mu (1+|2*pi*m_mu|)^(-(1+(1-alpha)/d)).
+```
+
+The proof first establishes the coordinate estimate
+`1+|2*pi*m_mu| <= 3*|p+2*pi*m|_2` and then splits the excess exponent uniformly
+over the `d` coordinates. No `max` norm, hidden dimension factor or alias
+cardinality enters. The central alias is intentionally excluded: it is the
+separate `O(1)` term in the printed (2.51).
+
+This closes the residual noncentral geometry, not the complete physical
+integrand. The next brick must assemble the scaled derivative factor,
+averaging amplitude, massive-symbol ratio, Holder quotient and this
+redistribution, with an explicit central/noncentral split. The uniform
+analytic strip and physical transport remain open. No physical `B0` or
+`delta0` is produced, window 15 remains unattained, no row 23--24 is
+discharged, and the counters remain exactly `20/41` and `TermSource = 0`.
+
+Cached diagnostic run `31237103246` passed but retained PRE-VALIDATION. Only
+the cold run above retired it.

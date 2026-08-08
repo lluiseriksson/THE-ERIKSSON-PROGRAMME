@@ -1,9 +1,10 @@
 import YangMills.RG.BalabanCMP89Eq251AliasWeightRedistribution
 
 /-!
-# PRE-VALIDATION audit: alias-weight redistribution in CMP89 (2.51)
+# Axiom audit: alias-weight redistribution in CMP89 (2.51)
 
-The source under audit has not yet been compiler-verified at this checkpoint.
+Cold GitHub Actions run `31237236126` verified these five declarations at
+source checkpoint `351270d9465fe5c9fd934753ae73044cdd6c6b03`.
 -/
 
 #print axioms YangMills.RG.abs_le_cmp89Eq251EuclideanNorm
