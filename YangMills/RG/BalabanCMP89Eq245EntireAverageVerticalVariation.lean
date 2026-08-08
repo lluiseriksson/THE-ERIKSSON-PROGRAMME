@@ -8,8 +8,11 @@ import YangMills.RG.BalabanCMP89Eq245EntireAverageStripGrowth
 /-!
 # Scale-uniform vertical variation of the entire CMP89 average
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
+Cold compiler evidence: exact source checkpoint
+`bd392f4113bdae819b9f095003607091ca30e25e`, GitHub Actions run
+`31251069131` (`COLD_MODE=true`, no project-cache restore/save), warning-free
+focal and audit exit zero, and five audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The contour argument compares a complex momentum `z` with the point on the
 real slice having the same real part.  This is materially sharper than an

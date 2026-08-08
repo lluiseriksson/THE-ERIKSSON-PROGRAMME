@@ -5251,3 +5251,36 @@ scale-uniform difference/derivative estimate; no complex denominator
 variation, radius, `B0`, contour shift or regional-Green transport is claimed.
 This is infrastructure below window 15: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5aq normalized entire-average vertical variation (SEALED; denominator variation open)
+
+Exact source checkpoint `bd392f4113bdae819b9f095003607091ca30e25e`
+passed cold GitHub Actions run
+[`31251069131`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31251069131)
+(workflow checkpoint `e5cd02e0bfb5b336664f8478c0180accba994d58`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+warning-free focal completed 3,277 jobs, focal and audit exited zero, and all
+five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+For a complex momentum `z`, the relevant comparison point is `(Re z : C)`,
+not an arbitrary second complex momentum. The real momentum and reciprocal
+alias then cancel before estimation. The exact exponent displacement is
+
+```text
+|(r/N) * (z - Re z)| = (r/N) * |Im z|,
+```
+
+and `r/N < 1`. Combining the exponential difference estimate with the
+normalized finite sum gives the scale-uniform vertical bound
+
+```text
+|u_N(z) - u_N(Re z)| <= rho * exp(rho)
+```
+
+whenever `|Im z| <= rho`. Neither `N`, the real part of `z`, nor an alias
+cardinality enters. The next endpoint telescopes this coordinatewise estimate
+through the `d`-dimensional amplitude and its opposite-momentum pairing before
+assembling the stabilized denominator. No denominator variation, radius,
+`B0`, contour shift or regional-Green transport is claimed. Counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

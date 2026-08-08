@@ -29999,3 +29999,32 @@ warning-free. No derivative or difference bound, complex denominator
 variation, strip radius, `B0`, contour shift or physical Green estimate is
 proved. No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 632 (2026-08-08, **CMP89 normalized vertical variation GREEN; denominator variation open**)
+
+Exact source checkpoint `bd392f4113bdae819b9f095003607091ca30e25e`
+passed cold GitHub Actions run
+[`31251069131`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31251069131)
+under workflow checkpoint `e5cd02e0bfb5b336664f8478c0180accba994d58`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The warning-free focal ran from `09:41:40Z` to `09:41:55Z`, completed
+3,277 jobs, and the audit ended at `09:42:00Z`; both exited zero. All five
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`1529d0355b8e1778851bd080b92e6bf530fd640ed6f5769c3dbd994f0e66de44`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9020033986` has digest
+`cab3fd06545c8fe019cefd9f2507eee50d7fe830581b9a736ce0a3af5ba991bd`.
+
+The mode exponent is now explicit and its displacement from the matching real
+point has exact norm `(r/N)*|Im z|`. The normalized finite sum therefore
+satisfies `|u_N(z)-u_N(Re z)| <= rho*exp(rho)` throughout the strip, uniformly
+in `N` and independently of the real momentum or reciprocal alias. The first
+diagnostic run `31250735067` preserves the purely mechanical `ring`/extra-goal
+failure; cached runs `31250856402` and `31250975487` were diagnostic only.
+
+No coordinate-product variation, stabilized-denominator variation, strip
+radius, `B0`, contour shift or physical Green estimate is proved. No terminal
+field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
