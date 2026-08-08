@@ -188,7 +188,8 @@ theorem cmp89Eq251CentralRealIntegrand_le_constant
           d (((L : ℝ) ^ j)⁻¹) (fun mu => p mu)‖ := rfl
       _ ≤ (18 * Real.pi) ^ d *
           cmp89Eq251MultidimensionalAliasWeight 1 zeroAlias := by
-        simpa only [zeroAlias, Nat.cast_pow] using h
+        simpa only [zeroAlias, Nat.cast_pow, Int.cast_zero, mul_zero,
+          add_zero] using h
       _ = (18 * Real.pi) ^ d := by rw [hweight, mul_one]
   have hratio := cmp89Eq249_unit_div_scaled_central_alias_le
     (d := d) (L := L) (j := j) hmass hp
@@ -229,21 +230,12 @@ theorem cmp89Eq251CentralRealIntegrand_le_constant
     (mul_nonneg (mul_nonneg hb1 hb2) hb3)
   have hproduct := mul_le_mul h1234 hratio hratioNonneg
     (mul_nonneg (mul_nonneg (mul_nonneg hb1 hb2) hb3) hb4)
-  change
-    ((((‖Complex.exp
-                (Complex.I * cmp89Eq251Phase p displacement) - 1‖ /
-              cmp89Eq251EuclideanNorm displacement ^ alpha) *
-            (1 / cmp89Eq250FullAliasDenominator d L j mass a p)) *
-          cmp89Eq245ScaledDifferenceNorm (((L : ℝ) ^ j)⁻¹) (p mu)) *
-        ‖cmp89Eq245ComplexAverageAmplitude
-          d (((L : ℝ) ^ j)⁻¹) p‖) *
-      (cmp89Eq249UnitLaplacianSymbol d mass p /
-        cmp89Eq245ScaledLaplacianSymbol
-          d (((L : ℝ) ^ j)⁻¹) mass p) ≤
-      cmp89Eq251CentralRealIntegrandConstant d a
-  exact hproduct.trans_eq (by
+  have hfinal := hproduct.trans_eq (by
     rw [cmp89Eq251CentralRealIntegrandConstant]
     ring)
+  rw [cmp89Eq251CentralRealIntegrand,
+    cmp89Eq251NoncentralRealIntegrand]
+  simpa only [Int.cast_zero, mul_zero, add_zero, one_div, mul_assoc] using hfinal
 
 end
 
