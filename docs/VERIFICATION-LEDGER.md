@@ -30422,3 +30422,42 @@ used. No contour shift, Fourier/physical rate dictionary, regional-Green
 estimate, physical `B0` or window-15 contraction is obtained. No terminal
 field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+## Addendum 645 (2026-08-08, **positive common stabilized radius GREEN; physical strip still open**)
+
+Exact source checkpoint `d88c6b1f58882c88189c9fe67e40c6f763faab84`
+passed cold GitHub Actions run
+[`31269362634`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31269362634)
+with workflow checkpoint `fa1cbd7d84ae6274407df92665f8c72de58810a3`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `17:26:57Z` to `17:43:10Z`, completed 8,441 jobs,
+and the audit ended at `17:43:16Z`; both exited zero. The three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9025340040` has GitHub digest
+`f958761060d9ccd708f72d5aa5d50af6eb453711dea757f3b3f0f445e1cd7c75`.
+The deterministic inner archive re-hashed on Windows to
+`da04f8268ced8357835a392213ae753731c1a0eb663bbc1223184e93fdf8a061`,
+identical to the hash recorded inside the cold runner.
+
+The sealed endpoint proves that for every `a > 0` there is one `rho > 0`
+satisfying simultaneously the amplitude budget, noncentral complex-gap
+condition and complete stabilized-denominator window already sealed in the
+tree. It is a non-vacuity theorem for the conservative scalar strip, not a
+numerical optimization and not a producer of the complete physical
+integrand.
+
+Failed diagnostic runs `31267905233` and `31268074801` preserve respectively
+the missing namespace/inline-eventual elaboration defects. Cached run
+`31268255692` passed the original proof. Cold run `31268391356` then passed
+that source but exposed three local linter notices; the source-only rewrite
+to `norm_num [amplitude]` changed no theorem statement, hypothesis or scalar
+constant. Cached run `31269236021` verified that repair before the final cold
+seal.
+
+The flowing source condition `mass^2 <= 1`, complete complex integrand,
+contour displacement, Fourier/physical rate dictionary, regional-Green
+estimate, physical `B0` and window-15 contraction remain open. Neither the
+sharper trigonometric gap nor the proposed factor-two opposite-pair variation
+is used. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

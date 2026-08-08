@@ -8,8 +8,11 @@ import YangMills.RG.BalabanCMP89Eq249CentralStabilizedComplexFloor
 /-!
 # Positive scalar radius for the stabilized CMP89 complex floor
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+Cold validation: exact source checkpoint
+`d88c6b1f58882c88189c9fe67e40c6f763faab84` passed GitHub Actions run
+`31269362634` with `.lake/build` restore and save both skipped. The focal
+completed 8,441 jobs and the three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 All three scalar strip budgets used below are continuous in `rho`. At
 `rho = 0`, the amplitude and noncentral-gap left sides vanish, as does the

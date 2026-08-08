@@ -5678,7 +5678,7 @@ Fourier/physical rate dictionary, regional-Green estimate, physical `B0` or
 window-15 contraction is claimed. No terminal field is discharged: counters
 remain `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
 
-### Step 7.5bd positive common stabilized radius (PRE-VALIDATION)
+### Step 7.5bd positive common stabilized radius (SEALED)
 
 The proposed producer proves continuity at zero of the complete stabilized
 variation majorant and its exact value zero there. Since the real floor is
@@ -5693,3 +5693,17 @@ the complete complex integrand, contour shift, Fourier/physical rate
 dictionary, physical `B0` and window-15 contraction remain open. No terminal
 field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+Exact source checkpoint `d88c6b1f58882c88189c9fe67e40c6f763faab84`
+passed cold GitHub Actions run `31269362634` with workflow checkpoint
+`fa1cbd7d84ae6274407df92665f8c72de58810a3`. Restore and save of
+`.lake/build` were both skipped. The focal completed 8,441 jobs; focal and
+audit exited zero, and all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`. The deterministic evidence archive
+has SHA-256 `da04f8268ced8357835a392213ae753731c1a0eb663bbc1223184e93fdf8a061`.
+
+The seal establishes existence of one positive scalar radius satisfying the
+three conservative strip budgets simultaneously. It does not choose a
+numerical radius, discharge the flowing `mass^2 <= 1` source condition,
+construct the complete complex integrand or physical `B0`, or attain window
+15. No terminal counter moves.
