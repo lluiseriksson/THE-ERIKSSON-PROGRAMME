@@ -58,12 +58,14 @@ theorem cmp89Eq249NoncentralComplexGapBudget_le_of_uniformRadiusCondition
     simpa [CMP89Eq249UniformNoncentralComplexRadiusCondition, eps, coeff]
       using hradius
   have hepsSlope : 4 * eps ≤ coeff * Real.pi / 2 := by
-    apply (mul_le_mul_right hpi).mp
-    calc
-      (4 * eps) * Real.pi ≤ eps * (4 * Real.pi + 4 * eps) := by
-        nlinarith [sq_nonneg eps]
-      _ ≤ coeff * Real.pi ^ 2 / 2 := hbase
-      _ = (coeff * Real.pi / 2) * Real.pi := by ring
+    have hmul :
+        (4 * eps) * Real.pi ≤ (coeff * Real.pi / 2) * Real.pi := by
+      calc
+        (4 * eps) * Real.pi ≤ eps * (4 * Real.pi + 4 * eps) := by
+          nlinarith [sq_nonneg eps]
+        _ ≤ coeff * Real.pi ^ 2 / 2 := hbase
+        _ = (coeff * Real.pi / 2) * Real.pi := by ring
+    exact le_of_mul_le_mul_right hmul hpi
   have hradiusPi : Real.pi ≤ radius := by simpa [radius] using hq
   have hincrement :
       4 * eps * (radius - Real.pi) ≤
