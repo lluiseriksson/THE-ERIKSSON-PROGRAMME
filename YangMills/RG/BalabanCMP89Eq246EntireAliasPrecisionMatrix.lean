@@ -138,7 +138,7 @@ theorem differentiable_cmp89Eq246EntireAliasPrecisionMatrix_entry
   · simpa only [cmp89Eq246EntireAliasPrecisionMatrix, hmn, if_pos] using
       hfine.add ((hcolumn.const_mul (a : ℂ)).mul hrow)
   · simpa only [cmp89Eq246EntireAliasPrecisionMatrix, hmn, if_neg,
-      zero_add] using
+      if_false, zero_add] using
       ((hcolumn.const_mul (a : ℂ)).mul hrow)
 
 /-- On the real slice, the holomorphic row factor is the complex conjugate of
