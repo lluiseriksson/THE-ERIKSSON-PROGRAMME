@@ -29501,3 +29501,31 @@ visual verification of that equation, followed by a Lean dictionary theorem,
 remain open.  No Lean/Lake/oracle was run and no compiler-verified claim is
 added.  The live counters remain exactly `20/41`, `TermSource = 0`, and window
 15 compatible but unattained.
+
+## Addendum 616 (2026-08-08, **CMP89 Euclidean Holder phase quotient GREEN; complete real integrand open; 20/41 unchanged**)
+
+Source checkpoint `52ca4c60f2269e322d00531ec89bd7dabbdbb91e` passed cold
+GitHub Actions run
+[`31236522003`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31236522003)
+under workflow checkpoint `adc9893a58e46f63ead8ec0eff87cbb5c39e46dd`.
+The run recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+`skipped`. The focal ran from `2026-08-08T03:09:44Z` to `03:10:10Z`, exited
+zero, and ended with `Build completed successfully (3287 jobs).`; the audit
+ended at `03:10:13Z` with exit zero. Both logs contain zero warnings. All five
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`9ad16f4b1a633c72c162937e1cc3a3ec78bfcfba1f39dc13a53d96ce5e9838cc`;
+the downloaded artifact reproduced that digest locally. The sealed module
+proves the literal Euclidean Holder quotient between CMP89 (2.49) and (2.51):
+
+```text
+|exp(i*q.r)-1| / |r|_2^alpha <= 2*|q|_2^alpha
+```
+
+for `0 <= alpha <= 1` and nonzero displacement, using Cauchy--Schwarz and a
+global phase estimate. No sup norm, dimension factor or small-phase premise
+is hidden. This is one factor of the printed integrand, not the full (2.51)
+comparison. The residual alias-product geometry, analytic strip and physical
+transport remain open. No terminal field is discharged: the counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.

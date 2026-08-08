@@ -7,10 +7,14 @@ import YangMills.RG.BalabanCMP89Eq251NoncentralLaplacianRatio
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
 
 /-!
-# PRE-VALIDATION: Holder phase factor in CMP89 (2.49)--(2.51)
+# Holder phase factor in CMP89 (2.49)--(2.51)
 
-The source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold GitHub Actions run `31236522003` compiler-verified source checkpoint
+`52ca4c60f2269e322d00531ec89bd7dabbdbb91e` with workflow checkpoint
+`adc9893a58e46f63ead8ec0eff87cbb5c39e46dd`. Both restore and save of
+`.lake/build` were skipped; the focal and audit exited zero, the build closed
+at 3287 jobs, and all five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP89 printed p. 585 extracts the factor
 

@@ -4678,3 +4678,46 @@ discharged, and the live counters stay exactly `20/41` and `TermSource = 0`.
 
 Cached diagnostic run `31234809751` passed the final source.  Only the cold run
 above retired PRE-VALIDATION.
+
+### Step 7.5ac Euclidean Holder phase quotient for CMP89 (2.49)--(2.51) (SEALED; real integrand comparison open)
+
+Exact source checkpoint `52ca4c60f2269e322d00531ec89bd7dabbdbb91e`
+passed cold GitHub Actions run
+[`31236522003`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31236522003)
+(workflow checkpoint `adc9893a58e46f63ead8ec0eff87cbb5c39e46dd`). The run
+recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T03:09:44Z` to `03:10:10Z`, the audit
+ended at `03:10:13Z`, both exited zero without warnings, and the build closed
+with `Build completed successfully (3287 jobs).` All five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`. The
+deterministic evidence archive has SHA-256
+`9ad16f4b1a633c72c162937e1cc3a3ec78bfcfba1f39dc13a53d96ce5e9838cc`,
+reproduced by the local downloaded artifact.
+
+The sealed producer uses the literal source Euclidean norm
+
+```text
+|q|_2 = sqrt (sum_mu q_mu^2)
+```
+
+and proves the Cauchy--Schwarz phase estimate together with the global scalar
+bound `|exp(i*t)-1| <= 2*|t|^alpha` for `0 <= alpha <= 1`. Consequently, for
+nonzero displacement `r`, it obtains the exact source-shaped quotient
+
+```text
+|exp(i*q.r)-1| / |r|_2^alpha <= 2*|q|_2^alpha.
+```
+
+No sup-norm replacement, hidden dimension factor or small-phase hypothesis is
+used. This closes only the Holder exponential-difference factor printed on
+CMP89 p. 585. The next source-specific frontier is the complete real
+integrand comparison in (2.51), in particular the explicit distribution of
+the residual `|p+l|^(alpha-1)` factor over the product alias weights. The
+uniform analytic strip and transport remain open. No physical `B0` or
+`delta0` is produced, window 15 remains unattained, no row 23--24 is
+discharged, and the live counters remain exactly `20/41` and
+`TermSource = 0`.
+
+Diagnostic run `31236295605` preserved the sole finite-sum elaboration error.
+Cached run `31236414962` passed the repaired source; only the cold run above
+retired PRE-VALIDATION.

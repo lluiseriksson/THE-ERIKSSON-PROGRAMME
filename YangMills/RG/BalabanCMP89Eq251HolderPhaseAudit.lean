@@ -1,9 +1,10 @@
 import YangMills.RG.BalabanCMP89Eq251HolderPhase
 
 /-!
-# PRE-VALIDATION audit: Holder phase factor in CMP89 (2.49)--(2.51)
+# Axiom audit: Holder phase factor in CMP89 (2.49)--(2.51)
 
-The source under audit has not yet been compiler-verified at this checkpoint.
+Cold GitHub Actions run `31236522003` verified these five declarations at
+source checkpoint `52ca4c60f2269e322d00531ec89bd7dabbdbb91e`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251EuclideanNorm_nonneg
