@@ -101,8 +101,12 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_eq
         Complex.exp
             (Complex.I *
               (-((↑((N : ℝ)⁻¹) : ℂ) * (q : ℂ)))) = x := by
-      rw [← hx_exp]
-      push_cast
+      calc
+        _ = Complex.exp
+            (Complex.I * (-(((N : ℝ)⁻¹ * q : ℝ) : ℂ))) := by
+              congr 1
+              push_cast
+        _ = x := hx_exp.symm
     rw [cmp89Eq245EntireAverageFactor,
       cmp89Eq245ComplexAverageFactor_eq_literal hxi hq,
       cmp89Eq245LiteralComplexAverageFactor,
@@ -110,7 +114,6 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_eq
       geom_sum_eq hx_ne_one N, hx_pow, hx_exp_mul]
     push_cast
     field_simp [hNreal, hNcomplex, sub_ne_zero.mpr hx_ne_one]
-    ring
 
 /-- Exact real-slice dictionary on every alias printed in CMP89 (2.45).
 The expanded-zone sinc lower bound supplies the nonvanishing needed to use
