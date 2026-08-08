@@ -6021,3 +6021,49 @@ Cached diagnostic run `31279345615` passed before the cold seal. Failed runs
 dependent-membership rewrite, subtype-projection normalization, and misplaced
 `else` repairs. None changed the representative set, cycle, constant or
 hypothesis.
+
+### Step 7.5bl centered reciprocal-alias vector cycle (SEALED; physical factor transport open)
+
+Exact source checkpoint `9eafb8a3ef443dd33aea42a85a68d424f3500022`
+passed cold GitHub Actions run
+[`31280050123`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31280050123)
+with workflow checkpoint `f5cd0b41122a929fc8dd328cc0f4bb315d7a03ca`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. Dependency materialization ran from `21:45:11Z` to
+`21:46:41Z`; the focal ran from `21:46:41Z` to `21:47:00Z`, completed 3,279
+jobs, and the audit ended at `21:47:03Z`. Focal and audit both exited zero.
+All seven audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9028167606`, named
+`cmp89-centered-alias-vector-cycle-9eafb8a3ef443dd33aea42a85a68d424f3500022`,
+has GitHub digest
+`dc99ebab2efdba73580f3bb94480c187700b84862adaf06ffe379de00c3de752`.
+The deterministic inner archive re-hashed on Windows to
+`77d581fb085d64469092051c5f9b836bbca68e133d3c436c2bb16cf1418b10d7`,
+identical to the hash recorded by the cold runner; all 13 entries of its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed brick identifies the printed `d`-coordinate alias fibre with the
+dependent product of the scalar centered fibres and conjugates the already
+sealed scalar cycle into a permutation of that literal finite vector fibre.
+The chosen coordinate advances by one with the wrap by `N` still explicit;
+every other coordinate is fixed. A generic `Equiv.sum_comp` endpoint then
+reindexes finite sums over the fibre without postulating pointwise `2*pi`
+periodicity of one alias term.
+
+This is algebraic reindexing only. The averaging amplitude, fine and unit
+Laplacians, denominator and endpoint phases still require transport under the
+physical shift, and the central/noncentral split means global periodicity of
+the stabilized extension is not inferred from the permutation alone. The
+safe route remains: prove periodicity of the displayed integrand on its
+non-singular domain, then use its sealed equality with the stabilized
+extension at both boundary points. No `B0`, physical rate, window-15
+attainment or terminal field is produced. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31279938081` passed before the cold seal. Failed run
+`31279799675` preserves the sole elaboration repair: subtype membership had
+to be changed definitionally to the literal `piFinset` before applying
+`Fintype.mem_piFinset`. The representative set, permutation, sum theorem and
+hypotheses were unchanged.

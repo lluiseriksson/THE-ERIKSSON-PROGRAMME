@@ -30741,3 +30741,43 @@ attain window 15, and discharges no terminal field. Counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained. Cached diagnostic
 run `31279345615` passed before the cold seal; four earlier failed runs retain
 the purely elaborational repairs without changing the statement or data.
+
+## Addendum 653 (2026-08-08, **centered alias-vector reindexing GREEN; physical factor transport open**)
+
+Exact source checkpoint `9eafb8a3ef443dd33aea42a85a68d424f3500022`
+passed cold GitHub Actions run
+[`31280050123`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31280050123)
+with workflow checkpoint `f5cd0b41122a929fc8dd328cc0f4bb315d7a03ca`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `21:45:11Z` to `21:46:41Z`; the
+focal ran from `21:46:41Z` to `21:47:00Z`, completed 3,279 jobs, and the audit
+ended at `21:47:03Z`. Focal and audit both exited zero. All seven audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9028167606`, named
+`cmp89-centered-alias-vector-cycle-9eafb8a3ef443dd33aea42a85a68d424f3500022`,
+has GitHub digest
+`dc99ebab2efdba73580f3bb94480c187700b84862adaf06ffe379de00c3de752`.
+The deterministic inner archive re-hashed on Windows to
+`77d581fb085d64469092051c5f9b836bbca68e133d3c436c2bb16cf1418b10d7`,
+identical to the cold-run hash; all 13 manifest entries re-hashed exactly.
+
+The module constructs an explicit equivalence from the printed centered
+alias-vector subtype to the product of scalar alias subtypes. It cycles one
+chosen coordinate with the already sealed scalar permutation, fixes all
+other coordinates, retains the literal wrap by `N`, and proves the resulting
+finite-sum reindexing by `Equiv.sum_comp`. Thus the physical `2*pi` boundary
+shift now has a genuine permutation of its finite alias fibre; no termwise
+physical periodicity is assumed.
+
+Transport of the average, Laplacian, denominator and phase factors remains
+open. In particular, the singled-out central branch is not preserved
+pointwise, so this brick does not claim global periodicity of the stabilized
+integrand. The displayed/stabilized equality must be used on a non-singular
+domain after the displayed finite sum is transported. No `B0`, window-15
+producer or terminal field is discharged. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31279938081` passed first. Failed run `31279799675`
+records the definitional membership repair from the named vector fibre to the
+literal `piFinset`; no statement, alias data or hypothesis changed.

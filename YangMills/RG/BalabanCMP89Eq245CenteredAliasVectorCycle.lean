@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq245CenteredAliasCycle
 
 /-!
-# PRE-VALIDATION: centered CMP89 alias-vector cycle
+# Cold-sealed centered CMP89 alias-vector cycle
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`9eafb8a3ef443dd33aea42a85a68d424f3500022` by cold GitHub Actions run
+`31280050123`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 3,279 jobs, the audit exited zero, and all seven audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.45) sums over a Cartesian product of centered reciprocal-alias
 fibres.  The scalar cycle is already cold-sealed.  This module lifts it to a

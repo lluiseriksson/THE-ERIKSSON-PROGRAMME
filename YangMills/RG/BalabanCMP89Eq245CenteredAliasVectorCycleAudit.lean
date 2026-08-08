@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq245CenteredAliasVectorCycle
 
 /-!
-# PRE-VALIDATION: axiom audit for the centered alias-vector cycle
-
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+# Axiom audit for the cold-sealed centered alias-vector cycle
 -/
 
 #print axioms YangMills.RG.cmp89Eq245CenteredAliasVector_coordinate_mem
