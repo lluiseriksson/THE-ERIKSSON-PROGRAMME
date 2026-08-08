@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq214PhysicalContourR3Source
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.r3RealSource
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.norm_innerWeight_eq_exp_sum_r3RealSource
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.dotProduct_r3RealSource_self_le_l2_opNorm_sq

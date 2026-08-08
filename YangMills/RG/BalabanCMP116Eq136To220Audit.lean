@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP116Eq136To220
+
+#print axioms YangMills.RG.cmp116Eq136ResidualMajorant
+#print axioms YangMills.RG.cmp116Eq220ResidualDomainWeight
+#print axioms YangMills.RG.cmp116Eq218TauAbsSolved_mul_eq136ResidualMajorant
+#print axioms YangMills.RG.cmp116Eq136_bound_mul_tauAbsSolved_le_eq220ResidualDomainWeight
+#print axioms YangMills.RG.cmp116Eq136_centeredContour_residual_le
+#print axioms YangMills.RG.cmp116Eq220_physicalTauPotential_le_localized_of_eq136
+#print axioms YangMills.RG.cmp116Eq136_rootedResidualResummation
+#print axioms YangMills.RG.cmp116Eq220_residualDomainWeight_sum_le_localVolume

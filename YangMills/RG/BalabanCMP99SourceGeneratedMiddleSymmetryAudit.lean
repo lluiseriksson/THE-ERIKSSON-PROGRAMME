@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedMiddleSymmetry
+
+#print axioms YangMills.RG.cmp99SourceTowerCoarseCovarianceMiddle_isSymmetric
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalGreen_isSymmetric
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalCoarseCovarianceMiddle_isSymmetric
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalCoarseCovarianceMiddle_adjoint_eq

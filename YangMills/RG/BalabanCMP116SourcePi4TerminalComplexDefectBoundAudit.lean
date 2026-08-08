@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP116SourcePi4TerminalComplexDefectBound
+
+#print axioms YangMills.RG.cmp116SourcePi4ComplexDefectLayerAmplitude
+#print axioms YangMills.RG.norm_cmp116SourcePi4TerminalComplexDefectLayer_apply_le
+#print axioms YangMills.RG.norm_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_sub_one_apply_le
+#print axioms YangMills.RG.norm_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_sub_one_apply_le'
+#print axioms YangMills.RG.linfty_opNorm_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_sub_one_le

@@ -1,0 +1,4 @@
+import YangMills.RG.NearLogSecondDerivativeBound
+
+#print axioms
+  YangMills.RG.norm_iteratedFDeriv_two_nearLog_le_secondDerivativeBudget

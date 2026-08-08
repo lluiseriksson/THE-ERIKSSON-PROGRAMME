@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalCoarseCovariance
+
+open YangMills.RG
+
+#print axioms cmp99SourceGeneratedPhysicalCoarseCovarianceMiddle
+#print axioms isCoerciveCLM_cmp99SourceGeneratedPhysicalCoarseCovarianceMiddle
+#print axioms cmp99SourceGeneratedPhysicalCoarseCovariance
+#print axioms cmp99SourceGeneratedPhysicalCoarseCovariance_comp_middle
+#print axioms cmp99SourceGeneratedPhysicalCoarseCovariance_middle_comp

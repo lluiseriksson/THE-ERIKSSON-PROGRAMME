@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SectionCCovarianceDifference
+
+#print axioms YangMills.RG.cmp99SectionCCovarianceDifference
+#print axioms YangMills.RG.cmp99SectionCCovarianceDifference_apply
+#print axioms YangMills.RG.cmp99LocalizedPhysicalPrecision_sub_eq_projectionFormula
+#print axioms YangMills.RG.cmp99SectionCCovarianceDifference_eq_resolventProduct
+#print axioms YangMills.RG.cmp99SectionCCovarianceDifference_self

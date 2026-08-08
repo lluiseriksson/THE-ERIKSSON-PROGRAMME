@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq226ScalarDictionaries
+
+#print axioms YangMills.RG.cmp116Eq226PBondPenalty_eq_of_sourceDictionary
+#print axioms YangMills.RG.cmp116Eq226GapPenalty_eq_of_sourceDictionary
+#print axioms YangMills.RG.cmp116Eq226GaussianExponent_le_of_sourceDictionary

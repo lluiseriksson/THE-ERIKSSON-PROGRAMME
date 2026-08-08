@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP89Eq245EntireAverageAmplitudeVariation
+
+#print axioms YangMills.RG.norm_fin_prod_sub_prod_le_card_mul
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageAmplitude_sub_realSlice_le
+#print axioms YangMills.RG.cmp89Eq245ComplexMomentumRealSlice_neg
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageAmplitude_pair_sub_realSlice_le

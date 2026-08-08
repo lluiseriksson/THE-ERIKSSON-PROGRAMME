@@ -1,0 +1,160 @@
+# Colab hRpoly validation runbook — official toolchain bootstrap v7
+
+This is validation infrastructure, not a mathematical checkpoint.  Windows is
+used only for Git and lightweight hash checks.  Lean, Lake and oracle commands
+run only in a new Colab Pro+ CPU/high-RAM runtime with no GPU.
+
+## Immutable roles
+
+- `SOURCE_CHECKPOINT_A` contains exactly the 27 source paths derived from
+  overlay v4, plus the compiler-discovered import-order repair within four of
+  those paths.  At A, eight module headers retained the mandatory
+  `PRE-VALIDATION` warning; theorem statements, constants and hypotheses were
+  unchanged.  A is the only source object compiled by the recorded run.  A
+  later documentation-only checkpoint replaces those warnings with the
+  immutable validation anchor below.
+- The driver checkpoint is a descendant of A.  Its A-to-driver source-neutral
+  diff contains exactly this document and `scripts/colab_hrpoly_validation_v6.py`.
+- Base before A: `072b0955a1ee524fefa0826da4d34a432e69e6df`.
+- Source A: `134a21f0dd9f82defb4de6334853031674dd285f`.
+- Repository: `https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git`.
+- Toolchain: `leanprover/lean4:v4.29.0-rc6`, official Linux x86_64 asset
+  `lean-4.29.0-rc6-linux.tar.zst`, SHA-256
+  `bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`.
+- Mathlib: `07642720480157414db592fa85b626dafb71355b`.
+
+The runner contains the 27 path/SHA-256 pairs.  It rejects any difference
+between the base-to-A path set and that manifest, any changed byte, any dirty
+source checkout, any unexpected A-to-driver path, or a driver for which A is
+not an ancestor.
+
+V7 supersedes v6's assumption that `lake` is preinstalled, manual
+`files.upload()` and all `drive.mount` runbooks for this
+campaign.  It does not supersede their retained failure evidence.  It uses no
+tags, Drive, interactive upload or credentials.  It downloads the official
+Lean release by fixed URL and digest, may install the ephemeral `zstd` utility,
+and never changes the mathematical source checkpoint.
+
+The first v7 execution against source `1f86b3c4...` stopped after
+`CombinedKernelSupport` at the audit parser boundary: Lean rejected an
+`import` placed after the mandatory PRE-VALIDATION module docstring.  Retained
+evidence archive SHA-256:
+`1DBCE83034CC10E1F24B8D2308F0B9743EADF2D5B65C86BB9F03F486954D9376`
+(36,239 bytes).  Source `134a21f0...` changes only the import order in the
+four pending audit files; no theorem, constant or hypothesis changed.
+
+## Closed intermediate-brick run
+
+The v7 run from driver `166fd62e8b826edbae78c3756da40f51bfbfd2c3`
+materialized source A in one fresh Colab Pro+ CPU/high-RAM clone.  All fourteen
+queue entries exited zero: the dependency gate, Mathlib pin, focal source and
+audit targets through the partial constructor, `YangMillsCore`, and the full
+oracle.  Under the refined reproducibility policy this is an intermediate
+brick, so one fresh clone is sufficient; the second checkout was intentionally
+stopped before mathematical execution.
+
+Downloaded evidence:
+
+```text
+archive: hrpoly-v7-intermediate-1fe3b3ff9b5e4bc4a1d1e23396692ee4.tar.gz
+bytes:   229500
+sha256:  589769BC64D24493B0F68F5B0458DB017258919B32C265D8C83FA327487233EC
+runtime: Colab Pro+ CPU/high RAM, 50.99 GiB, no GPU
+open:    2026-08-01T16:04:44.076269+00:00
+closed:  2026-08-01T20:08:19.1082864+00:00
+```
+
+The runtime was disconnected and deleted after the archive was downloaded and
+its Windows SHA-256 was checked.  This closes the validation request; the
+instructions below are retained as the reproducible procedure, not as a live
+queue.
+
+## Open and bootstrap exactly once
+
+1. Open a new Colab Pro+ runtime: CPU, high RAM, no GPU.  Record UTC opening
+   time.  Do not leave it idle.
+2. Substitute the published full B SHA below.  Execute this cell exactly once:
+
+```python
+from pathlib import Path
+import subprocess
+
+REPO = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
+DRIVER_CHECKPOINT = "<PUBLISHED_FULL_SHA_DRIVER>"
+DRIVER = Path("/content/hrpoly-driver")
+
+assert not DRIVER.exists()
+subprocess.run(["git", "clone", "--no-tags", REPO, str(DRIVER)], check=True)
+subprocess.run(
+    ["git", "-C", str(DRIVER), "checkout", "--detach", DRIVER_CHECKPOINT],
+    check=True,
+)
+subprocess.run(
+    [
+        "python3",
+        str(DRIVER / "scripts/colab_hrpoly_validation_v6.py"),
+        "--driver-root",
+        str(DRIVER),
+        "--driver-checkpoint",
+        DRIVER_CHECKPOINT,
+        "--repo-url",
+        REPO,
+    ],
+    check=False,
+)
+```
+
+Do not re-run the cell after a disconnect or UI stall.  Inspect visible output
+and `/content/HRPOLY_V7_QUEUE_STARTED`.  The runner's exclusive sentinel makes
+a second queue start fail before heavy work.
+
+The runner performs, in order:
+
+1. Driver HEAD, A-as-ancestor, and A-to-driver transport-only diff gate.
+2. Portable timing preflight (`true` returns 0, `exit 23` returns 23) and four
+   sentinel states: absent, exclusive creation, identity match, duplicate
+   rejection.
+3. Download and SHA-256 verification of the official Lean 4.29.0-rc6 asset;
+   ephemeral `zstd` installation when needed; extraction; `lean --version`,
+   `lake --version`, and executable hashes recorded.
+4. Two independent fresh HTTPS clones, `/content/hrpoly-source-a` and
+   `/content/hrpoly-source-b`, each detached at A.
+5. Exact 27-file path and SHA-256 gate, toolchain gate, clean-tree gate.
+6. Independent dependency/cache materialization in each clone.  A failed
+   official cache fetch is recorded and falls back to source compilation;
+   `lean-toolchain`, `lake-manifest.json`, and Mathlib's exact SHA are gated.
+7. The stop-on-first-error queue in each clone:
+   `RestrictedVisitedTransferPowers`; Mathlib pin; OptimalInteractionAlpha and
+   audit; CombinedKernelSupport and audit; CombinedHessianSupport and audit;
+   CombinedTerminalEq143 and audit; partial TermSource constructor and audit;
+   `YangMillsCore`; full `oracle_check.lean`.
+8. Audit parsing: every printed axiom set must be a subset of
+   `{propext, Classical.choice, Quot.sound}` and every audit must emit at least
+   one `#print axioms` result.
+9. Equality of the two deterministic semantic-result SHA-256 hashes.  Raw
+   logs and their own hashes are retained separately and are not hidden by the
+   normalized comparison.
+
+The two source clones may share only the verified toolchain.  They do not share
+`.lake`, build outputs, logs or working state.
+
+## Evidence download and shutdown
+
+At green completion or first error the runner prints:
+
+- `FINAL_STATUS`
+- `EVIDENCE_ARCHIVE`
+- `EVIDENCE_BYTES`
+- `EVIDENCE_SHA256`
+- `CONNECTED_RUN_SECONDS`
+
+It creates the archive under `/content`.  In a second, evidence-only cell call
+`google.colab.files.download(<printed archive path>)` once.  If browser download
+fails, retain the full visible stdout and report the literal error; do not
+repeat the builds.  Verify the downloaded SHA-256 on Windows using a
+lightweight hash command.  Publication after that is transport only and does
+not determine the mathematical verdict.
+
+Immediately disconnect and delete the runtime after the download attempt or
+the first error.  `CombinedTerminalEq143`, its audit and the constructor remain
+unverified unless both fresh source clones reach and pass them.

@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalCompleteDomainFTCReassembly
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalNeumannDomainFTCContribution_eq_zero_of_not_localizationDomain
+#print axioms YangMills.RG.cmp102Eq80SourcePi4PhysicalPotentialDifference_eq_sum_completeDomainFTC_of_source

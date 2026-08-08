@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP98PhysicalUbarLieCoordinate
+
+#print axioms YangMills.RG.cmp98UbarLogAverage_physicalLine_eq_specialUnitaryExponent
+#print axioms YangMills.RG.cmp98PhysicalUbarLogAverageSuLie_toMatrix
+#print axioms YangMills.RG.cmp98PhysicalUbarLogAverageLieCoord_toMatrix

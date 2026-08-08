@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102PhysicalCorrectionNorm
+
+#print axioms YangMills.RG.norm_matrixFrobEuclid_le_card_mul_l2_opNorm
+#print axioms YangMills.RG.norm_lieCoord_le_card_mul_norm_toMatrix
+#print axioms YangMills.RG.norm_apply_le_cmp102PhysicalCorrectionSupNorm
+#print axioms YangMills.RG.cmp102PhysicalCorrectionSupNorm_le_sourceBudget

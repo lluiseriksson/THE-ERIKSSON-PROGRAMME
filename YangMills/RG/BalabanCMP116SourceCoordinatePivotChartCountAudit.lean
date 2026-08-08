@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116SourceCoordinatePivotChartCount
+
+#print axioms YangMills.RG.cmp99SourcePi4UnitChartChosenCenter
+#print axioms YangMills.RG.cmp99SourcePi4UnitChartChosenCenter_domain
+#print axioms YangMills.RG.cmp99SourcePi4UnitChartChosenCenter_injective
+#print axioms YangMills.RG.cmp99SourcePi4UnitChart_domain_injective
+#print axioms YangMills.RG.cmp116SourcePi4CoordinatePivotCharts
+#print axioms YangMills.RG.cmp99SourcePi4UnitChartChosenCenter_mem_pivotCollar
+#print axioms YangMills.RG.card_cmp116SourcePi4CoordinatePivotCharts_le

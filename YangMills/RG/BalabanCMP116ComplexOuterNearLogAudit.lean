@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116ComplexOuterNearLog
+
+#print axioms YangMills.RG.complexified_neg_symmetricRealPart_eq_fourTerms
+#print axioms YangMills.RG.trace_complexified_neg_symmetricRealPart_pow_succ_eq_fourTerms
+#print axioms YangMills.RG.Matrix.trace_entrywiseConj
+#print axioms YangMills.RG.norm_trace_complexified_neg_symmetricRealPart_pow_succ_le
+#print axioms YangMills.RG.integral_exp_re_complexQuadratic_standardGaussianPi_le_exp_traceNearLog
+#print axioms YangMills.RG.integral_exp_re_complexQuadratic_standardGaussianPi_le_of_tracePowers

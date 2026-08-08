@@ -771,6 +771,24 @@ hard mathematical block before literal physical `hdom`, (2.26), `hraw`, and
 `hRpoly`.  It must not be replaced by `SmallBackgroundPerturbation`, a supplied
 Wilson Hessian, or a renamed kernel-bound hypothesis.
 
+## 4.10 Combined equation-(1.36) composition checkpoint (2026-08-01)
+
+The direct equation-(80) residual and the native CMP109 Lemma-1 residual now
+feed one canonical combined ledger under the literal source cutoff carrier.
+The terminal residual still sees `P_Z0 B`; source small-field control is
+transported through that extra projection by a sup-norm monotonicity theorem,
+not by asserting that every native bond stencil lies inside `Z0`.
+
+The endpoint
+`abs_cmp116Eq80Lemma1CombinedPhysicalResidual_le_eq136` derives the direct
+bound internally and consumes only the named
+`CMP109Lemma1Eq136SourceCertificate.bound` on the native branch. Thus the
+mixed-sector composition is closed, while the actual proof of CMP109 Lemma 1
+remains the dominant source-facing analytic obligation. The next brick is a
+public partial centered-conditioned term-source constructor that installs
+this field together with the already-derived combined geometry, rooted
+residual, volume budget, and equation-(1.43) fields.
+
 ## 5. Honest difficulty + Clay scope
 
 P1 is tractable (combinatorics).  **P3 and P4 are the genuine

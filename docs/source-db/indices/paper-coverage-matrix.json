@@ -25,6 +25,17 @@
       "title": "Renormalization Group Approach to Lattice Gauge Field Theories II. Cluster Expansions"
     },
     {
+      "source_id": "cmp89",
+      "importance": "critical",
+      "catalog_status": "structured-partial",
+      "artifact_status": "remote-primary-verified; local-private-copy-present",
+      "formula_status": "Lemma 2.2 (2.16)-(2.17), Lemma 2.4 (2.35)-(2.37), and the explicit Fourier/analytic-strip proof (2.42)-(2.51) visually confirmed; generated-regional-Green dictionary still open",
+      "next_action": "Formalize the zero-background Fourier producer and its uniform analytic strip, then transport it through CMP89 (2.34), CMP95 (1.132)-(1.137), CMP96 (2.43)/(2.67), and CMP99 Corollary 3.6 to the literal four-field Eq. (3.42) certificate.",
+      "priority": 10,
+      "short": "Balaban CMP89",
+      "title": "Regularity and Decay of Lattice Green's Functions"
+    },
+    {
       "source_id": "cmp95",
       "importance": "critical",
       "catalog_status": "structured-partial",
@@ -71,10 +82,10 @@
     {
       "source_id": "cmp96",
       "importance": "high",
-      "catalog_status": "located-label-map",
-      "artifact_status": "archive-private-packet-reported; repo-clean-primary-missing",
-      "formula_status": "primary metadata and label/page map located; formula bodies not extracted; covariance/root dictionary still open",
-      "next_action": "Choose the exact CMP96 proposition/equation window for the one-step covariance/root dictionary, visually confirm the formula body from private renders, then map it to PhysicalLocalizedCovarianceRootCertificate and wilsonHessianIdentification.",
+      "catalog_status": "structured-partial",
+      "artifact_status": "complete-paper-in-private-fusion-anthology; rendered-window-present",
+      "formula_status": "equations (2.39), (2.40), (2.43), (2.44) visually confirmed; direct regional-defect route identified; covariance/root dictionary still open",
+      "next_action": "Formalize the source-specific three-species route to the O(M^-1) defect bound; separately locate and map the covariance/root theorem to PhysicalLocalizedCovarianceRootCertificate.",
       "priority": 8,
       "short": "Balaban CMP96",
       "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories II"
@@ -83,9 +94,9 @@
       "source_id": "cmp98",
       "importance": "high",
       "catalog_status": "located-label-map",
-      "artifact_status": "render-review-needed; repo-clean-primary-missing",
-      "formula_status": "primary metadata and label/page map located for Q_k/block-averaging operations; formula bodies not extracted; Gaussian-pushforward dictionary still open",
-      "next_action": "Choose the exact CMP98 theorem/proposition window for Q_k averaging, visually confirm formula bodies from private renders, then map conventions to gaussian_pushforward and CMP116 (2.5)-(2.6).",
+      "artifact_status": "extracted-text-and-two-renders-present; canonical-pdf-path-is-1157-byte-html; repo-clean-primary-missing",
+      "formula_status": "primary metadata and label/page map located for Q_k/block-averaging operations; extracted text is present, but Proposition 2 and formula bodies are not visually certified from a registered clean primary PDF; Gaussian-pushforward dictionary still open and the U_k regularity dictionary remains open",
+      "next_action": "Register a clean CMP98 primary PDF and visually certify Proposition 2. Choose the exact CMP98 theorem/proposition window for Q_k averaging, then map the U_k regularity and gaussian_pushforward conventions to the Lean consumers.",
       "priority": 8,
       "short": "Balaban CMP98",
       "title": "Averaging Operators for Lattice Gauge Field Theories"
@@ -95,8 +106,8 @@
       "importance": "high",
       "catalog_status": "structured-partial",
       "artifact_status": "local-pdf-renders-present",
-      "formula_status": "G(U) definition, Theorems 3.3/3.11/3.12 and covariance bound Theorem 3.15 visually confirmed; dictionary still open",
-      "next_action": "Map Delta_a/G(U) and the regularity hypotheses to the repository physical covariance/root and Wilson-Hessian conventions.",
+      "formula_status": "G(U), its Eq. (3.107) walk series, the rectangular formula H = GQ*(QGQ*)^-1 in (3.126), Theorems 3.3/3.11/3.12 and covariance bound Theorem 3.15 visually confirmed; dictionary still open",
+      "next_action": "Reconstruct the complete typed alphabet and compose the G series with (3.126); separately map Delta_a/G(U) to the repository covariance/root and Wilson-Hessian conventions.",
       "priority": 8,
       "short": "Balaban CMP99",
       "title": "Propagators for Lattice Gauge Field Theories in a Background Field III"
@@ -106,11 +117,22 @@
       "importance": "high",
       "catalog_status": "structured-partial",
       "artifact_status": "local-pdf-renders-present",
-      "formula_status": "Action expansion Eq. (22), H-operator Eqs. (44)-(46), and positive Hessian expansion Eq. (142) visually confirmed; dictionary still open",
-      "next_action": "Map CMP102 A', Delta_1, H and U_k to the repository Wilson-Hessian and covariance objects, including sign and normalization.",
+      "formula_status": "Action expansion Eq. (22), H-operator Eqs. (44)-(46), D/C^(2)/D_3 decomposition Eq. (78), literal four-term potential Eq. (80), and positive Hessian expansion Eq. (142) visually confirmed; Eq. (80) matches cmp102Eq80GlobalPotential exactly, while the Eq. (78) and physical symbol dictionaries remain open",
+      "next_action": "Prove the source-region D = C^(2) + D_3 dictionary, then map CMP102 A', Delta_1, H and U_k to the repository Wilson-Hessian and covariance objects, including sign and normalization.",
       "priority": 8,
       "short": "Balaban CMP102",
       "title": "The Variational Problem and Background Fields in Renormalization Group Method for Lattice Gauge Theories"
+    },
+    {
+      "source_id": "cmp102_uv3d",
+      "importance": "medium",
+      "catalog_status": "bibliography-registered",
+      "artifact_status": "repo-clean-primary-missing",
+      "formula_status": "distinct CMP volume-102 paper registered for equation-number disambiguation; no formula body extracted",
+      "next_action": "Acquire a clean primary artifact before attributing equations (1)-(71); require the cmp102_uv3d or cmp102_variational source key for citations in the overlapping range.",
+      "priority": 5,
+      "short": "Balaban CMP102-UV3D",
+      "title": "Ultraviolet Stability of Three-Dimensional Lattice Pure Gauge Field Theories"
     },
     {
       "source_id": "cmp119",

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalContourResidualAdapter
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalIndexedContourFixedHessian
+#print axioms YangMills.RG.cmp102Eq80PhysicalIndexedContourResidual
+#print axioms YangMills.RG.cmp102Eq80PhysicalIndexedContourResidual_centeredRegion
+#print axioms YangMills.RG.cmp116Eq142PhysicalPotentialTerm_indexedContour_eq_couplingScaled

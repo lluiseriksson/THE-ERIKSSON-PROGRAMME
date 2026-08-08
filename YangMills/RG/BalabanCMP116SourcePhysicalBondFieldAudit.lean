@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116SourcePhysicalBondField
+
+#print axioms YangMills.RG.sum_norm_sq_cmp116SourcePhysicalCoordinateCochain_le
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.withSourcePhysicalBondField
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.withSourcePhysicalBondField_bondField
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.withSourcePhysicalBondField_threshold

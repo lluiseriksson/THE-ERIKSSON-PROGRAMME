@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalWordFTCInterchange
+
+#print axioms YangMills.RG.tsum_integral_cmp102Eq80PhysicalWordAffineDerivative_eq_integral_tsum
+#print axioms YangMills.RG.tsum_cmp102Eq80PhysicalLayerWordDomainFTCContribution_eq_integral_neumannLayer

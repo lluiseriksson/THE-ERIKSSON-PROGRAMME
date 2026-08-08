@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99LocalizedParametrixDecay
+
+#print axioms YangMills.RG.physicalBondProjection_single_mem
+#print axioms YangMills.RG.physicalBondProjection_single_not_mem
+#print axioms YangMills.RG.physicalCovarianceFiniteRange_projection_comp_projection
+#print axioms YangMills.RG.physicalCovarianceKernelBound_projection_comp_projection
+#print axioms YangMills.RG.physicalBondComplementProjection_finiteRange
+#print axioms YangMills.RG.physicalBondComplementProjection_kernelBound
+#print axioms YangMills.RG.cmp99LocalizedPhysicalPrecision_finiteRange
+#print axioms YangMills.RG.cmp99LocalizedPhysicalPrecision_kernelBound
+#print axioms YangMills.RG.cmp99LocalizedPhysicalCovariance_exponentialKernelBound

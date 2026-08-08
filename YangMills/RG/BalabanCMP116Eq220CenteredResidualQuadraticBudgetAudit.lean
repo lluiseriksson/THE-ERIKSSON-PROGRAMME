@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116Eq220CenteredResidualQuadraticBudget
+
+#print axioms YangMills.RG.cmp116Eq136_centeredContour_residual_le_quadratic_add_eq220
+#print axioms YangMills.RG.sum_centeredContour_residual_le_potentialRate_add_eq220

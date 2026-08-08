@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP116RadialTaylorOperator
+
+#print axioms YangMills.RG.cmp116RadialHessian_intervalIntegrable
+#print axioms YangMills.RG.cmp116RadialTaylorRightLinearMap
+#print axioms YangMills.RG.cmp116RadialTaylorOuterAlgebraicLinearMap
+#print axioms YangMills.RG.cmp116RadialTaylorOuterLinearMap
+#print axioms YangMills.RG.cmp116RadialTaylorBilinear
+#print axioms YangMills.RG.cmp116RadialTaylorBilinear_apply
+#print axioms YangMills.RG.cmp116RadialTaylorOperator
+#print axioms YangMills.RG.inner_cmp116RadialTaylorOperator
+#print axioms YangMills.RG.cmp116RadialTaylorQuadratic_eq_inner_operator
+#print axioms YangMills.RG.cmp116RadialTaylorOperator_decomposition
+#print axioms YangMills.RG.cmp116RadialTaylorOperator_eq_of_normalized

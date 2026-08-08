@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116SourcePi4MixedDerivativeLocalizationPartial
+
+#print axioms YangMills.RG.cmp116SourcePi4MixedDerivativeDomainLayerCoefficient
+#print axioms YangMills.RG.cmp116SourcePi4MixedDerivativePartial
+#print axioms YangMills.RG.cmp116SourcePi4MixedDerivativeDomainPartial
+#print axioms YangMills.RG.cmp116SourcePi4MixedDerivativePartial_eq_sum_domainPartial
+#print axioms YangMills.RG.tendsto_cmp116SourcePi4MixedDerivativePartial
+#print axioms YangMills.RG.tendsto_sum_cmp116SourcePi4MixedDerivativeDomainPartial

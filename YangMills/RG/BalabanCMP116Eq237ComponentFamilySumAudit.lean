@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116Eq237ComponentFamilySum
+
+#print axioms YangMills.RG.cmp116Eq237_componentFamilySum_le_prod_one_add
+#print axioms YangMills.RG.cmp116Eq237_componentFamilySum_le_exp_sum_sub_one
+#print axioms YangMills.RG.CMP116Eq237ComponentFamilyEncoding.familySum
+#print axioms YangMills.RG.cmp116Eq226GapFactor_le_one_of_one_le
+#print axioms YangMills.RG.cmp116Eq237_fixedZ0PrimeSum_le_gaussian_mul_componentGas
+#print axioms YangMills.RG.cmp116Eq237_fixedZ0PrimeSum_le_gaussian_mul_exp_componentSum_sub_one

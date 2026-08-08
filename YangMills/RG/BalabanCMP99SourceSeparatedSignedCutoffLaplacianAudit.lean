@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedSignedCutoffLaplacian
+
+#print axioms YangMills.RG.cmp99SourceSeparatedSignedCutoffLaplacianCoefficient
+#print axioms YangMills.RG.norm_cmp99SourceSeparatedSignedCutoffLaplacianCoefficient_le
+#print axioms YangMills.RG.cmp99CutoffLaplacianCorrection_one_eq_sourceSeparatedSignedCoefficient
+#print axioms YangMills.RG.cmp99SourceSeparatedSignedCutoffLaplacianBudget_mul_range_sq

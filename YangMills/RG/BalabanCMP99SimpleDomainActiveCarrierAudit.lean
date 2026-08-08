@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99SimpleDomainActiveCarrier
+
+#print axioms YangMills.RG.cmp99SimpleDomainActive
+#print axioms YangMills.RG.card_cmp99SimpleDomainActive_le
+#print axioms YangMills.RG.cmp99SamePartitionActive
+#print axioms YangMills.RG.card_cmp99SamePartitionActive_le
+#print axioms YangMills.RG.summable_cmp99SimpleDomainWalk_radialMajorant_of_blockActive
+#print axioms YangMills.RG.summable_cmp116WeakenedCMP99SimpleDomainWalkSeries_of_blockActive
+#print axioms YangMills.RG.summable_cmp99SamePartitionWalk_radialMajorant
+#print axioms YangMills.RG.summable_cmp116WeakenedCMP99SamePartitionWalkSeries

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102PhysicalSupNormTransport
+
+#print axioms YangMills.RG.norm_physicalGaugeOneCochainSupEquiv_eq_sourceSupNorm
+#print axioms YangMills.RG.cmp102PhysicalCorrectionSupNorm_nonneg
+#print axioms YangMills.RG.norm_physicalGaugeOneCochainSupEquiv_eq_correctionSupNorm

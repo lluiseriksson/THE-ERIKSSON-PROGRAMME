@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99OneScalePhysicalCoercivity
+
+/-! Public oracle for source-specific one-scale physical coercivity. -/
+
+namespace YangMills.RG
+
+#print axioms cmp99OmegaSourcePhysicalOneStepQ
+#print axioms cmp99OmegaSourcePhysicalOneStepGaugePrecision
+#print axioms cmp99OneScaleRegionalPhysicalPoincareConstant
+#print axioms cmp99OneScaleRegionalPhysicalPoincareConstant_pos
+#print axioms norm_covariantD0_extendZero_eq_spacing_mul_physical
+#print axioms norm_sq_le_cmp99OneScaleRegionalPhysicalPoincare
+#print axioms coercive_cmp99OmegaSourcePhysicalOneStepGaugePrecision
+
+end YangMills.RG

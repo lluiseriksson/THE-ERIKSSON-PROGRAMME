@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102PhysicalIntrinsicFixedPointJetZero
+
+#print axioms YangMills.RG.cmp102AmbientNonlinearBlock_zero_mul_inverseAtZero_source
+#print axioms YangMills.RG.fderiv_cmp102IntrinsicAmbientCorrectionBond_zero
+#print axioms YangMills.RG.fderiv_cmp102IntrinsicPhysicalCorrectionBondCoord_zero
+#print axioms YangMills.RG.fderiv_cmp102IntrinsicPhysicalNonlinearCorrectionSup_zero
+#print axioms YangMills.RG.fderiv_cmp102IntrinsicPhysicalBackgroundCorrectionMapUncurry_zero

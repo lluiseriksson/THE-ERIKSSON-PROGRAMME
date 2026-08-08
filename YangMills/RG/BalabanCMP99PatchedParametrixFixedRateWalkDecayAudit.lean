@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixFixedRateWalkDecay
+
+#print axioms YangMills.RG.cmp99PhysicalPatchHeadWeightedAmplitude
+#print axioms YangMills.RG.cmp99PhysicalPatchContinuationWeightedAmplitude
+#print axioms YangMills.RG.cmp99PhysicalPatchHead_exponentialKernelBound
+#print axioms YangMills.RG.cmp99PhysicalPatchContinuation_exponentialKernelBound
+#print axioms YangMills.RG.cmp99PhysicalPatchHead_weightedRowKernelBound
+#print axioms YangMills.RG.cmp99PhysicalPatchContinuation_weightedRowKernelBound
+#print axioms YangMills.RG.cmp99PhysicalWalkTerm_eq_orderedProduct
+#print axioms YangMills.RG.cmp99PhysicalPatchWalkOperator
+#print axioms YangMills.RG.CMP99PhysicalPatchWeightedCertificate
+#print axioms YangMills.RG.cmp99PhysicalPatchWeightedCertificate_of_physicalData
+#print axioms YangMills.RG.CMP99PhysicalPatchWeightedCertificate.orderedProduct_exponentialKernelBound_toward_eq3108

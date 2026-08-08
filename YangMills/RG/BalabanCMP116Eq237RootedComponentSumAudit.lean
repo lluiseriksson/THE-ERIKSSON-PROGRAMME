@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116Eq237RootedComponentSum
+
+#print axioms YangMills.RG.cmp116Eq237_exp_neg_metric_le_cardWeight
+#print axioms YangMills.RG.cmp116Eq237_rootedCubeComponentWeightSum_le
+#print axioms YangMills.RG.cmp116Eq237_exp_componentSum_sub_one_le_amplitude_mul
+#print axioms YangMills.RG.cmp116Eq237PostComponentBudget_le_exp_of_linearCards_rate
+#print axioms YangMills.RG.cmp116Eq237PostComponentBudget_le_exp_of_linearCards
+#print axioms YangMills.RG.cmp116Eq237_fixedZ0PrimeSum_le_amplitude_mul_rootedBudget

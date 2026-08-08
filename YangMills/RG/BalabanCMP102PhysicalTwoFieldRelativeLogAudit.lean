@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102PhysicalTwoFieldRelativeLog
+
+#print axioms YangMills.RG.cmp98Eq119NonlinearBlockInverseAtZero_twoField_eq
+#print axioms YangMills.RG.norm_cmp98Eq119NonlinearRelativeDeviation_twoField_sub_le
+#print axioms YangMills.RG.norm_cmp98Eq119NonlinearLogCoordinate_twoField_sub_le

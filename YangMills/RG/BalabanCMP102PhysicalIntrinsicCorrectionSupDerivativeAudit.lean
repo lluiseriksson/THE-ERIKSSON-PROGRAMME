@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102PhysicalIntrinsicCorrectionSupDerivative
+
+#print axioms YangMills.RG.cmp102IntrinsicPhysicalNonlinearCorrectionSup_apply
+#print axioms YangMills.RG.fderiv_cmp102IntrinsicPhysicalNonlinearCorrectionSup_apply
+#print axioms YangMills.RG.norm_fderiv_cmp102IntrinsicPhysicalNonlinearCorrectionSup_sub_apply_le_sourceBudget

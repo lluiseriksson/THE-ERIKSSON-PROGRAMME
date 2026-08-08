@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP89Eq245EntireAverageVerticalVariation
+
+#print axioms YangMills.RG.cmp89Eq245EntireAverageBase_pow_eq_exp_modeExponent
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageModeExponent_sub_realSlice_eq
+#print axioms YangMills.RG.norm_complex_exp_sub_exp_le_of_norm_sub_le
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageBase_pow_sub_realSlice_le
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageFactor_sub_realSlice_le

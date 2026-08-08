@@ -1,0 +1,8 @@
+import YangMills.RG.QuantitativeFixedPointThirdDerivativeStability
+
+#print axioms YangMills.RG.fderiv_fixedPoint_eq_firstDerivativeMap
+#print axioms YangMills.RG.norm_fderiv_fixedPointFirstDerivativeMap_vertical_le
+#print axioms YangMills.RG.lipschitzOnWith_fderiv_of_iteratedFDeriv_two_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_fixedPoint_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_fixedPoint_le_of_derivedSecond
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_fixedPoint_le_of_derivedSecond_on_tube

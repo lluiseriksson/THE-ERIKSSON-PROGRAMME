@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4FaaDiBruno
+
+#print axioms YangMills.RG.iteratedFDeriv_cmp102Eq80SourcePi4RealPotentialVertexPolynomial
+#print axioms YangMills.RG.iteratedFDeriv_cmp102Eq80SourcePi4RealPotentialVertexPolynomial_apply_eq_sum_orderedFinpartition

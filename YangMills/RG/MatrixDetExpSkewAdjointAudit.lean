@@ -1,0 +1,13 @@
+import YangMills.RG.MatrixDetExpSkewAdjoint
+
+namespace YangMills.RG
+
+#print axioms det_exp_eq_exp_trace_of_unitary_diagonalization
+#print axioms det_exp_I_smul_eq_exp_trace_of_isHermitian
+#print axioms Matrix.det_exp_eq_exp_trace_of_mem_skewAdjoint
+#print axioms matrixTraceQuantized_of_det_exp_eq_one_of_mem_skewAdjoint
+#print axioms matrixTraceQuantized_nearLog_unitary_sub_one_of_det_eq_one
+#print axioms trace_nearLog_unitary_sub_one_eq_zero_of_det_eq_one_of_noWinding
+#print axioms Matrix.exp_mem_specialUnitaryGroup_of_mem_skewAdjoint_of_trace_eq_zero
+
+end YangMills.RG

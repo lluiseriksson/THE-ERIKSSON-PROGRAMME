@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixDefectDecay
+
+namespace YangMills.RG
+
+#print axioms cmp99SingleDefectDecayAmplitude
+#print axioms CMP99CoreExteriorSeparated
+#print axioms physicalExteriorCoreKernelBound_of_separated
+#print axioms cmp99SinglePhysicalParametrixDefect_exponentialKernelBound
+
+end YangMills.RG

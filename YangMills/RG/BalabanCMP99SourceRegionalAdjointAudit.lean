@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceRegionalAdjoint
+
+namespace YangMills.RG
+
+#print axioms cmp99ActiveFineBlockEquiv
+#print axioms sum_cmp99ActiveFineBlockEquiv
+#print axioms cmp99TransportedBlockSynthesisCLM_eq_adjoint
+#print axioms norm_cmp99TransportedBlockSynthesisCLM_sq
+#print axioms norm_cmp99TransportedBlockSynthesisCLM
+#print axioms cmp99AdjointBlockSynthesisCLM_eq_adjoint
+#print axioms sqrt_blockWeight_mul_norm_le_adjoint_cmp99AdjointBlockAverageCLM
+#print axioms isCoerciveCLM_cmp99SourceCoarseCovarianceMiddle_adjointBlockAverage
+
+end YangMills.RG

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "cmp116-lemma3",
-  "updated": "2026-06-28",
+  "updated": "2026-08-03",
   "sources": {
     "cmp116": {
       "short": "Balaban CMP116",
@@ -14,6 +14,12 @@
         "text_full": "text/balaban-rg-II-cmp116-1104161193.txt",
         "text_pages_15_20": "text/cmp116-pages-15-20.txt",
         "text_page_21": "text/cmp116-page-21-post-lemma3.txt",
+        "render_source_03": "renders/cmp116-source-03.png",
+        "render_source_05": "renders/cmp116-source-05.png",
+        "render_source_06": "renders/cmp116-source-06.png",
+        "render_source_07": "renders/cmp116-source-07.png",
+        "render_source_08": "renders/cmp116-source-08.png",
+        "render_source_09": "renders/cmp116-source-09.png",
         "render_source_12": "renders/cmp116-source-12-eq25-28.png",
         "render_source_13": "renders/cmp116-source-13-eq25-28.png",
         "render_source_14": "renders/cmp116-source-14-eq25-28.png",
@@ -79,6 +85,85 @@
     }
   },
   "citations": [
+    {
+      "key": "cmp116.lemma1.window.1.11-1.29",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "3, 5-8",
+        "pdf_pages": "3, 5-8",
+        "equations": ["1.11", "1.13", "1.14", "1.15", "1.16", "1.17", "1.18", "1.19", "1.20", "1.21", "1.22", "1.23", "1.24", "1.25", "1.26", "1.27", "1.28", "1.29"],
+        "local_text": "balaban-rg-II-cmp116-1104161193.txt, visually corrected against rendered pages 5-8",
+        "renders": ["render_source_03", "render_source_05", "render_source_06", "render_source_07", "render_source_08"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Lemma 1 fixed-point, small-field, Cauchy and localization window. The rendered primary PDF fixes OCR damage in Eqs. (1.13), (1.24), (1.29), and confirms that the small-domain split is m > 2^4, not m > 24.",
+      "extracted_claims": [
+        "On printed page 3, the source defines each weakened propagator term by taking the set {Delta_1,...,Delta_m} of all distinct sigma_0 cubes intersecting that random walk's localization domain and multiplying by s(Delta_1)...s(Delta_m). Thus the printed monomial is squarefree and m counts distinct cubes, not repeated occurrences in a product expansion.",
+        "The same printed page represents the original propagators by the linear generalized-walk shape (1.6), cited there to CMP99 (3.107), and then defines H(s), G-tilde(s), and H0(s) by weakening those walks. CMP99's later tree-like remark for H1 is a different operator and must not be imported into this dictionary.",
+        "For m > 2^4, Eq. (1.11) carries the factor B0 |X| sup_omega M1^(-|omega|/2) exp(-delta0 d(omega)) exp(m kappa1). For m <= 2^4 = 16, kappa1 > 0 gives exp(m kappa1) <= exp(16 kappa1), matching the factor printed later in Eqs. (1.18), (1.21), and (1.39). This internal consistency check is independent of the repository's distinct /24 animal-count normalization.",
+        "Eq. (1.13) bounds |C(A' - H(s(Y0))X)| by 2 C2 epsilon2^2 + 2 C2 B0^2 exp(32 kappa1) |X|^2, under the displayed sufficient conditions |X| < 4 C2 epsilon2^2 <= (4 C2 B0^2 exp(32 kappa1))^-1 and 4 C2 B0 exp(16 kappa1) epsilon2 <= 1.",
+        "Eq. (1.14) gives |D(H(s(Y0)),A')| <= 4 C2 |A'|^2.",
+        "Eqs. (1.15)-(1.16) give the contraction estimate and |A0(s(Y0),H0(s(Y0))B')| <= 4 C4 (B0 exp(16 kappa1))^3 |B'|^2, with the displayed smallness chain ending at epsilon2/2.",
+        "Eqs. (1.17)-(1.21) assemble H_k, set B' = g_k C B - h-tilde D(g_k C B), derive |B'| <= C1 g_k |B| < C1 epsilon1, and obtain |H_k(s(Y0),B')| <= 4 B0 C1 exp(16 kappa1) g_k |B|.",
+        "Eq. (1.22) chooses the Cauchy radius with reciprocal 8 B0 C1 exp(16 kappa1) alpha2^-1 g_k |B|, and Eq. (1.24) bounds the Cauchy contribution by that factor times E0 (alpha1/alpha3)^5 (L^j eta)^5 and the two displayed localization exponentials.",
+        "Eqs. (1.26)-(1.28) supply the X-summation, exponential combinatorial factor and M^-4 |Y| versus d_k(Y) comparison; Eq. (1.29) concludes |sum (1.23)| <= E0 epsilon1 O(M^q) exp(O(1) kappa1) exp(-kappa1 d_k(Y)/16), for absolute O(1) and a small nonnegative integer q."
+      ],
+      "lean_targets": [
+        "YangMills.RG.BalabanCMP109ConstraintCorrectionFixedPoint",
+        "YangMills.RG.CMP116Lemma1Eq136ResidualCertificate",
+        "YangMills.RG.cmp109Eq212Lemma1ResidualActivity"
+      ],
+      "use_for": [
+        "Primary visual source for the parameter-family fixed-point generalization and the Lemma-1 Eq. (1.36) route.",
+        "Exact correction of the OCR-confused power 2^4 and the constants in Eqs. (1.13), (1.14), (1.24), and (1.29)."
+      ],
+      "do_not_use_for": [
+        "Do not replace 2^4 by the decimal 24.",
+        "Do not identify the printed distinct-cube count m with the total multiplicity degree of the algebraic expansion of C(s) Q* (Q C(s) Q*)^-1. Repeated powers and the printed squarefree walk monomial are different functions away from s = 1.",
+        "Do not treat the OCR text as exact formula data where it disagrees with these rendered pages.",
+        "Do not count this source extraction as a compiled Lean discharge of Lemma 1."
+      ],
+      "open_questions": [
+        "Exact source-to-Lean dictionary for the squarefree generalized-walk H(s(Y0)), H0(s(Y0)), the omega supremum and the localized set-difference factor in Eq. (1.24). The repository covariance G(s) already has the dependent tsum bridge. The algebraically weakened matrix C(s) Q* (Q C(s) Q*)^-1 is a different object away from s = 1 and must not be substituted for the printed H(s). For H(s), the remaining CMP99 dictionary is the concrete rectangular head/readout and its exact full-coupling reconstruction on the linear (3.107) walk index.",
+        "Physical specialization of the compiler-verified parameter-family fixed-point theorem to |s(Delta)| <= exp(kappa1).",
+        "Formal derivation of the summed Eq. (1.29) estimate and its conversion to cmp116Eq136ResidualMajorant."
+      ]
+    },
+    {
+      "key": "cmp116.lemma1.window.1.30-1.36",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "9",
+        "pdf_pages": "9",
+        "equations": ["1.30", "1.31", "1.32", "1.33", "1.34", "1.35", "1.36"],
+        "local_text": "balaban-rg-II-cmp116-1104161193.txt, visually corrected against rendered page 9",
+        "renders": ["render_source_09"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Lemma 1 scale transport and final decay allocation. The rendered primary PDF fixes the exact scale inequality and the two scalar windows used to reach Eq. (1.36).",
+      "extracted_claims": [
+        "Eq. (1.31) states d_j(X) >= (L^j eta)^-1 d_k(X0).",
+        "The passage to Eq. (1.32) assumes (1/4)*(kappa1-1) >= (1-delta)*kappa with 0 < delta < 1.",
+        "After the remaining sums, the common Eq. (1.36) decay assumes (1/16)*kappa1 >= (1-2*delta)*kappa.",
+        "Eq. (1.36) is |V'_k(Y,U,J,B)| <= E0 epsilon1 C1 M^q exp(C2 kappa1) exp(-(1-2 delta) kappa d_k(Y))."
+      ],
+      "lean_targets": [
+        "YangMills.RG.CMP116Lemma1Eq136ResidualCertificate",
+        "YangMills.RG.cmp116Eq136ResidualMajorant"
+      ],
+      "use_for": [
+        "Exact source for the L9 scale comparison and scalar windows.",
+        "Rejecting the provisional 1/2 and 7/8 coefficients that are not printed here."
+      ],
+      "do_not_use_for": [
+        "Do not count visual recovery as a compiled Lean discharge of L9 or Lemma 1.",
+        "Do not conflate these inequalities with the separate Eq. (2.37) post-processing window."
+      ],
+      "open_questions": [
+        "Formal source-to-Lean dictionary for d_j, d_k, X0 and the localization domain Y.",
+        "Formal summation from Eq. (1.29) through the scale allocation to cmp116Eq136ResidualMajorant."
+      ]
+    },
     {
       "key": "cmp116.gaussian-pushforward.2.5-2.6",
       "source_id": "cmp116",
@@ -160,14 +245,20 @@
       "key": "cmp116.lemma3.window.2.14-2.38",
       "source_id": "cmp116",
       "locator": {
-        "printed_pages": "15-20",
-        "pdf_pages": "15-20",
-        "equations": ["2.14", "2.26", "2.27", "2.29", "2.31", "2.32", "2.37", "2.38"],
+        "printed_pages": "15-21",
+        "pdf_pages": "15-21",
+        "equations": ["2.14", "2.26", "2.27", "2.29", "2.31", "2.32", "2.37", "2.38", "2.39", "2.40", "2.41"],
         "local_text": "cmp116-pages-15-20.txt lines 1-334",
-        "renders": ["render_source_18", "render_source_19", "render_source_20"]
+        "renders": ["render_source_18", "render_source_19", "render_source_20", "render_source_21"]
       },
-      "status": "ocr_corrupted",
-      "summary": "Main resummation window for the activity H(Z), ending in Lemma 3 and the final exponential activity estimate.",
+      "status": "visual_confirmed",
+      "summary": "Main resummation window for H(Z). Direct inspection of the rendered primary PDF confirms the Lemma 3 endpoint constants on page 20 and the post-Lemma-3 delta choice on page 21; the preceding termwise source-to-Lean dictionary remains open.",
+      "extracted_claims": [
+        "Rendered primary PDF page 20 gives C3 = 2 (L+2)^4 O(1)^2 E0 C1 alpha4^-1 alpha6^-1 M^q exp(C2 kappa1).",
+        "Rendered primary PDF page 20 gives |H(Z)| <= C3 epsilon1 exp(-(1-8 delta)(L/2) kappa d_{k+1}(Z)) in Eq. (2.38).",
+        "Rendered primary PDF page 21 fixes (1-10 delta)(L/2)=1, equivalently delta=(1/10)(1-2/L), and uses O(1) C3 epsilon1 <= E0/2.",
+        "The earlier OCR reading alpha1^-1 alphaL^-1 and the OCR parsing of (L/2) as a square-root factor are rejected."
+      ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",
         "CMP116Eq231PBondBoundary",
@@ -176,10 +267,11 @@
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [
+        "Exact visual source anchor for the confirmed C3 formula, Eq. (2.38) endpoint rate, and post-Lemma-3 delta choice.",
         "Navigation to the exact source region for the remaining Lemma 3 boundary discharges."
       ],
       "do_not_use_for": [
-        "Do not cite the OCR text as exact formula data.",
+        "Do not cite the OCR text as exact formula data outside the visually confirmed endpoint claims listed here.",
         "Do not use this broad window as a single monolithic Lean hypothesis."
       ],
       "open_questions": [
@@ -778,7 +870,7 @@
         "The source assumes (LM)^4*alpha0, (LM)^4*alpha1, (LM)^4*alpha4, and (LM)^4*gamma2 are bounded by an M-independent constant, for example by 1.",
         "Under those bounds, O(1)*(LM)^4*alpha5 + exp(-(1/2)*(kappa1 - 1)) is bounded by an absolute constant.",
         "Balaban then uses the factor exp(-(delta/2)*L*kappa*d_{k+1}(Z)) and Eq. (2.30) to bound the remaining exponentials by 1, leaves one factor 2*(L+2)^4*O(1)*epsilon2, and estimates the remaining factors by 1.",
-        "The visual definition of the final Lemma-3 constant is C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1), followed by Lemma 3's |H(Z)| <= C3*epsilon1*exp(-((1 - 8*delta)/2)*L*kappa*d_{k+1}(Z))."
+        "The visual definition of the final Lemma-3 constant is C3 = 2*(L+2)^4*O(1)^2*E0*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1), followed by Lemma 3's |H(Z)| <= C3*epsilon1*exp(-((1 - 8*delta)/2)*L*kappa*d_{k+1}(Z))."
       ],
       "lean_targets": [
         "CMP116Lemma3Parameters",
@@ -821,6 +913,10 @@
       },
       "status": "visual_confirmed",
       "summary": "Final Lemma 3 activity estimate for H(Z), after all restrictions and resummations.",
+      "extracted_claims": [
+        "Rendered primary PDF page 20 gives |H(Z)| <= C3 epsilon1 exp(-(1-8 delta)(L/2) kappa d_{k+1}(Z)).",
+        "The factor is multiplication by L/2, not the square-root parsing found in the corrupted OCR."
+      ],
       "lean_targets": [
         "CMP116Lemma3ActivityEstimateScaleFamily",
         "BalabanCMP116Lemma3SourceAssumptions",
@@ -833,7 +929,6 @@
         "Do not use (2.38) to pretend the upstream Eq. (2.31) or post-P source boundaries have been proved separately."
       ],
       "open_questions": [
-        "Exact exponent convention: OCR and existing notes differ on visible half-power/one-half formatting.",
         "Full restriction list preceding Lemma 3."
       ]
     },
@@ -849,6 +944,10 @@
       },
       "status": "visual_confirmed",
       "summary": "Post-Lemma-3 insertion of the H(Z) bound into the effective-action estimate.",
+      "extracted_claims": [
+        "Rendered primary PDF page 21 gives the effective-action decay rate (1-10 delta)(L/2) kappa.",
+        "The source fixes (1-10 delta)(L/2)=1, equivalently delta=(1/10)(1-2/L), and imposes O(1) C3 epsilon1 <= E0/2."
+      ],
       "lean_targets": [
         "post_lemma3_effective_action_consumer",
         "docs/BALABAN-SOURCE-BOUNDS.md B5d"

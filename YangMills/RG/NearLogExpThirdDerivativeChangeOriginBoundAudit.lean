@@ -1,0 +1,10 @@
+import YangMills.RG.NearLogExpThirdDerivativeChangeOriginBound
+
+#print axioms YangMills.RG.nearLogThirdDerivativeChangeOriginBudget_nonneg
+#print axioms YangMills.RG.expThirdDerivativeChangeOriginBudget_nonneg
+#print axioms YangMills.RG.nearLogThirdDerivativeBallBudget_nonneg
+#print axioms YangMills.RG.expThirdDerivativeBallBudget_nonneg
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_nearLog_le_changeOriginBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_nearLog_le_ballBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_exp_le_changeOriginBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_exp_le_ballBudget

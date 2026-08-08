@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116RadialHessianThirdJet
+
+#print axioms YangMills.RG.abs_cmp116FDerivHessian_sub_le_of_thirdJet
+#print axioms YangMills.RG.abs_inner_cmp116RadialTaylorResidualOperator_le_of_thirdJet
+#print axioms YangMills.RG.abs_half_inner_cmp116RadialTaylorResidualOperator_le_of_thirdJet

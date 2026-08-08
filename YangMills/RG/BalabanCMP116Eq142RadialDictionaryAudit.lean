@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq142RadialDictionary
+
+#print axioms YangMills.RG.cmp116Eq142PhysicalRadialQuadratic
+#print axioms YangMills.RG.inner_cmp116Eq142PhysicalRadialQuadratic_eq_activity
+#print axioms YangMills.RG.cmp116Eq142PhysicalPotentialTerm_radial

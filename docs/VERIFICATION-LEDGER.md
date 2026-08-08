@@ -12877,10 +12877,10 @@ estimate
 
 ```
 |E^(k+1)(X)| <= O(1) C_3 epsilon_1
-  * exp (-(1 - 10 delta)^(1/2) L kappa d_{k+1}(X)).
+  * exp (-(1 - 10 delta) * (1/2) * L * kappa * d_{k+1}(X)).
 ```
 
-The following paragraphs fix `(1 - 10 delta)^(1/2) L = 1`, assume
+The following paragraphs fix `(1 - 10 delta) * (1/2) * L = 1`, assume
 `O(1) C_3 epsilon_1 <= E_0/2`, and handle the extra
 `[log Z^(k)(U_{k+1}) - log Z^(k)(1)]` normalization term by a separate
 generalized random-walk expansion with `kappa` replaced by `delta_0 M`.
@@ -15803,7 +15803,7 @@ This checkpoint upgrades two CMP116 Lemma-3 citation entries from
   the boundedness assumptions on `(LM)^4*alpha0`, `(LM)^4*alpha1`,
   `(LM)^4*alpha4`, `(LM)^4*gamma2`, the resulting absolute-constant
   majorization, and the displayed final
-  `C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1)`
+  `C3 = 2*(L+2)^4*O(1)^2*E0*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1)`
   shape feeding Lemma 3 / Eq. (2.38).
 
 The extraction also records the source-design conclusion already reflected in
@@ -25724,3 +25724,4827 @@ Because there was no race and no formal source or oracle change, no new
 editorial addendum.  The mathematical status is unchanged: both current
 unscaled flat and quotient gates are refuted; rescaled/weighted variants
 and interacting-Hessian coercivity remain open.
+
+## Addendum 510 (2026-07-31, **CMP109 Lemma-1 native rooted residual: exact native indexing and Eq. (2.30) transport GREEN**)
+
+This checkpoint keeps every literal CMP109 Lemma-1 localization domain as
+its own terminal index.  Only its support is coarsened to the CMP116 block
+geometry.  No quotient by coincident coarse supports and no injectivity of
+that support map are assumed.  The source certificate fixes the residual
+definitionally to the CMP109 Eq. (2.12) Lemma-1 residual activity and makes
+the non-vacuity boundary explicit: `E0_pos`, a nonempty small-field region
+through `smallField_zero`, and the Eq. (1.36) bound restricted to that
+region.
+
+The native rooted estimate uses the exact `M^4` coarse-root preimage bound,
+the degree-eight face graph (animal base `8^2 = 64`), and the printed
+Eq. (2.30) metric comparison.  The terminal theorem
+`cmp109Lemma1NativeIndexed_rooted_residual_le` proves the centered Eq. (2.20)
+rooted residual bound for all native Lemma-1 indices under the two visible
+animal-series windows
+`64 * exp (-(((1 - 2 * delta) * kappa) / 24)) < 1` and
+`64 * exp (-((delta * kappa) / 24)) < 1`.  These fugacities are not
+identified with the patched-parametrix `rate` or with the natural exponent
+`q` in `M^q`.  In particular, this checkpoint does not invalidate the
+separate `rate = log 32` scalar witness.
+
+**Focal verification.**  Forty-seven declarations in the new native
+residual chain were audited.  Forty-six report exactly
+`[propext, Classical.choice, Quot.sound]`; the remaining declaration,
+`cmp109Lemma1NativeDomain_blocks_injective`, reports the smaller set
+`[propext, Quot.sound]`.  The recursive core-import tracking guard checked
+2,151 local Lean sources and found all of them tracked.  The staged Lean
+delta contains no `sorry`, `admit`, `axiom`, or `sorryAx` occurrence.
+
+**Clean remote replay.**  The exact v18 overlay has SHA-256
+`79C702C6DF9CFC54C50284EAB772B12512CFA05C8A4CB4BB973258E708B16E8D`
+and is archived at
+<https://drive.google.com/file/d/1WN2UBdiKIkX3T8g4SE87VxZ26-a5_uo-/view>.
+It was replayed over base
+`ccfc85d4e42e94965677896af673110f4b0fdb9a`, with toolchain
+`leanprover/lean4:v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`.  The exact terminal line was
+`Build completed successfully (10309 jobs).` (`V18ROOT_EXIT_0`).
+
+**Scope boundary.**  This addendum does not claim a constructed
+`CMP116Eq226PhysicalContourTermSource`.  The analytic Eq. (1.36) proof for
+the CMP109 Lemma-1 source certificate, containment of every coarsened
+support in the terminal `Z0` (`domain_subset`), the joint direct/native
+choice of `rootBound`, and its compatibility with `volume_budget` remain
+open.  Claude Fable 5 High independently audited the native rooted-residual
+design through the Fable Bridge using profile `default` and the explicitly
+selected account `luis.ebikeride@gmail.com`; only conclusions independently
+checked against the Lean tree are recorded here.
+
+## Addendum 511 (2026-07-31, **common Eq.-(80)/Lemma-1 centered region: boundary-complete `domain_subset` geometry GREEN**)
+
+The direct Eq.-(80) and native CMP109 Lemma-1 sectors now have a single
+canonical centered block region.  Its generator family is the literal union
+of the direct physical block-domain family with the finite image of every
+coarsened native support.  The native terminal indices and their native tree
+metrics are not quotiented: `Finset.image` is used only to generate the
+idempotent block carrier `Z0`.  No boundary domain is filtered out and no
+support is assumed to lie in the old direct region.
+
+The module proves monotonicity of the localization core, inclusion of the old
+direct centered region in the common region, inclusion of every indexed
+native coarsened support, and preservation of the bilateral direct-domain
+interior statement after enlargement.  Thus it closes the geometric shape
+needed to derive terminal `domain_subset` for the later disjoint direct/native
+index compositor.  It does not yet construct that compositor and therefore
+does not claim the terminal record field itself.
+
+**Clean remote focal replay.**  The exact three-file v2 overlay has SHA-256
+`7CFFF3039BF51F9201A1417CEDEDFF196D5EF9526ED7701FBF2D5C3A0578EC80`
+and is archived at
+<https://drive.google.com/file/d/1jfTOExmO59zxvIKCxse-stcha1-i8Vzb/view>.
+It was replayed over base
+`ccfc85d4e42e94965677896af673110f4b0fdb9a`, with toolchain
+`leanprover/lean4:v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`.  The exact terminal line was
+`Build completed successfully (8749 jobs).` and the wrapper recorded
+`Z0V2_EXIT_0`.  All eight focal declarations report exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+**Quantitative boundary.**  This checkpoint proves no cardinality estimate
+for the enlarged `Z0`.  The already proved native bound
+`cmp109Lemma1NativeIndexed_rooted_residual_le` remains indexed by every
+literal native domain and therefore retains multiplicity even when supports
+coincide.  Still open are the direct-sector rooted estimate, the joint choice
+`rootBound_direct + cmp109Lemma1NativeRootBound`, and the single terminal
+`volume_budget` evaluated with the enlarged common region.  Claude Fable 5
+High independently audited this separation through profile `default` and the
+verified account `luis.ebikeride@gmail.com`; its claim that the native rooted
+estimate was still open was rejected after direct inspection of the theorem
+above.
+
+## Addendum 512 (2026-07-31, **canonical direct/native `Fin` dictionary: terminal `domain_nonempty` and `domain_subset` GREEN**)
+
+The two residual sectors are now appended into the literal terminal index
+type
+`Fin (CMP102Eq80SourcePi4DomainCount + CMP109Lemma1NativeDomainCount)`.
+The support and metric dictionaries are defined with `Fin.append`; their four
+branch-reduction theorems identify the direct support and natural tree metric,
+and the native coarsened support and native tree metric, definitionally on the
+two canonical injections.  In particular, coincident native supports remain
+different terminal indices and no metric is recomputed from a coarsened
+carrier.
+
+The direct indexed block carrier is proved to be a generator of the common
+localization core.  Together with Addendum 511's native inclusion, this yields
+the single theorem
+`cmp116Eq80Lemma1CombinedDomainSupport_subset_combinedCenteredRegion` for
+every combined index.  The companion theorem
+`cmp116Eq80Lemma1CombinedDomainSupport_nonempty` proves the other geometric
+terminal field.  Thus the concrete combined dictionary now discharges the
+exact propositions named `domain_nonempty` and `domain_subset`; no free map
+or containment hypothesis is accepted.
+
+**Remote focal verification.**  The exact overlay has SHA-256
+`B490D5FCEE0DC4F97DCBE0AB039CC2648F61051267A8C729D40D2EE03FCFD689`
+and is archived at
+<https://drive.google.com/file/d/17fA2rRKFhng9aXVZ15rsvlh9j-AAVJVa/view>.
+It was replayed in the same pinned Colab Pro+ high-RAM checkout recorded in
+Addendum 511.  The exact cached terminal line was
+`Build completed successfully (8750 jobs).` with `CACHED_EXIT_0`; the first
+focal plus all ten `#print axioms` checks returned exit zero.  Every audited
+declaration reports exactly `[propext, Classical.choice, Quot.sound]`.
+
+**Scope boundary.**  This checkpoint does not close `rooted_residual` for the
+combined index type: the native summand is discharged, while the direct
+rooted estimate and the exact finite-sum split remain open.  Consequently the
+joint root bound and `volume_budget` also remain open.  No terminal
+`CMP116Eq226CenteredConditionedPhysicalTermSource` is constructed here.
+
+## Addendum 513 (2026-07-31, **exact direct/native rooted split and literal joint root bound GREEN**)
+
+The combined terminal rooted sum now splits exactly along the canonical
+`Fin.append` dictionary of Addendum 512.  The theorem
+`sum_cmp116Eq80Lemma1Combined_rootedResidual_eq` identifies it with the direct
+Eq.-(80) rooted sum plus the native CMP109 Lemma-1 rooted sum; it is an equality
+of the actual filtered finite sums, not a domination by a newly introduced
+quantity.  The common bound
+`cmp116Eq80Lemma1CombinedRootBound` is definitionally
+`directRootBound + cmp109Lemma1NativeRootBound`.
+
+The terminal-form theorem
+`cmp116Eq80Lemma1Combined_rooted_residual_le` consumes the proved native animal
+estimate internally.  Its only remaining analytic sector input is the visible
+direct rooted estimate `hdirect`, required uniformly for every coarse root.
+Thus the native part of the joint ledger is discharged without collapsing
+indices or metrics; the combined terminal field is not yet claimed closed
+because `hdirect` remains open.
+
+**Pinned Colab Pro+ high-RAM replay.**  The correcting v2 overlay has SHA-256
+`3AB05993C7E032666D3470BE9F127FB43E74BB39965A5FFE018FF6A84CCD9904`
+and is archived at
+<https://drive.google.com/file/d/1E_r_C5SrTHqp5PEAiGbPkVtvrz3nfMVp/view>.
+It was replayed over base
+`ccfc85d4e42e94965677896af673110f4b0fdb9a`, with toolchain
+`leanprover/lean4:v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`.  The exact terminal line was
+`Build completed successfully (8769 jobs).` and the wrapper recorded
+`ROOTEDV2_STATUS=0`.  All five audited declarations report exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+**Scope boundary.**  This addendum does not prove the direct Eq.-(80) rooted
+estimate, the scalar `volume_budget` for the enlarged common region, or a
+terminal term-source constructor.  In particular, it does not count the
+combined `rooted_residual` field as closed: it reduces that field to one named
+direct analytic input and exposes the literal root bound that `volume_budget`
+must consume.
+
+## Addendum 514 (2026-07-31, **direct Eq.-(80) animal sum and combined terminal `rooted_residual` GREEN**)
+
+The remaining direct rooted input from Addendum 513 is now constructed.  The
+selected equation-(80) labels already live on the terminal coarse graph
+`cmp116CoarseFaceAdj 4 (2 * Q)`.  Their canonical `Fin` enumeration is
+reindexed exactly back to the selected label family; carrier injectivity is
+the subtype injection, connectivity is the literal source-label property,
+the graph degree is eight, and the shifted equation-(2.30) theorem transports
+the tree metric to cardinality decay.
+
+The explicit bound `cmp102Eq80SourcePi4DirectRootBound` contains no `M^4`
+factor: unlike the native sector, no fine-to-coarse root fibre is present.
+It consumes exactly the two animal windows already used by the native
+estimate and introduces no new smallness parameter or rooted-sum hypothesis.
+The theorem `cmp102Eq80SourcePi4Indexed_rooted_residual_le` proves this direct
+ledger for every coarse root.
+
+The compositor now defines
+`cmp116Eq80Lemma1CombinedPhysicalRootBound` as the literal sum of the direct
+and native explicit bounds.  The terminal-form theorem
+`cmp116Eq80Lemma1Combined_rooted_residual_le_physical` invokes both producers
+internally and has no rooted estimate as a premise.  Together with Addendum
+512, the concrete combined dictionary therefore discharges the three fields
+`domain_nonempty`, `domain_subset`, and `rooted_residual`.
+
+**Pinned consolidated replay.**  The exact six-file overlay has SHA-256
+`C5D5138F6DD0D97DF9A7C60F04FF0E72EE56FF62F11E96E60D620C1837F85983`
+and is archived at
+<https://drive.google.com/file/d/1QEzHniqdZ-j6nLPqsvmAiVe0dyRGe0yd/view>.
+It was validated in the same Colab Pro+ high-RAM checkout and pins recorded in
+Addendum 513.  The root terminal line was
+`Build completed successfully (10317 jobs).`  The eight direct and eight
+combined focal declarations all report exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+**Scope boundary.**  Enlarging `Z0` to retain every boundary domain still has
+two visible costs.  The scalar `volume_budget` must consume the literal
+combined root bound and the enlarged Gaussian cardinality.  Separately, the
+analytic `outer_bound` must be proved for the enlarged exterior integration;
+the easier inequality `outerBound_le_exp_card` is not counted as payment for
+that analytic cost.  No `CMP116Eq226CenteredConditionedPhysicalTermSource`
+instance is claimed in this addendum, and the analytic Eq. (1.36) proof for
+the Lemma-1 source certificate remains open.
+
+Claude Fable 5 High, using profile `default` and the verified account
+`luis.ebikeride@gmail.com`, proposed the direct animal argument.  Its result
+was accepted only after independent inspection of the enumeration,
+connectivity, degree, metric, and smallness declarations in the Lean tree.
+
+## Addendum 515 (2026-07-31, **canonical combined `volume_budget` GREEN; downstream scalar window remains explicit**)
+
+The enlarged common carrier from Addendum 511 now has one literal volume
+numerator: the proved combined direct/native root bound plus the complete
+conditioned physical outer per-carrier cost.  The latter has a new
+nonnegativity theorem derived from the existing contour, geometric-series,
+and two Neumann windows; determinant, root, coupling, and source coefficients
+are not assigned artificial signs.
+
+For positive `alpha`,
+`cmp116Eq80Lemma1CombinedPhysicalVolumeRate` is defined canonically as this
+full numerator divided by `alpha`.  The equality
+`cmp116Eq80Lemma1CombinedPhysicalVolumeRate_mul_alpha` and the terminal-form
+theorem `cmp116Eq80Lemma1CombinedPhysical_volume_budget` therefore discharge
+the local ledger exactly.  No arbitrarily enlarged free rate is chosen.  The
+companion equivalence `cmp116Eq80Lemma1CombinedPhysical_volume_target_iff`
+shows that the downstream equation-(2.26) source comparison remains precisely
+the physical scalar window
+
+```text
+combinedVolumeCost ≤ C_alpha5 * alpha5.
+```
+
+Thus this checkpoint closes `volume_budget` as a record-field inequality but
+does not claim the source-scale comparison that must ultimately choose the
+constants.
+
+**Pinned Colab Pro+ high-RAM focal replay.**  The modified physical outer-cost
+module built with the exact terminal line
+`Build completed successfully (8529 jobs).`; the combined module then built
+with `Build completed successfully (8773 jobs).`  The focal wrapper recorded
+exit zero, and every declaration in the combined volume audit reports exactly
+`[propext, Classical.choice, Quot.sound]`.  The replay used the same base,
+Lean toolchain, Mathlib, and ProofWidgets pins recorded in Addendum 514.
+The complete root replay subsequently finished with the literal line
+`Build completed successfully (10319 jobs).`
+
+**Correction and scope boundary.**  In the selected centered-conditioned
+consumer, `outer_bound` is not an independently supplied record field: the
+source boundary constructor derives it internally.  The enlarged-`Z0` cost is
+carried explicitly by the physical outer per-carrier term above and by the
+remaining downstream scalar comparison.  No
+`CMP116Eq226CenteredConditionedPhysicalTermSource` instance is constructed
+here; the analytic Eq. (1.36) proof for the Lemma-1 source certificate and the
+full source-scale inequality remain open.
+
+## Addendum 516 (2026-07-31, **combined source cardinality and terminal `domainMetric_nonneg` GREEN**)
+
+The canonical appended direct/native dictionary now carries its third literal
+coordinate, `cmp116Eq80Lemma1CombinedDomainCard`, alongside support and tree
+metric.  On the direct branch it reduces to the selected Eq.-(80) domain
+cardinality; on the Lemma-1 branch it reduces to the native order-two block
+cardinality before support coarsification.  Thus coincident coarsened supports
+do not alter either the native metric or the native cardinality used by
+equation (1.43).
+
+The terminal field `domainMetric_nonneg` is discharged directly from the
+natural-valued combined metric.  This is bookkeeping, not an analytic decay
+estimate, and is recorded separately from the still-open `eq143` field.
+
+**Pinned remote focal.**  The combined dictionary and its expanded audit
+finished with exit zero and the literal line
+`Build completed successfully (8750 jobs).`  The four new declarations and
+all earlier declarations in that audit report exactly
+`[propext, Classical.choice, Quot.sound]`.
+The complete root replay then finished with
+`Build completed successfully (10319 jobs).`
+
+**Downstream dictionary boundary.**  Static inspection of
+`hscalar_eq226_fixed` found an additional, later representation obligation:
+it requires an injective family `Fin nY → Finset (Cube 4 L)` whose source-tree
+metric and image family are the literal `DParts`.  The current combined
+terminal dictionary intentionally permits distinct native indices with equal
+coarsened `FinBox 4 (2*Q)` support.  The repository source database continues
+to mark the Eq.-(2.29) Cammarota `DIndex/DParts` dictionary as
+`source_pending`.  No injectivity is inferred from coarsened supports and no
+fictitious cube labels are introduced here.
+
+## Addendum 517 (2026-07-31, **combined equation-(1.43) ledger GREEN; native Hessian premise eliminated**)
+
+The direct equation-(80) and native CMP109 Lemma-1 domain families now share
+one exact quadratic-core ledger.  Its `total` family is the disjoint append
+of the literal direct total activities and every native Lemma-1 residual; its
+`residual` family appends the literal direct residuals and those same native
+activities.  Finite-sum identities verify that no native activity is erased
+or replaced by zero.
+
+On a direct index, the combined core `total - residual` reduces exactly to
+the direct equation-(80) core.  On a native index it is definitionally zero
+because that sector belongs entirely to the printed residual `V''_k` and is
+present identically in both ledgers.  Consequently,
+`abs_cmp116FDerivHessian_combined_le_eq143` derives equation (1.43) for every
+combined index from the direct physical estimate alone.  The native branch
+is discharged internally from exact cancellation and positivity of the
+printed majorant; no native Hessian bound, quotient of indices, or synthetic
+native potential is supplied.
+
+**Pinned Colab Pro+ high-RAM focal.**  The new compositor built with the
+literal line `Build completed successfully (8363 jobs).`  All eight audited
+declarations report exactly `[propext, Classical.choice, Quot.sound]`, and
+the complete root replay finished with
+`Build completed successfully (10321 jobs).`  This checkpoint
+does not yet close the terminal `eq143` field: its sole remaining input is
+the physical direct-sector Hessian estimate specialized to the combined
+metric and cardinality.  The compositor removes the Lemma-1 branch as an
+analytic obligation but does not assume or replace that direct producer.
+
+## Addendum 518 (2026-07-31, **coupling-scaled direct equation-(1.43) producer GREEN**)
+
+The literal CMP102 source-metric Hessian estimate is now transported through
+the physical CMP109 substitution `B ↦ g_k C B` at order two.  The exact chain
+rule is proved both as an iterated derivative and in the nested-CLM Hessian
+form consumed by the reconstructed domain coefficient.  Its complete
+volume-uniform cost is printed as
+
+```text
+(|g_k| * (1 + M^3))^2.
+```
+
+This factor is installed in
+`CMP102Eq80CouplingScaledEq143ProducerBudget`, not absorbed into an unnamed
+constant.  The scalar comparison theorem proves that the literal CMP102
+source-metric majorant times this cost lies below
+`cmp116Eq143QMajorant`.  The terminal physical theorem
+`abs_cmp116FDerivHessian_cmp102Eq80CouplingScaledPhysicalDomainFTC_le_eq143`
+then constructs the complete pointwise equation-(1.43) Hessian estimate from
+the CMP102 component jets, patch-walk ratios, source-metric decays, contour
+regularity, and the single coupled producer budget.  It accepts neither a
+free Hessian majorant nor equation (1.43) itself.
+
+**Pinned Colab Pro+ high-RAM focal.**  The second-jet module finished with
+`Build completed successfully (8651 jobs).`; the coupled source-metric
+producer finished with `Build completed successfully (8784 jobs).`
+All twelve audited declarations report exactly
+`[propext, Classical.choice, Quot.sound]`.  After integration into
+`YangMillsCore`, the complete root replay finished with the literal line
+`Build completed successfully (10325 jobs).`  The recursive import guard
+confirmed that all 2,167 local sources in the core closure are tracked.
+
+**Remaining exact bridge.**  This addendum closes the physical direct
+Hessian producer for one localization domain.  The terminal combined
+`eq143` field still requires the definitional identification of each indexed
+direct quadratic core with its projected fixed-Hessian term, followed by the
+already-green combined direct/native compositor from Addendum 517.  No
+terminal `TermSource` instance is claimed here.
+
+## Addendum 519 (2026-07-31, **indexed direct equation-(1.43) bridge GREEN**)
+
+The literal indexed equation-(80) core is now identified exactly with one
+half of the diagonal of its projected coupling-scaled Hessian at zero.  The
+Taylor residual cancels algebraically from `total - residual`; the remaining
+Riesz operator is unfolded to the same Fréchet Hessian used by the physical
+CMP102 source-metric producer.
+
+`BalabanCMP116QuadraticCoreHessian.lean` proves the exact Hessian of
+`z ↦ (1/2) H z z` without assuming symmetry of `H`.  A matrix-element bound
+for `H` transfers with constant exactly one, and inserting a continuous
+linear projection costs nothing when its operator norm is at most one.
+Using the already proved nonexpansivity of `physicalBondProjection`,
+`abs_cmp116FDerivHessian_cmp116Eq142PhysicalQuadraticCore_indexedContour_le_eq143`
+then derives the printed equation-(1.43) majorant directly from the physical
+CMP102 component jets, patch-walk ratios, source-metric decay, contour cap,
+and coupled producer budget.  It accepts neither a free Hessian estimate nor
+a pointwise equation-(1.43) hypothesis.
+
+**Focal validation.**  The two new audits built with the literal terminal
+line `Build completed successfully (8875 jobs).`  All six audited
+declarations report exactly `[propext, Classical.choice, Quot.sound]`.
+The clean remote root replay and recursive tracked-import guard are recorded
+separately once the checkpoint is committed.  No terminal
+`CMP116Eq226CenteredConditionedPhysicalTermSource` instance is claimed here;
+the next composition step feeds this direct producer into the already-green
+direct/native equation-(1.43) ledger.
+
+## Addendum 520 (2026-07-31, **combined physical equation-(1.43) field GREEN**)
+
+The indexed physical producer of Addendum 519 is now composed with the
+canonical direct/native quadratic-core ledger.  On a direct index, the
+combined metric and cardinality reduce definitionally to the literal
+equation-(80) tree metric and block cardinality, so the full physical CMP102
+producer applies.  On a native Lemma-1 index, the existing compositor proves
+that the quadratic core is exactly zero and discharges the bound from
+nonnegativity of the printed majorant.
+
+The endpoint
+`abs_cmp116FDerivHessian_cmp116Eq80Lemma1CombinedPhysical_le_eq143` therefore
+proves equation (1.43) for every index of
+`CMP116Eq80Lemma1CombinedDomainCount`.  It accepts neither a direct
+pointwise equation-(1.43) premise nor any native Hessian estimate.  The
+source-scale identification is visible as `Msource = M` in the coupled
+producer budget.
+
+This discharges the sixth substantive field intended for the partial
+centered-conditioned term-source assembly.  It does not construct the final
+record: the remaining analytic/scalar fields and the named Lemma-1
+equation-(1.36) certificate are still assembled separately.
+
+## Addendum 521 (2026-07-31, **combined cutoff-supported equation-(1.36) field GREEN**)
+
+The direct equation-(80) and native CMP109 Lemma-1 residuals now share one
+literal terminal cutoff carrier: all bilateral interior bonds of the combined
+direct/native centered region.  This choice is necessary because the native
+residual evaluates the global correction `D(P_Z0 B)` and therefore cannot be
+replaced by a fictitious domain-local correction.  The theorem
+`cmp109Lemma1SourceSmallField_combinedInteriorProjection_of_cutoff` derives the
+native small-field premise from nonvanishing of that common cutoff, while
+`physicalBondProjection_indexedSourceDomain_combinedCenteredRegion` proves
+that the larger projection leaves every direct source-domain contribution
+unchanged.
+
+The common carrier is stronger than the individual-domain small-field region
+printed in (1.34).  Accordingly the headline theorem is deliberately
+described as the **cutoff-supported terminal form** of (1.36), not as an
+extension of the source estimate to every field in every individual-domain
+region.  The non-vacuity/field-identity guard
+`norm_cmp116SourcePhysicalCoordinateCochain_lt_of_combinedInteriorCutoff`
+also proves that the enlarged cutoff controls the same literal physical
+coordinate cochain installed by `withSourcePhysicalBondField`; the Eq.-(1.36)
+and cutoff-energy/cubic routes have not drifted to different `bondField`s.
+
+The endpoint
+`abs_cmp116Eq80Lemma1CombinedPhysicalResidual_le_eq136` performs the exact
+`Fin.addCases` split of the canonical direct/native ledger.  The direct branch
+derives the physical equation-(80) estimate internally from the third-jet,
+patch-walk, metric-decay, and scalar-budget producers.  The native branch
+consumes only the source-pinned field `CMP109Lemma1Eq136SourceCertificate.bound`.
+Both branches are normalized by the explicit amplitude
+`E0Direct + lemma1.E0`; no pointwise Eq.-(1.36) premise, arbitrary reindexing
+map, zero native residual, or false locality hypothesis is accepted.
+
+**Pinned clean Colab Pro+ high-RAM focal.**  Starting from committed base
+`be3dcb8dc90321e03b0ed08e5fad0084ec750f78`, the exact overlay SHA-256 was
+`D8D70D99BDAA6C5FAE7989363563490D170BF3AFFD948579E494D4CFF17D7778`.
+The common-carrier target finished with the literal line
+`Build completed successfully (8769 jobs).`; the combined Eq.-(1.36) target
+finished with `Build completed successfully (8903 jobs).`  The seven carrier
+declarations and three combined declarations each report exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+This is the seventh substantive field intended for the first partial
+centered-conditioned term-source assembly.  It is conditional on the single
+named Lemma-1 source certificate and does not prove that certificate, build a
+complete `CMP116Eq226CenteredConditionedPhysicalTermSource`, discharge the
+remaining analytic/scalar windows, prove `hRpoly`, or change the distance to
+Clay (still approximately zero, below 0.1%).
+
+**Eq. (2.29) boundary.**  Visual extraction confirms that (2.29) is the
+Cammarota-type sum over subfamilies whose union is `Y0`; it does not print the
+injective `DIndex/DParts` representation used by a later Lean bridge.
+Reference [26] is C. Cammarota, *Decay of correlations for infinite range
+interactions in unbounded spin systems*, CMP 85 (1982).  Its usable theorem,
+thresholds, and dictionary remain `source_pending`, but this downstream
+Eq.-(2.29) obligation is not a field of the present term source and does not
+block the cutoff-supported Eq.-(1.36) producer.
+
+## Addendum 522 (2026-07-31, **retraction of Addendum 521; cutoff obstruction formalized**)
+
+Addendum 521 is retracted as a physical equation-(1.36) checkpoint.  Its Lean
+theorem was logically valid but had an uninhabited cutoff premise for every
+nonempty `P`.  The reason is definitional and source-relevant:
+`cmp116LocalizationCore D P` makes every selected large-field bond interior,
+whereas the attempted common carrier imposed the strict small-field indicator
+on **all** interior bonds and simultaneously imposed the complementary
+large-field indicator on `P`.
+
+The generic theorem
+`cmp116SignedCutoff_eq_zero_of_mem_small_and_large` now proves that any shared
+bond forces the signed cutoff to vanish.  The specialized theorem
+`cmp116Eq80Lemma1CombinedInteriorSignedCutoff_eq_zero` derives the overlap from
+`cmp116BondInterior_localizationCore` and proves that the exact attempted
+combined cutoff is zero whenever `P.Nonempty`.
+
+Accordingly the headline module
+`BalabanCMP102Eq80PhysicalCombinedEq136` and its audit are removed from the
+root.  The conditional projection and field-transport lemmas remain only as
+diagnostic facts and are explicitly documented as non-inhabitation results.
+The direct equation-(80) estimate, the native Lemma-1 certificate interface,
+the combined domain dictionary, equation-(1.43), rooted residual, and volume
+budget remain valid; they do not by themselves provide a mixed-sector
+equation-(1.36) field.
+
+The previous focal builds and the bundle at commit `e6f75579` are therefore
+evidence only that the vacuous implication typechecked, not evidence of the
+seventh substantive field.  A full clean-root replay of that commit was
+stopped once the obstruction was identified.  The seventh-field counter
+returns to open, and no `CMP116Eq226CenteredConditionedPhysicalTermSource`
+instance has been constructed.
+
+## Addendum 523 (2026-08-01, **source-local Lemma-1 small-field carrier and nonvacuous combined cutoff GREEN**)
+
+Visual reinspection of the primary CMP116 PDF, page 9, corrects the domain of
+equations (1.34)--(1.36).  The printed condition is local, `|B| < epsilon1 *
+gk^{-1} on Y`, and the accompanying text says that the localized function
+depends on `B` restricted to the interior of the individual domain `Y`.  The
+previous ambient-sup-norm predicate was therefore stronger than the printed
+source condition.
+
+`cmp109Lemma1SourceBondSupport Y` now selects exactly the physical fluctuation
+bonds whose two endpoint sites lie in `Y.blocks`, on the same lattice as the
+Lemma-1 fluctuation field.  The certificate predicate
+`cmp109Lemma1SourceSmallField` is the source sup norm after projection to this
+bilateral per-domain carrier.  The audit also records its exact membership
+theorem and the unchanged strictly-positive, nonempty certificate contract.
+
+The new module `BalabanCMP116Eq80Lemma1SourceSmallFieldCarrier` keeps the later
+centered region `Z0` separate from the small-field carrier.  It constructs the
+common direct/native small-field carrier from the exact equation-(2.14)
+exterior carrier, proves containment of every direct and native per-domain
+support, and proves disjointness from every source-admissible large-field set
+`P`.  An explicit piecewise real field is zero on the small carrier and equal
+to the positive threshold on `P`; its signed cutoff is proved nonzero.  Thus
+the overlap vacuity formalized in Addendum 522 is removed without reusing the
+all-interior carrier.
+
+Finally, `cmp109Lemma1SourceSmallField_of_combinedSourceCutoff` transports
+nonvanishing of this corrected combined cutoff to the exact per-domain
+small-field premise consumed by the named Lemma-1 certificate.  This is a
+nonvacuity and carrier checkpoint only: it does not prove the analytic
+equation-(1.36) field, construct the nonlinear correction `D(B)`, or inhabit a
+complete centered-conditioned `TermSource`.
+
+The clean Colab Pro+ high-RAM focal was pinned to
+`leanprover/lean4:v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`.  Its terminal line was
+`Build completed successfully (8773 jobs).`  Direct audit execution reports
+exactly `[propext, Classical.choice, Quot.sound]` for every new endpoint.
+
+## Addendum 524 (2026-08-01, **combined source-cutoff equation-(1.36) field GREEN**)
+
+The mixed direct/native equation-(1.36) producer is restored on the
+source-faithful carrier of Addendum 523. Its cutoff is the literal
+equation-(2.14) carrier, while the residual is still evaluated on the
+terminally projected field `P_Z0 B`. These are deliberately different
+objects.
+
+The first attempted proof of the native projection step exposed another
+overstatement: endpoint containment in a native domain does not imply that
+the complete interior stencil of each source bond lies in `Z0`. No such
+claim is needed. The generic theorem
+`cmp98SourceFieldSupNorm_nestedPhysicalBondProjection_le_threshold_of_cutoffFactor_ne_zero`
+proves instead that a second coordinate projection can only zero entries and
+therefore cannot increase the source sup norm. Consequently
+`cmp109Lemma1SourceSmallField_projectedCombinedRegion_of_sourceCutoff`
+derives the exact small-field premise for `P_Z0 B` without any containment
+between the extra projection carrier and the native source carrier, and
+without asserting locality of the nonlinear correction `D`.
+
+The valid generic cutoff-restriction lemmas were moved from the diagnostic
+all-interior module to `BalabanCMP116Eq222CutoffSupNormTransport`; the valid
+direct projection identity was likewise moved to the neutral combined-region
+module. The retracted all-interior carrier remains only as a no-go diagnostic
+and is not imported as the source of the restored producer.
+
+The headline
+`abs_cmp116Eq80Lemma1CombinedPhysicalResidual_le_eq136` now performs the
+canonical `Fin.addCases` split. The direct branch derives equation (1.36)
+from the literal equation-(80) third-jet chain. The native branch consumes
+only the named, nonvacuous
+`CMP109Lemma1Eq136SourceCertificate.bound`. The common amplitude is exactly
+`E0Direct + lemma1.E0`; there is no free pointwise equation-(1.36) premise,
+arbitrary reindexing map, zero native residual, or all-interior cutoff.
+
+**Local focal validation.** The corrected carrier target finished with
+`Build completed successfully (8769 jobs).`; the combined producer target
+finished with `Build completed successfully (8903 jobs).`. The carrier,
+nested-projection, direct-projection, and combined-producer audits all report
+exactly `[propext, Classical.choice, Quot.sound]`. The direct pinned-toolchain
+root replay then finished with the literal line
+`Build completed successfully (10337 jobs).`
+
+This restores the seventh substantive field intended for the first partial
+centered-conditioned term-source assembly, conditional on the single named
+Lemma-1 source certificate. It does not construct a complete
+`CMP116Eq226CenteredConditionedPhysicalTermSource`, prove that certificate,
+discharge the remaining scalar/analytic fields, prove `hRpoly`, or change
+the distance to Clay, which remains approximately zero (below 0.1%).
+
+## Addendum 525 (2026-08-01, **terminal direct/native partial potential GREEN**)
+
+The terminal `total` and `residual` functions now use the same canonical
+disjoint ledger as equations (1.43) and (1.36).  The definitions
+`cmp116CenteredConditionedCombinedEq80PartialTotal` and
+`cmp116CenteredConditionedCombinedEq80PartialResidual` install the literal
+equation-(80) families on the direct branch and
+`cmp109Lemma1IndexedSourceResidual` on the native branch.  Spectator and
+fluctuation arguments have their exact terminal types.  There is no map from
+native domains back into the direct index, no zero native extension, and no
+additional analytic premise.
+
+This supersedes the older partial adapter only at the level of the domain
+ledger; the older module remains available for historical consumers.  The
+new focal audit finished with the literal line
+`Build completed successfully (8906 jobs).`  All four new declarations report
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+The preceding source-cutoff checkpoint was also replayed from bundle
+`cmp116-source-cutoff-eq136-abfe7264.bundle` in a separate Colab Pro+ high-RAM
+checkout at commit `abfe7264563fd406f1a1e07d452c4652b7bc0bee`.  The replay
+verified SHA-256
+`8A179C9340079DAD3166400809E43AA12EB8C7D4CADCBE9B6D7295DEECEA8C9B`,
+toolchain `leanprover/lean4:v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`; the source tree was clean, all
+2,179 core-import sources were tracked, consistency scans were green, the
+root ended with `Build completed successfully (10337 jobs).`, and the four
+checkpoint audits ended at `CLEAN_EQ136_CHECKPOINT_DONE`.
+
+## Addendum 526 (2026-08-01, **terminal Eq.(1.36) signature GREEN**)
+
+The theorem
+`abs_cmp116CenteredConditionedCombinedEq80PartialResidual_le_eq136`
+transports the already-derived direct/native equation-(1.36) estimate to the
+exact five-argument residual function consumed by the centered-conditioned
+equation-(2.26) record.  Its conclusion quantifies over the terminal
+spectator and fluctuation fields and the canonical combined domain index.
+It preserves literally the source cutoff carrier, the combined centered
+region used by the physical projection, the native domain metric, and the
+amplitude `E0Direct + lemma1.E0`.
+
+The wrapper adds no analytic premise: the direct branch remains generated by
+the equation-(80) third-jet chain, while the native branch still consumes
+only the named `CMP109Lemma1Eq136SourceCertificate`.  It introduces no
+reindexing map, zero native residual, or extension outside cutoff support.
+The focal target finished with `Build completed successfully (8906 jobs).`;
+its audit finished with `Build completed successfully (8907 jobs).` and
+reports exactly `[propext, Classical.choice, Quot.sound]`.
+
+## Addendum 527 (2026-08-01, **partial terminal source constructor GREEN**)
+
+`CMP116Eq226CenteredConditionedPhysicalTermSource` is factored into the
+pre-`(1.36)` record
+`CMP116Eq226CenteredConditionedPhysicalTermSourcePreEq136` and one final
+literal equation-`(1.36)` field.  The inherited public field names and record
+syntax are unchanged.  This removes the elaboration cycle without accepting
+a prebuilt term source or moving `(1.36)` into a public premise.
+
+The constructor
+`cmp116Eq226CenteredConditionedCombinedPartialTermSourceOfPreEq136` returns
+the actual centered-conditioned equation-`(2.26)` `TermSource`.  Its input
+pre-record contains the remaining terminal obligations; a separate ledger
+identification pins its total, residual, combined direct/native domain
+dictionary, amplitude `E0Direct + lemma1.E0`, and threshold `epsilon1 / gk`.
+The final field is generated internally by
+`cmp116CenteredConditionedCombinedPartialPreEq136_eq136`, whose direct branch
+is the equation-(80) third-jet producer and whose only native analytic input
+is `CMP109Lemma1Eq136SourceCertificate`.
+
+The combined cutoff is not assumed inhabited.  The already audited theorem
+`cmp116Eq80Lemma1CombinedSourceSignedCutoff_piecewiseWitness_ne_zero` supplies
+an explicit nonzero witness for this exact enlarged source carrier, and
+`cmp109Lemma1SourceSmallField_projectedCombinedRegion_of_sourceCutoff`
+transports the same cutoff to the native small-field premise after the
+terminal projection.  Thus enlarging `Y0` does not detach the bond field used
+by the cutoff from the field controlled by the cubic route.
+
+The focal audit ended with `Build completed successfully (8956 jobs).`; both
+new declarations report exactly `[propext, Classical.choice, Quot.sound]`.
+The tracked-import guard covered 2,185 local sources, the consistency scan
+reported zero `sorry` and zero project axioms, and the root build ended with
+`Build completed successfully (10343 jobs).`.
+
+## Addendum 528 (2026-08-01, **partial constructor clean-clone evidence SEALED**)
+
+The complete focal chain behind Addendum 527 was replayed from source
+checkpoint `134a21f0dd9f82defb4de6334853031674dd285f` in one fresh Colab
+Pro+ CPU/high-RAM clone, with driver
+`166fd62e8b826edbae78c3756da40f51bfbfd2c3`.  The official
+`leanprover/lean4:v4.29.0-rc6` Linux asset was verified before extraction and
+Mathlib was pinned to `07642720480157414db592fa85b626dafb71355b`.
+
+All fourteen queue entries exited zero: dependency and pin gates;
+`RestrictedVisitedTransferPowers`; `OptimalInteractionAlpha` and audit;
+combined kernel support and audit; combined Hessian support and audit;
+terminal equation-(1.43) and audit; the partial term-source constructor and
+audit; `YangMillsCore`; and the full oracle.  The root terminal line was
+`Build completed successfully (10345 jobs).`  The headline audits use exactly
+`[propext, Classical.choice, Quot.sound]` (or a subset).
+
+This run is classified as an intermediate brick, for which the reproducibility
+policy requires one fresh clone.  A second checkout was intentionally stopped
+before mathematical execution rather than misreported as a failed replica.
+The runtime was disconnected and deleted after the evidence archive was
+downloaded and independently hashed on Windows:
+
+```text
+archive: hrpoly-v7-intermediate-1fe3b3ff9b5e4bc4a1d1e23396692ee4.tar.gz
+bytes:   229500
+sha256:  589769BC64D24493B0F68F5B0458DB017258919B32C265D8C83FA327487233EC
+```
+
+This strengthens the evidence for the partial constructor; it does not turn
+that constructor into an inhabitant of its `PreEq136` input.  The live
+consumer-facing numerator is 17 independently produced obligations out of 41,
+as itemized in `docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md`.  A complete
+centered-conditioned `TermSource`, `hRpoly`, and the paper endpoint remain
+open, and the distance to Clay remains approximately zero (below 0.1%).
+
+## Addendum 529 (2026-08-02, **interacting precision source GREEN; 18/41**)
+
+The literal interacting Wilson-plus-gauge precision source and its installation
+in the combined centered-conditioned source data were replayed from source
+checkpoint `5b061eb968885f5d724dc3b9226ee593ddc5d0db` in one fresh Colab
+Pro+ CPU/high-RAM clone.  This is an intermediate brick, so one fresh clone is
+the required reproducibility gate.  The runtime reported 50.99 GiB of RAM and
+was disconnected and deleted after the run.
+
+The official Lean `v4.29.0-rc6` toolchain and pins were exact: Mathlib
+`07642720480157414db592fa85b626dafb71355b` and ProofWidgets
+`2e58165a9dcdca9837b666528f974299ee1a51cc`.  The focal build ended with
+`Build completed successfully (8977 jobs).`; `YangMillsCore` ended with
+`Build completed successfully (10350 jobs).`; and the full oracle exited zero
+with exactly `[propext, Classical.choice, Quot.sound]` or a subset.
+
+The focal, root, and oracle logs have SHA-256 values
+`b54bc45b29b15b41c92f27dfc81ac7eec15c1754b93d3a29d46f7dc836c7a7a1`,
+`7afa58d2c5771c975e81e35e2b6d6969d6679b18eba717c3f0b432f6140d390f`,
+and `511a0a43775e8d75ab5f17cd8114e02a3eaa4cbb0f07433a4179d5069f9d7d34`.
+The evidence manifest hash is
+`04fff6f8fe3e4c5b0ef1fe798536c72ebdcc9868cb51cc4f53537e53ff69bcdd`;
+the archive created inside Colab has hash
+`15ec7c1faa457fe6de07e91d9d3e04b5910203ce762fc9ad40f3f2a5c223b37a`.
+The browser download selector failed before transfer, so the archive was not
+independently rehashed on Windows; the complete structured transcript and the
+individual hashes remained visible.  This transport defect does not change
+the recorded child exit codes.
+
+This brick closes only the covariance-range obligation group: the literal
+interacting precision supplies `sourceRange_bound` and `finiteRange`, while
+the surviving coercivity constant and `K_coercive` make the Poincare/Combes--
+Thomas wall visible without discharging the still-input `mass_pos`.  The live
+consumer-facing numerator is therefore exactly 18/41.  No `TermSource`
+inhabitant is produced, and analytic Lemma-1 equation (1.36) remains a separate
+named input.
+
+## Addendum 530 (2026-08-02, **physical localized covariance upper bridge GREEN**)
+
+`BalabanCMP116InteractingConditionedCovariance.lean` was replayed together
+with its audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `141cbfe11c8566c4e917c460e86a34dfe47238dc`.  This is an
+intermediate leaf brick: no root build was required, and the runtime was
+disconnected and deleted immediately after the focal and audit completed.
+
+The cache gate materialized 8,142 files, the manifest remained unchanged,
+and Mathlib was pinned to
+`07642720480157414db592fa85b626dafb71355b`.  The focal build exited zero with
+`Build completed successfully (8474 jobs).` after 1231.383 seconds.  The
+audit exited zero after 34.388 seconds; all eleven declarations report
+exactly `[propext, Classical.choice, Quot.sound]`.  The complete runner exited
+zero after 1406.008 seconds with evidence SHA-256
+`5011a4bb91b2e489ffb74686537794a3e43318994c449c8b3a8a805a71092be3`.
+
+The verified module identifies the literal interacting inverse with its
+canonical physical coordinate matrix, compresses that covariance to the
+localized coordinates, reconstructs the positive spectral root as a physical
+endomorphism, proves the exact conditioned-root certificate, and derives
+`‖conditionedCovariance‖ ≤ coercivityConstant⁻¹`.  It closes only the upper
+physical part of map item 12b.  The strict lower nondegeneracy certificate
+remains open, groups 23--24 remain open, the live numerator remains exactly
+18/41, and no `TermSource` inhabitant is produced.
+
+## Addendum 531 (2026-08-02, **physical localized covariance lower bridge GREEN**)
+
+The strict lower-covariance extension of
+`BalabanCMP116InteractingConditionedCovariance.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source checkpoint
+`460c05e5ac5e00536805c087526b15b9dc157dbb`.  The runtime opened at
+2026-08-02 15:52:17 UTC with 50.99 GiB RAM and was disconnected and deleted
+immediately after the audit.
+
+The official Lean `v4.29.0-rc6` toolchain was used, the cache gate materialized
+8,142 files, the manifest remained unchanged, and Mathlib was pinned to
+`07642720480157414db592fa85b626dafb71355b`.  The focal build exited zero with
+the literal terminal line `Build completed successfully (8474 jobs).` after
+1193.414 seconds.  The audit exited zero after 45.486 seconds and printed
+exactly nineteen declarations, each depending on
+`[propext, Classical.choice, Quot.sound]`.
+
+The wrapper subsequently reported `FINAL_STATUS=FAIL STAGE=audit_axioms`
+because its own text parser truncated the first matching audit line while
+constructing the count diagnostic.  This is classified
+`BLOCKED-INSTRUMENTATION`: both child exit codes were zero and the complete
+nineteen-line oracle output is present in the transcript.  No Lean result is
+inferred from the wrapper's false sentinel.  The evidence archive created in
+Colab has SHA-256
+`21987e98eacf8db41b57071565edb3ff1e0f1e2d00bd338508183032106bee6f`.
+
+The verified extension proves the localized covariance quadratic lower bound
+with the deliberately coarse positive constant
+`coercivityConstant / precisionUpperBound^2`, and constructs the terminal
+lower-covariance certificate once the localized carrier is known nonempty.
+That remaining geometric witness is not implied by `domain_nonempty` and
+`domain_subset`.  Therefore the live producer numerator remains exactly
+18/41, groups 23--24 remain open, and no `TermSource` inhabitant is produced.
+
+## Addendum 532 (2026-08-02, **joint fourteen-window target regime GREEN**)
+
+`BalabanCMP116CenteredConditionedSmallnessCompatibility.lean` was replayed
+with its focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `9e4161dc4ea74e7846fc80bedc81f8bb5d2ae45a`.  The runtime opened at
+2026-08-02 16:30:59 UTC with 51.0 GiB RAM and was disconnected and deleted
+immediately after the audit.
+
+The official Lean `v4.29.0-rc6` toolchain was used, the cache gate
+materialized 8,142 files, the manifest remained unchanged, the complete
+2,200-source core import closure was tracked, and Mathlib was pinned to
+`07642720480157414db592fa85b626dafb71355b`.  A Mathlib-only reproduction of
+the exponential arithmetic exited zero in 40.453 seconds.  The focal build
+then exited zero with the literal terminal line
+`Build completed successfully (8755 jobs).` after 1793.774 seconds.  The
+audit exited zero after 10.380 seconds and printed exactly eight declarations,
+each depending on `[propext, Classical.choice, Quot.sound]`.
+
+The wrapper subsequently reported `FINAL_STATUS=FAIL STAGE=audit_axioms`
+because its diagnostic parser truncated the last already-printed audit line
+while rechecking the captured output.  This is classified
+`BLOCKED-INSTRUMENTATION`: both child exit codes were zero and the complete
+eight-line oracle output is present immediately above the false sentinel.
+The evidence archive created in Colab has SHA-256
+`5b9c061c80bdcd1d8e098d554bdea17292f669cfad21c8743464c2c84acf96da`.
+
+The verified registry contains all fourteen threshold conditions currently
+exposed by the centered CMP116 consumer together with the physical CMP109
+pivot, and its parametric witness prevents a newly added window from leaving
+the compatibility claim silently stale.  Its norm-like values remain target
+envelopes that physical producers must attain.  Consequently this brick does
+not increase the live 18/41 numerator, does not inhabit `PreEq136`, and does
+not construct a `TermSource`.
+
+## Addendum 533 (2026-08-02, **empty localized-carrier no-go GREEN**)
+
+The literal empty-carrier theorem in
+`BalabanCMP116SourcePhysicalCoordinateDictionary.lean` and the resulting
+non-inhabitance theorem for
+`CMP116Eq226CenteredConditionedPhysicalTermSource` were replayed in one fresh
+Colab Pro+ CPU/high-RAM clone from source checkpoint
+`477c1f66f492d6c09b8472eeb5237d3df99e68df`.  The runtime opened at
+2026-08-02 18:06:48 UTC with 51.0 GiB RAM and was disconnected and deleted
+immediately after the audit.
+
+The official Lean `v4.29.0-rc6` toolchain was used, the cache gate
+materialized 8,142 files, the manifest remained unchanged, the complete
+2,200-source core import closure was tracked, and Mathlib was pinned to
+`07642720480157414db592fa85b626dafb71355b`.  The focal build exited zero with
+the literal terminal line `Build completed successfully (8604 jobs).` after
+2335.992 seconds.  The audit exited zero after 12.710 seconds and printed both
+new declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The wrapper subsequently reported `FINAL_STATUS=FAIL STAGE=audit_axioms`
+because its own second-pass display parser truncated the second audit line
+after the already complete two-line oracle output.  This is classified
+`BLOCKED-INSTRUMENTATION`: both child exit codes were zero and the complete
+two-line output is present above the false sentinel.  The evidence archive
+created in Colab has SHA-256
+`515033fb59e45f70ea73e35c753dbe589133be6cbe0f8ac48ed95a5937a36d73`.
+
+The verified no-go proves that the centered-conditioned terminal family is
+uninhabitable while it quantifies over every raw region: at `Z0 = ∅` its
+literal localized-coordinate carrier is empty, whereas the mandatory lower
+covariance certificate contains a nonempty-carrier witness.  The faithful
+repair is a proof-carrying localized-region subtype, not removal of that
+witness and not an off-index `if`.  This diagnosis does not increase the live
+18/41 producer numerator and does not construct a `TermSource`.
+
+## Addendum 534 (2026-08-02, **localized-region terminal repair GREEN**)
+
+The proof-carrying localized-region repair was replayed through the centered
+conditioned terminal UV endpoint in one fresh Colab Pro+ CPU/high-RAM clone
+from source checkpoint `a0bb88dd48c80b72d8e0b60a5715eed9221fef75`.
+The runtime opened at 2026-08-02 19:55:42 UTC with 50.99 GiB RAM and was
+disconnected and deleted after the evidence archive was downloaded.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The complete tracked
+core-import closure contained 2,200 sources.  The focal build exited zero
+with `Build completed successfully (8647 jobs).` after 2211.950 seconds;
+the audit exited zero after 26.170 seconds and printed four terminal
+declarations, each with exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The wrapper then emitted a false `FINAL_STATUS=FAIL STAGE=audit_axioms`:
+Lean had wrapped each axiom list over three physical lines, while the runner
+looked for the closing bracket only on the header line.  Both primary child
+exit codes were zero and all four complete lists are preserved in the
+archive.  The evidence archive was downloaded and independently rehashed on
+Windows with SHA-256
+`029cc428c8434849b018832bb0e43be17c6830c00cc1e7d5005c7464f56ffb3b`.
+The runner was subsequently repaired to normalize the complete audit block,
+reject unknown or forbidden axioms, and derive status only from recorded
+primary fields.
+
+The verified repair indexes the terminal family by
+`CMP116SourcePhysicalLocalizedRegion`, whose membership proof supplies the
+nonempty localized carrier required by the lower covariance certificate.
+All four centered-conditioned consumers still reach the same dimension-four
+`SingleScaleUVDecay` conclusion.  This removes the empty-carrier
+contradiction but does not discharge a new `PreEq136` field: the live
+numerator remains exactly 18/41 and no `TermSource` inhabitant is produced.
+
+## Addendum 535 (2026-08-02, **CMP109 parameter-uniform correction L2 GREEN**)
+
+`BalabanCMP109ConstraintCorrectionParameterFamily.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `de7c13a59083c2b2000bb722203f9afd22aaae5d`.  The runtime opened at
+2026-08-02 20:42:37 UTC with 50.99 GiB RAM and was disconnected and deleted
+immediately after the evidence archive was downloaded.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The focal build exited
+zero with `Build completed successfully (8511 jobs).` after 1794.795 seconds.
+The audit exited zero after 24.550 seconds; all four declarations depend
+exactly on `[propext, Classical.choice, Quot.sound]`.  The corrected sentinel
+recorded `focal_exit=0`, `audit_exit=0`, `axiom_lines_seen=4`,
+`axiom_lines_expected=4`, `axiom_content_ok=True`, and
+`FINAL_STATUS=PASS STAGE=complete`.  Total connected execution time was
+1972.426 seconds.  The evidence archive was downloaded and independently
+rehashed on Windows with SHA-256
+`28aed2d67b8147cd34454ec2bc36d608f2ad814ac063b22a144a9af802891c40`.
+
+The verified structure quantifies the literal CMP109 Banach data over an
+admissible parameter family with common radii and one common contraction
+budget.  It constructs every fixed point internally from the existing map,
+and its nonempty-admissible-set field prevents a vacuous empty-polydisc
+witness.  This is the generic L2 brick for CMP116 (1.13)--(1.14); it does not
+yet instantiate the printed `s`-polydisc, discharge a `PreEq136` obligation,
+or construct a `TermSource`.  The live numerator therefore remains exactly
+18/41.
+
+## Addendum 536 (2026-08-03, **CMP116 Lemma-1 weakened-propagator L1 GREEN**)
+
+`BalabanCMP116Lemma1WeakenedPropagatorBound.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `6f5a3c9730ce49c77c028d618600c7dfa611a5ee`.  The runtime used the
+official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, and was disconnected and deleted
+immediately after the evidence archive was downloaded.
+
+The focal build exited zero with the literal terminal line
+`Build completed successfully (2756 jobs).` after 30.516 seconds.  The audit
+exited zero after 8.186 seconds and printed seven declarations, each depending
+exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` were absent.  The first runner verdict was a false
+instrumentation failure caused by an invalid regular expression after both
+child exit codes were already zero.  A same-clone post-validation preserved
+that original summary, normalized the complete audit output independently of
+line wrapping, verified all seven header/content blocks, and recorded
+`FINAL_STATUS=PASS`.  The downloaded archive was independently rehashed on
+Windows with SHA-256
+`d1419c7db2270fe940d797caf3df0ea07f6fe5b724671fcd8f35a8e8e3222166`.
+
+The verified certificate constructs the weakened propagator internally as
+the literal complex random-walk `tsum`.  From the source per-walk bound, the
+printed `m <= 2^4` / `m > 2^4` dichotomy, and one common scalar budget
+`kappa1 <= delta1 * M`, it derives the uniform equation-(1.11) bound
+`B0 * exp (16 * kappa1)` over the whole printed polydisc, together with the
+fully coupled identity and coordinatewise derivative.  It does not identify
+the generic series with the three physical propagators `H(s)`, `G(s)`, and
+`H0(s)`; those specializations remain downstream, with the literal `H0(s)`
+producer still absent.  This source brick does not discharge a `PreEq136`
+field, so the live numerator remains exactly 18/41 and no `TermSource`
+inhabitant is produced.
+
+## Addendum 537 (2026-08-03, **physical CMP116 Lemma-1 covariance `G(s)` bridge GREEN**)
+
+`BalabanCMP116Lemma1PhysicalCovariancePropagator.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `d21ba0ecde1fcffaf4e1c2060eb35823d12384f6`.  The runtime used the
+official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`.  The focal exited zero with
+`Build completed successfully (8491 jobs).` after 1,470.552 seconds; the
+audit exited zero after 11.510 seconds.  Its three declarations each depend
+exactly on `[propext, Classical.choice, Quot.sound]`, with neither `sorryAx`
+nor `ofReduceBool`.  The evidence archive was downloaded, independently
+rehashed on Windows as
+`a3ecc3e9f8b5b54065ed6c7a969918b22e281567d51d5c30213cad05042d5149`,
+and the runtime was disconnected and deleted immediately afterward.
+
+The verified theorem uses one common physical walk budget for every matrix
+entry, constructs the scalar L1 propagators internally, and identifies their
+matrix exactly with the literal source-Pi4 complex covariance `G(s)`.  It is
+an entrywise identity and does not by itself prove a volume-uniform operator
+norm.  The current physical minimizer `H(s)` contains products with repeated
+weakening coordinates and therefore still needs a multiplicity-aware
+monomial expansion; the literal `H0(s)` producer remains absent.  No
+`PreEq136` field is discharged: the live numerator remains 18/41 and no
+`TermSource` inhabitant is produced.
+
+## Addendum 538 (2026-08-03, **literal physical `H(s)` word multiplicity expansion GREEN**)
+
+`BalabanCMP116WeakeningMultiplicity.lean` and
+`BalabanCMP99ComplexFineHeadTailMultiplicityExpansion.lean` were replayed
+with both focused audits in one fresh Colab Pro+ CPU/high-RAM clone from
+source checkpoint `17f416433ca6ea95b7cf38d414d3bccf878cec13`.
+The runtime opened at 2026-08-03 01:45:06 UTC with 50.99 GiB RAM and was
+disconnected and deleted immediately after the evidence archive was
+downloaded.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed; the manifest was unchanged
+and the tracked core-import closure contained 2,206 sources.  The focal build
+exited zero with `Build completed successfully (8491 jobs).` after 1,466.565
+seconds.  The two audits exited zero after 5.864 and 12.723 seconds and
+printed ten declarations, each depending exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS STAGE=audit` after 1,628.246
+seconds.  The archive created in Colab and independently rehashed on Windows
+has SHA-256
+`132e8766327fa5e1a05aa5d1b7e190e7e0ebedc91330901d75c2c88e3c9b4bdd`.
+
+The verified algebra records repeated weakening coordinates as finitely
+supported natural multiplicities.  For one literal physical head/tail word,
+every coarse defect is exactly `(m_i(sigma)-1)` times a fixed matrix, all
+scalar factors are extracted without reordering the noncommutative matrix
+word, and the resulting scalar is expanded exactly over omitted factors.
+Thus each word is a finite signed sum of multiplicity monomials times one
+unchanged physical matrix word.
+
+This does not yet reindex the complete nested `H(s)` series and does not
+establish the source short/long-walk estimate for total multiplicity degree.
+It also supplies no literal `H0(s)`.  Consequently no `PreEq136` field is
+discharged, the live numerator remains exactly 18/41, and no `TermSource`
+inhabitant is produced.
+
+## Addendum 539 (2026-08-03, **literal physical `H(s)` whole nested multiplicity series GREEN**)
+
+`BalabanCMP99ComplexFineHeadTailMultiplicitySeries.lean` was replayed with
+its focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `5ae463a2e48bc91d582672ba64dbbac51f4c1f6f`.  The runtime opened at
+2026-08-03 02:39:56 UTC and was disconnected and deleted immediately after
+the evidence archive was downloaded.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed; the manifest was unchanged.
+The focal build exited zero with the literal terminal line
+`Build completed successfully (8492 jobs).` after 1,290.468 seconds.  The
+audit exited zero after 10.407 seconds and its single declaration depends
+exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` were absent.  The gate recorded `FINAL_STATUS=PASS`.  The
+archive created in Colab and independently rehashed on Windows has SHA-256
+`ef52812ec6826038096e29f3fb9d976d966e66420a6bc176c46965e7ede92df7`.
+
+The verified theorem expands the literal physical rectangular minimizer
+through its complete source order: Neumann length, coarse word, finite tail
+choice, head length and finite head walk.  Each terminal word is replaced by
+the already verified finite signed powerset expansion, retaining repeated
+weakening coordinates as natural multiplicities and preserving the original
+noncommutative physical matrix word.  No two infinite sums are interchanged.
+
+This is an exact algebraic identity for the whole nested physical `H(s)`
+series.  It does not flatten the nested index, prove absolute summability of
+the expanded series, establish the source short/long-walk bound for total
+multiplicity degree, or construct `H0(s)`.  It therefore discharges no
+`PreEq136` field: the live numerator remains exactly 18/41 and no `TermSource`
+inhabitant is produced.
+
+## Addendum 540 (2026-08-03, **weakening-multiplicity radial majorant GREEN**)
+
+`BalabanCMP116WeakeningMultiplicityMajorant.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `ca21ccc18e7918800e169dcd25a1db9235bfed58`.  The runtime opened at
+2026-08-03 03:57:42 UTC and was disconnected and deleted immediately after
+the terminal result.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The focal target exited
+zero with the literal terminal line `Build completed successfully (2757
+jobs).` after 33.063 seconds.  The audit exited zero after 3.612 seconds and
+its five declarations each depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS` after 134.710 seconds.  The
+visible Colab transcript was saved and independently rehashed on Windows as
+`e372fa7da5a08073965ec1a863fc42c54bda308ebf81df9dc7ab36b9669f044d`.
+
+The verified finite algebra replaces square-free carrier cardinality by the
+total degree of the finitely supported weakening multiplicity.  It proves
+additivity, the exact sum-of-carrier-cardinalities formula for a family with
+overlaps, and the radial norm bounds for one monomial and one weighted term.
+It does not prove absolute summability of the physical nested series, absorb
+the finite powerset cost, identify total degree with the printed CMP116
+integer `m`, or construct `H0(s)`.  Consequently no `PreEq136` field is
+discharged, the live numerator remains exactly 18/41, and no `TermSource`
+inhabitant is produced.
+
+## Addendum 541 (2026-08-03, **finite powerset multiplicity majorant GREEN**)
+
+`BalabanCMP116WeakeningMultiplicityPowersetMajorant.lean` was replayed with
+its focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `1e7e3bb4`.  The runtime was disconnected and deleted immediately
+after the terminal result.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The focal target exited
+zero with the literal terminal line `Build completed successfully (2758
+jobs).` after 30.177 seconds.  The audit exited zero after 3.976 seconds and
+its four declarations each depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS` after 192.292 seconds.  The
+visible Colab transcript was saved and independently rehashed on Windows as
+`89e225ae8432711a2d503c8f401ff488645d178b69ceb8a24770fbf8a1f0e59b`.
+
+The verified finite estimate bounds every omitted-subset term by the common
+total-degree radial majorant and bounds the sum of all term norms by exactly
+`2 ^ indices.card` copies of it.  It uses neither cancellation nor an
+infinite reordering.  It does not identify `indices.card` with the printed
+CMP116 integer `m`, absorb the finite factor into a physical ratio, prove the
+remaining nested-series summability, or construct `H0(s)`.  Consequently no
+`PreEq136` field is discharged, the live numerator remains exactly 18/41,
+and no `TermSource` inhabitant is produced.
+
+## Addendum 542 (2026-08-03, **multiplicity-aware Lemma-1 norm bound GREEN**)
+
+`BalabanCMP116Lemma1MultiplicityPropagatorBound.lean` was replayed with its
+focused audit in one fresh Colab Pro+ CPU/high-RAM clone from source
+checkpoint `49d92ea4c93c1875960db957271df08d27ec6f58`.  The runtime was
+disconnected and deleted immediately after the terminal result.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The focal target exited
+zero with the literal terminal line `Build completed successfully (2760
+jobs).` after 23.567 seconds.  The audit exited zero after 5.450 seconds and
+its nine declarations each depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS` after 125.203 seconds.  The
+visible Colab transcript was saved and independently rehashed on Windows as
+`15dd1a44036d7a84e43b42d9ffd8853f2e6e0df4c1887ea30e22dc10231a7d7a`.
+
+The verified certificate constructs the multiplicity-weighted `tsum`
+internally and derives the uniform `B0 * exp(16*kappa1)` norm bound using the
+total multiplicity degree.  Its base weight is indexed after the finite
+powerset expansion, so the physical combinatorial cost and the physical
+degree/tree-length comparison remain visible source obligations.  The brick
+does not identify total degree with the printed CMP116 integer `m`, flatten
+the literal nested physical `H(s)` series, prove coordinatewise holomorphy,
+or construct `H0(s)`.  Consequently no `PreEq136` field is discharged, the
+live numerator remains exactly 18/41, and no `TermSource` inhabitant is
+produced.
+
+## Addendum 543 (2026-08-03, **regional Green reconstruction and fifteenth scalar gate GREEN**)
+
+`BalabanCMP99SourceRegionalGreenNeumann.lean` and the updated
+`BalabanCMP116CenteredConditionedSmallnessCompatibility.lean` were replayed
+with their focused audits in one fresh Colab Pro+ CPU/high-RAM clone from
+source checkpoint `efc23a559b71c29a87c50b562506d984d277de7f`.  The runtime
+opened at 2026-08-03 12:17:10 UTC and auto-disconnected immediately after the
+terminal result at 13:10:10 UTC.
+
+The official Lean `v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`, and the manifest was unchanged.
+The regional focal exited zero with `Build completed successfully (8507
+jobs).` after 1,660.652 seconds.  Its audit exited zero after 17.196 seconds;
+all eleven declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`.  The joint-smallness focal exited
+zero with `Build completed successfully (8755 jobs).` after 1,357.209
+seconds.  Its audit exited zero after 11.173 seconds; all eight declarations
+depend exactly on the same axiom set.  The gate recorded `FINAL_STATUS=PASS`.
+The evidence JSON has SHA-256
+`84ea33b94f5225fb1107234c55caf20ce60f6a365ae42789e6e3dbdf51d76252`,
+and the complete transcript has SHA-256
+`18663a48b7aa03f2996eaf341c786120189ba44810001bf64bda42bb4b30aec6`.
+
+The verified regional algebra constructs every compressed Dirichlet inverse,
+the square-partition parametrix, the regional defect and its Neumann inverse,
+and identifies the resulting operator with the ambient Green operator by
+inverse uniqueness.  The geometric interface now distinguishes ordinary
+support inclusion from the explicit finite-range collar required by the
+future locality estimate.  Separately, the joint regime carries
+`norm R' < 1` as its fifteenth scalar target rather than conflating it with
+the patched one-cochain defect.
+
+This brick proves simultaneous compatibility of that target with the previous
+fourteen windows, not physical attainment of the regional defect bound or the
+collar estimate.  It therefore discharges no additional `PreEq136` field: the
+live numerator remains exactly `18/41`, and no `TermSource` inhabitant is
+produced.
+
+## Addendum 544 (2026-08-04, **generated Qprime fixed-output row chain GREEN**)
+
+`FinitePiLpTypedFixedOutputWeightedKernel.lean`,
+`BalabanCMP99SourceGeneratedCountingMassOutputRow.lean`, and
+`BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRow.lean` were
+replayed with their focused audits in one fresh Colab Pro+ CPU/high-RAM clone
+from source checkpoint `db04d33a19be5f4e87d842f6cc9a3925e53f4388`.
+The runtime opened at 2026-08-04 08:36:15 UTC and auto-disconnected after the
+terminal result at approximately 09:17 UTC; the cell ran for 2,473.484
+seconds.
+
+The official Lean `v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.  The generic fixed-output focal
+exited zero with `Build completed successfully (8172 jobs).` after 153.873
+seconds, and its five-declaration audit exited zero after 11.882 seconds.  The
+generated counting-mass focal exited zero with `Build completed successfully
+(8483 jobs).` after 1,982.229 seconds, and its six-declaration audit exited
+zero after 30.978 seconds.  The complete physical-precision focal exited zero
+with `Build completed successfully (8488 jobs).` after 118.568 seconds, and
+its two-declaration audit exited zero after 14.277 seconds.  All thirteen
+audited declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS` and requested runtime
+unassignment.  The evidence JSON has SHA-256
+`97ea35c85380a13644d92aaa9d4745ad6ce05b5b290023855335046d2a9c6597`;
+the evidence archive created in Colab has SHA-256
+`2fa57e39cb4de72b71eb3ab36392a07de33f95eb8b81c8c9a0c12219fb11f28f`.
+
+The verified physical orientation is not obtained from abstract
+self-adjointness.  It is proved block-by-block for the literal generated
+counting mass: the block norm is exact within one terminal fibre and zero
+outside it.  The complete precision keeps separate the nearest-neighbour
+covariant-Laplacian budget and the scalar multiple of the normalized
+`Q'^*Q'` budget.  This closes the fixed-output row input to CMP99 (3.88), but
+does not prove the displayed three-term identity, the source physical
+large-block slope, the collar estimate, or `norm R' < 1`.  Consequently no
+additional `PreEq136` field is discharged: the live numerator remains exactly
+`18/41`, and no `TermSource` inhabitant is produced.
+
+## Addendum 545 (2026-08-04, **regional large-block overlap and weighted-row chain GREEN**)
+
+The remaining regional large-block queue was replayed once, stop-on-first-error,
+in one fresh Colab Pro+ CPU/high-RAM clone from source checkpoint
+`699efbad6f05a42fef0ed0e5a9a18a05a06ee11f`.  The runner checkpoint was
+`45244ed342ccd66736f410afbd626f64553e6b06` and its blob had SHA-256
+`42d329584cb4dd06f8d96009d42388a2738d2556c04271875e75363530bb6045`.
+The runtime opened at 2026-08-04 19:23:04 UTC with 50.99 GiB of RAM and
+requested automatic unassignment immediately after the terminal result.
+
+The official Lean `v4.29.0-rc6` toolchain and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` passed.  The regional-defect and
+overlap focal exited zero with `Build completed successfully (8517 jobs).`
+after 1,995.497 seconds, and its three-declaration audit exited zero after
+11.604 seconds.  The generic weighted-row-from-range focal exited zero with
+`Build completed successfully (8173 jobs).` after 36.683 seconds, and its
+one-declaration audit exited zero after 7.920 seconds.  The source-overlap
+weighted-row focal exited zero with `Build completed successfully (8173
+jobs).` after 16.770 seconds, and its one-declaration audit exited zero after
+7.657 seconds.  The active-fine-block equivalence focal exited zero with
+`Build completed successfully (8395 jobs).` after 19.944 seconds, and its
+two-declaration audit exited zero after 7.226 seconds.  Finally, the
+transported-synthesis-row focal exited zero with `Build completed successfully
+(8399 jobs).` after 17.212 seconds, and its two-declaration audit exited zero
+after 9.468 seconds.
+
+All nine targeted declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` were
+absent.  The gate recorded `FINAL_STATUS=PASS` and
+`RUNTIME_UNASSIGN_REQUESTED=1`.  The evidence JSON has SHA-256
+`39a56a70e5e11652515cdd9416814f6c90dda53b326dbd42497d0fb62484fb39`,
+and the evidence archive created in Colab has SHA-256
+`ce44e53fcaa08d7c207c453e51a72173ac0e53b05b8305fef80794d8f849df1f`.
+
+Together with the previously sealed source-partition, physical-slope,
+single-overlap, typed scalar-commutator and generated-Qprime row bricks, this
+closes the verified infrastructure immediately below the source-facing CMP99
+(3.88) calculation.  It does **not** prove the displayed three-term (3.88)
+identity, its finite-range collar estimate, or physical attainment of
+`norm R' < 1`.  It therefore discharges no additional `PreEq136` field: the
+live numerator remains exactly `18/41`, and no `TermSource` inhabitant is
+produced.
+
+## Addendum 546 (2026-08-05, **literal localized carrier, generated conditioned root/lower certificate GREEN; 20/41**)
+
+The proof-carrying localized-region dictionary,
+`BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136.lean`, and the
+prescribed-`qBound` scalar reduction were validated stop-on-first-error from
+the exact source checkpoint
+`fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f` by durable GitHub Actions run
+`30962182007` (workflow checkpoint
+`183c6457c796137d0c379427ebd1c8796555fcff`).  The official Lean
+`v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The coordinate-dictionary focal completed with `Build completed successfully
+(8527 jobs).`; its ten-declaration audit exited zero.  The combined source
+assembler completed with `Build completed successfully (8978 jobs).`; its
+eighteen-declaration audit exited zero after the historical interacting-
+precision audit prerequisite was materialized explicitly.  The `qBound` wall
+completed with `Build completed successfully (8202 jobs).`; its one-
+declaration audit exited zero.  All 29 declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` are
+absent.  The gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`b158aa22fd02e38813502f0e8876f422f73b13bdb0d4cc31805937bc6238456d`.
+The axiom JSON has SHA-256
+`421dd2cafe275b830d036d74a69b5ccb358fb342e926d706a88dd5cc56677f81`;
+the stage ledger has SHA-256
+`66f1364eaf044ce889d43d5eff93cbbf7d39a903dd64d35c3a2fc5969b4f7d70`.
+
+Two earlier durable runs are retained as negative evidence.  Run
+`30955155960` exposed the missing import of the module that actually exports
+the conditioned covariance declarations.  After that one-line source fix,
+run `30959517987` compiled both the dictionary and the complete source
+assembler, then stopped because the historical precision audit `.olean` had
+not been materialized in the fresh clone.  The final runner makes that
+prerequisite explicit; neither incident changed a theorem, hypothesis, or
+constant.
+
+The verified source data no longer accept an independent conditioned
+covariance, Gaussian root, square-root certificate, or strict lower
+certificate.  They construct all four from the literal interacting precision
+and the literal proof-carrying localized region.  This installs terminal
+groups 12a and 13 and moves the auditable producer numerator exactly from
+`18/41` to `20/41`.  The compression bridge 12b remains genuine
+infrastructure outside the raw denominator, and the `qBound` theorem only
+reduces `outer_small` to a visible scalar gap budget.  It does not attain that
+budget, construct a complete `PreEq136`, or inhabit a `TermSource`; the latter
+counter remains zero.
+
+## Addendum 547 (2026-08-05, **physical root/outer walls reduced to literal scalar gaps GREEN; 20/41 unchanged**)
+
+The restricted `R3` source-rate sign producer and the combined source
+assembler with literal coercivity-gap inputs were validated stop-on-first-error
+from exact source checkpoint
+`fbb2d47d5fbc0ccc4900c15b55cc210d9a8e0440` by durable GitHub Actions run
+`30965959088` (workflow checkpoint
+`fa04a93ddd48f583bc324bf5d9de13085dfc2de0`).  The official Lean
+`v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The coordinate-dictionary focal completed with `Build completed successfully
+(8527 jobs).`; its ten-declaration audit exited zero.  The new restricted
+`R3` source-rate focal completed with `Build completed successfully (8533
+jobs).`; its three-declaration audit exited zero.  The combined source
+assembler completed with `Build completed successfully (8979 jobs).`; its
+eighteen-declaration audit exited zero after the historical interacting-
+precision audit prerequisite was materialized explicitly.  The `qBound` wall
+completed with `Build completed successfully (8202 jobs).`; its one-
+declaration audit exited zero.  All nine recorded stages exited zero.  All 32
+audited declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` are
+absent.  The gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`4b8553eaa49174143571ea503dfaec155bf4d090235b118258a8be028fa592e0`.
+The axiom JSON has SHA-256
+`6332cda2cb9706e138f76891938f2358eb946d1fcf443b67058f4e21a7385c`;
+the stage ledger has SHA-256
+`5984af6f2cd34152bbd5a7cfcf4b3cfe6e93ef801d35e443e9be6fbc262e76b4`.
+The internal `SHA256SUMS` manifest was rechecked independently and matched all
+17 recorded files.
+
+The combined assembler no longer accepts terminal inequalities containing the
+physical conditioned-root norm.  It constructs the generated root internally,
+derives `root_small` from the visible gap `alpha < coercivityConstant`, derives
+the sign of the literal restricted `R3` source rate from the already named
+shell and Neumann windows, and derives `outer_small` from the visible joint
+budget `2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound`.
+Those two gap inequalities remain genuine scalar attainment obligations.
+This brick therefore transforms the interface but installs no additional
+`PreEq136` producer: the live numerator remains exactly `20/41`, bridge 12b
+remains infrastructure outside the denominator, physical attainment of
+`norm R' < 1` remains open, and no `TermSource` inhabitant is produced.
+
+## Addendum 548 (2026-08-05, **joint scalar registry aligned with literal coercivity gaps GREEN; 20/41 unchanged**)
+
+The centered-conditioned joint smallness registry and its audit were validated
+from exact source checkpoint
+`c4beb733a1df50ded144c83c390de35d4cfa17ef` by durable GitHub Actions run
+`30969049527` (workflow checkpoint
+`21aa7199cfb33f3a8a185240521dada4d9a0c2b3`).  The official Lean
+`v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8755 jobs).` and
+exited zero.  The eight-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`45d19f31999f82acf23555f29cb422289353b23b369bd9617747c5add1592725`.
+The axiom JSON has SHA-256
+`2ea884f640aa1b7b93a787fe0f85ec0f4b7f1bfea52780518ed71eed6293ffca`;
+the stage ledger has SHA-256
+`2a2a6d2e70937dc7dd369aeb9995173a31ee9d582b203869fbb719f039f1a209`.
+The internal `SHA256SUMS` manifest was rechecked independently and matched all
+10 recorded files.
+
+The registry no longer uses the obsolete targets `rootNorm` and
+`outerBudget`.  Its two conditioned-Gaussian entries are now exactly the
+consumer-facing gaps `alpha < coercivityConstant` and
+`2 * R1Budget + sourceRate / (coercivityConstant - alpha) <= qBound`, with a
+single explicit rational witness for the whole updated regime.  This proves
+that the literal scalar targets are jointly compatible.  It does not prove
+that the physical interacting precision or the literal `R1`/`R3` budgets
+attain those targets, discharge groups 23--24, or construct a `TermSource`.
+The live counters therefore remain exactly `20/41` and zero.
+
+## Addendum 549 (2026-08-05, **regional CMP99 (3.88) prerequisites GREEN; 20/41 unchanged**)
+
+The regional prerequisite chain below the physical three-term commutator
+identity was validated stop-on-first-error from exact source checkpoint
+`837040284f5ce1d358d42eb8f6c01689829db29b` by durable GitHub Actions run
+`30971247380` (workflow checkpoint
+`6e26007370edaba7be09e4299f3d9441b644ff7d`).  The official Lean
+`v4.29.0-rc6` asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The eight source focal builds completed respectively with 8,495 jobs
+(periodic active-cell overlap), 8,494 jobs (periodic cutoff slope), 8,509 jobs
+(generated regional fine partition), 8,514 jobs (generated regional fine
+slope), 8,515 jobs (regional fine-scale no-go), 8,174 jobs (normalized
+weighted-row scalar commutator), 8,507 jobs (regional Green Neumann algebra),
+and 8,508 jobs (regional source-precision commutator split).  Their matching
+audits checked respectively 6, 8, 3, 2, 3, 2, 11, and 1 declarations.  All
+sixteen recorded stages exited zero.  All 36 audited declarations depend
+exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`59a54466cbb3d4659eaecc94d14a922b7ec2a626db7ee222cf44732c0c8c61de`.
+The axiom JSON has SHA-256
+`4523f4783e12b5496d16225a04a2e229f8ebbbb5bbafb03afa3b45108cc61d28`;
+the stage ledger has SHA-256
+`49f542994ee6fdd2159182e69224c834cc98378bfd89f87b58a39a7a4f012cc7`.
+The internal `SHA256SUMS` manifest was rechecked independently and matched all
+24 recorded files.
+
+This is **prerequisites/infrastructure for CMP99 (3.88), not a terminal
+field**.  The replay certifies the partition/overlap/slope interfaces, the
+arithmetic no-go for the auxiliary two-terminal-block cutoff, the generic
+weighted-row commutator estimate, the exact regional Neumann inverse algebra,
+and the additive split
+`[h, Delta_U + a Q'^* Q'] = [h, Delta_U] + a [h, Q'^* Q']`.
+It does not prove the displayed physical three-term identity, physical
+cutoff-slope attainment, `norm R' < 1`, groups 23--24, or a `TermSource`
+inhabitant.  The live counters therefore remain exactly `20/41` and zero.
+
+## Addendum 550 (2026-08-05, **first two differential species of CMP99 (3.88) GREEN; 20/41 unchanged**)
+
+The literal periodic covariant-Laplacian stencil and its scalar-cutoff
+product rule were validated from exact source checkpoint
+`767f54dd847b2459f05b2e2a9ea5ac320b8ccd35` by cold GitHub Actions run
+`30984221871` (workflow checkpoint
+`f3d4f5c5fd7dfe5247df59b8abe93fe92ff6b3ca`).  The checkout did not restore
+or save a project `.lake/build` cache.  The official Lean `v4.29.0-rc6`
+asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8474 jobs).` and
+exited zero.  Its four-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`bc8768043448255c8bafba74e3a2f08adc4dc62c9adf5c01262177710a33e53d`.
+The axiom JSON has SHA-256
+`e01a9b0dc3f34d46f8977993454da8d1fef65151a9c226e64b0419437ca95fb0`;
+the stage ledger has SHA-256
+`ad873cbe052709c11654a7d60881c9cac6bd143c307d617f0a159693e9241147`.
+
+This brick derives the exact link-derivative and scalar cutoff-Laplacian
+species from the literal ambient covariant stencil.  It does not yet install
+the normalized `Q'^* Q'` species, prove the complete three-term identity,
+attain `norm R' < 1`, discharge groups 23--24, or inhabit a `TermSource`.
+It is therefore infrastructure below window 15 rather than a terminal field;
+the live counters remain exactly `20/41` and zero.
+
+## Addendum 551 (2026-08-05, **normalized `Q'^* Q'` species of CMP99 (3.88) GREEN; 20/41 unchanged**)
+
+The exact fixed-output scalar-commutator expansion, its additive/scalar
+algebra, and the literal generated-precision dictionary were validated from
+exact source checkpoint
+`1cf90bee75d7927362c94ef338efc46f32153097` by cold GitHub Actions run
+`30986285981` (workflow checkpoint
+`a4be1d140709f73d11c309dc59339881d74142e2`).  The checkout did not restore
+or save a project `.lake/build` cache.  The official Lean `v4.29.0-rc6`
+asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8466 jobs).` and
+exited zero.  Its five-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`6baaab756e69ac8791791d4b4b45f729edf2d8fa78a6c87e28c51c31ceabfab9`.
+The axiom JSON has SHA-256
+`90b8ddfcbcedd5dca4f074b3ffa0f1f101be9e7df15658ac196c7581efb59680`;
+the stage ledger has SHA-256
+`81da9b2cf147492c86bbe001ec509ab0f5a540f1e11bc19a4d641fb766af6df1`.
+The internal `SHA256SUMS` manifest was rechecked independently and matched all
+12 recorded files.
+
+This brick supplies the normalized third algebraic species as the literal
+fixed-output kernel sum and identifies the generic source precision with the
+generated physical tower, adjoint mass and scalar coefficient.  It does not
+yet transport the two ambient differential species to the active carrier,
+combine all three species into the complete physical (3.88), estimate the
+regional defect, attain `norm R' < 1`, discharge groups 23--24, or inhabit a
+`TermSource`.  It is therefore infrastructure below window 15 rather than a
+terminal producer; the live counters remain exactly `20/41` and zero.
+
+## Addendum 552 (2026-08-05, **complete generated physical CMP99 (3.88) GREEN; 20/41 unchanged**)
+
+The complete active-carrier cutoff identity was validated from exact source
+checkpoint `39905a39f58a7e039ebaf17420393a57871e3dac` by cold GitHub Actions
+run `30990024776` (workflow checkpoint
+`8d9cb3736d5590dc45f7cf77e41c082ecc532130`).  The checkout did not restore
+or save a project `.lake/build` cache.  The official Lean `v4.29.0-rc6`
+asset had SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+the exact Mathlib pin was
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8509 jobs).` and
+exited zero.  Its seven-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`fd1b162e4539a7308bb5f99343f04133417795dbd2d6c64489bb0525beb41171`.
+The axiom JSON has SHA-256
+`cd7776ab71345da2efc04cc8020d9b71f42545ec1d7dfeb1fb8d539df1305fc4`;
+the stage ledger has SHA-256
+`5c49786524c0434e69bc4c5ec225f516a2171b0192d45082309535a563917436`.
+The internal `SHA256SUMS` manifest was rechecked independently and matched all
+12 recorded files.
+
+The theorem combines the exact active-region differential product rule with
+the normalized generated `Q'^* Q'` fixed-output kernel sum.  It therefore
+closes the complete algebraic three-species identity (3.88) without importing
+the later collar or contraction estimates.  It does not bound the regional
+correction, attain `norm R' < 1`, discharge groups 23--24, or inhabit a
+`TermSource`.  The live counters remain exactly `20/41` and zero.
+
+## Addendum 553 (2026-08-05, **fixed-output quantitative commutator bridge GREEN; 20/41 unchanged**)
+
+The direct fixed-output scalar-commutator estimate and its pointwise
+exponential extraction were validated from exact source checkpoint
+`4e23216a121fc64451528ce050443ee460ce589a` by cold GitHub Actions run
+`30992627475` (workflow checkpoint
+`e20f2aafb9838189636e7207c5f17391b1e02711`).  The checkout did not restore
+or save a project `.lake/build` cache.  Lean was the official
+`v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8174 jobs).` and
+exited zero.  Its two-declaration audit also exited zero.  Both declarations
+depend exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`16c82c8b92eb2c828e9db665991b8d2255b6d4ea15c0fbbbab95c26c36640b21`.
+The axiom JSON has SHA-256
+`34edcccc435fa8c68671081a3fe7380f9cdad30ea77ca32e3892736d11c701ad`;
+the stage ledger has SHA-256
+`3acd9e02aead177e431a57b8ea50833647edb15ba8513f4653a738c9b66acd74`.
+The internal `SHA256SUMS` manifest was independently rechecked with no
+mismatch.
+
+This bridge works in the printed fixed-output orientation and pays exactly
+`slope * range` against an existing weighted budget.  It does not yet supply
+the physical cutoff, the regional-operator dictionary, the Green composition,
+or a contraction.  Window 15 remains compatible but unattained; the live
+counters remain exactly `20/41` and zero.
+
+## Addendum 554 (2026-08-05, **generated physical precision weighted specialization GREEN; 20/41 unchanged**)
+
+The literal generated-precision specialization of the fixed-output
+commutator bridge was validated from exact source checkpoint
+`6bef7974e800d80534e171a285a7ea5b90d324e4` by cold GitHub Actions run
+`30994320564` (workflow checkpoint
+`23652ae655b663dbb1ba5f924ba747b53aae1b4b`).  The checkout did not restore
+or save a project `.lake/build` cache.  Lean was the official
+`v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8493 jobs).` and
+exited zero.  Its five-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`540b8a275efd29d5f4e055c0e3dc32d070043a04a9c4f9babb55e405faeeefd7`.
+The axiom JSON has SHA-256
+`25d3804acb5c1f99429bd57c8d3ad5928bf9f5dae8d583aa023f97e3b47e7c66`;
+the stage ledger has SHA-256
+`4db04f4106f0ef9013a79d9b01dfd0c695dca7bed8dfc3c42671749c9f62268f`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+10 recorded files.
+
+This brick keeps the covariant-Laplacian and normalized `Q'^* Q'`
+fixed-output row budgets separate, adds them only in the literal generated
+physical precision, and obtains the weighted and pointwise exponential
+commutator bounds in the source orientation.  It does not yet install the
+source large-block cutoff, identify the ambient and regional precision,
+compose with the regional Green operator, attain `norm R' < 1`, discharge
+groups 23--24, or inhabit a `TermSource`.  It is infrastructure below window
+15; the live counters remain exactly `20/41` and zero.
+
+## Addendum 555 (2026-08-05, **source large-block cutoff specialization GREEN; 20/41 unchanged**)
+
+The literal source-profile specialization on the generated physical
+precision was validated from exact source checkpoint
+`de57d8790caaab5d5177b59a76f9057901da8c43` by cold GitHub Actions run
+`30997349504` (workflow checkpoint
+`5c2457849e4e7d916090c772291e090a5ca31c67`).  The checkout did not restore
+or save a project `.lake/build` cache.  Lean was the official
+`v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed with `Build completed successfully (8527 jobs).` and
+exited zero.  Its seven-declaration audit also exited zero.  Every declaration
+depends exactly on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and
+`ofReduceBool` are absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`6b065cf1e097c4f09940023c847fec6ddd671e89287d2557bffd2aff99bfec6c`.
+The axiom JSON has SHA-256
+`5663ecc2432b502500b61d931a3b7abf446745a3d28aa349cd1f7266bd744ef6`;
+the stage ledger has SHA-256
+`74ddc22e36774b2ab627a5bf0780577ed93e8cf9442406479f5d5314e2698a55`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+10 recorded files.
+
+This brick installs the one source `CMP95SourceSmoothPartitionProfile` on the
+generated physical carrier, proves the transported Lipschitz estimate, and
+derives the fixed-output weighted and pointwise exponential commutator bounds
+with the exact `4 * derivBound / M` gain.  The Laplacian and normalized-mass
+budgets remain separately named until their literal final sum.  It does not
+identify an ambient precision with its regional supported compression,
+compose with a regional Green operator, attain `norm R' < 1`, discharge
+groups 23--24, or inhabit a `TermSource`.  It is step 4 below window 15; the
+live counters remain exactly `20/41` and zero.
+
+## Addendum 556 (2026-08-05, **ambient-to-regional precision dictionary GREEN; 20/41 unchanged**)
+
+The last design dictionary below the regional Green construction was
+validated from exact source checkpoint
+`8ac1a1c2508f65e51d4eb89f81bf650780691cf6` by cold GitHub Actions run
+`31001590888` (workflow checkpoint
+`3bf67f3cf291edf29e90b58ef61af1dc9bad5b80`).  The checkout did not restore
+or save a project `.lake/build` cache.  Lean was the official
+`v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T11:30:28Z` to `11:48:48Z`, completed with
+`Build completed successfully (8529 jobs).`, and exited zero.  Its
+eleven-declaration audit also exited zero.  Every declaration depends exactly
+on `[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` are
+absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`9fe9f4767adeb0e885a30d6486992a536a2b277cd9707c775e0d36c9ccc7a56f`.
+The axiom JSON has SHA-256
+`2e476774acec4cf02f41bcfb4129cc7fe54455e0260483e4b3384e3e5902a5b3`;
+the stage ledger has SHA-256
+`f49d4bb08ede72a74e57a189039d16161aa89f8b4fa18234ae19e4f2988c137b`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+10 recorded files.
+
+The brick constructs the full generated active carrier, identifies it with
+the literal ambient `FinBox` through one explicit finite equivalence,
+transports the generated physical precision and its coercivity, proves exact
+cutoff compatibility, and derives the regional commutator and exponential
+kernel bound without a free operator equality or a new constant.  It does not
+compose the commutator with a regional Green, prove the overlap/Schur defect
+budget, attain `norm R' < 1`, discharge groups 23--24, or inhabit a
+`TermSource`.  It is step 5 infrastructure below window 15; the live counters
+remain exactly `20/41` and zero.
+
+## Addendum 557 (2026-08-05, **uniform single-cell regional correction GREEN; 20/41 unchanged**)
+
+The step-6 regional correction was validated from exact source checkpoint
+`ddda0475533573d02f1197340df0d216467702da` by cold GitHub Actions run
+`31021829343` (workflow checkpoint
+`83b0b310de6aa326291b3145329246d062e75801`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T15:46:34Z` to `16:43:58Z`, completed with
+`Build completed successfully (8552 jobs).`, and exited zero.  Its
+sixteen-declaration audit ran from `16:43:58Z` to `16:44:22Z` and also exited
+zero.  Every declaration depends exactly on
+`[propext, Classical.choice, Quot.sound]`; `sorryAx` and `ofReduceBool` are
+absent, and the gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`d41bd0f4e0a792cbb631dbcc70c3d630df24e6b493521b503beae1b1dc7addd5`.
+The axiom JSON has SHA-256
+`fdeba68c7b0d8ce86afb97738eff6f88872f13b63b52b313f46b8e6f00b72269`;
+the stage ledger has SHA-256
+`91115f8460a794b871eb99e104c69e4a9eb512ccc0e77e2c5982bc7da8f488ce`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+13 recorded files.
+
+This brick constructs the exact finite-range regional cell, the canonical
+Dirichlet Green of the compressed generated ambient precision, its uniform
+exponential decay, and the literal correction
+`K(h_Pi) G'_Pi h_Pi` with one explicit cell-independent amplitude.  It does
+not pay the overlap `16`, prove the Schur/operator-norm defect budget, attain
+`norm R' < 1`, discharge groups 23--24, or inhabit a `TermSource`.  It is
+step 6 infrastructure below window 15; the live counters remain exactly
+`20/41` and zero.
+
+## Addendum 558 (2026-08-05, **overlap/Schur defect reduction GREEN; scalar window 15 open; 20/41 unchanged**)
+
+The step-7 reduction was validated from exact source checkpoint
+`ef157f8471ac9b9b7a9b5d12c0502b2aa3fa279d` by cold GitHub Actions run
+`31028008613` (workflow checkpoint
+`908329ce24a0009835478da8c8d75206115c6d65`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T17:03:30Z` to `18:00:10Z`, completed with
+`Build completed successfully (8557 jobs).`, and exited zero.  Its
+seven-declaration audit ran from `18:00:10Z` to `18:00:28Z` and also exited
+zero.  Every declaration depends exactly on
+`[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`79dc5433b7198181cfb87590b0de308231fadfbd38dae93f034f3b3748d3399f`.
+The axiom JSON has SHA-256
+`d0a7fc3f6e5634e32c36456e2840308911f3c9beadbd129fc4bd4f653aaeeaae`;
+the stage ledger has SHA-256
+`e1bdd1fddeba66945ca6db2204aca17a8a7bfde62b953545bb848a9687e339b8`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+13 recorded files.
+
+The brick sums the literal regional cells with the source overlap `16`,
+retains both exponential shell factors, and passes the resulting kernel bound
+through Schur to one explicit physical defect budget.  It proves the norm
+bound and the implication from `budget < 1`; it does **not** prove the scalar
+premise itself.  Hence this is the sealed step-7 reduction, not attainment of
+window 15, not discharge of rows 23--24, and not a `TermSource` inhabitant.
+The live counters remain exactly `20/41` and zero.
+
+## Addendum 562 (2026-08-05, **CMP96 (2.40) cutoff-Laplacian species GREEN; (2.43)--(2.44)/(3.89) open; 20/41 unchanged**)
+
+The cutoff-Laplacian source checkpoint
+`972e8d115517c6f1f9bea97ec348bd0e31e1368d` was validated by cold GitHub
+Actions run `31047332477` (workflow checkpoint
+`369870b6a978f247ba416a9ef84478bc7ec256ce`).  The run recorded
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+Lean was the official `v4.29.0-rc6` asset and Mathlib was exactly
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T21:20:26Z` to `21:46:05Z`, completed with
+`Build completed successfully (8517 jobs).`, and exited zero.  The audit ran
+from `21:46:05Z` to `21:46:15Z` and exited zero.  Its six declarations depend
+exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`6f3e21e5a7b1c8c14cf484a03d9ef67f7171bcf271d4539d251a0497f25e005b`.
+The axiom JSON has SHA-256
+`27e81215558b9c4cd4c6b909a6c6646d9813c18ef27e70fd3dd4a650eace06a7`;
+the stage ledger has SHA-256
+`30d0e8ba6c761af639ba9fd183410db44e1541d436867dc0b65e3b06cd6f0932`.
+All 13 entries of the internal `SHA256SUMS` manifest matched.
+
+The seal covers only the source-specific cutoff side of CMP96 (2.40): the
+two incident first differences per direction, their scalar discrete
+Laplacian, its literal rescaled correction identity, and the exact
+pre-summation gain `32 * derivBound / K`.  No second profile constant is
+introduced and no factor depending on `K` is hidden in the cell count.  The
+regional Green package (2.43), the direct combination (2.44)/CMP99 (3.89),
+`norm R' < 1`, rows 23--24, and a `TermSource` inhabitant all remain open.
+Therefore window 15 is still unattained and the live counters remain exactly
+`20/41` and zero.
+
+## Addendum 559 (2026-08-05, **diagonal generated Schur majorant NO-GO GREEN; physical window 15 still open; 20/41 unchanged**)
+
+The no-go was validated from exact source checkpoint
+`8494a73fcf1e6fc2bb59ab6442e7631cfcfe94a0` by cold GitHub Actions run
+`31034176002` (workflow checkpoint
+`85e787fc79864883b36b818dd705db57a72a7c25`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T18:29:48Z` to `19:27:16Z`, completed with
+`Build completed successfully (8569 jobs).`, and exited zero.  Its
+four-declaration audit ran from `19:27:16Z` to `19:27:24Z` and also exited
+zero.  Every declaration depends exactly on
+`[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`2c569535f50d50c1864be0287253adfe8554e32776efd288368fb9e9e16ebd7b`.
+The axiom JSON has SHA-256
+`6ee8ef575065609b28fc399f5b580fc2a70da078df0ecf65c6f611c0a7121741`;
+the stage ledger has SHA-256
+`c12115adf80030df05f9303fe5cfe8d69082b9793cdeb72003223ef50b9da366`.
+The internal `SHA256SUMS` manifest was independently rechecked and matched all
+13 recorded files.
+
+The four theorems prove that every literal source profile has
+`3 <= derivBound`, expose the exact depth-zero generated coercivity, lower
+bound the current diagonal step-7 majorant by `11943936`, and hence refute
+its `< 1` premise.  They do **not** lower bound the physical operator norm.
+The failure is the diagonal identification of the RG ratio with the source's
+independently large regional parameter; the source-faithful continuation
+keeps `CP(L)` at fixed RG ratio and obtains the cutoff gain through a separate
+`K^-1`.  Window 15 remains open, rows 23--24 remain undischarged, and the
+live counters remain exactly `20/41` and zero.
+
+## Addendum 560 (2026-08-05, **post-no-go route correction; no new compiler result; 20/41 unchanged**)
+
+The finite route to window 15 now names the direct source estimate CMP99
+(3.89) as step 7.  The former CT + Schur reduction remains a verified
+diagnostic and its impossibility theorem remains a verified no-go, but neither
+is the physical repair.  The accepted replacement must introduce the
+independent regional parameter `K`, obtain the `K^-1` gain before layer
+summation, and retain the same active-cell overlap bound `16` for every `K`.
+
+The source-separated partition, cutoff and ambient dictionary remain
+PRE-VALIDATION infrastructure.  The separately written two-scale CT + Schur
+scalar algebra has been classified as auxiliary and removed from the physical
+validation queue; it must not be used to claim attainment of window 15.  This
+is a route correction only: rows 23--24 remain open, the live count remains
+exactly `20/41`, and `TermSource` remains uninhabited.
+
+## Addendum 561 (2026-08-05, **source-separated direct-route prerequisites GREEN; physical CMP99 (3.89) still open; 20/41 unchanged**)
+
+The admissible source-separated prerequisites were validated from exact
+source checkpoint `b90c3c2efbfa100b38a87cc3591c799f7499fd78` by cold GitHub
+Actions run `31041990728` (workflow checkpoint
+`ad9d4493cf10fcda390465f696c6a01a36a1b0ba`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The source-separated large-block partition focal ran from
+`2026-08-05T20:01:52Z` to `20:26:12Z`; its audit exited zero.  The physical
+large-block cutoff focal ran from `20:26:20Z` to `20:30:26Z`; its audit exited
+zero.  The ambient dictionary focal ran from `20:30:38Z` to `20:31:09Z`; its
+audit exited zero.  The three audits cover 36 declarations, and every axiom
+set is a subset of `[propext, Classical.choice, Quot.sound]`.  The gate
+recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`b0a46d83e48b30ec9f16b86738e16f82985b8df42c771e67a867cde54bad0eb8`.
+The axiom JSON has SHA-256
+`c3811bd50de0c2d5257f64c88b47e52f1491f53b98ed42925dc03f1c93210ec1`;
+the stage ledger has SHA-256
+`5bc7640a7edbe21b7f3f5772c8c3e4bc14b8db37eb447ac97fed690004717177`.
+All 17 entries of the internal `SHA256SUMS` manifest were independently
+rehash-verified.
+
+The seal covers exactly the source-separated partition, the physical cutoff
+with the exact `4 * derivBound / K` gain, the generated ambient dictionary,
+and their audits.  The auxiliary separated-scale CT + Schur budget remains
+PRE-VALIDATION and excluded from the physical route after Addenda 559--560.
+The newly confirmed CMP96 equations (2.39), (2.40), (2.43), and (2.44) identify
+the source-specific direct proof that must replace it.  This brick does not
+prove CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource` inhabitant.
+The live counters remain exactly `20/41` and zero.
+
+## Addendum 563 (2026-08-06, **CMP99 (3.42) raw-fine metric retracted; block-scale repair GREEN; 20/41 unchanged**)
+
+The attempted cold seal of the regional-Green certificate was cancelled before
+the focal completed.  Primary visual inspection of CMP99 p. 397 and the
+rescaling immediately preceding CMP96 (2.43) showed that the exponential in
+(3.42) uses the rescaled block-lattice distance, whereas source checkpoint
+`6d010ec0bd7a023ecf64f830eae33ea2e9325b97` demanded the stronger raw
+fine-site `finBoxDist`.  The interrupted run therefore supplies no compiler
+evidence and that checkpoint is superseded as a mathematical interface.
+
+The replacement fixes the metric definitionally as
+`finBoxDist (blockSite M (2*Q) x) (blockSite M (2*Q) y)` in all
+four components.  It does not accept a caller-supplied metric: in particular,
+neither a constant-zero distance nor a favorable reindexing can inhabit the
+contract.  This correction is load-bearing for the normalized `Q'^*Q'`
+species, because sources in one terminal block have the same coarse label;
+using raw fine distance would introduce an artificial exponential loss across
+that block.
+
+The repaired source checkpoint
+`f08109f46eb3e41e25716f9156ee314b1760f7e9` passed cold GitHub Actions run
+`31053742585` (workflow checkpoint
+`e0777c4533da3c06698e39e86bf65d91f06f30a2`).  The run recorded
+`COLD_MODE=true`; project-cache restoration and saving were both skipped.
+Lean was the official `v4.29.0-rc6` asset and Mathlib was exactly
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T22:44:08Z` to `23:08:36Z`, completed with
+`Build completed successfully (8508 jobs).`, and exited zero.  The audit ran
+from `23:08:36Z` to `23:08:50Z` and exited zero.  Its twelve declarations
+depend exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The independently downloaded evidence archive has SHA-256
+`924b257e900c5dc200ab7163c5324bc07aa0d1d73c7948bd97bb11e73b1d1dcf`.
+The axiom JSON has SHA-256
+`316fa78f2b0fe174ced7f9f960ec372d1f7917fb34369f72d50fbe942be3e73d`;
+the stage ledger has SHA-256
+`bdddb5e4cfc75881975d7238a1f13bfada7f353221658ff2ef677875d3f8aa76`.
+Every entry of the internal `SHA256SUMS` manifest was independently rehashed
+and matched.
+
+This seal closes only the source-facing (3.42) prerequisite.  No part of
+CMP99 (3.89), `norm R' < 1`, rows 23--24, or a `TermSource` inhabitant follows
+from it.  Window 15 is still unattained and the live counters remain exactly
+`20/41` and zero.
+
+## Addendum 564 (2026-08-06, **CMP99 (3.89) covariant-link orientation and pre-sum `K^-1` gain GREEN; physical bound open; 20/41 unchanged**)
+
+The first covariant-link interface was validated from exact source checkpoint
+`ed7d4007af46ac8858326578f89dc6726de76665` by cold GitHub Actions run
+`31056707497` (workflow checkpoint
+`a1d33287a3b9fd3ab01d000534691f29576e87c5`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-05T23:34:36Z` to `2026-08-06T00:01:58Z`,
+completed with `Build completed successfully (8519 jobs).`, and exited zero.
+The audit ran from `00:01:58Z` to `00:02:05Z` and also exited zero.  Its three
+declarations depend exactly on `[propext, Classical.choice, Quot.sound]`; the
+gate recorded `FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`37c104fdee6846685286162c3accac55d9307b7f82522349497a7e4ea5262f92`.
+The axiom JSON has SHA-256
+`885e2ae07f89b40de03888c6c8b50f18547035985b72211353df8b75f170b745`;
+the stage ledger has SHA-256
+`901559c3011970ae664f2b9462593fd50819a7ffb16884ba60a68b2d8d402396`.
+Every entry of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves that the reverse incident difference is the literal forward
+covariant derivative at the shifted site up to the physical adjoint isometry,
+bounds the first link species by the eight incident derivative entries, and
+places the exact `4 * B0 * derivBound / K` gain before any cell or layer sum.
+It does not consume the regional-Green derivative bound, prove the complete
+pointwise first-species estimate, combine the three species of (3.89), attain
+`norm R' < 1`, discharge rows 23--24, or inhabit a `TermSource`.  Window 15
+therefore remains open and the live counters remain exactly `20/41` and zero.
+
+## Addendum 568 (2026-08-06, **physical first species of CMP99 (3.89) GREEN; other species and window 15 open; 20/41 unchanged**)
+
+The source-separated first-species endpoint was validated from exact source
+checkpoint `68fea228b9f1e7061f73df078b94f4cca6d08c9e` by cold GitHub Actions run
+`31065483711` (workflow checkpoint
+`c37d1eb0386c6f0840a5e20aa1de6b44fa1adc3b`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset and Mathlib was
+exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-06T02:25:40Z` to `02:51:10Z`, completed with
+`Build completed successfully (8523 jobs).`, and exited zero.  The audit ran
+from `02:51:10Z` to `02:51:17Z` and also exited zero.  Both declarations
+depend exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`6603cf0b45e475725ec060e3295f8e55aa8a408c16e38eff6b8b78e83540f11c`.
+The axiom JSON has SHA-256
+`3ab3832f8f2aefaadac5e753d76e540c9bd87063c380f748422cd6550832d827`;
+the stage ledger has SHA-256
+`32b4b8ec95a1363ad2b786bd8aba010c4dfbe73a6ff0d7bb18b5323937af4419`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The theorem consumes the literal CMP99 (3.42) left-derivative estimate and
+the literal source-separated cutoff, transports every incident term to the
+central block metric, and exposes exactly
+`4 * ((4 * B0 * derivBound) / Klarge) * (1 + exp(delta0))` before any cell or
+layer sum.  `Klarge` is separate from the regional precision operator `A`.
+This does not bound the other two species, prove complete CMP99 (3.89), attain
+`norm R' < 1`, discharge rows 23--24, or inhabit a `TermSource`.  Window 15
+remains open and the live counters remain exactly `20/41` and zero.
+
+## Addendum 565 (2026-08-06, **CMP99 (3.89) regional-Green incident-metric link bound GREEN; common metric open; 20/41 unchanged**)
+
+The regional-Green link bound was validated from exact source checkpoint
+`ec36dd107c2dbfd2db003c331dce23d4d787b683` by cold GitHub Actions run
+`31058984443` (workflow checkpoint
+`659083efed10ac4c54752ccdcbfc0203217cdec9`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset and Mathlib was
+exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-06T00:15:08Z` to `00:39:57Z`, completed with
+`Build completed successfully (8520 jobs).`, and exited zero.  The audit ran
+from `00:39:57Z` to `00:40:02Z` and also exited zero.  Its declaration depends
+exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`911e03835e0e49105a751a04418a5d40f15d7fc3b25f6db866fe8c79d20ff754`.
+The axiom JSON has SHA-256
+`6b800194b86f5d9cfd2983a2dacf187f61de7155f404d14abdd0ffb302de2761`;
+the stage ledger has SHA-256
+`63b97cc4fa280faecf3843489428a83c06a4e5529a0921485231b42a3cf338cd`.
+Every entry of the internal `SHA256SUMS` manifest independently matched.
+
+The theorem consumes the literal `left_derivative_bound` field of the sealed
+CMP99 (3.42) certificate for the canonical regional Green and bounds the
+covariant-link species by the eight exact incident derivative estimates.  It
+retains each shifted block distance rather than postulating their equality
+with a central metric.  The common-metric transport, complete first species,
+three-species combination, `norm R' < 1`, rows 23--24, and `TermSource`
+inhabitant all remain open.  Window 15 is unattained and the live counters
+remain exactly `20/41` and zero.
+
+## Addendum 566 (2026-08-06, **literal one-step block-owner geometry GREEN; exponential transport open; 20/41 unchanged**)
+
+The block-shift geometry was validated from exact source checkpoint
+`79b8f33b2d73dc62e5d34bbf475c56f52a5331f5` by cold GitHub Actions run
+`31061565085` (workflow checkpoint
+`5e538d6856d5861f66208178a9754731bae4e387`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset and Mathlib was
+exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-06T01:04:19Z` to `01:29:42Z`, completed with
+`Build completed successfully (8521 jobs).`, and exited zero.  The audit ran
+from `01:29:42Z` to `01:29:48Z` and also exited zero.  Both declarations
+depend exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`b83e41e29fa2772e9b632dcc820a65285adda4c139579fe8d3844cc2cdfe3a18`.
+The axiom JSON has SHA-256
+`684448d443268c791b8435142fb1f1bb359e8f9536602b1f7e3acfa9f107747d`;
+the stage ledger has SHA-256
+`6677b456595821773ca62ce9cc745232a5499046b16840deab02a5a7fdae5b34`.
+Every entry of the internal `SHA256SUMS` manifest independently matched.
+
+The first theorem proves that a backward fine shift maps under the literal
+block quotient either to the same owner or its backward coarse neighbor; the
+second derives coarse distance at most one.  This does not yet perform the
+real exponential-rate transport, prove the common-metric first species or
+the complete (3.89), attain window 15, discharge rows 23--24, or inhabit a
+`TermSource`.  The live counters remain exactly `20/41` and zero.
+
+## Addendum 567 (2026-08-06, **common-metric first-species transport GREEN; complete CMP99 (3.89) open; 20/41 unchanged**)
+
+The common-metric transport was validated from exact source checkpoint
+`47d02e63a865bb75bba6f14d2da1a12e6a675fe2` by cold GitHub Actions run
+`31063213456` (workflow checkpoint
+`92e8f3e8688c437b89fd215c342eb1dae7bc7c66`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset and Mathlib was
+exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The focal ran from `2026-08-06T01:38:02Z` to `02:05:18Z`, completed with
+`Build completed successfully (8522 jobs).`, and exited zero.  The audit ran
+from `02:05:18Z` to `02:05:24Z` and also exited zero.  Both declarations
+depend exactly on `[propext, Classical.choice, Quot.sound]`; the gate recorded
+`FINAL_STATUS=PASS`.
+
+The deterministic evidence archive downloaded and independently rehashed on
+Windows has SHA-256
+`1d03fe2b762ba4e61cc2f9b3d2d17e476ea717e6bbb3877a7f3622a8c84028b9`.
+The axiom JSON has SHA-256
+`e96a3d24f8e50e7b8a612228263b957d963997905b6b57ce9b5d7ec2e1ec4d3f`;
+the stage ledger has SHA-256
+`57dc380a606a0ed4c898099b53779f11896956119301936ef1513534132f6437`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick converts the literal one-step block-owner displacement into an
+explicit `exp(delta0)` loss and transports all eight incident derivative
+terms to the central output-block metric.  The finite direction sum and the
+pre-sum `K^-1` gain remain explicit.  It does not finish the complete
+first-species endpoint, combine all three species of (3.89), attain
+`norm R' < 1`, discharge rows 23--24, or inhabit a `TermSource`.  Window 15
+therefore remains open and the live counters remain exactly `20/41` and zero.
+
+## Addendum 569 (2026-08-06, **cutoff-Laplacian scale defect and derived second-derivative budget GREEN; physical periodization open; 20/41 unchanged**)
+
+Exact source checkpoint
+`aaafae326ab952d990c0efb6a66553f0d2a61add` was validated by cold GitHub
+Actions run `31067778196` (workflow checkpoint
+`8b43c3307ff9e0a8db8d8a9e58b1f2c08801061f`).  The run recorded
+`COLD_MODE=true`; restoration and saving of the project `.lake/build` cache
+were both skipped.  Lean was the official `v4.29.0-rc6` asset with SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`,
+and Mathlib was exactly `07642720480157414db592fa85b626dafb71355b`.
+
+The second-derivative focal ran from `2026-08-06T03:14:15Z` to `03:14:21Z`,
+completed with `Build completed successfully (2040 jobs).`, and its audit
+exited zero at `03:14:26Z`.  The scale-diagnostic focal then completed with
+`Build completed successfully (8518 jobs).` at `03:41:16Z`; its audit exited
+zero at `03:41:21Z`.  All five declarations use exactly
+`[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`b630bc46b018897c2a9773f74f6d9f044e83ce134a5d34810315ae0d69f879ab`.
+The axiom JSON has SHA-256
+`58b871b137ea610752d1ba095f00dd44b2a39a7f83d33a09c702ff0f8c6a70c0`;
+the stage ledger has SHA-256
+`2ce9488ff892c106e70e633e03e36f6730ca9ec1e8a458ec9e32004948c04520`.
+All 15 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This seal proves that the selected smooth compactly supported CMP95 profile
+has some canonical finite global second-derivative budget.  It also proves
+the exact negative diagnostic: composing the old eight-first-differences
+majorant with the quadratic Green value scale leaves the positive factor
+`L^(depth+1)`.  It does not refute the literal cutoff-Laplacian term and does
+not yet transport the quadratic profile bound through a source-faithful
+periodic cutoff.  The physical second species, complete CMP99 (3.89), defect
+contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window
+15 is still compatible but unattained; the live counters remain exactly
+`20/41` and zero.
+
+## Addendum 570 (2026-08-06, **CMP95 quadratic profile second difference GREEN; physical periodization open; 20/41 unchanged**)
+
+Exact source checkpoint
+`b6469e61f3db08f17d44c45c1db056841be20974` was validated by cold GitHub
+Actions run `31069570903` (workflow checkpoint
+`b55a1e7f7739b7af0f79f329d519aea196c60225`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored.  The focal ran
+from `2026-08-06T03:52:55Z` to `03:53:04Z` and exited zero; the audit ran from
+`03:53:04Z` to `03:53:10Z` and also exited zero.  All three declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`1d792a3b75f75f1a3c515a2c04537f27e94adf5f3ac369e5264d6ba685d8df7f`.
+The axiom JSON has SHA-256
+`8c1e625514797a3759591e27aed5d0ee7bcf6edb72abf37e4b1d7d582acf4a1e`;
+the stage ledger has SHA-256
+`78dbc802700b0f81424544ca4607d69f1f0616c13adcfa742aaa27b098aaa8ab`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This seal proves a global derivative-Lipschitz estimate, its first-order
+Taylor remainder, and a centred second-difference estimate quadratic in the
+increment, all from the canonical second-derivative budget of the literal
+CMP95 source profile.  It deliberately does not apply those estimates to the
+existing square-root periodization.  A sign-preserving linear periodization,
+its disjoint-support square identity for periods with at least two cells, and
+an explicit one-cell branch remain open.  Hence the physical second species,
+complete CMP99 (3.89), defect contraction, rows 23--24, and a `TermSource`
+inhabitant remain open.  Window 15 is still compatible but unattained; the
+live counters remain exactly `20/41` and zero.
+
+## Addendum 571 (2026-08-06, **sign-preserving periodic CMP95 dictionary GREEN; physical reinstantiation open; 20/41 unchanged**)
+
+Exact source checkpoint
+`85654369b0bf37f2242ad31326393c1ec47d82aa` was validated by cold GitHub
+Actions run `31070579539` (workflow checkpoint
+`4539b24130bdcf1248e47b88f25bb92062b8e095`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored.  The focal ran
+from `2026-08-06T04:13:46Z` to `04:37:58Z` and exited zero; the audit ran from
+`04:37:58Z` to `04:38:06Z` and also exited zero.  All nine declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`555ff32a693c008234c7b424bdc32d44005bed1c0af2d87eda0b99d1b66ee2f3`.
+The axiom JSON has SHA-256
+`7d70f260953c1a49cb08ab2a1093204f3f8633d2920fe4e87af00f59cdbaebb6`;
+the stage ledger has SHA-256
+`aa8795b19c1305b2a9c9901a109746576f80af34fbdcd77f2217f7b3b2c8c1ba`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+This seal constructs the literal signed linear periodization of the CMP95
+profile.  Disjoint support proves that its square equals the existing periodic
+square weight for `Q >= 2`; an explicit constant branch treats `Q = 1`.
+The tensor product therefore satisfies the exact finite square partition.
+It does not silently transport the old square-root-based physical
+specializations: the rescaled signed partition, its slope and quadratic
+second difference, overlap inclusion, first species, and ambient dictionary
+remain to be reinstantiated from the generic sealed algebra.  Consequently
+the physical second species, complete CMP99 (3.89), defect contraction, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 is compatible
+but unattained; the live counters remain exactly `20/41` and zero.
+
+## Addendum 572 (2026-08-06, **signed periodic CMP95 slope GREEN; regional reinstantiation open; 20/41 unchanged**)
+
+Exact source checkpoint
+`a8a84c302ed116a49b41acc12b85f78aa905c2ea` was validated by cold GitHub
+Actions run `31072468845` (workflow checkpoint
+`085d11706d9cee361d4192a3ae2087035cac7c51`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T04:55:07Z` to `05:18:08Z` and exited zero; the audit
+ran from `05:18:08Z` to `05:18:19Z` and also exited zero.  All ten declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`1206c3853e70aaec368c0afb0da7c42a3ebd9f67c248556b3e843964f88b5765`.
+The axiom JSON has SHA-256
+`c383a81aefd3104eda42af2e0b0582bd89d9d32d194cd08fac9a6b30837b5f21`;
+the stage ledger has SHA-256
+`f35e52ee2be2efc8dfcc3f388a8dd6db72198b590c9d464f63edfb17c66c8c9d`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves the signed one-dimensional slope, its explicit `Q = 1`
+branch, physical rescaling, periodicity, exact tensor square partition,
+contractivity, and the boundary-safe tensor slope with literal constant
+`16 * derivBound / M0`.  It does not reuse the old square-root physical
+partition by definition.  The regional signed partition, active-window
+membership transport, quadratic second difference, physical species,
+complete CMP99 (3.89), defect contraction, rows 23--24, and a `TermSource`
+inhabitant remain open.  This is infrastructure below window 15, not physical
+attainment.  The live counters remain exactly `20/41` and zero.
+
+## Addendum 573 (2026-08-06, **signed source-separated partition and overlap GREEN; species open; 20/41 unchanged**)
+
+Exact source checkpoint
+`d77c64b8c5702ec833c853fffb0afbcf277f93a5` was validated by cold GitHub
+Actions run `31074140752` (workflow checkpoint
+`0b539caf5127fbfe6a74ba04857fe195fa5d8019`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T05:28:54Z` to `05:47:39Z` and exited zero; the audit
+ran from `05:47:39Z` to `05:47:46Z` and also exited zero.  All nine declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`25521f8976f4848cb18c318f242110fb1a0939620aef52eab2e5b710fc5d6200`.
+The axiom JSON has SHA-256
+`82634747e94ccfa1234f9fea470cf2f3e0d2a27b1bf306f1b6c4c67daf0df7cf`;
+the stage ledger has SHA-256
+`f67a9f7845361d6f7de0dd69d2b8af0ab44c5a3d6528479e2e5ef990d62f6c68`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick constructs the literal signed source-separated partition, proves
+its exact square normalization, exposes
+`slope * precisionRange = 8 * derivBound / K`, and derives the same active-cell
+cardinality `<= 16` from the pre-existing geometric window through the exact
+signed-square identity.  It introduces no second overlap parameter and does
+not identify the signed cutoff definitionally with the retired square-root
+one.  Quadratic second differences, both physical species, regional
+dictionaries, complete CMP99 (3.89), contraction, rows 23--24, and a
+`TermSource` inhabitant remain open.  This is infrastructure below window 15;
+the live counters remain exactly `20/41` and zero.
+
+## Addendum 574 (2026-08-06, **signed periodic quadratic second difference GREEN; tensor Laplacian open; 20/41 unchanged**)
+
+Exact source checkpoint
+`f844f2faa3f27908581fd735933731dba37894da` was validated by cold GitHub
+Actions run `31076000837` (workflow checkpoint
+`05245920f173c16fef588c3390695bddf6f27b69`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T06:05:06Z` to `06:28:17Z` and exited zero; the audit
+ran from `06:28:17Z` to `06:28:26Z` and also exited zero.  All three declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`a6ded498542500fa14033b0ac530c2729e7b8b58a13f79abbf36d0c7a7fce44d`.
+The axiom JSON has SHA-256
+`219b75d193e74d4c78de0a965ee632924ac39f8206dbf06ef0e6aa81b7ca0e03`;
+the stage ledger has SHA-256
+`2715f5f0981ed8c9668395bf079b970c46acd2c9c5b2e74ef11f7f00c753b400`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick rewrites the three periodic evaluation points over one six-element
+active-window union and derives the quadratic bound
+`12 * secondDerivBound * norm(h)^2`.  The one-cell branch is constant, and
+physical rescaling exposes `12 * secondDerivBound / M0^2` before any tensor,
+cell, overlap, or Green sum.  It does not yet construct the tensor
+cutoff-Laplacian species or its ambient/regional dictionary.  Complete CMP99
+(3.89), contraction, rows 23--24, and a `TermSource` inhabitant remain open.
+Window 15 is compatible but unattained; the live counters remain exactly
+`20/41` and zero.
+
+## Addendum 575 (2026-08-06, **signed periodic tensor second difference GREEN; source-separated transport open; 20/41 unchanged**)
+
+Exact source checkpoint
+`4973182cf45705621a00adab78bb7756a1eb81e9` was validated by cold GitHub
+Actions run `31079471965` (workflow checkpoint
+`1a6d50b7c59cd2f6f625b95d20bc952abd9151b1`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T07:05:32Z` to `07:30:26Z` and exited zero; the audit
+ran from `07:30:26Z` to `07:30:33Z` and also exited zero.  All four declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`713ba250a1079b1f4199faf1060b36a1ae3405603d45138a99dff41ce0659a76`.
+The axiom JSON has SHA-256
+`5ccf1a60331bd6914ea6790f188cc2ac68a391ca27e192e270f3290da4cb7b92`;
+the stage ledger has SHA-256
+`9caae24ba47a3f919a524a6afcc53a7289093ab9e14a0e4f8fe73feadf590729`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves the seam-safe one-coordinate tensor second difference with
+budget `12 * secondDerivBound / M0^2`, then sums the four literal lattice
+directions to obtain the explicit scalar coefficient budget
+`48 * secondDerivBound / M0^2`.  Inactive tensor factors are bounded by one;
+no Green, overlap, or regional constant is used.  The source-separated cast,
+the equality with the literal cutoff-Laplacian species, complete CMP99 (3.89),
+contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window 15
+is compatible but unattained; the live counters remain exactly `20/41` and
+zero.
+
+## Addendum 576 (2026-08-06, **signed source-separated cutoff Laplacian GREEN; Green/overlap composition open; 20/41 unchanged**)
+
+Exact source checkpoint
+`e14ea5903c3ab45179155d9fe530d29c442a78d3` was validated by cold GitHub
+Actions run `31082213055` (workflow checkpoint
+`063bd346a46140b8ab670cfb220f44b55ce13a48`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T07:48:16Z` to `08:13:47Z` and exited zero; the audit
+ran from `08:13:47Z` to `08:13:55Z` and also exited zero.  All four declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`888f5ecd71c67ca9e2da20581e6905b33efb5f10d88dfe5b46460a95958ff2ef`.
+The axiom JSON has SHA-256
+`7092d6184f160ccc86e82d8b7ad8a85686028a8efc39e979377e1b3b61c9f740`;
+the stage ledger has SHA-256
+`143cf54c14eb4fa8a0ee73966a26bbada6c766b9762902c7795613b0789046d4`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick transports the tensor second difference to the literal
+source-separated carrier, proves
+`norm coefficient <= 48 * secondDerivBound / cutoffScale^2`, identifies it
+exactly with `cmp99CutoffLaplacianCorrection` at unit spacing, and proves the
+depth-scale cancellation to `12 * secondDerivBound / K^2`.  It does not
+multiply by the regional Dirichlet Green or sum the overlap-16 cells.  The
+third species, complete CMP99 (3.89), contraction, rows 23--24, and a
+`TermSource` inhabitant remain open.  Window 15 is compatible but unattained;
+the live counters remain exactly `20/41` and zero.
+
+## Addendum 577 (2026-08-06, **signed cutoff-Laplacian Green/overlap endpoint GREEN; third species open; 20/41 unchanged**)
+
+Exact source checkpoint
+`d8094af41c78851d8b985b2f7e1550857531202f` was validated by cold GitHub
+Actions run `31085829837` (workflow checkpoint
+`8e94f9de8ac0b5ed2c90f01b3428cba29fcbfaea`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T08:41:48Z` to `09:44:15Z` and exited zero; the
+audit ran from `09:44:15Z` to `09:44:28Z` and also exited zero.  All eight
+declarations use exactly `[propext, Classical.choice, Quot.sound]`, and the
+gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`1741117ef8b72e4b8f782564e7224ac0a7caa89a5e7c982022be8354007a57c5`.
+The axiom JSON has SHA-256
+`385f608fe631b430cfeaaf0ce65b1ae011027329d10f835a54439aa9ea14ff92`;
+the stage ledger has SHA-256
+`69e996f2c372a6f5ab3c02384e19c168bfa06fb132dd335c25081905ea21e1e3`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The module composes the literal signed cutoff-Laplacian coefficient with the
+canonical regional Dirichlet Green certified by CMP99 (3.42), retains the
+exact pre-sum amplitude `12 * B0 * secondDerivBound / Klarge^2`, and sums the
+cells with the literal signed source overlap `16`.  The inverse-square gain
+is present before the family sum and no CT + Schur/Poincare majorant is used.
+
+This seal completes only the second displayed species of CMP99 (3.89).  The
+normalized `Q'^*Q'` third species, complete (3.89), defect contraction, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
+compatible but unattained; the live counters remain exactly `20/41` and
+zero.
+
+## Addendum 578 (2026-08-06, **varying counting-mass terminal fibre GREEN; Green/third species open; 20/41 unchanged**)
+
+Exact source checkpoint
+`87e5f54efacfdccac6513024e6e44e5c41d184b8` was validated by cold GitHub
+Actions run `31092556326` (workflow checkpoint
+`718f69da445a13abb4d81caca838b7eb9e174c9a`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T10:18:09Z` to `10:38:32Z` and exited zero; the
+audit ran from `10:38:32Z` to `10:38:39Z` and also exited zero.  Of the five
+audited declarations, one uses only `[propext]` and four use exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`5a71078c26c371c4a05449993d170bd2bdc1db5dd3fd3dbff766e0827e72bee5`.
+The axiom JSON has SHA-256
+`08cdb34aa8931541162079ce52476a9e64287d71a16831c1ba855335f5e58946`;
+the stage ledger has SHA-256
+`e8e5897ce0f0ae502d4e08967cad2bd35f85c395ce6317f85e600707e61c31ad`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves that the literal generated counting-mass kernel vanishes
+outside one terminal-owner fibre and that its varying-value sum is bounded by
+exactly one surviving `(L^-4)^r` normalization after the
+`L^(4*r) * (L^-4)^(2*r)` cancellation.  It introduces neither a range-ball
+count nor an abstract adjoint-orientation premise.
+
+This is normalization infrastructure below the physical third species.  The
+ambient reindexing, common regional-Green metric on a terminal fibre, signed
+cutoff difference, complete third species, full CMP99 (3.89), contraction,
+rows 23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
+compatible but unattained; the live counters remain exactly `20/41` and
+zero.
+
+## Addendum 579 (2026-08-06, **generated-mass common Green metric GREEN; Green insertion open; 20/41 unchanged**)
+
+Exact source checkpoint
+`9d563cdd910276de19787e6f62e0733fe6cd975c` was validated by cold GitHub
+Actions run `31095036070` (workflow checkpoint
+`a98105c8128e17a3e7da8d612f7c94e9ca011f46`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T10:55:24Z` to `11:14:03Z` and exited zero; the
+audit ran from `11:14:03Z` to `11:14:09Z` and also exited zero.  All three
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`798658975077470bdad004fe99bcb49e23a9e3d7f27fffe5c323bb18ab4a68eb`.
+The axiom JSON has SHA-256
+`8bf10186cdd9c1d026ce36ea5f75e6bb247bbc0c0ab6452e53bbc2ebb2551686`;
+the stage ledger has SHA-256
+`fdfcacba9335e99cbbdebfe8cbb311881e765966d0ecc8b6e84b2b1fd48556ad`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves exact sum-level kernel reindexing for varying coordinate
+probes and proves that every generated terminal fibre lies in one separated
+Green block.  The literal CMP99 (3.42) metric is therefore constant across
+that fibre without exponential or cardinality loss.
+
+This is geometry/reindexing infrastructure below the physical third species.
+The Green estimate, signed cutoff difference, normalized mass coefficient,
+cell sum, complete third species, full CMP99 (3.89), contraction, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
+compatible but unattained; the live counters remain exactly `20/41` and
+zero.
+
+## Addendum 580 (2026-08-06, **generated-mass Green/cutoff insertion GREEN; ambient third species open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c44d8c2a146ef1eaf9aeab6d8edd00046f47a4c5` was validated by cold GitHub
+Actions run `31097908966` (workflow checkpoint
+`10d8b4464be3347e9e949adeb0d076ae9e8ade83`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T11:38:18Z` to `12:39:21Z` and exited zero; the
+audit ran from `12:39:21Z` to `12:39:31Z` and also exited zero.  All four
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`df455019d5d906e738632963c65b4c8a635197a4707c46b7ad6c9cf3e2f51977`.
+The axiom JSON has SHA-256
+`c8e0e5538fe846684f310aa35ea783ca11d665f4f4472b971000e19d0cd5e158`;
+the stage ledger has SHA-256
+`d53b34a1e120de5cdc200dd18f4f522934546bc8150f406be825513f779f9968`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick proves that one terminal fibre has signed-cutoff variation bounded
+by exactly `8 * derivBound / K`, evaluates the regional Green with one common
+CMP99 (3.42) metric across that fibre, and inserts their product into the
+literal generated counting mass with exactly one surviving normalized block
+weight.
+
+This is infrastructure below the complete physical third species.  The
+separated ambient mass reindexing, literal physical scalar mass, cell sum,
+complete third species, full CMP99 (3.89), contraction, rows 23--24, and a
+`TermSource` inhabitant remain open.  Window 15 remains compatible but
+unattained; the live counters remain exactly `20/41` and zero.
+
+## Addendum 581 (2026-08-06, **separated ambient generated-mass atom GREEN; right cutoff/cell sum open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c221f73c2f48dba9e018752f9fb1813c039fc0e6` was validated by cold GitHub
+Actions run `31104001016` (workflow checkpoint
+`99d3082cf6d5d68b678f71fdd17f7df4d602830c`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T13:03:52Z` to `13:53:49Z` and exited zero; the
+audit ran from `13:53:49Z` to `13:54:03Z` and also exited zero.  All four
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`6c364157fade4ff397ef724f11cb7a23dd5434ef1e15ba4e06e03ba072d26183`.
+The axiom JSON has SHA-256
+`2bff87eb358793668e11f86316917522270d59aa8c428b088f695ad5e88ebc9b`;
+the stage ledger has SHA-256
+`331f6d3c3d6fceb0b2d52db7e821917680d8df8132058287291165ba61319753`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick transports the literal generated counting mass to the separated
+ambient carrier and installs the physical scalar mass with the printed
+commutator orientation.  Its endpoint retains the physical absolute mass and
+the one surviving normalized block-average weight as separate factors.
+
+This is the ambient atom before the contractive right cutoff.  The exact
+commutator sum, right cutoff, cell sum, complete third species, full CMP99
+(3.89), contraction, rows 23--24, and a `TermSource` inhabitant remain open.
+Window 15 remains compatible but unattained; the live counters remain exactly
+`20/41` and zero.
+
+## Addendum 582 (2026-08-06, **complete generated-mass species GREEN; three-species assembly open; 20/41 unchanged**)
+
+Exact source checkpoint
+`050783b4155282d06df25c4566fc125fa9463d4a` was validated by cold GitHub
+Actions run `31113901772` (workflow checkpoint
+`2b961a2d8b28c42ae25eab05f5c86ef80cd8b0ee`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-06T15:11:42Z` to `15:57:14Z` and exited zero; the
+audit ran from `15:57:14Z` to `15:57:34Z` and also exited zero.  All nine
+declarations use exactly `[propext, Classical.choice, Quot.sound]`, and the
+gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`6467cf2c1d01589853d01aec874610bc7bab01d5e181d98317462f3d6e372dd6`.
+The axiom JSON has SHA-256
+`1e77889f1ba6f1ba04ae922409ca01971167e0b6574da8142bcc6d57858ff9ac`;
+the stage ledger has SHA-256
+`b99e9f557de665dcb257b7aeef82980baba5bcf8ee0297c3a017c15e924eb302`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The module composes the literal physical generated-mass commutator with the
+canonical regional Dirichlet Green and right signed cutoff, then sums cells
+with the exact overlap `16`.  Its source budget leaves visible the physical
+mass, one normalized counting-mass factor and the signed `8 / K` cutoff
+gain; no `K^4` count or shared three-species constant is hidden.
+
+This is the third displayed species only.  The signed first-species
+reinstantiation, complete three-species CMP99 (3.89), contraction, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 is still
+compatible but unattained; the live counters remain exactly `20/41` and
+zero.
+
+## Addendum 583 (2026-08-06, **signed covariant-link first species GREEN; three-species assembly open; 20/41 unchanged**)
+
+Exact source checkpoint
+`46734245d55a2ae309a01e6b371b35418189dd0f` was validated in a cold Colab
+Pro+ CPU/high-RAM clone opened at `2026-08-06T23:56:13.069777Z`.  The runner
+checkpoint was `2a9f0d998ab8246d5addd878a08c4208cfc438bd`; the notebook
+checkpoint was `12e8d03b2920a7373ae9d9d1bc13f4409667174c`.  The focal exited
+zero after `5154.941` seconds with
+`Build completed successfully (8574 jobs).`; the audit exited zero after
+`30.721` seconds.  All fifteen audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`, and the
+runtime then released automatically.
+
+The deterministic evidence payload generated in Colab has SHA-256
+`9c7edd207174abb76cf2fac4296ffd480bae6c579fc366d3246250232a323a3a`;
+the generated archive has SHA-256
+`4d28f76efcb91effb81fb6448ce1970e78ea12278dc3ad5b24712ff47161956c`.
+These are transcript-visible runner outputs, not a claim of an independently
+downloaded and locally rehashed archive.
+
+The brick reconstructs the first covariant-link species from the exact
+ambient product rule with the source-faithful signed cutoff.  Its source
+budget exposes the literal `8 * derivBound / K` gain before the cell sum and
+uses the single sealed overlap `16`; it introduces no shared three-species
+constant, generic row/column symmetry, Combes--Thomas/Schur majorant, or
+Poincare constant.
+
+The preceding v5 diagnostic at source checkpoint
+`c0f892e86288b3e2778dcc44dbdc33f38b78219a` failed only at the two remaining
+endpoint inference timeouts.  Its evidence and archive SHA-256 digests are
+`c3d8b5dcbafb147b5800fcf1c6e4a9648ecae41c1bc95b5e3f160b1d3691fead`
+and `86ae7f66c613614df27b0d3ce87824756e8482cd8745ae0555a3896c436f1b50`.
+The repair pinned the physical carrier and fibre in those two conclusions;
+no theorem, constant, hypothesis, or heartbeat changed.
+
+All three displayed species now have separate cold seals.  Their literal
+three-species assembly, complete CMP99 (3.89), defect contraction, rows
+23--24, and a `TermSource` inhabitant remain open.  Window 15 remains
+compatible but unattained; the live counters remain exactly `20/41` and
+zero.
+
+## Addendum 584 (2026-08-07, **coarse-cell coordinate-probe three-species assembly GREEN; source-facing (3.89) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`437a4edf584d19abf4df93c3c24cb5e584ccba5e` was validated by cold GitHub
+Actions run `31143972802` (workflow checkpoint
+`5064ebd73c0578cb732597252396ff0af016e4d4`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T03:20:59Z` to `04:23:04Z` and exited zero; the
+audit ran from `04:23:04Z` to `04:23:22Z` and also exited zero.  All nine
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`ad7e64b6d26f7717ced1202ec4555cbf068970b8170b11a4fded1588591bd8c8`.
+The axiom JSON has SHA-256
+`f136b82c0aa96acd32d2ef5302c6242999fbe7e6efe8275b55c6da9320501ad0`;
+the stage ledger has SHA-256
+`04610a3fc13eb4736112117ed3a0ece586f5f77353cdf8e9a3174ea12bf5c425`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The brick uses one reindexed fine physical background, one generated
+precision and one coercivity witness for all three species, and retains the
+three source budgets separately.  It proves their literal sum and a
+coordinate-probe exponential bound on the coarser separated-cell metric.
+
+This is algebra below CMP99 (3.89), not the printed source estimate.  The
+latter quantifies arbitrary fields supported in one localization block,
+uses their finite sup norm, and decays at the localization scale
+`L^(depth+1)`.  Summing coordinate probes generically is not accepted because
+the fine-fibre cardinality may cancel the displayed `K^-1` gain.  Complete
+(3.89), the defect contraction, rows 23--24, and a `TermSource` inhabitant
+remain open.  Window 15 remains compatible but unattained; the live counters
+remain exactly `20/41` and zero.
+
+## Addendum 585 (2026-08-07, **block-localized sup-action contract GREEN; physical (3.89) producer open; 20/41 unchanged**)
+
+Exact source checkpoint
+`16eed86994e2459bacb765e193c5009b76fdd51c` was validated by cold GitHub
+Actions run `31147882660` (workflow checkpoint
+`6de2a6f96b72a4863a486b02bb620b0d67743efc`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T04:37:09Z` to `04:38:36Z` and exited zero; the
+audit ran from `04:38:36Z` to `04:38:43Z` and also exited zero.  All six
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+The gate recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The independently downloaded deterministic evidence archive has SHA-256
+`baea5f5afb22cdc86251905af766fe5c2bf702f0b16b3efff8a385de98bd7086`.
+The axiom JSON has SHA-256
+`6933a0c555258068ce553f06f6c2f6cfb00d9bddbab3691581eccb2474477937`;
+the stage ledger has SHA-256
+`7b1a942c8699992c4fc19ae7b9d73c9c6e04a27b17f9683222ed68c6e588c67d`.
+All 13 entries of the internal `SHA256SUMS` manifest independently matched.
+
+The contract now expresses the quantifier missing from the coordinate-probe
+route: an arbitrary field supported in one source-owner fibre, controlled by
+its finite supremum norm and evaluated with an explicit owner metric.  The
+addition theorem combines amplitudes without summing over fine source sites.
+The preceding diagnostic at source checkpoint
+`c25d114c3a557038b17d22ae579ac38e4e5719cb` failed only because the generic
+support predicate did not declare `[Zero g]`; the repair changed no theorem,
+constant, quantifier, or hypothesis of the localized-action bound.
+
+This is a verified interface, not a physical producer.  The source-scale
+owner dictionary, the four arbitrary-localized-field Green estimates and the
+direct three-species estimate remain open.  Hence CMP99 (3.89), the defect
+contraction, rows 23--24, and a `TermSource` inhabitant remain open.  Window
+15 is compatible but unattained; the live counters remain exactly `20/41`
+and zero.
+
+## Addendum 586 (2026-08-07, **CMP99 (3.89) source localization-owner dictionary GREEN; Green estimates open; 20/41 unchanged**)
+
+Exact source checkpoint
+`fd070233dbeaf13ad2d59acfc5295ff76900d86d` was validated by cold GitHub
+Actions run `31148630489` (workflow checkpoint
+`b94804c37c0e2f23d1dcc3dd9126ae68f2f71b0d`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T04:51:47Z` to `05:19:01Z`, exited zero, and ended
+with `Build completed successfully (8517 jobs).`  The audit ran from
+`05:19:01Z` to `05:19:06Z` and also exited zero.  One audited declaration
+uses `[propext]`; the other four use exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`2461c67a5f928ed22c12319ccb0a57f05b7f98a62dfb2c4357d5a612c58e47b2`.
+GitHub recorded SHA-256
+`394bab457774d16c4584ee10f1766b291e0143b96f42ef756b1d23a9ea5e28e2`
+for the uploaded artifact ZIP (artifact `8982987360`, 38,378 bytes).  The
+durable artifact remains attached to the run; this seal relies on the cold
+job transcript and GitHub's recorded artifact digest, not on a second local
+download of the package.
+
+The brick proves the exact equality of the separated regional carrier with
+the source's `L^(depth+1)` localization-block carrier, constructs the
+explicit cast equivalence, defines the source owner and owner distance, and
+specializes the block-localized sup-norm action contract to that dictionary.
+The carrier nonemptiness needed by `blockSite` is derived internally from
+the existing positivity assumptions on `L`, `K`, and `Q`; no new hypothesis
+was added.
+
+This is source localization bookkeeping only.  It proves no Green estimate
+and no physical CMP99 (3.89) bound.  The four arbitrary-localized-field Green
+estimates and their three-species assembly remain open, as do the defect
+contraction, rows 23--24, and the first `TermSource` inhabitant.  Window 15
+remains compatible but unattained; the live counters remain exactly
+`20/41` and zero.
+
+## Addendum 587 (2026-08-07, **source-localized CMP99 (3.42) Green certificate GREEN; physical (3.89) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`39bf5a9a5978aa52fe6d05a4d057206a027d6af5` was validated by cold GitHub
+Actions run `31158229361` (workflow checkpoint
+`6d3939b2e164d5f8ee10d2e86e1efe3b2d631710`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T07:36:57Z` to `08:03:14Z`, exited zero, and ended
+with `Build completed successfully (8519 jobs).`  The audit ran from
+`08:03:14Z` to `08:03:24Z` and also exited zero.  All nine declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`bc761e03cad501a9b2a82e218588cf16238047f52e7c0b17985253bb1a4cc564`.
+GitHub recorded SHA-256
+`7b8864e9912b19932745bbc22bc48d9ea53a65813f8b831a8950b8864f238feb`
+for the uploaded artifact ZIP (artifact `8986697639`, 38,217 bytes).  A local
+download of the durable artifact reproduced its `checkpoint.txt`,
+`axioms.json`, `FINAL_STATUS`, and inner archive hash.
+
+The certificate fixes the canonical regional Dirichlet Green and states the
+four source-localized actions of CMP99 (3.42) with their literal scale vector
+and source-owner metric.  It keeps `B0 > 0`, `delta0 > 0`, and active-carrier
+nonemptiness visible.  It is a named source input, not a derivation of (3.42)
+from CMP99 and not the physical three-species estimate (3.89).  The defect
+contraction, rows 23--24, and a first `TermSource` inhabitant remain open.
+Window 15 is compatible but unattained; the live counters remain exactly
+`20/41` and zero.
+
+## Addendum 588 (2026-08-07, **block-localized supremum algebra GREEN; physical CMP99 (3.89) species open; 20/41 unchanged**)
+
+Exact source checkpoint
+`34d70c000e7a0f5836a5c983a38528e9459f62ed` was validated by cold GitHub
+Actions run `31160962546` (workflow checkpoint
+`9a580feaa362ce59d8cbd69c21e0801de2514904`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T08:17:38Z` to `08:35:59Z`, exited zero, and ended
+with `Build completed successfully (8441 jobs).`  The audit ran from
+`08:35:59Z` to `08:36:11Z` and also exited zero.  All ten declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`0bebac35db70165728e7ddc491d35f96726bfa48858a9808b1039b9a7b366105`.
+GitHub recorded SHA-256
+`b1dfaba06bd5eb0e77ee1e0aa9039a743f27e8b43fadd019e744efd48002bdd8`
+for the uploaded artifact ZIP (artifact `8987584056`, 31,936 bytes).  A local
+download reproduced the checkpoint, stage ledger, ten-block axiom JSON,
+`FINAL_STATUS`, and inner archive hash.
+
+The sealed algebra keeps the arbitrary owner-fibre field intact through
+diagonal multiplication, active-region restriction, and zero extension.
+It therefore introduces no coordinate-probe decomposition and no hidden
+fine-fibre cardinality.  This is infrastructure directly below the printed
+(3.89) norm, not a physical first, second, or third species producer.  The
+defect contraction, rows 23--24, and a first `TermSource` inhabitant remain
+open.  Window 15 is compatible but unattained; the live counters remain
+exactly `20/41` and zero.
+
+## Addendum 589 (2026-08-07, **source-localized physical second species GREEN; overlap and complete CMP99 (3.89) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`8c5f917c2887fd85bec4b0ca2c3d82823fab037c` was validated by cold GitHub
+Actions run `31162995186` (workflow checkpoint
+`da14ec7652726b262f647e906dfe79b830657c81`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T08:47:11Z` to `09:31:25Z`, exited zero, and ended
+with `Build completed successfully (8571 jobs).`  The audit ran from
+`09:31:25Z` to `09:31:30Z` and also exited zero.  Its declaration uses
+exactly `[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`6e3b6be69b7bdf89745b73ed87c0c7231503a9a7ccfece78ac16daf155b42979`.
+GitHub recorded SHA-256
+`e6e81ea6a418a1282d576bdf6606959c1fbb500d7ea7baebed6823b823f00396`
+for the uploaded artifact ZIP (artifact `8989073770`, 40,784 bytes).  A local
+download reproduced the checkpoint, stage ledger, one-block axiom JSON,
+`FINAL_STATUS`, and inner archive hash.
+
+The theorem is about the literal second species operator for one regional
+cell, not a freely supplied correction.  It preserves the arbitrary
+source-owner-fibre field and its supremum norm through the signed cutoff,
+regional Green, and cutoff-Laplacian coefficient, retaining the exact
+`K^-2` amplitude before overlap summation.  The overlap-16 sum, the other two
+source-localized species, complete (3.89), contraction, rows 23--24, and a
+first `TermSource` inhabitant remain open.  Window 15 is compatible but
+unattained; the live counters remain exactly `20/41` and zero.
+
+## Addendum 590 (2026-08-07, **source-localized physical first species GREEN; overlap and complete CMP99 (3.89) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c1b6db9a3c972afac0337677787d7feb7d7a9696` was validated by cold GitHub
+Actions run `31167654134` (workflow checkpoint
+`3bda3465eaf26fc52dde0d678e4f61bf469ac9bd`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T09:54:14Z` to `10:56:06Z`, exited zero, and ended
+with `Build completed successfully (8579 jobs).`  The audit ran from
+`10:56:06Z` to `10:56:12Z` and also exited zero.  Both audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`64529346ed8836f93a09eba486291c979aafbac5eb385b408791f1310faddfe8`.
+GitHub recorded SHA-256
+`36c15f1c237f2252e485ae80b6311d4b8d45d9cd7f781f08360777198ff5d5ee`
+for the uploaded artifact ZIP (artifact `8991349087`, 42,143 bytes).  A local
+download reproduced the checkpoint, cold-cache state, stage ledger,
+two-block axiom JSON, `FINAL_STATUS`, and inner archive hash.
+
+The theorem is the literal first-species regional correction applied to an
+arbitrary field supported in one source-owner fibre.  It preserves the
+block-localized supremum norm and the exact source metric, and retains the
+visible `K^-1` budget before overlap summation.  No coordinate-probe
+decomposition, Schur estimate, reciprocal coercivity, or freely supplied
+physical correction enters.
+
+This is one regional cell of the first species, not its cell sum and not the
+complete source equation (3.89).  The overlap-16 sum, source-localized third
+species, three-species assembly, defect contraction, rows 23--24, and a first
+`TermSource` inhabitant remain open.  Window 15 remains compatible but
+unattained; the live counters remain exactly `20/41` and zero.
+
+## Addendum 591 (2026-08-07, **source-localized physical third species GREEN; overlap and complete CMP99 (3.89) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`f8e7b3f2dde8ab286232580f1a69107a4afb5a6e` was validated by cold GitHub
+Actions run `31174809660` (workflow checkpoint
+`45ef1e3f57a6cbd8471dc80d2d72b7411c0cf614`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T11:38:59Z` to `12:39:56Z`, exited zero, and ended
+with `Build completed successfully (8579 jobs).`  The audit ran from
+`12:39:56Z` to `12:40:06Z` and also exited zero.  All four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.  The gate
+recorded `FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`65c7899fc4e04793c5f2fd4fbac189361eeaf305f6b83612d40c4a4b5c0bf4b2`.
+GitHub recorded SHA-256
+`ac8cf1249e7c4b6916d97e1a19eb48d11b3e49b0b10715c3c0d9b21a194b01ae`
+for the uploaded artifact ZIP (artifact `8994030444`, 41,750 bytes).  A local
+download reproduced the source/Mathlib checkpoints, cold-cache state, stage
+ledger, four-block axiom JSON, `FINAL_STATUS`, and inner archive hash.
+
+The theorem is the literal generated counting-mass regional correction
+applied to an arbitrary field supported in one source-owner fibre.  The exact
+terminal-fibre relation preserves the source owner, so the source-facing
+Green value estimate is consumed without a coordinate-probe decomposition or
+an ambient/fine-fibre cardinality loss.
+
+This is one regional cell of the third species, not its overlap sum and not
+the complete source equation (3.89).  The overlap-16 sum, three-species
+assembly, defect contraction, rows 23--24, and a first `TermSource` inhabitant
+remain open.  Window 15 remains compatible but unattained; the live counters
+remain exactly `20/41` and zero.
+
+## Addendum 592 (2026-08-07, **source-localized CMP99 (3.89) regional defect GREEN; global contraction open; 20/41 unchanged**)
+
+Exact source checkpoint
+`a814d95ac5bb20fa8bfe8871e8764caf2353153b` was validated by cold GitHub
+Actions run `31180210309` (workflow checkpoint
+`c0f037231b554b7d55b9cbb8b771bd799067d4b7`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  All
+eight stages exited zero.  The four focals ended with
+`Build completed successfully (8523 jobs).`, `(8173 jobs).`, `(8590 jobs).`,
+and `(8593 jobs).`; the four audits ended with six, one, five, and two axiom
+blocks respectively, every block exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate recorded
+`FINAL_STATUS=PASS` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`6529b1b740d4175f19c6cbffc06e42ea3a10a0137e0f670570eaa877d2f776ef`.
+GitHub recorded SHA-256
+`6084a111b0ead3363265dbc4bf839aa9a198fd038a4d415fa795c60b4972404f`
+for the uploaded artifact ZIP (artifact `8996592890`, 85,524 bytes).  A local
+download reproduced the checkpoint, cold-cache state, pinned Mathlib, stage
+ledger, fourteen-block axiom JSON, `FINAL_STATUS`, inner archive hash, and all
+per-file hashes (`SHA256SUMS_MISMATCH=0`).
+
+The sealed chain uses the source-owner geometry and the exact overlap `2^4 =
+16` to sum all three literal CMP99 (3.88) species for an arbitrary field on
+one complete source-owner fibre.  It proves the complete source-localized
+regional defect bound without a coordinate-probe expansion, an owner-count
+factor, or a fine-volume cardinality loss.
+
+This is not yet a global contraction.  Its literal amplitude includes
+first- and third-species terms of order `K^-1` in addition to the
+second-species `K^-2` term, and a fixed-rate Neumann argument still needs a
+strict rate reserve and a volume-uniform shell convolution estimate.  Window
+15 remains compatible but unattained; rows 23--24 and a first `TermSource`
+inhabitant remain open.  The live counters stay exactly `20/41` and zero.
+
+## Addendum 593 (2026-08-07, **one-application global-sup CMP99 defect GREEN; fixed-rate powers open; 20/41 unchanged**)
+
+Exact source checkpoint
+`49721e8e244fc1aaff93e5881e89483155431301` was validated by cold GitHub
+Actions run `31187878878` (workflow checkpoint
+`81ee5ec95d2ba1135937147683bb1a27472dc5f2`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+generic focal ran from `2026-08-07T14:42:31Z` to `14:59:38Z`; its audit ended
+at `14:59:48Z`.  The physical focal ran from `14:59:48Z` to `15:42:22Z`; its
+audit ended at `15:42:31Z`.  All four stages exited zero.  The six generic and
+two physical axiom blocks are exactly
+`[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`63b98851e889aab84f5eba7bbc0ee02e46e892fce837db343ae672bae87ee31e`.
+GitHub recorded SHA-256
+`d5860fbe7ef3b98962af0cd1aa56828fb73cfa79df2cce44703929f3ba0da90f`
+for uploaded artifact `8999975076` (56,931 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, eight-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all per-file hashes (`SHA256SUMS_MISMATCH=0`).
+
+The sealed physical theorem converts the arbitrary-source-fibre CMP99 (3.89)
+estimate into a global one-application `finitePiLpSupNorm` bound without an
+owner count or a fine-fibre cardinality.  It deliberately retains the two
+`K^-1` species and the one `K^-2` species before the owner-shell factor.
+
+This does not yet give fixed-rate powers or a Neumann inverse.  The next
+source-faithful interface is an output-fixed weighted row of nonnegative
+block-operator coefficients between owner fibres, with a reserved rate below
+`delta0`.  A source-fixed sum over output owners would be the wrong
+orientation for the global supremum contraction, and the existing
+coordinate-delta weighted row would reintroduce the forbidden fine-fibre
+cardinality.  Window 15 remains compatible but unattained; rows 23--24 and a
+first `TermSource` inhabitant remain open.  The live counters stay exactly
+`20/41` and zero.
+
+## Addendum 594 (2026-08-07, **output-fixed weighted owner row GREEN; powers and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`596802620b489c55a9a34c0e445323c1f426a125` was validated by cold GitHub
+Actions run `31195176692` (workflow checkpoint
+`f117f7f7b8cea4c3a93e41bd6b8dd2795f5a1f30`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+generic focal ran from `2026-08-07T15:59:09Z` to `16:17:23Z`; its audit ended
+at `16:17:31Z`.  The physical focal ran from `16:17:31Z` to `17:05:09Z`; its
+audit ended at `17:05:18Z`.  All four stages exited zero.  The seven generic
+and three physical axiom blocks are exactly
+`[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`2642e54569a49d9bb4153777d3cfd404df8684ac18317d0ddcfd80d742acd00d`.
+GitHub recorded SHA-256
+`a92f896495a7c99e613f3a4b1122dd84afed29b800099826052612e719c99c8d`
+for uploaded artifact `9002655186` (56,564 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, ten-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all per-file hashes (`SHA256SUMS_MISMATCH=0`).
+
+The source now distinguishes two exact layers: a nonnegative coefficient
+matrix bounding the action between complete owner fibres, and an output-fixed
+weighted row of that matrix.  The physical theorem obtains the row for every
+reserved rate `0 <= rate < delta0` and pays one volume-uniform shell sum at
+`delta0 - rate`.  This is the correct orientation for the global supremum
+norm; a source-fixed output sum or a coordinate-delta row would not be a
+source-faithful substitute.
+
+Runs `31194652789` and `31194784889` stopped before Lean because of an invalid
+expanded source SHA and an overlong cache-key list respectively.  They are
+retained as instrumentation incidents and do not contribute evidence.
+Cached diagnostic run `31194902046` passed; only the cold run above retired
+the four PRE-VALIDATION marks.
+
+No composition, power estimate, Neumann inverse, or strict contraction is
+proved here.  The physical row amplitude keeps the two `K^-1` species and the
+one `K^-2` species literal, while uniform production of the Green constants
+at the eventual large `K` remains visible.  Window 15 is compatible but
+unattained; rows 23--24 and a first `TermSource` inhabitant remain open.  The
+live counters stay exactly `20/41` and zero.
+
+## Addendum 595 (2026-08-07, **owner-weighted kernel composition GREEN; powers and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c53f7dcb7ecdcde84570c92041d1e01505a8f3ad` was validated by cold GitHub
+Actions run `31202378080` (workflow checkpoint
+`e1f1f314ce31aaefbebbd3a7d1323d59a098a9b9`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T17:29:28Z` to `17:46:09Z`, exited zero, and ended
+with `Build completed successfully (8444 jobs).`  The audit ran from
+`17:46:09Z` to `17:46:17Z` and also exited zero.  All six declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`82dc1ca0f1d898dd37671dde509af00dbaba18d5096b4a814fbebca68a11af46`.
+GitHub recorded SHA-256
+`ab7f3e856dcc19bfa64b6205a30b5fe20f4aa8c8086a41a7ee776e69c65a35b5`
+for uploaded artifact `9003887617` (30,714 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, inner archive hash, and all
+per-file hashes (`SHA256SUMS_MISMATCH=0`).
+
+The sealed theorem composes complete-owner supremum kernels by literal
+coefficient convolution and proves submultiplicativity of the output-fixed
+weighted row at the same spatial rate.  It pays no owner count and introduces
+no fine-coordinate cardinality.
+
+Run `31201201776` is retained as an instrumentation failure before Lean
+(eleven cache keys for a ten-key limit).  Run `31201285673` exposed a directed
+rewrite error in the owner decomposition.  Cached diagnostic run
+`31202127234` passed; only the cold run above retired the two PRE-VALIDATION
+marks.
+
+No coefficient power, Neumann inverse, strict physical contraction, or
+uniform production of the Green constants is proved.  Window 15 remains
+compatible but unattained; rows 23--24 and a first `TermSource` inhabitant
+remain open.  The live counters stay exactly `20/41` and zero.
+
+## Addendum 596 (2026-08-07, **fixed-rate owner-kernel powers GREEN; Neumann sum and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`be228322bea6ec973369001575f5780f9840f92f` was validated by cold GitHub
+Actions run `31206356093` (workflow checkpoint
+`648024c344673f4efd4daf1fc1e878c7caef8b0a`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T18:20:55Z` to `18:39:22Z`, exited zero, and ended
+with `Build completed successfully (8445 jobs).`  The audit ran from
+`18:39:22Z` to `18:39:31Z` and also exited zero.  All seven declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`d75b6684816720c3b82f7418f1ff27f345df6a800563c58dc71a2fc80de06437`.
+GitHub recorded SHA-256
+`bffaa4b4ee024ea26a47fe7fd7ddf86581ce25d1222e989942a3434a2b6e9958`
+for uploaded artifact `9005492994` (31,940 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, seven-block axiom JSON, `FINAL_STATUS=PASS`, inner archive hash, and
+all per-file hashes.
+
+The sealed theorem constructs literal convolution powers of the owner-block
+coefficient and proves that `T ^ n` retains the same output-fixed weighted
+spatial rate with exact amplitude `A ^ n`.  It pays neither an owner count nor
+a rate degradation.
+
+Runs `31204627351` and `31205040141` retained the first elaboration errors.
+Cached diagnostic run `31206078448` passed.  Run `31205417982` is retained as
+an infrastructure cancellation before Lean; only the cold run above retired
+the two PRE-VALIDATION marks.
+
+No Neumann sum, strict physical contraction, or uniform production of the
+Green constants is proved.  Window 15 remains compatible but unattained;
+rows 23--24 and a first `TermSource` inhabitant remain open.  The live counters
+stay exactly `20/41` and zero.
+
+## Addendum 597 (2026-08-07, **owner-sup contraction gives summable powers GREEN; Neumann identities and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`816fd138ff952be7bab1105b7b0e11c175d88cca` was validated by cold GitHub
+Actions run `31208946899` (workflow checkpoint
+`992bc3d967c6898fbd287c3425cacd8701b27090`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T18:54:35Z` to `19:10:40Z`, exited zero, and ended
+with `Build completed successfully (8446 jobs).`  The audit ran from
+`19:10:40Z` to `19:10:47Z` and also exited zero.  All six declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`7387b4bfbafb4c3521529c36c5d5d682af900129e08bc4db9cbd0abdde632be8`.
+GitHub recorded SHA-256
+`103b97abb74975bf7a9f2908fad6feb6298307ea1e2df6de4fb6d0d4c701d40c`
+for uploaded artifact `9006394829` (32,008 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, inner archive hash, and all
+per-file hashes.
+
+The sealed bridge proves a volume-uniform global finite-supremum contraction
+from the output-fixed owner row and then uses only the explicit finite
+comparison factor `sqrt(card ι)` to establish ambient summability of
+`fun n => T ^ n`.  The physical geometric ratio remains exactly `A`; no rate
+loss or owner count enters it.
+
+Cached diagnostic run `31208721237` passed on the first source attempt; only
+the cold run above retired the two PRE-VALIDATION marks.
+
+No Neumann `tsum` identity, strict physical contraction, or uniform
+production of the Green constants is proved.  Window 15 remains compatible
+but unattained; rows 23--24 and a first `TermSource` inhabitant remain open.
+The live counters stay exactly `20/41` and zero.
+
+## Addendum 598 (2026-08-07, **owner-weighted Neumann `tsum` GREEN; inverse identities and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`9ff84c7b54f89ce860a3c4690e60ac9684b886d4` was validated by cold GitHub
+Actions run `31211383877` (workflow checkpoint
+`7a445d712556ac1076ff354752c3200b7ab6412a`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T19:27:25Z` to `19:40:05Z`, exited zero, and ended
+with `Build completed successfully (8447 jobs).`  The audit ran from
+`19:40:05Z` to `19:40:13Z` and also exited zero.  All seven declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`c9416cd5e2b8ef9845725a19e1ef9f20a7254ac249176496a7173022a4fd8f41`.
+GitHub recorded SHA-256
+`917ae94d4ea21ea29878f13183394f1fef0cc108618a63df2b0ad5a4608814d2`
+for uploaded artifact `9007211678` (31,889 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, seven-block axiom JSON, `FINAL_STATUS=PASS`, inner archive hash, and
+all per-file hashes.
+
+The sealed theorem forms the literal coefficient and continuous-linear-map
+Neumann `tsum`s and proves the unchanged-rate owner-weighted bound with
+amplitude `(1 - A)⁻¹`.  It introduces neither an owner count nor a degradation
+of the spatial rate.
+
+Run `31210716821` retained the pre-Lean cache-key instrumentation failure;
+run `31210795917` retained the first elaboration error.  Cached diagnostic run
+`31211060902` then passed; only the cold run above retired the two
+PRE-VALIDATION marks.
+
+No left/right inverse identity, strict physical contraction, or uniform
+production of the Green constants is proved.  Window 15 remains compatible
+but unattained; rows 23--24 and a first `TermSource` inhabitant remain open.
+The live counters stay exactly `20/41` and zero.
+
+## Addendum 599 (2026-08-07, **two-sided owner-weighted Neumann inverse GREEN; physical contraction and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`da5a4d257b4bac5d025e500157af83957e8f8f40` was validated by cold GitHub
+Actions run `31213231725` (workflow checkpoint
+`28141ebaea5383d21071bab78734ee7377470c89`).  The run recorded
+`COLD_MODE=true`; no project `.lake/build` cache was restored or saved.  The
+focal ran from `2026-08-07T19:56:33Z` to `20:08:31Z`, exited zero, and ended
+with `Build completed successfully (8448 jobs).`  The audit ran from
+`20:08:31Z` to `20:08:36Z` and also exited zero.  Both declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`09abcde25a77126454e07720cade07928bde6df153ba083ce3b0f51d3f9db6a5`.
+GitHub recorded SHA-256
+`643042fb31ee24821549a7aa936b8121d0d30b502bc7ec4fc41de56554cee857`
+for uploaded artifact `9007968312` (30,507 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, two-block axiom JSON, `FINAL_STATUS=PASS`, inner archive hash, and all
+per-file hashes.
+
+The sealed theorems identify the literal owner-weighted Neumann `tsum` as
+both a left and right inverse of `1 - T`.  They consume the previously proved
+summability and use the ring telescoping identities without adding a spatial
+rate loss or a cardinality factor.
+
+Run `31212939832` retained the pre-Lean cache-key instrumentation failure.
+After capping the restore list, cached diagnostic run `31213016266` passed;
+only the cold run above retired the two PRE-VALIDATION marks.
+
+No strict physical contraction, dominant `K^-1` budget, one-time
+`S(delta0 - r)` conversion, or uniform production of the Green constants is
+proved.  Window 15 remains compatible but unattained; rows 23--24 and a first
+`TermSource` inhabitant remain open.  The live counters stay exactly `20/41`
+and zero.
+
+## Addendum 600 (2026-08-07, **exact physical Eq. (3.89) large-block scale GREEN; window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c4a33843f9081d537c61d157a47f94be699a77aa` was validated by cold GitHub
+Actions run [`31216957809`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31216957809)
+(workflow checkpoint `5c00b66a9ed3f3b50275e0a554d9455239f0d94b`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-07T20:43:51Z` to `21:30:35Z`, exited zero,
+and ended with `Build completed successfully (8598 jobs).`  The audit ran
+from `21:30:35Z` to `21:30:43Z` and also exited zero.  All five declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`3ad3cce2ba8d13c5f930e174c2e61cb007bbb0c09036bcfdc61b1c6c0a0c31df`.
+GitHub recorded SHA-256
+`2ade134f25e62d041d255a4342d61fc7cb917ee5033d1cc2d80595db26957576`
+for uploaded artifact `9010100076` (43,344 bytes).  A local download
+reproduced the source and workflow checkpoints, cold-cache state, stage
+ledger, five-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all fourteen hashes listed in `SHA256SUMS`.
+
+The sealed equality exposes the literal physical output-fixed owner-row
+budget as `a1 / K + a2 / K^2`.  The dominant available gain is therefore
+`K^-1`.  The owner-shell factor
+`cmp99OmegaSiteExpSumBound (delta0 - rate)` is paid once in the source-to-row
+conversion; its currently formalized ball count has small-rate order `^-5`,
+not the sharper unformalized layer order `^-4`.  A separate scalar theorem
+shows that fixed nonnegative coefficients admit some natural `K >= 2` with
+this budget below one.
+
+This does not prove uniform production of `B0` and `delta0` as `K` varies and
+does not discharge CMP99 Theorem 3.15's separate condition that the printed
+large-block parameter times `alpha_0` be sufficiently small.  Diagnostic
+runs `31215409972`, `31215678778`, and `31215944396` retain the successive
+elaboration errors; run `31216206278` was cancelled as an infrastructure
+hang before Lean; cached run `31216772623` passed.  Only the cold run above
+retired the two PRE-VALIDATION marks.
+
+Window 15 remains compatible but unattained; rows 23--24 and a first
+`TermSource` inhabitant remain open.  The live counters stay exactly
+`20/41` and zero.
+
+## Addendum 601 (2026-08-08, **CMP99 (3.42) source-input L2 scale GREEN; Green estimates open; 20/41 unchanged**)
+
+Exact source checkpoint
+`d1c9e8585d0496fe283260d9b92447c3b3271ac4` was validated by cold GitHub
+Actions run [`31221718782`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31221718782)
+(workflow checkpoint `e542e12b5f4a1fdd514a156dd49af491ddf28fcf`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-07T21:54:24Z` to `22:21:36Z`, exited zero,
+and ended with `Build completed successfully (8520 jobs).`  The audit ran
+from `22:21:36Z` to `22:21:43Z` and also exited zero.  All three declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`fb8810e92937e1e970fc08c48f00b12a32db26367e607cc0ae7fd8dc021cb0a8`.
+GitHub recorded SHA-256
+`557260f9de10c78d2a87ccaeede0a8800c95695cac09e661d64293a6de440632`
+for uploaded artifact `9011241725` (38,195 bytes).  A local download
+reproduced the source and workflow checkpoints, cold-cache state, stage
+ledger, three-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`.
+
+The sealed input theorem proves that support in one source-localization
+owner fibre costs at most the square root of that fibre's cardinality in the
+counting-L2 norm.  The explicit injection into the complete ambient block
+gives cardinality at most `L^(4*(depth+1))` and hence exactly the source scale
+`L^(2*(depth+1)) * finitePiLpSupNorm f`.  No `K`, `Q`, or ambient-volume
+factor appears.
+
+This is only the input-size conversion beneath the value component of CMP99
+(3.42).  It does not prove any localized Green bound, uniform production of
+`B0` and `delta0`, the three derivative/Laplacian components, physical
+Eq. (3.89), window 15, rows 23--24, or a `TermSource` inhabitant.  Diagnostic
+run `31221320009` retained the first elaboration errors; cached run
+`31221547246` passed.  Only the cold run above retired PRE-VALIDATION.  The
+live counters remain exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+## Addendum 602 (2026-08-08, **CMP99 (3.42) producer boundary fixed from primary source; documentation only**)
+
+Direct inspection of the local primary extraction fixes the dependency chain
+behind the four source-localized Green estimates.  CMP99 Theorem 3.1 first
+reduces each regular localized background by Corollary 3.6 to the
+near-identity/zero-background case.  That corollary imports CMP96 [4],
+Proposition 2.2 and its four-component equation (2.67).  The local `G'_Pi`
+estimates are then consumed by CMP99 (3.89), Lemma 2.1 of CMP96, and the
+random-walk representation (3.90); Theorem 3.7 states that this completes
+Theorem 3.1.
+
+The parser audit and vertical-slice map now reject two false next steps:
+another reciprocal-coercivity Combes--Thomas estimate, and a new source
+record that merely assumes the four conclusions of CMP96 (2.67).  The next
+honest producer must start below (2.67), at the zero-background localized
+Green construction, then supply the CMP99 near-identity perturbation and
+gauge-covariant transport to the canonical regional Green.  This addendum
+records source provenance only; it adds no theorem, retires no obligation,
+and leaves `20/41`, `TermSource = 0`, and window 15 unchanged.
+
+## Addendum 603 (2026-08-08, **CMP89 local Fourier source recovered; first analytic producer named; documentation only**)
+
+The primary CMP89 article, T. Balaban, *Regularity and Decay of Lattice
+Green's Functions*, CMP 89 (1983), 571--597, DOI
+`10.1007/BF01214744`, was recovered from the Project Euclid legacy PDF
+endpoint.  The 2,461,630-byte PDF has SHA-256
+`416E2B1F00B52E7235AB27D2BE066B50D42DDE33CF8596BAEAE0A6688B145143`.
+Printed pages 582--586 / PDF pages 12--16 were rendered and visually
+inspected rather than trusted through OCR.
+
+CMP89 Lemma 2.4 gives the scale-uniform local zero-background Green,
+derivative/Hölder and coarse-covariance decay bounds in (2.35)--(2.37).
+Its proof is internal: multiple reflection (2.42), the explicit Fourier
+representation (2.43)--(2.49), the denominator and momentum-sum bounds
+(2.50)--(2.51), and a contour displacement in a complex strip uniform in
+the scale.  Lemma 2.2 transports this input to small regular backgrounds
+through the renormalization identity (2.34).  CMP95 and CMP96 then consume
+that chain before CMP99's near-identity/gauge transport.
+
+The source database now records
+`cmp89.local-green.fourier.2.34-2.51` as `visual_confirmed` and the paper
+coverage matrix names the first missing producer precisely: formalize the
+CMP89 zero-background Fourier/analytic-strip argument, then prove the
+CMP89/CMP95/CMP96/CMP99 dictionaries to the literal regional Green.  This
+rules out treating another reciprocal-coercivity Combes--Thomas estimate or
+a four-field assumption record as the next producer.
+
+This is documentation and source provenance only.  It compiles no Lean,
+discharges no terminal field, and leaves `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
+
+## Addendum 604 (2026-08-08, **CMP89 (2.45) real sinc-amplitude lower bound GREEN; complex dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint
+`af70e5746a1b0a017a4c2fcb7b915a7837bcc114` was validated by cold GitHub
+Actions run [`31226045386`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31226045386)
+(workflow checkpoint `5db1d41aa0c83dab014aa6ae61987ab3c13ae041`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-07T23:08:01Z` to `23:08:05Z`, exited zero,
+and ended with `Build completed successfully (3273 jobs).`  The audit ran
+from `23:08:05Z` to `23:08:12Z` and also exited zero.  All five declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`5bb7766eb19c1e7a349704566fe1103ed53c7a7bc204d29ce7eebc8504dd0bb0`.
+GitHub recorded SHA-256
+`8321305fac56bf8a9f5c896417ae0510d51159ca5c2bc08bf64db675287fc92a`
+for uploaded artifact `9012150719` (10,828 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, five-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`.
+
+The sealed theorems prove the source-specialized lower bound `(2/pi)^d` for
+the product of real sinc amplitudes at `xi = ((L : R)^j)^(-1)`, uniformly in
+the scale `j` and for Brillouin momenta `|p_mu| <= pi`.  This is the elementary
+positive-amplitude input used by the central alias contribution in CMP89
+(2.50).
+
+The exact complex exponential-quotient norm dictionary of (2.45), both
+Laplacian-symbol comparisons, full denominator estimate (2.50), summability
+(2.51), and the uniform analytic strip remain open.  Diagnostic runs
+`31225389994`, `31225569110`, and `31225726131` retained successive
+elaboration errors; cached run `31225904376` passed.  Only the cold run above
+retired PRE-VALIDATION.  No terminal field is discharged: the live counters
+remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
+
+## Addendum 605 (2026-08-08, **CMP89 (2.45) complex-to-sinc dictionary GREEN; denominator comparison open; 20/41 unchanged**)
+
+Exact source checkpoint
+`08acaa13dc8cf79a5d5beb666540b295e158517c` was validated by cold GitHub
+Actions run [`31227914423`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31227914423)
+(workflow checkpoint `813914e4922f1d185b4b77710062484645af6149`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-07T23:43:50Z` to `23:43:56Z`, exited zero
+without warnings, and ended with `Build completed successfully (3274 jobs).`
+The audit ran from `23:43:56Z` to `23:44:00Z` and also exited zero.  All five
+declarations use exactly `[propext, Classical.choice, Quot.sound]` against
+Mathlib `07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`b536cab355a487a793c41a083ac00e09def8e7f72e69e0fa67633f1d542b3a29`.
+GitHub recorded SHA-256
+`d1156bc8906b3f77e7af8929e3d9955a3685fe05b0f5ee75d17e3ddba347f1be`
+for uploaded artifact `9012775812` (11,103 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, five-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`.
+
+The sealed definitions fill the removable singularity of the exponential
+difference slope and reconstruct each coordinate of the complex averaging
+factor as a quotient of those slopes.  The norm is proved exactly equal to
+the real sinc quotient, the literal printed exponential quotient is recovered
+away from `p = 0` and `xi = 0`, and multiplication transports the Step-7.5r
+lower bound `(2/pi)^d` to the complex symbol uniformly in `j`.
+
+The Laplacian-symbol comparisons, full alias denominator estimate (2.50),
+momentum summability (2.51), and uniform analytic strip remain open.  Runs
+`31226608914`, `31226774446`, and `31226972700` retain the elaboration errors;
+green runs `31227277987` and `31227593499` were superseded only to remove
+linter warnings.  Cached run `31227769422` passed the final source; only the
+cold run above retired PRE-VALIDATION.  No terminal field is discharged: the
+live counters remain exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+## Addendum 606 (2026-08-08, **CMP89 (2.50) central Laplacian ratio GREEN; full central alias open; 20/41 unchanged**)
+
+Exact source checkpoint
+`1998e2fb71ce126940639cef8fe894642850c430` was validated by cold GitHub
+Actions run [`31228925432`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31228925432)
+(workflow checkpoint `8f344357d5d16fa6fccd0e4fb382ad9b356cbc7c`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T00:03:43Z` to `00:03:51Z`, exited zero
+without warnings, and ended with `Build completed successfully (3275 jobs).`
+The audit ended at `00:03:58Z` and also exited zero.  All five declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`d29059ca71d00e02b68b8566e6167ffe0238764915e458b664243339738fb286`.
+GitHub recorded SHA-256
+`556321b74270e4d26d2cf9c41fa05344219cabc90bed0fe4f06755efcb4232a4`
+for uploaded artifact `9013088932` (10,134 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, five-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed module proves coordinatewise that the scaled difference quotient
+is at most `(pi/2)` times the unit-lattice difference throughout the
+Brillouin interval, sums the squared estimates with the literal mass term,
+and obtains
+`Delta^xi(p) <= (pi/2)^2 * Delta^1(p)`.  Positive mass then yields the
+reciprocal lower bound needed by the central alias in (2.50), without a
+synthetic `0/0` convention.
+
+The complex-amplitude factor has not yet been multiplied into this ratio,
+and the noncentral aliases, (2.51), and the uniform analytic strip remain
+open.  Runs `31228493253` and `31228644041` preserve the two elaboration
+corrections; cached run `31228790898` passed the final source, and only the
+cold run above retired PRE-VALIDATION.  No terminal field is discharged:
+the live counters remain exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+## Addendum 607 (2026-08-08, **CMP89 (2.50) central alias GREEN; noncentral aliases open; 20/41 unchanged**)
+
+Exact source checkpoint
+`b7de5c4d80af961acdfaba349ba09d8b54d9c591` was validated by cold GitHub
+Actions run [`31229579111`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31229579111)
+(workflow checkpoint `3096c9597395d755fddc8847a40e6cf0a3ba9d99`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T00:17:36Z` to `00:17:47Z`, exited zero
+without warnings, and ended with `Build completed successfully (3276 jobs).`
+The audit ended at `00:17:52Z` and also exited zero.  All four declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`b33edb90e167481eeac1980f4cefcef7ede3874ce2df8a8e45d0c2e57d02ae48`.
+GitHub recorded SHA-256
+`08d98c192e14f67d209665992f1a3e8c7b21a50d222bd84f144e44965adaaf0a`
+for uploaded artifact `9013315719` (10,049 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, four-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed producer proves an exact algebraic dictionary between the literal
+central term `a |u_j(p)|^2 / Delta^xi(p) * Delta^1(p)` and its factorized
+form.  It then combines the two preceding cold-sealed lower estimates and
+obtains the explicit scale-uniform constant
+`a * ((2/pi)^d)^2 * ((pi/2)^2)^(-1)`, with strict positivity kept as a
+separate theorem under the visible hypothesis `0 < a`.
+
+The exact finite alias enumeration, its central zero member, and
+nonnegativity of the remaining summands are still needed to lift this result
+to the full denominator in (2.50).  The primary source discards those terms
+for (2.50); quantitative noncentral decay is needed only in (2.51), which
+remains open with the uniform analytic strip.  Run `31229284523` preserves
+the sole associativity elaboration correction; cached run `31229442243`
+passed the final source, and only the cold run above retired PRE-VALIDATION.
+No terminal field is discharged: the live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 608 (2026-08-08, **CMP89 denominator estimate (2.50) GREEN; summability (2.51) open; 20/41 unchanged**)
+
+Exact source checkpoint
+`b84a28046e249df62e56d1b67f5030308830b90e` was validated by cold GitHub
+Actions run [`31230322062`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31230322062)
+(workflow checkpoint `e8e1397c0b2d6436c53e39f2ff608fc9087cadc3`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T00:32:59Z` to `00:33:13Z`, exited zero
+without warnings, and ended with `Build completed successfully (3277 jobs).`
+The audit ended at `00:33:19Z` and also exited zero.  All six declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`01a2747137a69dc2d8a320f3806833c7872d04331cc602ea0e92e965e7363332`.
+GitHub recorded SHA-256
+`b1041534927f9afc56449ede790959b1989d86960fb39225f54248e0db52a1e5`
+for uploaded artifact `9013581469` (10,922 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed producer formalizes the finite centered alias representatives of
+(2.45), their all-zero member and the literal shifts `2*pi*m'`.  Positive mass
+makes every denominator summand nonnegative, so the full finite sum in (2.50)
+dominates the already sealed central term.  This yields the complete printed
+positive denominator estimate without a free alias family and without a
+quantitative noncentral hypothesis.
+
+The polynomial noncentral summability (2.51), uniform analytic strip and
+Fourier-to-regional-Green transport remain open.  Run `31230025181` preserves
+the sole product-association elaboration repair; cached run `31230196579`
+passed the final source, and only the cold run above retired PRE-VALIDATION.
+No terminal field is discharged: the live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 609 (2026-08-08, **CMP89 (2.51) one-dimensional alias series GREEN; d-fold factorization open; 20/41 unchanged**)
+
+Exact source checkpoint
+`c0bfd4f0be0dc9c28ed4d3b6237b255e38f97e9f` was validated by cold GitHub
+Actions run [`31231324004`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31231324004)
+(workflow checkpoint `98b1ee69b033c4e3ffd89a18ffdf3ec598693a09`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T00:55:42Z` to `00:55:59Z`, exited zero
+without warnings, and ended with `Build completed successfully (3281 jobs).`
+The audit ended at `00:56:05Z` and also exited zero.  All six declarations use
+exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`576a6fb4cd3fd433a005658771f5482c623ca5cec9751762789e6d16fe1d66a8`.
+GitHub recorded SHA-256
+`f2f01653978d522be6961478c8997eed20b8967fa1251f0a603c851e9977dd4e`
+for uploaded artifact `9013924961` (11,037 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash, and
+all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed module proves the printed exponent `1+(1-alpha)/d` is greater than
+one for `alpha<1` and positive dimension, constructs the literal coordinate
+weight on `2*pi*Z`, and proves its full integer series summable by separating
+the central alias and comparing every noncentral term with the standard
+integer p-series.  Every finite centered alias interval is therefore bounded
+by this same infinite source constant, uniformly in its cardinality.
+
+The `d`-fold finite-product factorization, complete integrand estimate (2.51),
+uniform analytic strip and Fourier-to-regional-Green transport remain open.
+Runs `31230761932`, `31230900496`, and `31231081213` preserve the three
+elaboration corrections; cached run `31231215536` passed the final source,
+and only the cold run above retired PRE-VALIDATION.  No terminal field is
+discharged: the live counters remain exactly `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
+
+## Addendum 610 (2026-08-08, **CMP89 (2.51) multidimensional product GREEN; physical integrand open; 20/41 unchanged**)
+
+Exact source checkpoint
+`1722033a62ab84ed2f545e42f0a0aa1a81784809` was validated by cold GitHub
+Actions run [`31231854020`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31231854020)
+(workflow checkpoint `878e871ae9640c88945f6f77d6ba7da1ecbad8fc`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T01:08:16Z` to `01:08:35Z`, exited zero
+without warnings, and ended with `Build completed successfully (3282 jobs).`
+The audit ended at `01:08:39Z` and also exited zero.  All four declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`a7a14cfdf0b5c0d11d544b999019f07a5efba85ad4f46aac580b679284683420`.
+GitHub recorded SHA-256
+`d354c207bf75676c8b049c6cba172c8568da6c72ce45ee49b8af9e65ee26364e`
+for uploaded artifact `9014097545` (11,535 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, four-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed module proves the exact product-sum factorization over the source
+alias set `S^d` and transports the uniform one-dimensional p-series bound to
+its `d`-th power.  No count of aliases and no scale-dependent cardinality
+constant occurs.  The comparison of the literal physical summand with this
+product weight, the analytic strip and the Fourier-to-regional-Green
+transport remain open.
+
+Run `31231616924` preserves the only elaboration repair; cached run
+`31231751244` passed the final source, and only the cold run above retired
+PRE-VALIDATION.  No terminal field is discharged: the live counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 611 (2026-08-08, **CMP89 expanded alias geometry GREEN; central Brillouin reuse refuted; 20/41 unchanged**)
+
+Exact source checkpoint
+`336fdf35348ebd4e521a9f400a3284429e9d31b0` was validated by cold GitHub
+Actions run [`31232745194`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31232745194)
+(workflow checkpoint `1869742e9fb83b7cd99f3d5d07bc4c2f8fa0a356`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T01:30:59Z` to `01:31:18Z`, exited zero
+without warnings, and ended with `Build completed successfully (3283 jobs).`
+The audit ended at `01:31:22Z` and also exited zero.  All five declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`500d3363bd6ec545bba82ec06d5d950e49bb2f7758f332f9ffd7f63b376b54b4`.
+GitHub recorded SHA-256
+`f9b54360675e0a3c59fd349b6ab2e5daae77545f9801208f3b922e4f27bbfeb7`
+for uploaded artifact `9014385838` (10,453 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, five-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed module proves that the fixed even alias representatives printed in
+(2.45) are not all contained in the central scaled Brillouin interval: the
+literal member `N=2`, `p'=-pi`, `m=-1` has scaled magnitude `3*pi/2`.  This
+compiler-verified no-go forbids applying the central Jordan comparison to all
+noncentral terms by name alone.  The positive replacement is also sealed:
+every printed alias satisfies the exact half-width bound `2*|m| <= N`, the
+unscaled radius `pi*(N+1)`, and the uniform scaled radius `3*pi/2`.
+
+Run `31232268327` was rejected by the cache-key preflight before Lean.  Run
+`31232327344` preserves two local elaboration repairs, and cached run
+`31232461649` passed.  Cold run `31232600125` was mathematically green but
+was not accepted because one linter warning remained; only the warning-free
+cold run above retired PRE-VALIDATION.  Expanded-zone symbol estimates, the
+complete physical integrand comparison (2.51), analytic strip and transport
+remain open.  No terminal field is discharged: the live counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 612 (2026-08-08, **CMP89 expanded difference/sinc lower bounds GREEN; amplitude numerator open; 20/41 unchanged**)
+
+Exact source checkpoint
+`4bf1f1bec890d1dbcf34a0d958ae10b9251e0146` was validated by cold GitHub
+Actions run [`31233308717`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31233308717)
+(workflow checkpoint `ae0740f7563d9feac34f4bcb7b6e8a1b338d3b64`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T01:45:00Z` to `01:45:29Z`, exited zero
+without warnings, and ended with `Build completed successfully (3284 jobs).`
+The audit ended at `01:45:37Z` and also exited zero.  All six declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`cb6fad296a3e836709c673d43814ba5a9ea2dbab6d039d8c5be774fc6a084211`.
+GitHub recorded SHA-256
+`265807f9ce38b92defa0aedd2069299a42ff83f6a3fad06ee13a54e521e56a33`
+for uploaded artifact `9014585285` (10,458 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed producer proves the explicit expanded-zone inequality
+`(1/(3*pi))*|x| <= 2*|sin(x/2)|` for `|x| <= 3*pi/2`, transports it to the
+literal unit and scaled difference symbols, and proves the corresponding
+uniform sinc lower bound.  Combined with Addendum 611's exact alias radius,
+both estimates now hold for every printed coordinate alias, including the
+even extreme outside the central Brillouin interval.
+
+Run `31233039423` preserves the single explicit complex-cast dictionary
+repair; cached run `31233192928` passed, and only the cold run above retired
+PRE-VALIDATION.  The periodic averaging numerator, noncentral Laplacian
+ratio, Holder factor, complete physical integrand estimate, analytic strip
+and transport remain open.  No terminal field is discharged: the live
+counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained.
+
+## Addendum 613 (2026-08-08, **CMP89 periodic alias amplitude GREEN; Laplacian ratio open; 20/41 unchanged**)
+
+Exact source checkpoint
+`b7ba6f63c066603f2f8c8dc39301801cba4cf09c` was validated by cold GitHub
+Actions run [`31233987197`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31233987197)
+(workflow checkpoint `82d8beab77da54310a3bb351296984ec8c078ade`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T02:02:46Z` to `02:03:14Z`, exited zero
+without warnings, and ended with `Build completed successfully (3285 jobs).`
+The audit ended at `02:03:20Z` and also exited zero.  All six declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`5ca63bc02afba98d0868e76a6e3f95456cbd61421d4604900f16c404b78152c7`.
+GitHub recorded SHA-256
+`6bc8942fa874f83bafdd9006d4fcc1190aaf62d9ff14260fdf22cff88dfa9ef6`
+for uploaded artifact `9014796200` (10,520 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, six-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning or error line
+appears in the focal or audit logs.
+
+The sealed producer proves exact reciprocal-lattice periodicity of the
+half-angle sine, a noncentral momentum lower bound, and the explicit
+coordinate estimate `|u_j(p+2*pi*m)| <= 18*pi/(1+|2*pi*m|)` for every printed
+alias.  It then obtains the real and complex `d`-dimensional amplitude bounds
+by multiplying those coordinate weights, with no alias-cardinality loss.
+
+Run `31233738503` records the sole exponent-normalization elaboration failure;
+cached run `31233870292` passed the repaired source, and only the cold run
+above retired PRE-VALIDATION.  The noncentral Laplacian ratio, Holder factor,
+complete physical integrand estimate, analytic strip and transport remain
+open.  No terminal field is discharged: the live counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 614 (2026-08-08, **CMP89 noncentral massive-symbol ratio GREEN conditionally; mass flow open; 20/41 unchanged**)
+
+Exact source checkpoint
+`492318060dbf3b2ab9483f413151665df59ed39c` was validated by cold GitHub
+Actions run [`31234910793`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31234910793)
+(workflow checkpoint `519f3651f0635a38eba91b5a01f06a2c226f8c7b`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T02:26:51Z` to `02:27:26Z`, exited zero
+without warnings, and ended with `Build completed successfully (3286 jobs).`
+The audit ended at `02:27:33Z` and also exited zero.  All seven declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`0f8f1b38c545f357306a63ed10c0dab13327d4c2c73e4a5568382bc791b8521f`.
+GitHub recorded SHA-256
+`2d34b037da32812c999725755610cf25468b385304e7e351802cac5dce38c8ee`
+for uploaded artifact `9015062734` (11,348 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, seven-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning or error line
+appears in the focal or audit logs.
+
+The sealed module proves the literal massive-symbol comparison and the
+noncentral inverse-square alias estimate under the explicit hypothesis
+`mass^2 <= 1`.  It does not prove that the source family satisfies that
+hypothesis.  Visual review of CMP89 printed pp. 584--586 confirms that the
+Fourier proof uses `m_j^2` and that Section 3 uses `m_k^2`, while those pages do
+not state the cross-scale law.  The condition is therefore recorded as a
+source/dictionary obligation on a flowing quantity, not as a sixteenth freely
+chosen smallness window.
+
+Cached run `31234809751` passed the repaired source; only the cold run above
+retired PRE-VALIDATION.  The mass-flow dictionary, Holder factor, complete
+physical integrand estimate, analytic strip and transport remain open.  No
+terminal field is discharged: the live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 615 (2026-08-08, **CMP89 mass-flow direction recovered cross-source; exact CMP85 dictionary still open; 20/41 unchanged**)
+
+Primary visual inspection resolves the category of the hypothesis
+`mass^2 <= 1` without turning it into a sixteenth freely chosen window.
+CMP97 printed p. 300 gives the dimensionless unit-lattice mass coefficient as
+`(m^2 + delta m^2) * epsilon^2`.  CMP114 printed p. 273 states that after `n`
+renormalization transformations the rescaled unit lattice represents spacing
+`L^n * epsilon`, and that the expansion stops at a fixed physical length.
+Consequently the dimensionless running mass grows with forward coarse graining
+as `m_phys * L^n * epsilon`.
+
+CMP89 uses the reverse scale label: the initial fine lattice is
+`eta = L^(-k)` and the intermediate lattice in Lemma 2.4 is
+`xi = L^(-j)`, hence `n = k-j`.  The resulting candidate dictionary is
+
+```text
+m_j = L^(k-j) * m_k = m_phys * L^(-j).
+```
+
+Therefore a uniform bound `m_j^2 <= 1` over `0 <= j <= k` follows from the
+single physical-unit normalization `m_phys^2 <= 1`, equivalently the
+depth-dependent fine-lattice condition `m_k^2 <= L^(-2*k)`.  It does not follow
+from choosing a fixed bare dimensionless mass independently of depth.  The
+flow is relevant, but it is compatible with the finite RG chain precisely
+because the ultraviolet mass shrinks with the lattice spacing.
+
+This is a source-derived dimensional dictionary, not yet a verbatim recovery
+of CMP85 Eq. (2.43), which CMP89 cites for (2.34).  Direct acquisition and
+visual verification of that equation, followed by a Lean dictionary theorem,
+remain open.  No Lean/Lake/oracle was run and no compiler-verified claim is
+added.  The live counters remain exactly `20/41`, `TermSource = 0`, and window
+15 compatible but unattained.
+
+## Addendum 616 (2026-08-08, **CMP89 Euclidean Holder phase quotient GREEN; complete real integrand open; 20/41 unchanged**)
+
+Source checkpoint `52ca4c60f2269e322d00531ec89bd7dabbdbb91e` passed cold
+GitHub Actions run
+[`31236522003`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31236522003)
+under workflow checkpoint `adc9893a58e46f63ead8ec0eff87cbb5c39e46dd`.
+The run recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+`skipped`. The focal ran from `2026-08-08T03:09:44Z` to `03:10:10Z`, exited
+zero, and ended with `Build completed successfully (3287 jobs).`; the audit
+ended at `03:10:13Z` with exit zero. Both logs contain zero warnings. All five
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`9ad16f4b1a633c72c162937e1cc3a3ec78bfcfba1f39dc13a53d96ce5e9838cc`;
+the downloaded artifact reproduced that digest locally. The sealed module
+proves the literal Euclidean Holder quotient between CMP89 (2.49) and (2.51):
+
+```text
+|exp(i*q.r)-1| / |r|_2^alpha <= 2*|q|_2^alpha
+```
+
+for `0 <= alpha <= 1` and nonzero displacement, using Cauchy--Schwarz and a
+global phase estimate. No sup norm, dimension factor or small-phase premise
+is hidden. This is one factor of the printed integrand, not the full (2.51)
+comparison. The residual alias-product geometry, analytic strip and physical
+transport remain open. No terminal field is discharged: the counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 617 (2026-08-08, **CMP89 noncentral alias redistribution GREEN; physical integrand assembly open; 20/41 unchanged**)
+
+Source checkpoint `351270d9465fe5c9fd934753ae73044cdd6c6b03` passed cold
+GitHub Actions run
+[`31237236126`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31237236126)
+under workflow checkpoint `e58aa11b3531ebecf5c9d5c1b5f5e3f1029e0894`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T03:29:31Z` to `03:30:11Z`, exited zero
+with `Build completed successfully (3288 jobs).`, and the audit ended at
+`03:30:15Z` with exit zero. Both logs are warning-free and all five audited
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`51c35d0606cbddafebec77aad263c5d61d572f5553353782cc92f4b62dcd5258`;
+the downloaded artifact reproduced it locally. GitHub artifact `9015859150`
+has digest
+`ba3dea8636a7fe09fdef51dff336385abcb5f43f491095012e6ab3be7f4f0ef3`.
+
+The sealed endpoint proves the exact noncentral passage from
+`|p+l|^(alpha-1)` times the exponent-one coordinate product to the summable
+product weight with exponent `1+(1-alpha)/d`, paying the visible constant
+`3^(1-alpha)` once. It derives the needed coordinate estimate from the source
+central momentum interval and the Euclidean norm; no alias count or norm
+conversion is hidden. The central alias remains the separate `O(1)` branch
+printed in (2.51).
+
+The complete physical integrand has not yet been assembled from the derivative,
+amplitude, symbol-ratio, Holder and redistribution factors. The uniform
+analytic strip and physical transport also remain open. No terminal field is
+discharged: the counters remain exactly `20/41`, `TermSource = 0`, and window
+15 compatible but unattained. Cached run `31237103246` was diagnostic only;
+the cold run above alone retired PRE-VALIDATION.
+
+## Addendum 618 (2026-08-08, **CMP89 literal noncentral real integrand GREEN; central branch and alias sum open; 20/41 unchanged**)
+
+Source checkpoint `83272ce580198092dcc516c34e2a353a1bee42b8` passed cold
+GitHub Actions run
+[`31238106632`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31238106632)
+under workflow checkpoint `eb27ce65d6b3c451da33821c5bdcfdb889f53277`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T03:52:34Z` to `03:53:17Z`, exited zero
+with `Build completed successfully (3289 jobs).`, and the audit ended at
+`03:53:22Z` with exit zero. Both logs are warning-free and all four audited
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`aafc1f28c7ebf52d297aaa7f9f07ad19605c366d2eddfff61bf4e6d4ac6e1f8b`;
+the downloaded artifact reproduced it locally. GitHub artifact `9016145344`
+has digest
+`16bc3f2611f711d74b34b82cc20a9f3ded6633e19a1f1d1f006c3c03f11fd021`.
+
+The endpoint assembles all five literal noncentral factors in CMP89 (2.51)
+and bounds them by the already sealed summable product weight. The explicit
+constant keeps separate the Holder factor `2`, the inverse central denominator
+lower bound, `(18*pi)^d`, the massive-symbol comparison and
+`3^(1-alpha)`. The theorem contains no synthetic integrand, hidden dimension
+constant or alias-cardinality loss.
+
+The central alias remains the separate `O(1)` branch printed by the source;
+the finite alias sum, analytic strip and physical transport remain open. The
+flowing mass condition is visible and is not counted as a freely selectable
+smallness window. No terminal field is discharged: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained. Diagnostic
+runs `31237719609` and `31237880610` retain the two elaboration failures;
+cached run `31238006531` was not used to retire PRE-VALIDATION.
+
+## Addendum 619 (2026-08-08, **CMP89 central real integrand GREEN; finite alias sum open; 20/41 unchanged**)
+
+Source checkpoint `f39ad20aa11e47db37bc12bd6c612d7b5b844e26` passed cold
+GitHub Actions run
+[`31238966942`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31238966942)
+under workflow checkpoint `9fbaeb9670eb55b640c4dc29699d2ce59ad8bf9f`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T04:15:40Z` to `04:16:18Z`, exited zero
+with `Build completed successfully (3290 jobs).`, and the audit ended at
+`04:16:24Z` with exit zero. Both logs are warning-free and all eight audited
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`7ee7d554d3f72659719c9e1720f7859c301e7f0eea3b5a400d9a7ae299f5f2d9`;
+the downloaded artifact reproduced it locally. GitHub artifact `9016401875`
+has digest
+`f30183f173cac75b085a38021195007afb3dd40156e8d7fa7087b0099d4d4fec`.
+
+The zero alias now has its own literal explicit `O(1)` estimate on the central
+Brillouin cube. The proof uses radius `sqrt(d*pi^2)` and the exact central
+symbol cancellation, so it does not borrow the noncentral condition
+`mass^2 <= 1`. This preserves the source's central/noncentral split rather
+than hiding it in an `if` or a common synthetic bound.
+
+The exact finite alias sum, analytic strip and physical transport remain open.
+No terminal field is discharged: counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Runs `31238460271`,
+`31238613347` and `31238736048` preserve the elaboration failures; cached run
+`31238863986` was diagnostic only.
+
+## Addendum 620 (2026-08-08, **CMP89 exact finite alias sum GREEN; analytic strip open; 20/41 unchanged**)
+
+Source checkpoint `c1b7aa941688a8e3e7003f3b3a9142cc8db9dccd` passed cold
+GitHub Actions run
+[`31239705795`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31239705795)
+under workflow checkpoint `67247bb7b8f83d280dc74ff13741c8d38153c43c`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T04:35:02Z` to `04:35:51Z`, exited zero
+with `Build completed successfully (3291 jobs).`, and the audit ended at
+`04:35:55Z` with exit zero. Both logs are warning-free and all three audited
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`90ce34305c9b5cc50e7ad9e0f6f5008ea527d415a7566dd128d943ffbf7d9b14`;
+the downloaded artifact reproduced it locally. GitHub artifact `9016637971`
+has digest
+`b527775ba33fe24c36e0c06275e47a198b03cc560af5890b5a81d79ef6546214`.
+
+The exact finite reciprocal-alias sum now splits into the central `O(1)` term
+once and the noncentral aliases, which are absorbed by the sealed product
+series without a cardinality factor. The flowing mass condition is used only
+on the noncentral summands and remains a separate physical scaling obligation.
+
+The analytic strip, contour displacement and physical regional-Green transport
+remain open. No terminal field is discharged: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained. Runs
+`31239333700` and `31239462882` preserve the elaboration failures; cached run
+`31239604206` was diagnostic only.
+
+## Addendum 621 (2026-08-08, **CMP89 entire averaging amplitude GREEN; complex denominator open; 20/41 unchanged**)
+
+Source checkpoint `a414b2370c78230856905843cdf327cb56fc4eba` passed cold
+GitHub Actions run
+[`31241734442`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31241734442)
+under workflow checkpoint `2d268b58e944b0bd62f72a5965fc45fe47b456f5`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T05:29:49Z` to `05:30:25Z`, exited zero
+with `Build completed successfully (3288 jobs).`, and the three audits ended at
+`05:30:30Z`, `05:30:34Z` and `05:30:39Z`, all with exit zero. The focal log is
+warning-free and all nine audited declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`62c7d2a6e98b8d1b54eb217dcecd1aaa61efa7154c85c8e1ec6b365f3fe9a74d`;
+the downloaded artifact reproduced it and every entry of `SHA256SUMS` locally.
+GitHub artifact `9017266698` has digest
+`24dcc599de11b14265d68d0519cec4db05ed7d80317ece166b31efdec80e13fd`.
+
+The pole-free finite geometric average at inverse integer scale is now an
+entire function, its finite-coordinate product is entire, and both agree
+exactly with the physical CMP89 (2.45) amplitude on every printed real alias.
+The alias-slope nonvanishing is derived from the sealed expanded-zone sinc
+lower bound rather than accepted as a free dictionary.
+
+The holomorphic massive denominator, uniform nonvanishing strip, contour
+displacement and physical regional-Green transport remain open. In particular,
+the later analytic denominator must use `u(z) * u(-z)`, not a norm square.
+The flowing condition `mass^2 <= 1` remains a separate RG-scaling obligation
+and is not counted as a selectable window. No terminal field is discharged:
+counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained. Cached run `31241632503` was diagnostic only.
+
+## Addendum 622 (2026-08-08, **CMP89 entire Fourier symbols GREEN; uniform strip open; 20/41 unchanged**)
+
+Source checkpoint `47a5cb3b626426104ae0f7ef4afd98a2b3aea372` passed cold
+GitHub Actions run
+[`31242779236`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31242779236)
+under workflow checkpoint `0e6879cb1cdf93eb924a3aa6e68d5098208a0986`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `2026-08-08T05:57:48Z` to `05:58:02Z`, exited zero
+with `Build completed successfully (3277 jobs).`, and the audit ended at
+`05:58:09Z` with exit zero. The focal is warning-free and all eleven audited
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`1cfe4df0f678995b4acdf13bf1d3c699659c26cc26a12c98deb7006f291b081e`;
+the downloaded artifact and all entries of `SHA256SUMS` reproduced locally.
+GitHub artifact `9017562424` has digest
+`21d5301d6d8de1ccf6c6239a9f51ca710dd7e6f80bd1fa24e905bd2e258144c7`.
+
+The fine-lattice difference, its opposite-momentum Laplacian pairing and the
+opposite-momentum entire averaging pairing are constructed and jointly entire.
+Their real slices are exactly the previously sealed nonnegative Laplacian and
+squared averaging amplitude. The proof uses explicit momentum reversal and
+complex conjugation; no Hermitian norm is inserted into the holomorphic object.
+
+The complete complex denominator has not been inverted or shown nonzero on a
+uniform strip. Contour displacement and physical regional-Green transport also
+remain open. The flowing mass condition is unchanged and is not a selectable
+smallness window. No terminal field is discharged: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained. Run
+`31242420869` preserves the elaboration failure; cached run `31242614452` was
+diagnostic only.
+
+## Addendum 623 (2026-08-08, **CMP89 strip mechanism visually resolved; block averaging supplies gap; constants still unproduced**)
+
+Direct inspection of CMP89 printed pp. 584--586 resolves the origin of the
+uniform decay constants. Equation (2.44) contains
+`-Delta^xi + m_j^2 + a_j Q_j^* Q_j`, and the denominator lower bound (2.50)
+retains the central alias of the block-averaging term to obtain
+`a_j |u_j(p)|^2 Delta^1(p)/Delta^xi(p) >= O(1) > 0`. The printed gap is therefore
+not generated by `m_j` and not by Dirichlet/free-boundary geometry. Equation
+(2.42) uses multiple reflections to transfer the already-established
+full-lattice decay to the box.
+
+The paragraph after (2.51) states that both the analytic neighbourhood and the
+integrand bound can be chosen independently of `j`; the contour shift then
+produces `exp(-delta0 * distance)`. Hence the quantitative strip construction
+is the common upstream producer of the zero-background `B0` and `delta0`
+certificate data. This is a structural unification, not a closed estimate: the
+source prints neither the radius nor the bound, and later reflections and
+physical dictionaries can spend them. `delta0` is a selected shift inside the
+strip, not definitionally its maximal radius.
+
+The mass-gap heuristic `delta0 ~ m`, `B0 ~ m^-2`, `K ~ m^-7` is rejected for
+this source mechanism. The flowing-mass dictionary remains separately open at
+CMP85 (2.43). No Lean/Lake/oracle was run and no counter moves: `20/41`,
+`TermSource = 0`, window 15 compatible but unattained.
+
+## Addendum 624 (2026-08-08, **CMP89 complex alias denominator GREEN; uniform strip open; 20/41 unchanged**)
+
+Source checkpoint `3746b6a4ef58ec387ac6939ee819d99ed7729f07` passed cold
+GitHub Actions run
+[`31244335533`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31244335533)
+under workflow checkpoint `0088e233894cc6ab7c8098877ae27c8f77d8e09f`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `06:39:24Z` to `06:39:53Z`, and the audit ended at
+`06:39:59Z`; both exited zero. All nine audited declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`51d383fb311362cfc65b26637c4c49e9af64f5a749f794cff20398408866882f`;
+the downloaded artifact and all entries of `SHA256SUMS` reproduced locally.
+GitHub artifact `9018032031` has digest
+`eb8af486d0d0ad5399a3eb7c3be8d9107c0e6210a6a9dc3a60772d3927cd16ee`.
+
+The new producer constructs the literal complex finite alias denominator of
+CMP89 (2.47), the multiplied denominator of (2.49), and exact real-slice
+dictionaries for every summand and for the complete object. It uses the
+source-faithful opposite-momentum pairing rather than a complexified norm
+square.
+
+The module does not assert individual pole exclusion or a uniform complex
+strip. The source's analyticity claim concerns the complete integrand, so the
+next producer must respect possible removable cancellations in the assembled
+expression. The strip radius, joint bound, contour shift and physical
+regional-Green transport remain open. No terminal field is discharged:
+`20/41`, `TermSource = 0`, window 15 compatible but unattained. Runs
+`31243687034`, `31243835860`, `31243976939` and `31244104328` preserve the
+elaboration failures; cached run `31244234625` was diagnostic only.
+
+## Addendum 625 (2026-08-08, **CMP85 averaging-coefficient flow visually resolved; uniform positive floor; strip still open**)
+
+The primary Project Euclid PDF of Balaban, *(Higgs)2,3 Quantum Fields in a
+Finite Volume. I. A Lower Bound*, was acquired and rendered. Its SHA-256 is
+`6B6451CE06BB438658BA300B2630CDF769DC65F4A769D76A704090055486E5F6`.
+Printed p. 609 (PDF p. 7), visually checked at 500 dpi, gives
+
+```text
+a_(k+1) = a*a_k/(a*L^(-2)+a_k),
+a_k = a*(1-L^(-2))/(1-L^(-2k)),
+a_k decreases to a_infinity = a*(1-L^(-2)).
+```
+
+Hence `a>0`, `L>1` imply `a_k >= a*(1-L^(-2)) > 0` at every scale. Printed
+p. 612 (PDF p. 10), checked separately at 450 dpi, uses these same coefficients
+`a_j^2` in the propagator decomposition (2.43). The averaging coefficient in
+CMP89's central-alias gap therefore has a scale-uniform positive floor; it does
+not decay away under the source flow.
+
+Combining this source floor with the already sealed real CMP89 lower constant
+gives, in dimension four, the explicit real gap
+`a*(1-L^(-2))*(2/pi)^10`, with `(2/pi)^10 = 0.010934...`. This is not yet the
+uniform complex strip or its joint bound `B0(delta0)`: the quantitative complex
+perturbation of the assembled integrand and any removable cancellations remain
+open. No Lean/Lake/oracle was run for this source audit. Counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 626 (2026-08-08, **CMP85 coefficient floor and CMP89 real denominator transport GREEN; strip open**)
+
+Exact source checkpoint `e0aaffdc9afc669bcef22aa040768beaf1b88df8`
+passed cold GitHub Actions run
+[`31245326067`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31245326067)
+under workflow checkpoint `8f68f8994a6c91605052f355287001cb0866772e`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `07:05:50Z` to `07:20:04Z`, completed 8,407 jobs,
+and the audit ended at `07:20:11Z`; both exited zero. All five declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`. The only warning in
+the focal transcript is the pre-existing `unnecessarySimpa` linter note in
+`BalabanCMP99SourceGlobalStratification.lean`.
+
+The deterministic inner archive SHA-256 is
+`e84a9ad4af9a78be6b95a0a27a2d69e8c4b2980938cc0c7bd832012483ffe575`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9018475284` has digest
+`0130de91e37ce4f6ffbd030bc3bac463f8b3a9235e938bdbc4f8cfe1b9a6cdbb`.
+
+The new producer uses the existing recursive object
+`cmp99SourceMassParameter`, proves directly that every scale lies above the
+printed CMP85 (2.15) floor `a * (1 - L^(-2))`, proves that floor positive for
+`a > 0` and `L > 1`, and transports it through the sealed CMP89 (2.50) real
+denominator. Thus the real denominator now has one explicit positive lower
+constant independent of depth `j`; the running coefficient is not a remaining
+input.
+
+This does not construct the uniform complex strip or its bound `B0(delta0)`.
+The next analytic producer must bound the variation of the assembled complex
+denominator/integrand uniformly in `j`, respecting possible removable alias
+cancellations. No terminal field is discharged: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 627 (2026-08-08, **CMP89 entire alias-fibre precision matrix GREEN; strip open**)
+
+Exact source checkpoint `3bd8e2e15f69643c999041b7a18871b3ede086eb`
+passed cold GitHub Actions run
+[`31247059031`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31247059031)
+under workflow checkpoint `8579831b063ce8f71325d650ca29ae5e5f565f56`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `07:52:00Z` to `07:52:41Z`, completed 3,291 jobs,
+and the audit ended at `07:52:46Z`; both exited zero. All four declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`55decbe0471aee60ae7df9d14bc28b45e7599baf67442b6b4844f13f1e430e32`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9018842106` has digest
+`003255a8077450601a93d4e1b148777c8842615b10d8a84bcd85d881e5192077`.
+
+The new producer constructs the finite alias-fibre precision matrix behind
+CMP89 (2.44)--(2.46) as the literal diagonal fine symbol plus the rank-one
+block-averaging term. Its exact `mulVec` action, entrywise holomorphy, and the
+real-slice opposite-momentum/conjugation dictionaries are compiler verified.
+This makes the removable alias cancellations structural: the later strip
+proof need not demand independent nonvanishing of every displayed quotient.
+
+No inverse, uniform strip, `B0`, contour displacement or physical
+regional-Green estimate is proved here. Diagnostic runs `31246430537`,
+`31246578810` and `31246711432` preserve the three elaboration failures;
+cached run `31246959854` was diagnostic only. No terminal field is discharged:
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 628 (2026-08-08, **CMP89 central alias cancellation GREEN; quantitative strip open**)
+
+Exact source checkpoint `d44a4877468fb7f3da595d146ad9529ff77c9d1f`
+passed cold GitHub Actions run
+[`31247671591`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31247671591)
+under workflow checkpoint `eb71e70518b91938a25198ce0529f3256637110e`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `08:08:14Z` to `08:09:00Z`, completed 3,292 jobs,
+and the audit ended at `08:09:04Z`; both exited zero. All three declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`7c701e3aa97949118474f5f45201a64000453db34b1e9dadb4c18c3a7217120f`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9019009658` has digest
+`817b1b8e52a8e896df6cbb74e059a9d8a080b64fab8c2d11595c2474c6f5cc61`.
+
+The source split at the zero reciprocal alias is now literal. Multiplying the
+reduced denominator by its central fine symbol is proved exactly equal to
+
+```text
+Delta_0 + a*u_0*u_{-0}
+  + a*Delta_0*sum_{l != 0} u_l*u_{-l}/Delta_l.
+```
+
+The right side extends across a zero of `Delta_0`; only the noncentral
+quotients remain. This is the cancellation needed before a mass-uniform strip
+can be meaningful, not a claim that each displayed quotient is separately
+nonzero. The next obligations are a positive real lower bound for this
+stabilized denominator and a scale-uniform complex variation estimate.
+
+No strip radius, `B0`, contour shift or physical Green estimate is produced.
+Diagnostic runs `31247295117` and `31247418392` preserve the two elaboration
+failures; cached run `31247554050` was diagnostic only. Counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 629 (2026-08-08, **CMP89 stabilized real denominator floor GREEN; complex strip open**)
+
+Exact source checkpoint `798e941733bcd934bbab683923452b941f3fb1ea`
+passed cold GitHub Actions run
+[`31248239837`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31248239837)
+under workflow checkpoint `4755cb07963706c88dc47de506a26e24e3154e0d`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `08:23:29Z` to `08:38:28Z`, completed 8,420 jobs,
+and the audit ended at `08:38:38Z`; both exited zero. All eight declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`. The focal warnings
+are pre-existing transitive linter warnings, not warnings in the new module.
+
+The deterministic inner archive SHA-256 is
+`ec5ac0666d8af4cf7e13bd2ae94944e4292ab61e964a35493b240c3fd74f3bb9`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9019345069` has digest
+`91e6f8e01a727fd7c9ea4881a34687428c77417704ebf41b9d191c4611606e8e`.
+
+The real-slice dictionaries for the central average pair, noncentral rational
+sum and complete stabilized denominator are now compiler verified. Positive
+running mass makes the noncentral sum nonnegative, so the literal central term
+gives the lower constant `a_j*(2/pi)^(2d)`. The sealed CMP85 coefficient floor
+then produces the depth-uniform positive bound
+`a*(1-L^(-2))*(2/pi)^(2d)`; in dimension four the exponent is eight, with no
+extra Laplacian-comparison loss.
+
+This does not construct a complex strip or `B0`. The next producer must bound
+the complex variation of the exact stabilized expression uniformly in depth,
+without multiplying over aliases or requiring the central fine symbol to be
+separately nonzero. Diagnostic run `31248012004` preserves the one algebraic
+normalization failure; cached run `31248127770` was diagnostic only. No
+terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
+
+## Addendum 630 (2026-08-08, **CMP89 noncentral real gap GREEN at zero mass; complex strip open**)
+
+Exact source checkpoint `5ad7d83a3398438d1ec992167127843b439c587a`
+passed cold GitHub Actions run
+[`31249442951`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31249442951)
+under workflow checkpoint `552c928e82f26bee318e83fdd9c611a682af0a3e`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `08:57:28Z` to `09:08:15Z`, completed 8,425 jobs,
+and the audit ended at `09:08:23Z`; both exited zero. All seven declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`71f28bef0b0eb72c70316ca93ccec8d571d20891c2b6232c339b6df616d7842e`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9019666407` has digest
+`3409d03a5044042fb133368b3b2bba847bcdaa11c988aafe7d165d67ff47aa7e`.
+
+The new producer combines the nonzero-alias geometry
+`|p+2*pi*m|_2 >= pi` with the expanded-zone comparison to prove the literal
+mass-independent gap `1/9 <= Delta_m`. It follows that the complete
+noncentral real rational sum is nonnegative at arbitrary mass, including zero.
+The stabilized lower bound and the CMP85-uniform floor are correspondingly
+reproved without `mass > 0`.
+
+This result does not discharge the separate `mass^2 <= 1` hypothesis in the
+noncentral upper-ratio estimate (2.51), and it does not construct a complex
+strip or `B0`. Diagnostic runs `31249068895` and `31249210530` preserve the
+physical-specialization timeout and cast mismatch; cached run `31249330069`
+was diagnostic only. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 631 (2026-08-08, **CMP89 normalized entire-average strip growth GREEN; variation open**)
+
+Exact source checkpoint `0b5d26565740b110c8ef8e0216529c671914f88f`
+passed cold GitHub Actions run
+[`31250433443`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31250433443)
+under workflow checkpoint `ed818e31f2c6a93cdbe992b43f97f5daaedb1f7a`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The warning-free focal ran from `09:24:33Z` to `09:24:44Z`, completed
+3,276 jobs, and the audit ended at `09:24:48Z`; both exited zero. All five
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`c716750a07ff43f9ea011813297fb8a0f9851d076c038600610ada0ee3b0b659`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9019848374` has digest
+`7f36ec5ad3844cc930414eaf1f84d4a76793ed26b434fa16020ba749f04d5645`.
+
+For the literal normalized continuation
+`u_N(z) = N^(-1) * sum_(r<N) exp(-i*(r/N)*z)`, the new producer proves the
+exact mode norm `exp((r/N)*Im z)` and uses `r/N < 1` to derive
+`|u_N(z)| <= exp(rho)` on `|Im z| <= rho`. Products over `d` coordinates and
+the holomorphic opposite-momentum pairing cost only `exp(rho)^d` and
+`exp(rho)^(2d)`, with no `N`-dependent constant.
+
+The earlier cold run `31250284831` was mathematically green but retained only
+as non-sealing evidence because the new module emitted two unused-`simp`
+warnings; checkpoint `0b5d2656` removes them and the accepted cold run is
+warning-free. No derivative or difference bound, complex denominator
+variation, strip radius, `B0`, contour shift or physical Green estimate is
+proved. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 632 (2026-08-08, **CMP89 normalized vertical variation GREEN; denominator variation open**)
+
+Exact source checkpoint `bd392f4113bdae819b9f095003607091ca30e25e`
+passed cold GitHub Actions run
+[`31251069131`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31251069131)
+under workflow checkpoint `e5cd02e0bfb5b336664f8478c0180accba994d58`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The warning-free focal ran from `09:41:40Z` to `09:41:55Z`, completed
+3,277 jobs, and the audit ended at `09:42:00Z`; both exited zero. All five
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`1529d0355b8e1778851bd080b92e6bf530fd640ed6f5769c3dbd994f0e66de44`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9020033986` has digest
+`cab3fd06545c8fe019cefd9f2507eee50d7fe830581b9a736ce0a3af5ba991bd`.
+
+The mode exponent is now explicit and its displacement from the matching real
+point has exact norm `(r/N)*|Im z|`. The normalized finite sum therefore
+satisfies `|u_N(z)-u_N(Re z)| <= rho*exp(rho)` throughout the strip, uniformly
+in `N` and independently of the real momentum or reciprocal alias. The first
+diagnostic run `31250735067` preserves the purely mechanical `ring`/extra-goal
+failure; cached runs `31250856402` and `31250975487` were diagnostic only.
+
+No coordinate-product variation, stabilized-denominator variation, strip
+radius, `B0`, contour shift or physical Green estimate is proved. No terminal
+field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+## Addendum 633 (2026-08-08, **CMP89 amplitude and opposite-pair variation GREEN; denominator variation open**)
+
+Exact source checkpoint `c2d64db27a268fbbbca661472e4d8b1310301848`
+passed cold GitHub Actions run
+[`31251690965`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31251690965)
+under workflow checkpoint `1e40b054508be6b5bb533ae951d2a4f7405cac55`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The warning-free focal ran from `09:58:35Z` to `09:58:53Z`, completed
+3,278 jobs, and the audit ended at `09:58:57Z`; both exited zero. All four
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`cc3ec5a1a021fbc3ed4b17fcc777783ffbfcf8b62f23f82ea3382701928936e4`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9020210674` has digest
+`07e5635a479d1f0ab8d508a0b93d810952db593e6f1e631da874822b9a70ea69`.
+
+The sealed one-coordinate estimate is now telescoped through arbitrary finite
+dimension. The resulting amplitude variation has the explicit constant
+`d*(rho*exp rho)*(exp rho)^d`; the opposite-momentum holomorphic pair is
+bounded by the corresponding two product-rule terms, with no `N` or alias
+cardinality. Diagnostic runs `31251341060` and `31251478154` preserve the two
+purely mechanical induction/factor-order failures; cached run `31251590263`
+was diagnostic only.
+
+No stabilized-denominator variation, complex radius, `B0`, contour shift or
+physical Green estimate is proved. No terminal field is discharged: counters
+remain `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 634 (2026-08-08, **CMP89 entire fine-symbol variation GREEN; weighted quotient open**)
+
+Exact source checkpoint `f7ea5904ce33ba31c5b129bc717871f4ebb478bf`
+passed cold GitHub Actions run
+[`31252428842`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31252428842)
+under workflow checkpoint `f51cddc2c4d82a87038ae8498611ef62a36474be`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The warning-free focal ran from `10:18:21Z` to `10:18:43Z`, completed
+3,281 jobs, and the audit ended at `10:18:48Z`; both exited zero. All six
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`f49e4e3fa9b75b9a250dc33804ac5b6846637b20ce029e1884a567f5320d49c7`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9020427408` has digest
+`7ea583b86be32b64fef6fe884d0db66cdb19b0e3a8e9ddbfb5dbce3ab2b9f793`.
+
+The sealed endpoint cancels the lattice-spacing quotient in one entire
+difference, proves the opposite-momentum product-rule estimate, and sums it
+to the complete fine-lattice symbol while cancelling the mass term exactly.
+Its budget keeps `|Re z_mu|` explicit and introduces neither the number nor
+the diameter of aliases. Diagnostic runs `31252040277` and `31252170743`
+preserve only mechanical normalization failures; cached run `31252310463`
+was diagnostic and does not constitute the seal.
+
+No reciprocal is taken and no zero-alias nonvanishing is assumed. The
+weighted variation of the noncentral averaging quotient, the stabilized
+denominator, strip radius, `B0`, contour shift and physical Green estimate
+remain open. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 635 (2026-08-08, **CMP89 moment-dependent noncentral complex gap GREEN; weighted quotient open**)
+
+Exact source checkpoint `eddb70d1da3f3aa5fb50414d68bd0c60313d78e2`
+passed cold GitHub Actions run
+[`31254402223`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31254402223)
+under workflow checkpoint `cdf6b992d40ec65d9e7858de6ed9ae11ce27fd9b`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `11:12:43Z` to `11:28:13Z`, completed 8,430 jobs,
+and the audit ended at `11:28:21Z`; both exited zero. All five declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`57c539234639e9d103276098c563c6be651886e413c4458cb8038af82176cac3`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9021140614` has digest
+`8f018e848fd25cbe4e3e0c51d463a8d27701c728d2183ffcae75493ad54f3348`.
+
+The physical four-dimensional producer retains the momentum-dependent real
+gap rather than collapsing it to `1/9`. Its vertical budget is
+`eps*(4*|q|_2+4*eps)`, with `eps=rho*exp(rho)`, and spending at most half of
+`(3*pi)^(-2)*|q|_2^2` leaves the other half in the complex norm. The
+conditional estimate is separated from the genuinely noncentral strict
+nonvanishing corollary, so no redundant `m != 0` premise remains.
+
+`rho` is explicitly the strip width in the normalized Brillouin-momentum
+variable. The later conversion to fine spatial units and the final decay rate
+`delta0` remains a named Fourier/physical dictionary; neither an `N` bandwidth
+loss nor an `N^5` penalty is imported into this seal. Runs `31253330707`,
+`31254166319` and `31254286978` preserve respectively the non-sealing warning,
+the explicit-mass elaboration failure and the cached green diagnostic.
+
+No alias-weighted complex amplitude or quotient bound, stabilized-denominator
+radius, `B0`, contour shift or physical Green estimate is proved. No terminal
+field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+## Addendum 636 (2026-08-08, **CMP89 alias-weighted entire-average strip bound GREEN; denominator radius open**)
+
+Exact source checkpoint `87ffa0b6a41a1201cfe32b3955f8c4345a05be62`
+passed cold GitHub Actions run
+[`31257291450`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31257291450)
+under workflow checkpoint `f4a8ae30393d49f94765d674e3532685d6d8f5b4`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `12:29:33Z` to `12:30:12Z`, completed 3,292 jobs
+without a source warning, and the audit ended at `12:30:20Z`; both exited
+zero. All seven declarations printed exactly `[propext, Classical.choice,
+Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`dcfdcc9007b730278266b44704599b7bbe78a739749cc577b7437b9840e9be01`;
+the downloaded archive reproduced it locally. GitHub artifact `9021780151`
+has digest
+`6cb9eb351da10e71dacd3b08a4799eab135221d99bd5f0894e38837183943040`.
+
+The sealed producer uses the finite geometric quotient before estimating.
+For each coordinate it cancels the normalized average's `N^-1` against the
+expanded-zone denominator and retains one reciprocal-alias weight under the
+explicit conservative condition `rho * exp rho <= 1/6`. The product theorem
+keeps the full multidimensional weight and never inserts the alias-fibre
+cardinality.
+
+Cold run `31256971974` is retained as green evidence for the previous source
+checkpoint but did not seal because its focal emitted an
+`unnecessarySimpa` warning. Cached run `31257159057` passed the warning-free
+source diagnostically; only the cold run above retired the two PRE-VALIDATION
+marks.
+
+The physical noncentral-gap condition remains distinct and may bind well
+before the amplitude condition. The sharper real trigonometric floor is not
+silently imported into this brick. No stabilized-denominator radius, joint
+`B0`, contour shift, Fourier/physical rate dictionary or regional-Green
+estimate is proved. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 637 (2026-08-08, **CMP89 uniform noncentral complex radius GREEN; stabilized sum open**)
+
+Exact source checkpoint `6d83d0ed7836df9ce831970f0703aa9f6863a024`
+passed cold GitHub Actions run
+[`31258180333`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31258180333)
+under workflow checkpoint `a87f3dea04ca945bd4ebcce2d65917279ef2d1b9`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `12:53:06Z` to `13:03:41Z`, completed 8,431 jobs
+without a source warning, and the audit ended at `13:03:45Z`; both exited
+zero. Both declarations printed exactly `[propext, Classical.choice,
+Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`a6b713fa5d383d93fe0ab83a5de6b55f088964299a26dc134a6ce4cb600152eb`;
+the downloaded archive reproduced it locally. GitHub artifact `9022131263`
+has digest
+`053272fb9ffcff6a5912f6a390113395bd5575dcd08e3231defa459976c8100d`.
+
+The sealed producer replaces the pointwise family of noncentral complex-gap
+budgets by one exact inequality at Euclidean radius `pi`, then proves that the
+budget remains valid at every larger radius. The physical corollary consumes
+that single scalar condition and the already sealed nearest-alias geometry;
+it does not accept a family of budget witnesses.
+
+The current formal budget remains
+`eps * (4*|q|_2 + 4*eps)`, with `eps=rho*exp(rho)`. Consequently a numerical
+radius based on the sharper coefficient two is not attributed to this seal;
+such a gain must first be proved in the opposite-pair variation theorem. The
+separate amplitude condition `eps <= 1/6` is neither merged nor advertised as
+binding.
+
+No complex noncentral quotient sum, stabilized-denominator lower bound, joint
+`B0`, contour shift, Fourier/physical rate dictionary or regional-Green
+estimate is proved. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 638 (2026-08-08, **CMP89 complex noncentral alias quotient GREEN; finite sum open**)
+
+Exact source checkpoint `ff09dc112b01d51a5640852a0cc8e1f817862fd3`
+passed cold GitHub Actions run
+[`31259452871`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31259452871)
+under workflow checkpoint `19c58d1f9feb2d4c918ccf6c14102fb3c30603c3`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `13:25:56Z` to `13:41:39Z`, completed 8,433 jobs
+without a source warning, and the audit ended at `13:41:47Z`; both exited
+zero. All three declarations printed exactly `[propext, Classical.choice,
+Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`98cc354f59e7d65d5d0856e49ed1a51d3693589c0a9bb680ff767182a649507b`;
+the downloaded archive reproduced it locally. GitHub artifact `9022536472`
+has digest
+`7a2fd37533e23a2aa233c29b6b772916f6cdbff6936486870ca161721cb6fcef`.
+
+The sealed producer bounds one literal complex noncentral quotient. One
+averaging amplitude retains the reciprocal-alias weight and the opposite
+amplitude pays only `exp(rho)^4`; no symmetry of the half-open alias set is
+assumed. The uniform complex gap supplies `|q|_2^(-2)`, and the existing
+source-weight redistribution at `alpha=-1` produces the strictly summable
+four-dimensional product exponent.
+
+Amplitude and gap conditions remain distinct, and the conservative
+factor-four gap variation remains visible. Runs `31259057786` and
+`31259202883` retain the two elaboration failures; cached diagnostic run
+`31259339067` passed but did not retire PRE-VALIDATION.
+
+No finite complex quotient sum, stabilized-denominator lower bound, joint
+`B0`, contour shift, Fourier/physical rate dictionary or regional-Green
+estimate is proved. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 639 (2026-08-08, **CMP89 finite complex noncentral alias sum GREEN; stabilized denominator open**)
+
+Exact source checkpoint `832d014a7b3c5558c7b1a8f4821fa22ed5bdc06d`
+passed cold GitHub Actions run
+[`31260422445`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31260422445)
+under workflow checkpoint `2a6f1e12d06d90a69a18c4aa14eb57824fc58545`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `13:50:40Z` to `14:06:52Z`, completed 8,434 jobs,
+and the audit ended at `14:06:58Z`; both exited zero. The declaration printed
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`bcf943221f5468385448777008c5de778d4f8f37c3529474d777fc404cdcd221`;
+the downloaded archive reproduced it locally. GitHub artifact `9022811583`
+has digest
+`eaff20526a79962161326dc8b3b51e3bcb9f2a62fc3484a451cb2cab9d3b5d05`.
+
+The sealed theorem sums the literal complex noncentral quotient over the
+finite printed alias fibre. Positivity of the product weight permits removal
+of the central alias, and the existing product/tsum theorem at `alpha=-1`
+gives a bound independent of `L^j`, without alias-cardinality loss.
+
+Cached diagnostic run `31260306510` passed but did not retire PRE-VALIDATION.
+No stabilized-denominator lower bound, joint `B0`, contour shift,
+Fourier/physical rate dictionary or regional-Green estimate is proved. No
+terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
+
+## Addendum 640 (2026-08-08, **CMP89 alias-weighted opposite-pair variation GREEN; quotient variation open**)
+
+Exact source checkpoint `4f9b86adf7428ead68c159daff0cea3ff50e2b0b`
+passed cold GitHub Actions run
+[`31261770494`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31261770494)
+with workflow checkpoint `eb31362a75c49e0df072e8c96a8e4bf8197a2270`.
+Restoration and saving of `.lake/build` were skipped. The focal completed
+3,296 jobs and the focal/audit both exited zero; the four audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9023011164` has GitHub digest
+`bb69974e17ec179c4f7dc31a2dc79afc201522e7da8c77564cb1f1e6b2d10d19`.
+The deterministic inner archive re-hashed on Windows to
+`45b58ffcf2c75b0558d80a07d155db4ebe58ad3836de739b74b5cc9550a2bcaa`,
+identical to the hash recorded inside the cold runner.
+
+The sealed theorem retains one literal summable CMP89 (2.51) product weight
+through vertical variation of the opposite-momentum averaging pair. It does
+not assume negation closure of the half-open centered alias fibre: membership
+is used only to derive the coordinate zone, and the opposite factor is handled
+at `(-p,-m)` after that premise is exposed. The weight's evenness is proved
+definitionally as a separate audited theorem.
+
+No quotient variation, stabilized denominator lower bound, joint `B0`,
+contour shift or physical Green estimate is obtained. The conservative
+factor-four fine-symbol gap budget remains unchanged; the possible factor-two
+sharpening is not imported. Diagnostic run `31261520329` preserves the first
+real-slice elaboration failure, and cached run `31261659772` is diagnostic
+only. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 641 (2026-08-08, **CMP89 complex noncentral quotient variation GREEN; radial redistribution open**)
+
+Exact source checkpoint `acf4b2b5a6afd21c1a09eb214580c757c6f33b4d`
+passed cold GitHub Actions run
+[`31262412986`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31262412986)
+with workflow checkpoint `0cc33c1181e23f5299f726da04c4398eec539f70`.
+Restoration and saving of `.lake/build` were skipped. The focal completed
+8,435 jobs and the focal/audit both exited zero; the three audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9023321573` has GitHub digest
+`dc2ce45d89736d2772a950d3de7f4279ce8ce43b047f052e4df046b8727f7787`.
+The deterministic inner archive re-hashed on Windows to
+`1c7041b0ac53bfa3eb4cb80ad61af2b4d87bd04356d7a62c38551e7731a3f776`,
+identical to the hash recorded inside the cold runner.
+
+The sealed specialization proves the literal vertical quotient identity with
+two visible costs: averaging-pair variation times one inverse radial gap, and
+fine-symbol variation times two inverse radial gaps. Both the complex alias
+and its real slice use the same positive moment-dependent gap, and both terms
+retain the source alias weight. Alias translation is proved to commute exactly
+with projection to the real slice.
+
+No radial-power redistribution, finite quotient-variation sum, stabilized
+denominator lower bound, joint `B0`, contour shift or physical Green estimate
+is obtained. Failed diagnostic run `31262139783` preserves the three local
+elaboration failures; cached run `31262301181` is diagnostic only. The
+conservative factor-four fine-symbol gap budget remains unchanged. No terminal
+field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+## Addendum 642 (2026-08-08, **CMP89 finite noncentral alias-sum variation GREEN; stabilized denominator open**)
+
+Exact source checkpoint `8ec5b66891e54bd73859591608aace7d100f618e`
+passed cold GitHub Actions run
+[`31263911984`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31263911984)
+with workflow checkpoint `94787dd73ee0c9e729075012a2753b60d84e24da`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `15:15:03Z` to `15:31:00Z`, completed 8,437 jobs,
+and the audit ended at `15:31:07Z`; both exited zero. The two audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9023775011` has GitHub digest
+`bf7db2f3b72cc0f8bc87c82fc6d13a3a57e705afd2bf9f81f0af1fffd1623684`.
+The deterministic inner archive re-hashed on Windows to
+`84f7b3d0a5e89eac280ae471bd054b9453508b46f9ceb0d8ca6ebb42d79abb75`,
+identical to the hash recorded inside the cold runner.
+
+The sealed specialization inserts the literal conservative fine-symbol
+variation budget into the two-gap quotient estimate. The second radial term is
+relaxed from `|q|_2^(-3)` to `|q|_2^(-2)` only on the proved noncentral region
+`|q|_2 >= pi > 1`; one existing CMP89 (2.51) redistribution at `alpha=-1`
+then supplies the same summable source weight for both terms. The complete
+finite alias fibre is bounded by the existing product tsum, without a
+cardinality factor.
+
+Cached run `31263756123` passed but did not retire PRE-VALIDATION. Failed
+diagnostic runs `31263405769` and `31263602897` preserve the local elaboration
+failures. Run `31263334970` stopped before Lean because a comment inside the
+machine-counted cache-prefix block raised `CACHE_KEY_COUNT` to 11; the runner
+was corrected without changing the source theorem. No optimized trigonometric
+gap, factor-two fine-symbol variation, stabilized-denominator lower bound,
+joint `B0`, contour shift, Fourier/physical rate dictionary or regional-Green
+estimate is obtained. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 643 (2026-08-08, **CMP89 stabilized-denominator variation GREEN; complex floor open**)
+
+Exact source checkpoint `a71e5d5cceaa20971bf40fe8959c5bc4c3737978`
+passed cold GitHub Actions run
+[`31265445387`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31265445387)
+with workflow checkpoint `596751872e8b55150df95e662b4eb1de81333c9d`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `15:51:46Z` to `16:08:09Z`, completed 8,439 jobs,
+and the audit ended at `16:08:16Z`; both exited zero. The three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9024211862` has GitHub digest
+`5e02fe501b81390acbcfed505077e29ab54f43e63646dfea245972392ac44543`.
+The deterministic inner archive re-hashed on Windows to
+`de97b0e016d1b5c411f4d7ecb5e7298655e2172529ddb4ca575d06ace0a2a9c4`,
+identical to the hash recorded inside the cold runner.
+
+The sealed producer expands the three literal branches of the stabilized
+CMP89 (2.49) denominator before estimating. It combines the central entire
+fine-symbol variation, the central opposite-momentum averaging-pair
+variation, the uniform complex noncentral alias-sum bound and its vertical
+variation. The product branch retains separate fine-symbol and alias-sum
+budgets, while `mass^2 <= 1` remains an explicit source window.
+
+Cached run `31265297548` passed but did not retire PRE-VALIDATION. Failed
+diagnostic run `31265098501` preserves the local elaboration failures. No
+optimized trigonometric gap or factor-two fine-symbol variation is imported.
+No complex denominator floor, reciprocal `B0`, contour shift,
+Fourier/physical rate dictionary or regional-Green estimate is obtained. No
+terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
+
+## Addendum 644 (2026-08-08, **CMP89 complex stabilized floor GREEN; scalar attainment open**)
+
+Exact source checkpoint `4f62edc183ceac0fde4b7b2b847f2270f458545b`
+passed cold GitHub Actions run
+[`31266722921`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31266722921)
+with workflow checkpoint `86468c64ce33632a38066c8057496f92449f3c34`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `16:22:33Z` to `16:40:30Z`, completed 8,440 jobs,
+and the audit ended at `16:40:39Z`; both exited zero. The three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9024597470` has GitHub digest
+`fc7588b5d8110a445eb5b06def226da7c727755d233c55dc7ce9a118b185454b`.
+The deterministic inner archive re-hashed on Windows to
+`73f995c78c22140e30d05d638579a8529045231b5bfbc3ec4c91e431e8bf2278`,
+identical to the hash recorded inside the cold runner.
+
+The sealed endpoint compares the complete stabilized-denominator variation
+with the matching real floor. That literal scalar window yields a positive
+complex floor, nonvanishing and an explicit reciprocal bound on the common
+strip. Cached run `31266584461` passed but did not retire PRE-VALIDATION.
+Failed diagnostic run `31266441511` preserves a redundant `dsimp` and the
+reversed positivity arguments to `inv_le_inv₀`; the repair changed no theorem
+statement, hypothesis or scalar constant.
+
+The scalar window is not yet shown attainable by the source flow.
+`mass^2 <= 1` remains explicit, and neither optional constant sharpening is
+used. No contour shift, Fourier/physical rate dictionary, regional-Green
+estimate, physical `B0` or window-15 contraction is obtained. No terminal
+field is discharged: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+## Addendum 645 (2026-08-08, **positive common stabilized radius GREEN; physical strip still open**)
+
+Exact source checkpoint `d88c6b1f58882c88189c9fe67e40c6f763faab84`
+passed cold GitHub Actions run
+[`31269362634`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31269362634)
+with workflow checkpoint `fa1cbd7d84ae6274407df92665f8c72de58810a3`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `17:26:57Z` to `17:43:10Z`, completed 8,441 jobs,
+and the audit ended at `17:43:16Z`; both exited zero. The three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9025340040` has GitHub digest
+`f958761060d9ccd708f72d5aa5d50af6eb453711dea757f3b3f0f445e1cd7c75`.
+The deterministic inner archive re-hashed on Windows to
+`da04f8268ced8357835a392213ae753731c1a0eb663bbc1223184e93fdf8a061`,
+identical to the hash recorded inside the cold runner.
+
+The sealed endpoint proves that for every `a > 0` there is one `rho > 0`
+satisfying simultaneously the amplitude budget, noncentral complex-gap
+condition and complete stabilized-denominator window already sealed in the
+tree. It is a non-vacuity theorem for the conservative scalar strip, not a
+numerical optimization and not a producer of the complete physical
+integrand.
+
+Failed diagnostic runs `31267905233` and `31268074801` preserve respectively
+the missing namespace/inline-eventual elaboration defects. Cached run
+`31268255692` passed the original proof. Cold run `31268391356` then passed
+that source but exposed three local linter notices; the source-only rewrite
+to `norm_num [amplitude]` changed no theorem statement, hypothesis or scalar
+constant. Cached run `31269236021` verified that repair before the final cold
+seal.
+
+The flowing source condition `mass^2 <= 1`, complete complex integrand,
+contour displacement, Fourier/physical rate dictionary, regional-Green
+estimate, physical `B0` and window-15 contraction remain open. Neither the
+sharper trigonometric gap nor the proposed factor-two opposite-pair variation
+is used. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 646 (2026-08-08, **stabilized complete complex integrand GREEN; uniform strip bound still open**)
+
+Exact source checkpoint `fa607d1bb5bed6460c4c852510d2a1cbf538aecc`
+passed cold GitHub Actions run
+[`31271086914`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31271086914)
+with workflow checkpoint `f47d4903c0b2ba241f15d76954dd301c9d738d1d`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `18:06:23Z` to `18:07:48Z`; the
+focal then ran to `18:24:00Z`, completed 8,442 jobs, and the audit ended at
+`18:24:08Z`. Focal and audit both exited zero. All ten audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9025833740`, named
+`cmp89-stabilized-complex-integrand-fa607d1bb5bed6460c4c852510d2a1cbf538aecc`,
+has GitHub digest
+`00e0ef947513e9a9a561b0d809bfc1591697153e34960a80ce65e9c6e89b1f6b`.
+The deterministic inner archive re-hashed on Windows to
+`77db53fa9cb7a99c7ad4513e91a80d6d5a57e638dfa75b4299db401115ea1a62`,
+identical to the hash recorded inside the cold runner.
+
+The sealed module transcribes the complete finite complex integrand under
+CMP89 (2.49). It proves, on the original rational domain, equality between
+the printed expression and the assembled stabilized extension. The central
+branch contains no fine-symbol quotient; each noncentral branch retains the
+literal `Delta_0 / Delta_m` ratio; both share the already sealed stabilized
+denominator. Thus the stabilized object is defined across the two removable
+central zeros without accepting a family of integrands or a bound as input.
+
+Failed diagnostic run `31270479260` preserved the central normalization and
+local-abbreviation elaboration failures. Run `31270628352` reduced the source
+to the zero-alias `1 / L^j` versus `(L^j)⁻¹` normal form, and run
+`31270797452` showed that the explicit helper equality and goal still used
+opposite inverse notations. None changed a theorem statement, hypothesis or
+constant. Cached diagnostic run `31270950242` passed the final source but did
+not retire PRE-VALIDATION; only the cold run above did.
+
+This is an algebraic extension, not a uniform strip estimate. Noncentral
+strip nonvanishing from the positive-radius source, a complex numerator
+bound, the flowing `mass^2 <= 1` condition, physical `B0`, contour shift,
+Fourier/physical-rate dictionary and window-15 contraction remain open. No
+terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
+
+## Addendum 647 (2026-08-08, **complex contour-phase dictionary GREEN; contour displacement still open**)
+
+Exact source checkpoint `e0b32533411b5ff8be5d55d432d076a7ca7172ae`
+passed cold GitHub Actions run
+[`31273452649`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31273452649)
+with workflow checkpoint `210a709656d6f7ce6afb8abf16392d49218a93b6`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `19:03:26Z` to `19:04:56Z`; the
+focal then ran to `19:21:37Z`, completed 8,443 jobs, and the audit ended at
+`19:21:45Z`. Focal and audit both exited zero. All ten audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9026527828`, named
+`cmp89-complex-contour-phase-e0b32533411b5ff8be5d55d432d076a7ca7172ae`,
+has GitHub digest
+`68142bfe121c234aaffab19067dd478d4296300297320f76050908fa923e1a92`.
+The deterministic inner archive re-hashed on Windows to
+`afdc0cd592aa11512c92c4ade4ab2e9e06d76808d8731695a323edd42f477efe`,
+identical to the hash recorded inside the cold runner; all 13 entries in its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed module proves the exact phase-product identity printed in CMP89
+(2.49), rewrites the stabilized bare numerator as the difference of the two
+physical endpoint phases, proves that reciprocal aliases add no imaginary
+phase, and gives the explicit coordinate-strip growth
+`exp(rho * |displacement|_1)` for each endpoint. It accepts no free phase
+family, spatial bound or `B0`.
+
+Cold run `31272522509` compiled the preceding source but exposed one unused
+`0 <= rho` premise and therefore did not seal it. The final source removes
+that premise, and the corresponding transitively unused premise in the
+endpoint estimate, rather than suppressing the linter. Cached diagnostic run
+`31273316298` passed the stronger interface before the final cold seal.
+
+This is the contour-phase dictionary, not the contour displacement. The two
+endpoint integrals must still be shifted separately in their signed physical
+directions; a single contour for the phase difference is not claimed. The
+complete strip bound, physical `B0`, flowing `mass^2 <= 1` dictionary,
+Fourier/physical-rate transport and window-15 contraction remain open.
+Neither the optional 8x trigonometric sharpening nor the uncompiled 2x
+opposite-pair variation is consumed. No terminal field is discharged:
+counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.

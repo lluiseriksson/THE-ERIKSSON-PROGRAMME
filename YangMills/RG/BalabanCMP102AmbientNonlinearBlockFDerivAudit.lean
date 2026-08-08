@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102AmbientNonlinearBlockFDeriv
+
+#print axioms YangMills.RG.fderiv_cmp102AmbientNonlinearBlock_apply
+#print axioms YangMills.RG.fderiv_cmp102AmbientNonlinearBlock_sub_apply
+#print axioms YangMills.RG.norm_fderiv_cmp102AmbientNonlinearBlock_le
+#print axioms YangMills.RG.norm_fderiv_cmp102AmbientNonlinearBlock_sub_le

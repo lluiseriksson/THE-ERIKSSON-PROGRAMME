@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourcePi4ComplexCoarseDefectBound
+
+#print axioms YangMills.RG.cmp99SourcePi4FullComplexCoarseMiddleMatrix_sub_one
+#print axioms YangMills.RG.norm_cmp99SourcePi4FullComplexCoarseMiddleRelativeDefect_le
+#print axioms YangMills.RG.cmp99SourcePi4FineComplexContourDefectBound
+#print axioms YangMills.RG.cmp99SourcePi4ComplexCoarseRelativeDefectBound
+#print axioms YangMills.RG.norm_cmp99SourcePi4FullComplexCoarseMiddleRelativeDefect_le_source
+#print axioms YangMills.RG.cmp99SourcePi4FullComplexCoarseMiddleMatrix_det_ne_zero_of_source

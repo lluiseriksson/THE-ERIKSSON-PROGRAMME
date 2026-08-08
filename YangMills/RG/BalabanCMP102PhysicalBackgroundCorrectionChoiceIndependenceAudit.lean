@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102PhysicalBackgroundCorrectionChoiceIndependence
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalBackgroundCorrection_independent
+#print axioms YangMills.RG.cmp102Eq80PhysicalBackgroundCorrection_fun_independent

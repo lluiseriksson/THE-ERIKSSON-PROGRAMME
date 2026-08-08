@@ -1,0 +1,5 @@
+import YangMills.RG.FinitePiLpTypedKernelReindex
+
+#print axioms YangMills.RG.finitePiLpTypedKernelReindex
+#print axioms YangMills.RG.finitePiLpTypedExponentialKernelBound_reindex
+#print axioms YangMills.RG.finitePiLpCongrLeft_cast_heq

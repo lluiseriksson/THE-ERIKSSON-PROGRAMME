@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq214LocalActivityIdentification
+
+#print axioms YangMills.RG.globalEval_cmp116Eq214LocalHActivity
+#print axioms YangMills.RG.spectatorSupport_cmp116Eq214LocalHActivity_subset
+#print axioms YangMills.RG.fluctuationSupport_cmp116Eq214LocalHActivity_subset

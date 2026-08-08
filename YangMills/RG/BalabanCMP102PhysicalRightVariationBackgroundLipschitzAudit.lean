@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102PhysicalRightVariationBackgroundLipschitz
+
+#print axioms YangMills.RG.cmp102PhysicalRightVariationBackgroundBudget
+#print axioms YangMills.RG.cmp102PhysicalRightVariationBackgroundBudget_nonneg
+#print axioms YangMills.RG.cmp98Eq119NonlinearRightVariation_eq_blockPhysicalVariation_mul_inverse
+#print axioms YangMills.RG.norm_cmp98Eq119NonlinearRightVariation_sub_trivial_le_sourceScale

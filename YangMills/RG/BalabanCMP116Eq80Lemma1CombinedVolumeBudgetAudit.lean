@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedVolumeBudget
+
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedPhysicalVolumeCost
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedPhysicalVolumeRate
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedPhysicalVolumeRate_mul_alpha
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedPhysical_volume_budget
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedPhysical_volume_target_iff
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedPhysicalVolumeCost_nonneg

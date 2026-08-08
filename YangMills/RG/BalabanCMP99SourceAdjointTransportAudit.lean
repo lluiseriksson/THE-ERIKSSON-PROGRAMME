@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceAdjointTransport
+
+namespace YangMills.RG
+
+#print axioms SUNAdjointModel.adLinearIsometryEquiv
+#print axioms SUNAdjointModel.adLinearIsometryEquiv_apply
+#print axioms SUNAdjointModel.adLinearIsometryEquiv_symm_apply
+#print axioms cmp99AdjointBlockTransport
+#print axioms cmp99AdjointBlockTransport_apply
+#print axioms cmp99AdjointBlockAverageCLM
+#print axioms cmp99AdjointBlockSynthesisCLM
+#print axioms cmp99AdjointBlockAverage_comp_synthesis
+
+end YangMills.RG

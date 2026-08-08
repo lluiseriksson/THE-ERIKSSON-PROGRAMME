@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116Eq142SourceSplit
+
+#print axioms YangMills.RG.cmp116Eq142PhysicalQuadraticCore
+#print axioms YangMills.RG.cmp116Eq142PhysicalSourceQuadratic
+#print axioms YangMills.RG.inner_cmp116Eq142PhysicalSourceQuadratic_eq_core
+#print axioms YangMills.RG.cmp116Eq142PhysicalPotentialTerm_sourceSplit

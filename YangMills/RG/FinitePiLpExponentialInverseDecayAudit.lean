@@ -1,0 +1,4 @@
+import YangMills.RG.FinitePiLpExponentialInverseDecay
+
+#print axioms YangMills.RG.finitePiLpExponentialInverseDecayRate
+#print axioms YangMills.RG.finitePiLpExponentialKernelBound_inverse_canonical

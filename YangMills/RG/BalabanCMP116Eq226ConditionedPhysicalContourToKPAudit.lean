@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq226ConditionedPhysicalContourToKP
+
+#print axioms YangMills.RG.cmp116Eq226ConditionedPhysicalContour_KPCriterion_of_boundaries

@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixReverseBranching
+
+#print axioms YangMills.RG.cmp99PhysicalPatchPredecessors
+#print axioms YangMills.RG.mem_cmp99PhysicalPatchPredecessors_iff
+#print axioms YangMills.RG.cmp99PhysicalPatchPredecessorSteps
+#print axioms YangMills.RG.mem_cmp99PhysicalPatchPredecessorSteps_iff
+#print axioms YangMills.RG.image_cmp99PhysicalPatchPredecessors_subset_meetingSimpleDomains
+#print axioms YangMills.RG.card_cmp99PhysicalPatchPredecessors_le_simpleDomainBound
+#print axioms YangMills.RG.card_cmp99PhysicalPatchPredecessorSteps_le_simpleDomainBound
+#print axioms YangMills.RG.chain_of_mem_cmp99PhysicalPatchReverseAdmissibleTails
+#print axioms YangMills.RG.mem_cmp99AdmissibleTails_physicalPatchReverse_iff
+#print axioms YangMills.RG.card_cmp99PhysicalPatchReverseAdmissibleTails_le_pow_simpleDomainBound

@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116RestrictedPivotWeightBound
+
+#print axioms YangMills.RG.norm_cmp116RestrictedOrderedPivotWeight_le
+#print axioms YangMills.RG.sum_norm_cmp116RestrictedOrderedPivotWeight_le
