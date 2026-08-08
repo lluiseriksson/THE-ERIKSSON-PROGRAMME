@@ -18,7 +18,6 @@ env:
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    # Keep this list at ten entries or fewer: actions/cache rejects longer lists.
     cmp89-noncentral-complex-gap
     cmp89-entire-average-amplitude-variation
     cmp89-entire-laplacian-variation
