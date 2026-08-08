@@ -95,7 +95,7 @@ theorem cmp89Eq249_unit_div_scaled_central_alias_le
     have hmul : ((L : ℝ) ^ j)⁻¹ * |p mu| ≤ Real.pi := by
       calc
         ((L : ℝ) ^ j)⁻¹ * |p mu| ≤ 1 * Real.pi :=
-          mul_le_mul hxi1.le (hp mu) (abs_nonneg _) (by norm_num)
+          mul_le_mul hxi1 (hp mu) (abs_nonneg _) (by norm_num)
         _ = Real.pi := one_mul _
     nlinarith [Real.pi_pos]
   have hden : 0 < cmp89Eq251MomentumSquare p + mass ^ 2 :=
@@ -144,8 +144,14 @@ theorem cmp89Eq251CentralRealIntegrand_le_constant
       ‖Complex.exp (Complex.I * cmp89Eq251Phase p displacement) - 1‖ /
           cmp89Eq251EuclideanNorm displacement ^ alpha ≤
         2 * (1 + cmp89Eq251CentralMomentumRadius d) :=
-    hphaseRaw.trans <| by
-      gcongr
+    calc
+      ‖Complex.exp (Complex.I * cmp89Eq251Phase p displacement) - 1‖ /
+          cmp89Eq251EuclideanNorm displacement ^ alpha ≤
+        2 * cmp89Eq251EuclideanNorm p ^ alpha := hphaseRaw
+      _ ≤ 2 * (1 + cmp89Eq251EuclideanNorm p) :=
+        mul_le_mul_of_nonneg_left hrpow (by norm_num)
+      _ ≤ 2 * (1 + cmp89Eq251CentralMomentumRadius d) := by
+        gcongr
   have hdenLower :=
     cmp89Eq250CentralAliasLowerConstant_le_full_denominator
       (d := d) (L := L) (j := j) (mass := mass) (a := a) (p := p)
@@ -171,11 +177,19 @@ theorem cmp89Eq251CentralRealIntegrand_le_constant
         (18 * Real.pi) ^ d := by
     have h := norm_cmp89Eq245ComplexAverageAmplitude_scaled_alias_le
       hN hzero hp
-    simpa only [zeroAlias, Nat.cast_pow,
-      cmp89Eq251MultidimensionalAliasWeight,
-      cmp89Eq251OneDimensionalAliasWeight, Int.cast_zero, mul_zero,
-      abs_zero, add_zero, one_div, inv_one, Finset.prod_const_one,
-      mul_one] using h
+    have hweight :
+        cmp89Eq251MultidimensionalAliasWeight 1 zeroAlias = 1 := by
+      simp [cmp89Eq251MultidimensionalAliasWeight,
+        cmp89Eq251OneDimensionalAliasWeight, zeroAlias]
+    calc
+      ‖cmp89Eq245ComplexAverageAmplitude
+          d (((L : ℝ) ^ j)⁻¹) p‖ =
+        ‖cmp89Eq245ComplexAverageAmplitude
+          d (((L : ℝ) ^ j)⁻¹) (fun mu => p mu)‖ := rfl
+      _ ≤ (18 * Real.pi) ^ d *
+          cmp89Eq251MultidimensionalAliasWeight 1 zeroAlias := by
+        simpa only [zeroAlias, Nat.cast_pow] using h
+      _ = (18 * Real.pi) ^ d := by rw [hweight, mul_one]
   have hratio := cmp89Eq249_unit_div_scaled_central_alias_le
     (d := d) (L := L) (j := j) hmass hp
   have hdenFactorNonneg :
@@ -202,7 +216,8 @@ theorem cmp89Eq251CentralRealIntegrand_le_constant
         cmp89Eq245ScaledLaplacianSymbol
           d (((L : ℝ) ^ j)⁻¹) mass p :=
     div_nonneg hunitNonneg hscaledPos.le
-  have hb1 : 0 ≤ 2 * (1 + cmp89Eq251CentralMomentumRadius d) := by positivity
+  have hb1 : 0 ≤ 2 * (1 + cmp89Eq251CentralMomentumRadius d) :=
+    mul_nonneg (by norm_num) (add_nonneg (by norm_num) (Real.sqrt_nonneg _))
   have hb2 : 0 ≤ (cmp89Eq250CentralAliasLowerConstant d a)⁻¹ := by positivity
   have hb3 : 0 ≤ cmp89Eq251CentralMomentumRadius d := by
     exact Real.sqrt_nonneg _
@@ -214,11 +229,21 @@ theorem cmp89Eq251CentralRealIntegrand_le_constant
     (mul_nonneg (mul_nonneg hb1 hb2) hb3)
   have hproduct := mul_le_mul h1234 hratio hratioNonneg
     (mul_nonneg (mul_nonneg (mul_nonneg hb1 hb2) hb3) hb4)
-  rw [cmp89Eq251CentralRealIntegrand,
-    cmp89Eq251NoncentralRealIntegrand,
-    cmp89Eq251CentralRealIntegrandConstant]
-  dsimp only [zeroAlias]
-  simpa [mul_assoc] using hproduct
+  change
+    ((((‖Complex.exp
+                (Complex.I * cmp89Eq251Phase p displacement) - 1‖ /
+              cmp89Eq251EuclideanNorm displacement ^ alpha) *
+            (1 / cmp89Eq250FullAliasDenominator d L j mass a p)) *
+          cmp89Eq245ScaledDifferenceNorm (((L : ℝ) ^ j)⁻¹) (p mu)) *
+        ‖cmp89Eq245ComplexAverageAmplitude
+          d (((L : ℝ) ^ j)⁻¹) p‖) *
+      (cmp89Eq249UnitLaplacianSymbol d mass p /
+        cmp89Eq245ScaledLaplacianSymbol
+          d (((L : ℝ) ^ j)⁻¹) mass p) ≤
+      cmp89Eq251CentralRealIntegrandConstant d a
+  exact hproduct.trans_eq (by
+    rw [cmp89Eq251CentralRealIntegrandConstant]
+    ring)
 
 end
 
