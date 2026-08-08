@@ -1,4 +1,4 @@
-name: Validate CMP89 Eq250 full denominator lower bound
+name: Validate CMP89 Eq251 one-dimensional alias series
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: b84a28046e249df62e56d1b67f5030308830b90e
+  SOURCE_SHA: 53c4fb988f4dffbedcb9e2c6de73641e3208b9fd
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    cmp89-eq251-one-dimensional-alias-series
     cmp89-eq250-full-denominator
     cmp89-eq250-central-alias
     cmp89-eq250-central-laplacian
@@ -26,10 +27,9 @@ env:
     eq342-source-input-l2
     owner-weighted-neumann
     owner-weighted-power-summability
-    owner-weighted-powers
 
 jobs:
-  cmp89-eq250-full-denominator:
+  cmp89-eq251-one-dimensional-alias-series:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-eq250-full-denominator-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-eq251-one-dimensional-alias-series-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq250FullDenominatorLower.lean \
-            YangMills/RG/BalabanCMP89Eq250FullDenominatorLowerAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251OneDimensionalAliasSeries.lean \
+            YangMills/RG/BalabanCMP89Eq251OneDimensionalAliasSeriesAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp89_eq250_full_denominator_focal \
-            lake build YangMills.RG.BalabanCMP89Eq250FullDenominatorLower
-          run_stage cmp89_eq250_full_denominator_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq250FullDenominatorLowerAudit.lean
+          run_stage cmp89_eq251_one_dimensional_alias_series_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251OneDimensionalAliasSeries
+          run_stage cmp89_eq251_one_dimensional_alias_series_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251OneDimensionalAliasSeriesAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp89_eq250_full_denominator_audit.log": 6,
+              "cmp89_eq251_one_dimensional_alias_series_audit.log": 6,
           }
           result = {}
           for name, expected in audits.items():
@@ -199,17 +199,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > cmp89-eq250-full-denominator-evidence.tar.gz
-          sha256sum cmp89-eq250-full-denominator-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > cmp89-eq251-one-dimensional-alias-series-evidence.tar.gz
+          sha256sum cmp89-eq251-one-dimensional-alias-series-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp89-eq250-full-denominator-${{ env.SOURCE_SHA }}
+          name: cmp89-eq251-one-dimensional-alias-series-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp89-eq250-full-denominator-evidence.tar.gz
+            cmp89-eq251-one-dimensional-alias-series-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -218,4 +218,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-eq250-full-denominator-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-eq251-one-dimensional-alias-series-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
