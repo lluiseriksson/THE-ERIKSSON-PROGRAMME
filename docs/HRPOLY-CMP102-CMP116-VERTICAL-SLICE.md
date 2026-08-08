@@ -5507,3 +5507,31 @@ No finite complex alias sum, stabilized-denominator lower bound, joint `B0`,
 contour shift, Fourier/physical rate dictionary or regional-Green estimate
 is proved. No terminal field is discharged: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5ax finite complex noncentral alias sum (SEALED; stabilized denominator open)
+
+Exact source checkpoint `832d014a7b3c5558c7b1a8f4821fa22ed5bdc06d`
+passed cold GitHub Actions run
+[`31260422445`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31260422445)
+(workflow checkpoint `2a6f1e12d06d90a69a18c4aa14eb57824fc58545`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal ran from `13:50:40Z` to `14:06:52Z`, completed 8,434 jobs, and the audit
+ended at `14:06:58Z`; both exited zero. The audited declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner evidence archive has SHA-256
+`bcf943221f5468385448777008c5de778d4f8f37c3529474d777fc404cdcd221`,
+reproduced after downloading artifact `9022811583`; GitHub reports artifact
+digest `eaff20526a79962161326dc8b3b51e3bcb9f2a62fc3484a451cb2cab9d3b5d05`.
+
+The literal finite noncentral complex alias sum is now bounded uniformly in
+`L^j`. The proof removes the central alias, sums the pointwise product weight,
+and applies the exact four-dimensional product/tsum bound at `alpha=-1`.
+No alias cardinality or diameter is inserted, and the two scalar strip
+conditions remain separate.
+
+Cached diagnostic run `31260306510` passed but retained PRE-VALIDATION; only
+the cold run above retired it. No stabilized-denominator lower bound, joint
+`B0`, contour shift, Fourier/physical rate dictionary or regional-Green
+estimate is proved. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

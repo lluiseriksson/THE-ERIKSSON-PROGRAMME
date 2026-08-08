@@ -30233,3 +30233,31 @@ No finite complex quotient sum, stabilized-denominator lower bound, joint
 `B0`, contour shift, Fourier/physical rate dictionary or regional-Green
 estimate is proved. No terminal field is discharged: counters remain
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 639 (2026-08-08, **CMP89 finite complex noncentral alias sum GREEN; stabilized denominator open**)
+
+Exact source checkpoint `832d014a7b3c5558c7b1a8f4821fa22ed5bdc06d`
+passed cold GitHub Actions run
+[`31260422445`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31260422445)
+under workflow checkpoint `2a6f1e12d06d90a69a18c4aa14eb57824fc58545`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `13:50:40Z` to `14:06:52Z`, completed 8,434 jobs,
+and the audit ended at `14:06:58Z`; both exited zero. The declaration printed
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`bcf943221f5468385448777008c5de778d4f8f37c3529474d777fc404cdcd221`;
+the downloaded archive reproduced it locally. GitHub artifact `9022811583`
+has digest
+`eaff20526a79962161326dc8b3b51e3bcb9f2a62fc3484a451cb2cab9d3b5d05`.
+
+The sealed theorem sums the literal complex noncentral quotient over the
+finite printed alias fibre. Positivity of the product weight permits removal
+of the central alias, and the existing product/tsum theorem at `alpha=-1`
+gives a bound independent of `L^j`, without alias-cardinality loss.
+
+Cached diagnostic run `31260306510` passed but did not retire PRE-VALIDATION.
+No stabilized-denominator lower bound, joint `B0`, contour shift,
+Fourier/physical rate dictionary or regional-Green estimate is proved. No
+terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.

@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasQuotientBound
 /-!
 # Uniform finite complex noncentral alias sum in CMP89 (2.47)--(2.49)
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and these results have not yet been verified by the compiler.
-
 The pointwise complex quotient bound already has the strictly summable CMP89
 (2.51) product weight.  This module sums it over the literal finite alias
 fibre, removes the central alias without a cardinality estimate, and applies
