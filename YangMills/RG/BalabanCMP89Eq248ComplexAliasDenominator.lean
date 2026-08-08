@@ -101,12 +101,13 @@ theorem cmp89Eq248ComplexAliasDenominatorSummand_ofReal_eq
         d (((L : ℝ) ^ j)⁻¹) mass p m : ℂ) := by
   have hN : 0 < L ^ j :=
     pow_pos (Nat.pos_of_ne_zero (NeZero.ne L)) j
+  have halias :
+      cmp89Eq248EntireAliasMomentum (fun mu => (p mu : ℂ)) m =
+        fun mu => ((p mu + cmp89Eq245AliasShift m mu : ℝ) : ℂ) := by
+    funext mu
+    simp [cmp89Eq248EntireAliasMomentum]
   rw [cmp89Eq248ComplexAliasDenominatorSummand]
-  change
-    cmp89Eq245EntireAveragePair d (L ^ j)
-        (fun mu => ((p mu + cmp89Eq245AliasShift m mu : ℝ) : ℂ)) /
-      cmp89Eq245EntireScaledLaplacianSymbol d (((L : ℝ) ^ j)⁻¹) mass
-        (fun mu => ((p mu + cmp89Eq245AliasShift m mu : ℝ) : ℂ)) = _
+  rw [halias]
   rw [cmp89Eq245EntireAveragePair_ofReal_eq,
     cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq,
     cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq hN hm hp]
