@@ -159,10 +159,10 @@ theorem cmp89Eq251ComplexDisplayedCentralTerm_eq_stabilized
   rw [cmp89Eq251ComplexDisplayedAliasTerm_eq_stabilizedTerm
     hunit hcentral hfinite hreduced]
   have hFineEq :
-      cmp89Eq245EntireScaledLaplacianSymbol d (1 / (L : ℝ) ^ j) mass
+      cmp89Eq245EntireScaledLaplacianSymbol d (((L : ℝ) ^ j)⁻¹) mass
           (cmp89Eq248EntireAliasMomentum z (cmp89Eq249ZeroAlias d)) =
         cmp89Eq249CentralEntireFineSymbol d L j mass z := by
-    rw [one_div, cmp89Eq248EntireAliasMomentum_zero]
+    rw [cmp89Eq248EntireAliasMomentum_zero]
     rfl
   rw [hFineEq]
   field_simp [hcentral]
