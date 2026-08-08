@@ -181,10 +181,24 @@ theorem norm_cmp89Eq245EntireScaledLaplacianSymbol_sub_realSlice_le
             cmp89Eq245EntireScaledDifference xi ((z mu).re : ℂ) *
               cmp89Eq245EntireScaledDifference xi (-((z mu).re : ℂ))) := by
     rw [cmp89Eq245EntireScaledLaplacianSymbol,
-      cmp89Eq245EntireScaledLaplacianSymbol,
-      ← Finset.sum_sub_distrib]
+      cmp89Eq245EntireScaledLaplacianSymbol]
     simp only [cmp89Eq245ComplexMomentumRealSlice]
-    ring
+    calc
+      (∑ mu, cmp89Eq245EntireScaledDifference xi (z mu) *
+            cmp89Eq245EntireScaledDifference xi (-z mu)) + (mass : ℂ) ^ 2 -
+          ((∑ mu, cmp89Eq245EntireScaledDifference xi ((z mu).re : ℂ) *
+              cmp89Eq245EntireScaledDifference xi (-((z mu).re : ℂ))) +
+            (mass : ℂ) ^ 2) =
+        (∑ mu, cmp89Eq245EntireScaledDifference xi (z mu) *
+            cmp89Eq245EntireScaledDifference xi (-z mu)) -
+          ∑ mu, cmp89Eq245EntireScaledDifference xi ((z mu).re : ℂ) *
+            cmp89Eq245EntireScaledDifference xi (-((z mu).re : ℂ)) := by ring
+      _ = ∑ mu,
+          (cmp89Eq245EntireScaledDifference xi (z mu) *
+              cmp89Eq245EntireScaledDifference xi (-z mu) -
+            cmp89Eq245EntireScaledDifference xi ((z mu).re : ℂ) *
+              cmp89Eq245EntireScaledDifference xi (-((z mu).re : ℂ))) := by
+        rw [Finset.sum_sub_distrib]
   rw [hcancel]
   calc
     ‖∑ mu,
