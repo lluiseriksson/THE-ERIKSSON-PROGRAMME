@@ -1,4 +1,4 @@
-name: Validate CMP89 Eq251 finite real integrand sum
+name: Validate CMP89 entire averaging amplitude
 
 on:
   workflow_dispatch:
@@ -13,12 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: c1b7aa941688a8e3e7003f3b3a9142cc8db9dccd
+  SOURCE_SHA: 71a31d7b939c5c09204c7bbda193ab8a11171fb9
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    cmp89-eq251-central-real-integrand
+    cmp89-eq251-finite-real-integrand-sum
     cmp89-eq251-noncentral-real-integrand
     cmp89-eq251-alias-weight-redistribution
     cmp89-eq251-holder-phase
@@ -29,7 +29,7 @@ env:
     cmp89-eq251-multidimensional-alias-product
 
 jobs:
-  cmp89-eq251-finite-real-integrand-sum:
+  cmp89-entire-averaging-amplitude:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-eq251-finite-real-integrand-sum-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-entire-averaging-amplitude-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq251FiniteRealIntegrandSum.lean \
-            YangMills/RG/BalabanCMP89Eq251FiniteRealIntegrandSumAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251EntireAverageAmplitude.lean \
+            YangMills/RG/BalabanCMP89Eq251EntireAverageAmplitudeAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp89_eq251_finite_real_integrand_sum_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251FiniteRealIntegrandSum
-          run_stage cmp89_eq251_finite_real_integrand_sum_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq251FiniteRealIntegrandSumAudit.lean
+          run_stage cmp89_entire_averaging_amplitude_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251EntireAverageAmplitude
+          run_stage cmp89_entire_averaging_amplitude_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251EntireAverageAmplitudeAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp89_eq251_finite_real_integrand_sum_audit.log": 3,
+              "cmp89_entire_averaging_amplitude_audit.log": 7,
           }
           result = {}
           for name, expected in audits.items():
@@ -199,17 +199,17 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > cmp89-eq251-finite-real-integrand-sum-evidence.tar.gz
-          sha256sum cmp89-eq251-finite-real-integrand-sum-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > cmp89-entire-averaging-amplitude-evidence.tar.gz
+          sha256sum cmp89-entire-averaging-amplitude-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp89-eq251-finite-real-integrand-sum-${{ env.SOURCE_SHA }}
+          name: cmp89-entire-averaging-amplitude-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp89-eq251-finite-real-integrand-sum-evidence.tar.gz
+            cmp89-entire-averaging-amplitude-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -218,4 +218,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-eq251-finite-real-integrand-sum-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-entire-averaging-amplitude-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
