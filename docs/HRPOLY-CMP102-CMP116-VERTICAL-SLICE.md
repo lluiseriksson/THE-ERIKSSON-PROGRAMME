@@ -4949,3 +4949,34 @@ infrastructure below window 15: counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained. Run `31242420869`
 preserves the failed automatic `fun_prop` composition; cached run `31242614452`
 passed but retained PRE-VALIDATION. Only the cold run above retired it.
+
+Primary render audit of CMP89 printed pp. 584--586 identifies the quantitative
+source of the remaining strip. The full-lattice operator in (2.44) is
+
+```text
+-Delta^xi + m_j^2 + a_j Q_j^* Q_j.
+```
+
+The positive denominator estimate (2.50) retains the central alias from the
+`a_j Q_j^* Q_j` term and proves
+
+```text
+a_j * |u_j(p)|^2 * Delta^1(p) / Delta^xi(p) >= O(1) > 0.
+```
+
+Thus the printed scale-uniform gap is supplied by the block-averaging penalty,
+not by the running mass and not by the free boundary. The boundary reduction
+in (2.42) uses multiple reflections only after the full-lattice decay has been
+proved. Immediately after (2.51), the source says that the integrand extends
+to a neighbourhood of `[-pi,pi]^d` whose width and bound can be chosen
+independently of `j`; shifting inside that neighbourhood produces the displayed
+factor `exp(-delta0 * distance)`.
+
+Consequently the uniform analytic-strip proof is the common producer of the
+zero-background `B0` and `delta0` inputs later consumed by CMP99 (3.42), though
+`delta0` is a chosen shift inside the available strip, not definitionally its
+maximal radius. The paper prints neither radius nor bound. They must be
+constructed from the complete holomorphic denominator and then transported
+through reflections and the later scale/gauge dictionaries. In particular,
+the heuristic `delta0 ~ mass`, `B0 ~ mass^-2`, and hence `K ~ mass^-7` does not
+describe this CMP89 mechanism and must not be used as a gate.
