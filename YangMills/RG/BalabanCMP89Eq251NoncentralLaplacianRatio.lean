@@ -57,12 +57,13 @@ theorem cmp89Eq249UnitLaplacianSymbol_le_momentumSquare
     cmp89Eq249UnitLaplacianSymbol d mass p ≤
       cmp89Eq251MomentumSquare p + mass ^ 2 := by
   rw [cmp89Eq249UnitLaplacianSymbol, cmp89Eq251MomentumSquare]
-  apply add_le_add_right
-  apply Finset.sum_le_sum
-  intro mu _
-  simpa only [sq_abs] using
-    ((sq_le_sq₀ (norm_nonneg _) (abs_nonneg _)).2
-      (cmp89Eq249UnitDifferenceNorm_le_abs (p mu)))
+  apply add_le_add
+  · apply Finset.sum_le_sum
+    intro mu _
+    simpa only [sq_abs] using
+      ((sq_le_sq₀ (norm_nonneg _) (abs_nonneg _)).2
+        (cmp89Eq249UnitDifferenceNorm_le_abs (p mu)))
+  · rfl
 
 /-- On the expanded alias zone, the scaled massive symbol is bounded below
 by the explicit continuum symbol with coefficient `(1/(3*pi))^2`. -/
@@ -118,7 +119,11 @@ theorem cmp89Eq249_unit_div_scaled_le_momentum_ratio
   have hcoefNonneg :
       0 ≤ (3 * Real.pi) ^ 2 *
         (cmp89Eq251MomentumSquare p + mass ^ 2) /
-          (cmp89Eq251MomentumSquare q + mass ^ 2) := by positivity
+          (cmp89Eq251MomentumSquare q + mass ^ 2) := by
+    exact div_nonneg
+      (mul_nonneg (sq_nonneg (3 * Real.pi))
+        (add_nonneg (cmp89Eq251MomentumSquare_nonneg p) (sq_nonneg mass)))
+      hden.le
   calc
     cmp89Eq251MomentumSquare p + mass ^ 2 =
         ((3 * Real.pi) ^ 2 *
@@ -127,7 +132,6 @@ theorem cmp89Eq249_unit_div_scaled_le_momentum_ratio
           ((1 / (3 * Real.pi)) ^ 2 *
             (cmp89Eq251MomentumSquare q + mass ^ 2)) := by
       field_simp [ne_of_gt hden, Real.pi_ne_zero]
-      ring
     _ ≤ ((3 * Real.pi) ^ 2 *
           (cmp89Eq251MomentumSquare p + mass ^ 2) /
             (cmp89Eq251MomentumSquare q + mass ^ 2)) *
