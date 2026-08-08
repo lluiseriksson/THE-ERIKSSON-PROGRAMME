@@ -29936,3 +29936,34 @@ separately nonzero. Diagnostic run `31248012004` preserves the one algebraic
 normalization failure; cached run `31248127770` was diagnostic only. No
 terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained.
+
+## Addendum 630 (2026-08-08, **CMP89 noncentral real gap GREEN at zero mass; complex strip open**)
+
+Exact source checkpoint `5ad7d83a3398438d1ec992167127843b439c587a`
+passed cold GitHub Actions run
+[`31249442951`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31249442951)
+under workflow checkpoint `552c928e82f26bee318e83fdd9c611a682af0a3e`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `08:57:28Z` to `09:08:15Z`, completed 8,425 jobs,
+and the audit ended at `09:08:23Z`; both exited zero. All seven declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+The deterministic inner archive SHA-256 is
+`71f28bef0b0eb72c70316ca93ccec8d571d20891c2b6232c339b6df616d7842e`;
+the downloaded archive and every entry of `SHA256SUMS` reproduced locally.
+GitHub artifact `9019666407` has digest
+`3409d03a5044042fb133368b3b2bba847bcdaa11c988aafe7d165d67ff47aa7e`.
+
+The new producer combines the nonzero-alias geometry
+`|p+2*pi*m|_2 >= pi` with the expanded-zone comparison to prove the literal
+mass-independent gap `1/9 <= Delta_m`. It follows that the complete
+noncentral real rational sum is nonnegative at arbitrary mass, including zero.
+The stabilized lower bound and the CMP85-uniform floor are correspondingly
+reproved without `mass > 0`.
+
+This result does not discharge the separate `mass^2 <= 1` hypothesis in the
+noncentral upper-ratio estimate (2.51), and it does not construct a complex
+strip or `B0`. Diagnostic runs `31249068895` and `31249210530` preserve the
+physical-specialization timeout and cast mismatch; cached run `31249330069`
+was diagnostic only. No terminal field is discharged: counters remain
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

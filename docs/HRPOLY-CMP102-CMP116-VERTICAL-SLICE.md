@@ -5176,3 +5176,46 @@ factor or independent central-denominator nonvanishing is not accepted. No
 strip radius, joint `B0`, contour shift or regional-Green transport is claimed.
 This is infrastructure below window 15: counters remain `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+### Step 7.5ao noncentral real gap at zero mass (SEALED; complex strip open)
+
+Exact source checkpoint `5ad7d83a3398438d1ec992167127843b439c587a`
+passed cold GitHub Actions run
+[`31249442951`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31249442951)
+(workflow checkpoint `552c928e82f26bee318e83fdd9c611a682af0a3e`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were skipped. The
+focal completed 8,425 jobs, focal and audit exited zero, and all seven audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+For every printed alias `m != 0`, the already sealed geometry gives
+`|p+2*pi*m|_2 >= pi`. The expanded-zone difference lower bound therefore
+implies the explicit scale- and mass-independent fine-symbol gap
+
+```text
+1/9 <= Delta_m.
+```
+
+Hence all noncentral rational summands are nonnegative even at zero mass. The
+stabilized real lower bound and its CMP85 coefficient-floor specialization no
+longer require `mass > 0`; the uniform real floor is genuinely compatible
+with the massless gauge limit. This does not discharge the distinct flowing
+window `mass^2 <= 1` used in the upper estimate of the noncentral ratio in
+(2.51).
+
+The next complex-strip estimate must use the literal normalization already
+present in the entire average,
+
+```text
+u_N(z) = N^(-1) * sum_{r < N} exp(-i*(r/N)*z).
+```
+
+Thus its frequencies satisfy `r/N < 1`: neither its strip growth nor its first
+derivative is forced to carry a factor `N`. The analogous `xi^(-1)` in the
+scaled difference is cancelled by differentiation of `exp(-i*xi*z)`. Any
+future fine/block conversion remains explicit, but an `N^5` loss may not be
+introduced by treating this normalized average as an unnormalized
+degree-`N` polynomial.
+
+No complex variation estimate, strip radius, joint `B0`, contour shift or
+regional-Green transport is claimed. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

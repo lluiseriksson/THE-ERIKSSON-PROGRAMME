@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP89Eq251NoncentralRealIntegrandBound
 /-!
 # Mass-uniform real gap for noncentral CMP89 aliases
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and the result has not yet been verified by the compiler.
+Cold compiler evidence: exact source checkpoint
+`5ad7d83a3398438d1ec992167127843b439c587a`, GitHub Actions run
+`31249442951` (`COLD_MODE=true`, no project-cache restore/save), focal and
+audit exit zero, and seven audited declarations with exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 For a nonzero printed reciprocal alias, the shifted real momentum has
 Euclidean norm at least `pi`.  Combining that fact with the expanded-zone
