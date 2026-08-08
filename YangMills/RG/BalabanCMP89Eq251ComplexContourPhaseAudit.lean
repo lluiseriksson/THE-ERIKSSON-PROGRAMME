@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq251ComplexContourPhase
 
-/-! PRE-VALIDATION: source is present, its `.olean` has not yet been
-materialized, and these oracle results are not yet compiler-verified. -/
+/-! Cold run `31273452649` compiler-verified all ten oracle results below at
+exact source checkpoint `e0b32533411b5ff8be5d55d432d076a7ca7172ae`. -/
 
 #print axioms YangMills.RG.cmp89Eq251DisplacementL1
 #print axioms YangMills.RG.cmp89Eq251ContourPhaseGrowth

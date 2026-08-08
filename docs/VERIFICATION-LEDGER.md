@@ -30504,3 +30504,47 @@ bound, the flowing `mass^2 <= 1` condition, physical `B0`, contour shift,
 Fourier/physical-rate dictionary and window-15 contraction remain open. No
 terminal field is discharged: counters remain `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained.
+
+## Addendum 647 (2026-08-08, **complex contour-phase dictionary GREEN; contour displacement still open**)
+
+Exact source checkpoint `e0b32533411b5ff8be5d55d432d076a7ca7172ae`
+passed cold GitHub Actions run
+[`31273452649`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31273452649)
+with workflow checkpoint `210a709656d6f7ce6afb8abf16392d49218a93b6`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `19:03:26Z` to `19:04:56Z`; the
+focal then ran to `19:21:37Z`, completed 8,443 jobs, and the audit ended at
+`19:21:45Z`. Focal and audit both exited zero. All ten audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9026527828`, named
+`cmp89-complex-contour-phase-e0b32533411b5ff8be5d55d432d076a7ca7172ae`,
+has GitHub digest
+`68142bfe121c234aaffab19067dd478d4296300297320f76050908fa923e1a92`.
+The deterministic inner archive re-hashed on Windows to
+`afdc0cd592aa11512c92c4ade4ab2e9e06d76808d8731695a323edd42f477efe`,
+identical to the hash recorded inside the cold runner; all 13 entries in its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed module proves the exact phase-product identity printed in CMP89
+(2.49), rewrites the stabilized bare numerator as the difference of the two
+physical endpoint phases, proves that reciprocal aliases add no imaginary
+phase, and gives the explicit coordinate-strip growth
+`exp(rho * |displacement|_1)` for each endpoint. It accepts no free phase
+family, spatial bound or `B0`.
+
+Cold run `31272522509` compiled the preceding source but exposed one unused
+`0 <= rho` premise and therefore did not seal it. The final source removes
+that premise, and the corresponding transitively unused premise in the
+endpoint estimate, rather than suppressing the linter. Cached diagnostic run
+`31273316298` passed the stronger interface before the final cold seal.
+
+This is the contour-phase dictionary, not the contour displacement. The two
+endpoint integrals must still be shifted separately in their signed physical
+directions; a single contour for the phase difference is not claimed. The
+complete strip bound, physical `B0`, flowing `mass^2 <= 1` dictionary,
+Fourier/physical-rate transport and window-15 contraction remain open.
+Neither the optional 8x trigonometric sharpening nor the uncompiled 2x
+opposite-pair variation is consumed. No terminal field is discharged:
+counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.

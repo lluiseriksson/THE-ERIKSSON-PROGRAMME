@@ -5755,9 +5755,28 @@ identify the Fourier and physical rates, resolve the flowing mass condition,
 or attain window 15. The live counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
 
-### Step 7.5bf complex contour-phase dictionary (PRE-VALIDATION)
+### Step 7.5bf complex contour-phase dictionary (SEALED; endpoint-specific contour displacement open)
 
-The proposed producer rewrites the two phase factors in the stabilized
+Exact source checkpoint `e0b32533411b5ff8be5d55d432d076a7ca7172ae`
+passed cold GitHub Actions run
+[`31273452649`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31273452649)
+with workflow checkpoint `210a709656d6f7ce6afb8abf16392d49218a93b6`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. Dependency materialization ran from `19:03:26Z` to `19:04:56Z`; the
+focal then ran to `19:21:37Z`, completed 8,443 jobs, and the audit ended at
+`19:21:45Z`. Focal and audit both exited zero. All ten audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9026527828`, named
+`cmp89-complex-contour-phase-e0b32533411b5ff8be5d55d432d076a7ca7172ae`,
+has GitHub digest
+`68142bfe121c234aaffab19067dd478d4296300297320f76050908fa923e1a92`.
+The deterministic inner archive re-hashed on Windows to
+`afdc0cd592aa11512c92c4ade4ab2e9e06d76808d8731695a323edd42f477efe`,
+identical to the hash recorded inside the cold runner; all 13 entries of its
+`SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed producer rewrites the two phase factors in the stabilized
 CMP89 (2.49) numerator exactly as
 
 ```text
@@ -5768,11 +5787,17 @@ CMP89 (2.49) numerator exactly as
 It also proves that reciprocal aliases do not alter the imaginary part of a
 phase and derives the explicit coordinate-strip growth
 `exp(rho * |displacement|_1)` for each endpoint. No phase-bound family or
-spatial constant is supplied as input.
+spatial constant is supplied as input. The final source removes two unused
+`0 <= rho` premises rather than suppressing the linter; cached diagnostic run
+`31273316298` verified that stronger interface before the cold seal. Earlier
+cold run `31272522509` remains preserved as a compiler-green but unsealed run
+because it exposed the unused-premise warning.
 
 This is the exact dictionary required before the source contour can be split
 or displaced. It does not choose a contour direction, prove uniform spatial
 decay, bound the complete stabilized numerator, construct `B0`, resolve the
-flowing mass condition or attain window 15. No terminal field is discharged:
-counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
-unattained.
+flowing mass condition or attain window 15. In particular it consumes only
+the conservative strip already compiled in the tree: neither the optional
+8x trigonometric sharpening nor the uncompiled 2x opposite-pair variation is
+used or claimed. No terminal field is discharged: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.

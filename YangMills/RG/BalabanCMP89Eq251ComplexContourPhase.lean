@@ -8,8 +8,11 @@ import YangMills.RG.BalabanCMP89Eq249StabilizedComplexIntegrand
 /-!
 # Complex contour-phase dictionary below CMP89 (2.49)
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+Cold validation: exact source checkpoint
+`e0b32533411b5ff8be5d55d432d076a7ca7172ae` passed GitHub Actions run
+`31273452649` with restore and save of `.lake/build` both skipped. The focal
+completed 8,443 jobs, and all ten audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The two phase factors in the stabilized CMP89 (2.49) numerator are not an
 arbitrary bounded multiplier. Their product is exactly the difference of the
