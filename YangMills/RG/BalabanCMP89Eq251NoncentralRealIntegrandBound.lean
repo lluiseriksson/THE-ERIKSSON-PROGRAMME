@@ -105,11 +105,22 @@ theorem cmp89Eq251NoncentralRealIntegrand_le_sourceWeight
         cmp89Eq251EuclideanNorm q :=
     (cmp89Eq245ScaledDifferenceNorm_le_abs hxi).trans
       (abs_le_cmp89Eq251EuclideanNorm q mu)
-  have hamplitude :=
-    norm_cmp89Eq245ComplexAverageAmplitude_scaled_alias_le hN hm hp
-  have hratio :=
-    cmp89Eq249_unit_div_scaled_noncentral_alias_le
-      hN hmassWindow hm hm0 hp
+  have hamplitude :
+      ‖cmp89Eq245ComplexAverageAmplitude
+          d (((L : ℝ) ^ j)⁻¹) q‖ ≤
+        (18 * Real.pi) ^ d *
+          cmp89Eq251MultidimensionalAliasWeight 1 m := by
+    simpa only [q, Nat.cast_pow] using
+      norm_cmp89Eq245ComplexAverageAmplitude_scaled_alias_le hN hm hp
+  have hratio :
+      cmp89Eq249UnitLaplacianSymbol d mass p /
+          cmp89Eq245ScaledLaplacianSymbol
+            d (((L : ℝ) ^ j)⁻¹) mass q ≤
+        ((3 * Real.pi) ^ 2 * ((d : ℝ) * Real.pi ^ 2 + 1)) /
+          cmp89Eq251MomentumSquare q := by
+    simpa only [q, Nat.cast_pow] using
+      cmp89Eq249_unit_div_scaled_noncentral_alias_le
+        hN hmassWindow hm hm0 hp
   have hnormSquare :
       cmp89Eq251EuclideanNorm q ^ 2 = cmp89Eq251MomentumSquare q :=
     sq_cmp89Eq251EuclideanNorm q
@@ -120,9 +131,15 @@ theorem cmp89Eq251NoncentralRealIntegrand_le_sourceWeight
         cmp89Eq251EuclideanNorm q ^ (alpha - 1) := by
     rw [← hnormSquare, Real.rpow_sub_one hqPos.ne']
     field_simp [hqPos.ne']
-  have hredistribute :=
-    cmp89Eq251EuclideanNorm_rpow_mul_aliasWeight_le_sourceWeight
-      hd halpha1 hm0 hp
+  have hredistribute :
+      cmp89Eq251EuclideanNorm q ^ (alpha - 1) *
+          cmp89Eq251MultidimensionalAliasWeight 1 m ≤
+        3 ^ (1 - alpha) *
+          cmp89Eq251MultidimensionalAliasWeight
+            (cmp89Eq251AliasSeriesExponent d alpha) m := by
+    simpa only [q] using
+      cmp89Eq251EuclideanNorm_rpow_mul_aliasWeight_le_sourceWeight
+        hd halpha1 hm0 hp
   have hfullDenPos :
       0 < cmp89Eq250FullAliasDenominator d L j mass a p :=
     hcentralPos.trans_le hdenLower
