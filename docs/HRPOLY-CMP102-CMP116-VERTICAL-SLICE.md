@@ -4498,3 +4498,46 @@ PRE-VALIDATION.  The next honest brick is the literal physical-summand
 comparison in the first two inequalities of (2.51), with its Laplacian ratio,
 one distinguished momentum coordinate and the noncentral `|p+l|` decay kept
 visible.
+
+### Step 7.5y expanded source-alias geometry for CMP89 (2.45)--(2.51) (SEALED; expanded symbol bounds open)
+
+Exact source checkpoint `336fdf35348ebd4e521a9f400a3284429e9d31b0`
+passed cold GitHub Actions run
+[`31232745194`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31232745194)
+(workflow checkpoint `1869742e9fb83b7cd99f3d5d07bc4c2f8fa0a356`).  The run
+recorded `COLD_MODE=true`; restoration and saving of `.lake/build` were both
+skipped.  The focal ran from `2026-08-08T01:30:59Z` to `01:31:18Z`, exited
+zero without warnings, and ended with
+`Build completed successfully (3283 jobs).`; the audit ended at `01:31:22Z`.
+All five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The printed even representative set in (2.45) is not pointwise contained in
+the central scaled Brillouin interval.  The sealed counterexample is literal:
+for alias count `N=2`, momentum `p'=-pi` and centered alias `m=-1`,
+
+```text
+|N^-1 * (p' + 2*pi*m)| = 3*pi/2 > pi.
+```
+
+Thus the central-alias Jordan lemma cannot be reused silently for every
+noncentral term in (2.51).  The same module proves the positive replacement:
+membership in the exact centered source set implies `2*|m| <= N`, hence
+`|p'+2*pi*m| <= pi*(N+1)` and, for every positive `N`, the uniform scaled
+radius `|N^-1*(p'+2*pi*m)| <= 3*pi/2`.
+
+This is a dictionary correction, not the physical integrand estimate.  The
+next finite source-facing chain is now explicit: an expanded-zone lower bound
+for the lattice difference/sinc denominator; the averaging-amplitude upper
+bound; the noncentral Laplacian-ratio upper bound; the Holder exponential
+difference; and only then the complete comparison with the already sealed
+coordinate-product weight.  The analytic strip remains later and separate.
+No physical `B0` or `delta0` is produced, window 15 remains unattained, no
+row 23--24 is discharged, and the live counters stay exactly `20/41` and
+`TermSource = 0`.
+
+Run `31232268327` was stopped by the ten-key cache preflight before Lean.
+Run `31232327344` preserves the two local elaboration repairs; cached run
+`31232461649` passed.  Cold run `31232600125` was mathematically green but
+retained PRE-VALIDATION because of one linter warning.  Only the warning-free
+cold run above retired it.

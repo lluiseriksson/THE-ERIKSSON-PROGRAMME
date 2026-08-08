@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251MultidimensionalAliasProduct
 
 /-!
-# PRE-VALIDATION: expanded alias geometry below CMP89 (2.51)
+# Cold-sealed expanded alias geometry below CMP89 (2.51)
 
-The source is present, but this module's `.olean` has not yet been
-materialized and its results have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`336fdf35348ebd4e521a9f400a3284429e9d31b0` by cold GitHub Actions run
+`31232745194`.  Restoration and saving of `.lake/build` were skipped.  The
+warning-free focal completed 3,283 jobs, the audit exited zero, and all five
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.45), printed p. 584, uses `p' in [-pi,pi[` and a fixed centered set
 of `N = L^j` integer aliases.  For even `N`, its half-open representative set

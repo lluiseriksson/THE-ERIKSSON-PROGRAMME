@@ -29318,3 +29318,42 @@ Run `31231616924` preserves the only elaboration repair; cached run
 `31231751244` passed the final source, and only the cold run above retired
 PRE-VALIDATION.  No terminal field is discharged: the live counters remain
 exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 611 (2026-08-08, **CMP89 expanded alias geometry GREEN; central Brillouin reuse refuted; 20/41 unchanged**)
+
+Exact source checkpoint
+`336fdf35348ebd4e521a9f400a3284429e9d31b0` was validated by cold GitHub
+Actions run [`31232745194`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31232745194)
+(workflow checkpoint `1869742e9fb83b7cd99f3d5d07bc4c2f8fa0a356`).  The run
+recorded `COLD_MODE=true`; no project `.lake/build` cache was restored or
+saved.  The focal ran from `2026-08-08T01:30:59Z` to `01:31:18Z`, exited zero
+without warnings, and ended with `Build completed successfully (3283 jobs).`
+The audit ended at `01:31:22Z` and also exited zero.  All five declarations
+use exactly `[propext, Classical.choice, Quot.sound]` against Mathlib
+`07642720480157414db592fa85b626dafb71355b` and Lean `v4.29.0-rc6`.
+
+The deterministic evidence archive created inside the cold job has SHA-256
+`500d3363bd6ec545bba82ec06d5d950e49bb2f7758f332f9ffd7f63b376b54b4`.
+GitHub recorded SHA-256
+`f9b54360675e0a3c59fd349b6ab2e5daae77545f9801208f3b922e4f27bbfeb7`
+for uploaded artifact `9014385838` (10,453 bytes).  A local download
+reproduced the exact source and Mathlib checkpoints, cold-cache state, stage
+ledger, five-block axiom JSON, `FINAL_STATUS=PASS`, the inner archive hash,
+and all thirteen hashes listed in `SHA256SUMS`; no warning line appears.
+
+The sealed module proves that the fixed even alias representatives printed in
+(2.45) are not all contained in the central scaled Brillouin interval: the
+literal member `N=2`, `p'=-pi`, `m=-1` has scaled magnitude `3*pi/2`.  This
+compiler-verified no-go forbids applying the central Jordan comparison to all
+noncentral terms by name alone.  The positive replacement is also sealed:
+every printed alias satisfies the exact half-width bound `2*|m| <= N`, the
+unscaled radius `pi*(N+1)`, and the uniform scaled radius `3*pi/2`.
+
+Run `31232268327` was rejected by the cache-key preflight before Lean.  Run
+`31232327344` preserves two local elaboration repairs, and cached run
+`31232461649` passed.  Cold run `31232600125` was mathematically green but
+was not accepted because one linter warning remained; only the warning-free
+cold run above retired PRE-VALIDATION.  Expanded-zone symbol estimates, the
+complete physical integrand comparison (2.51), analytic strip and transport
+remain open.  No terminal field is discharged: the live counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
