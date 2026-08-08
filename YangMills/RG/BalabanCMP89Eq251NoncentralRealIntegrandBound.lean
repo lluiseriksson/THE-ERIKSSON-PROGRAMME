@@ -123,6 +123,108 @@ theorem cmp89Eq251NoncentralRealIntegrand_le_sourceWeight
   have hredistribute :=
     cmp89Eq251EuclideanNorm_rpow_mul_aliasWeight_le_sourceWeight
       hd halpha1 hm0 hp
+  have hfullDenPos :
+      0 < cmp89Eq250FullAliasDenominator d L j mass a p :=
+    hcentralPos.trans_le hdenLower
+  have hdenFactorNonneg :
+      0 ≤ 1 / cmp89Eq250FullAliasDenominator d L j mass a p :=
+    div_nonneg (by norm_num) hfullDenPos.le
+  have hderivativeNonneg :
+      0 ≤ cmp89Eq245ScaledDifferenceNorm (((L : ℝ) ^ j)⁻¹) (q mu) := by
+    rw [cmp89Eq245ScaledDifferenceNorm]
+    exact norm_nonneg _
+  have hamplitudeNonneg :
+      0 ≤ ‖cmp89Eq245ComplexAverageAmplitude
+        d (((L : ℝ) ^ j)⁻¹) q‖ := norm_nonneg _
+  have hunitNonneg : 0 ≤ cmp89Eq249UnitLaplacianSymbol d mass p := by
+    rw [cmp89Eq249UnitLaplacianSymbol]
+    exact add_nonneg (Finset.sum_nonneg fun _ _ => sq_nonneg _) (sq_nonneg _)
+  have hscaledPos :
+      0 < cmp89Eq245ScaledLaplacianSymbol
+        d (((L : ℝ) ^ j)⁻¹) mass q := by
+    rw [cmp89Eq245ScaledLaplacianSymbol]
+    exact add_pos_of_nonneg_of_pos
+      (Finset.sum_nonneg fun _ _ => sq_nonneg _) (pow_pos hmass 2)
+  have hratioNonneg :
+      0 ≤ cmp89Eq249UnitLaplacianSymbol d mass p /
+        cmp89Eq245ScaledLaplacianSymbol
+          d (((L : ℝ) ^ j)⁻¹) mass q :=
+    div_nonneg hunitNonneg hscaledPos.le
+  have hphaseBoundNonneg :
+      0 ≤ 2 * cmp89Eq251EuclideanNorm q ^ alpha := by positivity
+  have hdenBoundNonneg :
+      0 ≤ (cmp89Eq250CentralAliasLowerConstant d a)⁻¹ := by positivity
+  have hderivativeBoundNonneg :
+      0 ≤ cmp89Eq251EuclideanNorm q :=
+    cmp89Eq251EuclideanNorm_nonneg q
+  have hamplitudeBoundNonneg :
+      0 ≤ (18 * Real.pi) ^ d *
+        cmp89Eq251MultidimensionalAliasWeight 1 m :=
+    mul_nonneg (pow_nonneg (by positivity) d)
+      (cmp89Eq251MultidimensionalAliasWeight_nonneg 1 m)
+  have hmomentumPos : 0 < cmp89Eq251MomentumSquare q := by
+    rw [← hnormSquare]
+    positivity
+  have h12 :
+      (‖Complex.exp
+            (Complex.I * cmp89Eq251Phase q displacement) - 1‖ /
+          cmp89Eq251EuclideanNorm displacement ^ alpha) *
+          (1 / cmp89Eq250FullAliasDenominator d L j mass a p) ≤
+        (2 * cmp89Eq251EuclideanNorm q ^ alpha) *
+          (cmp89Eq250CentralAliasLowerConstant d a)⁻¹ :=
+    mul_le_mul hphase hdenInv hdenFactorNonneg hphaseBoundNonneg
+  have h123 :
+      ((‖Complex.exp
+              (Complex.I * cmp89Eq251Phase q displacement) - 1‖ /
+            cmp89Eq251EuclideanNorm displacement ^ alpha) *
+            (1 / cmp89Eq250FullAliasDenominator d L j mass a p)) *
+          cmp89Eq245ScaledDifferenceNorm (((L : ℝ) ^ j)⁻¹) (q mu) ≤
+        ((2 * cmp89Eq251EuclideanNorm q ^ alpha) *
+            (cmp89Eq250CentralAliasLowerConstant d a)⁻¹) *
+          cmp89Eq251EuclideanNorm q :=
+    mul_le_mul h12 hderivative hderivativeNonneg
+      (mul_nonneg hphaseBoundNonneg hdenBoundNonneg)
+  have h1234 :
+      (((‖Complex.exp
+                (Complex.I * cmp89Eq251Phase q displacement) - 1‖ /
+              cmp89Eq251EuclideanNorm displacement ^ alpha) *
+              (1 / cmp89Eq250FullAliasDenominator d L j mass a p)) *
+            cmp89Eq245ScaledDifferenceNorm (((L : ℝ) ^ j)⁻¹) (q mu)) *
+          ‖cmp89Eq245ComplexAverageAmplitude
+            d (((L : ℝ) ^ j)⁻¹) q‖ ≤
+        (((2 * cmp89Eq251EuclideanNorm q ^ alpha) *
+              (cmp89Eq250CentralAliasLowerConstant d a)⁻¹) *
+            cmp89Eq251EuclideanNorm q) *
+          ((18 * Real.pi) ^ d *
+            cmp89Eq251MultidimensionalAliasWeight 1 m) :=
+    mul_le_mul h123 hamplitude hamplitudeNonneg
+      (mul_nonneg
+        (mul_nonneg hphaseBoundNonneg hdenBoundNonneg)
+        hderivativeBoundNonneg)
+  have hproduct :
+      ((((‖Complex.exp
+                  (Complex.I * cmp89Eq251Phase q displacement) - 1‖ /
+                cmp89Eq251EuclideanNorm displacement ^ alpha) *
+                (1 / cmp89Eq250FullAliasDenominator d L j mass a p)) *
+              cmp89Eq245ScaledDifferenceNorm (((L : ℝ) ^ j)⁻¹) (q mu)) *
+            ‖cmp89Eq245ComplexAverageAmplitude
+              d (((L : ℝ) ^ j)⁻¹) q‖) *
+          (cmp89Eq249UnitLaplacianSymbol d mass p /
+            cmp89Eq245ScaledLaplacianSymbol
+              d (((L : ℝ) ^ j)⁻¹) mass q) ≤
+        ((((2 * cmp89Eq251EuclideanNorm q ^ alpha) *
+                (cmp89Eq250CentralAliasLowerConstant d a)⁻¹) *
+              cmp89Eq251EuclideanNorm q) *
+            ((18 * Real.pi) ^ d *
+              cmp89Eq251MultidimensionalAliasWeight 1 m)) *
+          (((3 * Real.pi) ^ 2 * ((d : ℝ) * Real.pi ^ 2 + 1)) /
+            cmp89Eq251MomentumSquare q) :=
+    mul_le_mul h1234 hratio hratioNonneg
+      (mul_nonneg
+        (mul_nonneg
+          (mul_nonneg hphaseBoundNonneg hdenBoundNonneg)
+          hderivativeBoundNonneg)
+        hamplitudeBoundNonneg)
   have hconstantNonneg :
       0 ≤ 2 * (cmp89Eq250CentralAliasLowerConstant d a)⁻¹ *
         (18 * Real.pi) ^ d *
@@ -146,8 +248,7 @@ theorem cmp89Eq251NoncentralRealIntegrand_le_sourceWeight
         ((18 * Real.pi) ^ d *
           cmp89Eq251MultidimensionalAliasWeight 1 m) *
         (((3 * Real.pi) ^ 2 * ((d : ℝ) * Real.pi ^ 2 + 1)) /
-          cmp89Eq251MomentumSquare q) := by
-      gcongr
+          cmp89Eq251MomentumSquare q) := hproduct
     _ =
       (2 * (cmp89Eq250CentralAliasLowerConstant d a)⁻¹ *
           (18 * Real.pi) ^ d *
