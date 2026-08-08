@@ -106,6 +106,7 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_eq
             (Complex.I * (-(((N : ℝ)⁻¹ * q : ℝ) : ℂ))) := by
               congr 1
               push_cast
+              ring
         _ = x := hx_exp.symm
     rw [cmp89Eq245EntireAverageFactor,
       cmp89Eq245ComplexAverageFactor_eq_literal hxi hq,
