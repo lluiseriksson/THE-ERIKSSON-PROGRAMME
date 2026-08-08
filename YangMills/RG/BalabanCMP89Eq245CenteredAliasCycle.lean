@@ -99,6 +99,16 @@ def cmp89Eq245CenteredAliasPred
         omega
       simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
         Finset.mem_Ico] using hout⟩
+  else
+    ⟨cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1, by
+      have hNint : (0 : ℤ) < (N : ℤ) := by exact_mod_cast hN
+      have hout : cmp89Eq245CenteredAliasLower N ≤
+            cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1 ∧
+          cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1 <
+            cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
+        omega
+      simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
+        Finset.mem_Ico] using hout⟩
 
 /-- Integer value of the centered successor, with the wrap branch visible. -/
 theorem cmp89Eq245CenteredAliasSucc_value
@@ -123,16 +133,6 @@ theorem cmp89Eq245CenteredAliasPred_value
         cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1 := by
   unfold cmp89Eq245CenteredAliasPred
   split_ifs <;> rfl
-  else
-    ⟨cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1, by
-      have hNint : (0 : ℤ) < (N : ℤ) := by exact_mod_cast hN
-      have hout : cmp89Eq245CenteredAliasLower N ≤
-            cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1 ∧
-          cmp89Eq245CenteredAliasLower N + (N : ℤ) - 1 <
-            cmp89Eq245CenteredAliasLower N + (N : ℤ) := by
-        omega
-      simpa only [cmp89Eq245CenteredAliasIntegers_eq_Ico,
-        Finset.mem_Ico] using hout⟩
 
 /-- Predecessor is a left inverse of successor on the centered fibre. -/
 theorem cmp89Eq245CenteredAliasPred_succ
