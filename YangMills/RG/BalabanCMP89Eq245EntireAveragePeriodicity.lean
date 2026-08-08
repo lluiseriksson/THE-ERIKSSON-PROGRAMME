@@ -9,8 +9,10 @@ import YangMills.RG.BalabanCMP89Eq251LatticePhasePeriodicity
 /-!
 # Alias-period invariance of the entire averaging amplitude
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and this result has not yet been verified by the compiler.
+Compiler verification: exact source checkpoint
+`7fac9d795b7588160abe325eb2ee724044e33881`, cold GitHub Actions run
+`31281971984` (8,446 jobs; focal and five-declaration axiom audit exit zero;
+restore and save of `.lake/build` both skipped).
 
 The finite geometric continuation of the averaging quotient has fundamental
 period `2*pi*N` in each momentum coordinate.  This module derives that period

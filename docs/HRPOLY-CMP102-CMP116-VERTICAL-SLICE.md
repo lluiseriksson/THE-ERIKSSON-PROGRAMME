@@ -6111,3 +6111,44 @@ Cached diagnostic run `31280585168` passed before the cold seal. Failed run
 orientation in `linear_combination` and the explicit `Finset.sum_coe_sort`
 bridge. Neither changed the physical shift, wrap disjunction, periods,
 finite fibre or hypotheses.
+
+### Step 7.5bn entire averaging-factor alias period (SEALED; fine Laplacian period open)
+
+Exact source checkpoint `7fac9d795b7588160abe325eb2ee724044e33881`
+passed cold GitHub Actions run
+[`31281971984`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31281971984)
+with workflow checkpoint `191f953bf6bf0408ed050d97010162a9e7250564`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `22:35:22Z` to `22:51:18Z`, completed
+8,446 jobs, and the audit ended at `22:51:24Z`. Focal and audit both exited
+zero. All five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9028880249`, named
+`cmp89-entire-average-periodicity-7fac9d795b7588160abe325eb2ee724044e33881`,
+has GitHub digest
+`c0ab505fa56be5a446b459a013e5c4265d22f0c1ba1bae106fd899cd993b9458`.
+The deterministic inner archive re-hashed on Windows to
+`1110860dab97fe2d7a69d66f930eb5769017af99ed7c0c599b67b2e0b76ba05f`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed brick derives the exact `2*pi*N` period from the finite geometric
+continuation itself, for every integer multiple. It lifts the scalar period
+to one coordinate of the complete averaging amplitude, proves the matching
+negative wrap at opposite momentum, and concludes invariance of the literal
+holomorphic pairing `u(z) * u(-z)`. No periodicity family is accepted as an
+input.
+
+This is the fine-lattice averaging factor only. The fine Laplacian at
+`xi = 1/N`, its quotient, the unit Laplacian at the distinct physical period
+`2*pi`, the complete denominator and displayed-integrand periodicity remain
+open. Transfer to the stabilized extension still requires the sealed
+displayed/stabilized equality on the non-singular domain. No `B0`, rate,
+window-15 attainment or terminal field is produced. Counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31281856879` passed before the cold seal. Failed run
+`31281679586` preserves the sole mechanical repair: the negative wrap
+normalized `-z-period` versus `-period-z` by commutativity. The theorem
+statement, period, factor and hypotheses were unchanged.

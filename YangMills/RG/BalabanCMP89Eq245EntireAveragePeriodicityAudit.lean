@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq245EntireAveragePeriodicity
 
 /-!
-# Axiom audit for alias-period invariance of the entire average
-
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and this result has not yet been verified by the compiler.
+# Axiom audit for cold-sealed alias-period invariance of the entire average
 -/
 
 #print axioms YangMills.RG.cmp89Eq245EntireAverageBase_add_int_aliasPeriod

@@ -30819,3 +30819,38 @@ compatible but unattained.
 Cached run `31280585168` passed first. Failed run `31280430141` records only
 the sign of an algebraic combination and the explicit `sum_coe_sort` bridge;
 the theorem statement and physical data were unchanged.
+
+## Addendum 655 (2026-08-08, **entire averaging-factor alias period GREEN; fine Laplacian period open**)
+
+Exact source checkpoint `7fac9d795b7588160abe325eb2ee724044e33881`
+passed cold GitHub Actions run
+[`31281971984`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31281971984)
+with workflow checkpoint `191f953bf6bf0408ed050d97010162a9e7250564`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were
+both skipped. The focal ran from `22:35:22Z` to `22:51:18Z`, completed 8,446
+jobs, and the audit ended at `22:51:24Z`. Both stages exited zero. All five
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9028880249`, named
+`cmp89-entire-average-periodicity-7fac9d795b7588160abe325eb2ee724044e33881`,
+has GitHub digest
+`c0ab505fa56be5a446b459a013e5c4265d22f0c1ba1bae106fd899cd993b9458`.
+The deterministic inner archive re-hashed on Windows to
+`1110860dab97fe2d7a69d66f930eb5769017af99ed7c0c599b67b2e0b76ba05f`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+The brick proves the literal `2*pi*N` period of the entire finite-geometric
+average for arbitrary integer multiples, lifts it to the multidimensional
+amplitude, and seals both the positive and opposite-momentum wraps needed by
+the holomorphic pairing. Thus the average-pair input required by the generic
+alias-cycle transport is now produced internally rather than postulated.
+
+The fine Laplacian and quotient still need their `2*pi*N` producers, and the
+unit Laplacian separately needs its `2*pi` physical producer. Complete
+denominator and displayed-integrand periodicity, transfer to the stabilized
+extension, `B0`, window 15 and all terminal fields remain open. Counters stay
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+Cached run `31281856879` passed first. Failed run `31281679586` records only
+the additive-order normalization in the negative wrap; it changed no
+statement, period, constant or hypothesis.
