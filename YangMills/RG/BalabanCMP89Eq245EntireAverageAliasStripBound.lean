@@ -134,7 +134,7 @@ theorem one_div_three_pi_mul_abs_le_norm_cmp89Eq245EntireAverageBase_sub_one
   have hunit :=
     one_div_three_pi_mul_abs_le_cmp89Eq249UnitDifferenceNorm hzone
   have hinv : (xi : ℂ) = (N : ℂ)⁻¹ := by
-    simpa [xi] using Complex.ofReal_inv (N : ℝ)
+    simp [xi]
   have hnorm :
       ‖cmp89Eq245EntireAverageBase N (q : ℂ) - 1‖ =
         cmp89Eq249UnitDifferenceNorm (xi * q) := by
