@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP89Eq251AliasAmplitudeUpper
+import YangMills.RG.BalabanCMP89Eq245ComplexSincDictionary
 
 /-!
 # PRE-VALIDATION: entire averaging amplitude below CMP89 (2.51)
@@ -115,54 +115,6 @@ theorem cmp89Eq245EntireAverageFactor_ofReal_eq
       geom_sum_eq hx_ne_one N, hx_pow, hx_exp_mul]
     push_cast
     field_simp [hNreal, hNcomplex, sub_ne_zero.mpr hx_ne_one]
-
-/-- Coordinate-specialized real-slice dictionary for a printed alias.  All
-physical indices are explicit so downstream products do not ask elaboration
-to reconstruct them through the generated alias tower. -/
-theorem cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq
-    {N : ℕ} (hN : 0 < N) {m : ℤ}
-    (hm : m ∈ cmp89Eq245CenteredAliasIntegers N)
-    {p : ℝ} (hp : |p| ≤ Real.pi) :
-    cmp89Eq245EntireAverageFactor N
-        (p + 2 * Real.pi * (m : ℝ) : ℂ) =
-      cmp89Eq245ComplexAverageFactor (N : ℝ)⁻¹
-        (p + 2 * Real.pi * (m : ℝ)) := by
-  have hsinc := one_div_three_pi_le_abs_sinc_scaled_alias
-    (N := N) (m := m) (p := p) hN hm hp
-  have hsincPos :
-      0 < |Real.sinc (((N : ℝ)⁻¹ *
-        (p + 2 * Real.pi * (m : ℝ))) / 2)| := by
-    exact (div_pos (by norm_num) (mul_pos (by norm_num) Real.pi_pos)).trans_le
-      hsinc
-  have hdenNorm :
-      0 < ‖cmp89Eq245RemovableExpSlope
-        ((N : ℝ)⁻¹ * (p + 2 * Real.pi * (m : ℝ)))‖ := by
-    rw [norm_cmp89Eq245RemovableExpSlope]
-    exact hsincPos
-  exact cmp89Eq245EntireAverageFactor_ofReal_eq
-    (N := N) (q := p + 2 * Real.pi * (m : ℝ)) hN
-    (norm_pos_iff.mp hdenNorm)
-
-/-- Exact real-slice dictionary on every alias printed in CMP89 (2.45).
-The expanded-zone sinc lower bound supplies the nonvanishing needed to use
-the geometric quotient, so no global nonvanishing assumption is hidden. -/
-theorem cmp89Eq245EntireAverageAmplitude_ofReal_scaled_alias_eq
-    {d N : ℕ} (hN : 0 < N) {m : Fin d → ℤ}
-    (hm : m ∈ cmp89Eq245CenteredAliasVectors d N)
-    {p : Fin d → ℝ} (hp : ∀ mu, |p mu| ≤ Real.pi) :
-    cmp89Eq245EntireAverageAmplitude d N
-        (fun mu => (p mu + 2 * Real.pi * (m mu : ℝ) : ℂ)) =
-      cmp89Eq245ComplexAverageAmplitude d (N : ℝ)⁻¹
-        (fun mu => p mu + 2 * Real.pi * (m mu : ℝ)) := by
-  rw [cmp89Eq245EntireAverageAmplitude,
-    cmp89Eq245ComplexAverageAmplitude]
-  apply Finset.prod_congr rfl
-  intro mu hmu
-  apply cmp89Eq245EntireAverageFactor_ofReal_scaled_alias_eq
-    (N := N) (m := m mu) (p := p mu) hN
-  · rw [cmp89Eq245CenteredAliasVectors, Fintype.mem_piFinset] at hm
-    exact hm mu
-  · exact hp mu
 
 end
 
