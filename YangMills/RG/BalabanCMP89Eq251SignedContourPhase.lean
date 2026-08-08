@@ -33,7 +33,8 @@ physical endpoint displacement. -/
 def cmp89Eq251SignedContourMomentum {d : ℕ}
     (rho : ℝ) (p displacement : Fin d → ℝ) : Fin d → ℂ :=
   fun mu => (p mu : ℂ) +
-    Complex.I * ((rho * (sign (displacement mu) : ℝ) : ℝ) : ℂ)
+    Complex.I *
+      ((rho * (SignType.sign (displacement mu) : ℝ) : ℝ) : ℂ)
 
 @[simp]
 theorem cmp89Eq251SignedContourMomentum_re
@@ -45,7 +46,7 @@ theorem cmp89Eq251SignedContourMomentum_re
 theorem cmp89Eq251SignedContourMomentum_im
     {d : ℕ} (rho : ℝ) (p displacement : Fin d → ℝ) (mu : Fin d) :
     (cmp89Eq251SignedContourMomentum rho p displacement mu).im =
-      rho * (sign (displacement mu) : ℝ) := by
+      rho * (SignType.sign (displacement mu) : ℝ) := by
   simp [cmp89Eq251SignedContourMomentum]
 
 /-- For nonnegative radius, the signed momentum lies in the closed coordinate
@@ -54,7 +55,7 @@ theorem abs_im_cmp89Eq251SignedContourMomentum_le
     {d : ℕ} {rho : ℝ} (hrho : 0 ≤ rho)
     (p displacement : Fin d → ℝ) (mu : Fin d) :
     |(cmp89Eq251SignedContourMomentum rho p displacement mu).im| ≤ rho := by
-  have hsign : |(sign (displacement mu) : ℝ)| ≤ 1 := by
+  have hsign : |(SignType.sign (displacement mu) : ℝ)| ≤ 1 := by
     rw [sign_apply]
     split_ifs <;> norm_num
   rw [cmp89Eq251SignedContourMomentum_im, abs_mul, abs_of_nonneg hrho]
