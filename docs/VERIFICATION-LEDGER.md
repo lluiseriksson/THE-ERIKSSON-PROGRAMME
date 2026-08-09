@@ -31395,3 +31395,34 @@ cite that the two endpoint displacements differ by one lattice edge and keep
 its resulting `exp rho` factor visible. Counters stay `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained. Cached diagnostic
 run `31298811187` was diagnostic only and did not retire PRE-VALIDATION.
+
+## Addendum 673 (2026-08-09, **four-coordinate telescope for each stabilized endpoint GREEN; recombination open**)
+
+Exact source checkpoint `8a4f1b3a05abf165d75b2a22359c46ecc7f72119`
+passed cold GitHub Actions run
+[`31300130079`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31300130079)
+with workflow checkpoint `864cc4121917dca4a44fa9d1e2402d5c92759be2`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,468 jobs from `07:02:02Z` to `07:15:30Z`; the
+audit ended at `07:15:37Z`. Both stages exited zero. Both audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9034397683`, named
+`stabilized-endpoint-product-contour-telescope-8a4f1b3a05abf165d75b2a22359c46ecc7f72119`,
+has GitHub digest
+`ff5aedcf9814b7c1a74304341ca94a0a43164695c570d7fc2261fec5073efc19`.
+The deterministic inner archive re-hashed on Windows to
+`5b6de45e886e40519004342cd00cd29a3a3d724364f4f77c6983637fdaa0b0f4`,
+identical to the runner's hash; all 13 manifest entries re-hashed exactly.
+
+The four literal coordinate transitions telescope from the real product
+integral to the fully signed contour integral for each stabilized endpoint
+separately. The stage endpoint rewrites are internal and no family of contour
+equalities is accepted. The two endpoint terms are deliberately not shifted
+on a common contour.
+
+Endpoint recombination, its explicit neighbour cost `exp rho`, the complete
+bound `B0`, owner dictionary, window-15 attainment and all terminal fields
+remain open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained. Cached diagnostic run `31300025712` was diagnostic only and
+did not retire PRE-VALIDATION.

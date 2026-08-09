@@ -6797,3 +6797,39 @@ The complete bound `B0`, owner dictionary, window-15 attainment and every
 terminal field remain open. Counters stay `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained. Cached diagnostic run `31298811187`
 did not retire PRE-VALIDATION; only the cold run above did.
+
+### Step 7.5cf stabilized endpoint four-coordinate telescope (SEALED; endpoint recombination open)
+
+Exact source checkpoint `8a4f1b3a05abf165d75b2a22359c46ecc7f72119`
+passed cold GitHub Actions run
+[`31300130079`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31300130079)
+with workflow checkpoint `864cc4121917dca4a44fa9d1e2402d5c92759be2`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `07:02:02Z` to `07:15:30Z`, completed
+8,468 jobs, and the audit ended at `07:15:37Z`. Both stages exited zero. Both
+audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9034397683`, named
+`stabilized-endpoint-product-contour-telescope-8a4f1b3a05abf165d75b2a22359c46ecc7f72119`,
+has GitHub digest
+`ff5aedcf9814b7c1a74304341ca94a0a43164695c570d7fc2261fec5073efc19`.
+The deterministic inner archive re-hashed on Windows to
+`5b6de45e886e40519004342cd00cd29a3a3d724364f4f77c6983637fdaa0b0f4`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed telescope composes the literal stages `0 -> 1 -> 2 -> 3 -> 4`
+for one endpoint and rewrites stage zero to the real Brillouin momentum and
+stage four to that endpoint's fully signed momentum. Every intermediate stage
+uses the already-sealed full-polydisc strip condition, so no single-coordinate
+nonvanishing premise is smuggled into the iteration.
+
+This does not shift the difference of the two endpoint terms on one common
+contour. Endpoint recombination remains separate and must cite that the two
+physical endpoints differ by one lattice edge, yielding the explicit factor
+`exp rho` when their `l1` decays are compared. The complete bound `B0`, owner
+dictionary, window-15 attainment and every terminal field remain open.
+Counters stay `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained. Cached diagnostic run `31300025712` did not retire
+PRE-VALIDATION; only the cold run above did.

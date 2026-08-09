@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductCoordinateShift
 
 /-!
-# PRE-VALIDATION: four-coordinate telescope for one stabilized endpoint
+# Cold-sealed four-coordinate telescope for one stabilized endpoint
 
-The source in this module is present, but its `.olean` has not yet been
-materialized and its result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`8a4f1b3a05abf165d75b2a22359c46ecc7f72119` by cold GitHub Actions run
+`31300130079`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,468 jobs, the audit exited zero, and both audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
 
 The sealed product-coordinate transition is composed at the four literal
 coordinates of `Fin 4`.  Each intermediate momentum has all earlier

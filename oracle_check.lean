@@ -3071,3 +3071,5 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp89Eq251PhysicalCoordinateLine_partialSigned_eq
 #print axioms YangMills.RG.cmp89Eq251PhysicalCoordinateLine_partialSigned_add_eta_eq
 #print axioms YangMills.RG.integral_cmp89Eq251StabilizedEndpointPartialProductIntegrand_stage_succ
+#print axioms YangMills.RG.integral_cmp89Eq251StabilizedEndpointPartialProductIntegrand_zero_eq_four
+#print axioms YangMills.RG.integral_cmp89Eq251ComplexStabilizedEndpointIntegrand_eq_signed
