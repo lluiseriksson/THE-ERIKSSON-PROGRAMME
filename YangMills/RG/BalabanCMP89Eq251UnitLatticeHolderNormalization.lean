@@ -31,6 +31,7 @@ noncomputable section
 
 private theorem abs_intCast_eq_natAbs (n : ℤ) :
     |(n : ℝ)| = (n.natAbs : ℝ) := by
+  rw [← Int.cast_abs]
   exact (Nat.cast_natAbs (α := ℝ) n).symm
 
 /-- The real `l1` length of an integer displacement is exactly the lattice
