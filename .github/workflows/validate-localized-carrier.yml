@@ -1,4 +1,4 @@
-name: Validate CMP89 noncentral endpoint quotient sum
+name: Validate CMP89 endpoint amplitude factorization
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 65706caceaabd5e7c1ce67dd0e4760a090119c6e
+  SOURCE_SHA: 7756971229f1b12a2cf47060dcf3f969d65c0f7a
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -25,9 +25,10 @@ env:
     physical-owner-exponential-transport
     endpoint-strip-factor-bounds
     noncentral-endpoint-quotient
+    noncentral-endpoint-quotient-sum
 
 jobs:
-  noncentral-endpoint-quotient-sum:
+  endpoint-amplitude-factorization:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -92,7 +93,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-noncentral-endpoint-quotient-sum-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-endpoint-amplitude-factorization-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -126,8 +127,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq251ComplexNoncentralEndpointQuotientSum.lean \
-            YangMills/RG/BalabanCMP89Eq251ComplexNoncentralEndpointQuotientSumAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251ComplexEndpointAmplitudeFactorization.lean \
+            YangMills/RG/BalabanCMP89Eq251ComplexEndpointAmplitudeFactorizationAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -149,10 +150,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage noncentral_endpoint_quotient_sum_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251ComplexNoncentralEndpointQuotientSum
-          run_stage noncentral_endpoint_quotient_sum_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq251ComplexNoncentralEndpointQuotientSumAudit.lean
+          run_stage endpoint_amplitude_factorization_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251ComplexEndpointAmplitudeFactorization
+          run_stage endpoint_amplitude_factorization_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251ComplexEndpointAmplitudeFactorizationAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -166,7 +167,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "noncentral_endpoint_quotient_sum_audit.log": 3,
+              "endpoint_amplitude_factorization_audit.log": 10,
           }
           result = {}
           for name, expected in audits.items():
@@ -198,17 +199,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              noncentral-endpoint-quotient-sum-evidence.tar.gz
-          sha256sum noncentral-endpoint-quotient-sum-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              endpoint-amplitude-factorization-evidence.tar.gz
+          sha256sum endpoint-amplitude-factorization-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: noncentral-endpoint-quotient-sum-${{ env.SOURCE_SHA }}
+          name: endpoint-amplitude-factorization-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            noncentral-endpoint-quotient-sum-evidence.tar.gz
+            endpoint-amplitude-factorization-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -217,4 +218,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-noncentral-endpoint-quotient-sum-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-endpoint-amplitude-factorization-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
