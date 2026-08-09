@@ -59,7 +59,7 @@ theorem norm_cmp89Eq251ComplexEndpointLatticePhaseFactor_signedContour
     cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs,
     cmp89Eq251DisplacementL1_latticeDisplacement]
   congr 1
-  ring
+  rfl
 
 /-- The complete stabilized endpoint integrand is bounded on its own signed
 contour by the exact lattice `l1` decay times the explicit phase-free
