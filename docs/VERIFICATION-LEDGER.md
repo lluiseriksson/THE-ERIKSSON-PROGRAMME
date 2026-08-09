@@ -32054,3 +32054,34 @@ integration and the operator dictionary remain open; physical `B0` and window
 15 are not claimed.  Live counters remain exactly `20/41`,
 `TermSource = 0`.  Cached run `31332474918` was diagnostic only; only the cold
 run above retired the two PRE-VALIDATION marks.
+
+## Addendum 693 (2026-08-09, **fine-lattice stabilized endpoint bound GREEN; physical seam still open; 20/41 unchanged**)
+
+Exact source checkpoint `902ed1f06b29568a698c9dfac5856656035ca83e`
+passed cold GitHub Actions run
+[`31333611513`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31333611513)
+with workflow checkpoint `08fd46ec7b4bfd1e221ab04893cfb0f7da7516a7`.
+The job completed in `18m23s`; restoration and saving of `.lake/build` were
+skipped. The focal and audit exited zero, and all four audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9043872130`, named
+`fine-lattice-stabilized-endpoint-bound-902ed1f06b29568a698c9dfac5856656035ca83e`,
+has GitHub digest
+`b3111775118f19948e27433d71e2b94a5213a55a7e17bf6cbd2f39e831398a0a`.
+Its deterministic inner archive re-hashed on Windows to
+`31210d1ed0e052070e09da674685872d00661a9bd7930d554f44a89102fb51e4`;
+all 13 internal manifest entries matched.
+
+The exact `alpha = 0` endpoint numerator is decomposed internally into its
+central branch and the phase-retaining noncentral sum. Their bounds combine
+with the sealed stabilized reciprocal to give the literal pointwise endpoint
+majorant with one signed physical `l1` decay. The theorem does not assume a
+unit edge and does not restore the invalid common physical alias phase.
+
+Normalized integration is not claimed: the existing endpoint seam is still
+typed on unit-lattice displacements, whereas CMP89 uses physical displacements
+`u/(L^j)`. A separate fine-lattice seam/alias-cycle dictionary is required.
+Physical `B0`, window 15 and every terminal field remain open. Live counters
+remain exactly `20/41`, `TermSource = 0`. Cached run `31333497194` was
+diagnostic only; only the cold run above retired the two PRE-VALIDATION marks.

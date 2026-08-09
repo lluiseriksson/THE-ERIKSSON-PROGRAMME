@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointBound
 
 /-!
-# PRE-VALIDATION audit: source-faithful fine-lattice endpoint bound
+# Cold-sealed audit: source-faithful fine-lattice endpoint bound
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+Compiler-verified at exact source checkpoint
+`902ed1f06b29568a698c9dfac5856656035ca83e` by cold GitHub Actions run
+`31333611513`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251ComplexFineLatticeStabilizedEndpointAmplitudeBound

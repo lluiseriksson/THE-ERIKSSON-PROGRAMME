@@ -7569,3 +7569,37 @@ open.  Physical `B0`, window-15 attainment, every terminal field and
 `TermSource` remain open.  Counters stay exactly `20/41`, `TermSource = 0`.
 Cached diagnostic run `31332474918` passed but did not retire PRE-VALIDATION;
 only the cold run above did.
+
+### Step 7.5cxviii fine-lattice stabilized endpoint bound (SEALED; physical seam and integration open)
+
+Exact source checkpoint `902ed1f06b29568a698c9dfac5856656035ca83e`
+passed cold GitHub Actions run
+[`31333611513`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31333611513)
+with workflow checkpoint `08fd46ec7b4bfd1e221ab04893cfb0f7da7516a7`.
+The job completed in `18m23s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `20:13:10Z` to `20:29:39Z`, the audit ended
+at `20:29:46Z`, and both stages exited zero. All four audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9043872130`, named
+`fine-lattice-stabilized-endpoint-bound-902ed1f06b29568a698c9dfac5856656035ca83e`,
+has GitHub digest
+`b3111775118f19948e27433d71e2b94a5213a55a7e17bf6cbd2f39e831398a0a`.
+Its deterministic inner archive re-hashed on Windows to
+`31210d1ed0e052070e09da674685872d00661a9bd7930d554f44a89102fb51e4`;
+all 13 entries of its `SHA256SUMS` manifest re-hashed exactly.
+
+The sealed producer assembles the central branch with the source-faithful
+phase-retaining noncentral sum at the literal specialization `alpha = 0`.
+It proves one exact physical endpoint decay
+`exp(-rho*||u||_1)` times the visible central/noncentral amplitude and
+stabilized reciprocal majorant. No common alias phase, alias-cardinality
+factor, rate loss or unit-edge premise enters the estimate.
+
+This is a pointwise Fourier-integrand bound only. The old four-coordinate
+seam is specialized to unit-lattice displacements; a source-faithful seam for
+physical `u/(L^j)` must be proved before normalized integration is inherited.
+The physical Green dictionary, complete `B0`, window-15 attainment and every
+terminal field remain open. Counters stay exactly `20/41`, `TermSource = 0`.
+Cached diagnostic run `31333497194` passed but did not retire PRE-VALIDATION;
+only the cold run above did.

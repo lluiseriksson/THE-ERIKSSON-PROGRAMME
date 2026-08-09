@@ -8,10 +8,13 @@ import YangMills.RG.BalabanCMP89Eq251ComplexEndpointAmplitudeBound
 import YangMills.RG.BalabanCMP89Eq251FineLatticePhasedNoncentralSum
 
 /-!
-# PRE-VALIDATION: source-faithful fine-lattice endpoint bound below CMP89 (2.49)
+# Cold-sealed source-faithful fine-lattice endpoint bound below CMP89 (2.49)
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+Compiler-verified at exact source checkpoint
+`902ed1f06b29568a698c9dfac5856656035ca83e` by cold GitHub Actions run
+`31333611513`. Restoration and saving of `.lake/build` were skipped. The focal
+and audit exited zero, and all four audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.49) retains a separate phase for every reciprocal alias when the
 endpoint lies in `xi Z^4`.  This module assembles the central branch and the
