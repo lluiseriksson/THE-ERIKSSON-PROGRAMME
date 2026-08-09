@@ -59,7 +59,8 @@ theorem norm_cmp89Eq251ComplexCentralEndpointAmplitude_le_bound
       ‖cmp89Eq245EntireScaledDifference (((L : ℝ) ^ j)⁻¹) (-z mu)‖ ≤
           |(-z mu).re| + rho * Real.exp rho := hraw
       _ = |(z mu).re| + rho * Real.exp rho := by simp
-      _ ≤ Real.pi + rho * Real.exp rho := add_le_add_right hpMu _
+      _ ≤ Real.pi + rho * Real.exp rho :=
+        add_le_add hpMu (le_refl _)
   have havg :
       ‖cmp89Eq245EntireAverageAmplitude 4 (L ^ j) z‖ ≤
         Real.exp rho ^ 4 :=
