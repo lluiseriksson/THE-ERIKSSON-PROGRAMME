@@ -3130,3 +3130,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp89Eq251ComplexBareEndpoint_noncentralSum_eq_phaseFactor_mul_sum
 #print axioms YangMills.RG.cmp89Eq251ComplexBareEndpoint_zero_eq_phaseFactor_mul_centralAmplitude
 #print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointNumerator_eq_phaseFactor_mul_amplitude
+#print axioms YangMills.RG.cmp89Eq251ComplexCentralEndpointAmplitudeBound
+#print axioms YangMills.RG.norm_cmp89Eq251ComplexCentralEndpointAmplitude_le_bound
+#print axioms YangMills.RG.cmp89Eq251ComplexEndpointAmplitudeBound
+#print axioms YangMills.RG.norm_cmp89Eq251ComplexEndpointAmplitude_le_bound

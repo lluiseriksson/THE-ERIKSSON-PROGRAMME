@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251ComplexEndpointAmplitudeFactorization
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointCentralFineUpper
 
 /-!
-# PRE-VALIDATION: phase-free endpoint-amplitude bound below CMP89 (2.49)
+# Cold-sealed phase-free endpoint-amplitude bound below CMP89 (2.49)
 
-Source is present, its `.olean` has not yet been materialized, and the results
-have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`81768889cebfd72c4095efc0f8d9099dc15fad81` by cold GitHub Actions run
+`31317147898`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,452 jobs, the audit exited zero, and all four audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The exact endpoint factorization is already cold-sealed.  This file bounds its
 phase-free bracket: the zero-alias branch uses the literal scaled-difference

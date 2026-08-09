@@ -235,6 +235,10 @@
         "YangMills.RG.cmp89Eq251ComplexBareEndpoint_noncentralSum_eq_phaseFactor_mul_sum",
         "YangMills.RG.cmp89Eq251ComplexBareEndpoint_zero_eq_phaseFactor_mul_centralAmplitude",
         "YangMills.RG.cmp89Eq251ComplexStabilizedEndpointNumerator_eq_phaseFactor_mul_amplitude",
+        "YangMills.RG.cmp89Eq251ComplexCentralEndpointAmplitudeBound",
+        "YangMills.RG.norm_cmp89Eq251ComplexCentralEndpointAmplitude_le_bound",
+        "YangMills.RG.cmp89Eq251ComplexEndpointAmplitudeBound",
+        "YangMills.RG.norm_cmp89Eq251ComplexEndpointAmplitude_le_bound",
         "YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate",
         "YangMills.RG.CMP99Eq342RegionalGreenCertificate",
         "YangMills.RG.CMP99Eq389SourceLocalizedThreeSpeciesGreenCertificate"
@@ -261,7 +265,7 @@
         "The sealed finite-geometric producer supplies the entire continuation of the averaging numerator and its exact real-slice dictionary. A later holomorphic denominator must pair u(z) with u(-z), not complexify a squared norm.",
         "The sealed Fourier-symbol producer supplies those opposite-momentum analytic pairings explicitly and proves their exact real-slice dictionaries; it is the numerator/Laplacian input for the complete holomorphic denominator.",
         "The sealed complex-denominator producer supplies the literal finite assembly and its exact real-slice dictionary. The sealed stabilized-strip producer works with that assembly after named algebraic cancellations and proves one common positive radius for exactly the surviving denominator families; it does not replace them by an arbitrary nonvanishing family.",
-        "The sealed common-strip, physical boundary-seam and one-coordinate Cauchy producers establish one physical contour displacement without global stabilized periodicity. The four-coordinate telescope, exact endpoint recombination and all l1/Euclidean Holder normalizations are sealed. The cross-source physical-bond dictionary constructs the named signed unit edge; the fine-site dictionary constructs target-y and holder+transport; the blockSite bridge proves scale*ownerDist <= transportL1+2*(scale-1); and the sealed decreasing exponential transport preserves owner rate rho*scale with explicit exp(2*rho*(scale-1)) and 1+exp(rho) costs. The scaled-difference and central fine-symbol strip factors are sealed. Exact reciprocal-lattice periodicity now factors one common endpoint phase through the zero branch, every noncentral branch, the finite noncentral sum and the complete stabilized endpoint numerator without replacing the quotient-sum norm by a sum of norms. The phase-free endpoint-amplitude norm and the complete bound B0 remain open."
+        "The sealed common-strip, physical boundary-seam and one-coordinate Cauchy producers establish one physical contour displacement without global stabilized periodicity. The four-coordinate telescope, exact endpoint recombination and all l1/Euclidean Holder normalizations are sealed. The cross-source physical-bond dictionary constructs the named signed unit edge; the fine-site dictionary constructs target-y and holder+transport; the blockSite bridge proves scale*ownerDist <= transportL1+2*(scale-1); and the sealed decreasing exponential transport preserves owner rate rho*scale with explicit exp(2*rho*(scale-1)) and 1+exp(rho) costs. The scaled-difference and central fine-symbol strip factors are sealed. Exact reciprocal-lattice periodicity factors one common endpoint phase through the complete stabilized endpoint numerator, and the sealed phase-free amplitude bound preserves the central/noncentral split while consuming the quotient-sum norm without cardinality loss. The complete bound B0 and its physical transport remain open."
       ],
       "do_not_use_for": [
         "Do not cite this visual extraction as a compiled producer of the four CMP99 (3.42) certificate fields.",
@@ -273,7 +277,7 @@
       ],
       "open_questions": [
         "Visually verify the exact running-mass normalization and index convention associated with CMP85 (2.43). The paper directly fixes the averaging coefficient a_j, but the candidate mass dictionary m_j=L^(k-j)m_k=m_phys L^(-j) remains cross-source rather than a direct transcription here.",
-        "Bound the sealed phase-free endpoint amplitude by combining the central strip factors with the alpha=0 noncentral quotient-sum bound. Then combine that numerator bound with the stabilized reciprocal and owner-rate transport to form B0 while retaining the literal exp(2*rho*(scale-1)) and 1+exp(rho) costs.",
+        "Combine the sealed phase-free endpoint-amplitude bound with the stabilized reciprocal and owner-rate transport to form B0 while retaining the literal exp(2*rho*(scale-1)) and 1+exp(rho) costs.",
         "Exact transport of Lemma 2.4 through CMP89 (2.34), CMP95 (1.132)-(1.137), CMP96 (2.43)/(2.67), and CMP99 Corollary 3.6 to the canonical regional Green certificate.",
         "Dictionary from the source derivatives and C^(j)(Pi) to the four literal repository operators G', D G', G' D*, and Delta G'."
       ]

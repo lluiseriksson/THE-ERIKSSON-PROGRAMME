@@ -7216,3 +7216,42 @@ compatible but unattained. Failed diagnostic runs `31315063337` and
 `31315224827` exposed only reduction/order issues in the exact phase algebra;
 corrected diagnostic run `31315444910` passed but did not retire
 PRE-VALIDATION. Only the cold run above did.
+
+### Step 7.5cix phase-free endpoint-amplitude bound (SEALED; complete `B0` open)
+
+Exact source checkpoint `81768889cebfd72c4095efc0f8d9099dc15fad81`
+passed cold GitHub Actions run
+[`31317147898`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31317147898)
+with workflow checkpoint `bc1b49b748bbe78708d25498f0a68febc52ba687`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,452 jobs from `13:58:59Z` to `14:11:01Z`;
+the audit ended at `14:11:07Z`. Both stages exited zero. All four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9039246947`, named
+`endpoint-amplitude-bound-81768889cebfd72c4095efc0f8d9099dc15fad81`,
+has GitHub digest
+`5c8636b037b5325a2f22b3fee3ae9737c86bbf480aed0ad01cb9a2590c9b3878`.
+The deterministic inner archive re-hashed on Windows to
+`f8002798136ad88131431f3a0d11afdcacb66d6fd3e17ea725f20c29e3e0747d`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed bound preserves the literal central/noncentral split. The central
+branch is bounded by the product of one scaled-difference strip budget and
+the scale-uniform averaging-amplitude budget. The noncentral branch is the
+product of the central fine-symbol budget and the already sealed norm of the
+complete quotient sum. No sum-of-norms replacement, fibre cardinality or
+synthetic endpoint majorant is introduced.
+
+This closes the phase-free endpoint amplitude only. The phase weight and its
+physical owner transport remain separate sealed inputs, including the
+literal one-link factor `exp rho` and the block-boundary factor. Combining
+those with the stabilized reciprocal to form the complete scale-uniform `B0`,
+then transporting it through the remaining CMP89/CMP95/CMP96/CMP99
+dictionaries, remains open. Window 15 and every terminal field remain open;
+counters stay exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained. Failed diagnostic runs `31316653059` and `31316823891` exposed
+only the syntactic order of the two real summands; corrected diagnostic run
+`31316997359` passed but did not retire PRE-VALIDATION. Only the cold run above
+did.

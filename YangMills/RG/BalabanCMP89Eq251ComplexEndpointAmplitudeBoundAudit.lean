@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP89Eq251ComplexEndpointAmplitudeBound
 
 /-!
-# PRE-VALIDATION audit: phase-free endpoint-amplitude bound below CMP89 (2.49)
+# Cold-sealed audit: phase-free endpoint-amplitude bound below CMP89 (2.49)
 
-Source is present, its `.olean` has not yet been materialized, and these audit
-results have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`81768889cebfd72c4095efc0f8d9099dc15fad81` by cold GitHub Actions run
+`31317147898`. All four declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251ComplexCentralEndpointAmplitudeBound

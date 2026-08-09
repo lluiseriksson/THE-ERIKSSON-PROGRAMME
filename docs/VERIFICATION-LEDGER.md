@@ -31744,3 +31744,35 @@ transport and is not hidden here. Live counters remain exactly `20/41`,
 found only exact-algebra reduction/order errors; corrected diagnostic run
 `31315444910` passed but did not retire PRE-VALIDATION. Only the cold run above
 did.
+
+## Addendum 684 (2026-08-09, **phase-free endpoint-amplitude bound GREEN; complete `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `81768889cebfd72c4095efc0f8d9099dc15fad81`
+passed cold GitHub Actions run
+[`31317147898`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31317147898)
+with workflow checkpoint `bc1b49b748bbe78708d25498f0a68febc52ba687`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,452 jobs from `13:58:59Z` to `14:11:01Z`;
+the audit ended at `14:11:07Z`. Both stages exited zero. All four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9039246947`, named
+`endpoint-amplitude-bound-81768889cebfd72c4095efc0f8d9099dc15fad81`,
+has GitHub digest
+`5c8636b037b5325a2f22b3fee3ae9737c86bbf480aed0ad01cb9a2590c9b3878`.
+Its deterministic inner archive re-hashed on Windows to
+`f8002798136ad88131431f3a0d11afdcacb66d6fd3e17ea725f20c29e3e0747d`,
+and all 13 manifest entries re-hashed exactly.
+
+The sealed producer bounds the phase-free endpoint amplitude while keeping
+the central branch and the product of the central fine-symbol with the
+noncentral quotient sum as two visible summands. It consumes the already
+sealed quotient-sum norm directly, without replacing it by a sum of norms or
+adding an alias-cardinality factor. It does not absorb the endpoint phase,
+the one-link `exp rho` cost or the owner-boundary cost into an anonymous
+constant. The complete `B0`, window-15 attainment, every terminal field and
+`TermSource` remain open. Live counters stay exactly `20/41`,
+`TermSource = 0`. Failed diagnostic runs `31316653059` and `31316823891`
+found only summand-order elaboration errors; corrected diagnostic run
+`31316997359` passed but did not retire PRE-VALIDATION. Only the cold run above
+did.
