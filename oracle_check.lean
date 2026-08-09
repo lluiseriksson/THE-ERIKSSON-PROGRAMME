@@ -3057,3 +3057,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.intervalIntegral_cmp89Eq251ComplexStabilizedEndpointIntegrand_coordinateShift
 #print axioms YangMills.RG.intervalIntegral_integral_eq_of_slice_intervalIntegral_ae_eq
 #print axioms YangMills.RG.integral_pi_restrict_uIoc_eq_of_coordinate_intervalIntegral_ae_eq
+#print axioms YangMills.RG.cmp89Eq251PhysicalBrillouinParameter
+#print axioms YangMills.RG.cmp89Eq251EndpointPartialSignedContourMomentum
+#print axioms YangMills.RG.cmp89Eq251EndpointPartialSignedContourMomentum_re
+#print axioms YangMills.RG.cmp89Eq251EndpointPartialSignedContourMomentum_im
+#print axioms YangMills.RG.abs_im_cmp89Eq251EndpointPartialSignedContourMomentum_le
+#print axioms YangMills.RG.continuous_cmp89Eq251EndpointPartialSignedContourMomentum
+#print axioms YangMills.RG.cmp89Eq251EndpointPartialSignedContourMomentum_zero
+#print axioms YangMills.RG.cmp89Eq251EndpointPartialSignedContourMomentum_four
+#print axioms YangMills.RG.integrable_cmp89Eq251ComplexStabilizedEndpointIntegrand_partialSigned

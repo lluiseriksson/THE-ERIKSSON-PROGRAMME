@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointOneCoordinateContourShift
 import YangMills.RG.IntervalIntegralPiCoordinateTransport
 
 /-!
-# PRE-VALIDATION: compact product integrability for one shifted CMP89 endpoint
+# Cold-sealed compact product integrability for one shifted CMP89 endpoint
 
-The source in this module is present, but its `.olean` has not yet been
-materialized and its result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`6d1eaa990586310a13e8249a32f0d496c80dd2f8` by cold GitHub Actions run
+`31297566862`. Restoration and saving of `.lake/build` were skipped. The
+focal completed 8,466 jobs, the audit exited zero, and all nine audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 This module constructs the partially signed physical momentum used when the
 four Brillouin coordinates are shifted in order.  Stage `r` shifts exactly

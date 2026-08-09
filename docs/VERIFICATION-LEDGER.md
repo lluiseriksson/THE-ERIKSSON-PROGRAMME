@@ -31334,3 +31334,31 @@ dictionary, window-15 attainment and all terminal fields remain open.
 Counters stay `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained. Cached run `31296472882` was diagnostic only and did not retire
 PRE-VALIDATION.
+
+## Addendum 671 (2026-08-09, **stabilized endpoint product integrability GREEN; four-coordinate iteration open**)
+
+Exact source checkpoint `6d1eaa990586310a13e8249a32f0d496c80dd2f8`
+passed cold GitHub Actions run
+[`31297566862`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31297566862)
+with workflow checkpoint `96b2d09b4df216c50ba1757f6667d7beeb04ad49`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,466 jobs from `05:52:35Z` to `06:04:39Z`; the
+audit ended at `06:04:46Z`. Both stages exited zero. All nine audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9033597974`, named
+`stabilized-endpoint-product-integrability-6d1eaa990586310a13e8249a32f0d496c80dd2f8`,
+has GitHub digest
+`4f07cbddc232f49314cb1c5bacafe364d42678d2a09f447bed0ef79e8683c68b`.
+The deterministic inner archive re-hashed on Windows to
+`3773dbf3c148e803c052a414c41cf9378e18a6e8fd25f0b81a35491486f33934`,
+identical to the runner's hash; all 13 manifest entries re-hashed exactly.
+
+The physical endpoint integrand is now integrable on the literal product of
+four restricted Brillouin intervals at every partial signed stage. Continuity
+and integrability are derived internally from the sealed common strip; no
+endpoint family or integrability certificate is accepted. Four-coordinate
+iteration, endpoint recombination, `B0`, the owner dictionary, window-15
+attainment and all terminal fields remain open. Counters stay `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Cached run
+`31297455930` was diagnostic only and did not retire PRE-VALIDATION.
