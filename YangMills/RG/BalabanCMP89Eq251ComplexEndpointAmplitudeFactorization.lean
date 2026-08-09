@@ -44,8 +44,8 @@ theorem cmp89Eq251EntireAliasPhase_eq_add_latticePairing
         (cmp89Eq251LatticeDisplacement u) =
       cmp89Eq251EntirePhase z (cmp89Eq251LatticeDisplacement u) +
         ((2 * Real.pi * cmp89Eq251AliasLatticePairing m u : ℝ) : ℂ) := by
-  rw [cmp89Eq251EntirePhase, cmp89Eq251EntirePhase,
-    cmp89Eq248EntireAliasMomentum, Finset.sum_add_distrib]
+  simp only [cmp89Eq251EntirePhase, cmp89Eq248EntireAliasMomentum,
+    add_mul, Finset.sum_add_distrib]
   congr 1
   rw [cmp89Eq251AliasLatticePairing, Finset.mul_sum]
   apply Finset.sum_congr rfl
@@ -120,9 +120,9 @@ theorem cmp89Eq251ComplexBareEndpoint_div_fine_eq_phaseFactor_mul_quotient
               (cmp89Eq248EntireAliasMomentum z m) /
             cmp89Eq245EntireScaledLaplacianSymbol 4 (((L : ℝ) ^ j)⁻¹) mass
               (cmp89Eq248EntireAliasMomentum z m)) := by
-  unfold cmp89Eq251ComplexBareEndpointNumerator
-    cmp89Eq251ComplexEndpointLatticePhaseFactor
+  simp only [cmp89Eq251ComplexBareEndpointNumerator]
   rw [exp_I_cmp89Eq251EntireAliasPhase_eq_unshifted]
+  unfold cmp89Eq251ComplexEndpointLatticePhaseFactor
   ring
 
 /-- The whole noncentral endpoint sum factors through the exact common
