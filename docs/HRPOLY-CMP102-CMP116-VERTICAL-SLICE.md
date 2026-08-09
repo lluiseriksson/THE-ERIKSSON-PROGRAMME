@@ -7379,3 +7379,41 @@ terminal field and `TermSource` remain open.  Counters stay exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.  Diagnostic run
 `31322453616` passed but did not retire PRE-VALIDATION.  Only the cold run
 above did.
+
+### Step 7.5cxiii physical normalized owner bound (SEALED; owner summation and scale-uniform `B0` open)
+
+Exact source checkpoint `1a464e4b276117ed64606ed8c6e0f113b745ef96`
+passed cold GitHub Actions run
+[`31323982040`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31323982040)
+with workflow checkpoint `dbe9f94e7620fad40fdf606b1503feba6e1c92f9`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped.  The focal completed 8,601 jobs from `16:32:36Z` to
+`17:01:30Z`, and the audit ended at `17:01:37Z`.  All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9041349925`, named
+`physical-normalized-owner-bound-1a464e4b276117ed64606ed8c6e0f113b745ef96`,
+has GitHub digest
+`54acb36a873a68e2c953d62f1e15368f86d9d41245d8d7de34fa372513765a79`.
+Its deterministic inner archive re-hashed on Windows to
+`88a1bd9206198b19e062e9da93f9daad09ef5e6e2225fc03cb5e827bd2cca44c`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed producer specializes the normalized two-endpoint theorem to the
+literal physical bond Holder displacement and the shortest signed
+target-to-site transport.  It cites the existing owner-distance comparison
+and obtains one owner decay at rate `rho * L^(depth+1)`.  Its coefficient
+retains, separately and literally, the endpoint-amplitude majorant, the
+one-link cost `1 + exp rho`, and the block-boundary factor
+`exp (2 * rho * (L^(depth+1) - 1))`.  Nonnegativity of the explicit amplitude
+majorant is derived internally from the same strip and central-window inputs.
+
+This coefficient is scale-explicit, not yet a scale-uniform `B0`: the visible
+block-boundary factor has not been eliminated or absorbed by an owner sum.
+Owner summation, the complete regional Green certificate, window-15
+attainment, every terminal field and `TermSource` remain open.  Counters stay
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+Diagnostic run `31323643490` failed only at nonnegativity of the explicit
+amplitude majorant; corrected diagnostic run `31323857109` passed but did not
+retire PRE-VALIDATION.  Only the cold run above did.

@@ -31880,3 +31880,37 @@ open, as do window-15 attainment, every terminal field and `TermSource`.
 Live counters stay exactly `20/41`, `TermSource = 0`.  Diagnostic run
 `31322453616` passed but did not retire PRE-VALIDATION.  Only the cold run
 above did.
+
+## Addendum 688 (2026-08-09, **physical normalized owner bound GREEN; owner summation and scale-uniform `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `1a464e4b276117ed64606ed8c6e0f113b745ef96`
+passed cold GitHub Actions run
+[`31323982040`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31323982040)
+with workflow checkpoint `dbe9f94e7620fad40fdf606b1503feba6e1c92f9`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped.  The focal completed 8,601 jobs from `16:32:36Z` to
+`17:01:30Z`, and the audit ended at `17:01:37Z`.  All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9041349925`, named
+`physical-normalized-owner-bound-1a464e4b276117ed64606ed8c6e0f113b745ef96`,
+has GitHub digest
+`54acb36a873a68e2c953d62f1e15368f86d9d41245d8d7de34fa372513765a79`.
+Its deterministic inner archive re-hashed on Windows to
+`88a1bd9206198b19e062e9da93f9daad09ef5e6e2225fc03cb5e827bd2cca44c`,
+and every one of the 13 entries in its internal `SHA256SUMS` manifest matched.
+
+The sealed theorem fixes both endpoint displacements to their literal
+physical definitions and composes the normalized recombination with the
+already sealed fine-to-owner transport.  The output exposes owner rate
+`rho * L^(depth+1)`, the exact one-link factor `1 + exp rho`, the separate
+block-boundary exponential and the common endpoint-amplitude majorant.  No
+constant is silently shared between the analytic and geometric budgets.
+
+The resulting coefficient remains scale-explicit because the block-boundary
+factor depends on `depth`; it is not reported as the complete uniform `B0`.
+Owner summation, the regional Green certificate, window-15 attainment, every
+terminal field and `TermSource` remain open.  Live counters stay exactly
+`20/41`, `TermSource = 0`.  Diagnostic run `31323643490` stopped only at the
+majorant's nonnegativity proof; corrected diagnostic run `31323857109` passed
+but did not retire PRE-VALIDATION.  Only the cold run above did.

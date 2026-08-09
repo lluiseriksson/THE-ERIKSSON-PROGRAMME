@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP116CMP89PhysicalNormalizedStabilizedIntegralBound
 
 /-!
-# PRE-VALIDATION audit: physical normalized stabilized integral owner bound
+# Audit: physical normalized stabilized integral owner bound
 
-Source is present, but this audit's `.olean` has not yet been materialized and
-the declarations below have not yet been verified by the compiler.
+The declarations below were verified in the cold run recorded in the
+verification ledger.
 -/
 
 #print axioms YangMills.RG.cmp116CMP89PhysicalNormalizedStabilizedIntegralAmplitudeBound

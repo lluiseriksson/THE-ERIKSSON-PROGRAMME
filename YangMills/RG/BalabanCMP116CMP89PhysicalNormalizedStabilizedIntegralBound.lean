@@ -7,10 +7,10 @@ import YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedIntegralRecombination
 import YangMills.RG.BalabanCMP116CMP89PhysicalOwnerExponentialTransport
 
 /-!
-# PRE-VALIDATION: physical owner bound for the normalized CMP89 integral
+# Physical owner bound for the normalized CMP89 integral
 
-Source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the compiler.
+This module and its audit were compiler-verified in the cold run recorded in
+the verification ledger.
 
 The normalized complete stabilized integral is specialized to the exact
 physical Holder and transport displacements.  The already sealed endpoint
@@ -26,8 +26,9 @@ namespace YangMills.RG
 
 noncomputable section
 
-/-- The scale-uniform endpoint-amplitude coefficient after the exact
-one-link and block-boundary transports have been exposed. -/
+/-- The scale-explicit endpoint-amplitude coefficient after the exact
+one-link and block-boundary transports have been exposed.  The visible
+boundary factor means this is not yet the complete scale-uniform `B0`. -/
 def cmp116CMP89PhysicalNormalizedStabilizedIntegralAmplitudeBound
     (L depth : ℕ) (a rho : ℝ) : ℝ :=
   (1 + Real.exp rho) *
