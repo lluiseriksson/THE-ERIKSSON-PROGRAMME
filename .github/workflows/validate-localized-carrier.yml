@@ -1,4 +1,4 @@
-name: Validate one-coordinate stabilized endpoint shift
+name: Validate Pi-coordinate interval transport
 
 on:
   workflow_dispatch:
@@ -13,23 +13,16 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 712ffb674296a59e940adf607672fed89d5f5463
+  SOURCE_SHA: 80c13cb97eee0fe918042ad310b73dbeebcd23a6
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    cmp89-stabilized-boundary-seam
-    cmp89-common-strip-holomorphy
-    cmp89-stabilized-integrand-holomorphy
-    stabilized-endpoint-boundary-seam
-    cmp89-stabilized-denominator-variation
-    cmp89-stabilized-complex-floor
-    stabilized-endpoint-holomorphy
-    cmp89-eq251-noncentral-real-integrand
-    stabilized-endpoint-periodicity
+    interval-integral-slice-transport
+    stabilized-endpoint-one-coordinate-shift
 
 jobs:
-  stabilized-endpoint-one-coordinate-shift:
+  pi-coordinate-interval-transport:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +87,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-stabilized-endpoint-one-coordinate-shift-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-pi-coordinate-interval-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +121,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointOneCoordinateContourShift.lean \
-            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointOneCoordinateContourShiftAudit.lean \
+            YangMills/RG/IntervalIntegralPiCoordinateTransport.lean \
+            YangMills/RG/IntervalIntegralPiCoordinateTransportAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +144,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage stabilized_endpoint_one_coordinate_shift_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251StabilizedEndpointOneCoordinateContourShift
-          run_stage stabilized_endpoint_one_coordinate_shift_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq251StabilizedEndpointOneCoordinateContourShiftAudit.lean
+          run_stage pi_coordinate_interval_transport_focal \
+            lake build YangMills.RG.IntervalIntegralPiCoordinateTransport
+          run_stage pi_coordinate_interval_transport_audit \
+            lake env lean YangMills/RG/IntervalIntegralPiCoordinateTransportAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +161,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "stabilized_endpoint_one_coordinate_shift_audit.log": 1,
+              "pi_coordinate_interval_transport_audit.log": 2,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +193,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              stabilized-endpoint-one-coordinate-shift-evidence.tar.gz
-          sha256sum stabilized-endpoint-one-coordinate-shift-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              pi-coordinate-interval-transport-evidence.tar.gz
+          sha256sum pi-coordinate-interval-transport-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: stabilized-endpoint-one-coordinate-shift-${{ env.SOURCE_SHA }}
+          name: pi-coordinate-interval-transport-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            stabilized-endpoint-one-coordinate-shift-evidence.tar.gz
+            pi-coordinate-interval-transport-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +212,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-stabilized-endpoint-one-coordinate-shift-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-pi-coordinate-interval-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
