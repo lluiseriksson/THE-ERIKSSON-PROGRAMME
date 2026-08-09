@@ -69,7 +69,7 @@ theorem cmp89Eq249NormalizedFourDimensionalStabilizedIntegral_eq_sub_endpoints
             (cmp89Eq251PhysicalBrillouinParameter x)
             (cmp89Eq251LatticeDisplacement transportU)) mu
           (cmp89Eq251LatticeDisplacement holderU)
-          (cmp89Eq251LatticeDisplacement transportU) := by
+          (cmp89Eq251LatticeDisplacement transportU)) := by
   unfold cmp89Eq249NormalizedFourDimensionalStabilizedIntegral
   unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
   rw [integral_cmp89Eq251ComplexStabilizedIntegrand_eq_sub_signed_endpoints
@@ -128,7 +128,7 @@ theorem norm_cmp89Eq249NormalizedFourDimensionalStabilizedIntegral_le
               (cmp89Eq251PhysicalBrillouinParameter x)
               (cmp89Eq251LatticeDisplacement transportU)) mu
             (cmp89Eq251LatticeDisplacement holderU)
-            (cmp89Eq251LatticeDisplacement transportU)‖ ≤
+            (cmp89Eq251LatticeDisplacement transportU))‖ ≤
         ‖cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
           (fun x => cmp89Eq251ComplexStabilizedEndpointIntegrand
             4 L j mass a alpha
@@ -146,7 +146,7 @@ theorem norm_cmp89Eq249NormalizedFourDimensionalStabilizedIntegral_le
               (cmp89Eq251PhysicalBrillouinParameter x)
               (cmp89Eq251LatticeDisplacement transportU)) mu
             (cmp89Eq251LatticeDisplacement holderU)
-            (cmp89Eq251LatticeDisplacement transportU)‖ := norm_sub_le _ _
+            (cmp89Eq251LatticeDisplacement transportU))‖ := norm_sub_le _ _
     _ ≤ cmp89SignedLatticeL1ExponentialWeight rho
           (fun nu ↦ holderU nu + transportU nu) *
             cmp89Eq251ComplexStabilizedEndpointAmplitudeBound a rho +
