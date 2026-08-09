@@ -82,6 +82,7 @@ theorem cmp89Eq251PhysicalCoordinateLine_partialSigned_eq
   · obtain ⟨i, rfl⟩ := Fin.exists_succAbove_eq hk
     simp [cmp89Eq251PhysicalCoordinateLine,
       cmp89Eq251EndpointPartialSignedContourMomentum,
+      cmp89Eq251SignedContourMomentum,
       cmp89Eq251PhysicalBrillouinParameter, Pi.single_apply]
 
 /-- Adding the signed imaginary displacement to coordinate `nu` turns stage
@@ -110,6 +111,7 @@ theorem cmp89Eq251PhysicalCoordinateLine_partialSigned_add_eta_eq
       omega
     simp [cmp89Eq251PhysicalCoordinateLine,
       cmp89Eq251EndpointPartialSignedContourMomentum,
+      cmp89Eq251SignedContourMomentum,
       cmp89Eq251PhysicalBrillouinParameter, Pi.single_apply, hlt]
 
 /-- Shift one coordinate of the literal four-dimensional endpoint product
@@ -153,8 +155,10 @@ theorem integral_cmp89Eq251StabilizedEndpointPartialProductIntegrand_stage_succ
     have hset : MeasurableSet
         (Set.univ.pi fun _ : Fin 3 => Set.Ioc (0 : ℝ) (2 * Real.pi)) :=
       MeasurableSet.univ_pi fun _ => measurableSet_Ioc
+    have hae := ae_restrict_mem
+      (μ := Measure.pi fun _ : Fin 3 => volume) hset
     rw [← Measure.restrict_pi_pi]
-    exact ae_restrict_mem hset
+    simpa [Set.uIoc_of_le htwoPi] using hae
   filter_upwards [hmem] with y hy
   let p : Fin 4 → ℝ :=
     cmp89Eq251PhysicalBrillouinParameter (nu.insertNth 0 y)
