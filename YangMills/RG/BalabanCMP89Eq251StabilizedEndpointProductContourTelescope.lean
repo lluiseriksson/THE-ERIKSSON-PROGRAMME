@@ -84,7 +84,8 @@ theorem integral_cmp89Eq251ComplexStabilizedEndpointIntegrand_eq_signed
     (hmass : CMP89Eq251UniformMassWindow mass)
     (mu : Fin 4) (holderU endpointU : Fin 4 → ℤ) :
     (∫ x, cmp89Eq251ComplexStabilizedEndpointIntegrand 4 L j mass a alpha
-        (cmp89Eq251PhysicalBrillouinParameter x) mu
+        (fun nu =>
+          (cmp89Eq251PhysicalBrillouinParameter x nu : ℂ)) mu
         (cmp89Eq251LatticeDisplacement holderU)
         (cmp89Eq251LatticeDisplacement endpointU)
       ∂(Measure.pi fun _ : Fin 4 =>
