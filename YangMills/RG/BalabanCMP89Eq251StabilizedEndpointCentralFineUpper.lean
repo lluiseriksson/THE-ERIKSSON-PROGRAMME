@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq249CentralStabilizedDenominatorVariation
 
 /-!
-# PRE-VALIDATION: central fine-symbol upper bound on the CMP89 strip
+# Cold-sealed central fine-symbol upper bound on the CMP89 strip
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`aa7cf49782924c7e4372db0a68c82827fbde9cf0` by cold GitHub Actions run
+`31311361134`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,440 jobs, the audit exited zero, and both audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
 
 The complete stabilized endpoint numerator contains the central fine symbol
 as a literal multiplier of the noncentral alias sum.  The existing source

@@ -3109,3 +3109,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp89SignedLatticeL1ExponentialWeight_add_le_exp_mul_transport
 #print axioms YangMills.RG.cmp116CMP89PhysicalTransportWeight_le_ownerWeight
 #print axioms YangMills.RG.cmp116CMP89PhysicalEndpointWeights_le_ownerWeight
+#print axioms YangMills.RG.norm_cmp89Eq245EntireScaledDifference_le_abs_re_add_vertical
+#print axioms YangMills.RG.cmp89Eq251CentralFineSymbolStripUpperBound
+#print axioms YangMills.RG.norm_cmp89Eq249CentralEntireFineSymbol_le_stripUpperBound

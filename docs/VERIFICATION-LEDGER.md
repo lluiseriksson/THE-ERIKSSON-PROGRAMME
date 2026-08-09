@@ -31623,3 +31623,32 @@ still compatible but unattained, no terminal field is discharged and no
 `TermSource` is inhabited. Live counters remain exactly `20/41`,
 `TermSource = 0`. Diagnostic run `31309479791` was not used to retire
 PRE-VALIDATION; only the cold run above was.
+
+## Addendum 680 (2026-08-09, **endpoint strip-factor bounds GREEN; numerator assembly and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `aa7cf49782924c7e4372db0a68c82827fbde9cf0`
+passed cold GitHub Actions run
+[`31311361134`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31311361134)
+with workflow checkpoint `f2f1d8b6e26320eb9aa6d1b70943cffa219f5572`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The two focals completed 3,282 and 8,440 jobs; their four focal
+and audit stages all exited zero. All three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9037672861`, named
+`endpoint-strip-factor-bounds-aa7cf49782924c7e4372db0a68c82827fbde9cf0`,
+has GitHub digest
+`ad1ba6269bd9f9ac7e7601939461f0653e1ea656c96c1a2d591cc9a3224ecd4e`.
+Its deterministic inner archive re-hashed on Windows to
+`328de2b819a9ac4259ced835a9af4496000338d58574b23297174a490c755e98`,
+and all 15 manifest entries re-hashed exactly.
+
+The sealed leaves expose the literal strip upper bounds for one entire scaled
+difference and for the central fine symbol. They do not construct an endpoint
+numerator, sum its noncentral aliases, form `B0`, attain window 15, discharge
+a terminal field or inhabit `TermSource`. The next sum must use the
+`alpha = 0` alias redistribution appropriate after one scaled difference,
+not the `alpha = -1` constant for the denominator pair. The cold logs contain
+only inherited graph warnings; neither new target emitted one. Live counters
+remain exactly `20/41`, `TermSource = 0`. Diagnostic run `31311238720` was not
+used to retire PRE-VALIDATION; only the cold run above was.

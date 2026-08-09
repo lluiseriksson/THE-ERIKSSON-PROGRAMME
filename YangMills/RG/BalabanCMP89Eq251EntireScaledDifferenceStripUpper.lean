@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq245EntireLaplacianVariation
 
 /-!
-# PRE-VALIDATION: scaled-difference upper bound on the CMP89 strip
+# Cold-sealed scaled-difference upper bound on the CMP89 strip
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`aa7cf49782924c7e4372db0a68c82827fbde9cf0` by cold GitHub Actions run
+`31311361134`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 3,282 jobs, the audit exited zero, and the audited theorem uses
+exactly `[propext, Classical.choice, Quot.sound]`.
 
 One stabilized endpoint numerator contains a single entire scaled lattice
 difference.  Its sealed vertical variation costs `rho * exp rho`, while its

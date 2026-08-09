@@ -7067,3 +7067,41 @@ terminal fields remain open. The two reported warnings were inherited from
 none. Counters stay exactly `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained. Diagnostic run `31309479791` did not retire PRE-VALIDATION;
 only the cold run above did.
+
+### Step 7.5cv endpoint strip-factor upper bounds (SEALED; numerator assembly and `B0` open)
+
+Exact source checkpoint `aa7cf49782924c7e4372db0a68c82827fbde9cf0`
+passed cold GitHub Actions run
+[`31311361134`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31311361134)
+with workflow checkpoint `f2f1d8b6e26320eb9aa6d1b70943cffa219f5572`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The scaled-difference focal completed 3,282 jobs from
+`11:42:06Z` to `11:42:30Z`; its audit ended at `11:42:33Z`. The central
+fine-symbol focal then completed 8,440 jobs from `11:42:33Z` to `11:59:06Z`;
+its audit ended at `11:59:12Z`. All four stages exited zero. All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9037672861`, named
+`endpoint-strip-factor-bounds-aa7cf49782924c7e4372db0a68c82827fbde9cf0`,
+has GitHub digest
+`ad1ba6269bd9f9ac7e7601939461f0653e1ea656c96c1a2d591cc9a3224ecd4e`.
+The deterministic inner archive re-hashed on Windows to
+`328de2b819a9ac4259ced835a9af4496000338d58574b23297174a490c755e98`,
+identical to the cold-run hash; all 15 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The first sealed theorem bounds one entire scaled difference by the literal
+sum `|z.re| + rho*exp rho`. The second producer exposes the central fine
+symbol's complete-polydisc upper bound as its already sealed vertical budget
+plus its real-slice bound. These are the two missing reusable factors for the
+endpoint numerator; neither theorem accepts a synthetic numerator bound.
+
+The next analytic brick must assemble the central endpoint branch and the
+noncentral alias sum. The latter must use the existing redistribution at
+`alpha = 0`, because one scaled difference cancels one of the two inverse
+momentum powers; it must not reuse the `alpha = -1` denominator-pair constant.
+Only after that assembly may the reciprocal stabilized-denominator bound form
+a common `B0`. The cold logs contain inherited linter warnings from the
+rebuilt graph; neither new target emitted one. Counters stay exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Diagnostic run
+`31311238720` did not retire PRE-VALIDATION; only the cold run above did.
