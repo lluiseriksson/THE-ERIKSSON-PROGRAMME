@@ -47,8 +47,10 @@ that cancels the source normalization in (2.49). -/
 theorem cmp89Eq249FourDimensionalBrillouinMeasure_real_univ :
     cmp89Eq249FourDimensionalBrillouinMeasure.real Set.univ =
       (2 * Real.pi) ^ 4 := by
+  have htwoPi : (0 : ℝ) ≤ 2 * Real.pi :=
+    mul_nonneg (by norm_num) Real.pi_pos.le
   simp [cmp89Eq249FourDimensionalBrillouinMeasure, Measure.pi_univ,
-    measureReal_def, Set.uIoc_of_le (mul_nonneg (by norm_num) Real.pi_pos.le)]
+    measureReal_def, Set.uIoc_of_le htwoPi, abs_of_pos Real.pi_pos]
 
 /-- A constant pointwise bound on the translated Brillouin cube loses no
 factor after the literal source normalization is applied. -/
