@@ -57,7 +57,7 @@ theorem norm_cmp89Eq251ComplexEndpointLatticePhaseFactor_signedContour
     cmp89Eq251EuclideanNorm_latticeDisplacement_rpow_eq_one_of_unit hholder,
     Complex.norm_real, Real.norm_eq_abs, abs_one, div_one,
     cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs,
-    ← cmp89Eq251DisplacementL1_latticeDisplacement]
+    cmp89Eq251DisplacementL1_latticeDisplacement]
   congr 1
   ring
 
@@ -128,7 +128,8 @@ theorem norm_cmp89Eq251ComplexStabilizedEndpointIntegrand_signedContour_le
     mul_nonneg hweightNonneg hampNonneg
   rw [cmp89Eq251ComplexStabilizedEndpointIntegrand, div_eq_mul_inv, norm_mul,
     cmp89Eq251ComplexStabilizedEndpointAmplitudeBound]
-  exact mul_le_mul hnum hrecip (norm_nonneg _) hnumBoundNonneg
+  have hmul := mul_le_mul hnum hrecip (norm_nonneg _) hnumBoundNonneg
+  simpa [z, mul_assoc] using hmul
 
 end
 
