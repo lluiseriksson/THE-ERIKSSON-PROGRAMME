@@ -1,4 +1,4 @@
-name: Validate CMP89 endpoint amplitude bound
+name: Validate CMP89 stabilized endpoint bound
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 81768889cebfd72c4095efc0f8d9099dc15fad81
+  SOURCE_SHA: cc78b507ee395af24eb48959c8efa75f960af2a0
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    endpoint-amplitude-bound
     endpoint-amplitude-factorization
     physical-site-transport-dictionary
     stabilized-endpoint-recombination
@@ -25,10 +26,9 @@ env:
     physical-owner-exponential-transport
     endpoint-strip-factor-bounds
     noncentral-endpoint-quotient
-    noncentral-endpoint-quotient-sum
 
 jobs:
-  endpoint-amplitude-bound:
+  stabilized-endpoint-bound:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -93,7 +93,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-endpoint-amplitude-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-stabilized-endpoint-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -127,8 +127,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq251ComplexEndpointAmplitudeBound.lean \
-            YangMills/RG/BalabanCMP89Eq251ComplexEndpointAmplitudeBoundAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251ComplexStabilizedEndpointBound.lean \
+            YangMills/RG/BalabanCMP89Eq251ComplexStabilizedEndpointBoundAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -150,10 +150,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage endpoint_amplitude_bound_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251ComplexEndpointAmplitudeBound
-          run_stage endpoint_amplitude_bound_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq251ComplexEndpointAmplitudeBoundAudit.lean
+          run_stage stabilized_endpoint_bound_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251ComplexStabilizedEndpointBound
+          run_stage stabilized_endpoint_bound_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251ComplexStabilizedEndpointBoundAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -167,7 +167,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "endpoint_amplitude_bound_audit.log": 4,
+              "stabilized_endpoint_bound_audit.log": 3,
           }
           result = {}
           for name, expected in audits.items():
@@ -199,17 +199,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              endpoint-amplitude-bound-evidence.tar.gz
-          sha256sum endpoint-amplitude-bound-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              stabilized-endpoint-bound-evidence.tar.gz
+          sha256sum stabilized-endpoint-bound-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: endpoint-amplitude-bound-${{ env.SOURCE_SHA }}
+          name: stabilized-endpoint-bound-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            endpoint-amplitude-bound-evidence.tar.gz
+            stabilized-endpoint-bound-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -218,4 +218,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-endpoint-amplitude-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-stabilized-endpoint-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
