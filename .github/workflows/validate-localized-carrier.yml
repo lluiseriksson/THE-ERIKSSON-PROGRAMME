@@ -1,4 +1,4 @@
-name: Validate stabilized CMP89 endpoint holomorphy
+name: Validate stabilized CMP89 endpoint periodicity
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: de63c0d0266cb6969363e4c478252d93d5e56b79
+  SOURCE_SHA: 0550a2164c6cfd63b54cbd7e010f5c49f8fcc15e
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -24,12 +24,12 @@ env:
     cmp89-complex-denominator-periodicity
     cmp89-stabilized-denominator-variation
     cmp89-stabilized-complex-floor
-    cmp89-eq251-finite-real-integrand-sum
+    stabilized-endpoint-holomorphy
     cmp89-eq251-noncentral-real-integrand
     stabilized-endpoint-split
 
 jobs:
-  stabilized-endpoint-holomorphy:
+  stabilized-endpoint-periodicity:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-stabilized-endpoint-holomorphy-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-stabilized-endpoint-periodicity-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointHolomorphy.lean \
-            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointHolomorphyAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointPeriodicity.lean \
+            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointPeriodicityAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage stabilized_endpoint_holomorphy_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251StabilizedEndpointHolomorphy
-          run_stage stabilized_endpoint_holomorphy_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq251StabilizedEndpointHolomorphyAudit.lean
+          run_stage stabilized_endpoint_periodicity_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251StabilizedEndpointPeriodicity
+          run_stage stabilized_endpoint_periodicity_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251StabilizedEndpointPeriodicityAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "stabilized_endpoint_holomorphy_audit.log": 4,
+              "stabilized_endpoint_periodicity_audit.log": 12,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              stabilized-endpoint-holomorphy-evidence.tar.gz
-          sha256sum stabilized-endpoint-holomorphy-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              stabilized-endpoint-periodicity-evidence.tar.gz
+          sha256sum stabilized-endpoint-periodicity-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: stabilized-endpoint-holomorphy-${{ env.SOURCE_SHA }}
+          name: stabilized-endpoint-periodicity-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            stabilized-endpoint-holomorphy-evidence.tar.gz
+            stabilized-endpoint-periodicity-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-stabilized-endpoint-holomorphy-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-stabilized-endpoint-periodicity-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
