@@ -3084,3 +3084,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp89Eq251MomentumSquare_latticeDisplacement_eq_one_of_unit
 #print axioms YangMills.RG.cmp89Eq251EuclideanNorm_latticeDisplacement_eq_one_of_unit
 #print axioms YangMills.RG.cmp89Eq251EuclideanNorm_latticeDisplacement_rpow_eq_one_of_unit
+#print axioms YangMills.RG.cmp116CMP89NatSiteProjection_sourceNatLift
+#print axioms YangMills.RG.cmp116CMP89NatSiteProjection_targetNatLift
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondHolderDisplacement_apply
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondHolderDisplacement_unit
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondHolderDisplacement_realL1_eq_one
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondHolderDisplacement_rpow_eq_one

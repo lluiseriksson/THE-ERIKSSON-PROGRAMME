@@ -7,11 +7,13 @@ import YangMills.RG.BalabanCMP116Eq214Incidence
 import YangMills.RG.BalabanCMP89Eq251UnitLatticeHolderNormalization
 
 /-!
-# PRE-VALIDATION: CMP116 physical bonds as CMP89 unit displacements
+# Cold-sealed CMP116 physical bonds as CMP89 unit displacements
 
-Source is present at this checkpoint, but the corresponding `.olean` has not
-yet been materialized and the result has not yet been verified by the Lean
-compiler.
+Compiler-verified at exact source checkpoint
+`2e295053fab0f5efa9b8e0a7521f6897e104e3b2` by cold GitHub Actions run
+`31305272865`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,472 jobs, the audit exited zero, and all six audited declarations
+use only the allowed set `[propext, Classical.choice, Quot.sound]`.
 
 The CMP89 stabilized endpoint split uses
 

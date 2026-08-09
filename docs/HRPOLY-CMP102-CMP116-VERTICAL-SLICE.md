@@ -6906,3 +6906,44 @@ Fourier-to-owner transport, window-15 attainment and all terminal fields
 remain open. Counters stay exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained. Diagnostic run `31303486729` was not used to
 retire PRE-VALIDATION; only the cold run above was.
+
+### Step 7.5ci physical-bond displacement dictionary (SEALED; fine-to-owner transport and `B0` open)
+
+Exact source checkpoint `2e295053fab0f5efa9b8e0a7521f6897e104e3b2`
+passed cold GitHub Actions run
+[`31305272865`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31305272865)
+with workflow checkpoint `a57b874de9782ace7665f97b09facf579b02b85e`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `09:12:17Z` to `09:30:31Z`, completed
+8,472 jobs, and the audit ended at `09:30:37Z`. Both stages exited zero. The
+six audited declarations use only the allowed set
+`[propext, Classical.choice, Quot.sound]`; two projection theorems use the
+strict subset `[propext, Quot.sound]`, and the coordinatewise signed-edge
+theorem uses `[propext]`.
+
+Downloaded artifact `9035975983`, named
+`physical-bond-displacement-dictionary-2e295053fab0f5efa9b8e0a7521f6897e104e3b2`,
+has GitHub digest
+`3db734079142da82d9d6dfa1dbd52c4aa7872af75fe0f3eb89c0d888ed3f253d`.
+The deterministic inner archive re-hashed on Windows to
+`6019e5ee5d9504aa6d7b6063c60a4bb950981cb316cb1c45a447dede1953a109`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The dictionary now constructs seam-safe integer lifts of the literal CMP116
+physical source and target endpoints. Both lifts project back to their
+periodic endpoints; subtracting source minus target gives exactly `-e_dir`,
+including across the periodic seam. Hence every physical bond internally
+produces `CMP89Eq251UnitLatticeBondDisplacement`, real `l1` norm one, and the
+already sealed Euclidean/Holder normalization for every real exponent. The
+sign is retained because the CMP89 endpoint phase consumes it.
+
+This seals the physical-link part of the owner/bond dictionary, not the full
+owner dictionary. The CMP99 localization owner is a coarse block in
+`FinBox 4 (2*(K*Q))`, whereas the endpoint is a fine site; their scale-aware
+lift and the transport displacement `target - owner` remain explicit open
+work. Endpoint magnitude bounds, scale-uniform `B0`, Fourier-to-owner
+transport, window-15 attainment and all terminal fields remain open. Counters
+stay exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained. Diagnostic run `31305147602` did not retire PRE-VALIDATION; only
+the cold run above did.

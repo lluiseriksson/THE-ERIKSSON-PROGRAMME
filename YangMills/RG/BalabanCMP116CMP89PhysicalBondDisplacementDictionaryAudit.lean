@@ -1,11 +1,11 @@
 import YangMills.RG.BalabanCMP116CMP89PhysicalBondDisplacementDictionary
 
 /-!
-# PRE-VALIDATION audit: CMP116/CMP89 physical-bond dictionary
+# Cold-sealed audit: CMP116/CMP89 physical-bond dictionary
 
-Source is present at this checkpoint, but the corresponding `.olean` has not
-yet been materialized and these declarations have not yet been verified by
-the Lean compiler.
+Compiler-verified with the source at checkpoint
+`2e295053fab0f5efa9b8e0a7521f6897e104e3b2` by cold GitHub Actions run
+`31305272865`.
 -/
 
 #print axioms YangMills.RG.cmp116CMP89NatSiteProjection_sourceNatLift

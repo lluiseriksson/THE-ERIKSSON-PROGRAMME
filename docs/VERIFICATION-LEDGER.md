@@ -31486,3 +31486,36 @@ unit lattice displacement. The endpoint bounds, scale-uniform `B0`, window-15
 attainment and every terminal field remain open. Live counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained. Diagnostic
 run `31303486729` was not used to retire PRE-VALIDATION.
+
+## Addendum 676 (2026-08-09, **physical bond gives the signed CMP89 unit edge GREEN; fine-to-owner transport and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `2e295053fab0f5efa9b8e0a7521f6897e104e3b2`
+passed cold GitHub Actions run
+[`31305272865`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31305272865)
+with workflow checkpoint `a57b874de9782ace7665f97b09facf579b02b85e`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,472 jobs from `09:12:17Z` to `09:30:31Z`;
+the audit ended at `09:30:37Z`. Both stages exited zero. All six audited
+declarations stay within `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9035975983`, named
+`physical-bond-displacement-dictionary-2e295053fab0f5efa9b8e0a7521f6897e104e3b2`,
+has GitHub digest
+`3db734079142da82d9d6dfa1dbd52c4aa7872af75fe0f3eb89c0d888ed3f253d`.
+Its deterministic inner archive re-hashed on Windows to
+`6019e5ee5d9504aa6d7b6063c60a4bb950981cb316cb1c45a447dede1953a109`,
+and all 13 manifest entries re-hashed exactly.
+
+The producer uses an unwrapped target lift, incrementing before reduction
+modulo `N`, and proves that source and target lifts project to the literal
+CMP116 endpoints. Their signed difference is exactly `-e_dir`, so the named
+CMP89 unit-edge premise and all sealed Holder normalizations are now derived
+from every physical bond, including at the periodic seam. No freely chosen
+edge displacement survives.
+
+The coarse CMP99 localization owner still needs a scale-aware fine-lattice
+lift before the transport displacement and complete endpoint bound can be
+formed. This brick does not construct `B0`, attain window 15, discharge a
+terminal field or inhabit `TermSource`. Live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Diagnostic run
+`31305147602` was not used to retire PRE-VALIDATION.
