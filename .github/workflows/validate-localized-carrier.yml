@@ -1,4 +1,4 @@
-name: Validate CMP89 fine-lattice phase seam
+name: Validate CMP89 fine-lattice displayed endpoint period
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 50f5befa816642d5099bc231a1e073c555519bac
+  SOURCE_SHA: 39598f7a567d268f27f57fed681800e7efce0815
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    fine-lattice-phase-seam
     fine-lattice-stabilized-endpoint-bound
     fourier-left-derivative-kernel
     fixed-rate-physical-owner-bound
@@ -26,10 +27,9 @@ env:
     normalized-endpoint-integral
     stabilized-endpoint-bound
     endpoint-amplitude-bound
-    endpoint-amplitude-factorization
 
 jobs:
-  fine-lattice-phase-seam:
+  fine-lattice-displayed-endpoint-period:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-fine-lattice-phase-seam-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-fine-lattice-displayed-endpoint-period-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq251FineLatticePhasePeriodicity.lean \
-            YangMills/RG/BalabanCMP89Eq251FineLatticePhasePeriodicityAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251FineLatticeDisplayedEndpointPeriodicity.lean \
+            YangMills/RG/BalabanCMP89Eq251FineLatticeDisplayedEndpointPeriodicityAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage fine_lattice_phase_seam_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251FineLatticePhasePeriodicity
-          run_stage fine_lattice_phase_seam_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq251FineLatticePhasePeriodicityAudit.lean
+          run_stage fine_lattice_displayed_endpoint_period_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251FineLatticeDisplayedEndpointPeriodicity
+          run_stage fine_lattice_displayed_endpoint_period_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251FineLatticeDisplayedEndpointPeriodicityAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "fine_lattice_phase_seam_audit.log": 3,
+              "fine_lattice_displayed_endpoint_period_audit.log": 6,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              fine-lattice-phase-seam-evidence.tar.gz
-          sha256sum fine-lattice-phase-seam-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              fine-lattice-displayed-endpoint-period-evidence.tar.gz
+          sha256sum fine-lattice-displayed-endpoint-period-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fine-lattice-phase-seam-${{ env.SOURCE_SHA }}
+          name: fine-lattice-displayed-endpoint-period-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            fine-lattice-phase-seam-evidence.tar.gz
+            fine-lattice-displayed-endpoint-period-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-fine-lattice-phase-seam-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-fine-lattice-displayed-endpoint-period-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
