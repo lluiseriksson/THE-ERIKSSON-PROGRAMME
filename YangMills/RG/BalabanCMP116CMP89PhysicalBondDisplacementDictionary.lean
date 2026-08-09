@@ -75,10 +75,10 @@ theorem cmp116CMP89NatSiteProjection_targetNatLift {d N : ℕ} [NeZero N]
     simp [cmp116CMP89NatSiteProjection,
       cmp116CMP89PhysicalBondTargetNatLift, cmp116BondSource,
       cmp116BondTarget, FinBox.shift]
-  · simp [cmp116CMP89NatSiteProjection,
+  · simp only [cmp116CMP89NatSiteProjection,
       cmp116CMP89PhysicalBondTargetNatLift, cmp116BondSource,
-      cmp116BondTarget, FinBox.shift, hmu,
-      Nat.mod_eq_of_lt (cmp116BondSource b mu).isLt]
+      cmp116BondTarget, FinBox.shift, hmu, if_false, Nat.add_zero]
+    exact Nat.mod_eq_of_lt (b.1 mu).isLt
 
 /-- Integer lift of the physical source endpoint. -/
 def cmp116CMP89PhysicalBondSourceLift {d N : ℕ} [NeZero N]
