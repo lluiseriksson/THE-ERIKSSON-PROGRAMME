@@ -119,6 +119,8 @@ theorem intervalIntegral_cmp89Eq251ComplexStabilizedIntegrand_coordinateShift
           hreal k]
     have hseam :=
       cmp89Eq251ComplexStabilizedIntegrand_boundarySeam
+        (L := L) (j := j) (mass := mass) (a := a) (alpha := alpha)
+          (rho := rho)
         ha hmassPos hrho hamplitude hradius hwindow hmass nu mu hp hface
           hrealY (himag_of_mem y hy) holderU transportU
     simpa [f, cmp89Eq251PhysicalCoordinateLine_two_pi_add] using hseam
@@ -166,8 +168,8 @@ theorem intervalIntegral_cmp89Eq251ComplexStabilizedIntegrand_coordinateShift
           (fun _ => rfl) himagW
     have hinner : DifferentiableAt ℂ
         (cmp89Eq251PhysicalCoordinateLine nu z) w := by
-      unfold cmp89Eq251PhysicalCoordinateLine
-      fun_prop
+      simpa [cmp89Eq251PhysicalCoordinateLine] using
+        ((hasFDerivAt_single (𝕜 := ℂ) (i := nu) w).const_add z).differentiableAt
     simpa [f] using (houter.comp w hinner).differentiableWithinAt
   exact intervalIntegral_eq_verticalShift_of_boundary_eq_of_differentiableOn
     f (2 * Real.pi) eta hboundary hdiff
