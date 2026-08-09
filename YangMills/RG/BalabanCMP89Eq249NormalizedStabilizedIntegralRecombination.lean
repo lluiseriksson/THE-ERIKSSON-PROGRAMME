@@ -7,10 +7,10 @@ import YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedEndpointIntegralBound
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointRecombination
 
 /-!
-# PRE-VALIDATION: normalized recombination of the two CMP89 endpoints
+# Normalized recombination of the two CMP89 endpoints
 
-Source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the compiler.
+This module and its audit were compiler-verified in the cold run recorded in
+the verification ledger.
 
 The two endpoint contour shifts are already separate because their signed
 contours need not agree.  This module applies the literal `(2*pi)^(-4)`

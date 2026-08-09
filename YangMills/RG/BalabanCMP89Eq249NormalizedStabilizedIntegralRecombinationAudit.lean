@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedIntegralRecombination
 
 /-!
-# PRE-VALIDATION audit: normalized stabilized endpoint recombination
+# Audit: normalized stabilized endpoint recombination
 
-Source is present, but this audit's `.olean` has not yet been materialized and
-the declarations below have not yet been verified by the compiler.
+The declarations below were verified in the cold run recorded in the
+verification ledger.
 -/
 
 #print axioms YangMills.RG.cmp89Eq249NormalizedFourDimensionalStabilizedIntegral

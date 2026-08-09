@@ -7344,3 +7344,38 @@ and window 15 compatible but unattained.  Failed diagnostic run
 `31321096355` exposed only the final finite-ENNReal atom in the measure
 reproducer; corrected diagnostic run `31321241509` passed but did not retire
 PRE-VALIDATION.  Only the cold run above did.
+
+### Step 7.5cxii normalized two-endpoint recombination (SEALED; physical owner specialization and `B0` open)
+
+Exact source checkpoint `f5fd7a53251474932f130d817f50242c3bf67571`
+passed cold GitHub Actions run
+[`31322584031`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31322584031)
+with workflow checkpoint `3c264eb4cd873359d32a6a042d6857ab9911e27d`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped.  The focal completed 8,480 jobs from `16:01:07Z` to
+`16:19:35Z`, and the audit ended at `16:19:45Z`.  All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9040850492`, named
+`normalized-stabilized-recombination-f5fd7a53251474932f130d817f50242c3bf67571`,
+has GitHub digest
+`2a3fea7292f79edf410ae015b8a1af69375f10f273d95d21b27c571f86ccc552`.
+Its deterministic inner archive re-hashed on Windows to
+`2a679630fe7f6ce12282eaff4a66559d3f95a0821909109faca6a46683c637f7`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed producer preserves the literal `(2*pi)^(-4)` normalization while
+rewriting the complete stabilized integral as the difference of the two
+separately shifted normalized endpoint integrals.  Its norm theorem applies
+the two endpoint bounds independently and retains the literal sum of their
+signed-lattice `l1` weights times the common explicit amplitude majorant.  It
+does not assign a common contour sign to the two endpoints.
+
+This seal deliberately does not absorb the later one-link factor `exp rho` or
+identify the two endpoint weights with an owner decay.  The physical owner
+specialization, complete scale-uniform `B0`, window-15 attainment, every
+terminal field and `TermSource` remain open.  Counters stay exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.  Diagnostic run
+`31322453616` passed but did not retire PRE-VALIDATION.  Only the cold run
+above did.

@@ -31849,3 +31849,34 @@ remain open.  Live counters stay exactly `20/41`, `TermSource = 0`.
 Diagnostic run `31321096355` stopped in the minimal measure reproducer at one
 finite-ENNReal atom; corrected diagnostic run `31321241509` passed but did not
 retire PRE-VALIDATION.  Only the cold run above did.
+
+## Addendum 687 (2026-08-09, **normalized two-endpoint recombination GREEN; physical owner specialization and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `f5fd7a53251474932f130d817f50242c3bf67571`
+passed cold GitHub Actions run
+[`31322584031`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31322584031)
+with workflow checkpoint `3c264eb4cd873359d32a6a042d6857ab9911e27d`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped.  The focal completed 8,480 jobs from `16:01:07Z` to
+`16:19:35Z`, and the audit ended at `16:19:45Z`.  All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9040850492`, named
+`normalized-stabilized-recombination-f5fd7a53251474932f130d817f50242c3bf67571`,
+has GitHub digest
+`2a3fea7292f79edf410ae015b8a1af69375f10f273d95d21b27c571f86ccc552`.
+Its deterministic inner archive re-hashed on Windows to
+`2a679630fe7f6ce12282eaff4a66559d3f95a0821909109faca6a46683c637f7`,
+and every one of the 13 entries in its internal `SHA256SUMS` manifest matched.
+
+The sealed module applies the exact normalized endpoint estimates to the two
+independently signed contour shifts and recombines them by the norm triangle
+inequality.  The output retains the literal sum of the two signed-lattice
+`l1` weights and the common endpoint-amplitude majorant; neither the one-link
+cost nor an owner-distance comparison is hidden in an anonymous constant.
+
+The physical owner specialization and complete scale-uniform `B0` remain
+open, as do window-15 attainment, every terminal field and `TermSource`.
+Live counters stay exactly `20/41`, `TermSource = 0`.  Diagnostic run
+`31322453616` passed but did not retire PRE-VALIDATION.  Only the cold run
+above did.
