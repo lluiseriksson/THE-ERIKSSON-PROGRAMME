@@ -167,9 +167,12 @@ theorem integrable_cmp89Eq251ComplexStabilizedEndpointIntegrand_partialSigned
         (mu := mu)
         (holderDisplacement := holderDisplacement)
         (endpointDisplacement := endpointDisplacement)
-    exact (houter.continuousAt.comp x
+    have hinner : ContinuousAt (fun y : Fin 4 → ℝ =>
+        cmp89Eq251EndpointPartialSignedContourMomentum
+          stage rho y endpointDisplacement) x :=
       (continuous_cmp89Eq251EndpointPartialSignedContourMomentum
-        stage rho endpointDisplacement).continuousAt).continuousWithinAt
+        stage rho endpointDisplacement).continuousAt
+    exact (houter.continuousAt.comp' hinner).continuousWithinAt
   have hIcc : IntegrableOn (fun x : Fin 4 → ℝ =>
       cmp89Eq251ComplexStabilizedEndpointIntegrand 4 L j mass a alpha
         (cmp89Eq251EndpointPartialSignedContourMomentum
@@ -188,7 +191,7 @@ theorem integrable_cmp89Eq251ComplexStabilizedEndpointIntegrand_partialSigned
       (Set.univ.pi fun _ : Fin 4 => Set.Ioc 0 (2 * Real.pi))
       (volume : Measure (Fin 4 → ℝ)) :=
     hIcc.congr_set_ae Measure.univ_pi_Ioc_ae_eq_Icc
-  rw [IntegrableOn, Measure.restrict_pi_pi] at hIoc
+  rw [IntegrableOn, volume_pi, Measure.restrict_pi_pi] at hIoc
   simpa [IntegrableOn, Set.uIoc_of_le htwoPi] using hIoc
 
 end
