@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251FineLatticeDisplayedEndpointPeriodicity
 
 /-!
-# PRE-VALIDATION: fine-lattice stabilized endpoint periodicity
+# Cold-sealed fine-lattice stabilized endpoint periodicity
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`eedbb4e7fb00f20c4978f96de3853fdc1c1f75eb` by cold GitHub Actions run
+`31337490432`. Restoration and saving of `.lake/build` were skipped. The focal
+and audit exited zero; the audited theorem uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The stabilized endpoint is not globally identified with the displayed
 rational expression.  This module transfers the sealed displayed period at

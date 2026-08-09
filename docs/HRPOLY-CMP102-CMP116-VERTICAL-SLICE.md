@@ -7670,3 +7670,36 @@ recombination remain named downstream bricks. Physical `B0`, window 15 and
 terminal fields remain open. Counters stay exactly `20/41`, `TermSource = 0`.
 Diagnostic run `31336183990` passed with a restored graph but did not seal;
 only the cold run above retired the two PRE-VALIDATION marks.
+
+### Step 7.5cxxi fine-lattice stabilized endpoint period (SEALED; boundary seam open)
+
+Exact source checkpoint `eedbb4e7fb00f20c4978f96de3853fdc1c1f75eb`
+passed cold GitHub Actions run
+[`31337490432`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31337490432)
+with workflow checkpoint `8f676c69df3c511333e02314fc4ccc77f841a339`.
+The job completed in `19m05s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `21:43:28Z` to `22:00:35Z`, the audit ended
+at `22:00:40Z`, and both stages exited zero. The audited theorem uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9045001993`, named
+`fine-lattice-stabilized-endpoint-period-eedbb4e7fb00f20c4978f96de3853fdc1c1f75eb`,
+has GitHub digest
+`bb431fafc350a37355e38bc8c495416ad7d409fe4070a3f15a3448b745849fcc`.
+Its deterministic inner archive re-hashed on Windows to
+`b4893b0ee596eb5ec9a907ec560011ded63f4de771980a20f218b4e9dc74cafe`;
+all 13 manifest entries re-hashed exactly.
+
+On the literal non-singular domain, the stabilized endpoint at `alpha = 0`
+is identified with the displayed rational endpoint at both sides of the
+physical period. Nonvanishing at the shifted endpoint is derived internally
+from symbol periodicity and the centered-alias permutation; it is not a
+second premise. Thus the sealed displayed fine-lattice period transfers
+without asserting global periodicity of the stabilized extension.
+
+The boundary seam still requires the full-polydisc nonvanishing producer at
+every partially shifted stage. The 4D telescope, normalized integration,
+two-endpoint recombination, physical `B0`, window 15 and terminal fields
+remain open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
+`31337368565` passed with a restored graph but did not seal; only the cold run
+above retired the two PRE-VALIDATION marks.

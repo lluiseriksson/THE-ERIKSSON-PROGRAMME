@@ -32144,3 +32144,31 @@ contour telescope, normalized integration and endpoint recombination remain
 open. Physical `B0`, window 15 and every terminal field remain open. Live
 counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
 `31336183990` did not seal; only the cold run above did.
+
+## Addendum 696 (2026-08-09, **fine-lattice stabilized endpoint period GREEN; boundary seam open; 20/41 unchanged**)
+
+Exact source checkpoint `eedbb4e7fb00f20c4978f96de3853fdc1c1f75eb`
+passed cold GitHub Actions run
+[`31337490432`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31337490432)
+with workflow checkpoint `8f676c69df3c511333e02314fc4ccc77f841a339`.
+The job completed in `19m05s`; restore/save of `.lake/build` were skipped.
+Focal and audit exited zero, and the audited theorem uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9045001993`, named
+`fine-lattice-stabilized-endpoint-period-eedbb4e7fb00f20c4978f96de3853fdc1c1f75eb`,
+has GitHub digest
+`bb431fafc350a37355e38bc8c495416ad7d409fe4070a3f15a3448b745849fcc`.
+Its deterministic inner archive re-hashed on Windows to
+`b4893b0ee596eb5ec9a907ec560011ded63f4de771980a20f218b4e9dc74cafe`;
+all 13 internal manifest entries matched.
+
+The theorem transfers the displayed fine-lattice endpoint period to the
+stabilized endpoint only through the exact displayed/stabilized equality on
+the non-singular domain. Shifted nonvanishing is produced internally. Global
+stabilized periodicity is not postulated.
+
+Boundary seam, 4D contour telescope, normalized integration and endpoint
+recombination remain open. Physical `B0`, window 15 and every terminal field
+remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Diagnostic
+PASS `31337368565` did not seal; only the cold run above did.
