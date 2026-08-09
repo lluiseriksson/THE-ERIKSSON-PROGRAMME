@@ -54,11 +54,11 @@ theorem cmp89Eq251EntirePhase_coordinateAliasPeriodShift_physicalFine
   rw [cmp89Eq251EntirePhase_coordinateAliasPeriodShift_real]
   congr 1
   unfold cmp89Eq249PhysicalFineLatticeDisplacement
-  have hN : (N : ℝ) ≠ 0 := by
+  have hN : (N : ℂ) ≠ 0 := by
     exact_mod_cast NeZero.ne N
   push_cast
   field_simp [hN]
-  ring
+  ring_nf
 
 /-- Endpoint Fourier phases on `N^(-1) Z^d` are invariant under the physical
 alias-cycle wrap `2*pi*N`.  The proof derives periodicity from the fine-site
@@ -78,7 +78,7 @@ theorem exp_I_cmp89Eq251EntirePhase_coordinateAliasPeriodShift_physicalFine
           (Complex.I * (((2 * Real.pi : ℝ) : ℂ) * (u mu : ℂ))) = 1 := by
     rw [show
       Complex.I * (((2 * Real.pi : ℝ) : ℂ) * (u mu : ℂ)) =
-        (u mu : ℂ) * (2 * (Real.pi : ℂ) * Complex.I) by ring]
+        (u mu : ℂ) * (2 * (Real.pi : ℂ) * Complex.I) by ring_nf]
     exact Complex.exp_int_mul_two_pi_mul_I (u mu)
   rw [hcycle, mul_one]
 
