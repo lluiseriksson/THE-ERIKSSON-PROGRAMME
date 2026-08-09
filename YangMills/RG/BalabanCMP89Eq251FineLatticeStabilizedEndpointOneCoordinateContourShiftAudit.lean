@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointOneCoordinateContourShift
 
 /-!
-# PRE-VALIDATION audit: one-coordinate fine-lattice endpoint shift
+# Cold-sealed audit: one-coordinate fine-lattice endpoint shift
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Exact source checkpoint `290d546550a55511d7677ce67066ca403afdc393`, cold
+GitHub Actions run `31339761858`; the theorem uses exactly the standard axiom
+trio.
 -/
 
 #print axioms YangMills.RG.intervalIntegral_cmp89Eq251ComplexStabilizedEndpointIntegrand_zero_physicalFine_coordinateShift

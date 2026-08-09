@@ -32201,3 +32201,31 @@ integration and endpoint recombination remain open. Physical `B0`, window 15
 and terminal fields remain open. Live counters stay exactly `20/41`,
 `TermSource = 0`. Diagnostic PASS `31338486247` did not seal; only the cold
 run above did.
+
+## Addendum 698 (2026-08-10, **one-coordinate fine-lattice endpoint shift GREEN; product iteration open; 20/41 unchanged**)
+
+Exact source checkpoint `290d546550a55511d7677ce67066ca403afdc393`
+passed cold GitHub Actions run
+[`31339761858`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31339761858)
+with workflow checkpoint `e2d15918ea1cb630d49e304ba5a53c4fae9b648f`.
+The job completed in `16m43s`; restore/save of `.lake/build` were skipped.
+Focal and audit exited zero, and the audited theorem uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9045653286`, named
+`fine-lattice-endpoint-coordinate-shift-290d546550a55511d7677ce67066ca403afdc393`,
+has GitHub digest
+`2187b613be4796282c61bbd933124917d0b9540ec660caf208eef1c46f0a79a8`.
+Its deterministic inner archive re-hashed on Windows to
+`9eb80f43db59a1517a8d32c94fdd0002f2e0f817cd7a555745b56e988188a928`;
+all 13 internal manifest entries matched.
+
+The theorem performs one physical coordinate shift internally from the sealed
+fine-lattice seam and common-strip holomorphy. Its endpoint is `u/(L^j)` and
+its specialization is literally `alpha = 0`; no arbitrary endpoint family is
+accepted.
+
+Product integrability, 4D telescope, normalized integration and recombination
+remain open. Physical `B0`, window 15 and terminal fields remain open. Live
+counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
+`31339628367` did not seal; only the cold run above did.

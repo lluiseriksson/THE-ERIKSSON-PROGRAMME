@@ -8,10 +8,13 @@ import YangMills.RG.BalabanCMP89Eq251OneCoordinateContourShift
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointHolomorphy
 
 /-!
-# PRE-VALIDATION: one-coordinate shift for a fine-lattice endpoint
+# Cold-sealed one-coordinate shift for a fine-lattice endpoint
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`290d546550a55511d7677ce67066ca403afdc393` by cold GitHub Actions run
+`31339761858`. Restoration and saving of `.lake/build` were skipped. The focal
+and audit exited zero; the audited theorem uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module specializes the rectangular Cauchy route to the literal endpoint
 displacement `u/(L^j)` at `alpha = 0`.  Holomorphy is constructed from the
