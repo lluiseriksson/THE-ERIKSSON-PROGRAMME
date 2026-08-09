@@ -1,4 +1,4 @@
-name: Validate CMP89 common-strip holomorphy
+name: Validate CMP89 stabilized boundary seam
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 44e68aee0ec5910738068ee4188a6bbbfd00e4bd
+  SOURCE_SHA: 8e28b7d850b87e6c0971e89532d2dafea1e0061c
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    cmp89-common-strip-holomorphy
     cmp89-stabilized-integrand-holomorphy
     cmp89-complex-denominator-periodicity
     cmp89-stabilized-denominator-variation
@@ -26,10 +27,9 @@ env:
     cmp89-eq251-noncentral-real-integrand
     cmp89-alias-weighted-strip-bound
     cmp89-stabilized-complex-integrand
-    cmp89-complex-contour-phase
 
 jobs:
-  cmp89-common-strip-holomorphy:
+  cmp89-stabilized-boundary-seam:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-common-strip-holomorphy-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-stabilized-boundary-seam-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq251CommonStripHolomorphy.lean \
-            YangMills/RG/BalabanCMP89Eq251CommonStripHolomorphyAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251StabilizedBoundarySeam.lean \
+            YangMills/RG/BalabanCMP89Eq251StabilizedBoundarySeamAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp89_common_strip_holomorphy_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251CommonStripHolomorphy
-          run_stage cmp89_common_strip_holomorphy_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq251CommonStripHolomorphyAudit.lean
+          run_stage cmp89_stabilized_boundary_seam_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251StabilizedBoundarySeam
+          run_stage cmp89_stabilized_boundary_seam_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251StabilizedBoundarySeamAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp89_common_strip_holomorphy_audit.log": 3,
+              "cmp89_stabilized_boundary_seam_audit.log": 3,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              cmp89-common-strip-holomorphy-evidence.tar.gz
-          sha256sum cmp89-common-strip-holomorphy-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              cmp89-stabilized-boundary-seam-evidence.tar.gz
+          sha256sum cmp89-stabilized-boundary-seam-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp89-common-strip-holomorphy-${{ env.SOURCE_SHA }}
+          name: cmp89-stabilized-boundary-seam-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp89-common-strip-holomorphy-evidence.tar.gz
+            cmp89-stabilized-boundary-seam-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-common-strip-holomorphy-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-stabilized-boundary-seam-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
