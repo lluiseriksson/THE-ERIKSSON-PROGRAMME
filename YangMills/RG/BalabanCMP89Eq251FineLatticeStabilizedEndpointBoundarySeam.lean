@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointPeriodicity
 import YangMills.RG.BalabanCMP89Eq251StabilizedBoundarySeam
 
 /-!
-# PRE-VALIDATION: fine-lattice stabilized endpoint boundary seam
+# Cold-sealed fine-lattice stabilized endpoint boundary seam
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`72915aefdfcf886a0fc6afef915967bc34ad398e` by cold GitHub Actions run
+`31338609395`. Restoration and saving of `.lake/build` were skipped. The focal
+and audit exited zero; the audited theorem uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The nonvanishing input is the sealed full-polydisc producer: every coordinate
 of `z` may already be complex, subject only to `|Im z_k| <= rho`.  This is the

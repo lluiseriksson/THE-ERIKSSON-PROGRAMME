@@ -32172,3 +32172,32 @@ Boundary seam, 4D contour telescope, normalized integration and endpoint
 recombination remain open. Physical `B0`, window 15 and every terminal field
 remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Diagnostic
 PASS `31337368565` did not seal; only the cold run above did.
+
+## Addendum 697 (2026-08-10, **fine-lattice stabilized boundary seam GREEN; full-polydisc gate closed; 20/41 unchanged**)
+
+Exact source checkpoint `72915aefdfcf886a0fc6afef915967bc34ad398e`
+passed cold GitHub Actions run
+[`31338609395`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31338609395)
+with workflow checkpoint `dbcc098e2b987de8a324e6708aa43111059bb7d7`.
+The job completed in `20m05s`; restore/save of `.lake/build` were skipped.
+Focal and audit exited zero, and the audited theorem uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9045353338`, named
+`fine-lattice-endpoint-boundary-seam-72915aefdfcf886a0fc6afef915967bc34ad398e`,
+has GitHub digest
+`404288ac8d2f1a85b358a307307008849a92f105650694a50717d4532b7c9cf4`.
+Its deterministic inner archive re-hashed on Windows to
+`da913a0b5ba47ac0d917c68142fe473937a14c8ae5d73a2c051d9712b46ece64`;
+all 13 internal manifest entries matched.
+
+The seam is produced from nonvanishing on the complete polydisc, not from a
+slice with all inactive coordinates real. It therefore covers every partial
+stage required by the four-coordinate iteration. The endpoint displacement
+remains the physical `u/(L^j)` and no global stabilized periodicity is assumed.
+
+One-coordinate shift, product integrability, 4D telescope, normalized
+integration and endpoint recombination remain open. Physical `B0`, window 15
+and terminal fields remain open. Live counters stay exactly `20/41`,
+`TermSource = 0`. Diagnostic PASS `31338486247` did not seal; only the cold
+run above did.

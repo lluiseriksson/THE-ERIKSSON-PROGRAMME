@@ -7703,3 +7703,36 @@ two-endpoint recombination, physical `B0`, window 15 and terminal fields
 remain open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
 `31337368565` passed with a restored graph but did not seal; only the cold run
 above retired the two PRE-VALIDATION marks.
+
+### Step 7.5cxxii fine-lattice stabilized boundary seam (SEALED; 4D telescope open)
+
+Exact source checkpoint `72915aefdfcf886a0fc6afef915967bc34ad398e`
+passed cold GitHub Actions run
+[`31338609395`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31338609395)
+with workflow checkpoint `dbcc098e2b987de8a324e6708aa43111059bb7d7`.
+The job completed in `20m05s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `22:09:39Z` to `22:27:41Z`, the audit ended
+at `22:27:46Z`, and both stages exited zero. The audited theorem uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9045353338`, named
+`fine-lattice-endpoint-boundary-seam-72915aefdfcf886a0fc6afef915967bc34ad398e`,
+has GitHub digest
+`404288ac8d2f1a85b358a307307008849a92f105650694a50717d4532b7c9cf4`.
+Its deterministic inner archive re-hashed on Windows to
+`da913a0b5ba47ac0d917c68142fe473937a14c8ae5d73a2c051d9712b46ece64`;
+all 13 manifest entries re-hashed exactly.
+
+The boundary seam consumes the existing displayed-domain producer with the
+literal hypothesis `forall k, |Im z_k| <= rho`. Thus it remains valid when
+coordinates preceding the active one are already shifted to signed imaginary
+faces. It then invokes the sealed fine-lattice stabilized period at physical
+endpoint `u/(L^j)`. No one-coordinate-only nonvanishing premise or global
+periodicity family is introduced.
+
+The gate identified before iteration is closed. The one-coordinate shift,
+product integrability, 4D telescope, normalized integration and two-endpoint
+recombination remain open. Physical `B0`, window 15 and terminal fields remain
+open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
+`31338486247` passed with a restored graph but did not seal; only the cold run
+above retired the two PRE-VALIDATION marks.

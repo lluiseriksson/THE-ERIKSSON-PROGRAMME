@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointBoundarySeam
 
 /-!
-# PRE-VALIDATION audit: fine-lattice stabilized endpoint boundary seam
+# Cold-sealed audit: fine-lattice stabilized endpoint boundary seam
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Exact source checkpoint `72915aefdfcf886a0fc6afef915967bc34ad398e`, cold
+GitHub Actions run `31338609395`; the theorem uses exactly the standard axiom
+trio.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointIntegrand_zero_physicalFine_boundarySeam
