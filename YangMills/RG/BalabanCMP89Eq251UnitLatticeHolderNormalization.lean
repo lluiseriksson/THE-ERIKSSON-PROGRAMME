@@ -39,8 +39,12 @@ theorem cmp89Eq251DisplacementL1_latticeDisplacement {d : ℕ}
     cmp89Eq251LatticeL1Length
   apply Finset.sum_congr rfl
   intro mu _
-  rw [← Int.cast_abs]
-  norm_cast
+  calc
+    |((u mu : ℤ) : ℝ)| = ((|u mu| : ℤ) : ℝ) :=
+      (Int.cast_abs (u mu)).symm
+    _ = (((u mu).natAbs : ℕ) : ℝ) := by
+      rw [Int.abs_eq_natAbs]
+      norm_cast
 
 /-- A unit lattice displacement has real `l1` length exactly one. -/
 theorem cmp89Eq251DisplacementL1_latticeDisplacement_eq_one_of_unit
@@ -66,12 +70,17 @@ theorem cmp89Eq251MomentumSquare_latticeDisplacement_eq_one_of_unit
     rw [← hsumNat]
     exact Finset.single_le_sum
       (fun nu _ ↦ Nat.zero_le (u nu).natAbs) (Finset.mem_univ mu)
-  have hsquareNat : (∑ mu, (u mu).natAbs ^ 2) = 1 := by
+  have hsquareNat : (∑ mu, ((u mu).natAbs ^ 2 : ℕ)) = 1 := by
     calc
-      (∑ mu, (u mu).natAbs ^ 2) = ∑ mu, (u mu).natAbs := by
+      (∑ mu, ((u mu).natAbs ^ 2 : ℕ)) =
+          ∑ mu, (u mu).natAbs := by
         apply Finset.sum_congr rfl
         intro mu _
-        omega
+        have hzeroOrOne : (u mu).natAbs = 0 ∨ (u mu).natAbs = 1 := by
+          omega
+        rcases hzeroOrOne with hzero | hone
+        · simp [hzero]
+        · simp [hone]
       _ = 1 := hsumNat
   rw [cmp89Eq251MomentumSquare]
   change (∑ mu, ((u mu : ℤ) : ℝ) ^ 2) = 1
@@ -80,8 +89,17 @@ theorem cmp89Eq251MomentumSquare_latticeDisplacement_eq_one_of_unit
         ∑ mu, (((u mu).natAbs : ℕ) : ℝ) ^ 2 := by
       apply Finset.sum_congr rfl
       intro mu _
-      rw [← sq_abs, ← Int.cast_abs]
-      norm_cast
+      calc
+        ((u mu : ℤ) : ℝ) ^ 2 = |((u mu : ℤ) : ℝ)| ^ 2 :=
+          (sq_abs ((u mu : ℤ) : ℝ)).symm
+        _ = (((u mu).natAbs : ℕ) : ℝ) ^ 2 := by
+          congr 1
+          calc
+            |((u mu : ℤ) : ℝ)| = ((|u mu| : ℤ) : ℝ) :=
+              (Int.cast_abs (u mu)).symm
+            _ = (((u mu).natAbs : ℕ) : ℝ) := by
+              rw [Int.abs_eq_natAbs]
+              norm_cast
     _ = 1 := by exact_mod_cast hsquareNat
 
 /-- A unit integer displacement has Euclidean norm exactly one. -/
@@ -100,7 +118,7 @@ theorem cmp89Eq251EuclideanNorm_latticeDisplacement_rpow_eq_one_of_unit
     (hunit : CMP89Eq251UnitLatticeBondDisplacement u) :
     cmp89Eq251EuclideanNorm (cmp89Eq251LatticeDisplacement u) ^ alpha = 1 := by
   rw [cmp89Eq251EuclideanNorm_latticeDisplacement_eq_one_of_unit hunit,
-    one_rpow]
+    Real.one_rpow]
 
 end
 
