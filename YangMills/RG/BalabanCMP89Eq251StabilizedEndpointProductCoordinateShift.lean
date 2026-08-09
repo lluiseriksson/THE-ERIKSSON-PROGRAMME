@@ -75,7 +75,10 @@ theorem cmp89Eq251PhysicalCoordinateLine_partialSigned_eq
         (nu.insertNth x y) endpointDisplacement := by
   have hinsert : nu.insertNth x y =
       Function.update (nu.insertNth 0 y) nu x :=
-    (Fin.update_insertNth nu (0 : ℝ) x y).symm
+    by
+      simpa using
+        (Fin.update_insertNth (p := nu) (x := (0 : ℝ))
+          (y := x) (f := y)).symm
   rw [hinsert]
   funext k
   by_cases hk : k = nu
@@ -101,7 +104,10 @@ theorem cmp89Eq251PhysicalCoordinateLine_partialSigned_add_eta_eq
         (nu.insertNth x y) endpointDisplacement := by
   have hinsert : nu.insertNth x y =
       Function.update (nu.insertNth 0 y) nu x :=
-    (Fin.update_insertNth nu (0 : ℝ) x y).symm
+    by
+      simpa using
+        (Fin.update_insertNth (p := nu) (x := (0 : ℝ))
+          (y := x) (f := y)).symm
   rw [hinsert]
   funext k
   by_cases hk : k = nu
@@ -157,7 +163,7 @@ theorem integral_cmp89Eq251StabilizedEndpointPartialProductIntegrand_stage_succ
       y ∈ Set.univ.pi fun _ : Fin 3 => Set.Ioc 0 (2 * Real.pi) := by
     rw [← Measure.restrict_pi_pi]
     exact ae_restrict_mem
-      (Set.measurableSet_univ.pi fun _ _ => measurableSet_Ioc)
+      (MeasurableSet.univ_pi fun _ => measurableSet_Ioc)
   filter_upwards [hmem] with y hy
   let p : Fin 4 → ℝ :=
     cmp89Eq251PhysicalBrillouinParameter (nu.insertNth 0 y)
@@ -168,7 +174,8 @@ theorem integral_cmp89Eq251StabilizedEndpointPartialProductIntegrand_stage_succ
     intro k
     by_cases hk : k = nu
     · subst k
-      simp [p, cmp89Eq251PhysicalBrillouinParameter, Real.pi_pos.le]
+      simp [p, cmp89Eq251PhysicalBrillouinParameter,
+        abs_of_pos Real.pi_pos]
     · obtain ⟨i, rfl⟩ := Fin.exists_succAbove_eq hk
       have hyi := hy i (Set.mem_univ i)
       rw [abs_le]
