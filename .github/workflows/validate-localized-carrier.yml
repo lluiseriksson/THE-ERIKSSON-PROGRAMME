@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 5a90d3480c97f5fde390416b94eba4a3e7a9e949
+  SOURCE_SHA: a92695ec57772ba180446e3e682e0aeaaca606fc
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -165,6 +165,7 @@ jobs:
           instance : IsFiniteMeasure testBrillouinMeasure := by
             refine ⟨?_⟩
             simp [testBrillouinMeasure, Measure.pi_univ]
+            exact ENNReal.mul_lt_top (by norm_num) ENNReal.ofReal_lt_top
 
           example :
               (Measure.pi fun _ : Fin 4 =>
