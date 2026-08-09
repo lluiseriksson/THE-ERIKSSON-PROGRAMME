@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251ComplexEndpointAmplitudeFactorization
 
 /-!
-# PRE-VALIDATION: fine-lattice phase-scale no-go below CMP89 (2.49)
+# Cold-sealed fine-lattice phase-scale no-go below CMP89 (2.49)
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+Compiler-verified at exact source checkpoint
+`0b967fe919cd7abde43f3ebdde2d43849cac845d` by cold GitHub Actions run
+`31331278818`. Restoration and saving of `.lake/build` were skipped. The focal
+and audit exited zero, and all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP89 Lemma 2.4, printed pp. 582 and 584--585, has
 `x,x' ∈ L^(-j) Z^d`.  Thus an integer fine-site displacement `u` represents

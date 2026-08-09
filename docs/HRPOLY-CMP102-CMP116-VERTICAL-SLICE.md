@@ -7494,3 +7494,44 @@ and `TermSource` remain open.  Counters stay exactly `20/41`,
 `TermSource = 0`.  Diagnostic run `31329398921` exposed only the unsimplified
 complex inverse of one; corrected cached run `31329620966` passed but did not
 retire PRE-VALIDATION.  Only the cold run above did.
+
+### Step 7.5cxvi fine-lattice phase-scale no-go (SEALED; rescaled Fourier/operator dictionary open)
+
+Exact source checkpoint `0b967fe919cd7abde43f3ebdde2d43849cac845d`
+passed cold GitHub Actions run
+[`31331278818`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31331278818)
+with workflow checkpoint `31bf02f62bc6e311bdb5c5b3fa1e994103b22716`.
+The job completed in `14m55s`; restoration and saving of `.lake/build` were
+both skipped.  The focal ran from `19:20:16Z` to `19:33:01Z`, the audit ended
+at `19:33:06Z`, and both stages exited zero.  All three audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9043172950`, named
+`fine-phase-scale-nogo-0b967fe919cd7abde43f3ebdde2d43849cac845d`,
+has GitHub digest
+`4f0e98b1a0ea7ee2a07af9741f62ec2ceed693abfd04423823b3eb004796456a`.
+Its deterministic inner archive re-hashed on Windows to
+`9e57fcd35ec3d97116e549753fcdbef5a489a1e75ac4b45e942221c93d8e664f`;
+all 13 entries of its `SHA256SUMS` manifest also re-hashed exactly.
+
+Primary visual inspection of CMP89 printed pp. 582 and 584--585 fixes the
+physical endpoint lattice as `xi Z^d`, with `xi = L^(-j)`.  Hence an integer
+fine-site displacement `u` represents the physical displacement `xi*u`.
+The sealed theorem proves the exact scale transport from displacement to
+momentum and gives the literal counterexample `xi=1/2`, alias `m=1`, `u=1`:
+the alias phase is `exp(i*pi)=-1`, not one.  Therefore the already sealed
+unit-lattice phase cancellation cannot be installed definitionally as the
+physical phase dictionary of (2.49).
+
+This is a reclassification, not a retraction of the algebra.  The integer
+phase factorization and its downstream bounds remain compiler-verified on
+their stated integer displacements.  Steps 7.5cviii--7.5cxv are now classified
+as algebraic/unit-index specializations rather than physical CMP89 producers
+until one rescaled dictionary transports the phase, derivative symbol,
+averaging factors and endpoint normalization together.  The earlier contour
+and holomorphy bricks formulated for real displacements are not refuted.
+Physical `B0`, window-15 attainment, every terminal field and `TermSource`
+remain open.  Counters stay exactly `20/41`, `TermSource = 0`.
+
+Cached diagnostic run `31331110156` passed but did not retire PRE-VALIDATION.
+Only the cold run above did.

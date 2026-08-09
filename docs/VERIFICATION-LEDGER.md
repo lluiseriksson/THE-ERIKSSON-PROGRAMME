@@ -31988,3 +31988,37 @@ terminal field and `TermSource` remain open.  Live counters stay exactly
 `20/41`, `TermSource = 0`.  Diagnostic run `31329398921` found only the
 unsimplified inverse of complex one; corrected cached run `31329620966` passed
 but did not retire PRE-VALIDATION.  Only the cold run above did.
+
+## Addendum 691 (2026-08-09, **fine-lattice phase-scale no-go GREEN; physical interpretation reclassified; 20/41 unchanged**)
+
+Exact source checkpoint `0b967fe919cd7abde43f3ebdde2d43849cac845d`
+passed cold GitHub Actions run
+[`31331278818`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31331278818)
+with workflow checkpoint `31bf02f62bc6e311bdb5c5b3fa1e994103b22716`.
+The job completed in `14m55s`; restoration and saving of `.lake/build` were
+skipped.  The focal and audit exited zero, and all three audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9043172950`, named
+`fine-phase-scale-nogo-0b967fe919cd7abde43f3ebdde2d43849cac845d`,
+has GitHub digest
+`4f0e98b1a0ea7ee2a07af9741f62ec2ceed693abfd04423823b3eb004796456a`.
+Its deterministic inner archive re-hashed on Windows to
+`9e57fcd35ec3d97116e549753fcdbef5a489a1e75ac4b45e942221c93d8e664f`;
+all 13 entries of the internal `SHA256SUMS` manifest matched.
+
+CMP89 printed pp. 582 and 584--585 place the physical endpoints on
+`xi Z^d`, `xi=L^(-j)`.  The sealed scale-transport identity makes the factor
+`xi` explicit, and the certified half-scale counterexample proves that a
+single reciprocal alias across one fine edge contributes `exp(i*pi)=-1`.
+Thus the unit-lattice alias-phase theorem remains correct on integer
+displacements but cannot silently serve as the physical (2.49) dictionary.
+
+Accordingly, the previously sealed phase factorization and its downstream
+normalized/kernel/owner bounds remain valid algebra, but are reclassified as
+unit-index specializations pending a joint rescaling dictionary for phase,
+derivative symbol, averaging and endpoint normalization.  No existing
+algebraic seal is erased, no physical `B0` is claimed, window 15 remains
+compatible but unattained, and live counters remain exactly `20/41`,
+`TermSource = 0`.  Cached run `31331110156` was diagnostic only; only the cold
+run above retired the two PRE-VALIDATION marks.

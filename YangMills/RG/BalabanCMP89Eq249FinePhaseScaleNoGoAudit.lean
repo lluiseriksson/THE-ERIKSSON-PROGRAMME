@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP89Eq249FinePhaseScaleNoGo
 
 /-!
-# PRE-VALIDATION audit: fine-lattice phase-scale no-go below CMP89 (2.49)
+# Cold-sealed audit: fine-lattice phase-scale no-go below CMP89 (2.49)
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+Compiler-verified at exact source checkpoint
+`0b967fe919cd7abde43f3ebdde2d43849cac845d` by cold GitHub Actions run
+`31331278818`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq249PhysicalFineLatticeDisplacement
