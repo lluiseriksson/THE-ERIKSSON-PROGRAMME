@@ -85,11 +85,38 @@ theorem norm_cmp116CMP89PhysicalNormalizedStabilizedIntegral_le_owner
       (cmp116CMP89PhysicalBondHolderDisplacement_unit b)
   have hweights :=
     cmp116CMP89PhysicalEndpointWeights_le_ownerWeight depth hrho b y
+  have hweights' :
+      cmp89SignedLatticeL1ExponentialWeight rho
+          (fun nu ↦ cmp116CMP89PhysicalBondHolderDisplacement b nu +
+            cmp116CMP89PhysicalBondTransportDisplacement b y nu) +
+        cmp89SignedLatticeL1ExponentialWeight rho
+          (cmp116CMP89PhysicalBondTransportDisplacement b y) ≤
+      (1 + Real.exp rho) *
+        (Real.exp (rho * (2 * (L ^ (depth + 1) - 1) : ℕ)) *
+          Real.exp (-(rho * (L ^ (depth + 1) : ℝ)) *
+            (finBoxDist
+              (cmp99Eq389SourceLocalizationOwner L K Q depth
+                (cmp116BondTarget b))
+              (cmp99Eq389SourceLocalizationOwner L K Q depth y) : ℝ))) := by
+    calc
+      cmp89SignedLatticeL1ExponentialWeight rho
+          (fun nu ↦ cmp116CMP89PhysicalBondHolderDisplacement b nu +
+            cmp116CMP89PhysicalBondTransportDisplacement b y nu) +
+        cmp89SignedLatticeL1ExponentialWeight rho
+          (cmp116CMP89PhysicalBondTransportDisplacement b y) =
+        cmp89SignedLatticeL1ExponentialWeight rho
+            (cmp116CMP89PhysicalBondTransportDisplacement b y) +
+          cmp89SignedLatticeL1ExponentialWeight rho
+            (fun nu ↦ cmp116CMP89PhysicalBondHolderDisplacement b nu +
+              cmp116CMP89PhysicalBondTransportDisplacement b y nu) :=
+        add_comm _ _
+      _ ≤ _ := by
+        simpa [cmp116CMP89PhysicalBondFirstEndpointDisplacement] using hweights
   have hmajorantNonneg :
       0 ≤ cmp89Eq251ComplexStabilizedEndpointAmplitudeBound a rho :=
     cmp89Eq251ComplexStabilizedEndpointAmplitudeBound_nonneg hwindow
   have htransport :=
-    mul_le_mul_of_nonneg_right hweights hmajorantNonneg
+    mul_le_mul_of_nonneg_right hweights' hmajorantNonneg
   calc
     ‖cmp89Eq249NormalizedFourDimensionalStabilizedIntegral
         L j mass a alpha mu
