@@ -50,7 +50,8 @@ theorem cmp89Eq249FourDimensionalBrillouinMeasure_real_univ :
   have htwoPi : (0 : ℝ) ≤ 2 * Real.pi :=
     mul_nonneg (by norm_num) Real.pi_pos.le
   simp [cmp89Eq249FourDimensionalBrillouinMeasure, Measure.pi_univ,
-    measureReal_def, ENNReal.toReal_ofReal', Set.uIoc_of_le htwoPi]
+    measureReal_def, ENNReal.toReal_ofReal', Set.uIoc_of_le htwoPi,
+    max_eq_left Real.pi_pos.le]
 
 /-- A constant pointwise bound on the translated Brillouin cube loses no
 factor after the literal source normalization is applied. -/
