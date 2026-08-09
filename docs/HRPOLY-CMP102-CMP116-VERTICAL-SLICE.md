@@ -6589,3 +6589,40 @@ unattained.
 
 Cached diagnostic run `31292852815` passed on the first source and did not
 retire PRE-VALIDATION. Only the cold run above did.
+
+### Step 7.5bz stabilized endpoint periodicity (SEALED; endpoint boundary seam open)
+
+Exact source checkpoint `0550a2164c6cfd63b54cbd7e010f5c49f8fcc15e`
+passed cold GitHub Actions run
+[`31293915861`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31293915861)
+with workflow checkpoint `7bf166179d321c7fa4f99908c07ddf02139df58b`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `04:09:46Z` to `04:26:37Z`, completed
+8,457 jobs, and the audit ended at `04:26:46Z`. Both stages exited zero. All
+twelve audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9032506305`, named
+`stabilized-endpoint-periodicity-0550a2164c6cfd63b54cbd7e010f5c49f8fcc15e`,
+has GitHub digest
+`6eac46a4aaae32f479bb32d3685cc0de56cfcf38c59271ca873cbeeb8ec8f67a`.
+The deterministic inner archive re-hashed on Windows to
+`58f946e93a9859767dd5711c7dd616cc413a1a69a08837a4ef45558ea73ea0bd`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed route constructs each displayed endpoint alias term and finite
+sum, proves its physical period by the exact centered-alias permutation, and
+then transfers that period to the stabilized endpoint only where the unit,
+reduced and full fine-symbol domain is available. Shifted non-singularity is
+derived internally. No global stabilized-endpoint period is postulated.
+
+The Brillouin-face producer and endpoint seam, contour displacement, compact
+product integrability, `B0`, owner dictionary, window-15 attainment and every
+terminal field remain open. Counters stay `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
+
+Cached diagnostic run `31293818233` passed on the first source and did not
+retire PRE-VALIDATION. Only the cold run above did. The cold focal emitted no
+warning from the new endpoint-periodicity module; inherited linter warnings
+come from pre-existing dependencies.

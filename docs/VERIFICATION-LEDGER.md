@@ -31215,3 +31215,36 @@ the owner dictionary, window-15 attainment and every terminal field remain
 open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained. Cached run `31292852815` was diagnostic only and did not retire
 PRE-VALIDATION.
+
+## Addendum 667 (2026-08-09, **stabilized endpoint periodicity GREEN; boundary seam open**)
+
+Exact source checkpoint `0550a2164c6cfd63b54cbd7e010f5c49f8fcc15e`
+passed cold GitHub Actions run
+[`31293915861`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31293915861)
+with workflow checkpoint `7bf166179d321c7fa4f99908c07ddf02139df58b`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,457 jobs and ran from `04:09:46Z` to
+`04:26:37Z`; the audit ended at `04:26:46Z`. Both stages exited zero. All
+twelve audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9032506305`, named
+`stabilized-endpoint-periodicity-0550a2164c6cfd63b54cbd7e010f5c49f8fcc15e`,
+has GitHub digest
+`6eac46a4aaae32f479bb32d3685cc0de56cfcf38c59271ca873cbeeb8ec8f67a`.
+The deterministic inner archive re-hashed on Windows to
+`58f946e93a9859767dd5711c7dd616cc413a1a69a08837a4ef45558ea73ea0bd`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+Each displayed endpoint is now a literal finite alias sum with exact physical
+period. The period reaches the stabilized endpoint only through the proved
+displayed/stabilized equality on the non-singular domain; the shifted domain
+is derived by the existing alias permutation. No global periodicity premise
+was introduced.
+
+The boundary-face domain specialization, endpoint seam and contour shifts,
+`B0`, the owner dictionary, window-15 attainment and all terminal fields
+remain open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained. Cached run `31293818233` was diagnostic only and did not
+retire PRE-VALIDATION. The new module emitted no linter warning; warnings in
+the cold focal belong to pre-existing dependencies.

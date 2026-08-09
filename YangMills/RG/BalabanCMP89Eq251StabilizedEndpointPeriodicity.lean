@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointHolomorphy
 import YangMills.RG.BalabanCMP89Eq251DisplayedIntegrandPeriodicity
 
 /-!
-# PRE-VALIDATION: physical periodicity of each stabilized CMP89 endpoint
+# Physical periodicity of each stabilized CMP89 endpoint
 
-The source in this module is present, but its `.olean` has not yet been
-materialized and its result has not yet been verified by the Lean compiler.
+Cold validation: exact source checkpoint
+`0550a2164c6cfd63b54cbd7e010f5c49f8fcc15e` passed GitHub Actions run
+`31293915861` with restore and save of `.lake/build` both skipped. The focal
+completed 8,457 jobs and all twelve audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 Each endpoint displacement is integer lattice data.  This module constructs
 the displayed endpoint alias sum, proves its exact physical `2*pi` period by
