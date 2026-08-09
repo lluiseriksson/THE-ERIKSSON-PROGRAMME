@@ -1,4 +1,4 @@
-name: Validate Pi-coordinate interval transport
+name: Validate stabilized endpoint product integrability
 
 on:
   workflow_dispatch:
@@ -13,16 +13,16 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 80c13cb97eee0fe918042ad310b73dbeebcd23a6
+  SOURCE_SHA: a1c3777c05177edc9b5202c56276625f4fa69183
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    interval-integral-slice-transport
     stabilized-endpoint-one-coordinate-shift
+    pi-coordinate-interval-transport
 
 jobs:
-  pi-coordinate-interval-transport:
+  stabilized-endpoint-product-integrability:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -87,7 +87,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-pi-coordinate-interval-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-stabilized-endpoint-product-integrability-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -121,8 +121,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/IntervalIntegralPiCoordinateTransport.lean \
-            YangMills/RG/IntervalIntegralPiCoordinateTransportAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointProductIntegrability.lean \
+            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointProductIntegrabilityAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -144,10 +144,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage pi_coordinate_interval_transport_focal \
-            lake build YangMills.RG.IntervalIntegralPiCoordinateTransport
-          run_stage pi_coordinate_interval_transport_audit \
-            lake env lean YangMills/RG/IntervalIntegralPiCoordinateTransportAudit.lean
+          run_stage stabilized_endpoint_product_integrability_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductIntegrability
+          run_stage stabilized_endpoint_product_integrability_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251StabilizedEndpointProductIntegrabilityAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -161,7 +161,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "pi_coordinate_interval_transport_audit.log": 2,
+              "stabilized_endpoint_product_integrability_audit.log": 9,
           }
           result = {}
           for name, expected in audits.items():
@@ -193,17 +193,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              pi-coordinate-interval-transport-evidence.tar.gz
-          sha256sum pi-coordinate-interval-transport-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              stabilized-endpoint-product-integrability-evidence.tar.gz
+          sha256sum stabilized-endpoint-product-integrability-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: pi-coordinate-interval-transport-${{ env.SOURCE_SHA }}
+          name: stabilized-endpoint-product-integrability-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            pi-coordinate-interval-transport-evidence.tar.gz
+            stabilized-endpoint-product-integrability-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -212,4 +212,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-pi-coordinate-interval-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-stabilized-endpoint-product-integrability-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
