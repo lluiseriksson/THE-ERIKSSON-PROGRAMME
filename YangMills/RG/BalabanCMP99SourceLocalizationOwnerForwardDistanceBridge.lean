@@ -83,7 +83,7 @@ theorem finBoxDist_blockSite_le_finBoxDist
       apply (finBoxDist_eq_zero_iff x y).mp
       exact hzero
     subst y
-    simp [ownerDist, fineDist]
+    simp
   by_cases hone : fineDist = 1
   · have hlt : ell * ownerDist < ell * 2 := by
       rw [hone] at hinverse
@@ -93,6 +93,9 @@ theorem finBoxDist_blockSite_le_finBoxDist
       Nat.lt_of_mul_lt_mul_left (a := ell) hlt
     omega
   · have htwo : 2 ≤ fineDist := by omega
+    have hone : 1 + (ell - 1) = ell := by
+      have hell : 0 < ell := NeZero.pos ell
+      omega
     have hboundary : 2 * (ell - 1) ≤ fineDist * (ell - 1) :=
       Nat.mul_le_mul_right (ell - 1) htwo
     have habsorb : fineDist + 2 * (ell - 1) ≤ ell * fineDist := by
@@ -101,9 +104,7 @@ theorem finBoxDist_blockSite_le_finBoxDist
             fineDist + fineDist * (ell - 1) :=
           Nat.add_le_add_left hboundary fineDist
         _ = fineDist * (1 + (ell - 1)) := by ring
-        _ = fineDist * ell := by
-          congr 1
-          omega
+        _ = fineDist * ell := by rw [hone]
         _ = ell * fineDist := Nat.mul_comm _ _
     have hscaled : ell * ownerDist ≤ ell * fineDist :=
       hinverse.trans habsorb
