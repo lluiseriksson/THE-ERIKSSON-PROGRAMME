@@ -3146,3 +3146,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp89Eq249NormalizedFourDimensionalStabilizedIntegral
 #print axioms YangMills.RG.cmp89Eq249NormalizedFourDimensionalStabilizedIntegral_eq_sub_endpoints
 #print axioms YangMills.RG.norm_cmp89Eq249NormalizedFourDimensionalStabilizedIntegral_le
+#print axioms YangMills.RG.cmp116CMP89PhysicalNormalizedStabilizedIntegralAmplitudeBound
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointAmplitudeBound_nonneg
+#print axioms YangMills.RG.norm_cmp116CMP89PhysicalNormalizedStabilizedIntegral_le_owner
