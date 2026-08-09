@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP89Eq251FineLatticeDisplayedEndpointPeriodicity
 
 /-!
-# PRE-VALIDATION audit: fine-lattice displayed endpoint periodicity
+# Cold-sealed audit: fine-lattice displayed endpoint periodicity
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Exact source checkpoint `39598f7a567d268f27f57fed681800e7efce0815`, cold
+GitHub Actions run `31336314604`; six declarations use exactly the standard
+axiom trio.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251ComplexFineLatticeBareEndpointMomentumFactor

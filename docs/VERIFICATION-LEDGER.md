@@ -32114,3 +32114,33 @@ normalized integration remain separate downstream bricks. Physical `B0`,
 window 15 and every terminal field remain open. Live counters stay exactly
 `20/41`, `TermSource = 0`. Diagnostic PASS `31334904027` did not seal; failed
 diagnostics `31334576819` and `31334746446` are retained.
+
+## Addendum 695 (2026-08-09, **fine-lattice displayed endpoint period GREEN; stabilized seam open; 20/41 unchanged**)
+
+Exact source checkpoint `39598f7a567d268f27f57fed681800e7efce0815`
+passed cold GitHub Actions run
+[`31336314604`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31336314604)
+with workflow checkpoint `335ec788847335672b33d50967b05f288dc012a1`.
+The job completed in `19m17s`; restore/save of `.lake/build` were skipped.
+Focal and audit exited zero, and all six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9044670652`, named
+`fine-lattice-displayed-endpoint-period-39598f7a567d268f27f57fed681800e7efce0815`,
+has GitHub digest
+`80a0494a907d5fd1a0cf71ef63315fd7cd11d69a1b2b935cf5eb322a19ba11bb`.
+Its deterministic inner archive re-hashed on Windows to
+`f61257c543475262b014aa996cc963490da8be5f9592f0bc359ee3b139d05394`;
+all 13 internal manifest entries matched.
+
+The producer specializes the literal displayed endpoint to `alpha = 0`,
+keeps the physical fine displacement `u/(L^j)`, and proves its exact physical
+period through the centered-alias permutation. It composes the separately
+sealed phase, scaled-difference, averaging, Laplacian and denominator periods;
+it does not reuse the invalid unit-lattice phase dictionary.
+
+Stabilized-endpoint equality on the non-singular domain, boundary seam, 4D
+contour telescope, normalized integration and endpoint recombination remain
+open. Physical `B0`, window 15 and every terminal field remain open. Live
+counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
+`31336183990` did not seal; only the cold run above did.

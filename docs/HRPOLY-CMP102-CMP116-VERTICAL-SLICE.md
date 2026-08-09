@@ -7636,3 +7636,37 @@ Physical `B0`, window 15 and terminal fields remain open. Counters stay exactly
 `20/41`, `TermSource = 0`. Diagnostic run `31334904027` passed but did not
 retire PRE-VALIDATION; failed diagnostics `31334576819` and `31334746446`
 remain preserved as elaboration evidence.
+
+### Step 7.5cxx fine-lattice displayed endpoint period (SEALED; stabilized seam open)
+
+Exact source checkpoint `39598f7a567d268f27f57fed681800e7efce0815`
+passed cold GitHub Actions run
+[`31336314604`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31336314604)
+with workflow checkpoint `335ec788847335672b33d50967b05f288dc012a1`.
+The job completed in `19m17s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `21:16:19Z` to `21:33:34Z`, the audit ended
+at `21:33:41Z`, and both stages exited zero. All six audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9044670652`, named
+`fine-lattice-displayed-endpoint-period-39598f7a567d268f27f57fed681800e7efce0815`,
+has GitHub digest
+`80a0494a907d5fd1a0cf71ef63315fd7cd11d69a1b2b935cf5eb322a19ba11bb`.
+Its deterministic inner archive re-hashed on Windows to
+`f61257c543475262b014aa996cc963490da8be5f9592f0bc359ee3b139d05394`;
+all 13 manifest entries re-hashed exactly.
+
+At the literal specialization `alpha = 0`, the endpoint phase is evaluated
+on `u/(L^j)`. The centered-alias wrap is transported through the scaled
+difference, averaging amplitude, fine Laplacian and common denominators, and
+the exact alias-cycle permutation proves periodicity of the complete displayed
+endpoint sum. The holder displacement is not constrained: it disappears only
+because its exponent is literally zero.
+
+This does not assert global periodicity of the stabilized extension. Transfer
+through the displayed/stabilized equality on the non-singular polydisc,
+boundary seam, the 4D telescope, normalized integration and two-endpoint
+recombination remain named downstream bricks. Physical `B0`, window 15 and
+terminal fields remain open. Counters stay exactly `20/41`, `TermSource = 0`.
+Diagnostic run `31336183990` passed with a restored graph but did not seal;
+only the cold run above retired the two PRE-VALIDATION marks.

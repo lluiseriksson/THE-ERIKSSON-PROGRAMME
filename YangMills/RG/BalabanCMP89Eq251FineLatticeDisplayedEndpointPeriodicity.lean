@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251FineLatticePhasePeriodicity
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointPeriodicity
 
 /-!
-# PRE-VALIDATION: fine-lattice displayed endpoint periodicity
+# Cold-sealed fine-lattice displayed endpoint periodicity
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`39598f7a567d268f27f57fed681800e7efce0815` by cold GitHub Actions run
+`31336314604`. Restoration and saving of `.lake/build` were skipped. The focal
+and audit exited zero, and all six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.49) places an integer fine-site displacement `u` at physical
 spacing `(L^j)^(-1)`.  The existing displayed-endpoint periodicity theorem
