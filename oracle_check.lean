@@ -3143,3 +3143,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp89Eq249FourDimensionalBrillouinMeasure_real_univ
 #print axioms YangMills.RG.norm_cmp89Eq249NormalizedFourDimensionalBrillouinIntegral_le
 #print axioms YangMills.RG.norm_cmp89Eq249NormalizedStabilizedEndpointIntegral_le
+#print axioms YangMills.RG.cmp89Eq249NormalizedFourDimensionalStabilizedIntegral
+#print axioms YangMills.RG.cmp89Eq249NormalizedFourDimensionalStabilizedIntegral_eq_sub_endpoints
+#print axioms YangMills.RG.norm_cmp89Eq249NormalizedFourDimensionalStabilizedIntegral_le
