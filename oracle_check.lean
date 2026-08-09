@@ -3053,3 +3053,4 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp89Eq251ComplexDisplayedEndpointCentralTerm_eq_stabilized
 #print axioms YangMills.RG.cmp89Eq251ComplexDisplayedEndpointIntegrand_eq_stabilized
 #print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointIntegrand_physicalPeriodShift_of_nonzero
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointIntegrand_boundarySeam

@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointPeriodicity
 import YangMills.RG.BalabanCMP89Eq251StabilizedBoundarySeam
 
 /-!
-# PRE-VALIDATION: Brillouin-face seam for each stabilized CMP89 endpoint
+# Brillouin-face seam for each stabilized CMP89 endpoint
 
-The source in this module is present, but its `.olean` has not yet been
-materialized and its result has not yet been verified by the Lean compiler.
+Cold validation: exact source checkpoint
+`bb7ee9ac4e18691e2257b885f56f588b472833bc` passed GitHub Actions run
+`31294828439` with restore and save of `.lake/build` both skipped. The focal
+completed 8,459 jobs and the audited declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The sealed boundary-face producer constructs the full non-singular domain of
 the displayed rational formula.  The sealed endpoint periodicity theorem

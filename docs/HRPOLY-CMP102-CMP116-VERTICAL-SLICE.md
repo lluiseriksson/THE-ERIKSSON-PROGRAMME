@@ -6626,3 +6626,35 @@ Cached diagnostic run `31293818233` passed on the first source and did not
 retire PRE-VALIDATION. Only the cold run above did. The cold focal emitted no
 warning from the new endpoint-periodicity module; inherited linter warnings
 come from pre-existing dependencies.
+
+### Step 7.5ca stabilized endpoint boundary seam (SEALED; endpoint contour shift open)
+
+Exact source checkpoint `bb7ee9ac4e18691e2257b885f56f588b472833bc`
+passed cold GitHub Actions run
+[`31294828439`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31294828439)
+with workflow checkpoint `89964e4b22984c695f5c533c23128902c646d881`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `04:35:53Z` to `04:48:23Z`, completed
+8,459 jobs, and the audit ended at `04:48:27Z`. Both stages exited zero. The
+audited declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9032754393`, named
+`stabilized-endpoint-boundary-seam-bb7ee9ac4e18691e2257b885f56f588b472833bc`,
+has GitHub digest
+`3545b46facd28e6ecfe1fdb40a5876c0c1058e1d30d6e252e22afa353bd0d0bf`.
+The deterministic inner archive re-hashed on Windows to
+`0049aa824b429309ee2b28aa38ddc860f322b513ff8926c075715d1868e56f89`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed theorem first constructs the full displayed non-singular domain
+on the lower Brillouin face and then consumes the endpoint physical period.
+It introduces no global periodicity premise and no new scalar condition.
+
+The endpoint contour equality, compact-product integrability, four-coordinate
+iteration, `B0`, owner dictionary, window-15 attainment and every terminal
+field remain open. Counters stay `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+Cached diagnostic run `31294728096` passed on the first source and did not
+retire PRE-VALIDATION. Only the cold run above did.

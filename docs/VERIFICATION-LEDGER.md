@@ -31248,3 +31248,33 @@ remain open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained. Cached run `31293818233` was diagnostic only and did not
 retire PRE-VALIDATION. The new module emitted no linter warning; warnings in
 the cold focal belong to pre-existing dependencies.
+
+## Addendum 668 (2026-08-09, **stabilized endpoint boundary seam GREEN; contour shift open**)
+
+Exact source checkpoint `bb7ee9ac4e18691e2257b885f56f588b472833bc`
+passed cold GitHub Actions run
+[`31294828439`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31294828439)
+with workflow checkpoint `89964e4b22984c695f5c533c23128902c646d881`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,459 jobs and ran from `04:35:53Z` to
+`04:48:23Z`; the audit ended at `04:48:27Z`. Both stages exited zero. The one
+audited declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9032754393`, named
+`stabilized-endpoint-boundary-seam-bb7ee9ac4e18691e2257b885f56f588b472833bc`,
+has GitHub digest
+`3545b46facd28e6ecfe1fdb40a5876c0c1058e1d30d6e252e22afa353bd0d0bf`.
+The deterministic inner archive re-hashed on Windows to
+`0049aa824b429309ee2b28aa38ddc860f322b513ff8926c075715d1868e56f89`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+The existing boundary-face domain producer now feeds the endpoint-specific
+periodicity theorem, yielding the vertical seam for each constructed
+endpoint without a global stabilized-periodicity hypothesis or a new scalar
+window.
+
+Endpoint contour displacement, compact-product integrability,
+four-coordinate iteration, `B0`, the owner dictionary, window-15 attainment
+and all terminal fields remain open. Counters stay `20/41`, `TermSource = 0`,
+and window 15 compatible but unattained. Cached run `31294728096` was
+diagnostic only and did not retire PRE-VALIDATION.
