@@ -7255,3 +7255,42 @@ unattained. Failed diagnostic runs `31316653059` and `31316823891` exposed
 only the syntactic order of the two real summands; corrected diagnostic run
 `31316997359` passed but did not retire PRE-VALIDATION. Only the cold run above
 did.
+
+### Step 7.5cx stabilized endpoint-integrand bound (SEALED; normalized integration and `B0` open)
+
+Exact source checkpoint `e5d1e5db66a96ab5e929a3636c1afc542da410f0`
+passed cold GitHub Actions run
+[`31318800330`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31318800330)
+with workflow checkpoint `8461574a4a9aa26304b2ca3dc7c5ac3fd63212ae`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,478 jobs from `14:36:18Z` to `14:54:02Z`;
+the audit ended at `14:54:10Z`. Both stages exited zero. All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9039784347`, named
+`stabilized-endpoint-bound-e5d1e5db66a96ab5e929a3636c1afc542da410f0`,
+has GitHub digest
+`1d9135f8960768a39e9e59c176b304028cc8bf7d69a9226be35b097813a1bce6`.
+The deterministic inner archive re-hashed on Windows to
+`b7e874ecef6aab834d7a43cafe9491a7c0655e8bd4c19a599f840c4e0b4f6927`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed pointwise producer combines the exact endpoint phase
+factorization, the phase-free amplitude bound and the stabilized reciprocal
+bound on the endpoint's own signed contour. A literal unit Holder edge removes
+the Holder normalization internally. The conclusion retains the exact signed
+lattice `l1` exponential weight and the two majorant factors remain visible.
+
+This closes the pointwise endpoint integrand only. CMP89 (2.49), visually
+checked on printed page 585, carries the literal normalization `(2*pi)^(-d)`
+outside the Brillouin integral. The next producer must preserve `(2*pi)^(-4)`
+and cancel it against the exact volume of the translated `[0,2*pi]^4` cube;
+that normalization is not part of `B0`. Integration, endpoint recombination,
+the separate `exp rho` one-link cost, owner transport, complete physical `B0`,
+window-15 attainment and every terminal field remain open. Counters stay
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+Failed diagnostic runs `31318211467`, `31318353378` and `31318502966`
+exposed only endpoint exponent normalization and unfolding issues; corrected
+diagnostic run `31318648829` passed but did not retire PRE-VALIDATION. Only the
+cold run above did.

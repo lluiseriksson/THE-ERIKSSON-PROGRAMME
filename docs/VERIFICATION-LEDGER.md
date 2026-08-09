@@ -31776,3 +31776,40 @@ constant. The complete `B0`, window-15 attainment, every terminal field and
 found only summand-order elaboration errors; corrected diagnostic run
 `31316997359` passed but did not retire PRE-VALIDATION. Only the cold run above
 did.
+
+## Addendum 685 (2026-08-09, **stabilized endpoint-integrand bound GREEN; normalized integration and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `e5d1e5db66a96ab5e929a3636c1afc542da410f0`
+passed cold GitHub Actions run
+[`31318800330`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31318800330)
+with workflow checkpoint `8461574a4a9aa26304b2ca3dc7c5ac3fd63212ae`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,478 jobs from `14:36:18Z` to `14:54:02Z`;
+the audit ended at `14:54:10Z`. Both stages exited zero. All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9039784347`, named
+`stabilized-endpoint-bound-e5d1e5db66a96ab5e929a3636c1afc542da410f0`,
+has GitHub digest
+`1d9135f8960768a39e9e59c176b304028cc8bf7d69a9226be35b097813a1bce6`.
+Its deterministic inner archive re-hashed on Windows to
+`b7e874ecef6aab834d7a43cafe9491a7c0655e8bd4c19a599f840c4e0b4f6927`,
+and all 13 manifest entries re-hashed exactly.
+
+The sealed producer proves a pointwise bound for one complete stabilized
+endpoint integrand on its own signed contour. It constructs the phase-free
+amplitude and reciprocal majorant internally, discharges the literal unit-edge
+Holder normalization, and preserves the exact signed lattice `l1` decay. It
+does not perform the Brillouin integration or hide the later `exp rho` endpoint
+comparison in an anonymous constant.
+
+Primary visual evidence from CMP89 (2.49), printed page 585, fixes the
+normalization as `(2*pi)^(-d)` outside the integral. Therefore the next brick
+must prove the exact cancellation of `(2*pi)^(-4)` with the volume of the
+translated `[0,2*pi]^4` cube before the result may be named a complete `B0`.
+Endpoint recombination, owner transport, window-15 attainment, every terminal
+field and `TermSource` remain open. Live counters stay exactly `20/41`,
+`TermSource = 0`. Failed diagnostic runs `31318211467`, `31318353378` and
+`31318502966` found only exponent normalization/unfolding errors; corrected
+diagnostic run `31318648829` passed but did not retire PRE-VALIDATION. Only the
+cold run above did.

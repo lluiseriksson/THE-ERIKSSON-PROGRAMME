@@ -9,10 +9,13 @@ import YangMills.RG.BalabanCMP89Eq251SignedContourPhase
 import YangMills.RG.BalabanCMP89Eq251UnitLatticeHolderNormalization
 
 /-!
-# PRE-VALIDATION: stabilized endpoint bound below CMP89 (2.49)--(2.51)
+# Cold-sealed stabilized endpoint bound below CMP89 (2.49)--(2.51)
 
-Source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`e5d1e5db66a96ab5e929a3636c1afc542da410f0` by cold GitHub Actions run
+`31318800330`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,478 jobs, the audit exited zero, and all three audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The exact endpoint factorization, the phase-free amplitude bound and the
 stabilized reciprocal bound combine here on the signed endpoint contour.  A
