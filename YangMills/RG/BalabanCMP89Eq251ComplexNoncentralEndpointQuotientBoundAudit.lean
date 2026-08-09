@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP89Eq251ComplexNoncentralEndpointQuotientBound
 
 /-!
-# PRE-VALIDATION audit: noncentral endpoint quotient below CMP89 (2.51)
+# Cold-sealed audit: noncentral endpoint quotient below CMP89 (2.51)
 
-Source is present, its `.olean` has not yet been materialized, and these audit
-results have not yet been verified by the compiler.
+Cold GitHub Actions run `31312809949` compiler-verified exact source checkpoint
+`94234f769b7b5cceebd27dbafe828575c82b6a8d`; all five declarations below use
+exactly `[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251ComplexNoncentralEndpointRadialConstant

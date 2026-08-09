@@ -31652,3 +31652,32 @@ not the `alpha = -1` constant for the denominator pair. The cold logs contain
 only inherited graph warnings; neither new target emitted one. Live counters
 remain exactly `20/41`, `TermSource = 0`. Diagnostic run `31311238720` was not
 used to retire PRE-VALIDATION; only the cold run above was.
+
+## Addendum 681 (2026-08-09, **noncentral endpoint quotient GREEN; alias sum, central branch and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `94234f769b7b5cceebd27dbafe828575c82b6a8d`
+passed cold GitHub Actions run
+[`31312809949`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31312809949)
+with workflow checkpoint `e793adb15269c291a848ebf04356129f6043f508`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,434 jobs from `12:16:57Z` to `12:33:04Z`;
+the audit ended at `12:33:12Z`. Both stages exited zero. All five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9038070788`, named
+`noncentral-endpoint-quotient-94234f769b7b5cceebd27dbafe828575c82b6a8d`,
+has GitHub digest
+`6e2d016cf752bfaf8fe8d8317dacdd30a8a0636fe597ab14a773938a3d2ebc6b`.
+Its deterministic inner archive re-hashed on Windows to
+`d59a93678f987fea75c6432e16e6b29588b7f88b6e2a793f93e6bc7b3b9ec740`,
+and all 13 manifest entries re-hashed exactly.
+
+The sealed producer bounds one literal noncentral endpoint quotient. The
+scaled difference cancels exactly one inverse radial power and the remaining
+factor is redistributed with the source specialization `alpha = 0`, never
+the denominator-pair specialization `alpha = -1`. It does not sum aliases,
+assemble the central branch, insert phase or Holder factors, form `B0`, attain
+window 15, discharge a terminal field or inhabit `TermSource`. The cold log
+contains inherited graph warnings; the new target emitted none. Live counters
+remain exactly `20/41`, `TermSource = 0`. Diagnostic run `31312677116` was not
+used to retire PRE-VALIDATION; only the cold run above was.

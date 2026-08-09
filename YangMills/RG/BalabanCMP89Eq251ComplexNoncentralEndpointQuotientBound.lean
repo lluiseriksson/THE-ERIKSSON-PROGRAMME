@@ -9,10 +9,13 @@ import YangMills.RG.BalabanCMP89Eq245EntireAverageAliasStripBound
 import YangMills.RG.BalabanCMP89Eq251EntireScaledDifferenceStripUpper
 
 /-!
-# PRE-VALIDATION: noncentral endpoint quotient below CMP89 (2.51)
+# Cold-sealed noncentral endpoint quotient below CMP89 (2.51)
 
-Source is present, its `.olean` has not yet been materialized, and the results
-have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`94234f769b7b5cceebd27dbafe828575c82b6a8d` by cold GitHub Actions run
+`31312809949`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,434 jobs, the audit exited zero, and all five audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 One physical endpoint retains one scaled lattice difference, one entire
 averaging amplitude and one inverse fine symbol.  The difference cancels one

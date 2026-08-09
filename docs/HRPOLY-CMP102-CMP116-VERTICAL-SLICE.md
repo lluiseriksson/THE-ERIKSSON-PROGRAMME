@@ -7105,3 +7105,38 @@ a common `B0`. The cold logs contain inherited linter warnings from the
 rebuilt graph; neither new target emitted one. Counters stay exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained. Diagnostic run
 `31311238720` did not retire PRE-VALIDATION; only the cold run above did.
+
+### Step 7.5cvi noncentral endpoint quotient (SEALED; alias sum, central branch and `B0` open)
+
+Exact source checkpoint `94234f769b7b5cceebd27dbafe828575c82b6a8d`
+passed cold GitHub Actions run
+[`31312809949`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31312809949)
+with workflow checkpoint `e793adb15269c291a848ebf04356129f6043f508`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,434 jobs from `12:16:57Z` to `12:33:04Z`;
+the audit ended at `12:33:12Z`. Both stages exited zero. All five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9038070788`, named
+`noncentral-endpoint-quotient-94234f769b7b5cceebd27dbafe828575c82b6a8d`,
+has GitHub digest
+`6e2d016cf752bfaf8fe8d8317dacdd30a8a0636fe597ab14a773938a3d2ebc6b`.
+The deterministic inner archive re-hashed on Windows to
+`d59a93678f987fea75c6432e16e6b29588b7f88b6e2a793f93e6bc7b3b9ec740`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed pointwise producer keeps every literal factor of one noncentral
+endpoint quotient. One entire scaled difference cancels one, and only one,
+of the two inverse radial powers furnished by the complex fine-symbol gap.
+The remaining radial power is transported by the source-weight theorem at
+the exact specialization `alpha = 0`; the `alpha = -1` denominator-pair
+constant is not reused.
+
+This closes only the pointwise noncentral quotient. The finite alias sum, the
+central endpoint branch, phase and Holder insertion, common numerator bound,
+complete `B0`, owner transport, window-15 attainment and every terminal field
+remain open. The cold focal contained inherited graph warnings; the new target
+emitted none. Counters stay exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained. Diagnostic run `31312677116` did not retire
+PRE-VALIDATION; only the cold run above did.

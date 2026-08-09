@@ -108,7 +108,8 @@
         "The sealed scale-aware owner bridge proves scale*ownerDist <= transportL1+2*(scale-1) through the literal blockSite owner, with fine and owner units kept distinct.",
         "The sealed decreasing exponential transport preserves owner rate rho*scale, retains the boundary factor exp(2*rho*(scale-1)), derives the reverse unit-edge endpoint cost, and recombines both endpoint weights with the explicit factor 1+exp(rho). It does not construct the endpoint numerator amplitudes or B0.",
         "The sealed scaled-difference strip theorem bounds one entire difference by |z.re|+rho*exp(rho), preserving the real-momentum and vertical contributions separately.",
-        "The sealed central fine-symbol producer bounds the complete-polydisc symbol by the sum of its vertical budget and real-slice upper bound. It does not assemble the endpoint numerator or B0."
+        "The sealed central fine-symbol producer bounds the complete-polydisc symbol by the sum of its vertical budget and real-slice upper bound. It does not assemble the endpoint numerator or B0.",
+        "The sealed noncentral endpoint-quotient producer combines one scaled difference, one entire averaging amplitude and one inverse fine symbol. The difference cancels exactly one inverse radial power, so the final source-weight redistribution is the literal alpha=0 specialization; no alias sum, endpoint phase, B0 or terminal field is produced."
       ],
       "lean_targets": [
         "YangMills.RG.pow_two_div_pi_le_abs_cmp89Eq245SincAverageAmplitude_inverseScale",
@@ -215,6 +216,11 @@
         "YangMills.RG.norm_cmp89Eq245EntireScaledDifference_le_abs_re_add_vertical",
         "YangMills.RG.cmp89Eq251CentralFineSymbolStripUpperBound",
         "YangMills.RG.norm_cmp89Eq249CentralEntireFineSymbol_le_stripUpperBound",
+        "YangMills.RG.cmp89Eq251ComplexNoncentralEndpointRadialConstant",
+        "YangMills.RG.cmp89Eq251ComplexNoncentralEndpointQuotientConstant",
+        "YangMills.RG.norm_cmp89Eq245EntireScaledDifference_alias_le_two_euclidean",
+        "YangMills.RG.norm_cmp89Eq251ComplexNoncentralEndpointQuotient_le_radialWeight",
+        "YangMills.RG.norm_cmp89Eq251ComplexNoncentralEndpointQuotient_le_sourceWeight",
         "YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate",
         "YangMills.RG.CMP99Eq342RegionalGreenCertificate",
         "YangMills.RG.CMP99Eq389SourceLocalizedThreeSpeciesGreenCertificate"

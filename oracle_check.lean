@@ -3112,3 +3112,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_cmp89Eq245EntireScaledDifference_le_abs_re_add_vertical
 #print axioms YangMills.RG.cmp89Eq251CentralFineSymbolStripUpperBound
 #print axioms YangMills.RG.norm_cmp89Eq249CentralEntireFineSymbol_le_stripUpperBound
+#print axioms YangMills.RG.cmp89Eq251ComplexNoncentralEndpointRadialConstant
+#print axioms YangMills.RG.cmp89Eq251ComplexNoncentralEndpointQuotientConstant
+#print axioms YangMills.RG.norm_cmp89Eq245EntireScaledDifference_alias_le_two_euclidean
+#print axioms YangMills.RG.norm_cmp89Eq251ComplexNoncentralEndpointQuotient_le_radialWeight
+#print axioms YangMills.RG.norm_cmp89Eq251ComplexNoncentralEndpointQuotient_le_sourceWeight
