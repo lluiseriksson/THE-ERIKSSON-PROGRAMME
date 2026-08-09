@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP99SourceLocalizationOwnerForwardDistanceBridge
 
 /-!
-# PRE-VALIDATION audit: forward distance to CMP99 localization owners
+# Axiom audit: forward distance to CMP99 localization owners
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+This audit was compiler-verified in the cold run recorded in the verification
+ledger.
 -/
 
 #print axioms YangMills.RG.finTorusDist_eq_zero_iff

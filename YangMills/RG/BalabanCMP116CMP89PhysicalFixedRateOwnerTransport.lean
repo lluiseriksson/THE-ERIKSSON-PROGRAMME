@@ -7,10 +7,10 @@ import YangMills.RG.BalabanCMP116CMP89PhysicalOwnerExponentialTransport
 import YangMills.RG.BalabanCMP99SourceLocalizationOwnerForwardDistanceBridge
 
 /-!
-# PRE-VALIDATION: fixed-rate CMP89 transport to CMP99 owners
+# Fixed-rate CMP89 transport to CMP99 owners
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+This module and its audit were compiler-verified in the cold run recorded in
+the verification ledger.
 
 The earlier inverse-scale transport keeps the stronger owner rate
 `rho * L^(depth+1)` but necessarily exposes the block-boundary factor

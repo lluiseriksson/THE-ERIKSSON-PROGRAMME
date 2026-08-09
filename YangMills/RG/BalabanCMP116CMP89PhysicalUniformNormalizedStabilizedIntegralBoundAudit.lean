@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP116CMP89PhysicalUniformNormalizedStabilizedIntegralBound
 
 /-!
-# PRE-VALIDATION audit: uniform-coefficient physical CMP89 integral bound
+# Axiom audit: uniform-coefficient physical CMP89 integral bound
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+This audit was compiler-verified in the cold run recorded in the verification
+ledger.
 -/
 
 #print axioms YangMills.RG.cmp116CMP89PhysicalUniformNormalizedStabilizedIntegralAmplitudeBound

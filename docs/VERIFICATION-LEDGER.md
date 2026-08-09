@@ -31914,3 +31914,41 @@ terminal field and `TermSource` remain open.  Live counters stay exactly
 `20/41`, `TermSource = 0`.  Diagnostic run `31323643490` stopped only at the
 majorant's nonnegativity proof; corrected diagnostic run `31323857109` passed
 but did not retire PRE-VALIDATION.  Only the cold run above did.
+
+## Addendum 689 (2026-08-09, **fixed-rate physical owner bound GREEN; exact Fourier/Green identity and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `082833d9ec4f410403beb5f8cfe2b2551379f11b`
+passed cold GitHub Actions run
+[`31326801633`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31326801633)
+with workflow checkpoint `6e0cf31727ee6f93cf90f782f1f5398906c40512`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped.  The first focal completed 8,601 jobs from `17:37:29Z` to
+`18:06:10Z`; the remaining two focals and all three audits ended at
+`18:07:24Z`.  Every stage exited zero.  All nine audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9042129723`, named
+`fixed-rate-physical-owner-bound-082833d9ec4f410403beb5f8cfe2b2551379f11b`,
+has GitHub digest
+`95630cc66f3d330fcaf3dad104a3fb3fb87603d34d50b6317258fee8c3284511`.
+Its deterministic inner archive re-hashed on Windows to
+`27c6b208017a69693d6a0469052c911e2ffed53a8d134957a76675f57a0d5d41`,
+and all 17 entries of the internal `SHA256SUMS` manifest matched.
+
+The sealed forward metric theorem proves `ownerDist <= fineDist` through the
+literal `blockSite` owner, including separate exact cases at fine distances
+zero and one.  Composing with the already sealed physical transport gives
+`ownerDist <= transportL1`.  Exponentiation at the unchanged rate `rho` then
+removes the depth-dependent boundary coefficient while retaining the exact
+endpoint factor `1 + exp rho`.  The normalized stabilized integral is thus
+bounded by an explicit coefficient independent of localization depth.
+
+This is not yet the physical Green regularity constant `B0`.  Primary visual
+inspection of CMP89 (2.49), printed page 585, fixes the target as the
+normalized Holder difference of the left derivative of `G_j Q_j^*`; the
+exact equality between the sealed Fourier integral and that operator remains
+open.  Window 15, every terminal field and `TermSource` remain open.  Live
+counters stay exactly `20/41`, `TermSource = 0`.  Failed diagnostic runs
+`31326152616` and `31326423001` found only elaboration in the metric proof;
+corrected diagnostic run `31326627846` passed but did not retire
+PRE-VALIDATION.  Only the cold run above did.

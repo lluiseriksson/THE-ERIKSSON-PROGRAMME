@@ -7,10 +7,10 @@ import YangMills.RG.BalabanCMP116CMP89PhysicalFixedRateOwnerTransport
 import YangMills.RG.BalabanCMP116CMP89PhysicalNormalizedStabilizedIntegralBound
 
 /-!
-# PRE-VALIDATION: uniform-coefficient physical CMP89 integral bound
+# Uniform-coefficient physical CMP89 integral bound
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+This module and its audit were compiler-verified in the cold run recorded in
+the verification ledger.
 
 The normalized complete stabilized integral is specialized to the literal
 physical Holder and transport displacements.  The fixed-rate owner bridge

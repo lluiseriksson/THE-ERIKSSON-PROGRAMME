@@ -6,10 +6,10 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceLocalizationOwnerDistanceBridge
 
 /-!
-# PRE-VALIDATION: forward distance to CMP99 localization owners
+# Forward distance to CMP99 localization owners
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+This module and its audit were compiler-verified in the cold run recorded in
+the verification ledger.
 
 The inverse-scale bridge already sealed in the tree retains the sharp block
 boundary term

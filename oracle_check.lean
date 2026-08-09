@@ -3149,3 +3149,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116CMP89PhysicalNormalizedStabilizedIntegralAmplitudeBound
 #print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointAmplitudeBound_nonneg
 #print axioms YangMills.RG.norm_cmp116CMP89PhysicalNormalizedStabilizedIntegral_le_owner
+#print axioms YangMills.RG.finTorusDist_eq_zero_iff
+#print axioms YangMills.RG.finBoxDist_eq_zero_iff
+#print axioms YangMills.RG.finBoxDist_blockSite_le_finBoxDist
+#print axioms YangMills.RG.cmp99Eq389SourceLocalizationOwner_dist_le_fineDist
+#print axioms YangMills.RG.cmp99Eq389SourceLocalizationOwner_dist_le_transportL1
+#print axioms YangMills.RG.cmp116CMP89PhysicalTransportWeight_le_fixedRateOwnerWeight
+#print axioms YangMills.RG.cmp116CMP89PhysicalEndpointWeights_le_fixedRateOwnerWeight
+#print axioms YangMills.RG.cmp116CMP89PhysicalUniformNormalizedStabilizedIntegralAmplitudeBound
+#print axioms YangMills.RG.norm_cmp116CMP89PhysicalNormalizedStabilizedIntegral_le_fixedRateOwner

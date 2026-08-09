@@ -7417,3 +7417,46 @@ exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
 Diagnostic run `31323643490` failed only at nonnegativity of the explicit
 amplitude majorant; corrected diagnostic run `31323857109` passed but did not
 retire PRE-VALIDATION.  Only the cold run above did.
+
+### Step 7.5cxiv fixed-rate physical owner bound (SEALED; exact Fourier/Green identity and `B0` open)
+
+Exact source checkpoint `082833d9ec4f410403beb5f8cfe2b2551379f11b`
+passed cold GitHub Actions run
+[`31326801633`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31326801633)
+with workflow checkpoint `6e0cf31727ee6f93cf90f782f1f5398906c40512`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped.  The first focal completed 8,601 jobs from `17:37:29Z` to
+`18:06:10Z`; the remaining two focals and all three audits ended at
+`18:07:24Z`.  Every stage exited zero.  All nine audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9042129723`, named
+`fixed-rate-physical-owner-bound-082833d9ec4f410403beb5f8cfe2b2551379f11b`,
+has GitHub digest
+`95630cc66f3d330fcaf3dad104a3fb3fb87603d34d50b6317258fee8c3284511`.
+Its deterministic inner archive re-hashed on Windows to
+`27c6b208017a69693d6a0469052c911e2ffed53a8d134957a76675f57a0d5d41`,
+identical to the cold-run hash; all 17 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed metric producer proves the complementary comparison
+`ownerDist <= fineDist <= transportL1`.  It retains the fixed positive owner
+rate `rho`, removes the depth-dependent block-boundary coefficient of the
+inverse-scale route, and recombines the two independently shifted physical
+endpoints with the literal one-link cost `1 + exp rho`.  The resulting bound
+for the normalized stabilized integral therefore has a coefficient independent
+of localization depth.
+
+Primary-source scope remains narrower than the old generic Green label.
+CMP89 (2.49), visually checked on printed page 585, is the normalized Holder
+difference of the left derivative of `G_j Q_j^*`.  The sealed integral has
+that source-shaped Fourier integrand, but its exact equality to the physical
+Green operator is still an open Fourier/operator dictionary.  Consequently
+the uniform coefficient is not yet installed as the complete physical `B0`;
+window 15 remains compatible but unattained, every terminal field remains
+open, and counters stay exactly `20/41`, `TermSource = 0`.
+
+Diagnostic runs `31326152616` and `31326423001` exposed only arithmetic and
+lemma-name elaboration in the forward metric proof.  Corrected diagnostic run
+`31326627846` passed but did not retire PRE-VALIDATION.  Only the cold run
+above did.
