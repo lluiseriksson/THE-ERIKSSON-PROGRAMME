@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP89Eq251DisplayedIntegrandPeriodicity
 /-!
 # Physical Brillouin-face seam for the stabilized CMP89 integrand
 
-PRE-VALIDATION: source is present; its `.olean` has not yet been materialized,
-and the result is not yet compiler-verified.
-
 The stabilized extension is not globally postulated periodic.  On the lower
 Brillouin face `p nu = -pi`, this module derives the complete non-singular
 domain of the printed rational formula: every fine symbol, the unit symbol

@@ -31050,3 +31050,40 @@ attainment and every terminal field remain open. Counters stay `20/41`,
 
 Cached diagnostic run `31287705245` passed first. No failed compiler
 iteration or post-checkpoint source change was required.
+
+## Addendum 662 (2026-08-09, **physical stabilized boundary seam GREEN; contour displacement open**)
+
+Exact source checkpoint `c41125577a863b56297ea65e44d247df818ada51`
+passed cold GitHub Actions run
+[`31288836441`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31288836441)
+with workflow checkpoint `a75893c501e00d875ccd91b81c794a7c77c770cf`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,455 jobs and ran from `01:44:42Z` to
+`02:01:58Z`; the audit ended at `02:02:05Z`. Both stages exited zero. All
+three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9030920516`, named
+`cmp89-stabilized-boundary-seam-c41125577a863b56297ea65e44d247df818ada51`,
+has GitHub digest
+`66f34ab062969f639d236b2069e5cd681713c56800c767002048b98ff39ff582`.
+The deterministic inner archive re-hashed on Windows to
+`f3efe7918f45e44949fc9c3e1edfd857c1722c8e3838dd9f02b6d66ee4d5111c`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+The lower Brillouin face now supplies the full non-singular domain of the
+displayed rational formula. The zero alias is controlled by its boundary
+coordinate, the other aliases by the radial gap, and reduced-denominator
+nonvanishing follows from the exact stabilization identity. The physical
+period is transferred to the stabilized integrand only after these facts are
+constructed; no global stabilized-periodicity premise is introduced.
+
+This seals the physical seam, not the contour displacement. Coordinatewise
+reparameterization and application of the generic boundary-seam Cauchy
+theorem, the complete bound `B0`, physical decay rate, window-15 attainment
+and every terminal field remain open. Counters stay `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31288719986` passed first. Failed diagnostic run
+`31288609402` records only explicit physical-parameter annotations required
+to resolve `NeZero`; it changed no statement, hypothesis or constant.

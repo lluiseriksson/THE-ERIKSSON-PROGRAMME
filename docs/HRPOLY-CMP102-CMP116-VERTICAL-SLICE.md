@@ -6398,3 +6398,45 @@ unattained.
 
 Cached diagnostic run `31287705245` passed first. The source compiled on its
 first execution; no failed Lean run or post-checkpoint change was required.
+
+### Step 7.5bu physical stabilized boundary seam (SEALED; contour displacement open)
+
+Exact source checkpoint `c41125577a863b56297ea65e44d247df818ada51`
+passed cold GitHub Actions run
+[`31288836441`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31288836441)
+with workflow checkpoint `a75893c501e00d875ccd91b81c794a7c77c770cf`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `01:44:42Z` to `02:01:58Z`, completed
+8,455 jobs, and the audit ended at `02:02:05Z`. Focal and audit both exited
+zero. All three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9030920516`, named
+`cmp89-stabilized-boundary-seam-c41125577a863b56297ea65e44d247df818ada51`,
+has GitHub digest
+`66f34ab062969f639d236b2069e5cd681713c56800c767002048b98ff39ff582`.
+The deterministic inner archive re-hashed on Windows to
+`f3efe7918f45e44949fc9c3e1edfd857c1722c8e3838dd9f02b6d66ee4d5111c`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+On the lower Brillouin face the sealed producer constructs every
+non-singularity required by the original displayed rational integrand. The
+zero alias obtains its fine-symbol gap from the boundary coordinate; nonzero
+aliases use the sealed radial gap. The reduced denominator is recovered from
+the exact central-fine-times-reduced stabilization identity. Only after this
+literal displayed domain is built does the proof transport the already
+sealed physical period to the stabilized extension. No global stabilized
+periodicity is postulated.
+
+This is the vertical-face seam consumed by the generic boundary-seam Cauchy
+theorem, not yet its coordinatewise specialization. Iterated contour
+displacement, the complete strip bound `B0`, the Fourier/physical-rate
+dictionary, window-15 attainment and every terminal field remain open.
+Counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
+
+Cached diagnostic run `31288719986` passed first. Failed diagnostic run
+`31288609402` records only the explicit pinning of `L`, `j`, `mass`, `a` and
+`rho` at the physical endpoint; no statement, hypothesis, denominator family
+or scalar constant changed.
