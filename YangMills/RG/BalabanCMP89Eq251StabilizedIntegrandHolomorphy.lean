@@ -30,6 +30,7 @@ noncomputable section
 
 /-- Translation by one reciprocal alias is entire in the coarse complex
 momentum. -/
+@[fun_prop]
 theorem differentiable_cmp89Eq248EntireAliasMomentum
     {d : ℕ} (m : Fin d → ℤ) :
     Differentiable ℂ (fun z : Fin d → ℂ =>
@@ -38,6 +39,7 @@ theorem differentiable_cmp89Eq248EntireAliasMomentum
   fun_prop
 
 /-- The bilinear endpoint phase is entire in complex momentum. -/
+@[fun_prop]
 theorem differentiable_cmp89Eq251EntirePhase
     {d : ℕ} (displacement : Fin d → ℝ) :
     Differentiable ℂ (fun z : Fin d → ℂ =>
@@ -48,6 +50,7 @@ theorem differentiable_cmp89Eq251EntirePhase
 /-- Every bare reciprocal-alias numerator is entire.  Division by the fixed
 Holder weight is harmless even when that scalar is zero, because it is a
 constant function of momentum. -/
+@[fun_prop]
 theorem differentiable_cmp89Eq251ComplexBareAliasNumerator
     (d L j : ℕ) (alpha : ℝ) (m : Fin d → ℤ) (mu : Fin d)
     (holderDisplacement transportDisplacement : Fin d → ℝ) :
@@ -97,7 +100,8 @@ theorem differentiableAt_cmp89Eq251ComplexStabilizedNumerator
     have hden :=
       (differentiable_cmp89Eq245EntireScaledLaplacianSymbol
         d (((L : ℝ) ^ j)⁻¹) mass).comp hshift
-    exact hbare.div (hden z) (hfine m (by simpa [aliases] using hm))
+    have hdenInv := (hden z).inv (hfine m (by simpa [aliases] using hm))
+    simpa [div_eq_mul_inv] using hbare.mul hdenInv
   simpa only [cmp89Eq251ComplexStabilizedNumerator, aliases] using
     hcentral.add (hcentralFine.mul hsum)
 
@@ -131,8 +135,9 @@ theorem differentiableAt_cmp89Eq249CentralStabilizedAliasDenominator
     have hden :=
       (differentiable_cmp89Eq245EntireScaledLaplacianSymbol
         d (((L : ℝ) ^ j)⁻¹) mass).comp hshift
-    simpa only [cmp89Eq248ComplexAliasDenominatorSummand] using
-      (hnum z).div (hden z) (hfine m (by simpa [aliases] using hm))
+    have hdenInv := (hden z).inv (hfine m (by simpa [aliases] using hm))
+    simpa [cmp89Eq248ComplexAliasDenominatorSummand, div_eq_mul_inv] using
+      (hnum z).mul hdenInv
   simpa only [cmp89Eq249CentralStabilizedAliasDenominator,
     cmp89Eq249ComplexNoncentralAliasSum, aliases] using
     hcentralFine.add
@@ -161,8 +166,9 @@ theorem differentiableAt_cmp89Eq251ComplexStabilizedIntegrand
   have hden :=
     differentiableAt_cmp89Eq249CentralStabilizedAliasDenominator
       (mass := mass) (a := a) (z := z) hfine
-  simpa only [cmp89Eq251ComplexStabilizedIntegrand] using
-    hnum.div hden hstabilized
+  have hdenInv := hden.inv hstabilized
+  simpa [cmp89Eq251ComplexStabilizedIntegrand, div_eq_mul_inv] using
+    hnum.mul hdenInv
 
 end
 
