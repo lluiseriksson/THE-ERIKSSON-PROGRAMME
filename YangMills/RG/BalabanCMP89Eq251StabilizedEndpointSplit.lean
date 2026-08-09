@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251ComplexContourPhase
 
 /-!
-# PRE-VALIDATION: endpoint split of the stabilized CMP89 integrand
+# Endpoint split of the stabilized CMP89 integrand
 
-The source in this module is present, but its `.olean` has not yet been
-materialized and its result has not yet been verified by the Lean compiler.
+Cold validation: exact source checkpoint
+`e288842456b9a39e148eae4459620edb5abc5eb1` passed GitHub Actions run
+`31292068036` with restore and save of `.lake/build` both skipped. The focal
+completed 8,444 jobs and all six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The Holder phase difference in CMP89 (2.49) has two physical endpoints:
 `holder + transport` and `transport`.  They generally require different

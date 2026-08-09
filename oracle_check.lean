@@ -3031,3 +3031,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116InteractingPhysicalR3Correction_eq_telescope
 #print axioms YangMills.RG.norm_cmp116InteractingPhysicalR3Correction_le
 #print axioms YangMills.RG.intervalIntegral_integral_eq_of_slice_intervalIntegral_eq
+#print axioms YangMills.RG.cmp89Eq251ComplexBareEndpointNumerator
+#print axioms YangMills.RG.cmp89Eq251ComplexBareAliasNumerator_eq_sub_endpoint
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointNumerator
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedNumerator_eq_sub_endpoint
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointIntegrand
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedIntegrand_eq_sub_endpoint

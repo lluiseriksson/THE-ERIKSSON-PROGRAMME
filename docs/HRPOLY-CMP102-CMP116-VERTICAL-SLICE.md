@@ -6518,3 +6518,38 @@ but unattained.
 
 Cached diagnostic run `31291537945` passed first but did not retire
 PRE-VALIDATION. Only the cold run above did.
+
+### Step 7.5bx stabilized endpoint split (SEALED; endpoint contour shifts open)
+
+Exact source checkpoint `e288842456b9a39e148eae4459620edb5abc5eb1`
+passed cold GitHub Actions run
+[`31292068036`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31292068036)
+with workflow checkpoint `edcba146f378d1bfda02d5d0e144c2c01b511adb`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `03:17:34Z` to `03:34:42Z`, completed
+8,444 jobs, and the audit ended at `03:34:49Z`. Both stages exited zero. All
+six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9031912782`, named
+`stabilized-endpoint-split-e288842456b9a39e148eae4459620edb5abc5eb1`,
+has GitHub digest
+`7386a0e210e0f4472521993c0738a5c2f945cd88225c728ac0f6df3559342604`.
+The deterministic inner archive re-hashed on Windows to
+`73dbcd0f3b1dbca487d89c8980fa97a1c9f3d136656e56dfeb968734ed183faf`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed construction does not accept endpoint functions. It rebuilds each
+endpoint from the literal zero-alias branch, noncentral fine-symbol quotients
+and common stabilized denominator, then proves exact subtraction identities
+at the bare-alias, assembled-numerator and complete-integrand levels. Thus the
+holder-plus-transport and transport-only phases can receive distinct signed
+contours without pretending that one shift controls their difference.
+
+No endpoint holomorphy, endpoint seam, contour displacement, `B0`, owner
+dictionary, window-15 attainment or terminal field is produced. Counters stay
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31291955125` passed on the first source and did not
+retire PRE-VALIDATION. Only the cold run above did.

@@ -31154,3 +31154,34 @@ iteration, `B0`, the owner dictionary, window-15 attainment and all terminal
 fields remain open. Counters stay `20/41`, `TermSource = 0`, and window 15
 compatible but unattained. Cached run `31291537945` was diagnostic only and
 did not retire PRE-VALIDATION.
+
+## Addendum 665 (2026-08-09, **stabilized endpoint split GREEN; endpoint contour shifts open**)
+
+Exact source checkpoint `e288842456b9a39e148eae4459620edb5abc5eb1`
+passed cold GitHub Actions run
+[`31292068036`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31292068036)
+with workflow checkpoint `edcba146f378d1bfda02d5d0e144c2c01b511adb`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,444 jobs and ran from `03:17:34Z` to
+`03:34:42Z`; the audit ended at `03:34:49Z`. Both stages exited zero. All six
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9031912782`, named
+`stabilized-endpoint-split-e288842456b9a39e148eae4459620edb5abc5eb1`,
+has GitHub digest
+`7386a0e210e0f4472521993c0738a5c2f945cd88225c728ac0f6df3559342604`.
+The deterministic inner archive re-hashed on Windows to
+`73dbcd0f3b1dbca487d89c8980fa97a1c9f3d136656e56dfeb968734ed183faf`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+The Holder-plus-transport and transport-only endpoint contributions are now
+literal constructed objects with the same alias fibre and denominator as the
+physical stabilized integrand. Exact theorems identify their difference with
+the existing bare numerator, assembled numerator and complete integrand. No
+single contour shift of the unsplit difference is asserted.
+
+Endpoint-specific holomorphy and seams, four-coordinate displacement, `B0`,
+the owner dictionary, window-15 attainment and every terminal field remain
+open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained. Cached run `31291955125` was diagnostic only and did not retire
+PRE-VALIDATION.
