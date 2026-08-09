@@ -123,7 +123,10 @@ theorem intervalIntegral_cmp89Eq251ComplexStabilizedIntegrand_coordinateShift
           (rho := rho)
         ha hmassPos hrho hamplitude hradius hwindow hmass nu mu hp hface
           hrealY (himag_of_mem y hy) holderU transportU
-    simpa [f, cmp89Eq251PhysicalCoordinateLine_two_pi_add] using hseam
+    unfold f
+    convert hseam using 1
+    exact cmp89Eq251PhysicalCoordinateLine_two_pi_add nu z
+      (y * Complex.I)
   have hdiff : DifferentiableOn ℂ f
       (Set.uIcc 0 (2 * Real.pi) ×ℂ Set.uIcc 0 eta) := by
     intro w hw
