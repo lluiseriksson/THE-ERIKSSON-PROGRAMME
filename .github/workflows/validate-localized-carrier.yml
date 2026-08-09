@@ -1,4 +1,4 @@
-name: Validate physical owner exponential transport
+name: Validate CMP89 endpoint strip-factor bounds
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 993f3a465244ebc7a7c64b44e5ee260ff26e0b21
+  SOURCE_SHA: aa7cf49782924c7e4372db0a68c82827fbde9cf0
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -22,9 +22,10 @@ env:
     physical-site-transport-dictionary
     stabilized-endpoint-recombination
     signed-lattice-l1-exponential-sum
+    physical-owner-exponential-transport
 
 jobs:
-  physical-owner-exponential-transport:
+  endpoint-strip-factor-bounds:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -89,7 +90,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-physical-owner-exponential-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-endpoint-strip-factor-bounds-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -123,8 +124,10 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP116CMP89PhysicalOwnerExponentialTransport.lean \
-            YangMills/RG/BalabanCMP116CMP89PhysicalOwnerExponentialTransportAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251EntireScaledDifferenceStripUpper.lean \
+            YangMills/RG/BalabanCMP89Eq251EntireScaledDifferenceStripUpperAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointCentralFineUpper.lean \
+            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointCentralFineUpperAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -146,10 +149,14 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage physical_owner_exponential_transport_focal \
-            lake build YangMills.RG.BalabanCMP116CMP89PhysicalOwnerExponentialTransport
-          run_stage physical_owner_exponential_transport_audit \
-            lake env lean YangMills/RG/BalabanCMP116CMP89PhysicalOwnerExponentialTransportAudit.lean
+          run_stage entire_scaled_difference_strip_upper_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251EntireScaledDifferenceStripUpper
+          run_stage entire_scaled_difference_strip_upper_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251EntireScaledDifferenceStripUpperAudit.lean
+          run_stage stabilized_endpoint_central_fine_upper_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251StabilizedEndpointCentralFineUpper
+          run_stage stabilized_endpoint_central_fine_upper_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251StabilizedEndpointCentralFineUpperAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -163,7 +170,8 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "physical_owner_exponential_transport_audit.log": 5,
+              "entire_scaled_difference_strip_upper_audit.log": 1,
+              "stabilized_endpoint_central_fine_upper_audit.log": 2,
           }
           result = {}
           for name, expected in audits.items():
@@ -195,17 +203,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              physical-owner-exponential-transport-evidence.tar.gz
-          sha256sum physical-owner-exponential-transport-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              endpoint-strip-factor-bounds-evidence.tar.gz
+          sha256sum endpoint-strip-factor-bounds-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: physical-owner-exponential-transport-${{ env.SOURCE_SHA }}
+          name: endpoint-strip-factor-bounds-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            physical-owner-exponential-transport-evidence.tar.gz
+            endpoint-strip-factor-bounds-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -214,4 +222,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-physical-owner-exponential-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-endpoint-strip-factor-bounds-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
