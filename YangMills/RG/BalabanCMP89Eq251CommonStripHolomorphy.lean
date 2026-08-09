@@ -8,8 +8,11 @@ import YangMills.RG.BalabanCMP89Eq251StabilizedIntegrandHolomorphy
 /-!
 # Common-strip holomorphy of the stabilized CMP89 integrand
 
-PRE-VALIDATION: source is present; its `.olean` has not yet been materialized,
-and the result is not yet compiler-verified.
+Cold validation: exact source checkpoint
+`44e68aee0ec5910738068ee4188a6bbbfd00e4bd` passed GitHub Actions run
+`31287808567` with `.lake/build` restore and save both skipped. The focal
+completed 8,444 jobs and all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The already sealed scalar-radius theorem supplies one positive `rho` for the
 amplitude, noncentral-gap and stabilized-denominator budgets simultaneously.

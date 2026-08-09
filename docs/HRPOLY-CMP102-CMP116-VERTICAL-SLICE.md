@@ -6357,3 +6357,44 @@ Cached diagnostic run `31286813485` passed first. Failed runs `31286438596`,
 Fréchet inversion replaced an ambiguous one-dimensional quotient derivative,
 and the already proved entire average amplitude was registered locally for
 `fun_prop`. No statement, denominator family, hypothesis or constant changed.
+
+### Step 7.5bt common-strip stabilized holomorphy (SEALED; physical boundary seam open)
+
+Exact source checkpoint `44e68aee0ec5910738068ee4188a6bbbfd00e4bd`
+passed cold GitHub Actions run
+[`31287808567`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31287808567)
+with workflow checkpoint `07dce14e3401bd3f2e156c79bb8ad63534fb7df3`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `01:14:34Z` to `01:30:41Z`, completed
+8,444 jobs, and the audit ended at `01:30:49Z`. Focal and audit both exited
+zero. All three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9030582290`, named
+`cmp89-common-strip-holomorphy-44e68aee0ec5910738068ee4188a6bbbfd00e4bd`,
+has GitHub digest
+`96ec9b4de34465ddae16f6fe1a1c6f1c327c225a8f9ea6ddc5e8648978a1a838`.
+The deterministic inner archive re-hashed on Windows to
+`a1dd47599a50e82854e387b48f350357568b8ce2ada5f1c282528f22d68b16cb`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed producer consumes the one common positive scalar radius already
+constructed for the amplitude, noncentral-gap and stabilized-denominator
+budgets. It derives nonvanishing of every literal noncentral fine symbol,
+derives stabilized-denominator nonvanishing, and feeds exactly those two
+families to the conditional holomorphy theorem. Unit-symbol,
+reduced-denominator and central-fine-symbol nonvanishing are not reintroduced.
+The flowing inputs `0 < mass` and `mass^2 <= 1` remain explicit.
+
+Thus the stabilized integrand is now holomorphic throughout one common
+positive strip by a single compiled witness, rather than by three separately
+compatible radii. The next brick must derive the boundary seam on the two
+Brillouin faces; after that, the generic boundary-seam Cauchy theorem can be
+specialized coordinatewise. No contour equality, complete bound `B0`,
+physical-rate dictionary, window-15 attainment or terminal field is produced.
+Counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
+
+Cached diagnostic run `31287705245` passed first. The source compiled on its
+first execution; no failed Lean run or post-checkpoint change was required.
