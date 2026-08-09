@@ -6833,3 +6833,41 @@ dictionary, window-15 attainment and every terminal field remain open.
 Counters stay `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained. Cached diagnostic run `31300025712` did not retire
 PRE-VALIDATION; only the cold run above did.
+
+### Step 7.5cg stabilized endpoint recombination (SEALED; physical owner dictionary and `B0` open)
+
+Exact source checkpoint `b47f419570f33419bfefb49f8da9a78b52aac09c`
+passed cold GitHub Actions run
+[`31301585184`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31301585184)
+with workflow checkpoint `6c1ac2e58d641811a8431985827019ccd0736274`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `07:39:15Z` to `07:56:46Z`, completed
+8,469 jobs, and the audit ended at `07:56:55Z`. Both stages exited zero. All
+six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9034863784`, named
+`stabilized-endpoint-recombination-b47f419570f33419bfefb49f8da9a78b52aac09c`,
+has GitHub digest
+`91cb0f7ffe8ac08b6e2791e75b002a7c25b6756fb38b82a768758260b03c637e`.
+The deterministic inner archive re-hashed on Windows to
+`99b50c6f9658156a7e3e8cea218c4bcdefb50c19243f1aca2bfffa7ad025b89c`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The complete real stabilized product integral is now exactly the difference
+of the two endpoint integrals shifted along their own signed four-coordinate
+contours. No common contour or endpoint-bound family is accepted. The same
+brick names the literal unit-edge condition
+`CMP89Eq251UnitLatticeBondDisplacement` and proves that it transports the
+second `l1` decay to the first with the explicit multiplicative cost
+`exp rho`.
+
+The current Fourier endpoint variables are still arbitrary integer lattice
+displacements. Consequently the unit-edge condition is not silently attached
+to the abstract telescope: the physical owner/bond dictionary must construct
+it from the two endpoints of one lattice link. The two endpoint magnitude
+bounds, their complete `B0`, Fourier-to-owner transport, window-15 attainment
+and all terminal fields remain open. Counters stay exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Cached diagnostic
+run `31301472527` did not retire PRE-VALIDATION; only the cold run above did.

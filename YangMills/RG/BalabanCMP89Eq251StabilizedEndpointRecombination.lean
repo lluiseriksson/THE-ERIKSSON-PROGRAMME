@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductContourTelescope
 import YangMills.RG.BalabanCMP89SignedLatticeL1ExponentialSum
 
 /-!
-# PRE-VALIDATION: recombination of the two stabilized CMP89 endpoints
+# Cold-sealed recombination of the two stabilized CMP89 endpoints
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`b47f419570f33419bfefb49f8da9a78b52aac09c` by cold GitHub Actions run
+`31301585184`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,469 jobs, the audit exited zero, and all six audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The literal stabilized integrand is the difference of two endpoint terms.
 Each endpoint has already been transported along its own signed four-coordinate

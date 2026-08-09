@@ -31426,3 +31426,35 @@ bound `B0`, owner dictionary, window-15 attainment and all terminal fields
 remain open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained. Cached diagnostic run `31300025712` was diagnostic only and
 did not retire PRE-VALIDATION.
+
+## Addendum 674 (2026-08-09, **signed endpoint recombination and explicit neighbour cost GREEN; `B0` and window 15 open; 20/41 unchanged**)
+
+Exact source checkpoint `b47f419570f33419bfefb49f8da9a78b52aac09c`
+passed cold GitHub Actions run
+[`31301585184`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31301585184)
+with workflow checkpoint `6c1ac2e58d641811a8431985827019ccd0736274`.
+The run recorded `COLD_MODE=true`; restore and save of `.lake/build` were
+both skipped. The focal completed 8,469 jobs from `07:39:15Z` to `07:56:46Z`;
+the audit ended at `07:56:55Z`. Both stages exited zero. All six audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9034863784`, named
+`stabilized-endpoint-recombination-b47f419570f33419bfefb49f8da9a78b52aac09c`,
+has GitHub digest
+`91cb0f7ffe8ac08b6e2791e75b002a7c25b6756fb38b82a768758260b03c637e`.
+Its deterministic inner archive re-hashed on Windows to
+`99b50c6f9658156a7e3e8cea218c4bcdefb50c19243f1aca2bfffa7ad025b89c`,
+and all 13 manifest entries re-hashed exactly.
+
+The exact real stabilized product integral is the difference of two endpoint
+integrals transported on separately signed contours. A separate lattice lemma
+proves the required comparison of their `l1` decays with the visible factor
+`exp rho`, conditional on the named statement that the Holder displacement is
+one unit edge. The future physical owner dictionary must construct that
+condition; it is not accepted by the abstract telescope as hidden geometry.
+
+This is infrastructure below window 15. It does not construct either endpoint
+magnitude bound, the complete `B0`, the owner-to-lattice dictionary, rows
+23--24, or a `TermSource`. Live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Cached diagnostic
+run `31301472527` was not used to retire PRE-VALIDATION.
