@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251DisplayedIntegrandPeriodicity
 
 /-!
-# Axiom audit for displayed/stabilized integrand physical periodicity
-
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and this result has not yet been verified by the compiler.
+# Axiom audit for cold-sealed displayed/stabilized integrand physical periodicity
 -/
 
 #print axioms YangMills.RG.cmp89Eq251ComplexBareMomentumFactor

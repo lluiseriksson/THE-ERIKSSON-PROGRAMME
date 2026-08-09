@@ -10,8 +10,10 @@ import YangMills.RG.BalabanCMP89Eq251LatticePhasePeriodicity
 /-!
 # Physical periodicity of the displayed and stabilized CMP89 integrands
 
-PRE-VALIDATION: source is present, the `.olean` has not yet been materialized,
-and this result has not yet been verified by the compiler.
+Compiler verification: exact source checkpoint
+`747e7c6d892ed7c6bbabb0488ca3bfd87c101af0`, cold GitHub Actions run
+`31285123749` (8,452 jobs; focal and eight-declaration axiom audit exit zero;
+restore and save of `.lake/build` both skipped).
 
 The endpoint displacements in CMP89 are integer lattice data.  This module
 therefore derives the `2*pi*N` period of the literal bare momentum numerator

@@ -6231,3 +6231,48 @@ window-15 attainment or terminal field is produced. Counters remain `20/41`,
 Cached diagnostic run `31283828202` passed before the cold seal. No failed
 Lean run was required: the quotient, cast specialization, fibre reindexing
 and two distinct physical periods compiled on their first execution.
+
+### Step 7.5bq displayed/stabilized integrand physical period (SEALED; contour integration open)
+
+Exact source checkpoint `747e7c6d892ed7c6bbabb0488ca3bfd87c101af0`
+passed cold GitHub Actions run
+[`31285123749`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31285123749)
+with workflow checkpoint `6ef911e2e7e83e6e6c0de99a67d7b42970212e70`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `23:59:15Z` to `00:16:16Z`, completed
+8,452 jobs, and the audit ended at `00:16:24Z`. Focal and audit both exited
+zero. All eight audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9029752304`, named
+`cmp89-displayed-integrand-periodicity-747e7c6d892ed7c6bbabb0488ca3bfd87c101af0`,
+has GitHub digest
+`87d9be0753970c094fd48fd670c7dbf61702aefa9cb465311aa099c83ad00e4d`.
+The deterministic inner archive re-hashed on Windows to
+`bf41ece13bc0b6bb0b514455be85f376d32dd9bd2a25216082d615572be52665`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed brick constructs the bare numerator as a literal function of one
+already-aliased momentum and derives its period from integer endpoint data,
+the lattice phase identity, the fine-difference period and the average
+period. The displayed finite sum is transported by the centered alias
+permutation. Fine-denominator nonvanishing at the shifted endpoint is then
+derived through that same permutation, while unit and reduced nonvanishing
+transport through their sealed periods.
+
+The stabilized extension is not postulated periodic globally. Its equality
+is obtained only by moving stabilized-to-displayed at the shifted endpoint,
+using displayed periodicity, and moving displayed-to-stabilized at the
+original endpoint. Thus the theorem has exactly the original non-singular
+domain hypotheses and no duplicate shifted-domain input.
+
+Contour integration, the actual strip bound `B0`, the Fourier/physical-rate
+dictionary and window-15 attainment remain open. This brick produces no
+terminal field: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+Cached diagnostic run `31285019174` passed before the cold seal. Failed run
+`31284890631` preserves one elaborational repair: the bare-momentum
+definition had to be unfolded symmetrically before rewriting its four
+factors. No statement, domain hypothesis, period or physical object changed.
