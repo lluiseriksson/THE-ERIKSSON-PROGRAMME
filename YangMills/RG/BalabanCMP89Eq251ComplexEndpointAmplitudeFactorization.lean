@@ -47,11 +47,12 @@ theorem cmp89Eq251EntireAliasPhase_eq_add_latticePairing
   simp only [cmp89Eq251EntirePhase, cmp89Eq248EntireAliasMomentum,
     add_mul, Finset.sum_add_distrib]
   congr 1
-  rw [cmp89Eq251AliasLatticePairing, Finset.mul_sum]
+  simp only [cmp89Eq251AliasLatticePairing, cmp89Eq245AliasShift,
+    cmp89Eq251LatticeDisplacement]
+  push_cast
+  rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro mu _
-  simp only [cmp89Eq245AliasShift, cmp89Eq251LatticeDisplacement]
-  push_cast
   ring
 
 /-- Every reciprocal alias has exactly the zero-alias endpoint phase on a
