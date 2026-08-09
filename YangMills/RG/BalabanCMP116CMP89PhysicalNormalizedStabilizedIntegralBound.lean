@@ -80,6 +80,8 @@ theorem norm_cmp116CMP89PhysicalNormalizedStabilizedIntegral_le_owner
     norm_cmp89Eq249NormalizedFourDimensionalStabilizedIntegral_le
       (L := L) (j := j) (mass := mass) (a := a) (alpha := alpha)
       (rho := rho) ha hmassPos hrho hradius hmass hwindow hamplitude mu
+      (holderU := cmp116CMP89PhysicalBondHolderDisplacement b)
+      (transportU := cmp116CMP89PhysicalBondTransportDisplacement b y)
       (cmp116CMP89PhysicalBondHolderDisplacement_unit b)
   have hweights :=
     cmp116CMP89PhysicalEndpointWeights_le_ownerWeight depth hrho b y
