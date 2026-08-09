@@ -9,10 +9,7 @@ import YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointProductContour
 import YangMills.RG.BalabanCMP89Eq251UnitLatticeHolderNormalization
 
 /-!
-# PRE-VALIDATION: normalized physical fine-lattice endpoint integral
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+# Cold-sealed normalized physical fine-lattice endpoint integral
 
 CMP89 (2.49) places the physical endpoint on `(L^j)^(-1) Z^4` and the literal
 factor `(2*pi)^(-4)` outside the Brillouin integral.  This module combines the

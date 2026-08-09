@@ -7801,3 +7801,37 @@ physical `B0`, window 15 and terminal fields remain open. Counters stay exactly
 `20/41`, `TermSource = 0`. Diagnostic run `31340764824` passed with a restored
 graph but did not seal; only the cold run above retired the two PRE-VALIDATION
 marks.
+
+### Step 7.5cxxv normalized fine-lattice endpoint integral (SEALED; recombination open)
+
+Exact source checkpoint `e281517bd3537c7fb244355421c03575912b6011`
+passed cold GitHub Actions run
+[`31342326880`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31342326880)
+with workflow checkpoint `a3849fb3b87544c237502b140e6c82c5aea296c0`.
+The job completed in `17m35s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `23:39:04Z` to `23:54:17Z`, the audit ended
+at `23:54:26Z`, and both stages exited zero. All seven audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9046404157`, named
+`normalized-fine-lattice-endpoint-integral-e281517bd3537c7fb244355421c03575912b6011`,
+has GitHub digest
+`d95f02e2ebe95df886e684e25bc8a43e20573aa9a431b06a29ce980a4adc012d`.
+Its deterministic inner archive re-hashed on Windows to
+`f86d57f5bc283450889f1e16d13decefbefeefae2d12c0304bab375f255efc5f`;
+all 13 manifest entries re-hashed exactly.
+
+The source normalization `(2*pi)^(-4)` is applied to the sealed physical
+fine-lattice endpoint telescope and cancels the translated Brillouin-cube
+volume exactly. The endpoint bound retains the literal physical displacement
+`(L^j)^(-1) u`. A named scale lemma proves that a unit fine edge costs exactly
+`exp (rho * (L^j)^(-1))`, rather than silently inheriting the unit-lattice
+factor `exp rho`.
+
+This closes one normalized endpoint only. Exact subtraction of the two
+independently shifted endpoints, the physical unit-bond producer, the
+Fourier/operator dictionary, physical `B0`, window 15 and terminal fields
+remain open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
+`31342182306` passed with a restored graph but did not seal; failed diagnostic
+run `31342007885` remains preserved as an elaboration failure. Only the cold
+run above retired the two PRE-VALIDATION marks.

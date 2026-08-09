@@ -32259,3 +32259,33 @@ Normalized integration, endpoint recombination, the unit-edge comparison,
 physical `B0`, window 15 and terminal fields remain open. Live counters stay
 exactly `20/41`, `TermSource = 0`. Diagnostic PASS `31340764824` did not seal;
 only the cold run above did.
+
+## Addendum 700 (2026-08-10, **normalized fine-lattice endpoint integral GREEN; recombination open; 20/41 unchanged**)
+
+Exact source checkpoint `e281517bd3537c7fb244355421c03575912b6011`
+passed cold GitHub Actions run
+[`31342326880`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31342326880)
+with workflow checkpoint `a3849fb3b87544c237502b140e6c82c5aea296c0`.
+The job completed in `17m35s`; restore/save of `.lake/build` were skipped.
+Focal and audit exited zero, and all seven audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9046404157`, named
+`normalized-fine-lattice-endpoint-integral-e281517bd3537c7fb244355421c03575912b6011`,
+has GitHub digest
+`d95f02e2ebe95df886e684e25bc8a43e20573aa9a431b06a29ce980a4adc012d`.
+Its deterministic inner archive re-hashed on Windows to
+`f86d57f5bc283450889f1e16d13decefbefeefae2d12c0304bab375f255efc5f`;
+all 13 internal manifest entries matched.
+
+The normalized endpoint equality is derived from the sealed physical
+four-coordinate telescope and the literal `(2*pi)^(-4)` source factor. The
+pointwise physical fine-lattice estimate is integrated without volume loss.
+The unit-edge comparison is also scale-correct: its visible cost is
+`exp (rho * (L^j)^(-1))`, not `exp rho`.
+
+Two-endpoint recombination, the physical unit-bond producer, the
+Fourier/operator dictionary, physical `B0`, window 15 and terminal fields
+remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Diagnostic
+PASS `31342182306` did not seal; failed diagnostic `31342007885` is retained
+as an elaboration failure. Only the cold run above did.
