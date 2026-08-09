@@ -98,7 +98,7 @@ theorem intervalIntegral_cmp89Eq251ComplexStabilizedIntegrand_coordinateShift
     by_cases hk : k = nu
     · subst k
       have hyAbs : |y| ≤ |eta| := by
-        simpa using abs_sub_left_of_mem_uIcc hy
+        simpa using Set.abs_sub_left_of_mem_uIcc hy
       simpa [cmp89Eq251PhysicalCoordinateLine, Pi.single_apply,
         hnuImag] using hyAbs.trans heta
     · simpa [cmp89Eq251PhysicalCoordinateLine, Pi.single_apply, hk]
@@ -127,10 +127,11 @@ theorem intervalIntegral_cmp89Eq251ComplexStabilizedIntegrand_coordinateShift
     intro w hw
     rw [Complex.mem_reProdIm] at hw
     have hx : 0 ≤ w.re ∧ w.re ≤ 2 * Real.pi := by
-      simpa [Set.uIcc_of_le (mul_nonneg (by norm_num) Real.pi_pos.le)]
-        using hw.1
+      have hx' := hw.1
+      rw [Set.uIcc_of_le (mul_nonneg (by norm_num) Real.pi_pos.le)] at hx'
+      exact hx'
     have hyAbs : |w.im| ≤ |eta| := by
-      simpa using abs_sub_left_of_mem_uIcc hw.2
+      simpa using Set.abs_sub_left_of_mem_uIcc hw.2
     let pw : Fin 4 → ℝ := fun k =>
       (cmp89Eq251PhysicalCoordinateLine nu z w k).re
     have hpw : ∀ k, |pw k| ≤ Real.pi := by
@@ -165,8 +166,9 @@ theorem intervalIntegral_cmp89Eq251ComplexStabilizedIntegrand_coordinateShift
           (fun _ => rfl) himagW
     have hinner : DifferentiableAt ℂ
         (cmp89Eq251PhysicalCoordinateLine nu z) w := by
+      unfold cmp89Eq251PhysicalCoordinateLine
       fun_prop
-    exact houter.comp w hinner
+    simpa [f] using (houter.comp w hinner).differentiableWithinAt
   exact intervalIntegral_eq_verticalShift_of_boundary_eq_of_differentiableOn
     f (2 * Real.pi) eta hboundary hdiff
 
