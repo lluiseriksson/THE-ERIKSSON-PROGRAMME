@@ -3098,3 +3098,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116CMP89PhysicalBondTransportDisplacement_realL1_eq
 #print axioms YangMills.RG.cmp116CMP89PhysicalBondTransportDisplacement_realL1_le_four_finBoxDist
 #print axioms YangMills.RG.cmp116CMP89PhysicalBondFirstEndpointDisplacement_realL1_le_add_one
+#print axioms YangMills.RG.mul_finBoxDist_blockSite_le_finBoxDist_add_two_mul_sub_one
+#print axioms YangMills.RG.finBoxDist_le_sum_finTorusDist
+#print axioms YangMills.RG.finBoxDist_equivCast_size
+#print axioms YangMills.RG.cmp99Eq389SourceLocalizationOwner_mul_dist_le_fineDist_add_boundary
+#print axioms YangMills.RG.finBoxDist_le_cmp116CMP89PhysicalBondTransportDisplacement_realL1
+#print axioms YangMills.RG.cmp99Eq389SourceLocalizationOwner_mul_dist_le_transportL1_add_boundary

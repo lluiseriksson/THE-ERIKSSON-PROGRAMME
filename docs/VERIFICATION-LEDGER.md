@@ -31558,3 +31558,36 @@ visible before the exponential rate is transported. No complete `B0`, window
 exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
 Diagnostic run `31306685086` was not used to retire PRE-VALIDATION; only the
 cold run above was.
+
+## Addendum 678 (2026-08-09, **fine-to-owner metric conversion GREEN; exponential transport and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `fcec88e8a0a89ed32332c7f1c6bcc76fb3bfb61d`
+passed cold GitHub Actions run
+[`31308045458`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31308045458)
+with workflow checkpoint `f9e490578a9639f2a637f8c161c42e5520441bee`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,590 jobs from `10:21:01Z` to `10:47:36Z`;
+the audit ended at `10:47:42Z`. Both stages exited zero. All six audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9036860542`, named
+`source-owner-distance-bridge-fcec88e8a0a89ed32332c7f1c6bcc76fb3bfb61d`,
+has GitHub digest
+`7b5510f6d267fa83f4bd2aeacc2dd5e83b652da4d35cf1017dd9655d02a413f7`.
+Its deterministic inner archive re-hashed on Windows to
+`338a53f61ea9355eb64c6925c20a18dbfa9604e75b23048df67056cd4cd5737a`,
+and all 13 manifest entries re-hashed exactly.
+
+The sealed bridge proves the inverse-scale comparison
+`ell*ownerDist <= fineDist+2*(ell-1)`, transports it through the exact CMP99
+carrier cast, proves `fineDist <= transportL1` for the sealed CMP89 fine-site
+displacement, and composes the two. Fine and owner units remain explicit; no
+coarse owner is subtracted from a fine endpoint.
+
+The next analytic brick must exponentiate this decreasing inequality, exposing
+owner rate `rho*ell`, block-boundary factor `exp(2*rho*(ell-1))`, and the
+separate physical-link factor `exp rho`. It does not yet construct the complete
+`B0`, attain window 15, discharge a terminal field or inhabit `TermSource`.
+Live counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained. Diagnostic run `31307905304` was not used to retire
+PRE-VALIDATION; only the cold run above was.

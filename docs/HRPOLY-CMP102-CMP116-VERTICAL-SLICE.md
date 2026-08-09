@@ -6990,3 +6990,42 @@ The complete endpoint bound `B0`, window-15 attainment and all terminal fields
 remain open. Counters stay exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained. Diagnostic run `31306685086` did not retire
 PRE-VALIDATION; only the cold run above did.
+
+### Step 7.5ciii fine-to-localization-owner distance bridge (SEALED; exponential transport and `B0` open)
+
+Exact source checkpoint `fcec88e8a0a89ed32332c7f1c6bcc76fb3bfb61d`
+passed cold GitHub Actions run
+[`31308045458`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31308045458)
+with workflow checkpoint `f9e490578a9639f2a637f8c161c42e5520441bee`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal ran from `10:21:01Z` to `10:47:36Z`, completed 8,590
+jobs, and the audit ended at `10:47:42Z`. Both stages exited zero. All six
+audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9036860542`, named
+`source-owner-distance-bridge-fcec88e8a0a89ed32332c7f1c6bcc76fb3bfb61d`,
+has GitHub digest
+`7b5510f6d267fa83f4bd2aeacc2dd5e83b652da4d35cf1017dd9655d02a413f7`.
+The deterministic inner archive re-hashed on Windows to
+`338a53f61ea9355eb64c6925c20a18dbfa9604e75b23048df67056cd4cd5737a`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The generic metric theorem now proves, for block side `ell`,
+`ell * ownerDist <= fineDist + 2*(ell-1)` from the exact distance between
+lower block corners and the two same-block boundary estimates. It is
+specialized through the literal `Equiv.cast` carrier and the named CMP99
+source-localization owner. A second sealed theorem proves
+`fineDist <= transportL1` for the CMP89 signed displacement and composes both
+facts without subtracting objects in different units.
+
+This closes the metric conversion, not the analytic endpoint bound. The next
+brick must exponentiate the inequality with signs checked in the decreasing
+exponential, producing the owner rate `rho*ell` and retaining the boundary
+factor `exp(2*rho*(ell-1))`. It must then be combined with the separate
+single-edge factor `exp rho`; neither factor may be absorbed prematurely into
+an unnamed constant. `B0`, window-15 attainment and all terminal fields remain
+open. Counters stay exactly `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained. Diagnostic run `31307905304` did not retire PRE-VALIDATION;
+only the cold run above did.

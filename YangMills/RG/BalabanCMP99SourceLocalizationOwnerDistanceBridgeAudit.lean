@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP99SourceLocalizationOwnerDistanceBridge
 
 /-!
-# PRE-VALIDATION audit: fine-site to localization-owner distance
+# Cold-sealed audit: fine-site to localization-owner distance
 
-Source is present, its `.olean` has not yet been materialized, and these audit
-results have not yet been verified by the compiler.
+Compiler-verified with the source at checkpoint
+`fcec88e8a0a89ed32332c7f1c6bcc76fb3bfb61d` by cold GitHub Actions run
+`31308045458`.
 -/
 
 #print axioms YangMills.RG.mul_finBoxDist_blockSite_le_finBoxDist_add_two_mul_sub_one

@@ -9,10 +9,13 @@ import YangMills.RG.BlockBasepointDistance
 import YangMills.RG.PhysicalShellLocalityQ
 
 /-!
-# PRE-VALIDATION: fine-site distance to CMP99 localization-owner distance
+# Cold-sealed fine-site distance to CMP99 localization-owner distance
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`fcec88e8a0a89ed32332c7f1c6bcc76fb3bfb61d` by cold GitHub Actions run
+`31308045458`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,590 jobs, the audit exited zero, and all six audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 contour displacement produces decay in fine-lattice edge units, while
 CMP99 (3.42)/(3.89) consumes distance between localization-block owners.  This
