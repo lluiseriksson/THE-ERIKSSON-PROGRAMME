@@ -31087,3 +31087,39 @@ and every terminal field remain open. Counters stay `20/41`,
 Cached diagnostic run `31288719986` passed first. Failed diagnostic run
 `31288609402` records only explicit physical-parameter annotations required
 to resolve `NeZero`; it changed no statement, hypothesis or constant.
+
+## Addendum 663 (2026-08-09, **one-coordinate physical contour shift GREEN; iteration open**)
+
+Exact source checkpoint `0ec0a3f4e5dbd1491ed48c60f00cae6418d485da`
+passed cold GitHub Actions run
+[`31290450731`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31290450731)
+with workflow checkpoint `e7443a2e9a72ac889c1246f7beb04ba4ccd8eb8b`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,458 jobs and ran from `02:31:40Z` to
+`02:49:46Z`; the audit ended at `02:49:53Z`. Both stages exited zero. All
+three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9031420870`, named
+`cmp89-one-coordinate-contour-shift-0ec0a3f4e5dbd1491ed48c60f00cae6418d485da`,
+has GitHub digest
+`e6f7242c5a25a5d98ad03a37073e98a9bf5bb381dab114daf255f1bb90b0c6c4`.
+The deterministic inner archive re-hashed on Windows to
+`83e857ed718464b3d16629e85e7d799b4f4f5ecbac713847ebef607bfbccca04`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+One Brillouin coordinate is reparameterized as a length-`2*pi` line from the
+lower face. Common-strip holomorphy supplies differentiability throughout the
+rectangle and the physical seam cancels the two vertical edges, so the
+generic Cauchy engine derives the shifted integral equality. No global
+periodicity of the stabilized extension is assumed.
+
+This is one coordinate step, not the complete four-dimensional contour
+deformation. Its iteration, the complete bound `B0`, physical decay rate,
+window-15 attainment and every terminal field remain open. Counters stay
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31290333906` passed first. Four failed diagnostic
+runs record only elaborational repairs to namespaces, typeclass pins,
+derivative construction and seam orientation; no mathematical interface or
+constant changed.

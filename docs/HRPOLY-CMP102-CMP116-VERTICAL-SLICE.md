@@ -6440,3 +6440,44 @@ Cached diagnostic run `31288719986` passed first. Failed diagnostic run
 `31288609402` records only the explicit pinning of `L`, `j`, `mass`, `a` and
 `rho` at the physical endpoint; no statement, hypothesis, denominator family
 or scalar constant changed.
+
+### Step 7.5bv one-coordinate physical contour shift (SEALED; four-coordinate iteration open)
+
+Exact source checkpoint `0ec0a3f4e5dbd1491ed48c60f00cae6418d485da`
+passed cold GitHub Actions run
+[`31290450731`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31290450731)
+with workflow checkpoint `e7443a2e9a72ac889c1246f7beb04ba4ccd8eb8b`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `02:31:40Z` to `02:49:46Z`, completed
+8,458 jobs, and the audit ended at `02:49:53Z`. Focal and audit both exited
+zero. All three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9031420870`, named
+`cmp89-one-coordinate-contour-shift-0ec0a3f4e5dbd1491ed48c60f00cae6418d485da`,
+has GitHub digest
+`e6f7242c5a25a5d98ad03a37073e98a9bf5bb381dab114daf255f1bb90b0c6c4`.
+The deterministic inner archive re-hashed on Windows to
+`83e857ed718464b3d16629e85e7d799b4f4f5ecbac713847ebef607bfbccca04`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed theorem translates one physical coordinate from `[-pi,pi]` to a
+line of length `2*pi`, constructs holomorphy of that line throughout the
+rectangle from the common strip, supplies the two vertical-edge equality
+from the physical seam, and applies the generic boundary-seam Cauchy theorem.
+The coordinate is real before it is shifted; previously shifted coordinates
+may already carry imaginary parts bounded by the same `rho`. No global
+periodicity premise is used.
+
+This proves one coordinate integral equality only. Iteration over all four
+coordinates, the complete strip bound `B0`, the Fourier/physical-rate
+dictionary, window-15 attainment and every terminal field remain open.
+Counters remain `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
+
+Cached diagnostic run `31290333906` passed first. Failed diagnostic runs
+`31289762263`, `31289924013`, `31290057994` and `31290196349` record only
+namespace qualification, pinned physical parameters, the explicit
+single-coordinate derivative and orientation of the named seam through the
+integrand. They changed no statement, hypothesis, radius or scalar constant.

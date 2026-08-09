@@ -9,9 +9,6 @@ import YangMills.RG.HolomorphicVerticalShiftBoundary
 /-!
 # One physical CMP89 coordinate contour shift
 
-PRE-VALIDATION: source is present; its `.olean` has not yet been materialized,
-and the result is not yet compiler-verified.
-
 This module reparameterizes one Brillouin coordinate from `[-pi, pi]` as a
 line of length `2*pi` starting at the lower face.  The sealed physical seam
 identifies the two vertical edges, while the sealed common-strip theorem
