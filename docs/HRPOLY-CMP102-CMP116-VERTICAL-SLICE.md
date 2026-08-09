@@ -6940,10 +6940,53 @@ sign is retained because the CMP89 endpoint phase consumes it.
 
 This seals the physical-link part of the owner/bond dictionary, not the full
 owner dictionary. The CMP99 localization owner is a coarse block in
-`FinBox 4 (2*(K*Q))`, whereas the endpoint is a fine site; their scale-aware
-lift and the transport displacement `target - owner` remain explicit open
-work. Endpoint magnitude bounds, scale-uniform `B0`, Fourier-to-owner
+`FinBox 4 (2*(K*Q))`, whereas the endpoint is a fine site. A faithful bridge
+must first construct the fine-site displacement `target - y`; only afterwards
+may `blockSite` compare the two fine sites through their coarse owners. A
+direct subtraction `target - owner` would mix units and is not the intended
+dictionary. Endpoint magnitude bounds, scale-uniform `B0`, Fourier-to-owner
 transport, window-15 attainment and all terminal fields remain open. Counters
 stay exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained. Diagnostic run `31305147602` did not retire PRE-VALIDATION; only
 the cold run above did.
+
+### Step 7.5cii fine-site endpoint transport dictionary (SEALED; fine-to-owner metric bridge and `B0` open)
+
+Exact source checkpoint `b98845a20c2b3869a9e656d28ca8a8f21a26ea63`
+passed cold GitHub Actions run
+[`31306842747`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31306842747)
+with workflow checkpoint `d12f8d26f1413e48367aa260d82fdbc4d3fe7a1b`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal ran from `09:51:49Z` to `10:05:47Z`, completed 8,473
+jobs, and the audit ended at `10:05:53Z`. Both stages exited zero. Five of the
+eight audited declarations use `[propext, Quot.sound]`; the three finite-sum
+bounds use the allowed standard triple
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9036387589`, named
+`physical-site-transport-dictionary-b98845a20c2b3869a9e656d28ca8a8f21a26ea63`,
+has GitHub digest
+`bd16e6884915cfa9db901cf112a1d28dd2625a0441a6564234cc1f9e35a55988`.
+The deterministic inner archive re-hashed on Windows to
+`e2d5efbc9988d72ae78d63d45d1c75355f283646607424f3ba8d037411d5eba9`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The dictionary now constructs the shortest signed periodic representative of
+the literal fine-site displacement `target - y`. It proves its exact `ZMod`
+projection and that its real `l1` length is the sum of the four coordinatewise
+torus distances, hence at most four times the literal fine Chebyshev distance.
+The first endpoint is defined by the exact integer identity
+`holder + transport`; its periodic projection is `source - y`, including at
+the seam, and its length costs at most the already sealed single edge.
+Centered representatives are deliberately not added as though they preserved
+integer addition.
+
+This is the fine-lattice half of the transport dictionary. The remaining
+metric step must use `blockSite` and prove the scale-aware inverse inequality
+`scale * ownerDist <= transportL1 + 2*(scale-1)` (or a sharper cited form),
+with units visible. It must not subtract a coarse owner from a fine endpoint.
+The complete endpoint bound `B0`, window-15 attainment and all terminal fields
+remain open. Counters stay exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained. Diagnostic run `31306685086` did not retire
+PRE-VALIDATION; only the cold run above did.

@@ -8,10 +8,13 @@ import YangMills.RG.BalabanCMP116CMP89PhysicalBondDisplacementDictionary
 import YangMills.RG.PhysicalBondDistance
 
 /-!
-# PRE-VALIDATION: CMP116/CMP89 fine-site transport dictionary
+# Cold-sealed CMP116/CMP89 fine-site transport dictionary
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`b98845a20c2b3869a9e656d28ca8a8f21a26ea63` by cold GitHub Actions run
+`31306842747`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,473 jobs, the audit exited zero, and all eight audited declarations
+use only the allowed set `[propext, Classical.choice, Quot.sound]`.
 
 The stabilized CMP89 endpoint split uses the two integer displacements
 

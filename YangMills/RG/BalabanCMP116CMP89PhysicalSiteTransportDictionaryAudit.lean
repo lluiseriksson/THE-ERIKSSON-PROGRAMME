@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP116CMP89PhysicalSiteTransportDictionary
 
 /-!
-# PRE-VALIDATION audit: CMP116/CMP89 fine-site transport dictionary
+# Cold-sealed audit: CMP116/CMP89 fine-site transport dictionary
 
-Source is present, its `.olean` has not yet been materialized, and these audit
-results have not yet been verified by the compiler.
+Compiler-verified with the source at checkpoint
+`b98845a20c2b3869a9e656d28ca8a8f21a26ea63` by cold GitHub Actions run
+`31306842747`.
 -/
 
 #print axioms YangMills.RG.cmp116CMP89PeriodicCoordinateDisplacement_cast

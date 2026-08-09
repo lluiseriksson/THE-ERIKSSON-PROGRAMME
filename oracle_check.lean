@@ -3090,3 +3090,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116CMP89PhysicalBondHolderDisplacement_unit
 #print axioms YangMills.RG.cmp116CMP89PhysicalBondHolderDisplacement_realL1_eq_one
 #print axioms YangMills.RG.cmp116CMP89PhysicalBondHolderDisplacement_rpow_eq_one
+#print axioms YangMills.RG.cmp116CMP89PeriodicCoordinateDisplacement_cast
+#print axioms YangMills.RG.natAbs_cmp116CMP89PeriodicCoordinateDisplacement_eq_finTorusDist
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondTransportDisplacement_cast
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondHolderDisplacement_cast
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondFirstEndpointDisplacement_cast
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondTransportDisplacement_realL1_eq
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondTransportDisplacement_realL1_le_four_finBoxDist
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondFirstEndpointDisplacement_realL1_le_add_one

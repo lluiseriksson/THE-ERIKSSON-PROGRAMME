@@ -31513,9 +31513,48 @@ CMP89 unit-edge premise and all sealed Holder normalizations are now derived
 from every physical bond, including at the periodic seam. No freely chosen
 edge displacement survives.
 
-The coarse CMP99 localization owner still needs a scale-aware fine-lattice
-lift before the transport displacement and complete endpoint bound can be
-formed. This brick does not construct `B0`, attain window 15, discharge a
-terminal field or inhabit `TermSource`. Live counters remain exactly `20/41`,
-`TermSource = 0`, and window 15 compatible but unattained. Diagnostic run
-`31305147602` was not used to retire PRE-VALIDATION.
+The coarse CMP99 localization owner still needs a scale-aware metric bridge,
+but it must not be subtracted directly from a fine endpoint. The faithful next
+step first constructs `target - y` on the fine torus and only then compares
+the two fine sites through `blockSite`. This brick does not construct `B0`,
+attain window 15, discharge a terminal field or inhabit `TermSource`. Live
+counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained. Diagnostic run `31305147602` was not used to retire
+PRE-VALIDATION.
+
+## Addendum 677 (2026-08-09, **fine-site CMP89 transport and endpoint recombination GREEN; fine-to-owner metric bridge and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `b98845a20c2b3869a9e656d28ca8a8f21a26ea63`
+passed cold GitHub Actions run
+[`31306842747`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31306842747)
+with workflow checkpoint `d12f8d26f1413e48367aa260d82fdbc4d3fe7a1b`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,473 jobs from `09:51:49Z` to `10:05:47Z`;
+the audit ended at `10:05:53Z`. Both stages exited zero. Five of eight audited
+declarations use `[propext, Quot.sound]`; the remaining three use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9036387589`, named
+`physical-site-transport-dictionary-b98845a20c2b3869a9e656d28ca8a8f21a26ea63`,
+has GitHub digest
+`bd16e6884915cfa9db901cf112a1d28dd2625a0441a6564234cc1f9e35a55988`.
+Its deterministic inner archive re-hashed on Windows to
+`e2d5efbc9988d72ae78d63d45d1c75355f283646607424f3ba8d037411d5eba9`,
+and all 13 manifest entries re-hashed exactly.
+
+The sealed producer chooses the shortest signed representative of the
+fine-site displacement `target-y`, proves its periodic projection and exact
+coordinatewise-torus `l1` length, and constructs the first CMP89 endpoint as
+the literal integer sum `holder+transport`. Its projection is `source-y` at
+and away from the periodic seam; the first endpoint costs at most the sealed
+unit Holder edge. This closes the fine-lattice endpoint dictionary without
+pretending that centered representatives preserve addition.
+
+The next metric brick must compare two fine sites through their `blockSite`
+owners. A direct `target-owner` subtraction would mix fine and coarse units and
+is excluded. The intended inverse-scale inequality keeps the boundary term
+visible before the exponential rate is transported. No complete `B0`, window
+15, terminal field or `TermSource` is produced here. Live counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+Diagnostic run `31306685086` was not used to retire PRE-VALIDATION; only the
+cold run above was.
