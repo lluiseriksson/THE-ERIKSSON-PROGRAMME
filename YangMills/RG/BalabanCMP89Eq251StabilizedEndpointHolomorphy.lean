@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointSplit
 import YangMills.RG.BalabanCMP89Eq251CommonStripHolomorphy
 
 /-!
-# PRE-VALIDATION: common-strip holomorphy of each CMP89 endpoint
+# Common-strip holomorphy of each CMP89 endpoint
 
-The source in this module is present, but its `.olean` has not yet been
-materialized and its result has not yet been verified by the Lean compiler.
+Cold validation: exact source checkpoint
+`de63c0d0266cb6969363e4c478252d93d5e56b79` passed GitHub Actions run
+`31292952123` with restore and save of `.lake/build` both skipped. The focal
+completed 8,447 jobs and all four audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 After the exact endpoint split, each endpoint must be shifted separately.
 This module derives its holomorphy from the literal endpoint numerator.  The

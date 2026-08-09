@@ -31185,3 +31185,33 @@ the owner dictionary, window-15 attainment and every terminal field remain
 open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained. Cached run `31291955125` was diagnostic only and did not retire
 PRE-VALIDATION.
+
+## Addendum 666 (2026-08-09, **stabilized endpoint holomorphy GREEN; endpoint seams open**)
+
+Exact source checkpoint `de63c0d0266cb6969363e4c478252d93d5e56b79`
+passed cold GitHub Actions run
+[`31292952123`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31292952123)
+with workflow checkpoint `c358a06717318ce98763e6efbc15f2b01b5bf78f`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,447 jobs and ran from `03:43:14Z` to
+`04:00:12Z`; the audit ended at `04:00:20Z`. Both stages exited zero. All four
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9032221129`, named
+`stabilized-endpoint-holomorphy-de63c0d0266cb6969363e4c478252d93d5e56b79`,
+has GitHub digest
+`f312b42475aa18f23badbf1d193f455f1901d32047f3876387d074205bdd8f1d`.
+The deterministic inner archive re-hashed on Windows to
+`ff59d50b65fd173998f22ac0c4bcb7415aa1a3df9bd37923e772f403946373be`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+The constructed endpoint objects now inherit pointwise common-strip
+holomorphy from exactly the noncentral fine-symbol and stabilized-denominator
+facts already used by the complete integrand. No endpoint family, new scalar
+radius or extra non-singularity premise is accepted.
+
+Endpoint seams, contour displacement, compact-product integrability, `B0`,
+the owner dictionary, window-15 attainment and every terminal field remain
+open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained. Cached run `31292852815` was diagnostic only and did not retire
+PRE-VALIDATION.

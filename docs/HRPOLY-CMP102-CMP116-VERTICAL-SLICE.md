@@ -6553,3 +6553,39 @@ dictionary, window-15 attainment or terminal field is produced. Counters stay
 
 Cached diagnostic run `31291955125` passed on the first source and did not
 retire PRE-VALIDATION. Only the cold run above did.
+
+### Step 7.5by stabilized endpoint holomorphy (SEALED; endpoint seams open)
+
+Exact source checkpoint `de63c0d0266cb6969363e4c478252d93d5e56b79`
+passed cold GitHub Actions run
+[`31292952123`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31292952123)
+with workflow checkpoint `c358a06717318ce98763e6efbc15f2b01b5bf78f`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `03:43:14Z` to `04:00:12Z`, completed
+8,447 jobs, and the audit ended at `04:00:20Z`. Both stages exited zero. All
+four audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9032221129`, named
+`stabilized-endpoint-holomorphy-de63c0d0266cb6969363e4c478252d93d5e56b79`,
+has GitHub digest
+`f312b42475aa18f23badbf1d193f455f1901d32047f3876387d074205bdd8f1d`.
+The deterministic inner archive re-hashed on Windows to
+`ff59d50b65fd173998f22ac0c4bcb7415aa1a3df9bd37923e772f403946373be`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+Each constructed endpoint numerator is now entire before the literal
+noncentral fine-symbol divisions. The assembled numerator and complete
+endpoint integrand are differentiable wherever exactly those fine symbols
+and the common stabilized denominator are nonzero. The sealed common-radius
+producer discharges those same two families; no radius, mass condition or
+denominator hypothesis was added.
+
+Endpoint seams and contour shifts, compact-product integrability, `B0`, the
+owner dictionary, window-15 attainment and every terminal field remain open.
+Counters stay `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
+
+Cached diagnostic run `31292852815` passed on the first source and did not
+retire PRE-VALIDATION. Only the cold run above did.

@@ -3037,3 +3037,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp89Eq251ComplexStabilizedNumerator_eq_sub_endpoint
 #print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointIntegrand
 #print axioms YangMills.RG.cmp89Eq251ComplexStabilizedIntegrand_eq_sub_endpoint
+#print axioms YangMills.RG.differentiable_cmp89Eq251ComplexBareEndpointNumerator
+#print axioms YangMills.RG.differentiableAt_cmp89Eq251ComplexStabilizedEndpointNumerator
+#print axioms YangMills.RG.differentiableAt_cmp89Eq251ComplexStabilizedEndpointIntegrand
+#print axioms YangMills.RG.differentiableAt_cmp89Eq251ComplexStabilizedEndpointIntegrand_of_commonRadius
