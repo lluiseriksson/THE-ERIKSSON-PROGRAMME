@@ -7140,3 +7140,41 @@ remain open. The cold focal contained inherited graph warnings; the new target
 emitted none. Counters stay exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained. Diagnostic run `31312677116` did not retire
 PRE-VALIDATION; only the cold run above did.
+
+### Step 7.5cvii noncentral endpoint quotient sum (SEALED; phase factorization, central branch and `B0` open)
+
+Exact source checkpoint `65706caceaabd5e7c1ce67dd0e4760a090119c6e`
+passed cold GitHub Actions run
+[`31314071695`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31314071695)
+with workflow checkpoint `97c17bf70ee62497420608bca3c064948eb12cbd`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,435 jobs from `12:47:09Z` to `13:02:59Z`;
+the audit ended at `13:03:06Z`. Both stages exited zero. All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9038416203`, named
+`noncentral-endpoint-quotient-sum-65706caceaabd5e7c1ce67dd0e4760a090119c6e`,
+has GitHub digest
+`5852a6f85e8e993ded62c84ac9b0f82498149ea284020e5e7f7ffce15472a124`.
+The deterministic inner archive re-hashed on Windows to
+`95b8c70e30e6381f26a193fe601fbbb1b52dc815444bdae70096acc4721e4c54`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed producer sums the pointwise `alpha = 0` quotient bound over the
+literal noncentral finite alias fibre and applies the exact product/tsum bound
+without a fibre-cardinality factor. It proves a norm bound for the quotient
+sum, not a bound for a sum of norms. Consequently the next physical endpoint
+assembly must first prove that the lattice endpoint makes every alias phase
+equal to the zero-alias phase and factor that common phase exactly; no
+triangle-inequality substitution is permitted.
+
+This closes the noncentral quotient sum only. Exact lattice-phase
+factorization, the central endpoint branch, common numerator bound, complete
+`B0`, owner transport, window-15 attainment and every terminal field remain
+open. The cold focal contained inherited graph warnings; the new target
+emitted none. Counters stay exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained. Failed diagnostic run `31313768608` exposed only
+the cast normalization `↑(L^j)` versus `(↑L)^j`; corrected diagnostic run
+`31313930119` passed but did not retire PRE-VALIDATION. Only the cold run above
+did.

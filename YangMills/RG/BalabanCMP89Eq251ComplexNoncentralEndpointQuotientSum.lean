@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251ComplexNoncentralEndpointQuotientBound
 
 /-!
-# PRE-VALIDATION: noncentral endpoint quotient sum below CMP89 (2.51)
+# Cold-sealed noncentral endpoint quotient sum below CMP89 (2.51)
 
-Source is present, its `.olean` has not yet been materialized, and the results
-have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`65706caceaabd5e7c1ce67dd0e4760a090119c6e` by cold GitHub Actions run
+`31314071695`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,435 jobs, the audit exited zero, and all three audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The pointwise endpoint quotient bound already carries the strictly summable
 CMP89 product weight with the literal specialization `alpha = 0`.  This file

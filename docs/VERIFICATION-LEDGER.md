@@ -31681,3 +31681,33 @@ window 15, discharge a terminal field or inhabit `TermSource`. The cold log
 contains inherited graph warnings; the new target emitted none. Live counters
 remain exactly `20/41`, `TermSource = 0`. Diagnostic run `31312677116` was not
 used to retire PRE-VALIDATION; only the cold run above was.
+
+## Addendum 682 (2026-08-09, **noncentral endpoint quotient sum GREEN; phase factorization, central branch and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `65706caceaabd5e7c1ce67dd0e4760a090119c6e`
+passed cold GitHub Actions run
+[`31314071695`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31314071695)
+with workflow checkpoint `97c17bf70ee62497420608bca3c064948eb12cbd`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,435 jobs from `12:47:09Z` to `13:02:59Z`;
+the audit ended at `13:03:06Z`. Both stages exited zero. All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9038416203`, named
+`noncentral-endpoint-quotient-sum-65706caceaabd5e7c1ce67dd0e4760a090119c6e`,
+has GitHub digest
+`5852a6f85e8e993ded62c84ac9b0f82498149ea284020e5e7f7ffce15472a124`.
+Its deterministic inner archive re-hashed on Windows to
+`95b8c70e30e6381f26a193fe601fbbb1b52dc815444bdae70096acc4721e4c54`,
+and all 13 manifest entries re-hashed exactly.
+
+The sealed producer sums the noncentral quotient over the exact finite alias
+fibre and applies the `alpha = 0` product/tsum bound without cardinality loss.
+It bounds the norm of the quotient sum. A later consumer must factor the
+alias-independent endpoint phase by exact lattice periodicity before applying
+this theorem; it may not silently read the result as a sum-of-norms bound.
+No central endpoint branch, complete numerator bound, `B0`, window-15
+attainment, terminal field or `TermSource` is produced. Live counters remain
+exactly `20/41`, `TermSource = 0`. Failed diagnostic run `31313768608` found
+only a cast-normalization mismatch; corrected diagnostic run `31313930119`
+passed but did not retire PRE-VALIDATION. Only the cold run above did.

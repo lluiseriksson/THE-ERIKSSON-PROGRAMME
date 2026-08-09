@@ -3117,3 +3117,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_cmp89Eq245EntireScaledDifference_alias_le_two_euclidean
 #print axioms YangMills.RG.norm_cmp89Eq251ComplexNoncentralEndpointQuotient_le_radialWeight
 #print axioms YangMills.RG.norm_cmp89Eq251ComplexNoncentralEndpointQuotient_le_sourceWeight
+#print axioms YangMills.RG.cmp89Eq251ComplexNoncentralEndpointQuotientSum
+#print axioms YangMills.RG.cmp89Eq251ComplexNoncentralEndpointQuotientSumBound
+#print axioms YangMills.RG.norm_cmp89Eq251ComplexNoncentralEndpointQuotientSum_le_bound
