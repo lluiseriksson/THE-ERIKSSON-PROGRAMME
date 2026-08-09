@@ -39,6 +39,7 @@ instance cmp89Eq249FourDimensionalBrillouinMeasure_isFinite :
     IsFiniteMeasure cmp89Eq249FourDimensionalBrillouinMeasure := by
   refine ⟨?_⟩
   simp [cmp89Eq249FourDimensionalBrillouinMeasure, Measure.pi_univ]
+  exact ENNReal.mul_lt_top (by norm_num) ENNReal.ofReal_lt_top
 
 /-- The source normalization `(2*pi)^(-4)` applied to an integral over the
 translated Brillouin cube. -/
