@@ -35,6 +35,11 @@ def cmp89Eq249FourDimensionalBrillouinMeasure : Measure (Fin 4 → ℝ) :=
   Measure.pi fun _ : Fin 4 =>
     volume.restrict (Set.uIoc 0 (2 * Real.pi))
 
+instance cmp89Eq249FourDimensionalBrillouinMeasure_isFinite :
+    IsFiniteMeasure cmp89Eq249FourDimensionalBrillouinMeasure := by
+  unfold cmp89Eq249FourDimensionalBrillouinMeasure
+  infer_instance
+
 /-- The source normalization `(2*pi)^(-4)` applied to an integral over the
 translated Brillouin cube. -/
 def cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
@@ -126,8 +131,8 @@ theorem norm_cmp89Eq249NormalizedStabilizedEndpointIntegral_le
   have hmeasure :
       cmp89Eq249FourDimensionalBrillouinMeasure =
         (volume : Measure (Fin 4 → ℝ)).restrict cube := by
-    rw [cmp89Eq249FourDimensionalBrillouinMeasure, cube, volume_pi,
-      Measure.restrict_pi_pi]
+    dsimp [cmp89Eq249FourDimensionalBrillouinMeasure, cube]
+    rw [volume_pi, Measure.restrict_pi_pi]
     simp [Set.uIoc_of_le htwoPi]
   have hcube : MeasurableSet cube := by
     exact MeasurableSet.pi (Set.to_countable Set.univ) fun _ _ =>
@@ -148,6 +153,8 @@ theorem norm_cmp89Eq249NormalizedStabilizedEndpointIntegral_le
         Real.pi := by
       intro nu
       have hxnu : x nu ∈ Set.Ioc 0 (2 * Real.pi) := hx nu (by simp)
+      have hxLower := hxnu.1
+      have hxUpper := hxnu.2
       rw [abs_le]
       simp only [cmp89Eq251PhysicalBrillouinParameter]
       constructor <;> linarith [Real.pi_pos]
