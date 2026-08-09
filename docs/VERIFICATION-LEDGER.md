@@ -31813,3 +31813,39 @@ field and `TermSource` remain open. Live counters stay exactly `20/41`,
 `31318502966` found only exponent normalization/unfolding errors; corrected
 diagnostic run `31318648829` passed but did not retire PRE-VALIDATION. Only the
 cold run above did.
+
+## Addendum 686 (2026-08-09, **source-normalized endpoint integral GREEN; recombination and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `a92695ec57772ba180446e3e682e0aeaaca606fc`
+passed cold GitHub Actions run
+[`31321423849`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31321423849)
+with workflow checkpoint `321af2931e7b8bf56868e994879a39634da0b750`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped.  The exact-measure reproducer exited zero, the focal completed
+8,479 jobs from `15:35:10Z` to `15:52:41Z`, and the audit ended at
+`15:52:53Z`.  All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9040515330`, named
+`normalized-endpoint-integral-a92695ec57772ba180446e3e682e0aeaaca606fc`,
+has GitHub digest
+`6bc64877bae588e53499cb91f17e2f560fd13bc4e2b40740e8ade9746a034de7`.
+Its deterministic inner archive re-hashed on Windows to
+`5936a94cebdc0b2325cb6286089c8e337733ad997230387cd99e19918762f14b`,
+and every one of the 14 entries in its internal `SHA256SUMS` manifest matched.
+
+The sealed module preserves the literal normalization printed in CMP89
+(2.49): the translated cube has exact real volume `(2*pi)^4`, which cancels
+the external `(2*pi)^(-4)` without being hidden in `B0`.  Consequently the
+already sealed pointwise bound integrates to one complete normalized endpoint
+with no volume or normalization loss and with its exact signed lattice `l1`
+weight still visible.
+
+The two independently shifted endpoints are not yet recombined in this seal.
+Their later conversion to one localized owner decay must cite the sealed
+unit-edge comparison and retain the literal `1 + exp rho` cost.  The complete
+physical `B0`, window-15 attainment, every terminal field and `TermSource`
+remain open.  Live counters stay exactly `20/41`, `TermSource = 0`.
+Diagnostic run `31321096355` stopped in the minimal measure reproducer at one
+finite-ENNReal atom; corrected diagnostic run `31321241509` passed but did not
+retire PRE-VALIDATION.  Only the cold run above did.

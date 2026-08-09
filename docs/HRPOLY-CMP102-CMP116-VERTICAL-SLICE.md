@@ -374,6 +374,17 @@ The full hRpoly target is retried only after that reproducer elaborates.  This
 keeps a generic Mathlib experiment from consuming a fresh full-project Colab
 bootstrap for every candidate proof.
 
+Dependent-family elaboration follows a fixed repair order.  First, do not
+transport a family through `Function.update`: split the distinguished index
+from the `Fin.succAbove` branch and state the required equality explicitly in
+each case.  Second, pin the carrier, fibre and source/target indices in every
+physical specialization rather than asking inference to recover them through
+the generated tower.  Third, when the first error is only a missing imported
+`.olean`, materialize that exact frontier target before changing the proof.
+These three repairs have closed the recurrent elaboration stalls in this lane;
+raising heartbeats or adding a broad transport lemma is not the default next
+step.
+
 The accumulated scalar gates are now centralized in
 `CMP116CenteredConditionedJointSmallnessRegime`.  Its fourteen threshold
 fields are: patched defect, shell, contour series, the two Neumann bounds,
@@ -7294,3 +7305,42 @@ Failed diagnostic runs `31318211467`, `31318353378` and `31318502966`
 exposed only endpoint exponent normalization and unfolding issues; corrected
 diagnostic run `31318648829` passed but did not retire PRE-VALIDATION. Only the
 cold run above did.
+
+### Step 7.5cxi source-normalized endpoint integration (SEALED; endpoint recombination and `B0` open)
+
+Exact source checkpoint `a92695ec57772ba180446e3e682e0aeaaca606fc`
+passed cold GitHub Actions run
+[`31321423849`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31321423849)
+with workflow checkpoint `321af2931e7b8bf56868e994879a39634da0b750`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped.  The exact-measure reproducer exited zero, the focal completed
+8,479 jobs from `15:35:10Z` to `15:52:41Z`, and the audit ended at
+`15:52:53Z`.  All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9040515330`, named
+`normalized-endpoint-integral-a92695ec57772ba180446e3e682e0aeaaca606fc`,
+has GitHub digest
+`6bc64877bae588e53499cb91f17e2f560fd13bc4e2b40740e8ade9746a034de7`.
+Its deterministic inner archive re-hashed on Windows to
+`5936a94cebdc0b2325cb6286089c8e337733ad997230387cd99e19918762f14b`,
+identical to the cold-run hash; all 14 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed producer defines the literal translated four-dimensional
+Brillouin product measure, proves its finiteness and exact real volume
+`(2*pi)^4`, and cancels that volume against the external `(2*pi)^(-4)` factor
+printed in CMP89 (2.49).  A pointwise constant bound therefore loses no
+normalization factor.  Specializing to one complete stabilized endpoint
+retains the exact signed lattice `l1` weight and the explicit common endpoint
+amplitude majorant.
+
+This closes normalized integration for one endpoint only.  The two separately
+shifted endpoints still have to be recombined; their neighbour comparison
+must retain the existing literal `1 + exp rho` cost before owner transport.
+The complete physical `B0`, window-15 attainment, every terminal field and
+`TermSource` remain open.  Counters stay exactly `20/41`, `TermSource = 0`,
+and window 15 compatible but unattained.  Failed diagnostic run
+`31321096355` exposed only the final finite-ENNReal atom in the measure
+reproducer; corrected diagnostic run `31321241509` passed but did not retire
+PRE-VALIDATION.  Only the cold run above did.

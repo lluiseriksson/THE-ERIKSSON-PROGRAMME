@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedEndpointIntegralBound
 
 /-!
-# PRE-VALIDATION audit: normalized stabilized endpoint integral
+# Cold-sealed audit: normalized stabilized endpoint integral
 
-Source is present, but this audit's `.olean` has not yet been materialized and
-the declarations below have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`a92695ec57772ba180446e3e682e0aeaaca606fc` by cold GitHub Actions run
+`31321423849`; all six declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq249FourDimensionalBrillouinMeasure

@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251ComplexStabilizedEndpointBound
 
 /-!
-# PRE-VALIDATION: source-normalized endpoint integral below CMP89 (2.49)
+# Cold-sealed source-normalized endpoint integral below CMP89 (2.49)
 
-Source is present, but this module's `.olean` has not yet been materialized
-and its declarations have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`a92695ec57772ba180446e3e682e0aeaaca606fc` by cold GitHub Actions run
+`31321423849`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,479 jobs, the audit exited zero, and all six audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.49), visually checked on printed page 585, places `(2*pi)^(-d)`
 outside the integral on `[-pi,pi]^d`. In four dimensions the translated
