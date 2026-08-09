@@ -177,14 +177,14 @@ theorem integrable_cmp89Eq251ComplexStabilizedEndpointIntegrand_partialSigned
           (cmp89Eq251EndpointPartialSignedContourMomentum
             stage rho y endpointDisplacement)
           mu holderDisplacement endpointDisplacement) x := by
-      change ContinuousAt
-        ((fun w : Fin 4 → ℂ =>
-            cmp89Eq251ComplexStabilizedEndpointIntegrand 4 L j mass a alpha
-              w mu holderDisplacement endpointDisplacement) ∘
-          (fun y : Fin 4 → ℝ =>
-            cmp89Eq251EndpointPartialSignedContourMomentum
-              stage rho y endpointDisplacement)) x
-      exact houter.continuousAt.comp hinner
+      exact ContinuousAt.comp
+        (f := fun y : Fin 4 → ℝ =>
+          cmp89Eq251EndpointPartialSignedContourMomentum
+            stage rho y endpointDisplacement)
+        (g := fun w : Fin 4 → ℂ =>
+          cmp89Eq251ComplexStabilizedEndpointIntegrand 4 L j mass a alpha
+            w mu holderDisplacement endpointDisplacement)
+        houter.continuousAt hinner
     exact hcomp.continuousWithinAt
   have hIcc : IntegrableOn (fun x : Fin 4 → ℝ =>
       cmp89Eq251ComplexStabilizedEndpointIntegrand 4 L j mass a alpha
