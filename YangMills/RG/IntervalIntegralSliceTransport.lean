@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import Mathlib.MeasureTheory.Integral.Prod
 
 /-!
-# PRE-VALIDATION: transport of interval-integral slice equalities
+# Transport of interval-integral slice equalities
 
-The source in this module is present, but its `.olean` has not yet been
-materialized and its result has not yet been verified by the Lean compiler.
+This module was compiler-verified from exact source checkpoint
+`3f434e990cdb8a0b985bf1d4cb91a999e53eb536` by cold GitHub Actions run
+`31291655520`.  Restore and save of `.lake/build` were both skipped; the
+focal and audit exited zero, and the audited theorem uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This file isolates the Fubini step needed to iterate the physical CMP89
 one-coordinate contour displacement.  If two integrable functions have the

@@ -6481,3 +6481,40 @@ Cached diagnostic run `31290333906` passed first. Failed diagnostic runs
 namespace qualification, pinned physical parameters, the explicit
 single-coordinate derivative and orientation of the named seam through the
 integrand. They changed no statement, hypothesis, radius or scalar constant.
+
+### Step 7.5bw interval-integral slice transport (SEALED; endpoint split and four-coordinate iteration open)
+
+Exact source checkpoint `3f434e990cdb8a0b985bf1d4cb91a999e53eb536`
+passed cold GitHub Actions run
+[`31291655520`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31291655520)
+with workflow checkpoint `0cb9044b4cbcc47ac2a4050a69ca6edc1c932551`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `03:05:41Z` to `03:05:44Z`, and the
+audit ended at `03:05:48Z`. Both stages exited zero. The single audited
+declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9031601546`, named
+`interval-integral-slice-transport-3f434e990cdb8a0b985bf1d4cb91a999e53eb536`,
+has GitHub digest
+`1d258368e31064996dcc76c875bf76acd723f81560b95ee883bb32a3bce77983`.
+The deterministic inner archive re-hashed on Windows to
+`8d9138f1ea83b61e033746e9b0af9a5f1ac239199fbcc1028e21ab7419538328`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed theorem lifts equality of one-coordinate interval integrals on
+every remaining slice to equality of the full iterated integrals. Integrability
+of both uncurried functions against the restricted interval product measure
+is explicit and load-bearing; this is Fubini transport, not formal
+congruence.
+
+This brick does not justify shifting the unsplit physical phase difference.
+The holder-plus-transport and transport-only endpoints must first be split
+algebraically and then shifted with their own sign vectors. Endpoint-specific
+holomorphy and seams, four-coordinate iteration, the complete bound `B0`, the
+physical owner dictionary, window-15 attainment and every terminal field
+remain open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained.
+
+Cached diagnostic run `31291537945` passed first but did not retire
+PRE-VALIDATION. Only the cold run above did.

@@ -31123,3 +31123,34 @@ Cached diagnostic run `31290333906` passed first. Four failed diagnostic
 runs record only elaborational repairs to namespaces, typeclass pins,
 derivative construction and seam orientation; no mathematical interface or
 constant changed.
+
+## Addendum 664 (2026-08-09, **interval-integral slice transport GREEN; endpoint split open**)
+
+Exact source checkpoint `3f434e990cdb8a0b985bf1d4cb91a999e53eb536`
+passed cold GitHub Actions run
+[`31291655520`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31291655520)
+with workflow checkpoint `0cb9044b4cbcc47ac2a4050a69ca6edc1c932551`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal ran from `03:05:41Z` to `03:05:44Z`; the audit ended at
+`03:05:48Z`. Both stages exited zero. The one audited declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9031601546`, named
+`interval-integral-slice-transport-3f434e990cdb8a0b985bf1d4cb91a999e53eb536`,
+has GitHub digest
+`1d258368e31064996dcc76c875bf76acd723f81560b95ee883bb32a3bce77983`.
+The deterministic inner archive re-hashed on Windows to
+`8d9138f1ea83b61e033746e9b0af9a5f1ac239199fbcc1028e21ab7419538328`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+The theorem transports a slice-wise interval-integral equality through the
+remaining measure by two applications of the pinned Fubini theorem. Both
+uncurried integrability hypotheses remain visible and load-bearing.
+
+This is infrastructure for iterating contour shifts only. The physical phase
+difference must still be split into its two endpoints before applying
+endpoint-specific sign vectors; endpoint holomorphy/seams, four-coordinate
+iteration, `B0`, the owner dictionary, window-15 attainment and all terminal
+fields remain open. Counters stay `20/41`, `TermSource = 0`, and window 15
+compatible but unattained. Cached run `31291537945` was diagnostic only and
+did not retire PRE-VALIDATION.
