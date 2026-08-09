@@ -1,4 +1,4 @@
-name: Validate holomorphic boundary vertical shift
+name: Validate CMP89 stabilized integrand holomorphy
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 2e1df044b6210ca418a0132ffe62216e46f75157
+  SOURCE_SHA: a6e162299df758048ce755ae1e264bf425d715cf
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -29,7 +29,7 @@ env:
     cmp89-lattice-phase-periodicity
 
 jobs:
-  holomorphic-boundary-vertical-shift:
+  cmp89-stabilized-integrand-holomorphy:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-holomorphic-boundary-vertical-shift-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-stabilized-integrand-holomorphy-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/HolomorphicVerticalShiftBoundary.lean \
-            YangMills/RG/HolomorphicVerticalShiftBoundaryAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251StabilizedIntegrandHolomorphy.lean \
+            YangMills/RG/BalabanCMP89Eq251StabilizedIntegrandHolomorphyAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage holomorphic_boundary_vertical_shift_focal \
-            lake build YangMills.RG.HolomorphicVerticalShiftBoundary
-          run_stage holomorphic_boundary_vertical_shift_audit \
-            lake env lean YangMills/RG/HolomorphicVerticalShiftBoundaryAudit.lean
+          run_stage cmp89_stabilized_integrand_holomorphy_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251StabilizedIntegrandHolomorphy
+          run_stage cmp89_stabilized_integrand_holomorphy_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251StabilizedIntegrandHolomorphyAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "holomorphic_boundary_vertical_shift_audit.log": 1,
+              "cmp89_stabilized_integrand_holomorphy_audit.log": 6,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              holomorphic-boundary-vertical-shift-evidence.tar.gz
-          sha256sum holomorphic-boundary-vertical-shift-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              cmp89-stabilized-integrand-holomorphy-evidence.tar.gz
+          sha256sum cmp89-stabilized-integrand-holomorphy-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: holomorphic-boundary-vertical-shift-${{ env.SOURCE_SHA }}
+          name: cmp89-stabilized-integrand-holomorphy-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            holomorphic-boundary-vertical-shift-evidence.tar.gz
+            cmp89-stabilized-integrand-holomorphy-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-holomorphic-boundary-vertical-shift-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-stabilized-integrand-holomorphy-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
