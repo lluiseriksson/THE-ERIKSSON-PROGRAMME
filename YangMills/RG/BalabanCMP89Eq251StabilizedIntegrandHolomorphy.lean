@@ -8,8 +8,11 @@ import YangMills.RG.BalabanCMP89Eq249StabilizedComplexIntegrand
 /-!
 # Holomorphy of the stabilized CMP89 integrand on its literal domain
 
-PRE-VALIDATION: source is present; its `.olean` has not yet been materialized,
-and the result is not yet compiler-verified.
+Cold validation: exact source checkpoint
+`379d08c86ee7c59ba7cc0a040ea222a0053252be` passed GitHub Actions run
+`31286905528` with `.lake/build` restore and save both skipped. The focal
+completed 8,443 jobs and all six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module derives complex differentiability of the stabilized CMP89 (2.49)
 integrand from the already constructed entire Fourier factors.  The only

@@ -6315,3 +6315,45 @@ infrastructure, not a terminal producer: counters remain `20/41`,
 
 Cached diagnostic run `31286075555` passed first. No failed compiler run was
 required for this brick.
+
+### Step 7.5bs stabilized-integrand conditional holomorphy (SEALED; common-strip nonzeros open)
+
+Exact source checkpoint `379d08c86ee7c59ba7cc0a040ea222a0053252be`
+passed cold GitHub Actions run
+[`31286905528`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31286905528)
+with workflow checkpoint `97890ca8d309f09f2d82dd7fd8acc86e8621bb6f`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `00:48:56Z` to `01:06:30Z`, completed
+8,443 jobs, and the audit ended at `01:06:39Z`. Focal and audit both exited
+zero. All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9030334011`, named
+`cmp89-stabilized-integrand-holomorphy-379d08c86ee7c59ba7cc0a040ea222a0053252be`,
+has GitHub digest
+`0a3d268296cc4b5e251cbc0a39e52117601783d7fa52adc6582d04933eb4b658`.
+The deterministic inner archive re-hashed on Windows to
+`dcf11ae841646d4c044bdf9f4b7e2d9e1f94356eb927fdc2d0979cf49e96aca1`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed brick proves that the alias translation, endpoint phase and bare
+numerator are entire, and derives pointwise differentiability of the literal
+stabilized numerator, stabilized denominator and complete stabilized
+integrand. Its domain contains exactly the denominator families that survive
+the algebraic cancellation: noncentral fine symbols and the stabilized
+denominator. It does not reintroduce nonvanishing of the unit symbol, reduced
+denominator or central fine symbol.
+
+Producing those two surviving nonzero families uniformly from the already
+sealed common scalar radius remains the next brick. The physical boundary
+seam, iterated contour displacement, `B0`, the physical-rate dictionary and
+window-15 attainment remain open. This is analytic infrastructure, not a
+terminal producer: counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
+Cached diagnostic run `31286813485` passed first. Failed runs `31286438596`,
+`31286581972` and `31286703329` record only elaborational repairs: explicit
+Fréchet inversion replaced an ambiguous one-dimensional quotient derivative,
+and the already proved entire average amplitude was registered locally for
+`fun_prop`. No statement, denominator family, hypothesis or constant changed.

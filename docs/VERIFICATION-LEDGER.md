@@ -30987,3 +30987,35 @@ No physical seam, holomorphy, contour equality, `B0`, decay rate or terminal
 field is claimed. Counters stay `20/41`, `TermSource = 0`, and window 15
 compatible but unattained. Cached diagnostic run `31286075555` passed first;
 there was no failed compiler iteration.
+
+## Addendum 660 (2026-08-09, **stabilized-integrand conditional holomorphy GREEN; common-strip specialization open**)
+
+Exact source checkpoint `379d08c86ee7c59ba7cc0a040ea222a0053252be`
+passed cold GitHub Actions run
+[`31286905528`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31286905528)
+with workflow checkpoint `97890ca8d309f09f2d82dd7fd8acc86e8621bb6f`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,443 jobs and ran from `00:48:56Z` to
+`01:06:30Z`; the audit ended at `01:06:39Z`. Both stages exited zero. All six
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9030334011`, named
+`cmp89-stabilized-integrand-holomorphy-379d08c86ee7c59ba7cc0a040ea222a0053252be`,
+has GitHub digest
+`0a3d268296cc4b5e251cbc0a39e52117601783d7fa52adc6582d04933eb4b658`.
+The deterministic inner archive re-hashed on Windows to
+`dcf11ae841646d4c044bdf9f4b7e2d9e1f94356eb927fdc2d0979cf49e96aca1`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+This brick derives holomorphy of the stabilized CMP89 integrand from only its
+two literal surviving denominator families. Nonvanishing of the unit symbol,
+reduced denominator and central fine symbol is not reintroduced after
+cancellation. The common scalar radius has not yet been specialized to
+produce the surviving nonzeros, and no physical boundary seam, contour
+equality, `B0`, decay rate, window-15 attainment or terminal field is claimed.
+Counters stay `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
+
+Cached diagnostic run `31286813485` passed first. The three failed runs record
+only local elaborational repairs and changed no statement, hypothesis,
+denominator family or constant.
