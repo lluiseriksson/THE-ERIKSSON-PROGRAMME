@@ -8,8 +8,11 @@ import YangMills.RG.PeriodicHolomorphicVerticalShift
 /-!
 # Vertical contour shift from a boundary seam
 
-PRE-VALIDATION: source is present; its `.olean` has not yet been materialized,
-and the result is not yet compiler-verified.
+Compiler-verified at exact source checkpoint
+`2e1df044b6210ca418a0132ffe62216e46f75157` by cold GitHub Actions run
+`31286165205`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 2,744 jobs, the audit exited zero, and the audited declaration uses
+exactly `[propext, Classical.choice, Quot.sound]`.
 
 The rectangular Cauchy argument does not require a global periodicity
 hypothesis.  It only requires equality of the integrand on the two vertical

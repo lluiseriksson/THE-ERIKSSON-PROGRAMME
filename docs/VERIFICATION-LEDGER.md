@@ -30956,3 +30956,34 @@ window 15 compatible but unattained.
 Cached run `31285019174` passed first. Failed run `31284890631` records only
 the symmetric unfolding of one named definition; no statement, hypothesis,
 period or source dictionary changed.
+
+## Addendum 659 (2026-08-09, **boundary-seam holomorphic vertical shift GREEN; physical contour specialization open**)
+
+Exact source checkpoint `2e1df044b6210ca418a0132ffe62216e46f75157`
+passed cold GitHub Actions run
+[`31286165205`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31286165205)
+with workflow checkpoint `95acf4d9094aae99753358d9368abb4c6fa7a42a`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were
+both skipped. The focal completed 2,744 jobs and the one-declaration audit
+uses exactly `[propext, Classical.choice, Quot.sound]`; both stages exited
+zero.
+
+Downloaded artifact `9029897994`, named
+`holomorphic-boundary-vertical-shift-2e1df044b6210ca418a0132ffe62216e46f75157`,
+has GitHub digest
+`6ecaa748663b6252d337e3b62bd27d96408d95e386d35c274acfd724a3fcf63d`.
+The deterministic inner archive re-hashed on Windows to
+`4565d20d7617880412aa4d0d547b279ab5b5bee38a37bbcb0292a65e7afc3ae9`,
+identical to the runner's hash, and all 13 manifest entries re-hashed exactly.
+
+The theorem isolates the actual hypothesis used by the rectangular Cauchy
+argument: equality of the two vertical boundary values on the rectangle.
+It does not demand global periodicity. This avoids reintroducing the
+cancelled central denominators throughout the stabilized CMP89 strip; the
+forthcoming physical specialization must instead construct its seam at the
+two Brillouin-zone faces and prove stabilized holomorphy in the interior.
+
+No physical seam, holomorphy, contour equality, `B0`, decay rate or terminal
+field is claimed. Counters stay `20/41`, `TermSource = 0`, and window 15
+compatible but unattained. Cached diagnostic run `31286075555` passed first;
+there was no failed compiler iteration.

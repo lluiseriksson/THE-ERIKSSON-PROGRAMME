@@ -6276,3 +6276,42 @@ Cached diagnostic run `31285019174` passed before the cold seal. Failed run
 `31284890631` preserves one elaborational repair: the bare-momentum
 definition had to be unfolded symmetrically before rewriting its four
 factors. No statement, domain hypothesis, period or physical object changed.
+
+### Step 7.5br boundary-seam holomorphic vertical shift (SEALED infrastructure; physical seam and holomorphy open)
+
+Exact source checkpoint `2e1df044b6210ca418a0132ffe62216e46f75157`
+passed cold GitHub Actions run
+[`31286165205`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31286165205)
+with workflow checkpoint `95acf4d9094aae99753358d9368abb4c6fa7a42a`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `00:28:27Z` to `00:28:34Z`, completed
+2,744 jobs, and the audit ended at `00:28:38Z`. Focal and audit both exited
+zero. The audited declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9029897994`, named
+`holomorphic-boundary-vertical-shift-2e1df044b6210ca418a0132ffe62216e46f75157`,
+has GitHub digest
+`6ecaa748663b6252d337e3b62bd27d96408d95e386d35c274acfd724a3fcf63d`.
+The deterministic inner archive re-hashed on Windows to
+`4565d20d7617880412aa4d0d547b279ab5b5bee38a37bbcb0292a65e7afc3ae9`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed theorem weakens the generic rectangular Cauchy input from global
+periodicity to the pointwise equality of the two vertical boundary edges on
+the actual rectangle. This is the exact seam consumed by cancellation of the
+vertical integrals. It therefore permits the stabilized CMP89 continuation to
+remain the holomorphic interior object while proving boundary equality only
+at `p_nu = -pi` and `p_nu = pi`, where the printed non-singular dictionary is
+available. No global stabilized periodicity or equality of contour integrals
+is accepted as an input.
+
+The physical boundary seam, common-strip holomorphy of the stabilized
+integrand, iteration over four coordinates, `B0`, the physical-rate
+dictionary and window-15 attainment remain open. This is contour
+infrastructure, not a terminal producer: counters remain `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
+Cached diagnostic run `31286075555` passed first. No failed compiler run was
+required for this brick.
