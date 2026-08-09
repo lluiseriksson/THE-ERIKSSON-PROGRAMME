@@ -1,4 +1,4 @@
-name: Validate stabilized endpoint recombination
+name: Validate unit lattice Holder normalization
 
 on:
   workflow_dispatch:
@@ -13,19 +13,19 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: b47f419570f33419bfefb49f8da9a78b52aac09c
+  SOURCE_SHA: 6d5a53834da30c75b65508573eb8496c7cf2f6a6
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    stabilized-endpoint-recombination
     stabilized-endpoint-product-contour-telescope
     stabilized-endpoint-product-coordinate-shift
     stabilized-endpoint-product-integrability
     stabilized-endpoint-one-coordinate-shift
-    pi-coordinate-interval-transport
 
 jobs:
-  stabilized-endpoint-recombination:
+  unit-lattice-holder-normalization:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -90,7 +90,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-stabilized-endpoint-recombination-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-unit-lattice-holder-normalization-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -124,8 +124,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointRecombination.lean \
-            YangMills/RG/BalabanCMP89Eq251StabilizedEndpointRecombinationAudit.lean \
+            YangMills/RG/BalabanCMP89Eq251UnitLatticeHolderNormalization.lean \
+            YangMills/RG/BalabanCMP89Eq251UnitLatticeHolderNormalizationAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -147,10 +147,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage stabilized_endpoint_recombination_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251StabilizedEndpointRecombination
-          run_stage stabilized_endpoint_recombination_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq251StabilizedEndpointRecombinationAudit.lean
+          run_stage unit_lattice_holder_normalization_focal \
+            lake build YangMills.RG.BalabanCMP89Eq251UnitLatticeHolderNormalization
+          run_stage unit_lattice_holder_normalization_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq251UnitLatticeHolderNormalizationAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -164,7 +164,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "stabilized_endpoint_recombination_audit.log": 6,
+              "unit_lattice_holder_normalization_audit.log": 5,
           }
           result = {}
           for name, expected in audits.items():
@@ -196,17 +196,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              stabilized-endpoint-recombination-evidence.tar.gz
-          sha256sum stabilized-endpoint-recombination-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              unit-lattice-holder-normalization-evidence.tar.gz
+          sha256sum unit-lattice-holder-normalization-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: stabilized-endpoint-recombination-${{ env.SOURCE_SHA }}
+          name: unit-lattice-holder-normalization-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            stabilized-endpoint-recombination-evidence.tar.gz
+            unit-lattice-holder-normalization-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -215,4 +215,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-stabilized-endpoint-recombination-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-unit-lattice-holder-normalization-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
