@@ -149,6 +149,12 @@ theorem integral_cmp89Eq251ComplexStabilizedIntegrand_eq_sub_signed_endpoints
   let endpointU : Fin 4 → ℤ := fun nu ↦ holderU nu + transportU nu
   let productMeasure : Measure (Fin 4 → ℝ) :=
     Measure.pi fun _ : Fin 4 ↦ volume.restrict (Set.uIoc 0 (2 * Real.pi))
+  have hendpointDisplacement :
+      (fun nu ↦ cmp89Eq251LatticeDisplacement holderU nu +
+        cmp89Eq251LatticeDisplacement transportU nu) =
+        cmp89Eq251LatticeDisplacement endpointU := by
+    funext nu
+    simp [endpointU, cmp89Eq251LatticeDisplacement]
   have hfirstIntegrable : Integrable (fun x : Fin 4 → ℝ ↦
       cmp89Eq251ComplexStabilizedEndpointIntegrand 4 L j mass a alpha
         (fun nu ↦ (cmp89Eq251PhysicalBrillouinParameter x nu : ℂ)) mu
@@ -189,14 +195,16 @@ theorem integral_cmp89Eq251ComplexStabilizedIntegrand_eq_sub_signed_endpoints
     rw [← integral_sub hfirstIntegrable hsecondIntegrable]
     apply integral_congr_ae
     filter_upwards with x
-    simpa [endpointU, cmp89Eq251LatticeDisplacement] using
-      (cmp89Eq251ComplexStabilizedIntegrand_eq_sub_endpoint
+    have hpoint :=
+      cmp89Eq251ComplexStabilizedIntegrand_eq_sub_endpoint
         (L := L) (j := j) (mass := mass) (a := a) (alpha := alpha)
         (z := fun nu ↦
           (cmp89Eq251PhysicalBrillouinParameter x nu : ℂ))
         (mu := mu)
         (holderDisplacement := cmp89Eq251LatticeDisplacement holderU)
-        (transportDisplacement := cmp89Eq251LatticeDisplacement transportU))
+        (transportDisplacement := cmp89Eq251LatticeDisplacement transportU)
+    rw [hendpointDisplacement] at hpoint
+    exact hpoint
   have hfirst :=
     integral_cmp89Eq251ComplexStabilizedEndpointIntegrand_eq_signed
       (L := L) (j := j) (mass := mass) (a := a) (alpha := alpha)
