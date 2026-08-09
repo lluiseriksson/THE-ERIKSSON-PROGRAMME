@@ -114,8 +114,7 @@ theorem cmp89Eq249NormalizedFineLatticeStabilizedEndpointIntegral_eq_signed
   unfold cmp89Eq249NormalizedFineLatticeStabilizedEndpointIntegral
     cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
     cmp89Eq249FourDimensionalBrillouinMeasure
-  simpa [cmp89Eq249FineLatticeSpacing] using
-    congrArg (fun z : ℂ => ((((2 * Real.pi) ^ 4)⁻¹ : ℝ) : ℂ) * z) h
+  simpa [cmp89Eq249FineLatticeSpacing] using h
 
 /-- The exact source-normalized physical endpoint bound.  No volume factor is
 lost: the literal `(2*pi)^(-4)` cancels the translated cube volume. -/
@@ -189,7 +188,8 @@ theorem exp_neg_cmp89Eq251DisplacementL1_physicalFine_transport_le
   rw [cmp89Eq251DisplacementL1_physicalFineLatticeDisplacement hxi,
     cmp89Eq251DisplacementL1_physicalFineLatticeDisplacement hxi]
   have hlength :=
-    cmp89Eq251LatticeL1Length_add_le_add_one_of_unit hunit
+    cmp89Eq251LatticeL1Length_add_le_add_one_of_unit
+      (holder := holder) (transport := transport) hunit
   have hscaled := mul_le_mul_of_nonneg_left hlength hxi
   have hexponent :
       -(rho * (cmp89Eq249FineLatticeSpacing L j *
