@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointBoundarySeam
 import YangMills.RG.BalabanCMP89Eq251OneCoordinateContourShift
 
 /-!
-# PRE-VALIDATION: one-coordinate contour shift for one CMP89 endpoint
+# One-coordinate contour shift for one CMP89 endpoint
 
-The source in this module is present, but its `.olean` has not yet been
-materialized and its result has not yet been verified by the Lean compiler.
+Cold validation: exact source checkpoint
+`712ffb674296a59e940adf607672fed89d5f5463` passed GitHub Actions run
+`31295576434` with restore and save of `.lake/build` both skipped. The focal
+completed 8,463 jobs and the audited declaration uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module specializes the sealed one-coordinate rectangular Cauchy route to
 one constructed endpoint integrand.  Common-strip endpoint holomorphy and the

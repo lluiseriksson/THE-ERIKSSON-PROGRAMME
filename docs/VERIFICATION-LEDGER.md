@@ -31278,3 +31278,31 @@ four-coordinate iteration, `B0`, the owner dictionary, window-15 attainment
 and all terminal fields remain open. Counters stay `20/41`, `TermSource = 0`,
 and window 15 compatible but unattained. Cached run `31294728096` was
 diagnostic only and did not retire PRE-VALIDATION.
+
+## Addendum 669 (2026-08-09, **one-coordinate stabilized endpoint shift GREEN; four-coordinate iteration open**)
+
+Exact source checkpoint `712ffb674296a59e940adf607672fed89d5f5463`
+passed cold GitHub Actions run
+[`31295576434`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31295576434)
+with workflow checkpoint `0101d180f6bc4af5e84ca494c61eea4ae7de3dad`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,463 jobs from `04:56:55Z` to `05:14:44Z`; the
+audit ended at `05:14:50Z`. Both stages exited zero. The one audited
+declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9033029246`, named
+`stabilized-endpoint-one-coordinate-shift-712ffb674296a59e940adf607672fed89d5f5463`,
+has GitHub digest
+`6b8eadfeb747ee73bef6d42b94b1185e724dda337b5586833d1553e7eaa5a5ca`.
+The deterministic inner archive re-hashed on Windows to
+`b7eaa6f3ec94d37fc09a01ba0c4a66cd073cc3d63b192f5b28278ee1fcd35447`,
+identical to the runner's hash; all 13 manifest entries re-hashed exactly.
+
+The theorem shifts one coordinate of one constructed stabilized endpoint by
+the physical endpoint-specific imaginary displacement. It derives the seam
+and common-strip holomorphy and introduces no endpoint family or global
+periodicity premise. Product integrability, four-coordinate iteration, the
+endpoint recombination, `B0`, the owner dictionary, window-15 attainment and
+all terminal fields remain open. Counters stay `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained. Cached run `31295482971` was diagnostic
+only and did not retire PRE-VALIDATION.

@@ -6658,3 +6658,35 @@ compatible but unattained.
 
 Cached diagnostic run `31294728096` passed on the first source and did not
 retire PRE-VALIDATION. Only the cold run above did.
+
+### Step 7.5cb one-coordinate stabilized endpoint shift (SEALED; four-coordinate iteration open)
+
+Exact source checkpoint `712ffb674296a59e940adf607672fed89d5f5463`
+passed cold GitHub Actions run
+[`31295576434`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31295576434)
+with workflow checkpoint `0101d180f6bc4af5e84ca494c61eea4ae7de3dad`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `04:56:55Z` to `05:14:44Z`, completed
+8,463 jobs, and the audit ended at `05:14:50Z`. Both stages exited zero. The
+audited declaration uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9033029246`, named
+`stabilized-endpoint-one-coordinate-shift-712ffb674296a59e940adf607672fed89d5f5463`,
+has GitHub digest
+`6b8eadfeb747ee73bef6d42b94b1185e724dda337b5586833d1553e7eaa5a5ca`.
+The deterministic inner archive re-hashed on Windows to
+`b7eaa6f3ec94d37fc09a01ba0c4a66cd073cc3d63b192f5b28278ee1fcd35447`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed theorem specializes the rectangular Cauchy route to one literal
+constructed endpoint integrand. Common-strip holomorphy and the physical
+endpoint seam are derived internally; no global endpoint periodicity,
+endpoint family, or contour equality is accepted as input.
+
+Compact-product integrability, transport over the remaining coordinates,
+four-coordinate iteration, recombination of the two endpoint contours,
+`B0`, the owner dictionary, window-15 attainment and every terminal field
+remain open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained. Cached diagnostic run `31295482971` did not retire
+PRE-VALIDATION; only the cold run above did.
