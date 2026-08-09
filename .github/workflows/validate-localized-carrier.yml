@@ -1,4 +1,4 @@
-name: Validate CMP89 fine-lattice endpoint product telescope
+name: Validate CMP89 normalized fine-lattice endpoint integral
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 4b1dfb64060554c673389a4ad058aee7cc4804a0
+  SOURCE_SHA: f78d7b599689700f73a114a68f257da630f366c1
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    fine-lattice-endpoint-product-telescope
     fine-lattice-endpoint-coordinate-shift
     fine-lattice-endpoint-boundary-seam
     fine-lattice-stabilized-endpoint-bound
@@ -26,10 +27,9 @@ env:
     physical-normalized-owner-bound
     normalized-stabilized-recombination
     normalized-endpoint-integral
-    stabilized-endpoint-bound
 
 jobs:
-  fine-lattice-endpoint-product-telescope:
+  normalized-fine-lattice-endpoint-integral:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-fine-lattice-endpoint-product-telescope-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-normalized-fine-lattice-endpoint-integral-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq251FineLatticeStabilizedEndpointProductContourTelescope.lean \
-            YangMills/RG/BalabanCMP89Eq251FineLatticeStabilizedEndpointProductContourTelescopeAudit.lean \
+            YangMills/RG/BalabanCMP89Eq249FineLatticeNormalizedStabilizedEndpointIntegral.lean \
+            YangMills/RG/BalabanCMP89Eq249FineLatticeNormalizedStabilizedEndpointIntegralAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage fine_lattice_endpoint_product_telescope_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointProductContourTelescope
-          run_stage fine_lattice_endpoint_product_telescope_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq251FineLatticeStabilizedEndpointProductContourTelescopeAudit.lean
+          run_stage normalized_fine_lattice_endpoint_integral_focal \
+            lake build YangMills.RG.BalabanCMP89Eq249FineLatticeNormalizedStabilizedEndpointIntegral
+          run_stage normalized_fine_lattice_endpoint_integral_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq249FineLatticeNormalizedStabilizedEndpointIntegralAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "fine_lattice_endpoint_product_telescope_audit.log": 5,
+              "normalized_fine_lattice_endpoint_integral_audit.log": 7,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              fine-lattice-endpoint-product-telescope-evidence.tar.gz
-          sha256sum fine-lattice-endpoint-product-telescope-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              normalized-fine-lattice-endpoint-integral-evidence.tar.gz
+          sha256sum normalized-fine-lattice-endpoint-integral-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fine-lattice-endpoint-product-telescope-${{ env.SOURCE_SHA }}
+          name: normalized-fine-lattice-endpoint-integral-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            fine-lattice-endpoint-product-telescope-evidence.tar.gz
+            normalized-fine-lattice-endpoint-integral-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-fine-lattice-endpoint-product-telescope-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-normalized-fine-lattice-endpoint-integral-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
