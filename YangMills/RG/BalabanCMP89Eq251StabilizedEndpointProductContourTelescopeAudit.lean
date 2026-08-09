@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductContourTelescope
+
+#print axioms YangMills.RG.integral_cmp89Eq251StabilizedEndpointPartialProductIntegrand_zero_eq_four
+#print axioms YangMills.RG.integral_cmp89Eq251ComplexStabilizedEndpointIntegrand_eq_signed
