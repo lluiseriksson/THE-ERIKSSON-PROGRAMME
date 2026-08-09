@@ -45,22 +45,22 @@ theorem mul_finBoxDist_blockSite_le_finBoxDist_add_two_mul_sub_one
     ell * finBoxDist (blockSite ell n x) (blockSite ell n y) ≤
       finBoxDist x y + 2 * (ell - 1) := by
   let bx := blockBasepoint ell n (blockSite ell n x)
-  let by := blockBasepoint ell n (blockSite ell n y)
+  let bySite := blockBasepoint ell n (blockSite ell n y)
   have hbx : finBoxDist bx x ≤ ell - 1 := by
     apply finBoxDist_le_of_same_block
     simp [bx]
-  have hby : finBoxDist y by ≤ ell - 1 := by
+  have hby : finBoxDist y bySite ≤ ell - 1 := by
     apply finBoxDist_le_of_same_block
-    simp [by]
+    simp [bySite]
   calc
     ell * finBoxDist (blockSite ell n x) (blockSite ell n y) =
-        finBoxDist bx by := by
+        finBoxDist bx bySite := by
           symm
           exact finBoxDist_blockBasepoint_eq_mul ell n
             (blockSite ell n x) (blockSite ell n y)
-    _ ≤ finBoxDist bx x + finBoxDist x by := finBoxDist_triangle _ _ _
-    _ ≤ finBoxDist bx x + (finBoxDist x y + finBoxDist y by) := by
-      exact Nat.add_le_add_left (finBoxDist_triangle x y by) _
+    _ ≤ finBoxDist bx x + finBoxDist x bySite := finBoxDist_triangle _ _ _
+    _ ≤ finBoxDist bx x + (finBoxDist x y + finBoxDist y bySite) := by
+      exact Nat.add_le_add_left (finBoxDist_triangle x y bySite) _
     _ ≤ (ell - 1) + (finBoxDist x y + (ell - 1)) := by
       exact Nat.add_le_add hbx (Nat.add_le_add_left hby _)
     _ = finBoxDist x y + 2 * (ell - 1) := by omega
@@ -75,6 +75,17 @@ theorem finBoxDist_le_sum_finTorusDist {d N : ℕ} [NeZero N]
   intro mu hmu
   exact Finset.single_le_sum (fun nu _ ↦ Nat.zero_le
     (finTorusDist (x nu) (y nu))) hmu
+
+/-- The explicit `Equiv.cast` used by source dictionaries preserves the
+literal periodic distance. -/
+theorem finBoxDist_equivCast_size
+    {d N₁ N₂ : ℕ} (h : N₁ = N₂) (x y : FinBox d N₁) :
+    finBoxDist
+        ((Equiv.cast (congrArg (FinBox d) h)) x)
+        ((Equiv.cast (congrArg (FinBox d) h)) y) =
+      finBoxDist x y := by
+  subst h
+  rfl
 
 private instance instNeZeroSourceLocalizationOwnerDistanceAmbient
     (L K Q depth : ℕ) [NeZero L] [NeZero K] [NeZero Q] :
@@ -104,7 +115,7 @@ theorem cmp99Eq389SourceLocalizationOwner_mul_dist_le_fineDist_add_boundary
     mul_finBoxDist_blockSite_le_finBoxDist_add_two_mul_sub_one target' source'
   have hdist : finBoxDist target' source' = finBoxDist target source := by
     unfold target' source' cmp99Eq389SourceLocalizationSiteEquiv
-    exact finBoxDist_cast_size hsize target source
+    exact finBoxDist_equivCast_size hsize target source
   rw [hdist] at h
   simpa [target', source', cmp99Eq389SourceLocalizationOwner] using h
 
@@ -147,8 +158,9 @@ theorem cmp99Eq389SourceLocalizationOwner_mul_dist_le_transportL1_add_boundary
         (finBoxDist (cmp116BondTarget b) y : ℝ) +
           (2 * (L ^ (depth + 1) - 1) : ℕ) := by
     exact_mod_cast howner
-  exact hownerReal.trans (add_le_add_right
-    (finBoxDist_le_cmp116CMP89PhysicalBondTransportDisplacement_realL1 b y) _)
+  exact hownerReal.trans (add_le_add
+    (finBoxDist_le_cmp116CMP89PhysicalBondTransportDisplacement_realL1 b y)
+    (le_refl _))
 
 end
 
