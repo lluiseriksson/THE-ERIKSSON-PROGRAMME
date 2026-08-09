@@ -37,7 +37,8 @@ def cmp116CMP89PhysicalNormalizedStabilizedIntegralAmplitudeBound
 /-- The explicit stabilized endpoint-amplitude majorant is nonnegative under
 the same central-window hypothesis used by its reciprocal factor. -/
 theorem cmp89Eq251ComplexStabilizedEndpointAmplitudeBound_nonneg
-    {a rho : ℝ} (hwindow : CMP89Eq249CentralStabilizedComplexWindow a rho) :
+    {a rho : ℝ} (hrho : 0 ≤ rho)
+    (hwindow : CMP89Eq249CentralStabilizedComplexWindow a rho) :
     0 ≤ cmp89Eq251ComplexStabilizedEndpointAmplitudeBound a rho := by
   have hrecip :
       0 ≤ cmp89Eq249CentralStabilizedComplexReciprocalBound a rho := by
@@ -47,8 +48,29 @@ theorem cmp89Eq251ComplexStabilizedEndpointAmplitudeBound_nonneg
           cmp89Eq249CentralStabilizedDenominatorVariationBound a rho := by
       simpa [CMP89Eq249CentralStabilizedComplexWindow] using hwindow
     exact inv_nonneg.mpr hgap.le
+  have hcentral :
+      0 ≤ cmp89Eq251ComplexCentralEndpointAmplitudeBound rho := by
+    rw [cmp89Eq251ComplexCentralEndpointAmplitudeBound]
+    positivity
+  have hfine :
+      0 ≤ cmp89Eq251CentralFineSymbolStripUpperBound rho := by
+    rw [cmp89Eq251CentralFineSymbolStripUpperBound,
+      cmp89Eq249CentralFineSymbolVerticalBound,
+      cmp89Eq249CentralFineSymbolRealBound]
+    positivity
+  have hnoncentral :
+      0 ≤ cmp89Eq251ComplexNoncentralEndpointQuotientSumBound rho := by
+    rw [cmp89Eq251ComplexNoncentralEndpointQuotientSumBound,
+      cmp89Eq251ComplexNoncentralEndpointQuotientConstant,
+      cmp89Eq251ComplexNoncentralEndpointRadialConstant,
+      cmp89Eq245EntireAverageAliasStripConstant]
+    positivity
+  have hamplitude :
+      0 ≤ cmp89Eq251ComplexEndpointAmplitudeBound rho := by
+    rw [cmp89Eq251ComplexEndpointAmplitudeBound]
+    exact add_nonneg hcentral (mul_nonneg hfine hnoncentral)
   rw [cmp89Eq251ComplexStabilizedEndpointAmplitudeBound]
-  exact mul_nonneg (by positivity) hrecip
+  exact mul_nonneg hamplitude hrecip
 
 /-- The literal normalized physical integral is bounded by one owner decay.
 The coefficient retains the exact one-link and block-boundary factors. -/
@@ -114,7 +136,7 @@ theorem norm_cmp116CMP89PhysicalNormalizedStabilizedIntegral_le_owner
         simpa [cmp116CMP89PhysicalBondFirstEndpointDisplacement] using hweights
   have hmajorantNonneg :
       0 ≤ cmp89Eq251ComplexStabilizedEndpointAmplitudeBound a rho :=
-    cmp89Eq251ComplexStabilizedEndpointAmplitudeBound_nonneg hwindow
+    cmp89Eq251ComplexStabilizedEndpointAmplitudeBound_nonneg hrho hwindow
   have htransport :=
     mul_le_mul_of_nonneg_right hweights' hmajorantNonneg
   calc
