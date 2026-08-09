@@ -63,7 +63,7 @@ theorem cmp89Eq251ComplexStabilizedEndpointIntegrand_eq_fourierLeftDerivative
   rw [cmp89Eq251ComplexStabilizedEndpointNumerator_eq_phaseFactor_mul_amplitude]
   unfold cmp89Eq251ComplexEndpointLatticePhaseFactor
   rw [cmp89Eq251EuclideanNorm_latticeDisplacement_rpow_eq_one_of_unit hholder]
-  ring
+  simp
 
 /-- Source-normalized Fourier realization of one left-derivative Green
 endpoint.  This remains a Fourier definition until the operator dictionary is
