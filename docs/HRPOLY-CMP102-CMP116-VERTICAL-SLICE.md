@@ -6871,3 +6871,38 @@ bounds, their complete `B0`, Fourier-to-owner transport, window-15 attainment
 and all terminal fields remain open. Counters stay exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained. Cached diagnostic
 run `31301472527` did not retire PRE-VALIDATION; only the cold run above did.
+
+### Step 7.5ch unit-lattice Holder normalization (SEALED; physical owner dictionary and `B0` open)
+
+Exact source checkpoint `aa1275df13a40733af754b92bc947a8e82c0a727`
+passed cold GitHub Actions run
+[`31303591996`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31303591996)
+with workflow checkpoint `77344497dc96302a5ffb781167fc57e6d82503ef`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `08:29:53Z` to `08:47:26Z`, completed
+8,471 jobs, and the audit ended at `08:47:32Z`. Both stages exited zero. All
+five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9035463194`, named
+`unit-lattice-holder-normalization-aa1275df13a40733af754b92bc947a8e82c0a727`,
+has GitHub digest
+`d6435a3b0cb411bdf20f7d9b19134f34ee7557864069a58edf90e5e19b58e963`.
+The deterministic inner archive re-hashed on Windows to
+`3e09ddbe979c97040554d995dbae482250bb075f538042a0f417e50b68376575`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The named unit-edge lattice premise now derives internally the exact real
+`l1` length one, Euclidean momentum square one, Euclidean norm one and hence
+every real Holder power equal to one. No lower norm bound or normalization
+factor survives as a separate input. This removes an artificial analytic
+premise from the later endpoint estimate, but does not construct the physical
+owner-to-lattice map: that dictionary must still prove that the two endpoints
+of the physical link produce `CMP89Eq251UnitLatticeBondDisplacement`.
+
+The endpoint magnitude bounds, their complete scale-uniform `B0`,
+Fourier-to-owner transport, window-15 attainment and all terminal fields
+remain open. Counters stay exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained. Diagnostic run `31303486729` was not used to
+retire PRE-VALIDATION; only the cold run above was.

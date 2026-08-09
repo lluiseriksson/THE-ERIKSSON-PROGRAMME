@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointRecombination
 
 /-!
-# PRE-VALIDATION: unit-lattice normalization for the CMP89 Holder endpoint
+# Cold-sealed unit-lattice normalization for the CMP89 Holder endpoint
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`aa1275df13a40733af754b92bc947a8e82c0a727` by cold GitHub Actions run
+`31303591996`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,471 jobs, the audit exited zero, and all five audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The endpoint split exposes the factor
 `|holder|^(-alpha)` separately on both endpoint terms.  The physical Holder

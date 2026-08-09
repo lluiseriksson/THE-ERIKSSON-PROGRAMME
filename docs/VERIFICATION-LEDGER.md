@@ -31458,3 +31458,31 @@ magnitude bound, the complete `B0`, the owner-to-lattice dictionary, rows
 23--24, or a `TermSource`. Live counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained. Cached diagnostic
 run `31301472527` was not used to retire PRE-VALIDATION.
+
+## Addendum 675 (2026-08-09, **unit-lattice Holder normalization GREEN; physical owner dictionary and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `aa1275df13a40733af754b92bc947a8e82c0a727`
+passed cold GitHub Actions run
+[`31303591996`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31303591996)
+with workflow checkpoint `77344497dc96302a5ffb781167fc57e6d82503ef`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,471 jobs from `08:29:53Z` to `08:47:26Z`;
+the audit ended at `08:47:32Z`. Both stages exited zero. All five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9035463194`, named
+`unit-lattice-holder-normalization-aa1275df13a40733af754b92bc947a8e82c0a727`,
+has GitHub digest
+`d6435a3b0cb411bdf20f7d9b19134f34ee7557864069a58edf90e5e19b58e963`.
+Its deterministic inner archive re-hashed on Windows to
+`3e09ddbe979c97040554d995dbae482250bb075f538042a0f417e50b68376575`,
+and all 13 manifest entries re-hashed exactly.
+
+The unit-edge premise now produces the exact `l1` and Euclidean
+normalizations, including every real Holder power equal to one. This removes
+the norm normalization as an independent premise but does not manufacture the
+physical geometry: the owner/bond dictionary must still construct the named
+unit lattice displacement. The endpoint bounds, scale-uniform `B0`, window-15
+attainment and every terminal field remain open. Live counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained. Diagnostic
+run `31303486729` was not used to retire PRE-VALIDATION.

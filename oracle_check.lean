@@ -3079,3 +3079,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp89Eq251LatticeL1Length_add_le_add_one_of_unit
 #print axioms YangMills.RG.cmp89SignedLatticeL1ExponentialWeight_transport_le_exp_mul_add
 #print axioms YangMills.RG.integral_cmp89Eq251ComplexStabilizedIntegrand_eq_sub_signed_endpoints
+#print axioms YangMills.RG.cmp89Eq251DisplacementL1_latticeDisplacement
+#print axioms YangMills.RG.cmp89Eq251DisplacementL1_latticeDisplacement_eq_one_of_unit
+#print axioms YangMills.RG.cmp89Eq251MomentumSquare_latticeDisplacement_eq_one_of_unit
+#print axioms YangMills.RG.cmp89Eq251EuclideanNorm_latticeDisplacement_eq_one_of_unit
+#print axioms YangMills.RG.cmp89Eq251EuclideanNorm_latticeDisplacement_rpow_eq_one_of_unit
