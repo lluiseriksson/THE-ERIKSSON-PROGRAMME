@@ -28,7 +28,7 @@ namespace YangMills.RG
 
 noncomputable section
 
-local attribute [fun_prop]
+attribute [local fun_prop]
   differentiable_cmp89Eq245EntireAverageAmplitude
 
 /-- Translation by one reciprocal alias is entire in the coarse complex
