@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductIntegrability
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductCoordinateShift
 
 /-!
-# PRE-VALIDATION: four-coordinate telescope for a fine-lattice endpoint
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+# Cold-sealed four-coordinate telescope for a fine-lattice endpoint
 
 The existing partial signed momentum and compact-product integrability are
 genuinely generic in a real endpoint displacement.  This module specializes

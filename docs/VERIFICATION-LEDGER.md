@@ -32229,3 +32229,33 @@ Product integrability, 4D telescope, normalized integration and recombination
 remain open. Physical `B0`, window 15 and terminal fields remain open. Live
 counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
 `31339628367` did not seal; only the cold run above did.
+
+## Addendum 699 (2026-08-10, **fine-lattice endpoint product telescope GREEN; normalized integration open; 20/41 unchanged**)
+
+Exact source checkpoint `4b1dfb64060554c673389a4ad058aee7cc4804a0`
+passed cold GitHub Actions run
+[`31340883542`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31340883542)
+with workflow checkpoint `0c41380dc00846ebc7a19a001afd7433388563e9`.
+The job completed in `19m42s`; restore/save of `.lake/build` were skipped.
+Focal and audit exited zero, and all five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9046019010`, named
+`fine-lattice-endpoint-product-telescope-4b1dfb64060554c673389a4ad058aee7cc4804a0`,
+has GitHub digest
+`7420717e2a0baeb0579df1f55e095f2987f73ac58443785c3a087f3175fe71ed`.
+Its deterministic inner archive re-hashed on Windows to
+`693c6c5c77e0362fa660c62112681e5a02dd024be19480f737fa2b4c2bc3c3a4`;
+all 13 internal manifest entries matched.
+
+The module constructs compact-product integrability for each partial signed
+stage and telescopes the four physical coordinate shifts at endpoint
+`u/(L^j)`, literally at `alpha = 0`. Complete-polydisc nonvanishing remains in
+force while earlier coordinates are already complex. The conclusion treats
+one endpoint and its own sign; it does not impose a common contour on the two
+endpoint terms.
+
+Normalized integration, endpoint recombination, the unit-edge comparison,
+physical `B0`, window 15 and terminal fields remain open. Live counters stay
+exactly `20/41`, `TermSource = 0`. Diagnostic PASS `31340764824` did not seal;
+only the cold run above did.

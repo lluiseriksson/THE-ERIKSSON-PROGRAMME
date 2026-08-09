@@ -7768,3 +7768,36 @@ open. Physical `B0`, window 15 and terminal fields remain open. Counters stay
 exactly `20/41`, `TermSource = 0`. Diagnostic run `31339628367` passed with a
 restored graph but did not seal; only the cold run above retired the two
 PRE-VALIDATION marks.
+
+### Step 7.5cxxiv fine-lattice endpoint product telescope (SEALED; normalized integration open)
+
+Exact source checkpoint `4b1dfb64060554c673389a4ad058aee7cc4804a0`
+passed cold GitHub Actions run
+[`31340883542`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31340883542)
+with workflow checkpoint `0c41380dc00846ebc7a19a001afd7433388563e9`.
+The job completed in `19m42s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `23:04:04Z` to `23:21:41Z`, the audit ended
+at `23:21:53Z`, and both stages exited zero. All five audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9046019010`, named
+`fine-lattice-endpoint-product-telescope-4b1dfb64060554c673389a4ad058aee7cc4804a0`,
+has GitHub digest
+`7420717e2a0baeb0579df1f55e095f2987f73ac58443785c3a087f3175fe71ed`.
+Its deterministic inner archive re-hashed on Windows to
+`693c6c5c77e0362fa660c62112681e5a02dd024be19480f737fa2b4c2bc3c3a4`;
+all 13 manifest entries re-hashed exactly.
+
+The brick constructs product integrability for every partial signed stage and
+then applies the sealed one-coordinate fine-lattice shift four times. The
+nonvanishing hypothesis is the complete-polydisc condition `forall k,
+abs (Im (z k)) <= rho`, so earlier shifted coordinates remain admissible at
+every later stage. Each endpoint receives its own signed contour; no common
+sign for two endpoints and no family of slice equalities are assumed.
+
+This closes one endpoint's literal 4D product iteration only. Source-normalized
+integration, the two-endpoint recombination, the unit-edge comparison lemma,
+physical `B0`, window 15 and terminal fields remain open. Counters stay exactly
+`20/41`, `TermSource = 0`. Diagnostic run `31340764824` passed with a restored
+graph but did not seal; only the cold run above retired the two PRE-VALIDATION
+marks.

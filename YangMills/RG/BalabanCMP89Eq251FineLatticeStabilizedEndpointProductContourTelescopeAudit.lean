@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointProductContourTelescope
 
 /-!
-# PRE-VALIDATION audit: fine-lattice endpoint product telescope
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+# Cold-sealed audit: fine-lattice endpoint product telescope
 -/
 
 #print axioms YangMills.RG.cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand
