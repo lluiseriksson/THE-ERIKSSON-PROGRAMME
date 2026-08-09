@@ -73,10 +73,12 @@ theorem cmp116CMP89NatSiteProjection_targetNatLift {d N : ℕ} [NeZero N]
   by_cases hmu : mu = b.2
   · subst mu
     simp [cmp116CMP89NatSiteProjection,
-      cmp116CMP89PhysicalBondTargetNatLift, cmp116BondTarget, FinBox.shift]
+      cmp116CMP89PhysicalBondTargetNatLift, cmp116BondSource,
+      cmp116BondTarget, FinBox.shift]
   · simp [cmp116CMP89NatSiteProjection,
-      cmp116CMP89PhysicalBondTargetNatLift, cmp116BondTarget, FinBox.shift,
-      hmu, Nat.mod_eq_of_lt (cmp116BondSource b mu).isLt]
+      cmp116CMP89PhysicalBondTargetNatLift, cmp116BondSource,
+      cmp116BondTarget, FinBox.shift, hmu,
+      Nat.mod_eq_of_lt (cmp116BondSource b mu).isLt]
 
 /-- Integer lift of the physical source endpoint. -/
 def cmp116CMP89PhysicalBondSourceLift {d N : ℕ} [NeZero N]
@@ -121,7 +123,11 @@ theorem cmp116CMP89PhysicalBondHolderDisplacement_unit {d N : ℕ}
   classical
   unfold CMP89Eq251UnitLatticeBondDisplacement cmp89Eq251LatticeL1Length
   simp_rw [cmp116CMP89PhysicalBondHolderDisplacement_apply]
-  simp
+  rw [Finset.sum_eq_single b.2]
+  · norm_num
+  · intro mu _ hmu
+    simp [hmu]
+  · simp
 
 /-- The real `l1` norm of the physical Holder displacement is exactly one. -/
 theorem cmp116CMP89PhysicalBondHolderDisplacement_realL1_eq_one {d N : ℕ}
