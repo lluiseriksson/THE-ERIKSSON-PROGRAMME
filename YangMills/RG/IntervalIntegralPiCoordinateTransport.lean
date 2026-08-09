@@ -7,10 +7,13 @@ import Mathlib.MeasureTheory.Integral.Pi
 import YangMills.RG.IntervalIntegralSliceTransport
 
 /-!
-# PRE-VALIDATION: coordinate transport through a finite product integral
+# Coordinate transport through a finite product integral
 
-The source in this module is present, but its `.olean` has not yet been
-materialized and its result has not yet been verified by the Lean compiler.
+Cold validation: exact source checkpoint
+`80c13cb97eee0fe918042ad310b73dbeebcd23a6` passed GitHub Actions run
+`31296564841` with restore and save of `.lake/build` both skipped. The focal
+completed 2,591 jobs and both audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 This module isolates the measure-theoretic step needed to iterate a physical
 one-coordinate contour equality.  The slice equality is required only almost

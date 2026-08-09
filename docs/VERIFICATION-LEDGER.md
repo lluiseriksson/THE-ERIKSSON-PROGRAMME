@@ -31306,3 +31306,31 @@ endpoint recombination, `B0`, the owner dictionary, window-15 attainment and
 all terminal fields remain open. Counters stay `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained. Cached run `31295482971` was diagnostic
 only and did not retire PRE-VALIDATION.
+
+## Addendum 670 (2026-08-09, **finite-product coordinate transport GREEN; physical iteration open**)
+
+Exact source checkpoint `80c13cb97eee0fe918042ad310b73dbeebcd23a6`
+passed cold GitHub Actions run
+[`31296564841`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31296564841)
+with workflow checkpoint `575e375511e02e3bd2f88078b6db773520b60a96`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 2,591 jobs from `05:24:54Z` to `05:25:00Z`; the
+audit ended at `05:25:05Z`. Both stages exited zero. Both audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9033140110`, named
+`pi-coordinate-interval-transport-80c13cb97eee0fe918042ad310b73dbeebcd23a6`,
+has GitHub digest
+`b42a2fe43191fee5b919a098a5d161fa754d9c860728f930bcffd0492b9a05c7`.
+The deterministic inner archive re-hashed on Windows to
+`1b8428162b71e3c39c977adb3635c40b04c75e0073358326b7cc8133b175690e`,
+identical to the runner's hash; all 13 manifest entries re-hashed exactly.
+
+The two theorems transport an almost-everywhere interval-slice equality
+through an arbitrary remaining measure and then through a finite Pi measure
+using the exact measurable coordinate decomposition. Physical integrability,
+four-coordinate endpoint iteration, endpoint recombination, `B0`, the owner
+dictionary, window-15 attainment and all terminal fields remain open.
+Counters stay `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained. Cached run `31296472882` was diagnostic only and did not retire
+PRE-VALIDATION.

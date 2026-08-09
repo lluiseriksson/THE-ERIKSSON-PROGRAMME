@@ -6690,3 +6690,35 @@ four-coordinate iteration, recombination of the two endpoint contours,
 remain open. Counters stay `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained. Cached diagnostic run `31295482971` did not retire
 PRE-VALIDATION; only the cold run above did.
+
+### Step 7.5cc finite-product coordinate transport (SEALED; physical iteration open)
+
+Exact source checkpoint `80c13cb97eee0fe918042ad310b73dbeebcd23a6`
+passed cold GitHub Actions run
+[`31296564841`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31296564841)
+with workflow checkpoint `575e375511e02e3bd2f88078b6db773520b60a96`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `05:24:54Z` to `05:25:00Z`, completed
+2,591 jobs, and the audit ended at `05:25:05Z`. Both stages exited zero. Both
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9033140110`, named
+`pi-coordinate-interval-transport-80c13cb97eee0fe918042ad310b73dbeebcd23a6`,
+has GitHub digest
+`b42a2fe43191fee5b919a098a5d161fa754d9c860728f930bcffd0492b9a05c7`.
+The deterministic inner archive re-hashed on Windows to
+`1b8428162b71e3c39c977adb3635c40b04c75e0073358326b7cc8133b175690e`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed route lifts a slice equality that holds almost everywhere in the
+remaining coordinates through a finite product integral. It uses the exact
+`piFinSuccAbove` measure equivalence and explicit integrability of both
+uncurried functions. It does not strengthen a Brillouin-domain identity to
+points outside the restricted cube.
+
+Physical compact-product integrability, endpoint-specific four-coordinate
+iteration, endpoint recombination, `B0`, the owner dictionary, window-15
+attainment and every terminal field remain open. Counters stay `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Cached diagnostic
+run `31296472882` did not retire PRE-VALIDATION; only the cold run above did.
