@@ -1,4 +1,4 @@
-name: Validate unit lattice Holder normalization
+name: Validate physical bond displacement dictionary
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: aa1275df13a40733af754b92bc947a8e82c0a727
+  SOURCE_SHA: 4c114c197624fb3c674419ab9361bc7790a2854d
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    unit-lattice-holder-normalization
     stabilized-endpoint-recombination
     stabilized-endpoint-product-contour-telescope
     stabilized-endpoint-product-coordinate-shift
@@ -25,7 +26,7 @@ env:
     stabilized-endpoint-one-coordinate-shift
 
 jobs:
-  unit-lattice-holder-normalization:
+  physical-bond-displacement-dictionary:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -90,7 +91,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-unit-lattice-holder-normalization-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-physical-bond-displacement-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -124,8 +125,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq251UnitLatticeHolderNormalization.lean \
-            YangMills/RG/BalabanCMP89Eq251UnitLatticeHolderNormalizationAudit.lean \
+            YangMills/RG/BalabanCMP116CMP89PhysicalBondDisplacementDictionary.lean \
+            YangMills/RG/BalabanCMP116CMP89PhysicalBondDisplacementDictionaryAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -147,10 +148,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage unit_lattice_holder_normalization_focal \
-            lake build YangMills.RG.BalabanCMP89Eq251UnitLatticeHolderNormalization
-          run_stage unit_lattice_holder_normalization_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq251UnitLatticeHolderNormalizationAudit.lean
+          run_stage physical_bond_displacement_dictionary_focal \
+            lake build YangMills.RG.BalabanCMP116CMP89PhysicalBondDisplacementDictionary
+          run_stage physical_bond_displacement_dictionary_audit \
+            lake env lean YangMills/RG/BalabanCMP116CMP89PhysicalBondDisplacementDictionaryAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -164,7 +165,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "unit_lattice_holder_normalization_audit.log": 5,
+              "physical_bond_displacement_dictionary_audit.log": 6,
           }
           result = {}
           for name, expected in audits.items():
@@ -196,17 +197,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              unit-lattice-holder-normalization-evidence.tar.gz
-          sha256sum unit-lattice-holder-normalization-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              physical-bond-displacement-dictionary-evidence.tar.gz
+          sha256sum physical-bond-displacement-dictionary-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: unit-lattice-holder-normalization-${{ env.SOURCE_SHA }}
+          name: physical-bond-displacement-dictionary-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            unit-lattice-holder-normalization-evidence.tar.gz
+            physical-bond-displacement-dictionary-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -215,4 +216,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-unit-lattice-holder-normalization-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-physical-bond-displacement-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
