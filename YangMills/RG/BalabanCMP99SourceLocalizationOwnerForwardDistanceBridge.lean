@@ -43,7 +43,7 @@ theorem finTorusDist_eq_zero_iff {N : ℕ} [NeZero N] (a b : Fin N) :
   · intro h
     have hz : ((a.val : ZMod N) - (b.val : ZMod N)) = 0 := by
       unfold finTorusDist zmodCircDist zmodCircVal at h
-      rcases Nat.min_eq_zero.mp h with hval | hneg
+      rcases Nat.min_eq_zero_iff.mp h with hval | hneg
       · exact (ZMod.val_eq_zero _).mp hval
       · have hnegZero : -((a.val : ZMod N) - (b.val : ZMod N)) = 0 :=
           (ZMod.val_eq_zero _).mp hneg
@@ -60,7 +60,7 @@ theorem finBoxDist_eq_zero_iff {d N : ℕ} [NeZero N]
   · intro hzero
     funext mu
     apply (finTorusDist_eq_zero_iff (x mu) (y mu)).mp
-    apply Nat.eq_zero_of_le
+    apply Nat.eq_zero_of_le_zero
     simpa [hzero] using finTorusDist_le_finBoxDist x y mu
   · rintro rfl
     exact finBoxDist_self x
@@ -87,9 +87,10 @@ theorem finBoxDist_blockSite_le_finBoxDist
   by_cases hone : fineDist = 1
   · have hlt : ell * ownerDist < ell * 2 := by
       rw [hone] at hinverse
+      have hell : 0 < ell := NeZero.pos ell
       omega
     have howner : ownerDist < 2 :=
-      (Nat.mul_lt_mul_left (NeZero.pos ell)).mp hlt
+      Nat.lt_of_mul_lt_mul_left (a := ell) hlt
     omega
   · have htwo : 2 ≤ fineDist := by omega
     have hboundary : 2 * (ell - 1) ≤ fineDist * (ell - 1) :=
@@ -99,10 +100,14 @@ theorem finBoxDist_blockSite_le_finBoxDist
         fineDist + 2 * (ell - 1) ≤
             fineDist + fineDist * (ell - 1) :=
           Nat.add_le_add_left hboundary fineDist
-        _ = ell * fineDist := by omega
+        _ = fineDist * (1 + (ell - 1)) := by ring
+        _ = fineDist * ell := by
+          congr 1
+          omega
+        _ = ell * fineDist := Nat.mul_comm _ _
     have hscaled : ell * ownerDist ≤ ell * fineDist :=
       hinverse.trans habsorb
-    exact (Nat.mul_le_mul_left (NeZero.pos ell)).mp hscaled
+    exact Nat.le_of_mul_le_mul_left hscaled (NeZero.pos ell)
 
 /-- The literal CMP99 source owner distance is bounded by fine-site distance,
 with the source carrier cast kept explicit. -/
