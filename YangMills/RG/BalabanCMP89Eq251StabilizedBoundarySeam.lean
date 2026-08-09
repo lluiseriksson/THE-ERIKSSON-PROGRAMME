@@ -167,6 +167,7 @@ theorem cmp89Eq251ComplexStabilizedIntegrand_boundarySeam
         (cmp89Eq251LatticeDisplacement holderU)
         (cmp89Eq251LatticeDisplacement transportU) := by
   rcases cmp89Eq251DisplayedDomain_of_boundaryFace
+      (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hmassPos hrho hamplitude hradius hwindow hmass nu hp hface
         hreal himag with
     ⟨hunit, hreduced, hfine⟩
