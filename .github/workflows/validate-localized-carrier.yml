@@ -1,4 +1,4 @@
-name: Validate CMP89 normalized endpoint integral
+name: Validate CMP89 normalized stabilized recombination
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: a92695ec57772ba180446e3e682e0aeaaca606fc
+  SOURCE_SHA: f5fd7a53251474932f130d817f50242c3bf67571
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    normalized-endpoint-integral
     stabilized-endpoint-bound
     endpoint-amplitude-bound
     endpoint-amplitude-factorization
@@ -28,7 +29,7 @@ env:
     endpoint-strip-factor-bounds
 
 jobs:
-  normalized-endpoint-integral:
+  normalized-stabilized-recombination:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -93,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-normalized-endpoint-integral-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-normalized-stabilized-recombination-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -127,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq249NormalizedStabilizedEndpointIntegralBound.lean \
-            YangMills/RG/BalabanCMP89Eq249NormalizedStabilizedEndpointIntegralBoundAudit.lean \
+            YangMills/RG/BalabanCMP89Eq249NormalizedStabilizedIntegralRecombination.lean \
+            YangMills/RG/BalabanCMP89Eq249NormalizedStabilizedIntegralRecombinationAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -150,40 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          cat > /tmp/CMP89BrillouinMeasureRepro.lean <<'EOF'
-          import Mathlib.MeasureTheory.Constructions.Pi
-          import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
-
-          open MeasureTheory
-
-          noncomputable section
-
-          def testBrillouinMeasure : Measure (Fin 4 → ℝ) :=
-            Measure.pi fun _ : Fin 4 =>
-              volume.restrict (Set.uIoc 0 (2 * Real.pi))
-
-          instance : IsFiniteMeasure testBrillouinMeasure := by
-            refine ⟨?_⟩
-            simp [testBrillouinMeasure, Measure.pi_univ]
-            exact ENNReal.mul_lt_top (by norm_num) ENNReal.ofReal_lt_top
-
-          example :
-              (Measure.pi fun _ : Fin 4 =>
-                volume.restrict (Set.uIoc 0 (2 * Real.pi))).real Set.univ =
-                (2 * Real.pi) ^ 4 := by
-            have htwoPi : (0 : ℝ) ≤ 2 * Real.pi :=
-              mul_nonneg (by norm_num) Real.pi_pos.le
-            simp [Measure.pi_univ, measureReal_def,
-              ENNReal.toReal_ofReal', Set.uIoc_of_le htwoPi,
-              max_eq_left Real.pi_pos.le]
-          EOF
-
-          run_stage brillouin_measure_repro \
-            lake env lean /tmp/CMP89BrillouinMeasureRepro.lean
-          run_stage normalized_endpoint_integral_focal \
-            lake build YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedEndpointIntegralBound
-          run_stage normalized_endpoint_integral_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq249NormalizedStabilizedEndpointIntegralBoundAudit.lean
+          run_stage normalized_stabilized_recombination_focal \
+            lake build YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedIntegralRecombination
+          run_stage normalized_stabilized_recombination_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq249NormalizedStabilizedIntegralRecombinationAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -197,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "normalized_endpoint_integral_audit.log": 6,
+              "normalized_stabilized_recombination_audit.log": 3,
           }
           result = {}
           for name, expected in audits.items():
@@ -229,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              normalized-endpoint-integral-evidence.tar.gz
-          sha256sum normalized-endpoint-integral-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              normalized-stabilized-recombination-evidence.tar.gz
+          sha256sum normalized-stabilized-recombination-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: normalized-endpoint-integral-${{ env.SOURCE_SHA }}
+          name: normalized-stabilized-recombination-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            normalized-endpoint-integral-evidence.tar.gz
+            normalized-stabilized-recombination-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -248,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-normalized-endpoint-integral-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-normalized-stabilized-recombination-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
