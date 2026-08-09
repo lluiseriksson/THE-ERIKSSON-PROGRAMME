@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq249FinePhaseScaleNoGo
 import YangMills.RG.BalabanCMP89Eq251LatticePhasePeriodicity
 
 /-!
-# PRE-VALIDATION: physical fine-lattice endpoint phase periodicity
+# Cold-sealed physical fine-lattice endpoint phase periodicity
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+Compiler-verified at exact source checkpoint
+`50f5befa816642d5099bc231a1e073c555519bac` by cold GitHub Actions run
+`31335057233`. Restoration and saving of `.lake/build` were skipped. The focal
+and audit exited zero, and all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.43)--(2.49) uses physical sites in `xi Z^d`, with
 `xi = (L^j)^(-1)`, while a centered-alias wrap changes the already-aliased

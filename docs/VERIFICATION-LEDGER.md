@@ -32085,3 +32085,32 @@ typed on unit-lattice displacements, whereas CMP89 uses physical displacements
 Physical `B0`, window 15 and every terminal field remain open. Live counters
 remain exactly `20/41`, `TermSource = 0`. Cached run `31333497194` was
 diagnostic only; only the cold run above retired the two PRE-VALIDATION marks.
+
+## Addendum 694 (2026-08-09, **physical fine-lattice phase seam GREEN; full endpoint seam open; 20/41 unchanged**)
+
+Exact source checkpoint `50f5befa816642d5099bc231a1e073c555519bac`
+passed cold GitHub Actions run
+[`31335057233`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31335057233)
+with workflow checkpoint `0bc0a52009275988aac17613b63f309ebbdff277`.
+The job completed in `18m24s`; restore/save of `.lake/build` were skipped.
+Focal and audit exited zero, and all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9044288311`, named
+`fine-lattice-phase-seam-50f5befa816642d5099bc231a1e073c555519bac`,
+has GitHub digest
+`745652961b5ac649d819eb8742a227848b385f0ea2efd3b69bd0e9b09ed2fbe4`.
+Its deterministic inner archive re-hashed on Windows to
+`6d6e187325414f0b229e1b98ed7568d1d0761b3d01f04324f5ee2d7aa0502d3f`;
+all 13 internal manifest entries matched.
+
+The theorem proves the exact seam arithmetic `(2*pi*N)*(u/N)=2*pi*u` and
+derives exponential phase periodicity from the integer fine-site coordinate.
+It does not reinstate common alias-phase factorization: a single `2*pi` alias
+remains nontrivial at fine spacing, exactly as Addendum 691 proves.
+
+Displayed-integrand periodicity, stabilized seam, 4D contour telescope and
+normalized integration remain separate downstream bricks. Physical `B0`,
+window 15 and every terminal field remain open. Live counters stay exactly
+`20/41`, `TermSource = 0`. Diagnostic PASS `31334904027` did not seal; failed
+diagnostics `31334576819` and `31334746446` are retained.

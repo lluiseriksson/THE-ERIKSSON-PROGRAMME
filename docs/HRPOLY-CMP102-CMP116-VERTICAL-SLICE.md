@@ -7603,3 +7603,36 @@ The physical Green dictionary, complete `B0`, window-15 attainment and every
 terminal field remain open. Counters stay exactly `20/41`, `TermSource = 0`.
 Cached diagnostic run `31333497194` passed but did not retire PRE-VALIDATION;
 only the cold run above did.
+
+### Step 7.5cxix physical fine-lattice phase seam (SEALED; displayed endpoint seam open)
+
+Exact source checkpoint `50f5befa816642d5099bc231a1e073c555519bac`
+passed cold GitHub Actions run
+[`31335057233`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31335057233)
+with workflow checkpoint `0bc0a52009275988aac17613b63f309ebbdff277`.
+The job completed in `18m24s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `20:47:12Z` to `21:03:35Z`, the audit ended
+at `21:03:41Z`, and both stages exited zero. All three audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9044288311`, named
+`fine-lattice-phase-seam-50f5befa816642d5099bc231a1e073c555519bac`,
+has GitHub digest
+`745652961b5ac649d819eb8742a227848b385f0ea2efd3b69bd0e9b09ed2fbe4`.
+Its deterministic inner archive re-hashed on Windows to
+`6d6e187325414f0b229e1b98ed7568d1d0761b3d01f04324f5ee2d7aa0502d3f`;
+all 13 manifest entries re-hashed exactly.
+
+The seam input is now literal: a centered-alias wrap contributes momentum
+`2*pi*N`, a physical fine displacement is `u/N`, and their product is the
+integer phase `2*pi*u`. Endpoint Fourier phases are therefore invariant under
+the alias-cycle wrap without identifying any individual `2*pi` alias phase
+with one. This is compatible with, and does not weaken, the sealed no-go.
+
+Only the phase seam is closed. Periodicity of the complete displayed endpoint,
+transfer to the stabilized endpoint, the four-coordinate contour telescope,
+normalized integration and recombination remain four named downstream bricks.
+Physical `B0`, window 15 and terminal fields remain open. Counters stay exactly
+`20/41`, `TermSource = 0`. Diagnostic run `31334904027` passed but did not
+retire PRE-VALIDATION; failed diagnostics `31334576819` and `31334746446`
+remain preserved as elaboration evidence.
