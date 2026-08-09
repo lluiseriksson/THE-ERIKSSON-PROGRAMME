@@ -72,6 +72,7 @@ theorem cmp89Eq249NormalizedFourDimensionalStabilizedIntegral_eq_sub_endpoints
           (cmp89Eq251LatticeDisplacement transportU)) := by
   unfold cmp89Eq249NormalizedFourDimensionalStabilizedIntegral
   unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
+  unfold cmp89Eq249FourDimensionalBrillouinMeasure
   rw [integral_cmp89Eq251ComplexStabilizedIntegrand_eq_sub_signed_endpoints
     (L := L) (j := j) (mass := mass) (a := a) (alpha := alpha)
     (rho := rho) ha hmassPos hrho hamplitude hradius hwindow hmass mu
