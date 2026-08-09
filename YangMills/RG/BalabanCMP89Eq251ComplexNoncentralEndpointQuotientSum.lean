@@ -64,11 +64,11 @@ theorem norm_cmp89Eq251ComplexNoncentralEndpointQuotientSum_le_bound
   let aliases := cmp89Eq245CenteredAliasVectors 4 N
   let zeroAlias := cmp89Eq249ZeroAlias 4
   let term : (Fin 4 → ℤ) → ℂ := fun m =>
-    cmp89Eq245EntireScaledDifference (N : ℝ)⁻¹
+    cmp89Eq245EntireScaledDifference (((L : ℝ) ^ j)⁻¹)
         (-(cmp89Eq248EntireAliasMomentum z m mu)) *
       cmp89Eq245EntireAverageAmplitude 4 N
         (cmp89Eq248EntireAliasMomentum z m) /
-      cmp89Eq245EntireScaledLaplacianSymbol 4 (N : ℝ)⁻¹ mass
+      cmp89Eq245EntireScaledLaplacianSymbol 4 (((L : ℝ) ^ j)⁻¹) mass
         (cmp89Eq248EntireAliasMomentum z m)
   let weight : (Fin 4 → ℤ) → ℝ := fun m =>
     cmp89Eq251MultidimensionalAliasWeight
