@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP89Eq249UniformNoncentralComplexRadius
 import YangMills.RG.BalabanCMP89Eq251AliasWeightRedistribution
+import YangMills.RG.BalabanCMP89Eq245EntireAverageAliasStripBound
 import YangMills.RG.BalabanCMP89Eq251EntireScaledDifferenceStripUpper
 
 /-!
@@ -76,7 +77,8 @@ theorem norm_cmp89Eq245EntireScaledDifference_alias_le_two_euclidean
       cmp89Eq245AliasShift] using himag nu
   have hraw :=
     norm_cmp89Eq245EntireScaledDifference_le_abs_re_add_vertical
-      hxi hxi1 hrho (by simpa using haliasImag mu)
+      (z := -(aliasZ mu)) hxi hxi1 hrho
+      (by simpa using haliasImag mu)
   have hpi : Real.pi ≤ cmp89Eq251EuclideanNorm q :=
     pi_le_cmp89Eq251EuclideanNorm_shift hm0 hp
   have heps : rho * Real.exp rho ≤ cmp89Eq251EuclideanNorm q := by
@@ -232,7 +234,7 @@ theorem norm_cmp89Eq251ComplexNoncentralEndpointQuotient_le_sourceWeight
     fun nu => p nu + 2 * Real.pi * (m nu : ℝ)
   have hradial :=
     norm_cmp89Eq251ComplexNoncentralEndpointQuotient_le_radialWeight
-      hN hrho hradius hm hm0 hp hreal himag hamplitude mu
+      (mass := mass) hN hrho hradius hm hm0 hp hreal himag hamplitude mu
   have hredistribute :
       cmp89Eq251EuclideanNorm q ^ ((0 : ℝ) - 1) *
           cmp89Eq251MultidimensionalAliasWeight 1 m ≤
