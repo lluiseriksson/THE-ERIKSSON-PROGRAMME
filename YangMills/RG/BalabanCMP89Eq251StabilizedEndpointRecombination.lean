@@ -63,9 +63,16 @@ theorem cmp89Eq251LatticeL1Length_add_le_add_one_of_unit {d : ℕ}
     (hunit : CMP89Eq251UnitLatticeBondDisplacement holder) :
     cmp89Eq251LatticeL1Length (fun mu ↦ holder mu + transport mu) ≤
       cmp89Eq251LatticeL1Length transport + 1 := by
+  have hunit' : cmp89Eq251LatticeL1Length holder = 1 := by
+    simpa [CMP89Eq251UnitLatticeBondDisplacement] using hunit
   have h := cmp89Eq251LatticeL1Length_add_le holder transport
-  rw [hunit]
-  simpa [add_comm] using h
+  calc
+    cmp89Eq251LatticeL1Length (fun mu ↦ holder mu + transport mu) ≤
+        cmp89Eq251LatticeL1Length holder +
+          cmp89Eq251LatticeL1Length transport := h
+    _ = cmp89Eq251LatticeL1Length transport + 1 := by
+      rw [hunit']
+      ring
 
 /-- Explicit neighbour cost for the two endpoint decays.  This is the exact
 `exp rho` factor that must remain visible when the physical endpoint bounds
@@ -81,7 +88,8 @@ theorem cmp89SignedLatticeL1ExponentialWeight_transport_le_exp_mul_add
   rw [cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs,
     cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs]
   have hlength :=
-    cmp89Eq251LatticeL1Length_add_le_add_one_of_unit hunit
+    cmp89Eq251LatticeL1Length_add_le_add_one_of_unit
+      (holder := holder) (transport := transport) hunit
   have hexponent :
       -rho * cmp89Eq251LatticeL1Length transport ≤
         rho + -rho *
@@ -183,6 +191,7 @@ theorem integral_cmp89Eq251ComplexStabilizedIntegrand_eq_sub_signed_endpoints
     filter_upwards with x
     simpa [endpointU, cmp89Eq251LatticeDisplacement] using
       (cmp89Eq251ComplexStabilizedIntegrand_eq_sub_endpoint
+        (L := L) (j := j) (mass := mass) (a := a) (alpha := alpha)
         (z := fun nu ↦
           (cmp89Eq251PhysicalBrillouinParameter x nu : ℂ))
         (mu := mu)
