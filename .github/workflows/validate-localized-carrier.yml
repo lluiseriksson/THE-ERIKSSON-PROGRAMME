@@ -1,4 +1,4 @@
-name: Validate CMP89 Fourier left derivative kernel
+name: Validate CMP89 fine phase scale no-go
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 8bc8fafb38608635740ba971ea43301befa23a60
+  SOURCE_SHA: 0b967fe919cd7abde43f3ebdde2d43849cac845d
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    fourier-left-derivative-kernel
     fixed-rate-physical-owner-bound
     physical-normalized-owner-bound
     normalized-stabilized-recombination
@@ -28,7 +29,7 @@ env:
     common-strip-holomorphy
 
 jobs:
-  fourier-left-derivative-kernel:
+  fine-phase-scale-nogo:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -93,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-fourier-left-derivative-kernel-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-fine-phase-scale-nogo-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -127,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq249StabilizedFourierLeftDerivativeKernel.lean \
-            YangMills/RG/BalabanCMP89Eq249StabilizedFourierLeftDerivativeKernelAudit.lean \
+            YangMills/RG/BalabanCMP89Eq249FinePhaseScaleNoGo.lean \
+            YangMills/RG/BalabanCMP89Eq249FinePhaseScaleNoGoAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -150,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage fourier_left_derivative_focal \
-            lake build YangMills.RG.BalabanCMP89Eq249StabilizedFourierLeftDerivativeKernel
-          run_stage fourier_left_derivative_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq249StabilizedFourierLeftDerivativeKernelAudit.lean
+          run_stage fine_phase_scale_nogo_focal \
+            lake build YangMills.RG.BalabanCMP89Eq249FinePhaseScaleNoGo
+          run_stage fine_phase_scale_nogo_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq249FinePhaseScaleNoGoAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -167,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "fourier_left_derivative_audit.log": 5,
+              "fine_phase_scale_nogo_audit.log": 3,
           }
           result = {}
           for name, expected in audits.items():
@@ -199,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              fourier-left-derivative-kernel-evidence.tar.gz
-          sha256sum fourier-left-derivative-kernel-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              fine-phase-scale-nogo-evidence.tar.gz
+          sha256sum fine-phase-scale-nogo-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fourier-left-derivative-kernel-${{ env.SOURCE_SHA }}
+          name: fine-phase-scale-nogo-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            fourier-left-derivative-kernel-evidence.tar.gz
+            fine-phase-scale-nogo-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -218,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-fourier-left-derivative-kernel-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-fine-phase-scale-nogo-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
