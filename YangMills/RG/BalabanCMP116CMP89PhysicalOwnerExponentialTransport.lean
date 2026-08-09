@@ -6,10 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceLocalizationOwnerDistanceBridge
 
 /-!
-# PRE-VALIDATION: CMP89 fine decay transported to CMP99 owners
+# Cold-sealed CMP89 fine decay transported to CMP99 owners
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`993f3a465244ebc7a7c64b44e5ee260ff26e0b21` by cold GitHub Actions run
+`31309588643`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,591 jobs, the audit exited zero, and all five audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The preceding sealed metric bridge proves
 

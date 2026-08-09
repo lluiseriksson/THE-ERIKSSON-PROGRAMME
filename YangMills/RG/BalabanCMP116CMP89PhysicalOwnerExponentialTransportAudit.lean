@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP116CMP89PhysicalOwnerExponentialTransport
 
 /-!
-# PRE-VALIDATION audit: physical endpoint decay transported to owners
+# Cold-sealed audit: physical endpoint decay transported to owners
 
-Source is present, its `.olean` has not yet been materialized, and these audit
-results have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`993f3a465244ebc7a7c64b44e5ee260ff26e0b21` by cold GitHub Actions run
+`31309588643`. All five declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251LatticeL1Length_neg

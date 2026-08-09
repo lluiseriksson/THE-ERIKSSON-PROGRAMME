@@ -31591,3 +31591,35 @@ separate physical-link factor `exp rho`. It does not yet construct the complete
 Live counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained. Diagnostic run `31307905304` was not used to retire
 PRE-VALIDATION; only the cold run above was.
+
+## Addendum 679 (2026-08-09, **physical endpoint exponential transport GREEN; endpoint amplitudes and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `993f3a465244ebc7a7c64b44e5ee260ff26e0b21`
+passed cold GitHub Actions run
+[`31309588643`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31309588643)
+with workflow checkpoint `cc8642603c07c52884d2c42fda5694df8b35c7e0`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,591 jobs from `10:59:14Z` to `11:27:54Z`;
+the audit ended at `11:28:00Z`. Both stages exited zero. All five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9037332025`, named
+`physical-owner-exponential-transport-993f3a465244ebc7a7c64b44e5ee260ff26e0b21`,
+has GitHub digest
+`f9ad9bbd16c59034519e671da91ec36c06bf527c751f0f9b8a755cbc3bc7d528`.
+Its deterministic inner archive re-hashed on Windows to
+`f37c9f7a85dca8b0f032ad3f65b31760953a994bfde54f6048eb723af1057a90`,
+and all 13 manifest entries re-hashed exactly.
+
+The sealed producer exponentiates the fine-to-owner inequality with its sign
+checked, preserving owner rate `rho * L^(depth+1)` and the block-boundary
+factor `exp (rho * 2 * (L^(depth+1)-1))`. It separately derives the reverse
+unit-edge endpoint cost and recombines both endpoint weights with the literal
+factor `1 + exp rho`. No endpoint amplitude or complete `B0` is constructed.
+
+The only two focal warnings were inherited from the regional Green Neumann
+and separated-partition imports; the new target emitted none. Window 15 is
+still compatible but unattained, no terminal field is discharged and no
+`TermSource` is inhabited. Live counters remain exactly `20/41`,
+`TermSource = 0`. Diagnostic run `31309479791` was not used to retire
+PRE-VALIDATION; only the cold run above was.

@@ -7029,3 +7029,41 @@ an unnamed constant. `B0`, window-15 attainment and all terminal fields remain
 open. Counters stay exactly `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained. Diagnostic run `31307905304` did not retire PRE-VALIDATION;
 only the cold run above did.
+
+### Step 7.5civ physical endpoint exponential transport to localization owners (SEALED; endpoint amplitudes and `B0` open)
+
+Exact source checkpoint `993f3a465244ebc7a7c64b44e5ee260ff26e0b21`
+passed cold GitHub Actions run
+[`31309588643`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31309588643)
+with workflow checkpoint `cc8642603c07c52884d2c42fda5694df8b35c7e0`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal ran from `10:59:14Z` to `11:27:54Z`, completed 8,591
+jobs and exited zero. The audit ended at `11:28:00Z` and also exited zero. All
+five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9037332025`, named
+`physical-owner-exponential-transport-993f3a465244ebc7a7c64b44e5ee260ff26e0b21`,
+has GitHub digest
+`f9ad9bbd16c59034519e671da91ec36c06bf527c751f0f9b8a755cbc3bc7d528`.
+The deterministic inner archive re-hashed on Windows to
+`f37c9f7a85dca8b0f032ad3f65b31760953a994bfde54f6048eb723af1057a90`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed producer exponentiates the fine-to-owner metric inequality in the
+decreasing direction. It preserves the literal owner decay rate
+`rho * L^(depth+1)` and keeps the block-boundary cost
+`exp (rho * 2 * (L^(depth+1)-1))` visible. Negating the sealed unit Holder
+edge gives the reverse endpoint comparison; the two independently shifted
+endpoint weights are then recombined with the separate literal factor
+`1 + exp rho`. No factor is absorbed into an unnamed constant.
+
+This closes metric-to-exponential transport only. Endpoint numerator
+amplitudes, their common scale-uniform `B0`, window-15 attainment and all
+terminal fields remain open. The two reported warnings were inherited from
+`BalabanCMP99SourceRegionalGreenNeumann.lean` and
+`BalabanCMP99SourceSeparatedLargeBlockPartition.lean`; the new target emitted
+none. Counters stay exactly `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained. Diagnostic run `31309479791` did not retire PRE-VALIDATION;
+only the cold run above did.
