@@ -1,4 +1,4 @@
-name: Validate CMP89 fixed-rate physical owner bound
+name: Validate CMP89 Fourier left derivative kernel
 
 on:
   workflow_dispatch:
@@ -13,23 +13,22 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 0cdc21b71c3bb3225fe3c8656083c953e59c896b
+  SOURCE_SHA: 2d418d57091395b078806534973a00bf7e6d064d
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    fixed-rate-physical-owner-bound
     physical-normalized-owner-bound
-    physical-owner-exponential-transport
-    source-localization-owner-distance
     normalized-stabilized-recombination
     normalized-endpoint-integral
+    stabilized-endpoint-bound
     endpoint-amplitude-bound
     endpoint-amplitude-factorization
-    physical-site-transport-dictionary
-    signed-lattice-l1-exponential-sum
+    common-strip-holomorphy
 
 jobs:
-  fixed-rate-physical-owner-bound:
+  fourier-left-derivative-kernel:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +93,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-fixed-rate-physical-owner-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-fourier-left-derivative-kernel-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,12 +127,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceLocalizationOwnerForwardDistanceBridge.lean \
-            YangMills/RG/BalabanCMP99SourceLocalizationOwnerForwardDistanceBridgeAudit.lean \
-            YangMills/RG/BalabanCMP116CMP89PhysicalFixedRateOwnerTransport.lean \
-            YangMills/RG/BalabanCMP116CMP89PhysicalFixedRateOwnerTransportAudit.lean \
-            YangMills/RG/BalabanCMP116CMP89PhysicalUniformNormalizedStabilizedIntegralBound.lean \
-            YangMills/RG/BalabanCMP116CMP89PhysicalUniformNormalizedStabilizedIntegralBoundAudit.lean \
+            YangMills/RG/BalabanCMP89Eq249StabilizedFourierLeftDerivativeKernel.lean \
+            YangMills/RG/BalabanCMP89Eq249StabilizedFourierLeftDerivativeKernelAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -155,22 +150,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage source_owner_forward_distance_focal \
-            lake build YangMills.RG.BalabanCMP99SourceLocalizationOwnerForwardDistanceBridge
-          run_stage source_owner_forward_distance_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceLocalizationOwnerForwardDistanceBridgeAudit.lean
-          run_stage fixed_rate_physical_owner_transport_focal \
-            lake build YangMills.RG.BalabanCMP116CMP89PhysicalFixedRateOwnerTransport
-          run_stage fixed_rate_physical_owner_transport_audit \
-            lake env lean YangMills/RG/BalabanCMP116CMP89PhysicalFixedRateOwnerTransportAudit.lean
-          run_stage uniform_normalized_integral_focal \
-            lake build YangMills.RG.BalabanCMP116CMP89PhysicalUniformNormalizedStabilizedIntegralBound
-          run_stage uniform_normalized_integral_audit \
-            lake env lean YangMills/RG/BalabanCMP116CMP89PhysicalUniformNormalizedStabilizedIntegralBoundAudit.lean
-          run_stage root_integration \
-            lake build YangMillsCore
-          run_stage oracle_integration \
-            lake env lean oracle_check.lean
+          run_stage fourier_left_derivative_focal \
+            lake build YangMills.RG.BalabanCMP89Eq249StabilizedFourierLeftDerivativeKernel
+          run_stage fourier_left_derivative_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq249StabilizedFourierLeftDerivativeKernelAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -184,9 +167,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "source_owner_forward_distance_audit.log": 5,
-              "fixed_rate_physical_owner_transport_audit.log": 2,
-              "uniform_normalized_integral_audit.log": 2,
+              "fourier_left_derivative_audit.log": 5,
           }
           result = {}
           for name, expected in audits.items():
@@ -218,17 +199,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              fixed-rate-physical-owner-bound-evidence.tar.gz
-          sha256sum fixed-rate-physical-owner-bound-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              fourier-left-derivative-kernel-evidence.tar.gz
+          sha256sum fourier-left-derivative-kernel-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fixed-rate-physical-owner-bound-${{ env.SOURCE_SHA }}
+          name: fourier-left-derivative-kernel-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            fixed-rate-physical-owner-bound-evidence.tar.gz
+            fourier-left-derivative-kernel-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -237,4 +218,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-fixed-rate-physical-owner-bound-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-fourier-left-derivative-kernel-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
