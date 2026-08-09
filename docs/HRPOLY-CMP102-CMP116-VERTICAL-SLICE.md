@@ -7460,3 +7460,37 @@ Diagnostic runs `31326152616` and `31326423001` exposed only arithmetic and
 lemma-name elaboration in the forward metric proof.  Corrected diagnostic run
 `31326627846` passed but did not retire PRE-VALIDATION.  Only the cold run
 above did.
+
+### Step 7.5cxv Fourier left-derivative kernel realization (SEALED; Fourier/operator dictionary and `B0` open)
+
+Exact source checkpoint `8bc8fafb38608635740ba971ea43301befa23a60`
+passed cold GitHub Actions run
+[`31329783046`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31329783046)
+with workflow checkpoint `a370a5d10a5818420865ed2f25f9b32bddf9bacc`.
+The run completed in `20m5s`; restoration and saving of `.lake/build` were
+both skipped.  The focal and audit exited zero, and all five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9042818217`, named
+`fourier-left-derivative-kernel-8bc8fafb38608635740ba971ea43301befa23a60`,
+has GitHub digest
+`3cec8607bbdfd58eb8ce96ae7865e6f84129218b3497882d664af136f51f9b0b`.
+Its deterministic inner archive re-hashed on Windows to
+`49758c057ff0f73d1e6b92d9ea01fafe50103460d4e42e9beb193268775e9d71`;
+all 13 entries of its `SHA256SUMS` manifest also re-hashed exactly.
+
+The sealed producer constructs an alpha-free Fourier endpoint kernel directly
+from the printed phase, endpoint amplitude and stabilized denominator.  A
+literal unit Holder edge removes the normalization internally.  The complete
+source-normalized stabilized integral is then proved to be exactly the
+difference of two values of this internally constructed Fourier kernel; no
+endpoint family, physical Green, or operator equality is accepted as input.
+
+This is only the Fourier side of CMP89 (2.49).  Identification with
+`partial_mu^xi (G_j Q_j^*)` still requires the zero-background spectral
+inverse, averaging/fibre, reflection/restriction and CMP95/CMP96/CMP99
+dictionaries.  The physical `B0`, window-15 attainment, every terminal field
+and `TermSource` remain open.  Counters stay exactly `20/41`,
+`TermSource = 0`.  Diagnostic run `31329398921` exposed only the unsimplified
+complex inverse of one; corrected cached run `31329620966` passed but did not
+retire PRE-VALIDATION.  Only the cold run above did.

@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP89Eq249StabilizedFourierLeftDerivativeKernel
 
 /-!
-# PRE-VALIDATION audit: Fourier realization of the CMP89 left derivative
+# Cold-sealed audit: Fourier realization of the CMP89 left derivative
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+Compiler-verified at exact source checkpoint
+`8bc8fafb38608635740ba971ea43301befa23a60` by cold GitHub Actions run
+`31329783046` with the exact permitted axiom trio.
 -/
 
 #print axioms YangMills.RG.cmp89Eq249StabilizedFourierLeftDerivativeKernelIntegrand

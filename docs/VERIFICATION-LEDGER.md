@@ -31952,3 +31952,39 @@ counters stay exactly `20/41`, `TermSource = 0`.  Failed diagnostic runs
 `31326152616` and `31326423001` found only elaboration in the metric proof;
 corrected diagnostic run `31326627846` passed but did not retire
 PRE-VALIDATION.  Only the cold run above did.
+
+## Addendum 690 (2026-08-09, **Fourier left-derivative kernel GREEN; exact Fourier/operator dictionary and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `8bc8fafb38608635740ba971ea43301befa23a60`
+passed cold GitHub Actions run
+[`31329783046`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31329783046)
+with workflow checkpoint `a370a5d10a5818420865ed2f25f9b32bddf9bacc`.
+The run completed in `20m5s`; restoration and saving of `.lake/build` were
+both skipped.  The focal and audit exited zero.  All five audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9042818217`, named
+`fourier-left-derivative-kernel-8bc8fafb38608635740ba971ea43301befa23a60`,
+has GitHub digest
+`3cec8607bbdfd58eb8ce96ae7865e6f84129218b3497882d664af136f51f9b0b`.
+Its deterministic inner archive re-hashed on Windows to
+`49758c057ff0f73d1e6b92d9ea01fafe50103460d4e42e9beb193268775e9d71`;
+all 13 entries of its internal `SHA256SUMS` manifest matched.
+
+The sealed definition constructs one alpha-free Fourier left-derivative
+endpoint from the literal phase, exact endpoint amplitude and stabilized
+denominator.  Unit Holder normalization is discharged internally.  The
+source-normalized stabilized expression is proved exactly equal to the
+difference of the two corresponding constructed kernel values.  No freely
+chosen endpoint function and no equality to a physical Green operator enters
+the theorem.
+
+The result is deliberately narrower than a physical `B0`: the scalar Fourier
+kernel has not yet been identified with `partial_mu^xi (G_j Q_j^*)` or the
+repository's generated/regional Green.  The zero-background spectral inverse,
+averaging and Lie-fibre realization, reflection/restriction, and
+CMP95/CMP96/CMP99 transports remain explicit dictionaries.  Window 15, every
+terminal field and `TermSource` remain open.  Live counters stay exactly
+`20/41`, `TermSource = 0`.  Diagnostic run `31329398921` found only the
+unsimplified inverse of complex one; corrected cached run `31329620966` passed
+but did not retire PRE-VALIDATION.  Only the cold run above did.

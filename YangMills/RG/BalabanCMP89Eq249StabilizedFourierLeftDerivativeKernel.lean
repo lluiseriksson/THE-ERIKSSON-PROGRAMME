@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedIntegralRecombination
 import YangMills.RG.BalabanCMP89Eq251ComplexEndpointAmplitudeFactorization
 
 /-!
-# PRE-VALIDATION: Fourier realization of the CMP89 left-derivative kernel
+# Cold-sealed Fourier realization of the CMP89 left-derivative kernel
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+Compiler-verified at exact source checkpoint
+`8bc8fafb38608635740ba971ea43301befa23a60` by cold GitHub Actions run
+`31329783046`.  Restoration and saving of `.lake/build` were both skipped;
+all five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.49), visually checked on printed page 585, is the normalized Holder
 difference of the left derivative of `G_j Q_j^*`.  The already sealed
