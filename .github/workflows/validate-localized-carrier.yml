@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 4c114c197624fb3c674419ab9361bc7790a2854d
+  SOURCE_SHA: 1e000f246a2d6d4d56b72960d24169fec9be0e83
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
