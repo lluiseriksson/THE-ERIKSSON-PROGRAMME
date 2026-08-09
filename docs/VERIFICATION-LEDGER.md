@@ -31362,3 +31362,36 @@ iteration, endpoint recombination, `B0`, the owner dictionary, window-15
 attainment and all terminal fields remain open. Counters stay `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained. Cached run
 `31297455930` was diagnostic only and did not retire PRE-VALIDATION.
+
+## Addendum 672 (2026-08-09, **one stabilized endpoint product coordinate step GREEN; four-step telescope open**)
+
+Exact source checkpoint `6c3698f1749419fed4d91c8f6b443cd96dd58f4f`
+passed cold GitHub Actions run
+[`31298945808`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31298945808)
+with workflow checkpoint `fcddf7155e3483a57b8fb6d4926a60bfec23cef4`.
+The job recorded `COLD_MODE=true`; restore and save of `.lake/build` were both
+skipped. The focal completed 8,467 jobs from `06:30:00Z` to `06:48:29Z`; the
+audit ended at `06:48:39Z`. Both stages exited zero. All five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9034108517`, named
+`stabilized-endpoint-product-coordinate-shift-6c3698f1749419fed4d91c8f6b443cd96dd58f4f`,
+has GitHub digest
+`fe53f789a0a5e90dd55e3a0d8193edc514967f7e053c1b3a0a4ff5757f720cb0`.
+The deterministic inner archive re-hashed on Windows to
+`68310ad06b92979eabf31f5c3b78fc5c8aebc81a713e2b356075badf558db886`,
+identical to the runner's hash; all 13 manifest entries re-hashed exactly.
+
+The sealed endpoint-specific producer proves one exact transition from
+partial signed stage `r` to `r+1` in the literal four-dimensional product
+integral. Compact-product integrability is produced internally on both sides,
+and the one-coordinate contour theorem is lifted through the remaining finite
+Pi measure. The analytic hypothesis controls the full polydisc, so coordinates
+shifted in earlier stages are valid inputs to every later step.
+
+This is not yet the four-stage telescope, endpoint recombination, `B0`, the
+owner dictionary, window-15 attainment or a terminal field. Recombination must
+cite that the two endpoint displacements differ by one lattice edge and keep
+its resulting `exp rho` factor visible. Counters stay `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained. Cached diagnostic
+run `31298811187` was diagnostic only and did not retire PRE-VALIDATION.

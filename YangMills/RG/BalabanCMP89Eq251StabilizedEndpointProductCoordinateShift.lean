@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductIntegrability
 import YangMills.RG.IntervalIntegralPiCoordinateTransport
 
 /-!
-# PRE-VALIDATION: one-coordinate transport of the stabilized endpoint product integral
+# Cold-sealed one-coordinate transport of the stabilized endpoint product integral
 
-The source in this module is present, but its `.olean` has not yet been
-materialized and its result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`6c3698f1749419fed4d91c8f6b443cd96dd58f4f` by cold GitHub Actions run
+`31298945808`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,467 jobs, the audit exited zero, and all five audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 This module specializes the sealed product-measure transport to one literal
 partial signed endpoint integrand.  The real cube is split at one coordinate,

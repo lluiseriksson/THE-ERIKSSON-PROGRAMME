@@ -6757,3 +6757,43 @@ Four-coordinate iteration, endpoint recombination, the complete strip bound
 field remain open. Counters stay `20/41`, `TermSource = 0`, and window 15
 compatible but unattained. Cached diagnostic run `31297455930` did not retire
 PRE-VALIDATION; only the cold run above did.
+
+### Step 7.5ce stabilized endpoint product coordinate step (SEALED; four-step telescope open)
+
+Exact source checkpoint `6c3698f1749419fed4d91c8f6b443cd96dd58f4f`
+passed cold GitHub Actions run
+[`31298945808`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31298945808)
+with workflow checkpoint `fcddf7155e3483a57b8fb6d4926a60bfec23cef4`.
+The job recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `06:30:00Z` to `06:48:29Z`, completed
+8,467 jobs, and the audit ended at `06:48:39Z`. Both stages exited zero. All
+five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9034108517`, named
+`stabilized-endpoint-product-coordinate-shift-6c3698f1749419fed4d91c8f6b443cd96dd58f4f`,
+has GitHub digest
+`fe53f789a0a5e90dd55e3a0d8193edc514967f7e053c1b3a0a4ff5757f720cb0`.
+The deterministic inner archive re-hashed on Windows to
+`68310ad06b92979eabf31f5c3b78fc5c8aebc81a713e2b356075badf558db886`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+The sealed theorem transports the literal four-dimensional product integral
+from partial signed stage `r` to `r+1`. It derives both product-integrability
+premises internally, decomposes the finite Pi measure at the selected
+coordinate, and invokes the sealed endpoint contour theorem on almost every
+remaining slice. Its strip premise is the full-polydisc condition
+`forall mu, |Im (z mu)| <= rho`; hence already-shifted coordinates remain
+inside the certified domain at later stages. It neither assumes a family of
+slice equalities nor weakens the other coordinates back to the real slice.
+
+The finite telescope through stages `0,1,2,3,4` is still open. Endpoint
+recombination must remain a separate brick: the two endpoint terms use
+different signed contours. The later single-owner decay must cite the lattice
+fact that the two physical endpoints are neighbours and pay the literal
+factor `exp rho`; that cost must not be absorbed into an anonymous `B0`.
+The complete bound `B0`, owner dictionary, window-15 attainment and every
+terminal field remain open. Counters stay `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained. Cached diagnostic run `31298811187`
+did not retire PRE-VALIDATION; only the cold run above did.
