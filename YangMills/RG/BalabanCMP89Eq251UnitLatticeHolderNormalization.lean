@@ -29,6 +29,11 @@ namespace YangMills.RG
 
 noncomputable section
 
+private theorem abs_intCast_eq_natAbs (n : ℤ) :
+    |(n : ℝ)| = (n.natAbs : ℝ) := by
+  rw [← Int.cast_abs]
+  exact_mod_cast (Int.abs_eq_natAbs n)
+
 /-- The real `l1` length of an integer displacement is exactly the lattice
 length used by the unit-edge predicate. -/
 theorem cmp89Eq251DisplacementL1_latticeDisplacement {d : ℕ}
@@ -39,12 +44,7 @@ theorem cmp89Eq251DisplacementL1_latticeDisplacement {d : ℕ}
     cmp89Eq251LatticeL1Length
   apply Finset.sum_congr rfl
   intro mu _
-  calc
-    |((u mu : ℤ) : ℝ)| = ((|u mu| : ℤ) : ℝ) :=
-      (Int.cast_abs (u mu)).symm
-    _ = (((u mu).natAbs : ℕ) : ℝ) := by
-      rw [Int.abs_eq_natAbs]
-      norm_cast
+  exact abs_intCast_eq_natAbs (u mu)
 
 /-- A unit lattice displacement has real `l1` length exactly one. -/
 theorem cmp89Eq251DisplacementL1_latticeDisplacement_eq_one_of_unit
@@ -76,8 +76,8 @@ theorem cmp89Eq251MomentumSquare_latticeDisplacement_eq_one_of_unit
           ∑ mu, (u mu).natAbs := by
         apply Finset.sum_congr rfl
         intro mu _
-        have hzeroOrOne : (u mu).natAbs = 0 ∨ (u mu).natAbs = 1 := by
-          omega
+        have hzeroOrOne : (u mu).natAbs = 0 ∨ (u mu).natAbs = 1 :=
+          Nat.le_one_iff_eq_zero_or_eq_one.mp (hcoord mu)
         rcases hzeroOrOne with hzero | hone
         · simp [hzero]
         · simp [hone]
@@ -94,12 +94,7 @@ theorem cmp89Eq251MomentumSquare_latticeDisplacement_eq_one_of_unit
           (sq_abs ((u mu : ℤ) : ℝ)).symm
         _ = (((u mu).natAbs : ℕ) : ℝ) ^ 2 := by
           congr 1
-          calc
-            |((u mu : ℤ) : ℝ)| = ((|u mu| : ℤ) : ℝ) :=
-              (Int.cast_abs (u mu)).symm
-            _ = (((u mu).natAbs : ℕ) : ℝ) := by
-              rw [Int.abs_eq_natAbs]
-              norm_cast
+          exact abs_intCast_eq_natAbs (u mu)
     _ = 1 := by exact_mod_cast hsquareNat
 
 /-- A unit integer displacement has Euclidean norm exactly one. -/
