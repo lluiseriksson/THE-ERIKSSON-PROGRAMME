@@ -111,10 +111,7 @@ theorem cmp116CMP89PhysicalBondHolderDisplacement_cast {d N : ℕ}
       ((cmp116BondSource b mu).val : ZMod N) -
         (cmp116BondTarget b mu).val := by
   unfold cmp116CMP89PhysicalBondHolderDisplacement
-  change
-    (((cmp116CMP89PhysicalBondSourceNatLift b mu : ℕ) : ℤ) -
-        ((cmp116CMP89PhysicalBondTargetNatLift b mu : ℕ) : ℤ) :
-      ZMod N) = _
+    cmp116CMP89PhysicalBondSourceLift cmp116CMP89PhysicalBondTargetLift
   rw [Int.cast_sub, Int.cast_natCast, Int.cast_natCast,
     cmp116CMP89PhysicalBondSourceNatLift_cast,
     cmp116CMP89PhysicalBondTargetNatLift_cast]
