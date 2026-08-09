@@ -37,8 +37,8 @@ def cmp89Eq249FourDimensionalBrillouinMeasure : Measure (Fin 4 → ℝ) :=
 
 instance cmp89Eq249FourDimensionalBrillouinMeasure_isFinite :
     IsFiniteMeasure cmp89Eq249FourDimensionalBrillouinMeasure := by
-  unfold cmp89Eq249FourDimensionalBrillouinMeasure
-  infer_instance
+  refine ⟨?_⟩
+  simp [cmp89Eq249FourDimensionalBrillouinMeasure, Measure.pi_univ]
 
 /-- The source normalization `(2*pi)^(-4)` applied to an integral over the
 translated Brillouin cube. -/
@@ -61,7 +61,7 @@ theorem cmp89Eq249FourDimensionalBrillouinMeasure_real_univ :
 /-- A constant pointwise bound on the translated Brillouin cube loses no
 factor after the literal source normalization is applied. -/
 theorem norm_cmp89Eq249NormalizedFourDimensionalBrillouinIntegral_le
-    {f : (Fin 4 → ℝ) → ℂ} {C : ℝ} (hC : 0 ≤ C)
+    {f : (Fin 4 → ℝ) → ℂ} {C : ℝ}
     (hf : ∀ᵐ x ∂cmp89Eq249FourDimensionalBrillouinMeasure, ‖f x‖ ≤ C) :
     ‖cmp89Eq249NormalizedFourDimensionalBrillouinIntegral f‖ ≤ C := by
   have hint := MeasureTheory.norm_integral_le_of_norm_le_const
@@ -103,27 +103,6 @@ theorem norm_cmp89Eq249NormalizedStabilizedEndpointIntegral_le
   let C : ℝ :=
     cmp89SignedLatticeL1ExponentialWeight rho endpointU *
       cmp89Eq251ComplexStabilizedEndpointAmplitudeBound a rho
-  have hrecipNonneg :
-      0 ≤ cmp89Eq249CentralStabilizedComplexReciprocalBound a rho := by
-    rw [cmp89Eq249CentralStabilizedComplexReciprocalBound]
-    have hgap :
-        0 < cmp89Eq249CentralStabilizedLowerConstant 4 a -
-          cmp89Eq249CentralStabilizedDenominatorVariationBound a rho := by
-      simpa [CMP89Eq249CentralStabilizedComplexWindow] using hwindow
-    exact inv_nonneg.mpr hgap.le
-  have hC : 0 ≤ C := by
-    dsimp [C, cmp89Eq251ComplexStabilizedEndpointAmplitudeBound]
-    apply mul_nonneg
-    · rw [cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs]
-      positivity
-    · exact mul_nonneg
-        ((norm_nonneg _).trans
-          (norm_cmp89Eq251ComplexEndpointAmplitude_le_bound
-            (L := L) (j := j) (mass := mass) hmass hrho hradius
-            (p := fun _ => 0) (by simp [Real.pi_pos.le])
-            (z := fun _ => 0) (by simp)
-            (by intro; simpa using hrho) hamplitude mu))
-        hrecipNonneg
   have htwoPi : (0 : ℝ) ≤ 2 * Real.pi :=
     mul_nonneg (by norm_num) Real.pi_pos.le
   let cube : Set (Fin 4 → ℝ) :=
@@ -163,7 +142,7 @@ theorem norm_cmp89Eq249NormalizedStabilizedEndpointIntegral_le
         (L := L) (j := j) (mass := mass) (a := a) (alpha := alpha)
         (rho := rho) ha hmassPos hrho hradius hmass hwindow hamplitude hp mu
         hholder)
-  exact norm_cmp89Eq249NormalizedFourDimensionalBrillouinIntegral_le hC hf
+  exact norm_cmp89Eq249NormalizedFourDimensionalBrillouinIntegral_le hf
 
 end
 
