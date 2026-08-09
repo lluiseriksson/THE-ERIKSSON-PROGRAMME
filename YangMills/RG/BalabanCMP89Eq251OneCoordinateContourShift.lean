@@ -125,8 +125,13 @@ theorem intervalIntegral_cmp89Eq251ComplexStabilizedIntegrand_coordinateShift
           hrealY (himag_of_mem y hy) holderU transportU
     unfold f
     convert hseam using 1
-    exact cmp89Eq251PhysicalCoordinateLine_two_pi_add nu z
-      (y * Complex.I)
+    exact congrArg
+      (fun q : Fin 4 → ℂ =>
+        cmp89Eq251ComplexStabilizedIntegrand 4 L j mass a alpha q mu
+          (cmp89Eq251LatticeDisplacement holderU)
+          (cmp89Eq251LatticeDisplacement transportU))
+      (cmp89Eq251PhysicalCoordinateLine_two_pi_add nu z
+        (y * Complex.I))
   have hdiff : DifferentiableOn ℂ f
       (Set.uIcc 0 (2 * Real.pi) ×ℂ Set.uIcc 0 eta) := by
     intro w hw
