@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: e2574a249bd6fc0525d8aa611bf41d1080c65253
+  SOURCE_SHA: 5a90d3480c97f5fde390416b94eba4a3e7a9e949
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -157,6 +157,14 @@ jobs:
           open MeasureTheory
 
           noncomputable section
+
+          def testBrillouinMeasure : Measure (Fin 4 → ℝ) :=
+            Measure.pi fun _ : Fin 4 =>
+              volume.restrict (Set.uIoc 0 (2 * Real.pi))
+
+          instance : IsFiniteMeasure testBrillouinMeasure := by
+            refine ⟨?_⟩
+            simp [testBrillouinMeasure, Measure.pi_univ]
 
           example :
               (Measure.pi fun _ : Fin 4 =>
