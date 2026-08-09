@@ -32022,3 +32022,35 @@ algebraic seal is erased, no physical `B0` is claimed, window 15 remains
 compatible but unattained, and live counters remain exactly `20/41`,
 `TermSource = 0`.  Cached run `31331110156` was diagnostic only; only the cold
 run above retired the two PRE-VALIDATION marks.
+
+## Addendum 692 (2026-08-09, **fine-lattice phased noncentral sum GREEN; common physical phase no longer needed; 20/41 unchanged**)
+
+Exact source checkpoint `db534f72e38422c315cad6bd64d594a7454a9671`
+passed cold GitHub Actions run
+[`31332625049`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31332625049)
+with workflow checkpoint `10d6fb55cc852493d16a2de42283b88c1a380777`.
+The job completed in `15m18s`; restoration and saving of `.lake/build` were
+skipped.  The focal and audit exited zero, and both audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9043545832`, named
+`fine-lattice-phased-noncentral-sum-db534f72e38422c315cad6bd64d594a7454a9671`,
+has GitHub digest
+`d019fa972ffbf457e4b4569d9c13f3ee16711239ad9da898708b2e78d30bba33`.
+Its deterministic inner archive re-hashed on Windows to
+`40c0ab7ff9ed9675e4c10ae8b5b088ce9947df777f1f239579cd047f99b12fac`;
+all 13 entries of the internal `SHA256SUMS` manifest matched.
+
+The sealed definition keeps the source phase `exp(i(p'+l) dot u)` inside each
+noncentral alias term.  The theorem applies the exact alias-independent signed
+contour decay term by term and then the already sealed summable source weight.
+Its endpoint is the literal product
+`exp(-rho*||u||_1) * quotientSumBound(rho)`: there is no reciprocal-fibre
+cardinality, rate loss or unit-displacement assumption.
+
+The no-go of Addendum 691 is therefore repaired for the noncentral sum without
+restoring the invalid physical phase factorization.  Central assembly,
+integration and the operator dictionary remain open; physical `B0` and window
+15 are not claimed.  Live counters remain exactly `20/41`,
+`TermSource = 0`.  Cached run `31332474918` was diagnostic only; only the cold
+run above retired the two PRE-VALIDATION marks.

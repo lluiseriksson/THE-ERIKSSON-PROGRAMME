@@ -7535,3 +7535,37 @@ remain open.  Counters stay exactly `20/41`, `TermSource = 0`.
 
 Cached diagnostic run `31331110156` passed but did not retire PRE-VALIDATION.
 Only the cold run above did.
+
+### Step 7.5cxvii fine-lattice phased noncentral sum (SEALED; central assembly and physical Green dictionary open)
+
+Exact source checkpoint `db534f72e38422c315cad6bd64d594a7454a9671`
+passed cold GitHub Actions run
+[`31332625049`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31332625049)
+with workflow checkpoint `10d6fb55cc852493d16a2de42283b88c1a380777`.
+The job completed in `15m18s`; restoration and saving of `.lake/build` were
+both skipped.  The focal ran from `19:50:51Z` to `20:03:56Z`, the audit ended
+at `20:04:01Z`, and both stages exited zero.  Both audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9043545832`, named
+`fine-lattice-phased-noncentral-sum-db534f72e38422c315cad6bd64d594a7454a9671`,
+has GitHub digest
+`d019fa972ffbf457e4b4569d9c13f3ee16711239ad9da898708b2e78d30bba33`.
+Its deterministic inner archive re-hashed on Windows to
+`40c0ab7ff9ed9675e4c10ae8b5b088ce9947df777f1f239579cd047f99b12fac`;
+all 13 entries of its `SHA256SUMS` manifest also re-hashed exactly.
+
+The producer retains the literal alias-dependent endpoint phase inside every
+noncentral summand of CMP89 (2.49).  On the signed physical contour all aliases
+have the same exact norm because their shifts are real.  The pointwise source
+weight can therefore be summed exactly as before, yielding
+`exp(-rho*||u||_1) * quotientSumBound(rho)` with no alias-cardinality factor,
+no loss of rate and no unit-lattice periodicity premise.
+
+This is the source-faithful replacement for the noncentral use of the common
+phase factorization.  Central-branch assembly, the complete endpoint bound,
+normalized integration and the Fourier-to-physical Green dictionary remain
+open.  Physical `B0`, window-15 attainment, every terminal field and
+`TermSource` remain open.  Counters stay exactly `20/41`, `TermSource = 0`.
+Cached diagnostic run `31332474918` passed but did not retire PRE-VALIDATION;
+only the cold run above did.

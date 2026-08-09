@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP89Eq251FineLatticePhasedNoncentralSum
 
 /-!
-# PRE-VALIDATION audit: fine-lattice phased noncentral sum below CMP89 (2.49)
+# Cold-sealed audit: fine-lattice phased noncentral sum below CMP89 (2.49)
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+Compiler-verified at exact source checkpoint
+`db534f72e38422c315cad6bd64d594a7454a9671` by cold GitHub Actions run
+`31332625049`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251ComplexFineLatticePhasedNoncentralSum

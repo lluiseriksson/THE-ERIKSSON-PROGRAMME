@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq251ComplexNoncentralEndpointQuotientSum
 import YangMills.RG.BalabanCMP89Eq251SignedContourPhase
 
 /-!
-# PRE-VALIDATION: fine-lattice phased noncentral sum below CMP89 (2.49)
+# Cold-sealed fine-lattice phased noncentral sum below CMP89 (2.49)
 
-Source is present at the checkpoint containing this file; its `.olean` has not
-yet been materialized and the result is not yet compiler-verified.
+Compiler-verified at exact source checkpoint
+`db534f72e38422c315cad6bd64d594a7454a9671` by cold GitHub Actions run
+`31332625049`. Restoration and saving of `.lake/build` were skipped. The focal
+and audit exited zero, and both audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 CMP89 (2.49), printed p. 585, keeps the alias-dependent phase
 `exp(i (p' + l) dot u)` inside the reciprocal-alias sum.  For a physical
