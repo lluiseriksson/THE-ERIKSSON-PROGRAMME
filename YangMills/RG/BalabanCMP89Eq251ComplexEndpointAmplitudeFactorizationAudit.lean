@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP89Eq251ComplexEndpointAmplitudeFactorization
 
 /-!
-# PRE-VALIDATION audit: endpoint-amplitude factorization below CMP89 (2.49)
+# Cold-sealed audit: endpoint-amplitude factorization below CMP89 (2.49)
 
-Source is present, its `.olean` has not yet been materialized, and these audit
-results have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`5f3d4b221bc6af5bb8fc793d0eaf11467715d594` by cold GitHub Actions run
+`31315566647`. All ten declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp89Eq251AliasLatticePairing

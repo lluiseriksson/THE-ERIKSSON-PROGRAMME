@@ -8,10 +8,13 @@ import YangMills.RG.BalabanCMP89Eq251LatticePhasePeriodicity
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointSplit
 
 /-!
-# PRE-VALIDATION: exact endpoint-amplitude factorization below CMP89 (2.49)
+# Cold-sealed exact endpoint-amplitude factorization below CMP89 (2.49)
 
-Source is present, its `.olean` has not yet been materialized, and the results
-have not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`5f3d4b221bc6af5bb8fc793d0eaf11467715d594` by cold GitHub Actions run
+`31315566647`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,450 jobs, the audit exited zero, and all ten audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 For a literal lattice endpoint, every reciprocal alias changes the Fourier
 phase by an integral multiple of `2*pi`.  This file proves that equality for

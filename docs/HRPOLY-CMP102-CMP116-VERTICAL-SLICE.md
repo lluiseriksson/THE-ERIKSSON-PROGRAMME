@@ -7178,3 +7178,41 @@ compatible but unattained. Failed diagnostic run `31313768608` exposed only
 the cast normalization `↑(L^j)` versus `(↑L)^j`; corrected diagnostic run
 `31313930119` passed but did not retire PRE-VALIDATION. Only the cold run above
 did.
+
+### Step 7.5cviii exact endpoint-amplitude factorization (SEALED; amplitude bound and `B0` open)
+
+Exact source checkpoint `5f3d4b221bc6af5bb8fc793d0eaf11467715d594`
+passed cold GitHub Actions run
+[`31315566647`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31315566647)
+with workflow checkpoint `9e2a84bdb04a5b1878c01f185107171cba45f31c`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,450 jobs from `13:22:33Z` to `13:39:29Z`;
+the audit ended at `13:39:37Z`. Both stages exited zero. All ten audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact `9038858784`, named
+`endpoint-amplitude-factorization-5f3d4b221bc6af5bb8fc793d0eaf11467715d594`,
+has GitHub digest
+`9b2df522e0437ea384f080a72b7f217f470d48fe7a1912ec4b831b093fe9b243`.
+The deterministic inner archive re-hashed on Windows to
+`b0840759bb8283f8b4c1b81f0feee82dea2201edcf26ebc53adf14eb0c617381`,
+identical to the cold-run hash; all 13 entries of its `SHA256SUMS` manifest
+also re-hashed exactly.
+
+For an arbitrary reciprocal alias and a literal integer endpoint, the sealed
+theorem computes the extra phase as the integral multiple
+`2*pi*<m,u>` and removes it by exact exponential periodicity. Consequently
+every noncentral branch, the full noncentral sum, the zero branch and the
+complete stabilized endpoint numerator factor through one common lattice
+phase. No triangle-inequality replacement of the quotient sum is used.
+
+This closes exact phase insertion and central/noncentral assembly only. The
+norm bound for the phase-free endpoint amplitude, its common scale-uniform
+`B0`, the already named physical owner transport, window-15 attainment and
+every terminal field remain open. The separate sealed endpoint-recombination
+brick continues to supply the literal one-link factor `exp rho`; it is not
+absorbed here. Counters stay exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained. Failed diagnostic runs `31315063337` and
+`31315224827` exposed only reduction/order issues in the exact phase algebra;
+corrected diagnostic run `31315444910` passed but did not retire
+PRE-VALIDATION. Only the cold run above did.

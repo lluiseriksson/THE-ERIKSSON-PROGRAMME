@@ -31711,3 +31711,36 @@ attainment, terminal field or `TermSource` is produced. Live counters remain
 exactly `20/41`, `TermSource = 0`. Failed diagnostic run `31313768608` found
 only a cast-normalization mismatch; corrected diagnostic run `31313930119`
 passed but did not retire PRE-VALIDATION. Only the cold run above did.
+
+## Addendum 683 (2026-08-09, **endpoint-amplitude factorization GREEN; amplitude bound and `B0` open; 20/41 unchanged**)
+
+Exact source checkpoint `5f3d4b221bc6af5bb8fc793d0eaf11467715d594`
+passed cold GitHub Actions run
+[`31315566647`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31315566647)
+with workflow checkpoint `9e2a84bdb04a5b1878c01f185107171cba45f31c`.
+The run recorded `COLD_MODE=true`; restoration and saving of `.lake/build`
+were skipped. The focal completed 8,450 jobs from `13:22:33Z` to `13:39:29Z`;
+the audit ended at `13:39:37Z`. Both stages exited zero. All ten audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9038858784`, named
+`endpoint-amplitude-factorization-5f3d4b221bc6af5bb8fc793d0eaf11467715d594`,
+has GitHub digest
+`9b2df522e0437ea384f080a72b7f217f470d48fe7a1912ec4b831b093fe9b243`.
+Its deterministic inner archive re-hashed on Windows to
+`b0840759bb8283f8b4c1b81f0feee82dea2201edcf26ebc53adf14eb0c617381`,
+and all 13 manifest entries re-hashed exactly.
+
+The sealed module proves exact reciprocal-lattice phase periodicity at an
+integer endpoint, factors that common phase through every noncentral branch
+and the full noncentral sum, identifies the zero branch, and recombines the
+complete stabilized endpoint numerator. No triangle-inequality replacement
+of the already sealed quotient-sum norm is used. It does not bound the
+phase-free endpoint amplitude, form the common scale-uniform `B0`, attain
+window 15, discharge a terminal field or inhabit `TermSource`. The explicit
+one-link factor `exp rho` remains supplied by the separate sealed endpoint
+transport and is not hidden here. Live counters remain exactly `20/41`,
+`TermSource = 0`. Failed diagnostic runs `31315063337` and `31315224827`
+found only exact-algebra reduction/order errors; corrected diagnostic run
+`31315444910` passed but did not retire PRE-VALIDATION. Only the cold run above
+did.
