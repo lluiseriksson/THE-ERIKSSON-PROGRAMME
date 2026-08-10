@@ -33,7 +33,8 @@ variable {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
 
 /-- Literal trivial physical gauge background. Giving the unit field a
 source-level name fixes its group-valued type before any specialization. -/
-def cmp99FlatGaugeBackground (d N Nc : ℕ) [NeZero Nc] :
+def cmp99FlatGaugeBackground (d N Nc : ℕ)
+    [NeZero d] [NeZero N] [NeZero Nc] :
     PhysicalGaugeBackground d N Nc :=
   fun _ => 1
 
