@@ -97,6 +97,8 @@ theorem cmp116CMP89PhysicalFineNormalizedStabilizedIntegralAmplitudeBound_le_uni
       Real.exp (rate * (2 * (L ^ (depth + 1) - 1) : ℕ)) ≤
         Real.exp (2 * rho) :=
     Real.exp_le_exp.mpr hboundary
+  have hone : 1 + Real.exp rate ≤ 1 + Real.exp rho := by
+    linarith [hedge]
   have hmajorant :
       0 ≤ cmp89Eq251ComplexFineLatticeStabilizedEndpointAmplitudeBound a rho :=
     cmp89Eq251ComplexStabilizedEndpointAmplitudeBound_nonneg hrho hwindow
@@ -104,7 +106,7 @@ theorem cmp116CMP89PhysicalFineNormalizedStabilizedIntegralAmplitudeBound_le_uni
       (1 + Real.exp rate) *
           Real.exp (rate * (2 * (L ^ (depth + 1) - 1) : ℕ)) ≤
         (1 + Real.exp rho) * Real.exp (2 * rho) := by
-    exact mul_le_mul (add_le_add_left hedge 1) hboundaryExp
+    exact mul_le_mul hone hboundaryExp
       (Real.exp_pos _).le (by positivity)
   rw [cmp116CMP89PhysicalFineNormalizedStabilizedIntegralAmplitudeBound,
     cmp116CMP89PhysicalFineUniformNormalizedStabilizedIntegralAmplitudeBound]
