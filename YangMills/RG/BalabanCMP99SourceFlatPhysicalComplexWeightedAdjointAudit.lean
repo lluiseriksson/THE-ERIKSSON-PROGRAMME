@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexWeightedAdjoint
+
+#print axioms YangMills.RG.cmp99SourceFlatComplexBlockWeightedAdjointCLM
+#print axioms YangMills.RG.cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply
+#print axioms YangMills.RG.cmp99SourceFlatComplexBlockWeightedAdjoint_commutes_complexification
+#print axioms YangMills.RG.cmp99SourceFlatActiveComplexCoarseModeSynthesis
+#print axioms YangMills.RG.cmp99SourceFlatActiveComplexCoarseModeSynthesis_apply
+#print axioms YangMills.RG.cmp99SourceFlatComplexBlockWeightedAdjoint_fourierMode
