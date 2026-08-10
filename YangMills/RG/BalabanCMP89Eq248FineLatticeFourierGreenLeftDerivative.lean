@@ -48,10 +48,10 @@ theorem cmp89Eq249PhysicalFineLatticeDisplacement_forwardCoordinateShift
   by_cases hnu : nu = mu
   · subst nu
     simp [cmp89Eq248FineLatticeForwardCoordinateShift,
-      cmp89Eq249PhysicalFineLatticeDisplacement, Pi.single_apply]
+      cmp89Eq249PhysicalFineLatticeDisplacement]
     ring
   · simp [cmp89Eq248FineLatticeForwardCoordinateShift,
-      cmp89Eq249PhysicalFineLatticeDisplacement, Pi.single_apply, hnu]
+      cmp89Eq249PhysicalFineLatticeDisplacement, hnu]
 
 /-- One positive fine coordinate step adds exactly `xi*q_mu` to every alias
 phase.  This is the sign carried by the printed `D_xi(-q_mu)`. -/
@@ -71,9 +71,9 @@ theorem cmp89Eq251EntireAliasPhase_forwardCoordinateShift
         (Pi.single mu xi : Fin d → ℝ) =
       cmp89Eq248EntireAliasMomentum z m mu * (xi : ℂ) by
     rw [cmp89Eq251EntirePhase, Finset.sum_eq_single mu]
-    · simp [Pi.single_apply]
+    · simp
     · intro nu _ hnu
-      simp [Pi.single_apply, hnu]
+      simp [hnu]
     · simp]
   ring
 
