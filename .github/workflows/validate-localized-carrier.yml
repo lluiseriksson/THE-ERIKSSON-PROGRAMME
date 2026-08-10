@@ -1,4 +1,4 @@
-name: Validate CMP99 flat weighted-adjoint Fourier orientation
+name: Validate CMP89 transposed alias solution
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 7cc2a9d7e36aad31e65712ac5bd27189131b8916
+  SOURCE_SHA: 1a544b9ec59b422e10b8c66bddb1a4047f500840
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -29,7 +29,7 @@ env:
     flat-qprime-alias-fibre-dictionary
 
 jobs:
-  flat-weighted-adjoint-fourier-orientation:
+  entire-alias-transpose-solution:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-weighted-adjoint-fourier-orientation-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-entire-alias-transpose-solution-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatWeightedAdjointFourierOrientation.lean \
-            YangMills/RG/BalabanCMP99SourceFlatWeightedAdjointFourierOrientationAudit.lean \
+            YangMills/RG/BalabanCMP89Eq247EntireAliasTransposeSolution.lean \
+            YangMills/RG/BalabanCMP89Eq247EntireAliasTransposeSolutionAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_weighted_adjoint_fourier_orientation_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointFourierOrientation
-          run_stage flat_weighted_adjoint_fourier_orientation_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatWeightedAdjointFourierOrientationAudit.lean
+          run_stage entire_alias_transpose_solution_focal \
+            lake build YangMills.RG.BalabanCMP89Eq247EntireAliasTransposeSolution
+          run_stage entire_alias_transpose_solution_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq247EntireAliasTransposeSolutionAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_weighted_adjoint_fourier_orientation_audit.log": 3,
+              "entire_alias_transpose_solution_audit.log": 3,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-weighted-adjoint-fourier-orientation-evidence.tar.gz
-          sha256sum flat-weighted-adjoint-fourier-orientation-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              entire-alias-transpose-solution-evidence.tar.gz
+          sha256sum entire-alias-transpose-solution-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-weighted-adjoint-fourier-orientation-${{ env.SOURCE_SHA }}
+          name: entire-alias-transpose-solution-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-weighted-adjoint-fourier-orientation-evidence.tar.gz
+            entire-alias-transpose-solution-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-weighted-adjoint-fourier-orientation-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-entire-alias-transpose-solution-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
