@@ -7976,3 +7976,41 @@ operator dictionary, physical `B0`, window 15 and terminal fields remain
 open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
 `31349187530` passed with a restored graph but did not seal; only the cold run
 above retired the two PRE-VALIDATION marks.
+
+### Step 7.5cxxx fine-lattice Fourier Green forward difference (SEALED; integral/operator dictionary open)
+
+Exact source checkpoint `531032b6bec993e56129e443c3a2463dd61b54be`
+passed cold GitHub Actions run
+[`31352539505`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31352539505)
+with workflow checkpoint `0162dc26e9ef8169db146b311f3f20633e789da6`.
+The job completed in `20m34s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `03:27:05Z` to `03:45:33Z`, the audit ended
+at `03:45:42Z`, and both stages exited zero. All ten audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`; the sealed target emitted
+no warning or error of its own.
+
+Artifact `9049779786`, named
+`fine-lattice-fourier-green-derivative-531032b6bec993e56129e443c3a2463dd61b54be`,
+has GitHub digest
+`cf55bb1e93218ff3488f69d9c3d41b8597a7b2861c58c5a5fb63d226bca2f2f5`.
+Its deterministic inner archive re-hashed on Windows to
+`92de0dd494e887b91685a121df902d5672dbf638482ce93bc0a20eddc30eedf3`;
+all 13 internal manifest entries matched.
+
+The literal stabilized Fourier Green value integrand is now constructed with
+the same central cancellation, noncentral alias fibre and common denominator
+as the sealed derivative integrand. A positive unit fine-site shift is
+transported to the physical displacement `xi*e_mu`, and its pointwise forward
+difference quotient is proved exactly equal to the printed
+`D_xi(-q_mu) = (exp(i*xi*q_mu)-1)/xi` derivative integrand. The sign is a
+theorem, not an inference from the word `left`.
+
+This seals a pointwise Fourier identity only. Integrability of the Green value
+integrand, transport of the difference through the normalized Brillouin
+integral, and identification with the repository's literal `G_j Q_j^*`
+remain open. Physical `B0`, window 15 and every terminal field remain open;
+counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
+`31351283751` did not seal. Failed diagnostics `31350838812` and
+`31351062941`, and cold PASS `31351453287` on the warning-bearing predecessor,
+remain preserved; only the warning-clean cold run above retired the two
+PRE-VALIDATION marks.

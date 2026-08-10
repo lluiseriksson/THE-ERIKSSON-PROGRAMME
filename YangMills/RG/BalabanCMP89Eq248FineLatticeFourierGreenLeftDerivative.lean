@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq249FineLatticeStabilizedFourierLeftDerivativeKernel
 
 /-!
-# PRE-VALIDATION: fine-lattice Fourier Green and its left derivative
-
-Source is present, the corresponding `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Fine-lattice Fourier Green and its left derivative
 
 CMP89 (2.48)--(2.49) obtains the displayed left derivative from a Green
 kernel by one physical fine-lattice difference.  This module constructs the

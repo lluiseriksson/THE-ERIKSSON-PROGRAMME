@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq248FineLatticeFourierGreenLeftDerivative
 
 /-!
-# PRE-VALIDATION audit: fine-lattice Fourier Green left derivative
+# Audit: fine-lattice Fourier Green left derivative
 -/
 
 #print axioms YangMills.RG.cmp89Eq248FineLatticeForwardCoordinateShift

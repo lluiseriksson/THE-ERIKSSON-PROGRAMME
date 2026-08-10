@@ -32417,3 +32417,37 @@ The Fourier/operator identity with `partial_mu^xi (G_j Q_j^*)`, physical
 `B0`, window 15 and every terminal field remain open. Live counters stay
 exactly `20/41`, `TermSource = 0`. Diagnostic PASS `31349187530` did not
 seal; only the cold run above did.
+
+## Addendum 705 (2026-08-10, **fine-lattice Fourier Green forward difference GREEN; integral/operator dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `531032b6bec993e56129e443c3a2463dd61b54be`
+passed cold GitHub Actions run
+[`31352539505`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31352539505)
+with workflow checkpoint `0162dc26e9ef8169db146b311f3f20633e789da6`.
+The job completed in `20m34s`; restore/save of `.lake/build` were skipped.
+The focal ran from `03:27:05Z` to `03:45:33Z`, and the audit ended at
+`03:45:42Z`. Both stages exited zero, all ten audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`, and the target emitted no warning
+or error of its own.
+
+Artifact `9049779786`, named
+`fine-lattice-fourier-green-derivative-531032b6bec993e56129e443c3a2463dd61b54be`,
+has GitHub digest
+`cf55bb1e93218ff3488f69d9c3d41b8597a7b2861c58c5a5fb63d226bca2f2f5`.
+Its deterministic inner archive re-hashed on Windows to
+`92de0dd494e887b91685a121df902d5672dbf638482ce93bc0a20eddc30eedf3`;
+all 13 internal manifest entries matched.
+
+The producer constructs the literal stabilized Fourier Green value integrand,
+proves that one positive fine coordinate step contributes exactly
+`xi*q_mu` to every reciprocal-alias phase, and identifies its pointwise
+forward quotient with the sealed fine-lattice derivative integrand. This
+matches the printed sign `D_xi(-q_mu)` without reusing the forbidden
+unit-lattice phase cancellation.
+
+Moving the difference through the normalized integral, identifying the Green
+value with the literal operator `G_j Q_j^*`, physical `B0`, window 15 and all
+terminal fields remain open. Counters stay exactly `20/41`, `TermSource = 0`.
+Diagnostic PASS `31351283751` did not seal. Failed diagnostics `31350838812`
+and `31351062941`, plus cold PASS `31351453287` on the warning-bearing
+predecessor, remain preserved; only the warning-clean cold run above seals.
