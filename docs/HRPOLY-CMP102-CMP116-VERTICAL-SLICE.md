@@ -8703,3 +8703,41 @@ transport and the physical `B0` remain open. Window 15 is still compatible
 but not attained. Counters stay exactly `20/41`, `TermSource = 0`. Restored
 diagnostic PASS `31421681555` did not seal; only the cold run above retires
 PRE-VALIDATION from the two FinBox modules.
+
+### Step 7.5cxlix full-box physical-fibre DFT and modal delta (SEALED; active weighted-adjoint column open)
+
+Exact source checkpoint `0aa11e7afa4e4f1f9ca4a3e719e0535ed6165c39`
+passed cold GitHub Actions run
+[`31425137141`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31425137141)
+with workflow checkpoint `1eed0187829697715c28dc7ebd60e13440569b76`.
+The cold job ran for `19m13s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `19:41:21Z`; the focal
+built 8,490 jobs from then through `19:58:12Z`, and the audit ended at
+`19:58:21Z`. Both stages exited zero. All twelve audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the new target emitted
+no warning or error.
+
+Artifact `9077463725`, named
+`flat-physical-fibre-dft-0aa11e7afa4e4f1f9ca4a3e719e0535ed6165c39`,
+has GitHub digest
+`86096279162087f20836545a3fb060b555f816fedd5939f6184deaa98f4f0ae6`.
+Its deterministic inner archive re-hashed on Windows to
+`28ef81cc1563ec366fc3b6f5e2d313a36282bdc14d911a3e01d6a16748d9f957`;
+all 13 internal manifest entries matched.
+
+The producer identifies the existing physical Fourier mode with the sealed
+product character, proves its exact scalar delta column, and applies the
+full-box DFT coordinatewise to `SUNLieComplexCoord`. The coordinatewise
+inverse laws are proved internally and bundled as a complex-linear
+equivalence. One physical complex-fibre mode therefore transforms to the
+literal coefficient `(N : ℂ)^d` at its unique momentum and zero elsewhere;
+neither a Fourier family nor its inverse is caller data.
+
+This does not yet restrict the transform to an active region or compute the
+fine reciprocal-alias column of the source weighted adjoint. That next
+column must retain the negative-character orientation and the condition
+`coarseAlias(k) = ell`; it is not a single fine Fourier mode. Interacting
+transport, inverse uniqueness, regional Green transport and physical `B0`
+remain open. Window 15 remains compatible but unattained. Counters stay
+exactly `20/41`, `TermSource = 0`. Restored diagnostic PASS `31424842327`
+did not seal; only the cold run above retires PRE-VALIDATION.

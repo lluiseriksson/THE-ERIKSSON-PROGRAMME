@@ -33079,3 +33079,38 @@ Green transport and physical `B0` remain open. Window 15 remains compatible
 but unattained. Live counters stay exactly `20/41`, `TermSource = 0`.
 Restored diagnostic PASS `31421681555` did not seal; only the cold run above
 retires PRE-VALIDATION from the two FinBox modules.
+
+## Addendum 724 (2026-08-10, **full-box physical-fibre DFT and exact modal delta GREEN; active weighted-adjoint column open; 20/41 unchanged**)
+
+Exact source checkpoint `0aa11e7afa4e4f1f9ca4a3e719e0535ed6165c39`
+passed cold GitHub Actions run
+[`31425137141`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31425137141)
+with workflow checkpoint `1eed0187829697715c28dc7ebd60e13440569b76`.
+The job ran for `19m13s` with restore and save both skipped. Dependency
+materialization ended at `19:41:21Z`; the focal built 8,490 jobs through
+`19:58:12Z`, and the audit ended at `19:58:21Z`. Focal and audit exited zero.
+All twelve audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist was empty and
+the new target emitted no warning or error.
+
+Artifact `9077463725`, named
+`flat-physical-fibre-dft-0aa11e7afa4e4f1f9ca4a3e719e0535ed6165c39`,
+has GitHub digest
+`86096279162087f20836545a3fb060b555f816fedd5939f6184deaa98f4f0ae6`.
+The downloaded deterministic archive has SHA-256
+`28ef81cc1563ec366fc3b6f5e2d313a36282bdc14d911a3e01d6a16748d9f957`,
+and all 13 internal manifest entries matched.
+
+The module applies the sealed `FinBox` DFT coordinatewise to the literal
+complexified Lie fibre, proves both inverse laws, and bundles the maps as a
+complex-linear equivalence. The pre-existing physical Fourier mode is proved
+equal to the product character, so its forward transform is the exact delta
+column with coefficient `(N : ℂ)^d`.
+
+This is a full-box Fourier brick, not the reciprocal-alias column of the
+active source weighted adjoint. That column must expose its negative-character
+amplitude and coarse-alias support explicitly. Interacting transport, inverse
+uniqueness, regional Green transport and physical `B0` remain open. Window 15
+is compatible but unattained. Live counters stay exactly `20/41`,
+`TermSource = 0`. Restored diagnostic PASS `31424842327` did not seal; only
+the cold run above retires PRE-VALIDATION.

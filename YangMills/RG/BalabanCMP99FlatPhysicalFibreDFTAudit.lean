@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99FlatPhysicalFibreDFT
 
 /-!
-# PRE-VALIDATION: audit for the physical-fibre DFT
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+# Audit: physical-fibre DFT
 -/
 
 #print axioms YangMills.RG.cmp99FlatFourierMode_eq_finBoxFourierCharacter

@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP99PhysicalFibreComplexification
 import YangMills.RG.BalabanCMP99SourceFlatQprimeCoarseAlias
 
 /-!
-# PRE-VALIDATION: physical-fibre DFT on the full flat periodic box
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+# Physical-fibre DFT on the full flat periodic box
 
 The exact scalar `FinBox` DFT is applied coordinatewise to the literal
 complexified Lie fibre `SUNLieComplexCoord`.  Both inverse laws are proved
