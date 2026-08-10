@@ -74,7 +74,7 @@ theorem cmp99FlatFinBoxDFT_eq_sum_fourierNeg
   calc
     (∑ x, cmp99FlatZModFourierCharacter (-e k) x * phi (e.symm x)) =
         ∑ x, cmp99FlatZModFourierCharacter (-e k) (e x) * phi x := by
-      exact (e.sum_comp
+      simpa using (e.sum_comp
         (fun x => cmp99FlatZModFourierCharacter (-e k) x *
           phi (e.symm x))).symm
     _ = ∑ x, cmp99FlatFourierMode (cmp99FinBoxFourierNeg k) x *
@@ -88,7 +88,7 @@ theorem cmp99FlatFinBoxDFT_eq_sum_fourierNeg
 owner map.  This is the coefficient-one weighted adjoint before adding the
 Lie fibre. -/
 def cmp99SourceFlatScalarCoarseModeSynthesis
-    {d M N' : ℕ} [NeZero M]
+    {d M N' : ℕ} [NeZero M] [NeZero N']
     (ell : FinBox d N') (x : FinBox d (M * N')) : ℂ :=
   cmp99FlatFourierMode ell (blockSite M N' x)
 
@@ -131,9 +131,9 @@ theorem cmp99SourceBlockAverageWeight_mul_flatScalarSynthesisDFT
               cmp99FlatFourierMode kneg x.1 *
                 cmp99FlatFourierMode ell (blockSite M N' x.1) := by
         congr 1
-        exact (Finset.sum_subtype (blockOf M N' y) (fun _ => Iff.rfl)
+        exact Finset.sum_subtype (blockOf M N' y) (fun _ => Iff.rfl)
           (fun x => cmp99FlatFourierMode kneg x *
-            cmp99FlatFourierMode ell (blockSite M N' x))).symm
+            cmp99FlatFourierMode ell (blockSite M N' x))
       _ = (cmp99SourceBlockAverageWeight M d : ℂ) *
             ∑ r : FinBox d M,
               cmp99FlatFourierMode kneg (cmp99BlockEmbed y r) *
@@ -142,7 +142,7 @@ theorem cmp99SourceBlockAverageWeight_mul_flatScalarSynthesisDFT
         rw [sum_blockSites_eq_sum_offsets]
         apply Finset.sum_congr rfl
         intro r _
-        rw [hsite]
+        simpa only [cmp99BlockOffsetEquiv, hsite r]
       _ = ((cmp99SourceBlockAverageWeight M d : ℂ) *
             ∑ r : FinBox d M,
               cmp99FlatFourierMode kneg (cmp99BlockEmbed y r)) *
@@ -167,7 +167,7 @@ theorem cmp99SourceBlockAverageWeight_mul_flatScalarSynthesisDFT
             cmp99FlatFourierMode kneg x *
               cmp99FlatFourierMode ell (blockSite M N' x) := by
       rw [cmp99FlatFinBoxDFT_eq_sum_fourierNeg]
-      rfl
+      simp only [cmp99SourceFlatScalarCoarseModeSynthesis]
     _ = (cmp99SourceBlockAverageWeight M d : ℂ) *
           ∑ y : FinBox d N', ∑ x ∈ blockOf M N' y,
             cmp99FlatFourierMode kneg x *
