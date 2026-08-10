@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 9e0e2cce15ac42d099720dac5c0db710054bab00
+  SOURCE_SHA: 893723bf8c3c17d2c4765d8528ad4fa0faa71de9
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_qprime_signed_alias_momentum_dictionary_audit.log": 7,
+              "flat_qprime_signed_alias_momentum_dictionary_audit.log": 8,
           }
           result = {}
           for name, expected in audits.items():
