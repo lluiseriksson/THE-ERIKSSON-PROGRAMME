@@ -37,7 +37,7 @@ variable {d M N' Nc : ℕ} [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc]
 
 /-- Pointwise coordinate complexification on an active zero-cochain. -/
 noncomputable def cmp99ActiveGaugeZeroCochainComplexificationCLM
-    (Omega : ActiveGaugeRegion d (M * N')) :
+    {N : ℕ} [NeZero N] (Omega : ActiveGaugeRegion d N) :
     ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   LinearMap.toContinuousLinearMap
@@ -48,10 +48,11 @@ noncomputable def cmp99ActiveGaugeZeroCochainComplexificationCLM
         simp
       map_smul' := fun r phi => by
         ext x a
-        simp }
+        simp [Complex.real_smul] }
 
+omit [NeZero d] [NeZero Nc] in
 @[simp] theorem cmp99ActiveGaugeZeroCochainComplexificationCLM_apply
-    (Omega : ActiveGaugeRegion d (M * N'))
+    {N : ℕ} [NeZero N] (Omega : ActiveGaugeRegion d N)
     (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
     (x : ActiveGaugeRegion.Site Omega) :
     cmp99ActiveGaugeZeroCochainComplexificationCLM Omega phi x =
@@ -63,6 +64,7 @@ def cmp99SourceFlatComplexTransport :
       (SUNLieComplexCoord Nc ≃ₗᵢ[ℝ] SUNLieComplexCoord Nc) :=
   fun _ _ => LinearIsometryEquiv.refl ℝ (SUNLieComplexCoord Nc)
 
+omit [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc] in
 @[simp] theorem cmp99SourceFlatComplexTransport_apply
     (y : FinBox d N') (x : FinBox d (M * N'))
     (v : SUNLieComplexCoord Nc) :
@@ -107,14 +109,15 @@ theorem cmp99SourceFlatComplexBlockAverage_commutes_complexification
 /-- Restriction of one explicit complex-fibre Fourier mode to an active
 region.  No Fourier family or enumeration is supplied. -/
 def cmp99SourceFlatActiveComplexFibreFourierMode
-    (Omega : ActiveGaugeRegion d (M * N'))
-    (k : FinBox d (M * N')) (v : SUNLieComplexCoord Nc) :
+    {N : ℕ} [NeZero N] (Omega : ActiveGaugeRegion d N)
+    (k : FinBox d N) (v : SUNLieComplexCoord Nc) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   WithLp.toLp 2 fun x => cmp99FlatComplexFibreFourierMode k v x.1
 
+omit [NeZero d] [NeZero Nc] in
 @[simp] theorem cmp99SourceFlatActiveComplexFibreFourierMode_apply
-    (Omega : ActiveGaugeRegion d (M * N'))
-    (k : FinBox d (M * N')) (v : SUNLieComplexCoord Nc)
+    {N : ℕ} [NeZero N] (Omega : ActiveGaugeRegion d N)
+    (k : FinBox d N) (v : SUNLieComplexCoord Nc)
     (x : ActiveGaugeRegion.Site Omega) :
     cmp99SourceFlatActiveComplexFibreFourierMode Omega k v x =
       cmp99FlatComplexFibreFourierMode k v x.1 := rfl
