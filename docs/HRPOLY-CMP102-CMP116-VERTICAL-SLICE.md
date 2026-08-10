@@ -8239,3 +8239,38 @@ open. Counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostic
 `31368030280` remains preserved; diagnostic PASS `31368432187` used a
 restored graph and did not seal. Only the cold run above retires the two
 PRE-VALIDATION marks.
+
+### Step 7.5cxxxvii internal-offset/physical-block equivalence (SEALED; mode action open)
+
+Exact source checkpoint `819497118e773c78e67f6792dea652e749e7199c`
+passed cold GitHub Actions run
+[`31370770140`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31370770140)
+with workflow checkpoint `a764a4da538978758bda5d358ac356bab3d8f543`.
+The cold job completed in `17m07s`; restoration and saving of `.lake/build`
+were skipped. The focal ran from `08:37:52Z` to `08:52:52Z`, and the audit
+ended at `08:52:57Z`. Both stages exited zero, all three declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the target emitted no
+warning or error of its own.
+
+Artifact `9056434666`, named
+`flat-qprime-block-offset-819497118e773c78e67f6792dea652e749e7199c`,
+has GitHub digest
+`ac03566cdac27fd4cc6f7bd05e967339274178ebab70eccfb6124907a1e51648`.
+Its deterministic inner archive re-hashed on Windows to
+`1b9ae477b095b848a12519d5fbe65acf6b411151fd9200099b09c0ea71bef14c`;
+all 13 internal manifest entries matched.
+
+The producer proves that `cmp99BlockEmbed` and
+`cmp99BlockOffsetOfMem` are inverse on one complete owner block, packages
+the result as a canonical equivalence, and derives the exact reindexing of a
+block-site sum by `FinBox d M`. It reuses the existing active-region
+block-owner decomposition and introduces no second cardinality or overlap
+constant.
+
+This carrier dictionary does not evaluate a Fourier mode, trivialize the
+physical transport, identify the weighted adjoint, diagonalize `Q'^*Q'`,
+prove inverse uniqueness or transport to a regional Green operator. Physical
+`B0`, window 15 and all terminal fields remain open. Counters stay exactly
+`20/41`, `TermSource = 0`. Failed diagnostic `31370258620` is preserved;
+restored diagnostic PASS `31370540139` did not seal. Only the cold run above
+retires PRE-VALIDATION.

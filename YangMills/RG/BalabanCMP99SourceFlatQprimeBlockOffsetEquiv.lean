@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99BlockContour
 /-!
 # Internal offsets are exactly one physical owner block
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
-
 The one-block Fourier amplitude is indexed by `FinBox d M`, whereas the
 literal CMP99 block average sums over fine sites certified to belong to one
 coarse owner block.  This file constructs the missing equivalence between
