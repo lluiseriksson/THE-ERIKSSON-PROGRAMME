@@ -17,20 +17,21 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-10; outcome pending).** The 13-page paper
-*Lossless Calibration Is Stored Memory: A Topological McMillan-Degree and
-Wigner–Smith Law for Passive Quantum Networks* is frozen at commit
-`a52d6e74`, with 388,593 bytes and SHA-256
-`89ACD5362D43022C78FF694ED414F9134E995472CC2DB1E0974A0021589D8C61`.
-Exact links, certificate identity, scope and lifecycle are recorded in
-[`docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md`](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md).
-The paper relates exact lossless calibration load to McMillan degree and
-integrated Wigner–Smith delay for rational-inner passive networks. The proposed
-robust approximate pass–stop law remains future work. GitHub publication is not
-treated as viXra acceptance, and no public viXra identifier has been recorded.
-The earlier two-object passive-reservoir submission remains recorded
-separately. Neither external paper changes the canonical Yang--Mills
-proof-state checkpoint.
+**Latest viXra submission (2026-08-10; outcome pending).** The 11-page paper
+*Every Spectral Switch Costs Memory: Sharp Robust Wigner–Smith Speed Limits for
+Passive Quantum Networks* is frozen at commit `e4d8989f`, with 339,660 bytes
+and SHA-256
+`795E03238F152B48241E49B3DB924497DAE16D9E13ABDA725E43ED3B60C1F4FF`.
+Exact links, release artifacts, scope and the known bibliographic limitation
+are recorded in
+[`docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md`](docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md).
+The paper derives sharp robust Wigner–Smith action and McMillan-degree costs
+from approximate spectral routing. The submitted PDF omits the recommended
+explicit comparison with named subspace/operator-flow speed-limit antecedents,
+so its priority claim is recorded narrowly. GitHub publication is not treated
+as viXra acceptance, and no public identifier has been recorded. The exact
+calibration-memory and passive-reservoir submissions remain separate. None of
+these external papers changes the canonical Yang--Mills proof-state checkpoint.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),

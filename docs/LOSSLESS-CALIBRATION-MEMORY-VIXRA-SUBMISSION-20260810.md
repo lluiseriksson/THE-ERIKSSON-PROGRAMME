@@ -91,6 +91,12 @@ is recorded as **future work**, not as a theorem of this release. Developing or
 sharpening that law would be a new paper rather than an extension silently
 attributed to the submitted PDF.
 
+**Subsequent status.** Later on 2026-08-10 that direction was realized as the
+separate paper *Every Spectral Switch Costs Memory*, with its own immutable
+release and [submission record](ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md).
+This does not retroactively add the robust theorem to the exact-calibration
+PDF; it preserves the intended separation between the two papers.
+
 ## Lifecycle
 
 The GitHub release is an immutable public evidence object. Its publication

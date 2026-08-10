@@ -441,20 +441,23 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 ## Latest ai.viXra submission
 
 **Submitted 2026-08-10; moderation outcome and public viXra identifier are not
-yet recorded.** The latest 13-page paper is *Lossless Calibration Is Stored
-Memory: A Topological McMillan-Degree and Wigner–Smith Law for Passive Quantum
-Networks*. Its immutable
-[`v1.2` release](https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.2-topological-calibration-memory)
-contains a 388,593-byte PDF with SHA-256
-`89ACD5362D43022C78FF694ED414F9134E995472CC2DB1E0974A0021589D8C61`.
-The [submission record](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md)
-preserves the exact commit, certificate, scope and lifecycle boundary.
+yet recorded.** The latest 11-page paper is *Every Spectral Switch Costs
+Memory: Sharp Robust Wigner–Smith Speed Limits for Passive Quantum Networks*.
+Its immutable
+[`v1.3` release](https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.3-robust-spectral-routing)
+contains a 339,660-byte PDF with SHA-256
+`795E03238F152B48241E49B3DB924497DAE16D9E13ABDA725E43ED3B60C1F4FF`.
+The [submission record](docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md)
+preserves the exact commit, release artifacts, scope and known bibliographic
+limitation.
 
-The paper gives an architecture-independent lower bound connecting exactly
-lossless calibration directions, McMillan degree and integrated Wigner–Smith
-delay for finite-dimensional rational-inner passive networks. Its proposed
-robust approximate pass–stop extension is future work, not a theorem silently
-attributed to this release. The earlier [passive reservoir](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md),
+The paper converts approximate complementary-sector routing into sharp
+Wigner–Smith trace-action and McMillan-degree lower bounds, additive across
+disjoint frequency arcs. The immutable submitted PDF does not include the
+recommended explicit comparison with several known subspace/operator-flow
+speed-limit antecedents; the acta narrows the priority claim accordingly. The
+earlier [exact calibration memory](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md),
+[passive reservoir](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md),
 [OS reconstruction](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md),
 [AQFT rapid-maintenance](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md)
 and [Dobrushin C*-state](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md)
