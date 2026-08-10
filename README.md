@@ -440,21 +440,22 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ## Latest ai.viXra submission
 
-**Submitted 2026-08-10; moderation outcome and public ai.viXra identifier are
-not yet recorded.** The latest 11-page paper is *Noncommuting Block
-Measurements Generate Quantum Diffusion: A Sharp Diamond-Norm Zeno Limit, a
-Noncommutative Connectivity Gap, and an Exact Irreducible Architecture*. Its
-exact local PDF has 444,318 bytes and SHA-256
-`6F1A48265D87B24561289BADD8DAD1EDE334EB2DE365C7022E36712E8C841625`.
-The [submission record](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md)
-preserves the artifact and package hashes, 16/16 manifest verification, scope
-and provenance limitation.
+**Submitted 2026-08-10; moderation outcome and public viXra identifier are not
+yet recorded.** The latest 11-page paper is *Proper-Delay Spectra Majorize
+Subspace Rotation: Exact Finsler Resource Laws for Passive Networks*. Its
+immutable
+[`v1.5` release](https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.5-exact-finsler-speed-limits)
+contains a 348,460-byte PDF with SHA-256
+`BE4BB95E0E7B833A8D2201DAB60846A43DF1D06F02DD292644FF9FCC80DE3D42`.
+The [submission record](docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md)
+preserves the exact commit, release assets, scope and verification.
 
-The paper identifies the exact cubic obstruction governing the sharp
-`Theta(n^-1/2)` versus `O(n^-1)` direct-product dichotomy and develops the
-associated block-algebra quantum diffusion, connectivity gap and exact
-irreducible example. No public PDF locator or Git source commit was supplied,
-so none is invented in the dashboard. Earlier [robust spectral routing](docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md),
+The paper proves an exact variational principle for every symmetric gauge,
+with one positive path minimizing all gauges simultaneously, and adds a strict
+20% intermediate-prefix separation plus quantitative near-rigidity. It also
+incorporates the named operator-speed-limit antecedents missing from the v1.3
+routing paper. Earlier [block-record Zeno diffusion](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md),
+[robust spectral routing](docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md),
 [exact calibration memory](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md),
 [passive reservoir](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md),
 [OS reconstruction](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md),

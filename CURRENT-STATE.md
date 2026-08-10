@@ -17,20 +17,19 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest ai.viXra submission (2026-08-10; outcome pending).** The 11-page paper
-*Noncommuting Block Measurements Generate Quantum Diffusion: A Sharp
-Diamond-Norm Zeno Limit, a Noncommutative Connectivity Gap, and an Exact
-Irreducible Architecture* has 444,318 bytes and SHA-256
-`6F1A48265D87B24561289BADD8DAD1EDE334EB2DE365C7022E36712E8C841625`.
-Its reproducibility ZIP has 17 entries, passes 16/16 manifest hashes, and
-contains a byte-identical PDF. Exact metadata, scope and the absence of a
-public locator/source commit are recorded in
-[`docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md`](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md).
-The paper proves the sharp cubic-obstruction dichotomy for a direct CPTP
-block-measurement product and distinguishes it from multi-product Zeno
-post-processing. No public identifier has been recorded. The earlier external
-submission records remain separate, and none changes the canonical
-Yang--Mills proof-state checkpoint.
+**Latest viXra submission (2026-08-10; outcome pending).** The 11-page paper
+*Proper-Delay Spectra Majorize Subspace Rotation: Exact Finsler Resource Laws
+for Passive Networks* is frozen at commit `53a845e0`, with 348,460 bytes and
+SHA-256
+`BE4BB95E0E7B833A8D2201DAB60846A43DF1D06F02DD292644FF9FCC80DE3D42`.
+Exact links, release assets, scope and verification are recorded in
+[`docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md`](docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md).
+The paper proves the exact symmetric-gauge variational principle, a common
+positive minimizer, intermediate-prefix separation and near-rigidity. Local
+and release PDFs are byte-identical and all visible CI runs are green. No
+public viXra identifier has been recorded. Earlier external submission records
+remain separate, and none changes the canonical Yang--Mills proof-state
+checkpoint.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),

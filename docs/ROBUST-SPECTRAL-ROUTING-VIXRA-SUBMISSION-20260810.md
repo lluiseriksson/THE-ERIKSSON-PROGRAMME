@@ -116,6 +116,13 @@ contribution is their passive-network leakage-to-trace-action-to-McMillan
 composition, tomography rule, additivity and sharp multichannel realization.
 Any replacement should update the complete metadata record as well as the PDF.
 
+**Subsequent status.** The later, separate paper *Proper-Delay Spectra Majorize
+Subspace Rotation* incorporates the named operator-speed-limit antecedents and
+lifts the scalar endpoint laws to an exact symmetric-gauge variational
+principle. It has its own immutable release and
+[submission record](EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md);
+none of those later results is retroactively attributed to this v1.3 PDF.
+
 ## Lifecycle
 
 The public GitHub release is immutable evidence, not evidence of viXra
