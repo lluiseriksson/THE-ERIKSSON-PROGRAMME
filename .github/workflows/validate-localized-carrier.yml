@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 63ec10f5d106ac1fa82770f633224566110f3602
+  SOURCE_SHA: fc7b5270cf785648e63878bae33cfa9ab3632e30
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_physical_complex_mode_audit.log": 9,
+              "flat_physical_complex_mode_audit.log": 10,
           }
           result = {}
           for name, expected in audits.items():
