@@ -63,9 +63,10 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_mulVec_solut
   have hfineAlias : ∀ m : CMP89Eq246AliasIndex d M 1,
       cmp89Eq246EntireAliasFineSymbol d M 1 mass z m ≠ 0 := by
     intro m
-    rw [← cmp99SourceFlatQprimePhysicalFineSymbol_eq_entireAliasFineSymbol
-      (d := d) (M := M) (N' := N') ell mass (e.symm m)]
-    exact hfine (e.symm m)
+    have hphysical := hfine (e.symm m)
+    rw [cmp99SourceFlatQprimePhysicalFineSymbol_eq_entireAliasFineSymbol
+      (d := d) (M := M) (N' := N') ell mass (e.symm m)] at hphysical
+    simpa only [z, e, Equiv.apply_symm_apply] using hphysical
   have hgeneric :=
     cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_solution
       d M 1 mass a z hfineAlias hreduced
