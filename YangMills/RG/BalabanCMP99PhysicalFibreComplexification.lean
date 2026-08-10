@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceFlatFourierSymbolDictionary
 
 /-!
-# PRE-VALIDATION: complexification of the physical CMP99 Lie-coordinate fibre
-
-Source is present, the corresponding `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Complexification of the physical CMP99 Lie-coordinate fibre
 
 The physical zero-cochain fibre is the real Euclidean coordinate model
 `SUNLieCoord Nc`.  This module embeds it coordinatewise into the corresponding

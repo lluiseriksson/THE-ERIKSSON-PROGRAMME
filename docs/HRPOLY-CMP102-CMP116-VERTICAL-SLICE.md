@@ -7671,6 +7671,43 @@ terminal fields remain open. Counters stay exactly `20/41`, `TermSource = 0`.
 Diagnostic run `31336183990` passed with a restored graph but did not seal;
 only the cold run above retired the two PRE-VALIDATION marks.
 
+### Step 7.5cxxxv physical Lie-fibre complexification (SEALED; generated Q' symbol open)
+
+Exact source checkpoint `cd7234484dae807c3bb21190aa68cbab55f9a661`
+passed cold GitHub Actions run
+[`31365940121`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31365940121)
+with workflow checkpoint `27eac7f350add18978d1433f79a41e54cd43f967`.
+The cold job ran from `07:27:42Z` to `07:46:06Z` (`18m24s`);
+restoration and saving of `.lake/build` were both skipped. The focal ran from
+`07:29:53Z` to `07:45:55Z`, the audit ended at `07:46:01Z`, and both stages
+exited zero. All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the target emitted no warning or
+error of its own.
+
+Artifact `9054594768`, named
+`physical-fibre-complexification-cd7234484dae807c3bb21190aa68cbab55f9a661`,
+has GitHub digest
+`e3812cedc4ae12f660dff5cc3f06d6d82f4f5633e3a3e06f1656b95b1de3e65e`.
+Its deterministic inner archive re-hashed on Windows to
+`d5c06a4f10ca368ed70df29556d7a155b5fc2c2f697e6c7fcc2a89ccb8e1a4e5`;
+all 13 internal manifest entries matched.
+
+The real physical fibre `SUNLieCoord Nc` is embedded coordinatewise by an
+explicit real-linear injective map into `EuclideanSpace C (Fin (Nc^2-1))`.
+That map commutes exactly with the sealed flat physical stencil. The
+vector-valued complex-fibre Fourier mode is then diagonalized internally,
+first by the literal character eigenvalue and finally by the printed CMP89
+unit-lattice symbol. No complex fibre, mode family or eigenvalue is accepted
+as an input.
+
+This seal does not diagonalize the generated `Q'` term, construct its
+adjoint symbol, prove inverse uniqueness or transport a Green operator to a
+region. Physical `B0`, window 15 and every terminal field remain open;
+counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostic run
+`31365448830` preserves the missing-PiLp-constructor error. Diagnostic PASS
+`31365742122` restored and saved the graph and did not seal; only the cold
+run above retired the two PRE-VALIDATION marks.
+
 ### Step 7.5cxxi fine-lattice stabilized endpoint period (SEALED; boundary seam open)
 
 Exact source checkpoint `eedbb4e7fb00f20c4978f96de3853fdc1c1f75eb`

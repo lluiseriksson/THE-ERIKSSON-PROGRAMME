@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP99PhysicalFibreComplexification
 
 /-!
-# PRE-VALIDATION audit: physical CMP99 Lie-coordinate complexification
+# Audit: physical CMP99 Lie-coordinate complexification
 -/
 
 #print axioms YangMills.RG.cmp99SUNLieCoordComplexificationLM

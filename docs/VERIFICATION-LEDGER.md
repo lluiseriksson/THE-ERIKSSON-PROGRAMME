@@ -32587,3 +32587,34 @@ Physical `B0`, window 15 and all terminal fields stay open; counters remain
 exactly `20/41`, `TermSource = 0`. Failed diagnostics `31362048764`,
 `31362313958`, `31362542312` and `31362781143` remain preserved. Diagnostic
 PASS `31363036192` did not seal; only the cold run above did.
+
+## Addendum 710 (2026-08-10, **physical Lie-fibre complexification GREEN; generated Q' symbol open; 20/41 unchanged**)
+
+Exact source checkpoint `cd7234484dae807c3bb21190aa68cbab55f9a661`
+passed cold GitHub Actions run
+[`31365940121`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31365940121)
+with workflow checkpoint `27eac7f350add18978d1433f79a41e54cd43f967`.
+The cold job ran from `07:27:42Z` to `07:46:06Z` (`18m24s`), with both
+restore/save of `.lake/build` skipped. The focal and audit both exited zero;
+all six declarations use exactly `[propext, Classical.choice, Quot.sound]`,
+and the target emitted no warning or error of its own.
+
+Artifact `9054594768`, named
+`physical-fibre-complexification-cd7234484dae807c3bb21190aa68cbab55f9a661`,
+has GitHub digest
+`e3812cedc4ae12f660dff5cc3f06d6d82f4f5633e3a3e06f1656b95b1de3e65e`.
+Its deterministic inner archive re-hashed on Windows to
+`d5c06a4f10ca368ed70df29556d7a155b5fc2c2f697e6c7fcc2a89ccb8e1a4e5`;
+all 13 internal manifest entries matched.
+
+The producer constructs an explicit real-linear injective coordinatewise
+complexification of `SUNLieCoord Nc`, proves it commutes with the flat
+physical stencil, and diagonalizes the resulting vector-valued stencil by
+the already sealed printed CMP89 symbol. It accepts no complex-fibre
+identification or vector Fourier family as data.
+
+The generated `Q'` symbol/adjoint, inverse uniqueness and regional transport
+remain open. Physical `B0`, window 15 and all terminal fields stay open;
+counters remain exactly `20/41`, `TermSource = 0`. Failed diagnostic
+`31365448830` and cached diagnostic PASS `31365742122` remain preserved; only
+the cold run above seals.
